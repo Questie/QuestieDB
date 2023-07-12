@@ -1,0 +1,17 @@
+{
+  "Lua.diagnostics.globals": [
+    "SlashCmdList",
+    "DEFAULT_CHAT_FRAME",
+    "C_Timer",
+    "CreateFrame",
+    "GetQuestFactionGroup",
+    "strsplit",
+    "strsplittable",
+    "DevTools_Dump",
+    "time",
+    "GetFunctionCPUUsage",
+    "Object",
+    "wipe"
+  ],
+  "Lua.runtime.version": "Lua 5.1"
+}
