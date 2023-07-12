@@ -474,7 +474,7 @@ SlashCmdList["QuestieDB"] = function()
     -- _G["myName"] = nil
 end
 SLASH_QuestieDB1 = "/QuestieDB"
-SLASH_QuestieDB2 = "/id"
+SLASH_QuestieDB2 = "/qdb"
 
 local function OnEvent(self, event, ...)
     if event == "VARIABLES_LOADED" then
