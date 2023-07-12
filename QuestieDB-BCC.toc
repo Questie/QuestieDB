@@ -1,0 +1,11 @@
+## Interface: 20504
+## Title: QuestieDB
+## Author: Logon (Data: TheCrux/Drejjmit/Muehe/Everyone else)
+## Notes: A standalone QuestieDB
+## Version: 1
+## RequiredDeps:
+## OptionalDeps: 
+## SavedVariables: QuestieDB
+## SavedVariablesPerCharacter: QuestieDBCharacter
+
+QuestieDB.lua
