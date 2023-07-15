@@ -50,13 +50,18 @@ end
 
 --- Initialize a database frame and load the data into a table
 ---@param FrameName "QuestData"|"ItemData"|"ObjectData"|"NpcData"
----@param maxId number @The maximum id to load, used when creating the ranges for files to load
 ---@return table
-function Database.InitializeDB(FrameName, maxId)
+function Database.InitializeDB(FrameName)
   local retEntryData = {}
   local dataFilenameFrame = CreateFrame(frameType, nil, nil, FrameName .. "Files")
-  local dataPartOne, dataPartTwo = dataFilenameFrame:GetRegions()
-  local combinedString = dataPartOne:GetText() .. dataPartTwo:GetText()
+
+  -- Get all the filenames from the frame, they are split into different <p> tags that we have to combine
+  local dataFilenameRegions = { dataFilenameFrame:GetRegions() }
+  local combinedString = ""
+  for i = 1, #dataFilenameRegions do
+    combinedString = combinedString .. dataFilenameRegions[i]:GetText()
+  end
+
   -- print(combinedString)
   for file in gMatch(combinedString, "%d+-%d+") do
     -- print(file)
