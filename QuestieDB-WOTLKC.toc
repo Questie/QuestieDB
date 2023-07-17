@@ -22,8 +22,15 @@ Database\Quest\Wotlk\QuestDataFiles.xml
 Database\Database.lua
 # Types
 Database\Item\Item.lua
+Database\Item\Item.test.lua
+
 Database\Npc\Npc.lua
+Database\Npc\Npc.test.lua
+
 Database\Object\Object.lua
+Database\Object\Object.test.lua
+
 Database\Quest\Quest.lua
+Database\Quest\Quest.test.lua
 
 QuestieDB.lua
