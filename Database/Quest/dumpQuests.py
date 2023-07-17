@@ -4,10 +4,15 @@
 from slpp import slpp as lua
 import os
 import concurrent.futures
+import math
 from pathlib import Path
 
 expansions = ["Era", "Tbc", "Wotlk"]
 range_size = 50
+
+# Both are in number of characters
+max_file_size = 45000
+max_p_size = 4000
 
 # Contains the lua data for each expansion
 expansion_data = {}
@@ -23,7 +28,7 @@ def find_addon_name():
     max_level = 20
     level = 0
     while level < max_level:  # Stop if we reach the root directory
-        if current_dir.name.lower() == "addons":
+        if current_dir.name.lower() == "addons" and current_dir.parent.name.lower() == "interface":
             addon_dir = previous_dir
             break
         else:
@@ -90,7 +95,7 @@ def process_expansion(expansion):
     # The string that contains the index -> QuestId convertion data printed at the top of each file.
     lookup_data = "<!-- Index to Id table -->\n" + "<p>"
     # Contains all the filenames for the files that are generated, used to create the frames later
-    filename_data = "<!-- This contains all the ranges for the files that are generated -->\n"
+    filename_data = ""
     # The indexes of the data that we have written to the file e.g 1 = name, 2 startedBy etc
     writtenDataIndexes = []
 
@@ -113,12 +118,34 @@ def process_expansion(expansion):
             encoded_line = encoded_line.replace("\\n", "<br>")
             encoded_line = encoded_line.strip('"')
 
-            if encoded_line != "nil":
-                output_data_local += "<p>"
-                output_data_local += encoded_line
-                writtenDataIndexes.append(questDataIndex)
-                output_data_local += "</p>"
-                output_data_local += "\n"
+            # No reason to print empty lines or nil values
+            if encoded_line != "nil" and len(encoded_line) > 0:
+                # If the line is too long, we split it into multiple lines
+                # We split it at the after max_p_size characters
+                if len(encoded_line) < max_p_size:
+                    output_data_local += "<p>"
+                    output_data_local += encoded_line
+                    writtenDataIndexes.append(questDataIndex)
+                    output_data_local += "</p>"
+                    output_data_local += "\n"
+                else:
+                    # If the line is too long, we split it into multiple lines
+                    output_data_local += "<!-- Segment start: {} -->\n".format(questDataIndex)
+                    # Calculate how many segments we need
+                    segments = len(encoded_line) / max_p_size
+                    segments = math.ceil(segments)
+
+                    # Write each segment as a new tag, ending with e
+                    for i in range(segments):
+                        if i != segments - 1:
+                            writtenDataIndexes.append("{}-{}".format(questDataIndex, i + 1)) # The segment means multiple lines, add one because lua indexes start at 1
+                        else:
+                            # e as in end
+                            writtenDataIndexes.append("{}-{}".format(questDataIndex, "e")) # The segment ends at the last line, so we use e to indicate that
+                        output_data_local += "<p>"
+                        output_data_local += encoded_line[i*max_p_size:min(len(encoded_line), (i+1)*max_p_size)]
+                        output_data_local += "</p>\n"
+                    output_data_local += "<!-- Segment end: {} -->\n".format(questDataIndex)
             questDataIndex += 1
 
         output_data += "<!-- {} -->\n".format(dataId)
@@ -129,9 +156,12 @@ def process_expansion(expansion):
         entries_written += 1
 
         # If we have written the maximum amount of entries, or if we have reached the dict
-        if entries_written == range_size or entryIndex == len(questdata):
+        if entries_written == range_size or entryIndex == len(questdata):# or len(lookup_data) + len(output_data) > max_file_size:
             lookup_data = lookup_data[:-1] + "</p>"
             output_file_name = path + '\\_data\\{}-{}.html'.format(lowest_id, highest_id)
+            # if len(lookup_data) + len(output_data) > max_file_size:
+            #     print("Warning: File size exceeded for {}-{}.html".format(lowest_id, highest_id))
+            #     print(output_file_name)
 
             output_file = open(output_file_name, 'w')
             output_file.write("<html><body>\n" + lookup_data + "\n" + output_data + "</body></html>")
