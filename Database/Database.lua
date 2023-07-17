@@ -222,52 +222,55 @@ end
 --   return retEntryData
 -- end
 
-C_Timer.After(0, function()
-  local previousTime = 0
+function Database.Init(yield)
   local start = time()
   print("-- Database Initialization --")
-  local quest = time()
+  -- Quest
+  debugprofilestart()
   local questData, questCount, fileQuestCount = Database.InitializeDB("QuestData")
   Quest.Initialize(questData)
   if Database.debugEnabled then
-    local total = GetFunctionCPUUsage(Database.InitializeDB, true)
-    print("  #(", questCount, ") files(", fileQuestCount, ") Quest data database loaded:", time() - quest, "s")
-    print("    ", (total - previousTime) / questCount, "ms per quest")
-    print("    ", total - previousTime, "ms")
-    previousTime = total
+    local msTime = debugprofilestop()
+    print("  #(", questCount, ") files(", fileQuestCount, ") Quest data database loaded:", format("%.2f", msTime / 1000), "s")
+    print("    ", format("%.6f", (msTime) / questCount), "ms per quest")
+    print("    ", format("%.4f", msTime), "ms")
   end
-  local item = time()
-  local itemData, itemCount, fileItemCount = Database.InitializeDB("ItemData")
-  Item.Initialize(itemData)
-  if Database.debugEnabled then
-    local total = GetFunctionCPUUsage(Database.InitializeDB, true)
-    print("  #(", itemCount, ") files(", fileItemCount, ") Item data database loaded:", time() - item, "s")
-    print("    ", (total - previousTime) / itemCount, "ms per item")
-    print("    ", total - previousTime, "ms")
-    previousTime = total
-  end
-  print("  Item data database loaded:", time() - item, "s")
-  local object = time()
+  -- Object
+  debugprofilestart()
   local objectData, objectCount, fileObjectCount = Database.InitializeDB("ObjectData")
   Object.Initialize(objectData)
   if Database.debugEnabled then
-    local total = GetFunctionCPUUsage(Database.InitializeDB, true)
-    print("  #(", objectCount, ") files(", fileObjectCount, ") Object data database loaded:", time() - object, "s")
-    print("    ", (total - previousTime) / objectCount, "ms per object")
-    print("    ", total - previousTime, "ms")
-    previousTime = total
+    local msTime = debugprofilestop()
+    print("  #(", objectCount, ") files(", fileObjectCount, ") Object data database loaded:", format("%.2f", msTime / 1000), "s")
+    print("    ", format("%.6f", (msTime) / objectCount), "ms per object")
+    print("    ", format("%.4f", msTime), "ms")
   end
-  local npc = time()
+  -- Item
+  debugprofilestart()
+  local itemData, itemCount, fileItemCount = Database.InitializeDB("ItemData")
+  Item.Initialize(itemData)
+  if Database.debugEnabled then
+    local msTime = debugprofilestop()
+    print("  #(", itemCount, ") files(", fileItemCount, ") Item data database loaded:", format("%.2f", msTime / 1000), "s")
+    print("    ", format("%.6f", (msTime) / itemCount), "ms per item")
+    print("    ", format("%.4f", msTime), "ms")
+  end
+  -- Npc
+  debugprofilestart()
   local npcData, npcCount, fileNpcCount = Database.InitializeDB("NpcData")
   Npc.Initialize(npcData)
   if Database.debugEnabled then
-    local total = GetFunctionCPUUsage(Database.InitializeDB, true)
-    print("  #(", npcCount, ") files(", fileNpcCount, ") Npc data database loaded:", time() - npc, "s")
-    print("    ", (total - previousTime) / npcCount, "ms per npc")
-    print("    ", total - previousTime, "ms")
-    previousTime = total
+    local msTime = debugprofilestop()
+    print("  #(", npcCount, ") files(", fileNpcCount, ") Npc data database loaded:", format("%.2f", msTime / 1000), "s")
+    print("    ", format("%.6f", (msTime) / npcCount), "ms per npc")
+    print("    ", format("%.4f", msTime), "ms")
   end
   print("Total time elapsed:", time() - start, "s")
+  Database.Initialized = true
+end
+
+C_Timer.After(0,function ()
+  Database.Init()
 end)
 
 -- C_Timer.After(5, function()
