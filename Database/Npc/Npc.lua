@@ -1,5 +1,4 @@
 Npc = {}
-Npc.maxId = -1 -- This is different between expansions
 
 -- This will be assigned from the initialize function
 local glob = {}
@@ -16,7 +15,7 @@ do
   local getNumber = Database.getNumber
   local getTable = Database.getTable
 
-  -- npcKeys = {
+  -- npcKeysOriginal = {
   --   ['name'] = 1, -- string
   --   ['minLevelHealth'] = 2, -- int
   --   ['maxLevelHealth'] = 3, -- int
@@ -34,13 +33,29 @@ do
   --   ['npcFlags'] = 15, -- int, Bitmask containing various flags about the NPCs function (Vendor, Trainer, Flight Master, etc.).
   --                      -- For flag values see https://github.com/cmangos/mangos-classic/blob/172c005b0a69e342e908f4589b24a6f18246c95e/src/game/Entities/Unit.h#L536
   -- }
+-- 1. ['name'], -- string
+-- 2. ['meta-data'], -- int
+-- 	 1. ['minLevelHealth'], -- int
+-- 	 2. ['maxLevelHealth'], -- int
+-- 	 3. ['minLevel'], -- int
+-- 	 4. ['maxLevel'], -- int
+-- 	 5. ['rank'], -- int, see https://github.com/cmangos/issues/wiki/creature_template#rank
+-- 4. ['spawns'], -- table {[zoneID(int)] = {{X(float), Y(float)}, ...}, ...}
+-- 5. ['waypoints'], -- table {[zoneID(int)] = {{X(float), Y(float)}, ...}, ...}
+-- 6. ['zoneID'], -- guess as to where this NPC is most common
+-- 7. ['questStarts'], -- table {questID(int), ...}
+-- 8. ['questEnds'], -- table {questID(int), ...}
+-- 9. ['factionID'], -- int, see https://github.com/cmangos/issues/wiki/FactionTemplate.dbc
+-- 10. ['friendlyToFaction'], -- string, Contains "A" and/or "H" depending on NPC being friendly towards those factions. nil if hostile to both.
+-- 11. ['subName'], -- string, The title or function of the NPC, e.g. "Weapon Vendor"
+-- 12. ['npcFlags'], -- int, Bitmask containing various flags about the NPCs function (Vendor, Trainer, Flight Master, etc.).
 
   ---Returns the npc name.
   ---@param id NpcId
   ---@return Name?
   function Npc.name(id)
     local data = glob[id]
-    if data then
+    if data[1] then
       return data[1]:GetText()
     else
       return nil
@@ -52,10 +67,11 @@ do
   ---@return number?
   function Npc.minLevelHealth(id)
     local data = glob[id]
-    if data then
-      return getNumber(data[2])
+    if data[2] then
+      return tonumber(data[2]:GetText():match("^(%d+);"))
+      -- return tonumber(getDatastringSplit(data[2])[1])
     else
-      return nil
+      return 1
     end
   end
 
@@ -64,10 +80,11 @@ do
   ---@return number?
   function Npc.maxLevelHealth(id)
     local data = glob[id]
-    if data then
-      return getNumber(data[3])
+    if data[2] then
+      return tonumber(data[2]:GetText():match("^%d+;(%d+);"))
+      -- return tonumber(getDatastringSplit(data[2])[2])
     else
-      return nil
+      return 1
     end
   end
 
@@ -76,10 +93,12 @@ do
   ---@return number?
   function Npc.minLevel(id)
     local data = glob[id]
-    if data then
-      return getNumber(data[4])
+    if data[2] then
+      return tonumber(data[2]:GetText():match("^%d+;%d+;(%d+);"))
+      -- return tonumber(getDatastringSplit(data[2])[3])
     else
-      return nil
+      -- We return 1 rather than nil here
+      return 1
     end
   end
 
@@ -88,10 +107,12 @@ do
   ---@return number?
   function Npc.maxLevel(id)
     local data = glob[id]
-    if data then
-      return getNumber(data[5])
+    if data[2] then
+      return tonumber(data[2]:GetText():match("^%d+;%d+;%d+;(%d+);"))
+      -- return tonumber(getDatastringSplit(data[2])[4])
     else
-      return nil
+      -- We return 1 rather than nil here
+      return 1
     end
   end
 
@@ -100,10 +121,13 @@ do
   ---@return number?
   function Npc.rank(id)
     local data = glob[id]
-    if data then
-      return getNumber(data[6])
+    if data[2] then
+      return tonumber(data[2]:GetText():match("^%d+;%d+;%d+;%d+;(%d+)"))
+      -- return tonumber(getDatastringSplit(data[2])[5])
     else
-      return nil
+      -- https://github.com/cmangos/issues/wiki/creature_template#rank
+      -- We return 0 - Normal rather than nil here
+      return 0
     end
   end
 
@@ -113,7 +137,7 @@ do
   function Npc.spawns(id)
     local data = glob[id]
     if data then
-      return getTable(data[7])
+      return getTable(data[3])
     else
       return nil
     end
@@ -125,7 +149,7 @@ do
   function Npc.waypoints(id)
     local data = glob[id]
     if data then
-      return getTable(data[8])
+      return getTable(data[4])
     else
       return nil
     end
@@ -137,7 +161,7 @@ do
   function Npc.zoneID(id)
     local data = glob[id]
     if data then
-      return getNumber(data[9])
+      return getNumber(data[5])
     else
       return nil
     end
@@ -149,7 +173,7 @@ do
   function Npc.questStarts(id)
     local data = glob[id]
     if data then
-      return getTable(data[10])
+      return getTable(data[6])
     else
       return nil
     end
@@ -161,7 +185,7 @@ do
   function Npc.questEnds(id)
     local data = glob[id]
     if data then
-      return getTable(data[11])
+      return getTable(data[7])
     else
       return nil
     end
@@ -173,7 +197,7 @@ do
   function Npc.factionID(id)
     local data = glob[id]
     if data then
-      return getNumber(data[12])
+      return getNumber(data[8])
     else
       return nil
     end
@@ -184,8 +208,8 @@ do
   ---@return string?
   function Npc.friendlyToFaction(id)
     local data = glob[id]
-    if data then
-      return data[13]:GetText()
+    if data[9] then
+      return data[9]:GetText()
     else
       return nil
     end
@@ -196,8 +220,8 @@ do
   ---@return string?
   function Npc.subName(id)
     local data = glob[id]
-    if data then
-      return data[14]:GetText()
+    if data[10] then
+      return data[10]:GetText()
     else
       return nil
     end
@@ -209,9 +233,10 @@ do
   function Npc.npcFlags(id)
     local data = glob[id]
     if data then
-      return getNumber(data[15])
+      return getNumber(data[11])
     else
-      return nil
+      -- We return 0 here as in "no flag"
+      return 0
     end
   end
 end
