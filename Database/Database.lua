@@ -50,10 +50,13 @@ end
 
 --- Initialize a database frame and load the data into a table
 ---@param FrameName "QuestData"|"ItemData"|"ObjectData"|"NpcData"
----@return table
+---@return table, number, number
 function Database.InitializeDB(FrameName)
   local retEntryData = {}
+  local totalCount = 0
+  local totalFiles = 0
   local dataFilenameFrame = CreateFrame(frameType, nil, nil, FrameName .. "Files")
+  -- print(FrameName .. "Files")
 
   -- Get all the filenames from the frame, they are split into different <p> tags that we have to combine
   local dataFilenameRegions = { dataFilenameFrame:GetRegions() }
@@ -64,6 +67,7 @@ function Database.InitializeDB(FrameName)
 
   -- print(combinedString)
   for file in gMatch(combinedString, "%d+-%d+") do
+    totalFiles = totalFiles + 1
     -- print(file)
     local dataFrame = CreateFrame(frameType, nil, nil, FrameName .. file)
     local dataRegions = { dataFrame:GetRegions() }
@@ -71,41 +75,88 @@ function Database.InitializeDB(FrameName)
     dataFrame:SetScript("OnUpdate", nil)
     dataFrame:Hide()
     dataFrame:UnregisterAllEvents()
-    -- wipe(dataFrame)
 
-    -- A test using gmatch instead of splitting
-    local idLookupData = dataRegions[1]:GetText()
+    -- The first element contains a list of ids by index for the data
+    -- local idLookupData = dataRegions[1]:GetText()
+    -- This means we start at index 2 for the data
     local dataRegionsIndex = 2
-    -- local ret = gMatch(idLookupData, "%d+-*%d*")
-    -- DevTools_Dump(ret())
-    --! We have to do this because of large one-liners :(
-    -- for first, second in gMatch(idLookupData, "(%d+)-*(%d*)") do
-    --   print(first, second)
-    -- end
-    
-    -- return retEntryData
-    for id in gMatch(idLookupData, "%d+") do
-      --? The first element contains a list of indexes for the data
-      --? e.g Name is index 1, Level is index 2, etc.
-      local indexData = strsplittable(",", dataRegions[dataRegionsIndex]:GetText())
+    local idLookupData = strsplittable(",", dataRegions[1]:GetText())
+
+    -- for id in gMatch(idLookupData, "%d+") do
+    for idIndex = 1, #idLookupData do
+      local id = idLookupData[idIndex]
+
       -- Such as questId, npcId, etc.
       local dataId = tonumber(id)
-      -- print("ID", dataId)
       if dataId then
         -- Contains the frame-handles for the data (The GetText functions)
         local entryData = {}
+
+        --? The first element contains a list of indexes for the data
+        --? e.g Name is index 1, Level is index 2, etc.
         -- Loop the indexdata and add the data at the correct index to the entryData table
-        for i = 1, #indexData do
-          local data = dataRegions[dataRegionsIndex + i]
+        local dataIndexString = dataRegions[dataRegionsIndex]:GetText()
+        -- print("IndexString:", dataIndexString)
+        local count = 1
+
+        ---@param partIndex string @The index of the segmented data or "e" for end
+        for dataIndex, partIndex in gMatch(dataIndexString, "(%d+)-*(%w*)") do
+          -- print("dataLoop", dataIndex, second)
+          local dataIndexNumber = tonumber(dataIndex)
+          -- if dataIndexNumber == nil then
+          --   error("Invalid " .. FrameName .. " dataIndex: " .. dataIndex)
+          -- end
+          -- Frame Data object (The one with GetText)
+          local data = dataRegions[dataRegionsIndex + count]
           if data then
-            entryData[tonumber(indexData[i])] = data
+            if partIndex ~= "" then
+              -- We create a list of functions to call when we want to get the data
+              -- Load all the segmented data into a table ending with the e partIndex
+              if partIndex ~= "e" then
+                --? Numbered Segmented data
+                if not entryData[dataIndexNumber] then
+                  entryData[dataIndexNumber] = {}
+                end
+                entryData[dataIndexNumber][tonumber(partIndex)] = data
+              else
+                --? End of Segmented data (The last element)
+                -- Add the last element to the list
+                entryData[dataIndexNumber][#entryData[dataIndexNumber] + 1] = data
+                -- Create the function that will be called when we want to get the data
+                local segments = entryData[dataIndexNumber]
+                -- Replace the table with a function that returns the concatinated string
+                entryData[dataIndexNumber] = {
+                  -- This emulates the frame function name so we can use the same code for both
+                  GetText = function()
+                    -- TODO: Is tConcat faster than ..?
+                    local ret = {}
+                    for i = 1, #segments do
+                      ret[i] = segments[i]:GetText()
+                    end
+                    --? Can this become polymorphic and cache the result?
+                    --? This could be unnecessary due to most data that is big is just fetched once and used.
+                    -- local concatinatedString = tConcat(ret)
+                    -- entryData[dataIndexNumber].GetText = function()
+                    --   return concatinatedString
+                    -- end
+                    return tConcat(ret)
+                  end
+                }
+              end
+            else
+              entryData[dataIndexNumber] = data
+            end
           end
+          count = count + 1
         end
         retEntryData[dataId] = entryData
         -- Jump to the next entry (The + 1 jumps from the last datapoint onto the next entry)
-        dataRegionsIndex = dataRegionsIndex + #indexData + 1
+        -- dataRegionsIndex = dataRegionsIndex + #indexData + 1
+        dataRegionsIndex = dataRegionsIndex + count
+
+        totalCount = totalCount + 1
       else
-        error("Invalid " .. FrameName  .. " id: " .. id)
+        error("Invalid " .. FrameName .. " id: " .. id)
       end
     end
   end
@@ -116,7 +167,7 @@ function Database.InitializeDB(FrameName)
     dataFilenameFrame = nil
   end)
 
-  return retEntryData
+  return retEntryData, totalCount, totalFiles
 end
 
 -- --- Initialize a database frame and load the data into a table
@@ -176,42 +227,47 @@ C_Timer.After(0, function()
   local start = time()
   print("-- Database Initialization --")
   local quest = time()
-  local questData = Database.InitializeDB("QuestData", Quest.maxId)
+  local questData, questCount, fileQuestCount = Database.InitializeDB("QuestData")
   Quest.Initialize(questData)
   if Database.debugEnabled then
-    local total, count = GetFunctionCPUUsage(Database.InitializeDB, true)
-    print("  Quest data database loaded:", time() - quest, "s")
-    print("    ", total / count, "ms")
+    local total = GetFunctionCPUUsage(Database.InitializeDB, true)
+    print("  #(", questCount, ") files(", fileQuestCount, ") Quest data database loaded:", time() - quest, "s")
+    print("    ", (total - previousTime) / questCount, "ms per quest")
+    print("    ", total - previousTime, "ms")
     previousTime = total
   end
   local item = time()
-  local itemData = Database.InitializeDB("ItemData", Item.maxId)
+  local itemData, itemCount, fileItemCount = Database.InitializeDB("ItemData")
   Item.Initialize(itemData)
   if Database.debugEnabled then
-    local total, count = GetFunctionCPUUsage(Database.InitializeDB, true)
-    print("  Item data database loaded:", time() - item, "s")
-    print("    ", (total / count) - previousTime, "ms")
+    local total = GetFunctionCPUUsage(Database.InitializeDB, true)
+    print("  #(", itemCount, ") files(", fileItemCount, ") Item data database loaded:", time() - item, "s")
+    print("    ", (total - previousTime) / itemCount, "ms per item")
+    print("    ", total - previousTime, "ms")
     previousTime = total
   end
   print("  Item data database loaded:", time() - item, "s")
-  -- local object = time()
-  -- local objectData = Database.InitializeDB("ObjectData", Object.maxId)
-  -- Object.Initialize(objectData)
-  -- if Database.debugEnabled then
-  --   local total, count = GetFunctionCPUUsage(Object.Initialize, true)
-  --   print("    ", (total / count) - previousTime, "ms")
-  --   previousTime = total
-  -- end
-  -- print("  Object data database loaded:", time() - object, "s")
-  -- local npc = time()
-  -- local npcData = Database.InitializeDB("NpcData", Npc.maxId)
-  -- Npc.Initialize(npcData)
-  -- if Database.debugEnabled then
-  --   local total, count = GetFunctionCPUUsage(Npc.Initialize, true)
-  --   print("    ", (total / count) - previousTime, "ms")
-  --   previousTime = total / count
-  -- end
-  print("Total time elapsed:", time()-start, "s")
+  local object = time()
+  local objectData, objectCount, fileObjectCount = Database.InitializeDB("ObjectData")
+  Object.Initialize(objectData)
+  if Database.debugEnabled then
+    local total = GetFunctionCPUUsage(Database.InitializeDB, true)
+    print("  #(", objectCount, ") files(", fileObjectCount, ") Object data database loaded:", time() - object, "s")
+    print("    ", (total - previousTime) / objectCount, "ms per object")
+    print("    ", total - previousTime, "ms")
+    previousTime = total
+  end
+  local npc = time()
+  local npcData, npcCount, fileNpcCount = Database.InitializeDB("NpcData")
+  Npc.Initialize(npcData)
+  if Database.debugEnabled then
+    local total = GetFunctionCPUUsage(Database.InitializeDB, true)
+    print("  #(", npcCount, ") files(", fileNpcCount, ") Npc data database loaded:", time() - npc, "s")
+    print("    ", (total - previousTime) / npcCount, "ms per npc")
+    print("    ", total - previousTime, "ms")
+    previousTime = total
+  end
+  print("Total time elapsed:", time() - start, "s")
 end)
 
 -- C_Timer.After(5, function()
@@ -224,5 +280,3 @@ end)
 --   end, 0.05)
 --   -- DevTools_Dump(data.disallowedQuestRanges)
 -- end)
-
-
