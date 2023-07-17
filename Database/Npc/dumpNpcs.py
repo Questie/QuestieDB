@@ -109,14 +109,20 @@ def process_expansion(expansion):
 
         npc_data = npcdata[dataId]
 
-        lookup_data += str(dataId) + ","
-
         output_data_local = ""
         npcDataIndex = 1
         for line in npc_data:
             encoded_line = lua.encode(line)
             encoded_line = encoded_line.replace("\\n", "<br>")
             encoded_line = encoded_line.strip('"')
+            #Trim the last comma if it exists
+            if encoded_line.endswith(","):
+                encoded_line = encoded_line[:-1]
+            # Clean up the data
+            for i in range(10):
+              encoded_line = encoded_line.replace(",}", "}")
+              encoded_line = encoded_line.replace("nil}", "}")
+            encoded_line = encoded_line.replace(" = ", "=")
 
             # No reason to print empty lines or nil values
             if encoded_line != "nil" and len(encoded_line) > 0:
@@ -148,12 +154,15 @@ def process_expansion(expansion):
                     output_data_local += "<!-- Segment end: {} -->\n".format(npcDataIndex)
             npcDataIndex += 1
 
-        output_data += "<!-- {} -->\n".format(dataId)
-        output_data += "<p>" + ",".join(str(x) for x in writtenDataIndexes) + "</p>\n"
-        writtenDataIndexes.clear()
-        output_data += output_data_local
+        # Skip the if the entitry is empty
+        if len(writtenDataIndexes) > 0:
+          lookup_data += str(dataId) + ","
+          output_data += "<!-- {} -->\n".format(dataId)
+          output_data += "<p>" + ",".join(str(x) for x in writtenDataIndexes) + "</p>\n"
+          writtenDataIndexes.clear()
+          output_data += output_data_local
 
-        entries_written += 1
+          entries_written += 1
 
         # If we have written the maximum amount of entries, or if we have reached the dict
         if entries_written == range_size or entryIndex == len(npcdata):# or len(lookup_data) + len(output_data) > max_file_size:
@@ -192,9 +201,15 @@ def process_expansion(expansion):
     filename_file = open(path + "\\NpcDataTemplates.html", 'w')
     filename_file.write("<!-- This contains all the ranges for the files that are generated -->\n")
     filename_file.write("<html><body>\n")
-    filename_file.write("<p>{}</p>\n".format(filename_data[:len(filename_data)//2]))
-    filename_file.write("<p>{}</p>".format(filename_data[len(filename_data)//2:-1]))
-    filename_file.write("\n</body></html>")
+    segments = len(filename_data) / max_p_size
+    segments = math.ceil(segments)
+
+    # Write each segment as a new tag, ending with e
+    for i in range(segments):
+        filename_file.write("<p>")
+        filename_file.write(filename_data[i*max_p_size:min(len(filename_data), (i+1)*max_p_size)])
+        filename_file.write("</p>\n")
+    filename_file.write("</body></html>")
     filename_file.close()
     print("Finished dumping npcs for " + expansion)
 
