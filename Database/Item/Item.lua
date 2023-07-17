@@ -2,6 +2,8 @@ Item = {}
 
 local glob = {}
 
+local tonumber = tonumber
+
 function Item.Initialize(dataGlob)
   glob = dataGlob
   Item.glob = glob

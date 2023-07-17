@@ -1,5 +1,7 @@
 Npc = {}
 
+local tonumber = tonumber
+
 -- This will be assigned from the initialize function
 local glob = {}
 
