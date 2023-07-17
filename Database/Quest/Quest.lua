@@ -1,5 +1,4 @@
 Quest = {}
-Quest.maxId = 65610 -- This is different between expansions
 
 -- This will be assigned from the initialize function
 local glob = {}
@@ -63,7 +62,7 @@ do
   ---@return Name?
   function Quest.name(id)
     local data = glob[id]
-    if data then
+    if data[1] then
       return data[1]:GetText()
     else
       return nil

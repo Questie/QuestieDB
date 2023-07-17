@@ -1,5 +1,4 @@
 Item = {}
-Item.maxId = 190307 -- This is different between expansions
 
 local glob = {}
 
@@ -15,7 +14,7 @@ do
   local getNumber = Database.getNumber
   local getTable = Database.getTable
 
-  -- itemKeys = {
+  -- itemKeysOriginal = {
   --   ['name'] = 1,           -- string
   --   ['npcDrops'] = 2,       -- table or nil, NPC IDs
   --   ['objectDrops'] = 3,    -- table or nil, object IDs
@@ -32,6 +31,23 @@ do
   --   ['vendors'] = 14,       -- table or nil, NPC IDs
   --   ['relatedQuests'] = 15, -- table or nil, IDs of quests that are related to this item
   -- }
+
+  -- 1. ['name']           -- string
+  -- 2. ['npcDrops']       -- table or nil, NPC IDs
+  -- 3. ['objectDrops']    -- table or nil, object IDs
+  -- 4. ['itemDrops']      -- table or nil, item IDs
+  -- 5. ['startQuest']     -- int or nil, ID of the quest started by this item
+  -- 6. ['questRewards']   -- table or nil, quest IDs
+  -- 7. ['meta-data']
+  --   1.  ['flags']          -- int or nil, see: https://github.com/cmangos/issues/wiki/Item_template#flags
+  --   2. ['foodType']       -- int or nil, see https://github.com/cmangos/issues/wiki/Item_template#foodtype
+  --   3. ['itemLevel']      -- int, the level of this item
+  --   4. ['requiredLevel'] -- int, the level required to equip/use this item
+  --   5. ['ammoType']      -- int,
+  --   6. ['class']         -- int,
+  --   7. ['subClass']      -- int,
+  -- 8. ['vendors']       -- table or nil, NPC IDs
+  -- 9. ['relatedQuests'] -- table or nil, IDs of quests that are related to this item
 
   ---Returns the item name.
   ---@param id ItemId
@@ -112,8 +128,8 @@ do
   ---@return number?
   function Item.flags(id)
     local data = glob[id]
-    if data then
-      return getNumber(data[7])
+    if data[7] then
+      return tonumber(data[7]:GetText():match("^(%d+);"))
     else
       return nil
     end
@@ -124,8 +140,8 @@ do
   ---@return number?
   function Item.foodType(id)
     local data = glob[id]
-    if data then
-      return getNumber(data[8])
+    if data[7] then
+      return tonumber(data[7]:GetText():match("^%d+;(%d+);"))
     else
       return nil
     end
@@ -136,8 +152,8 @@ do
   ---@return number?
   function Item.itemLevel(id)
     local data = glob[id]
-    if data then
-      return getNumber(data[9])
+    if data[7] then
+      return tonumber(data[7]:GetText():match("^%d+;%d+;(%d+);"))
     else
       return nil
     end
@@ -148,8 +164,8 @@ do
   ---@return number?
   function Item.requiredLevel(id)
     local data = glob[id]
-    if data then
-      return getNumber(data[10])
+    if data[7] then
+      return tonumber(data[7]:GetText():match("^%d+;%d+;%d+;(%d+);"))
     else
       return nil
     end
@@ -160,10 +176,11 @@ do
   ---@return number?
   function Item.ammoType(id)
     local data = glob[id]
-    if data then
-      return getNumber(data[11])
+    if data[7] then
+      return tonumber(data[7]:GetText():match("^%d+;%d+;%d+;%d+;(%d+)"))
     else
-      return nil
+      -- We return 0 here because it's the default value for ammoType
+      return 0
     end
   end
 
@@ -172,8 +189,8 @@ do
   ---@return number?
   function Item.class(id)
     local data = glob[id]
-    if data then
-      return getNumber(data[12])
+    if data[7] then
+      return tonumber(data[7]:GetText():match("^%d+;%d+;%d+;%d+;%d+;(%d+)"))
     else
       return nil
     end
@@ -184,8 +201,8 @@ do
   ---@return number?
   function Item.subClass(id)
     local data = glob[id]
-    if data then
-      return getNumber(data[13])
+    if data[7] then
+      return tonumber(data[7]:GetText():match("^%d+;%d+;%d+;%d+;%d+;%d+;(%d+)"))
     else
       return nil
     end
@@ -197,7 +214,7 @@ do
   function Item.vendors(id)
     local data = glob[id]
     if data then
-      return getTable(data[14])
+      return getTable(data[8])
     else
       return nil
     end
@@ -209,7 +226,7 @@ do
   function Item.relatedQuests(id)
     local data = glob[id]
     if data then
-      return getTable(data[15])
+      return getTable(data[9])
     else
       return nil
     end
