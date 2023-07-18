@@ -1,5 +1,6 @@
 #! This is temporary!
 *.html
+*DataFiles.xml
 
 #We don't want the zip file in the repo
 *.zip
