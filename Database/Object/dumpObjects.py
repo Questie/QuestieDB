@@ -184,7 +184,7 @@ def process_expansion(expansion):
             embed_file_string += ' font="GameFontNormal"'
             embed_file_string += '/>\n'
 
-            filename_data += "{}-{},".format(str(lowest_id), str(highest_id))
+            filename_data += "ObjectData{}-{},".format(str(lowest_id), str(highest_id))
 
             # Reset variables for the next file
             entries_written = 0
@@ -202,6 +202,9 @@ def process_expansion(expansion):
     filename_file = open(path + "\\ObjectDataTemplates.html", 'w')
     filename_file.write("<!-- This contains all the ranges for the files that are generated -->\n")
     filename_file.write("<html><body>\n")
+    #Trim the last comma if it exists
+    if filename_data.endswith(","):
+        filename_data = filename_data[:-1]
     segments = len(filename_data) / max_p_size
     segments = math.ceil(segments)
 

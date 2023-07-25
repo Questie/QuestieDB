@@ -4,11 +4,13 @@ local tonumber = tonumber
 
 -- This will be assigned from the initialize function
 local glob = {}
+local override = {}
 
-function Npc.Initialize(dataGlob)
+function Npc.Initialize(dataGlob, dataOverride, overrideKeys)
   glob = dataGlob
   Npc.glob = glob
-  print("Loaded Npc Data")
+  Npc.override = override
+  Database.Override(dataOverride, override, overrideKeys)
 end
 
 do
@@ -38,25 +40,29 @@ do
   -- }
 -- 1. ['name'], -- string
 -- 2. ['meta-data'], -- int
--- 	 1. ['minLevelHealth'], -- int
--- 	 2. ['maxLevelHealth'], -- int
--- 	 3. ['minLevel'], -- int
--- 	 4. ['maxLevel'], -- int
--- 	 5. ['rank'], -- int, see https://github.com/cmangos/issues/wiki/creature_template#rank
--- 4. ['spawns'], -- table {[zoneID(int)] = {{X(float), Y(float)}, ...}, ...}
--- 5. ['waypoints'], -- table {[zoneID(int)] = {{X(float), Y(float)}, ...}, ...}
--- 6. ['zoneID'], -- guess as to where this NPC is most common
--- 7. ['questStarts'], -- table {questID(int), ...}
--- 8. ['questEnds'], -- table {questID(int), ...}
--- 9. ['factionID'], -- int, see https://github.com/cmangos/issues/wiki/FactionTemplate.dbc
--- 10. ['friendlyToFaction'], -- string, Contains "A" and/or "H" depending on NPC being friendly towards those factions. nil if hostile to both.
--- 11. ['subName'], -- string, The title or function of the NPC, e.g. "Weapon Vendor"
--- 12. ['npcFlags'], -- int, Bitmask containing various flags about the NPCs function (Vendor, Trainer, Flight Master, etc.).
+-- 	1. ['minLevelHealth'], -- int
+-- 	2. ['maxLevelHealth'], -- int
+-- 	3. ['minLevel'], -- int
+-- 	4. ['maxLevel'], -- int
+-- 	5. ['rank'], -- int, see https://github.com/cmangos/issues/wiki/creature_template#rank
+-- 	6. ['zoneID'], -- guess as to where this NPC is most common
+-- 	7. ['factionID'], -- int, see https://github.com/cmangos/issues/wiki/FactionTemplate.dbc
+-- 	8. ['friendlyToFaction'], -- string, Contains "A" and/or "H" depending on NPC being friendly towards those factions. nil if hostile to both.
+-- 	9. ['factionID'], -- int, see https://github.com/cmangos/issues/wiki/FactionTemplate.dbc
+-- 	10. ['npcFlags'], -- int, Bitmask containing various flags about the NPCs function (Vendor, Trainer, Flight Master, etc.).
+-- 3. ['spawns'], -- table {[zoneID(int)] = {{X(float), Y(float)}, ...}, ...}
+-- 4. ['waypoints'], -- table {[zoneID(int)] = {{X(float), Y(float)}, ...}, ...}
+-- 5. ['questStarts'], -- table {questID(int), ...}
+-- 6. ['questEnds'], -- table {questID(int), ...}
+-- 7. ['subName'], -- string, The title or function of the NPC, e.g. "Weapon Vendor"
 
   ---Returns the npc name.
   ---@param id NpcId
   ---@return Name?
   function Npc.name(id)
+    if override[id] then
+      return override[id]["name"]
+    end
     local data = glob[id]
     if data[1] then
       return data[1]:GetText()
@@ -69,8 +75,12 @@ do
   ---@param id NpcId
   ---@return number?
   function Npc.minLevelHealth(id)
+    if override[id] then
+      return override[id]["minLevelHealth"]
+    end
     local data = glob[id]
     if data[2] then
+      --! This is slower than a raw value
       return tonumber(data[2]:GetText():match("^(%d+);"))
     else
       return 1
@@ -81,8 +91,12 @@ do
   ---@param id NpcId
   ---@return number?
   function Npc.maxLevelHealth(id)
+    if override[id] then
+      return override[id]["maxLevelHealth"]
+    end
     local data = glob[id]
     if data[2] then
+      --! This is slower than a raw value
       return tonumber(data[2]:GetText():match("^%d+;(%d+);"))
     else
       return 1
@@ -93,8 +107,12 @@ do
   ---@param id NpcId
   ---@return number?
   function Npc.minLevel(id)
+    if override[id] then
+      return override[id]["minLevel"]
+    end
     local data = glob[id]
     if data[2] then
+      --! This is slower than a raw value
       return tonumber(data[2]:GetText():match("^%d+;%d+;(%d+);"))
     else
       -- We return 1 rather than nil here
@@ -106,8 +124,12 @@ do
   ---@param id NpcId
   ---@return number?
   function Npc.maxLevel(id)
+    if override[id] then
+      return override[id]["maxLevel"]
+    end
     local data = glob[id]
     if data[2] then
+      --! This is slower than a raw value
       return tonumber(data[2]:GetText():match("^%d+;%d+;%d+;(%d+);"))
     else
       -- We return 1 rather than nil here
@@ -119,8 +141,12 @@ do
   ---@param id NpcId
   ---@return number?
   function Npc.rank(id)
+    if override[id] then
+      return override[id]["rank"]
+    end
     local data = glob[id]
     if data[2] then
+      --! This is slower than a raw value
       return tonumber(data[2]:GetText():match("^%d+;%d+;%d+;%d+;(%d+)"))
     else
       -- https://github.com/cmangos/issues/wiki/creature_template#rank
@@ -129,10 +155,78 @@ do
     end
   end
 
+  ---Returns the zone ID of the npc.
+  ---@param id NpcId
+  ---@return AreaId?
+  function Npc.zoneID(id)
+    if override[id] then
+      return override[id]["zoneID"]
+    end
+    local data = glob[id]
+    if data[2] then
+      --! This is slower than a raw value
+      return tonumber(data[2]:GetText():match("^%d+;%d+;%d+;%d+;%d+;(%d+)"))
+    else
+      return nil
+    end
+  end
+
+  ---Returns the faction ID of the npc.
+  ---@param id NpcId
+  ---@return number?
+  function Npc.factionID(id)
+    if override[id] then
+      return override[id]["factionID"]
+    end
+    local data = glob[id]
+    if data[2] then
+      --! This is slower than a raw value
+      return tonumber(data[2]:GetText():match("^%d+;%d+;%d+;%d+;%d+;%d+;(%d+)"))
+    else
+      return nil
+    end
+  end
+
+  ---Returns the friendly factions of the npc.
+  ---@param id NpcId
+  ---@return string?
+  function Npc.friendlyToFaction(id)
+    if override[id] then
+      return override[id]["friendlyToFaction"]
+    end
+    local data = glob[id]
+    if data[2] then
+      --! This is slower than a raw value
+      return data[2]:GetText():match("^%d+;%d+;%d+;%d+;%d+;%d+;%d+;(%w*)")
+    else
+      return nil
+    end
+  end
+
+  ---Returns the npc flags of the npc.
+  ---@param id NpcId
+  ---@return number?
+  function Npc.npcFlags(id)
+    if override[id] then
+      return override[id]["npcFlags"]
+    end
+    local data = glob[id]
+    if data[2] then
+      --! This is slower than a raw value
+      return tonumber(data[2]:GetText():match("^%d+;%d+;%d+;%d+;%d+;%d+;%d+;%w*;(%d+)"))
+    else
+      -- We return 0 here as in "no flag"
+      return 0
+    end
+  end
+
   ---Returns the spawns of the npc.
   ---@param id NpcId
   ---@return table<AreaId, CoordPair[]>?
   function Npc.spawns(id)
+    if override[id] then
+      return override[id]["spawns"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[3])
@@ -145,21 +239,12 @@ do
   ---@param id NpcId
   ---@return table<AreaId, CoordPair[]>?
   function Npc.waypoints(id)
+    if override[id] then
+      return override[id]["waypoints"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[4])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the zone ID of the npc.
-  ---@param id NpcId
-  ---@return AreaId?
-  function Npc.zoneID(id)
-    local data = glob[id]
-    if data then
-      return getNumber(data[5])
     else
       return nil
     end
@@ -169,9 +254,12 @@ do
   ---@param id NpcId
   ---@return QuestId[]?
   function Npc.questStarts(id)
+    if override[id] then
+      return override[id]["questStarts"]
+    end
     local data = glob[id]
     if data then
-      return getTable(data[6])
+      return getTable(data[5])
     else
       return nil
     end
@@ -181,33 +269,12 @@ do
   ---@param id NpcId
   ---@return QuestId[]?
   function Npc.questEnds(id)
+    if override[id] then
+      return override[id]["questEnds"]
+    end
     local data = glob[id]
     if data then
-      return getTable(data[7])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the faction ID of the npc.
-  ---@param id NpcId
-  ---@return number?
-  function Npc.factionID(id)
-    local data = glob[id]
-    if data then
-      return getNumber(data[8])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the friendly factions of the npc.
-  ---@param id NpcId
-  ---@return string?
-  function Npc.friendlyToFaction(id)
-    local data = glob[id]
-    if data[9] then
-      return data[9]:GetText()
+      return getTable(data[6])
     else
       return nil
     end
@@ -217,24 +284,14 @@ do
   ---@param id NpcId
   ---@return string?
   function Npc.subName(id)
+    if override[id] then
+      return override[id]["subName"]
+    end
     local data = glob[id]
-    if data[10] then
-      return data[10]:GetText()
+    if data[7] then
+      return data[7]:GetText()
     else
       return nil
-    end
-  end
-
-  ---Returns the npc flags of the npc.
-  ---@param id NpcId
-  ---@return number?
-  function Npc.npcFlags(id)
-    local data = glob[id]
-    if data then
-      return getNumber(data[11])
-    else
-      -- We return 0 here as in "no flag"
-      return 0
     end
   end
 end

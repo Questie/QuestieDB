@@ -1,92 +1,107 @@
-Npc.testGetFunctions = function()
+local _,
+---@class QuestieSDB
+QuestieSDB = ...
+
+local tInsert = table.insert
+Npc.testGetFunctions = function(fast)
+  debugprofilestart()
   local glob = Npc.glob
+  local count = 0
   for id in pairs(glob) do
-    print("Testing Npc " .. id)
+    Npc.lastTestedID = id
+    count = count + 1
     local data = {}
+    tInsert(data, "Testing Npc " .. id)
 
     -- Test Npc.name
-    table.insert(data, "Name: " .. (Npc.name(id) or "nil"))
+    tInsert(data, "Name: " .. (Npc.name(id) or "nil"))
 
     -- Test Npc.minLevelHealth
-    table.insert(data, "Min Level Health: " .. (Npc.minLevelHealth(id) or "nil"))
+    tInsert(data, "Min Level Health: " .. (Npc.minLevelHealth(id) or "nil"))
 
     -- Test Npc.maxLevelHealth
-    table.insert(data, "Max Level Health: " .. (Npc.maxLevelHealth(id) or "nil"))
+    tInsert(data, "Max Level Health: " .. (Npc.maxLevelHealth(id) or "nil"))
 
     -- Test Npc.minLevel
-    table.insert(data, "Min Level: " .. (Npc.minLevel(id) or "nil"))
+    tInsert(data, "Min Level: " .. (Npc.minLevel(id) or "nil"))
 
     -- Test Npc.maxLevel
-    table.insert(data, "Max Level: " .. (Npc.maxLevel(id) or "nil"))
+    tInsert(data, "Max Level: " .. (Npc.maxLevel(id) or "nil"))
 
     -- Test Npc.rank
-    table.insert(data, "Rank: " .. (Npc.rank(id) or "nil"))
+    tInsert(data, "Rank: " .. (Npc.rank(id) or "nil"))
 
     -- Test Npc.spawns
     local spawns = Npc.spawns(id)
     if spawns then
       for zoneID, coords in pairs(spawns) do
-        table.insert(data, "Spawns in Zone " .. zoneID .. ":")
+        tInsert(data, "Spawns in Zone " .. zoneID .. ":")
         for _, coord in ipairs(coords) do
-          table.insert(data, "  X: " .. coord[1] .. ", Y: " .. coord[2])
+          tInsert(data, "  X: " .. coord[1] .. ", Y: " .. coord[2])
         end
       end
     else
-      table.insert(data, "Spawns: nil")
+      tInsert(data, "Spawns: nil")
     end
 
     -- Test Npc.waypoints
     local waypoints = Npc.waypoints(id)
     if waypoints then
       for zoneID, coords in pairs(waypoints) do
-        table.insert(data, "Waypoints in Zone " .. zoneID .. ":")
+        tInsert(data, "Waypoints in Zone " .. zoneID .. ":")
         for _, coord in ipairs(coords) do
-          table.insert(data, "  X: " .. coord[1] .. ", Y: " .. coord[2])
+          tInsert(data, "  X: " .. coord[1] .. ", Y: " .. coord[2])
         end
       end
     else
-      table.insert(data, "Waypoints: nil")
+      tInsert(data, "Waypoints: nil")
     end
 
     -- Test Npc.zoneID
-    table.insert(data, "Zone ID: " .. (Npc.zoneID(id) or "nil"))
+    tInsert(data, "Zone ID: " .. (Npc.zoneID(id) or "nil"))
 
     -- Test Npc.questStarts
     local questStarts = Npc.questStarts(id)
     if questStarts then
-      table.insert(data, "Quest Starts:")
+      tInsert(data, "Quest Starts:")
       for _, questID in ipairs(questStarts) do
-        table.insert(data, "  Quest ID: " .. questID)
+        tInsert(data, "  Quest ID: " .. questID)
       end
     else
-      table.insert(data, "Quest Starts: nil")
+      tInsert(data, "Quest Starts: nil")
     end
 
     -- Test Npc.questEnds
     local questEnds = Npc.questEnds(id)
     if questEnds then
-      table.insert(data, "Quest Ends:")
+      tInsert(data, "Quest Ends:")
       for _, questID in ipairs(questEnds) do
-        table.insert(data, "  Quest ID: " .. questID)
+        tInsert(data, "  Quest ID: " .. questID)
       end
     else
-      table.insert(data, "Quest Ends: nil")
+      tInsert(data, "Quest Ends: nil")
     end
 
     -- Test Npc.factionID
-    table.insert(data, "Faction ID: " .. (Npc.factionID(id) or "nil"))
+    tInsert(data, "Faction ID: " .. (Npc.factionID(id) or "nil"))
 
     -- Test Npc.friendlyToFaction
-    table.insert(data, "Friendly to Faction: " .. (Npc.friendlyToFaction(id) or "nil"))
+    tInsert(data, "Friendly to Faction: " .. (Npc.friendlyToFaction(id) or "nil"))
 
     -- Test Npc.subName
-    table.insert(data, "Sub Name: " .. (Npc.subName(id) or "nil"))
+    tInsert(data, "Sub Name: " .. (Npc.subName(id) or "nil"))
 
     -- Test Npc.npcFlags
-    table.insert(data, "NPC Flags: " .. (Npc.npcFlags(id) or "nil"))
+    tInsert(data, "NPC Flags: " .. (Npc.npcFlags(id) or "nil"))
 
-    table.insert(data, "--------------------------------------------------")
-    print(table.concat(data, "\n"))
+    tInsert(data, "--------------------------------------------------")
+    if not fast then
+      print(table.concat(data, "\n"))
+    end
   end
-  print("Npc Test Done")
+  local time = debugprofilestop()
+  QuestieSDB.ColorizePrint("green", "Npc Test Done", time, "ms")
+  print("  ", count, "npcs tested")
+  print("  ", "time per npc:", time / count, "ms")
+  print("  ", "avg time per function", time / (count * 15), "ms")
 end

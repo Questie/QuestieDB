@@ -2,11 +2,13 @@ Object = {}
 
 -- This will be assigned from the initialize function
 local glob = {}
+local override = {}
 
-function Object.Initialize(dataGlob)
+function Object.Initialize(dataGlob, dataOverride, overrideKeys)
   glob = dataGlob
   Object.glob = glob
-  print("Loaded Object Data")
+  Object.override = override
+  Database.Override(dataOverride, override, overrideKeys)
 end
 
 do
@@ -26,6 +28,9 @@ do
   ---@param id ObjectId
   ---@return Name?
   function Object.name(id)
+    if override[id] then
+      return override[id]["name"]
+    end
     local data = glob[id]
     if data[1] then
       return data[1]:GetText()
@@ -38,6 +43,9 @@ do
   ---@param id ObjectId
   ---@return QuestId[]?
   function Object.questStarts(id)
+    if override[id] then
+      return override[id]["questStarts"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[2])
@@ -50,6 +58,9 @@ do
   ---@param id ObjectId
   ---@return QuestId[]?
   function Object.questEnds(id)
+    if override[id] then
+      return override[id]["questEnds"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[3])
@@ -62,6 +73,9 @@ do
   ---@param id ObjectId
   ---@return table<AreaId, table<CoordPair>>?
   function Object.spawns(id)
+    if override[id] then
+      return override[id]["spawns"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[4])
@@ -74,6 +88,9 @@ do
   ---@param id ObjectId
   ---@return AreaId?
   function Object.zoneID(id)
+    if override[id] then
+      return override[id]["zoneID"]
+    end
     local data = glob[id]
     if data then
       return getNumber(data[5])
@@ -86,6 +103,9 @@ do
   ---@param id ObjectId
   ---@return number?
   function Object.factionID(id)
+    if override[id] then
+      return override[id]["factionID"]
+    end
     local data = glob[id]
     if data then
       return getNumber(data[6])

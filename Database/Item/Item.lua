@@ -1,13 +1,15 @@
 Item = {}
 
 local glob = {}
+local override = {}
 
 local tonumber = tonumber
 
-function Item.Initialize(dataGlob)
+function Item.Initialize(dataGlob, dataOverride, overrideKeys)
   glob = dataGlob
   Item.glob = glob
-  print("Loaded Item Data")
+  Item.override = override
+  Database.Override(dataOverride, override, overrideKeys)
 end
 
 do
@@ -42,7 +44,7 @@ do
   -- 5. ['startQuest']     -- int or nil, ID of the quest started by this item
   -- 6. ['questRewards']   -- table or nil, quest IDs
   -- 7. ['meta-data']
-  --   1.  ['flags']          -- int or nil, see: https://github.com/cmangos/issues/wiki/Item_template#flags
+  --   1. ['flags']          -- int or nil, see: https://github.com/cmangos/issues/wiki/Item_template#flags
   --   2. ['foodType']       -- int or nil, see https://github.com/cmangos/issues/wiki/Item_template#foodtype
   --   3. ['itemLevel']      -- int, the level of this item
   --   4. ['requiredLevel'] -- int, the level required to equip/use this item
@@ -56,8 +58,12 @@ do
   ---@param id ItemId
   ---@return Name?
   function Item.name(id)
+    --? Returns the overridden value, e.g. faction specific fixes
+    if override[id] then
+      return override[id]["name"]
+    end
     local data = glob[id]
-    if data then
+    if data[1] then
       return data[1]:GetText()
     else
       return nil
@@ -68,6 +74,10 @@ do
   ---@param id ItemId
   ---@return NpcId[]?
   function Item.npcDrops(id)
+    --? Returns the overridden value, e.g. faction specific fixes
+    if override[id] then
+      return override[id]["npcDrops"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[2])
@@ -76,12 +86,14 @@ do
     end
   end
 
-  --- Please continue here:
-
   ---Returns the IDs of objects that drop this item.
   ---@param id ItemId
   ---@return ObjectId[]?
   function Item.objectDrops(id)
+    --? Returns the overridden value, e.g. faction specific fixes
+    if override[id] then
+      return override[id]["objectDrops"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[3])
@@ -94,6 +106,10 @@ do
   ---@param id ItemId
   ---@return ItemId[]?
   function Item.itemDrops(id)
+    --? Returns the overridden value, e.g. faction specific fixes
+    if override[id] then
+      return override[id]["itemDrops"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[4])
@@ -106,6 +122,10 @@ do
   ---@param id ItemId
   ---@return QuestId?
   function Item.startQuest(id)
+    --? Returns the overridden value, e.g. faction specific fixes
+    if override[id] then
+      return override[id]["startQuest"]
+    end
     local data = glob[id]
     if data then
       return getNumber(data[5])
@@ -118,6 +138,10 @@ do
   ---@param id ItemId
   ---@return QuestId[]?
   function Item.questRewards(id)
+    --? Returns the overridden value, e.g. faction specific fixes
+    if override[id] then
+      return override[id]["questRewards"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[6])
@@ -130,8 +154,13 @@ do
   ---@param id ItemId
   ---@return number?
   function Item.flags(id)
+    --? Returns the overridden value, e.g. faction specific fixes
+    if override[id] then
+      return override[id]["flags"]
+    end
     local data = glob[id]
     if data[7] then
+      --! This is slower than a raw value
       return tonumber(data[7]:GetText():match("^(%d+);"))
     else
       return nil
@@ -142,8 +171,13 @@ do
   ---@param id ItemId
   ---@return number?
   function Item.foodType(id)
+    --? Returns the overridden value, e.g. faction specific fixes
+    if override[id] then
+      return override[id]["foodType"]
+    end
     local data = glob[id]
     if data[7] then
+      --! This is slower than a raw value
       return tonumber(data[7]:GetText():match("^%d+;(%d+);"))
     else
       return nil
@@ -154,8 +188,13 @@ do
   ---@param id ItemId
   ---@return number?
   function Item.itemLevel(id)
+    --? Returns the overridden value, e.g. faction specific fixes
+    if override[id] then
+      return override[id]["itemLevel"]
+    end
     local data = glob[id]
     if data[7] then
+      --! This is slower than a raw value
       return tonumber(data[7]:GetText():match("^%d+;%d+;(%d+);"))
     else
       return nil
@@ -166,8 +205,13 @@ do
   ---@param id ItemId
   ---@return number?
   function Item.requiredLevel(id)
+    --? Returns the overridden value, e.g. faction specific fixes
+    if override[id] then
+      return override[id]["requiredLevel"]
+    end
     local data = glob[id]
     if data[7] then
+      --! This is slower than a raw value
       return tonumber(data[7]:GetText():match("^%d+;%d+;%d+;(%d+);"))
     else
       return nil
@@ -178,8 +222,13 @@ do
   ---@param id ItemId
   ---@return number?
   function Item.ammoType(id)
+    --? Returns the overridden value, e.g. faction specific fixes
+    if override[id] then
+      return override[id]["ammoType"]
+    end
     local data = glob[id]
     if data[7] then
+      --! This is slower than a raw value
       return tonumber(data[7]:GetText():match("^%d+;%d+;%d+;%d+;(%d+)"))
     else
       -- We return 0 here because it's the default value for ammoType
@@ -191,8 +240,13 @@ do
   ---@param id ItemId
   ---@return number?
   function Item.class(id)
+    --? Returns the overridden value, e.g. faction specific fixes
+    if override[id] then
+      return override[id]["class"]
+    end
     local data = glob[id]
     if data[7] then
+      --! This is slower than a raw value
       return tonumber(data[7]:GetText():match("^%d+;%d+;%d+;%d+;%d+;(%d+)"))
     else
       return nil
@@ -203,8 +257,13 @@ do
   ---@param id ItemId
   ---@return number?
   function Item.subClass(id)
+    --? Returns the overridden value, e.g. faction specific fixes
+    if override[id] then
+      return override[id]["subClass"]
+    end
     local data = glob[id]
     if data[7] then
+      --! This is slower than a raw value
       return tonumber(data[7]:GetText():match("^%d+;%d+;%d+;%d+;%d+;%d+;(%d+)"))
     else
       return nil
@@ -215,6 +274,10 @@ do
   ---@param id ItemId
   ---@return NpcId[]?
   function Item.vendors(id)
+    --? Returns the overridden value, e.g. faction specific fixes
+    if override[id] then
+      return override[id]["vendors"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[8])
@@ -227,6 +290,10 @@ do
   ---@param id ItemId
   ---@return QuestId[]?
   function Item.relatedQuests(id)
+    --? Returns the overridden value, e.g. faction specific fixes
+    if override[id] then
+      return override[id]["relatedQuests"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[9])

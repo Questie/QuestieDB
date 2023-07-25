@@ -1,11 +1,14 @@
 Quest = {}
+
 -- This will be assigned from the initialize function
 local glob = {}
+local override = {}
 
-function Quest.Initialize(dataGlob)
+function Quest.Initialize(dataGlob, dataOverride, overrideKeys)
   glob = dataGlob
   Quest.glob = glob
-  print("Loaded Quest Data")
+  Quest.override = override
+  Database.Override(dataOverride, override, overrideKeys)
 end
 
 do
@@ -61,6 +64,9 @@ do
   ---@param id QuestId
   ---@return Name?
   function Quest.name(id)
+    if override[id] then
+      return override[id]["name"]
+    end
     local data = glob[id]
     if data[1] then
       return data[1]:GetText()
@@ -73,6 +79,9 @@ do
   ---@param id QuestId
   ---@return StartedBy?
   function Quest.startedBy(id)
+    if override[id] then
+      return override[id]["startedBy"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[2])
@@ -85,6 +94,9 @@ do
   ---@param id QuestId
   ---@return FinishedBy?
   function Quest.finishedBy(id)
+    if override[id] then
+      return override[id]["finishedBy"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[3])
@@ -97,6 +109,9 @@ do
   ---@param id QuestId
   ---@return Level?
   function Quest.requiredLevel(id)
+    if override[id] then
+      return override[id]["requiredLevel"]
+    end
     local data = glob[id]
     if data then
       return getNumber(data[4])
@@ -109,6 +124,9 @@ do
   ---@param id QuestId
   ---@return Level?
   function Quest.questLevel(id)
+    if override[id] then
+      return override[id]["questLevel"]
+    end
     local data = glob[id]
     if data then
       return getNumber(data[5])
@@ -121,11 +139,15 @@ do
   ---@param id QuestId
   ---@return number?
   function Quest.requiredRaces(id)
+    if override[id] then
+      return override[id]["requiredRaces"]
+    end
     local data = glob[id]
     if data then
       return getNumber(data[6])
     else
-      return nil
+      -- If no requiredRace is set we return 0 (as in all races)
+      return 0
     end
   end
 
@@ -133,6 +155,9 @@ do
   ---@param id QuestId
   ---@return number?
   function Quest.requiredClasses(id)
+    if override[id] then
+      return override[id]["requiredClasses"]
+    end
     local data = glob[id]
     if data then
       return getNumber(data[7])
@@ -145,6 +170,9 @@ do
   ---@param id QuestId
   ---@return string[]?
   function Quest.objectivesText(id)
+    if override[id] then
+      return override[id]["objectivesText"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[8])
@@ -157,6 +185,9 @@ do
   ---@param id QuestId
   ---@return { [1]: string, [2]: table<AreaId, CoordPair[]>}?
   function Quest.triggerEnd(id)
+    if override[id] then
+      return override[id]["triggerEnd"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[9])
@@ -169,6 +200,9 @@ do
   ---@param id QuestId
   ---@return RawObjectives?
   function Quest.objectives(id)
+    if override[id] then
+      return override[id]["objectives"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[10])
@@ -181,6 +215,9 @@ do
   ---@param id QuestId
   ---@return ItemId?
   function Quest.sourceItemId(id)
+    if override[id] then
+      return override[id]["sourceItemId"]
+    end
     local data = glob[id]
     if data then
       return getNumber(data[11])
@@ -193,6 +230,9 @@ do
   ---@param id QuestId
   ---@return QuestId[]?
   function Quest.preQuestGroup(id)
+    if override[id] then
+      return override[id]["preQuestGroup"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[12])
@@ -205,6 +245,9 @@ do
   ---@param id QuestId
   ---@return QuestId[]?
   function Quest.preQuestSingle(id)
+    if override[id] then
+      return override[id]["preQuestSingle"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[13])
@@ -217,6 +260,9 @@ do
   ---@param id QuestId
   ---@return QuestId[]?
   function Quest.childQuests(id)
+    if override[id] then
+      return override[id]["childQuests"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[14])
@@ -229,6 +275,9 @@ do
   ---@param id QuestId
   ---@return QuestId[]?
   function Quest.inGroupWith(id)
+    if override[id] then
+      return override[id]["inGroupWith"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[15])
@@ -241,6 +290,9 @@ do
   ---@param id QuestId
   ---@return QuestId[]?
   function Quest.exclusiveTo(id)
+    if override[id] then
+      return override[id]["exclusiveTo"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[16])
@@ -253,6 +305,9 @@ do
   ---@param id QuestId
   ---@return ZoneOrSort?
   function Quest.zoneOrSort(id)
+    if override[id] then
+      return override[id]["zoneOrSort"]
+    end
     local data = glob[id]
     if data then
       return getNumber(data[17])
@@ -265,6 +320,9 @@ do
   ---@param id QuestId
   ---@return SkillPair?
   function Quest.requiredSkill(id)
+    if override[id] then
+      return override[id]["requiredSkill"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[18])
@@ -277,6 +335,9 @@ do
   ---@param id QuestId
   ---@return ReputationPair?
   function Quest.requiredMinRep(id)
+    if override[id] then
+      return override[id]["requiredMinRep"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[19])
@@ -289,6 +350,9 @@ do
   ---@param id QuestId
   ---@return ReputationPair?
   function Quest.requiredMaxRep(id)
+    if override[id] then
+      return override[id]["requiredMaxRep"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[20])
@@ -301,6 +365,9 @@ do
   ---@param id QuestId
   ---@return ItemId[]?
   function Quest.requiredSourceItems(id)
+    if override[id] then
+      return override[id]["requiredSourceItems"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[21])
@@ -313,6 +380,9 @@ do
   ---@param id QuestId
   ---@return QuestId?
   function Quest.nextQuestInChain(id)
+    if override[id] then
+      return override[id]["nextQuestInChain"]
+    end
     local data = glob[id]
     if data then
       return getNumber(data[22])
@@ -325,6 +395,9 @@ do
   ---@param id QuestId
   ---@return number?
   function Quest.questFlags(id)
+    if override[id] then
+      return override[id]["questFlags"]
+    end
     local data = glob[id]
     if data then
       return getNumber(data[23])
@@ -337,6 +410,9 @@ do
   ---@param id QuestId
   ---@return number?
   function Quest.specialFlags(id)
+    if override[id] then
+      return override[id]["specialFlags"]
+    end
     local data = glob[id]
     if data then
       return getNumber(data[24])
@@ -349,6 +425,9 @@ do
   ---@param id QuestId
   ---@return QuestId?
   function Quest.parentQuest(id)
+    if override[id] then
+      return override[id]["parentQuest"]
+    end
     local data = glob[id]
     if data then
       return getNumber(data[25])
@@ -361,6 +440,9 @@ do
   ---@param id QuestId
   ---@return ReputationPair[]?
   function Quest.rewardReputation(id)
+    if override[id] then
+      return override[id]["rewardReputation"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[26])
@@ -373,6 +455,9 @@ do
   ---@param id QuestId
   ---@return ExtraObjective?
   function Quest.extraObjectives(id)
+    if override[id] then
+      return override[id]["extraObjectives"]
+    end
     local data = glob[id]
     if data then
       return getTable(data[27])
@@ -385,6 +470,9 @@ do
   ---@param id QuestId
   ---@return number?
   function Quest.requiredSpell(id)
+    if override[id] then
+      return override[id]["requiredSpell"]
+    end
     local data = glob[id]
     if data then
       return getNumber(data[28])
@@ -397,6 +485,9 @@ do
   ---@param id QuestId
   ---@return number?
   function Quest.requiredSpecialization(id)
+    if override[id] then
+      return override[id]["requiredSpecialization"]
+    end
     local data = glob[id]
     if data then
       return getNumber(data[29])
@@ -405,265 +496,3 @@ do
     end
   end
 end
-
---? only <p> tags with data
--- function Quest.Initialize()
---   local retQuestData = {}
---   for range_low = 1, maxId, rangeSize do
---     local range = range_low .. "-" .. (range_low + (rangeSize - 1))
---     local success, dataFrame = pcall(CreateFrame, frameType, nil, nil, "QuestData" .. range)
-
---     if success then
---       local dataRegions = { dataFrame:GetRegions() }
---       dataFrame:SetScript("OnUpdate", nil)
---       dataFrame:Hide()
---       dataFrame:UnregisterAllEvents()
-
---       -- A test using gmatch instead of splitting
---       local idLookupData = dataRegions[1]:GetText()
---       local dataRegionsIndex = 2
---       for id in gMatch(idLookupData, "%d+") do
---         --? The first element contains a list of indexes for the data
---         --? e.g Name is index 1, Level is index 2, etc.
---         local indexData = strsplittable(",", dataRegions[dataRegionsIndex]:GetText())
---         local questId = tonumber(id)
---         if questId then
---           local questData = {}
---           -- Loop the indexdata and add the data at the correct index to the questData table
---           for i = 1, #indexData do
---             local data = dataRegions[dataRegionsIndex + i]
---             if data then
---               questData[tonumber(indexData[i])] = data
---             end
---           end
---           retQuestData[questId] = questData
---           -- Jump to the next quest the + 1 jumps from the last datapoint onto the next quest
---           dataRegionsIndex = dataRegionsIndex + #indexData + 1
---         else
---           error("Invalid quest id: " .. id)
---         end
---       end
---     end
---   end
---   print("Loaded Quest Data")
---   return retQuestData
--- end
-
-
--- function Quest.Initialize()
---   -- local max = 26100
---   local max = 65610
---   -- for _, range in pairs(filenames) do
---   for range_low = 1, max, 100 do
---     local range = range_low .. "-" .. (range_low + 99)
---     local success, indexData = pcall(CreateFrame, frameType, nil, nil, "QuestDataLookup" .. range)
---     -- if _G["QuestDataLookup" .. range] ~= nil then
---     if success then
---       -- local indexData = _G["QuestDataLookup" .. range]
---       --! These are required, otherwise you get choppyness
---       --? Unknown why but i think it is redrawing or triggering on events or something
---       -- indexData:SetScript("OnUpdate", nil)
---       -- indexData:Hide()
---       -- indexData:UnregisterAllEvents()
---       local regions = { indexData:GetRegions() }
---       local indexToQuestId = {}
---       for k, v in pairs(regions) do
---         local questId = tonumber(v:GetText())
---         indexToQuestId[k] = questId
---         -- print(k, v:GetText())
---         -- local text = v:GetText()
---       end
---       -- _G["QuestDataLookup" .. range] = nil
---       indexData = nil
-
---       local questData = CreateFrame(frameType, nil, nil, "QuestData" .. range)
---       -- local questData = _G["QuestData" .. range]
---       --! These are required, otherwise you get choppyness
---       --? Unknown why but i think it is redrawing or triggering on events or something
---       -- questData:SetScript("OnUpdate", nil)
---       -- questData:Hide()
---       -- questData:UnregisterAllEvents()
-
---       local dataRegions = { questData:GetRegions() }
---       -- frameRange[range_low] = questData
---       -- print(range_low)
---       -- rangeData[range_low] = dataRegions
---       -- Loop over skipping each 29 index
---       local index = 1
---       for i = 1, #dataRegions, 29 do
---         local questId = indexToQuestId[index]
---         -- questStartIndex[questId] = i
---         local data = {
---           dataRegions[i],
---           dataRegions[i + 1],
---           dataRegions[i + 2],
---           dataRegions[i + 3],
---           dataRegions[i + 4],
---           dataRegions[i + 5],
---           dataRegions[i + 6],
---           dataRegions[i + 7],
---           dataRegions[i + 8],
---           dataRegions[i + 9],
---           dataRegions[i + 10],
---           dataRegions[i + 11],
---           dataRegions[i + 12],
---           dataRegions[i + 13],
---           dataRegions[i + 14],
---           dataRegions[i + 15],
---           dataRegions[i + 16],
---           dataRegions[i + 17],
---           dataRegions[i + 18],
---           dataRegions[i + 19],
---           dataRegions[i + 20],
---           dataRegions[i + 21],
---           dataRegions[i + 22],
---           dataRegions[i + 23],
---           dataRegions[i + 24],
---           dataRegions[i + 25],
---           dataRegions[i + 26],
---           dataRegions[i + 27],
---           dataRegions[i + 28],
---         }
---         globQuestData[questId] = data
---         index = index + 1
---       end
---       coroutine.yield()
---     end
---   end
---   print("Loaded Quest Data")
--- end
---? All <p> tags
--- function Quest.Initialize()
---   local processed = 0
---   for range_low = 1, maxId, rangeSize do
---     local range = range_low .. "-" .. (range_low + (rangeSize - 1))
---     local success, dataFrame = pcall(CreateFrame, frameType, nil, nil, "QuestData" .. range)
---     -- local dataFrame = _G["QuestData" .. range]
-
---     if success then
---     -- if dataFrame ~= nil then
---       local dataRegions = { dataFrame:GetRegions() }
---       dataFrame:SetScript("OnUpdate", nil)
---       dataFrame:Hide()
---       dataFrame:UnregisterAllEvents()
-
---       -- local indexData = strsplittable(",", dataRegions[1]:GetText())
-
---       -- local index = 1
---       -- for i = 2, #dataRegions, 29 do
---       --   glob[tonumber(indexData[index])] = {
---       --     dataRegions[i],
---       --     dataRegions[i + 1],
---       --     dataRegions[i + 2],
---       --     dataRegions[i + 3],
---       --     dataRegions[i + 4],
---       --     dataRegions[i + 5],
---       --     dataRegions[i + 6],
---       --     dataRegions[i + 7],
---       --     dataRegions[i + 8],
---       --     dataRegions[i + 9],
---       --     dataRegions[i + 10],
---       --     dataRegions[i + 11],
---       --     dataRegions[i + 12],
---       --     dataRegions[i + 13],
---       --     dataRegions[i + 14],
---       --     dataRegions[i + 15],
---       --     dataRegions[i + 16],
---       --     dataRegions[i + 17],
---       --     dataRegions[i + 18],
---       --     dataRegions[i + 19],
---       --     dataRegions[i + 20],
---       --     dataRegions[i + 21],
---       --     dataRegions[i + 22],
---       --     dataRegions[i + 23],
---       --     dataRegions[i + 24],
---       --     dataRegions[i + 25],
---       --     dataRegions[i + 26],
---       --     dataRegions[i + 27],
---       --     dataRegions[i + 28],
---       --   }
---       --   index = index + 1
---       -- end
-
---       -- for i = 2, #dataRegions, 29 do
---       --   glob[tonumber(indexData[index])] = {
---       --     dataRegions[i]:GetText() and dataRegions[i] or nil,
---       --     dataRegions[i + 1]:GetText() and dataRegions[i + 1] or nil,
---       --     dataRegions[i + 2]:GetText() and dataRegions[i + 2] or nil,
---       --     dataRegions[i + 3]:GetText() and dataRegions[i + 3] or nil,
---       --     dataRegions[i + 4]:GetText() and dataRegions[i + 4] or nil,
---       --     dataRegions[i + 5]:GetText() and dataRegions[i + 5] or nil,
---       --     dataRegions[i + 6]:GetText() and dataRegions[i + 6] or nil,
---       --     dataRegions[i + 7]:GetText() and dataRegions[i + 7] or nil,
---       --     dataRegions[i + 8]:GetText() and dataRegions[i + 8] or nil,
---       --     dataRegions[i + 9]:GetText() and dataRegions[i + 9] or nil,
---       --     dataRegions[i + 10]:GetText() and dataRegions[i + 10] or nil,
---       --     dataRegions[i + 11]:GetText() and dataRegions[i + 11] or nil,
---       --     dataRegions[i + 12]:GetText() and dataRegions[i + 12] or nil,
---       --     dataRegions[i + 13]:GetText() and dataRegions[i + 13] or nil,
---       --     dataRegions[i + 14]:GetText() and dataRegions[i + 14] or nil,
---       --     dataRegions[i + 15]:GetText() and dataRegions[i + 15] or nil,
---       --     dataRegions[i + 16]:GetText() and dataRegions[i + 16] or nil,
---       --     dataRegions[i + 17]:GetText() and dataRegions[i + 17] or nil,
---       --     dataRegions[i + 18]:GetText() and dataRegions[i + 18] or nil,
---       --     dataRegions[i + 19]:GetText() and dataRegions[i + 19] or nil,
---       --     dataRegions[i + 20]:GetText() and dataRegions[i + 20] or nil,
---       --     dataRegions[i + 21]:GetText() and dataRegions[i + 21] or nil,
---       --     dataRegions[i + 22]:GetText() and dataRegions[i + 22] or nil,
---       --     dataRegions[i + 23]:GetText() and dataRegions[i + 23] or nil,
---       --     dataRegions[i + 24]:GetText() and dataRegions[i + 24] or nil,
---       --     dataRegions[i + 25]:GetText() and dataRegions[i + 25] or nil,
---       --     dataRegions[i + 26]:GetText() and dataRegions[i + 26] or nil,
---       --     dataRegions[i + 27]:GetText() and dataRegions[i + 27] or nil,
---       --     dataRegions[i + 28]:GetText() and dataRegions[i + 28] or nil,
---       --   }
---       --   index = index + 1
---       -- end
-
---       -- A test using gmatch instead of splitting
---       local idLookupData = dataRegions[1]:GetText()
---       local dataRegionsIndex = 2
---       for id in gMatch(idLookupData, "%d+") do
---         glob[tonumber(id)] = {
---           dataRegions[dataRegionsIndex],
---           dataRegions[dataRegionsIndex + 1],
---           dataRegions[dataRegionsIndex + 2],
---           dataRegions[dataRegionsIndex + 3],
---           dataRegions[dataRegionsIndex + 4],
---           dataRegions[dataRegionsIndex + 5],
---           dataRegions[dataRegionsIndex + 6],
---           dataRegions[dataRegionsIndex + 7],
---           dataRegions[dataRegionsIndex + 8],
---           dataRegions[dataRegionsIndex + 9],
---           dataRegions[dataRegionsIndex + 10],
---           dataRegions[dataRegionsIndex + 11],
---           dataRegions[dataRegionsIndex + 12],
---           dataRegions[dataRegionsIndex + 13],
---           dataRegions[dataRegionsIndex + 14],
---           dataRegions[dataRegionsIndex + 15],
---           dataRegions[dataRegionsIndex + 16],
---           dataRegions[dataRegionsIndex + 17],
---           dataRegions[dataRegionsIndex + 18],
---           dataRegions[dataRegionsIndex + 19],
---           dataRegions[dataRegionsIndex + 20],
---           dataRegions[dataRegionsIndex + 21],
---           dataRegions[dataRegionsIndex + 22],
---           dataRegions[dataRegionsIndex + 23],
---           dataRegions[dataRegionsIndex + 24],
---           dataRegions[dataRegionsIndex + 25],
---           dataRegions[dataRegionsIndex + 26],
---           dataRegions[dataRegionsIndex + 27],
---           dataRegions[dataRegionsIndex + 28],
---         }
---         dataRegionsIndex = dataRegionsIndex + 29
---       end
---       -- processed = processed + index
---       -- if processed > 200 then
---       --   coYield()
---       --   processed = 0
---       -- end
---     end
---     -- break
---   end
---   print("Loaded Quest Data")
--- end
