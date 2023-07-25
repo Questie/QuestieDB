@@ -1,56 +1,71 @@
-Object.testGetFunctions = function()
+local _,
+---@class QuestieSDB
+QuestieSDB = ...
+
+local tInsert = table.insert
+Object.testGetFunctions = function(fast)
+  debugprofilestart()
   local glob = Object.glob
+  local count = 0
   for id in pairs(glob) do
-    print("Testing Object " .. id)
+    Object.lastTestedID = id
+    count = count + 1
     local data = {}
+    tInsert(data, "Testing Object " .. id)
 
     -- Test Object.name
-    table.insert(data, "Name: " .. (Object.name(id) or "nil"))
+    tInsert(data, "Name: " .. (Object.name(id) or "nil"))
 
     -- Test Object.questStarts
     local questStarts = Object.questStarts(id)
     if questStarts then
-      table.insert(data, "Quest Starts:")
+      tInsert(data, "Quest Starts:")
       for _, questID in ipairs(questStarts) do
-        table.insert(data, "  Quest ID: " .. questID)
+        tInsert(data, "  Quest ID: " .. questID)
       end
     else
-      table.insert(data, "Quest Starts: nil")
+      tInsert(data, "Quest Starts: nil")
     end
 
     -- Test Object.questEnds
     local questEnds = Object.questEnds(id)
     if questEnds then
-      table.insert(data, "Quest Ends:")
+      tInsert(data, "Quest Ends:")
       for _, questID in ipairs(questEnds) do
-        table.insert(data, "  Quest ID: " .. questID)
+        tInsert(data, "  Quest ID: " .. questID)
       end
     else
-      table.insert(data, "Quest Ends: nil")
+      tInsert(data, "Quest Ends: nil")
     end
 
     -- Test Object.spawns
     local spawns = Object.spawns(id)
     if spawns then
       for zoneID, coords in pairs(spawns) do
-        table.insert(data, "Spawns in Zone " .. zoneID .. ":")
+        tInsert(data, "Spawns in Zone " .. zoneID .. ":")
         for _, coord in ipairs(coords) do
-          table.insert(data, "  X: " .. coord[1] .. ", Y: " .. coord[2])
+          tInsert(data, "  X: " .. coord[1] .. ", Y: " .. coord[2])
         end
       end
     else
-      table.insert(data, "Spawns: nil")
+      tInsert(data, "Spawns: nil")
     end
 
     -- Test Object.zoneID
-    table.insert(data, "Zone ID: " .. (Object.zoneID(id) or "nil"))
+    tInsert(data, "Zone ID: " .. (Object.zoneID(id) or "nil"))
 
     -- Test Object.factionID
-    table.insert(data, "Faction ID: " .. (Object.factionID(id) or "nil"))
+    tInsert(data, "Faction ID: " .. (Object.factionID(id) or "nil"))
 
-    table.insert(data, "--------------------------------------------------")
-    print(table.concat(data, "\n"))
+    tInsert(data, "--------------------------------------------------")
+    if not fast then
+      print(table.concat(data, "\n"))
+    end
   end
 
-  print("Object Test Done")
+  local time = debugprofilestop()
+  QuestieSDB.ColorizePrint("green", "Object Test Done", time, "ms")
+  print("  ", count, "objects tested")
+  print("  ", "time per object:", time / count, "ms")
+  print("  ", "avg time per function", time / (count * 6), "ms")
 end
