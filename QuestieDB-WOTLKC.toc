@@ -4,23 +4,25 @@
 ## Notes: A standalone QuestieDB
 ## Version: 1
 ## RequiredDeps:
-## OptionalDeps: 
-## SavedVariables: QuestieDB
-## SavedVariablesPerCharacter: QuestieDBCharacter
+## OptionalDeps:
+##### SavedVariables: QuestieDB
+##### SavedVariablesPerCharacter: QuestieDBCharacter
 
-#Database\FrameFunction.lua
-ThreadLib.lua
-#Database\Quest\Wotlk\disallowedRanges.lua
-#embeds.xml
-# # Database
-# Data
+## Helpers
+Helpers\ThreadLib.lua
+Helpers\Helpers.lua
+
+# Database
+## Data embeds
 Database\Item\Wotlk\ItemDataFiles.xml
 Database\Npc\Wotlk\NpcDataFiles.xml
 Database\Object\Wotlk\ObjectDataFiles.xml
 Database\Quest\Wotlk\QuestDataFiles.xml
-# Main
+
+## Main
 Database\Database.lua
-# Types
+
+## Types
 Database\Item\Item.lua
 Database\Item\Item.test.lua
 
@@ -33,4 +35,5 @@ Database\Object\Object.test.lua
 Database\Quest\Quest.lua
 Database\Quest\Quest.test.lua
 
+# Standalone
 QuestieDB.lua
