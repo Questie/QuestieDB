@@ -13,5 +13,33 @@
     "Object",
     "wipe"
   ],
+  "Lua.workspace.preloadFileSize": 3000,
+  "Lua.workspace.maxPreload": 2000,
+  // Removes trailing whitespaces
+  "files.trimTrailingWhitespace": true,
+
+  // The number of spaces a tab is equal to. This setting is overridden
+  // based on the file contents when `editor.detectIndentation` is true.
+//   "editor.tabSize": 4,
+
+  // Insert spaces when pressing Tab. This setting is overriden
+  // based on the file contents when `editor.detectIndentation` is true.
+  "editor.insertSpaces": true,
+
+  // When opening a file, `editor.tabSize` and `editor.insertSpaces`
+  // will be detected based on the file contents. Set to false to keep
+  // the values you've explicitly set, above.
+  "editor.detectIndentation": false,
+
+  // Default end of line
+  "files.eol": "\n",
+
+  "Lua.diagnostics.ignoredFiles": "Enable",
+  "Lua.diagnostics.libraryFiles": "Enable",
+
+  "Lua.diagnostics.severity": {
+    "unused-local": "Warning"
+  },
+  "Lua.diagnostics.enable": true,
   "Lua.runtime.version": "Lua 5.1"
 }
