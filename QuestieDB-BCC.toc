@@ -4,8 +4,36 @@
 ## Notes: A standalone QuestieDB
 ## Version: 1
 ## RequiredDeps:
-## OptionalDeps: 
-## SavedVariables: QuestieDB
-## SavedVariablesPerCharacter: QuestieDBCharacter
+## OptionalDeps:
+##### SavedVariables: QuestieDB
+##### SavedVariablesPerCharacter: QuestieDBCharacter
 
+## Helpers
+Helpers\ThreadLib.lua
+Helpers\Helpers.lua
+
+# Database
+## Data embeds
+Database\Item\Tbc\ItemDataFiles.xml
+Database\Npc\Tbc\NpcDataFiles.xml
+Database\Object\Tbc\ObjectDataFiles.xml
+Database\Quest\Tbc\QuestDataFiles.xml
+
+## Main
+Database\Database.lua
+
+## Types
+Database\Item\Item.lua
+Database\Item\Item.test.lua
+
+Database\Npc\Npc.lua
+Database\Npc\Npc.test.lua
+
+Database\Object\Object.lua
+Database\Object\Object.test.lua
+
+Database\Quest\Quest.lua
+Database\Quest\Quest.test.lua
+
+# Standalone
 QuestieDB.lua
