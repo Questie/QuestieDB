@@ -20,36 +20,18 @@ do
   local getNumber = Database.getNumber
   local getTable = Database.getTable
 
-  -- npcKeysOriginal = {
-  --   ['name'] = 1, -- string
-  --   ['minLevelHealth'] = 2, -- int
-  --   ['maxLevelHealth'] = 3, -- int
-  --   ['minLevel'] = 4, -- int
-  --   ['maxLevel'] = 5, -- int
-  --   ['rank'] = 6, -- int, see https://github.com/cmangos/issues/wiki/creature_template#rank
-  --   ['spawns'] = 7, -- table {[zoneID(int)] = {{X(float), Y(float)}, ...}, ...}
-  --   ['waypoints'] = 8, -- table {[zoneID(int)] = {{X(float), Y(float)}, ...}, ...}
-  --   ['zoneID'] = 9, -- guess as to where this NPC is most common
-  --   ['questStarts'] = 10, -- table {questID(int), ...}
-  --   ['questEnds'] = 11, -- table {questID(int), ...}
-  --   ['factionID'] = 12, -- int, see https://github.com/cmangos/issues/wiki/FactionTemplate.dbc
-  --   ['friendlyToFaction'] = 13, -- string, Contains "A" and/or "H" depending on NPC being friendly towards those factions. nil if hostile to both.
-  --   ['subName'] = 14, -- string, The title or function of the NPC, e.g. "Weapon Vendor"
-  --   ['npcFlags'] = 15, -- int, Bitmask containing various flags about the NPCs function (Vendor, Trainer, Flight Master, etc.).
-  --                      -- For flag values see https://github.com/cmangos/mangos-classic/blob/172c005b0a69e342e908f4589b24a6f18246c95e/src/game/Entities/Unit.h#L536
-  -- }
 -- 1. ['name'], -- string
 -- 2. ['meta-data'], -- int
--- 	1. ['minLevelHealth'], -- int
--- 	2. ['maxLevelHealth'], -- int
--- 	3. ['minLevel'], -- int
--- 	4. ['maxLevel'], -- int
--- 	5. ['rank'], -- int, see https://github.com/cmangos/issues/wiki/creature_template#rank
--- 	6. ['zoneID'], -- guess as to where this NPC is most common
--- 	7. ['factionID'], -- int, see https://github.com/cmangos/issues/wiki/FactionTemplate.dbc
--- 	8. ['friendlyToFaction'], -- string, Contains "A" and/or "H" depending on NPC being friendly towards those factions. nil if hostile to both.
--- 	9. ['factionID'], -- int, see https://github.com/cmangos/issues/wiki/FactionTemplate.dbc
--- 	10. ['npcFlags'], -- int, Bitmask containing various flags about the NPCs function (Vendor, Trainer, Flight Master, etc.).
+-- 	 1. ['minLevelHealth'], -- int
+-- 	 2. ['maxLevelHealth'], -- int
+-- 	 3. ['minLevel'], -- int
+-- 	 4. ['maxLevel'], -- int
+-- 	 5. ['rank'], -- int, see https://github.com/cmangos/issues/wiki/creature_template#rank
+-- 	 6. ['zoneID'], -- guess as to where this NPC is most common
+-- 	 7. ['factionID'], -- int, see https://github.com/cmangos/issues/wiki/FactionTemplate.dbc
+-- 	 8. ['friendlyToFaction'], -- string, Contains "A" and/or "H" depending on NPC being friendly towards those factions. nil if hostile to both.
+-- 	 9. ['factionID'], -- int, see https://github.com/cmangos/issues/wiki/FactionTemplate.dbc
+-- 	 10. ['npcFlags'], -- int, Bitmask containing various flags about the NPCs function (Vendor, Trainer, Flight Master, etc.).
 -- 3. ['spawns'], -- table {[zoneID(int)] = {{X(float), Y(float)}, ...}, ...}
 -- 4. ['waypoints'], -- table {[zoneID(int)] = {{X(float), Y(float)}, ...}, ...}
 -- 5. ['questStarts'], -- table {questID(int), ...}
