@@ -189,12 +189,15 @@ def process_expansion(expansion_name: str, entity_type: str, expansion_data: dic
     # Add Id lookup file at the start of the embed file
     embed_file_strings.insert(0, f'<SimpleHTML name="{entity_type_capitalized}DataIds" file="{data_dir_path}\\{entity_type_capitalized}DataIds.html" virtual="true" font="GameFontNormal"/>\n')
 
+    # Write out the embed file
+    # This file contains templates for all the SimpleHTML frames that are generated
     with open(f"{path}\\{entity_type_capitalized}DataFiles.xml", 'w', encoding="utf-8") as embed_file:
       embed_file.write('<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\\FrameXML\\UI.xsd">\n')
       for embed_file_string in embed_file_strings:
         embed_file.write(embed_file_string)
       embed_file.write('</Ui>')
 
+    # This file contains all the ranges for the files that are generated
     with open(f"{path}\\{entity_type_capitalized}DataTemplates.html", 'w', encoding="utf-8") as filename_file:
       filename_file.write("<!-- This contains all the ranges for the files that are generated -->\n")
       filename_file.write("<html><body>\n")
@@ -212,6 +215,20 @@ def process_expansion(expansion_name: str, entity_type: str, expansion_data: dic
       filename_file.write("</body></html>")
 
     print(f"Finished dumping {entity_type}s for {expansion_name}")
+
+# Ask which expansions to dump or all
+all_expansions = input("Dump all expansions? (y/n): ")
+if all_expansions.lower() == "y":
+    print("Dumping all expansions")
+else:
+    dump_expansions = input("Enter the expansions to dump (e.g., Era, Tbc, Wotlk): ")
+    dump_expansions = dump_expansions.split(" ")
+    for expansion in dump_expansions:
+        if expansion not in expansions:
+            print(f"Invalid expansion: {expansion}")
+            exit()
+    expansions = dump_expansions
+    print(f"Dumping {dump_expansions}")
 
 # Load the data for all expansions
 # The decoding with lua is not thread safe, so we do it here
