@@ -107,19 +107,29 @@ function Database.Override(overrideData, overrideTable, keys)
   end
 end
 
+
+--*-------------------------------------------
+--*--- Full Database Initialization
+--*-------------------------------------------
+
 --- Initialize a database frame and load the data into a table
 ---@param FrameName "QuestData"|"ItemData"|"ObjectData"|"NpcData"
----@return table, number, number
+---@return table<QuestId|NpcId|ObjectId|ItemId|number, table<number, FontString>> @Data
+---@return number @Total count of entries
+---@return number @Total count of files
 function Database.InitializeDB(FrameName, yield)
+  ---@type table<QuestId|NpcId|ObjectId|ItemId|number, table<number, FontString>>
   local retEntryData = {}
   local totalCount = 0
   local totalFiles = 0
 
   -- Create a new UI Frame to load data from
   local dataFilenameFrame = CreateFrame(frameType, nil, nil, FrameName .. "Files")
+  dataFilenameFrame:Hide()
 
   -- Get all the filenames from the frame, they are split into different <p> tags that we have to combine
-  local dataFilenameRegions = { dataFilenameFrame:GetRegions() }
+  ---@type FontString[]
+  local dataFilenameRegions = { dataFilenameFrame:GetRegions() --[[@as FontString]] }
   local combinedString = ""
   for i = 1, #dataFilenameRegions do
     combinedString = combinedString .. dataFilenameRegions[i]:GetText()
@@ -132,7 +142,8 @@ function Database.InitializeDB(FrameName, yield)
 
     -- Creating a frame for each file and reading data
     local dataFrame = CreateFrame(frameType, nil, nil, files[fileIndex])
-    local dataRegions = { dataFrame:GetRegions() }
+    ---@type FontString[]
+    local dataRegions = { dataFrame:GetRegions() --[[@as FontString]] }
 
     -- This is very important to prevent the frame from updating and causing lag
     -- dataFrame:SetScript("OnUpdate", nil)
@@ -154,6 +165,7 @@ function Database.InitializeDB(FrameName, yield)
       local dataId = tonumber(id)
       if dataId then
         -- Contains the frame-handles for the data (The GetText functions)
+        ---@type table<number, table<number, FontString>|FontString>
         local entryData = {}
 
         --? The first element contains a list of indexes for the data
@@ -235,10 +247,6 @@ function Database.InitializeDB(FrameName, yield)
   return retEntryData, totalCount, totalFiles
 end
 
-
-
-
-
 function Database.Init(yield)
   local start = time()
   print("-- Database Initialization --")
@@ -290,11 +298,269 @@ function Database.Init(yield)
   Database.Initialized = true
 end
 
-C_Timer.After(0,function ()
+
+
+--*-------------------------------------------
+--*--- Dynamic Loading of Datafiles
+--*-------------------------------------------
+do
+  ---@type table<"QuestData"|"ItemData"|"ObjectData"|"NpcData", string[]> @Contains a lookuplist for loaded files
+  local fileCache = {}
+  ---@param FrameName "QuestData"|"ItemData"|"ObjectData"|"NpcData"
+  ---@return string[] @Contains a list of datafiles
+  function Database.LoadDatafileList(FrameName)
+    if fileCache[FrameName] then
+      return fileCache[FrameName]
+    end
+
+    -- Create a new UI Frame to load data from
+    local dataFilenameFrame = CreateFrame(frameType, nil, nil, FrameName .. "Files")
+    dataFilenameFrame:Hide()
+
+    -- Get all the filenames from the frame, they are split into different <p> tags that we have to combine
+    ---@type FontString[]
+    local dataFilenameRegions = { dataFilenameFrame:GetRegions() --[[@as FontString]] }
+    local combinedString = ""
+    for i = 1, #dataFilenameRegions do
+      combinedString = combinedString .. dataFilenameRegions[i]:GetText()
+    end
+    fileCache[FrameName] = strsplittable(",", combinedString)
+    return fileCache[FrameName]
+  end
+end
+
+do
+  ---@type table<"QuestData"|"ItemData"|"ObjectData"|"NpcData", string>
+  local entityFunctions = {}
+  ---comment
+  ---@param entityType "Quest"|"Item"|"Object"|"Npc"
+  function Database.GetAllEntityIds(entityType)
+    if entityType ~= "Quest" and entityType ~= "Item" and entityType ~= "Object" and entityType ~= "Npc" then
+      error("Invalid entityType: " .. entityType)
+    end
+    if not entityFunctions[entityType] then
+      -- Create a new UI Frame to load data from
+      local idDataFilenameFrame = CreateFrame(frameType, nil, nil, entityType .. "DataIds")
+      idDataFilenameFrame:Hide()
+
+      -- Get all the filenames from the frame, they are split into different <p> tags that we have to combine
+      ---@type FontString[]
+      local idDataRegions = { idDataFilenameFrame:GetRegions() --[[@as FontString]] }
+      local combinedString = ""
+      for i = 1, #idDataRegions do
+        combinedString = combinedString .. idDataRegions[i]:GetText()
+      end
+      entityFunctions[entityType] = "return {" .. combinedString .. "}"
+
+    end
+    -- Doing loadstring here should be faster than strsplittable due to us wanting the ids as numbers
+    -- strsplittable just returns a table of strings
+    return loadstring(entityFunctions[entityType])()
+  end
+end
+do
+  ---Contains a lookuplist for loaded files
+  ---@type table<number, boolean>
+  local loadedFiles = {}
+  -- Used to return an empty table instead of nil
+  ---@type table<number, table<number, FontString>>
+  local emptyTable = setmetatable({}, {
+    __newindex = function()
+      error("Attempt to modify read-only table")
+    end
+  })
+  local rawset = rawset
+  ---comment
+  ---@param fileTemplateName string? @The name of the file to load
+  ---@param out_globToWrite table<QuestId|NpcId|ObjectId|ItemId|number, table<number, FontString>> @The table to write the data to
+  ---@param idToGet number @The id to get from the file
+  ---@return table<QuestId|NpcId|ObjectId|ItemId|number, table<number, FontString>> @returns loaded data quest/npc/object/item
+  function Database.LoadFile(fileTemplateName, out_globToWrite, idToGet)
+    -- File does not exist or is already loaded
+    if not fileTemplateName or loadedFiles[fileTemplateName] then
+      return emptyTable
+    end
+    ---@type table<QuestId|NpcId|ObjectId|ItemId|number, table<number, FontString>>
+    local retEntryData = out_globToWrite or {}
+    -- Creating a frame for each file and reading data
+    local dataFrame = CreateFrame(frameType, nil, nil, fileTemplateName)
+    ---@type FontString[]
+    local dataRegions = { dataFrame:GetRegions() --[[@as FontString]] }
+
+    -- This is very important to prevent the frame from updating and causing lag
+    -- dataFrame:SetScript("OnUpdate", nil)
+    dataFrame:Hide()
+    -- dataFrame:UnregisterAllEvents()
+
+    -- The first element contains a list of ids by index for the data
+    -- local idLookupData = dataRegions[1]:GetText()
+    -- This means we start at index 2 for the data
+    local dataRegionsIndex = 2
+    local idLookupData = strsplittable(",", dataRegions[1]:GetText())
+
+    -- Iterating over all ids in idLookupData
+    for idIndex = 1, #idLookupData do
+      -- Data id string is the id of the data, such as questId, npcId, etc.
+      local id = idLookupData[idIndex]
+
+      -- Such as questId, npcId, etc.
+      local dataId = tonumber(id)
+      if dataId then
+        -- Contains the frame-handles for the data (The GetText functions)
+        ---@type table<number, table<number, FontString>|FontString>
+        local entryData = {}
+
+        --? The first element contains a list of indexes for the data
+        --? e.g Name is index 1, Level is index 2, etc.
+        -- Loop the indexdata and add the data at the correct index to the entryData table
+        local dataIndexString = dataRegions[dataRegionsIndex]:GetText()
+        local count = 1
+
+        ---@param partIndex string @The index of the segmented data or "e" for end
+        for dataIndex, partIndex in gMatch(dataIndexString, "(%d+)-*(%w*)") do
+          local dataIndexNumber = tonumber(dataIndex)
+
+          -- Frame Data object (The one with GetText)
+          ---@type FontString
+          local data = dataRegions[dataRegionsIndex + count]
+          if data then
+            if partIndex ~= "" then
+              -- We create a list of functions to call when we want to get the data
+              -- Load all the segmented data into a table ending with the e partIndex
+              if partIndex ~= "e" then
+                --? Numbered Segmented data
+                if not entryData[dataIndexNumber] then
+                  entryData[dataIndexNumber] = {}
+                end
+                entryData[dataIndexNumber][tonumber(partIndex)] = data
+              else
+                --? End of Segmented data (The last element)
+                -- Add the last element to the list
+                entryData[dataIndexNumber][#entryData[dataIndexNumber] + 1] = data
+                -- Create the function that will be called when we want to get the data
+                local segments = entryData[dataIndexNumber]
+                -- Replace the table with a function that returns the concatinated string
+                entryData[dataIndexNumber] = {
+                  -- This emulates the frame function name so we can use the same code for both
+                  GetText = function()
+                    -- TODO: Is tConcat faster than ..?
+                    local ret = {}
+                    for i = 1, #segments do
+                      ret[i] = segments[i]:GetText()
+                    end
+                    --? Can this become polymorphic and cache the result?
+                    --? This could be unnecessary due to most data that is big is just fetched once and used.
+                    -- local concatinatedString = tConcat(ret)
+                    -- entryData[dataIndexNumber].GetText = function()
+                    --   return concatinatedString
+                    -- end
+                    return tConcat(ret)
+                  end
+                }
+              end
+            else
+              entryData[dataIndexNumber] = data
+            end
+          end
+          count = count + 1
+        end
+        -- retEntryData[dataId] = entryData
+        retEntryData = rawset(retEntryData, dataId, entryData)
+        -- Jump to the next entry (The + 1 jumps from the last datapoint onto the next entry)
+        dataRegionsIndex = dataRegionsIndex + count
+
+        -- totalCount = totalCount + 1
+        -- if yield then
+        --   if totalCount % yield == 0 then
+        --     coYield()
+        --   end
+        -- end
+      else
+        error("Invalid id: " .. id)
+      end
+    end
+    loadedFiles[fileTemplateName] = true
+    return retEntryData[idToGet] or emptyTable
+  end
+end
+-- Function to create a binary search function for finding data in ranges
+function Database.CreateFindDataBinarySearchFunction(rawDataRanges)
+  -- Table to store the parsed data ranges
+  local dataRanges = {}
+
+  -- Parse the raw data ranges and store them in the dataRanges table
+  for i = 1, #rawDataRanges do
+    local str = rawDataRanges[i]
+    local startRange, endRange = str:match("(%d+)%-(%d+)$")
+    if startRange and endRange then
+      startRange = tonumber(startRange)
+      endRange = tonumber(endRange)
+      if startRange and endRange then
+        dataRanges[startRange] = str
+      else
+        error("Invalid range: " .. str)
+      end
+    end
+  end
+
+  -- Table to store the sorted keys
+  local sortedKeys = {}
+  -- Length of the sortedKeys table
+  local sortedKeyLength = 0
+  -- Populate the sortedKeys table with the keys from the dataRanges table
+  for k in pairs(dataRanges) do
+    table.insert(sortedKeys, k)
+  end
+  -- Sort the keys in ascending order
+  table.sort(sortedKeys)
+  -- Update the sortedKeyLength
+  sortedKeyLength = #sortedKeys
+
+  -- Function to perform binary search on a sorted array
+  local function findDataBinarySearch(number)
+    local low, high = 1, sortedKeyLength
+
+    while low <= high do
+      -- local mid = math.floor((low + high) / 2) -- Calculate the middle index
+      --* Floor function
+      -- Using mod instead of floor is about 300% faster
+      local mid = (low + high) / 2 -- Quicker: Subtract 1 before division
+      mid = mid - mid % 1          -- Quicker: Round down to nearest integer
+
+      local key = sortedKeys[mid]  -- Get the key at the middle index
+
+      -- Check if the number is within the range of the current key
+      if number >= key and (mid == sortedKeyLength or number < sortedKeys[mid + 1]) then
+        return dataRanges[key] -- Return the data range associated with the key
+      elseif number < key then
+        high = mid - 1         -- Adjust the high index to search the lower half
+      else
+        low = mid + 1          -- Adjust the low index to search the upper half
+      end
+    end
+
+    return nil -- Return nil if the number is not found
+  end
+
+  -- Return the findDataBinarySearch function
+  return findDataBinarySearch
+  -- Return memoized version of the function could be used.
+  -- return setmetatable({}, {
+  --   __index = function(self, k)
+  --     -- print("Memoizing", k)
+  --     local v = findDataBinarySearch(k);
+  --     self[k] = v
+  --     return v;
+  --   end,
+  -- });
+end
+
+C_Timer.After(0, function()
   -- ThreadLib.ThreadSimple(function()
   --   Database.Init(80)
   -- end, 0)
-  Database.Init()
+  -- Database.Init()
+  Quest.InitializeDynamic()
 end)
 
 -- C_Timer.After(5, function()
