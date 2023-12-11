@@ -11807,7 +11807,7 @@
   [17972] = {'Invisible Mount Speed 30','25;27;40;40;0;0;35;AH;0',nil,nil,nil,nil,'',},
   [17973] = {'Ysiel\'s Presence','5000;5000;60;60;0;0;35;AH;0',nil,nil,nil,nil,'',},
   [17974] = {'Captured Sunhawk Agent Invisible Trigger','8;8;1;1;0;3525;35;AH;0',{[3525] = {{54.36,54.07,},},},nil,nil,nil,nil,},
-  [17975] = {'High Botanist Freywinn','92972;92972;72;72;1;0;16;;0',nil,nil,nil,nil,nil,},
+  [17975] = {'High Botanist Freywinn','92972;92972;72;72;1;3847;16;;0',{[3847] = {{-1,-1,},},},nil,nil,nil,nil,},
   [17976] = {'Commander Sarannis','110700;110700;72;72;1;3847;16;;0',{[3847] = {{-1,-1,},},},nil,nil,nil,nil,},
   [17977] = {'Warp Splinter','191408;191408;72;72;1;0;16;;0',nil,nil,nil,nil,nil,},
   [17978] = {'Thorngrin the Tender','73788;73788;72;72;1;0;16;;0',nil,nil,nil,nil,nil,},
