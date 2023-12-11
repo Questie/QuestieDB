@@ -2,6 +2,8 @@
 *.html
 *DataFiles.xml
 
+.shit
+
 #We don't want the zip file in the repo
 *.zip
 *.7z
