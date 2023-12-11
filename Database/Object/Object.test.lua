@@ -5,9 +5,9 @@ QuestieSDB = ...
 local tInsert = table.insert
 Object.testGetFunctions = function(fast)
   debugprofilestart()
-  local glob = Object.glob
+  local functions = 6
   local count = 0
-  for id in pairs(glob) do
+  for id in pairs(Object.GetAllObjectIds()) do
     Object.lastTestedID = id
     count = count + 1
     local data = {}
@@ -67,5 +67,5 @@ Object.testGetFunctions = function(fast)
   QuestieSDB.ColorizePrint("green", "Object Test Done", time, "ms")
   print("  ", count, "objects tested")
   print("  ", "time per object:", time / count, "ms")
-  print("  ", "avg time per function", time / (count * 6), "ms")
+  print("  ", "avg time per function", time / (count * functions), "ms")
 end

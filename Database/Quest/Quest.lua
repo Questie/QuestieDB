@@ -4,26 +4,6 @@ Quest = {}
 local glob = {}
 local override = {}
 
-function Quest.Initialize(dataGlob, dataOverride, overrideKeys)
-  glob = dataGlob
-  Quest.glob = glob
-  Quest.override = override
-  Database.Override(dataOverride, override, overrideKeys)
-end
-
-function Quest.AddOverrideData(dataOverride, overrideKeys)
-  if not glob or not override then
-    error("You must initialize the Quest database before adding override data")
-  end
-  Database.Override(dataOverride, override, overrideKeys)
-end
-
-function Quest.ClearOverrideData()
-  if override then
-    override = wipe(override)
-  end
-end
-
 function Quest.InitializeDynamic()
   -- This will be assigned from the initialize function
   local questData = Database.LoadDatafileList("QuestData")
@@ -45,6 +25,29 @@ function Quest.InitializeDynamic()
   )
   Quest.glob = glob
   Quest.override = override
+end
+
+function Quest.AddOverrideData(dataOverride, overrideKeys)
+  if not glob or not override then
+    error("You must initialize the Quest database before adding override data")
+  end
+  Database.Override(dataOverride, override, overrideKeys)
+end
+
+function Quest.ClearOverrideData()
+  if override then
+    override = wipe(override)
+  end
+end
+
+---Get all quest ids.
+---@return QuestId[]
+function Quest.GetAllQuestIds()
+  local loadstringFunction = Database.GetAllEntityIdsFunction("Quest")
+  -- Replace the function with the loadstringFunction
+  ---@cast loadstringFunction fun():QuestId[]
+  Quest.GetAllQuestIds = loadstringFunction
+  return loadstringFunction()
 end
 
 do

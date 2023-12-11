@@ -5,9 +5,10 @@ QuestieSDB = ...
 local tInsert = table.insert
 Quest.testGetFunctions = function(fast)
   debugprofilestart()
-  local glob = Quest.glob
+  local functions = 29
   local count = 0
-  for id in pairs(glob) do
+  -- for id in pairs(glob) do
+  for id in pairs(Quest.GetAllQuestIds()) do
     Quest.lastTestedID = id
     count = count + 1
     local data = {}
@@ -249,5 +250,5 @@ Quest.testGetFunctions = function(fast)
   QuestieSDB.ColorizePrint("green", "Quest Test Done", time, "ms")
   print("  ", count, "quests tested")
   print("  ", "time per quest:", time / count, "ms")
-  print("  ", "avg time per function", time / (count * 29), "ms")
+  print("  ", "avg time per function", time / (count * functions), "ms")
 end

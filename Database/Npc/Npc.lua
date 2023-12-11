@@ -6,11 +6,50 @@ local tonumber = tonumber
 local glob = {}
 local override = {}
 
-function Npc.Initialize(dataGlob, dataOverride, overrideKeys)
-  glob = dataGlob
+function Npc.InitializeDynamic()
+  -- This will be assigned from the initialize function
+  local npcData = Database.LoadDatafileList("NpcData")
+  -- localized for faster access
+  local loadFile = Database.LoadFile
+  -- Get the binary search function
+  local binarySearch, _ = Database.CreateFindDataBinarySearchFunction(npcData)
+
+  ---@type table<NpcId, table<number, FontString>>
+  glob = setmetatable({},
+    {
+      __index = function(t, k)
+        return loadFile(binarySearch(k), t, k)
+      end,
+      __newindex = function()
+        error("Attempt to modify read-only table")
+      end
+    }
+  )
   Npc.glob = glob
   Npc.override = override
+end
+
+function Npc.AddOverrideData(dataOverride, overrideKeys)
+  if not glob or not override then
+    error("You must initialize the Npc database before adding override data")
+  end
   Database.Override(dataOverride, override, overrideKeys)
+end
+
+function Npc.ClearOverrideData()
+  if override then
+    override = wipe(override)
+  end
+end
+
+---Get all npc ids.
+---@return NpcId[]
+function Npc.GetAllNpcIds()
+  local loadstringFunction = Database.GetAllEntityIdsFunction("Npc")
+  -- Replace the function with the loadstringFunction
+  ---@cast loadstringFunction fun():NpcId[]
+  Npc.GetAllNpcIds = loadstringFunction
+  return loadstringFunction()
 end
 
 do

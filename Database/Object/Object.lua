@@ -3,12 +3,50 @@ Object = {}
 -- This will be assigned from the initialize function
 local glob = {}
 local override = {}
+function Object.InitializeDynamic()
+  -- This will be assigned from the initialize function
+  local objectData = Database.LoadDatafileList("ObjectData")
+  -- localized for faster access
+  local loadFile = Database.LoadFile
+  -- Get the binary search function
+  local binarySearch, _ = Database.CreateFindDataBinarySearchFunction(objectData)
 
-function Object.Initialize(dataGlob, dataOverride, overrideKeys)
-  glob = dataGlob
+  ---@type table<ObjectId, table<number, FontString>>
+  glob = setmetatable({},
+    {
+      __index = function(t, k)
+        return loadFile(binarySearch(k), t, k)
+      end,
+      __newindex = function()
+        error("Attempt to modify read-only table")
+      end
+    }
+  )
   Object.glob = glob
   Object.override = override
+end
+
+function Object.AddOverrideData(dataOverride, overrideKeys)
+  if not glob or not override then
+    error("You must initialize the Object database before adding override data")
+  end
   Database.Override(dataOverride, override, overrideKeys)
+end
+
+function Object.ClearOverrideData()
+  if override then
+    override = wipe(override)
+  end
+end
+
+---Get all object ids.
+---@return ObjectId[]
+function Object.GetAllObjectIds()
+  local loadstringFunction = Database.GetAllEntityIdsFunction("Object")
+  -- Replace the function with the loadstringFunction
+  ---@cast loadstringFunction fun():ObjectId[]
+  Object.GetAllObjectIds = loadstringFunction
+  return loadstringFunction()
 end
 
 do
