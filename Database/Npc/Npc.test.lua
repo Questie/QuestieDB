@@ -5,9 +5,9 @@ QuestieSDB = ...
 local tInsert = table.insert
 Npc.testGetFunctions = function(fast)
   debugprofilestart()
-  local glob = Npc.glob
+  local functions = 15
   local count = 0
-  for id in pairs(glob) do
+  for id in pairs(Npc.GetAllNpcIds()) do
     Npc.lastTestedID = id
     count = count + 1
     local data = {}
@@ -103,5 +103,5 @@ Npc.testGetFunctions = function(fast)
   QuestieSDB.ColorizePrint("green", "Npc Test Done", time, "ms")
   print("  ", count, "npcs tested")
   print("  ", "time per npc:", time / count, "ms")
-  print("  ", "avg time per function", time / (count * 15), "ms")
+  print("  ", "avg time per function", time / (count * functions), "ms")
 end

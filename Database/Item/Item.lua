@@ -5,11 +5,50 @@ local override = {}
 
 local tonumber = tonumber
 
-function Item.Initialize(dataGlob, dataOverride, overrideKeys)
-  glob = dataGlob
+function Item.InitializeDynamic()
+  -- This will be assigned from the initialize function
+  local itemData = Database.LoadDatafileList("ItemData")
+  -- localized for faster access
+  local loadFile = Database.LoadFile
+  -- Get the binary search function
+  local binarySearch, _ = Database.CreateFindDataBinarySearchFunction(itemData)
+
+  ---@type table<ItemId, table<number, FontString>>
+  glob = setmetatable({},
+    {
+      __index = function(t, k)
+        return loadFile(binarySearch(k), t, k)
+      end,
+      __newindex = function()
+        error("Attempt to modify read-only table")
+      end
+    }
+  )
   Item.glob = glob
   Item.override = override
+end
+
+function Item.AddOverrideData(dataOverride, overrideKeys)
+  if not glob or not override then
+    error("You must initialize the Item database before adding override data")
+  end
   Database.Override(dataOverride, override, overrideKeys)
+end
+
+function Item.ClearOverrideData()
+  if override then
+    override = wipe(override)
+  end
+end
+
+---Get all item ids.
+---@return ItemId[]
+function Item.GetAllItemIds()
+  local loadstringFunction = Database.GetAllEntityIdsFunction("Item")
+  -- Replace the function with the loadstringFunction
+  ---@cast loadstringFunction fun():ItemId[]
+  Item.GetAllItemIds = loadstringFunction
+  return loadstringFunction()
 end
 
 do
