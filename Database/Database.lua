@@ -524,7 +524,7 @@ function Database.CreateFindDataBinarySearchFunction(rawDataRanges)
       -- local mid = math.floor((low + high) / 2) -- Calculate the middle index
       --* Floor function
       -- Using mod instead of floor is about 300% faster
-      local mid = (low + high) / 2 -- Quicker: Subtract 1 before division
+      local mid = (low + high) / 2
       mid = mid - mid % 1          -- Quicker: Round down to nearest integer
 
       local key = sortedKeys[mid]  -- Get the key at the middle index
