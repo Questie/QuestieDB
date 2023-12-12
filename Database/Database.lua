@@ -133,7 +133,7 @@ function Database.Init()
   -- Npc
   debugprofilestart()
   Npc.InitializeDynamic()
-  Npc.AddOverrideData(QuestieNPCFixes:LoadFactionFixes(), QuestieDB.npcKeys)
+  -- Npc.AddOverrideData(QuestieNPCFixes:LoadFactionFixes(), QuestieDB.npcKeys)
   if Database.debugEnabled then
     local msTime = debugprofilestop()
     QuestieSDB.ColorizePrint("green", "Npc data database initialized:")
@@ -143,7 +143,7 @@ function Database.Init()
   -- Item
   debugprofilestart()
   Item.InitializeDynamic()
-  Item.AddOverrideData(QuestieItemFixes:LoadFactionFixes(), QuestieDB.itemKeys)
+  -- Item.AddOverrideData(QuestieItemFixes:LoadFactionFixes(), QuestieDB.itemKeys)
   if Database.debugEnabled then
     local msTime = debugprofilestop()
     QuestieSDB.ColorizePrint("green", "Item data database initialized:")
@@ -251,8 +251,6 @@ do
     dataFrame:Hide()
     -- dataFrame:UnregisterAllEvents()
 
-    -- The first element contains a list of ids by index for the data
-    -- local idLookupData = dataRegions[1]:GetText()
     -- This means we start at index 2 for the data
     local dataRegionsIndex = 2
     local idLookupData = strsplittable(",", dataRegions[1]:GetText())
@@ -327,13 +325,6 @@ do
         retEntryData = rawset(retEntryData, dataId, entryData)
         -- Jump to the next entry (The + 1 jumps from the last datapoint onto the next entry)
         dataRegionsIndex = dataRegionsIndex + count
-
-        -- totalCount = totalCount + 1
-        -- if yield then
-        --   if totalCount % yield == 0 then
-        --     coYield()
-        --   end
-        -- end
       else
         error("Invalid id: " .. id)
       end
@@ -403,15 +394,6 @@ function Database.CreateFindDataBinarySearchFunction(rawDataRanges)
 
   -- Return the findDataBinarySearch function
   return findDataBinarySearch
-  -- Return memoized version of the function could be used.
-  -- return setmetatable({}, {
-  --   __index = function(self, k)
-  --     -- print("Memoizing", k)
-  --     local v = findDataBinarySearch(k);
-  --     self[k] = v
-  --     return v;
-  --   end,
-  -- });
 end
 
 C_Timer.After(0, function()
