@@ -1,11 +1,11 @@
 local _,
----@class QuestieSDB
-QuestieSDB = ...
+---@class LibQuestieDB
+LibQuestieDB = ...
 
 --- Colorize a string with a color code
 ---@param color "red"|"gray"|"purple"|"blue"|"lightBlue"|"reputationBlue"|"yellow"|"orange"|"green"|"white"|"gold"|string
 ---@param ... string
-function QuestieSDB.ColorizePrint(color, ...)
+function LibQuestieDB.ColorizePrint(color, ...)
   local c = "|cFF" .. color;
 
   if color == "red" then
