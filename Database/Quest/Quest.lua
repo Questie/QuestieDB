@@ -56,7 +56,13 @@ do
   end
   local getNumber = Database.getNumber
   local getTable = Database.getTable
-
+  -- Used to return an empty table instead of nil
+  ---@type table<number, table<number, FontString>>
+  local emptyTable = setmetatable({}, {
+    __newindex = function()
+      error("Attempt to modify read-only table")
+    end
+  })
   -- questKeys = {
   --   ['name'] = 1,      -- string
   --   ['startedBy'] = 2, -- table
@@ -289,7 +295,7 @@ do
     end
     local data = glob[id]
     if data then
-      return getTable(data[10])
+      return getTable(data[10]) or emptyTable
     else
       return nil
     end
