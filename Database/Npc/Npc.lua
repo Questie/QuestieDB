@@ -81,7 +81,7 @@ do
   ---@param id NpcId
   ---@return Name?
   function Npc.name(id)
-    if override[id] then
+    if override[id] and override[id]["name"] then
       return override[id]["name"]
     end
     local data = glob[id]
@@ -96,7 +96,7 @@ do
   ---@param id NpcId
   ---@return number?
   function Npc.minLevelHealth(id)
-    if override[id] then
+    if override[id] and override[id]["minLevelHealth"] then
       return override[id]["minLevelHealth"]
     end
     local data = glob[id]
@@ -112,7 +112,7 @@ do
   ---@param id NpcId
   ---@return number?
   function Npc.maxLevelHealth(id)
-    if override[id] then
+    if override[id] and override[id]["maxLevelHealth"] then
       return override[id]["maxLevelHealth"]
     end
     local data = glob[id]
@@ -128,7 +128,7 @@ do
   ---@param id NpcId
   ---@return number?
   function Npc.minLevel(id)
-    if override[id] then
+    if override[id] and override[id]["minLevel"] then
       return override[id]["minLevel"]
     end
     local data = glob[id]
@@ -145,7 +145,7 @@ do
   ---@param id NpcId
   ---@return number?
   function Npc.maxLevel(id)
-    if override[id] then
+    if override[id] and override[id]["maxLevel"] then
       return override[id]["maxLevel"]
     end
     local data = glob[id]
@@ -162,7 +162,7 @@ do
   ---@param id NpcId
   ---@return number?
   function Npc.rank(id)
-    if override[id] then
+    if override[id] and override[id]["rank"] then
       return override[id]["rank"]
     end
     local data = glob[id]
@@ -180,7 +180,7 @@ do
   ---@param id NpcId
   ---@return AreaId?
   function Npc.zoneID(id)
-    if override[id] then
+    if override[id] and override[id]["zoneID"] then
       return override[id]["zoneID"]
     end
     local data = glob[id]
@@ -196,7 +196,7 @@ do
   ---@param id NpcId
   ---@return number?
   function Npc.factionID(id)
-    if override[id] then
+    if override[id] and override[id]["factionID"] then
       return override[id]["factionID"]
     end
     local data = glob[id]
@@ -212,7 +212,7 @@ do
   ---@param id NpcId
   ---@return string?
   function Npc.friendlyToFaction(id)
-    if override[id] then
+    if override[id] and override[id]["friendlyToFaction"] then
       return override[id]["friendlyToFaction"]
     end
     local data = glob[id]
@@ -228,7 +228,7 @@ do
   ---@param id NpcId
   ---@return number?
   function Npc.npcFlags(id)
-    if override[id] then
+    if override[id] and override[id]["npcFlags"] then
       return override[id]["npcFlags"]
     end
     local data = glob[id]
@@ -245,12 +245,12 @@ do
   ---@param id NpcId
   ---@return table<AreaId, CoordPair[]>?
   function Npc.spawns(id)
-    if override[id] then
+    if override[id] and override[id]["spawns"] then
       return override[id]["spawns"]
     end
     local data = glob[id]
     if data then
-      return getTable(data[3])
+      return getTable(data[3]) or emptyTable
     else
       return nil
     end
@@ -260,12 +260,12 @@ do
   ---@param id NpcId
   ---@return table<AreaId, CoordPair[]>?
   function Npc.waypoints(id)
-    if override[id] then
+    if override[id] and override[id]["waypoints"] then
       return override[id]["waypoints"]
     end
     local data = glob[id]
     if data then
-      return getTable(data[4])
+      return getTable(data[4]) or emptyTable
     else
       return nil
     end
@@ -275,7 +275,7 @@ do
   ---@param id NpcId
   ---@return QuestId[]?
   function Npc.questStarts(id)
-    if override[id] then
+    if override[id] and override[id]["questStarts"] then
       return override[id]["questStarts"]
     end
     local data = glob[id]
@@ -290,7 +290,7 @@ do
   ---@param id NpcId
   ---@return QuestId[]?
   function Npc.questEnds(id)
-    if override[id] then
+    if override[id] and override[id]["questEnds"] then
       return override[id]["questEnds"]
     end
     local data = glob[id]
@@ -305,7 +305,7 @@ do
   ---@param id NpcId
   ---@return string?
   function Npc.subName(id)
-    if override[id] then
+    if override[id] and override[id]["subName"] then
       return override[id]["subName"]
     end
     local data = glob[id]

@@ -66,7 +66,7 @@ do
   ---@param id ObjectId
   ---@return Name?
   function Object.name(id)
-    if override[id] then
+    if override[id] and override[id]["name"] then
       return override[id]["name"]
     end
     local data = glob[id]
@@ -81,7 +81,7 @@ do
   ---@param id ObjectId
   ---@return QuestId[]?
   function Object.questStarts(id)
-    if override[id] then
+    if override[id] and override[id]["questStarts"] then
       return override[id]["questStarts"]
     end
     local data = glob[id]
@@ -96,7 +96,7 @@ do
   ---@param id ObjectId
   ---@return QuestId[]?
   function Object.questEnds(id)
-    if override[id] then
+    if override[id] and override[id]["questEnds"] then
       return override[id]["questEnds"]
     end
     local data = glob[id]
@@ -111,7 +111,7 @@ do
   ---@param id ObjectId
   ---@return table<AreaId, table<CoordPair>>?
   function Object.spawns(id)
-    if override[id] then
+    if override[id] and override[id]["spawns"] then
       return override[id]["spawns"]
     end
     local data = glob[id]
@@ -126,7 +126,7 @@ do
   ---@param id ObjectId
   ---@return AreaId?
   function Object.zoneID(id)
-    if override[id] then
+    if override[id] and override[id]["zoneID"] then
       return override[id]["zoneID"]
     end
     local data = glob[id]
@@ -141,7 +141,7 @@ do
   ---@param id ObjectId
   ---@return number?
   function Object.factionID(id)
-    if override[id] then
+    if override[id] and override[id]["factionID"] then
       return override[id]["factionID"]
     end
     local data = glob[id]
