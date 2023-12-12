@@ -211,11 +211,11 @@ Quest.testGetFunctions = function(fast)
     -- Test Quest.parentQuest
     tInsert(data, "Parent Quest: " .. (Quest.parentQuest(id) or "nil"))
 
-    -- Test Quest.rewardReputation
-    local rewardReputation = Quest.rewardReputation(id)
-    if rewardReputation then
+    -- Test Quest.reputationReward
+    local reputationReward = Quest.reputationReward(id)
+    if reputationReward then
       tInsert(data, "Reward Reputation:")
-      for _, repPair in ipairs(rewardReputation) do
+      for _, repPair in ipairs(reputationReward) do
         tInsert(data, "  Faction ID: " .. repPair[1])
         tInsert(data, "  Reputation Level: " .. repPair[2])
       end
