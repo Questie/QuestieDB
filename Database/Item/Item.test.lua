@@ -1,6 +1,6 @@
 local _,
----@class QuestieSDB
-QuestieSDB = ...
+---@class LibQuestieDB
+LibQuestieDB = ...
 
 local tInsert = table.insert
 Item.testGetFunctions = function(fast)
@@ -112,7 +112,7 @@ Item.testGetFunctions = function(fast)
     end
   end
   local time = debugprofilestop()
-  QuestieSDB.ColorizePrint("green", "Item Test Done", time, "ms")
+  LibQuestieDB.ColorizePrint("green", "Item Test Done", time, "ms")
   print("  ", count, "items tested")
   print("  ", "time per item:", time / count, "ms")
   print("  ", "avg time per function", time / (count * functions), "ms")

@@ -1,29 +1,24 @@
 ---@diagnostic disable: need-check-nil
 
 local _,
----@class QuestieSDB
-QuestieSDB = ...
+---@class LibQuestieDB
+LibQuestieDB = ...
 
+
+
+---@class Database
 Database = {}
+LibQuestieDB.Database = Database
 Database.debugEnabled = true
 Database.Initialized = false
 
 
 ---@alias Id number @Generic id type
 
---- Does not actually contain id but the data associated with it.
---- 1 Quest, 2 Npc, 3 Object, 4 Item
----@type table<Id, { [1]: table, [2]: table, [3]: table, [4]: table }>
-Database.glob = {}
-
-
 local CreateFrame = CreateFrame
 local frameType = "SimpleHTML"
-local pcall = pcall
 local strsplittable = strsplittable
 local tConcat = table.concat
-
-local coYield = coroutine.yield
 
 local tonumber = tonumber
 local loadstring = loadstring
@@ -108,6 +103,10 @@ function Database.Override(overrideData, overrideTable, keys)
 end
 
 
+--- Load the data after the addon has loaded
+C_Timer.After(0, function()
+  Database.Init()
+end)
 
 function Database.Init()
   local startTotal = 0
@@ -117,7 +116,7 @@ function Database.Init()
   Quest.InitializeDynamic()
   if Database.debugEnabled then
     local msTime = debugprofilestop()
-    QuestieSDB.ColorizePrint("green", "Quest data database initialized:")
+    LibQuestieDB.ColorizePrint("green", "Quest data database initialized:")
     print("    ", format("%.4f", msTime), "ms")
     startTotal = startTotal + msTime
   end
@@ -126,7 +125,7 @@ function Database.Init()
   Object.InitializeDynamic()
   if Database.debugEnabled then
     local msTime = debugprofilestop()
-    QuestieSDB.ColorizePrint("green", "Object data database initialized:")
+    LibQuestieDB.ColorizePrint("green", "Object data database initialized:")
     print("    ", format("%.4f", msTime), "ms")
     startTotal = startTotal + msTime
   end
@@ -136,7 +135,7 @@ function Database.Init()
   -- Npc.AddOverrideData(QuestieNPCFixes:LoadFactionFixes(), QuestieDB.npcKeys)
   if Database.debugEnabled then
     local msTime = debugprofilestop()
-    QuestieSDB.ColorizePrint("green", "Npc data database initialized:")
+    LibQuestieDB.ColorizePrint("green", "Npc data database initialized:")
     print("    ", format("%.4f", msTime), "ms")
     startTotal = startTotal + msTime
   end
@@ -146,7 +145,7 @@ function Database.Init()
   -- Item.AddOverrideData(QuestieItemFixes:LoadFactionFixes(), QuestieDB.itemKeys)
   if Database.debugEnabled then
     local msTime = debugprofilestop()
-    QuestieSDB.ColorizePrint("green", "Item data database initialized:")
+    LibQuestieDB.ColorizePrint("green", "Item data database initialized:")
     print("    ", format("%.4f", msTime), "ms")
     startTotal = startTotal + msTime
 
@@ -396,12 +395,6 @@ function Database.CreateFindDataBinarySearchFunction(rawDataRanges)
   return findDataBinarySearch
 end
 
-C_Timer.After(0, function()
-  -- ThreadLib.ThreadSimple(function()
-  --   Database.Init(80)
-  -- end, 0)
-  Database.Init()
-end)
 
 -- C_Timer.After(5, function()
 --   ThreadLib.Thread(function()
@@ -562,7 +555,7 @@ end)
 --   Quest.Initialize(questData)
 --   if Database.debugEnabled then
 --     local msTime = debugprofilestop()
---     QuestieSDB.ColorizePrint("green", "Quest data database loaded:  #(", questCount, ") files(", fileQuestCount, ") ",
+--     LibQuestieDB.ColorizePrint("green", "Quest data database loaded:  #(", questCount, ") files(", fileQuestCount, ") ",
 --       format("%.2f", msTime / 1000), "s")
 --     print("    ", format("%.6f", (msTime) / questCount), "ms per quest")
 --     print("    ", format("%.4f", msTime), "ms")
@@ -573,7 +566,7 @@ end)
 --   Object.Initialize(objectData)
 --   if Database.debugEnabled then
 --     local msTime = debugprofilestop()
---     QuestieSDB.ColorizePrint("green", "Object data database loaded:  #(", objectCount, ") files(", fileObjectCount, ") ",
+--     LibQuestieDB.ColorizePrint("green", "Object data database loaded:  #(", objectCount, ") files(", fileObjectCount, ") ",
 --       format("%.2f", msTime / 1000), "s")
 --     print("    ", format("%.6f", (msTime) / objectCount), "ms per object")
 --     print("    ", format("%.4f", msTime), "ms")
@@ -584,7 +577,7 @@ end)
 --   Npc.Initialize(npcData, QuestieNPCFixes:LoadFactionFixes(), QuestieDB.npcKeys)
 --   if Database.debugEnabled then
 --     local msTime = debugprofilestop()
---     QuestieSDB.ColorizePrint("green", "Npc data database loaded:  #(", npcCount, ") files(", fileNpcCount, ") ",
+--     LibQuestieDB.ColorizePrint("green", "Npc data database loaded:  #(", npcCount, ") files(", fileNpcCount, ") ",
 --       format("%.2f", msTime / 1000), "s")
 --     print("    ", format("%.6f", (msTime) / npcCount), "ms per npc")
 --     print("    ", format("%.4f", msTime), "ms")
@@ -595,7 +588,7 @@ end)
 --   Item.Initialize(itemData, QuestieItemFixes:LoadFactionFixes(), QuestieDB.itemKeys)
 --   if Database.debugEnabled then
 --     local msTime = debugprofilestop()
---     QuestieSDB.ColorizePrint("green", "Item data database loaded:  #(", itemCount, ") files(", fileItemCount, ") ",
+--     LibQuestieDB.ColorizePrint("green", "Item data database loaded:  #(", itemCount, ") files(", fileItemCount, ") ",
 --       format("%.2f", msTime / 1000), "s")
 --     print("    ", format("%.6f", (msTime) / itemCount), "ms per item")
 --     print("    ", format("%.4f", msTime), "ms")
