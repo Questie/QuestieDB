@@ -579,4 +579,19 @@ do
       return nil
     end
   end
+
+  ---Returns the required max level of the quest.
+  ---@param id QuestId
+  ---@return number?
+  function Quest.requiredMaxLevel(id)
+    if override[id] then
+      return override[id]["requiredMaxLevel"]
+    end
+    local data = glob[id]
+    if data then
+      return getNumber(data[30]) or 0
+    else
+      return 0
+    end
+  end
 end
