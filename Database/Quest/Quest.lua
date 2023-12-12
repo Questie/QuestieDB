@@ -159,11 +159,12 @@ do
     if override[id] then
       return override[id]["requiredLevel"]
     end
+    --TODO: Should this return 0 as default value?
     local data = glob[id]
     if data then
-      return getNumber(data[4])
+      return getNumber(data[4]) or 0
     else
-      return nil
+      return 0
     end
   end
 
@@ -174,11 +175,12 @@ do
     if override[id] then
       return override[id]["questLevel"]
     end
+    --TODO: Should this return 1 as default value?
     local data = glob[id]
     if data then
-      return getNumber(data[5])
+      return getNumber(data[5]) or 1
     else
-      return nil
+      return 1
     end
   end
 
