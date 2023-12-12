@@ -111,7 +111,7 @@ do
   ---@param id QuestId
   ---@return Name?
   function Quest.name(id)
-    if override[id] then
+    if override[id] and override[id]["name"] then
       return override[id]["name"]
     end
     local data = glob[id]
@@ -126,7 +126,7 @@ do
   ---@param id QuestId
   ---@return StartedBy?
   function Quest.startedBy(id)
-    if override[id] then
+    if override[id] and override[id]["startedBy"] then
       return override[id]["startedBy"]
     end
     local data = glob[id]
@@ -141,7 +141,7 @@ do
   ---@param id QuestId
   ---@return FinishedBy?
   function Quest.finishedBy(id)
-    if override[id] then
+    if override[id] and override[id]["finishedBy"] then
       return override[id]["finishedBy"]
     end
     local data = glob[id]
@@ -156,7 +156,7 @@ do
   ---@param id QuestId
   ---@return Level?
   function Quest.requiredLevel(id)
-    if override[id] then
+    if override[id] and override[id]["requiredLevel"] then
       return override[id]["requiredLevel"]
     end
     --TODO: Should this return 0 as default value?
@@ -172,7 +172,7 @@ do
   ---@param id QuestId
   ---@return Level?
   function Quest.questLevel(id)
-    if override[id] then
+    if override[id] and override[id]["questLevel"] then
       return override[id]["questLevel"]
     end
     --TODO: Should this return 1 as default value?
@@ -188,7 +188,7 @@ do
   ---@param id QuestId
   ---@return number?
   function Quest.requiredRaces(id)
-    if override[id] then
+    if override[id] and override[id]["requiredRaces"] then
       return override[id]["requiredRaces"]
     end
     local data = glob[id]
@@ -204,7 +204,7 @@ do
   ---@param id QuestId
   ---@return number?
   function Quest.requiredClasses(id)
-    if override[id] then
+    if override[id] and override[id]["requiredClasses"] then
       return override[id]["requiredClasses"]
     end
     local data = glob[id]
@@ -219,7 +219,7 @@ do
   ---@param id QuestId
   ---@return string[]?
   function Quest.objectivesText(id)
-    if override[id] then
+    if override[id] and override[id]["objectivesText"] then
       return override[id]["objectivesText"]
     end
     local data = glob[id]
@@ -234,7 +234,7 @@ do
   ---@param id QuestId
   ---@return { [1]: string, [2]: table<AreaId, CoordPair[]>}?
   function Quest.triggerEnd(id)
-    if override[id] then
+    if override[id] and override[id]["triggerEnd"] then
       return override[id]["triggerEnd"]
     end
     local data = glob[id]
@@ -249,7 +249,7 @@ do
   ---@param id QuestId
   ---@return RawObjectives?
   function Quest.objectives(id)
-    if override[id] then
+    if override[id] and override[id]["objectives"] then
       return override[id]["objectives"]
     end
     local data = glob[id]
@@ -264,7 +264,7 @@ do
   ---@param id QuestId
   ---@return ItemId?
   function Quest.sourceItemId(id)
-    if override[id] then
+    if override[id] and override[id]["sourceItemId"] then
       return override[id]["sourceItemId"]
     end
     local data = glob[id]
@@ -279,7 +279,7 @@ do
   ---@param id QuestId
   ---@return QuestId[]?
   function Quest.preQuestGroup(id)
-    if override[id] then
+    if override[id] and override[id]["preQuestGroup"] then
       return override[id]["preQuestGroup"]
     end
     local data = glob[id]
@@ -294,7 +294,7 @@ do
   ---@param id QuestId
   ---@return QuestId[]?
   function Quest.preQuestSingle(id)
-    if override[id] then
+    if override[id] and override[id]["preQuestSingle"] then
       return override[id]["preQuestSingle"]
     end
     local data = glob[id]
@@ -309,7 +309,7 @@ do
   ---@param id QuestId
   ---@return QuestId[]?
   function Quest.childQuests(id)
-    if override[id] then
+    if override[id] and override[id]["childQuests"] then
       return override[id]["childQuests"]
     end
     local data = glob[id]
@@ -324,7 +324,7 @@ do
   ---@param id QuestId
   ---@return QuestId[]?
   function Quest.inGroupWith(id)
-    if override[id] then
+    if override[id] and override[id]["inGroupWith"] then
       return override[id]["inGroupWith"]
     end
     local data = glob[id]
@@ -339,7 +339,7 @@ do
   ---@param id QuestId
   ---@return QuestId[]?
   function Quest.exclusiveTo(id)
-    if override[id] then
+    if override[id] and override[id]["exclusiveTo"] then
       return override[id]["exclusiveTo"]
     end
     local data = glob[id]
@@ -354,12 +354,12 @@ do
   ---@param id QuestId
   ---@return ZoneOrSort?
   function Quest.zoneOrSort(id)
-    if override[id] then
+    if override[id] and override[id]["zoneOrSort"] then
       return override[id]["zoneOrSort"]
     end
     local data = glob[id]
     if data then
-      return getNumber(data[17])
+      return getNumber(data[17]) or 0
     else
       return nil
     end
@@ -369,7 +369,7 @@ do
   ---@param id QuestId
   ---@return SkillPair?
   function Quest.requiredSkill(id)
-    if override[id] then
+    if override[id] and override[id]["requiredSkill"] then
       return override[id]["requiredSkill"]
     end
     local data = glob[id]
@@ -384,7 +384,7 @@ do
   ---@param id QuestId
   ---@return ReputationPair?
   function Quest.requiredMinRep(id)
-    if override[id] then
+    if override[id] and override[id]["requiredMinRep"] then
       return override[id]["requiredMinRep"]
     end
     local data = glob[id]
@@ -399,7 +399,7 @@ do
   ---@param id QuestId
   ---@return ReputationPair?
   function Quest.requiredMaxRep(id)
-    if override[id] then
+    if override[id] and override[id]["requiredMaxRep"] then
       return override[id]["requiredMaxRep"]
     end
     local data = glob[id]
@@ -414,7 +414,7 @@ do
   ---@param id QuestId
   ---@return ItemId[]?
   function Quest.requiredSourceItems(id)
-    if override[id] then
+    if override[id] and override[id]["requiredSourceItems"] then
       return override[id]["requiredSourceItems"]
     end
     local data = glob[id]
@@ -429,7 +429,7 @@ do
   ---@param id QuestId
   ---@return QuestId?
   function Quest.nextQuestInChain(id)
-    if override[id] then
+    if override[id] and override[id]["nextQuestInChain"] then
       return override[id]["nextQuestInChain"]
     end
     local data = glob[id]
@@ -444,7 +444,7 @@ do
   ---@param id QuestId
   ---@return number?
   function Quest.questFlags(id)
-    if override[id] then
+    if override[id] and override[id]["questFlags"] then
       return override[id]["questFlags"]
     end
     local data = glob[id]
@@ -459,7 +459,7 @@ do
   ---@param id QuestId
   ---@return number?
   function Quest.specialFlags(id)
-    if override[id] then
+    if override[id] and override[id]["specialFlags"] then
       return override[id]["specialFlags"]
     end
     local data = glob[id]
@@ -474,7 +474,7 @@ do
   ---@param id QuestId
   ---@return QuestId?
   function Quest.parentQuest(id)
-    if override[id] then
+    if override[id] and override[id]["parentQuest"] then
       return override[id]["parentQuest"]
     end
     local data = glob[id]
@@ -489,7 +489,7 @@ do
   ---@param id QuestId
   ---@return ReputationPair[]?
   function Quest.reputationReward(id)
-    if override[id] then
+    if override[id] and override[id]["reputationReward"] then
       return override[id]["reputationReward"]
     end
     local data = glob[id]
@@ -504,7 +504,7 @@ do
   ---@param id QuestId
   ---@return ExtraObjective?
   function Quest.extraObjectives(id)
-    if override[id] then
+    if override[id] and override[id]["extraObjectives"] then
       return override[id]["extraObjectives"]
     end
     local data = glob[id]
@@ -519,7 +519,7 @@ do
   ---@param id QuestId
   ---@return number?
   function Quest.requiredSpell(id)
-    if override[id] then
+    if override[id] and override[id]["requiredSpell"] then
       return override[id]["requiredSpell"]
     end
     local data = glob[id]
@@ -534,7 +534,7 @@ do
   ---@param id QuestId
   ---@return number?
   function Quest.requiredSpecialization(id)
-    if override[id] then
+    if override[id] and override[id]["requiredSpecialization"] then
       return override[id]["requiredSpecialization"]
     end
     local data = glob[id]
@@ -549,7 +549,7 @@ do
   ---@param id QuestId
   ---@return number?
   function Quest.requiredMaxLevel(id)
-    if override[id] then
+    if override[id] and override[id]["requiredMaxLevel"] then
       return override[id]["requiredMaxLevel"]
     end
     local data = glob[id]

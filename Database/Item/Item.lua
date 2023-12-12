@@ -80,7 +80,7 @@ do
   ---@return Name?
   function Item.name(id)
     --? Returns the overridden value, e.g. faction specific fixes
-    if override[id] then
+    if override[id] and override[id]["name"] then
       return override[id]["name"]
     end
     local data = glob[id]
@@ -96,7 +96,7 @@ do
   ---@return NpcId[]?
   function Item.npcDrops(id)
     --? Returns the overridden value, e.g. faction specific fixes
-    if override[id] then
+    if override[id] and override[id]["npcDrops"] then
       return override[id]["npcDrops"]
     end
     local data = glob[id]
@@ -112,7 +112,7 @@ do
   ---@return ObjectId[]?
   function Item.objectDrops(id)
     --? Returns the overridden value, e.g. faction specific fixes
-    if override[id] then
+    if override[id] and override[id]["objectDrops"] then
       return override[id]["objectDrops"]
     end
     local data = glob[id]
@@ -128,7 +128,7 @@ do
   ---@return ItemId[]?
   function Item.itemDrops(id)
     --? Returns the overridden value, e.g. faction specific fixes
-    if override[id] then
+    if override[id] and override[id]["itemDrops"] then
       return override[id]["itemDrops"]
     end
     local data = glob[id]
@@ -144,7 +144,7 @@ do
   ---@return QuestId?
   function Item.startQuest(id)
     --? Returns the overridden value, e.g. faction specific fixes
-    if override[id] then
+    if override[id] and override[id]["startQuest"] then
       return override[id]["startQuest"]
     end
     local data = glob[id]
@@ -160,7 +160,7 @@ do
   ---@return QuestId[]?
   function Item.questRewards(id)
     --? Returns the overridden value, e.g. faction specific fixes
-    if override[id] then
+    if override[id] and override[id]["questRewards"] then
       return override[id]["questRewards"]
     end
     local data = glob[id]
@@ -176,7 +176,7 @@ do
   ---@return number?
   function Item.flags(id)
     --? Returns the overridden value, e.g. faction specific fixes
-    if override[id] then
+    if override[id] and override[id]["flags"] then
       return override[id]["flags"]
     end
     local data = glob[id]
@@ -193,7 +193,7 @@ do
   ---@return number?
   function Item.foodType(id)
     --? Returns the overridden value, e.g. faction specific fixes
-    if override[id] then
+    if override[id] and override[id]["foodType"] then
       return override[id]["foodType"]
     end
     local data = glob[id]
@@ -210,7 +210,7 @@ do
   ---@return number?
   function Item.itemLevel(id)
     --? Returns the overridden value, e.g. faction specific fixes
-    if override[id] then
+    if override[id] and override[id]["itemLevel"] then
       return override[id]["itemLevel"]
     end
     local data = glob[id]
@@ -227,7 +227,7 @@ do
   ---@return number?
   function Item.requiredLevel(id)
     --? Returns the overridden value, e.g. faction specific fixes
-    if override[id] then
+    if override[id] and override[id]["requiredLevel"] then
       return override[id]["requiredLevel"]
     end
     local data = glob[id]
@@ -244,7 +244,7 @@ do
   ---@return number?
   function Item.ammoType(id)
     --? Returns the overridden value, e.g. faction specific fixes
-    if override[id] then
+    if override[id] and override[id]["ammoType"] then
       return override[id]["ammoType"]
     end
     local data = glob[id]
@@ -262,7 +262,7 @@ do
   ---@return number?
   function Item.class(id)
     --? Returns the overridden value, e.g. faction specific fixes
-    if override[id] then
+    if override[id] and override[id]["class"] then
       return override[id]["class"]
     end
     local data = glob[id]
@@ -279,7 +279,7 @@ do
   ---@return number?
   function Item.subClass(id)
     --? Returns the overridden value, e.g. faction specific fixes
-    if override[id] then
+    if override[id] and override[id]["subClass"] then
       return override[id]["subClass"]
     end
     local data = glob[id]
@@ -296,7 +296,7 @@ do
   ---@return NpcId[]?
   function Item.vendors(id)
     --? Returns the overridden value, e.g. faction specific fixes
-    if override[id] then
+    if override[id] and override[id]["vendors"] then
       return override[id]["vendors"]
     end
     local data = glob[id]
@@ -312,7 +312,7 @@ do
   ---@return QuestId[]?
   function Item.relatedQuests(id)
     --? Returns the overridden value, e.g. faction specific fixes
-    if override[id] then
+    if override[id] and override[id]["relatedQuests"] then
       return override[id]["relatedQuests"]
     end
     local data = glob[id]
