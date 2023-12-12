@@ -5,7 +5,7 @@ QuestieSDB = ...
 local tInsert = table.insert
 Quest.testGetFunctions = function(fast)
   debugprofilestart()
-  local functions = 29
+  local functions = 30
   local count = 0
   -- for id in pairs(glob) do
   for id in pairs(Quest.GetAllQuestIds()) do
@@ -239,6 +239,9 @@ Quest.testGetFunctions = function(fast)
 
     -- Test Quest.requiredSpecialization
     tInsert(data, "Required Specialization: " .. (Quest.requiredSpecialization(id) or "nil"))
+
+    -- Test Quest.requiredMaxLevel
+    tInsert(data, "Required Max Level: " .. (Quest.requiredMaxLevel(id) or "nil"))
 
     tInsert(data, "--------------------------------------------------")
     if not fast then
