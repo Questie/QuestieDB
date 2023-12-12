@@ -47,10 +47,12 @@ Npc.testGetFunctions = function(fast)
     -- Test Npc.waypoints
     local waypoints = Npc.waypoints(id)
     if waypoints then
-      for zoneID, coords in pairs(waypoints) do
+      for zoneID, waypointSegments in pairs(waypoints) do
         tInsert(data, "Waypoints in Zone " .. zoneID .. ":")
-        for _, coord in ipairs(coords) do
-          tInsert(data, "  X: " .. coord[1] .. ", Y: " .. coord[2])
+        for _, coords in ipairs(waypointSegments) do
+          for _, coord in ipairs(coords) do
+            tInsert(data, "  X: " .. coord[1] .. ", Y: " .. coord[2])
+          end
         end
       end
     else
