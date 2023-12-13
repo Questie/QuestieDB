@@ -111,8 +111,8 @@ def getData(idType, id, version, locale="enUS", useCache=True):
             data[locale] = f.read()
           continue
         except Exception as e:
-          # print(f"Cache is missing {idType} {id} for {locale}.")
-          continue
+          print(f"Cache is missing {idType} {id} for {locale}.")
+          # continue
       with rate_limiter:  # Applies rate limiting to the requests
         # Fetches the data from the constructed URL
         response = requests.get(getUrl(idType, id, dataEnvLookup[version.lower()], localeLookup[locale]))
