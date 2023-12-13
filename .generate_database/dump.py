@@ -84,7 +84,13 @@ def process_expansion(expansion_name: str, entity_type: str, expansion_data: dic
         for line in entity_data:
             encoded_line = lua.encode(line)
             encoded_line = encoded_line.replace("\\n", "<br>")
-            encoded_line = encoded_line.strip('"')
+            # Replaces \\" with "
+            encoded_line = encoded_line.replace('\\\\"', '"')
+            # Remove " from the start and end of the line if it exists
+            if encoded_line.startswith('"'):
+                encoded_line = encoded_line[1:]
+            if encoded_line.endswith('"'):
+                encoded_line = encoded_line[:-1]
             #Trim the last comma if it exists
             if encoded_line.endswith(","):
                 encoded_line = encoded_line[:-1]
