@@ -1,4 +1,12 @@
-Object = {}
+---@class LibQuestieDB
+---@field Object Object
+local LibQuestieDB = select(2, ...)
+
+---@class Object:ObjectFunctions
+local Object = LibQuestieDB.Object
+
+--*---- Import Modules -------
+local Database = LibQuestieDB.Database
 
 -- This will be assigned from the initialize function
 local glob = {}
@@ -30,7 +38,7 @@ function Object.AddOverrideData(dataOverride, overrideKeys)
   if not glob or not override then
     error("You must initialize the Object database before adding override data")
   end
-  Database.Override(dataOverride, override, overrideKeys)
+  return Database.Override(dataOverride, override, overrideKeys)
 end
 
 function Object.ClearOverrideData()
@@ -53,6 +61,23 @@ do
   local getNumber = Database.getNumber
   local getTable = Database.getTable
 
+  -- Class for all the GET functions for the Object namespace
+  ---@class ObjectFunctions
+  local ObjectFunctions = {}
+
+  --? This function is used to export all the functions to the Public and Private namespaces
+  --? It gets called at the end of this file
+  local function exportFunctions()
+    ---@class ObjectFunctions
+    local publicObject = LibQuestieDB.PublicLibQuestieDB.Object
+    for k, v in pairs(ObjectFunctions) do
+      Object[k] = v
+      publicObject[k] = v
+    end
+    publicObject.AddOverrideData = Object.AddOverrideData
+    publicObject.ClearOverrideData = Object.ClearOverrideData
+  end
+
   -- objectKeys = {
   --   ['name'] = 1, -- string
   --   ['questStarts'] = 2, -- table {questID(int),...}
@@ -65,7 +90,7 @@ do
   ---Returns the object name.
   ---@param id ObjectId
   ---@return Name?
-  function Object.name(id)
+  function ObjectFunctions.name(id)
     if override[id] and override[id]["name"] then
       return override[id]["name"]
     end
@@ -80,7 +105,7 @@ do
   ---Returns the IDs of NPCs that drop this object.
   ---@param id ObjectId
   ---@return QuestId[]?
-  function Object.questStarts(id)
+  function ObjectFunctions.questStarts(id)
     if override[id] and override[id]["questStarts"] then
       return override[id]["questStarts"]
     end
@@ -95,7 +120,7 @@ do
   ---Returns the IDs of quests that end at this object.
   ---@param id ObjectId
   ---@return QuestId[]?
-  function Object.questEnds(id)
+  function ObjectFunctions.questEnds(id)
     if override[id] and override[id]["questEnds"] then
       return override[id]["questEnds"]
     end
@@ -110,7 +135,7 @@ do
   ---Returns the spawn locations of the object.
   ---@param id ObjectId
   ---@return table<AreaId, table<CoordPair>>?
-  function Object.spawns(id)
+  function ObjectFunctions.spawns(id)
     if override[id] and override[id]["spawns"] then
       return override[id]["spawns"]
     end
@@ -125,7 +150,7 @@ do
   ---Returns the most common zone ID where the object is found.
   ---@param id ObjectId
   ---@return AreaId?
-  function Object.zoneID(id)
+  function ObjectFunctions.zoneID(id)
     if override[id] and override[id]["zoneID"] then
       return override[id]["zoneID"]
     end
@@ -140,7 +165,7 @@ do
   ---Returns the faction ID of the object.
   ---@param id ObjectId
   ---@return number?
-  function Object.factionID(id)
+  function ObjectFunctions.factionID(id)
     if override[id] and override[id]["factionID"] then
       return override[id]["factionID"]
     end
@@ -151,4 +176,5 @@ do
       return nil
     end
   end
+  exportFunctions()
 end

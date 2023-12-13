@@ -1,3 +1,17 @@
+---@class LibQuestieDB
+local LibQuestieDB = select(2, ...)
+--- Imports
+local Npc = LibQuestieDB.Npc
+local Object = LibQuestieDB.Object
+local Quest = LibQuestieDB.Quest
+local Item = LibQuestieDB.Item
+
+--- We give it 0.2 seconds to allow other code to run first
+C_Timer.After(0.2, function()
+  -- Starts the addon
+  LibQuestieDB.Database.Init()
+end)
+
 -- Register slash command
 SlashCmdList["QuestieDB"] = function(args)
   if args == "test" then

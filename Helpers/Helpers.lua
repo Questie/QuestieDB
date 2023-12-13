@@ -1,6 +1,5 @@
-local _,
 ---@class LibQuestieDB
-LibQuestieDB = ...
+local LibQuestieDB = select(2, ...)
 
 --- Colorize a string with a color code
 ---@param color "red"|"gray"|"purple"|"blue"|"lightBlue"|"reputationBlue"|"yellow"|"orange"|"green"|"white"|"gold"|string

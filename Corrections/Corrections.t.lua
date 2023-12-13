@@ -1,0 +1,1 @@
+---@alias Correction table<number, string|table|number>
