@@ -1,6 +1,8 @@
-local _,
----@class LibQuestieDB
-LibQuestieDB = ...
+---@type LibQuestieDB
+local LibQuestieDB = select(2, ...)
+
+---@class Object
+local Object = LibQuestieDB.Object
 
 local tInsert = table.insert
 Object.testGetFunctions = function(fast)

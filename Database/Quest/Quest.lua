@@ -1,5 +1,14 @@
-Quest = {}
+---@class LibQuestieDB
+---@field Quest Quest
+local LibQuestieDB = select(2, ...)
 
+---@class Quest:QuestFunctions
+local Quest = LibQuestieDB.Quest
+
+--*---- Import Modules -------
+local Database = LibQuestieDB.Database
+
+------------------------------
 -- This will be assigned from the initialize function
 local glob = {}
 local override = {}
@@ -31,7 +40,7 @@ function Quest.AddOverrideData(dataOverride, overrideKeys)
   if not glob or not override then
     error("You must initialize the Quest database before adding override data")
   end
-  Database.Override(dataOverride, override, overrideKeys)
+  return Database.Override(dataOverride, override, overrideKeys)
 end
 
 function Quest.ClearOverrideData()
@@ -63,6 +72,24 @@ do
       error("Attempt to modify read-only table")
     end
   })
+
+  -- Class for all the GET functions for the Quest namespace
+  ---@class QuestFunctions
+  local QuestFunctions = {}
+
+  --? This function is used to export all the functions to the Public and Private namespaces
+  --? It gets called at the end of this file
+  local function exportFunctions()
+    ---@class QuestFunctions
+    local publicQuest = LibQuestieDB.PublicLibQuestieDB.Quest
+    for k, v in pairs(QuestFunctions) do
+      Quest[k] = v
+      publicQuest[k] = v
+    end
+    publicQuest.AddOverrideData = Quest.AddOverrideData
+    publicQuest.ClearOverrideData = Quest.ClearOverrideData
+  end
+
   -- questKeys = {
   --   ['name'] = 1,      -- string
   --   ['startedBy'] = 2, -- table
@@ -110,7 +137,7 @@ do
   ---Returns the quest name.
   ---@param id QuestId
   ---@return Name?
-  function Quest.name(id)
+  function QuestFunctions.name(id)
     if override[id] and override[id]["name"] then
       return override[id]["name"]
     end
@@ -125,7 +152,7 @@ do
   ---Returns the entities that start the quest.
   ---@param id QuestId
   ---@return StartedBy?
-  function Quest.startedBy(id)
+  function QuestFunctions.startedBy(id)
     if override[id] and override[id]["startedBy"] then
       return override[id]["startedBy"]
     end
@@ -140,7 +167,7 @@ do
   ---Returns the entities that finish the quest.
   ---@param id QuestId
   ---@return FinishedBy?
-  function Quest.finishedBy(id)
+  function QuestFunctions.finishedBy(id)
     if override[id] and override[id]["finishedBy"] then
       return override[id]["finishedBy"]
     end
@@ -155,7 +182,7 @@ do
   ---Returns the required level to start the quest.
   ---@param id QuestId
   ---@return Level?
-  function Quest.requiredLevel(id)
+  function QuestFunctions.requiredLevel(id)
     if override[id] and override[id]["requiredLevel"] then
       return override[id]["requiredLevel"]
     end
@@ -171,7 +198,7 @@ do
   ---Returns the level of the quest.
   ---@param id QuestId
   ---@return Level?
-  function Quest.questLevel(id)
+  function QuestFunctions.questLevel(id)
     if override[id] and override[id]["questLevel"] then
       return override[id]["questLevel"]
     end
@@ -187,7 +214,7 @@ do
   ---Returns the required races to start the quest.
   ---@param id QuestId
   ---@return number?
-  function Quest.requiredRaces(id)
+  function QuestFunctions.requiredRaces(id)
     if override[id] and override[id]["requiredRaces"] then
       return override[id]["requiredRaces"]
     end
@@ -203,7 +230,7 @@ do
   ---Returns the required classes to start the quest.
   ---@param id QuestId
   ---@return number?
-  function Quest.requiredClasses(id)
+  function QuestFunctions.requiredClasses(id)
     if override[id] and override[id]["requiredClasses"] then
       return override[id]["requiredClasses"]
     end
@@ -218,7 +245,7 @@ do
   ---Returns the objectives text of the quest.
   ---@param id QuestId
   ---@return string[]?
-  function Quest.objectivesText(id)
+  function QuestFunctions.objectivesText(id)
     if override[id] and override[id]["objectivesText"] then
       return override[id]["objectivesText"]
     end
@@ -233,7 +260,7 @@ do
   ---Returns the trigger end of the quest.
   ---@param id QuestId
   ---@return { [1]: string, [2]: table<AreaId, CoordPair[]>}?
-  function Quest.triggerEnd(id)
+  function QuestFunctions.triggerEnd(id)
     if override[id] and override[id]["triggerEnd"] then
       return override[id]["triggerEnd"]
     end
@@ -248,7 +275,7 @@ do
   ---Returns the raw objectives of the quest.
   ---@param id QuestId
   ---@return RawObjectives?
-  function Quest.objectives(id)
+  function QuestFunctions.objectives(id)
     if override[id] and override[id]["objectives"] then
       return override[id]["objectives"]
     end
@@ -263,7 +290,7 @@ do
   ---Returns the source item ID of the quest.
   ---@param id QuestId
   ---@return ItemId?
-  function Quest.sourceItemId(id)
+  function QuestFunctions.sourceItemId(id)
     if override[id] and override[id]["sourceItemId"] then
       return override[id]["sourceItemId"]
     end
@@ -278,7 +305,7 @@ do
   ---Returns the pre-quest group of the quest.
   ---@param id QuestId
   ---@return QuestId[]?
-  function Quest.preQuestGroup(id)
+  function QuestFunctions.preQuestGroup(id)
     if override[id] and override[id]["preQuestGroup"] then
       return override[id]["preQuestGroup"]
     end
@@ -293,7 +320,7 @@ do
   ---Returns the pre-quest single of the quest.
   ---@param id QuestId
   ---@return QuestId[]?
-  function Quest.preQuestSingle(id)
+  function QuestFunctions.preQuestSingle(id)
     if override[id] and override[id]["preQuestSingle"] then
       return override[id]["preQuestSingle"]
     end
@@ -308,7 +335,7 @@ do
   ---Returns the child quests of the quest.
   ---@param id QuestId
   ---@return QuestId[]?
-  function Quest.childQuests(id)
+  function QuestFunctions.childQuests(id)
     if override[id] and override[id]["childQuests"] then
       return override[id]["childQuests"]
     end
@@ -323,7 +350,7 @@ do
   ---Returns the quests that are in group with the quest.
   ---@param id QuestId
   ---@return QuestId[]?
-  function Quest.inGroupWith(id)
+  function QuestFunctions.inGroupWith(id)
     if override[id] and override[id]["inGroupWith"] then
       return override[id]["inGroupWith"]
     end
@@ -338,7 +365,7 @@ do
   ---Returns the quests that are exclusive to the quest.
   ---@param id QuestId
   ---@return QuestId[]?
-  function Quest.exclusiveTo(id)
+  function QuestFunctions.exclusiveTo(id)
     if override[id] and override[id]["exclusiveTo"] then
       return override[id]["exclusiveTo"]
     end
@@ -353,7 +380,7 @@ do
   ---Returns the zone or sort of the quest.
   ---@param id QuestId
   ---@return ZoneOrSort?
-  function Quest.zoneOrSort(id)
+  function QuestFunctions.zoneOrSort(id)
     if override[id] and override[id]["zoneOrSort"] then
       return override[id]["zoneOrSort"]
     end
@@ -368,7 +395,7 @@ do
   ---Returns the required skill of the quest.
   ---@param id QuestId
   ---@return SkillPair?
-  function Quest.requiredSkill(id)
+  function QuestFunctions.requiredSkill(id)
     if override[id] and override[id]["requiredSkill"] then
       return override[id]["requiredSkill"]
     end
@@ -383,7 +410,7 @@ do
   ---Returns the required minimum reputation of the quest.
   ---@param id QuestId
   ---@return ReputationPair?
-  function Quest.requiredMinRep(id)
+  function QuestFunctions.requiredMinRep(id)
     if override[id] and override[id]["requiredMinRep"] then
       return override[id]["requiredMinRep"]
     end
@@ -398,7 +425,7 @@ do
   ---Returns the required maximum reputation of the quest.
   ---@param id QuestId
   ---@return ReputationPair?
-  function Quest.requiredMaxRep(id)
+  function QuestFunctions.requiredMaxRep(id)
     if override[id] and override[id]["requiredMaxRep"] then
       return override[id]["requiredMaxRep"]
     end
@@ -413,7 +440,7 @@ do
   ---Returns the required source items of the quest.
   ---@param id QuestId
   ---@return ItemId[]?
-  function Quest.requiredSourceItems(id)
+  function QuestFunctions.requiredSourceItems(id)
     if override[id] and override[id]["requiredSourceItems"] then
       return override[id]["requiredSourceItems"]
     end
@@ -428,7 +455,7 @@ do
   ---Returns the next quest in the chain of the quest.
   ---@param id QuestId
   ---@return QuestId?
-  function Quest.nextQuestInChain(id)
+  function QuestFunctions.nextQuestInChain(id)
     if override[id] and override[id]["nextQuestInChain"] then
       return override[id]["nextQuestInChain"]
     end
@@ -443,7 +470,7 @@ do
   ---Returns the quest flags of the quest.
   ---@param id QuestId
   ---@return number?
-  function Quest.questFlags(id)
+  function QuestFunctions.questFlags(id)
     if override[id] and override[id]["questFlags"] then
       return override[id]["questFlags"]
     end
@@ -458,7 +485,7 @@ do
   ---Returns the special flags of the quest.
   ---@param id QuestId
   ---@return number?
-  function Quest.specialFlags(id)
+  function QuestFunctions.specialFlags(id)
     if override[id] and override[id]["specialFlags"] then
       return override[id]["specialFlags"]
     end
@@ -473,7 +500,7 @@ do
   ---Returns the parent quest of the quest.
   ---@param id QuestId
   ---@return QuestId?
-  function Quest.parentQuest(id)
+  function QuestFunctions.parentQuest(id)
     if override[id] and override[id]["parentQuest"] then
       return override[id]["parentQuest"]
     end
@@ -488,7 +515,7 @@ do
   ---Returns the reward reputation of the quest.
   ---@param id QuestId
   ---@return ReputationPair[]?
-  function Quest.reputationReward(id)
+  function QuestFunctions.reputationReward(id)
     if override[id] and override[id]["reputationReward"] then
       return override[id]["reputationReward"]
     end
@@ -503,7 +530,7 @@ do
   ---Returns the extra objectives of the quest.
   ---@param id QuestId
   ---@return ExtraObjective?
-  function Quest.extraObjectives(id)
+  function QuestFunctions.extraObjectives(id)
     if override[id] and override[id]["extraObjectives"] then
       return override[id]["extraObjectives"]
     end
@@ -518,7 +545,7 @@ do
   ---Returns the required spell of the quest.
   ---@param id QuestId
   ---@return number?
-  function Quest.requiredSpell(id)
+  function QuestFunctions.requiredSpell(id)
     if override[id] and override[id]["requiredSpell"] then
       return override[id]["requiredSpell"]
     end
@@ -533,7 +560,7 @@ do
   ---Returns the required specialization of the quest.
   ---@param id QuestId
   ---@return number?
-  function Quest.requiredSpecialization(id)
+  function QuestFunctions.requiredSpecialization(id)
     if override[id] and override[id]["requiredSpecialization"] then
       return override[id]["requiredSpecialization"]
     end
@@ -548,7 +575,7 @@ do
   ---Returns the required max level of the quest.
   ---@param id QuestId
   ---@return number?
-  function Quest.requiredMaxLevel(id)
+  function QuestFunctions.requiredMaxLevel(id)
     if override[id] and override[id]["requiredMaxLevel"] then
       return override[id]["requiredMaxLevel"]
     end
@@ -559,4 +586,5 @@ do
       return 0
     end
   end
+  exportFunctions()
 end

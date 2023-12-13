@@ -1,14 +1,18 @@
----@diagnostic disable: need-check-nil
-
-local _,
 ---@class LibQuestieDB
-LibQuestieDB = ...
+---@field Database Database
+local LibQuestieDB = select(2, ...)
 
-
-
+--*---- Create Module --------
 ---@class Database
-Database = {}
-LibQuestieDB.Database = Database
+local Database = LibQuestieDB.Database
+
+--*---- Import Modules -------
+local Quest = LibQuestieDB.Quest
+local Object = LibQuestieDB.Object
+local Npc = LibQuestieDB.Npc
+local Item = LibQuestieDB.Item
+
+------------------------------
 Database.debugEnabled = true
 Database.Initialized = false
 
@@ -62,10 +66,11 @@ end
 ---@param overrideData table @ The data to add to the override table i.e { [15882] = {[itemKeys.objectDrops] = { 177844 }}, }
 ---@param overrideTable table @ The table to add the override data to i.e Npc.override
 ---@param keys table<string, number> @ The keys to use for the override table i.e { ['name'] = 1, }
+---@return number @ The number of override data added
 function Database.Override(overrideData, overrideTable, keys)
   -- return immediately if any of the parameters is not provided
   if not overrideData or not overrideTable or not keys then
-    return
+    return 0
   end
 
   -- Validate the type of the arguments and return error messages if the types are not correct
@@ -78,7 +83,7 @@ function Database.Override(overrideData, overrideTable, keys)
   for key, id in pairs(keys) do
     keysReversed[id] = key
   end
-
+  local totalCount = 0
   -- Traverse the overrideData
   for dataId, data in pairs(overrideData) do
     -- Validate the 'data' type
@@ -98,15 +103,12 @@ function Database.Override(overrideData, overrideTable, keys)
         -- Add the keyName and its corresponding value to the overrideTable
         overrideTable[dataId][keyName] = value
       end
+      totalCount = totalCount + 1
     end
   end
+  return totalCount
 end
 
-
---- Load the data after the addon has loaded
-C_Timer.After(0, function()
-  Database.Init()
-end)
 
 function Database.Init()
   local startTotal = 0
@@ -279,7 +281,7 @@ do
           -- Frame Data object (The one with GetText)
           ---@type FontString
           local data = dataRegions[dataRegionsIndex + count]
-          if data then
+          if data and dataIndexNumber then
             if partIndex ~= "" then
               -- We create a list of functions to call when we want to get the data
               -- Load all the segmented data into a table ending with the e partIndex

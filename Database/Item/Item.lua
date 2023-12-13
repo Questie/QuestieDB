@@ -1,4 +1,17 @@
-Item = {}
+---@class LibQuestieDB
+---@field Item Item
+local LibQuestieDB = select(2, ...)
+
+---@class Item:ItemFunctions
+local Item = LibQuestieDB.Item
+GItem = Item
+
+--*---- Import Modules -------
+local Database = LibQuestieDB.Database
+local Corrections = LibQuestieDB.Corrections
+local DebugText = LibQuestieDB.DebugText
+
+local debug = DebugText:Get("Item")
 
 local glob = {}
 local override = {}
@@ -26,13 +39,30 @@ function Item.InitializeDynamic()
   )
   Item.glob = glob
   Item.override = override
+
+
+  local loadOrder = 0
+  local totalLoaded = 0
+  -- Load all Item Corrections
+  for index, list in pairs(Corrections.GetCorrections("item", Database.debugEnabled)) do
+    if Database.debugEnabled then debug:Print("Item Indexes", index) end
+    for id, func in pairs(list) do
+      local correctionData = func()
+      totalLoaded = totalLoaded + Item.AddOverrideData(correctionData, Corrections.ItemMeta.itemKeys)
+      if Database.debugEnabled then
+        debug:Print("  " .. tostring(loadOrder) .. "  Loaded", id)
+        debug:Print("  # Item Corrections", totalLoaded)
+      end
+      loadOrder = loadOrder + 1
+    end
+  end
 end
 
 function Item.AddOverrideData(dataOverride, overrideKeys)
   if not glob or not override then
     error("You must initialize the Item database before adding override data")
   end
-  Database.Override(dataOverride, override, overrideKeys)
+  return Database.Override(dataOverride, override, overrideKeys)
 end
 
 function Item.ClearOverrideData()
@@ -58,6 +88,23 @@ do
   local getNumber = Database.getNumber
   local getTable = Database.getTable
 
+  -- Class for all the GET functions for the Item namespace
+  ---@class ItemFunctions
+  local ItemFunctions = {}
+
+  --? This function is used to export all the functions to the Public and Private namespaces
+  --? It gets called at the end of this file
+  local function exportFunctions()
+    ---@class ItemFunctions
+    local publicItem = LibQuestieDB.PublicLibQuestieDB.Item
+    for k, v in pairs(ItemFunctions) do
+      Item[k] = v
+      publicItem[k] = v
+    end
+    publicItem.AddOverrideData = Item.AddOverrideData
+    publicItem.ClearOverrideData = Item.ClearOverrideData
+  end
+
   -- 1. ['name']           -- string
   -- 2. ['npcDrops']       -- table or nil, NPC IDs
   -- 3. ['objectDrops']    -- table or nil, object IDs
@@ -78,7 +125,7 @@ do
   ---Returns the item name.
   ---@param id ItemId
   ---@return Name?
-  function Item.name(id)
+  function ItemFunctions.name(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["name"] then
       return override[id]["name"]
@@ -94,7 +141,7 @@ do
   ---Returns the IDs of NPCs that drop this item.
   ---@param id ItemId
   ---@return NpcId[]?
-  function Item.npcDrops(id)
+  function ItemFunctions.npcDrops(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["npcDrops"] then
       return override[id]["npcDrops"]
@@ -110,7 +157,7 @@ do
   ---Returns the IDs of objects that drop this item.
   ---@param id ItemId
   ---@return ObjectId[]?
-  function Item.objectDrops(id)
+  function ItemFunctions.objectDrops(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["objectDrops"] then
       return override[id]["objectDrops"]
@@ -126,7 +173,7 @@ do
   ---Returns the IDs of items that drop this item.
   ---@param id ItemId
   ---@return ItemId[]?
-  function Item.itemDrops(id)
+  function ItemFunctions.itemDrops(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["itemDrops"] then
       return override[id]["itemDrops"]
@@ -142,7 +189,7 @@ do
   ---Returns the ID of the quest started by this item.
   ---@param id ItemId
   ---@return QuestId?
-  function Item.startQuest(id)
+  function ItemFunctions.startQuest(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["startQuest"] then
       return override[id]["startQuest"]
@@ -158,7 +205,7 @@ do
   ---Returns the IDs of quests that reward this item.
   ---@param id ItemId
   ---@return QuestId[]?
-  function Item.questRewards(id)
+  function ItemFunctions.questRewards(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["questRewards"] then
       return override[id]["questRewards"]
@@ -174,7 +221,7 @@ do
   ---Returns the flags of the item.
   ---@param id ItemId
   ---@return number?
-  function Item.flags(id)
+  function ItemFunctions.flags(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["flags"] then
       return override[id]["flags"]
@@ -191,7 +238,7 @@ do
   ---Returns the food type of the item.
   ---@param id ItemId
   ---@return number?
-  function Item.foodType(id)
+  function ItemFunctions.foodType(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["foodType"] then
       return override[id]["foodType"]
@@ -208,7 +255,7 @@ do
   ---Returns the item level.
   ---@param id ItemId
   ---@return number?
-  function Item.itemLevel(id)
+  function ItemFunctions.itemLevel(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["itemLevel"] then
       return override[id]["itemLevel"]
@@ -225,7 +272,7 @@ do
   ---Returns the required level to equip/use the item.
   ---@param id ItemId
   ---@return number?
-  function Item.requiredLevel(id)
+  function ItemFunctions.requiredLevel(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["requiredLevel"] then
       return override[id]["requiredLevel"]
@@ -242,7 +289,7 @@ do
   ---Returns the ammo type of the item.
   ---@param id ItemId
   ---@return number?
-  function Item.ammoType(id)
+  function ItemFunctions.ammoType(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["ammoType"] then
       return override[id]["ammoType"]
@@ -260,7 +307,7 @@ do
   ---Returns the class of the item.
   ---@param id ItemId
   ---@return number?
-  function Item.class(id)
+  function ItemFunctions.class(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["class"] then
       return override[id]["class"]
@@ -277,7 +324,7 @@ do
   ---Returns the subclass of the item.
   ---@param id ItemId
   ---@return number?
-  function Item.subClass(id)
+  function ItemFunctions.subClass(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["subClass"] then
       return override[id]["subClass"]
@@ -294,7 +341,7 @@ do
   ---Returns the IDs of NPCs that sell this item.
   ---@param id ItemId
   ---@return NpcId[]?
-  function Item.vendors(id)
+  function ItemFunctions.vendors(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["vendors"] then
       return override[id]["vendors"]
@@ -310,7 +357,7 @@ do
   ---Returns the IDs of quests that are related to this item.
   ---@param id ItemId
   ---@return QuestId[]?
-  function Item.relatedQuests(id)
+  function ItemFunctions.relatedQuests(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["relatedQuests"] then
       return override[id]["relatedQuests"]
@@ -322,5 +369,6 @@ do
       return nil
     end
   end
+  exportFunctions()
 end
 

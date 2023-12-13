@@ -1,4 +1,12 @@
-Npc = {}
+---@class LibQuestieDB
+---@field Npc Npc
+local LibQuestieDB = select(2, ...)
+
+---@class Npc:NpcFunctions
+local Npc = LibQuestieDB.Npc
+
+--*---- Import Modules -------
+local Database = LibQuestieDB.Database
 
 local tonumber = tonumber
 
@@ -33,7 +41,7 @@ function Npc.AddOverrideData(dataOverride, overrideKeys)
   if not glob or not override then
     error("You must initialize the Npc database before adding override data")
   end
-  Database.Override(dataOverride, override, overrideKeys)
+  return Database.Override(dataOverride, override, overrideKeys)
 end
 
 function Npc.ClearOverrideData()
@@ -58,6 +66,30 @@ do
   end
   local getNumber = Database.getNumber
   local getTable = Database.getTable
+  -- Used to return an empty table instead of nil
+  ---@type table<number, table<number, FontString>>
+  local emptyTable = setmetatable({}, {
+    __newindex = function()
+      error("Attempt to modify read-only table")
+    end
+  })
+
+  -- Class for all the GET functions for the Npc namespace
+  ---@class NpcFunctions
+  local NpcFunctions = {}
+
+  --? This function is used to export all the functions to the Public and Private namespaces
+  --? It gets called at the end of this file
+  local function exportFunctions()
+    ---@class NpcFunctions
+    local publicNpc = LibQuestieDB.PublicLibQuestieDB.Npc
+    for k, v in pairs(NpcFunctions) do
+      Npc[k] = v
+      publicNpc[k] = v
+    end
+    publicNpc.AddOverrideData = Npc.AddOverrideData
+    publicNpc.ClearOverrideData = Npc.ClearOverrideData
+  end
 
 -- 1. ['name'], -- string
 -- 2. ['meta-data'], -- int
@@ -80,7 +112,7 @@ do
   ---Returns the npc name.
   ---@param id NpcId
   ---@return Name?
-  function Npc.name(id)
+  function NpcFunctions.name(id)
     if override[id] and override[id]["name"] then
       return override[id]["name"]
     end
@@ -95,7 +127,7 @@ do
   ---Returns the minimum level health of the npc.
   ---@param id NpcId
   ---@return number?
-  function Npc.minLevelHealth(id)
+  function NpcFunctions.minLevelHealth(id)
     if override[id] and override[id]["minLevelHealth"] then
       return override[id]["minLevelHealth"]
     end
@@ -111,7 +143,7 @@ do
   ---Returns the maximum level health of the npc.
   ---@param id NpcId
   ---@return number?
-  function Npc.maxLevelHealth(id)
+  function NpcFunctions.maxLevelHealth(id)
     if override[id] and override[id]["maxLevelHealth"] then
       return override[id]["maxLevelHealth"]
     end
@@ -127,7 +159,7 @@ do
   ---Returns the minimum level of the npc.
   ---@param id NpcId
   ---@return number?
-  function Npc.minLevel(id)
+  function NpcFunctions.minLevel(id)
     if override[id] and override[id]["minLevel"] then
       return override[id]["minLevel"]
     end
@@ -144,7 +176,7 @@ do
   ---Returns the maximum level of the npc.
   ---@param id NpcId
   ---@return number?
-  function Npc.maxLevel(id)
+  function NpcFunctions.maxLevel(id)
     if override[id] and override[id]["maxLevel"] then
       return override[id]["maxLevel"]
     end
@@ -161,7 +193,7 @@ do
   ---Returns the rank of the npc.
   ---@param id NpcId
   ---@return number?
-  function Npc.rank(id)
+  function NpcFunctions.rank(id)
     if override[id] and override[id]["rank"] then
       return override[id]["rank"]
     end
@@ -179,7 +211,7 @@ do
   ---Returns the zone ID of the npc.
   ---@param id NpcId
   ---@return AreaId?
-  function Npc.zoneID(id)
+  function NpcFunctions.zoneID(id)
     if override[id] and override[id]["zoneID"] then
       return override[id]["zoneID"]
     end
@@ -195,7 +227,7 @@ do
   ---Returns the faction ID of the npc.
   ---@param id NpcId
   ---@return number?
-  function Npc.factionID(id)
+  function NpcFunctions.factionID(id)
     if override[id] and override[id]["factionID"] then
       return override[id]["factionID"]
     end
@@ -211,7 +243,7 @@ do
   ---Returns the friendly factions of the npc.
   ---@param id NpcId
   ---@return string?
-  function Npc.friendlyToFaction(id)
+  function NpcFunctions.friendlyToFaction(id)
     if override[id] and override[id]["friendlyToFaction"] then
       return override[id]["friendlyToFaction"]
     end
@@ -227,7 +259,7 @@ do
   ---Returns the npc flags of the npc.
   ---@param id NpcId
   ---@return number?
-  function Npc.npcFlags(id)
+  function NpcFunctions.npcFlags(id)
     if override[id] and override[id]["npcFlags"] then
       return override[id]["npcFlags"]
     end
@@ -244,7 +276,7 @@ do
   ---Returns the spawns of the npc.
   ---@param id NpcId
   ---@return table<AreaId, CoordPair[]>?
-  function Npc.spawns(id)
+  function NpcFunctions.spawns(id)
     if override[id] and override[id]["spawns"] then
       return override[id]["spawns"]
     end
@@ -259,7 +291,7 @@ do
   ---Returns the waypoints of the npc.
   ---@param id NpcId
   ---@return table<AreaId, CoordPair[]>?
-  function Npc.waypoints(id)
+  function NpcFunctions.waypoints(id)
     if override[id] and override[id]["waypoints"] then
       return override[id]["waypoints"]
     end
@@ -274,7 +306,7 @@ do
   ---Returns the quests that the npc starts.
   ---@param id NpcId
   ---@return QuestId[]?
-  function Npc.questStarts(id)
+  function NpcFunctions.questStarts(id)
     if override[id] and override[id]["questStarts"] then
       return override[id]["questStarts"]
     end
@@ -289,7 +321,7 @@ do
   ---Returns the quests that the npc ends.
   ---@param id NpcId
   ---@return QuestId[]?
-  function Npc.questEnds(id)
+  function NpcFunctions.questEnds(id)
     if override[id] and override[id]["questEnds"] then
       return override[id]["questEnds"]
     end
@@ -304,7 +336,7 @@ do
   ---Returns the sub name of the npc.
   ---@param id NpcId
   ---@return string?
-  function Npc.subName(id)
+  function NpcFunctions.subName(id)
     if override[id] and override[id]["subName"] then
       return override[id]["subName"]
     end
@@ -315,4 +347,5 @@ do
       return nil
     end
   end
+  exportFunctions()
 end
