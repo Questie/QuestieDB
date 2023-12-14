@@ -1,6 +1,7 @@
 <Ui>
   <Script file="Corrections.lua"/>
   <Script file="ZoneMeta.lua"/>
+  <Script file="PlayerMeta.lua"/>
   <Script file="ItemMeta.lua"/>
   <Script file="NpcMeta.lua"/>
   <Script file="ObjectMeta.lua"/>

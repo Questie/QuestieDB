@@ -44,17 +44,18 @@ function Item.InitializeDynamic()
   local loadOrder = 0
   local totalLoaded = 0
   -- Load all Item Corrections
-  for index, list in pairs(Corrections.GetCorrections("item", Database.debugEnabled)) do
-    if Database.debugEnabled then debug:Print("Item Indexes", index) end
+  for _, list in pairs(Corrections.GetCorrections("item", Database.debugEnabled)) do
     for id, func in pairs(list) do
       local correctionData = func()
       totalLoaded = totalLoaded + Item.AddOverrideData(correctionData, Corrections.ItemMeta.itemKeys)
       if Database.debugEnabled then
         debug:Print("  " .. tostring(loadOrder) .. "  Loaded", id)
-        debug:Print("  # Item Corrections", totalLoaded)
       end
       loadOrder = loadOrder + 1
     end
+  end
+  if Database.debugEnabled then
+    debug:Print("  # Item Corrections", totalLoaded)
   end
 end
 
