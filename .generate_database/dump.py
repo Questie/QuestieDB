@@ -4,7 +4,9 @@
 import os
 import concurrent.futures
 import math
+from slpp import slpp as lua
 from helpers import find_addon_name, read_expansion_data, get_project_dir_path, get_data_dir_path
+from convert_questie_database import dumpData
 
 addon_dir = find_addon_name()
 print(f"Addon dir: {addon_dir}")
@@ -26,7 +28,6 @@ max_p_size = 4000
 
 # The main logic function, it uses the decoded data to create HTML files.
 def process_expansion(expansion_name: str, entity_type: str, expansion_data: dict[int, list[str]]):
-    from slpp import slpp as lua
     entity_type_lower = entity_type.lower()
     entity_type_plural = entity_type_lower + "s"
     entity_type_capitalized = entity_type.capitalize()
@@ -222,6 +223,7 @@ def process_expansion(expansion_name: str, entity_type: str, expansion_data: dic
 
     print(f"Finished dumping {entity_type}s for {expansion_name}")
 
+
 # Ask which expansions to dump or all
 all_expansions = input("Dump all expansions? (y/n): ")
 if all_expansions.lower() == "y":
@@ -236,13 +238,18 @@ else:
     expansions = dump_expansions
     print(f"Dumping {dump_expansions}")
 
+fetch_data_from_github = input("Fetch new data from github? (Slowish) (y/n): ")
+if fetch_data_from_github.lower() == "y":
+  for expansion in expansions:
+    dumpData(expansion)
+    print(f"Fetched {expansion} data from github")
+
 # Load the data for all expansions
 # The decoding with lua is not thread safe, so we do it here
 all_expansion_data = {}
 for expansion in expansions:
     all_expansion_data[expansion] = {}
     for entity_type in entity_types:
-        from slpp import slpp as lua
         print(f"Reading {expansion} lua {entity_type.lower()} data")
         raw_expansion_data = read_expansion_data(expansion, entity_type)
         print(f"Decoding {expansion} lua {entity_type.lower()} data to python {entity_type.lower()}")
