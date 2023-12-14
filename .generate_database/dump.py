@@ -105,7 +105,10 @@ def process_expansion(expansion_name: str, entity_type: str, expansion_data: dic
             if encoded_line != "nil" and len(encoded_line) > 0:
                 # If the line is too long, we split it into multiple lines
                 # We split it at the after max_p_size characters
-                if len(encoded_line) < max_p_size:
+                # Calculate how many segments we need
+                segments = len(encoded_line) / max_p_size
+                segments = math.ceil(segments)
+                if segments == 1:
                     output_data_local += "<p>"
                     output_data_local += encoded_line
                     writtenDataIndexes.append(entityDataIndex)
@@ -114,9 +117,6 @@ def process_expansion(expansion_name: str, entity_type: str, expansion_data: dic
                 else:
                     # If the line is too long, we split it into multiple lines
                     output_data_local += f"<!-- Segment start: {entityDataIndex} -->\n"
-                    # Calculate how many segments we need
-                    segments = len(encoded_line) / max_p_size
-                    segments = math.ceil(segments)
 
                     # Write each segment as a new tag, ending with e
                     for i in range(segments):
