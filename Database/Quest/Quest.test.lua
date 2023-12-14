@@ -12,14 +12,17 @@ Quest.testGetFunctions = function(fast)
   -- for id in pairs(glob) do
   for id in pairs(Quest.GetAllQuestIds()) do
     Quest.lastTestedID = id
+    Quest.lastTestedData = ""
     count = count + 1
     local data = {}
     tInsert(data, "Testing Quest " .. id)
 
     -- Test Quest.name
+    Quest.lastTestedData = "name"
     tInsert(data, "Name: " .. (Quest.name(id) or "nil"))
 
     -- Test Quest.startedBy
+    Quest.lastTestedData = "startedBy"
     local startedBy = Quest.startedBy(id)
     if startedBy then
       tInsert(data, "Started By:")
@@ -34,6 +37,7 @@ Quest.testGetFunctions = function(fast)
     end
 
     -- Test Quest.finishedBy
+    Quest.lastTestedData = "finishedBy"
     local finishedBy = Quest.finishedBy(id)
     if finishedBy then
       tInsert(data, "Finished By:")
@@ -48,18 +52,23 @@ Quest.testGetFunctions = function(fast)
     end
 
     -- Test Quest.requiredLevel
+    Quest.lastTestedData = "requiredLevel"
     tInsert(data, "Required Level: " .. (Quest.requiredLevel(id) or "nil"))
 
     -- Test Quest.questLevel
+    Quest.lastTestedData = "questLevel"
     tInsert(data, "Quest Level: " .. (Quest.questLevel(id) or "nil"))
 
     -- Test Quest.requiredRaces
+    Quest.lastTestedData = "requiredRaces"
     tInsert(data, "Required Races: " .. (Quest.requiredRaces(id) or "nil"))
 
     -- Test Quest.requiredClasses
+    Quest.lastTestedData = "requiredClasses"
     tInsert(data, "Required Classes: " .. (Quest.requiredClasses(id) or "nil"))
 
     -- Test Quest.objectivesText
+    Quest.lastTestedData = "objectivesText"
     local objectivesText = Quest.objectivesText(id)
     if objectivesText then
       tInsert(data, "Objectives Text:")
@@ -71,11 +80,12 @@ Quest.testGetFunctions = function(fast)
     end
 
     -- Test Quest.triggerEnd
+    Quest.lastTestedData = "triggerEnd"
     local triggerEnd = Quest.triggerEnd(id)
     if triggerEnd then
       tInsert(data, "Trigger End:")
       tInsert(data, "  Text: " .. triggerEnd[1])
-      for zoneID, coords in pairs(triggerEnd[2]) do
+      for zoneID, coords in pairs(triggerEnd[2] or {}) do
         tInsert(data, "  Zone " .. zoneID .. " Coords:")
         for _, coord in ipairs(coords) do
           tInsert(data, "    X: " .. coord[1] .. ", Y: " .. coord[2])
@@ -86,6 +96,7 @@ Quest.testGetFunctions = function(fast)
     end
 
     -- Test Quest.objectives
+    Quest.lastTestedData = "objectives"
     local objectives = Quest.objectives(id)
     if objectives then
       tInsert(data, "Objectives:")
@@ -100,9 +111,11 @@ Quest.testGetFunctions = function(fast)
     end
 
     -- Test Quest.sourceItemId
+    Quest.lastTestedData = "sourceItemId"
     tInsert(data, "Source Item ID: " .. (Quest.sourceItemId(id) or "nil"))
 
     -- Test Quest.preQuestGroup
+    Quest.lastTestedData = "preQuestGroup"
     local preQuestGroup = Quest.preQuestGroup(id)
     if preQuestGroup then
       tInsert(data, "Pre-Quest Group:")
@@ -114,6 +127,7 @@ Quest.testGetFunctions = function(fast)
     end
 
     -- Test Quest.preQuestSingle
+    Quest.lastTestedData = "preQuestSingle"
     local preQuestSingle = Quest.preQuestSingle(id)
     if preQuestSingle then
       tInsert(data, "Pre-Quest Single:")
@@ -125,6 +139,7 @@ Quest.testGetFunctions = function(fast)
     end
 
     -- Test Quest.childQuests
+    Quest.lastTestedData = "childQuests"
     local childQuests = Quest.childQuests(id)
     if childQuests then
       tInsert(data, "Child Quests:")
@@ -136,6 +151,7 @@ Quest.testGetFunctions = function(fast)
     end
 
     -- Test Quest.inGroupWith
+    Quest.lastTestedData = "inGroupWith"
     local inGroupWith = Quest.inGroupWith(id)
     if inGroupWith then
       tInsert(data, "In Group With:")
@@ -147,6 +163,7 @@ Quest.testGetFunctions = function(fast)
     end
 
     -- Test Quest.exclusiveTo
+    Quest.lastTestedData = "exclusiveTo"
     local exclusiveTo = Quest.exclusiveTo(id)
     if exclusiveTo then
       tInsert(data, "Exclusive To:")
@@ -158,9 +175,11 @@ Quest.testGetFunctions = function(fast)
     end
 
     -- Test Quest.zoneOrSort
+    Quest.lastTestedData = "zoneOrSort"
     tInsert(data, "Zone or Sort: " .. (Quest.zoneOrSort(id) or "nil"))
 
     -- Test Quest.requiredSkill
+    Quest.lastTestedData = "requiredSkill"
     local requiredSkill = Quest.requiredSkill(id)
     if requiredSkill then
       tInsert(data, "Required Skill:")
@@ -171,6 +190,7 @@ Quest.testGetFunctions = function(fast)
     end
 
     -- Test Quest.requiredMinRep
+    Quest.lastTestedData = "requiredMinRep"
     local requiredMinRep = Quest.requiredMinRep(id)
     if requiredMinRep then
       tInsert(data, "Required Min Reputation:")
@@ -181,6 +201,7 @@ Quest.testGetFunctions = function(fast)
     end
 
     -- Test Quest.requiredMaxRep
+    Quest.lastTestedData = "requiredMaxRep"
     local requiredMaxRep = Quest.requiredMaxRep(id)
     if requiredMaxRep then
       tInsert(data, "Required Max Reputation:")
@@ -191,6 +212,7 @@ Quest.testGetFunctions = function(fast)
     end
 
     -- Test Quest.requiredSourceItems
+    Quest.lastTestedData = "requiredSourceItems"
     local requiredSourceItems = Quest.requiredSourceItems(id)
     if requiredSourceItems then
       tInsert(data, "Required Source Items:")
@@ -202,18 +224,23 @@ Quest.testGetFunctions = function(fast)
     end
 
     -- Test Quest.nextQuestInChain
+    Quest.lastTestedData = "nextQuestInChain"
     tInsert(data, "Next Quest in Chain: " .. (Quest.nextQuestInChain(id) or "nil"))
 
     -- Test Quest.questFlags
+    Quest.lastTestedData = "questFlags"
     tInsert(data, "Quest Flags: " .. (Quest.questFlags(id) or "nil"))
 
     -- Test Quest.specialFlags
+    Quest.lastTestedData = "specialFlags"
     tInsert(data, "Special Flags: " .. (Quest.specialFlags(id) or "nil"))
 
     -- Test Quest.parentQuest
+    Quest.lastTestedData = "parentQuest"
     tInsert(data, "Parent Quest: " .. (Quest.parentQuest(id) or "nil"))
 
     -- Test Quest.reputationReward
+    Quest.lastTestedData = "reputationReward"
     local reputationReward = Quest.reputationReward(id)
     if reputationReward then
       tInsert(data, "Reward Reputation:")
@@ -226,6 +253,7 @@ Quest.testGetFunctions = function(fast)
     end
 
     -- Test Quest.extraObjectives
+    Quest.lastTestedData = "extraObjectives"
     local extraObjectives = Quest.extraObjectives(id)
     if extraObjectives then
       tInsert(data, "Extra Objectives:")
@@ -237,12 +265,15 @@ Quest.testGetFunctions = function(fast)
     end
 
     -- Test Quest.requiredSpell
+    Quest.lastTestedData = "requiredSpell"
     tInsert(data, "Required Spell: " .. (Quest.requiredSpell(id) or "nil"))
 
     -- Test Quest.requiredSpecialization
+    Quest.lastTestedData = "requiredSpecialization"
     tInsert(data, "Required Specialization: " .. (Quest.requiredSpecialization(id) or "nil"))
 
     -- Test Quest.requiredMaxLevel
+    Quest.lastTestedData = "requiredMaxLevel"
     tInsert(data, "Required Max Level: " .. (Quest.requiredMaxLevel(id) or "nil"))
 
     tInsert(data, "--------------------------------------------------")

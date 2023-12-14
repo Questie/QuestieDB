@@ -121,6 +121,7 @@ do
   --   7. ['subClass']      -- int,
   -- 8. ['vendors']       -- table or nil, NPC IDs
   -- 9. ['relatedQuests'] -- table or nil, IDs of quests that are related to this item
+  -- 10. ['teachesSpell'] -- int, spellID taught by this item upon use
 
   ---Returns the item name.
   ---@param id ItemId
@@ -365,6 +366,22 @@ do
     local data = glob[id]
     if data then
       return getTable(data[9])
+    else
+      return nil
+    end
+  end
+
+  ---Returns the ID of the spell taught by this item upon use.
+  ---@param id ItemId
+  ---@return number?
+  function ItemFunctions.teachesSpell(id)
+    --? Returns the overridden value, e.g. faction specific fixes
+    if override[id] and override[id]["teachesSpell"] then
+      return override[id]["teachesSpell"]
+    end
+    local data = glob[id]
+    if data then
+      return getNumber(data[10])
     else
       return nil
     end

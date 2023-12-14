@@ -11,14 +11,17 @@ Object.testGetFunctions = function(fast)
   local count = 0
   for id in pairs(Object.GetAllObjectIds()) do
     Object.lastTestedID = id
+    Object.lastTestedData = ""
     count = count + 1
     local data = {}
     tInsert(data, "Testing Object " .. id)
 
     -- Test Object.name
+    Object.lastTestedData = "name"
     tInsert(data, "Name: " .. (Object.name(id) or "nil"))
 
     -- Test Object.questStarts
+    Object.lastTestedData = "questStarts"
     local questStarts = Object.questStarts(id)
     if questStarts then
       tInsert(data, "Quest Starts:")
@@ -30,6 +33,7 @@ Object.testGetFunctions = function(fast)
     end
 
     -- Test Object.questEnds
+    Object.lastTestedData = "questEnds"
     local questEnds = Object.questEnds(id)
     if questEnds then
       tInsert(data, "Quest Ends:")
@@ -41,6 +45,7 @@ Object.testGetFunctions = function(fast)
     end
 
     -- Test Object.spawns
+    Object.lastTestedData = "spawns"
     local spawns = Object.spawns(id)
     if spawns then
       for zoneID, coords in pairs(spawns) do
@@ -54,9 +59,11 @@ Object.testGetFunctions = function(fast)
     end
 
     -- Test Object.zoneID
+    Object.lastTestedData = "zoneID"
     tInsert(data, "Zone ID: " .. (Object.zoneID(id) or "nil"))
 
     -- Test Object.factionID
+    Object.lastTestedData = "factionID"
     tInsert(data, "Faction ID: " .. (Object.factionID(id) or "nil"))
 
     tInsert(data, "--------------------------------------------------")
