@@ -228,7 +228,7 @@ def dumpData(expansion):
     if newData != None:
       print("  Dumping data:")
       print("   ", filename)
-      with open(filename, "w", encoding="utf-8") as f:
+      with open(filename, "w", encoding="utf-8", newline="\n") as f:
         f.write(newData)
 
 

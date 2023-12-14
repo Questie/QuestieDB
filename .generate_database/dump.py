@@ -149,7 +149,7 @@ def process_expansion(expansion_name: str, entity_type: str, expansion_data: dic
             #     print("Warning: File size exceeded for {}-{}.html".format(lowest_id, highest_id))
             #     print(output_file_name)
 
-            output_file = open(output_file_name, 'w', encoding="utf-8")
+            output_file = open(output_file_name, 'w', encoding="utf-8", newline="\n")
             output_file.write(f"<html><body>\n{lookup_data}\n{output_data}</body></html>")
             output_file.close()
 
@@ -174,7 +174,7 @@ def process_expansion(expansion_name: str, entity_type: str, expansion_data: dic
           print(f"Processed {entryIndex}/{len(expansion_data)} {expansion} {entity_type_plural}")
 
     # Write out all EntityIds to a file
-    with open(f"{path}\\{entity_type_capitalized}DataIds.html", 'w', encoding="utf-8") as entity_id_lookup_file:
+    with open(f"{path}\\{entity_type_capitalized}DataIds.html", 'w', encoding="utf-8", newline="\n") as entity_id_lookup_file:
       # Write all Ids to a file
       printData = []
       temp = ""
@@ -198,14 +198,14 @@ def process_expansion(expansion_name: str, entity_type: str, expansion_data: dic
 
     # Write out the embed file
     # This file contains templates for all the SimpleHTML frames that are generated
-    with open(f"{path}\\{entity_type_capitalized}DataFiles.xml", 'w', encoding="utf-8") as embed_file:
+    with open(f"{path}\\{entity_type_capitalized}DataFiles.xml", 'w', encoding="utf-8", newline="\n") as embed_file:
       embed_file.write('<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\\FrameXML\\UI.xsd">\n')
       for embed_file_string in embed_file_strings:
         embed_file.write(embed_file_string)
       embed_file.write('</Ui>')
 
     # This file contains all the ranges for the files that are generated
-    with open(f"{path}\\{entity_type_capitalized}DataTemplates.html", 'w', encoding="utf-8") as filename_file:
+    with open(f"{path}\\{entity_type_capitalized}DataTemplates.html", 'w', encoding="utf-8", newline="\n") as filename_file:
       filename_file.write("<!-- This contains all the ranges for the files that are generated -->\n")
       filename_file.write("<html><body>\n")
       #Trim the last comma if it exists
