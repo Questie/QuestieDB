@@ -7,6 +7,10 @@ local Object = LibQuestieDB.Object
 
 --*---- Import Modules -------
 local Database = LibQuestieDB.Database
+local Corrections = LibQuestieDB.Corrections
+local DebugText = LibQuestieDB.DebugText
+
+local debug = DebugText:Get("Object")
 
 -- This will be assigned from the initialize function
 local glob = {}
@@ -32,6 +36,23 @@ function Object.InitializeDynamic()
   )
   Object.glob = glob
   Object.override = override
+
+  local loadOrder = 0
+  local totalLoaded = 0
+  -- Load all Object Corrections
+  for _, list in pairs(Corrections.GetCorrections("object", Database.debugEnabled)) do
+    for id, func in pairs(list) do
+      local correctionData = func()
+      totalLoaded = totalLoaded + Object.AddOverrideData(correctionData, Corrections.ObjectMeta.objectKeys)
+      if Database.debugEnabled then
+        debug:Print("  " .. tostring(loadOrder) .. "  Loaded", id)
+      end
+      loadOrder = loadOrder + 1
+    end
+  end
+  if Database.debugEnabled then
+    debug:Print("  # Object Corrections", totalLoaded)
+  end
 end
 
 function Object.AddOverrideData(dataOverride, overrideKeys)
