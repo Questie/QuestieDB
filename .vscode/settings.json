@@ -11,8 +11,21 @@
     "time",
     "GetFunctionCPUUsage",
     "Object",
-    "wipe"
   ],
+  "Lua.workspace.ignoreDir": [
+    ".vscode",
+    ".translator",
+    ".wowhead"
+  ],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.cache": true,
+  },
   "Lua.workspace.preloadFileSize": 3000,
   "Lua.workspace.maxPreload": 2000,
   // Removes trailing whitespaces
