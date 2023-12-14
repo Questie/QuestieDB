@@ -7,6 +7,10 @@ local Quest = LibQuestieDB.Quest
 
 --*---- Import Modules -------
 local Database = LibQuestieDB.Database
+local Corrections = LibQuestieDB.Corrections
+local DebugText = LibQuestieDB.DebugText
+
+local debug = DebugText:Get("Quest")
 
 ------------------------------
 -- This will be assigned from the initialize function
@@ -34,6 +38,23 @@ function Quest.InitializeDynamic()
   )
   Quest.glob = glob
   Quest.override = override
+
+  local loadOrder = 0
+  local totalLoaded = 0
+  -- Load all Quest Corrections
+  for _, list in pairs(Corrections.GetCorrections("quest", Database.debugEnabled)) do
+    for id, func in pairs(list) do
+      local correctionData = func()
+      totalLoaded = totalLoaded + Quest.AddOverrideData(correctionData, Corrections.QuestMeta.questKeys)
+      if Database.debugEnabled then
+        debug:Print("  " .. tostring(loadOrder) .. "  Loaded", id)
+      end
+      loadOrder = loadOrder + 1
+    end
+  end
+  if Database.debugEnabled then
+    debug:Print("  # Quest Corrections", totalLoaded)
+  end
 end
 
 function Quest.AddOverrideData(dataOverride, overrideKeys)

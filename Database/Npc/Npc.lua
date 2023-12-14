@@ -7,6 +7,10 @@ local Npc = LibQuestieDB.Npc
 
 --*---- Import Modules -------
 local Database = LibQuestieDB.Database
+local Corrections = LibQuestieDB.Corrections
+local DebugText = LibQuestieDB.DebugText
+
+local debug = DebugText:Get("Npc")
 
 local tonumber = tonumber
 
@@ -35,6 +39,23 @@ function Npc.InitializeDynamic()
   )
   Npc.glob = glob
   Npc.override = override
+
+  local loadOrder = 0
+  local totalLoaded = 0
+  -- Load all Npc Corrections
+  for _, list in pairs(Corrections.GetCorrections("npc", Database.debugEnabled)) do
+    for id, func in pairs(list) do
+      local correctionData = func()
+      totalLoaded = totalLoaded + Npc.AddOverrideData(correctionData, Corrections.NpcMeta.npcKeys)
+      if Database.debugEnabled then
+        debug:Print("  " .. tostring(loadOrder) .. "  Loaded", id)
+      end
+      loadOrder = loadOrder + 1
+    end
+  end
+  if Database.debugEnabled then
+    debug:Print("  # Npc Corrections", totalLoaded)
+  end
 end
 
 function Npc.AddOverrideData(dataOverride, overrideKeys)
