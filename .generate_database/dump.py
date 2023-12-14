@@ -87,6 +87,7 @@ def process_expansion(expansion_name: str, entity_type: str, expansion_data: dic
             encoded_line = encoded_line.replace("\\n", "<br>")
             # Replaces \\" with "
             encoded_line = encoded_line.replace('\\\\"', '"')
+            encoded_line = encoded_line.replace('\\"', '"')
             # Remove " from the start and end of the line if it exists
             if encoded_line.startswith('"'):
                 encoded_line = encoded_line[1:]
