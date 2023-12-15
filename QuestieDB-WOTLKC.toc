@@ -1,12 +1,12 @@
 ## Interface: 30401
 ## Title: QuestieDB
-## Author: Logon (Data: TheCrux/Drejjmit/Muehe/Everyone else)
+## Author: Logon (Data: TheCrux/Drejjmit/Muehe/Yttrium/TechnoHunter/Everyone else)
 ## Notes: A standalone QuestieDB
 ## Version: 1
 ## RequiredDeps:
 ## OptionalDeps:
-##### SavedVariables: QuestieDB
-##### SavedVariablesPerCharacter: QuestieDBCharacter
+#### SavedVariables: QuestieDB
+## SavedVariablesPerCharacter: QuestieDB_c
 
 ## Helpers
 Helpers\ThreadLib.lua

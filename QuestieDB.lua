@@ -22,11 +22,32 @@ local Object = LibQuestieDB.Object
 local Quest = LibQuestieDB.Quest
 local Item = LibQuestieDB.Item
 
---- We give it 0.2 seconds to allow other code to run first
-C_Timer.After(0.2, function()
-  -- Starts the addon
-  LibQuestieDB.Database.Init()
-end)
+
+-- Event registration
+LibQuestieDB.RegisteredEvents = LibQuestieDB.EventRegistrator()
+
+--* Initialize the database
+do
+  ---@type cbObject
+  local timer
+  local function bucketLoaded()
+    print("All Addons loaded")
+    --- We give it 0.2 seconds to allow other code to run first
+    C_Timer.After(0.2, function()
+      -- Starts the addon
+      LibQuestieDB.Database.Init()
+    end)
+    LibQuestieDB.RegisteredEvents["ADDON_LOADED"] = nil
+  end
+  LibQuestieDB.RegisteredEvents["ADDON_LOADED"] = function(addonName)
+    print("Addon loaded: " .. addonName)
+    if timer then
+      timer:Cancel()
+    end
+    timer = C_Timer.NewTimer(1, bucketLoaded)
+  end
+end
+
 
 -- Register slash command
 SlashCmdList["QuestieDB"] = function(args)
@@ -61,7 +82,7 @@ SlashCmdList["QuestieDB"] = function(args)
     debugprofilestart()
     for i = 1, 1000000 do
       ---@diagnostic disable-next-line: unused-local
-      local mid = floor((i + (i+0.5)) / 2)
+      local mid = floor((i + (i + 0.5)) / 2)
     end
     local time1 = debugprofilestop()
     debugprofilestart()
@@ -72,7 +93,7 @@ SlashCmdList["QuestieDB"] = function(args)
     local time2 = debugprofilestop()
     -- Validate
     for i = 1, 1000000 do
-      local mid = floor((i + (i+0.5)) / 2)
+      local mid = floor((i + (i + 0.5)) / 2)
       local mid2 = (i + (i + 0.5)) / 2
       mid2 = mid2 - mid2 % 1
       if mid ~= mid2 then
