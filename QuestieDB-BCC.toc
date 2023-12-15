@@ -7,22 +7,26 @@
 ## OptionalDeps:
 #### SavedVariables: QuestieDB
 ## SavedVariablesPerCharacter: QuestieDB_c
+Library.lua
 
-## Helpers
+Helpers\VersionCheck.lua
+
+#* Helpers
+Helpers\DebugText.lua
 Helpers\ThreadLib.lua
 Helpers\Helpers.lua
 
-# Database
+#* Database
 ## Data embeds
 Database\Item\Tbc\ItemDataFiles.xml
 Database\Npc\Tbc\NpcDataFiles.xml
 Database\Object\Tbc\ObjectDataFiles.xml
 Database\Quest\Tbc\QuestDataFiles.xml
 
-## Main
+##* Main
 Database\Database.lua
 
-## Types
+##* Types
 Database\Item\Item.lua
 Database\Item\Item.test.lua
 
@@ -34,6 +38,15 @@ Database\Object\Object.test.lua
 
 Database\Quest\Quest.lua
 Database\Quest\Quest.test.lua
+
+##* Corrections
+Corrections\MetaCorrections.xml
+### Corrections - Era
+# Corrections\Era\EraCorrections.xml
+### Corrections - Tbc
+# Corrections\Tbc\TbcCorrections.xml
+### Corrections - Wotlk
+# Corrections\Wotlk\WotlkCorrections.xml
 
 # Standalone
 QuestieDB.lua
