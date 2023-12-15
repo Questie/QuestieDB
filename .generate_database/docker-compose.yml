@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  lua:
+    #image: nickblah/lua:5.1-luarocks
+    build: .
+    command: sh /QuestieDB/.generate_database/dumpDB.sh
+    volumes:
+      - '../:/QuestieDB'

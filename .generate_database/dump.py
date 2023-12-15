@@ -4,9 +4,9 @@
 import os
 import concurrent.futures
 import math
+import sys
 from slpp import slpp as lua
 from helpers import find_addon_name, read_expansion_data, get_project_dir_path, get_data_dir_path
-from convert_questie_database import dumpData
 
 addon_dir = find_addon_name()
 print(f"Addon dir: {addon_dir}")
@@ -27,7 +27,7 @@ max_p_size = 4000
 
 
 # The main logic function, it uses the decoded data to create HTML files.
-def process_expansion(expansion_name: str, entity_type: str, expansion_data: dict[int, list[str]]):
+def process_expansion(expansion_name, entity_type, expansion_data):
     entity_type_lower = entity_type.lower()
     entity_type_plural = entity_type_lower + "s"
     entity_type_capitalized = entity_type.capitalize()
@@ -43,16 +43,15 @@ def process_expansion(expansion_name: str, entity_type: str, expansion_data: dic
     path = get_data_dir_path(entity_type, expansion_name)
     data_dir_path= f"Interface\\AddOns\\{addon_dir}\\Database\\{entity_type_capitalized}\\{expansion_name.capitalize()}"
 
-    if not os.path.exists(path + '\\_data'):
+    if not os.path.exists(os.path.join(path, '_data')):
         print(f"Creating {entity_type_lower} _data folder")
-        os.makedirs(path + '\\_data')
+        os.makedirs(os.path.join(path, '_data'))
     else:
         #Delete html files in _data folder
         print(f"Deleting old {entity_type_lower} html _data files")
-        for file in os.listdir(path + '\\_data'):
+        for file in os.listdir(os.path.join(path, '_data')):
             if file.endswith(".html"):
-                os.remove(path + '\\_data\\' + file)
-
+                os.remove(os.path.join(path, '_data', file))
     lua.newline = ""
     lua.tab = ""
 
@@ -149,7 +148,7 @@ def process_expansion(expansion_name: str, entity_type: str, expansion_data: dic
         # If we have written the maximum amount of entries, or if we have reached the dict
         if entries_written == range_size or entryIndex == len(expansion_data):# or len(lookup_data) + len(output_data) > max_file_size:
             lookup_data = lookup_data[:-1] + "</p>"
-            output_file_name = f"{path}\\_data\\{lowest_id}-{highest_id}.html"
+            output_file_name = os.path.join(path, "_data", f"{lowest_id}-{highest_id}.html")
             # if len(lookup_data) + len(output_data) > max_file_size:
             #     print("Warning: File size exceeded for {}-{}.html".format(lowest_id, highest_id))
             #     print(output_file_name)
@@ -176,10 +175,10 @@ def process_expansion(expansion_name: str, entity_type: str, expansion_data: dic
             lookup_data = lookup_data_start
 
         if entryIndex == len(expansion_data) or entryIndex % 1000 == 0:
-          print(f"Processed {entryIndex}/{len(expansion_data)} {expansion} {entity_type_plural}")
+          print(f"Processed {entryIndex}/{len(expansion_data)} {expansion_name} {entity_type_plural}")
 
     # Write out all EntityIds to a file
-    with open(f"{path}\\{entity_type_capitalized}DataIds.html", 'w', encoding="utf-8", newline="\n") as entity_id_lookup_file:
+    with open(os.path.join(path, f"{entity_type_capitalized}DataIds.html"), 'w', encoding="utf-8", newline="\n") as entity_id_lookup_file:
       # Write all Ids to a file
       printData = []
       temp = ""
@@ -203,14 +202,14 @@ def process_expansion(expansion_name: str, entity_type: str, expansion_data: dic
 
     # Write out the embed file
     # This file contains templates for all the SimpleHTML frames that are generated
-    with open(f"{path}\\{entity_type_capitalized}DataFiles.xml", 'w', encoding="utf-8", newline="\n") as embed_file:
+    with open(os.path.join(path, f"{entity_type_capitalized}DataFiles.xml"), 'w', encoding="utf-8", newline="\n") as embed_file:
       embed_file.write('<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\\FrameXML\\UI.xsd">\n')
       for embed_file_string in embed_file_strings:
         embed_file.write(embed_file_string)
       embed_file.write('</Ui>')
 
     # This file contains all the ranges for the files that are generated
-    with open(f"{path}\\{entity_type_capitalized}DataTemplates.html", 'w', encoding="utf-8", newline="\n") as filename_file:
+    with open(os.path.join(path, f"{entity_type_capitalized}DataTemplates.html"), 'w', encoding="utf-8", newline="\n") as filename_file:
       filename_file.write("<!-- This contains all the ranges for the files that are generated -->\n")
       filename_file.write("<html><body>\n")
       #Trim the last comma if it exists
@@ -228,45 +227,68 @@ def process_expansion(expansion_name: str, entity_type: str, expansion_data: dic
 
     print(f"Finished dumping {entity_type}s for {expansion_name}")
 
-
-# Ask which expansions to dump or all
-all_expansions = input("Dump all expansions? (y/n): ")
-if all_expansions.lower() == "y":
-    print("Dumping all expansions")
-else:
-    dump_expansions = input("Enter the expansions to dump (e.g., Era, Tbc, Wotlk): ")
-    dump_expansions = dump_expansions.split(" ")
-    for expansion in dump_expansions:
-        if expansion not in expansions:
-            print(f"Invalid expansion: {expansion}")
-            exit()
-    expansions = dump_expansions
-    print(f"Dumping {dump_expansions}")
-
-fetch_data_from_github = input("Fetch new data from github? (Slowish) (y/n): ")
-if fetch_data_from_github.lower() == "y":
+def dumpHTML(expansions):
+  # Load the data for all expansions
+  # The decoding with lua is not thread safe, so we do it here
+  all_expansion_data = {}
   for expansion in expansions:
-    dumpData(expansion)
-    print(f"Fetched {expansion} data from github")
+      all_expansion_data[expansion] = {}
+      for entity_type in entity_types:
+          print(f"Reading {expansion} lua {entity_type.lower()} data")
+          raw_expansion_data = read_expansion_data(expansion, entity_type)
+          print(f"Decoding {expansion} lua {entity_type.lower()} data to python {entity_type.lower()}")
+          all_expansion_data[expansion][entity_type] = lua.decode(raw_expansion_data)
 
-# Load the data for all expansions
-# The decoding with lua is not thread safe, so we do it here
-all_expansion_data = {}
-for expansion in expansions:
-    all_expansion_data[expansion] = {}
-    for entity_type in entity_types:
-        print(f"Reading {expansion} lua {entity_type.lower()} data")
-        raw_expansion_data = read_expansion_data(expansion, entity_type)
-        print(f"Decoding {expansion} lua {entity_type.lower()} data to python {entity_type.lower()}")
-        all_expansion_data[expansion][entity_type] = lua.decode(raw_expansion_data)
+  # Process all expansions in separate threads
+  with concurrent.futures.ThreadPoolExecutor() as executor:
+      futures = [executor.submit(process_expansion, expansion, entity_type, all_expansion_data[expansion][entity_type]) for expansion in expansions for entity_type in entity_types]
 
-# Process all expansions in separate threads
-with concurrent.futures.ThreadPoolExecutor() as executor:
-    futures = [executor.submit(process_expansion, expansion, entity_type, all_expansion_data[expansion][entity_type]) for expansion in expansions for entity_type in entity_types]
+      # Wait for all threads to complete
+      for future in concurrent.futures.as_completed(futures):
+          try:
+              future.result()
+          except Exception as e:
+              print(f"An error occurred in a thread: {e}")
 
-    # Wait for all threads to complete
-    for future in concurrent.futures.as_completed(futures):
-        try:
-            future.result()
-        except Exception as e:
-            print(f"An error occurred in a thread: {e}")
+if __name__ == "__main__":
+  # Get arguments
+  if len(sys.argv) < 2:
+    print("Usage: dump.py <expansion> <expansion> ...")
+    exit()
+
+  for expansion in sys.argv[1:]:
+    if expansion not in expansions:
+      print(f"Invalid expansion: {expansion}")
+      exit()
+  expansions = sys.argv[1:]
+
+  print(f"Dumping {expansions} data")
+  dumpHTML(expansions)
+
+  # if len(sys.argv) > 1:
+  #     expansions = sys.argv[1:]
+  #     for expansion in expansions:
+  #         if expansion not in expansions:
+  #             print(f"Invalid expansion: {expansion}")
+  #             exit()
+  #     print(f"Dumping {expansions}")
+
+  # # Ask which expansions to dump or all
+  # all_expansions = input("Dump all expansions? (y/n): ")
+  # if all_expansions.lower() == "y":
+  #     print("Dumping all expansions")
+  # else:
+  #     dump_expansions = input("Enter the expansions to dump (e.g., Era, Tbc, Wotlk): ")
+  #     dump_expansions = dump_expansions.split(" ")
+  #     for expansion in dump_expansions:
+  #         if expansion not in expansions:
+  #             print(f"Invalid expansion: {expansion}")
+  #             exit()
+  #     expansions = dump_expansions
+  #     print(f"Dumping {dump_expansions}")
+
+  # fetch_data_from_github = input("Fetch new data from github? (Slowish) (y/n): ")
+  # if fetch_data_from_github.lower() == "y":
+  #   for expansion in expansions:
+  #     dumpData(expansion)
+  #     print(f"Fetched {expansion} data from github")

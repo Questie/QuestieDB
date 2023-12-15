@@ -1,12 +1,16 @@
 import os
 import concurrent.futures
 import math
+import sys
 import requests
 from slpp import slpp as lua
 from luaparser import ast
 from luaparser import astnodes
 import json
 from helpers import find_addon_name, read_expansion_data, get_project_dir_path, get_data_dir_path
+
+
+expansions = ["Era", "Tbc", "Wotlk"]
 
 # Get the string data from the AST tree
 def getData(fileData, varName):
@@ -43,8 +47,7 @@ def indexToType(data):
   return typeFromIndex
 
 # Used to combine data from multiple indexes into one and returns a string of the data
-def convertData(luadata, totalEndLength, luaReplaceIndex, luaCombineIndex):
-  data = lua.decode(luadata)
+def convertData(data, totalEndLength, luaReplaceIndex, luaCombineIndex):
   typeFromIndex = indexToType(data)
 
   if type(luaReplaceIndex) == int and luaReplaceIndex >= 0 and type(luaCombineIndex) == list and len(luaCombineIndex) > 0:
@@ -107,7 +110,36 @@ def convertData(luadata, totalEndLength, luaReplaceIndex, luaCombineIndex):
   allData = allData.replace("__________", "\\'")
   return f"{{\n{allData}}}"
 
+def getHighestIndex(data):
+  if type(data) == dict:
+    biggest_index = 0
+    for key in data.keys():
+      if key > biggest_index:
+        biggest_index = key
+    return biggest_index
+  else:
+    return len(data)
 
+def applyCorrections(entity_data, entity_corrections):
+  # Load the entity_data for all expansions
+  for entityId in entity_corrections:
+    if entityId not in entity_data:
+      # Create a new entry if it does not exist
+      entity_data[entityId] = []
+    entity = entity_data[entityId]
+    corrections = entity_corrections[entityId]
+
+    # Get biggest index from entity and corrections
+    biggest_correction_index = getHighestIndex(corrections)
+    biggest_entity_index = getHighestIndex(entity)
+    # print(f"Biggest index for {entity_type} {entityId}: {biggest_correction_index} {biggest_entity_index}")
+    for i in range(biggest_entity_index):
+      # Create a new entry if it does not exist
+      if i >= len(entity):
+        entity.append(corrections[i])
+      elif i in corrections:
+        entity[i] = corrections[i]
+  return entity_data
 
 
 # These are all the same for all expansions
@@ -212,30 +244,73 @@ dataLookup = {
 
 # Dumps the data for a given expansion into it's Database folder
 # e.g. Database\Item\Era\ItemData.lua-table
-def dumpData(expansion):
+def dumpData(expansion, download=False):
+  datadir = f"{get_project_dir_path()}/.generate_database/_data/{expansion}"
+  os.makedirs(datadir, exist_ok=True)
+  print("----------------------------------------")
   print("Dumping data for expansion: "+expansion)
   for entityTypeName in dataLookup[expansion]:
     print(entityTypeName)
     entityMeta = dataLookup[expansion][entityTypeName]
-    path = os.path.join(get_data_dir_path(entityTypeName, expansion))
-    filename = f"{path}\{entityTypeName.capitalize()}Data.lua-table"
-    print("  Downloading data: "+entityMeta["url"])
-    req = requests.get(entityMeta["url"])
-    newData = convertData(getData(req.text, entityMeta["dataVarName"]),
+    rawDataPath = f"{datadir}/{entityTypeName}QuestieData.lua-table"
+
+    # Download the data if it does not exist
+    rawData = ""
+    if download or not os.path.exists(rawDataPath):
+      print("  Downloading data: "+entityMeta["url"])
+      req = requests.get(entityMeta["url"])
+      rawData = req.text
+      with open(rawDataPath, "w", encoding="utf-8", newline="\n") as f:
+        f.write(rawData)
+    else:
+      with open(rawDataPath, "r", encoding="utf-8") as f:
+        rawData = f.read()
+    # Decode the data
+    data = lua.decode(getData(rawData, entityMeta["dataVarName"]))
+
+    # Apply corrections
+    print(get_project_dir_path())
+    correctionsPath = os.path.join(get_project_dir_path(), ".generate_database", "_data", expansion, f"{entityTypeName}Override.lua-table")
+    print(correctionsPath)
+    if os.path.exists(correctionsPath):
+      with open(correctionsPath, 'r', encoding="utf-8") as lua_corrections_file:
+        print("  Applying corrections:")
+        print("   ", correctionsPath)
+        lua_corrections = lua_corrections_file.read()
+        corrections_data = lua.decode(lua_corrections)
+        applyCorrections(data, corrections_data)
+    else:
+      print("!!!!  No corrections found !!!! Please run createStatic.lua to generate corrections")
+    exit
+
+    # Fix the data for the new format
+    newData = convertData(data,
       replaceLookup[entityTypeName]["totalEndLength"],
       replaceLookup[entityTypeName]["luaReplaceIndex"],
       replaceLookup[entityTypeName]["luaCombineIndex"])
     if newData != None:
+      path = os.path.join(get_data_dir_path(entityTypeName, expansion))
+      filename = os.path.join(path, f"{entityTypeName.capitalize()}Data.lua-table")
       print("  Dumping data:")
       print("   ", filename)
       with open(filename, "w", encoding="utf-8", newline="\n") as f:
         f.write(newData)
-
+  print("----------------------------------------")
 
 def dumpAllData():
   for expansion in dataLookup:
     dumpData(expansion)
 
 if __name__ == "__main__":
-  # dumpAllData()
-  dumpData("Era")
+  # Get arguments
+  if len(sys.argv) < 2:
+    print("Usage: dump.py <expansion> <expansion> ...")
+    exit()
+
+  for expansion in sys.argv[1:]:
+    if expansion not in expansions:
+      print(f"Invalid expansion: {expansion}")
+      exit()
+  expansions = sys.argv[1:]
+  for expansion in expansions:
+    dumpData(expansion)
