@@ -22,6 +22,17 @@ local function writeDebug()
       return
     end
   end
+  if debugTextString == nil then
+    debugTextString = UIParent:CreateFontString(nil, "OVERLAY", "QuestFont")
+    debugTextString:SetWidth(500) --QuestLogObjectivesText default width = 275
+    debugTextString:SetHeight(0);
+    debugTextString:SetPoint("TOP", -250, 0);
+    debugTextString:SetJustifyH("LEFT");
+    ---@diagnostic disable-next-line: redundant-parameter
+    debugTextString:SetWordWrap(true)
+    debugTextString:SetVertexColor(1, 1, 1, 1) --Set opacity to 0, even if it is shown it should be invisible
+    debugTextString:SetFont(debugTextString:GetFont(), 16, "OUTLINE")
+  end
   debugTextString:SetText("")
   for namespace, data in pairs(debugTable) do
     local text = ""
