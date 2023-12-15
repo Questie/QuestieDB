@@ -87,7 +87,6 @@ def process_expansion(expansion_name: str, entity_type: str, expansion_data: dic
             encoded_line = encoded_line.replace("\\n", "<br>")
             # Replaces \\" with "
             encoded_line = encoded_line.replace('\\\\"', '"')
-            encoded_line = encoded_line.replace('\\"', '"')
             # Remove " from the start and end of the line if it exists
             if encoded_line.startswith('"'):
                 encoded_line = encoded_line[1:]
@@ -96,6 +95,11 @@ def process_expansion(expansion_name: str, entity_type: str, expansion_data: dic
             #Trim the last comma if it exists
             if encoded_line.endswith(","):
                 encoded_line = encoded_line[:-1]
+            # Do not remove \" if the line starts or ends with { or }
+            # Because that means it is a table and can contain strings with escaped quotes
+            if not encoded_line.startswith("{") and not encoded_line.endswith("}"):
+                encoded_line = encoded_line.replace('\\"', '"')
+
             # Clean up the data
             for i in range(10):
               encoded_line = encoded_line.replace(",}", "}")
