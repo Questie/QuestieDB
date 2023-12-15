@@ -13,6 +13,10 @@ local DebugText = LibQuestieDB.DebugText
 
 local debug = DebugText:Get("Item")
 
+--*---------------------------
+--- The nil value for the database
+local _nil = Database._nil
+
 local glob = {}
 local override = {}
 
@@ -130,7 +134,8 @@ do
   function ItemFunctions.name(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["name"] then
-      return override[id]["name"]
+      local name = override[id]["name"]
+      return name ~= _nil and name or nil
     end
     local data = glob[id]
     if data[1] then
@@ -146,7 +151,8 @@ do
   function ItemFunctions.npcDrops(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["npcDrops"] then
-      return override[id]["npcDrops"]
+      local npcDrops = override[id]["npcDrops"]
+      return npcDrops ~= _nil and npcDrops or nil
     end
     local data = glob[id]
     if data then
@@ -162,7 +168,8 @@ do
   function ItemFunctions.objectDrops(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["objectDrops"] then
-      return override[id]["objectDrops"]
+      local objectDrops = override[id]["objectDrops"]
+      return objectDrops ~= _nil and objectDrops or nil
     end
     local data = glob[id]
     if data then
@@ -178,7 +185,8 @@ do
   function ItemFunctions.itemDrops(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["itemDrops"] then
-      return override[id]["itemDrops"]
+      local itemDrops = override[id]["itemDrops"]
+      return itemDrops ~= _nil and itemDrops or nil
     end
     local data = glob[id]
     if data then
@@ -194,7 +202,8 @@ do
   function ItemFunctions.startQuest(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["startQuest"] then
-      return override[id]["startQuest"]
+      local startQuest = override[id]["startQuest"]
+      return startQuest ~= _nil and startQuest or nil
     end
     local data = glob[id]
     if data then
@@ -210,7 +219,8 @@ do
   function ItemFunctions.questRewards(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["questRewards"] then
-      return override[id]["questRewards"]
+      local questRewards = override[id]["questRewards"]
+      return questRewards ~= _nil and questRewards or nil
     end
     local data = glob[id]
     if data then
@@ -226,7 +236,8 @@ do
   function ItemFunctions.flags(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["flags"] then
-      return override[id]["flags"]
+      local flags = override[id]["flags"]
+      return flags ~= _nil and flags or nil
     end
     local data = glob[id]
     if data[7] then
@@ -243,7 +254,8 @@ do
   function ItemFunctions.foodType(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["foodType"] then
-      return override[id]["foodType"]
+      local foodType = override[id]["foodType"]
+      return foodType ~= _nil and foodType or nil
     end
     local data = glob[id]
     if data[7] then
@@ -260,7 +272,8 @@ do
   function ItemFunctions.itemLevel(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["itemLevel"] then
-      return override[id]["itemLevel"]
+      local itemLevel = override[id]["itemLevel"]
+      return itemLevel ~= _nil and itemLevel or nil
     end
     local data = glob[id]
     if data[7] then
@@ -277,7 +290,8 @@ do
   function ItemFunctions.requiredLevel(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["requiredLevel"] then
-      return override[id]["requiredLevel"]
+      local requiredLevel = override[id]["requiredLevel"]
+      return requiredLevel ~= _nil and requiredLevel or nil
     end
     local data = glob[id]
     if data[7] then
@@ -294,7 +308,8 @@ do
   function ItemFunctions.ammoType(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["ammoType"] then
-      return override[id]["ammoType"]
+      local ammoType = override[id]["ammoType"]
+      return ammoType ~= _nil and ammoType or nil
     end
     local data = glob[id]
     if data[7] then
@@ -312,7 +327,8 @@ do
   function ItemFunctions.class(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["class"] then
-      return override[id]["class"]
+      local class = override[id]["class"]
+      return class ~= _nil and class or nil
     end
     local data = glob[id]
     if data[7] then
@@ -329,7 +345,8 @@ do
   function ItemFunctions.subClass(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["subClass"] then
-      return override[id]["subClass"]
+      local subClass = override[id]["subClass"]
+      return subClass ~= _nil and subClass or nil
     end
     local data = glob[id]
     if data[7] then
@@ -346,7 +363,8 @@ do
   function ItemFunctions.vendors(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["vendors"] then
-      return override[id]["vendors"]
+      local vendors = override[id]["vendors"]
+      return vendors ~= _nil and vendors or nil
     end
     local data = glob[id]
     if data then
@@ -362,7 +380,8 @@ do
   function ItemFunctions.relatedQuests(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["relatedQuests"] then
-      return override[id]["relatedQuests"]
+      local relatedQuests = override[id]["relatedQuests"]
+      return relatedQuests ~= _nil and relatedQuests or nil
     end
     local data = glob[id]
     if data then
@@ -378,7 +397,8 @@ do
   function ItemFunctions.teachesSpell(id)
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["teachesSpell"] then
-      return override[id]["teachesSpell"]
+      local teachesSpell = override[id]["teachesSpell"]
+      return teachesSpell ~= _nil and teachesSpell or nil
     end
     local data = glob[id]
     if data then

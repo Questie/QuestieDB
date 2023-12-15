@@ -16,6 +16,9 @@ local Item = LibQuestieDB.Item
 Database.debugEnabled = true
 Database.Initialized = false
 
+Database._nil = "nil"
+local _nil = Database._nil
+
 
 ---@alias Id number @Generic id type
 
@@ -29,6 +32,8 @@ local loadstring = loadstring
 local gMatch = string.gmatch
 
 local type = type
+local pairs = pairs
+local assert = assert
 
 --? Fetch functions for the database
 Database.getNumber = function(pObject)
@@ -70,6 +75,7 @@ end
 function Database.Override(overrideData, overrideTable, keys)
   -- return immediately if any of the parameters is not provided
   if not overrideData or not overrideTable or not keys then
+    print("Please provide 3 arguments to the Override function.")
     return 0
   end
 
@@ -102,6 +108,21 @@ function Database.Override(overrideData, overrideTable, keys)
         end
         -- Add the keyName and its corresponding value to the overrideTable
         overrideTable[dataId][keyName] = value
+
+        --? We don't want to store empty tables in the override table
+        if type(value) == "table" then
+          -- Is the table empty?
+          if #value == 0 then
+            -- Make sure the table is empty
+            local count = 0
+            for _ in pairs(value) do
+              count = count + 1
+            end
+            if count == 0 then
+              overrideTable[dataId][keyName] = _nil
+            end
+          end
+        end
       end
       totalCount = totalCount + 1
     end

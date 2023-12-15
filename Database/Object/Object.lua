@@ -12,9 +12,14 @@ local DebugText = LibQuestieDB.DebugText
 
 local debug = DebugText:Get("Object")
 
+--*---------------------------
+--- The nil value for the database
+local _nil = Database._nil
+
 -- This will be assigned from the initialize function
 local glob = {}
 local override = {}
+
 function Object.InitializeDynamic()
   -- This will be assigned from the initialize function
   local objectData = Database.LoadDatafileList("ObjectData")
@@ -113,7 +118,8 @@ do
   ---@return Name?
   function ObjectFunctions.name(id)
     if override[id] and override[id]["name"] then
-      return override[id]["name"]
+      local name = override[id]["name"]
+      return name ~= _nil and name or nil
     end
     local data = glob[id]
     if data[1] then
@@ -128,7 +134,8 @@ do
   ---@return QuestId[]?
   function ObjectFunctions.questStarts(id)
     if override[id] and override[id]["questStarts"] then
-      return override[id]["questStarts"]
+      local questStarts = override[id]["questStarts"]
+      return questStarts ~= _nil and questStarts or nil
     end
     local data = glob[id]
     if data then
@@ -143,7 +150,8 @@ do
   ---@return QuestId[]?
   function ObjectFunctions.questEnds(id)
     if override[id] and override[id]["questEnds"] then
-      return override[id]["questEnds"]
+      local questEnds = override[id]["questEnds"]
+      return questEnds ~= _nil and questEnds or nil
     end
     local data = glob[id]
     if data then
@@ -158,7 +166,8 @@ do
   ---@return table<AreaId, table<CoordPair>>?
   function ObjectFunctions.spawns(id)
     if override[id] and override[id]["spawns"] then
-      return override[id]["spawns"]
+      local spawns = override[id]["spawns"]
+      return spawns ~= _nil and spawns or nil
     end
     local data = glob[id]
     if data then
@@ -173,7 +182,8 @@ do
   ---@return AreaId?
   function ObjectFunctions.zoneID(id)
     if override[id] and override[id]["zoneID"] then
-      return override[id]["zoneID"]
+      local zoneID = override[id]["zoneID"]
+      return zoneID ~= _nil and zoneID or nil
     end
     local data = glob[id]
     if data then
@@ -188,7 +198,8 @@ do
   ---@return number?
   function ObjectFunctions.factionID(id)
     if override[id] and override[id]["factionID"] then
-      return override[id]["factionID"]
+      local factionID = override[id]["factionID"]
+      return factionID ~= _nil and factionID or nil
     end
     local data = glob[id]
     if data then

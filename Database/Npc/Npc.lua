@@ -12,6 +12,9 @@ local DebugText = LibQuestieDB.DebugText
 
 local debug = DebugText:Get("Npc")
 
+--*---------------------------
+--- The nil value for the database
+local _nil = Database._nil
 local tonumber = tonumber
 
 -- This will be assigned from the initialize function
@@ -135,7 +138,8 @@ do
   ---@return Name?
   function NpcFunctions.name(id)
     if override[id] and override[id]["name"] then
-      return override[id]["name"]
+      local name = override[id]["name"]
+      return name ~= _nil and name or nil
     end
     local data = glob[id]
     if data[1] then
@@ -150,7 +154,8 @@ do
   ---@return number?
   function NpcFunctions.minLevelHealth(id)
     if override[id] and override[id]["minLevelHealth"] then
-      return override[id]["minLevelHealth"]
+      local minLevelHealth = override[id]["minLevelHealth"]
+      return minLevelHealth ~= _nil and minLevelHealth or nil
     end
     local data = glob[id]
     if data[2] then
@@ -166,7 +171,8 @@ do
   ---@return number?
   function NpcFunctions.maxLevelHealth(id)
     if override[id] and override[id]["maxLevelHealth"] then
-      return override[id]["maxLevelHealth"]
+      local maxLevelHealth = override[id]["maxLevelHealth"]
+      return maxLevelHealth ~= _nil and maxLevelHealth or nil
     end
     local data = glob[id]
     if data[2] then
@@ -182,7 +188,8 @@ do
   ---@return number?
   function NpcFunctions.minLevel(id)
     if override[id] and override[id]["minLevel"] then
-      return override[id]["minLevel"]
+      local minLevel = override[id]["minLevel"]
+      return minLevel ~= _nil and minLevel or nil
     end
     local data = glob[id]
     if data[2] then
@@ -199,7 +206,8 @@ do
   ---@return number?
   function NpcFunctions.maxLevel(id)
     if override[id] and override[id]["maxLevel"] then
-      return override[id]["maxLevel"]
+      local maxLevel = override[id]["maxLevel"]
+      return maxLevel ~= _nil and maxLevel or nil
     end
     local data = glob[id]
     if data[2] then
@@ -216,7 +224,8 @@ do
   ---@return number?
   function NpcFunctions.rank(id)
     if override[id] and override[id]["rank"] then
-      return override[id]["rank"]
+      local rank = override[id]["rank"]
+      return rank ~= _nil and rank or nil
     end
     local data = glob[id]
     if data[2] then
@@ -234,7 +243,8 @@ do
   ---@return AreaId?
   function NpcFunctions.zoneID(id)
     if override[id] and override[id]["zoneID"] then
-      return override[id]["zoneID"]
+      local zoneID = override[id]["zoneID"]
+      return zoneID ~= _nil and zoneID or nil
     end
     local data = glob[id]
     if data[2] then
@@ -250,7 +260,8 @@ do
   ---@return number?
   function NpcFunctions.factionID(id)
     if override[id] and override[id]["factionID"] then
-      return override[id]["factionID"]
+      local factionID = override[id]["factionID"]
+      return factionID ~= _nil and factionID or nil
     end
     local data = glob[id]
     if data[2] then
@@ -266,7 +277,8 @@ do
   ---@return string?
   function NpcFunctions.friendlyToFaction(id)
     if override[id] and override[id]["friendlyToFaction"] then
-      return override[id]["friendlyToFaction"]
+      local friendlyToFaction = override[id]["friendlyToFaction"]
+      return friendlyToFaction ~= _nil and friendlyToFaction or nil
     end
     local data = glob[id]
     if data[2] then
@@ -282,7 +294,8 @@ do
   ---@return number?
   function NpcFunctions.npcFlags(id)
     if override[id] and override[id]["npcFlags"] then
-      return override[id]["npcFlags"]
+      local npcFlags = override[id]["npcFlags"]
+      return npcFlags ~= _nil and npcFlags or nil
     end
     local data = glob[id]
     if data[2] then
@@ -299,7 +312,8 @@ do
   ---@return table<AreaId, CoordPair[]>?
   function NpcFunctions.spawns(id)
     if override[id] and override[id]["spawns"] then
-      return override[id]["spawns"]
+      local spawns = override[id]["spawns"]
+      return spawns ~= _nil and spawns or nil
     end
     local data = glob[id]
     if data then
@@ -314,7 +328,8 @@ do
   ---@return table<AreaId, CoordPair[]>?
   function NpcFunctions.waypoints(id)
     if override[id] and override[id]["waypoints"] then
-      return override[id]["waypoints"]
+      local waypoints = override[id]["waypoints"]
+      return waypoints ~= _nil and waypoints or nil
     end
     local data = glob[id]
     if data then
@@ -329,7 +344,8 @@ do
   ---@return QuestId[]?
   function NpcFunctions.questStarts(id)
     if override[id] and override[id]["questStarts"] then
-      return override[id]["questStarts"]
+      local questStarts = override[id]["questStarts"]
+      return questStarts ~= _nil and questStarts or nil
     end
     local data = glob[id]
     if data then
@@ -344,7 +360,8 @@ do
   ---@return QuestId[]?
   function NpcFunctions.questEnds(id)
     if override[id] and override[id]["questEnds"] then
-      return override[id]["questEnds"]
+      local questEnds = override[id]["questEnds"]
+      return questEnds ~= _nil and questEnds or nil
     end
     local data = glob[id]
     if data then
@@ -359,7 +376,8 @@ do
   ---@return string?
   function NpcFunctions.subName(id)
     if override[id] and override[id]["subName"] then
-      return override[id]["subName"]
+      local subName = override[id]["subName"]
+      return subName ~= _nil and subName or nil
     end
     local data = glob[id]
     if data[7] then
