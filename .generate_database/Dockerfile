@@ -1,0 +1,8 @@
+FROM nickblah/lua:5.1-luarocks
+
+RUN apt-get update && apt-get install -y git gcc && luarocks install bit32 && luarocks install argparse
+
+RUN apt-get update && apt-get install -y python3 python3-pip && \
+    pip3 install git+https://github.com/SirAnthony/slpp && \
+    pip3 install luaparser && \
+    pip3 install requests

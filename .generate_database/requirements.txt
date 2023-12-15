@@ -1,2 +1,3 @@
 slpp @ git+https://github.com/SirAnthony/slpp
 luaparser
+requests
