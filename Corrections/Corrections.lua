@@ -69,18 +69,35 @@ end
 do
   --- Returns a list of corrections for the given type, keyed by Name or Index, useful for getting a specific correction
   ---@param type "item"|"npc"|"object"|"quest"
+  ---@param includeStatic boolean @ If true, the static corrections will be included
+  ---@param includeDynamic boolean? @ If true, the dynamic corrections will be included
   ---@return Correction[]
-  function Corrections.GetCorrections(type, includeStatic)
+  function Corrections.GetCorrections(type, includeStatic, includeDynamic)
+    if includeDynamic == nil then
+      includeDynamic = true
+    end
     -- It looks strange to return the static nil first, but we ALWAYS want dynamic overrides to trump static ones
     -- So we do it this way because then a pairs() would start with the static ones and then the dynamic ones
     if type == "item" then
-      return {includeStatic and Corrections.ItemCorrectionsStatic or nil, Corrections.ItemCorrectionsDynamic}
+      return {
+        includeStatic and Corrections.ItemCorrectionsStatic or nil,
+        includeDynamic and Corrections.ItemCorrectionsDynamic or nil,
+      }
     elseif type == "npc" then
-      return {includeStatic and Corrections.NpcCorrectionsStatic or nil, Corrections.NpcCorrectionsDynamic}
+      return {
+        includeStatic and Corrections.NpcCorrectionsStatic or nil,
+        includeDynamic and Corrections.NpcCorrectionsDynamic or nil,
+      }
     elseif type == "object" then
-      return {includeStatic and Corrections.ObjectCorrectionsStatic or nil, Corrections.ObjectCorrectionsDynamic}
+      return {
+        includeStatic and Corrections.ObjectCorrectionsStatic or nil,
+        includeDynamic and Corrections.ObjectCorrectionsDynamic or nil,
+      }
     elseif type == "quest" then
-      return {includeStatic and Corrections.QuestCorrectionsStatic or nil, Corrections.QuestCorrectionsDynamic}
+      return {
+        includeStatic and Corrections.QuestCorrectionsStatic or nil,
+        includeDynamic and Corrections.QuestCorrectionsDynamic or nil,
+      }
     end
     error("Invalid type")
   end
