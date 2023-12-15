@@ -42,13 +42,26 @@ function Item.InitializeDynamic()
     }
   )
   Item.glob = glob
-  Item.override = override
+  Item.LoadOverrideData()
+end
 
+---@param includeDynamic boolean? @If true, include dynamic data Default true
+---@param includeStatic boolean? @If true, include dynamic data Default false
+function Item.LoadOverrideData(includeDynamic, includeStatic)
+  if includeDynamic == nil then
+    includeDynamic = true
+  end
+  if includeStatic == nil then
+    includeStatic = Database.debugEnabled or false
+  end
+  -- Clear the override data
+  Item.ClearOverrideData()
 
+  print("Loading Item Corrections")
   local loadOrder = 0
   local totalLoaded = 0
   -- Load all Item Corrections
-  for _, list in pairs(Corrections.GetCorrections("item", Database.debugEnabled)) do
+  for _, list in pairs(Corrections.GetCorrections("item", includeStatic, includeDynamic)) do
     for id, func in pairs(list) do
       local correctionData = func()
       totalLoaded = totalLoaded + Item.AddOverrideData(correctionData, Corrections.ItemMeta.itemKeys)
@@ -61,6 +74,7 @@ function Item.InitializeDynamic()
   if Database.debugEnabled then
     debug:Print("  # Item Corrections", totalLoaded)
   end
+  Item.override = override
 end
 
 function Item.AddOverrideData(dataOverride, overrideKeys)

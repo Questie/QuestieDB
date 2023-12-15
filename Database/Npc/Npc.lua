@@ -41,12 +41,26 @@ function Npc.InitializeDynamic()
     }
   )
   Npc.glob = glob
-  Npc.override = override
+  Npc.LoadOverrideData()
+end
 
+---@param includeDynamic boolean? @If true, include dynamic data Default true
+---@param includeStatic boolean? @If true, include dynamic data Default false
+function Npc.LoadOverrideData(includeDynamic, includeStatic)
+  if includeDynamic == nil then
+    includeDynamic = true
+  end
+  if includeStatic == nil then
+    includeStatic = Database.debugEnabled or false
+  end
+  -- Clear the override data
+  Npc.ClearOverrideData()
+
+  print("Loading Npc Corrections")
   local loadOrder = 0
   local totalLoaded = 0
   -- Load all Npc Corrections
-  for _, list in pairs(Corrections.GetCorrections("npc", Database.debugEnabled)) do
+  for _, list in pairs(Corrections.GetCorrections("npc", includeStatic, includeDynamic)) do
     for id, func in pairs(list) do
       local correctionData = func()
       totalLoaded = totalLoaded + Npc.AddOverrideData(correctionData, Corrections.NpcMeta.npcKeys)
@@ -59,6 +73,7 @@ function Npc.InitializeDynamic()
   if Database.debugEnabled then
     debug:Print("  # Npc Corrections", totalLoaded)
   end
+  Npc.override = override
 end
 
 function Npc.AddOverrideData(dataOverride, overrideKeys)
