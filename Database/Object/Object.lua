@@ -40,12 +40,26 @@ function Object.InitializeDynamic()
     }
   )
   Object.glob = glob
-  Object.override = override
+  Object.LoadOverrideData()
+end
 
+---@param includeDynamic boolean? @If true, include dynamic data Default true
+---@param includeStatic boolean? @If true, include dynamic data Default false
+function Object.LoadOverrideData(includeDynamic, includeStatic)
+  if includeDynamic == nil then
+    includeDynamic = true
+  end
+  if includeStatic == nil then
+    includeStatic = Database.debugEnabled or false
+  end
+  -- Clear the override data
+  Object.ClearOverrideData()
+
+  print("Loading Object Corrections")
   local loadOrder = 0
   local totalLoaded = 0
   -- Load all Object Corrections
-  for _, list in pairs(Corrections.GetCorrections("object", Database.debugEnabled)) do
+  for _, list in pairs(Corrections.GetCorrections("object", includeStatic, includeDynamic)) do
     for id, func in pairs(list) do
       local correctionData = func()
       totalLoaded = totalLoaded + Object.AddOverrideData(correctionData, Corrections.ObjectMeta.objectKeys)
@@ -58,6 +72,7 @@ function Object.InitializeDynamic()
   if Database.debugEnabled then
     debug:Print("  # Object Corrections", totalLoaded)
   end
+  Object.override = override
 end
 
 function Object.AddOverrideData(dataOverride, overrideKeys)

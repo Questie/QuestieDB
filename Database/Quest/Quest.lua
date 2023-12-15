@@ -41,12 +41,27 @@ function Quest.InitializeDynamic()
     }
   )
   Quest.glob = glob
-  Quest.override = override
+  Quest.LoadOverrideData()
+end
 
+---comment
+---@param includeDynamic boolean? @If true, include dynamic data Default true
+---@param includeStatic boolean? @If true, include dynamic data Default false
+function Quest.LoadOverrideData(includeDynamic, includeStatic)
+  if includeDynamic == nil then
+    includeDynamic = true
+  end
+  if includeStatic == nil then
+    includeStatic = Database.debugEnabled or false
+  end
+  -- Clear the override data
+  Quest.ClearOverrideData()
+
+  print("Loading Quest Corrections")
   local loadOrder = 0
   local totalLoaded = 0
   -- Load all Quest Corrections
-  for _, list in pairs(Corrections.GetCorrections("quest", Database.debugEnabled)) do
+  for _, list in pairs(Corrections.GetCorrections("quest", includeStatic, includeDynamic)) do
     for id, func in pairs(list) do
       local correctionData = func()
       totalLoaded = totalLoaded + Quest.AddOverrideData(correctionData, Corrections.QuestMeta.questKeys)
@@ -59,6 +74,7 @@ function Quest.InitializeDynamic()
   if Database.debugEnabled then
     debug:Print("  # Quest Corrections", totalLoaded)
   end
+  Quest.override = override
 end
 
 function Quest.AddOverrideData(dataOverride, overrideKeys)
