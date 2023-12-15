@@ -1,6 +1,41 @@
 ---@class LibQuestieDB
 local LibQuestieDB = select(2, ...)
 
+-- Event registration
+-- Usage:
+-- Register   an event: ReturnedObject["EVENT_NAME"] = func
+-- Unregister an event: ReturnedObject["EVENT_NAME"] = nil
+---@return table<string, function>
+function LibQuestieDB.EventRegistrator()
+  ---@type table<string, function>
+  local RegisteredEvents = {}
+  local function OnEvent(_, event, ...)
+    RegisteredEvents[event](...)
+  end
+
+  -- Create the event frame and register the OnEvent handler
+  local eventFrame = CreateFrame("Frame")
+  eventFrame:SetScript("OnEvent", OnEvent)
+
+  ---@type table<string, function>
+  return setmetatable({}, {
+    __index = function(_, event)
+      return RegisteredEvents[event]
+    end,
+    __newindex = function(_, event, func)
+      if RegisteredEvents[event] and func == nil then
+        print("Unregistering", event)
+        eventFrame:UnregisterEvent(event)
+        RegisteredEvents[event] = nil
+      else
+        print("Registering", event)
+        eventFrame:RegisterEvent(event)
+        RegisteredEvents[event] = func
+      end
+    end,
+  })
+end
+
 --- Colorize a string with a color code
 ---@param color "red"|"gray"|"purple"|"blue"|"lightBlue"|"reputationBlue"|"yellow"|"orange"|"green"|"white"|"gold"|string
 ---@param ... string
