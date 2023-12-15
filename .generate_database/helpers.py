@@ -33,7 +33,7 @@ def find_addon_name():
             level += 1
 
     if addon_dir is None:
-        logger.error("Could not find the Addons folder, defaulting to project directory.")
+        logger.error("Could not find the Addons folder, defaulting to 'QuestieDB'.")
         return "QuestieDB"
     else:
         logger.info("Found Addons folder: {}".format(addon_dir))
