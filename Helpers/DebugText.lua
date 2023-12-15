@@ -5,15 +5,7 @@ local LibQuestieDB = select(2, ...)
 ---@class DebugText
 local DebugText = LibQuestieDB.DebugText
 
-local debugTextString = UIParent:CreateFontString(nil, "OVERLAY", "QuestFont")
-debugTextString:SetWidth(500) --QuestLogObjectivesText default width = 275
-debugTextString:SetHeight(0);
-debugTextString:SetPoint("TOP", -250, 0);
-debugTextString:SetJustifyH("LEFT");
----@diagnostic disable-next-line: redundant-parameter
-debugTextString:SetWordWrap(true)
-debugTextString:SetVertexColor(1, 1, 1, 1) --Set opacity to 0, even if it is shown it should be invisible
-debugTextString:SetFont(debugTextString:GetFont(), 16, "OUTLINE")
+local debugTextString
 
 local floor = math.floor
 local tostring, Round, select = tostring, Round, select
