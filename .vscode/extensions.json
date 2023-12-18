@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "ketho.wow-api",
+        "stanzilla.vscode-wow-toc",
+        "EditorConfig.EditorConfig",
+        "sumneko.lua",
+        "aaron-bond.better-comments",
+        "wayou.vscode-todo-highlight",
+        "esbenp.prettier-vscode"
+    ]
+}
