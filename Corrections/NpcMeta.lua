@@ -99,8 +99,7 @@ NpcMeta.waypointPresets = {
   },
 }
 
-
--- These are used to dump the corrections data to a file
+-- Used for dumping the database
 NpcMeta.dumpFuncs = {
   ['name'] = DumpFunctions.dump,
   ['minLevelHealth'] = DumpFunctions.dump,
