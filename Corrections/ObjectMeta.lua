@@ -23,6 +23,7 @@ ObjectMeta.objectKeys = {
   ['factionID'] = 6,   -- faction restriction mask (same as spawndb factionid)
 }
 
+-- Used for dumping the database
 ObjectMeta.dumpFuncs = {
   ['name'] = DumpFunctions.dump,
   ['questStarts'] = DumpFunctions.dumpAsArray,
