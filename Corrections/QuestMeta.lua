@@ -1,6 +1,9 @@
 ---@class LibQuestieDB
 local LibQuestieDB = select(2, ...)
 
+--- Imports
+local DumpFunctions = LibQuestieDB.Corrections.DumpFunctions
+
 ---@class QuestMeta
 local QuestMeta = {}
 
@@ -53,6 +56,39 @@ QuestMeta.questKeys = {
   ['requiredSpell'] = 28,            -- int: quest is only available if character has this spellID
   ['requiredSpecialization'] = 29,   -- int: quest is only available if character meets the spec requirements. Use QuestieProfessions.specializationKeys for having a spec, or QuestieProfessions.professionKeys to indicate having the profession with no spec. See QuestieProfessions.lua for more info.
   ['requiredMaxLevel'] = 30,         -- int: quest is only available up to a certain level
+}
+
+QuestMeta.dumpFuncs = {
+  ['name'] = DumpFunctions.dump,
+  ['startedBy'] = DumpFunctions.dumpAsArray,
+  ['finishedBy'] = DumpFunctions.dumpAsArray,
+  ['requiredLevel'] = DumpFunctions.dump,
+  ['questLevel'] = DumpFunctions.dump,
+  ['requiredRaces'] = DumpFunctions.dump,
+  ['requiredClasses'] = DumpFunctions.dump,
+  ['objectivesText'] = DumpFunctions.dumpAsArray,
+  ['triggerEnd'] = DumpFunctions.dumpTriggerEnd,
+  ['objectives'] = DumpFunctions.dumpAsArray,
+  ['sourceItemId'] = DumpFunctions.dump,
+  ['preQuestGroup'] = DumpFunctions.dumpAsArray,
+  ['preQuestSingle'] = DumpFunctions.dumpAsArray,
+  ['childQuests'] = DumpFunctions.dumpAsArray,
+  ['inGroupWith'] = DumpFunctions.dumpAsArray,
+  ['exclusiveTo'] = DumpFunctions.dumpAsArray,
+  ['zoneOrSort'] = DumpFunctions.dump,
+  ['requiredSkill'] = DumpFunctions.dumpAsArray,
+  ['requiredMinRep'] = DumpFunctions.dumpAsArray,
+  ['requiredMaxRep'] = DumpFunctions.dumpAsArray,
+  ['requiredSourceItems'] = DumpFunctions.dumpAsArray,
+  ['nextQuestInChain'] = DumpFunctions.dump,
+  ['questFlags'] = DumpFunctions.dump,
+  ['specialFlags'] = DumpFunctions.dump,
+  ['parentQuest'] = DumpFunctions.dump,
+  ['reputationReward'] = DumpFunctions.dumpAsArray,
+  ['extraObjectives'] = DumpFunctions.dumpExtraObjectives,
+  ['requiredSpell'] = DumpFunctions.dump,
+  ['requiredSpecialization'] = DumpFunctions.dump,
+  ['requiredMaxLevel'] = DumpFunctions.dump,
 }
 
 ---@enum QuestFlags

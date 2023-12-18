@@ -1,6 +1,9 @@
 ---@class LibQuestieDB
 local LibQuestieDB = select(2, ...)
 
+--- Imports
+local DumpFunctions = LibQuestieDB.Corrections.DumpFunctions
+
 ---@class ItemMeta
 local ItemMeta = {}
 
@@ -30,6 +33,24 @@ ItemMeta.itemKeys = {
   ['teachesSpell'] = 16,    -- int, spellID taught by this item upon use
 }
 
+ItemMeta.dumpFuncs = {
+  ['name'] = DumpFunctions.dump,
+  ['npcDrops'] = DumpFunctions.dumpAsArray,
+  ['objectDrops'] = DumpFunctions.dumpAsArray,
+  ['itemDrops'] = DumpFunctions.dumpAsArray,
+  ['startQuest'] = DumpFunctions.dump,
+  ['questRewards'] = DumpFunctions.dumpAsArray,
+  ['flags'] = DumpFunctions.dump,
+  ['foodType'] = DumpFunctions.dump,
+  ['itemLevel'] = DumpFunctions.dump,
+  ['requiredLevel'] = DumpFunctions.dump,
+  ['ammoType'] = DumpFunctions.dump,
+  ['class'] = DumpFunctions.dump,
+  ['subClass'] = DumpFunctions.dump,
+  ['vendors'] = DumpFunctions.dumpAsArray,
+  ['relatedQuests'] = DumpFunctions.dumpAsArray,
+  ['teachesSpell'] = DumpFunctions.dump,
+}
 
 -- item class/subClass combinations
 
