@@ -54,4 +54,25 @@
     "C_Seasons",
     "C_GameRules",
   ],
+  "todohighlight.isEnable": true,
+  "todohighlight.isCaseSensitive": true,
+  "todohighlight.keywordsPattern": "TODO:.*",
+  "todohighlight.defaultStyle": {
+        "color": "orange",
+        "backgroundColor": "#ffffff1f",
+        "overviewRulerColor": "#ffab001f",
+        "cursor": "pointer",
+        "border": "1px solid #eeeeee1f",
+        "borderRadius": "5px",
+        "isWholeLine": true,
+        //other styling properties goes here ...
+    },
+    "todohighlight.include": [
+        "**/*.lua",
+        "**/*.py",
+        "**/*.xml",
+        "**/*.toc",
+    ],
+    "todohighlight.maxFilesForSearch": 5120,
+    "todohighlight.toggleURI": false,
 }
