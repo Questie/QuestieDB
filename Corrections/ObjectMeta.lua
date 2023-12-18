@@ -1,6 +1,9 @@
 ---@class LibQuestieDB
 local LibQuestieDB = select(2, ...)
 
+--- Imports
+local DumpFunctions = LibQuestieDB.Corrections.DumpFunctions
+
 ---@class ObjectMeta
 local ObjectMeta = {}
 
@@ -20,4 +23,11 @@ ObjectMeta.objectKeys = {
   ['factionID'] = 6,   -- faction restriction mask (same as spawndb factionid)
 }
 
-
+ObjectMeta.dumpFuncs = {
+  ['name'] = DumpFunctions.dump,
+  ['questStarts'] = DumpFunctions.dumpAsArray,
+  ['questEnds'] = DumpFunctions.dumpAsArray,
+  ['spawns'] = DumpFunctions.dumpCoordiates,
+  ['zoneID'] = DumpFunctions.dump,
+  ['factionID'] = DumpFunctions.dump,
+}
