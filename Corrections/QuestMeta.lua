@@ -57,40 +57,6 @@ QuestMeta.questKeys = {
   ['requiredSpecialization'] = 29,   -- int: quest is only available if character meets the spec requirements. Use QuestieProfessions.specializationKeys for having a spec, or QuestieProfessions.professionKeys to indicate having the profession with no spec. See QuestieProfessions.lua for more info.
   ['requiredMaxLevel'] = 30,         -- int: quest is only available up to a certain level
 }
-
-QuestMeta.dumpFuncs = {
-  ['name'] = DumpFunctions.dump,
-  ['startedBy'] = DumpFunctions.dumpAsArray,
-  ['finishedBy'] = DumpFunctions.dumpAsArray,
-  ['requiredLevel'] = DumpFunctions.dump,
-  ['questLevel'] = DumpFunctions.dump,
-  ['requiredRaces'] = DumpFunctions.dump,
-  ['requiredClasses'] = DumpFunctions.dump,
-  ['objectivesText'] = DumpFunctions.dumpAsArray,
-  ['triggerEnd'] = DumpFunctions.dumpTriggerEnd,
-  ['objectives'] = DumpFunctions.dumpAsArray,
-  ['sourceItemId'] = DumpFunctions.dump,
-  ['preQuestGroup'] = DumpFunctions.dumpAsArray,
-  ['preQuestSingle'] = DumpFunctions.dumpAsArray,
-  ['childQuests'] = DumpFunctions.dumpAsArray,
-  ['inGroupWith'] = DumpFunctions.dumpAsArray,
-  ['exclusiveTo'] = DumpFunctions.dumpAsArray,
-  ['zoneOrSort'] = DumpFunctions.dump,
-  ['requiredSkill'] = DumpFunctions.dumpAsArray,
-  ['requiredMinRep'] = DumpFunctions.dumpAsArray,
-  ['requiredMaxRep'] = DumpFunctions.dumpAsArray,
-  ['requiredSourceItems'] = DumpFunctions.dumpAsArray,
-  ['nextQuestInChain'] = DumpFunctions.dump,
-  ['questFlags'] = DumpFunctions.dump,
-  ['specialFlags'] = DumpFunctions.dump,
-  ['parentQuest'] = DumpFunctions.dump,
-  ['reputationReward'] = DumpFunctions.dumpAsArray,
-  ['extraObjectives'] = DumpFunctions.dumpExtraObjectives,
-  ['requiredSpell'] = DumpFunctions.dump,
-  ['requiredSpecialization'] = DumpFunctions.dump,
-  ['requiredMaxLevel'] = DumpFunctions.dump,
-}
-
 ---@enum QuestFlags
 QuestMeta.questFlags = {
   NONE = 0,
@@ -185,4 +151,38 @@ QuestMeta.specializationKeys = { -- specializations use spellID, professions use
   TAILORING_MOONCLOTH = 26798,
   TAILORING_SHADOWEAVE = 26801,
   TAILORING_SPELLFIRE = 26797,
+}
+
+-- Used for dumping the database
+QuestMeta.dumpFuncs = {
+  ['name'] = DumpFunctions.dump,
+  ['startedBy'] = DumpFunctions.dumpAsArray,
+  ['finishedBy'] = DumpFunctions.dumpAsArray,
+  ['requiredLevel'] = DumpFunctions.dump,
+  ['questLevel'] = DumpFunctions.dump,
+  ['requiredRaces'] = DumpFunctions.dump,
+  ['requiredClasses'] = DumpFunctions.dump,
+  ['objectivesText'] = DumpFunctions.dumpAsArray,
+  ['triggerEnd'] = DumpFunctions.dumpTriggerEnd,
+  ['objectives'] = DumpFunctions.dumpAsArray,
+  ['sourceItemId'] = DumpFunctions.dump,
+  ['preQuestGroup'] = DumpFunctions.dumpAsArray,
+  ['preQuestSingle'] = DumpFunctions.dumpAsArray,
+  ['childQuests'] = DumpFunctions.dumpAsArray,
+  ['inGroupWith'] = DumpFunctions.dumpAsArray,
+  ['exclusiveTo'] = DumpFunctions.dumpAsArray,
+  ['zoneOrSort'] = DumpFunctions.dump,
+  ['requiredSkill'] = DumpFunctions.dumpAsArray,
+  ['requiredMinRep'] = DumpFunctions.dumpAsArray,
+  ['requiredMaxRep'] = DumpFunctions.dumpAsArray,
+  ['requiredSourceItems'] = DumpFunctions.dumpAsArray,
+  ['nextQuestInChain'] = DumpFunctions.dump,
+  ['questFlags'] = DumpFunctions.dump,
+  ['specialFlags'] = DumpFunctions.dump,
+  ['parentQuest'] = DumpFunctions.dump,
+  ['reputationReward'] = DumpFunctions.dumpAsArray,
+  ['extraObjectives'] = DumpFunctions.dumpExtraObjectives,
+  ['requiredSpell'] = DumpFunctions.dump,
+  ['requiredSpecialization'] = DumpFunctions.dump,
+  ['requiredMaxLevel'] = DumpFunctions.dump,
 }

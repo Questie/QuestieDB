@@ -33,6 +33,12 @@ ItemMeta.itemKeys = {
   ['teachesSpell'] = 16,    -- int, spellID taught by this item upon use
 }
 
+-- See end of ItemMeta.lua to see all the itemClasses
+---@enum ItemClass
+ItemMeta.itemClasses = {
+  QUEST = 12,
+}
+
 ItemMeta.dumpFuncs = {
   ['name'] = DumpFunctions.dump,
   ['npcDrops'] = DumpFunctions.dumpAsArray,
@@ -53,7 +59,6 @@ ItemMeta.dumpFuncs = {
 }
 
 -- item class/subClass combinations
-
 --class subClass
 -- 0         0     Consumable
 -- 1         0     Container, Bag
@@ -111,8 +116,3 @@ ItemMeta.dumpFuncs = {
 -- 13        0     Key
 -- 13        1     Lockpick
 -- 15        0     Miscellaneous, Junk
-
----@enum ItemClass
-ItemMeta.itemClasses = {
-  QUEST = 12,
-}
