@@ -1,14 +1,4 @@
 {
-  "Lua.diagnostics.globals": [
-    "SlashCmdList",
-    "C_Timer",
-    "CreateFrame",
-    "strsplittable",
-    "DevTools_Dump",
-    "time",
-    "C_Seasons",
-    "C_GameRules",
-  ],
   "Lua.workspace.ignoreDir": [
     ".generate_database",
     ".vscode",
@@ -23,6 +13,7 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
     "**/.cache": true,
+    "**/__pycache__": true,
   },
   "Lua.workspace.preloadFileSize": 3000,
   "Lua.workspace.maxPreload": 2000,
@@ -52,5 +43,15 @@
     "unused-local": "Warning"
   },
   "Lua.diagnostics.enable": true,
-  "Lua.runtime.version": "Lua 5.1"
+  "Lua.runtime.version": "Lua 5.1",
+  "Lua.diagnostics.globals": [
+    "SlashCmdList",
+    "C_Timer",
+    "CreateFrame",
+    "strsplittable",
+    "DevTools_Dump",
+    "time",
+    "C_Seasons",
+    "C_GameRules",
+  ],
 }
