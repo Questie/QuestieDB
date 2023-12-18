@@ -3,6 +3,7 @@ local LibQuestieDB = select(2, ...)
 
 --- Imports
 local ZoneMeta = LibQuestieDB.Corrections.ZoneMeta
+local DumpFunctions = LibQuestieDB.Corrections.DumpFunctions
 
 ---@class NpcMeta
 local NpcMeta = {}
@@ -31,6 +32,26 @@ NpcMeta.npcKeys = {
   ['npcFlags'] = 15,            -- int, Bitmask containing various flags about the NPCs function (Vendor, Trainer, Flight Master, etc.).
   -- For flag values see https://github.com/cmangos/mangos-classic/blob/172c005b0a69e342e908f4589b24a6f18246c95e/src/game/Entities/Unit.h#L536
 }
+
+-- These are used to dump the corrections data to a file
+NpcMeta.dumpFuncs = {
+  ['name'] = DumpFunctions.dump,
+  ['minLevelHealth'] = DumpFunctions.dump,
+  ['maxLevelHealth'] = DumpFunctions.dump,
+  ['minLevel'] = DumpFunctions.dump,
+  ['maxLevel'] = DumpFunctions.dump,
+  ['rank'] = DumpFunctions.dump,
+  ['spawns'] = DumpFunctions.dumpCoordiates,
+  ['waypoints'] = DumpFunctions.dumpCoordiates,
+  ['zoneID'] = DumpFunctions.dump,
+  ['questStarts'] = DumpFunctions.dumpAsArray,
+  ['questEnds'] = DumpFunctions.dumpAsArray,
+  ['factionID'] = DumpFunctions.dump,
+  ['friendlyToFaction'] = DumpFunctions.dump,
+  ['subName'] = DumpFunctions.dump,
+  ['npcFlags'] = DumpFunctions.dump,
+}
+
 
 -- NpcMeta.npcKeysReversed = {}
 -- for key, id in pairs(NpcMeta.npcKeys) do
