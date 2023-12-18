@@ -1,16 +1,13 @@
 {
   "Lua.diagnostics.globals": [
     "SlashCmdList",
-    "DEFAULT_CHAT_FRAME",
     "C_Timer",
     "CreateFrame",
-    "GetQuestFactionGroup",
-    "strsplit",
     "strsplittable",
     "DevTools_Dump",
     "time",
-    "GetFunctionCPUUsage",
-    "Object",
+    "C_Seasons",
+    "C_GameRules",
   ],
   "Lua.workspace.ignoreDir": [
     ".generate_database",
