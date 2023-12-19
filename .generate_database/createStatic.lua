@@ -1,7 +1,17 @@
 require("cli.dump")
 
+-- Used to print extra information and the like when generating the database
+local cli_debug = false
+
 ---@type LibQuestieDB
 LibQuestieDBTable = {}
+
+local QuestieDB = {}
+QuestieLoader = {
+  ImportModule = function()
+    return QuestieDB
+  end,
+}
 
 WOW_PROJECT_ID = 2
 WOW_PROJECT_CLASSIC = 2
@@ -85,6 +95,8 @@ CreateFrame = function()
   }
 end
 C_QuestLog = {}
+
+--* C_Timer
 local timerList = {}
 local function drainTimerList()
   for _, f in ipairs(timerList) do
@@ -116,6 +128,7 @@ C_Timer = {
     end
   end,
 }
+
 C_Seasons = {
   HasActiveSeason = function() return false end,
 }
@@ -123,6 +136,7 @@ C_Seasons = {
 function getglobal(varr)
   return _G[varr];
 end
+
 function Round(value)
   if value < 0.0 then
     return math.ceil(value - .5);
@@ -195,16 +209,18 @@ local function loadTOC(file)
       if (not string.find(line, ".xml")) then
         line = line:gsub("\\", "/")
         line = line:gsub("%s+", "")
+        print("Loading file: ", line)
         loadFile(line)
       elseif string.find(line, ".xml") then
         line = line:gsub("\\", "/")
         line = line:gsub("%s+", "")
-        print(line)
+        print("Loading XML:  ", line)
         local filedata = io.open(line, "r")
         local filetext = filedata:read("*all")
         local xmlFilePath = line:match("^(.*)/.-%.xml$") .. "/"
-        print(xmlFilePath)
+        -- print(xmlFilePath)
         for xmlFile in string.gmatch(filetext, "<Script.-file%=\"(.-)\"") do
+          print("  Loading file: ", xmlFilePath .. xmlFile)
           loadFile(xmlFilePath .. xmlFile)
         end
       end
