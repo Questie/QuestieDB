@@ -1,5 +1,6 @@
 ---@diagnostic disable: need-check-nil
 require("cli.dump")
+local argparse = require("argparse")
 
 -- Used to print extra information and the like when generating the database
 local cli_debug = false
@@ -28,6 +29,7 @@ ERR_QUEST_COMPLETE_S = "ERR_QUEST_COMPLETE_S"
 
 local assert = assert
 local type = type
+local f = string.format
 
 local _EmptyDummyFunction = function() end
 local _TableDummyFunction = function() return {} end
@@ -314,14 +316,71 @@ local function dumpData(tbl, dataKeys, dumpFunctions, combineFunc)
   return table.concat(allResults)
 end
 
+local initByVersion = {
+  ["Era"] = function()
+    LibQuestieDBTable = {}
 
-local function _CheckClassicDatabase()
-  GetBuildInfo = function()
-    return "1.14.3", "44403", "Jun 27 2022", 11403
+    QuestieDB = {}
+    QuestieLoader = {
+      ImportModule = function()
+        return QuestieDB
+      end,
+    }
+
+    GetBuildInfo = function()
+      return "1.14.3", "44403", "Jun 27 2022", 11403
+    end
+
+    WOW_PROJECT_ID = 2
+
+    loadTOC("QuestieDB-Classic.toc")
+  end,
+  ["Tbc"] = function()
+    LibQuestieDBTable = {}
+
+    QuestieDB = {}
+    QuestieLoader = {
+      ImportModule = function()
+        return QuestieDB
+      end,
+    }
+
+    GetBuildInfo = function()
+      return "2.5.1", "38644", "May 11 2021", 20501
+    end
+
+    WOW_PROJECT_ID = 5
+
+    loadTOC("QuestieDB-BCC.toc")
+  end,
+  ["Wotlk"] = function()
+    LibQuestieDBTable = {}
+
+    QuestieDB = {}
+    QuestieLoader = {
+      ImportModule = function()
+        return QuestieDB
+      end,
+    }
+
+    GetBuildInfo = function()
+      return "3.4.0", "44644", "Jun 12 2022", 30400
+    end
+
+    WOW_PROJECT_ID = 11
+
+    loadTOC("QuestieDB-WOTLKC.toc")
   end
+}
 
-  print("\n\27[36mCompiling Classic database...\27[0m")
-  loadTOC("QuestieDB-Classic.toc")
+local function DumpDatabase(version)
+  local lowerVersion = version:lower()
+  local capitalizedVersion = lowerVersion:gsub("^%l", string.upper)
+  print(f("\n\27[36mCompiling %s database...\27[0m", capitalizedVersion))
+
+  -- Reset data objects, load the files and set wow version
+  initByVersion[capitalizedVersion]()
+
   -- Drain all the timers
   drainTimerList()
 
@@ -335,7 +394,7 @@ local function _CheckClassicDatabase()
   Corrections.DumpFunctions.testDumpFunctions()
 
   do
-    loadFile(".generate_database/_data/Era/classicItemDB.lua")
+    loadFile(f(".generate_database/_data/%s/%sItemDB.lua", capitalizedVersion, lowerVersion))
     itemOverride = loadstring(QuestieDB.itemData)()
     LibQuestieDBTable.Item.LoadOverrideData()
     local itemMeta = Corrections.ItemMeta
@@ -351,7 +410,7 @@ local function _CheckClassicDatabase()
   end
 
   do
-    loadFile(".generate_database/_data/Era/classicNpcDB.lua")
+    loadFile(f(".generate_database/_data/%s/%sNpcDB.lua", capitalizedVersion, lowerVersion))
     npcOverride = loadstring(QuestieDB.npcData)()
     LibQuestieDBTable.Npc.LoadOverrideData()
     local npcMeta = Corrections.NpcMeta
@@ -367,7 +426,7 @@ local function _CheckClassicDatabase()
   end
 
   do
-    loadFile(".generate_database/_data/Era/classicObjectDB.lua")
+    loadFile(f(".generate_database/_data/%s/%sObjectDB.lua", capitalizedVersion, lowerVersion))
     objectOverride = loadstring(QuestieDB.objectData)()
     LibQuestieDBTable.Object.LoadOverrideData()
     local objectMeta = Corrections.ObjectMeta
@@ -383,7 +442,7 @@ local function _CheckClassicDatabase()
   end
 
   do
-    loadFile(".generate_database/_data/Era/classicQuestDB.lua")
+    loadFile(f(".generate_database/_data/%s/%sQuestDB.lua", capitalizedVersion, lowerVersion))
     questOverride = loadstring(QuestieDB.questData)()
     LibQuestieDBTable.Quest.LoadOverrideData()
     local questMeta = Corrections.QuestMeta
@@ -400,7 +459,7 @@ local function _CheckClassicDatabase()
 
   -- Write all the overrides to disk
   ---@diagnostic disable-next-line: param-type-mismatch
-  local file = io.open(".generate_database/_data/Era/ItemOverride.lua-table", "w")
+  local file = io.open(f(".generate_database/_data/%s/ItemOverride.lua-table", capitalizedVersion), "w")
   print("Dumping item overrides")
   local itemData = dumpData(itemOverride, Corrections.ItemMeta.itemKeys, Corrections.ItemMeta.dumpFuncs, Corrections.ItemMeta.combine)
   ---@diagnostic disable-next-line: undefined-field
@@ -409,7 +468,7 @@ local function _CheckClassicDatabase()
   file:close()
 
   ---@diagnostic disable-next-line: param-type-mismatch
-  file = io.open(".generate_database/_data/Era/QuestOverride.lua-table", "w")
+  file = io.open(f(".generate_database/_data/%s/QuestOverride.lua-table", capitalizedVersion), "w")
   print("Dumping quest overrides")
   local questData = dumpData(questOverride, Corrections.QuestMeta.questKeys, Corrections.QuestMeta.dumpFuncs)
   ---@diagnostic disable-next-line: undefined-field
@@ -418,7 +477,7 @@ local function _CheckClassicDatabase()
   file:close()
 
   ---@diagnostic disable-next-line: param-type-mismatch
-  file = io.open(".generate_database/_data/Era/NpcOverride.lua-table", "w")
+  file = io.open(f(".generate_database/_data/%s/NpcOverride.lua-table", capitalizedVersion), "w")
   print("Dumping npc overrides")
   local npcData = dumpData(npcOverride, Corrections.NpcMeta.npcKeys, Corrections.NpcMeta.dumpFuncs, Corrections.NpcMeta.combine)
   ---@diagnostic disable-next-line: undefined-field
@@ -427,7 +486,7 @@ local function _CheckClassicDatabase()
   file:close()
 
   ---@diagnostic disable-next-line: param-type-mismatch
-  file = io.open(".generate_database/_data/Era/ObjectOverride.lua-table", "w")
+  file = io.open(f(".generate_database/_data/%s/ObjectOverride.lua-table", capitalizedVersion), "w")
   print("Dumping object overrides")
   local objectData = dumpData(objectOverride, Corrections.ObjectMeta.objectKeys, Corrections.ObjectMeta.dumpFuncs)
   ---@diagnostic disable-next-line: undefined-field
@@ -435,260 +494,32 @@ local function _CheckClassicDatabase()
   ---@diagnostic disable-next-line: undefined-field
   file:close()
 
-  print("\n\27[32mClassic corrections dumped successfully\27[0m")
+  print(f("\n\27[32m%s corrections dumped successfully\27[0m", capitalizedVersion))
 end
-_CheckClassicDatabase()
-
-LibQuestieDBTable = {}
-QuestieDB = {}
-local function _CheckTBCDatabase()
-  GetBuildInfo = function()
-    return "2.5.1", "38644", "May 11 2021", 20501
-  end
-  WOW_PROJECT_ID = 5
-
-  print("\n\27[36mCompiling TBC database...\27[0m")
-  loadTOC("QuestieDB-BCC.toc")
-  -- Drain all the timers
-  drainTimerList()
-
-  local itemOverride = {}
-  local npcOverride = {}
-  local objectOverride = {}
-  local questOverride = {}
-
-  local Corrections = LibQuestieDBTable.Corrections
-
-  Corrections.DumpFunctions.testDumpFunctions()
-
-  do
-    loadFile(".generate_database/_data/Tbc/tbcItemDB.lua")
-    itemOverride = loadstring(QuestieDB.itemData)()
-    LibQuestieDBTable.Item.LoadOverrideData()
-    local itemMeta = LibQuestieDBTable.Corrections.ItemMeta
-    for itemId, corrections in pairs(LibQuestieDBTable.Item.override) do
-      if not itemOverride[itemId] then
-        itemOverride[itemId] = {}
-      end
-      for key, correction in pairs(corrections) do
-        local correctionIndex = itemMeta.itemKeys[key]
-        itemOverride[itemId][correctionIndex] = correction
-      end
-    end
-  end
-
-  do
-    loadFile(".generate_database/_data/Tbc/tbcNpcDB.lua")
-    npcOverride = loadstring(QuestieDB.npcData)()
-    LibQuestieDBTable.Npc.LoadOverrideData()
-    local npcMeta = LibQuestieDBTable.Corrections.NpcMeta
-    for npcId, corrections in pairs(LibQuestieDBTable.Npc.override) do
-      if not npcOverride[npcId] then
-        npcOverride[npcId] = {}
-      end
-      for key, correction in pairs(corrections) do
-        local correctionIndex = npcMeta.npcKeys[key]
-        npcOverride[npcId][correctionIndex] = correction
-      end
-    end
-  end
-
-  do
-    loadFile(".generate_database/_data/Tbc/tbcObjectDB.lua")
-    objectOverride = loadstring(QuestieDB.objectData)()
-    LibQuestieDBTable.Object.LoadOverrideData()
-    local objectMeta = LibQuestieDBTable.Corrections.ObjectMeta
-    for objectId, corrections in pairs(LibQuestieDBTable.Object.override) do
-      if not objectOverride[objectId] then
-        objectOverride[objectId] = {}
-      end
-      for key, correction in pairs(corrections) do
-        local correctionIndex = objectMeta.objectKeys[key]
-        objectOverride[objectId][correctionIndex] = correction
-      end
-    end
-  end
-
-  do
-    loadFile(".generate_database/_data/Tbc/tbcQuestDB.lua")
-    questOverride = loadstring(QuestieDB.questData)()
-    LibQuestieDBTable.Quest.LoadOverrideData()
-    local questMeta = LibQuestieDBTable.Corrections.QuestMeta
-    for questId, corrections in pairs(LibQuestieDBTable.Quest.override) do
-      if not questOverride[questId] then
-        questOverride[questId] = {}
-      end
-      for key, correction in pairs(corrections) do
-        local correctionIndex = questMeta.questKeys[key]
-        questOverride[questId][correctionIndex] = correction
-      end
-    end
-  end
-
-  -- Write all the overrides to disk
-  ---@diagnostic disable-next-line: param-type-mismatch
-  local file = io.open(".generate_database/_data/Tbc/ItemOverride.lua-table", "w")
-  print("Dumping item overrides")
-  local itemData = dumpData(itemOverride, Corrections.ItemMeta.itemKeys, Corrections.ItemMeta.dumpFuncs, Corrections.ItemMeta.combine)
-  ---@diagnostic disable-next-line: undefined-field
-  file:write(itemData)
-  ---@diagnostic disable-next-line: undefined-field
-  file:close()
-
-  ---@diagnostic disable-next-line: param-type-mismatch
-  file = io.open(".generate_database/_data/Tbc/QuestOverride.lua-table", "w")
-  print("Dumping quest overrides")
-  local questData = dumpData(questOverride, Corrections.QuestMeta.questKeys, Corrections.QuestMeta.dumpFuncs)
-  ---@diagnostic disable-next-line: undefined-field
-  file:write(questData)
-  ---@diagnostic disable-next-line: undefined-field
-  file:close()
-
-  ---@diagnostic disable-next-line: param-type-mismatch
-  file = io.open(".generate_database/_data/Tbc/NpcOverride.lua-table", "w")
-  print("Dumping npc overrides")
-  local npcData = dumpData(npcOverride, Corrections.NpcMeta.npcKeys, Corrections.NpcMeta.dumpFuncs, Corrections.NpcMeta.combine)
-  ---@diagnostic disable-next-line: undefined-field
-  file:write(npcData)
-  ---@diagnostic disable-next-line: undefined-field
-  file:close()
-
-  ---@diagnostic disable-next-line: param-type-mismatch
-  file = io.open(".generate_database/_data/Tbc/ObjectOverride.lua-table", "w")
-  print("Dumping object overrides")
-  local objectData = dumpData(objectOverride, Corrections.ObjectMeta.objectKeys, Corrections.ObjectMeta.dumpFuncs)
-  ---@diagnostic disable-next-line: undefined-field
-  file:write(objectData)
-  ---@diagnostic disable-next-line: undefined-field
-  file:close()
-
-  print("\n\27[TBC corrections dumped successfully\27[0m")
+local validVersions = {
+  ["era"] = true,
+  ["tbc"] = true,
+  ["wotlk"] = true,
+}
+local versionString = ""
+for version in pairs(validVersions) do
+  local v = string.gsub(version, "^%l", string.upper)
+  versionString = versionString .. v .. "/"
 end
-_CheckTBCDatabase()
+-- Add all
+versionString = versionString .. "All"
 
-LibQuestieDBTable = {}
-QuestieDB = {}
-local function _CheckWotlkDatabase()
-  GetBuildInfo = function()
-    return "3.4.0", "44644", "Jun 12 2022", 30400
+local parser = argparse("createStatic", "createStatic.lua Era")
+parser:argument("version", f("Game version, %s.", versionString))
+
+local args = parser:parse()
+
+if args.version and validVersions[args.version:lower()] then
+  DumpDatabase(args.version)
+elseif args.version and args.version:lower() == "all" then
+  for version in pairs(validVersions) do
+    DumpDatabase(version)
   end
-  WOW_PROJECT_ID = 11
-
-  print("\n\27[36mCompiling Wotlk database...\27[0m")
-  loadTOC("QuestieDB-WOTLKC.toc")
-  -- Drain all the timers
-  drainTimerList()
-
-  local itemOverride = {}
-  local npcOverride = {}
-  local objectOverride = {}
-  local questOverride = {}
-
-  local Corrections = LibQuestieDBTable.Corrections
-
-  Corrections.DumpFunctions.testDumpFunctions()
-
-  do
-    loadFile(".generate_database/_data/Wotlk/wotlkItemDB.lua")
-    itemOverride = loadstring(QuestieDB.itemData)()
-    LibQuestieDBTable.Item.LoadOverrideData()
-    local itemMeta = LibQuestieDBTable.Corrections.ItemMeta
-    for itemId, corrections in pairs(LibQuestieDBTable.Item.override) do
-      if not itemOverride[itemId] then
-        itemOverride[itemId] = {}
-      end
-      for key, correction in pairs(corrections) do
-        local correctionIndex = itemMeta.itemKeys[key]
-        itemOverride[itemId][correctionIndex] = correction
-      end
-    end
-  end
-
-  do
-    loadFile(".generate_database/_data/Wotlk/wotlkNpcDB.lua")
-    npcOverride = loadstring(QuestieDB.npcData)()
-    LibQuestieDBTable.Npc.LoadOverrideData()
-    local npcMeta = LibQuestieDBTable.Corrections.NpcMeta
-    for npcId, corrections in pairs(LibQuestieDBTable.Npc.override) do
-      if not npcOverride[npcId] then
-        npcOverride[npcId] = {}
-      end
-      for key, correction in pairs(corrections) do
-        local correctionIndex = npcMeta.npcKeys[key]
-        npcOverride[npcId][correctionIndex] = correction
-      end
-    end
-  end
-
-  do
-    loadFile(".generate_database/_data/Wotlk/wotlkObjectDB.lua")
-    objectOverride = loadstring(QuestieDB.objectData)()
-    LibQuestieDBTable.Object.LoadOverrideData()
-    local objectMeta = LibQuestieDBTable.Corrections.ObjectMeta
-    for objectId, corrections in pairs(LibQuestieDBTable.Object.override) do
-      if not objectOverride[objectId] then
-        objectOverride[objectId] = {}
-      end
-      for key, correction in pairs(corrections) do
-        local correctionIndex = objectMeta.objectKeys[key]
-        objectOverride[objectId][correctionIndex] = correction
-      end
-    end
-  end
-
-  do
-    loadFile(".generate_database/_data/Wotlk/wotlkQuestDB.lua")
-    questOverride = loadstring(QuestieDB.questData)()
-    LibQuestieDBTable.Quest.LoadOverrideData()
-    local questMeta = LibQuestieDBTable.Corrections.QuestMeta
-    for questId, corrections in pairs(LibQuestieDBTable.Quest.override) do
-      if not questOverride[questId] then
-        questOverride[questId] = {}
-      end
-      for key, correction in pairs(corrections) do
-        local correctionIndex = questMeta.questKeys[key]
-        questOverride[questId][correctionIndex] = correction
-      end
-    end
-  end
-
-  -- Write all the overrides to disk
-  ---@diagnostic disable-next-line: param-type-mismatch
-  local file = io.open(".generate_database/_data/Wotlk/ItemOverride.lua-table", "w")
-  print("Dumping item overrides")
-  local itemData = dumpData(itemOverride, Corrections.ItemMeta.itemKeys, Corrections.ItemMeta.dumpFuncs, Corrections.ItemMeta.combine)
-  ---@diagnostic disable-next-line: undefined-field
-  file:write(itemData)
-  ---@diagnostic disable-next-line: undefined-field
-  file:close()
-
-  ---@diagnostic disable-next-line: param-type-mismatch
-  file = io.open(".generate_database/_data/Wotlk/QuestOverride.lua-table", "w")
-  print("Dumping quest overrides")
-  local questData = dumpData(questOverride, Corrections.QuestMeta.questKeys, Corrections.QuestMeta.dumpFuncs)
-  ---@diagnostic disable-next-line: undefined-field
-  file:write(questData)
-  ---@diagnostic disable-next-line: undefined-field
-  file:close()
-
-  ---@diagnostic disable-next-line: param-type-mismatch
-  file = io.open(".generate_database/_data/Wotlk/NpcOverride.lua-table", "w")
-  print("Dumping npc overrides")
-  local npcData = dumpData(npcOverride, Corrections.NpcMeta.npcKeys, Corrections.NpcMeta.dumpFuncs, Corrections.NpcMeta.combine)
-  ---@diagnostic disable-next-line: undefined-field
-  file:write(npcData)
-  ---@diagnostic disable-next-line: undefined-field
-  file:close()
-
-  ---@diagnostic disable-next-line: param-type-mismatch
-  file = io.open(".generate_database/_data/Wotlk/ObjectOverride.lua-table", "w")
-  print("Dumping object overrides")
-  local objectData = dumpData(objectOverride, Corrections.ObjectMeta.objectKeys, Corrections.ObjectMeta.dumpFuncs)
-  ---@diagnostic disable-next-line: undefined-field
-  file:write(objectData)
-  ---@diagnostic disable-next-line: undefined-field
-  file:close()
-
-  print("\n\27[Wotlk corrections dumped successfully\27[0m")
+else
+  print("No version specified")
 end
-_CheckWotlkDatabase()
