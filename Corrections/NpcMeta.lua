@@ -32,6 +32,28 @@ NpcMeta.npcKeys = {
   ['npcFlags'] = 15,            -- int, Bitmask containing various flags about the NPCs function (Vendor, Trainer, Flight Master, etc.).
   -- For flag values see https://github.com/cmangos/mangos-classic/blob/172c005b0a69e342e908f4589b24a6f18246c95e/src/game/Entities/Unit.h#L536
 }
+-- Contains the type of data as keys and their index as value
+NpcMeta.npcTypes = {
+  ['name'] = "string",
+  ['minLevelHealth'] = "number",
+  ['maxLevelHealth'] = "number",
+  ['minLevel'] = "number",
+  ['maxLevel'] = "number",
+  ['rank'] = "number",
+  ['spawns'] = "table",
+  ['waypoints'] = "table",
+  ['zoneID'] = "number",
+  ['questStarts'] = "table",
+  ['questEnds'] = "table",
+  ['factionID'] = "number",
+  ['friendlyToFaction'] = "string",
+  ['subName'] = "string",
+  ['npcFlags'] = "number",
+}
+-- Add the index keys to itemTypes
+for key, index in pairs(NpcMeta.npcKeys) do
+  NpcMeta.npcTypes[index] = NpcMeta.npcTypes[key]
+end
 
 
 -- NpcMeta.npcKeysReversed = {}
