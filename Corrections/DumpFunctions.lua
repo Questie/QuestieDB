@@ -145,6 +145,75 @@ function DumpFunctions.dumpExtraObjectives(tbl)
   return result .. "}"
 end
 
+-- Combine all values into one string 0;0;0;0;;
+-- where numbers become 0 if they are nil and strings become empty such as 0;<string>;0
+---@param tbl table<number, any> @ Table that will be modified
+---@param combineValues table<number, string> @ Indexes of the values that will be combined and the name of the value
+---@param tblTypes table<number|string, type> @ Get the type of the value from the table from the index
+---@return table<number, any> @ Returns the table inputted with the combined value
+---@return string @ Returns the combined value string that was inserted into the table
+function DumpFunctions.combine(tbl, combineValues, tblTypes)
+  -- Contains the length of the combineValues table
+  local combineLength = tblCount(combineValues)
+  -- Index of the value that will be replaced with the combined string
+  local combineIndex = 999999
+
+  local startTblLength = #tbl
+
+  -- Calculate the lowest index
+  for index in pairs(combineValues) do
+    if index < combineIndex then
+      combineIndex = index
+    end
+  end
+  -- Sort the indexes
+  local sortedKeys = {}
+  for key in pairs(combineValues) do
+    tInsert(sortedKeys, key)
+  end
+  tSort(sortedKeys)
+
+  local result = ""
+  for _, index in pairs(sortedKeys) do
+    local val = tbl[index]
+    if type(val) == "string" and tblTypes[index] == "string" then
+      -- If the value is a string and is nil, replace it with an empty string
+      if val == "nil" then
+        val = ""
+      end
+      result = result .. val .. ";"
+    elseif val == nil or val == "nil" then
+      result = result .. "0;"
+    else
+      result = result .. val .. ";"
+    end
+  end
+  -- Remove trailing semicolon
+  result = string.sub(result, 1, -2)
+
+  -- Remove all " or ' from the string
+  result = gsub(result, '"', "")
+  result = gsub(result, "'", "")
+
+  -- Replace with the combined value
+  tbl[combineIndex] = '"' .. result .. '"'
+
+  -- Remove the indexes that were combined, they are not in order so we need to remove the highest index first
+  tSort(sortedKeys, function(a, b) return a > b end)
+  local removedIndexes = 0
+  for _, index in pairs(sortedKeys) do
+    if index ~= combineIndex then
+      tRemove(tbl, index)
+      removedIndexes = removedIndexes + 1
+    end
+  end
+  local endTblLength = #tbl
+  assert(startTblLength - endTblLength == combineLength - 1,
+         "DumpFunctions.combine failed, incorrect length " .. startTblLength .. " " .. endTblLength .. " " .. combineLength)
+
+  return tbl, result
+end
+
 function DumpFunctions.testDumpFunctions()
   local testTable = {
     {
