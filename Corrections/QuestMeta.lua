@@ -57,6 +57,56 @@ QuestMeta.questKeys = {
   ['requiredSpecialization'] = 29,   -- int: quest is only available if character meets the spec requirements. Use QuestieProfessions.specializationKeys for having a spec, or QuestieProfessions.professionKeys to indicate having the profession with no spec. See QuestieProfessions.lua for more info.
   ['requiredMaxLevel'] = 30,         -- int: quest is only available up to a certain level
 }
+-- Contains the type of data as keys and their index as value
+QuestMeta.questTypes = {
+  ['name'] = "string",
+  ['startedBy'] = "table",
+  --['creatureStart'] = "table",
+  --['objectStart'] = "table",
+  --['itemStart'] = "table",
+  ['finishedBy'] = "table",
+  --['creatureEnd'] = "table",
+  --['objectEnd'] = "table",
+  ['requiredLevel'] = "number",
+  ['questLevel'] = "number",
+  ['requiredRaces'] = "number",
+  ['requiredClasses'] = "number",
+  ['objectivesText'] = "table",
+  ['triggerEnd'] = "table",
+  ['objectives'] = "table",
+  --['creatureObjective'] = "table",
+  --['objectObjective'] = "table",
+  --['itemObjective'] = "table",
+  --['reputationObjective'] = "table",
+  --['killCreditObjective'] = "table",
+  --['spellObjective'] = "table",
+  ['sourceItemId'] = "number",
+  ['preQuestGroup'] = "table",
+  ['preQuestSingle'] = "table",
+  ['childQuests'] = "table",
+  ['inGroupWith'] = "table",
+  ['exclusiveTo'] = "table",
+  ['zoneOrSort'] = "number",
+  ['requiredSkill'] = "table",
+  ['requiredMinRep'] = "table",
+  ['requiredMaxRep'] = "table",
+  ['requiredSourceItems'] = "table",
+  ['nextQuestInChain'] = "number",
+  ['questFlags'] = "number",
+  ['specialFlags'] = "number",
+  ['parentQuest'] = "number",
+  ['reputationReward'] = "table",
+  ['extraObjectives'] = "table",
+  ['requiredSpell'] = "number",
+  ['requiredSpecialization'] = "number",
+  ['requiredMaxLevel'] = "number",
+}
+-- Add the index keys to questTypes
+for key, index in pairs(QuestMeta.questKeys) do
+  QuestMeta.questTypes[index] = QuestMeta.questTypes[key]
+end
+
+
 ---@enum QuestFlags
 QuestMeta.questFlags = {
   NONE = 0,

@@ -32,6 +32,29 @@ ItemMeta.itemKeys = {
   ['relatedQuests'] = 15,   -- table or nil, IDs of quests that are related to this item
   ['teachesSpell'] = 16,    -- int, spellID taught by this item upon use
 }
+-- Contains the type of data as keys and their index as value
+ItemMeta.itemTypes = {
+  ['name'] = "string",
+  ['npcDrops'] = "table",
+  ['objectDrops'] = "table",
+  ['itemDrops'] = "table",
+  ['startQuest'] = "number",
+  ['questRewards'] = "table",
+  ['flags'] = "number",
+  ['foodType'] = "number",
+  ['itemLevel'] = "number",
+  ['requiredLevel'] = "number",
+  ['ammoType'] = "number",
+  ['class'] = "number",
+  ['subClass'] = "number",
+  ['vendors'] = "table",
+  ['relatedQuests'] = "table",
+  ['teachesSpell'] = "number",
+}
+-- Add the index keys to itemTypes
+for key, index in pairs(ItemMeta.itemKeys) do
+  ItemMeta.itemTypes[index] = ItemMeta.itemTypes[key]
+end
 
 -- See end of ItemMeta.lua to see all the itemClasses
 ---@enum ItemClass
