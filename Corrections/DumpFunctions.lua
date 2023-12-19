@@ -10,53 +10,53 @@ local Corrections = LibQuestieDB.Corrections
 Corrections.DumpFunctions = DumpFunctions
 
 local function tblCount(tbl)
-    local maxPairsIndex = 0
-    for key in pairs(tbl) do
-      if type(key) == "number" then
-        maxPairsIndex = math.max(maxPairsIndex, key)
-      end
+  local maxPairsIndex = 0
+  for key in pairs(tbl) do
+    if type(key) == "number" then
+      maxPairsIndex = math.max(maxPairsIndex, key)
     end
-    return maxPairsIndex
+  end
+  return maxPairsIndex
 end
 
 ---comment
 ---@param val any
 ---@return string
 function DumpFunctions.dump(val)
-    if type(val) == "table" then
-        return DumpFunctions.dumpAsArray(val)
-    elseif type(val) == "nil" or val == nil then
-        return "nil"
-    elseif type(val) == "string" then
-        -- escape single quotes
-        val = string.gsub(val, '"', '\\"')
-        return '"' .. tostring(val) .. '"'
-    else -- number
-        return tostring(val)
-    end
+  if type(val) == "table" then
+    return DumpFunctions.dumpAsArray(val)
+  elseif type(val) == "nil" or val == nil then
+    return "nil"
+  elseif type(val) == "string" then
+    -- escape single quotes
+    val = string.gsub(val, '"', '\\"')
+    return '"' .. tostring(val) .. '"'
+  else   -- number
+    return tostring(val)
+  end
 end
 
 -- Can take values such as {nil,nil,{16305}} and return with infill nils
 function DumpFunctions.dumpAsArray(tbl)
-    local result = "{"
+  local result = "{"
 
-    -- Sometimes the table is nil, so we need to check for that
-    -- This is because we convert {} to "nil" in the database
-    if tbl == "nil" or tbl == nil then
-      return "nil"
+  -- Sometimes the table is nil, so we need to check for that
+  -- This is because we convert {} to "nil" in the database
+  if tbl == "nil" or tbl == nil then
+    return "nil"
+  end
+
+  -- This is a safeguard against tables that are not arrays
+  local maxPairsIndex = tblCount(tbl)
+
+  for i = 1, maxPairsIndex do
+    local val = tbl[i]
+    result = result .. DumpFunctions.dump(val)
+    if i < maxPairsIndex then
+      result = result .. ","
     end
-
-    -- This is a safeguard against tables that are not arrays
-    local maxPairsIndex = tblCount(tbl)
-
-    for i = 1, maxPairsIndex do
-        local val = tbl[i]
-        result = result .. DumpFunctions.dump(val)
-        if i < maxPairsIndex then
-            result = result .. ","
-        end
-    end
-    return result .. "}"
+  end
+  return result .. "}"
 end
 
 -- Dumps coordinates in the format of { [zoneID] = { {x,y}, {x,y}, }, [zoneID] = { {x,y}, {x,y}, }, }
@@ -106,20 +106,16 @@ function DumpFunctions.dumpExtraObjectives(tbl)
     result = result .. "{"
     local maxIndex = tblCount(objectiveData)
     for i = 1, maxIndex do
-    -- for i, objective in pairs(objectiveData) do
       local objective = objectiveData[i]
-      print(maxIndex, i, objective, type(objective))
-      -- if i > 1 then
-        if type(objective) == "table" then
-          if i == 1 then
-            result = result .. DumpFunctions.dumpCoordiates(objective)
-          else
-            result = result .. DumpFunctions.dumpAsArray(objective)
-          end
-        else -- number
-          result = result .. DumpFunctions.dump(objective)
+      if type(objective) == "table" then
+        if i == 1 then
+          result = result .. DumpFunctions.dumpCoordiates(objective)
+        else
+          result = result .. DumpFunctions.dumpAsArray(objective)
         end
-      -- end
+      else   -- number
+        result = result .. DumpFunctions.dump(objective)
+      end
       if i < #objectiveData then
         result = result .. ","
       end
@@ -137,28 +133,28 @@ function DumpFunctions.testDumpFunctions()
     },
     {
       DumpFunctions.dump(1),
-      "1"
+      "1",
     },
     {
       DumpFunctions.dump("string"),
-      "\"string\""
+      "\"string\"",
     },
     {
       DumpFunctions.dump(true),
-      "true"
+      "true",
     },
     {
       DumpFunctions.dumpCoordiates({ [1335] = { { 36.43, 55.89, }, { 31.43, 57.03, }, }, [1] = { { 1, 2, }, }, }),
-      "{[1335]={{36.43,55.89},{31.43,57.03}},[1]={{1,2}},}"
+      "{[1335]={{36.43,55.89},{31.43,57.03}},[1]={{1,2}},}",
     },
     {
-      DumpFunctions.dumpTriggerEnd({"Secret phrase found", {[1336]={{79.56,75.65}}}}),
-      "{\"Secret phrase found\",{[1336]={{79.56,75.65}},}}"
+      DumpFunctions.dumpTriggerEnd({ "Secret phrase found", { [1336] = { { 79.56, 75.65, }, }, }, }),
+      "{\"Secret phrase found\",{[1336]={{79.56,75.65}},}}",
     },
     {
       DumpFunctions.dumpExtraObjectives({ { { [1337] = { { 35.71, 44.68, }, }, }, "ICON_TYPE_EVENT", "Fish for Darkshore Groupers", }, }),
       -- "{{{[1337] = {{35.71,44.68}},},\"ICON_TYPE_EVENT\",\"Fish for Darkshore Groupers\",}"
-      "{{{[1337]={{35.71,44.68}},},\"ICON_TYPE_EVENT\",\"Fish for Darkshore Groupers\"},}"
+      "{{{[1337]={{35.71,44.68}},},\"ICON_TYPE_EVENT\",\"Fish for Darkshore Groupers\"},}",
     },
     {
       DumpFunctions.dumpExtraObjectives({ { nil, "ICON_TYPE_OBJECT", "Use a Fresh Carcass at the Flame of Uzel", 0, { { "object", 1770, }, }, }, }),
@@ -175,7 +171,6 @@ function DumpFunctions.testDumpFunctions()
     end
   end
   assert(allTestsPassed, "DumpFunctions.testDumpFunctions failed")
-  assert(true == false, "stop")
 end
 
 -- print(DumpFunctions.dumpAsArray({ nil, nil, { 16305, }, }))
