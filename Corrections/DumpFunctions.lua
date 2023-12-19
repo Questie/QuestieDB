@@ -9,11 +9,16 @@ local DumpFunctions = {}
 local Corrections = LibQuestieDB.Corrections
 Corrections.DumpFunctions = DumpFunctions
 
+local type, pairs = type, pairs
+local gsub = string.gsub
+
 local function tblCount(tbl)
   local maxPairsIndex = 0
   for key in pairs(tbl) do
     if type(key) == "number" then
-      maxPairsIndex = math.max(maxPairsIndex, key)
+      if key > maxPairsIndex then
+        maxPairsIndex = key
+      end
     end
   end
   return maxPairsIndex
@@ -29,7 +34,7 @@ function DumpFunctions.dump(val)
     return "nil"
   elseif type(val) == "string" then
     -- escape single quotes
-    val = string.gsub(val, '"', '\\"')
+    val = gsub(val, '"', '\\"')
     return '"' .. tostring(val) .. '"'
   else   -- number
     return tostring(val)
