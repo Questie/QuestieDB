@@ -170,7 +170,8 @@ local function print(...)
       printstring = printstring .. "  " .. tostring(arg)
     end
   end
-  io.stderr:write(printstring .. "\n")
+  io.stdout:write(printstring .. "\n")
+  io.stdout:flush()
 end
 
 local function loadFile(filepath)
@@ -228,59 +229,100 @@ local function loadTOC(file)
   end
 end
 
-local function _Debug(_, ...)
-  --print(...)
-end
-
-local function _ErrorOrWarning(_, text, ...)
-  io.stderr:write(tostring(text) .. "\n")
-end
-
-local function space(num)
-  local spaces = ''
-  for _ = 1, num do
-    spaces = spaces .. '  '
+---comment
+---@param tbl table<number, table<number, any>> @ Table that will be dumped, Item, Quest, Npc, Object
+---@param dataKeys ItemDBKeys|QuestDBKeys|NpcDBKeys|ObjectDBKeys @ Contains name of data as keys and their index as value
+---@param dumpFunctions table<string, function> @ Contains the functions that will be used to dump the data
+---@param combineFunc function? @ Function that will be used to combine the data, if nil the data will not be combined
+---@return string
+local function dumpData(tbl, dataKeys, dumpFunctions, combineFunc)
+  -- sort tbl by key
+  local sortedKeys = {}
+  for key in pairs(tbl) do
+    sortedKeys[#sortedKeys + 1] = key
   end
-  return spaces
-end
+  table.sort(sortedKeys)
 
-local function dumpTable(o, level)
-  if level == nil then level = 0 end
-  if type(o) == 'table' then
-    local s = '{'
-    local indexTable = true
-    local indexCount = #o
-    local totalCount = 0
-    for _ in pairs(o) do
-      totalCount = totalCount + 1
+  local reversedKeys = {}
+  for key, id in pairs(dataKeys) do
+    reversedKeys[id] = key
+  end
+
+  -- DevTools_Dump({typeLookup})
+  -- assert(true==false, "stop")
+  local allResults = { "{\n", }
+  for _, sortKey in ipairs(sortedKeys) do
+    -- print(sortKey)
+    local value = tbl[sortKey]
+
+    local resulttable = {}
+    for _ in pairs(dataKeys) do
+      resulttable[#resulttable + 1] = "nil"
     end
-    if indexCount ~= totalCount then
-      indexTable = false
-    end
 
-    local count = 0
-    for k, v in pairs(o) do
-      count = count + 1
-      if type(k) ~= 'number' then k = '"' .. k .. '"' end
-      if v == "nil" then
-        v = nil
-      end
-      if type(v) == "string" then
-        v = v:gsub('"', '\\"')
-        v = '"' .. v .. '"'
-      end
+    for key in ipairs(resulttable) do
+      -- The name of the key e.g. "objectDrops"
+      local dataName = dataKeys[key] == nil and reversedKeys[key] or key
+      -- The id of the key e.g. "3"-(objectDrops)
+      local dataKey = type(key) == "number" and key or dataKeys[key]
+      -- print(dataName)
+      -- Get the data from the table
+      local data = value[key]
 
-      if not indexTable then
-        s = s .. (level <= 2 and '\n' .. space(level + 1) or '') .. '[' .. k .. '] = ' .. dumpTable(v, level + 1) .. ','
+      -- Because we build it with nil we have to check for nil here, if the value is nil we just print nil
+      if data ~= "nil" and data ~= nil then
+        local dumpFunction = dumpFunctions[dataName]
+        if dumpFunction then
+          local dumpedData = dumpFunction(data)
+          -- Replace double '' with single '
+          -- dumpedData = dumpedData:gsub("''", "'")
+          -- if cli_debug then
+          --   local debugString = ", --" .. dataKey .. ":" .. dataName
+          --   resulttable[dataKey] = "\n  " .. dumpedData .. "" .. debugString
+          -- else
+          --   resulttable[dataKey] = "" .. dumpedData .. ""
+          resulttable[dataKey] = dumpedData
+          -- end
+        else
+          error("No dump function for key: " .. "dataName" .. " (" .. tostring(dataName) .. ")" .. " dataKey: " .. tostring(dataKey))
+        end
       else
-        s = s .. (level <= 2 and '\n' .. space(level + 1) or '') .. dumpTable(v, level + 1) .. ','
+        -- if cli_debug then
+        --   local debugString = ", --" .. dataKey .. ":" .. dataName
+        --   resulttable[dataKey] = "\n  nil" .. debugString
+        -- else
+        resulttable[dataKey] = "nil"
+        -- end
       end
     end
-    return s .. ((count >= totalCount and level <= 2) and "\n" .. space(level) or "") .. '}'
-  else
-    return tostring(o)
+    -- DevTools_Dump({resulttable})
+    -- assert(true==false, "stop")
+    -- DevTools_Dump({ resulttable, })
+    -- local combinedString = LibQuestieDBTable.Corrections.ItemMeta.combine(resulttable)
+    if combineFunc then
+      combineFunc(resulttable)
+    end
+    -- print("test", combinedString)
+    -- DevTools_Dump({resulttable})
+    -- allResults[#allResults + 1] = function() return "  [" .. sortKey .. "] = {" .. table.concat(resulttable, ",") .. "},\n", sortKey, resulttable end
+    -- Concat the data into a string
+    local data = table.concat(resulttable, ",")
+    -- Remove trailing nil
+    repeat
+      local count = 0
+      data, count = string.gsub(data, ",nil$", "")
+    until count == 0
+    -- Add the data to the result
+    allResults[#allResults + 1] = "  [" .. sortKey .. "] = {"
+    allResults[#allResults + 1] = data
+    allResults[#allResults + 1] = ",},\n"
   end
+  allResults[#allResults + 1] = "}"
+  -- return result .. "}"
+  return table.concat(allResults)
 end
+
+
 local function _CheckClassicDatabase()
   GetBuildInfo = function()
     return "1.14.3", "44403", "Jun 27 2022", 11403
@@ -296,9 +338,15 @@ local function _CheckClassicDatabase()
   local objectOverride = {}
   local questOverride = {}
 
+  local Corrections = LibQuestieDBTable.Corrections
+
+  Corrections.DumpFunctions.testDumpFunctions()
+
   do
+    loadFile(".generate_database/_data/Era/classicItemDB.lua")
+    itemOverride = loadstring(QuestieDB.itemData)()
     LibQuestieDBTable.Item.LoadOverrideData()
-    local itemMeta = LibQuestieDBTable.Corrections.ItemMeta
+    local itemMeta = Corrections.ItemMeta
     for itemId, corrections in pairs(LibQuestieDBTable.Item.override) do
       if not itemOverride[itemId] then
         itemOverride[itemId] = {}
@@ -311,8 +359,10 @@ local function _CheckClassicDatabase()
   end
 
   do
+    loadFile(".generate_database/_data/Era/classicNpcDB.lua")
+    npcOverride = loadstring(QuestieDB.npcData)()
     LibQuestieDBTable.Npc.LoadOverrideData()
-    local npcMeta = LibQuestieDBTable.Corrections.NpcMeta
+    local npcMeta = Corrections.NpcMeta
     for npcId, corrections in pairs(LibQuestieDBTable.Npc.override) do
       if not npcOverride[npcId] then
         npcOverride[npcId] = {}
@@ -325,8 +375,10 @@ local function _CheckClassicDatabase()
   end
 
   do
+    loadFile(".generate_database/_data/Era/classicObjectDB.lua")
+    objectOverride = loadstring(QuestieDB.objectData)()
     LibQuestieDBTable.Object.LoadOverrideData()
-    local objectMeta = LibQuestieDBTable.Corrections.ObjectMeta
+    local objectMeta = Corrections.ObjectMeta
     for objectId, corrections in pairs(LibQuestieDBTable.Object.override) do
       if not objectOverride[objectId] then
         objectOverride[objectId] = {}
@@ -339,8 +391,10 @@ local function _CheckClassicDatabase()
   end
 
   do
+    loadFile(".generate_database/_data/Era/classicQuestDB.lua")
+    questOverride = loadstring(QuestieDB.questData)()
     LibQuestieDBTable.Quest.LoadOverrideData()
-    local questMeta = LibQuestieDBTable.Corrections.QuestMeta
+    local questMeta = Corrections.QuestMeta
     for questId, corrections in pairs(LibQuestieDBTable.Quest.override) do
       if not questOverride[questId] then
         questOverride[questId] = {}
@@ -354,19 +408,27 @@ local function _CheckClassicDatabase()
 
   -- Write all the overrides to disk
   local file = io.open(".generate_database/_data/Era/ItemOverride.lua-table", "w")
-  file:write(dumpTable(itemOverride))
+  print("Dumping item overrides")
+  local itemData = dumpData(itemOverride, Corrections.ItemMeta.itemKeys, Corrections.ItemMeta.dumpFuncs, Corrections.ItemMeta.combine)
+  file:write(itemData)
   file:close()
 
   file = io.open(".generate_database/_data/Era/QuestOverride.lua-table", "w")
-  file:write(dumpTable(questOverride))
+  print("Dumping quest overrides")
+  local questData = dumpData(questOverride, Corrections.QuestMeta.questKeys, Corrections.QuestMeta.dumpFuncs)
+  file:write(questData)
   file:close()
 
-  file = io.open(".generate_database/_data/Era/NpcOverride.lua-table", "w")
-  file:write(dumpTable(npcOverride))
+  local file = io.open(".generate_database/_data/Era/NpcOverride.lua-table", "w")
+  print("Dumping npc overrides")
+  local npcData = dumpData(npcOverride, Corrections.NpcMeta.npcKeys, Corrections.NpcMeta.dumpFuncs, Corrections.NpcMeta.combine)
+  file:write(npcData)
   file:close()
 
   file = io.open(".generate_database/_data/Era/ObjectOverride.lua-table", "w")
-  file:write(dumpTable(objectOverride))
+  print("Dumping object overrides")
+  local objectData = dumpData(objectOverride, Corrections.ObjectMeta.objectKeys, Corrections.ObjectMeta.dumpFuncs)
+  file:write(objectData)
   file:close()
 
   print("\n\27[32mClassic corrections dumped successfully\27[0m")
@@ -374,6 +436,7 @@ end
 _CheckClassicDatabase()
 
 LibQuestieDBTable = {}
+QuestieDB = {}
 local function _CheckTBCDatabase()
   GetBuildInfo = function()
     return "2.5.1", "38644", "May 11 2021", 20501
@@ -390,7 +453,13 @@ local function _CheckTBCDatabase()
   local objectOverride = {}
   local questOverride = {}
 
+  local Corrections = LibQuestieDBTable.Corrections
+
+  Corrections.DumpFunctions.testDumpFunctions()
+
   do
+    loadFile(".generate_database/_data/Tbc/tbcItemDB.lua")
+    itemOverride = loadstring(QuestieDB.itemData)()
     LibQuestieDBTable.Item.LoadOverrideData()
     local itemMeta = LibQuestieDBTable.Corrections.ItemMeta
     for itemId, corrections in pairs(LibQuestieDBTable.Item.override) do
@@ -405,6 +474,8 @@ local function _CheckTBCDatabase()
   end
 
   do
+    loadFile(".generate_database/_data/Tbc/tbcNpcDB.lua")
+    npcOverride = loadstring(QuestieDB.npcData)()
     LibQuestieDBTable.Npc.LoadOverrideData()
     local npcMeta = LibQuestieDBTable.Corrections.NpcMeta
     for npcId, corrections in pairs(LibQuestieDBTable.Npc.override) do
@@ -419,6 +490,8 @@ local function _CheckTBCDatabase()
   end
 
   do
+    loadFile(".generate_database/_data/Tbc/tbcObjectDB.lua")
+    objectOverride = loadstring(QuestieDB.objectData)()
     LibQuestieDBTable.Object.LoadOverrideData()
     local objectMeta = LibQuestieDBTable.Corrections.ObjectMeta
     for objectId, corrections in pairs(LibQuestieDBTable.Object.override) do
@@ -433,6 +506,8 @@ local function _CheckTBCDatabase()
   end
 
   do
+    loadFile(".generate_database/_data/Tbc/tbcQuestDB.lua")
+    questOverride = loadstring(QuestieDB.questData)()
     LibQuestieDBTable.Quest.LoadOverrideData()
     local questMeta = LibQuestieDBTable.Corrections.QuestMeta
     for questId, corrections in pairs(LibQuestieDBTable.Quest.override) do
@@ -447,20 +522,27 @@ local function _CheckTBCDatabase()
   end
 
   -- Write all the overrides to disk
-  local file = io.open(".generate_database/_data/Tbc/ItemOverride.lua-table", "w")
-  file:write(dumpTable(itemOverride))
-  file:close()
+  -- local file = io.open(".generate_database/_data/Tbc/ItemOverride.lua-table", "w")
+  -- print("Dumping item overrides")
+  -- local itemData = dumpData(itemOverride, Corrections.ItemMeta.itemKeys, Corrections.ItemMeta.dumpFuncs, Corrections.ItemMeta.combine)
+  -- file:write(itemData)
+  -- file:close()
 
   file = io.open(".generate_database/_data/Tbc/QuestOverride.lua-table", "w")
-  file:write(dumpTable(questOverride))
+  print("Dumping quest overrides")
+  local questData = dumpData(questOverride, Corrections.QuestMeta.questKeys, Corrections.QuestMeta.dumpFuncs)
+  file:write(questData)
   file:close()
 
   file = io.open(".generate_database/_data/Tbc/NpcOverride.lua-table", "w")
-  file:write(dumpTable(npcOverride))
+  print("Dumping npc overrides")
+  local npcData = dumpData(npcOverride, Corrections.NpcMeta.npcKeys, Corrections.NpcMeta.dumpFuncs, Corrections.NpcMeta.combine)
+  file:write(npcData)
   file:close()
 
   file = io.open(".generate_database/_data/Tbc/ObjectOverride.lua-table", "w")
-  file:write(dumpTable(objectOverride))
+  local objectData = dumpData(objectOverride, Corrections.ObjectMeta.objectKeys, Corrections.ObjectMeta.dumpFuncs)
+  file:write(objectData)
   file:close()
 
   print("\n\27[TBC corrections dumped successfully\27[0m")
@@ -468,6 +550,7 @@ end
 _CheckTBCDatabase()
 
 LibQuestieDBTable = {}
+QuestieDB = {}
 local function _CheckWotlkDatabase()
   GetBuildInfo = function()
     return "3.4.0", "44644", "Jun 12 2022", 30400
@@ -484,7 +567,13 @@ local function _CheckWotlkDatabase()
   local objectOverride = {}
   local questOverride = {}
 
+  local Corrections = LibQuestieDBTable.Corrections
+
+  Corrections.DumpFunctions.testDumpFunctions()
+
   do
+    loadFile(".generate_database/_data/Wotlk/wotlkItemDB.lua")
+    itemOverride = loadstring(QuestieDB.itemData)()
     LibQuestieDBTable.Item.LoadOverrideData()
     local itemMeta = LibQuestieDBTable.Corrections.ItemMeta
     for itemId, corrections in pairs(LibQuestieDBTable.Item.override) do
@@ -499,6 +588,8 @@ local function _CheckWotlkDatabase()
   end
 
   do
+    loadFile(".generate_database/_data/Wotlk/wotlkNpcDB.lua")
+    npcOverride = loadstring(QuestieDB.npcData)()
     LibQuestieDBTable.Npc.LoadOverrideData()
     local npcMeta = LibQuestieDBTable.Corrections.NpcMeta
     for npcId, corrections in pairs(LibQuestieDBTable.Npc.override) do
@@ -513,6 +604,8 @@ local function _CheckWotlkDatabase()
   end
 
   do
+    loadFile(".generate_database/_data/Wotlk/wotlkObjectDB.lua")
+    objectOverride = loadstring(QuestieDB.objectData)()
     LibQuestieDBTable.Object.LoadOverrideData()
     local objectMeta = LibQuestieDBTable.Corrections.ObjectMeta
     for objectId, corrections in pairs(LibQuestieDBTable.Object.override) do
@@ -527,6 +620,8 @@ local function _CheckWotlkDatabase()
   end
 
   do
+    loadFile(".generate_database/_data/Wotlk/wotlkQuestDB.lua")
+    questOverride = loadstring(QuestieDB.questData)()
     LibQuestieDBTable.Quest.LoadOverrideData()
     local questMeta = LibQuestieDBTable.Corrections.QuestMeta
     for questId, corrections in pairs(LibQuestieDBTable.Quest.override) do
@@ -542,19 +637,25 @@ local function _CheckWotlkDatabase()
 
   -- Write all the overrides to disk
   local file = io.open(".generate_database/_data/Wotlk/ItemOverride.lua-table", "w")
-  file:write(dumpTable(itemOverride))
+  local itemData = dumpData(itemOverride, Corrections.ItemMeta.itemKeys, Corrections.ItemMeta.dumpFuncs, Corrections.ItemMeta.combine)
+  file:write(itemData)
   file:close()
 
   file = io.open(".generate_database/_data/Wotlk/QuestOverride.lua-table", "w")
-  file:write(dumpTable(questOverride))
+  print("Dumping quest overrides")
+  local questData = dumpData(questOverride, Corrections.QuestMeta.questKeys, Corrections.QuestMeta.dumpFuncs)
+  file:write(questData)
   file:close()
 
   file = io.open(".generate_database/_data/Wotlk/NpcOverride.lua-table", "w")
-  file:write(dumpTable(npcOverride))
+  print("Dumping npc overrides")
+  local npcData = dumpData(npcOverride, Corrections.NpcMeta.npcKeys, Corrections.NpcMeta.dumpFuncs, Corrections.NpcMeta.combine)
+  file:write(npcData)
   file:close()
 
   file = io.open(".generate_database/_data/Wotlk/ObjectOverride.lua-table", "w")
-  file:write(dumpTable(objectOverride))
+  local objectData = dumpData(objectOverride, Corrections.ObjectMeta.objectKeys, Corrections.ObjectMeta.dumpFuncs)
+  file:write(objectData)
   file:close()
 
   print("\n\27[Wotlk corrections dumped successfully\27[0m")
