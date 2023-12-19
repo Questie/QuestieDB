@@ -170,15 +170,15 @@ function DumpFunctions.testDumpFunctions()
     },
     {
       DumpFunctions.dumpTriggerEnd({ "Secret phrase found", { [1336] = { { 79.56, 75.65, }, }, }, }),
-      "{\"Secret phrase found\",{[1336]={{79.56,75.65}},}}",
+      "{'Secret phrase found',{[1336]={{79.56,75.65}},}}",
     },
     {
       DumpFunctions.dumpExtraObjectives({ { { [1337] = { { 35.71, 44.68, }, }, }, "ICON_TYPE_EVENT", "Fish for Darkshore Groupers", }, }),
-      "{{{[1337]={{35.71,44.68}},},\"ICON_TYPE_EVENT\",\"Fish for Darkshore Groupers\"},}",
+      "{{{[1337]={{35.71,44.68}},},'ICON_TYPE_EVENT','Fish for Darkshore Groupers'},}",
     },
     {
       DumpFunctions.dumpExtraObjectives({ { nil, "ICON_TYPE_OBJECT", "Use a Fresh Carcass at the Flame of Uzel", 0, { { "object", 1770, }, }, }, }),
-      "{{nil,\"ICON_TYPE_OBJECT\",\"Use a Fresh Carcass at the Flame of Uzel\",0,{{\"object\",1770}}},}",
+      "{{nil,'ICON_TYPE_OBJECT','Use a Fresh Carcass at the Flame of Uzel',0,{{'object',1770}}},}",
     },
   }
   local allTestsPassed = true
@@ -190,12 +190,3 @@ function DumpFunctions.testDumpFunctions()
   end
   assert(allTestsPassed, "DumpFunctions.testDumpFunctions failed")
 end
-
--- print(DumpFunctions.dumpAsArray({ nil, nil, { 16305, }, }))
--- print(DumpFunctions.dump(1))
--- print(DumpFunctions.dump("string"))
--- print(DumpFunctions.dump(true))
--- print(DumpFunctions.dumpCoordiates({ [1335] = { { 36.43, 55.89, }, { 31.43, 57.03, }, }, [1] = { { 1, 2, }, }, }))
--- print(DumpFunctions.dumpTriggerEnd({"Secret phrase found", {[1336]={{79.56,75.65}}}}))
--- print(DumpFunctions.dumpExtraObjectives({ { { [1337] = { { 35.71, 44.68, }, }, }, "ICON_TYPE_EVENT", "Fish for Darkshore Groupers", }, }))
--- print(DumpFunctions.dumpExtraObjectives({ { nil, "ICON_TYPE_OBJECT", "Use a Fresh Carcass at the Flame of Uzel", 0, { { "object", 1770, }, }, }, }))
