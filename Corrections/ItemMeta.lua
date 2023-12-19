@@ -81,6 +81,30 @@ ItemMeta.dumpFuncs = {
   ['teachesSpell'] = DumpFunctions.dump,
 }
 
+-- Localize these variables to clean up the code
+do
+  -- This combines the values that are going to be converted into a string
+  -- The lowest index is the one that will be replaced with the combined string
+  local combineValues = {
+    [7] = 'flags',
+    [8] = 'foodType',
+    [9] = 'itemLevel',
+    [10] = 'requiredLevel',
+    [11] = 'ammoType',
+    [12] = 'class',
+    [13] = 'subClass',
+  }
+
+  -- Combine all values into one string 0;0;0;0;;
+  -- where numbers become 0 if they are nil and strings become empty such as 0;<string>;0
+  ---@param tbl table<number, any> @ Table that will be modified
+  ---@return table<number, any> @ Returns the table inputted with the combined value
+  ---@return string @ Returns the combined value string that was inserted into the table
+  function ItemMeta.combine(tbl)
+    return DumpFunctions.combine(tbl, combineValues, ItemMeta.itemTypes)
+  end
+end
+
 -- item class/subClass combinations
 --class subClass
 -- 0         0     Consumable
