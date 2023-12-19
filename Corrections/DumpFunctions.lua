@@ -21,9 +21,8 @@ end
 
 ---comment
 ---@param val any
----@param wrapString boolean? @ If true, strings will be wrapped in single quotes
 ---@return string
-function DumpFunctions.dump(val, wrapString)
+function DumpFunctions.dump(val)
     if type(val) == "table" then
         return DumpFunctions.dumpAsArray(val)
     elseif type(val) == "nil" or val == nil then
