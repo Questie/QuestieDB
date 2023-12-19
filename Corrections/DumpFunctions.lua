@@ -158,14 +158,11 @@ function DumpFunctions.testDumpFunctions()
     },
     {
       DumpFunctions.dumpExtraObjectives({ { { [1337] = { { 35.71, 44.68, }, }, }, "ICON_TYPE_EVENT", "Fish for Darkshore Groupers", }, }),
-      -- "{{{[1337] = {{35.71,44.68}},},\"ICON_TYPE_EVENT\",\"Fish for Darkshore Groupers\",}"
       "{{{[1337]={{35.71,44.68}},},\"ICON_TYPE_EVENT\",\"Fish for Darkshore Groupers\"},}",
     },
     {
       DumpFunctions.dumpExtraObjectives({ { nil, "ICON_TYPE_OBJECT", "Use a Fresh Carcass at the Flame of Uzel", 0, { { "object", 1770, }, }, }, }),
-      -- "{{\"ICON_TYPE_OBJECT\",\"Use a Fresh Carcass at the Flame of Uzel\",0,{{\"object\",1770}},}"
       "{{nil,\"ICON_TYPE_OBJECT\",\"Use a Fresh Carcass at the Flame of Uzel\",0,{{\"object\",1770}}},}",
-      -- "{{\"ICON_TYPE_OBJECT\",\"Use a Fresh Carcass at the Flame of Uzel\",0,{{\"object\",1770}}},}",
     },
   }
   local allTestsPassed = true

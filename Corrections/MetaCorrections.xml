@@ -1,5 +1,6 @@
 <Ui>
   <Script file="Corrections.lua"/>
+  <Script file="DumpFunctions.lua"/>
   <Script file="ZoneMeta.lua"/>
   <Script file="PlayerMeta.lua"/>
   <Script file="ItemMeta.lua"/>
