@@ -101,7 +101,9 @@ end
 function DumpFunctions.dumpTriggerEnd(tbl)
   local result = "{"
   result = result .. DumpFunctions.dump(tbl[1]) .. ","
-  result = result .. DumpFunctions.dumpCoordiates(tbl[2])
+  if tbl[2] ~= nil and tbl[2] ~= "nil" then
+    result = result .. DumpFunctions.dumpCoordiates(tbl[2])
+  end
   return result .. "}"
 end
 
