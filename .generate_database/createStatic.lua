@@ -1,3 +1,4 @@
+---@diagnostic disable: need-check-nil
 require("cli.dump")
 
 -- Used to print extra information and the like when generating the database
@@ -25,8 +26,8 @@ QUEST_OBJECTS_FOUND = "QUEST_OBJECTS_FOUND"
 ERR_QUEST_ACCEPTED_S = "ERR_QUEST_ACCEPTED_S"
 ERR_QUEST_COMPLETE_S = "ERR_QUEST_COMPLETE_S"
 
-tremove = table.remove
-tinsert = table.insert
+local assert = assert
+local type = type
 
 local _EmptyDummyFunction = function() end
 local _TableDummyFunction = function() return {} end
@@ -229,7 +230,7 @@ local function loadTOC(file)
   end
 end
 
----comment
+---Dumps the data for Item, Quest, Npc, Object into a string
 ---@param tbl table<number, table<number, any>> @ Table that will be dumped, Item, Quest, Npc, Object
 ---@param dataKeys ItemDBKeys|QuestDBKeys|NpcDBKeys|ObjectDBKeys @ Contains name of data as keys and their index as value
 ---@param dumpFunctions table<string, function> @ Contains the functions that will be used to dump the data
@@ -243,29 +244,33 @@ local function dumpData(tbl, dataKeys, dumpFunctions, combineFunc)
   end
   table.sort(sortedKeys)
 
+  local nrDataKeys = 0
   local reversedKeys = {}
   for key, id in pairs(dataKeys) do
     reversedKeys[id] = key
+    nrDataKeys = nrDataKeys + 1
   end
 
-  -- DevTools_Dump({typeLookup})
-  -- assert(true==false, "stop")
   local allResults = { "{\n", }
-  for _, sortKey in ipairs(sortedKeys) do
+  for sortKeyIndex=1, #sortedKeys do
+    local sortKey = sortedKeys[sortKeyIndex]
+
     -- print(sortKey)
     local value = tbl[sortKey]
 
     local resulttable = {}
-    for _ in pairs(dataKeys) do
-      resulttable[#resulttable + 1] = "nil"
+    for i = 1, nrDataKeys do
+      resulttable[i] = "nil"
     end
 
-    for key in ipairs(resulttable) do
+    for key = 1, nrDataKeys do
       -- The name of the key e.g. "objectDrops"
       local dataName = dataKeys[key] == nil and reversedKeys[key] or key
       -- The id of the key e.g. "3"-(objectDrops)
       local dataKey = type(key) == "number" and key or dataKeys[key]
-      -- print(dataName)
+
+      -- print(key, dataName, dataKey)
+
       -- Get the data from the table
       local data = value[key]
 
@@ -274,37 +279,23 @@ local function dumpData(tbl, dataKeys, dumpFunctions, combineFunc)
         local dumpFunction = dumpFunctions[dataName]
         if dumpFunction then
           local dumpedData = dumpFunction(data)
-          -- Replace double '' with single '
-          -- dumpedData = dumpedData:gsub("''", "'")
-          -- if cli_debug then
-          --   local debugString = ", --" .. dataKey .. ":" .. dataName
-          --   resulttable[dataKey] = "\n  " .. dumpedData .. "" .. debugString
-          -- else
-          --   resulttable[dataKey] = "" .. dumpedData .. ""
           resulttable[dataKey] = dumpedData
-          -- end
         else
           error("No dump function for key: " .. "dataName" .. " (" .. tostring(dataName) .. ")" .. " dataKey: " .. tostring(dataKey))
         end
       else
-        -- if cli_debug then
-        --   local debugString = ", --" .. dataKey .. ":" .. dataName
-        --   resulttable[dataKey] = "\n  nil" .. debugString
-        -- else
         resulttable[dataKey] = "nil"
-        -- end
       end
     end
     -- DevTools_Dump({resulttable})
-    -- assert(true==false, "stop")
-    -- DevTools_Dump({ resulttable, })
-    -- local combinedString = LibQuestieDBTable.Corrections.ItemMeta.combine(resulttable)
+
+    -- If a combine funnction exist we run it here
+    assert(#resulttable == nrDataKeys, "resulttable length is not equal to dataKeys length, combine will fail")
     if combineFunc then
       combineFunc(resulttable)
     end
-    -- print("test", combinedString)
     -- DevTools_Dump({resulttable})
-    -- allResults[#allResults + 1] = function() return "  [" .. sortKey .. "] = {" .. table.concat(resulttable, ",") .. "},\n", sortKey, resulttable end
+
     -- Concat the data into a string
     local data = table.concat(resulttable, ",")
     -- Remove trailing nil
@@ -312,6 +303,7 @@ local function dumpData(tbl, dataKeys, dumpFunctions, combineFunc)
       local count = 0
       data, count = string.gsub(data, ",nil$", "")
     until count == 0
+
     -- Add the data to the result
     allResults[#allResults + 1] = "  [" .. sortKey .. "] = {"
     allResults[#allResults + 1] = data
@@ -407,28 +399,40 @@ local function _CheckClassicDatabase()
   end
 
   -- Write all the overrides to disk
+  ---@diagnostic disable-next-line: param-type-mismatch
   local file = io.open(".generate_database/_data/Era/ItemOverride.lua-table", "w")
   print("Dumping item overrides")
   local itemData = dumpData(itemOverride, Corrections.ItemMeta.itemKeys, Corrections.ItemMeta.dumpFuncs, Corrections.ItemMeta.combine)
+  ---@diagnostic disable-next-line: undefined-field
   file:write(itemData)
+  ---@diagnostic disable-next-line: undefined-field
   file:close()
 
+  ---@diagnostic disable-next-line: param-type-mismatch
   file = io.open(".generate_database/_data/Era/QuestOverride.lua-table", "w")
   print("Dumping quest overrides")
   local questData = dumpData(questOverride, Corrections.QuestMeta.questKeys, Corrections.QuestMeta.dumpFuncs)
+  ---@diagnostic disable-next-line: undefined-field
   file:write(questData)
+  ---@diagnostic disable-next-line: undefined-field
   file:close()
 
-  local file = io.open(".generate_database/_data/Era/NpcOverride.lua-table", "w")
+  ---@diagnostic disable-next-line: param-type-mismatch
+  file = io.open(".generate_database/_data/Era/NpcOverride.lua-table", "w")
   print("Dumping npc overrides")
   local npcData = dumpData(npcOverride, Corrections.NpcMeta.npcKeys, Corrections.NpcMeta.dumpFuncs, Corrections.NpcMeta.combine)
+  ---@diagnostic disable-next-line: undefined-field
   file:write(npcData)
+  ---@diagnostic disable-next-line: undefined-field
   file:close()
 
+  ---@diagnostic disable-next-line: param-type-mismatch
   file = io.open(".generate_database/_data/Era/ObjectOverride.lua-table", "w")
   print("Dumping object overrides")
   local objectData = dumpData(objectOverride, Corrections.ObjectMeta.objectKeys, Corrections.ObjectMeta.dumpFuncs)
+  ---@diagnostic disable-next-line: undefined-field
   file:write(objectData)
+  ---@diagnostic disable-next-line: undefined-field
   file:close()
 
   print("\n\27[32mClassic corrections dumped successfully\27[0m")
@@ -522,27 +526,40 @@ local function _CheckTBCDatabase()
   end
 
   -- Write all the overrides to disk
-  -- local file = io.open(".generate_database/_data/Tbc/ItemOverride.lua-table", "w")
-  -- print("Dumping item overrides")
-  -- local itemData = dumpData(itemOverride, Corrections.ItemMeta.itemKeys, Corrections.ItemMeta.dumpFuncs, Corrections.ItemMeta.combine)
-  -- file:write(itemData)
-  -- file:close()
+  ---@diagnostic disable-next-line: param-type-mismatch
+  local file = io.open(".generate_database/_data/Tbc/ItemOverride.lua-table", "w")
+  print("Dumping item overrides")
+  local itemData = dumpData(itemOverride, Corrections.ItemMeta.itemKeys, Corrections.ItemMeta.dumpFuncs, Corrections.ItemMeta.combine)
+  ---@diagnostic disable-next-line: undefined-field
+  file:write(itemData)
+  ---@diagnostic disable-next-line: undefined-field
+  file:close()
 
+  ---@diagnostic disable-next-line: param-type-mismatch
   file = io.open(".generate_database/_data/Tbc/QuestOverride.lua-table", "w")
   print("Dumping quest overrides")
   local questData = dumpData(questOverride, Corrections.QuestMeta.questKeys, Corrections.QuestMeta.dumpFuncs)
+  ---@diagnostic disable-next-line: undefined-field
   file:write(questData)
+  ---@diagnostic disable-next-line: undefined-field
   file:close()
 
+  ---@diagnostic disable-next-line: param-type-mismatch
   file = io.open(".generate_database/_data/Tbc/NpcOverride.lua-table", "w")
   print("Dumping npc overrides")
   local npcData = dumpData(npcOverride, Corrections.NpcMeta.npcKeys, Corrections.NpcMeta.dumpFuncs, Corrections.NpcMeta.combine)
+  ---@diagnostic disable-next-line: undefined-field
   file:write(npcData)
+  ---@diagnostic disable-next-line: undefined-field
   file:close()
 
+  ---@diagnostic disable-next-line: param-type-mismatch
   file = io.open(".generate_database/_data/Tbc/ObjectOverride.lua-table", "w")
+  print("Dumping object overrides")
   local objectData = dumpData(objectOverride, Corrections.ObjectMeta.objectKeys, Corrections.ObjectMeta.dumpFuncs)
+  ---@diagnostic disable-next-line: undefined-field
   file:write(objectData)
+  ---@diagnostic disable-next-line: undefined-field
   file:close()
 
   print("\n\27[TBC corrections dumped successfully\27[0m")
@@ -636,26 +653,40 @@ local function _CheckWotlkDatabase()
   end
 
   -- Write all the overrides to disk
+  ---@diagnostic disable-next-line: param-type-mismatch
   local file = io.open(".generate_database/_data/Wotlk/ItemOverride.lua-table", "w")
+  print("Dumping item overrides")
   local itemData = dumpData(itemOverride, Corrections.ItemMeta.itemKeys, Corrections.ItemMeta.dumpFuncs, Corrections.ItemMeta.combine)
+  ---@diagnostic disable-next-line: undefined-field
   file:write(itemData)
+  ---@diagnostic disable-next-line: undefined-field
   file:close()
 
+  ---@diagnostic disable-next-line: param-type-mismatch
   file = io.open(".generate_database/_data/Wotlk/QuestOverride.lua-table", "w")
   print("Dumping quest overrides")
   local questData = dumpData(questOverride, Corrections.QuestMeta.questKeys, Corrections.QuestMeta.dumpFuncs)
+  ---@diagnostic disable-next-line: undefined-field
   file:write(questData)
+  ---@diagnostic disable-next-line: undefined-field
   file:close()
 
+  ---@diagnostic disable-next-line: param-type-mismatch
   file = io.open(".generate_database/_data/Wotlk/NpcOverride.lua-table", "w")
   print("Dumping npc overrides")
   local npcData = dumpData(npcOverride, Corrections.NpcMeta.npcKeys, Corrections.NpcMeta.dumpFuncs, Corrections.NpcMeta.combine)
+  ---@diagnostic disable-next-line: undefined-field
   file:write(npcData)
+  ---@diagnostic disable-next-line: undefined-field
   file:close()
 
+  ---@diagnostic disable-next-line: param-type-mismatch
   file = io.open(".generate_database/_data/Wotlk/ObjectOverride.lua-table", "w")
+  print("Dumping object overrides")
   local objectData = dumpData(objectOverride, Corrections.ObjectMeta.objectKeys, Corrections.ObjectMeta.dumpFuncs)
+  ---@diagnostic disable-next-line: undefined-field
   file:write(objectData)
+  ---@diagnostic disable-next-line: undefined-field
   file:close()
 
   print("\n\27[Wotlk corrections dumped successfully\27[0m")
