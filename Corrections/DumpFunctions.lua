@@ -11,8 +11,11 @@ Corrections.DumpFunctions = DumpFunctions
 
 local type, pairs = type, pairs
 local gsub = string.gsub
+local tInsert = table.insert
+local tRemove = table.remove
+local tSort = table.sort
 
-local function tblCount(tbl)
+function DumpFunctions.tblMaxIndex(tbl)
   local maxPairsIndex = 0
   for key in pairs(tbl) do
     if type(key) == "number" then
@@ -21,8 +24,18 @@ local function tblCount(tbl)
       end
     end
   end
-  return maxPairsIndex
+  return math.max(maxPairsIndex, #tbl)
 end
+local tblMaxIndex = DumpFunctions.tblMaxIndex
+
+function DumpFunctions.tblCount(tbl)
+  local count = 0
+  for _ in pairs(tbl) do
+    count = count + 1
+  end
+  return count
+end
+local tblCount = DumpFunctions.tblCount
 
 ---comment
 ---@param val any
@@ -34,10 +47,12 @@ function DumpFunctions.dump(val)
     return "nil"
   elseif type(val) == "string" then
     -- escape single quotes
-    val = gsub(val, '"', '\\"')
-    return '"' .. tostring(val) .. '"'
-  else   -- number
+    val = gsub(val, "'", "\\'")
+    return "'" .. tostring(val) .. "'"
+  elseif type(val) == "boolean" then
     return tostring(val)
+  else   -- number
+    return val
   end
 end
 
@@ -52,7 +67,7 @@ function DumpFunctions.dumpAsArray(tbl)
   end
 
   -- This is a safeguard against tables that are not arrays
-  local maxPairsIndex = tblCount(tbl)
+  local maxPairsIndex = tblMaxIndex(tbl)
 
   for i = 1, maxPairsIndex do
     local val = tbl[i]
@@ -109,7 +124,7 @@ function DumpFunctions.dumpExtraObjectives(tbl)
   local result = "{"
   for _, objectiveData in ipairs(tbl) do
     result = result .. "{"
-    local maxIndex = tblCount(objectiveData)
+    local maxIndex = tblMaxIndex(objectiveData)
     for i = 1, maxIndex do
       local objective = objectiveData[i]
       if type(objective) == "table" then
@@ -134,15 +149,16 @@ function DumpFunctions.testDumpFunctions()
   local testTable = {
     {
       DumpFunctions.dumpAsArray({ nil, nil, { 16305, }, nil, { { { 7572, }, 7572, "The Tale of Sorrow", }, }, }),
-      "{nil,nil,{16305},nil,{{{7572},7572,\"The Tale of Sorrow\"}}}",
+      "{nil,nil,{16305},nil,{{{7572},7572,'The Tale of Sorrow'}}}",
     },
     {
       DumpFunctions.dump(1),
-      "1",
+      -- "1",
+      1,
     },
     {
       DumpFunctions.dump("string"),
-      "\"string\"",
+      "'string'",
     },
     {
       DumpFunctions.dump(true),
