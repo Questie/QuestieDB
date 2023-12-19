@@ -50,7 +50,7 @@ function PrivateLibQuestieDB:initNamespace()
     ---@param key `T`
     ---@return T
     __index = function(s, key)
-      print("Missing key", key)
+      print("Creating Module", key)
       s[key] = {}
       return s[key]
     end,
