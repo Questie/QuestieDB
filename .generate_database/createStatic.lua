@@ -396,7 +396,7 @@ local function DumpDatabase(version)
   do
     loadFile(f(".generate_database/_data/%s/%sItemDB.lua", capitalizedVersion, lowerVersion))
     itemOverride = loadstring(QuestieDB.itemData)()
-    LibQuestieDBTable.Item.LoadOverrideData()
+    LibQuestieDBTable.Item.LoadOverrideData(false, true)
     local itemMeta = Corrections.ItemMeta
     for itemId, corrections in pairs(LibQuestieDBTable.Item.override) do
       if not itemOverride[itemId] then
@@ -412,7 +412,7 @@ local function DumpDatabase(version)
   do
     loadFile(f(".generate_database/_data/%s/%sNpcDB.lua", capitalizedVersion, lowerVersion))
     npcOverride = loadstring(QuestieDB.npcData)()
-    LibQuestieDBTable.Npc.LoadOverrideData()
+    LibQuestieDBTable.Npc.LoadOverrideData(false, true)
     local npcMeta = Corrections.NpcMeta
     for npcId, corrections in pairs(LibQuestieDBTable.Npc.override) do
       if not npcOverride[npcId] then
@@ -428,7 +428,7 @@ local function DumpDatabase(version)
   do
     loadFile(f(".generate_database/_data/%s/%sObjectDB.lua", capitalizedVersion, lowerVersion))
     objectOverride = loadstring(QuestieDB.objectData)()
-    LibQuestieDBTable.Object.LoadOverrideData()
+    LibQuestieDBTable.Object.LoadOverrideData(false, true)
     local objectMeta = Corrections.ObjectMeta
     for objectId, corrections in pairs(LibQuestieDBTable.Object.override) do
       if not objectOverride[objectId] then
@@ -444,7 +444,7 @@ local function DumpDatabase(version)
   do
     loadFile(f(".generate_database/_data/%s/%sQuestDB.lua", capitalizedVersion, lowerVersion))
     questOverride = loadstring(QuestieDB.questData)()
-    LibQuestieDBTable.Quest.LoadOverrideData()
+    LibQuestieDBTable.Quest.LoadOverrideData(false, true)
     local questMeta = Corrections.QuestMeta
     for questId, corrections in pairs(LibQuestieDBTable.Quest.override) do
       if not questOverride[questId] then
