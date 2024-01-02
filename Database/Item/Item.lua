@@ -105,7 +105,9 @@ local function InitializeIdString()
   wipe(AllIdStrings)
   local func, idString = Database.GetAllEntityIdsFunction("Item")
   tInsert(AllIdStrings, idString)
-  assert(#func() == #Item.GetAllItemIds(), "Item ids are not the same")
+  if Database.debugEnabled then
+    assert(#func() == #Item.GetAllIds(), "Item ids are not the same")
+  end
 end
 
 function Item.ClearOverrideData()
@@ -118,7 +120,7 @@ end
 do
   ---Get all item ids.
   ---@return ItemId[]
-  function Item.GetAllItemIds()
+  function Item.GetAllIds()
     return loadstring(string.format("return {%s}", tConcat(AllIdStrings, ",")))()
   end
 end
@@ -145,7 +147,7 @@ do
     end
     publicItem.AddOverrideData = Item.AddOverrideData
     publicItem.ClearOverrideData = Item.ClearOverrideData
-    publicItem.GetAllItemIds = Item.GetAllItemIds
+    publicItem.GetAllIds = Item.GetAllIds
   end
 
   -- 1. ['name']           -- string

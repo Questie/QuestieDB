@@ -104,7 +104,9 @@ local function InitializeIdString()
   wipe(AllIdStrings)
   local func, idString = Database.GetAllEntityIdsFunction("Quest")
   tInsert(AllIdStrings, idString)
-  assert(#func() == #Quest.GetAllQuestIds(), "Quest ids are not the same")
+  if Database.debugEnabled then
+    assert(#func() == #Quest.GetAllIds(), "Quest ids are not the same")
+  end
 end
 
 function Quest.ClearOverrideData()
@@ -116,7 +118,7 @@ end
 
 ---Get all quest ids.
 ---@return QuestId[]
-function Quest.GetAllQuestIds()
+function Quest.GetAllIds()
   return loadstring(string.format("return {%s}", tConcat(AllIdStrings, ",")))()
 end
 
@@ -149,7 +151,7 @@ do
     end
     publicQuest.AddOverrideData = Quest.AddOverrideData
     publicQuest.ClearOverrideData = Quest.ClearOverrideData
-    publicQuest.GetAllQuestIds = Quest.GetAllQuestIds
+    publicQuest.GetAllIds = Quest.GetAllIds
   end
 
   -- questKeys = {

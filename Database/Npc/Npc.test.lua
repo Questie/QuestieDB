@@ -9,7 +9,7 @@ Npc.testGetFunctions = function(fast)
   debugprofilestart()
   local functions = 15
   local count = 0
-  for id in pairs(Npc.GetAllNpcIds()) do
+  for id in pairs(Npc.GetAllIds()) do
     Npc.lastTestedID = id
     Npc.lastTestedData = ""
     count = count + 1
