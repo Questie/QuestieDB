@@ -16,6 +16,7 @@ local Item = LibQuestieDB.Item
 Database.debugEnabled = true
 Database.Initialized = false
 
+--- The nil value for the database
 Database._nil = "nil"
 local _nil = Database._nil
 
