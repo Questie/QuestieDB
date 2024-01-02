@@ -15,11 +15,22 @@ local debug = DebugText:Get("Npc")
 --*---------------------------
 --- The nil value for the database
 local _nil = Database._nil
-local tonumber = tonumber
 
--- This will be assigned from the initialize function
+---- Contains the data ----
 local glob = {}
 local override = {}
+
+---- Contains the id strings ----
+local AllIdStrings = {}
+
+---- Local Functions ----
+local tonumber = tonumber
+local tConcat = table.concat
+local tInsert = table.insert
+local wipe = wipe
+local loadstring = loadstring
+local sFind = string.find
+
 
 function Npc.InitializeDynamic()
   -- This will be assigned from the initialize function
@@ -80,23 +91,33 @@ function Npc.AddOverrideData(dataOverride, overrideKeys)
   if not glob or not override then
     error("You must initialize the Npc database before adding override data")
   end
+  local newIds = Database.GetNewIds(AllIdStrings, dataOverride)
+  if #newIds ~= 0 then
+    tInsert(AllIdStrings, tConcat(newIds, ","))
+    if Database.debugEnabled then
+      print("  # New Npc IDs", #newIds)
+    end
+  end
   return Database.Override(dataOverride, override, overrideKeys)
+end
+
+local function InitializeIdString()
+  wipe(AllIdStrings)
+  local _, idString = Database.GetAllEntityIdsFunction("Npc")
+  tInsert(AllIdStrings, idString)
 end
 
 function Npc.ClearOverrideData()
   if override then
     override = wipe(override)
   end
+  InitializeIdString()
 end
 
 ---Get all npc ids.
 ---@return NpcId[]
 function Npc.GetAllNpcIds()
-  local loadstringFunction = Database.GetAllEntityIdsFunction("Npc")
-  -- Replace the function with the loadstringFunction
-  ---@cast loadstringFunction fun():NpcId[]
-  Npc.GetAllNpcIds = loadstringFunction
-  return loadstringFunction()
+  return loadstring(string.format("return {%s}", tConcat(AllIdStrings, ",")))()
 end
 
 do
@@ -128,6 +149,7 @@ do
     end
     publicNpc.AddOverrideData = Npc.AddOverrideData
     publicNpc.ClearOverrideData = Npc.ClearOverrideData
+    publicNpc.GetAllNpcIds = Npc.GetAllNpcIds
   end
 
 -- 1. ['name'], -- string
