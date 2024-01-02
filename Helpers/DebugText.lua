@@ -31,6 +31,7 @@ local function writeDebug()
     ---@diagnostic disable-next-line: redundant-parameter
     debugTextString:SetWordWrap(true)
     debugTextString:SetVertexColor(1, 1, 1, 1) --Set opacity to 0, even if it is shown it should be invisible
+    ---@diagnostic disable-next-line: param-type-mismatch
     debugTextString:SetFont(debugTextString:GetFont(), 16, "OUTLINE")
   end
   debugTextString:SetText("")
