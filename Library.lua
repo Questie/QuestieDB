@@ -69,11 +69,12 @@ PrivateLibQuestieDB.PublicLibQuestieDB = PublicLibQuestieDB
 
 do
   local savedFunction = LibQuestieDB
-  C_Timer.NewTicker(1, function()
+  local checkFunction = function()
     if LibQuestieDB ~= savedFunction then
       PrivateLibQuestieDB.ColorizePrint("red", "LibQuestieDB was replaced by another addon!")
       LibQuestieDB = savedFunction
       PrivateLibQuestieDB.ColorizePrint("green", "LibQuestieDB was restored!")
     end
-  end)
+  end
+  C_Timer.NewTicker(1, checkFunction)
 end
