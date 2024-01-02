@@ -16,10 +16,20 @@ local debug = DebugText:Get("Quest")
 --- The nil value for the database
 local _nil = Database._nil
 
-------------------------------
--- This will be assigned from the initialize function
+---- Contains the data ----
 local glob = {}
 local override = {}
+
+---- Contains the id strings ----
+local AllIdStrings = {}
+
+---- Local Functions ----
+local tonumber = tonumber
+local tConcat = table.concat
+local tInsert = table.insert
+local wipe = wipe
+local loadstring = loadstring
+local sFind = string.find
 
 function Quest.InitializeDynamic()
   -- This will be assigned from the initialize function
@@ -81,23 +91,33 @@ function Quest.AddOverrideData(dataOverride, overrideKeys)
   if not glob or not override then
     error("You must initialize the Quest database before adding override data")
   end
+  local newIds = Database.GetNewIds(AllIdStrings, dataOverride)
+  if #newIds ~= 0 then
+    tInsert(AllIdStrings, tConcat(newIds, ","))
+    if Database.debugEnabled then
+      print("  # New Quest IDs", #newIds)
+    end
+  end
   return Database.Override(dataOverride, override, overrideKeys)
+end
+
+local function InitializeIdString()
+  wipe(AllIdStrings)
+  local _, idString = Database.GetAllEntityIdsFunction("Quest")
+  tInsert(AllIdStrings, idString)
 end
 
 function Quest.ClearOverrideData()
   if override then
     override = wipe(override)
   end
+  InitializeIdString()
 end
 
 ---Get all quest ids.
 ---@return QuestId[]
 function Quest.GetAllQuestIds()
-  local loadstringFunction = Database.GetAllEntityIdsFunction("Quest")
-  -- Replace the function with the loadstringFunction
-  ---@cast loadstringFunction fun():QuestId[]
-  Quest.GetAllQuestIds = loadstringFunction
-  return loadstringFunction()
+  return loadstring(string.format("return {%s}", tConcat(AllIdStrings, ",")))()
 end
 
 do
@@ -129,6 +149,7 @@ do
     end
     publicQuest.AddOverrideData = Quest.AddOverrideData
     publicQuest.ClearOverrideData = Quest.ClearOverrideData
+    publicQuest.GetAllQuestIds = Quest.GetAllQuestIds
   end
 
   -- questKeys = {

@@ -92,21 +92,7 @@ function Item.AddOverrideData(dataOverride, overrideKeys)
   if not glob or not override then
     error("You must initialize the Item database before adding override data")
   end
-  -- We add , to the start and end of the string so we can search for ,id, in the string
-  local allIds = "," .. tConcat(AllIdStrings, ",") .. ","
-
-  local newIds = {}
-  -- Add all the ids to the allIds table
-  for id in pairs(dataOverride) do
-    -- Search in the idString if ,id, is found
-    -- local found, e, d = allIds:find("(,*" .. id .. ",*)")
-    local found = sFind(allIds, ","..id..",")
-    if not found then
-      -- Print what we found
-      print("Adding new ID", id)
-      tInsert(newIds, id)
-    end
-  end
+  local newIds = Database.GetNewIds(AllIdStrings, dataOverride)
   if #newIds ~= 0 then
     tInsert(AllIdStrings, tConcat(newIds, ","))
     if Database.debugEnabled then

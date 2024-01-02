@@ -16,9 +16,20 @@ local debug = DebugText:Get("Object")
 --- The nil value for the database
 local _nil = Database._nil
 
--- This will be assigned from the initialize function
+---- Contains the data ----
 local glob = {}
 local override = {}
+
+---- Contains the id strings ----
+local AllIdStrings = {}
+
+---- Local Functions ----
+local tonumber = tonumber
+local tConcat = table.concat
+local tInsert = table.insert
+local wipe = wipe
+local loadstring = loadstring
+local sFind = string.find
 
 function Object.InitializeDynamic()
   -- This will be assigned from the initialize function
@@ -79,13 +90,27 @@ function Object.AddOverrideData(dataOverride, overrideKeys)
   if not glob or not override then
     error("You must initialize the Object database before adding override data")
   end
+  local newIds = Database.GetNewIds(AllIdStrings, dataOverride)
+  if #newIds ~= 0 then
+    tInsert(AllIdStrings, tConcat(newIds, ","))
+    if Database.debugEnabled then
+      print("  # New Object IDs", #newIds)
+    end
+  end
   return Database.Override(dataOverride, override, overrideKeys)
+end
+
+local function InitializeIdString()
+  wipe(AllIdStrings)
+  local _, idString = Database.GetAllEntityIdsFunction("Object")
+  tInsert(AllIdStrings, idString)
 end
 
 function Object.ClearOverrideData()
   if override then
     override = wipe(override)
   end
+  InitializeIdString()
 end
 
 ---Get all object ids.
@@ -117,6 +142,7 @@ do
     end
     publicObject.AddOverrideData = Object.AddOverrideData
     publicObject.ClearOverrideData = Object.ClearOverrideData
+    publicObject.GetAllObjectIds = Object.GetAllObjectIds
   end
 
   -- objectKeys = {

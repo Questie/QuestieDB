@@ -133,6 +133,33 @@ function Database.Override(overrideData, overrideTable, keys)
   return totalCount
 end
 
+---Used to add new Ids into the master list of ids for that type
+---@param AllIdStrings string[] @A list of strings containing the ids in the database, will be concatinated into one string
+---@param dataOverride table @The data to check for new ids
+---@return QuestId[]|NpcId[]|ObjectId[]|ItemId[] @Returns a list of new ids
+function Database.GetNewIds(AllIdStrings, dataOverride)
+  -- We add , to the start and end of the string so we can search for ,id, in the string
+  local allIds = "," .. tConcat(AllIdStrings, ",") .. ","
+
+  -- Table to store the new ids
+  local newIds = {}
+
+  -- Add all the ids to the allIds table
+  for id in pairs(dataOverride) do
+    -- Search in the idString if ,id, is found
+    -- local found, e, d = allIds:find("(,*" .. id .. ",*)")
+    local found = sFind(allIds, "," .. id .. ",")
+    if not found then
+      -- Print what we found
+      if Database.debugEnabled then
+        print("Adding new ID", id)
+      end
+      tInsert(newIds, id)
+    end
+  end
+  return newIds
+end
+
 
 function Database.Init()
   local startTotal = 0
