@@ -9,7 +9,7 @@ Object.testGetFunctions = function(fast)
   debugprofilestart()
   local functions = 6
   local count = 0
-  for id in pairs(Object.GetAllObjectIds()) do
+  for id in pairs(Object.GetAllIds()) do
     Object.lastTestedID = id
     Object.lastTestedData = ""
     count = count + 1
