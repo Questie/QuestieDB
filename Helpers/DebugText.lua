@@ -13,7 +13,7 @@ local tostring, Round, select = tostring, Round, select
 local debugTable = {}
 
 local function writeDebug()
-  if LibQuestieDB.Database and not LibQuestieDB.Database.debugEnabled then
+  if LibQuestieDB.Database and not LibQuestieDB.Database.debugEnabled and debugTextString then
     if debugTextString:IsShown() then
       debugTextString:SetVertexColor(1, 1, 1, 0)
       debugTextString:SetText("")
