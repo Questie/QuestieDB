@@ -104,7 +104,9 @@ local function InitializeIdString()
   wipe(AllIdStrings)
   local func, idString = Database.GetAllEntityIdsFunction("Npc")
   tInsert(AllIdStrings, idString)
-  assert(#func() == #Npc.GetAllNpcIds(), "NPC ids are not the same")
+  if Database.debugEnabled then
+    assert(#func() == #Npc.GetAllIds(), "NPC ids are not the same")
+  end
 end
 
 function Npc.ClearOverrideData()
@@ -116,7 +118,7 @@ end
 
 ---Get all npc ids.
 ---@return NpcId[]
-function Npc.GetAllNpcIds()
+function Npc.GetAllIds()
   return loadstring(string.format("return {%s}", tConcat(AllIdStrings, ",")))()
 end
 
@@ -149,7 +151,7 @@ do
     end
     publicNpc.AddOverrideData = Npc.AddOverrideData
     publicNpc.ClearOverrideData = Npc.ClearOverrideData
-    publicNpc.GetAllNpcIds = Npc.GetAllNpcIds
+    publicNpc.GetAllIds = Npc.GetAllIds
   end
 
 -- 1. ['name'], -- string

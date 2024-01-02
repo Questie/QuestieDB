@@ -10,7 +10,7 @@ Quest.testGetFunctions = function(fast)
   local functions = 30
   local count = 0
   -- for id in pairs(glob) do
-  for id in pairs(Quest.GetAllQuestIds()) do
+  for id in pairs(Quest.GetAllIds()) do
     Quest.lastTestedID = id
     Quest.lastTestedData = ""
     count = count + 1

@@ -9,7 +9,7 @@ Item.testGetFunctions = function(fast)
   debugprofilestart()
   local functions = 16
   local count = 0
-  for id in pairs(Item.GetAllItemIds()) do
+  for id in pairs(Item.GetAllIds()) do
     Item.lastTestedID = id
     Item.lastTestedData = ""
     count = count + 1
