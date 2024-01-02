@@ -43,7 +43,7 @@ local function writeDebug()
     debugTextString:SetText((debugTextString:GetText() or "") .. text .. "\n")
   end
 end
-C_Timer.NewTicker(0.1, writeDebug)
+C_Timer.NewTicker(0.5, writeDebug)
 
 
 function DebugText:Get(namespace)
