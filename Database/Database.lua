@@ -22,6 +22,7 @@ local _nil = Database._nil
 
 ---@alias Id number @Generic id type
 
+---- Local Functions ----
 local CreateFrame = CreateFrame
 local frameType = "SimpleHTML"
 local strsplittable = strsplittable
@@ -30,6 +31,8 @@ local tConcat = table.concat
 local tonumber = tonumber
 local loadstring = loadstring
 local gMatch = string.gmatch
+local tInsert = table.insert
+local sFind = string.find
 
 local type = type
 local pairs = pairs
@@ -212,9 +215,11 @@ end
 do
   ---@type table<"QuestData"|"ItemData"|"ObjectData"|"NpcData", fun():QuestId[]|fun():NpcId[]|fun():ObjectId[]|fun():ItemId[]>
   local entityFunctions = {}
+  local rawEntiryIdString = {}
   --- This function returns a function that returns a list of ids for the given entity type
   ---@param entityType "Quest"|"Item"|"Object"|"Npc"
   ---@return fun():QuestId[]|fun():NpcId[]|fun():ObjectId[]|fun():ItemId[]
+  ---@return string @The raw string of ids
   function Database.GetAllEntityIdsFunction(entityType)
     if not entityFunctions[entityType] then
       if entityType ~= "Quest" and entityType ~= "Item" and entityType ~= "Object" and entityType ~= "Npc" then
@@ -232,11 +237,12 @@ do
         combinedString = combinedString .. idDataRegions[i]:GetText()
       end
       entityFunctions[entityType] = "return {" .. combinedString .. "}"
+      rawEntiryIdString[entityType] = combinedString
 
     end
     -- Doing loadstring here should be faster than strsplittable due to us wanting the ids as numbers
     -- strsplittable just returns a table of strings
-    return loadstring(entityFunctions[entityType]) --[=[@as fun():QuestId[]|fun():NpcId[]|fun():ObjectId[]|fun():ItemId[]=]
+    return loadstring(entityFunctions[entityType]) --[=[@as fun():QuestId[]|fun():NpcId[]|fun():ObjectId[]|fun():ItemId[]=], rawEntiryIdString[entityType]
   end
 end
 do
