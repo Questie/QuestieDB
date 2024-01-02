@@ -102,8 +102,9 @@ end
 
 local function InitializeIdString()
   wipe(AllIdStrings)
-  local _, idString = Database.GetAllEntityIdsFunction("Quest")
+  local func, idString = Database.GetAllEntityIdsFunction("Quest")
   tInsert(AllIdStrings, idString)
+  assert(#func() == #Quest.GetAllQuestIds(), "Quest ids are not the same")
 end
 
 function Quest.ClearOverrideData()

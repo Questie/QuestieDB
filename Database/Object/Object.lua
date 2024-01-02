@@ -101,8 +101,9 @@ end
 
 local function InitializeIdString()
   wipe(AllIdStrings)
-  local _, idString = Database.GetAllEntityIdsFunction("Object")
+  local func, idString = Database.GetAllEntityIdsFunction("Object")
   tInsert(AllIdStrings, idString)
+  assert(#func() == #Object.GetAllObjectIds(), "Object ids are not the same")
 end
 
 function Object.ClearOverrideData()
