@@ -17,10 +17,21 @@ local debug = DebugText:Get("Item")
 --- The nil value for the database
 local _nil = Database._nil
 
+---- Contains the data ----
 local glob = {}
 local override = {}
 
+---- Contains the id strings ----
+local AllIdStrings = {}
+
+---- Local Functions ----
 local tonumber = tonumber
+local tConcat = table.concat
+local tInsert = table.insert
+local wipe = wipe
+local loadstring = loadstring
+local sFind = string.find
+
 
 function Item.InitializeDynamic()
   -- This will be assigned from the initialize function
@@ -81,23 +92,49 @@ function Item.AddOverrideData(dataOverride, overrideKeys)
   if not glob or not override then
     error("You must initialize the Item database before adding override data")
   end
+  -- We add , to the start and end of the string so we can search for ,id, in the string
+  local allIds = "," .. tConcat(AllIdStrings, ",") .. ","
+
+  local newIds = {}
+  -- Add all the ids to the allIds table
+  for id in pairs(dataOverride) do
+    -- Search in the idString if ,id, is found
+    -- local found, e, d = allIds:find("(,*" .. id .. ",*)")
+    local found = sFind(allIds, ","..id..",")
+    if not found then
+      -- Print what we found
+      print("Adding new ID", id)
+      tInsert(newIds, id)
+    end
+  end
+  if #newIds ~= 0 then
+    tInsert(AllIdStrings, tConcat(newIds, ","))
+    if Database.debugEnabled then
+      print("  # New Item IDs", #newIds)
+    end
+  end
   return Database.Override(dataOverride, override, overrideKeys)
+end
+
+local function InitializeIdString()
+  wipe(AllIdStrings)
+  local _, idString = Database.GetAllEntityIdsFunction("Item")
+  tInsert(AllIdStrings, idString)
 end
 
 function Item.ClearOverrideData()
   if override then
     override = wipe(override)
   end
+  InitializeIdString()
 end
 
----Get all item ids.
----@return ItemId[]
-function Item.GetAllItemIds()
-  local loadstringFunction = Database.GetAllEntityIdsFunction("Item")
-  -- Replace the function with the loadstringFunction
-  ---@cast loadstringFunction fun():ItemId[]
-  Item.GetAllItemIds = loadstringFunction
-  return loadstringFunction()
+do
+  ---Get all item ids.
+  ---@return ItemId[]
+  function Item.GetAllItemIds()
+    return loadstring(string.format("return {%s}", tConcat(AllIdStrings, ",")))()
+  end
 end
 
 do
@@ -122,6 +159,7 @@ do
     end
     publicItem.AddOverrideData = Item.AddOverrideData
     publicItem.ClearOverrideData = Item.ClearOverrideData
+    publicItem.GetAllItemIds = Item.GetAllItemIds
   end
 
   -- 1. ['name']           -- string
