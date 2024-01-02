@@ -29,7 +29,6 @@ local tConcat = table.concat
 local tInsert = table.insert
 local wipe = wipe
 local loadstring = loadstring
-local sFind = string.find
 
 function Object.InitializeDynamic()
   -- This will be assigned from the initialize function
@@ -116,11 +115,7 @@ end
 ---Get all object ids.
 ---@return ObjectId[]
 function Object.GetAllObjectIds()
-  local loadstringFunction = Database.GetAllEntityIdsFunction("Object")
-  -- Replace the function with the loadstringFunction
-  ---@cast loadstringFunction fun():ObjectId[]
-  Object.GetAllObjectIds = loadstringFunction
-  return loadstringFunction()
+  return loadstring(string.format("return {%s}", tConcat(AllIdStrings, ",")))()
 end
 
 do

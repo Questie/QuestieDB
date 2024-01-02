@@ -30,7 +30,6 @@ local tConcat = table.concat
 local tInsert = table.insert
 local wipe = wipe
 local loadstring = loadstring
-local sFind = string.find
 
 
 function Item.InitializeDynamic()

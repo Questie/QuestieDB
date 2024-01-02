@@ -29,7 +29,6 @@ local tConcat = table.concat
 local tInsert = table.insert
 local wipe = wipe
 local loadstring = loadstring
-local sFind = string.find
 
 function Quest.InitializeDynamic()
   -- This will be assigned from the initialize function
