@@ -238,13 +238,13 @@ do
   function ObjectFunctions.factionID(id)
     if override[id] and override[id]["factionID"] then
       local factionID = override[id]["factionID"]
-      return factionID ~= _nil and factionID or nil
+      return factionID ~= _nil and factionID or 0
     end
     local data = glob[id]
     if data then
-      return getNumber(data[6])
+      return getNumber(data[6]) or 0
     else
-      return nil
+      return 0
     end
   end
   exportFunctions()
