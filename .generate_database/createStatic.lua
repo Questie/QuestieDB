@@ -459,7 +459,7 @@ local function DumpDatabase(version)
 
   -- Write all the overrides to disk
   ---@diagnostic disable-next-line: param-type-mismatch
-  local file = io.open(f(".generate_database/_data/%s/ItemOverride.lua-table", capitalizedVersion), "w")
+  local file = io.open(f(".generate_database/_data/%s/ItemData.lua-table", capitalizedVersion), "w")
   print("Dumping item overrides")
   local itemData = dumpData(itemOverride, Corrections.ItemMeta.itemKeys, Corrections.ItemMeta.dumpFuncs, Corrections.ItemMeta.combine)
   ---@diagnostic disable-next-line: undefined-field
@@ -468,7 +468,7 @@ local function DumpDatabase(version)
   file:close()
 
   ---@diagnostic disable-next-line: param-type-mismatch
-  file = io.open(f(".generate_database/_data/%s/QuestOverride.lua-table", capitalizedVersion), "w")
+  file = io.open(f(".generate_database/_data/%s/QuestData.lua-table", capitalizedVersion), "w")
   print("Dumping quest overrides")
   local questData = dumpData(questOverride, Corrections.QuestMeta.questKeys, Corrections.QuestMeta.dumpFuncs)
   ---@diagnostic disable-next-line: undefined-field
@@ -477,7 +477,7 @@ local function DumpDatabase(version)
   file:close()
 
   ---@diagnostic disable-next-line: param-type-mismatch
-  file = io.open(f(".generate_database/_data/%s/NpcOverride.lua-table", capitalizedVersion), "w")
+  file = io.open(f(".generate_database/_data/%s/NpcData.lua-table", capitalizedVersion), "w")
   print("Dumping npc overrides")
   local npcData = dumpData(npcOverride, Corrections.NpcMeta.npcKeys, Corrections.NpcMeta.dumpFuncs, Corrections.NpcMeta.combine)
   ---@diagnostic disable-next-line: undefined-field
@@ -486,7 +486,7 @@ local function DumpDatabase(version)
   file:close()
 
   ---@diagnostic disable-next-line: param-type-mismatch
-  file = io.open(f(".generate_database/_data/%s/ObjectOverride.lua-table", capitalizedVersion), "w")
+  file = io.open(f(".generate_database/_data/%s/ObjectData.lua-table", capitalizedVersion), "w")
   print("Dumping object overrides")
   local objectData = dumpData(objectOverride, Corrections.ObjectMeta.objectKeys, Corrections.ObjectMeta.dumpFuncs)
   ---@diagnostic disable-next-line: undefined-field
