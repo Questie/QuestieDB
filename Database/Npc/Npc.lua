@@ -66,7 +66,7 @@ function Npc.LoadOverrideData(includeDynamic, includeStatic)
   -- Clear the override data
   Npc.ClearOverrideData()
 
-  print("Loading Npc Corrections")
+  LibQuestieDB.ColorizePrint("yellow", "Loading Npc Corrections")
   local loadOrder = 0
   local totalLoaded = 0
   -- Load all Npc Corrections
@@ -94,7 +94,7 @@ function Npc.AddOverrideData(dataOverride, overrideKeys)
   if #newIds ~= 0 then
     tInsert(AllIdStrings, tConcat(newIds, ","))
     if Database.debugEnabled then
-      print("  # New Npc IDs", #newIds)
+      LibQuestieDB.ColorizePrint("lightBlue", " # New Npc IDs", #newIds)
     end
   end
   return Database.Override(dataOverride, override, overrideKeys)

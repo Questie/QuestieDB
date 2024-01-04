@@ -66,7 +66,7 @@ function Quest.LoadOverrideData(includeDynamic, includeStatic)
   -- Clear the override data
   Quest.ClearOverrideData()
 
-  print("Loading Quest Corrections")
+  LibQuestieDB.ColorizePrint("yellow", "Loading Quest Corrections")
   local loadOrder = 0
   local totalLoaded = 0
   -- Load all Quest Corrections
@@ -94,7 +94,7 @@ function Quest.AddOverrideData(dataOverride, overrideKeys)
   if #newIds ~= 0 then
     tInsert(AllIdStrings, tConcat(newIds, ","))
     if Database.debugEnabled then
-      print("  # New Quest IDs", #newIds)
+      LibQuestieDB.ColorizePrint("lightBlue", " # New Quest IDs", #newIds)
     end
   end
   return Database.Override(dataOverride, override, overrideKeys)
