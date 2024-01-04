@@ -153,7 +153,7 @@ function Database.GetNewIds(AllIdStrings, dataOverride)
     if not found then
       -- Print what we found
       if Database.debugEnabled then
-        print("Adding new ID", id)
+        LibQuestieDB.ColorizePrint("reputationBlue", "  Adding new ID", id)
       end
       tInsert(newIds, id)
     end

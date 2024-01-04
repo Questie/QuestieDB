@@ -1,6 +1,9 @@
 ---@class LibQuestieDB
 local LibQuestieDB = select(2, ...)
 
+---@type Database
+local Database = LibQuestieDB.Database
+
 -- Event registration
 -- Usage:
 -- Register   an event: ReturnedObject["EVENT_NAME"] = func
@@ -65,6 +68,7 @@ function LibQuestieDB.ColorizePrint(color, ...)
   elseif color == "gold" then
     c = "|cFFffd100"     -- this is the default game font
   end
-
-  print(c, ...)
+  if Database.debugEnabled then
+    print(c, ...)
+  end
 end

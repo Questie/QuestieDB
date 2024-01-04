@@ -67,7 +67,7 @@ function Item.LoadOverrideData(includeDynamic, includeStatic)
   -- Clear the override data
   Item.ClearOverrideData()
 
-  print("Loading Item Corrections")
+  LibQuestieDB.ColorizePrint("yellow", "Loading Item Corrections")
   local loadOrder = 0
   local totalLoaded = 0
   -- Load all Item Corrections
@@ -95,7 +95,7 @@ function Item.AddOverrideData(dataOverride, overrideKeys)
   if #newIds ~= 0 then
     tInsert(AllIdStrings, tConcat(newIds, ","))
     if Database.debugEnabled then
-      print("  # New Item IDs", #newIds)
+      LibQuestieDB.ColorizePrint("lightBlue", " # New Item IDs", #newIds)
     end
   end
   return Database.Override(dataOverride, override, overrideKeys)
