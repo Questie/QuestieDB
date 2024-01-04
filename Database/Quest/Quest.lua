@@ -220,13 +220,13 @@ do
   function QuestFunctions.startedBy(id)
     if override[id] and override[id]["startedBy"] then
       local startedBy = override[id]["startedBy"]
-      return startedBy ~= _nil and startedBy or nil
+      return startedBy ~= _nil and startedBy or emptyTable
     end
     local data = glob[id]
     if data then
-      return getTable(data[2])
+      return getTable(data[2]) or emptyTable
     else
-      return nil
+      return emptyTable
     end
   end
 
@@ -236,13 +236,13 @@ do
   function QuestFunctions.finishedBy(id)
     if override[id] and override[id]["finishedBy"] then
       local finishedBy = override[id]["finishedBy"]
-      return finishedBy ~= _nil and finishedBy or nil
+      return finishedBy ~= _nil and finishedBy or emptyTable
     end
     local data = glob[id]
     if data then
-      return getTable(data[3])
+      return getTable(data[3]) or emptyTable
     else
-      return nil
+      return emptyTable
     end
   end
 
@@ -303,13 +303,13 @@ do
   function QuestFunctions.requiredClasses(id)
     if override[id] and override[id]["requiredClasses"] then
       local requiredClasses = override[id]["requiredClasses"]
-      return requiredClasses ~= _nil and requiredClasses or nil
+      return requiredClasses ~= _nil and requiredClasses or 0
     end
     local data = glob[id]
     if data then
-      return getNumber(data[7])
+      return getNumber(data[7]) or 0
     else
-      return nil
+      return 0
     end
   end
 
@@ -367,13 +367,13 @@ do
   function QuestFunctions.sourceItemId(id)
     if override[id] and override[id]["sourceItemId"] then
       local sourceItemId = override[id]["sourceItemId"]
-      return sourceItemId ~= _nil and sourceItemId or nil
+      return sourceItemId ~= _nil and sourceItemId or 0
     end
     local data = glob[id]
     if data then
-      return getNumber(data[11])
+      return getNumber(data[11]) or 0
     else
-      return nil
+      return 0
     end
   end
 
@@ -575,13 +575,13 @@ do
   function QuestFunctions.specialFlags(id)
     if override[id] and override[id]["specialFlags"] then
       local specialFlags = override[id]["specialFlags"]
-      return specialFlags ~= _nil and specialFlags or nil
+      return specialFlags ~= _nil and specialFlags or 0
     end
     local data = glob[id]
     if data then
-      return getNumber(data[24])
+      return getNumber(data[24]) or 0
     else
-      return nil
+      return 0
     end
   end
 
@@ -591,13 +591,13 @@ do
   function QuestFunctions.parentQuest(id)
     if override[id] and override[id]["parentQuest"] then
       local parentQuest = override[id]["parentQuest"]
-      return parentQuest ~= _nil and parentQuest or nil
+      return parentQuest ~= _nil and parentQuest or 0
     end
     local data = glob[id]
     if data then
-      return getNumber(data[25])
+      return getNumber(data[25]) or 0
     else
-      return nil
+      return 0
     end
   end
 
@@ -639,13 +639,13 @@ do
   function QuestFunctions.requiredSpell(id)
     if override[id] and override[id]["requiredSpell"] then
       local requiredSpell = override[id]["requiredSpell"]
-      return requiredSpell ~= _nil and requiredSpell or nil
+      return requiredSpell ~= _nil and requiredSpell or 0
     end
     local data = glob[id]
     if data then
-      return getNumber(data[28])
+      return getNumber(data[28]) or 0
     else
-      return nil
+      return 0
     end
   end
 
@@ -655,13 +655,13 @@ do
   function QuestFunctions.requiredSpecialization(id)
     if override[id] and override[id]["requiredSpecialization"] then
       local requiredSpecialization = override[id]["requiredSpecialization"]
-      return requiredSpecialization ~= _nil and requiredSpecialization or nil
+      return requiredSpecialization ~= _nil and requiredSpecialization or 0
     end
     local data = glob[id]
     if data then
-      return getNumber(data[29])
+      return getNumber(data[29]) or 0
     else
-      return nil
+      return 0
     end
   end
 
@@ -671,7 +671,7 @@ do
   function QuestFunctions.requiredMaxLevel(id)
     if override[id] and override[id]["requiredMaxLevel"] then
       local requiredMaxLevel = override[id]["requiredMaxLevel"]
-      return requiredMaxLevel ~= _nil and requiredMaxLevel or nil
+      return requiredMaxLevel ~= _nil and requiredMaxLevel or 0
     end
     local data = glob[id]
     if data then

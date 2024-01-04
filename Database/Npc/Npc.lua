@@ -322,7 +322,8 @@ do
     local data = glob[id]
     if data[2] then
       --! This is slower than a raw value
-      return data[2]:GetText():match("^%d+;%d+;%d+;%d+;%d+;%d+;%d+;(%w*)")
+      local friendlyToFaction = data[2]:GetText():match("^%d+;%d+;%d+;%d+;%d+;%d+;%d+;(%w*)")
+      return friendlyToFaction ~= "" and friendlyToFaction or nil
     else
       return nil
     end
@@ -372,7 +373,7 @@ do
     end
     local data = glob[id]
     if data then
-      return getTable(data[4]) or emptyTable
+      return getTable(data[4])
     else
       return nil
     end
@@ -420,7 +421,8 @@ do
     end
     local data = glob[id]
     if data[7] then
-      return data[7]:GetText()
+      local subname = data[7]:GetText()
+      return subname ~= "" and subname or nil
     else
       return nil
     end
