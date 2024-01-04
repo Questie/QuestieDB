@@ -243,13 +243,13 @@ do
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["startQuest"] then
       local startQuest = override[id]["startQuest"]
-      return startQuest ~= _nil and startQuest or nil
+      return startQuest ~= _nil and startQuest or 0
     end
     local data = glob[id]
     if data then
-      return getNumber(data[5])
+      return getNumber(data[5]) or 0
     else
-      return nil
+      return 0
     end
   end
 
@@ -438,13 +438,13 @@ do
     --? Returns the overridden value, e.g. faction specific fixes
     if override[id] and override[id]["teachesSpell"] then
       local teachesSpell = override[id]["teachesSpell"]
-      return teachesSpell ~= _nil and teachesSpell or nil
+      return teachesSpell ~= _nil and teachesSpell or 0
     end
     local data = glob[id]
     if data then
-      return getNumber(data[10])
+      return getNumber(data[10]) or 0
     else
-      return nil
+      return 0
     end
   end
   exportFunctions()
