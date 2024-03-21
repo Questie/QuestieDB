@@ -48,9 +48,9 @@ function Corrections.RegisterCorrectionDynamic(datatype, name, func)
     Corrections.QuestCorrectionsDynamic[name or #Corrections.QuestCorrectionsStatic + 1] = func
   end
 end
----@param datatype "item"|"npc"|"object"|"quest"
+---@param datatype "item"|"npc"|"object"|"quest" @ The type of correction
 ---@param name string @ Optional name for the correction functio
----@param func fun(): table<AllIdTypes, Correction[]>>n
+---@param func fun(): table<AllIdTypes, Correction[]>> @ Function returning a table of corrections (Dependency Injection-ish)
 function Corrections.RegisterCorrectionStatic(datatype, name, func)
   assert(datatype == "item" or datatype == "npc" or datatype == "object" or datatype == "quest", "Invalid type", datatype)
   assert(type(func) == "function", "Invalid function", func)
