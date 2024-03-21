@@ -117,9 +117,16 @@ function Quest.ClearOverrideData()
 end
 
 ---Get all quest ids.
+---@param hashmap boolean? @If true, returns a hashmap with the ids as keys and true as value. Default false
 ---@return QuestId[]
-function Quest.GetAllIds()
-  return loadstring(string.format("return {%s}", tConcat(AllIdStrings, ",")))()
+function Quest.GetAllIds(hashmap)
+  if hashmap == true then
+    -- Sub all numbers and replace them with [number]=true,
+    local dat = string.gsub(tConcat(AllIdStrings, ","), "(%d+)", "[%1]=true")
+    return loadstring(string.format("return {%s}", dat))()
+  else
+    return loadstring(string.format("return {%s}", tConcat(AllIdStrings, ",")))()
+  end
 end
 
 do
