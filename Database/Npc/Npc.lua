@@ -117,9 +117,16 @@ function Npc.ClearOverrideData()
 end
 
 ---Get all npc ids.
+---@param hashmap boolean? @If true, returns a hashmap with the ids as keys and true as value. Default false
 ---@return NpcId[]
-function Npc.GetAllIds()
-  return loadstring(string.format("return {%s}", tConcat(AllIdStrings, ",")))()
+function Npc.GetAllIds(hashmap)
+  if hashmap == true then
+    -- Sub all numbers and replace them with [number]=true,
+    local dat = string.gsub(tConcat(AllIdStrings, ","), "(%d+)", "[%1]=true")
+    return loadstring(string.format("return {%s}", dat))()
+  else
+    return loadstring(string.format("return {%s}", tConcat(AllIdStrings, ",")))()
+  end
 end
 
 do
