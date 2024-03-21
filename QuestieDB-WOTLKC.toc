@@ -7,7 +7,11 @@
 ## OptionalDeps:
 #### SavedVariables: QuestieDB
 ## SavedVariablesPerCharacter: QuestieDB_c
+## Dedicated to my cat - Suddis
+
+####### API Here ########
 Library.lua
+#########################
 
 Helpers\VersionCheck.lua
 
