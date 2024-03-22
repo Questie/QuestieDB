@@ -1,8 +1,21 @@
 ---@type LibQuestieDB
 local LibQuestieDB = select(2, ...)
 
----@class Quest
+---@class (exact) Quest
+---@field RunGetTest fun(fast: boolean)
+---@field package testGetFunctions fun(fast: boolean)
+---@field package lastTestedID QuestId
+---@field package lastTestedData string
 local Quest = LibQuestieDB.Quest
+
+Quest.RunGetTest = function(fast)
+  local success, error = pcall(Quest.testGetFunctions, fast)
+  if not success then
+    print("Quest test failed: " .. error)
+    print("Last tested Quest: " .. tostring(Quest.lastTestedID))
+    print("Last tested Quest function: " .. tostring(Quest.lastTestedData))
+  end
+end
 
 local tInsert = table.insert
 Quest.testGetFunctions = function(fast)

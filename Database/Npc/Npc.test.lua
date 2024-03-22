@@ -1,8 +1,21 @@
 ---@type LibQuestieDB
 local LibQuestieDB = select(2, ...)
 
----@class Npc
+---@class (exact) Npc
+---@field RunGetTest fun(fast: boolean)
+---@field package testGetFunctions fun(fast: boolean)
+---@field package lastTestedID NpcId
+---@field package lastTestedData string
 local Npc = LibQuestieDB.Npc
+
+Npc.RunGetTest = function(fast)
+  local success, error = pcall(Npc.testGetFunctions, fast)
+  if not success then
+    print("NPC test failed: " .. error)
+    print("Last tested NPC: " .. tostring(Npc.lastTestedID))
+    print("Last tested NPC function: " .. tostring(Npc.lastTestedData))
+  end
+end
 
 local tInsert = table.insert
 Npc.testGetFunctions = function(fast)
