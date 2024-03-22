@@ -53,30 +53,10 @@ end
 SlashCmdList["QuestieDB"] = function(args)
   if args == "test" then
     print("Running tests")
-    local success, error = pcall(Npc.testGetFunctions, true)
-    if not success then
-      print("Npc test failed: " .. error)
-      print("Last tested NPC: " .. tostring(Npc.lastTestedID))
-      print("Last tested Npc function: " .. tostring(Npc.lastTestedData))
-    end
-    success, error = pcall(Object.testGetFunctions, true)
-    if not success then
-      print("Object test failed: " .. error)
-      print("Last tested Object: " .. tostring(Object.lastTestedID))
-      print("Last tested Object function: " .. tostring(Object.lastTestedData))
-    end
-    success, error = pcall(Quest.testGetFunctions, true)
-    if not success then
-      print("Quest test failed: " .. error)
-      print("Last tested Quest: " .. tostring(Quest.lastTestedID))
-      print("Last tested Quest function: " .. tostring(Quest.lastTestedData))
-    end
-    success, error = pcall(Item.testGetFunctions, true)
-    if not success then
-      print("Item test failed: " .. error)
-      print("Last tested Item: " .. tostring(Item.lastTestedID))
-      print("Last tested Item function: " .. tostring(Item.lastTestedData))
-    end
+    Npc.RunGetTest(true)
+    Object.RunGetTest(true)
+    Quest.RunGetTest(true)
+    Object.RunGetTest(true)
   elseif args == "t" then
     local floor = math.floor
     debugprofilestart()
