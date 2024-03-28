@@ -45,6 +45,7 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
 
   ---- Contains the data ----
   local glob = {}
+  ---@type table<Id, table<string, any>>
   local override = {}
 
   ---- Contains the id strings ----
@@ -87,46 +88,74 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
     DB.LoadOverrideData()
   end
 
-  ---comment
-  ---@param includeDynamic boolean? @If true, include dynamic data Default true
-  ---@param includeStatic boolean? @If true, include dynamic data Default false
+  -- Function to load override data into the database.
+  ---@param includeDynamic boolean? @If true, include dynamic data (default true).
+  ---@param includeStatic boolean? @If true, include static data (default is the value of Database.debugEnabled).
   function DB.LoadOverrideData(includeDynamic, includeStatic)
+    -- Set default values for the parameters if they are not provided.
     if includeDynamic == nil then
       includeDynamic = true
     end
     if includeStatic == nil then
       includeStatic = Database.debugEnabled or false
     end
-    -- Clear the override data
+
+    -- Clear any existing override data before loading new corrections.
     DB.ClearOverrideData()
 
+    -- Print a debug message indicating the type of corrections being loaded.
     LibQuestieDB.ColorizePrint("yellow", f("Loading %s Corrections", captializedType))
+
+    -- Initialize counters for load order and total corrections loaded.
     local loadOrder = 0
     local totalLoaded = 0
+
+    -- Iterate over all corrections for the current database type.
+    -- Corrections.GetCorrections returns a table of correction functions filtered by type and inclusion flags.
+    for _, correctionList in pairs(Corrections.GetCorrections(dbType:lower(), includeStatic, includeDynamic)) do
+      for correctionId, correctionFunc in pairs(correctionList) do
+        -- Execute the correction function to get the correction data.
+        local correctionData = correctionFunc()
+        -- Add the correction data to the database and increment the total loaded counter.
         totalLoaded = totalLoaded + DB.AddOverrideData(correctionData, databaseTypeMeta)
+
         if Database.debugEnabled then
-          debug:Print("  " .. tostring(loadOrder) .. "  Loaded", id)
+          debug:Print("  " .. tostring(loadOrder) .. "  Loaded", correctionId)
         end
         loadOrder = loadOrder + 1
       end
     end
+
+    -- If debugging is enabled, print the total number of corrections loaded.
     if Database.debugEnabled then
       debug:Print(f("  # %s Corrections", captializedType), totalLoaded)
     end
+
+    -- Update the DB.override table with the new override data.
     DB.override = override
   end
 
+  ---@param dataOverride table<number, any> @ The data to add to the override table i.e { [15882] = {[itemKeys.objectDrops] = { 177844 }}, }
+  ---@param overrideKeys table<string, number> @ The keys to use for the override table i.e { ['name'] = 1, }
+  ---@return number @Returns the number of overrides applied.
   function DB.AddOverrideData(dataOverride, overrideKeys)
+    -- Check if the database has been initialized by ensuring `glob` and `override` are not nil.
     if not glob or not override then
       error(f("You must initialize the %s database before adding override data", captializedType))
     end
+
+    -- Retrieve new IDs from the override data that are not already present in the database.
     local newIds = Database.GetNewIds(AllIdStrings, dataOverride)
+
+    -- If there are new IDs, concatenate them into a string and add to `AllIdStrings` for tracking.
     if #newIds ~= 0 then
       tInsert(AllIdStrings, tConcat(newIds, ","))
       if Database.debugEnabled then
         LibQuestieDB.ColorizePrint("lightBlue", f(" # New %s IDs", captializedType), #newIds)
       end
     end
+
+    -- Apply the override data to the database and return the number of overrides applied.
     return Database.Override(dataOverride, override, overrideKeys)
   end
 

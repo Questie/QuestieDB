@@ -72,8 +72,8 @@ end
 ---      [itemKeys.objectDrops] = { 177844 },
 ---    },
 --- }
----@param overrideData table @ The data to add to the override table i.e { [15882] = {[itemKeys.objectDrops] = { 177844 }}, }
----@param overrideTable table @ The table to add the override data to i.e Npc.override
+---@param overrideData table<number, any> @ The data to add to the override table i.e { [15882] = {[itemKeys.objectDrops] = { 177844 }}, }
+---@param overrideTable table<Id, table<string, any>> @ The table to add the override data to i.e Npc.override
 ---@param keys table<string, number> @ The keys to use for the override table i.e { ['name'] = 1, }
 ---@return number @ The number of override data added
 function Database.Override(overrideData, overrideTable, keys)
