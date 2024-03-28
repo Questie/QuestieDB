@@ -14,6 +14,7 @@ Library.lua
 #########################
 
 Helpers\VersionCheck.lua
+Helpers\_s.lua
 
 #* Helpers
 Helpers\DebugText.lua
@@ -29,6 +30,7 @@ Database\Quest\Era\QuestDataFiles.xml
 
 ##* Main
 Database\Database.lua
+Database\T\T.lua
 
 ##* Types
 Database\Item\Item.lua
