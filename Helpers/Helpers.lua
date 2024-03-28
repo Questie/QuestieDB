@@ -39,6 +39,16 @@ function LibQuestieDB.EventRegistrator()
   })
 end
 
+--- Creates a read-only table that throws an error when trying to modify it
+---@return table
+function LibQuestieDB.CreateReadOnlyEmptyTable()
+  return setmetatable({}, {
+    __newindex = function()
+      error("Attempt to modify read-only table")
+    end,
+  })
+end
+
 --- Colorize a string with a color code
 ---@param color "red"|"gray"|"purple"|"blue"|"lightBlue"|"reputationBlue"|"yellow"|"orange"|"green"|"white"|"gold"|string
 ---@param ... string
@@ -66,7 +76,7 @@ function LibQuestieDB.ColorizePrint(color, ...)
   elseif color == "white" then
     c = "|cFFffffff";
   elseif color == "gold" then
-    c = "|cFFffd100"     -- this is the default game font
+    c = "|cFFffd100" -- this is the default game font
   end
   if Database.debugEnabled then
     print(c, ...)

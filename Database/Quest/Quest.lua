@@ -2,166 +2,14 @@
 ---@field Quest Quest
 local LibQuestieDB = select(2, ...)
 
----@class Quest:QuestFunctions
-local Quest = LibQuestieDB.Quest
+--- Multiple inheritance for Quest
 
---*---- Import Modules -------
-local Database = LibQuestieDB.Database
-local Corrections = LibQuestieDB.Corrections
-local DebugText = LibQuestieDB.DebugText
-
-local debug = DebugText:Get("Quest")
-
---*---------------------------
---- The nil value for the database
-local _nil = Database._nil
-
----- Contains the data ----
-local glob = {}
-local override = {}
-
----- Contains the id strings ----
-local AllIdStrings = {}
-
----- Local Functions ----
-local tonumber = tonumber
-local tConcat = table.concat
-local tInsert = table.insert
-local wipe = wipe
-local loadstring = loadstring
-
-function Quest.InitializeDynamic()
-  -- This will be assigned from the initialize function
-  local questData = Database.LoadDatafileList("QuestData")
-  -- localized for faster access
-  local loadFile = Database.LoadFile
-  -- Get the binary search function
-  local binarySearch, _ = Database.CreateFindDataBinarySearchFunction(questData)
-
-  ---@type table<QuestId, table<number, FontString>>
-  glob = setmetatable({},
-    {
-      __index = function(t, k)
-        return loadFile(binarySearch(k), t, k)
-      end,
-      __newindex = function()
-        error("Attempt to modify read-only table")
-      end
-    }
-  )
-  Quest.glob = glob
-  Quest.LoadOverrideData()
-end
-
----comment
----@param includeDynamic boolean? @If true, include dynamic data Default true
----@param includeStatic boolean? @If true, include dynamic data Default false
-function Quest.LoadOverrideData(includeDynamic, includeStatic)
-  if includeDynamic == nil then
-    includeDynamic = true
-  end
-  if includeStatic == nil then
-    includeStatic = Database.debugEnabled or false
-  end
-  -- Clear the override data
-  Quest.ClearOverrideData()
-
-  LibQuestieDB.ColorizePrint("yellow", "Loading Quest Corrections")
-  local loadOrder = 0
-  local totalLoaded = 0
-  -- Load all Quest Corrections
-  for _, list in pairs(Corrections.GetCorrections("quest", includeStatic, includeDynamic)) do
-    for id, func in pairs(list) do
-      local correctionData = func()
-      totalLoaded = totalLoaded + Quest.AddOverrideData(correctionData, Corrections.QuestMeta.questKeys)
-      if Database.debugEnabled then
-        debug:Print("  " .. tostring(loadOrder) .. "  Loaded", id)
-      end
-      loadOrder = loadOrder + 1
-    end
-  end
-  if Database.debugEnabled then
-    debug:Print("  # Quest Corrections", totalLoaded)
-  end
-  Quest.override = override
-end
-
-function Quest.AddOverrideData(dataOverride, overrideKeys)
-  if not glob or not override then
-    error("You must initialize the Quest database before adding override data")
-  end
-  local newIds = Database.GetNewIds(AllIdStrings, dataOverride)
-  if #newIds ~= 0 then
-    tInsert(AllIdStrings, tConcat(newIds, ","))
-    if Database.debugEnabled then
-      LibQuestieDB.ColorizePrint("lightBlue", " # New Quest IDs", #newIds)
-    end
-  end
-  return Database.Override(dataOverride, override, overrideKeys)
-end
-
-local function InitializeIdString()
-  wipe(AllIdStrings)
-  local func, idString = Database.GetAllEntityIdsFunction("Quest")
-  tInsert(AllIdStrings, idString)
-  if Database.debugEnabled then
-    assert(#func() == #Quest.GetAllIds(), "Quest ids are not the same")
-  end
-end
-
-function Quest.ClearOverrideData()
-  if override then
-    override = wipe(override)
-  end
-  InitializeIdString()
-end
-
----Get all quest ids.
----@param hashmap boolean? @If true, returns a hashmap with the ids as keys and true as value. Default false
----@return QuestId[]
-function Quest.GetAllIds(hashmap)
-  if hashmap == true then
-    -- Sub all numbers and replace them with [number]=true,
-    local dat = string.gsub(tConcat(AllIdStrings, ","), "(%d+)", "[%1]=true")
-    return loadstring(string.format("return {%s}", dat))()
-  else
-    return loadstring(string.format("return {%s}", tConcat(AllIdStrings, ",")))()
-  end
-end
+---@class (exact) Quest:QuestFunctions
+---@class (exact) Quest:DatabaseType
+local Quest = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Quest, "Quest")
 
 do
-  if not Database then
-    error("Database not loaded")
-  end
-  local getNumber = Database.getNumber
-  local getTable = Database.getTable
-  -- Used to return an empty table instead of nil
-  ---@type table<number, table<number, FontString>>
-  local emptyTable = setmetatable({}, {
-    __newindex = function()
-      error("Attempt to modify read-only table")
-    end
-  })
-
-  -- Class for all the GET functions for the Quest namespace
-  ---@class QuestFunctions
-  local QuestFunctions = {}
-
-  --? This function is used to export all the functions to the Public and Private namespaces
-  --? It gets called at the end of this file
-  local function exportFunctions()
-    ---@class QuestFunctions
-    local publicQuest = LibQuestieDB.PublicLibQuestieDB.Quest
-    for k, v in pairs(QuestFunctions) do
-      Quest[k] = v
-      publicQuest[k] = v
-    end
-    publicQuest.AddOverrideData = Quest.AddOverrideData
-    publicQuest.ClearOverrideData = Quest.ClearOverrideData
-    publicQuest.GetAllIds = Quest.GetAllIds
-  end
-
-  -- questKeys = {
+  -- ? Questie Data structure for Quests
   --   ['name'] = 1,      -- string
   --   ['startedBy'] = 2, -- table
   --   --['creatureStart'] = 1, -- table {creature(int),...}
@@ -203,489 +51,180 @@ do
   --   ['requiredSpell'] = 28,          -- int: quest is only available if character has this spellID
   --   ['requiredSpecialization'] = 29, -- int: quest is only available if character meets the spec requirements. Use QuestieProfessions.specializationKeys for having a spec, or QuestieProfessions.professionKeys to indicate having the profession with no spec. See QuestieProfessions.lua for more info.
   --   ['requiredMaxLevel'] = 30,       -- int: quest is only available up to a certain level
-  -- }
 
-  ---Returns the quest name.
-  ---@param id QuestId
-  ---@return Name?
-  function QuestFunctions.name(id)
-    if override[id] and override[id]["name"] then
-      local name = override[id]["name"]
-      return name ~= _nil and name or nil
+  -- ? QuestieDB Data structure for Quests
+
+  -- Class for all the public functions for the Quest namespace
+  ---@class QuestFunctions
+  local QuestFunctions = {}
+
+  -- Used to return an empty table instead of nil
+  ---@type table<number, table<number, FontString>>
+  local emptyTable = LibQuestieDB.CreateReadOnlyEmptyTable()
+
+  -- Function to get the name of the quest<br>
+  -- Returns "The Lost Artifact"
+  ---@type fun(id: QuestId):Name?
+  QuestFunctions.name = Quest.AddStringGetter(1, "name")
+
+  -- Function to get the entity that starts the quest<br>
+  -- Return {{12345}, {67890}, nil}
+  ---@type fun(id: QuestId):StartedBy?
+  QuestFunctions.startedBy = Quest.AddTableGetter(2, "startedBy", emptyTable)
+
+  -- Function to get the entity that finishes the quest<br>
+  -- Returns {{12345}, nil}
+  ---@type fun(id: QuestId):FinishedBy?
+  QuestFunctions.finishedBy = Quest.AddTableGetter(3, "finishedBy", emptyTable)
+
+  -- Function to get the required level to start the quest<br>
+  -- Returns 10
+  ---@type fun(id: QuestId):Level?
+  QuestFunctions.requiredLevel = Quest.AddNumberGetter(4, "requiredLevel", 0)
+
+  -- Function to get the level of the quest<br>
+  -- Returns 15
+  ---@type fun(id: QuestId):Level?
+  QuestFunctions.questLevel = Quest.AddNumberGetter(5, "questLevel", 1)
+
+  -- Function to get the required races to start the quest<br>
+  -- Returns 77 (bitmask for Human, Dwarf, Night Elf, Gnome)
+  ---@type fun(id: QuestId):number?
+  QuestFunctions.requiredRaces = Quest.AddNumberGetter(6, "requiredRaces", 0)
+
+  -- Function to get the required classes to start the quest<br>
+  -- Returns 9 (bitmask for Warrior)
+  ---@type fun(id: QuestId):number?
+  QuestFunctions.requiredClasses = Quest.AddNumberGetter(7, "requiredClasses", 0)
+
+  -- Function to get the text of the quest objectives<br>
+  -- Returns {"Find the lost artifact", "Return to the qu
+  ---@type fun(id: QuestId):string[]?
+  QuestFunctions.objectivesText = Quest.AddTableGetter(8, "objectivesText")
+
+  -- Function to get the trigger that ends the quest<br>
+  -- Returns {"Prisoner Transport", {[46]={{25.73,27.1}}
+  ---@type fun(id: QuestId):{ [1]: string, [2]: table<AreaId, CoordPair[]>}?
+  QuestFunctions.triggerEnd = Quest.AddTableGetter(9, "triggerEnd")
+
+  -- Function to get the objectives of the quest<br>
+  -- Returns {{{9021,"Kharan's Tale"},}, ...}
+  ---@type fun(id: QuestId):RawObjectives?
+  QuestFunctions.objectives = Quest.AddTableGetter(10, "objectives", emptyTable)
+
+  -- Function to get the item ID that starts the quest<br>
+  -- Returns 12345
+  ---@type fun(id: QuestId):ItemId?
+  QuestFunctions.sourceItemId = Quest.AddNumberGetter(11, "sourceItemId", 0)
+
+  -- Function to get the group of quests that must be completed before this quest<br>
+  -- Returns {111, 112, 113}
+  ---@type fun(id: QuestId):QuestId[]?
+  QuestFunctions.preQuestGroup = Quest.AddTableGetter(12, "preQuestGroup")
+
+  -- Function to get the single quest that must be completed before this quest<br>
+  -- Returns {114}
+  ---@type fun(id: QuestId):QuestId[]?
+  QuestFunctions.preQuestSingle = Quest.AddTableGetter(13, "preQuestSingle")
+
+  -- Function to get the quests that are unlocked by this quest<br>
+  -- Returns {125, 126}
+  ---@type fun(id: QuestId):QuestId[]?
+  QuestFunctions.childQuests = Quest.AddTableGetter(14, "childQuests")
+
+  -- Function to get the quests that are in the same group as this quest<br>
+  -- Returns {127, 128}
+  ---@type fun(id: QuestId):QuestId[]?
+  QuestFunctions.inGroupWith = Quest.AddTableGetter(15, "inGroupWith")
+
+  -- Function to get the quests that are exclusive with this quest<br>
+  -- Returns {129, 130}
+  ---@type fun(id: QuestId):QuestId[]?
+  QuestFunctions.exclusiveTo = Quest.AddTableGetter(16, "exclusiveTo")
+
+  -- Function to get the zone or sort of the quest<br>
+  -- Returns 12 (Stormwind)
+  ---@type fun(id: QuestId):ZoneOrSort?
+  QuestFunctions.zoneOrSort = Quest.AddNumberGetter(17, "zoneOrSort", 0)
+
+  -- Function to get the required skill to start the quest<br>
+  -- Returns {185, 50}
+  ---@type fun(id: QuestId):SkillPair?
+  QuestFunctions.requiredSkill = Quest.AddTableGetter(18, "requiredSkill")
+
+  -- Function to get the minimum reputation required to start the quest<br>
+  -- Returns {72,0}
+  ---@type fun(id: QuestId):ReputationPair?
+  QuestFunctions.requiredMinRep = Quest.AddTableGetter(19, "requiredMinRep")
+
+  -- Function to get the maximum reputation allowed to start the quest<br>
+  -- Returns {21,-5999}
+  ---@type fun(id: QuestId):ReputationPair?
+  QuestFunctions.requiredMaxRep = Quest.AddTableGetter(20, "requiredMaxRep")
+
+  -- Function to get the items required to start the quest<br>
+  -- Returns {12341,12342,12343,12347}
+  ---@type fun(id: QuestId):ItemId[]?
+  QuestFunctions.requiredSourceItems = Quest.AddTableGetter(21, "requiredSourceItems")
+
+  -- Function to get the next quest in the chain<br>
+  -- Returns 131
+  ---@type fun(id: QuestId):QuestId?
+  QuestFunctions.nextQuestInChain = Quest.AddNumberGetter(22, "nextQuestInChain")
+
+  -- Function to get the flags of the quest<br>
+  -- Returns 8 (Elite quest)
+  ---@type fun(id: QuestId):number?
+  QuestFunctions.questFlags = Quest.AddNumberGetter(23, "questFlags")
+
+  -- Function to get the special flags of the quest<br>
+  -- Returns 1 (Daily quest)
+  ---@type fun(id: QuestId):number?
+  QuestFunctions.specialFlags = Quest.AddNumberGetter(24, "specialFlags", 0)
+
+  -- Function to get the parent quest of this quest<br>
+  -- Returns 132
+  ---@type fun(id: QuestId):QuestId?
+  QuestFunctions.parentQuest = Quest.AddNumberGetter(25, "parentQuest", 0)
+
+  -- Function to get the reputation reward of the quest<br>
+  -- Returns <INSERT EXAMPLE>
+  ---@type fun(id: QuestId):ReputationPair[]?
+  QuestFunctions.reputationReward = Quest.AddTableGetter(26, "reputationReward")
+
+  -- Function to get the extra objectives of the quest<br>
+  -- Returns <INSERT EXAMPLE>
+  ---@type fun(id: QuestId):ExtraObjective?
+  QuestFunctions.extraObjectives = Quest.AddTableGetter(27, "extraObjectives")
+
+  -- Function to get the spell required to start the quest<br>
+  -- Returns 12345
+  ---@type fun(id: QuestId):number?
+  QuestFunctions.requiredSpell = Quest.AddNumberGetter(28, "requiredSpell", 0)
+
+  -- Function to get the specialization required to start the quest<br>
+  -- Returns 202 (ENGINEERING)
+  ---@type fun(id: QuestId):number?
+  QuestFunctions.requiredSpecialization = Quest.AddNumberGetter(29, "requiredSpecialization", 0)
+
+  -- Function to get the maximum level allowed to start the quest<br>
+  -- Returns 60
+  ---@type fun(id: QuestId):number?
+  QuestFunctions.requiredMaxLevel = Quest.AddNumberGetter(30, "requiredMaxLevel", 0)
+
+  --? This function is used to export all the functions to the Public and Private namespaces
+  --? It gets called at the end of this file
+  local function exportFunctions()
+    ---@class QuestFunctions
+    local publicQuest = LibQuestieDB.PublicLibQuestieDB.Quest
+    for k, v in pairs(QuestFunctions) do
+      Quest[k] = v
+      publicQuest[k] = v
     end
-    local data = glob[id]
-    if data and data[1] then
-      return data[1]:GetText()
-    else
-      return nil
-    end
+    publicQuest.AddOverrideData = Quest.AddOverrideData
+    publicQuest.ClearOverrideData = Quest.ClearOverrideData
+    publicQuest.GetAllIds = Quest.GetAllIds
   end
 
-  ---Returns the entities that start the quest.
-  ---@param id QuestId
-  ---@return StartedBy?
-  function QuestFunctions.startedBy(id)
-    if override[id] and override[id]["startedBy"] then
-      local startedBy = override[id]["startedBy"]
-      return startedBy ~= _nil and startedBy or emptyTable
-    end
-    local data = glob[id]
-    if data then
-      return getTable(data[2]) or emptyTable
-    else
-      return emptyTable
-    end
-  end
-
-  ---Returns the entities that finish the quest.
-  ---@param id QuestId
-  ---@return FinishedBy?
-  function QuestFunctions.finishedBy(id)
-    if override[id] and override[id]["finishedBy"] then
-      local finishedBy = override[id]["finishedBy"]
-      return finishedBy ~= _nil and finishedBy or emptyTable
-    end
-    local data = glob[id]
-    if data then
-      return getTable(data[3]) or emptyTable
-    else
-      return emptyTable
-    end
-  end
-
-  ---Returns the required level to start the quest.
-  ---@param id QuestId
-  ---@return Level?
-  function QuestFunctions.requiredLevel(id)
-    if override[id] and override[id]["requiredLevel"] then
-      local requiredLevel = override[id]["requiredLevel"]
-      return requiredLevel ~= _nil and requiredLevel or nil
-    end
-    --TODO: Should this return 0 as default value?
-    local data = glob[id]
-    if data then
-      return getNumber(data[4]) or 0
-    else
-      return 0
-    end
-  end
-
-  ---Returns the level of the quest.
-  ---@param id QuestId
-  ---@return Level?
-  function QuestFunctions.questLevel(id)
-    if override[id] and override[id]["questLevel"] then
-      local questLevel = override[id]["questLevel"]
-      return questLevel ~= _nil and questLevel or nil
-    end
-    --TODO: Should this return 1 as default value?
-    local data = glob[id]
-    if data then
-      return getNumber(data[5]) or 1
-    else
-      return 1
-    end
-  end
-
-  ---Returns the required races to start the quest.
-  ---@param id QuestId
-  ---@return number?
-  function QuestFunctions.requiredRaces(id)
-    if override[id] and override[id]["requiredRaces"] then
-      local requiredRaces = override[id]["requiredRaces"]
-      return requiredRaces ~= _nil and requiredRaces or nil
-    end
-    local data = glob[id]
-    if data then
-      return getNumber(data[6])
-    else
-      -- If no requiredRace is set we return 0 (as in all races)
-      return 0
-    end
-  end
-
-  ---Returns the required classes to start the quest.
-  ---@param id QuestId
-  ---@return number?
-  function QuestFunctions.requiredClasses(id)
-    if override[id] and override[id]["requiredClasses"] then
-      local requiredClasses = override[id]["requiredClasses"]
-      return requiredClasses ~= _nil and requiredClasses or 0
-    end
-    local data = glob[id]
-    if data then
-      return getNumber(data[7]) or 0
-    else
-      return 0
-    end
-  end
-
-  ---Returns the objectives text of the quest.
-  ---@param id QuestId
-  ---@return string[]?
-  function QuestFunctions.objectivesText(id)
-    if override[id] and override[id]["objectivesText"] then
-      local objectivesText = override[id]["objectivesText"]
-      return objectivesText ~= _nil and objectivesText or nil
-    end
-    local data = glob[id]
-    if data then
-      return getTable(data[8])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the trigger end of the quest.
-  ---@param id QuestId
-  ---@return { [1]: string, [2]: table<AreaId, CoordPair[]>}?
-  function QuestFunctions.triggerEnd(id)
-    if override[id] and override[id]["triggerEnd"] then
-      local triggerEnd = override[id]["triggerEnd"]
-      return triggerEnd ~= _nil and triggerEnd or nil
-    end
-    local data = glob[id]
-    if data then
-      return getTable(data[9])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the raw objectives of the quest.
-  ---@param id QuestId
-  ---@return RawObjectives?
-  function QuestFunctions.objectives(id)
-    if override[id] and override[id]["objectives"] then
-      local objectives = override[id]["objectives"]
-      return objectives ~= _nil and objectives or nil
-    end
-    local data = glob[id]
-    if data then
-      return getTable(data[10]) or emptyTable
-    else
-      return nil
-    end
-  end
-
-  ---Returns the source item ID of the quest.
-  ---@param id QuestId
-  ---@return ItemId?
-  function QuestFunctions.sourceItemId(id)
-    if override[id] and override[id]["sourceItemId"] then
-      local sourceItemId = override[id]["sourceItemId"]
-      return sourceItemId ~= _nil and sourceItemId or 0
-    end
-    local data = glob[id]
-    if data then
-      return getNumber(data[11]) or 0
-    else
-      return 0
-    end
-  end
-
-  ---Returns the pre-quest group of the quest.
-  ---@param id QuestId
-  ---@return QuestId[]?
-  function QuestFunctions.preQuestGroup(id)
-    if override[id] and override[id]["preQuestGroup"] then
-      local preQuestGroup = override[id]["preQuestGroup"]
-      return preQuestGroup ~= _nil and preQuestGroup or nil
-    end
-    local data = glob[id]
-    if data then
-      return getTable(data[12])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the pre-quest single of the quest.
-  ---@param id QuestId
-  ---@return QuestId[]?
-  function QuestFunctions.preQuestSingle(id)
-    if override[id] and override[id]["preQuestSingle"] then
-      local preQuestSingle = override[id]["preQuestSingle"]
-      return preQuestSingle ~= _nil and preQuestSingle or nil
-    end
-    local data = glob[id]
-    if data then
-      return getTable(data[13])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the child quests of the quest.
-  ---@param id QuestId
-  ---@return QuestId[]?
-  function QuestFunctions.childQuests(id)
-    if override[id] and override[id]["childQuests"] then
-      local childQuests = override[id]["childQuests"]
-      return childQuests ~= _nil and childQuests or nil
-    end
-    local data = glob[id]
-    if data then
-      return getTable(data[14])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the quests that are in group with the quest.
-  ---@param id QuestId
-  ---@return QuestId[]?
-  function QuestFunctions.inGroupWith(id)
-    if override[id] and override[id]["inGroupWith"] then
-      local inGroupWith = override[id]["inGroupWith"]
-      return inGroupWith ~= _nil and inGroupWith or nil
-    end
-    local data = glob[id]
-    if data then
-      return getTable(data[15])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the quests that are exclusive to the quest.
-  ---@param id QuestId
-  ---@return QuestId[]?
-  function QuestFunctions.exclusiveTo(id)
-    if override[id] and override[id]["exclusiveTo"] then
-      local exclusiveTo = override[id]["exclusiveTo"]
-      return exclusiveTo ~= _nil and exclusiveTo or nil
-    end
-    local data = glob[id]
-    if data then
-      return getTable(data[16])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the zone or sort of the quest.
-  ---@param id QuestId
-  ---@return ZoneOrSort?
-  function QuestFunctions.zoneOrSort(id)
-    if override[id] and override[id]["zoneOrSort"] then
-      local zoneOrSort = override[id]["zoneOrSort"]
-      return zoneOrSort ~= _nil and zoneOrSort or nil
-    end
-    local data = glob[id]
-    if data then
-      return getNumber(data[17]) or 0
-    else
-      return 0
-    end
-  end
-
-  ---Returns the required skill of the quest.
-  ---@param id QuestId
-  ---@return SkillPair?
-  function QuestFunctions.requiredSkill(id)
-    if override[id] and override[id]["requiredSkill"] then
-      local requiredSkill = override[id]["requiredSkill"]
-      return requiredSkill ~= _nil and requiredSkill or nil
-    end
-    local data = glob[id]
-    if data then
-      return getTable(data[18])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the required minimum reputation of the quest.
-  ---@param id QuestId
-  ---@return ReputationPair?
-  function QuestFunctions.requiredMinRep(id)
-    if override[id] and override[id]["requiredMinRep"] then
-      local requiredMinRep = override[id]["requiredMinRep"]
-      return requiredMinRep ~= _nil and requiredMinRep or nil
-    end
-    local data = glob[id]
-    if data then
-      return getTable(data[19])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the required maximum reputation of the quest.
-  ---@param id QuestId
-  ---@return ReputationPair?
-  function QuestFunctions.requiredMaxRep(id)
-    if override[id] and override[id]["requiredMaxRep"] then
-      local requiredMaxRep = override[id]["requiredMaxRep"]
-      return requiredMaxRep ~= _nil and requiredMaxRep or nil
-    end
-    local data = glob[id]
-    if data then
-      return getTable(data[20])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the required source items of the quest.
-  ---@param id QuestId
-  ---@return ItemId[]?
-  function QuestFunctions.requiredSourceItems(id)
-    if override[id] and override[id]["requiredSourceItems"] then
-      local requiredSourceItems = override[id]["requiredSourceItems"]
-      return requiredSourceItems ~= _nil and requiredSourceItems or nil
-    end
-    local data = glob[id]
-    if data then
-      return getTable(data[21])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the next quest in the chain of the quest.
-  ---@param id QuestId
-  ---@return QuestId?
-  function QuestFunctions.nextQuestInChain(id)
-    if override[id] and override[id]["nextQuestInChain"] then
-      local nextQuestInChain = override[id]["nextQuestInChain"]
-      return nextQuestInChain ~= _nil and nextQuestInChain or nil
-    end
-    local data = glob[id]
-    if data then
-      return getNumber(data[22])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the quest flags of the quest.
-  ---@param id QuestId
-  ---@return number?
-  function QuestFunctions.questFlags(id)
-    if override[id] and override[id]["questFlags"] then
-      local questFlags = override[id]["questFlags"]
-      return questFlags ~= _nil and questFlags or nil
-    end
-    local data = glob[id]
-    if data then
-      return getNumber(data[23])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the special flags of the quest.
-  ---@param id QuestId
-  ---@return number?
-  function QuestFunctions.specialFlags(id)
-    if override[id] and override[id]["specialFlags"] then
-      local specialFlags = override[id]["specialFlags"]
-      return specialFlags ~= _nil and specialFlags or 0
-    end
-    local data = glob[id]
-    if data then
-      return getNumber(data[24]) or 0
-    else
-      return 0
-    end
-  end
-
-  ---Returns the parent quest of the quest.
-  ---@param id QuestId
-  ---@return QuestId?
-  function QuestFunctions.parentQuest(id)
-    if override[id] and override[id]["parentQuest"] then
-      local parentQuest = override[id]["parentQuest"]
-      return parentQuest ~= _nil and parentQuest or 0
-    end
-    local data = glob[id]
-    if data then
-      return getNumber(data[25]) or 0
-    else
-      return 0
-    end
-  end
-
-  ---Returns the reward reputation of the quest.
-  ---@param id QuestId
-  ---@return ReputationPair[]?
-  function QuestFunctions.reputationReward(id)
-    if override[id] and override[id]["reputationReward"] then
-      local reputationReward = override[id]["reputationReward"]
-      return reputationReward ~= _nil and reputationReward or nil
-    end
-    local data = glob[id]
-    if data then
-      return getTable(data[26])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the extra objectives of the quest.
-  ---@param id QuestId
-  ---@return ExtraObjective?
-  function QuestFunctions.extraObjectives(id)
-    if override[id] and override[id]["extraObjectives"] then
-      local extraObjectives = override[id]["extraObjectives"]
-      return extraObjectives ~= _nil and extraObjectives or nil
-    end
-    local data = glob[id]
-    if data then
-      return getTable(data[27])
-    else
-      return nil
-    end
-  end
-
-  ---Returns the required spell of the quest.
-  ---@param id QuestId
-  ---@return number?
-  function QuestFunctions.requiredSpell(id)
-    if override[id] and override[id]["requiredSpell"] then
-      local requiredSpell = override[id]["requiredSpell"]
-      return requiredSpell ~= _nil and requiredSpell or 0
-    end
-    local data = glob[id]
-    if data then
-      return getNumber(data[28]) or 0
-    else
-      return 0
-    end
-  end
-
-  ---Returns the required specialization of the quest.
-  ---@param id QuestId
-  ---@return number?
-  function QuestFunctions.requiredSpecialization(id)
-    if override[id] and override[id]["requiredSpecialization"] then
-      local requiredSpecialization = override[id]["requiredSpecialization"]
-      return requiredSpecialization ~= _nil and requiredSpecialization or 0
-    end
-    local data = glob[id]
-    if data then
-      return getNumber(data[29]) or 0
-    else
-      return 0
-    end
-  end
-
-  ---Returns the required max level of the quest.
-  ---@param id QuestId
-  ---@return number?
-  function QuestFunctions.requiredMaxLevel(id)
-    if override[id] and override[id]["requiredMaxLevel"] then
-      local requiredMaxLevel = override[id]["requiredMaxLevel"]
-      return requiredMaxLevel ~= _nil and requiredMaxLevel or 0
-    end
-    local data = glob[id]
-    if data then
-      return getNumber(data[30]) or 0
-    else
-      return 0
-    end
-  end
   exportFunctions()
 end

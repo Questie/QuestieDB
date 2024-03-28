@@ -161,7 +161,6 @@ function Database.GetNewIds(AllIdStrings, dataOverride)
   return newIds
 end
 
-
 function Database.Init()
   local startTotal = 0
   print("-- Database Initialization --")
@@ -209,12 +208,14 @@ function Database.Init()
   Database.Initialized = true
 end
 
-
-
 --*-------------------------------------------
 --*--- Dynamic Loading of Datafiles
 --*-------------------------------------------
 do
+  -- This function loads the datafile list for the given frame name.
+  -- Frames are defined in xml e.g: Database\Quest\Era\QuestDataFiles.xml
+  -- Which in turn points to e.g: Database\Quest\Era\QuestDataTemplates.html
+  -- This in turn contains a list of framenames corresponding to datafiles available to load
   ---@type table<"QuestData"|"ItemData"|"ObjectData"|"NpcData", string[]> @Contains a lookuplist for loaded files
   local fileCache = {}
   ---@param FrameName "QuestData"|"ItemData"|"ObjectData"|"NpcData"
@@ -230,7 +231,7 @@ do
 
     -- Get all the filenames from the frame, they are split into different <p> tags that we have to combine
     ---@type FontString[]
-    local dataFilenameRegions = { dataFilenameFrame:GetRegions() --[[@as FontString]] }
+    local dataFilenameRegions = { dataFilenameFrame:GetRegions(), --[[@as FontString]] }
     local combinedString = ""
     for i = 1, #dataFilenameRegions do
       combinedString = combinedString .. dataFilenameRegions[i]:GetText()
@@ -259,14 +260,13 @@ do
 
       -- Get all the filenames from the frame, they are split into different <p> tags that we have to combine
       ---@type FontString[]
-      local idDataRegions = { idDataFilenameFrame:GetRegions() --[[@as FontString]] }
+      local idDataRegions = { idDataFilenameFrame:GetRegions(), --[[@as FontString]] }
       local combinedString = ""
       for i = 1, #idDataRegions do
         combinedString = combinedString .. idDataRegions[i]:GetText()
       end
       entityFunctions[entityType] = "return {" .. combinedString .. "}"
       rawEntiryIdString[entityType] = combinedString
-
     end
     -- Doing loadstring here should be faster than strsplittable due to us wanting the ids as numbers
     -- strsplittable just returns a table of strings
@@ -279,11 +279,8 @@ do
   local loadedFiles = {}
   -- Used to return an empty table instead of nil
   ---@type table<number, table<number, FontString>>
-  local emptyTable = setmetatable({}, {
-    __newindex = function()
-      error("Attempt to modify read-only table")
-    end
-  })
+  local emptyTable = LibQuestieDB.CreateReadOnlyEmptyTable()
+
   local rawset = rawset
   ---comment
   ---@param fileTemplateName string? @The name of the file to load
@@ -300,7 +297,7 @@ do
     -- Creating a frame for each file and reading data
     local dataFrame = CreateFrame(frameType, nil, nil, fileTemplateName)
     ---@type FontString[]
-    local dataRegions = { dataFrame:GetRegions() --[[@as FontString]] }
+    local dataRegions = { dataFrame:GetRegions(), --[[@as FontString]] }
 
     -- This is very important to prevent the frame from updating and causing lag
     -- dataFrame:SetScript("OnUpdate", nil)
@@ -368,7 +365,7 @@ do
                     --   return concatinatedString
                     -- end
                     return tConcat(ret)
-                  end
+                  end,
                 }
               end
             else
@@ -389,7 +386,13 @@ do
     return retEntryData[idToGet] or emptyTable
   end
 end
--- Function to create a binary search function for finding data in ranges
+
+--- Function to create a binary search function for finding data in ranges
+--- Takes the input from a file like Database\Quest\Era\QuestDataTemplates.html
+--- The file contains a list of ranges like "QuestData1-100,QuestData101-200,QuestData201-300"
+---
+--- @param rawDataRanges string[] @The raw data ranges to parse
+--- @return fun(number):string @The binary search function for finding data in ranges
 function Database.CreateFindDataBinarySearchFunction(rawDataRanges)
   -- Table to store the parsed data ranges
   local dataRanges = {}
@@ -431,9 +434,9 @@ function Database.CreateFindDataBinarySearchFunction(rawDataRanges)
       --* Floor function
       -- Using mod instead of floor is about 300% faster
       local mid = (low + high) / 2
-      mid = mid - mid % 1          -- Quicker: Round down to nearest integer
+      mid = mid - mid % 1         -- Quicker: Round down to nearest integer
 
-      local key = sortedKeys[mid]  -- Get the key at the middle index
+      local key = sortedKeys[mid] -- Get the key at the middle index
 
       -- Check if the number is within the range of the current key
       if number >= key and (mid == sortedKeyLength or number < sortedKeys[mid + 1]) then
@@ -451,7 +454,6 @@ function Database.CreateFindDataBinarySearchFunction(rawDataRanges)
   -- Return the findDataBinarySearch function
   return findDataBinarySearch
 end
-
 
 -- C_Timer.After(5, function()
 --   ThreadLib.Thread(function()
