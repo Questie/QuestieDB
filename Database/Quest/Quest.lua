@@ -2,11 +2,13 @@
 ---@field Quest Quest
 local LibQuestieDB = select(2, ...)
 
+local Corrections = LibQuestieDB.Corrections
+
 --- Multiple inheritance for Quest
 
 ---@class (exact) Quest:QuestFunctions
 ---@class (exact) Quest:DatabaseType
-local Quest = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Quest, "Quest")
+local Quest = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Quest, "Quest", Corrections.QuestMeta.questKeys)
 
 do
   -- ? Questie Data structure for Quests
