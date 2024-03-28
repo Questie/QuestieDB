@@ -28,6 +28,9 @@ Database\Npc\Tbc\NpcDataFiles.xml
 Database\Object\Tbc\ObjectDataFiles.xml
 Database\Quest\Tbc\QuestDataFiles.xml
 
+##* Corrections Meta
+Corrections\MetaCorrections.xml
+
 ##* Main
 Database\Database.lua
 Database\Base\Base.lua
@@ -46,7 +49,6 @@ Database\Quest\Quest.lua
 Database\Quest\Quest.test.lua
 
 ##* Corrections
-Corrections\MetaCorrections.xml
 ### Corrections - Era
 # Corrections\Era\EraCorrections.xml
 ### Corrections - Tbc

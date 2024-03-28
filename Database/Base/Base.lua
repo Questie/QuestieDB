@@ -20,10 +20,12 @@ local gsub = string.gsub
 ---@generic DBT
 ---@param refTable table
 ---@param databaseType `DBT`
+---@param databaseTypeMeta table<string, number>
 ---@return DBT
-function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType)
+function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseTypeMeta)
   assert(type(refTable) == "table", "refTable must be a table")
   assert(type(databaseType) == "string", "databaseType must be a string")
+  assert(type(databaseTypeMeta) == "table", "databaseTypeMeta must be a table")
 
   if not Database then
     error("Database not loaded")
@@ -101,11 +103,7 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType)
     LibQuestieDB.ColorizePrint("yellow", f("Loading %s Corrections", captializedType))
     local loadOrder = 0
     local totalLoaded = 0
-    -- Load all Quest Corrections
-    for _, list in pairs(Corrections.GetCorrections(dbType:lower(), includeStatic, includeDynamic)) do
-      for id, func in pairs(list) do
-        local correctionData = func()
-        totalLoaded = totalLoaded + DB.AddOverrideData(correctionData, Corrections.QuestMeta.questKeys)
+        totalLoaded = totalLoaded + DB.AddOverrideData(correctionData, databaseTypeMeta)
         if Database.debugEnabled then
           debug:Print("  " .. tostring(loadOrder) .. "  Loaded", id)
         end
