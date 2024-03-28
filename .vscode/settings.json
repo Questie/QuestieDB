@@ -7,6 +7,7 @@
     "**/.git",
     "**/.cache",
     "**/_data/**",
+    ".llm-output",
   ],
 
   "files.exclude": {
@@ -18,13 +19,19 @@
     "**/Thumbs.db": true,
     "**/.cache": true,
     "**/__pycache__": true,
-    "**/*.html":true,
+    "**/_data/*.html":true,
   },
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
     "**/*.code-search": true,
     "**/.html":true,
+    ".llm-output":true,
+  },
+
+  "[lua]": {
+    "editor.defaultFormatter": "sumneko.lua",
+    "editor.formatOnSave": true,
   },
 
   "Lua.workspace.preloadFileSize": 3000,
