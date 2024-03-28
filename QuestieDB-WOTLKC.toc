@@ -30,7 +30,7 @@ Database\Quest\Wotlk\QuestDataFiles.xml
 
 ##* Main
 Database\Database.lua
-Database\T\T.lua
+Database\Base\Base.lua
 
 ##* Types
 Database\Item\Item.lua
