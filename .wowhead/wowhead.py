@@ -3,7 +3,7 @@ import time
 import os
 from ratelimiter import RateLimiter
 
-#Requests per second
+# Requests per second
 # RPS = 100
 RPS = 100
 
@@ -12,20 +12,20 @@ RPS = 100
 #     duration = int(round(until - time.time()))
 #     print('Rate limited, sleeping for {:d} seconds'.format(duration))
 
-rate_limiter = RateLimiter(max_calls=RPS, period=1)#, callback=limited)
+rate_limiter = RateLimiter(max_calls=RPS, period=1)  # , callback=limited)
 
 # Dictionary mapping locales to their corresponding numeric codes
 localeLookup = {
-  "enUS": 0, # English (US)
-  "ptBR": 8, # Portuguese (Brazil)
-  "ruRU": 7, # Russian (Russia)
-  "deDE": 3, # German (Germany)
-  "koKR": 1, # Korean (Korea)
-  "esES": 6, # Spanish (Spain)
-  "frFR": 2, # French (France)
+  "enUS": 0,  # English (US)
+  "ptBR": 8,  # Portuguese (Brazil)
+  "ruRU": 7,  # Russian (Russia)
+  "deDE": 3,  # German (Germany)
+  "koKR": 1,  # Korean (Korea)
+  "esES": 6,  # Spanish (Spain)
+  "frFR": 2,  # French (France)
   # "esMX": 6?, # Spanish (Mexico) - commented out, not supported
   # "zhTW": 4?, # Traditional Chinese (Taiwan) - commented out, not supported
-  "zhCN": 4, # Simplified Chinese (China)
+  "zhCN": 4,  # Simplified Chinese (China)
   # "itIT": 9, # Italian (Italy) - commented out, not supported
 }
 # Add Flipped localeLookup
@@ -35,13 +35,13 @@ for key, value in localeLookup.items():
 
 # Dictionary mapping locales to their corresponding URL locales (zhCN is the only one that differs...)
 localeToURLLocale = {
-  "enUS": "", # English (US) # Yes EN is empty
-  "ptBR": "pt", # Portuguese (Brazil)
-  "ruRU": "ru", # Russian (Russia)
-  "deDE": "de", # German (Germany)
-  "koKR": "ko", # Korean (Korea)
-  "esES": "es", # Spanish (Spain)
-  "frFR": "fr", # French (France)
+  "enUS": "",  # English (US) # Yes EN is empty
+  "ptBR": "pt",  # Portuguese (Brazil)
+  "ruRU": "ru",  # Russian (Russia)
+  "deDE": "de",  # German (Germany)
+  "koKR": "ko",  # Korean (Korea)
+  "esES": "es",  # Spanish (Spain)
+  "frFR": "fr",  # French (France)
   # "esMX": "es", # Spanish (Mexico) - commented out, not supported
   # "zhTW": "zh", # Traditional Chinese (Taiwan) - commented out, not supported
   "zhCN": "cn",
@@ -50,9 +50,9 @@ localeToURLLocale = {
 
 # Dictionary mapping game versions to their corresponding numeric codes
 dataEnvLookup = {
-  "classic": 4, # Classic version of the game
-  "tbc": 5,     # The Burning Crusade version
-  "wotlk": 8,   # Wrath of the Lich King version
+  "classic": 4,  # Classic version of the game
+  "tbc": 5,  # The Burning Crusade version
+  "wotlk": 8,  # Wrath of the Lich King version
 }
 # Add Flipped dataEnvLookup
 reversedataEnvLookup = {}
@@ -61,13 +61,14 @@ for key, value in dataEnvLookup.items():
 
 # List of allowed types for game entities
 allowedTypes = [
-  "item",   # Game item
-  "npc",    # Non-player character
+  "item",  # Game item
+  "npc",  # Non-player character
   "quest",  # Quest
-  "object", # In-game object
+  "object",  # In-game object
   "spell",  # Spell
-  "faction" # Faction
+  "faction",  # Faction
 ]
+
 
 # Function to construct the URL for fetching data based on various parameters
 def getUrl(idType, id, dataEnv, locale):
@@ -88,6 +89,7 @@ def getUrl(idType, id, dataEnv, locale):
     # Constructs the URL using the provided parameters
     return f"https://nether.wowhead.com/tooltip/{idType}/{id}?dataEnv={dataEnv}&locale={locale}"
 
+
 def cacheResponse(response, idType, id, version, locale):
   try:
     if not os.path.exists(f".cache/{version}/{idType}"):
@@ -96,6 +98,7 @@ def cacheResponse(response, idType, id, version, locale):
       f.write(response.text)
   except Exception as e:
     print(f"Failed to write .cache Exception: {e}")
+
 
 # Function to fetch data for a given game entity
 def getData(idType, id, version, locale="enUS", useCache=True):

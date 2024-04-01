@@ -8,9 +8,11 @@ import requests
 
 listview_re = re.compile(r"new Listview\((.*)\);")
 var_listview_re = re.compile(r"var listviewitems = \[(.*)\];")
-var_listview_re = re.compile(r"var (?:listviewitems|listviewspells) = (\[.*\]);\n") # Used by Item and Spells
-data_quest_re = re.compile(r"data:\s*(\[.*\])}\);") # Used by Quests
-data_re = re.compile(r"\"data\":\s*(\[.*\]),") # Used by NPC and Objects
+var_listview_re = re.compile(r"var (?:listviewitems|listviewspells) = (\[.*\]);\n")  # Used by Item and Spells
+data_quest_re = re.compile(r"data:\s*(\[.*\])}\);")  # Used by Quests
+data_re = re.compile(r"\"data\":\s*(\[.*\]),")  # Used by NPC and Objects
+
+
 def extractData(response_text):
   # Initialize listview_data
   listview_data = []
@@ -26,13 +28,13 @@ def extractData(response_text):
         data = var_listview.group(1)
         # Some of the data is not valid json, so we need to fix it
         # Items + Spells
-        data = data.replace("firstseenpatch", '\"firstseenpatch\"')
-        data = data.replace("popularity", '\"popularity\"')
-        data = data.replace("contentPhase", '\"contentPhase\"')
+        data = data.replace("firstseenpatch", '"firstseenpatch"')
+        data = data.replace("popularity", '"popularity"')
+        data = data.replace("contentPhase", '"contentPhase"')
         # Spells
-        data = data.replace("quality", '\"quality\"')
+        data = data.replace("quality", '"quality"')
         # Due to some weirdness, we need to remove double citations
-        data = data.replace("\"\"quality\"\"", '\"quality\"')
+        data = data.replace('""quality""', '"quality"')
     else:
       data = data.group(1)
 
@@ -49,6 +51,7 @@ def extractData(response_text):
         listview_data = listview_data["data"]
   return listview_data
 
+
 # All are >= 1 and < 1000
 # Items https://www.wowhead.com/classic/items?filter=151:151;2:4;1:1000 1-1000
 # Objects https://www.wowhead.com/classic/objects?filter=15:15;2:5;1:1000 1-1000
@@ -60,16 +63,15 @@ urlLookups = {
   "quest": "https://www.wowhead.com/{version}/quests?filter=30:30;1:4;{min_id}:{max_id}",
   "object": "https://www.wowhead.com/{version}/objects?filter=15:15;2:5;{min_id}:{max_id}",
   "spell": "https://www.wowhead.com/{version}/spells?filter=14:14;2:5;{min_id}:{max_id}",
-  "faction": "https://www.wowhead.com/{version}/factions"
+  "faction": "https://www.wowhead.com/{version}/factions",
 }
 
+
 def getAllIdsWowhead(version, idType):
-  #? Object and Spell produces a lot of 0 results but simplicity is more important than speed
+  # ? Object and Spell produces a lot of 0 results but simplicity is more important than speed
 
   version = version.lower()
-  ids = {
-    idType: []
-  }
+  ids = {idType: []}
 
   if idType != "faction":
     max_id_allowed = 1000000
@@ -128,7 +130,6 @@ def getAllIdsWowhead(version, idType):
     for row in listview_data:
       if row["id"] not in ids[idType]:
         ids[idType].append(row["id"])
-
 
   # Sort
   for key in ids:
