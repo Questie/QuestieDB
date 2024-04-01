@@ -51,6 +51,9 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
   ---- Contains the id strings ----
   local AllIdStrings = {}
 
+  ---- Add entity type to the database ----
+  Database.entityTypes[captializedType] = true
+
   ---@class DatabaseType
   ---@field private glob table<Id, table<number, FontString>>
   ---@field private override table<Id, table<string, any>>
@@ -313,6 +316,17 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
     ---@param converter (fun(value: string): any)? - The function to convert the string value to the desired type.
     ---@return fun(id: Id): table?
     function DB.AddPatternGetter(numberKey, nameKey, pattern, defaultValue, converter)
+      local allowedDefaultTypes = {
+        ["string"] = true,
+        ["number"] = true,
+        ["table"] = true,
+        ["nil"] = true,
+      }
+      assert(type(numberKey) == "number", "numberKey must be a number")
+      assert(type(nameKey) == "string", "nameKey must be a string")
+      assert(type(pattern) == "string", "pattern must be a string")
+      assert(allowedDefaultTypes[type(defaultValue)], "defaultValue is not a valid type")
+      assert(converter == nil or type(converter) == "function", "converter must be a function or nil")
       if converter then
         return function(id)
           -- Check for override

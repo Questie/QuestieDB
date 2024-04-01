@@ -64,16 +64,9 @@ end
 
 -- /dump GLOBl10n.item(25)
 C_Timer.After(5, function()
-  print(localeToPattern[l10n.currentLocale])
-  local loc = l10n.AddStringGetter(1, "item")
-  local item = function(id, locale)
-    return loc(id):match(localeToPattern[locale])
-  end
-
   DevTools_Dump(localeToPattern)
   for locale in pairs(localeToPattern) do
     print(locale, localeToPattern[locale])
-    print(item(25, locale))
   end
 end)
 
@@ -105,8 +98,12 @@ local function SetGetters()
         --- Duplicated for performance reasons
         local result = {}
         for i = 1, #data do
-          local match = data[i]:match(localeToPattern[l10n.currentLocale])
-          result[i] = match ~= "" and match or nil
+          if data[i] then
+            local match = data[i]:match(localeToPattern[l10n.currentLocale])
+            result[i] = match ~= "" and match or nil
+          else
+            result[i] = nil
+          end
         end
         npcCache[id] = result
         return result
@@ -149,8 +146,12 @@ local function SetGetters()
         --- Duplicated for performance reasons
         local result = {}
         for i = 1, #data do
-          local match = data[i]:match(localeToPattern[l10n.currentLocale])
-          result[i] = match ~= "" and match or nil
+          if data[i] then
+            local match = data[i]:match(localeToPattern[l10n.currentLocale])
+            result[i] = match ~= "" and match or nil
+          else
+            result[i] = nil
+          end
         end
         questCache[id] = result
         return result
@@ -158,18 +159,28 @@ local function SetGetters()
       return nil
     end
 
+    ---@param id QuestId
+    ---@return string?
     l10n.questName = function(id)
       local questData = questCache[id] and questCache[id] or l10n.quest(id)
       return questData and questData[1] or nil
     end
+
     -- TODO: This data is available but not used
+    ---@param id QuestId
+    ---@return string[]?
     l10n.questDescription = function(id)
       local questData = questCache[id] and questCache[id] or l10n.quest(id)
-      return questData and questData[2] or nil
+      -- ? These return as tables
+      return questData and { questData[2], } or nil
     end
+
+    ---@param id QuestId
+    ---@return string[]?
     l10n.questObjectivesText = function(id)
       local questData = questCache[id] and questCache[id] or l10n.quest(id)
-      return questData and questData[3] or nil
+      -- ? These return as tables
+      return questData and { questData[3], } or nil
     end
   end
 end

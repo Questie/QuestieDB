@@ -3,6 +3,7 @@
 local LibQuestieDB = select(2, ...)
 
 local Corrections = LibQuestieDB.Corrections
+local l10n = LibQuestieDB.l10n
 
 --- Multiple inheritance for Quest
 
@@ -64,10 +65,15 @@ do
   ---@type table<number, table<number, FontString>>
   local emptyTable = LibQuestieDB.CreateReadOnlyEmptyTable()
 
-  -- Function to get the name of the quest<br>
-  -- Returns "The Lost Artifact"
-  ---@type fun(id: QuestId):Name?
-  QuestFunctions.name = Quest.AddStringGetter(1, "name")
+  -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
+  if l10n.currentLocale == "enUS" and Database.debugEnabled == false then
+    -- Function to get the name of the quest<br>
+    -- Returns "The Lost Artifact"
+    ---@type fun(id: QuestId):Name?
+    QuestFunctions.name = Quest.AddStringGetter(1, "name")
+  else
+    QuestFunctions.name = l10n.questName
+  end
 
   -- Function to get the entity that starts the quest<br>
   -- Return {{12345}, {67890}, nil}
@@ -99,10 +105,15 @@ do
   ---@type fun(id: QuestId):number?
   QuestFunctions.requiredClasses = Quest.AddNumberGetter(7, "requiredClasses", 0)
 
-  -- Function to get the text of the quest objectives<br>
-  -- Returns {"Find the lost artifact", "Return to the qu
-  ---@type fun(id: QuestId):string[]?
-  QuestFunctions.objectivesText = Quest.AddTableGetter(8, "objectivesText")
+  -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
+  if l10n.currentLocale == "enUS" and Database.debugEnabled == false then
+    -- Function to get the text of the quest objectives<br>
+    -- Returns {"Find the lost artifact", "Return to the qu
+    ---@type fun(id: QuestId):string[]?
+    QuestFunctions.objectivesText = Quest.AddTableGetter(8, "objectivesText")
+  else
+    QuestFunctions.objectivesText = l10n.questObjectivesText
+  end
 
   -- Function to get the trigger that ends the quest<br>
   -- Returns {"Prisoner Transport", {[46]={{25.73,27.1}}

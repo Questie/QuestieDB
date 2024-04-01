@@ -3,6 +3,7 @@
 local LibQuestieDB = select(2, ...)
 
 local Corrections = LibQuestieDB.Corrections
+local l10n = LibQuestieDB.l10n
 
 ---@class (exact) Item:DatabaseType
 ---@class (exact) Item:ItemFunctions
@@ -32,9 +33,14 @@ do
   -- 9. ['relatedQuests'] -- table or nil, IDs of quests that are related to this item
   -- 10. ['teachesSpell'] -- int, spellID taught by this item upon use
 
-  ---Returns the name of the item.
-  ---@type fun(id: ItemId):Name?
-  ItemFunctions.name = Item.AddStringGetter(1, "name")
+  -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
+  if l10n.currentLocale == "enUS" and Database.debugEnabled == false then
+    ---Returns the name of the item.
+    ---@type fun(id: ItemId):Name?
+    ItemFunctions.name = Item.AddStringGetter(1, "name")
+  else
+    ItemFunctions.name = l10n.itemName
+  end
 
   ---Returns the IDs of NPCs that drop this item.
   ---@type fun(id: ItemId):NpcId[]?

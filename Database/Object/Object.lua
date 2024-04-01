@@ -3,6 +3,7 @@
 local LibQuestieDB = select(2, ...)
 
 local Corrections = LibQuestieDB.Corrections
+local l10n = LibQuestieDB.l10n
 
 ---@class (exact) Object:DatabaseType
 ---@class (exact) Object:ObjectFunctions
@@ -24,9 +25,14 @@ do
 
   -- ? QuestieDB Data structure for Quests
 
-  ---Returns the object name.
-  ---@type fun(id: ObjectId):Name?
-  ObjectFunctions.name = Object.AddStringGetter(1, "name")
+  -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
+  if l10n.currentLocale == "enUS" and Database.debugEnabled == false then
+    ---Returns the object name.
+    ---@type fun(id: ObjectId):Name?
+    ObjectFunctions.name = Object.AddStringGetter(1, "name")
+  else
+    ObjectFunctions.name = l10n.objectName
+  end
 
   ---Returns the IDs of NPCs that drop this object.
   ---@type fun(id :ObjectId):QuestId[]?

@@ -21,6 +21,7 @@ local Npc = LibQuestieDB.Npc
 local Object = LibQuestieDB.Object
 local Quest = LibQuestieDB.Quest
 local Item = LibQuestieDB.Item
+local l10n = LibQuestieDB.l10n
 
 
 -- Event registration
@@ -53,11 +54,14 @@ end
 -- Register slash command
 SlashCmdList["QuestieDB"] = function(args)
   if args == "test" then
-    print("Running tests")
+    LibQuestieDB.ColorizePrint("yellow", "Running data tests")
     Npc.RunGetTest(true)
     Object.RunGetTest(true)
     Quest.RunGetTest(true)
     Item.RunGetTest(true)
+    LibQuestieDB.ColorizePrint("yellow", "Running l10n tests")
+    l10n.RunGetTest(true)
+    LibQuestieDB.ColorizePrint("yellow", "--- Testing Done ---")
   elseif args == "t" then
     local floor = math.floor
     debugprofilestart()
