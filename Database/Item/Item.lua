@@ -4,8 +4,8 @@ local LibQuestieDB = select(2, ...)
 
 local Corrections = LibQuestieDB.Corrections
 
----@class (exact) Item:ItemFunctions
 ---@class (exact) Item:DatabaseType
+---@class (exact) Item:ItemFunctions
 local Item = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Item, "Item", Corrections.ItemMeta.itemKeys)
 GItem = Item
 

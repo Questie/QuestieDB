@@ -4,10 +4,9 @@ local LibQuestieDB = select(2, ...)
 
 local Corrections = LibQuestieDB.Corrections
 
----@class (exact) Npc:NpcFunctions
 ---@class (exact) Npc:DatabaseType
+---@class (exact) Npc:NpcFunctions
 local Npc = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Npc, "Npc", Corrections.NpcMeta.npcKeys)
-
 
 do
   -- Class for all the GET functions for the Npc namespace

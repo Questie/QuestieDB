@@ -51,40 +51,53 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
   ---- Contains the id strings ----
   local AllIdStrings = {}
 
-  ---@class (exact) DatabaseType
+  ---@class DatabaseType
   ---@field private glob table<Id, table<number, FontString>>
   ---@field private override table<Id, table<string, any>>
-  ---@field InitializeDynamic fun()
-  ---@field LoadOverrideData fun(includeDynamic: boolean?, includeStatic: boolean?)
-  ---@field AddOverrideData fun(dataOverride: table<string, any>, overrideKeys: table<string, number>): number
-  ---@field ClearOverrideData fun()
-  ---@field GetAllIds fun(hashmap: boolean?): QuestId[]
-  ---@field AddStringGetter fun(numberKey: number, nameKey: string, defaultValue: string?): fun(id: Id): string?
-  ---@field AddNumberGetter fun(numberKey: number, nameKey: string, defaultValue: number?): fun(id: Id): number?
-  ---@field AddTableGetter fun(numberKey: number, nameKey: string, defaultValue: table?): fun(id: Id): table?
-  ---@field AddPatternGetter fun(numberKey: number, nameKey: string, pattern: string, defaultValue: any?, converter: (fun(value: string): any)?): fun(id: Id): table?
+  ----@field InitializeDynamic fun()
+  ----@field LoadOverrideData fun(includeDynamic: boolean?, includeStatic: boolean?)
+  ----@field AddOverrideData fun(dataOverride: table<string, any>, overrideKeys: table<string, number>): number
+  ----@field ClearOverrideData fun()
+  ----@field GetAllIds fun(hashmap: boolean?): QuestId[]
+  ----@field AddStringGetter fun(numberKey: number, nameKey: string, defaultValue: string?): fun(id: Id): string?
+  ----@field AddNumberGetter fun(numberKey: number, nameKey: string, defaultValue: number?): fun(id: Id): number?
+  ----@field AddTableGetter fun(numberKey: number, nameKey: string, defaultValue: table?): fun(id: Id): table?
+  ----@field AddPatternGetter fun(numberKey: number, nameKey: string, pattern: string, defaultValue: any?, converter: (fun(value: string): any)?): fun(id: Id): table?
   local DB = refTable
 
+  --- Initializes the dynamic part of the database for the entity type.
+  --- It sets up a metatable for lazy loading of data and prepares for overrides.
   function DB.InitializeDynamic()
-    -- This will be assigned from the initialize function
-    local itemData = Database.LoadDatafileList(captializedType .. "Data") -- e.g ItemData
-    -- localized for faster access
+    -- Load the list of data files for the entity type (e.g., "ItemData" for items).
+    local itemData = Database.LoadDatafileList(captializedType .. "Data")
+
+    -- Local reference to the LoadFile function for faster access.
     local loadFile = Database.LoadFile
-    -- Get the binary search function
+
+    -- Create a binary search function to efficiently find data files based on entity ID.
     local binarySearch, _ = Database.CreateFindDataBinarySearchFunction(itemData)
 
-    ---@type table<Id, table<number, FontString>>
+    -- Set up a metatable for the global data table. This allows for lazy loading of data:
+    -- When data for an ID is requested, it will be loaded on-demand using the binary search function.
     glob = setmetatable({},
                         {
+                          -- The __index metamethod is called when a requested ID is not in the table.
+                          -- It will load the data file containing the ID and return the data.
                           __index = function(t, k)
                             return loadFile(binarySearch(k), t, k)
                           end,
+                          -- The __newindex metamethod prevents any modifications to the table,
+                          -- ensuring that the database remains read-only.
                           __newindex = function()
                             error("Attempt to modify read-only table")
                           end,
                         }
     )
+
+    -- Assign the global data table to the DB object for external access.
     DB.glob = glob
+
+    -- Load any override data that may exist to correct or update the original data.
     DB.LoadOverrideData()
   end
 
@@ -168,22 +181,31 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
     end
   end
 
+  --- Clears the override data from the database.
+  -- This function is used to remove all existing override data from the database.
+  -- It is typically called when the addon needs to refresh its data, ensuring that
+  -- outdated or irrelevant corrections are not applied. After clearing the override
+  -- data, it re-initializes the list of entity IDs to work with the correct set of data.
   function DB.ClearOverrideData()
     if override then
+      -- Use the `wipe` function to clear the `override` table.
       override = wipe(override)
     end
+    -- Re-initialize the list of entity IDs after clearing the override data.
     InitializeIdString()
   end
 
-  ---Get all quest ids.
-  ---@param hashmap boolean? @If true, returns a hashmap with the ids as keys and true as value. Default false
-  ---@return QuestId[]
+  --- Retrieves all IDs from the database.
+  --- @param hashmap boolean? @Optional. If true, returns a hashmap with the IDs as keys and true as values. Defaults to false.
+  --- @return QuestId[] @Returns either a list of IDs or a hashmap of IDs.
   function DB.GetAllIds(hashmap)
     if hashmap == true then
-      -- Sub all numbers and replace them with [number]=true,
+      -- Substitute all numbers in the concatenated ID strings with Lua table format [number]=true
       local dat = gsub(tConcat(AllIdStrings, ","), "(%d+)", "[%1]=true")
+      -- Execute the string as Lua code to create and return the hashmap
       return loadstring(f("return {%s}", dat))()
     else
+      -- If hashmap is not requested, simply return a list of IDs
       return loadstring(f("return {%s}", tConcat(AllIdStrings, ",")))()
     end
   end
@@ -191,7 +213,9 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
   --?-------------------------------------------------------------
   --? Add Getters
   do
-    --- <comment>
+    --- This function is used to add a string getter to the database.
+    --- It returns a function that retrieves a string value from the database for a given ID.
+    --- If the ID is not found in the database, the function will return the default value.
     ---@param numberKey number - The key of the information to retrieve.
     ---@param nameKey string - The key of the information to retrieve.
     ---@param defaultValue string? - The default value to return if the data is not found.
@@ -219,7 +243,9 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
       end
     end
 
-    --- <comment>
+    --- This function is used to add a number getter to the database.
+    --- It returns a function that retrieves a number value and converts it from the database for a given ID.
+    --- If the ID is not found in the database, the function will return the default value.
     ---@param numberKey number - The key of the information to retrieve.
     ---@param nameKey string - The key of the information to retrieve.
     ---@param defaultValue number? - The default value to return if the data is not found.
