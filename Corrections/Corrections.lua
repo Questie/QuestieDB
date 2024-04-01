@@ -48,6 +48,7 @@ function Corrections.RegisterCorrectionDynamic(datatype, name, func)
     Corrections.QuestCorrectionsDynamic[name or #Corrections.QuestCorrectionsStatic + 1] = func
   end
 end
+
 ---@param datatype "item"|"npc"|"object"|"quest" @ The type of correction
 ---@param name string @ Optional name for the correction functio
 ---@param func fun(): table<AllIdTypes, Correction[]>> @ Function returning a table of corrections (Dependency Injection-ish)
@@ -98,6 +99,8 @@ do
         includeStatic and Corrections.QuestCorrectionsStatic or nil,
         includeDynamic and Corrections.QuestCorrectionsDynamic or nil,
       }
+    elseif type == "l10n" then
+      return {}
     end
     error("Invalid type")
   end

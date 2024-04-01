@@ -18,6 +18,7 @@
 ---@field public Item ItemFunctions
 ---@field public Npc NpcFunctions
 ---@field public Object ObjectFunctions
+---@field public ChangeLocale fun(locale: string)
 local PublicLibQuestieDB = {
   Quest = {},
   Item = {},
@@ -32,10 +33,9 @@ function LibQuestieDB()
   return setmetatable(PublicLibQuestieDB, {
     __newindex = function(_, _, _)
       error("Attempt to write to a read-only table")
-    end
+    end,
   })
 end
-
 
 ---- Private namespace -----
 
@@ -59,6 +59,7 @@ function PrivateLibQuestieDB:initNamespace()
     -- end
   })
 end
+
 -- Set the metatable to the namespace
 PrivateLibQuestieDB:initNamespace()
 PrivateLibQuestieDB.initNamespace = nil -- Remove it, no one should be able to change it

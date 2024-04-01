@@ -5,12 +5,15 @@ local LibQuestieDB = select(2, ...)
 --*---- Create Module --------
 ---@class Database
 local Database = LibQuestieDB.Database
+---@type table<string, boolean>
+Database.entityTypes = {}
 
 --*---- Import Modules -------
 local Quest = LibQuestieDB.Quest
 local Object = LibQuestieDB.Object
 local Npc = LibQuestieDB.Npc
 local Item = LibQuestieDB.Item
+local l10n = LibQuestieDB.l10n
 
 ------------------------------
 Database.debugEnabled = true
@@ -164,6 +167,15 @@ end
 function Database.Init()
   local startTotal = 0
   print("-- Database Initialization --")
+  -- l10n
+  debugprofilestart()
+  l10n.InitializeDynamic()
+  if Database.debugEnabled then
+    local msTime = debugprofilestop()
+    LibQuestieDB.ColorizePrint("green", "l10n data database initialized:")
+    print("    ", format("%.4f", msTime), "ms")
+    startTotal = startTotal + msTime
+  end
   -- Quest
   debugprofilestart()
   Quest.InitializeDynamic()
@@ -242,16 +254,16 @@ do
 end
 
 do
-  ---@type table<"QuestData"|"ItemData"|"ObjectData"|"NpcData", fun():QuestId[]|fun():NpcId[]|fun():ObjectId[]|fun():ItemId[]>
+  ---@type table<"QuestData"|"ItemData"|"ObjectData"|"NpcData"|"L10nData", fun():QuestId[]|fun():NpcId[]|fun():ObjectId[]|fun():ItemId[]>
   local entityFunctions = {}
   local rawEntiryIdString = {}
   --- This function returns a function that returns a list of ids for the given entity type
-  ---@param entityType "Quest"|"Item"|"Object"|"Npc"
+  ---@param entityType "Quest"|"Item"|"Object"|"Npc"|"l10n"
   ---@return fun():QuestId[]|fun():NpcId[]|fun():ObjectId[]|fun():ItemId[]
   ---@return string @The raw string of ids
   function Database.GetAllEntityIdsFunction(entityType)
     if not entityFunctions[entityType] then
-      if entityType ~= "Quest" and entityType ~= "Item" and entityType ~= "Object" and entityType ~= "Npc" then
+      if not Database.entityTypes[entityType] then
         error("Invalid entityType: " .. entityType)
       end
       -- Create a new UI Frame to load data from

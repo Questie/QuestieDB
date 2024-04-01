@@ -3,6 +3,7 @@
 local LibQuestieDB = select(2, ...)
 
 local Corrections = LibQuestieDB.Corrections
+local l10n = LibQuestieDB.l10n
 
 ---@class (exact) Npc:DatabaseType
 ---@class (exact) Npc:NpcFunctions
@@ -31,10 +32,14 @@ do
   -- 6. ['questEnds'], -- table {questID(int), ...}
   -- 7. ['subName'], -- string, The title or function of the NPC, e.g. "Weapon Vendor"
 
-  ---Returns the name of the npc.
-  ---@type fun(id: NpcId):string?
-  NpcFunctions.name = Npc.AddStringGetter(1, "name")
-
+  -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
+  if l10n.currentLocale == "enUS" and Database.debugEnabled == false then
+    ---Returns the name of the npc.
+    ---@type fun(id: NpcId):string?
+    NpcFunctions.name = Npc.AddStringGetter(1, "name")
+  else
+    NpcFunctions.name = l10n.npcName
+  end
   ---Returns the minimum level health of the npc.
   ---@type fun(id: NpcId):number?
   NpcFunctions.minLevelHealth = Npc.AddPatternGetter(2, "minLevelHealth", "^(%d+);", 1, tonumber)
@@ -91,9 +96,14 @@ do
   ---@type fun(id: NpcId):QuestId[]?
   NpcFunctions.questEnds = Npc.AddTableGetter(6, "questEnds")
 
-  ---Returns the sub name of the npc.
-  ---@type fun(id: NpcId):string?
-  NpcFunctions.subName = Npc.AddStringGetter(7, "subName")
+  -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
+  if l10n.currentLocale == "enUS" and Database.debugEnabled == false then
+    ---Returns the sub name of the npc.
+    ---@type fun(id: NpcId):string?
+    NpcFunctions.subName = Npc.AddStringGetter(7, "subName")
+  else
+    NpcFunctions.subName = l10n.npcSubName
+  end
 
   --? This function is used to export all the functions to the Public and Private namespaces
   --? It gets called at the end of this file
