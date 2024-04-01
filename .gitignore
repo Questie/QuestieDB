@@ -1,6 +1,9 @@
 .shit
 .translator
 
+.generate_database/*.json
+.wowhead/*.json
+
 #We don't want the zip file in the repo
 *.zip
 *.7z
@@ -33,6 +36,6 @@ releases/
 *.log
 *.bak
 
-.builds
+.build
 
 .llm-output
