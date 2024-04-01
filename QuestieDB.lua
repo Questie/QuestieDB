@@ -26,6 +26,7 @@ local Item = LibQuestieDB.Item
 -- Event registration
 LibQuestieDB.RegisteredEvents = LibQuestieDB.EventRegistrator()
 
+--! Start the addon
 --* Initialize the database
 do
   ---@type cbObject
@@ -56,7 +57,7 @@ SlashCmdList["QuestieDB"] = function(args)
     Npc.RunGetTest(true)
     Object.RunGetTest(true)
     Quest.RunGetTest(true)
-    Object.RunGetTest(true)
+    Item.RunGetTest(true)
   elseif args == "t" then
     local floor = math.floor
     debugprofilestart()
