@@ -12,7 +12,7 @@ addon_dir = find_addon_name()
 print(f"Addon dir: {addon_dir}")
 print(f"Project dir: {get_project_dir_path()}")
 
-entity_types = ["Quest", "Item", "Object", "Npc", "l10n"]
+entity_types = ["Quest", "Item", "Object", "Npc", "L10n"]
 
 expansions = ["Era", "Tbc", "Wotlk"]
 range_size = 50

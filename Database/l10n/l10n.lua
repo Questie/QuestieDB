@@ -30,6 +30,8 @@ GLOBl10n = l10n
 
 local specialChar = "‡"
 
+-- ! The order of these are very important and has to match the order in the
+-- ! extracting python script in .generate_database (currently generate_l10n_table.py)
 local indexToLocale = {
   [1] = "enUS",
   [2] = "ptBR",

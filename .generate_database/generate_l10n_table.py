@@ -28,7 +28,10 @@ if __name__ == "__main__":
 
   fileoutput = get_data_dir_path("l10n", "era") + "/l10nData.lua-table"
 
+  # ! The order of these are very important and has to match the order in the
+  # ! reading l10n code (Database\l10n\l10n.lua: indexToLocale)
   supportedLocales = ["enUS", "ptBR", "ruRU", "deDE", "koKR", "esES", "frFR", "zhCN"]
+  # ! Same is true for the order of these
   supportedDataTypes = ["item", "npc", "object", "quest"]
 
   with open("./classic_locales.json", "r", encoding="utf-8") as f:
