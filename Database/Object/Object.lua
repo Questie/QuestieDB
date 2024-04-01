@@ -4,8 +4,8 @@ local LibQuestieDB = select(2, ...)
 
 local Corrections = LibQuestieDB.Corrections
 
----@class (exact) Object:ObjectFunctions
 ---@class (exact) Object:DatabaseType
+---@class (exact) Object:ObjectFunctions
 local Object = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Object, "Object", Corrections.ObjectMeta.objectKeys)
 
 

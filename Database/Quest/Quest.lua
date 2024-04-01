@@ -6,8 +6,8 @@ local Corrections = LibQuestieDB.Corrections
 
 --- Multiple inheritance for Quest
 
----@class (exact) Quest:QuestFunctions
 ---@class (exact) Quest:DatabaseType
+---@class (exact) Quest:QuestFunctions
 local Quest = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Quest, "Quest", Corrections.QuestMeta.questKeys)
 
 do
