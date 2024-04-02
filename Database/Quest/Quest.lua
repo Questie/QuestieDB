@@ -72,7 +72,10 @@ do
     ---@type fun(id: QuestId):Name?
     QuestFunctions.name = Quest.AddStringGetter(1, "name")
   else
-    QuestFunctions.name = l10n.questName
+    local fallbackQuest = Quest.AddStringGetter(1, "name")
+    QuestFunctions.name = function(id)
+      return l10n.questName(id) or fallbackQuest(id)
+    end
   end
 
   -- Function to get the entity that starts the quest<br>
@@ -112,7 +115,10 @@ do
     ---@type fun(id: QuestId):string[]?
     QuestFunctions.objectivesText = Quest.AddTableGetter(8, "objectivesText")
   else
-    QuestFunctions.objectivesText = l10n.questObjectivesText
+    local fallbackObjectives = Quest.AddTableGetter(8, "objectivesText")
+    QuestFunctions.objectivesText = function(id)
+      return l10n.questObjectivesText(id) or fallbackObjectives(id)
+    end
   end
 
   -- Function to get the trigger that ends the quest<br>

@@ -38,7 +38,10 @@ do
     ---@type fun(id: NpcId):string?
     NpcFunctions.name = Npc.AddStringGetter(1, "name")
   else
-    NpcFunctions.name = l10n.npcName
+    local fallbackNpc = Npc.AddStringGetter(1, "name")
+    NpcFunctions.name = function(id)
+      return l10n.npcName(id) or fallbackNpc(id)
+    end
   end
   ---Returns the minimum level health of the npc.
   ---@type fun(id: NpcId):number?
@@ -102,7 +105,10 @@ do
     ---@type fun(id: NpcId):string?
     NpcFunctions.subName = Npc.AddStringGetter(7, "subName")
   else
-    NpcFunctions.subName = l10n.npcSubName
+    local fallbackSubName = Npc.AddStringGetter(7, "subName")
+    NpcFunctions.subName = function(id)
+      return l10n.npcSubName(id) or fallbackSubName(id)
+    end
   end
 
   --? This function is used to export all the functions to the Public and Private namespaces
