@@ -32,6 +32,7 @@ Database\Quest\Tbc\QuestDataFiles.xml
 Corrections\MetaCorrections.xml
 
 ##* Main
+Database\Database.layer.lua
 Database\Database.lua
 Database\Base\Base.lua
 

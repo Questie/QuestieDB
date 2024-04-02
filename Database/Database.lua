@@ -27,7 +27,8 @@ local _nil = Database._nil
 ---@alias Id number @Generic id type
 
 ---- Local Functions ----
-local CreateFrame = CreateFrame
+--* For performance reasons we check Is_CLI here, Database.CreateFrame supports both CLI and WOW
+local CreateFrame = Is_CLI and Database.CreateFrame or CreateFrame
 local frameType = "SimpleHTML"
 local strsplittable = strsplittable
 local tConcat = table.concat
@@ -37,6 +38,7 @@ local loadstring = loadstring
 local gMatch = string.gmatch
 local tInsert = table.insert
 local sFind = string.find
+local format = string.format
 
 local type = type
 local pairs = pairs
