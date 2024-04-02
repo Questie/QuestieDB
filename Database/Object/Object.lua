@@ -31,7 +31,10 @@ do
     ---@type fun(id: ObjectId):Name?
     ObjectFunctions.name = Object.AddStringGetter(1, "name")
   else
-    ObjectFunctions.name = l10n.objectName
+    local fallbackObject = Object.AddStringGetter(1, "name")
+    ObjectFunctions.name = function(id)
+      return l10n.objectName(id) or fallbackObject(id)
+    end
   end
 
   ---Returns the IDs of NPCs that drop this object.

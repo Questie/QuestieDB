@@ -39,7 +39,11 @@ do
     ---@type fun(id: ItemId):Name?
     ItemFunctions.name = Item.AddStringGetter(1, "name")
   else
-    ItemFunctions.name = l10n.itemName
+    local fallbackName = Item.AddStringGetter(1, "name")
+    ItemFunctions.name = function(id)
+      ---@diagnostic disable-next-line: return-type-mismatch
+      return l10n.itemName(id) or fallbackName(id)
+    end
   end
 
   ---Returns the IDs of NPCs that drop this item.
