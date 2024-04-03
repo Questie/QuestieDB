@@ -178,6 +178,7 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
   local function InitializeIdString()
     wipe(AllIdStrings)
     local func, idString = Database.GetAllEntityIdsFunction(captializedType)
+    -- TODO: Maybe we should sort this list?
     tInsert(AllIdStrings, idString)
     if Database.debugEnabled then
       assert(#func() == #DB.GetAllIds(), f("%s ids are not the same", captializedType))
@@ -200,7 +201,7 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
 
   --- Retrieves all IDs from the database.
   --- @param hashmap boolean? @Optional. If true, returns a hashmap with the IDs as keys and true as values. Defaults to false.
-  --- @return QuestId[] @Returns either a list of IDs or a hashmap of IDs.
+  --- @return QuestId[] @Returns either a list of IDs or a hashmap of IDs (Not sorted).
   function DB.GetAllIds(hashmap)
     if hashmap == true then
       -- Substitute all numbers in the concatenated ID strings with Lua table format [number]=true
@@ -314,7 +315,7 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
     ---@param pattern string - The pattern to match the string value.
     ---@param defaultValue any? - The default value to return if the data is not found.
     ---@param converter (fun(value: string): any)? - The function to convert the string value to the desired type.
-    ---@return fun(id: Id): table?
+    ---@return fun(id: Id): any?
     function DB.AddPatternGetter(numberKey, nameKey, pattern, defaultValue, converter)
       local allowedDefaultTypes = {
         ["string"] = true,

@@ -64,16 +64,6 @@ do
   end
 end
 
--- /dump GLOBl10n.item(25)
-C_Timer.After(5, function()
-  DevTools_Dump(localeToPattern)
-  for locale in pairs(localeToPattern) do
-    print(locale, localeToPattern[locale])
-  end
-end)
-
-
-
 local function SetGetters()
   -- ? Item
   do
