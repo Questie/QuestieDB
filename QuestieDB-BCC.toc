@@ -27,26 +27,27 @@ Database\Item\Tbc\ItemDataFiles.xml
 Database\Npc\Tbc\NpcDataFiles.xml
 Database\Object\Tbc\ObjectDataFiles.xml
 Database\Quest\Tbc\QuestDataFiles.xml
+## l10n
+Database\l10n\Tbc\L10nDataFiles.xml
 
 ##* Corrections Meta
 Corrections\MetaCorrections.xml
 
 ##* Main
 Database\Database.lua
-Database\Base\Base.lua
+Database\Base\Base.xml
 
 ##* Types
-Database\Item\Item.lua
-Database\Item\Item.test.lua
+# l10n
+Database\l10n\l10n.xml
 
-Database\Npc\Npc.lua
-Database\Npc\Npc.test.lua
+Database\Item\Item.xml
 
-Database\Object\Object.lua
-Database\Object\Object.test.lua
+Database\Npc\Npc.xml
 
-Database\Quest\Quest.lua
-Database\Quest\Quest.test.lua
+Database\Object\Object.xml
+
+Database\Quest\Quest.xml
 
 ##* Corrections
 ### Corrections - Era

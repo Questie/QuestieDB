@@ -1,0 +1,4 @@
+<Ui>
+  <Script file="Object.lua"/>
+  <Script file="Object.test.lua"/>
+</Ui>
