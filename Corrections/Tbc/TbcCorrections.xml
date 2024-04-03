@@ -1,0 +1,6 @@
+<Ui>
+  <Script file="tbcItemFixes.lua"/>
+  <Script file="tbcNPCFixes.lua"/>
+  <Script file="tbcObjectFixes.lua"/>
+  <Script file="tbcQuestFixes.lua"/>
+</Ui>
