@@ -9,6 +9,7 @@
     "**/_data/**",
     ".llm-output",
     ".build",
+    "Perfy",
   ],
 
   "files.exclude": {
@@ -29,6 +30,7 @@
     "**/.html":true,
     ".llm-output":true,
     ".build":true,
+    "Perfy":true,
   },
 
   "[lua]": {
