@@ -2,6 +2,10 @@
 .translator
 
 .generate_database/*.json
+
+# Dump output should not be version controlled here.
+.generate_database/_data
+
 .wowhead/*.json
 
 #We don't want the zip file in the repo
@@ -31,6 +35,12 @@ CHANGELOG.md
 
 releases/
 *__pycache__/
+
+# Python venv
+venv
+
+#Perfy
+Perfy
 
 #Log files
 *.log
