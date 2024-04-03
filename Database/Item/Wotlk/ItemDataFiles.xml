@@ -736,5 +736,5 @@
 <SimpleHTML name="ItemData51967-52251" file="Interface\AddOns\QuestieDB\Database\Item\Wotlk\_data\51967-52251.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="ItemData52252-54470" file="Interface\AddOns\QuestieDB\Database\Item\Wotlk\_data\52252-54470.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="ItemData54516-54847" file="Interface\AddOns\QuestieDB\Database\Item\Wotlk\_data\54516-54847.html" virtual="true" font="GameFontNormal"/>
-<SimpleHTML name="ItemData54860-56806" file="Interface\AddOns\QuestieDB\Database\Item\Wotlk\_data\54860-56806.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="ItemData54860-211207" file="Interface\AddOns\QuestieDB\Database\Item\Wotlk\_data\54860-211207.html" virtual="true" font="GameFontNormal"/>
 </Ui>

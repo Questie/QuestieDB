@@ -499,7 +499,7 @@
 <SimpleHTML name="ItemData35411-35460" file="Interface\AddOns\QuestieDB\Database\Item\Tbc\_data\35411-35460.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="ItemData35461-35581" file="Interface\AddOns\QuestieDB\Database\Item\Tbc\_data\35461-35581.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="ItemData35582-35828" file="Interface\AddOns\QuestieDB\Database\Item\Tbc\_data\35582-35828.html" virtual="true" font="GameFontNormal"/>
-<SimpleHTML name="ItemData35906-38090" file="Interface\AddOns\QuestieDB\Database\Item\Tbc\_data\35906-38090.html" virtual="true" font="GameFontNormal"/>
-<SimpleHTML name="ItemData38091-38549" file="Interface\AddOns\QuestieDB\Database\Item\Tbc\_data\38091-38549.html" virtual="true" font="GameFontNormal"/>
-<SimpleHTML name="ItemData38550-39656" file="Interface\AddOns\QuestieDB\Database\Item\Tbc\_data\38550-39656.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="ItemData35906-38082" file="Interface\AddOns\QuestieDB\Database\Item\Tbc\_data\35906-38082.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="ItemData38089-38547" file="Interface\AddOns\QuestieDB\Database\Item\Tbc\_data\38089-38547.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="ItemData38548-39656" file="Interface\AddOns\QuestieDB\Database\Item\Tbc\_data\38548-39656.html" virtual="true" font="GameFontNormal"/>
 </Ui>
