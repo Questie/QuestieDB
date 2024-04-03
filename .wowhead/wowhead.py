@@ -92,7 +92,7 @@ def getUrl(idType, id, dataEnv, locale):
 
 def cacheResponse(response, idType, id, version, locale):
   try:
-    if not os.path.exists(f".cache/{version}/{idType}"):
+    if not os.path.exists(f".cache/{version.lower()}/{idType}"):
       os.mkdir(f".cache/{version.lower()}/{idType}")
     with open(f".cache/{version.lower()}/{idType}/{id}_{locale}.json", "w", encoding="utf-8") as f:
       f.write(response.text)
@@ -103,6 +103,10 @@ def cacheResponse(response, idType, id, version, locale):
 # Function to fetch data for a given game entity
 def getData(idType, id, version, locale="enUS", useCache=True):
   data = {}
+  if not os.path.exists(".cache"):
+    os.mkdir(".cache")
+  if not os.path.exists(f".cache/{version.lower()}"):
+    os.mkdir(f".cache/{version.lower()}")
   if locale == "all":
     # If the locale is "all", fetch data for all locales
     for locale in localeLookup:
