@@ -4,6 +4,7 @@ local argparse = require("argparse")
 
 -- Used to print extra information and the like when generating the database
 local cli_debug = false
+Is_CLI = true
 
 ---@type LibQuestieDB
 LibQuestieDBTable = {}
@@ -187,11 +188,10 @@ local function loadFile(filepath)
   local filetext = filedata:read("*all")
   filetext = filetext:gsub("select%(2, %.%.%.%)", "LibQuestieDBTable")
   local pcallResult, errorMessage
-  -- local chunck = loadfile(filepath)
-  -- print(filetext)
-  local chunck = loadstring(filetext)
-  if chunck then
-    pcallResult, errorMessage = pcall(chunck, addonName, addonTable)
+
+  local chunk = loadstring(filetext, filepath)
+  if chunk then
+    pcallResult, errorMessage = pcall(chunk, addonName, addonTable)
   end
   if pcallResult then
     --print("Loaded " .. filepath)
@@ -254,7 +254,7 @@ local function dumpData(tbl, dataKeys, dumpFunctions, combineFunc)
   end
 
   local allResults = { "{\n", }
-  for sortKeyIndex=1, #sortedKeys do
+  for sortKeyIndex = 1, #sortedKeys do
     local sortKey = sortedKeys[sortKeyIndex]
 
     -- print(sortKey)
@@ -370,7 +370,7 @@ local initByVersion = {
     WOW_PROJECT_ID = 11
 
     loadTOC("QuestieDB-WOTLKC.toc")
-  end
+  end,
 }
 
 local function DumpDatabase(version)
@@ -394,7 +394,7 @@ local function DumpDatabase(version)
   Corrections.DumpFunctions.testDumpFunctions()
 
   do
-    loadFile(f(".generate_database/_data/%s/%sItemDB.lua", capitalizedVersion, lowerVersion))
+    loadFile(f(".generate_database/_data/%sItemDB.lua", lowerVersion))
     itemOverride = loadstring(QuestieDB.itemData)()
     LibQuestieDBTable.Item.LoadOverrideData(false, true)
     local itemMeta = Corrections.ItemMeta
@@ -410,7 +410,7 @@ local function DumpDatabase(version)
   end
 
   do
-    loadFile(f(".generate_database/_data/%s/%sNpcDB.lua", capitalizedVersion, lowerVersion))
+    loadFile(f(".generate_database/_data/%sNpcDB.lua", lowerVersion))
     npcOverride = loadstring(QuestieDB.npcData)()
     LibQuestieDBTable.Npc.LoadOverrideData(false, true)
     local npcMeta = Corrections.NpcMeta
@@ -426,7 +426,7 @@ local function DumpDatabase(version)
   end
 
   do
-    loadFile(f(".generate_database/_data/%s/%sObjectDB.lua", capitalizedVersion, lowerVersion))
+    loadFile(f(".generate_database/_data/%sObjectDB.lua", lowerVersion))
     objectOverride = loadstring(QuestieDB.objectData)()
     LibQuestieDBTable.Object.LoadOverrideData(false, true)
     local objectMeta = Corrections.ObjectMeta
@@ -442,7 +442,7 @@ local function DumpDatabase(version)
   end
 
   do
-    loadFile(f(".generate_database/_data/%s/%sQuestDB.lua", capitalizedVersion, lowerVersion))
+    loadFile(f(".generate_database/_data/%sQuestDB.lua", lowerVersion))
     questOverride = loadstring(QuestieDB.questData)()
     LibQuestieDBTable.Quest.LoadOverrideData(false, true)
     local questMeta = Corrections.QuestMeta
@@ -459,7 +459,7 @@ local function DumpDatabase(version)
 
   -- Write all the overrides to disk
   ---@diagnostic disable-next-line: param-type-mismatch
-  local file = io.open(f(".generate_database/_data/%s/ItemData.lua-table", capitalizedVersion), "w")
+  local file = io.open(f(".generate_database/_data/output/Item/%s/ItemData.lua-table", capitalizedVersion), "w")
   print("Dumping item overrides")
   local itemData = dumpData(itemOverride, Corrections.ItemMeta.itemKeys, Corrections.ItemMeta.dumpFuncs, Corrections.ItemMeta.combine)
   ---@diagnostic disable-next-line: undefined-field
@@ -468,7 +468,7 @@ local function DumpDatabase(version)
   file:close()
 
   ---@diagnostic disable-next-line: param-type-mismatch
-  file = io.open(f(".generate_database/_data/%s/QuestData.lua-table", capitalizedVersion), "w")
+  file = io.open(f(".generate_database/_data/output/Quest/%s/QuestData.lua-table", capitalizedVersion), "w")
   print("Dumping quest overrides")
   local questData = dumpData(questOverride, Corrections.QuestMeta.questKeys, Corrections.QuestMeta.dumpFuncs)
   ---@diagnostic disable-next-line: undefined-field
@@ -477,7 +477,7 @@ local function DumpDatabase(version)
   file:close()
 
   ---@diagnostic disable-next-line: param-type-mismatch
-  file = io.open(f(".generate_database/_data/%s/NpcData.lua-table", capitalizedVersion), "w")
+  file = io.open(f(".generate_database/_data/output/Npc/%s/NpcData.lua-table", capitalizedVersion), "w")
   print("Dumping npc overrides")
   local npcData = dumpData(npcOverride, Corrections.NpcMeta.npcKeys, Corrections.NpcMeta.dumpFuncs, Corrections.NpcMeta.combine)
   ---@diagnostic disable-next-line: undefined-field
@@ -486,7 +486,7 @@ local function DumpDatabase(version)
   file:close()
 
   ---@diagnostic disable-next-line: param-type-mismatch
-  file = io.open(f(".generate_database/_data/%s/ObjectData.lua-table", capitalizedVersion), "w")
+  file = io.open(f(".generate_database/_data/output/Object/%s/ObjectData.lua-table", capitalizedVersion), "w")
   print("Dumping object overrides")
   local objectData = dumpData(objectOverride, Corrections.ObjectMeta.objectKeys, Corrections.ObjectMeta.dumpFuncs)
   ---@diagnostic disable-next-line: undefined-field

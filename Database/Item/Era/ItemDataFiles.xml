@@ -298,5 +298,5 @@
 <SimpleHTML name="ItemData23062-23183" file="Interface\AddOns\QuestieDB\Database\Item\Era\_data\23062-23183.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="ItemData23184-23281" file="Interface\AddOns\QuestieDB\Database\Item\Era\_data\23184-23281.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="ItemData23282-23452" file="Interface\AddOns\QuestieDB\Database\Item\Era\_data\23282-23452.html" virtual="true" font="GameFontNormal"/>
-<SimpleHTML name="ItemData23453-25818" file="Interface\AddOns\QuestieDB\Database\Item\Era\_data\23453-25818.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="ItemData23453-190309" file="Interface\AddOns\QuestieDB\Database\Item\Era\_data\23453-190309.html" virtual="true" font="GameFontNormal"/>
 </Ui>

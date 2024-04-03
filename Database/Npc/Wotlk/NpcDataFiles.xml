@@ -593,5 +593,5 @@
 <SimpleHTML name="NpcData40098-40217" file="Interface\AddOns\QuestieDB\Database\Npc\Wotlk\_data\40098-40217.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="NpcData40218-40426" file="Interface\AddOns\QuestieDB\Database\Npc\Wotlk\_data\40218-40426.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="NpcData40428-43281" file="Interface\AddOns\QuestieDB\Database\Npc\Wotlk\_data\40428-43281.html" virtual="true" font="GameFontNormal"/>
-<SimpleHTML name="NpcData43282-43282" file="Interface\AddOns\QuestieDB\Database\Npc\Wotlk\_data\43282-43282.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="NpcData43282-211340" file="Interface\AddOns\QuestieDB\Database\Npc\Wotlk\_data\43282-211340.html" virtual="true" font="GameFontNormal"/>
 </Ui>
