@@ -133,5 +133,6 @@
 <SimpleHTML name="ObjectData185571-186240" file="Interface\AddOns\QuestieDB\Database\Object\Era\_data\185571-186240.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="ObjectData186243-186748" file="Interface\AddOns\QuestieDB\Database\Object\Era\_data\186243-186748.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="ObjectData186750-210334" file="Interface\AddOns\QuestieDB\Database\Object\Era\_data\186750-210334.html" virtual="true" font="GameFontNormal"/>
-<SimpleHTML name="ObjectData210335-300142" file="Interface\AddOns\QuestieDB\Database\Object\Era\_data\210335-300142.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="ObjectData210335-400062" file="Interface\AddOns\QuestieDB\Database\Object\Era\_data\210335-400062.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="ObjectData400063-500006" file="Interface\AddOns\QuestieDB\Database\Object\Era\_data\400063-500006.html" virtual="true" font="GameFontNormal"/>
 </Ui>

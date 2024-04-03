@@ -131,5 +131,7 @@
 <SimpleHTML name="QuestData11731-11781" file="Interface\AddOns\QuestieDB\Database\Quest\Tbc\_data\11731-11781.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="QuestData11782-11842" file="Interface\AddOns\QuestieDB\Database\Quest\Tbc\_data\11782-11842.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="QuestData11843-11970" file="Interface\AddOns\QuestieDB\Database\Quest\Tbc\_data\11843-11970.html" virtual="true" font="GameFontNormal"/>
-<SimpleHTML name="QuestData11971-12515" file="Interface\AddOns\QuestieDB\Database\Quest\Tbc\_data\11971-12515.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="QuestData11971-12360" file="Interface\AddOns\QuestieDB\Database\Quest\Tbc\_data\11971-12360.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="QuestData12361-12491" file="Interface\AddOns\QuestieDB\Database\Quest\Tbc\_data\12361-12491.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="QuestData12492-64845" file="Interface\AddOns\QuestieDB\Database\Quest\Tbc\_data\12492-64845.html" virtual="true" font="GameFontNormal"/>
 </Ui>

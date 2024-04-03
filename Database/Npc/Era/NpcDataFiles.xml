@@ -203,5 +203,5 @@
 <SimpleHTML name="NpcData16419-16513" file="Interface\AddOns\QuestieDB\Database\Npc\Era\_data\16419-16513.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="NpcData16531-16995" file="Interface\AddOns\QuestieDB\Database\Npc\Era\_data\16531-16995.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="NpcData16998-17690" file="Interface\AddOns\QuestieDB\Database\Npc\Era\_data\16998-17690.html" virtual="true" font="GameFontNormal"/>
-<SimpleHTML name="NpcData17691-18199" file="Interface\AddOns\QuestieDB\Database\Npc\Era\_data\17691-18199.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="NpcData17691-185335" file="Interface\AddOns\QuestieDB\Database\Npc\Era\_data\17691-185335.html" virtual="true" font="GameFontNormal"/>
 </Ui>
