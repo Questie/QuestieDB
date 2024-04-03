@@ -26,6 +26,7 @@ function DumpFunctions.tblMaxIndex(tbl)
   end
   return math.max(maxPairsIndex, #tbl)
 end
+
 local tblMaxIndex = DumpFunctions.tblMaxIndex
 
 function DumpFunctions.tblCount(tbl)
@@ -35,6 +36,7 @@ function DumpFunctions.tblCount(tbl)
   end
   return count
 end
+
 local tblCount = DumpFunctions.tblCount
 
 ---comment
@@ -51,7 +53,7 @@ function DumpFunctions.dump(val)
     return "'" .. tostring(val) .. "'"
   elseif type(val) == "boolean" then
     return tostring(val)
-  else   -- number
+  else -- number
     return val
   end
 end
@@ -92,7 +94,10 @@ function DumpFunctions.dumpCoordiates(tbl)
     end
     result = result .. "},"
   end
-  return result .. "}"
+  result = result .. "}"
+  -- Remove all instances of },} with }}
+  result = gsub(result, "},}", "}}")
+  return result
 end
 
 -- [1950] = {
@@ -135,7 +140,7 @@ function DumpFunctions.dumpExtraObjectives(tbl)
         else
           result = result .. DumpFunctions.dumpAsArray(objective)
         end
-      else   -- number
+      else -- number
         result = result .. DumpFunctions.dump(objective)
       end
       if i < #objectiveData then
@@ -144,7 +149,10 @@ function DumpFunctions.dumpExtraObjectives(tbl)
     end
     result = result .. "},"
   end
-  return result .. "}"
+  result = result .. "}"
+  -- Remove all instances of },} with }}
+  result = gsub(result, "},}", "}}")
+  return result
 end
 
 -- Combine all values into one string 0;0;0;0;;
@@ -198,7 +206,7 @@ function DumpFunctions.combine(tbl, combineValues, tblTypes)
   result = gsub(result, "'", "")
 
   -- Replace with the combined value
-  tbl[combineIndex] = '"' .. result .. '"'
+  tbl[combineIndex] = "'" .. result .. "'"
 
   -- Remove the indexes that were combined, they are not in order so we need to remove the highest index first
   tSort(sortedKeys, function(a, b) return a > b end)
@@ -237,19 +245,19 @@ function DumpFunctions.testDumpFunctions()
     },
     {
       DumpFunctions.dumpCoordiates({ [1335] = { { 36.43, 55.89, }, { 31.43, 57.03, }, }, [1] = { { 1, 2, }, }, }),
-      "{[1335]={{36.43,55.89},{31.43,57.03}},[1]={{1,2}},}",
+      "{[1335]={{36.43,55.89},{31.43,57.03}},[1]={{1,2}}}",
     },
     {
       DumpFunctions.dumpTriggerEnd({ "Secret phrase found", { [1336] = { { 79.56, 75.65, }, }, }, }),
-      "{'Secret phrase found',{[1336]={{79.56,75.65}},}}",
+      "{'Secret phrase found',{[1336]={{79.56,75.65}}}}",
     },
     {
       DumpFunctions.dumpExtraObjectives({ { { [1337] = { { 35.71, 44.68, }, }, }, "ICON_TYPE_EVENT", "Fish for Darkshore Groupers", }, }),
-      "{{{[1337]={{35.71,44.68}},},'ICON_TYPE_EVENT','Fish for Darkshore Groupers'},}",
+      "{{{[1337]={{35.71,44.68}}},'ICON_TYPE_EVENT','Fish for Darkshore Groupers'}}",
     },
     {
       DumpFunctions.dumpExtraObjectives({ { nil, "ICON_TYPE_OBJECT", "Use a Fresh Carcass at the Flame of Uzel", 0, { { "object", 1770, }, }, }, }),
-      "{{nil,'ICON_TYPE_OBJECT','Use a Fresh Carcass at the Flame of Uzel',0,{{'object',1770}}},}",
+      "{{nil,'ICON_TYPE_OBJECT','Use a Fresh Carcass at the Flame of Uzel',0,{{'object',1770}}}}",
     },
   }
   local allTestsPassed = true
