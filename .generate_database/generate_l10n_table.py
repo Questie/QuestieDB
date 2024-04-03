@@ -1,14 +1,13 @@
 # A script that reads classic_locales.json and generates a table of locale
 # information for use in the localization system.
 import json
-from dataclasses import dataclass
 import os
-import sys
 import re
 from helpers import get_data_dir_path
 
 # ! The order of these are very important and has to match the order in the
 # ! reading l10n code (Database\l10n\l10n.lua: indexToLocale)
+# supportedLocales = ["ptBR", "ruRU", "deDE", "koKR", "esES", "frFR", "zhCN"]
 supportedLocales = ["enUS", "ptBR", "ruRU", "deDE", "koKR", "esES", "frFR", "zhCN"]
 
 # ! Same is true for the order of these
@@ -116,6 +115,10 @@ def process(locale_file, version):
         print("/run in", locale, dataid, data)
       index += 1
 
+  # Used to check if the data is empty
+  # -1 because first and last entry isn't wrapped in ‡
+  empty_value = "‡" * (len(supportedLocales) - 1)
+
   # print(LocaleData)
   print("Writing to file", fileoutput)
   with open(fileoutput, "w", encoding="utf-8") as f:
@@ -142,7 +145,7 @@ def process(locale_file, version):
           AllSubnames.append(npc[1])
         f.write(indentation + "{ -- Npc\n")
         f.write((indentation * 2) + "'" + "‡".join(AllNames) + "',\n")
-        if "‡".join(AllSubnames) == "‡‡‡‡‡‡‡":
+        if "‡".join(AllSubnames) == empty_value:
           f.write((indentation * 2) + "nil,\n")
         else:
           f.write("    '" + "‡".join(AllSubnames) + "',\n")
@@ -173,13 +176,13 @@ def process(locale_file, version):
         f.write((indentation * 2) + "'" + "‡".join(AllTitles) + "',\n")
 
         # ? Progress/Description
-        if "‡".join(AllDescriptions) == "‡‡‡‡‡‡‡":
+        if "‡".join(AllDescriptions) == empty_value:
           f.write((indentation * 2) + "nil,\n")
         else:
           f.write((indentation * 2) + "'" + "‡".join(AllDescriptions) + "',\n")
 
         # ? Quest Text
-        if "‡".join(AllTexts) == "‡‡‡‡‡‡‡":
+        if "‡".join(AllTexts) == empty_value:
           f.write((indentation * 2) + "nil,\n")
         else:
           f.write((indentation * 2) + "'" + "‡".join(AllTexts) + "',\n")
