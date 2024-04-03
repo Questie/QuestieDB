@@ -17,7 +17,7 @@ function LibQuestieDB.EventRegistrator()
   end
 
   -- Create the event frame and register the OnEvent handler
-  local eventFrame = CreateFrame("Frame")
+  local eventFrame = Database.CreateFrame("Frame")
   eventFrame:SetScript("OnEvent", OnEvent)
 
   ---@type table<string, function>

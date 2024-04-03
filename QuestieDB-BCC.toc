@@ -34,6 +34,7 @@ Database\l10n\Tbc\L10nDataFiles.xml
 Corrections\MetaCorrections.xml
 
 ##* Main
+Database\Database.layer.lua
 Database\Database.lua
 Database\Base\Base.xml
 
