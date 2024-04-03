@@ -1,0 +1,4 @@
+<Ui>
+  <Script file="Quest.lua"/>
+  <Script file="Quest.test.lua"/>
+</Ui>

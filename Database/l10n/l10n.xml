@@ -1,0 +1,4 @@
+<Ui>
+  <Script file="l10n.lua"/>
+  <Script file="l10n.test.lua"/>
+</Ui>

@@ -1,0 +1,4 @@
+<Ui>
+  <Script file="Npc.lua"/>
+  <Script file="Npc.test.lua"/>
+</Ui>
