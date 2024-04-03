@@ -8,6 +8,7 @@
     "**/.cache",
     "**/_data/**",
     ".llm-output",
+    ".build",
   ],
 
   "files.exclude": {
@@ -27,6 +28,7 @@
     "**/*.code-search": true,
     "**/.html":true,
     ".llm-output":true,
+    ".build":true,
   },
 
   "[lua]": {
