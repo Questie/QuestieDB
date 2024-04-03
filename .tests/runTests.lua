@@ -270,11 +270,10 @@ local function loadFile(filepath)
   local filetext = filedata:read("*all")
   filetext = filetext:gsub("select%(2, %.%.%.%)", "LibQuestieDBTable")
   local pcallResult, errorMessage
-  -- local chunck = loadfile(filepath)
-  -- print(filetext)
-  local chunck = loadstring(filetext)
-  if chunck then
-    pcallResult, errorMessage = pcall(chunck, addonName, addonTable)
+
+  local chunk = loadstring(filetext, filepath)
+  if chunk then
+    pcallResult, errorMessage = pcall(chunk, addonName, addonTable)
   end
   if pcallResult then
     --print("Loaded " .. filepath)
