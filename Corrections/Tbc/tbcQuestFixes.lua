@@ -53,6 +53,7 @@ function QuestFixes:Load()
   local questFlags = QuestMeta.questFlags
   local ICON_TYPE_EVENT = Questie and Questie.ICON_TYPE_EVENT or "ICON_TYPE_EVENT"
   local ICON_TYPE_OBJECT = Questie and Questie.ICON_TYPE_OBJECT or "ICON_TYPE_OBJECT"
+  local ICON_TYPE_LOOT = Questie and Questie.ICON_TYPE_LOOT or "ICON_TYPE_LOOT"
   local ICON_TYPE_SLAY = Questie and Questie.ICON_TYPE_SLAY or "ICON_TYPE_SLAY"
   local ICON_TYPE_TALK = Questie and Questie.ICON_TYPE_TALK or "ICON_TYPE_TALK"
 
