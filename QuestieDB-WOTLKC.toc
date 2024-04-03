@@ -56,7 +56,7 @@ Database\Quest\Quest.xml
 ### Corrections - Tbc
 # Corrections\Tbc\TbcCorrections.xml
 ### Corrections - Wotlk
-# Corrections\Wotlk\WotlkCorrections.xml
+Corrections\Wotlk\WotlkCorrections.xml
 
 # Standalone
 QuestieDB.lua
