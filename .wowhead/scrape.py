@@ -123,6 +123,9 @@ def getQuestSections(locale, data, id, idType="quest"):
   # Find the div with class "text"
   text_div = soup.find("div", class_="text")
 
+  regex_space = re.compile(r" +")
+  regex_run = re.compile(r"        [\s\S]+?\/run[\s\S]+?$")
+
   sections = {}
   # Check if the div was found
   if text_div:
@@ -186,8 +189,29 @@ def getQuestSections(locale, data, id, idType="quest"):
         sections[section_title] = " ".join(current_content)
 
     for section_title, section_content in sections.items():
+      changed = False
+      if "/run" in section_content:
+        if section_title == "Text":
+          print(f"Section: {section_title}")
+          print(f"\nContent:\n{section_content}\n")
+        section_content = re.sub(regex_run, "", section_content)
+        if section_title == "Text":
+          print(f"\nFixed Content:\n'''{section_content}'''\n")
+        changed = True
+
       # Remove double spaces
-      section_content = re.sub(r"\s+", " ", section_content)
+      if "  " in section_content:
+        # section_content = re.sub(r"\s+", " ", section_content)
+        section_content = re.sub(regex_space, " ", section_content)
+        changed = True
+
+      if changed:
+        # Remove leading and trailing whitespace
+        section_content = section_content.strip()
+        # Set the content
+        sections[section_title] = section_content
+
+      # Fix parts which contain how to check for completed quests
       # print(f"Section: {section_title}\nContent:\n{section_content}\n")
       # print(section_title)
       # continue
@@ -198,6 +222,7 @@ def getQuestSections(locale, data, id, idType="quest"):
 
 
 def fetch_worker(version, idData):
+  tries = {}
   while not fetch_queue.empty():
     idType, id = fetch_queue.get()
     try:
@@ -207,6 +232,8 @@ def fetch_worker(version, idData):
       # Get data
       start_time = time.time()
       data = getData(idType, id, version, "all")
+      fetch_time = time.time() - start_time
+      start_time = time.time()
 
       # If data is None, continue to the next item in the queue
       if data is None:
@@ -247,11 +274,18 @@ def fetch_worker(version, idData):
         for locale, localeData in data.items():
           data = json.loads(localeData)
           idData[idType][id][locale] = data
-      print(f"{str(idType).capitalize()} {id} took {(time.time() - start_time):.2f} seconds")
+      print(f"{str(idType).capitalize()} {id} took processing: {(time.time() - start_time):.2f}s, fetch: {fetch_time:.2f}s, total: {fetch_time + (time.time() - start_time):.2f}s")
 
     except Exception as e:
       print(f"Exception: {e} for {idType} {id}, requeueing...")
-      fetch_queue.put((idType, id))
+      if idType not in tries:
+        tries[idType] = {}
+      if id not in tries[idType]:
+        tries[idType][id] = 1
+      else:
+        tries[idType][id] += 1
+      if tries[idType][id] < 10:
+        fetch_queue.put((idType, id))
     finally:
       fetch_queue.task_done()
 
