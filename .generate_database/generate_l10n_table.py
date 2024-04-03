@@ -7,6 +7,14 @@ import sys
 import re
 from helpers import get_data_dir_path
 
+# ! The order of these are very important and has to match the order in the
+# ! reading l10n code (Database\l10n\l10n.lua: indexToLocale)
+supportedLocales = ["enUS", "ptBR", "ruRU", "deDE", "koKR", "esES", "frFR", "zhCN"]
+
+# ! Same is true for the order of these
+supportedDataTypes = ["item", "npc", "object", "quest"]
+
+supported_versions = ["era", "tbc", "wotlk"]
 
 # Order Item, Npc, Object, Quest
 # "enUS": "", # English (US) # Yes EN is empty
@@ -21,22 +29,19 @@ from helpers import get_data_dir_path
 # Double Dagger
 # "‡"
 
-if __name__ == "__main__":
-  # if len(sys.argv) != 2:
-  #   print("Usage: python generate_l10n_table.py <path to classic_locales.json>")
-  #   sys.exit(1)
 
-  fileoutput = get_data_dir_path("l10n", "era") + "/l10nData.lua-table"
+def process(locale_file, version):
+  directory_path = get_data_dir_path("l10n", version.capitalize())
+  if not os.path.exists(directory_path):
+    os.makedirs(directory_path)
+  fileoutput = directory_path + "/l10nData.lua-table"
 
-  # ! The order of these are very important and has to match the order in the
-  # ! reading l10n code (Database\l10n\l10n.lua: indexToLocale)
-  supportedLocales = ["enUS", "ptBR", "ruRU", "deDE", "koKR", "esES", "frFR", "zhCN"]
-  # ! Same is true for the order of these
-  supportedDataTypes = ["item", "npc", "object", "quest"]
+  print("Generating l10n table for", version, "in", fileoutput)
+  print("Reading", locale_file)
 
-  with open("./classic_locales.json", "r", encoding="utf-8") as f:
+  with open(locale_file, "r", encoding="utf-8") as f:
     locales = json.load(f)
-  print(len(locales))
+  print("Json loaded")
 
   LocaleData = {}
   for datatype, data in locales.items():
@@ -97,6 +102,19 @@ if __name__ == "__main__":
             LocaleData[dataid][datatype][i][1].replace("'", "\\'"),
             LocaleData[dataid][datatype][i][2].replace("'", "\\'"),
           )
+
+  # Sanity check the data for newlines and "/run"
+  for dataid in LocaleData.keys():
+    if "quest" not in LocaleData[dataid]:
+      continue
+    index = 0
+    for locale in supportedLocales:
+      data = LocaleData[dataid]["quest"][index]
+      # if "\n" in data[0] or "\n" in data[1] or "\n" in data[2]:
+      #   print("Newline in", dataid, data)
+      if "/run" in data[0] or "/run" in data[1] or "/run" in data[2]:
+        print("/run in", locale, dataid, data)
+      index += 1
 
   # print(LocaleData)
   print("Writing to file", fileoutput)
@@ -171,3 +189,16 @@ if __name__ == "__main__":
       f.write("},\n")
 
     f.write("}\n")
+
+
+if __name__ == "__main__":
+  # if len(sys.argv) != 2:
+  #   print("Usage: python generate_l10n_table.py <path to classic_locales.json>")
+  #   sys.exit(1)
+  for version in supported_versions:
+    if version == "era":
+      process("./classic_locales.json", version)
+    elif version == "tbc":
+      process("./tbc_locales.json", version)
+    elif version == "wotlk":
+      process("./wotlk_locales.json", version)
