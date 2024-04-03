@@ -6,6 +6,9 @@ import os
 import shutil
 
 
+base_build_dir = "./.build"
+
+
 def copy_files(src, dest):
   files_copied = 0
   for root, dirs, files in os.walk("."):
@@ -60,7 +63,10 @@ def get_version_from_toc():
 
 
 def main():
-  build_dir = "./.build/QuestieDB." + get_version_from_toc()
+  if not os.path.exists(base_build_dir):
+    os.mkdir(base_build_dir)
+
+  build_dir = f"{base_build_dir}/QuestieDB." + get_version_from_toc()
   if not os.path.exists(build_dir):
     os.mkdir(build_dir)
   print("Copying files to build directory...")
