@@ -39,6 +39,15 @@ function LibQuestieDB.EventRegistrator()
   })
 end
 
+--- Return a string with the first letter capitalized
+---@param str string
+---@return string
+function LibQuestieDB.Capitalized(str)
+  local lower = str:lower()
+  local capitalized = lower:gsub("^%l", string.upper)
+  return capitalized
+end
+
 --- Creates a read-only table that throws an error when trying to modify it
 ---@return table
 function LibQuestieDB.CreateReadOnlyEmptyTable()
