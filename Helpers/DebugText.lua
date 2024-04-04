@@ -10,10 +10,14 @@ local debugTextString
 local floor = math.floor
 local tostring, Round, select = tostring, Round, select
 
+---@alias Namespace string
+---@alias TextKey string
+
+---@type table<Namespace, DebugTextReturn>
 local debugTable = {}
 
 local function writeDebug()
-  if LibQuestieDB.Database and not LibQuestieDB.Database.debugEnabled and debugTextString then
+  if LibQuestieDB.Database and (not Database.debugEnabled) and debugTextString then
     if debugTextString:IsShown() then
       debugTextString:SetVertexColor(1, 1, 1, 0)
       debugTextString:SetText("")
@@ -32,36 +36,42 @@ local function writeDebug()
     debugTextString:SetWordWrap(true)
     debugTextString:SetVertexColor(1, 1, 1, 1) --Set opacity to 0, even if it is shown it should be invisible
     ---@diagnostic disable-next-line: param-type-mismatch
-    debugTextString:SetFont(debugTextString:GetFont(), 16, "OUTLINE")
+    debugTextString:SetFont(debugTextString:GetFont(), 14, "OUTLINE")
   end
   debugTextString:SetText("")
   for namespace, data in pairs(debugTable) do
     local text = ""
     text = namespace .. ":\n"
-    for key, value in pairs(data) do
-      text = text .. key .. ": " .. value .. "\n"
-    end
+    text = text .. data:GetText()
     debugTextString:SetText((debugTextString:GetText() or "") .. text .. "\n")
   end
 end
 C_Timer.NewTicker(0.5, writeDebug)
 
 
+--- Create a new DebugText object for a given namespace
+---@param namespace Namespace
+---@return DebugTextReturn
 function DebugText:Get(namespace)
   assert(namespace, "DebugText:Get: namespace is nil")
   assert(type(namespace) == "string", "DebugText:Get: namespace is not a string")
 
-  local debugText = {}
-  debugText.namespace = namespace
-  debugText.debugTable = {}
+  ---@class DebugTextReturn
+  local debugTextObj = {}
+  debugTextObj.namespace = namespace
+  ---@type table<TextKey, string>
+  debugTextObj.debugTable = {}
+
+  local orderIndex = 1
+  local TextkeyToOrder = {}
 
 
-  debugTable[namespace] = debugText.debugTable
+  debugTable[namespace] = debugTextObj
 
   ---comment
-  ---@param textKey string
+  ---@param textKey TextKey
   ---@param ... unknown
-  function debugText:Print(textKey, ...)
+  function debugTextObj:Print(textKey, ...)
     local text = ""
     for i = 1, select("#", ...) do
       local processedValue = select(i, ...)
@@ -72,8 +82,19 @@ function DebugText:Get(namespace)
       end
       text = text .. tostring(processedValue) .. " "
     end
-    debugText.debugTable[textKey] = text
+    debugTextObj.debugTable[textKey] = text
+    TextkeyToOrder[textKey] = orderIndex
+    orderIndex = orderIndex + 1
   end
 
-  return debugText
+  function debugTextObj:GetText()
+    local text = {}
+    for key, value in pairs(debugTextObj.debugTable) do
+      -- text = text .. key .. ": " .. value .. "\n"
+      text[TextkeyToOrder[key]] = key .. ": " .. value
+    end
+    return table.concat(text, "\n")
+  end
+
+  return debugTextObj
 end
