@@ -1,4 +1,5 @@
 <Ui>
+  <Script file="static/wotlkItemQuestStartFixes.lua"/>
   <Script file="wotlkItemFixes.lua"/>
   <Script file="wotlkNPCFixes.lua"/>
   <Script file="wotlkObjectFixes.lua"/>

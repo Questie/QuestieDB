@@ -1,4 +1,5 @@
 <Ui>
+  <Script file="static/tbcItemQuestStartFixes.lua"/>
   <Script file="tbcItemFixes.lua"/>
   <Script file="tbcNPCFixes.lua"/>
   <Script file="tbcObjectFixes.lua"/>

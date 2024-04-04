@@ -11,12 +11,12 @@ local ObjectFixes = {}
 
 C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("object",
-                                       "ObjectFixesEra",
+                                       "ObjectFixes-Era",
                                        ObjectFixes.Load,
                                        10)
 
   Corrections.RegisterCorrectionDynamic("object",
-                                        "ObjectFixesFactionEra",
+                                        "ObjectFixes-Faction-Era",
                                         ObjectFixes.LoadFactionFixes,
                                         20)
 

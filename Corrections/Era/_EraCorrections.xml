@@ -1,4 +1,6 @@
 <Ui>
+  <Script file="static/classicItemQuestStartFixes.lua"/>
+  <Script file="static/questReputationFixes.lua"/>
   <Script file="classicItemFixes.lua"/>
   <Script file="classicNPCFixes.lua"/>
   <Script file="classicObjectFixes.lua"/>

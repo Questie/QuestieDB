@@ -52,11 +52,11 @@ Database\Quest\Quest.xml
 
 ##* Corrections
 ### Corrections - Era
-Corrections\Era\EraCorrections.xml
+Corrections\Era\_EraCorrections.xml
 ### Corrections - Tbc
-Corrections\Tbc\TbcCorrections.xml
+Corrections\Tbc\_TbcCorrections.xml
 ### Corrections - Wotlk
-# Corrections\Wotlk\WotlkCorrections.xml
+# Corrections\Wotlk\_WotlkCorrections.xml
 
 # Standalone
 QuestieDB.lua

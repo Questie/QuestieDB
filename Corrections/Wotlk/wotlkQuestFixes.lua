@@ -18,7 +18,7 @@ end
 
 C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("quest",
-                                       "QuestFixesWotlk",
+                                       "QuestFixes-Wotlk",
                                        QuestFixes.Load,
                                        50)
 
