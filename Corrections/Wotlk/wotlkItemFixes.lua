@@ -12,11 +12,13 @@ local ItemFixes = {}
 C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("item",
                                        "ItemFixesWotlk",
-                                       ItemFixes.Load)
+                                       ItemFixes.Load,
+                                       50)
 
   Corrections.RegisterCorrectionDynamic("item",
                                         "ItemFixesFactionWotlk",
-                                        ItemFixes.LoadFactionFixes)
+                                        ItemFixes.LoadFactionFixes,
+                                        60)
 
   -- Clear the table to save memory
   ItemFixes = wipe(ItemFixes)

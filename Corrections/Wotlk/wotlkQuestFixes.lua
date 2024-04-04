@@ -19,7 +19,8 @@ end
 C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("quest",
                                        "QuestFixesWotlk",
-                                       QuestFixes.Load)
+                                       QuestFixes.Load,
+                                       50)
 
   -- Clear the table to save memory
   QuestFixes = wipe(QuestFixes)
@@ -7064,6 +7065,7 @@ function QuestFixes:Load()
   }
 end
 
+-- TODO: Fix this missing questids
 -- function _QuestieWotlkQuestFixes:InsertMissingQuestIds()
 --   -- Alliance boosted quests
 --   QuestieDB.questData[70395] = {}   -- A New Beginning

@@ -13,11 +13,13 @@ local NpcFixes = {}
 C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("npc",
                                        "NpcFixesEra",
-                                       NpcFixes.Load)
+                                       NpcFixes.Load,
+                                       10)
 
   Corrections.RegisterCorrectionDynamic("npc",
                                         "NpcFixesFactionEra",
-                                        NpcFixes.LoadFactionFixes)
+                                        NpcFixes.LoadFactionFixes,
+                                        20)
 
   -- Clear the table to save memory
   NpcFixes = wipe(NpcFixes)
