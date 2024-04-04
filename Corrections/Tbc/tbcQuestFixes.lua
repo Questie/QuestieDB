@@ -18,12 +18,12 @@ end
 
 C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("quest",
-                                       "QuestFixesTbc",
+                                       "QuestFixes-Tbc",
                                        QuestFixes.Load,
                                        30)
 
   Corrections.RegisterCorrectionDynamic("quest",
-                                        "QuestFixesFactionTbc",
+                                        "QuestFixes-Faction-Tbc",
                                         QuestFixes.LoadFactionFixes,
                                         40)
 

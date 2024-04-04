@@ -121,6 +121,7 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
   -- Function to load override data into the database.
   ---@param includeDynamic boolean? @If true, include dynamic data (default true).
   ---@param includeStatic boolean? @If true, include static data (default is the value of Database.debugEnabled).
+  ---@return number totalLoaded @The total number of corrections loaded.
   function DB.LoadOverrideData(includeDynamic, includeStatic)
     -- Set default values for the parameters if they are not provided.
     if includeDynamic == nil then
@@ -179,6 +180,7 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
 
     -- Update the DB.override table with the new override data.
     DB.override = override
+    return totalLoaded
   end
 
   ---@param dataOverride table<number, any> @ The data to add to the override table i.e { [15882] = {[itemKeys.objectDrops] = { 177844 }}, }

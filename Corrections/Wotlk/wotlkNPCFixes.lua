@@ -12,17 +12,17 @@ local NpcFixes = {}
 
 C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("npc",
-                                       "NpcFixesWotlk",
+                                       "NpcFixes-Wotlk",
                                        NpcFixes.Load,
                                        51)
 
   Corrections.RegisterCorrectionStatic("npc",
-                                       "NpcFixesAutomaticsWotlk",
-                                       NpcFixes.LoadAutomatics,
+                                       "NpcFixes-Spawns-Wotlk-Automatic",
+                                       NpcFixes.LoadSpawnFixes,
                                        50)
 
   Corrections.RegisterCorrectionDynamic("npc",
-                                        "NpcFixesFactionWotlk",
+                                        "NpcFixes-FactionWotlk",
                                         NpcFixes.LoadFactionFixes,
                                         60)
 
@@ -2665,7 +2665,7 @@ function NpcFixes:Load()
 end
 
 -- This should allow manual fix for npc availability
-function NpcFixes:LoadAutomatics()
+function NpcFixes:LoadSpawnFixes()
   local npcKeys = NpcMeta.npcKeys
   local zoneIDs = ZoneMeta.zoneIDs
   local npcFlags = NpcMeta.npcFlags

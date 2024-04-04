@@ -231,7 +231,7 @@ function Database.GetNewIds(AllIdStrings, dataOverride)
     local found = sFind(allIds, "," .. id .. ",")
     if not found then
       -- Print what we found
-      if Database.debugPrintEnabled and Database.debugEnabled then
+      if not Database.debugLoadStaticEnabled and Database.debugPrintEnabled and Database.debugEnabled then
         LibQuestieDB.ColorizePrint("reputationBlue", "  Adding new ID", id)
       end
       tInsert(newIds, id)

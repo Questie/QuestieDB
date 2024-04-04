@@ -11,12 +11,12 @@ local ObjectFixes = {}
 
 C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("object",
-                                       "ObjectFixesWotlk",
+                                       "ObjectFixes-Wotlk",
                                        ObjectFixes.Load,
                                        50)
 
   Corrections.RegisterCorrectionDynamic("object",
-                                        "ObjectFixesFactionWotlk",
+                                        "ObjectFixes-Faction-Wotlk",
                                         ObjectFixes.LoadFactionFixes,
                                         60)
 

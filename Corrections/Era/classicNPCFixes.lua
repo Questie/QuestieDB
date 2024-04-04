@@ -12,12 +12,12 @@ local NpcFixes = {}
 
 C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("npc",
-                                       "NpcFixesEra",
+                                       "NpcFixes-Era",
                                        NpcFixes.Load,
                                        10)
 
   Corrections.RegisterCorrectionDynamic("npc",
-                                        "NpcFixesFactionEra",
+                                        "NpcFixes-Faction-Era",
                                         NpcFixes.LoadFactionFixes,
                                         20)
 
