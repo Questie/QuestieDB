@@ -14,8 +14,15 @@
 
 
 ------------------------------------------------------
+--- The main private namespace for QuestieDB
 ---@class LibQuestieDB
 local LibQuestieDB = select(2, ...)
+
+--! Global variable for debugging
+--! Only available when debug mode is enabled
+_GLibQuestieDB = nil
+
+
 --- Imports
 local Npc = LibQuestieDB.Npc
 local Object = LibQuestieDB.Object
@@ -36,6 +43,10 @@ do
     print("All Addons loaded")
     --- We give it 0.2 seconds to allow other code to run first
     C_Timer.After(0.2, function()
+      if Database.debugEnabled then
+        LibQuestieDB.ColorizePrint("lightBlue", "QuestieDB: Debug mode enabled")
+        _GLibQuestieDB = LibQuestieDB
+      end
       -- Starts the addon
       LibQuestieDB.Database.Init()
     end)

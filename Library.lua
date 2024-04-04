@@ -13,6 +13,7 @@
 --* The Public namespace is the one that is returned when you call LibQuestieDB()
 -- The Private namespace is the one that is used internally in the library.
 
+--- The main public namespace for QuestieDB
 ---@class QuestieDB
 ---@field public Quest QuestFunctions
 ---@field public Item ItemFunctions
