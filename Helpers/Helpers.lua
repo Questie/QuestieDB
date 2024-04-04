@@ -53,7 +53,6 @@ end
 ---@param color "red"|"gray"|"purple"|"blue"|"lightBlue"|"reputationBlue"|"yellow"|"orange"|"green"|"white"|"gold"|string
 ---@param ... string
 function LibQuestieDB.ColorizePrint(color, ...)
-  if Database.debugEnabled then
     assert(type(color) == "string", "Color must be a string")
 
     local c;
@@ -85,5 +84,4 @@ function LibQuestieDB.ColorizePrint(color, ...)
     end
 
     print(c, ...)
-  end
 end
