@@ -41,10 +41,15 @@ local tblCount = DumpFunctions.tblCount
 
 ---comment
 ---@param val any
+---@param sortSubTables boolean?
 ---@return string
-function DumpFunctions.dump(val)
+function DumpFunctions.dump(val, sortSubTables)
   if type(val) == "table" then
-    return DumpFunctions.dumpAsArray(val)
+    if not sortSubTables then
+      return DumpFunctions.dumpAsArray(val)
+    else
+      return DumpFunctions.dumpAsArraySorted(val)
+    end
   elseif type(val) == "nil" or val == nil then
     return "nil"
   elseif type(val) == "string" then
@@ -59,7 +64,7 @@ function DumpFunctions.dump(val)
 end
 
 -- Can take values such as {nil,nil,{16305}} and return with infill nils
-function DumpFunctions.dumpAsArray(tbl)
+function DumpFunctions.dumpAsArray(tbl, sortSubTables)
   local result = "{"
 
   -- Sometimes the table is nil, so we need to check for that
@@ -70,6 +75,37 @@ function DumpFunctions.dumpAsArray(tbl)
 
   -- This is a safeguard against tables that are not arrays
   local maxPairsIndex = tblMaxIndex(tbl)
+
+  for i = 1, maxPairsIndex do
+    local val = tbl[i]
+    result = result .. DumpFunctions.dump(val, sortSubTables)
+    if i < maxPairsIndex then
+      result = result .. ","
+    end
+  end
+  return result .. "}"
+end
+
+-- Can take values such as {nil,nil,SORTING->{16304, 16305}<-SORTING} and return with infill nils
+function DumpFunctions.dumpAsArraySortSubTables(tbl)
+  return DumpFunctions.dumpAsArray(tbl, true)
+end
+
+-- Can take values such as {8566,5840,5844,5846,15692,8504} and return sorted {5840,5844,5846,8504,8566,15692}
+function DumpFunctions.dumpAsArraySorted(tbl)
+  local result = "{"
+
+  -- Sometimes the table is nil, so we need to check for that
+  -- This is because we convert {} to "nil" in the database
+  if tbl == "nil" or tbl == nil then
+    return "nil"
+  end
+
+  -- This is a safeguard against tables that are not arrays
+  local maxPairsIndex = tblMaxIndex(tbl)
+  assert(maxPairsIndex == #tbl, "DumpFunctions.dumpAsArraySorted failed, Mismatching maxPairsIndex " .. maxPairsIndex .. " #tbl " .. #tbl)
+  assert(tbl[1] ~= nil, "DumpFunctions.dumpAsArraySorted failed, tbl[1] is nil")
+  table.sort(tbl)
 
   for i = 1, maxPairsIndex do
     local val = tbl[i]

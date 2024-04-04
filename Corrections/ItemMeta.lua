@@ -64,11 +64,11 @@ ItemMeta.itemClasses = {
 
 ItemMeta.dumpFuncs = {
   ['name'] = DumpFunctions.dump,
-  ['npcDrops'] = DumpFunctions.dumpAsArray,
-  ['objectDrops'] = DumpFunctions.dumpAsArray,
-  ['itemDrops'] = DumpFunctions.dumpAsArray,
+  ['npcDrops'] = DumpFunctions.dumpAsArraySorted,
+  ['objectDrops'] = DumpFunctions.dumpAsArraySorted,
+  ['itemDrops'] = DumpFunctions.dumpAsArraySorted,
   ['startQuest'] = DumpFunctions.dump,
-  ['questRewards'] = DumpFunctions.dumpAsArray,
+  ['questRewards'] = DumpFunctions.dumpAsArraySorted,
   ['flags'] = DumpFunctions.dump,
   ['foodType'] = DumpFunctions.dump,
   ['itemLevel'] = DumpFunctions.dump,
@@ -76,8 +76,8 @@ ItemMeta.dumpFuncs = {
   ['ammoType'] = DumpFunctions.dump,
   ['class'] = DumpFunctions.dump,
   ['subClass'] = DumpFunctions.dump,
-  ['vendors'] = DumpFunctions.dumpAsArray,
-  ['relatedQuests'] = DumpFunctions.dumpAsArray,
+  ['vendors'] = DumpFunctions.dumpAsArraySorted,
+  ['relatedQuests'] = DumpFunctions.dumpAsArraySorted,
   ['teachesSpell'] = DumpFunctions.dump,
 }
 
