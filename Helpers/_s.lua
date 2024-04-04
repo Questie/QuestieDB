@@ -1,7 +1,7 @@
 --! In loving memory of my cat
 --? Inoffcial member of the Questie team
 --? Here he is sleeping infront of me, his arms are crossed enjoying his blanket while I'm coding.
---? For best viewing experiance use a dark theme
+--? For best viewing experience use a dark theme
 Suddis = [[
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&##%#/((((**/#@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%(((%%%%&&&&&&&&&&%##///,,*,,,.,##*/(((&@@@@@@@@@@@@@@
