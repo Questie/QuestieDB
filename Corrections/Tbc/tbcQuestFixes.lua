@@ -19,11 +19,13 @@ end
 C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("quest",
                                        "QuestFixesTbc",
-                                       QuestFixes.Load)
+                                       QuestFixes.Load,
+                                       30)
 
   Corrections.RegisterCorrectionDynamic("quest",
                                         "QuestFixesFactionTbc",
-                                        QuestFixes.LoadFactionFixes)
+                                        QuestFixes.LoadFactionFixes,
+                                        40)
 
   -- Clear the table to save memory
   QuestFixes = wipe(QuestFixes)

@@ -52,9 +52,9 @@ Database\Quest\Quest.xml
 
 ##* Corrections
 ### Corrections - Era
-# Corrections\Era\EraCorrections.xml
+Corrections\Era\EraCorrections.xml
 ### Corrections - Tbc
-# Corrections\Tbc\TbcCorrections.xml
+Corrections\Tbc\TbcCorrections.xml
 ### Corrections - Wotlk
 Corrections\Wotlk\WotlkCorrections.xml
 

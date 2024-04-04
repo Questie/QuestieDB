@@ -13,15 +13,18 @@ local NpcFixes = {}
 C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("npc",
                                        "NpcFixesWotlk",
-                                       NpcFixes.Load)
+                                       NpcFixes.Load,
+                                       51)
 
   Corrections.RegisterCorrectionStatic("npc",
                                        "NpcFixesAutomaticsWotlk",
-                                       NpcFixes.LoadAutomatics)
+                                       NpcFixes.LoadAutomatics,
+                                       50)
 
   Corrections.RegisterCorrectionDynamic("npc",
                                         "NpcFixesFactionWotlk",
-                                        NpcFixes.LoadFactionFixes)
+                                        NpcFixes.LoadFactionFixes,
+                                        60)
 
   -- Clear the table to save memory
   NpcFixes = wipe(NpcFixes)
