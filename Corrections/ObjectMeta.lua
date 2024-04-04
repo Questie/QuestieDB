@@ -39,8 +39,8 @@ end
 -- Used for dumping the database
 ObjectMeta.dumpFuncs = {
   ['name'] = DumpFunctions.dump,
-  ['questStarts'] = DumpFunctions.dumpAsArray,
-  ['questEnds'] = DumpFunctions.dumpAsArray,
+  ['questStarts'] = DumpFunctions.dumpAsArraySorted,
+  ['questEnds'] = DumpFunctions.dumpAsArraySorted,
   ['spawns'] = DumpFunctions.dumpCoordiates,
   ['zoneID'] = DumpFunctions.dump,
   ['factionID'] = DumpFunctions.dump,
