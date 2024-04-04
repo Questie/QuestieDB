@@ -16,7 +16,25 @@ local Item = LibQuestieDB.Item
 local l10n = LibQuestieDB.l10n
 
 ------------------------------
+--? Debug settings
+------------------------------
+
+--? Some prints require both to be true some only debugPrintEnabled
+--? debugEnabled: Enable more debug code and the FontString box prints
 Database.debugEnabled = true
+--? debugPrintEnabled: Enable debug message box prints, if only enabled provides some basic information
+Database.debugPrintEnabled = true
+--? debugLoadStaticEnabled: Enable loading of the static data into override tables (Useful for correction development)
+Database.debugLoadStaticEnabled = true
+
+--* We want these to always be enabled in CLI
+Database.debugEnabled = Is_CLI and true or Database.debugEnabled
+Database.debugPrintEnabled = Is_CLI and true or Database.debugPrintEnabled
+Database.debugLoadStaticEnabled = Is_CLI and true or Database.debugLoadStaticEnabled
+
+------------------------------
+
+--? Is the database initialized
 Database.Initialized = false
 
 --- The nil value for the database
@@ -50,7 +68,7 @@ function Database.Init()
   -- l10n
   debugprofilestart()
   l10n.InitializeDynamic()
-  if Database.debugEnabled then
+  if Database.debugPrintEnabled or Database.debugEnabled then
     local msTime = debugprofilestop()
     LibQuestieDB.ColorizePrint("green", "l10n data database initialized:")
     print("    ", format("%.4f", msTime), "ms")
@@ -59,7 +77,7 @@ function Database.Init()
   -- Quest
   debugprofilestart()
   Quest.InitializeDynamic()
-  if Database.debugEnabled then
+  if Database.debugPrintEnabled or Database.debugEnabled then
     local msTime = debugprofilestop()
     LibQuestieDB.ColorizePrint("green", "Quest data database initialized:")
     print("    ", format("%.4f", msTime), "ms")
@@ -68,7 +86,7 @@ function Database.Init()
   -- Object
   debugprofilestart()
   Object.InitializeDynamic()
-  if Database.debugEnabled then
+  if Database.debugPrintEnabled or Database.debugEnabled then
     local msTime = debugprofilestop()
     LibQuestieDB.ColorizePrint("green", "Object data database initialized:")
     print("    ", format("%.4f", msTime), "ms")
@@ -78,7 +96,7 @@ function Database.Init()
   debugprofilestart()
   Npc.InitializeDynamic()
   -- Npc.AddOverrideData(QuestieNPCFixes:LoadFactionFixes(), QuestieDB.npcKeys)
-  if Database.debugEnabled then
+  if Database.debugPrintEnabled or Database.debugEnabled then
     local msTime = debugprofilestop()
     LibQuestieDB.ColorizePrint("green", "Npc data database initialized:")
     print("    ", format("%.4f", msTime), "ms")
@@ -88,7 +106,7 @@ function Database.Init()
   debugprofilestart()
   Item.InitializeDynamic()
   -- Item.AddOverrideData(QuestieItemFixes:LoadFactionFixes(), QuestieDB.itemKeys)
-  if Database.debugEnabled then
+  if Database.debugPrintEnabled or Database.debugEnabled then
     local msTime = debugprofilestop()
     LibQuestieDB.ColorizePrint("green", "Item data database initialized:")
     print("    ", format("%.4f", msTime), "ms")
@@ -213,7 +231,7 @@ function Database.GetNewIds(AllIdStrings, dataOverride)
     local found = sFind(allIds, "," .. id .. ",")
     if not found then
       -- Print what we found
-      if Database.debugEnabled then
+      if Database.debugPrintEnabled and Database.debugEnabled then
         LibQuestieDB.ColorizePrint("reputationBlue", "  Adding new ID", id)
       end
       tInsert(newIds, id)
