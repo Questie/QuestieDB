@@ -182,6 +182,7 @@
 <SimpleHTML name="QuestData24576-24710" file="Interface\AddOns\QuestieDB\Database\Quest\Wotlk\_data\24576-24710.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="QuestData24711-24838" file="Interface\AddOns\QuestieDB\Database\Quest\Wotlk\_data\24711-24838.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="QuestData24839-24922" file="Interface\AddOns\QuestieDB\Database\Quest\Wotlk\_data\24839-24922.html" virtual="true" font="GameFontNormal"/>
-<SimpleHTML name="QuestData24923-70764" file="Interface\AddOns\QuestieDB\Database\Quest\Wotlk\_data\24923-70764.html" virtual="true" font="GameFontNormal"/>
-<SimpleHTML name="QuestData70765-78753" file="Interface\AddOns\QuestieDB\Database\Quest\Wotlk\_data\70765-78753.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="QuestData24923-64052" file="Interface\AddOns\QuestieDB\Database\Quest\Wotlk\_data\24923-64052.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="QuestData64053-78219" file="Interface\AddOns\QuestieDB\Database\Quest\Wotlk\_data\64053-78219.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="QuestData78220-78753" file="Interface\AddOns\QuestieDB\Database\Quest\Wotlk\_data\78220-78753.html" virtual="true" font="GameFontNormal"/>
 </Ui>

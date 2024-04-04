@@ -371,4 +371,5 @@
 <SimpleHTML name="NpcData26338-26747" file="Interface\AddOns\QuestieDB\Database\Npc\Tbc\_data\26338-26747.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="NpcData26748-27806" file="Interface\AddOns\QuestieDB\Database\Npc\Tbc\_data\26748-27806.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="NpcData27810-178420" file="Interface\AddOns\QuestieDB\Database\Npc\Tbc\_data\27810-178420.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="NpcData185333-185335" file="Interface\AddOns\QuestieDB\Database\Npc\Tbc\_data\185333-185335.html" virtual="true" font="GameFontNormal"/>
 </Ui>

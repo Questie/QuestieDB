@@ -182,5 +182,6 @@
 <SimpleHTML name="ObjectData210336-300025" file="Interface\AddOns\QuestieDB\Database\Object\Tbc\_data\210336-300025.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="ObjectData300026-300076" file="Interface\AddOns\QuestieDB\Database\Object\Tbc\_data\300026-300076.html" virtual="true" font="GameFontNormal"/>
 <SimpleHTML name="ObjectData300077-300127" file="Interface\AddOns\QuestieDB\Database\Object\Tbc\_data\300077-300127.html" virtual="true" font="GameFontNormal"/>
-<SimpleHTML name="ObjectData300128-500007" file="Interface\AddOns\QuestieDB\Database\Object\Tbc\_data\300128-500007.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="ObjectData300128-400063" file="Interface\AddOns\QuestieDB\Database\Object\Tbc\_data\300128-400063.html" virtual="true" font="GameFontNormal"/>
+<SimpleHTML name="ObjectData500000-500007" file="Interface\AddOns\QuestieDB\Database\Object\Tbc\_data\500000-500007.html" virtual="true" font="GameFontNormal"/>
 </Ui>
