@@ -9,12 +9,17 @@ local DebugText = LibQuestieDB.DebugText
 
 
 ---- Local Functions ----
-local tConcat = table.concat
-local tInsert = table.insert
-local wipe = wipe
+local tConcat    = table.concat
+local tInsert    = table.insert
+local wipe       = wipe
 local loadstring = loadstring
-local f = string.format
-local gsub = string.gsub
+local f          = string.format
+local gsub       = string.gsub
+local pairs      = pairs
+local ipairs     = ipairs
+local assert     = assert
+local type       = type
+
 
 --- Create a database in the passed in object
 ---@generic DBT
@@ -53,6 +58,15 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
 
   ---- Add entity type to the database ----
   Database.entityTypes[captializedType] = true
+
+  --- Print debug messages to the console and the debug text frame.
+  ---@param textKey string @The text to print.
+  local function debugPrint(textKey, ...)
+    debug:Print(textKey, ...)
+    if Is_CLI then
+      print(textKey, ...)
+    end
+  end
 
   ---@class DatabaseType
   ---@field private glob table<Id, table<number, FontString>>
@@ -113,38 +127,54 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
       includeDynamic = true
     end
     if includeStatic == nil then
-      includeStatic = Database.debugEnabled or false
+      includeStatic = Database.debugLoadStaticEnabled or false
     end
 
     -- Clear any existing override data before loading new corrections.
     DB.ClearOverrideData()
 
     -- Print a debug message indicating the type of corrections being loaded.
-    LibQuestieDB.ColorizePrint("yellow", f("Loading %s Corrections", captializedType))
+    if Database.debugPrintEnabled then
+      LibQuestieDB.ColorizePrint("yellow", f("Loading %s Corrections", captializedType))
+      if not Database.debugLoadStaticEnabled then
+        LibQuestieDB.ColorizePrint("gray", "Skipping static correction loading for", captializedType)
+      end
+    end
 
     -- Initialize counters for load order and total corrections loaded.
-    local loadOrder = 0
+    local overallLoadOrder = 0
     local totalLoaded = 0
+
+    local allCorrections, order = Corrections.GetCorrections(dbType, includeStatic, includeDynamic)
 
     -- Iterate over all corrections for the current database type.
     -- Corrections.GetCorrections returns a table of correction functions filtered by type and inclusion flags.
-    for _, correctionList in pairs(Corrections.GetCorrections(dbType:lower(), includeStatic, includeDynamic)) do
-      for correctionId, correctionFunc in pairs(correctionList) do
-        -- Execute the correction function to get the correction data.
-        local correctionData = correctionFunc()
-        -- Add the correction data to the database and increment the total loaded counter.
-        totalLoaded = totalLoaded + DB.AddOverrideData(correctionData, databaseTypeMeta)
-
-        if Database.debugEnabled then
-          debug:Print("  " .. tostring(loadOrder) .. "  Loaded", correctionId)
+    -- We use this table to always statically load corrections first, followed by dynamic corrections.
+    for _, correctionType in ipairs(order) do
+      local correctionList = allCorrections[correctionType]
+      if correctionList then
+        if Database.debugPrintEnabled then
+          debugPrint(f("  %s Applied", LibQuestieDB.Capitalized(correctionType)))
         end
-        loadOrder = loadOrder + 1
+        for _, correctionObject in pairs(correctionList) do
+          -- Execute the correction function to get the correction data.
+          local correctionData = correctionObject.func()
+          -- Add the correction data to the database and increment the total loaded counter.
+          local loaded = DB.AddOverrideData(correctionData, databaseTypeMeta)
+          totalLoaded = totalLoaded + loaded
+
+          if Database.debugPrintEnabled then
+            debugPrint(f("    %d:(%d) '%s' Applied", tostring(overallLoadOrder), correctionObject.loadOrder, correctionObject.name),
+                       loaded)
+          end
+          overallLoadOrder = overallLoadOrder + 1
+        end
       end
     end
 
     -- If debugging is enabled, print the total number of corrections loaded.
-    if Database.debugEnabled then
-      debug:Print(f("  # %s Corrections", captializedType), totalLoaded)
+    if Database.debugPrintEnabled then
+      debugPrint(f("  # %s Corrections", captializedType), totalLoaded)
     end
 
     -- Update the DB.override table with the new override data.
@@ -166,7 +196,7 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
     -- If there are new IDs, concatenate them into a string and add to `AllIdStrings` for tracking.
     if #newIds ~= 0 then
       tInsert(AllIdStrings, tConcat(newIds, ","))
-      if Database.debugEnabled then
+      if Database.debugPrintEnabled then
         LibQuestieDB.ColorizePrint("lightBlue", f(" # New %s IDs", captializedType), #newIds)
       end
     end
@@ -183,7 +213,7 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
     local func, idString = Database.GetAllEntityIdsFunction(captializedType)
     -- TODO: Maybe we should sort this list?
     tInsert(AllIdStrings, idString)
-    if Database.debugEnabled then
+    if Database.debugPrintEnabled then
       assert(#func() == #DB.GetAllIds(), f("%s ids are not the same", captializedType))
     end
   end
