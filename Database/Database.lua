@@ -44,6 +44,62 @@ local type = type
 local pairs = pairs
 local assert = assert
 
+function Database.Init()
+  local startTotal = 0
+  print("-- Database Initialization --")
+  -- l10n
+  debugprofilestart()
+  l10n.InitializeDynamic()
+  if Database.debugEnabled then
+    local msTime = debugprofilestop()
+    LibQuestieDB.ColorizePrint("green", "l10n data database initialized:")
+    print("    ", format("%.4f", msTime), "ms")
+    startTotal = startTotal + msTime
+  end
+  -- Quest
+  debugprofilestart()
+  Quest.InitializeDynamic()
+  if Database.debugEnabled then
+    local msTime = debugprofilestop()
+    LibQuestieDB.ColorizePrint("green", "Quest data database initialized:")
+    print("    ", format("%.4f", msTime), "ms")
+    startTotal = startTotal + msTime
+  end
+  -- Object
+  debugprofilestart()
+  Object.InitializeDynamic()
+  if Database.debugEnabled then
+    local msTime = debugprofilestop()
+    LibQuestieDB.ColorizePrint("green", "Object data database initialized:")
+    print("    ", format("%.4f", msTime), "ms")
+    startTotal = startTotal + msTime
+  end
+  -- Npc
+  debugprofilestart()
+  Npc.InitializeDynamic()
+  -- Npc.AddOverrideData(QuestieNPCFixes:LoadFactionFixes(), QuestieDB.npcKeys)
+  if Database.debugEnabled then
+    local msTime = debugprofilestop()
+    LibQuestieDB.ColorizePrint("green", "Npc data database initialized:")
+    print("    ", format("%.4f", msTime), "ms")
+    startTotal = startTotal + msTime
+  end
+  -- Item
+  debugprofilestart()
+  Item.InitializeDynamic()
+  -- Item.AddOverrideData(QuestieItemFixes:LoadFactionFixes(), QuestieDB.itemKeys)
+  if Database.debugEnabled then
+    local msTime = debugprofilestop()
+    LibQuestieDB.ColorizePrint("green", "Item data database initialized:")
+    print("    ", format("%.4f", msTime), "ms")
+    startTotal = startTotal + msTime
+
+    -- Print total time elapsed
+    print("Total time elapsed:", format("%.4f", startTotal), "ms")
+  end
+  Database.Initialized = true
+end
+
 --? Fetch functions for the database
 Database.getNumber = function(pObject)
   if pObject == nil then
@@ -164,62 +220,6 @@ function Database.GetNewIds(AllIdStrings, dataOverride)
     end
   end
   return newIds
-end
-
-function Database.Init()
-  local startTotal = 0
-  print("-- Database Initialization --")
-  -- l10n
-  debugprofilestart()
-  l10n.InitializeDynamic()
-  if Database.debugEnabled then
-    local msTime = debugprofilestop()
-    LibQuestieDB.ColorizePrint("green", "l10n data database initialized:")
-    print("    ", format("%.4f", msTime), "ms")
-    startTotal = startTotal + msTime
-  end
-  -- Quest
-  debugprofilestart()
-  Quest.InitializeDynamic()
-  if Database.debugEnabled then
-    local msTime = debugprofilestop()
-    LibQuestieDB.ColorizePrint("green", "Quest data database initialized:")
-    print("    ", format("%.4f", msTime), "ms")
-    startTotal = startTotal + msTime
-  end
-  -- Object
-  debugprofilestart()
-  Object.InitializeDynamic()
-  if Database.debugEnabled then
-    local msTime = debugprofilestop()
-    LibQuestieDB.ColorizePrint("green", "Object data database initialized:")
-    print("    ", format("%.4f", msTime), "ms")
-    startTotal = startTotal + msTime
-  end
-  -- Npc
-  debugprofilestart()
-  Npc.InitializeDynamic()
-  -- Npc.AddOverrideData(QuestieNPCFixes:LoadFactionFixes(), QuestieDB.npcKeys)
-  if Database.debugEnabled then
-    local msTime = debugprofilestop()
-    LibQuestieDB.ColorizePrint("green", "Npc data database initialized:")
-    print("    ", format("%.4f", msTime), "ms")
-    startTotal = startTotal + msTime
-  end
-  -- Item
-  debugprofilestart()
-  Item.InitializeDynamic()
-  -- Item.AddOverrideData(QuestieItemFixes:LoadFactionFixes(), QuestieDB.itemKeys)
-  if Database.debugEnabled then
-    local msTime = debugprofilestop()
-    LibQuestieDB.ColorizePrint("green", "Item data database initialized:")
-    print("    ", format("%.4f", msTime), "ms")
-    startTotal = startTotal + msTime
-
-    -- Print total time elapsed
-    print("Total time elapsed:", format("%.4f", startTotal), "ms")
-  end
-  Database.Initialized = true
 end
 
 --*-------------------------------------------
