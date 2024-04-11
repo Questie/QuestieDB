@@ -27,6 +27,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - name: Check out repository code
+      uses: actions/checkout@v4
+    - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
     # Runs a single command using the runners shell
     - name: Send greeting
       run: ls -la && pwd
