@@ -78,5 +78,5 @@ jobs:
         name: "Release ${{ github.ref }}"
         body: "Release body"
         commit: "${{ github.sha }}"
-        tag: "${{ github.ref }}"
+        tag: "${{ github.ref_name }}"
         allowUpdates: true
