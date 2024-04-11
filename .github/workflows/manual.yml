@@ -34,6 +34,7 @@ jobs:
       uses: leafo/gh-actions-lua@v10
       with:
         luaVersion: "5.1.5"
+
     - name: Install LuaRocks
       uses: leafo/gh-actions-luarocks@v4.3.0
 
@@ -71,3 +72,9 @@ jobs:
     - name: ls
       run: ls -la .build && ls -la .build/QuestieDB
 
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "./.build/QuestieDB.zip"
+        name: "Release ${{ github.ref }}"
+        body: "Release body"
+        allowUpdates: true
