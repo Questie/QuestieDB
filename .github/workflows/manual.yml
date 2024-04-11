@@ -77,4 +77,5 @@ jobs:
         artifacts: "./.build/QuestieDB.zip"
         name: "Release ${{ github.ref }}"
         body: "Release body"
+        commit: "${{ github.sha }}"
         allowUpdates: true
