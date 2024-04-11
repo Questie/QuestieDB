@@ -225,7 +225,7 @@ def process_expansion(expansion_name, entity_type, expansion_data):
   print(f"Finished dumping {entity_type}s for {expansion_name}")
 
 
-def dumpHTML(expansions):
+def dumpHTML(expansions, threaded=True):
   # Load the data for all expansions
   # The decoding with lua is not thread safe, so we do it here
   all_expansion_data = {}
@@ -238,15 +238,22 @@ def dumpHTML(expansions):
       all_expansion_data[expansion][entity_type] = lua.decode(raw_expansion_data)
 
   # Process all expansions in separate threads
-  with concurrent.futures.ThreadPoolExecutor() as executor:
-    futures = [executor.submit(process_expansion, expansion, entity_type, all_expansion_data[expansion][entity_type]) for expansion in expansions for entity_type in entity_types]
+  if threaded:
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+      futures = [executor.submit(process_expansion, expansion, entity_type, all_expansion_data[expansion][entity_type]) for expansion in expansions for entity_type in entity_types]
 
-    # Wait for all threads to complete
-    for future in concurrent.futures.as_completed(futures):
-      try:
-        future.result()
-      except Exception as e:
-        print(f"An error occurred in a thread: {e}")
+      # Wait for all threads to complete
+      for future in concurrent.futures.as_completed(futures):
+        try:
+          future.result()
+        except Exception as e:
+          print(f"An error occurred in a thread: {e}")
+  else:
+    # Non-threaded way of running
+    for expansion in expansions:
+      for entity_type in entity_types:
+        print(f"Processing {expansion} {entity_type}")
+        process_expansion(expansion, entity_type, all_expansion_data[expansion][entity_type])
 
 
 if __name__ == "__main__":
@@ -254,15 +261,20 @@ if __name__ == "__main__":
   if len(sys.argv) < 2:
     print("Usage: dump.py <expansion> <expansion> ...")
     exit()
-
+  threaded = True
+  dump_expansions = []
   for expansion in sys.argv[1:]:
+    if expansion.lower() == "true" or expansion.lower() == "false":
+      threaded = expansion.lower() == "true"
+      continue
     if expansion not in expansions:
       print(f"Invalid expansion: {expansion}")
       exit()
-  expansions = sys.argv[1:]
+    else:
+      dump_expansions.append(expansion)
 
-  print(f"Dumping {expansions} data")
-  dumpHTML(expansions)
+  print(f"Dumping {dump_expansions} data, threaded={threaded}")
+  dumpHTML(dump_expansions, threaded)
 
   # if len(sys.argv) > 1:
   #     expansions = sys.argv[1:]

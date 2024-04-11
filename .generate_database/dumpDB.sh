@@ -10,6 +10,7 @@ else
   LUA=$1
 fi
 
+# Needed for the docker container but not action but it doesn't hurt the run if it fails
 cd /QuestieDB
 
 # Create directories if they don't exist
@@ -50,7 +51,7 @@ for name in Era Tbc Wotlk
 do
   echo "Dumping $name"
   echo "Log output saved to ./.generate_database/_data/$name-output.log"
-  $LUA ./.generate_database/createStatic.lua $name > ./.generate_database/_data/$name-output.log &
+  $LUA ./.generate_database/createStatic.lua False $name > ./.generate_database/_data/$name-output.log &
 done
 
 wait
