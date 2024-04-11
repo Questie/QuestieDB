@@ -45,7 +45,7 @@ jobs:
       run: luarocks install luafilesystem
 
 
-    - run: where lua
+    - run: whereis lua
 
     # - name: Check out ${{ github.repository }} code
     #   uses: actions/checkout@v4
