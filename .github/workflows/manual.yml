@@ -35,25 +35,22 @@ jobs:
       uses: leafo/gh-actions-luarocks@v4.3.0
 
     # Install LuaRocks packages
-    # - name: Install bit32
-    #   run: luarocks install bit32
+    - name: Install bit32
+      run: luarocks install bit32
 
-    # - name: Install argparse
-    #   run: luarocks install argparse
+    - name: Install argparse
+      run: luarocks install argparse
 
-    # - name: Install luafilesystem
-    #   run: luarocks install luafilesystem
+    - name: Install luafilesystem
+      run: luarocks install luafilesystem
 
+    - name: Check out ${{ github.repository }} code
+      uses: actions/checkout@v4
 
-    - run: whereis lua
+    # Install requirements.txt from .generate_database
+    - name: Install requirements
+      run: pip install -r .generate_database/requirements.txt
 
-    # - name: Check out ${{ github.repository }} code
-    #   uses: actions/checkout@v4
-
-    # # Install requirements.txt from .generate_database
-    # - name: Install requirements
-    #   run: pip install -r .generate_database/requirements.txt
-
-    # # Runs a single command using the runners shell
-    # - name: Build HTML
-    #   run: sh .generate_database/dumpDB.sh
+    # Runs a single command using the runners shell
+    - name: Build HTML
+      run: sh .generate_database/dumpDB.sh "/home/runner/work/QuestieDB/QuestieDB/.lua/bin/lua"
