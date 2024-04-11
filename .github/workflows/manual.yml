@@ -53,4 +53,4 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Build HTML
-      run: sh .generate_database/dumpDB.sh "/home/runner/work/QuestieDB/QuestieDB/.lua/bin/lua"
+      run: sh .generate_database/dumpDB.sh ./.lua/bin/lua
