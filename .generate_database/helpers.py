@@ -65,6 +65,9 @@ def read_expansion_data(expansion: str, entity_type: str):
     # Check if it exists, otherwise use lower l10n
     if not os.path.exists(file_path):
       file_path = os.path.join(path, f"{entity_type.lower()}Data.lua-table")
+      if not os.path.exists(file_path):
+        logger.error(f"File not found: {file_path}")
+        raise FileNotFoundError(f"File not found: {file_path}")
 
     with open(file_path, "r", encoding="utf-8") as file:
       data = file.read()
