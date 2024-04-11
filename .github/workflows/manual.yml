@@ -27,6 +27,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - name: Check out ${{ github.repository }} code
+      uses: actions/checkout@v4
+
     - name: Install Lua
       uses: leafo/gh-actions-lua@v10
       with:
@@ -44,13 +47,11 @@ jobs:
     - name: Install luafilesystem
       run: luarocks install luafilesystem
 
-    - name: Check out ${{ github.repository }} code
-      uses: actions/checkout@v4
-
     # Install requirements.txt from .generate_database
     - name: Install requirements
       run: pip install -r .generate_database/requirements.txt
 
     # Runs a single command using the runners shell
     - name: Build HTML
-      run: sh .generate_database/dumpDB.sh ./.lua/bin/lua
+      # run: sh .generate_database/dumpDB.sh ./.lua/bin/lua
+      run: ls -la
