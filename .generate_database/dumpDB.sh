@@ -51,7 +51,7 @@ for name in Era Tbc Wotlk
 do
   echo "Dumping $name"
   echo "Log output saved to ./.generate_database/_data/$name-output.log"
-  $LUA ./.generate_database/createStatic.lua False $name > ./.generate_database/_data/$name-output.log &
+  $LUA ./.generate_database/createStatic.lua $name > ./.generate_database/_data/$name-output.log &
 done
 
 wait
@@ -71,7 +71,7 @@ echo "Dumping all databases - dump.py"
 # Generate the HTML files
 for name in Era Tbc Wotlk
 do
-  python3 ./dump.py $name &
+  python3 ./dump.py False $name &
 done
 
 wait
