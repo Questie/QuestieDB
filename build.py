@@ -4,12 +4,14 @@
 
 import os
 import shutil
+import sys
 
 
 base_build_dir = "./.build"
 
 
 def copy_files(src, dest):
+  files_to_copy = {}
   files_copied = 0
   for root, dirs, files in os.walk("."):
     if root.startswith(".\\."):
@@ -26,6 +28,16 @@ def copy_files(src, dest):
       continue
     if ".generate_database" in root:
       continue
+    if ".tests" in root:
+      continue
+    # Python venv
+    if "venv" in root:
+      continue
+    # Github actions
+    if ".lua" in root:
+      continue
+    if ".luarocks" in root:
+      continue
     for file in files:
       if file.endswith(".lua") or file.endswith(".html") or file.endswith(".toc") or file.endswith(".xml") or file.endswith("LICENSE") or file.endswith("README.md"):
         # print(file)
@@ -36,8 +48,15 @@ def copy_files(src, dest):
         # Create directories if they do not exist
         os.makedirs(os.path.dirname(destpath), exist_ok=True)
 
-        shutil.copy(filepath, destpath)
+        files_to_copy[destpath] = filepath
         files_copied += 1
+  print(f"{len(files_to_copy)} files to copy")
+  copied = 0
+  for destpath, filepath in files_to_copy.items():
+    shutil.copy(filepath, destpath)
+    copied += 1
+    if copied % 100 == 0:
+      print(f"Copied {copied}/{len(files_to_copy)} files")
   print(f"Copied {files_copied} files")
   return files_copied
 
@@ -60,16 +79,24 @@ def get_version_from_toc():
         wotlk_version = line.split(":")[1].strip()
   if classic_version == tbc_version == wotlk_version:
     return classic_version
+  else:
+    raise Exception("Version mismatch")
 
 
 def main():
+  # Directory Name from args
+  if len(sys.argv) > 1:
+    build_output = sys.argv[1]
+  else:
+    build_output = "QuestieDB." + get_version_from_toc()
+
   if not os.path.exists(base_build_dir):
     os.mkdir(base_build_dir)
 
-  build_dir = f"{base_build_dir}/QuestieDB." + get_version_from_toc()
+  build_dir = f"{base_build_dir}/{build_output}"
   if not os.path.exists(build_dir):
     os.mkdir(build_dir)
-  print("Copying files to build directory...")
+  print(f"Copying files to build directory '{build_dir}'...")
   copy_files(".", build_dir)
   print("Done")
 
