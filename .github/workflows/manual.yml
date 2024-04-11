@@ -35,14 +35,14 @@ jobs:
       uses: leafo/gh-actions-luarocks@v4.3.0
 
     # Install LuaRocks packages
-    - name: Install bit32
-      run: luarocks install bit32
+    # - name: Install bit32
+    #   run: luarocks install bit32
 
-    - name: Install argparse
-      run: luarocks install argparse
+    # - name: Install argparse
+    #   run: luarocks install argparse
 
-    - name: Install luafilesystem
-      run: luarocks install luafilesystem
+    # - name: Install luafilesystem
+    #   run: luarocks install luafilesystem
 
 
     - run: whereis lua
