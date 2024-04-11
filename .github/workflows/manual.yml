@@ -23,13 +23,16 @@ jobs:
   # This workflow contains a single job called "greet"
   greet:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: nickblah/lua:5.1-luarocks
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - name: Check out repository code
       uses: actions/checkout@v4
     - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+    # Install requirements.txt from .generate_database
+    - name: Install requirements
+      run: pip install -r .generate_database/requirements.txt
     # Runs a single command using the runners shell
     - name: Build HTML
       run: sh .generate_database/dumpDB.sh
