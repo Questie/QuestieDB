@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Manual workflow
+name: Release QuestieDB
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -21,7 +21,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "greet"
-  greet:
+  build_release:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -30,7 +30,7 @@ jobs:
     - name: Check out ${{ github.repository }} code
       uses: actions/checkout@v4
 
-    - name: Install Lua
+    - name: Install Lua 5.1.5
       uses: leafo/gh-actions-lua@v10
       with:
         luaVersion: "5.1.5"
@@ -52,12 +52,9 @@ jobs:
     - name: Install requirements
       run: pip install -r .generate_database/requirements.txt
 
-    - name: ls
-      run: ls -la && ls -la .lua && ls -la .lua/bin
-
     # Runs a single command using the runners shell
-    # - name: Generate HTML
-    #   run: sh .generate_database/dumpDB.sh ./.lua/bin/lua
+    - name: Generate HTML
+      run: sh .generate_database/dumpDB.sh ./.lua/bin/lua
 
     # Create the QuestieDB build, will output toc_version
     - name: Build QuestieDB
@@ -73,14 +70,15 @@ jobs:
         path: './.build/QuestieDB'
         filename: './.build/QuestieDB.zip'
 
-    - name: ls
-      run: ls -la .build && ls -la .build/QuestieDB
+    - name: Build directory 'ls'
+      run: ls -la .build/QuestieDB
 
-    - uses: ncipollo/release-action@v1
+    - name: Publish release
+      uses: ncipollo/release-action@v1
       with:
         artifacts: "./.build/QuestieDB.zip"
         name: "Release version ${{ steps.build.outputs.toc_version }}"
         body: "Release body"
         commit: "${{ github.sha }}"
-        tag: "${{ github.ref_name }}"
+        tag: "v${{ steps.build.outputs.toc_version }}"
         allowUpdates: true
