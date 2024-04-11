@@ -13,7 +13,13 @@ def get_project_dir_path():
 
 
 def get_data_dir_path(entity_type: str, expansion: str):
-  return os.path.join(get_project_dir_path(), "Database", entity_type, expansion)
+  path = os.path.join(get_project_dir_path(), "Database", entity_type, expansion)
+  # Does path not exist, l10n has this issue...
+  if not os.path.exists(path):
+    print(f"Path {path} does not exist, trying lowercase")
+    path = os.path.join(get_project_dir_path(), "Database", entity_type.lower(), expansion)
+
+  return path
 
 
 # This is used to find the Addons folder, which is used to find the project directory.
@@ -55,7 +61,12 @@ def read_expansion_data(expansion: str, entity_type: str):
   path = os.path.join(get_data_dir_path(entity_type, expansion))
   logger.info(f"Reading {expansion} lua {entity_type.lower()} data from {path}")
   try:
-    with open(os.path.join(path, f"{entity_type.capitalize()}Data.lua-table"), "r", encoding="utf-8") as file:
+    file_path = os.path.join(path, f"{entity_type.capitalize()}Data.lua-table")
+    # Check if it exists, otherwise use lower l10n
+    if not os.path.exists(file_path):
+      file_path = os.path.join(path, f"{entity_type.lower()}Data.lua-table")
+
+    with open(file_path, "r", encoding="utf-8") as file:
       data = file.read()
     # Perform any necessary replacements on the data string
     data = data.replace("&", "and").replace("<", "|").replace(">", "|")
