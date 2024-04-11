@@ -51,7 +51,9 @@ jobs:
     - name: Install requirements
       run: pip install -r .generate_database/requirements.txt
 
+    - name: ls
+      run: ls -la && ls -la .lua && ls -la .lua/bin
+
     # Runs a single command using the runners shell
     - name: Build HTML
-      # run: sh .generate_database/dumpDB.sh ./.lua/bin/lua
-      run: ls -la
+      run: sh .generate_database/dumpDB.sh ./.lua/bin/lua
