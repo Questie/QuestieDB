@@ -55,5 +55,19 @@ jobs:
       run: ls -la && ls -la .lua && ls -la .lua/bin
 
     # Runs a single command using the runners shell
-    - name: Build HTML
+    - name: Generate HTML
       run: sh .generate_database/dumpDB.sh ./.lua/bin/lua
+
+    - name: Build QuestieDB
+      run: python build.py QuestieDB
+
+    - name: Create QuestieDB.zip
+      uses: TheDoctor0/zip-release@0.7.6
+      with:
+        type: 'zip'
+        path: './.build/QuestieDB'
+        filename: './.build/QuestieDB.zip'
+
+    - name: ls
+      run: ls -la .build && ls -la .build/QuestieDB
+
