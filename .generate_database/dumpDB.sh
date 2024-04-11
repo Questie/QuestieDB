@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Current directory: $(pwd)"
+echo "$(which $1) is the lua executable"
+
 # First argument points to lua executable set "lua" if not set
 if [ -z "$1" ]; then
   LUA=lua
@@ -55,8 +58,8 @@ wait
 echo "Done dumping databases"
 
 # Copy the output to the Database directory
-echo "Copying output to /QuestieDB/Database"
-cp -r ./.generate_database/_data/output/* /QuestieDB/Database
+echo "Copying output to ./Database"
+cp -r ./.generate_database/_data/output/* ./Database
 
 
 # Change to the generate_database directory
