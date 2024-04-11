@@ -23,10 +23,27 @@ jobs:
   # This workflow contains a single job called "greet"
   greet:
     # The type of runner that the job will run on
-    runs-on: nickblah/lua:5.1-luarocks
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - name: Install Lua
+      uses: leafo/gh-actions-lua@v10
+      with:
+        luaVersion: "5.1.5"
+    - name: Install LuaRocks
+      uses: leafo/gh-actions-luarocks@v4.3.0
+
+    # Install LuaRocks packages
+    - name: Install bit32
+      run: luarocks install bit32
+
+    - name: Install argparse
+      run: luarocks install argparse
+
+    - name: Install luafilesystem
+      run: luarocks install luafilesystem
+
     - name: Check out repository code
       uses: actions/checkout@v4
     - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
