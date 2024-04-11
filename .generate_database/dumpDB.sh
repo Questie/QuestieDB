@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# First argument points to lua executable set "lua" if not set
+if [ -z "$1" ]; then
+  LUA=lua
+else
+  LUA=$1
+fi
+
 cd /QuestieDB
 
 # Create directories if they don't exist
@@ -40,7 +47,7 @@ for name in Era Tbc Wotlk
 do
   echo "Dumping $name"
   echo "Log output saved to ./.generate_database/_data/$name-output.log"
-  lua ./.generate_database/createStatic.lua $name > ./.generate_database/_data/$name-output.log &
+  $LUA ./.generate_database/createStatic.lua $name > ./.generate_database/_data/$name-output.log &
 done
 
 wait
