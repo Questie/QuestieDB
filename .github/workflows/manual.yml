@@ -44,12 +44,16 @@ jobs:
     - name: Install luafilesystem
       run: luarocks install luafilesystem
 
-    - name: Check out repository code
-      uses: actions/checkout@v4
-    - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-    # Install requirements.txt from .generate_database
-    - name: Install requirements
-      run: pip install -r .generate_database/requirements.txt
-    # Runs a single command using the runners shell
-    - name: Build HTML
-      run: sh .generate_database/dumpDB.sh
+
+    - run: where lua
+
+    # - name: Check out ${{ github.repository }} code
+    #   uses: actions/checkout@v4
+
+    # # Install requirements.txt from .generate_database
+    # - name: Install requirements
+    #   run: pip install -r .generate_database/requirements.txt
+
+    # # Runs a single command using the runners shell
+    # - name: Build HTML
+    #   run: sh .generate_database/dumpDB.sh
