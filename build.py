@@ -98,6 +98,10 @@ def main():
     os.mkdir(build_dir)
   print(f"Copying files to build directory '{build_dir}'...")
   copy_files(".", build_dir)
+  # If we are in github actions we output the toc version
+  if os.environ["GITHUB_ACTIONS"] == "true":
+    print("::set-output name=toc_version::" + get_version_from_toc())
+
   print("Done")
 
 
