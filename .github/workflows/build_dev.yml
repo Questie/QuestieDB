@@ -1,0 +1,83 @@
+# This is a basic workflow that is manually triggered
+
+name: Development QuestieDB (Dev branch)
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ dev ]
+    paths:
+      - '**.lua'
+      - '**.lua-table'
+      - '**.toc'
+  workflow_dispatch:
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "greet"
+  build_release:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - name: Check out ${{ github.repository }} code
+      uses: actions/checkout@v4
+
+    - name: Install Lua 5.1.5
+      uses: leafo/gh-actions-lua@v10
+      with:
+        luaVersion: "5.1.5"
+
+    - name: Install LuaRocks
+      uses: leafo/gh-actions-luarocks@v4.3.0
+
+    # Install LuaRocks packages
+    - name: Install bit32
+      run: luarocks install bit32
+
+    - name: Install argparse
+      run: luarocks install argparse
+
+    - name: Install luafilesystem
+      run: luarocks install luafilesystem
+
+    # Install requirements.txt from .generate_database
+    - name: Install requirements
+      run: pip install -r .generate_database/requirements.txt
+
+    # Runs a single command using the runners shell
+    - name: Generate HTML
+      run: sh .generate_database/dumpDB.sh ./.lua/bin/lua
+
+    # Create the QuestieDB build, will output toc_version
+    - name: Build QuestieDB
+      id: build
+      run: python build.py QuestieDB
+      env:
+        GITHUB_ACTIONS: "true"
+
+    - name: Create QuestieDB.zip
+      uses: TheDoctor0/zip-release@0.7.6
+      with:
+        type: 'zip'
+        directory: './.build/'
+        path: './QuestieDB'
+        filename: './QuestieDB.zip'
+
+    - name: Build directory 'ls'
+      run: ls -la .build/QuestieDB
+
+    - name: Publish release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "./.build/QuestieDB.zip"
+        name: "Development build version ${{ steps.build.outputs.toc_version }}"
+        body: "# Warning this is a development build, use at own risk!!\nBuild release body"
+        commit: "${{ github.sha }}"
+        tag: "v${{ steps.build.outputs.toc_version }}"
+        prerelease: true
+        allowUpdates: true
