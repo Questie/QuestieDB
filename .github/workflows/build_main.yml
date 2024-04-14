@@ -76,3 +76,5 @@ jobs:
         commit: "${{ github.sha }}"
         tag: "v${{ steps.build.outputs.toc_version }}"
         allowUpdates: true
+        # Remove all artifacts on release
+        removeArtifacts: true

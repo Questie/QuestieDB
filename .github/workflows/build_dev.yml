@@ -78,4 +78,6 @@ jobs:
         commit: "${{ github.sha }}"
         tag: "dev-release"
         prerelease: true
+        # Remove all artifacts on release
+        removeArtifacts: true
         allowUpdates: true
