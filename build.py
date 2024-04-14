@@ -105,19 +105,17 @@ def main():
 
   if os.environ["GITHUB_SHA"]:
     short_commit_hash = os.environ["GITHUB_SHA"][:7]
-    for toc_file in ["QuestieDB-Classic.toc", "QuestieDB-BCC.toc", "QuestieDB-WOTLKC.toc"]:
-      print(f"Adding sha {short_commit_hash} commit hash to toc file")
+    for toc_file in [f"{build_dir}/QuestieDB-Classic.toc", f"{build_dir}/QuestieDB-BCC.toc", f"{build_dir}/QuestieDB-WOTLKC.toc"]:
+      print(f"Adding sha {short_commit_hash} commit hash to toc file: {toc_file}")
       with open(toc_file, "r") as f:
-        f = f.readlines()
+        full_file = f.readlines()
       with open(toc_file, "w") as f:
-        for line in f:
+        for line in full_file:
           if "## Version:" in line:
             version = line.split(":")[1].strip()
             f.write(f"## Version: {version}+{short_commit_hash}\n")
           else:
             f.write(line)
-    else:
-      raise Exception("DEV_RELEASE is true but no commit hash was provided")
 
   print("Done")
 
