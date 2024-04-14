@@ -116,8 +116,6 @@ def main():
             f.write(f"## Version: {version}+{short_commit_hash}\n")
           else:
             f.write(line)
-    else:
-      raise Exception("DEV_RELEASE is true but no commit hash was provided")
 
   print("Done")
 
