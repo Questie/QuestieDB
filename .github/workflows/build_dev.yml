@@ -56,9 +56,10 @@ jobs:
     # Create the QuestieDB build, will output toc_version
     - name: Build QuestieDB
       id: build
-      run: python build.py QuestieDB
+      run: python build.py QuestieDB ${{ github.sha }}
       env:
         GITHUB_ACTIONS: "true"
+        DEV_RELEASE: "true"
 
     - name: Create QuestieDB.zip
       uses: TheDoctor0/zip-release@0.7.6
@@ -66,17 +67,14 @@ jobs:
         type: 'zip'
         directory: './.build/'
         path: './QuestieDB'
-        filename: './QuestieDB.zip'
-
-    - name: Build directory 'ls'
-      run: ls -la .build/QuestieDB
+        filename: './QuestieDB-${{ steps.build.outputs.toc_version }}-dev-${{ github.sha }}.zip'
 
     - name: Publish release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "./.build/QuestieDB.zip"
+        artifacts: "./.build/QuestieDB-${{ steps.build.outputs.toc_version }}-dev-${{ github.sha }}.zip"
         name: "Development build version ${{ steps.build.outputs.toc_version }}"
-        body: "# Warning this is a development build, use at own risk!!\nBuild release body"
+        body: "# Warning this is a development build, use at own risk!!\n### SHA: ${{ github.sha }}\nBuild release body"
         commit: "${{ github.sha }}"
         tag: "dev-release"
         prerelease: true
