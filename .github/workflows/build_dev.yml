@@ -56,7 +56,7 @@ jobs:
     # Create the QuestieDB build, will output toc_version
     - name: Build QuestieDB
       id: build
-      run: python build.py QuestieD
+      run: python build.py QuestieDB
       env:
         GITHUB_ACTIONS: "true"
         GITHUB_SHA: "${{ github.sha }}"
@@ -67,7 +67,7 @@ jobs:
         type: 'zip'
         directory: './.build/'
         path: './QuestieDB'
-        filename: './QuestieDB-${{ steps.build.outputs.toc_version }}-dev-${{ github.sha }}.zip'
+        filename: 'QuestieDB-${{ steps.build.outputs.toc_version }}-dev-${{ github.sha }}.zip'
 
     - name: Publish release
       uses: ncipollo/release-action@v1
@@ -78,4 +78,6 @@ jobs:
         commit: "${{ github.sha }}"
         tag: "dev-release"
         prerelease: true
+        # Remove all artifacts on release
+        removeArtifacts: true
         allowUpdates: true
