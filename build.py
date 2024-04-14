@@ -84,6 +84,7 @@ def get_version_from_toc():
 
 
 def main():
+  # Arg1 Build Directory Name
   # Directory Name from args
   if len(sys.argv) > 1:
     build_output = sys.argv[1]
@@ -101,6 +102,22 @@ def main():
   # If we are in github actions we output the toc version
   if os.environ["GITHUB_ACTIONS"] == "true":
     print("::set-output name=toc_version::" + get_version_from_toc())
+
+  if os.environ["GITHUB_SHA"]:
+    short_commit_hash = os.environ["GITHUB_SHA"][:7]
+    for toc_file in ["QuestieDB-Classic.toc", "QuestieDB-BCC.toc", "QuestieDB-WOTLKC.toc"]:
+      print(f"Adding sha {short_commit_hash} commit hash to toc file")
+      with open(toc_file, "r") as f:
+        f = f.readlines()
+      with open(toc_file, "w") as f:
+        for line in f:
+          if "## Version:" in line:
+            version = line.split(":")[1].strip()
+            f.write(f"## Version: {version}+{short_commit_hash}\n")
+          else:
+            f.write(line)
+    else:
+      raise Exception("DEV_RELEASE is true but no commit hash was provided")
 
   print("Done")
 
