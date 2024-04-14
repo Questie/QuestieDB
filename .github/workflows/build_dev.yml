@@ -78,6 +78,6 @@ jobs:
         name: "Development build version ${{ steps.build.outputs.toc_version }}"
         body: "# Warning this is a development build, use at own risk!!\nBuild release body"
         commit: "${{ github.sha }}"
-        tag: "v${{ steps.build.outputs.toc_version }}"
+        tag: "dev-release"
         prerelease: true
         allowUpdates: true
