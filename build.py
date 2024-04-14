@@ -108,9 +108,9 @@ def main():
     for toc_file in ["QuestieDB-Classic.toc", "QuestieDB-BCC.toc", "QuestieDB-WOTLKC.toc"]:
       print(f"Adding sha {short_commit_hash} commit hash to toc file")
       with open(toc_file, "r") as f:
-        f = f.readlines()
+        full_file = f.readlines()
       with open(toc_file, "w") as f:
-        for line in f:
+        for line in full_file:
           if "## Version:" in line:
             version = line.split(":")[1].strip()
             f.write(f"## Version: {version}+{short_commit_hash}\n")
