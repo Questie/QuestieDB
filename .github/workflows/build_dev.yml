@@ -67,7 +67,7 @@ jobs:
         type: 'zip'
         directory: './.build/'
         path: './QuestieDB'
-        filename: './QuestieDB-${{ steps.build.outputs.toc_version }}-dev-${{ github.sha }}.zip'
+        filename: 'QuestieDB-${{ steps.build.outputs.toc_version }}-dev-${{ github.sha }}.zip'
 
     - name: Publish release
       uses: ncipollo/release-action@v1
