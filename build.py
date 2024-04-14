@@ -103,7 +103,7 @@ def main():
   if os.environ["GITHUB_ACTIONS"] == "true":
     print("::set-output name=toc_version::" + get_version_from_toc())
 
-  if os.environ["GITHUB_SHA"]:
+  if os.environ["GITHUB_SHA"] and len(os.environ["GITHUB_SHA"]) >= 7:
     short_commit_hash = os.environ["GITHUB_SHA"][:7]
     for toc_file in [f"{build_dir}/QuestieDB-Classic.toc", f"{build_dir}/QuestieDB-BCC.toc", f"{build_dir}/QuestieDB-WOTLKC.toc"]:
       print(f"Adding sha {short_commit_hash} commit hash to toc file: {toc_file}")
@@ -113,7 +113,7 @@ def main():
         for line in full_file:
           if "## Version:" in line:
             version = line.split(":")[1].strip()
-            f.write(f"## Version: {version}+{short_commit_hash}\n")
+            f.write(f"## Version: {version}-{short_commit_hash}\n")
           else:
             f.write(line)
 
