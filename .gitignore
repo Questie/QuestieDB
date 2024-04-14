@@ -1,5 +1,8 @@
 # No Data files
 Database/*/**/*.html
+# No Meta-Data files
+Database/*/*/*Data*.xml
+Database/*/*/*Data*.html
 
 .shit
 .translator
