@@ -62,15 +62,12 @@ jobs:
         type: 'zip'
         directory: './.build/'
         path: './QuestieDB'
-        filename: './QuestieDB.zip'
-
-    - name: Build directory 'ls'
-      run: ls -la .build/QuestieDB
+        filename: './QuestieDB-v${{ steps.build.outputs.toc_version }}.zip'
 
     - name: Publish release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "./.build/QuestieDB.zip"
+        artifacts: "./.build/QuestieDB-v${{ steps.build.outputs.toc_version }}.zip"
         name: "Release version ${{ steps.build.outputs.toc_version }}"
         body: "Release body"
         commit: "${{ github.sha }}"
