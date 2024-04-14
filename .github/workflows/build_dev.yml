@@ -56,10 +56,10 @@ jobs:
     # Create the QuestieDB build, will output toc_version
     - name: Build QuestieDB
       id: build
-      run: python build.py QuestieDB ${{ github.sha }}
+      run: python build.py QuestieD
       env:
         GITHUB_ACTIONS: "true"
-        DEV_RELEASE: "true"
+        GITHUB_SHA: "${{ github.sha }}"
 
     - name: Create QuestieDB.zip
       uses: TheDoctor0/zip-release@0.7.6
