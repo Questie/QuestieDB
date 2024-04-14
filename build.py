@@ -106,7 +106,7 @@ def main():
   if os.environ["GITHUB_SHA"]:
     short_commit_hash = os.environ["GITHUB_SHA"][:7]
     for toc_file in [f"{build_dir}/QuestieDB-Classic.toc", f"{build_dir}/QuestieDB-BCC.toc", f"{build_dir}/QuestieDB-WOTLKC.toc"]:
-      print(f"Adding sha {short_commit_hash} commit hash to toc file")
+      print(f"Adding sha {short_commit_hash} commit hash to toc file: {toc_file}")
       with open(toc_file, "r") as f:
         full_file = f.readlines()
       with open(toc_file, "w") as f:
