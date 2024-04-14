@@ -220,12 +220,16 @@ local function loadTOC(file)
         line = line:gsub("%s+", "")
         print("Loading XML:  ", line)
         local filedata = io.open(line, "r")
-        local filetext = filedata:read("*all")
-        local xmlFilePath = line:match("^(.*)/.-%.xml$") .. "/"
-        -- print(xmlFilePath)
-        for xmlFile in string.gmatch(filetext, "<Script.-file%=\"(.-)\"") do
-          print("  Loading file: ", xmlFilePath .. xmlFile)
-          loadFile(xmlFilePath .. xmlFile)
+        -- Only load the file if it exists
+        -- If you generate for the first time some files in the toc arn't present
+        if filedata then
+          local filetext = filedata:read("*all")
+          local xmlFilePath = line:match("^(.*)/.-%.xml$") .. "/"
+          -- print(xmlFilePath)
+          for xmlFile in string.gmatch(filetext, "<Script.-file%=\"(.-)\"") do
+            print("  Loading file: ", xmlFilePath .. xmlFile)
+            loadFile(xmlFilePath .. xmlFile)
+          end
         end
       end
     end
