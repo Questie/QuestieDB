@@ -60,8 +60,9 @@ jobs:
       uses: TheDoctor0/zip-release@0.7.6
       with:
         type: 'zip'
-        path: './.build/QuestieDB'
-        filename: './.build/QuestieDB.zip'
+        directory: './.build/'
+        path: './QuestieDB'
+        filename: './QuestieDB.zip'
 
     - name: Build directory 'ls'
       run: ls -la .build/QuestieDB
