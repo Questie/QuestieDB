@@ -8,6 +8,11 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ dev ]
+    paths:
+      - '**.lua'
+      - '**.lua-table'
+      - '**.toc'
+  workflow_dispatch:
 
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -59,8 +64,9 @@ jobs:
       uses: TheDoctor0/zip-release@0.7.6
       with:
         type: 'zip'
-        path: './.build/QuestieDB'
-        filename: './.build/QuestieDB.zip'
+        directory: './.build/'
+        path: './QuestieDB'
+        filename: './QuestieDB.zip'
 
     - name: Build directory 'ls'
       run: ls -la .build/QuestieDB
@@ -70,7 +76,7 @@ jobs:
       with:
         artifacts: "./.build/QuestieDB.zip"
         name: "Development build version ${{ steps.build.outputs.toc_version }}"
-        body: "Build release body"
+        body: "# Warning this is a development build, use at own risk!!\nBuild release body"
         commit: "${{ github.sha }}"
         tag: "v${{ steps.build.outputs.toc_version }}"
         prerelease: true
