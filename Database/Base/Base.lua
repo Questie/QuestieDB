@@ -208,9 +208,6 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
   end
 
   local function InitializeIdString()
-    -- If the addon is running in a CLI environment, return early to prevent errors.
-    if Is_CLI then return end
-
     wipe(AllIdStrings)
     local func, idString = Database.GetAllEntityIdsFunction(captializedType)
     -- TODO: Maybe we should sort this list?
