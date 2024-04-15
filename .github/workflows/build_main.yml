@@ -46,6 +46,15 @@ jobs:
     - name: Generate HTML
       run: sh .generate_database/dumpDB.sh ./.lua/bin/lua
 
+    - name: Run Era Tests
+      run: lua ./.tests/runTests.lua Era
+
+    - name: Run Tbc Tests
+      run: lua ./.tests/runTests.lua Tbc
+
+    - name: Run Wotlk Tests
+      run: lua ./.tests/runTests.lua Wotlk
+
     # Create the QuestieDB build, will output toc_version
     - name: Build QuestieDB
       id: build
