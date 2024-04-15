@@ -3,6 +3,7 @@
 # pip install git+https://github.com/SirAnthony/slpp
 import os
 import concurrent.futures
+import multiprocessing
 import math
 import sys
 from slpp import slpp as lua
@@ -28,6 +29,7 @@ max_p_size = 4000
 
 # The main logic function, it uses the decoded data to create HTML files.
 def process_expansion(expansion_name, entity_type, expansion_data):
+  expansion_data = lua.decode(expansion_data)
   entity_type_lower = entity_type.lower()
   entity_type_plural = entity_type_lower + "s"
   entity_type_capitalized = entity_type.capitalize()
@@ -234,12 +236,13 @@ def dumpHTML(expansions, threaded=True):
     for entity_type in entity_types:
       print(f"Reading {expansion} lua {entity_type.lower()} data")
       raw_expansion_data = read_expansion_data(expansion, entity_type)
-      print(f"Decoding {expansion} lua {entity_type.lower()} data to python {entity_type.lower()}")
-      all_expansion_data[expansion][entity_type] = lua.decode(raw_expansion_data)
+      # print(f"Decoding {expansion} lua {entity_type.lower()} data to python {entity_type.lower()}")
+      all_expansion_data[expansion][entity_type] = raw_expansion_data  # lua.decode(raw_expansion_data)
 
   # Process all expansions in separate threads
   if threaded:
-    with concurrent.futures.ThreadPoolExecutor() as executor:
+    with concurrent.futures.ProcessPoolExecutor() as executor:
+      # Using ProcessPoolExecutor to utilize multiple processes
       futures = [executor.submit(process_expansion, expansion, entity_type, all_expansion_data[expansion][entity_type]) for expansion in expansions for entity_type in entity_types]
 
       # Wait for all threads to complete
