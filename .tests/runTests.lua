@@ -56,7 +56,7 @@ local excludedDirectories = {
 function FindFile(searchName)
   local function search(path)
     for file in lfs.dir(path) do
-      if file ~= "." and file ~= ".." then
+      if file ~= "." and file ~= ".." and file ~= ".build" then
         local f = path .. '/' .. file
         local attr = lfs.attributes(f)
         if attr.mode == 'directory' then
@@ -246,7 +246,7 @@ C_Map = {}
 local addonName = "QuestieDB"
 local addonTable = {}
 
-local function print(...)
+function print(...)
   local printstring = ""
   for i = 1, select("#", ...) do
     local arg = select(i, ...)
@@ -256,6 +256,8 @@ local function print(...)
       printstring = printstring .. "  " .. tostring(arg)
     end
   end
+  -- Remove colors from the string "|cFFffff00"
+  printstring = printstring:gsub("|c%x%x%x%x%x%x%x%x", "")
   io.stdout:write(printstring .. "\n")
   io.stdout:flush()
 end
@@ -403,6 +405,8 @@ local function DumpDatabase(version)
   ---@param dataIds number[]
   ---@param functionOrder function[]
   local function printDetails(dataType, dataDB, dataIds, functionOrder)
+    local functions_tested = 0
+    local ids_tested = 0
     for _, dataId in pairs(dataIds) do
       local printText = {}
       table.insert(printText, string.format("----------------- %s %s", dataType, dataId))
@@ -422,9 +426,12 @@ local function DumpDatabase(version)
         else
           error(string.format("Function %s not found", functionName))
         end
+        functions_tested = functions_tested + 1
       end
+      ids_tested = ids_tested + 1
       -- print(table.concat(printText, "\n"))
     end
+    print(f("  Tested %d functions for %d ids", functions_tested, ids_tested))
   end
 
   print("------------------ Public Item")
