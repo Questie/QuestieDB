@@ -1,17 +1,19 @@
 # This is a basic workflow that is manually triggered
 
-name: Development QuestieDB (Dev branch)
+name: Nightly Development build QuestieDB (Dev branch)
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ dev ]
-    paths:
-      - '**.lua'
-      - '**.lua-table'
-      - '**.toc'
+  # push:
+  #   branches: [ dev ]
+  #   paths:
+  #     - '**.lua'
+  #     - '**.lua-table'
+  #     - '**.toc'
+  schedule:
+  - cron: "0 0 * * *"
   workflow_dispatch:
 
 
@@ -36,8 +38,8 @@ jobs:
       uses: leafo/gh-actions-luarocks@v4.3.0
 
     # Install LuaRocks packages
-    - name: Install bit32
-      run: luarocks install bit32
+    # - name: Install bit32
+    #   run: luarocks install bit32
 
     - name: Install argparse
       run: luarocks install argparse
@@ -73,7 +75,7 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         artifacts: "./.build/QuestieDB-${{ steps.build.outputs.toc_version }}-dev-${{ github.sha }}.zip"
-        name: "Development build version ${{ steps.build.outputs.toc_version }}"
+        name: "Nightly Development build version ${{ steps.build.outputs.toc_version }}"
         body: "# Warning this is a development build, use at own risk!!\n### SHA: ${{ github.sha }}\nBuild release body"
         commit: "${{ github.sha }}"
         tag: "dev-release"
