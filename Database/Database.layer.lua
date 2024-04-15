@@ -60,10 +60,8 @@ function Database.CreateFrame(frameType, name, parent, template, id)
   -- Is_CLI is set in the CLI environment, otherwise it is nil
   ---@diagnostic disable-next-line: undefined-global
   if Is_CLI then
-    print("Database.CreateFrame", frameType, name, parent, template, id)
     assert(frameType == "SimpleHTML" or frameType == "Frame", "Only SimpleHTML frames are supported in the CLI environment.")
     if frameType == "SimpleHTML" then
-      print("SimpleHTML frame")
       if Database.TemplateToPath == nil then
         Database.GetTemplateNames()
       end
