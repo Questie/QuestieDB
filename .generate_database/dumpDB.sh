@@ -69,12 +69,7 @@ cd .generate_database
 echo "Dumping all databases - dump.py"
 
 # Generate the HTML files
-for name in Era Tbc Wotlk
-do
-  python3 ./dump.py False $name &
-done
-
-wait
+python3 ./dump.py Era Tbc Wotlk
 
 echo "Done dumping HTML files"
 
