@@ -28,6 +28,8 @@ jobs:
     steps:
     - name: Check out ${{ github.repository }} code
       uses: actions/checkout@v4
+      with:
+        ref: dev
 
     - name: Install Lua 5.1.5
       uses: leafo/gh-actions-lua@v10
