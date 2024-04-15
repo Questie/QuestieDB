@@ -27,6 +27,8 @@ function Database.GetTemplateNames()
       local templateName, filePath = line:match('<SimpleHTML name="([^"]+)" file="Interface\\AddOns\\QuestieDB\\([^"]+)"')
       if templateName and filePath then
         Database.TemplateToPath[templateName] = "./" .. filePath:gsub("\\", "/")
+        -- I was stupid once upon a time and saved the folder as lowercase... stupid me...
+        Database.TemplateToPath[templateName] = Database.TemplateToPath[templateName]:gsub("/L10n/", "/l10n/")
       end
     end
   end
