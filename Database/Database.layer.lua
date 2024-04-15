@@ -27,6 +27,8 @@ function Database.GetTemplateNames()
       local templateName, filePath = line:match('<SimpleHTML name="([^"]+)" file="Interface\\AddOns\\QuestieDB\\([^"]+)"')
       if templateName and filePath then
         Database.TemplateToPath[templateName] = "./" .. filePath:gsub("\\", "/")
+        -- I was stupid once upon a time and saved the folder as lowercase... stupid me...
+        Database.TemplateToPath[templateName] = Database.TemplateToPath[templateName]:gsub("/L10n/", "/l10n/")
       end
     end
   end
@@ -60,10 +62,8 @@ function Database.CreateFrame(frameType, name, parent, template, id)
   -- Is_CLI is set in the CLI environment, otherwise it is nil
   ---@diagnostic disable-next-line: undefined-global
   if Is_CLI then
-    print("Database.CreateFrame", frameType, name, parent, template, id)
     assert(frameType == "SimpleHTML" or frameType == "Frame", "Only SimpleHTML frames are supported in the CLI environment.")
     if frameType == "SimpleHTML" then
-      print("SimpleHTML frame")
       if Database.TemplateToPath == nil then
         Database.GetTemplateNames()
       end
