@@ -96,6 +96,20 @@
         "**/*.xml",
         "**/*.toc",
     ],
+    "todohighlight.exclude": [
+      "**/node_modules/**",
+      "**/bower_components/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/.vscode/**",
+      "**/.github/**",
+      "**/_output/**",
+      "**/*.min.*",
+      "**/*.map",
+      "**/.next/**",
+      ".build",
+      "venv"
+    ],
     "todohighlight.maxFilesForSearch": 5120,
     "todohighlight.toggleURI": false,
 }
