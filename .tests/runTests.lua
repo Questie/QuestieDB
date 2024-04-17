@@ -79,9 +79,6 @@ function FindFile(searchName)
   return search(lfs.currentdir())
 end
 
--- Used to print extra information and the like when generating the database
-local cli_debug = false
-
 ---@type LibQuestieDB
 LibQuestieDBTable = {}
 
@@ -104,7 +101,6 @@ QUEST_OBJECTS_FOUND = "QUEST_OBJECTS_FOUND"
 ERR_QUEST_ACCEPTED_S = "ERR_QUEST_ACCEPTED_S"
 ERR_QUEST_COMPLETE_S = "ERR_QUEST_COMPLETE_S"
 
-local assert = assert
 local type = type
 local f = string.format
 
@@ -126,6 +122,7 @@ GetAddOnMetadata = function()
   return "1"
 end
 GetTime = function()
+  ---@diagnostic disable-next-line: param-type-mismatch
   return os.time(os.date("!*t")) - 1616930000 -- convert unix time to wow time (actually accurate)
 end
 IsAddOnLoaded = function() return false, true end

@@ -591,7 +591,7 @@ end
 --                 entryData[dataIndexNumber] = {
 --                   -- This emulates the frame function name so we can use the same code for both
 --                   GetText = function()
---                     -- TODO: Is tConcat faster than ..?
+--                     -- TO DO: Is tConcat faster than ..?
 --                     local ret = {}
 --                     for i = 1, #segments do
 --                       ret[i] = segments[i]:GetText()

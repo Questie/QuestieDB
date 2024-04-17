@@ -1,19 +1,27 @@
 # This is a basic workflow that is manually triggered
 
-name: Nightly Development build QuestieDB (Dev branch)
+name: Development build QuestieDB (Dev branch)
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  # push:
-  #   branches: [ dev ]
-  #   paths:
-  #     - '**.lua'
-  #     - '**.lua-table'
-  #     - '**.toc'
+  push:
+    branches: [ dev ]
+    paths:
+      - "Database/**/*.lua-table" # Rebuild on database changes.
+      - "**.lua"
+      - "**.toc"
+      - "**.xml"
+      - "!.*"
+      - "!cli"
+      - "!venv"
+      - "!*/Include/**" # venv type folders
+      - "!*/Lib/**" # venv type folders
+      - "!*/Scripts/**" # venv type folders
   schedule:
-  - cron: "0 0 * * *"
+  # We do it every 6 hours because we have people from all around the world, daily would be wonky
+  - cron: "0 */6 * * *"
   workflow_dispatch:
 
 
@@ -83,7 +91,7 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         artifacts: "./.build/QuestieDB-${{ steps.build.outputs.toc_version }}-dev-${{ github.sha }}.zip"
-        name: "Nightly Development build version ${{ steps.build.outputs.toc_version }}"
+        name: "Automatic Development build version ${{ steps.build.outputs.toc_version }}"
         body: "# Warning this is a development build, use at own risk!!\n### SHA: ${{ github.sha }}\nBuild release body"
         commit: "${{ github.sha }}"
         tag: "dev-release"
