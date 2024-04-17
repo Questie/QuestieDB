@@ -8,6 +8,17 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
+    paths:
+      - "**.lua-table" # Rebuild on database changes.
+      - "**.lua"
+      - "**.toc"
+      - "**.xml"
+      - "!.*"
+      - "!cli"
+      - "!venv"
+      - "!*/Include/**" # venv type folders
+      - "!*/Lib/**" # venv type folders
+      - "!*/Scripts/**" # venv type folders
   workflow_dispatch:
 
 
