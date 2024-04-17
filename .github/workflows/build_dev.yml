@@ -19,6 +19,10 @@ on:
       - "!*/Include/**" # venv type folders
       - "!*/Lib/**" # venv type folders
       - "!*/Scripts/**" # venv type folders
+      # Build when buildscripts change as well.
+      - ".generate_database/*.lua"
+      - ".generate_database/*.py"
+      - ".generate_database/*.sh"
   schedule:
   # We do it every 6 hours because we have people from all around the world, daily would be wonky
   - cron: "0 */6 * * *"
