@@ -3,8 +3,8 @@ require("cli.dump")
 local argparse = require("argparse")
 
 -- Used to print extra information and the like when generating the database
-local cli_debug = false
 Is_CLI = true
+Is_Create_Static = true
 
 ---@type LibQuestieDB
 LibQuestieDBTable = {}
