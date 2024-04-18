@@ -58,7 +58,7 @@ jobs:
     # Create the QuestieDB build, will output toc_version
     - name: Build QuestieDB
       id: build
-      run: python build.py QuestieDB
+      run: python build.py build QuestieDB
       env:
         GITHUB_ACTIONS: "true"
 
