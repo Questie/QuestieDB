@@ -22,9 +22,6 @@ require("cli.builtins.C_Timer")
 -- Used to print extra information and the like when generating the database
 Is_CLI = true
 
-
----@type LibQuestieDB
-LibQuestieDBTable = {}
 -- WoW addon namespace
 CLI_addonName = "QuestieDB"
 CLI_addonTable = {}
@@ -48,7 +45,17 @@ StaticPopupDialogs = {}
 do
   local initByVersion = {
     ["Era"] = function()
+      ---@type LibQuestieDB
       LibQuestieDBTable = {}
+
+      -- When creating the static database, we load the QuestieDB which writes to this global, so we reset it here
+      QuestieDB = {}
+      -- Same here, the old Questie code expects this.
+      QuestieLoader = {
+        ImportModule = function()
+          return QuestieDB
+        end,
+      }
 
       GetBuildInfo = function()
         return "1.14.3", "44403", "Jun 27 2022", 11403
@@ -57,9 +64,21 @@ do
       WOW_PROJECT_ID = WOW_PROJECT_CLASSIC
 
       CLI_Helpers.loadTOC("QuestieDB-Classic.toc")
+
+      return LibQuestieDBTable
     end,
     ["Tbc"] = function()
+      ---@type LibQuestieDB
       LibQuestieDBTable = {}
+
+      -- When creating the static database, we load the QuestieDB which writes to this global, so we reset it here
+      QuestieDB = {}
+      -- Same here, the old Questie code expects this.
+      QuestieLoader = {
+        ImportModule = function()
+          return QuestieDB
+        end,
+      }
 
       GetBuildInfo = function()
         return "2.5.1", "38644", "May 11 2021", 20501
@@ -68,9 +87,21 @@ do
       WOW_PROJECT_ID = WOW_PROJECT_BURNING_CRUSADE_CLASSIC
 
       CLI_Helpers.loadTOC("QuestieDB-BCC.toc")
+
+      return LibQuestieDBTable
     end,
     ["Wotlk"] = function()
+      ---@type LibQuestieDB
       LibQuestieDBTable = {}
+
+      -- When creating the static database, we load the QuestieDB which writes to this global, so we reset it here
+      QuestieDB = {}
+      -- Same here, the old Questie code expects this.
+      QuestieLoader = {
+        ImportModule = function()
+          return QuestieDB
+        end,
+      }
 
       GetBuildInfo = function()
         return "3.4.0", "44644", "Jun 12 2022", 30400
@@ -79,16 +110,19 @@ do
       WOW_PROJECT_ID = WOW_PROJECT_WRATH_CLASSIC
 
       CLI_Helpers.loadTOC("QuestieDB-WOTLKC.toc")
+
+      return LibQuestieDBTable
     end,
   }
 
   --- (Re-)Initializes the global variables for the addon
   ---@param version "Era"|"Tbc"|"Wotlk"
+  ---@return LibQuestieDB
   function AddonInitializeVersion(version)
     local lowerVersion = version:lower()
     local capitalizedVersion = lowerVersion:gsub("^%l", string.upper)
     assert(initByVersion[capitalizedVersion], "Invalid version: " .. version)
-    initByVersion[capitalizedVersion]()
+    return initByVersion[capitalizedVersion]()
   end
 
   function DoesVersionExist(version)
