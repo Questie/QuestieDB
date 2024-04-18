@@ -1,3 +1,8 @@
+-- replace the C functions with local lua versions
+function getglobal(varr)
+  return _G[varr];
+end
+
 ------------------------------------------------------------------------------
 -- Dump.lua
 --

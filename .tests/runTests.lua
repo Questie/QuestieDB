@@ -3,35 +3,11 @@ require("cli.dump")
 local argparse = require("argparse")
 local lfs = require('lfs')
 
-Is_CLI = true
--- Blizzard functions
+require("cli.Addon_Meta")
+
+local f = string.format
+
 do
-  local startTime = os.clock()
-  function debugprofilestart()
-    startTime = os.clock()
-  end
-
-  function debugprofilestop()
-    return (os.clock() - startTime) * 1000
-  end
-
-  ---@param delimiter string
-  ---@param str string
-  ---@param pieces? number
-  ---@return string[] chunks
-  function strsplittable(delimiter, str, pieces)
-    local t = {}
-    local i = 1
-    for s in string.gmatch(str, "([^" .. delimiter .. "]+)") do
-      t[i] = s
-      i = i + 1
-      if pieces and i > pieces then
-        break
-      end
-    end
-    return t
-  end
-
   ---@diagnostic disable-next-line: lowercase-global
   function printableTable(table)
     local tablestring = "{ "
@@ -79,315 +55,24 @@ function FindFile(searchName)
   return search(lfs.currentdir())
 end
 
----@type LibQuestieDB
-LibQuestieDBTable = {}
-
-local QuestieDB = {}
-QuestieLoader = {
-  ImportModule = function()
-    return QuestieDB
-  end,
-}
-
-WOW_PROJECT_ID = 2
-WOW_PROJECT_CLASSIC = 2
-WOW_PROJECT_BURNING_CRUSADE_CLASSIC = 5
-WOW_PROJECT_WRATH_CLASSIC = 11
-WOW_PROJECT_MAINLINE = 1
-
-QUEST_MONSTERS_KILLED = "QUEST_MONSTERS_KILLED"
-QUEST_ITEMS_NEEDED = "QUEST_ITEMS_NEEDED"
-QUEST_OBJECTS_FOUND = "QUEST_OBJECTS_FOUND"
-ERR_QUEST_ACCEPTED_S = "ERR_QUEST_ACCEPTED_S"
-ERR_QUEST_COMPLETE_S = "ERR_QUEST_COMPLETE_S"
-
-local type = type
-local f = string.format
-
-local _EmptyDummyFunction = function() end
-local _TableDummyFunction = function() return {} end
-
-SlashCmdList = {}
-
-coroutine.yield = _EmptyDummyFunction -- no need to yield in the cli (TODO: maybe find a less hacky fix)
-mod = function(a, b)
-  return a % b
-end
-bit = require("bit32")
-hooksecurefunc = _EmptyDummyFunction
-GetAddOnInfo = function()
-  return "QuestieDB", "QuestieDB", "desc", true, "INSECURE", false
-end
-GetAddOnMetadata = function()
-  return "1"
-end
-GetTime = function()
-  ---@diagnostic disable-next-line: param-type-mismatch
-  return os.time(os.date("!*t")) - 1616930000 -- convert unix time to wow time (actually accurate)
-end
-IsAddOnLoaded = function() return false, true end
-UnitFactionGroup = function()
-  return arg[1] or "Horde"
-end
-UnitClass = function()
-  return "Druid", "DRUID", 11
-end
-UnitLevel = function()
-  return 60
-end
-GetLocale = function()
-  return "enUS"
-end
-GetQuestGreenRange = function()
-  return 10
-end
-UnitName = function()
-  return "QuestieNPC"
-end
-
----@diagnostic disable-next-line: lowercase-global
-wipe = function(t)
-  for k in pairs(t) do
-    t[k] = nil
-  end
-  return t
-end
-
-LibStub = {
-  NewLibrary = _EmptyDummyFunction,
-  GetLibrary = _TableDummyFunction,
-}
-setmetatable(LibStub, {
-  __call = function(_, ...)
-    return { NewAddon = _TableDummyFunction, New = _TableDummyFunction, }
-  end,
-})
-StaticPopupDialogs = {}
-
-CreateFrame = function()
-  return {
-    Show = _EmptyDummyFunction,
-    SetScript = _EmptyDummyFunction,
-    RegisterEvent = _EmptyDummyFunction,
-  }
-end
-C_QuestLog = {}
-
---* C_Timer
-local timerList = {}
-local function drainTimerList()
-  for _, f in ipairs(timerList) do
-    f()
-  end
-  timerList = {}
-end
-C_Timer = {
-  After = function(_, f)
-    -- f()
-    timerList[#timerList + 1] = f
-  end,
-  NewTicker = function(_, f, times)
-    if times then
-      for _ = 1, times do
-        timerList[#timerList + 1] = f
-      end
-      -- else
-      --   -- hack
-      --   local finished = false
-      --   QuestieLoader:ImportModule("DBCompiler").ticker = {
-      --     Cancel = function()
-      --       finished = true
-      --     end,
-      --   }
-      --   while not finished do
-      --     f()
-      --   end
-    end
-  end,
-  ---@return cbObject
-  NewTimer = function(_, f)
-    timerList[#timerList + 1] = f
-    ---@diagnostic disable-next-line: return-type-mismatch
-    return nil
-  end,
-}
-
-C_Seasons = {
-  HasActiveSeason = function() return false end,
-}
--- replace the C functions with local lua versions
-function getglobal(varr)
-  return _G[varr];
-end
-
-function Round(value)
-  if value < 0.0 then
-    return math.ceil(value - .5);
-  end
-  return math.floor(value + .5);
-end
-
-ItemRefTooltip = {
-  SetHyperlink = _EmptyDummyFunction,
-  IsShown = _EmptyDummyFunction,
-  SetOwner = _EmptyDummyFunction,
-  Show = _EmptyDummyFunction,
-  Hide = _EmptyDummyFunction,
-  AddLine = _EmptyDummyFunction,
-  HookScript = _EmptyDummyFunction,
-}
-
-C_Map = {}
-
--- WoW addon namespace
-local addonName = "QuestieDB"
-local addonTable = {}
-
-function print(...)
-  local printstring = ""
-  for i = 1, select("#", ...) do
-    local arg = select(i, ...)
-    if arg == nil then
-      printstring = printstring .. "  " .. "nil"
-    else
-      printstring = printstring .. "  " .. tostring(arg)
-    end
-  end
-  -- Remove colors from the string "|cFFffff00"
-  printstring = printstring:gsub("|c%x%x%x%x%x%x%x%x", "")
-  io.stdout:write(printstring .. "\n")
-  io.stdout:flush()
-end
-
-local function loadFile(filepath)
-  -- Read file
-  local filedata = io.open(filepath, "r")
-  if not filedata then
-    print("Error loading " .. filepath .. " - File not found")
-    return
-  end
-  local filetext = filedata:read("*all")
-  filetext = filetext:gsub("select%(2, %.%.%.%)", "LibQuestieDBTable")
-  local pcallResult, errorMessage
-
-  local chunk = loadstring(filetext, filepath)
-  if chunk then
-    pcallResult, errorMessage = pcall(chunk, addonName, addonTable)
-  end
-  if pcallResult then
-    --print("Loaded " .. filepath)
-  else
-    if errorMessage then
-      print("Error loading " .. filepath .. ": " .. errorMessage)
-    else
-      print("Error loading " .. filepath .. " - No errorMessage")
-    end
-  end
-end
-
-local function loadTOC(file)
-  local rfile = io.open(file, "r")
-  for line in rfile:lines() do
-    -- If line is longer than 1 character and the first character is not a comment
-    if string.len(line) > 1 and string.byte(line, 1) ~= 35 then
-      -- If line is not a xml file
-      if (not string.find(line, ".xml")) then
-        line = line:gsub("\\", "/")
-        line = line:gsub("%s+", "")
-        print("Loading file: ", line)
-        loadFile(line)
-      elseif string.find(line, ".xml") then
-        line = line:gsub("\\", "/")
-        line = line:gsub("%s+", "")
-        print("Loading XML:  ", line)
-        local filedata = io.open(line, "r")
-        local filetext = filedata:read("*all")
-        local xmlFilePath = line:match("^(.*)/.-%.xml$") .. "/"
-        -- print(xmlFilePath)
-        for xmlFile in string.gmatch(filetext, "<Script.-file%=\"(.-)\"") do
-          print("  Loading file: ", xmlFilePath .. xmlFile)
-          loadFile(xmlFilePath .. xmlFile)
-        end
-      end
-    end
-  end
-end
-
-local initByVersion = {
-  ["Era"] = function()
-    LibQuestieDBTable = {}
-
-    QuestieDB = {}
-    QuestieLoader = {
-      ImportModule = function()
-        return QuestieDB
-      end,
-    }
-
-    GetBuildInfo = function()
-      return "1.14.3", "44403", "Jun 27 2022", 11403
-    end
-
-    WOW_PROJECT_ID = 2
-
-    loadTOC("QuestieDB-Classic.toc")
-  end,
-  ["Tbc"] = function()
-    LibQuestieDBTable = {}
-
-    QuestieDB = {}
-    QuestieLoader = {
-      ImportModule = function()
-        return QuestieDB
-      end,
-    }
-
-    GetBuildInfo = function()
-      return "2.5.1", "38644", "May 11 2021", 20501
-    end
-
-    WOW_PROJECT_ID = 5
-
-    loadTOC("QuestieDB-BCC.toc")
-  end,
-  ["Wotlk"] = function()
-    LibQuestieDBTable = {}
-
-    QuestieDB = {}
-    QuestieLoader = {
-      ImportModule = function()
-        return QuestieDB
-      end,
-    }
-
-    GetBuildInfo = function()
-      return "3.4.0", "44644", "Jun 12 2022", 30400
-    end
-
-    WOW_PROJECT_ID = 11
-
-    loadTOC("QuestieDB-WOTLKC.toc")
-  end,
-}
-
-local function DumpDatabase(version)
+local function RunTest(version)
   local lowerVersion = version:lower()
   local capitalizedVersion = lowerVersion:gsub("^%l", string.upper)
   print(f("\n\27[36mCompiling %s database...\27[0m", capitalizedVersion))
 
   -- Reset data objects, load the files and set wow version
-  initByVersion[capitalizedVersion]()
+  LibQuestieDBTable = AddonInitializeVersion(capitalizedVersion)
 
   -- Drain all the timers
   print("Pre-Drain timer list")
-  drainTimerList()
+  C_Timer.drainTimerList()
 
   print("Executing event: ADDON_LOADED")
-  LibQuestieDBTable.RegisteredEvents["ADDON_LOADED"](addonName)
+  LibQuestieDBTable.RegisteredEvents["ADDON_LOADED"](CLI_addonName or "QuestieDB")
 
   -- Drain all the timers
   print("ADDON_LOADED timer list")
-  drainTimerList()
+  C_Timer.drainTimerList()
 
   if not LibQuestieDBTable.Database.Initialized then
     error("Database not initialized")
@@ -503,39 +188,17 @@ end
 -- Add all
 versionString = versionString .. "All"
 
-local parser = argparse("createStatic", "createStatic.lua Era")
+local parser = argparse("runTests", "runTests.lua Era")
 parser:argument("version", f("Game version, %s.", versionString))
 
 local args = parser:parse()
 
 if args.version and validVersions[args.version:lower()] then
-  DumpDatabase(args.version)
+  RunTest(args.version)
 elseif args.version and args.version:lower() == "all" then
   for version in pairs(validVersions) do
-    DumpDatabase(version)
+    RunTest(version)
   end
 else
   print("No version specified")
 end
--- for _, questId in pairs(AllQuestIds) do
---   local printText = {}
---   table.insert(printText, f("----------------- Quest %s", questId))
---   for i = 1, #functionOrder do
---     local functionName = functionOrder[i]
---     if publicLibQuestieDB.Quest[functionName] then
---       local success, result = pcall(publicLibQuestieDB.Quest[functionName], questId)
---       if success then
---         if type(result) == "table" then
---           table.insert(printText, f("    %s: %s", functionName, printableTable(result)))
---         else
---           table.insert(printText, f("    %s: %s", functionName, tostring(result)))
---         end
---       else
---         error(f("Function %s failed for id %d: %s", functionName, questId, result))
---       end
---     else
---       error(f("Function %s not found", functionName))
---     end
---   end
---   print(table.concat(printText, "\n"))
--- end
