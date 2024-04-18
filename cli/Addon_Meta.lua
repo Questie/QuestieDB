@@ -29,6 +29,15 @@ LibQuestieDBTable = {}
 CLI_addonName = "QuestieDB"
 CLI_addonTable = {}
 
+-- "Client" data
+CLI_Locale = "enUS"
+
+-- "Player" data
+CLI_PlayerLevel = 60
+CLI_PlayerFaction = "Horde"
+CLI_PlayerClass = { "Druid", "DRUID", 11, }
+CLI_PlayerName = "Reebookie"
+
 _EmptyDummyFunction = function() end
 _TableDummyFunction = function() return {} end
 

@@ -29,22 +29,22 @@ IsAddOnLoaded = function() return false, true end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_UnitFactionGroup)
 UnitFactionGroup = function()
-  return arg[1] or "Horde"
+  return CLI_PlayerFaction or "Horde"
 end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_UnitClass)
 UnitClass = function()
-  return "Druid", "DRUID", 11
+  return unpack(CLI_PlayerClass or { "Druid", "DRUID", 11, })
 end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_UnitLevel)
 UnitLevel = function()
-  return 60
+  return CLI_PlayerLevel or 60
 end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_GetLocale)
 GetLocale = function()
-  return "enUS"
+  return CLI_Locale or "enUS"
 end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_GetQuestGreenRange)
@@ -54,7 +54,7 @@ end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_UnitName)
 UnitName = function()
-  return "Reebookie"
+  return CLI_PlayerName or "Reebookie"
 end
 
 ---@diagnostic disable-next-line: lowercase-global
