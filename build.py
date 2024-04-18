@@ -5,6 +5,7 @@
 import os
 import shutil
 import sys
+import json
 
 
 base_build_dir = "./.build"
@@ -61,63 +62,101 @@ def copy_files(src, dest):
   return files_copied
 
 
-def get_version_from_toc():
+def get_versions_from_toc(path="."):
   classic_version = None
   tbc_version = None
   wotlk_version = None
-  with open("QuestieDB-Classic.toc", "r") as f:
+  with open(f"{path}/QuestieDB-Classic.toc", "r") as f:
     for line in f:
       if "## Version:" in line:
         classic_version = line.split(":")[1].strip()
-  with open("QuestieDB-BCC.toc", "r") as f:
+  with open(f"{path}/QuestieDB-BCC.toc", "r") as f:
     for line in f:
       if "## Version:" in line:
         tbc_version = line.split(":")[1].strip()
-  with open("QuestieDB-WOTLKC.toc", "r") as f:
+  with open(f"{path}/QuestieDB-WOTLKC.toc", "r") as f:
     for line in f:
       if "## Version:" in line:
         wotlk_version = line.split(":")[1].strip()
-  if classic_version == tbc_version == wotlk_version:
-    return classic_version
+  versions = {"classic": classic_version, "tbc": tbc_version, "wotlk": wotlk_version}
+  return versions
+
+
+def validate_same_version(versions):
+  if versions["classic"] == versions["tbc"] == versions["wotlk"]:
+    return True
+  else:
+    return False
+
+
+def get_versionstring_from_toc():
+  versions = get_versions_from_toc()
+  if validate_same_version(versions):
+    return versions["classic"]
   else:
     raise Exception("Version mismatch")
 
 
+def export_version_github_actions(versions):
+  if "GITHUB_ACTIONS" in os.environ and os.environ["GITHUB_ACTIONS"] == "true":
+    print("::set-output name=toc_version::" + get_versionstring_from_toc())
+    versions = get_versions_from_toc()
+    split_version = versions["classic"].split(".")
+    print("::set-output name=major_toc_version::" + split_version[0])
+    print("::set-output name=minor_toc_version::" + split_version[1])
+    print("::set-output name=patch_toc_version::" + split_version[2])
+
+
 def main():
-  # Arg1 Build Directory Name
-  # Directory Name from args
+  # Arg 1 Command
   if len(sys.argv) > 1:
-    build_output = sys.argv[1]
+    command = sys.argv[1]
   else:
-    build_output = "QuestieDB." + get_version_from_toc()
+    command = "build"
 
-  if not os.path.exists(base_build_dir):
-    os.mkdir(base_build_dir)
+  if command == "build":
+    # Arg1 Build Directory Name
+    # Directory Name from args
+    if len(sys.argv) > 2:
+      build_output = sys.argv[2]
+    else:
+      build_output = "QuestieDB." + get_versionstring_from_toc()
+    if not os.path.exists(base_build_dir):
+      os.mkdir(base_build_dir)
 
-  build_dir = f"{base_build_dir}/{build_output}"
-  if not os.path.exists(build_dir):
-    os.mkdir(build_dir)
-  print(f"Copying files to build directory '{build_dir}'...")
-  copy_files(".", build_dir)
-  # If we are in github actions we output the toc version
-  if os.environ["GITHUB_ACTIONS"] == "true":
-    print("::set-output name=toc_version::" + get_version_from_toc())
+    build_dir = f"{base_build_dir}/{build_output}"
+    if not os.path.exists(build_dir):
+      os.mkdir(build_dir)
+    print(f"Copying files to build directory '{build_dir}'...")
+    copy_files(".", build_dir)
+    # If we are in github actions we output the toc version
+    versions = get_versions_from_toc()
+    export_version_github_actions(versions)
 
-  if os.environ["GITHUB_SHA"] and len(os.environ["GITHUB_SHA"]) >= 7:
-    short_commit_hash = os.environ["GITHUB_SHA"][:7]
-    for toc_file in [f"{build_dir}/QuestieDB-Classic.toc", f"{build_dir}/QuestieDB-BCC.toc", f"{build_dir}/QuestieDB-WOTLKC.toc"]:
-      print(f"Adding sha {short_commit_hash} commit hash to toc file: {toc_file}")
-      with open(toc_file, "r") as f:
-        full_file = f.readlines()
-      with open(toc_file, "w") as f:
-        for line in full_file:
-          if "## Version:" in line:
-            version = line.split(":")[1].strip()
-            f.write(f"## Version: {version}-{short_commit_hash}\n")
-          else:
-            f.write(line)
+    if "GITHUB_SHA" in os.environ and os.environ["GITHUB_SHA"] and len(os.environ["GITHUB_SHA"]) >= 7:
+      short_commit_hash = os.environ["GITHUB_SHA"][:7]
+      for toc_file in [f"{build_dir}/QuestieDB-Classic.toc", f"{build_dir}/QuestieDB-BCC.toc", f"{build_dir}/QuestieDB-WOTLKC.toc"]:
+        print(f"Adding sha {short_commit_hash} commit hash to toc file: {toc_file}")
+        with open(toc_file, "r") as f:
+          full_file = f.readlines()
+        with open(toc_file, "w") as f:
+          for line in full_file:
+            if "## Version:" in line:
+              version = line.split(":")[1].strip()
+              f.write(f"## Version: {version}-{short_commit_hash}\n")
+            else:
+              f.write(line)
 
-  print("Done")
+    print("Done")
+  elif command == "version":
+    # If we are in github actions we output the toc version
+    versions = get_versions_from_toc()
+    export_version_github_actions(versions)
+
+    print(json.dumps(get_versionstring_from_toc(), ensure_ascii=False))
+    return get_versionstring_from_toc()
+  else:
+    raise Exception(f"Unknown command: {command}")
 
 
 if __name__ == "__main__":
