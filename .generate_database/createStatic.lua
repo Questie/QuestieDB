@@ -96,70 +96,13 @@ local function dumpData(tbl, dataKeys, dumpFunctions, combineFunc)
   return table.concat(allResults)
 end
 
-local initByVersion = {
-  ["Era"] = function()
-    LibQuestieDBTable = {}
-
-    QuestieDB = {}
-    QuestieLoader = {
-      ImportModule = function()
-        return QuestieDB
-      end,
-    }
-
-    GetBuildInfo = function()
-      return "1.14.3", "44403", "Jun 27 2022", 11403
-    end
-
-    WOW_PROJECT_ID = 2
-
-    CLI_Helpers.loadTOC("QuestieDB-Classic.toc")
-  end,
-  ["Tbc"] = function()
-    LibQuestieDBTable = {}
-
-    QuestieDB = {}
-    QuestieLoader = {
-      ImportModule = function()
-        return QuestieDB
-      end,
-    }
-
-    GetBuildInfo = function()
-      return "2.5.1", "38644", "May 11 2021", 20501
-    end
-
-    WOW_PROJECT_ID = 5
-
-    CLI_Helpers.loadTOC("QuestieDB-BCC.toc")
-  end,
-  ["Wotlk"] = function()
-    LibQuestieDBTable = {}
-
-    QuestieDB = {}
-    QuestieLoader = {
-      ImportModule = function()
-        return QuestieDB
-      end,
-    }
-
-    GetBuildInfo = function()
-      return "3.4.0", "44644", "Jun 12 2022", 30400
-    end
-
-    WOW_PROJECT_ID = 11
-
-    CLI_Helpers.loadTOC("QuestieDB-WOTLKC.toc")
-  end,
-}
-
 local function DumpDatabase(version)
   local lowerVersion = version:lower()
   local capitalizedVersion = lowerVersion:gsub("^%l", string.upper)
   print(f("\n\27[36mCompiling %s database...\27[0m", capitalizedVersion))
 
   -- Reset data objects, load the files and set wow version
-  initByVersion[capitalizedVersion]()
+  LibQuestieDBTable = AddonInitializeVersion(capitalizedVersion)
 
   -- Drain all the timers
   C_Timer.drainTimerList()

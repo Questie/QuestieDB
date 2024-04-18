@@ -61,7 +61,7 @@ local function RunTest(version)
   print(f("\n\27[36mCompiling %s database...\27[0m", capitalizedVersion))
 
   -- Reset data objects, load the files and set wow version
-  AddonInitializeVersion(capitalizedVersion)
+  LibQuestieDBTable = AddonInitializeVersion(capitalizedVersion)
 
   -- Drain all the timers
   print("Pre-Drain timer list")
