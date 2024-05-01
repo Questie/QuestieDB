@@ -1,0 +1,7 @@
+<Ui>
+  <Script file="base/sodBaseItems.lua"/>
+  <Script file="base/sodBaseNPCs.lua"/>
+  <Script file="base/sodBaseObjects.lua"/>
+  <Script file="base/sodBaseQuests.lua"/>
+  <Script file="static/sodItemQuestStartFixes.lua"/>
+</Ui>
