@@ -53,6 +53,8 @@ Database\Quest\Quest.xml
 ##* Corrections
 ### Corrections - Era
 Corrections\Era\_EraCorrections.xml
+### Corrections - Sod
+Corrections\Sod\_SodCorrections.xml
 ### Corrections - Tbc
 # Corrections\Tbc\_TbcCorrections.xml
 ### Corrections - Wotlk
