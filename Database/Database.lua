@@ -217,30 +217,40 @@ function Database.Override(overrideData, overrideTable, keys)
 end
 
 ---Used to add new Ids into the master list of ids for that type
----@param AllIdStrings string[] @A list of strings containing the ids in the database, will be concatinated into one string
----@param dataOverride table @The data to check for new ids
----@return QuestId[]|NpcId[]|ObjectId[]|ItemId[] @Returns a list of new ids
-function Database.GetNewIds(AllIdStrings, dataOverride)
-  -- We add , to the start and end of the string so we can search for ,id, in the string
-  local allIds = "," .. tConcat(AllIdStrings, ",") .. ","
+do
+  -- Table used to store the ids for the current call
+  local allIdsSet = {}
+  ---Used to add new Ids into the master list of ids for that type
+  ---@param AllIdStrings string @A list of strings containing the ids in the database, will be concatinated into one string
+  ---@param dataOverride table<number, any> @The data to check for new ids
+  ---@return QuestId[]|NpcId[]|ObjectId[]|ItemId[] @Returns a list of new ids
+  function Database.GetNewIds(AllIdStrings, dataOverride)
+    -- Split the string into a table of strings
+    local allIds = strsplittable(",", AllIdStrings)
 
-  -- Table to store the new ids
-  local newIds = {}
-
-  -- Add all the ids to the allIds table
-  for id in pairs(dataOverride) do
-    -- Search in the idString if ,id, is found
-    -- local found, e, d = allIds:find("(,*" .. id .. ",*)")
-    local found = sFind(allIds, "," .. id .. ",")
-    if not found then
-      -- Print what we found
-      if not Database.debugLoadStaticEnabled and Database.debugPrintEnabled and Database.debugEnabled then
-        LibQuestieDB.ColorizePrint("reputationBlue", "  Adding new ID", id)
-      end
-      tInsert(newIds, id)
+    -- Create a hash set for all existing IDs
+    for i = 1, #allIds do
+      allIdsSet[allIds[i]] = true
     end
+
+    -- Table to store the new ids
+    local newIds = {}
+    -- Add all the ids to the allIds table
+    for id in pairs(dataOverride) do
+      if not allIdsSet[tostring(id)] then
+        -- Print what we found
+        -- if not Database.debugLoadStaticEnabled and Database.debugPrintEnabled and Database.debugEnabled then
+        --   LibQuestieDB.ColorizePrint("reputationBlue", "  Adding new ID", id)
+        -- end
+        tInsert(newIds, id)
+      end
+    end
+
+    -- Wipe it for the next call
+    -- Do it at the end so when it is called the last time it is wiped.
+    wipe(allIdsSet)
+    return newIds
   end
-  return newIds
 end
 
 --*-------------------------------------------
