@@ -51,12 +51,13 @@ local frameType = "SimpleHTML"
 local strsplittable = strsplittable
 local tConcat = table.concat
 
-local tonumber = tonumber
-local loadstring = loadstring
-local gMatch = string.gmatch
-local tInsert = table.insert
-local sFind = string.find
-local format = string.format
+local tonumber      = tonumber
+local tostring      = tostring
+local loadstring    = loadstring
+local gMatch        = string.gmatch
+local tInsert       = table.insert
+local sFind         = string.find
+local format        = string.format
 
 local type = type
 local pairs = pairs
