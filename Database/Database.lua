@@ -46,10 +46,11 @@ local _nil = Database._nil
 
 ---- Local Functions ----
 --* For performance reasons we check Is_CLI here, Database.CreateFrame supports both CLI and WOW
-local CreateFrame = Is_CLI and Database.CreateFrame or CreateFrame
-local frameType = "SimpleHTML"
+local CreateFrame   = Is_CLI and Database.CreateFrame or CreateFrame
+local frameType     = "SimpleHTML"
 local strsplittable = strsplittable
-local tConcat = table.concat
+local tConcat       = table.concat
+local wipe          = wipe
 
 local tonumber      = tonumber
 local tostring      = tostring
@@ -58,10 +59,11 @@ local gMatch        = string.gmatch
 local tInsert       = table.insert
 local sFind         = string.find
 local format        = string.format
+local f             = string.format
 
-local type = type
-local pairs = pairs
-local assert = assert
+local type          = type
+local pairs         = pairs
+local assert        = assert
 
 function Database.Init()
   local startTotal = 0
