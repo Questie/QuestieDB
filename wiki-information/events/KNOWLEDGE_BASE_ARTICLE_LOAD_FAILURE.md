@@ -1,0 +1,10 @@
+## Event: KNOWLEDGE_BASE_ARTICLE_LOAD_FAILURE
+
+**Title:** KNOWLEDGE BASE ARTICLE LOAD FAILURE
+
+**Content:**
+Needs summary.
+`KNOWLEDGE_BASE_ARTICLE_LOAD_FAILURE`
+
+**Payload:**
+- `None`
