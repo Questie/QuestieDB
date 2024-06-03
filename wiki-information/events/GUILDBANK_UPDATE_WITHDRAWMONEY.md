@@ -1,0 +1,10 @@
+## Event: GUILDBANK_UPDATE_WITHDRAWMONEY
+
+**Title:** GUILDBANK UPDATE WITHDRAWMONEY
+
+**Content:**
+Needs summary.
+`GUILDBANK_UPDATE_WITHDRAWMONEY`
+
+**Payload:**
+- `None`

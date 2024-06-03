@@ -1,0 +1,10 @@
+## Event: BATTLEGROUND_OBJECTIVES_UPDATE
+
+**Title:** BATTLEGROUND OBJECTIVES UPDATE
+
+**Content:**
+Needs summary.
+`BATTLEGROUND_OBJECTIVES_UPDATE`
+
+**Payload:**
+- `None`

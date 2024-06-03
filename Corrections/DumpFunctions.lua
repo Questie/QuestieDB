@@ -29,6 +29,9 @@ end
 
 local tblMaxIndex = DumpFunctions.tblMaxIndex
 
+---Counts the number of key-value pairs in the given table.
+---@param tbl table The table to count the number of pairs in.
+---@return number count The number of key-value pairs in the table.
 function DumpFunctions.tblCount(tbl)
   local count = 0
   for _ in pairs(tbl) do

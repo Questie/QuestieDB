@@ -1,0 +1,10 @@
+## Event: PET_BATTLE_QUEUE_PROPOSAL_ACCEPTED
+
+**Title:** PET BATTLE QUEUE PROPOSAL ACCEPTED
+
+**Content:**
+Needs summary.
+`PET_BATTLE_QUEUE_PROPOSAL_ACCEPTED`
+
+**Payload:**
+- `None`

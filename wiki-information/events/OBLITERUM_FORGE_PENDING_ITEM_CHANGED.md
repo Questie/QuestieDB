@@ -1,0 +1,10 @@
+## Event: OBLITERUM_FORGE_PENDING_ITEM_CHANGED
+
+**Title:** OBLITERUM FORGE PENDING ITEM CHANGED
+
+**Content:**
+Needs summary.
+`OBLITERUM_FORGE_PENDING_ITEM_CHANGED`
+
+**Payload:**
+- `None`

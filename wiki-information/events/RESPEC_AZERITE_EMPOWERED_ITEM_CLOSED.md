@@ -1,0 +1,10 @@
+## Event: RESPEC_AZERITE_EMPOWERED_ITEM_CLOSED
+
+**Title:** RESPEC AZERITE EMPOWERED ITEM CLOSED
+
+**Content:**
+Needs summary.
+`RESPEC_AZERITE_EMPOWERED_ITEM_CLOSED`
+
+**Payload:**
+- `None`

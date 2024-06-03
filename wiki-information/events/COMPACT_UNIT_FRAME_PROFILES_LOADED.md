@@ -1,0 +1,10 @@
+## Event: COMPACT_UNIT_FRAME_PROFILES_LOADED
+
+**Title:** COMPACT UNIT FRAME PROFILES LOADED
+
+**Content:**
+Needs summary.
+`COMPACT_UNIT_FRAME_PROFILES_LOADED`
+
+**Payload:**
+- `None`
