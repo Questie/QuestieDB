@@ -1,0 +1,163 @@
+## Title: C_Item.GetItemInventoryType
+
+**Content:**
+Needs summary.
+`inventoryType = C_Item.GetItemInventoryType(itemLocation)`
+`inventoryType = C_Item.GetItemInventoryTypeByID(itemInfo)`
+
+**Parameters:**
+- **GetItemInventoryType:**
+  - `itemLocation`
+    - *ItemLocationMixin*
+
+- **GetItemInventoryTypeByID:**
+  - `itemInfo`
+    - *number|string* : Item ID, Link or Name
+
+**Returns:**
+- `inventoryType`
+  - *Enum.InventoryType*
+    - **Value**
+    - **Field**
+    - **ItemEquipLocGlobalString (enUS)**
+    - **InvSlotId**
+    - `0`
+      - **IndexNonEquipType**
+        - `INVTYPE_NON_EQUIP`
+        - Non-equippable
+    - `1`
+      - **IndexHeadType**
+        - `INVTYPE_HEAD`
+        - Head
+    - `2`
+      - **IndexNeckType**
+        - `INVTYPE_NECK`
+        - Neck
+    - `3`
+      - **IndexShoulderType**
+        - `INVTYPE_SHOULDER`
+        - Shoulder
+    - `4`
+      - **IndexBodyType**
+        - `INVTYPE_BODY`
+        - Shirt
+    - `5`
+      - **IndexChestType**
+        - `INVTYPE_CHEST`
+        - Chest
+    - `6`
+      - **IndexWaistType**
+        - `INVTYPE_WAIST`
+        - Waist
+    - `7`
+      - **IndexLegsType**
+        - `INVTYPE_LEGS`
+        - Legs
+    - `8`
+      - **IndexFeetType**
+        - `INVTYPE_FEET`
+        - Feet
+    - `9`
+      - **IndexWristType**
+        - `INVTYPE_WRIST`
+        - Wrist
+    - `10`
+      - **IndexHandType**
+        - `INVTYPE_HAND`
+        - Hands
+    - `11`
+      - **IndexFingerType**
+        - `INVTYPE_FINGER`
+        - Finger
+    - `12`
+      - **IndexTrinketType**
+        - `INVTYPE_TRINKET`
+        - Trinket
+    - `13`
+      - **IndexWeaponType**
+        - `INVTYPE_WEAPON`
+        - One-Hand
+    - `14`
+      - **IndexShieldType**
+        - `INVTYPE_SHIELD`
+        - Off Hand
+    - `15`
+      - **IndexRangedType**
+        - `INVTYPE_RANGED`
+        - Ranged
+    - `16`
+      - **IndexCloakType**
+        - `INVTYPE_CLOAK`
+        - Back
+    - `17`
+      - **Index2HweaponType**
+        - `INVTYPE_2HWEAPON`
+        - Two-Hand
+    - `18`
+      - **IndexBagType**
+        - `INVTYPE_BAG`
+        - Bag
+    - `19`
+      - **IndexTabardType**
+        - `INVTYPE_TABARD`
+        - Tabard
+    - `20`
+      - **IndexRobeType**
+        - `INVTYPE_ROBE`
+        - Chest
+    - `21`
+      - **IndexWeaponmainhandType**
+        - `INVTYPE_WEAPONMAINHAND`
+        - Main Hand
+    - `22`
+      - **IndexWeaponoffhandType**
+        - `INVTYPE_WEAPONOFFHAND`
+        - Off Hand
+    - `23`
+      - **IndexHoldableType**
+        - `INVTYPE_HOLDABLE`
+        - Held In Off-hand
+    - `24`
+      - **IndexAmmoType**
+        - `INVTYPE_AMMO`
+        - Ammo
+    - `25`
+      - **IndexThrownType**
+        - `INVTYPE_THROWN`
+        - Thrown
+    - `26`
+      - **IndexRangedrightType**
+        - `INVTYPE_RANGEDRIGHT`
+        - Ranged
+    - `27`
+      - **IndexQuiverType**
+        - `INVTYPE_QUIVER`
+        - Quiver
+    - `28`
+      - **IndexRelicType**
+        - `INVTYPE_RELIC`
+        - Relic
+    - `29`
+      - **IndexProfessionToolType**
+        - `INVTYPE_PROFESSION_TOOL`
+        - Profession Tool
+    - `30`
+      - **IndexProfessionGearType**
+        - `INVTYPE_PROFESSION_GEAR`
+        - Profession Equipment
+    - `31`
+      - **IndexEquipablespellOffensiveType**
+        - `INVTYPE_EQUIPABLESPELL_OFFENSIVE`
+        - Equipable Spell - Offensive
+    - `32`
+      - **IndexEquipablespellUtilityType**
+        - `INVTYPE_EQUIPABLESPELL_UTILITY`
+        - Equipable Spell - Utility
+    - `33`
+      - **IndexEquipablespellDefensiveType**
+        - `INVTYPE_EQUIPABLESPELL_DEFENSIVE`
+        - Equipable Spell - Defensive
+    - `34`
+      - **IndexEquipablespellWeaponType**
+        - `INVTYPE_EQUIPABLESPELL_WEAPON`
+        - Equipable Spell - Weapon

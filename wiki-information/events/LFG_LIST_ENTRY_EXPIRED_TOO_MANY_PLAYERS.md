@@ -1,0 +1,10 @@
+## Event: LFG_LIST_ENTRY_EXPIRED_TOO_MANY_PLAYERS
+
+**Title:** LFG LIST ENTRY EXPIRED TOO MANY PLAYERS
+
+**Content:**
+Needs summary.
+`LFG_LIST_ENTRY_EXPIRED_TOO_MANY_PLAYERS`
+
+**Payload:**
+- `None`
