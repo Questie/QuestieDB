@@ -102,6 +102,8 @@ SlashCmdList["QuestieDB"] = function(args)
     print("Localized math.floor", time1, "ms")
     print("Modulus to floor", time2, "ms")
   end
+  collectgarbage()
 end
+
 SLASH_QuestieDB1 = "/QuestieDB"
 SLASH_QuestieDB2 = "/qdb"
