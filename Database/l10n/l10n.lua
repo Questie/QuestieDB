@@ -9,9 +9,7 @@ local l10n = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.l10n, "l10n", {})
 l10n.currentLocale = GetLocale()
 -- Set this to nil to use the locale of the client
 -- Override locale
-l10n.currentLocale = "ptBR"
-
-GLOBl10n = l10n
+-- l10n.currentLocale = "ptBR"
 
 -- Order Item, Npc, Object, Quest
 -- "enUS": "", # English (US) # Yes EN is empty
@@ -45,20 +43,28 @@ local indexToLocale = {
 local localeToIndex = {}
 local localeToPattern = {}
 do
+  -- Populate the localeToIndex table with locale as key and its index as value
+  -- This helps in quickly finding the index of a given locale
   for k, v in pairs(indexToLocale) do
     localeToIndex[v] = k
   end
 
+  -- Function to create a pattern string for a given locale
+  -- This pattern is used to extract the localized string from a concatenated string of all locales
   local function createPatternForLocale(locale)
-    local patternString = "^"
-    local repeatPattern = ".-"
-    local capturePattern = "(.-)"
+    local patternString = "^"     -- Start of the string
+    local repeatPattern = ".-"    -- Non-greedy match for any character sequence
+    local capturePattern = "(.-)" -- Non-greedy match for any character sequence, to be captured
     for i = 1, localeToIndex[locale] do
-      patternString = patternString .. (i == localeToIndex[locale] and capturePattern or repeatPattern) .. (i == #indexToLocale and "$" or specialChar)
+      -- Append the appropriate pattern based on the current index
+      patternString = patternString .. (i == localeToIndex[locale] and capturePattern or repeatPattern)
+      patternString = patternString .. (i == #indexToLocale and "$" or specialChar)
     end
     return patternString
   end
 
+  -- Populate the localeToPattern table with locale as key and its pattern as value
+  -- This pattern is used to extract the localized string for the given locale
   for i = 1, #indexToLocale do
     localeToPattern[indexToLocale[i]] = createPatternForLocale(indexToLocale[i])
   end
