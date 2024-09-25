@@ -68,8 +68,10 @@ function CLI_Helpers.loadTOC(file)
           local xmlFilePath = line:match("^(.*)/.-%.xml$") .. "/"
           -- print(xmlFilePath)
           for xmlFile in string.gmatch(filetext, "<Script.-file%=\"(.-)\"") do
-            print("  Loading file: ", xmlFilePath .. xmlFile)
-            CLI_Helpers.loadFile(xmlFilePath .. xmlFile)
+            -- Replace \ with /
+            local slashxmlFile = xmlFile:gsub("\\", "/")
+            print("  Loading file: ", xmlFilePath .. slashxmlFile)
+            CLI_Helpers.loadFile(xmlFilePath .. slashxmlFile)
           end
         end
       end
