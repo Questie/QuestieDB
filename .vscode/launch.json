@@ -12,7 +12,9 @@
       "console": "internalConsole",
       "justMyCode": true,
       "cwd": "${workspaceFolder}/.translator",
-      "args": []
+      "args": [
+        "Era"
+      ]
     }
   ]
 }

@@ -65,6 +65,9 @@ local function find_addon_name()
     print("Found Addons folder: " .. addon_dir)
   end
 
+  -- Remove / or \ characters
+  addon_dir = addon_dir:gsub("[/\\]", "")
+
   return addon_dir
 end
 
