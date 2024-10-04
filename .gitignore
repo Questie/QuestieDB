@@ -6,7 +6,7 @@ Database/*/*/*Data*.html
 
 translations/*Lookup.lua
 translations/*Files.xml
-translations/data/*.html
+translations/_data/*.html
 
 .shit
 .translator
