@@ -4,6 +4,10 @@ Database/*/**/*.html
 Database/*/*/*Data*.xml
 Database/*/*/*Data*.html
 
+translations/*Lookup.lua
+translations/*Files.xml
+translations/data/*.html
+
 .shit
 .translator
 
@@ -55,3 +59,4 @@ Perfy
 .build
 
 .llm-output
+..wiki-information
