@@ -1,0 +1,4 @@
+<Ui>
+  <Script file="translationsFiles.xml"/>
+  <Script file="translationsLookup.lua"/>
+</Ui>
