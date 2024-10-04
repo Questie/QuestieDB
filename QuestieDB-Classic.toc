@@ -29,6 +29,8 @@ Database\Object\Era\ObjectDataFiles.xml
 Database\Quest\Era\QuestDataFiles.xml
 ## l10n
 Database\l10n\Era\L10nDataFiles.xml
+## Translations
+Translations\Translations.xml
 
 ##* Corrections Meta
 Corrections\MetaCorrections.xml

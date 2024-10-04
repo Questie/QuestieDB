@@ -4,9 +4,9 @@ Database/*/**/*.html
 Database/*/*/*Data*.xml
 Database/*/*/*Data*.html
 
-translations/*Lookup.lua
-translations/*Files.xml
-translations/_data/*.html
+Translations/*_gen.xml
+Translations/*_gen.lua
+Translations/_data/*.html
 
 .shit
 .translator

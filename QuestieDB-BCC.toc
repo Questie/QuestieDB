@@ -29,6 +29,8 @@ Database\Object\Tbc\ObjectDataFiles.xml
 Database\Quest\Tbc\QuestDataFiles.xml
 ## l10n
 Database\l10n\Tbc\L10nDataFiles.xml
+## Translations
+Translations\Translations.xml
 
 ##* Corrections Meta
 Corrections\MetaCorrections.xml
