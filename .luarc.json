@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  // "workspace.library": ["path/to/library/directory"],
+  "workspace.ignoreDir":[
+    ".generate_database",
+    ".vscode",
+    ".translator",
+    ".wowhead",
+    "**/.git",
+    "**/.cache",
+    "**/_data/**",
+    ".llm-output",
+    ".build",
+    "Perfy",
+  ],
+  // "runtime.version": "Lua 5.3",
+  // "hint.enable": false
+}
+

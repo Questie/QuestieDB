@@ -87,14 +87,30 @@ CLI_Helpers.loadTOC(".generate_database_lua/translations.toc")
 
 local single_translation = {}
 for key, value in pairs(translations) do
-  local translation = string.gsub(key, "\n", "<br>")
-  translation = string.gsub(translation, '"', '\\"')
-  table.insert(single_translation, translation)
+  -- local translation = string.gsub(key, "\n", "<br>")
+  -- translation = string.gsub(translation, '"', '\\"')
+  table.insert(single_translation, key)
 end
 
-require("generate_translation_trie")
 
-Compile_translations_to_html(single_translation)
+---comment
+---@param enUStext string
+---@return table<string, string|boolean>?
+---@return error?
+local function getTranslation(enUStext)
+  if translations[enUStext] then
+    return translations[enUStext], nil
+  else
+    return nil, "Translation not found for: " .. enUStext
+  end
+end
+
+
+require("generate_translation_trie_root")
+-- Find the addon name
+local addon_name = helpers.find_addon_name()
+print("Addon Name: " .. addon_name)
+Compile_translations_to_html(single_translation, addon_name, getTranslation)
 
 -- Run the main function
 -- main()

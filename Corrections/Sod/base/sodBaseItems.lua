@@ -8,8 +8,8 @@ local ItemMeta = Corrections.ItemMeta
 ---@class ItemBaseSod
 local ItemBase = {}
 
---? This is the "static" database for SOD, it always have to load first of all SOD fixes.
---? Sod should however always load last.
+--? This is the "static" database for SOD, out of ALL SoD fixes it should always load first.
+--? SoD as "expansion" should ALWAYS load last.
 C_Timer.After(0, function()
   if LibQuestieDB.IsSoD then
     Corrections.RegisterCorrectionDynamic("item",

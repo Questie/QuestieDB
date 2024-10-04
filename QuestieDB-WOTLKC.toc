@@ -29,6 +29,8 @@ Database\Object\Wotlk\ObjectDataFiles.xml
 Database\Quest\Wotlk\QuestDataFiles.xml
 ## l10n
 Database\l10n\Wotlk\L10nDataFiles.xml
+## Translations
+Translations\Translations.xml
 
 ##* Corrections Meta
 Corrections\MetaCorrections.xml
