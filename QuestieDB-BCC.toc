@@ -59,6 +59,8 @@ Corrections\Era\_EraCorrections.xml
 Corrections\Tbc\_TbcCorrections.xml
 ### Corrections - Wotlk
 # Corrections\Wotlk\_WotlkCorrections.xml
+### Corrections - Cata
+# Corrections\Cata\_CataCorrections.xml
 
 # Standalone
 QuestieDB.lua
