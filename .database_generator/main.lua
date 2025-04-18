@@ -35,6 +35,8 @@ end
 
 
 require("cli.Addon_Meta")
+
+-- ? This code makes it so that all ImportModule("l10n") gets redirected to the same table.
 local translations = {}
 QuestieLoader = {
   ImportModule = function()
@@ -42,7 +44,8 @@ QuestieLoader = {
   end,
 }
 
-CLI_Helpers.loadXML(".generate_database_lua/Questie-translations/Localization/Translations/Translations.xml")
+-- ? Load all the tables.
+CLI_Helpers.loadXML(helpers.get_project_dir_path() .. "/.database_generator/Questie-translations/Localization/Translations/Translations.xml")
 
 
 local single_translation = {}
@@ -71,8 +74,8 @@ require("generateTranslations")
 local addon_name = helpers.find_addon_name()
 print("Addon Name: " .. addon_name)
 
--- ! Temporarily disabled
--- Compile_translations_to_html(single_translation, addon_name, getTranslation)
+-- Generate Trie-translations
+Compile_translations_to_html(single_translation, addon_name, getTranslation)
 
 -- Run the main function
 main()
