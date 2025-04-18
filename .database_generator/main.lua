@@ -4,7 +4,7 @@ local script_path = debug.getinfo(1, "S").source:sub(2)
 local script_dir = script_path:match("(.*/)")
 package.path = script_dir .. "?.lua;" .. package.path
 
-local helpers = require("helpers")
+local helpers = require(".db_helpers")
 require("cli.CLI_Helpers")
 
 require(".createStatic")
