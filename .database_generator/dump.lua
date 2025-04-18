@@ -9,7 +9,7 @@ package.path = script_dir .. "?.lua;" .. package.path
 ---@diagnostic disable: invisible
 require("cli.dump")
 local argparse = require("argparse")
-local helpers = require(".helpers")
+local helpers = require(".db_helpers")
 
 require("cli.Addon_Meta")
 require("cli.CLI_Helpers")

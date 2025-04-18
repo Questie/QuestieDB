@@ -9,19 +9,17 @@ local script_dir = script_path:match("(.*/)")
 package.path = script_dir .. "?.lua;" .. package.path
 
 ---@type helpers
-local helpers = require("helpers")
-local lfs = require("lfs")
+local helpers = require(".db_helpers")
 
 ---@type string
 local base_url = "https://raw.githubusercontent.com/Questie/Questie/master/Database/"
+-- Use helper to get project path and define output relative to it
 ---@type string
-local output_base_dir = script_dir .. "/_data"
+local output_base_dir = helpers.get_project_dir_path() .. "/.database_generator/_data"
 
--- Ensure the output directory exists
-if not lfs.attributes(output_base_dir, "mode") then
-  lfs.mkdir(output_base_dir)
-  print("Created directory: " .. output_base_dir)
-end
+-- Ensure the output directory exists using the helper function
+helpers.ensureDirExists(output_base_dir)
+print("Ensured directory exists: " .. output_base_dir)
 
 ---@type string[]
 local entity_types = { "Item", "Npc", "Object", "Quest", }
