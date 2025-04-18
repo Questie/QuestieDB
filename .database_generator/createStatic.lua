@@ -129,24 +129,18 @@ function DumpDatabase(version)
   print("Dumping item overrides")
   local itemDataString = helpers.dumpData(itemOverride, Corrections.ItemMeta.itemKeys, Corrections.ItemMeta.dumpFuncs,
                                           Corrections.ItemMeta.combine)
-  ---@diagnostic disable-next-line: param-type-mismatch
   local itemFile = io.open(f("%s/_data/output/Item/%s/ItemData.lua-table", script_dir, capitalizedVersion), "w")
   assert(itemFile, "Failed to open file for writing")
-  ---@diagnostic disable-next-line: undefined-field
   itemFile:write(itemDataString)
-  ---@diagnostic disable-next-line: undefined-field
   itemFile:close()
   print("Dumping item overrides to HTML")
   GenerateHtmlForEntityType(itemOverride, Corrections.ItemMeta, "Item", version)
 
   print("Dumping quest overrides")
   local questDataString = helpers.dumpData(questOverride, Corrections.QuestMeta.questKeys, Corrections.QuestMeta.dumpFuncs)
-  ---@diagnostic disable-next-line: param-type-mismatch
   local questFile = io.open(f("%s/_data/output/Quest/%s/QuestData.lua-table", script_dir, capitalizedVersion), "w")
   assert(questFile, "Failed to open file for writing")
-  ---@diagnostic disable-next-line: undefined-field
   questFile:write(questDataString)
-  ---@diagnostic disable-next-line: undefined-field
   questFile:close()
   print("Dumping quest overrides to HTML")
   GenerateHtmlForEntityType(questOverride, Corrections.QuestMeta, "Quest", version)
@@ -154,12 +148,9 @@ function DumpDatabase(version)
   print("Dumping npc overrides")
   local npcDataString = helpers.dumpData(npcOverride, Corrections.NpcMeta.npcKeys, Corrections.NpcMeta.dumpFuncs,
                                          Corrections.NpcMeta.combine)
-  ---@diagnostic disable-next-line: param-type-mismatch
   local npcFile = io.open(f("%s/_data/output/Npc/%s/NpcData.lua-table", script_dir, capitalizedVersion), "w")
   assert(npcFile, "Failed to open file for writing")
-  ---@diagnostic disable-next-line: undefined-field
   npcFile:write(npcDataString)
-  ---@diagnostic disable-next-line: undefined-field
   npcFile:close()
   print("Dumping npc overrides to HTML")
   GenerateHtmlForEntityType(npcOverride, Corrections.NpcMeta, "Npc", version)
@@ -167,12 +158,9 @@ function DumpDatabase(version)
   print("Dumping object overrides")
   local objectDataString = helpers.dumpData(objectOverride, Corrections.ObjectMeta.objectKeys,
                                             Corrections.ObjectMeta.dumpFuncs)
-  ---@diagnostic disable-next-line: param-type-mismatch
   local objectFile = io.open(f("%s/_data/output/Object/%s/ObjectData.lua-table", script_dir, capitalizedVersion), "w")
   assert(objectFile, "Failed to open file for writing")
-  ---@diagnostic disable-next-line: undefined-field
   objectFile:write(objectDataString)
-  ---@diagnostic disable-next-line: undefined-field
   objectFile:close()
   print("Dumping object overrides to HTML")
   GenerateHtmlForEntityType(objectOverride, Corrections.ObjectMeta, "Object", version)
