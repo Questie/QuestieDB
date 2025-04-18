@@ -38,11 +38,13 @@ function ThreadLib.Thread(threadFunction, delay, errorMessage, callbackFunction)
     if (coStatus(thread) == "suspended") then --It's faster not to lookup the value but instead have it here
       local success = coResume(thread)
       -- Something in the coroutine went wrong, print the error and stop the timer
-      if not success then
+      if not success and timer then
         timer:Cancel();
       end
     elseif (coStatus(thread) == "dead") then --It's faster not to lookup the value but instead have it here
-      timer:Cancel();
+      if timer then
+        timer:Cancel();
+      end
       if (callbackFunction) then
         callbackFunction()
       end
@@ -79,5 +81,3 @@ end
 function ThreadLib.ThreadSimple(threadFunction, delay)
   return ThreadLib.Thread(threadFunction, delay)
 end
-
-return ThreadLib
