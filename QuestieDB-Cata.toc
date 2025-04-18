@@ -1,4 +1,4 @@
-## Interface: 30404
+## Interface: 40402
 ## Title: QuestieDB
 ## Author: Logon (Data: TheCrux/Drejjmit/Muehe/Yttrium/TechnoHunter/Everyone else)
 ## Notes: A standalone QuestieDB
@@ -23,12 +23,12 @@ Helpers\Helpers.lua
 
 #* Database
 ## Data embeds
-Database\Item\Wotlk\ItemDataFiles.xml
-Database\Npc\Wotlk\NpcDataFiles.xml
-Database\Object\Wotlk\ObjectDataFiles.xml
-Database\Quest\Wotlk\QuestDataFiles.xml
+Database\Item\Cata\ItemDataFiles.xml
+Database\Npc\Cata\NpcDataFiles.xml
+Database\Object\Cata\ObjectDataFiles.xml
+Database\Quest\Cata\QuestDataFiles.xml
 ## l10n
-Database\l10n\Wotlk\L10nDataFiles.xml
+Database\l10n\Cata\L10nDataFiles.xml
 ## Translations
 Translations\Translations.xml
 
@@ -60,7 +60,7 @@ Corrections\Tbc\_TbcCorrections.xml
 ### Corrections - Wotlk
 Corrections\Wotlk\_WotlkCorrections.xml
 ### Corrections - Cata
-# Corrections\Cata\_CataCorrections.xml
+Corrections\Cata\_CataCorrections.xml
 
 # Standalone
 QuestieDB.lua

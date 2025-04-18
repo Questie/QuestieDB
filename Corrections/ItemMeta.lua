@@ -103,6 +103,12 @@ do
   function ItemMeta.combine(tbl)
     return DumpFunctions.combine(tbl, combineValues, ItemMeta.itemTypes)
   end
+
+  -- Check if combineValues is empty or not
+  if next(combineValues) == nil then
+    -- If combineValues is empty, set the combine function to nil
+    ItemMeta.combine = nil
+  end
 end
 
 -- item class/subClass combinations

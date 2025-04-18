@@ -262,4 +262,10 @@ do
   function QuestMeta.combine(tbl)
     return DumpFunctions.combine(tbl, combineValues, QuestMeta.questTypes)
   end
+
+  -- Check if combineValues is empty or not
+  if next(combineValues) == nil then
+    -- If combineValues is empty, set the combine function to nil
+    QuestMeta.combine = nil
+  end
 end

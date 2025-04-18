@@ -113,6 +113,29 @@ do
 
       return LibQuestieDBTable
     end,
+    ["Cata"] = function()
+      ---@type LibQuestieDB
+      LibQuestieDBTable = {}
+
+      -- When creating the static database, we load the QuestieDB which writes to this global, so we reset it here
+      QuestieDB = {}
+      -- Same here, the old Questie code expects this.
+      QuestieLoader = {
+        ImportModule = function()
+          return QuestieDB
+        end,
+      }
+
+      GetBuildInfo = function()
+        return "4.4.0", "12340", "Jun 12 2022", 40402
+      end
+
+      WOW_PROJECT_ID = WOW_PROJECT_CATACLYSM_CLASSIC
+
+      CLI_Helpers.loadTOC("QuestieDB-Cata.toc")
+
+      return LibQuestieDBTable
+    end,
   }
 
   --- (Re-)Initializes the global variables for the addon

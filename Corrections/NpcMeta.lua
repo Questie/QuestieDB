@@ -148,4 +148,10 @@ do
   function NpcMeta.combine(tbl)
     return DumpFunctions.combine(tbl, combineValues, NpcMeta.npcTypes)
   end
+
+  -- Check if combineValues is empty or not
+  if next(combineValues) == nil then
+    -- If combineValues is empty, set the combine function to nil
+    NpcMeta.combine = nil
+  end
 end

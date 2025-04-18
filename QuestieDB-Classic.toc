@@ -1,4 +1,4 @@
-## Interface: 11403
+## Interface: 11507
 ## Title: QuestieDB
 ## Author: Logon (Data: TheCrux/Drejjmit/Muehe/Yttrium/TechnoHunter/Everyone else)
 ## Notes: A standalone QuestieDB
@@ -61,6 +61,8 @@ Corrections\Sod\_SodCorrections.xml
 # Corrections\Tbc\_TbcCorrections.xml
 ### Corrections - Wotlk
 # Corrections\Wotlk\_WotlkCorrections.xml
+### Corrections - Cata
+# Corrections\Cata\_CataCorrections.xml
 
 # Standalone
 QuestieDB.lua

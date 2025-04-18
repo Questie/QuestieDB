@@ -55,9 +55,6 @@ function PrivateLibQuestieDB:initNamespace()
       s[key] = {}
       return s[key]
     end,
-    -- __newindex = function(_, _, _)
-    --   error("Attempt to write to a read-only table")
-    -- end
   })
 end
 

@@ -8,6 +8,8 @@ Translations/*_gen.xml
 Translations/*_gen.lua
 Translations/_data/*.html
 
+
+
 .shit
 .translator
 
@@ -60,3 +62,7 @@ Perfy
 
 .llm-output
 ..wiki-information
+
+# AI related files
+*.ai
+.aider*
