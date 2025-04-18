@@ -60,4 +60,10 @@ do
   function ObjectMeta.combine(tbl)
     return DumpFunctions.combine(tbl, combineValues, ObjectMeta.objectTypes)
   end
+
+  -- Check if combineValues is empty or not
+  if next(combineValues) == nil then
+    -- If combineValues is empty, set the combine function to nil
+    ObjectMeta.combine = nil
+  end
 end

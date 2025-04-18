@@ -44,6 +44,27 @@ function CLI_Helpers.loadFile(filepath)
   end
 end
 
+--- Loads all files in a xml file
+---@param file string file path e.g ".generate_database_lua/Questie/Localization/Translations/Translations.xml"
+function CLI_Helpers.loadXML(file)
+  local xmlFilePath = file:match("^(.*)/.-%.xml$") .. "/"
+  local filedata = io.open(file, "r")
+  -- Only load the file if it exists
+  -- If you generate for the first time some files in the toc arn't present
+  if filedata then
+    local filetext = filedata:read("*all")
+    -- print(xmlFilePath)
+    for xmlFile in string.gmatch(filetext, "<Script.-file%=\"(.-)\"") do
+      -- Replace \ with /
+      local slashxmlFile = xmlFile:gsub("\\", "/")
+      print("  Loading file: ", xmlFilePath .. slashxmlFile)
+      CLI_Helpers.loadFile(xmlFilePath .. slashxmlFile)
+    end
+  end
+end
+
+--- Loads all files in a TOC file
+---@param file string file path e.g ".generate_database_lua/Questie/Questie.toc"
 function CLI_Helpers.loadTOC(file)
   local rfile = io.open(file, "r")
   assert(rfile, "TOC file not found: " .. file)
@@ -60,20 +81,7 @@ function CLI_Helpers.loadTOC(file)
         line = line:gsub("\\", "/")
         line = line:gsub("%s+", "")
         print("Loading XML:  ", line)
-        local filedata = io.open(line, "r")
-        -- Only load the file if it exists
-        -- If you generate for the first time some files in the toc arn't present
-        if filedata then
-          local filetext = filedata:read("*all")
-          local xmlFilePath = line:match("^(.*)/.-%.xml$") .. "/"
-          -- print(xmlFilePath)
-          for xmlFile in string.gmatch(filetext, "<Script.-file%=\"(.-)\"") do
-            -- Replace \ with /
-            local slashxmlFile = xmlFile:gsub("\\", "/")
-            print("  Loading file: ", xmlFilePath .. slashxmlFile)
-            CLI_Helpers.loadFile(xmlFilePath .. slashxmlFile)
-          end
-        end
+        CLI_Helpers.loadXML(line)
       end
     end
   end
