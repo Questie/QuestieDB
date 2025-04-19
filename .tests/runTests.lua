@@ -177,8 +177,10 @@ local function RunTest(version)
 end
 local validVersions = {
   ["era"] = true,
+  ["sod"] = true,
   ["tbc"] = true,
   ["wotlk"] = true,
+  ["cata"] = true,
 }
 local versionString = ""
 for version in pairs(validVersions) do
