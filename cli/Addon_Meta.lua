@@ -57,6 +57,42 @@ do
         end,
       }
 
+      C_Seasons = {
+        HasActiveSeason = function() return false end,
+        ---@see Enum.SeasonID
+        GetActiveSeason = function() return 0 end,
+      }
+
+      GetBuildInfo = function()
+        return "1.14.3", "44403", "Jun 27 2022", 11403
+      end
+
+      WOW_PROJECT_ID = WOW_PROJECT_CLASSIC
+
+      CLI_Helpers.loadTOC("QuestieDB-Classic.toc")
+
+      return LibQuestieDBTable
+    end,
+    ["Sod"] = function()
+      ---@type LibQuestieDB
+      LibQuestieDBTable = {}
+
+      -- When creating the static database, we load the QuestieDB which writes to this global, so we reset it here
+      QuestieDB = {}
+      -- Same here, the old Questie code expects this.
+      QuestieLoader = {
+        ImportModule = function()
+          return QuestieDB
+        end,
+      }
+
+      C_Seasons = {
+        HasActiveSeason = function() return true end,
+        ---@see Enum.SeasonID
+        GetActiveSeason = function() return 2 end,
+      }
+
+
       GetBuildInfo = function()
         return "1.14.3", "44403", "Jun 27 2022", 11403
       end
@@ -139,13 +175,22 @@ do
   }
 
   --- (Re-)Initializes the global variables for the addon
-  ---@param version "Era"|"Tbc"|"Wotlk"
+  ---@param version Expansions
   ---@return LibQuestieDB
   function AddonInitializeVersion(version)
     local lowerVersion = version:lower()
     local capitalizedVersion = lowerVersion:gsub("^%l", string.upper)
     assert(initByVersion[capitalizedVersion], "Invalid version: " .. version)
-    return initByVersion[capitalizedVersion]()
+    local returnVersion = initByVersion[capitalizedVersion]()
+    -- ? Print all the IsEra, IsSoD, IsTbc, IsWotlk, IsCata and so on...
+    for k, v in pairs(returnVersion) do
+      if type(k) == "string" then
+        if k:sub(1, 2) == "Is" and type(v) == "boolean" then
+          print(k, ":", v)
+        end
+      end
+    end
+    return returnVersion
   end
 
   function DoesVersionExist(version)
