@@ -57,6 +57,14 @@ QuestMeta.questKeys = {
   ['requiredSpecialization'] = 29, -- int: quest is only available if character meets the spec requirements. Use QuestieProfessions.specializationKeys for having a spec, or QuestieProfessions.professionKeys to indicate having the profession with no spec. See QuestieProfessions.lua for more info.
   ['requiredMaxLevel'] = 30,       -- int: quest is only available up to a certain level
 }
+
+--- Contains the name of data as keys and their index as value for quick lookup
+QuestMeta.NameIndexLookupTable = {}
+for key, index in pairs(QuestMeta.questKeys) do
+  QuestMeta.NameIndexLookupTable[index] = key
+  QuestMeta.NameIndexLookupTable[key] = index
+end
+
 -- Contains the type of data as keys and their index as value
 QuestMeta.questTypes = {
   ['name'] = "string",

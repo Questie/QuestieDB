@@ -3,6 +3,21 @@ local LibQuestieDB = select(2, ...)
 
 --? Copied from https://github.com/Questie/Questie/blob/master/Modules/VersionCheck.lua
 
+-- In the CLI this is not set
+if not Enum then
+  Enum = {}
+  ---@type Enum.SeasonID
+  ---@diagnostic disable-next-line: assign-type-mismatch
+  Enum.SeasonID = {
+    NoSeason = 0,
+    SeasonOfMastery = 1,
+    SeasonOfDiscovery = 2,
+    Hardcore = 3,
+    Fresh = 11,
+    FreshHardcore = 12,
+  }
+end
+
 -- --- Addon is running on Classic MoP client
 -- ---@type boolean
 -- LibQuestieDB.IsMop = WOW_PROJECT_ID == WOW_PROJECT_MIST_OF_PANDARIA_CLASSIC

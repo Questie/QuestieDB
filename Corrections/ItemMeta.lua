@@ -32,6 +32,14 @@ ItemMeta.itemKeys = {
   ['relatedQuests'] = 15, -- table or nil, IDs of quests that are related to this item
   ['teachesSpell'] = 16,  -- int, spellID taught by this item upon use
 }
+
+--- Contains the name of data as keys and their index as value for quick lookup
+ItemMeta.NameIndexLookupTable = {}
+for key, index in pairs(ItemMeta.itemKeys) do
+  ItemMeta.NameIndexLookupTable[index] = key
+  ItemMeta.NameIndexLookupTable[key] = index
+end
+
 -- Contains the type of data as keys and their index as value
 ItemMeta.itemTypes = {
   ['name'] = "string",

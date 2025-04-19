@@ -112,4 +112,16 @@
     ],
     "todohighlight.maxFilesForSearch": 5120,
     "todohighlight.toggleURI": false,
+    "Lua.runtime.builtin": {
+      "basic": "enable",
+      "debug": "enable",
+      "io": "enable",
+      "math": "disable",
+      "os": "enable",
+      "package": "enable",
+      "string": "disable",
+      "table": "disable",
+      "utf8": "disable",
+      "builtin": "enable"
+    },
 }

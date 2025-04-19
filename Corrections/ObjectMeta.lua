@@ -22,6 +22,14 @@ ObjectMeta.objectKeys = {
   ['zoneID'] = 5,      -- guess as to where this object is most common
   ['factionID'] = 6,   -- faction restriction mask (same as spawndb factionid)
 }
+
+--- Contains the name of data as keys and their index as value for quick lookup
+ObjectMeta.NameIndexLookupTable = {}
+for key, index in pairs(ObjectMeta.objectKeys) do
+  ObjectMeta.NameIndexLookupTable[index] = key
+  ObjectMeta.NameIndexLookupTable[key] = index
+end
+
 -- Contains the type of data as keys and their index as value
 ObjectMeta.objectTypes = {
   ['name'] = "string",

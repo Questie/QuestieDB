@@ -8,7 +8,6 @@ package.path = script_dir .. "?.lua;" .. package.path
 -- Allow accessing private fields
 ---@diagnostic disable: invisible
 require("cli.dump")
-local argparse = require("argparse")
 local helpers = require(".db_helpers")
 
 require("cli.Addon_Meta")
@@ -19,11 +18,16 @@ assert(Is_CLI, "This function should only be called from the CLI environment")
 local f = string.format
 
 --- Generates the HTML and XML files for a given entity type and expansion.
+--- @see Corrections.ItemMeta
+--- @see Corrections.NpcMeta
+--- @see Corrections.ObjectMeta
+--- @see Corrections.QuestMeta
 --- @param dataTbl table<number, table> The final, corrected data table (e.g., itemOverride).
---- @param meta table The metadata table (e.g., Corrections.ItemMeta).
+--- @param meta ObjectMeta|ItemMeta|QuestMeta|NpcMeta The metadata table (e.g., Corrections.ItemMeta).
 --- @param entityType string The type name ("Item", "Quest", etc.).
 --- @param expansionName string The expansion name ("Era", "Tbc", "Wotlk").
-function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName)
+--- @param debug boolean? Do you want to print extra debug output to the html files?
+function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, debug)
   print(f("Generating HTML for %s (%s)...", entityType, expansionName))
 
   -- 1. Define Constants & Paths (mirroring Python)
@@ -32,9 +36,10 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName)
   local max_p_size = 4000
   local entityTypeLower = entityType:lower()
   local entityTypeCapitalized = entityType:gsub("^%l", string.upper)
-  local addon_dir = helpers.find_addon_name()                                                                                                  -- Assuming this helper exists
-  local outputBasePath = helpers.get_data_dir_path(entityType, expansionName)                                                                  -- Helper needed
+  local addon_dir = helpers.find_addon_name()
+  local outputBasePath = helpers.get_data_dir_path(entityType, expansionName)
   local outputDataPath = outputBasePath .. "/_data"
+  -- When doing paths in xml the full path all the way from Interface needs to be used.
   local dataDirPathInAddon = f("Interface\\AddOns\\%s\\Database\\%s\\%s", addon_dir, entityTypeCapitalized, helpers.capitalize(expansionName)) -- Helper needed for capitalize
 
 
@@ -180,6 +185,9 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName)
 
         -- Check length and split if necessary
         if #formatted_line > max_p_size then
+          if debug then
+            table.insert(output_data_local, f("  <!-- %s -->\n", meta.NameIndexLookupTable[entityDataIndex]))
+          end
           table.insert(output_data_local, f("<!-- Segment start: %s -->\n", entityDataIndex))
           local segments = math.ceil(#formatted_line / max_p_size)
           for seg = 1, segments do
@@ -198,6 +206,10 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName)
         else
           -- Add the single <p> tag
           table.insert(writtenDataIndexes, tostring(entityDataIndex))
+          if (debug) then
+            table.insert(output_data_local, f("  <!-- %s -->\n", meta.NameIndexLookupTable[entityDataIndex]))
+          end
+          -- Only add the <p> tag if not in debug mode
           table.insert(output_data_local, f("<p>%s</p>\n", formatted_line))
         end
       end
