@@ -7,7 +7,7 @@ local https = require("ssl.https")
 local ltn12 = require("ltn12")
 
 --- Get the script directory.
----@return string The directory containing the script.
+---@return string The directory containing the script. Ends with a "/".
 local function get_script_dir()
   local script_path = debug.getinfo(1, "S").source:sub(2)
   -- Remove filename from path
@@ -317,6 +317,7 @@ end
 ---@class helpers
 local return_table = {
   capitalize = capitalize,
+  get_script_dir = get_script_dir,
   get_project_dir_path = get_project_dir_path,
   get_data_dir_path = get_data_dir_path,
   find_addon_name = find_addon_name,
