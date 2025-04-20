@@ -67,6 +67,9 @@ jobs:
     - name: Generate HTML
       run: sh ./.database_generator/generate_database.sh ./.lua/bin/lua
 
+    - name: Generate l10n Translations
+      run: sh ./.generate_database/generate_l10n.sh
+
     - name: Run Era Tests
       run: lua ./.tests/runTests.lua Era
 

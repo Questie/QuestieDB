@@ -199,17 +199,22 @@ if __name__ == "__main__":
   #   print("Usage: python generate_l10n_table.py <path to classic_locales.json>")
   #   sys.exit(1)
   # if wotlk_locales.zip exists, extract it
-  if os.path.exists("wotlk_locales.zip"):
+  if os.path.exists("./wotlk_locales.zip"):
+    print("Found wotlk_locales.zip, extracting...")
     import zipfile
 
     with zipfile.ZipFile("wotlk_locales.zip", "r") as zip_ref:
       zip_ref.extractall(".")
 
+  print("Generating l10n table for supported versions")
+
   for version in supported_versions:
     if version == "era":
+      # TODO: Temporarily use the same one...
       # process("./classic_locales.json", version)
       process("./wotlk_locales.json", version)
     elif version == "tbc":
+      # TODO: Temporarily use the same one...
       # process("./tbc_locales.json", version)
       process("./wotlk_locales.json", version)
     elif version == "wotlk":
