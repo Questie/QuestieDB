@@ -15,3 +15,8 @@ _data/*.html binary
 *.exe binary
 *.tga binary
 *.blp binary
+*.zip binary
+*.rar binary
+*.7z  binary
+*.tar binary
+
