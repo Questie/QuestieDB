@@ -1,0 +1,6 @@
+__pycache__
+_data
+*.lua-table
+*.log
+Translations
+!wotlk_locales.zip
