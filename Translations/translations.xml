@@ -1,4 +1,5 @@
 <Ui>
+  <!-- This file imports generated files from the database generator-->
   <Script file="TranslationsFiles_gen.xml"/>
   <Script file="TranslationsLookup_gen.lua"/>
 </Ui>
