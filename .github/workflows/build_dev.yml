@@ -64,11 +64,11 @@ jobs:
         luarocks install luasec
 
     # Runs a single command using the runners shell
-    - name: Generate HTML
-      run: sh ./.database_generator/generate_database.sh ./.lua/bin/lua
-
     - name: Generate l10n Translations
       run: sh ./.generate_database/generate_l10n.sh
+
+    - name: Generate HTML
+      run: sh ./.database_generator/generate_database.sh ./.lua/bin/lua
 
     - name: Run Era Tests
       run: lua ./.tests/runTests.lua Era
