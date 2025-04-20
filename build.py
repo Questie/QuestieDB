@@ -10,35 +10,48 @@ import json
 
 base_build_dir = "./.build"
 
+toc_files = {
+    "classic": "QuestieDB-Classic.toc",
+    "tbc": "QuestieDB-BCC.toc",
+    "wotlk": "QuestieDB-WOTLKC.toc",
+    "cata": "QuestieDB-Cata.toc" # Added cata toc file
+}
+
+disallowed_folders = [
+    "cli",
+    ".wowhead",
+    ".translator",
+    ".git",
+    ".vscode",
+    ".generate_database",
+    ".database_generator",
+    ".tests",
+    # Python venv
+    "venv",
+    # Github actions
+    ".lua",
+    ".luarocks",
+    # Perfy performance thing
+    "Perfy",
+]
+
 
 def copy_files(src, dest):
   files_to_copy = {}
   files_copied = 0
-  for root, dirs, files in os.walk("."):
+  for root, dirs, files in os.walk(src):
     if root.startswith(".\\."):
       continue
-    if "cli" in root:
+    # Check if the folder is disallowed
+    cont = False
+    for folder in disallowed_folders:
+      if folder in root:
+        cont = True
+        break
+    # Continue if the folder is disallowed
+    if cont:
       continue
-    if ".wowhead" in root:
-      continue
-    if ".translator" in root:
-      continue
-    if ".git" in root:
-      continue
-    if ".vscode" in root:
-      continue
-    if ".generate_database" in root:
-      continue
-    if ".tests" in root:
-      continue
-    # Python venv
-    if "venv" in root:
-      continue
-    # Github actions
-    if ".lua" in root:
-      continue
-    if ".luarocks" in root:
-      continue
+
     for file in files:
       if file.endswith(".lua") or file.endswith(".html") or file.endswith(".toc") or file.endswith(".xml") or file.endswith("LICENSE") or file.endswith("README.md"):
         # print(file)
@@ -63,31 +76,41 @@ def copy_files(src, dest):
 
 
 def get_versions_from_toc(path="."):
-  classic_version = None
-  tbc_version = None
-  wotlk_version = None
-  with open(f"{path}/QuestieDB-Classic.toc", "r") as f:
-    for line in f:
-      if "## Version:" in line:
-        classic_version = line.split(":")[1].strip()
-  with open(f"{path}/QuestieDB-BCC.toc", "r") as f:
-    for line in f:
-      if "## Version:" in line:
-        tbc_version = line.split(":")[1].strip()
-  with open(f"{path}/QuestieDB-WOTLKC.toc", "r") as f:
-    for line in f:
-      if "## Version:" in line:
-        wotlk_version = line.split(":")[1].strip()
-  versions = {"classic": classic_version, "tbc": tbc_version, "wotlk": wotlk_version}
+  versions = {}
+  for key, filename in toc_files.items():
+    version = None
+    filepath = os.path.join(path, filename)
+    try:
+      with open(filepath, "r") as f:
+        for line in f:
+          if line.startswith("## Version:"):
+            version = line.split(":", 1)[1].strip()
+            break # Found the version, no need to read further
+    except FileNotFoundError:
+      print(f"Warning: TOC file not found at {filepath}")
+      # Keep version as None
+    except Exception as e:
+      print(f"Warning: Error reading {filepath}: {e}")
+      # Keep version as None
+    versions[key] = version
   return versions
 
 
 def validate_same_version(versions):
-  if versions["classic"] == versions["tbc"] == versions["wotlk"]:
-    return True
-  else:
-    return False
+  """Checks if all version values in the dictionary are the same."""
+  if not versions:
+    return True # Or False, depending on desired behavior for empty input
 
+  # Get all version values, filtering out None in case a file is missing or lacks the version line
+  version_values = [v for v in versions.values() if v is not None]
+
+  # If there are no valid versions or only one, they are considered the same
+  if len(version_values) <= 1:
+      return True
+
+  # Check if all valid version values are identical by comparing them to the first one
+  first_version = version_values[0]
+  return all(v == first_version for v in version_values)
 
 def get_versionstring_from_toc():
   versions = get_versions_from_toc()
@@ -121,12 +144,19 @@ def main():
       build_output = sys.argv[2]
     else:
       build_output = "QuestieDB." + get_versionstring_from_toc()
+
     if not os.path.exists(base_build_dir):
       os.mkdir(base_build_dir)
 
     build_dir = f"{base_build_dir}/{build_output}"
     if not os.path.exists(build_dir):
       os.mkdir(build_dir)
+    else:
+      # Delete the directory if it exists
+      print(f"Build directory '{build_dir}' already exists. Deleting...")
+      shutil.rmtree(build_dir)
+      os.mkdir(build_dir)
+    print(f"Build directory '{build_dir}' created")
     print(f"Copying files to build directory '{build_dir}'...")
     copy_files(".", build_dir)
     # If we are in github actions we output the toc version
@@ -135,7 +165,11 @@ def main():
 
     if "GITHUB_SHA" in os.environ and os.environ["GITHUB_SHA"] and len(os.environ["GITHUB_SHA"]) >= 7:
       short_commit_hash = os.environ["GITHUB_SHA"][:7]
-      for toc_file in [f"{build_dir}/QuestieDB-Classic.toc", f"{build_dir}/QuestieDB-BCC.toc", f"{build_dir}/QuestieDB-WOTLKC.toc"]:
+      toc_files_path = []
+      for _, filename in toc_files.items():
+        toc_files_path.append(os.path.join(build_dir, filename))
+      # Check if toc files exist
+      for toc_file in toc_files_path:
         print(f"Adding sha {short_commit_hash} commit hash to toc file: {toc_file}")
         with open(toc_file, "r") as f:
           full_file = f.readlines()
