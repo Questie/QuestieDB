@@ -8,7 +8,7 @@ local LibQuestieDB = select(2, ...)
 ---@field package CreateFakeFrame fun(GetTextTable: table):table
 local Database = LibQuestieDB.Database
 
-
+local f = string.format
 function Database.GetTemplateNames()
   print("Getting all template names")
   ---@type table<string, string>
@@ -17,7 +17,7 @@ function Database.GetTemplateNames()
     local templateFile = entityType .. "DataFiles.xml"
     assert(type(FindFile) == "function", "FindFile function is missing.")
     local filepath = FindFile(templateFile)
-    print("Data file found: ", filepath)
+    print(f("Data file found (%s): %s", templateFile, filepath))
     -- Read the file and parse the XML
     -- Example content
     -- <SimpleHTML name="ItemDataIds" file="Interface\AddOns\QuestieDB\Database\Item\Era\ItemDataIds.html" virtual="true" font="GameFontNormal"/>
