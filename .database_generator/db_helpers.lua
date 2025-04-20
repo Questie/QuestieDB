@@ -47,7 +47,10 @@ end
 --- Find the addon name.
 ---@return string The addon name.
 local function find_addon_name()
-  local current_dir = lfs.currentdir()
+  local current_dir = get_script_dir()
+  -- Remove the trailing .database_generator
+  current_dir = current_dir:gsub("/%.database_generator/", "/")
+
   local previous_dir = nil
   local addon_dir = nil
   local max_level = 20
