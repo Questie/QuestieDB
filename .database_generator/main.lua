@@ -9,6 +9,8 @@ require("cli.CLI_Helpers")
 
 require(".createStatic")
 
+DB_GEN_DEBUG_MODE = false
+
 Expansions = {
   Classic = "era", -- Map GitHub folder name to local name prefix
   TBC = "tbc",
@@ -29,7 +31,7 @@ local function main()
   for _, local_prefix_expansion in pairs(Expansions) do
     local capitalized_expansion = local_prefix_expansion:sub(1, 1):upper() .. local_prefix_expansion:sub(2)
     print("Downloading " .. capitalized_expansion .. " databases...")
-    DumpDatabase(capitalized_expansion)
+    DumpDatabase(capitalized_expansion, DB_GEN_DEBUG_MODE)
   end
 end
 
