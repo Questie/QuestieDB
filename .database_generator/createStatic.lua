@@ -55,7 +55,7 @@ function DumpDatabase(version, debug)
   -- Process Item Data: Load raw DB, load static corrections, merge corrections into raw data.
   do
     -- Load the raw ItemDB.lua file content as a string.
-    CLI_Helpers.loadFile(f("%s/_data/%sItemDB.lua", script_dir, lowerVersion))
+    CLI_Helpers.loadFile(f("%s/_data/%sItemDB.lua", helpers.get_script_dir(), lowerVersion))
     -- Execute the string to get the raw item data table.
     ---@type table<ItemId, table<number, any>>
     itemOverride = loadstring(QuestieDB.itemData)()      -- QuestieDB.itemData is loaded by loadFile
@@ -84,7 +84,7 @@ function DumpDatabase(version, debug)
 
   -- Process NPC Data: Load raw DB, load static corrections, merge corrections into raw data.
   do
-    CLI_Helpers.loadFile(f("%s/_data/%sNpcDB.lua", script_dir, lowerVersion))
+    CLI_Helpers.loadFile(f("%s/_data/%sNpcDB.lua", helpers.get_script_dir(), lowerVersion))
 
     ---@type table<NpcId, table<number, any>>
     npcOverride = loadstring(QuestieDB.npcData)()
@@ -112,7 +112,7 @@ function DumpDatabase(version, debug)
 
   -- Process Object Data: Load raw DB, load static corrections, merge corrections into raw data.
   do
-    CLI_Helpers.loadFile(f("%s/_data/%sObjectDB.lua", script_dir, lowerVersion))
+    CLI_Helpers.loadFile(f("%s/_data/%sObjectDB.lua", helpers.get_script_dir(), lowerVersion))
 
     ---@type table<ObjectId, table<number, any>>
     objectOverride = loadstring(QuestieDB.objectData)()
@@ -140,7 +140,7 @@ function DumpDatabase(version, debug)
 
   -- Process Quest Data: Load raw DB, load static corrections, merge corrections into raw data.
   do
-    CLI_Helpers.loadFile(f("%s/_data/%sQuestDB.lua", script_dir, lowerVersion))
+    CLI_Helpers.loadFile(f("%s/_data/%sQuestDB.lua", helpers.get_script_dir(), lowerVersion))
 
     ---@type table<QuestId, table<number, any>>
     questOverride = loadstring(QuestieDB.questData)()
@@ -167,9 +167,9 @@ function DumpDatabase(version, debug)
   end
   -- Create output directories if they don't exist.
   -- ---@type string
-  -- local basePath = f("%s/_data/output", script_dir)
+  -- local basePath = f("%s/_data/output", helpers.get_script_dir())
   ---@type string
-  local basePath = f("%s/../Database", script_dir)
+  local basePath = f("%s../Database", helpers.get_script_dir())
   if not lfs.attributes(basePath, "mode") then
     lfs.mkdir(basePath)
     print("Created directory: " .. basePath)
