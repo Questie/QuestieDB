@@ -2,6 +2,7 @@
 # information for use in the localization system.
 import json
 import os
+import shutil
 import re
 from helpers import get_data_dir_path
 
@@ -167,9 +168,9 @@ def process(locale_file, version):
         AllDescriptions = []
         AllTexts = []
         for quest in data["quest"]:
-          AllTitles.append(quest[0])
-          AllDescriptions.append(quest[1])
-          AllTexts.append(quest[2])
+          AllTitles.append(quest[0].replace("\n", "<br>"))
+          AllDescriptions.append(quest[1].replace("\n", "<br>"))
+          AllTexts.append(quest[2].replace("\n", "<br>"))
         f.write(indentation + "{ -- Quest\n")
 
         # ? Title
@@ -206,21 +207,36 @@ if __name__ == "__main__":
     with zipfile.ZipFile("wotlk_locales.zip", "r") as zip_ref:
       zip_ref.extractall(".")
 
+    # Create a copy of the extracted file for each version
+    print("Extracted wotlk_locales.zip, duplicating to all other versions...")
+    source_file = "wotlk_locales.json"
+    for version in supported_versions:
+      target_file = f"{version}_locales.json"
+      if version == "era":
+        target_file = "classic_locales.json" # Keep original naming if needed
+
+      if os.path.exists(target_file):
+        print("File already exists, skipping...")
+        continue
+
+      if os.path.exists(source_file):
+          print(f"Copying {source_file} to {target_file}...")
+          shutil.copy(source_file, target_file)
+      else:
+          print(f"Error: Source file {source_file} not found for version {version}.")
+          break # Stop if the source is missing
+
+
+
   print("Generating l10n table for supported versions")
 
   for version in supported_versions:
     if version == "era":
-      # TODO: Temporarily use the same one...
-      # process("./classic_locales.json", version)
-      process("./wotlk_locales.json", version)
+      process("./classic_locales.json", version)
     elif version == "tbc":
-      # TODO: Temporarily use the same one...
-      # process("./tbc_locales.json", version)
-      process("./wotlk_locales.json", version)
+      process("./tbc_locales.json", version)
     elif version == "wotlk":
       process("./wotlk_locales.json", version)
     elif version == "cata":
-      # TODO: Change this to cata_locales.json
-      # process("./cata_locales.json", version)
-      process("./wotlk_locales.json", version)
+      process("./cata_locales.json", version)
 

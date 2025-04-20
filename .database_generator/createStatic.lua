@@ -191,6 +191,26 @@ function DumpDatabase(version, debug)
   -- ! We write all these files to disk for the sake of comparing changes between versions
   -- Write all the overrides to disk
 
+  -- ? Dump L10n Data
+  print("Dumping L10n overrides")
+  -- Read the L10n data from the addon.
+  -- example path: Database\l10n\Wotlk\l10nData.lua-table
+  local path = f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedVersion)
+  print("Reading L10n data from " .. path)
+  local l10nFile = io.open(path, "r")
+  assert(l10nFile, "Failed to open file for reading " .. path)
+  local l10nDataString = l10nFile:read("*a")
+  -- Print the first 100 characters of the L10n data string for debugging.
+  print("L10n data string: " .. l10nDataString:sub(1, 100))
+  l10nFile:close()
+  local l10nData, errormsg = loadstring("return " .. l10nDataString)
+  if not l10nData then
+    print("Error loading L10n data: " .. errormsg)
+    return
+  end
+  l10nData = l10nData()
+  GenerateHtmlForEntityType(l10nData, nil, "L10n", version, debug)
+
   -- ? Dump Item Data
   print("Dumping item overrides")
   -- Generate the string representation of the merged item data.
