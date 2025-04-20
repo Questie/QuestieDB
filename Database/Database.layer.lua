@@ -17,7 +17,7 @@ function Database.GetTemplateNames()
     local templateFile = entityType .. "DataFiles.xml"
     assert(type(FindFile) == "function", "FindFile function is missing.")
     local filepath = FindFile(templateFile)
-    print(f("Data file found (%s): %s", templateFile, filepath))
+    print(f("Data file found (%s): %s", tostring(templateFile), tostring(filepath)))
     -- Read the file and parse the XML
     -- Example content
     -- <SimpleHTML name="ItemDataIds" file="Interface\AddOns\QuestieDB\Database\Item\Era\ItemDataIds.html" virtual="true" font="GameFontNormal"/>
