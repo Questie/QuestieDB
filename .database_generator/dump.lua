@@ -23,7 +23,7 @@ local f = string.format
 --- @see Corrections.ObjectMeta
 --- @see Corrections.QuestMeta
 --- @param dataTbl table<number, table> The final, corrected data table (e.g., itemOverride).
---- @param meta ObjectMeta|ItemMeta|QuestMeta|NpcMeta|nil The metadata table (e.g., Corrections.ItemMeta). L10n is just nil
+--- @param meta ObjectMeta|ItemMeta|QuestMeta|NpcMeta|L10nMeta The metadata table (e.g., Corrections.ItemMeta). L10n is just nil
 --- @param entityType string The type name ("Item", "Quest", etc.).
 --- @param expansionName string The expansion name ("Era", "Tbc", "Wotlk").
 --- @param debug boolean? Do you want to print extra debug output to the html files?
@@ -71,26 +71,20 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, deb
                  dataDirPathInAddon,
                  entityTypeCapitalized))
 
-  local entries_written = 0
-  local lowest_id, highest_id = math.huge, -math.huge
+  local entries_written           = 0
+  local lowest_id, highest_id     = math.huge, -math.huge
   local current_chunk_output_data = {} -- Use a table for efficient string building
   local current_chunk_lookup_data = {} -- Use a table
 
   -- Get reversed keys and dump functions from meta
-  local dataKeys
-  local dumpFunctions
-  local combineFunc
-  local reversedKeys = {}
-  local nrDataKeys = 0
-  -- L10n does not have a meta table
-  if meta then
-    dataKeys      = meta[entityTypeLower .. "Keys"] -- e.g., meta.itemKeys
-    dumpFunctions = meta.dumpFuncs
-    combineFunc   = meta.combine                    -- May be nil
-    for key, id in pairs(dataKeys) do
-      reversedKeys[id] = key
-      nrDataKeys = nrDataKeys + 1
-    end
+  local reversedKeys              = {}
+  local nrDataKeys                = 0
+  local dataKeys                  = meta[entityTypeLower .. "Keys"] -- e.g., meta.itemKeys
+  local dumpFunctions             = meta.dumpFuncs
+  local combineFunc               = meta.combine                    -- May be nil
+  for key, id in pairs(dataKeys) do
+    reversedKeys[id] = key
+    nrDataKeys = nrDataKeys + 1
   end
 
   -- 3. Main Loop: Iterate Through Sorted IDs
