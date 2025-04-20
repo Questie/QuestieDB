@@ -32,13 +32,9 @@ jobs:
         luarocks install argparse
         luarocks install luafilesystem
 
-    # Install requirements.txt from .generate_database
-    - name: Install requirements
-      run: pip install -r .generate_database/requirements.txt
-
     # Runs a single command using the runners shell
     - name: Generate HTML
-      run: python3 ./.generate_database/dump.py Era Tbc Wotlk
+      run: sh .database_generator/generate_database.sh ./.lua/bin/lua
 
     - name: Run Era Tests
       run: lua ./.tests/runTests.lua Era
@@ -48,3 +44,6 @@ jobs:
 
     - name: Run Wotlk Tests
       run: lua ./.tests/runTests.lua Wotlk
+
+    - name: Run Cata Tests
+      run: lua ./.tests/runTests.lua Cata
