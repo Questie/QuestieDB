@@ -350,7 +350,8 @@ function Compile_translations_to_html(strings, addonName, translation_func)
   local fileString = '<SimpleHTML name="%s" file="Interface\\AddOns\\%s\\translations\\%s\\%s" virtual="true" font="GameFontNormal"/>\n'
   lua_file = io.open(root_folder .. "/TranslationsFiles_gen.xml", "w")
   if lua_file then
-    lua_file:write('<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\\FrameXML\\UI.xsd">\n')
+    lua_file:write(
+    '<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">\n')
     for _, htmlfile in pairs(allHTMLFiles) do
       lua_file:write(f(fileString, htmlfile, addonName, data_folder, htmlfile))
     end
