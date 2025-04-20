@@ -200,8 +200,6 @@ function DumpDatabase(version, debug)
   local l10nFile = io.open(path, "r")
   assert(l10nFile, "Failed to open file for reading " .. path)
   local l10nDataString = l10nFile:read("*a")
-  -- Print the first 100 characters of the L10n data string for debugging.
-  print("L10n data string: " .. l10nDataString:sub(1, 100))
   l10nFile:close()
   local l10nData, errormsg = loadstring("return " .. l10nDataString)
   if not l10nData then
