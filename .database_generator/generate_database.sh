@@ -52,6 +52,3 @@ cd $LAST_PATH
 echo "$(pwd)"
 
 $LUA $script_dir/main.lua
-
-# ! TEMPORARILY DISABLED
-# $LUA ./.generate_database_lua/generate_translation_trie.lua
