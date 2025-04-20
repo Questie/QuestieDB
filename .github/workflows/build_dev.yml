@@ -23,6 +23,9 @@ on:
       - ".generate_database/*.lua"
       - ".generate_database/*.py"
       - ".generate_database/*.sh"
+      - ".database_generator/*.lua"
+      - ".database_generator/*.py"
+      - ".database_generator/*.sh"
   schedule:
   # We do it every 6 hours because we have people from all around the world, daily would be wonky
   - cron: "0 */6 * * *"
@@ -58,13 +61,9 @@ jobs:
         luarocks install argparse
         luarocks install luafilesystem
 
-    # Install requirements.txt from .generate_database
-    - name: Install requirements
-      run: pip install -r .generate_database/requirements.txt
-
     # Runs a single command using the runners shell
     - name: Generate HTML
-      run: sh .generate_database/dumpDB.sh ./.lua/bin/lua
+      run: sh .database_generator/generate_database.sh ./.lua/bin/lua
 
     - name: Run Era Tests
       run: lua ./.tests/runTests.lua Era
@@ -74,6 +73,9 @@ jobs:
 
     - name: Run Wotlk Tests
       run: lua ./.tests/runTests.lua Wotlk
+
+    - name: Run Cata Tests
+      run: lua ./.tests/runTests.lua Cata
 
     # Create the QuestieDB build, will output toc_version
     - name: Build QuestieDB
