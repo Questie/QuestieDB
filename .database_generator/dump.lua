@@ -87,9 +87,9 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, deb
     dataKeys      = meta[entityTypeLower .. "Keys"] -- e.g., meta.itemKeys
     dumpFunctions = meta.dumpFuncs
     combineFunc   = meta.combine                    -- May be nil
-  for key, id in pairs(dataKeys) do
-    reversedKeys[id] = key
-    nrDataKeys = nrDataKeys + 1
+    for key, id in pairs(dataKeys) do
+      reversedKeys[id] = key
+      nrDataKeys = nrDataKeys + 1
     end
   end
 
@@ -98,28 +98,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, deb
     local dataId = sorted_keys[i]
     local entity_data_raw = dataTbl[dataId] -- This is the array of values
 
-    -- Apply combine function *before* serialization if needed
-    -- Note: combineFunc modifies the table in place. We need a copy or adapt combine.
-    -- Let's assume combineFunc is adapted or we handle it differently for now.
-    -- A safer approach might be to apply combine *during* serialization below.
-    local entity_data_processed = {}
-    if combineFunc then
-      -- Create a temporary table structured like the input for combineFunc expects
-      local tempTableForCombine = {}
-      for idx = 1, nrDataKeys do
-        local fieldName = reversedKeys[idx]
-        tempTableForCombine[idx] = entity_data_raw[fieldName] or entity_data_raw[idx] or "nil" -- Handle both name and index keys if necessary
-      end
-      combineFunc(tempTableForCombine)                                                         -- Modifies tempTableForCombine
-      -- Now map back from tempTableForCombine (which might have fewer, combined entries)
-      -- This part needs careful handling based on how combineFunc works.
-      -- For simplicity now, let's assume combine is handled *after* initial serialization or skipped.
-      -- If combine *must* happen first, the logic needs adjustment here.
-      -- Sticking to the original dumpData logic: combine happens *after* individual dumps.
-      entity_data_processed = entity_data_raw -- Use raw for now, handle combine later if needed.
-    else
-      entity_data_processed = entity_data_raw
-    end
+    local entity_data_processed = entity_data_raw
 
 
     local output_data_local = {}  -- For the current ID's <p> tags
