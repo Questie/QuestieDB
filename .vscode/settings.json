@@ -1,7 +1,10 @@
 {
   "Lua.workspace.ignoreDir": [
     ".generate_database",
+    ".database_generator/Questie-translations",
     ".vscode",
+    ".vscode/*.lua",
+    ".vscode/*",
     ".translator",
     ".wowhead",
     "**/.git",
@@ -10,8 +13,13 @@
     ".llm-output",
     ".build",
     "Perfy",
+    "**/Questie-translations",
+    "Corrections/Era",
+    "Corrections/Sod",
+    "Corrections/Tbc",
+    "Corrections/Wotlk",
+    "Corrections/Cata",
   ],
-
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -21,7 +29,8 @@
     "**/Thumbs.db": true,
     "**/.cache": true,
     "**/__pycache__": true,
-    "**/_data/*.html":true,
+    "**/_data/*.html": true,
+    "**/venv": true,
   },
   "search.exclude": {
     "**/node_modules": true,
@@ -31,6 +40,8 @@
     ".llm-output":true,
     ".build":true,
     "Perfy":true,
+    ".database_generator/Questie-translations": true,
+    ".vscode/*.lua": true,
   },
 
   "[lua]": {
@@ -62,9 +73,7 @@
   "Lua.diagnostics.ignoredFiles": "Enable",
   "Lua.diagnostics.libraryFiles": "Enable",
 
-  "Lua.diagnostics.severity": {
-    "unused-local": "Warning"
-  },
+  "Lua.diagnostics.severity": {},
   "Lua.diagnostics.enable": true,
   "Lua.runtime.version": "Lua 5.1",
   "Lua.diagnostics.globals": [
