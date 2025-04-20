@@ -207,7 +207,7 @@ function DumpDatabase(version, debug)
     return
   end
   l10nData = l10nData()
-  GenerateHtmlForEntityType(l10nData, nil, "L10n", version, debug)
+  GenerateHtmlForEntityType(l10nData, Corrections.L10nMeta, "L10n", version, debug)
 
   -- ? Dump Item Data
   print("Dumping item overrides")
