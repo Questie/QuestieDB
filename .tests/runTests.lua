@@ -27,6 +27,7 @@ local excludedDirectories = {
   [".git"] = true,
   [".translator"] = true,
   [".wowhead"] = true,
+  [".generate_database"] = true,
   [".database_generator"] = true,
 }
 
