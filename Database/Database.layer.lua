@@ -29,6 +29,8 @@ function Database.GetTemplateNames()
         Database.TemplateToPath[templateName] = "./" .. filePath:gsub("\\", "/")
         -- I was stupid once upon a time and saved the folder as lowercase... stupid me...
         Database.TemplateToPath[templateName] = Database.TemplateToPath[templateName]:gsub("/L10n/", "/l10n/")
+      else
+        print("WARNING - Template not found in line: " .. line)
       end
     end
   end
