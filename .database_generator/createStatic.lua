@@ -193,8 +193,7 @@ function DumpDatabase(version, debug)
 
   -- ? Dump L10n Data
   print("Dumping L10n overrides")
-  -- Read the L10n data from the addon.
-  -- example path: Database\l10n\Wotlk\l10nData.lua-table
+  -- TODO: When we refactor the python code to lua this entire section will have changes
   local path = f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedVersion)
   print("Reading L10n data from " .. path)
   local l10nFile = io.open(path, "r")
@@ -207,7 +206,8 @@ function DumpDatabase(version, debug)
     return
   end
   l10nData = l10nData()
-  GenerateHtmlForEntityType(l10nData, Corrections.L10nMeta, "L10n", version, debug)
+  GenerateHtmlForEntityType(l10nData, Corrections.L10nMeta, "L10n", version, nil, nil, debug)
+  -- GenerateHtmlForEntityType(l10nData, Corrections.L10nMeta, "L10n", version, 75, 650, debug)
 
   -- ? Dump Item Data
   print("Dumping item overrides")
@@ -222,7 +222,8 @@ function DumpDatabase(version, debug)
   itemFile:close()
   -- Generate the SimpleHTML files used by the addon.
   print("Dumping item overrides to HTML")
-  GenerateHtmlForEntityType(itemOverride, Corrections.ItemMeta, "Item", version, debug)
+  GenerateHtmlForEntityType(itemOverride, Corrections.ItemMeta, "Item", version, nil, nil, debug)
+  -- GenerateHtmlForEntityType(itemOverride, Corrections.ItemMeta, "Item", version, 75, 650, debug)
 
   -- ? Dump Quest Data
   print("Dumping quest overrides")
@@ -232,7 +233,8 @@ function DumpDatabase(version, debug)
   questFile:write(questDataString)
   questFile:close()
   print("Dumping quest overrides to HTML")
-  GenerateHtmlForEntityType(questOverride, Corrections.QuestMeta, "Quest", version, debug)
+  GenerateHtmlForEntityType(questOverride, Corrections.QuestMeta, "Quest", version, nil, nil, debug)
+  -- GenerateHtmlForEntityType(questOverride, Corrections.QuestMeta, "Quest", version, 75, 650, debug)
 
   -- ? Dump Npc Data
   print("Dumping npc overrides")
@@ -243,7 +245,8 @@ function DumpDatabase(version, debug)
   npcFile:write(npcDataString)
   npcFile:close()
   print("Dumping npc overrides to HTML")
-  GenerateHtmlForEntityType(npcOverride, Corrections.NpcMeta, "Npc", version, debug)
+  GenerateHtmlForEntityType(npcOverride, Corrections.NpcMeta, "Npc", version, nil, nil, debug)
+  -- GenerateHtmlForEntityType(npcOverride, Corrections.NpcMeta, "Npc", version, 75, 650, debug)
 
   -- ? Dump Object Data
   print("Dumping object overrides")
@@ -254,7 +257,8 @@ function DumpDatabase(version, debug)
   objectFile:write(objectDataString)
   objectFile:close()
   print("Dumping object overrides to HTML")
-  GenerateHtmlForEntityType(objectOverride, Corrections.ObjectMeta, "Object", version, debug)
+  GenerateHtmlForEntityType(objectOverride, Corrections.ObjectMeta, "Object", version, nil, nil, debug)
+  -- GenerateHtmlForEntityType(objectOverride, Corrections.ObjectMeta, "Object", version, 75, 650, debug)
 
 
   print(f("\n\27[32m%s corrections dumped successfully\27[0m", capitalizedVersion))
