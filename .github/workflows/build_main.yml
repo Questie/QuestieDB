@@ -42,7 +42,7 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Generate HTML
-      run: sh .database_generator/generate_database.sh ./.lua/bin/lua
+      run: sh ./.database_generator/generate_database.sh ./.lua/bin/lua
 
     - name: Run Era Tests
       run: lua ./.tests/runTests.lua Era
