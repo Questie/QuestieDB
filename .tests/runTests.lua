@@ -27,8 +27,9 @@ local excludedDirectories = {
   [".git"] = true,
   [".translator"] = true,
   [".wowhead"] = true,
-  [".generate_database"] = true,
+  [".database_generator"] = true,
 }
+
 function FindFile(searchName)
   local function search(path)
     for file in lfs.dir(path) do
@@ -52,7 +53,9 @@ function FindFile(searchName)
       end
     end
   end
-  return search(lfs.currentdir())
+  local currentDir = lfs.currentdir()
+  print("FindFile: Searching in: " .. currentDir)
+  return search(currentDir)
 end
 
 local function RunTest(version)
