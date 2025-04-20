@@ -26,12 +26,19 @@ local f = string.format
 --- @param meta ObjectMeta|ItemMeta|QuestMeta|NpcMeta|L10nMeta The metadata table (e.g., Corrections.ItemMeta). L10n is just nil
 --- @param entityType string The type name ("Item", "Quest", etc.).
 --- @param expansionName string The expansion name ("Era", "Tbc", "Wotlk").
+--- @param idsPerFile number? The number of IDs per file (default: 50).
+--- @param ptagPerFile number? The number of <p> tags per file (default: 65000).
 --- @param debug boolean? Do you want to print extra debug output to the html files?
-function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, debug)
+function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, idsPerFile, ptagPerFile, debug)
   print(f("Generating HTML for %s (%s)...", entityType, expansionName))
 
+  local p_tags_per_file_avg = 0
+  local p_tags_highest = 0
+  local p_tags_lowest = math.huge
+
   -- 1. Define Constants & Paths (mirroring Python)
-  local range_size = 50
+  local range_size = idsPerFile or 50
+  local p_tags_per_file = ptagPerFile or 65000
   local max_file_size = 45000 -- Less critical now, but good for reference
   local max_p_size = 4000
   local entityTypeLower = entityType:lower()
@@ -72,6 +79,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, deb
                  entityTypeCapitalized))
 
   local entries_written           = 0
+  local p_tags_written            = 0
   local lowest_id, highest_id     = math.huge, -math.huge
   local current_chunk_output_data = {} -- Use a table for efficient string building
   local current_chunk_lookup_data = {} -- Use a table
@@ -145,8 +153,9 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, deb
           formatted_line = formatted_line:sub(2, -2)
         end
 
-        formatted_line = formatted_line:gsub("\\n", "<br/>") -- Use <br/> for XHTML validity if needed
-        formatted_line = formatted_line:gsub('\\\\"', '"')   -- Unescape double quotes if needed
+        formatted_line = formatted_line:gsub("\\n", "<br>") -- Use <br/> for XHTML validity if needed
+        formatted_line = formatted_line:gsub("\n", "<br>")  -- Use <br/> for XHTML validity if needed
+        formatted_line = formatted_line:gsub('\\\\"', '"')  -- Unescape double quotes if needed
 
         -- Remove surrounding quotes ONLY if not a table literal
         if not formatted_line:match("^%s*{") and not formatted_line:match("}%s*$") then
@@ -178,6 +187,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, deb
             else
               segmentMarker = f("%s-e", entityDataIndex) -- End marker
             end
+            p_tags_written = p_tags_written + 1
             table.insert(writtenDataIndexes, segmentMarker)
             table.insert(output_data_local, f("<p>%s</p>\n", formatted_line:sub(start, stop)))
           end
@@ -188,7 +198,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, deb
           if (debug) then
             table.insert(output_data_local, f("  <!-- %s -->\n", meta.NameIndexLookupTable[entityDataIndex]))
           end
-          -- Only add the <p> tag if not in debug mode
+          p_tags_written = p_tags_written + 1
           table.insert(output_data_local, f("<p>%s</p>\n", formatted_line))
         end
       end
@@ -203,6 +213,15 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, deb
       highest_id = math.max(highest_id, dataId)
       entries_written = entries_written + 1
 
+      -- Calculate p_tags stats
+      p_tags_written = p_tags_written + 1
+      if p_tags_written > p_tags_highest then
+        p_tags_highest = p_tags_written
+      end
+      if p_tags_written < p_tags_lowest then
+        p_tags_lowest = p_tags_written
+      end
+
       table.insert(current_chunk_lookup_data, tostring(dataId))
       table.insert(current_chunk_output_data, f("<!-- %d -->\n", dataId))      -- Add ID comment
       table.insert(current_chunk_output_data, "<p>" .. table.concat(writtenDataIndexes, ",") .. "</p>\n")
@@ -210,7 +229,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, deb
     end
 
     -- Check if chunk needs to be written
-    if entries_written == range_size or i == #sorted_keys then
+    if entries_written == range_size or i == #sorted_keys or p_tags_written >= p_tags_per_file then
       if entries_written > 0 then -- Don't write empty chunks
         local chunk_filename = f("%d-%d.html", lowest_id, highest_id)
         local chunk_filepath = outputDataPath .. "/" .. chunk_filename
@@ -240,8 +259,11 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, deb
           error("Failed to open file for writing: " .. chunk_filepath)
         end
 
+        p_tags_per_file_avg = (p_tags_per_file_avg + p_tags_written) / 2
+
         -- Reset chunk state
         entries_written = 0
+        p_tags_written = 0
         lowest_id, highest_id = math.huge, -math.huge
         current_chunk_output_data = {}
         current_chunk_lookup_data = {}
@@ -309,7 +331,8 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, deb
   local xml_filepath = outputBasePath .. "/" .. entityTypeCapitalized .. "DataFiles.xml"
   local xml_file = io.open(xml_filepath, "w")
   if xml_file then
-    xml_file:write('<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\\FrameXML\\UI.xsd">\n')
+    xml_file:write(
+    '<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">\n')
     for _, embed_str in ipairs(embed_file_strings) do
       xml_file:write(embed_str)
     end
@@ -321,4 +344,5 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, deb
   end
 
   print(f("Finished HTML generation for %s (%s).", entityType, expansionName))
+  print(f("Average <p> tags per file: Avg: %d , High: %d , Low: %d", p_tags_per_file_avg, p_tags_highest, p_tags_lowest))
 end -- End GenerateHtmlForEntityType
