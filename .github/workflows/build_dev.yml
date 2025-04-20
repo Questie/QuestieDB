@@ -60,6 +60,8 @@ jobs:
         luarocks install bit32
         luarocks install argparse
         luarocks install luafilesystem
+        luarocks install luasocket
+        luarocks install luasec
 
     # Runs a single command using the runners shell
     - name: Generate HTML
