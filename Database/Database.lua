@@ -221,7 +221,7 @@ do
   -- Table used to store the ids for the current call
   local allIdsSet = {}
   ---Used to add new Ids into the master list of ids for that type
-  ---@param AllIdStrings string @A list of strings containing the ids in the database, will be concatinated into one string
+  ---@param AllIdStrings string @A list of strings containing the ids in the database, will be concatenated into one string
   ---@param dataOverride table<number, any> @The data to check for new ids
   ---@return QuestId[]|NpcId[]|ObjectId[]|ItemId[] @Returns a list of new ids
   function Database.GetNewIds(AllIdStrings, dataOverride)
@@ -394,7 +394,7 @@ do
                 entryData[dataIndexNumber][#entryData[dataIndexNumber] + 1] = data
                 -- Create the function that will be called when we want to get the data
                 local segments = entryData[dataIndexNumber]
-                -- Replace the table with a function that returns the concatinated string
+                -- Replace the table with a function that returns the concatenated string
                 entryData[dataIndexNumber] = {
                   -- This emulates the frame function name so we can use the same code for both
                   GetText = function()
@@ -405,9 +405,9 @@ do
                     end
                     --? Can this become polymorphic and cache the result?
                     --? This could be unnecessary due to most data that is big is just fetched once and used.
-                    -- local concatinatedString = tConcat(ret)
+                    -- local concatenatedString = tConcat(ret)
                     -- entryData[dataIndexNumber].GetText = function()
-                    --   return concatinatedString
+                    --   return concatenatedString
                     -- end
                     return tConcat(ret)
                   end,
@@ -600,7 +600,7 @@ end
 --                 entryData[dataIndexNumber][#entryData[dataIndexNumber] + 1] = data
 --                 -- Create the function that will be called when we want to get the data
 --                 local segments = entryData[dataIndexNumber]
---                 -- Replace the table with a function that returns the concatinated string
+--                 -- Replace the table with a function that returns the concatenated string
 --                 entryData[dataIndexNumber] = {
 --                   -- This emulates the frame function name so we can use the same code for both
 --                   GetText = function()
@@ -611,9 +611,9 @@ end
 --                     end
 --                     --? Can this become polymorphic and cache the result?
 --                     --? This could be unnecessary due to most data that is big is just fetched once and used.
---                     -- local concatinatedString = tConcat(ret)
+--                     -- local concatenatedString = tConcat(ret)
 --                     -- entryData[dataIndexNumber].GetText = function()
---                     --   return concatinatedString
+--                     --   return concatenatedString
 --                     -- end
 --                     return tConcat(ret)
 --                   end
