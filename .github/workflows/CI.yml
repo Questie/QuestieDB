@@ -34,9 +34,6 @@ jobs:
         luarocks install luasocket
         luarocks install luasec
 
-    - name: Generate l10n Translations
-      run: sh ./.generate_database/generate_l10n.sh
-
     # Runs a single command using the runners shell
     - name: Generate HTML
       run: sh ./.database_generator/generate_database.sh ./.lua/bin/lua
