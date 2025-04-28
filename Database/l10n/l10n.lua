@@ -32,6 +32,11 @@ local specialChar = "‡"
 
 -- ! The order of these are very important and has to match the order in the
 -- ! extracting script in .database_generator/generate_l10n_table.lua
+print(L10nMeta.locales)
+print(l10n.currentLocale)
+for k, v in pairs(L10nMeta.locales) do
+  print(k, v)
+end
 local indexToLocale = L10nMeta.locales
 
 local localeToIndex = {}
