@@ -40,16 +40,16 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   print("Pre-Drain timer list")
   C_Timer.drainTimerList()
 
-  print("Executing event: ADDON_LOADED")
-  LibQuestieDBTable.RegisteredEvents["ADDON_LOADED"](CLI_addonName or "QuestieDB")
+  -- print("Executing event: ADDON_LOADED")
+  -- LibQuestieDBTable.RegisteredEvents["ADDON_LOADED"](CLI_addonName or "QuestieDB")
 
-  -- Drain all the timers
-  print("ADDON_LOADED timer list")
-  C_Timer.drainTimerList()
+  -- -- Drain all the timers
+  -- print("ADDON_LOADED timer list")
+  -- C_Timer.drainTimerList()
 
-  if not LibQuestieDBTable.Database.Initialized then
-    error("Database not initialized")
-  end
+  -- if not LibQuestieDBTable.Database.Initialized then
+  --   error("Database not initialized")
+  -- end
 
   -- Initialize tables to hold the merged data (raw data + static corrections).
   ---@type table<ItemId, table<number, any>>
