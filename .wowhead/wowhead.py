@@ -23,8 +23,8 @@ localeLookup = {
   "koKR": 1,  # Korean (Korea)
   "esES": 6,  # Spanish (Spain)
   "frFR": 2,  # French (France)
-  # "esMX": 6?, # Spanish (Mexico) - commented out, not supported
-  # "zhTW": 4?, # Traditional Chinese (Taiwan) - commented out, not supported
+  # "esMX": 11, # Spanish (Mexico) - commented out, not supported
+  # "zhTW": 10, # Traditional Chinese (Taiwan) - commented out, not supported
   "zhCN": 4,  # Simplified Chinese (China)
   # "itIT": 9, # Italian (Italy) - commented out, not supported
 }
@@ -42,8 +42,8 @@ localeToURLLocale = {
   "koKR": "ko",  # Korean (Korea)
   "esES": "es",  # Spanish (Spain)
   "frFR": "fr",  # French (France)
-  # "esMX": "es", # Spanish (Mexico) - commented out, not supported
-  # "zhTW": "zh", # Traditional Chinese (Taiwan) - commented out, not supported
+  # "esMX": "mx", # Spanish (Mexico) - commented out, not supported
+  # "zhTW": "tw", # Traditional Chinese (Taiwan) - commented out, not supported
   "zhCN": "cn",
   # "itIT": "it", # Italian (Italy) - commented out, not supported
 }
