@@ -1,3 +1,5 @@
+local lfs = require('lfs')
+
 CLI_Helpers = {}
 
 function print(...)
@@ -14,6 +16,60 @@ function print(...)
   printstring = printstring:gsub("|c%x%x%x%x%x%x%x%x", "")
   io.stdout:write(printstring .. "\n")
   io.stdout:flush()
+end
+
+local excludedDirectories = {
+  [".git"] = true,
+  [".translator"] = true,
+  [".wowhead"] = true,
+  [".generate_database"] = true,
+  [".database_generator"] = true,
+  ["venv"] = true,
+  [".build"] = true,
+  [".vscode"] = true,
+  ["_data"] = true,
+}
+
+---@param searchName string filename to search for
+---@param version string? version to search for
+---@return unknown
+function FindFile(searchName, version)
+  local function search(path)
+    for file in lfs.dir(path) do
+      if file ~= "." and file ~= ".." and file ~= ".build" then
+        local f = path .. '/' .. file
+        local attr = lfs.attributes(f)
+        if attr.mode == 'directory' then
+          if excludedDirectories[file] then
+            -- print("Skipping directory: " .. f)
+          else
+            -- print("Searching directory: " .. f)
+            local result = search(f)
+            if result then return result end
+          end
+        else
+          -- We want to fetch the correct version of the file
+          local correctVersion = true
+          if version then
+            -- Check if the file is in the correct version directory
+            local pathVersion = path:match("/(%w+)$") or ""
+            if pathVersion then
+              pathVersion = pathVersion:lower()
+            end
+            version = version:lower()
+            correctVersion = pathVersion == version
+          end
+          if file == searchName and correctVersion then
+            print("FindFile: Found file: " .. f)
+            return f
+          end
+        end
+      end
+    end
+  end
+  local currentDir = lfs.currentdir()
+  print("FindFile: Searching in: " .. currentDir)
+  return search(currentDir)
 end
 
 function CLI_Helpers.loadFile(filepath)

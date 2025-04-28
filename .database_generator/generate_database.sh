@@ -15,7 +15,7 @@ fi
 echo "Current directory: $(pwd)"
 echo "$LUA is the lua executable"
 
-git_sparse_clone_translations() {
+git_sparse_clone_addon_translations() {
   # Delete repo if it exists
   if [ -d "Questie-translations" ]; then
     echo "Removing already existing Questie-translations $(pwd)/Questie-translations"
@@ -28,11 +28,18 @@ git_sparse_clone_translations() {
   # # Cd into the git directory
   cd Questie-translations
 
-  # # Sparse checkout only the Localization/Translations
-  git sparse-checkout set --no-cone Localization/Translations
+  # # Sparse checkout only the Localization directory
+  echo "Setting sparse checkout for Localization"
+  git sparse-checkout set --no-cone Localization
 
   # # Pull the sparse checkout
+  echo "Pulling the sparse checkout"
   git checkout
+
+  # Remove the .git directory
+  rm -rf .git
+
+  echo "Done sparse checkout"
 }
 
 # Needed for the docker container but not action but it doesn't hurt the run if it fails
@@ -43,7 +50,7 @@ LAST_PATH="$(pwd)"
 # cd to current script directory
 cd "$(dirname "$0")"
 
-git_sparse_clone_translations
+git_sparse_clone_addon_translations
 
 echo "$(pwd)"
 
