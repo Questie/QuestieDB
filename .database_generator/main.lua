@@ -63,13 +63,13 @@ local function getTranslation(enUStext)
 end
 
 
-require("generateTranslations")
 -- Find the addon name
 local addon_name = helpers.find_addon_name()
 print("Addon Name: " .. addon_name)
 
--- Generate Trie-translations
-Compile_translations_to_html(single_translation, addon_name, getTranslation)
-
 -- Run the main function
 main()
+
+require("generateTranslations")
+-- Generate Trie-translations
+Compile_translations_to_html(single_translation, addon_name, getTranslation)
