@@ -385,7 +385,7 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
           local data = glob[id] and glob[id][numberKey]
           if data then
             --! This is slower than a raw value
-            return converter(data:GetText():match(pattern))
+            return converter(data:GetText():match(pattern)) or defaultValue
           else
             return defaultValue
           end
@@ -403,7 +403,10 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
           local data = glob[id] and glob[id][numberKey]
           if data then
             --! This is slower than a raw value
-            return data:GetText():match(pattern)
+            local raw_value = data:GetText():match(pattern)
+            -- If a translation for another locale exists the match will be empty
+            -- Return defaultValue if the match is empty
+            return raw_value ~= "" and raw_value or defaultValue
           else
             return defaultValue
           end
