@@ -53,6 +53,8 @@ dataEnvLookup = {
   "classic": 4,  # Classic version of the game
   "tbc": 5,  # The Burning Crusade version
   "wotlk": 8,  # Wrath of the Lich King version
+  "cata": 11,  # Cataclysm version
+  "mop": 15, # Mists of Pandaria version
 }
 # Add Flipped dataEnvLookup
 reversedataEnvLookup = {}
