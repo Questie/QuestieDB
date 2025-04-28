@@ -7,6 +7,8 @@ package.path = script_dir .. "?.lua;" .. package.path
 require("cli.dump")
 local helpers = require(".db_helpers")
 
+local l10n_loader = require("load_translations_l10n")
+
 require(".dump")
 
 require("cli.Addon_Meta")
@@ -22,10 +24,11 @@ Is_Create_Static = true
 --- Takes the raw database files (_data/*DB.lua) and the static corrections,
 --- merges them, and outputs the final combined data into both .lua-table format
 --- (for potential debugging/diffing) and the SimpleHTML format used by the addon.
----@param version string # The WoW version identifier (e.g., "classic", "wrath", "cata"). Case-insensitive.
+---@param questiedb_version string # The WoW version identifier (e.g., "classic", "wrath", "cata"). Case-insensitive.
+---@param questie_version string # The Questie version identifier (e.g., "Classic", "TBC", "Wotlk"). Case-insensitive.
 ---@param debug boolean? # Optional debug flag
-function DumpDatabase(version, debug)
-  local lowerVersion = version:lower()
+function DumpDatabase(questiedb_version, questie_version, debug)
+  local lowerVersion = questiedb_version:lower()
   local capitalizedVersion = lowerVersion:gsub("^%l", string.upper)
   print(f("\n\27[36mCompiling %s database...\27[0m", capitalizedVersion))
 
@@ -34,7 +37,19 @@ function DumpDatabase(version, debug)
   LibQuestieDBTable = AddonInitializeVersion(capitalizedVersion)
 
   -- Drain all the timers
+  print("Pre-Drain timer list")
   C_Timer.drainTimerList()
+
+  print("Executing event: ADDON_LOADED")
+  LibQuestieDBTable.RegisteredEvents["ADDON_LOADED"](CLI_addonName or "QuestieDB")
+
+  -- Drain all the timers
+  print("ADDON_LOADED timer list")
+  C_Timer.drainTimerList()
+
+  if not LibQuestieDBTable.Database.Initialized then
+    error("Database not initialized")
+  end
 
   -- Initialize tables to hold the merged data (raw data + static corrections).
   ---@type table<ItemId, table<number, any>>
@@ -45,12 +60,17 @@ function DumpDatabase(version, debug)
   local objectOverride = {}
   ---@type table<QuestId, table<number, any>>
   local questOverride = {}
+  ---@type table<ItemId|NpcId|ObjectId|QuestId, table<L10nDBKeys, table<L10nLocales, any>>>
+  local l10nOverride = {}
 
   ---@type Corrections
   local Corrections = LibQuestieDBTable.Corrections
 
   -- Run self-tests on the dump functions to ensure they produce correct output.
   Corrections.DumpFunctions.testDumpFunctions()
+
+  -- Define the entity types for which we will generate HTML files.
+  local entityTypes = { "Item", "Npc", "Object", "Quest", }
 
   -- Process Item Data: Load raw DB, load static corrections, merge corrections into raw data.
   do
@@ -165,6 +185,69 @@ function DumpDatabase(version, debug)
       end
     end
   end
+
+  -- Process L10n Data: Load raw DB, load static corrections, merge corrections into raw data.
+  local output
+  do
+    -- ? l10n dump
+    print("Loading version: " .. questie_version)
+    for datatype in pairs(Corrections.L10nMeta.l10nKeys) do
+      l10n_loader.CleanFiles(questie_version, datatype)
+    end
+
+    -- Create the lookup tables for the translations (This will import a singular ImportModule table)
+    -- The "l10n" is not required here.
+    ---@see AddonInitializeVersion
+    local l10n = QuestieLoader:ImportModule()
+    for _, entityType in ipairs(entityTypes) do
+      local newLookup = entityType:lower() .. "Lookup"
+      l10n[newLookup] = {}
+      CLI_Helpers.loadXML(helpers.get_project_dir_path() ..
+        f("/.database_generator/Questie-translations/Localization/lookups/%s/lookup%ss/lookup%ss.clean.xml", questie_version, entityType, entityType))
+    end
+
+    -- Validate that all the lookups are loaded
+    for _, entityType in ipairs(entityTypes) do
+      print("Validating " .. entityType .. " lookup")
+      local lookup = l10n[entityType:lower() .. "Lookup"]
+      if not lookup then
+        print("Failed to load " .. entityType .. " lookup")
+        os.exit(0)
+        return
+      end
+      -- Validate that all locales are loaded
+      for _, locale in ipairs(Corrections.L10nMeta.locales) do
+        -- if locale ~= "enUS" then
+        print("    Validating " .. entityType .. " lookup for locale: " .. locale)
+        if not lookup[locale] then
+          print("Failed to load " .. entityType .. " lookup for locale: " .. locale)
+          os.exit(0)
+          return
+        end
+        -- end
+      end
+    end
+    print("All lookups and locales loaded successfully")
+
+    -- Create the l10n data table
+    l10nOverride = l10n_loader.GenerateL10nTranslation(Corrections.L10nMeta.locales, entityTypes, l10n)
+
+
+    -- DevTools_Dump(l10nOverride)
+
+    -- DevTools_Dump(l10nOverride)
+    output = l10n_loader.DumpL10nData(Corrections.L10nMeta, entityTypes, l10nOverride)
+    -- local l10nDumpFile = io.open(".database_generator/l10nData.lua-table", "w")
+    -- if l10nDumpFile and output then
+    --   l10nDumpFile:write(output)
+    --   l10nDumpFile:close()
+    --   --   print("Dumped l10n data to " .. f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedVersion))
+    --   -- else
+    --   --   print("Failed to open file for writing: " .. f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedVersion))
+    -- end
+    -- os.exit(0)
+  end
+
   -- Create output directories if they don't exist.
   -- ---@type string
   -- local basePath = f("%s/_data/output", helpers.get_script_dir())
@@ -174,7 +257,6 @@ function DumpDatabase(version, debug)
     lfs.mkdir(basePath)
     print("Created directory: " .. basePath)
   end
-  local entityTypes = { "Item", "Npc", "Object", "Quest", }
   for _, entityType in ipairs(entityTypes) do
     local path = f("%s/%s", basePath, entityType)
     if not lfs.attributes(path, "mode") then
@@ -193,6 +275,15 @@ function DumpDatabase(version, debug)
 
   -- ? Dump L10n Data
   print("Dumping L10n overrides")
+
+  local l10nDumpFile = io.open(f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedVersion), "w")
+  if l10nDumpFile and output then
+    l10nDumpFile:write(output)
+    l10nDumpFile:close()
+    print("Dumped l10n data to " .. f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedVersion))
+  else
+    print("Failed to open file for writing: " .. f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedVersion))
+  end
   -- TODO: When we refactor the python code to lua this entire section will have changes
   local path = f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedVersion)
   print("Reading L10n data from " .. path)
@@ -206,7 +297,7 @@ function DumpDatabase(version, debug)
     return
   end
   l10nData = l10nData()
-  GenerateHtmlForEntityType(l10nData, Corrections.L10nMeta, "L10n", version, nil, nil, debug)
+  GenerateHtmlForEntityType(l10nData, Corrections.L10nMeta, "L10n", questiedb_version, nil, nil, debug)
   -- GenerateHtmlForEntityType(l10nData, Corrections.L10nMeta, "L10n", version, 75, 650, debug)
 
   -- ? Dump Item Data
@@ -222,7 +313,7 @@ function DumpDatabase(version, debug)
   itemFile:close()
   -- Generate the SimpleHTML files used by the addon.
   print("Dumping item overrides to HTML")
-  GenerateHtmlForEntityType(itemOverride, Corrections.ItemMeta, "Item", version, nil, nil, debug)
+  GenerateHtmlForEntityType(itemOverride, Corrections.ItemMeta, "Item", questiedb_version, nil, nil, debug)
   -- GenerateHtmlForEntityType(itemOverride, Corrections.ItemMeta, "Item", version, 75, 650, debug)
 
   -- ? Dump Quest Data
@@ -233,7 +324,7 @@ function DumpDatabase(version, debug)
   questFile:write(questDataString)
   questFile:close()
   print("Dumping quest overrides to HTML")
-  GenerateHtmlForEntityType(questOverride, Corrections.QuestMeta, "Quest", version, nil, nil, debug)
+  GenerateHtmlForEntityType(questOverride, Corrections.QuestMeta, "Quest", questiedb_version, nil, nil, debug)
   -- GenerateHtmlForEntityType(questOverride, Corrections.QuestMeta, "Quest", version, 75, 650, debug)
 
   -- ? Dump Npc Data
@@ -245,7 +336,7 @@ function DumpDatabase(version, debug)
   npcFile:write(npcDataString)
   npcFile:close()
   print("Dumping npc overrides to HTML")
-  GenerateHtmlForEntityType(npcOverride, Corrections.NpcMeta, "Npc", version, nil, nil, debug)
+  GenerateHtmlForEntityType(npcOverride, Corrections.NpcMeta, "Npc", questiedb_version, nil, nil, debug)
   -- GenerateHtmlForEntityType(npcOverride, Corrections.NpcMeta, "Npc", version, 75, 650, debug)
 
   -- ? Dump Object Data
@@ -257,7 +348,7 @@ function DumpDatabase(version, debug)
   objectFile:write(objectDataString)
   objectFile:close()
   print("Dumping object overrides to HTML")
-  GenerateHtmlForEntityType(objectOverride, Corrections.ObjectMeta, "Object", version, nil, nil, debug)
+  GenerateHtmlForEntityType(objectOverride, Corrections.ObjectMeta, "Object", questiedb_version, nil, nil, debug)
   -- GenerateHtmlForEntityType(objectOverride, Corrections.ObjectMeta, "Object", version, 75, 650, debug)
 
 

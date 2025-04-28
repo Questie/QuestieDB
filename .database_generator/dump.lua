@@ -332,7 +332,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
   local xml_file = io.open(xml_filepath, "w")
   if xml_file then
     xml_file:write(
-    '<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">\n')
+      '<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">\n')
     for _, embed_str in ipairs(embed_file_strings) do
       xml_file:write(embed_str)
     end

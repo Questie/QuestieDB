@@ -175,7 +175,7 @@ do
   }
 
   --- (Re-)Initializes the global variables for the addon
-  ---@param version Expansions
+  ---@param version Expansions|string e.g. "Classic", "TBC", "Wotlk"
   ---@return LibQuestieDB
   function AddonInitializeVersion(version)
     local lowerVersion = version:lower()

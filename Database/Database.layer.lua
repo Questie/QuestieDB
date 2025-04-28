@@ -11,12 +11,28 @@ local Database = LibQuestieDB.Database
 local f = string.format
 function Database.GetTemplateNames()
   print("Getting all template names")
+
+  -- Figure out current version
+  local currentVersion = "Era"
+  if LibQuestieDB.IsClassic then
+    currentVersion = "Era"
+  elseif LibQuestieDB.IsTBC then
+    currentVersion = "TBC"
+  elseif LibQuestieDB.IsWotlk then
+    currentVersion = "Wotlk"
+  elseif LibQuestieDB.IsCata then
+    currentVersion = "Cata"
+  elseif LibQuestieDB.IsMoP then
+    currentVersion = "MoP"
+  end
+  print("Current version: " .. currentVersion)
+
   ---@type table<string, string>
   Database.TemplateToPath = {}
   for entityType in pairs(Database.entityTypes) do
     local templateFile = entityType .. "DataFiles.xml"
     assert(type(FindFile) == "function", "FindFile function is missing.")
-    local filepath = FindFile(templateFile)
+    local filepath = FindFile(templateFile, currentVersion)
     print(f("Data file found (%s): %s", tostring(templateFile), tostring(filepath)))
     -- Read the file and parse the XML
     -- Example content
@@ -30,7 +46,9 @@ function Database.GetTemplateNames()
         -- I was stupid once upon a time and saved the folder as lowercase... stupid me...
         Database.TemplateToPath[templateName] = Database.TemplateToPath[templateName]:gsub("/L10n/", "/l10n/")
       else
-        print("WARNING - Template not found in line: " .. line)
+        if not line:match('</*Ui>') and not line:match('<Ui ') then
+          print("WARNING - Template not found in line: " .. line)
+        end
       end
     end
   end

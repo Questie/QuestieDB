@@ -8,7 +8,7 @@ Translations/*_gen.xml
 Translations/*_gen.lua
 Translations/_data/*.html
 
-
+.database_generator/Questie-translations
 
 .shit
 .translator
