@@ -79,6 +79,7 @@ function CLI_Helpers.loadFile(filepath)
   local filedata = io.open(filepath, "r")
   if not filedata then
     print("Error loading " .. filepath .. " - File not found")
+    error("Error loading " .. filepath .. " - File not found")
     return
   end
   local filetext = filedata:read("*all")
@@ -94,8 +95,10 @@ function CLI_Helpers.loadFile(filepath)
   else
     if errorMessage then
       print("Error loading " .. filepath .. ": " .. errorMessage)
+      error("Error loading " .. filepath .. ": " .. errorMessage)
     else
       print("Error loading " .. filepath .. " - No errorMessage")
+      error("Error loading " .. filepath .. " - No errorMessage")
     end
   end
 end

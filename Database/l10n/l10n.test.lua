@@ -19,38 +19,42 @@ local quest = LibQuestieDB.Quest
 
 l10n.RunGetTest = function(fast)
   do
-    local success, error = pcall(l10n.testItemGetFunctions, fast)
+    local success, err = pcall(l10n.testItemGetFunctions, fast)
     if not success then
-      print("l10n Item test failed: " .. error)
+      print("l10n Item test failed: " .. err)
       print("Last tested Item l10n: " .. tostring(l10n.lastTestedID))
       print("Last tested Item l10n function: " .. tostring(l10n.lastTestedData))
+      error("l10n Item test failed: " .. err)
     end
   end
 
   do
-    local success, error = pcall(l10n.testNpcGetFunctions, fast)
+    local success, err = pcall(l10n.testNpcGetFunctions, fast)
     if not success then
-      print("l10n Npc test failed: " .. error)
+      print("l10n Npc test failed: " .. err)
       print("Last tested Npc l10n: " .. tostring(l10n.lastTestedID))
       print("Last tested Npc l10n function: " .. tostring(l10n.lastTestedData))
+      error("l10n Npc test failed: " .. err)
     end
   end
 
   do
-    local success, error = pcall(l10n.testObjectGetFunctions, fast)
+    local success, err = pcall(l10n.testObjectGetFunctions, fast)
     if not success then
-      print("l10n Object test failed: " .. error)
+      print("l10n Object test failed: " .. err)
       print("Last tested Object l10n: " .. tostring(l10n.lastTestedID))
       print("Last tested Object l10n function: " .. tostring(l10n.lastTestedData))
+      error("l10n Object test failed: " .. err)
     end
   end
 
   do
-    local success, error = pcall(l10n.testQuestGetFunctions, fast)
+    local success, err = pcall(l10n.testQuestGetFunctions, fast)
     if not success then
-      print("l10n Quest test failed: " .. error)
+      print("l10n Quest test failed: " .. err)
       print("Last tested Quest l10n: " .. tostring(l10n.lastTestedID))
       print("Last tested Quest l10n function: " .. tostring(l10n.lastTestedData))
+      error("l10n Quest test failed: " .. err)
     end
   end
 end
