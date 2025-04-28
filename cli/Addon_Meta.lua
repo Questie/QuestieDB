@@ -75,6 +75,7 @@ do
     end,
     ["Sod"] = function()
       ---@type LibQuestieDB
+      ---@diagnostic disable-next-line: missing-fields
       LibQuestieDBTable = {}
 
       -- When creating the static database, we load the QuestieDB which writes to this global, so we reset it here
@@ -105,6 +106,7 @@ do
     end,
     ["Tbc"] = function()
       ---@type LibQuestieDB
+      ---@diagnostic disable-next-line: missing-fields
       LibQuestieDBTable = {}
 
       -- When creating the static database, we load the QuestieDB which writes to this global, so we reset it here
@@ -128,6 +130,7 @@ do
     end,
     ["Wotlk"] = function()
       ---@type LibQuestieDB
+      ---@diagnostic disable-next-line: missing-fields
       LibQuestieDBTable = {}
 
       -- When creating the static database, we load the QuestieDB which writes to this global, so we reset it here
@@ -151,6 +154,7 @@ do
     end,
     ["Cata"] = function()
       ---@type LibQuestieDB
+      ---@diagnostic disable-next-line: missing-fields
       LibQuestieDBTable = {}
 
       -- When creating the static database, we load the QuestieDB which writes to this global, so we reset it here
