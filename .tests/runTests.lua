@@ -6,6 +6,8 @@ require("cli.Addon_Meta")
 
 local f = string.format
 
+Is_Test = true
+
 do
   ---@diagnostic disable-next-line: lowercase-global
   function printableTable(table)
