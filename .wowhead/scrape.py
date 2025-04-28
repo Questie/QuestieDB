@@ -317,10 +317,15 @@ def fetch_worker(version, idData):
     finally:
       fetch_queue.task_done()
 
-
+allowed_expansions = ["Classic", "TBC", "Wotlk", "Cata", "MoP"]
 if __name__ == "__main__":
-  # Classic, TBC, Wotlk
-  version = "Classic"
+  # Classic, TBC, Wotlk, Cata, MoP
+  if len(sys.argv) > 1:
+    version = sys.argv[1]
+  if version not in allowed_expansions:
+    print(f"Version {version} is not allowed. Allowed versions are: {', '.join(allowed_expansions)}")
+    sys.exit(1)
+
   all_ids = {}
   all_ids["npc"] = getAllIdsWowhead(version, "npc")
   all_ids["item"] = getAllIdsWowhead(version, "item")
