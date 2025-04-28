@@ -3,6 +3,8 @@
   // "workspace.library": ["path/to/library/directory"],
   "workspace.ignoreDir":[
     ".generate_database",
+    ".database_generator",
+    ".shit",
     ".vscode",
     ".translator",
     ".wowhead",
