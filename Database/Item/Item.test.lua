@@ -9,11 +9,12 @@ local LibQuestieDB = select(2, ...)
 local Item = LibQuestieDB.Item
 
 Item.RunGetTest = function(fast)
-  local success, error = pcall(Item.testGetFunctions, fast)
+  local success, err = pcall(Item.testGetFunctions, fast)
   if not success then
-    print("ITEM test failed: " .. error)
+    print("ITEM test failed: " .. err)
     print("Last tested ITEM: " .. tostring(Item.lastTestedID))
     print("Last tested ITEM function: " .. tostring(Item.lastTestedData))
+    error("ITEM test failed: " .. err)
   end
 end
 
