@@ -13,6 +13,12 @@ l10n.currentLocale = GetLocale()
 -- Override locale
 -- l10n.currentLocale = "ptBR"
 
+if Is_CLI and Is_Test then
+  -- All the other data is run through the normal databases
+  -- In testing it is better to actually test another locale than enUS
+  l10n.currentLocale = "deDE"
+end
+
 -- Order Item, Npc, Object, Quest
 -- "enUS": "", # English (US) # Yes EN is empty
 -- "ptBR": "pt", # Portuguese (Brazil)
@@ -32,11 +38,6 @@ local specialChar = "‡"
 
 -- ! The order of these are very important and has to match the order in the
 -- ! extracting script in .database_generator/generate_l10n_table.lua
-print(L10nMeta.locales)
-print(l10n.currentLocale)
-for k, v in pairs(L10nMeta.locales) do
-  print(k, v)
-end
 local indexToLocale = L10nMeta.locales
 
 local localeToIndex = {}
@@ -196,7 +197,10 @@ do
       end
     end
 
-    SetGetters()
+    -- Do not SetGetters if the locale does not exist
+    if localeToPattern[l10n.currentLocale] then
+      SetGetters()
+    end
   end
 
   exportFunctions()
