@@ -6,6 +6,16 @@ local http = require("socket.http")
 local https = require("ssl.https")
 local ltn12 = require("ltn12")
 
+
+---@type table<string, string>
+local expansions = {
+  Classic = "era", -- Map GitHub folder name to local name prefix
+  TBC = "tbc",
+  Wotlk = "wotlk",
+  Cata = "cata",
+  -- MoP = "mop",
+}
+
 --- Get the script directory.
 ---@return string The directory containing the script. Ends with a "/".
 local function get_script_dir()
@@ -42,6 +52,27 @@ local function get_data_dir_path(entity_type, expansion)
     path = get_project_dir_path() .. "/Database/" .. entity_type:lower() .. "/" .. expansion
   end
   return path
+end
+
+---@param path string The directory path to search in.
+---@param extension string The file extension to filter by (e.g., "lua").
+---@return table<number, string> A table containing the names of files with the specified extension.
+local function get_files_in_directory(path, extension)
+  local files = {}
+  for file in lfs.dir(path) do
+    -- Skip '.' and '..' directories
+    if file ~= "." and file ~= ".." then
+      local file_path = path .. "/" .. file
+      local file_mode = lfs.attributes(file_path, "mode")
+
+      -- Check if it's a file and ends with the specified extension (case-insensitive)
+      if file_mode == "file" and file:lower():match(extension .. "$") then
+        table.insert(files, file)
+      end
+    end
+  end
+  print("Found " .. #files .. " files with extension '" .. extension .. "' in directory: " .. path)
+  return files
 end
 
 --- Find the addon name.
@@ -317,9 +348,11 @@ end
 ---@class helpers
 local return_table = {
   capitalize = capitalize,
+  Expansions = expansions,
   get_script_dir = get_script_dir,
   get_project_dir_path = get_project_dir_path,
   get_data_dir_path = get_data_dir_path,
+  get_files_in_directory = get_files_in_directory,
   find_addon_name = find_addon_name,
   read_expansion_data = read_expansion_data,
   dumpData = dumpData,

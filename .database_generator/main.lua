@@ -11,14 +11,6 @@ require(".createStatic")
 
 DB_GEN_DEBUG_MODE = false
 
-Expansions = {
-  Classic = "era", -- Map GitHub folder name to local name prefix
-  TBC = "tbc",
-  Wotlk = "wotlk",
-  Cata = "cata",
-  -- MoP = "mop",
-}
-
 
 -- Main function to demonstrate the usage of helper functions
 local function main()
@@ -28,10 +20,10 @@ local function main()
 
 
   -- for expansion, local_prefix in pairs(Expansions) do
-  for _, local_prefix_expansion in pairs(Expansions) do
+  for questie_prefix_expansion, local_prefix_expansion in pairs(helpers.Expansions) do
     local capitalized_expansion = local_prefix_expansion:sub(1, 1):upper() .. local_prefix_expansion:sub(2)
     print("Downloading " .. capitalized_expansion .. " databases...")
-    DumpDatabase(capitalized_expansion, DB_GEN_DEBUG_MODE)
+    DumpDatabase(capitalized_expansion, questie_prefix_expansion, DB_GEN_DEBUG_MODE)
   end
 end
 

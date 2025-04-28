@@ -1,7 +1,6 @@
 ---@diagnostic disable: need-check-nil
 require("cli.dump")
 local argparse = require("argparse")
-local lfs = require('lfs')
 
 require("cli.Addon_Meta")
 
@@ -23,41 +22,7 @@ do
   end
 end
 
-local excludedDirectories = {
-  [".git"] = true,
-  [".translator"] = true,
-  [".wowhead"] = true,
-  [".generate_database"] = true,
-  [".database_generator"] = true,
-}
 
-function FindFile(searchName)
-  local function search(path)
-    for file in lfs.dir(path) do
-      if file ~= "." and file ~= ".." and file ~= ".build" then
-        local f = path .. '/' .. file
-        local attr = lfs.attributes(f)
-        if attr.mode == 'directory' then
-          if excludedDirectories[file] then
-            -- print("Skipping directory: " .. f)
-          else
-            -- print("Searching directory: " .. f)
-            local result = search(f)
-            if result then return result end
-          end
-        else
-          if file == searchName then
-            print("FindFile: Found file: " .. f)
-            return f
-          end
-        end
-      end
-    end
-  end
-  local currentDir = lfs.currentdir()
-  print("FindFile: Searching in: " .. currentDir)
-  return search(currentDir)
-end
 
 local function RunTest(version)
   local lowerVersion = version:lower()

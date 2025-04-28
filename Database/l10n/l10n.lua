@@ -2,6 +2,8 @@
 ---@field l10n l10n
 local LibQuestieDB = select(2, ...)
 
+local L10nMeta = LibQuestieDB.Corrections.L10nMeta
+
 local f = string.format
 
 ---@class l10n:DatabaseType
@@ -29,17 +31,9 @@ l10n.currentLocale = GetLocale()
 local specialChar = "‡"
 
 -- ! The order of these are very important and has to match the order in the
--- ! extracting python script in .generate_database (currently generate_l10n_table.py)
-local indexToLocale = {
-  [1] = "enUS",
-  [2] = "ptBR",
-  [3] = "ruRU",
-  [4] = "deDE",
-  [5] = "koKR",
-  [6] = "esES",
-  [7] = "frFR",
-  [8] = "zhCN",
-}
+-- ! extracting script in .database_generator/generate_l10n_table.lua
+local indexToLocale = L10nMeta.locales
+
 local localeToIndex = {}
 local localeToPattern = {}
 do
