@@ -17,6 +17,7 @@ C_Timer = {
       end
     end
   end,
+  ---@diagnostic disable-next-line: undefined-doc-name
   ---@return cbObject
   NewTimer = function(_, f)
     timerList[#timerList + 1] = f

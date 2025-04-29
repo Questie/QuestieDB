@@ -1,4 +1,4 @@
-## Interface: 11403
+## Interface: 11507
 ## Title: QuestieDB
 ## Author: Logon (Data: TheCrux/Drejjmit/Muehe/Yttrium/TechnoHunter/Everyone else)
 ## Notes: A standalone QuestieDB
@@ -29,6 +29,8 @@ Database\Object\Era\ObjectDataFiles.xml
 Database\Quest\Era\QuestDataFiles.xml
 ## l10n
 Database\l10n\Era\L10nDataFiles.xml
+## Translations
+Translations\Translations.xml
 
 ##* Corrections Meta
 Corrections\MetaCorrections.xml
@@ -59,6 +61,8 @@ Corrections\Sod\_SodCorrections.xml
 # Corrections\Tbc\_TbcCorrections.xml
 ### Corrections - Wotlk
 # Corrections\Wotlk\_WotlkCorrections.xml
+### Corrections - Cata
+# Corrections\Cata\_CataCorrections.xml
 
 # Standalone
 QuestieDB.lua

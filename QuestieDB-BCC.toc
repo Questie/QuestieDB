@@ -29,6 +29,8 @@ Database\Object\Tbc\ObjectDataFiles.xml
 Database\Quest\Tbc\QuestDataFiles.xml
 ## l10n
 Database\l10n\Tbc\L10nDataFiles.xml
+## Translations
+Translations\Translations.xml
 
 ##* Corrections Meta
 Corrections\MetaCorrections.xml
@@ -57,6 +59,8 @@ Corrections\Era\_EraCorrections.xml
 Corrections\Tbc\_TbcCorrections.xml
 ### Corrections - Wotlk
 # Corrections\Wotlk\_WotlkCorrections.xml
+### Corrections - Cata
+# Corrections\Cata\_CataCorrections.xml
 
 # Standalone
 QuestieDB.lua

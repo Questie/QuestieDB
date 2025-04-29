@@ -1,11 +1,12 @@
 ---@diagnostic disable: need-check-nil
 require("cli.dump")
 local argparse = require("argparse")
-local lfs = require('lfs')
 
 require("cli.Addon_Meta")
 
 local f = string.format
+
+Is_Test = true
 
 do
   ---@diagnostic disable-next-line: lowercase-global
@@ -23,37 +24,7 @@ do
   end
 end
 
-local excludedDirectories = {
-  [".git"] = true,
-  [".translator"] = true,
-  [".wowhead"] = true,
-  [".generate_database"] = true,
-}
-function FindFile(searchName)
-  local function search(path)
-    for file in lfs.dir(path) do
-      if file ~= "." and file ~= ".." and file ~= ".build" then
-        local f = path .. '/' .. file
-        local attr = lfs.attributes(f)
-        if attr.mode == 'directory' then
-          if excludedDirectories[file] then
-            -- print("Skipping directory: " .. f)
-          else
-            -- print("Searching directory: " .. f)
-            local result = search(f)
-            if result then return result end
-          end
-        else
-          if file == searchName then
-            print("FindFile: Found file: " .. f)
-            return f
-          end
-        end
-      end
-    end
-  end
-  return search(lfs.currentdir())
-end
+
 
 local function RunTest(version)
   local lowerVersion = version:lower()
@@ -177,8 +148,10 @@ local function RunTest(version)
 end
 local validVersions = {
   ["era"] = true,
+  ["sod"] = true,
   ["tbc"] = true,
   ["wotlk"] = true,
+  ["cata"] = true,
 }
 local versionString = ""
 for version in pairs(validVersions) do

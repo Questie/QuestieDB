@@ -53,8 +53,10 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
   ---@type table<Id, table<string, any>>
   local override = {}
 
-  ---- Contains the id strings ----
-  local AllIdStrings = {}
+  ---- Contains the id string ----
+  ---- Use GetAllIds function to get the ids
+  ---@type string
+  local AllIdStrings = ""
 
   ---- Add entity type to the database ----
   Database.entityTypes[captializedType] = true
@@ -197,10 +199,15 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
 
     -- If there are new IDs, concatenate them into a string and add to `AllIdStrings` for tracking.
     if #newIds ~= 0 then
-      tInsert(AllIdStrings, tConcat(newIds, ","))
+      -- To get the right length we just print this message before adding the old string
       if Database.debugPrintEnabled then
         LibQuestieDB.ColorizePrint("lightBlue", f(" # New %s IDs", captializedType), #newIds)
       end
+      -- Add the old ID string to the new list of ids
+      -- e.g { "1", "2", "3", "4,5,6" } -> "1,2,3,4,5,6"
+      ---@diagnostic disable-next-line: assign-type-mismatch
+      newIds[#newIds + 1] = AllIdStrings
+      AllIdStrings = tConcat(newIds, ",")
     end
 
     -- Apply the override data to the database and return the number of overrides applied.
@@ -212,10 +219,11 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
     -- It will however still initialize during the CLI testing phase.
     if Is_Create_Static then return end
 
-    wipe(AllIdStrings)
+    -- Reset the `AllIdStrings` variable to an empty string.
+    AllIdStrings = ""
     local func, idString = Database.GetAllEntityIdsFunction(captializedType)
     -- TODO: Maybe we should sort this list?
-    tInsert(AllIdStrings, idString)
+    AllIdStrings = idString
     if Database.debugPrintEnabled then
       assert(#func() == #DB.GetAllIds(), f("%s ids are not the same", captializedType))
     end
@@ -241,12 +249,12 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
   function DB.GetAllIds(hashmap)
     if hashmap == true then
       -- Substitute all numbers in the concatenated ID strings with Lua table format [number]=true
-      local dat = gsub(tConcat(AllIdStrings, ","), "(%d+)", "[%1]=true")
+      local dat = gsub(AllIdStrings, "(%d+)", "[%1]=true")
       -- Execute the string as Lua code to create and return the hashmap
       return loadstring(f("return {%s}", dat))()
     else
       -- If hashmap is not requested, simply return a list of IDs
-      return loadstring(f("return {%s}", tConcat(AllIdStrings, ",")))()
+      return loadstring(f("return {%s}", AllIdStrings))()
     end
   end
 
@@ -377,7 +385,7 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
           local data = glob[id] and glob[id][numberKey]
           if data then
             --! This is slower than a raw value
-            return converter(data:GetText():match(pattern))
+            return converter(data:GetText():match(pattern)) or defaultValue
           else
             return defaultValue
           end
@@ -395,7 +403,10 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
           local data = glob[id] and glob[id][numberKey]
           if data then
             --! This is slower than a raw value
-            return data:GetText():match(pattern)
+            local raw_value = data:GetText():match(pattern)
+            -- If a translation for another locale exists the match will be empty
+            -- Return defaultValue if the match is empty
+            return raw_value ~= "" and raw_value or defaultValue
           else
             return defaultValue
           end
