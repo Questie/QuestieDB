@@ -74,8 +74,8 @@
   // Default end of line
   "files.eol": "\n",
 
-  "Lua.diagnostics.ignoredFiles": "Enable",
-  "Lua.diagnostics.libraryFiles": "Enable",
+  "Lua.diagnostics.ignoredFiles": "Opened",
+  "Lua.diagnostics.libraryFiles": "Opened",
 
   "Lua.diagnostics.severity": {},
   "Lua.diagnostics.enable": true,
