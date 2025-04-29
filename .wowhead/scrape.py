@@ -251,7 +251,7 @@ if __name__ == "__main__":
     f.write("{")
     items = list(d.items())
     for i, (k, v) in enumerate(items):
-      f.write(f"\n{' ' * (indent + 2)}\"{k}\": ")
+      f.write(f'\n{" " * (indent + 2)}"{k}": ')
       if isinstance(v, dict):
         write_dict(v, f, indent=indent + 2)
       else:
