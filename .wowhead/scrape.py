@@ -125,16 +125,19 @@ def fetch_worker(version, idData):
       idData[idType][id] = {}
       if idType == "faction":
         for locale, data in data.items():
-          if type(data) == bytes:
+          if type(data) is bytes:
             rawData = data.decode("utf-8")
           else:
             rawData = data
           # Get g_faction
-          g_faction = faction_g_faction_regex.search(rawData).group(1)
-          # Load g_faction as JSON
-          g_faction = json.loads(g_faction)
+          g_faction = faction_g_faction_regex.search(rawData)
+          if g_faction:
+            g_faction = g_faction.group(1)
+            # Load g_faction as JSON
+            g_faction = json.loads(g_faction)
 
-          idData[idType][id][locale] = g_faction
+            idData[idType][id][locale] = g_faction
+
       elif idType == "quest":
         usData = getQuestSections("enUS", data["enUS"], id)
         if len(usData) == 0:
@@ -151,6 +154,26 @@ def fetch_worker(version, idData):
             elif len(localeData) != len(usData):
               print(f"Section count mismatch for {idType} {id} {locale}")
             idData[idType][id][locale] = localeData
+      elif idType == "npc":
+        for locale, localeData in data.items():
+          data = json.loads(localeData)
+          dataObject = {}
+          # Get the name and subname
+          dataObject["name"] = data["name"]
+          # Extract the subname from the tooltip
+          if "tooltip" in data:
+            tooltip = data["tooltip"]
+            # match = re.search(r"<\/b><\/td><\/tr>\n<tr><td>(.*?)<\/td><\/tr><tr>", tooltip)
+            match = re.search(r"<\/b><\/td><\/tr>\n<tr><td>(.*?)<\/td><\/tr><tr><td>.*?<\/td></tr>(?!<\/table>)", tooltip)
+            if match:
+              subname = match.group(1)
+              dataObject["subname"] = subname
+          # Add to the dictionary
+          idData[idType][id][locale] = dataObject
+      elif idType == "object" or idType == "item":
+        for locale, localeData in data.items():
+          data = json.loads(localeData)
+          idData[idType][id][locale] = data["name"]
       else:
         for locale, localeData in data.items():
           data = json.loads(localeData)
