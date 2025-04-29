@@ -1,11 +1,7 @@
 import re
 import json
 import sys
-import srt
-import os
-import openai
 import time
-import tiktoken
 import threading
 import queue
 import concurrent.futures
