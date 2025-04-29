@@ -1,0 +1,66 @@
+## Interface: 40402
+## Title: QuestieDB
+## Author: Logon (Data: TheCrux/Drejjmit/Muehe/Yttrium/TechnoHunter/Everyone else)
+## Notes: A standalone QuestieDB
+## Version: 0.5.0
+## RequiredDeps:
+## OptionalDeps:
+#### SavedVariables: QuestieDB
+## SavedVariablesPerCharacter: QuestieDB_c
+## Dedicated to my cat - Suddis
+
+####### API Here ########
+Library.lua
+#########################
+
+Helpers\VersionCheck.lua
+Helpers\_s.lua
+
+#* Helpers
+Helpers\DebugText.lua
+Helpers\ThreadLib.lua
+Helpers\Helpers.lua
+
+#* Database
+## Data embeds
+Database\Item\Cata\ItemDataFiles.xml
+Database\Npc\Cata\NpcDataFiles.xml
+Database\Object\Cata\ObjectDataFiles.xml
+Database\Quest\Cata\QuestDataFiles.xml
+## l10n
+Database\l10n\Cata\L10nDataFiles.xml
+## Translations
+Translations\Translations.xml
+
+##* Corrections Meta
+Corrections\MetaCorrections.xml
+
+##* Main
+Database\Database.layer.lua
+Database\Database.lua
+Database\Base\Base.xml
+
+##* Types
+# l10n
+Database\l10n\l10n.xml
+
+Database\Item\Item.xml
+
+Database\Npc\Npc.xml
+
+Database\Object\Object.xml
+
+Database\Quest\Quest.xml
+
+##* Corrections
+### Corrections - Era
+Corrections\Era\_EraCorrections.xml
+### Corrections - Tbc
+Corrections\Tbc\_TbcCorrections.xml
+### Corrections - Wotlk
+Corrections\Wotlk\_WotlkCorrections.xml
+### Corrections - Cata
+Corrections\Cata\_CataCorrections.xml
+
+# Standalone
+QuestieDB.lua

@@ -32,6 +32,14 @@ NpcMeta.npcKeys = {
   ['npcFlags'] = 15,          -- int, Bitmask containing various flags about the NPCs function (Vendor, Trainer, Flight Master, etc.).
   -- For flag values see https://github.com/cmangos/mangos-classic/blob/172c005b0a69e342e908f4589b24a6f18246c95e/src/game/Entities/Unit.h#L536
 }
+
+--- Contains the name of data as keys and their index as value for quick lookup
+NpcMeta.NameIndexLookupTable = {}
+for key, index in pairs(NpcMeta.npcKeys) do
+  NpcMeta.NameIndexLookupTable[index] = key
+  NpcMeta.NameIndexLookupTable[key] = index
+end
+
 -- Contains the type of data as keys and their index as value
 NpcMeta.npcTypes = {
   ['name'] = "string",
@@ -147,5 +155,11 @@ do
   ---@return string @ Returns the combined value string that was inserted into the table
   function NpcMeta.combine(tbl)
     return DumpFunctions.combine(tbl, combineValues, NpcMeta.npcTypes)
+  end
+
+  -- Check if combineValues is empty or not
+  if next(combineValues) == nil then
+    -- If combineValues is empty, set the combine function to nil
+    NpcMeta.combine = nil
   end
 end

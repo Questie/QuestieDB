@@ -8,16 +8,32 @@ local LibQuestieDB = select(2, ...)
 ---@field package CreateFakeFrame fun(GetTextTable: table):table
 local Database = LibQuestieDB.Database
 
-
+local f = string.format
 function Database.GetTemplateNames()
   print("Getting all template names")
+
+  -- Figure out current version
+  local currentVersion = "Era"
+  if LibQuestieDB.IsClassic then
+    currentVersion = "Era"
+  elseif LibQuestieDB.IsTBC then
+    currentVersion = "TBC"
+  elseif LibQuestieDB.IsWotlk then
+    currentVersion = "Wotlk"
+  elseif LibQuestieDB.IsCata then
+    currentVersion = "Cata"
+  elseif LibQuestieDB.IsMoP then
+    currentVersion = "MoP"
+  end
+  print("Current version: " .. currentVersion)
+
   ---@type table<string, string>
   Database.TemplateToPath = {}
   for entityType in pairs(Database.entityTypes) do
     local templateFile = entityType .. "DataFiles.xml"
     assert(type(FindFile) == "function", "FindFile function is missing.")
-    local filepath = FindFile(templateFile)
-    print("Data file found: ", filepath)
+    local filepath = FindFile(templateFile, currentVersion)
+    print(f("Data file found (%s): %s", tostring(templateFile), tostring(filepath)))
     -- Read the file and parse the XML
     -- Example content
     -- <SimpleHTML name="ItemDataIds" file="Interface\AddOns\QuestieDB\Database\Item\Era\ItemDataIds.html" virtual="true" font="GameFontNormal"/>
@@ -29,6 +45,10 @@ function Database.GetTemplateNames()
         Database.TemplateToPath[templateName] = "./" .. filePath:gsub("\\", "/")
         -- I was stupid once upon a time and saved the folder as lowercase... stupid me...
         Database.TemplateToPath[templateName] = Database.TemplateToPath[templateName]:gsub("/L10n/", "/l10n/")
+      else
+        if not line:match('</*Ui>') and not line:match('<Ui ') then
+          print("WARNING - Template not found in line: " .. line)
+        end
       end
     end
   end

@@ -7,4 +7,5 @@
   <Script file="NpcMeta.lua"/>
   <Script file="ObjectMeta.lua"/>
   <Script file="QuestMeta.lua"/>
+  <Script file="L10nMeta.lua"/>
 </Ui>

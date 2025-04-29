@@ -46,21 +46,24 @@ local _nil = Database._nil
 
 ---- Local Functions ----
 --* For performance reasons we check Is_CLI here, Database.CreateFrame supports both CLI and WOW
-local CreateFrame = Is_CLI and Database.CreateFrame or CreateFrame
-local frameType = "SimpleHTML"
+local CreateFrame   = Is_CLI and Database.CreateFrame or CreateFrame
+local frameType     = "SimpleHTML"
 local strsplittable = strsplittable
-local tConcat = table.concat
+local tConcat       = table.concat
+local wipe          = wipe
 
-local tonumber = tonumber
-local loadstring = loadstring
-local gMatch = string.gmatch
-local tInsert = table.insert
-local sFind = string.find
-local format = string.format
+local tonumber      = tonumber
+local tostring      = tostring
+local loadstring    = loadstring
+local gMatch        = string.gmatch
+local tInsert       = table.insert
+local sFind         = string.find
+local format        = string.format
+local f             = string.format
 
-local type = type
-local pairs = pairs
-local assert = assert
+local type          = type
+local pairs         = pairs
+local assert        = assert
 
 function Database.Init()
   local startTotal = 0
@@ -214,30 +217,40 @@ function Database.Override(overrideData, overrideTable, keys)
 end
 
 ---Used to add new Ids into the master list of ids for that type
----@param AllIdStrings string[] @A list of strings containing the ids in the database, will be concatinated into one string
----@param dataOverride table @The data to check for new ids
----@return QuestId[]|NpcId[]|ObjectId[]|ItemId[] @Returns a list of new ids
-function Database.GetNewIds(AllIdStrings, dataOverride)
-  -- We add , to the start and end of the string so we can search for ,id, in the string
-  local allIds = "," .. tConcat(AllIdStrings, ",") .. ","
+do
+  -- Table used to store the ids for the current call
+  local allIdsSet = {}
+  ---Used to add new Ids into the master list of ids for that type
+  ---@param AllIdStrings string @A list of strings containing the ids in the database, will be concatenated into one string
+  ---@param dataOverride table<number, any> @The data to check for new ids
+  ---@return QuestId[]|NpcId[]|ObjectId[]|ItemId[] @Returns a list of new ids
+  function Database.GetNewIds(AllIdStrings, dataOverride)
+    -- Split the string into a table of strings
+    local allIds = strsplittable(",", AllIdStrings)
 
-  -- Table to store the new ids
-  local newIds = {}
-
-  -- Add all the ids to the allIds table
-  for id in pairs(dataOverride) do
-    -- Search in the idString if ,id, is found
-    -- local found, e, d = allIds:find("(,*" .. id .. ",*)")
-    local found = sFind(allIds, "," .. id .. ",")
-    if not found then
-      -- Print what we found
-      if not Database.debugLoadStaticEnabled and Database.debugPrintEnabled and Database.debugEnabled then
-        LibQuestieDB.ColorizePrint("reputationBlue", "  Adding new ID", id)
-      end
-      tInsert(newIds, id)
+    -- Create a hash set for all existing IDs
+    for i = 1, #allIds do
+      allIdsSet[allIds[i]] = true
     end
+
+    -- Table to store the new ids
+    local newIds = {}
+    -- Add all the ids to the allIds table
+    for id in pairs(dataOverride) do
+      if not allIdsSet[tostring(id)] then
+        -- Print what we found
+        -- if not Database.debugLoadStaticEnabled and Database.debugPrintEnabled and Database.debugEnabled then
+        --   LibQuestieDB.ColorizePrint("reputationBlue", "  Adding new ID", id)
+        -- end
+        tInsert(newIds, id)
+      end
+    end
+
+    -- Wipe it for the next call
+    -- Do it at the end so when it is called the last time it is wiped.
+    wipe(allIdsSet)
+    return newIds
   end
-  return newIds
 end
 
 --*-------------------------------------------
@@ -381,7 +394,7 @@ do
                 entryData[dataIndexNumber][#entryData[dataIndexNumber] + 1] = data
                 -- Create the function that will be called when we want to get the data
                 local segments = entryData[dataIndexNumber]
-                -- Replace the table with a function that returns the concatinated string
+                -- Replace the table with a function that returns the concatenated string
                 entryData[dataIndexNumber] = {
                   -- This emulates the frame function name so we can use the same code for both
                   GetText = function()
@@ -392,9 +405,9 @@ do
                     end
                     --? Can this become polymorphic and cache the result?
                     --? This could be unnecessary due to most data that is big is just fetched once and used.
-                    -- local concatinatedString = tConcat(ret)
+                    -- local concatenatedString = tConcat(ret)
                     -- entryData[dataIndexNumber].GetText = function()
-                    --   return concatinatedString
+                    --   return concatenatedString
                     -- end
                     return tConcat(ret)
                   end,
@@ -486,204 +499,3 @@ function Database.CreateFindDataBinarySearchFunction(rawDataRanges)
   -- Return the findDataBinarySearch function
   return findDataBinarySearch
 end
-
--- C_Timer.After(5, function()
---   ThreadLib.Thread(function()
---     local start = time()
---     print("Start", start)
---     Quest.Initialize()
---     print("End", time())
---     print("Elapsed:", time() - start)
---   end, 0.05)
---   -- DevTools_Dump(data.disallowedQuestRanges)
--- end)
-
-
---*-------------------------------------------
---*--- Full Database Initialization
---*-------------------------------------------
-
--- --- Initialize a database frame and load the data into a table
--- ---@param FrameName "QuestData"|"ItemData"|"ObjectData"|"NpcData"
--- ---@return table<QuestId|NpcId|ObjectId|ItemId|number, table<number, FontString>> @Data
--- ---@return number @Total count of entries
--- ---@return number @Total count of files
--- function Database.InitializeDB(FrameName, yield)
---   ---@type table<QuestId|NpcId|ObjectId|ItemId|number, table<number, FontString>>
---   local retEntryData = {}
---   local totalCount = 0
---   local totalFiles = 0
-
---   -- Create a new UI Frame to load data from
---   local dataFilenameFrame = CreateFrame(frameType, nil, nil, FrameName .. "Files")
---   dataFilenameFrame:Hide()
-
---   -- Get all the filenames from the frame, they are split into different <p> tags that we have to combine
---   ---@type FontString[]
---   local dataFilenameRegions = { dataFilenameFrame:GetRegions() --[[@as FontString]] }
---   local combinedString = ""
---   for i = 1, #dataFilenameRegions do
---     combinedString = combinedString .. dataFilenameRegions[i]:GetText()
---   end
---   local files = strsplittable(",", combinedString)
-
---   -- Iterating over all files
---   for fileIndex = 1, #files do
---     totalFiles = totalFiles + 1
-
---     -- Creating a frame for each file and reading data
---     local dataFrame = CreateFrame(frameType, nil, nil, files[fileIndex])
---     ---@type FontString[]
---     local dataRegions = { dataFrame:GetRegions() --[[@as FontString]] }
-
---     -- This is very important to prevent the frame from updating and causing lag
---     -- dataFrame:SetScript("OnUpdate", nil)
---     dataFrame:Hide()
---     -- dataFrame:UnregisterAllEvents()
-
---     -- The first element contains a list of ids by index for the data
---     -- local idLookupData = dataRegions[1]:GetText()
---     -- This means we start at index 2 for the data
---     local dataRegionsIndex = 2
---     local idLookupData = strsplittable(",", dataRegions[1]:GetText())
-
---     -- Iterating over all ids in idLookupData
---     for idIndex = 1, #idLookupData do
---       -- Data id string is the id of the data, such as questId, npcId, etc.
---       local id = idLookupData[idIndex]
-
---       -- Such as questId, npcId, etc.
---       local dataId = tonumber(id)
---       if dataId then
---         -- Contains the frame-handles for the data (The GetText functions)
---         ---@type table<number, table<number, FontString>|FontString>
---         local entryData = {}
-
---         --? The first element contains a list of indexes for the data
---         --? e.g Name is index 1, Level is index 2, etc.
---         -- Loop the indexdata and add the data at the correct index to the entryData table
---         local dataIndexString = dataRegions[dataRegionsIndex]:GetText()
---         local count = 1
-
---         ---@param partIndex string @The index of the segmented data or "e" for end
---         for dataIndex, partIndex in gMatch(dataIndexString, "(%d+)-*(%w*)") do
---           local dataIndexNumber = tonumber(dataIndex)
-
---           -- Frame Data object (The one with GetText)
---           local data = dataRegions[dataRegionsIndex + count]
---           if data then
---             if partIndex ~= "" then
---               -- We create a list of functions to call when we want to get the data
---               -- Load all the segmented data into a table ending with the e partIndex
---               if partIndex ~= "e" then
---                 --? Numbered Segmented data
---                 if not entryData[dataIndexNumber] then
---                   entryData[dataIndexNumber] = {}
---                 end
---                 entryData[dataIndexNumber][tonumber(partIndex)] = data
---               else
---                 --? End of Segmented data (The last element)
---                 -- Add the last element to the list
---                 entryData[dataIndexNumber][#entryData[dataIndexNumber] + 1] = data
---                 -- Create the function that will be called when we want to get the data
---                 local segments = entryData[dataIndexNumber]
---                 -- Replace the table with a function that returns the concatinated string
---                 entryData[dataIndexNumber] = {
---                   -- This emulates the frame function name so we can use the same code for both
---                   GetText = function()
---                     -- TO DO: Is tConcat faster than ..?
---                     local ret = {}
---                     for i = 1, #segments do
---                       ret[i] = segments[i]:GetText()
---                     end
---                     --? Can this become polymorphic and cache the result?
---                     --? This could be unnecessary due to most data that is big is just fetched once and used.
---                     -- local concatinatedString = tConcat(ret)
---                     -- entryData[dataIndexNumber].GetText = function()
---                     --   return concatinatedString
---                     -- end
---                     return tConcat(ret)
---                   end
---                 }
---               end
---             else
---               entryData[dataIndexNumber] = data
---             end
---           end
---           count = count + 1
---         end
---         retEntryData[dataId] = entryData
---         -- Jump to the next entry (The + 1 jumps from the last datapoint onto the next entry)
---         dataRegionsIndex = dataRegionsIndex + count
-
---         totalCount = totalCount + 1
---         if yield then
---           if totalCount % yield == 0 then
---             coYield()
---           end
---         end
---       else
---         error("Invalid " .. FrameName .. " id: " .. id)
---       end
---     end
---   end
---   C_Timer.After(0.5, function()
---     -- This is very important to prevent the frame from updating and causing lag
---     -- dataFilenameFrame:SetScript("OnUpdate", nil)
---     dataFilenameFrame:Hide()
---     -- dataFilenameFrame:UnregisterAllEvents()
---     dataFilenameFrame = nil
---   end)
-
---   return retEntryData, totalCount, totalFiles
--- end
--- function Database.Init(yield)
---   local start = time()
---   print("-- Database Initialization --")
---   -- Quest
---   debugprofilestart()
---   local questData, questCount, fileQuestCount = Database.InitializeDB("QuestData")
---   Quest.Initialize(questData)
---   if Database.debugEnabled then
---     local msTime = debugprofilestop()
---     LibQuestieDB.ColorizePrint("green", "Quest data database loaded:  #(", questCount, ") files(", fileQuestCount, ") ",
---       format("%.2f", msTime / 1000), "s")
---     print("    ", format("%.6f", (msTime) / questCount), "ms per quest")
---     print("    ", format("%.4f", msTime), "ms")
---   end
---   -- Object
---   debugprofilestart()
---   local objectData, objectCount, fileObjectCount = Database.InitializeDB("ObjectData")
---   Object.Initialize(objectData)
---   if Database.debugEnabled then
---     local msTime = debugprofilestop()
---     LibQuestieDB.ColorizePrint("green", "Object data database loaded:  #(", objectCount, ") files(", fileObjectCount, ") ",
---       format("%.2f", msTime / 1000), "s")
---     print("    ", format("%.6f", (msTime) / objectCount), "ms per object")
---     print("    ", format("%.4f", msTime), "ms")
---   end
---   -- Npc
---   debugprofilestart()
---   local npcData, npcCount, fileNpcCount = Database.InitializeDB("NpcData", yield)
---   Npc.Initialize(npcData, QuestieNPCFixes:LoadFactionFixes(), QuestieDB.npcKeys)
---   if Database.debugEnabled then
---     local msTime = debugprofilestop()
---     LibQuestieDB.ColorizePrint("green", "Npc data database loaded:  #(", npcCount, ") files(", fileNpcCount, ") ",
---       format("%.2f", msTime / 1000), "s")
---     print("    ", format("%.6f", (msTime) / npcCount), "ms per npc")
---     print("    ", format("%.4f", msTime), "ms")
---   end
---   -- Item
---   debugprofilestart()
---   local itemData, itemCount, fileItemCount = Database.InitializeDB("ItemData", yield)
---   Item.Initialize(itemData, QuestieItemFixes:LoadFactionFixes(), QuestieDB.itemKeys)
---   if Database.debugEnabled then
---     local msTime = debugprofilestop()
---     LibQuestieDB.ColorizePrint("green", "Item data database loaded:  #(", itemCount, ") files(", fileItemCount, ") ",
---       format("%.2f", msTime / 1000), "s")
---     print("    ", format("%.6f", (msTime) / itemCount), "ms per item")
---     print("    ", format("%.4f", msTime), "ms")
---   end
---   print("Total time elapsed:", time() - start, "s")
---   Database.Initialized = true
--- end

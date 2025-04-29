@@ -3,6 +3,29 @@ local LibQuestieDB = select(2, ...)
 
 --? Copied from https://github.com/Questie/Questie/blob/master/Modules/VersionCheck.lua
 
+-- In the CLI this is not set
+if not Enum then
+  Enum = {}
+  ---@type Enum.SeasonID
+  ---@diagnostic disable-next-line: assign-type-mismatch
+  Enum.SeasonID = {
+    NoSeason = 0,
+    SeasonOfMastery = 1,
+    SeasonOfDiscovery = 2,
+    Hardcore = 3,
+    Fresh = 11,
+    FreshHardcore = 12,
+  }
+end
+
+-- --- Addon is running on Classic MoP client
+-- ---@type boolean
+-- LibQuestieDB.IsMop = WOW_PROJECT_ID == WOW_PROJECT_MIST_OF_PANDARIA_CLASSIC
+
+--- Addon is running on Classic Cata client
+---@type boolean
+LibQuestieDB.IsCata = WOW_PROJECT_ID == WOW_PROJECT_CATACLYSM_CLASSIC
+
 --- Addon is running on Classic Wotlk client
 ---@type boolean
 LibQuestieDB.IsWotlk = WOW_PROJECT_ID == WOW_PROJECT_WRATH_CLASSIC
@@ -26,12 +49,24 @@ LibQuestieDB.IsEraSeasonal = LibQuestieDB.IsClassic and C_Seasons.HasActiveSeaso
 --- Addon is running on Classic "Vanilla" client and on Season of Mastery realm specifically
 ---@type boolean
 LibQuestieDB.IsSoM = LibQuestieDB.IsClassic and C_Seasons.HasActiveSeason() and
-(C_Seasons.GetActiveSeason() == Enum.SeasonID.SeasonOfMastery)
+    (C_Seasons.GetActiveSeason() == Enum.SeasonID.SeasonOfMastery)
 
 --- Addon is running on Classic "Vanilla" client and on Season of Discovery realm specifically
 ---@type boolean
 LibQuestieDB.IsSoD = LibQuestieDB.IsClassic and C_Seasons.HasActiveSeason() and
-(C_Seasons.GetActiveSeason() ~= Enum.SeasonID.Hardcore)
+    (C_Seasons.GetActiveSeason() == Enum.SeasonID.SeasonOfDiscovery)
+
+--- Addon is running on Classic "Vanilla" client and on Classic Anniversary realm ( )
+--- TODO: Use Enum or new API if there will be one
+---@type boolean
+LibQuestieDB.IsAnniversary = LibQuestieDB.IsClassic and C_Seasons.HasActiveSeason() and
+    (C_Seasons.GetActiveSeason() == Enum.SeasonID.Fresh)
+
+--- Addon is running on Classic "Vanilla" client and on Classic Anniversary Hardcore realm
+--- TODO: Use Enum or new API if there will be one
+---@type boolean
+LibQuestieDB.IsAnniversaryHardcore = LibQuestieDB.IsClassic and C_Seasons.HasActiveSeason() and
+    (C_Seasons.GetActiveSeason() == Enum.SeasonID.FreshHardcore)
 
 --- Addon is running on a HardCore realm specifically
 ---@type boolean
