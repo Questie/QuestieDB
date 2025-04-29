@@ -156,3 +156,95 @@ def getData(idType, id, version, locale="enUS", useCache=True):
   if len(data) == 0:
     return None
   return data
+
+
+cache = sqlite3.connect(".cache.db")
+# Create the database table if it exists
+cache.execute("""
+CREATE TABLE IF NOT EXISTS wowhead_cache (
+  idType TEXT,
+  id INTEGER,
+  version TEXT,
+  locale TEXT,
+  data TEXT,
+  PRIMARY KEY (idType, id, version, locale)
+)""")
+cache.commit()
+cache.close()
+
+sqlite_processed_lock = threading.Lock()
+
+
+def getDataSqlite(idType, id, version, locale="enUS", useCache=True):
+  data = {}
+
+  next_proxy = proxy_manager.get_next_proxy()
+  proxies = {
+    "http": next_proxy,
+    "https": next_proxy,
+  }
+  # Open the SQLite database connection
+  cache = sqlite3.connect(".cache.db")
+
+  if locale == "all":
+    # If the locale is "all", fetch data for all locales
+    for locale in localeLookup:
+      if useCache:
+        # Check if the data is already in the SQLite database
+        with sqlite_processed_lock:
+          cursor = cache.cursor()
+          cursor.execute("SELECT data FROM wowhead_cache WHERE idType=? AND id=? AND version=? AND locale=?", (idType, id, version, locale))
+          row = cursor.fetchone()
+          if row:
+            data[locale] = row[0]
+            continue
+          else:
+            print(f"Cache is missing {idType} {id} for {locale}.")
+
+      # Fetches the data from the constructed URL
+      response = http_request_session.get(getUrl(idType, id, dataEnvLookup[version.lower()], localeLookup[locale]), proxies=proxies, timeout=10)
+      response.raise_for_status()  # Raise an error for bad responses
+      # If the entity is found, add the response content to the data dictionary
+      if "Entity not found" not in response.text:
+        data[locale] = response.content
+        # Insert the data into the SQLite database
+        with sqlite_processed_lock:
+          # print(f"Writing {idType} {id} for {locale}")
+          cursor = cache.cursor()
+          cursor.execute("INSERT OR REPLACE INTO wowhead_cache (idType, id, version, locale, data) VALUES (?, ?, ?, ?, ?)", (idType, id, version, locale, response.text))
+          cache.commit()
+      # If the entity is not found for the primary locale "enUS", return None
+      elif "Entity not found" in response.text and locale == "enUS":
+        print(f"Entity not found: {id}")
+        return None
+  elif locale in localeLookup:
+    if useCache:
+      # Check if the data is already in the SQLite database
+      with sqlite_processed_lock:
+        cursor = cache.cursor()
+        cursor.execute("SELECT data FROM wowhead_cache WHERE idType=? AND id=? AND version=? AND locale=?", (idType, id, version, locale))
+        row = cursor.fetchone()
+        if row:
+          data[locale] = row[0]
+          return data
+        else:
+          print(f"Cache is missing {idType} {id} for {locale}.")
+
+    # If a specific locale is requested, fetch data for that locale
+    # Fetches the data from the constructed URL
+    response = http_request_session.get(getUrl(idType, id, dataEnvLookup[version.lower()], localeLookup[locale]), proxies=proxies, timeout=10)
+    response.raise_for_status()  # Raise an error for bad responses
+    # If the entity is found, add the response content to the data dictionary
+    if "Entity not found" not in response.text:
+      data[locale] = response.content
+      # Insert the data into the SQLite database
+      with sqlite_processed_lock:
+        # print(f"Writing {idType} {id} for {locale}")
+        cursor = cache.cursor()
+        cursor.execute("INSERT OR REPLACE INTO wowhead_cache (idType, id, version, locale, data) VALUES (?, ?, ?, ?, ?)", (idType, id, version, locale, response.text))
+        cache.commit()
+  cache.close()
+  # If no data was found for any locale, return None
+  if len(data) == 0:
+    return None
+  return data
