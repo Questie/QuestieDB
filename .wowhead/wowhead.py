@@ -1,18 +1,13 @@
-import requests
-import time
+from requests_ratelimiter import LimiterAdapter, LimiterSession
 import os
-from ratelimiter import RateLimiter
-
-# Requests per second
-# RPS = 100
-RPS = 100
+from getter import SimpleProxyManager
+import sqlite3
+import threading
 
 
-# def limited(until):
-#     duration = int(round(until - time.time()))
-#     print('Rate limited, sleeping for {:d} seconds'.format(duration))
+proxy_manager = SimpleProxyManager()
+http_request_session = LimiterSession(per_second=proxy_manager.get_total_number_of_proxies())
 
-rate_limiter = RateLimiter(max_calls=RPS, period=1)  # , callback=limited)
 
 # Dictionary mapping locales to their corresponding numeric codes
 localeLookup = {
@@ -105,6 +100,13 @@ def cacheResponse(response, idType, id, version, locale):
 # Function to fetch data for a given game entity
 def getData(idType, id, version, locale="enUS", useCache=True):
   data = {}
+
+  next_proxy = proxy_manager.get_next_proxy()
+  proxies = {
+    "http": next_proxy,
+    "https": next_proxy,
+  }
+
   if not os.path.exists(".cache"):
     os.mkdir(".cache")
   if not os.path.exists(f".cache/{version.lower()}"):
@@ -122,17 +124,17 @@ def getData(idType, id, version, locale="enUS", useCache=True):
         except Exception as e:
           print(f"Cache is missing {idType} {id} for {locale}.")
           # continue
-      with rate_limiter:  # Applies rate limiting to the requests
-        # Fetches the data from the constructed URL
-        response = requests.get(getUrl(idType, id, dataEnvLookup[version.lower()], localeLookup[locale]))
-        # If the entity is found, add the response content to the data dictionary
-        if "Entity not found" not in response.text:
-          data[locale] = response.content
-          cacheResponse(response, idType, id, version, locale)
-        # If the entity is not found for the primary locale "enUS", return None
-        elif "Entity not found" in response.text and locale == "enUS":
-          print(f"Entity not found: {id}")
-          return None
+      # with rate_limiter:  # Applies rate limiting to the requests
+      # Fetches the data from the constructed URL
+      response = http_request_session.get(getUrl(idType, id, dataEnvLookup[version.lower()], localeLookup[locale]), proxies=proxies, timeout=10)
+      # If the entity is found, add the response content to the data dictionary
+      if "Entity not found" not in response.text:
+        data[locale] = response.content
+        cacheResponse(response, idType, id, version, locale)
+      # If the entity is not found for the primary locale "enUS", return None
+      elif "Entity not found" in response.text and locale == "enUS":
+        print(f"Entity not found: {id}")
+        return None
   elif locale in localeLookup:
     if useCache:
       try:
@@ -143,13 +145,13 @@ def getData(idType, id, version, locale="enUS", useCache=True):
         print(f"Failed to read .cache Exception: {e}")
 
     # If a specific locale is requested, fetch data for that locale
-    with rate_limiter:  # Applies rate limiting to the requests
-      # Fetches the data from the constructed URL
-      response = requests.get(getUrl(idType, id, dataEnvLookup[version.lower()], localeLookup[locale]))
-      # If the entity is found, add the response content to the data dictionary
-      if "Entity not found" not in response.text:
-        data[locale] = response.content
-        cacheResponse(response, idType, id, version, locale)
+    # with rate_limiter:  # Applies rate limiting to the requests
+    # Fetches the data from the constructed URL
+    response = http_request_session.get(getUrl(idType, id, dataEnvLookup[version.lower()], localeLookup[locale]), proxies=proxies, timeout=10)
+    # If the entity is found, add the response content to the data dictionary
+    if "Entity not found" not in response.text:
+      data[locale] = response.content
+      cacheResponse(response, idType, id, version, locale)
   # If no data was found for any locale, return None
   if len(data) == 0:
     return None
