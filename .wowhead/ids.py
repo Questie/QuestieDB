@@ -1,10 +1,18 @@
 import re
 import json
-import sys
-import srt
-import os
 import time
 import requests
+
+#! ##############################
+#! ##############################
+#! ##############################
+# ? #############################
+# ! This code is broken... it is really old but it worked back in the day, could be of use in the future.
+# ? #############################
+#! ##############################
+#! ##############################
+#! ##############################
+
 
 listview_re = re.compile(r"new Listview\((.*)\);")
 var_listview_re = re.compile(r"var listviewitems = \[(.*)\];")
