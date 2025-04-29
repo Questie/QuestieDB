@@ -2,6 +2,8 @@
   "Lua.workspace.ignoreDir": [
     ".generate_database",
     ".database_generator/Questie-translations",
+    ".database_generator/_data",
+    ".shit",
     ".vscode",
     ".vscode/*.lua",
     ".vscode/*",
@@ -42,6 +44,8 @@
     "Perfy":true,
     ".database_generator/Questie-translations": true,
     ".vscode/*.lua": true,
+    "translations.json": true,
+    "**/*.lua-table": true,
   },
 
   "[lua]": {
@@ -70,22 +74,12 @@
   // Default end of line
   "files.eol": "\n",
 
-  "Lua.diagnostics.ignoredFiles": "Enable",
-  "Lua.diagnostics.libraryFiles": "Enable",
+  "Lua.diagnostics.ignoredFiles": "Opened",
+  "Lua.diagnostics.libraryFiles": "Opened",
 
   "Lua.diagnostics.severity": {},
   "Lua.diagnostics.enable": true,
   "Lua.runtime.version": "Lua 5.1",
-  "Lua.diagnostics.globals": [
-    "SlashCmdList",
-    "C_Timer",
-    "CreateFrame",
-    "strsplittable",
-    "DevTools_Dump",
-    "time",
-    "C_Seasons",
-    "C_GameRules",
-  ],
   "todohighlight.isEnable": true,
   "todohighlight.isCaseSensitive": true,
   "todohighlight.keywordsPattern": "TODO:.*",
@@ -125,12 +119,13 @@
       "basic": "enable",
       "debug": "enable",
       "io": "enable",
-      "math": "disable",
+      "math": "enable",
       "os": "enable",
       "package": "enable",
-      "string": "disable",
-      "table": "disable",
+      "string": "enable",
+      "table": "enable",
       "utf8": "disable",
       "builtin": "enable"
     },
+    "Lua.diagnostics.globals": [],
 }
