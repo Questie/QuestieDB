@@ -32,6 +32,14 @@ ItemMeta.itemKeys = {
   ['relatedQuests'] = 15, -- table or nil, IDs of quests that are related to this item
   ['teachesSpell'] = 16,  -- int, spellID taught by this item upon use
 }
+
+--- Contains the name of data as keys and their index as value for quick lookup
+ItemMeta.NameIndexLookupTable = {}
+for key, index in pairs(ItemMeta.itemKeys) do
+  ItemMeta.NameIndexLookupTable[index] = key
+  ItemMeta.NameIndexLookupTable[key] = index
+end
+
 -- Contains the type of data as keys and their index as value
 ItemMeta.itemTypes = {
   ['name'] = "string",
@@ -102,6 +110,12 @@ do
   ---@return string @ Returns the combined value string that was inserted into the table
   function ItemMeta.combine(tbl)
     return DumpFunctions.combine(tbl, combineValues, ItemMeta.itemTypes)
+  end
+
+  -- Check if combineValues is empty or not
+  if next(combineValues) == nil then
+    -- If combineValues is empty, set the combine function to nil
+    ItemMeta.combine = nil
   end
 end
 

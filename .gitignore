@@ -4,6 +4,14 @@ Database/*/**/*.html
 Database/*/*/*Data*.xml
 Database/*/*/*Data*.html
 
+Translations/*_gen.xml
+Translations/*_gen.lua
+Translations/*DataFiles.xml
+Translations/*Lookup.lua
+Translations/_data/*.html
+
+.database_generator/Questie-translations
+
 .shit
 .translator
 
@@ -55,3 +63,8 @@ Perfy
 .build
 
 .llm-output
+..wiki-information
+
+# AI related files
+*.ai
+.aider*

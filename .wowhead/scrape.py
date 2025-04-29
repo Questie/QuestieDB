@@ -64,23 +64,27 @@ lookup_table = {
   "Progress": "Progress",
   "Completion": "Completion",
   "Rewards": "Rewards",
+
   # Portuguese
   "Descrição": "Description",
   "Progresso": "Progress",
   "Completo": "Completion",
   "Recompensas": "Rewards",
   "Ganancias": "Rewards",
+
   # Russian
   "Описание": "Description",
   "Прогресс": "Progress",
   "Завершено": "Completion",
   "Награды": "Rewards",
   "Дополнительные награды": "Rewards",
+
   # German
   "Beschreibung": "Description",
   "Fortschritt": "Progress",
   "Vervollständigung": "Completion",
   "Belohnungen": "Rewards",
+
   # Korean
   "서술": "Description",
   "진행 상황": "Progress",  # "진행 상황" and "보상" both map to "Progress"
@@ -89,12 +93,14 @@ lookup_table = {
   "획득": "Completion",
   # Rewards: "보상" is already included in the table, mapping to "Progress".
   # This demonstrates a case where the same word can have multiple meanings based on context.
+
   # Spanish
   "Descripción": "Description",
   "Progreso": "Progress",
   "Terminación": "Completion",
   "Recompensas": "Rewards",  # Same as in Portuguese
   "Ganancias": "Rewards",  # Same as in Portuguese
+
   # Chinese
   "描述": "Description",
   "奖励": "Progress",
@@ -103,12 +109,34 @@ lookup_table = {
   "达成": "Completion",
   # Rewards: "奖励" is already in the table, mapping to "Progress".
   # Similar to Korean, this word has multiple meanings.
+
   # French
   "Description": "Description",  # Same in English
   "Progrès": "Progress",
   "Achèvement": "Completion",
   "Récompenses": "Rewards",
   "Gains": "Rewards",  # Same as in Spanish
+
+  # Italian
+  "Descrizione": "Description",   # AI - HELPED
+  "Progressi": "Progress",   # AI - HELPED
+  "Completamento": "Completion",   # AI - HELPED
+  "Ricompense": "Rewards",   # AI - HELPED
+  "Guadagni": "Rewards",   # AI - HELPED
+
+  # Mexican Spanish (esMX)
+  "Descripción": "Description",   # AI - HELPED
+  # "": "Progress",   # AI - HELPED
+  # "Terminación": "Completion",   # AI - HELPED
+  "Recompensas": "Rewards",   # AI - HELPED
+  "Ganancias": "Rewards",   # AI - HELPED
+
+  # Traditional Chinese (zhTW)   # AI - HELPEDf
+  "描述": "Description",   # AI - HELPED
+  "進度": "Progress",   # AI - HELPED
+  "完成": "Completion",   # AI - HELPED
+  "獎勵": "Rewards",   # AI - HELPED
+  "收穫": "Rewards", # AI - HELPED
 }
 
 
@@ -289,10 +317,15 @@ def fetch_worker(version, idData):
     finally:
       fetch_queue.task_done()
 
-
+allowed_expansions = ["Classic", "TBC", "Wotlk", "Cata", "MoP"]
 if __name__ == "__main__":
-  # Classic, TBC, Wotlk
-  version = "Classic"
+  # Classic, TBC, Wotlk, Cata, MoP
+  if len(sys.argv) > 1:
+    version = sys.argv[1]
+  if version not in allowed_expansions:
+    print(f"Version {version} is not allowed. Allowed versions are: {', '.join(allowed_expansions)}")
+    sys.exit(1)
+
   all_ids = {}
   all_ids["npc"] = getAllIdsWowhead(version, "npc")
   all_ids["item"] = getAllIdsWowhead(version, "item")

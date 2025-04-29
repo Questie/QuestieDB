@@ -9,11 +9,12 @@ local LibQuestieDB = select(2, ...)
 local Object = LibQuestieDB.Object
 
 Object.RunGetTest = function(fast)
-  local success, error = pcall(Object.testGetFunctions, fast)
+  local success, err = pcall(Object.testGetFunctions, fast)
   if not success then
-    print("Object test failed: " .. error)
+    print("Object test failed: " .. err)
     print("Last tested Object: " .. tostring(Object.lastTestedID))
     print("Last tested Object function: " .. tostring(Object.lastTestedData))
+    error("Object test failed: " .. err)
   end
 end
 
