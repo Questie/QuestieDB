@@ -176,8 +176,10 @@ def fetch_worker(version, idData):
           items_processed += 1
       fetch_queue.task_done()
 
-allowed_expansions = ["Classic", "TBC", "Wotlk", "Cata", "MoP"]
+
+allowed_expansions = ["Classic", "TBC", "Wotlk", "Cata", "MoP-Classic"]
 if __name__ == "__main__":
+  version = ""
   # Classic, TBC, Wotlk, Cata, MoP
   if len(sys.argv) > 1:
     version = sys.argv[1]

@@ -18,10 +18,10 @@ localeLookup = {
   "koKR": 1,  # Korean (Korea)
   "esES": 6,  # Spanish (Spain)
   "frFR": 2,  # French (France)
-  # "esMX": 11, # Spanish (Mexico) - commented out, not supported
-  # "zhTW": 10, # Traditional Chinese (Taiwan) - commented out, not supported
+  "esMX": 11,  # Spanish (Mexico) - commented out, not supported
+  "zhTW": 10,  # Traditional Chinese (Taiwan) - commented out, not supported
   "zhCN": 4,  # Simplified Chinese (China)
-  # "itIT": 9, # Italian (Italy) - commented out, not supported
+  "itIT": 9,  # Italian (Italy) - commented out, not supported
 }
 # Add Flipped localeLookup
 reverselocaleLookup = {}
@@ -37,10 +37,10 @@ localeToURLLocale = {
   "koKR": "ko",  # Korean (Korea)
   "esES": "es",  # Spanish (Spain)
   "frFR": "fr",  # French (France)
-  # "esMX": "mx", # Spanish (Mexico) - commented out, not supported
-  # "zhTW": "tw", # Traditional Chinese (Taiwan) - commented out, not supported
+  "esMX": "mx",  # Spanish (Mexico) - commented out, not supported
+  "zhTW": "tw",  # Traditional Chinese (Taiwan) - commented out, not supported
   "zhCN": "cn",
-  # "itIT": "it", # Italian (Italy) - commented out, not supported
+  "itIT": "it",  # Italian (Italy) - commented out, not supported
 }
 
 # Dictionary mapping game versions to their corresponding numeric codes
@@ -49,7 +49,7 @@ dataEnvLookup = {
   "tbc": 5,  # The Burning Crusade version
   "wotlk": 8,  # Wrath of the Lich King version
   "cata": 11,  # Cataclysm version
-  "mop": 15, # Mists of Pandaria version
+  "mop-classic": 15,  # Mists of Pandaria version
 }
 # Add Flipped dataEnvLookup
 reversedataEnvLookup = {}
