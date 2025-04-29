@@ -272,4 +272,15 @@ if __name__ == "__main__":
   with open(filename, "w", encoding="utf-8") as f:
     write_dict(idData, f)
 
+  # Save as YAML as well (optional)
+  try:
+    import yaml
+
+    yaml_filename = f"{version.lower()}_locales.yaml"
+    print(f"Saving {yaml_filename}...")
+    # Use a large width to prevent unwanted line wrapping in YAML
+    yaml.dump(idData, open(yaml_filename, "w", encoding="utf-8"), allow_unicode=True, sort_keys=False, width=float("inf"))
+  except ImportError:
+    print("PyYAML not installed, skipping YAML output.")
+
   print("Done")
