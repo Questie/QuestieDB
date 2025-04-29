@@ -22,9 +22,6 @@ class RequestHandler(BaseHTTPRequestHandler):
       self.send_response(200)
       self.send_header("Content-type", "text/plain")
       self.end_headers()
-      # with items_processed_lock:
-      #   current_processed = items_processed
-      # self.wfile.write(f"Processing status: {current_processed}/{total_items} items processed.\n".encode("utf-8"))
       self.wfile.write(b"Access /stop to halt processing.")
     else:
       self.send_response(404)
