@@ -9,11 +9,12 @@ local LibQuestieDB = select(2, ...)
 local Npc = LibQuestieDB.Npc
 
 Npc.RunGetTest = function(fast)
-  local success, error = pcall(Npc.testGetFunctions, fast)
+  local success, err = pcall(Npc.testGetFunctions, fast)
   if not success then
-    print("NPC test failed: " .. error)
+    print("NPC test failed: " .. err)
     print("Last tested NPC: " .. tostring(Npc.lastTestedID))
     print("Last tested NPC function: " .. tostring(Npc.lastTestedData))
+    error("NPC test failed: " .. err)
   end
 end
 

@@ -33,7 +33,7 @@ do
   -- 7. ['subName'], -- string, The title or function of the NPC, e.g. "Weapon Vendor"
 
   -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
-  if l10n.currentLocale == "enUS" and Database.debugEnabled == false then
+  if l10n.currentLocale == "enUS" then
     ---Returns the name of the npc.
     ---@type fun(id: NpcId):string?
     NpcFunctions.name = Npc.AddStringGetter(1, "name")
@@ -100,7 +100,7 @@ do
   NpcFunctions.questEnds = Npc.AddTableGetter(6, "questEnds")
 
   -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
-  if l10n.currentLocale == "enUS" and Database.debugEnabled == false then
+  if l10n.currentLocale == "enUS" then
     ---Returns the sub name of the npc.
     ---@type fun(id: NpcId):string?
     NpcFunctions.subName = Npc.AddStringGetter(7, "subName")

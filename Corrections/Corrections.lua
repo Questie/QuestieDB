@@ -169,7 +169,9 @@ do
         dynamicCorrections[i] = correctionObject
       end
     end
-
+    -- TODO: How do i remove this and keep the possiblity to load new corrections?
+    -- Corrections[capitalizedTypeStatic] = nil
+    -- Corrections[capitalizedTypeDynamic] = nil
     return {
       dynamic = dynamicCorrections,
       static = staticCorrections,
