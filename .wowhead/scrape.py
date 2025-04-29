@@ -8,6 +8,7 @@ import concurrent.futures
 from dotenv import load_dotenv
 from ids import getAllIdsWowhead
 from quest import getQuestSections
+from sitemap import get_all_ids
 
 # Constants
 # Thread-safe queue for subtitles
@@ -120,12 +121,20 @@ if __name__ == "__main__":
     sys.exit(1)
 
   all_ids = {}
-  all_ids["npc"] = getAllIdsWowhead(version, "npc")
-  all_ids["item"] = getAllIdsWowhead(version, "item")
-  all_ids["quest"] = getAllIdsWowhead(version, "quest")
-  all_ids["object"] = getAllIdsWowhead(version, "object")
-  all_ids["spell"] = getAllIdsWowhead(version, "spell")
-  all_ids["faction"] = getAllIdsWowhead(version, "faction")
+  # all_ids["npc"] = getAllIdsWowhead(version, "npc")
+  # all_ids["item"] = getAllIdsWowhead(version, "item")
+  # all_ids["quest"] = getAllIdsWowhead(version, "quest")
+  # all_ids["object"] = getAllIdsWowhead(version, "object")
+  # all_ids["spell"] = getAllIdsWowhead(version, "spell")
+  # all_ids["faction"] = getAllIdsWowhead(version, "faction")
+
+  all_ids["npc"] = get_all_ids(version.lower(), "npc")
+  all_ids["item"] = get_all_ids(version.lower(), "item")
+  all_ids["quest"] = get_all_ids(version.lower(), "quest")
+  all_ids["object"] = get_all_ids(version.lower(), "object")
+  # all_ids["spell"] = get_all_ids(version.lower(), "spell")
+  # all_ids["faction"] = get_all_ids(version.lower(), "faction")
+
 
   # Save all ids
   with open(f"{version.lower()}_all_ids.json", "w", encoding="utf-8") as f:
