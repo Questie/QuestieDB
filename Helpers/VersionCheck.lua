@@ -54,19 +54,19 @@ LibQuestieDB.IsSoM = LibQuestieDB.IsClassic and C_Seasons.HasActiveSeason() and
 --- Addon is running on Classic "Vanilla" client and on Season of Discovery realm specifically
 ---@type boolean
 LibQuestieDB.IsSoD = LibQuestieDB.IsClassic and C_Seasons.HasActiveSeason() and
-    (C_Seasons.GetActiveSeason() ~= Enum.SeasonID.Hardcore)
+    (C_Seasons.GetActiveSeason() == Enum.SeasonID.SeasonOfDiscovery)
 
 --- Addon is running on Classic "Vanilla" client and on Classic Anniversary realm ( )
 --- TODO: Use Enum or new API if there will be one
 ---@type boolean
 LibQuestieDB.IsAnniversary = LibQuestieDB.IsClassic and C_Seasons.HasActiveSeason() and
-    (C_Seasons.GetActiveSeason() == 11)
+    (C_Seasons.GetActiveSeason() == Enum.SeasonID.Fresh)
 
 --- Addon is running on Classic "Vanilla" client and on Classic Anniversary Hardcore realm
 --- TODO: Use Enum or new API if there will be one
 ---@type boolean
 LibQuestieDB.IsAnniversaryHardcore = LibQuestieDB.IsClassic and C_Seasons.HasActiveSeason() and
-    (C_Seasons.GetActiveSeason() == 12)
+    (C_Seasons.GetActiveSeason() == Enum.SeasonID.FreshHardcore)
 
 --- Addon is running on a HardCore realm specifically
 ---@type boolean
