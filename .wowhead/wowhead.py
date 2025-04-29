@@ -74,14 +74,18 @@ def getUrl(idType, id, dataEnv, locale):
 
   if idType == "faction" or idType == "quest":
     # Swap from numeric code to string
-    if type(locale) == int:
+    if type(locale) is int:
       locale = reverselocaleLookup[locale]
     # Swap from numeric code to string
-    if type(dataEnv) == int:
+    if type(dataEnv) is int:
       dataEnv = reversedataEnvLookup[dataEnv]
     urlLocale = localeToURLLocale[locale]
+
     # Constructs the URL using the provided parameters
-    return f"https://www.wowhead.com/{dataEnv}/{urlLocale}/{idType}={id}"
+    if urlLocale == "" or urlLocale == "en":
+      return f"https://www.wowhead.com/{dataEnv}/{idType}={id}"
+    else:
+      return f"https://www.wowhead.com/{dataEnv}/{urlLocale}/{idType}={id}"
   else:
     # Constructs the URL using the provided parameters
     return f"https://nether.wowhead.com/tooltip/{idType}/{id}?dataEnv={dataEnv}&locale={locale}"
