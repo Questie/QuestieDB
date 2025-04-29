@@ -2,6 +2,8 @@
   "Lua.workspace.ignoreDir": [
     ".generate_database",
     ".database_generator/Questie-translations",
+    ".database_generator/_data",
+    ".shit",
     ".vscode",
     ".vscode/*.lua",
     ".vscode/*",
@@ -42,6 +44,8 @@
     "Perfy":true,
     ".database_generator/Questie-translations": true,
     ".vscode/*.lua": true,
+    "translations.json": true,
+    "**/*.lua-table": true,
   },
 
   "[lua]": {
