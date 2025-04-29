@@ -5,7 +5,7 @@ import time
 import threading
 import queue
 import datetime
-from dotenv import load_dotenv
+from wowhead import getData, getDataSqlite
 from http_controller import start_http_server
 from quest import getQuestSections
 from sitemap import get_all_ids
@@ -111,10 +111,8 @@ def fetch_worker(version, idData):
         print(f"{len(fetch_queue.queue)} items left in queue")
 
       # Get data
-      start_time = time.time()
-      data = getData(idType, id, version, "all")
-      fetch_time = time.time() - start_time
-      start_time = time.time()
+      # data = getData(idType, id, version, "all")
+      data = getDataSqlite(idType, id, version, "all")
 
       # If data is None, continue to the next item in the queue
       if data is None:

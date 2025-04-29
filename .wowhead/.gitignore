@@ -2,4 +2,10 @@ venv
 .env
 .cache
 Questie
+*.txt
 *.json
+*.yaml
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
