@@ -1,3 +1,6 @@
 beautifulsoup4
 lxml
-ratelimiter
+python-dotenv
+requests
+requests-ratelimiter
+pyyaml
