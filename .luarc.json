@@ -3,7 +3,8 @@
   // "workspace.library": ["path/to/library/directory"],
   "workspace.ignoreDir":[
     ".generate_database",
-    ".database_generator",
+    ".database_generator/Questie-translations",
+    ".database_generator/_data",
     ".shit",
     ".vscode",
     ".translator",
