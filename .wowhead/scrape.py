@@ -4,15 +4,66 @@ import sys
 import time
 import threading
 import queue
-import concurrent.futures
+import datetime
 from dotenv import load_dotenv
-from ids import getAllIdsWowhead
+from http_controller import start_http_server
 from quest import getQuestSections
 from sitemap import get_all_ids
 
 # Constants
 # Thread-safe queue for subtitles
 fetch_queue = queue.Queue()
+
+# --- Progress Tracking ---
+items_processed = 0
+items_processed_lock = threading.Lock()
+total_items = 0
+start_time_global = 0
+# -------------------------
+
+# --- Control Flag ---
+stop_event = threading.Event()
+# --------------------
+
+
+# --- Progress Monitoring Function ---
+def monitor_progress(total_items_to_process, start_time_global_ts):
+  global items_processed  # Access global counter
+  while not stop_event.is_set():
+    with items_processed_lock:
+      current_processed = items_processed
+
+    if current_processed >= total_items_to_process and stop_event.is_set():
+      print("\nProcessing complete!")
+      break  # Exit monitor loop
+
+    elapsed_time = time.time() - start_time_global_ts
+    if elapsed_time > 0 and current_processed > 0:
+      items_per_second = current_processed / elapsed_time
+      remaining_items = total_items_to_process - current_processed
+      estimated_time_remaining = remaining_items / items_per_second if items_per_second > 0 else 0
+
+      # Format ETA
+      eta_str = str(datetime.timedelta(seconds=int(estimated_time_remaining)))
+
+      # Print progress update
+      print(
+        f"\rProgress: {current_processed}/{total_items_to_process} ({items_per_second:.2f} items/sec) | Elapsed: {str(datetime.timedelta(seconds=int(elapsed_time)))} | ETA: {eta_str}   ", end="\n"
+      )
+    elif current_processed == 0 and elapsed_time > 0:
+      print(f"\rProgress: 0/{total_items_to_process} | Elapsed: {str(datetime.timedelta(seconds=int(elapsed_time)))} | Calculating rate...", end="\n")
+    else:
+      # Initial state or edge case
+      print(f"\rStarting processing... {total_items_to_process} items queued.", end="\n")
+
+    time.sleep(2)  # Update frequency (in seconds)
+
+  # --- Final message ---
+  if stop_event.is_set():
+    print("\nProcessing stopped by request.")
+  else:
+    print("\nProcessing complete!")
+  # -------------------
 
 
 faction_description_regex = re.compile(r"\"(.*)\",\n\s*\"article-all\"")
@@ -44,9 +95,17 @@ faction_g_faction_regex = re.compile(r"g_factions\[\d*\], (.*)\);")
 
 
 def fetch_worker(version, idData):
+  global items_processed  # Declare intent to modify global variable
   tries = {}
   while not fetch_queue.empty():
+    # --- Check for stop signal ---
+    if stop_event.is_set():
+      print(f"Worker thread {threading.current_thread().name} stopping.")
+      break
+    # ---------------------------
+
     idType, id = fetch_queue.get()
+    processed_successfully = False  # Flag to track if item was processed
     try:
       if len(fetch_queue.queue) % 100 == 0:
         print(f"{len(fetch_queue.queue)} items left in queue")
@@ -96,7 +155,10 @@ def fetch_worker(version, idData):
         for locale, localeData in data.items():
           data = json.loads(localeData)
           idData[idType][id][locale] = data
-      print(f"{str(idType).capitalize()} {id} took processing: {(time.time() - start_time):.2f}s, fetch: {fetch_time:.2f}s, total: {fetch_time + (time.time() - start_time):.2f}s")
+
+      # If we reach here, processing was successful for this ID
+      processed_successfully = True
+      # print(f"{str(idType).capitalize()} {id} took processing: {(time.time() - start_time):.2f}s, fetch: {fetch_time:.2f}s, total: {fetch_time + (time.time() - start_time):.2f}s")
 
     except Exception as e:
       print(f"Exception: {e} for {idType} {id}, requeueing...")
@@ -109,6 +171,9 @@ def fetch_worker(version, idData):
       if tries[idType][id] < 10:
         fetch_queue.put((idType, id))
     finally:
+      if processed_successfully:
+        with items_processed_lock:
+          items_processed += 1
       fetch_queue.task_done()
 
 allowed_expansions = ["Classic", "TBC", "Wotlk", "Cata", "MoP"]
@@ -140,17 +205,28 @@ if __name__ == "__main__":
   with open(f"{version.lower()}_all_ids.json", "w", encoding="utf-8") as f:
     json.dump(all_ids, f, indent=2, ensure_ascii=False)
 
-  for idType, ids in all_ids.items():
-    # if idType != "quest":
-    print(f"{idType}: {len(ids)}")
-    for id in ids:
-      fetch_queue.put((idType, id))
-  # else:
-  # print(f"{str(idType).capitalize()} is skipped for now, requires special handling")
-
+  # --- Populate Queue and Get Total Count ---
+  total_items = 0
   idData = {}
   for idType, ids in all_ids.items():
     idData[idType] = {}
+    print(f"Queueing {len(ids)} {idType} IDs...")
+    for id in ids:
+      fetch_queue.put((idType, id))
+    total_items += len(ids)
+  print(f"Total items queued: {total_items}")
+  # ------------------------------------------
+
+  # --- Start the HTTP control server ---
+  http_server = start_http_server(stop_event)
+  time.sleep(2)  # Give the server a moment to start
+  # -------------------------------------
+
+  # --- Start Monitor Thread ---
+  start_time_global = time.time()
+  monitor_thread = threading.Thread(target=monitor_progress, args=(total_items, start_time_global), daemon=True)
+  monitor_thread.start()
+  # ----------------------------
 
   # Start translation workers
   num_threads = 10  # You can adjust this based on your actual RPM and CPU cores
