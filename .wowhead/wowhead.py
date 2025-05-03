@@ -1,13 +1,11 @@
-from requests_ratelimiter import LimiterAdapter, LimiterSession
 import os
-from getter import SimpleProxyManager
+from proxy import RateLimitedProxyManager
 import sqlite3
 import threading
+import requests
+import time
 
-
-proxy_manager = SimpleProxyManager()
-http_request_session = LimiterSession(per_second=proxy_manager.get_total_number_of_proxies())
-
+rate_proxy_manager = RateLimitedProxyManager(db_path="proxy_usage.db", rate_limit_seconds=1)
 
 # Dictionary mapping locales to their corresponding numeric codes
 localeLookup = {
@@ -18,10 +16,10 @@ localeLookup = {
   "koKR": 1,  # Korean (Korea)
   "esES": 6,  # Spanish (Spain)
   "frFR": 2,  # French (France)
-  "esMX": 11,  # Spanish (Mexico) - commented out, not supported
-  "zhTW": 10,  # Traditional Chinese (Taiwan) - commented out, not supported
+  "esMX": 11,  # Spanish (Mexico)
+  "zhTW": 10,  # Traditional Chinese (Taiwan)
   "zhCN": 4,  # Simplified Chinese (China)
-  "itIT": 9,  # Italian (Italy) - commented out, not supported
+  "itIT": 9,  # Italian (Italy)
 }
 # Add Flipped localeLookup
 reverselocaleLookup = {}
@@ -37,10 +35,10 @@ localeToURLLocale = {
   "koKR": "ko",  # Korean (Korea)
   "esES": "es",  # Spanish (Spain)
   "frFR": "fr",  # French (France)
-  "esMX": "mx",  # Spanish (Mexico) - commented out, not supported
-  "zhTW": "tw",  # Traditional Chinese (Taiwan) - commented out, not supported
+  "esMX": "mx",  # Spanish (Mexico)
+  "zhTW": "tw",  # Traditional Chinese (Taiwan)
   "zhCN": "cn",
-  "itIT": "it",  # Italian (Italy) - commented out, not supported
+  "itIT": "it",  # Italian (Italy)
 }
 
 # Dictionary mapping game versions to their corresponding numeric codes
@@ -105,12 +103,6 @@ def cacheResponse(response, idType, id, version, locale):
 def getData(idType, id, version, locale="enUS", useCache=True):
   data = {}
 
-  next_proxy = proxy_manager.get_next_proxy()
-  proxies = {
-    "http": next_proxy,
-    "https": next_proxy,
-  }
-
   if not os.path.exists(".cache"):
     os.mkdir(".cache")
   if not os.path.exists(f".cache/{version.lower()}"):
@@ -128,9 +120,24 @@ def getData(idType, id, version, locale="enUS", useCache=True):
         except Exception as e:
           print(f"Cache is missing {idType} {id} for {locale}.")
           # continue
+
+      # Get proxy port (RateLimited)
+      next_proxy = None
+      while next_proxy is None:  # Loop until a proxy is available
+        next_proxy = rate_proxy_manager.get_next_proxy()
+        if next_proxy is None:
+          # print(f"Worker {worker_id}, Request {i + 1}: No proxy available, waiting...")
+          time.sleep(0.1)  # Wait before retrying
+
+      # Set up the proxy for the session
+      proxies = {
+        "http": next_proxy,
+        "https": next_proxy,
+      }
+
       # with rate_limiter:  # Applies rate limiting to the requests
       # Fetches the data from the constructed URL
-      response = http_request_session.get(getUrl(idType, id, dataEnvLookup[version.lower()], localeLookup[locale]), proxies=proxies, timeout=10)
+      response = requests.get(getUrl(idType, id, dataEnvLookup[version.lower()], localeLookup[locale]), proxies=proxies, timeout=10)
       # If the entity is found, add the response content to the data dictionary
       if "Entity not found" not in response.text:
         data[locale] = response.content
@@ -148,10 +155,23 @@ def getData(idType, id, version, locale="enUS", useCache=True):
       except Exception as e:
         print(f"Failed to read .cache Exception: {e}")
 
+    # Get proxy port (RateLimited)
+    next_proxy = None
+    while next_proxy is None:  # Loop until a proxy is available
+      next_proxy = rate_proxy_manager.get_next_proxy()
+      if next_proxy is None:
+        # print(f"Worker {worker_id}, Request {i + 1}: No proxy available, waiting...")
+        time.sleep(0.1)  # Wait before retrying
+
+    # Set up the proxy for the session
+    proxies = {
+      "http": next_proxy,
+      "https": next_proxy,
+    }
     # If a specific locale is requested, fetch data for that locale
     # with rate_limiter:  # Applies rate limiting to the requests
     # Fetches the data from the constructed URL
-    response = http_request_session.get(getUrl(idType, id, dataEnvLookup[version.lower()], localeLookup[locale]), proxies=proxies, timeout=10)
+    response = requests.get(getUrl(idType, id, dataEnvLookup[version.lower()], localeLookup[locale]), proxies=proxies, timeout=10)
     # If the entity is found, add the response content to the data dictionary
     if "Entity not found" not in response.text:
       data[locale] = response.content
@@ -162,33 +182,16 @@ def getData(idType, id, version, locale="enUS", useCache=True):
   return data
 
 
-cache = sqlite3.connect(".cache.db")
-# Create the database table if it exists
-cache.execute("""
-CREATE TABLE IF NOT EXISTS wowhead_cache (
-  idType TEXT,
-  id INTEGER,
-  version TEXT,
-  locale TEXT,
-  data TEXT,
-  PRIMARY KEY (idType, id, version, locale)
-)""")
-cache.commit()
-cache.close()
-
 sqlite_processed_lock = threading.Lock()
 
 
-def getDataSqlite(idType, id, version, locale="enUS", useCache=True):
+def getDataSqlite(idType, id, version, locale="enUS", useCache=True) -> dict[str, str] | None:
   data = {}
 
-  next_proxy = proxy_manager.get_next_proxy()
-  proxies = {
-    "http": next_proxy,
-    "https": next_proxy,
-  }
   # Open the SQLite database connection
-  cache = sqlite3.connect(".cache.db")
+  cache = sqlite3.connect(f"C:\\questiedb-data\\.cache-{version.lower()}.db")
+
+  print(f"Fetching {idType} {id} for {locale}")
 
   if locale == "all":
     # If the locale is "all", fetch data for all locales
@@ -205,8 +208,23 @@ def getDataSqlite(idType, id, version, locale="enUS", useCache=True):
           else:
             print(f"Cache is missing {idType} {id} for {locale}.")
 
+      # Get proxy port (RateLimited)
+      next_proxy = None
+      while next_proxy is None:  # Loop until a proxy is available
+        next_proxy = rate_proxy_manager.get_next_proxy()
+        if next_proxy is None:
+          # print(f"Worker {worker_id}, Request {i + 1}: No proxy available, waiting...")
+          time.sleep(0.1)  # Wait before retrying
+
+      # Set up the proxy for the session
+      proxies = {
+        "http": next_proxy,
+        "https": next_proxy,
+      }
+
       # Fetches the data from the constructed URL
-      response = http_request_session.get(getUrl(idType, id, dataEnvLookup[version.lower()], localeLookup[locale]), proxies=proxies, timeout=10)
+      # response = session.get(getUrl(idType, id, dataEnvLookup[version.lower()], localeLookup[locale]), proxies=proxies, timeout=10)
+      response = requests.get(getUrl(idType, id, dataEnvLookup[version.lower()], localeLookup[locale]), proxies=proxies, timeout=10)
       response.raise_for_status()  # Raise an error for bad responses
       # If the entity is found, add the response content to the data dictionary
       if "Entity not found" not in response.text:
@@ -234,9 +252,24 @@ def getDataSqlite(idType, id, version, locale="enUS", useCache=True):
         else:
           print(f"Cache is missing {idType} {id} for {locale}.")
 
+    # Get proxy port (RateLimited)
+    next_proxy = None
+    while next_proxy is None:  # Loop until a proxy is available
+      next_proxy = rate_proxy_manager.get_next_proxy()
+      if next_proxy is None:
+        # print(f"Worker {worker_id}, Request {i + 1}: No proxy available, waiting...")
+        time.sleep(0.5)  # Wait before retrying
+
+    # Set up the proxy for the session
+    proxies = {
+      "http": next_proxy,
+      "https": next_proxy,
+    }
+
     # If a specific locale is requested, fetch data for that locale
     # Fetches the data from the constructed URL
-    response = http_request_session.get(getUrl(idType, id, dataEnvLookup[version.lower()], localeLookup[locale]), proxies=proxies, timeout=10)
+    # response = session.get(getUrl(idType, id, dataEnvLookup[version.lower()], localeLookup[locale]), proxies=proxies, timeout=10)
+    response = requests.get(getUrl(idType, id, dataEnvLookup[version.lower()], localeLookup[locale]), proxies=proxies, timeout=10)
     response.raise_for_status()  # Raise an error for bad responses
     # If the entity is found, add the response content to the data dictionary
     if "Entity not found" not in response.text:

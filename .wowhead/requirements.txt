@@ -2,5 +2,5 @@ beautifulsoup4
 lxml
 python-dotenv
 requests
-requests-ratelimiter
+# requests-ratelimiter
 pyyaml
