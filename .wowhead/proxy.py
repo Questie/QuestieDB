@@ -82,11 +82,30 @@ class RateLimitedProxyManager:
       self.cursor.execute("CREATE INDEX IF NOT EXISTS idx_port_timestamp ON proxy_usage (port, timestamp)")
       self.conn.commit()
 
+  def _cleanup_old_entries(self):
+    """Removes entries older than 24 hours from the proxy_usage table."""
+    if self.conn is None:
+      print("Error: Database connection is not established for cleanup.")
+      return
+    # No need for separate lock here if called within get_next_proxy's lock
+    try:
+      cleanup_cutoff_time = datetime.datetime.now() - datetime.timedelta(hours=24)
+      cleanup_timestamp_str = cleanup_cutoff_time.isoformat()
+      # print(f"Cleaning up entries older than {cleanup_timestamp_str}") # Optional: for debugging
+      self.cursor.execute("DELETE FROM proxy_usage WHERE timestamp < ?", (cleanup_timestamp_str,))
+      deleted_count = self.cursor.rowcount
+      if deleted_count > 0:
+        # print(f"Cleaned up {deleted_count} old entries.") # Optional: for debugging
+        self.conn.commit()  # Commit only if changes were made
+    except sqlite3.Error as e:
+      print(f"Error during database cleanup: {e}")
+      # Consider rolling back if part of a larger transaction, though commit is safe here.
+
   def get_next_proxy(self) -> Optional[str]:  # Changed return type hint
     """
     Returns the proxy URL that hasn't been used within the rate limit window
-    and was least recently used among the available ones. Returns None if no
-    proxy is available within the rate limit window.
+    and was least recently used among the available ones. Cleans up old entries first.
+    Returns None if no proxy is available within the rate limit window.
     """
     if self.conn is None:
       print("Error: Database connection is not established.")
@@ -95,6 +114,10 @@ class RateLimitedProxyManager:
       exit(1)  # Or return None here as well? Depends on desired behavior.
 
     with self._db_lock:
+      # --- Cleanup old entries ---
+      self._cleanup_old_entries()
+      # --- End cleanup ---
+
       cutoff_time = datetime.datetime.now() - datetime.timedelta(seconds=self.rate_limit_seconds)
       cutoff_timestamp_str = cutoff_time.isoformat()
 
@@ -141,7 +164,7 @@ class RateLimitedProxyManager:
       # 4. Log the usage of the selected port
       current_timestamp_str = datetime.datetime.now().isoformat()
       self.cursor.execute("INSERT INTO proxy_usage (port, timestamp) VALUES (?, ?)", (selected_port, current_timestamp_str))
-      self.conn.commit()
+      self.conn.commit()  # Commit both cleanup and insert together
 
       # 5. Return the corresponding URL
       return self.proxy_urls_by_port[selected_port]
