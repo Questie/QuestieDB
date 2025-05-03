@@ -1,6 +1,7 @@
 {
   "Lua.workspace.ignoreDir": [
     ".generate_database",
+    ".database_generator/mangos_translation",
     ".database_generator/Questie-translations",
     ".database_generator/_data",
     ".shit",
