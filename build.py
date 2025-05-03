@@ -11,28 +11,30 @@ import json
 base_build_dir = "./.build"
 
 toc_files = {
-    "classic": "QuestieDB-Classic.toc",
-    "tbc": "QuestieDB-BCC.toc",
-    "wotlk": "QuestieDB-WOTLKC.toc",
-    "cata": "QuestieDB-Cata.toc" # Added cata toc file
+  "classic": "QuestieDB-Classic.toc",
+  "tbc": "QuestieDB-BCC.toc",
+  "wotlk": "QuestieDB-WOTLKC.toc",
+  "cata": "QuestieDB-Cata.toc",
 }
 
 disallowed_folders = [
-    "cli",
-    ".wowhead",
-    ".translator",
-    ".git",
-    ".vscode",
-    ".generate_database",
-    ".database_generator",
-    ".tests",
-    # Python venv
-    "venv",
-    # Github actions
-    ".lua",
-    ".luarocks",
-    # Perfy performance thing
-    "Perfy",
+  "cli",
+  ".wowhead",
+  ".translator",
+  ".git",
+  ".vscode",
+  ".generate_database",
+  ".database_generator",
+  ".tests",
+  # Python venv
+  "venv",
+  # Github actions
+  ".lua",
+  ".luarocks",
+  # Perfy performance thing
+  "Perfy",
+  # Stuff
+  "WoW-API",
 ]
 
 
@@ -85,7 +87,7 @@ def get_versions_from_toc(path="."):
         for line in f:
           if line.startswith("## Version:"):
             version = line.split(":", 1)[1].strip()
-            break # Found the version, no need to read further
+            break  # Found the version, no need to read further
     except FileNotFoundError:
       print(f"Warning: TOC file not found at {filepath}")
       # Keep version as None
@@ -99,18 +101,19 @@ def get_versions_from_toc(path="."):
 def validate_same_version(versions):
   """Checks if all version values in the dictionary are the same."""
   if not versions:
-    return True # Or False, depending on desired behavior for empty input
+    return True  # Or False, depending on desired behavior for empty input
 
   # Get all version values, filtering out None in case a file is missing or lacks the version line
   version_values = [v for v in versions.values() if v is not None]
 
   # If there are no valid versions or only one, they are considered the same
   if len(version_values) <= 1:
-      return True
+    return True
 
   # Check if all valid version values are identical by comparing them to the first one
   first_version = version_values[0]
   return all(v == first_version for v in version_values)
+
 
 def get_versionstring_from_toc():
   versions = get_versions_from_toc()

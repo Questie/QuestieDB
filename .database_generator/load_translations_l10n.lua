@@ -113,7 +113,7 @@ function export.GenerateL10nTranslation(locales, entityTypes, l10nObject)
     print("Dumping: " .. lookupKey)
     local lookup = l10nObject[lookupKey]
     for _, localeKey in ipairs(locales) do
-      local allLocaleData = lookup[localeKey]()
+      local allLocaleData = type(lookup[localeKey]) == "function" and lookup[localeKey]() or lookup[localeKey]
       local sortTable = {}
 
       for id in pairs(allLocaleData) do
@@ -128,6 +128,7 @@ function export.GenerateL10nTranslation(locales, entityTypes, l10nObject)
         newL10nObject[id][lEntityType][localeKey] = localeData
       end
     end
+    print("Done: " .. lookupKey)
   end
 
   return newL10nObject
@@ -275,6 +276,7 @@ end
 ---@param l10nData table<AllIdTypes, table<L10nDBKeys, table<L10nLocales, any>>> The structured localization data.
 ---@return string luaTableString The generated Lua table as a string.
 function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
+  print("Creating l10n data dump...")
   local outputLines = {}
   tInsert(outputLines, "{\n")
 
@@ -371,6 +373,8 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
     outputLines[#outputLines] = string.sub(lastLine, 1, -3) .. "\n"
   end
   tInsert(outputLines, "}\n")
+
+  print("Done creating l10n data dump.")
 
   return table.concat(outputLines)
 end

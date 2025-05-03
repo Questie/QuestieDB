@@ -1,22 +1,75 @@
 import re
 import json
 import sys
-import srt
-import os
-import openai
 import time
-import tiktoken
 import threading
 import queue
-import concurrent.futures
-from dotenv import load_dotenv
-from ids import getAllIdsWowhead
-from wowhead import getData
-from bs4 import BeautifulSoup, NavigableString, Tag
+import datetime
+import os
+from wowhead import getData, getDataSqlite
+from http_controller import start_http_server
+from quest import getQuestSections
+from sitemap import get_all_ids
+import sqlite3
 
 # Constants
 # Thread-safe queue for subtitles
 fetch_queue = queue.Queue()
+
+output_dir = ".output"
+if not os.path.exists(output_dir):
+  os.mkdir(output_dir)
+
+# --- Progress Tracking ---
+items_processed = 0
+items_processed_lock = threading.Lock()
+total_items = 0
+start_time_global = 0
+# -------------------------
+
+# --- Control Flag ---
+stop_event = threading.Event()
+# --------------------
+
+
+# --- Progress Monitoring Function ---
+def monitor_progress(total_items_to_process, start_time_global_ts, already_processed=0):
+  global items_processed  # Access global counter
+  while not stop_event.is_set():
+    with items_processed_lock:
+      current_processed = items_processed - already_processed  # Adjust for already processed items
+
+    if current_processed >= total_items_to_process and stop_event.is_set():
+      print("\nProcessing complete!")
+      break  # Exit monitor loop
+
+    elapsed_time = time.time() - start_time_global_ts
+    if elapsed_time > 0 and current_processed > 0:
+      items_per_second = current_processed / elapsed_time
+      remaining_items = total_items_to_process - current_processed
+      estimated_time_remaining = remaining_items / items_per_second if items_per_second > 0 else 0
+
+      # Format ETA
+      eta_str = str(datetime.timedelta(seconds=int(estimated_time_remaining)))
+
+      # Print progress update
+      print(
+        f"\rProgress: {current_processed}/{total_items_to_process} ({items_per_second:.2f} items/sec) | Elapsed: {str(datetime.timedelta(seconds=int(elapsed_time)))} | ETA: {eta_str}   ", end="\n"
+      )
+    elif current_processed == 0 and elapsed_time > 0:
+      print(f"\rProgress: 0/{total_items_to_process} | Elapsed: {str(datetime.timedelta(seconds=int(elapsed_time)))} | Calculating rate...", end="\n")
+    else:
+      # Initial state or edge case
+      print(f"\rStarting processing... {total_items_to_process} items queued.", end="\n")
+
+    time.sleep(2)  # Update frequency (in seconds)
+
+  # --- Final message ---
+  if stop_event.is_set():
+    print("\nProcessing stopped by request.")
+  else:
+    print("\nProcessing complete!")
+  # -------------------
 
 
 faction_description_regex = re.compile(r"\"(.*)\",\n\s*\"article-all\"")
@@ -46,222 +99,26 @@ faction_g_faction_regex = re.compile(r"g_factions\[\d*\], (.*)\);")
 #   except Exception as e2:
 #     print(f"Failed to get description for {idType} {id} Exception: {e1} and {e2}")
 
-# Creating a lookup table for "Description", "Progress", and "Completion"
-
-skip_lookup_table = {
-  "Guides",
-  "Guias",
-  "Руководства",
-  "Guides",
-  "가이드",
-  "Guías",
-  "指南",
-}
-
-lookup_table = {
-  # English
-  "Description": "Description",
-  "Progress": "Progress",
-  "Completion": "Completion",
-  "Rewards": "Rewards",
-
-  # Portuguese
-  "Descrição": "Description",
-  "Progresso": "Progress",
-  "Completo": "Completion",
-  "Recompensas": "Rewards",
-  "Ganancias": "Rewards",
-
-  # Russian
-  "Описание": "Description",
-  "Прогресс": "Progress",
-  "Завершено": "Completion",
-  "Награды": "Rewards",
-  "Дополнительные награды": "Rewards",
-
-  # German
-  "Beschreibung": "Description",
-  "Fortschritt": "Progress",
-  "Vervollständigung": "Completion",
-  "Belohnungen": "Rewards",
-
-  # Korean
-  "서술": "Description",
-  "진행 상황": "Progress",  # "진행 상황" and "보상" both map to "Progress"
-  "보상": "Progress",
-  "완료": "Completion",  # "완료" and "획득" both map to "Completion"
-  "획득": "Completion",
-  # Rewards: "보상" is already included in the table, mapping to "Progress".
-  # This demonstrates a case where the same word can have multiple meanings based on context.
-
-  # Spanish
-  "Descripción": "Description",
-  "Progreso": "Progress",
-  "Terminación": "Completion",
-  "Recompensas": "Rewards",  # Same as in Portuguese
-  "Ganancias": "Rewards",  # Same as in Portuguese
-
-  # Chinese
-  "描述": "Description",
-  "奖励": "Progress",
-  "进度": "Progress",
-  "收获": "Completion",
-  "达成": "Completion",
-  # Rewards: "奖励" is already in the table, mapping to "Progress".
-  # Similar to Korean, this word has multiple meanings.
-
-  # French
-  "Description": "Description",  # Same in English
-  "Progrès": "Progress",
-  "Achèvement": "Completion",
-  "Récompenses": "Rewards",
-  "Gains": "Rewards",  # Same as in Spanish
-
-  # Italian
-  "Descrizione": "Description",   # AI - HELPED
-  "Progressi": "Progress",   # AI - HELPED
-  "Completamento": "Completion",   # AI - HELPED
-  "Ricompense": "Rewards",   # AI - HELPED
-  "Guadagni": "Rewards",   # AI - HELPED
-
-  # Mexican Spanish (esMX)
-  "Descripción": "Description",   # AI - HELPED
-  # "": "Progress",   # AI - HELPED
-  # "Terminación": "Completion",   # AI - HELPED
-  "Recompensas": "Rewards",   # AI - HELPED
-  "Ganancias": "Rewards",   # AI - HELPED
-
-  # Traditional Chinese (zhTW)   # AI - HELPEDf
-  "描述": "Description",   # AI - HELPED
-  "進度": "Progress",   # AI - HELPED
-  "完成": "Completion",   # AI - HELPED
-  "獎勵": "Rewards",   # AI - HELPED
-  "收穫": "Rewards", # AI - HELPED
-}
-
-
-def getQuestSections(locale, data, id, idType="quest"):
-  # Use BeautifulSoup to parse the HTML content
-  soup = BeautifulSoup(data, "lxml")
-
-  # Remove all script tags
-  for script in soup.find_all("script"):
-    script.decompose()
-
-  # Find the div with class "text"
-  text_div = soup.find("div", class_="text")
-
-  regex_space = re.compile(r" +")
-  regex_run = re.compile(r"        [\s\S]+?\/run[\s\S]+?$")
-
-  sections = {}
-  # Check if the div was found
-  if text_div:
-    # Extract the title from the first <h1 class="heading-size-1"> element
-    h1_tag = text_div.find("h1", class_="heading-size-1")
-    if h1_tag:
-      title = h1_tag.get_text(strip=True)
-      # print(f"Title: {title}")
-      sections["Title"] = title
-
-      # Extract the text following the <h1> tag until the next non-<a> element
-      quest_text = []
-      for element in h1_tag.next_siblings:
-        if isinstance(element, Tag):
-          if element.name != "a":
-            break
-          quest_text.append(element.get_text())
-        elif isinstance(element, NavigableString):
-          text = element.strip()
-          if text:
-            quest_text.append(element)
-
-      # print("Quest Text:", ''.join(quest_text))
-      sections["Text"] = "".join(quest_text)
-    current_h2_text = None
-    current_content = []
-
-    # Iterate over all elements in the div
-    for element in text_div.children:
-      if "Rewards" in sections:
-        break
-      if isinstance(element, Tag):
-        if element.name == "h2" and "heading-size-3" in element.get("class", []):
-          # Save previous section if it exists
-          if current_h2_text is not None:
-            # Break if we have 3 sections
-            if len(sections) == 3:
-              break
-            section_title = lookup_table.get(current_h2_text)
-            if section_title is None:
-              print(f"Section title is None for ({locale}:'{current_h2_text}') - {idType} {id}")
-            else:
-              sections[section_title] = " ".join(current_content)
-            current_content = []
-
-          # Update current heading text
-          current_h2_text = element.get_text(strip=True)
-        elif current_h2_text is not None:
-          current_content.append(element.get_text())
-      elif isinstance(element, NavigableString) and current_h2_text is not None:
-        text = element.strip()
-        if text:
-          current_content.append(element)
-
-    # Add the last section
-    if current_h2_text is not None and len(sections) < 3 and current_h2_text not in skip_lookup_table:
-      section_title = lookup_table.get(current_h2_text)
-      if section_title is None:
-        print(f"Section title is None for ({locale}:'{current_h2_text}') - {idType} {id}")
-      else:
-        sections[section_title] = " ".join(current_content)
-
-    for section_title, section_content in sections.items():
-      changed = False
-      if "/run" in section_content:
-        if section_title == "Text":
-          print(f"Section: {section_title}")
-          print(f"\nContent:\n{section_content}\n")
-        section_content = re.sub(regex_run, "", section_content)
-        if section_title == "Text":
-          print(f"\nFixed Content:\n'''{section_content}'''\n")
-        changed = True
-
-      # Remove double spaces
-      if "  " in section_content:
-        # section_content = re.sub(r"\s+", " ", section_content)
-        section_content = re.sub(regex_space, " ", section_content)
-        changed = True
-
-      if changed:
-        # Remove leading and trailing whitespace
-        section_content = section_content.strip()
-        # Set the content
-        sections[section_title] = section_content
-
-      # Fix parts which contain how to check for completed quests
-      # print(f"Section: {section_title}\nContent:\n{section_content}\n")
-      # print(section_title)
-      # continue
-  else:
-    print(f"No 'div' with class 'text' found. {idType} {id}")
-
-  return sections
-
 
 def fetch_worker(version, idData):
+  global items_processed  # Declare intent to modify global variable
   tries = {}
   while not fetch_queue.empty():
+    # --- Check for stop signal ---
+    if stop_event.is_set():
+      print(f"Worker thread {threading.current_thread().name} stopping.")
+      break
+    # ---------------------------
+
     idType, id = fetch_queue.get()
+    processed_successfully = False  # Flag to track if item was processed
     try:
       if len(fetch_queue.queue) % 100 == 0:
         print(f"{len(fetch_queue.queue)} items left in queue")
 
       # Get data
-      start_time = time.time()
-      data = getData(idType, id, version, "all")
-      fetch_time = time.time() - start_time
-      start_time = time.time()
+      # data = getData(idType, id, version, "all")
+      data = getDataSqlite(idType, id, version, "all")
 
       # If data is None, continue to the next item in the queue
       if data is None:
@@ -272,16 +129,19 @@ def fetch_worker(version, idData):
       idData[idType][id] = {}
       if idType == "faction":
         for locale, data in data.items():
-          if type(data) == bytes:
+          if type(data) is bytes:
             rawData = data.decode("utf-8")
           else:
             rawData = data
           # Get g_faction
-          g_faction = faction_g_faction_regex.search(rawData).group(1)
-          # Load g_faction as JSON
-          g_faction = json.loads(g_faction)
+          g_faction = faction_g_faction_regex.search(rawData)
+          if g_faction:
+            g_faction = g_faction.group(1)
+            # Load g_faction as JSON
+            g_faction = json.loads(g_faction)
 
-          idData[idType][id][locale] = g_faction
+            idData[idType][id][locale] = g_faction
+
       elif idType == "quest":
         usData = getQuestSections("enUS", data["enUS"], id)
         if len(usData) == 0:
@@ -298,11 +158,34 @@ def fetch_worker(version, idData):
             elif len(localeData) != len(usData):
               print(f"Section count mismatch for {idType} {id} {locale}")
             idData[idType][id][locale] = localeData
+      elif idType == "npc":
+        for locale, localeData in data.items():
+          data = json.loads(localeData)
+          dataObject = {}
+          # Get the name and subname
+          dataObject["name"] = data["name"]
+          # Extract the subname from the tooltip
+          if "tooltip" in data:
+            tooltip = data["tooltip"]
+            # match = re.search(r"<\/b><\/td><\/tr>\n<tr><td>(.*?)<\/td><\/tr><tr>", tooltip)
+            match = re.search(r"<\/b><\/td><\/tr>\n<tr><td>(.*?)<\/td><\/tr><tr><td>.*?<\/td></tr>(?!<\/table>)", tooltip)
+            if match:
+              subname = match.group(1)
+              dataObject["subname"] = subname
+          # Add to the dictionary
+          idData[idType][id][locale] = dataObject
+      elif idType == "object" or idType == "item":
+        for locale, localeData in data.items():
+          data = json.loads(localeData)
+          idData[idType][id][locale] = data["name"]
       else:
         for locale, localeData in data.items():
           data = json.loads(localeData)
           idData[idType][id][locale] = data
-      print(f"{str(idType).capitalize()} {id} took processing: {(time.time() - start_time):.2f}s, fetch: {fetch_time:.2f}s, total: {fetch_time + (time.time() - start_time):.2f}s")
+
+      # If we reach here, processing was successful for this ID
+      processed_successfully = True
+      # print(f"{str(idType).capitalize()} {id} took processing: {(time.time() - start_time):.2f}s, fetch: {fetch_time:.2f}s, total: {fetch_time + (time.time() - start_time):.2f}s")
 
     except Exception as e:
       print(f"Exception: {e} for {idType} {id}, requeueing...")
@@ -315,40 +198,90 @@ def fetch_worker(version, idData):
       if tries[idType][id] < 10:
         fetch_queue.put((idType, id))
     finally:
+      if processed_successfully:
+        with items_processed_lock:
+          items_processed += 1
       fetch_queue.task_done()
 
-allowed_expansions = ["Classic", "TBC", "Wotlk", "Cata", "MoP"]
-if __name__ == "__main__":
-  # Classic, TBC, Wotlk, Cata, MoP
-  if len(sys.argv) > 1:
-    version = sys.argv[1]
-  if version not in allowed_expansions:
-    print(f"Version {version} is not allowed. Allowed versions are: {', '.join(allowed_expansions)}")
-    sys.exit(1)
+
+def scrape(version, db_path="./"):
+  global items_processed  # Access global counter
+  global total_items  # Access global total items
+  global start_time_global  # Access global start time
+  global stop_event  # Access global stop event
+
+  db_file = os.path.join(db_path, f".cache-{version.lower()}.db")
+
+  print(f"Making sure that {db_file} exists...")
+  cache = sqlite3.connect(db_file)
+  # Create the database table if it exists
+  cache.execute("""
+  CREATE TABLE IF NOT EXISTS wowhead_cache (
+    idType TEXT,
+    id INTEGER,
+    version TEXT,
+    locale TEXT,
+    data TEXT,
+    PRIMARY KEY (idType, id, version, locale)
+  )""")
+  cache.commit()
+
+  # Get already processed ids count for version
+  cursor = cache.cursor()
+  cursor.execute("SELECT COUNT(DISTINCT id) FROM wowhead_cache WHERE version = ?", (version,))
+  already_processed = cursor.fetchone()[0]
+  print(f"Already processed {already_processed} items for version {version}")
+  cache.close()
 
   all_ids = {}
-  all_ids["npc"] = getAllIdsWowhead(version, "npc")
-  all_ids["item"] = getAllIdsWowhead(version, "item")
-  all_ids["quest"] = getAllIdsWowhead(version, "quest")
-  all_ids["object"] = getAllIdsWowhead(version, "object")
-  all_ids["spell"] = getAllIdsWowhead(version, "spell")
-  all_ids["faction"] = getAllIdsWowhead(version, "faction")
+  # all_ids["npc"] = getAllIdsWowhead(version, "npc")
+  # all_ids["item"] = getAllIdsWowhead(version, "item")
+  # all_ids["quest"] = getAllIdsWowhead(version, "quest")
+  # all_ids["object"] = getAllIdsWowhead(version, "object")
+  # all_ids["spell"] = getAllIdsWowhead(version, "spell")
+  # all_ids["faction"] = getAllIdsWowhead(version, "faction")
+
+  all_ids["npc"] = get_all_ids(version.lower(), "npc")
+  all_ids["item"] = get_all_ids(version.lower(), "item")
+  all_ids["quest"] = get_all_ids(version.lower(), "quest")
+  all_ids["object"] = get_all_ids(version.lower(), "object")
+  # all_ids["spell"] = get_all_ids(version.lower(), "spell")
+  # all_ids["faction"] = get_all_ids(version.lower(), "faction")
+
+  # Only save the first N ids for each type
+  # all_ids["npc"] = all_ids["npc"][:3]
+  # all_ids["item"] = all_ids["item"][:3]
+  # all_ids["quest"] = all_ids["quest"][:3]
+  # all_ids["object"] = all_ids["object"][:3]
+  # all_ids["npc"].append(3354)
 
   # Save all ids
-  with open(f"{version.lower()}_all_ids.json", "w", encoding="utf-8") as f:
+  with open(f"{output_dir}/{version.lower()}_all_ids.json", "w", encoding="utf-8") as f:
     json.dump(all_ids, f, indent=2, ensure_ascii=False)
 
-  for idType, ids in all_ids.items():
-    # if idType != "quest":
-    print(f"{idType}: {len(ids)}")
-    for id in ids:
-      fetch_queue.put((idType, id))
-  # else:
-  # print(f"{str(idType).capitalize()} is skipped for now, requires special handling")
-
+  # --- Populate Queue and Get Total Count ---
+  items_processed = 0
+  total_items = 0
   idData = {}
   for idType, ids in all_ids.items():
     idData[idType] = {}
+    print(f"Queueing {len(ids)} {idType} IDs...")
+    for id in ids:
+      fetch_queue.put((idType, id))
+    total_items += len(ids)
+  print(f"Total items queued: {total_items}")
+  # ------------------------------------------
+
+  # --- Start the HTTP control server ---
+  start_http_server(stop_event)
+  time.sleep(2)  # Give the server a moment to start
+  # -------------------------------------
+
+  # --- Start Monitor Thread ---
+  start_time_global = time.time()
+  monitor_thread = threading.Thread(target=monitor_progress, args=(total_items, start_time_global, already_processed), daemon=True)
+  monitor_thread.start()
+  # ----------------------------
 
   # Start translation workers
   num_threads = 10  # You can adjust this based on your actual RPM and CPU cores
@@ -364,6 +297,9 @@ if __name__ == "__main__":
   for thread in threads:
     thread.join()
 
+  # Stop the monitor thread
+  stop_event.set()
+
   # This function is used to write a dictionary to a file
   # But also not print the trailing comma
   # json.dump works but the map value is too nested and makes the file unreadable
@@ -371,7 +307,7 @@ if __name__ == "__main__":
     f.write("{")
     items = list(d.items())
     for i, (k, v) in enumerate(items):
-      f.write(f"\n{' ' * (indent + 2)}\"{k}\": ")
+      f.write(f'\n{" " * (indent + 2)}"{k}": ')
       if isinstance(v, dict):
         write_dict(v, f, indent=indent + 2)
       else:
@@ -386,10 +322,40 @@ if __name__ == "__main__":
       f.write(f"\n{' ' * indent}}}")
 
   # Why i don't just use json.dump() is because the map is too nested and creates a huge file
-  filename = f"{version.lower()}_locales.json"
+  filename = f"{output_dir}/{version.lower()}_locales.json"
   print(f"Saving {filename}...")
 
   with open(filename, "w", encoding="utf-8") as f:
     write_dict(idData, f)
 
+  # Save as YAML as well (optional)
+  try:
+    import yaml
+
+    yaml_filename = f"{output_dir}/{version.lower()}_locales.yaml"
+    print(f"Saving {yaml_filename}...")
+    # Use a large width to prevent unwanted line wrapping in YAML
+    yaml.dump(idData, open(yaml_filename, "w", encoding="utf-8"), allow_unicode=True, sort_keys=False, width=float("inf"))
+  except ImportError:
+    print("PyYAML not installed, skipping YAML output.")
+
   print("Done")
+
+
+allowed_expansions = ["Classic", "TBC", "Wotlk", "Cata", "MoP-Classic"]
+if __name__ == "__main__":
+  version = ""
+  db_path = "./"
+  # Classic, TBC, Wotlk, Cata, MoP
+  if len(sys.argv) > 1:
+    version = sys.argv[1]
+  if version not in allowed_expansions and version != "all":
+    print(f"Version {version} is not allowed. Allowed versions are: {', '.join(allowed_expansions)}")
+    sys.exit(1)
+
+  if version == "all":
+    for version in allowed_expansions:
+      scrape(version, db_path)
+      stop_event.clear()  # Reset the stop event for the next version
+  else:
+    scrape(version, db_path)

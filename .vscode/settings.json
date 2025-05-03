@@ -1,6 +1,7 @@
 {
   "Lua.workspace.ignoreDir": [
     ".generate_database",
+    ".database_generator/mangos_translation",
     ".database_generator/Questie-translations",
     ".database_generator/_data",
     ".shit",
@@ -33,6 +34,7 @@
     "**/__pycache__": true,
     "**/_data/*.html": true,
     "**/venv": true,
+    "WoW-API": true,
   },
   "search.exclude": {
     "**/node_modules": true,
@@ -43,6 +45,7 @@
     ".build":true,
     "Perfy":true,
     ".database_generator/Questie-translations": true,
+    ".database_generator/mangos_translation/translations": true,
     ".vscode/*.lua": true,
     "translations.json": true,
     "**/*.lua-table": true,
