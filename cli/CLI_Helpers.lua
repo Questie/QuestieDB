@@ -105,7 +105,8 @@ end
 
 --- Loads all files in a xml file
 ---@param file string file path e.g ".generate_database_lua/Questie/Localization/Translations/Translations.xml"
-function CLI_Helpers.loadXML(file)
+---@param failIfMissing boolean?
+function CLI_Helpers.loadXML(file, failIfMissing)
   local xmlFilePath = file:match("^(.*)/.-%.xml$") .. "/"
   local filedata = io.open(file, "r")
   -- Only load the file if it exists
@@ -118,6 +119,11 @@ function CLI_Helpers.loadXML(file)
       local slashxmlFile = xmlFile:gsub("\\", "/")
       print("  Loading file: ", xmlFilePath .. slashxmlFile)
       CLI_Helpers.loadFile(xmlFilePath .. slashxmlFile)
+    end
+  else
+    if failIfMissing then
+      error("Error loading " .. file .. " - File not found")
+      os.exit(1)
     end
   end
 end
