@@ -62,7 +62,7 @@ def generate_xml_import(version: str):
   # </Ui>
 
   questieDBVersion = mangosToVersion[version]
-  output_dir = f"output/{questieDBVersion}"
+  output_dir = f"translations/{questieDBVersion}"
 
   # Check if output directory exists
   if not os.path.exists(output_dir):
@@ -113,21 +113,21 @@ def export_item(conn: sqlite3.Connection, fullLocale: str, version: str):
   questieDBVersion = mangosToVersion[version]
 
   # Check if output directory exists
-  if not os.path.exists("output"):
-    os.makedirs("output")
+  if not os.path.exists("translations"):
+    os.makedirs("translations")
   # Check if version directory exists
-  if not os.path.exists(f"output/{questieDBVersion}"):
-    os.makedirs(f"output/{questieDBVersion}")
+  if not os.path.exists(f"translations/{questieDBVersion}"):
+    os.makedirs(f"translations/{questieDBVersion}")
   # Check if locale directory exists
-  if not os.path.exists(f"output/{questieDBVersion}/{shortLocale}"):
-    os.makedirs(f"output/{questieDBVersion}/{shortLocale}")
+  if not os.path.exists(f"translations/{questieDBVersion}/{shortLocale}"):
+    os.makedirs(f"translations/{questieDBVersion}/{shortLocale}")
 
   print(f"Exporting locales_item for {fullLocale}")
   cursor = conn.cursor()
   cursor.execute(f"SELECT entry, name_loc{localeToDBIndex[shortLocale]} FROM locales_item")
   rows = cursor.fetchall()
 
-  output_path = f"output/{questieDBVersion}/{shortLocale}"
+  output_path = f"translations/{questieDBVersion}/{shortLocale}"
   output_filename = f"item_{questieDBVersion}_{shortLocale}.lua"
 
   # Output data in lua table format
@@ -152,21 +152,21 @@ def export_gameobject(conn: sqlite3.Connection, fullLocale: str, version: str):
   questieDBVersion = mangosToVersion[version]
 
   # Check if output directory exists
-  if not os.path.exists("output"):
-    os.makedirs("output")
+  if not os.path.exists("translations"):
+    os.makedirs("translations")
   # Check if version directory exists
-  if not os.path.exists(f"output/{questieDBVersion}"):
-    os.makedirs(f"output/{questieDBVersion}")
+  if not os.path.exists(f"translations/{questieDBVersion}"):
+    os.makedirs(f"translations/{questieDBVersion}")
   # Check if locale directory exists
-  if not os.path.exists(f"output/{questieDBVersion}/{shortLocale}"):
-    os.makedirs(f"output/{questieDBVersion}/{shortLocale}")
+  if not os.path.exists(f"translations/{questieDBVersion}/{shortLocale}"):
+    os.makedirs(f"translations/{questieDBVersion}/{shortLocale}")
 
   print(f"Exporting locales_gameobject for {fullLocale}")
   cursor = conn.cursor()
   cursor.execute(f"SELECT entry, name_loc{localeToDBIndex[shortLocale]} FROM locales_gameobject")
   rows = cursor.fetchall()
 
-  output_path = f"output/{questieDBVersion}/{shortLocale}"
+  output_path = f"translations/{questieDBVersion}/{shortLocale}"
   output_filename = f"object_{questieDBVersion}_{shortLocale}.lua"
 
   # Output data in lua table format
@@ -192,21 +192,21 @@ def export_creature(conn: sqlite3.Connection, fullLocale: str, version: str):
   questieDBVersion = mangosToVersion[version]
 
   # Check if output directory exists
-  if not os.path.exists("output"):
-    os.makedirs("output")
+  if not os.path.exists("translations"):
+    os.makedirs("translations")
   # Check if version directory exists
-  if not os.path.exists(f"output/{questieDBVersion}"):
-    os.makedirs(f"output/{questieDBVersion}")
+  if not os.path.exists(f"translations/{questieDBVersion}"):
+    os.makedirs(f"translations/{questieDBVersion}")
   # Check if locale directory exists
-  if not os.path.exists(f"output/{questieDBVersion}/{shortLocale}"):
-    os.makedirs(f"output/{questieDBVersion}/{shortLocale}")
+  if not os.path.exists(f"translations/{questieDBVersion}/{shortLocale}"):
+    os.makedirs(f"translations/{questieDBVersion}/{shortLocale}")
 
   print(f"Exporting locales_creature for {fullLocale}")
   cursor = conn.cursor()
   cursor.execute(f"SELECT entry, name_loc{localeToDBIndex[shortLocale]}, subname_loc{localeToDBIndex[shortLocale]} FROM locales_creature")
   rows = cursor.fetchall()
 
-  output_path = f"output/{questieDBVersion}/{shortLocale}"
+  output_path = f"translations/{questieDBVersion}/{shortLocale}"
   output_filename = f"npc_{questieDBVersion}_{shortLocale}.lua"
 
   # Output data in lua table format
@@ -246,21 +246,21 @@ def export_quest(conn: sqlite3.Connection, fullLocale: str, version: str):
   questieDBVersion = mangosToVersion[version]
 
   # Check if output directory exists
-  if not os.path.exists("output"):
-    os.makedirs("output")
+  if not os.path.exists("translations"):
+    os.makedirs("translations")
   # Check if version directory exists
-  if not os.path.exists(f"output/{questieDBVersion}"):
-    os.makedirs(f"output/{questieDBVersion}")
+  if not os.path.exists(f"translations/{questieDBVersion}"):
+    os.makedirs(f"translations/{questieDBVersion}")
   # Check if locale directory exists
-  if not os.path.exists(f"output/{questieDBVersion}/{shortLocale}"):
-    os.makedirs(f"output/{questieDBVersion}/{shortLocale}")
+  if not os.path.exists(f"translations/{questieDBVersion}/{shortLocale}"):
+    os.makedirs(f"translations/{questieDBVersion}/{shortLocale}")
 
   print(f"Exporting locales_quest for {fullLocale}")
   cursor = conn.cursor()
   cursor.execute(f"SELECT entry, Title_loc{localeToDBIndex[shortLocale]}, Details_loc{localeToDBIndex[shortLocale]}, Objectives_loc{localeToDBIndex[shortLocale]} FROM locales_quest")
   rows = cursor.fetchall()
 
-  output_path = f"output/{questieDBVersion}/{shortLocale}"
+  output_path = f"translations/{questieDBVersion}/{shortLocale}"
   output_filename = f"quest_{questieDBVersion}_{shortLocale}.lua"
 
   # Output data in lua table format
