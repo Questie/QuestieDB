@@ -1,0 +1,60727 @@
+locales_npc = locales_npc or {}
+locales_npc['esES'] = {
+  [3] = {
+    'Comecarnes',
+    nil,
+  },
+  [6] = {
+    'Alimaña kóbold',
+    nil,
+  },
+  [19] = {
+    'Asignador Benny',
+    'PNJ',
+  },
+  [25] = {
+    'Dragonizo mecánico de mitril',
+    nil,
+  },
+  [30] = {
+    'Araña del bosque',
+    nil,
+  },
+  [36] = {
+    'Gólem de la cosecha',
+    nil,
+  },
+  [38] = {
+    'Matón sin cerebro',
+    nil,
+  },
+  [40] = {
+    'Minero kóbold',
+    nil,
+  },
+  [43] = {
+    'Araña de mina',
+    nil,
+  },
+  [46] = {
+    'Batidor múrloc',
+    nil,
+  },
+  [48] = {
+    'Guerrero esquelético',
+    nil,
+  },
+  [49] = {
+    'Súcubo inferior',
+    nil,
+  },
+  [54] = {
+    nil,
+    'Forjadora de armas',
+  },
+  [55] = {
+    'Miserable Ed el Herrero',
+    nil,
+  },
+  [60] = {
+    'Ruklar el Trampero',
+    nil,
+  },
+  [61] = {
+    'Thuros Dedos Ligeros',
+    nil,
+  },
+  [62] = {
+    'Gug Velagorda',
+    nil,
+  },
+  [65] = {
+    'Campesina',
+    nil,
+  },
+  [66] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [67] = {
+    nil,
+    'Tendero',
+  },
+  [68] = {
+    'Guardia de la ciudad de Ventormenta',
+    nil,
+  },
+  [69] = {
+    'Lobo gris malsano',
+    nil,
+  },
+  [70] = {
+    '[UNUSED] Ciudadano de clase baja',
+    nil,
+  },
+  [71] = {
+    'Ranguista',
+    nil,
+  },
+  [72] = {
+    'Level 20 Unkillable Test Dummy',
+    nil,
+  },
+  [73] = {
+    'Veraina la Boticaria',
+    'Personaje con misión',
+  },
+  [74] = {
+    nil,
+    'Mercader de armaduras de tela y cuero',
+  },
+  [75] = {
+    '[UNUSED] Vashaum Nochemustia',
+    nil,
+  },
+  [78] = {
+    'Janos Nudillomartillo',
+    'Forjadora de armas',
+  },
+  [79] = {
+    'Narg el Capataz',
+    nil,
+  },
+  [80] = {
+    'Obrero kóbold',
+    nil,
+  },
+  [81] = {
+    '[UNUSED] Luglar el Obstructor',
+    nil,
+  },
+  [82] = {
+    'Leonetti el Lunático',
+    nil,
+  },
+  [87] = {
+    'Trol de bosque rabioso',
+    nil,
+  },
+  [90] = {
+    'Gigante de mar',
+    nil,
+  },
+  [92] = {
+    'Elemental de roca',
+    nil,
+  },
+  [93] = {
+    'Centauro',
+    nil,
+  },
+  [94] = {
+    'Ratero',
+    nil,
+  },
+  [95] = {
+    'Contrabandista Defias',
+    nil,
+  },
+  [97] = {
+    'Cachorro Zarparrío',
+    nil,
+  },
+  [98] = {
+    'Capataz Zarparrío',
+    nil,
+  },
+  [99] = {
+    'Morgaine la Astuta',
+    nil,
+  },
+  [100] = {
+    'Bronco Mordeveloz',
+    nil,
+  },
+  [102] = {
+    'Dragauro bronce',
+    nil,
+  },
+  [103] = {
+    'Garrick Piesuaves',
+    nil,
+  },
+  [105] = {
+    'Zancaalta',
+    nil,
+  },
+  [106] = {
+    'Bestia kodo',
+    nil,
+  },
+  [108] = {
+    'Dragauro verde',
+    nil,
+  },
+  [109] = {
+    'Dragauro blanco',
+    nil,
+  },
+  [111] = {
+    'Sacerdotisa',
+    nil,
+  },
+  [112] = {
+    'Sacerdotisa',
+    nil,
+  },
+  [113] = {
+    'Jabalí Colmipétreo',
+    nil,
+  },
+  [114] = {
+    'Vigía de la cosecha',
+    nil,
+  },
+  [115] = {
+    'Segador de la cosecha',
+    nil,
+  },
+  [116] = {
+    'Bandido',
+    nil,
+  },
+  [117] = {
+    'Gnoll Zarparrío',
+    nil,
+  },
+  [118] = {
+    'Merodeador',
+    nil,
+  },
+  [119] = {
+    'Morrolargo',
+    nil,
+  },
+  [120] = {
+    'Acechador del bosque',
+    nil,
+  },
+  [121] = {
+    'Acechacaminos Defias',
+    nil,
+  },
+  [122] = {
+    'Bandolero Defias',
+    nil,
+  },
+  [123] = {
+    'Bastardo Zarparrío',
+    nil,
+  },
+  [124] = {
+    'Tosco Zarparrío',
+    nil,
+  },
+  [125] = {
+    'Sobrestante Zarparrío',
+    nil,
+  },
+  [126] = {
+    'Correcostas múrloc',
+    nil,
+  },
+  [127] = {
+    'Cazamareas múrloc',
+    nil,
+  },
+  [128] = {
+    nil,
+    'Testeo',
+  },
+  [129] = {
+    'Programador enfurecido Tweedle Dum',
+    nil,
+  },
+  [130] = {
+    'Vendedor programador',
+    nil,
+  },
+  [149] = {
+    '[UNUSED] Pequeña cría de dragón Negro',
+    nil,
+  },
+  [150] = {
+    '[UNUSED] Hermano Milius',
+    'Fabricante de arcos',
+  },
+  [151] = {
+    'Brog Patosar',
+    'Suministros generales',
+  },
+  [152] = {
+    'Hermano Danil',
+    'Suministros generales',
+  },
+  [154] = {
+    'Desgarrador superior',
+    nil,
+  },
+  [157] = {
+    'Dentosangre',
+    nil,
+  },
+  [161] = {
+    '[UNUSED] Ander el Monje',
+    nil,
+  },
+  [163] = {
+    '[UNUSED] Granjero desposeído',
+    nil,
+  },
+  [165] = {
+    '[UNUSED] Niño pequeño',
+    nil,
+  },
+  [167] = {
+    'Morhan Cobrilengua',
+    'Forjador de metales',
+  },
+  [171] = {
+    'Guerrero múrloc',
+    nil,
+  },
+  [190] = {
+    nil,
+    'Mercader de armaduras de tela y cuero',
+  },
+  [192] = {
+    'Trol de hielo',
+    nil,
+  },
+  [193] = {
+    'Dragauro azul',
+    nil,
+  },
+  [196] = {
+    'Eagan Desollapelambres',
+    nil,
+  },
+  [197] = {
+    'Alguacil McBride',
+    nil,
+  },
+  [198] = {
+    nil,
+    'Instructor de magos',
+  },
+  [199] = {
+    'Desgarrador joven',
+    nil,
+  },
+  [200] = {
+    'Esqueleto desgarbado UNUSED',
+    nil,
+  },
+  [201] = {
+    'Esqueleto de huesos frágiles',
+    nil,
+  },
+  [202] = {
+    'Horror en podredumbre',
+    nil,
+  },
+  [203] = {
+    'Mago esquelético',
+    nil,
+  },
+  [204] = {
+    '[UNUSED] Risillas Fogóseo',
+    nil,
+  },
+  [205] = {
+    'Sombracechador Penumbría',
+    nil,
+  },
+  [206] = {
+    'Colmillovil Penumbría',
+    nil,
+  },
+  [207] = {
+    '[UNUSED] Desollador Zarparrío',
+    nil,
+  },
+  [208] = {
+    '[UNUSED] Depositario Zarparrío',
+    nil,
+  },
+  [209] = {
+    '[UNUSED] Huesocorista Garrarío',
+    nil,
+  },
+  [210] = {
+    'Mascahuesos',
+    nil,
+  },
+  [211] = {
+    'Ogro',
+    nil,
+  },
+  [212] = {
+    'Guerrero Puñastilla',
+    nil,
+  },
+  [213] = {
+    'Lobo temible famélico',
+    nil,
+  },
+  [215] = {
+    'Rondanoches Defias',
+    nil,
+  },
+  [217] = {
+    'Telarácnida venenosa',
+    nil,
+  },
+  [218] = {
+    'Asaltatumbas',
+    nil,
+  },
+  [219] = {
+    nil,
+    'Mercader de armaduras de tela y cuero',
+  },
+  [220] = {
+    '[UNUSED] Khebil Acerorrero',
+    'Forjadora de armas',
+  },
+  [221] = {
+    nil,
+    'Mercader',
+  },
+  [222] = {
+    nil,
+    'Vendedor de mazas',
+  },
+  [223] = {
+    nil,
+    'Aprendiz peletero',
+  },
+  [224] = {
+    nil,
+    'Vendedor ambulante de armas',
+  },
+  [225] = {
+    'Gavin Nudárbol',
+    'Forjadora de armas',
+  },
+  [226] = {
+    'Morg Tuerzarbol',
+    'Armero',
+  },
+  [227] = {
+    nil,
+    'Pertrechos',
+  },
+  [228] = {
+    'Avette Bosquevil',
+    'Fabricante de arcos',
+  },
+  [229] = {
+    'Unknown Evil Transform (do not translate)',
+    nil,
+  },
+  [232] = {
+    'Granjero Ray',
+    nil,
+  },
+  [233] = {
+    'Granjero Saldean',
+    nil,
+  },
+  [234] = {
+    'Alguacil Gryan Mantorrecio',
+    'La Brigada de los Páramos de Poniente',
+  },
+  [237] = {
+    'Granjero Cejade',
+    nil,
+  },
+  [238] = {
+    'Verna Cejade',
+    nil,
+  },
+  [239] = {
+    'Tragoamargo Cebatruenos',
+    nil,
+  },
+  [240] = {
+    'Alguacil Dughan',
+    nil,
+  },
+  [241] = {
+    'Remy "Dos Veces"',
+    nil,
+  },
+  [242] = {
+    'Horras Pocelecho',
+    nil,
+  },
+  [243] = {
+    '[UNUSED] Greeby Vellolodo TEST',
+    nil,
+  },
+  [244] = {
+    'La vieja Pedregosa',
+    nil,
+  },
+  [246] = {
+    '"Tita" Bernice Pedregosa',
+    nil,
+  },
+  [248] = {
+    'Abuela Pedregosa',
+    nil,
+  },
+  [252] = {
+    'Tommy Joe Pedregosa',
+    nil,
+  },
+  [253] = {
+    'William Mortero',
+    nil,
+  },
+  [257] = {
+    'Trabajador kóbold',
+    nil,
+  },
+  [258] = {
+    nil,
+    'Vendedor de vino',
+  },
+  [260] = {
+    '[UNUSED] Guardia de Torre de Elwynn',
+    nil,
+  },
+  [261] = {
+    'Guardia Thomas',
+    nil,
+  },
+  [262] = {
+    '[DND] Wounded Lion\'s Footman',
+    nil,
+  },
+  [263] = {
+    'Lord Ello Cerranegro',
+    'Alcalde de Villa Oscura',
+  },
+  [264] = {
+    'Comandante Althea Cerranegro',
+    'Líder de La Guardia Nocturna',
+  },
+  [266] = {
+    'Wiley el Negro',
+    nil,
+  },
+  [267] = {
+    'Secretario Daltry',
+    nil,
+  },
+  [268] = {
+    nil,
+    'Historiador de Villa Oscura',
+  },
+  [269] = {
+    nil,
+    'Ayudante mayor del alguacil de Villa Oscura',
+  },
+  [270] = {
+    'Consejero Tallolino',
+    'Consejo de Villa Oscura',
+  },
+  [271] = {
+    'Embajador Bayadol',
+    'Consejo de Villa Oscura',
+  },
+  [273] = {
+    'Tabernero Smitts',
+    nil,
+  },
+  [274] = {
+    'Posadero Hann',
+    'Camarero',
+  },
+  [277] = {
+    nil,
+    'Entendido en vino dulce',
+  },
+  [279] = {
+    'Morgan Mortero',
+    nil,
+  },
+  [280] = {
+    'Placeholder - Cantera de Jaspe',
+    'Activador de área',
+  },
+  [281] = {
+    'Tanque kóbold',
+    nil,
+  },
+  [282] = {
+    'Taumaturgo kóbold',
+    nil,
+  },
+  [283] = {
+    'Sanador kóbold',
+    nil,
+  },
+  [286] = {
+    'Viejo Branquiapodrida',
+    nil,
+  },
+  [287] = {
+    'Placeholder - Mina Umbría',
+    nil,
+  },
+  [288] = {
+    'Alterio',
+    nil,
+  },
+  [289] = {
+    nil,
+    'El Ermitaño',
+  },
+  [290] = {
+    'Placeholder - Mina Abisal',
+    'Activador de área',
+  },
+  [291] = {
+    'Placeholder Cajonera',
+    nil,
+  },
+  [294] = {
+    'Mariscal Haggard',
+    nil,
+  },
+  [295] = {
+    'Tabernero Farley',
+    'Tabernero',
+  },
+  [296] = {
+    '[UNUSED] Jans Buenamadre',
+    nil,
+  },
+  [297] = {
+    'Custodio Folsom',
+    nil,
+  },
+  [298] = {
+    nil,
+    '<necesita textura>',
+  },
+  [299] = {
+    'Lobo joven',
+    nil,
+  },
+  [302] = {
+    'Mary la Ciega',
+    nil,
+  },
+  [303] = {
+    'Placeholder Fulano interactivo - jk',
+    'Usa tu imaginación',
+  },
+  [305] = {
+    'Semental blanco',
+    nil,
+  },
+  [309] = {
+    'Cadáver de Rolf',
+    nil,
+  },
+  [313] = {
+    nil,
+    'Mago de la Torre de Azora',
+  },
+  [314] = {
+    nil,
+    'Novia del embalsamador',
+  },
+  [315] = {
+    'Stalvan Mantoniebla',
+    nil,
+  },
+  [318] = {
+    '[UNUSED] Hermano Akil',
+    nil,
+  },
+  [319] = {
+    '[UNUSED] Hermano Benthas',
+    nil,
+  },
+  [320] = {
+    '[UNUSED] Hermano Cryus',
+    nil,
+  },
+  [321] = {
+    '[UNUSED] Hermano Deros',
+    nil,
+  },
+  [322] = {
+    '[UNUSED] Hermano Enoch',
+    nil,
+  },
+  [323] = {
+    '[UNUSED] Hermano Lontananza',
+    nil,
+  },
+  [324] = {
+    '[UNUSED] Hermano Greishan',
+    nil,
+  },
+  [326] = {
+    '[UNUSED] Hermano Ictharin',
+    nil,
+  },
+  [327] = {
+    'Dientes de Oro',
+    nil,
+  },
+  [328] = {
+    nil,
+    'Instructor de magos',
+  },
+  [329] = {
+    'Elemental de tierra',
+    nil,
+  },
+  [330] = {
+    'Princesa',
+    nil,
+  },
+  [331] = {
+    nil,
+    'Maestro mago',
+  },
+  [332] = {
+    'Maestro Mathias Shaw',
+    'Líder del IV:7',
+  },
+  [333] = {
+    '[UNUSED] Eduardo el Bufón',
+    nil,
+  },
+  [334] = {
+    nil,
+    'Señor de la guerra del clan Roca Negra',
+  },
+  [335] = {
+    'Chamusquina',
+    nil,
+  },
+  [338] = {
+    nil,
+    'Academia de Artes y Ciencias Arcanas',
+  },
+  [339] = {
+    '[UNUSED] Helgor el Púgil',
+    nil,
+  },
+  [340] = {
+    nil,
+    'Maestro de recetas de cocina',
+  },
+  [341] = {
+    'Supervisor Olento',
+    nil,
+  },
+  [344] = {
+    'Magistrado Solomon',
+    nil,
+  },
+  [345] = {
+    'Panzallena',
+    nil,
+  },
+  [346] = {
+    'Posadero Daniels',
+    nil,
+  },
+  [347] = {
+    'Osco Mediamelena',
+    'Maestro de batalla del Valle de Alterac',
+  },
+  [349] = {
+    'Cabo Keeshan',
+    nil,
+  },
+  [351] = {
+    'Campesino',
+    nil,
+  },
+  [352] = {
+    'Dungar Tragolargo',
+    'Maestro de grifos',
+  },
+  [353] = {
+    'Antonia Dardo',
+    nil,
+  },
+  [354] = {
+    '[UNUSED] Grall Doslunas',
+    'Instructor de chamanes',
+  },
+  [359] = {
+    'Lobo invernal',
+    nil,
+  },
+  [364] = {
+    'Babosa',
+    nil,
+  },
+  [365] = {
+    'Montura voladora de Scott',
+    nil,
+  },
+  [370] = {
+    'Niño',
+    nil,
+  },
+  [371] = {
+    'Niña',
+    nil,
+  },
+  [372] = {
+    'Karm Yerropluma',
+    'Suministros de minería',
+  },
+  [373] = {
+    'Murak Natinvernal',
+    'Instructor de chamanes',
+  },
+  [374] = {
+    'Dento Giropén',
+    nil,
+  },
+  [375] = {
+    'Sacerdotisa Anetta',
+    'Instructora de sacerdotes',
+  },
+  [376] = {
+    'Suma sacerdotisa Laurena',
+    'Instructora de sacerdotes',
+  },
+  [377] = {
+    'Sacerdotisa Josetta',
+    'Instructora de sacerdotes',
+  },
+  [379] = {
+    'Darcy Parker',
+    'Camarera',
+  },
+  [381] = {
+    'Maestro de embarcadero Baren',
+    nil,
+  },
+  [382] = {
+    'Alguacil Marris',
+    nil,
+  },
+  [383] = {
+    nil,
+    'Pescadero',
+  },
+  [384] = {
+    nil,
+    'Criadora de caballos',
+  },
+  [385] = {
+    'Caballo',
+    nil,
+  },
+  [386] = {
+    '[UNUSED] Ulrico el nefasto',
+    'Mercader de lobos',
+  },
+  [387] = {
+    nil,
+    'Maestro paladín',
+  },
+  [388] = {
+    nil,
+    'Maestro paladín',
+  },
+  [389] = {
+    nil,
+    'Maestro paladín',
+  },
+  [390] = {
+    'Séquito porcino',
+    nil,
+  },
+  [391] = {
+    'Viejo Ojosombrío',
+    nil,
+  },
+  [392] = {
+    'Capitán Grisillo',
+    nil,
+  },
+  [393] = {
+    'Lobo domado',
+    nil,
+  },
+  [397] = {
+    'Gran mago Doane',
+    nil,
+  },
+  [399] = {
+    'Niño - placeholder 05',
+    nil,
+  },
+  [400] = {
+    'Niño - placeholder 06',
+    nil,
+  },
+  [401] = {
+    'Niño - placeholder 07',
+    nil,
+  },
+  [402] = {
+    'Niño - placeholder 08',
+    nil,
+  },
+  [403] = {
+    'Niño - placeholder 09',
+    nil,
+  },
+  [404] = {
+    'Niña - placeholder 01',
+    nil,
+  },
+  [405] = {
+    'Niña - placeholder 02',
+    nil,
+  },
+  [406] = {
+    'Niña - placeholder 03',
+    nil,
+  },
+  [407] = {
+    'Niña - placeholder 04',
+    nil,
+  },
+  [408] = {
+    'Niña - placeholder 05',
+    nil,
+  },
+  [409] = {
+    'Niña - placeholder 06',
+    nil,
+  },
+  [410] = {
+    'Niña - placeholder 07',
+    nil,
+  },
+  [411] = {
+    'Niña - placeholder 08',
+    nil,
+  },
+  [412] = {
+    'Puntos',
+    'Regalo del embalsamador',
+  },
+  [415] = {
+    'Verner Osbien',
+    nil,
+  },
+  [416] = {
+    'Diablillo',
+    nil,
+  },
+  [417] = {
+    'Manáfago',
+    nil,
+  },
+  [418] = {
+    'Abisario inferior',
+    nil,
+  },
+  [422] = {
+    'Comecarnes múrloc',
+    nil,
+  },
+  [423] = {
+    'Bastardo de Crestagrana',
+    nil,
+  },
+  [424] = {
+    'Furtivo de Crestagrana',
+    nil,
+  },
+  [426] = {
+    'Tosco de Crestagrana',
+    nil,
+  },
+  [428] = {
+    'Cóndor temible',
+    nil,
+  },
+  [429] = {
+    'Tejeoscuro Pielsombra',
+    nil,
+  },
+  [430] = {
+    'Místico de Crestagrana',
+    nil,
+  },
+  [431] = {
+    'Destripador Pielsombra',
+    nil,
+  },
+  [432] = {
+    'Tosco Pielsombra',
+    nil,
+  },
+  [433] = {
+    'Gnoll Pielsombra',
+    nil,
+  },
+  [434] = {
+    'Gnoll Pielsombra rabioso',
+    nil,
+  },
+  [435] = {
+    'Campeón Roca Negra',
+    nil,
+  },
+  [436] = {
+    'Taumaturgo umbrío Roca Negra',
+    nil,
+  },
+  [437] = {
+    'Renegado Roca Negra',
+    nil,
+  },
+  [440] = {
+    'Bruto Roca Negra',
+    nil,
+  },
+  [441] = {
+    'Cría de dragón Negro',
+    nil,
+  },
+  [444] = {
+    'Gocho',
+    nil,
+  },
+  [445] = {
+    'Alfa de Crestagrana',
+    nil,
+  },
+  [446] = {
+    'Partecaras de Crestagrana',
+    nil,
+  },
+  [449] = {
+    'Nudillos Defias',
+    nil,
+  },
+  [450] = {
+    'Mago renegado Defias',
+    nil,
+  },
+  [452] = {
+    'Bandido Zarparrío',
+    nil,
+  },
+  [453] = {
+    'Místico Zarparrío',
+    nil,
+  },
+  [454] = {
+    'Dentosangre joven',
+    nil,
+  },
+  [456] = {
+    'Oráculo menor múrloc',
+    nil,
+  },
+  [458] = {
+    'Cazador múrloc',
+    nil,
+  },
+  [459] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [460] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [461] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [464] = {
+    'Capitán de la Avanzada Parker',
+    nil,
+  },
+  [465] = {
+    'Posadero Dobbins',
+    'Camarero',
+  },
+  [466] = {
+    nil,
+    'Alto comandante de la defensa de Ventormenta',
+  },
+  [467] = {
+    'El Traidor de los Defias',
+    nil,
+  },
+  [468] = {
+    'Pregonero del pueblo',
+    nil,
+  },
+  [469] = {
+    'Teniente Doren',
+    nil,
+  },
+  [470] = {
+    '[UNUSED] Escriba Colburg',
+    nil,
+  },
+  [471] = {
+    'Madre Colmillo',
+    nil,
+  },
+  [473] = {
+    'Morgan el Coleccionista',
+    nil,
+  },
+  [474] = {
+    'Zahorí bribón',
+    nil,
+  },
+  [475] = {
+    'Tunelador kóbold',
+    nil,
+  },
+  [476] = {
+    'Geomántico kóbold',
+    nil,
+  },
+  [478] = {
+    'Avanzado Zarparrío',
+    nil,
+  },
+  [480] = {
+    'Gólem de la cosecha oxidado',
+    nil,
+  },
+  [481] = {
+    'Asaltante de caminos Defias',
+    nil,
+  },
+  [482] = {
+    nil,
+    'Maestro quesero',
+  },
+  [483] = {
+    nil,
+    'Maestra quesera',
+  },
+  [485] = {
+    'Avanzado Roca Negra',
+    nil,
+  },
+  [487] = {
+    nil,
+    'La Brigada de los Páramos de Poniente',
+  },
+  [488] = {
+    'Protector Tejedor',
+    'La Brigada de los Páramos de Poniente',
+  },
+  [489] = {
+    'Protector Deber',
+    'La Brigada de los Páramos de Poniente',
+  },
+  [490] = {
+    nil,
+    'La Brigada de los Páramos de Poniente',
+  },
+  [491] = {
+    'Intendente Lewis',
+    'Intendente',
+  },
+  [494] = {
+    'Vigía Bukouris',
+    'La Guardia Nocturna',
+  },
+  [495] = {
+    'Vigía Keefer',
+    'La Guardia Nocturna',
+  },
+  [496] = {
+    '[UNUSED] Vigía Kleeman',
+    nil,
+  },
+  [497] = {
+    '[UNUSED] Vigía Benjamín',
+    nil,
+  },
+  [498] = {
+    '[UNUSED] Vigía Larsen',
+    nil,
+  },
+  [499] = {
+    'Vigía Paige',
+    'La Guardia Nocturna',
+  },
+  [500] = {
+    'Explorador Zarparrío',
+    nil,
+  },
+  [501] = {
+    'Herborista Zarparrío',
+    nil,
+  },
+  [504] = {
+    'Trampero Defias',
+    nil,
+  },
+  [505] = {
+    'Tarántula superior',
+    nil,
+  },
+  [506] = {
+    'Sargento Garravil',
+    nil,
+  },
+  [509] = {
+    '[UNUSED] Colmillolargo',
+    nil,
+  },
+  [510] = {
+    'Elemental de agua',
+    nil,
+  },
+  [511] = {
+    'Necrófago demente',
+    nil,
+  },
+  [513] = {
+    'Enredador múrloc',
+    nil,
+  },
+  [514] = {
+    'Herrero Argus',
+    'Instructora de herrería',
+  },
+  [515] = {
+    'Asaltante múrloc',
+    nil,
+  },
+  [516] = {
+    '[UNUSED] Cazadir Zarparrío',
+    nil,
+  },
+  [517] = {
+    'Oráculo múrloc',
+    nil,
+  },
+  [518] = {
+    'Ululante',
+    nil,
+  },
+  [523] = {
+    nil,
+    'Maestro de grifos',
+  },
+  [524] = {
+    'Jabalí Pielroca',
+    nil,
+  },
+  [525] = {
+    'Lobo sarnoso',
+    nil,
+  },
+  [531] = {
+    'Maligno esquelético',
+    nil,
+  },
+  [533] = {
+    'Tejesombras Penumbría',
+    nil,
+  },
+  [534] = {
+    nil,
+    'La madre del cubil',
+  },
+  [539] = {
+    'Telarácnida venenosa pigmea',
+    nil,
+  },
+  [541] = {
+    'Grifo de montar',
+    nil,
+  },
+  [542] = {
+    'Califex del Bosque profundo',
+    'Instructor de druidas',
+  },
+  [543] = {
+    'Nalesette Asilvestra',
+    'Maestra de establos',
+  },
+  [544] = {
+    'Reptanoches múrloc',
+    nil,
+  },
+  [545] = {
+    'Clamamareas múrloc',
+    nil,
+  },
+  [547] = {
+    'Gran dentosangre',
+    nil,
+  },
+  [548] = {
+    'Clamamareas menor múrloc',
+    nil,
+  },
+  [550] = {
+    'Mensajero Defias',
+    nil,
+  },
+  [564] = {
+    'Esclavo kóbold',
+    nil,
+  },
+  [565] = {
+    'Lobo temible rabioso',
+    nil,
+  },
+  [567] = {
+    'Uñasnegras',
+    nil,
+  },
+  [568] = {
+    'Guerrero Pielsombra',
+    nil,
+  },
+  [569] = {
+    'Ermitaña verde',
+    nil,
+  },
+  [570] = {
+    'Comesesos',
+    nil,
+  },
+  [573] = {
+    'Siegaenemigos 4000',
+    nil,
+  },
+  [575] = {
+    'Elemental de fuego',
+    nil,
+  },
+  [576] = {
+    'Vigía Ladimor',
+    'La Guardia Nocturna',
+  },
+  [578] = {
+    'Explorador múrloc',
+    nil,
+  },
+  [579] = {
+    'Asesino Pielsombra',
+    nil,
+  },
+  [580] = {
+    'Bracero de Crestagrana',
+    nil,
+  },
+  [582] = {
+    'Vieja Blanchy',
+    nil,
+  },
+  [583] = {
+    'Emboscador',
+    nil,
+  },
+  [586] = {
+    '[UNUSED] Vigía Kern',
+    nil,
+  },
+  [587] = {
+    'Guerrero Sangrapellejo',
+    nil,
+  },
+  [588] = {
+    'Explorador Sangrapellejo',
+    nil,
+  },
+  [589] = {
+    'Saqueador Defias',
+    nil,
+  },
+  [590] = {
+    'Despojador Defias',
+    nil,
+  },
+  [592] = {
+    '[UNUSED] Pirómano Defias',
+    nil,
+  },
+  [594] = {
+    'Secuaz Defias',
+    nil,
+  },
+  [595] = {
+    'Cazador Sangrapellejo',
+    nil,
+  },
+  [596] = {
+    'Noble con lavado de cerebro',
+    nil,
+  },
+  [597] = {
+    'Rabioso Sangrapellejo',
+    nil,
+  },
+  [598] = {
+    'Minero Defias',
+    nil,
+  },
+  [601] = {
+    'Capo el Miserable [UNUSED]',
+    nil,
+  },
+  [603] = {
+    'Dentosinestro',
+    nil,
+  },
+  [604] = {
+    'Propagador de peste',
+    nil,
+  },
+  [605] = {
+    '[UNUSED] Sr. Whipple',
+    nil,
+  },
+  [606] = {
+    '[UNUSED] Sra. Whipple',
+    nil,
+  },
+  [609] = {
+    '[UNUSED] Abuelo Whipple',
+    nil,
+  },
+  [610] = {
+    '[UNUSED] Gina Whipple rabiosa',
+    nil,
+  },
+  [611] = {
+    '[UNUSED] Sr. Whipple rabioso',
+    nil,
+  },
+  [612] = {
+    '[UNUSED] Sra.Whipple rabiosa',
+    nil,
+  },
+  [613] = {
+    '[UNUSED] Johnny Whipple rabioso',
+    nil,
+  },
+  [614] = {
+    '[UNUSED] Abuelo Whipple rabioso',
+    nil,
+  },
+  [615] = {
+    'Rastreador Roca Negra',
+    nil,
+  },
+  [616] = {
+    'Castañeta',
+    nil,
+  },
+  [619] = {
+    'Conjurador Defias',
+    nil,
+  },
+  [620] = {
+    'Pollo',
+    nil,
+  },
+  [621] = {
+    'Pollo',
+    nil,
+  },
+  [622] = {
+    'Ingeniero goblin',
+    nil,
+  },
+  [623] = {
+    'Minero esquelético',
+    nil,
+  },
+  [624] = {
+    'Excavador no-muerto',
+    nil,
+  },
+  [625] = {
+    'Dinamitador no-muerto',
+    nil,
+  },
+  [626] = {
+    'Supervisor Cardortiga',
+    nil,
+  },
+  [628] = {
+    'Devastador negro',
+    nil,
+  },
+  [631] = {
+    'Tío de prueba de pnagle',
+    nil,
+  },
+  [634] = {
+    'Sobrestante Defias',
+    nil,
+  },
+  [636] = {
+    'Guardanegro Defias',
+    nil,
+  },
+  [638] = {
+    'Mercenario goblin',
+    nil,
+  },
+  [639] = {
+    nil,
+    'Principal de los Defias',
+  },
+  [641] = {
+    'Tallador de madera goblin',
+    nil,
+  },
+  [642] = {
+    'Trituradora de Sneed',
+    'Maestro leñador',
+  },
+  [643] = {
+    nil,
+    'Maestro leñador',
+  },
+  [644] = {
+    nil,
+    'El Supervisor',
+  },
+  [645] = {
+    'Cocinitas',
+    'El cocinero del barco',
+  },
+  [646] = {
+    'Don Mamporro',
+    'El contramaestre del barco',
+  },
+  [647] = {
+    'Capitán Verdetez',
+    nil,
+  },
+  [648] = {
+    'Trabajador del puente Trent',
+    nil,
+  },
+  [649] = {
+    'Trabajador del puente Dmitri',
+    nil,
+  },
+  [650] = {
+    'Trabajador del puente Jess',
+    nil,
+  },
+  [651] = {
+    'Trabajador del puente Daniel',
+    nil,
+  },
+  [652] = {
+    'Trabajador del puente Matthew',
+    nil,
+  },
+  [653] = {
+    'Trabajador del puente Alex',
+    nil,
+  },
+  [656] = {
+    'Wilder Cardortiga',
+    nil,
+  },
+  [657] = {
+    'Pirata Defias',
+    nil,
+  },
+  [658] = {
+    'Sten Brazorrecio',
+    nil,
+  },
+  [659] = {
+    nil,
+    'El Pollo negro de la muerte',
+  },
+  [660] = {
+    'Médico brujo Sangrapellejo',
+    nil,
+  },
+  [667] = {
+    'Guerrero Machacacráneos',
+    nil,
+  },
+  [669] = {
+    'Cazador Machacacráneos',
+    nil,
+  },
+  [670] = {
+    'Médico brujo Machacacráneos',
+    nil,
+  },
+  [671] = {
+    'Rebanacabezas Sangrapellejo',
+    nil,
+  },
+  [672] = {
+    'Cazaespíritus Machacacráneos',
+    nil,
+  },
+  [674] = {
+    'Cantero de Ventura y Cía.',
+    nil,
+  },
+  [675] = {
+    'Supervisor de Ventura y Cía.',
+    nil,
+  },
+  [676] = {
+    'Perito de Ventura y Cía.',
+    nil,
+  },
+  [677] = {
+    'Manitas de Ventura y Cía.',
+    nil,
+  },
+  [678] = {
+    'Aplastador Mosh\'Ogg',
+    nil,
+  },
+  [679] = {
+    'Chamán Mosh\'Ogg',
+    nil,
+  },
+  [680] = {
+    'Señor Mosh\'Ogg',
+    nil,
+  },
+  [681] = {
+    'Tigre joven de Tuercespina',
+    nil,
+  },
+  [682] = {
+    'Tigre de Tuercespina',
+    nil,
+  },
+  [683] = {
+    'Pantera joven',
+    nil,
+  },
+  [684] = {
+    'Pantera Faucesombría',
+    nil,
+  },
+  [685] = {
+    'Raptor de Tuercespina',
+    nil,
+  },
+  [686] = {
+    'Raptor colazote',
+    nil,
+  },
+  [687] = {
+    'Acechador de la selva',
+    nil,
+  },
+  [688] = {
+    'Basilisco Morropiedra',
+    nil,
+  },
+  [689] = {
+    'Basilisco Espina de Cristal',
+    nil,
+  },
+  [690] = {
+    'Basilisco Ojogélido',
+    nil,
+  },
+  [691] = {
+    'Elemental de agua inferior',
+    nil,
+  },
+  [693] = {
+    'Palabras escritas',
+    'Instructor',
+  },
+  [694] = {
+    'Lanzahachas Sangrapellejo',
+    nil,
+  },
+  [696] = {
+    'Lanzahachas Machacacráneos',
+    nil,
+  },
+  [697] = {
+    'Chamán Sangrapellejo',
+    nil,
+  },
+  [698] = {
+    'Tigre Sangrapellejo',
+    nil,
+  },
+  [699] = {
+    'Maestro de bestias Sangrapellejo',
+    nil,
+  },
+  [700] = {
+    'Pantera Sangrapellejo',
+    nil,
+  },
+  [701] = {
+    'Místico Sangrapellejo',
+    nil,
+  },
+  [702] = {
+    'Carroñero Sangrapellejo',
+    nil,
+  },
+  [703] = {
+    'General Fangore',
+    nil,
+  },
+  [704] = {
+    'Lobo gris pulgoso',
+    nil,
+  },
+  [705] = {
+    'Lobo joven pulgoso',
+    nil,
+  },
+  [706] = {
+    'Cría de trol Peloescarcha',
+    nil,
+  },
+  [707] = {
+    'Trogg Comepiedras',
+    nil,
+  },
+  [708] = {
+    'Jabalí del risco pequeño',
+    nil,
+  },
+  [709] = {
+    'Belicista Mosh\'Ogg',
+    nil,
+  },
+  [710] = {
+    'Creaconjuros Mosh\'Ogg',
+    nil,
+  },
+  [711] = {
+    'Ardo Patasoez',
+    nil,
+  },
+  [712] = {
+    'Descarnador de Crestagrana',
+    nil,
+  },
+  [713] = {
+    'Balir Martilloescarcha',
+    nil,
+  },
+  [714] = {
+    'Talin Ojo Ávido',
+    nil,
+  },
+  [716] = {
+    'Barnil Jarropetra',
+    nil,
+  },
+  [721] = {
+    'Conejo',
+    nil,
+  },
+  [723] = {
+    'Carnicero Mosh\'Ogg',
+    nil,
+  },
+  [724] = {
+    'Trogg Comepiedras fornido',
+    nil,
+  },
+  [725] = {
+    '[UNUSED] Déspota esquelético',
+    nil,
+  },
+  [727] = {
+    'Montaraz de Forjaz',
+    nil,
+  },
+  [731] = {
+    'Rey Bangalash',
+    nil,
+  },
+  [732] = {
+    'Rondador múrloc',
+    nil,
+  },
+  [733] = {
+    'Sargento Yohwa',
+    nil,
+  },
+  [734] = {
+    'Cabo Bluth',
+    'Vendedor de campamento',
+  },
+  [735] = {
+    'Correcorrientes múrloc',
+    nil,
+  },
+  [736] = {
+    'Pantera',
+    nil,
+  },
+  [738] = {
+    'Soldado Thorsen',
+    nil,
+  },
+  [739] = {
+    'Hermano Nimetz',
+    nil,
+  },
+  [740] = {
+    'Cría adolescente',
+    nil,
+  },
+  [741] = {
+    'Cría soñadora',
+    nil,
+  },
+  [742] = {
+    'Verminte verde',
+    nil,
+  },
+  [743] = {
+    'Verminte Caminasueños',
+    nil,
+  },
+  [744] = {
+    'Horrocrusto verde',
+    nil,
+  },
+  [745] = {
+    'Capitán Horrocrusto',
+    nil,
+  },
+  [746] = {
+    'Ancestro dragonante',
+    nil,
+  },
+  [747] = {
+    'Múrloc de marisma',
+    nil,
+  },
+  [749] = {
+    'Habitasombras de marisma',
+    nil,
+  },
+  [750] = {
+    'Vomitatintas de marisma',
+    nil,
+  },
+  [751] = {
+    'Comecarnes de marisma',
+    nil,
+  },
+  [752] = {
+    'Oráculo de marisma',
+    nil,
+  },
+  [753] = {
+    '[UNUSED] Soldado Rebelde',
+    nil,
+  },
+  [754] = {
+    'Velador rebelde',
+    nil,
+  },
+  [755] = {
+    'Rondafango Perdido',
+    nil,
+  },
+  [756] = {
+    'Pantera Machacacráneos',
+    nil,
+  },
+  [757] = {
+    'Pescador Perdido',
+    nil,
+  },
+  [758] = {
+    'Tigre Machacacráneos',
+    nil,
+  },
+  [759] = {
+    'Cazador Perdido',
+    nil,
+  },
+  [760] = {
+    'Habitabosta Perdido',
+    nil,
+  },
+  [761] = {
+    'Vidente Perdido',
+    nil,
+  },
+  [762] = {
+    'Buscafallas Perdido',
+    nil,
+  },
+  [763] = {
+    'Cabecilla Perdido',
+    nil,
+  },
+  [764] = {
+    'Caminalodo',
+    nil,
+  },
+  [765] = {
+    'Viejo caminalodo',
+    nil,
+  },
+  [766] = {
+    'Horror enredado',
+    nil,
+  },
+  [767] = {
+    'Jaguar del pantano',
+    nil,
+  },
+  [768] = {
+    'Pantera sombría',
+    nil,
+  },
+  [769] = {
+    'Tarántula Golpemortal',
+    nil,
+  },
+  [770] = {
+    'Cabo Kaleb',
+    nil,
+  },
+  [771] = {
+    'Comandante Yelestrón',
+    nil,
+  },
+  [772] = {
+    'Tigresa de Tuercespina',
+    nil,
+  },
+  [775] = {
+    'Agente de Kurzen',
+    nil,
+  },
+  [777] = {
+    nil,
+    'Vendedora',
+  },
+  [780] = {
+    'Místico Machacacráneos',
+    nil,
+  },
+  [781] = {
+    'Rebanacabezas Machacacráneos',
+    nil,
+  },
+  [782] = {
+    'Explorador Machacacráneos',
+    nil,
+  },
+  [783] = {
+    'Rabioso Machacacráneos',
+    nil,
+  },
+  [784] = {
+    'Maestro de bestias Machacacráneos',
+    nil,
+  },
+  [785] = {
+    'Depositario esquelético',
+    nil,
+  },
+  [786] = {
+    'Grelin Barbablanca',
+    nil,
+  },
+  [787] = {
+    'Sanador esquelético',
+    nil,
+  },
+  [789] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [790] = {
+    nil,
+    'Suministros de minería y herrería',
+  },
+  [791] = {
+    'Lindsay Cierreniza',
+    'Suministros generales',
+  },
+  [793] = {
+    nil,
+    'Artesana de escudos',
+  },
+  [808] = {
+    'Grik\'nir el Frío',
+    nil,
+  },
+  [809] = {
+    nil,
+    'Mercader de armas',
+  },
+  [812] = {
+    nil,
+    'Instructora de herboristería',
+  },
+  [813] = {
+    'Coronel Kurzen',
+    nil,
+  },
+  [814] = {
+    'Sargento Malthus',
+    nil,
+  },
+  [815] = {
+    'Corredor Herod',
+    nil,
+  },
+  [819] = {
+    'Sirviente de Ilgalar',
+    nil,
+  },
+  [820] = {
+    'Exploradora Riell',
+    'La Brigada de los Páramos de Poniente',
+  },
+  [821] = {
+    'Capitán Danuvin',
+    'La Brigada de los Páramos de Poniente',
+  },
+  [822] = {
+    'Oso del bosque joven',
+    nil,
+  },
+  [823] = {
+    'Sargento Willem',
+    nil,
+  },
+  [824] = {
+    'Cavador Defias',
+    nil,
+  },
+  [826] = {
+    'Vigía Jan',
+    'La Guardia Nocturna',
+  },
+  [827] = {
+    'Vigía Mocarski',
+    'La Guardia Nocturna',
+  },
+  [828] = {
+    'Vigía Petras',
+    'La Guardia Nocturna',
+  },
+  [829] = {
+    'Adlin Rumborgullo',
+    'Suministros generales',
+  },
+  [830] = {
+    'Reptador de arena',
+    nil,
+  },
+  [831] = {
+    'Reptador de mar',
+    nil,
+  },
+  [832] = {
+    'Ciclón desatado',
+    nil,
+  },
+  [833] = {
+    'Coyote líder',
+    nil,
+  },
+  [836] = {
+    'Durnan Cortapieles',
+    'Mercader de armaduras de tela y cuero',
+  },
+  [837] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [840] = {
+    'Vigía Backus',
+    'La Guardia Nocturna',
+  },
+  [842] = {
+    'Leñador',
+    nil,
+  },
+  [843] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [844] = {
+    nil,
+    'Vendedor ambulante',
+  },
+  [846] = {
+    'Necrófago podrido',
+    nil,
+  },
+  [852] = {
+    'Espíritu feral',
+    nil,
+  },
+  [853] = {
+    'Montaraz Crestanevada',
+    nil,
+  },
+  [854] = {
+    'Acechador joven de la selva',
+    nil,
+  },
+  [855] = {
+    'Raptor joven de Tuercespina',
+    nil,
+  },
+  [856] = {
+    'Raptor colazote joven',
+    nil,
+  },
+  [857] = {
+    'Donal Osbien',
+    'Maestro de batalla de la Cuenca de Arathi',
+  },
+  [858] = {
+    'Hilapenas',
+    nil,
+  },
+  [859] = {
+    'Guardia Berton',
+    nil,
+  },
+  [860] = {
+    'Lobo mascota',
+    nil,
+  },
+  [861] = {
+    'Explorador de Rocal',
+    nil,
+  },
+  [862] = {
+    'Expedicionario de Rocal',
+    nil,
+  },
+  [863] = {
+    'Cazador de Rocal',
+    nil,
+  },
+  [864] = {
+    'Orco de Rocal',
+    nil,
+  },
+  [865] = {
+    'Orientador de Rocal',
+    nil,
+  },
+  [866] = {
+    'Bruto de Rocal',
+    nil,
+  },
+  [867] = {
+    'Cartógrafo de Rocal',
+    nil,
+  },
+  [868] = {
+    'Chamán de Rocal',
+    nil,
+  },
+  [869] = {
+    'Protectora Dorana',
+    'La Brigada de los Páramos de Poniente',
+  },
+  [870] = {
+    'Protectora Deni',
+    'La Brigada de los Páramos de Poniente',
+  },
+  [871] = {
+    'Guerrero Escama de Sal',
+    nil,
+  },
+  [873] = {
+    'Oráculo Escama de Sal',
+    nil,
+  },
+  [874] = {
+    nil,
+    'La Brigada de los Páramos de Poniente',
+  },
+  [875] = {
+    'Señor de las Mareas Escama de Sal',
+    nil,
+  },
+  [876] = {
+    nil,
+    'La Brigada de los Páramos de Poniente',
+  },
+  [877] = {
+    'Batidor Escama de Sal',
+    nil,
+  },
+  [878] = {
+    'Explorador Galiaan',
+    'La Brigada de los Páramos de Poniente',
+  },
+  [879] = {
+    'Cazador Escama de Sal',
+    nil,
+  },
+  [880] = {
+    'Erlan Yermestia',
+    nil,
+  },
+  [882] = {
+    'Taumaturgo osario',
+    nil,
+  },
+  [883] = {
+    'Ciervo',
+    nil,
+  },
+  [885] = {
+    'Vigía Keller',
+    'La Guardia Nocturna',
+  },
+  [886] = {
+    'Vigía Hartin',
+    'La Guardia Nocturna',
+  },
+  [887] = {
+    'Vigía Jordan',
+    'La Guardia Nocturna',
+  },
+  [888] = {
+    'Vigía Dodds',
+    'La Guardia Nocturna',
+  },
+  [889] = {
+    'Ogro Puñastilla',
+    nil,
+  },
+  [890] = {
+    'Cervato',
+    nil,
+  },
+  [891] = {
+    'Tejefuego Puñastilla',
+    nil,
+  },
+  [892] = {
+    'Capataz Puñastilla',
+    nil,
+  },
+  [894] = {
+    'Homer Pedregosa',
+    'Vendedor de frutas',
+  },
+  [895] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [896] = {
+    'Veldan Pieligero',
+    'Mercader de armaduras de cuero',
+  },
+  [897] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [898] = {
+    'Huargen Penumbría',
+    nil,
+  },
+  [900] = {
+    'Alguacil Conacher',
+    nil,
+  },
+  [903] = {
+    'Guardia Howe',
+    nil,
+  },
+  [904] = {
+    nil,
+    'Forjador de armas de fuego',
+  },
+  [905] = {
+    'Furia Dienteafilado',
+    nil,
+  },
+  [906] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [907] = {
+    'Keras Corazón de Lobo',
+    'Maestro de batalla de la Cuenca de Arathi',
+  },
+  [908] = {
+    'Flora Ventargento',
+    'Instructora de herboristería',
+  },
+  [909] = {
+    'Filonocturno Defias',
+    nil,
+  },
+  [910] = {
+    'Encantador Defias',
+    nil,
+  },
+  [911] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [912] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [913] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [914] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [915] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [916] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [917] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [918] = {
+    'Osborne el Nocturno',
+    'Instructor de pícaros',
+  },
+  [919] = {
+    '[UNUSED] [PH] Berail Susurraspíritus',
+    'Instructora en dureza/resistencia *Temp*',
+  },
+  [920] = {
+    'Corrupto Penumbría',
+    nil,
+  },
+  [921] = {
+    'Leñador de Ventura y Cía.',
+    nil,
+  },
+  [922] = {
+    'Reptador de cieno',
+    nil,
+  },
+  [923] = {
+    'Devastador negro joven',
+    nil,
+  },
+  [924] = {
+    '[UNUSED] Arácnido inferior',
+    nil,
+  },
+  [925] = {
+    'Hermano Sammuel',
+    'Instructor de paladines',
+  },
+  [926] = {
+    nil,
+    'Instructor de paladines',
+  },
+  [927] = {
+    'Hermano Wilhelm',
+    'Instructor de paladines',
+  },
+  [928] = {
+    'Lord Grisillo Quiebrasombras',
+    'Instructor de paladines',
+  },
+  [929] = {
+    'Señor del Terror Malganis',
+    'Gran maligno',
+  },
+  [930] = {
+    'Prole de viuda negra',
+    nil,
+  },
+  [931] = {
+    'Ariena Tempespluma',
+    'Maestro de grifos',
+  },
+  [932] = {
+    'Guardia Cierreniza',
+    nil,
+  },
+  [933] = {
+    'Guardia Hiett',
+    nil,
+  },
+  [934] = {
+    'Guardia Clarke',
+    nil,
+  },
+  [935] = {
+    'Guardia Pearce',
+    nil,
+  },
+  [936] = {
+    'Guardia Adams',
+    nil,
+  },
+  [937] = {
+    'Jíbaro de Kurzen',
+    nil,
+  },
+  [938] = {
+    'Comando Kurzen',
+    nil,
+  },
+  [939] = {
+    'Élite de Kurzen',
+    nil,
+  },
+  [940] = {
+    'Auxiliador de Kurzen',
+    nil,
+  },
+  [941] = {
+    'Reductor de cabezas de Kurzen',
+    nil,
+  },
+  [942] = {
+    'Médico brujo de Kurzen',
+    nil,
+  },
+  [943] = {
+    'Retador de Kurzen',
+    nil,
+  },
+  [944] = {
+    nil,
+    'Instructor de magos',
+  },
+  [945] = {
+    'Rybrad Riberahielo',
+    'Forjadora de armas',
+  },
+  [946] = {
+    'Novicio Peloescarcha',
+    'Sirviente de Grik\'nir',
+  },
+  [947] = {
+    'Rohh el Silencioso',
+    nil,
+  },
+  [948] = {
+    'Podrido',
+    nil,
+  },
+  [949] = {
+    'Ermitaña carroñera',
+    nil,
+  },
+  [950] = {
+    'Voz del pantano',
+    nil,
+  },
+  [951] = {
+    'Hermano Paxton',
+    'Bibliotecario',
+  },
+  [952] = {
+    'Hermano Neals',
+    nil,
+  },
+  [953] = {
+    'Engendro prueba uno',
+    nil,
+  },
+  [954] = {
+    nil,
+    'Mercader de armaduras de cuero',
+  },
+  [955] = {
+    'Sargento De Vries',
+    'Oficial de moral',
+  },
+  [956] = {
+    'Dorin Filosón',
+    'Armero',
+  },
+  [957] = {
+    nil,
+    'Aprendiz herrero',
+  },
+  [958] = {
+    'Alba Estrellaclara',
+    'Artículos Arcanos',
+  },
+  [959] = {
+    nil,
+    'Sastre',
+  },
+  [960] = {
+    'Gunder Arbuspina',
+    'Mercader',
+  },
+  [963] = {
+    'Ayudante de alguacil Rainer',
+    nil,
+  },
+  [976] = {
+    'Tigre de guerra de Kurzen',
+    nil,
+  },
+  [977] = {
+    'Pantera de guerra de Kurzen',
+    nil,
+  },
+  [978] = {
+    'Subjefe de Kurzen',
+    nil,
+  },
+  [979] = {
+    'Cazador de las Sombras de Kurzen',
+    nil,
+  },
+  [980] = {
+    nil,
+    'Mercader de malla y placas',
+  },
+  [981] = {
+    nil,
+    'Mercader de armas',
+  },
+  [982] = {
+    nil,
+    'Vendedor de alimentos y bebidas',
+  },
+  [983] = {
+    nil,
+    'Suministros de alquimia y componentes',
+  },
+  [984] = {
+    nil,
+    'Mercader de armaduras de tela y cuero',
+  },
+  [985] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [986] = {
+    nil,
+    'Instructor de chamanes',
+  },
+  [987] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [988] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [989] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [994] = {
+    'Nahr\'ek el Aullador',
+    nil,
+  },
+  [995] = {
+    'Manada de Nahr\'ek',
+    nil,
+  },
+  [996] = {
+    'Instructor de sastrería',
+    'Instructor de sastrería',
+  },
+  [999] = {
+    'Vigía Royce',
+    'La Guardia Nocturna',
+  },
+  [1000] = {
+    'Unkillable Test Dummy',
+    'La Guardia Nocturna',
+  },
+  [1001] = {
+    'Vigía Hutchins',
+    'La Guardia Nocturna',
+  },
+  [1007] = {
+    'Gnoll Pellejomusgo',
+    nil,
+  },
+  [1008] = {
+    'Bastardo Pellejomusgo',
+    nil,
+  },
+  [1009] = {
+    'Tejebruma Pellejomusgo',
+    nil,
+  },
+  [1010] = {
+    'Correpantanos Pellejomusgo',
+    nil,
+  },
+  [1011] = {
+    'Trampero Pellejomusgo',
+    nil,
+  },
+  [1012] = {
+    'Tosco Pellejomusgo',
+    nil,
+  },
+  [1013] = {
+    'Místico Pellejomusgo',
+    nil,
+  },
+  [1014] = {
+    'Alfa Pellejomusgo',
+    nil,
+  },
+  [1015] = {
+    'Raptor de las Tierras Altas',
+    nil,
+  },
+  [1016] = {
+    'Colazote de las Tierras Altas',
+    nil,
+  },
+  [1017] = {
+    'Segador de la Tierras Altas',
+    nil,
+  },
+  [1018] = {
+    'Tajobuche de las Tierras Altas',
+    nil,
+  },
+  [1019] = {
+    'Tajobuche anciano',
+    nil,
+  },
+  [1020] = {
+    'Raptor jaspeado',
+    nil,
+  },
+  [1021] = {
+    'Estridador jaspeado',
+    nil,
+  },
+  [1022] = {
+    'Segador jaspeado',
+    nil,
+  },
+  [1023] = {
+    'Tajobuche jaspeado',
+    nil,
+  },
+  [1024] = {
+    'Múrloc Branquiazul',
+    nil,
+  },
+  [1025] = {
+    'Saltacharco Branquiazul',
+    nil,
+  },
+  [1026] = {
+    'Batidor Branquiazul',
+    nil,
+  },
+  [1027] = {
+    'Guerrero Branquiazul',
+    nil,
+  },
+  [1028] = {
+    'Habitabosta Branquiazul',
+    nil,
+  },
+  [1029] = {
+    'Oráculo Branquiazul',
+    nil,
+  },
+  [1030] = {
+    'Babosa negra',
+    nil,
+  },
+  [1031] = {
+    'Moco carmesí',
+    nil,
+  },
+  [1032] = {
+    'Moco negro',
+    nil,
+  },
+  [1033] = {
+    'Moco monstruoso',
+    nil,
+  },
+  [1034] = {
+    'Asaltante Faucedraco',
+    nil,
+  },
+  [1035] = {
+    'Correpantanos Faucedraco',
+    nil,
+  },
+  [1036] = {
+    'Centurión Faucedraco',
+    nil,
+  },
+  [1037] = {
+    'Maestro de batalla Faucedraco',
+    nil,
+  },
+  [1038] = {
+    'Depositario de sombras Faucedraco',
+    nil,
+  },
+  [1039] = {
+    'Habitante del pantano',
+    nil,
+  },
+  [1040] = {
+    'Trepador del pantano',
+    nil,
+  },
+  [1041] = {
+    'Señor del pantano',
+    nil,
+  },
+  [1042] = {
+    'Cría roja',
+    nil,
+  },
+  [1043] = {
+    'Cría perdida',
+    nil,
+  },
+  [1044] = {
+    'Cría escupefuego',
+    nil,
+  },
+  [1045] = {
+    'Dragauro rojo',
+    nil,
+  },
+  [1046] = {
+    'Verminte rojo',
+    nil,
+  },
+  [1047] = {
+    'Horrocrusto rojo',
+    nil,
+  },
+  [1048] = {
+    'Teniente Horrocrusto',
+    nil,
+  },
+  [1049] = {
+    'Verminte Pirotigma',
+    nil,
+  },
+  [1050] = {
+    'Guardia Real Horrocrusto',
+    nil,
+  },
+  [1051] = {
+    'Enano Hierro Negro',
+    nil,
+  },
+  [1052] = {
+    'Saboteador Hierro Negro',
+    nil,
+  },
+  [1053] = {
+    'Tunelador Hierro Negro',
+    nil,
+  },
+  [1054] = {
+    'Demoledor Hierro Negro',
+    nil,
+  },
+  [1055] = {
+    'Cazasueños',
+    nil,
+  },
+  [1056] = {
+    'Centinela esmeralda',
+    nil,
+  },
+  [1057] = {
+    'Guardahuesos Faucedraco',
+    nil,
+  },
+  [1059] = {
+    'Ana\'thek el Cruel',
+    'Jefe Machacacráneos',
+  },
+  [1060] = {
+    'Mogh el Eterno',
+    'Médico brujo del clan Machacacráneos',
+  },
+  [1061] = {
+    nil,
+    'Jefe Sangrapellejo',
+  },
+  [1062] = {
+    'Nezzliok el Temible',
+    'Médico brujo del clan Sangrapellejo',
+  },
+  [1064] = {
+    'Bruto de Grom\'gol',
+    nil,
+  },
+  [1065] = {
+    'Chamán Zarparrío',
+    nil,
+  },
+  [1066] = {
+    'Rasdente jaspeado',
+    nil,
+  },
+  [1067] = {
+    'Carroñero Zarparrío',
+    nil,
+  },
+  [1069] = {
+    'Cría carmesí',
+    nil,
+  },
+  [1070] = {
+    'Ayudante de alguacil Feldon',
+    nil,
+  },
+  [1071] = {
+    'Largatrenza el Nefasto',
+    nil,
+  },
+  [1072] = {
+    'Roggo Jartumul',
+    nil,
+  },
+  [1073] = {
+    'Ashlan Risapétrea',
+    'Forjador de armas de fuego',
+  },
+  [1076] = {
+    'Merrin Tejepiedra',
+    'Liga de Expedicionarios',
+  },
+  [1077] = {
+    nil,
+    'Liga de Expedicionarios',
+  },
+  [1078] = {
+    'Ormer Trenzaferro',
+    nil,
+  },
+  [1081] = {
+    'Señor del Lodo',
+    nil,
+  },
+  [1082] = {
+    'Crocolisco Denteserra',
+    nil,
+  },
+  [1083] = {
+    'Rompeolas múrloc',
+    nil,
+  },
+  [1084] = {
+    'Crocolisco Denteserra joven',
+    nil,
+  },
+  [1085] = {
+    'Tigre de Tuercespina mayor',
+    nil,
+  },
+  [1087] = {
+    'Sacudidor Denteserra',
+    nil,
+  },
+  [1088] = {
+    'Reptador monstruoso',
+    nil,
+  },
+  [1089] = {
+    'Montaraz Pedernal',
+    nil,
+  },
+  [1090] = {
+    'Montaraz Muroplof',
+    nil,
+  },
+  [1091] = {
+    'Montaraz Gravagau',
+    nil,
+  },
+  [1092] = {
+    'Capitán Rugelfuss',
+    nil,
+  },
+  [1093] = {
+    'Ingeniero jefe Hinderweir VII',
+    nil,
+  },
+  [1094] = {
+    'Minero de Ventura y Cía.',
+    nil,
+  },
+  [1095] = {
+    'Jefe de sector de Ventura y Cía.',
+    nil,
+  },
+  [1096] = {
+    'Geólogo de Ventura y Cía.',
+    nil,
+  },
+  [1097] = {
+    'Mecánico de Ventura y Cía.',
+    nil,
+  },
+  [1098] = {
+    'Vigía Merant',
+    'La Guardia Nocturna',
+  },
+  [1099] = {
+    'Vigía Gelwin',
+    'La Guardia Nocturna',
+  },
+  [1100] = {
+    'Vigía Selkin',
+    'La Guardia Nocturna',
+  },
+  [1101] = {
+    'Vigía Thayer',
+    'La Guardia Nocturna',
+  },
+  [1103] = {
+    nil,
+    'Instructora de sastrería',
+  },
+  [1104] = {
+    nil,
+    'Armero',
+  },
+  [1105] = {
+    'Jern Cornamenta',
+    'Liga de Expedicionarios',
+  },
+  [1106] = {
+    'Cocinero Perdido',
+    nil,
+  },
+  [1108] = {
+    'Gorila Velo de Bruma',
+    nil,
+  },
+  [1109] = {
+    'Desgarrador de carne',
+    nil,
+  },
+  [1110] = {
+    'Asaltante esquelético',
+    nil,
+  },
+  [1111] = {
+    'Acechador sanguijuela',
+    nil,
+  },
+  [1112] = {
+    'Viuda sanguijuela',
+    nil,
+  },
+  [1114] = {
+    'Tronador de la selva',
+    nil,
+  },
+  [1115] = {
+    'Aplastacráneos Comepiedras',
+    nil,
+  },
+  [1116] = {
+    'Emboscador Comepiedras',
+    nil,
+  },
+  [1117] = {
+    'Cascahuesos Comepiedras',
+    nil,
+  },
+  [1118] = {
+    'Partedorsales Comepiedras',
+    nil,
+  },
+  [1119] = {
+    'Martidorsal',
+    nil,
+  },
+  [1120] = {
+    'Trol Peloescarcha',
+    nil,
+  },
+  [1121] = {
+    'Zancanieve Peloescarcha',
+    nil,
+  },
+  [1122] = {
+    'Desollador Peloescarcha',
+    nil,
+  },
+  [1123] = {
+    'Rebanacabezas Peloescarcha',
+    nil,
+  },
+  [1124] = {
+    'Taumaturgo umbrío Peloescarcha',
+    nil,
+  },
+  [1125] = {
+    'Jabalí del risco',
+    nil,
+  },
+  [1126] = {
+    'Jabalí del risco grande',
+    nil,
+  },
+  [1127] = {
+    'Jabalí del risco anciano',
+    nil,
+  },
+  [1128] = {
+    'Oso negro joven',
+    nil,
+  },
+  [1129] = {
+    'Oso negro',
+    nil,
+  },
+  [1131] = {
+    'Lobo invernal',
+    nil,
+  },
+  [1132] = {
+    'Gris',
+    nil,
+  },
+  [1133] = {
+    'Lobo invernal famélico',
+    nil,
+  },
+  [1134] = {
+    'Wendigo joven',
+    nil,
+  },
+  [1137] = {
+    'Edan el Aullador',
+    nil,
+  },
+  [1138] = {
+    'Lobo rastreador de las nieves',
+    nil,
+  },
+  [1139] = {
+    'Magistrado Narizroma',
+    nil,
+  },
+  [1140] = {
+    'Matriarca Tajobuche',
+    nil,
+  },
+  [1141] = {
+    nil,
+    'Chef principal',
+  },
+  [1142] = {
+    'Tosco Mosh\'Ogg',
+    nil,
+  },
+  [1144] = {
+    'Médico brujo Mosh\'Ogg',
+    nil,
+  },
+  [1146] = {
+    nil,
+    'Forjador de armas superior',
+  },
+  [1147] = {
+    nil,
+    'Mercader de armaduras de tela y cuero',
+  },
+  [1148] = {
+    nil,
+    'Objetos comerciables',
+  },
+  [1149] = {
+    nil,
+    'Suministros generales',
+  },
+  [1150] = {
+    'Crocolisco fluvial',
+    nil,
+  },
+  [1151] = {
+    'Crocolisco marino',
+    nil,
+  },
+  [1152] = {
+    'Crocolisco Quijaforte',
+    nil,
+  },
+  [1153] = {
+    'Torren Mandicuadrada',
+    'Liga de Expedicionarios',
+  },
+  [1154] = {
+    'Marek Coracero',
+    nil,
+  },
+  [1156] = {
+    'Vyrin Vientoveloz',
+    'Tabernero',
+  },
+  [1157] = {
+    'Marinero maldito',
+    nil,
+  },
+  [1158] = {
+    'Marino maldito',
+    nil,
+  },
+  [1159] = {
+    'Contramaestre Snellig',
+    nil,
+  },
+  [1160] = {
+    'Capitán Halyndor',
+    nil,
+  },
+  [1161] = {
+    'Trogg Rompecantos',
+    nil,
+  },
+  [1162] = {
+    'Explorador Rompecantos',
+    nil,
+  },
+  [1163] = {
+    'Aplastacráneos Rompecantos',
+    nil,
+  },
+  [1164] = {
+    'Cascahuesos Rompecantos',
+    nil,
+  },
+  [1165] = {
+    'Geomántico Rompecantos',
+    nil,
+  },
+  [1166] = {
+    'Vidente Rompecantos',
+    nil,
+  },
+  [1167] = {
+    'Cavador Rompecantos',
+    nil,
+  },
+  [1169] = {
+    'Insurgente Hierro Negro',
+    nil,
+  },
+  [1171] = {
+    'Guerrillero Hierro Negro',
+    nil,
+  },
+  [1172] = {
+    'Alimaña Ratatúnel',
+    nil,
+  },
+  [1173] = {
+    'Explorador Ratatúnel',
+    nil,
+  },
+  [1174] = {
+    'Geomántico Ratatúnel',
+    nil,
+  },
+  [1175] = {
+    'Cavador Ratatúnel',
+    nil,
+  },
+  [1176] = {
+    'Batidor Ratatúnel',
+    nil,
+  },
+  [1177] = {
+    'Perito Ratatúnel',
+    nil,
+  },
+  [1178] = {
+    'Ogro Mo\'grosh',
+    nil,
+  },
+  [1179] = {
+    'Déspota Mo\'grosh',
+    nil,
+  },
+  [1180] = {
+    'Tosco Mo\'grosh',
+    nil,
+  },
+  [1181] = {
+    'Chamán Mo\'grosh',
+    nil,
+  },
+  [1182] = {
+    'Hermano Anton',
+    'Emisario de la Cruzada Escarlata',
+  },
+  [1183] = {
+    'Místico Mo\'grosh',
+    nil,
+  },
+  [1184] = {
+    'Rondador del risco',
+    nil,
+  },
+  [1185] = {
+    'Rondadora de bosque',
+    nil,
+  },
+  [1186] = {
+    'Oso negro',
+    nil,
+  },
+  [1187] = {
+    'Daryl el Jovenzuelo',
+    nil,
+  },
+  [1188] = {
+    'Oso negro grisáceo',
+    nil,
+  },
+  [1189] = {
+    'Patriarca oso negro',
+    nil,
+  },
+  [1190] = {
+    'Jabalí montés',
+    nil,
+  },
+  [1191] = {
+    'Jabalí montés sarnoso',
+    nil,
+  },
+  [1192] = {
+    'Jabalí montés mayor',
+    nil,
+  },
+  [1193] = {
+    'Furia del Loch Modan',
+    nil,
+  },
+  [1194] = {
+    'Águila ratonera montesa',
+    nil,
+  },
+  [1195] = {
+    'Rondadora del bosque',
+    nil,
+  },
+  [1196] = {
+    'Oso zarpahelada',
+    nil,
+  },
+  [1197] = {
+    'Chamán Rompecantos',
+    nil,
+  },
+  [1198] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [1199] = {
+    'Leopardo de las nieves juvenil',
+    nil,
+  },
+  [1200] = {
+    'Morbent Vil',
+    nil,
+  },
+  [1201] = {
+    'Leopardo de las nieves',
+    nil,
+  },
+  [1202] = {
+    'Kóbold Ratatúnel',
+    nil,
+  },
+  [1203] = {
+    'Vigía Sarys',
+    'La Guardia Nocturna',
+  },
+  [1204] = {
+    'Vigía Corwin',
+    'La Guardia Nocturna',
+  },
+  [1206] = {
+    'Rechín',
+    nil,
+  },
+  [1207] = {
+    'Camorrista',
+    nil,
+  },
+  [1211] = {
+    'Gnomo paria',
+    nil,
+  },
+  [1212] = {
+    'Obispo Lontananza',
+    nil,
+  },
+  [1213] = {
+    nil,
+    'Fabricante de armaduras y escudos',
+  },
+  [1214] = {
+    nil,
+    'Sastre',
+  },
+  [1215] = {
+    'Alquimista Mallory',
+    'Instructor de alquimia',
+  },
+  [1216] = {
+    'Reptador de costas',
+    nil,
+  },
+  [1217] = {
+    'Glorin Frenteacerada',
+    nil,
+  },
+  [1218] = {
+    'Herborista Pomarrosa',
+    'Instructora de herboristería',
+  },
+  [1222] = {
+    'Zapador Hierro Negro',
+    nil,
+  },
+  [1224] = {
+    'Joven trillanodonte',
+    nil,
+  },
+  [1225] = {
+    'Viejo Tiznado',
+    nil,
+  },
+  [1226] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [1227] = {
+    'Rygal Rocanel',
+    nil,
+  },
+  [1228] = {
+    'Magis Chispamanto',
+    'Instructor de magos',
+  },
+  [1229] = {
+    'Granis Hachaveloz',
+    'Instructor de guerreros',
+  },
+  [1230] = {
+    '[UNUSED] Lexin Boira',
+    'Instructora de brujos *Temp*',
+  },
+  [1231] = {
+    'Grif Corazón Salvaje',
+    'Instructor de cazadores',
+  },
+  [1232] = {
+    'Azar Martillopujante',
+    'Instructor de paladines',
+  },
+  [1233] = {
+    nil,
+    'Maestro de hipogrifos',
+  },
+  [1234] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [1235] = {
+    '[UNUSED] Maryann Podoluva',
+    'Mercader de alimentos',
+  },
+  [1236] = {
+    'Cavador kóbold',
+    nil,
+  },
+  [1237] = {
+    nil,
+    'Mercader de alimentos y bebidas',
+  },
+  [1238] = {
+    'Gamili Pellejo de Escarcha',
+    'Mercader de armaduras de tela y cuero',
+  },
+  [1239] = {
+    'Contramaestre Fistimos',
+    nil,
+  },
+  [1240] = {
+    'Boran Tintiyerro',
+    'Armero',
+  },
+  [1241] = {
+    'Tognus Fuegosílex',
+    'Instructora de herrería',
+  },
+  [1243] = {
+    'Hegnar Estruendo',
+    'Forjador de armas de fuego',
+  },
+  [1244] = {
+    'Rethiel el Guardaverde',
+    nil,
+  },
+  [1245] = {
+    'Kogan Forjapiedra',
+    nil,
+  },
+  [1246] = {
+    nil,
+    'Aprendiz alquimista',
+  },
+  [1247] = {
+    'Tabernero Belm',
+    'Tabernero',
+  },
+  [1249] = {
+    'Intendente Hudson',
+    'Fabricante de armaduras y escudos',
+  },
+  [1250] = {
+    nil,
+    'Suministros generales y objetos comerciales',
+  },
+  [1251] = {
+    'Pirófilo Puñastilla',
+    nil,
+  },
+  [1252] = {
+    'Senir Barbablanca',
+    nil,
+  },
+  [1253] = {
+    'Padre Gavin',
+    'El Alba Argenta',
+  },
+  [1254] = {
+    'Supervisor Petrocejas',
+    'Liga de Mineros',
+  },
+  [1255] = {
+    nil,
+    'Liga de Expedicionarios',
+  },
+  [1256] = {
+    'Capataz de cantera Thesten',
+    'Liga de Mineros',
+  },
+  [1257] = {
+    nil,
+    'Suministros de alquimia y componentes',
+  },
+  [1258] = {
+    'Mastín devastador negro',
+    nil,
+  },
+  [1259] = {
+    'Engullidor',
+    nil,
+  },
+  [1260] = {
+    'Gran patriarca Arctikus',
+    nil,
+  },
+  [1261] = {
+    'Veron Semperámbar',
+    'Criador de carneros',
+  },
+  [1262] = {
+    'Carnero blanco',
+    nil,
+  },
+  [1263] = {
+    'Yarlyn Semperámbar',
+    nil,
+  },
+  [1265] = {
+    'Rudra Semperámbar',
+    nil,
+  },
+  [1267] = {
+    'Ragnar Cebatruenos',
+    nil,
+  },
+  [1268] = {
+    'Ozzie Voltiflop',
+    nil,
+  },
+  [1269] = {
+    'Razzle Engranágil',
+    nil,
+  },
+  [1270] = {
+    'Cadáver fétido',
+    nil,
+  },
+  [1271] = {
+    'Viejo Barbahielo',
+    nil,
+  },
+  [1273] = {
+    nil,
+    'Forjadora de armas',
+  },
+  [1274] = {
+    'Senador Barin Rocarroja',
+    nil,
+  },
+  [1275] = {
+    nil,
+    'Componentes',
+  },
+  [1276] = {
+    'Montaraz Brokk',
+    nil,
+  },
+  [1277] = {
+    'Montaraz Ganin',
+    nil,
+  },
+  [1278] = {
+    'Montaraz Stenn',
+    nil,
+  },
+  [1279] = {
+    'Montaraz Sílex',
+    nil,
+  },
+  [1280] = {
+    'Montaraz Droken',
+    nil,
+  },
+  [1281] = {
+    'Montaraz Zaren',
+    nil,
+  },
+  [1282] = {
+    'Montaraz Veek',
+    nil,
+  },
+  [1283] = {
+    'Montaraz Kalmir',
+    nil,
+  },
+  [1284] = {
+    'Arzobispo Benedictus',
+    nil,
+  },
+  [1285] = {
+    nil,
+    'Pertrechos',
+  },
+  [1286] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [1287] = {
+    nil,
+    'Mercader de armas',
+  },
+  [1288] = {
+    nil,
+    'Mercader de mazas y bastones',
+  },
+  [1289] = {
+    nil,
+    'Mercader de armas',
+  },
+  [1290] = {
+    nil,
+    'Mercader de armaduras de tela',
+  },
+  [1291] = {
+    nil,
+    'Mercader de armaduras de tela',
+  },
+  [1292] = {
+    nil,
+    'Instructora de desuello',
+  },
+  [1293] = {
+    'Ambo Calderilla',
+    nil,
+  },
+  [1294] = {
+    nil,
+    'Mercader de armaduras de malla',
+  },
+  [1295] = {
+    nil,
+    'Mercader de armaduras de cuero',
+  },
+  [1296] = {
+    nil,
+    'Forjadora de armas',
+  },
+  [1297] = {
+    nil,
+    'Mercader de arcos y armas de fuego',
+  },
+  [1298] = {
+    nil,
+    'Mercader de arcos',
+  },
+  [1299] = {
+    nil,
+    'Sastre',
+  },
+  [1300] = {
+    nil,
+    'Aprendiza sastre',
+  },
+  [1301] = {
+    nil,
+    'Vendedora de vino',
+  },
+  [1302] = {
+    nil,
+    'Florista',
+  },
+  [1303] = {
+    nil,
+    'Suministros de herboristería',
+  },
+  [1304] = {
+    nil,
+    'Vendedor de cohetes pirotécnicos',
+  },
+  [1305] = {
+    nil,
+    'Camarero',
+  },
+  [1306] = {
+    nil,
+    'Componentes',
+  },
+  [1307] = {
+    nil,
+    'Vendedora de abalorios Arcanos',
+  },
+  [1308] = {
+    nil,
+    'Componentes',
+  },
+  [1309] = {
+    nil,
+    'Mercader de túnicas',
+  },
+  [1310] = {
+    nil,
+    'Fabricante de sombreros y cascos',
+  },
+  [1311] = {
+    nil,
+    'Camarero',
+  },
+  [1312] = {
+    nil,
+    'Mercader de varitas',
+  },
+  [1313] = {
+    nil,
+    'Suministros de alquimia',
+  },
+  [1314] = {
+    nil,
+    'Mercader de armaduras ligeras',
+  },
+  [1315] = {
+    nil,
+    'Mercader de bastones',
+  },
+  [1316] = {
+    nil,
+    'Bibliotecario',
+  },
+  [1317] = {
+    nil,
+    'Instructora de encantamiento',
+  },
+  [1318] = {
+    nil,
+    'Suministros de encantamiento',
+  },
+  [1319] = {
+    'Bryan Cruz',
+    'Mercader de escudos',
+  },
+  [1320] = {
+    nil,
+    'Mercader de armaduras de cuero',
+  },
+  [1321] = {
+    nil,
+    'Vendedora de bolsas',
+  },
+  [1322] = {
+    nil,
+    'Mercader de armaduras de malla',
+  },
+  [1323] = {
+    nil,
+    'Mercader de armaduras pesadas',
+  },
+  [1324] = {
+    nil,
+    'Mercader de armas de filo',
+  },
+  [1325] = {
+    'Jasper Vil',
+    'Vendedor sospechoso',
+  },
+  [1326] = {
+    nil,
+    'Suministros de venenos',
+  },
+  [1327] = {
+    nil,
+    'Tabernero',
+  },
+  [1328] = {
+    nil,
+    'Camarera',
+  },
+  [1329] = {
+    'Montaraz Naarh',
+    nil,
+  },
+  [1330] = {
+    'Montaraz Tyraw',
+    nil,
+  },
+  [1331] = {
+    'Montaraz Luxst',
+    nil,
+  },
+  [1332] = {
+    'Montaraz Morran',
+    nil,
+  },
+  [1333] = {
+    nil,
+    'Mercader de armas de dos manos',
+  },
+  [1334] = {
+    'Montaraz Sentencia',
+    nil,
+  },
+  [1335] = {
+    'Montaraz Yuttha',
+    nil,
+  },
+  [1336] = {
+    'Montaraz Adverz',
+    nil,
+  },
+  [1337] = {
+    'Montaraz Gwarth',
+    nil,
+  },
+  [1338] = {
+    'Montaraz Dalk',
+    nil,
+  },
+  [1339] = {
+    nil,
+    'Zapatera',
+  },
+  [1340] = {
+    'Montaraz Kadrell',
+    nil,
+  },
+  [1341] = {
+    nil,
+    'Mercader de armaduras de malla',
+  },
+  [1342] = {
+    'Montaraz Piedragar',
+    nil,
+  },
+  [1343] = {
+    'Montaraz Pico Tormenta',
+    nil,
+  },
+  [1344] = {
+    'Prospector Vetaferro',
+    nil,
+  },
+  [1345] = {
+    'Magmar Ceñimal',
+    nil,
+  },
+  [1346] = {
+    nil,
+    'Instructora de sastrería',
+  },
+  [1347] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [1348] = {
+    nil,
+    'Mercader de bastones y mazas',
+  },
+  [1349] = {
+    nil,
+    'Mercader de armaduras de malla',
+  },
+  [1350] = {
+    nil,
+    'Vendedora de túnicas',
+  },
+  [1351] = {
+    'Hermano Cassius',
+    'Componentes',
+  },
+  [1352] = {
+    'Esponjín',
+    nil,
+  },
+  [1353] = {
+    'Sarldente',
+    nil,
+  },
+  [1354] = {
+    'Aprendiz Soren',
+    nil,
+  },
+  [1355] = {
+    'Cocinero Ghilm',
+    'Instructor de cocina',
+  },
+  [1356] = {
+    'Prospector Pico Tormenta',
+    nil,
+  },
+  [1358] = {
+    'Minero Grothor',
+    nil,
+  },
+  [1360] = {
+    'Minero Grumnal',
+    nil,
+  },
+  [1361] = {
+    '[UNUSED] Kern el Déspota',
+    nil,
+  },
+  [1362] = {
+    nil,
+    'Armero',
+  },
+  [1364] = {
+    'Balgaras el Hediondo',
+    nil,
+  },
+  [1373] = {
+    'Jarven Cebatruenos',
+    nil,
+  },
+  [1374] = {
+    'Rejold Cebadiz',
+    nil,
+  },
+  [1375] = {
+    'Marleth Cebadiz',
+    nil,
+  },
+  [1376] = {
+    'Beldin Brasacerada',
+    nil,
+  },
+  [1377] = {
+    'Piloto Roscapiedra',
+    nil,
+  },
+  [1378] = {
+    'Piloto Bramiz',
+    nil,
+  },
+  [1381] = {
+    nil,
+    'Armero superior',
+  },
+  [1382] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [1383] = {
+    'Gruños',
+    'Aprendiz herrero',
+  },
+  [1384] = {
+    nil,
+    'Instructor de minería',
+  },
+  [1385] = {
+    'Mole',
+    'Instructor de peletería',
+  },
+  [1386] = {
+    nil,
+    'Instructor de alquimia',
+  },
+  [1387] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [1393] = {
+    'Trogg rabioso',
+    nil,
+  },
+  [1395] = {
+    'Viejo Beasley',
+    nil,
+  },
+  [1397] = {
+    'Vidente Peloescarcha',
+    nil,
+  },
+  [1398] = {
+    nil,
+    'Jefe Rompecantos',
+  },
+  [1399] = {
+    nil,
+    'Chamán tribal Rompecantos',
+  },
+  [1400] = {
+    'Crocolisco de Los Humedales',
+    nil,
+  },
+  [1401] = {
+    'Test ardilla',
+    nil,
+  },
+  [1403] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [1404] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [1406] = {
+    nil,
+    'Instructor de chamanes',
+  },
+  [1407] = {
+    nil,
+    'Mercader de armaduras ligeras y armas',
+  },
+  [1408] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [1409] = {
+    'Moorah Pezuña Tempestuosa',
+    'Instructor de druidas',
+  },
+  [1410] = {
+    'Depositario de sangre Ala de Fuego',
+    nil,
+  },
+  [1411] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [1412] = {
+    'Ardilla',
+    nil,
+  },
+  [1417] = {
+    'Crocolisco joven de Los Humedales',
+    nil,
+  },
+  [1418] = {
+    'Asaltante Branquiazul',
+    nil,
+  },
+  [1419] = {
+    'Esfumador',
+    nil,
+  },
+  [1420] = {
+    'Sapo',
+    nil,
+  },
+  [1421] = {
+    'Soldado Merle',
+    'Soldado rebelde',
+  },
+  [1422] = {
+    'Cabo Sethman',
+    nil,
+  },
+  [1423] = {
+    'Guardia de Ventormenta',
+    nil,
+  },
+  [1424] = {
+    'Maestro excavador',
+    nil,
+  },
+  [1425] = {
+    'Kubb',
+    nil,
+  },
+  [1426] = {
+    'Minero Zarparrío',
+    nil,
+  },
+  [1430] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [1434] = {
+    'Avizor de Menethil',
+    nil,
+  },
+  [1435] = {
+    'Zardeth de los Zarpanegra',
+    nil,
+  },
+  [1436] = {
+    'Vigía Cutford',
+    'La Guardia Nocturna',
+  },
+  [1439] = {
+    nil,
+    'Casa de Nobles',
+  },
+  [1440] = {
+    nil,
+    'Bibliotecario',
+  },
+  [1441] = {
+    nil,
+    'Forjadora de armas',
+  },
+  [1442] = {
+    'Helgrum el Veloz',
+    nil,
+  },
+  [1444] = {
+    'Hermano Kristoff',
+    nil,
+  },
+  [1448] = {
+    nil,
+    'Suministros de ingeniería y pertrechos',
+  },
+  [1449] = {
+    'Médico brujo Unbagwa',
+    nil,
+  },
+  [1450] = {
+    nil,
+    'Armero',
+  },
+  [1451] = {
+    'Camerick Juglar',
+    'Juglar trotamundos',
+  },
+  [1452] = {
+    nil,
+    'Suministros generales',
+  },
+  [1453] = {
+    'Dewin Brillalba',
+    'Suministros de alquimia',
+  },
+  [1454] = {
+    'Jennabink Costura Potente',
+    'Suministros de sastrería y artículos especiales',
+  },
+  [1456] = {
+    nil,
+    'Mercader',
+  },
+  [1457] = {
+    nil,
+    'Vendedor sospechoso',
+  },
+  [1458] = {
+    'Telurinon Umbraluna',
+    'Instructora de herboristería',
+  },
+  [1459] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [1460] = {
+    nil,
+    'Criadora de caballos',
+  },
+  [1461] = {
+    nil,
+    'Forjador de armas de fuego',
+  },
+  [1462] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [1463] = {
+    nil,
+    'Componentes',
+  },
+  [1464] = {
+    'Tabernero Helbrek',
+    'Tabernero',
+  },
+  [1465] = {
+    'Drac Corteseco',
+    'Mercader',
+  },
+  [1466] = {
+    'Gretta Bueneje',
+    'Aprendiz peletero',
+  },
+  [1467] = {
+    '[UNUSED] [PH] Gresco Tronador',
+    'Forjador de armas <Temp>',
+  },
+  [1468] = {
+    'Kargh Espinacerada',
+    'Armero',
+  },
+  [1469] = {
+    'Vrok Rayobestial',
+    'Forjador de armas de fuego',
+  },
+  [1470] = {
+    'Ghak Sanadón',
+    'Instructor de alquimia',
+  },
+  [1471] = {
+    'Jannos Dolocerado',
+    'Fabricante de mazas superior',
+  },
+  [1472] = {
+    'Morgg Disparormento',
+    nil,
+  },
+  [1473] = {
+    'Kali Sanatoque',
+    'Instructora de herboristería',
+  },
+  [1474] = {
+    'Rann Flamejes',
+    'Suministros de sastrería',
+  },
+  [1475] = {
+    'Guardia de Menethil',
+    nil,
+  },
+  [1481] = {
+    'Bart Mareaqua',
+    'Capitán del Virtud de la Doncella',
+  },
+  [1485] = {
+    '[UNUSED] Mercader del bazar TEST',
+    'Florista',
+  },
+  [1487] = {
+    'Esclavista Puñastilla',
+    nil,
+  },
+  [1488] = {
+    'Zombi Zanzil',
+    nil,
+  },
+  [1489] = {
+    'Cazador Zanzil',
+    nil,
+  },
+  [1490] = {
+    'Médico brujo Zanzil',
+    nil,
+  },
+  [1491] = {
+    'Naga Zanzil',
+    nil,
+  },
+  [1493] = {
+    'Mok\'rash el Acuchillador',
+    nil,
+  },
+  [1495] = {
+    'Guardia de la Muerte Linnea',
+    nil,
+  },
+  [1496] = {
+    'Guardia de la Muerte Dillinger',
+    nil,
+  },
+  [1498] = {
+    'Bethor Duroyelo',
+    nil,
+  },
+  [1499] = {
+    'Magistrado Sevren',
+    nil,
+  },
+  [1501] = {
+    'Zombi descerebrado',
+    nil,
+  },
+  [1502] = {
+    'Necrófago desdichado',
+    nil,
+  },
+  [1503] = {
+    'Necrófago desdichado',
+    nil,
+  },
+  [1504] = {
+    'Nocturácnida joven',
+    nil,
+  },
+  [1505] = {
+    'Araña nocturácnida',
+    nil,
+  },
+  [1506] = {
+    'Converso Escarlata',
+    nil,
+  },
+  [1507] = {
+    'Iniciado Escarlata',
+    nil,
+  },
+  [1508] = {
+    'Carroñero joven',
+    nil,
+  },
+  [1509] = {
+    'Carroñero pulgoso',
+    nil,
+  },
+  [1511] = {
+    'Gorila Lomoblanco iracundo',
+    nil,
+  },
+  [1512] = {
+    'Murciumbrío',
+    nil,
+  },
+  [1513] = {
+    'Murciumbrío sarnoso',
+    nil,
+  },
+  [1514] = {
+    'Mokk el Salvaje',
+    nil,
+  },
+  [1515] = {
+    'Ejecutor Zygand',
+    nil,
+  },
+  [1518] = {
+    'Boticario Johaan',
+    'Sociedad Real de Boticarios',
+  },
+  [1519] = {
+    'Guardia de la Muerte Simmer',
+    nil,
+  },
+  [1520] = {
+    'Soldado armadóseo',
+    nil,
+  },
+  [1522] = {
+    'Tirahuesos Ojosombra',
+    nil,
+  },
+  [1523] = {
+    'Soldado testapartida',
+    nil,
+  },
+  [1525] = {
+    'Muerto en podredumbre',
+    nil,
+  },
+  [1526] = {
+    'Cuerpo devastado',
+    nil,
+  },
+  [1527] = {
+    'Muerto hambriento',
+    nil,
+  },
+  [1528] = {
+    'Horror desgarbado',
+    nil,
+  },
+  [1529] = {
+    'Horror sangrante',
+    nil,
+  },
+  [1530] = {
+    'Ancestro en podredumbre',
+    nil,
+  },
+  [1531] = {
+    'Alma perdida',
+    nil,
+  },
+  [1532] = {
+    'Espíritu deambulante',
+    nil,
+  },
+  [1533] = {
+    'Espíritu atormentado',
+    nil,
+  },
+  [1534] = {
+    'Antepasado gemebundo',
+    nil,
+  },
+  [1535] = {
+    'Guerrero Escarlata',
+    nil,
+  },
+  [1536] = {
+    'Misionero Escarlata',
+    nil,
+  },
+  [1537] = {
+    'Zelote Escarlata',
+    nil,
+  },
+  [1538] = {
+    'Fraile Escarlata',
+    nil,
+  },
+  [1539] = {
+    'Neófito Escarlata',
+    nil,
+  },
+  [1540] = {
+    'Vanguardia Escarlata',
+    nil,
+  },
+  [1541] = {
+    'Múrloc Anca Vil',
+    nil,
+  },
+  [1543] = {
+    'Saltacharco Anca Vil',
+    nil,
+  },
+  [1544] = {
+    'Oráculo menor Anca Vil',
+    nil,
+  },
+  [1545] = {
+    'Habitabosta Anca Vil',
+    nil,
+  },
+  [1546] = {
+    nil,
+    'Instructora de herboristería',
+  },
+  [1547] = {
+    'Can oscuro decrépito',
+    nil,
+  },
+  [1548] = {
+    'Can oscuro maldito',
+    nil,
+  },
+  [1549] = {
+    'Can oscuro voraz',
+    nil,
+  },
+  [1550] = {
+    'Basilisco Colastador',
+    nil,
+  },
+  [1551] = {
+    'Basilisco Quijahierro',
+    nil,
+  },
+  [1552] = {
+    'Panzascama',
+    nil,
+  },
+  [1553] = {
+    'Murciumbrío superior',
+    nil,
+  },
+  [1554] = {
+    'Murciumbrío vampírico',
+    nil,
+  },
+  [1555] = {
+    'Nocturácnida sañosa',
+    nil,
+  },
+  [1557] = {
+    'Gorila Velo de Bruma anciano',
+    nil,
+  },
+  [1558] = {
+    'Patriarca Lomoblanco',
+    nil,
+  },
+  [1559] = {
+    'Rey Mukla',
+    nil,
+  },
+  [1561] = {
+    'Asaltante Velasangre',
+    nil,
+  },
+  [1562] = {
+    'Mago Velasangre',
+    nil,
+  },
+  [1563] = {
+    'Espadachín Velasangre',
+    nil,
+  },
+  [1564] = {
+    'Brujo Velasangre',
+    nil,
+  },
+  [1565] = {
+    'Lobo de mar Velasangre',
+    nil,
+  },
+  [1567] = {
+    nil,
+    'Minero <Temp>',
+  },
+  [1568] = {
+    'Enterrador Mordo',
+    nil,
+  },
+  [1569] = {
+    'Sacerdote de las Sombras Sarvis',
+    nil,
+  },
+  [1570] = {
+    'Ejecutor Arren',
+    nil,
+  },
+  [1571] = {
+    nil,
+    'Maestro de grifos',
+  },
+  [1572] = {
+    nil,
+    'Maestro de grifos',
+  },
+  [1573] = {
+    nil,
+    'Maestro de grifos',
+  },
+  [1574] = {
+    'Mago 1',
+    nil,
+  },
+  [1575] = {
+    'Mago 5',
+    nil,
+  },
+  [1576] = {
+    'Mago 10',
+    nil,
+  },
+  [1577] = {
+    'Mago 15',
+    nil,
+  },
+  [1578] = {
+    'Mago 20',
+    nil,
+  },
+  [1579] = {
+    'Mago 30',
+    nil,
+  },
+  [1580] = {
+    'Mago 40',
+    nil,
+  },
+  [1581] = {
+    'Brujo 1',
+    nil,
+  },
+  [1582] = {
+    'Brujo 5',
+    nil,
+  },
+  [1583] = {
+    'Brujo 10',
+    nil,
+  },
+  [1584] = {
+    'Brujo 15',
+    nil,
+  },
+  [1585] = {
+    'Brujo 20',
+    nil,
+  },
+  [1586] = {
+    'Brujo 30',
+    nil,
+  },
+  [1587] = {
+    'Brujo 40',
+    nil,
+  },
+  [1588] = {
+    'Chamán 1',
+    nil,
+  },
+  [1589] = {
+    'Chamán 5',
+    nil,
+  },
+  [1590] = {
+    'Chamán 10',
+    nil,
+  },
+  [1591] = {
+    'Chamán 15',
+    nil,
+  },
+  [1592] = {
+    'Chamán 20',
+    nil,
+  },
+  [1593] = {
+    'Chamán 30',
+    nil,
+  },
+  [1594] = {
+    'Chamán 40',
+    nil,
+  },
+  [1595] = {
+    'Pícaro 1',
+    nil,
+  },
+  [1596] = {
+    'Pícaro 5',
+    nil,
+  },
+  [1597] = {
+    'Pícaro 10',
+    nil,
+  },
+  [1598] = {
+    'Pícaro 15',
+    nil,
+  },
+  [1599] = {
+    'Pícaro 20',
+    nil,
+  },
+  [1600] = {
+    'Pícaro 30',
+    nil,
+  },
+  [1618] = {
+    'Cazador 1',
+    nil,
+  },
+  [1620] = {
+    'Cazador 5',
+    nil,
+  },
+  [1621] = {
+    'Cazador 10',
+    nil,
+  },
+  [1622] = {
+    'Sacerdote 1',
+    nil,
+  },
+  [1623] = {
+    'Cazador 15',
+    nil,
+  },
+  [1624] = {
+    'Sacerdote 5',
+    nil,
+  },
+  [1625] = {
+    'Cazador 20',
+    nil,
+  },
+  [1626] = {
+    'Sacerdote 10',
+    nil,
+  },
+  [1627] = {
+    'Sacerdote 15',
+    nil,
+  },
+  [1628] = {
+    'Cazador 30',
+    nil,
+  },
+  [1629] = {
+    'Sacerdote 20',
+    nil,
+  },
+  [1631] = {
+    'Cazador 40',
+    nil,
+  },
+  [1632] = {
+    nil,
+    'Instructor de peletería',
+  },
+  [1633] = {
+    'Sacerdote 30',
+    nil,
+  },
+  [1634] = {
+    'Sacerdote 40',
+    nil,
+  },
+  [1635] = {
+    'Guerrero 1',
+    nil,
+  },
+  [1636] = {
+    'Guerrero 5',
+    nil,
+  },
+  [1637] = {
+    'Guerrero 10',
+    nil,
+  },
+  [1638] = {
+    'Guerrero 15',
+    nil,
+  },
+  [1639] = {
+    'Guerrero 20',
+    nil,
+  },
+  [1640] = {
+    'Guerrero 30',
+    nil,
+  },
+  [1641] = {
+    'Guerrero 40',
+    nil,
+  },
+  [1642] = {
+    'Guardia de Villanorte',
+    nil,
+  },
+  [1643] = {
+    '[UNUSED] Guardia de Elwynn',
+    nil,
+  },
+  [1644] = {
+    '[UNUSED] Guardia de Crestagrana',
+    nil,
+  },
+  [1645] = {
+    'Intendente Hicks',
+    'Maestro forjador de armas',
+  },
+  [1646] = {
+    nil,
+    'Arquitecto urbano',
+  },
+  [1650] = {
+    nil,
+    'Leñador',
+  },
+  [1651] = {
+    nil,
+    'Instructor de pesca',
+  },
+  [1652] = {
+    'Guardia de la Muerte Burgess',
+    nil,
+  },
+  [1653] = {
+    'Magus viejo Velasangre',
+    nil,
+  },
+  [1658] = {
+    'Capitán Dargol',
+    nil,
+  },
+  [1659] = {
+    '[UNUSED] Coleman Molina',
+    'NECESITA MODELO',
+  },
+  [1660] = {
+    'Guardaespaldas Escarlata',
+    nil,
+  },
+  [1661] = {
+    'Novicia Elreth',
+    nil,
+  },
+  [1662] = {
+    'Capitán Perrine',
+    nil,
+  },
+  [1664] = {
+    'Capitán Vachon',
+    nil,
+  },
+  [1665] = {
+    'Capitán Melrache',
+    nil,
+  },
+  [1666] = {
+    'Kam Furiahonda',
+    nil,
+  },
+  [1668] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [1669] = {
+    'Especulador Defias',
+    'Mercader alocado',
+  },
+  [1670] = {
+    nil,
+    'Mercader de pan',
+  },
+  [1671] = {
+    nil,
+    'Vendedor de frutas',
+  },
+  [1672] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [1673] = {
+    nil,
+    'Componentes',
+  },
+  [1674] = {
+    'Gnoll Putrepellejo',
+    nil,
+  },
+  [1675] = {
+    'Bastardo Putrepellejo',
+    nil,
+  },
+  [1676] = {
+    'Finbus Rompegranajes',
+    'Instructor de ingeniería',
+  },
+  [1677] = {
+    '[UNUSED] Curtis Cierreniza',
+    'Instructor de cocina',
+  },
+  [1678] = {
+    nil,
+    'Suministros de pesca',
+  },
+  [1680] = {
+    nil,
+    'Instructor de pesca',
+  },
+  [1681] = {
+    'Brock Buscapiedras',
+    'Instructor de minería',
+  },
+  [1682] = {
+    'Yanni Cuoreforte',
+    'Suministros generales',
+  },
+  [1683] = {
+    'Warg Aguahonda',
+    'Instructor de pesca',
+  },
+  [1684] = {
+    'Khara Aguahonda',
+    'Suministros de pesca',
+  },
+  [1685] = {
+    'Xandar Bonbarba',
+    'Suministros generales',
+  },
+  [1686] = {
+    'Irene Tiroseguro',
+    'Forjador de armas de fuego',
+  },
+  [1687] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [1688] = {
+    'Matriarca nocturácnida',
+    nil,
+  },
+  [1689] = {
+    'Jabalí del risco cicatríceo',
+    nil,
+  },
+  [1690] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [1691] = {
+    nil,
+    'Suministros generales',
+  },
+  [1692] = {
+    'Golorn Barbagélida',
+    'Mercader',
+  },
+  [1693] = {
+    'Crocolisco del lago',
+    nil,
+  },
+  [1694] = {
+    nil,
+    'Suministros de ingeniería',
+  },
+  [1695] = {
+    '[Deprecated for 4.x]Rendow',
+    'Mercader de armaduras de cuero',
+  },
+  [1696] = {
+    'Targorr el Pavoroso',
+    nil,
+  },
+  [1697] = {
+    nil,
+    'Cerveza y vino',
+  },
+  [1698] = {
+    nil,
+    'Aprendiz forjador de armas',
+  },
+  [1699] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [1700] = {
+    nil,
+    'Instructor de pesca',
+  },
+  [1701] = {
+    'Dank Cortefiel',
+    'Instructor de minería',
+  },
+  [1702] = {
+    'Bronk Comengranaje',
+    'Instructor de ingeniería',
+  },
+  [1703] = {
+    nil,
+    'Aprendiza sastre',
+  },
+  [1706] = {
+    'Prisionero',
+    nil,
+  },
+  [1707] = {
+    'Cautivo Defias',
+    nil,
+  },
+  [1708] = {
+    'Recluso Defias',
+    nil,
+  },
+  [1711] = {
+    'Presidiario',
+    nil,
+  },
+  [1713] = {
+    'Pantera Faucesombría vieja',
+    nil,
+  },
+  [1715] = {
+    'Insurgente',
+    nil,
+  },
+  [1718] = {
+    'Asaltante Comepiedras',
+    nil,
+  },
+  [1719] = {
+    'Celador Thelagua',
+    nil,
+  },
+  [1720] = {
+    'Bruegal Nudoferro',
+    nil,
+  },
+  [1722] = {
+    'Nota de Andron',
+    nil,
+  },
+  [1723] = {
+    'Ciudadana de Ventormenta',
+    nil,
+  },
+  [1724] = {
+    'Ciudadano de Ventormenta',
+    nil,
+  },
+  [1725] = {
+    'Velador Defias',
+    nil,
+  },
+  [1726] = {
+    'Magiero Defias',
+    nil,
+  },
+  [1727] = {
+    'Trabajador Defias',
+    nil,
+  },
+  [1729] = {
+    'Evocador Defias',
+    nil,
+  },
+  [1730] = {
+    'Serrador goblin',
+    nil,
+  },
+  [1731] = {
+    'Artesano goblin',
+    nil,
+  },
+  [1732] = {
+    'Domaborrascas Defias',
+    nil,
+  },
+  [1733] = {
+    nil,
+    'Esbirro de Zardeth',
+  },
+  [1735] = {
+    'Guardia de la Muerte Abraham',
+    nil,
+  },
+  [1736] = {
+    'Guardia de la Muerte Randolph',
+    nil,
+  },
+  [1737] = {
+    'Guardia de la Muerte Oliver',
+    nil,
+  },
+  [1738] = {
+    'Guardia de la Muerte Terrence',
+    nil,
+  },
+  [1739] = {
+    'Guardia de la Muerte Phillip',
+    nil,
+  },
+  [1740] = {
+    'Guardia de la Muerte Saltain',
+    nil,
+  },
+  [1741] = {
+    'Guardia de la Muerte Bartrand',
+    nil,
+  },
+  [1742] = {
+    'Guardia de la Muerte Bartholomew',
+    nil,
+  },
+  [1743] = {
+    'Guardia de la Muerte Lawrence',
+    nil,
+  },
+  [1744] = {
+    'Guardia de la Muerte Mort',
+    nil,
+  },
+  [1745] = {
+    'Guardia de la Muerte Morris',
+    nil,
+  },
+  [1746] = {
+    'Guardia de la Muerte Cyrus',
+    nil,
+  },
+  [1747] = {
+    nil,
+    'Príncipe de Ventormenta',
+  },
+  [1748] = {
+    'Alto señor Bolvar Fordragón',
+    nil,
+  },
+  [1750] = {
+    'Gran almirante Jes-Tereth',
+    nil,
+  },
+  [1751] = {
+    'Mithras Ferrocolina',
+    nil,
+  },
+  [1752] = {
+    'Caledra Brisalbor',
+    nil,
+  },
+  [1753] = {
+    'Ojo de cresa',
+    nil,
+  },
+  [1755] = {
+    'Marzon el Filo Silencioso',
+    nil,
+  },
+  [1756] = {
+    'Guardia Real de Ventormenta',
+    nil,
+  },
+  [1757] = {
+    'Megaconejo',
+    nil,
+  },
+  [1758] = {
+    'Brujo (TEST)',
+    nil,
+  },
+  [1759] = {
+    'Mago (TEST)',
+    nil,
+  },
+  [1760] = {
+    'Guerrero (TEST)',
+    nil,
+  },
+  [1761] = {
+    'Sacerdote (TEST)',
+    nil,
+  },
+  [1762] = {
+    'Pícaro (TEST)',
+    nil,
+  },
+  [1763] = {
+    nil,
+    'El Fundidor',
+  },
+  [1764] = {
+    'Espíritu feral superior',
+    nil,
+  },
+  [1766] = {
+    'Huargo rabioso',
+    nil,
+  },
+  [1767] = {
+    'Machacador Anca Vil',
+    nil,
+  },
+  [1768] = {
+    'Cazamareas Anca Vil',
+    nil,
+  },
+  [1769] = {
+    'Canoso Furia Lunar',
+    nil,
+  },
+  [1770] = {
+    'Correoscuro Furia Lunar',
+    nil,
+  },
+  [1772] = {
+    'Asaltaclaros Putrepellejo',
+    nil,
+  },
+  [1773] = {
+    'Místico Putrepellejo',
+    nil,
+  },
+  [1777] = {
+    'Dakk Rayobestial',
+    nil,
+  },
+  [1778] = {
+    'Oso grisáceo feroz',
+    nil,
+  },
+  [1779] = {
+    'Glotón Furia Lunar',
+    nil,
+  },
+  [1780] = {
+    'Asediadora Corretela',
+    nil,
+  },
+  [1781] = {
+    'Rondadora Corretela',
+    nil,
+  },
+  [1782] = {
+    'Almanegra Furia Lunar',
+    nil,
+  },
+  [1783] = {
+    'Despellejador esquelético',
+    nil,
+  },
+  [1784] = {
+    'Hechicero esquelético',
+    nil,
+  },
+  [1785] = {
+    'Terror esquelético',
+    nil,
+  },
+  [1787] = {
+    'Verdugo esquelético',
+    nil,
+  },
+  [1788] = {
+    'Señor de la guerra esquelético',
+    nil,
+  },
+  [1789] = {
+    'Acólito esquelético',
+    nil,
+  },
+  [1791] = {
+    'Necrófago esclavizante',
+    nil,
+  },
+  [1793] = {
+    'Necrófago en podredumbre',
+    nil,
+  },
+  [1794] = {
+    'Necrófago desalmado',
+    nil,
+  },
+  [1795] = {
+    'Necrófago abrasador',
+    nil,
+  },
+  [1796] = {
+    'Necrófago congelado',
+    nil,
+  },
+  [1797] = {
+    'Oso grisáceo gigante',
+    nil,
+  },
+  [1798] = {
+    'Alma torturada',
+    nil,
+  },
+  [1800] = {
+    'Ánima de hielo',
+    nil,
+  },
+  [1801] = {
+    'Ánima de sangre',
+    nil,
+  },
+  [1802] = {
+    'Ánima hambrienta',
+    nil,
+  },
+  [1804] = {
+    'Muerte gemebunda',
+    nil,
+  },
+  [1805] = {
+    'Gólem de carne',
+    nil,
+  },
+  [1806] = {
+    'Babosa vil',
+    nil,
+  },
+  [1808] = {
+    'Moco devorador',
+    nil,
+  },
+  [1809] = {
+    'Buitre carroñero',
+    nil,
+  },
+  [1810] = {
+    'Cóndor en podredumbre',
+    nil,
+  },
+  [1811] = {
+    'Buitre Alapeste',
+    nil,
+  },
+  [1812] = {
+    'Behemoth en podredumbre',
+    nil,
+  },
+  [1813] = {
+    'Horror putrefacto',
+    nil,
+  },
+  [1815] = {
+    'Oso negro malsano',
+    nil,
+  },
+  [1816] = {
+    'Oso pardo malsano',
+    nil,
+  },
+  [1817] = {
+    'Lobo malsano',
+    nil,
+  },
+  [1819] = {
+    'Hidra Faucevil',
+    nil,
+  },
+  [1820] = {
+    'Hidra Faucevil anciana',
+    nil,
+  },
+  [1821] = {
+    'Rondador carroñero',
+    nil,
+  },
+  [1822] = {
+    'Rondador Brumatósigo',
+    nil,
+  },
+  [1824] = {
+    'Rondador de peste',
+    nil,
+  },
+  [1826] = {
+    'Mago Escarlata',
+    nil,
+  },
+  [1827] = {
+    'Centinela Escarlata',
+    nil,
+  },
+  [1831] = {
+    'Cazador Escarlata',
+    nil,
+  },
+  [1832] = {
+    'Magus Escarlata',
+    nil,
+  },
+  [1833] = {
+    'Caballero Escarlata',
+    nil,
+  },
+  [1834] = {
+    'Paladín Escarlata',
+    nil,
+  },
+  [1835] = {
+    'Convocador Escarlata',
+    nil,
+  },
+  [1836] = {
+    'Hidalgo Escarlata',
+    nil,
+  },
+  [1837] = {
+    'Juez Escarlata',
+    nil,
+  },
+  [1838] = {
+    'Interrogador Escarlata',
+    nil,
+  },
+  [1839] = {
+    'Alto Clérigo Escarlata',
+    nil,
+  },
+  [1840] = {
+    'Gran Inquisidor Isillien',
+    nil,
+  },
+  [1841] = {
+    'Verdugo Escarlata',
+    nil,
+  },
+  [1842] = {
+    'Alto señor Taelan Vadín',
+    'Alto señor de la Cruzada Escarlata',
+  },
+  [1843] = {
+    'Supervisor Jerris',
+    nil,
+  },
+  [1844] = {
+    'Supervisor Marcrid',
+    nil,
+  },
+  [1845] = {
+    'Sumo Protector Tarsen',
+    nil,
+  },
+  [1846] = {
+    'Sumo Protector Lorik',
+    nil,
+  },
+  [1847] = {
+    'Crinatroz',
+    nil,
+  },
+  [1849] = {
+    'Rumoratroz',
+    nil,
+  },
+  [1851] = {
+    'La Cáscara',
+    nil,
+  },
+  [1852] = {
+    'Araj el Invocador',
+    nil,
+  },
+  [1853] = {
+    'Maestro oscuro Gandling',
+    nil,
+  },
+  [1854] = {
+    'Sumo sacerdote Thel\'danis',
+    nil,
+  },
+  [1857] = {
+    'Vendedor enfadado',
+    'Vendedor enfadado',
+  },
+  [1858] = {
+    'Cabreado no es un vendedor',
+    'Vendedor enfadado',
+  },
+  [1859] = {
+    '[UNUSED] Nyein Ventolongo',
+    'Fabricante de arcos *Temp*',
+  },
+  [1860] = {
+    'Abisario',
+    nil,
+  },
+  [1861] = {
+    'Abisario superior',
+    nil,
+  },
+  [1862] = {
+    'Caminante abisal inferior',
+    nil,
+  },
+  [1863] = {
+    'Súcubo',
+    nil,
+  },
+  [1864] = {
+    'Súcubo superior',
+    nil,
+  },
+  [1865] = {
+    'Asaltante Corvozarpa',
+    nil,
+  },
+  [1866] = {
+    'Esclavo Corvozarpa',
+    nil,
+  },
+  [1867] = {
+    'Aprendiz de Dalaran',
+    nil,
+  },
+  [1868] = {
+    'Sirviente Corvozarpa',
+    nil,
+  },
+  [1869] = {
+    'Campeón Corvozarpa',
+    nil,
+  },
+  [1870] = {
+    'Mano de Corvozarpa',
+    nil,
+  },
+  [1871] = {
+    'Guardia de Eliza',
+    nil,
+  },
+  [1872] = {
+    'Tharek Piedranegra',
+    nil,
+  },
+  [1879] = {
+    'Noma Napiamocha',
+    nil,
+  },
+  [1883] = {
+    'Trabajador Escarlata',
+    nil,
+  },
+  [1884] = {
+    'Leñador Escarlata',
+    nil,
+  },
+  [1885] = {
+    'Herrero Escarlata',
+    nil,
+  },
+  [1888] = {
+    'Vigía de Molino Ámbar',
+    nil,
+  },
+  [1889] = {
+    'Zahorí de Molino Ámbar',
+    nil,
+  },
+  [1890] = {
+    'Esqueleto armadóseo',
+    nil,
+  },
+  [1891] = {
+    'Vigía Piroleña',
+    nil,
+  },
+  [1892] = {
+    'Vigía Furia Lunar',
+    nil,
+  },
+  [1893] = {
+    'Avizor Furia Lunar',
+    nil,
+  },
+  [1894] = {
+    'Avizor Piroleña',
+    nil,
+  },
+  [1895] = {
+    'Viejo Piroleña',
+    nil,
+  },
+  [1896] = {
+    'Viejo Furia Lunar',
+    nil,
+  },
+  [1897] = {
+    'Nigromante de la Plaga',
+    nil,
+  },
+  [1901] = {
+    'Kelstrum Rompepedras',
+    'Instructor de guerreros',
+  },
+  [1907] = {
+    'Expedicionario naga',
+    nil,
+  },
+  [1908] = {
+    'Oráculo Anca Vil',
+    nil,
+  },
+  [1909] = {
+    'Acechalagos Anca Vil',
+    nil,
+  },
+  [1912] = {
+    'Protector de Molino Ámbar',
+    nil,
+  },
+  [1913] = {
+    'Depositario de Molino Ámbar',
+    nil,
+  },
+  [1914] = {
+    'Magister de Molino Ámbar',
+    nil,
+  },
+  [1915] = {
+    'Conjurador de Molino Ámbar',
+    nil,
+  },
+  [1920] = {
+    'Escribachizo de Molino Ámbar',
+    nil,
+  },
+  [1921] = {
+    'Muñeco de combate',
+    nil,
+  },
+  [1922] = {
+    'Lobo grisáceo del bosque',
+    nil,
+  },
+  [1923] = {
+    'Huargo Sangrocico',
+    nil,
+  },
+  [1924] = {
+    'Aullasangre Furia Lunar',
+    nil,
+  },
+  [1925] = {
+    'Avaro del calor',
+    'Inmune al Fuego',
+  },
+  [1926] = {
+    'Avaro de la nieve',
+    'Inmune a la escarcha',
+  },
+  [1927] = {
+    'Avaro de lo bueno',
+    'Inmune a lo Sagrado',
+  },
+  [1928] = {
+    'Avaro de lo malo',
+    'Inmune a la sombra',
+  },
+  [1929] = {
+    'Avaro de la tierra',
+    'Inmune a la Naturaleza',
+  },
+  [1930] = {
+    'Avaro del acero',
+    'Inmune a lo Físico',
+  },
+  [1931] = {
+    'Zelote Escarlata capturado',
+    nil,
+  },
+  [1932] = {
+    'Oveja negra',
+    nil,
+  },
+  [1933] = {
+    'Oveja',
+    nil,
+  },
+  [1934] = {
+    'Granjero de Tirisfal',
+    nil,
+  },
+  [1935] = {
+    'Mozo de labranza de Tirisfal',
+    nil,
+  },
+  [1936] = {
+    'Granjero Solliden',
+    nil,
+  },
+  [1937] = {
+    'Boticario Renferrel',
+    'Sociedad Real de Boticarios',
+  },
+  [1938] = {
+    'Dalar Tejealba',
+    nil,
+  },
+  [1939] = {
+    'Tosco Putrepellejo',
+    nil,
+  },
+  [1940] = {
+    'Siembrapestes Putrepellejo',
+    nil,
+  },
+  [1941] = {
+    'Asaltatumbas Putrepellejo',
+    nil,
+  },
+  [1942] = {
+    'Salvaje Putrepellejo',
+    nil,
+  },
+  [1943] = {
+    'Putrepellejo enfurecido',
+    nil,
+  },
+  [1944] = {
+    'Truhán Putrepellejo',
+    nil,
+  },
+  [1945] = {
+    'Forma de árbol 0,33',
+    nil,
+  },
+  [1947] = {
+    'Thule Corvozarpa',
+    nil,
+  },
+  [1948] = {
+    'Melegruños',
+    nil,
+  },
+  [1949] = {
+    'Sirviente de Azora',
+    nil,
+  },
+  [1950] = {
+    nil,
+    'Mortacechadora',
+  },
+  [1951] = {
+    nil,
+    'Mortacechadora',
+  },
+  [1952] = {
+    'Sumo ejecutor Hadrec',
+    nil,
+  },
+  [1953] = {
+    'Vagador del Lago',
+    nil,
+  },
+  [1954] = {
+    'Vagador del Lago viejo',
+    nil,
+  },
+  [1955] = {
+    'Trepador del Lago',
+    nil,
+  },
+  [1956] = {
+    'Trepador del Lago viejo',
+    nil,
+  },
+  [1957] = {
+    'Trepacostas Anca Vil',
+    nil,
+  },
+  [1958] = {
+    'Clamamareas Anca Vil',
+    nil,
+  },
+  [1959] = {
+    'Montaraz Cebadiz',
+    nil,
+  },
+  [1960] = {
+    'Piloto Podomartillo',
+    nil,
+  },
+  [1961] = {
+    'Sarnagarra',
+    nil,
+  },
+  [1963] = {
+    'Vidra Hogartufa',
+    nil,
+  },
+  [1964] = {
+    'Antárbol',
+    nil,
+  },
+  [1965] = {
+    'Montaraz Thalos',
+    nil,
+  },
+  [1971] = {
+    'Ivar el Hediondo',
+    nil,
+  },
+  [1972] = {
+    'Grimson el Pálido',
+    nil,
+  },
+  [1973] = {
+    'Guardián Corvozarpa',
+    nil,
+  },
+  [1974] = {
+    'Bracero Corvozarpa',
+    nil,
+  },
+  [1975] = {
+    'Leñador de la Vega del Este',
+    nil,
+  },
+  [1976] = {
+    'Patrulla urbana de Ventormenta',
+    nil,
+  },
+  [1977] = {
+    'Senador Mehr Piedrasanta',
+    nil,
+  },
+  [1978] = {
+    'Mortacechador Erland',
+    nil,
+  },
+  [1979] = {
+    'TEST LOBO (ALPHA PRIMERO)',
+    nil,
+  },
+  [1980] = {
+    'TEST LOBO (ALPHA SEGUNDO)',
+    nil,
+  },
+  [1981] = {
+    'Emboscador Hierro Negro',
+    nil,
+  },
+  [1983] = {
+    'Latipesadilla',
+    nil,
+  },
+  [1984] = {
+    'Jabalí cardo joven',
+    nil,
+  },
+  [1985] = {
+    'Jabalí Cardo',
+    nil,
+  },
+  [1986] = {
+    'Araña Tejemadera',
+    nil,
+  },
+  [1987] = {
+    'Trepador Tejemadera UNUSED',
+    nil,
+  },
+  [1989] = {
+    'Grellín',
+    nil,
+  },
+  [1993] = {
+    'Zarpaverde',
+    nil,
+  },
+  [1994] = {
+    'Githyiss la Vil',
+    nil,
+  },
+  [1995] = {
+    'Lechuza estrígida',
+    nil,
+  },
+  [1996] = {
+    'Estridador estrígido',
+    nil,
+  },
+  [1997] = {
+    'Cazador estrígido',
+    nil,
+  },
+  [1998] = {
+    'Rondador Tejemadera',
+    nil,
+  },
+  [1999] = {
+    'Venolmillo Tejemadera',
+    nil,
+  },
+  [2000] = {
+    'Hilasedas Tejemadera',
+    nil,
+  },
+  [2001] = {
+    'Araña Tejemadera gigante',
+    nil,
+  },
+  [2002] = {
+    'Duende granuja',
+    nil,
+  },
+  [2003] = {
+    'Duende sombrío',
+    nil,
+  },
+  [2004] = {
+    'Duende oscuro',
+    nil,
+  },
+  [2005] = {
+    'Grell sañoso',
+    nil,
+  },
+  [2006] = {
+    'Ursa Tuercepinos',
+    nil,
+  },
+  [2007] = {
+    'Jardinero Tuercepinos',
+    nil,
+  },
+  [2008] = {
+    'Guerrero Tuercepinos',
+    nil,
+  },
+  [2009] = {
+    'Chamán Tuercepinos',
+    nil,
+  },
+  [2010] = {
+    'Defensor Tuercepinos',
+    nil,
+  },
+  [2011] = {
+    'Augur Tuercepinos',
+    nil,
+  },
+  [2012] = {
+    'Abrecaminos Tuercepinos',
+    nil,
+  },
+  [2013] = {
+    'Vengador Tuercepinos',
+    nil,
+  },
+  [2014] = {
+    'Totémico Tuercepinos',
+    nil,
+  },
+  [2015] = {
+    'Arpía Sangrepluma',
+    nil,
+  },
+  [2017] = {
+    'Pícara Sangrepluma',
+    nil,
+  },
+  [2018] = {
+    'Hechicera Sangrepluma',
+    nil,
+  },
+  [2019] = {
+    'Furia Sangrepluma',
+    nil,
+  },
+  [2020] = {
+    'Bruja del viento Sangrepluma',
+    nil,
+  },
+  [2021] = {
+    'Matriarca Sangrepluma',
+    nil,
+  },
+  [2022] = {
+    'Brezomadera',
+    nil,
+  },
+  [2025] = {
+    'Desgarrador Brezomadera',
+    nil,
+  },
+  [2027] = {
+    'Pisoteador Brezomadera',
+    nil,
+  },
+  [2029] = {
+    'Bestia de lodazal Brezomadera',
+    nil,
+  },
+  [2030] = {
+    'Brezomadera anciano',
+    nil,
+  },
+  [2031] = {
+    'Sable de la noche joven',
+    nil,
+  },
+  [2032] = {
+    'Sable de la noche sarnoso',
+    nil,
+  },
+  [2033] = {
+    'Sable de la noche mayor',
+    nil,
+  },
+  [2034] = {
+    'Sable de la noche salvaje',
+    nil,
+  },
+  [2039] = {
+    'Ursal el Violento',
+    nil,
+  },
+  [2040] = {
+    'Haggatha la Vieja Bruja',
+    nil,
+  },
+  [2041] = {
+    'Anciano protector',
+    nil,
+  },
+  [2042] = {
+    'Sable de la noche',
+    nil,
+  },
+  [2043] = {
+    'Acechador sable de la noche',
+    nil,
+  },
+  [2044] = {
+    'Espíritu melancólico',
+    nil,
+  },
+  [2045] = {
+    'Esbirro de Gunther',
+    nil,
+  },
+  [2046] = {
+    nil,
+    'Fabricante de armaduras y escudos',
+  },
+  [2050] = {
+    nil,
+    'Antiguo chef',
+  },
+  [2051] = {
+    'Oposti el Probador FOO',
+    'Modelo y textura',
+  },
+  [2053] = {
+    'Refugiado demacrado',
+    nil,
+  },
+  [2054] = {
+    'Refugiado enfermo',
+    nil,
+  },
+  [2055] = {
+    'Maestro boticario Faranell',
+    'Sociedad Real de Boticarios',
+  },
+  [2056] = {
+    'Aparecido Corvozarpa',
+    nil,
+  },
+  [2058] = {
+    'Mortacechadora Faerleia',
+    nil,
+  },
+  [2060] = {
+    'Consejero Herrera',
+    'Consejo de Piroleña',
+  },
+  [2061] = {
+    'Consejero Careso',
+    'Consejo de Piroleña',
+  },
+  [2062] = {
+    'Consejero Hendricks',
+    'Consejo de Piroleña',
+  },
+  [2063] = {
+    'Consejero Wilhelm',
+    'Consejo de Piroleña',
+  },
+  [2064] = {
+    'Consejero Hartin',
+    'Consejo de Piroleña',
+  },
+  [2065] = {
+    'Consejero Cooper',
+    'Consejo de Piroleña',
+  },
+  [2066] = {
+    'Consejero Higarth',
+    'Consejo de Piroleña',
+  },
+  [2067] = {
+    'Consejero Mechanegra',
+    'Consejo de Piroleña',
+  },
+  [2068] = {
+    nil,
+    'Líder del Consejo de Piroleña',
+  },
+  [2069] = {
+    'Acechalunas',
+    nil,
+  },
+  [2070] = {
+    'Cachorro Acechalunas',
+    nil,
+  },
+  [2071] = {
+    'Matriarca Acechalunas',
+    nil,
+  },
+  [2077] = {
+    'Melithar Corzocelada',
+    nil,
+  },
+  [2078] = {
+    'Athridas Manto de Oso',
+    nil,
+  },
+  [2079] = {
+    'Ilthalaine',
+    nil,
+  },
+  [2081] = {
+    'Centinela Kyra Cantoestelar',
+    nil,
+  },
+  [2082] = {
+    'Gilshalan Caminaviento',
+    nil,
+  },
+  [2083] = {
+    'Syral Filohoja',
+    nil,
+  },
+  [2084] = {
+    'Natheril Clamalluvias',
+    'Pertrechos',
+  },
+  [2086] = {
+    'Valstag Quijahierro',
+    nil,
+  },
+  [2087] = {
+    '[UNUSED] Ciudadano de Molino Ámbar',
+    nil,
+  },
+  [2089] = {
+    'Crocolisco gigante de Los Humedales',
+    nil,
+  },
+  [2090] = {
+    'Ma\'ruk Vermiscala',
+    'Señor de la guerra Faucedraco',
+  },
+  [2091] = {
+    'Cabecilla Nek\'rosh',
+    nil,
+  },
+  [2092] = {
+    'Piloto Barbalarga',
+    'Brigada de asedio de Forjaz',
+  },
+  [2093] = {
+    'Eina Pillapedra',
+    nil,
+  },
+  [2095] = {
+    'Billy el Callejero',
+    '¡No confíes en mí! ¡Me llaman Billy!',
+  },
+  [2096] = {
+    'Tarrel Tejepiedra',
+    nil,
+  },
+  [2098] = {
+    'Carnero',
+    nil,
+  },
+  [2099] = {
+    'Tripulante del Virtud de la doncella',
+    nil,
+  },
+  [2102] = {
+    'Bruto Faucedraco',
+    nil,
+  },
+  [2103] = {
+    'Explorador Faucedraco',
+    nil,
+  },
+  [2104] = {
+    'Capitán Puñorrecio',
+    nil,
+  },
+  [2105] = {
+    'Montaraz Dokkin',
+    nil,
+  },
+  [2106] = {
+    'Boticario Berard',
+    nil,
+  },
+  [2108] = {
+    'Garneg Hullacráneo',
+    nil,
+  },
+  [2109] = {
+    'Tanque de vapor',
+    nil,
+  },
+  [2110] = {
+    'Rata negra',
+    nil,
+  },
+  [2111] = {
+    'Shida',
+    nil,
+  },
+  [2113] = {
+    nil,
+    'Mercader de armaduras de tela y cuero',
+  },
+  [2114] = {
+    nil,
+    'Instructora de herboristería',
+  },
+  [2115] = {
+    nil,
+    'Suministros generales',
+  },
+  [2116] = {
+    'Herrero Rand',
+    'Aprendiz armero',
+  },
+  [2117] = {
+    nil,
+    'Aprendiz forjador de armas',
+  },
+  [2118] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [2119] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [2120] = {
+    'Archimago Ataeric',
+    nil,
+  },
+  [2121] = {
+    'Sacerdote de las Sombras Allister',
+    nil,
+  },
+  [2122] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [2123] = {
+    'Clérigo oscuro Duesten',
+    'Instructora de sacerdotes',
+  },
+  [2124] = {
+    nil,
+    'Instructor de magos',
+  },
+  [2126] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [2127] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [2128] = {
+    'Cain Pirosón',
+    'Instructor de magos',
+  },
+  [2129] = {
+    'Clérigo oscuro Beryl',
+    'Instructora de sacerdotes',
+  },
+  [2130] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [2131] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [2132] = {
+    nil,
+    'Instructor de alquimia',
+  },
+  [2133] = {
+    nil,
+    'Instructora de herboristería',
+  },
+  [2134] = {
+    'Sra. Winters',
+    'Suministros generales',
+  },
+  [2135] = {
+    nil,
+    'Aprendiz armero',
+  },
+  [2136] = {
+    nil,
+    'Aprendiz forjador de armas',
+  },
+  [2137] = {
+    nil,
+    'Mercader de armaduras de cuero',
+  },
+  [2138] = {
+    'Guerrero 25',
+    nil,
+  },
+  [2140] = {
+    nil,
+    'Suministros generales',
+  },
+  [2142] = {
+    'Vigía Callahan',
+    'La Guardia Nocturna',
+  },
+  [2149] = {
+    'Asaltante Hierro Negro',
+    nil,
+  },
+  [2150] = {
+    'Zenn Nauseapezuña',
+    nil,
+  },
+  [2151] = {
+    'Sacerdotisa Lunar Amara',
+    nil,
+  },
+  [2152] = {
+    'Emboscador Tuercepinos',
+    nil,
+  },
+  [2154] = {
+    'Jesse el Probador',
+    'Modelo y textura',
+  },
+  [2155] = {
+    'Centinela Shayla Brisa Nocturna',
+    nil,
+  },
+  [2156] = {
+    'Gólem agrietado',
+    nil,
+  },
+  [2157] = {
+    'Behemoth de piedra',
+    nil,
+  },
+  [2158] = {
+    'Explorador Gravacal',
+    nil,
+  },
+  [2159] = {
+    'Cascahuesos Gravacal',
+    nil,
+  },
+  [2160] = {
+    'Geomántico Gravacal',
+    nil,
+  },
+  [2163] = {
+    'Oso cardo',
+    nil,
+  },
+  [2164] = {
+    'Oso cardo rabioso',
+    nil,
+  },
+  [2165] = {
+    'Oso cardo grisáceo',
+    nil,
+  },
+  [2166] = {
+    'Roblegüello',
+    nil,
+  },
+  [2167] = {
+    'Abrecaminos Bosque Negro',
+    nil,
+  },
+  [2168] = {
+    'Guerrero Bosque Negro',
+    nil,
+  },
+  [2169] = {
+    'Totémico Bosque Negro',
+    nil,
+  },
+  [2170] = {
+    'Ursa Bosque Negro',
+    nil,
+  },
+  [2171] = {
+    'Chamán Bosque Negro',
+    nil,
+  },
+  [2172] = {
+    'Zancador Madrezarpa',
+    nil,
+  },
+  [2173] = {
+    'Furia de arrecife',
+    nil,
+  },
+  [2174] = {
+    'Furia de costa',
+    nil,
+  },
+  [2175] = {
+    'Garrasombría',
+    nil,
+  },
+  [2176] = {
+    'Altonato maldito',
+    nil,
+  },
+  [2177] = {
+    'Altonato en pena',
+    nil,
+  },
+  [2178] = {
+    'Altonato gemebunda',
+    nil,
+  },
+  [2179] = {
+    'Jinete de olas Escama Tormentosa',
+    nil,
+  },
+  [2180] = {
+    'Sirena Escama Tormentosa',
+    nil,
+  },
+  [2181] = {
+    'Mirmidón Escama Tormentosa',
+    nil,
+  },
+  [2182] = {
+    'Hechicera Escama Tormentosa',
+    nil,
+  },
+  [2183] = {
+    'Guerrero Escama Tormentosa',
+    nil,
+  },
+  [2184] = {
+    'Lady Miraluna',
+    nil,
+  },
+  [2185] = {
+    'Trillador de Costa Oscura',
+    nil,
+  },
+  [2186] = {
+    'Carnivous el Rompedor',
+    nil,
+  },
+  [2187] = {
+    'Trillador de Costa Oscura anciano',
+    nil,
+  },
+  [2188] = {
+    'Trillanodonte de las profundidades',
+    nil,
+  },
+  [2189] = {
+    'Duende vil',
+    nil,
+  },
+  [2190] = {
+    'Grell salvaje',
+    nil,
+  },
+  [2192] = {
+    'Clamafuegos Radison',
+    nil,
+  },
+  [2197] = {
+    '[UNUSED] Pregonero Kirton',
+    nil,
+  },
+  [2198] = {
+    'Pregonero Buenhombre',
+    nil,
+  },
+  [2199] = {
+    '[UNUSED] Pregonero Backus',
+    nil,
+  },
+  [2200] = {
+    '[UNUSED] Pregonero Pierce',
+    nil,
+  },
+  [2201] = {
+    'Asaltante Brumagris',
+    nil,
+  },
+  [2202] = {
+    'Correcostas Brumagris',
+    nil,
+  },
+  [2203] = {
+    'Vidente Brumagris',
+    nil,
+  },
+  [2204] = {
+    'Enredador Brumagris',
+    nil,
+  },
+  [2205] = {
+    'Guerrero Brumagris',
+    nil,
+  },
+  [2206] = {
+    'Cazador Brumagris',
+    nil,
+  },
+  [2207] = {
+    'Oráculo Brumagris',
+    nil,
+  },
+  [2208] = {
+    'Cazamareas Brumagris',
+    nil,
+  },
+  [2209] = {
+    'Guardia de la Muerte Gavin',
+    nil,
+  },
+  [2210] = {
+    'Guardia de la Muerte Royann',
+    nil,
+  },
+  [2211] = {
+    'Montaraz capturado',
+    nil,
+  },
+  [2212] = {
+    'Sátiro Deth\'ryll',
+    nil,
+  },
+  [2213] = {
+    'Acechasombras Deth\'ryll',
+    nil,
+  },
+  [2214] = {
+    'Mortacechadora Lesh',
+    nil,
+  },
+  [2215] = {
+    'Suma ejecutora Darthalia',
+    nil,
+  },
+  [2216] = {
+    'Boticario Lydon',
+    'Sociedad Real de Boticarios',
+  },
+  [2217] = {
+    'Instructor de druidas no-muerto',
+    'Instructor de druidas',
+  },
+  [2218] = {
+    'Instructor de caza no-muerto',
+    'Instructor de cazadores',
+  },
+  [2219] = {
+    'Instructor de chamanes no-muerto',
+    'Instructor de chamanes',
+  },
+  [2220] = {
+    '[UNUSED] Instructor no-muerto de herreros',
+    'Instructora de herrería',
+  },
+  [2221] = {
+    'Instructor de sastrería no-muerto',
+    'Instructor de sastres',
+  },
+  [2222] = {
+    'Instructor de minería no-muerto',
+    'Instructor de minería',
+  },
+  [2223] = {
+    '[UNUSED] Instructor no-muerto de cocineros',
+    'Instructor de cocina',
+  },
+  [2224] = {
+    'Jinete del viento',
+    nil,
+  },
+  [2225] = {
+    nil,
+    'Objetos comerciables',
+  },
+  [2226] = {
+    nil,
+    'Cuidador de murciélagos',
+  },
+  [2228] = {
+    'Teniente Farren Orinelle',
+    nil,
+  },
+  [2231] = {
+    'Reptador de marea pigmeo',
+    nil,
+  },
+  [2232] = {
+    'Reptador de marea',
+    nil,
+  },
+  [2233] = {
+    'Reptador de marea escamado',
+    nil,
+  },
+  [2234] = {
+    'Reptador de arrecife joven',
+    nil,
+  },
+  [2235] = {
+    'Reptador de arrecife',
+    nil,
+  },
+  [2236] = {
+    'Reptador de arrecife enfurecido',
+    nil,
+  },
+  [2237] = {
+    'Patriarca Acechalunas',
+    nil,
+  },
+  [2240] = {
+    'Asaltante de caminos de la Hermandad',
+    nil,
+  },
+  [2241] = {
+    'Ladrón de la Hermandad',
+    nil,
+  },
+  [2242] = {
+    'Espía de la Hermandad',
+    nil,
+  },
+  [2243] = {
+    'Avizor de la Hermandad',
+    nil,
+  },
+  [2244] = {
+    'Mago oscuro de la Hermandad',
+    nil,
+  },
+  [2245] = {
+    'Saboteador de la Hermandad',
+    nil,
+  },
+  [2246] = {
+    'Asesino de la Hermandad',
+    nil,
+  },
+  [2247] = {
+    'Déspota de la Hermandad',
+    nil,
+  },
+  [2248] = {
+    'Yeti de las cuevas',
+    nil,
+  },
+  [2249] = {
+    '[UNUSED] Yeti feroz',
+    nil,
+  },
+  [2250] = {
+    'Yeti montés',
+    nil,
+  },
+  [2251] = {
+    'Yeti gigante',
+    nil,
+  },
+  [2252] = {
+    'Ogro Aplastacresta',
+    nil,
+  },
+  [2253] = {
+    'Tosco Aplastacresta',
+    nil,
+  },
+  [2254] = {
+    'Aplastador Aplastacresta',
+    nil,
+  },
+  [2255] = {
+    'Mago Aplastacresta',
+    nil,
+  },
+  [2256] = {
+    'Déspota Aplastacresta',
+    nil,
+  },
+  [2258] = {
+    'Maggarrak',
+    nil,
+  },
+  [2260] = {
+    'Pícaro de la Hermandad',
+    nil,
+  },
+  [2261] = {
+    'Velador de la Hermandad',
+    nil,
+  },
+  [2263] = {
+    'Alguacil Rutagrana',
+    nil,
+  },
+  [2264] = {
+    'Sastre de Trabalomas',
+    nil,
+  },
+  [2265] = {
+    'Herrero aprendiz de Trabalomas',
+    nil,
+  },
+  [2266] = {
+    'Granjero de Trabalomas',
+    nil,
+  },
+  [2267] = {
+    'Campesino de Trabalomas',
+    nil,
+  },
+  [2268] = {
+    'Lacayo de Trabalomas',
+    nil,
+  },
+  [2269] = {
+    'Minero de Trabalomas',
+    nil,
+  },
+  [2270] = {
+    'Avizor de Trabalomas',
+    nil,
+  },
+  [2271] = {
+    'Guardia escudero de Dalaran',
+    nil,
+  },
+  [2272] = {
+    'Teúrgo de Dalaran',
+    nil,
+  },
+  [2275] = {
+    'Stanley iracundo',
+    nil,
+  },
+  [2276] = {
+    'Magistrado Henry Maleb',
+    nil,
+  },
+  [2277] = {
+    'Maestro cultural Dibbs',
+    nil,
+  },
+  [2279] = {
+    'Guardia de batalla de la Alianza',
+    nil,
+  },
+  [2280] = {
+    'Guardia de batalla de la Horda',
+    nil,
+  },
+  [2281] = {
+    'Baelish Ruinagélida',
+    'Ángel de la Resurrección',
+  },
+  [2282] = {
+    '[PH] Orgrun Fluygélido',
+    'Ángel de la Resurrección',
+  },
+  [2283] = {
+    'Regente Corvozarpa',
+    nil,
+  },
+  [2284] = {
+    'Granjero capturado',
+    nil,
+  },
+  [2285] = {
+    'Conde Remington Bonacresta',
+    'Casa de Nobles',
+  },
+  [2287] = {
+    'Belicista Aplastacresta',
+    nil,
+  },
+  [2288] = {
+    'Skracher Bocalodo',
+    nil,
+  },
+  [2289] = {
+    nil,
+    'Ángel de la Resurrección',
+  },
+  [2290] = {
+    'Bertran Keldraco',
+    'Ángel de la Resurrección',
+  },
+  [2291] = {
+    nil,
+    'Ángel de la Resurrección',
+  },
+  [2292] = {
+    nil,
+    'Ángel de la Resurrección',
+  },
+  [2293] = {
+    nil,
+    'Ángel de la Resurrección',
+  },
+  [2294] = {
+    nil,
+    'Ángel de la Resurrección',
+  },
+  [2295] = {
+    '[UNUSED] Bartok Agarreférreo',
+    'Ángel de la Resurrección',
+  },
+  [2296] = {
+    '[UNUSED] Fulgar Forjahielo',
+    'Ángel de la Resurrección',
+  },
+  [2297] = {
+    '[UNUSED] Kerrik Barbafuego',
+    'Ángel de la Resurrección',
+  },
+  [2298] = {
+    'Dolthar Petrapié',
+    'Ángel de la Resurrección',
+  },
+  [2299] = {
+    'Borgus Brazorrecio',
+    'Maestro de grifos',
+  },
+  [2300] = {
+    nil,
+    'Ángel de la Resurrección',
+  },
+  [2301] = {
+    nil,
+    'Ángel de la Resurrección',
+  },
+  [2302] = {
+    nil,
+    'Maestra de batalla de la Garganta Grito de Guerra',
+  },
+  [2303] = {
+    'Lyranne Melopluma',
+    'Alimentos y bebidas',
+  },
+  [2304] = {
+    'Capitán Ferrocolina',
+    nil,
+  },
+  [2305] = {
+    'Supervisor Bonds',
+    nil,
+  },
+  [2307] = {
+    'Custodio Caice',
+    nil,
+  },
+  [2312] = {
+    nil,
+    '<necesita modelo>',
+  },
+  [2314] = {
+    'Sahvan Sombrasangre',
+    nil,
+  },
+  [2316] = {
+    '[DEPRECATED]Gol\'dir',
+    nil,
+  },
+  [2318] = {
+    'Mago oscuro Argus',
+    nil,
+  },
+  [2319] = {
+    'Zahorí de la Hermandad',
+    nil,
+  },
+  [2321] = {
+    'Volantón zancudo del bosque',
+    nil,
+  },
+  [2322] = {
+    'Zancudo del bosque',
+    nil,
+  },
+  [2323] = {
+    'Zancudo del bosque gigante',
+    nil,
+  },
+  [2324] = {
+    'Soplaviento Bosque Negro',
+    nil,
+  },
+  [2325] = {
+    'Instructor de primeros auxilios no-muerto',
+    'Instructora de primeros auxilios',
+  },
+  [2326] = {
+    nil,
+    'Instructor de primeros auxilios',
+  },
+  [2327] = {
+    nil,
+    'Instructora de primeros auxilios',
+  },
+  [2329] = {
+    nil,
+    'Instructor de primeros auxilios',
+  },
+  [2333] = {
+    'Secuaz Valik',
+    nil,
+  },
+  [2334] = {
+    'Generador de Eventos 001',
+    nil,
+  },
+  [2335] = {
+    'Magistrado Ladoquemado',
+    nil,
+  },
+  [2336] = {
+    'Fanática de la Facción Oscura',
+    nil,
+  },
+  [2337] = {
+    'Clamavacío de la Facción Oscura',
+    nil,
+  },
+  [2338] = {
+    'Discípulo Crepuscular',
+    nil,
+  },
+  [2339] = {
+    'Matón Crepuscular',
+    nil,
+  },
+  [2344] = {
+    'Montaraz de Dun Garok',
+    nil,
+  },
+  [2345] = {
+    'Fusilero de Dun Garok',
+    nil,
+  },
+  [2346] = {
+    'Sacerdote de Dun Garok',
+    nil,
+  },
+  [2347] = {
+    'Grifo salvaje',
+    nil,
+  },
+  [2348] = {
+    'Trepamusgo anciano',
+    nil,
+  },
+  [2349] = {
+    'Trepador domesticado',
+    nil,
+  },
+  [2350] = {
+    'Trepador del bosque',
+    nil,
+  },
+  [2351] = {
+    'Oso contagiado',
+    nil,
+  },
+  [2352] = {
+    'Tabernero Anderson',
+    'Tabernero',
+  },
+  [2354] = {
+    'Oso gris sañoso',
+    nil,
+  },
+  [2356] = {
+    'Oso gris viejo',
+    nil,
+  },
+  [2357] = {
+    nil,
+    'Criadora de caballos',
+  },
+  [2358] = {
+    'Invocador de Dalaran',
+    nil,
+  },
+  [2359] = {
+    'Esclavo elemental',
+    nil,
+  },
+  [2360] = {
+    'Mozo de labranza de Trabalomas',
+    nil,
+  },
+  [2363] = {
+    'Aprendiz Bonamel',
+    nil,
+  },
+  [2364] = {
+    nil,
+    'Camarera',
+  },
+  [2365] = {
+    'Bront Friagrieta',
+    'Carnicero',
+  },
+  [2366] = {
+    'Posadero Kelly',
+    'Camarero',
+  },
+  [2367] = {
+    nil,
+    'Instructor de pesca',
+  },
+  [2368] = {
+    'Acechacostas Espinadaga',
+    nil,
+  },
+  [2369] = {
+    'Cazacostas Espinadaga',
+    nil,
+  },
+  [2370] = {
+    'Vociferadora Espinadaga',
+    nil,
+  },
+  [2371] = {
+    'Sirena Espinadaga',
+    nil,
+  },
+  [2372] = {
+    'Gnoll Morrobarro',
+    nil,
+  },
+  [2373] = {
+    'Chamán Morrobarro',
+    nil,
+  },
+  [2374] = {
+    'Habitabosta Rompeanca',
+    nil,
+  },
+  [2375] = {
+    'Correcostas Rompeanca',
+    nil,
+  },
+  [2376] = {
+    'Oráculo Rompeanca',
+    nil,
+  },
+  [2377] = {
+    'Cazamareas Rompeanca',
+    nil,
+  },
+  [2378] = {
+    nil,
+    'Historiador de la ciudad',
+  },
+  [2379] = {
+    'Custodio Herrera',
+    nil,
+  },
+  [2380] = {
+    nil,
+    'Suministros de alquimia',
+  },
+  [2381] = {
+    nil,
+    'Objetos comerciables',
+  },
+  [2382] = {
+    nil,
+    'Mozo de cuadra',
+  },
+  [2383] = {
+    nil,
+    'Suministros de pesca',
+  },
+  [2384] = {
+    'León de montaña famélico',
+    nil,
+  },
+  [2385] = {
+    'Acechador Trabaloma',
+    nil,
+  },
+  [2386] = {
+    'Guardia de la Alianza',
+    nil,
+  },
+  [2387] = {
+    'Consejero de Trabalomas',
+    nil,
+  },
+  [2388] = {
+    'Tabernero Shay',
+    'Tabernero',
+  },
+  [2389] = {
+    nil,
+    'Cuidador de murciélagos',
+  },
+  [2390] = {
+    'Sangreveneno Aranae',
+    'Instructora de herboristería',
+  },
+  [2391] = {
+    nil,
+    'Instructor de alquimia',
+  },
+  [2393] = {
+    nil,
+    'Mercader',
+  },
+  [2394] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [2397] = {
+    'Derak Ocaso',
+    'Instructor de cocina',
+  },
+  [2398] = {
+    'Tara Mirafría',
+    nil,
+  },
+  [2399] = {
+    nil,
+    'Instructora de sastrería',
+  },
+  [2401] = {
+    'Kayren Sombrollín',
+    'Pertrechos',
+  },
+  [2403] = {
+    'Granjero Getz',
+    nil,
+  },
+  [2404] = {
+    'Herrero Verringtan',
+    nil,
+  },
+  [2405] = {
+    'Guardia de la Muerte de Molino Tarren',
+    nil,
+  },
+  [2406] = {
+    'León de montaña',
+    nil,
+  },
+  [2407] = {
+    'León de montaña descomunal',
+    nil,
+  },
+  [2408] = {
+    'Quijaforte',
+    nil,
+  },
+  [2409] = {
+    nil,
+    'Maestro de grifos',
+  },
+  [2410] = {
+    'Magus Wordeen Vacuamirada',
+    nil,
+  },
+  [2415] = {
+    'Celadora Belamoore',
+    nil,
+  },
+  [2416] = {
+    'Desvalijador Aplastacresta',
+    nil,
+  },
+  [2417] = {
+    'Grel\'borg el Avaro',
+    nil,
+  },
+  [2418] = {
+    'Guardia de la Muerte Samsa',
+    nil,
+  },
+  [2419] = {
+    'Guardia de la Muerte Humbert',
+    nil,
+  },
+  [2421] = {
+    'Rastrazo',
+    nil,
+  },
+  [2423] = {
+    '[DEPRECATED]Lord Aliden Perenolde',
+    nil,
+  },
+  [2424] = {
+    'Banquero de la hermandad',
+    'Banquero de la hermandad',
+  },
+  [2427] = {
+    'Carcelero Eston',
+    nil,
+  },
+  [2428] = {
+    'Carcelero Marlgen',
+    nil,
+  },
+  [2429] = {
+    'Novicio Thaivand',
+    nil,
+  },
+  [2431] = {
+    'Carcelero Borhuin',
+    nil,
+  },
+  [2432] = {
+    nil,
+    'Maestro de grifos',
+  },
+  [2433] = {
+    'Restos de Helcular',
+    nil,
+  },
+  [2434] = {
+    'Asesino enigmático',
+    nil,
+  },
+  [2435] = {
+    'Pregonero de Costasur',
+    nil,
+  },
+  [2436] = {
+    'Granjero Kent',
+    nil,
+  },
+  [2437] = {
+    'Vigilante Bel\'varil',
+    nil,
+  },
+  [2439] = {
+    nil,
+    'Guardia de la ciudad de Ventormenta',
+  },
+  [2440] = {
+    'Asaltante de caminos borracho',
+    nil,
+  },
+  [2441] = {
+    '[UNUSED] Ciudadano de Costasur',
+    nil,
+  },
+  [2442] = {
+    'Vaca',
+    nil,
+  },
+  [2448] = {
+    'Funcionario Horracio Corzalbal',
+    nil,
+  },
+  [2449] = {
+    'Ciudadano Wilkes',
+    nil,
+  },
+  [2450] = {
+    'Minero Hackett',
+    nil,
+  },
+  [2451] = {
+    'Granjera Kalaba',
+    nil,
+  },
+  [2454] = {
+    'Maligno esquelético (forma iracundo)',
+    nil,
+  },
+  [2455] = {
+    'Olivia Ladoquemado',
+    'Banquera',
+  },
+  [2456] = {
+    'Newton Ladoquemado',
+    'Banquera',
+  },
+  [2457] = {
+    'John Ladoquemado',
+    'Banquera',
+  },
+  [2458] = {
+    nil,
+    'Banquera',
+  },
+  [2459] = {
+    nil,
+    'Banquera',
+  },
+  [2460] = {
+    'Barnum Mantopétreo',
+    'Banquera',
+  },
+  [2461] = {
+    'Bailey Mantopétreo',
+    'Banquera',
+  },
+  [2462] = {
+    'Gusano carnívoro',
+    nil,
+  },
+  [2464] = {
+    'Comandante Aggro\'gosh',
+    nil,
+  },
+  [2465] = {
+    'Clarividente Mok\'thardin',
+    nil,
+  },
+  [2466] = {
+    'Montaraz Grugelm',
+    nil,
+  },
+  [2468] = {
+    'Montaraz Thar',
+    nil,
+  },
+  [2469] = {
+    'Montaraz Rharen',
+    nil,
+  },
+  [2470] = {
+    'Vigía Fraizer',
+    'La Guardia Nocturna',
+  },
+  [2472] = {
+    'Draco Flamaescama',
+    nil,
+  },
+  [2475] = {
+    'Perezoso',
+    nil,
+  },
+  [2476] = {
+    'Gosh-Haldir',
+    nil,
+  },
+  [2477] = {
+    nil,
+    'Corredor de la Horda',
+  },
+  [2478] = {
+    'Haren Pezuña Presta',
+    'Corredor de la Horda',
+  },
+  [2479] = {
+    'Fangoso',
+    nil,
+  },
+  [2480] = {
+    nil,
+    'Suministros de alquimia',
+  },
+  [2481] = {
+    nil,
+    'Suministros de alquimia',
+  },
+  [2482] = {
+    nil,
+    'Forjador de armas superior',
+  },
+  [2483] = {
+    nil,
+    'Fabricante de hachas superior',
+  },
+  [2485] = {
+    nil,
+    'Instructora de portal',
+  },
+  [2486] = {
+    'Fin Fizqueta',
+    'Asaltantes Aguasnegras',
+  },
+  [2487] = {
+    'Maestro de flota Cuernomarino',
+    'Asaltantes Aguasnegras',
+  },
+  [2488] = {
+    nil,
+    'Asaltantes Aguasnegras',
+  },
+  [2489] = {
+    'Milstaff Ojotrueno',
+    'Instructora de portal',
+  },
+  [2490] = {
+    'Contramaestre Crazz',
+    'Asaltantes Aguasnegras',
+  },
+  [2491] = {
+    nil,
+    'Asaltantes Aguasnegras',
+  },
+  [2492] = {
+    nil,
+    'Instructora de portal',
+  },
+  [2493] = {
+    'Dizzy el Tuerto',
+    'Asaltantes Aguasnegras',
+  },
+  [2494] = {
+    'Corsario Bloads',
+    nil,
+  },
+  [2498] = {
+    'Loquillo Pinchabujas',
+    nil,
+  },
+  [2500] = {
+    'Capitán Hecklebury Smotts',
+    nil,
+  },
+  [2501] = {
+    'MacKinley "Lobo de Mar"',
+    nil,
+  },
+  [2502] = {
+    'Phillipe el "Trémulo"',
+    nil,
+  },
+  [2503] = {
+    'Supervisor de Trabalomas',
+    nil,
+  },
+  [2504] = {
+    nil,
+    'Bibliotecario',
+  },
+  [2505] = {
+    'Quijaforte marino',
+    nil,
+  },
+  [2506] = {
+    'Montaraz Harn',
+    nil,
+  },
+  [2507] = {
+    'Montaraz Uthan',
+    nil,
+  },
+  [2508] = {
+    'Montaraz Wuar',
+    nil,
+  },
+  [2509] = {
+    'Montaraz Risco',
+    nil,
+  },
+  [2510] = {
+    'Montaraz Ozmok',
+    nil,
+  },
+  [2511] = {
+    'Montaraz Bludd',
+    nil,
+  },
+  [2512] = {
+    'Montaraz Roghan',
+    nil,
+  },
+  [2513] = {
+    'Montaraz Janha',
+    nil,
+  },
+  [2514] = {
+    'Montaraz Modax',
+    nil,
+  },
+  [2515] = {
+    'Montaraz Fazgard',
+    nil,
+  },
+  [2516] = {
+    'Montaraz Kamdar',
+    nil,
+  },
+  [2517] = {
+    'Montaraz Langarr',
+    nil,
+  },
+  [2518] = {
+    'Montaraz Iraz',
+    nil,
+  },
+  [2520] = {
+    'Gólem teledirigido',
+    nil,
+  },
+  [2521] = {
+    'Gorila Cieloleno',
+    nil,
+  },
+  [2522] = {
+    'Acechador de Jaguero',
+    nil,
+  },
+  [2523] = {
+    'Tótem abrasador',
+    nil,
+  },
+  [2524] = {
+    'Montaraz Haggis',
+    nil,
+  },
+  [2525] = {
+    'Montaraz Barn',
+    nil,
+  },
+  [2526] = {
+    'Montaraz Morlic',
+    nil,
+  },
+  [2527] = {
+    'Montaraz Angst',
+    nil,
+  },
+  [2528] = {
+    'Montaraz Haggil',
+    nil,
+  },
+  [2529] = {
+    'Hijo de Arugal',
+    nil,
+  },
+  [2530] = {
+    nil,
+    'Enviado de Zanzil',
+  },
+  [2531] = {
+    'Esbirro de Doane',
+    nil,
+  },
+  [2534] = {
+    'Zanzil el Desterrado',
+    nil,
+  },
+  [2535] = {
+    'Maury "Patapalo" Wilkins',
+    nil,
+  },
+  [2536] = {
+    'Jon-Jon el Cuervo',
+    nil,
+  },
+  [2537] = {
+    'Chucky "Diez Pulgares"',
+    nil,
+  },
+  [2540] = {
+    'Serpiente de Molino Ámbar',
+    nil,
+  },
+  [2542] = {
+    'Catelyn la Afilada',
+    'Asaltantes Aguasnegras',
+  },
+  [2543] = {
+    'Archimago Ansirem Tejerruna',
+    nil,
+  },
+  [2544] = {
+    'Reptador de las arenas del sur',
+    nil,
+  },
+  [2545] = {
+    '"El Guapo" Duncan',
+    nil,
+  },
+  [2546] = {
+    'Maestro de flota Firallon',
+    nil,
+  },
+  [2547] = {
+    'Parchierro',
+    nil,
+  },
+  [2548] = {
+    'Capitán Sinquilla',
+    nil,
+  },
+  [2549] = {
+    'Garr Fausal',
+    nil,
+  },
+  [2550] = {
+    'Capitán Aguasmansas',
+    nil,
+  },
+  [2552] = {
+    'Trol Secacorteza',
+    nil,
+  },
+  [2553] = {
+    'Taumaturgo umbrío Secacorteza',
+    nil,
+  },
+  [2554] = {
+    'Lanzahachas Secacorteza',
+    nil,
+  },
+  [2555] = {
+    'Médico brujo Secacorteza',
+    nil,
+  },
+  [2556] = {
+    'Rebanacabezas Secacorteza',
+    nil,
+  },
+  [2557] = {
+    'Cazador de las Sombras Secacorteza',
+    nil,
+  },
+  [2558] = {
+    'Rabioso Secacorteza',
+    nil,
+  },
+  [2559] = {
+    'Zancudo de las Tierras Altas',
+    nil,
+  },
+  [2560] = {
+    'Descarnador de las Tierras Altas',
+    nil,
+  },
+  [2561] = {
+    'Acechacarne de las Tierras Altas',
+    nil,
+  },
+  [2562] = {
+    'Ogro Puño de Roca',
+    nil,
+  },
+  [2563] = {
+    'Trepador de las llanuras',
+    nil,
+  },
+  [2564] = {
+    'Déspota Puño de Roca',
+    nil,
+  },
+  [2565] = {
+    'Trepador de las llanuras gigante',
+    nil,
+  },
+  [2566] = {
+    'Tosco Puño de Roca',
+    nil,
+  },
+  [2567] = {
+    'Magus Puño de Roca',
+    nil,
+  },
+  [2569] = {
+    'Aplastador Puño de Roca',
+    nil,
+  },
+  [2570] = {
+    'Chamán Puño de Roca',
+    nil,
+  },
+  [2571] = {
+    'Señor Puño de Roca',
+    nil,
+  },
+  [2572] = {
+    'Kóbold Mostacho Seco',
+    nil,
+  },
+  [2573] = {
+    'Perito Mostacho Seco',
+    nil,
+  },
+  [2574] = {
+    'Cavador Mostacho Seco',
+    nil,
+  },
+  [2575] = {
+    'Suministrador Hierro Negro',
+    nil,
+  },
+  [2577] = {
+    'Taumaturgo umbrío Hierro Negro',
+    nil,
+  },
+  [2578] = {
+    'Águila ratonera de meseta joven',
+    nil,
+  },
+  [2579] = {
+    'Águila ratonera de meseta',
+    nil,
+  },
+  [2580] = {
+    'Águila ratonera de meseta anciana',
+    nil,
+  },
+  [2581] = {
+    'Miliciano Dabyrie',
+    nil,
+  },
+  [2582] = {
+    'Obrero Dabyrie',
+    nil,
+  },
+  [2583] = {
+    'Cazatrols de Stromgarde',
+    nil,
+  },
+  [2584] = {
+    'Defensor de Stromgarde',
+    nil,
+  },
+  [2585] = {
+    'Soldado de Stromgarde',
+    nil,
+  },
+  [2586] = {
+    'Bandolero de la Hermandad',
+    nil,
+  },
+  [2587] = {
+    'Acechacaminos de la Hermandad',
+    nil,
+  },
+  [2588] = {
+    'Merodeador de la Hermandad',
+    nil,
+  },
+  [2589] = {
+    'Mercenario de la Hermandad',
+    nil,
+  },
+  [2590] = {
+    'Conjurador de la Hermandad',
+    nil,
+  },
+  [2591] = {
+    'Magus de la Hermandad',
+    nil,
+  },
+  [2592] = {
+    'Exiliado resonador',
+    nil,
+  },
+  [2593] = {
+    'Elemental de piedra férrea',
+    nil,
+  },
+  [2594] = {
+    'Tardo',
+    nil,
+  },
+  [2595] = {
+    'Asaltante Espinadaga',
+    nil,
+  },
+  [2596] = {
+    'Hechicera Espinadaga',
+    nil,
+  },
+  [2597] = {
+    nil,
+    'Líder de la Hermandad',
+  },
+  [2598] = {
+    nil,
+    'Brujo del Consejo de la Sombra',
+  },
+  [2599] = {
+    nil,
+    'Guardaespaldas',
+  },
+  [2601] = {
+    'Panzatroz',
+    nil,
+  },
+  [2602] = {
+    'Ruul Onapiedra',
+    nil,
+  },
+  [2604] = {
+    'Molok el Triturador',
+    nil,
+  },
+  [2605] = {
+    'Zalas Secacorteza',
+    'Líder de banda guerrera',
+  },
+  [2606] = {
+    'Nimar el Destripador',
+    'Líder de banda guerrera',
+  },
+  [2607] = {
+    'Príncipe Galen Aterratrols',
+    nil,
+  },
+  [2608] = {
+    'Comandante Amaren',
+    nil,
+  },
+  [2609] = {
+    'Geomántico Dagasílex',
+    nil,
+  },
+  [2610] = {
+    nil,
+    'Asaltantes Aguasnegras',
+  },
+  [2612] = {
+    'Teniente Valeroso',
+    nil,
+  },
+  [2614] = {
+    'Roboalarma de las Fuerzas Aéreas (Alianza)',
+    nil,
+  },
+  [2615] = {
+    'Roboalarma de las Fuerzas Aéreas (Horda)',
+    nil,
+  },
+  [2616] = {
+    'Corsario Groy',
+    nil,
+  },
+  [2617] = {
+    '[UNUSED] Archimago Detrae',
+    nil,
+  },
+  [2618] = {
+    'Peón de Sentencia',
+    nil,
+  },
+  [2619] = {
+    'Bruto de Sentencia',
+    nil,
+  },
+  [2620] = {
+    'Perro de la pradera',
+    nil,
+  },
+  [2621] = {
+    'Guardián de Sentencia',
+    nil,
+  },
+  [2622] = {
+    'Astuto Garrett',
+    'Artículos sospechosos',
+  },
+  [2623] = {
+    'Espíritu de lo antiguo',
+    nil,
+  },
+  [2625] = {
+    'Viznik Limpiaoro',
+    'Banquera',
+  },
+  [2626] = {
+    'Viejo Heming',
+    'Suministros de pesca',
+  },
+  [2627] = {
+    'Grarnik Cortefino',
+    'Instructora de sastrería',
+  },
+  [2628] = {
+    'Trabajador de Dalaran',
+    nil,
+  },
+  [2630] = {
+    'Tótem Nexo Terrestre',
+    nil,
+  },
+  [2634] = {
+    'Princesa Poobah',
+    nil,
+  },
+  [2635] = {
+    'Crocolisco Quijaforte mayor',
+    nil,
+  },
+  [2636] = {
+    'Marinero de cubierta Aguasnegras',
+    nil,
+  },
+  [2637] = {
+    'Bomba de la Hermandad',
+    nil,
+  },
+  [2638] = {
+    'Espectro de la Hermandad',
+    nil,
+  },
+  [2639] = {
+    'Lanzahachas Vilrama',
+    nil,
+  },
+  [2640] = {
+    'Médico brujo Vilrama',
+    nil,
+  },
+  [2641] = {
+    'Rebanacabezas Vilrama',
+    nil,
+  },
+  [2642] = {
+    'Taumaturgo umbrío Vilrama',
+    nil,
+  },
+  [2643] = {
+    'Rabioso Vilrama',
+    nil,
+  },
+  [2644] = {
+    'Desollador Vilrama',
+    nil,
+  },
+  [2645] = {
+    'Cazador de las Sombras Vilrama',
+    nil,
+  },
+  [2646] = {
+    'Bebesangre Vilrama',
+    nil,
+  },
+  [2647] = {
+    'Comealmas Vilrama',
+    nil,
+  },
+  [2648] = {
+    'Guardia Aman\'zasi Vilrama',
+    nil,
+  },
+  [2649] = {
+    'Arrancacabelleras Secacorteza',
+    nil,
+  },
+  [2650] = {
+    'Zelote Secacorteza',
+    nil,
+  },
+  [2651] = {
+    'Desollador Secacorteza',
+    nil,
+  },
+  [2652] = {
+    'Sangreveneno Secacorteza',
+    nil,
+  },
+  [2653] = {
+    'Sádico Secacorteza',
+    nil,
+  },
+  [2654] = {
+    'Clamador Secacorteza',
+    nil,
+  },
+  [2655] = {
+    'Lodo verde',
+    nil,
+  },
+  [2656] = {
+    'Moco de jade',
+    nil,
+  },
+  [2657] = {
+    'Picovaja adiestrado',
+    nil,
+  },
+  [2658] = {
+    'Grifo Picovaja',
+    nil,
+  },
+  [2659] = {
+    'Señor del Cielo Picovaja',
+    nil,
+  },
+  [2663] = {
+    nil,
+    'Suministros para piratas',
+  },
+  [2664] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [2665] = {
+    'Bomba de proximidad',
+    nil,
+  },
+  [2667] = {
+    'Guarda de la pereza',
+    nil,
+  },
+  [2668] = {
+    'Danielle Puntillas',
+    'Suministros de sastrería',
+  },
+  [2669] = {
+    'Sheri Puntillas',
+    'Suministros de sastrería',
+  },
+  [2670] = {
+    'Xizk Cortefino',
+    'Suministros de sastrería',
+  },
+  [2671] = {
+    'Ardilla mecánica',
+    nil,
+  },
+  [2672] = {
+    'Blandengue Crosby',
+    'Suministros de sastrería',
+  },
+  [2673] = {
+    'Muñeco-diana',
+    nil,
+  },
+  [2674] = {
+    'Muñeco-diana avanzado',
+    nil,
+  },
+  [2675] = {
+    'Oveja explosiva',
+    nil,
+  },
+  [2676] = {
+    'Segador de la cosecha compacto',
+    nil,
+  },
+  [2678] = {
+    'Dragonizo mecánico',
+    nil,
+  },
+  [2679] = {
+    'Wenna Barbasedosa',
+    'Vendedora de artículos especiales',
+  },
+  [2680] = {
+    'Lobato Vilrama',
+    nil,
+  },
+  [2681] = {
+    'Lobo de asalto Vilrama',
+    nil,
+  },
+  [2682] = {
+    'Fradd Cambioveloz',
+    'Suministros de ingeniería',
+  },
+  [2683] = {
+    'Namdo Silvabín',
+    'Suministros de ingeniería',
+  },
+  [2684] = {
+    'Rizz Tornillosuelto',
+    'Suministros de ingeniería',
+  },
+  [2685] = {
+    'Mazk Tirocertero',
+    'Suministros de ingeniería',
+  },
+  [2686] = {
+    'Guardia del linaje Secacorteza',
+    nil,
+  },
+  [2687] = {
+    'Gnaz Flamerrada',
+    'Suministros de ingeniería',
+  },
+  [2688] = {
+    'Rupo Retramuelle',
+    'Suministros de ingeniería',
+  },
+  [2689] = {
+    'Gigante de la colina',
+    nil,
+  },
+  [2690] = {
+    'Celador gigante de la colina',
+    nil,
+  },
+  [2691] = {
+    'Avanzada Vallealto',
+    nil,
+  },
+  [2692] = {
+    'Explorador Vallealto',
+    nil,
+  },
+  [2693] = {
+    'Tirador Vallealto',
+    nil,
+  },
+  [2694] = {
+    'Forestal Vallealto',
+    nil,
+  },
+  [2697] = {
+    nil,
+    'Suministros de peletería',
+  },
+  [2698] = {
+    nil,
+    'Suministros de peletería',
+  },
+  [2699] = {
+    nil,
+    'Suministros de peletería',
+  },
+  [2700] = {
+    'Capitana Nials',
+    nil,
+  },
+  [2701] = {
+    'Ogro Rotapolvo',
+    nil,
+  },
+  [2702] = {
+    'Instructor de manáfagos',
+    nil,
+  },
+  [2704] = {
+    nil,
+    'Maestra de armas',
+  },
+  [2705] = {
+    'Maestro cervecero Bilger',
+    nil,
+  },
+  [2707] = {
+    nil,
+    'La Reina del Veneno',
+  },
+  [2708] = {
+    'Archimago Malin',
+    nil,
+  },
+  [2709] = {
+    'Instructor de diablillos',
+    nil,
+  },
+  [2710] = {
+    'Instructor de abisarios',
+    nil,
+  },
+  [2714] = {
+    'Mensajera Renegada',
+    nil,
+  },
+  [2715] = {
+    'Tosco Rotapolvo',
+    nil,
+  },
+  [2716] = {
+    'Cazavermis Rotapolvo',
+    nil,
+  },
+  [2717] = {
+    'Aplastador Rotapolvo',
+    nil,
+  },
+  [2718] = {
+    'Chamán Rotapolvo',
+    nil,
+  },
+  [2719] = {
+    'Señor Rotapolvo',
+    nil,
+  },
+  [2720] = {
+    'Ogro mago Rotapolvo',
+    nil,
+  },
+  [2721] = {
+    'Guardaespaldas Renegado',
+    nil,
+  },
+  [2723] = {
+    'Gólem de piedra',
+    nil,
+  },
+  [2725] = {
+    'Cría hirviente',
+    nil,
+  },
+  [2726] = {
+    'Guardián agostado',
+    nil,
+  },
+  [2727] = {
+    'Coyote del risco',
+    nil,
+  },
+  [2728] = {
+    'Coyote del risco feral',
+    nil,
+  },
+  [2729] = {
+    'Coyote del risco mayor',
+    nil,
+  },
+  [2730] = {
+    'Coyote del risco rabioso',
+    nil,
+  },
+  [2731] = {
+    'Acechador de la cresta',
+    nil,
+  },
+  [2732] = {
+    'Cazadora de la cresta',
+    nil,
+  },
+  [2733] = {
+    'Boticario Jorell',
+    nil,
+  },
+  [2734] = {
+    'Patriarca acechador de la cresta',
+    nil,
+  },
+  [2735] = {
+    'Elemental de roca inferior',
+    nil,
+  },
+  [2736] = {
+    'Elemental de roca superior',
+    nil,
+  },
+  [2738] = {
+    'Caballista de Stromgarde',
+    nil,
+  },
+  [2739] = {
+    'Tunelador de Forjatiniebla',
+    nil,
+  },
+  [2740] = {
+    'Tejeoscuro de Forjatiniebla',
+    nil,
+  },
+  [2741] = {
+    'Excavador de Forjatiniebla',
+    nil,
+  },
+  [2742] = {
+    'Corista de Forjatiniebla',
+    nil,
+  },
+  [2743] = {
+    'Guerrero de Forjatiniebla',
+    nil,
+  },
+  [2744] = {
+    'Comandante de Forjatiniebla',
+    nil,
+  },
+  [2745] = {
+    'Embajador Infernus',
+    nil,
+  },
+  [2746] = {
+    'Celador Grutacanto',
+    nil,
+  },
+  [2748] = {
+    nil,
+    'Vigía de piedra antiguo',
+  },
+  [2749] = {
+    'Barricada',
+    nil,
+  },
+  [2751] = {
+    'Gólem de guerra',
+    nil,
+  },
+  [2752] = {
+    'Estruendor',
+    nil,
+  },
+  [2756] = {
+    'Chao Ju',
+    nil,
+  },
+  [2757] = {
+    'Latigoscuro',
+    nil,
+  },
+  [2760] = {
+    'Exiliado ardiente',
+    nil,
+  },
+  [2761] = {
+    'Exiliado acuoso',
+    nil,
+  },
+  [2762] = {
+    'Exiliado tronador',
+    nil,
+  },
+  [2766] = {
+    'Lolo el Oteador',
+    'Asaltantes Aguasnegras',
+  },
+  [2767] = {
+    'Contramaestre Nizlix',
+    'Asaltantes Aguasnegras',
+  },
+  [2768] = {
+    'Profesor Fiseltor',
+    'Asaltantes Aguasnegras',
+  },
+  [2769] = {
+    'Capitán Tripacero',
+    'Asaltantes Aguasnegras',
+  },
+  [2770] = {
+    'Sebo',
+    nil,
+  },
+  [2771] = {
+    'Bombo Vil',
+    nil,
+  },
+  [2772] = {
+    'Korin Vil',
+    nil,
+  },
+  [2774] = {
+    nil,
+    'Asaltantes Aguasnegras',
+  },
+  [2775] = {
+    'Maleante Espinadaga',
+    nil,
+  },
+  [2776] = {
+    'Marea vengativa',
+    nil,
+  },
+  [2778] = {
+    'Marinero de cubierta Moije',
+    'Asaltantes Aguasnegras',
+  },
+  [2779] = {
+    'Príncipe Nazjak',
+    nil,
+  },
+  [2780] = {
+    'Custodio Nevlin',
+    nil,
+  },
+  [2781] = {
+    'Custodio Weston',
+    nil,
+  },
+  [2782] = {
+    'Custodio Alaric',
+    nil,
+  },
+  [2783] = {
+    'Marez Cogulla',
+    nil,
+  },
+  [2784] = {
+    'Rey Magni Barbabronce',
+    'Señor de Forjaz',
+  },
+  [2785] = {
+    'Theldurin el Perdido',
+    nil,
+  },
+  [2786] = {
+    'Gerrig Agarrahueso',
+    nil,
+  },
+  [2788] = {
+    'Aprendiz Kryten',
+    nil,
+  },
+  [2790] = {
+    'Gran mampostero Marmolez',
+    'Gremio Real de Picapedreros',
+  },
+  [2791] = {
+    'Elemental de roca iracundo',
+    nil,
+  },
+  [2793] = {
+    'Kor\'gresh Ira Helada',
+    nil,
+  },
+  [2794] = {
+    'Guardián invocado',
+    nil,
+  },
+  [2795] = {
+    'Lenny "Dedillos" McCoy',
+    nil,
+  },
+  [2797] = {
+    'Hovrak Sacatripas',
+    nil,
+  },
+  [2798] = {
+    'Pand Amarrapiedra',
+    'Instructora de primeros auxilios',
+  },
+  [2801] = {
+    nil,
+    'Mercader de canje de bebés múrloc',
+  },
+  [2803] = {
+    nil,
+    'Pertrechos',
+  },
+  [2804] = {
+    'Kurden Zarpasangrante',
+    'Maestra de batalla de la Garganta Grito de Guerra',
+  },
+  [2805] = {
+    nil,
+    'Componentes',
+  },
+  [2806] = {
+    'Fardo',
+    'Pertrechos',
+  },
+  [2807] = {
+    'Clamaolas Espinadaga',
+    nil,
+  },
+  [2808] = {
+    nil,
+    'Pertrechos',
+  },
+  [2809] = {
+    'Jabalí',
+    nil,
+  },
+  [2810] = {
+    nil,
+    'Mercader superior',
+  },
+  [2812] = {
+    'Drovanar Brevaforte',
+    'Suministros de alquimia',
+  },
+  [2813] = {
+    nil,
+    'Ángel de la Resurrección',
+  },
+  [2814] = {
+    'Narj Tajofondo',
+    'Carnicero',
+  },
+  [2815] = {
+    '[UNUSED] Teresa Costa',
+    'Ángel de la Resurrección',
+  },
+  [2816] = {
+    nil,
+    'Suministros de peletería',
+  },
+  [2818] = {
+    nil,
+    'Carnicero superior',
+  },
+  [2819] = {
+    nil,
+    'Suministros de peletería',
+  },
+  [2820] = {
+    nil,
+    'Pertrechos',
+  },
+  [2821] = {
+    nil,
+    'Objetos comerciables',
+  },
+  [2829] = {
+    'Águila ratonera famélica',
+    nil,
+  },
+  [2830] = {
+    'Águila ratonera sedienta',
+    nil,
+  },
+  [2831] = {
+    'Águila ratonera gigante',
+    nil,
+  },
+  [2832] = {
+    'Nixxrax Vasolleno',
+    'Alimentos y bebidas',
+  },
+  [2833] = {
+    'DEBUG - Maestro grifo del chismorreo',
+    'Maestro de grifos',
+  },
+  [2834] = {
+    'Myizz Buenapieza',
+    'Instructor de pesca',
+  },
+  [2835] = {
+    nil,
+    'Maestro de grifos',
+  },
+  [2836] = {
+    'Brikk Finoficio',
+    'Instructora de herrería',
+  },
+  [2837] = {
+    nil,
+    'Instructor de alquimia',
+  },
+  [2838] = {
+    'Craz Chispaz',
+    'Mercader de cohetes pirotécnicos',
+  },
+  [2839] = {
+    nil,
+    'Fabricante de arcos superior',
+  },
+  [2840] = {
+    'Kizz Golpeseco',
+    'Vendedor de mazas',
+  },
+  [2842] = {
+    nil,
+    'Pescador superior',
+  },
+  [2843] = {
+    nil,
+    'Vendedora de armas blancas',
+  },
+  [2844] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [2845] = {
+    nil,
+    'Armero superior',
+  },
+  [2846] = {
+    'Blixrez Cortefino',
+    'Suministros de peletería',
+  },
+  [2847] = {
+    'Jansen Bajoleño',
+    'Suministros de herrería',
+  },
+  [2848] = {
+    'Glyx Buenamezcla',
+    'Suministros de alquimia',
+  },
+  [2849] = {
+    'Qixdi Cortefino',
+    'Armadura de tela y accesorios',
+  },
+  [2850] = {
+    'Diente partido',
+    nil,
+  },
+  [2851] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [2852] = {
+    'Druida de la Garfa esclavizado',
+    nil,
+  },
+  [2853] = {
+    'Druida de la Garfa liberado',
+    nil,
+  },
+  [2855] = {
+    nil,
+    'Aprendiza sastre',
+  },
+  [2856] = {
+    nil,
+    'Instructora de herboristería',
+  },
+  [2857] = {
+    nil,
+    'Aprendiza ingeniera',
+  },
+  [2858] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [2859] = {
+    nil,
+    'Maestro de grifos',
+  },
+  [2860] = {
+    'Sigrun Extracero',
+    nil,
+  },
+  [2861] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [2862] = {
+    'Guerrero 21',
+    nil,
+  },
+  [2863] = {
+    'Guerrero 22',
+    nil,
+  },
+  [2864] = {
+    'Guerrero 23',
+    nil,
+  },
+  [2865] = {
+    'Guerrero 24',
+    nil,
+  },
+  [2866] = {
+    'Guerrero 26',
+    nil,
+  },
+  [2867] = {
+    'Guerrero 27',
+    nil,
+  },
+  [2868] = {
+    'Guerrero 28',
+    nil,
+  },
+  [2869] = {
+    'Guerrero 29',
+    nil,
+  },
+  [2870] = {
+    nil,
+    'Instructora de lobos',
+  },
+  [2871] = {
+    '[PH] Instructor de zancaaltas',
+    nil,
+  },
+  [2872] = {
+    nil,
+    'Instructor de arañas',
+  },
+  [2873] = {
+    '[PH] Instructor de raptores',
+    nil,
+  },
+  [2874] = {
+    '[PH] Domador de caballos',
+    nil,
+  },
+  [2875] = {
+    '[PH] Instructor de gorilas',
+    nil,
+  },
+  [2877] = {
+    '[PH] Instructor de reptadores',
+    nil,
+  },
+  [2878] = {
+    nil,
+    'Maestra de establos',
+  },
+  [2879] = {
+    nil,
+    'Maestra de establos',
+  },
+  [2880] = {
+    nil,
+    'Instructor de jabalíes',
+  },
+  [2881] = {
+    nil,
+    'Instructor de osos',
+  },
+  [2883] = {
+    '[UNUSED] [PH] Instructor de caza de monstruos',
+    'Instructor en el arte de matar monstruos',
+  },
+  [2885] = {
+    '[UNUSED] [PH] Instructor de habilidades de magia',
+    'Instructor de habilidades mágicas',
+  },
+  [2886] = {
+    'Instructor de habilidades de ataque a distancia',
+    'Instructor de habilidades de ataque a distancia',
+  },
+  [2887] = {
+    'Exiliado centelleante',
+    nil,
+  },
+  [2889] = {
+    'Trogg Grutacanto',
+    nil,
+  },
+  [2890] = {
+    'Explorador Grutacanto',
+    nil,
+  },
+  [2891] = {
+    'Aplastacráneos Grutacanto',
+    nil,
+  },
+  [2892] = {
+    'Vidente Grutacanto',
+    nil,
+  },
+  [2893] = {
+    'Cascahuesos Grutacanto',
+    nil,
+  },
+  [2894] = {
+    'Chamán Grutacanto',
+    nil,
+  },
+  [2896] = {
+    '[PH] Instructora de poderes mágicos de la Alianza',
+    nil,
+  },
+  [2899] = {
+    '[PH] Instructor de resistencia de la Alianza',
+    nil,
+  },
+  [2906] = {
+    'Guerrero Rotapolvo',
+    nil,
+  },
+  [2907] = {
+    'Místico Rotapolvo',
+    nil,
+  },
+  [2908] = {
+    nil,
+    'Pertrechos',
+  },
+  [2909] = {
+    'Grez Piemartillo',
+    nil,
+  },
+  [2910] = {
+    nil,
+    'Liga de Expedicionarios',
+  },
+  [2911] = {
+    'Arqueólogo Gargavino',
+    'Liga de Expedicionarios',
+  },
+  [2912] = {
+    'Arqueólogo Jefe Mostachogris',
+    'Liga de Expedicionarios',
+  },
+  [2913] = {
+    '[Deprecated for 4.x]Arqueóloga Hollee',
+    'Liga de Expedicionarios',
+  },
+  [2914] = {
+    'Culebra',
+    nil,
+  },
+  [2915] = {
+    'Espíritu de Piemartillo',
+    nil,
+  },
+  [2916] = {
+    'Karnik el Historiador',
+    nil,
+  },
+  [2917] = {
+    'Prospector Tripirrem',
+    'Liga de Expedicionarios',
+  },
+  [2918] = {
+    'Consejero Belgrum',
+    nil,
+  },
+  [2919] = {
+    'Guardián Fam\'retor',
+    nil,
+  },
+  [2920] = {
+    'Lucien Borlallave',
+    nil,
+  },
+  [2923] = {
+    'Melenargenta sarnoso',
+    nil,
+  },
+  [2924] = {
+    'Lobo melenargenta',
+    nil,
+  },
+  [2925] = {
+    'Aullador melenargenta',
+    nil,
+  },
+  [2926] = {
+    'Acechador melenargenta',
+    nil,
+  },
+  [2927] = {
+    'Lechubestia sañosa',
+    nil,
+  },
+  [2928] = {
+    'Lechubestia primitiva',
+    nil,
+  },
+  [2929] = {
+    'Lechubestia salvaje',
+    nil,
+  },
+  [2930] = {
+    'Centinela Glynda Nal\'Shea',
+    nil,
+  },
+  [2932] = {
+    'Magregan Sombraprofunda',
+    nil,
+  },
+  [2934] = {
+    'Vigilante Bel\'dugur',
+    nil,
+  },
+  [2935] = {
+    '[PH] Maestro de demonios',
+    'Instructor de demonios',
+  },
+  [2937] = {
+    'Dagun el Voraz',
+    nil,
+  },
+  [2938] = {
+    'Cazador Aldric',
+    'Instructor de osos',
+  },
+  [2939] = {
+    nil,
+    'Instructor de jabalíes',
+  },
+  [2940] = {
+    nil,
+    'Instructor de aves',
+  },
+  [2941] = {
+    nil,
+    'Maestro de grifos',
+  },
+  [2942] = {
+    nil,
+    'Instructora de lobos',
+  },
+  [2946] = {
+    'Marioneta de Helcular',
+    nil,
+  },
+  [2947] = {
+    'Harken Tótem de Viento',
+    nil,
+  },
+  [2948] = {
+    'Mull Tronacuerno',
+    nil,
+  },
+  [2949] = {
+    'Peletero Crines Pálidas',
+    nil,
+  },
+  [2950] = {
+    'Desollador Crines Pálidas',
+    nil,
+  },
+  [2951] = {
+    'Furtivo Crines Pálidas',
+    nil,
+  },
+  [2952] = {
+    'Invasores Erizapúas',
+    nil,
+  },
+  [2953] = {
+    'Chamán Erizapúas',
+    nil,
+  },
+  [2954] = {
+    'Jabaguerrero Erizapúas',
+    nil,
+  },
+  [2955] = {
+    'Zancudo de llanura',
+    nil,
+  },
+  [2956] = {
+    'Zancudo de llanura adulto',
+    nil,
+  },
+  [2957] = {
+    'Zancudo de llanura viejo',
+    nil,
+  },
+  [2958] = {
+    'Lobo de pradera',
+    nil,
+  },
+  [2959] = {
+    'Acechador de pradera',
+    nil,
+  },
+  [2960] = {
+    'Lobo alfa de pradera',
+    nil,
+  },
+  [2961] = {
+    'Puma montés',
+    nil,
+  },
+  [2962] = {
+    'Arpía Viento Furioso',
+    nil,
+  },
+  [2963] = {
+    'Ventobruja Viento Furioso',
+    nil,
+  },
+  [2964] = {
+    'Hechicera Viento Furioso',
+    nil,
+  },
+  [2965] = {
+    'Matriarca Viento Furioso',
+    nil,
+  },
+  [2966] = {
+    'Jabaguerrero joven',
+    nil,
+  },
+  [2967] = {
+    'Centauro Galak',
+    nil,
+  },
+  [2968] = {
+    'Avanzado Galak',
+    nil,
+  },
+  [2969] = {
+    'Aguilón nervudo',
+    nil,
+  },
+  [2970] = {
+    'Aguilón',
+    nil,
+  },
+  [2971] = {
+    'Aguilón garrudo',
+    nil,
+  },
+  [2972] = {
+    'Cría de kodo',
+    nil,
+  },
+  [2973] = {
+    'Kodo dominante',
+    nil,
+  },
+  [2974] = {
+    'Matriarca kodo',
+    nil,
+  },
+  [2975] = {
+    'Contratista de Ventura y Cía.',
+    nil,
+  },
+  [2976] = {
+    'Obrero de Ventura y Cía.',
+    nil,
+  },
+  [2977] = {
+    'Capataz de Ventura y Cía.',
+    nil,
+  },
+  [2978] = {
+    'Trabajador de Ventura y Cía.',
+    nil,
+  },
+  [2979] = {
+    'Controlador de Ventura y Cía.',
+    nil,
+  },
+  [2980] = {
+    'Grull Viento de Halcón',
+    nil,
+  },
+  [2981] = {
+    'Jefe Viento de Halcón',
+    nil,
+  },
+  [2982] = {
+    'Vidente Lenguagris',
+    nil,
+  },
+  [2983] = {
+    'Visión de las praderas',
+    nil,
+  },
+  [2984] = {
+    'Vidente Corredor Sabio',
+    nil,
+  },
+  [2985] = {
+    'Ruul Garraguilar',
+    nil,
+  },
+  [2986] = {
+    '[Deprecated for 4.x]Dorn Acechallanos',
+    nil,
+  },
+  [2987] = {
+    'Eyahn Garra de Águila',
+    nil,
+  },
+  [2988] = {
+    'Morin Acechanubes',
+    nil,
+  },
+  [2989] = {
+    'Cavador de Bael\'dun',
+    nil,
+  },
+  [2990] = {
+    'Tasador de Bael\'dun',
+    nil,
+  },
+  [2991] = {
+    'Abuela Viento de Halcón',
+    nil,
+  },
+  [2992] = {
+    'Resguardo de sanación V',
+    nil,
+  },
+  [2993] = {
+    'Baine Pezuña de Sangre',
+    nil,
+  },
+  [2994] = {
+    'Espíritu ancestral',
+    nil,
+  },
+  [2995] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [2996] = {
+    nil,
+    'Banquera',
+  },
+  [2997] = {
+    'Jyn Pezuña Pétrea',
+    'Mercader de armas',
+  },
+  [2998] = {
+    'Karn Pezuña Pétrea',
+    'Instructora de herrería',
+  },
+  [2999] = {
+    'Taur Pezuña Pétrea',
+    'Suministros de herrería',
+  },
+  [3000] = {
+    nil,
+    'Mercader de armas',
+  },
+  [3001] = {
+    'Brek Pezuña Pétrea',
+    'Instructor de minería',
+  },
+  [3002] = {
+    'Kurm Pezuña Pétrea',
+    'Suministros de minería',
+  },
+  [3003] = {
+    'Fyr Correbruma',
+    'Vendedora de pan',
+  },
+  [3004] = {
+    nil,
+    'Instructora de sastrería',
+  },
+  [3005] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [3007] = {
+    nil,
+    'Instructor de peletería',
+  },
+  [3008] = {
+    nil,
+    'Aprendiz peletero',
+  },
+  [3009] = {
+    'Bena Pezuña Invernal',
+    'Instructor de alquimia',
+  },
+  [3010] = {
+    'Mani Pezuña Invernal',
+    'Suministros de alquimia',
+  },
+  [3011] = {
+    'Teg Caminalba',
+    'Instructora de encantamiento',
+  },
+  [3012] = {
+    'Nata Caminalba',
+    'Suministros de encantamiento',
+  },
+  [3013] = {
+    'Komin Pezuña Invernal',
+    'Instructora de herboristería',
+  },
+  [3014] = {
+    'Nida Pezuña Invernal',
+    'Suministros de herboristería',
+  },
+  [3015] = {
+    'Kuna Tronacuerno',
+    'Arcos, flechas y otros artículos de tiro con arco',
+  },
+  [3016] = {
+    nil,
+    'Cestero',
+  },
+  [3017] = {
+    'Nan Correbruma',
+    'Vendedora de frutas',
+  },
+  [3018] = {
+    'Hogor Pezuña Trueno',
+    'Mercader de armas de fuego',
+  },
+  [3019] = {
+    'Delgo Tótem de Ira',
+    'Mercader de hachas',
+  },
+  [3020] = {
+    'Etu Tótem de Ira',
+    'Mercader de mazas y bastones',
+  },
+  [3021] = {
+    'Kard Tótem de Ira',
+    'Mercader de espadas y puñales',
+  },
+  [3022] = {
+    'Sunn Tótem de Ira',
+    'Mercader de bastones',
+  },
+  [3023] = {
+    'Sura Ferocrín',
+    'Vendedora de arneses de guerra',
+  },
+  [3024] = {
+    'Tah Pezuña Invernal',
+    nil,
+  },
+  [3025] = {
+    'Kaga Correbruma',
+    'Vendedora de carne',
+  },
+  [3026] = {
+    'Aska Correbruma',
+    'Instructor de cocina',
+  },
+  [3027] = {
+    'Naal Correbruma',
+    'Suministros de cocina',
+  },
+  [3028] = {
+    'Kah Correbruma',
+    'Instructor de pesca',
+  },
+  [3029] = {
+    'Seua Correbruma',
+    'Suministros de pesca',
+  },
+  [3030] = {
+    'Siln Cazacielo',
+    'Instructor de chamanes',
+  },
+  [3031] = {
+    'Tigor Cazacielo',
+    'Instructor de chamanes',
+  },
+  [3032] = {
+    'Beram Cazacielo',
+    'Instructor de chamanes',
+  },
+  [3033] = {
+    'Turak Tótem de Runa',
+    'Instructor de druidas',
+  },
+  [3034] = {
+    'Sheal Tótem de Runa',
+    'Instructor de druidas',
+  },
+  [3035] = {
+    'Puma de las estepas',
+    nil,
+  },
+  [3036] = {
+    'Kym Ferocrín',
+    'Instructor de druidas',
+  },
+  [3037] = {
+    'Sheza Ferocrín',
+    nil,
+  },
+  [3038] = {
+    'Kary Tronacuerno',
+    'Instructor de cazadores',
+  },
+  [3039] = {
+    'Holt Tronacuerno',
+    'Instructor de cazadores',
+  },
+  [3040] = {
+    'Urek Tronacuerno',
+    'Instructor de cazadores',
+  },
+  [3041] = {
+    'Torm Tótem de Ira',
+    'Instructor de guerreros',
+  },
+  [3042] = {
+    'Sark Tótem de Ira',
+    'Instructor de guerreros',
+  },
+  [3043] = {
+    'Ker Tótem de Ira',
+    'Instructor de guerreros',
+  },
+  [3044] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [3045] = {
+    'Malakai Cruz',
+    'Instructora de sacerdotes',
+  },
+  [3046] = {
+    'Padre Cobb',
+    'Instructora de sacerdotes',
+  },
+  [3047] = {
+    'Archimago Shymm',
+    'Instructor de magos',
+  },
+  [3048] = {
+    nil,
+    'Instructor de magos',
+  },
+  [3049] = {
+    nil,
+    'Instructor de magos',
+  },
+  [3050] = {
+    'Veren Zancaalta',
+    nil,
+  },
+  [3051] = {
+    'Supervisor Saltatuercas',
+    nil,
+  },
+  [3052] = {
+    'Skorn Nubeblanca',
+    nil,
+  },
+  [3053] = {
+    '[Deprecated for 4.x]Synge',
+    'Mercader de armas de fuego',
+  },
+  [3054] = {
+    'Zarlman Dos Lunas',
+    nil,
+  },
+  [3055] = {
+    'Maur Clamalluvias',
+    nil,
+  },
+  [3056] = {
+    'Aullido Fantasma',
+    nil,
+  },
+  [3057] = {
+    'Cairne Pezuña de Sangre',
+    'Gran jefe',
+  },
+  [3059] = {
+    'Harutt Tronacuerno',
+    'Instructor de guerreros',
+  },
+  [3060] = {
+    'Gart Correbruma',
+    'Instructor de druidas',
+  },
+  [3061] = {
+    'Lanka Tirolejano',
+    'Instructor de cazadores',
+  },
+  [3062] = {
+    'Meela Caminalba',
+    'Instructor de chamanes',
+  },
+  [3063] = {
+    'Krang Pezuña Pétrea',
+    'Instructor de guerreros',
+  },
+  [3064] = {
+    'Gennia Tótem de Runa',
+    'Instructor de druidas',
+  },
+  [3065] = {
+    'Yaw Crinafilada',
+    'Instructor de cazadores',
+  },
+  [3066] = {
+    'Narm Cazacielo',
+    'Instructor de chamanes',
+  },
+  [3067] = {
+    'Pyall Trancosilencio',
+    'Instructor de cocina',
+  },
+  [3069] = {
+    'Chaw Pellejofuerte',
+    'Instructor de peletería',
+  },
+  [3070] = {
+    '[UNUSED] [PH] Instructor de alquimia de Mulgore',
+    'Instructor de alquimia de caminos',
+  },
+  [3071] = {
+    '[UNUSED] [PH] Instructor de herboristería de Mulgore',
+    'Instructor de herboristería',
+  },
+  [3072] = {
+    'Kawnie Brisaleve',
+    'Pertrechos',
+  },
+  [3073] = {
+    'Marjak Buenfilo',
+    'Forjadora de armas',
+  },
+  [3074] = {
+    'Varia Pieldura',
+    'Mercader de armaduras de cuero',
+  },
+  [3075] = {
+    'Bronk Iracerada',
+    'Fabricante de armaduras y escudos',
+  },
+  [3076] = {
+    'Moorat Zancada Larga',
+    'Pertrechos',
+  },
+  [3077] = {
+    'Mahnott Heriondo',
+    'Forjadora de armas',
+  },
+  [3078] = {
+    'Kennah Ojalcón',
+    'Forjador de armas de fuego',
+  },
+  [3079] = {
+    'Varg Vientosusurro',
+    'Mercader de armaduras de cuero',
+  },
+  [3080] = {
+    'Harant Ferropulso',
+    'Fabricante de armaduras y escudos',
+  },
+  [3081] = {
+    'Wunna Crinoscura',
+    'Objetos comerciables',
+  },
+  [3082] = {
+    '[UNUSED] Guardia Narache',
+    nil,
+  },
+  [3083] = {
+    'Guardia de honor',
+    nil,
+  },
+  [3084] = {
+    'Vigía de la Cima',
+    nil,
+  },
+  [3085] = {
+    nil,
+    'Suministros de cocina',
+  },
+  [3086] = {
+    nil,
+    'Camarera',
+  },
+  [3087] = {
+    'Ramacho de cristal',
+    'Instructor de cocina',
+  },
+  [3088] = {
+    nil,
+    'Forjador de armas de fuego',
+  },
+  [3089] = {
+    nil,
+    'Carnicero',
+  },
+  [3090] = {
+    nil,
+    'Suministros de venenos',
+  },
+  [3091] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [3092] = {
+    nil,
+    'Mercader de armaduras de tela',
+  },
+  [3093] = {
+    nil,
+    'Mercader de armaduras de cuero',
+  },
+  [3094] = {
+    'Oculto',
+    nil,
+  },
+  [3095] = {
+    nil,
+    'Mercader de armaduras pesadas',
+  },
+  [3096] = {
+    'Sirviente de Azora capturado',
+    'Suministros de sastrería especializada',
+  },
+  [3097] = {
+    nil,
+    'Mercader de armaduras de cuero',
+  },
+  [3098] = {
+    'Jabalí jaspeado',
+    nil,
+  },
+  [3099] = {
+    'Jabalí jaspeado temible',
+    nil,
+  },
+  [3100] = {
+    'Jabalí jaspeado mayor',
+    nil,
+  },
+  [3101] = {
+    'Familiar vil',
+    nil,
+  },
+  [3102] = {
+    'Acechador vil',
+    nil,
+  },
+  [3103] = {
+    'Pinzador makrura',
+    nil,
+  },
+  [3104] = {
+    'Caparapiel makrura',
+    nil,
+  },
+  [3105] = {
+    'Quebrador makrura',
+    nil,
+  },
+  [3106] = {
+    'Reptador de espuma',
+    nil,
+  },
+  [3107] = {
+    'Reptador de espuma adulto',
+    nil,
+  },
+  [3108] = {
+    'Reptador de espuma escamado',
+    nil,
+  },
+  [3110] = {
+    'Crocolisco Fauzatroz',
+    nil,
+  },
+  [3111] = {
+    'Jabaespín Crines de Acero',
+    nil,
+  },
+  [3112] = {
+    'Explorador Crines de Acero',
+    nil,
+  },
+  [3113] = {
+    'Polvoroso Crines de Acero',
+    nil,
+  },
+  [3114] = {
+    'Guardia de batalla Crines de Acero',
+    nil,
+  },
+  [3115] = {
+    'Arpía Viento Seco',
+    nil,
+  },
+  [3116] = {
+    'Saqueadora Viento Seco',
+    nil,
+  },
+  [3117] = {
+    'Salvaje Viento Seco',
+    nil,
+  },
+  [3118] = {
+    'Bruja de la Tormenta Viento Seco',
+    nil,
+  },
+  [3119] = {
+    'Bracero Kolkar',
+    nil,
+  },
+  [3120] = {
+    'Avanzada Kolkar',
+    nil,
+  },
+  [3121] = {
+    'Tigre de Durotar',
+    nil,
+  },
+  [3122] = {
+    'Colazote Garrasangre',
+    nil,
+  },
+  [3123] = {
+    'Rojomorro Garrasangre',
+    nil,
+  },
+  [3124] = {
+    'Escórpido obrero',
+    nil,
+  },
+  [3125] = {
+    'Escórpido castañeteante',
+    nil,
+  },
+  [3126] = {
+    'Escórpido acorazado',
+    nil,
+  },
+  [3127] = {
+    'Escórpido Venocola',
+    nil,
+  },
+  [3128] = {
+    'Navegante Kul Tiras',
+    nil,
+  },
+  [3129] = {
+    'Marinero Kul Tiras',
+    nil,
+  },
+  [3130] = {
+    'Truenagarto',
+    nil,
+  },
+  [3131] = {
+    'Lomorrayo',
+    nil,
+  },
+  [3133] = {
+    'Herble Montepompa',
+    'Suministros de ingeniería y minería',
+  },
+  [3134] = {
+    nil,
+    'Objetos raros',
+  },
+  [3135] = {
+    nil,
+    'Suministros de venenos',
+  },
+  [3136] = {
+    'Clarise Nudárbol',
+    'Instructora de herrería',
+  },
+  [3137] = {
+    nil,
+    'Instructor de minería',
+  },
+  [3138] = {
+    nil,
+    'Vendedor de champiñones',
+  },
+  [3140] = {
+    'Lar Colmillo Acechador',
+    nil,
+  },
+  [3141] = {
+    'Anciano makrura',
+    nil,
+  },
+  [3142] = {
+    'Orgnil Escaralma',
+    nil,
+  },
+  [3145] = {
+    'Zureetha Vistalonga',
+    nil,
+  },
+  [3146] = {
+    nil,
+    'Ángel de la Resurrección',
+  },
+  [3147] = {
+    'Furl Ceñosprecio',
+    nil,
+  },
+  [3148] = {
+    '[UNUSED] Torc el Orco',
+    'Piloto de zepelines',
+  },
+  [3149] = {
+    nil,
+    'Maestro de zepelines de Durotar',
+  },
+  [3150] = {
+    nil,
+    'Maestro de zepelines de Durotar',
+  },
+  [3151] = {
+    'Capitán Obviando',
+    'Barquero',
+  },
+  [3152] = {
+    'Capitán Copyright',
+    'Barquero',
+  },
+  [3153] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [3154] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [3155] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [3156] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [3157] = {
+    nil,
+    'Instructor de chamanes',
+  },
+  [3158] = {
+    nil,
+    'Pertrechos',
+  },
+  [3159] = {
+    'Kzan Trallafusta',
+    'Forjadora de armas',
+  },
+  [3160] = {
+    nil,
+    'Mercader de armaduras de tela y cuero',
+  },
+  [3161] = {
+    nil,
+    'Fabricante de armaduras y escudos',
+  },
+  [3162] = {
+    'Burdrak Soplayelmo',
+    'Mercader de armaduras de cuero',
+  },
+  [3163] = {
+    nil,
+    'Forjadora de armas',
+  },
+  [3164] = {
+    nil,
+    'Pertrechos',
+  },
+  [3165] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [3166] = {
+    nil,
+    'Mercader de armaduras de tela y cuero',
+  },
+  [3167] = {
+    nil,
+    'Fabricante de armaduras y escudos',
+  },
+  [3168] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [3169] = {
+    'Tarshaw Marcauna',
+    'Instructor de guerreros',
+  },
+  [3170] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [3171] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [3172] = {
+    'Dhugru Ansiagore',
+    'Instructora de brujos',
+  },
+  [3173] = {
+    nil,
+    'Instructor de chamanes',
+  },
+  [3174] = {
+    nil,
+    'Instructora de herrería',
+  },
+  [3175] = {
+    nil,
+    'Instructor de minería',
+  },
+  [3176] = {
+    '[UNUSED] [PH] Instructor de ingeniería de Durotar',
+    'Minero',
+  },
+  [3177] = {
+    'Turuk Semperámbar',
+    'Forjador de armas enano',
+  },
+  [3178] = {
+    nil,
+    'Suministros de pesca',
+  },
+  [3179] = {
+    nil,
+    'Instructor de pesca',
+  },
+  [3180] = {
+    'Emprendedor Hierro Negro',
+    'Artículos especiales',
+  },
+  [3181] = {
+    'Fremal Tornichup',
+    'Instructora de primeros auxilios',
+  },
+  [3183] = {
+    'Yarrog Sombrarruina',
+    nil,
+  },
+  [3184] = {
+    nil,
+    'Instructor de alquimia',
+  },
+  [3185] = {
+    nil,
+    'Instructora de herboristería',
+  },
+  [3186] = {
+    nil,
+    'Pertrechos',
+  },
+  [3187] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [3188] = {
+    'Maestro Gadrin',
+    nil,
+  },
+  [3191] = {
+    'Cocinero Torka',
+    nil,
+  },
+  [3192] = {
+    'Teniente Benedict',
+    nil,
+  },
+  [3194] = {
+    'Vel\'rin Colmillo',
+    nil,
+  },
+  [3195] = {
+    'Matón Filo Ardiente',
+    nil,
+  },
+  [3196] = {
+    'Neófito Filo Ardiente',
+    nil,
+  },
+  [3197] = {
+    'Fanático Filo Ardiente',
+    nil,
+  },
+  [3198] = {
+    'Aprendiz Filo Ardiente',
+    nil,
+  },
+  [3199] = {
+    'Cultor Filo Ardiente',
+    nil,
+  },
+  [3203] = {
+    'Fizzle Garra Oscura',
+    nil,
+  },
+  [3206] = {
+    'Trol vudú',
+    nil,
+  },
+  [3207] = {
+    'Trol embrujado',
+    nil,
+  },
+  [3209] = {
+    'Valiente Pluma de Viento',
+    nil,
+  },
+  [3210] = {
+    'Valiente Morrorgullo',
+    nil,
+  },
+  [3211] = {
+    'Valiente Brillasta',
+    nil,
+  },
+  [3212] = {
+    'Valiente Ferrocorno',
+    nil,
+  },
+  [3213] = {
+    'Valiente Lobo Corredor',
+    nil,
+  },
+  [3214] = {
+    'Valiente Granzuña',
+    nil,
+  },
+  [3215] = {
+    'Valiente Fortunda',
+    nil,
+  },
+  [3216] = {
+    'Neeru Hojafuego',
+    nil,
+  },
+  [3217] = {
+    'Valiente Aguilalba',
+    nil,
+  },
+  [3218] = {
+    'Valiente Vientoveloz',
+    nil,
+  },
+  [3219] = {
+    'Valiente Ciervo Saltador',
+    nil,
+  },
+  [3220] = {
+    'Valiente Oscurcielo',
+    nil,
+  },
+  [3221] = {
+    'Valiente Petrasta',
+    nil,
+  },
+  [3222] = {
+    'Valiente Corresalvaje',
+    nil,
+  },
+  [3223] = {
+    'Valiente Cazalluvia',
+    nil,
+  },
+  [3224] = {
+    'Valiente Nubecrín',
+    nil,
+  },
+  [3225] = {
+    'Jabalí jaspeado corrupto',
+    nil,
+  },
+  [3226] = {
+    'Escórpido corrupto',
+    nil,
+  },
+  [3227] = {
+    'Rojomorro Garrasangre corrupto',
+    nil,
+  },
+  [3228] = {
+    'Reptador de espuma corrupto',
+    nil,
+  },
+  [3229] = {
+    '"Chillón" Mantospina',
+    nil,
+  },
+  [3230] = {
+    nil,
+    'Consejero de Thrall',
+  },
+  [3231] = {
+    'Crocolisco Fauzatroz corrupto',
+    nil,
+  },
+  [3232] = {
+    'Intruso Erizapúas',
+    nil,
+  },
+  [3233] = {
+    'Tradicionalista Tótem de Lluvia',
+    nil,
+  },
+  [3234] = {
+    'Kodo de Los Baldíos perdido',
+    nil,
+  },
+  [3235] = {
+    'Kodo de Los Baldíos superior',
+    nil,
+  },
+  [3236] = {
+    'Kodo de Los Baldíos',
+    nil,
+  },
+  [3237] = {
+    'Kodo lanudo',
+    nil,
+  },
+  [3238] = {
+    'Tormentero',
+    nil,
+  },
+  [3239] = {
+    'Tronatesta',
+    nil,
+  },
+  [3240] = {
+    'Morrotormenta',
+    nil,
+  },
+  [3241] = {
+    'Patriarca de la sabana',
+    nil,
+  },
+  [3242] = {
+    'Galopador zhebra',
+    nil,
+  },
+  [3243] = {
+    'Crinalta de la sabana',
+    nil,
+  },
+  [3244] = {
+    'Zancudo de llanura superior',
+    nil,
+  },
+  [3245] = {
+    'Zancudo de llanura ornario',
+    nil,
+  },
+  [3246] = {
+    'Zancudo veloz de llanura',
+    nil,
+  },
+  [3247] = {
+    'Prole de Halcón Trueno',
+    nil,
+  },
+  [3248] = {
+    'Jirafa de Los Baldíos',
+    nil,
+  },
+  [3249] = {
+    'Halcón Trueno superior',
+    nil,
+  },
+  [3250] = {
+    'Trepador silítido',
+    nil,
+  },
+  [3251] = {
+    'Larva silítida',
+    nil,
+  },
+  [3252] = {
+    'Enjambrista silítido',
+    nil,
+  },
+  [3253] = {
+    'Cosechador silítido',
+    nil,
+  },
+  [3254] = {
+    'Colazote Solescama',
+    nil,
+  },
+  [3255] = {
+    'Estridador Solescama',
+    nil,
+  },
+  [3256] = {
+    'Segador Solescama',
+    nil,
+  },
+  [3258] = {
+    'Cazador Erizapúas',
+    nil,
+  },
+  [3259] = {
+    'Defensor Erizapúas',
+    nil,
+  },
+  [3260] = {
+    'Buscaqua Erizapúas',
+    nil,
+  },
+  [3261] = {
+    'Tejespina Erizapúas',
+    nil,
+  },
+  [3262] = {
+    'Mística Erizapúas',
+    nil,
+  },
+  [3263] = {
+    'Geomántica Erizapúas',
+    nil,
+  },
+  [3265] = {
+    'Cazador Crines de Acero',
+    nil,
+  },
+  [3266] = {
+    'Defensor Crines de Acero',
+    nil,
+  },
+  [3267] = {
+    'Desvalijador Crines de Acero',
+    nil,
+  },
+  [3268] = {
+    'Tejespina Crines de Acero',
+    nil,
+  },
+  [3269] = {
+    'Geomántica Crines de Acero',
+    nil,
+  },
+  [3270] = {
+    'Anciana mística Filocico',
+    nil,
+  },
+  [3271] = {
+    'Mística Crines de Acero',
+    nil,
+  },
+  [3272] = {
+    'Retador Kolkar',
+    nil,
+  },
+  [3273] = {
+    'Agitadora Kolkar',
+    nil,
+  },
+  [3274] = {
+    'Corremanadas Kolkar',
+    nil,
+  },
+  [3275] = {
+    'Maleante Kolkar',
+    nil,
+  },
+  [3276] = {
+    'Arpía Alabruja',
+    nil,
+  },
+  [3277] = {
+    'Malapluma Alabruja',
+    nil,
+  },
+  [3278] = {
+    'Destripadora Alabruja',
+    nil,
+  },
+  [3279] = {
+    'Emboscadora Alabruja',
+    nil,
+  },
+  [3280] = {
+    'Clamavientos Alabruja',
+    nil,
+  },
+  [3282] = {
+    'Mercenario de Ventura y Cía.',
+    nil,
+  },
+  [3283] = {
+    'Déspota de Ventura y Cía.',
+    nil,
+  },
+  [3284] = {
+    'Bracero de Ventura y Cía.',
+    nil,
+  },
+  [3285] = {
+    'Peón de Ventura y Cía.',
+    nil,
+  },
+  [3286] = {
+    'Sobrestante de Ventura y Cía.',
+    nil,
+  },
+  [3289] = {
+    'Espíritu de Minshina',
+    nil,
+  },
+  [3290] = {
+    'Deek Malnegocio',
+    'Instructor de ingeniería',
+  },
+  [3291] = {
+    'Greishan Calefacero',
+    'Mercader ambulante',
+  },
+  [3292] = {
+    'Maestro cervecero Drohn',
+    nil,
+  },
+  [3293] = {
+    nil,
+    'Gremio de manitas',
+  },
+  [3295] = {
+    'Anomalía de lodo',
+    nil,
+  },
+  [3296] = {
+    'Bruto de Orgrimmar',
+    nil,
+  },
+  [3297] = {
+    'Vigía de Sen\'jin',
+    nil,
+  },
+  [3298] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [3299] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [3300] = {
+    'Víboris',
+    nil,
+  },
+  [3302] = {
+    nil,
+    'Ángel de la Resurrección',
+  },
+  [3303] = {
+    nil,
+    'Ángel de la Resurrección',
+  },
+  [3304] = {
+    'Maestro Vornal',
+    nil,
+  },
+  [3305] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [3306] = {
+    nil,
+    'Maestra de establos',
+  },
+  [3307] = {
+    '[UNUSED] Orgrun Colmillonegro',
+    'Ángel de la Resurrección',
+  },
+  [3309] = {
+    nil,
+    'Banquera',
+  },
+  [3310] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [3312] = {
+    nil,
+    'Vendedora de carne',
+  },
+  [3313] = {
+    nil,
+    'Pertrechos',
+  },
+  [3314] = {
+    nil,
+    'Mercader de armas',
+  },
+  [3315] = {
+    nil,
+    'Mercader de armaduras de tela y cuero',
+  },
+  [3316] = {
+    nil,
+    'Mercader de armaduras de tela y cuero',
+  },
+  [3317] = {
+    nil,
+    'Mercader de armaduras ligeras',
+  },
+  [3318] = {
+    nil,
+    'Banquera',
+  },
+  [3319] = {
+    nil,
+    'Mercader de armaduras de malla',
+  },
+  [3320] = {
+    nil,
+    'Banquera',
+  },
+  [3321] = {
+    nil,
+    'Mercader de armaduras de cuero',
+  },
+  [3322] = {
+    nil,
+    'Vendedora de arcos y rifles',
+  },
+  [3323] = {
+    nil,
+    'Componentes',
+  },
+  [3324] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [3325] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [3326] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [3327] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [3328] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [3329] = {
+    nil,
+    'Vendedor de champiñones',
+  },
+  [3330] = {
+    nil,
+    'Mercader de bastones',
+  },
+  [3331] = {
+    nil,
+    'Mercader de armas de filo',
+  },
+  [3332] = {
+    nil,
+    'Instructor de pesca',
+  },
+  [3333] = {
+    nil,
+    'Suministros de pesca',
+  },
+  [3334] = {
+    nil,
+    'Suministros de venenos',
+  },
+  [3335] = {
+    nil,
+    'Componentes',
+  },
+  [3336] = {
+    'Takrin Abrecaminos',
+    nil,
+  },
+  [3337] = {
+    'Kargal Marca de Guerra',
+    nil,
+  },
+  [3338] = {
+    'Sergra Espinoscura',
+    nil,
+  },
+  [3339] = {
+    'Capitán Thalo\'thas Solbrillante',
+    nil,
+  },
+  [3341] = {
+    'Gann Aguja de Piedra',
+    nil,
+  },
+  [3342] = {
+    nil,
+    'Vendedora de frutas',
+  },
+  [3343] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [3344] = {
+    'Kardris Buscasueños',
+    'Instructor de chamanes',
+  },
+  [3345] = {
+    nil,
+    'Instructora de encantamiento',
+  },
+  [3346] = {
+    nil,
+    'Suministros de encantamiento',
+  },
+  [3347] = {
+    nil,
+    'Instructor de alquimia',
+  },
+  [3348] = {
+    nil,
+    'Suministros de alquimia',
+  },
+  [3349] = {
+    nil,
+    'Mercader de bastones',
+  },
+  [3350] = {
+    nil,
+    'Pertrechos',
+  },
+  [3351] = {
+    nil,
+    'Componentes',
+  },
+  [3352] = {
+    'Ormak Tirosiniestro',
+    'Instructor de cazadores',
+  },
+  [3353] = {
+    'Grezz Puñofuria',
+    'Instructor de guerreros',
+  },
+  [3354] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [3355] = {
+    'Saru Furiacerada',
+    'Instructora de herrería',
+  },
+  [3356] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [3357] = {
+    nil,
+    'Instructor de minería',
+  },
+  [3358] = {
+    nil,
+    'Suministros de minería',
+  },
+  [3359] = {
+    nil,
+    'Fabricante de arneses de guerra',
+  },
+  [3360] = {
+    nil,
+    'Vendedor de mazas y bastones',
+  },
+  [3361] = {
+    nil,
+    'Vendedor de armas',
+  },
+  [3362] = {
+    'Ogunaro Correlobo',
+    'Maestro de perrera',
+  },
+  [3363] = {
+    nil,
+    'Instructora de sastrería',
+  },
+  [3364] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [3365] = {
+    nil,
+    'Instructor de peletería',
+  },
+  [3366] = {
+    nil,
+    'Suministros de peletería',
+  },
+  [3367] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [3368] = {
+    nil,
+    'Vendedora de carne',
+  },
+  [3369] = {
+    nil,
+    'Vendedora de bolsas',
+  },
+  [3370] = {
+    'Urtrun Aunaclanes',
+    'Maestro de hermandad',
+  },
+  [3373] = {
+    nil,
+    'Instructora de primeros auxilios',
+  },
+  [3374] = {
+    'Excavador de Bael\'dun',
+    nil,
+  },
+  [3375] = {
+    'Supervisor de Bael\'dun',
+    nil,
+  },
+  [3376] = {
+    'Soldado de Bael\'dun',
+    nil,
+  },
+  [3377] = {
+    'Fusilero de Bael\'dun',
+    nil,
+  },
+  [3378] = {
+    'Oficial de Bael\'dun',
+    nil,
+  },
+  [3379] = {
+    'Truhán Filo Ardiente',
+    nil,
+  },
+  [3380] = {
+    'Acólito Filo Ardiente',
+    nil,
+  },
+  [3381] = {
+    'Salteador de los Mares del Sur',
+    nil,
+  },
+  [3382] = {
+    'Cañonero de los Mares del Sur',
+    nil,
+  },
+  [3383] = {
+    'Degollador de los Mares del Sur',
+    nil,
+  },
+  [3384] = {
+    'Corsario de los Mares del Sur',
+    nil,
+  },
+  [3385] = {
+    'Marino de Theramore',
+    nil,
+  },
+  [3386] = {
+    'Valedora de Theramore',
+    nil,
+  },
+  [3387] = {
+    'Jorn Vidente del Cielo',
+    nil,
+  },
+  [3388] = {
+    'Mahren Vidente del Cielo',
+    nil,
+  },
+  [3389] = {
+    'Regthar Portamorta',
+    nil,
+  },
+  [3390] = {
+    'Boticario Helbrim',
+    nil,
+  },
+  [3392] = {
+    nil,
+    'Liga de Expedicionarios',
+  },
+  [3393] = {
+    'Capitana Justamonta',
+    nil,
+  },
+  [3394] = {
+    'Barak Aterrakodos',
+    nil,
+  },
+  [3395] = {
+    'Verog el Derviche',
+    nil,
+  },
+  [3396] = {
+    'Hezrul Marcasangre',
+    nil,
+  },
+  [3397] = {
+    'Destrero de sangre Kolkar',
+    nil,
+  },
+  [3399] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [3400] = {
+    nil,
+    'Suministros de cocina',
+  },
+  [3401] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [3403] = {
+    nil,
+    'Instructor de chamanes',
+  },
+  [3404] = {
+    nil,
+    'Instructora de herboristería',
+  },
+  [3405] = {
+    nil,
+    'Suministros de herboristería',
+  },
+  [3406] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [3407] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [3408] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [3409] = {
+    nil,
+    'Vendedor de armas',
+  },
+  [3410] = {
+    nil,
+    'Mercader de arcos',
+  },
+  [3411] = {
+    nil,
+    'Carnicero',
+  },
+  [3412] = {
+    nil,
+    'Aprendiza ingeniera',
+  },
+  [3413] = {
+    nil,
+    'Suministros de ingeniería',
+  },
+  [3414] = {
+    'General Trenzado (Deprecated in 4.x)',
+    nil,
+  },
+  [3415] = {
+    'Cazadora de la sabana',
+    nil,
+  },
+  [3416] = {
+    'Matriarca de la sabana',
+    nil,
+  },
+  [3417] = {
+    'Llama viva',
+    nil,
+  },
+  [3418] = {
+    'Kirge Astadura',
+    nil,
+  },
+  [3419] = {
+    'Boticaria Zamah',
+    'Sociedad Real de Boticarios',
+  },
+  [3420] = {
+    '[UNUSED] Vigía Ancestral',
+    nil,
+  },
+  [3421] = {
+    'Feegly el Exiliado (Old)',
+    nil,
+  },
+  [3424] = {
+    'Desechanube Halcón Trueno',
+    nil,
+  },
+  [3425] = {
+    'Merodeador de la sabana',
+    nil,
+  },
+  [3426] = {
+    'Destrero zhebra',
+    nil,
+  },
+  [3430] = {
+    'Quebrantadientes',
+    nil,
+  },
+  [3433] = {
+    'Jironack Forjacero',
+    nil,
+  },
+  [3435] = {
+    'Lok Aterraorcos',
+    nil,
+  },
+  [3437] = {
+    'Crekori Aquafango',
+    nil,
+  },
+  [3438] = {
+    'Kreenig Gruñucico',
+    nil,
+  },
+  [3439] = {
+    'Machacador de Rabiaire',
+    nil,
+  },
+  [3440] = {
+    '[UNUSED] Sabio Ancestral',
+    nil,
+  },
+  [3441] = {
+    'Melor Pezuña Pétrea',
+    nil,
+  },
+  [3442] = {
+    'Petardol',
+    'Gremio de manitas',
+  },
+  [3443] = {
+    'Larva',
+    nil,
+  },
+  [3444] = {
+    'Rata de madriguera',
+    nil,
+  },
+  [3445] = {
+    'Supervisor Palarrastre',
+    nil,
+  },
+  [3447] = {
+    'Paue Correbruma',
+    nil,
+  },
+  [3448] = {
+    'Tonga Tótem de Runa',
+    nil,
+  },
+  [3449] = {
+    'Darsok Movedaga',
+    nil,
+  },
+  [3450] = {
+    'Acompañante Defias',
+    nil,
+  },
+  [3451] = {
+    'Piloto Rabiaire',
+    nil,
+  },
+  [3452] = {
+    'Serena Sangrepluma',
+    nil,
+  },
+  [3453] = {
+    'Maestro de muelles Vertipeluca',
+    nil,
+  },
+  [3454] = {
+    'Cañonero Smythe',
+    nil,
+  },
+  [3455] = {
+    'Cañonero Whessan',
+    nil,
+  },
+  [3456] = {
+    'Abrecaminos Crines de Acero',
+    nil,
+  },
+  [3457] = {
+    'Acechador Crines de Acero',
+    nil,
+  },
+  [3458] = {
+    'Vidente Crines de Acero',
+    nil,
+  },
+  [3459] = {
+    'Frenético bélico Crines de Acero',
+    nil,
+  },
+  [3460] = {
+    'Reptador del fango',
+    nil,
+  },
+  [3461] = {
+    'Quijaforte de oasis',
+    nil,
+  },
+  [3462] = {
+    'Jirafa de Los Baldíos anciana',
+    nil,
+  },
+  [3463] = {
+    'Jirafa de Los Baldíos deambulante',
+    nil,
+  },
+  [3465] = {
+    'Gilthares Ramafuego',
+    nil,
+  },
+  [3466] = {
+    'Trotador zhebra',
+    nil,
+  },
+  [3467] = {
+    'Barón Longavera',
+    'Filibusteros de los Mares del Sur',
+  },
+  [3468] = {
+    'Anciano del Conocimiento',
+    nil,
+  },
+  [3469] = {
+    'Anciano de la Guerra',
+    nil,
+  },
+  [3471] = {
+    'Manitas el Risitas',
+    nil,
+  },
+  [3477] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [3478] = {
+    nil,
+    'Instructora de herrería',
+  },
+  [3479] = {
+    'Nargal Ojo de la Muerte',
+    'Forjadora de armas',
+  },
+  [3480] = {
+    'Moorane Granogar',
+    'Panadera',
+  },
+  [3481] = {
+    nil,
+    'Suministros generales',
+  },
+  [3482] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [3483] = {
+    'Jahan Ala Halcón',
+    'Mercader de armaduras de cuero y malla',
+  },
+  [3484] = {
+    nil,
+    'Instructora de sastrería',
+  },
+  [3485] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [3486] = {
+    'Halija Zancablanca',
+    'Sastre',
+  },
+  [3487] = {
+    'Kalyimah Nubormenta',
+    'Bolsas y sacos',
+  },
+  [3488] = {
+    nil,
+    'Fabricante de arcos y forjador de armas de fuego',
+  },
+  [3489] = {
+    nil,
+    'Carnicero',
+  },
+  [3490] = {
+    nil,
+    'Componentes, hierbas y suministros de venenos',
+  },
+  [3491] = {
+    nil,
+    'Forjadora de armas',
+  },
+  [3492] = {
+    'Vexeje',
+    'Mercader de armaduras de tela y cuero',
+  },
+  [3493] = {
+    nil,
+    'Fabricante de armaduras y escudos',
+  },
+  [3494] = {
+    'Manitas de Oro',
+    'Instructor de ingeniería',
+  },
+  [3495] = {
+    'Dentolio',
+    'Suministros de ingeniería',
+  },
+  [3496] = {
+    nil,
+    'Banquera',
+  },
+  [3497] = {
+    nil,
+    'Pescador',
+  },
+  [3498] = {
+    nil,
+    'Suministros generales',
+  },
+  [3499] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [3500] = {
+    nil,
+    'Componentes',
+  },
+  [3501] = {
+    'Guardia de la Horda',
+    nil,
+  },
+  [3502] = {
+    'Truhán de Trinquete',
+    nil,
+  },
+  [3503] = {
+    'Protector silítido',
+    nil,
+  },
+  [3513] = {
+    'Señorita Danna',
+    'Maestra de escuela',
+  },
+  [3514] = {
+    'Tenaron Tormentagarre',
+    nil,
+  },
+  [3515] = {
+    'Corithras Furia Lunar',
+    nil,
+  },
+  [3516] = {
+    'Archidruida Fandral Corzocelada',
+    nil,
+  },
+  [3517] = {
+    'Rellian Verdeguja',
+    nil,
+  },
+  [3518] = {
+    nil,
+    'Panadera',
+  },
+  [3519] = {
+    'Centinela Arynia Quiebranubes',
+    nil,
+  },
+  [3520] = {
+    'Vieja Emma',
+    nil,
+  },
+  [3522] = {
+    nil,
+    'Aprendiza sastre',
+  },
+  [3523] = {
+    nil,
+    'Instructora de sastrería',
+  },
+  [3524] = {
+    'Espíritu de lobo',
+    nil,
+  },
+  [3525] = {
+    '[UNUSED] Instructor de tortugas',
+    'Instructor de tortugas',
+  },
+  [3527] = {
+    'Tótem Corriente de sanación',
+    nil,
+  },
+  [3528] = {
+    'Armero Piroleña',
+    nil,
+  },
+  [3529] = {
+    'Armero Furia Lunar',
+    nil,
+  },
+  [3530] = {
+    'Sastre Piroleña',
+    nil,
+  },
+  [3531] = {
+    'Sastre Furia Lunar',
+    nil,
+  },
+  [3532] = {
+    'Peletera Piroleña',
+    nil,
+  },
+  [3533] = {
+    'Peletero Furia Lunar',
+    nil,
+  },
+  [3534] = {
+    'Wallace el Ciego',
+    'Forjadora de armas',
+  },
+  [3535] = {
+    'Musgonegro el Fétido',
+    nil,
+  },
+  [3536] = {
+    nil,
+    'Vendedora alocada',
+  },
+  [3537] = {
+    nil,
+    'Mercader supremo',
+  },
+  [3538] = {
+    'Robovigilante, versión 1',
+    nil,
+  },
+  [3539] = {
+    nil,
+    'Forjadora de armas',
+  },
+  [3540] = {
+    nil,
+    'Mercader de pescado',
+  },
+  [3541] = {
+    nil,
+    'Pertrechos',
+  },
+  [3542] = {
+    nil,
+    'Venenos y componentes',
+  },
+  [3543] = {
+    nil,
+    'Forjador de armaduras superior',
+  },
+  [3544] = {
+    nil,
+    'Vendedor de champiñones',
+  },
+  [3545] = {
+    nil,
+    'Maestra de establos',
+  },
+  [3546] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [3547] = {
+    nil,
+    'Cultivador de champiñones',
+  },
+  [3548] = {
+    nil,
+    'Suministros de alquimia y herboristería',
+  },
+  [3549] = {
+    nil,
+    'Instructor de peletería',
+  },
+  [3550] = {
+    nil,
+    'Suministros de pesca',
+  },
+  [3551] = {
+    nil,
+    'Suministros de venenos',
+  },
+  [3552] = {
+    nil,
+    'Mercader de armaduras de cuero',
+  },
+  [3553] = {
+    nil,
+    'Armero',
+  },
+  [3554] = {
+    nil,
+    'Sastre',
+  },
+  [3555] = {
+    nil,
+    'Instructor de minería',
+  },
+  [3556] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [3557] = {
+    nil,
+    'Instructora de herrería',
+  },
+  [3558] = {
+    '[UNUSED] Vendedor de veneno no-muerto temporal',
+    'Suministros de venenos',
+  },
+  [3559] = {
+    nil,
+    'Suministros de venenos',
+  },
+  [3560] = {
+    'Guarda de sanación',
+    nil,
+  },
+  [3561] = {
+    nil,
+    'Suministros de venenos',
+  },
+  [3562] = {
+    nil,
+    'Componentes',
+  },
+  [3564] = {
+    nil,
+    'Componentes',
+  },
+  [3565] = {
+    '[UNUSED] Vendedor de no-muerto reactivo temporal',
+    'Componentes',
+  },
+  [3566] = {
+    'Merodeador de las estepas',
+    nil,
+  },
+  [3567] = {
+    'Tallonkai Cruzarraíz',
+    nil,
+  },
+  [3568] = {
+    'Niebla',
+    nil,
+  },
+  [3569] = {
+    'Bogono',
+    nil,
+  },
+  [3570] = {
+    'Brezomadera limpio',
+    nil,
+  },
+  [3571] = {
+    'Centinela de Teldrassil',
+    nil,
+  },
+  [3572] = {
+    nil,
+    'Suministros de pesca',
+  },
+  [3573] = {
+    'Tótem Fuente de maná',
+    nil,
+  },
+  [3574] = {
+    'Murciélago de montar',
+    nil,
+  },
+  [3575] = {
+    nil,
+    'Cuidador de murciélagos',
+  },
+  [3577] = {
+    'Maestro cervecero de Molino Ámbar',
+    nil,
+  },
+  [3578] = {
+    'Minero de Molino Ámbar',
+    nil,
+  },
+  [3579] = {
+    'Tótem Garra de piedra',
+    nil,
+  },
+  [3581] = {
+    'Bestia de cloaca',
+    nil,
+  },
+  [3583] = {
+    'Barithras Sombra Lunar',
+    nil,
+  },
+  [3586] = {
+    '[UNUSED 4.x ]Minero Johnson',
+    nil,
+  },
+  [3587] = {
+    nil,
+    'Suministros generales',
+  },
+  [3588] = {
+    'Khardan Filorgullo',
+    'Forjadora de armas',
+  },
+  [3589] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [3590] = {
+    'Janna Brillaluna',
+    'Sastre',
+  },
+  [3591] = {
+    'Freja Alanoche',
+    'Mercader de armaduras de cuero',
+  },
+  [3592] = {
+    nil,
+    'Fabricante de armaduras y escudos',
+  },
+  [3593] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [3594] = {
+    'Frahun Sombrusurro',
+    'Instructor de pícaros',
+  },
+  [3595] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [3596] = {
+    'Ayanna Semprerguida',
+    'Instructor de cazadores',
+  },
+  [3597] = {
+    'Mardant Fuerterroble',
+    'Instructor de druidas',
+  },
+  [3598] = {
+    'Kyra Espada del Viento',
+    'Instructor de guerreros',
+  },
+  [3599] = {
+    'Jannok Brisón',
+    'Instructor de pícaros',
+  },
+  [3600] = {
+    'Laurna Luzdelalba',
+    'Instructora de sacerdotes',
+  },
+  [3601] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [3602] = {
+    nil,
+    'Instructor de druidas',
+  },
+  [3603] = {
+    'Cyndra Suavesusurro',
+    'Instructor de alquimia',
+  },
+  [3604] = {
+    'Malorne Filohoja',
+    'Instructora de herboristería',
+  },
+  [3605] = {
+    'Nadyia Tejecrín',
+    'Instructor de peletería',
+  },
+  [3606] = {
+    'Alanna Cuervojo',
+    'Instructora de encantamiento',
+  },
+  [3607] = {
+    'Androl Manorroble',
+    'Instructor de pesca',
+  },
+  [3608] = {
+    nil,
+    'Suministros generales',
+  },
+  [3609] = {
+    nil,
+    'Forjadora de armas',
+  },
+  [3610] = {
+    'Jeena Plumarco',
+    'Fabricante de arcos',
+  },
+  [3611] = {
+    'Brannol Lunáguila',
+    'Sastre',
+  },
+  [3612] = {
+    nil,
+    'Mercader de armaduras de cuero',
+  },
+  [3613] = {
+    'Meri Hilacero',
+    'Fabricante de armaduras y escudos',
+  },
+  [3614] = {
+    'Narret Sombrarboleda',
+    'Suministros comerciales',
+  },
+  [3615] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [3616] = {
+    nil,
+    'Anciano del Conocimiento',
+  },
+  [3617] = {
+    'Ciudadano de Lordaeron',
+    nil,
+  },
+  [3619] = {
+    'Sable Fantasma',
+    nil,
+  },
+  [3620] = {
+    nil,
+    'Maestra de establos',
+  },
+  [3621] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [3622] = {
+    nil,
+    'Maestra de establos',
+  },
+  [3623] = {
+    nil,
+    'Instructor de reptadores',
+  },
+  [3624] = {
+    nil,
+    'Maestra de establos',
+  },
+  [3625] = {
+    nil,
+    'Pertrechos',
+  },
+  [3628] = {
+    nil,
+    'Tabernero',
+  },
+  [3630] = {
+    'Volutador descarriado',
+    nil,
+  },
+  [3631] = {
+    'Latigador con aguijón descarriado',
+    nil,
+  },
+  [3632] = {
+    'Trepador descarriado',
+    nil,
+  },
+  [3633] = {
+    'Destripador descarriado',
+    nil,
+  },
+  [3634] = {
+    'Acechador descarriado',
+    nil,
+  },
+  [3636] = {
+    'Devastador descarriado',
+    nil,
+  },
+  [3637] = {
+    'Guardián descarriado',
+    nil,
+  },
+  [3638] = {
+    'Ectoplasma devorador',
+    nil,
+  },
+  [3639] = {
+    'Centinela Tysha Filoluna',
+    nil,
+  },
+  [3640] = {
+    'Ectoplasma en desarrollo',
+    nil,
+  },
+  [3641] = {
+    'Rondador descarriado',
+    nil,
+  },
+  [3642] = {
+    'Horror descarriado',
+    nil,
+  },
+  [3644] = {
+    'Cerellean Zarpablanca',
+    nil,
+  },
+  [3649] = {
+    'Thundris Tejevientos',
+    nil,
+  },
+  [3651] = {
+    '[UNUSED] Observador Kolkar',
+    nil,
+  },
+  [3652] = {
+    'Tritesta el Azotador',
+    nil,
+  },
+  [3654] = {
+    'Mutanus el Devorador',
+    nil,
+  },
+  [3655] = {
+    'Loco Magglish',
+    nil,
+  },
+  [3657] = {
+    '[Deprecated for 4.x]Centinela Elissa Brisa Estelar',
+    nil,
+  },
+  [3658] = {
+    nil,
+    'Vendedor de armas',
+  },
+  [3659] = {
+    nil,
+    'Guardaespaldas de Lizzarik',
+  },
+  [3660] = {
+    nil,
+    'Culto de la Facción Oscura',
+  },
+  [3661] = {
+    'Balthule Golpesombra',
+    nil,
+  },
+  [3662] = {
+    'Delmanis el Odiado',
+    nil,
+  },
+  [3663] = {
+    '[Deprecated for 4.x]Delgren el Purificador',
+    nil,
+  },
+  [3664] = {
+    '[UNUSED]Ilkrud Magthrull',
+    nil,
+  },
+  [3665] = {
+    'Operador de grúa Pelardo',
+    nil,
+  },
+  [3666] = {
+    'Maniveo Zumbang',
+    nil,
+  },
+  [3667] = {
+    'Anaia Correalba',
+    nil,
+  },
+  [3668] = {
+    'Alma Altonata torturada',
+    nil,
+  },
+  [3669] = {
+    nil,
+    'Noble del Colmillo',
+  },
+  [3670] = {
+    nil,
+    'Noble del Colmillo',
+  },
+  [3671] = {
+    nil,
+    'Noble del Colmillo',
+  },
+  [3672] = {
+    nil,
+    'Druida del Colmillo',
+  },
+  [3673] = {
+    nil,
+    'Noble del Colmillo',
+  },
+  [3678] = {
+    'Muyoh',
+    nil,
+  },
+  [3680] = {
+    'Serpiente reptilia',
+    nil,
+  },
+  [3681] = {
+    'Fuego fatuo',
+    nil,
+  },
+  [3682] = {
+    'Vrang Sangrevaje',
+    'Forjador de armas y artesano armero',
+  },
+  [3683] = {
+    nil,
+    'Sastre de diseño',
+  },
+  [3684] = {
+    'Pizdillo',
+    'Mercader de armaduras de cuero',
+  },
+  [3685] = {
+    'Harb Garrapezuña',
+    'Monturas de kodo',
+  },
+  [3688] = {
+    'Reban Corredor',
+    'Maestra de establos',
+  },
+  [3689] = {
+    'Laer Correstepas',
+    'Alimentos y bebidas',
+  },
+  [3690] = {
+    'Kar Tormensón',
+    'Instructor de equitación',
+  },
+  [3691] = {
+    'Raene Correlobo',
+    nil,
+  },
+  [3694] = {
+    'Centinela Selarin',
+    nil,
+  },
+  [3695] = {
+    'Zarpadura',
+    nil,
+  },
+  [3696] = {
+    'Ran Sangradientes',
+    nil,
+  },
+  [3697] = {
+    nil,
+    'Instructor de jabalíes',
+  },
+  [3698] = {
+    nil,
+    'Maestra de establos',
+  },
+  [3700] = {
+    'Jadenvis vigía del mar',
+    'Componentes',
+  },
+  [3701] = {
+    'Tharnariun Espinarbolado',
+    nil,
+  },
+  [3702] = {
+    'Alanndarian Arrullanoche',
+    nil,
+  },
+  [3703] = {
+    'Krulmoo Lunallena',
+    'Instructor de peletería',
+  },
+  [3704] = {
+    nil,
+    'Instructora de sastrería',
+  },
+  [3705] = {
+    nil,
+    'Carnicero',
+  },
+  [3706] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [3707] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [3708] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [3711] = {
+    'Mirmidón Colafuria',
+    nil,
+  },
+  [3712] = {
+    'Filón Colafuria',
+    nil,
+  },
+  [3713] = {
+    'Jinete de olas Colafuria',
+    nil,
+  },
+  [3715] = {
+    'Bruja de mar Colafuria',
+    nil,
+  },
+  [3717] = {
+    'Hechicera Colafuria',
+    nil,
+  },
+  [3718] = {
+    'Princesa de las mareas Colafuria',
+    nil,
+  },
+  [3721] = {
+    'Hidra Brumazote',
+    nil,
+  },
+  [3722] = {
+    'Despellejador Brumazote',
+    nil,
+  },
+  [3725] = {
+    'Cultor de la Facción Oscura',
+    nil,
+  },
+  [3727] = {
+    'Déspota de la Facción Oscura',
+    nil,
+  },
+  [3728] = {
+    'Adepto de la Facción Oscura',
+    nil,
+  },
+  [3730] = {
+    'Excavador de la Facción Oscura',
+    nil,
+  },
+  [3732] = {
+    'Forsaken Seeker[UNUSED]',
+    nil,
+  },
+  [3733] = {
+    'Herborista Renegado',
+    nil,
+  },
+  [3734] = {
+    'Sobrestante orco',
+    nil,
+  },
+  [3735] = {
+    'Boticario Falthis',
+    nil,
+  },
+  [3736] = {
+    'Destripador Oscuro Mordenthal',
+    nil,
+  },
+  [3737] = {
+    'Saltacharco Gapo Salino',
+    nil,
+  },
+  [3739] = {
+    'Guerrero Gapo Salino',
+    nil,
+  },
+  [3740] = {
+    'Habitabosta Gapo Salino',
+    nil,
+  },
+  [3742] = {
+    'Oráculo Gapo Salino',
+    nil,
+  },
+  [3743] = {
+    'Guerrero Maderiza',
+    nil,
+  },
+  [3745] = {
+    'Abrecaminos Maderiza',
+    nil,
+  },
+  [3746] = {
+    'Vigía del cubil Maderiza',
+    nil,
+  },
+  [3748] = {
+    'Chamán Maderiza',
+    nil,
+  },
+  [3749] = {
+    'Ursa Maderiza',
+    nil,
+  },
+  [3750] = {
+    'Totémico Maderiza',
+    nil,
+  },
+  [3752] = {
+    'Pícaro Xavian',
+    nil,
+  },
+  [3754] = {
+    'Desertor Xavian',
+    nil,
+  },
+  [3755] = {
+    'Jurapenas Xavian',
+    nil,
+  },
+  [3757] = {
+    'Clamainferno Xavian',
+    nil,
+  },
+  [3758] = {
+    'Sátiro Putredor',
+    nil,
+  },
+  [3759] = {
+    'Pícaro Putredor',
+    nil,
+  },
+  [3762] = {
+    'Jurapenas Putredor',
+    nil,
+  },
+  [3763] = {
+    'Acechasombras Putredor',
+    nil,
+  },
+  [3765] = {
+    'Sátiro Almaumbría',
+    nil,
+  },
+  [3767] = {
+    'Tramposo Almaumbría',
+    nil,
+  },
+  [3770] = {
+    'Acechasombras Almaumbría',
+    nil,
+  },
+  [3771] = {
+    'Clamainferno Almaumbría',
+    nil,
+  },
+  [3772] = {
+    'Guardia vil inferior',
+    nil,
+  },
+  [3774] = {
+    'Destripador vil',
+    nil,
+  },
+  [3777] = {
+    nil,
+    'Ángel de la Resurrección',
+  },
+  [3778] = {
+    'Myielea Susurrestelar',
+    'Ángel de la Resurrección',
+  },
+  [3779] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [3780] = {
+    'Arrastrapiés chamuscado',
+    nil,
+  },
+  [3781] = {
+    'Formadera Sombramatorral',
+    nil,
+  },
+  [3782] = {
+    'Muevepiedras Sombramatorral',
+    nil,
+  },
+  [3783] = {
+    'Clamalluvias Sombramatorral',
+    nil,
+  },
+  [3784] = {
+    'Desgarracortezas Sombramatorral',
+    nil,
+  },
+  [3789] = {
+    'Desgarrador Luporror',
+    nil,
+  },
+  [3791] = {
+    'Tejesombra Luporror',
+    nil,
+  },
+  [3792] = {
+    'Señor de la manada Luporror',
+    nil,
+  },
+  [3793] = {
+    'Druida iniciado',
+    nil,
+  },
+  [3794] = {
+    'Druida de la Garfa',
+    nil,
+  },
+  [3795] = {
+    'Druida de la Zarpa',
+    nil,
+  },
+  [3796] = {
+    'Druida de lo Salvaje',
+    nil,
+  },
+  [3797] = {
+    'Protector Cenarion',
+    nil,
+  },
+  [3799] = {
+    'Druida aislado',
+    nil,
+  },
+  [3801] = {
+    'Durmiente aislado',
+    nil,
+  },
+  [3802] = {
+    'Soñador aislado',
+    nil,
+  },
+  [3803] = {
+    'Vigilante aislado',
+    nil,
+  },
+  [3804] = {
+    'Intruso Renegado',
+    nil,
+  },
+  [3806] = {
+    'Infiltrado Renegado',
+    nil,
+  },
+  [3807] = {
+    'Asesino Renegado',
+    nil,
+  },
+  [3808] = {
+    'Acechador oscuro Renegado',
+    nil,
+  },
+  [3809] = {
+    'Oso de Vallefresno',
+    nil,
+  },
+  [3810] = {
+    'Oso viejo de Vallefresno',
+    nil,
+  },
+  [3811] = {
+    'Oso gigante de Vallefresno',
+    nil,
+  },
+  [3812] = {
+    'Reptador castañeteante',
+    nil,
+  },
+  [3814] = {
+    'Reptador espinado',
+    nil,
+  },
+  [3815] = {
+    'Dragón relampagueador',
+    nil,
+  },
+  [3816] = {
+    'Ciervo salvaje',
+    nil,
+  },
+  [3817] = {
+    'Venado Necraste',
+    nil,
+  },
+  [3818] = {
+    'Venado Necraste viejo',
+    nil,
+  },
+  [3819] = {
+    'Acechador Espina Salvaje',
+    nil,
+  },
+  [3820] = {
+    'Escupetósigo Espina Salvaje',
+    nil,
+  },
+  [3821] = {
+    'Rondador Espina Salvaje',
+    nil,
+  },
+  [3823] = {
+    'Corredor Garraespectro',
+    nil,
+  },
+  [3824] = {
+    'Aullador Garraespectro',
+    nil,
+  },
+  [3825] = {
+    'Alfa Garraespectro',
+    nil,
+  },
+  [3826] = {
+    'Garraespectro rabioso',
+    nil,
+  },
+  [3831] = {
+    'Sombra de Shadumbra',
+    nil,
+  },
+  [3832] = {
+    'Administrador Cenarion',
+    nil,
+  },
+  [3833] = {
+    'Vindicador Cenarion',
+    nil,
+  },
+  [3834] = {
+    'Anciano enloquecido',
+    nil,
+  },
+  [3835] = {
+    'Sapo bílico',
+    nil,
+  },
+  [3836] = {
+    'Montaraz Guijarro',
+    nil,
+  },
+  [3837] = {
+    'Hipogrifo de montar',
+    nil,
+  },
+  [3838] = {
+    nil,
+    'Maestro de hipogrifos',
+  },
+  [3839] = {
+    'Abilátigo',
+    nil,
+  },
+  [3840] = {
+    'Druida del Colmillo',
+    nil,
+  },
+  [3841] = {
+    'Teldira Plumalunar',
+    'Maestro de hipogrifos',
+  },
+  [3842] = {
+    nil,
+    'El Maestro de llaves',
+  },
+  [3844] = {
+    'Resguardo de sanación IV',
+    nil,
+  },
+  [3845] = {
+    'Shindrell Fuegoveloz',
+    nil,
+  },
+  [3847] = {
+    'Orendil Hojagrande',
+    nil,
+  },
+  [3848] = {
+    'Kayneth Ventoleve',
+    nil,
+  },
+  [3849] = {
+    'Mortacechador Adamant',
+    nil,
+  },
+  [3850] = {
+    'Hechicero Ashcrombe',
+    nil,
+  },
+  [3851] = {
+    'Canoso Colmillo Oscuro',
+    nil,
+  },
+  [3852] = {
+    '[UNUSED] Aullasangre Colmillo Oscuro',
+    nil,
+  },
+  [3853] = {
+    'Caminalunas Colmillo Oscuro',
+    nil,
+  },
+  [3854] = {
+    'Guardialobo Colmillo Oscuro',
+    nil,
+  },
+  [3855] = {
+    'Almanegra Colmillo Oscuro',
+    nil,
+  },
+  [3857] = {
+    'Glotón Colmillo Oscuro',
+    nil,
+  },
+  [3859] = {
+    'Furiadiente Colmillo Oscuro',
+    nil,
+  },
+  [3860] = {
+    '[UNUSED] Corrupto Colmillo Oscuro',
+    nil,
+  },
+  [3861] = {
+    'Huargo lóbrego',
+    nil,
+  },
+  [3862] = {
+    'Huargo babeante',
+    nil,
+  },
+  [3863] = {
+    'Horror lupino',
+    nil,
+  },
+  [3864] = {
+    'Corcel vil',
+    nil,
+  },
+  [3865] = {
+    'Destrero de la Sombra',
+    nil,
+  },
+  [3866] = {
+    'Murciovil',
+    nil,
+  },
+  [3868] = {
+    'Rastreasangre',
+    nil,
+  },
+  [3869] = {
+    'Gárgola inferior',
+    nil,
+  },
+  [3870] = {
+    'Durmiente de piedra',
+    nil,
+  },
+  [3872] = {
+    'Capitán Juramorte',
+    nil,
+  },
+  [3873] = {
+    'Oficial atormentado',
+    nil,
+  },
+  [3875] = {
+    'Servidor encantado',
+    nil,
+  },
+  [3876] = {
+    '[UNUSED] Espíritu traumatizado',
+    nil,
+  },
+  [3877] = {
+    'Custodio gemebundo',
+    nil,
+  },
+  [3878] = {
+    'Guardia apocalíptico de Magthrull',
+    nil,
+  },
+  [3879] = {
+    'Asesino de la Facción Oscura',
+    nil,
+  },
+  [3880] = {
+    'Centinela Melyria Sombrigélida',
+    nil,
+  },
+  [3881] = {
+    nil,
+    'Carnicero',
+  },
+  [3882] = {
+    nil,
+    'Carnicero',
+  },
+  [3883] = {
+    'Moodan Granosol',
+    'Panadera',
+  },
+  [3884] = {
+    'Jhawna Viento de Avena',
+    'Panadera',
+  },
+  [3885] = {
+    'Centinela Velene Golpe Estelar',
+    nil,
+  },
+  [3886] = {
+    'Zarpador el Carnicero',
+    nil,
+  },
+  [3887] = {
+    'Barón Filargenta',
+    nil,
+  },
+  [3890] = {
+    'Brakgul Libramorte',
+    'Maestra de batalla de la Garganta Grito de Guerra',
+  },
+  [3891] = {
+    'Cadáver de Teronis',
+    nil,
+  },
+  [3892] = {
+    'Relara Lunablanca',
+    nil,
+  },
+  [3893] = {
+    'Explorador Renegado',
+    nil,
+  },
+  [3894] = {
+    'Pelturas Lunablanca',
+    nil,
+  },
+  [3895] = {
+    'Capitán Noteo',
+    'Barquero',
+  },
+  [3896] = {
+    'Capitán Hart',
+    'Barquero',
+  },
+  [3898] = {
+    'Aligar el Torturador',
+    nil,
+  },
+  [3899] = {
+    'Balizar el Agraviado',
+    nil,
+  },
+  [3900] = {
+    'Caedakar el Sañoso',
+    nil,
+  },
+  [3902] = {
+    'zzOLDTótem abrasador II',
+    nil,
+  },
+  [3903] = {
+    'zzOLDTótem abrasador III',
+    nil,
+  },
+  [3904] = {
+    'zzOLDTótem abrasador IV',
+    nil,
+  },
+  [3906] = {
+    'zzOLDTótem Corriente de sanación II',
+    nil,
+  },
+  [3907] = {
+    'zzOLDTótem Corriente de sanación III',
+    nil,
+  },
+  [3908] = {
+    'zzOLDTótem Corriente de sanación IV',
+    nil,
+  },
+  [3909] = {
+    'zzOLDTótem Corriente de sanación V',
+    nil,
+  },
+  [3911] = {
+    'zzOLDTótem Garra de piedra II',
+    nil,
+  },
+  [3912] = {
+    'zzOLDTótem Garra de piedra III',
+    nil,
+  },
+  [3913] = {
+    'zzOLDTótem Garra de piedra IV',
+    nil,
+  },
+  [3914] = {
+    nil,
+    'El Guardián de la celda',
+  },
+  [3915] = {
+    nil,
+    'Mascota de Raene',
+  },
+  [3917] = {
+    'Elemental de agua podrida',
+    nil,
+  },
+  [3919] = {
+    'Anciano marchito',
+    nil,
+  },
+  [3921] = {
+    'Ursa Piel de Cardo',
+    nil,
+  },
+  [3922] = {
+    'Totémico Piel de Cardo',
+    nil,
+  },
+  [3923] = {
+    'Vigía del cubil Piel de Cardo',
+    nil,
+  },
+  [3924] = {
+    'Chamán Piel de Cardo',
+    nil,
+  },
+  [3925] = {
+    'Vengador Piel de Cardo',
+    nil,
+  },
+  [3926] = {
+    'Abrecaminos Piel de Cardo',
+    nil,
+  },
+  [3927] = {
+    'Maestro de lobos Nandos',
+    nil,
+  },
+  [3928] = {
+    'Babosa en podredumbre',
+    nil,
+  },
+  [3931] = {
+    'Oráculo Sombramatorral',
+    nil,
+  },
+  [3932] = {
+    'Guardia Sangradientes',
+    nil,
+  },
+  [3933] = {
+    nil,
+    'Carnicero',
+  },
+  [3934] = {
+    'Tabernero Boorand Ventollano',
+    'Tabernero',
+  },
+  [3935] = {
+    nil,
+    'Carnicero',
+  },
+  [3936] = {
+    'Shandris Plumaluna',
+    'General del ejército de los centinelas',
+  },
+  [3937] = {
+    'Kira Cántico',
+    'Panadera ambulante',
+  },
+  [3938] = {
+    'Roth Filopesado',
+    'Guardia de Kira',
+  },
+  [3939] = {
+    'Lobo Crines de Acero',
+    nil,
+  },
+  [3940] = {
+    'Taneel Leñoscuro',
+    nil,
+  },
+  [3941] = {
+    'Uthil Llamaluna',
+    nil,
+  },
+  [3942] = {
+    'Mavoris Quiebranubes',
+    nil,
+  },
+  [3944] = {
+    'Sacerdotisa Colafuria',
+    nil,
+  },
+  [3945] = {
+    'Caravanero Ruzzgot',
+    nil,
+  },
+  [3946] = {
+    'Velinde Cantoestelar',
+    nil,
+  },
+  [3947] = {
+    'Armador goblin',
+    nil,
+  },
+  [3948] = {
+    'Honni Avenaurea',
+    'Panadera',
+  },
+  [3950] = {
+    'Guardián de agua menor',
+    nil,
+  },
+  [3951] = {
+    'Bhaldaran Sombracuervo',
+    'Fabricante de arcos',
+  },
+  [3952] = {
+    nil,
+    'Sastre',
+  },
+  [3953] = {
+    'Tandaan Melenaclara',
+    'Mercader de armaduras de cuero',
+  },
+  [3954] = {
+    nil,
+    'Objetos comerciables',
+  },
+  [3955] = {
+    nil,
+    'Objetos comerciables',
+  },
+  [3956] = {
+    'Harklan Arboluna',
+    'Suministros de alquimia',
+  },
+  [3957] = {
+    'Jainay Brisa de Pluma',
+    'Suministros de cocina',
+  },
+  [3958] = {
+    nil,
+    'Suministros de peletería',
+  },
+  [3959] = {
+    nil,
+    'Panadera',
+  },
+  [3960] = {
+    nil,
+    'Carnicero',
+  },
+  [3961] = {
+    nil,
+    'Vendedor de alimentos y bebidas',
+  },
+  [3962] = {
+    'Haljan Roblezón',
+    'Pertrechos',
+  },
+  [3963] = {
+    'Danlaar Zancanoche',
+    'Instructor de cazadores',
+  },
+  [3964] = {
+    nil,
+    'Instructor de alquimia',
+  },
+  [3965] = {
+    'Cilania Acecharraíces',
+    'Instructora de herboristería',
+  },
+  [3966] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [3967] = {
+    'Aayndia Vientofloral',
+    'Instructor de peletería',
+  },
+  [3968] = {
+    'Tótem avizor',
+    nil,
+  },
+  [3969] = {
+    'Fahran Filencioso',
+    'Vendedor de venenos',
+  },
+  [3970] = {
+    nil,
+    'Suministros de componentes',
+  },
+  [3974] = {
+    'Maestro de canes Loksey',
+    nil,
+  },
+  [3975] = {
+    nil,
+    'El Campeón Escarlata',
+  },
+  [3976] = {
+    'Comandante Escarlata Mograine',
+    nil,
+  },
+  [3977] = {
+    'Alta inquisidora Melenablanca',
+    nil,
+  },
+  [3978] = {
+    'Sabio Buscador de la Verdad',
+    nil,
+  },
+  [3979] = {
+    'Bibliotecaria Mae Palipolvo',
+    'Liga de Expedicionarios',
+  },
+  [3980] = {
+    'Raleigh el Devoto',
+    nil,
+  },
+  [3983] = {
+    'Interrogador Vishas',
+    nil,
+  },
+  [3985] = {
+    'Abuelo Vishas',
+    nil,
+  },
+  [3986] = {
+    'Sarilus Fuenteviciosa',
+    nil,
+  },
+  [3987] = {
+    'Dal Zarpasangrante',
+    nil,
+  },
+  [3988] = {
+    'Operador de Ventura y Cía.',
+    nil,
+  },
+  [3989] = {
+    'Maderero de Ventura y Cía.',
+    nil,
+  },
+  [3990] = {
+    'Cortador de Ventura y Cía.',
+    nil,
+  },
+  [3991] = {
+    'Deforestador de Ventura y Cía.',
+    nil,
+  },
+  [3992] = {
+    'Resistente de Ventura y Cía.',
+    nil,
+  },
+  [3993] = {
+    'Maquinista de Ventura y Cía.',
+    nil,
+  },
+  [3994] = {
+    'Vigilante Albagorm',
+    nil,
+  },
+  [3995] = {
+    'Médico brujo Jin\'Zil',
+    nil,
+  },
+  [3997] = {
+    'Caporal de Ventura y Cía.',
+    nil,
+  },
+  [3998] = {
+    'Alimaña Cortaviento',
+    nil,
+  },
+  [3999] = {
+    'Cavador Cortaviento',
+    nil,
+  },
+  [4001] = {
+    'Rata de túnel Cortaviento',
+    nil,
+  },
+  [4002] = {
+    'Cantero Cortaviento',
+    nil,
+  },
+  [4003] = {
+    'Geomántico Cortaviento',
+    nil,
+  },
+  [4004] = {
+    'Señor supremo Cortaviento',
+    nil,
+  },
+  [4005] = {
+    'Trepador Musgondo',
+    nil,
+  },
+  [4006] = {
+    'Tejerred Musgondo',
+    nil,
+  },
+  [4007] = {
+    'Escupetósigo Musgondo',
+    nil,
+  },
+  [4008] = {
+    'Agitador de precipicio',
+    nil,
+  },
+  [4009] = {
+    'Agitador de precipicio enfurecido',
+    nil,
+  },
+  [4011] = {
+    'Alaorgullo joven',
+    nil,
+  },
+  [4012] = {
+    'Dracoleón Alaorgullo',
+    nil,
+  },
+  [4013] = {
+    'Cazacielos Alaorgullo',
+    nil,
+  },
+  [4014] = {
+    'Consorte Alaorgullo',
+    nil,
+  },
+  [4015] = {
+    'Patriarca Alaorgullo',
+    nil,
+  },
+  [4016] = {
+    'Dragón hada',
+    nil,
+  },
+  [4017] = {
+    'Dragón hada avispado',
+    nil,
+  },
+  [4018] = {
+    'Trotador cornamentado',
+    nil,
+  },
+  [4019] = {
+    'Gran trotador',
+    nil,
+  },
+  [4020] = {
+    'Bestia de savia',
+    nil,
+  },
+  [4021] = {
+    'Bestia de savia corrupta',
+    nil,
+  },
+  [4022] = {
+    'Arpía Furia Sangrienta',
+    nil,
+  },
+  [4023] = {
+    'Malapluma Furia Sangrienta',
+    nil,
+  },
+  [4024] = {
+    'Destripadora Furia Sangrienta',
+    nil,
+  },
+  [4025] = {
+    'Emboscadora Furia Sangrienta',
+    nil,
+  },
+  [4026] = {
+    'Clamavientos Furia Sangrienta',
+    nil,
+  },
+  [4027] = {
+    'Bruja de la Tormenta Furia Sangrienta',
+    nil,
+  },
+  [4028] = {
+    'Anciano carbonizado',
+    nil,
+  },
+  [4029] = {
+    'Anciano ennegrecido',
+    nil,
+  },
+  [4030] = {
+    'Anciano vengativo',
+    nil,
+  },
+  [4031] = {
+    'Quimera volantona',
+    nil,
+  },
+  [4032] = {
+    'Quimera joven',
+    nil,
+  },
+  [4033] = {
+    'Espíritu de piedra carbonizado',
+    nil,
+  },
+  [4034] = {
+    'Espíritu de piedra iracundo',
+    nil,
+  },
+  [4035] = {
+    'Espíritu de piedra furioso',
+    nil,
+  },
+  [4036] = {
+    'Espíritu flameante huido',
+    nil,
+  },
+  [4037] = {
+    'Devastador ardiente',
+    nil,
+  },
+  [4038] = {
+    'Destructor ardiente',
+    nil,
+  },
+  [4039] = {
+    nil,
+    'Ángel de la Resurrección',
+  },
+  [4040] = {
+    'Acechador de cuevas',
+    nil,
+  },
+  [4041] = {
+    'Basilisco agostado',
+    nil,
+  },
+  [4042] = {
+    'Basilisco chamuscado',
+    nil,
+  },
+  [4043] = {
+    nil,
+    'Mercader de armas de dos manos',
+  },
+  [4044] = {
+    'Basilisco ennegrecido',
+    nil,
+  },
+  [4045] = {
+    nil,
+    'PNJ sin ropa',
+  },
+  [4046] = {
+    'Magatha Tótem Siniestro',
+    'Bruja anciana',
+  },
+  [4047] = {
+    'Zor Árbol Solitario',
+    'Anciano clarividente',
+  },
+  [4048] = {
+    '[Deprecated for 4.x]Díscolo Falfindel',
+    nil,
+  },
+  [4049] = {
+    'Seereth Petrajada',
+    nil,
+  },
+  [4050] = {
+    'Custodio Cenarion',
+    nil,
+  },
+  [4051] = {
+    'Botánico Cenarion',
+    nil,
+  },
+  [4052] = {
+    'Druida Cenarion',
+    nil,
+  },
+  [4053] = {
+    'Hija de Cenarius',
+    nil,
+  },
+  [4054] = {
+    'Hermana sonriente',
+    nil,
+  },
+  [4055] = {
+    'Caminaclaros Mirkfallon',
+    nil,
+  },
+  [4056] = {
+    'Vigilante Mirkfallon',
+    nil,
+  },
+  [4057] = {
+    'Hijo de Cenarius',
+    nil,
+  },
+  [4059] = {
+    'Espíritu del bosque',
+    nil,
+  },
+  [4061] = {
+    'Dríade Mirkfallon',
+    nil,
+  },
+  [4062] = {
+    'Bombardero Hierro Negro',
+    nil,
+  },
+  [4064] = {
+    'Explorador Roca Negra',
+    nil,
+  },
+  [4065] = {
+    'Avizor Roca Negra',
+    nil,
+  },
+  [4067] = {
+    'Corredor Crepuscular',
+    nil,
+  },
+  [4068] = {
+    'Mensajero serpiente',
+    nil,
+  },
+  [4069] = {
+    'Planificador de Ventura y Cía.',
+    nil,
+  },
+  [4070] = {
+    'Constructor de Ventura y Cía.',
+    nil,
+  },
+  [4071] = {
+    'Moledor de Ventura y Cía.',
+    nil,
+  },
+  [4072] = {
+    'Prisionero de Jin\'Zil',
+    nil,
+  },
+  [4075] = {
+    'Rata',
+    nil,
+  },
+  [4076] = {
+    'Cucaracha',
+    nil,
+  },
+  [4077] = {
+    'Gaxim Silvóxido',
+    nil,
+  },
+  [4079] = {
+    'Centinela Thenysil',
+    nil,
+  },
+  [4080] = {
+    'Kaela Lanzasombra',
+    nil,
+  },
+  [4081] = {
+    'Lomac Destrabaengranajes',
+    nil,
+  },
+  [4082] = {
+    nil,
+    'Pertrechos',
+  },
+  [4083] = {
+    nil,
+    'Aprendiza médico brujo',
+  },
+  [4084] = {
+    nil,
+    'Suministros generales',
+  },
+  [4085] = {
+    nil,
+    'Vendedor de armaduras de Ventura y Cía.',
+  },
+  [4086] = {
+    nil,
+    'Mercader de Ventura y Cía.',
+  },
+  [4087] = {
+    'Arias\'ta Rugefilo',
+    'Instructor de guerreros',
+  },
+  [4089] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [4090] = {
+    'Astarii Buscaestelar',
+    'Instructora de sacerdotes',
+  },
+  [4091] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [4092] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [4093] = {
+    '[Deprecated for 4.x]Retador Galak',
+    nil,
+  },
+  [4094] = {
+    '[Deprecated for 4.x]Explorador Galak',
+    nil,
+  },
+  [4095] = {
+    '[Deprecated for 4.x]Aplastador Galak',
+    nil,
+  },
+  [4096] = {
+    '[Deprecated for 4.x]Cazavientos Galak',
+    nil,
+  },
+  [4097] = {
+    '[Deprecated for 4.x]Agitadora Galak',
+    nil,
+  },
+  [4098] = {
+    '[Deprecated for 4.x]Corremanadas Galak',
+    nil,
+  },
+  [4099] = {
+    '[Deprecated for 4.x]Maleante Galak',
+    nil,
+  },
+  [4100] = {
+    'Arpía estridente',
+    nil,
+  },
+  [4101] = {
+    'Malapluma estridente',
+    nil,
+  },
+  [4104] = {
+    'Clamavientos estridente',
+    nil,
+  },
+  [4107] = {
+    'Dracoleón de Nido Alto',
+    nil,
+  },
+  [4109] = {
+    'Consorte de Nido Alto',
+    nil,
+  },
+  [4110] = {
+    'Patriarca de Nido Alto',
+    nil,
+  },
+  [4111] = {
+    'Kóbold Gravamorro',
+    nil,
+  },
+  [4112] = {
+    'Alimaña Gravamorro',
+    nil,
+  },
+  [4113] = {
+    'Cavador Gravamorro',
+    nil,
+  },
+  [4114] = {
+    'Batidor Gravamorro',
+    nil,
+  },
+  [4115] = {
+    '[Deprecated for 4.x] Emboscador Gravamorro',
+    '<necesita escala>',
+  },
+  [4116] = {
+    'Supervisor Gravamorro',
+    nil,
+  },
+  [4117] = {
+    'Serpiente nubosa',
+    nil,
+  },
+  [4118] = {
+    'Serpiente nubosa venenosa',
+    nil,
+  },
+  [4119] = {
+    'Serpiente nubosa anciana',
+    nil,
+  },
+  [4120] = {
+    'Rocoso tronador',
+    nil,
+  },
+  [4121] = {
+    'Rocoso deambulante',
+    nil,
+  },
+  [4124] = {
+    'Puma de las Agujas',
+    nil,
+  },
+  [4126] = {
+    'Acechador del risco',
+    nil,
+  },
+  [4127] = {
+    'Hiena Dentecenado',
+    nil,
+  },
+  [4128] = {
+    'Acechador Dentecenado',
+    nil,
+  },
+  [4129] = {
+    'Gruñidor Dentecenado',
+    nil,
+  },
+  [4130] = {
+    '[Deprecated for 4.x]Buscador silítido',
+    nil,
+  },
+  [4131] = {
+    '[Deprecated for 4.x]Invasor silítido',
+    nil,
+  },
+  [4132] = {
+    'Krkk\'kx',
+    nil,
+  },
+  [4133] = {
+    '[Deprecated for 4.x]Zángano de colmena silítido',
+    nil,
+  },
+  [4138] = {
+    'Jeen\'ra Corredor de la Noche',
+    'Instructor de cazadores',
+  },
+  [4139] = {
+    '[Deprecated for 4.x]Terror escórpido',
+    nil,
+  },
+  [4140] = {
+    '[Deprecated for 4.x]Atracador escórpido',
+    nil,
+  },
+  [4142] = {
+    '[Deprecated for 4.x]Tortuga Brillavalva',
+    nil,
+  },
+  [4143] = {
+    '[Deprecated for 4.x]Sacudidor Brillavalva',
+    nil,
+  },
+  [4144] = {
+    '[Deprecated for 4.x]Cavapozos Brillavalva',
+    nil,
+  },
+  [4146] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [4147] = {
+    '[Deprecated for 4.x]Basilisco Gapo Salino',
+    nil,
+  },
+  [4150] = {
+    '[Deprecated for 4.x]Observador Gapo Salino',
+    nil,
+  },
+  [4151] = {
+    '[Deprecated for 4.x]Vitropiel Gapo Salino',
+    nil,
+  },
+  [4154] = {
+    'Carroñero del Desierto de Sal',
+    nil,
+  },
+  [4155] = {
+    nil,
+    'Banquera',
+  },
+  [4156] = {
+    nil,
+    'Instructor de pesca',
+  },
+  [4157] = {
+    'zzOLDKitari Buscalongo',
+    nil,
+  },
+  [4158] = {
+    '[Deprecated for 4.x]Buitre del Desierto de Sal',
+    nil,
+  },
+  [4159] = {
+    nil,
+    'Instructora de sastrería',
+  },
+  [4160] = {
+    nil,
+    'Instructor de alquimia',
+  },
+  [4161] = {
+    nil,
+    'Maestro de hermandad',
+  },
+  [4163] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [4164] = {
+    nil,
+    'Elfa de la noche armera',
+  },
+  [4165] = {
+    nil,
+    'Instructora de portal',
+  },
+  [4166] = {
+    'Gacela',
+    nil,
+  },
+  [4167] = {
+    nil,
+    'Vendedor de alimentos y bebidas',
+  },
+  [4168] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [4169] = {
+    nil,
+    'Vendedora de carne',
+  },
+  [4170] = {
+    nil,
+    'Pertrechos',
+  },
+  [4171] = {
+    nil,
+    'Mercader de armas de filo',
+  },
+  [4172] = {
+    nil,
+    'Vendedora de túnicas',
+  },
+  [4173] = {
+    nil,
+    'Mercader de arcos',
+  },
+  [4175] = {
+    nil,
+    'Mercader de armaduras de tela',
+  },
+  [4176] = {
+    nil,
+    'Mercader de armaduras de tela',
+  },
+  [4177] = {
+    nil,
+    'Mercader de armaduras de malla',
+  },
+  [4178] = {
+    nil,
+    'Mercader de armaduras de malla',
+  },
+  [4179] = {
+    nil,
+    'Mercader de escudos',
+  },
+  [4180] = {
+    'Ealyshia Susurrocío',
+    'Mercader de armas de dos manos',
+  },
+  [4181] = {
+    nil,
+    'Vendedor de alimentos y bebidas',
+  },
+  [4182] = {
+    nil,
+    'Pertrechos',
+  },
+  [4183] = {
+    'Naram Garralarga',
+    'Forjadora de armas',
+  },
+  [4184] = {
+    'Geenia Sombrasol',
+    'Alfayate de prendas especiales',
+  },
+  [4185] = {
+    nil,
+    'Sastre',
+  },
+  [4186] = {
+    nil,
+    'Suministros para armaduras de cuero y peletería',
+  },
+  [4187] = {
+    'Harlon Guardaspina',
+    'Armero y forjador de escudos',
+  },
+  [4188] = {
+    nil,
+    'Mercader de armaduras de tela',
+  },
+  [4189] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [4190] = {
+    nil,
+    'Panadera',
+  },
+  [4191] = {
+    nil,
+    'Vendedor de alimentos y bebidas',
+  },
+  [4192] = {
+    nil,
+    'Vendedor de bebidas',
+  },
+  [4193] = {
+    'Grondal Brisaluna',
+    'Instructora de sastrería',
+  },
+  [4194] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [4195] = {
+    nil,
+    'Vendedor de alimentos y bebidas',
+  },
+  [4196] = {
+    'Enjambre silítido',
+    nil,
+  },
+  [4198] = {
+    'Braelyn Manofuego',
+    nil,
+  },
+  [4200] = {
+    nil,
+    'Vendedor de pescado',
+  },
+  [4201] = {
+    '[DEPRECATED] Ziz Fizziks',
+    nil,
+  },
+  [4202] = {
+    'Gerenzo Silbillave',
+    nil,
+  },
+  [4203] = {
+    'Ariyell Cielosombra',
+    'Mercader de armas',
+  },
+  [4204] = {
+    'Firodren Llamaluna',
+    'Instructora de herboristería',
+  },
+  [4205] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [4206] = {
+    nil,
+    'Instructor de osos',
+  },
+  [4207] = {
+    'Valyen Cantolupo',
+    'Instructora de lobos',
+  },
+  [4208] = {
+    nil,
+    'Banquera',
+  },
+  [4209] = {
+    nil,
+    'Banquera',
+  },
+  [4210] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [4211] = {
+    nil,
+    'Instructora de primeros auxilios',
+  },
+  [4212] = {
+    nil,
+    'Instructor de peletería',
+  },
+  [4213] = {
+    nil,
+    'Instructora de encantamiento',
+  },
+  [4214] = {
+    'Erion Sombrusurro',
+    'Instructor de pícaros',
+  },
+  [4215] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [4216] = {
+    nil,
+    'Suministros de herboristería',
+  },
+  [4217] = {
+    'Mathrengyl Garroso',
+    'Instructor de druidas',
+  },
+  [4218] = {
+    nil,
+    'Instructor de druidas',
+  },
+  [4219] = {
+    'Fylerian Alanoche',
+    'Instructor de druidas',
+  },
+  [4220] = {
+    nil,
+    'Componentes',
+  },
+  [4221] = {
+    nil,
+    'Vendedor de pescado',
+  },
+  [4222] = {
+    nil,
+    'Suministros de pesca',
+  },
+  [4223] = {
+    nil,
+    'Suministros de cocina',
+  },
+  [4225] = {
+    nil,
+    'Suministros de peletería',
+  },
+  [4226] = {
+    nil,
+    'Suministros de alquimia',
+  },
+  [4228] = {
+    nil,
+    'Suministros de encantamiento',
+  },
+  [4229] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [4230] = {
+    nil,
+    'Mercader de bolsas',
+  },
+  [4231] = {
+    nil,
+    'Mercader de armas',
+  },
+  [4232] = {
+    nil,
+    'Mercader de hachas',
+  },
+  [4233] = {
+    nil,
+    'Mercader de mazas y bastones',
+  },
+  [4234] = {
+    nil,
+    'Mercader de bastones',
+  },
+  [4235] = {
+    nil,
+    'Mercader de armas arrojadizas',
+  },
+  [4236] = {
+    nil,
+    'Mercader de armaduras de cuero',
+  },
+  [4237] = {
+    nil,
+    'Mercader de armaduras de cuero',
+  },
+  [4239] = {
+    'Lewin Plumestrella',
+    'Mercader de armaduras de cuero',
+  },
+  [4240] = {
+    nil,
+    'Mercader de escudos',
+  },
+  [4241] = {
+    nil,
+    'Pertrechos',
+  },
+  [4242] = {
+    'Acompañante sable de hielo',
+    nil,
+  },
+  [4243] = {
+    'Sombranoche',
+    'Mascota de Jeen\'ra',
+  },
+  [4244] = {
+    'Sombra',
+    'Mascota de Dorion',
+  },
+  [4245] = {
+    'Correbruma',
+    'Mascota de Valyen',
+  },
+  [4246] = {
+    'Merodeador lunar',
+    'Mascota de Kysandia',
+  },
+  [4247] = {
+    'Zarpapetra',
+    'Mascota de Talar',
+  },
+  [4248] = {
+    'Hiena Pestillejo',
+    nil,
+  },
+  [4249] = {
+    'Gruñidor Pestillejo',
+    nil,
+  },
+  [4250] = {
+    'Can de manada Galak',
+    nil,
+  },
+  [4251] = {
+    'Corredor goblin',
+    nil,
+  },
+  [4252] = {
+    'Corredor gnomo',
+    nil,
+  },
+  [4253] = {
+    'Forma de oso (elfo de la noche druida)',
+    nil,
+  },
+  [4254] = {
+    'Geofram Dedorroca',
+    'Instructor de minería',
+  },
+  [4255] = {
+    'Brogus Cebatruenos',
+    'Alimentos y bebidas',
+  },
+  [4256] = {
+    'Golnir Dedorroca',
+    'Suministros de minería',
+  },
+  [4257] = {
+    'Lana Cebatruenos',
+    'Suministros de herrería',
+  },
+  [4258] = {
+    'Bengus Forjahonda',
+    'Instructora de herrería',
+  },
+  [4259] = {
+    'Thurgrum Forjahonda',
+    'Suministros de herrería',
+  },
+  [4260] = {
+    'Machacador de Ventura y Cía.',
+    nil,
+  },
+  [4261] = {
+    'Forma de oso (tauren druida)',
+    nil,
+  },
+  [4262] = {
+    'Centinela de Darnassus',
+    nil,
+  },
+  [4263] = {
+    'Prole de Musgondo',
+    nil,
+  },
+  [4264] = {
+    'Matriarca Musgondo',
+    nil,
+  },
+  [4265] = {
+    nil,
+    'Suministros de cocina',
+  },
+  [4266] = {
+    nil,
+    'Vendedor de alimentos y bebidas',
+  },
+  [4267] = {
+    nil,
+    'Maestro de hipogrifos',
+  },
+  [4268] = {
+    'Lobo grisáceo',
+    nil,
+  },
+  [4270] = {
+    'Lobo rojo',
+    nil,
+  },
+  [4273] = {
+    'Vigilante Ordanus',
+    nil,
+  },
+  [4274] = {
+    'Fenrus el Devorador',
+    nil,
+  },
+  [4275] = {
+    'Archimago Arugal',
+    nil,
+  },
+  [4276] = {
+    nil,
+    'Ventura y Cía.',
+  },
+  [4277] = {
+    'Ojo de Kilrogg',
+    nil,
+  },
+  [4278] = {
+    'Comandante Vallefont',
+    nil,
+  },
+  [4279] = {
+    'Odo el Vigía Ciego',
+    nil,
+  },
+  [4280] = {
+    'Valedor Escarlata',
+    nil,
+  },
+  [4281] = {
+    'Explorador Escarlata',
+    nil,
+  },
+  [4282] = {
+    'Magiero Escarlata',
+    nil,
+  },
+  [4283] = {
+    'Avizor Escarlata',
+    nil,
+  },
+  [4284] = {
+    'Augur Escarlata',
+    nil,
+  },
+  [4285] = {
+    'Discípulo Escarlata',
+    nil,
+  },
+  [4286] = {
+    'Soldado Escarlata',
+    nil,
+  },
+  [4287] = {
+    'Gallardo Escarlata',
+    nil,
+  },
+  [4288] = {
+    'Maestro de bestias Escarlata',
+    nil,
+  },
+  [4289] = {
+    'Evocador Escarlata',
+    nil,
+  },
+  [4290] = {
+    'Custodio Escarlata',
+    nil,
+  },
+  [4291] = {
+    'Adivino Escarlata',
+    nil,
+  },
+  [4292] = {
+    'Protector Escarlata',
+    nil,
+  },
+  [4293] = {
+    'Arúspice Escarlata',
+    nil,
+  },
+  [4294] = {
+    'Hechicero Escarlata',
+    nil,
+  },
+  [4295] = {
+    'Mirmidón Escarlata',
+    nil,
+  },
+  [4296] = {
+    'Adepto Escarlata',
+    nil,
+  },
+  [4297] = {
+    'Conjurador Escarlata',
+    nil,
+  },
+  [4298] = {
+    'Defensor Escarlata',
+    nil,
+  },
+  [4299] = {
+    'Capellán Escarlata',
+    nil,
+  },
+  [4300] = {
+    'Zahorí Escarlata',
+    nil,
+  },
+  [4301] = {
+    'Centurión Escarlata',
+    nil,
+  },
+  [4302] = {
+    'Campeón Escarlata',
+    nil,
+  },
+  [4303] = {
+    'Abad Escarlata',
+    nil,
+  },
+  [4304] = {
+    'Sabueso Escarlata',
+    nil,
+  },
+  [4305] = {
+    nil,
+    'Pescador',
+  },
+  [4306] = {
+    'Torturador Escarlata',
+    nil,
+  },
+  [4307] = {
+    'Heldan Sonmistral',
+    'Pescador',
+  },
+  [4308] = {
+    'Espíritu sin grilletes',
+    nil,
+  },
+  [4309] = {
+    'Gorm Tótem Siniestro',
+    nil,
+  },
+  [4310] = {
+    'Cor Tótem Siniestro',
+    nil,
+  },
+  [4311] = {
+    'Holgar Hachatormenta',
+    nil,
+  },
+  [4312] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [4313] = {
+    '[UNUSED] [PH] Embajador Saylaton Pezuñamorta',
+    nil,
+  },
+  [4314] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [4315] = {
+    '[UNUSED] Guthrin Pezuñamorta',
+    nil,
+  },
+  [4316] = {
+    'Can de manada Kolkar',
+    nil,
+  },
+  [4317] = {
+    '[Deprecated for 4.x]Nyse',
+    'Maestra de jinetes del viento',
+  },
+  [4318] = {
+    '[Deprecated for 4.x] Delyka',
+    'Ángel de la Resurrección',
+  },
+  [4319] = {
+    '[Deprecated for 4.x]Thyssiana',
+    'Maestro de hipogrifos',
+  },
+  [4320] = {
+    nil,
+    'Maestra de establos',
+  },
+  [4321] = {
+    nil,
+    'Maestro de grifos',
+  },
+  [4322] = {
+    nil,
+    'Ángel de la Resurrección',
+  },
+  [4323] = {
+    'Prole abrasadora',
+    nil,
+  },
+  [4324] = {
+    'Cría abrasadora',
+    nil,
+  },
+  [4328] = {
+    'Horrocrusto Pirocabello',
+    nil,
+  },
+  [4329] = {
+    'Explorador Pirocabello',
+    nil,
+  },
+  [4331] = {
+    'Ceniazote Pirocabello',
+    nil,
+  },
+  [4333] = {
+    'Devorador Pirocabello',
+    nil,
+  },
+  [4334] = {
+    'Clamallamas Pirocabello',
+    nil,
+  },
+  [4339] = {
+    'Brotasangre',
+    nil,
+  },
+  [4340] = {
+    nil,
+    'Ángel de la Resurrección',
+  },
+  [4341] = {
+    'Crocolisco secorrón',
+    nil,
+  },
+  [4342] = {
+    'Malafauce secorrón',
+    nil,
+  },
+  [4343] = {
+    'Sacudidor secorrón',
+    nil,
+  },
+  [4344] = {
+    'Crocolisco secorrón jaspeado',
+    nil,
+  },
+  [4345] = {
+    'Faucedaga secorrón',
+    nil,
+  },
+  [4346] = {
+    'Despellejador nocivo',
+    nil,
+  },
+  [4347] = {
+    'Atracador nocivo',
+    nil,
+  },
+  [4348] = {
+    'Machacador nocivo',
+    nil,
+  },
+  [4351] = {
+    'Raptor Cienorrojo',
+    nil,
+  },
+  [4352] = {
+    'Estridador Cienorrojo',
+    nil,
+  },
+  [4355] = {
+    'Segador Cienorrojo',
+    nil,
+  },
+  [4356] = {
+    'Tajobuche Cienorrojo',
+    nil,
+  },
+  [4357] = {
+    'Colazote Cienorrojo',
+    nil,
+  },
+  [4358] = {
+    'Saltacharco Ancalodo',
+    nil,
+  },
+  [4359] = {
+    'Múrloc Ancalodo',
+    nil,
+  },
+  [4360] = {
+    'Guerrero Ancalodo',
+    nil,
+  },
+  [4361] = {
+    'Habitabosta Ancalodo',
+    nil,
+  },
+  [4362] = {
+    'Correcostas Ancalodo',
+    nil,
+  },
+  [4363] = {
+    'Oráculo Ancalodo',
+    nil,
+  },
+  [4364] = {
+    'Guerrero Strashaz',
+    nil,
+  },
+  [4366] = {
+    'Guardia serpiente Strashaz',
+    nil,
+  },
+  [4368] = {
+    'Mirmidón Strashaz',
+    nil,
+  },
+  [4370] = {
+    'Hechicera Strashaz',
+    nil,
+  },
+  [4371] = {
+    'Sirena Strashaz',
+    nil,
+  },
+  [4374] = {
+    'Hidra Strashaz',
+    nil,
+  },
+  [4376] = {
+    'Araña Niebla Negra',
+    nil,
+  },
+  [4377] = {
+    'Prole Niebla Negra',
+    nil,
+  },
+  [4378] = {
+    'Ermitaña Niebla Negra',
+    nil,
+  },
+  [4379] = {
+    'Virasedal Niebla Negra',
+    nil,
+  },
+  [4380] = {
+    'Viuda Niebla Negra',
+    nil,
+  },
+  [4382] = {
+    'Trepador Parramustia',
+    nil,
+  },
+  [4385] = {
+    'Furibundo Parramustia',
+    nil,
+  },
+  [4386] = {
+    'Desgarrador Parramustia',
+    nil,
+  },
+  [4387] = {
+    'Bestia de lodazal Parramustia',
+    nil,
+  },
+  [4388] = {
+    'Trillador de la oscuridad joven',
+    nil,
+  },
+  [4389] = {
+    'Trillador de la oscuridad',
+    nil,
+  },
+  [4390] = {
+    'Trillador de la oscuridad anciano',
+    nil,
+  },
+  [4391] = {
+    'Moco del pantano',
+    nil,
+  },
+  [4392] = {
+    'Moco del pantano corrosivo',
+    nil,
+  },
+  [4393] = {
+    'Moco del pantano ácido',
+    nil,
+  },
+  [4394] = {
+    'Moco de pantano burbujeante',
+    nil,
+  },
+  [4395] = {
+    'Moco del pantano virulento',
+    nil,
+  },
+  [4396] = {
+    'Tortuga Fangorroca',
+    nil,
+  },
+  [4397] = {
+    'Caparapico Fangorroca',
+    nil,
+  },
+  [4398] = {
+    'Perforador Fangorroca',
+    nil,
+  },
+  [4399] = {
+    'Cavapozos Fangorroca',
+    nil,
+  },
+  [4400] = {
+    'Quijaforte Fangorroca',
+    nil,
+  },
+  [4401] = {
+    'Pinzador Valvafango',
+    nil,
+  },
+  [4402] = {
+    'Quebrador Valvafango',
+    nil,
+  },
+  [4403] = {
+    'Tenazario Valvafango',
+    nil,
+  },
+  [4404] = {
+    'Escarbador Valvafango',
+    nil,
+  },
+  [4405] = {
+    'Zarpador Valvafango',
+    nil,
+  },
+  [4407] = {
+    nil,
+    'Maestro de hipogrifos',
+  },
+  [4408] = {
+    'Forma acuática (elfo de la noche druida)',
+    nil,
+  },
+  [4409] = {
+    'Guardián Kordurus',
+    nil,
+  },
+  [4410] = {
+    'Forma acuática (tauren druida)',
+    nil,
+  },
+  [4411] = {
+    'Rondador Colmiumbrío',
+    nil,
+  },
+  [4412] = {
+    'Trepador Colmiumbrío',
+    nil,
+  },
+  [4413] = {
+    'Araña Colmiumbrío',
+    nil,
+  },
+  [4414] = {
+    'Escupetósigo Colmiumbrío',
+    nil,
+  },
+  [4415] = {
+    'Araña Colmiumbrío gigante',
+    nil,
+  },
+  [4416] = {
+    'Cantero Defias',
+    nil,
+  },
+  [4417] = {
+    'Capataz Defias',
+    nil,
+  },
+  [4418] = {
+    'Zahorí Defias',
+    nil,
+  },
+  [4419] = {
+    '[Deprecated for 4.x]Race Master Kronkrider',
+    nil,
+  },
+  [4420] = {
+    'Señor supremo Colmicarnero',
+    nil,
+  },
+  [4421] = {
+    'Charlga Filonavaja',
+    'La Bruja',
+  },
+  [4422] = {
+    'Agathelos el Furioso',
+    nil,
+  },
+  [4423] = {
+    'Protector de Darnassus',
+    nil,
+  },
+  [4424] = {
+    'Aggem Malaespina',
+    'Profeta de los Caramuerte',
+  },
+  [4425] = {
+    'Cazador ciego',
+    nil,
+  },
+  [4427] = {
+    'Guardián del resguardo',
+    nil,
+  },
+  [4428] = {
+    'Portavoz de la muerte Jargba',
+    'Capitán Caramuerte',
+  },
+  [4429] = {
+    'Operario de foso goblin',
+    nil,
+  },
+  [4430] = {
+    'Operario de foso gnomo',
+    nil,
+  },
+  [4435] = {
+    'Guerrero de Rajacieno',
+    nil,
+  },
+  [4436] = {
+    'Jabaguardia de Rajacieno',
+    nil,
+  },
+  [4437] = {
+    'Celador de Rajacieno',
+    nil,
+  },
+  [4438] = {
+    'Cuerolanza de Rajacieno',
+    nil,
+  },
+  [4439] = {
+    'Volijabalí',
+    nil,
+  },
+  [4440] = {
+    'Totémica de Rajacieno',
+    nil,
+  },
+  [4442] = {
+    'Defensor de Rajacieno',
+    nil,
+  },
+  [4444] = {
+    'Mortacechador Vincent',
+    nil,
+  },
+  [4445] = {
+    '[Deprecated for 4.x]Griznak',
+    'Vendedor de vales para las carreras',
+  },
+  [4446] = {
+    '[Deprecated for 4.x]Mazzer Quitaclavos',
+    'Vendedor de vales para las carreras',
+  },
+  [4449] = {
+    '[Deprecated for 4.x]Crazzle Engranágil',
+    'Canjeador de vales gnomo',
+  },
+  [4450] = {
+    '[Deprecated for 4.x]Alfombriz',
+    'Canjeador de vales goblin',
+  },
+  [4451] = {
+    'Auld Picopiedra',
+    nil,
+  },
+  [4452] = {
+    '[Deprecated for 4.x]Kravel Karbarbán',
+    nil,
+  },
+  [4453] = {
+    '[Deprecated for 4.x]Wizzle Pernolatón',
+    nil,
+  },
+  [4454] = {
+    '[Deprecated for 4.x]Fizzle Pernolatón',
+    nil,
+  },
+  [4455] = {
+    'Red Jack Sílex',
+    nil,
+  },
+  [4456] = {
+    'Fiora Orejona',
+    nil,
+  },
+  [4457] = {
+    'Batidor Ancaniebla',
+    nil,
+  },
+  [4458] = {
+    'Cazador Ancaniebla',
+    nil,
+  },
+  [4459] = {
+    'Oráculo Ancaniebla',
+    nil,
+  },
+  [4460] = {
+    'Gélido Ancaniebla',
+    nil,
+  },
+  [4461] = {
+    'Guerrero Ancaniebla',
+    nil,
+  },
+  [4462] = {
+    'Cazador Roca Negra',
+    nil,
+  },
+  [4463] = {
+    'Invocador Roca Negra',
+    nil,
+  },
+  [4464] = {
+    'Gladiador Roca Negra',
+    nil,
+  },
+  [4465] = {
+    'Guerrero Vilrama',
+    nil,
+  },
+  [4466] = {
+    'Arrancacabelleras Vilrama',
+    nil,
+  },
+  [4467] = {
+    'Veritas Vilrama',
+    nil,
+  },
+  [4468] = {
+    'Lodo de jade',
+    nil,
+  },
+  [4469] = {
+    'Moco esmeralda',
+    nil,
+  },
+  [4472] = {
+    'Visión mortificadora',
+    nil,
+  },
+  [4474] = {
+    'Cadáver en podredumbre',
+    nil,
+  },
+  [4475] = {
+    'Zombi contagiado',
+    nil,
+  },
+  [4476] = {
+    'Aparición gritona',
+    nil,
+  },
+  [4482] = {
+    'Lobo Vilrama',
+    nil,
+  },
+  [4483] = {
+    '[Deprecated for 4.x]Moktar Krin',
+    nil,
+  },
+  [4484] = {
+    'Feero Ferramán',
+    nil,
+  },
+  [4485] = {
+    'Belgrom Destrozarroca',
+    nil,
+  },
+  [4489] = {
+    'Braug Espíritu Tenue',
+    nil,
+  },
+  [4490] = {
+    'Grenka Aullasangre',
+    nil,
+  },
+  [4491] = {
+    'Guau',
+    nil,
+  },
+  [4493] = {
+    'Vengador Escarlata',
+    nil,
+  },
+  [4494] = {
+    'Vinculahechizos escarlata',
+    nil,
+  },
+  [4495] = {
+    'Encargado de foso gnomo',
+    nil,
+  },
+  [4496] = {
+    'Encargado de foso goblin',
+    nil,
+  },
+  [4497] = {
+    'Capitán Quirk',
+    'Barquero',
+  },
+  [4498] = {
+    'Maurin Partehuesos',
+    nil,
+  },
+  [4499] = {
+    'Rok\'Alim el Aporreador',
+    nil,
+  },
+  [4500] = {
+    'Señor supremo Mok\'Morokk',
+    nil,
+  },
+  [4503] = {
+    'Fangolpe Piesucio',
+    nil,
+  },
+  [4504] = {
+    'Faucehielo',
+    nil,
+  },
+  [4505] = {
+    'Marinero de cubierta Velasangre',
+    nil,
+  },
+  [4506] = {
+    'Bisoño Velasangre',
+    nil,
+  },
+  [4507] = {
+    '[Deprecated for 4.x]Daisy',
+    'Chica que da la salida',
+  },
+  [4508] = {
+    'Willix el Importador',
+    nil,
+  },
+  [4510] = {
+    'Heralath Arroyobarbecho',
+    nil,
+  },
+  [4511] = {
+    'Lágrima silenciosa de Agamaggan',
+    nil,
+  },
+  [4512] = {
+    'Agam\'ar en podredumbre',
+    nil,
+  },
+  [4514] = {
+    'Agam\'ar enfurecido',
+    nil,
+  },
+  [4515] = {
+    'Acólito Caramuerte',
+    nil,
+  },
+  [4516] = {
+    'Adepta Caramuerte',
+    nil,
+  },
+  [4517] = {
+    'Sacerdote Caramuerte',
+    nil,
+  },
+  [4518] = {
+    'Sabia Caramuerte',
+    nil,
+  },
+  [4519] = {
+    'Vidente Caramuerte',
+    nil,
+  },
+  [4520] = {
+    'Geomántica de Rajacieno',
+    nil,
+  },
+  [4521] = {
+    'Treshala Arroyobarbecho',
+    nil,
+  },
+  [4522] = {
+    'Tejepolvo de Rajacieno',
+    nil,
+  },
+  [4523] = {
+    'Terremoto de Rajacieno',
+    nil,
+  },
+  [4525] = {
+    'Rompesuelos de Rajacieno',
+    nil,
+  },
+  [4526] = {
+    'Aullavientos',
+    nil,
+  },
+  [4528] = {
+    'Estruendor de piedra',
+    nil,
+  },
+  [4530] = {
+    'Controlador de Rajacieno',
+    nil,
+  },
+  [4531] = {
+    'Instructor de bestias de Rajacieno',
+    nil,
+  },
+  [4532] = {
+    'Maestro de bestias de Rajacieno',
+    nil,
+  },
+  [4534] = {
+    'Hiena domesticada',
+    nil,
+  },
+  [4535] = {
+    'Jabaguerrero domesticado',
+    nil,
+  },
+  [4538] = {
+    'Murciélago del Horado',
+    nil,
+  },
+  [4539] = {
+    'Murciélago del Horado superior',
+    nil,
+  },
+  [4540] = {
+    'Monje Escarlata',
+    nil,
+  },
+  [4541] = {
+    'Sangre de Agamaggan',
+    nil,
+  },
+  [4542] = {
+    'Alto inquisidor Ribalimpia',
+    nil,
+  },
+  [4543] = {
+    'Mago sangriento Thalnos',
+    nil,
+  },
+  [4544] = {
+    'Krueg Machacacráneos',
+    nil,
+  },
+  [4545] = {
+    '[Deprecated for 4.x]Nag\'zehn',
+    nil,
+  },
+  [4546] = {
+    '[Deprecated for 4.x]Bor\'zehn',
+    nil,
+  },
+  [4547] = {
+    'Acechasombras Tarkreu',
+    nil,
+  },
+  [4548] = {
+    'Metaleador',
+    nil,
+  },
+  [4549] = {
+    nil,
+    'Banquera',
+  },
+  [4550] = {
+    nil,
+    'Banquera',
+  },
+  [4551] = {
+    nil,
+    'Cuidador de murciélagos',
+  },
+  [4552] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [4553] = {
+    nil,
+    'Suministros de cocina',
+  },
+  [4554] = {
+    nil,
+    'Vendedor de champiñones',
+  },
+  [4555] = {
+    nil,
+    'Pertrechos',
+  },
+  [4556] = {
+    nil,
+    'Mercader de armas',
+  },
+  [4557] = {
+    nil,
+    'Mercader de armas',
+  },
+  [4558] = {
+    nil,
+    'Mercader de armaduras ligeras',
+  },
+  [4559] = {
+    nil,
+    'Mercader de armaduras pesadas',
+  },
+  [4560] = {
+    nil,
+    'Mercader de armaduras pesadas',
+  },
+  [4561] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [4562] = {
+    nil,
+    'Componentes',
+  },
+  [4563] = {
+    'Kaal Segador de Almas',
+    'Instructora de brujos',
+  },
+  [4564] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [4565] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [4566] = {
+    'Kaelystia Aversión',
+    'Instructor de magos',
+  },
+  [4567] = {
+    nil,
+    'Instructor de magos',
+  },
+  [4568] = {
+    nil,
+    'Instructor de magos',
+  },
+  [4569] = {
+    nil,
+    'Mercader de armas de filo',
+  },
+  [4570] = {
+    nil,
+    'Mercader de bastones',
+  },
+  [4571] = {
+    nil,
+    'Vendedor de hongos',
+  },
+  [4573] = {
+    nil,
+    'Instructor de pesca',
+  },
+  [4574] = {
+    nil,
+    'Suministros de pesca',
+  },
+  [4575] = {
+    nil,
+    'Componentes',
+  },
+  [4576] = {
+    nil,
+    'Instructora de sastrería',
+  },
+  [4577] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [4578] = {
+    nil,
+    'Instructora de sastrería',
+  },
+  [4579] = {
+    'zzOLDAlexander Lister',
+    nil,
+  },
+  [4580] = {
+    nil,
+    'Vendedora de túnicas',
+  },
+  [4581] = {
+    nil,
+    'Vendedor de libros',
+  },
+  [4582] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [4583] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [4584] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [4585] = {
+    nil,
+    'Suministros de venenos',
+  },
+  [4586] = {
+    nil,
+    'Aprendiza ingeniera',
+  },
+  [4587] = {
+    nil,
+    'Suministros de ingeniería',
+  },
+  [4588] = {
+    nil,
+    'Instructor de peletería',
+  },
+  [4589] = {
+    nil,
+    'Suministros de peletería',
+  },
+  [4590] = {
+    nil,
+    'Vendedora de bolsas',
+  },
+  [4591] = {
+    nil,
+    'Instructora de primeros auxilios',
+  },
+  [4592] = {
+    nil,
+    'Mercader de armas arrojadizas',
+  },
+  [4593] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [4594] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [4595] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [4596] = {
+    nil,
+    'Instructora de herrería',
+  },
+  [4597] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [4598] = {
+    nil,
+    'Instructor de minería',
+  },
+  [4599] = {
+    nil,
+    'Suministros de minería',
+  },
+  [4600] = {
+    nil,
+    'Mercader de armas',
+  },
+  [4601] = {
+    nil,
+    'Mercader de armas',
+  },
+  [4602] = {
+    nil,
+    'Mercader de armas',
+  },
+  [4603] = {
+    nil,
+    'Mercader de armas de fuego',
+  },
+  [4604] = {
+    nil,
+    'Mercader de arcos',
+  },
+  [4605] = {
+    nil,
+    'Aprendiz herrero',
+  },
+  [4606] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [4607] = {
+    'Padre Lankester',
+    'Instructora de sacerdotes',
+  },
+  [4608] = {
+    'Padre Lazarus',
+    'Instructora de sacerdotes',
+  },
+  [4609] = {
+    nil,
+    'Aprendiz alquimista',
+  },
+  [4610] = {
+    nil,
+    'Suministros de alquimia',
+  },
+  [4611] = {
+    nil,
+    'Instructor de alquimia',
+  },
+  [4613] = {
+    nil,
+    'Maestro de hermandad',
+  },
+  [4614] = {
+    nil,
+    'Instructora de herboristería',
+  },
+  [4615] = {
+    nil,
+    'Suministros de herboristería',
+  },
+  [4616] = {
+    nil,
+    'Instructora de encantamiento',
+  },
+  [4617] = {
+    nil,
+    'Suministros de encantamiento',
+  },
+  [4618] = {
+    'Martek el Exiliado',
+    nil,
+  },
+  [4620] = {
+    '[Deprecated for 4.x]Fobeed',
+    'Comentarista de carreras',
+  },
+  [4623] = {
+    'Campeón Jabaguardia',
+    nil,
+  },
+  [4624] = {
+    'Truhán de Bahía del Botín',
+    nil,
+  },
+  [4625] = {
+    'Guarda Caramuerte',
+    nil,
+  },
+  [4626] = {
+    'Guardia CHOW',
+    nil,
+  },
+  [4627] = {
+    'Abisario de Arugal',
+    nil,
+  },
+  [4629] = {
+    '[Deprecated for 4.x]Maestro rastreador Zherin',
+    nil,
+  },
+  [4630] = {
+    '[Deprecated for 4.x]Pozzik',
+    nil,
+  },
+  [4631] = {
+    'Jefe de embarcadero Lozgil',
+    nil,
+  },
+  [4632] = {
+    'Centauro Kolkar',
+    nil,
+  },
+  [4633] = {
+    'Explorador Kolkar',
+    nil,
+  },
+  [4634] = {
+    'Aplastador Kolkar',
+    nil,
+  },
+  [4635] = {
+    'Cazavientos Kolkar',
+    nil,
+  },
+  [4636] = {
+    'Señor de batalla Kolkar',
+    nil,
+  },
+  [4637] = {
+    'Destructor Kolkar',
+    nil,
+  },
+  [4638] = {
+    'Explorador Magram',
+    nil,
+  },
+  [4639] = {
+    'Avanzado Magram',
+    nil,
+  },
+  [4640] = {
+    'Retador Magram',
+    nil,
+  },
+  [4641] = {
+    'Cazavientos Magram',
+    nil,
+  },
+  [4642] = {
+    'Agitadora Magram',
+    nil,
+  },
+  [4643] = {
+    'Corremanadas Magram',
+    nil,
+  },
+  [4644] = {
+    'Maleante Magram',
+    nil,
+  },
+  [4645] = {
+    'Aplastador Magram',
+    nil,
+  },
+  [4646] = {
+    'Avanzado Gelkis',
+    nil,
+  },
+  [4647] = {
+    'Explorador Gelkis',
+    nil,
+  },
+  [4648] = {
+    'Coceador Gelkis',
+    nil,
+  },
+  [4649] = {
+    'Cazavientos Gelkis',
+    nil,
+  },
+  [4651] = {
+    'Clamatierras Gelkis',
+    nil,
+  },
+  [4652] = {
+    'Aplastador Gelkis',
+    nil,
+  },
+  [4653] = {
+    'Maleante Gelkis',
+    nil,
+  },
+  [4654] = {
+    'Explorador Maraudine',
+    nil,
+  },
+  [4655] = {
+    'Retador Maraudine',
+    nil,
+  },
+  [4656] = {
+    'Aplastador Maraudine',
+    nil,
+  },
+  [4657] = {
+    'Cazavientos Maraudine',
+    nil,
+  },
+  [4658] = {
+    'Agitadora Maraudine',
+    nil,
+  },
+  [4659] = {
+    'Maleante Maraudine',
+    nil,
+  },
+  [4660] = {
+    'Zarpósea Maraudine',
+    nil,
+  },
+  [4661] = {
+    'Estruendor Gelkis',
+    nil,
+  },
+  [4662] = {
+    'Zarpósea Magram',
+    nil,
+  },
+  [4663] = {
+    'Augur Filo Ardiente',
+    nil,
+  },
+  [4664] = {
+    'Atracador Filo Ardiente',
+    nil,
+  },
+  [4665] = {
+    'Adepto Filo Ardiente',
+    nil,
+  },
+  [4666] = {
+    'Jurapenas Filo Ardiente',
+    nil,
+  },
+  [4667] = {
+    'Mago oscuro Filo Ardiente',
+    nil,
+  },
+  [4668] = {
+    'Invocador Filo Ardiente',
+    nil,
+  },
+  [4669] = {
+    'Conjurador Filo Ardiente',
+    nil,
+  },
+  [4670] = {
+    'Pícaro Odio Feroz',
+    nil,
+  },
+  [4671] = {
+    'Tramposo Odio Feroz',
+    nil,
+  },
+  [4672] = {
+    'Jurapenas Odio Feroz',
+    nil,
+  },
+  [4673] = {
+    'Traidor Odio Feroz',
+    nil,
+  },
+  [4674] = {
+    'Acechasombras Odio Feroz',
+    nil,
+  },
+  [4675] = {
+    'Clamainferno Odio Feroz',
+    nil,
+  },
+  [4676] = {
+    'Infernal inferior',
+    nil,
+  },
+  [4677] = {
+    'Guardiavil',
+    nil,
+  },
+  [4678] = {
+    'Devorador de maná',
+    nil,
+  },
+  [4679] = {
+    'Doncella abisal',
+    nil,
+  },
+  [4680] = {
+    'Capitán guardiavil',
+    nil,
+  },
+  [4681] = {
+    'Cazador de magos',
+    nil,
+  },
+  [4682] = {
+    'Hermana abisal',
+    nil,
+  },
+  [4683] = {
+    'Señor guardiavil',
+    nil,
+  },
+  [4684] = {
+    'Hechicera abisal',
+    nil,
+  },
+  [4685] = {
+    'Cazador Ley',
+    nil,
+  },
+  [4686] = {
+    'Gigante Zancaprofunda',
+    nil,
+  },
+  [4687] = {
+    'Buscador Zancaprofunda',
+    nil,
+  },
+  [4688] = {
+    'Hiena Zarpósea',
+    nil,
+  },
+  [4689] = {
+    'Zarpósea famélica',
+    nil,
+  },
+  [4690] = {
+    'Zarpósea rabiosa',
+    nil,
+  },
+  [4691] = {
+    'Zarpósea mortífera',
+    nil,
+  },
+  [4692] = {
+    'Aguilón aterrador',
+    nil,
+  },
+  [4693] = {
+    'Volador aterrador',
+    nil,
+  },
+  [4694] = {
+    'Desgarrador aterrador',
+    nil,
+  },
+  [4695] = {
+    'Horror carroñero',
+    nil,
+  },
+  [4696] = {
+    'Sacudidor Scorpashi',
+    nil,
+  },
+  [4697] = {
+    'Azotador Scorpashi',
+    nil,
+  },
+  [4699] = {
+    'Lativenenoso Scorpashi',
+    nil,
+  },
+  [4700] = {
+    'Kodo envejecido',
+    nil,
+  },
+  [4701] = {
+    'Kodo moribundo',
+    nil,
+  },
+  [4702] = {
+    'Kodo anciano',
+    nil,
+  },
+  [4703] = {
+    'Kodo enfurecido',
+    nil,
+  },
+  [4704] = {
+    'Corremanadas Maraudine',
+    nil,
+  },
+  [4705] = {
+    'Convocador Filo Ardiente',
+    nil,
+  },
+  [4706] = {
+    '[Deprecated for 4.x]Razzeric',
+    nil,
+  },
+  [4707] = {
+    '[Deprecated for 4.x]Zuzubee',
+    'Comentarista de carreras',
+  },
+  [4709] = {
+    '[Deprecated for 4.x]Zamek',
+    nil,
+  },
+  [4711] = {
+    'Naga Filozante',
+    nil,
+  },
+  [4712] = {
+    'Hechicera Filozante',
+    nil,
+  },
+  [4713] = {
+    'Guerrero Filozante',
+    nil,
+  },
+  [4714] = {
+    'Mirmidón Filozante',
+    nil,
+  },
+  [4715] = {
+    'Filón Filozante',
+    nil,
+  },
+  [4716] = {
+    'Cazamareas Filozante',
+    nil,
+  },
+  [4717] = {
+    'Sacerdotisa de las mareas Filozante',
+    nil,
+  },
+  [4718] = {
+    'Oráculo Filozante',
+    nil,
+  },
+  [4719] = {
+    'Bruja de mar Filozante',
+    nil,
+  },
+  [4720] = {
+    '[Deprecated for 4.x]Rizzle Pernolatón',
+    nil,
+  },
+  [4721] = {
+    'Zangen Pezuña Pétrea',
+    nil,
+  },
+  [4722] = {
+    '[Deprecated for 4.x]Rau Abiscorredor',
+    nil,
+  },
+  [4723] = {
+    'Supervisor Cozzle',
+    nil,
+  },
+  [4724] = {
+    'Zancarena',
+    nil,
+  },
+  [4725] = {
+    'Zancarena enloquecido',
+    nil,
+  },
+  [4726] = {
+    'Truenagarto enfurecido',
+    nil,
+  },
+  [4727] = {
+    'Truenagarto anciano',
+    nil,
+  },
+  [4728] = {
+    'Basilisco Faucegrava',
+    nil,
+  },
+  [4729] = {
+    'Basilisco Faucegrava descomunal',
+    nil,
+  },
+  [4730] = {
+    nil,
+    'Cuidadora de sables',
+  },
+  [4731] = {
+    nil,
+    'Mercader de caballos no-muerto',
+  },
+  [4732] = {
+    nil,
+    'Instructor de equitación',
+  },
+  [4752] = {
+    nil,
+    'Instructor de equitación',
+  },
+  [4753] = {
+    nil,
+    'Instructor de equitación',
+  },
+  [4772] = {
+    'Ultham Ferrocorno',
+    'Instructor de equitación',
+  },
+  [4773] = {
+    nil,
+    'Instructor de equitación',
+  },
+  [4775] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [4781] = {
+    'Husmeador taltuza',
+    nil,
+  },
+  [4782] = {
+    'Truk Barbaje',
+    'Camarero',
+  },
+  [4783] = {
+    'Vigía del Alba Selgorm',
+    'El Alba Argenta',
+  },
+  [4784] = {
+    'Guardia Argenta Manados',
+    'El Alba Argenta',
+  },
+  [4785] = {
+    'Pesadilla ilusoria',
+    nil,
+  },
+  [4786] = {
+    'Vigía del Alba Shaedlass',
+    'El Alba Argenta',
+  },
+  [4787] = {
+    'Explorador Thaelrid',
+    'El Alba Argenta',
+  },
+  [4788] = {
+    'Sátiro Malarraíz',
+    nil,
+  },
+  [4789] = {
+    'Pícaro Malarraíz',
+    nil,
+  },
+  [4791] = {
+    'Nazeer Picasangre',
+    nil,
+  },
+  [4792] = {
+    '"Ojolodo" Jarl',
+    nil,
+  },
+  [4794] = {
+    '[DEPRECATED]Morgan Stern',
+    nil,
+  },
+  [4795] = {
+    'Fuerza de la Naturaleza',
+    nil,
+  },
+  [4798] = {
+    'Acechasombras Malarraíz',
+    nil,
+  },
+  [4799] = {
+    'Clamainferno Malarraíz',
+    nil,
+  },
+  [4802] = {
+    'Sacerdotisa de las mareas Brazanegra',
+    nil,
+  },
+  [4803] = {
+    'Oráculo Brazanegra',
+    nil,
+  },
+  [4805] = {
+    'Bruja de mar Brazanegra',
+    nil,
+  },
+  [4807] = {
+    'Mirmidón Brazanegra',
+    nil,
+  },
+  [4809] = {
+    'Acólito Crepuscular',
+    nil,
+  },
+  [4810] = {
+    'Atracador Crepuscular',
+    nil,
+  },
+  [4811] = {
+    'Acuamántico Crepuscular',
+    nil,
+  },
+  [4812] = {
+    'Buscatradición Crepuscular',
+    nil,
+  },
+  [4813] = {
+    'Mago oscuro Crepuscular',
+    nil,
+  },
+  [4814] = {
+    'Elementalista Crepuscular',
+    nil,
+  },
+  [4815] = {
+    'Quebrador Sombroscura',
+    nil,
+  },
+  [4816] = {
+    'Caparapiel Sombroscura',
+    nil,
+  },
+  [4818] = {
+    'Múrloc Cegaluz',
+    nil,
+  },
+  [4819] = {
+    'Habitabosta Cegaluz',
+    nil,
+  },
+  [4820] = {
+    'Oráculo Cegaluz',
+    nil,
+  },
+  [4821] = {
+    'Crustarácnido',
+    nil,
+  },
+  [4822] = {
+    'Crustáceo mordedor',
+    nil,
+  },
+  [4823] = {
+    'Crustáceo espinoso',
+    nil,
+  },
+  [4824] = {
+    'Pescador Aku\'mai',
+    nil,
+  },
+  [4825] = {
+    'Quijaforte Aku\'mai',
+    nil,
+  },
+  [4827] = {
+    'Trillasín de la fosa profunda',
+    nil,
+  },
+  [4830] = {
+    'Viejo Serra\'kis',
+    nil,
+  },
+  [4832] = {
+    'Señor Crepuscular Kelris',
+    nil,
+  },
+  [4834] = {
+    'Infiltrado de Theramore',
+    nil,
+  },
+  [4841] = {
+    'Lodomuerto',
+    nil,
+  },
+  [4842] = {
+    'Clamatierras Halmgar',
+    nil,
+  },
+  [4844] = {
+    'Perito de Forjatiniebla',
+    nil,
+  },
+  [4845] = {
+    'Rufián de Forjatiniebla',
+    nil,
+  },
+  [4846] = {
+    'Cavador de Forjatiniebla',
+    nil,
+  },
+  [4847] = {
+    'Cazador de reliquias de Forjatiniebla',
+    nil,
+  },
+  [4848] = {
+    'Forjador oscuro de Forjatiniebla',
+    nil,
+  },
+  [4849] = {
+    'Arqueólogo de Forjatiniebla',
+    nil,
+  },
+  [4850] = {
+    'Rondador Grutacanto',
+    nil,
+  },
+  [4851] = {
+    'Masticapiedras Grutacanto',
+    nil,
+  },
+  [4852] = {
+    'Oráculo Grutacanto',
+    nil,
+  },
+  [4853] = {
+    'Geomántico Grutacanto',
+    nil,
+  },
+  [4854] = {
+    nil,
+    'Jefe Grutacanto',
+  },
+  [4855] = {
+    'Camorrista Grutacanto',
+    nil,
+  },
+  [4856] = {
+    'Cazador de las cuevas Grutacanto',
+    nil,
+  },
+  [4857] = {
+    'Vigilante de piedra',
+    nil,
+  },
+  [4860] = {
+    'Administrador de piedra',
+    nil,
+  },
+  [4861] = {
+    'Alcaudociélago',
+    nil,
+  },
+  [4862] = {
+    'Alcaudociélago rabioso',
+    nil,
+  },
+  [4863] = {
+    'Basilisco Dorsaljade',
+    nil,
+  },
+  [4872] = {
+    'Gólem obsidiana',
+    nil,
+  },
+  [4875] = {
+    nil,
+    'Carnicero',
+  },
+  [4876] = {
+    '[Deprecated for 4.x]Jawn Mesalta',
+    'Pertrechos',
+  },
+  [4877] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [4878] = {
+    '[Deprecated for 4.x]Montarr',
+    'Tradicionalista',
+  },
+  [4879] = {
+    nil,
+    'Carnicero',
+  },
+  [4880] = {
+    '"Apestoso" Ignatz',
+    nil,
+  },
+  [4881] = {
+    nil,
+    'Instructor de tortugas',
+  },
+  [4882] = {
+    nil,
+    'Instructor de arañas',
+  },
+  [4883] = {
+    nil,
+    'Armero',
+  },
+  [4884] = {
+    nil,
+    'Forjadora de armas',
+  },
+  [4885] = {
+    nil,
+    'Criadora de caballos',
+  },
+  [4886] = {
+    nil,
+    'Armero y forjador de escudos',
+  },
+  [4888] = {
+    nil,
+    'Forjadora de armas',
+  },
+  [4889] = {
+    'Torq Balacero',
+    'Forjador de armas de fuego',
+  },
+  [4890] = {
+    nil,
+    'Forjador de armas y armero',
+  },
+  [4891] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [4892] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [4893] = {
+    'Posadera Lillian',
+    'Camarero',
+  },
+  [4894] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [4895] = {
+    'Jim Sonrisas',
+    nil,
+  },
+  [4896] = {
+    nil,
+    'Pertrechos',
+  },
+  [4897] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [4898] = {
+    'Brant Brotojaspe',
+    'Instructora de herboristería',
+  },
+  [4899] = {
+    nil,
+    'Suministros de herboristería y alquimia',
+  },
+  [4900] = {
+    'Alquimista Narett',
+    'Instructor de alquimia',
+  },
+  [4921] = {
+    'Guardia Byron',
+    nil,
+  },
+  [4922] = {
+    'Guardia Eduardo',
+    nil,
+  },
+  [4923] = {
+    'Guardia Jarad',
+    nil,
+  },
+  [4924] = {
+    'Maestro de combate Critón',
+    nil,
+  },
+  [4941] = {
+    'Caz Dosdientes',
+    'Instructor de ingeniería',
+  },
+  [4944] = {
+    'Capitán Garran Vimes',
+    nil,
+  },
+  [4945] = {
+    'Vehículo de arrastre goblin',
+    nil,
+  },
+  [4946] = {
+    'Vehículo de arrastre gnomo',
+    nil,
+  },
+  [4947] = {
+    'Teniente de Theramore',
+    nil,
+  },
+  [4948] = {
+    'Ayudante Tesoran',
+    nil,
+  },
+  [4949] = {
+    nil,
+    'Jefe de Guerra',
+  },
+  [4951] = {
+    'Guardia en prácticas de Theramore',
+    nil,
+  },
+  [4952] = {
+    'Muñeco-diana de combate de Theramore',
+    nil,
+  },
+  [4953] = {
+    'Culebra de agua',
+    nil,
+  },
+  [4954] = {
+    nil,
+    'Carnicero',
+  },
+  [4955] = {
+    'Diana de arquería de Theramore 1',
+    nil,
+  },
+  [4957] = {
+    'Muñeco-diana de combate de Theramore 4',
+    nil,
+  },
+  [4958] = {
+    'Espíritu mortificador',
+    nil,
+  },
+  [4960] = {
+    'Obispo DeLavey',
+    nil,
+  },
+  [4961] = {
+    'Dashel Puñopiedra',
+    nil,
+  },
+  [4962] = {
+    'Tapoke "El Flaco" Jahn',
+    nil,
+  },
+  [4963] = {
+    nil,
+    'Camarero',
+  },
+  [4964] = {
+    'Comandante Samaul',
+    nil,
+  },
+  [4965] = {
+    'Dolida',
+    nil,
+  },
+  [4966] = {
+    'Soldado Hendel',
+    nil,
+  },
+  [4967] = {
+    'Archimago Tervosh',
+    nil,
+  },
+  [4968] = {
+    'Lady Jaina Valiente',
+    'Gobernadora de Theramore',
+  },
+  [4969] = {
+    'Matón del Casco Antiguo',
+    nil,
+  },
+  [4970] = {
+    'Agente Defias',
+    nil,
+  },
+  [4971] = {
+    'Amigo de El Flaco',
+    nil,
+  },
+  [4973] = {
+    'Guardia Lasiter',
+    nil,
+  },
+  [4974] = {
+    nil,
+    'Maestro de hermandad',
+  },
+  [4975] = {
+    'Diana de arquería de Theramore 2',
+    nil,
+  },
+  [4976] = {
+    'Elise Risante',
+    'Diseñador de tabardos de hermandad',
+  },
+  [4977] = {
+    'Conchablanda Sombroscura',
+    nil,
+  },
+  [4978] = {
+    'Sirviente Aku\'mai',
+    nil,
+  },
+  [4979] = {
+    'Guardia de Theramore',
+    nil,
+  },
+  [4981] = {
+    nil,
+    'Aprendiz quesero',
+  },
+  [4982] = {
+    nil,
+    'Monaguillo',
+  },
+  [4984] = {
+    'Argos Susurro Nocturno',
+    nil,
+  },
+  [4985] = {
+    'Instructora mundial de druidas',
+    'Instructor de druidas',
+  },
+  [4986] = {
+    'Instructora mundial de cazadores',
+    'Instructor de cazadores',
+  },
+  [4987] = {
+    'Instructora mundial de magos',
+    'Instructor de magos',
+  },
+  [4988] = {
+    'Instructora mundial de paladines',
+    'Instructor de paladines',
+  },
+  [4989] = {
+    'Instructora mundial de sacerdotes',
+    'Instructora de sacerdotes',
+  },
+  [4990] = {
+    'Instructora mundial de pícaros',
+    'Instructor de pícaros',
+  },
+  [4991] = {
+    'Instructora mundial de chamanes',
+    'Instructor de chamanes',
+  },
+  [4992] = {
+    'Instructora mundial de guerreros',
+    'Instructor de guerreros',
+  },
+  [4993] = {
+    'Instructora mundial de brujos',
+    'Instructora de brujos',
+  },
+  [4994] = {
+    'Instructora mundial de lobos',
+    nil,
+  },
+  [4995] = {
+    'Guardia de las Mazmorras',
+    nil,
+  },
+  [4996] = {
+    'Guardia de la empalizada malherido',
+    nil,
+  },
+  [4997] = {
+    'Instructora mundial de pesca',
+    'Instructor de pesca',
+  },
+  [4998] = {
+    'Instructora mundial de herboristería',
+    'Instructora de herboristería',
+  },
+  [4999] = {
+    'Instructora mundial de minería',
+    'Instructor de minería',
+  },
+  [5000] = {
+    'Instructora mundial de mascotas cazadoras',
+    'Instructora de cazadores de bestias',
+  },
+  [5001] = {
+    'Instructora mundial de pájaros',
+    nil,
+  },
+  [5003] = {
+    'Instructora mundial de felinos',
+    nil,
+  },
+  [5004] = {
+    'Instructora mundial de reptadores',
+    nil,
+  },
+  [5005] = {
+    'Instructora mundial de cocodrilos',
+    nil,
+  },
+  [5006] = {
+    nil,
+    'Instructor de demonios',
+  },
+  [5007] = {
+    'Instructora mundial de manáfagos',
+    nil,
+  },
+  [5008] = {
+    'Instructora mundial de gorilas',
+    nil,
+  },
+  [5009] = {
+    'Instructora mundial de caballos',
+    nil,
+  },
+  [5010] = {
+    'Instructora mundial de diablillos',
+    nil,
+  },
+  [5011] = {
+    'Instructora mundial de raptores',
+    'Instructora de raptores',
+  },
+  [5012] = {
+    'Instructora mundial de escórpidos',
+    nil,
+  },
+  [5013] = {
+    'Instructora mundial de arácnidos',
+    nil,
+  },
+  [5014] = {
+    'Instructora mundial de súcubos',
+    nil,
+  },
+  [5015] = {
+    'Instructora mundial de Zancaaltas',
+    nil,
+  },
+  [5016] = {
+    'Instructora mundial de abisarios',
+    nil,
+  },
+  [5017] = {
+    'Instructora mundial de tortugas',
+    nil,
+  },
+  [5018] = {
+    'Portal mundial: Instructora de Darnassus',
+    'Portal: Instructora de Darnassus',
+  },
+  [5019] = {
+    'Portal mundial: Instructora de Forjaz',
+    'Portal: Instructora de Forjaz',
+  },
+  [5020] = {
+    'Portal mundial: Instructora de Orgrimmar',
+    'Portal: Instructora de Orgrimmar',
+  },
+  [5021] = {
+    'Portal mundial: Instructora de Ventormenta',
+    'Portal: Instructora de Ventormenta',
+  },
+  [5022] = {
+    'Portal mundial: Instructora de Cima del Trueno',
+    'Portal: Instructora de Cima del Trueno',
+  },
+  [5023] = {
+    'Portal mundial: Instructora de Entrañas',
+    'Portal: Instructora de Entrañas',
+  },
+  [5024] = {
+    'Instructora mundial de primeros auxilios',
+    'Instructora de primeros auxilios',
+  },
+  [5026] = {
+    'Instructora mundial de equitación',
+    'Maestro de establos',
+  },
+  [5027] = {
+    '[PH] Barrera de dolor mogu',
+    nil,
+  },
+  [5028] = {
+    'Instructora mundial de carneros de montar',
+    'Instructora de jinetes de carnero',
+  },
+  [5029] = {
+    nil,
+    'Mercader de canje de bebés múrloc',
+  },
+  [5030] = {
+    'Instructora mundial de tigres de montar',
+    nil,
+  },
+  [5031] = {
+    'Instructora mundial de lobos de montar',
+    'Instructora de jinetes de lobo',
+  },
+  [5032] = {
+    'Instructora mundial de alquimia',
+    'Instructor de alquimia',
+  },
+  [5033] = {
+    'Instructora mundial de herrería',
+    'Instructora de herrería',
+  },
+  [5035] = {
+    'zzOLDInstructora mundial de cartografía',
+    nil,
+  },
+  [5036] = {
+    'Instructora mundial de cocina',
+    'Instructor de cocina',
+  },
+  [5037] = {
+    'Instructora mundial de ingeniería',
+    'Instructor de ingeniería',
+  },
+  [5038] = {
+    'Instructora mundial de encantamiento',
+    'Instructora de encantamiento',
+  },
+  [5039] = {
+    'Instructora mundial de rastreadores DEPRECATED',
+    'Instructora de brujos',
+  },
+  [5040] = {
+    'Instructora mundial de peletería',
+    'Instructor de peletería',
+  },
+  [5041] = {
+    'Instructora mundial de sastrería',
+    'Instructora de sastrería',
+  },
+  [5042] = {
+    'Enfermera Lillian',
+    nil,
+  },
+  [5043] = {
+    'Alborotador',
+    nil,
+  },
+  [5044] = {
+    'Hostigador de Theramore',
+    nil,
+  },
+  [5045] = {
+    'Soldado Hallan',
+    nil,
+  },
+  [5046] = {
+    'Teniente Caldwell',
+    nil,
+  },
+  [5047] = {
+    nil,
+    'Diseñadora de tabardos de hermandad',
+  },
+  [5048] = {
+    'Víboris descarriada',
+    nil,
+  },
+  [5049] = {
+    'Lyesa Frenteacerada',
+    'Vendedora de tabardos',
+  },
+  [5050] = {
+    nil,
+    'Diseñador de tabardos de hermandad',
+  },
+  [5051] = {
+    nil,
+    'Diseñador de tabardos de hermandad',
+  },
+  [5052] = {
+    nil,
+    'Diseñador de tabardos de hermandad',
+  },
+  [5053] = {
+    'Crocolisco descarriado',
+    nil,
+  },
+  [5054] = {
+    nil,
+    'Maestro de hermandad',
+  },
+  [5055] = {
+    'Azotador descarriado',
+    nil,
+  },
+  [5056] = {
+    'Colminferno descarriado',
+    nil,
+  },
+  [5057] = {
+    'Desertor de Theramore',
+    nil,
+  },
+  [5058] = {
+    'Huargo Guardialobo',
+    nil,
+  },
+  [5059] = {
+    'Galthogran el Calloso',
+    nil,
+  },
+  [5060] = {
+    'Banquera mundial',
+    'Banquera',
+  },
+  [5061] = {
+    nil,
+    'Vendedora de tabardos',
+  },
+  [5062] = {
+    'Vendedora mundial de componentes',
+    'Vendedora de componentes y tótems',
+  },
+  [5063] = {
+    'Kóbold de ensayos de Pat',
+    nil,
+  },
+  [5064] = {
+    'Vendedora mundial de suministros',
+    'Suministros comerciales',
+  },
+  [5081] = {
+    nil,
+    'Aprendiz chef',
+  },
+  [5083] = {
+    'Pagador Lendry',
+    nil,
+  },
+  [5084] = {
+    'Zinn de Forjaz',
+    nil,
+  },
+  [5085] = {
+    'Guardia del Alto del Centinela',
+    nil,
+  },
+  [5086] = {
+    'Capitán Wymor',
+    nil,
+  },
+  [5090] = {
+    'Maestro de combate Szigueti',
+    nil,
+  },
+  [5091] = {
+    'Guardia Kahil',
+    nil,
+  },
+  [5092] = {
+    'Guardia Lana',
+    nil,
+  },
+  [5093] = {
+    'Guardia Narrisha',
+    nil,
+  },
+  [5094] = {
+    'Guardia Tark',
+    nil,
+  },
+  [5095] = {
+    'Capitán Andrews',
+    'Capitán del equipo rojo',
+  },
+  [5096] = {
+    'Capitán Thomas',
+    'Capitán del equipo azul',
+  },
+  [5097] = {
+    'Delusión lupina',
+    nil,
+  },
+  [5098] = {
+    '[UNUSED] Guffren Barbapiedra',
+    'Ángel de la Resurrección',
+  },
+  [5099] = {
+    'Soleil Mantopétreo',
+    'Banquera',
+  },
+  [5100] = {
+    'Fillius Maleje',
+    'Suministros comerciales',
+  },
+  [5101] = {
+    'Bryllia Ferracha',
+    'Pertrechos',
+  },
+  [5102] = {
+    'Dolman Furiacerada',
+    'Mercader de armas',
+  },
+  [5103] = {
+    'Grenil Furiacerada',
+    'Mercader de armas',
+  },
+  [5104] = {
+    'Laene Golpetrueno',
+    nil,
+  },
+  [5105] = {
+    nil,
+    'Mercader de armaduras ligeras',
+  },
+  [5106] = {
+    nil,
+    'Mercader de armaduras pesadas',
+  },
+  [5107] = {
+    'Mangorn Martílex',
+    'Mercader de armaduras pesadas',
+  },
+  [5108] = {
+    'Raena Martílex',
+    'Mercader de armaduras ligeras',
+  },
+  [5109] = {
+    nil,
+    'Vendedora de pan',
+  },
+  [5110] = {
+    nil,
+    'Componentes',
+  },
+  [5111] = {
+    'Tabernero Brebefuego',
+    'Tabernero',
+  },
+  [5112] = {
+    'Gwenna Brebefuego',
+    'Camarera',
+  },
+  [5113] = {
+    'Kelv Martillo Severo',
+    'Instructor de guerreros',
+  },
+  [5114] = {
+    'Bilban Cálculo',
+    'Instructor de guerreros',
+  },
+  [5115] = {
+    'Daera Lanza Reluciente',
+    'Instructor de cazadores',
+  },
+  [5116] = {
+    'Olmin Barbardiente',
+    'Instructor de cazadores',
+  },
+  [5117] = {
+    'Regnus Tronagranito',
+    'Instructor de cazadores',
+  },
+  [5118] = {
+    'Brogun Petrescudo',
+    'Maestro de batalla del Valle de Alterac',
+  },
+  [5119] = {
+    'Hegnar Hacharrápida',
+    'Mercader de hachas',
+  },
+  [5120] = {
+    'Brenwyn Ventacerado',
+    'Mercader de armas de filo',
+  },
+  [5121] = {
+    'Kelomir Manoyerro',
+    'Mazas y bastones',
+  },
+  [5122] = {
+    'Skolmin Furiadorada',
+    'Mercader de arcos',
+  },
+  [5123] = {
+    'Bretta Furiadorada',
+    'Mercader de armas de fuego',
+  },
+  [5124] = {
+    'Sognar Barbarrisco',
+    'Vendedora de carne',
+  },
+  [5125] = {
+    'Dolkin Yelmorrisco',
+    'Mercader de armaduras de malla',
+  },
+  [5126] = {
+    'Olthran Yelmorrisco',
+    'Mercader de armaduras pesadas',
+  },
+  [5127] = {
+    'Fimble Bueneje',
+    'Instructor de peletería',
+  },
+  [5128] = {
+    'Bombus Bueneje',
+    'Suministros de peletería',
+  },
+  [5129] = {
+    'Lissyphus Bueneje',
+    'Mercader de armaduras ligeras',
+  },
+  [5130] = {
+    'Jondor Frenteacerada',
+    'Maestro de hermandad',
+  },
+  [5131] = {
+    nil,
+    'Vendedora de pan',
+  },
+  [5132] = {
+    nil,
+    'Vendedora de bolsas',
+  },
+  [5133] = {
+    'Harick Tamborroca',
+    'Mercader de varitas',
+  },
+  [5134] = {
+    'Jonivera Montelejano',
+    'Pertrechos',
+  },
+  [5135] = {
+    'Svalbrad Montelejano',
+    'Objetos comerciables',
+  },
+  [5137] = {
+    'Reyna Ramapiedra',
+    'Instructora de herboristería',
+  },
+  [5138] = {
+    'Gwina Ramapiedra',
+    'Suministros de herboristería',
+  },
+  [5139] = {
+    'Kurdrum Barbacebada',
+    'Suministros de venenos y componentes',
+  },
+  [5140] = {
+    'Edris Barbacebada',
+    'Camarera',
+  },
+  [5141] = {
+    'Theodrus Barbagélida',
+    'Instructora de sacerdotes',
+  },
+  [5142] = {
+    'Braenna Riscosílex',
+    'Instructora de sacerdotes',
+  },
+  [5143] = {
+    'Toldren Acerhondo',
+    'Instructora de sacerdotes',
+  },
+  [5144] = {
+    nil,
+    'Instructor de magos',
+  },
+  [5145] = {
+    'Juli Tormentacaldera',
+    'Instructor de magos',
+  },
+  [5146] = {
+    'Nittlebur Chispancio',
+    'Instructor de magos',
+  },
+  [5147] = {
+    'Valgar Forjalta',
+    'Instructor de paladines',
+  },
+  [5148] = {
+    'Beldruk Ceñomaldito',
+    'Instructor de paladines',
+  },
+  [5149] = {
+    'Brandur Martiyerro',
+    'Instructor de paladines',
+  },
+  [5150] = {
+    'Nissa Piedra de fuego',
+    'Instructora de primeros auxilios',
+  },
+  [5151] = {
+    'Ginny Largamora',
+    'Componentes',
+  },
+  [5152] = {
+    nil,
+    'Mercader de armas',
+  },
+  [5153] = {
+    'Jormund Petrocejas',
+    'Instructora de sastrería',
+  },
+  [5154] = {
+    'Poranna Trenzanubes',
+    'Suministros de sastrería',
+  },
+  [5155] = {
+    'Ingrys Petrocejas',
+    'Mercader de armaduras de tela',
+  },
+  [5156] = {
+    'Maeva Trenzanubes',
+    'Mercader de túnicas',
+  },
+  [5157] = {
+    'Gimble Cardopelusa',
+    'Instructora de encantamiento',
+  },
+  [5158] = {
+    'Tilli Cardopelusa',
+    'Suministros de encantamiento',
+  },
+  [5159] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [5160] = {
+    nil,
+    'Suministros de cocina',
+  },
+  [5161] = {
+    'Grimnur Marcapedra',
+    'Instructor de pesca',
+  },
+  [5162] = {
+    'Tansy Burbajea',
+    'Suministros de pesca',
+  },
+  [5163] = {
+    'Burbik Trazagranaje',
+    'Suministros comerciales',
+  },
+  [5164] = {
+    'Grumnus Forjacero',
+    'Instructora de herrería',
+  },
+  [5165] = {
+    'Hulfdan Barbanegra',
+    'Instructor de pícaros',
+  },
+  [5166] = {
+    'Ormyr Ojílex',
+    'Instructor de pícaros',
+  },
+  [5167] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [5169] = {
+    'Tynnus Lanzaveneno',
+    'Vendedor sospechoso',
+  },
+  [5170] = {
+    'Hjoldir Hojapiedra',
+    'Mercader de armas de filo',
+  },
+  [5171] = {
+    'Corazón de Cardo',
+    'Instructora de brujos',
+  },
+  [5172] = {
+    'Brezospina',
+    'Instructora de brujos',
+  },
+  [5173] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [5174] = {
+    'Muello Saltarín',
+    'Instructor de ingeniería',
+  },
+  [5175] = {
+    'Cortallave Volopiñón',
+    'Suministros de ingeniería',
+  },
+  [5177] = {
+    'Tally Burbubaya',
+    'Instructor de alquimia',
+  },
+  [5178] = {
+    'Soolie Burbubaya',
+    'Suministros de alquimia',
+  },
+  [5184] = {
+    'Avizor de Theramore',
+    nil,
+  },
+  [5185] = {
+    'Tiburón Martillo',
+    nil,
+  },
+  [5186] = {
+    'Tiburón Peregrino',
+    nil,
+  },
+  [5187] = {
+    'Cañón de los Mares del Sur',
+    nil,
+  },
+  [5188] = {
+    nil,
+    'Vendedora de tabardos',
+  },
+  [5189] = {
+    nil,
+    'Vendedora de tabardos',
+  },
+  [5190] = {
+    nil,
+    'Vendedora de tabardos',
+  },
+  [5191] = {
+    nil,
+    'Vendedora de tabardos',
+  },
+  [5192] = {
+    '[UNUSED] Nils Petrocejas',
+    'Vendedora de tabardos',
+  },
+  [5193] = {
+    nil,
+    'Vendedora de tabardos',
+  },
+  [5194] = {
+    'Lobo de montar negro',
+    nil,
+  },
+  [5195] = {
+    'Lobo de montar marrón',
+    nil,
+  },
+  [5196] = {
+    'Lobo de montar grisáceo',
+    nil,
+  },
+  [5197] = {
+    'Lobo de montar rojo',
+    nil,
+  },
+  [5198] = {
+    'Lobo de montar ártico',
+    nil,
+  },
+  [5199] = {
+    'Médica Tamberlyn',
+    nil,
+  },
+  [5200] = {
+    'Médica Helaina',
+    nil,
+  },
+  [5201] = {
+    'Humano de ensayos de Pat',
+    nil,
+  },
+  [5202] = {
+    'Objetivo de tiro con arco',
+    nil,
+  },
+  [5204] = {
+    'Boticaria Zinge',
+    'Sociedad Real de Boticarios',
+  },
+  [5224] = {
+    'Deslizador de la oscuridad',
+    nil,
+  },
+  [5225] = {
+    'Escupidor de la oscuridad',
+    nil,
+  },
+  [5226] = {
+    'Gusano de la oscuridad',
+    nil,
+  },
+  [5228] = {
+    'Moco saturado',
+    nil,
+  },
+  [5229] = {
+    'Ogro Gordunni',
+    nil,
+  },
+  [5231] = {
+    'Déspota Gordunni',
+    nil,
+  },
+  [5232] = {
+    'Tosco Gordunni',
+    nil,
+  },
+  [5234] = {
+    'Aplastador Gordunni',
+    nil,
+  },
+  [5235] = {
+    'Moco fúngico',
+    nil,
+  },
+  [5236] = {
+    'Chamán Gordunni',
+    nil,
+  },
+  [5237] = {
+    'Ogro mago Gordunni',
+    nil,
+  },
+  [5238] = {
+    'Maestro de batalla Gordunni',
+    nil,
+  },
+  [5239] = {
+    'Señor de la magia Gordunni',
+    nil,
+  },
+  [5240] = {
+    'Brujo Gordunni',
+    nil,
+  },
+  [5241] = {
+    'Señor de la guerra Gordunni',
+    nil,
+  },
+  [5243] = {
+    'Atal\'ai maldito',
+    nil,
+  },
+  [5244] = {
+    'Aguijonero Zukk\'ash',
+    nil,
+  },
+  [5245] = {
+    'Avispa Zukk\'ash',
+    nil,
+  },
+  [5246] = {
+    'Trabajador Zukk\'ash',
+    nil,
+  },
+  [5247] = {
+    'Tunelador Zukk\'ash',
+    nil,
+  },
+  [5249] = {
+    'Bastardo Zarpaleña',
+    nil,
+  },
+  [5251] = {
+    'Trampero Zarpaleña',
+    nil,
+  },
+  [5253] = {
+    'Tosco Zarpaleña',
+    nil,
+  },
+  [5254] = {
+    'Místico Zarpaleña',
+    nil,
+  },
+  [5255] = {
+    'Atracador Zarpaleña',
+    nil,
+  },
+  [5256] = {
+    'Guerrero Atal\'ai',
+    nil,
+  },
+  [5258] = {
+    'Alfa Zarpaleña',
+    nil,
+  },
+  [5259] = {
+    'Médico brujo Atal\'ai',
+    nil,
+  },
+  [5260] = {
+    'Simio Groddoc',
+    nil,
+  },
+  [5261] = {
+    'Atal\'ai sometido',
+    nil,
+  },
+  [5262] = {
+    'Tronador Groddoc',
+    nil,
+  },
+  [5263] = {
+    'Atal\'ai momificado',
+    nil,
+  },
+  [5264] = {
+    'Rompepechos Groddoc',
+    nil,
+  },
+  [5267] = {
+    'Atal\'ai sin vida',
+    nil,
+  },
+  [5268] = {
+    'Oso Cueracero',
+    nil,
+  },
+  [5269] = {
+    'Sacerdote Atal\'ai',
+    nil,
+  },
+  [5270] = {
+    'Comecadáveres Atal\'ai',
+    nil,
+  },
+  [5271] = {
+    'Caminamuerte Atal\'ai',
+    nil,
+  },
+  [5272] = {
+    'Oso Cueracero grisáceo',
+    nil,
+  },
+  [5273] = {
+    'Sumo sacerdote Atal\'ai',
+    nil,
+  },
+  [5274] = {
+    'Patriarca Cueracero',
+    nil,
+  },
+  [5276] = {
+    'Duende dragón',
+    nil,
+  },
+  [5277] = {
+    'Horrocrusto pesadilla',
+    nil,
+  },
+  [5278] = {
+    'Duende dardo',
+    nil,
+  },
+  [5280] = {
+    'Verminte pesadilla',
+    nil,
+  },
+  [5283] = {
+    'Errante pesadilla',
+    nil,
+  },
+  [5286] = {
+    'Corredor Dientelargo',
+    nil,
+  },
+  [5287] = {
+    'Aullador Dientelargo',
+    nil,
+  },
+  [5288] = {
+    'Dientelargo rabioso',
+    nil,
+  },
+  [5291] = {
+    'Alaescarcha Hakkari',
+    nil,
+  },
+  [5292] = {
+    'Yeti Cicatriz Feral',
+    nil,
+  },
+  [5293] = {
+    'Cicatriz Feral descomunal',
+    nil,
+  },
+  [5295] = {
+    'Cicatriz Feral iracundo',
+    nil,
+  },
+  [5296] = {
+    'Yeti Cicatriz de Rabia',
+    nil,
+  },
+  [5297] = {
+    'Ancestro Cicatriz de Rabia',
+    nil,
+  },
+  [5299] = {
+    'Cicatriz de Rabia feroz',
+    nil,
+  },
+  [5300] = {
+    'Hipogrifo Plumavieja',
+    nil,
+  },
+  [5304] = {
+    'Alacervo Plumavieja',
+    nil,
+  },
+  [5305] = {
+    'Asaltacielo Plumavieja',
+    nil,
+  },
+  [5306] = {
+    'Patriarca Plumavieja',
+    nil,
+  },
+  [5307] = {
+    'Estridador del valle',
+    nil,
+  },
+  [5308] = {
+    'Estridador del valle huido',
+    nil,
+  },
+  [5315] = {
+    'Dragauro Jademir',
+    nil,
+  },
+  [5317] = {
+    'Oráculo Jademir',
+    nil,
+  },
+  [5319] = {
+    'depositario arbóreo Jademir',
+    nil,
+  },
+  [5320] = {
+    'Guardarrama Fuego de Jade',
+    nil,
+  },
+  [5326] = {
+    'Monstruo de prueba de Jeremy',
+    nil,
+  },
+  [5327] = {
+    'Quebrador Reptacostas',
+    nil,
+  },
+  [5328] = {
+    'Videnista Reptacostas',
+    nil,
+  },
+  [5331] = {
+    'Guerrero Crestafuria',
+    nil,
+  },
+  [5332] = {
+    'Jinete de olas Crestafuria',
+    nil,
+  },
+  [5333] = {
+    'Guardia serpiente Crestafuria',
+    nil,
+  },
+  [5334] = {
+    'Mirmidón Crestafuria',
+    nil,
+  },
+  [5335] = {
+    'Vociferadora Crestafuria',
+    nil,
+  },
+  [5336] = {
+    'Hechicera Crestafuria',
+    nil,
+  },
+  [5337] = {
+    'Sirena Crestafuria',
+    nil,
+  },
+  [5345] = {
+    'Cabeza Diamante',
+    nil,
+  },
+  [5346] = {
+    'Rugesangre el Acechador',
+    nil,
+  },
+  [5347] = {
+    'Antilus el Surcador',
+    nil,
+  },
+  [5348] = {
+    'Vigía de los sueños Lengua Bífida',
+    nil,
+  },
+  [5352] = {
+    'Viejo Tripasgrises',
+    nil,
+  },
+  [5354] = {
+    'Núdor Fraterfolio',
+    nil,
+  },
+  [5355] = {
+    'Defensor Ala de Fuego',
+    nil,
+  },
+  [5356] = {
+    'Gruñidor',
+    nil,
+  },
+  [5357] = {
+    'Caminatierras',
+    nil,
+  },
+  [5358] = {
+    'Gigante del risco',
+    nil,
+  },
+  [5359] = {
+    'Zancaorillas',
+    nil,
+  },
+  [5360] = {
+    'Zancaprofunda',
+    nil,
+  },
+  [5361] = {
+    'Asaltaolas',
+    nil,
+  },
+  [5362] = {
+    'Arpía Nortearroyo',
+    nil,
+  },
+  [5363] = {
+    'Malapluma Nortearroyo',
+    nil,
+  },
+  [5364] = {
+    'Destripadora Nortearroyo',
+    nil,
+  },
+  [5366] = {
+    'Clamavientos Nortearroyo',
+    nil,
+  },
+  [5367] = {
+    'Scillia Dagapluma',
+    nil,
+  },
+  [5384] = {
+    'Brohann Barriliga',
+    'Liga de Expedicionarios',
+  },
+  [5385] = {
+    'Vigía Mahar Ba',
+    nil,
+  },
+  [5386] = {
+    'Acólito Dellis',
+    nil,
+  },
+  [5387] = {
+    'Alto expedicionario Magellas',
+    'Liga de Expedicionarios',
+  },
+  [5388] = {
+    'Ingo Lanudo',
+    'Liga de Expedicionarios',
+  },
+  [5389] = {
+    nil,
+    'Liga de Expedicionarios',
+  },
+  [5390] = {
+    'Sabio Correpálido',
+    nil,
+  },
+  [5391] = {
+    'Galen Bonguarda',
+    nil,
+  },
+  [5392] = {
+    'Yarr Martillal',
+    'Instructor de minería',
+  },
+  [5393] = {
+    'Intendente Lungertz',
+    nil,
+  },
+  [5394] = {
+    'Neeka Marca de Sangre',
+    nil,
+  },
+  [5395] = {
+    'Felgur Doscortes',
+    nil,
+  },
+  [5396] = {
+    'Capitán Pentigast',
+    nil,
+  },
+  [5397] = {
+    'Uthek la Sabia',
+    nil,
+  },
+  [5399] = {
+    'Veyzhak el Caníbal',
+    nil,
+  },
+  [5401] = {
+    'Kazkaz el Blasfemo',
+    nil,
+  },
+  [5403] = {
+    'Semental blanco',
+    nil,
+  },
+  [5404] = {
+    'Semental negro',
+    nil,
+  },
+  [5407] = {
+    'Pesadilla',
+    nil,
+  },
+  [5409] = {
+    'Cosechador esclavizado',
+    nil,
+  },
+  [5411] = {
+    'Krinkle Buenacero',
+    'Suministros de herrería',
+  },
+  [5412] = {
+    'Gurda Ferocrín',
+    nil,
+  },
+  [5413] = {
+    'Furen Barbalarga',
+    nil,
+  },
+  [5414] = {
+    'Boticario Faustin',
+    'Sociedad Real de Boticarios',
+  },
+  [5415] = {
+    'Avanzado Centauro',
+    nil,
+  },
+  [5416] = {
+    'Infiltrado Marksen',
+    nil,
+  },
+  [5418] = {
+    'Mortacechador Zraedus',
+    nil,
+  },
+  [5419] = {
+    'Basilisco Cristaldermo',
+    nil,
+  },
+  [5420] = {
+    'Observador Cristaldermo',
+    nil,
+  },
+  [5421] = {
+    'Petrificador Cristaldermo',
+    nil,
+  },
+  [5422] = {
+    'Cazador escórpido',
+    nil,
+  },
+  [5423] = {
+    'Colazote escórpido',
+    nil,
+  },
+  [5424] = {
+    'Acechadunas escórpido',
+    nil,
+  },
+  [5425] = {
+    'Llagapata famélica',
+    nil,
+  },
+  [5426] = {
+    'Hiena Llagapata',
+    nil,
+  },
+  [5427] = {
+    'Llagapata rabiosa',
+    nil,
+  },
+  [5429] = {
+    'Roc de fuego',
+    nil,
+  },
+  [5430] = {
+    'Roc abrasador',
+    nil,
+  },
+  [5431] = {
+    'Planoleador',
+    nil,
+  },
+  [5432] = {
+    'Planoleador gigante',
+    nil,
+  },
+  [5433] = {
+    'Oso domesticado',
+    nil,
+  },
+  [5434] = {
+    'Tiburón coralino',
+    nil,
+  },
+  [5435] = {
+    'Tiburón de arena',
+    nil,
+  },
+  [5436] = {
+    'Pájaro domesticado',
+    nil,
+  },
+  [5437] = {
+    'Jabalí domesticado',
+    nil,
+  },
+  [5438] = {
+    'Felino domesticado',
+    nil,
+  },
+  [5439] = {
+    'Reptador domesticado',
+    nil,
+  },
+  [5440] = {
+    'Crocolisco domesticado',
+    nil,
+  },
+  [5441] = {
+    'Avispa Hazzali',
+    nil,
+  },
+  [5442] = {
+    'Gorila domesticado',
+    nil,
+  },
+  [5443] = {
+    'Zhebra domesticada',
+    nil,
+  },
+  [5444] = {
+    'Raptor domesticado',
+    nil,
+  },
+  [5445] = {
+    'Escórpido domesticado',
+    nil,
+  },
+  [5446] = {
+    'Araña domesticada',
+    nil,
+  },
+  [5447] = {
+    'Zancaalta domesticado',
+    nil,
+  },
+  [5448] = {
+    'Tortuga domesticada',
+    nil,
+  },
+  [5449] = {
+    'Lobo domesticado',
+    nil,
+  },
+  [5450] = {
+    'Aguijonero Hazzali',
+    nil,
+  },
+  [5451] = {
+    'Enjambrista Hazzali',
+    nil,
+  },
+  [5452] = {
+    'Trabajador Hazzali',
+    nil,
+  },
+  [5453] = {
+    'Tunelador Hazzali',
+    nil,
+  },
+  [5454] = {
+    'Atracador de arena Hazzali',
+    nil,
+  },
+  [5455] = {
+    'Avispa Centipaar',
+    nil,
+  },
+  [5456] = {
+    'Aguijonero Centipaar',
+    nil,
+  },
+  [5457] = {
+    'Enjambrista Centipaar',
+    nil,
+  },
+  [5458] = {
+    'Trabajador Centipaar',
+    nil,
+  },
+  [5459] = {
+    'Tunelador Centipaar',
+    nil,
+  },
+  [5460] = {
+    'Atracador de arena Centipaar',
+    nil,
+  },
+  [5461] = {
+    'Elemental de mar',
+    nil,
+  },
+  [5462] = {
+    'Rocío del mar',
+    nil,
+  },
+  [5464] = {
+    'Maestro de vigilantes Sorigal',
+    nil,
+  },
+  [5465] = {
+    'Furibundo de la tierra',
+    nil,
+  },
+  [5466] = {
+    'Zancacostas',
+    nil,
+  },
+  [5467] = {
+    'Habitante de las profundidades',
+    nil,
+  },
+  [5468] = {
+    'Quebrantador de las dunas deambulante',
+    nil,
+  },
+  [5469] = {
+    'Quebrantador de las dunas',
+    nil,
+  },
+  [5470] = {
+    'Quebrantador de las dunas enfurecido',
+    nil,
+  },
+  [5471] = {
+    'Ogro Machacaduna',
+    nil,
+  },
+  [5472] = {
+    'Déspota Machacaduna',
+    nil,
+  },
+  [5473] = {
+    'Ogro mago Machacaduna',
+    nil,
+  },
+  [5474] = {
+    'Tosco Machacaduna',
+    nil,
+  },
+  [5475] = {
+    'Brujo Machacaduna',
+    nil,
+  },
+  [5476] = {
+    'Vigía Biggs',
+    nil,
+  },
+  [5477] = {
+    'Noboru el Garrote',
+    nil,
+  },
+  [5479] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [5480] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [5481] = {
+    'Colector de rocío Cardizal',
+    nil,
+  },
+  [5482] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [5483] = {
+    nil,
+    'Suministros de cocina',
+  },
+  [5484] = {
+    'Hermano Benjamin',
+    'Instructora de sacerdotes',
+  },
+  [5485] = {
+    'Enraizador Cardizal',
+    nil,
+  },
+  [5489] = {
+    'Hermano Joshua',
+    'Instructora de sacerdotes',
+  },
+  [5490] = {
+    'Cardizal nudoso',
+    nil,
+  },
+  [5491] = {
+    'Arthur el Leal',
+    'Instructor de paladines',
+  },
+  [5492] = {
+    'Katherine la Pura',
+    'Instructor de paladines',
+  },
+  [5493] = {
+    nil,
+    'Instructor de pesca',
+  },
+  [5494] = {
+    nil,
+    'Suministros de pesca',
+  },
+  [5495] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [5496] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [5497] = {
+    nil,
+    'Instructor de magos',
+  },
+  [5498] = {
+    nil,
+    'Instructor de magos',
+  },
+  [5499] = {
+    'Lilyssia Brisa Nocturna',
+    'Instructor de alquimia',
+  },
+  [5500] = {
+    nil,
+    'Aprendiz alquimista',
+  },
+  [5501] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [5502] = {
+    nil,
+    'Instructora de herboristería',
+  },
+  [5503] = {
+    nil,
+    'Suministros de herboristería',
+  },
+  [5504] = {
+    'Sheldras Árbol Lunar',
+    'Instructor de druidas',
+  },
+  [5505] = {
+    nil,
+    'Instructor de druidas',
+  },
+  [5506] = {
+    nil,
+    'Instructor de druidas',
+  },
+  [5508] = {
+    'Strumner Talonsílex',
+    'Armero',
+  },
+  [5509] = {
+    'Kathrum Mano de Hacha',
+    'Mercader de hachas',
+  },
+  [5510] = {
+    'Thulman Riscosílex',
+    'Vendedor de armas de fuego',
+  },
+  [5511] = {
+    'Therum Forjahonda',
+    'Instructora de herrería',
+  },
+  [5512] = {
+    'Kaita Forjahonda',
+    'Suministros de herrería',
+  },
+  [5513] = {
+    'Gelman Petramano',
+    'Instructor de minería',
+  },
+  [5514] = {
+    'Brooke Petratrenza',
+    'Suministros de minería',
+  },
+  [5515] = {
+    'Einris Lanza Reluciente',
+    'Instructor de cazadores',
+  },
+  [5516] = {
+    'Ulfir Barbaférrea',
+    'Instructor de cazadores',
+  },
+  [5517] = {
+    'Thorfin Petrescudo',
+    'Instructor de cazadores',
+  },
+  [5518] = {
+    'Lilliam Chispeje',
+    'Instructor de ingeniería',
+  },
+  [5519] = {
+    'Billibub Volopiñón',
+    'Suministros de ingeniería',
+  },
+  [5520] = {
+    'Spackle Zarzamora',
+    'Instructor de demonios',
+  },
+  [5521] = {
+    'Correclaros',
+    'Mascota de Celmoridan',
+  },
+  [5522] = {
+    'Colmilloférreo',
+    'Mascota de Strumner',
+  },
+  [5523] = {
+    'Kodo destacamento de guerra',
+    nil,
+  },
+  [5524] = {
+    'Vigía de caravana',
+    nil,
+  },
+  [5525] = {
+    'Caballo de carga de caravana',
+    nil,
+  },
+  [5526] = {
+    'Mercader de caravana',
+    nil,
+  },
+  [5542] = {
+    'Mercader ambulante de Ventormenta',
+    nil,
+  },
+  [5546] = {
+    'Bruto Zuul',
+    nil,
+  },
+  [5547] = {
+    'Bruto Tharlak',
+    nil,
+  },
+  [5548] = {
+    '[PH] Capataz de mina',
+    nil,
+  },
+  [5549] = {
+    '[PH] Guardia de mina',
+    nil,
+  },
+  [5550] = {
+    '[PH] Campesino JcJ',
+    nil,
+  },
+  [5551] = {
+    '[PH] Guardia de caravana',
+    nil,
+  },
+  [5552] = {
+    '[PH] Peón JcJ',
+    nil,
+  },
+  [5553] = {
+    '[PH] Explorador de caravana',
+    nil,
+  },
+  [5554] = {
+    '[PH] Fauna JcJ',
+    nil,
+  },
+  [5555] = {
+    '[PH] Rocín de caravana ogra',
+    nil,
+  },
+  [5556] = {
+    '[PH] Comandante de la Alianza',
+    nil,
+  },
+  [5557] = {
+    '[PH] Comandante de la Horda',
+    nil,
+  },
+  [5558] = {
+    '[PH] Guardia de la Alianza',
+    nil,
+  },
+  [5559] = {
+    '[PH] Guardia de la Horda',
+    nil,
+  },
+  [5560] = {
+    '[PH] Asaltante de la Alianza',
+    nil,
+  },
+  [5561] = {
+    '[PH] Asaltante de la Horda',
+    nil,
+  },
+  [5562] = {
+    '[PH] Arquero de la Alianza',
+    nil,
+  },
+  [5563] = {
+    '[PH] Arquero de la Horda',
+    nil,
+  },
+  [5564] = {
+    'Simon Peletero',
+    'Instructor de peletería',
+  },
+  [5565] = {
+    'Jillian Peletero',
+    'Suministros de peletería',
+  },
+  [5566] = {
+    nil,
+    'Instructora de herboristería',
+  },
+  [5567] = {
+    nil,
+    'Aprendiza sastre',
+  },
+  [5568] = {
+    'Gnomo paria capturado',
+    nil,
+  },
+  [5569] = {
+    'Fizzlebang Bums',
+    'Vendedor de cohetes pirotécnicos',
+  },
+  [5570] = {
+    'Bruuk Barbacebada',
+    'Camarero',
+  },
+  [5587] = {
+    '[PH] Capataz de mina de la Alianza',
+    nil,
+  },
+  [5588] = {
+    '[PH] Guardia de mina de la Alianza',
+    nil,
+  },
+  [5589] = {
+    '[PH] Capataz de mina de la Horda',
+    nil,
+  },
+  [5590] = {
+    '[PH] Guardia de mina de la Horda',
+    nil,
+  },
+  [5594] = {
+    'Alquimista Morterozugg',
+    'Suministros de alquimia',
+  },
+  [5595] = {
+    'Guardia de Forjaz',
+    nil,
+  },
+  [5596] = {
+    'Oposti Test Prop',
+    nil,
+  },
+  [5597] = {
+    'Bruto Komak',
+    nil,
+  },
+  [5598] = {
+    'Exiliado Atal\'ai',
+    nil,
+  },
+  [5599] = {
+    'Kon Ojos Amarillos',
+    nil,
+  },
+  [5603] = {
+    'Bruta Mojka',
+    nil,
+  },
+  [5604] = {
+    '[UNUSED] [PH] Verbenero orco',
+    nil,
+  },
+  [5611] = {
+    'Posadero Morag',
+    nil,
+  },
+  [5612] = {
+    'Gimrizz Molaro',
+    'Instructora de brujos',
+  },
+  [5615] = {
+    'Pícaro Vagayermo',
+    nil,
+  },
+  [5616] = {
+    'Ladrón Vagayermo',
+    nil,
+  },
+  [5617] = {
+    'Mago oscuro Vagayermo',
+    nil,
+  },
+  [5618] = {
+    'Bandido Vagayermo',
+    nil,
+  },
+  [5620] = {
+    'Posadero Wental',
+    'Alimentos y bebidas',
+  },
+  [5623] = {
+    'Asesino Vagayermo',
+    nil,
+  },
+  [5624] = {
+    'Guardián de Entrañas',
+    nil,
+  },
+  [5625] = {
+    'Transporte de Theramore',
+    nil,
+  },
+  [5628] = {
+    'Teniente Beech',
+    nil,
+  },
+  [5629] = {
+    'Comando de Theramore',
+    nil,
+  },
+  [5630] = {
+    'Mago de Theramore',
+    nil,
+  },
+  [5631] = {
+    'Médica de Theramore',
+    nil,
+  },
+  [5632] = {
+    'Programa maestro de control, incursión en Theramore',
+    nil,
+  },
+  [5633] = {
+    'Teniente Baxter',
+    nil,
+  },
+  [5634] = {
+    'Rapsodio Machacacanillas',
+    nil,
+  },
+  [5635] = {
+    'Falstad Martillo Salvaje',
+    'Gran señor feudal',
+  },
+  [5636] = {
+    'Maestro de grifos Garracha',
+    nil,
+  },
+  [5637] = {
+    'Roetten Rocamartillo',
+    'Recuperadores S.A.',
+  },
+  [5638] = {
+    nil,
+    'Recuperadores S.A.',
+  },
+  [5641] = {
+    'Takata Hoja de Acero',
+    nil,
+  },
+  [5642] = {
+    'Vahlarriel Destripademonios',
+    nil,
+  },
+  [5645] = {
+    'Desollador Furiarena',
+    nil,
+  },
+  [5646] = {
+    'Lanzahachas Furiarena',
+    nil,
+  },
+  [5647] = {
+    'Clamafuegos Furiarena',
+    nil,
+  },
+  [5648] = {
+    'Taumaturgo umbrío Furiarena',
+    nil,
+  },
+  [5649] = {
+    'Bebesangre Furiarena',
+    nil,
+  },
+  [5650] = {
+    'Médico brujo Furiarena',
+    nil,
+  },
+  [5652] = {
+    'Muñeco-diana de prácticas de Entrañas',
+    nil,
+  },
+  [5661] = {
+    'Hermano Malach',
+    nil,
+  },
+  [5662] = {
+    'Sargento Houser',
+    'Sargento',
+  },
+  [5666] = {
+    'Efigie de Gunther',
+    nil,
+  },
+  [5671] = {
+    '[UNUSED] Lawrence Sierra',
+    nil,
+  },
+  [5674] = {
+    'Objetivo de prácticas',
+    nil,
+  },
+  [5676] = {
+    'Abisario invocado',
+    nil,
+  },
+  [5677] = {
+    'Súcubo invocado',
+    nil,
+  },
+  [5678] = {
+    '[UNUSED] Mortacechador Vincent DEBUG',
+    nil,
+  },
+  [5680] = {
+    'Humano cautivo',
+    nil,
+  },
+  [5681] = {
+    'Humana cautiva',
+    nil,
+  },
+  [5682] = {
+    'Dalin Forjador',
+    nil,
+  },
+  [5685] = {
+    'Necrófago cautivo',
+    nil,
+  },
+  [5686] = {
+    'Zombi cautivo',
+    nil,
+  },
+  [5687] = {
+    'Abominación cautiva',
+    nil,
+  },
+  [5688] = {
+    'Tabernera Renee',
+    'Tabernero',
+  },
+  [5689] = {
+    'Corcel',
+    nil,
+  },
+  [5690] = {
+    nil,
+    'Instructor de pesca',
+  },
+  [5691] = {
+    'Proyección de Dalin Forjador',
+    nil,
+  },
+  [5692] = {
+    'Proyección de Comar Villardo',
+    nil,
+  },
+  [5694] = {
+    'Sumo hechicero Andromath',
+    nil,
+  },
+  [5695] = {
+    'Vance Bajopenumbra',
+    'Instructora de encantamiento',
+  },
+  [5697] = {
+    nil,
+    'Esclava mental de Gerard',
+  },
+  [5708] = {
+    'Engendro de Hakkar',
+    nil,
+  },
+  [5709] = {
+    'Sombra de Eranikus',
+    nil,
+  },
+  [5710] = {
+    'Jammal\'an el Profeta',
+    nil,
+  },
+  [5711] = {
+    'Ogom el Desdichado',
+    nil,
+  },
+  [5720] = {
+    'Sastrón',
+    nil,
+  },
+  [5721] = {
+    'Segasueños',
+    nil,
+  },
+  [5723] = {
+    'Muñeco-diana de Warug',
+    nil,
+  },
+  [5725] = {
+    'Guardia de la Muerte Lundmark',
+    nil,
+  },
+  [5726] = {
+    'Manáfago de Jezelle',
+    nil,
+  },
+  [5727] = {
+    'Corcel vil de Jezelle',
+    nil,
+  },
+  [5728] = {
+    'Súcubo de Jezelle',
+    nil,
+  },
+  [5729] = {
+    'Abisario de Jezelle',
+    nil,
+  },
+  [5730] = {
+    'Diablillo de Jezelle',
+    nil,
+  },
+  [5731] = {
+    'Boticaria Vallia',
+    'Sociedad Real de Boticarios',
+  },
+  [5732] = {
+    'Boticaria Katrina',
+    'Sociedad Real de Boticarios',
+  },
+  [5733] = {
+    'Boticario Lycanus',
+    'Sociedad Real de Boticarios',
+  },
+  [5734] = {
+    'Boticario Keever',
+    'Sociedad Real de Boticarios',
+  },
+  [5735] = {
+    'Humana enjaulada',
+    nil,
+  },
+  [5736] = {
+    'Humano enjaulado',
+    nil,
+  },
+  [5737] = {
+    'Enana enjaulada',
+    nil,
+  },
+  [5738] = {
+    'Enano enjaulado',
+    nil,
+  },
+  [5739] = {
+    'Ardilla enjaulada',
+    nil,
+  },
+  [5740] = {
+    'Pollo enjaulado',
+    nil,
+  },
+  [5741] = {
+    'Conejo enjaulado',
+    nil,
+  },
+  [5742] = {
+    'Sapo enjaulado',
+    nil,
+  },
+  [5743] = {
+    'Oveja enjaulada',
+    nil,
+  },
+  [5748] = {
+    nil,
+    'Pescador',
+  },
+  [5749] = {
+    nil,
+    'Instructor de demonios',
+  },
+  [5750] = {
+    nil,
+    'Instructor de demonios',
+  },
+  [5752] = {
+    'Cabo Melkins',
+    nil,
+  },
+  [5753] = {
+    nil,
+    'Instructor de demonios',
+  },
+  [5754] = {
+    nil,
+    'Vendedor de varitas',
+  },
+  [5755] = {
+    'Víbora descarriada',
+    nil,
+  },
+  [5756] = {
+    'Venala descarriada',
+    nil,
+  },
+  [5757] = {
+    nil,
+    'Suministros de encantamiento',
+  },
+  [5758] = {
+    nil,
+    'Suministros de encantamiento',
+  },
+  [5759] = {
+    'Enfermera Neela',
+    'Instructora de primeros auxilios',
+  },
+  [5761] = {
+    'Arrastrapiés descarriado',
+    nil,
+  },
+  [5762] = {
+    'Mocasín descarriada',
+    nil,
+  },
+  [5763] = {
+    'Ectoplasma pesadilla',
+    nil,
+  },
+  [5764] = {
+    'Guardián de la ventisca',
+    nil,
+  },
+  [5766] = {
+    'Cachorro de la sabana',
+    nil,
+  },
+  [5767] = {
+    nil,
+    'Muyoh',
+  },
+  [5768] = {
+    nil,
+    'Muyoh',
+  },
+  [5769] = {
+    'Archidruida Hamuul Tótem de Runa',
+    nil,
+  },
+  [5770] = {
+    'Nara Ferocrín',
+    nil,
+  },
+  [5772] = {
+    'Imagen de Lord Azrethoc',
+    nil,
+  },
+  [5773] = {
+    'Imagen de Jugkar Grim\'rod',
+    nil,
+  },
+  [5774] = {
+    'Lobo de montar',
+    nil,
+  },
+  [5775] = {
+    'Verdan el Eterno',
+    nil,
+  },
+  [5776] = {
+    'Ectoplasma en desarrollo (rojo)',
+    nil,
+  },
+  [5777] = {
+    'Ectoplasma en desarrollo (verde)',
+    nil,
+  },
+  [5778] = {
+    'Ectoplasma en desarrollo (negro)',
+    nil,
+  },
+  [5779] = {
+    'Víbora invocada',
+    nil,
+  },
+  [5780] = {
+    'Ectoplasma clonado',
+    nil,
+  },
+  [5781] = {
+    'Huevo de trepador silítido',
+    nil,
+  },
+  [5783] = {
+    'Kalldan Lunavil',
+    'Suministros de peletería especializada',
+  },
+  [5784] = {
+    nil,
+    'Instructor de peletería',
+  },
+  [5785] = {
+    'Hermana Azote de Odio',
+    nil,
+  },
+  [5786] = {
+    'Jalalanza',
+    nil,
+  },
+  [5787] = {
+    'Déspota Emilgund',
+    nil,
+  },
+  [5788] = {
+    'Gelgann Fragua Feroz',
+    'Perito de Forjaz',
+  },
+  [5789] = {
+    'Serra Colinhogar',
+    'Perito de Forjaz',
+  },
+  [5790] = {
+    'Lizzle Engranágil',
+    'Perito de Forjaz',
+  },
+  [5791] = {
+    'Forma de serpiente de Cobrahn',
+    'Druida del Colmillo',
+  },
+  [5792] = {
+    '[Deprecated for 4.x]Maestro de arrastre Miglen',
+    nil,
+  },
+  [5793] = {
+    'Capitana Armisticio',
+    'Pacificador de la Alianza',
+  },
+  [5794] = {
+    'Thurmonde el Devoto',
+    'Pacificador de la Alianza',
+  },
+  [5795] = {
+    'Grash Cebatruenos',
+    'Pacificador de la Alianza',
+  },
+  [5796] = {
+    nil,
+    'Mascota de Grash Cebatruenos',
+  },
+  [5797] = {
+    'Aean Río Veloz',
+    'Avanzada de la Alianza',
+  },
+  [5798] = {
+    'Thora Plumaluna',
+    'Avanzada de la Alianza',
+  },
+  [5799] = {
+    'Hannah Filohoja',
+    'Avanzada de la Alianza',
+  },
+  [5800] = {
+    nil,
+    'Avanzada de la Alianza',
+  },
+  [5801] = {
+    '[PH] Robot de grupo',
+    nil,
+  },
+  [5806] = {
+    'Aliado antárbol',
+    nil,
+  },
+  [5807] = {
+    'El Despedazador',
+    nil,
+  },
+  [5808] = {
+    'Señor de la guerra Kolkanis',
+    nil,
+  },
+  [5809] = {
+    'Sargento Curtis',
+    nil,
+  },
+  [5811] = {
+    nil,
+    'Aprendiz peletero',
+  },
+  [5812] = {
+    nil,
+    'Mercader de armaduras pesadas',
+  },
+  [5813] = {
+    nil,
+    'Mercader de armaduras ligeras',
+  },
+  [5814] = {
+    'Tabernero Thulbek',
+    'Tabernero',
+  },
+  [5815] = {
+    nil,
+    'Instructor de demonios',
+  },
+  [5816] = {
+    nil,
+    'Mercader de varitas',
+  },
+  [5817] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [5818] = {
+    nil,
+    'Ángel de la Resurrección',
+  },
+  [5819] = {
+    nil,
+    'Mercader de armaduras pesadas',
+  },
+  [5820] = {
+    nil,
+    'Mercader de armaduras de cuero',
+  },
+  [5821] = {
+    nil,
+    'Mercader de armaduras de tela',
+  },
+  [5822] = {
+    'Tejeyel Scronn',
+    nil,
+  },
+  [5823] = {
+    'Despellejador de la Muerte',
+    nil,
+  },
+  [5824] = {
+    'Capitán Colmillo Plano',
+    'Capitán de la Guardia de Batalla',
+  },
+  [5825] = {
+    'Tyranis Malem corrupto',
+    nil,
+  },
+  [5826] = {
+    'Geoseñor Motas',
+    nil,
+  },
+  [5828] = {
+    'Humar el Señor Orgulloso',
+    nil,
+  },
+  [5829] = {
+    'Bufo el Molesto',
+    nil,
+  },
+  [5830] = {
+    'Hermana Rathtalon',
+    nil,
+  },
+  [5831] = {
+    'Velocrín',
+    nil,
+  },
+  [5832] = {
+    'Silenciatruenos',
+    nil,
+  },
+  [5833] = {
+    'Margol la Furibunda',
+    nil,
+  },
+  [5834] = {
+    'Azzere el Filo del Cielo',
+    nil,
+  },
+  [5835] = {
+    'Supervisor Asas',
+    nil,
+  },
+  [5836] = {
+    'Ingeniero Giralesín',
+    nil,
+  },
+  [5837] = {
+    'Brazorroca',
+    nil,
+  },
+  [5838] = {
+    'Lanzarrota',
+    nil,
+  },
+  [5839] = {
+    'Geólogo Hierro Negro',
+    nil,
+  },
+  [5840] = {
+    'Vapoherrero Hierro Negro',
+    nil,
+  },
+  [5841] = {
+    'Lanzapiedras',
+    nil,
+  },
+  [5842] = {
+    'Takk el Saltarín',
+    nil,
+  },
+  [5843] = {
+    'Trabajador esclavo',
+    nil,
+  },
+  [5844] = {
+    'Esclavista Hierro Negro',
+    nil,
+  },
+  [5846] = {
+    'Capataz Hierro Negro',
+    nil,
+  },
+  [5847] = {
+    'Heggin Pelopiedra',
+    'Ingeniero jefe Bael\'dun',
+  },
+  [5848] = {
+    'Malgin Cebadiz',
+    'Oficial de moral de Bael\'dun',
+  },
+  [5849] = {
+    'Cavador Flamaforja',
+    'Especialista en excavaciones',
+  },
+  [5850] = {
+    'Elemental llameante',
+    nil,
+  },
+  [5851] = {
+    'Capitán Gerogg Piemartillo',
+    'Capitán de la Guardia Bael\'dun',
+  },
+  [5852] = {
+    'Elemental del infierno',
+    nil,
+  },
+  [5853] = {
+    'Gólem de guerra templado',
+    nil,
+  },
+  [5854] = {
+    'Gólem de guerra pesado',
+    nil,
+  },
+  [5855] = {
+    'Elemental de magma',
+    nil,
+  },
+  [5856] = {
+    'Araña Cristalderma',
+    nil,
+  },
+  [5857] = {
+    'Araña de lava abrasadora',
+    nil,
+  },
+  [5858] = {
+    'Araña de lava superior',
+    nil,
+  },
+  [5859] = {
+    'Hagg Taurruina',
+    'Campeón Crines de Acero',
+  },
+  [5860] = {
+    'Chamán Oscuro Crepuscular',
+    nil,
+  },
+  [5861] = {
+    'Guardia de Fuego Crepuscular',
+    nil,
+  },
+  [5862] = {
+    'Geomántico Crepuscular',
+    nil,
+  },
+  [5863] = {
+    'Geosacerdote Gukk\'rok',
+    nil,
+  },
+  [5864] = {
+    'Suingart Cuerolanza',
+    nil,
+  },
+  [5866] = {
+    'Equipamiento de ardilla',
+    nil,
+  },
+  [5867] = {
+    'Maximum Ardilla',
+    nil,
+  },
+  [5868] = {
+    'Ardilla malvada',
+    nil,
+  },
+  [5870] = {
+    nil,
+    'Carnicero',
+  },
+  [5871] = {
+    nil,
+    'Mercader de bebidas',
+  },
+  [5872] = {
+    'Forma de serpiente',
+    nil,
+  },
+  [5873] = {
+    'Tótem Piel de piedra',
+    nil,
+  },
+  [5874] = {
+    'Tótem Fuerza de la tierra',
+    nil,
+  },
+  [5875] = {
+    'Gan\'rul Ojosangre',
+    nil,
+  },
+  [5876] = {
+    nil,
+    'Instructor de oteadores',
+  },
+  [5877] = {
+    nil,
+    'Instructor de oteadores',
+  },
+  [5878] = {
+    'Thun\'grim Vistafuego',
+    nil,
+  },
+  [5879] = {
+    'zzOLDTótem Nova de Fuego',
+    nil,
+  },
+  [5880] = {
+    nil,
+    'Instructor de magos',
+  },
+  [5881] = {
+    'Sicomoro maldito',
+    nil,
+  },
+  [5882] = {
+    nil,
+    'Instructor de magos',
+  },
+  [5883] = {
+    nil,
+    'Instructor de magos',
+  },
+  [5884] = {
+    nil,
+    'Instructor de magos',
+  },
+  [5885] = {
+    nil,
+    'Instructor de magos',
+  },
+  [5886] = {
+    nil,
+    'Mercader de champiñones',
+  },
+  [5887] = {
+    'Canaga Clamatierras',
+    nil,
+  },
+  [5888] = {
+    'Vidente Pluma de Cuervo',
+    nil,
+  },
+  [5889] = {
+    'Espíritu de la Tierra Mesa',
+    nil,
+  },
+  [5890] = {
+    'Espíritu de Tierra Piedrarroja',
+    nil,
+  },
+  [5891] = {
+    'Manifestación de tierra menor',
+    nil,
+  },
+  [5892] = {
+    'Searn Guardafogo',
+    nil,
+  },
+  [5893] = {
+    'Manifestación de fuego menor',
+    nil,
+  },
+  [5894] = {
+    'Manifestación de agua menor corrupta',
+    nil,
+  },
+  [5895] = {
+    'Manifestación de agua menor',
+    nil,
+  },
+  [5896] = {
+    'Espíritu de fuego',
+    nil,
+  },
+  [5897] = {
+    'Espíritu de agua corrupto',
+    nil,
+  },
+  [5898] = {
+    'Espíritu de aire',
+    nil,
+  },
+  [5899] = {
+    'Salmuera',
+    nil,
+  },
+  [5901] = {
+    'Islen Vidente del Agua',
+    nil,
+  },
+  [5902] = {
+    'Manifestación de aire menor',
+    nil,
+  },
+  [5903] = {
+    'Nyx Sanguinarius',
+    nil,
+  },
+  [5905] = {
+    'Prate Vidente de las Nubes',
+    nil,
+  },
+  [5906] = {
+    'Xanis Tejedor de Fuego',
+    nil,
+  },
+  [5908] = {
+    'Bruto Dogran',
+    nil,
+  },
+  [5911] = {
+    'Bruto Logmar',
+    nil,
+  },
+  [5912] = {
+    'Dragón feérico descarriado',
+    nil,
+  },
+  [5913] = {
+    'Tótem de tremor',
+    nil,
+  },
+  [5914] = {
+    'Pesadilla descarriada',
+    nil,
+  },
+  [5915] = {
+    'Hermano Roblecuervo',
+    nil,
+  },
+  [5916] = {
+    'Centinela Amarassan',
+    nil,
+  },
+  [5918] = {
+    'Forma de búho',
+    nil,
+  },
+  [5919] = {
+    'zzOLDTótem Piel de piedra II',
+    nil,
+  },
+  [5920] = {
+    'zzOLDTótem Piel de piedra III',
+    nil,
+  },
+  [5921] = {
+    'zzOLDTótem Fuerza de la tierra II',
+    nil,
+  },
+  [5922] = {
+    'zzOLDTótem Fuerza de la tierra III',
+    nil,
+  },
+  [5923] = {
+    'Tótem de limpieza contraveneno',
+    nil,
+  },
+  [5924] = {
+    'Tótem de limpieza',
+    nil,
+  },
+  [5925] = {
+    'Tótem derribador',
+    nil,
+  },
+  [5926] = {
+    'Tótem de resistencia a la escarcha',
+    nil,
+  },
+  [5927] = {
+    'Tótem de resistencia elemental',
+    nil,
+  },
+  [5928] = {
+    'Alapenas',
+    nil,
+  },
+  [5929] = {
+    'Tótem de Magma',
+    nil,
+  },
+  [5930] = {
+    'Hermana Riven',
+    nil,
+  },
+  [5931] = {
+    'Supervisor Rigger',
+    nil,
+  },
+  [5932] = {
+    'Capataz Latimillo',
+    nil,
+  },
+  [5933] = {
+    'Achellios el Desterrado',
+    nil,
+  },
+  [5934] = {
+    'Cuorevaja',
+    nil,
+  },
+  [5935] = {
+    'Ojohierro el Invencible',
+    nil,
+  },
+  [5937] = {
+    'Aguijón vil',
+    nil,
+  },
+  [5938] = {
+    'Uthan Aguaserena',
+    'Instructor de pesca',
+  },
+  [5939] = {
+    'Vira Pezuña Joven',
+    'Instructora de primeros auxilios',
+  },
+  [5940] = {
+    'Harn Tiralejo',
+    'Suministros de pesca',
+  },
+  [5941] = {
+    nil,
+    'Instructor de pesca',
+  },
+  [5942] = {
+    nil,
+    'Suministros de pesca',
+  },
+  [5943] = {
+    nil,
+    'Instructora de primeros auxilios',
+  },
+  [5944] = {
+    nil,
+    'Suministros de sastrería y peletería',
+  },
+  [5945] = {
+    'Búho de compañía',
+    nil,
+  },
+  [5946] = {
+    'Asesino oscuro',
+    nil,
+  },
+  [5947] = {
+    'Asesina oscura',
+    nil,
+  },
+  [5948] = {
+    'Mujer pirata',
+    nil,
+  },
+  [5949] = {
+    'Hombre pirata',
+    nil,
+  },
+  [5950] = {
+    'Tótem Lengua de Fuego',
+    nil,
+  },
+  [5951] = {
+    'Liebre',
+    nil,
+  },
+  [5952] = {
+    'Bruto del cubil',
+    nil,
+  },
+  [5953] = {
+    'Bruto de Cerrotajo',
+    nil,
+  },
+  [5954] = {
+    'Sombra (Deprecated)',
+    nil,
+  },
+  [5957] = {
+    nil,
+    'Instructora de portal',
+  },
+  [5958] = {
+    nil,
+    'Instructora de portal',
+  },
+  [5959] = {
+    'Instructor enano mundial de guerreros',
+    'Instructor de guerreros',
+  },
+  [5960] = {
+    'Instructor humano mundial de pícaros',
+    'Instructor de pícaros',
+  },
+  [5961] = {
+    'Instructor gnomo mundial de magos',
+    'Instructor de magos',
+  },
+  [5962] = {
+    'Instructor orco mundial de brujos',
+    'Instructora de brujos',
+  },
+  [5963] = {
+    'Instructor tauren mundial de druidas',
+    'Instructor de druidas',
+  },
+  [5964] = {
+    'Instructor no-muerto mundial de sacerdotes',
+    'Instructora de sacerdotes',
+  },
+  [5965] = {
+    'Instructor trol mundial de chamanes',
+    'Instructor de chamanes',
+  },
+  [5966] = {
+    'Instructor elfo de la noche mundial de guerreros',
+    'Instructor de guerreros',
+  },
+  [5967] = {
+    'Instructora enana mundial de guerreros',
+    'Instructor de guerreros',
+  },
+  [5968] = {
+    'Instructora humana mundial de pícaros',
+    'Instructor de pícaros',
+  },
+  [5969] = {
+    'Instructora gnomo mundial de magos',
+    'Instructor de magos',
+  },
+  [5970] = {
+    'Instructora orco mundial de brujos',
+    'Instructora de brujos',
+  },
+  [5971] = {
+    'Instructora trol mundial de chamanes',
+    'Instructor de chamanes',
+  },
+  [5972] = {
+    'Instructora tauren mundial de druidas',
+    'Instructor de druidas',
+  },
+  [5973] = {
+    'Instructora no-muerta mundial de sacerdotes',
+    'Instructora de sacerdotes',
+  },
+  [5974] = {
+    'Ogro Machacamiedo',
+    nil,
+  },
+  [5975] = {
+    'Ogro mago Machacamiedo',
+    nil,
+  },
+  [5976] = {
+    'Tosco Machacamiedo',
+    nil,
+  },
+  [5977] = {
+    'Aplastador Machacamiedo',
+    nil,
+  },
+  [5978] = {
+    'Brujo Machacamiedo',
+    nil,
+  },
+  [5979] = {
+    'Perdido desdichado',
+    nil,
+  },
+  [5980] = {
+    'Tábido',
+    nil,
+  },
+  [5981] = {
+    'Buscador de portales',
+    nil,
+  },
+  [5982] = {
+    'Destripador negro',
+    nil,
+  },
+  [5983] = {
+    'Escarbador Alimentavil',
+    nil,
+  },
+  [5984] = {
+    'Hiena risitas famélica',
+    nil,
+  },
+  [5985] = {
+    'Hiena risitas',
+    nil,
+  },
+  [5986] = {
+    'Hiena risitas rabiosa',
+    nil,
+  },
+  [5987] = {
+    'Sacudidor Scorpok',
+    nil,
+  },
+  [5988] = {
+    'Aguijonero Scorpok',
+    nil,
+  },
+  [5989] = {
+    'Azotador Scorpok',
+    nil,
+  },
+  [5990] = {
+    'Basilisco Rocarroja',
+    nil,
+  },
+  [5991] = {
+    'Vitropiel Rocarroja',
+    nil,
+  },
+  [5992] = {
+    'Jabalí Cenicrín',
+    nil,
+  },
+  [5993] = {
+    'Jabinferno',
+    nil,
+  },
+  [5994] = {
+    nil,
+    'Sumo sacerdote',
+  },
+  [5995] = {
+    'Trabajador de Nethergarde',
+    nil,
+  },
+  [5996] = {
+    'Minero de Nethergarde',
+    nil,
+  },
+  [5997] = {
+    'Ingeniero de Nethergarde',
+    nil,
+  },
+  [5998] = {
+    'Supervisor de Nethergarde',
+    nil,
+  },
+  [5999] = {
+    'Soldado de Nethergarde',
+    nil,
+  },
+  [6000] = {
+    'Clérigo de Nethergarde',
+    nil,
+  },
+  [6001] = {
+    'Analista de Nethergarde',
+    nil,
+  },
+  [6002] = {
+    'Vigía de la falla de Nethergarde',
+    nil,
+  },
+  [6003] = {
+    'Oficial de Nethergarde',
+    nil,
+  },
+  [6004] = {
+    'Ritualista Sombra Jurada',
+    nil,
+  },
+  [6005] = {
+    'Matón Sombra Jurada',
+    nil,
+  },
+  [6006] = {
+    'Adepto Sombra Jurada',
+    nil,
+  },
+  [6007] = {
+    'Déspota Sombra Jurada',
+    nil,
+  },
+  [6008] = {
+    'Brujo Sombra Jurada',
+    nil,
+  },
+  [6009] = {
+    'Tejetinieblas Sombra Jurada',
+    nil,
+  },
+  [6010] = {
+    'Can manáfago',
+    nil,
+  },
+  [6011] = {
+    'Avizor guardia vil',
+    nil,
+  },
+  [6012] = {
+    'zzOLDTótem Lengua de Fuego II',
+    nil,
+  },
+  [6013] = {
+    'Águila ratonera Guardapaso',
+    nil,
+  },
+  [6014] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [6016] = {
+    'Tótem de protección elemental',
+    nil,
+  },
+  [6017] = {
+    'Tótem emanador de lava',
+    nil,
+  },
+  [6018] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [6019] = {
+    'Hornizz Zumbala',
+    nil,
+  },
+  [6020] = {
+    'Valvababosa makrura',
+    nil,
+  },
+  [6021] = {
+    'Espíritu de jabalí',
+    nil,
+  },
+  [6022] = {
+    'Capitán Drakoar',
+    nil,
+  },
+  [6023] = {
+    'Kernon Garrasombría',
+    nil,
+  },
+  [6026] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [6027] = {
+    nil,
+    'Instructor de demonios',
+  },
+  [6028] = {
+    nil,
+    'Mercader de armaduras pesadas',
+  },
+  [6030] = {
+    'Thorvald Forjahonda',
+    nil,
+  },
+  [6031] = {
+    'Tormus Forjahonda',
+    nil,
+  },
+  [6032] = {
+    nil,
+    'Ángel de la Resurrección',
+  },
+  [6033] = {
+    'Furia de lago',
+    nil,
+  },
+  [6035] = {
+    'Acechador de Rajacieno',
+    nil,
+  },
+  [6036] = {
+    'Guardián de Backus',
+    nil,
+  },
+  [6046] = {
+    '[UNUSED] Gozwin Dentovil',
+    nil,
+  },
+  [6047] = {
+    'Guardián acuático',
+    nil,
+  },
+  [6066] = {
+    'Tótem Pillaterra',
+    nil,
+  },
+  [6068] = {
+    'Guardaespaldas de Warug',
+    nil,
+  },
+  [6069] = {
+    'Guardia Khan Maraudine',
+    nil,
+  },
+  [6070] = {
+    'Consejera Khan Maraudine',
+    nil,
+  },
+  [6071] = {
+    'Can de la Legión',
+    nil,
+  },
+  [6072] = {
+    'Diathorus el Buscador',
+    nil,
+  },
+  [6073] = {
+    'Infernal abrasador',
+    nil,
+  },
+  [6076] = {
+    'Zancaalta de montar (marfil)',
+    nil,
+  },
+  [6086] = {
+    'Centinela de Auberdine',
+    nil,
+  },
+  [6087] = {
+    'Centinela de Astranaar',
+    nil,
+  },
+  [6090] = {
+    nil,
+    'Borracho',
+  },
+  [6091] = {
+    nil,
+    'Vendedor de alimentos y bebidas',
+  },
+  [6092] = {
+    'Fantasma menor',
+    nil,
+  },
+  [6093] = {
+    'Jack Dentomuerto',
+    nil,
+  },
+  [6094] = {
+    nil,
+    'Instructora de primeros auxilios',
+  },
+  [6106] = {
+    'Fantasma inferior',
+    nil,
+  },
+  [6107] = {
+    'Fantasma',
+    nil,
+  },
+  [6108] = {
+    'Fantasma superior',
+    nil,
+  },
+  [6110] = {
+    'zzOLDTótem Nova de Fuego II',
+    nil,
+  },
+  [6111] = {
+    'zzOLDTótem Nova de Fuego III',
+    nil,
+  },
+  [6112] = {
+    'Tótem Viento Furioso',
+    nil,
+  },
+  [6114] = {
+    'Muren Pico Tormenta',
+    nil,
+  },
+  [6115] = {
+    'Guardia vil vagabundo',
+    nil,
+  },
+  [6116] = {
+    'Aparecida Altonato',
+    nil,
+  },
+  [6117] = {
+    'Exanimato Altonato',
+    nil,
+  },
+  [6118] = {
+    'Fantasma de Varo\'then',
+    nil,
+  },
+  [6119] = {
+    'Tog Oxidentado',
+    nil,
+  },
+  [6120] = {
+    'Yago Llavenegra',
+    nil,
+  },
+  [6122] = {
+    'Gakin el Presotenebra',
+    nil,
+  },
+  [6123] = {
+    'Espía Hierro Negro',
+    nil,
+  },
+  [6124] = {
+    'Capitán Beld',
+    'Capitán Hierro Negro',
+  },
+  [6125] = {
+    'Sátiro Haldarr',
+    nil,
+  },
+  [6126] = {
+    'Tramposo Haldarr',
+    nil,
+  },
+  [6127] = {
+    'Jurapenas Haldarr',
+    nil,
+  },
+  [6128] = {
+    'Vorlus Pezuñavil',
+    nil,
+  },
+  [6129] = {
+    'Señor de la magia dracónico',
+    nil,
+  },
+  [6130] = {
+    'Horrocrusto azul',
+    nil,
+  },
+  [6131] = {
+    'Tejemagia dracónico',
+    nil,
+  },
+  [6132] = {
+    'Servidor de Rajacieno',
+    nil,
+  },
+  [6133] = {
+    'Sombra de Elura',
+    nil,
+  },
+  [6135] = {
+    'Pinzador Arkkoran',
+    nil,
+  },
+  [6136] = {
+    'Habitabosta Arkkoran',
+    nil,
+  },
+  [6137] = {
+    'Tenazario Arkkoran',
+    nil,
+  },
+  [6138] = {
+    'Oráculo Arkkoran',
+    nil,
+  },
+  [6139] = {
+    'Rasante de Nido Alto',
+    nil,
+  },
+  [6141] = {
+    'Rasante Alaorgullo',
+    nil,
+  },
+  [6143] = {
+    'Sirviente de Arkkoroc',
+    nil,
+  },
+  [6144] = {
+    'Hijo de Arkkoroc',
+    nil,
+  },
+  [6145] = {
+    'Banco de peces',
+    nil,
+  },
+  [6146] = {
+    'Rompedor del risco',
+    nil,
+  },
+  [6147] = {
+    'Tronarisco',
+    nil,
+  },
+  [6148] = {
+    'Caminarrisco',
+    nil,
+  },
+  [6166] = {
+    'Yorus Cebadiz',
+    nil,
+  },
+  [6167] = {
+    'Matriarca Quimera',
+    nil,
+  },
+  [6169] = {
+    'Klockmort Palmalicate',
+    nil,
+  },
+  [6170] = {
+    'Agallas',
+    nil,
+  },
+  [6176] = {
+    'Bath\'rah el Vigía del viento',
+    nil,
+  },
+  [6178] = {
+    'Muiredon Forjabatalla',
+    nil,
+  },
+  [6179] = {
+    'Tiza Forjabatalla',
+    nil,
+  },
+  [6180] = {
+    'Asaltante Defias',
+    nil,
+  },
+  [6181] = {
+    'Jordan Fontana',
+    nil,
+  },
+  [6182] = {
+    'Daphne Fontana',
+    nil,
+  },
+  [6184] = {
+    'Abrecaminos Fauces de Madera',
+    nil,
+  },
+  [6185] = {
+    'Guerrero Fauces de Madera',
+    nil,
+  },
+  [6186] = {
+    'Totémico Fauces de Madera',
+    nil,
+  },
+  [6187] = {
+    'Vigía del cubil Fauces de Madera',
+    nil,
+  },
+  [6188] = {
+    'Chamán Fauces de Madera',
+    nil,
+  },
+  [6189] = {
+    'Ursa Fauces de Madera',
+    nil,
+  },
+  [6190] = {
+    'Guerrero Látigo de Ira',
+    nil,
+  },
+  [6193] = {
+    'Vociferadora Látigo de Ira',
+    nil,
+  },
+  [6194] = {
+    'Guardia serpiente Látigo de Ira',
+    nil,
+  },
+  [6195] = {
+    'Sirena Látigo de Ira',
+    nil,
+  },
+  [6196] = {
+    'Mirmidón Látigo de Ira',
+    nil,
+  },
+  [6197] = {
+    'Hechicera Látigo de Ira',
+    nil,
+  },
+  [6198] = {
+    'Perito elfo de sangre',
+    nil,
+  },
+  [6199] = {
+    'Reivindicador elfo de sangre',
+    nil,
+  },
+  [6200] = {
+    'Sátiro Legashi',
+    nil,
+  },
+  [6201] = {
+    'Pícaro Legashi',
+    nil,
+  },
+  [6202] = {
+    'Clamainferno Legashi',
+    nil,
+  },
+  [6206] = {
+    'Perforador Cueva Honda',
+    nil,
+  },
+  [6207] = {
+    'Emboscador Cueva Honda',
+    nil,
+  },
+  [6208] = {
+    'Invasor Cueva Honda',
+    nil,
+  },
+  [6209] = {
+    'Despojador Cueva Honda',
+    nil,
+  },
+  [6210] = {
+    'Saqueador Cueva Honda',
+    nil,
+  },
+  [6211] = {
+    'Atracador Cueva Honda',
+    nil,
+  },
+  [6212] = {
+    'Agente Hierro Negro',
+    nil,
+  },
+  [6213] = {
+    'Invasor irradiado',
+    nil,
+  },
+  [6214] = {
+    'Perforador irradiado',
+    nil,
+  },
+  [6215] = {
+    'Mastic',
+    nil,
+  },
+  [6218] = {
+    'Babosa irradiada',
+    nil,
+  },
+  [6219] = {
+    'Rondador corrosivo',
+    nil,
+  },
+  [6220] = {
+    'Horror irradiado',
+    nil,
+  },
+  [6221] = {
+    'Paria loco',
+    nil,
+  },
+  [6222] = {
+    'Técnico leproso',
+    nil,
+  },
+  [6223] = {
+    'Defensor leproso',
+    nil,
+  },
+  [6224] = {
+    'Maquinista leproso',
+    nil,
+  },
+  [6225] = {
+    'Mecanotanque',
+    nil,
+  },
+  [6226] = {
+    'Caminallamas mecanizado',
+    nil,
+  },
+  [6227] = {
+    'Caminaescarcha mecanizado',
+    nil,
+  },
+  [6228] = {
+    'Embajador Hierro Negro',
+    nil,
+  },
+  [6229] = {
+    'Golpeamasa 9-60',
+    nil,
+  },
+  [6230] = {
+    'Traje de seguridad de Pacificador',
+    nil,
+  },
+  [6232] = {
+    'Nulificador Arcano X-21',
+    nil,
+  },
+  [6233] = {
+    'Avizor mecanizado',
+    nil,
+  },
+  [6234] = {
+    'Guardián mecanizado',
+    nil,
+  },
+  [6235] = {
+    'Electrocutor 6000',
+    nil,
+  },
+  [6236] = {
+    nil,
+    'El Isleño',
+  },
+  [6237] = {
+    'Arquero de las Mazmorras',
+    nil,
+  },
+  [6238] = {
+    'Will el Grande',
+    nil,
+  },
+  [6239] = {
+    'Ciclonio',
+    nil,
+  },
+  [6240] = {
+    'Contendiente de La Reyerta',
+    nil,
+  },
+  [6241] = {
+    'Bailor Petramano',
+    nil,
+  },
+  [6242] = {
+    'Instructora mundial de desuello',
+    'Instructora de desuello',
+  },
+  [6244] = {
+    'Takar el Vidente',
+    nil,
+  },
+  [6248] = {
+    'Twiggy Cabezaplana',
+    'El comentarista',
+  },
+  [6249] = {
+    'Espectador de La Reyerta',
+    nil,
+  },
+  [6250] = {
+    'Reptador',
+    nil,
+  },
+  [6252] = {
+    'Acólito Magaz',
+    nil,
+  },
+  [6253] = {
+    'Acólito Fenrick',
+    nil,
+  },
+  [6254] = {
+    'Acólito Wytula',
+    nil,
+  },
+  [6266] = {
+    'Menara Nadiz',
+    nil,
+  },
+  [6267] = {
+    'Acólito Porena',
+    nil,
+  },
+  [6268] = {
+    'Manáfago invocado',
+    nil,
+  },
+  [6271] = {
+    'Ratón',
+    nil,
+  },
+  [6272] = {
+    'Tabernera Janene',
+    'Tabernero',
+  },
+  [6286] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [6287] = {
+    'Radnaal Tejecrín',
+    'Instructora de desuello',
+  },
+  [6288] = {
+    nil,
+    'Instructora de desuello',
+  },
+  [6289] = {
+    nil,
+    'Instructora de desuello',
+  },
+  [6290] = {
+    'Yonn Corte Profundo',
+    'Instructora de desuello',
+  },
+  [6291] = {
+    'Balthus Cazarrocas',
+    'Instructora de desuello',
+  },
+  [6292] = {
+    nil,
+    'Instructora de desuello',
+  },
+  [6294] = {
+    'Krom Brazorrecio',
+    nil,
+  },
+  [6295] = {
+    nil,
+    'Instructora de desuello',
+  },
+  [6296] = {
+    'Elemental de llamas',
+    nil,
+  },
+  [6297] = {
+    'Kurdram Rocamartillo',
+    'Instructor de minería',
+  },
+  [6298] = {
+    'Thelgrum Rocamartillo',
+    'Suministros de minería',
+  },
+  [6299] = {
+    'Delfrum Barbasílex',
+    'Instructora de herrería',
+  },
+  [6300] = {
+    'Elisa Mano de Acero',
+    'Suministros de herrería',
+  },
+  [6301] = {
+    'Gorbold Mano de Acero',
+    'Suministros comerciales',
+  },
+  [6306] = {
+    'Helene Desollapelambres',
+    'Instructora de desuello',
+  },
+  [6326] = {
+    'Grifonero de guerra de la Horda',
+    'Maestro de grifoneros de guerra',
+  },
+  [6327] = {
+    'Grifonero de guerra de la Alianza',
+    'Maestro de grifoneros de guerra',
+  },
+  [6328] = {
+    'Dannie Efervescentix',
+    'Instructor de demonios',
+  },
+  [6329] = {
+    'Saqueador irradiado',
+    nil,
+  },
+  [6346] = {
+    'Caballo esquelético',
+    nil,
+  },
+  [6347] = {
+    'Descarnador marino joven',
+    nil,
+  },
+  [6348] = {
+    'Descarnador marino',
+    nil,
+  },
+  [6349] = {
+    'Gran descarnador marino',
+    nil,
+  },
+  [6350] = {
+    'Zarpador Makrinni',
+    nil,
+  },
+  [6351] = {
+    'Oráculo de la Bahía Tormentosa',
+    nil,
+  },
+  [6352] = {
+    'Rondador Corazacoral',
+    nil,
+  },
+  [6366] = {
+    'Esclavo mental de Kurzen',
+    nil,
+  },
+  [6367] = {
+    nil,
+    'Loca de los gatos',
+  },
+  [6368] = {
+    'Gato',
+    nil,
+  },
+  [6369] = {
+    'Tortuga Corazacoral',
+    nil,
+  },
+  [6370] = {
+    'Escarbador Makrinni',
+    nil,
+  },
+  [6371] = {
+    'Guerrero de la Bahía Tormentosa',
+    nil,
+  },
+  [6372] = {
+    'Quebrador Makrinni',
+    nil,
+  },
+  [6373] = {
+    nil,
+    'Instructor de demonios',
+  },
+  [6374] = {
+    'Cilina Negrozón',
+    'Instructor de demonios',
+  },
+  [6375] = {
+    'Hipogrifo Tronatesta',
+    nil,
+  },
+  [6376] = {
+    'Wren Fonteoscura',
+    'Instructor de demonios',
+  },
+  [6377] = {
+    'Alacervo Tronatesta',
+    nil,
+  },
+  [6378] = {
+    'Asaltacielo Tronatesta',
+    nil,
+  },
+  [6379] = {
+    'Patriarca Tronatesta',
+    nil,
+  },
+  [6380] = {
+    'Consorte Tronatesta',
+    nil,
+  },
+  [6382] = {
+    'Jubahl Buscador de cadáveres',
+    'Instructor de demonios',
+  },
+  [6386] = {
+    'Guarda de Zanzil',
+    nil,
+  },
+  [6387] = {
+    nil,
+    'Instructora de desuello',
+  },
+  [6388] = {
+    'Esqueleto Zanzil',
+    nil,
+  },
+  [6389] = {
+    'Guardia de la Muerte Podrig',
+    nil,
+  },
+  [6390] = {
+    'Ulag el Cuchilla',
+    nil,
+  },
+  [6391] = {
+    'Guerrero resistente',
+    nil,
+  },
+  [6392] = {
+    'Médico resistente',
+    nil,
+  },
+  [6393] = {
+    'Henen Tótem de Ira',
+    nil,
+  },
+  [6394] = {
+    'Ruga Tótem de Ira',
+    nil,
+  },
+  [6395] = {
+    'Sargento Rutger',
+    'Sargento',
+  },
+  [6407] = {
+    'Técnico resistente',
+    nil,
+  },
+  [6410] = {
+    'Orm Pezuña Pétrea',
+    nil,
+  },
+  [6412] = {
+    'Esqueleto',
+    nil,
+  },
+  [6426] = {
+    'Muerto angustiado',
+    nil,
+  },
+  [6427] = {
+    'Fantasma mortificador',
+    nil,
+  },
+  [6486] = {
+    'Caballo esquelético negro',
+    nil,
+  },
+  [6487] = {
+    'Arcanista Doan',
+    nil,
+  },
+  [6488] = {
+    'Campeón caído',
+    nil,
+  },
+  [6489] = {
+    'Dorsacerado',
+    nil,
+  },
+  [6490] = {
+    'Azshir el Insomne',
+    nil,
+  },
+  [6491] = {
+    'Ángel de la Resurrección',
+    nil,
+  },
+  [6492] = {
+    'Engendro de falla',
+    nil,
+  },
+  [6493] = {
+    'Fantasma ilusorio',
+    nil,
+  },
+  [6495] = {
+    '[Deprecated for 4.x]Riznek',
+    'Vendedor de bebidas',
+  },
+  [6496] = {
+    '[Deprecated for 4.x]Bridatuer',
+    'Vendedor de helados',
+  },
+  [6498] = {
+    'Demosaurio',
+    nil,
+  },
+  [6499] = {
+    'Demosaurio Pielférrea',
+    nil,
+  },
+  [6500] = {
+    'Demosaurio Tirano',
+    nil,
+  },
+  [6502] = {
+    'Estegodón escamado',
+    nil,
+  },
+  [6503] = {
+    'Estegodón de púas',
+    nil,
+  },
+  [6504] = {
+    'Estegodón Silenciatruenos',
+    nil,
+  },
+  [6505] = {
+    'Ravasaurio',
+    nil,
+  },
+  [6506] = {
+    'Corredor ravasaurio',
+    nil,
+  },
+  [6507] = {
+    'Cazador ravasaurio',
+    nil,
+  },
+  [6508] = {
+    'Ravasaurio Pellejo Venenoso',
+    nil,
+  },
+  [6509] = {
+    'Azotador Sangrepétalo',
+    nil,
+  },
+  [6510] = {
+    'Despellejador Sangrepétalo',
+    nil,
+  },
+  [6511] = {
+    'Trillador Sangrepétalo',
+    nil,
+  },
+  [6512] = {
+    'Trampero Sangrepétalo',
+    nil,
+  },
+  [6513] = {
+    'Vapuleador de Un\'Goro',
+    nil,
+  },
+  [6514] = {
+    'Gorila de Un\'Goro',
+    nil,
+  },
+  [6516] = {
+    'Tronador de Un\'Goro',
+    nil,
+  },
+  [6517] = {
+    'Bestia de alquitrán',
+    nil,
+  },
+  [6518] = {
+    'Rondador de alquitrán',
+    nil,
+  },
+  [6519] = {
+    'Señor de alquitrán',
+    nil,
+  },
+  [6520] = {
+    'Elemental agostador',
+    nil,
+  },
+  [6521] = {
+    'Llamarada viviente',
+    nil,
+  },
+  [6523] = {
+    'Fusilero Hierro Negro',
+    nil,
+  },
+  [6527] = {
+    'Trepador de alquitrán',
+    nil,
+  },
+  [6547] = {
+    'Víctima doliente',
+    nil,
+  },
+  [6548] = {
+    '[Deprecated for 4.x]Magus Tirth',
+    nil,
+  },
+  [6549] = {
+    'Demonio del orbe',
+    nil,
+  },
+  [6550] = {
+    'Oleada de maná',
+    nil,
+  },
+  [6551] = {
+    'Avispa Gorishi',
+    nil,
+  },
+  [6552] = {
+    'Trabajador Gorishi',
+    nil,
+  },
+  [6553] = {
+    'Atracador Gorishi',
+    nil,
+  },
+  [6554] = {
+    'Aguijonero Gorishi',
+    nil,
+  },
+  [6555] = {
+    'Tunelador Gorishi',
+    nil,
+  },
+  [6556] = {
+    'Moco muculento',
+    nil,
+  },
+  [6557] = {
+    'Moco primigenio',
+    nil,
+  },
+  [6559] = {
+    'Moco glutinoso',
+    nil,
+  },
+  [6560] = {
+    'Guardián de piedra',
+    nil,
+  },
+  [6561] = {
+    'Celador de piedra',
+    nil,
+  },
+  [6567] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [6568] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [6571] = {
+    'Forma felina (elfo de la noche druida)',
+    nil,
+  },
+  [6572] = {
+    'Forma felina (tauren druida)',
+    nil,
+  },
+  [6573] = {
+    'Forma de viaje (Druida)',
+    nil,
+  },
+  [6574] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [6575] = {
+    'Practicante Escarlata',
+    nil,
+  },
+  [6576] = {
+    '[Deprecated for 4.x]Brienna Brillastrella',
+    'Suministros de sastrería',
+  },
+  [6577] = {
+    'Bingles Pimpampum',
+    nil,
+  },
+  [6578] = {
+    'Campesino (bosque)',
+    nil,
+  },
+  [6579] = {
+    'Shoni la Shilenshiosha',
+    nil,
+  },
+  [6581] = {
+    'Matriarca ravasaurio',
+    nil,
+  },
+  [6582] = {
+    'Madrezarpa Zavas',
+    nil,
+  },
+  [6584] = {
+    'Rey Mosh',
+    nil,
+  },
+  [6586] = {
+    'Rokar Filosombra',
+    nil,
+  },
+  [6606] = {
+    'Sobrestante Glibby',
+    nil,
+  },
+  [6626] = {
+    '[Deprecated for 4.x]"Desplumado" Johnson',
+    nil,
+  },
+  [6646] = {
+    'Monnos el Viejo',
+    nil,
+  },
+  [6647] = {
+    'Magistrix Yelmalcón',
+    nil,
+  },
+  [6650] = {
+    'General Colmiterror',
+    nil,
+  },
+  [6651] = {
+    'Guardián Gruñefuria',
+    nil,
+  },
+  [6652] = {
+    'Maestro Pavoria',
+    nil,
+  },
+  [6653] = {
+    'Sapo gigante',
+    nil,
+  },
+  [6666] = {
+    '[Deprecated for 4.x]"Desplumado" Forma humana de Johnson',
+    nil,
+  },
+  [6668] = {
+    'Lord Cyrik Forjanegra',
+    nil,
+  },
+  [6669] = {
+    'El Trillomajareitor 4100',
+    'El contramaestre',
+  },
+  [6670] = {
+    'Ebanista de los Páramos de Poniente',
+    nil,
+  },
+  [6706] = {
+    'Baritanas Rioceleste',
+    'Maestro de hipogrifos',
+  },
+  [6707] = {
+    nil,
+    'Gran maestro pícaro',
+  },
+  [6726] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [6727] = {
+    'Tabernera Brianna',
+    'Tabernero',
+  },
+  [6730] = {
+    '[Deprecated for 4.x]Jinky Arreglatodo',
+    'Suministros de ingeniería',
+  },
+  [6731] = {
+    'Harlown Tejeoscuro',
+    'Suministros de peletería',
+  },
+  [6733] = {
+    'Partecaras Grutacanto',
+    nil,
+  },
+  [6734] = {
+    'Tabernero Hogartufa',
+    'Tabernero',
+  },
+  [6735] = {
+    'Tabernera Saelienne',
+    'Tabernero',
+  },
+  [6736] = {
+    'Tabernero Keldamyr',
+    'Tabernero',
+  },
+  [6737] = {
+    'Tabernera Shaussiy',
+    'Tabernero',
+  },
+  [6738] = {
+    'Tabernera Kimlya',
+    'Tabernero',
+  },
+  [6739] = {
+    'Tabernero Bates',
+    'Tabernero',
+  },
+  [6740] = {
+    'Tabernera Allison',
+    'Tabernero',
+  },
+  [6741] = {
+    'Tabernero Norman',
+    'Tabernero',
+  },
+  [6746] = {
+    'Tabernera Pala',
+    'Tabernero',
+  },
+  [6747] = {
+    'Tabernero Kauth',
+    'Tabernero',
+  },
+  [6748] = {
+    'Espíritu de agua',
+    nil,
+  },
+  [6749] = {
+    nil,
+    'Maestra de establos',
+  },
+  [6766] = {
+    'Guardia de Ravenholdt',
+    'Liga de asesinos',
+  },
+  [6767] = {
+    nil,
+    'Gran maestra de la Liga de los Asesinos',
+  },
+  [6768] = {
+    nil,
+    'Señor de la Liga de los Asesinos',
+  },
+  [6769] = {
+    '[UNUSED] Halconero de Ravenholdt',
+    'Liga de asesinos',
+  },
+  [6770] = {
+    '[UNUSED] Maestro de canes de Ravenholdt',
+    'Liga de asesinos',
+  },
+  [6771] = {
+    'Asesino de Ravenholdt',
+    'Liga de asesinos',
+  },
+  [6772] = {
+    'Can de ataque',
+    nil,
+  },
+  [6773] = {
+    'Halcón umbrío',
+    nil,
+  },
+  [6774] = {
+    'Falkhaan Isenzancas',
+    nil,
+  },
+  [6775] = {
+    'Antur Barbecho',
+    nil,
+  },
+  [6776] = {
+    'Magrin Crin de Río',
+    nil,
+  },
+  [6777] = {
+    'Zan Chafadento',
+    'Ingeniero especialista',
+  },
+  [6778] = {
+    'Melika Isenzancas',
+    'Ayudante de la tabernera',
+  },
+  [6779] = {
+    'Borrón Truenedera',
+    'Suministros de venenos',
+  },
+  [6782] = {
+    'Manit Piñomuelle',
+    nil,
+  },
+  [6787] = {
+    'Yelnagi Brazonegro',
+    nil,
+  },
+  [6788] = {
+    'Madre del cubil',
+    nil,
+  },
+  [6789] = {
+    'Cachorro cardo',
+    nil,
+  },
+  [6790] = {
+    'Tabernera Trelayne',
+    'Tabernero',
+  },
+  [6791] = {
+    'Tabernero Wiley',
+    'Tabernero',
+  },
+  [6806] = {
+    'Tannok Martilloescarcha',
+    'Ayudante del tabernero',
+  },
+  [6807] = {
+    'Tabernero Skindle',
+    'Tabernero',
+  },
+  [6827] = {
+    'Cangrejo de playa',
+    nil,
+  },
+  [6846] = {
+    'Maestro de embarcadero',
+    nil,
+  },
+  [6866] = {
+    'Guardaespaldas',
+    nil,
+  },
+  [6867] = {
+    'Sabueso',
+    nil,
+  },
+  [6868] = {
+    'Jarkal Musgofusión',
+    nil,
+  },
+  [6907] = {
+    'Eric "el Veloz"',
+    nil,
+  },
+  [6909] = {
+    'Sethir el Ancestro',
+    nil,
+  },
+  [6911] = {
+    'Esbirro de Sethir',
+    nil,
+  },
+  [6912] = {
+    'Restos de un paladín',
+    nil,
+  },
+  [6913] = {
+    'Caminafallas Perdido',
+    nil,
+  },
+  [6927] = {
+    'Trabajador de embarcadero',
+    nil,
+  },
+  [6928] = {
+    'Tabernero Grosk',
+    'Tabernero',
+  },
+  [6929] = {
+    'Tabernera Gryshka',
+    'Tabernero',
+  },
+  [6930] = {
+    'Tabernero Karkul',
+    'Tabernero',
+  },
+  [6931] = {
+    'Reaparición Test enemigo',
+    nil,
+  },
+  [6932] = {
+    'Espíritu del pantano',
+    nil,
+  },
+  [6946] = {
+    'Renzik "Chafarote"',
+    'Operativo del IV:7',
+  },
+  [6986] = {
+    nil,
+    'Rescates Droffers e Hijos',
+  },
+  [6987] = {
+    nil,
+    'Rescates Droffers e Hijos',
+  },
+  [7006] = {
+    'Asesino Roca Negra',
+    nil,
+  },
+  [7008] = {
+    'Atracador Roca Negra',
+    nil,
+  },
+  [7009] = {
+    nil,
+    'La Mano del Caos',
+  },
+  [7010] = {
+    'Zilzibin Tambor Sabio',
+    nil,
+  },
+  [7011] = {
+    'Machacapiedras terráneo',
+    nil,
+  },
+  [7012] = {
+    'Escultor terráneo',
+    nil,
+  },
+  [7013] = {
+    'Guardia Roca Negra',
+    nil,
+  },
+  [7014] = {
+    'Comandante Kartak Profanenanos',
+    nil,
+  },
+  [7015] = {
+    'Flagglemurk el Cruel',
+    nil,
+  },
+  [7017] = {
+    'Lord Sesgapecados',
+    nil,
+  },
+  [7022] = {
+    'Escórpido lativenenoso',
+    nil,
+  },
+  [7023] = {
+    'Centinela obsidiana',
+    nil,
+  },
+  [7024] = {
+    'Agente Kearnen',
+    nil,
+  },
+  [7025] = {
+    'Soldado Roca Negra',
+    nil,
+  },
+  [7026] = {
+    'Hechicero Roca Negra',
+    nil,
+  },
+  [7027] = {
+    'Destripador Roca Negra',
+    nil,
+  },
+  [7028] = {
+    'Brujo Roca Negra',
+    nil,
+  },
+  [7029] = {
+    'Maestro de batalla Roca Negra',
+    nil,
+  },
+  [7030] = {
+    'Geólogo de Forjatiniebla',
+    nil,
+  },
+  [7031] = {
+    'Elemental obsidiana',
+    nil,
+  },
+  [7032] = {
+    'Elemental obsidiano superior',
+    nil,
+  },
+  [7033] = {
+    'Ogro Pirontraña',
+    nil,
+  },
+  [7034] = {
+    'Ogro mago Pirontraña',
+    nil,
+  },
+  [7035] = {
+    'Tosco Pirontraña',
+    nil,
+  },
+  [7036] = {
+    'Espía Thaurissan',
+    nil,
+  },
+  [7037] = {
+    'Caminafuego Thaurissan',
+    nil,
+  },
+  [7038] = {
+    'Agente Thaurissan',
+    nil,
+  },
+  [7039] = {
+    'Atracador de guerra',
+    nil,
+  },
+  [7040] = {
+    'Dragauro negro',
+    nil,
+  },
+  [7041] = {
+    'Verminte negro',
+    nil,
+  },
+  [7042] = {
+    'Dragauro Flamaescama',
+    nil,
+  },
+  [7043] = {
+    'Verminte Flamaescama',
+    nil,
+  },
+  [7044] = {
+    'Draco negro',
+    nil,
+  },
+  [7045] = {
+    'Draco hirviente',
+    nil,
+  },
+  [7046] = {
+    'Draco llamascama',
+    nil,
+  },
+  [7047] = {
+    'Estirpe negra',
+    nil,
+  },
+  [7048] = {
+    'Estirpe hirviente',
+    nil,
+  },
+  [7049] = {
+    'Estirpe Flamaescama',
+    nil,
+  },
+  [7050] = {
+    'Zángano Defias',
+    nil,
+  },
+  [7051] = {
+    'Zángano Defias deforme',
+    nil,
+  },
+  [7052] = {
+    'Guardia de torre Defias',
+    nil,
+  },
+  [7053] = {
+    'Klaven Mortoalerta',
+    nil,
+  },
+  [7055] = {
+    'Huargo Roca Negra',
+    nil,
+  },
+  [7056] = {
+    'Avizor de torre Defias',
+    nil,
+  },
+  [7057] = {
+    'Maestro de excavación Palatiro',
+    nil,
+  },
+  [7067] = {
+    'Zángano de Ventura y Cía.',
+    nil,
+  },
+  [7068] = {
+    'Acólito condenado',
+    nil,
+  },
+  [7069] = {
+    'Monje condenado',
+    nil,
+  },
+  [7070] = {
+    'Clérigo condenado',
+    nil,
+  },
+  [7071] = {
+    'Paladín maldito',
+    nil,
+  },
+  [7072] = {
+    'Justicar maldito',
+    nil,
+  },
+  [7073] = {
+    'Arados el Maldito',
+    nil,
+  },
+  [7074] = {
+    'Juez Thelgram',
+    nil,
+  },
+  [7075] = {
+    'Mago en pena',
+    nil,
+  },
+  [7076] = {
+    'Guardián terráneo',
+    nil,
+  },
+  [7077] = {
+    'Formajol terráneo',
+    nil,
+  },
+  [7078] = {
+    'Escórpido de risco',
+    nil,
+  },
+  [7079] = {
+    'Radiactivo viscoso',
+    nil,
+  },
+  [7086] = {
+    'Moco maldito',
+    nil,
+  },
+  [7087] = {
+    nil,
+    'Instructora de desuello',
+  },
+  [7088] = {
+    nil,
+    'Instructora de desuello',
+  },
+  [7089] = {
+    nil,
+    'Instructora de desuello',
+  },
+  [7091] = {
+    'Emboscador de Forjatiniebla',
+    nil,
+  },
+  [7092] = {
+    'Moco corrupto',
+    nil,
+  },
+  [7093] = {
+    'Moco malvado',
+    nil,
+  },
+  [7094] = {
+    'Venado enloquecido',
+    nil,
+  },
+  [7095] = {
+    'Venado enajenado',
+    nil,
+  },
+  [7096] = {
+    'Trotador corrupto',
+    nil,
+  },
+  [7097] = {
+    'Lechuza Picoférreo',
+    nil,
+  },
+  [7098] = {
+    'Estridador Picoférreo',
+    nil,
+  },
+  [7099] = {
+    'Cazador Picoférreo',
+    nil,
+  },
+  [7100] = {
+    'Arrancamusgo Alabeo',
+    nil,
+  },
+  [7101] = {
+    'Machacador Alabeo',
+    nil,
+  },
+  [7105] = {
+    'Sátiro Fuego de Jade',
+    nil,
+  },
+  [7106] = {
+    'Pícaro Fuego de Jade',
+    nil,
+  },
+  [7107] = {
+    'Tramposo Fuego de Jade',
+    nil,
+  },
+  [7108] = {
+    'Traidor Fuego de Jade',
+    nil,
+  },
+  [7109] = {
+    'Jurapenas Fuego de Jade',
+    nil,
+  },
+  [7110] = {
+    'Acechasombras Fuego de Jade',
+    nil,
+  },
+  [7111] = {
+    'Clamainferno Fuego de Jade',
+    nil,
+  },
+  [7112] = {
+    'Cultor Jaedenar',
+    nil,
+  },
+  [7113] = {
+    'Guardián Jaedenar',
+    nil,
+  },
+  [7114] = {
+    'Déspota Jaedenar',
+    nil,
+  },
+  [7115] = {
+    'Adepto Jaedenar',
+    nil,
+  },
+  [7116] = {
+    'Tejetinieblas Jaedenar',
+    nil,
+  },
+  [7117] = {
+    'Instigador Jaedenar',
+    nil,
+  },
+  [7118] = {
+    'Tejeoscuro Jaedenar',
+    nil,
+  },
+  [7119] = {
+    'Invocador Jaedenar',
+    nil,
+  },
+  [7120] = {
+    'Brujo Jaedenar',
+    nil,
+  },
+  [7121] = {
+    'Archibrujo Jaedenar',
+    nil,
+  },
+  [7122] = {
+    'Campeón del Consejo de la Sombra',
+    nil,
+  },
+  [7123] = {
+    'Maestro del Consejo de la Sombra',
+    nil,
+  },
+  [7124] = {
+    'Alto señor del Consejo de la Sombra',
+    nil,
+  },
+  [7125] = {
+    'Can Jaedenar',
+    nil,
+  },
+  [7126] = {
+    'Cazador Jaedenar',
+    nil,
+  },
+  [7127] = {
+    'Acechador Jaedenar',
+    nil,
+  },
+  [7128] = {
+    'Manaparásito Jaedenar',
+    nil,
+  },
+  [7129] = {
+    'Abisario esclavizado',
+    nil,
+  },
+  [7130] = {
+    'Sirviente abisario',
+    nil,
+  },
+  [7131] = {
+    'Guardián abisario',
+    nil,
+  },
+  [7132] = {
+    'Horror tóxico',
+    nil,
+  },
+  [7133] = {
+    'Horror nocivo',
+    nil,
+  },
+  [7134] = {
+    'Despellejador venenoso',
+    nil,
+  },
+  [7135] = {
+    'Guardaespaldas Infernal',
+    nil,
+  },
+  [7136] = {
+    'Avizor infernal',
+    nil,
+  },
+  [7138] = {
+    'Errante Troncoferro',
+    nil,
+  },
+  [7139] = {
+    'Vapuleador Troncoferro',
+    nil,
+  },
+  [7143] = {
+    'Antárbol putrefacto',
+    nil,
+  },
+  [7144] = {
+    'Antárbol marchito',
+    nil,
+  },
+  [7146] = {
+    'Protector antárbol',
+    nil,
+  },
+  [7149] = {
+    'Protector marchito',
+    nil,
+  },
+  [7150] = {
+    'Guardián marchito',
+    nil,
+  },
+  [7151] = {
+    'Vigía marchito',
+    nil,
+  },
+  [7152] = {
+    'Caminabosques marchito',
+    nil,
+  },
+  [7153] = {
+    'Guerrero Muertobosque',
+    nil,
+  },
+  [7154] = {
+    'Jardinero Muertobosque',
+    nil,
+  },
+  [7155] = {
+    'Abrecaminos Muertobosque',
+    nil,
+  },
+  [7156] = {
+    'Vigía del cubil Muertobosque',
+    nil,
+  },
+  [7157] = {
+    'Vengador Muertobosque',
+    nil,
+  },
+  [7158] = {
+    'Chamán Muertobosque',
+    nil,
+  },
+  [7161] = {
+    'Desdio el Desdichado',
+    nil,
+  },
+  [7166] = {
+    'Aparato Gizmotrónico de Wrenix',
+    nil,
+  },
+  [7170] = {
+    nil,
+    'Corredor de la Horda',
+  },
+  [7172] = {
+    'Tradicionalista de Norgannon',
+    nil,
+  },
+  [7173] = {
+    'Instructora mundial de forja de armas',
+    'Instructor de herrería',
+  },
+  [7174] = {
+    'Instructora mundial de forja de armaduras',
+    'Instructor de herrería',
+  },
+  [7175] = {
+    'Emboscador Grutacanto',
+    nil,
+  },
+  [7206] = {
+    'Vigilante de piedra anciano',
+    nil,
+  },
+  [7209] = {
+    'Fragmento de obsidiana',
+    nil,
+  },
+  [7226] = {
+    'Tormenta de arena',
+    nil,
+  },
+  [7227] = {
+    'Dragauro cobaltino',
+    nil,
+  },
+  [7229] = {
+    'Sombre de Arantir',
+    nil,
+  },
+  [7230] = {
+    'Shayis Furiacerada',
+    'Instructora de herrería',
+  },
+  [7231] = {
+    'Kelgruk Hacha de Sangre',
+    'Instructor de herrería',
+  },
+  [7232] = {
+    'Borgus Mano de Acero',
+    'Instructor de herrería',
+  },
+  [7233] = {
+    'Capataz Fizzule',
+    nil,
+  },
+  [7234] = {
+    'Ferocitas el Comesueños',
+    nil,
+  },
+  [7235] = {
+    'Místico Tuercepinos',
+    nil,
+  },
+  [7246] = {
+    'Cazasombras Furiarena',
+    nil,
+  },
+  [7247] = {
+    'Comealmas Furiarena',
+    nil,
+  },
+  [7266] = {
+    'Brasal',
+    nil,
+  },
+  [7267] = {
+    'Jefe Ukorz Cabellarena',
+    nil,
+  },
+  [7268] = {
+    'Guardián Furiarena',
+    nil,
+  },
+  [7269] = {
+    'Escarabajo',
+    nil,
+  },
+  [7270] = {
+    'Zombi Furiarena',
+    nil,
+  },
+  [7271] = {
+    'Médico brujo Zum\'rah',
+    nil,
+  },
+  [7272] = {
+    'Theka el Mártir',
+    nil,
+  },
+  [7274] = {
+    'Verdugo Furiarena',
+    nil,
+  },
+  [7275] = {
+    'Sacerdote oscuro Sezz\'ziz',
+    nil,
+  },
+  [7276] = {
+    'Héroe muerto de Zul\'Farrak',
+    nil,
+  },
+  [7286] = {
+    'Zombi de Zul\'Farrak',
+    nil,
+  },
+  [7287] = {
+    'Supervisor Silixiz',
+    nil,
+  },
+  [7288] = {
+    'Gran supervisor Puzik Gallywix',
+    nil,
+  },
+  [7290] = {
+    'Tirador certero de Forjatiniebla',
+    nil,
+  },
+  [7291] = {
+    'Galgann Flamartillo',
+    nil,
+  },
+  [7292] = {
+    'Dinita Mantopétreo',
+    'Administradora de la cámara',
+  },
+  [7298] = {
+    'Demnul Montelejano',
+    nil,
+  },
+  [7307] = {
+    'Oteador de Ventura y Cía.',
+    nil,
+  },
+  [7308] = {
+    'Patrulla de Ventura y Cía.',
+    nil,
+  },
+  [7309] = {
+    'Custodio terráneo',
+    nil,
+  },
+  [7310] = {
+    'Zángano mutado de Ventura y Cía.',
+    nil,
+  },
+  [7311] = {
+    nil,
+    'Instructor de magos',
+  },
+  [7312] = {
+    nil,
+    'Instructor de magos',
+  },
+  [7313] = {
+    'Sacerdotisa A\'moora',
+    nil,
+  },
+  [7314] = {
+    'Test maestro de batalla',
+    'Maestro de batallas',
+  },
+  [7315] = {
+    'Darnath Rugefilo',
+    'Instructor de guerreros',
+  },
+  [7316] = {
+    'Hermana Aquinne',
+    'Sacerdotisa novicia',
+  },
+  [7317] = {
+    'Oben Garrafuria',
+    nil,
+  },
+  [7318] = {
+    'Garrafuria',
+    nil,
+  },
+  [7320] = {
+    'Aplastador Grutacanto',
+    nil,
+  },
+  [7321] = {
+    'Tejedor de fuego Grutacanto',
+    nil,
+  },
+  [7322] = {
+    'Sable de la noche negro',
+    nil,
+  },
+  [7323] = {
+    nil,
+    'El Lobo',
+  },
+  [7324] = {
+    nil,
+    'Arquitecta paisajista',
+  },
+  [7325] = {
+    'Maestro Kang',
+    nil,
+  },
+  [7327] = {
+    'Guerrero marchito',
+    nil,
+  },
+  [7328] = {
+    'Atracador marchito',
+    nil,
+  },
+  [7329] = {
+    'Jabaguardia marchito',
+    nil,
+  },
+  [7332] = {
+    'Cuerolanza marchito',
+    nil,
+  },
+  [7333] = {
+    'Jabaguerrero marchito',
+    nil,
+  },
+  [7334] = {
+    'Horror jabaguerrero',
+    nil,
+  },
+  [7335] = {
+    'Geomántica Caramuerte',
+    nil,
+  },
+  [7337] = {
+    'Nigromante Caramuerte',
+    nil,
+  },
+  [7340] = {
+    'Taumaturgo umbrío esquelético',
+    nil,
+  },
+  [7341] = {
+    'Tejescarcha esquelético',
+    nil,
+  },
+  [7342] = {
+    'Invocador esquelético',
+    nil,
+  },
+  [7343] = {
+    'Esqueleto Astillóseo',
+    nil,
+  },
+  [7344] = {
+    'Guerrero Astillóseo',
+    nil,
+  },
+  [7345] = {
+    'Capitán Astillóseo',
+    nil,
+  },
+  [7346] = {
+    'Centurión Astillóseo',
+    nil,
+  },
+  [7347] = {
+    'Necrófago Deshuesador',
+    nil,
+  },
+  [7348] = {
+    'Necrófago Comespinas',
+    nil,
+  },
+  [7349] = {
+    'Maligno de tumbas',
+    nil,
+  },
+  [7351] = {
+    'Atracador de tumbas',
+    nil,
+  },
+  [7352] = {
+    'Alma gélida',
+    nil,
+  },
+  [7353] = {
+    'Espíritu helado',
+    nil,
+  },
+  [7354] = {
+    'Morrandrajos',
+    nil,
+  },
+  [7356] = {
+    'Faucepeste el Podrido',
+    nil,
+  },
+  [7357] = {
+    'Mordresh Ojo de Fuego',
+    nil,
+  },
+  [7358] = {
+    'Amnennar el Gélido',
+    nil,
+  },
+  [7360] = {
+    'Soldado de Dun Garok',
+    nil,
+  },
+  [7363] = {
+    'Kum\'isha el Coleccionista',
+    nil,
+  },
+  [7364] = {
+    'Esfera draenetista perfecta',
+    nil,
+  },
+  [7365] = {
+    'Trozo draenetista perfecto',
+    nil,
+  },
+  [7366] = {
+    'zzOLDTótem Piel de piedra IV',
+    nil,
+  },
+  [7367] = {
+    'zzOLDTótem Piel de piedra V',
+    nil,
+  },
+  [7368] = {
+    'zzOLDTótem Piel de piedra VI',
+    nil,
+  },
+  [7369] = {
+    'Tosco Vientomuerto',
+    nil,
+  },
+  [7370] = {
+    'Sombra inquieta',
+    nil,
+  },
+  [7371] = {
+    'Aplastador Vientomuerto',
+    nil,
+  },
+  [7372] = {
+    'Brujo Vientomuerto',
+    nil,
+  },
+  [7373] = {
+    'Déspota Vientomuerto',
+    nil,
+  },
+  [7374] = {
+    'Ánima vengativa',
+    nil,
+  },
+  [7375] = {
+    'Espíritu de la cólera',
+    nil,
+  },
+  [7376] = {
+    'Sombra de los cielos',
+    nil,
+  },
+  [7377] = {
+    'Devastador can maldito',
+    nil,
+  },
+  [7378] = {
+    'Mastín can maldito',
+    nil,
+  },
+  [7379] = {
+    'Ogro mago Vientomuerto',
+    nil,
+  },
+  [7386] = {
+    'Gatito blanco',
+    nil,
+  },
+  [7387] = {
+    'Guacamayo rojo',
+    nil,
+  },
+  [7388] = {
+    'Cacatúa',
+    nil,
+  },
+  [7391] = {
+    'Papagayo azul',
+    nil,
+  },
+  [7392] = {
+    'Gallina de pradera',
+    nil,
+  },
+  [7393] = {
+    'Roca blanca Plymouth',
+    nil,
+  },
+  [7394] = {
+    'Pollo de Ancona',
+    nil,
+  },
+  [7395] = {
+    'Cucaracha',
+    nil,
+  },
+  [7396] = {
+    'Rompepedras terráneo',
+    nil,
+  },
+  [7397] = {
+    'Tallapiedras terráneo',
+    nil,
+  },
+  [7398] = {
+    'zzOLDTótem Garra de piedra V',
+    nil,
+  },
+  [7399] = {
+    'zzOLDTótem Garra de piedra VI',
+    nil,
+  },
+  [7400] = {
+    'zzOLDTótem abrasador V',
+    nil,
+  },
+  [7401] = {
+    'Refugiado draenei',
+    nil,
+  },
+  [7402] = {
+    'zzOLDTótem abrasador VI',
+    nil,
+  },
+  [7403] = {
+    'zzOLDTótem Fuerza de la tierra IV',
+    nil,
+  },
+  [7404] = {
+    '[Deprecated for 4.x]Guardia de las llamas Galak',
+    nil,
+  },
+  [7405] = {
+    'Escórpido de risco',
+    nil,
+  },
+  [7406] = {
+    nil,
+    'Instructor de ingeniería gnómica',
+  },
+  [7407] = {
+    'Ingeniero jefe Pasaquillas',
+    'Compañía de aguas de Gadgetzan',
+  },
+  [7408] = {
+    'Grifoperador Llantalunket',
+    'Compañía de aguas de Gadgetzan',
+  },
+  [7409] = {
+    'Esfera draenetista vacilante',
+    nil,
+  },
+  [7410] = {
+    'Thelman Puñopizarra',
+    'Maestro de batalla del Valle de Alterac',
+  },
+  [7411] = {
+    'Espíritu de Sathrah',
+    nil,
+  },
+  [7412] = {
+    'zzOLDTótem de resistencia a la escarcha II',
+    nil,
+  },
+  [7413] = {
+    'zzOLDTótem de resistencia a la escarcha III',
+    nil,
+  },
+  [7414] = {
+    'zzOLDTótem Fuente de maná II',
+    nil,
+  },
+  [7415] = {
+    'zzOLDTótem Fuente de maná III',
+    nil,
+  },
+  [7416] = {
+    'zzOLDTótem Fuente de maná IV',
+    nil,
+  },
+  [7423] = {
+    'zzOLDTótem Lengua de Fuego III',
+    nil,
+  },
+  [7424] = {
+    'zzOLDTótem de resistencia al fuego II',
+    nil,
+  },
+  [7425] = {
+    'zzOLDTótem de resistencia al fuego III',
+    nil,
+  },
+  [7427] = {
+    'Taim Tótem de Ira',
+    'Maestro de batalla del Valle de Alterac',
+  },
+  [7428] = {
+    'Gigante Machacahielo',
+    nil,
+  },
+  [7429] = {
+    'Valedor Machacahielo',
+    nil,
+  },
+  [7430] = {
+    'Sable de hielo joven',
+    nil,
+  },
+  [7431] = {
+    'Sable de hielo',
+    nil,
+  },
+  [7432] = {
+    'Acechador sable de hielo',
+    nil,
+  },
+  [7433] = {
+    'Cazadora sable de hielo',
+    nil,
+  },
+  [7434] = {
+    'Vigía de la manada sable de hielo',
+    nil,
+  },
+  [7435] = {
+    'Verminte de cobalto',
+    nil,
+  },
+  [7436] = {
+    'Horrocrusto de cobalto',
+    nil,
+  },
+  [7437] = {
+    'Tejemagia de cobalto',
+    nil,
+  },
+  [7438] = {
+    'Ursa Nevada',
+    nil,
+  },
+  [7439] = {
+    'Chamán Nevada',
+    nil,
+  },
+  [7440] = {
+    'Vigía del cubil Nevada',
+    nil,
+  },
+  [7441] = {
+    'Totémico Nevada',
+    nil,
+  },
+  [7442] = {
+    'Abrecaminos Nevada',
+    nil,
+  },
+  [7443] = {
+    'Aplastador Dentoesquirla',
+    nil,
+  },
+  [7444] = {
+    'Oso Dentoesquirla',
+    nil,
+  },
+  [7445] = {
+    'Dentoesquirla anciano',
+    nil,
+  },
+  [7446] = {
+    'Dentoesquirla rabioso',
+    nil,
+  },
+  [7447] = {
+    'Volantón Viento Gélido',
+    nil,
+  },
+  [7448] = {
+    'Quimera Viento Gélido',
+    nil,
+  },
+  [7449] = {
+    'Devastador Viento Gélido',
+    nil,
+  },
+  [7450] = {
+    'Lechubestia pulgosa',
+    nil,
+  },
+  [7451] = {
+    'Lechubestia enfurecida',
+    nil,
+  },
+  [7452] = {
+    'Lechubestia enloquecida',
+    nil,
+  },
+  [7453] = {
+    'Lechubestia lunadón',
+    nil,
+  },
+  [7454] = {
+    'Lechubestia rabiosa',
+    nil,
+  },
+  [7455] = {
+    'Lechuza de Cuna del Invierno',
+    nil,
+  },
+  [7456] = {
+    'Estridador de Cuna del Invierno',
+    nil,
+  },
+  [7457] = {
+    'Cardo Nevado huido',
+    nil,
+  },
+  [7458] = {
+    'Yeti Cardo Nevado',
+    nil,
+  },
+  [7459] = {
+    'Matriarca Cardo Nevado',
+    nil,
+  },
+  [7460] = {
+    'Patriarca Cardo Nevado',
+    nil,
+  },
+  [7461] = {
+    'Iniciado Hederine',
+    nil,
+  },
+  [7462] = {
+    'Acechamaná Hederine',
+    nil,
+  },
+  [7463] = {
+    'Destripador Hederine',
+    nil,
+  },
+  [7464] = {
+    'zzOLDTótem de magma II',
+    nil,
+  },
+  [7465] = {
+    'zzOLDTótem de magma III',
+    nil,
+  },
+  [7466] = {
+    'zzOLDTótem de magma IV',
+    nil,
+  },
+  [7467] = {
+    'Tótem de resistencia a la Naturaleza',
+    nil,
+  },
+  [7468] = {
+    'zzOLDTótem de resistencia a la Naturaleza II',
+    nil,
+  },
+  [7469] = {
+    'zzOLDTótem de resistencia a la Naturaleza III',
+    nil,
+  },
+  [7483] = {
+    'zzOLDTótem Viento furioso II',
+    nil,
+  },
+  [7484] = {
+    'zzOLDTótem Viento furioso III',
+    nil,
+  },
+  [7485] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [7486] = {
+    'zzOLDTótem Gracia del Aire',
+    nil,
+  },
+  [7487] = {
+    'zzOLDTótem Gracia del Aire II',
+    nil,
+  },
+  [7488] = {
+    nil,
+    'Instructor de magos',
+  },
+  [7489] = {
+    'Guardia de la Muerte del Bosque de Argénteos',
+    nil,
+  },
+  [7503] = {
+    'Mal de ojo (hombre)',
+    nil,
+  },
+  [7504] = {
+    'Mal de ojo (mujer)',
+    nil,
+  },
+  [7505] = {
+    'Mago sangriento Drazial',
+    nil,
+  },
+  [7506] = {
+    'Maga sangrienta Lynnore',
+    nil,
+  },
+  [7507] = {
+    'Culebra marrón',
+    nil,
+  },
+  [7508] = {
+    'Culebra reina negra',
+    nil,
+  },
+  [7509] = {
+    'Culebra carmesí',
+    nil,
+  },
+  [7523] = {
+    'Altonato sufrido',
+    nil,
+  },
+  [7524] = {
+    'Altonato angustiada',
+    nil,
+  },
+  [7525] = {
+    'Instructora mundial de peletería dragontina (NO LONGER IMPLEMENTED)',
+    'Instructor de peletería',
+  },
+  [7526] = {
+    'Instructora mundial de peletería elemental',
+    'Instructora de peletería',
+  },
+  [7527] = {
+    'Mina terrestre goblin',
+    nil,
+  },
+  [7528] = {
+    'Instructora mundial de peletería tribal (NO LONGER WORKING)',
+    'Instructora de peletería',
+  },
+  [7543] = {
+    'Vástago oscuro',
+    nil,
+  },
+  [7544] = {
+    'Vástago carmesí',
+    nil,
+  },
+  [7545] = {
+    'Vástago esmeralda',
+    nil,
+  },
+  [7546] = {
+    'Vástago bronce',
+    nil,
+  },
+  [7547] = {
+    'Vástago azur',
+    nil,
+  },
+  [7549] = {
+    'Rana de árbol',
+    nil,
+  },
+  [7550] = {
+    'Rana de bosque',
+    nil,
+  },
+  [7551] = {
+    'Rana flecha',
+    nil,
+  },
+  [7552] = {
+    'Rana de la isla',
+    nil,
+  },
+  [7553] = {
+    'Búho común',
+    nil,
+  },
+  [7554] = {
+    'Lechuza de las nieves',
+    nil,
+  },
+  [7555] = {
+    'Lechuza gavilana',
+    nil,
+  },
+  [7556] = {
+    'Búho real',
+    nil,
+  },
+  [7560] = {
+    'Conejo Pataneve',
+    nil,
+  },
+  [7561] = {
+    'Serpiente albina',
+    nil,
+  },
+  [7562] = {
+    'Culebra marrón',
+    nil,
+  },
+  [7563] = {
+    'Culebra corredora',
+    nil,
+  },
+  [7564] = {
+    'Marin Tragonublo',
+    nil,
+  },
+  [7565] = {
+    'Culebra reina negra',
+    nil,
+  },
+  [7566] = {
+    'Culebra escarlata',
+    nil,
+  },
+  [7567] = {
+    'Culebra carmesí',
+    nil,
+  },
+  [7568] = {
+    'Serpiente rayada',
+    nil,
+  },
+  [7569] = {
+    'Culebra de agua verde',
+    nil,
+  },
+  [7570] = {
+    'Fuego fatuo élfico',
+    nil,
+  },
+  [7572] = {
+    'Héroe caído de la Horda',
+    nil,
+  },
+  [7583] = {
+    'Roxio',
+    nil,
+  },
+  [7584] = {
+    'Caminabosques deambulante',
+    nil,
+  },
+  [7603] = {
+    'Asistente leproso',
+    nil,
+  },
+  [7604] = {
+    'Sargento Bly',
+    nil,
+  },
+  [7605] = {
+    'Cuervo',
+    nil,
+  },
+  [7606] = {
+    'Oro Bocojo',
+    nil,
+  },
+  [7607] = {
+    'Weegli Plomofundido',
+    nil,
+  },
+  [7608] = {
+    'Murta Tripuriosa',
+    nil,
+  },
+  [7623] = {
+    'Comandante de envíos Ruag',
+    nil,
+  },
+  [7663] = {
+    'Guerrera de Vallefresno',
+    nil,
+  },
+  [7664] = {
+    'Razelikh el Rapiñador',
+    nil,
+  },
+  [7665] = {
+    'Grol el Destructor',
+    nil,
+  },
+  [7666] = {
+    'Archimago Allistarj',
+    nil,
+  },
+  [7668] = {
+    'Sirviente de Razelikh',
+    nil,
+  },
+  [7669] = {
+    'Sirviente de Grol',
+    nil,
+  },
+  [7670] = {
+    'Sirviente de Allistarj',
+    nil,
+  },
+  [7671] = {
+    'Sirviente de Sevine',
+    nil,
+  },
+  [7683] = {
+    nil,
+    'Cachivaches Luna Azul',
+  },
+  [7684] = {
+    'Leopardo',
+    nil,
+  },
+  [7686] = {
+    'Tigre de bengala',
+    nil,
+  },
+  [7689] = {
+    'Sable de la noche moteado',
+    nil,
+  },
+  [7703] = {
+    'Raptor obsidiana',
+    nil,
+  },
+  [7704] = {
+    'Raptor rojo jaspeado',
+    nil,
+  },
+  [7706] = {
+    'Raptor de marfil',
+    nil,
+  },
+  [7709] = {
+    'Zancaalta de montar (marrón)',
+    nil,
+  },
+  [7710] = {
+    'Zancaalta de montar (gris)',
+    nil,
+  },
+  [7711] = {
+    'Zancaalta de montar (rosa)',
+    nil,
+  },
+  [7712] = {
+    'Zancaalta de montar (morado)',
+    nil,
+  },
+  [7713] = {
+    'Zancaalta de montar (turquesa)',
+    nil,
+  },
+  [7714] = {
+    'Byula',
+    'Tabernero',
+  },
+  [7724] = {
+    'Perito jefe Picoflojo',
+    'Compañía de aguas de Gadgetzan',
+  },
+  [7725] = {
+    'Asaltante Tótem Siniestro',
+    nil,
+  },
+  [7726] = {
+    'Naturalista Tótem Siniestro',
+    nil,
+  },
+  [7727] = {
+    'Chamán Tótem Siniestro',
+    nil,
+  },
+  [7728] = {
+    'Kirith el Maldito',
+    nil,
+  },
+  [7729] = {
+    'Espíritu de Kirith',
+    nil,
+  },
+  [7730] = {
+    'Bruto del Espolón',
+    nil,
+  },
+  [7731] = {
+    'Tabernera Jayka',
+    'Tabernero',
+  },
+  [7732] = {
+    'Chinche engañosa',
+    nil,
+  },
+  [7733] = {
+    'Tabernero Fizzgrimble',
+    'Tabernero',
+  },
+  [7734] = {
+    nil,
+    'Guardián de Almas',
+  },
+  [7735] = {
+    'Vilnelar',
+    'Campeón de Razelikh',
+  },
+  [7736] = {
+    'Tabernera Shyria',
+    'Tabernero',
+  },
+  [7737] = {
+    'Tabernera Greul',
+    'Tabernero',
+  },
+  [7738] = {
+    'Sirviente ardiente',
+    nil,
+  },
+  [7740] = {
+    'Gracina Poderespíritu',
+    nil,
+  },
+  [7743] = {
+    'Instructora no-muerto mundial de equitación',
+    'Instructora de equitación no-muerto',
+  },
+  [7744] = {
+    'Tabernero Thulfram',
+    'Tabernero',
+  },
+  [7745] = {
+    'Instructora mundial de raptores de montar',
+    'Instructora de jinetes de raptor',
+  },
+  [7746] = {
+    'Instructora mundial de mecazancudos de montar',
+    'Instructora de mecazancudos',
+  },
+  [7747] = {
+    'Vendedora mundial de monturas',
+    'Intendente de monturas de guerra',
+  },
+  [7748] = {
+    'Vendedora mundial de caballos',
+    'Vendedora de caballos',
+  },
+  [7750] = {
+    'Cabo Thund Pezuña Quebrada',
+    nil,
+  },
+  [7763] = {
+    'Curgle Saltamanivela',
+    nil,
+  },
+  [7764] = {
+    'Troyas Brisaluna',
+    nil,
+  },
+  [7765] = {
+    'Muerdepiedras',
+    nil,
+  },
+  [7767] = {
+    'Manáfago Secacorteza',
+    nil,
+  },
+  [7768] = {
+    'Sangrador Secacorteza',
+    nil,
+  },
+  [7769] = {
+    'Parásito Hazzali',
+    nil,
+  },
+  [7770] = {
+    'Guiñón',
+    nil,
+  },
+  [7771] = {
+    'Marvon Buscarroblones',
+    nil,
+  },
+  [7772] = {
+    'Kalin Vuelavento',
+    nil,
+  },
+  [7773] = {
+    'Marli Corredeseos',
+    nil,
+  },
+  [7774] = {
+    'Shay Correhoja',
+    nil,
+  },
+  [7775] = {
+    'Gregan Tirabirras',
+    nil,
+  },
+  [7776] = {
+    'Talo Pezuñahendida',
+    nil,
+  },
+  [7778] = {
+    'Doran Alacerada',
+    nil,
+  },
+  [7779] = {
+    'Sacerdotisa Tyriona',
+    nil,
+  },
+  [7780] = {
+    nil,
+    'Trol Secacorteza',
+  },
+  [7784] = {
+    'Robot mensajero OOX-17/TN',
+    nil,
+  },
+  [7785] = {
+    'Guarda de Zum\'rah',
+    nil,
+  },
+  [7786] = {
+    'Esqueleto de Zum\'rah',
+    nil,
+  },
+  [7787] = {
+    'Esclavo Furiarena',
+    nil,
+  },
+  [7788] = {
+    'Bracero Furiarena',
+    nil,
+  },
+  [7789] = {
+    'Cretino Furiarena',
+    nil,
+  },
+  [7791] = {
+    'Theka el Mártir Cambiaforma',
+    nil,
+  },
+  [7792] = {
+    'Aturk el Yunque',
+    nil,
+  },
+  [7793] = {
+    'Buey',
+    'La Orden del mitril',
+  },
+  [7794] = {
+    nil,
+    'La Orden del mitril',
+  },
+  [7795] = {
+    'Hidromántica Velratha',
+    nil,
+  },
+  [7796] = {
+    'Nekrum Cometripas',
+    nil,
+  },
+  [7798] = {
+    'Hank el Martillo',
+    'La Orden del mitril',
+  },
+  [7799] = {
+    'Gimblespina',
+    'Banquera',
+  },
+  [7800] = {
+    'Mekigeniero Termochufe',
+    nil,
+  },
+  [7801] = {
+    'Gilveradin Cazasol',
+    nil,
+  },
+  [7802] = {
+    'Galvan el Antiguo',
+    'Artesano herrero de la Orden del mitril',
+  },
+  [7803] = {
+    'Perforadunas escórpido',
+    nil,
+  },
+  [7804] = {
+    'Trenton Mazaligera',
+    'La Orden del mitril',
+  },
+  [7805] = {
+    'Forajido Vagayermo',
+    nil,
+  },
+  [7806] = {
+    'Robot mensajero OOX-09/TI',
+    nil,
+  },
+  [7807] = {
+    'Robot mensajero OOX-22/FE',
+    nil,
+  },
+  [7808] = {
+    'Lechubestia merodeadora',
+    nil,
+  },
+  [7809] = {
+    'Emboscador Vilrama',
+    nil,
+  },
+  [7823] = {
+    'Bera Rocamartillo',
+    'Maestro de grifos',
+  },
+  [7824] = {
+    'Bulkrek Puñofuria',
+    'Maestra de jinetes del viento',
+  },
+  [7826] = {
+    'Embajador Ardalan',
+    nil,
+  },
+  [7843] = {
+    'Evacuado de Gnomeregan',
+    nil,
+  },
+  [7844] = {
+    'zzOLDTótem Nova de Fuego IV',
+    nil,
+  },
+  [7845] = {
+    'zzOLDTótem Nova de Fuego V',
+    nil,
+  },
+  [7846] = {
+    'Teremus el Devorador',
+    nil,
+  },
+  [7847] = {
+    'Califa Escorpijón',
+    nil,
+  },
+  [7848] = {
+    'Cicatriz Feral acechante',
+    nil,
+  },
+  [7849] = {
+    'Sistema móvil de alarma',
+    nil,
+  },
+  [7851] = {
+    'Élite de Nethergarde',
+    nil,
+  },
+  [7852] = {
+    nil,
+    'Suministros de peletería',
+  },
+  [7853] = {
+    nil,
+    'Ingeniero jefe',
+  },
+  [7854] = {
+    'Jangdor Zanco Veloz',
+    'Suministros de peletería',
+  },
+  [7855] = {
+    'Pirata de los Mares del Sur',
+    nil,
+  },
+  [7856] = {
+    'Filibustero de los Mares del Sur',
+    nil,
+  },
+  [7857] = {
+    'Portuario de los Mares del Sur',
+    nil,
+  },
+  [7858] = {
+    'Espadachín de los Mares del Sur',
+    nil,
+  },
+  [7863] = {
+    'Visión onírica',
+    nil,
+  },
+  [7864] = {
+    'Altonato persistente',
+    nil,
+  },
+  [7865] = {
+    'Avizor Martillo Salvaje',
+    nil,
+  },
+  [7866] = {
+    nil,
+    'Instructor de peletería',
+  },
+  [7867] = {
+    'Thorkaf Ojo de Dragón',
+    'Instructor de peletería',
+  },
+  [7868] = {
+    'Sarah Peletera',
+    'Instructora de peletería',
+  },
+  [7869] = {
+    'Brumm Pezuña Invernal',
+    'Instructora de peletería',
+  },
+  [7870] = {
+    'Caryssia Cazaluna',
+    'Instructora de peletería',
+  },
+  [7871] = {
+    nil,
+    'Instructora de peletería',
+  },
+  [7872] = {
+    'Cultor Caramuerte',
+    nil,
+  },
+  [7873] = {
+    'Guardia de batalla de Rajacieno',
+    nil,
+  },
+  [7874] = {
+    'Tejespina de Rajacieno',
+    nil,
+  },
+  [7875] = {
+    'Hadoken Zanco Veloz',
+    nil,
+  },
+  [7876] = {
+    nil,
+    'Suministros de ingeniería',
+  },
+  [7877] = {
+    'Latronicus Lanzaluna',
+    nil,
+  },
+  [7878] = {
+    'Vestia Lanzaluna',
+    nil,
+  },
+  [7879] = {
+    'Quintis Jonguja',
+    nil,
+  },
+  [7880] = {
+    'Ginro Mechogar',
+    nil,
+  },
+  [7882] = {
+    'Jefe de seguridad Pasaquillas',
+    'Agente de seguridad de la compañía de aguas',
+  },
+  [7883] = {
+    'Andre Barbafuego',
+    nil,
+  },
+  [7884] = {
+    'Fraggar Mantrueno',
+    nil,
+  },
+  [7885] = {
+    'Maestro de batalla Látigo de Ira',
+    nil,
+  },
+  [7886] = {
+    'Encantadora Látigo de Ira',
+    nil,
+  },
+  [7895] = {
+    'Embajador Sanguinarius',
+    nil,
+  },
+  [7896] = {
+    'Bucanero de los Mares del Sur',
+    nil,
+  },
+  [7897] = {
+    'Alarmabomba 2600',
+    nil,
+  },
+  [7898] = {
+    'Activador de banda de tesoro pirata',
+    nil,
+  },
+  [7899] = {
+    'Pirata cazatesoros',
+    nil,
+  },
+  [7900] = {
+    'Angelas Brisaluna',
+    nil,
+  },
+  [7901] = {
+    'Espadachín cazatesoros',
+    nil,
+  },
+  [7902] = {
+    'Bucanero cazatesoros',
+    nil,
+  },
+  [7903] = {
+    'Joya',
+    'Mascota de Troyas',
+  },
+  [7904] = {
+    nil,
+    'Mascota de Angela',
+  },
+  [7906] = {
+    'Guardia de Villadorada',
+    nil,
+  },
+  [7907] = {
+    'Daryn Brisela',
+    'Guardiana del conocimiento Cenarion',
+  },
+  [7915] = {
+    'Bomba andante',
+    nil,
+  },
+  [7916] = {
+    'Erelas Cieloámbar',
+    nil,
+  },
+  [7917] = {
+    'Hermano Sarno',
+    nil,
+  },
+  [7918] = {
+    'Vigía de piedra de Norgannon',
+    nil,
+  },
+  [7919] = {
+    'Gnomeregan - Perforágrafo Matriz 3005-A',
+    nil,
+  },
+  [7935] = {
+    'Ozzie irradiado',
+    nil,
+  },
+  [7936] = {
+    'Lyon Cuoremontana',
+    nil,
+  },
+  [7937] = {
+    'Manitas Mayor Mekkatorque',
+    'Rey de los gnomos',
+  },
+  [7938] = {
+    'Test Subastador',
+    nil,
+  },
+  [7939] = {
+    'Centinela Plumaluna',
+    nil,
+  },
+  [7940] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [7941] = {
+    'Mardrack Fonverde',
+    'Alimentos y bebidas',
+  },
+  [7942] = {
+    nil,
+    'Suministros generales',
+  },
+  [7943] = {
+    nil,
+    'Vendedor de pescado',
+  },
+  [7944] = {
+    'Maestro manitas Sobrechispa',
+    'Instructor de ingeniería gnómica',
+  },
+  [7945] = {
+    nil,
+    'Suministros de pesca',
+  },
+  [7946] = {
+    nil,
+    'Instructor de pesca',
+  },
+  [7947] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [7948] = {
+    'Kylanna Vientosusurro',
+    'Instructor de alquimia',
+  },
+  [7949] = {
+    'Xylinnia Brillestelar',
+    'Instructora de encantamiento',
+  },
+  [7950] = {
+    'Maestro mecánico Funditubo',
+    nil,
+  },
+  [7952] = {
+    nil,
+    'Cuidador de raptores',
+  },
+  [7953] = {
+    nil,
+    'Instructor de equitación',
+  },
+  [7954] = {
+    'Binjy Plumasilba',
+    'Instructor de equitación',
+  },
+  [7955] = {
+    'Milli Plumasilba',
+    'Mercader de Mecazancudos',
+  },
+  [7956] = {
+    'Kindal Tejeluna',
+    nil,
+  },
+  [7957] = {
+    'Jer\'kai Tejeluna',
+    nil,
+  },
+  [7975] = {
+    'Valiente de Campamento Narache',
+    nil,
+  },
+  [7976] = {
+    'Thalgus Tronapuño',
+    'Mercader de armas',
+  },
+  [7978] = {
+    'Bimble Largamora',
+    'Vendedora de frutas',
+  },
+  [7980] = {
+    'Élite Guardia de la Muerte',
+    nil,
+  },
+  [7995] = {
+    'Sacerdotisa vil Hexx',
+    nil,
+  },
+  [7996] = {
+    'Qiaga la Vigilante',
+    nil,
+  },
+  [7997] = {
+    'Duende dardo capturado',
+    nil,
+  },
+  [7998] = {
+    'Maestra Destructora Emi Plomocorto',
+    nil,
+  },
+  [7999] = {
+    'Tyrande Susurravientos',
+    'Suma sacerdotisa de Elune',
+  },
+  [8015] = {
+    'Centinela de Vallefresno',
+    nil,
+  },
+  [8016] = {
+    'Guardia de Los Baldíos',
+    nil,
+  },
+  [8017] = {
+    'Guardián de Sen\'jin',
+    nil,
+  },
+  [8018] = {
+    'Guthrum Tronapuño',
+    'Maestro de grifos',
+  },
+  [8019] = {
+    'Fyldren Plumalunar',
+    'Maestro de hipogrifos',
+  },
+  [8020] = {
+    '[UNUSED] Shyn',
+    'Maestra de jinetes del viento',
+  },
+  [8021] = {
+    'Orwin Cacharrejos',
+    nil,
+  },
+  [8022] = {
+    'Thadius Sombramacabra',
+    nil,
+  },
+  [8023] = {
+    'Picoafilado',
+    nil,
+  },
+  [8024] = {
+    'Padre de Picoafilado',
+    nil,
+  },
+  [8025] = {
+    'Madre de Picoafilado',
+    nil,
+  },
+  [8026] = {
+    'Thyn\'tel Tejespada',
+    nil,
+  },
+  [8035] = {
+    'Mina terrestre Hierro Negro',
+    nil,
+  },
+  [8055] = {
+    'Montaraz de Thelsamar',
+    nil,
+  },
+  [8075] = {
+    'Edana Garfaodio',
+    nil,
+  },
+  [8095] = {
+    'Reptador de la arena Sul\'lithuz',
+    nil,
+  },
+  [8096] = {
+    'Guardia de la Brigada de los Páramos de Poniente',
+    'La Brigada de los Páramos de Poniente',
+  },
+  [8115] = {
+    'Médico brujo Uzer\'i',
+    nil,
+  },
+  [8116] = {
+    'Ziggle Chispaz',
+    'Vendedor de cohetes pirotécnicos para fiestas',
+  },
+  [8117] = {
+    'Bums Zumbang',
+    'Vendedor de cohetes pirotécnicos para fiestas',
+  },
+  [8118] = {
+    nil,
+    'Vendedor de cohetes pirotécnicos para fiestas',
+  },
+  [8119] = {
+    nil,
+    'Banquera',
+  },
+  [8120] = {
+    'Abominación Sul\'lithuz',
+    nil,
+  },
+  [8121] = {
+    'Jaxxil Chispaz',
+    'Vendedor de cohetes pirotécnicos para fiestas',
+  },
+  [8122] = {
+    'Kizzak Chispaz',
+    'Vendedor de cohetes pirotécnicos para fiestas',
+  },
+  [8123] = {
+    'Rickle Limpiaoro',
+    'Banquera',
+  },
+  [8124] = {
+    nil,
+    'Banquera',
+  },
+  [8125] = {
+    'Dirge Hojágil',
+    'Carnicero',
+  },
+  [8126] = {
+    'Nixx Muellepiñón',
+    'Instructor de ingeniería goblin',
+  },
+  [8127] = {
+    nil,
+    'Sobrestante de Sul',
+  },
+  [8128] = {
+    nil,
+    'Instructor de minería',
+  },
+  [8129] = {
+    'Wrinkle Buenacero',
+    'Armero superior',
+  },
+  [8130] = {
+    'Prole de Sul\'lithuz',
+    nil,
+  },
+  [8131] = {
+    'Blizrik Machobala',
+    'Forjador de armas de fuego',
+  },
+  [8137] = {
+    nil,
+    'Pescador',
+  },
+  [8138] = {
+    'Estirpe de Sul\'lithuz',
+    nil,
+  },
+  [8139] = {
+    nil,
+    'Pertrechos',
+  },
+  [8140] = {
+    'Hermano Karman',
+    'Instructor de paladines',
+  },
+  [8141] = {
+    'Capitán Cañalisa',
+    'Instructor de guerreros',
+  },
+  [8142] = {
+    'Jannos Pezuña Ligera',
+    'Instructor de druidas',
+  },
+  [8143] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [8144] = {
+    'Kulleg Cuernopiedra',
+    'Instructora de desuello',
+  },
+  [8145] = {
+    'Sheendra Pastoalto',
+    'Suministros comerciales',
+  },
+  [8146] = {
+    nil,
+    'Instructora de herboristería',
+  },
+  [8147] = {
+    'Valiente de Campamento Mojache',
+    nil,
+  },
+  [8148] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [8149] = {
+    'Depositario Sul\'lithuz',
+    nil,
+  },
+  [8150] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [8151] = {
+    'Guardia de Punta de Nijel',
+    nil,
+  },
+  [8152] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [8153] = {
+    'Narv Curtepieles',
+    'Instructor de peletería',
+  },
+  [8154] = {
+    'Valiente del Espíritu Errante',
+    nil,
+  },
+  [8155] = {
+    'Bruto de Kargath',
+    nil,
+  },
+  [8156] = {
+    'Sirviente de Antu\'sul',
+    nil,
+  },
+  [8157] = {
+    nil,
+    'Suministros de alquimia',
+  },
+  [8158] = {
+    nil,
+    'Suministros de alquimia',
+  },
+  [8159] = {
+    'Worb Puntofuerte',
+    'Mercader de armaduras ligeras',
+  },
+  [8160] = {
+    nil,
+    'Suministros de peletería',
+  },
+  [8161] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [8176] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [8177] = {
+    nil,
+    'Suministros de alquimia',
+  },
+  [8178] = {
+    'Nina Burbuluz',
+    'Suministros de alquimia',
+  },
+  [8179] = {
+    'Resguardo de sanación superior',
+    nil,
+  },
+  [8199] = {
+    'Líder de guerra Krazzilak',
+    nil,
+  },
+  [8200] = {
+    'Jin\'Zallah el Arenero',
+    nil,
+  },
+  [8201] = {
+    'Omgorn el Perdido',
+    nil,
+  },
+  [8202] = {
+    'Cyclok el Loco',
+    nil,
+  },
+  [8203] = {
+    'Kregg Volcayecto',
+    nil,
+  },
+  [8204] = {
+    'Soriid el Devorador',
+    nil,
+  },
+  [8205] = {
+    'Haarka el Voraz',
+    nil,
+  },
+  [8206] = {
+    'Alma de Tanaris',
+    nil,
+  },
+  [8207] = {
+    'Alascuas',
+    nil,
+  },
+  [8208] = {
+    'Llagapata mortífera',
+    nil,
+  },
+  [8210] = {
+    'Filogarra',
+    nil,
+  },
+  [8211] = {
+    'Viejo Saltariscos',
+    nil,
+  },
+  [8212] = {
+    'El Rik',
+    nil,
+  },
+  [8213] = {
+    'Espaldacerada',
+    nil,
+  },
+  [8214] = {
+    'Jalinde Dracoestío',
+    nil,
+  },
+  [8216] = {
+    'Retherokk el Rabioso',
+    nil,
+  },
+  [8217] = {
+    'Mith\'rethis el Encantador',
+    nil,
+  },
+  [8218] = {
+    'Blancorazón el Acechador',
+    nil,
+  },
+  [8219] = {
+    'Matagallinas Zul\'arek',
+    nil,
+  },
+  [8236] = {
+    'Furia de fango',
+    nil,
+  },
+  [8256] = {
+    'Comisario Torio',
+    nil,
+  },
+  [8257] = {
+    'Moquito',
+    nil,
+  },
+  [8276] = {
+    'Picovaja rasante',
+    nil,
+  },
+  [8279] = {
+    'Gólem de guerra defectuoso',
+    nil,
+  },
+  [8281] = {
+    'Escaldar',
+    nil,
+  },
+  [8282] = {
+    'Alto señor Mastrogonde',
+    nil,
+  },
+  [8283] = {
+    'Maestro de esclavos Negrozón',
+    nil,
+  },
+  [8284] = {
+    'Dorius Cuidarrocas',
+    nil,
+  },
+  [8296] = {
+    'Mojo el Retorcido',
+    nil,
+  },
+  [8297] = {
+    'Magronos el Implacable',
+    nil,
+  },
+  [8298] = {
+    'Akubar el Vidente',
+    nil,
+  },
+  [8299] = {
+    'Escupetripas',
+    nil,
+  },
+  [8301] = {
+    'Clack el Atracador',
+    nil,
+  },
+  [8302] = {
+    'Ojo de la Muerte',
+    nil,
+  },
+  [8304] = {
+    'Desdeñamiedos',
+    nil,
+  },
+  [8305] = {
+    nil,
+    'Pociones y hierbas',
+  },
+  [8306] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [8307] = {
+    'Tarban Granogar',
+    'Panadera',
+  },
+  [8308] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [8310] = {
+    'Vigía Wollpert',
+    'La Guardia Nocturna',
+  },
+  [8311] = {
+    'Cresa de baba',
+    nil,
+  },
+  [8317] = {
+    'Espíritu de Caminamuerte Atal\'ai',
+    nil,
+  },
+  [8318] = {
+    'Esclavo Atal\'ai',
+    nil,
+  },
+  [8319] = {
+    'Cría de la Pesadilla',
+    nil,
+  },
+  [8320] = {
+    nil,
+    'Equipo de huida',
+  },
+  [8324] = {
+    'Esqueleto Atal\'ai',
+    nil,
+  },
+  [8336] = {
+    'Zapador Hakkari',
+    nil,
+  },
+  [8337] = {
+    'Acerador Hierro Negro',
+    nil,
+  },
+  [8338] = {
+    'Tirador Hierro Negro',
+    nil,
+  },
+  [8356] = {
+    nil,
+    'Banquera',
+  },
+  [8357] = {
+    nil,
+    'Banquera',
+  },
+  [8358] = {
+    nil,
+    'Mercader de armaduras de tela',
+  },
+  [8359] = {
+    nil,
+    'Mercader de armaduras de cuero',
+  },
+  [8360] = {
+    nil,
+    'Mercader de armaduras de malla',
+  },
+  [8361] = {
+    nil,
+    'Componentes',
+  },
+  [8362] = {
+    nil,
+    'Pertrechos',
+  },
+  [8363] = {
+    'Shadi Correbruma',
+    'Suministros comerciales',
+  },
+  [8364] = {
+    nil,
+    'Vendedora de bolsas',
+  },
+  [8376] = {
+    'Gallina mecánica',
+    nil,
+  },
+  [8377] = {
+    'Ahdi de la Sala de la Sombra',
+    nil,
+  },
+  [8379] = {
+    'Archimago Xylem',
+    nil,
+  },
+  [8380] = {
+    'Capitana Vanessa Beltis',
+    nil,
+  },
+  [8383] = {
+    'Maestro Leño',
+    nil,
+  },
+  [8384] = {
+    'Rondador de lo profundo',
+    nil,
+  },
+  [8385] = {
+    'Mura Tótem de Runa',
+    nil,
+  },
+  [8386] = {
+    'Tripulante Explorador del horizonte',
+    nil,
+  },
+  [8387] = {
+    'Contramaestre Explorador del horizonte',
+    nil,
+  },
+  [8388] = {
+    'Cocinero Explorador del horizonte',
+    nil,
+  },
+  [8389] = {
+    'Ingeniero Explorador del horizonte',
+    nil,
+  },
+  [8390] = {
+    'Químico Cuely',
+    nil,
+  },
+  [8391] = {
+    'Lathoric el Negro',
+    nil,
+  },
+  [8392] = {
+    'Piloto Xiggs Botafuego',
+    nil,
+  },
+  [8393] = {
+    'Thersa Son del Viento',
+    nil,
+  },
+  [8394] = {
+    'Roland Diletante',
+    nil,
+  },
+  [8396] = {
+    'Centinela Dalia Filosol',
+    nil,
+  },
+  [8397] = {
+    'Centinela Keldara Filosol',
+    nil,
+  },
+  [8398] = {
+    nil,
+    'Mercader de armas de dos manos',
+  },
+  [8399] = {
+    nil,
+    'Aprendiz de Xylem',
+  },
+  [8401] = {
+    nil,
+    'Vendedor de perros de la pradera',
+  },
+  [8402] = {
+    'Arqueólogo esclavizado',
+    nil,
+  },
+  [8403] = {
+    nil,
+    'Vendedor de cucarachas',
+  },
+  [8404] = {
+    nil,
+    'Vendedor de serpientes',
+  },
+  [8406] = {
+    'Or\'lin Puñoroble',
+    nil,
+  },
+  [8407] = {
+    'Makron el Corrupto',
+    nil,
+  },
+  [8408] = {
+    'Señor de la guerra Krellian',
+    nil,
+  },
+  [8409] = {
+    'Maestro de caravana Tset',
+    nil,
+  },
+  [8416] = {
+    'Félix Rayaullido',
+    nil,
+  },
+  [8417] = {
+    'Arqueólogo moribundo',
+    nil,
+  },
+  [8418] = {
+    'Fala Viento Sabio',
+    nil,
+  },
+  [8419] = {
+    'Idólatra Crepuscular',
+    nil,
+  },
+  [8436] = {
+    'Zamael Cardolún',
+    nil,
+  },
+  [8437] = {
+    'Esbirro Hakkari',
+    nil,
+  },
+  [8438] = {
+    'Vigilasangre Hakkari',
+    nil,
+  },
+  [8440] = {
+    'Sombra de Hakkar',
+    nil,
+  },
+  [8441] = {
+    nil,
+    'Guardián de Nilith',
+  },
+  [8442] = {
+    'Furtivo Sedaumbría',
+    'El Mercado Negro',
+  },
+  [8443] = {
+    'Avatar de Hakkar',
+    nil,
+  },
+  [8444] = {
+    'Maestro de comercio Kovic',
+    'El Mercado Negro',
+  },
+  [8446] = {
+    'Máquina voladora de Xiggs Botafuego',
+    nil,
+  },
+  [8447] = {
+    'Clonk',
+    'El Mercado Negro',
+  },
+  [8477] = {
+    'Sirviente esquelético',
+    nil,
+  },
+  [8478] = {
+    'Segunda de a bordo Shandril',
+    nil,
+  },
+  [8479] = {
+    'Kalaran Espada del Viento',
+    nil,
+  },
+  [8480] = {
+    'Kalaran el Falsario',
+    nil,
+  },
+  [8496] = {
+    nil,
+    'Ayudante del taller',
+  },
+  [8497] = {
+    'Supresor pesadilla',
+    nil,
+  },
+  [8498] = {
+    'TEST Uber Elfo de la noche',
+    nil,
+  },
+  [8499] = {
+    'TEST Uber Súcubo',
+    nil,
+  },
+  [8500] = {
+    'TEST Uber abominación',
+    nil,
+  },
+  [8501] = {
+    'TEST Uber maligno de las tumbas',
+    nil,
+  },
+  [8502] = {
+    'TEST Uber Humano',
+    nil,
+  },
+  [8504] = {
+    'Avizor Hierro Negro',
+    nil,
+  },
+  [8505] = {
+    'Maleficio de Jammal\'an',
+    nil,
+  },
+  [8506] = {
+    'Eranikus el Encadenado',
+    nil,
+  },
+  [8508] = {
+    nil,
+    'Suministros de pesca',
+  },
+  [8509] = {
+    'Escudero Maltrake',
+    nil,
+  },
+  [8510] = {
+    'Tótem Atal\'ai',
+    nil,
+  },
+  [8517] = {
+    'Xiggs Botafuego',
+    nil,
+  },
+  [8518] = {
+    'Rynthariel la Maestra de llaves',
+    nil,
+  },
+  [8519] = {
+    'Marea contagiada',
+    nil,
+  },
+  [8520] = {
+    'Devastador de peste',
+    nil,
+  },
+  [8521] = {
+    'Horror contagiado',
+    nil,
+  },
+  [8522] = {
+    'Monstruosidad de peste',
+    nil,
+  },
+  [8523] = {
+    'Soldado de la Plaga',
+    nil,
+  },
+  [8524] = {
+    'Mago maldito',
+    nil,
+  },
+  [8525] = {
+    'Depositario de la Plaga',
+    nil,
+  },
+  [8526] = {
+    'Taumaturgo oscuro',
+    nil,
+  },
+  [8527] = {
+    'Guardia de la Plaga',
+    nil,
+  },
+  [8528] = {
+    'Tejedor aterrador',
+    nil,
+  },
+  [8529] = {
+    'Campeón de la Plaga',
+    nil,
+  },
+  [8530] = {
+    'Necrófago caníbal',
+    nil,
+  },
+  [8531] = {
+    'Necrófago balbuceante',
+    nil,
+  },
+  [8532] = {
+    'Despellejador malsano',
+    nil,
+  },
+  [8534] = {
+    'Gárgola pútrida',
+    nil,
+  },
+  [8535] = {
+    'Chillón pútrido',
+    nil,
+  },
+  [8536] = {
+    'Destripador pútrido',
+    nil,
+  },
+  [8537] = {
+    'Intruso',
+    nil,
+  },
+  [8538] = {
+    'Sirviente oculto',
+    nil,
+  },
+  [8539] = {
+    'Vigía sin ojos',
+    nil,
+  },
+  [8540] = {
+    'Gritona desgarrada',
+    nil,
+  },
+  [8541] = {
+    'Chillona de odio',
+    nil,
+  },
+  [8542] = {
+    'Trovamuerte',
+    nil,
+  },
+  [8543] = {
+    'Horror cosido',
+    nil,
+  },
+  [8544] = {
+    'Gólem malformado',
+    nil,
+  },
+  [8545] = {
+    'Gólem cosido',
+    nil,
+  },
+  [8546] = {
+    'Adepto oscuro',
+    'Culto de los Malditos',
+  },
+  [8547] = {
+    'Cultor de la Muerte',
+    'Culto de los Malditos',
+  },
+  [8548] = {
+    'Tutor vil',
+    'Culto de los Malditos',
+  },
+  [8549] = {
+    '[UNUSED] Acólito',
+    'Culto de los Malditos',
+  },
+  [8550] = {
+    'Mago oscuro',
+    'Culto de los Malditos',
+  },
+  [8551] = {
+    'Invocador oscuro',
+    'Culto de los Malditos',
+  },
+  [8552] = {
+    'Necrólito',
+    'Culto de los Malditos',
+  },
+  [8553] = {
+    'Nigromante',
+    'Culto de los Malditos',
+  },
+  [8554] = {
+    'Jefe Cornapunta Mantospina',
+    nil,
+  },
+  [8555] = {
+    'Acechador de la cripta',
+    nil,
+  },
+  [8556] = {
+    'Caminante de la cripta',
+    nil,
+  },
+  [8557] = {
+    'Horror de la cripta',
+    nil,
+  },
+  [8558] = {
+    'Destripador de la cripta',
+    nil,
+  },
+  [8559] = {
+    'Nerubiano no-muerto',
+    nil,
+  },
+  [8560] = {
+    'Explorador Fustamusgo',
+    nil,
+  },
+  [8561] = {
+    'Cazasombras Fustamusgo',
+    nil,
+  },
+  [8562] = {
+    'Caníbal Fustamusgo',
+    nil,
+  },
+  [8563] = {
+    'Trabajador forestal desdichado',
+    nil,
+  },
+  [8564] = {
+    'Forestal desdichado',
+    nil,
+  },
+  [8565] = {
+    'Zancamino desdichado',
+    nil,
+  },
+  [8566] = {
+    'Oteador Hierro Negro',
+    nil,
+  },
+  [8567] = {
+    'Glotón',
+    nil,
+  },
+  [8576] = {
+    'Ag\'tor Puñosangre',
+    nil,
+  },
+  [8580] = {
+    nil,
+    'Guardián del ídolo',
+  },
+  [8581] = {
+    'Defensor elfo de sangre',
+    nil,
+  },
+  [8583] = {
+    'Dirania Brillargente',
+    nil,
+  },
+  [8585] = {
+    'Espectro de escarcha',
+    nil,
+  },
+  [8586] = {
+    'Haggrum Puñosangre',
+    nil,
+  },
+  [8588] = {
+    'Umbranse el Hablaalmas',
+    nil,
+  },
+  [8596] = {
+    'Cachorro de can de peste',
+    nil,
+  },
+  [8597] = {
+    'Can de peste',
+    nil,
+  },
+  [8598] = {
+    'Can de peste demenciado',
+    nil,
+  },
+  [8599] = {
+    'Can de peste superior',
+    nil,
+  },
+  [8600] = {
+    'Murcipeste',
+    nil,
+  },
+  [8601] = {
+    'Murcipeste nocivo',
+    nil,
+  },
+  [8602] = {
+    'Murcipeste monstruoso',
+    nil,
+  },
+  [8603] = {
+    'Larva carroñera',
+    nil,
+  },
+  [8605] = {
+    'Devorador carroñero',
+    nil,
+  },
+  [8606] = {
+    'Pútrido viviente',
+    nil,
+  },
+  [8607] = {
+    'Lodo en podredumbre',
+    nil,
+  },
+  [8608] = {
+    'Infernal enfadado',
+    nil,
+  },
+  [8609] = {
+    nil,
+    'Maestro de grifos',
+  },
+  [8610] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [8611] = {
+    'Criador de la Sala del Ídolo',
+    nil,
+  },
+  [8612] = {
+    'Espíritu estridador',
+    nil,
+  },
+  [8615] = {
+    'Dragonizo de mitril',
+    nil,
+  },
+  [8616] = {
+    'Sirviente Infernal',
+    nil,
+  },
+  [8636] = {
+    'Morta\'gya la Vigilante',
+    nil,
+  },
+  [8637] = {
+    'Velador Hierro Negro',
+    nil,
+  },
+  [8656] = {
+    'Abisario de Hukku',
+    nil,
+  },
+  [8657] = {
+    'Súcubo de Hukku',
+    nil,
+  },
+  [8658] = {
+    'Diablillo de Hukku',
+    nil,
+  },
+  [8660] = {
+    'El Evalcharr',
+    nil,
+  },
+  [8661] = {
+    'Subastador Beardo',
+    nil,
+  },
+  [8662] = {
+    'Blanco de horno del Ídolo',
+    nil,
+  },
+  [8663] = {
+    'Élite Astillóseo',
+    nil,
+  },
+  [8664] = {
+    'Caminasol Saern',
+    nil,
+  },
+  [8665] = {
+    nil,
+    'Instructora de búhos',
+  },
+  [8666] = {
+    'Pequeño Timmy',
+    'Chico con gatitos',
+  },
+  [8667] = {
+    'Vórtice de ráfaga',
+    nil,
+  },
+  [8668] = {
+    'Rastreador can manáfago',
+    nil,
+  },
+  [8669] = {
+    'Subastador Tolon',
+    nil,
+  },
+  [8670] = {
+    'Subastador Chilton',
+    nil,
+  },
+  [8671] = {
+    'Subastador Buckler',
+    nil,
+  },
+  [8672] = {
+    'Subastadora Leeka',
+    nil,
+  },
+  [8673] = {
+    'Subastador Thathung',
+    nil,
+  },
+  [8674] = {
+    'Subastador Stampi',
+    nil,
+  },
+  [8675] = {
+    'Bestia vil',
+    nil,
+  },
+  [8676] = {
+    'Instructora mundial de ingeniería gnómica',
+    'Instructor de ingeniería gnómica',
+  },
+  [8677] = {
+    'Instructor mundial de ingeniería goblin',
+    'Instructor de ingeniería goblin',
+  },
+  [8678] = {
+    'Jubie Cacharretio',
+    'Suministros de ingeniería',
+  },
+  [8679] = {
+    'Knaz Flamerrada',
+    'Suministros de ingeniería',
+  },
+  [8680] = {
+    'Infernal inmenso',
+    nil,
+  },
+  [8681] = {
+    'Proveedor Eric',
+    'Suministros de sastrería especializada',
+  },
+  [8716] = {
+    'Señor del Terror',
+    nil,
+  },
+  [8717] = {
+    'Élite guardia vil',
+    nil,
+  },
+  [8718] = {
+    'Can de maná',
+    nil,
+  },
+  [8719] = {
+    'Subastador Fitch',
+    nil,
+  },
+  [8720] = {
+    'Subastadora Musarroja',
+    nil,
+  },
+  [8721] = {
+    'Subastadora Epitwee',
+    nil,
+  },
+  [8722] = {
+    'Subastador Gullem',
+    nil,
+  },
+  [8723] = {
+    'Subastador Golothas',
+    nil,
+  },
+  [8736] = {
+    'Buzzek Giracorchete',
+    'Instructor de ingeniería',
+  },
+  [8738] = {
+    'Vazario Grasenlace',
+    'Instructor de ingeniería goblin',
+  },
+  [8756] = {
+    nil,
+    'Guardián de Loramus',
+  },
+  [8757] = {
+    nil,
+    'Guardián de Loramus',
+  },
+  [8758] = {
+    nil,
+    'Guardián de Loramus',
+  },
+  [8759] = {
+    'Corredor Pezuñamusgo',
+    nil,
+  },
+  [8760] = {
+    'Venado Pezuñamusgo',
+    nil,
+  },
+  [8761] = {
+    'Trotador Pezuñamusgo',
+    nil,
+  },
+  [8762] = {
+    'Ermitaña Telamadera',
+    nil,
+  },
+  [8763] = {
+    'Pícaro Brumala',
+    nil,
+  },
+  [8764] = {
+    'Devastador Brumala',
+    nil,
+  },
+  [8765] = {
+    'Trepador del bosque',
+    nil,
+  },
+  [8766] = {
+    'Moco del bosque',
+    nil,
+  },
+  [8776] = {
+    'Cría de dragón esmeralda',
+    nil,
+  },
+  [8777] = {
+    nil,
+    'Instructora de desuello',
+  },
+  [8796] = {
+    'Múrloc nadador Prueba',
+    nil,
+  },
+  [8816] = {
+    'Ujier sepulcral',
+    nil,
+  },
+  [8836] = {
+    'Gallo de batalla',
+    nil,
+  },
+  [8837] = {
+    'Salpicadura de mugre',
+    nil,
+  },
+  [8856] = {
+    'Robot espía de Tyrion',
+    nil,
+  },
+  [8876] = {
+    'Acólito Furiarena',
+    nil,
+  },
+  [8877] = {
+    'Zelote Furiarena',
+    nil,
+  },
+  [8878] = {
+    nil,
+    'Fabricante de mazas superior',
+  },
+  [8879] = {
+    'Historiadora Real Archesonus',
+    nil,
+  },
+  [8880] = {
+    'Mecazancudo',
+    nil,
+  },
+  [8881] = {
+    'Carnero de montar',
+    nil,
+  },
+  [8882] = {
+    'Tigre de montar',
+    nil,
+  },
+  [8883] = {
+    'Caballo de montar',
+    nil,
+  },
+  [8884] = {
+    'Montura esquelética',
+    nil,
+  },
+  [8885] = {
+    'Raptor de montar',
+    nil,
+  },
+  [8886] = {
+    'Pitón descarriada',
+    nil,
+  },
+  [8887] = {
+    'Una voz atormentada',
+    nil,
+  },
+  [8888] = {
+    'Franclorn Forjador',
+    nil,
+  },
+  [8889] = {
+    'Sobrestante Yunque Colérico',
+    nil,
+  },
+  [8890] = {
+    'Celador Yunque Colérico',
+    nil,
+  },
+  [8891] = {
+    'Custodio Yunque Colérico',
+    nil,
+  },
+  [8892] = {
+    'Lacayo Yunque Colérico',
+    nil,
+  },
+  [8893] = {
+    'Soldado Yunque Colérico',
+    nil,
+  },
+  [8894] = {
+    'Médico Yunque Colérico',
+    nil,
+  },
+  [8895] = {
+    'Oficial Yunque Colérico',
+    nil,
+  },
+  [8896] = {
+    'Campesino de Forjatiniebla',
+    nil,
+  },
+  [8897] = {
+    'Artesano de la Forja Maldita',
+    nil,
+  },
+  [8898] = {
+    'Alguacil Yunque Colérico',
+    nil,
+  },
+  [8899] = {
+    'Deagolo de la Forja Maldita',
+    nil,
+  },
+  [8900] = {
+    'Herrero arcano de la Forja Maldita',
+    nil,
+  },
+  [8901] = {
+    'Reservista Yunque Colérico',
+    nil,
+  },
+  [8902] = {
+    'Ciudadano de Forjatiniebla',
+    nil,
+  },
+  [8903] = {
+    'Capitán Yunque Colérico',
+    nil,
+  },
+  [8904] = {
+    'Senador de Forjatiniebla',
+    nil,
+  },
+  [8905] = {
+    'Ensamblaje belisario',
+    nil,
+  },
+  [8906] = {
+    'Gólem Furiatracador',
+    nil,
+  },
+  [8907] = {
+    'Ensamblaje Martillo de cólera',
+    nil,
+  },
+  [8908] = {
+    'Gólem de guerra fundido',
+    nil,
+  },
+  [8909] = {
+    'Guardia de fuego',
+    nil,
+  },
+  [8910] = {
+    'Guardia de fuego llameante',
+    nil,
+  },
+  [8911] = {
+    'Destructor guardia de fuego',
+    nil,
+  },
+  [8912] = {
+    'Torturador del Martillo Crepuscular',
+    nil,
+  },
+  [8913] = {
+    'Emisario Crepuscular',
+    nil,
+  },
+  [8914] = {
+    'Guardaespaldas Crepuscular',
+    nil,
+  },
+  [8915] = {
+    'Embajador del Martillo Crepuscular',
+    nil,
+  },
+  [8916] = {
+    'Espectador de la arena',
+    nil,
+  },
+  [8917] = {
+    'Esclavo de la cantera',
+    nil,
+  },
+  [8920] = {
+    'Técnico de armas',
+    nil,
+  },
+  [8921] = {
+    'Cánido',
+    nil,
+  },
+  [8922] = {
+    'Mastín cánido',
+    nil,
+  },
+  [8923] = {
+    'Panzor el Invencible',
+    nil,
+  },
+  [8924] = {
+    'El Behemoth',
+    nil,
+  },
+  [8925] = {
+    'Gusano deslizante',
+    nil,
+  },
+  [8926] = {
+    'Aguijonero profundo',
+    nil,
+  },
+  [8927] = {
+    'Estridador sombrío',
+    nil,
+  },
+  [8928] = {
+    'Morrotrueno cavador',
+    nil,
+  },
+  [8929] = {
+    'Princesa Moira Barbabronce',
+    'Princesa de Forjaz',
+  },
+  [8931] = {
+    'Tabernera Heather',
+    'Tabernero',
+  },
+  [8932] = {
+    'Alfazaque cavapozos',
+    nil,
+  },
+  [8933] = {
+    'Trepador de cuevas',
+    nil,
+  },
+  [8934] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [8937] = {
+    'Bomba mascota',
+    nil,
+  },
+  [8956] = {
+    'Oso Zarpira',
+    nil,
+  },
+  [8957] = {
+    'Pardo Zarpira',
+    nil,
+  },
+  [8958] = {
+    'Aplastador Zarpira',
+    nil,
+  },
+  [8959] = {
+    'Lobo Zarpayel',
+    nil,
+  },
+  [8960] = {
+    'Carroñero Zarpayel',
+    nil,
+  },
+  [8961] = {
+    'Devastador Zarpayel',
+    nil,
+  },
+  [8962] = {
+    'Nida',
+    nil,
+  },
+  [8964] = {
+    'Draco Roca Negra',
+    nil,
+  },
+  [8980] = {
+    'Capitán Pirontraña',
+    nil,
+  },
+  [8981] = {
+    'Atracador estropeado',
+    nil,
+  },
+  [8982] = {
+    'Guardián Manohierro',
+    nil,
+  },
+  [8983] = {
+    'Señor Gólem Argelmach',
+    nil,
+  },
+  [8996] = {
+    'Esbirro abisario',
+    nil,
+  },
+  [8997] = {
+    'Gershala Susurro Nocturno',
+    nil,
+  },
+  [8999] = {
+    nil,
+    'Tabernero',
+  },
+  [9018] = {
+    'Alta interrogadora Gerstahn',
+    'Interrogadora del Martillo Crepuscular',
+  },
+  [9019] = {
+    'Emperador Dagran Thaurissan',
+    nil,
+  },
+  [9020] = {
+    'Comandante Gor\'shak',
+    'Fuerza Expedicionaria de Kargath',
+  },
+  [9021] = {
+    'Kharan Martillo Poderoso',
+    nil,
+  },
+  [9022] = {
+    'Dughal Alatormenta',
+    nil,
+  },
+  [9023] = {
+    'Mariscal Windsor',
+    nil,
+  },
+  [9024] = {
+    'Piromántico Fruto del Saber',
+    nil,
+  },
+  [9026] = {
+    'Maestro Supremo Pyron',
+    nil,
+  },
+  [9027] = {
+    'Gorosh el Endemoniado',
+    nil,
+  },
+  [9028] = {
+    'Grisez',
+    nil,
+  },
+  [9029] = {
+    'Eviscerador',
+    nil,
+  },
+  [9030] = {
+    'Ok\'thor el Rompedor',
+    nil,
+  },
+  [9032] = {
+    'Hedrum el Trepador',
+    nil,
+  },
+  [9033] = {
+    'General Forjainquina',
+    nil,
+  },
+  [9034] = {
+    'Odio\'rel',
+    nil,
+  },
+  [9035] = {
+    'Inquina\'rel',
+    nil,
+  },
+  [9036] = {
+    'Vil\'rel',
+    nil,
+  },
+  [9037] = {
+    'Penumbra\'rel',
+    nil,
+  },
+  [9038] = {
+    'Furia\'rel',
+    nil,
+  },
+  [9039] = {
+    'Condena\'rel',
+    nil,
+  },
+  [9040] = {
+    'Drog\'rel',
+    nil,
+  },
+  [9041] = {
+    'Depositario Stilgiss',
+    nil,
+  },
+  [9043] = {
+    'Bruto del Escudo del Estigma',
+    'Legión Escudo del Estigma',
+  },
+  [9044] = {
+    'Avizor del Escudo del Estigma',
+    'Legión Escudo del Estigma',
+  },
+  [9045] = {
+    'Acólito del Escudo del Estigma',
+    'Legión Escudo del Estigma',
+  },
+  [9046] = {
+    'Intendente del Escudo del Estigma',
+    'Legión Escudo del Estigma',
+  },
+  [9047] = {
+    nil,
+    'Cavador de zanjas',
+  },
+  [9056] = {
+    'Finoso Virunegro',
+    'Arquitecto jefe',
+  },
+  [9077] = {
+    'Señor de la guerra Dientegore',
+    'Fuerza Expedicionaria de Kargath',
+  },
+  [9078] = {
+    'Maga oscura Vivian Lagrave',
+    'Fuerza Expedicionaria de Kargath',
+  },
+  [9079] = {
+    'Hierofante Theodora Mulvadania',
+    'Fuerza Expedicionaria de Kargath',
+  },
+  [9080] = {
+    nil,
+    'Fuerza Expedicionaria de Kargath',
+  },
+  [9081] = {
+    'Galamav el Tirador',
+    'Fuerza Expedicionaria de Kargath',
+  },
+  [9082] = {
+    'Thal\'trak Colmillo Orgulloso',
+    'Fuerza Expedicionaria de Kargath',
+  },
+  [9083] = {
+    'Razal\'filo',
+    'Fuerza Expedicionaria de Kargath',
+  },
+  [9084] = {
+    'Corazón Atronador',
+    'Fuerza Expedicionaria de Kargath',
+  },
+  [9085] = {
+    'Iniciado Amakkar',
+    'Fuerza Expedicionaria de Kargath',
+  },
+  [9086] = {
+    'Bruto Gargal',
+    'Fuerza Expedicionaria de Kargath',
+  },
+  [9087] = {
+    'Bashana Tótem de Runa',
+    nil,
+  },
+  [9096] = {
+    'Dragauro Garra de Furia',
+    nil,
+  },
+  [9097] = {
+    'Legionario del Escudo del Estigma',
+    'Legión Escudo del Estigma',
+  },
+  [9098] = {
+    'Vinculahechizos del Escudo del Estigma',
+    'Legión Escudo del Estigma',
+  },
+  [9099] = {
+    nil,
+    'Vendedor de tartas',
+  },
+  [9116] = {
+    'Eridan Vientoazul',
+    'Círculo Esmeralda',
+  },
+  [9117] = {
+    nil,
+    'Expediciones Marshal',
+  },
+  [9136] = {
+    'Sha\'ni Colmillo Orgulloso',
+    nil,
+  },
+  [9156] = {
+    'Embajador Latifuego',
+    nil,
+  },
+  [9157] = {
+    'Peste Sangrepétalo',
+    nil,
+  },
+  [9158] = {
+    'Caballo de guerra',
+    nil,
+  },
+  [9162] = {
+    'Diemetradón joven',
+    nil,
+  },
+  [9164] = {
+    'Diemetradón viejo',
+    nil,
+  },
+  [9165] = {
+    'Pterrordáctilo volantón',
+    nil,
+  },
+  [9166] = {
+    'Pterrordáctilo',
+    nil,
+  },
+  [9167] = {
+    'Pterrordáctilo demenciado',
+    nil,
+  },
+  [9176] = {
+    'Gorlop',
+    nil,
+  },
+  [9178] = {
+    'Espíritu ardiente',
+    nil,
+  },
+  [9179] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [9180] = {
+    'Generador mundial de sucesos',
+    nil,
+  },
+  [9196] = {
+    'Alto señor Omokk',
+    nil,
+  },
+  [9197] = {
+    'Mago de batalla Cumbrerroca',
+    nil,
+  },
+  [9198] = {
+    'Místico Cumbrerroca',
+    nil,
+  },
+  [9199] = {
+    'Déspota Cumbrerroca',
+    nil,
+  },
+  [9200] = {
+    'Atracador Cumbrerroca',
+    nil,
+  },
+  [9201] = {
+    'Ogro Magus Cumbrerroca',
+    nil,
+  },
+  [9216] = {
+    'Señor de la guerra Cumbrerroca',
+    nil,
+  },
+  [9217] = {
+    'Señor Magus Cumbrerroca',
+    nil,
+  },
+  [9218] = {
+    'Señor de batalla Cumbrerroca',
+    nil,
+  },
+  [9219] = {
+    'Carnicero Cumbrerroca',
+    nil,
+  },
+  [9236] = {
+    'Cazadora de las Sombras Vosh\'gajin',
+    nil,
+  },
+  [9237] = {
+    'Maestro de guerra Voone',
+    nil,
+  },
+  [9238] = {
+    '[Deprecated for 4.x]Quentin',
+    nil,
+  },
+  [9239] = {
+    'Místico Espina Ahumada',
+    nil,
+  },
+  [9240] = {
+    'Sacerdote de las Sombras Espina Ahumada',
+    nil,
+  },
+  [9241] = {
+    'Rebanacabezas Espina Ahumada',
+    nil,
+  },
+  [9256] = {
+    'Pollo de granja',
+    nil,
+  },
+  [9257] = {
+    'Brujo del Escudo del Estigma',
+    'Legión Escudo del Estigma',
+  },
+  [9258] = {
+    'Asaltante del Escudo del Estigma',
+    'Legión Escudo del Estigma',
+  },
+  [9259] = {
+    'Bruto Pirotigma',
+    'Legión Pirotigma',
+  },
+  [9260] = {
+    'Legionario Pirotigma',
+    'Legión Pirotigma',
+  },
+  [9261] = {
+    'Tejeoscuro Pirotigma',
+    'Legión Pirotigma',
+  },
+  [9262] = {
+    'Convocador Pirotigma',
+    'Legión Pirotigma',
+  },
+  [9263] = {
+    'Tejetinieblas Pirotigma',
+    'Legión Pirotigma',
+  },
+  [9264] = {
+    'Piromántico Pirotigma',
+    'Legión Pirotigma',
+  },
+  [9265] = {
+    'Cazador de las Sombras Espina Ahumada',
+    nil,
+  },
+  [9266] = {
+    'Médico brujo Espina Ahumada',
+    nil,
+  },
+  [9267] = {
+    'Lanzahachas Espina Ahumada',
+    nil,
+  },
+  [9268] = {
+    'Rabioso Espina Ahumada',
+    nil,
+  },
+  [9269] = {
+    'Vidente Espina Ahumada',
+    nil,
+  },
+  [9270] = {
+    nil,
+    'Expediciones Marshal',
+  },
+  [9271] = {
+    nil,
+    'Expediciones Marshal',
+  },
+  [9272] = {
+    'Chispik Minamal',
+    'Expediciones Marshal',
+  },
+  [9275] = {
+    'Lanzador',
+    nil,
+  },
+  [9276] = {
+    'Lanzador2',
+    nil,
+  },
+  [9297] = {
+    'Dracoleón iracundo',
+    nil,
+  },
+  [9298] = {
+    'Donova Cubilnevado',
+    nil,
+  },
+  [9316] = {
+    'Wenikee Tuercasmil',
+    nil,
+  },
+  [9317] = {
+    'Rilli Gapegajoso',
+    nil,
+  },
+  [9318] = {
+    'Incendosaurio',
+    nil,
+  },
+  [9319] = {
+    'Maestro de canes Grebmar',
+    nil,
+  },
+  [9336] = {
+    'Jefe Encobre',
+    nil,
+  },
+  [9356] = {
+    'Tabernero Shul\'kar',
+    'Tabernero',
+  },
+  [9376] = {
+    'Correfuego',
+    nil,
+  },
+  [9377] = {
+    'Vórtice espiral',
+    nil,
+  },
+  [9396] = {
+    'Aporreador de tierra',
+    nil,
+  },
+  [9397] = {
+    'Fósil desenterrado',
+    nil,
+  },
+  [9398] = {
+    'Verdugo del Martillo Crepuscular',
+    nil,
+  },
+  [9416] = {
+    'Huargo del Escudo del Estigma',
+    'Legión Escudo del Estigma',
+  },
+  [9417] = {
+    'Dragón durmiente',
+    nil,
+  },
+  [9436] = {
+    'Engendro de Bael\'Gar',
+    nil,
+  },
+  [9437] = {
+    'Guarda oscuro Vorfalk',
+    nil,
+  },
+  [9438] = {
+    'Guarda oscuro Bethek',
+    nil,
+  },
+  [9439] = {
+    'Guarda oscuro Uggel',
+    nil,
+  },
+  [9441] = {
+    'Guarda oscuro Zimrel',
+    nil,
+  },
+  [9442] = {
+    'Guarda oscuro Ofgut',
+    nil,
+  },
+  [9443] = {
+    'Guarda oscuro Pelver',
+    nil,
+  },
+  [9445] = {
+    'Guardia oscuro',
+    nil,
+  },
+  [9447] = {
+    'Depositario Escarlata',
+    nil,
+  },
+  [9448] = {
+    'Pretoriano Escarlata',
+    nil,
+  },
+  [9449] = {
+    'Clérigo Escarlata',
+    nil,
+  },
+  [9450] = {
+    'Coadjutor Escarlata',
+    nil,
+  },
+  [9451] = {
+    'Archimago Escarlata',
+    nil,
+  },
+  [9452] = {
+    'Encantador Escarlata',
+    nil,
+  },
+  [9456] = {
+    'Señor de la guerra Krom\'zar',
+    nil,
+  },
+  [9457] = {
+    'Defensor de la Horda',
+    nil,
+  },
+  [9458] = {
+    'Lanzahachas de la Horda',
+    nil,
+  },
+  [9459] = {
+    'Cyrus Therepentio',
+    nil,
+  },
+  [9460] = {
+    'Truhán de Gadgetzan',
+    nil,
+  },
+  [9461] = {
+    'Draco Negro demenciado',
+    'Esbirro de Cyrus',
+  },
+  [9462] = {
+    'Cabecilla Sangrefauce',
+    nil,
+  },
+  [9464] = {
+    'Señor supremo Ror',
+    nil,
+  },
+  [9465] = {
+    'Golhine el Encapuchado',
+    'Instructor de druidas',
+  },
+  [9467] = {
+    'Miblon Gruñediente',
+    nil,
+  },
+  [9476] = {
+    'Velador Presaletal',
+    nil,
+  },
+  [9477] = {
+    'Moco clonado',
+    nil,
+  },
+  [9496] = {
+    'Huevo Gorishi',
+    nil,
+  },
+  [9498] = {
+    'Larva Gorishi',
+    nil,
+  },
+  [9499] = {
+    'Plugger Aropatoso',
+    nil,
+  },
+  [9500] = {
+    'Coima Nagmara',
+    nil,
+  },
+  [9501] = {
+    'Tabernero Adegwa',
+    'Tabernero',
+  },
+  [9502] = {
+    'Falange',
+    nil,
+  },
+  [9503] = {
+    'Soldado Sinroca',
+    nil,
+  },
+  [9516] = {
+    'Lord Pesadilla',
+    nil,
+  },
+  [9517] = {
+    'Señor de las Sombras Fel\'dan',
+    nil,
+  },
+  [9521] = {
+    'Murciélago vil iracundo',
+    nil,
+  },
+  [9522] = {
+    'Emboscador Roca Negra',
+    nil,
+  },
+  [9523] = {
+    'Videntormento Kolkar',
+    nil,
+  },
+  [9524] = {
+    'Invasor Kolkar',
+    nil,
+  },
+  [9525] = {
+    'Valiente Viento Libre',
+    nil,
+  },
+  [9526] = {
+    'Grifo iracundo',
+    nil,
+  },
+  [9527] = {
+    'Hipogrifo iracundo',
+    nil,
+  },
+  [9528] = {
+    'Arathandris Cielargento',
+    'Círculo Esmeralda',
+  },
+  [9529] = {
+    'Maybess Brisa de Río',
+    'Círculo Esmeralda',
+  },
+  [9536] = {
+    'Maxwort Suprandor',
+    nil,
+  },
+  [9537] = {
+    'Hurley Negrálito',
+    nil,
+  },
+  [9538] = {
+    'Sumo verdugo Nuzrak',
+    'Fuerza Expedicionaria de Kargath',
+  },
+  [9539] = {
+    'Sombra de Lexlort',
+    'Fuerza Expedicionaria de Kargath',
+  },
+  [9540] = {
+    'Enohar Cebatruenos',
+    nil,
+  },
+  [9541] = {
+    'Compinche de Negrálito',
+    nil,
+  },
+  [9542] = {
+    'Espíritu de Franclorn',
+    nil,
+  },
+  [9543] = {
+    'Ribbly Llavenrosca',
+    nil,
+  },
+  [9544] = {
+    'Yuka Llavenrosca',
+    nil,
+  },
+  [9545] = {
+    'Parroquiano lúgubre',
+    nil,
+  },
+  [9546] = {
+    'Raschal el Mensajero',
+    nil,
+  },
+  [9547] = {
+    'Parroquiano tragón',
+    nil,
+  },
+  [9548] = {
+    'Cawind Tirojusto',
+    'Forjador de armas de fuego y fabricante de arcos',
+  },
+  [9549] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [9551] = {
+    '[Deprecated for 4.x]Starn',
+    'Forjador de armas de fuego y fabricante de arcos',
+  },
+  [9552] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [9553] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [9554] = {
+    'Parroquiano beodo',
+    nil,
+  },
+  [9555] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [9556] = {
+    'Esbirro can manáfago',
+    nil,
+  },
+  [9558] = {
+    nil,
+    'Maestro de barcos',
+  },
+  [9559] = {
+    'Grisloue',
+    'Maestro de barcos',
+  },
+  [9560] = {
+    'Mariscal Maxwell',
+    nil,
+  },
+  [9561] = {
+    'Jalinda Espiga',
+    nil,
+  },
+  [9562] = {
+    'Helendis Rivacuerno',
+    nil,
+  },
+  [9563] = {
+    'John Andrajoso',
+    nil,
+  },
+  [9564] = {
+    nil,
+    'Maestro de zepelines de Durotar',
+  },
+  [9565] = {
+    'Mayara Alasol',
+    nil,
+  },
+  [9566] = {
+    nil,
+    'Maestro de zepelines de Durotar',
+  },
+  [9567] = {
+    'Test maestro de establos',
+    nil,
+  },
+  [9568] = {
+    'Señor supremo Vermiothalak',
+    nil,
+  },
+  [9576] = {
+    'Maestro de habilidades de Stowmwind',
+    'Maestra de talentos',
+  },
+  [9578] = {
+    'Maestra de habilidades de Forjaz',
+    'Maestra de talentos',
+  },
+  [9579] = {
+    'Maestra de talentos de Darnassus',
+    'Maestra de talentos',
+  },
+  [9580] = {
+    'Maestro de talentos de Orgrimmar',
+    'Maestra de talentos',
+  },
+  [9581] = {
+    'Maestro de habilidades de Cima del Trueno',
+    'Maestra de talentos',
+  },
+  [9582] = {
+    'Maestra de habilidades de Entrañas',
+    'Maestra de talentos',
+  },
+  [9583] = {
+    'Veterano Hacha de Sangre',
+    'Legión Hacha de Sangre',
+  },
+  [9584] = {
+    nil,
+    'Instructora de sastrería',
+  },
+  [9596] = {
+    'Bannok Hacha Macabra',
+    'Campeón de la Legión Pirotigma',
+  },
+  [9599] = {
+    'Arei transformado',
+    nil,
+  },
+  [9600] = {
+    'Loro',
+    nil,
+  },
+  [9601] = {
+    'Espíritu antárbol',
+    nil,
+  },
+  [9605] = {
+    'Asaltante Roca Negra',
+    nil,
+  },
+  [9616] = {
+    'Laris Mecaparra',
+    nil,
+  },
+  [9618] = {
+    'Karna Tripirrem',
+    'Expediciones Marshal',
+  },
+  [9619] = {
+    'Torwa Abrecaminos',
+    nil,
+  },
+  [9621] = {
+    'Moco inmenso',
+    nil,
+  },
+  [9623] = {
+    'Memo 01',
+    nil,
+  },
+  [9636] = {
+    nil,
+    'Objetos comerciables',
+  },
+  [9637] = {
+    'Tótem agostador',
+    nil,
+  },
+  [9657] = {
+    'Humillo',
+    nil,
+  },
+  [9658] = {
+    'Prueba de distracción',
+    nil,
+  },
+  [9660] = {
+    'Agnar Domabestias',
+    nil,
+  },
+  [9662] = {
+    'Prole de duende dardo',
+    nil,
+  },
+  [9676] = {
+    'Tink Silbadentado',
+    'Suministros de ingeniería',
+  },
+  [9680] = {
+    'Asesino de la cresta',
+    nil,
+  },
+  [9682] = {
+    'Alguacil Reginald Windsor',
+    nil,
+  },
+  [9683] = {
+    'Compañera de Lar\'korwi',
+    nil,
+  },
+  [9687] = {
+    'zzOLDTótem Muro de viento',
+    nil,
+  },
+  [9688] = {
+    'zzOLDTótem Muro de viento II',
+    nil,
+  },
+  [9689] = {
+    'zzOLDTótem Muro de viento III',
+    nil,
+  },
+  [9690] = {
+    'Huargo brasal',
+    nil,
+  },
+  [9691] = {
+    'Escórpido Venopunta',
+    nil,
+  },
+  [9692] = {
+    'Asaltante Hacha de Sangre',
+    'Legión Hacha de Sangre',
+  },
+  [9693] = {
+    'Evocador Hacha de Sangre',
+    'Legión Hacha de Sangre',
+  },
+  [9694] = {
+    'Huargo brasal babeante',
+    nil,
+  },
+  [9695] = {
+    'Escórpido Latimorte',
+    nil,
+  },
+  [9696] = {
+    'Huargo Hacha de Sangre',
+    'Legión Escudo del Estigma',
+  },
+  [9697] = {
+    'Huargo brasal gigante',
+    nil,
+  },
+  [9698] = {
+    'Escórpido Colafuego',
+    nil,
+  },
+  [9699] = {
+    'Alfazaque de fuego',
+    nil,
+  },
+  [9700] = {
+    'Cangrejo de lava',
+    nil,
+  },
+  [9701] = {
+    'Escórpido de la cumbre',
+    nil,
+  },
+  [9702] = {
+    '[UNUSED] Grurk',
+    nil,
+  },
+  [9703] = {
+    '[UNUSED] Il\'thurk',
+    nil,
+  },
+  [9704] = {
+    '[UNUSED] Lumurk',
+    nil,
+  },
+  [9705] = {
+    'Vigía de los sueños ilusorio',
+    nil,
+  },
+  [9706] = {
+    'Yorba Llavenrosca',
+    nil,
+  },
+  [9707] = {
+    'Portal del Escudo del Estigma',
+    nil,
+  },
+  [9708] = {
+    'Diablillo ardiente',
+    nil,
+  },
+  [9716] = {
+    'Belicista Hacha de Sangre',
+    'Legión Hacha de Sangre',
+  },
+  [9717] = {
+    'Invocador Hacha de Sangre',
+    'Legión Hacha de Sangre',
+  },
+  [9718] = {
+    nil,
+    'Campeón Hacha de Sangre',
+  },
+  [9736] = {
+    'Intendente Zigris',
+    'Legión Hacha de Sangre',
+  },
+  [9776] = {
+    'Escupidor flamante',
+    nil,
+  },
+  [9777] = {
+    'Duende flamante',
+    nil,
+  },
+  [9778] = {
+    'Incendiario flamante',
+    nil,
+  },
+  [9779] = {
+    'Furibundo flamante',
+    nil,
+  },
+  [9816] = {
+    'Piroguardia Brasadivino',
+    nil,
+  },
+  [9817] = {
+    'Tejetinieblas Puño Negro',
+    'Legión Puño Negro',
+  },
+  [9818] = {
+    'Invocadora Puño Negro',
+    'Legión Puño Negro',
+  },
+  [9819] = {
+    'Veterano Puño Negro',
+    'Legión Puño Negro',
+  },
+  [9820] = {
+    '[UNUSED] [PH] Sirviente del queso Floh',
+    nil,
+  },
+  [9836] = {
+    'Mathredis Fuegostelar',
+    nil,
+  },
+  [9857] = {
+    'Subastadora Grizzlin',
+    nil,
+  },
+  [9858] = {
+    'Subastador Kresky',
+    nil,
+  },
+  [9859] = {
+    'Subastadora Lympkin',
+    nil,
+  },
+  [9862] = {
+    'Legionario Jaedenar',
+    nil,
+  },
+  [9877] = {
+    'Príncipe Xavalis',
+    nil,
+  },
+  [9878] = {
+    'Bestia entrópica',
+    nil,
+  },
+  [9879] = {
+    'Horror entrópico',
+    nil,
+  },
+  [9896] = {
+    'Maestra mundial de establos',
+    'Maestra de establos',
+  },
+  [9936] = {
+    'Gatito corrupto',
+    nil,
+  },
+  [9937] = {
+    'Gatito común',
+    nil,
+  },
+  [9956] = {
+    'Vigilante de las llamas de Forjatiniebla',
+    nil,
+  },
+  [9976] = {
+    nil,
+    'Maestra de establos',
+  },
+  [9977] = {
+    nil,
+    'Maestra de establos',
+  },
+  [9978] = {
+    nil,
+    'Maestra de establos',
+  },
+  [9979] = {
+    nil,
+    'Maestra de establos',
+  },
+  [9980] = {
+    'Shelby Petrepiedra',
+    'Maestra de establos',
+  },
+  [9981] = {
+    nil,
+    'Maestra de establos',
+  },
+  [9982] = {
+    nil,
+    'Maestra de establos',
+  },
+  [9983] = {
+    nil,
+    'Maestra de establos',
+  },
+  [9984] = {
+    'Ulbrek Manofuego',
+    'Maestra de establos',
+  },
+  [9985] = {
+    nil,
+    'Maestra de establos',
+  },
+  [9986] = {
+    'Shyrka Correlobo',
+    'Maestra de establos',
+  },
+  [9987] = {
+    nil,
+    'Maestra de establos',
+  },
+  [9988] = {
+    nil,
+    'Maestra de establos',
+  },
+  [9989] = {
+    'Lina Hogartufa',
+    'Maestra de establos',
+  },
+  [9997] = {
+    nil,
+    'Expediciones Marshal',
+  },
+  [9998] = {
+    nil,
+    'Expediciones Marshal',
+  },
+  [10016] = {
+    'Rata corrupta',
+    nil,
+  },
+  [10017] = {
+    'Curiana corrupta',
+    nil,
+  },
+  [10036] = {
+    'Déspota Murohelecho',
+    nil,
+  },
+  [10037] = {
+    'Guardia de Villa del Lago',
+    nil,
+  },
+  [10038] = {
+    'Miembro de La Guardia Nocturna',
+    'La Guardia Nocturna',
+  },
+  [10040] = {
+    'Guardia de la colmena Gorishi',
+    nil,
+  },
+  [10041] = {
+    'Reina de la colmena Gorishi',
+    nil,
+  },
+  [10042] = {
+    'Dientes de sable corrupto',
+    nil,
+  },
+  [10043] = {
+    'Compinche de Ribbly',
+    nil,
+  },
+  [10045] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10046] = {
+    'Bethaine Martílex',
+    'Maestra de establos',
+  },
+  [10047] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10048] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10049] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10050] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10051] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10052] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10053] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10054] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10055] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10056] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10057] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10058] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10059] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10060] = {
+    'Mugrín',
+    'Maestra de establos',
+  },
+  [10061] = {
+    'Killium Dedorroca',
+    'Maestra de establos',
+  },
+  [10062] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10063] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10076] = {
+    'Suma sacerdotisa de Thaurissan',
+    nil,
+  },
+  [10077] = {
+    'Faucemuerte',
+    nil,
+  },
+  [10078] = {
+    'Chispa terrorífica',
+    nil,
+  },
+  [10079] = {
+    'Valiente Cuerno de Luna',
+    nil,
+  },
+  [10080] = {
+    'Sandarr Asaltadunas',
+    nil,
+  },
+  [10081] = {
+    'Ánima de polvo',
+    nil,
+  },
+  [10083] = {
+    'Flamaescama Garra de Furia',
+    nil,
+  },
+  [10084] = {
+    'Cría Garra de Furia',
+    nil,
+  },
+  [10085] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10086] = {
+    'Hesuwa Tronacuerno',
+    'Maestra de establos',
+  },
+  [10088] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10089] = {
+    nil,
+    'Maestra de establos',
+  },
+  [10090] = {
+    'Belia Tronagranito',
+    'Maestra de establos',
+  },
+  [10096] = {
+    'Alto justiciero Pedrasiniestra',
+    nil,
+  },
+  [10116] = {
+    'Esclavo',
+    nil,
+  },
+  [10117] = {
+    'Esclavo torturado',
+    nil,
+  },
+  [10118] = {
+    'Nessa Cantosombrío',
+    'Suministros de pesca',
+  },
+  [10120] = {
+    'Depositario de la cámara acorazada',
+    nil,
+  },
+  [10136] = {
+    'Químico Fuely',
+    nil,
+  },
+  [10156] = {
+    'Muñeco de pruebas Scott',
+    nil,
+  },
+  [10157] = {
+    'Oráculo lechúcico lunar',
+    nil,
+  },
+  [10158] = {
+    'Lechúcico lunar',
+    nil,
+  },
+  [10159] = {
+    'Lechúcico lunar joven',
+    nil,
+  },
+  [10160] = {
+    'Lechúcico lunar enfurecido',
+    nil,
+  },
+  [10161] = {
+    'Cría de El Grajero',
+    nil,
+  },
+  [10162] = {
+    nil,
+    'Señor de Roca Negra',
+  },
+  [10177] = {
+    'Escarabajo de la cumbre',
+    nil,
+  },
+  [10178] = {
+    'Mecazancudo verde fosforito',
+    nil,
+  },
+  [10179] = {
+    'Mecazancudo blanco modelo B',
+    nil,
+  },
+  [10181] = {
+    'Lady Sylvanas Brisaveloz',
+    'Reina alma en pena',
+  },
+  [10182] = {
+    nil,
+    'Campeón de la Horda',
+  },
+  [10183] = {
+    'Tótem Centella lunar',
+    nil,
+  },
+  [10197] = {
+    'Mezzir el Aullador',
+    nil,
+  },
+  [10198] = {
+    'Kashoch el Atracador',
+    nil,
+  },
+  [10199] = {
+    'Pardo Patanieve',
+    nil,
+  },
+  [10217] = {
+    'Tótem Sacudida de llamas',
+    nil,
+  },
+  [10218] = {
+    'Guarda de sanación excelente',
+    nil,
+  },
+  [10221] = {
+    'Cachorro de huargo Hacha de Sangre',
+    nil,
+  },
+  [10256] = {
+    '[UNUSED] Instructor maestro de armas mundial',
+    'Maestra de armas',
+  },
+  [10258] = {
+    'Guardián de El Grajero',
+    nil,
+  },
+  [10259] = {
+    'Cachorro de huargo',
+    nil,
+  },
+  [10261] = {
+    'Can manáfago ardiente',
+    nil,
+  },
+  [10263] = {
+    'Guardia vil ardiente',
+    nil,
+  },
+  [10264] = {
+    'Solakar Corona de Fuego',
+    nil,
+  },
+  [10265] = {
+    'UNUSED [PH] Guardia de la Corona de Fuego',
+    nil,
+  },
+  [10266] = {
+    nil,
+    'Aprendiz herrero',
+  },
+  [10267] = {
+    'Tinkee Vaporio',
+    nil,
+  },
+  [10268] = {
+    'Gizrul el Esclavista',
+    nil,
+  },
+  [10276] = {
+    'Rotgath Barbapétrea',
+    'Aprendiz herrero',
+  },
+  [10277] = {
+    'Groum Barbapétrea',
+    'Aprendiz herrero',
+  },
+  [10278] = {
+    'Thrag Pezuña Pétrea',
+    'Aprendiz herrero',
+  },
+  [10290] = {
+    'Moco de Frondavil capturado',
+    nil,
+  },
+  [10291] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [10292] = {
+    'Rombulus Luna Helada',
+    nil,
+  },
+  [10293] = {
+    'Dulcinea Luna Helada',
+    'Mercader de armaduras de tela',
+  },
+  [10294] = {
+    'Malakar Luna Helada',
+    nil,
+  },
+  [10295] = {
+    nil,
+    'Instructora de bastones',
+  },
+  [10296] = {
+    'Acride',
+    nil,
+  },
+  [10297] = {
+    'Gerratys Corredor de la Noche',
+    nil,
+  },
+  [10298] = {
+    'Traelion Sombrusurro',
+    'Instructor de armas arrojadizas',
+  },
+  [10299] = {
+    'Acride',
+    'Legión Escudo del Estigma',
+  },
+  [10301] = {
+    'Jaron Tallapiedras',
+    'Liga de Expedicionarios',
+  },
+  [10302] = {
+    nil,
+    'Expediciones Marshal',
+  },
+  [10303] = {
+    'Ventisca Pezuña Umbría',
+    nil,
+  },
+  [10304] = {
+    'Aurora Clamacielos',
+    nil,
+  },
+  [10305] = {
+    'Umi Risitas',
+    nil,
+  },
+  [10306] = {
+    'Trull Fallarruina',
+    nil,
+  },
+  [10307] = {
+    'Médica bruja Mau\'ari',
+    nil,
+  },
+  [10316] = {
+    'Carcelero Puño Negro',
+    'Legión Puño Negro',
+  },
+  [10317] = {
+    'Élite Puño Negro',
+    'Legión Puño Negro',
+  },
+  [10318] = {
+    'Asesino Puño Negro',
+    'Legión Puño Negro',
+  },
+  [10319] = {
+    'Guarda de hierro Puño Negro',
+    'Legión Puño Negro',
+  },
+  [10321] = {
+    'Brasaliza',
+    nil,
+  },
+  [10322] = {
+    'Sable de hielo anciano',
+    nil,
+  },
+  [10323] = {
+    'Viscoso',
+    nil,
+  },
+  [10336] = {
+    'Leopardo primigenio',
+    nil,
+  },
+  [10337] = {
+    'Dientes de sable leonado',
+    nil,
+  },
+  [10338] = {
+    'Dientes de sable dorado',
+    nil,
+  },
+  [10339] = {
+    nil,
+    'Montura de Rend Puño Negro',
+  },
+  [10340] = {
+    'Vaelastrasz el Rojo',
+    nil,
+  },
+  [10357] = {
+    'Ressan el Agujas',
+    nil,
+  },
+  [10358] = {
+    'Sombra de Felicent',
+    nil,
+  },
+  [10360] = {
+    'Kergul Hacha de Sangre',
+    'Maestra de batalla de la Garganta Grito de Guerra',
+  },
+  [10361] = {
+    'Gruul Filoscuro',
+    'Forjadora de armas',
+  },
+  [10362] = {
+    nil,
+    'Instructor de armas arrojadizas',
+  },
+  [10364] = {
+    'Yaelika Garra Lejana',
+    'Suministros de venenos y componentes',
+  },
+  [10365] = {
+    nil,
+    'Maestra de armas',
+  },
+  [10366] = {
+    'Guardia Dragón Garra de Furia',
+    nil,
+  },
+  [10367] = {
+    'Shrye Puñofuria',
+    'Alimentos y bebidas',
+  },
+  [10368] = {
+    nil,
+    'Instructora de bastones',
+  },
+  [10369] = {
+    nil,
+    'Mercader de armas',
+  },
+  [10371] = {
+    'Capitán Garra de Furia',
+    nil,
+  },
+  [10372] = {
+    'Lenguáfoga Garra de Furia',
+    nil,
+  },
+  [10374] = {
+    'Araña de la cumbre',
+    nil,
+  },
+  [10375] = {
+    'Arañita de la cumbre',
+    nil,
+  },
+  [10376] = {
+    'Colmillo de cristal',
+    nil,
+  },
+  [10377] = {
+    '[Deprecated for 4.x]Elu',
+    'Aprendiz de jinetes del viento',
+  },
+  [10378] = {
+    'Omusa Tronacuerno',
+    'Maestra de jinetes del viento',
+  },
+  [10379] = {
+    'Altsoba Tótem de Ira',
+    'Mercader de armas',
+  },
+  [10380] = {
+    'Sanuye Tótem de Runa',
+    'Mercader de armaduras de cuero',
+  },
+  [10381] = {
+    'Cadáver devastado',
+    nil,
+  },
+  [10382] = {
+    'Cadáver destrozado',
+    nil,
+  },
+  [10383] = {
+    'Cadáver deshecho',
+    nil,
+  },
+  [10384] = {
+    'Ciudadano espectral',
+    nil,
+  },
+  [10385] = {
+    'Ciudadano fantasmal',
+    nil,
+  },
+  [10387] = {
+    'Aparición vengativa',
+    nil,
+  },
+  [10388] = {
+    'Aparición maliciosa',
+    nil,
+  },
+  [10389] = {
+    'Aparición de cólera',
+    nil,
+  },
+  [10390] = {
+    'Guardián esquelético',
+    nil,
+  },
+  [10391] = {
+    'Rabioso esquelético',
+    nil,
+  },
+  [10394] = {
+    'Avizor Guardia Negra',
+    nil,
+  },
+  [10395] = {
+    '[UNUSED] Guerrero Guardia Negra',
+    nil,
+  },
+  [10397] = {
+    '[UNUSED] Verdugo Guardia Negra',
+    nil,
+  },
+  [10398] = {
+    'Taumaturgo umbrío Thuzadin',
+    nil,
+  },
+  [10399] = {
+    'Acólito Thuzadin',
+    nil,
+  },
+  [10400] = {
+    'Nigromante Thuzadin',
+    nil,
+  },
+  [10401] = {
+    '[UNUSED] Señor de las Sombras Thuzadin',
+    nil,
+  },
+  [10402] = {
+    '[UNUSED] Wight el Caníbal',
+    nil,
+  },
+  [10403] = {
+    '[UNUSED] Ente devorador',
+    nil,
+  },
+  [10405] = {
+    'Necrófago de peste',
+    nil,
+  },
+  [10406] = {
+    'Cuervoso necrófago',
+    nil,
+  },
+  [10407] = {
+    'Necrófago desgarracarne',
+    nil,
+  },
+  [10408] = {
+    'Gárgola Ventorroca',
+    nil,
+  },
+  [10409] = {
+    'Estridador Alaroca',
+    nil,
+  },
+  [10411] = {
+    'Ojo de Naxxramas',
+    nil,
+  },
+  [10412] = {
+    'Reptador de la cripta',
+    nil,
+  },
+  [10413] = {
+    'Bestia de la cripta',
+    nil,
+  },
+  [10414] = {
+    'Horror de retazos',
+    nil,
+  },
+  [10415] = {
+    'Cristal Ash\'ari',
+    nil,
+  },
+  [10416] = {
+    'Vomitón bílico',
+    nil,
+  },
+  [10417] = {
+    'Eructaveneno',
+    nil,
+  },
+  [10418] = {
+    'Custodio resucitado',
+    nil,
+  },
+  [10419] = {
+    'Conjurador resucitado',
+    nil,
+  },
+  [10420] = {
+    'Iniciado resucitado',
+    nil,
+  },
+  [10421] = {
+    'Defensor resucitado',
+    nil,
+  },
+  [10422] = {
+    'Hechicero resucitado',
+    nil,
+  },
+  [10423] = {
+    'Sacerdote resucitado',
+    nil,
+  },
+  [10424] = {
+    'Gallardo resucitado',
+    nil,
+  },
+  [10425] = {
+    'Mago de batalla resucitado',
+    nil,
+  },
+  [10426] = {
+    'Inquisidor resucitado',
+    nil,
+  },
+  [10427] = {
+    '[Deprecated for 4.x]Pao\'ka Monte Presto',
+    nil,
+  },
+  [10428] = {
+    '[Deprecated for 4.x]Motega Pirocabello',
+    nil,
+  },
+  [10429] = {
+    'Jefe de Guerra Rend Puño Negro',
+    nil,
+  },
+  [10430] = {
+    'La Bestia',
+    nil,
+  },
+  [10431] = {
+    'Gregor Petragris',
+    'El Alba Argenta',
+  },
+  [10433] = {
+    'Marduk Pozonegro',
+    nil,
+  },
+  [10435] = {
+    'Magistrado Barthilas',
+    nil,
+  },
+  [10436] = {
+    'Baronesa Anastari',
+    nil,
+  },
+  [10438] = {
+    'Maleki el Pálido',
+    nil,
+  },
+  [10439] = {
+    'Ramstein el Empachador',
+    nil,
+  },
+  [10440] = {
+    'Barón Osahendido',
+    nil,
+  },
+  [10441] = {
+    'Rata apestada',
+    nil,
+  },
+  [10442] = {
+    'Cría cromática',
+    nil,
+  },
+  [10443] = {
+    '[UNUSED] Gustav Montesco',
+    'Instructora en el manejo de la espada',
+  },
+  [10444] = {
+    nil,
+    'Instructora de armas de asta',
+  },
+  [10445] = {
+    nil,
+    'Información sobre la Feria de la Luna Negra',
+  },
+  [10447] = {
+    'Dragauro cromático',
+    nil,
+  },
+  [10448] = {
+    nil,
+    'Instructora en el manejo de la espada',
+  },
+  [10449] = {
+    nil,
+    'Instructora de armas de asta',
+  },
+  [10451] = {
+    nil,
+    'Instructora de bastones',
+  },
+  [10452] = {
+    'Farbrahm Puñacerado',
+    nil,
+  },
+  [10453] = {
+    'Grimbur Hachasílex',
+    nil,
+  },
+  [10454] = {
+    'Filliwick Silbaplumas',
+    nil,
+  },
+  [10455] = {
+    'Binny Brotasable',
+    nil,
+  },
+  [10459] = {
+    'Visualización Desgarro de Dragón',
+    nil,
+  },
+  [10460] = {
+    'Prospector Ferrobota',
+    nil,
+  },
+  [10461] = {
+    'Insecto apestado',
+    nil,
+  },
+  [10463] = {
+    'Alma en pena plañidera',
+    nil,
+  },
+  [10464] = {
+    'Alma en pena gemebunda',
+    nil,
+  },
+  [10466] = {
+    'Styleen Carretilla de Plata',
+    'Vendedora de objetos exóticos',
+  },
+  [10467] = {
+    'Tótem Marea de maná',
+    nil,
+  },
+  [10468] = {
+    'Felnok Acerovera',
+    nil,
+  },
+  [10469] = {
+    'Adepto de Scholomance',
+    nil,
+  },
+  [10470] = {
+    'Neófito de Scholomance',
+    nil,
+  },
+  [10471] = {
+    'Acólito de Scholomance',
+    nil,
+  },
+  [10472] = {
+    'Ocultista de Scholomance',
+    nil,
+  },
+  [10473] = {
+    'Taumaturgo umbrío de Scholomance',
+    nil,
+  },
+  [10475] = {
+    'Estudiante de Scholomance',
+    nil,
+  },
+  [10476] = {
+    'Necrólito de Scholomance',
+    nil,
+  },
+  [10477] = {
+    'Nigromante de Scholomance',
+    nil,
+  },
+  [10478] = {
+    'Esqueleto astillado',
+    nil,
+  },
+  [10479] = {
+    'Cadáver husmeador',
+    nil,
+  },
+  [10480] = {
+    'Cadáver inestable',
+    nil,
+  },
+  [10481] = {
+    'Cadáver reanimado',
+    nil,
+  },
+  [10482] = {
+    'Lacayo resucitado',
+    nil,
+  },
+  [10483] = {
+    'Despellejador resucitado',
+    nil,
+  },
+  [10484] = {
+    'Terror resucitado',
+    nil,
+  },
+  [10485] = {
+    'Aberración resucitada',
+    nil,
+  },
+  [10486] = {
+    'Guerrero resucitado',
+    nil,
+  },
+  [10487] = {
+    'Protector resucitado',
+    nil,
+  },
+  [10488] = {
+    'Ensamblaje resucitado',
+    nil,
+  },
+  [10489] = {
+    'Guarda resucitado',
+    nil,
+  },
+  [10491] = {
+    'Guardahuesos resucitado',
+    nil,
+  },
+  [10492] = {
+    'Mago oscuro resucitado',
+    nil,
+  },
+  [10493] = {
+    'Hechicero resucitado',
+    nil,
+  },
+  [10494] = {
+    'Necrófago decrépito',
+    nil,
+  },
+  [10495] = {
+    'Necrófago malsano',
+    nil,
+  },
+  [10497] = {
+    'Necrófago andrajoso',
+    nil,
+  },
+  [10498] = {
+    'Tutor espectral',
+    nil,
+  },
+  [10499] = {
+    'Investigador espectral',
+    nil,
+  },
+  [10500] = {
+    'Maestro espectral',
+    nil,
+  },
+  [10505] = {
+    'Instructora Malicia',
+    nil,
+  },
+  [10506] = {
+    'Kirtonos el Heraldo',
+    nil,
+  },
+  [10507] = {
+    'El Devorador',
+    nil,
+  },
+  [10508] = {
+    'Ras Murmuhielo',
+    nil,
+  },
+  [10509] = {
+    'Jed Vigía de las Runas',
+    'Legión Puño Negro',
+  },
+  [10510] = {
+    'Babosa apestada',
+    nil,
+  },
+  [10516] = {
+    'La Imperdonable',
+    nil,
+  },
+  [10536] = {
+    'Cresa apestada',
+    nil,
+  },
+  [10537] = {
+    '[Deprecated for 4.x]Vigiarrisco Cuerno Largo',
+    nil,
+  },
+  [10539] = {
+    '[Deprecated for 4.x]Hagar Pezuña del Rayo',
+    nil,
+  },
+  [10541] = {
+    'Termómetro de Krakle',
+    nil,
+  },
+  [10556] = {
+    'Peón vago',
+    nil,
+  },
+  [10557] = {
+    'zzOLDTótem Lengua de Fuego IV',
+    nil,
+  },
+  [10558] = {
+    'Cantachimeneas Forresten',
+    nil,
+  },
+  [10577] = {
+    'Escarabajo de la cripta',
+    nil,
+  },
+  [10578] = {
+    nil,
+    'Médico brujo en prácticas',
+  },
+  [10579] = {
+    'Kirtonos el Heraldo (Visualización hechizo)',
+    nil,
+  },
+  [10580] = {
+    'Zombi fétido',
+    nil,
+  },
+  [10581] = {
+    '[Deprecated for 4.x]Arikara joven',
+    nil,
+  },
+  [10582] = {
+    'Perro',
+    'Padre de los cachorros',
+  },
+  [10583] = {
+    nil,
+    'Maestro de vuelo',
+  },
+  [10584] = {
+    'Urok Aullasino',
+    nil,
+  },
+  [10596] = {
+    'Madre Telabrasada',
+    nil,
+  },
+  [10598] = {
+    'Prole de Telabrasada',
+    nil,
+  },
+  [10599] = {
+    'Hulfnar Tótem de Piedra',
+    nil,
+  },
+  [10600] = {
+    'Thontek Pezuña Estrepitosa',
+    nil,
+  },
+  [10601] = {
+    'Déspota Urok',
+    nil,
+  },
+  [10602] = {
+    'Ogro Magus Urok',
+    nil,
+  },
+  [10604] = {
+    'Cazadora Nhemai',
+    nil,
+  },
+  [10605] = {
+    'Médico Escarlata',
+    nil,
+  },
+  [10606] = {
+    'Cazadora Yaeliura',
+    nil,
+  },
+  [10608] = {
+    'Sacerdote Escarlata',
+    nil,
+  },
+  [10610] = {
+    nil,
+    'Equipo de mortero enano',
+  },
+  [10611] = {
+    'Enanín',
+    'Equipo de mortero enano',
+  },
+  [10612] = {
+    'Guardia Wachabe',
+    nil,
+  },
+  [10616] = {
+    'Supervisora Raelen',
+    nil,
+  },
+  [10617] = {
+    '[Deprecated for 4.x]Mensajero Galak',
+    nil,
+  },
+  [10618] = {
+    'Rivern Ventogélido',
+    'Instructor de sableinvernales',
+  },
+  [10619] = {
+    'Glaciar',
+    'Guardiana de Rivern',
+  },
+  [10636] = {
+    'Kodo de carga',
+    nil,
+  },
+  [10637] = {
+    'Malyfous Martilloscuro',
+    'La Hermandad del Torio',
+  },
+  [10638] = {
+    '[Deprecated for 4.x]Kanati Nube Gris',
+    nil,
+  },
+  [10640] = {
+    'Pataroble',
+    nil,
+  },
+  [10641] = {
+    'Quebrarramas',
+    nil,
+  },
+  [10643] = {
+    'Aletereje',
+    nil,
+  },
+  [10644] = {
+    'Aullanieblas',
+    nil,
+  },
+  [10645] = {
+    '[Deprecated for 4.x]Thalia Ocultaámbar',
+    nil,
+  },
+  [10646] = {
+    '[Deprecated for 4.x]Lakota Son del Viento',
+    nil,
+  },
+  [10647] = {
+    'Príncipe Raze',
+    nil,
+  },
+  [10656] = {
+    'Guardián manáfago',
+    nil,
+  },
+  [10657] = {
+    'Felino corrupto',
+    nil,
+  },
+  [10658] = {
+    'Gatito de Winna',
+    nil,
+  },
+  [10659] = {
+    'Cría de cobalto',
+    nil,
+  },
+  [10660] = {
+    'Estirpe de cobalto',
+    nil,
+  },
+  [10661] = {
+    'Zampaconjuros',
+    nil,
+  },
+  [10662] = {
+    'Hechifauces',
+    nil,
+  },
+  [10663] = {
+    'Zarpamaná',
+    nil,
+  },
+  [10664] = {
+    'Arúspice',
+    nil,
+  },
+  [10665] = {
+    'Boticario auxiliar Holland',
+    'Sociedad Real de Boticarios',
+  },
+  [10668] = {
+    'Cadáver apaleado',
+    nil,
+  },
+  [10676] = {
+    'Asaltante Jhash',
+    nil,
+  },
+  [10678] = {
+    'Cría de dragón apestada',
+    nil,
+  },
+  [10680] = {
+    'Tejetinieblas Puño Negro invocado',
+    'Legión Puño Negro',
+  },
+  [10681] = {
+    'Veterano Puño Negro invocado',
+    'Legión Puño Negro',
+  },
+  [10682] = {
+    'Asaltante Kerr',
+    nil,
+  },
+  [10683] = {
+    'Criadora de El Grajero',
+    nil,
+  },
+  [10684] = {
+    'Altonato arrepentido',
+    nil,
+  },
+  [10685] = {
+    'Puerco',
+    nil,
+  },
+  [10696] = {
+    'Defensor de Refugio de la Zaga',
+    nil,
+  },
+  [10697] = {
+    'Babosa bílica',
+    nil,
+  },
+  [10698] = {
+    'Zombi invocado',
+    nil,
+  },
+  [10699] = {
+    'Escarabajo carroñero',
+    nil,
+  },
+  [10716] = {
+    'Murciélago Timbralevín',
+    nil,
+  },
+  [10717] = {
+    'Parásito temporal',
+    nil,
+  },
+  [10719] = {
+    'Heraldo de Thrall',
+    nil,
+  },
+  [10720] = {
+    '[Deprecated for 4.x]Asesino Galak',
+    nil,
+  },
+  [10721] = {
+    'Guerrero novicio',
+    nil,
+  },
+  [10736] = {
+    'Muñeco-diana Mago 60 invencible',
+    nil,
+  },
+  [10738] = {
+    'Gran Jefe Nevada',
+    nil,
+  },
+  [10739] = {
+    'Mulgris Río Hondo',
+    nil,
+  },
+  [10742] = {
+    'Domadragones Puño Negro',
+    'Legión Puño Negro',
+  },
+  [10756] = {
+    'Elemental hirviente',
+    nil,
+  },
+  [10757] = {
+    'Elemental en ebullición',
+    nil,
+  },
+  [10758] = {
+    'Bandido Tótem Siniestro',
+    nil,
+  },
+  [10759] = {
+    '[Deprecated for 4.x]Vapuleador Tótem Siniestro',
+    nil,
+  },
+  [10760] = {
+    '[Deprecated for 4.x]Geomántico Tótem Siniestro',
+    nil,
+  },
+  [10761] = {
+    '[Deprecated for 4.x]Atracador Tótem Siniestro',
+    nil,
+  },
+  [10762] = {
+    'Matón Puño Negro',
+    nil,
+  },
+  [10778] = {
+    'Janice Piedra Mácula',
+    nil,
+  },
+  [10779] = {
+    'Ardilla infectada',
+    nil,
+  },
+  [10780] = {
+    'Ciervo infectado',
+    nil,
+  },
+  [10781] = {
+    'Sobrestante real Bauhaus',
+    'Censo de Entrañas',
+  },
+  [10782] = {
+    'Agente Real Bathrilor',
+    'Censo de Ventormenta',
+  },
+  [10783] = {
+    'Orbe de engaño (orco, hombre)',
+    nil,
+  },
+  [10784] = {
+    'Orbe de engaño (orco, mujer)',
+    nil,
+  },
+  [10785] = {
+    'Orbe de engaño (tauren, hombre)',
+    nil,
+  },
+  [10786] = {
+    'Orbe de engaño (tauren, mujer)',
+    nil,
+  },
+  [10787] = {
+    'Orbe de engaño (trol, hombre)',
+    nil,
+  },
+  [10788] = {
+    'Orbe de engaño (trol, mujer)',
+    nil,
+  },
+  [10789] = {
+    'Orbe de engaño (no-muerto)',
+    nil,
+  },
+  [10790] = {
+    'Orbe de engaño (no-muerta)',
+    nil,
+  },
+  [10791] = {
+    'Orbe de engaño (enano)',
+    nil,
+  },
+  [10792] = {
+    'Orbe de engaño (enana)',
+    nil,
+  },
+  [10793] = {
+    'Orbe de engaño (gnomo, hombre)',
+    nil,
+  },
+  [10794] = {
+    'Orbe de engaño (gnomo, mujer)',
+    nil,
+  },
+  [10795] = {
+    'Orbe de engaño (humano)',
+    nil,
+  },
+  [10796] = {
+    'Orbe de engaño (humana)',
+    nil,
+  },
+  [10797] = {
+    'Orbe de engaño (elfo de la noche)',
+    nil,
+  },
+  [10798] = {
+    'Orbe de engaño (elfa de la noche)',
+    nil,
+  },
+  [10799] = {
+    nil,
+    'El Maldito',
+  },
+  [10800] = {
+    'Warosh el Redimido',
+    nil,
+  },
+  [10801] = {
+    'Necrófago farfullante',
+    nil,
+  },
+  [10802] = {
+    'Hitah\'ya la Guardiana',
+    nil,
+  },
+  [10803] = {
+    'Fusilero Ruedas',
+    nil,
+  },
+  [10804] = {
+    'Fusilero de mediocampo',
+    nil,
+  },
+  [10805] = {
+    'Avistador Klemmy',
+    nil,
+  },
+  [10808] = {
+    'Timmy el Cruel',
+    nil,
+  },
+  [10809] = {
+    'Pidrespina',
+    nil,
+  },
+  [10810] = {
+    '[UNUSED] Hija de Majestis',
+    nil,
+  },
+  [10811] = {
+    'Instructor Galford',
+    nil,
+  },
+  [10812] = {
+    'Gran cruzado Dathrohan',
+    nil,
+  },
+  [10814] = {
+    'Guardia de élite cromático',
+    nil,
+  },
+  [10816] = {
+    'Esqueleto deambulante',
+    nil,
+  },
+  [10817] = {
+    'Duggan Martillo Salvaje',
+    nil,
+  },
+  [10818] = {
+    'Robaalmas caballero de la Muerte',
+    nil,
+  },
+  [10819] = {
+    'Barón Malasangre',
+    nil,
+  },
+  [10820] = {
+    'Duque Atracador',
+    nil,
+  },
+  [10821] = {
+    'Hed\'mush el Podrido',
+    nil,
+  },
+  [10822] = {
+    'Señor de la guerra Thresh\'jin',
+    nil,
+  },
+  [10823] = {
+    'Ramurdimbre Zul\'Brin',
+    nil,
+  },
+  [10824] = {
+    'Cazador letal Lanzalcón',
+    nil,
+  },
+  [10825] = {
+    'Gish el Inamovible',
+    nil,
+  },
+  [10826] = {
+    'Lord Hoz Oscura',
+    nil,
+  },
+  [10827] = {
+    'Portavoz de la muerte Selendre',
+    'Culto de los Malditos',
+  },
+  [10828] = {
+    'Lynnia Abbendis',
+    nil,
+  },
+  [10836] = {
+    'Granjero Dalson',
+    nil,
+  },
+  [10837] = {
+    'Sumo ejecutor Derrington',
+    nil,
+  },
+  [10838] = {
+    'Comandante Ashlam Puñovalor',
+    nil,
+  },
+  [10839] = {
+    'Oficial Argenta Garush',
+    'El Alba Argenta',
+  },
+  [10840] = {
+    'Oficial Argenta Purocorazón',
+    'El Alba Argenta',
+  },
+  [10856] = {
+    'Intendente Argenta Hasana',
+    'El Alba Argenta',
+  },
+  [10857] = {
+    'Intendente Argenta Chispillo',
+    'El Alba Argenta',
+  },
+  [10876] = {
+    'Escarabajo no-muerto',
+    nil,
+  },
+  [10877] = {
+    'Mensajero Sentencia',
+    nil,
+  },
+  [10878] = {
+    'Heraldo Acechalunas',
+    nil,
+  },
+  [10879] = {
+    'Presagista Balthazad',
+    nil,
+  },
+  [10880] = {
+    'Clamaguerras Gorlach',
+    nil,
+  },
+  [10881] = {
+    'Asaltaviento Correbrisa',
+    nil,
+  },
+  [10882] = {
+    '[Deprecated for 4.x]Arikara',
+    nil,
+  },
+  [10896] = {
+    '[Deprecated for 4.x]Arnak Tótem Siniestro',
+    nil,
+  },
+  [10897] = {
+    nil,
+    'Maestro de hipogrifos',
+  },
+  [10898] = {
+    'Forjador de armaduras Puño Negro',
+    'Legión Puño Negro',
+  },
+  [10899] = {
+    'Goraluk Yunquegrieta',
+    'Forjador de armaduras de la Legión Puño Negro',
+  },
+  [10901] = {
+    'Tradicionalista Polkelt',
+    nil,
+  },
+  [10902] = {
+    'Torre uno de Andorhal',
+    nil,
+  },
+  [10903] = {
+    'Torre dos de Andorhal',
+    nil,
+  },
+  [10904] = {
+    'Torre tres de Andorhal',
+    nil,
+  },
+  [10905] = {
+    'Torre cuatro de Andorhal',
+    nil,
+  },
+  [10916] = {
+    'Corredor Nevada',
+    nil,
+  },
+  [10919] = {
+    'Trol Rompelanzas',
+    nil,
+  },
+  [10920] = {
+    'Kelek Guardacielo',
+    'Círculo Esmeralda',
+  },
+  [10921] = {
+    'Taronn Plumarroja',
+    'Círculo Esmeralda',
+  },
+  [10922] = {
+    'Greta Pezuñamusgo',
+    'Círculo Esmeralda',
+  },
+  [10923] = {
+    'Tenell Correhoja',
+    'Círculo Esmeralda',
+  },
+  [10924] = {
+    'Ivy Correhoja',
+    'Círculo Esmeralda',
+  },
+  [10925] = {
+    'Gusano en podredumbre',
+    nil,
+  },
+  [10926] = {
+    'Pamela Rutagrana',
+    nil,
+  },
+  [10927] = {
+    'Marlene Rutagrana',
+    nil,
+  },
+  [10928] = {
+    'Esbirro súcubo',
+    nil,
+  },
+  [10930] = {
+    'Dargh Tirojusto',
+    'Instructor de cazadores',
+  },
+  [10936] = {
+    'Joseph Rutagrana',
+    nil,
+  },
+  [10937] = {
+    'Capitán Rutagrana',
+    nil,
+  },
+  [10938] = {
+    'Rutagrana el Corrompido',
+    nil,
+  },
+  [10939] = {
+    'Marduk el Negro',
+    nil,
+  },
+  [10940] = {
+    'Fantasma del pasado',
+    nil,
+  },
+  [10941] = {
+    '[Deprecated for 4.x]Wizlo Rodabrillante',
+    nil,
+  },
+  [10943] = {
+    'Guardián decrépito',
+    nil,
+  },
+  [10944] = {
+    'Davil Fuegoluz',
+    nil,
+  },
+  [10946] = {
+    'Horgus el Devastador',
+    nil,
+  },
+  [10947] = {
+    'Traidor de Villa Darrow',
+    nil,
+  },
+  [10948] = {
+    'Defensor de Villa Darrow',
+    nil,
+  },
+  [10949] = {
+    'Discípulo de la Mano de Plata',
+    nil,
+  },
+  [10950] = {
+    'Miliciano Rutagrana',
+    nil,
+  },
+  [10951] = {
+    'Cadáver merodeador',
+    nil,
+  },
+  [10952] = {
+    'Esqueleto merodeador',
+    nil,
+  },
+  [10953] = {
+    'Sirviente de Horgus',
+    nil,
+  },
+  [10954] = {
+    'Flebotomista',
+    nil,
+  },
+  [10955] = {
+    'Elemental de agua invocado',
+    nil,
+  },
+  [10956] = {
+    'Sirena naga',
+    nil,
+  },
+  [10977] = {
+    nil,
+    'Expediciones Marshal',
+  },
+  [10979] = {
+    'Can Escarlata',
+    nil,
+  },
+  [10980] = {
+    'Yeti mecánico de Umi',
+    nil,
+  },
+  [10981] = {
+    'Lobo Gélido',
+    nil,
+  },
+  [10982] = {
+    'Alimaña Mostacho Blanco',
+    nil,
+  },
+  [10983] = {
+    'Trol Hacha Invernal',
+    nil,
+  },
+  [10984] = {
+    'Rabioso Hacha Invernal',
+    nil,
+  },
+  [10985] = {
+    'Gigante de hielo',
+    nil,
+  },
+  [10986] = {
+    'Arpía Veloneve',
+    nil,
+  },
+  [10987] = {
+    'Trogg Ferrohondo',
+    nil,
+  },
+  [10988] = {
+    'Espíritu de kodo',
+    nil,
+  },
+  [10989] = {
+    'Elemental de ventisca',
+    nil,
+  },
+  [10990] = {
+    'Carnero de Alterac',
+    nil,
+  },
+  [10991] = {
+    'Gnoll Zarpa Salvaje',
+    nil,
+  },
+  [10992] = {
+    'Pantera iracunda',
+    nil,
+  },
+  [10993] = {
+    'Tuizgüik Muelodentado',
+    'Instructor de ingeniería',
+  },
+  [10996] = {
+    'Héroe caído',
+    nil,
+  },
+  [10997] = {
+    'Willey Rompeesperanzas',
+    nil,
+  },
+  [11016] = {
+    'Arko\'narin capturada',
+    nil,
+  },
+  [11017] = {
+    nil,
+    'Instructor de ingeniería',
+  },
+  [11019] = {
+    'Jessir Arcolunar',
+    nil,
+  },
+  [11020] = {
+    'Restos de Trey Forjaluz',
+    nil,
+  },
+  [11022] = {
+    nil,
+    'Casa Barov',
+  },
+  [11023] = {
+    nil,
+    'Casa Barov',
+  },
+  [11024] = {
+    nil,
+    'Mascota de Jessir',
+  },
+  [11025] = {
+    nil,
+    'Instructor de ingeniería',
+  },
+  [11026] = {
+    'Duendy Ruedadentada',
+    'Aprendiza ingeniera',
+  },
+  [11027] = {
+    'Ánima ilusoria',
+    nil,
+  },
+  [11028] = {
+    'Jemma Clicveloz',
+    'Aprendiza ingeniera',
+  },
+  [11029] = {
+    'Trixie Clicveloz',
+    'Aprendiza ingeniera',
+  },
+  [11030] = {
+    'No-muerto descerebrado',
+    nil,
+  },
+  [11031] = {
+    nil,
+    'Instructor de ingeniería',
+  },
+  [11032] = {
+    'Comandante Malor',
+    nil,
+  },
+  [11034] = {
+    'Lord Maxwell Neófitus',
+    'El Alba Argenta',
+  },
+  [11035] = {
+    nil,
+    'El Alba Argenta',
+  },
+  [11036] = {
+    'Leonid Barthalomew el Venerado',
+    'El Alba Argenta',
+  },
+  [11037] = {
+    nil,
+    'Instructor de ingeniería',
+  },
+  [11038] = {
+    'Custodio Alen',
+    'El Alba Argenta',
+  },
+  [11039] = {
+    'Duque Nicholas Zverenhoff',
+    'El Alba Argenta',
+  },
+  [11040] = {
+    'Vigía Brownell',
+    'La Guardia Nocturna',
+  },
+  [11041] = {
+    nil,
+    'Aprendiz alquimista',
+  },
+  [11042] = {
+    'Sylvanna Bosqueluna',
+    'Aprendiz alquimista',
+  },
+  [11043] = {
+    'Monje resucitado',
+    nil,
+  },
+  [11044] = {
+    nil,
+    'Aprendiz alquimista',
+  },
+  [11045] = {
+    'Quemato',
+    nil,
+  },
+  [11046] = {
+    nil,
+    'Aprendiz alquimista',
+  },
+  [11047] = {
+    nil,
+    'Aprendiz alquimista',
+  },
+  [11048] = {
+    nil,
+    'Aprendiza sastre',
+  },
+  [11049] = {
+    nil,
+    'Aprendiza sastre',
+  },
+  [11050] = {
+    nil,
+    'Aprendiza sastre',
+  },
+  [11051] = {
+    nil,
+    'Aprendiza sastre',
+  },
+  [11052] = {
+    nil,
+    'Instructora de sastrería',
+  },
+  [11053] = {
+    'Suma sacerdotisa MacDonnell',
+    nil,
+  },
+  [11054] = {
+    'Fusilero resucitado',
+    nil,
+  },
+  [11055] = {
+    'Sacerdotisa de las Sombras Vandis',
+    nil,
+  },
+  [11056] = {
+    'Alquimista Arbington',
+    nil,
+  },
+  [11057] = {
+    'Boticario Dithers',
+    nil,
+  },
+  [11063] = {
+    'Carlin Rutagrana',
+    'El Alba Argenta',
+  },
+  [11064] = {
+    'Espíritu de Villa Darrow',
+    nil,
+  },
+  [11065] = {
+    'Thonys Piedrapilar',
+    'Aprendiz encantador',
+  },
+  [11066] = {
+    nil,
+    'Aprendiz encantador',
+  },
+  [11067] = {
+    nil,
+    'Aprendiz encantador',
+  },
+  [11068] = {
+    nil,
+    'Aprendiz encantador',
+  },
+  [11069] = {
+    'Jenova Petrescudo',
+    'Maestra de establos',
+  },
+  [11070] = {
+    'Lalina Luna de Verano',
+    'Aprendiz encantador',
+  },
+  [11071] = {
+    'Mot Caminalba',
+    'Aprendiz encantador',
+  },
+  [11072] = {
+    'Kitta Vientofuego',
+    'Instructora de encantamiento',
+  },
+  [11073] = {
+    nil,
+    'Instructora de encantamiento',
+  },
+  [11074] = {
+    nil,
+    'Instructora de encantamiento',
+  },
+  [11075] = {
+    'Señor de la caldera Garravil',
+    nil,
+  },
+  [11076] = {
+    'Señor de la caldera Razarch',
+    nil,
+  },
+  [11077] = {
+    'Señor de la caldera Molevolus',
+    nil,
+  },
+  [11078] = {
+    'Señor de la caldera Iralma',
+    nil,
+  },
+  [11079] = {
+    'Wynd Cazanoche',
+    nil,
+  },
+  [11080] = {
+    '[PH[ Probador de combate',
+    nil,
+  },
+  [11081] = {
+    nil,
+    'Aprendiz peletero',
+  },
+  [11082] = {
+    'Mensajero de Stratholme',
+    nil,
+  },
+  [11083] = {
+    nil,
+    'Aprendiz peletero',
+  },
+  [11084] = {
+    nil,
+    'Aprendiz peletero',
+  },
+  [11096] = {
+    nil,
+    'Aprendiz peletero',
+  },
+  [11097] = {
+    'Drakk Petramano',
+    'Instructor de peletería',
+  },
+  [11098] = {
+    'Hahrana Pielférrea',
+    'Instructor de peletería',
+  },
+  [11099] = {
+    'Guardia Argenta',
+    'El Alba Argenta',
+  },
+  [11100] = {
+    'zzOLDTótem Marea de maná II',
+    nil,
+  },
+  [11101] = {
+    'zzOLDTótem Marea de maná III',
+    nil,
+  },
+  [11102] = {
+    'Jinete Argenta',
+    'El Alba Argenta',
+  },
+  [11103] = {
+    'Tabernera Lyshaerya',
+    'Tabernero',
+  },
+  [11104] = {
+    nil,
+    'Maestra de establos',
+  },
+  [11105] = {
+    nil,
+    'Maestra de establos',
+  },
+  [11106] = {
+    'Tabernera Sikewa',
+    'Tabernero',
+  },
+  [11111] = {
+    nil,
+    'Mercader de túnicas',
+  },
+  [11116] = {
+    '[Deprecated for 4.x]Tabernero Abeqwa',
+    'Tabernero',
+  },
+  [11117] = {
+    nil,
+    'Maestra de establos',
+  },
+  [11118] = {
+    'Tabernera Vizzie',
+    'Tabernero',
+  },
+  [11119] = {
+    nil,
+    'Maestra de establos',
+  },
+  [11120] = {
+    'Forjamartillos resucitado',
+    nil,
+  },
+  [11121] = {
+    'Armero Guardia Negra',
+    nil,
+  },
+  [11122] = {
+    'Alma inquieta',
+    nil,
+  },
+  [11136] = {
+    'Alma liberada',
+    nil,
+  },
+  [11137] = {
+    nil,
+    'Forjadora de armas',
+  },
+  [11138] = {
+    nil,
+    'Maestro de hipogrifos',
+  },
+  [11139] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [11141] = {
+    'Espíritu de Trey Forjaluz',
+    nil,
+  },
+  [11142] = {
+    'Cartero no-muerto',
+    nil,
+  },
+  [11143] = {
+    'Jefe de correos Gassol',
+    nil,
+  },
+  [11144] = {
+    'Esfera de oráculo',
+    nil,
+  },
+  [11145] = {
+    'Myolor Furiahendida',
+    nil,
+  },
+  [11146] = {
+    'Ironus Acero Frío',
+    'Instructor de herrería',
+  },
+  [11148] = {
+    'Mecazancudo morado',
+    nil,
+  },
+  [11149] = {
+    'Mecazancudo rojo y azul',
+    nil,
+  },
+  [11150] = {
+    'Mecazancudo azul hielo modelo A',
+    nil,
+  },
+  [11151] = {
+    'Mecazancudo de montar (amarillo/verde)',
+    nil,
+  },
+  [11152] = {
+    'Caldera de la Plaga',
+    nil,
+  },
+  [11156] = {
+    'Caballo de guerra esquelético verde',
+    nil,
+  },
+  [11176] = {
+    'Krathok Puñofundido',
+    nil,
+  },
+  [11177] = {
+    'Okothos Ira de Hierro',
+    'Forjador de armaduras',
+  },
+  [11178] = {
+    'Borgosh Ramagma',
+    'Forjadora de armas',
+  },
+  [11179] = {
+    'Activador de cristal',
+    nil,
+  },
+  [11180] = {
+    'Valiente de Puesto del Veneno',
+    nil,
+  },
+  [11181] = {
+    nil,
+    'Mascota de Kaerbrus',
+  },
+  [11182] = {
+    nil,
+    'Mercader de armaduras pesadas',
+  },
+  [11183] = {
+    nil,
+    'Mercader de armaduras ligeras',
+  },
+  [11184] = {
+    nil,
+    'Forjador de armas de fuego y armas en general',
+  },
+  [11185] = {
+    'Xizzer Raybuja',
+    'Suministros de ingeniería',
+  },
+  [11186] = {
+    'Lunnix Dentabaja',
+    'Suministros de minería',
+  },
+  [11187] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [11188] = {
+    'Evie Brebegira',
+    'Suministros de alquimia',
+  },
+  [11189] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [11190] = {
+    'Truhán de Vista Eterna',
+    nil,
+  },
+  [11191] = {
+    'Lilith la Ágil',
+    nil,
+  },
+  [11193] = {
+    'Seril Finiquiplaga',
+    nil,
+  },
+  [11194] = {
+    'Defensor Argenta',
+    'El Alba Argenta',
+  },
+  [11195] = {
+    'Destrero de la Muerte',
+    nil,
+  },
+  [11196] = {
+    'Tamborilero Rompelanzas',
+    nil,
+  },
+  [11197] = {
+    'Esqueleto descerebrado',
+    nil,
+  },
+  [11198] = {
+    'Exiliado Tábido',
+    nil,
+  },
+  [11199] = {
+    'Cañón carmesí',
+    nil,
+  },
+  [11200] = {
+    'Esqueleto invocado',
+    nil,
+  },
+  [11218] = {
+    'Kerlonian Semprumbrío',
+    'Druida de la Zarpa',
+  },
+  [11219] = {
+    'Liladris Rioluna',
+    nil,
+  },
+  [11236] = {
+    'Loro de sangre',
+    nil,
+  },
+  [11256] = {
+    'Manifestación de agua',
+    nil,
+  },
+  [11257] = {
+    'Controlador de Scholomance',
+    nil,
+  },
+  [11258] = {
+    'Esqueleto endeble',
+    nil,
+  },
+  [11259] = {
+    'Nataka Cuerno Largo',
+    nil,
+  },
+  [11260] = {
+    'Campesino de Villanorte',
+    nil,
+  },
+  [11261] = {
+    nil,
+    'El Carnicero',
+  },
+  [11262] = {
+    'Cría de Onyxia',
+    nil,
+  },
+  [11263] = {
+    'Proyección espectral',
+    nil,
+  },
+  [11276] = {
+    'Centinela de Azshara',
+    nil,
+  },
+  [11277] = {
+    'Ciudadano de Castel Darrow',
+    nil,
+  },
+  [11278] = {
+    'Magnus Vespescarcha',
+    nil,
+  },
+  [11279] = {
+    'Custodio de Castel Darrow',
+    nil,
+  },
+  [11280] = {
+    'Cañonero de Castel Darrow',
+    nil,
+  },
+  [11281] = {
+    'Jinete de Castel Darrow',
+    nil,
+  },
+  [11284] = {
+    'Sombra oscura',
+    nil,
+  },
+  [11286] = {
+    'Magistrado Marduke',
+    nil,
+  },
+  [11287] = {
+    'Panadero Hijomaestro',
+    nil,
+  },
+  [11288] = {
+    'Traidor espectral',
+    nil,
+  },
+  [11289] = {
+    'Defensor espectral',
+    nil,
+  },
+  [11290] = {
+    'Zombi Fustamusgo',
+    nil,
+  },
+  [11291] = {
+    'Fustamusgo sin vida',
+    nil,
+  },
+  [11292] = {
+    'Rabioso Fustamusgo',
+    nil,
+  },
+  [11296] = {
+    'Poltergeist de Villa Darrow',
+    nil,
+  },
+  [11316] = {
+    nil,
+    'Gestión de residuos',
+  },
+  [11318] = {
+    'Trogg Furia Ardiente',
+    nil,
+  },
+  [11319] = {
+    'Chamán Furia Ardiente',
+    nil,
+  },
+  [11320] = {
+    'Perforatierra',
+    nil,
+  },
+  [11321] = {
+    'Elemental de magma',
+    nil,
+  },
+  [11322] = {
+    'Cultor Hoja Abrasadora',
+    nil,
+  },
+  [11323] = {
+    'Déspota Hoja Abrasadora',
+    nil,
+  },
+  [11324] = {
+    'Brujo Hoja Abrasadora',
+    nil,
+  },
+  [11325] = {
+    'Osito panda',
+    nil,
+  },
+  [11326] = {
+    nil,
+    'Señor del Terror',
+  },
+  [11328] = {
+    'Campesino de la Vega del Este',
+    nil,
+  },
+  [11337] = {
+    '[UNUSED] Lanzahachas Hakkar',
+    nil,
+  },
+  [11338] = {
+    'Taumaturgo umbrío Hakkari',
+    nil,
+  },
+  [11339] = {
+    'Cazador de las Sombras Hakkari',
+    nil,
+  },
+  [11340] = {
+    'Sacerdote de sangre Hakkari',
+    nil,
+  },
+  [11341] = {
+    '[UNUSED] Rabioso Hakkar',
+    nil,
+  },
+  [11342] = {
+    '[UNUSED] Guerrero Hakkar',
+    nil,
+  },
+  [11343] = {
+    '[UNUSED] Señor de la guerra Hakkar',
+    nil,
+  },
+  [11344] = {
+    '[UNUSED] Bebesangre Hakkar',
+    nil,
+  },
+  [11345] = {
+    '[UNUSED] Rebanacabezas Hakkar',
+    nil,
+  },
+  [11346] = {
+    'Oráculo Hakkari',
+    nil,
+  },
+  [11347] = {
+    'Zelote Lor\'Khan',
+    nil,
+  },
+  [11348] = {
+    'Zelote Zath',
+    nil,
+  },
+  [11349] = {
+    '[UNUSED] Desollador Gurubashi',
+    nil,
+  },
+  [11350] = {
+    'Lanzahachas Gurubashi',
+    nil,
+  },
+  [11351] = {
+    'Rebanacabezas Gurubashi',
+    nil,
+  },
+  [11352] = {
+    'Rabioso Gurubashi',
+    nil,
+  },
+  [11353] = {
+    'Bebesangre Gurubashi',
+    nil,
+  },
+  [11354] = {
+    '[UNUSED] Señor de la guerra Gurubashi',
+    nil,
+  },
+  [11355] = {
+    'Guerrero Gurubashi',
+    nil,
+  },
+  [11356] = {
+    'Campeón Gurubashi',
+    nil,
+  },
+  [11357] = {
+    'Hijo de Hakkar',
+    nil,
+  },
+  [11358] = {
+    '[UNUSED] Hija de Hakkar',
+    nil,
+  },
+  [11359] = {
+    'Cazador de Almas',
+    nil,
+  },
+  [11360] = {
+    'Cachorro Zulian',
+    nil,
+  },
+  [11361] = {
+    'Tigre Zulian',
+    nil,
+  },
+  [11364] = {
+    '[UNUSED] Tigresa Zulian',
+    nil,
+  },
+  [11365] = {
+    'Pantera Zulian',
+    nil,
+  },
+  [11366] = {
+    '[UNUSED] Matriarca Zulian',
+    nil,
+  },
+  [11367] = {
+    '[UNUSED] Patriarca Zulian',
+    nil,
+  },
+  [11368] = {
+    'Murciélago buscasangre',
+    nil,
+  },
+  [11369] = {
+    '[UNUSED] buscasangre Oculto',
+    nil,
+  },
+  [11370] = {
+    'Proleviuda Razzashi',
+    nil,
+  },
+  [11371] = {
+    'Serpiente Razzashi',
+    nil,
+  },
+  [11372] = {
+    'Víboris Razzashi',
+    nil,
+  },
+  [11373] = {
+    'Cobra Razzashi',
+    nil,
+  },
+  [11374] = {
+    'Furia ganchodiente',
+    nil,
+  },
+  [11377] = {
+    '[UNUSED] Hak\'tharr el Cazamentes',
+    nil,
+  },
+  [11378] = {
+    'Supervisor Thazz\'ril',
+    nil,
+  },
+  [11380] = {
+    'Jin\'do el Aojador',
+    nil,
+  },
+  [11382] = {
+    'Señor sangriento Mandokir',
+    nil,
+  },
+  [11383] = {
+    'Suma sacerdotisa Hai\'watna',
+    nil,
+  },
+  [11384] = {
+    '[UNUSED] T\'kashra viejo',
+    nil,
+  },
+  [11385] = {
+    '[UNUSED] Mogwhi el Implacable',
+    nil,
+  },
+  [11386] = {
+    '[UNUSED] Janook el Furiafilada',
+    nil,
+  },
+  [11387] = {
+    'Portavoz Furiarena',
+    'Embajador trol Furiarena',
+  },
+  [11388] = {
+    'Portavoz Secacorteza',
+    'Embajador trol Secacorteza',
+  },
+  [11389] = {
+    'Portavoz Sangrapellejo',
+    'Embajador trol Sangrapellejo',
+  },
+  [11390] = {
+    'Portavoz Machacacráneos',
+    'Embajador trol Machacacráneos',
+  },
+  [11391] = {
+    'Portavoz Vilrama',
+    'Embajador trol Vilrama',
+  },
+  [11393] = {
+    'Josh Molina',
+    nil,
+  },
+  [11397] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [11398] = {
+    'Charisse Correluna',
+    nil,
+  },
+  [11401] = {
+    'Sacerdotisa Alathea',
+    'Instructora de sacerdotes',
+  },
+  [11402] = {
+    'Jarvis Martilloverde',
+    nil,
+  },
+  [11405] = {
+    'Diana Coratalla',
+    nil,
+  },
+  [11406] = {
+    'Sumo sacerdote Rohan',
+    'Instructora de sacerdotes',
+  },
+  [11411] = {
+    'Sacerdotisa Kara\'van',
+    nil,
+  },
+  [11413] = {
+    'Vincent Wildor',
+    nil,
+  },
+  [11437] = {
+    'Infernal menor',
+    nil,
+  },
+  [11438] = {
+    'Bibbly F\'utzhebilla',
+    nil,
+  },
+  [11439] = {
+    'Ilusión de Jandice Barov',
+    nil,
+  },
+  [11440] = {
+    'Déspota Gordok',
+    nil,
+  },
+  [11441] = {
+    'Tosco Gordok',
+    nil,
+  },
+  [11442] = {
+    'Aplastador Gordok',
+    nil,
+  },
+  [11443] = {
+    'Ogro mago Gordok',
+    nil,
+  },
+  [11444] = {
+    'Señor de la magia Gordok',
+    nil,
+  },
+  [11445] = {
+    'Capitán Gordok',
+    nil,
+  },
+  [11446] = {
+    'Espíritu Gordok',
+    nil,
+  },
+  [11448] = {
+    'Brujo Gordok',
+    nil,
+  },
+  [11449] = {
+    '[UNUSED] Mago de Batalla Gordok',
+    nil,
+  },
+  [11450] = {
+    'Atracador Gordok',
+    nil,
+  },
+  [11451] = {
+    'Sátiro Mala Hierba',
+    nil,
+  },
+  [11452] = {
+    'Pícaro Mala Hierba',
+    nil,
+  },
+  [11453] = {
+    'Tramposo Mala Hierba',
+    nil,
+  },
+  [11454] = {
+    'Traidor Mala Hierba',
+    nil,
+  },
+  [11455] = {
+    'Jurapenas Mala Hierba',
+    nil,
+  },
+  [11456] = {
+    'Acechasombras Mala Hierba',
+    nil,
+  },
+  [11457] = {
+    'Clamainferno Mala Hierba',
+    nil,
+  },
+  [11458] = {
+    'Antárbol petrificado',
+    nil,
+  },
+  [11459] = {
+    'Protector Cortezaférrea',
+    nil,
+  },
+  [11460] = {
+    'Esbirro de Alzzin',
+    nil,
+  },
+  [11461] = {
+    'Guardián Alabeo',
+    nil,
+  },
+  [11462] = {
+    'Antárbol Alabeo',
+    nil,
+  },
+  [11463] = {
+    '[UNUSED] Escarbador Tuercemadera',
+    nil,
+  },
+  [11464] = {
+    'Enmarañador Alabeo',
+    nil,
+  },
+  [11465] = {
+    'Vapuleador Alabeo',
+    nil,
+  },
+  [11466] = {
+    'Invocador Altonato',
+    nil,
+  },
+  [11468] = {
+    '[UNUSED] Eldreth Exanimato',
+    nil,
+  },
+  [11469] = {
+    'Bullidor Eldreth',
+    nil,
+  },
+  [11470] = {
+    'Hechicero Eldreth',
+    nil,
+  },
+  [11471] = {
+    'Aparecido Eldreth',
+    nil,
+  },
+  [11472] = {
+    'Espíritu Eldreth',
+    nil,
+  },
+  [11473] = {
+    'Espectro Eldreth',
+    nil,
+  },
+  [11474] = {
+    'Ánima Eldreth',
+    nil,
+  },
+  [11475] = {
+    'Fantasma Eldreth',
+    nil,
+  },
+  [11476] = {
+    'Altonato esquelético',
+    nil,
+  },
+  [11477] = {
+    'Altonato en podredumbre',
+    nil,
+  },
+  [11478] = {
+    '[UNUSED] Bestia de maná',
+    nil,
+  },
+  [11479] = {
+    '[UNUSED] Horror Arcano',
+    nil,
+  },
+  [11480] = {
+    'Aberración Arcana',
+    nil,
+  },
+  [11481] = {
+    '[UNUSED] Terror Arcano',
+    nil,
+  },
+  [11483] = {
+    'Despojos de maná',
+    nil,
+  },
+  [11484] = {
+    'Monstruosidad residual',
+    nil,
+  },
+  [11486] = {
+    'Príncipe Tortheldrin',
+    nil,
+  },
+  [11488] = {
+    'Illyanna Roblecuervo',
+    nil,
+  },
+  [11489] = {
+    'Tendris Alabeo',
+    nil,
+  },
+  [11490] = {
+    'Zevrim Pezuñahendida',
+    nil,
+  },
+  [11491] = {
+    'Viejo Cortezaférrea',
+    nil,
+  },
+  [11492] = {
+    'Alzzin el Formaferal',
+    nil,
+  },
+  [11494] = {
+    'Trigger Alzinn',
+    nil,
+  },
+  [11497] = {
+    'El Razza',
+    nil,
+  },
+  [11498] = {
+    'Skarr el Roto',
+    nil,
+  },
+  [11499] = {
+    '[UNUSED] Comandante Gormaul',
+    nil,
+  },
+  [11501] = {
+    'Rey Gordok',
+    nil,
+  },
+  [11516] = {
+    'Depositario Fauces de Madera',
+    nil,
+  },
+  [11517] = {
+    'Ogglesílex',
+    'Jefe Furia Ardiente',
+  },
+  [11518] = {
+    'Jergosh el Convocador',
+    nil,
+  },
+  [11520] = {
+    'Taragaman el Hambriento',
+    nil,
+  },
+  [11521] = {
+    'Aparecido kodo',
+    nil,
+  },
+  [11536] = {
+    'Intendente Miranda Cerrobrecha',
+    'El Alba Argenta',
+  },
+  [11537] = {
+    'TEST EQUIPO PALADÍN',
+    nil,
+  },
+  [11538] = {
+    'TEST EQUIPO GUERRERO',
+    nil,
+  },
+  [11539] = {
+    'TEST EQUIPO CAZADOR',
+    nil,
+  },
+  [11540] = {
+    'TEST EQUIPO MAGO',
+    nil,
+  },
+  [11541] = {
+    'TEST EQUIPO BRUJO',
+    nil,
+  },
+  [11542] = {
+    'TEST EQUIPO DRUIDA',
+    nil,
+  },
+  [11543] = {
+    'TEST EQUIPO CHAMÁN',
+    nil,
+  },
+  [11544] = {
+    'TEST EQUIPO SACERDOTE',
+    nil,
+  },
+  [11545] = {
+    'TEST EQUIPO PÍCARO',
+    nil,
+  },
+  [11547] = {
+    'Estudiante esquelético de Scholomance',
+    nil,
+  },
+  [11549] = {
+    'Austin Manabrojo',
+    nil,
+  },
+  [11550] = {
+    'Taylor Rebaben',
+    nil,
+  },
+  [11551] = {
+    'Necromaligno',
+    nil,
+  },
+  [11552] = {
+    'Místico Fauces de Madera',
+    nil,
+  },
+  [11553] = {
+    'Doblatroncos Fauces de Madera',
+    nil,
+  },
+  [11555] = {
+    'Monóculo de Gorn',
+    nil,
+  },
+  [11559] = {
+    'Nigromante paria',
+    nil,
+  },
+  [11560] = {
+    'Espectro Magram',
+    nil,
+  },
+  [11561] = {
+    'Devastador no-muerto',
+    nil,
+  },
+  [11562] = {
+    'Reptador Golpeseco',
+    nil,
+  },
+  [11563] = {
+    'Tenazario Golpeseco',
+    nil,
+  },
+  [11564] = {
+    'Kodo de caravana Gizelton',
+    nil,
+  },
+  [11576] = {
+    'Desgarrador espirálico',
+    nil,
+  },
+  [11577] = {
+    'Caminatormentas espirálico',
+    nil,
+  },
+  [11578] = {
+    'Machacador espirálico',
+    nil,
+  },
+  [11579] = {
+    'Tempestad',
+    nil,
+  },
+  [11580] = {
+    'Kelemis el Difunto',
+    nil,
+  },
+  [11581] = {
+    'Asesino Escarlata',
+    nil,
+  },
+  [11582] = {
+    'Invocador Oscuro de Scholomance',
+    nil,
+  },
+  [11596] = {
+    'Smeed Mezclatornillos',
+    nil,
+  },
+  [11598] = {
+    'Guardián resucitado',
+    nil,
+  },
+  [11599] = {
+    'Geomántico Ferrohondo UNUSED',
+    nil,
+  },
+  [11600] = {
+    'Chamán Ferrohondo',
+    nil,
+  },
+  [11601] = {
+    'Rondador Ferrohondo UNUSED',
+    nil,
+  },
+  [11602] = {
+    'Aplastacráneos Ferrohondo',
+    nil,
+  },
+  [11603] = {
+    'Cavador Mostacho Blanco',
+    nil,
+  },
+  [11604] = {
+    'Geomántico Mostacho Blanco',
+    nil,
+  },
+  [11605] = {
+    'Sobrestante Mostacho Blanco',
+    nil,
+  },
+  [11606] = {
+    'Rata de túnel Mostacho Blanco',
+    nil,
+  },
+  [11608] = {
+    'Bardu Ojo Afilado',
+    nil,
+  },
+  [11609] = {
+    'Alexia Filoférreo',
+    nil,
+  },
+  [11610] = {
+    'Kirsta Sombraprofunda',
+    nil,
+  },
+  [11611] = {
+    'Hidalgo Durgen',
+    nil,
+  },
+  [11613] = {
+    'Montero Radley',
+    nil,
+  },
+  [11614] = {
+    'Tirosangre',
+    nil,
+  },
+  [11616] = {
+    nil,
+    'Cruzada Argenta',
+  },
+  [11617] = {
+    'Excavador "El manitas" Veriatus',
+    nil,
+  },
+  [11618] = {
+    'Archimago Antonio',
+    nil,
+  },
+  [11619] = {
+    'Mercader Bolden',
+    nil,
+  },
+  [11620] = {
+    'Maleante espectral',
+    nil,
+  },
+  [11621] = {
+    'Cadáver espectral',
+    nil,
+  },
+  [11622] = {
+    'Traquesangre',
+    nil,
+  },
+  [11623] = {
+    'Cristal de invocación de la Plaga',
+    nil,
+  },
+  [11624] = {
+    'Taiga Crin Sabia',
+    nil,
+  },
+  [11627] = {
+    'Kodo domesticado',
+    nil,
+  },
+  [11628] = {
+    'Cadáver putrefacto',
+    nil,
+  },
+  [11629] = {
+    'Jessica Rutagrana',
+    nil,
+  },
+  [11636] = {
+    'Sirviente de Weldon Barov',
+    nil,
+  },
+  [11637] = {
+    'Sirviente de Alexi Barov',
+    nil,
+  },
+  [11656] = {
+    'Peón Grito de Guerra',
+    nil,
+  },
+  [11658] = {
+    'Gigante fundido',
+    nil,
+  },
+  [11659] = {
+    'Destructor de magma',
+    nil,
+  },
+  [11660] = {
+    '[UNUSED] Coloso fundido',
+    nil,
+  },
+  [11661] = {
+    'Despiertallamas',
+    nil,
+  },
+  [11662] = {
+    'Sacerdote despiertallamas',
+    nil,
+  },
+  [11663] = {
+    'Sanador despiertallamas',
+    nil,
+  },
+  [11664] = {
+    'Élite despiertallamas',
+    nil,
+  },
+  [11665] = {
+    'Aniquilador de lava',
+    nil,
+  },
+  [11666] = {
+    'Caminafuego',
+    nil,
+  },
+  [11667] = {
+    'Guardia de llamas',
+    nil,
+  },
+  [11668] = {
+    'Señor del Fuego',
+    nil,
+  },
+  [11669] = {
+    'Diablillo de llamas',
+    nil,
+  },
+  [11670] = {
+    '[UNUSED] Escupefuego',
+    nil,
+  },
+  [11671] = {
+    'Can del Núcleo',
+    nil,
+  },
+  [11672] = {
+    'Furibundo del Núcleo',
+    nil,
+  },
+  [11673] = {
+    'Can del Núcleo',
+    nil,
+  },
+  [11675] = {
+    'Clamavientos Veloneve',
+    nil,
+  },
+  [11676] = {
+    'Fjordune el Grande',
+    nil,
+  },
+  [11677] = {
+    'Capataz Snivvle',
+    nil,
+  },
+  [11678] = {
+    'Emboscadora Veloneve',
+    nil,
+  },
+  [11679] = {
+    'Médico brujo Hacha Invernal',
+    nil,
+  },
+  [11680] = {
+    'Explorador de la Horda',
+    nil,
+  },
+  [11681] = {
+    'Deforestador de la Horda',
+    nil,
+  },
+  [11682] = {
+    'Bruto Grito de Guerra',
+    nil,
+  },
+  [11683] = {
+    'Chamán Grito de Guerra',
+    nil,
+  },
+  [11684] = {
+    'Deforestador goblin',
+    nil,
+  },
+  [11685] = {
+    'Sacerdote Maraudine',
+    nil,
+  },
+  [11686] = {
+    'Asaltante fantasmal',
+    nil,
+  },
+  [11687] = {
+    'Maleante fantasmal',
+    nil,
+  },
+  [11688] = {
+    'Centauro maldito',
+    nil,
+  },
+  [11690] = {
+    'Instigador Tuercepinos',
+    nil,
+  },
+  [11696] = {
+    'Chal Eolimpo',
+    'Instructoras de sableinvernales',
+  },
+  [11697] = {
+    'Azotadora Mannoroc',
+    nil,
+  },
+  [11698] = {
+    'Aguijonero Colmen\'Ashi',
+    nil,
+  },
+  [11699] = {
+    nil,
+    'Príncipe de Ventormenta',
+  },
+  [11700] = {
+    'Sarin Luz Estelar',
+    nil,
+  },
+  [11701] = {
+    nil,
+    'Instructores de ravasaurios',
+  },
+  [11702] = {
+    nil,
+    'Instructores de ravasaurios',
+  },
+  [11703] = {
+    'Grau Piedresquina',
+    'Mercader de armaduras de malla',
+  },
+  [11704] = {
+    'Kriss Luzdorada',
+    nil,
+  },
+  [11705] = {
+    'Rayan Albalzada',
+    nil,
+  },
+  [11708] = {
+    'Coral Claroluna',
+    nil,
+  },
+  [11709] = {
+    'Jareth Boscosalvaje',
+    nil,
+  },
+  [11711] = {
+    'Centinela Aynasha',
+    nil,
+  },
+  [11712] = {
+    'Lilyn Rionegro',
+    nil,
+  },
+  [11713] = {
+    'Rastreador Bosque Negro',
+    nil,
+  },
+  [11714] = {
+    'Marosh el Taimado',
+    nil,
+  },
+  [11716] = {
+    'Celes Portaterra',
+    nil,
+  },
+  [11717] = {
+    'Bethan Aguazul',
+    nil,
+  },
+  [11718] = {
+    'Sar Ojomarrón',
+    nil,
+  },
+  [11719] = {
+    'Navi Cobardoveloz',
+    nil,
+  },
+  [11720] = {
+    'Loruk Trotabosques',
+    nil,
+  },
+  [11721] = {
+    'Trabajador Colmen\'Ashi',
+    nil,
+  },
+  [11722] = {
+    'Defensor Colmen\'Ashi',
+    nil,
+  },
+  [11723] = {
+    'Acecharenas Colmen\'Ashi',
+    nil,
+  },
+  [11724] = {
+    'Enjambrista Colmen\'Ashi',
+    nil,
+  },
+  [11725] = {
+    'Oteador de Colmen\'Zora',
+    nil,
+  },
+  [11726] = {
+    'Tunelador de Colmen\'Zora',
+    nil,
+  },
+  [11727] = {
+    'Avispa de Colmen\'Zora',
+    nil,
+  },
+  [11728] = {
+    'Atracador de Colmen\'Zora',
+    nil,
+  },
+  [11729] = {
+    'Hermana de colmena de Colmen\'Zora',
+    nil,
+  },
+  [11730] = {
+    'Emboscador Colmen\'Regal',
+    nil,
+  },
+  [11731] = {
+    'Perforador Colmen\'Regal',
+    nil,
+  },
+  [11732] = {
+    'Escupefuego Colmen\'Regal',
+    nil,
+  },
+  [11733] = {
+    'Esclavizador Colmen\'Regal',
+    nil,
+  },
+  [11734] = {
+    'Señor Colmen\'Regal',
+    nil,
+  },
+  [11735] = {
+    'Escórpido Latipiedra',
+    nil,
+  },
+  [11736] = {
+    'Tenazario Latipiedra',
+    nil,
+  },
+  [11737] = {
+    'Despellejador Latipiedra',
+    nil,
+  },
+  [11738] = {
+    'Arácnido de arena',
+    nil,
+  },
+  [11739] = {
+    'Acecharrocas',
+    nil,
+  },
+  [11740] = {
+    'Asediador deslizante',
+    nil,
+  },
+  [11741] = {
+    'Triturador deslizante',
+    nil,
+  },
+  [11742] = {
+    'Larva de cieno',
+    nil,
+  },
+  [11743] = {
+    'Devorador de cieno',
+    nil,
+  },
+  [11744] = {
+    'Agitador sirocoso',
+    nil,
+  },
+  [11745] = {
+    'Guerrero ciclónico',
+    nil,
+  },
+  [11746] = {
+    'Estruendor del desierto',
+    nil,
+  },
+  [11747] = {
+    'Furibundo del desierto',
+    nil,
+  },
+  [11748] = {
+    'Samantha Pezuña Presta',
+    nil,
+  },
+  [11749] = {
+    'Feran Vientoforte',
+    nil,
+  },
+  [11754] = {
+    'Meggi Rocaliz',
+    nil,
+  },
+  [11755] = {
+    'Harlo Contorecio',
+    nil,
+  },
+  [11777] = {
+    'Estruendor Fragmento Oscuro',
+    nil,
+  },
+  [11778] = {
+    'Quebrantador Fragmento Oscuro',
+    nil,
+  },
+  [11779] = {
+    'Tronador Fragmento Oscuro',
+    nil,
+  },
+  [11780] = {
+    'Furibundo Ambarastilla',
+    nil,
+  },
+  [11781] = {
+    'Triturador Ambarastilla',
+    nil,
+  },
+  [11782] = {
+    'Destructor Ambarastilla',
+    nil,
+  },
+  [11783] = {
+    'Fragmentizo Theradrim',
+    nil,
+  },
+  [11784] = {
+    'Guardián Theradrim',
+    nil,
+  },
+  [11785] = {
+    'Basilisco Ambarojo',
+    nil,
+  },
+  [11786] = {
+    'Atracador Ambarojo',
+    nil,
+  },
+  [11787] = {
+    'Cavapiedras',
+    nil,
+  },
+  [11788] = {
+    'Gusano de piedra',
+    nil,
+  },
+  [11789] = {
+    'Cavapozos de las profundidades',
+    nil,
+  },
+  [11790] = {
+    'Sátiro Putridus',
+    nil,
+  },
+  [11791] = {
+    'Tramposo Putridus',
+    nil,
+  },
+  [11792] = {
+    'Acechasombras Putridus',
+    nil,
+  },
+  [11793] = {
+    'Dríade celebriana',
+    nil,
+  },
+  [11794] = {
+    'Hermana de Celebras',
+    nil,
+  },
+  [11795] = {
+    'Mylentha Cuenca del Río',
+    nil,
+  },
+  [11796] = {
+    'Bessany Viento del Llano',
+    nil,
+  },
+  [11797] = {
+    'Moren Cuenca del Río',
+    nil,
+  },
+  [11798] = {
+    'Bunthen Ventollano',
+    'Maestro de vuelo de Cima del Trueno',
+  },
+  [11800] = {
+    nil,
+    'Maestra de vuelo de Darnassus',
+  },
+  [11802] = {
+    'Dendrita Rafagaestelar',
+    nil,
+  },
+  [11803] = {
+    'Guardián Crepuscular Exeter',
+    'Martillo Crepuscular',
+  },
+  [11804] = {
+    'Guardián Crepuscular Havunth',
+    'Martillo Crepuscular',
+  },
+  [11805] = {
+    'Jarund Zancada Recia',
+    'El Círculo Cenarion',
+  },
+  [11806] = {
+    'Centinela Onaeya',
+    nil,
+  },
+  [11807] = {
+    'Tristane Pietrasombra',
+    nil,
+  },
+  [11808] = {
+    'Grum Barbarroja',
+    nil,
+  },
+  [11809] = {
+    'Danni Alapálida',
+    nil,
+  },
+  [11810] = {
+    'Howin Plumamable',
+    nil,
+  },
+  [11811] = {
+    'Narain Sabelotodo',
+    nil,
+  },
+  [11812] = {
+    'Claira Plumamable',
+    nil,
+  },
+  [11813] = {
+    'Kerr Vistaferro',
+    nil,
+  },
+  [11821] = {
+    'Darn Ganchagarra',
+    nil,
+  },
+  [11822] = {
+    'Celador de Claro de la Luna',
+    nil,
+  },
+  [11823] = {
+    'Vark Marca de Guerra',
+    nil,
+  },
+  [11830] = {
+    'Sacerdote Hakkari',
+    nil,
+  },
+  [11831] = {
+    'Médico brujo Hakkari',
+    nil,
+  },
+  [11832] = {
+    'Guardián Remulos',
+    nil,
+  },
+  [11833] = {
+    nil,
+    'Siervo de Magatha',
+  },
+  [11834] = {
+    'Maur Tótem Siniestro',
+    nil,
+  },
+  [11836] = {
+    'Oso cardo rabioso capturado',
+    nil,
+  },
+  [11837] = {
+    'Chamán Zarpa Salvaje',
+    nil,
+  },
+  [11838] = {
+    'Místico Zarpa Salvaje',
+    nil,
+  },
+  [11839] = {
+    'Tosco Zarpa Salvaje',
+    nil,
+  },
+  [11840] = {
+    'Alfa Zarpa Salvaje',
+    nil,
+  },
+  [11856] = {
+    'Kaya Pezuña Plana',
+    nil,
+  },
+  [11857] = {
+    'Makaba Pezuña Plana',
+    nil,
+  },
+  [11858] = {
+    'Grundig Nube Negra',
+    'Jefe',
+  },
+  [11859] = {
+    'Guardia apocalíptico',
+    nil,
+  },
+  [11860] = {
+    'Maggran Vinculador Terrestre',
+    nil,
+  },
+  [11863] = {
+    nil,
+    'El Alba Argenta',
+  },
+  [11864] = {
+    'Tammra Campo de Viento',
+    nil,
+  },
+  [11865] = {
+    'Buliwyf Petramano',
+    'Maestra de armas',
+  },
+  [11866] = {
+    'Ilyenia Fuegolunar',
+    'Maestra de armas',
+  },
+  [11867] = {
+    nil,
+    'Maestra de armas',
+  },
+  [11868] = {
+    nil,
+    'Maestra de armas',
+  },
+  [11869] = {
+    nil,
+    'Maestra de armas',
+  },
+  [11870] = {
+    nil,
+    'Maestra de armas',
+  },
+  [11871] = {
+    'Perro rictus',
+    nil,
+  },
+  [11872] = {
+    'Myranda la Fada',
+    nil,
+  },
+  [11873] = {
+    'Auxiliar espectral',
+    nil,
+  },
+  [11874] = {
+    nil,
+    'Peletero superior',
+  },
+  [11875] = {
+    'Muñeco-diana del equipo mortero',
+    nil,
+  },
+  [11876] = {
+    'Espíritu demoníaco',
+    nil,
+  },
+  [11877] = {
+    'Roon Ferocrín',
+    nil,
+  },
+  [11878] = {
+    'Nathanos Clamañublo',
+    'Campeón de la Reina alma en pena',
+  },
+  [11880] = {
+    'Vengador Crepuscular',
+    'Martillo Crepuscular',
+  },
+  [11881] = {
+    'Geoseñor Crepuscular',
+    'Martillo Crepuscular',
+  },
+  [11882] = {
+    'Clamapiedras Crepuscular',
+    'Martillo Crepuscular',
+  },
+  [11883] = {
+    'Maestro Crepuscular',
+    'Martillo Crepuscular',
+  },
+  [11885] = {
+    'Can de añublo',
+    nil,
+  },
+  [11886] = {
+    'Mercutio Comerroña',
+    nil,
+  },
+  [11887] = {
+    'Ladrón de la cripta',
+    nil,
+  },
+  [11897] = {
+    'Alaocaso',
+    nil,
+  },
+  [11898] = {
+    'Señor Cruzado Valdemar',
+    nil,
+  },
+  [11899] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [11900] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [11901] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [11910] = {
+    'Rufián Tótem Siniestro',
+    nil,
+  },
+  [11911] = {
+    'Mercenario Tótem Siniestro',
+    nil,
+  },
+  [11912] = {
+    'Tosco Tótem Siniestro',
+    nil,
+  },
+  [11913] = {
+    'Hechicero Tótem Siniestro',
+    nil,
+  },
+  [11914] = {
+    'Pezuñasangre el Negro',
+    nil,
+  },
+  [11915] = {
+    'Vigilapiedras del Alud',
+    nil,
+  },
+  [11917] = {
+    'Geomántico del Alud',
+    nil,
+  },
+  [11918] = {
+    'Machacapiedras del Alud',
+    nil,
+  },
+  [11926] = {
+    '[PH] Dispensador de regalos de Villanorte',
+    nil,
+  },
+  [11936] = {
+    'Artista Renfray',
+    nil,
+  },
+  [11937] = {
+    'Guardián del portal de demonios',
+    nil,
+  },
+  [11938] = {
+    'Tirion joven',
+    nil,
+  },
+  [11940] = {
+    'Merissa Fontana',
+    nil,
+  },
+  [11941] = {
+    'Yori Yelmopartido',
+    nil,
+  },
+  [11942] = {
+    'Orenthil Susurravientos',
+    nil,
+  },
+  [11944] = {
+    'Vorn Vidente del Cielo',
+    nil,
+  },
+  [11946] = {
+    nil,
+    'General Lobo Gélido',
+  },
+  [11947] = {
+    'Capitán Galvangar',
+    'Capitán Lobo Gélido',
+  },
+  [11948] = {
+    'Vanndar Pico Tormenta',
+    'General Pico Tormenta',
+  },
+  [11949] = {
+    'Capitana Balinda Piedrahogar',
+    'Capitana Pico Tormenta',
+  },
+  [11956] = {
+    'Espíritu del gran oso',
+    nil,
+  },
+  [11957] = {
+    'Gran espíritu felino',
+    nil,
+  },
+  [11958] = {
+    'Gracchus Luzpiritual',
+    'El Alba Argenta',
+  },
+  [11959] = {
+    '[UNUSED] Vigía obsidiano',
+    nil,
+  },
+  [11980] = {
+    'Zuluhed el Demente',
+    'Jefe del clan Faucedraco',
+  },
+  [11983] = {
+    'Faucefogo',
+    nil,
+  },
+  [11988] = {
+    'Golemagg el Incinerador',
+    nil,
+  },
+  [11997] = {
+    'Heraldo Pico Tormenta',
+    nil,
+  },
+  [11998] = {
+    'Heraldo Lobo Gélido',
+    nil,
+  },
+  [12017] = {
+    'Señor de linaje Capazote',
+    nil,
+  },
+  [12018] = {
+    'Mayordomo Executus',
+    nil,
+  },
+  [12019] = {
+    nil,
+    'Mercader de alimentos y bebidas',
+  },
+  [12020] = {
+    'Instructor de alquimia de Claro de la Luna',
+    'Instructora de alquimia',
+  },
+  [12021] = {
+    'Daeolyn Hoja Estival',
+    'Pertrechos',
+  },
+  [12022] = {
+    'Lorelae Cantinvernal',
+    'Suministros comerciales',
+  },
+  [12023] = {
+    nil,
+    'Mercader de armaduras ligeras',
+  },
+  [12024] = {
+    nil,
+    'Forjadora de armas',
+  },
+  [12025] = {
+    nil,
+    'Instructora de herboristería',
+  },
+  [12026] = {
+    nil,
+    'Mercader de alimentos y bebidas',
+  },
+  [12027] = {
+    nil,
+    'Pertrechos',
+  },
+  [12028] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [12029] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [12030] = {
+    nil,
+    'Instructora de desuello',
+  },
+  [12031] = {
+    nil,
+    'Suministros de pesca',
+  },
+  [12032] = {
+    nil,
+    'Instructor de pesca',
+  },
+  [12033] = {
+    nil,
+    'Suministros de cocina',
+  },
+  [12035] = {
+    'Instructor de minería de Pico Nidal',
+    'Instructor de minería',
+  },
+  [12036] = {
+    'Grella Puñopiedra',
+    'Pertrechos',
+  },
+  [12038] = {
+    '[UNUSED] Productos alimenticios de Pico Nidal',
+    'Suministros de cocina',
+  },
+  [12039] = {
+    'Carnicero de Pico Nidal',
+    'Carnicero',
+  },
+  [12040] = {
+    'Brannik Panzahierro',
+    'Forjador de armaduras',
+  },
+  [12042] = {
+    nil,
+    'Instructor de druidas',
+  },
+  [12043] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [12044] = {
+    'Productos de herrería Roca de Sol',
+    'Suministros de minería y herrería',
+  },
+  [12045] = {
+    nil,
+    'Fabricante de hachas',
+  },
+  [12046] = {
+    'Gor\'marok el Devastador',
+    nil,
+  },
+  [12047] = {
+    'Montaraz Pico Tormenta',
+    nil,
+  },
+  [12048] = {
+    'Centinela de la Alianza',
+    nil,
+  },
+  [12050] = {
+    'Defensor Pico Tormenta',
+    nil,
+  },
+  [12051] = {
+    'Legionario Lobo Gélido',
+    nil,
+  },
+  [12052] = {
+    'Guerrero Lobo Gélido',
+    nil,
+  },
+  [12053] = {
+    'Guardián Lobo Gélido',
+    nil,
+  },
+  [12054] = {
+    'Cazamañanas',
+    nil,
+  },
+  [12076] = {
+    'Elemental de lava',
+    nil,
+  },
+  [12096] = {
+    'Intendente Pico Tormenta',
+    nil,
+  },
+  [12097] = {
+    'Intendente Lobo Gélido',
+    nil,
+  },
+  [12098] = {
+    'Presagista Sulfuron',
+    nil,
+  },
+  [12099] = {
+    'Jurafuegos',
+    nil,
+  },
+  [12100] = {
+    'Atracador de lava',
+    nil,
+  },
+  [12101] = {
+    'Marea de lava',
+    nil,
+  },
+  [12116] = {
+    'Sacerdotisa de Elune',
+    nil,
+  },
+  [12119] = {
+    'Protector despiertallamas',
+    nil,
+  },
+  [12120] = {
+    'Termita de las Tierras de la Peste',
+    nil,
+  },
+  [12123] = {
+    'Tiburón de arrecife',
+    nil,
+  },
+  [12124] = {
+    'Gran tiburón',
+    nil,
+  },
+  [12125] = {
+    'Tiburón mamut',
+    nil,
+  },
+  [12126] = {
+    'Lord Tirion Vadín',
+    'Orden de la Mano de Plata',
+  },
+  [12127] = {
+    'Custodio Pico Tormenta',
+    nil,
+  },
+  [12128] = {
+    'Élite Carmesí',
+    nil,
+  },
+  [12129] = {
+    'Depositario de Onyxia',
+    nil,
+  },
+  [12136] = {
+    'Snurk Oroveloz',
+    'Maestro de zepelines de Durotar',
+  },
+  [12137] = {
+    'Petardo Porsiacaso',
+    'Maestro de zepelines de Durotar',
+  },
+  [12138] = {
+    'Garraluna',
+    nil,
+  },
+  [12140] = {
+    'Guardián de Elune',
+    nil,
+  },
+  [12141] = {
+    'Tótem de hielo',
+    nil,
+  },
+  [12142] = {
+    'Guardián despiertallamas',
+    nil,
+  },
+  [12143] = {
+    'Hijo de la llama',
+    nil,
+  },
+  [12144] = {
+    'Espíritu de Garraluna',
+    nil,
+  },
+  [12145] = {
+    'Kodo de montar (negro)',
+    nil,
+  },
+  [12146] = {
+    'Kodo de montar (oliva)',
+    nil,
+  },
+  [12147] = {
+    'Kodo de montar (blanco)',
+    nil,
+  },
+  [12148] = {
+    'Kodo azulado',
+    nil,
+  },
+  [12150] = {
+    'Kodo de montar (morado)',
+    nil,
+  },
+  [12151] = {
+    'Kodo verde',
+    nil,
+  },
+  [12152] = {
+    'Voz de Elune',
+    nil,
+  },
+  [12156] = {
+    'Lanzahachas Hacha Invernal',
+    nil,
+  },
+  [12157] = {
+    'Cazador de las Sombras Hacha Invernal',
+    nil,
+  },
+  [12158] = {
+    'Cazador Hacha Invernal',
+    nil,
+  },
+  [12159] = {
+    'Korrak el Sanguinario',
+    nil,
+  },
+  [12160] = {
+    'Centinela de Cañada Umbría',
+    nil,
+  },
+  [12176] = {
+    'Kodo domado',
+    nil,
+  },
+  [12177] = {
+    'Kyle Endrino',
+    nil,
+  },
+  [12178] = {
+    'Druida torturado',
+    nil,
+  },
+  [12179] = {
+    'Centinela torturada',
+    nil,
+  },
+  [12196] = {
+    'Tabernera Kaylisk',
+    'Tabernero',
+  },
+  [12197] = {
+    'Glordrum Barbacerada',
+    'Maestro de batalla del Valle de Alterac',
+  },
+  [12198] = {
+    nil,
+    'Maestro de batalla de la Cuenca de Arathi',
+  },
+  [12199] = {
+    'Sombra de Lunámbar',
+    nil,
+  },
+  [12200] = {
+    'Verminte cobaltino',
+    nil,
+  },
+  [12201] = {
+    'Princesa Theradras',
+    nil,
+  },
+  [12202] = {
+    'Cráneo humano',
+    nil,
+  },
+  [12203] = {
+    'Derrumblo',
+    nil,
+  },
+  [12204] = {
+    'Asaltante Látigo de Ira',
+    nil,
+  },
+  [12205] = {
+    'Bruja Látigo de Ira',
+    nil,
+  },
+  [12206] = {
+    'Behemoth primario',
+    nil,
+  },
+  [12207] = {
+    'Hidra Thessala',
+    nil,
+  },
+  [12208] = {
+    'Alma de Clamañublo conquistada',
+    nil,
+  },
+  [12216] = {
+    'Duende venenoso',
+    nil,
+  },
+  [12218] = {
+    'Larva vil',
+    nil,
+  },
+  [12219] = {
+    'Azotador espinoso',
+    nil,
+  },
+  [12220] = {
+    'Parra constrictora',
+    nil,
+  },
+  [12221] = {
+    'Babosa nociva',
+    nil,
+  },
+  [12222] = {
+    'Lodo trepador',
+    nil,
+  },
+  [12223] = {
+    'Rondador de la Caverna',
+    nil,
+  },
+  [12224] = {
+    'Arrastrapiés de la Caverna',
+    nil,
+  },
+  [12225] = {
+    'Celebras el Maldito',
+    nil,
+  },
+  [12236] = {
+    'Lord Lenguavil',
+    nil,
+  },
+  [12237] = {
+    'Meshlok el Cosechador',
+    nil,
+  },
+  [12238] = {
+    'Espíritu de Zaetar',
+    nil,
+  },
+  [12239] = {
+    'Espíritu de Gelk',
+    'El Segundo Khan',
+  },
+  [12240] = {
+    'Espíritu de Kolk',
+    'El Primer Khan',
+  },
+  [12241] = {
+    'Espíritu de Magra',
+    'El Tercer Khan',
+  },
+  [12242] = {
+    'Espíritu de Maraudos',
+    'El Cuarto Khan',
+  },
+  [12243] = {
+    'Espíritu de Veng',
+    'El Quinto Khan',
+  },
+  [12244] = {
+    'Marca de detonación (NO)',
+    nil,
+  },
+  [12245] = {
+    'Vende-Tron 1000',
+    nil,
+  },
+  [12246] = {
+    'Supervendedor 680',
+    nil,
+  },
+  [12247] = {
+    'Estructura de la Plaga',
+    nil,
+  },
+  [12248] = {
+    'Infiltrado Hameya',
+    nil,
+  },
+  [12249] = {
+    'Marca de detonación (SO)',
+    nil,
+  },
+  [12250] = {
+    'Zaeldarr el Marginado',
+    nil,
+  },
+  [12251] = {
+    'Marca de detonación (CLS)',
+    nil,
+  },
+  [12252] = {
+    'Marca de detonación (CRS)',
+    nil,
+  },
+  [12253] = {
+    'Marca de detonación (CSH)',
+    nil,
+  },
+  [12254] = {
+    'Marca de detonación (NESH)',
+    nil,
+  },
+  [12255] = {
+    'Marca de detonación (NE)',
+    nil,
+  },
+  [12256] = {
+    'Marca de detonación (SE)',
+    nil,
+  },
+  [12257] = {
+    'Yeti mecánico',
+    nil,
+  },
+  [12258] = {
+    'Latisable',
+    nil,
+  },
+  [12260] = {
+    'Draco de Onyxia',
+    nil,
+  },
+  [12261] = {
+    'Fustamusgo infectado',
+    nil,
+  },
+  [12262] = {
+    'Protector del zigurat',
+    nil,
+  },
+  [12263] = {
+    'Protector del matadero',
+    nil,
+  },
+  [12265] = {
+    'Príncipe de lava',
+    nil,
+  },
+  [12276] = {
+    'Huevo de Colmen\'Zora',
+    nil,
+  },
+  [12277] = {
+    'Melizza Zumbala',
+    nil,
+  },
+  [12296] = {
+    'Gacela enferma',
+    nil,
+  },
+  [12297] = {
+    'Gacela curada',
+    nil,
+  },
+  [12298] = {
+    'Ciervo enfermo',
+    nil,
+  },
+  [12299] = {
+    'Ciervo curado',
+    nil,
+  },
+  [12317] = {
+    'Muñeco-diana invencible con armadura de baja resistencia',
+    nil,
+  },
+  [12319] = {
+    'Toxicólogo Filo Ardiente',
+    nil,
+  },
+  [12320] = {
+    'Triturador Filo Ardiente',
+    nil,
+  },
+  [12321] = {
+    'Toxicóloga Escama Tormentosa',
+    nil,
+  },
+  [12322] = {
+    'Protector Quel\'Lithien',
+    nil,
+  },
+  [12336] = {
+    'Hermano Cuerviz',
+    'Emisario de la Cruzada Escarlata',
+  },
+  [12337] = {
+    'Mensajera Carmesí',
+    nil,
+  },
+  [12338] = {
+    'Guardián Cazasombras',
+    nil,
+  },
+  [12339] = {
+    nil,
+    'El Oráculo Escarlata',
+  },
+  [12340] = {
+    'Druzlzegar Garfarrapo',
+    nil,
+  },
+  [12341] = {
+    'Caballo esquelético azul',
+    nil,
+  },
+  [12342] = {
+    'Caballo esquelético marrón',
+    nil,
+  },
+  [12343] = {
+    'Caballo esquelético rojo',
+    nil,
+  },
+  [12344] = {
+    'Caballo esquelético verde presto',
+    nil,
+  },
+  [12345] = {
+    'Raptor rojo jaspeado',
+    nil,
+  },
+  [12346] = {
+    'Raptor de esmeralda',
+    nil,
+  },
+  [12347] = {
+    'Reptador de arrecife iracundo',
+    nil,
+  },
+  [12348] = {
+    'Raptor de marfil',
+    nil,
+  },
+  [12349] = {
+    'Raptor de turquesa',
+    nil,
+  },
+  [12350] = {
+    'Raptor violeta',
+    nil,
+  },
+  [12351] = {
+    'Lobo de montar temible',
+    nil,
+  },
+  [12352] = {
+    'Soldado de caballería Escarlata',
+    nil,
+  },
+  [12353] = {
+    'Lobo de montar gris',
+    nil,
+  },
+  [12354] = {
+    'Kodo marrón de montar',
+    nil,
+  },
+  [12355] = {
+    'Kodo gris de montar',
+    nil,
+  },
+  [12356] = {
+    'Kodo verde de montar',
+    nil,
+  },
+  [12357] = {
+    'Kodo (ario)',
+    nil,
+  },
+  [12358] = {
+    'Sable de hielo de montar rayado',
+    nil,
+  },
+  [12359] = {
+    'Sable de hielo de montar moteado',
+    nil,
+  },
+  [12360] = {
+    'Sable de la noche de montar rayado',
+    nil,
+  },
+  [12361] = {
+    'Sable de la noche de montar',
+    nil,
+  },
+  [12362] = {
+    'Sable de hielo de montar',
+    nil,
+  },
+  [12363] = {
+    'Mecazancudo azul',
+    nil,
+  },
+  [12364] = {
+    'Mecazancudo azul hielo modelo A',
+    nil,
+  },
+  [12365] = {
+    'Mecazancudo rojo',
+    nil,
+  },
+  [12366] = {
+    'Mecazancudo sin pintar',
+    nil,
+  },
+  [12367] = {
+    'Mecazancudo verde',
+    nil,
+  },
+  [12368] = {
+    'Mecazancudo blanco modelo A',
+    nil,
+  },
+  [12370] = {
+    'Carnero negro',
+    nil,
+  },
+  [12371] = {
+    'Carnero de escarcha',
+    nil,
+  },
+  [12372] = {
+    'Carnero marrón',
+    nil,
+  },
+  [12373] = {
+    'Carnero gris',
+    nil,
+  },
+  [12375] = {
+    'Yegua zaina',
+    nil,
+  },
+  [12376] = {
+    'Caballo marrón',
+    nil,
+  },
+  [12377] = {
+    'Espectro gemebundo',
+    nil,
+  },
+  [12378] = {
+    'Alma maldita',
+    nil,
+  },
+  [12379] = {
+    'Custodio sin vida',
+    nil,
+  },
+  [12380] = {
+    'Residente sin vida',
+    nil,
+  },
+  [12381] = {
+    'Duende Ley',
+    nil,
+  },
+  [12382] = {
+    'Duende de maná',
+    nil,
+  },
+  [12383] = {
+    'Mordiscos',
+    'Perro de la pradera',
+  },
+  [12384] = {
+    'Augustus el Agraciado',
+    nil,
+  },
+  [12385] = {
+    'Muñeco-diana avanzado del equipo mortero',
+    nil,
+  },
+  [12387] = {
+    'Gran babosa vil',
+    nil,
+  },
+  [12396] = {
+    'Comandante guardia apocalíptico',
+    nil,
+  },
+  [12416] = {
+    'Legionario Alanegra',
+    nil,
+  },
+  [12417] = {
+    '[NOT USED] cría Garraletal',
+    nil,
+  },
+  [12418] = {
+    'Hiena Gordok',
+    nil,
+  },
+  [12419] = {
+    'Sapo casi vivo',
+    nil,
+  },
+  [12420] = {
+    'Mago Alanegra',
+    nil,
+  },
+  [12421] = {
+    '[NOT USED] Asesino Alanegra',
+    nil,
+  },
+  [12422] = {
+    'Dragauro Garramortal',
+    nil,
+  },
+  [12423] = {
+    'Guardia Roberts',
+    nil,
+  },
+  [12425] = {
+    'Flint Sombramás',
+    nil,
+  },
+  [12426] = {
+    'Muñeco-diana magistral',
+    nil,
+  },
+  [12427] = {
+    'Montaraz Dolf',
+    nil,
+  },
+  [12428] = {
+    'Guardia de la Muerte Kel',
+    nil,
+  },
+  [12429] = {
+    'Centinela Shaya',
+    nil,
+  },
+  [12430] = {
+    'Bruta Kor\'ja',
+    nil,
+  },
+  [12431] = {
+    'Mandisangre',
+    nil,
+  },
+  [12432] = {
+    'Viejo Malafauce',
+    nil,
+  },
+  [12433] = {
+    'Krethis Tejeumbra',
+    nil,
+  },
+  [12434] = {
+    'Generador de monstruos (Alanegra)',
+    nil,
+  },
+  [12435] = {
+    'Sangrevaja el Indomable',
+    nil,
+  },
+  [12457] = {
+    'Vinculahechizos Alanegra',
+    nil,
+  },
+  [12458] = {
+    'Capataz Alanegra',
+    nil,
+  },
+  [12459] = {
+    'Brujo Alanegra',
+    nil,
+  },
+  [12460] = {
+    'Vermiguardia Garramortal',
+    nil,
+  },
+  [12461] = {
+    'Sobrestante Garramortal',
+    nil,
+  },
+  [12462] = {
+    '[NOT USED] Señor de la guerra Alanegra',
+    nil,
+  },
+  [12463] = {
+    'Flamaescama Garramortal',
+    nil,
+  },
+  [12464] = {
+    'Bullidor Garramortal',
+    nil,
+  },
+  [12465] = {
+    'Verminte Garramortal',
+    nil,
+  },
+  [12466] = {
+    '[NOT USED] Horrocrusto Garraletal',
+    nil,
+  },
+  [12467] = {
+    'Capitán Garramortal',
+    nil,
+  },
+  [12468] = {
+    'Criador Garramortal',
+    nil,
+  },
+  [12469] = {
+    '[NOT USED] Sacudetierra Garraletal',
+    nil,
+  },
+  [12470] = {
+    '[NOT USED] Lenguaflama Garraletal',
+    nil,
+  },
+  [12473] = {
+    'Dragonizo de arcanita',
+    nil,
+  },
+  [12474] = {
+    'Guardarrama Emeraldón',
+    nil,
+  },
+  [12475] = {
+    'Depositario de árbol Emeraldon',
+    nil,
+  },
+  [12476] = {
+    'Oráculo Emeraldon',
+    nil,
+  },
+  [12477] = {
+    'Guardarrama Verdantine',
+    nil,
+  },
+  [12478] = {
+    'Oráculo Verdantine',
+    nil,
+  },
+  [12479] = {
+    'Depositario de árbol Verdantine',
+    nil,
+  },
+  [12480] = {
+    nil,
+    'Capitán de la Guardia',
+  },
+  [12481] = {
+    nil,
+    'Reclutadora de Ventormenta',
+  },
+  [12496] = {
+    'Rastreasueños',
+    nil,
+  },
+  [12497] = {
+    'Bramasueños',
+    nil,
+  },
+  [12498] = {
+    'Acechasueños',
+    nil,
+  },
+  [12536] = {
+    'Ilusión: dragonante negro',
+    nil,
+  },
+  [12557] = {
+    'Grethok el Controlador',
+    nil,
+  },
+  [12576] = {
+    'Grish Largo Camino',
+    nil,
+  },
+  [12577] = {
+    nil,
+    'Maestro de hipogrifos',
+  },
+  [12578] = {
+    nil,
+    'Maestro de hipogrifos',
+  },
+  [12579] = {
+    'Desgarradora Furia Sangrienta',
+    nil,
+  },
+  [12596] = {
+    'Bibilfaz Plumasilba',
+    'Maestro de grifos',
+  },
+  [12616] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [12617] = {
+    'Khaelyn Alacerada',
+    'Maestro de grifos',
+  },
+  [12636] = {
+    nil,
+    'Cuidador de murciélagos',
+  },
+  [12676] = {
+    'Garfafilada',
+    nil,
+  },
+  [12696] = {
+    'Senani Corazón Atronador',
+    nil,
+  },
+  [12718] = {
+    'Gurda Cicafuria',
+    nil,
+  },
+  [12722] = {
+    'Vera Belladona',
+    nil,
+  },
+  [12736] = {
+    nil,
+    'El Anillo de la Tierra',
+  },
+  [12737] = {
+    'Mastok Bufido',
+    nil,
+  },
+  [12738] = {
+    'Nori Rumborgullo',
+    nil,
+  },
+  [12739] = {
+    'Guardia de Élite de Onyxia',
+    nil,
+  },
+  [12740] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [12741] = {
+    'Guerrero 40 (más control)',
+    nil,
+  },
+  [12758] = {
+    'Activador de Onyxia',
+    nil,
+  },
+  [12759] = {
+    'Marearess',
+    nil,
+  },
+  [12776] = {
+    nil,
+    'Instructor de demonios',
+  },
+  [12777] = {
+    'Capitán Martillo de Endecha',
+    'Intendente de armaduras',
+  },
+  [12778] = {
+    'Teniente Rachel Vaccar',
+    'Intendente de armaduras de Terrallende',
+  },
+  [12779] = {
+    'Archimago Gaiman',
+    nil,
+  },
+  [12780] = {
+    'Alférez Cielosombra',
+    nil,
+  },
+  [12781] = {
+    'Sargento primero Biggins',
+    'Intendente de accesorios',
+  },
+  [12782] = {
+    'Capitán O\'Neal',
+    'Intendente de armas',
+  },
+  [12783] = {
+    'Teniente Karter',
+    'Intendente de monturas de guerra',
+  },
+  [12784] = {
+    'Teniente Jackspring',
+    'Intendente de armas',
+  },
+  [12785] = {
+    'Alférez Clate',
+    'Intendente de armaduras',
+  },
+  [12786] = {
+    'Guardia Quine',
+    nil,
+  },
+  [12787] = {
+    'Guardia Hammon',
+    nil,
+  },
+  [12788] = {
+    nil,
+    'Intendente de armaduras de Terrallende',
+  },
+  [12789] = {
+    'Guardia de sangre Hini\'wana',
+    nil,
+  },
+  [12790] = {
+    'Consejero Willington',
+    nil,
+  },
+  [12791] = {
+    'Cabecilla Nexo Terrestre',
+    nil,
+  },
+  [12792] = {
+    nil,
+    'Intendente de armaduras',
+  },
+  [12793] = {
+    'Valiente Piel Pétrea',
+    'Intendente de accesorios',
+  },
+  [12794] = {
+    'Guardia de piedra Zarg',
+    'Intendente de armas',
+  },
+  [12795] = {
+    'Gran capataz Hola\'mahi',
+    'Intendente de armaduras',
+  },
+  [12796] = {
+    'Asaltante Bork',
+    'Intendente de monturas de guerra',
+  },
+  [12797] = {
+    'Bruto Korf',
+    nil,
+  },
+  [12798] = {
+    'Bruta Bek\'rah',
+    nil,
+  },
+  [12799] = {
+    'Sargento Ba\'sha',
+    'Intendente de accesorios',
+  },
+  [12801] = {
+    'Quimerok Arcano',
+    nil,
+  },
+  [12802] = {
+    'Devorador quimerok',
+    nil,
+  },
+  [12804] = {
+    '[PH] TEST Dios de fuego',
+    nil,
+  },
+  [12805] = {
+    'Oficial Areyn',
+    'Intendente de accesorios',
+  },
+  [12806] = {
+    'Magmeante',
+    nil,
+  },
+  [12807] = {
+    nil,
+    'Instructor de demonios',
+  },
+  [12818] = {
+    'Ruul Pezuña Nevada',
+    nil,
+  },
+  [12819] = {
+    'Forma de oso de Ruul Pezuña Nevada',
+    nil,
+  },
+  [12836] = {
+    'Protector deambulante',
+    nil,
+  },
+  [12837] = {
+    'Yama Pezuña Nevada',
+    nil,
+  },
+  [12856] = {
+    'Avanzada de Vallefresno',
+    nil,
+  },
+  [12859] = {
+    'Asaltante del Hachazo',
+    nil,
+  },
+  [12860] = {
+    'Duriel Fuegolunar',
+    nil,
+  },
+  [12861] = {
+    'Fuego fatuo (solo fantasma)',
+    nil,
+  },
+  [12862] = {
+    'Explorador Grito de Guerra',
+    nil,
+  },
+  [12863] = {
+    'Corredor Grito de Guerra',
+    nil,
+  },
+  [12864] = {
+    'Escolta Grito de Guerra',
+    nil,
+  },
+  [12865] = {
+    'Embajador Malcin',
+    nil,
+  },
+  [12866] = {
+    'Myriam Lunacanta',
+    nil,
+  },
+  [12877] = {
+    'Ertog Colmillorrabioso',
+    nil,
+  },
+  [12896] = {
+    'Centinela Ala de Plata',
+    nil,
+  },
+  [12897] = {
+    'Guerrera Ala de Plata',
+    nil,
+  },
+  [12898] = {
+    'Ilusión de Phantim',
+    nil,
+  },
+  [12903] = {
+    'Guardia del Hachazo',
+    nil,
+  },
+  [12904] = {
+    'Espíritu de redención',
+    nil,
+  },
+  [12916] = {
+    'Muñeco-diana invencible 60 con baja resistencia a la magia',
+    nil,
+  },
+  [12917] = {
+    'Muñeco-diana invencible 60 con alta resistencia a la magia',
+    nil,
+  },
+  [12918] = {
+    'Jefe Murgut',
+    'Rey de los Maderiza',
+  },
+  [12920] = {
+    nil,
+    'Cirujano del dispensario',
+  },
+  [12921] = {
+    'Maderiza iracundo',
+    nil,
+  },
+  [12922] = {
+    'Esbirro diablillo',
+    nil,
+  },
+  [12923] = {
+    'Soldado con heridas leves',
+    nil,
+  },
+  [12924] = {
+    'Soldado con heridas medias',
+    nil,
+  },
+  [12925] = {
+    'Soldado con heridas graves',
+    nil,
+  },
+  [12936] = {
+    'Soldado con heridas medias',
+    nil,
+  },
+  [12937] = {
+    'Soldado con heridas graves',
+    nil,
+  },
+  [12938] = {
+    'Soldado con heridas leves',
+    nil,
+  },
+  [12939] = {
+    nil,
+    'Cirujano del dispensario',
+  },
+  [12940] = {
+    'Vorsha la Azotadora',
+    nil,
+  },
+  [12941] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [12942] = {
+    nil,
+    'Suministros de peletería',
+  },
+  [12943] = {
+    'Werg Filo Grueso',
+    'Suministros de peletería',
+  },
+  [12944] = {
+    'Lokhtos Tratoscuro',
+    'La Hermandad del Torio',
+  },
+  [12956] = {
+    'Zannok Perforapieles',
+    'Suministros de peletería',
+  },
+  [12957] = {
+    'Blimo Cacharretio',
+    'Suministros comerciales',
+  },
+  [12958] = {
+    'Gigget Retramuelle',
+    'Suministros comerciales',
+  },
+  [12959] = {
+    nil,
+    'Pertrechos',
+  },
+  [12960] = {
+    nil,
+    'Pertrechos',
+  },
+  [12961] = {
+    nil,
+    'Instructor de pesca',
+  },
+  [12962] = {
+    nil,
+    'Mercader y suministros de pesca',
+  },
+  [12976] = {
+    'Abrecaminos Kolkar',
+    nil,
+  },
+  [12977] = {
+    'Emboscador Kolkar',
+    nil,
+  },
+  [12996] = {
+    'Montaraz de Forjaz montado',
+    nil,
+  },
+  [12997] = {
+    nil,
+    'Especialista en el exterminio de ratas',
+  },
+  [12998] = {
+    'Granjero enano',
+    nil,
+  },
+  [13000] = {
+    'Ingeniero gnomo',
+    nil,
+  },
+  [13016] = {
+    'Rata del subterráneo',
+    nil,
+  },
+  [13017] = {
+    'Rata del subterráneo sometida',
+    nil,
+  },
+  [13019] = {
+    'Vidente Filo Ardiente',
+    nil,
+  },
+  [13020] = {
+    'Vaelastrasz el Corrupto',
+    nil,
+  },
+  [13021] = {
+    'Triturador Alabeo',
+    nil,
+  },
+  [13022] = {
+    'Fustigador',
+    nil,
+  },
+  [13036] = {
+    'Sabueso Gordok',
+    nil,
+  },
+  [13056] = {
+    'Ángel de la Resurrección (DND)',
+    nil,
+  },
+  [13076] = {
+    'Montaraz de Dun Morogh',
+    nil,
+  },
+  [13080] = {
+    'Guardia Ferrohondo',
+    nil,
+  },
+  [13081] = {
+    'Asaltante Ferrohondo',
+    nil,
+  },
+  [13082] = {
+    nil,
+    'El que da grandes palizas',
+  },
+  [13083] = {
+    'Eco de Archimonde',
+    nil,
+  },
+  [13084] = {
+    'Bixi Tambaleapié',
+    'Maestra de armas',
+  },
+  [13085] = {
+    'Myrokos Silenforma',
+    nil,
+  },
+  [13086] = {
+    'Aggi Piesdeplomo',
+    nil,
+  },
+  [13087] = {
+    'Invasor Minafría',
+    nil,
+  },
+  [13088] = {
+    'Masha Corteveloz',
+    nil,
+  },
+  [13089] = {
+    'Guardia Minafría',
+    nil,
+  },
+  [13096] = {
+    'Expedicionario Minafría',
+    nil,
+  },
+  [13097] = {
+    'Supervisor Minafría',
+    nil,
+  },
+  [13098] = {
+    'Perito Ferrohondo',
+    nil,
+  },
+  [13099] = {
+    'Expedicionario Ferrohondo',
+    nil,
+  },
+  [13116] = {
+    'Guía espiritual de la Alianza',
+    nil,
+  },
+  [13117] = {
+    'Guía espiritual de la Horda',
+    nil,
+  },
+  [13118] = {
+    'Guardaespaldas Carmesí',
+    nil,
+  },
+  [13136] = {
+    'Zángano Colmen\'Ashi',
+    nil,
+  },
+  [13137] = {
+    'Teniente Rugba',
+    nil,
+  },
+  [13138] = {
+    'Teniente Spencer',
+    nil,
+  },
+  [13139] = {
+    'Comandante Randolf',
+    nil,
+  },
+  [13140] = {
+    'Comandante Dardosh <old>',
+    nil,
+  },
+  [13141] = {
+    'Vapuleador Raizonda',
+    nil,
+  },
+  [13142] = {
+    'Enmarañador Raizonda',
+    nil,
+  },
+  [13143] = {
+    'Teniente Pezuña Fuerte',
+    nil,
+  },
+  [13144] = {
+    'Teniente Vol\'talar',
+    nil,
+  },
+  [13145] = {
+    'Teniente Grummus',
+    nil,
+  },
+  [13146] = {
+    'Teniente Murp <old>',
+    nil,
+  },
+  [13147] = {
+    'Teniente Lewis',
+    nil,
+  },
+  [13148] = {
+    'Llama de Ragnaros',
+    nil,
+  },
+  [13149] = {
+    'Salteador de la Hermandad',
+    nil,
+  },
+  [13150] = {
+    'Agente de la Hermandad',
+    nil,
+  },
+  [13151] = {
+    'Maestro de la Hermandad Ryson',
+    nil,
+  },
+  [13152] = {
+    'Comandante Malgor',
+    nil,
+  },
+  [13153] = {
+    'Comandante Mulfort',
+    nil,
+  },
+  [13154] = {
+    'Comandante Luis Philips',
+    nil,
+  },
+  [13155] = {
+    'Agente Mortacechador',
+    nil,
+  },
+  [13158] = {
+    'Teniente Sanders',
+    nil,
+  },
+  [13160] = {
+    'Enjambrista carroñero',
+    nil,
+  },
+  [13161] = {
+    'Grifo nidal',
+    nil,
+  },
+  [13176] = {
+    'Herrero Regzar',
+    nil,
+  },
+  [13177] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [13178] = {
+    'Jinete de guerra',
+    nil,
+  },
+  [13179] = {
+    'Comandante del aire Guse',
+    nil,
+  },
+  [13180] = {
+    'Comandante del aire Jeztor',
+    nil,
+  },
+  [13181] = {
+    'Comandante del aire Mulverick',
+    nil,
+  },
+  [13196] = {
+    'Azotador de fase',
+    nil,
+  },
+  [13197] = {
+    'Latinefasto',
+    nil,
+  },
+  [13216] = {
+    'Gaelden Martillero',
+    'Oficial de suministros Pico Tormenta',
+  },
+  [13217] = {
+    'Thanthaldis Brillaneve',
+    'Oficial de suministros Pico Tormenta',
+  },
+  [13218] = {
+    'Grunnda Corazón de Lobo',
+    'Oficial de suministros Lobo Gélido',
+  },
+  [13219] = {
+    'Jorek Ladohierro',
+    'Oficial de suministros Lobo Gélido',
+  },
+  [13220] = {
+    'Layo Golpe Estelar',
+    'El Círculo Cenarion',
+  },
+  [13221] = {
+    'Ojo de Ryson en el cielo',
+    nil,
+  },
+  [13236] = {
+    'Primalista Thurloga',
+    nil,
+  },
+  [13256] = {
+    'Lokholar el Señor del Hielo',
+    nil,
+  },
+  [13257] = {
+    'Murgot Forjahonda',
+    nil,
+  },
+  [13276] = {
+    'Diablillo Mala Hierba',
+    nil,
+  },
+  [13278] = {
+    'Duque Hydraxis',
+    nil,
+  },
+  [13279] = {
+    'Marea discordante',
+    nil,
+  },
+  [13280] = {
+    'Hidromilecio',
+    nil,
+  },
+  [13283] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [13284] = {
+    'Chamán Lobo Gélido',
+    nil,
+  },
+  [13285] = {
+    'Látigo de la Muerte',
+    nil,
+  },
+  [13296] = {
+    'Teniente Largent',
+    nil,
+  },
+  [13297] = {
+    'Teniente Durasa',
+    nil,
+  },
+  [13298] = {
+    'Teniente Varagris',
+    nil,
+  },
+  [13299] = {
+    'Teniente Lonadin',
+    nil,
+  },
+  [13300] = {
+    'Teniente Mancuso',
+    nil,
+  },
+  [13301] = {
+    'Emboscador Colmen\'Ashi',
+    nil,
+  },
+  [13316] = {
+    'Peón Minafría',
+    nil,
+  },
+  [13317] = {
+    'Minero Minafría',
+    nil,
+  },
+  [13318] = {
+    'Comandante Mortimer',
+    nil,
+  },
+  [13319] = {
+    'Comandante Duffy',
+    nil,
+  },
+  [13320] = {
+    'Comandante Karl Filis',
+    nil,
+  },
+  [13321] = {
+    'Rana pequeña',
+    nil,
+  },
+  [13322] = {
+    'Guardia de honor de Hydraxis',
+    nil,
+  },
+  [13323] = {
+    'Diemetradón subterráneo',
+    nil,
+  },
+  [13324] = {
+    'Custodio avezado',
+    nil,
+  },
+  [13325] = {
+    'Montaraz avezado',
+    nil,
+  },
+  [13326] = {
+    'Defensor avezado',
+    nil,
+  },
+  [13327] = {
+    'Centinela avezado',
+    nil,
+  },
+  [13328] = {
+    'Guardián avezado',
+    nil,
+  },
+  [13329] = {
+    'Legionario avezado',
+    nil,
+  },
+  [13330] = {
+    'Guerrero avezado',
+    nil,
+  },
+  [13331] = {
+    'Defensor veterano',
+    nil,
+  },
+  [13332] = {
+    'Guardián veterano',
+    nil,
+  },
+  [13333] = {
+    'Custodio veterano',
+    nil,
+  },
+  [13334] = {
+    'Legionario veterano',
+    nil,
+  },
+  [13335] = {
+    'Montaraz veterano',
+    nil,
+  },
+  [13336] = {
+    'Centinela veterana',
+    nil,
+  },
+  [13337] = {
+    'Guerrero veterano',
+    nil,
+  },
+  [13338] = {
+    'Rata del Núcleo',
+    nil,
+  },
+  [13339] = {
+    'Guerrero 60',
+    nil,
+  },
+  [13356] = {
+    'Posaminas Pico Tormenta',
+    nil,
+  },
+  [13357] = {
+    'Posaminas Lobo Gélido',
+    nil,
+  },
+  [13358] = {
+    'Arquero Pico Tormenta',
+    nil,
+  },
+  [13359] = {
+    'Arquero Lobo Gélido',
+    nil,
+  },
+  [13377] = {
+    'Maestro ingeniero Zinfizzlex',
+    nil,
+  },
+  [13378] = {
+    'Unidad machacadora Lobo Gélido',
+    nil,
+  },
+  [13396] = {
+    'Minero Ferrohondo',
+    nil,
+  },
+  [13397] = {
+    'Peón Ferrohondo',
+    nil,
+  },
+  [13416] = {
+    'Unidad machacadora Pico Tormenta',
+    nil,
+  },
+  [13417] = {
+    'Sagorne Zanca Cresta',
+    'Instructor de chamanes',
+  },
+  [13418] = {
+    'Kaymard Cobrellizco',
+    'Pastos de Bosquehumeante',
+  },
+  [13419] = {
+    'Ivus el Señor del Bosque',
+    nil,
+  },
+  [13420] = {
+    'Penney Cobrellizco',
+    'Pastos de Bosquehumeante',
+  },
+  [13421] = {
+    'Guardián Campeón',
+    nil,
+  },
+  [13422] = {
+    'Defensor Campeón',
+    nil,
+  },
+  [13424] = {
+    'Custodio Campeón',
+    nil,
+  },
+  [13425] = {
+    'Legionario Campeón',
+    nil,
+  },
+  [13426] = {
+    'Montaraz Campeón',
+    nil,
+  },
+  [13427] = {
+    'Centinela Campeona',
+    nil,
+  },
+  [13428] = {
+    'Guerrero Campeón',
+    nil,
+  },
+  [13429] = {
+    'Nardstrum Cobrellizco',
+    'Pastos de Bosquehumeante',
+  },
+  [13430] = {
+    'Jaycrue Cobrellizco',
+    'Pastos de Bosquehumeante',
+  },
+  [13431] = {
+    'Whulwert Cobrellizco',
+    'Pastos de Bosquehumeante',
+  },
+  [13432] = {
+    'Seersa Cobrellizco',
+    'Pastos de Bosquehumeante',
+  },
+  [13433] = {
+    'Wulmort Calderilla',
+    'Pastos de Bosquehumeante',
+  },
+  [13434] = {
+    'Macey Calderilla',
+    'Pastos de Bosquehumeante',
+  },
+  [13435] = {
+    'Khole Calderilla',
+    'Pastos de Bosquehumeante',
+  },
+  [13436] = {
+    'Guchie Calderilla',
+    'Pastos de Bosquehumeante',
+  },
+  [13437] = {
+    'Comandante del aire Ichman',
+    nil,
+  },
+  [13438] = {
+    'Comandante del aire Slidore',
+    nil,
+  },
+  [13439] = {
+    'Comandante del aire Vipore',
+    nil,
+  },
+  [13440] = {
+    'Jinete de lobos Lobo Gélido',
+    nil,
+  },
+  [13441] = {
+    'Comandante jinete de lobos Lobo Gélido',
+    nil,
+  },
+  [13442] = {
+    'Archidruida Renferal',
+    nil,
+  },
+  [13443] = {
+    'Druida de la Alameda',
+    nil,
+  },
+  [13444] = {
+    'Gran Padre Invierno',
+    nil,
+  },
+  [13445] = {
+    'Gran Padre Invierno',
+    nil,
+  },
+  [13446] = {
+    'Mariscal de campo Teravaine',
+    nil,
+  },
+  [13447] = {
+    'Cabo Noreg Pico Tormenta',
+    nil,
+  },
+  [13448] = {
+    'Sargento Yazra Gruñido Sangriento',
+    nil,
+  },
+  [13449] = {
+    'Maestro de guerra Garrick',
+    nil,
+  },
+  [13456] = {
+    'Engendro de Noxxion',
+    nil,
+  },
+  [13476] = {
+    'Zen\'Balai',
+    'Instructora de druidas',
+  },
+  [13477] = {
+    'Activador Noxxion',
+    nil,
+  },
+  [13496] = {
+    'Anciano resucitado',
+    nil,
+  },
+  [13516] = {
+    'Avanzado Lobo Gélido',
+    nil,
+  },
+  [13517] = {
+    'Avanzado avezado',
+    nil,
+  },
+  [13518] = {
+    'Avanzado veterano',
+    nil,
+  },
+  [13519] = {
+    'Avanzado Campeón',
+    nil,
+  },
+  [13520] = {
+    'Forestal Pico Tormenta',
+    nil,
+  },
+  [13521] = {
+    'Forestal avezada',
+    nil,
+  },
+  [13522] = {
+    'Forestal veterana',
+    nil,
+  },
+  [13523] = {
+    'Forestal Campeona',
+    nil,
+  },
+  [13524] = {
+    'Comando Pico Tormenta',
+    nil,
+  },
+  [13525] = {
+    'Comando avezado',
+    nil,
+  },
+  [13526] = {
+    'Comando veterano',
+    nil,
+  },
+  [13527] = {
+    'Comando Campeón',
+    nil,
+  },
+  [13528] = {
+    'Atracador Lobo Gélido',
+    nil,
+  },
+  [13529] = {
+    'Atracador avezado',
+    nil,
+  },
+  [13530] = {
+    'Atracador veterano',
+    nil,
+  },
+  [13531] = {
+    'Atracador Campeón',
+    nil,
+  },
+  [13533] = {
+    'Larva vomitada',
+    nil,
+  },
+  [13534] = {
+    'Guarda de Minafría avezado',
+    nil,
+  },
+  [13535] = {
+    'Guardia Minafría veterano',
+    nil,
+  },
+  [13536] = {
+    'Guardia Campeón Minafría',
+    nil,
+  },
+  [13537] = {
+    'Perito de Minafría avezado',
+    nil,
+  },
+  [13538] = {
+    'Perito Minafría veterano',
+    nil,
+  },
+  [13539] = {
+    'Supervisor Campeón Minafría',
+    nil,
+  },
+  [13540] = {
+    'Expedicionario Ferrohondo avezado',
+    nil,
+  },
+  [13541] = {
+    'Expedicionario veterano Ferrohondo',
+    nil,
+  },
+  [13542] = {
+    'Expedicionario Campeón Ferrohondo',
+    nil,
+  },
+  [13543] = {
+    'Asaltante Ferrohondo avezado',
+    nil,
+  },
+  [13544] = {
+    'Asaltante veterano Ferrohondo',
+    nil,
+  },
+  [13545] = {
+    'Asaltante Campeón Ferrohondo',
+    nil,
+  },
+  [13546] = {
+    'Expedicionario de Minafría avezado',
+    nil,
+  },
+  [13547] = {
+    'Expedicionario Minafría veterano',
+    nil,
+  },
+  [13548] = {
+    'Expedicionario Campeón Minafría',
+    nil,
+  },
+  [13549] = {
+    'Invasor de Minafría avezado',
+    nil,
+  },
+  [13550] = {
+    'Invasor Minafría veterano',
+    nil,
+  },
+  [13551] = {
+    'Invasor Campeón Minafría',
+    nil,
+  },
+  [13552] = {
+    'Guardia Ferrohondo avezado',
+    nil,
+  },
+  [13553] = {
+    'Guardia veterano Ferrohondo',
+    nil,
+  },
+  [13554] = {
+    'Guardia Campeón Ferrohondo',
+    nil,
+  },
+  [13555] = {
+    'Perito Ferrohondo avezado',
+    nil,
+  },
+  [13556] = {
+    'Perito veterano Ferrohondo',
+    nil,
+  },
+  [13557] = {
+    'Supervisor Campeón Ferrohondo',
+    nil,
+  },
+  [13576] = {
+    'Jinete de carneros Pico Tormenta',
+    nil,
+  },
+  [13577] = {
+    'Comandante de jinetes de carneros Pico Tormenta',
+    nil,
+  },
+  [13596] = {
+    'Escamapodrida',
+    nil,
+  },
+  [13597] = {
+    'Experto en explosivos Lobo Gélido',
+    nil,
+  },
+  [13598] = {
+    'Experto en explosivos Pico Tormenta',
+    nil,
+  },
+  [13599] = {
+    'Quijaforte imperturbable',
+    nil,
+  },
+  [13601] = {
+    'Manitas Gizlock',
+    nil,
+  },
+  [13602] = {
+    'Grinch el Abominable',
+    nil,
+  },
+  [13616] = {
+    'Maestra de establos Lobo Gélido',
+    'Maestra de establos',
+  },
+  [13617] = {
+    'Maestra de establos Pico Tormenta',
+    'Maestra de establos',
+  },
+  [13618] = {
+    'Lobo Gélido de establo',
+    nil,
+  },
+  [13619] = {
+    'Muñeco de Gizlock',
+    nil,
+  },
+  [13636] = {
+    'Muñeco de nieve extraño',
+    nil,
+  },
+  [13656] = {
+    nil,
+    'Martillo Crepuscular',
+  },
+  [13676] = {
+    'Carnero de Alterac de establo',
+    nil,
+  },
+  [13696] = {
+    'Sucesor tóxico',
+    nil,
+  },
+  [13698] = {
+    'Vigilante Marandis',
+    nil,
+  },
+  [13716] = {
+    'Celebras el Redimido',
+    nil,
+  },
+  [13717] = {
+    'Paria Centauro',
+    nil,
+  },
+  [13718] = {
+    'El profeta sin nombre',
+    nil,
+  },
+  [13736] = {
+    'Esencia tóxica',
+    nil,
+  },
+  [13737] = {
+    'Hermana de Marandis',
+    nil,
+  },
+  [13738] = {
+    nil,
+    'El Quinto Khan',
+  },
+  [13739] = {
+    nil,
+    'El Cuarto Khan',
+  },
+  [13740] = {
+    nil,
+    'El Tercer Khan',
+  },
+  [13741] = {
+    nil,
+    'El Segundo Khan',
+  },
+  [13742] = {
+    nil,
+    'El Primer Khan',
+  },
+  [13743] = {
+    'Fuerza de la naturaleza corrupta',
+    nil,
+  },
+  [13776] = {
+    'Cabo Teeka Gruñido Sangriento',
+    nil,
+  },
+  [13777] = {
+    'Sargento Durgen Pico Tormenta',
+    nil,
+  },
+  [13797] = {
+    'Montaraz Bramibum',
+    nil,
+  },
+  [13816] = {
+    'Prospectora Tallapiedra',
+    nil,
+  },
+  [13817] = {
+    'Voggah Agarre Letal',
+    nil,
+  },
+  [13836] = {
+    'Pesadilla Filo Ardiente',
+    nil,
+  },
+  [13837] = {
+    'Semental capturado',
+    nil,
+  },
+  [13838] = {
+    'Tótem de pruebas',
+    nil,
+  },
+  [13839] = {
+    'Guardia real del Terror',
+    nil,
+  },
+  [13840] = {
+    'Maestro de guerra Laggrond',
+    nil,
+  },
+  [13841] = {
+    'Teniente Haggerdin',
+    nil,
+  },
+  [13842] = {
+    'Embajadora Rokhstrom Lobo Gélido',
+    nil,
+  },
+  [13843] = {
+    'Teniente Rotimer',
+    'Oficial reclutador de la guardia Pico Tormenta',
+  },
+  [13856] = {
+    'Resurrector de la Alianza',
+    'Haz clic aquí para eliminar los efectos de resurrección',
+  },
+  [13857] = {
+    'Resurrector de la Horda',
+    'Haz clic aquí para eliminar los efectos de resurrección',
+  },
+  [13876] = {
+    'Mekigeniero activador',
+    nil,
+  },
+  [13896] = {
+    'Barbascamas',
+    nil,
+  },
+  [13916] = {
+    'Totém de cristal de La Masacre',
+    nil,
+  },
+  [13917] = {
+    'Izzy Damecobre',
+    'Banquera',
+  },
+  [13956] = {
+    'Místico Hacha Invernal',
+    nil,
+  },
+  [13957] = {
+    'Guerrero Hacha Invernal',
+    nil,
+  },
+  [13958] = {
+    'Vidente Hacha Invernal',
+    nil,
+  },
+  [13959] = {
+    'Yeti de Alterac',
+    nil,
+  },
+  [13976] = {
+    'Draco torturado',
+    nil,
+  },
+  [13977] = {
+    'Gash\'nak el Caníbal',
+    nil,
+  },
+  [13996] = {
+    'Técnico Alanegra',
+    nil,
+  },
+  [14016] = {
+    'Ushalac, el Morador de la oscuridad',
+    nil,
+  },
+  [14017] = {
+    'Trol marchito',
+    nil,
+  },
+  [14018] = {
+    nil,
+    'Héroe Hacha Invernal',
+  },
+  [14019] = {
+    'Jiroculto',
+    nil,
+  },
+  [14021] = {
+    'Avizor Hacha Invernal',
+    nil,
+  },
+  [14022] = {
+    'Cría roja corrupta',
+    nil,
+  },
+  [14023] = {
+    'Cría verde corrupta',
+    nil,
+  },
+  [14024] = {
+    'Cría azul corrupta',
+    nil,
+  },
+  [14025] = {
+    'Cría de bronce corrupta',
+    nil,
+  },
+  [14026] = {
+    'Activador Guse',
+    nil,
+  },
+  [14027] = {
+    'Activador Mulverick',
+    nil,
+  },
+  [14028] = {
+    'Activador Jeztor',
+    nil,
+  },
+  [14029] = {
+    'Activador Ichman',
+    nil,
+  },
+  [14030] = {
+    'Activador Slidore',
+    nil,
+  },
+  [14031] = {
+    'Activador Vipore',
+    nil,
+  },
+  [14042] = {
+    nil,
+    'Vinculador de los Moro\'gan',
+  },
+  [14061] = {
+    'Azotador de fase (Fuego)',
+    nil,
+  },
+  [14062] = {
+    'Azotador de fase (Naturaleza)',
+    nil,
+  },
+  [14063] = {
+    'Azotador de fase (Arcano)',
+    nil,
+  },
+  [14081] = {
+    'Portal de demonios',
+    nil,
+  },
+  [14101] = {
+    'Guardia vil iracundo',
+    nil,
+  },
+  [14121] = {
+    'Buceador subterráneo',
+    nil,
+  },
+  [14122] = {
+    'Géiser monumental',
+    nil,
+  },
+  [14123] = {
+    'Sacudidor Quijacero',
+    nil,
+  },
+  [14141] = {
+    'Reivindicador Pico Tormenta',
+    nil,
+  },
+  [14142] = {
+    'Reivindicador Lobo Gélido',
+    nil,
+  },
+  [14143] = {
+    nil,
+    'Los Moro\'gan',
+  },
+  [14144] = {
+    nil,
+    'Los Moro\'gan',
+  },
+  [14145] = {
+    'Acechasombras Fuego de Jade',
+    'Los Moro\'gan',
+  },
+  [14146] = {
+    nil,
+    'Los Moro\'gan',
+  },
+  [14147] = {
+    nil,
+    'Los Moro\'gan',
+  },
+  [14148] = {
+    'Vendedora alocada',
+    'Los Moro\'gan',
+  },
+  [14161] = {
+    nil,
+    'Los Moro\'gan',
+  },
+  [14162] = {
+    'BandaMago',
+    nil,
+  },
+  [14181] = {
+    '[PH] Heraldo del cementerio',
+    nil,
+  },
+  [14182] = {
+    'Cazador de recompensas Kolark',
+    nil,
+  },
+  [14183] = {
+    'Artillero Sheldonore',
+    nil,
+  },
+  [14184] = {
+    'Azotador de fase (Escarcha)',
+    nil,
+  },
+  [14185] = {
+    'Najak Malditor',
+    'Cazador de recompensas',
+  },
+  [14186] = {
+    'Ravak Tótem Siniestro',
+    'Cazador de recompensas',
+  },
+  [14187] = {
+    nil,
+    'Cazador de recompensas',
+  },
+  [14188] = {
+    'Dirk Estafa',
+    'Cazador de recompensas',
+  },
+  [14221] = {
+    'Gravis Nudocorredizo',
+    nil,
+  },
+  [14223] = {
+    'Cascarrabias Ben',
+    nil,
+  },
+  [14224] = {
+    nil,
+    'Unidad de recuperación remota',
+  },
+  [14225] = {
+    'Príncipe Kellen',
+    nil,
+  },
+  [14228] = {
+    'Mueca',
+    nil,
+  },
+  [14229] = {
+    'Filozante detestable',
+    nil,
+  },
+  [14230] = {
+    'Ojo Ladrón',
+    nil,
+  },
+  [14231] = {
+    'Drogoth el Vagabundo',
+    nil,
+  },
+  [14232] = {
+    'Dardo',
+    nil,
+  },
+  [14233] = {
+    'Rasgascama',
+    nil,
+  },
+  [14235] = {
+    'El Podrido',
+    nil,
+  },
+  [14236] = {
+    'Señor Pescador',
+    nil,
+  },
+  [14237] = {
+    'Mocogusano',
+    nil,
+  },
+  [14241] = {
+    'Cortezaférrea el Redimido',
+    nil,
+  },
+  [14242] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [14261] = {
+    'Dracónido azul',
+    nil,
+  },
+  [14262] = {
+    'Dracónido verde',
+    nil,
+  },
+  [14263] = {
+    'Dracónido de bronce',
+    nil,
+  },
+  [14264] = {
+    'Dracónido rojo',
+    nil,
+  },
+  [14265] = {
+    'Dracónido negro',
+    nil,
+  },
+  [14266] = {
+    'Shanda la Giratoria',
+    nil,
+  },
+  [14267] = {
+    'Emogg el Triturador',
+    nil,
+  },
+  [14269] = {
+    'Buscador Aqualon',
+    nil,
+  },
+  [14271] = {
+    'Rompecostillas',
+    nil,
+  },
+  [14272] = {
+    'Llamagruños',
+    nil,
+  },
+  [14273] = {
+    'Corapetra',
+    nil,
+  },
+  [14274] = {
+    'Rastreador Hacha Invernal',
+    nil,
+  },
+  [14275] = {
+    'Tamra Pico Tormenta',
+    nil,
+  },
+  [14279] = {
+    'Trepazoso',
+    nil,
+  },
+  [14280] = {
+    'Gran Samras',
+    nil,
+  },
+  [14281] = {
+    'Jimmy el Sangrador',
+    nil,
+  },
+  [14282] = {
+    'Cánido Lobo Gélido',
+    nil,
+  },
+  [14283] = {
+    'Lechuza Pico Tormenta',
+    nil,
+  },
+  [14284] = {
+    'Guardia de batalla Pico Tormenta',
+    nil,
+  },
+  [14285] = {
+    'Guardia de batalla Lobo Gélido',
+    nil,
+  },
+  [14301] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [14302] = {
+    'Dracónido cromático',
+    nil,
+  },
+  [14303] = {
+    'Guardián petrificado',
+    nil,
+  },
+  [14304] = {
+    'Élite Kor\'kron',
+    nil,
+  },
+  [14305] = {
+    'Huérfano humano',
+    nil,
+  },
+  [14307] = {
+    'Engendrador de dracónido negra',
+    nil,
+  },
+  [14309] = {
+    'Engendrador de dracónido rojo',
+    nil,
+  },
+  [14310] = {
+    'Engendrador de dracónido verde',
+    nil,
+  },
+  [14311] = {
+    'Engendrador de dracónido de bronce',
+    nil,
+  },
+  [14312] = {
+    'Engendrador de dracónido azul',
+    nil,
+  },
+  [14321] = {
+    'Guardia Fengus',
+    nil,
+  },
+  [14322] = {
+    'Vapuleador Kreeg',
+    'El Borracho',
+  },
+  [14323] = {
+    'Guardia Slip\'kik',
+    nil,
+  },
+  [14324] = {
+    'Cho\'Rush el Observador',
+    nil,
+  },
+  [14325] = {
+    'Capitán Kromcrush',
+    nil,
+  },
+  [14326] = {
+    'Guardia Mol\'dar',
+    nil,
+  },
+  [14329] = {
+    'Lobo de guerra negro',
+    nil,
+  },
+  [14330] = {
+    'Raptor de guerra negro',
+    nil,
+  },
+  [14331] = {
+    'Caballo de guerra esquelético rojo',
+    nil,
+  },
+  [14332] = {
+    'Corcel de guerra negro',
+    nil,
+  },
+  [14333] = {
+    'Kodo de guerra negro',
+    nil,
+  },
+  [14334] = {
+    'Zancudo de batalla negro',
+    nil,
+  },
+  [14335] = {
+    'Carnero de guerra negro',
+    nil,
+  },
+  [14337] = {
+    'Robot de reparación de campo 74A',
+    nil,
+  },
+  [14338] = {
+    'Knot Llavededo',
+    nil,
+  },
+  [14339] = {
+    'Aullador de la Muerte',
+    nil,
+  },
+  [14340] = {
+    'Alshirr Respiramiedo',
+    nil,
+  },
+  [14341] = {
+    'Felendor la Acusadora',
+    nil,
+  },
+  [14342] = {
+    'Patafuria',
+    nil,
+  },
+  [14343] = {
+    'Olm el Sabio',
+    nil,
+  },
+  [14345] = {
+    'El Ongar',
+    nil,
+  },
+  [14346] = {
+    'Capitán Greshkil',
+    nil,
+  },
+  [14347] = {
+    'Alto señor Demitrian',
+    nil,
+  },
+  [14348] = {
+    'Clamatierras Franzahl',
+    nil,
+  },
+  [14350] = {
+    'Hidrizo',
+    nil,
+  },
+  [14351] = {
+    'Arbusloco Gordok',
+    nil,
+  },
+  [14352] = {
+    'Duque Landressar',
+    'Agente de Therazane',
+  },
+  [14353] = {
+    'Mizzle el Astuto',
+    nil,
+  },
+  [14356] = {
+    'Furia sierraleta',
+    nil,
+  },
+  [14357] = {
+    'Trillador del Lago',
+    nil,
+  },
+  [14358] = {
+    'Ancestro Shen\'dralar',
+    nil,
+  },
+  [14361] = {
+    'Fuego fatuo Shen\'dralar',
+    nil,
+  },
+  [14362] = {
+    'Espinácula',
+    nil,
+  },
+  [14363] = {
+    'Miñón Sombonda',
+    nil,
+  },
+  [14364] = {
+    'Espíritu Shen\'dralar',
+    nil,
+  },
+  [14365] = {
+    'Miñón Montelejano',
+    nil,
+  },
+  [14366] = {
+    'Esporas Alabeo',
+    nil,
+  },
+  [14367] = {
+    'Miñón Cebatruenos',
+    nil,
+  },
+  [14368] = {
+    'Tradicionalista Lydros',
+    nil,
+  },
+  [14369] = {
+    'Zelote Shen\'dralar',
+    nil,
+  },
+  [14370] = {
+    'Gusano cadavérico',
+    nil,
+  },
+  [14371] = {
+    'Proveedor Shen\'dralar',
+    nil,
+  },
+  [14372] = {
+    'Emboscador Nevada',
+    nil,
+  },
+  [14373] = {
+    'Sabio Korolusk',
+    nil,
+  },
+  [14374] = {
+    'Erudita Runaespina',
+    nil,
+  },
+  [14375] = {
+    'Explorador Manodura',
+    nil,
+  },
+  [14376] = {
+    'Exploradora Destripahombres',
+    nil,
+  },
+  [14377] = {
+    'Explorador Tharr',
+    nil,
+  },
+  [14378] = {
+    'Cazadora Cieloleno',
+    nil,
+  },
+  [14379] = {
+    'Cazadora Roblecuervo',
+    nil,
+  },
+  [14380] = {
+    'Cazadora Correhoja',
+    nil,
+  },
+  [14381] = {
+    'Tradicionalista Javon',
+    nil,
+  },
+  [14382] = {
+    'Tradicionalista Mykos',
+    nil,
+  },
+  [14383] = {
+    'Tradicionalista Kildrath',
+    nil,
+  },
+  [14385] = {
+    'Esbirro del guardia apocalíptico',
+    nil,
+  },
+  [14386] = {
+    'Ojo de Kilrogg deambulante',
+    nil,
+  },
+  [14387] = {
+    'Lothos Levantagrietas',
+    nil,
+  },
+  [14388] = {
+    'Draco Negro huido',
+    nil,
+  },
+  [14389] = {
+    'Caminante abisal',
+    nil,
+  },
+  [14390] = {
+    'Montaraz expedicionario',
+    nil,
+  },
+  [14391] = {
+    'Puesto de atracadores de La Masacre',
+    nil,
+  },
+  [14392] = {
+    'Señor supremo Runthak',
+    nil,
+  },
+  [14393] = {
+    'Sacerdote expedicionario',
+    nil,
+  },
+  [14395] = {
+    'Griniblix el Espectador',
+    nil,
+  },
+  [14396] = {
+    'Ojo de Immol\'thar',
+    nil,
+  },
+  [14397] = {
+    'Ráfaga de maná',
+    nil,
+  },
+  [14398] = {
+    'Dardo Eldreth',
+    nil,
+  },
+  [14399] = {
+    'Torrente Arcano',
+    nil,
+  },
+  [14400] = {
+    'Reactivo Arcano',
+    nil,
+  },
+  [14401] = {
+    'Maestro de los elementos Formacio Krixix',
+    nil,
+  },
+  [14402] = {
+    'Buscador Cromwell',
+    nil,
+  },
+  [14403] = {
+    'Buscador Nahr',
+    nil,
+  },
+  [14404] = {
+    'Buscadora Thompson',
+    nil,
+  },
+  [14406] = {
+    'Kodo itinerante',
+    nil,
+  },
+  [14421] = {
+    'Perro de la pradera marrón',
+    nil,
+  },
+  [14422] = {
+    'Activador BRD',
+    nil,
+  },
+  [14423] = {
+    'Oficial Jaxon',
+    nil,
+  },
+  [14424] = {
+    'Lodonante',
+    nil,
+  },
+  [14425] = {
+    'Roehuesos',
+    nil,
+  },
+  [14426] = {
+    'Harb Monte Fétido',
+    nil,
+  },
+  [14429] = {
+    'Faucenestra',
+    nil,
+  },
+  [14430] = {
+    'Acechador nocturno',
+    nil,
+  },
+  [14431] = {
+    'Furia Shelda',
+    nil,
+  },
+  [14433] = {
+    'Barrosín',
+    nil,
+  },
+  [14434] = {
+    'Roboalarma gnómico',
+    nil,
+  },
+  [14435] = {
+    'Príncipe Truenoraan',
+    'El Hijo del Viento',
+  },
+  [14436] = {
+    'Mor\'zul Sangredoble',
+    nil,
+  },
+  [14437] = {
+    'Gorzeeki Ojovago',
+    nil,
+  },
+  [14438] = {
+    'Oficial Pomeroy',
+    nil,
+  },
+  [14439] = {
+    'Oficial Brady',
+    nil,
+  },
+  [14440] = {
+    'Cazador Viento Sabio',
+    nil,
+  },
+  [14441] = {
+    'Cazador Tótem de Ira',
+    nil,
+  },
+  [14442] = {
+    'Cazador Tronacuerno',
+    nil,
+  },
+  [14443] = {
+    'Activador de cubierta de guardia apocalíptico',
+    nil,
+  },
+  [14444] = {
+    'Huérfano orco',
+    nil,
+  },
+  [14445] = {
+    'Capitán Wyrmak',
+    nil,
+  },
+  [14448] = {
+    'Fundespino',
+    nil,
+  },
+  [14449] = {
+    'Activador de orbes Alanegra',
+    nil,
+  },
+  [14450] = {
+    'Supervisora de huérfanos Ruiseñor',
+    nil,
+  },
+  [14451] = {
+    'Supervisora de huérfanos Llantobatalla',
+    nil,
+  },
+  [14452] = {
+    'Comandante guardia apocalíptico esclavizado',
+    nil,
+  },
+  [14453] = {
+    'Orbe de dominación',
+    nil,
+  },
+  [14454] = {
+    'El Atracavientos',
+    nil,
+  },
+  [14455] = {
+    'Invasor giratorio',
+    nil,
+  },
+  [14456] = {
+    'Custodio Alanegra',
+    nil,
+  },
+  [14457] = {
+    'Princesa Tempestria',
+    nil,
+  },
+  [14458] = {
+    'Invasor acuático',
+    nil,
+  },
+  [14459] = {
+    'Tropas de Nefarian',
+    nil,
+  },
+  [14460] = {
+    'Invasor llameante',
+    nil,
+  },
+  [14462] = {
+    'Invasor tronador',
+    nil,
+  },
+  [14463] = {
+    'Daio el Decrépito',
+    nil,
+  },
+  [14465] = {
+    'Confalón de batalla de la Alianza',
+    nil,
+  },
+  [14466] = {
+    'Confalón de batalla de la Horda',
+    nil,
+  },
+  [14469] = {
+    'Niby el Todopoderoso',
+    nil,
+  },
+  [14470] = {
+    'Diblis',
+    'Esbirro de Niby',
+  },
+  [14479] = {
+    'Señor Crepuscular Everun',
+    'Martillo Crepuscular',
+  },
+  [14480] = {
+    nil,
+    'Golosinas',
+  },
+  [14481] = {
+    nil,
+    'Golosinas',
+  },
+  [14482] = {
+    'Diablillo Xorothiano',
+    nil,
+  },
+  [14483] = {
+    'Guarda aterrador',
+    nil,
+  },
+  [14484] = {
+    'Campesino malherido',
+    nil,
+  },
+  [14485] = {
+    'Campesino apestado',
+    nil,
+  },
+  [14486] = {
+    'Soldado de a pie de la Plaga',
+    'Esbirro de Kel\'Thuzad',
+  },
+  [14487] = {
+    'Gluggl',
+    nil,
+  },
+  [14489] = {
+    'Arquero de la Plaga',
+    nil,
+  },
+  [14492] = {
+    nil,
+    'El Perito',
+  },
+  [14493] = {
+    'Sacerdote épico Realizador de sucesos',
+    nil,
+  },
+  [14494] = {
+    'Eris Feleste',
+    nil,
+  },
+  [14495] = {
+    'Activador invisible uno',
+    nil,
+  },
+  [14496] = {
+    'Huérfano de Ventormenta',
+    nil,
+  },
+  [14497] = {
+    nil,
+    'Supervisora del orfanato',
+  },
+  [14499] = {
+    'Huérfano de la Horda',
+    nil,
+  },
+  [14501] = {
+    'Montura de brujo banda ritual tipo 3, Infernal (DND)',
+    nil,
+  },
+  [14502] = {
+    'Corcel nefasto xorothiano',
+    nil,
+  },
+  [14503] = {
+    'El Limpiador',
+    nil,
+  },
+  [14504] = {
+    'Espíritu de corcel nefasto',
+    nil,
+  },
+  [14507] = {
+    'Sumo sacerdote Venoxis',
+    nil,
+  },
+  [14508] = {
+    'Corto John Mitril',
+    nil,
+  },
+  [14509] = {
+    'Sumo sacerdote Thekal',
+    nil,
+  },
+  [14510] = {
+    'Suma sacerdotisa Mar\'li',
+    nil,
+  },
+  [14511] = {
+    'Espíritu ensombrecido',
+    nil,
+  },
+  [14512] = {
+    'Espíritu corrupto',
+    nil,
+  },
+  [14513] = {
+    'Espíritu malicioso',
+    nil,
+  },
+  [14514] = {
+    'Espíritu banal',
+    nil,
+  },
+  [14515] = {
+    'Suma sacerdotisa Arlokk',
+    nil,
+  },
+  [14516] = {
+    'Caballero de la Muerte Atracoscuro',
+    nil,
+  },
+  [14517] = {
+    'Suma sacerdotisa Jeklik',
+    nil,
+  },
+  [14518] = {
+    'Aspecto de banalidad',
+    nil,
+  },
+  [14519] = {
+    'Aspecto de corrupción',
+    nil,
+  },
+  [14520] = {
+    'Aspecto de malicia',
+    nil,
+  },
+  [14521] = {
+    'Aspecto de sombra',
+    nil,
+  },
+  [14524] = {
+    'Vartrus el Ancestro',
+    nil,
+  },
+  [14525] = {
+    'Estoma el Anciano',
+    nil,
+  },
+  [14526] = {
+    'Hastat el Ancestro',
+    nil,
+  },
+  [14527] = {
+    'Simone la Discreta',
+    nil,
+  },
+  [14528] = {
+    'Precioso',
+    'Mascota de Simone',
+  },
+  [14529] = {
+    'Franklin el Amistoso',
+    nil,
+  },
+  [14530] = {
+    'Solenor el Destripador',
+    nil,
+  },
+  [14531] = {
+    'Artorius el Afable',
+    nil,
+  },
+  [14532] = {
+    'Venenoso Razzashi',
+    nil,
+  },
+  [14533] = {
+    'Simone la Seductora',
+    nil,
+  },
+  [14534] = {
+    'Klinfran el Enloquecido',
+    nil,
+  },
+  [14535] = {
+    'Artorius el Fatídico',
+    nil,
+  },
+  [14536] = {
+    'Nelson el Amable',
+    nil,
+  },
+  [14538] = {
+    'Precioso el Devorador',
+    'Mascota de Simone',
+  },
+  [14539] = {
+    'Lobo gris presto',
+    nil,
+  },
+  [14540] = {
+    'Lobo marrón presto',
+    nil,
+  },
+  [14541] = {
+    'Lobo grisáceo presto',
+    nil,
+  },
+  [14542] = {
+    'Gran kodo blanco',
+    nil,
+  },
+  [14543] = {
+    'Raptor oliva presto',
+    nil,
+  },
+  [14544] = {
+    'Raptor naranja presto',
+    nil,
+  },
+  [14545] = {
+    'Raptor azul presto',
+    nil,
+  },
+  [14546] = {
+    'Carnero marrón presto',
+    nil,
+  },
+  [14547] = {
+    'Carnero blanco presto',
+    nil,
+  },
+  [14548] = {
+    'Carnero gris presto',
+    nil,
+  },
+  [14549] = {
+    'Gran kodo marrón',
+    nil,
+  },
+  [14550] = {
+    'Gran kodo gris',
+    nil,
+  },
+  [14551] = {
+    'Mecazancudo amarillo presto',
+    nil,
+  },
+  [14552] = {
+    'Mecazancudo blanco presto',
+    nil,
+  },
+  [14553] = {
+    'Mecazancudo verde presto',
+    nil,
+  },
+  [14554] = {
+    'Mecazancudo a rayas presto',
+    nil,
+  },
+  [14555] = {
+    'Sable de la niebla presto',
+    nil,
+  },
+  [14556] = {
+    'Sable de hielo presto',
+    nil,
+  },
+  [14557] = {
+    'Sable del alba presto',
+    nil,
+  },
+  [14558] = {
+    'Caballo de guerra esquelético morado',
+    nil,
+  },
+  [14560] = {
+    'Corcel blanco presto',
+    nil,
+  },
+  [14561] = {
+    'Corcel marrón presto',
+    nil,
+  },
+  [14562] = {
+    'Mecazancudo azul presto',
+    nil,
+  },
+  [14563] = {
+    'Mecazancudo rojo presto',
+    nil,
+  },
+  [14564] = {
+    'Espíritu del Valle del Terror',
+    nil,
+  },
+  [14566] = {
+    'Antiguo espíritu equino',
+    nil,
+  },
+  [14567] = {
+    'Derotain Sorbelodo',
+    'La Hermandad del Torio',
+  },
+  [14568] = {
+    'Destrero caído de Atracoscuro',
+    nil,
+  },
+  [14581] = {
+    'Sargento Tronacuerno',
+    'Intendente de armas',
+  },
+  [14601] = {
+    'Ebanorroca',
+    nil,
+  },
+  [14602] = {
+    'Sable de la tempestad presto',
+    nil,
+  },
+  [14603] = {
+    'Zancaorillas machacado',
+    nil,
+  },
+  [14604] = {
+    'Caminatierras machacado',
+    nil,
+  },
+  [14605] = {
+    'Ensamblaje osario',
+    nil,
+  },
+  [14606] = {
+    'Activador de cadáver dracónido',
+    nil,
+  },
+  [14621] = {
+    'Sobrestante Maltorius',
+    nil,
+  },
+  [14622] = {
+    'Oteador de la Hermandad del Torio',
+    'La Hermandad del Torio',
+  },
+  [14623] = {
+    'Maestra de batalla de la Garganta Grito de Guerra',
+    nil,
+  },
+  [14624] = {
+    'Herrero maestro Burninate',
+    'La Hermandad del Torio',
+  },
+  [14625] = {
+    'Sobrestante Puñaceite',
+    'La Hermandad del Torio',
+  },
+  [14626] = {
+    'Capataz Scrange',
+    'La Hermandad del Torio',
+  },
+  [14627] = {
+    'Hansel Manospesadas',
+    'La Hermandad del Torio',
+  },
+  [14628] = {
+    'Evonis Fumollín',
+    'La Hermandad del Torio',
+  },
+  [14629] = {
+    'Quijaforte Leñobeza',
+    nil,
+  },
+  [14630] = {
+    'Quijaforte Cuerospalda',
+    nil,
+  },
+  [14631] = {
+    'Quijaforte oliva',
+    nil,
+  },
+  [14632] = {
+    'Quijaforte Alconil',
+    nil,
+  },
+  [14633] = {
+    'Quijaforte albino',
+    nil,
+  },
+  [14634] = {
+    'Capitán de vigía Lolo Zancalarga',
+    'La Hermandad del Torio',
+  },
+  [14635] = {
+    'Trabajador Hierro Negro dormido',
+    nil,
+  },
+  [14636] = {
+    'Ayudante de cámara Pilaprieta',
+    nil,
+  },
+  [14637] = {
+    'Zorbin Hipnoviento',
+    nil,
+  },
+  [14638] = {
+    'Asaltaolas machacado',
+    nil,
+  },
+  [14639] = {
+    'Zancaprofunda machacado',
+    nil,
+  },
+  [14640] = {
+    'Gigante del Acantilado machacado',
+    nil,
+  },
+  [14641] = {
+    '[PH] Taumaturgo de la Horda',
+    nil,
+  },
+  [14642] = {
+    '[PH] Taumaturgo de la Alianza',
+    nil,
+  },
+  [14643] = {
+    '[PH] Heraldo de la Alianza',
+    nil,
+  },
+  [14644] = {
+    '[PH] Heraldo de la Horda',
+    nil,
+  },
+  [14645] = {
+    'Heraldo de la Garganta Grito de Guerra',
+    nil,
+  },
+  [14646] = {
+    'Activador de Stratholme',
+    nil,
+  },
+  [14661] = {
+    'Latigador con aguijón',
+    nil,
+  },
+  [14662] = {
+    'Tótem Nova de Fuego V corrupto',
+    nil,
+  },
+  [14663] = {
+    'Tótem piel de piedra VI corrupto',
+    nil,
+  },
+  [14664] = {
+    'Tótem Corriente de sanación V corrupto',
+    nil,
+  },
+  [14666] = {
+    'Tótem Viento furioso III corrupto',
+    nil,
+  },
+  [14667] = {
+    'Tótem corrupto',
+    nil,
+  },
+  [14668] = {
+    'Infernal corrupto',
+    nil,
+  },
+  [14681] = {
+    'Fallo en transportador',
+    nil,
+  },
+  [14682] = {
+    'Cercenador',
+    nil,
+  },
+  [14683] = {
+    'Barón Titus Osahendido',
+    nil,
+  },
+  [14687] = {
+    'Desalmado',
+    nil,
+  },
+  [14689] = {
+    'Elemental de maná',
+    nil,
+  },
+  [14691] = {
+    'Basalto',
+    nil,
+  },
+  [14692] = {
+    'Vantaparedes',
+    nil,
+  },
+  [14693] = {
+    'Desdén',
+    nil,
+  },
+  [14695] = {
+    'Lord Bosque Negro',
+    nil,
+  },
+  [14696] = {
+    'Behemoth cosido',
+    nil,
+  },
+  [14697] = {
+    'Horror torpe',
+    nil,
+  },
+  [14698] = {
+    'Acechador silencioso',
+    nil,
+  },
+  [14699] = {
+    'Soldado espectral UNUSED',
+    nil,
+  },
+  [14700] = {
+    'Espíritu mancillado',
+    nil,
+  },
+  [14701] = {
+    'Ánima de fatalidad',
+    nil,
+  },
+  [14702] = {
+    'Viuda gemebunda',
+    nil,
+  },
+  [14703] = {
+    'Sirena de la Muerte',
+    nil,
+  },
+  [14704] = {
+    'Pánico deslizante',
+    nil,
+  },
+  [14705] = {
+    'Tejerred nerubiano',
+    nil,
+  },
+  [14706] = {
+    'Soldado de Choque esquelético UNUSED',
+    nil,
+  },
+  [14707] = {
+    'Depositario osario',
+    nil,
+  },
+  [14708] = {
+    'Guerrero putrefacto',
+    nil,
+  },
+  [14709] = {
+    'Muerto contagiado',
+    nil,
+  },
+  [14710] = {
+    'Hechicero aterrador',
+    nil,
+  },
+  [14711] = {
+    'Comilón apestado UNUSED',
+    nil,
+  },
+  [14712] = {
+    'Midden Necrófago',
+    nil,
+  },
+  [14713] = {
+    'Volador pútrido',
+    nil,
+  },
+  [14714] = {
+    'Horror alado',
+    nil,
+  },
+  [14715] = {
+    'Élite Ala de Plata',
+    nil,
+  },
+  [14717] = {
+    'Élite de la Horda',
+    nil,
+  },
+  [14718] = {
+    'Obrero de la Horda',
+    nil,
+  },
+  [14719] = {
+    '[PH] Lugarteniente de torre de la Alianza',
+    nil,
+  },
+  [14720] = {
+    'Alto señor supremo Colmillosauro',
+    nil,
+  },
+  [14721] = {
+    'Mariscal de campo Afrasiabi',
+    nil,
+  },
+  [14722] = {
+    nil,
+    'Intendente de género de la Alianza',
+  },
+  [14723] = {
+    'Mistina Escudacero',
+    'Intendente de género de la Alianza',
+  },
+  [14724] = {
+    nil,
+    'Intendente de género de la Alianza',
+  },
+  [14725] = {
+    'Raedon Levantapolvo',
+    'Intendente de género de la Alianza',
+  },
+  [14726] = {
+    nil,
+    'Intendente de género de la Horda',
+  },
+  [14727] = {
+    nil,
+    'Intendente de género de la Horda',
+  },
+  [14728] = {
+    'Rumstag Zangenio',
+    'Intendente de género de la Horda',
+  },
+  [14729] = {
+    nil,
+    'Intendente de género de la Horda',
+  },
+  [14730] = {
+    'Vigía Sañadiente',
+    nil,
+  },
+  [14731] = {
+    nil,
+    'Tabernero',
+  },
+  [14733] = {
+    'Centinela Cantolejano',
+    nil,
+  },
+  [14734] = {
+    'Tamborilero Sañadiente',
+    nil,
+  },
+  [14735] = {
+    'Bandera de prueba de Ggoodman',
+    nil,
+  },
+  [14736] = {
+    'Primigenia Colmillopartido',
+    nil,
+  },
+  [14737] = {
+    'Herrero Arbolescoria',
+    'Suministros de herrería',
+  },
+  [14738] = {
+    nil,
+    'Suministros de cocina',
+  },
+  [14739] = {
+    'Mística Yayo\'jin',
+    'Componentes',
+  },
+  [14740] = {
+    'Katoom el Pescador',
+    'Instructor de pesca y suministros',
+  },
+  [14741] = {
+    'Montero Markhor',
+    'Maestra de establos',
+  },
+  [14742] = {
+    'Zap Lanzalejos',
+    'Ingeniero trastornado',
+  },
+  [14743] = {
+    nil,
+    'Ingeniero',
+  },
+  [14746] = {
+    '[PH] Lugarteniente de torre de la Horda',
+    nil,
+  },
+  [14748] = {
+    'Secuestrador Vilrama',
+    nil,
+  },
+  [14750] = {
+    'Jinete de murciélagos Gurubashi',
+    nil,
+  },
+  [14751] = {
+    'Confalón de batalla Lobo Gélido',
+    nil,
+  },
+  [14752] = {
+    'Confalón de batalla Pico Tormenta',
+    nil,
+  },
+  [14753] = {
+    'Illiyana Lunardiente',
+    'Oficial de suministros Ala de Plata',
+  },
+  [14754] = {
+    nil,
+    'Oficial de suministros Grito de Guerra',
+  },
+  [14755] = {
+    'Pequeño dragón Verde',
+    nil,
+  },
+  [14756] = {
+    'Dragón Rojo diminuto',
+    nil,
+  },
+  [14757] = {
+    'Anciano Colmillopartido',
+    nil,
+  },
+  [14758] = {
+    'Activador Zul\'Gurub',
+    nil,
+  },
+  [14761] = {
+    'Fatalidad espeluznante',
+    nil,
+  },
+  [14762] = {
+    'Alguacil de Dun Baldar Norte',
+    nil,
+  },
+  [14763] = {
+    'Alguacil de Dun Baldar Sur',
+    nil,
+  },
+  [14764] = {
+    'Alguacil Alahielo',
+    nil,
+  },
+  [14765] = {
+    'Alguacil Piedrahogar',
+    nil,
+  },
+  [14766] = {
+    'Alguacil Sangrehielo',
+    nil,
+  },
+  [14767] = {
+    'Alguacil de Torre de la Punta',
+    nil,
+  },
+  [14768] = {
+    'Alguacil Lobo Gélido Este',
+    nil,
+  },
+  [14769] = {
+    'Alguacil Lobo Gélido Oeste',
+    nil,
+  },
+  [14770] = {
+    'Maestro de guerra del norte de Dun Baldar',
+    nil,
+  },
+  [14771] = {
+    'Maestro de guerra del sur de Dun Baldar',
+    nil,
+  },
+  [14772] = {
+    'Maestro de guerra del este Lobo Gélido',
+    nil,
+  },
+  [14773] = {
+    'Maestro de guerra Sangrehielo',
+    nil,
+  },
+  [14774] = {
+    'Maestro de guerra Alahielo',
+    nil,
+  },
+  [14775] = {
+    'Maestro de guerra Piedrahogar',
+    nil,
+  },
+  [14776] = {
+    'Maestro de guerra de Torre de la Punta',
+    nil,
+  },
+  [14777] = {
+    'Maestro de guerra del oeste Lobo Gélido',
+    nil,
+  },
+  [14781] = {
+    'Capitán Trizacráneo',
+    nil,
+  },
+  [14801] = {
+    'Objetivo polimórfico salvaje',
+    nil,
+  },
+  [14821] = {
+    'Raptor Razzashi',
+    nil,
+  },
+  [14823] = {
+    'Silas Luna Negra',
+    nil,
+  },
+  [14825] = {
+    'Maestra marchita',
+    nil,
+  },
+  [14826] = {
+    'Trol sacrificado',
+    nil,
+  },
+  [14828] = {
+    'Gelvas Roñoso',
+    'Recuerdos y juguetes',
+  },
+  [14829] = {
+    'Yebb Tesorillos',
+    nil,
+  },
+  [14830] = {
+    'Muñeco-diana Guerrero 60 invencible',
+    nil,
+  },
+  [14831] = {
+    'Muñeco-diana Guerrero 63 invencible',
+    nil,
+  },
+  [14832] = {
+    nil,
+    '¡La mujer viva más fuerte!',
+  },
+  [14833] = {
+    nil,
+    '¡El que nunca olvida!',
+  },
+  [14842] = {
+    'Melnan Rocanegra',
+    'Voceador de la Feria de la Luna Negra',
+  },
+  [14843] = {
+    'Kruban Filoscuro',
+    'Voceador de la Feria de la Luna Negra',
+  },
+  [14844] = {
+    nil,
+    'Vendedora de bebidas',
+  },
+  [14845] = {
+    'Stamp Tronacuerno',
+    'Vendedor de alimentos',
+  },
+  [14846] = {
+    nil,
+    'Premios de mascotas y monturas',
+  },
+  [14847] = {
+    'Profesor Thaddeus Paleo',
+    'Cartas de la Luna Negra',
+  },
+  [14848] = {
+    'Heraldo',
+    nil,
+  },
+  [14849] = {
+    'Feriante de la Luna Negra',
+    nil,
+  },
+  [14859] = {
+    'Guardia Taruc',
+    nil,
+  },
+  [14861] = {
+    'Administradora de sangre de Kirtonos',
+    nil,
+  },
+  [14862] = {
+    'Emisario Roman\'khan',
+    nil,
+  },
+  [14864] = {
+    'Carnero de Khaz Modan',
+    nil,
+  },
+  [14866] = {
+    'Rana de Flik',
+    nil,
+  },
+  [14869] = {
+    'Gallotriz pigmea',
+    nil,
+  },
+  [14870] = {
+    'Tótem Garra de piedra PRUEBA',
+    nil,
+  },
+  [14875] = {
+    nil,
+    'Mano de Rastakhan',
+  },
+  [14876] = {
+    'Reducecabezas Zandalar',
+    nil,
+  },
+  [14877] = {
+    'Sumo sacerdote Venoxis Transformación visual',
+    nil,
+  },
+  [14879] = {
+    'Maestro de batalla de la Cuenca de Arathi',
+    nil,
+  },
+  [14880] = {
+    'Arácnida Razzashi',
+    nil,
+  },
+  [14881] = {
+    'Araña',
+    nil,
+  },
+  [14882] = {
+    'Maestra Atal\'ai',
+    nil,
+  },
+  [14883] = {
+    'Esclavo vudú',
+    nil,
+  },
+  [14884] = {
+    'Serpiente parasitaria',
+    nil,
+  },
+  [14885] = {
+    nil,
+    'Diseñador extraordinario',
+  },
+  [14886] = {
+    'El conejo bueno',
+    nil,
+  },
+  [14892] = {
+    'Colmillos',
+    nil,
+  },
+  [14893] = {
+    'Guardia Kurall',
+    nil,
+  },
+  [14894] = {
+    'Enjambre de abejas',
+    nil,
+  },
+  [14902] = {
+    'Jin\'rokh el Rompedor',
+    nil,
+  },
+  [14903] = {
+    'Al\'tabim, El que todo lo ve',
+    nil,
+  },
+  [14904] = {
+    'Maywiki de Zuldazar',
+    nil,
+  },
+  [14905] = {
+    'Falthir el Ciego',
+    nil,
+  },
+  [14906] = {
+    'Test tío',
+    nil,
+  },
+  [14910] = {
+    nil,
+    'Siervo de Rastakhan',
+  },
+  [14911] = {
+    'Déspota Zandalar',
+    nil,
+  },
+  [14912] = {
+    'Zelote Hakkari capturado',
+    nil,
+  },
+  [14913] = {
+    'TEST tío',
+    nil,
+  },
+  [14921] = {
+    'Rin\'wosho el Comerciante',
+    'Suministros y reparaciones Zandalar',
+  },
+  [14941] = {
+    'Suma sacerdotisa Jeklik Transformación visual',
+    nil,
+  },
+  [14942] = {
+    'Kartra Gruñido Sangriento',
+    'Maestro de batalla del Valle de Alterac',
+  },
+  [14943] = {
+    'Jinete de guerra de Guse',
+    nil,
+  },
+  [14944] = {
+    'Jinete de guerra de Jeztor',
+    nil,
+  },
+  [14945] = {
+    'Jinete de guerra de Mulverick',
+    nil,
+  },
+  [14946] = {
+    'Grifo de Slidore',
+    nil,
+  },
+  [14947] = {
+    'Grifo de Ichman',
+    nil,
+  },
+  [14948] = {
+    'Grifo de Vipore',
+    nil,
+  },
+  [14961] = {
+    'Mirvyna Calderilla',
+    'Pastos de Bosquehumeante',
+  },
+  [14962] = {
+    'Dillord Cobrellizco',
+    'Pastos de Bosquehumeante',
+  },
+  [14963] = {
+    'Gapp Calderilla',
+    'Pastos de Bosquehumeante',
+  },
+  [14964] = {
+    'Hecht Cobrellizco',
+    'Pastos de Bosquehumeante',
+  },
+  [14965] = {
+    'Murciélago buscasangre demenciado',
+    nil,
+  },
+  [14966] = {
+    'Sumo sacerdote Thekal Transformación visual',
+    nil,
+  },
+  [14967] = {
+    'Suma sacerdotisa Mar\'li Transformación visual',
+    nil,
+  },
+  [14968] = {
+    'Suma sacerdotisa Arlokk Transformación visual',
+    nil,
+  },
+  [14981] = {
+    nil,
+    'Maestra de batalla de la Garganta Grito de Guerra',
+  },
+  [14982] = {
+    nil,
+    'Maestra de batalla de la Garganta Grito de Guerra',
+  },
+  [14983] = {
+    'Mariscal de campo Uluz',
+    nil,
+  },
+  [14984] = {
+    'Sargento Maclear',
+    nil,
+  },
+  [14986] = {
+    'Sombra de Jin\'do',
+    nil,
+  },
+  [14987] = {
+    'Guarda de sanación potente',
+    nil,
+  },
+  [14989] = {
+    'Nube venenosa',
+    nil,
+  },
+  [14990] = {
+    'Enviado de los Rapiñadores',
+    nil,
+  },
+  [14991] = {
+    'Emisario de la Liga de Arathor',
+    nil,
+  },
+  [14994] = {
+    'Generador de sucesos Zandalar',
+    nil,
+  },
+  [15006] = {
+    'Deze Delirioníveo',
+    'Maestro de batalla de la Cuenca de Arathi',
+  },
+  [15007] = {
+    nil,
+    'Maestro de batalla de la Cuenca de Arathi',
+  },
+  [15008] = {
+    nil,
+    'Maestro de batalla de la Cuenca de Arathi',
+  },
+  [15009] = {
+    'Espíritu vudú',
+    nil,
+  },
+  [15010] = {
+    'Sapo de la selva',
+    nil,
+  },
+  [15011] = {
+    'Wagner Mazas',
+    nil,
+  },
+  [15021] = {
+    'Maestra de la Muerte Duire',
+    nil,
+  },
+  [15022] = {
+    'Mortacechador Mortis',
+    nil,
+  },
+  [15041] = {
+    'Engendro de Mar\'li',
+    nil,
+  },
+  [15042] = {
+    'Zanza el Incansable',
+    nil,
+  },
+  [15043] = {
+    'Crocolisco Zulian',
+    nil,
+  },
+  [15045] = {
+    'Granjero de Arathi',
+    nil,
+  },
+  [15046] = {
+    'Granjero Renegado',
+    nil,
+  },
+  [15061] = {
+    'Espíritu de Jin\'do',
+    nil,
+  },
+  [15062] = {
+    'Leñador de Arathi',
+    nil,
+  },
+  [15063] = {
+    'Herrero de Arathi',
+    nil,
+  },
+  [15064] = {
+    'Herrero Renegado',
+    nil,
+  },
+  [15067] = {
+    'Acechador Zulian',
+    nil,
+  },
+  [15068] = {
+    'Guardián Zulian',
+    nil,
+  },
+  [15069] = {
+    'Corazón de Hakkar',
+    nil,
+  },
+  [15070] = {
+    nil,
+    'Siervo de Zanza',
+  },
+  [15071] = {
+    'Bajapata',
+    nil,
+  },
+  [15072] = {
+    'Pinchos',
+    nil,
+  },
+  [15073] = {
+    'Piroinferno de Pat',
+    nil,
+  },
+  [15074] = {
+    'Minero de Arathi',
+    nil,
+  },
+  [15075] = {
+    'Minero Renegado',
+    nil,
+  },
+  [15076] = {
+    'Emisario Zandalar',
+    nil,
+  },
+  [15077] = {
+    'Riggle Anzuelo',
+    'Maestro pescador',
+  },
+  [15078] = {
+    nil,
+    'Aprendiza de maestra pescadora',
+  },
+  [15079] = {
+    'Pescatodo 5000',
+    nil,
+  },
+  [15080] = {
+    'Sirviente de la Mano',
+    'Mano de Rastakhan',
+  },
+  [15086] = {
+    'Mozo de cuadra de Arathi',
+    nil,
+  },
+  [15087] = {
+    'Mozo de cuadra Renegado',
+    nil,
+  },
+  [15088] = {
+    'Élite de Bahía del Botín',
+    nil,
+  },
+  [15089] = {
+    'Leñador Renegado',
+    nil,
+  },
+  [15090] = {
+    'Raptor Razzashi presto',
+    nil,
+  },
+  [15091] = {
+    'Activador de pantera Zul\'Gurub',
+    nil,
+  },
+  [15101] = {
+    'Merodeador Zulian',
+    nil,
+  },
+  [15102] = {
+    'Emisaria Ala de Plata',
+    nil,
+  },
+  [15103] = {
+    'Emisario Pico Tormenta',
+    nil,
+  },
+  [15104] = {
+    'Tigre Zulian presto',
+    nil,
+  },
+  [15105] = {
+    'Enviado Grito de Guerra',
+    nil,
+  },
+  [15106] = {
+    'Enviado Lobo Gélido',
+    nil,
+  },
+  [15107] = {
+    'Caballo de Arathi',
+    nil,
+  },
+  [15108] = {
+    'Caballo Renegado',
+    nil,
+  },
+  [15109] = {
+    'Visualización de bendición primigenia',
+    nil,
+  },
+  [15110] = {
+    'Prisionero Gurubashi',
+    nil,
+  },
+  [15111] = {
+    'Sirviente loco',
+    nil,
+  },
+  [15112] = {
+    'Tótem Lavado de cerebro',
+    nil,
+  },
+  [15113] = {
+    'Héroe honrado',
+    nil,
+  },
+  [15115] = {
+    'Antecesor honrado',
+    nil,
+  },
+  [15116] = {
+    nil,
+    'Promotor de pesca',
+  },
+  [15117] = {
+    'Espíritu encadenado',
+    nil,
+  },
+  [15118] = {
+    'Forma de gran rape',
+    nil,
+  },
+  [15119] = {
+    nil,
+    'Promotor de pesca',
+  },
+  [15121] = {
+    'Señor de la magia esquelético',
+    nil,
+  },
+  [15122] = {
+    'Gahz\'ranka muerto',
+    nil,
+  },
+  [15123] = {
+    nil,
+    'Diseñador extraordinario',
+  },
+  [15124] = {
+    'Targot Calderilla',
+    'Pastos de Bosquehumeante',
+  },
+  [15125] = {
+    'Kosco Cobrellizco',
+    'Pastos de Bosquehumeante',
+  },
+  [15126] = {
+    nil,
+    'Oficial de suministros de los Rapiñadores',
+  },
+  [15127] = {
+    nil,
+    'Oficial de suministros de la Liga de Arathor',
+  },
+  [15128] = {
+    'Élite Rapiñador',
+    nil,
+  },
+  [15130] = {
+    'Élite de la Liga de Arathor',
+    nil,
+  },
+  [15131] = {
+    nil,
+    'Maestra de establos',
+  },
+  [15133] = {
+    'Muñeco-diana guerrero abatible nivel 60',
+    nil,
+  },
+  [15134] = {
+    'Muñeco-diana guerrero de Terrallende 70',
+    nil,
+  },
+  [15135] = {
+    'Draco cromático',
+    nil,
+  },
+  [15136] = {
+    'Élite de Sentencia',
+    nil,
+  },
+  [15137] = {
+    'Élite de Menethil',
+    nil,
+  },
+  [15138] = {
+    'Élite del Bosque de Argénteos',
+    nil,
+  },
+  [15139] = {
+    'Heraldo Gahz\'ranka',
+    nil,
+  },
+  [15140] = {
+    'Rociada de Pat',
+    nil,
+  },
+  [15141] = {
+    'Portal de la locura',
+    nil,
+  },
+  [15142] = {
+    'Muñeco-diana guerrero de Terrallende 60',
+    nil,
+  },
+  [15143] = {
+    'Muñeco-diana guerrero de Terrallende 63',
+    nil,
+  },
+  [15144] = {
+    'Muñeco-diana guerrero de Terrallende 65',
+    nil,
+  },
+  [15145] = {
+    'Muñeco-diana guerrero de Terrallende 67',
+    nil,
+  },
+  [15146] = {
+    'Abisario loco',
+    nil,
+  },
+  [15151] = {
+    'Muñeco-diana guerrero de Terrallende 55',
+    nil,
+  },
+  [15152] = {
+    'Muñeco-diana guerrero de Terrallende 56',
+    nil,
+  },
+  [15153] = {
+    'Muñeco-diana guerrero de Terrallende 57',
+    nil,
+  },
+  [15154] = {
+    'Muñeco-diana guerrero de Terrallende 58',
+    nil,
+  },
+  [15155] = {
+    'Muñeco-diana guerrero de Terrallende 59',
+    nil,
+  },
+  [15156] = {
+    'Muñeco-diana guerrero de Terrallende 61',
+    nil,
+  },
+  [15157] = {
+    'Muñeco-diana guerrero de Terrallende 62',
+    nil,
+  },
+  [15158] = {
+    'Muñeco-diana guerrero de Terrallende 64',
+    nil,
+  },
+  [15159] = {
+    'Muñeco-diana guerrero de Terrallende 66',
+    nil,
+  },
+  [15160] = {
+    'Muñeco-diana guerrero de Terrallende 68',
+    nil,
+  },
+  [15161] = {
+    'Muñeco-diana guerrero de Terrallende 69',
+    nil,
+  },
+  [15162] = {
+    'Inquisidor Escarlata',
+    nil,
+  },
+  [15163] = {
+    'Ilusión pesadilla',
+    nil,
+  },
+  [15164] = {
+    'Activador Mulgore',
+    nil,
+  },
+  [15165] = {
+    'Modista Jactancia',
+    'Diseñadora de moda',
+  },
+  [15168] = {
+    'Escarabajo vil',
+    nil,
+  },
+  [15169] = {
+    'Ralo\'shan la Vigía Eterna',
+    nil,
+  },
+  [15170] = {
+    'Rutgar Glifoforma',
+    nil,
+  },
+  [15171] = {
+    'Frankal Petraponte',
+    nil,
+  },
+  [15172] = {
+    nil,
+    'Mono de Brann Barbabronce',
+  },
+  [15173] = {
+    'Muñeco-diana guerrero de Terrallende 54',
+    nil,
+  },
+  [15174] = {
+    nil,
+    'Tabernero',
+  },
+  [15175] = {
+    'Khur Cornada',
+    'Componentes',
+  },
+  [15176] = {
+    nil,
+    'Herrería',
+  },
+  [15177] = {
+    'Danzocielo Nuboso',
+    'Maestro de hipogrifos',
+  },
+  [15178] = {
+    'Runk Domavientos',
+    'Maestra de jinetes del viento',
+  },
+  [15179] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [15180] = {
+    'Baristolth del Mar de Dunas',
+    nil,
+  },
+  [15181] = {
+    'Comandante Mar\'alith',
+    nil,
+  },
+  [15182] = {
+    nil,
+    'Capitán de la Guardia',
+  },
+  [15183] = {
+    'Geóloga Trotuina',
+    nil,
+  },
+  [15184] = {
+    'Infantería del Fuerte Cenarion',
+    nil,
+  },
+  [15185] = {
+    'Linaje de Nozdormu',
+    nil,
+  },
+  [15187] = {
+    'Emisaria Cenarion Lunajade',
+    nil,
+  },
+  [15188] = {
+    'Emisario Cenarion Pezuñanegra',
+    nil,
+  },
+  [15189] = {
+    'Beetix Castañeta',
+    nil,
+  },
+  [15190] = {
+    'Noggle Castañeta',
+    nil,
+  },
+  [15191] = {
+    'Clamavientos Cuerno Digno',
+    nil,
+  },
+  [15193] = {
+    'Lady Sylvanas Brisaveloz',
+    nil,
+  },
+  [15194] = {
+    'Ermitaño Ortell',
+    nil,
+  },
+  [15195] = {
+    'Guardián del Hombre de Mimbre',
+    nil,
+  },
+  [15196] = {
+    'Pinzamorten',
+    nil,
+  },
+  [15197] = {
+    'Clamasombras Yanka',
+    nil,
+  },
+  [15198] = {
+    'Alanegra',
+    nil,
+  },
+  [15199] = {
+    'Sargento Hartman',
+    nil,
+  },
+  [15200] = {
+    'Guardiana Crepuscular Mayna',
+    'Martillo Crepuscular',
+  },
+  [15201] = {
+    'Flamatracador Crepuscular',
+    nil,
+  },
+  [15202] = {
+    'Vyral el Vil',
+    'Martillo Crepuscular',
+  },
+  [15203] = {
+    'Príncipe Skaldrenox',
+    'Alto Consejo Abisal',
+  },
+  [15204] = {
+    'Alto mariscal Eje Torbellino',
+    'Alto Consejo Abisal',
+  },
+  [15205] = {
+    nil,
+    'Alto Consejo Abisal',
+  },
+  [15206] = {
+    'Duque de las Brasas',
+    'Consejo Abisal',
+  },
+  [15207] = {
+    'Duque de las Profundidades',
+    'Consejo Abisal',
+  },
+  [15208] = {
+    'Duque de las Esquirlas',
+    'Consejo Abisal',
+  },
+  [15209] = {
+    'Templario Carmesí',
+    'Consejo Abisal',
+  },
+  [15210] = {
+    nil,
+    'Consejo Abisal',
+  },
+  [15211] = {
+    'Templario azur',
+    'Consejo Abisal',
+  },
+  [15212] = {
+    'Templario vetusto',
+    'Consejo Abisal',
+  },
+  [15213] = {
+    'Señor supremo Crepuscular',
+    'Martillo Crepuscular',
+  },
+  [15214] = {
+    'Acechador invisible',
+    nil,
+  },
+  [15215] = {
+    'Maestra Natalia Mar\'alith',
+    'Suma sacerdotisa de C\'Thun',
+  },
+  [15216] = {
+    'Hombre fantasma',
+    nil,
+  },
+  [15217] = {
+    'Fantasma de mujer',
+    nil,
+  },
+  [15218] = {
+    'Cañón de la Feria de la Luna Negra',
+    nil,
+  },
+  [15219] = {
+    'Trampa - Alimaña',
+    nil,
+  },
+  [15220] = {
+    'Duque de los Céfiros',
+    'Consejo Abisal',
+  },
+  [15221] = {
+    'Activador invisible Frankal',
+    nil,
+  },
+  [15222] = {
+    'Activador invisible Rutgar',
+    nil,
+  },
+  [15223] = {
+    '[PH] [UNUSED] Señor Inquisidor Opalezzix',
+    'Consejo Abisal',
+  },
+  [15224] = {
+    'Niebla onírica',
+    nil,
+  },
+  [15226] = {
+    '[UNUSED] Constructor Vekniss',
+    nil,
+  },
+  [15227] = {
+    '[UNUSED] Moldador de la colmena Vekniss',
+    nil,
+  },
+  [15228] = {
+    '[UNUSED] Cavaguas Vekniss',
+    nil,
+  },
+  [15229] = {
+    'Soldado Vekniss',
+    nil,
+  },
+  [15230] = {
+    'Guerrero Vekniss',
+    nil,
+  },
+  [15231] = {
+    '[UNUSED] Patrulla Vekniss',
+    nil,
+  },
+  [15232] = {
+    '[UNUSED] Erradicador Vekniss',
+    nil,
+  },
+  [15233] = {
+    'Guardián Vekniss',
+    nil,
+  },
+  [15234] = {
+    '[UNUSED] Enjambrista Vekniss',
+    nil,
+  },
+  [15235] = {
+    'Aguijonero Vekniss',
+    nil,
+  },
+  [15236] = {
+    'Avispa Vekniss',
+    nil,
+  },
+  [15237] = {
+    '[UNUSED] Picaira Vekniss',
+    nil,
+  },
+  [15238] = {
+    '[UNUSED] Atracador de la colmena Vekniss',
+    nil,
+  },
+  [15239] = {
+    '[UNUSED] Rondador de la colmena Vekniss',
+    nil,
+  },
+  [15240] = {
+    'Reptador de la colmena Vekniss',
+    nil,
+  },
+  [15241] = {
+    'Guardia jinete en grifo',
+    nil,
+  },
+  [15242] = {
+    'Guardia jinete en murciélago',
+    nil,
+  },
+  [15243] = {
+    '[UNUSED] Infrargullo Vekniss',
+    nil,
+  },
+  [15244] = {
+    '[UNUSED] Asaltante de la colmena Vekniss',
+    nil,
+  },
+  [15245] = {
+    '[UNUSED] Guardavispa Vekniss',
+    nil,
+  },
+  [15246] = {
+    'Destripamentes qiraji',
+    nil,
+  },
+  [15247] = {
+    'Lavacerebros qiraji',
+    nil,
+  },
+  [15248] = {
+    '[UNUSED] Doblegador de almas qiraji',
+    nil,
+  },
+  [15249] = {
+    'Latigador qiraji',
+    nil,
+  },
+  [15250] = {
+    'Destripador qiraji',
+    nil,
+  },
+  [15251] = {
+    '[UNUSED] Asesino qiraji',
+    nil,
+  },
+  [15252] = {
+    'Campeón qiraji',
+    nil,
+  },
+  [15253] = {
+    '[UNUSED] Campeón qiraji',
+    nil,
+  },
+  [15254] = {
+    '[UNUSED] Capitán qiraji',
+    nil,
+  },
+  [15255] = {
+    '[UNUSED] Oficial qiraji',
+    nil,
+  },
+  [15256] = {
+    '[UNUSED] Comandante qiraji',
+    nil,
+  },
+  [15257] = {
+    '[UNUSED] Guardia de Honor qiraji',
+    nil,
+  },
+  [15258] = {
+    '[UNUSED] Pretoriano qiraji',
+    nil,
+  },
+  [15259] = {
+    '[UNUSED] Emperador qiraji',
+    nil,
+  },
+  [15260] = {
+    'Espíritu de druida demente',
+    nil,
+  },
+  [15261] = {
+    'Espíritu sombrío',
+    nil,
+  },
+  [15262] = {
+    'Erradicador obsidiana',
+    nil,
+  },
+  [15263] = {
+    'El profeta Skeram',
+    nil,
+  },
+  [15264] = {
+    'Centinela Anubisath',
+    nil,
+  },
+  [15270] = {
+    'Huum Ferocrín',
+    nil,
+  },
+  [15271] = {
+    'Tierno',
+    nil,
+  },
+  [15273] = {
+    'Ánima arcana',
+    nil,
+  },
+  [15274] = {
+    'Vermis de maná',
+    nil,
+  },
+  [15275] = {
+    'Emperador Vek\'nilash',
+    nil,
+  },
+  [15276] = {
+    'Emperador Vek\'lor',
+    nil,
+  },
+  [15277] = {
+    'Defensor Anubisath',
+    nil,
+  },
+  [15279] = {
+    'Julia Golpesol',
+    'Instructor de magos',
+  },
+  [15280] = {
+    'Jesthenis Golpesol',
+    'Instructor de paladines',
+  },
+  [15282] = {
+    'Aurel Hojaurea',
+    nil,
+  },
+  [15283] = {
+    'Invocador Teli\'Larien',
+    'Instructora de brujos',
+  },
+  [15284] = {
+    'Matrona Arena',
+    'Instructora de sacerdotes',
+  },
+  [15285] = {
+    'Acechacaminos Kariel',
+    'Instructor de pícaros',
+  },
+  [15286] = {
+    nil,
+    'Señor supremo de Colmen\'Regal',
+  },
+  [15287] = {
+    'Shara Alasol',
+    'Suministros generales',
+  },
+  [15288] = {
+    nil,
+    'Señor supremo de Colmen\'Ashi',
+  },
+  [15289] = {
+    'Raelis Estrella del Alba',
+    'Forjadora de armas',
+  },
+  [15290] = {
+    nil,
+    'Señor supremo de Colmen\'Zora',
+  },
+  [15291] = {
+    nil,
+    'Mercader de tela y cuero',
+  },
+  [15292] = {
+    nil,
+    'Forjador de armaduras',
+  },
+  [15293] = {
+    'Aendel Lanzavento',
+    nil,
+  },
+  [15294] = {
+    'Tierno feral',
+    nil,
+  },
+  [15295] = {
+    'Corrupción',
+    nil,
+  },
+  [15296] = {
+    'Arcanista Ithanas',
+    nil,
+  },
+  [15297] = {
+    'Arcanista Helion',
+    nil,
+  },
+  [15298] = {
+    'Ánima arcana mácula',
+    nil,
+  },
+  [15300] = {
+    'Zángano Vekniss',
+    nil,
+  },
+  [15301] = {
+    'Avanzada Alarion',
+    nil,
+  },
+  [15302] = {
+    'Sombra de Taerar',
+    nil,
+  },
+  [15303] = {
+    'Maxima Pimpampum',
+    'Cañonera de la Feria de la Luna Negra',
+  },
+  [15304] = {
+    'Tótem Fuente de maná antiguo',
+    nil,
+  },
+  [15305] = {
+    nil,
+    'Alto Consejo Abisal',
+  },
+  [15306] = {
+    'Bor Ferocrín',
+    nil,
+  },
+  [15307] = {
+    'Templario terráneo',
+    'Consejo Abisal',
+  },
+  [15308] = {
+    'Profeta Crepuscular',
+    'Martillo Crepuscular',
+  },
+  [15311] = {
+    'Depositario Anubisath',
+    nil,
+  },
+  [15312] = {
+    'Nulificador obsidiana',
+    nil,
+  },
+  [15313] = {
+    'Lechúcico lunar (elfo de la noche druida)',
+    nil,
+  },
+  [15314] = {
+    'Lechúcico lunar (tauren druida)',
+    nil,
+  },
+  [15315] = {
+    'Mylini Luna Helada',
+    'Mercader de armas',
+  },
+  [15316] = {
+    'Escarabajo qiraji',
+    nil,
+  },
+  [15317] = {
+    'Escorpión qiraji',
+    nil,
+  },
+  [15318] = {
+    'Zángano Colmen\'Zara',
+    nil,
+  },
+  [15319] = {
+    'Coleccionista Colmen\'Zara',
+    nil,
+  },
+  [15320] = {
+    'Soldado Colmen\'Zara',
+    nil,
+  },
+  [15322] = {
+    '[UNUSED] Emboscador Colmen\'Zara',
+    nil,
+  },
+  [15323] = {
+    'Acecharenas Colmen\'Zara',
+    nil,
+  },
+  [15324] = {
+    'Gladiador qiraji',
+    nil,
+  },
+  [15325] = {
+    'Avispa Colmen\'Zara',
+    nil,
+  },
+  [15326] = {
+    '[UNUSED] Enjambrista Colmen\'Zara',
+    nil,
+  },
+  [15327] = {
+    'Aguijonero Colmen\'Zara',
+    nil,
+  },
+  [15328] = {
+    'Tonque de vapor de la Luna Negra',
+    nil,
+  },
+  [15329] = {
+    '[UNUSED] Explorador Colmen\'Zara',
+    nil,
+  },
+  [15330] = {
+    '[UNUSED] Cavarenas',
+    nil,
+  },
+  [15331] = {
+    '[UNUSED] Tunelador de las Dunas',
+    nil,
+  },
+  [15332] = {
+    '[UNUSED] Comecristales',
+    nil,
+  },
+  [15333] = {
+    'Alimentador silítido',
+    nil,
+  },
+  [15334] = {
+    'Tentáculo ocular gigante',
+    nil,
+  },
+  [15335] = {
+    'Cazador de carne',
+    nil,
+  },
+  [15336] = {
+    'Colazote Colmen\'Zara',
+    nil,
+  },
+  [15337] = {
+    '[UNUSED] Moldearena',
+    nil,
+  },
+  [15338] = {
+    'Destructor obsidiano',
+    nil,
+  },
+  [15339] = {
+    'Osirio el Sinmarcas',
+    nil,
+  },
+  [15342] = {
+    '[UNUSED] Esfinge',
+    nil,
+  },
+  [15343] = {
+    'Guardaenjambre qiraji',
+    nil,
+  },
+  [15344] = {
+    'Aguja guardaenjambres',
+    nil,
+  },
+  [15345] = {
+    '[UNUSED] Hija de Hecate',
+    nil,
+  },
+  [15346] = {
+    '[UNUSED] Infrargullo qiraji',
+    nil,
+  },
+  [15347] = {
+    '[UNUSED] Avispón qiraji',
+    nil,
+  },
+  [15349] = {
+    'Zeppelín teledirigido',
+    nil,
+  },
+  [15350] = {
+    'Belisario de la Horda',
+    nil,
+  },
+  [15351] = {
+    'General de brigada de la Alianza',
+    nil,
+  },
+  [15352] = {
+    'Elemental de tierra superior',
+    nil,
+  },
+  [15353] = {
+    'Katrina Resplandestelar',
+    'Golosinas de Halloween',
+  },
+  [15354] = {
+    nil,
+    'Golosinas de Halloween',
+  },
+  [15355] = {
+    'Guardián Anubisath',
+    nil,
+  },
+  [15356] = {
+    'Bebé múrloc azul',
+    nil,
+  },
+  [15357] = {
+    'Bebé múrloc morado',
+    nil,
+  },
+  [15359] = {
+    'Bebé múrloc rosa',
+    nil,
+  },
+  [15360] = {
+    'Bebé múrloc verde',
+    nil,
+  },
+  [15362] = {
+    'Malfurion Tempestira',
+    nil,
+  },
+  [15363] = {
+    'Tótem de espíritu',
+    nil,
+  },
+  [15364] = {
+    'Tanque mortero teledirigido',
+    nil,
+  },
+  [15366] = {
+    'Cachorro garragil',
+    nil,
+  },
+  [15367] = {
+    'Felendren el Desterrado',
+    nil,
+  },
+  [15368] = {
+    'Mina de tonque',
+    nil,
+  },
+  [15369] = {
+    'Ayamiss el Cazador',
+    nil,
+  },
+  [15370] = {
+    'Buru el Manducador',
+    nil,
+  },
+  [15371] = {
+    'Guardián Caminante del Sol',
+    nil,
+  },
+  [15372] = {
+    'Lince garragil',
+    nil,
+  },
+  [15373] = {
+    'Capitán Pirata de Halloween',
+    nil,
+  },
+  [15374] = {
+    'Pirata no-muerto de Halloween',
+    nil,
+  },
+  [15375] = {
+    'Capitana Pirata de Halloween',
+    nil,
+  },
+  [15376] = {
+    'Hombre fantasma de Halloween',
+    nil,
+  },
+  [15377] = {
+    'Mujer fantasma de Halloween',
+    nil,
+  },
+  [15378] = {
+    'Merithra del Sueño',
+    nil,
+  },
+  [15381] = {
+    'Anachronos el Antiguo',
+    nil,
+  },
+  [15382] = {
+    'Fandral Corzocelada',
+    nil,
+  },
+  [15383] = {
+    'Sargento Petrocejas',
+    'Recolector de barras de cobre',
+  },
+  [15387] = {
+    'Guerrero qiraji',
+    nil,
+  },
+  [15388] = {
+    'Mayor Pakkon',
+    nil,
+  },
+  [15389] = {
+    'Capitán Drenn',
+    nil,
+  },
+  [15390] = {
+    'Capitán Xurrem',
+    nil,
+  },
+  [15391] = {
+    'Capitán Condurso',
+    nil,
+  },
+  [15392] = {
+    'Capitán Tuubid',
+    nil,
+  },
+  [15393] = {
+    '[UNUSED] Ruinas del Gladiador qiraji nombrado 7',
+    nil,
+  },
+  [15394] = {
+    'Héroe de la Horda',
+    nil,
+  },
+  [15397] = {
+    'Marniel Luzámbar',
+    'Tabernero',
+  },
+  [15398] = {
+    'Larianna Ríobrisa',
+    nil,
+  },
+  [15399] = {
+    'Teniente Correalba',
+    'Los Errantes',
+  },
+  [15400] = {
+    'Arathel Forjasol',
+    'Instructora de herrería',
+  },
+  [15401] = {
+    'Vigilante-Ley Velania',
+    nil,
+  },
+  [15402] = {
+    'Aprendiza Mirveda',
+    nil,
+  },
+  [15403] = {
+    'Aeldon Marcasol',
+    'Capitán de los Halcones de sangre',
+  },
+  [15404] = {
+    'Velendris Albodía',
+    nil,
+  },
+  [15405] = {
+    'Vigilante-Ley Caidanis',
+    nil,
+  },
+  [15407] = {
+    'Cabecilla Zul\'Marosh',
+    nil,
+  },
+  [15408] = {
+    'Maestro de lanzas Otembe',
+    nil,
+  },
+  [15409] = {
+    'Viejo Cortezablanca',
+    nil,
+  },
+  [15410] = {
+    'Forma de dragón de Anachronos',
+    nil,
+  },
+  [15411] = {
+    'Arygos con forma de dragón',
+    nil,
+  },
+  [15412] = {
+    'Forma de dragón de Caelestrasz',
+    nil,
+  },
+  [15413] = {
+    'Forma de dragón de Merithra',
+    nil,
+  },
+  [15414] = {
+    'Avispa qiraji',
+    nil,
+  },
+  [15415] = {
+    'Contador de bomba fétida de Costasur',
+    nil,
+  },
+  [15416] = {
+    'Forestal Jaela',
+    nil,
+  },
+  [15417] = {
+    'Velan Roblebrillante',
+    nil,
+  },
+  [15419] = {
+    nil,
+    'Suministros de encantamiento',
+  },
+  [15420] = {
+    'Prospector Guardayunque',
+    nil,
+  },
+  [15421] = {
+    'Zángano qiraji',
+    nil,
+  },
+  [15422] = {
+    'Tanque qiraji',
+    nil,
+  },
+  [15423] = {
+    'Infantería kaldorei',
+    nil,
+  },
+  [15424] = {
+    'Conquistador Anubisath',
+    nil,
+  },
+  [15425] = {
+    'Punto Debug',
+    nil,
+  },
+  [15426] = {
+    'Activador Ahn\'Qiraj',
+    nil,
+  },
+  [15427] = {
+    'Despertar de Merithra',
+    nil,
+  },
+  [15428] = {
+    'Vórtice de arena',
+    nil,
+  },
+  [15429] = {
+    'Moquillo desagradable',
+    nil,
+  },
+  [15430] = {
+    'Tótem Elemental de Tierra',
+    nil,
+  },
+  [15431] = {
+    'Cabo Carnes',
+    'Recolector de barras de hierro',
+  },
+  [15432] = {
+    'Dama Trenzado',
+    'Recolectora de barras de torio',
+  },
+  [15433] = {
+    'Tabernera Delaniel',
+    'Tabernero',
+  },
+  [15434] = {
+    'Soldado Draxlegauge',
+    'Recolector de algas estranguladoras',
+  },
+  [15435] = {
+    'Morterero de la Brigada de Forjaz',
+    nil,
+  },
+  [15436] = {
+    'Sargento de mortero Martillotenaz',
+    nil,
+  },
+  [15437] = {
+    'Maestro Arrullanoche',
+    'Coleccionista de lotos cárdenos',
+  },
+  [15438] = {
+    'Elemental de fuego superior',
+    nil,
+  },
+  [15439] = {
+    'Tótem Elemental de Fuego',
+    nil,
+  },
+  [15440] = {
+    'Capitán Yunquenegro',
+    'Capitán de La Brigada de Forjaz',
+  },
+  [15441] = {
+    'Fusilero de la Brigada de Forjaz',
+    nil,
+  },
+  [15442] = {
+    'Lacayo de la Brigada de Forjaz',
+    nil,
+  },
+  [15443] = {
+    'Janela Martillotenaz',
+    nil,
+  },
+  [15444] = {
+    'Arcanista Bocafuente',
+    nil,
+  },
+  [15445] = {
+    'Alférez Germaine',
+    'Recolectora de lágrimas de Arthas',
+  },
+  [15446] = {
+    'Bonnie Cazarrocas',
+    'Recolectora de cuero ligero',
+  },
+  [15447] = {
+    'Tótem cólera de aire',
+    nil,
+  },
+  [15448] = {
+    'Soldado Porter',
+    'Recolector de cuero fino',
+  },
+  [15449] = {
+    'Abominación de Colmen\'Zora',
+    nil,
+  },
+  [15450] = {
+    'Marta Bueneje',
+    'Recolectora de cuero grueso',
+  },
+  [15451] = {
+    'Centinela Cielargento',
+    'Recolectora de vendas de lino',
+  },
+  [15452] = {
+    'Enfermera Pedregosa',
+    'Recolectora de vendas de seda',
+  },
+  [15453] = {
+    'Vigilante Sombra Lunar',
+    'Recolector de vendas de paño rúnico',
+  },
+  [15454] = {
+    'Activador invisible de la Misión de Anachronos',
+    nil,
+  },
+  [15455] = {
+    'Gastrónomo Salao',
+    'Recolector de atunes blancos arco iris',
+  },
+  [15456] = {
+    'Sarah Silbotriste',
+    'Recolectora de raptores asados',
+  },
+  [15457] = {
+    'Cazadora Río Veloz',
+    'Recolectora de serviolas moteadas',
+  },
+  [15458] = {
+    'Comandante Martillopujante',
+    'Embajador de la Alianza',
+  },
+  [15459] = {
+    'Minero Cromwell',
+    'Recolector de barras de cobre',
+  },
+  [15460] = {
+    'Bruto Maug',
+    'Recolector de barras de estaño',
+  },
+  [15461] = {
+    'Escarabajo chillón',
+    nil,
+  },
+  [15462] = {
+    'Escarabajo escupidor',
+    nil,
+  },
+  [15463] = {
+    'zzOLDTótem Gracia del Aire III',
+    nil,
+  },
+  [15464] = {
+    'zzOLDTótem Fuerza de la tierra V',
+    nil,
+  },
+  [15465] = {
+    'Instructora mundial de joyería',
+    'Instructora de joyería',
+  },
+  [15466] = {
+    'Esbirro de Augurio',
+    nil,
+  },
+  [15467] = {
+    'Augurio',
+    nil,
+  },
+  [15469] = {
+    'Capataz primera T\'kelah',
+    'Recolectora de barras de mitril',
+  },
+  [15470] = {
+    'zzOLDTótem Piel de piedra VII',
+    nil,
+  },
+  [15471] = {
+    'Teniente general Andorov',
+    nil,
+  },
+  [15472] = {
+    '[UNUSED] Mocohondo',
+    nil,
+  },
+  [15473] = {
+    'Élite kaldorei',
+    nil,
+  },
+  [15474] = {
+    'zzOLDTótem Piel de piedra VIII',
+    nil,
+  },
+  [15475] = {
+    'Alfazaque',
+    nil,
+  },
+  [15476] = {
+    'Escórpido',
+    nil,
+  },
+  [15477] = {
+    'Herborista Pluma Digna',
+    'Coleccionista de flores de paz',
+  },
+  [15478] = {
+    'zzOLDTótem Garra de piedra VII',
+    nil,
+  },
+  [15479] = {
+    'zzOLDTótem Fuerza de la tierra VI',
+    nil,
+  },
+  [15480] = {
+    'zzOLDTótem abrasador VII',
+    nil,
+  },
+  [15481] = {
+    'Espíritu de Azuregos',
+    nil,
+  },
+  [15482] = {
+    'zzOLDTótem Nova de Fuego VI',
+    nil,
+  },
+  [15483] = {
+    'Tótem Nova de Fuego',
+    nil,
+  },
+  [15484] = {
+    'zzOLDTótem de magma V',
+    nil,
+  },
+  [15485] = {
+    'zzOLDTótem Lengua de Fuego V',
+    nil,
+  },
+  [15486] = {
+    'zzOLDTótem de resistencia a la escarcha IV',
+    nil,
+  },
+  [15487] = {
+    'zzOLDTótem de resistencia al fuego IV',
+    nil,
+  },
+  [15488] = {
+    'zzOLDTótem Corriente de sanación VI',
+    nil,
+  },
+  [15489] = {
+    'zzOLDTótem Fuente de maná V',
+    nil,
+  },
+  [15490] = {
+    'zzOLDTótem de resistencia a la Naturaleza IV',
+    nil,
+  },
+  [15491] = {
+    'Eranikus, el Tirano del Sueño',
+    nil,
+  },
+  [15492] = {
+    'zzOLD Tótem Muro de viento IV',
+    nil,
+  },
+  [15493] = {
+    'Marsilla Estrella del Alba',
+    nil,
+  },
+  [15494] = {
+    nil,
+    'Instructor de demonios',
+  },
+  [15495] = {
+    'Defensor Amparo de la Noche',
+    nil,
+  },
+  [15496] = {
+    'zzOLDTótem Viento furioso IV',
+    nil,
+  },
+  [15497] = {
+    'zzOLDTótem Viento furioso V',
+    nil,
+  },
+  [15498] = {
+    'Clamavientos Yessendra',
+    nil,
+  },
+  [15499] = {
+    'Celador Haro',
+    nil,
+  },
+  [15500] = {
+    'Keyl Patacerce',
+    nil,
+  },
+  [15501] = {
+    nil,
+    'Instructora de joyería',
+  },
+  [15502] = {
+    nil,
+    'Camada de Malygos',
+  },
+  [15503] = {
+    nil,
+    'Camada de Alexstrasza',
+  },
+  [15504] = {
+    nil,
+    'Camada de Ysera',
+  },
+  [15505] = {
+    'Furia de canal',
+    nil,
+  },
+  [15506] = {
+    'Guisón',
+    nil,
+  },
+  [15507] = {
+    'Transformación visual de Buru el Manducador',
+    nil,
+  },
+  [15508] = {
+    'Jinete de murciélagos Pele\'keiki',
+    'Coleccionista de flores de fuego',
+  },
+  [15509] = {
+    'Princesa Huhuran',
+    nil,
+  },
+  [15510] = {
+    'Fankriss el Implacable',
+    nil,
+  },
+  [15512] = {
+    'Boticaria Jezel',
+    'Coleccionista de lotos cárdenos',
+  },
+  [15513] = {
+    'Forestal Sallina',
+    'Instructor de cazadores',
+  },
+  [15514] = {
+    'Huevo Buru',
+    nil,
+  },
+  [15515] = {
+    'Desollador Jamani',
+    'Recolectora de cuero pesado',
+  },
+  [15516] = {
+    'Guardia de batalla Sartura',
+    nil,
+  },
+  [15518] = {
+    'Subastador Grum',
+    nil,
+  },
+  [15519] = {
+    'Subastador Bertram',
+    nil,
+  },
+  [15521] = {
+    'Prole de Colmen\'Zara',
+    nil,
+  },
+  [15522] = {
+    'Sargento Umala',
+    'Recolectora de cuero grueso',
+  },
+  [15524] = {
+    'Reno temporal',
+    nil,
+  },
+  [15525] = {
+    nil,
+    'Recolector de cuero basto',
+  },
+  [15526] = {
+    'Meridith la Sirenita',
+    nil,
+  },
+  [15527] = {
+    'Maligno de maná',
+    nil,
+  },
+  [15528] = {
+    'Sanador Largo Camino',
+    'Recolector de vendas de lana',
+  },
+  [15529] = {
+    nil,
+    'Recolectora de vendas de tejido mágico',
+  },
+  [15530] = {
+    'Maestro Crepuscular Xarvos',
+    'Martillo Crepuscular',
+  },
+  [15532] = {
+    'Guardia de piedra Pezuña de Barro',
+    'Recolector de vendas de paño rúnico',
+  },
+  [15533] = {
+    'Guardia de sangre Alquicrudo',
+    'Recolectora de filetes de lobo',
+  },
+  [15534] = {
+    'Pescador Len\'do',
+    'Recolectora de serviolas moteadas',
+  },
+  [15535] = {
+    'Jefe Garra Cortante',
+    'Recolector de salmón al horno',
+  },
+  [15536] = {
+    'Tóxicus Jolgolecho',
+    nil,
+  },
+  [15537] = {
+    'Guerrero Anubisath',
+    nil,
+  },
+  [15538] = {
+    'Guardaenjambre Anubisath',
+    nil,
+  },
+  [15539] = {
+    nil,
+    'Embajador de la Horda',
+  },
+  [15540] = {
+    'Clamavientos Kaldon',
+    nil,
+  },
+  [15541] = {
+    'Maleante Crepuscular Morna',
+    'Martillo Crepuscular',
+  },
+  [15542] = {
+    'Maleante Crepuscular',
+    'Martillo Crepuscular',
+  },
+  [15543] = {
+    'Princesa Yauj',
+    nil,
+  },
+  [15545] = {
+    'Escolta Cenarion',
+    nil,
+  },
+  [15546] = {
+    'Enjambrista Colmen\'Zara',
+    nil,
+  },
+  [15547] = {
+    'Destrero espectral',
+    nil,
+  },
+  [15548] = {
+    'Semental espectral',
+    nil,
+  },
+  [15549] = {
+    'Ancestro Alborhondo',
+    nil,
+  },
+  [15550] = {
+    'Attumen el Montero',
+    nil,
+  },
+  [15551] = {
+    'Mano de establo espectral',
+    nil,
+  },
+  [15553] = {
+    'Máquina voladora del doctor Weavil',
+    nil,
+  },
+  [15554] = {
+    'Número dos',
+    nil,
+  },
+  [15555] = {
+    'Larva Colmen\'Zara',
+    nil,
+  },
+  [15556] = {
+    'Ancestro Parterroca',
+    nil,
+  },
+  [15557] = {
+    'Ancestro Rocaestruendo',
+    nil,
+  },
+  [15558] = {
+    'Ancestro Venaplata',
+    nil,
+  },
+  [15559] = {
+    'Ancestro Altacumbre',
+    nil,
+  },
+  [15560] = {
+    'Ancestro Petraforte',
+    nil,
+  },
+  [15561] = {
+    'Ancestro Obsidiano',
+    nil,
+  },
+  [15562] = {
+    'Ancestro Rugidomazo',
+    nil,
+  },
+  [15563] = {
+    'Ancestro Bramira',
+    nil,
+  },
+  [15564] = {
+    'Ancestro Cuoreoscuro',
+    nil,
+  },
+  [15565] = {
+    'Ancestro Tormenceño',
+    nil,
+  },
+  [15566] = {
+    'Ancestro Corona Nevada',
+    nil,
+  },
+  [15567] = {
+    'Ancestro Vetaferro',
+    nil,
+  },
+  [15568] = {
+    'Ancestro Sepulnato',
+    nil,
+  },
+  [15569] = {
+    'Ancestro Pozo de Oro',
+    nil,
+  },
+  [15570] = {
+    'Ancestro Primapiedra',
+    nil,
+  },
+  [15571] = {
+    'Fauces',
+    nil,
+  },
+  [15572] = {
+    'Ancestro Tótem de Runa',
+    nil,
+  },
+  [15573] = {
+    'Ancestro Tótem de Ira',
+    nil,
+  },
+  [15574] = {
+    'Ancestro Picopiedra',
+    nil,
+  },
+  [15575] = {
+    'Ancestro Pezuña de Sangre',
+    nil,
+  },
+  [15576] = {
+    'Ancestro Pezuña Invernal',
+    nil,
+  },
+  [15577] = {
+    'Ancestro Cazacielo',
+    nil,
+  },
+  [15578] = {
+    'Ancestro Ferocrín',
+    nil,
+  },
+  [15579] = {
+    'Ancestro Astaoscura',
+    nil,
+  },
+  [15580] = {
+    'Ancestro Ezra Pezuña de Trigo',
+    nil,
+  },
+  [15581] = {
+    'Ancestro Tótem Siniestro',
+    nil,
+  },
+  [15582] = {
+    'Ancestro Tótem de Viento',
+    nil,
+  },
+  [15583] = {
+    'Ancestro Tronacuerno',
+    nil,
+  },
+  [15584] = {
+    'Ancestro Vidente del Cielo',
+    nil,
+  },
+  [15585] = {
+    'Ancestro Caminalba',
+    nil,
+  },
+  [15586] = {
+    'Ancestro Visionírico',
+    nil,
+  },
+  [15587] = {
+    'Ancestro Caminaniebla',
+    nil,
+  },
+  [15588] = {
+    'Ancestro Altomonte',
+    nil,
+  },
+  [15589] = {
+    'Ojo de C\'Thun',
+    nil,
+  },
+  [15590] = {
+    'Activador de cristal Osirio',
+    nil,
+  },
+  [15591] = {
+    'Esbirro de Weavil',
+    nil,
+  },
+  [15592] = {
+    'Ancestro Fuerteviento',
+    nil,
+  },
+  [15593] = {
+    'Ancestro Cantoestelar',
+    nil,
+  },
+  [15594] = {
+    'Ancestro Lunaplena',
+    nil,
+  },
+  [15595] = {
+    'Ancestro Filohoja',
+    nil,
+  },
+  [15596] = {
+    'Ancestro Claroestelar',
+    nil,
+  },
+  [15597] = {
+    'Ancestro Guardaluna',
+    nil,
+  },
+  [15598] = {
+    'Ancestro Filoveloz',
+    nil,
+  },
+  [15599] = {
+    'Ancestro Cantofilo',
+    nil,
+  },
+  [15600] = {
+    'Ancestro Relucielo',
+    nil,
+  },
+  [15601] = {
+    'Ancestro Tejestrellas',
+    nil,
+  },
+  [15602] = {
+    'Ancestro Correpradera',
+    nil,
+  },
+  [15603] = {
+    'Ancestro Nochebrisa',
+    nil,
+  },
+  [15604] = {
+    'Ancestro Albarrocío',
+    nil,
+  },
+  [15605] = {
+    'Ancestro Riosona',
+    nil,
+  },
+  [15606] = {
+    'Ancestro Lanza Reluciente',
+    nil,
+  },
+  [15607] = {
+    'Ancestro Levesusurro',
+    nil,
+  },
+  [15609] = {
+    'Explorador Cenarion Landion',
+    nil,
+  },
+  [15610] = {
+    'Exploradora Cenarion Azenel',
+    nil,
+  },
+  [15611] = {
+    'Exploradora Cenarion Jalia',
+    nil,
+  },
+  [15612] = {
+    'Krug Yendecráneo',
+    'Capitán de la Legión de Orgrimmar',
+  },
+  [15613] = {
+    'Merok Zancada Larga',
+    nil,
+  },
+  [15614] = {
+    'J.D. Canto Sombrío',
+    nil,
+  },
+  [15615] = {
+    'Sacerdotisa de las Sombras Shai',
+    nil,
+  },
+  [15616] = {
+    'Bruto de la Legión de Orgrimmar',
+    nil,
+  },
+  [15617] = {
+    'Lanzahachas de la Legión de Orgrimmar',
+    nil,
+  },
+  [15618] = {
+    'Aojador de la legión de Orgrimmar',
+    nil,
+  },
+  [15620] = {
+    'Cazador-asesino Colmen\'Regal',
+    nil,
+  },
+  [15621] = {
+    'Linaje de Yauj',
+    nil,
+  },
+  [15622] = {
+    'Cavapozos Vekniss',
+    nil,
+  },
+  [15624] = {
+    'Fuego fatuo del bosque',
+    nil,
+  },
+  [15625] = {
+    'Corrupto Crepuscular',
+    nil,
+  },
+  [15626] = {
+    'Celestine Buenaugurio',
+    nil,
+  },
+  [15627] = {
+    'Jarod Cantosombrío',
+    nil,
+  },
+  [15628] = {
+    'Eranikus el Redimido',
+    nil,
+  },
+  [15629] = {
+    'Fantasma pesadilla',
+    nil,
+  },
+  [15630] = {
+    'Engendro de Fankriss',
+    nil,
+  },
+  [15631] = {
+    'Foco',
+    nil,
+  },
+  [15632] = {
+    'Test tío para 1.8',
+    nil,
+  },
+  [15633] = {
+    nil,
+    'Suma sacerdotisa de Elune',
+  },
+  [15634] = {
+    'Sacerdotisa de la Luna',
+    nil,
+  },
+  [15635] = {
+    'Tierno de Canción Eterna',
+    nil,
+  },
+  [15636] = {
+    'Guardaverdor de Canción Eterna',
+    nil,
+  },
+  [15637] = {
+    'Jardinero marchito',
+    nil,
+  },
+  [15638] = {
+    'Patrullero Arcano',
+    nil,
+  },
+  [15639] = {
+    'Depositario Arcano',
+    nil,
+  },
+  [15640] = {
+    'Déspota Arcano',
+    nil,
+  },
+  [15641] = {
+    'Lanzahachas Amani',
+    nil,
+  },
+  [15642] = {
+    'Sacerdote oscuro Amani',
+    nil,
+  },
+  [15643] = {
+    'Rabioso Amani',
+    nil,
+  },
+  [15644] = {
+    'Golfillo desdichado',
+    nil,
+  },
+  [15645] = {
+    'Matón desdichado',
+    nil,
+  },
+  [15647] = {
+    'Acechador de maná',
+    nil,
+  },
+  [15648] = {
+    'Ánima de maná',
+    nil,
+  },
+  [15649] = {
+    'Prole de dracohalcón feral',
+    nil,
+  },
+  [15650] = {
+    'Dracohalcón enloquecido',
+    nil,
+  },
+  [15651] = {
+    'Acechador garragil',
+    nil,
+  },
+  [15652] = {
+    'Garragil anciano',
+    nil,
+  },
+  [15653] = {
+    'Matriarca garragil',
+    nil,
+  },
+  [15654] = {
+    'Saqueador huesopeste',
+    nil,
+  },
+  [15655] = {
+    'Caníbal Carnepútrea',
+    nil,
+  },
+  [15656] = {
+    'Sombra de inquina',
+    nil,
+  },
+  [15657] = {
+    'Ánima oscura',
+    nil,
+  },
+  [15658] = {
+    'Merodeador Carnepútrea',
+    nil,
+  },
+  [15659] = {
+    'Subastadora Jaxon',
+    nil,
+  },
+  [15660] = {
+    'Eranikus transformado',
+    nil,
+  },
+  [15661] = {
+    'Cría de tiburón',
+    nil,
+  },
+  [15663] = {
+    'Voluntario del esfuerzo de guerra',
+    nil,
+  },
+  [15664] = {
+    'Metzen el Reno',
+    nil,
+  },
+  [15665] = {
+    'Reno montado',
+    nil,
+  },
+  [15666] = {
+    'Tanque de batalla qiraji azul',
+    nil,
+  },
+  [15667] = {
+    'Pegote de Viscidus',
+    nil,
+  },
+  [15668] = {
+    'Múrloc Malaescama',
+    nil,
+  },
+  [15669] = {
+    'Oráculo Malaescama',
+    nil,
+  },
+  [15670] = {
+    'Batidor Malaescama',
+    nil,
+  },
+  [15675] = {
+    'Subastador Stockton',
+    nil,
+  },
+  [15676] = {
+    'Subastador Yarly',
+    nil,
+  },
+  [15677] = {
+    'Subastador Graves',
+    nil,
+  },
+  [15678] = {
+    'Subastador Silva\'las',
+    nil,
+  },
+  [15679] = {
+    'Subastador Cazarez',
+    nil,
+  },
+  [15680] = {
+    'Subastadora Bernal',
+    nil,
+  },
+  [15681] = {
+    'Subastador O\'reely',
+    nil,
+  },
+  [15682] = {
+    'Subastador Cain',
+    nil,
+  },
+  [15683] = {
+    'Subastadora Naxxremis',
+    nil,
+  },
+  [15684] = {
+    'Subastadora Tricket',
+    nil,
+  },
+  [15685] = {
+    'Secuestrador de los Mares del Sur',
+    nil,
+  },
+  [15686] = {
+    'Subastadora Rhyker',
+    nil,
+  },
+  [15687] = {
+    nil,
+    'Administrador de la torre',
+  },
+  [15688] = {
+    'Terestian Pezuña Enferma',
+    nil,
+  },
+  [15689] = {
+    'Rencor abisal',
+    nil,
+  },
+  [15690] = {
+    'Príncipe Malchezaar',
+    nil,
+  },
+  [15691] = {
+    'Curator',
+    nil,
+  },
+  [15692] = {
+    'Secuestrador Hierro Negro',
+    nil,
+  },
+  [15693] = {
+    'Jonathan el Apocalíptico',
+    nil,
+  },
+  [15694] = {
+    'Juerguista de Ventormenta',
+    nil,
+  },
+  [15695] = {
+    'Activador de gemelos Vek',
+    nil,
+  },
+  [15696] = {
+    'Recluta del esfuerzo de guerra',
+    nil,
+  },
+  [15698] = {
+    'Ayudante del Padre Invierno',
+    nil,
+  },
+  [15699] = {
+    'Yeti mecánico tranquilo',
+    nil,
+  },
+  [15700] = {
+    'Señor de la guerra Gorchuk',
+    'Comandante de la campaña de guerra',
+  },
+  [15701] = {
+    'Mariscal de campo Nevanur',
+    'Comandante de la campaña de guerra',
+  },
+  [15702] = {
+    'Capataz primera Taiga',
+    'Reclutadora para la campaña de guerra',
+  },
+  [15703] = {
+    'Capataz primero Grimsford',
+    'Reclutadora para la campaña de guerra',
+  },
+  [15704] = {
+    'Capataz primera Kai\'jin',
+    'Reclutadora para la campaña de guerra',
+  },
+  [15705] = {
+    'Pequeña ayudante del Invierno',
+    nil,
+  },
+  [15706] = {
+    'Reno invernal',
+    nil,
+  },
+  [15707] = {
+    'Sargento primero Rayochirriante',
+    'Reclutadora para la campaña de guerra',
+  },
+  [15708] = {
+    'Sargento primera Maclure',
+    'Reclutadora para la campaña de guerra',
+  },
+  [15709] = {
+    'Sargento primera Umbraluna',
+    'Reclutadora para la campaña de guerra',
+  },
+  [15710] = {
+    'Muñeco de nieve diminuto',
+    nil,
+  },
+  [15711] = {
+    'Tanque de batalla qiraji azul',
+    nil,
+  },
+  [15712] = {
+    'Montón de barro',
+    nil,
+  },
+  [15713] = {
+    'Tanque de batalla qiraji azul',
+    nil,
+  },
+  [15714] = {
+    'Tanque de batalla qiraji amarillo',
+    nil,
+  },
+  [15715] = {
+    'Tanque de batalla qiraji verde',
+    nil,
+  },
+  [15716] = {
+    'Tanque de batalla qiraji rojo',
+    nil,
+  },
+  [15717] = {
+    'Activador Ouro',
+    nil,
+  },
+  [15718] = {
+    'Escarabajo Ouro',
+    nil,
+  },
+  [15719] = {
+    'Juerguista de Cima del Trueno',
+    nil,
+  },
+  [15720] = {
+    'Ancestro Fauces de Madera',
+    nil,
+  },
+  [15721] = {
+    'Grinch mecánico',
+    nil,
+  },
+  [15722] = {
+    'Escudero Leoren Mal\'derath',
+    'Maestra de establos',
+  },
+  [15723] = {
+    'Juerguista de Bahía del Botín',
+    nil,
+  },
+  [15724] = {
+    'Truhán borracho',
+    nil,
+  },
+  [15725] = {
+    'Tentáculo Garral',
+    nil,
+  },
+  [15726] = {
+    'Tentáculo ocular',
+    nil,
+  },
+  [15728] = {
+    'Tentáculo garral gigante',
+    nil,
+  },
+  [15729] = {
+    'Ayudante del Padre Invierno (GRANDE) gm',
+    nil,
+  },
+  [15730] = {
+    'Nube de nieve de Pat',
+    nil,
+  },
+  [15731] = {
+    'Oficial de Honor de Darnassus',
+    nil,
+  },
+  [15732] = {
+    'Operador Formavillosa',
+    'Pastos de Bosquehumeante',
+  },
+  [15733] = {
+    'Oficial de Honor de Gnomeregan',
+    nil,
+  },
+  [15734] = {
+    'Oficial de Honor de Forjaz',
+    nil,
+  },
+  [15735] = {
+    'Oficial de Honor de Ventormenta',
+    nil,
+  },
+  [15736] = {
+    'Oficial de Honor de Orgrimmar',
+    nil,
+  },
+  [15737] = {
+    'Oficial de Honor Lanza Negra',
+    nil,
+  },
+  [15738] = {
+    'Oficial de Honor de Entrañas',
+    nil,
+  },
+  [15739] = {
+    'Oficial de Honor de Cima del Trueno',
+    nil,
+  },
+  [15740] = {
+    'Coloso de Zora',
+    nil,
+  },
+  [15741] = {
+    'Coloso de Regal',
+    nil,
+  },
+  [15742] = {
+    'Coloso de Ashi',
+    nil,
+  },
+  [15743] = {
+    'Belisario Anubisath colosal',
+    nil,
+  },
+  [15744] = {
+    'Destructor qiraji imperial',
+    nil,
+  },
+  [15745] = {
+    'Ayudante del Gran Padre Invierno',
+    nil,
+  },
+  [15746] = {
+    'Ayudante del Gran Padre Invierno',
+    nil,
+  },
+  [15747] = {
+    'Capitán qiraji',
+    nil,
+  },
+  [15748] = {
+    'Belisario Anubisath inferior',
+    nil,
+  },
+  [15749] = {
+    'Despellejador silítido inferior',
+    nil,
+  },
+  [15750] = {
+    'Mayor qiraji',
+    nil,
+  },
+  [15751] = {
+    'Belisario Anubisath',
+    nil,
+  },
+  [15752] = {
+    'Despellejador silítido',
+    nil,
+  },
+  [15753] = {
+    'General de brigada qiraji',
+    nil,
+  },
+  [15754] = {
+    'Belisario Anubisath enorme',
+    nil,
+  },
+  [15756] = {
+    'Despellejador silítido superior',
+    nil,
+  },
+  [15757] = {
+    'Teniente general qiraji',
+    nil,
+  },
+  [15758] = {
+    'Belisario Anubisath supremo',
+    nil,
+  },
+  [15759] = {
+    'Despellejador silítido supremo',
+    nil,
+  },
+  [15760] = {
+    'Juerguista invernal',
+    nil,
+  },
+  [15761] = {
+    'Oficial Vu\'Shalay',
+    'Menciones honoríficas de Lanza Negra',
+  },
+  [15762] = {
+    'Oficial Lunaluz',
+    'Menciones honoríficas de Darnassus',
+  },
+  [15763] = {
+    'Oficial Chatobrian',
+    'Menciones honoríficas de Gnomeregan',
+  },
+  [15764] = {
+    'Oficial Barbaférrea',
+    'Menciones honoríficas de Forjaz',
+  },
+  [15765] = {
+    'Oficial Filorrojo',
+    'Menciones honoríficas de Orgrimmar',
+  },
+  [15766] = {
+    'Oficial Maloof',
+    'Menciones honoríficas de Ventormenta',
+  },
+  [15767] = {
+    'Oficial Zancada del Trueno',
+    'Menciones honoríficas de Cima del Trueno',
+  },
+  [15768] = {
+    'Oficial Gothena',
+    'Menciones honoríficas de Entrañas',
+  },
+  [15769] = {
+    'Cristal resonador',
+    nil,
+  },
+  [15770] = {
+    'Cristal resonador superior',
+    nil,
+  },
+  [15771] = {
+    'Cristal resonador sublime',
+    nil,
+  },
+  [15772] = {
+    'Maestro oscuro navideño Gandling',
+    nil,
+  },
+  [15773] = {
+    'Maestro cañonero de Navidad Willey',
+    nil,
+  },
+  [15774] = {
+    'Príncipe navideño Tortheldrin',
+    nil,
+  },
+  [15775] = {
+    'Emperador navideño Dagran Thaurissan',
+    nil,
+  },
+  [15776] = {
+    'Jefe de Guerra Rend Puño Negro navideño',
+    nil,
+  },
+  [15777] = {
+    'Maestro de guerra navideño Voone',
+    nil,
+  },
+  [15778] = {
+    'Montura de tentáculo bucal visual',
+    nil,
+  },
+  [15780] = {
+    'Juerguista invernal humano',
+    nil,
+  },
+  [15781] = {
+    'Juerguista invernal humana',
+    nil,
+  },
+  [15782] = {
+    'Juerguista invernal enano',
+    nil,
+  },
+  [15783] = {
+    'Juerguista invernal enana',
+    nil,
+  },
+  [15784] = {
+    'Juerguista invernal elfa de la noche',
+    nil,
+  },
+  [15785] = {
+    'Juerguista invernal trol',
+    nil,
+  },
+  [15786] = {
+    'Juerguista orco de invierno',
+    nil,
+  },
+  [15787] = {
+    'Juerguista invernal goblin',
+    nil,
+  },
+  [15788] = {
+    'Juerguista invernal no-muerta',
+    nil,
+  },
+  [15789] = {
+    'Juerguista invernal tauren mujer',
+    nil,
+  },
+  [15790] = {
+    'Juerguista invernal no-muerto',
+    nil,
+  },
+  [15791] = {
+    'Juerguista invernal orco',
+    nil,
+  },
+  [15792] = {
+    'Juerguista invernal trol hombre',
+    nil,
+  },
+  [15793] = {
+    'Juerguista invernal tauren hombre',
+    nil,
+  },
+  [15794] = {
+    'Juerguista invernal elfo de la noche',
+    nil,
+  },
+  [15795] = {
+    'Juerguista invernal goblin',
+    nil,
+  },
+  [15796] = {
+    'Goraluk Yunquegrieta navideño',
+    'Forjador de armaduras de la Legión Puño Negro',
+  },
+  [15797] = {
+    'Investigadora de colosos Sofía',
+    nil,
+  },
+  [15798] = {
+    'Investigador de colosos Nestor',
+    nil,
+  },
+  [15799] = {
+    'Investigador de colosos Eazel',
+    nil,
+  },
+  [15800] = {
+    'Activador de salida',
+    nil,
+  },
+  [15801] = {
+    nil,
+    'CHICO QUE SUJETA EL GONG',
+  },
+  [15802] = {
+    'Tentáculo de carne',
+    nil,
+  },
+  [15803] = {
+    'Tótem de Aire sosegado',
+    nil,
+  },
+  [15804] = {
+    'Cristal resonador inferior',
+    nil,
+  },
+  [15805] = {
+    'Cristal resonador menor',
+    nil,
+  },
+  [15806] = {
+    'Teniente qiraji',
+    nil,
+  },
+  [15807] = {
+    'Belisario Anubisath menor',
+    nil,
+  },
+  [15808] = {
+    'Despellejador silítido menor',
+    nil,
+  },
+  [15809] = {
+    'Transformación visual de C\'Thun',
+    nil,
+  },
+  [15810] = {
+    'Belisario Anubisath erosionado',
+    nil,
+  },
+  [15811] = {
+    'Despellejador silítido vacilante',
+    nil,
+  },
+  [15812] = {
+    'Oficial qiraji',
+    nil,
+  },
+  [15813] = {
+    'Oficial qiraji Zod',
+    nil,
+  },
+  [15814] = {
+    'Teniente qiraji Jo-rel',
+    nil,
+  },
+  [15815] = {
+    'Capitán qiraji Ka\'ark',
+    nil,
+  },
+  [15816] = {
+    'Mayor qiraji He\'al-ie',
+    nil,
+  },
+  [15817] = {
+    'General de brigada qiraji Pax-lish',
+    nil,
+  },
+  [15818] = {
+    'Teniente general Nokhor',
+    nil,
+  },
+  [15832] = {
+    'Ayudante del Padre Invierno (GRANDE) rm',
+    nil,
+  },
+  [15835] = {
+    'Ayudante del Padre Invierno (GRANDE) rf',
+    nil,
+  },
+  [15838] = {
+    'Ayudante del Padre Invierno (GRANDE) gf',
+    nil,
+  },
+  [15839] = {
+    'Bruto del Poder de Kalimdor',
+    nil,
+  },
+  [15840] = {
+    'Sargento del Poder de Kalimdor',
+    nil,
+  },
+  [15841] = {
+    'Teniente del Poder de Kalimdor',
+    nil,
+  },
+  [15842] = {
+    'Mago del Poder de Kalimdor',
+    nil,
+  },
+  [15843] = {
+    'Sacerdote del Poder de Kalimdor',
+    nil,
+  },
+  [15844] = {
+    'Restauradora del Poder de Kalimdor',
+    nil,
+  },
+  [15845] = {
+    'Capitana del Poder de Kalimdor',
+    nil,
+  },
+  [15846] = {
+    'Arquera del Poder de Kalimdor',
+    nil,
+  },
+  [15847] = {
+    'Chamán del Poder de Kalimdor',
+    nil,
+  },
+  [15848] = {
+    'Infantería del Poder de Kalimdor',
+    nil,
+  },
+  [15849] = {
+    'Druida del Poder de Kalimdor',
+    nil,
+  },
+  [15850] = {
+    'Hostigador del Poder de Kalimdor',
+    nil,
+  },
+  [15851] = {
+    'Alguacil del Poder de Kalimdor',
+    nil,
+  },
+  [15852] = {
+    'Escudero élite de Orgrimmar',
+    nil,
+  },
+  [15853] = {
+    'Soldado de infantería élite de Orgrimmar',
+    nil,
+  },
+  [15854] = {
+    'Caballista élite de Orgrimmar',
+    nil,
+  },
+  [15855] = {
+    'Fusilero tauren',
+    nil,
+  },
+  [15856] = {
+    'Tauren primigenio',
+    nil,
+  },
+  [15857] = {
+    'Caballista de Ventormenta',
+    nil,
+  },
+  [15858] = {
+    'Soldado de infantería de Ventormenta',
+    nil,
+  },
+  [15859] = {
+    'Archimago de Ventormenta',
+    nil,
+  },
+  [15860] = {
+    'Tirador kaldorei',
+    nil,
+  },
+  [15861] = {
+    'Soldado de infantería de Forjaz',
+    nil,
+  },
+  [15862] = {
+    'Caballista de Forjaz',
+    nil,
+  },
+  [15863] = {
+    'Chamán Lanza Negra',
+    nil,
+  },
+  [15864] = {
+    'Valadar Cantoestelar',
+    'Recolector de monedas de linaje',
+  },
+  [15865] = {
+    'Mayor del Poder de Kalimdor',
+    nil,
+  },
+  [15866] = {
+    'Alto comandante Lynore Ventostryke',
+    nil,
+  },
+  [15867] = {
+    'Archimago del Poder de Kalimdor',
+    nil,
+  },
+  [15868] = {
+    'Alto señor Leoric Von Zeldig',
+    nil,
+  },
+  [15869] = {
+    'Malagav el Táctico',
+    nil,
+  },
+  [15870] = {
+    'Duque August Martinimigos',
+    nil,
+  },
+  [15871] = {
+    'Ancestro Barbabronce',
+    nil,
+  },
+  [15872] = {
+    'Tipo de los fuegos artificiales de Pat (AZUL)',
+    nil,
+  },
+  [15873] = {
+    'Tipo de los fuegos artificiales de Pat (ROJO)',
+    nil,
+  },
+  [15874] = {
+    'Tipo de los fuegos artificiales de Pat (VERDE)',
+    nil,
+  },
+  [15875] = {
+    'Tipo de los fuegos artificiales de Pat (MORADO)',
+    nil,
+  },
+  [15876] = {
+    'Tipo de los fuegos artificiales de Pat (BLANCO)',
+    nil,
+  },
+  [15877] = {
+    'Tipo de los fuegos artificiales de Pat (AMARILLO)',
+    nil,
+  },
+  [15878] = {
+    'Clamaguerras Finster',
+    nil,
+  },
+  [15879] = {
+    'Tipo de los fuegos artificiales de Pat AZUL',
+    nil,
+  },
+  [15880] = {
+    'Fuegos artificiales de Pat VERDE',
+    nil,
+  },
+  [15881] = {
+    'Fuegos artificiales de Pat MORADO',
+    nil,
+  },
+  [15882] = {
+    'Fuegos artificiales de Pat ROJO',
+    nil,
+  },
+  [15883] = {
+    'Tipo de los fuegos artificiales de Pat AMARILLO',
+    nil,
+  },
+  [15884] = {
+    'Fuegos artificiales de Pat BLANCO',
+    nil,
+  },
+  [15885] = {
+    'Tipo de los fuegos artificiales de Pat AZUL GRANDE',
+    nil,
+  },
+  [15886] = {
+    'Tipo de los fuegos artificiales de Pat VERDE GRANDE',
+    nil,
+  },
+  [15887] = {
+    'Fuegos artificiales de Pat GRAN MORADO',
+    nil,
+  },
+  [15888] = {
+    'Tipo de los fuegos artificiales de Pat ROJO GRANDE',
+    nil,
+  },
+  [15889] = {
+    'Fuegos artificiales de Pat GRAN BLANCO',
+    nil,
+  },
+  [15890] = {
+    'Fuegos artificiales de Pat GRAN AMARILLO',
+    nil,
+  },
+  [15891] = {
+    'Heraldo del Festival Lunar',
+    nil,
+  },
+  [15892] = {
+    'Emisario del Festival Lunar',
+    nil,
+  },
+  [15895] = {
+    'Presagista del Festival Lunar',
+    nil,
+  },
+  [15896] = {
+    'Portal de C\'Thun',
+    nil,
+  },
+  [15897] = {
+    'Gran Focoluz',
+    nil,
+  },
+  [15898] = {
+    'Mercader del Festival Lunar',
+    nil,
+  },
+  [15899] = {
+    'Vendedor (PH) NE del Festival Lunar',
+    nil,
+  },
+  [15900] = {
+    'Presagista del Festival Lunar NE',
+    nil,
+  },
+  [15901] = {
+    'Tentáculo derrotado',
+    nil,
+  },
+  [15902] = {
+    'Focoluz Gigante',
+    nil,
+  },
+  [15903] = {
+    'Sargento Carnes',
+    nil,
+  },
+  [15904] = {
+    'Portal de tentáculo',
+    nil,
+  },
+  [15905] = {
+    'Juerguista de Darnassus',
+    nil,
+  },
+  [15906] = {
+    'Juerguista de Forjaz',
+    nil,
+  },
+  [15907] = {
+    'Juerguista de Entrañas',
+    nil,
+  },
+  [15908] = {
+    'Juerguista de Orgrimmar',
+    nil,
+  },
+  [15909] = {
+    'Fariel Cantoestelar',
+    'Recolector de monedas de linaje',
+  },
+  [15910] = {
+    'Portal de tentáculo gigante',
+    nil,
+  },
+  [15911] = {
+    'Tipo de los fuegos artificiales de Pat (AZUL GRANDE)',
+    nil,
+  },
+  [15912] = {
+    'Tipo de los fuegos artificiales de Pat (GRAN VERDE)',
+    nil,
+  },
+  [15913] = {
+    'Tipo de los fuegos artificiales de Pat (MORADO GRANDE)',
+    nil,
+  },
+  [15914] = {
+    'Tipo de los fuegos artificiales de Pat (ROJO GRANDE)',
+    nil,
+  },
+  [15915] = {
+    'Tipo de los fuegos artificiales de Pat (BLANCO GRANDE)',
+    nil,
+  },
+  [15916] = {
+    'Tipo de los fuegos artificiales de Pat (AMARILLO GRANDE)',
+    nil,
+  },
+  [15917] = {
+    'Juerguista del Festival Lunar',
+    nil,
+  },
+  [15918] = {
+    'Tipo de los fuegos artificiales de Pat (ELUNE)',
+    nil,
+  },
+  [15919] = {
+    'Búho de jade',
+    nil,
+  },
+  [15920] = {
+    'Hathvelion Mirasol',
+    nil,
+  },
+  [15921] = {
+    'Capitana Kelisendra',
+    nil,
+  },
+  [15922] = {
+    'Activador Viscidus',
+    nil,
+  },
+  [15923] = {
+    'Liebre dorada',
+    nil,
+  },
+  [15924] = {
+    'Aprendiza Loralthalis',
+    nil,
+  },
+  [15925] = {
+    'Babosa tóxica',
+    nil,
+  },
+  [15926] = {
+    'Pantera de perla negra',
+    nil,
+  },
+  [15927] = {
+    'Cangrejo de veraplata',
+    nil,
+  },
+  [15933] = {
+    'Nube de veneno',
+    nil,
+  },
+  [15934] = {
+    'Avispón Colmen\'Zara',
+    nil,
+  },
+  [15935] = {
+    'Jabalí de veraplata',
+    nil,
+  },
+  [15936] = {
+    'Heigan el Impuro',
+    nil,
+  },
+  [15937] = {
+    nil,
+    'Malaescama',
+  },
+  [15938] = {
+    'Forestal Canción Eterna',
+    nil,
+  },
+  [15939] = {
+    'Forestal Degolien',
+    nil,
+  },
+  [15940] = {
+    'Forestal Selron',
+    nil,
+  },
+  [15941] = {
+    'Aprendiz Ralen',
+    nil,
+  },
+  [15942] = {
+    'La forestal Sareyn',
+    nil,
+  },
+  [15943] = {
+    'Avispón Colmen\'Zara',
+    nil,
+  },
+  [15944] = {
+    'Serpiente de rubí',
+    nil,
+  },
+  [15945] = {
+    'Aprendiz Meledor',
+    nil,
+  },
+  [15946] = {
+    'Aprendiza Veya',
+    nil,
+  },
+  [15947] = {
+    'Habitante de Susurravientos',
+    nil,
+  },
+  [15948] = {
+    'Búho de esmeralda',
+    nil,
+  },
+  [15949] = {
+    'Thaelis el Hambriento',
+    nil,
+  },
+  [15950] = {
+    'Vidente Malaescama',
+    nil,
+  },
+  [15951] = {
+    'Magister Ocaso Marchito',
+    nil,
+  },
+  [15953] = {
+    'Gran Viuda Faerlina',
+    nil,
+  },
+  [15954] = {
+    'Noth el Pesteador',
+    nil,
+  },
+  [15955] = {
+    'Cangrejo de diamante negro',
+    nil,
+  },
+  [15957] = {
+    'Engendrador Ouro',
+    nil,
+  },
+  [15958] = {
+    'Gharsul el Despiadado',
+    nil,
+  },
+  [15959] = {
+    'Escórpido de hierro negro',
+    nil,
+  },
+  [15961] = {
+    'Centinela del Festival Lunar',
+    nil,
+  },
+  [15962] = {
+    'Prole de Vekniss',
+    nil,
+  },
+  [15963] = {
+    'El ojo del maestro',
+    nil,
+  },
+  [15964] = {
+    'Activador de huevo Buru',
+    nil,
+  },
+  [15965] = {
+    'Aprendiz Ocaso Marchito',
+    nil,
+  },
+  [15966] = {
+    'Serpiente de maná',
+    nil,
+  },
+  [15967] = {
+    'Maligno de éter',
+    nil,
+  },
+  [15968] = {
+    'Explorador darnassiano',
+    nil,
+  },
+  [15969] = {
+    'Guardés Wyllithen',
+    nil,
+  },
+  [15971] = {
+    'Aprendiz Lunargenta',
+    nil,
+  },
+  [15972] = {
+    'Maestro de batalla del Valle de Alterac',
+    nil,
+  },
+  [15973] = {
+    'Modelo de Naxxramas',
+    nil,
+  },
+  [15974] = {
+    'Trepador aterrador',
+    nil,
+  },
+  [15975] = {
+    'Hilandera carroñera',
+    nil,
+  },
+  [15976] = {
+    'Acechador venenoso',
+    nil,
+  },
+  [15978] = {
+    'Atracador de la cripta',
+    nil,
+  },
+  [15979] = {
+    'Horror de tumbas',
+    nil,
+  },
+  [15980] = {
+    'Cultor de Naxxramas',
+    nil,
+  },
+  [15981] = {
+    'Acólito de Naxxramas',
+    nil,
+  },
+  [15982] = {
+    '[PH] Juerguista San Valentín, hombre',
+    nil,
+  },
+  [15983] = {
+    '[PH] Juerguista de San Valentín, mujer',
+    nil,
+  },
+  [15984] = {
+    'Guardia Real de Sartura',
+    nil,
+  },
+  [16000] = {
+    'Instructora mundial de maestros de costura',
+    'Instructora de sastrería',
+  },
+  [16001] = {
+    'Aldris Cuatronubes',
+    nil,
+  },
+  [16003] = {
+    'Guardia de la Muerte Tor',
+    nil,
+  },
+  [16005] = {
+    'Teniente Jocryn Heldric',
+    nil,
+  },
+  [16006] = {
+    'Activador en combate',
+    nil,
+  },
+  [16007] = {
+    'Orok Aterramuerte',
+    nil,
+  },
+  [16008] = {
+    'Temma de los Pozos',
+    nil,
+  },
+  [16009] = {
+    'Tormek Petreofluvo',
+    nil,
+  },
+  [16014] = {
+    'Mux Cazamaná',
+    nil,
+  },
+  [16015] = {
+    'Mazo de Gladiador sañoso',
+    'Mercader de componentes exóticos',
+  },
+  [16017] = {
+    'Gólem de retazos',
+    nil,
+  },
+  [16018] = {
+    'Arcadano bílico',
+    nil,
+  },
+  [16019] = {
+    'Boorana Pezuña Trueno',
+    'Custodia de ositos panda',
+  },
+  [16020] = {
+    'Científico loco',
+    nil,
+  },
+  [16021] = {
+    'Monstruosidad viviente',
+    nil,
+  },
+  [16022] = {
+    'Auxiliar quirúrgico',
+    nil,
+  },
+  [16023] = {
+    'Allenya Umbraluna',
+    'Custodia de ositos panda',
+  },
+  [16024] = {
+    'Babosa embalsamadora',
+    nil,
+  },
+  [16025] = {
+    'Gigante cosido',
+    nil,
+  },
+  [16026] = {
+    'Gigante de carne B [PH]',
+    nil,
+  },
+  [16027] = {
+    'Veneno viviente',
+    nil,
+  },
+  [16028] = {
+    'Remendejo',
+    nil,
+  },
+  [16029] = {
+    'Eructador de lodo',
+    nil,
+  },
+  [16030] = {
+    'Cresa',
+    nil,
+  },
+  [16032] = {
+    'Falrin Tallarbol',
+    nil,
+  },
+  [16034] = {
+    'Bestia de peste',
+    nil,
+  },
+  [16036] = {
+    'Murciélago demenciado',
+    nil,
+  },
+  [16037] = {
+    'Murciélago apestado',
+    nil,
+  },
+  [16039] = {
+    'Instructor de manada [PH]',
+    nil,
+  },
+  [16040] = {
+    'Controlador de manada [PH]',
+    nil,
+  },
+  [16041] = {
+    'Can sombrío',
+    nil,
+  },
+  [16043] = {
+    'Señor del Magma Bokk',
+    nil,
+  },
+  [16044] = {
+    'Activador Mor Ruciapezuña',
+    nil,
+  },
+  [16045] = {
+    'Activador Isalien',
+    nil,
+  },
+  [16046] = {
+    'Activadores Jarien y Sothos',
+    nil,
+  },
+  [16047] = {
+    'Activador Kormok',
+    nil,
+  },
+  [16048] = {
+    'Activador Lord Valthalak',
+    nil,
+  },
+  [16049] = {
+    'Zurdito',
+    nil,
+  },
+  [16050] = {
+    'Colmipútreo',
+    nil,
+  },
+  [16051] = {
+    'Snokh Dorsalnegra',
+    nil,
+  },
+  [16052] = {
+    'Malgen Lanzalarga',
+    nil,
+  },
+  [16056] = {
+    'Cresa malsana',
+    nil,
+  },
+  [16057] = {
+    'Cresa en podredumbre',
+    nil,
+  },
+  [16060] = {
+    'Gothik el Cosechador',
+    nil,
+  },
+  [16062] = {
+    'Alto señor Mograine',
+    'El portador de la Crematoria',
+  },
+  [16066] = {
+    'Asesino espectral',
+    nil,
+  },
+  [16070] = {
+    'Garel Piedrarroja',
+    nil,
+  },
+  [16072] = {
+    'Señor de las Mareas Rrurgaz',
+    nil,
+  },
+  [16073] = {
+    'Espíritu de Lord Valthalak',
+    nil,
+  },
+  [16075] = {
+    'Kwee Q. Pies Rápidos',
+    nil,
+  },
+  [16076] = {
+    'Tharl Sangrapiedra',
+    nil,
+  },
+  [16078] = {
+    'Muñeco-diana reparado invencible',
+    nil,
+  },
+  [16079] = {
+    'Activador Theldren',
+    nil,
+  },
+  [16080] = {
+    'Mor Pezuña Gris',
+    nil,
+  },
+  [16081] = {
+    'Grifo espectral',
+    nil,
+  },
+  [16082] = {
+    'Activador de Naxxramas',
+    nil,
+  },
+  [16083] = {
+    'Transformación visual de Mor Ruciapezuña',
+    nil,
+  },
+  [16084] = {
+    'Manta de picnic',
+    nil,
+  },
+  [16085] = {
+    'Pies Rápidos',
+    nil,
+  },
+  [16086] = {
+    'Lluvia de pétalos',
+    nil,
+  },
+  [16089] = {
+    'Omar el dragón TEST',
+    nil,
+  },
+  [16091] = {
+    'Dirk Truenedera',
+    nil,
+  },
+  [16092] = {
+    'Teletransportador silítido',
+    nil,
+  },
+  [16093] = {
+    'Acechador espectral',
+    nil,
+  },
+  [16094] = {
+    nil,
+    'Maestra de establos',
+  },
+  [16095] = {
+    'Rechinador',
+    'Mascota de Malgen Lanzalarga',
+  },
+  [16096] = {
+    'Truhán Bonvapor',
+    nil,
+  },
+  [16098] = {
+    'Empíreo',
+    nil,
+  },
+  [16099] = {
+    nil,
+    'Esbirro de Alex',
+  },
+  [16100] = {
+    'Activador de Ysida',
+    nil,
+  },
+  [16103] = {
+    'Espíritu de Jarien',
+    nil,
+  },
+  [16104] = {
+    'Espíritu de Sothos',
+    nil,
+  },
+  [16107] = {
+    'Boticario Staffron Lerent',
+    'Sociedad Real de Boticarios',
+  },
+  [16111] = {
+    'Loco de amor',
+    nil,
+  },
+  [16112] = {
+    'Comandante de Cruzada Korfax',
+    'Hermandad de la Luz',
+  },
+  [16113] = {
+    'Padre Íñigo Montoya',
+    'Hermandad de la Luz',
+  },
+  [16114] = {
+    'Comandante Escarlata Marjhan',
+    'La Cruzada Escarlata',
+  },
+  [16115] = {
+    'Comandante de Cruzada Eligor Albar',
+    'Hermandad de la Luz',
+  },
+  [16116] = {
+    'Archimaga Angela Dosantos',
+    'Hermandad de la Luz',
+  },
+  [16117] = {
+    'Puerco apestado',
+    nil,
+  },
+  [16119] = {
+    'Esbirro osario',
+    nil,
+  },
+  [16120] = {
+    'Mago osario',
+    nil,
+  },
+  [16121] = {
+    'Mortero',
+    nil,
+  },
+  [16123] = {
+    'Gremnik Saltatrabas',
+    nil,
+  },
+  [16124] = {
+    'Practicante inflexible',
+    nil,
+  },
+  [16125] = {
+    'Caballero de la Muerte inflexible',
+    nil,
+  },
+  [16126] = {
+    'Jinete inflexible',
+    nil,
+  },
+  [16127] = {
+    'Practicante espectral',
+    nil,
+  },
+  [16129] = {
+    'Fisura de las Sombras',
+    nil,
+  },
+  [16131] = {
+    'Rohan el Asesino',
+    'La Cruzada Escarlata',
+  },
+  [16132] = {
+    'Montero Leopold',
+    'La Cruzada Escarlata',
+  },
+  [16133] = {
+    'Mataus el Colérico',
+    'La Cruzada Escarlata',
+  },
+  [16134] = {
+    'Rimblat Rompeterra',
+    'El Anillo de la Tierra',
+  },
+  [16135] = {
+    nil,
+    'Círculo Cenarion',
+  },
+  [16136] = {
+    'Fragmento necrótico',
+    nil,
+  },
+  [16137] = {
+    'Activador subjefe militar de Naxxramas',
+    nil,
+  },
+  [16138] = {
+    '[UNUSED] Guardián de la Invasión de la Plaga',
+    nil,
+  },
+  [16139] = {
+    'Reservista del Fuerte Cenarion',
+    nil,
+  },
+  [16140] = {
+    '[UNUSED] Necópolis de Cristal, Contrafuerte',
+    nil,
+  },
+  [16141] = {
+    'Rabioso necrófago',
+    nil,
+  },
+  [16142] = {
+    'Lodo bílico',
+    nil,
+  },
+  [16143] = {
+    'Sombra de fatalidad',
+    nil,
+  },
+  [16145] = {
+    'Capitán caballero de la Muerte',
+    nil,
+  },
+  [16146] = {
+    'Caballero de la Muerte',
+    nil,
+  },
+  [16147] = {
+    'Elisara Golpesol',
+    nil,
+  },
+  [16148] = {
+    'Caballero de la Muerte espectral',
+    nil,
+  },
+  [16149] = {
+    'Caballo espectral',
+    nil,
+  },
+  [16150] = {
+    'Jinete espectral',
+    nil,
+  },
+  [16151] = {
+    'Medianoche',
+    nil,
+  },
+  [16152] = {
+    'Attumen el Montero',
+    nil,
+  },
+  [16153] = {
+    nil,
+    'El Portero',
+  },
+  [16154] = {
+    'Escudero resucitado',
+    nil,
+  },
+  [16156] = {
+    'Guerrero tocado por la oscuridad',
+    'Maestra de establos',
+  },
+  [16157] = {
+    'Guerrero tocado por la fatalidad',
+    nil,
+  },
+  [16158] = {
+    'Guerrero tocado por la Muerte',
+    nil,
+  },
+  [16159] = {
+    nil,
+    'El Hombre de la noche',
+  },
+  [16160] = {
+    nil,
+    'Instructora de encantamiento',
+  },
+  [16161] = {
+    'Arcanista Sheynathren',
+    'Instructor de alquimia',
+  },
+  [16162] = {
+    'Gamberro desdichado',
+    nil,
+  },
+  [16163] = {
+    'Hidalgo caballero de la Muerte',
+    nil,
+  },
+  [16164] = {
+    'Sombra de Naxxramas',
+    nil,
+  },
+  [16165] = {
+    'Caballero Necro',
+    nil,
+  },
+  [16166] = {
+    'Theldren Cortacrédito',
+    nil,
+  },
+  [16167] = {
+    'Ensamblaje huesudo',
+    nil,
+  },
+  [16168] = {
+    'Gárgola piel de piedra',
+    nil,
+  },
+  [16169] = {
+    nil,
+    'El Custodio',
+  },
+  [16170] = {
+    'Acechador Bruma Fría',
+    nil,
+  },
+  [16171] = {
+    'Viuda Bruma Fría',
+    nil,
+  },
+  [16172] = {
+    'Fragmento necrótico dañado',
+    nil,
+  },
+  [16173] = {
+    'Murciélago de las sombras',
+    nil,
+  },
+  [16174] = {
+    'Murciélago de las sombras superior',
+    nil,
+  },
+  [16175] = {
+    'Murciélago de las sombras vampírico',
+    nil,
+  },
+  [16176] = {
+    'Bestia de las sombras',
+    nil,
+  },
+  [16177] = {
+    'Bestia aterradora',
+    nil,
+  },
+  [16178] = {
+    'Can de fase',
+    nil,
+  },
+  [16179] = {
+    'Hyakiss el Rondador',
+    nil,
+  },
+  [16180] = {
+    'Shadikith el Planeador',
+    nil,
+  },
+  [16181] = {
+    'Rokad el Devastador',
+    nil,
+  },
+  [16182] = {
+    'Irradior de cristal',
+    nil,
+  },
+  [16183] = {
+    'Mensajero Caminalba',
+    nil,
+  },
+  [16184] = {
+    'Sobrestante nerubiano',
+    nil,
+  },
+  [16185] = {
+    nil,
+    'Maestra de establos',
+  },
+  [16186] = {
+    nil,
+    'Mercader de tela y cuero',
+  },
+  [16187] = {
+    'Intendente Lymel',
+    'Pertrechos',
+  },
+  [16188] = {
+    '[UNUSED] Contrafuerte Arbotante',
+    nil,
+  },
+  [16189] = {
+    'Maestro del cielo Alasol',
+    'Maestro de dracohalcones',
+  },
+  [16190] = {
+    'Instructora de encantamiento de expansión',
+    'Instructora de encantamiento',
+  },
+  [16191] = {
+    'Sathren Azurocaso',
+    'Pertrechos',
+  },
+  [16192] = {
+    'La maestra del cielo Anochecer',
+    'Maestro de dracohalcones',
+  },
+  [16193] = {
+    'Herrero esquelético',
+    nil,
+  },
+  [16194] = {
+    'Hacha profana',
+    nil,
+  },
+  [16196] = {
+    'Boticaria Thedra',
+    nil,
+  },
+  [16197] = {
+    'Arcanista Vandril',
+    nil,
+  },
+  [16198] = {
+    'Boticario Renzithen',
+    nil,
+  },
+  [16200] = {
+    'Mortacechador Rathiel',
+    nil,
+  },
+  [16201] = {
+    'Geranis Albodía',
+    nil,
+  },
+  [16202] = {
+    'Errante Sedina',
+    'Los Errantes',
+  },
+  [16203] = {
+    'Forestal Vynna',
+    'Los Errantes',
+  },
+  [16206] = {
+    'Aprendiz Varnis',
+    nil,
+  },
+  [16207] = {
+    'Explorador Fionna',
+    nil,
+  },
+  [16208] = {
+    'Boticaria Enith',
+    nil,
+  },
+  [16209] = {
+    'Forestal Vedoran',
+    'Los Errantes',
+  },
+  [16210] = {
+    'Magistrix Landra Caminalba',
+    nil,
+  },
+  [16211] = {
+    'Muñeco-diana de combate de Naxxramas',
+    nil,
+  },
+  [16212] = {
+    'Comandante de envíos Metz',
+    'El Alba Argenta',
+  },
+  [16213] = {
+    'Forestal Lethvalin',
+    'Los Errantes',
+  },
+  [16214] = {
+    'Controlador de Necrópolis',
+    nil,
+  },
+  [16215] = {
+    'Bastón profano',
+    nil,
+  },
+  [16216] = {
+    'Espadas profanas',
+    nil,
+  },
+  [16217] = {
+    'Teniente Tomathren',
+    'Los Errantes',
+  },
+  [16218] = {
+    'Espiral Tesla',
+    nil,
+  },
+  [16219] = {
+    'Forestal Valanna',
+    'Los Errantes',
+  },
+  [16220] = {
+    'Capitán Helios',
+    'Los Errantes',
+  },
+  [16221] = {
+    'Guardián de Lunargenta',
+    nil,
+  },
+  [16222] = {
+    'Guardián de la Ciudad de Lunargenta',
+    nil,
+  },
+  [16224] = {
+    'Rathis Sepulturero',
+    'Suministros comerciales',
+  },
+  [16225] = {
+    'Mula de carga',
+    nil,
+  },
+  [16226] = {
+    'Guardia Didier',
+    'Hermandad de la Luz',
+  },
+  [16227] = {
+    nil,
+    'Maestro de vuelo',
+  },
+  [16228] = {
+    'Infantería de El Alba Argenta',
+    'El Alba Argenta',
+  },
+  [16229] = {
+    'Infantería de El Alba Argenta herido',
+    'El Alba Argenta',
+  },
+  [16230] = {
+    'Cultor ingeniero',
+    nil,
+  },
+  [16231] = {
+    'Dama Aurífera',
+    nil,
+  },
+  [16232] = {
+    'Mula de caravana',
+    nil,
+  },
+  [16233] = {
+    'Oruga Alapeste',
+    nil,
+  },
+  [16234] = {
+    'Desgarrador de carne',
+    nil,
+  },
+  [16235] = {
+    'Tentáculo de carne de peste',
+    nil,
+  },
+  [16236] = {
+    'Ojo acechador',
+    nil,
+  },
+  [16238] = {
+    'Emboscadora elfo de la noche',
+    nil,
+  },
+  [16240] = {
+    'Arcanista Janeda',
+    nil,
+  },
+  [16241] = {
+    'Reclutador Argenta',
+    'El Alba Argenta',
+  },
+  [16242] = {
+    'Explorador de Tranquillien',
+    nil,
+  },
+  [16243] = {
+    'Babosa de peste',
+    nil,
+  },
+  [16244] = {
+    'Necrófago infeccioso',
+    nil,
+  },
+  [16246] = {
+    'Putrenudillos',
+    nil,
+  },
+  [16247] = {
+    'Borgoth el Flebotomista',
+    nil,
+  },
+  [16248] = {
+    'Jurion el Falsario',
+    nil,
+  },
+  [16249] = {
+    'Masophet el Negro',
+    nil,
+  },
+  [16250] = {
+    'Mirdoran el Caído',
+    nil,
+  },
+  [16251] = {
+    'Mortacechador Maltendis',
+    nil,
+  },
+  [16252] = {
+    'Sumo ejecutor Mavren',
+    nil,
+  },
+  [16253] = {
+    'Maestro cocinero Mouldier',
+    'Instructor de cocina y suministros',
+  },
+  [16254] = {
+    'Mariscal de campo Cuevas',
+    'El Alba Argenta',
+  },
+  [16255] = {
+    'Explorador Argenta',
+    'El Alba Argenta',
+  },
+  [16256] = {
+    nil,
+    'Tabernero',
+  },
+  [16257] = {
+    nil,
+    'Mercader de armas',
+  },
+  [16258] = {
+    nil,
+    'Mercader de armaduras y escudos',
+  },
+  [16259] = {
+    nil,
+    'Pertrechos',
+  },
+  [16260] = {
+    nil,
+    'Pertrechos',
+  },
+  [16261] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [16262] = {
+    nil,
+    'Mercader',
+  },
+  [16263] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [16264] = {
+    nil,
+    'Criadora de halcones zancudos',
+  },
+  [16265] = {
+    'Herrero Daelarin',
+    'Instructora de herrería',
+  },
+  [16266] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [16267] = {
+    nil,
+    'Instructor de demonios',
+  },
+  [16268] = {
+    nil,
+    'Suministros de venenos',
+  },
+  [16269] = {
+    nil,
+    'Instructor de magos',
+  },
+  [16270] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [16271] = {
+    nil,
+    'Maestra de establos',
+  },
+  [16272] = {
+    nil,
+    'Instructora de primeros auxilios',
+  },
+  [16273] = {
+    nil,
+    'Instructora de desuello',
+  },
+  [16274] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [16275] = {
+    nil,
+    'Instructor de paladines',
+  },
+  [16276] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [16277] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [16278] = {
+    nil,
+    'Instructor de peletería',
+  },
+  [16279] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [16280] = {
+    nil,
+    'Instructor de equitación',
+  },
+  [16281] = {
+    'Guardián de los Pergaminos',
+    'El Alba Argenta',
+  },
+  [16283] = {
+    'Maestro de manada Mazadura',
+    'Hermandad de la Luz',
+  },
+  [16284] = {
+    'Médico Argenta',
+    'El Alba Argenta',
+  },
+  [16285] = {
+    'Emisario Argenta',
+    'El Alba Argenta',
+  },
+  [16287] = {
+    'Embajador Penasol',
+    nil,
+  },
+  [16288] = {
+    'Consejero Sorrelon',
+    nil,
+  },
+  [16289] = {
+    'Consejera Valwyn',
+    nil,
+  },
+  [16290] = {
+    'Babosa radiactiva',
+    nil,
+  },
+  [16293] = {
+    'Aprendiza Shatharia',
+    nil,
+  },
+  [16294] = {
+    'Aldaron el Temerario',
+    nil,
+  },
+  [16295] = {
+    'Forestal Lilatha',
+    'Los Errantes',
+  },
+  [16297] = {
+    'Larva mutada',
+    nil,
+  },
+  [16298] = {
+    'Soldado espectral',
+    nil,
+  },
+  [16299] = {
+    'Soldado de choque esquelético',
+    nil,
+  },
+  [16300] = {
+    'Trepador resucitado',
+    nil,
+  },
+  [16301] = {
+    'Hambriento resucitado',
+    nil,
+  },
+  [16302] = {
+    'Acechador resucitado',
+    nil,
+  },
+  [16303] = {
+    'Esqueleto Terroespina',
+    nil,
+  },
+  [16304] = {
+    'Devorador Arcano',
+    nil,
+  },
+  [16305] = {
+    'Centinela Terroespina',
+    nil,
+  },
+  [16306] = {
+    'Esbirro de la invasión de la Plaga, engendrador, fantasma/necrófago',
+    nil,
+  },
+  [16307] = {
+    'Arúspice Jaulamuerta',
+    nil,
+  },
+  [16308] = {
+    'Hechicero Jaulamuerta',
+    nil,
+  },
+  [16309] = {
+    'Caníbal ganglioso',
+    nil,
+  },
+  [16310] = {
+    'Conmutador de maná',
+    nil,
+  },
+  [16311] = {
+    'Vigía fantasmal',
+    nil,
+  },
+  [16312] = {
+    'Gritona espectral',
+    nil,
+  },
+  [16313] = {
+    'Guardia Nerubis',
+    nil,
+  },
+  [16314] = {
+    'Forestal caída',
+    nil,
+  },
+  [16315] = {
+    'Acólito de la Ciudad de la Muerte',
+    nil,
+  },
+  [16316] = {
+    'Rastreador Alapétrea',
+    nil,
+  },
+  [16317] = {
+    'Nigromante de la Ciudad de la Muerte',
+    nil,
+  },
+  [16318] = {
+    'Mago oscuro de la Ciudad de la Muerte',
+    nil,
+  },
+  [16319] = {
+    'Centurión Nerubis',
+    nil,
+  },
+  [16320] = {
+    'Ojo de Dar\'Khan',
+    nil,
+  },
+  [16321] = {
+    'Plañidera',
+    nil,
+  },
+  [16322] = {
+    'Comecarnes ganglioso',
+    nil,
+  },
+  [16323] = {
+    'Buscador fantasmal',
+    nil,
+  },
+  [16324] = {
+    'Destripador Alapétrea',
+    nil,
+  },
+  [16325] = {
+    'Fantasma Quel\'dorei',
+    nil,
+  },
+  [16326] = {
+    'Ánima Quel\'dorei',
+    nil,
+  },
+  [16327] = {
+    'Aparecido voraz',
+    nil,
+  },
+  [16328] = {
+    'Aparecido vengativo',
+    nil,
+  },
+  [16330] = {
+    'Espía centinela',
+    nil,
+  },
+  [16331] = {
+    'Druida darnassiano',
+    nil,
+  },
+  [16332] = {
+    'Cazadora darnassiana',
+    nil,
+  },
+  [16333] = {
+    'Infiltrada centinela',
+    nil,
+  },
+  [16334] = {
+    'Gnoll Patanegra',
+    nil,
+  },
+  [16335] = {
+    'Carroñero Patanegra',
+    nil,
+  },
+  [16336] = {
+    'Esbirro de la invasión de la Plaga, engendrador, fantasma/esqueleto',
+    nil,
+  },
+  [16337] = {
+    'Chamán Patanegra',
+    nil,
+  },
+  [16338] = {
+    'Esbirro de la invasión de la Plaga, engendrador, necrófago/esqueleto',
+    nil,
+  },
+  [16339] = {
+    'Atracador Arcano',
+    nil,
+  },
+  [16340] = {
+    'Desgarrador Sombrapino',
+    nil,
+  },
+  [16341] = {
+    'Brujo Sombrapino',
+    nil,
+  },
+  [16342] = {
+    'Rebanacabezas momificado',
+    nil,
+  },
+  [16343] = {
+    'Oráculo Sombrapino',
+    nil,
+  },
+  [16344] = {
+    'Rebanacabezas Sombrapino',
+    nil,
+  },
+  [16345] = {
+    'Señor de felinos Sombrapino',
+    nil,
+  },
+  [16346] = {
+    'Aojador Sombrapino',
+    nil,
+  },
+  [16347] = {
+    'Garrafantasma famélico',
+    nil,
+  },
+  [16348] = {
+    'Lince garrafantasma',
+    nil,
+  },
+  [16349] = {
+    'Devastador garrafantasma',
+    nil,
+  },
+  [16350] = {
+    'Araña husaraña',
+    nil,
+  },
+  [16351] = {
+    'Rondador husaraña',
+    nil,
+  },
+  [16352] = {
+    'Husaraña superior',
+    nil,
+  },
+  [16353] = {
+    'Murciélago brumoso',
+    nil,
+  },
+  [16354] = {
+    'Murciélago brumoso vampírico',
+    nil,
+  },
+  [16355] = {
+    'Murciélago de plaga inferior',
+    nil,
+  },
+  [16356] = {
+    'Esbirro de la invasión de la Plaga, buscador',
+    nil,
+  },
+  [16358] = {
+    'Kel\'gash el Malvado',
+    nil,
+  },
+  [16359] = {
+    'Mensajero Argenta',
+    'El Alba Argenta',
+  },
+  [16360] = {
+    'Zombi destripado',
+    nil,
+  },
+  [16361] = {
+    'Comandante Thomas Helleran',
+    'El Alba Argenta',
+  },
+  [16362] = {
+    'El celador de las runas Deryan',
+    nil,
+  },
+  [16363] = {
+    'Grobbulus Nube',
+    nil,
+  },
+  [16364] = {
+    'Cristal imbuido',
+    nil,
+  },
+  [16365] = {
+    'Maestro artesano Omarion',
+    'Hermandad de la Luz',
+  },
+  [16366] = {
+    'Zurzidora Brilloámbar',
+    'Instructora de sastrería',
+  },
+  [16367] = {
+    'Botánico Tyniarrel',
+    'Instructor de herboristería y suministros',
+  },
+  [16368] = {
+    'Acólito de Necrópolis',
+    nil,
+  },
+  [16369] = {
+    'Gallina polimórfica',
+    nil,
+  },
+  [16371] = {
+    'Cerdo polimórfico',
+    nil,
+  },
+  [16372] = {
+    'Oveja polimórfica',
+    nil,
+  },
+  [16373] = {
+    'Rata polimórfica',
+    nil,
+  },
+  [16374] = {
+    'Curiana polimórfica',
+    nil,
+  },
+  [16375] = {
+    'Babosa de cloaca',
+    nil,
+  },
+  [16376] = {
+    'Artesano Wilhelm',
+    'Hermandad de la Luz',
+  },
+  [16377] = {
+    'Tortuga polimórfica',
+    nil,
+  },
+  [16378] = {
+    'Avizor Argenta',
+    'El Alba Argenta',
+  },
+  [16379] = {
+    'Espíritu de los Malditos',
+    nil,
+  },
+  [16380] = {
+    'Bruja Osaria',
+    nil,
+  },
+  [16381] = {
+    'Archimago Tarsis Kil-Moldir',
+    nil,
+  },
+  [16382] = {
+    'Terror de retazos',
+    nil,
+  },
+  [16383] = {
+    'Golpeflama',
+    nil,
+  },
+  [16384] = {
+    'Iniciado de El Alba Argenta',
+    'El Alba Argenta',
+  },
+  [16385] = {
+    'Tótem de relámpagos',
+    nil,
+  },
+  [16386] = {
+    'Delegado de la Necrópolis',
+    nil,
+  },
+  [16387] = {
+    nil,
+    'Mano de Sargeras',
+  },
+  [16388] = {
+    nil,
+    'El Herrero',
+  },
+  [16389] = {
+    'Aprendiz espectral',
+    nil,
+  },
+  [16390] = {
+    'Sirviente Fríomortal',
+    nil,
+  },
+  [16392] = {
+    'Capitán Armando Ossex',
+    nil,
+  },
+  [16394] = {
+    'Horror pálido',
+    nil,
+  },
+  [16395] = {
+    'Paladín de El Alba Argenta',
+    'El Alba Argenta',
+  },
+  [16396] = {
+    'Guardia de élite de Ventormenta',
+    nil,
+  },
+  [16397] = {
+    'Ardeyn Ríobrisa',
+    nil,
+  },
+  [16398] = {
+    'Apoderado de la Necrópolis',
+    nil,
+  },
+  [16399] = {
+    'Traidor Velasangre',
+    nil,
+  },
+  [16400] = {
+    'Túnel tóxico',
+    nil,
+  },
+  [16402] = {
+    'Malaescama zombi',
+    nil,
+  },
+  [16403] = {
+    'Malaescama',
+    nil,
+  },
+  [16404] = {
+    'Furia agallamarilla',
+    nil,
+  },
+  [16405] = {
+    'Furia Coliblanca',
+    nil,
+  },
+  [16406] = {
+    'Aparición de guardia',
+    nil,
+  },
+  [16407] = {
+    'Sirviente espectral',
+    nil,
+  },
+  [16408] = {
+    'Aparición de ayuda de cámara',
+    nil,
+  },
+  [16409] = {
+    'Aparición de invitado',
+    nil,
+  },
+  [16410] = {
+    'Criado espectral',
+    nil,
+  },
+  [16411] = {
+    'Chef espectral',
+    nil,
+  },
+  [16412] = {
+    'Panadero fantasmal',
+    nil,
+  },
+  [16414] = {
+    'Administrador fantasmal',
+    nil,
+  },
+  [16415] = {
+    'Camarero esquelético',
+    nil,
+  },
+  [16416] = {
+    'Bronn Desgarradar',
+    nil,
+  },
+  [16417] = {
+    'Rumsen Esfomolecho',
+    nil,
+  },
+  [16418] = {
+    'Mupsi Fricadena',
+    nil,
+  },
+  [16419] = {
+    'Fantasma de Naxxramas',
+    nil,
+  },
+  [16420] = {
+    'Portal de las Sombras',
+    nil,
+  },
+  [16421] = {
+    'Salud de Necrópolis',
+    nil,
+  },
+  [16422] = {
+    'Soldado esquelético',
+    nil,
+  },
+  [16423] = {
+    'Aparecido espectral',
+    nil,
+  },
+  [16424] = {
+    'Avizor espectral',
+    nil,
+  },
+  [16425] = {
+    'Aparición de custodio',
+    nil,
+  },
+  [16426] = {
+    nil,
+    'El Sargento de Armas',
+  },
+  [16427] = {
+    'Soldado de los Baldíos Helados',
+    nil,
+  },
+  [16428] = {
+    'Abominación imparable',
+    nil,
+  },
+  [16429] = {
+    'Tejealmas',
+    nil,
+  },
+  [16430] = {
+    'Activador Crematoria',
+    nil,
+  },
+  [16431] = {
+    'Cristal necrótico rajado',
+    nil,
+  },
+  [16432] = {
+    'Guardián de élite de Entrañas',
+    nil,
+  },
+  [16433] = {
+    'Cruzado de El Alba Argenta',
+    'El Alba Argenta',
+  },
+  [16434] = {
+    'Campeón de El Alba Argenta',
+    'El Alba Argenta',
+  },
+  [16435] = {
+    'Clérigo de El Alba Argenta',
+    'El Alba Argenta',
+  },
+  [16436] = {
+    'Sacerdote de El Alba Argenta',
+    'El Alba Argenta',
+  },
+  [16437] = {
+    'Espíritu espectral',
+    nil,
+  },
+  [16438] = {
+    'Recluta esquelético',
+    nil,
+  },
+  [16439] = {
+    'Ribalimpia transformado',
+    nil,
+  },
+  [16440] = {
+    'Alto señor Mograine transformado',
+    'El portador de la Crematoria',
+  },
+  [16441] = {
+    'Guardián de Corona de Hielo',
+    nil,
+  },
+  [16442] = {
+    'Maestro vinícola Toquesol',
+    'Mercader de vinos y licores',
+  },
+  [16443] = {
+    'Zalene Albatemprana',
+    'Alimentos y bebidas',
+  },
+  [16444] = {
+    'Halis Caminalba',
+    'Pertrechos',
+  },
+  [16446] = {
+    'Gárgola apestada',
+    nil,
+  },
+  [16447] = {
+    'Necrófago apestado',
+    nil,
+  },
+  [16448] = {
+    'Can de la Muerte apestado',
+    nil,
+  },
+  [16449] = {
+    'Espíritu de Naxxramas',
+    nil,
+  },
+  [16450] = {
+    'Ella número uno',
+    'Embajadora de CocaCola',
+  },
+  [16451] = {
+    '[UNUSED] Death Knight Vindicator',
+    nil,
+  },
+  [16452] = {
+    'Caballero Guardián Necro',
+    nil,
+  },
+  [16453] = {
+    'Acechamorte',
+    nil,
+  },
+  [16454] = {
+    'Ella número dos',
+    'Embajadora de CocaCola',
+  },
+  [16455] = {
+    'Ella número tres',
+    'Embajadora de CocaCola',
+  },
+  [16457] = {
+    'Doncella de Virtud',
+    nil,
+  },
+  [16458] = {
+    'Tabernera Faralia',
+    'Tabernero',
+  },
+  [16459] = {
+    'Anfitriona lasciva',
+    nil,
+  },
+  [16460] = {
+    'Concubina nocturna',
+    nil,
+  },
+  [16461] = {
+    'Concubina',
+    nil,
+  },
+  [16462] = {
+    'Forestal Krenn\'an',
+    'Los Errantes',
+  },
+  [16463] = {
+    'Errante Solanna',
+    'Los Errantes',
+  },
+  [16464] = {
+    'Boticario Venustus',
+    'Sociedad Real de Boticarios',
+  },
+  [16468] = {
+    'Parroquiano espectral',
+    nil,
+  },
+  [16469] = {
+    'Taumaturgo umbrío Sombrapino',
+    nil,
+  },
+  [16470] = {
+    'Filántropo fantasmal',
+    nil,
+  },
+  [16471] = {
+    'Ujier esquelético',
+    nil,
+  },
+  [16472] = {
+    'Aparición de tramoyista',
+    nil,
+  },
+  [16473] = {
+    'Actor espectral',
+    nil,
+  },
+  [16478] = {
+    'Teniente Orrin',
+    'El Alba Argenta',
+  },
+  [16479] = {
+    'Clon polimórfico',
+    nil,
+  },
+  [16480] = {
+    'Aprendiz Vor\'el',
+    nil,
+  },
+  [16481] = {
+    'Aparición espantosa',
+    nil,
+  },
+  [16482] = {
+    'Alma atrapada',
+    nil,
+  },
+  [16483] = {
+    'Superviviente draenei',
+    nil,
+  },
+  [16484] = {
+    'Tenienve Nevell',
+    'El Alba Argenta',
+  },
+  [16485] = {
+    'Velador Arcano',
+    nil,
+  },
+  [16486] = {
+    'Trampa arácnida',
+    nil,
+  },
+  [16487] = {
+    'Instructor de alquimia',
+    'Instructor de alquimia',
+  },
+  [16488] = {
+    'Anomalía Arcana',
+    nil,
+  },
+  [16489] = {
+    'Conciencia caótica',
+    nil,
+  },
+  [16490] = {
+    'Teniente Lisande',
+    'El Alba Argenta',
+  },
+  [16491] = {
+    'Alimentador de maná',
+    nil,
+  },
+  [16492] = {
+    'Succionador',
+    nil,
+  },
+  [16493] = {
+    'Teniente Dagel',
+    'El Alba Argenta',
+  },
+  [16494] = {
+    'Teniente Rukag',
+    'El Alba Argenta',
+  },
+  [16495] = {
+    'Teniente Beitha',
+    'El Alba Argenta',
+  },
+  [16499] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [16500] = {
+    nil,
+    'Instructor de magos',
+  },
+  [16501] = {
+    nil,
+    'Instructor de paladines',
+  },
+  [16502] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [16503] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [16504] = {
+    'Protector Arcano',
+    nil,
+  },
+  [16505] = {
+    'Seguidor de Naxxramas',
+    nil,
+  },
+  [16506] = {
+    'Venerador de Naxxramas',
+    nil,
+  },
+  [16507] = {
+    'Avizor Mano Destrozada',
+    nil,
+  },
+  [16508] = {
+    'Caballo Argenta',
+    nil,
+  },
+  [16509] = {
+    'Caballo de guerra Argenta',
+    nil,
+  },
+  [16510] = {
+    'Destrero Argenta',
+    nil,
+  },
+  [16511] = {
+    'Monte Argente',
+    nil,
+  },
+  [16512] = {
+    'Hemocorcel Argente',
+    nil,
+  },
+  [16513] = {
+    'Destrero de la muerte Argenta',
+    nil,
+  },
+  [16514] = {
+    'La botánica Taerix',
+    nil,
+  },
+  [16516] = {
+    'Mutación volátil',
+    nil,
+  },
+  [16517] = {
+    'Azotador de raíces mutado',
+    nil,
+  },
+  [16518] = {
+    'Buhíco Cubrebosque',
+    nil,
+  },
+  [16519] = {
+    'Verdugo enigmático',
+    nil,
+  },
+  [16520] = {
+    'Polilla del valle',
+    nil,
+  },
+  [16521] = {
+    'Explorador elfo de sangre',
+    nil,
+  },
+  [16522] = {
+    'Perita Candress',
+    nil,
+  },
+  [16523] = {
+    'Salvaje Mano Destrozada',
+    nil,
+  },
+  [16524] = {
+    'Sombra de Aran',
+    nil,
+  },
+  [16525] = {
+    'Sombra de hechizo',
+    nil,
+  },
+  [16526] = {
+    'Sombra hechicera',
+    nil,
+  },
+  [16527] = {
+    'Instructor de herboristería de Terrallende',
+    'Instructora de herboristería',
+  },
+  [16528] = {
+    'Proveedor Vredigar',
+    nil,
+  },
+  [16529] = {
+    'Horror mágico',
+    nil,
+  },
+  [16530] = {
+    'Distorsión de maná',
+    nil,
+  },
+  [16531] = {
+    'Cristal necrótico tenue',
+    nil,
+  },
+  [16532] = {
+    'Saltar objetivo',
+    nil,
+  },
+  [16533] = {
+    'Azotador de raíces inoculado',
+    nil,
+  },
+  [16534] = {
+    'Buhíco Cubrebosque inoculado',
+    nil,
+  },
+  [16535] = {
+    'El vindicador Aldar',
+    nil,
+  },
+  [16536] = {
+    'Test: guardado de estado del mundo',
+    nil,
+  },
+  [16537] = {
+    'Buhíco mutado',
+    nil,
+  },
+  [16538] = {
+    'Restos de elfo de sangre',
+    nil,
+  },
+  [16540] = {
+    'Saqueador de las sombras',
+    nil,
+  },
+  [16541] = {
+    'Guardián de las Tierras Fantasma',
+    nil,
+  },
+  [16542] = {
+    'Tabernero Kalarin',
+    'Tabernero',
+  },
+  [16544] = {
+    'Ladrón etéreo',
+    nil,
+  },
+  [16545] = {
+    'Mangante de hechizos etéreo',
+    nil,
+  },
+  [16547] = {
+    'Rapidín',
+    nil,
+  },
+  [16548] = {
+    'Don Cochinillo',
+    nil,
+  },
+  [16549] = {
+    'Mostachia la Rata',
+    nil,
+  },
+  [16550] = {
+    'Imagen del técnico Dyvuun',
+    nil,
+  },
+  [16551] = {
+    'Técnico Dyvuun',
+    nil,
+  },
+  [16553] = {
+    'Cuidadora Chellan',
+    'Tabernero',
+  },
+  [16568] = {
+    nil,
+    'Maestro de hermandad',
+  },
+  [16569] = {
+    'Destrero de humanos UNUSED',
+    nil,
+  },
+  [16573] = {
+    'Guardia de la cripta',
+    nil,
+  },
+  [16574] = {
+    'Clarividente Regulkult',
+    'Ojos del Jefe de Guerra',
+  },
+  [16575] = {
+    'Cazador de sombras Ty\'jin',
+    'Oídos del Jefe de Guerra',
+  },
+  [16576] = {
+    'Señor supremo Hun Puñolisiado',
+    'Mano del Jefe de Guerra',
+  },
+  [16578] = {
+    'Peregrino elfo de sangre',
+    nil,
+  },
+  [16579] = {
+    'Centinela de Avanzada del Halcón',
+    nil,
+  },
+  [16580] = {
+    'Bruto de Thrallmar',
+    nil,
+  },
+  [16582] = {
+    'Tirador de Thrallmar',
+    nil,
+  },
+  [16583] = {
+    nil,
+    'Instructor de herrería',
+  },
+  [16584] = {
+    'Comandante de vigilancia Krunk',
+    nil,
+  },
+  [16585] = {
+    'Cocinitas el Tuerto',
+    'Alimentos y bebidas',
+  },
+  [16586] = {
+    'Montero Torf Pezuña Inquina',
+    'Maestra de establos',
+  },
+  [16587] = {
+    'Cebada',
+    'Maestra de jinetes del viento',
+  },
+  [16588] = {
+    'El boticario Antonivich',
+    'Instructor de alquimia',
+  },
+  [16589] = {
+    'Capitán de la guardia Cragtar',
+    nil,
+  },
+  [16590] = {
+    'Bruto de Thrallmar herido',
+    nil,
+  },
+  [16591] = {
+    'Peón de Thrallmar',
+    nil,
+  },
+  [16592] = {
+    'Fogata del Solsticio de Verano',
+    nil,
+  },
+  [16593] = {
+    'Camorrista Mano Destrozada',
+    nil,
+  },
+  [16594] = {
+    'Acólito de Sombraluna',
+    nil,
+  },
+  [16595] = {
+    'Bestia de carne',
+    nil,
+  },
+  [16596] = {
+    'Bestia de carne superior',
+    nil,
+  },
+  [16597] = {
+    'Draco abisal de montar',
+    nil,
+  },
+  [16598] = {
+    'Ojo de Thrallmar',
+    nil,
+  },
+  [16599] = {
+    'Jinete de lobos de Thrallmar',
+    nil,
+  },
+  [16600] = {
+    'Lobo montura de Thrallmar',
+    nil,
+  },
+  [16601] = {
+    'Elfo de sangre agonizante',
+    nil,
+  },
+  [16602] = {
+    nil,
+    'Tabernero',
+  },
+  [16603] = {
+    'Errante Crepúsculo',
+    'Los Errantes',
+  },
+  [16604] = {
+    'Creador de hechizos Alanegra',
+    nil,
+  },
+  [16606] = {
+    'Fogata del Solsticio de Verano Desaparición',
+    nil,
+  },
+  [16609] = {
+    'Prueba de tentáculo garral gigante',
+    nil,
+  },
+  [16610] = {
+    nil,
+    'Vendedora de tabardos',
+  },
+  [16611] = {
+    nil,
+    'Componentes',
+  },
+  [16612] = {
+    nil,
+    'Suministros de alquimia y componentes',
+  },
+  [16613] = {
+    nil,
+    'Mercader',
+  },
+  [16614] = {
+    nil,
+    'Pertrechos',
+  },
+  [16615] = {
+    'Nodia',
+    'Banquera',
+  },
+  [16616] = {
+    nil,
+    'Banquera',
+  },
+  [16617] = {
+    nil,
+    'Banquera',
+  },
+  [16618] = {
+    'Tabernera Velandra',
+    'Tabernero',
+  },
+  [16619] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [16620] = {
+    nil,
+    'Forjador de armas de fuego',
+  },
+  [16621] = {
+    nil,
+    'Maestra de armas',
+  },
+  [16622] = {
+    nil,
+    'Vendedor de armas',
+  },
+  [16623] = {
+    nil,
+    'Mercader de armaduras de tela',
+  },
+  [16624] = {
+    nil,
+    'Suministros de joyería',
+  },
+  [16625] = {
+    nil,
+    'Mercader de armaduras de malla',
+  },
+  [16626] = {
+    nil,
+    'Mercader de armaduras de placas',
+  },
+  [16627] = {
+    'Subastador Ithillan',
+    nil,
+  },
+  [16628] = {
+    'Subastadora Caidori',
+    nil,
+  },
+  [16629] = {
+    'Subastador Tandron',
+    nil,
+  },
+  [16630] = {
+    nil,
+    'Suministros de herboristería',
+  },
+  [16631] = {
+    nil,
+    'Sastre',
+  },
+  [16632] = {
+    nil,
+    'Vendedor de varitas',
+  },
+  [16633] = {
+    nil,
+    'Instructora de encantamiento',
+  },
+  [16634] = {
+    nil,
+    'Aprendiz encantador',
+  },
+  [16635] = {
+    nil,
+    'Suministros de encantamiento',
+  },
+  [16636] = {
+    nil,
+    'Vendedor de varitas',
+  },
+  [16637] = {
+    nil,
+    'Mercader de armas contundentes',
+  },
+  [16638] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [16639] = {
+    nil,
+    'Aprendiza sastre',
+  },
+  [16640] = {
+    'Keelen Capas',
+    'Instructora de sastrería',
+  },
+  [16641] = {
+    nil,
+    'Suministros de alquimia',
+  },
+  [16642] = {
+    nil,
+    'Instructor de alquimia',
+  },
+  [16643] = {
+    nil,
+    'Aprendiz alquimista',
+  },
+  [16644] = {
+    'Botánica Nathera',
+    'Instructora de herboristería',
+  },
+  [16645] = {
+    nil,
+    'Mercader de túnicas',
+  },
+  [16646] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [16647] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [16648] = {
+    nil,
+    'Instructora de brujos',
+  },
+  [16649] = {
+    nil,
+    'Instructor de demonios',
+  },
+  [16650] = {
+    nil,
+    'Vendedor de cohetes pirotécnicos',
+  },
+  [16651] = {
+    nil,
+    'Instructor de magos',
+  },
+  [16652] = {
+    nil,
+    'Instructor de magos',
+  },
+  [16653] = {
+    nil,
+    'Instructor de magos',
+  },
+  [16654] = {
+    nil,
+    'Instructora de portal',
+  },
+  [16655] = {
+    'Harene Correllanos',
+    'Instructor de druidas',
+  },
+  [16656] = {
+    nil,
+    'Maestra de establos',
+  },
+  [16657] = {
+    nil,
+    'Suministros de ingeniería',
+  },
+  [16658] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [16659] = {
+    'Luanga',
+    'Instructora de sacerdotes',
+  },
+  [16660] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [16661] = {
+    nil,
+    'Instructor de chamanes',
+  },
+  [16662] = {
+    nil,
+    'Instructora de primeros auxilios',
+  },
+  [16663] = {
+    nil,
+    'Instructor de minería',
+  },
+  [16664] = {
+    nil,
+    'Suministros de minería',
+  },
+  [16665] = {
+    nil,
+    'Maestra de establos',
+  },
+  [16666] = {
+    nil,
+    'Vendedor de hachas',
+  },
+  [16667] = {
+    nil,
+    'Instructor de ingeniería',
+  },
+  [16668] = {
+    nil,
+    'Aprendiza ingeniera',
+  },
+  [16669] = {
+    nil,
+    'Instructora de herrería',
+  },
+  [16670] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [16671] = {
+    nil,
+    'Aprendiz herrero',
+  },
+  [16672] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [16673] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [16674] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [16675] = {
+    nil,
+    'Maestra de establos',
+  },
+  [16676] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [16677] = {
+    nil,
+    'Suministros de cocina',
+  },
+  [16678] = {
+    nil,
+    'Vendedor de armas blancas',
+  },
+  [16679] = {
+    nil,
+    'Instructor de paladines',
+  },
+  [16680] = {
+    nil,
+    'Instructor de paladines',
+  },
+  [16681] = {
+    'Campeón Bachi',
+    'Instructor de paladines',
+  },
+  [16682] = {
+    nil,
+    'Vendedor sospechoso',
+  },
+  [16683] = {
+    nil,
+    'Suministros de venenos',
+  },
+  [16684] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [16685] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [16686] = {
+    nil,
+    'Instructor de pícaros',
+  },
+  [16687] = {
+    nil,
+    'Aprendiz peletero',
+  },
+  [16688] = {
+    nil,
+    'Instructor de peletería',
+  },
+  [16689] = {
+    nil,
+    'Suministros de peletería',
+  },
+  [16690] = {
+    nil,
+    'Vendedora de bolsas',
+  },
+  [16691] = {
+    nil,
+    'Mercader de armaduras de cuero',
+  },
+  [16692] = {
+    nil,
+    'Instructora de desuello',
+  },
+  [16693] = {
+    nil,
+    'Mercader de escudos',
+  },
+  [16694] = {
+    nil,
+    'Maestro de batalla de la Cuenca de Arathi',
+  },
+  [16695] = {
+    nil,
+    'Maestro de batalla del Valle de Alterac',
+  },
+  [16696] = {
+    nil,
+    'Maestra de batalla de la Garganta Grito de Guerra',
+  },
+  [16697] = {
+    'Zona de vacío',
+    nil,
+  },
+  [16698] = {
+    'Cadáver de escarabajo',
+    nil,
+  },
+  [16699] = {
+    'Atracador Mano Destrozada',
+    nil,
+  },
+  [16700] = {
+    'Legionario Mano Destrozada',
+    nil,
+  },
+  [16701] = {
+    'Espíritu de verano',
+    nil,
+  },
+  [16702] = {
+    nil,
+    'Aprendiz joyero',
+  },
+  [16703] = {
+    nil,
+    'Aprendiz joyero',
+  },
+  [16704] = {
+    'Tirador certero Mano Destrozada',
+    nil,
+  },
+  [16705] = {
+    nil,
+    'Suministros de alquimia',
+  },
+  [16706] = {
+    nil,
+    'Suministros de alquimia y componentes',
+  },
+  [16707] = {
+    'Subastador Eoch',
+    nil,
+  },
+  [16708] = {
+    nil,
+    'Suministros de pesca',
+  },
+  [16709] = {
+    nil,
+    'Vendedora de bolsas',
+  },
+  [16710] = {
+    nil,
+    'Banquera',
+  },
+  [16711] = {
+    'Herman Caminante',
+    'Maestro de batalla de la Cuenca de Arathi',
+  },
+  [16712] = {
+    nil,
+    'Maestra de establos',
+  },
+  [16713] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [16714] = {
+    nil,
+    'Vendedor de armas blancas',
+  },
+  [16715] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [16716] = {
+    nil,
+    'Mercader de armaduras de tela',
+  },
+  [16717] = {
+    'Vendedora de ropa de El Exodar',
+    'Sastre',
+  },
+  [16718] = {
+    'Phia',
+    'Suministros de cocina',
+  },
+  [16719] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [16720] = {
+    nil,
+    'Instructor de demonios',
+  },
+  [16721] = {
+    nil,
+    'Instructor de druidas',
+  },
+  [16722] = {
+    nil,
+    'Suministros de encantamiento',
+  },
+  [16723] = {
+    nil,
+    'Instructor de alquimia',
+  },
+  [16724] = {
+    nil,
+    'Instructora de herrería',
+  },
+  [16725] = {
+    nil,
+    'Instructora de encantamiento',
+  },
+  [16726] = {
+    nil,
+    'Instructor de ingeniería',
+  },
+  [16727] = {
+    nil,
+    'Aprendiz joyero',
+  },
+  [16728] = {
+    nil,
+    'Instructor de peletería',
+  },
+  [16729] = {
+    nil,
+    'Instructora de sastrería',
+  },
+  [16730] = {
+    'Vendedora de fuegos artificiales de El Exodar',
+    'Vendedor de cohetes pirotécnicos',
+  },
+  [16731] = {
+    nil,
+    'Instructora de primeros auxilios',
+  },
+  [16732] = {
+    nil,
+    'Pertrechos',
+  },
+  [16733] = {
+    'Pacificador de El Exodar',
+    nil,
+  },
+  [16734] = {
+    nil,
+    'Maestro de hermandad',
+  },
+  [16735] = {
+    nil,
+    'Forjador de armas de fuego',
+  },
+  [16736] = {
+    nil,
+    'Instructora de herboristería',
+  },
+  [16737] = {
+    nil,
+    'Suministros de herboristería',
+  },
+  [16738] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [16739] = {
+    'Cuidador Breel',
+    'Tabernero',
+  },
+  [16740] = {
+    nil,
+    'Aprendiz herrero',
+  },
+  [16741] = {
+    nil,
+    'Aprendiz alquimista',
+  },
+  [16742] = {
+    nil,
+    'Aprendiz encantador',
+  },
+  [16743] = {
+    nil,
+    'Aprendiza ingeniera',
+  },
+  [16744] = {
+    nil,
+    'Aprendiz joyero',
+  },
+  [16745] = {
+    nil,
+    'Aprendiz peletero',
+  },
+  [16746] = {
+    nil,
+    'Aprendiza sastre',
+  },
+  [16747] = {
+    nil,
+    'Mercader de armaduras de cuero',
+  },
+  [16748] = {
+    nil,
+    'Suministros de peletería',
+  },
+  [16749] = {
+    nil,
+    'Instructor de magos',
+  },
+  [16750] = {
+    nil,
+    'Mercader de armaduras de malla',
+  },
+  [16751] = {
+    nil,
+    'Suministros de minería',
+  },
+  [16752] = {
+    nil,
+    'Instructor de minería',
+  },
+  [16753] = {
+    nil,
+    'Mercader de armaduras de placas',
+  },
+  [16754] = {
+    'Fingle Mejunje',
+    'Suministros de venenos',
+  },
+  [16755] = {
+    nil,
+    'Instructora de portal',
+  },
+  [16756] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [16757] = {
+    nil,
+    'Componentes',
+  },
+  [16758] = {
+    nil,
+    'Mercader de túnicas',
+  },
+  [16759] = {
+    'Saran Chispazo',
+    'Instructor de pícaros',
+  },
+  [16760] = {
+    'Bandido Der\'izu',
+    nil,
+  },
+  [16761] = {
+    nil,
+    'Instructor de paladines',
+  },
+  [16762] = {
+    nil,
+    'Mercader de escudos',
+  },
+  [16763] = {
+    nil,
+    'Instructora de desuello',
+  },
+  [16764] = {
+    nil,
+    'Maestra de establos',
+  },
+  [16765] = {
+    nil,
+    'Mercader de armas contundentes',
+  },
+  [16766] = {
+    nil,
+    'Vendedora de tabardos',
+  },
+  [16767] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [16768] = {
+    nil,
+    'Mercader',
+  },
+  [16769] = {
+    'Brujo Ala de Fuego',
+    nil,
+  },
+  [16770] = {
+    'Instructor de brujos de El Exodar',
+    'Instructora de brujos',
+  },
+  [16771] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [16772] = {
+    'Devastador Mascahuesos',
+    nil,
+  },
+  [16773] = {
+    nil,
+    'Maestra de armas',
+  },
+  [16774] = {
+    nil,
+    'Instructor de pesca',
+  },
+  [16775] = {
+    'Espíritu de Mograine',
+    'El portador de la Crematoria',
+  },
+  [16776] = {
+    'Espíritu de Blaumeux',
+    nil,
+  },
+  [16777] = {
+    'Espíritu de Zeliek',
+    nil,
+  },
+  [16778] = {
+    'Espíritu de Korth\'azz',
+    nil,
+  },
+  [16779] = {
+    'Vaca polimórfica',
+    nil,
+  },
+  [16780] = {
+    nil,
+    'Instructor de pesca',
+  },
+  [16781] = {
+    'Celebrador del Solsticio de Verano',
+    nil,
+  },
+  [16782] = {
+    nil,
+    'Suministros de ingeniería',
+  },
+  [16783] = {
+    'Babosa de peste (azul)',
+    nil,
+  },
+  [16784] = {
+    'Babosa de peste (roja)',
+    nil,
+  },
+  [16785] = {
+    'Babosa de peste (verde)',
+    nil,
+  },
+  [16786] = {
+    'Intendente Argenta',
+    'El Alba Argenta',
+  },
+  [16787] = {
+    'Proveedor Argenta',
+    'El Alba Argenta',
+  },
+  [16788] = {
+    'Guardián de la llama del Festival',
+    nil,
+  },
+  [16789] = {
+    'Capitán forestal Venn\'ren',
+    nil,
+  },
+  [16790] = {
+    'Halconera Drenna Ríobrisa',
+    nil,
+  },
+  [16791] = {
+    'Ryathen el Sombrío',
+    nil,
+  },
+  [16792] = {
+    'Arcanista Calesthris Estrella del Alba',
+    nil,
+  },
+  [16794] = {
+    'Boticario Azethen',
+    nil,
+  },
+  [16795] = {
+    'Prisionero draenei',
+    nil,
+  },
+  [16796] = {
+    'Amaan el Sabio',
+    nil,
+  },
+  [16797] = {
+    'Exploradora Vanura',
+    nil,
+  },
+  [16798] = {
+    'Proveedora Anir',
+    'Vendedor de alimentos y bebidas',
+  },
+  [16800] = {
+    'Gran magister Rommath',
+    nil,
+  },
+  [16801] = {
+    'Halduron Alasol',
+    'General Forestal',
+  },
+  [16802] = {
+    nil,
+    'Señor regente de Quel\'Thalas',
+  },
+  [16803] = {
+    'Caballero de la Muerte suplente',
+    nil,
+  },
+  [16804] = {
+    'Cadáver de elfo de la noche',
+    nil,
+  },
+  [16805] = {
+    'Esqueleto partido',
+    nil,
+  },
+  [16806] = {
+    'Cerranegro',
+    'El Noble',
+  },
+  [16807] = {
+    'Brujo supremo Malbisal',
+    nil,
+  },
+  [16808] = {
+    'Jefe de Guerra Kargath Garrafilada',
+    nil,
+  },
+  [16809] = {
+    'Belisario O\'mrogg',
+    nil,
+  },
+  [16810] = {
+    'Partedorsales Mascahuesos',
+    nil,
+  },
+  [16811] = {
+    nil,
+    'El Organista',
+  },
+  [16812] = {
+    nil,
+    'El Director de escena',
+  },
+  [16813] = {
+    nil,
+    'El Mago',
+  },
+  [16814] = {
+    nil,
+    'El Brujo',
+  },
+  [16815] = {
+    nil,
+    'La Conjuradora',
+  },
+  [16816] = {
+    'Eco de Medivh',
+    nil,
+  },
+  [16817] = {
+    'Maestro cultural del Festival',
+    nil,
+  },
+  [16818] = {
+    'Cuentacuentos del Festival',
+    nil,
+  },
+  [16819] = {
+    'Comandante en Jefe Danath Aterratrols',
+    'Hijos de Lothar',
+  },
+  [16820] = {
+    'Teniente Amadi',
+    nil,
+  },
+  [16822] = {
+    'Maestra de vuelo Krill Acre',
+    'Maestro de grifos',
+  },
+  [16823] = {
+    nil,
+    'Instructor de herrería',
+  },
+  [16824] = {
+    'Sargento primera Lorin Thalmerok',
+    'Maestra de establos',
+  },
+  [16825] = {
+    'Padre Malgor Devidicus',
+    nil,
+  },
+  [16826] = {
+    nil,
+    'Tabernero',
+  },
+  [16827] = {
+    'Guardia de honor Wesilow',
+    nil,
+  },
+  [16828] = {
+    'Guardia de honor Greyn',
+    nil,
+  },
+  [16829] = {
+    nil,
+    'Componentes',
+  },
+  [16830] = {
+    'Comandante de operaciones Romus',
+    nil,
+  },
+  [16831] = {
+    'Infantería de Nethergarde',
+    nil,
+  },
+  [16832] = {
+    nil,
+    'Liga de Expedicionarios',
+  },
+  [16833] = {
+    'M\'uru',
+    nil,
+  },
+  [16834] = {
+    'Anacoreta Obadei',
+    nil,
+  },
+  [16835] = {
+    'Arqueólogo de la Liga de Expedicionarios',
+    'Liga de Expedicionarios',
+  },
+  [16836] = {
+    'Zarrapucha huido',
+    nil,
+  },
+  [16837] = {
+    'Supervisor Biggums',
+    nil,
+  },
+  [16838] = {
+    'Minero de Bastión del Honor',
+    nil,
+  },
+  [16839] = {
+    'Arúspice de distorsión Kryv',
+    nil,
+  },
+  [16840] = {
+    'Consejero Sevel',
+    nil,
+  },
+  [16841] = {
+    'Comandante de vigilancia Relthorn Menguabisal',
+    nil,
+  },
+  [16842] = {
+    'Defensor de Bastión del Honor',
+    nil,
+  },
+  [16843] = {
+    'Caballista de Bastión del Honor',
+    nil,
+  },
+  [16844] = {
+    'Revientacortezas',
+    nil,
+  },
+  [16845] = {
+    'Gorkan Puñosangre',
+    'Capitán Mag\'har',
+  },
+  [16846] = {
+    'Bruto Mag\'har',
+    nil,
+  },
+  [16847] = {
+    'Bruto Mag\'har debilitado',
+    nil,
+  },
+  [16848] = {
+    'Proveedor Braknar',
+    nil,
+  },
+  [16849] = {
+    'Vindicador Xannar',
+    nil,
+  },
+  [16850] = {
+    'Gremni Barbalarga',
+    nil,
+  },
+  [16851] = {
+    'Mirren Barbalarga',
+    nil,
+  },
+  [16852] = {
+    'Cadáver de Sedai',
+    nil,
+  },
+  [16853] = {
+    'Anterius Negro',
+    nil,
+  },
+  [16856] = {
+    'Custodio Dilandrus',
+    nil,
+  },
+  [16857] = {
+    'Revientacortezas merodeador',
+    nil,
+  },
+  [16859] = {
+    'Prole de dracohalcón',
+    nil,
+  },
+  [16861] = {
+    '[UNUSED] Death Lord',
+    nil,
+  },
+  [16863] = {
+    'Jabinferno trastornado',
+    nil,
+  },
+  [16864] = {
+    'Infantería de Ventormenta',
+    nil,
+  },
+  [16865] = {
+    'Soldado de infantería de Ventormenta herido',
+    nil,
+  },
+  [16866] = {
+    'Infantería de Nethergarde herido',
+    nil,
+  },
+  [16867] = {
+    'Bruto Mano Destrozada',
+    nil,
+  },
+  [16868] = {
+    'Winsum',
+    nil,
+  },
+  [16869] = {
+    'Jising',
+    nil,
+  },
+  [16870] = {
+    'Capitán Mano Destrozada',
+    nil,
+  },
+  [16871] = {
+    'Bruto Foso Sangrante',
+    nil,
+  },
+  [16872] = {
+    'Brujo Foso Sangrante',
+    nil,
+  },
+  [16873] = {
+    'Chamán oscuro Foso Sangrante',
+    nil,
+  },
+  [16874] = {
+    'Taumaturgo umbrío Foso Sangrante',
+    nil,
+  },
+  [16875] = {
+    'Caníbal Mascahuesos',
+    nil,
+  },
+  [16876] = {
+    'Mutante Mascahuesos',
+    nil,
+  },
+  [16877] = {
+    'Jinete de lobos Mascahuesos',
+    nil,
+  },
+  [16878] = {
+    'Rabioso Mano Destrozada',
+    nil,
+  },
+  [16879] = {
+    'Jabinferno famélico',
+    nil,
+  },
+  [16880] = {
+    'Jabinferno descomunal',
+    nil,
+  },
+  [16881] = {
+    'Horror sangrevil',
+    nil,
+  },
+  [16882] = {
+    'Depellejador sangrevil',
+    nil,
+  },
+  [16883] = {
+    'Hambriento sangrevil',
+    nil,
+  },
+  [16884] = {
+    'Caballo de guerra',
+    nil,
+  },
+  [16885] = {
+    'Amythel Caminaniebla',
+    nil,
+  },
+  [16886] = {
+    'Arator el Redentor',
+    nil,
+  },
+  [16887] = {
+    'Ojo del Bastión del Honor',
+    nil,
+  },
+  [16888] = {
+    'Mahuram Pezuña Recia',
+    nil,
+  },
+  [16889] = {
+    'Celebrante de Ventormenta',
+    nil,
+  },
+  [16890] = {
+    'Celebrante de Forjaz',
+    nil,
+  },
+  [16891] = {
+    nil,
+    'Susurrador de la aurora',
+  },
+  [16892] = {
+    'Celebrante de Darnassus',
+    nil,
+  },
+  [16893] = {
+    'Celebrante de Orgrimmar',
+    nil,
+  },
+  [16894] = {
+    'Celebrante de Cima del Trueno',
+    nil,
+  },
+  [16895] = {
+    'Celebrante de Entrañas',
+    nil,
+  },
+  [16896] = {
+    'Arquero de Bastión del Honor',
+    nil,
+  },
+  [16900] = {
+    'Prole de devastador cautivo',
+    nil,
+  },
+  [16901] = {
+    'Podredumbre virulenta',
+    nil,
+  },
+  [16902] = {
+    'Moho virulento',
+    nil,
+  },
+  [16903] = {
+    'Moquito virulento',
+    nil,
+  },
+  [16904] = {
+    'Lacayo implacable',
+    nil,
+  },
+  [16905] = {
+    'Hechicero implacable',
+    nil,
+  },
+  [16906] = {
+    'Caballero implacable',
+    nil,
+  },
+  [16907] = {
+    'Peón Foso Sangrante',
+    nil,
+  },
+  [16908] = {
+    'Atracador Mascahuesos',
+    nil,
+  },
+  [16909] = {
+    'Salvaje Mascahuesos',
+    nil,
+  },
+  [16910] = {
+    'Avanzado Mag\'har',
+    nil,
+  },
+  [16911] = {
+    'Observador Mag\'har',
+    nil,
+  },
+  [16912] = {
+    'Cazador Mag\'har',
+    nil,
+  },
+  [16915] = {
+    'Supervisor Razelcraz',
+    nil,
+  },
+  [16916] = {
+    'Cautivo desdichado',
+    nil,
+  },
+  [16917] = {
+    nil,
+    'Forjador de armaduras',
+  },
+  [16918] = {
+    nil,
+    'Mercader de tela y cuero',
+  },
+  [16919] = {
+    nil,
+    'Forjadora de armas',
+  },
+  [16920] = {
+    nil,
+    'Suministros generales',
+  },
+  [16921] = {
+    'Guardián de Valle Ammen',
+    nil,
+  },
+  [16923] = {
+    'Forestal novicio',
+    nil,
+  },
+  [16924] = {
+    'Sargento Kan\'ren',
+    nil,
+  },
+  [16925] = {
+    'Asaltante Mascahuesos',
+    nil,
+  },
+  [16926] = {
+    'Lobo de guerra Mascahuesos',
+    nil,
+  },
+  [16927] = {
+    'Cría Guadaña de Piedra',
+    nil,
+  },
+  [16928] = {
+    'Emboscador Guadaña de Piedra',
+    nil,
+  },
+  [16929] = {
+    'Alfa Guadaña de Piedra',
+    nil,
+  },
+  [16930] = {
+    'Uñagrieta enfurecido',
+    nil,
+  },
+  [16931] = {
+    'Uñagrieta iracundo',
+    nil,
+  },
+  [16932] = {
+    'Prole de colmillo tajante',
+    nil,
+  },
+  [16933] = {
+    'Devastador colmillo tajante',
+    nil,
+  },
+  [16934] = {
+    'Devastador jabacolmillo',
+    nil,
+  },
+  [16935] = {
+    'Lancero Zarrapucha',
+    nil,
+  },
+  [16936] = {
+    'Errante Zarrapucha',
+    nil,
+  },
+  [16937] = {
+    'Geomántico Zarrapucha',
+    nil,
+  },
+  [16938] = {
+    'Tosco Zarrapucha',
+    nil,
+  },
+  [16939] = {
+    'Barón del vacío Galaxis',
+    nil,
+  },
+  [16940] = {
+    'Asaltante Astralan',
+    nil,
+  },
+  [16941] = {
+    'Clamavacío de fase',
+    nil,
+  },
+  [16942] = {
+    'Artesano infernal',
+    nil,
+  },
+  [16943] = {
+    'Señor de Forja Ciberira',
+    nil,
+  },
+  [16944] = {
+    'Forjadestino Mo\'arg',
+    nil,
+  },
+  [16945] = {
+    'Ingeniero Mo\'arg',
+    nil,
+  },
+  [16946] = {
+    'Forjadicto Mo\'arg',
+    nil,
+  },
+  [16947] = {
+    'Sirviente Gan\'arg',
+    nil,
+  },
+  [16948] = {
+    'Ingeniero Gan\'arg',
+    nil,
+  },
+  [16949] = {
+    'Mekigeniero Gan\'arg',
+    nil,
+  },
+  [16950] = {
+    'Can abisal',
+    nil,
+  },
+  [16951] = {
+    'Terroadicto',
+    nil,
+  },
+  [16952] = {
+    'Guardia de inquina',
+    nil,
+  },
+  [16953] = {
+    'Patrulla de Campamento Forja',
+    nil,
+  },
+  [16954] = {
+    'Legionario del Campamento Forja',
+    nil,
+  },
+  [16955] = {
+    'Tramposo encadenado',
+    nil,
+  },
+  [16956] = {
+    'Saltarín de arena',
+    nil,
+  },
+  [16957] = {
+    'Diablillo abisal',
+    nil,
+  },
+  [16958] = {
+    'Interrogador aterrador',
+    nil,
+  },
+  [16959] = {
+    'Táctico aterrador',
+    nil,
+  },
+  [16960] = {
+    'Hermana de la pena',
+    nil,
+  },
+  [16961] = {
+    'Doncella de Pena',
+    nil,
+  },
+  [16962] = {
+    'Libradolor',
+    nil,
+  },
+  [16963] = {
+    'Destructor infernal',
+    nil,
+  },
+  [16964] = {
+    'Señor de la guerra Morkh',
+    nil,
+  },
+  [16965] = {
+    'Ojohalcón Haal\'eshi',
+    nil,
+  },
+  [16966] = {
+    'Surcavientos Haal\'eshi',
+    nil,
+  },
+  [16967] = {
+    'Guardagarra Haal\'eshi',
+    nil,
+  },
+  [16968] = {
+    'Tunelador',
+    nil,
+  },
+  [16969] = {
+    'Mago osario Warlor',
+    nil,
+  },
+  [16970] = {
+    'Uñagrieta lomohirsuto',
+    nil,
+  },
+  [16971] = {
+    'Draenei herido',
+    nil,
+  },
+  [16972] = {
+    'Águila ratonera limpiahuesos',
+    nil,
+  },
+  [16973] = {
+    'Buitre limpiahuesos',
+    nil,
+  },
+  [16974] = {
+    'Abisario pícaro',
+    nil,
+  },
+  [16975] = {
+    'Abisario sin control',
+    nil,
+  },
+  [16976] = {
+    'Morador fantasmal',
+    nil,
+  },
+  [16977] = {
+    'Archimago Xintor',
+    nil,
+  },
+  [16978] = {
+    'Teniente comandante Thalvos',
+    nil,
+  },
+  [16979] = {
+    'Mercader del Solsticio de Verano',
+    'Suministros para festivales',
+  },
+  [16980] = {
+    'El Rey Exánime',
+    nil,
+  },
+  [16981] = {
+    'Guardián apestado',
+    nil,
+  },
+  [16982] = {
+    'Ensamblaje apestado',
+    nil,
+  },
+  [16983] = {
+    'Campeón apestado',
+    nil,
+  },
+  [16984] = {
+    'Guerrero apestado',
+    nil,
+  },
+  [16985] = {
+    'Traje de mercader del Solsticio de Verano de la Horda',
+    'Suministros para festivales',
+  },
+  [16986] = {
+    'Traje de mercader del Solsticio de Verano de la Alianza',
+    'Suministros para festivales',
+  },
+  [16987] = {
+    'Traje de Guardián de la llama del Festival: tauren',
+    nil,
+  },
+  [16988] = {
+    'Traje de Guardián de la llama del Festival: humano',
+    nil,
+  },
+  [16989] = {
+    'Traje de Guardián de la llama del Festival: trol',
+    nil,
+  },
+  [16990] = {
+    'Traje de Guardián de la llama del Festival: enano',
+    nil,
+  },
+  [16991] = {
+    'Thiah Melenarroja',
+    nil,
+  },
+  [16992] = {
+    'Colmillo Temible',
+    nil,
+  },
+  [16993] = {
+    'Peregrina elfa de sangre herida',
+    nil,
+  },
+  [16994] = {
+    'Anacoreta draenei',
+    nil,
+  },
+  [16996] = {
+    'Vindicador draenei',
+    nil,
+  },
+  [16997] = {
+    'Despeñador Guadaña de Piedra',
+    nil,
+  },
+  [16998] = {
+    'Baldomero',
+    nil,
+  },
+  [16999] = {
+    'Johnny MacSalsafloja',
+    'Robot de pruebas públicas del reino',
+  },
+  [17002] = {
+    'Angela "la garra" Kestrel',
+    nil,
+  },
+  [17003] = {
+    'Elemental de ceniza',
+    nil,
+  },
+  [17004] = {
+    'Jir\'ve',
+    'Mascota de Angela',
+  },
+  [17005] = {
+    'Duelista Larenis',
+    'Maestra de armas',
+  },
+  [17007] = {
+    'Lady Keira Bayadol',
+    nil,
+  },
+  [17009] = {
+    nil,
+    'Jefe del clan Lobo Gélido',
+  },
+  [17011] = {
+    'Puño Negro el Destructor',
+    'Jefe de Guerra de la Horda',
+  },
+  [17012] = {
+    'Orgrim Martillo Maldito',
+    nil,
+  },
+  [17013] = {
+    'Cautivo draenei',
+    nil,
+  },
+  [17014] = {
+    'Abisario en colapso',
+    nil,
+  },
+  [17015] = {
+    'Taleris Observalba',
+    nil,
+  },
+  [17016] = {
+    'Soldado del clan Faucedraco',
+    nil,
+  },
+  [17017] = {
+    'Soldado del clan Roca Negra',
+    nil,
+  },
+  [17018] = {
+    'Soldado del clan Señor del Trueno',
+    nil,
+  },
+  [17019] = {
+    'Soldado del clan Lobo Gélido',
+    nil,
+  },
+  [17020] = {
+    'Soldado del clan Foso Sangrante',
+    nil,
+  },
+  [17021] = {
+    'Soldado del clan Grito de Guerra',
+    nil,
+  },
+  [17022] = {
+    'Soldado del clan Martillo Crepuscular',
+    nil,
+  },
+  [17023] = {
+    'Déspota del Consejo de la Sombra',
+    nil,
+  },
+  [17024] = {
+    'Acólito del Consejo de la Sombra',
+    nil,
+  },
+  [17025] = {
+    'Sacudida de alas de Sapphiron',
+    nil,
+  },
+  [17026] = {
+    'Grom Grito Infernal',
+    'Jefe del clan Grito de Guerra',
+  },
+  [17027] = {
+    'Rend Puño Negro',
+    nil,
+  },
+  [17028] = {
+    'Maim Puño Negro',
+    nil,
+  },
+  [17029] = {
+    'Buscador de la Ciudad de Lunargenta',
+    nil,
+  },
+  [17030] = {
+    'Soldado de la Horda',
+    nil,
+  },
+  [17031] = {
+    'Varel Piedrarroja',
+    nil,
+  },
+  [17032] = {
+    'Varl Sangrapiedra',
+    nil,
+  },
+  [17034] = {
+    'Cría de kaliri hembra',
+    nil,
+  },
+  [17035] = {
+    'Matriarca kaliri',
+    nil,
+  },
+  [17038] = {
+    'Soplafuegos de Ventormenta',
+    nil,
+  },
+  [17039] = {
+    'Cría de kaliri macho',
+    nil,
+  },
+  [17041] = {
+    'Tragafuegos de Orgrimmar',
+    nil,
+  },
+  [17046] = {
+    'Peregrina Gal\'ressa',
+    nil,
+  },
+  [17048] = {
+    'Soplafuegos de Forjaz',
+    nil,
+  },
+  [17049] = {
+    'Soplafuegos de Darnassus',
+    nil,
+  },
+  [17050] = {
+    'Tragafuegos de Cima del Trueno',
+    nil,
+  },
+  [17051] = {
+    'Tragafuegos de Entrañas',
+    nil,
+  },
+  [17053] = {
+    'Picada kaliri',
+    nil,
+  },
+  [17055] = {
+    'Arañita de Maexxna',
+    nil,
+  },
+  [17056] = {
+    'Fiestero de Canción Eterna',
+    nil,
+  },
+  [17057] = {
+    'Garfanegra la Indómita',
+    nil,
+  },
+  [17058] = {
+    'Capataz Illidari',
+    nil,
+  },
+  [17059] = {
+    'Muñeco de combate Fuego Infernal',
+    nil,
+  },
+  [17060] = {
+    'Muñeco de combate pequeño Fuego Infernal',
+    nil,
+  },
+  [17061] = {
+    'zzOLDTótem Marea de maná IV',
+    nil,
+  },
+  [17062] = {
+    'Cadáver de orco vil',
+    nil,
+  },
+  [17063] = {
+    'Transformación de anfitriona lasciva',
+    nil,
+  },
+  [17066] = {
+    'Poste de las cintas Objetivo de debug',
+    nil,
+  },
+  [17067] = {
+    'Aparición de can',
+    nil,
+  },
+  [17068] = {
+    'Jefe de requisas de expedición Enkles',
+    nil,
+  },
+  [17069] = {
+    'Emisario Barbablanca',
+    nil,
+  },
+  [17070] = {
+    'Boticario Quinard',
+    nil,
+  },
+  [17071] = {
+    'Técnica Zhanaa',
+    nil,
+  },
+  [17072] = {
+    'Emisario Gormok',
+    nil,
+  },
+  [17073] = {
+    'Doliente draenei',
+    nil,
+  },
+  [17074] = {
+    'Exploradora Cenarion',
+    nil,
+  },
+  [17075] = {
+    'Gusano de arena',
+    nil,
+  },
+  [17076] = {
+    nil,
+    'Matriarca Caballero de sangre',
+  },
+  [17077] = {
+    'Espíritu de lobo ancestral',
+    nil,
+  },
+  [17078] = {
+    'Jimmy MacSalsafloja',
+    'Un tío guay',
+  },
+  [17080] = {
+    'Alguacil Murazul',
+    nil,
+  },
+  [17081] = {
+    'Explorador Puñosangre',
+    nil,
+  },
+  [17082] = {
+    'Fusilero Torrig',
+    nil,
+  },
+  [17083] = {
+    'Orco vil converso',
+    nil,
+  },
+  [17086] = {
+    'Ánima iracunda',
+    nil,
+  },
+  [17087] = {
+    'Espíritu del Valle',
+    nil,
+  },
+  [17088] = {
+    'Invocador enigmático',
+    nil,
+  },
+  [17089] = {
+    nil,
+    'Instructor de chamanes',
+  },
+  [17090] = {
+    'Elemento de entrega de misión del polvo en Silithus',
+    nil,
+  },
+  [17091] = {
+    'Mirren Barbalarga sin sombrero (DND)',
+    nil,
+  },
+  [17092] = {
+    'Consejera Nochealba',
+    nil,
+  },
+  [17093] = {
+    '[Deprecated for 4.x]Magistrix Elosai',
+    nil,
+  },
+  [17094] = {
+    'Nemeth Ojohalcón',
+    'Los Errantes',
+  },
+  [17095] = {
+    'Balandar Estrellaclara',
+    nil,
+  },
+  [17096] = {
+    'Centella astral',
+    nil,
+  },
+  [17097] = {
+    'Consejero Sarophas',
+    nil,
+  },
+  [17098] = {
+    'Embajadora Cantoalba',
+    nil,
+  },
+  [17099] = {
+    'Mehlar Hojalba',
+    nil,
+  },
+  [17100] = {
+    'Consejero Jurasol',
+    nil,
+  },
+  [17101] = {
+    nil,
+    'Instructor de pesca y suministros',
+  },
+  [17102] = {
+    'Múrloc enfadado',
+    nil,
+  },
+  [17103] = {
+    'Emisario Taluun',
+    nil,
+  },
+  [17104] = {
+    'Anacoreta Delan',
+    nil,
+  },
+  [17105] = {
+    'Emisaria Valustraa',
+    'Instructor de magos',
+  },
+  [17106] = {
+    'Vindicadora Palanaar',
+    nil,
+  },
+  [17108] = {
+    'Asaltante Renegado',
+    nil,
+  },
+  [17109] = {
+    'Cersei Canto Nocturno',
+    nil,
+  },
+  [17110] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [17111] = {
+    'Jaguar capturado',
+    nil,
+  },
+  [17112] = {
+    'Tarántula capturada',
+    nil,
+  },
+  [17113] = {
+    'Crocolisco capturado',
+    nil,
+  },
+  [17114] = {
+    'Arugoo de los Semprepino',
+    nil,
+  },
+  [17115] = {
+    'Perdido maldito',
+    nil,
+  },
+  [17116] = {
+    'Exarca Menelaous',
+    nil,
+  },
+  [17117] = {
+    'Sacerdotisa elfa de la noche herida',
+    nil,
+  },
+  [17118] = {
+    'Arcanista Der\'izu',
+    nil,
+  },
+  [17120] = {
+    'Maestro Behomat',
+    'Instructor de guerreros',
+  },
+  [17121] = {
+    nil,
+    'Instructor de paladines',
+  },
+  [17122] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [17123] = {
+    'Clamatierras Ryga',
+    nil,
+  },
+  [17126] = {
+    'Activador de crocolisco capturado',
+    nil,
+  },
+  [17127] = {
+    'Anacoreta Avuun',
+    nil,
+  },
+  [17128] = {
+    'Vientorroc',
+    nil,
+  },
+  [17129] = {
+    'Vientorroc superior',
+    nil,
+  },
+  [17130] = {
+    'Venado talbuk',
+    nil,
+  },
+  [17131] = {
+    'Raspaespina talbuk',
+    nil,
+  },
+  [17132] = {
+    'Uñagrieta dominante',
+    nil,
+  },
+  [17133] = {
+    'Uñagrieta envejecido',
+    nil,
+  },
+  [17134] = {
+    'Triturador Puño de Roca',
+    nil,
+  },
+  [17135] = {
+    'Místico Puño de Roca',
+    nil,
+  },
+  [17136] = {
+    'Guerrero Puño de Roca',
+    nil,
+  },
+  [17137] = {
+    'Mago Puño de Roca',
+    nil,
+  },
+  [17138] = {
+    'Atracador Mazo de Guerra',
+    nil,
+  },
+  [17139] = {
+    'Carroñero Junco Alabeado',
+    nil,
+  },
+  [17140] = {
+    'Perdido feral',
+    nil,
+  },
+  [17141] = {
+    'Desdicha Junco Alabeado',
+    nil,
+  },
+  [17142] = {
+    'Guerrero Wrekt',
+    nil,
+  },
+  [17143] = {
+    'Vidente Wrekt',
+    nil,
+  },
+  [17144] = {
+    'Dientegore',
+    nil,
+  },
+  [17145] = {
+    'Teúrgo Wrekt',
+    nil,
+  },
+  [17146] = {
+    'Vinculahechizos Mata\'penas',
+    nil,
+  },
+  [17147] = {
+    'Cultor Mata\'penas',
+    nil,
+  },
+  [17148] = {
+    'Juramorte Mata\'penas',
+    nil,
+  },
+  [17149] = {
+    'Asaltante Vir\'aani',
+    nil,
+  },
+  [17150] = {
+    'Arcanista Vir\'aani',
+    nil,
+  },
+  [17151] = {
+    'Manitas Gan\'arg',
+    nil,
+  },
+  [17152] = {
+    'Legionario guardia vil',
+    nil,
+  },
+  [17153] = {
+    'Espíritu del lago',
+    nil,
+  },
+  [17154] = {
+    'Engendro de lodo',
+    nil,
+  },
+  [17155] = {
+    'Marea del lago',
+    nil,
+  },
+  [17156] = {
+    'Espíritu de tierra torturado',
+    nil,
+  },
+  [17157] = {
+    'Estruendor destrozado',
+    nil,
+  },
+  [17158] = {
+    'Aullador de arena',
+    nil,
+  },
+  [17159] = {
+    'Furibundo de tormenta',
+    nil,
+  },
+  [17160] = {
+    'Ciclón viviente',
+    nil,
+  },
+  [17161] = {
+    'Ventisca (Sombra de Aran)',
+    nil,
+  },
+  [17162] = {
+    '[Deprecated for 4.x]Magistrix Elosai desdichada',
+    nil,
+  },
+  [17163] = {
+    'Objetivo gusano (DND)',
+    nil,
+  },
+  [17165] = {
+    'Elemental de agua [UNUSED]',
+    nil,
+  },
+  [17167] = {
+    'Elemental conjurado',
+    nil,
+  },
+  [17168] = {
+    'Sombra de Aran Teletransporte N',
+    nil,
+  },
+  [17169] = {
+    'Sombra de Aran Teletransporte S',
+    nil,
+  },
+  [17170] = {
+    'Sombra de Aran Teletransporte E',
+    nil,
+  },
+  [17171] = {
+    'Sombra de Aran Teletransporte O',
+    nil,
+  },
+  [17172] = {
+    'Sombra de Aran Teletransporte NE',
+    nil,
+  },
+  [17173] = {
+    'Sombra de Aran Teletransporte SE',
+    nil,
+  },
+  [17174] = {
+    'Sombra de Aran Teletransporte SO',
+    nil,
+  },
+  [17175] = {
+    'Sombra de Aran Teletransporte NO',
+    nil,
+  },
+  [17176] = {
+    'Sombra de Aran Teletransporte Centro',
+    nil,
+  },
+  [17179] = {
+    'Espíritu de la tierra inquieto',
+    nil,
+  },
+  [17180] = {
+    'Espíritu de aire',
+    nil,
+  },
+  [17181] = {
+    'Espíritu de agua',
+    nil,
+  },
+  [17182] = {
+    'Espíritu de fuego',
+    nil,
+  },
+  [17183] = {
+    'Fúrbolg Brazolanudo',
+    nil,
+  },
+  [17184] = {
+    'Clamavientos Brazolanudo',
+    nil,
+  },
+  [17185] = {
+    'Ursa Brazolanudo',
+    nil,
+  },
+  [17186] = {
+    'Lechubestia trastornada',
+    nil,
+  },
+  [17187] = {
+    'Lechubestia aberrante',
+    nil,
+  },
+  [17188] = {
+    'Lechubestia delirante',
+    nil,
+  },
+  [17189] = {
+    'Lechúcico salvaje enloquecido',
+    nil,
+  },
+  [17190] = {
+    'Múrloc Cienaleta',
+    nil,
+  },
+  [17191] = {
+    'Oráculo Cienaleta',
+    nil,
+  },
+  [17192] = {
+    'Cazador Cienaleta',
+    nil,
+  },
+  [17193] = {
+    'Naga Escama de Cólera',
+    nil,
+  },
+  [17194] = {
+    'Mirmidón Escama de Cólera',
+    nil,
+  },
+  [17195] = {
+    'Sirena Escama de Cólera',
+    nil,
+  },
+  [17196] = {
+    'Atraparraíces',
+    nil,
+  },
+  [17197] = {
+    'Trillaraíces',
+    nil,
+  },
+  [17198] = {
+    'Prole de devastador',
+    nil,
+  },
+  [17199] = {
+    'Espécimen de devastador',
+    nil,
+  },
+  [17200] = {
+    'Venado lunar',
+    nil,
+  },
+  [17201] = {
+    'Ciervo lunar',
+    nil,
+  },
+  [17202] = {
+    'Cachorro de acechador nocturno infectado',
+    nil,
+  },
+  [17203] = {
+    'Acechador nocturno',
+    nil,
+  },
+  [17204] = {
+    'Clarividente Nobundo',
+    'Instructor de chamanes',
+  },
+  [17205] = {
+    'Templar',
+    nil,
+  },
+  [17206] = {
+    'Prepotencia',
+    nil,
+  },
+  [17209] = {
+    nil,
+    'Maestro de grifos espectrales',
+  },
+  [17210] = {
+    'Líder centinela',
+    nil,
+  },
+  [17211] = {
+    'Lacayo humano',
+    nil,
+  },
+  [17212] = {
+    nil,
+    'Instructor de chamanes',
+  },
+  [17213] = {
+    'Retama',
+    nil,
+  },
+  [17214] = {
+    'Anacoreta Fateema',
+    'Instructora de primeros auxilios',
+  },
+  [17215] = {
+    nil,
+    'Instructor de alquimia',
+  },
+  [17216] = {
+    'Reptador sigiloso',
+    nil,
+  },
+  [17217] = {
+    'Reptador con púas',
+    nil,
+  },
+  [17219] = {
+    nil,
+    'Instructor de chamanes',
+  },
+  [17220] = {
+    'Prepotencia renacido',
+    nil,
+  },
+  [17221] = {
+    'Rastreador vampírico',
+    nil,
+  },
+  [17222] = {
+    'Artificiero Daelo',
+    'Instructor de ingeniería',
+  },
+  [17223] = {
+    'Embajador Rualeth',
+    nil,
+  },
+  [17224] = {
+    'Keltus Hojaoscura',
+    nil,
+  },
+  [17225] = {
+    'Nocturno',
+    nil,
+  },
+  [17226] = {
+    'Viera Suspirosol',
+    nil,
+  },
+  [17227] = {
+    'Campesino humano',
+    nil,
+  },
+  [17228] = {
+    'Artificiero draenei',
+    nil,
+  },
+  [17230] = {
+    'Titilín',
+    nil,
+  },
+  [17231] = {
+    'Gas de jardín',
+    nil,
+  },
+  [17232] = {
+    'Criptógrafo Aurren',
+    nil,
+  },
+  [17233] = {
+    'Fantasma de Uther el Iluminado',
+    'Caballero de la Mano de Plata',
+  },
+  [17235] = {
+    'Médico brujo Mai\'jin',
+    nil,
+  },
+  [17238] = {
+    'Anacoreta Truuen',
+    nil,
+  },
+  [17239] = {
+    '[PH] Heraldo de las Tierras de la Peste',
+    nil,
+  },
+  [17240] = {
+    'Almirante Odesyus',
+    'Mando Naval de la Alianza',
+  },
+  [17241] = {
+    'Sacerdotisa Kyleen Il\'dinare',
+    nil,
+  },
+  [17242] = {
+    'Arqueólogo Adamant Coracero',
+    'Liga de Expedicionarios',
+  },
+  [17243] = {
+    'Ingeniero "Chispik" Pasarrosca',
+    'Enviado de los Mekkatorque',
+  },
+  [17244] = {
+    'Hachero de la Alianza',
+    nil,
+  },
+  [17245] = {
+    'Herrera Calypso',
+    'Instructora de herrería y suministros',
+  },
+  [17246] = {
+    '"Cocinitas" MacSalsafloja',
+    'Instructor de cocina y suministros',
+  },
+  [17247] = {
+    'Maderero de la Alianza',
+    nil,
+  },
+  [17248] = {
+    'Cadenas demoníacas',
+    nil,
+  },
+  [17249] = {
+    'Landro Tirolargo',
+    'La Llama Negra',
+  },
+  [17251] = {
+    'Pico Negro',
+    nil,
+  },
+  [17252] = {
+    'Guardia vil',
+    nil,
+  },
+  [17254] = {
+    'Cachorro de tigre blanco',
+    nil,
+  },
+  [17255] = {
+    'Prole de hipogrifo',
+    nil,
+  },
+  [17256] = {
+    'Canalizador Fuego Infernal',
+    nil,
+  },
+  [17258] = {
+    'Traje de ogro morado',
+    nil,
+  },
+  [17259] = {
+    'Hambriento Mascahuesos',
+    nil,
+  },
+  [17261] = {
+    'Esqueleto inquieto',
+    nil,
+  },
+  [17262] = {
+    'Hembra kaliri cautiva',
+    nil,
+  },
+  [17263] = {
+    'Peregrino en recuperación',
+    nil,
+  },
+  [17264] = {
+    'Cuervoso Mascahuesos',
+    nil,
+  },
+  [17265] = {
+    'Portal maligno',
+    nil,
+  },
+  [17266] = {
+    'Tortuga de montar',
+    nil,
+  },
+  [17267] = {
+    'Diablillo maligno',
+    nil,
+  },
+  [17268] = {
+    'Imagen del técnico Zhanaa',
+    nil,
+  },
+  [17269] = {
+    'Taumaturgo oscuro Foso Sangrante',
+    nil,
+  },
+  [17270] = {
+    'Arquero Foso Sangrante',
+    nil,
+  },
+  [17271] = {
+    'Destructor Mascahuesos',
+    nil,
+  },
+  [17272] = {
+    'Aspecto flameante',
+    nil,
+  },
+  [17275] = {
+    'Acuosa',
+    nil,
+  },
+  [17276] = {
+    'Aspecto acuático',
+    nil,
+  },
+  [17277] = {
+    'Proveedora Valine',
+    'Alimentos y bebidas',
+  },
+  [17278] = {
+    'Saboteador de Ventura y Cía.',
+    nil,
+  },
+  [17279] = {
+    'Gemólogo de Ventura y Cía.',
+    nil,
+  },
+  [17280] = {
+    'Can de guerra Mano Destrozada',
+    nil,
+  },
+  [17281] = {
+    'Desgarrador Mascahuesos',
+    nil,
+  },
+  [17282] = {
+    'Forestal de Avanzada del Halcón',
+    nil,
+  },
+  [17283] = {
+    'Chispa astral',
+    nil,
+  },
+  [17284] = {
+    'Comisionado de lotería [DND]',
+    nil,
+  },
+  [17285] = {
+    nil,
+    'El loro de Cocinitas',
+  },
+  [17286] = {
+    'El hombre invisible',
+    nil,
+  },
+  [17287] = {
+    'Centinela Luciel Susurrestelar',
+    'Centinelas Ala de Plata',
+  },
+  [17288] = {
+    'Randy Ruedaprisa',
+    nil,
+  },
+  [17289] = {
+    'Fusilero Barbarrón',
+    nil,
+  },
+  [17290] = {
+    'Capitana Alina',
+    nil,
+  },
+  [17291] = {
+    'Arquitecto Nemos',
+    nil,
+  },
+  [17292] = {
+    'Soldado Jacint',
+    nil,
+  },
+  [17293] = {
+    'Ola de peste',
+    nil,
+  },
+  [17295] = {
+    'Korag Crin Digna',
+    nil,
+  },
+  [17296] = {
+    'Capitán Triturahuesos',
+    nil,
+  },
+  [17297] = {
+    'Explorador Orgarr',
+    nil,
+  },
+  [17298] = {
+    'Señor de la guerra Sriss\'tiz',
+    nil,
+  },
+  [17299] = {
+    'Robot triturador',
+    nil,
+  },
+  [17301] = {
+    'Verdugo Mano Destrozada',
+    nil,
+  },
+  [17303] = {
+    'Vindicador Vedaar',
+    'Mano de Argus',
+  },
+  [17304] = {
+    'Sobrestante Gorthak',
+    nil,
+  },
+  [17306] = {
+    'Guardián vigía Gargolmar',
+    nil,
+  },
+  [17307] = {
+    'Vazruden el Heraldo',
+    nil,
+  },
+  [17308] = {
+    'Omor el Sinmarcas',
+    nil,
+  },
+  [17309] = {
+    'Vigía Fuego Infernal',
+    'Subordinado de guardián vigía',
+  },
+  [17310] = {
+    nil,
+    'Anciano de la Guerra',
+  },
+  [17314] = {
+    'Susurros',
+    nil,
+  },
+  [17315] = {
+    'Disfraz de árbol',
+    nil,
+  },
+  [17319] = {
+    'Abrecaminos Brazolanudo',
+    nil,
+  },
+  [17320] = {
+    'Chamán Brazolanudo',
+    nil,
+  },
+  [17321] = {
+    'Guerrero Brazolanudo',
+    nil,
+  },
+  [17322] = {
+    'Lechúcico salvaje infectado',
+    nil,
+  },
+  [17323] = {
+    'Lechúcico salvaje contaminado',
+    nil,
+  },
+  [17324] = {
+    'Lechúcico salvaje irradiado',
+    nil,
+  },
+  [17325] = {
+    'Batidor Cienonegro',
+    nil,
+  },
+  [17326] = {
+    'Explorador Cienonegro',
+    nil,
+  },
+  [17327] = {
+    'Clamamareas Cienonegro',
+    nil,
+  },
+  [17328] = {
+    'Rompeolas Cienonegro',
+    nil,
+  },
+  [17329] = {
+    'Guerrero Cienonegro',
+    nil,
+  },
+  [17330] = {
+    'Vidente Cienonegro',
+    nil,
+  },
+  [17331] = {
+    'Acechacostas Escama de Cólera',
+    nil,
+  },
+  [17332] = {
+    'Asaltante Escama de Cólera',
+    nil,
+  },
+  [17333] = {
+    'Vociferadora Escama de Cólera',
+    nil,
+  },
+  [17334] = {
+    'Maleante Escama de Cólera',
+    nil,
+  },
+  [17335] = {
+    'Guardia serpiente Escama de Cólera',
+    nil,
+  },
+  [17336] = {
+    'Hechicera Escama de Cólera',
+    nil,
+  },
+  [17337] = {
+    'Sátiro Nazzivus',
+    nil,
+  },
+  [17338] = {
+    'Pícaro Nazzivus',
+    nil,
+  },
+  [17339] = {
+    'Jurapenas Nazzivus',
+    nil,
+  },
+  [17340] = {
+    'Acechasombras Axxarien',
+    nil,
+  },
+  [17341] = {
+    'Tramposo Axxarien',
+    nil,
+  },
+  [17342] = {
+    'Clamainferno Axxarien',
+    nil,
+  },
+  [17343] = {
+    'Azotador cardo',
+    nil,
+  },
+  [17344] = {
+    'Constrictor mutado',
+    nil,
+  },
+  [17345] = {
+    'Oso marrón',
+    nil,
+  },
+  [17346] = {
+    'Enmarañador mutado',
+    nil,
+  },
+  [17347] = {
+    'Oso marrón grisáceo',
+    nil,
+  },
+  [17348] = {
+    'Oso marrón adulto',
+    nil,
+  },
+  [17349] = {
+    'Aleteador azul',
+    nil,
+  },
+  [17350] = {
+    'Aleteador azul real',
+    nil,
+  },
+  [17351] = {
+    'Destripasaurio',
+    nil,
+  },
+  [17352] = {
+    'Antárbol corrupto',
+    nil,
+  },
+  [17353] = {
+    'Vapuleador corrupto',
+    nil,
+  },
+  [17354] = {
+    nil,
+    'Mano de Kil\'jaeden',
+  },
+  [17356] = {
+    'Moco trepador',
+    nil,
+  },
+  [17357] = {
+    'Moquito trepador',
+    nil,
+  },
+  [17358] = {
+    'Espíritu de agua podrido',
+    nil,
+  },
+  [17359] = {
+    'Tel\'athion el Impuro',
+    nil,
+  },
+  [17360] = {
+    'Tótem de Akida',
+    nil,
+  },
+  [17361] = {
+    'El Tótem de Coo',
+    nil,
+  },
+  [17362] = {
+    'El Tótem de Tikti',
+    nil,
+  },
+  [17363] = {
+    'El Tótem de Yor',
+    nil,
+  },
+  [17364] = {
+    'El Tótem de Vark',
+    nil,
+  },
+  [17367] = {
+    'Portal abisal: serenidad',
+    'Portal de sanación',
+  },
+  [17368] = {
+    'Portal abisal: dominancia',
+    'Portal de daño',
+  },
+  [17369] = {
+    'Portal abisal: perseverancia',
+    'Portal de repostaje',
+  },
+  [17370] = {
+    'Déspota Riecráneos',
+    nil,
+  },
+  [17371] = {
+    'Brujo Sombraluna',
+    nil,
+  },
+  [17372] = {
+    'Volantón Maderazancudo',
+    nil,
+  },
+  [17373] = {
+    'Maderazancudo',
+    nil,
+  },
+  [17374] = {
+    'Maderazancudo superior',
+    nil,
+  },
+  [17375] = {
+    'Cautivo Semprepino',
+    nil,
+  },
+  [17377] = {
+    'Keli\'dan el Ultrajador',
+    nil,
+  },
+  [17378] = {
+    'Gas de pantano',
+    nil,
+  },
+  [17379] = {
+    'Antepasado Semprepino Akida',
+    nil,
+  },
+  [17381] = {
+    'El Hacedor',
+    nil,
+  },
+  [17382] = {
+    'Infantería de Bastión del Honor',
+    nil,
+  },
+  [17383] = {
+    'Tirador de Bastión del Honor',
+    nil,
+  },
+  [17384] = {
+    'Teniente Seydel',
+    nil,
+  },
+  [17385] = {
+    'Élite Mano Destrozada',
+    nil,
+  },
+  [17387] = {
+    'Destripador Mano Destrozada',
+    nil,
+  },
+  [17389] = {
+    'Clamavacío de Sombraluna',
+    nil,
+  },
+  [17390] = {
+    'Lanzahachas de Thrallmar',
+    nil,
+  },
+  [17391] = {
+    'Antepasado Semprepino Coo',
+    nil,
+  },
+  [17392] = {
+    'Antepasado Semprepino Tikti',
+    nil,
+  },
+  [17393] = {
+    'Antepasado Semprepino Yor',
+    nil,
+  },
+  [17395] = {
+    'Invocador Sombraluna',
+    nil,
+  },
+  [17397] = {
+    'Adepto Sombraluna',
+    nil,
+  },
+  [17398] = {
+    'Orco vil naciente',
+    nil,
+  },
+  [17399] = {
+    'Seductora',
+    nil,
+  },
+  [17400] = {
+    'Aniquilador guardia vil',
+    nil,
+  },
+  [17401] = {
+    'Can manáfago Acechamaná',
+    nil,
+  },
+  [17403] = {
+    'Anacoreta Alendar',
+    nil,
+  },
+  [17404] = {
+    'Vindicador Sedai',
+    nil,
+  },
+  [17405] = {
+    'Krun Rompeloma',
+    nil,
+  },
+  [17406] = {
+    'Artificiero',
+    nil,
+  },
+  [17407] = {
+    'Bruma Vil',
+    nil,
+  },
+  [17408] = {
+    'Vórtice Arcano',
+    nil,
+  },
+  [17409] = {
+    'Aprendiza Boulian',
+    'Aprendiza arquitecta',
+  },
+  [17410] = {
+    'Antepasado Semprepino Vark',
+    nil,
+  },
+  [17411] = {
+    'Transformación de alfa Faucesombría',
+    nil,
+  },
+  [17412] = {
+    nil,
+    'Mercader de armas',
+  },
+  [17414] = {
+    'Técnico Sombraluna',
+    nil,
+  },
+  [17415] = {
+    'Mago de Lordaeron',
+    nil,
+  },
+  [17416] = {
+    'Cautivo orco',
+    nil,
+  },
+  [17417] = {
+    'Escolta Mag\'har',
+    nil,
+  },
+  [17418] = {
+    'Emboscador Riecráneos',
+    nil,
+  },
+  [17419] = {
+    'Cohete',
+    nil,
+  },
+  [17420] = {
+    'Pagano Mano Destrozada',
+    nil,
+  },
+  [17421] = {
+    'Clopper Zumbibang',
+    'Liga de Expedicionarios',
+  },
+  [17422] = {
+    'Transformación de antepasado Semprepino Coo',
+    nil,
+  },
+  [17423] = {
+    'Presagista Mikolaas',
+    nil,
+  },
+  [17424] = {
+    'Anacoreta Paetheus',
+    'Instructora de primeros auxilios',
+  },
+  [17425] = {
+    'Cazador de valle',
+    nil,
+  },
+  [17427] = {
+    'Arquero Mano Destrozada',
+    nil,
+  },
+  [17429] = {
+    'Neófito orco vil',
+    nil,
+  },
+  [17430] = {
+    'Arquero vil',
+    nil,
+  },
+  [17432] = {
+    'Defensor Semprepino',
+    nil,
+  },
+  [17433] = {
+    'Vindicadora Aalesia',
+    nil,
+  },
+  [17434] = {
+    nil,
+    'Instructora de herboristería',
+  },
+  [17436] = {
+    'Aspecto de aire',
+    nil,
+  },
+  [17437] = {
+    'Cadáver de defensor Semprepino',
+    nil,
+  },
+  [17438] = {
+    'Cadáver de lechúcico salvaje enloquecido',
+    nil,
+  },
+  [17439] = {
+    'Cazador Semprepino',
+    nil,
+  },
+  [17440] = {
+    'Gran jefe Semprepino',
+    nil,
+  },
+  [17441] = {
+    nil,
+    'Instructora de desuello',
+  },
+  [17442] = {
+    nil,
+    'Instructor de peletería',
+  },
+  [17443] = {
+    'Kurz el Revelador',
+    nil,
+  },
+  [17444] = {
+    'Magtor el Vigía Ciego',
+    nil,
+  },
+  [17445] = {
+    'Semprepino el Menor',
+    nil,
+  },
+  [17446] = {
+    'Parkat Furiacerada',
+    'Pertrechos',
+  },
+  [17447] = {
+    'El Kurken',
+    nil,
+  },
+  [17448] = {
+    'El cabecilla Oomooroo',
+    nil,
+  },
+  [17451] = {
+    'Zona del vacío inferior',
+    nil,
+  },
+  [17452] = {
+    'Visión del héroe de la profecía',
+    nil,
+  },
+  [17453] = {
+    'Visión de los Kurken',
+    nil,
+  },
+  [17454] = {
+    'Abisal ardiente',
+    nil,
+  },
+  [17455] = {
+    'Maestro de bestias Mascahuesos',
+    nil,
+  },
+  [17458] = {
+    'Torreta de llamas gnoma',
+    nil,
+  },
+  [17461] = {
+    'Guardia de sangre Mano Destrozada',
+    nil,
+  },
+  [17462] = {
+    'Zelote Mano Destrozada',
+    nil,
+  },
+  [17464] = {
+    'Gladiador Mano Destrozada',
+    nil,
+  },
+  [17465] = {
+    'Centurión Mano Destrozada',
+    nil,
+  },
+  [17466] = {
+    'Espíritu de Lordaeron',
+    nil,
+  },
+  [17467] = {
+    'Mofeta',
+    nil,
+  },
+  [17468] = {
+    'Profeta Velen',
+    nil,
+  },
+  [17469] = {
+    'Bruto orco',
+    nil,
+  },
+  [17470] = {
+    'Zona de vacío menor',
+    nil,
+  },
+  [17471] = {
+    'Fisura de las Sombras inferior',
+    nil,
+  },
+  [17476] = {
+    'Pollo gigante',
+    nil,
+  },
+  [17477] = {
+    'Diablillo Fuego Infernal',
+    nil,
+  },
+  [17478] = {
+    'Arúspice Foso Sangrante',
+    nil,
+  },
+  [17479] = {
+    'Pistolete',
+    nil,
+  },
+  [17480] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [17481] = {
+    nil,
+    'Instructor de magos',
+  },
+  [17482] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [17483] = {
+    nil,
+    'Instructor de paladines',
+  },
+  [17484] = {
+    nil,
+    'Maestra de establos',
+  },
+  [17485] = {
+    nil,
+    'Maestra de establos',
+  },
+  [17486] = {
+    nil,
+    'Mercader',
+  },
+  [17487] = {
+    nil,
+    'Instructora de sastrería',
+  },
+  [17488] = {
+    nil,
+    'Instructor de minería',
+  },
+  [17489] = {
+    nil,
+    'Pertrechos',
+  },
+  [17490] = {
+    'Ergh de los Semprepino',
+    'Suministros comerciales',
+  },
+  [17491] = {
+    'Pícaro Riecráneos',
+    nil,
+  },
+  [17492] = {
+    'Lechúcico salvaje delirante',
+    nil,
+  },
+  [17493] = {
+    'Guardia de piedra Stok\'ton',
+    nil,
+  },
+  [17495] = {
+    'Asaltante Semprepino',
+    nil,
+  },
+  [17496] = {
+    'Aleta Cruel',
+    nil,
+  },
+  [17499] = {
+    'Visión de los Tristes',
+    nil,
+  },
+  [17500] = {
+    'Visión de los Recordados',
+    nil,
+  },
+  [17501] = {
+    'Monstruo de entrenamiento',
+    nil,
+  },
+  [17502] = {
+    'Compañero de monstruo de entrenamiento',
+    nil,
+  },
+  [17503] = {
+    'Sanador afligido',
+    nil,
+  },
+  [17504] = {
+    nil,
+    'Instructor de guerreros',
+  },
+  [17505] = {
+    nil,
+    'Instructor de cazadores',
+  },
+  [17506] = {
+    'Grumman Puñopizarra',
+    'Maestro de batalla del Valle de Alterac',
+  },
+  [17507] = {
+    nil,
+    'Maestra de batalla de la Garganta Grito de Guerra',
+  },
+  [17508] = {
+    'Cadáver de Galaen',
+    nil,
+  },
+  [17509] = {
+    nil,
+    'Instructor de paladines',
+  },
+  [17510] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [17511] = {
+    nil,
+    'Instructora de sacerdotes',
+  },
+  [17512] = {
+    nil,
+    'Suministros de joyería',
+  },
+  [17513] = {
+    nil,
+    'Instructor de magos',
+  },
+  [17514] = {
+    nil,
+    'Instructor de magos',
+  },
+  [17517] = {
+    'Avizor Fuego Infernal',
+    'Alto del Heraldo',
+  },
+  [17519] = {
+    nil,
+    'Instructor de chamanes',
+  },
+  [17520] = {
+    nil,
+    'Instructor de chamanes',
+  },
+  [17521] = {
+    'El Lobo Feroz',
+    nil,
+  },
+  [17522] = {
+    'Hiladora de bruma',
+    nil,
+  },
+  [17523] = {
+    'Parasitadora de bruma',
+    nil,
+  },
+  [17524] = {
+    'Invocador Nazzivus',
+    nil,
+  },
+  [17525] = {
+    'Prole Bruma de Sangre',
+    nil,
+  },
+  [17526] = {
+    'Devastador Bruma de Sangre',
+    nil,
+  },
+  [17527] = {
+    'Devastador iracundo',
+    nil,
+  },
+  [17529] = {
+    nil,
+    'No deberías verme',
+  },
+  [17531] = {
+    'Protector draenei',
+    nil,
+  },
+  [17532] = {
+    'Visión de Pureza',
+    nil,
+  },
+  [17536] = {
+    nil,
+    'Montura de Vazruden',
+  },
+  [17540] = {
+    'Can maligno',
+    nil,
+  },
+  [17541] = {
+    'Intendente draenei',
+    nil,
+  },
+  [17542] = {
+    'Chamán fúrbolg joven',
+    nil,
+  },
+  [17543] = {
+    'Espantapájaros',
+    nil,
+  },
+  [17545] = {
+    'Katherine la Pura',
+    nil,
+  },
+  [17546] = {
+    'Rugido',
+    nil,
+  },
+  [17547] = {
+    'Cabezalata',
+    nil,
+  },
+  [17549] = {
+    'Pacificador de Avanzada de Sangre',
+    nil,
+  },
+  [17550] = {
+    'Anomalía del vacío',
+    nil,
+  },
+  [17553] = {
+    'Cuidador Topher Loaal',
+    'Tabernero',
+  },
+  [17554] = {
+    nil,
+    'Maestro de hipogrifos',
+  },
+  [17555] = {
+    nil,
+    'Maestro de hipogrifos',
+  },
+  [17556] = {
+    'Devastador de la Muerte',
+    nil,
+  },
+  [17557] = {
+    'Teniente Mechad',
+    nil,
+  },
+  [17560] = {
+    'Basilisco de Terrallende (verde)',
+    nil,
+  },
+  [17561] = {
+    'Basilisco de Terrallende (rojo)',
+    nil,
+  },
+  [17562] = {
+    'Basilisco de Terrallende (violeta)',
+    nil,
+  },
+  [17563] = {
+    'Basilisco de Terrallende (amarillo)',
+    nil,
+  },
+  [17564] = {
+    'Quimera de Terrallende (verde)',
+    nil,
+  },
+  [17565] = {
+    'Quimera de Terrallende (morada)',
+    nil,
+  },
+  [17566] = {
+    'Quimera de Terrallende (blanca)',
+    nil,
+  },
+  [17567] = {
+    'Quimera de Terrallende (amarilla)',
+    nil,
+  },
+  [17578] = {
+    'Muñeco de entrenamiento',
+    nil,
+  },
+  [17582] = {
+    'Monstruo de prueba',
+    nil,
+  },
+  [17584] = {
+    'Torallius el Controlador de la Manada',
+    'Criador de elekks',
+  },
+  [17585] = {
+    'Intendente Urgronn',
+    'Intendente de Thrallmar',
+  },
+  [17586] = {
+    'Vorkhan el Pastor de elekks',
+    nil,
+  },
+  [17587] = {
+    'Joven draenei',
+    nil,
+  },
+  [17588] = {
+    'Cría veridiana',
+    nil,
+  },
+  [17589] = {
+    'Estirpe veridiana',
+    nil,
+  },
+  [17591] = {
+    'Bandido elfo de sangre',
+    nil,
+  },
+  [17592] = {
+    'Tajobuche',
+    nil,
+  },
+  [17593] = {
+    'Jinete de lobos Fuego Infernal',
+    nil,
+  },
+  [17594] = {
+    'Capitán Korcolmillo',
+    nil,
+  },
+  [17595] = {
+    'Peón Mascahuesos',
+    nil,
+  },
+  [17596] = {
+    'Teniente Fuego Infernal',
+    nil,
+  },
+  [17600] = {
+    'Cartógrafo draenei',
+    nil,
+  },
+  [17601] = {
+    'Elekk de carga',
+    nil,
+  },
+  [17603] = {
+    'Abuela',
+    nil,
+  },
+  [17604] = {
+    'Espía Halcón del Sol',
+    nil,
+  },
+  [17605] = {
+    'Rapiñador Halcón del Sol',
+    nil,
+  },
+  [17606] = {
+    'Reivindicador Halcón del Sol',
+    nil,
+  },
+  [17607] = {
+    'Defensor Halcón del Sol',
+    nil,
+  },
+  [17608] = {
+    'Piromántico Halcón del Sol',
+    nil,
+  },
+  [17609] = {
+    'Saboteador Halcón del Sol',
+    nil,
+  },
+  [17610] = {
+    'Agente Halcón del Sol',
+    nil,
+  },
+  [17611] = {
+    'Portal del Jefe de Guerra',
+    nil,
+  },
+  [17612] = {
+    'Ánima maga Quel\'dorei',
+    nil,
+  },
+  [17613] = {
+    'Archimago Alturus',
+    nil,
+  },
+  [17614] = {
+    'Cazadora Kella Arconocturno',
+    nil,
+  },
+  [17620] = {
+    'Emboscador devastador',
+    nil,
+  },
+  [17621] = {
+    'Guardia pagano',
+    nil,
+  },
+  [17622] = {
+    'Guardia tirador certero',
+    nil,
+  },
+  [17623] = {
+    'Guardia atracador',
+    nil,
+  },
+  [17624] = {
+    'Celador Riecráneos',
+    nil,
+  },
+  [17625] = {
+    'Bruto orco vil',
+    nil,
+  },
+  [17626] = {
+    'Legionario Riecráneos',
+    nil,
+  },
+  [17627] = {
+    'Subastador Jenath',
+    nil,
+  },
+  [17628] = {
+    'Subastador Vynna',
+    nil,
+  },
+  [17629] = {
+    'Subastadora Feynna',
+    nil,
+  },
+  [17630] = {
+    'Tabernera Jovia',
+    'Tabernero',
+  },
+  [17631] = {
+    nil,
+    'Banquera',
+  },
+  [17632] = {
+    nil,
+    'Banquera',
+  },
+  [17633] = {
+    nil,
+    'Banquera',
+  },
+  [17634] = {
+    'K. Lee Fritito',
+    'Instructora de ingeniería',
+  },
+  [17635] = {
+    'Comandante de Lordaeron',
+    nil,
+  },
+  [17636] = {
+    'Kalynna Lathrojo',
+    nil,
+  },
+  [17637] = {
+    nil,
+    'Instructora de ingeniería',
+  },
+  [17638] = {
+    'Emboscador Cienaleta',
+    nil,
+  },
+  [17639] = {
+    'Emboscador lechúcico salvaje',
+    nil,
+  },
+  [17640] = {
+    'Emboscador Brazolanudo',
+    nil,
+  },
+  [17641] = {
+    'Emboscador Halcón del Sol',
+    nil,
+  },
+  [17642] = {
+    'Rastreador Lyceon',
+    nil,
+  },
+  [17643] = {
+    'Elekk de Kessel',
+    nil,
+  },
+  [17644] = {
+    'Objetivo infernal',
+    nil,
+  },
+  [17645] = {
+    'Relevo infernal',
+    nil,
+  },
+  [17646] = {
+    'Infernal rencor abisal',
+    nil,
+  },
+  [17647] = {
+    'Soldado de Lordaeron',
+    nil,
+  },
+  [17648] = {
+    'Esbirro de manáfago',
+    nil,
+  },
+  [17649] = {
+    nil,
+    'Señor de elekks',
+  },
+  [17650] = {
+    'Hachas del príncipe Malchezaar',
+    nil,
+  },
+  [17651] = {
+    'Imagen de Medivh',
+    nil,
+  },
+  [17652] = {
+    'Imagen de Arcanagos',
+    nil,
+  },
+  [17653] = {
+    'Canalizador Sombraluna',
+    nil,
+  },
+  [17654] = {
+    'Explorador Cienonegro marcado',
+    nil,
+  },
+  [17655] = {
+    'Herrera Frances',
+    'Suministros de herrería',
+  },
+  [17656] = {
+    'Heron Miracielo',
+    'Alimentos y bebidas',
+  },
+  [17657] = {
+    'Oficial de logística Ulrike',
+    'Intendente del Bastión del Honor',
+  },
+  [17658] = {
+    'Exarca Admetius',
+    nil,
+  },
+  [17659] = {
+    'Hoja de Argus',
+    nil,
+  },
+  [17660] = {
+    'Grifo esquelético',
+    nil,
+  },
+  [17661] = {
+    'Garraletal',
+    nil,
+  },
+  [17662] = {
+    'Nube de veneno Broggok',
+    nil,
+  },
+  [17663] = {
+    'Jessera de Mac\'Aree',
+    nil,
+  },
+  [17664] = {
+    'Matis el Cruel',
+    'Heraldo de Sironas',
+  },
+  [17666] = {
+    nil,
+    'Maestra de establos',
+  },
+  [17667] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [17668] = {
+    'Montura de Matis',
+    nil,
+  },
+  [17669] = {
+    'Can de guerra rabioso',
+    nil,
+  },
+  [17670] = {
+    'Maestro de canes Mano Destrozada',
+    nil,
+  },
+  [17671] = {
+    'Campeón Mano Destrozada',
+    nil,
+  },
+  [17672] = {
+    'Habitante de Vientomuerto',
+    nil,
+  },
+  [17673] = {
+    'Asediador cuernohediondo',
+    nil,
+  },
+  [17674] = {
+    'Príncipe Toreth',
+    'Jinetes de dragones de Loreth\'Aran',
+  },
+  [17675] = {
+    'Faceta de Keanna',
+    nil,
+  },
+  [17679] = {
+    'Abominación Man\'ari',
+    nil,
+  },
+  [17680] = {
+    'Criatura enredada',
+    nil,
+  },
+  [17681] = {
+    'Investigador de expedición',
+    nil,
+  },
+  [17682] = {
+    'Princesa Semprepino',
+    nil,
+  },
+  [17684] = {
+    'Vindicador Boros',
+    'Triunvirato de la Mano',
+  },
+  [17685] = {
+    'Muñeco-diana 60 sin armadura inmortal Test',
+    nil,
+  },
+  [17686] = {
+    'Investigador Cornelius',
+    nil,
+  },
+  [17687] = {
+    'Flecha incendiaria',
+    nil,
+  },
+  [17688] = {
+    'Elemento de misión de captura de la guardia de la Corona de la Horda',
+    nil,
+  },
+  [17689] = {
+    '<TXT>Elemento de misión de captura de la guardia de la Corona',
+    nil,
+  },
+  [17690] = {
+    '<TXT>Elemento de misión de captura de la muralla del Este',
+    nil,
+  },
+  [17691] = {
+    'Elemento de misión de captura de la muralla del este de la Horda',
+    nil,
+  },
+  [17693] = {
+    'Explorador Mano Destrozada',
+    nil,
+  },
+  [17694] = {
+    'Taumaturgo oscuro Sombraluna',
+    nil,
+  },
+  [17695] = {
+    'Asesino Mano Destrozada',
+    nil,
+  },
+  [17696] = {
+    '<TXT> Elemento de misión de captura del Paso Norte',
+    nil,
+  },
+  [17697] = {
+    'Elemento de misión de captura del Paso Norte de la Horda',
+    nil,
+  },
+  [17698] = {
+    '<TXT>Elemento de misión de captura del Bosque de la Peste',
+    nil,
+  },
+  [17699] = {
+    'Elemento de misión de captura de la Horda en el Bosque de la Peste',
+    nil,
+  },
+  [17700] = {
+    'Voluntad de Sargeras',
+    nil,
+  },
+  [17702] = {
+    'Gran Jefe Brazolanudo',
+    nil,
+  },
+  [17703] = {
+    'Mensajero Hermesius',
+    nil,
+  },
+  [17704] = {
+    'Espadachín de la Mano de Argus',
+    'Mano de Argus',
+  },
+  [17705] = {
+    'Pícaro Halcón del Sol',
+    nil,
+  },
+  [17706] = {
+    'Jabalí de acero vil',
+    nil,
+  },
+  [17707] = {
+    'Cangrejo de piedra del alba',
+    nil,
+  },
+  [17708] = {
+    'Serpiente de rubí vivo',
+    nil,
+  },
+  [17709] = {
+    'Búho de talasita',
+    nil,
+  },
+  [17710] = {
+    'Pantera de ojo de noche',
+    nil,
+  },
+  [17711] = {
+    'Caminante del Destino',
+    nil,
+  },
+  [17712] = {
+    'Capitán Edward Hanes',
+    nil,
+  },
+  [17713] = {
+    'Naga Sangre Maldita',
+    nil,
+  },
+  [17714] = {
+    'Viajero Sangre Maldita',
+    nil,
+  },
+  [17715] = {
+    'Atoph el Sangre Maldita',
+    nil,
+  },
+  [17716] = {
+    'Sangrias Hojafirme',
+    'Caballero de sangre',
+  },
+  [17717] = {
+    'Lord caballero Sangrevalor',
+    nil,
+  },
+  [17718] = {
+    'Magister Astalor Jurasangre',
+    nil,
+  },
+  [17719] = {
+    'Jinete de grifos de Forjaz',
+    nil,
+  },
+  [17720] = {
+    'Jinete de dracoleones de Orgrimmar',
+    nil,
+  },
+  [17721] = {
+    'Ingeniero Colmillo Torcido',
+    nil,
+  },
+  [17722] = {
+    'Hechicera Colmillo Torcido',
+    nil,
+  },
+  [17723] = {
+    'Gigante de la marisma',
+    nil,
+  },
+  [17724] = {
+    'Submurciélago',
+    nil,
+  },
+  [17725] = {
+    'Rondador de la Sotiénaga',
+    nil,
+  },
+  [17726] = {
+    'Mirmidón Aleta de Cólera',
+    nil,
+  },
+  [17727] = {
+    'Avizor Aleta de Cólera',
+    nil,
+  },
+  [17728] = {
+    'Miembro de tribu Sangreoscura',
+    nil,
+  },
+  [17729] = {
+    'Lancero Sangreoscura',
+    nil,
+  },
+  [17730] = {
+    'Sanador Sangreoscura',
+    nil,
+  },
+  [17731] = {
+    'Raya del cubil',
+    nil,
+  },
+  [17732] = {
+    'Avispa Lykul',
+    nil,
+  },
+  [17734] = {
+    'Señor de la Sotiénaga',
+    nil,
+  },
+  [17735] = {
+    'Guerrero Aleta de Cólera',
+    nil,
+  },
+  [17736] = {
+    'Enjambrista submurciélago',
+    nil,
+  },
+  [17755] = {
+    'Señor del foso',
+    nil,
+  },
+  [17765] = {
+    'Centinela de silitista de la Alianza',
+    nil,
+  },
+  [17766] = {
+    'Centinela de silitista de la Horda',
+    nil,
+  },
+  [17767] = {
+    'Ira Fríoinvierno',
+    nil,
+  },
+  [17768] = {
+    'Caballero de sangre Hojafirme',
+    nil,
+  },
+  [17769] = {
+    'Caballero de sangre adepto',
+    nil,
+  },
+  [17770] = {
+    'Panthambre',
+    nil,
+  },
+  [17771] = {
+    'Oráculo Sangreoscura',
+    nil,
+  },
+  [17772] = {
+    'Lady Jaina Valiente',
+    nil,
+  },
+  [17773] = {
+    nil,
+    'Banquera',
+  },
+  [17794] = {
+    'Beneficiador de torre de la Alianza',
+    nil,
+  },
+  [17795] = {
+    'Beneficiador de torre de la Horda',
+    nil,
+  },
+  [17796] = {
+    'Mekigeniero Vaporino',
+    nil,
+  },
+  [17797] = {
+    'Hidromántica Thespia',
+    nil,
+  },
+  [17798] = {
+    'Señor de la guerra Kalithresh',
+    nil,
+  },
+  [17799] = {
+    'Esclavo Zarrapucha',
+    nil,
+  },
+  [17800] = {
+    'Mirmidón Colmillo Torcido',
+    nil,
+  },
+  [17801] = {
+    'Sirena Colmillo Torcido',
+    nil,
+  },
+  [17802] = {
+    'Guerrero Colmillo Torcido',
+    nil,
+  },
+  [17803] = {
+    'Oráculo Colmillo Torcido',
+    nil,
+  },
+  [17804] = {
+    'Escudero Rowe',
+    nil,
+  },
+  [17805] = {
+    'Maestro de esclavos Colmillo Torcido',
+    nil,
+  },
+  [17807] = {
+    'Maestro Kelerun Lamento de Sangre',
+    'Caballero de sangre',
+  },
+  [17809] = {
+    'Campeón Furiasangre',
+    'Caballero de sangre',
+  },
+  [17810] = {
+    'Campeón Rasgaluz',
+    'Caballero de sangre',
+  },
+  [17811] = {
+    'Campeona Hojágil',
+    'Caballero de sangre',
+  },
+  [17812] = {
+    'Campeón Golpesol',
+    'Caballero de sangre',
+  },
+  [17814] = {
+    'Velador de Lordaeron',
+    nil,
+  },
+  [17815] = {
+    'Avizor de Lordaeron',
+    nil,
+  },
+  [17816] = {
+    'Maristrok',
+    nil,
+  },
+  [17817] = {
+    'Maristrok superior',
+    nil,
+  },
+  [17818] = {
+    'Infernal impresionante',
+    nil,
+  },
+  [17819] = {
+    'Avizor de Durnholde',
+    nil,
+  },
+  [17820] = {
+    'Fusilero de Durnholde',
+    nil,
+  },
+  [17822] = {
+    'Landen Fontana',
+    nil,
+  },
+  [17823] = {
+    '[UNUSED] Huargen enloquecido',
+    nil,
+  },
+  [17824] = {
+    'Agente Halcón del Sol capturado',
+    nil,
+  },
+  [17825] = {
+    'Interrogadora Elysia',
+    nil,
+  },
+  [17826] = {
+    'Señor del pantano Musel\'ek',
+    nil,
+  },
+  [17827] = {
+    'Zarpa',
+    'Mascota del señor del pantano Musel\'ek',
+  },
+  [17828] = {
+    nil,
+    'Mascota del señor del pantano Musel\'ek',
+  },
+  [17829] = {
+    'Prole Lykul',
+    nil,
+  },
+  [17830] = {
+    'Zelemar el Colérico',
+    nil,
+  },
+  [17831] = {
+    'La vigía Leesa\'oh',
+    nil,
+  },
+  [17832] = {
+    'Caballero de sangre Estrella del Alba',
+    nil,
+  },
+  [17833] = {
+    'Celador de Durnholde',
+    nil,
+  },
+  [17834] = {
+    'Lethyn Fuegolunar',
+    nil,
+  },
+  [17835] = {
+    'Asesino Infinito',
+    nil,
+  },
+  [17836] = {
+    'Camorrista ogro',
+    nil,
+  },
+  [17837] = {
+    'Rabioso trol',
+    nil,
+  },
+  [17838] = {
+    'Falla temporal',
+    nil,
+  },
+  [17839] = {
+    'Señor de la falla',
+    nil,
+  },
+  [17840] = {
+    'Sabueso de Durnholde',
+    nil,
+  },
+  [17841] = {
+    'Ysiel Vientocantor',
+    'Líder de la expedición',
+  },
+  [17843] = {
+    'Vindicador Kuros',
+    'Triunvirato de la Mano',
+  },
+  [17844] = {
+    'Vindicador Aesom',
+    'Triunvirato de la Mano',
+  },
+  [17845] = {
+    'Magister elfo de sangre',
+    nil,
+  },
+  [17846] = {
+    'Espectador del foso',
+    nil,
+  },
+  [17847] = {
+    nil,
+    'No deberías verme',
+  },
+  [17848] = {
+    'Teniente Drake',
+    nil,
+  },
+  [17849] = {
+    'Avanzada asesinada',
+    nil,
+  },
+  [17851] = {
+    'Dracohalcón adiestrado',
+    nil,
+  },
+  [17852] = {
+    nil,
+    'Jefe de Guerra',
+  },
+  [17853] = {
+    'Rastreador de la Mano',
+    nil,
+  },
+  [17854] = {
+    'Lobo temible',
+    nil,
+  },
+  [17855] = {
+    'Celador de expedición',
+    nil,
+  },
+  [17858] = {
+    'El celador Hamoot',
+    nil,
+  },
+  [17860] = {
+    'Veterano de Durnholde',
+    nil,
+  },
+  [17862] = {
+    'Capitán Skarloc',
+    nil,
+  },
+  [17864] = {
+    'Guardia apocalíptico inferior',
+    nil,
+  },
+  [17865] = {
+    nil,
+    'Heraldo de Sironas',
+  },
+  [17869] = {
+    'Objetivo de mortero de Gusano de arena con especias de Silithus',
+    nil,
+  },
+  [17870] = {
+    'Ánima abisal enfadada',
+    nil,
+  },
+  [17871] = {
+    'Arrastrapiés de la Sotiénaga',
+    nil,
+  },
+  [17872] = {
+    'Supervisor Sangreoscura',
+    nil,
+  },
+  [17873] = {
+    'Secuaz Sangreoscura',
+    'Criado de supervisor Sangreoscura',
+  },
+  [17874] = {
+    'Imagen de Velen',
+    nil,
+  },
+  [17875] = {
+    'Cazador de la Mano',
+    nil,
+  },
+  [17878] = {
+    'Ingeniero de asedio de la Plaga',
+    nil,
+  },
+  [17879] = {
+    'Cronolord Deja',
+    nil,
+  },
+  [17882] = {
+    'La Acechadora Negra',
+    nil,
+  },
+  [17884] = {
+    'Vigía Jhang',
+    nil,
+  },
+  [17885] = {
+    'Vinculador terrestre Rayge',
+    nil,
+  },
+  [17887] = {
+    'Alimaña del vacío',
+    nil,
+  },
+  [17890] = {
+    'Desherbador Pulgarverde',
+    nil,
+  },
+  [17892] = {
+    'Cronomántico Infinito',
+    nil,
+  },
+  [17893] = {
+    'Naturalista Mordisco',
+    nil,
+  },
+  [17894] = {
+    'Clamavientos Zarpa',
+    nil,
+  },
+  [17895] = {
+    'Necrófago',
+    nil,
+  },
+  [17896] = {
+    'Kameel Zancada Larga',
+    'Maestra de establos',
+  },
+  [17897] = {
+    'Maligno de cripta',
+    nil,
+  },
+  [17898] = {
+    'Abominación',
+    nil,
+  },
+  [17899] = {
+    'Nigromante enigmático',
+    nil,
+  },
+  [17900] = {
+    nil,
+    'Anciano del Conocimiento',
+  },
+  [17901] = {
+    nil,
+    'Anciano de la Guerra',
+  },
+  [17902] = {
+    'Esqueleto invasor',
+    nil,
+  },
+  [17903] = {
+    'Esqueleto mago',
+    nil,
+  },
+  [17904] = {
+    'Fedryen Lanza Presta',
+    'Intendente de la expedición de Cenarion',
+  },
+  [17905] = {
+    'Alma en pena',
+    nil,
+  },
+  [17906] = {
+    'Gárgola',
+    nil,
+  },
+  [17907] = {
+    'Vermis de escarcha',
+    nil,
+  },
+  [17908] = {
+    'Infernal gigante',
+    nil,
+  },
+  [17909] = {
+    nil,
+    'Catalogadora de la expedición',
+  },
+  [17910] = {
+    'Gregor el Ajusticiador',
+    'Orden de la Mano de Plata',
+  },
+  [17911] = {
+    'Cathela la Buscadora',
+    'Orden de la Mano de Plata',
+  },
+  [17912] = {
+    'Nemas el Árbitro',
+    'Orden de la Mano de Plata',
+  },
+  [17913] = {
+    'Aelmar el Vencedor',
+    'Orden de la Mano de Plata',
+  },
+  [17914] = {
+    'Vicario Hyeronymus',
+    'Orden de la Mano de Plata',
+  },
+  [17915] = {
+    nil,
+    'Nada que ver aquí',
+  },
+  [17916] = {
+    'Acechador vil',
+    nil,
+  },
+  [17917] = {
+    'Elemental de agua Colmillo Torcido',
+    nil,
+  },
+  [17918] = {
+    'Vigilante del tiempo',
+    nil,
+  },
+  [17919] = {
+    'Lacayo de la Alianza',
+    nil,
+  },
+  [17920] = {
+    'Caballero de la Alianza',
+    nil,
+  },
+  [17921] = {
+    'Fusilero de la Alianza',
+    nil,
+  },
+  [17922] = {
+    'Bruja de la Alianza',
+    nil,
+  },
+  [17923] = {
+    nil,
+    'Esporaggar',
+  },
+  [17924] = {
+    nil,
+    'Prelado de Esporaggar',
+  },
+  [17926] = {
+    'Exploradora Loryi',
+    nil,
+  },
+  [17927] = {
+    'Exploradora Jorli',
+    nil,
+  },
+  [17928] = {
+    'Sacerdote de la Alianza',
+    nil,
+  },
+  [17929] = {
+    nil,
+    'Mercader de tela y cuero',
+  },
+  [17930] = {
+    nil,
+    'Mercader de armaduras y armas',
+  },
+  [17931] = {
+    'Campesino de la Alianza',
+    nil,
+  },
+  [17932] = {
+    'Bruto de la Horda',
+    nil,
+  },
+  [17933] = {
+    'Tauren guerrero',
+    nil,
+  },
+  [17934] = {
+    'Rebanacabezas de la Horda',
+    nil,
+  },
+  [17935] = {
+    'Médico brujo de la Horda',
+    nil,
+  },
+  [17936] = {
+    'Chamán de la Horda',
+    nil,
+  },
+  [17937] = {
+    'Peón de la Horda',
+    nil,
+  },
+  [17938] = {
+    'Observador Colmillo Torcido',
+    nil,
+  },
+  [17940] = {
+    'Técnico Colmillo Torcido',
+    nil,
+  },
+  [17941] = {
+    'Mennu el Traidor',
+    nil,
+  },
+  [17943] = {
+    'Arquera elfa de la noche',
+    nil,
+  },
+  [17944] = {
+    'Dríade',
+    nil,
+  },
+  [17945] = {
+    'Cazadora elfa de la noche',
+    nil,
+  },
+  [17946] = {
+    'Fuego fatuo antiguo',
+    nil,
+  },
+  [17948] = {
+    'Tyrande Susurravientos',
+    'Suma sacerdotisa de Elune',
+  },
+  [17949] = {
+    'Malfurion Tempestira',
+    nil,
+  },
+  [17950] = {
+    nil,
+    'Nada que ver aquí',
+  },
+  [17951] = {
+    'Mecánico Vaporino',
+    nil,
+  },
+  [17952] = {
+    'Crocolisco Aguaoscura',
+    nil,
+  },
+  [17953] = {
+    'Colega',
+    nil,
+  },
+  [17954] = {
+    'Destilador naga',
+    nil,
+  },
+  [17955] = {
+    'Señor de la marisma hambriento',
+    nil,
+  },
+  [17957] = {
+    'Campeón Colmillo Torcido',
+    nil,
+  },
+  [17958] = {
+    'Defensor Colmillo Torcido',
+    nil,
+  },
+  [17959] = {
+    'Tratante de esclavos Colmillo Torcido',
+    nil,
+  },
+  [17960] = {
+    'Veritas Colmillo Torcido',
+    nil,
+  },
+  [17961] = {
+    'Encantadora Colmillo Torcido',
+    nil,
+  },
+  [17962] = {
+    'Colaborador Colmillo Torcido',
+    nil,
+  },
+  [17963] = {
+    'Esclavo transitayermos',
+    nil,
+  },
+  [17964] = {
+    'Trabajador transitayermos',
+    nil,
+  },
+  [17967] = {
+    'Escarabajo de la cripta',
+    nil,
+  },
+  [17969] = {
+    'Kayra Crin Larga',
+    nil,
+  },
+  [17970] = {
+    'Forma de cuervo tormentoso',
+    nil,
+  },
+  [17971] = {
+    'Transformación de agente Halcón del Sol capturado',
+    nil,
+  },
+  [17973] = {
+    'Presencia de Ysiel',
+    nil,
+  },
+  [17975] = {
+    'Gran botánico Freywinn',
+    nil,
+  },
+  [17976] = {
+    'Comandante Sarannis',
+    nil,
+  },
+  [17977] = {
+    'Disidente de distorsión',
+    nil,
+  },
+  [17978] = {
+    'Thorngrin el Cuidador',
+    nil,
+  },
+  [17979] = {
+    'Espiral Tesla Bruma de Sangre',
+    nil,
+  },
+  [17981] = {
+    'Engendro de vacío',
+    nil,
+  },
+  [17982] = {
+    'Demoledor Legoso',
+    nil,
+  },
+  [17983] = {
+    nil,
+    'Instructora de herboristería',
+  },
+  [17986] = {
+    'Vindicadora Corin',
+    nil,
+  },
+  [17987] = {
+    'Fuerza de la tierra',
+    nil,
+  },
+  [17990] = {
+    'Champiñón de la Sotiénaga',
+    nil,
+  },
+  [17991] = {
+    'Rokmar el Crujidor',
+    nil,
+  },
+  [17993] = {
+    'Protector Depositario de Sangre',
+    nil,
+  },
+  [17994] = {
+    'Halconero Depositario de sangre',
+    nil,
+  },
+  [17995] = {
+    'Veterano de Lordaeron',
+    nil,
+  },
+  [17996] = {
+    'Combatiente de Lordaeron',
+    nil,
+  },
+  [18001] = {
+    'Elemental de agua guardián',
+    nil,
+  },
+  [18003] = {
+    'Anacoreta Ahuurn',
+    nil,
+  },
+  [18004] = {
+    'Vindicador Idaar',
+    nil,
+  },
+  [18005] = {
+    nil,
+    'Suministros de alquimia',
+  },
+  [18006] = {
+    nil,
+    'Mercader de componentes',
+  },
+  [18010] = {
+    nil,
+    'Mercader de armaduras',
+  },
+  [18011] = {
+    nil,
+    'Mercader',
+  },
+  [18013] = {
+    'Cazador de las Sombras Denjai',
+    nil,
+  },
+  [18014] = {
+    'Médico brujo Tor\'gash',
+    nil,
+  },
+  [18015] = {
+    nil,
+    'Mercader',
+  },
+  [18017] = {
+    'Vidente Janidi',
+    'Componentes',
+  },
+  [18018] = {
+    nil,
+    'Instructor de pesca',
+  },
+  [18019] = {
+    nil,
+    'El Especialista',
+  },
+  [18020] = {
+    'Defensora Adrielle',
+    'Mano de Argus',
+  },
+  [18021] = {
+    'Defensor Kaegan',
+    'Mano de Argus',
+  },
+  [18022] = {
+    'Defensora Ursi',
+    'Mano de Argus',
+  },
+  [18023] = {
+    'Defensor Kranos',
+    'Mano de Argus',
+  },
+  [18024] = {
+    'Defensora Sorli',
+    'Mano de Argus',
+  },
+  [18025] = {
+    'Defensor Auston',
+    'Mano de Argus',
+  },
+  [18026] = {
+    'Defensor Haqi',
+    'Mano de Argus',
+  },
+  [18027] = {
+    'Defensor Kadithuul',
+    'Mano de Argus',
+  },
+  [18028] = {
+    'Defensora Akee',
+    'Mano de Argus',
+  },
+  [18029] = {
+    'Defensor Kajad',
+    'Mano de Argus',
+  },
+  [18030] = {
+    'Defensora caballero Zunade',
+    'Mano de Argus',
+  },
+  [18031] = {
+    'Defensor Zaibach',
+    'Mano de Argus',
+  },
+  [18032] = {
+    'Defensora Ashoon',
+    'Mano de Argus',
+  },
+  [18033] = {
+    'Huargo oscuro',
+    nil,
+  },
+  [18034] = {
+    'Defensora Katroi',
+    'Mano de Argus',
+  },
+  [18035] = {
+    'Explorador Jyoba',
+    nil,
+  },
+  [18036] = {
+    'Guarda sanador de la Horda',
+    nil,
+  },
+  [18037] = {
+    'Brujo Mazo de Guerra',
+    nil,
+  },
+  [18038] = {
+    'Pacificador de Bruma Azur',
+    nil,
+  },
+  [18039] = {
+    'Espíritu de victoria',
+    nil,
+  },
+  [18040] = {
+    'Exánime',
+    nil,
+  },
+  [18041] = {
+    'Señor guardia apocalíptico',
+    nil,
+  },
+  [18042] = {
+    'Ligaesclavos de Umbropantano',
+    nil,
+  },
+  [18043] = {
+    'Espíritu de orco perturbado',
+    nil,
+  },
+  [18045] = {
+    'Rajá Kaz\'sith',
+    nil,
+  },
+  [18046] = {
+    'Rajá Brujobruma',
+    nil,
+  },
+  [18047] = {
+    'Rajá Vethag',
+    nil,
+  },
+  [18057] = {
+    nil,
+    'Alto del Heraldo',
+  },
+  [18058] = {
+    nil,
+    'Subordinado de guardián vigía',
+  },
+  [18060] = {
+    'Atracador vil de Tormenta Abisal',
+    nil,
+  },
+  [18061] = {
+    'Guardia vil Tormenta Abisal',
+    nil,
+  },
+  [18062] = {
+    'Triturador iracundo',
+    nil,
+  },
+  [18063] = {
+    nil,
+    'Hijo de Grito Infernal',
+  },
+  [18064] = {
+    'Chamán Mazo de Guerra',
+    nil,
+  },
+  [18065] = {
+    'Tosco Mazo de Guerra',
+    nil,
+  },
+  [18066] = {
+    'Clarividente Kurkush',
+    'Los Hijos del Rayo',
+  },
+  [18067] = {
+    'Clarividente Corhuk',
+    'Los Hijos del Rayo',
+  },
+  [18068] = {
+    'Clarividente Margadesh',
+    'Los Hijos del Rayo',
+  },
+  [18069] = {
+    nil,
+    'Héroe de los Mazo de Guerra',
+  },
+  [18070] = {
+    'Clamavientos Pezuñanegra',
+    nil,
+  },
+  [18071] = {
+    'Elementalista Untrag',
+    'El Anillo de la Tierra',
+  },
+  [18072] = {
+    'Elementalista Sharvak',
+    'El Anillo de la Tierra',
+  },
+  [18073] = {
+    'Elementalista Lo\'ap',
+    'El Anillo de la Tierra',
+  },
+  [18074] = {
+    'Elementalista Morgh',
+    'El Anillo de la Tierra',
+  },
+  [18076] = {
+    'Grom Grito Infernal',
+    'Jefe del clan Grito de Guerra',
+  },
+  [18077] = {
+    'Oráculo de Umbropantano',
+    nil,
+  },
+  [18078] = {
+    'El conejo malo',
+    nil,
+  },
+  [18079] = {
+    'Vidente de Umbropantano',
+    nil,
+  },
+  [18081] = {
+    'Atsun del Aire',
+    nil,
+  },
+  [18082] = {
+    'Rokh de la Tierra',
+    nil,
+  },
+  [18083] = {
+    'Far\'hir de la Llama',
+    nil,
+  },
+  [18084] = {
+    'Watoosun del Agua',
+    nil,
+  },
+  [18086] = {
+    'Capataz Cresta Oscura',
+    nil,
+  },
+  [18087] = {
+    'Sirena Cresta Oscura',
+    nil,
+  },
+  [18088] = {
+    'Encantadora Escamas de Sangre',
+    nil,
+  },
+  [18089] = {
+    'Explotador Escamas de Sangre',
+    nil,
+  },
+  [18090] = {
+    'Capitán Kroghan',
+    nil,
+  },
+  [18091] = {
+    'Mensajero Gazgrigg',
+    nil,
+  },
+  [18092] = {
+    'Custodio de Molino Tarren',
+    nil,
+  },
+  [18093] = {
+    'Protector de Molino Tarren',
+    nil,
+  },
+  [18094] = {
+    'Oteador de Molino Tarren',
+    nil,
+  },
+  [18095] = {
+    'Fuego apocalíptico',
+    nil,
+  },
+  [18096] = {
+    'Cazador de Época',
+    nil,
+  },
+  [18098] = {
+    'Kialon Hoja de la Noche',
+    nil,
+  },
+  [18099] = {
+    nil,
+    'Furia de tierra',
+  },
+  [18100] = {
+    nil,
+    'Furia de fuego',
+  },
+  [18101] = {
+    nil,
+    'Furia de agua',
+  },
+  [18102] = {
+    nil,
+    'Furia de aire',
+  },
+  [18103] = {
+    'Guardián Arcano',
+    nil,
+  },
+  [18106] = {
+    'Jorin Mortojo',
+    nil,
+  },
+  [18107] = {
+    'Sobrestante Iramarea',
+    nil,
+  },
+  [18109] = {
+    'Fuego viviente',
+    nil,
+  },
+  [18113] = {
+    'Cazador Feropantano',
+    nil,
+  },
+  [18114] = {
+    'Místico Feropantano',
+    nil,
+  },
+  [18115] = {
+    'Habitabosta Dagapantano',
+    nil,
+  },
+  [18116] = {
+    'Asesino Dagapantano',
+    nil,
+  },
+  [18117] = {
+    'Ogro Ango\'rosh',
+    nil,
+  },
+  [18118] = {
+    'Chamán Ango\'rosh',
+    nil,
+  },
+  [18119] = {
+    'Tosco Ango\'rosh',
+    nil,
+  },
+  [18120] = {
+    'Aplastador Ango\'rosh',
+    nil,
+  },
+  [18121] = {
+    'Devoralmas Ango\'rosh',
+    nil,
+  },
+  [18122] = {
+    'Bracero Zarrapucha',
+    nil,
+  },
+  [18123] = {
+    'Esclavo Wrekt',
+    nil,
+  },
+  [18124] = {
+    'Gigante marchito',
+    nil,
+  },
+  [18125] = {
+    'Gigante fúngico famélico',
+    nil,
+  },
+  [18126] = {
+    'Explorador de expedición',
+    nil,
+  },
+  [18127] = {
+    'Señor de la marisma',
+    nil,
+  },
+  [18128] = {
+    'Esporiélago',
+    nil,
+  },
+  [18129] = {
+    'Esporiélago superior',
+    nil,
+  },
+  [18130] = {
+    'Destripador Colmillo de la Marisma',
+    nil,
+  },
+  [18131] = {
+    'Cercenador Colmillo de la Marisma',
+    nil,
+  },
+  [18132] = {
+    'Aguijonero Umbrabrillo',
+    nil,
+  },
+  [18133] = {
+    'Sangrador Luz pantanosa',
+    nil,
+  },
+  [18134] = {
+    'Zancudo pantanoso',
+    nil,
+  },
+  [18135] = {
+    'Caminante de marisma',
+    nil,
+  },
+  [18136] = {
+    'Rondador de marisma',
+    nil,
+  },
+  [18137] = {
+    'Dragador de marisma',
+    nil,
+  },
+  [18138] = {
+    'Anguila de Umbropantano',
+    nil,
+  },
+  [18139] = {
+    'Valedor de Esporaggar',
+    nil,
+  },
+  [18140] = {
+    'Cosechador de Esporaggar',
+    nil,
+  },
+  [18141] = {
+    'Abuela Geyah',
+    nil,
+  },
+  [18145] = {
+    'Esencia contaminada de Watoosun',
+    nil,
+  },
+  [18146] = {
+    'Campeón Vranesh',
+    nil,
+  },
+  [18147] = {
+    'Forestal de Lunargenta',
+    nil,
+  },
+  [18149] = {
+    'Shivaísta de Terrallende',
+    nil,
+  },
+  [18150] = {
+    'Gorgoteo',
+    'Mascota de Tor\'gash',
+  },
+  [18151] = {
+    'Gárgaras',
+    'Mascota de Tor\'gash',
+  },
+  [18152] = {
+    'Bebé múrloc',
+    nil,
+  },
+  [18153] = {
+    'Ángel de la Resurrección (DND)',
+    nil,
+  },
+  [18155] = {
+    'Falcón de sangre',
+    nil,
+  },
+  [18159] = {
+    'Jefe Grog\'ak',
+    nil,
+  },
+  [18160] = {
+    'Señor supremo Puño Sajante',
+    nil,
+  },
+  [18165] = {
+    'Archimago Cedric',
+    nil,
+  },
+  [18166] = {
+    nil,
+    'Hijos de Lothar',
+  },
+  [18167] = {
+    'Elekk, taxi',
+    nil,
+  },
+  [18168] = {
+    'La Bruja',
+    nil,
+  },
+  [18169] = {
+    'Caballero de sangre iniciado',
+    nil,
+  },
+  [18170] = {
+    'Destripador Infinito',
+    nil,
+  },
+  [18171] = {
+    'Rapiñador Infinito',
+    nil,
+  },
+  [18172] = {
+    'Saboteador Infinito',
+    nil,
+  },
+  [18173] = {
+    'Desmontador de elekk Bruma de Sangre',
+    nil,
+  },
+  [18174] = {
+    'Iniciado Colin',
+    nil,
+  },
+  [18175] = {
+    'Iniciada Emeline',
+    nil,
+  },
+  [18176] = {
+    'Tótem Pillaterra corrupto',
+    nil,
+  },
+  [18177] = {
+    'Tótem piel de piedra máculo',
+    nil,
+  },
+  [18178] = {
+    'Tótem de Fuego máculo',
+    nil,
+  },
+  [18179] = {
+    'Tótem Nova corrupto',
+    nil,
+  },
+  [18181] = {
+    'Esbirro de Gurok',
+    nil,
+  },
+  [18182] = {
+    'Gurok el Usurpador',
+    nil,
+  },
+  [18185] = {
+    'Espíritu de serpiente Feropantano',
+    nil,
+  },
+  [18186] = {
+    'Tótem Feropantano',
+    nil,
+  },
+  [18187] = {
+    nil,
+    'Emisaria de la Horda',
+  },
+  [18188] = {
+    nil,
+    'Emisaria de la Horda',
+  },
+  [18189] = {
+    'Dela Tótem de Runa',
+    'Emisaria de la Horda',
+  },
+  [18190] = {
+    nil,
+    'Emisaria de la Horda',
+  },
+  [18191] = {
+    'Embajador Kelemar',
+    nil,
+  },
+  [18192] = {
+    'Guardia Halaani de la Horda',
+    nil,
+  },
+  [18194] = {
+    'Valedor de expedición',
+    nil,
+  },
+  [18196] = {
+    'Controlador de eventos de Gurok',
+    nil,
+  },
+  [18197] = {
+    'Ancestro Kuruti',
+    nil,
+  },
+  [18198] = {
+    'Ilusión de espíritu de pájaro',
+    nil,
+  },
+  [18199] = {
+    'Elemento de la Horda de entrega de misión del polvo en Silithus',
+    nil,
+  },
+  [18200] = {
+    'Shado \'Fitz\' Errante',
+    nil,
+  },
+  [18201] = {
+    'Esporiélago domesticado',
+    nil,
+  },
+  [18202] = {
+    'Putrefactor Sangreoscura',
+    nil,
+  },
+  [18203] = {
+    'Asaltante Sangreoscura',
+    nil,
+  },
+  [18204] = {
+    'Ortur de Sangreoscura',
+    nil,
+  },
+  [18205] = {
+    'Uñagrieta',
+    nil,
+  },
+  [18206] = {
+    'Cautivo transitayermos',
+    nil,
+  },
+  [18207] = {
+    'Carroñero Sangreoscura',
+    nil,
+  },
+  [18208] = {
+    'Controlador de evento Sangreoscura',
+    nil,
+  },
+  [18209] = {
+    'Cautivo Kurenai',
+    nil,
+  },
+  [18210] = {
+    'Cautivo Mag\'har',
+    nil,
+  },
+  [18211] = {
+    'Tosco Sangreoscura',
+    nil,
+  },
+  [18212] = {
+    'Furia Aletalodo',
+    nil,
+  },
+  [18213] = {
+    'Hidra de lodazal',
+    nil,
+  },
+  [18214] = {
+    'Descarnador Zarpacieno',
+    nil,
+  },
+  [18215] = {
+    'Muñeco objetivo Sangreoscura',
+    nil,
+  },
+  [18217] = {
+    'TugofWar Buffbot, Alianza',
+    nil,
+  },
+  [18218] = {
+    'Harold Sendero',
+    nil,
+  },
+  [18220] = {
+    'Vientorroc voraz',
+    nil,
+  },
+  [18222] = {
+    'Otonbu el Sabio',
+    nil,
+  },
+  [18223] = {
+    'Mo\'Mor el Rompedor',
+    nil,
+  },
+  [18224] = {
+    'Poli\'lukluk el Más Sabio',
+    nil,
+  },
+  [18225] = {
+    'Objetivo de bomba de Fuego',
+    nil,
+  },
+  [18226] = {
+    'Patriarca talbuk',
+    nil,
+  },
+  [18229] = {
+    'Colmillosauro el Joven',
+    nil,
+  },
+  [18232] = {
+    nil,
+    'Esbirro de Keyanomir',
+  },
+  [18233] = {
+    'Elementalista loki',
+    'El Anillo de la Tierra',
+  },
+  [18234] = {
+    'Elementalista Yal\'hah',
+    'El Anillo de la Tierra',
+  },
+  [18235] = {
+    'Tótem Corriente de sanación corrupto',
+    nil,
+  },
+  [18236] = {
+    'Tótem de aire corrupto',
+    nil,
+  },
+  [18237] = {
+    'Ensamblaje arcano diminuto',
+    nil,
+  },
+  [18238] = {
+    'Invasor Sangreoscura',
+    nil,
+  },
+  [18239] = {
+    'Elekk, montura (élite)',
+    nil,
+  },
+  [18240] = {
+    'Habitante de Primasol',
+    nil,
+  },
+  [18241] = {
+    'Pincitas',
+    nil,
+  },
+  [18243] = {
+    nil,
+    'Mercader',
+  },
+  [18244] = {
+    nil,
+    'Maestra de establos',
+  },
+  [18245] = {
+    nil,
+    'Tabernero',
+  },
+  [18250] = {
+    nil,
+    'Maestra de establos',
+  },
+  [18251] = {
+    'Cuidador Abidaar',
+    'Tabernero',
+  },
+  [18253] = {
+    'Archimaga Leryda',
+    nil,
+  },
+  [18254] = {
+    'Umbra de Aran',
+    nil,
+  },
+  [18255] = {
+    'Aprendiz Darius',
+    nil,
+  },
+  [18256] = {
+    'Guardia Halaani de la Alianza',
+    nil,
+  },
+  [18257] = {
+    'Destripador',
+    nil,
+  },
+  [18260] = {
+    'Invasor Puño de Roca',
+    nil,
+  },
+  [18261] = {
+    'Lantresor del Filo',
+    nil,
+  },
+  [18262] = {
+    'Unkor el Despiadado',
+    nil,
+  },
+  [18265] = {
+    nil,
+    'El Consorcio',
+  },
+  [18266] = {
+    'Suboficial Tracy Pozobravo',
+    nil,
+  },
+  [18267] = {
+    'Gritabatalla Ojonegro',
+    nil,
+  },
+  [18269] = {
+    nil,
+    'Presidente del Consorcio',
+  },
+  [18270] = {
+    nil,
+    'Instructor de chamanes',
+  },
+  [18271] = {
+    'Prospector del Consorcio',
+    nil,
+  },
+  [18272] = {
+    'Tallador de gemas del Consorcio',
+    nil,
+  },
+  [18274] = {
+    'Sobrestante del Consorcio',
+    nil,
+  },
+  [18275] = {
+    nil,
+    'Nada que ver aquí',
+  },
+  [18277] = {
+    nil,
+    'Suministros de peletería',
+  },
+  [18278] = {
+    'Piloto Marsha',
+    'Suministros de ingeniería',
+  },
+  [18280] = {
+    'Esporala',
+    nil,
+  },
+  [18281] = {
+    'Látigo de ciénaga',
+    nil,
+  },
+  [18283] = {
+    'Aguijonegro',
+    nil,
+  },
+  [18284] = {
+    'Branquifilo',
+    nil,
+  },
+  [18285] = {
+    '"Conde" Ungula',
+    nil,
+  },
+  [18289] = {
+    'Elekk dominante',
+    nil,
+  },
+  [18290] = {
+    'Eburnia',
+    'Reina de los elekks',
+  },
+  [18292] = {
+    'Refugiado Foso Sangrante',
+    nil,
+  },
+  [18293] = {
+    'Refugiado de Puesto Primasol',
+    nil,
+  },
+  [18295] = {
+    nil,
+    'Liga de Expedicionarios',
+  },
+  [18296] = {
+    'Huérfano de Puesto Primasol',
+    nil,
+  },
+  [18297] = {
+    'Abusón Puñoinfecto',
+    nil,
+  },
+  [18299] = {
+    'Huérfano Foso Sangrante',
+    nil,
+  },
+  [18300] = {
+    'Elkay\'gan el Místico',
+    nil,
+  },
+  [18301] = {
+    'Matrona Celestine',
+    nil,
+  },
+  [18302] = {
+    'Matrona Drakia',
+    nil,
+  },
+  [18303] = {
+    'Lyria Caminante del Cielo',
+    nil,
+  },
+  [18304] = {
+    'En construcción',
+    nil,
+  },
+  [18309] = {
+    'Carroñero etéreo',
+    nil,
+  },
+  [18311] = {
+    'Asaltante de tumbas etéreo',
+    nil,
+  },
+  [18312] = {
+    'Vinculahechizos etéreo',
+    nil,
+  },
+  [18313] = {
+    'Bruja etérea',
+    nil,
+  },
+  [18314] = {
+    'Acechador de El Nexo',
+    nil,
+  },
+  [18315] = {
+    'Teúrgo etéreo',
+    nil,
+  },
+  [18317] = {
+    'Sacerdote etéreo',
+    nil,
+  },
+  [18318] = {
+    'Iniciado Sethekk',
+    nil,
+  },
+  [18319] = {
+    'Arúspice Tiempo Perdido',
+    nil,
+  },
+  [18320] = {
+    'Mago de las Sombras Tiempo Perdido',
+    nil,
+  },
+  [18321] = {
+    'Lord de garra Sethekk',
+    nil,
+  },
+  [18322] = {
+    'Guardia cuervo Sethekk',
+    nil,
+  },
+  [18323] = {
+    'Guardia Sethekk',
+    nil,
+  },
+  [18325] = {
+    'Profeta Sethekk',
+    nil,
+  },
+  [18326] = {
+    'Chamán Sethekk',
+    nil,
+  },
+  [18327] = {
+    'Controlador Tiempo Perdido',
+    nil,
+  },
+  [18328] = {
+    'Oráculo Sethekk',
+    nil,
+  },
+  [18331] = {
+    'Taumaturgo oscuro etéreo',
+    nil,
+  },
+  [18334] = {
+    'Elekk salvaje',
+    nil,
+  },
+  [18335] = {
+    'Reclutador del Consorcio',
+    'El Consorcio',
+  },
+  [18336] = {
+    'Magister de Lunargenta',
+    nil,
+  },
+  [18337] = {
+    'Sacerdote Kath\'mar',
+    nil,
+  },
+  [18338] = {
+    'Alto señor Kruul',
+    nil,
+  },
+  [18340] = {
+    'Sobrestante de bomba de vapor',
+    nil,
+  },
+  [18342] = {
+    'Foco de teatro',
+    nil,
+  },
+  [18344] = {
+    'Príncipe-nexo Shaffar',
+    nil,
+  },
+  [18346] = {
+    'Conserje del Consorcio',
+    nil,
+  },
+  [18347] = {
+    nil,
+    'Suministros de pesca',
+  },
+  [18348] = {
+    'Subastador Fanin',
+    nil,
+  },
+  [18349] = {
+    'Subastadora Iressa',
+    nil,
+  },
+  [18350] = {
+    nil,
+    'Banquera',
+  },
+  [18351] = {
+    'Zoquete',
+    nil,
+  },
+  [18352] = {
+    'Cazador Puño de Roca',
+    nil,
+  },
+  [18353] = {
+    'Cazadora Bintook',
+    nil,
+  },
+  [18354] = {
+    'Crédito de la misión de Zoquete',
+    nil,
+  },
+  [18358] = {
+    'Engendro de Esporaggar',
+    nil,
+  },
+  [18368] = {
+    'Clamavacío',
+    nil,
+  },
+  [18370] = {
+    'Fisura de Sombras salvaje',
+    nil,
+  },
+  [18371] = {
+    'Shirrak el Vigía de los Muertos',
+    nil,
+  },
+  [18372] = {
+    'Estatua de piedra férrea',
+    nil,
+  },
+  [18373] = {
+    'Exarca Maladaar',
+    nil,
+  },
+  [18374] = {
+    'Enfocar Fuego',
+    nil,
+  },
+  [18381] = {
+    'Cría abisal',
+    nil,
+  },
+  [18382] = {
+    nil,
+    'Intendente de Esporaggar',
+  },
+  [18391] = {
+    'Giselda la Vieja bruja',
+    nil,
+  },
+  [18394] = {
+    'Ánima etérea',
+    nil,
+  },
+  [18396] = {
+    'Saboteador Puño de Roca',
+    nil,
+  },
+  [18397] = {
+    'Invasor Mata\'penas',
+    nil,
+  },
+  [18398] = {
+    'Dedorroto',
+    nil,
+  },
+  [18399] = {
+    'Gemelo Sangreoscura',
+    nil,
+  },
+  [18400] = {
+    'Rokdar el Señor Hendido',
+    nil,
+  },
+  [18402] = {
+    'Campeón Mazo de Guerra',
+    nil,
+  },
+  [18403] = {
+    'Esporiélago',
+    nil,
+  },
+  [18404] = {
+    'Administrador Depositario de sangre',
+    nil,
+  },
+  [18405] = {
+    'Pacificador de Forja de Tempestad',
+    nil,
+  },
+  [18407] = {
+    'Celador Tororroc',
+    nil,
+  },
+  [18408] = {
+    'Celador Moi\'bff Jill',
+    nil,
+  },
+  [18409] = {
+    'Submurciélago grande',
+    nil,
+  },
+  [18411] = {
+    'Durn el Hambriento',
+    'Hijo de Gruul',
+  },
+  [18412] = {
+    'Ciclón (La Vieja Bruja)',
+    nil,
+  },
+  [18413] = {
+    'Zorbo el Consejero',
+    nil,
+  },
+  [18414] = {
+    'Anciano Yorley',
+    nil,
+  },
+  [18415] = {
+    'Anciano Ungriz',
+    nil,
+  },
+  [18416] = {
+    'Cazadora Kima',
+    nil,
+  },
+  [18417] = {
+    'Altruis el Sufridor',
+    nil,
+  },
+  [18419] = {
+    'Conservador Depositario de Sangre',
+    nil,
+  },
+  [18420] = {
+    'Geomántico Buscasol',
+    nil,
+  },
+  [18421] = {
+    'Investigador Buscasol',
+    nil,
+  },
+  [18422] = {
+    'Botánica Buscasol',
+    nil,
+  },
+  [18423] = {
+    'Cho\'war el Saqueador',
+    nil,
+  },
+  [18424] = {
+    'Celador Treelos',
+    nil,
+  },
+  [18426] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [18427] = {
+    nil,
+    'Mercader',
+  },
+  [18428] = {
+    'Prisionero Mag\'har',
+    nil,
+  },
+  [18429] = {
+    'Maligno Arcano',
+    nil,
+  },
+  [18430] = {
+    'Aprendiz etéreo',
+    nil,
+  },
+  [18431] = {
+    'Señal etérea',
+    nil,
+  },
+  [18432] = {
+    nil,
+    'Montura de Vazruden',
+  },
+  [18437] = {
+    'Teropolilla sañosa',
+    nil,
+  },
+  [18439] = {
+    nil,
+    'Antiguo maestro de batalla de arena',
+  },
+  [18440] = {
+    'Jefe de Mazo de Guerra Bufferlo',
+    nil,
+  },
+  [18441] = {
+    'Alma robada',
+    nil,
+  },
+  [18442] = {
+    nil,
+    'Liga de Expedicionarios',
+  },
+  [18443] = {
+    'Oteador Nodak',
+    nil,
+  },
+  [18446] = {
+    'Vinculador terrestre Tavgren',
+    nil,
+  },
+  [18449] = {
+    'Garroso Shienor',
+    nil,
+  },
+  [18450] = {
+    'Hechicero Shienor',
+    nil,
+  },
+  [18451] = {
+    'Guardia del aire Shienor',
+    nil,
+  },
+  [18452] = {
+    'Halcón temible Skithian',
+    nil,
+  },
+  [18453] = {
+    'Desgarrador del viento Skithian',
+    nil,
+  },
+  [18454] = {
+    'Guardagarra Shalassi',
+    nil,
+  },
+  [18455] = {
+    'Oráculo Shalassi',
+    nil,
+  },
+  [18456] = {
+    'Carroñero Tuurem',
+    nil,
+  },
+  [18457] = {
+    'Cazador Tuurem',
+    nil,
+  },
+  [18458] = {
+    'Resguardo de Velo Shalas',
+    'No deberías verme',
+  },
+  [18459] = {
+    'Jenai Susurrestelar',
+    nil,
+  },
+  [18460] = {
+    'Espíritu perdido',
+    nil,
+  },
+  [18461] = {
+    'Basilisco Escama Húmeda',
+    nil,
+  },
+  [18462] = {
+    'Avizor Shalassi',
+    nil,
+  },
+  [18463] = {
+    'Devorador Escama Húmeda',
+    nil,
+  },
+  [18464] = {
+    'Acechador de distorsión',
+    nil,
+  },
+  [18465] = {
+    'Cazador de distorsión',
+    nil,
+  },
+  [18466] = {
+    'Rondador Colminferno',
+    nil,
+  },
+  [18467] = {
+    'Viuda Colminferno',
+    nil,
+  },
+  [18468] = {
+    'Teropolilla',
+    nil,
+  },
+  [18469] = {
+    'Teropolilla real',
+    nil,
+  },
+  [18470] = {
+    'Atizahuesos',
+    nil,
+  },
+  [18472] = {
+    'Tejeoscuro Syth',
+    nil,
+  },
+  [18473] = {
+    'Rey Garra Ikiss',
+    nil,
+  },
+  [18474] = {
+    'Viejo y cutre MacSalsafloja',
+    nil,
+  },
+  [18476] = {
+    'Huargo gris',
+    nil,
+  },
+  [18477] = {
+    'Huargo gris alfa',
+    nil,
+  },
+  [18478] = {
+    'Avatar de los Martirizados',
+    nil,
+  },
+  [18479] = {
+    'Trampa de fuego de Vazruden',
+    nil,
+  },
+  [18480] = {
+    'Cadáver de Tábido',
+    nil,
+  },
+  [18483] = {
+    'Guardaespaldas de Empoor',
+    nil,
+  },
+  [18484] = {
+    'Comerciante de viento Lathrai',
+    nil,
+  },
+  [18485] = {
+    'Anciano de la guerra elfo de la noche',
+    nil,
+  },
+  [18486] = {
+    'Anciano del conocimiento elfo de la noche',
+    nil,
+  },
+  [18487] = {
+    'Anciano protector elfo de la noche',
+    nil,
+  },
+  [18488] = {
+    'Vigía Telaari',
+    nil,
+  },
+  [18489] = {
+    'Defensor de Garadar',
+    nil,
+  },
+  [18490] = {
+    'Druida caído',
+    nil,
+  },
+  [18491] = {
+    'Tótem Velo Shalas',
+    'No deberías verme',
+  },
+  [18492] = {
+    'Kodo de Tavgren',
+    nil,
+  },
+  [18493] = {
+    'Sacerdote de almas Auchenai',
+    nil,
+  },
+  [18495] = {
+    'Vindicador Auchenai',
+    nil,
+  },
+  [18497] = {
+    'Monje Auchenai',
+    nil,
+  },
+  [18498] = {
+    'Soldado sin vida',
+    nil,
+  },
+  [18499] = {
+    'Hechicero sin vida',
+    nil,
+  },
+  [18500] = {
+    'Clérigo sin vida',
+    nil,
+  },
+  [18501] = {
+    'Acechador sin vida',
+    nil,
+  },
+  [18502] = {
+    'Fuego fatuo de elfo de la noche',
+    nil,
+  },
+  [18503] = {
+    'Posesor fantasmal',
+    nil,
+  },
+  [18504] = {
+    'Muñeco de prácticas de Lunargenta',
+    nil,
+  },
+  [18506] = {
+    'Alma enfurecida',
+    nil,
+  },
+  [18507] = {
+    'Errante de Lunargenta',
+    nil,
+  },
+  [18521] = {
+    'Esqueleto enfurecido',
+    nil,
+  },
+  [18524] = {
+    'Esqueleto enfadado',
+    nil,
+  },
+  [18527] = {
+    'Conjurador Tyren',
+    nil,
+  },
+  [18530] = {
+    'Voren\'thal el vidente',
+    nil,
+  },
+  [18531] = {
+    nil,
+    'Los Arúspices',
+  },
+  [18533] = {
+    'Luanga el Carcelero',
+    nil,
+  },
+  [18534] = {
+    'Soldado de Odio',
+    nil,
+  },
+  [18535] = {
+    'Demos, Sobrestante del Odio',
+    nil,
+  },
+  [18536] = {
+    'Xirkos, Sobrestante del Miedo',
+    nil,
+  },
+  [18537] = {
+    'Adyen el Celador de la Luz',
+    nil,
+  },
+  [18538] = {
+    nil,
+    'Suma sacerdotisa de los Aldor',
+  },
+  [18542] = {
+    'Alexston Cromo',
+    'La Taberna del Tiempo',
+  },
+  [18546] = {
+    'Montura de elekk salvaje Sangreoscura',
+    nil,
+  },
+  [18547] = {
+    'Arcanista Arúspice',
+    nil,
+  },
+  [18548] = {
+    'Mensajero Ala de Fuego',
+    nil,
+  },
+  [18549] = {
+    'Vindicador Aldor',
+    nil,
+  },
+  [18550] = {
+    'Emboscador Tuurem',
+    nil,
+  },
+  [18552] = {
+    'Mampostero Aldor',
+    nil,
+  },
+  [18556] = {
+    'Soldado de fase',
+    nil,
+  },
+  [18557] = {
+    'Clérigo en fase',
+    nil,
+  },
+  [18558] = {
+    'Hechicero de fase',
+    nil,
+  },
+  [18559] = {
+    'Acechador de fase',
+    nil,
+  },
+  [18562] = {
+    'Runa terrenal morada',
+    nil,
+  },
+  [18564] = {
+    'Explorador de campo de la Horda',
+    nil,
+  },
+  [18565] = {
+    'Theloria Capasombría',
+    nil,
+  },
+  [18566] = {
+    'Acechasombras Kaide',
+    nil,
+  },
+  [18567] = {
+    'Maestro planificador Mo\'arg',
+    nil,
+  },
+  [18568] = {
+    'Guardián Arcano Arúspice',
+    nil,
+  },
+  [18581] = {
+    'Explorador de campo de la Alianza',
+    nil,
+  },
+  [18583] = {
+    'Lisaile Tejefuego',
+    nil,
+  },
+  [18585] = {
+    'Raliq el Borracho',
+    nil,
+  },
+  [18587] = {
+    'Rasgador',
+    nil,
+  },
+  [18593] = {
+    'Criado Arúspice',
+    nil,
+  },
+  [18594] = {
+    'Dathris Golpesol',
+    nil,
+  },
+  [18595] = {
+    'Peón distorsionado',
+    nil,
+  },
+  [18596] = {
+    'Arcanista Adyria',
+    'Los Arúspices',
+  },
+  [18597] = {
+    nil,
+    'Los Aldor',
+  },
+  [18598] = {
+    'Prisionero orco',
+    nil,
+  },
+  [18599] = {
+    'Emisor de aura de El Exodar',
+    nil,
+  },
+  [18600] = {
+    'Refugiado herido',
+    nil,
+  },
+  [18626] = {
+    'Practicante Alcor',
+    nil,
+  },
+  [18627] = {
+    'Practicante Firea',
+    nil,
+  },
+  [18628] = {
+    'Practicante Sinthar',
+    nil,
+  },
+  [18629] = {
+    'Instructora Cel',
+    nil,
+  },
+  [18631] = {
+    'Cultor de la Cábala',
+    nil,
+  },
+  [18632] = {
+    'Verdugo de la Cábala',
+    nil,
+  },
+  [18633] = {
+    'Acólito de la Cábala',
+    nil,
+  },
+  [18634] = {
+    'Invocadora de la Cábala',
+    nil,
+  },
+  [18635] = {
+    'Juramorte de la Cábala',
+    nil,
+  },
+  [18636] = {
+    'Asesino de la Cábala',
+    nil,
+  },
+  [18637] = {
+    'Sacerdote de las Sombras de la Cábala',
+    nil,
+  },
+  [18638] = {
+    'Zelote de la Cábala',
+    nil,
+  },
+  [18639] = {
+    'Vinculahechizos de la Cábala',
+    nil,
+  },
+  [18640] = {
+    'Brujo de la Cábala',
+    nil,
+  },
+  [18641] = {
+    'Familiar de la Cábala',
+    nil,
+  },
+  [18642] = {
+    'Can de guardia vil',
+    nil,
+  },
+  [18643] = {
+    'Barnes (esmoquin)',
+    'El Director de escena',
+  },
+  [18644] = {
+    'Campesino de Molino Tarren',
+    nil,
+  },
+  [18646] = {
+    'Mozo de cuadra de Molino Tarren',
+    nil,
+  },
+  [18647] = {
+    'Danzarina de la Muerte',
+    nil,
+  },
+  [18648] = {
+    'Mirada Pétrea',
+    nil,
+  },
+  [18649] = {
+    'Tabernera Monica',
+    nil,
+  },
+  [18650] = {
+    'Caballo de Molino Tarren',
+    nil,
+  },
+  [18651] = {
+    'Joven Blanchy',
+    nil,
+  },
+  [18656] = {
+    'Julie Pozo de Miel',
+    nil,
+  },
+  [18657] = {
+    'Pescador de Molino Tarren',
+    nil,
+  },
+  [18658] = {
+    'Ritualista Mata\'penas',
+    nil,
+  },
+  [18659] = {
+    'Ánima del vacío',
+    nil,
+  },
+  [18660] = {
+    'Subyugadora Vaz\'shir',
+    nil,
+  },
+  [18661] = {
+    'Guarda terrorífico',
+    nil,
+  },
+  [18662] = {
+    'Ancestro orco',
+    nil,
+  },
+  [18663] = {
+    'Doncella de Disciplina',
+    nil,
+  },
+  [18664] = {
+    'Zahorí de Dalaran envejecido',
+    nil,
+  },
+  [18665] = {
+    'Infestar objetivo',
+    nil,
+  },
+  [18666] = {
+    'Hechicera de Dalaran',
+    nil,
+  },
+  [18667] = {
+    'Negrozón el Incitador',
+    nil,
+  },
+  [18669] = {
+    'Terric Viento Claro',
+    nil,
+  },
+  [18670] = {
+    'Quijahierro',
+    nil,
+  },
+  [18671] = {
+    'Sacerdote Ennas',
+    nil,
+  },
+  [18672] = {
+    nil,
+    'Vendedor ambulante',
+  },
+  [18673] = {
+    'Locutor del foso',
+    nil,
+  },
+  [18676] = {
+    nil,
+    'Esbirro de Kurgatok',
+  },
+  [18677] = {
+    'Mekthorg el Salvaje',
+    nil,
+  },
+  [18678] = {
+    'Atiborrador',
+    nil,
+  },
+  [18679] = {
+    'Vorakem Augurador',
+    'Heraldo del Señor de fatalidad Kazzak',
+  },
+  [18681] = {
+    'Emisaria Colmillo Torcido',
+    nil,
+  },
+  [18682] = {
+    'Rondador de ciénaga',
+    nil,
+  },
+  [18683] = {
+    'Cazador del vacío Yar',
+    nil,
+  },
+  [18684] = {
+    'Bro\'Gaz sin Clan',
+    nil,
+  },
+  [18686] = {
+    'Orador del Sino Jurim',
+    nil,
+  },
+  [18687] = {
+    'Madre Kashur',
+    nil,
+  },
+  [18688] = {
+    'Antepasado orco ancestral',
+    nil,
+  },
+  [18689] = {
+    'Lisiador',
+    nil,
+  },
+  [18690] = {
+    'Morchaca',
+    nil,
+  },
+  [18691] = {
+    'Tótem de las Sombras',
+    nil,
+  },
+  [18693] = {
+    'Portavoz Mar\'grom',
+    nil,
+  },
+  [18694] = {
+    'Collidus el Vigía',
+    nil,
+  },
+  [18695] = {
+    'Embajador Jerrikar',
+    'Siervo de Illidan',
+  },
+  [18697] = {
+    'Ingeniero jefe Lorthander',
+    nil,
+  },
+  [18698] = {
+    'Núcleo eterno el Castigador',
+    nil,
+  },
+  [18700] = {
+    'Huesos reanimados',
+    nil,
+  },
+  [18701] = {
+    'Vórtice de la oscuridad',
+    nil,
+  },
+  [18702] = {
+    'Nigromante Auchenai',
+    nil,
+  },
+  [18703] = {
+    'Espíritu Sethekk',
+    nil,
+  },
+  [18704] = {
+    'Taela Semprerguida',
+    nil,
+  },
+  [18705] = {
+    'Mawg Tirosiniestro',
+    nil,
+  },
+  [18706] = {
+    'Lobo de montar Mascahuesos',
+    nil,
+  },
+  [18708] = {
+    'Murmullo',
+    nil,
+  },
+  [18712] = {
+    'Consejera Faila',
+    nil,
+  },
+  [18713] = {
+    'Teniente Gravamartillo',
+    nil,
+  },
+  [18714] = {
+    'Exploradora Neftis',
+    nil,
+  },
+  [18715] = {
+    'Soldado Semanas',
+    nil,
+  },
+  [18716] = {
+    'Iniciado enigmático',
+    nil,
+  },
+  [18717] = {
+    'Obrero enigmático',
+    nil,
+  },
+  [18718] = {
+    'Cazador enigmático',
+    nil,
+  },
+  [18719] = {
+    'Consejero enigmático',
+    nil,
+  },
+  [18720] = {
+    'Maestro de las Sombras Pena',
+    nil,
+  },
+  [18722] = {
+    'Obrero gnomo paria',
+    nil,
+  },
+  [18725] = {
+    'Insolente',
+    nil,
+  },
+  [18726] = {
+    'Alma voladora enfurecida',
+    nil,
+  },
+  [18728] = {
+    'Señor de fatalidad Kazzak',
+    nil,
+  },
+  [18730] = {
+    nil,
+    'Esbirro de Keelen Capas',
+  },
+  [18731] = {
+    'Embajador Faucinferno',
+    nil,
+  },
+  [18732] = {
+    'Maestro mayor Vorpil',
+    nil,
+  },
+  [18733] = {
+    'Atracador vil',
+    nil,
+  },
+  [18734] = {
+    'Estatua de piedra burda',
+    nil,
+  },
+  [18735] = {
+    'Estatua de piedra pesada',
+    nil,
+  },
+  [18736] = {
+    'Estatua de piedra sólida',
+    nil,
+  },
+  [18737] = {
+    'Estatua de piedra densa',
+    nil,
+  },
+  [18738] = {
+    'Estatua de piedra primigenia',
+    nil,
+  },
+  [18739] = {
+    'Jirafa',
+    nil,
+  },
+  [18740] = {
+    'Serpiente',
+    nil,
+  },
+  [18741] = {
+    'Dracohalcón',
+    nil,
+  },
+  [18742] = {
+    'Huargen',
+    nil,
+  },
+  [18745] = {
+    'Capitán Auric Cazasol',
+    nil,
+  },
+  [18747] = {
+    nil,
+    'Instructor de minería',
+  },
+  [18748] = {
+    'Ruak Cuerno Fuerte',
+    'Instructora de herboristería',
+  },
+  [18749] = {
+    nil,
+    'Instructora de sastrería',
+  },
+  [18750] = {
+    'Anguila Brilloescama',
+    nil,
+  },
+  [18751] = {
+    nil,
+    'Instructora de joyería',
+  },
+  [18752] = {
+    nil,
+    'Instructora de ingeniería',
+  },
+  [18753] = {
+    nil,
+    'Instructora de encantamiento',
+  },
+  [18754] = {
+    'Barim Pezuña Partida',
+    'Instructor de peletería',
+  },
+  [18755] = {
+    nil,
+    'Instructor de desuello',
+  },
+  [18756] = {
+    nil,
+    'Famoso',
+  },
+  [18758] = {
+    'Protector Telhamat',
+    nil,
+  },
+  [18760] = {
+    'Isla Peloestrella',
+    nil,
+  },
+  [18761] = {
+    'Subastadora Darise',
+    nil,
+  },
+  [18762] = {
+    'Campanilla',
+    'Mascota de Haris Pilton',
+  },
+  [18763] = {
+    'Elfo de sangre brujo',
+    nil,
+  },
+  [18764] = {
+    'Armero de Durnholde',
+    nil,
+  },
+  [18765] = {
+    'Cocinera de Durnholde',
+    nil,
+  },
+  [18766] = {
+    'Poza de almas',
+    nil,
+  },
+  [18768] = {
+    'Taxi descarado',
+    nil,
+  },
+  [18770] = {
+    'Soldado del Terrror',
+    nil,
+  },
+  [18771] = {
+    nil,
+    'Instructor de peletería',
+  },
+  [18772] = {
+    nil,
+    'Instructora de sastrería',
+  },
+  [18773] = {
+    nil,
+    'Instructora de encantamiento',
+  },
+  [18774] = {
+    nil,
+    'Instructora de joyería',
+  },
+  [18775] = {
+    nil,
+    'Instructora de ingeniería',
+  },
+  [18776] = {
+    nil,
+    'Instructora de herboristería',
+  },
+  [18777] = {
+    'Jelena Cielo Nocturno',
+    'Instructor de desuello',
+  },
+  [18779] = {
+    nil,
+    'Instructor de minería',
+  },
+  [18781] = {
+    'Faenel el Borrachuzo',
+    nil,
+  },
+  [18783] = {
+    nil,
+    'Camarero',
+  },
+  [18785] = {
+    nil,
+    'Maestro de hipogrifos',
+  },
+  [18788] = {
+    nil,
+    'Maestro de hipogrifos',
+  },
+  [18789] = {
+    nil,
+    'Maestro de hipogrifos',
+  },
+  [18790] = {
+    'Vigía de las puertas Aendor',
+    nil,
+  },
+  [18791] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [18792] = {
+    'Ciudadano acosado',
+    nil,
+  },
+  [18793] = {
+    'Objetivo invisible',
+    nil,
+  },
+  [18794] = {
+    'Ritualista de la Cábala',
+    nil,
+  },
+  [18795] = {
+    'Tótem agostador inferior',
+    nil,
+  },
+  [18796] = {
+    'Sobrestante vil',
+    nil,
+  },
+  [18797] = {
+    'Esqueleto torturado',
+    nil,
+  },
+  [18798] = {
+    'Mortura de Skarloc',
+    nil,
+  },
+  [18799] = {
+    'Ciudadano de Lunargenta',
+    nil,
+  },
+  [18800] = {
+    'Trabajador',
+    nil,
+  },
+  [18801] = {
+    'Maestro encantador Theopolus',
+    nil,
+  },
+  [18802] = {
+    'Alquimista Gribble',
+    'Instructor de alquimia',
+  },
+  [18803] = {
+    'Embajador Semprepino Frasaboo',
+    'Enviado de los Semprepino',
+  },
+  [18804] = {
+    nil,
+    'Liga de Expedicionarios',
+  },
+  [18805] = {
+    'Gran astromante Solarian',
+    nil,
+  },
+  [18806] = {
+    'Sacerdote Solarium',
+    nil,
+  },
+  [18807] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [18808] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [18809] = {
+    'Furnan Remontada',
+    'Maestro de grifos',
+  },
+  [18810] = {
+    nil,
+    'Pertrechos',
+  },
+  [18811] = {
+    nil,
+    'Pertrechos',
+  },
+  [18815] = {
+    'Prosélito de El Exodar',
+    nil,
+  },
+  [18816] = {
+    'Jefa de investigación Amereldine',
+    nil,
+  },
+  [18817] = {
+    'Jefe de investigación Kartos',
+    nil,
+  },
+  [18818] = {
+    nil,
+    'Nada que ver aquí',
+  },
+  [18819] = {
+    'Líder de prosélitos de El Exodar',
+    nil,
+  },
+  [18820] = {
+    'Líder de prosélitos de El Exodar 2',
+    nil,
+  },
+  [18821] = {
+    'Intendente Jaffrey Noreliqe',
+    nil,
+  },
+  [18822] = {
+    'Intendente Davian Vaclav',
+    nil,
+  },
+  [18823] = {
+    'Espíritu de agua menor',
+    nil,
+  },
+  [18824] = {
+    'Espíritu de fuego menor',
+    nil,
+  },
+  [18825] = {
+    'Espíritu de aire menor',
+    nil,
+  },
+  [18826] = {
+    'Espíritu de tierra menor',
+    nil,
+  },
+  [18827] = {
+    'Zapador Gan\'arg',
+    nil,
+  },
+  [18829] = {
+    'Depositaria Fuego Infernal',
+    nil,
+  },
+  [18830] = {
+    'Fanático de la Cábala',
+    nil,
+  },
+  [18831] = {
+    'Su majestad Maulgar',
+    'Señor de los ogros',
+  },
+  [18832] = {
+    'Krosh Manofuego',
+    nil,
+  },
+  [18834] = {
+    'Olm el Invocador',
+    nil,
+  },
+  [18835] = {
+    'Kiggler el Enloquecido',
+    nil,
+  },
+  [18836] = {
+    'Ciego el Vidente',
+    nil,
+  },
+  [18838] = {
+    'Señor de la Noche Malphas',
+    nil,
+  },
+  [18839] = {
+    'Cigala mágica',
+    nil,
+  },
+  [18844] = {
+    'Porteador',
+    nil,
+  },
+  [18845] = {
+    'Tenacitas benevolente',
+    nil,
+  },
+  [18846] = {
+    'Tenacitas furioso',
+    nil,
+  },
+  [18847] = {
+    'Acechador vil salvaje',
+    nil,
+  },
+  [18848] = {
+    'Instructora maliciosa',
+    nil,
+  },
+  [18849] = {
+    nil,
+    'Nada que ver aquí',
+  },
+  [18850] = {
+    'Custodio Furia del Sol',
+    nil,
+  },
+  [18851] = {
+    'Protector dracohalcón',
+    nil,
+  },
+  [18852] = {
+    'Ingeniero de distorsión',
+    nil,
+  },
+  [18853] = {
+    'Depositario de sangre Furia del Sol',
+    nil,
+  },
+  [18854] = {
+    'Dracohalcón inestable',
+    nil,
+  },
+  [18855] = {
+    'Magister Furia del Sol',
+    nil,
+  },
+  [18856] = {
+    'Aniquilador Arcano',
+    nil,
+  },
+  [18857] = {
+    'Maestra de distorsión Furia del Sol',
+    nil,
+  },
+  [18858] = {
+    'Encolerizador',
+    nil,
+  },
+  [18859] = {
+    'Sacerdotisa de la cólera',
+    nil,
+  },
+  [18860] = {
+    'Hija del destino',
+    nil,
+  },
+  [18861] = {
+    'Táctico eredar',
+    nil,
+  },
+  [18862] = {
+    'Señor supremo aterrador',
+    nil,
+  },
+  [18863] = {
+    'Engendro de maná',
+    nil,
+  },
+  [18864] = {
+    'Ánima de maná',
+    nil,
+  },
+  [18865] = {
+    'Aberración de distorsión',
+    nil,
+  },
+  [18866] = {
+    'Asesino de magos',
+    nil,
+  },
+  [18867] = {
+    'Buscamaná',
+    nil,
+  },
+  [18868] = {
+    'Maligno del vacío',
+    nil,
+  },
+  [18869] = {
+    'Ánima del vacío inestable',
+    nil,
+  },
+  [18870] = {
+    'Chillón del vacío',
+    nil,
+  },
+  [18871] = {
+    'Señor del vacío',
+    nil,
+  },
+  [18872] = {
+    'Vindicador incorpóreo',
+    nil,
+  },
+  [18873] = {
+    'Protector incorpóreo',
+    nil,
+  },
+  [18874] = {
+    'Ladrón de hechizos Zaxxis',
+    nil,
+  },
+  [18875] = {
+    'Asaltante Zaxxis',
+    nil,
+  },
+  [18876] = {
+    'Prole de fase',
+    nil,
+  },
+  [18877] = {
+    'Draco abisal',
+    nil,
+  },
+  [18878] = {
+    'Bestia de distorsión',
+    nil,
+  },
+  [18879] = {
+    'Cazador de fase',
+    nil,
+  },
+  [18880] = {
+    'Raya abisal',
+    nil,
+  },
+  [18881] = {
+    'Estruendor hendido',
+    nil,
+  },
+  [18882] = {
+    'Tronador hendido',
+    nil,
+  },
+  [18883] = {
+    'Pargo de maná',
+    nil,
+  },
+  [18884] = {
+    'Persecutor de distorsión',
+    nil,
+  },
+  [18885] = {
+    'Gigante Farahlon',
+    nil,
+  },
+  [18886] = {
+    'Rompedor Farahlon',
+    nil,
+  },
+  [18888] = {
+    nil,
+    'Teletransporte a Entrañas',
+  },
+  [18889] = {
+    'Maltrake, Sirviente de Rommath',
+    'Teletransporte a la ciudad de Lunargenta',
+  },
+  [18891] = {
+    'Espía To\'gun',
+    nil,
+  },
+  [18892] = {
+    'Minero Tábido',
+    nil,
+  },
+  [18893] = {
+    'Maestra de espías Mehlisah Solcorona',
+    nil,
+  },
+  [18894] = {
+    'Tosco guardia vil',
+    nil,
+  },
+  [18895] = {
+    'Muerde-orejas',
+    'Maestro de batalla de arena',
+  },
+  [18896] = {
+    'Emisor holográfico de El Exodar',
+    nil,
+  },
+  [18897] = {
+    '"Rey" Dond',
+    'Organizadora de arena',
+  },
+  [18898] = {
+    'Explodyne Esfuerzovano',
+    'Intendente de conquista',
+  },
+  [18904] = {
+    'Visión de los Olvidados',
+    nil,
+  },
+  [18905] = {
+    'Tabernero Bazil Olof\'tazun',
+    'Tabernero',
+  },
+  [18906] = {
+    'Cuidadora Ophera Güinfri',
+    'Tabernero',
+  },
+  [18907] = {
+    'Tabernero Coryth Stoktron',
+    'Tabernero',
+  },
+  [18908] = {
+    'Tabernero Kerp',
+    'Tabernero',
+  },
+  [18909] = {
+    'Guardia Zabra\'jin',
+    nil,
+  },
+  [18910] = {
+    'Guardia de Rata del Pantano',
+    nil,
+  },
+  [18911] = {
+    nil,
+    'Suministros de pesca',
+  },
+  [18912] = {
+    'Esporote',
+    nil,
+  },
+  [18913] = {
+    'Matrona Tikkit',
+    'Tabernero',
+  },
+  [18914] = {
+    'Cuidadora Isel',
+    'Tabernero',
+  },
+  [18915] = {
+    'Supervisor Dunaer',
+    nil,
+  },
+  [18921] = {
+    'Artificiero Drenin',
+    nil,
+  },
+  [18922] = {
+    'Guardia de Telredor',
+    nil,
+  },
+  [18924] = {
+    'Artificiero Andren',
+    nil,
+  },
+  [18925] = {
+    'Agente Solarium',
+    nil,
+  },
+  [18926] = {
+    nil,
+    'Vendedor de armas',
+  },
+  [18927] = {
+    'Plebeyo humano',
+    nil,
+  },
+  [18929] = {
+    nil,
+    'Vendedora de queso',
+  },
+  [18930] = {
+    'Vlagga Plumacalma',
+    'Maestra de jinetes del viento',
+  },
+  [18931] = {
+    'Amish Martillo Salvaje',
+    'Maestro de grifos',
+  },
+  [18934] = {
+    'Mago de Durnholde',
+    nil,
+  },
+  [18937] = {
+    'Amerun Hojasombra',
+    'Maestro de hipogrifos',
+  },
+  [18938] = {
+    nil,
+    'Maestro de vuelo',
+  },
+  [18939] = {
+    'Brubeck Pie de Tormenta',
+    'Maestro de grifos',
+  },
+  [18940] = {
+    nil,
+    'Maestro de vuelo',
+  },
+  [18942] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [18943] = {
+    'Defensor de Puerto Orebor',
+    nil,
+  },
+  [18944] = {
+    'Soldado vil',
+    nil,
+  },
+  [18945] = {
+    'Comandante de foso',
+    nil,
+  },
+  [18946] = {
+    'Rompedor de asedio infernal',
+    nil,
+  },
+  [18947] = {
+    nil,
+    'Vendedora de bolsas',
+  },
+  [18948] = {
+    'Soldado de Ventormenta',
+    nil,
+  },
+  [18949] = {
+    'Mago de Ventormenta',
+    nil,
+  },
+  [18950] = {
+    'Bruto de Orgrimmar',
+    nil,
+  },
+  [18951] = {
+    nil,
+    'Vendedora de encantamiento',
+  },
+  [18952] = {
+    'Carroñero Mascahuesos',
+    nil,
+  },
+  [18953] = {
+    'Unoke Pezuña Tierna',
+    'Maestra de jinetes del viento',
+  },
+  [18954] = {
+    'Marinero Melinan',
+    'Vendedor de bebidas',
+  },
+  [18957] = {
+    'Tabernera Grilka',
+    'Tabernero',
+  },
+  [18959] = {
+    nil,
+    'Pertrechos',
+  },
+  [18960] = {
+    nil,
+    'Objetos comerciables',
+  },
+  [18961] = {
+    'Engendrador del vacío',
+    nil,
+  },
+  [18962] = {
+    nil,
+    'Fabricante de arcos',
+  },
+  [18963] = {
+    'Cazadora vientorroc',
+    nil,
+  },
+  [18964] = {
+    'Talbuk herido',
+    nil,
+  },
+  [18965] = {
+    'Arquera darnassiana',
+    nil,
+  },
+  [18966] = {
+    'Justinius el Presagista',
+    nil,
+  },
+  [18969] = {
+    'Melgromm Monte Alto',
+    nil,
+  },
+  [18970] = {
+    'Lanzahachas Lanza Negra',
+    nil,
+  },
+  [18971] = {
+    'Mago de Entrañas',
+    nil,
+  },
+  [18972] = {
+    'Chamán de Orgrimmar',
+    nil,
+  },
+  [18973] = {
+    'Bruto Rompepedras',
+    nil,
+  },
+  [18975] = {
+    'Guardia de cólera',
+    nil,
+  },
+  [18977] = {
+    'Destructor guardia vil',
+    nil,
+  },
+  [18978] = {
+    'Duende dardo vil',
+    nil,
+  },
+  [18981] = {
+    'Susurro del Destino',
+    nil,
+  },
+  [18982] = {
+    'Jaguar sable',
+    nil,
+  },
+  [18983] = {
+    'Tarántula Colmillo Negro',
+    nil,
+  },
+  [18984] = {
+    nil,
+    'Maestra de establos',
+  },
+  [18985] = {
+    'Vidente Skaltesh',
+    nil,
+  },
+  [18986] = {
+    'Paladín de Forjaz',
+    nil,
+  },
+  [18987] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [18988] = {
+    nil,
+    'Instructor de cocina',
+  },
+  [18989] = {
+    'Guardia Rompepedras',
+    nil,
+  },
+  [18990] = {
+    nil,
+    'Médico militar',
+  },
+  [18991] = {
+    nil,
+    'Médico militar',
+  },
+  [18992] = {
+    'Capitán Krosh',
+    nil,
+  },
+  [18993] = {
+    nil,
+    'Suministros de cocina',
+  },
+  [18994] = {
+    'Verdugo Infinito',
+    nil,
+  },
+  [18995] = {
+    'Vencedor Infinito',
+    nil,
+  },
+  [18996] = {
+    'Cazador vientorroc',
+    nil,
+  },
+  [18997] = {
+    'Fallesh Camposol',
+    'Mercader de armas',
+  },
+  [18998] = {
+    'Lursa Camposol',
+    'Componentes',
+  },
+  [18999] = {
+    'Defensor Allerian',
+    nil,
+  },
+  [19000] = {
+    'Elfo noble forestal',
+    nil,
+  },
+  [19001] = {
+    nil,
+    'Mercader de armas',
+  },
+  [19002] = {
+    'Gardok Partequijadas',
+    nil,
+  },
+  [19003] = {
+    'Jinete Allerian',
+    nil,
+  },
+  [19004] = {
+    nil,
+    'Componentes',
+  },
+  [19005] = {
+    'Maestro de cólera',
+    nil,
+  },
+  [19006] = {
+    'Magister de Lunargenta',
+    nil,
+  },
+  [19007] = {
+    'Conjurador de Gnomeregan',
+    nil,
+  },
+  [19008] = {
+    nil,
+    'Nada que ver aquí',
+  },
+  [19009] = {
+    nil,
+    'Nada que ver aquí',
+  },
+  [19011] = {
+    'Osrok el Inamovible',
+    'Suministros de herrería y forja de armaduras',
+  },
+  [19012] = {
+    nil,
+    'Suministros de herrería y forja de armaduras',
+  },
+  [19013] = {
+    nil,
+    'Suministros de venenos y componentes',
+  },
+  [19014] = {
+    nil,
+    'Suministros de venenos y componentes',
+  },
+  [19015] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [19016] = {
+    'Familiar Fuego Infernal',
+    nil,
+  },
+  [19017] = {
+    nil,
+    'Suministros comerciales',
+  },
+  [19018] = {
+    'Wilda Crinoso',
+    'Maestra de establos',
+  },
+  [19019] = {
+    nil,
+    'Maestra de establos',
+  },
+  [19020] = {
+    'Matrona Qualia',
+    'Pertrechos',
+  },
+  [19021] = {
+    nil,
+    'Pertrechos',
+  },
+  [19022] = {
+    'Pantera de establo',
+    nil,
+  },
+  [19023] = {
+    'Zancaalta de establo',
+    nil,
+  },
+  [19024] = {
+    'Jabalí de establo',
+    nil,
+  },
+  [19025] = {
+    'Oso de establo',
+    nil,
+  },
+  [19026] = {
+    'Raptor de establo',
+    nil,
+  },
+  [19027] = {
+    'León Kurenai de establo',
+    nil,
+  },
+  [19030] = {
+    'Pantera Kurenai de establo',
+    nil,
+  },
+  [19031] = {
+    'Jabalí Kurenai de establo',
+    nil,
+  },
+  [19033] = {
+    nil,
+    'Matrona',
+  },
+  [19034] = {
+    nil,
+    'Banquera',
+  },
+  [19038] = {
+    'Oficial de suministros Mills',
+    'Raciones',
+  },
+  [19041] = {
+    'Saltatrón 4000',
+    nil,
+  },
+  [19042] = {
+    'Leeli Regateo',
+    'Objetos comerciables',
+  },
+  [19043] = {
+    nil,
+    'Vendedor de bastones',
+  },
+  [19044] = {
+    'Gruul el Asesino de Dragones',
+    nil,
+  },
+  [19045] = {
+    nil,
+    'Mercader de pescado',
+  },
+  [19046] = {
+    nil,
+    'Tabernero',
+  },
+  [19047] = {
+    nil,
+    'Mercader de armas de filo',
+  },
+  [19048] = {
+    'Peón Rompepedras',
+    nil,
+  },
+  [19049] = {
+    nil,
+    'Suministros de venenos',
+  },
+  [19050] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [19052] = {
+    nil,
+    'Instructor de alquimia',
+  },
+  [19053] = {
+    nil,
+    'Pertrechos y bolsas',
+  },
+  [19054] = {
+    'Nuevo instructor de equitación',
+    'Instructor',
+  },
+  [19055] = {
+    'Matriarca vientoroc',
+    nil,
+  },
+  [19056] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [19063] = {
+    nil,
+    'Instructora de joyería',
+  },
+  [19065] = {
+    nil,
+    'Vendedora de suministros de joyería',
+  },
+  [19066] = {
+    'Coloso de pellejo de cristal',
+    nil,
+  },
+  [19067] = {
+    'Cañón vil: Odio',
+    nil,
+  },
+  [19068] = {
+    'Jinete de lobos de Garadar',
+    nil,
+  },
+  [19069] = {
+    'Lobo de montar de Garadar',
+    nil,
+  },
+  [19070] = {
+    'Holodiablillo',
+    nil,
+  },
+  [19071] = {
+    'Jinete de elekks Telaari',
+    nil,
+  },
+  [19072] = {
+    'Montura de elekk Telaar',
+    nil,
+  },
+  [19073] = {
+    'Pardillo',
+    nil,
+  },
+  [19074] = {
+    nil,
+    'Suministros de alquimia',
+  },
+  [19075] = {
+    'Marginado Skettis',
+    nil,
+  },
+  [19076] = {
+    'Elfo noble refugiado',
+    nil,
+  },
+  [19077] = {
+    'Refugiado enano',
+    nil,
+  },
+  [19120] = {
+    'Refugiado Tábido',
+    nil,
+  },
+  [19133] = {
+    'Ohlorn Errante',
+    'Safari Nesingwary',
+  },
+  [19134] = {
+    'Despellejador Guadaña de Piedra',
+    nil,
+  },
+  [19135] = {
+    'Desgarrador Guadaña de Piedra',
+    nil,
+  },
+  [19136] = {
+    'Diablillo despiertallamas',
+    nil,
+  },
+  [19137] = {
+    'Jones "Escopeta"',
+    'Safari Nesingwary',
+  },
+  [19138] = {
+    'Auxiliar anacoreta',
+    nil,
+  },
+  [19140] = {
+    'Luchador de foso Mag\'har',
+    nil,
+  },
+  [19141] = {
+    'Luchador de foso Kurenai',
+    nil,
+  },
+  [19142] = {
+    'Anacoreta Aldor',
+    nil,
+  },
+  [19144] = {
+    'Refugiado Mag\'har',
+    nil,
+  },
+  [19145] = {
+    'Antigua instructora de equitación',
+    nil,
+  },
+  [19146] = {
+    'Antigua instructora de raptores',
+    'Instructora de raptores',
+  },
+  [19147] = {
+    'Campesino Allerian',
+    nil,
+  },
+  [19148] = {
+    'Plebeyo enano',
+    nil,
+  },
+  [19149] = {
+    'Ciudadano Telaari',
+    nil,
+  },
+  [19150] = {
+    'Refugiado orco',
+    nil,
+  },
+  [19151] = {
+    'Caballero de sangre Halaani capturado',
+    nil,
+  },
+  [19152] = {
+    'Interrogador Khan',
+    'Mano de Argus',
+  },
+  [19153] = {
+    'Neófito Aldor',
+    nil,
+  },
+  [19154] = {
+    'Hollín',
+    nil,
+  },
+  [19155] = {
+    'Refugiado esporino',
+    nil,
+  },
+  [19156] = {
+    'Carcelero Telaari',
+    nil,
+  },
+  [19157] = {
+    'Vindicador Halaani capturado',
+    nil,
+  },
+  [19158] = {
+    'Capitán de la guardia de Garadar',
+    nil,
+  },
+  [19160] = {
+    'Defensor Guardia de cólera',
+    nil,
+  },
+  [19161] = {
+    'Combatiente neófito',
+    nil,
+  },
+  [19162] = {
+    'Refugiado Perdido',
+    nil,
+  },
+  [19163] = {
+    'Chico refugiado',
+    nil,
+  },
+  [19164] = {
+    'Niño refugiado',
+    nil,
+  },
+  [19165] = {
+    'Vindicador veterano',
+    nil,
+  },
+  [19166] = {
+    'Patrulla de Forja de Tempestad',
+    nil,
+  },
+  [19167] = {
+    'Asesino Depositario de Sangre',
+    nil,
+  },
+  [19168] = {
+    'Astromago Buscasol',
+    nil,
+  },
+  [19169] = {
+    'Plebeyo elfo de sangre',
+    nil,
+  },
+  [19170] = {
+    'Campesino refugiado',
+    nil,
+  },
+  [19171] = {
+    'Plebeyo draenei',
+    nil,
+  },
+  [19172] = {
+    'Plebeyo gnomo',
+    nil,
+  },
+  [19173] = {
+    'Plebeyo elfo de la noche',
+    nil,
+  },
+  [19174] = {
+    'Cabecilla Mummaki',
+    nil,
+  },
+  [19175] = {
+    'Plebeyo orco',
+    nil,
+  },
+  [19176] = {
+    'Plebeyo tauren',
+    nil,
+  },
+  [19177] = {
+    'Plebeyo trol',
+    nil,
+  },
+  [19178] = {
+    'Plebeyo Renegado',
+    nil,
+  },
+  [19179] = {
+    'Marcador de formación',
+    nil,
+  },
+  [19180] = {
+    nil,
+    'Instructor de desuello',
+  },
+  [19181] = {
+    'Lemla Alasperanza',
+    'Aprendiza de maestra de grifos',
+  },
+  [19182] = {
+    nil,
+    'Camarero',
+  },
+  [19183] = {
+    'Cría de uñagrieta',
+    nil,
+  },
+  [19184] = {
+    'Mildred Kuinn',
+    'Instructor de primeros auxilios',
+  },
+  [19185] = {
+    'Jack Trampero',
+    'Instructor de cocina',
+  },
+  [19186] = {
+    nil,
+    'Camarera',
+  },
+  [19187] = {
+    nil,
+    'Instructor de peletería',
+  },
+  [19188] = {
+    'Coloso enfurecido',
+    nil,
+  },
+  [19189] = {
+    'Arácnida jabacolmillo',
+    nil,
+  },
+  [19190] = {
+    'Cuidador vil',
+    nil,
+  },
+  [19191] = {
+    'Arazzius el Cruel',
+    nil,
+  },
+  [19192] = {
+    'Maestra de fatalidad',
+    nil,
+  },
+  [19193] = {
+    'Alto exarca Commodus',
+    nil,
+  },
+  [19194] = {
+    nil,
+    'Objetos comerciables',
+  },
+  [19195] = {
+    nil,
+    'Suministros de cocina',
+  },
+  [19196] = {
+    'Cro Hilofuerte',
+    'Suministros de peletería',
+  },
+  [19197] = {
+    nil,
+    'Pertrechos',
+  },
+  [19199] = {
+    'Sobrestante aterrador',
+    nil,
+  },
+  [19200] = {
+    'Forma de la Bestia',
+    nil,
+  },
+  [19201] = {
+    'Gronn montés',
+    nil,
+  },
+  [19202] = {
+    'Emisario Mordin',
+    nil,
+  },
+  [19203] = {
+    'Elemental de Fuego Syth',
+    nil,
+  },
+  [19204] = {
+    'Elemental de Escarcha Syth',
+    nil,
+  },
+  [19205] = {
+    'Elemental Arcano Syth',
+    nil,
+  },
+  [19206] = {
+    'Elemental de las Sombras Syth',
+    nil,
+  },
+  [19207] = {
+    'Can infernal',
+    nil,
+  },
+  [19208] = {
+    'Acólito de la Cábala invocado',
+    nil,
+  },
+  [19209] = {
+    'Juramorte de la Cábala invocado',
+    nil,
+  },
+  [19210] = {
+    'Cañón vil: Miedo',
+    nil,
+  },
+  [19211] = {
+    'Objetivo de Cañón vil: Miedo',
+    nil,
+  },
+  [19212] = {
+    'Objetivo de Cañón vil: Odio',
+    nil,
+  },
+  [19213] = {
+    nil,
+    'Suministros de sastrería especializada',
+  },
+  [19214] = {
+    'Mano del Alto Señor',
+    nil,
+  },
+  [19216] = {
+    'Gran anacoreta Almonen',
+    nil,
+  },
+  [19217] = {
+    nil,
+    'Aprendiz del Kirin Tor',
+  },
+  [19218] = {
+    'Vigía de las puertas Giromata',
+    nil,
+  },
+  [19219] = {
+    'Mecano-lord Capacitus',
+    nil,
+  },
+  [19220] = {
+    'Pathaleon el Calculador',
+    nil,
+  },
+  [19221] = {
+    'Abisálica Sepethrea',
+    nil,
+  },
+  [19222] = {
+    'Tótem de flujo de magma',
+    nil,
+  },
+  [19223] = {
+    'Reineta',
+    'Vendedor de frutas',
+  },
+  [19224] = {
+    'Portal del Vacío',
+    nil,
+  },
+  [19225] = {
+    'Tótem Fuerza de la tormenta',
+    nil,
+  },
+  [19226] = {
+    'Viajero del vacío',
+    nil,
+  },
+  [19227] = {
+    nil,
+    'Amuletos impresionantes',
+  },
+  [19229] = {
+    'Comandante Duron',
+    nil,
+  },
+  [19231] = {
+    'Triturador Mechanar',
+    nil,
+  },
+  [19232] = {
+    'Tabernero Haelthol',
+    'Tabernero',
+  },
+  [19233] = {
+    'Abisario volador',
+    nil,
+  },
+  [19234] = {
+    'Yurial Agua de Alma',
+    'Suministros de encantamiento',
+  },
+  [19235] = {
+    'Amshesha Umbra Calma',
+    'Componentes',
+  },
+  [19236] = {
+    'Quelama Hoja de Luz',
+    'Vendedor de varitas',
+  },
+  [19238] = {
+    'Urumir Bastón Brillante',
+    'Vendedor de bastones',
+  },
+  [19239] = {
+    'Mahir Trazo Rojo',
+    'Vendedor de dagas',
+  },
+  [19240] = {
+    'Selanam el Filo',
+    'Vendedor de espadas',
+  },
+  [19241] = {
+    'Edward el Temporal',
+    'Vendedor de gemas alfas',
+  },
+  [19242] = {
+    'Olodam Cuencalejana',
+    nil,
+  },
+  [19243] = {
+    'Nalama la Mercader',
+    'Pertrechos',
+  },
+  [19244] = {
+    'Comerciante Endemor',
+    'Objetos comerciables',
+  },
+  [19245] = {
+    'Maestro vinícola Alamaro',
+    'Vendedora de vino',
+  },
+  [19246] = {
+    'Berudan Jurallave',
+    'Banquera',
+  },
+  [19247] = {
+    'Nuolla Clamalba',
+    'Instructora de sacerdotes',
+  },
+  [19248] = {
+    'Encantador Salias',
+    'Aprendiz encantador',
+  },
+  [19249] = {
+    'Encantadora Metura',
+    'Aprendiz encantador',
+  },
+  [19250] = {
+    'Encantador Aeldron',
+    'Aprendiz encantador',
+  },
+  [19251] = {
+    'Encantadora Volali',
+    'Instructora de encantamiento',
+  },
+  [19252] = {
+    'Sumo encantador Bardolan',
+    'Instructora de encantamiento',
+  },
+  [19253] = {
+    'Teniente general Orion',
+    nil,
+  },
+  [19254] = {
+    'Señor de la guerra Dar\'toon',
+    nil,
+  },
+  [19256] = {
+    'Sargento Trizacráneo',
+    nil,
+  },
+  [19257] = {
+    'Arcanista Torseldori',
+    nil,
+  },
+  [19258] = {
+    'Mago sangriento',
+    nil,
+  },
+  [19259] = {
+    'Invasor infernal',
+    'Esbirro de Invocamiedo',
+  },
+  [19260] = {
+    'Atracador vil destruido',
+    nil,
+  },
+  [19261] = {
+    'Belisario infernal',
+    nil,
+  },
+  [19262] = {
+    'Invocamiedo Ebuch\'nizor',
+    nil,
+  },
+  [19263] = {
+    'Dirigente de guerra Nekrogg',
+    nil,
+  },
+  [19264] = {
+    'Comandante en Jefe Gorax',
+    nil,
+  },
+  [19265] = {
+    'Exploradora Makha',
+    nil,
+  },
+  [19266] = {
+    'Soldado Imarion',
+    nil,
+  },
+  [19267] = {
+    'Rabioso Riecráneos',
+    nil,
+  },
+  [19268] = {
+    'Visir Foso Sangrante',
+    nil,
+  },
+  [19269] = {
+    'Bruto Mascahuesos',
+    nil,
+  },
+  [19270] = {
+    'Saul de Shattrath',
+    nil,
+  },
+  [19271] = {
+    'Albert Arandela',
+    nil,
+  },
+  [19272] = {
+    'Presagista Argomen',
+    nil,
+  },
+  [19273] = {
+    'Comandante de vanguardia To\'arch',
+    nil,
+  },
+  [19274] = {
+    'Ushtug el Temporal',
+    'Vendedor de gemas alfas',
+  },
+  [19275] = {
+    'Destructor dracoleón acorazado',
+    nil,
+  },
+  [19276] = {
+    'Antena de la Legión: Maldad',
+    nil,
+  },
+  [19277] = {
+    'Antena de la Legión: Ira',
+    nil,
+  },
+  [19278] = {
+    'Antena de la Legión: Odio',
+    nil,
+  },
+  [19279] = {
+    'Antena de la Legión: Miedo',
+    nil,
+  },
+  [19280] = {
+    'Halcón zancudo rojo',
+    nil,
+  },
+  [19281] = {
+    'Halcón zancudo rosa presto',
+    nil,
+  },
+  [19282] = {
+    'Subyugadora Shi\'aziv',
+    nil,
+  },
+  [19283] = {
+    'Vagante',
+    nil,
+  },
+  [19284] = {
+    'Guardia vil incursor',
+    nil,
+  },
+  [19285] = {
+    'Infernal incursor',
+    nil,
+  },
+  [19286] = {
+    'Acechador vil incursor',
+    nil,
+  },
+  [19287] = {
+    'Abisario incursor',
+    nil,
+  },
+  [19288] = {
+    'Caballero del Terror',
+    nil,
+  },
+  [19289] = {
+    'Vagabundo',
+    nil,
+  },
+  [19290] = {
+    'Angustiador incursor',
+    nil,
+  },
+  [19291] = {
+    'Transportador de la Legión: alfa',
+    nil,
+  },
+  [19292] = {
+    'Transportador de la Legión: beta',
+    nil,
+  },
+  [19294] = {
+    'Vinculadora terrestre Galandria Brisa Nocturna',
+    nil,
+  },
+  [19295] = {
+    'Granadero Mano Destrozada',
+    nil,
+  },
+  [19296] = {
+    'Tabernera Biribi',
+    'Tabernero',
+  },
+  [19297] = {
+    nil,
+    'No deberías verme',
+  },
+  [19298] = {
+    'Belisario Arix\'Amal',
+    nil,
+  },
+  [19299] = {
+    'Susurrador de la Muerte',
+    nil,
+  },
+  [19300] = {
+    'Negrozón el Incitador',
+    nil,
+  },
+  [19301] = {
+    'Negrozón el Incitador',
+    nil,
+  },
+  [19302] = {
+    'Negrozón el Incitador',
+    nil,
+  },
+  [19303] = {
+    'Negrozón el Incitador',
+    nil,
+  },
+  [19304] = {
+    'Negrozón el Incitador',
+    nil,
+  },
+  [19305] = {
+    nil,
+    'Rey de los colosos',
+  },
+  [19306] = {
+    'Parásito de maná',
+    nil,
+  },
+  [19307] = {
+    'Terror de El Nexo',
+    nil,
+  },
+  [19308] = {
+    'Mariscal Isildor',
+    nil,
+  },
+  [19309] = {
+    'Sargento Altumus',
+    nil,
+  },
+  [19310] = {
+    'Comandante de vanguardia Kingston',
+    nil,
+  },
+  [19311] = {
+    'Can de portal',
+    nil,
+  },
+  [19312] = {
+    'Maestro de maniobras Zurok',
+    nil,
+  },
+  [19314] = {
+    'Oficial de suministros Shandria',
+    'Pertrechos y reparaciones',
+  },
+  [19315] = {
+    'Oficial de suministros Isabel',
+    'Pertrechos y reparaciones',
+  },
+  [19316] = {
+    'Mariscal de campo Rohamus',
+    nil,
+  },
+  [19317] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [19318] = {
+    nil,
+    'Banquera',
+  },
+  [19319] = {
+    'Tabernero Darg Zarpasangrante',
+    'Tabernero',
+  },
+  [19320] = {
+    'Protector Argenta',
+    nil,
+  },
+  [19321] = {
+    'Intendente Endarin',
+    nil,
+  },
+  [19322] = {
+    'Guardián Argenta',
+    nil,
+  },
+  [19324] = {
+    'Destructor grifo acorazado',
+    nil,
+  },
+  [19325] = {
+    nil,
+    'Maestra de establos',
+  },
+  [19326] = {
+    'Antena de Legión: Olvido',
+    nil,
+  },
+  [19327] = {
+    'Nube de esporas',
+    nil,
+  },
+  [19328] = {
+    'Antena de Legión: Gehenna',
+    nil,
+  },
+  [19329] = {
+    'Antena de Legión: Mageddon',
+    nil,
+  },
+  [19330] = {
+    'Lisrythe Avanzada de Sangre',
+    'Cerca',
+  },
+  [19331] = {
+    'Intendente Enuril',
+    nil,
+  },
+  [19332] = {
+    'Guardia de piedra Ambelan',
+    nil,
+  },
+  [19333] = {
+    'Grokom Ojomuerte',
+    'Forjadora de armas',
+  },
+  [19334] = {
+    'Invocamiedo Xaldonus',
+    nil,
+  },
+  [19335] = {
+    'Subyugadora Yalqiz',
+    nil,
+  },
+  [19336] = {
+    'Engendrador del vacío XL',
+    nil,
+  },
+  [19337] = {
+    'Tirador Aldor',
+    nil,
+  },
+  [19338] = {
+    'L\'lura Oromío',
+    'Banquera',
+  },
+  [19339] = {
+    nil,
+    'Fabricante de arcos y forjador de armas de fuego',
+  },
+  [19340] = {
+    'Mi\'irku Pasolejano',
+    'Instructora de portal',
+  },
+  [19341] = {
+    nil,
+    'Instructor de herrería',
+  },
+  [19342] = {
+    'Krek Muelerrisco',
+    'Suministros de herrería',
+  },
+  [19343] = {
+    'Trop Desgarramiembros',
+    'Pertrechos',
+  },
+  [19345] = {
+    nil,
+    'Objetos comerciables',
+  },
+  [19346] = {
+    'Presagista Erothem',
+    nil,
+  },
+  [19347] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [19348] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [19349] = {
+    'Devastador Colmillespinado',
+    nil,
+  },
+  [19350] = {
+    'Escupetósigo Colmillespinado',
+    nil,
+  },
+  [19351] = {
+    'Daggle Afilador',
+    'Vendedora de arcos y rifles',
+  },
+  [19352] = {
+    'Dreg Arramblanata',
+    'Tabernero',
+  },
+  [19353] = {
+    'Guardia Martillo Salvaje',
+    nil,
+  },
+  [19354] = {
+    'Arzeth el Despiadado',
+    'Siervo del Traidor',
+  },
+  [19355] = {
+    'Peón Sombraluna',
+    nil,
+  },
+  [19356] = {
+    'Errante del vacío',
+    nil,
+  },
+  [19357] = {
+    'Ánima del vacío tenue',
+    nil,
+  },
+  [19358] = {
+    'Teletransportador de la Legión: Alfa (Alianza)',
+    nil,
+  },
+  [19359] = {
+    'Teletransportador de la Legión: Beta (Alianza)',
+    nil,
+  },
+  [19362] = {
+    'Defensor Kor\'kron',
+    nil,
+  },
+  [19363] = {
+    'Sargento Dalton',
+    nil,
+  },
+  [19364] = {
+    'Jinete Kor\'kron',
+    nil,
+  },
+  [19365] = {
+    'Arquero Argenta',
+    nil,
+  },
+  [19366] = {
+    'Cazador Argenta',
+    nil,
+  },
+  [19367] = {
+    '"Alaridos" Screed Sinsuerte',
+    'Piloto de zepelín',
+  },
+  [19368] = {
+    'Crinn Abrecaminos',
+    'Maestra de establos',
+  },
+  [19369] = {
+    'Celie Alacerada',
+    'Instructor de cocina',
+  },
+  [19370] = {
+    'Ordinn Tronapuño',
+    'Forjador de martillos',
+  },
+  [19371] = {
+    'Dalin Martillotenaz',
+    'Suministros de cocina',
+  },
+  [19372] = {
+    'Oran Bravuconada',
+    'Objetos comerciables',
+  },
+  [19373] = {
+    'Mari Petramano',
+    'Forjador de armaduras',
+  },
+  [19374] = {
+    'Salle Forjasol',
+    'Pertrechos',
+  },
+  [19375] = {
+    'Eli Rayo',
+    'Vigilante de Cielo\'ree',
+  },
+  [19377] = {
+    'Neófito Nemarn',
+    nil,
+  },
+  [19378] = {
+    'Anacoreta Nindumen',
+    nil,
+  },
+  [19379] = {
+    'Cielo\'ree',
+    'Grifo de Kurdran Martillo Salvaje',
+  },
+  [19380] = {
+    'Guardia Untula',
+    nil,
+  },
+  [19381] = {
+    'Ola de llamas',
+    nil,
+  },
+  [19382] = {
+    'Jinete de grifos Martillo Salvaje',
+    nil,
+  },
+  [19383] = {
+    'Gnomo capturado',
+    'Reparación de objetos',
+  },
+  [19384] = {
+    'Explorador Martillo Salvaje',
+    nil,
+  },
+  [19385] = {
+    'Lord mariscal Raynor',
+    nil,
+  },
+  [19386] = {
+    'Alguacil de Ventormenta',
+    nil,
+  },
+  [19389] = {
+    'Tosco de guarida',
+    nil,
+  },
+  [19390] = {
+    'Neófito montado',
+    nil,
+  },
+  [19391] = {
+    'Teniente guardia vil',
+    nil,
+  },
+  [19392] = {
+    'Comandante de vigilancia Leonus',
+    nil,
+  },
+  [19394] = {
+    'Barimoke Barbaje',
+    nil,
+  },
+  [19395] = {
+    'Bron Martillo de Oro',
+    nil,
+  },
+  [19397] = {
+    'Sobrestante Mo\'arg',
+    nil,
+  },
+  [19398] = {
+    'Peón de Gan\'arg',
+    nil,
+  },
+  [19399] = {
+    'Cañón vil',
+    nil,
+  },
+  [19400] = {
+    'Avizor atracador vil',
+    nil,
+  },
+  [19401] = {
+    'Comandante del aire Brack',
+    nil,
+  },
+  [19402] = {
+    'Señor de la marisma marchito',
+    nil,
+  },
+  [19403] = {
+    'Tonque de vapor goblin',
+    nil,
+  },
+  [19404] = {
+    'Tonque de vapor gnómico',
+    nil,
+  },
+  [19405] = {
+    'Tonque de vapor',
+    nil,
+  },
+  [19406] = {
+    'Montero de Cima del Trueno',
+    nil,
+  },
+  [19407] = {
+    'Vindicador de Bruma Azur',
+    nil,
+  },
+  [19408] = {
+    'Doncella de Dolor',
+    nil,
+  },
+  [19409] = {
+    'Comandante del aire Dabir\'ee',
+    nil,
+  },
+  [19410] = {
+    'Neófito Mano Destrozada',
+    nil,
+  },
+  [19411] = {
+    'Brujo Mano Destrozada',
+    nil,
+  },
+  [19412] = {
+    'Mena de hierro negro',
+    nil,
+  },
+  [19413] = {
+    'Mago Mano Destrozada',
+    nil,
+  },
+  [19414] = {
+    'Guardia Mano Destrozada',
+    nil,
+  },
+  [19415] = {
+    'Acólito Mano Destrozada',
+    nil,
+  },
+  [19416] = {
+    'Antiguo espíritu draenei',
+    nil,
+  },
+  [19417] = {
+    'Ramdor el Loco',
+    nil,
+  },
+  [19418] = {
+    'Fragmentizo de pellejo de cristal',
+    nil,
+  },
+  [19419] = {
+    'Fragmentizo enfurecido',
+    nil,
+  },
+  [19420] = {
+    'Fragmentizo de Goliathon',
+    nil,
+  },
+  [19422] = {
+    'Necrólito Foso Sangrante',
+    nil,
+  },
+  [19423] = {
+    'Huargo Foso Sangrante',
+    nil,
+  },
+  [19424] = {
+    'Torturador Foso Sangrante',
+    nil,
+  },
+  [19425] = {
+    'Peón de Orgrimmar',
+    nil,
+  },
+  [19426] = {
+    'Sobrestante de peones',
+    nil,
+  },
+  [19427] = {
+    'Invocador de abisario',
+    nil,
+  },
+  [19428] = {
+    'Serpiente cobalto',
+    nil,
+  },
+  [19429] = {
+    'Halcón oscuro aviario',
+    nil,
+  },
+  [19432] = {
+    'Bruto herido',
+    nil,
+  },
+  [19434] = {
+    'Invocamiedo',
+    nil,
+  },
+  [19435] = {
+    'Clérigo oscuro Malod',
+    'Sanación y sustento',
+  },
+  [19436] = {
+    'Gran oficial de suministros Broog',
+    'Suministros',
+  },
+  [19438] = {
+    'Imagen de Erozion',
+    nil,
+  },
+  [19440] = {
+    'Ojo de Grillok',
+    nil,
+  },
+  [19441] = {
+    'Herrero de inquina Okkos',
+    nil,
+  },
+  [19442] = {
+    'Maestro de huargos Kruush',
+    nil,
+  },
+  [19443] = {
+    'Tagar Rompeloma',
+    nil,
+  },
+  [19444] = {
+    'Trabajador campesino',
+    nil,
+  },
+  [19445] = {
+    'Soldado herido',
+    nil,
+  },
+  [19446] = {
+    'Oficial de operaciones',
+    nil,
+  },
+  [19447] = {
+    'Hermano Daniels',
+    nil,
+  },
+  [19449] = {
+    'Bruto Señor del Trueno',
+    nil,
+  },
+  [19450] = {
+    'Pol Pezuña Nevada',
+    'Objetos comerciables',
+  },
+  [19451] = {
+    'Intendente Gorman',
+    'Raciones',
+  },
+  [19452] = {
+    'Intendente Draco',
+    'Suministros',
+  },
+  [19453] = {
+    'Capitán Furia del Sol',
+    nil,
+  },
+  [19454] = {
+    'Infantería de Ventormenta caído',
+    nil,
+  },
+  [19455] = {
+    'Enfermera Judith',
+    nil,
+  },
+  [19456] = {
+    'Espíritu de Cortezablanca',
+    nil,
+  },
+  [19457] = {
+    'Grillok "Ojosombra"',
+    nil,
+  },
+  [19460] = {
+    'Esqueleto Foso Sangrante',
+    nil,
+  },
+  [19461] = {
+    'Devastador domesticado',
+    nil,
+  },
+  [19463] = {
+    'Esqueleto orco',
+    nil,
+  },
+  [19464] = {
+    'Alma Foso Sangrante',
+    nil,
+  },
+  [19466] = {
+    'Exarca Orelis',
+    nil,
+  },
+  [19467] = {
+    'Anacoreta Karja',
+    nil,
+  },
+  [19468] = {
+    'Maestro de espías Thalodien',
+    nil,
+  },
+  [19470] = {
+    nil,
+    'Tabernero',
+  },
+  [19471] = {
+    'Viejo Orok',
+    'Frutas y hongos',
+  },
+  [19472] = {
+    nil,
+    'Pescadero',
+  },
+  [19473] = {
+    nil,
+    'Armas arrojadizas',
+  },
+  [19474] = {
+    nil,
+    'Pertrechos',
+  },
+  [19475] = {
+    'Presagista Haronem',
+    nil,
+  },
+  [19476] = {
+    nil,
+    'Maestra de establos',
+  },
+  [19477] = {
+    'Guerrero Zarrapucha huido',
+    nil,
+  },
+  [19478] = {
+    'Fera Correpálido',
+    'Instructora de primeros auxilios',
+  },
+  [19479] = {
+    nil,
+    'Forjadora de hachas',
+  },
+  [19480] = {
+    'Espíritu oscurecido',
+    nil,
+  },
+  [19481] = {
+    'Archimago Vargoth',
+    nil,
+  },
+  [19482] = {
+    nil,
+    'Familiar de Ravandwyr',
+  },
+  [19486] = {
+    'Químico Buscasol',
+    nil,
+  },
+  [19487] = {
+    'Montura de dracohalcón',
+    nil,
+  },
+  [19488] = {
+    'Custodio Valemuerte',
+    'Vigilante de Kirin\'Var',
+  },
+  [19489] = {
+    'Teniente hechicero Morran',
+    nil,
+  },
+  [19490] = {
+    'Instructora mundial de montura voladora',
+    'Maestro de establos',
+  },
+  [19491] = {
+    nil,
+    'Maestro de establos',
+  },
+  [19492] = {
+    nil,
+    'Maestro de establos',
+  },
+  [19493] = {
+    'Ekkorash la Inquisidora',
+    nil,
+  },
+  [19495] = {
+    'Tabernera Shaunessy',
+    'Tabernero',
+  },
+  [19496] = {
+    'Espía Grik\'tha',
+    nil,
+  },
+  [19497] = {
+    nil,
+    'Objetos comerciables',
+  },
+  [19498] = {
+    nil,
+    'Pertrechos',
+  },
+  [19499] = {
+    nil,
+    'Forjadora de armas',
+  },
+  [19500] = {
+    'Centinela de Sylvanaar',
+    nil,
+  },
+  [19501] = {
+    'Operativo de Bajo Arrabal',
+    'Bajo Arrabal',
+  },
+  [19502] = {
+    'Sanador de Bajo Arrabal',
+    nil,
+  },
+  [19503] = {
+    'Agente de la Cábala',
+    nil,
+  },
+  [19504] = {
+    'Guardián Arúspice',
+    nil,
+  },
+  [19505] = {
+    'Canalizador Buscasol',
+    nil,
+  },
+  [19506] = {
+    'Maestro cuidador Sylvester',
+    nil,
+  },
+  [19507] = {
+    'Fusionador de genes Buscasol',
+    nil,
+  },
+  [19508] = {
+    'Herborista Buscasol',
+    nil,
+  },
+  [19509] = {
+    'Cosechador Buscasol',
+    nil,
+  },
+  [19510] = {
+    'Centurión Depositario de Sangre',
+    nil,
+  },
+  [19511] = {
+    'Incitador vid abisal',
+    nil,
+  },
+  [19512] = {
+    'Segador vid abisal',
+    nil,
+  },
+  [19513] = {
+    'Chillón de miedo mutado',
+    nil,
+  },
+  [19514] = {
+    nil,
+    'Dios Fénix',
+  },
+  [19516] = {
+    'Atracador del vacío',
+    nil,
+  },
+  [19517] = {
+    nil,
+    'Armero',
+  },
+  [19518] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [19519] = {
+    'Señor de la marisma famélico',
+    nil,
+  },
+  [19520] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [19521] = {
+    nil,
+    'Suministros de sastrería',
+  },
+  [19522] = {
+    'Puesto de guardia del Altar del arúspice de Shattra',
+    nil,
+  },
+  [19523] = {
+    'Cabeza izquierda de O\'mrogg',
+    nil,
+  },
+  [19524] = {
+    'Cabeza derecha de O\'mrogg',
+    nil,
+  },
+  [19526] = {
+    nil,
+    'Vendedor de armas',
+  },
+  [19527] = {
+    'Clamavacío vacilante',
+    nil,
+  },
+  [19528] = {
+    nil,
+    'Mercader de aprovisionamiento',
+  },
+  [19529] = {
+    'Guardia-nexo de Flecha de la Tormenta',
+    nil,
+  },
+  [19530] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [19531] = {
+    nil,
+    'Tabernero',
+  },
+  [19532] = {
+    nil,
+    'Mercader de peletería',
+  },
+  [19533] = {
+    'Tratante Aljaan',
+    'Objetos comerciables',
+  },
+  [19534] = {
+    'Tratante Digriz',
+    'Pertrechos',
+  },
+  [19535] = {
+    'Tratante Zijaad',
+    'Artículos Arcanos',
+  },
+  [19536] = {
+    'Tratante Jadyan',
+    'Armas exóticas',
+  },
+  [19537] = {
+    'Tratante Malij',
+    'Suministros de encantamiento',
+  },
+  [19538] = {
+    'Tratante Senzik',
+    'Gemas y suministros de joyería',
+  },
+  [19539] = {
+    nil,
+    'Instructora de joyería',
+  },
+  [19540] = {
+    nil,
+    'Instructora de encantamiento',
+  },
+  [19541] = {
+    'Agente de Tormenta Abisal',
+    nil,
+  },
+  [19542] = {
+    'Comandante de operaciones Mahfuun',
+    nil,
+  },
+  [19543] = {
+    'Mago de batalla Dathric',
+    nil,
+  },
+  [19544] = {
+    'Conjurador Luminrath',
+    nil,
+  },
+  [19545] = {
+    'Cohlien Tejescarcha',
+    nil,
+  },
+  [19546] = {
+    'Abjuradora Belmara',
+    nil,
+  },
+  [19551] = {
+    'Cenizas de A\'lar',
+    nil,
+  },
+  [19552] = {
+    'Zepelín goblin',
+    nil,
+  },
+  [19553] = {
+    'Trabajador Furia del Sol',
+    nil,
+  },
+  [19554] = {
+    'Dimensius el Devoratodo',
+    nil,
+  },
+  [19556] = {
+    nil,
+    'Jefe de Guerra',
+  },
+  [19557] = {
+    'Rasgador superior',
+    nil,
+  },
+  [19558] = {
+    'Amilya Corazón de Aire',
+    'Maestra de jinetes del viento',
+  },
+  [19559] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [19560] = {
+    nil,
+    'Pertrechos',
+  },
+  [19561] = {
+    'Hagash el Ciego',
+    'Fabricante de arcos',
+  },
+  [19562] = {
+    nil,
+    'Objetos comerciables',
+  },
+  [19563] = {
+    'Activador de misión Dimensius',
+    nil,
+  },
+  [19564] = {
+    'Tormenta del vacío',
+    nil,
+  },
+  [19565] = {
+    'Tormenta del vacío enorme',
+    nil,
+  },
+  [19566] = {
+    'Consejero de Nethergarde',
+    nil,
+  },
+  [19567] = {
+    'Vigía Theronus',
+    nil,
+  },
+  [19568] = {
+    'Ánima abisal interminable',
+    nil,
+  },
+  [19569] = {
+    'Abisólogo Nicuproso',
+    'B.U.M.',
+  },
+  [19570] = {
+    'Jefe de cohetes Fuselaje',
+    'Comandante B.U.M.',
+  },
+  [19571] = {
+    'Tabernera Remi Dodoso',
+    'Tabernero',
+  },
+  [19572] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [19573] = {
+    'Fraude',
+    'Suministros comerciales',
+  },
+  [19574] = {
+    nil,
+    'Suministros generales',
+  },
+  [19575] = {
+    nil,
+    'Suministros de ingeniería',
+  },
+  [19576] = {
+    nil,
+    'Instructora de ingeniería',
+  },
+  [19578] = {
+    'Especialista en robots Alley',
+    'B.U.M.',
+  },
+  [19579] = {
+    'Cohlien Tejescarcha con sombrero',
+    nil,
+  },
+  [19580] = {
+    'Luminrath con manteo',
+    nil,
+  },
+  [19581] = {
+    nil,
+    'Maestro de vuelo',
+  },
+  [19582] = {
+    'Maxx Y. Millón nº. I',
+    nil,
+  },
+  [19583] = {
+    nil,
+    'Maestro de vuelo',
+  },
+  [19584] = {
+    'Rasgador (Arcano)',
+    nil,
+  },
+  [19585] = {
+    'Rasgador (Fuego)',
+    nil,
+  },
+  [19586] = {
+    'Rasgador (Escarcha)',
+    nil,
+  },
+  [19587] = {
+    'Rasgador (Sombras)',
+    nil,
+  },
+  [19588] = {
+    'Maxx Y. Millón nº. II',
+    nil,
+  },
+  [19589] = {
+    'Maxx Y. Millón nº. V',
+    nil,
+  },
+  [19591] = {
+    'Canción de nieve',
+    nil,
+  },
+  [19592] = {
+    'Guerrero Kor\'kron',
+    nil,
+  },
+  [19593] = {
+    'Vinculahechizos Maryana',
+    nil,
+  },
+  [19594] = {
+    'Guardia de honor Kor\'kron',
+    nil,
+  },
+  [19595] = {
+    'Cazador de fase extenuado',
+    nil,
+  },
+  [19596] = {
+    'Montura Kor\'kron',
+    nil,
+  },
+  [19597] = {
+    'Música de héroe Thrall',
+    nil,
+  },
+  [19598] = {
+    'Azotador de carne mutado',
+    nil,
+  },
+  [19599] = {
+    'Sirviente del vacío',
+    nil,
+  },
+  [19600] = {
+    'Leranis, maestra de distorsión',
+    nil,
+  },
+  [19601] = {
+    'Tauren guerrero',
+    nil,
+  },
+  [19602] = {
+    'Montura de tauren',
+    nil,
+  },
+  [19603] = {
+    'Tauren chamán',
+    nil,
+  },
+  [19607] = {
+    'Lobo de montar de Grek',
+    nil,
+  },
+  [19608] = {
+    'Cría de rasgador',
+    nil,
+  },
+  [19610] = {
+    'Trabajador irradiado',
+    nil,
+  },
+  [19611] = {
+    'Caleth Filosol',
+    'Los Arúspices',
+  },
+  [19612] = {
+    'Gerente irradiado',
+    nil,
+  },
+  [19614] = {
+    'Malukaz con atuendo de lobo',
+    nil,
+  },
+  [19615] = {
+    'Espíritu lobo de Terokkar (forma humanoide)',
+    nil,
+  },
+  [19616] = {
+    'Espíritu lobo de Terokkar',
+    nil,
+  },
+  [19617] = {
+    'Botas',
+    'Maestro mixólogo B.U.M.',
+  },
+  [19618] = {
+    'Crédito de Lyssendra, maestra de distorsión',
+    nil,
+  },
+  [19620] = {
+    'Crédito de Arcanista Ardonis',
+    nil,
+  },
+  [19621] = {
+    nil,
+    'Bombero B.U.M.',
+  },
+  [19622] = {
+    'Kael\'thas Caminante del Sol',
+    'Señor de los elfos de sangre',
+  },
+  [19623] = {
+    nil,
+    'B.U.M.',
+  },
+  [19624] = {
+    'Infantería de Ventormenta herido',
+    nil,
+  },
+  [19625] = {
+    nil,
+    'Pertrechos',
+  },
+  [19632] = {
+    'Aguijonero Lykul',
+    nil,
+  },
+  [19633] = {
+    'Ensalmador Depositario de sangre',
+    nil,
+  },
+  [19634] = {
+    'Jefe de zapadores Estampido',
+    'Supervisor zapador B.U.M.',
+  },
+  [19635] = {
+    'Capitán Arathyn',
+    nil,
+  },
+  [19636] = {
+    'Tótem de fuego draenei',
+    nil,
+  },
+  [19637] = {
+    'Tótem de tierra draenei',
+    nil,
+  },
+  [19638] = {
+    'Tótem de agua draenei',
+    nil,
+  },
+  [19639] = {
+    'Tótem de aire draenei',
+    nil,
+  },
+  [19640] = {
+    'Huargo montura Foso Sangrante',
+    nil,
+  },
+  [19641] = {
+    'Asaltante de distorsión Nesaad',
+    nil,
+  },
+  [19642] = {
+    'Acechador Zaxxis',
+    nil,
+  },
+  [19643] = {
+    'Astromante Furia del Sol',
+    nil,
+  },
+  [19644] = {
+    'Imagen del archimago Vargoth',
+    nil,
+  },
+  [19645] = {
+    'Papá Ruedas',
+    'Técnica mecánica B.U.M.',
+  },
+  [19647] = {
+    nil,
+    'Jefe de Guerra',
+  },
+  [19649] = {
+    nil,
+    'Pertrechos',
+  },
+  [19651] = {
+    'Vindicador avezado',
+    nil,
+  },
+  [19657] = {
+    'Invocador Kanthin',
+    nil,
+  },
+  [19658] = {
+    'Elekk marrón',
+    nil,
+  },
+  [19661] = {
+    'Viggz Brillochispa',
+    'Suministros de ingeniería',
+  },
+  [19662] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [19663] = {
+    'Madame Rubí',
+    'Suministros de encantamiento',
+  },
+  [19664] = {
+    'Magdalenas Moser',
+    'Mercader de pan',
+  },
+  [19665] = {
+    'Borrego',
+    nil,
+  },
+  [19666] = {
+    'Señor de las Sombras Xiraxis',
+    nil,
+  },
+  [19667] = {
+    'Corredor abisal del Consorcio',
+    nil,
+  },
+  [19668] = {
+    'Maligno de las Sombras',
+    nil,
+  },
+  [19669] = {
+    'Mamdy el "Todólogo"',
+    nil,
+  },
+  [19670] = {
+    'Artificiero Morphalius',
+    nil,
+  },
+  [19671] = {
+    'Crioingeniero Sha\'heen',
+    nil,
+  },
+  [19672] = {
+    'Obrero del Consorcio',
+    nil,
+  },
+  [19673] = {
+    'Ingeniero del Consorcio',
+    nil,
+  },
+  [19674] = {
+    'Príncipe-nexo Haramad',
+    nil,
+  },
+  [19675] = {
+    'Príncipe-nexo Haramad',
+    nil,
+  },
+  [19676] = {
+    '"Capitán" Kaftiz',
+    nil,
+  },
+  [19677] = {
+    'Marcador de hechizo',
+    nil,
+  },
+  [19678] = {
+    nil,
+    'Componentes',
+  },
+  [19679] = {
+    nil,
+    'Vendedor sospechoso',
+  },
+  [19680] = {
+    'Controlador de aparición de Aldor',
+    nil,
+  },
+  [19681] = {
+    'Engendrador del vacío L',
+    nil,
+  },
+  [19682] = {
+    'Emisaria Mordiba',
+    nil,
+  },
+  [19683] = {
+    'Ogath el Loco',
+    nil,
+  },
+  [19684] = {
+    'Veterano de guerra demacrado',
+    nil,
+  },
+  [19685] = {
+    'Sirviente de Khadgar',
+    nil,
+  },
+  [19686] = {
+    'Anomalía abisal',
+    nil,
+  },
+  [19687] = {
+    'Pacificador de la ciudad de Shattrath',
+    nil,
+  },
+  [19688] = {
+    'Guardián de la bóveda Arúspice',
+    nil,
+  },
+  [19689] = {
+    'Peregrino draenei',
+    nil,
+  },
+  [19690] = {
+    'N. D. Malcampo',
+    'Rescate B.U.M.',
+  },
+  [19692] = {
+    'Robot bum',
+    nil,
+  },
+  [19694] = {
+    nil,
+    'Armero',
+  },
+  [19698] = {
+    'Abuelo Aldrimus',
+    nil,
+  },
+  [19700] = {
+    'Johnny Castillo',
+    nil,
+  },
+  [19701] = {
+    'Evocador Mascahuesos',
+    nil,
+  },
+  [19702] = {
+    'Acólito Aldor',
+    nil,
+  },
+  [19704] = {
+    nil,
+    'Programador extraordinaire',
+  },
+  [19705] = {
+    'Maestro Daellis Golpe del Amanecer',
+    nil,
+  },
+  [19706] = {
+    'Trillalisco Roca de Marisma',
+    nil,
+  },
+  [19707] = {
+    'Arquero Furia del Sol',
+    nil,
+  },
+  [19709] = {
+    'Ingeniero jefe Trep',
+    'Ingeniería B.U.M.',
+  },
+  [19710] = {
+    'Vigía de las puertas Manoyerro',
+    nil,
+  },
+  [19712] = {
+    'Taladrador Mechanar',
+    nil,
+  },
+  [19713] = {
+    'Asolador de Mechanar',
+    nil,
+  },
+  [19716] = {
+    'Manitas de Mechanar',
+    nil,
+  },
+  [19718] = {
+    'Proveedor Tsaalt',
+    nil,
+  },
+  [19719] = {
+    nil,
+    'Antigua famosa',
+  },
+  [19720] = {
+    'Larry "El sucio"',
+    'Rufián',
+  },
+  [19721] = {
+    nil,
+    'Famoso',
+  },
+  [19722] = {
+    'Muheru el Tejedor',
+    'Suministros de sastrería',
+  },
+  [19725] = {
+    'Malone "el Épico"',
+    'Rufián',
+  },
+  [19726] = {
+    'Tajador',
+    'Rufián',
+  },
+  [19728] = {
+    'Mamá Ruedas',
+    'Técnica mecánica B.U.M.',
+  },
+  [19729] = {
+    'Trillalisco Dorsacerado',
+    nil,
+  },
+  [19730] = {
+    'Observador Dorsacerado',
+    nil,
+  },
+  [19731] = {
+    'Bestia abisal',
+    nil,
+  },
+  [19732] = {
+    'Brujo Ango\'rosh',
+    nil,
+  },
+  [19733] = {
+    'Sirviente Dagapantano',
+    nil,
+  },
+  [19734] = {
+    'Gigante fúngico',
+    nil,
+  },
+  [19735] = {
+    'Destructor de Forja de Tempestad',
+    nil,
+  },
+  [19736] = {
+    'Althen el Historiador',
+    nil,
+  },
+  [19737] = {
+    'Miembro del equipo de ingeniería',
+    nil,
+  },
+  [19738] = {
+    'Zarpaletal',
+    nil,
+  },
+  [19739] = {
+    'Despellejador de cólera',
+    nil,
+  },
+  [19740] = {
+    'Caminante de cólera',
+    nil,
+  },
+  [19741] = {
+    'Bramadora de odio',
+    nil,
+  },
+  [19742] = {
+    'Incitadora despiadado',
+    nil,
+  },
+  [19743] = {
+    'Concejal Nathrezim',
+    nil,
+  },
+  [19744] = {
+    'Celador temible',
+    'Siervo de Illidan',
+  },
+  [19745] = {
+    'Obliterador de foso',
+    nil,
+  },
+  [19746] = {
+    'Rompedor de foso',
+    nil,
+  },
+  [19747] = {
+    'Baelmon, el Maestro de canes',
+    nil,
+  },
+  [19748] = {
+    'Señor de la Legión',
+    nil,
+  },
+  [19749] = {
+    'Espectro Sombraluna',
+    nil,
+  },
+  [19750] = {
+    'Suelo helado',
+    nil,
+  },
+  [19751] = {
+    'Ánima de Sombraluna vengativa',
+    nil,
+  },
+  [19752] = {
+    'Infernal merodeador',
+    nil,
+  },
+  [19753] = {
+    'Retador infernal',
+    nil,
+  },
+  [19754] = {
+    'Manitas Forja Muerta',
+    nil,
+  },
+  [19755] = {
+    'Forjador de armas Mo\'arg',
+    nil,
+  },
+  [19756] = {
+    'Herrero Forja Muerta',
+    nil,
+  },
+  [19757] = {
+    'Alma infernal',
+    nil,
+  },
+  [19758] = {
+    'Animus infernal',
+    nil,
+  },
+  [19759] = {
+    'Infernal recién formado',
+    nil,
+  },
+  [19760] = {
+    'Infernal en frío',
+    nil,
+  },
+  [19761] = {
+    'Infernal Llama Infernal',
+    nil,
+  },
+  [19762] = {
+    'Defensor Cicatriz Espiral',
+    nil,
+  },
+  [19765] = {
+    'Mirmidón Cicatriz Espiral',
+    nil,
+  },
+  [19767] = {
+    'Hechicera Cicatriz Espiral',
+    nil,
+  },
+  [19768] = {
+    'Sirena Cicatriz Espiral',
+    nil,
+  },
+  [19769] = {
+    'Gritón Cicatriz Espiral',
+    nil,
+  },
+  [19770] = {
+    'Tarasca voraz',
+    nil,
+  },
+  [19771] = {
+    'Tarasca superior',
+    nil,
+  },
+  [19772] = {
+    'Espíritu de sabio Gartok',
+    nil,
+  },
+  [19773] = {
+    'Espíritu de sabio Zran',
+    nil,
+  },
+  [19774] = {
+    nil,
+    'Aprendiz joyero',
+  },
+  [19775] = {
+    nil,
+    'Instructora de joyería',
+  },
+  [19776] = {
+    'Piloto experimental',
+    nil,
+  },
+  [19777] = {
+    nil,
+    'Aprendiz joyero',
+  },
+  [19778] = {
+    nil,
+    'Instructora de joyería',
+  },
+  [19779] = {
+    'Geólogo Furia del Sol',
+    nil,
+  },
+  [19780] = {
+    'Ingeniero fuera de servicio',
+    'Ingeniería B.U.M.',
+  },
+  [19781] = {
+    'Centella astral',
+    nil,
+  },
+  [19782] = {
+    'Centella astral',
+    nil,
+  },
+  [19783] = {
+    'Centella astral',
+    nil,
+  },
+  [19784] = {
+    'Cobra Cicatriz Espiral',
+    nil,
+  },
+  [19785] = {
+    'Cobra Venetesta',
+    nil,
+  },
+  [19786] = {
+    'Orugga de cisterna',
+    nil,
+  },
+  [19787] = {
+    'Orugga devoradora',
+    nil,
+  },
+  [19788] = {
+    'Vigía del cieno Cicatriz Espiral',
+    nil,
+  },
+  [19789] = {
+    'Vigilante de agua Cicatriz Espiral',
+    nil,
+  },
+  [19790] = {
+    'Rondador del fango',
+    nil,
+  },
+  [19791] = {
+    'Lanzabarro apagado',
+    nil,
+  },
+  [19792] = {
+    'Centurión eclipsiano',
+    nil,
+  },
+  [19793] = {
+    'Piromántico eclipsiano',
+    nil,
+  },
+  [19794] = {
+    'Magister eclipsiano',
+    nil,
+  },
+  [19795] = {
+    'Caballero de sangre eclipsiano',
+    nil,
+  },
+  [19796] = {
+    'Archimago eclipsiano',
+    nil,
+  },
+  [19797] = {
+    'Alto señor Illidari',
+    'El Sigilo Carmesí',
+  },
+  [19798] = {
+    'Erradicador Arcano',
+    nil,
+  },
+  [19799] = {
+    'Extiendepavor Illidari',
+    'Siervo de Illidan',
+  },
+  [19800] = {
+    'Mortificadora Illidari',
+    'Siervo de Illidan',
+  },
+  [19801] = {
+    'Agonizador Illidari',
+    nil,
+  },
+  [19802] = {
+    'Soldado de choque Illidari',
+    'Siervo de Illidan',
+  },
+  [19803] = {
+    'Destructor Illidari',
+    nil,
+  },
+  [19804] = {
+    'Can del Traidor',
+    nil,
+  },
+  [19805] = {
+    'Carcelero eclipsiano',
+    nil,
+  },
+  [19806] = {
+    'Depositario de sangre eclipsiano',
+    nil,
+  },
+  [19807] = {
+    'Orientador Corazón Gris',
+    nil,
+  },
+  [19808] = {
+    'Destripaorcos Corazón Gris',
+    nil,
+  },
+  [19809] = {
+    'Chamán Corazón Gris',
+    nil,
+  },
+  [19810] = {
+    'Sabio abisal Corazón Gris',
+    nil,
+  },
+  [19811] = {
+    'Maestro de batalla Corazón Gris',
+    nil,
+  },
+  [19812] = {
+    'Informadora Illidari',
+    nil,
+  },
+  [19813] = {
+    'Mutar Piel de Sangre',
+    nil,
+  },
+  [19814] = {
+    'Bruto Piel de Sangre',
+    nil,
+  },
+  [19815] = {
+    'Brujo Piel de Sangre',
+    nil,
+  },
+  [19816] = {
+    'Rabioso Piel de Sangre',
+    nil,
+  },
+  [19817] = {
+    'Destructor Piel de Sangre',
+    nil,
+  },
+  [19818] = {
+    'Señor de la guerra Piel de Sangre',
+    nil,
+  },
+  [19820] = {
+    'Verdugo Illidari',
+    nil,
+  },
+  [19821] = {
+    'Pacificador Illidari',
+    nil,
+  },
+  [19822] = {
+    'Tosco Illidari',
+    nil,
+  },
+  [19823] = {
+    'Coloso enloquecido',
+    nil,
+  },
+  [19824] = {
+    'Hijo de Corok',
+    nil,
+  },
+  [19825] = {
+    'Garroso del cónclave oscuro',
+    nil,
+  },
+  [19826] = {
+    'Sombramántico del cónclave oscuro',
+    nil,
+  },
+  [19827] = {
+    'Guardia cuervo del cónclave oscuro',
+    nil,
+  },
+  [19828] = {
+    nil,
+    'Instructor',
+  },
+  [19829] = {
+    'Lyssendra, maestra de distorsión',
+    nil,
+  },
+  [19830] = {
+    'Arcanista Ardonis',
+    nil,
+  },
+  [19831] = {
+    'Comandante Forjalba',
+    nil,
+  },
+  [19832] = {
+    nil,
+    'Experimentalista B.U.M.',
+  },
+  [19833] = {
+    'Culebra venenosa',
+    nil,
+  },
+  [19835] = {
+    'Gigo "Gafas" Rompegranajes',
+    'Suministros de ingeniería',
+  },
+  [19836] = {
+    'Mixie Tirolejano',
+    'Mercader de armas de fuego',
+  },
+  [19837] = {
+    nil,
+    'Pociones',
+  },
+  [19839] = {
+    'Lariel Corredora del Sol',
+    nil,
+  },
+  [19840] = {
+    'Caledis Alba Brillante',
+    nil,
+  },
+  [19843] = {
+    'Tramposo vid abisal',
+    nil,
+  },
+  [19844] = {
+    'Nitrin el Erudito',
+    nil,
+  },
+  [19847] = {
+    nil,
+    'El Invocador de Almas',
+  },
+  [19848] = {
+    'Presagista Ennarth',
+    nil,
+  },
+  [19849] = {
+    'Atracador desguazador X6000',
+    nil,
+  },
+  [19850] = {
+    'Concejal Arial D\'Anastasis',
+    nil,
+  },
+  [19852] = {
+    'Buscador de artefactos',
+    nil,
+  },
+  [19853] = {
+    'Guardia apocalíptico Hoja Vil',
+    nil,
+  },
+  [19854] = {
+    'Perito Nathrezim',
+    nil,
+  },
+  [19855] = {
+    nil,
+    'Maestro de batalla de la Cuenca de Arathi',
+  },
+  [19856] = {
+    'Sam Bonvapor',
+    'Organizadora de arena',
+  },
+  [19857] = {
+    nil,
+    'Intendente de conquista',
+  },
+  [19858] = {
+    '"El Zurdo" Aporellos',
+    'Maestro de batalla de arena',
+  },
+  [19859] = {
+    nil,
+    'Maestro de batalla de arena',
+  },
+  [19861] = {
+    nil,
+    'Organizadora de arena',
+  },
+  [19863] = {
+    'Implacable vengativo',
+    nil,
+  },
+  [19864] = {
+    'Capitán implacable vengativo',
+    nil,
+  },
+  [19865] = {
+    'Horror mutado',
+    nil,
+  },
+  [19869] = {
+    'Trampa con culebras',
+    nil,
+  },
+  [19875] = {
+    'Baronesa Dorothea Tallolino',
+    nil,
+  },
+  [19877] = {
+    'Tormenta Abisal',
+    nil,
+  },
+  [19878] = {
+    'Espíritu de exarca Maladaar',
+    nil,
+  },
+  [19879] = {
+    'Horvon el Armero',
+    'Forjador de armaduras',
+  },
+  [19880] = {
+    'Acechador abisal Khay\'ji',
+    nil,
+  },
+  [19881] = {
+    'Espíritu aislado',
+    nil,
+  },
+  [19882] = {
+    nil,
+    'Esbirro de Mo\'rrisroe',
+  },
+  [19883] = {
+    'Tormenta de maná',
+    nil,
+  },
+  [19905] = {
+    'La Novia Negra',
+    'Maestro de batalla de la Cuenca de Arathi',
+  },
+  [19906] = {
+    'Usha Ojo de Gubia',
+    'Maestro de batalla del Valle de Alterac',
+  },
+  [19907] = {
+    'Grumbol Martillo Siniestro',
+    'Maestro de batalla del Valle de Alterac',
+  },
+  [19908] = {
+    'Su\'ura Flechapresta',
+    'Maestra de batalla de la Garganta Grito de Guerra',
+  },
+  [19909] = {
+    nil,
+    'Maestro de batalla de arena',
+  },
+  [19910] = {
+    nil,
+    'Maestra de batalla de la Garganta Grito de Guerra',
+  },
+  [19911] = {
+    'Beka Silbidobrío',
+    'Maestro de batalla de arena',
+  },
+  [19912] = {
+    'Zeggon Robopum',
+    'Maestro de batalla de arena',
+  },
+  [19913] = {
+    'Foco del Área 52',
+    nil,
+  },
+  [19914] = {
+    nil,
+    'Mascota de Su\'ura Flechapresta',
+  },
+  [19915] = {
+    nil,
+    'Maestro de batalla de arena',
+  },
+  [19916] = {
+    'Cristal de ritual del archimago',
+    nil,
+  },
+  [19917] = {
+    'Dracohalcón de montar',
+    nil,
+  },
+  [19918] = {
+    'Vigía del Tiempo',
+    nil,
+  },
+  [19919] = {
+    'Azotador espinoso',
+    nil,
+  },
+  [19920] = {
+    'Despellejador espinoso',
+    nil,
+  },
+  [19921] = {
+    'Víbora',
+    nil,
+  },
+  [19923] = {
+    nil,
+    'Maestro de batalla de arena',
+  },
+  [19925] = {
+    'Miglik Borrón',
+    'Maestro de batalla de arena',
+  },
+  [19926] = {
+    'Atracahechizos Marathelle',
+    nil,
+  },
+  [19927] = {
+    'Transformación del vigía del Tiempo',
+    nil,
+  },
+  [19928] = {
+    'Laj (Arcano)',
+    nil,
+  },
+  [19929] = {
+    'Laj (Fuego)',
+    nil,
+  },
+  [19930] = {
+    'Laj (Escarcha)',
+    nil,
+  },
+  [19931] = {
+    'Laj (Naturaleza)',
+    nil,
+  },
+  [19932] = {
+    nil,
+    'Vigilantes del Tiempo',
+  },
+  [19933] = {
+    nil,
+    'Vigilantes del Tiempo',
+  },
+  [19935] = {
+    nil,
+    'La Escama de las Arenas',
+  },
+  [19936] = {
+    nil,
+    'La Escama de las Arenas',
+  },
+  [19937] = {
+    'Comandante Hogarth',
+    nil,
+  },
+  [19938] = {
+    'Imagen de la comandante Sarannis',
+    nil,
+  },
+  [19940] = {
+    'Cumbre',
+    nil,
+  },
+  [19941] = {
+    'Sagan (forma de mofeta)',
+    'Familiar de Ravandwyr',
+  },
+  [19942] = {
+    'Agente Pozobravo',
+    'El Alba Argenta',
+  },
+  [19943] = {
+    'Garroso Lashh\'an',
+    nil,
+  },
+  [19944] = {
+    'Guardia del aire Lashh\'an',
+    nil,
+  },
+  [19945] = {
+    'Surcavientos Lashh\'an',
+    nil,
+  },
+  [19946] = {
+    'Esclavista Cresta Oscura',
+    nil,
+  },
+  [19947] = {
+    'Hechicera Cresta Oscura',
+    nil,
+  },
+  [19948] = {
+    'Hostigador Machacasangre',
+    nil,
+  },
+  [19949] = {
+    'Pimpollo',
+    nil,
+  },
+  [19950] = {
+    'Custodia del Tiempo',
+    nil,
+  },
+  [19951] = {
+    'Celador del Tiempo',
+    nil,
+  },
+  [19952] = {
+    'Geomántico Machacasangre',
+    nil,
+  },
+  [19953] = {
+    'Protector rasgador',
+    nil,
+  },
+  [19954] = {
+    'Pimpollo superior',
+    nil,
+  },
+  [19956] = {
+    'Oteador Machacasangre',
+    nil,
+  },
+  [19957] = {
+    'Maestro cervecero Machacasangre',
+    nil,
+  },
+  [19958] = {
+    'Esqueje blanco',
+    nil,
+  },
+  [19959] = {
+    'Engendro de dragón Infinito encarcelado',
+    nil,
+  },
+  [19960] = {
+    'Ingeniero de la Forja Maldita',
+    nil,
+  },
+  [19961] = {
+    'Auxiliar de la Forja Maldita',
+    nil,
+  },
+  [19962] = {
+    'Esqueje azul',
+    nil,
+  },
+  [19963] = {
+    'Pregonera de fatalidad',
+    nil,
+  },
+  [19964] = {
+    'Esqueje rojo',
+    nil,
+  },
+  [19965] = {
+    'Constructor de la Forja Maldita',
+    nil,
+  },
+  [19966] = {
+    'Obrero de la Forja Maldita',
+    nil,
+  },
+  [19967] = {
+    'Avizor de terror',
+    nil,
+  },
+  [19968] = {
+    'Doncella de Pesadillas',
+    nil,
+  },
+  [19969] = {
+    'Esqueje verde',
+    nil,
+  },
+  [19970] = {
+    'Herrero de vapor Forjaterrible',
+    nil,
+  },
+  [19971] = {
+    'Sirviente Forjaterrible',
+    nil,
+  },
+  [19972] = {
+    'Sonámbulo',
+    nil,
+  },
+  [19973] = {
+    'Clamallamas abismal',
+    nil,
+  },
+  [19974] = {
+    'Maquinista Forjaterrible',
+    nil,
+  },
+  [19975] = {
+    'Trabajador Forjaterrible',
+    nil,
+  },
+  [19976] = {
+    'Destripador terrorífico',
+    nil,
+  },
+  [19978] = {
+    'Gran herrero Forja Muerta',
+    nil,
+  },
+  [19979] = {
+    'Técnico Forja Muerta',
+    nil,
+  },
+  [19980] = {
+    'Terror del vacío',
+    nil,
+  },
+  [19981] = {
+    'Señor vil eredar',
+    nil,
+  },
+  [19982] = {
+    'Ojoagudo Vekh\'nir',
+    nil,
+  },
+  [19983] = {
+    'Clamatormentas Vekh\'nir',
+    nil,
+  },
+  [19984] = {
+    'Halcón temible Vekh\'nir',
+    nil,
+  },
+  [19985] = {
+    'Observador de nubes Ruuan\'ok',
+    nil,
+  },
+  [19986] = {
+    'Furia del cielo Ruuan\'ok',
+    nil,
+  },
+  [19987] = {
+    'Guarda cuervo Ruuan\'ok',
+    nil,
+  },
+  [19988] = {
+    'Ala de falcón Grishna',
+    nil,
+  },
+  [19989] = {
+    'Presagista Grishna',
+    nil,
+  },
+  [19990] = {
+    'Grajo Grishna',
+    nil,
+  },
+  [19991] = {
+    'Tosco Machacasangre',
+    nil,
+  },
+  [19992] = {
+    'Chamán Machacasangre',
+    nil,
+  },
+  [19993] = {
+    'Aplastador Machacasangre',
+    nil,
+  },
+  [19994] = {
+    'Brujo Machacasangre',
+    nil,
+  },
+  [19995] = {
+    'Tosco Aguja del Filo',
+    nil,
+  },
+  [19996] = {
+    'Mago de batalla Aguja del Filo',
+    nil,
+  },
+  [19997] = {
+    'Déspota Aguja del Filo',
+    nil,
+  },
+  [19998] = {
+    'Chamán Aguja del Filo',
+    nil,
+  },
+  [19999] = {
+    'Ladrón de hechizos Astralan',
+    nil,
+  },
+  [20002] = {
+    nil,
+    'Maestra de batalla de la Garganta Grito de Guerra',
+  },
+  [20010] = {
+    'Illiyana Lunardiente',
+    nil,
+  },
+  [20011] = {
+    'Illiyana Lunardiente',
+    nil,
+  },
+  [20012] = {
+    'Illiyana Lunardiente',
+    nil,
+  },
+  [20013] = {
+    'Illiyana Lunardiente',
+    nil,
+  },
+  [20014] = {
+    'Illiyana Lunardiente',
+    nil,
+  },
+  [20019] = {
+    'Bandido Astralan',
+    nil,
+  },
+  [20020] = {
+    'Arcanista Astralan',
+    nil,
+  },
+  [20021] = {
+    'Cría abisal',
+    nil,
+  },
+  [20025] = {
+    'Espécimen de jaguar sable',
+    nil,
+  },
+  [20026] = {
+    'Espécimen de crocolisco Aguaoscura',
+    nil,
+  },
+  [20027] = {
+    'Espécimen de tarántula Colmillo Negro',
+    nil,
+  },
+  [20028] = {
+    nil,
+    'Suministros de cocina',
+  },
+  [20029] = {
+    'Caballo de guerra thalassiano',
+    nil,
+  },
+  [20030] = {
+    'Destrero thalassiano',
+    nil,
+  },
+  [20031] = {
+    'Legionario Depositario de Sangre',
+    nil,
+  },
+  [20032] = {
+    'Vindicador Depositario de Sangre',
+    nil,
+  },
+  [20033] = {
+    'Astromante',
+    nil,
+  },
+  [20034] = {
+    'Arúspice de las estrellas',
+    nil,
+  },
+  [20035] = {
+    'Mariscal Depositario de sangre',
+    nil,
+  },
+  [20036] = {
+    'Escudero Depositario de sangre',
+    nil,
+  },
+  [20037] = {
+    'Halconero de Tempestad',
+    nil,
+  },
+  [20038] = {
+    'Prole de fénix-halcón',
+    nil,
+  },
+  [20039] = {
+    'Fénix-halcón',
+    nil,
+  },
+  [20040] = {
+    'Devastador Núcleo de Cristal',
+    nil,
+  },
+  [20041] = {
+    'Centinela Núcleo de Cristal',
+    nil,
+  },
+  [20042] = {
+    'Herrero Tempestad',
+    nil,
+  },
+  [20043] = {
+    'Aprendiz de arúspice estrella',
+    nil,
+  },
+  [20044] = {
+    'Astromante novicio',
+    nil,
+  },
+  [20045] = {
+    'Arúspice abisal',
+    nil,
+  },
+  [20046] = {
+    'Señor astromante',
+    nil,
+  },
+  [20047] = {
+    'Mago de batalla de la Mano Carmesí',
+    nil,
+  },
+  [20048] = {
+    'Centurión de la Mano Carmesí',
+    nil,
+  },
+  [20049] = {
+    'Caballero de sangre Mano Carmesí',
+    nil,
+  },
+  [20050] = {
+    'Inquisidor de la Mano Carmesí',
+    nil,
+  },
+  [20052] = {
+    'Mecánico Núcleo de Cristal',
+    nil,
+  },
+  [20053] = {
+    'Espécimen de Avizor de Lordaeron',
+    nil,
+  },
+  [20054] = {
+    'Espécimen de velador de Lordaeron',
+    nil,
+  },
+  [20058] = {
+    'Lobo temible Machacasangre',
+    nil,
+  },
+  [20059] = {
+    'Ligador abisal Buscasol',
+    nil,
+  },
+  [20060] = {
+    nil,
+    'Martillo de Sangre',
+  },
+  [20062] = {
+    'Gran astromante Capernian',
+    'Consejero de Kael\'thas',
+  },
+  [20063] = {
+    'Maestro ingeniero Telonicus',
+    'Consejero de Kael\'thas',
+  },
+  [20064] = {
+    'Thaladred el Ensombrecedor',
+    'Consejero de Kael\'thas',
+  },
+  [20069] = {
+    'Espécimen de fuego fatuo de elfo la noche',
+    nil,
+  },
+  [20071] = {
+    'Comerciante de viento Marid',
+    nil,
+  },
+  [20072] = {
+    'Talbuk de guerra cobalto',
+    nil,
+  },
+  [20074] = {
+    'Talbuk de montar (Élite)',
+    nil,
+  },
+  [20075] = {
+    'Crocolisco Aguaoscura',
+    nil,
+  },
+  [20078] = {
+    'Reservista Depositario de sangre invocado',
+    nil,
+  },
+  [20079] = {
+    'Avizor Cresta Oscura',
+    nil,
+  },
+  [20080] = {
+    nil,
+    'Proveedor',
+  },
+  [20081] = {
+    nil,
+    'Suministros de venenos y componentes',
+  },
+  [20082] = {
+    nil,
+    'Armero',
+  },
+  [20083] = {
+    'Ensalmador Depositario de sangre invocado',
+    nil,
+  },
+  [20084] = {
+    'Imagen del príncipe-nexo Haramad',
+    nil,
+  },
+  [20087] = {
+    'Trabajador Mo\'rrisroe',
+    'Asociación de constructores de Lunargenta',
+  },
+  [20088] = {
+    'Sobrestante Escamas de Sangre',
+    nil,
+  },
+  [20089] = {
+    'Clamaolas Escamas de Sangre',
+    nil,
+  },
+  [20090] = {
+    'Avizor Escamas de Sangre',
+    nil,
+  },
+  [20091] = {
+    'Mirmidón Escamas de Sangre',
+    nil,
+  },
+  [20092] = {
+    'Tratante Hazzin',
+    'Proveedor general',
+  },
+  [20095] = {
+    'Grimnok Belinato',
+    nil,
+  },
+  [20096] = {
+    nil,
+    'Suministros de cocina',
+  },
+  [20097] = {
+    'Nula la Carnicera',
+    'Suministros de cocina',
+  },
+  [20101] = {
+    'Acechador abisal',
+    'El Guardián de Marid',
+  },
+  [20102] = {
+    'Plebeyo goblin',
+    nil,
+  },
+  [20109] = {
+    'Kaliri Lashh\'an',
+    nil,
+  },
+  [20111] = {
+    'Jorad Maza',
+    nil,
+  },
+  [20112] = {
+    'Comerciante de viento Tuluman',
+    'Mercader de armas',
+  },
+  [20113] = {
+    'Matriarca Lashh\'an',
+    nil,
+  },
+  [20115] = {
+    'Médico brujo de Umbropantano',
+    nil,
+  },
+  [20116] = {
+    'Gurn Jalazampa',
+    nil,
+  },
+  [20117] = {
+    'Caballero implacable vengativo',
+    nil,
+  },
+  [20118] = {
+    nil,
+    'Maestra de batalla de la Garganta Grito de Guerra',
+  },
+  [20119] = {
+    nil,
+    'Maestro de batalla del Valle de Alterac',
+  },
+  [20120] = {
+    nil,
+    'Maestro de batalla de la Cuenca de Arathi',
+  },
+  [20121] = {
+    nil,
+    'Suministros de venenos',
+  },
+  [20122] = {
+    'Bruja de mar Escamas de Sangre',
+    nil,
+  },
+  [20123] = {
+    'Granjero Griffith',
+    nil,
+  },
+  [20124] = {
+    'Kradu Filosiniestro',
+    'Instructor de herrería',
+  },
+  [20125] = {
+    'Zula Furiascoria',
+    'Instructora de herrería',
+  },
+  [20126] = {
+    'Protector ancestral de Sylvanaar',
+    nil,
+  },
+  [20127] = {
+    'Kaliri domado',
+    nil,
+  },
+  [20129] = {
+    'Custodia del Tiempo',
+    nil,
+  },
+  [20130] = {
+    nil,
+    'Vigilantes del Tiempo',
+  },
+  [20131] = {
+    nil,
+    'Vigilantes del Tiempo',
+  },
+  [20133] = {
+    'Imagen de Socrethar',
+    nil,
+  },
+  [20134] = {
+    'Arcanista Furia del Sol',
+    nil,
+  },
+  [20135] = {
+    'Archimago Furia del Sol',
+    nil,
+  },
+  [20136] = {
+    'Investigador Furia del Sol',
+    nil,
+  },
+  [20137] = {
+    'Lacayo implacable vengativo',
+    nil,
+  },
+  [20139] = {
+    'Conjurador Furia del Sol',
+    nil,
+  },
+  [20140] = {
+    'Centurión Furia del Sol',
+    nil,
+  },
+  [20141] = {
+    'Can de Culuthas',
+    nil,
+  },
+  [20142] = {
+    'Administrador del Tiempo',
+    'Vigilantes del Tiempo',
+  },
+  [20143] = {
+    'Engendrador del vacío - misión - Fallas de distorsión',
+    nil,
+  },
+  [20145] = {
+    'Abisario inestable',
+    nil,
+  },
+  [20146] = {
+    'Gran elekk, montura, (élite, PNJ)',
+    nil,
+  },
+  [20148] = {
+    'Guardia apocalíptico muerto',
+    nil,
+  },
+  [20149] = {
+    'Talbuk de guerra oscuro',
+    nil,
+  },
+  [20150] = {
+    'Talbuk de guerra canela',
+    nil,
+  },
+  [20151] = {
+    'Talbuk de guerra blanco',
+    nil,
+  },
+  [20152] = {
+    'Talbuk de guerra plateado',
+    nil,
+  },
+  [20154] = {
+    'Figura amortajada',
+    nil,
+  },
+  [20157] = {
+    'Geomántico Zarrapucha huido',
+    nil,
+  },
+  [20158] = {
+    'Cadáver cubierto de baba',
+    nil,
+  },
+  [20160] = {
+    'Defensor infernal',
+    nil,
+  },
+  [20161] = {
+    'Matriarca Vekh\'nir',
+    nil,
+  },
+  [20163] = {
+    'Embajador Solannas',
+    'Representante del príncipe Kael\'thas',
+  },
+  [20165] = {
+    nil,
+    'Mascota del señor del pantano Musel\'ek',
+  },
+  [20178] = {
+    nil,
+    'Criado de supervisor Sangreoscura',
+  },
+  [20194] = {
+    'Tratante Dunar',
+    'Proveedor general',
+  },
+  [20196] = {
+    'Colmillo de la Marisma sanguinario',
+    nil,
+  },
+  [20197] = {
+    'Aguja cienagosa',
+    nil,
+  },
+  [20198] = {
+    'Aguijonero pantanoso',
+    nil,
+  },
+  [20199] = {
+    'Guardia de honor del embajador',
+    nil,
+  },
+  [20200] = {
+    'Maestro de batalla de Tormenta Abisal',
+    nil,
+  },
+  [20201] = {
+    'Saco de carne',
+    'Vigilantes del Tiempo',
+  },
+  [20202] = {
+    'Peñaescara',
+    nil,
+  },
+  [20203] = {
+    'Técnico abisal',
+    'B.U.M.',
+  },
+  [20204] = {
+    'Acción Jaxon',
+    nil,
+  },
+  [20205] = {
+    'Audi la Aguja',
+    nil,
+  },
+  [20206] = {
+    nil,
+    'El perro fiel de Tracy',
+  },
+  [20207] = {
+    'Asaeteador Furia del Sol',
+    nil,
+  },
+  [20208] = {
+    'Resguardo de Sanación de Mennu',
+    nil,
+  },
+  [20209] = {
+    'Consola de control B\'naar',
+    nil,
+  },
+  [20210] = {
+    'Despellejador Piel de esquisto',
+    nil,
+  },
+  [20211] = {
+    'Matriarca Ruuan\'ok',
+    nil,
+  },
+  [20214] = {
+    'Huevo de Arakkoa',
+    nil,
+  },
+  [20216] = {
+    nil,
+    'Hijo de Gruul',
+  },
+  [20217] = {
+    'Halcón zancudo morado',
+    nil,
+  },
+  [20218] = {
+    'Técnico Furia del Sol',
+    nil,
+  },
+  [20220] = {
+    'Halcón zancudo azul',
+    nil,
+  },
+  [20221] = {
+    'Vigilante de las llamas Furia del Sol',
+    nil,
+  },
+  [20222] = {
+    'Halcón zancudo negro',
+    nil,
+  },
+  [20223] = {
+    'Halcón zancudo morado presto',
+    nil,
+  },
+  [20224] = {
+    'Halcón zancudo verde presto',
+    nil,
+  },
+  [20225] = {
+    'Zancudo de guerra presto',
+    nil,
+  },
+  [20227] = {
+    'Aprendiz Tedon',
+    nil,
+  },
+  [20231] = {
+    'Oficial de suministros Pestle',
+    'Pertrechos y reparaciones',
+  },
+  [20232] = {
+    'Comandante del aire Grifongar',
+    nil,
+  },
+  [20233] = {
+    'Aprendiza Vishael',
+    nil,
+  },
+  [20234] = {
+    'Runetog Martillo Salvaje',
+    'Maestro de grifos',
+  },
+  [20235] = {
+    'Grifonera Bramavientos',
+    nil,
+  },
+  [20236] = {
+    'Grifonero Hojabarba',
+    nil,
+  },
+  [20237] = {
+    'Jinete de grifos de Bastión del Honor',
+    nil,
+  },
+  [20238] = {
+    'Explorador de Bastión del Honor',
+    nil,
+  },
+  [20240] = {
+    'Comerciante Narasu',
+    'Intendente Kurenai',
+  },
+  [20241] = {
+    'Proveedora Nasela',
+    'Intendente Mag\'har',
+  },
+  [20242] = {
+    nil,
+    'Intendente del Consorcio',
+  },
+  [20243] = {
+    'Atracador vil desguazado',
+    nil,
+  },
+  [20245] = {
+    'Don Minino',
+    nil,
+  },
+  [20247] = {
+    'Minino',
+    nil,
+  },
+  [20248] = {
+    'Abisálico Furia del Sol',
+    nil,
+  },
+  [20249] = {
+    'Cymbre Cantoestelar',
+    'Pertrechos',
+  },
+  [20250] = {
+    'Rashere Pezuña Digna',
+    'Objetos comerciables',
+  },
+  [20269] = {
+    'Montok Manos Rojas',
+    'Maestra de batalla de la Garganta Grito de Guerra',
+  },
+  [20270] = {
+    'Druida Feropantano',
+    nil,
+  },
+  [20271] = {
+    'Haelga Puñopizarra',
+    'Maestro de batalla del Valle de Alterac',
+  },
+  [20272] = {
+    nil,
+    'Maestra de batalla de la Garganta Grito de Guerra',
+  },
+  [20273] = {
+    nil,
+    'Maestro de batalla de la Cuenca de Arathi',
+  },
+  [20274] = {
+    'Keldor el Perdido',
+    'Maestro de batalla de la Cuenca de Arathi',
+  },
+  [20276] = {
+    'Hermana loba Maka',
+    'Maestro de batalla del Valle de Alterac',
+  },
+  [20277] = {
+    'Azotador de raíces',
+    nil,
+  },
+  [20278] = {
+    'Vixton Silbapellizco',
+    'Intendente de conquista',
+  },
+  [20279] = {
+    'Trillalisco Piedra de ira',
+    nil,
+  },
+  [20280] = {
+    'Pisoteador Piedra de ira',
+    nil,
+  },
+  [20283] = {
+    'Vapuleador Roca de Marisma',
+    nil,
+  },
+  [20284] = {
+    'Dr. Bum',
+    nil,
+  },
+  [20285] = {
+    'Manitas de distorsión Gan\'arg',
+    nil,
+  },
+  [20287] = {
+    'Emboscador Zaxxis',
+    nil,
+  },
+  [20290] = {
+    'Anguila de laguna',
+    nil,
+  },
+  [20291] = {
+    'Caminante de laguna',
+    nil,
+  },
+  [20292] = {
+    'Barón de marisma Brok',
+    nil,
+  },
+  [20293] = {
+    'Pinzador maristrok',
+    nil,
+  },
+  [20294] = {
+    'Zarpador maristrok',
+    nil,
+  },
+  [20295] = {
+    'Triturador maristrok',
+    nil,
+  },
+  [20324] = {
+    'Hidra mustia',
+    nil,
+  },
+  [20325] = {
+    'Elemental rosa',
+    nil,
+  },
+  [20326] = {
+    'Maestro de distorsión Mo\'arg',
+    nil,
+  },
+  [20327] = {
+    'Cuervo Grishna',
+    nil,
+  },
+  [20329] = {
+    'Matriarca Grishna',
+    nil,
+  },
+  [20330] = {
+    'Huarguerrero Machacasangre',
+    nil,
+  },
+  [20331] = {
+    'Vindicador de G\'eras',
+    nil,
+  },
+  [20332] = {
+    'Dragón abisal',
+    nil,
+  },
+  [20334] = {
+    'Cocinero Aguja del Filo',
+    nil,
+  },
+  [20335] = {
+    'Bestia de carne parasitaria',
+    nil,
+  },
+  [20340] = {
+    'Maligno de carne',
+    nil,
+  },
+  [20341] = {
+    'Acechador abisal Oazul',
+    nil,
+  },
+  [20343] = {
+    'Tótem embelesador',
+    nil,
+  },
+  [20345] = {
+    'Comandante Mograine',
+    nil,
+  },
+  [20348] = {
+    'Ribalimpia',
+    nil,
+  },
+  [20350] = {
+    nil,
+    'El Kirin Tor',
+  },
+  [20351] = {
+    'Capitán Sanders',
+    nil,
+  },
+  [20352] = {
+    'Arcanista Doan',
+    nil,
+  },
+  [20355] = {
+    'Stalvan Mantoniebla',
+    nil,
+  },
+  [20357] = {
+    'Sally Melenablanca',
+    nil,
+  },
+  [20359] = {
+    'Pequeño Jimmy Vishas',
+    nil,
+  },
+  [20360] = {
+    'Herod el Matón',
+    nil,
+  },
+  [20362] = {
+    nil,
+    'Maestro de batalla del Ojo de la Tormenta',
+  },
+  [20363] = {
+    'Custodio Herrera',
+    nil,
+  },
+  [20368] = {
+    'Granjero Kent',
+    nil,
+  },
+  [20369] = {
+    'Buscatradición Dibbs',
+    nil,
+  },
+  [20370] = {
+    nil,
+    'El Kirin Tor',
+  },
+  [20373] = {
+    'Magistrado Henry Maleb',
+    nil,
+  },
+  [20374] = {
+    nil,
+    'Maestro de batalla del Ojo de la Tormenta',
+  },
+  [20377] = {
+    'Posadero Kelly',
+    'Camarero',
+  },
+  [20378] = {
+    nil,
+    'Especialidad en carne y bazofia',
+  },
+  [20379] = {
+    'Bilger el Puritano',
+    nil,
+  },
+  [20380] = {
+    'Raleigh el Auténtico',
+    nil,
+  },
+  [20381] = {
+    nil,
+    'Maestro de batalla del Ojo de la Tormenta',
+  },
+  [20382] = {
+    nil,
+    'Maestro de batalla del Ojo de la Tormenta',
+  },
+  [20383] = {
+    nil,
+    'Maestro de batalla del Ojo de la Tormenta',
+  },
+  [20384] = {
+    'Yula la Justa',
+    'Maestro de batalla del Ojo de la Tormenta',
+  },
+  [20385] = {
+    'Andrissa Lanzacorazón',
+    'Maestro de batalla del Ojo de la Tormenta',
+  },
+  [20386] = {
+    'Lyrlia Escudo Negro',
+    'Maestro de batalla del Ojo de la Tormenta',
+  },
+  [20387] = {
+    'Esporiélago joven',
+    nil,
+  },
+  [20388] = {
+    'Althallen Hoja Brillante',
+    'Maestro de batalla del Ojo de la Tormenta',
+  },
+  [20389] = {
+    'Lee Chispas',
+    'El Capataz',
+  },
+  [20390] = {
+    'Duyash el Cruel',
+    'Maestro de batalla del Ojo de la Tormenta',
+  },
+  [20392] = {
+    'Objetivo de Robot bum',
+    nil,
+  },
+  [20393] = {
+    'Supervisor Ocaso',
+    nil,
+  },
+  [20394] = {
+    'Ojo de Culuthas',
+    nil,
+  },
+  [20395] = {
+    'Tigre de batalla',
+    'La mascota de Adam Eternum',
+  },
+  [20396] = {
+    'Alimaña capturada',
+    nil,
+  },
+  [20397] = {
+    'Sobrestante Seylanna',
+    nil,
+  },
+  [20398] = {
+    'Alimaña reanimada',
+    nil,
+  },
+  [20399] = {
+    'Diablillo de terror',
+    nil,
+  },
+  [20400] = {
+    'Capitán Edward Hanes',
+    nil,
+  },
+  [20401] = {
+    nil,
+    'Camarera',
+  },
+  [20402] = {
+    'Soldado de choque de la Legión',
+    nil,
+  },
+  [20403] = {
+    'Destructor de la Legión',
+    nil,
+  },
+  [20404] = {
+    'Ingeniero de portal de distorsión',
+    nil,
+  },
+  [20405] = {
+    'Carga abisal',
+    nil,
+  },
+  [20406] = {
+    'Campeona Cyssa Rosalba',
+    'Instructor de paladines',
+  },
+  [20407] = {
+    'Clarividente Umbrua',
+    'Instructor de chamanes',
+  },
+  [20408] = {
+    'Vermizo de maná',
+    nil,
+  },
+  [20409] = {
+    'Aprendiz Kirin\'Var',
+    nil,
+  },
+  [20410] = {
+    nil,
+    'Instructor de herrería',
+  },
+  [20411] = {
+    'Bovino espectral',
+    nil,
+  },
+  [20413] = {
+    'Dracoleón de montar',
+    nil,
+  },
+  [20414] = {
+    'Dracoleón de montar, blindado',
+    nil,
+  },
+  [20415] = {
+    nil,
+    'Vaca premiada de Thadell',
+  },
+  [20416] = {
+    'Sobrestante Theredis',
+    nil,
+  },
+  [20417] = {
+    'Consola de control de Coruu',
+    nil,
+  },
+  [20418] = {
+    'Consola de control de Duro',
+    nil,
+  },
+  [20419] = {
+    nil,
+    'Aspirante a mercader',
+  },
+  [20420] = {
+    'Robovigilante, versión 0',
+    nil,
+  },
+  [20421] = {
+    'Goblin de Tormenta Abisal',
+    nil,
+  },
+  [20422] = {
+    'Mago del Kirin Tor',
+    nil,
+  },
+  [20423] = {
+    nil,
+    'El Kirin Tor',
+  },
+  [20424] = {
+    'Campesino de Trabalomas',
+    nil,
+  },
+  [20426] = {
+    'Ciudadano de Trabalomas',
+    nil,
+  },
+  [20427] = {
+    'Veneratus el Múltiple',
+    'Siervo de Illidan',
+  },
+  [20428] = {
+    'Ciudadano de Trabalomas',
+    nil,
+  },
+  [20429] = {
+    'Ciudadano de Trabalomas',
+    nil,
+  },
+  [20430] = {
+    'Ciudadano de Trabalomas',
+    nil,
+  },
+  [20432] = {
+    'Mendigo',
+    nil,
+  },
+  [20433] = {
+    'Granjero de Trabalomas',
+    nil,
+  },
+  [20434] = {
+    'Caballo',
+    nil,
+  },
+  [20435] = {
+    'Sobrestante Athanel',
+    nil,
+  },
+  [20436] = {
+    'Protector Furia del Sol',
+    nil,
+  },
+  [20438] = {
+    'Técnico Ara',
+    nil,
+  },
+  [20439] = {
+    'Ingeniero Ara',
+    nil,
+  },
+  [20440] = {
+    'Consola de control de Ara',
+    nil,
+  },
+  [20442] = {
+    'Capitán Bo\'kar',
+    nil,
+  },
+  [20443] = {
+    'Avizor Ango\'rosh',
+    nil,
+  },
+  [20444] = {
+    'Mago de las Sombras Ango\'rosh',
+    nil,
+  },
+  [20445] = {
+    'Mal\'druk el Imán de Almas',
+    nil,
+  },
+  [20446] = {
+    'Legionario del Protectorado',
+    nil,
+  },
+  [20447] = {
+    'Vanguardia del Protectorado',
+    nil,
+  },
+  [20448] = {
+    'Comandante Ameer',
+    'El Protectorado',
+  },
+  [20449] = {
+    'Investigador Navuud',
+    'El Protectorado',
+  },
+  [20450] = {
+    'Tratante de carne Viridius',
+    nil,
+  },
+  [20451] = {
+    'Bestia de carne servil',
+    nil,
+  },
+  [20452] = {
+    'Asesino de El Etereum',
+    nil,
+  },
+  [20453] = {
+    'Soldado de choque de El Etereum',
+    nil,
+  },
+  [20454] = {
+    'El rey-nexo Salhadaar',
+    nil,
+  },
+  [20455] = {
+    'Tótem de terror',
+    nil,
+  },
+  [20456] = {
+    'Investigador de El Etereum',
+    nil,
+  },
+  [20457] = {
+    'Perturbador de El Etereum',
+    nil,
+  },
+  [20458] = {
+    'Arconte de El Etereum',
+    nil,
+  },
+  [20459] = {
+    'Señor supremo de El Etereum',
+    nil,
+  },
+  [20460] = {
+    'Ingeniero jefe Gork\'lonn',
+    nil,
+  },
+  [20461] = {
+    'Valdrin, maestro de distorsión',
+    nil,
+  },
+  [20462] = {
+    'Emanaciones tóxicas',
+    nil,
+  },
+  [20463] = {
+    'Aprendiz Andrethan',
+    nil,
+  },
+  [20465] = {
+    'Furia de la Sotiénaga',
+    nil,
+  },
+  [20466] = {
+    'Etéreo, Consorcio',
+    nil,
+  },
+  [20467] = {
+    'Etéreo, El Etereum',
+    nil,
+  },
+  [20468] = {
+    'Etéreo, Protectorado',
+    nil,
+  },
+  [20471] = {
+    'Acechador abisal Nauthis',
+    nil,
+  },
+  [20472] = {
+    'Conejo marrón',
+    nil,
+  },
+  [20474] = {
+    'Acechador-nexo de El Etereum',
+    nil,
+  },
+  [20477] = {
+    'Terrogarra',
+    nil,
+  },
+  [20478] = {
+    'Sirviente Arcano',
+    nil,
+  },
+  [20479] = {
+    'Seta inestable',
+    nil,
+  },
+  [20480] = {
+    'Fantasma Kirin\'Var',
+    nil,
+  },
+  [20481] = {
+    'Llamas enfurecidas',
+    nil,
+  },
+  [20482] = {
+    'Imagen del comandante Ameer',
+    'El Protectorado',
+  },
+  [20484] = {
+    'Truhán grande del Área 52',
+    nil,
+  },
+  [20485] = {
+    'Truhán del Área 52',
+    nil,
+  },
+  [20486] = {
+    'Jinete del viento azul',
+    nil,
+  },
+  [20488] = {
+    'Jinete del viento leonado',
+    nil,
+  },
+  [20489] = {
+    'Jinete del viento verde presto',
+    nil,
+  },
+  [20490] = {
+    'Jinete del viento morado presto',
+    nil,
+  },
+  [20491] = {
+    'Jinete del viento rojo presto',
+    nil,
+  },
+  [20492] = {
+    'Jinete del viento amarillo presto',
+    nil,
+  },
+  [20493] = {
+    'Jinete del viento verde',
+    nil,
+  },
+  [20494] = {
+    'Dama Ferocrín',
+    'Vigilante de jinetes del viento',
+  },
+  [20495] = {
+    'Semental esquelético',
+    nil,
+  },
+  [20496] = {
+    'Espectro Kirin\'Var',
+    nil,
+  },
+  [20497] = {
+    'Fima Cinco-dedos',
+    'Maestro de batalla de arena',
+  },
+  [20498] = {
+    'Fragmento hendido',
+    nil,
+  },
+  [20499] = {
+    'Fizim Llavestruendo',
+    'Maestro de batalla de arena',
+  },
+  [20500] = {
+    nil,
+    'Instructor de equitación',
+  },
+  [20501] = {
+    'Lodo acuoso',
+    nil,
+  },
+  [20502] = {
+    'Dracohalcón eclipsiano',
+    nil,
+  },
+  [20503] = {
+    'Grifo de ébano',
+    nil,
+  },
+  [20504] = {
+    'Grifo dorado',
+    nil,
+  },
+  [20505] = {
+    'Grifo nevado',
+    nil,
+  },
+  [20506] = {
+    'Grifo verde presto',
+    nil,
+  },
+  [20507] = {
+    'Grifo morado presto',
+    nil,
+  },
+  [20508] = {
+    'Grifo rojo presto',
+    nil,
+  },
+  [20509] = {
+    'Grifo azul presto',
+    nil,
+  },
+  [20510] = {
+    'Brunn Barballamas',
+    'Vigilante de grifos',
+  },
+  [20511] = {
+    'Ilsa Bravuconada',
+    'Instructor de equitación',
+  },
+  [20512] = {
+    'Alma atormentada',
+    nil,
+  },
+  [20513] = {
+    'Defensor de Bastión del Honor',
+    nil,
+  },
+  [20514] = {
+    'Elemental abrasador',
+    nil,
+  },
+  [20515] = {
+    nil,
+    'Maestro de vuelo',
+  },
+  [20516] = {
+    'Monstruosidad de distorsión',
+    nil,
+  },
+  [20517] = {
+    'Prole de dracohalcón eclipsiano',
+    'Esbirro de Caballero de sangre',
+  },
+  [20518] = {
+    'Imagen del comerciante de viento Marid',
+    nil,
+  },
+  [20519] = {
+    'Robot bum Xtremo',
+    nil,
+  },
+  [20520] = {
+    'Prisionero de El Etereum',
+    nil,
+  },
+  [20551] = {
+    'Agente Araxes',
+    'El Protectorado',
+  },
+  [20552] = {
+    'Agente Ya-six',
+    'El Protectorado',
+  },
+  [20553] = {
+    'Imagen del comandante Ameer',
+    'El Protectorado',
+  },
+  [20554] = {
+    'Arconus el Insaciable',
+    nil,
+  },
+  [20555] = {
+    nil,
+    'Hijo de Gruul',
+  },
+  [20556] = {
+    'Marino de Ventormenta',
+    nil,
+  },
+  [20557] = {
+    'Can de cólera',
+    nil,
+  },
+  [20558] = {
+    'Can de forja',
+    nil,
+  },
+  [20560] = {
+    'Guarda Arakkoa',
+    nil,
+  },
+  [20561] = {
+    'Cadáver marchito',
+    nil,
+  },
+  [20562] = {
+    'Acechador invisible (escala x 5)',
+    nil,
+  },
+  [20563] = {
+    'Gran comandante Ruusk',
+    nil,
+  },
+  [20564] = {
+    'Imagen del agente Ya-six',
+    'El Protectorado',
+  },
+  [20599] = {
+    'Coloso captado',
+    nil,
+  },
+  [20600] = {
+    nil,
+    'Hijo de Gruul',
+  },
+  [20601] = {
+    'Asaltante Razaani',
+    nil,
+  },
+  [20603] = {
+    'Reflejo de Ya-six',
+    nil,
+  },
+  [20604] = {
+    nil,
+    'Intendente de género de la Alianza',
+  },
+  [20605] = {
+    'Dr. Bum',
+    nil,
+  },
+  [20606] = {
+    'Desgarrador Piel de esquisto',
+    nil,
+  },
+  [20607] = {
+    'Basilisco de pellejo de peñasco',
+    nil,
+  },
+  [20609] = {
+    'Acechador-nexo Razaani',
+    nil,
+  },
+  [20610] = {
+    'Cierva talbuk',
+    nil,
+  },
+  [20611] = {
+    'Polilla alabrillante',
+    nil,
+  },
+  [20612] = {
+    'Sorim Cantoluz',
+    'Intendente de género de la Horda',
+  },
+  [20613] = {
+    'Arodis Filosol',
+    'Vigilante de artefactos Sha\'tari',
+  },
+  [20614] = {
+    'Ladrón de hechizos Razaani',
+    nil,
+  },
+  [20615] = {
+    'Cachorro de Araga',
+    nil,
+  },
+  [20616] = {
+    nil,
+    'Vigilante de artefactos Sha\'tari',
+  },
+  [20618] = {
+    'Invasor de maná',
+    nil,
+  },
+  [20619] = {
+    'Repetidor de El Etereum',
+    nil,
+  },
+  [20634] = {
+    'Raptor dienteguadaña',
+    nil,
+  },
+  [20635] = {
+    'Orbe de luz Razaani',
+    nil,
+  },
+  [20667] = {
+    'Furia Esporala',
+    nil,
+  },
+  [20668] = {
+    'Bestia de carne maligna',
+    nil,
+  },
+  [20669] = {
+    'Sombra de Mal\'druk',
+    nil,
+  },
+  [20671] = {
+    'Lince Rasgacolmillo',
+    nil,
+  },
+  [20672] = {
+    'Guardia Real',
+    nil,
+  },
+  [20673] = {
+    'Machacador Alapresta',
+    nil,
+  },
+  [20674] = {
+    'Escudo de Velen',
+    nil,
+  },
+  [20676] = {
+    'Muñeco de entrenamiento de El Etereum',
+    nil,
+  },
+  [20677] = {
+    'Morod el Agitavientos',
+    nil,
+  },
+  [20678] = {
+    'Akoru el Clamafuegos',
+    nil,
+  },
+  [20679] = {
+    'Aylaan el Levantaguas',
+    nil,
+  },
+  [20680] = {
+    'Arzeth el Impotente',
+    'Siervo del Traidor',
+  },
+  [20681] = {
+    'Rayador abisal',
+    nil,
+  },
+  [20683] = {
+    'Profeta Cavrylin',
+    nil,
+  },
+  [20685] = {
+    'Sobrestante Azarad',
+    nil,
+  },
+  [20707] = {
+    'Ilusión masculina de humano',
+    nil,
+  },
+  [20708] = {
+    'Ilusión femenina de humano',
+    nil,
+  },
+  [20709] = {
+    'Objetivo de Danza de hojas',
+    nil,
+  },
+  [20710] = {
+    'Prole de maristrok',
+    nil,
+  },
+  [20713] = {
+    'Draco hada',
+    nil,
+  },
+  [20714] = {
+    'Acechadora Crestaespina',
+    nil,
+  },
+  [20716] = {
+    'Rek\'tor',
+    nil,
+  },
+  [20717] = {
+    'Raptor de Terrallende, azul',
+    nil,
+  },
+  [20718] = {
+    'Raptor de Terrallende, verde',
+    nil,
+  },
+  [20719] = {
+    'Raptor de Terrallende, rojo',
+    nil,
+  },
+  [20720] = {
+    'Raptor de Terrallende, amarillo',
+    nil,
+  },
+  [20722] = {
+    'Heraldo Bran\'daan',
+    nil,
+  },
+  [20724] = {
+    'Heraldo Amorlin',
+    nil,
+  },
+  [20725] = {
+    'Murciélago',
+    nil,
+  },
+  [20727] = {
+    'Capitán Zovax',
+    nil,
+  },
+  [20728] = {
+    'Raptor Aguja del Filo',
+    nil,
+  },
+  [20729] = {
+    'Devastador Aguja del Filo',
+    nil,
+  },
+  [20732] = {
+    'Gorr\'Lelo',
+    nil,
+  },
+  [20733] = {
+    'Dañino de Walla',
+    'Señor de Cosas',
+  },
+  [20734] = {
+    'Raptor Faucedaga',
+    nil,
+  },
+  [20747] = {
+    'Larva de Alaseda',
+    nil,
+  },
+  [20748] = {
+    'Lobo temible Señor del Trueno',
+    nil,
+  },
+  [20749] = {
+    'Serpiente Alaescama',
+    nil,
+  },
+  [20751] = {
+    'Colazote Faucedaga',
+    nil,
+  },
+  [20752] = {
+    'Gran Alaseda',
+    nil,
+  },
+  [20754] = {
+    'Devorador Faucedaga',
+    nil,
+  },
+  [20756] = {
+    'Chef Aguja del Filo',
+    nil,
+  },
+  [20762] = {
+    nil,
+    'Maestra de jinetes del viento',
+  },
+  [20763] = {
+    'Vanguardia del Protectorado capturado',
+    nil,
+  },
+  [20764] = {
+    'Objetivo de El Etereum',
+    nil,
+  },
+  [20765] = {
+    'Triturador Aguja del Filo',
+    nil,
+  },
+  [20766] = {
+    'Místico Aguja del Filo',
+    nil,
+  },
+  [20770] = {
+    'Celador Icochoque',
+    nil,
+  },
+  [20772] = {
+    'Roca abisal',
+    nil,
+  },
+  [20773] = {
+    'Crocolisco Escamapúas',
+    nil,
+  },
+  [20774] = {
+    'Azotador Farahlon',
+    nil,
+  },
+  [20777] = {
+    'Soberano talbuk',
+    nil,
+  },
+  [20778] = {
+    'Residuo del vacío',
+    nil,
+  },
+  [20779] = {
+    'Horror del vacío espeso',
+    nil,
+  },
+  [20783] = {
+    'Porfus el Engullidor de gemas',
+    nil,
+  },
+  [20784] = {
+    'Partebrazos Huffaz',
+    nil,
+  },
+  [20785] = {
+    'Manitas vil Zortan',
+    nil,
+  },
+  [20786] = {
+    nil,
+    'La madre del cubil',
+  },
+  [20787] = {
+    'El capitán Tyralius',
+    nil,
+  },
+  [20788] = {
+    nil,
+    'El Duque de los malignos',
+  },
+  [20789] = {
+    'Encolerizador Laz-tarash',
+    nil,
+  },
+  [20790] = {
+    'Malevus la Loca',
+    nil,
+  },
+  [20791] = {
+    nil,
+    'Instructora de portal',
+  },
+  [20792] = {
+    'Elemental Escamas de Sangre',
+    nil,
+  },
+  [20793] = {
+    'Mariscal de campo Brock',
+    nil,
+  },
+  [20794] = {
+    'Kaylaan el Perdido',
+    nil,
+  },
+  [20795] = {
+    'Vigilante de la Cisterna',
+    nil,
+  },
+  [20796] = {
+    'Objetivo Tormenta Abisal',
+    nil,
+  },
+  [20797] = {
+    'Prole de volutador descarriado',
+    nil,
+  },
+  [20798] = {
+    'Navajafilada',
+    nil,
+  },
+  [20799] = {
+    'Arúspice de batalla Unther',
+    nil,
+  },
+  [20800] = {
+    'Maestro de forja Morug',
+    nil,
+  },
+  [20802] = {
+    'Demoledor de protectorado',
+    nil,
+  },
+  [20803] = {
+    'Maestro Supremo Yugogarr',
+    nil,
+  },
+  [20805] = {
+    'Glóbulo de residuo del vacío',
+    nil,
+  },
+  [20806] = {
+    'Glóbulo de lodo acuoso',
+    nil,
+  },
+  [20807] = {
+    nil,
+    'Inscripciones de los Aldor',
+  },
+  [20808] = {
+    nil,
+    'Inscripciones de los Arúspices',
+  },
+  [20811] = {
+    nil,
+    'Ingeniero jefe del Ecodomo',
+  },
+  [20825] = {
+    'Prisionero de El Etereum (Tyralius)',
+    nil,
+  },
+  [20846] = {
+    'Elekk gris',
+    nil,
+  },
+  [20847] = {
+    'Elekk morado',
+    nil,
+  },
+  [20848] = {
+    'Gran elekk azul',
+    nil,
+  },
+  [20849] = {
+    'Gran elekk verde',
+    nil,
+  },
+  [20850] = {
+    'Gran elekk morado',
+    nil,
+  },
+  [20854] = {
+    'Gladiador de El Etereum',
+    nil,
+  },
+  [20857] = {
+    'Defensor de Arcatraz',
+    nil,
+  },
+  [20858] = {
+    'Controlador del evento de arena',
+    nil,
+  },
+  [20859] = {
+    'Depositario de Arcatraz',
+    nil,
+  },
+  [20860] = {
+    'Maligno de carne mutado',
+    nil,
+  },
+  [20861] = {
+    'Abilisco mutado',
+    nil,
+  },
+  [20862] = {
+    'Despellejador mutado',
+    nil,
+  },
+  [20864] = {
+    'Pesadilla proteica',
+    nil,
+  },
+  [20865] = {
+    'Horror proteico',
+    nil,
+  },
+  [20866] = {
+    'Devorador de almas',
+    nil,
+  },
+  [20867] = {
+    'Vigía de la Muerte',
+    nil,
+  },
+  [20868] = {
+    'Ojo entrópico',
+    nil,
+  },
+  [20869] = {
+    'Centinela de Arcatraz',
+    nil,
+  },
+  [20870] = {
+    'Zereketh el Desatado',
+    nil,
+  },
+  [20871] = {
+    'Aurine Lunardiente',
+    'Expedición de Cenarion',
+  },
+  [20872] = {
+    'Invocador Forja Muerta',
+    nil,
+  },
+  [20873] = {
+    'Maestro de distorsión de negatrones',
+    nil,
+  },
+  [20874] = {
+    'Refugiado de Skettis',
+    nil,
+  },
+  [20875] = {
+    'Gritón de negatrones',
+    nil,
+  },
+  [20876] = {
+    'Refugiado humano',
+    nil,
+  },
+  [20877] = {
+    'Refugiado de Shattrath',
+    nil,
+  },
+  [20878] = {
+    'Guardián Forja Muerta',
+    nil,
+  },
+  [20879] = {
+    'Devoralmas eredar',
+    nil,
+  },
+  [20880] = {
+    'Libramorte eredar',
+    nil,
+  },
+  [20881] = {
+    'Devastador desatado',
+    nil,
+  },
+  [20882] = {
+    'Bruja husmeadora',
+    nil,
+  },
+  [20883] = {
+    'Tentadora maliciosa',
+    nil,
+  },
+  [20884] = {
+    'Cultor Forja Muerta',
+    nil,
+  },
+  [20885] = {
+    'Dalliah la Oradora del Sino',
+    nil,
+  },
+  [20886] = {
+    'Arúspice de cólera Soccothrates',
+    nil,
+  },
+  [20887] = {
+    'Diablillo Forja Muerta',
+    nil,
+  },
+  [20888] = {
+    'Solus el Eterno',
+    nil,
+  },
+  [20889] = {
+    'Prisionero de El Etereum (Bola de energía de grupo)',
+    nil,
+  },
+  [20890] = {
+    'Siflaed Martillo Frío',
+    'Manitas',
+  },
+  [20891] = {
+    nil,
+    'Objetos comerciables',
+  },
+  [20892] = {
+    nil,
+    'Pertrechos',
+  },
+  [20893] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [20896] = {
+    'Destripador de El Etereum',
+    nil,
+  },
+  [20897] = {
+    'Lanzaolas de El Etereum',
+    nil,
+  },
+  [20898] = {
+    'Abisal inmenso',
+    nil,
+  },
+  [20899] = {
+    'Conducto del vacío',
+    nil,
+  },
+  [20900] = {
+    'Fatídico desencadenado',
+    nil,
+  },
+  [20901] = {
+    'Arquero Sargeron',
+    nil,
+  },
+  [20902] = {
+    'Clamainferno Sargeron',
+    nil,
+  },
+  [20903] = {
+    'Draco abisal del Protectorado',
+    nil,
+  },
+  [20904] = {
+    'Celador Mellichar',
+    nil,
+  },
+  [20905] = {
+    'Tramposo llameante',
+    nil,
+  },
+  [20906] = {
+    'Cazador de fase',
+    nil,
+  },
+  [20907] = {
+    'Profesor Dabiri',
+    nil,
+  },
+  [20908] = {
+    'Invocador de relámpagos Akkiris',
+    nil,
+  },
+  [20909] = {
+    'Lanzamagma Sulfuron',
+    nil,
+  },
+  [20910] = {
+    'Drakonaar Crepuscular',
+    nil,
+  },
+  [20911] = {
+    'Drakonaar Alanegra',
+    nil,
+  },
+  [20912] = {
+    'Presagista Cieloriss',
+    nil,
+  },
+  [20914] = {
+    nil,
+    'Instructor de equitación',
+  },
+  [20915] = {
+    'Noko Susurrolunar',
+    'Componentes',
+  },
+  [20916] = {
+    'Xerintha Roblecuervo',
+    'Alimentos y bebidas',
+  },
+  [20917] = {
+    'Zinyen Zanco Veloz',
+    'Vendedor de armas',
+  },
+  [20918] = {
+    'Acechador vil Forja Muerta',
+    'Esbirro de espíritu caminante',
+  },
+  [20919] = {
+    'Guarda apocalíptico Forja Muerta',
+    nil,
+  },
+  [20921] = {
+    'Shauly Poro',
+    nil,
+  },
+  [20922] = {
+    'Vindicador caído',
+    nil,
+  },
+  [20923] = {
+    'Guardia de sangre Porung',
+    nil,
+  },
+  [20924] = {
+    'Basilisco de Grishnath',
+    nil,
+  },
+  [20925] = {
+    'Basilisco escaldado',
+    nil,
+  },
+  [20927] = {
+    'Tecnomántico Gan\'arg',
+    nil,
+  },
+  [20928] = {
+    'Señor de Forja Dorsacerado',
+    nil,
+  },
+  [20929] = {
+    'Lord de cólera',
+    nil,
+  },
+  [20930] = {
+    'Pregonera del miedo',
+    nil,
+  },
+  [20934] = {
+    'Defensor aislado',
+    nil,
+  },
+  [20935] = {
+    'TestOgroBeige01',
+    nil,
+  },
+  [20936] = {
+    'TestOgroBeige02',
+    nil,
+  },
+  [20937] = {
+    'TestOgroBeige03',
+    nil,
+  },
+  [20938] = {
+    'TestOgroBeige04',
+    nil,
+  },
+  [20939] = {
+    'TestOgroBeige05',
+    nil,
+  },
+  [20940] = {
+    'TestOgroBeige06',
+    nil,
+  },
+  [20941] = {
+    'TestOgroNegro01',
+    nil,
+  },
+  [20942] = {
+    'TestOgroNegro02',
+    nil,
+  },
+  [20943] = {
+    'TestOgroNegro03',
+    nil,
+  },
+  [20944] = {
+    'TestOgroNegro04',
+    nil,
+  },
+  [20945] = {
+    'TestOgroNegro05',
+    nil,
+  },
+  [20946] = {
+    'TestOgroNegro06',
+    nil,
+  },
+  [20947] = {
+    'TestOgroAzul01',
+    nil,
+  },
+  [20948] = {
+    'TestOgroAzul02',
+    nil,
+  },
+  [20949] = {
+    'TestOgroAzul03',
+    nil,
+  },
+  [20950] = {
+    'TestOgroAzul04',
+    nil,
+  },
+  [20951] = {
+    'TestOgroAzul05',
+    nil,
+  },
+  [20952] = {
+    'TestOgroAzul06',
+    nil,
+  },
+  [20953] = {
+    'TestOgroGris01',
+    nil,
+  },
+  [20954] = {
+    'TestOgroGris02',
+    nil,
+  },
+  [20955] = {
+    'TestOgroGris03',
+    nil,
+  },
+  [20956] = {
+    'TestOgroGris04',
+    nil,
+  },
+  [20957] = {
+    'TestOgroGris05',
+    nil,
+  },
+  [20958] = {
+    'TestOgroGris06',
+    nil,
+  },
+  [20959] = {
+    'TestOgroRojo01',
+    nil,
+  },
+  [20960] = {
+    'TestOgroRojo02',
+    nil,
+  },
+  [20961] = {
+    'TestOgroRojo03',
+    nil,
+  },
+  [20962] = {
+    'TestOgroRojo04',
+    nil,
+  },
+  [20963] = {
+    'TestOgroRojo05',
+    nil,
+  },
+  [20964] = {
+    'TestOgroRojo06',
+    nil,
+  },
+  [20965] = {
+    'TestOgroAmarillo01',
+    nil,
+  },
+  [20966] = {
+    'TestOgroAmarillo02',
+    nil,
+  },
+  [20967] = {
+    'TestOgroAmarillo03',
+    nil,
+  },
+  [20968] = {
+    'TestOgroAmarillo04',
+    nil,
+  },
+  [20969] = {
+    'TestOgroAmarillo05',
+    nil,
+  },
+  [20970] = {
+    'TestOgroAmarillo06',
+    nil,
+  },
+  [20971] = {
+    'TestOgroMorado01',
+    nil,
+  },
+  [20972] = {
+    'TestOgroMorado02',
+    nil,
+  },
+  [20973] = {
+    'TestOgroMorado03',
+    nil,
+  },
+  [20974] = {
+    'TestOgroMorado04',
+    nil,
+  },
+  [20975] = {
+    'TestOgroMorado05',
+    nil,
+  },
+  [20976] = {
+    'TestOgroMorado06',
+    nil,
+  },
+  [20977] = {
+    'Molino Tormenta de maná',
+    nil,
+  },
+  [20978] = {
+    'Fuego vil de arúspice de cólera',
+    nil,
+  },
+  [20980] = {
+    'Tratante Rashaad',
+    'Criaturas exóticas',
+  },
+  [20981] = {
+    'Tratante Najeeb',
+    'Piezas de repuesto',
+  },
+  [20983] = {
+    'Azotador Farahlon mutado',
+    nil,
+  },
+  [20984] = {
+    'Defensor del Protectorado',
+    nil,
+  },
+  [20985] = {
+    'Capitán Saeed',
+    nil,
+  },
+  [20986] = {
+    'Tratante Tariq',
+    'Vendedor sospechoso',
+  },
+  [20987] = {
+    'Basilisco de Foresta Ruuan',
+    nil,
+  },
+  [20988] = {
+    'Ingeniero Buscasol',
+    nil,
+  },
+  [20989] = {
+    'Tratante Sadaqat',
+    'Mejunjes potentes',
+  },
+  [20990] = {
+    'Médico Depositario de Sangre',
+    nil,
+  },
+  [20992] = {
+    'Guardia de sangre Porung',
+    nil,
+  },
+  [20993] = {
+    'Guardia de sangre Porung',
+    nil,
+  },
+  [20994] = {
+    'Élite Furia del Sol',
+    nil,
+  },
+  [20995] = {
+    'Habitante de Sombraluna',
+    nil,
+  },
+  [20998] = {
+    'Horror Crestaespina',
+    nil,
+  },
+  [20999] = {
+    'Rasante Alaescama',
+    nil,
+  },
+  [21001] = {
+    'Kaylaan el Caído',
+    nil,
+  },
+  [21002] = {
+    'Vapor abisal',
+    nil,
+  },
+  [21004] = {
+    'Draco abisal inferior',
+    nil,
+  },
+  [21005] = {
+    'Picoazur',
+    nil,
+  },
+  [21006] = {
+    'Teniente Meridiano',
+    nil,
+  },
+  [21007] = {
+    'Sargento Chawni',
+    nil,
+  },
+  [21008] = {
+    'Polilla amarilla',
+    nil,
+  },
+  [21009] = {
+    'Polilla roja',
+    nil,
+  },
+  [21010] = {
+    'Polilla azul',
+    nil,
+  },
+  [21011] = {
+    'Cofre de vudú',
+    nil,
+  },
+  [21018] = {
+    'Polilla blanca',
+    nil,
+  },
+  [21019] = {
+    nil,
+    'Cuidadora de polillas',
+  },
+  [21020] = {
+    'Dragador vil (goblin)',
+    nil,
+  },
+  [21021] = {
+    'Diablillo agostador',
+    nil,
+  },
+  [21022] = {
+    'Lince acecharboleda',
+    nil,
+  },
+  [21023] = {
+    'Manofirme Raizhonda',
+    nil,
+  },
+  [21024] = {
+    'Ensalmador de la tierra Torlok',
+    'El Anillo de la Tierra',
+  },
+  [21026] = {
+    'Ensalmador de la tierra Gorboto',
+    'El Anillo de la Tierra',
+  },
+  [21027] = {
+    'Ensalmadora de la tierra Wilda',
+    'El Anillo de la Tierra',
+  },
+  [21029] = {
+    'Espíritu de agua capturado',
+    nil,
+  },
+  [21032] = {
+    'Alatemible',
+    nil,
+  },
+  [21033] = {
+    'Flebotomista Alacuchilla',
+    nil,
+  },
+  [21034] = {
+    'Jabato',
+    nil,
+  },
+  [21035] = {
+    'Dimensius el Devoratodo 000',
+    nil,
+  },
+  [21036] = {
+    'Escórpido rojo',
+    nil,
+  },
+  [21037] = {
+    'Escórpido negro',
+    nil,
+  },
+  [21038] = {
+    'Escórpido dorado',
+    nil,
+  },
+  [21040] = {
+    'Pimpollo de Bosque del Cuervo indignado',
+    nil,
+  },
+  [21041] = {
+    'Activador de ensalmadora de la tierra Wilda',
+    nil,
+  },
+  [21042] = {
+    'Cuervo temible',
+    nil,
+  },
+  [21043] = {
+    'Escórpido azul',
+    nil,
+  },
+  [21044] = {
+    'Asesino Cicatriz Espiral',
+    nil,
+  },
+  [21045] = {
+    'Guardaespaldas contratado',
+    'La Llama Negra',
+  },
+  [21046] = {
+    'Tosco Peña\'mok',
+    nil,
+  },
+  [21047] = {
+    'Chamán Peña\'mok',
+    nil,
+  },
+  [21048] = {
+    'Cabecilla Peña\'mok',
+    nil,
+  },
+  [21049] = {
+    'Espíritu del pasado',
+    nil,
+  },
+  [21050] = {
+    'Espíritu de tierra iracundo',
+    nil,
+  },
+  [21055] = {
+    'Prole de dracohalcón dorado',
+    nil,
+  },
+  [21056] = {
+    'Prole de dracohalcón azul',
+    nil,
+  },
+  [21057] = {
+    'Príncipe-nexo Razaan',
+    nil,
+  },
+  [21058] = {
+    'Exarca incorpóreo',
+    nil,
+  },
+  [21059] = {
+    'Espíritu de agua iracundo',
+    nil,
+  },
+  [21060] = {
+    'Espíritu de aire iracundo',
+    nil,
+  },
+  [21061] = {
+    'Espíritu de fuego iracundo',
+    nil,
+  },
+  [21062] = {
+    'Ánima abisal',
+    nil,
+  },
+  [21063] = {
+    'Prole de dracohalcón plateado',
+    nil,
+  },
+  [21064] = {
+    'Prole de dracohalcón roja',
+    nil,
+  },
+  [21065] = {
+    'Ciudadano atormentado',
+    nil,
+  },
+  [21066] = {
+    'Rina Lunabril',
+    nil,
+  },
+  [21071] = {
+    'Tótem de espíritus',
+    nil,
+  },
+  [21072] = {
+    'Defensor de la arboleda viviente',
+    nil,
+  },
+  [21073] = {
+    'Alma terránea iracunda',
+    nil,
+  },
+  [21076] = {
+    'Luciérnaga',
+    nil,
+  },
+  [21077] = {
+    'Derrumbador Farahlon',
+    nil,
+  },
+  [21078] = {
+    'Fragmentizo de Farahlon',
+    nil,
+  },
+  [21079] = {
+    'Fragmentizo de Peñaescara',
+    nil,
+  },
+  [21080] = {
+    'Infernal en hibernación',
+    nil,
+  },
+  [21081] = {
+    'Cazador Mok\'Nathal',
+    nil,
+  },
+  [21082] = {
+    nil,
+    'Pertrechos',
+  },
+  [21083] = {
+    nil,
+    'Objetos comerciables',
+  },
+  [21084] = {
+    nil,
+    'Carnicero',
+  },
+  [21085] = {
+    nil,
+    'Suministros de peletería',
+  },
+  [21086] = {
+    nil,
+    'Armas aplastantes',
+  },
+  [21087] = {
+    nil,
+    'Instructor de peletería',
+  },
+  [21088] = {
+    'Matrona Varah',
+    'Tabernero',
+  },
+  [21089] = {
+    'Caballero de sangre Furia del Sol',
+    nil,
+  },
+  [21090] = {
+    'Profesor Dabiri',
+    nil,
+  },
+  [21091] = {
+    'Palo de medición de conducto del vacío',
+    nil,
+  },
+  [21093] = {
+    'Espada bailarina',
+    nil,
+  },
+  [21097] = {
+    'Alma ígnea iracunda',
+    nil,
+  },
+  [21101] = {
+    'Zona del vacío desatada',
+    nil,
+  },
+  [21103] = {
+    'Clamaespíritus Grakosh',
+    nil,
+  },
+  [21104] = {
+    'Vigilante de la falla',
+    nil,
+  },
+  [21105] = {
+    'Clamaespíritus Roxnak',
+    nil,
+  },
+  [21106] = {
+    'Clamaespíritus Skrash',
+    nil,
+  },
+  [21107] = {
+    'Rip Acelerati',
+    'Maestro de grifos',
+  },
+  [21108] = {
+    'Engendro de Uvuros',
+    nil,
+  },
+  [21109] = {
+    'Alma acuática iracunda',
+    nil,
+  },
+  [21110] = {
+    'Fito "Doc" Tictac',
+    'Tabernero',
+  },
+  [21111] = {
+    'Bembil Martillazo',
+    'Pertrechos',
+  },
+  [21112] = {
+    nil,
+    'Suministros de ingeniería',
+  },
+  [21113] = {
+    'Sassa Soldabien',
+    'Objetos comerciables',
+  },
+  [21114] = {
+    'Técnico de estación',
+    nil,
+  },
+  [21115] = {
+    'Guardia de estación',
+    nil,
+  },
+  [21116] = {
+    'Alma aérea iracunda',
+    nil,
+  },
+  [21118] = {
+    'Michael Razak',
+    nil,
+  },
+  [21119] = {
+    'Sierra de fatalidad',
+    nil,
+  },
+  [21123] = {
+    'Jurapenas Alaescama',
+    nil,
+  },
+  [21124] = {
+    'Jurapenas Faucedaga',
+    nil,
+  },
+  [21126] = {
+    'Sanadora de escamas Colmillo Torcido',
+    nil,
+  },
+  [21127] = {
+    'Tempestad Colmillo Torcido',
+    nil,
+  },
+  [21128] = {
+    'Raya Colmillo Torcido',
+    'Mascota de observador',
+  },
+  [21129] = {
+    'Espíritu de tierra desdeñado',
+    nil,
+  },
+  [21130] = {
+    'Espíritu de fuego desdeñado',
+    nil,
+  },
+  [21131] = {
+    'Espíritu de agua desdeñado',
+    nil,
+  },
+  [21132] = {
+    'Espíritu de aire desdeñado',
+    nil,
+  },
+  [21133] = {
+    'Cabo Crestahierro',
+    nil,
+  },
+  [21134] = {
+    'Ojo de la Ciudadela',
+    nil,
+  },
+  [21135] = {
+    'Diablillo vil',
+    nil,
+  },
+  [21136] = {
+    'Cronomántico Infinito',
+    nil,
+  },
+  [21137] = {
+    'Asesino Infinito',
+    nil,
+  },
+  [21138] = {
+    'Verdugo Infinito',
+    nil,
+  },
+  [21139] = {
+    'Vencedor Infinito',
+    nil,
+  },
+  [21140] = {
+    'Señor de la falla',
+    nil,
+  },
+  [21143] = {
+    'Prototipo de cañón de la Legión 1',
+    nil,
+  },
+  [21144] = {
+    'Prototipo de cañón de la Legión 2',
+    nil,
+  },
+  [21145] = {
+    'Pequeña Azimi',
+    'Vendedor de alimentos',
+  },
+  [21146] = {
+    'Prototipo de cañón de la Legión 2 y 3 guardia vil',
+    nil,
+  },
+  [21147] = {
+    'Tor\'chunk Dosgarras',
+    nil,
+  },
+  [21148] = {
+    'Vigilante de la falla',
+    nil,
+  },
+  [21149] = {
+    'Prototipo de cañón de la Legión 4',
+    nil,
+  },
+  [21150] = {
+    'Prototipo de cañón de la Legión 3',
+    nil,
+  },
+  [21151] = {
+    'Borgrim Martillotenaz',
+    'Liga de Expedicionarios',
+  },
+  [21152] = {
+    'Piloto de robots de la Estación',
+    nil,
+  },
+  [21153] = {
+    'Jinete de dracoleón Kor\'kron',
+    nil,
+  },
+  [21154] = {
+    'Montura de dracoleón armada de Kor\'kron',
+    nil,
+  },
+  [21155] = {
+    'Capataz primera Sombra del Atardecer',
+    'Reclutadora para la campaña de guerra',
+  },
+  [21156] = {
+    'Sargento primera Thelaana',
+    'Reclutadora para la campaña de guerra',
+  },
+  [21158] = {
+    'Comandante Cielosombra',
+    nil,
+  },
+  [21159] = {
+    'Haz de contención',
+    nil,
+  },
+  [21160] = {
+    'Elemental de agua conjurado',
+    nil,
+  },
+  [21161] = {
+    'Orco Mascahuesos',
+    nil,
+  },
+  [21162] = {
+    'Escolta Forja Muerta',
+    nil,
+  },
+  [21164] = {
+    nil,
+    'Cazademonios Illidari',
+  },
+  [21165] = {
+    'Dihyana la Cazadora',
+    'Pertrechos',
+  },
+  [21166] = {
+    'Señor del Terror Illidari',
+    nil,
+  },
+  [21167] = {
+    nil,
+    'Mascota de Dihyana',
+  },
+  [21168] = {
+    nil,
+    'Cazademonios Illidari',
+  },
+  [21170] = {
+    'Brigadier de grifos de Bastión del Honor, sur',
+    nil,
+  },
+  [21171] = {
+    nil,
+    'Cazademonios Illidari',
+  },
+  [21172] = {
+    'Sarinei Blancaestrella',
+    'Pertrechos',
+  },
+  [21175] = {
+    'Magister Halcón de sangre',
+    nil,
+  },
+  [21177] = {
+    nil,
+    'Cazademonios Illidari',
+  },
+  [21178] = {
+    nil,
+    'Cazademonios Illidari',
+  },
+  [21179] = {
+    'Suplicante cazademonios',
+    nil,
+  },
+  [21180] = {
+    'Iniciado cazademonios',
+    nil,
+  },
+  [21181] = {
+    'Cyrukh el señor del Fuego',
+    'Réquiem de Karabor',
+  },
+  [21183] = {
+    'Oronok Corazón Roto',
+    'Ermitaño y vendedor',
+  },
+  [21184] = {
+    'Caminahuesos Arakkoa (rojo)',
+    nil,
+  },
+  [21185] = {
+    'Huevo de cría abisal',
+    nil,
+  },
+  [21189] = {
+    'Despellejador de cristal',
+    nil,
+  },
+  [21195] = {
+    'Jabalí vil domesticado',
+    nil,
+  },
+  [21196] = {
+    'Depellejador voraz',
+    nil,
+  },
+  [21197] = {
+    'Bronwyn Martillotenaz',
+    'Liga de Expedicionarios',
+  },
+  [21198] = {
+    'Espíritu Garramuerte',
+    nil,
+  },
+  [21199] = {
+    'Caminahuesos Arakkoa (verde)',
+    nil,
+  },
+  [21200] = {
+    'Espíritu estridente',
+    nil,
+  },
+  [21201] = {
+    'Caminahuesos Arakkoa (amarillo)',
+    nil,
+  },
+  [21202] = {
+    'Caminahuesos Arakkoa (negro)',
+    nil,
+  },
+  [21204] = {
+    'Prole voraz',
+    nil,
+  },
+  [21205] = {
+    'Matriarca de despellejador voraz',
+    nil,
+  },
+  [21207] = {
+    'Invocador Skartax',
+    nil,
+  },
+  [21209] = {
+    nil,
+    'Instructor de herrería',
+  },
+  [21212] = {
+    nil,
+    'Matrona Colmillo Torcido',
+  },
+  [21213] = {
+    'Morogrim Levantamareas',
+    nil,
+  },
+  [21214] = {
+    'Señor de las profundidades Karathress',
+    nil,
+  },
+  [21215] = {
+    'Leotheras el Ciego',
+    nil,
+  },
+  [21216] = {
+    'Hydross el Inestable',
+    'Duque de corrientes',
+  },
+  [21217] = {
+    'El Rondador de abajo',
+    nil,
+  },
+  [21218] = {
+    'Guardia de honor de Vashj\'ir',
+    nil,
+  },
+  [21220] = {
+    'Sacerdotisa Colmillo Torcido',
+    nil,
+  },
+  [21221] = {
+    'Domador de bestias Colmillo Torcido',
+    nil,
+  },
+  [21222] = {
+    'Furibundo del fondo del mar',
+    nil,
+  },
+  [21224] = {
+    'Vidente de las profundidades Levantamareas',
+    nil,
+  },
+  [21225] = {
+    'Guerrero Levantamareas',
+    nil,
+  },
+  [21226] = {
+    'Chamán Levantamareas',
+    nil,
+  },
+  [21227] = {
+    'Arponero Levantamareas',
+    nil,
+  },
+  [21228] = {
+    'Hidromántico Levantamareas',
+    nil,
+  },
+  [21229] = {
+    'Clamamareas Corazón Gris',
+    nil,
+  },
+  [21230] = {
+    'Mago abisal Corazón Gris',
+    nil,
+  },
+  [21231] = {
+    'Portaescudos Corazón Gris',
+    nil,
+  },
+  [21232] = {
+    'Vagador Corazón Gris',
+    nil,
+  },
+  [21233] = {
+    'Cañón vil de la Legión',
+    nil,
+  },
+  [21235] = {
+    '"Puñalada" Bindo Tuercabum',
+    'Maestro de batalla de arena',
+  },
+  [21236] = {
+    nil,
+    'Nada que ver aquí',
+  },
+  [21237] = {
+    nil,
+    'Nada que ver aquí',
+  },
+  [21238] = {
+    'Bracero Machacasangre',
+    nil,
+  },
+  [21239] = {
+    'Prole de devastador voraz',
+    nil,
+  },
+  [21241] = {
+    'Activador de cerveza Machacasangre aterrabrutos',
+    nil,
+  },
+  [21242] = {
+    'Portavoz de la muerte Auchenai',
+    nil,
+  },
+  [21244] = {
+    'Mensajero Mascahuesos',
+    nil,
+  },
+  [21245] = {
+    'Maleante Mascahuesos',
+    nil,
+  },
+  [21246] = {
+    'Esporiélago del Santuario Serpiente',
+    nil,
+  },
+  [21247] = {
+    'Pollo de Oronok',
+    nil,
+  },
+  [21248] = {
+    'Punzón',
+    nil,
+  },
+  [21249] = {
+    'Acechador de Cólera',
+    nil,
+  },
+  [21250] = {
+    'Elekk rosa',
+    nil,
+  },
+  [21251] = {
+    'Coloso de la Sotiénaga',
+    nil,
+  },
+  [21253] = {
+    'Elemental de agua máculo',
+    nil,
+  },
+  [21254] = {
+    'Dragador Dullgrom',
+    nil,
+  },
+  [21255] = {
+    'Umbraullido',
+    'Compañero de Oronok',
+  },
+  [21256] = {
+    'Vurtok Rompehachas',
+    nil,
+  },
+  [21257] = {
+    'La boticaria Zelana',
+    nil,
+  },
+  [21258] = {
+    'Neófito asesinado',
+    nil,
+  },
+  [21259] = {
+    'Crash Bombazo',
+    'Operaciones zapadoras B.U.M.',
+  },
+  [21260] = {
+    'Elemental de agua purificada',
+    nil,
+  },
+  [21263] = {
+    'Técnico Corazón Gris',
+    nil,
+  },
+  [21264] = {
+    'Moco acuoso',
+    nil,
+  },
+  [21265] = {
+    'Ser de carne parasitario',
+    nil,
+  },
+  [21266] = {
+    'Prole de devastador',
+    nil,
+  },
+  [21267] = {
+    'Bestia de maná',
+    nil,
+  },
+  [21268] = {
+    'Arco largo de fibra abisal',
+    nil,
+  },
+  [21269] = {
+    'Devastación',
+    nil,
+  },
+  [21270] = {
+    'Inyector cósmico',
+    nil,
+  },
+  [21271] = {
+    'Hojas de infinidad',
+    nil,
+  },
+  [21272] = {
+    'Cercenador de distorsión',
+    nil,
+  },
+  [21273] = {
+    'Baluarte de cambio de fase',
+    nil,
+  },
+  [21274] = {
+    'Bastón de desintegración',
+    nil,
+  },
+  [21275] = {
+    'Presagista Ardonan',
+    nil,
+  },
+  [21276] = {
+    'Agente Mata\'penas',
+    nil,
+  },
+  [21277] = {
+    'Vindicadora Vuuleen',
+    nil,
+  },
+  [21279] = {
+    'Boticario Albreck',
+    nil,
+  },
+  [21283] = {
+    'Megzeg Quetemeto',
+    'Mercenario',
+  },
+  [21284] = {
+    'Iniciado Auchenai',
+    nil,
+  },
+  [21285] = {
+    'Orador del Sino Auchenai',
+    nil,
+  },
+  [21286] = {
+    'Maza de El Etereum',
+    nil,
+  },
+  [21287] = {
+    'Belisario Razuun',
+    nil,
+  },
+  [21289] = {
+    'Infernal inactivo',
+    nil,
+  },
+  [21290] = {
+    'Deflagración Arcana',
+    nil,
+  },
+  [21291] = {
+    'Grom\'tor, hijo de Oronok',
+    nil,
+  },
+  [21292] = {
+    'Ar\'tor, hijo de Oronok',
+    nil,
+  },
+  [21293] = {
+    'Borak, hijo de Oronok',
+    nil,
+  },
+  [21294] = {
+    'Asesino a sueldo Machacasangre',
+    nil,
+  },
+  [21295] = {
+    'Comandante Cicatriz Espiral',
+    nil,
+  },
+  [21296] = {
+    'Campeón Aguja del Filo',
+    nil,
+  },
+  [21298] = {
+    'Guardia serpiente Colmillo Torcido',
+    nil,
+  },
+  [21299] = {
+    'Bruja de las profundidades Colmillo Torcido',
+    nil,
+  },
+  [21300] = {
+    'Corruptor vil',
+    nil,
+  },
+  [21301] = {
+    'Despedazador Colmillo Torcido',
+    nil,
+  },
+  [21302] = {
+    'Brujo del Consejo de la Sombra',
+    nil,
+  },
+  [21303] = {
+    'Cadáver de defensor',
+    nil,
+  },
+  [21304] = {
+    'Cadáver de depositario',
+    nil,
+  },
+  [21305] = {
+    'Horror mutante',
+    nil,
+  },
+  [21306] = {
+    'Escarabajo maldito',
+    nil,
+  },
+  [21307] = {
+    nil,
+    'Guardián de Ar\'tor',
+  },
+  [21308] = {
+    'Invocador de escarabajo maldito',
+    nil,
+  },
+  [21309] = {
+    'Maestra del dolor Gabrissa',
+    nil,
+  },
+  [21311] = {
+    'Rokgah Agarre Sangriento',
+    nil,
+  },
+  [21312] = {
+    'Guardián neófito',
+    nil,
+  },
+  [21313] = {
+    'Uñagrieta muerto',
+    nil,
+  },
+  [21314] = {
+    'Maestro de terror',
+    nil,
+  },
+  [21315] = {
+    'Ruul el Ensombrecedor',
+    nil,
+  },
+  [21316] = {
+    'Infernal Forja Muerta',
+    nil,
+  },
+  [21318] = {
+    'Espíritu de Ar\'tor',
+    nil,
+  },
+  [21319] = {
+    'Gor Tripuriosa',
+    nil,
+  },
+  [21320] = {
+    'Transformación de guía de visión',
+    nil,
+  },
+  [21322] = {
+    'Tormenta de distorsión',
+    nil,
+  },
+  [21323] = {
+    'Derrumbador roca abisal',
+    nil,
+  },
+  [21324] = {
+    'Espíritu de cuervo',
+    nil,
+  },
+  [21325] = {
+    'Cortezapiedra del Bosque del Cuervo',
+    nil,
+  },
+  [21326] = {
+    'Hojabarba del Bosque del Cuervo',
+    nil,
+  },
+  [21328] = {
+    'Derrumbador cumbre',
+    nil,
+  },
+  [21330] = {
+    'Kurdran Martillo Salvaje',
+    nil,
+  },
+  [21331] = {
+    'Crecimiento espinoso',
+    nil,
+  },
+  [21332] = {
+    'Espíritu cazador',
+    nil,
+  },
+  [21335] = {
+    'Tentáculo de Markaru',
+    nil,
+  },
+  [21336] = {
+    nil,
+    'Maestra de establos',
+  },
+  [21337] = {
+    'Acechasombras Illidari',
+    'Siervo de Illidan',
+  },
+  [21338] = {
+    'Paria Colmillo Torcido',
+    nil,
+  },
+  [21339] = {
+    'Vociferadora de odio Colmillo Torcido',
+    nil,
+  },
+  [21340] = {
+    nil,
+    'Mascota de Gedrah',
+  },
+  [21346] = {
+    'Ojo invidente',
+    nil,
+  },
+  [21347] = {
+    'Nodo de tubérculos del Valle Sombraluna',
+    nil,
+  },
+  [21349] = {
+    'T\'chali el médico brujo',
+    nil,
+  },
+  [21350] = {
+    'Gronn-Sacerdote',
+    nil,
+  },
+  [21354] = {
+    'Caballo de guerra ígneo',
+    nil,
+  },
+  [21357] = {
+    'Comandante del aire Nuainn',
+    nil,
+  },
+  [21359] = {
+    'Guardia de sangre Gulmok',
+    nil,
+  },
+  [21362] = {
+    'Fénix',
+    nil,
+  },
+  [21364] = {
+    'Huevo de fénix',
+    nil,
+  },
+  [21365] = {
+    'Calavera flotante',
+    nil,
+  },
+  [21368] = {
+    'Desvalijador etéreo',
+    nil,
+  },
+  [21370] = {
+    'Abisálico etéreo',
+    nil,
+  },
+  [21372] = {
+    'Alaseda rubicundo',
+    nil,
+  },
+  [21373] = {
+    'Alaseda',
+    nil,
+  },
+  [21374] = {
+    'Larva de Alaseda rubicundo',
+    nil,
+  },
+  [21375] = {
+    'Larva de Alaseda regordeta',
+    nil,
+  },
+  [21376] = {
+    'Bob la tortuga',
+    nil,
+  },
+  [21380] = {
+    'Revientacortezas superior',
+    nil,
+  },
+  [21381] = {
+    'Revientacortezas joven',
+    nil,
+  },
+  [21382] = {
+    'Zelote Culto Vermis',
+    nil,
+  },
+  [21383] = {
+    'Acólito Culto Vermis',
+    nil,
+  },
+  [21384] = {
+    'Presagista del cónclave oscuro',
+    nil,
+  },
+  [21385] = {
+    'Grajo del cónclave oscuro',
+    nil,
+  },
+  [21386] = {
+    'Ojohalcón del cónclave oscuro',
+    nil,
+  },
+  [21387] = {
+    'Cría negra Culto Vermis',
+    nil,
+  },
+  [21389] = {
+    'Maxnar el Fauceniza',
+    'Patriarca del Culto Vermis',
+  },
+  [21392] = {
+    'Familiar terráneo',
+    'Esbirro de Borak',
+  },
+  [21393] = {
+    'Canalizador de cañón',
+    nil,
+  },
+  [21395] = {
+    'Engendro proteico',
+    nil,
+  },
+  [21397] = {
+    'Aeman Cantoalegre',
+    nil,
+  },
+  [21398] = {
+    'Theine Cantoalegre',
+    nil,
+  },
+  [21402] = {
+    'Anacoreta Ceyla',
+    nil,
+  },
+  [21404] = {
+    'Atracador vil del Bastión de la Legión',
+    nil,
+  },
+  [21405] = {
+    'Arcanista etéreo',
+    nil,
+  },
+  [21406] = {
+    'Draco Ala Abisal',
+    nil,
+  },
+  [21407] = {
+    'Dragón Ala Abisal',
+    nil,
+  },
+  [21408] = {
+    'Diemetradón de fuego vil',
+    nil,
+  },
+  [21409] = {
+    'Enviado Icarius',
+    'La Voz de Illidan',
+  },
+  [21410] = {
+    'Señor de sangre Zarath',
+    'Guardaespaldas de Icarius',
+  },
+  [21411] = {
+    'Tobias el Comeporquería',
+    nil,
+  },
+  [21414] = {
+    'Campo de negatrones',
+    nil,
+  },
+  [21416] = {
+    nil,
+    'Corruptor de agua',
+  },
+  [21419] = {
+    'Agresor infernal',
+    nil,
+  },
+  [21420] = {
+    'Tótem de agua corrupto',
+    nil,
+  },
+  [21423] = {
+    'Devastador Sangradaña',
+    nil,
+  },
+  [21425] = {
+    'El rey-nexo Salhadaar',
+    nil,
+  },
+  [21426] = {
+    'Defensor gnomo - 209',
+    'Jinetes Férreos de Razak',
+  },
+  [21427] = {
+    'Piloto de zancudo',
+    'Jinetes Férreos de Razak',
+  },
+  [21428] = {
+    'Elemental de agua corrupto',
+    nil,
+  },
+  [21430] = {
+    'Draenei sin vida',
+    nil,
+  },
+  [21432] = {
+    nil,
+    'Intendente Sha\'tari',
+  },
+  [21435] = {
+    'Horror de las Sombras',
+    nil,
+  },
+  [21441] = {
+    'Tirador certero de estación',
+    nil,
+  },
+  [21446] = {
+    'Espíritu maléfico Aguja del Filo',
+    nil,
+  },
+  [21448] = {
+    'Francotirador de Gadgetzan',
+    nil,
+  },
+  [21449] = {
+    'Espíritu maldito',
+    nil,
+  },
+  [21450] = {
+    'Búho Skethyl',
+    nil,
+  },
+  [21452] = {
+    'Espíritu maléfico Machacasangre',
+    nil,
+  },
+  [21453] = {
+    'Chamán Lengua de ceniza',
+    'Siervo de Illidan',
+  },
+  [21454] = {
+    'Guerrero Lengua de ceniza',
+    'Siervo de Illidan',
+  },
+  [21455] = {
+    'Trabajador Lengua de ceniza',
+    'Siervo de Illidan',
+  },
+  [21459] = {
+    'Huevo de dragón Culto Vermis',
+    nil,
+  },
+  [21460] = {
+    'Tally Pillazas',
+    nil,
+  },
+  [21461] = {
+    'Rally Pillazas',
+    'Gemelo de Tally',
+  },
+  [21462] = {
+    'Diemetradón de fuego vil superior',
+    nil,
+  },
+  [21464] = {
+    'Ensamblaje etéreo',
+    nil,
+  },
+  [21466] = {
+    'Presagista Cieloriss',
+    nil,
+  },
+  [21467] = {
+    'Presagista Cieloriss',
+    nil,
+  },
+  [21468] = {
+    'Tótem Kaliri',
+    nil,
+  },
+  [21470] = {
+    'Protector arakkoa enfadado',
+    nil,
+  },
+  [21471] = {
+    'Agitador Ewan Alasalvaje',
+    nil,
+  },
+  [21472] = {
+    'Jinete de grifos Nordin',
+    nil,
+  },
+  [21474] = {
+    nil,
+    'Mercader de armas de filo',
+  },
+  [21475] = {
+    'Explorador Zagran',
+    nil,
+  },
+  [21476] = {
+    'Mokthar Filosiniestro',
+    nil,
+  },
+  [21477] = {
+    'Despellejador Uñarroca',
+    nil,
+  },
+  [21478] = {
+    'Desgarrador Uñarroca',
+    nil,
+  },
+  [21483] = {
+    nil,
+    'Munición',
+  },
+  [21484] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [21485] = {
+    nil,
+    'Mercader de armas de filo',
+  },
+  [21487] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [21488] = {
+    nil,
+    'Munición',
+  },
+  [21491] = {
+    'Error de funcionamiento del transportador de la Alianza',
+    nil,
+  },
+  [21492] = {
+    'Bendito Culto Vermis',
+    nil,
+  },
+  [21493] = {
+    'Kablamm Lanzalejos',
+    'Ingeniero de transportes',
+  },
+  [21494] = {
+    'Sonrisas O\'Byron',
+    'Ingeniero',
+  },
+  [21495] = {
+    'Visión de Cuervo',
+    nil,
+  },
+  [21497] = {
+    'Escama Negra',
+    nil,
+  },
+  [21499] = {
+    'Sobrestante Serrador',
+    nil,
+  },
+  [21502] = {
+    'Imagen del belisario Razuun',
+    nil,
+  },
+  [21503] = {
+    'Brujo Furia del Sol',
+    nil,
+  },
+  [21504] = {
+    'Imagen de Pathaleon el Calculador',
+    nil,
+  },
+  [21505] = {
+    'Invocador Furia del Sol',
+    nil,
+  },
+  [21507] = {
+    'Depositario de sangre Karabor',
+    nil,
+  },
+  [21508] = {
+    'Furia Colmillo Torcido',
+    nil,
+  },
+  [21510] = {
+    'Draco abisal presto',
+    nil,
+  },
+  [21514] = {
+    'Gorgrom el Comedragones',
+    'Hijo de Gruul',
+  },
+  [21516] = {
+    'Ocelo de la Muerte',
+    nil,
+  },
+  [21517] = {
+    nil,
+    'Maestra de establos',
+  },
+  [21518] = {
+    nil,
+    'Maestra de establos',
+  },
+  [21519] = {
+    'Poderío de la Muerte',
+    nil,
+  },
+  [21520] = {
+    'Carcelero Illidari',
+    'Siervo de Illidan',
+  },
+  [21627] = {
+    'Halcón zancudo eclipsiano',
+    nil,
+  },
+  [21628] = {
+    'Lamentadora Altonato',
+    nil,
+  },
+  [21629] = {
+    'Caja',
+    nil,
+  },
+  [21633] = {
+    'Libramorte Jovaan',
+    nil,
+  },
+  [21634] = {
+    'Zancudo del bosque',
+    nil,
+  },
+  [21635] = {
+    'Zancudo del bosque',
+    nil,
+  },
+  [21636] = {
+    'Draenei vengativo',
+    nil,
+  },
+  [21637] = {
+    'Explorador Culto Vermis',
+    nil,
+  },
+  [21638] = {
+    'Presagista vengativo',
+    nil,
+  },
+  [21639] = {
+    'Destripador Illidari',
+    nil,
+  },
+  [21642] = {
+    nil,
+    'Suministros de venenos y componentes',
+  },
+  [21643] = {
+    nil,
+    'Intendente de los Vigilantes del Tiempo',
+  },
+  [21644] = {
+    'Guardia del aire de Skettis',
+    nil,
+  },
+  [21648] = {
+    'Draco Ala Abisal adulto',
+    nil,
+  },
+  [21649] = {
+    'Surcavientos de Skettis',
+    nil,
+  },
+  [21650] = {
+    'Garroso de Skettis',
+    nil,
+  },
+  [21651] = {
+    'Atracador de Skettis Tiempo Perdido',
+    nil,
+  },
+  [21652] = {
+    'Controlador del tiempo de Skettis',
+    nil,
+  },
+  [21653] = {
+    'Espíritu de Skettis Tiempo Perdido',
+    nil,
+  },
+  [21655] = {
+    nil,
+    'Intendente del Bajo Arrabal',
+  },
+  [21656] = {
+    'Sátiro Illidari',
+    'Siervo de Illidan',
+  },
+  [21660] = {
+    'Abjurador de la Cábala',
+    nil,
+  },
+  [21661] = {
+    'Hostigador de la Cábala',
+    nil,
+  },
+  [21662] = {
+    'Asaltante de tumbas de la Cábala',
+    nil,
+  },
+  [21663] = {
+    'Oronu el Anciano',
+    nil,
+  },
+  [21664] = {
+    'Destrero de humanos',
+    nil,
+  },
+  [21682] = {
+    'Clérigo humano',
+    nil,
+  },
+  [21683] = {
+    'Conjurador humano',
+    nil,
+  },
+  [21684] = {
+    'Rey Llane',
+    nil,
+  },
+  [21685] = {
+    'Oronok Corazón Roto',
+    nil,
+  },
+  [21686] = {
+    'Borak, hijo de Oronok',
+    nil,
+  },
+  [21687] = {
+    'Grom\'tor, hijo de Oronok',
+    nil,
+  },
+  [21688] = {
+    'Montura de Oronok',
+    nil,
+  },
+  [21689] = {
+    'Cadáver de Furia Colmillo Torcido',
+    nil,
+  },
+  [21690] = {
+    nil,
+    'Avizor remoto de la estación de Toshley',
+  },
+  [21694] = {
+    'Señor supremo de ciénaga',
+    nil,
+  },
+  [21695] = {
+    'Marea de mareas',
+    nil,
+  },
+  [21696] = {
+    'Marea de vapor',
+    nil,
+  },
+  [21697] = {
+    'Cronolord Infinito',
+    nil,
+  },
+  [21698] = {
+    'Atracador del Tiempo Infinito',
+    nil,
+  },
+  [21699] = {
+    'Maiev Cantosombrío',
+    nil,
+  },
+  [21701] = {
+    'Juramorte Lengua de ceniza',
+    nil,
+  },
+  [21702] = {
+    'Vinculador de vida de El Etereum',
+    nil,
+  },
+  [21703] = {
+    'Tótem de fuego corrupto',
+    nil,
+  },
+  [21704] = {
+    'Tótem de tierra corrupto',
+    nil,
+  },
+  [21705] = {
+    'Tótem de aire corrupto',
+    nil,
+  },
+  [21706] = {
+    'Elemental de Fuego corrupto',
+    nil,
+  },
+  [21707] = {
+    'Elemental de aire corrupto',
+    nil,
+  },
+  [21708] = {
+    'Elemental de tierra corrupto',
+    nil,
+  },
+  [21709] = {
+    nil,
+    'Corruptor de tierra',
+  },
+  [21710] = {
+    nil,
+    'Corruptor de fuego',
+  },
+  [21711] = {
+    nil,
+    'Corruptor de aire',
+  },
+  [21717] = {
+    'Retador Faucedraco',
+    nil,
+  },
+  [21718] = {
+    'Subyugador Faucedraco',
+    nil,
+  },
+  [21719] = {
+    'Jinete de dracos Faucedraco',
+    nil,
+  },
+  [21720] = {
+    'Chamán Faucedraco',
+    nil,
+  },
+  [21721] = {
+    'Cría Ala Abisal esclavizada',
+    nil,
+  },
+  [21722] = {
+    'Draco Ala Abisal esclavizado',
+    nil,
+  },
+  [21723] = {
+    'Dientes de sable Vientonegro',
+    nil,
+  },
+  [21724] = {
+    'Aterralcón',
+    nil,
+  },
+  [21726] = {
+    'Belcebú invocado',
+    nil,
+  },
+  [21727] = {
+    'Flanis Alapresta',
+    nil,
+  },
+  [21728] = {
+    'Marea de Skettis',
+    nil,
+  },
+  [21731] = {
+    'Electromental encerrado',
+    nil,
+  },
+  [21732] = {
+    nil,
+    'Banquera',
+  },
+  [21733] = {
+    nil,
+    'Banquera',
+  },
+  [21734] = {
+    nil,
+    'Banquera',
+  },
+  [21735] = {
+    'Sobrealma infernal',
+    nil,
+  },
+  [21736] = {
+    'Defensor Martillo Salvaje',
+    nil,
+  },
+  [21738] = {
+    'Espíritu de aire redimido',
+    nil,
+  },
+  [21740] = {
+    'Espíritu de fuego redimido',
+    nil,
+  },
+  [21741] = {
+    'Espíritu de agua redimido',
+    nil,
+  },
+  [21742] = {
+    'Erradicador Furia del Sol',
+    nil,
+  },
+  [21743] = {
+    'Señor de sangre Furia del Sol',
+    nil,
+  },
+  [21744] = {
+    nil,
+    'Tabernero',
+  },
+  [21746] = {
+    'Custodio Aluuro',
+    'Tabernero',
+  },
+  [21747] = {
+    'Necrólito orco',
+    nil,
+  },
+  [21748] = {
+    'Lobo orco',
+    nil,
+  },
+  [21749] = {
+    'Explorador Sombraluna',
+    nil,
+  },
+  [21750] = {
+    'Orco brujo',
+    nil,
+  },
+  [21751] = {
+    nil,
+    'Ayudante de técnico mecánico B.U.M.',
+  },
+  [21752] = {
+    'Jefe de Guerra Mano Negra',
+    nil,
+  },
+  [21753] = {
+    'Jurapenas del Consejo de la Sombra',
+    nil,
+  },
+  [21754] = {
+    'Zelote del Consejo de la Sombra',
+    nil,
+  },
+  [21755] = {
+    'Nicopico el Metro-gnomo',
+    nil,
+  },
+  [21756] = {
+    'Marca de Kael Sombraluna',
+    nil,
+  },
+  [21761] = {
+    'Centinela destruido',
+    nil,
+  },
+  [21762] = {
+    'Torturadora Illidari',
+    'Siervo de Illidan',
+  },
+  [21763] = {
+    'Venerador de Skettis Tiempo Perdido',
+    nil,
+  },
+  [21766] = {
+    nil,
+    'Maestro de vuelo',
+  },
+  [21767] = {
+    'Presagista del Cuervo',
+    nil,
+  },
+  [21769] = {
+    'Señor supremo Or\'barokh',
+    nil,
+  },
+  [21770] = {
+    'Investigador Tiorus',
+    nil,
+  },
+  [21771] = {
+    'Clamaguerras Sardon Cortecertero',
+    nil,
+  },
+  [21772] = {
+    'Boticaria jefe Hildagard',
+    nil,
+  },
+  [21773] = {
+    'Señor feudal Yoregar',
+    nil,
+  },
+  [21774] = {
+    'Zorus el Justiciero',
+    nil,
+  },
+  [21775] = {
+    'Clamaguerras Birramorro',
+    nil,
+  },
+  [21776] = {
+    'Tentadora Illidari',
+    nil,
+  },
+  [21778] = {
+    nil,
+    'Sobrestante del Consejo de la Sombra',
+  },
+  [21779] = {
+    nil,
+    'Sobrestante del Consejo de la Sombra',
+  },
+  [21780] = {
+    'Engendro de Dimensius',
+    nil,
+  },
+  [21783] = {
+    'Regenerador del Protectorado',
+    nil,
+  },
+  [21784] = {
+    'Jinete fantasmal de Karabor',
+    nil,
+  },
+  [21787] = {
+    'Sumo sacerdote de Skettis Tiempo Perdido',
+    nil,
+  },
+  [21788] = {
+    'Zelote de Sombraluna',
+    nil,
+  },
+  [21795] = {
+    'Presagista de Sombraluna',
+    nil,
+  },
+  [21796] = {
+    'Vermis del más allá',
+    nil,
+  },
+  [21797] = {
+    'Espíritu Sombraluna ancestral',
+    nil,
+  },
+  [21798] = {
+    'Tormenta del vacío de Cresta Canto',
+    nil,
+  },
+  [21802] = {
+    'Elekk demoledor',
+    nil,
+  },
+  [21803] = {
+    'Controlador Lengua de ceniza',
+    'Siervo de Illidan',
+  },
+  [21804] = {
+    'Kaliri Skettis',
+    nil,
+  },
+  [21805] = {
+    'Vengador del Protectorado',
+    nil,
+  },
+  [21806] = {
+    'Vinculahechizos Corazón Gris',
+    nil,
+  },
+  [21808] = {
+    'Sobrestante Illidari',
+    'Siervo de Illidan',
+  },
+  [21809] = {
+    'Furtivo Culto Vermis',
+    nil,
+  },
+  [21810] = {
+    'Talador Culto Vermis',
+    nil,
+  },
+  [21811] = {
+    'Estirpe Culto Vermis',
+    nil,
+  },
+  [21812] = {
+    'Aparición de Leotheras',
+    nil,
+  },
+  [21815] = {
+    'Clérigo de Karabor',
+    nil,
+  },
+  [21816] = {
+    'Masticador Dorsacerado',
+    nil,
+  },
+  [21817] = {
+    'Draco abisal adolescente',
+    nil,
+  },
+  [21818] = {
+    'Cría Infinita',
+    nil,
+  },
+  [21820] = {
+    'Draco abisal adulto',
+    nil,
+  },
+  [21821] = {
+    'Draco protoinfernal',
+    nil,
+  },
+  [21822] = {
+    'Vindicador Aluumen',
+    nil,
+  },
+  [21823] = {
+    'Nihil el Desterrado',
+    nil,
+  },
+  [21824] = {
+    'Dina Vértigo',
+    nil,
+  },
+  [21827] = {
+    nil,
+    'Siervo de Illidan',
+  },
+  [21829] = {
+    'Maderero de la Alianza con leña',
+    nil,
+  },
+  [21830] = {
+    'Contemplador (beige)',
+    nil,
+  },
+  [21831] = {
+    'Contemplador (azul)',
+    nil,
+  },
+  [21832] = {
+    'Contemplador (negro)',
+    nil,
+  },
+  [21833] = {
+    'Contemplador (gris)',
+    nil,
+  },
+  [21834] = {
+    'Contemplador (verde)',
+    nil,
+  },
+  [21835] = {
+    'Contemplador (rojo)',
+    nil,
+  },
+  [21836] = {
+    'Contemplador (baba)',
+    nil,
+  },
+  [21837] = {
+    'Can de cólera invocado',
+    nil,
+  },
+  [21839] = {
+    'Alaseda adulto',
+    nil,
+  },
+  [21841] = {
+    nil,
+    'Mascota de observador',
+  },
+  [21844] = {
+    'Coloso montés',
+    nil,
+  },
+  [21845] = {
+    'Leotheras el Ciego',
+    nil,
+  },
+  [21846] = {
+    'Guerrero Auchenai asesinado',
+    nil,
+  },
+  [21847] = {
+    'Can de guardia vil',
+    nil,
+  },
+  [21849] = {
+    'Reptahuesos',
+    nil,
+  },
+  [21850] = {
+    'Raya abisal de Terrallende, roja',
+    nil,
+  },
+  [21851] = {
+    'La voz del Dios Cuervo',
+    nil,
+  },
+  [21852] = {
+    'Guerrero Auchenai',
+    nil,
+  },
+  [21853] = {
+    'Ent del Bosque del Cuervo',
+    nil,
+  },
+  [21854] = {
+    'Petrificador Dorsacerado',
+    nil,
+  },
+  [21857] = {
+    'Demonio interno',
+    nil,
+  },
+  [21858] = {
+    'Vindicador Sha\'tar',
+    nil,
+  },
+  [21859] = {
+    'Vindicador Sha\'tar asesinado',
+    nil,
+  },
+  [21860] = {
+    'Exarca Onaala',
+    nil,
+  },
+  [21861] = {
+    'Visión del Dios Cuervo',
+    nil,
+  },
+  [21863] = {
+    'Rondandor del Santuario Serpiente',
+    nil,
+  },
+  [21864] = {
+    'Tenazario Caparafuego',
+    nil,
+  },
+  [21865] = {
+    'Emboscadora Colmillo Torcido',
+    nil,
+  },
+  [21866] = {
+    'Espíritu reanimado',
+    nil,
+  },
+  [21867] = {
+    'Teron Sanguino',
+    nil,
+  },
+  [21868] = {
+    'Prueba de revientacortezas',
+    nil,
+  },
+  [21869] = {
+    'Guardián sin vida',
+    nil,
+  },
+  [21870] = {
+    'Iniciado sin vida',
+    nil,
+  },
+  [21871] = {
+    'Espíritu incorpóreo',
+    nil,
+  },
+  [21872] = {
+    'La voz de Sanguino',
+    nil,
+  },
+  [21873] = {
+    'Guardián Colmillo Torcido',
+    nil,
+  },
+  [21874] = {
+    'Elemental caminaaguas',
+    nil,
+  },
+  [21875] = {
+    'Sombra de Leotheras',
+    nil,
+  },
+  [21876] = {
+    'Cadena de sombras',
+    nil,
+  },
+  [21877] = {
+    'Karsius el vigía anciano',
+    nil,
+  },
+  [21878] = {
+    'Jabalí vil',
+    nil,
+  },
+  [21879] = {
+    'Quimera Alavil',
+    nil,
+  },
+  [21880] = {
+    'Runa detonante',
+    nil,
+  },
+  [21881] = {
+    'Ilusión de elfo de sangre',
+    nil,
+  },
+  [21882] = {
+    'Ilusión de elfa de sangre',
+    nil,
+  },
+  [21883] = {
+    'Ilusión masculina de gnomo',
+    nil,
+  },
+  [21884] = {
+    'Ilusión femenina de gnomo',
+    nil,
+  },
+  [21885] = {
+    'Ilusión de goblin macho',
+    nil,
+  },
+  [21886] = {
+    'Ilusión de goblin hembra',
+    nil,
+  },
+  [21887] = {
+    'Ilusión hembra de tauren',
+    nil,
+  },
+  [21888] = {
+    'Ilusión macho de tauren',
+    nil,
+  },
+  [21889] = {
+    'Destripador Sethekk',
+    nil,
+  },
+  [21891] = {
+    'Desgarrador aviario',
+    nil,
+  },
+  [21897] = {
+    'Lomovil el Grande',
+    nil,
+  },
+  [21900] = {
+    'Ala Aterradora',
+    nil,
+  },
+  [21901] = {
+    'Ráyido abisal',
+    nil,
+  },
+  [21902] = {
+    'Tejehechizos de la Cábala',
+    nil,
+  },
+  [21904] = {
+    'Halcón de guerra aviario',
+    nil,
+  },
+  [21905] = {
+    'Veynna Estrella del Alba',
+    'Vigilante de reliquias Sha\'tari',
+  },
+  [21906] = {
+    nil,
+    'Vigilante de reliquias Sha\'tari',
+  },
+  [21907] = {
+    'Iniciado de la Cábala',
+    nil,
+  },
+  [21908] = {
+    'Guardia terrorífico vinculado a hechizo',
+    nil,
+  },
+  [21909] = {
+    'Arcano escórpido',
+    nil,
+  },
+  [21911] = {
+    'Conjurador de almas de Skettis',
+    nil,
+  },
+  [21912] = {
+    'Centinela de Skettis',
+    nil,
+  },
+  [21913] = {
+    'Glóbulo de agua',
+    nil,
+  },
+  [21920] = {
+    'Rondador Levantamareas',
+    nil,
+  },
+  [21923] = {
+    'Protector guarda terrorífico',
+    nil,
+  },
+  [21925] = {
+    'Avatar de Sathal',
+    nil,
+  },
+  [21928] = {
+    nil,
+    'Siervo de Illidan',
+  },
+  [21931] = {
+    'Volador aviario',
+    nil,
+  },
+  [21932] = {
+    'Hydross el Inestable',
+    'Duque de corrientes',
+  },
+  [21935] = {
+    'Disparador de cañones gnomo #Shattrath',
+    nil,
+  },
+  [21936] = {
+    'Fragmentizo enloquecido',
+    nil,
+  },
+  [21937] = {
+    'Ensalmador de la tierra Sophurus',
+    'El Anillo de la Tierra',
+  },
+  [21938] = {
+    'Ensalmador de la tierra Pezuña de Astilla',
+    'El Anillo de la Tierra',
+  },
+  [21941] = {
+    'Aparecido detestable',
+    nil,
+  },
+  [21942] = {
+    'Disparador de cañones gnomo #Cresta Canto',
+    nil,
+  },
+  [21944] = {
+    'Disparador de cañones gnomo #Ruuan',
+    nil,
+  },
+  [21945] = {
+    'Espíritu gnomo',
+    nil,
+  },
+  [21949] = {
+    'Atracador vil centinela',
+    nil,
+  },
+  [21950] = {
+    'Garm Hermano Lobo',
+    'Jefe del clan Señor del Trueno',
+  },
+  [21951] = {
+    'Subjefe del clan Señor del Trueno',
+    nil,
+  },
+  [21953] = {
+    'Varen el Reivindicador',
+    nil,
+  },
+  [21954] = {
+    'Larissa Golpe Solar',
+    nil,
+  },
+  [21955] = {
+    'Arcanista Thelis',
+    nil,
+  },
+  [21956] = {
+    nil,
+    'La madre del cubil',
+  },
+  [21958] = {
+    'Elemental encantado',
+    nil,
+  },
+  [21960] = {
+    'Técnico Gan\'arg',
+    nil,
+  },
+  [21961] = {
+    'Sobrestante Cataclismo',
+    nil,
+  },
+  [21963] = {
+    'Guardia apocalíptico esclavizado',
+    nil,
+  },
+  [21964] = {
+    'Guardia de las profundidades Caribdis',
+    nil,
+  },
+  [21965] = {
+    'Guardia de las profundidades Mareavess',
+    nil,
+  },
+  [21966] = {
+    'Guardia de las profundidades Tiburkkis',
+    nil,
+  },
+  [21967] = {
+    'Espíritu de muerte Auchenai',
+    nil,
+  },
+  [21968] = {
+    'Oficial de Honor de Lunargenta',
+    nil,
+  },
+  [21969] = {
+    'Oficial de Honor de El Exodar',
+    nil,
+  },
+  [21970] = {
+    'Oficial Amanecer',
+    'Mención de honor de Lunargenta',
+  },
+  [21971] = {
+    'Oficial Khaluun',
+    'Mención de honor de El Exodar',
+  },
+  [21974] = {
+    'Roboalarma de las Fuerzas Aéreas (Área 52)',
+    nil,
+  },
+  [21975] = {
+    'Defensor sobrio Aguja del Filo',
+    nil,
+  },
+  [21976] = {
+    'Máquina de la muerte del Área 52',
+    nil,
+  },
+  [21977] = {
+    'Invocador de golpes de aire de Gadgetzan',
+    nil,
+  },
+  [21978] = {
+    'Fauna del Valle Sombraluna',
+    nil,
+  },
+  [21979] = {
+    'Val\'zareq el Conquistador',
+    'El Sigilo Carmesí',
+  },
+  [21980] = {
+    'Halcón zancudo de Val\'zareq',
+    nil,
+  },
+  [21981] = {
+    'Sobrestante Nuaar',
+    nil,
+  },
+  [21982] = {
+    'Emboscador Culto Vermis',
+    nil,
+  },
+  [21983] = {
+    'Samia Pálpito',
+    nil,
+  },
+  [21984] = {
+    'Rokaro',
+    'Campeón de la Horda',
+  },
+  [21985] = {
+    'Eviscerador de Skettis',
+    nil,
+  },
+  [21986] = {
+    'Vindicador del Altar de Sha\'tar',
+    nil,
+  },
+  [21992] = {
+    'Tótem Fuerza de la tierra',
+    nil,
+  },
+  [21993] = {
+    'Puesto de vigilancia de las Fuerzas Aéreas (Horda - jinete de murciélagos)',
+    nil,
+  },
+  [21994] = {
+    'Tótem Piel de piedra',
+    nil,
+  },
+  [21995] = {
+    'Tótem abrasador',
+    nil,
+  },
+  [21996] = {
+    'Puesto de vigilancia de las Fuerzas Aéreas (Alianza - grifo)',
+    nil,
+  },
+  [21997] = {
+    'Puesto de vigilancia de las Fuerzas Aéreas (Goblin - Área 52 - zepelín)',
+    nil,
+  },
+  [21998] = {
+    'Jinete del viento Kor\'kron',
+    nil,
+  },
+  [22000] = {
+    'Draco abisal Faucedraco',
+    nil,
+  },
+  [22006] = {
+    'Señor de las Sombras Aullamorte',
+    nil,
+  },
+  [22007] = {
+    'Celador de árboles Chawn',
+    nil,
+  },
+  [22008] = {
+    'Marcador del cielo',
+    nil,
+  },
+  [22009] = {
+    'Elemental corrupto',
+    nil,
+  },
+  [22010] = {
+    'Tonel',
+    nil,
+  },
+  [22011] = {
+    'Corok el Poderoso',
+    nil,
+  },
+  [22012] = {
+    'Canciller Hoja Sangrienta',
+    nil,
+  },
+  [22013] = {
+    'Emisario del Ojo de la Tormenta',
+    nil,
+  },
+  [22014] = {
+    'Ciudadano de Lunargenta',
+    nil,
+  },
+  [22015] = {
+    'Enviado del Ojo de la Tormenta',
+    nil,
+  },
+  [22016] = {
+    'Soldado eclipsiano',
+    nil,
+  },
+  [22017] = {
+    'Vinculahechizos eclipsiano',
+    nil,
+  },
+  [22018] = {
+    'Hidalgo eclipsiano',
+    nil,
+  },
+  [22019] = {
+    'Kolphis Rangoscuro',
+    nil,
+  },
+  [22020] = {
+    'O\'Mally Pillazas',
+    'El otro gemelo de Tally',
+  },
+  [22022] = {
+    'Ráfaga Arcana',
+    nil,
+  },
+  [22027] = {
+    'Dracónido abisal (negro)',
+    nil,
+  },
+  [22028] = {
+    'Jefe dracónido abisal (morado)',
+    nil,
+  },
+  [22029] = {
+    'Dracónido abisal (morado)',
+    nil,
+  },
+  [22030] = {
+    'Dracónido abisal (azul)',
+    nil,
+  },
+  [22031] = {
+    'Dracónido abisal (verde)',
+    nil,
+  },
+  [22032] = {
+    'Jefe dracónido abisal (verde)',
+    nil,
+  },
+  [22033] = {
+    'Jefe dracónido abisal (azul)',
+    nil,
+  },
+  [22034] = {
+    'Jefe dracónido abisal (negro)',
+    nil,
+  },
+  [22035] = {
+    'Engendro puro de Hydross',
+    nil,
+  },
+  [22036] = {
+    'Engendro de Hydross corrupto',
+    nil,
+  },
+  [22037] = {
+    'Herrero Gorlunk',
+    nil,
+  },
+  [22038] = {
+    nil,
+    'El Emperador de huesos',
+  },
+  [22040] = {
+    'Murciélago de cueva',
+    nil,
+  },
+  [22042] = {
+    'Jinete de grifos Kieran',
+    nil,
+  },
+  [22043] = {
+    'Sargento Kargrul',
+    nil,
+  },
+  [22044] = {
+    'Reptador de la Caverna',
+    nil,
+  },
+  [22045] = {
+    'Raquítico vengativo',
+    nil,
+  },
+  [22046] = {
+    'Murciélago de cueva',
+    nil,
+  },
+  [22047] = {
+    'Alfazaque de cueva',
+    nil,
+  },
+  [22052] = {
+    'Pellejo negro Faucedaga',
+    nil,
+  },
+  [22053] = {
+    'Maderamusgo el Anciano',
+    nil,
+  },
+  [22054] = {
+    'Behemothon, rey de los colosos',
+    nil,
+  },
+  [22055] = {
+    'Élite Colmillo Torcido',
+    nil,
+  },
+  [22056] = {
+    'Zancudo Colmillo Torcido',
+    nil,
+  },
+  [22059] = {
+    'Jinete de grifos Martillo Salvaje',
+    nil,
+  },
+  [22060] = {
+    'Fenissa la Asesina',
+    nil,
+  },
+  [22061] = {
+    'Ladrón de almas Sombraluna',
+    nil,
+  },
+  [22062] = {
+    'Dr. Miembro Marchito',
+    nil,
+  },
+  [22064] = {
+    'Draco de Flecha de la Tormenta',
+    nil,
+  },
+  [22065] = {
+    'Puesto de vigilancia de las Fuerzas Aéreas (Etéreos, La Flecha de la Tormenta)',
+    nil,
+  },
+  [22066] = {
+    'Puesto de vigilancia de las Fuerzas Aéreas (Arúspice - Dracohalcón)',
+    nil,
+  },
+  [22067] = {
+    'Dracohalcón Arúspice',
+    nil,
+  },
+  [22069] = {
+    'Roboalarma de las Fuerzas Aéreas (La Flecha de la Tormenta)',
+    nil,
+  },
+  [22071] = {
+    'Roboalarma de las Fuerzas Aéreas (Arúspice)',
+    nil,
+  },
+  [22072] = {
+    'Dracónido Sombra Jurada',
+    'Siervo de Illidan',
+  },
+  [22073] = {
+    nil,
+    'Alto general de los Sha\'tar',
+  },
+  [22074] = {
+    'Rompementes Illidari',
+    'El Sigilo Carmesí',
+  },
+  [22075] = {
+    'Soldado Illidari',
+    'El Sigilo Carmesí',
+  },
+  [22076] = {
+    'Torloth el Magnificente',
+    'El Sigilo Carmesí',
+  },
+  [22077] = {
+    'Guardia en grifo de los Aldor',
+    nil,
+  },
+  [22078] = {
+    'Roboalarma de las Fuerzas Aéreas (Aldor)',
+    nil,
+  },
+  [22079] = {
+    'Puesto de vigilancia de las Fuerzas Aéreas (Aldor - grifo)',
+    nil,
+  },
+  [22081] = {
+    'Tejeoscuro Sombraluna',
+    'Siervo de Illidan',
+  },
+  [22082] = {
+    'Asesino Sombraluna',
+    'Siervo de Illidan',
+  },
+  [22083] = {
+    'Lord Illidan Tempestira',
+    nil,
+  },
+  [22084] = {
+    'Elegido Sombraluna',
+    'Siervo de Illidan',
+  },
+  [22085] = {
+    'Esporiélago de Esporaggar',
+    nil,
+  },
+  [22086] = {
+    'Roboalarma de las Fuerzas Aéreas (Esporaggar)',
+    nil,
+  },
+  [22087] = {
+    'Puesto de vigilancia de las Fuerzas Aéreas (Esporaggar - esporiélago)',
+    nil,
+  },
+  [22089] = {
+    'Máquina voladora de Toshley',
+    nil,
+  },
+  [22090] = {
+    'Puesto de vigilancia de las Fuerzas Aéreas (Estación de Toshley - máquina voladora)',
+    nil,
+  },
+  [22091] = {
+    'Tótem escupefuego',
+    nil,
+  },
+  [22093] = {
+    'Vigía Illidari',
+    'El Sigilo Carmesí',
+  },
+  [22094] = {
+    'Remanente de odio',
+    'Aspecto de Gul\'dan',
+  },
+  [22095] = {
+    'Caminarraíces infectado',
+    nil,
+  },
+  [22097] = {
+    'Gladiador veterano',
+    nil,
+  },
+  [22098] = {
+    'Gladiador grisáceo',
+    nil,
+  },
+  [22099] = {
+    'Proveedor Culto Vermis',
+    nil,
+  },
+  [22100] = {
+    'Reptahuesos escórpido',
+    nil,
+  },
+  [22101] = {
+    'Promotor de arena',
+    nil,
+  },
+  [22102] = {
+    'Criado Sombraluna',
+    'Siervo de Illidan',
+  },
+  [22103] = {
+    'Barón Sablecrín',
+    nil,
+  },
+  [22104] = {
+    'Ciclón (Karathress)',
+    nil,
+  },
+  [22105] = {
+    'Uñagrieta decrépito',
+    nil,
+  },
+  [22106] = {
+    'Draco abismal de Ruul',
+    nil,
+  },
+  [22107] = {
+    'Capitana Aullido Oscuro',
+    nil,
+  },
+  [22108] = {
+    'Cría negra',
+    nil,
+  },
+  [22112] = {
+    nil,
+    'Compañera de Neltharaku',
+  },
+  [22114] = {
+    'Bufar',
+    'Amigo de Rexxar',
+  },
+  [22115] = {
+    'Fragmento de tierra iracundo',
+    nil,
+  },
+  [22119] = {
+    'Rondador de las profundidades',
+    nil,
+  },
+  [22120] = {
+    'Esporiélago de las profundidades',
+    nil,
+  },
+  [22121] = {
+    'Invocador de fuego vil',
+    nil,
+  },
+  [22122] = {
+    'Cuervo de tormenta Cenarion',
+    nil,
+  },
+  [22123] = {
+    'Devastador filoagudo',
+    nil,
+  },
+  [22124] = {
+    'Roboalarma de las Fuerzas Aéreas (Cenarion)',
+    nil,
+  },
+  [22125] = {
+    'Puesto de vigilancia de las Fuerzas Aéreas (Cenarion - cuervo tormentoso)',
+    nil,
+  },
+  [22127] = {
+    'Señor salvaje Antelarion',
+    nil,
+  },
+  [22128] = {
+    'Oteador de Durnholde',
+    nil,
+  },
+  [22130] = {
+    'Cría negra del Barón Sablecrín',
+    nil,
+  },
+  [22132] = {
+    'Reptador de la Caverna adulto',
+    nil,
+  },
+  [22134] = {
+    'Ojo de Kilrogg de Sombraluna',
+    nil,
+  },
+  [22135] = {
+    'Uñagrieta domada',
+    nil,
+  },
+  [22137] = {
+    'Dios antiguo invocado',
+    nil,
+  },
+  [22138] = {
+    'Ritualista del cónclave oscuro',
+    nil,
+  },
+  [22140] = {
+    'Esporiélago tóxico',
+    nil,
+  },
+  [22141] = {
+    'Bestia de cálamos',
+    nil,
+  },
+  [22143] = {
+    'Partespinas Gordunni',
+    nil,
+  },
+  [22144] = {
+    'Elementalista Gordunni',
+    nil,
+  },
+  [22146] = {
+    'Tormenta del vacío en invocación',
+    nil,
+  },
+  [22147] = {
+    'Tormenta del vacío (SM)',
+    nil,
+  },
+  [22148] = {
+    'Divisor de cabezas Gordunni',
+    nil,
+  },
+  [22149] = {
+    'Comandante Haephus Muropiedra',
+    nil,
+  },
+  [22150] = {
+    'Teniente Buentiempo',
+    nil,
+  },
+  [22151] = {
+    'Hermana de Foresta Ruuan',
+    nil,
+  },
+  [22152] = {
+    'Fuego fatuo de Foresta Ruuan',
+    nil,
+  },
+  [22160] = {
+    'Capataz Machacasangre',
+    nil,
+  },
+  [22161] = {
+    'Roca ígnea',
+    nil,
+  },
+  [22175] = {
+    'Despellejador de ápices',
+    nil,
+  },
+  [22180] = {
+    'Jabalí de pellejo fragmentado',
+    nil,
+  },
+  [22181] = {
+    'Raya de éter',
+    nil,
+  },
+  [22182] = {
+    'Avispa de relámpagos',
+    nil,
+  },
+  [22187] = {
+    'Basilisco Lomoafilado',
+    nil,
+  },
+  [22189] = {
+    'Marmota',
+    nil,
+  },
+  [22191] = {
+    'Acechador del Filo',
+    nil,
+  },
+  [22193] = {
+    'Aguijonero de hoja blindada',
+    nil,
+  },
+  [22194] = {
+    'Aguja de la cumbre',
+    nil,
+  },
+  [22195] = {
+    'Portavoz de cólera',
+    nil,
+  },
+  [22196] = {
+    'Atracador de cólera',
+    nil,
+  },
+  [22197] = {
+    'Orco Faucedraco',
+    nil,
+  },
+  [22199] = {
+    nil,
+    'Hijo de Gruul',
+  },
+  [22200] = {
+    'Hijo de Slaag',
+    nil,
+  },
+  [22201] = {
+    'Susurradora de miedo',
+    nil,
+  },
+  [22202] = {
+    'Diablillo pesadilla',
+    nil,
+  },
+  [22204] = {
+    'Maligno de miedo',
+    nil,
+  },
+  [22206] = {
+    'Druida de expedición',
+    nil,
+  },
+  [22208] = {
+    'Nasmara Canción de Luna',
+    'Especialista en sastrería de tela lunar',
+  },
+  [22209] = {
+    'Tótem abrasador corrupto',
+    nil,
+  },
+  [22210] = {
+    'Espíritu de sacerdotisa',
+    nil,
+  },
+  [22211] = {
+    'Maga de batalla Vyara',
+    nil,
+  },
+  [22212] = {
+    'Andrion Giroscuro',
+    'Especialista en sastrería de tejido de sombra',
+  },
+  [22213] = {
+    'Gidge Tejehechizos',
+    'Especialista en sastrería de fuego de hechizo',
+  },
+  [22214] = {
+    'Presagista Saronen',
+    nil,
+  },
+  [22215] = {
+    'Troncárbol',
+    nil,
+  },
+  [22216] = {
+    'Fhyn Sombra de Hoja',
+    'Maestro de vuelo',
+  },
+  [22217] = {
+    'Corruptor Tormenta Vil',
+    nil,
+  },
+  [22218] = {
+    'Familiar insidioso',
+    nil,
+  },
+  [22219] = {
+    'Motivadora Tormenta Vil',
+    nil,
+  },
+  [22220] = {
+    'Can de guerra de la Legión',
+    nil,
+  },
+  [22221] = {
+    'Sobrestante Tormenta Vil',
+    nil,
+  },
+  [22224] = {
+    'Voz de Grillok',
+    nil,
+  },
+  [22225] = {
+    nil,
+    'Vendedor de gemas',
+  },
+  [22226] = {
+    'Espíritu de Koi-Koi',
+    nil,
+  },
+  [22227] = {
+    nil,
+    'Vendedor de gemas',
+  },
+  [22229] = {
+    'Druman Sombrarboleda',
+    'Heraldo del Festival Lunar',
+  },
+  [22232] = {
+    'Arakkoa Grishna',
+    nil,
+  },
+  [22233] = {
+    'Hojabarba confiado',
+    nil,
+  },
+  [22234] = {
+    'Sinnea Cantoestelar',
+    'Heraldo del Festival Lunar',
+  },
+  [22235] = {
+    'Koi-Koi malvado',
+    nil,
+  },
+  [22236] = {
+    'Tótem elemental de agua',
+    nil,
+  },
+  [22237] = {
+    'Loirea Vendaval',
+    'Heraldo del Festival Lunar',
+  },
+  [22238] = {
+    'Clamamareas del Santuario Serpiente',
+    nil,
+  },
+  [22239] = {
+    'Goblin alado extraño',
+    nil,
+  },
+  [22241] = {
+    'Asaltante Bash\'ir',
+    nil,
+  },
+  [22242] = {
+    'Ladrón de hechizos Bash\'ir',
+    nil,
+  },
+  [22243] = {
+    'Arcanista Bash\'ir',
+    nil,
+  },
+  [22244] = {
+    'Etéreo desatado',
+    nil,
+  },
+  [22247] = {
+    nil,
+    'Embajadora de CocaCola',
+  },
+  [22248] = {
+    nil,
+    'Embajadora de CocaCola',
+  },
+  [22249] = {
+    nil,
+    'Embajadora de CocaCola',
+  },
+  [22250] = {
+    'Champiñón rancio',
+    nil,
+  },
+  [22251] = {
+    'Arquero Faucedraco',
+    nil,
+  },
+  [22252] = {
+    'Peón Faucedraco',
+    nil,
+  },
+  [22253] = {
+    'Ascendiente Faucedraco',
+    nil,
+  },
+  [22254] = {
+    'Corruptor de cólera',
+    nil,
+  },
+  [22255] = {
+    'Lagarto Espinadaga',
+    nil,
+  },
+  [22256] = {
+    'Basilisco colmilloférreo',
+    nil,
+  },
+  [22257] = {
+    'Aguijonero Latimorte',
+    nil,
+  },
+  [22258] = {
+    'Arúspice demoníaco',
+    nil,
+  },
+  [22259] = {
+    'Guarda Fuego Infernal',
+    nil,
+  },
+  [22261] = {
+    'Guardián Aguja del Filo',
+    nil,
+  },
+  [22262] = {
+    'Anciano Aguja del Filo',
+    nil,
+  },
+  [22263] = {
+    'Rey del barril Aguja del Filo',
+    nil,
+  },
+  [22264] = {
+    'Afilador Ogri\'la',
+    'Suministros de herrería',
+  },
+  [22265] = {
+    'Búho Alaoscura',
+    nil,
+  },
+  [22266] = {
+    'Marmitón Ogri\'la',
+    'Vendedor de alimentos',
+  },
+  [22267] = {
+    'Contrafuerte de aparato mágico cutre',
+    nil,
+  },
+  [22269] = {
+    'Cadáver de draco negro',
+    nil,
+  },
+  [22270] = {
+    'Mercader Ogri\'la',
+    'Pertrechos',
+  },
+  [22271] = {
+    'Comerciante Ogri\'la',
+    'Objetos comerciables',
+  },
+  [22272] = {
+    'Kirrik el Despierto',
+    nil,
+  },
+  [22273] = {
+    'Celador vil',
+    nil,
+  },
+  [22274] = {
+    'Rompecielos Faucedraco',
+    nil,
+  },
+  [22275] = {
+    'Guardián de ápices',
+    nil,
+  },
+  [22277] = {
+    'Transformación de cadáver de draco negro',
+    nil,
+  },
+  [22278] = {
+    'Sumo sacerdote Orglum',
+    nil,
+  },
+  [22282] = {
+    'Testigo de fatalidad',
+    nil,
+  },
+  [22283] = {
+    'Extiendetormentas eredar',
+    nil,
+  },
+  [22285] = {
+    'Guardián de tumbas draenei',
+    nil,
+  },
+  [22286] = {
+    'Furibundo vil',
+    nil,
+  },
+  [22287] = {
+    'Uñagrieta cárabe',
+    nil,
+  },
+  [22289] = {
+    'Infernal Flama Oscura',
+    nil,
+  },
+  [22291] = {
+    'Guardia de horno',
+    nil,
+  },
+  [22292] = {
+    'Rilak el Redimido',
+    nil,
+  },
+  [22293] = {
+    'Atracador vil inactivo',
+    nil,
+  },
+  [22295] = {
+    'Autómata Forja Muerta',
+    nil,
+  },
+  [22297] = {
+    'Alto señor guardia del trono',
+    nil,
+  },
+  [22298] = {
+    'Alma de fuego vil',
+    nil,
+  },
+  [22299] = {
+    'Zancasporas',
+    nil,
+  },
+  [22301] = {
+    'Centinela guardia del trono',
+    nil,
+  },
+  [22302] = {
+    'Campeón guardia del trono',
+    nil,
+  },
+  [22303] = {
+    'Can del trono',
+    nil,
+  },
+  [22304] = {
+    'Extractor Mo\'arg',
+    nil,
+  },
+  [22305] = {
+    nil,
+    'Líder de los Vekh\'nir',
+  },
+  [22306] = {
+    'Reptador de la Caverna sigiloso',
+    nil,
+  },
+  [22307] = {
+    'Furibundo de bosque en podredumbre',
+    nil,
+  },
+  [22308] = {
+    'Cazador Culto Vermis',
+    nil,
+  },
+  [22309] = {
+    'Espíritu ola estrepitoso',
+    nil,
+  },
+  [22310] = {
+    'Rasgavientos tormentoso',
+    nil,
+  },
+  [22311] = {
+    'Alma de Fuego enfurecida',
+    nil,
+  },
+  [22312] = {
+    'Clamaespíritus Dohgar',
+    nil,
+  },
+  [22313] = {
+    'Epicentro resonador',
+    nil,
+  },
+  [22314] = {
+    'Niño cautivo',
+    nil,
+  },
+  [22315] = {
+    'Mina de la Forja Muerta',
+    nil,
+  },
+  [22318] = {
+    'Tótem Llamada de espíritu',
+    nil,
+  },
+  [22319] = {
+    'Roca viva',
+    nil,
+  },
+  [22323] = {
+    'Chispavil incandescente',
+    nil,
+  },
+  [22325] = {
+    'Tejedor de pesadillas',
+    nil,
+  },
+  [22326] = {
+    'Aviario redimido',
+    nil,
+  },
+  [22327] = {
+    'Guardián de fuego terrorífico',
+    nil,
+  },
+  [22328] = {
+    'Tanque mortero teledirigido de juguete',
+    nil,
+  },
+  [22330] = {
+    'Zuluhed transformado',
+    'Jefe del clan Faucedraco',
+  },
+  [22331] = {
+    'Élite Faucedraco',
+    nil,
+  },
+  [22332] = {
+    'Linaje de Neltharaku',
+    nil,
+  },
+  [22333] = {
+    'Tótem colector de orbes',
+    nil,
+  },
+  [22334] = {
+    'Orco Mano Destrozada',
+    nil,
+  },
+  [22335] = {
+    'Efecto de hechizo de champiñón',
+    nil,
+  },
+  [22336] = {
+    'Portal de demonios (Zuluhed)',
+    nil,
+  },
+  [22337] = {
+    'Prole malévola',
+    nil,
+  },
+  [22338] = {
+    'Destructor Arcubus',
+    nil,
+  },
+  [22339] = {
+    'Prole redimida',
+    nil,
+  },
+  [22341] = {
+    'Acólito Sombra de Muerte',
+    nil,
+  },
+  [22342] = {
+    'Vinculahechizos Sombra de Muerte',
+    nil,
+  },
+  [22343] = {
+    'Arconte Sombra de Muerte',
+    nil,
+  },
+  [22344] = {
+    'Fragmentizo de Morchaca',
+    nil,
+  },
+  [22347] = {
+    'Rondador del coloso',
+    nil,
+  },
+  [22352] = {
+    'Furibundo del coloso',
+    nil,
+  },
+  [22354] = {
+    'Vindicador Sha\'tar atrapado con telaraña',
+    nil,
+  },
+  [22355] = {
+    'Víctima de red abisal',
+    nil,
+  },
+  [22357] = {
+    'Reth\'hedron el Avasallador',
+    nil,
+  },
+  [22359] = {
+    'Aspirante Culto Vermis',
+    nil,
+  },
+  [22360] = {
+    'Taxi Karynaku',
+    'Compañera de Neltharaku',
+  },
+  [22361] = {
+    'Señor negro Hamarahk',
+    'Gran patriarca del Culto Vermis',
+  },
+  [22362] = {
+    'Diablillo Sombra de Muerte',
+    nil,
+  },
+  [22363] = {
+    'Brujo Sombra de Muerte',
+    nil,
+  },
+  [22364] = {
+    'Explorador Navrin',
+    nil,
+  },
+  [22366] = {
+    'Visita demoníaca',
+    nil,
+  },
+  [22369] = {
+    'Esclavo de reliquia de pavor',
+    nil,
+  },
+  [22372] = {
+    'Espíritu Mok\'Nathal',
+    nil,
+  },
+  [22373] = {
+    'Defensor Grashna',
+    nil,
+  },
+  [22374] = {
+    'Mano de Kargath',
+    nil,
+  },
+  [22375] = {
+    'Avatar de Terokk',
+    nil,
+  },
+  [22376] = {
+    'Esbirro de Terokk',
+    nil,
+  },
+  [22378] = {
+    'Interrogador de la Cábala',
+    nil,
+  },
+  [22379] = {
+    'Parásito del Santuario Serpiente',
+    nil,
+  },
+  [22380] = {
+    'Ambiente de esbirro de Terokk',
+    nil,
+  },
+  [22381] = {
+    'Hathyss la Malvada',
+    nil,
+  },
+  [22384] = {
+    'Veritas Machacasangre',
+    nil,
+  },
+  [22385] = {
+    'Terrordar el Torturador',
+    nil,
+  },
+  [22386] = {
+    'Vigía Sombra Lunar',
+    nil,
+  },
+  [22387] = {
+    'Oráculo lítico',
+    nil,
+  },
+  [22388] = {
+    'Guardagarra lítico',
+    nil,
+  },
+  [22390] = {
+    'Fragmentizo de montaña',
+    nil,
+  },
+  [22391] = {
+    'Fragmentizo de vórtice',
+    nil,
+  },
+  [22392] = {
+    'Maligno de cólera',
+    nil,
+  },
+  [22393] = {
+    'Señor supremo Sombra de Muerte',
+    nil,
+  },
+  [22394] = {
+    'Can Sombra de Muerte',
+    nil,
+  },
+  [22396] = {
+    'Draaca Largacola',
+    nil,
+  },
+  [22398] = {
+    'Refuerzo de Durnholde',
+    nil,
+  },
+  [22404] = {
+    'Brigadier de grifos de Bastión del Honor, norte',
+    nil,
+  },
+  [22405] = {
+    'Brigadier de grifos de Bastión del Honor, Forja',
+    nil,
+  },
+  [22406] = {
+    'Brigadier de grifos de Bastión del Honor, ladera',
+    nil,
+  },
+  [22407] = {
+    'Defensor de la caravana',
+    nil,
+  },
+  [22408] = {
+    'Ánima abisal furiosa',
+    nil,
+  },
+  [22410] = {
+    'Escolta de expedición',
+    nil,
+  },
+  [22411] = {
+    'Taumaturgo etéreo, Tipo A (dorado)',
+    nil,
+  },
+  [22412] = {
+    'Taumaturgo etéreo, Tipo A (verde)',
+    nil,
+  },
+  [22413] = {
+    'Taumaturgo etéreo, Tipo A (morado)',
+    nil,
+  },
+  [22414] = {
+    'Taumaturgo etéreo, Tipo A (rojo)',
+    nil,
+  },
+  [22415] = {
+    'Taumaturgo etéreo, Tipo B (negro)',
+    nil,
+  },
+  [22416] = {
+    'Taumaturgo etéreo, Tipo B (blanco)',
+    nil,
+  },
+  [22419] = {
+    'Cucaracha de bosque',
+    nil,
+  },
+  [22421] = {
+    'Skar\'this el Herético',
+    nil,
+  },
+  [22423] = {
+    'Druida Soto Eterno',
+    nil,
+  },
+  [22424] = {
+    'Alacielo',
+    nil,
+  },
+  [22425] = {
+    'Druida Sotoeterno (Transformado: druida)',
+    nil,
+  },
+  [22426] = {
+    'Druida Sotoeterno (Transformado: cuervo)',
+    nil,
+  },
+  [22430] = {
+    'Ayudante Klatu',
+    nil,
+  },
+  [22431] = {
+    'Anacoreta Barada',
+    nil,
+  },
+  [22432] = {
+    'Coronel Jules',
+    nil,
+  },
+  [22433] = {
+    nil,
+    'Rompecielos General',
+  },
+  [22437] = {
+    'Remanente de malicia',
+    'Aspecto de Gul\'dan',
+  },
+  [22438] = {
+    'Remanente de codicia',
+    'Aspecto de Gul\'dan',
+  },
+  [22439] = {
+    'Remanente de corrupción',
+    'Aspecto de Gul\'dan',
+  },
+  [22440] = {
+    'Remanente de orgullo',
+    'Aspecto de Gul\'dan',
+  },
+  [22441] = {
+    'Teribus el Maldito',
+    nil,
+  },
+  [22442] = {
+    'Lonika Hojafirme',
+    'Propietaria de la academia de pícaros',
+  },
+  [22443] = {
+    'Cañón vil de la Puerta de la Muerte',
+    nil,
+  },
+  [22445] = {
+    'Cotorrilla',
+    nil,
+  },
+  [22446] = {
+    'Comandante Ra\'vaj',
+    nil,
+  },
+  [22448] = {
+    'Rokaro',
+    'Campeón de la Horda',
+  },
+  [22449] = {
+    'Fuego Sha\'tari',
+    nil,
+  },
+  [22450] = {
+    'Combatiente asesinado',
+    nil,
+  },
+  [22452] = {
+    'Exarca reanimado',
+    nil,
+  },
+  [22453] = {
+    'Vindicador Sha\'tar malherido',
+    nil,
+  },
+  [22454] = {
+    'Espíritu vil',
+    nil,
+  },
+  [22455] = {
+    'Maestro del cielo Maxxor',
+    'Maestro de vuelo',
+  },
+  [22456] = {
+    'Roblun',
+    nil,
+  },
+  [22458] = {
+    'Arqueólogo Jefe Letoll',
+    'Liga de Expedicionarios',
+  },
+  [22459] = {
+    'Guerrero de Sha\'tar liberado',
+    nil,
+  },
+  [22460] = {
+    'Espíritu',
+    nil,
+  },
+  [22461] = {
+    'Cañón vil MKI',
+    nil,
+  },
+  [22462] = {
+    'Vindicador Haylen',
+    nil,
+  },
+  [22463] = {
+    'Vindicador Sha\'tar herido',
+    nil,
+  },
+  [22464] = {
+    'Investigador de la Liga de Expedicionarios',
+    'Liga de Expedicionarios',
+  },
+  [22466] = {
+    'Matizahuesos',
+    nil,
+  },
+  [22468] = {
+    nil,
+    'Maestra de establos',
+  },
+  [22469] = {
+    'Fiskal Cantosombrío',
+    'Maestra de establos',
+  },
+  [22473] = {
+    'Barón Sablecrín',
+    nil,
+  },
+  [22474] = {
+    'Diablillo vil inestable',
+    nil,
+  },
+  [22476] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [22477] = {
+    'Anacoreta Ensham',
+    'Instructora de primeros auxilios',
+  },
+  [22478] = {
+    'Anciano Soto Eterno',
+    nil,
+  },
+  [22479] = {
+    nil,
+    'Suministros de venenos y componentes',
+  },
+  [22480] = {
+    'Marmota marrón',
+    nil,
+  },
+  [22481] = {
+    'Enaniski',
+    'Líder de la expedición',
+  },
+  [22482] = {
+    'Matizahuesos adulto',
+    nil,
+  },
+  [22483] = {
+    'Gnomo de arena',
+    nil,
+  },
+  [22485] = {
+    nil,
+    'Maestro de hipogrifos',
+  },
+  [22486] = {
+    'Tótem Nexo Terrestre superior',
+    nil,
+  },
+  [22487] = {
+    'Tótem de limpieza contraveneno superior',
+    nil,
+  },
+  [22488] = {
+    'Centinela Susurrolunar',
+    nil,
+  },
+  [22489] = {
+    'Bruto Grahk',
+    nil,
+  },
+  [22490] = {
+    'Bufar',
+    nil,
+  },
+  [22491] = {
+    'Kerpow Llavestruendo',
+    'Mercader de armas',
+  },
+  [22492] = {
+    'Espíritu',
+    nil,
+  },
+  [22494] = {
+    'Truhán de Cosmotirón',
+    nil,
+  },
+  [22496] = {
+    nil,
+    'Vuelo Negro',
+  },
+  [22499] = {
+    'Can de cólera inferior',
+    nil,
+  },
+  [22500] = {
+    'Can del vacío',
+    nil,
+  },
+  [22501] = {
+    'Transformación de can del vacío',
+    nil,
+  },
+  [22506] = {
+    'Purga Fétida',
+    nil,
+  },
+  [22507] = {
+    'Oscuridad liberada',
+    nil,
+  },
+  [22509] = {
+    'Transformación de atracador vil desguazado',
+    nil,
+  },
+  [22510] = {
+    'Talbuk de montar cobalto',
+    nil,
+  },
+  [22511] = {
+    'Talbuk de montar oscuro',
+    nil,
+  },
+  [22512] = {
+    'Talbuk de montar plateado',
+    nil,
+  },
+  [22513] = {
+    'Talbuk de montar canela',
+    nil,
+  },
+  [22514] = {
+    'Talbuk de montar blanco',
+    nil,
+  },
+  [22516] = {
+    'Maestro de batalla del Ojo de la Tormenta',
+    nil,
+  },
+  [22518] = {
+    'Maestro prospector Orius',
+    nil,
+  },
+  [22522] = {
+    'Super Thrall',
+    nil,
+  },
+  [22528] = {
+    nil,
+    'Cazador de recompensas',
+  },
+  [22551] = {
+    nil,
+    'Maestra de establos',
+  },
+  [22569] = {
+    nil,
+    'Cazador de recompensas',
+  },
+  [22577] = {
+    nil,
+    'Maestra de establos',
+  },
+  [22605] = {
+    nil,
+    'Capitana Pico Tormenta',
+  },
+  [22606] = {
+    nil,
+    'Capitán Lobo Gélido',
+  },
+  [22631] = {
+    nil,
+    'Héroe Hacha Invernal',
+  },
+  [22641] = {
+    nil,
+    'General Lobo Gélido',
+  },
+  [22644] = {
+    nil,
+    'General Pico Tormenta',
+  },
+  [22646] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [22650] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [22651] = {
+    nil,
+    'Pertrechos',
+  },
+  [22652] = {
+    nil,
+    'Suministros de venenos y componentes',
+  },
+  [22653] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [22654] = {
+    nil,
+    'Pertrechos',
+  },
+  [22655] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [22659] = {
+    nil,
+    'Objetos comerciables',
+  },
+  [22660] = {
+    nil,
+    'Suministros de venenos y componentes',
+  },
+  [22661] = {
+    nil,
+    'Objetos comerciables',
+  },
+  [22680] = {
+    nil,
+    'Oficial de suministros Pico Tormenta',
+  },
+  [22681] = {
+    nil,
+    'Oficial de suministros Lobo Gélido',
+  },
+  [22682] = {
+    nil,
+    'Oficial de suministros Lobo Gélido',
+  },
+  [22695] = {
+    nil,
+    'Oficial de suministros Pico Tormenta',
+  },
+  [22699] = {
+    nil,
+    'Cazador de recompensas',
+  },
+  [22712] = {
+    nil,
+    'Cazador de recompensas',
+  },
+  [22726] = {
+    'Carnero de Alterac',
+    nil,
+  },
+  [22727] = {
+    'Carnero de Alterac',
+    nil,
+  },
+  [22802] = {
+    'Soplafuegos de El Exodar',
+    nil,
+  },
+  [22804] = {
+    'Tragafuegos de Lunargenta',
+    nil,
+  },
+  [22806] = {
+    'Soplafuegos de Shattrath',
+    nil,
+  },
+  [22807] = {
+    'Zancudo dodo perdido',
+    nil,
+  },
+  [22810] = {
+    'Druida de expedición Cenarion rescatado',
+    nil,
+  },
+  [22811] = {
+    'Tosco del Bajo Arrabal rescatado',
+    nil,
+  },
+  [22812] = {
+    'Vindicador Sha\'tar rescatado',
+    nil,
+  },
+  [22813] = {
+    'Tratante del Consorcio rescatado',
+    nil,
+  },
+  [22814] = {
+    'Explorador de Esporaggar rescatado',
+    nil,
+  },
+  [22815] = {
+    'Custodio de los vigilantes del tiempo rescatado',
+    nil,
+  },
+  [22816] = {
+    'Gato negro',
+    nil,
+  },
+  [22817] = {
+    'Huérfano elfo de sangre',
+    nil,
+  },
+  [22818] = {
+    'Huérfana draenei',
+    nil,
+  },
+  [22819] = {
+    'Supervisora de huérfanos Piedad',
+    nil,
+  },
+  [22820] = {
+    'Vidente Olum',
+    nil,
+  },
+  [22821] = {
+    'Vengador de El Etereum',
+    nil,
+  },
+  [22822] = {
+    'Nulificador de El Etereum',
+    nil,
+  },
+  [22824] = {
+    'Guja de El Etereum',
+    nil,
+  },
+  [22825] = {
+    'Matrona Li-sahar',
+    nil,
+  },
+  [22826] = {
+    'Rey Dorfbruiser',
+    nil,
+  },
+  [22827] = {
+    'Gorgolon el Omnividente',
+    nil,
+  },
+  [22828] = {
+    nil,
+    'Comandante de la Legión',
+  },
+  [22830] = {
+    'Ilusión macho de Tábido (retiene armadura)',
+    nil,
+  },
+  [22832] = {
+    'Morthis Alasusurro',
+    'Druida de la Garfa',
+  },
+  [22834] = {
+    'Clintar Caminasueños',
+    nil,
+  },
+  [22835] = {
+    'Celador de sueños Cenarion',
+    nil,
+  },
+  [22837] = {
+    'Celador de sueños Lurosa',
+    nil,
+  },
+  [22840] = {
+    'Ilusión Lengua de ceniza',
+    nil,
+  },
+  [22841] = {
+    'Sombra de Akama',
+    nil,
+  },
+  [22843] = {
+    'Grajo',
+    nil,
+  },
+  [22844] = {
+    'Señor de batalla Lengua de ceniza',
+    nil,
+  },
+  [22845] = {
+    'Místico Lengua de ceniza',
+    nil,
+  },
+  [22846] = {
+    'Clamatormentas Lengua de ceniza',
+    nil,
+  },
+  [22847] = {
+    'Primalista Lengua de ceniza',
+    nil,
+  },
+  [22848] = {
+    'Furia de tormenta',
+    nil,
+  },
+  [22849] = {
+    'Espíritu feral Lengua de ceniza',
+    nil,
+  },
+  [22850] = {
+    'Crédito por muerte de Al\'ar',
+    nil,
+  },
+  [22852] = {
+    '[UNUSED] Rapiñador Illidari',
+    'Siervo de Illidan',
+  },
+  [22853] = {
+    'Rapiñador Illidari',
+    nil,
+  },
+  [22854] = {
+    '[UNUSED] Acechador vil Illidari',
+    'Siervo de Illidan',
+  },
+  [22855] = {
+    'Señor de la noche Illidari',
+    nil,
+  },
+  [22856] = {
+    'Relicario del Perdido',
+    nil,
+  },
+  [22857] = {
+    'Devastador Illidari',
+    'Siervo de Illidan',
+  },
+  [22858] = {
+    'Asesino Pezuña Umbría',
+    'Siervo de Illidan',
+  },
+  [22859] = {
+    'Invocador Pezuña Umbría',
+    'Siervo de Illidan',
+  },
+  [22860] = {
+    'Súcubo Illidari',
+    'Siervo de Illidan',
+  },
+  [22861] = {
+    'Vindicador Juraluz',
+    nil,
+  },
+  [22862] = {
+    'Anacoreta Caalen',
+    nil,
+  },
+  [22863] = {
+    'Magister avezado',
+    nil,
+  },
+  [22865] = {
+    'Presencia de Illidan',
+    nil,
+  },
+  [22868] = {
+    'Portal genérico - acechador invisible',
+    nil,
+  },
+  [22869] = {
+    'Cercenador de huesos Illidari',
+    nil,
+  },
+  [22870] = {
+    'Espíritu de Olum',
+    nil,
+  },
+  [22871] = {
+    'Teron Sanguino',
+    nil,
+  },
+  [22873] = {
+    'General Cicatriz Espiral',
+    nil,
+  },
+  [22874] = {
+    'Arponero Cicatriz Espiral',
+    nil,
+  },
+  [22875] = {
+    'Clamamares Cicatriz Espiral',
+    nil,
+  },
+  [22876] = {
+    'Veritas Cicatriz Espiral',
+    nil,
+  },
+  [22877] = {
+    'Retador Cicatriz Espiral',
+    nil,
+  },
+  [22878] = {
+    'Señor acuoso',
+    nil,
+  },
+  [22879] = {
+    'Atracador de Sombraluna',
+    nil,
+  },
+  [22880] = {
+    'Campeón de Sombraluna',
+    nil,
+  },
+  [22881] = {
+    'Marea acuosa',
+    nil,
+  },
+  [22882] = {
+    'Modelador de muerte Sombraluna',
+    nil,
+  },
+  [22883] = {
+    'Engendro acuoso',
+    nil,
+  },
+  [22884] = {
+    'Leviatán',
+    nil,
+  },
+  [22885] = {
+    'Tortuga dragón',
+    'Mascota de arponero Cicatriz Espiral',
+  },
+  [22886] = {
+    'Cautivo del Templo Oscuro',
+    nil,
+  },
+  [22887] = {
+    'Gran señor de la guerra Naj\'entus',
+    nil,
+  },
+  [22889] = {
+    'Pesadilla de manifiesto',
+    nil,
+  },
+  [22890] = {
+    'Guardián del primer trozo',
+    nil,
+  },
+  [22891] = {
+    'Guardián del segundo trozo',
+    nil,
+  },
+  [22892] = {
+    'Guardián del tercer trozo',
+    nil,
+  },
+  [22893] = {
+    'Wodin, el sirviente trol',
+    nil,
+  },
+  [22894] = {
+    'Tótem ciclónico',
+    nil,
+  },
+  [22895] = {
+    'Tótem abrasador invocado',
+    nil,
+  },
+  [22896] = {
+    'Tótem abrasador Lengua de ceniza',
+    nil,
+  },
+  [22897] = {
+    'Tótem Viento furioso invocado',
+    nil,
+  },
+  [22899] = {
+    'Consejero del Protectorado Rahim',
+    'El Protectorado',
+  },
+  [22900] = {
+    'Vanguardia del Protectorado torturado',
+    'El Protectorado',
+  },
+  [22901] = {
+    'Espíritu de Clintar',
+    nil,
+  },
+  [22902] = {
+    'Látigo fantasmal',
+    nil,
+  },
+  [22904] = {
+    'Ojo de Illidan',
+    nil,
+  },
+  [22906] = {
+    'Fuerza de elemental de aire',
+    nil,
+  },
+  [22907] = {
+    'Fuerza de elemental de fuego',
+    nil,
+  },
+  [22908] = {
+    'Fuerza de elemental de tierra',
+    nil,
+  },
+  [22909] = {
+    'Fuerza de elemental de agua',
+    nil,
+  },
+  [22910] = {
+    'Skulloc Moledor de Almas',
+    'Hijo de Gruul',
+  },
+  [22911] = {
+    'Vim\'gol el Vil',
+    nil,
+  },
+  [22912] = {
+    'Espíritu hendido',
+    nil,
+  },
+  [22915] = {
+    'Aspecto del Cuervo',
+    nil,
+  },
+  [22916] = {
+    'Espíritu de Clintar Caminasueños',
+    nil,
+  },
+  [22917] = {
+    'Illidan Tempestira',
+    'El Traidor',
+  },
+  [22919] = {
+    'Imagen del comandante Ameer',
+    'El Protectorado',
+  },
+  [22920] = {
+    'Thuk el Desafiante',
+    nil,
+  },
+  [22921] = {
+    'Prisionero de El Etereum (Stasis Chamber Alpha)',
+    nil,
+  },
+  [22922] = {
+    'Tabernera Aelerya',
+    'Tabernero',
+  },
+  [22923] = {
+    'Conejito del juego de Simon',
+    nil,
+  },
+  [22924] = {
+    'Arthorn Son del Viento',
+    nil,
+  },
+  [22927] = {
+    'Prisionero de El Etereum (Dungeon Energy Ball)',
+    nil,
+  },
+  [22928] = {
+    'Embajador Pax\'ivi',
+    nil,
+  },
+  [22929] = {
+    'Maligno de las Sombras superior',
+    nil,
+  },
+  [22930] = {
+    nil,
+    'Can del vacío de Shaffar',
+  },
+  [22931] = {
+    nil,
+    'Maestro de vuelo del Círculo Esmeralda',
+  },
+  [22932] = {
+    'Sai\'kkal el Anciano',
+    nil,
+  },
+  [22933] = {
+    'Antiguo sacerdote cuervo',
+    nil,
+  },
+  [22934] = {
+    'Sensor de batalla del Templo Oscuro',
+    nil,
+  },
+  [22935] = {
+    'Suralais Viento Lejano',
+    'Maestro de hipogrifos',
+  },
+  [22936] = {
+    nil,
+    'Aprendiza de maestro de hipogrifos',
+  },
+  [22937] = {
+    nil,
+    'Maestro de hipogrifos',
+  },
+  [22939] = {
+    'Concubina del templo',
+    nil,
+  },
+  [22941] = {
+    'Mog\'dorg el Marchito',
+    nil,
+  },
+  [22942] = {
+    'Orco vil mutante 1',
+    'Siervo de Illidan',
+  },
+  [22945] = {
+    'Mago sangriento de Sombraluna',
+    nil,
+  },
+  [22946] = {
+    'Can de guerra de Sombraluna',
+    nil,
+  },
+  [22947] = {
+    'Madre Shahraz',
+    nil,
+  },
+  [22948] = {
+    'Gurtogg Sangre Hirviente',
+    nil,
+  },
+  [22949] = {
+    'Gathios el Despedazador',
+    nil,
+  },
+  [22950] = {
+    'Sumo abisálico Zerevor',
+    nil,
+  },
+  [22952] = {
+    'Veras Sombra Oscura',
+    nil,
+  },
+  [22953] = {
+    'Despellejador Hueso de Cólera',
+    nil,
+  },
+  [22954] = {
+    'Extiendemiedo Illidari',
+    nil,
+  },
+  [22955] = {
+    'Cortesana encantadora',
+    nil,
+  },
+  [22956] = {
+    'Hermana del dolor',
+    nil,
+  },
+  [22957] = {
+    'Sacerdotisa de la demencia',
+    nil,
+  },
+  [22958] = {
+    'Raya abisal de montar verde',
+    nil,
+  },
+  [22959] = {
+    'Auxiliar vinculado a hechizo',
+    nil,
+  },
+  [22960] = {
+    'Clamavermis Faucedraco',
+    nil,
+  },
+  [22962] = {
+    'Sacerdotisa de los placeres',
+    nil,
+  },
+  [22963] = {
+    'Trabajador Mascahuesos',
+    nil,
+  },
+  [22964] = {
+    'Hermana del placer',
+    nil,
+  },
+  [22965] = {
+    'Siervo esclavizado',
+    nil,
+  },
+  [22966] = {
+    'Jinete de elekks Juraluz',
+    nil,
+  },
+  [22967] = {
+    'Hidalgo Arúspice',
+    nil,
+  },
+  [22968] = {
+    'Elekk acorazado ligero',
+    nil,
+  },
+  [22969] = {
+    'Halcón zancudo Arúspice',
+    nil,
+  },
+  [22972] = {
+    'Gavilán Cenarion',
+    nil,
+  },
+  [22973] = {
+    'Orco vil Mano Destrozada del Templo Oscuro',
+    'Siervo de Illidan',
+  },
+  [22974] = {
+    'Origen de gavilán invisible',
+    nil,
+  },
+  [22975] = {
+    'Raya abisal de montar morada',
+    nil,
+  },
+  [22976] = {
+    'Raya abisal de montar roja',
+    nil,
+  },
+  [22977] = {
+    'Raya abisal de montar plateada',
+    nil,
+  },
+  [22978] = {
+    'Raya abisal de montar azul',
+    nil,
+  },
+  [22979] = {
+    'Gavilán salvaje',
+    nil,
+  },
+  [22980] = {
+    'Explorador de la Guardia del cielo',
+    nil,
+  },
+  [22981] = {
+    'Vigía Elaira',
+    nil,
+  },
+  [22982] = {
+    'Navegante de la Guardia del cielo',
+    nil,
+  },
+  [22983] = {
+    'Aviador de la Guardia del cielo',
+    nil,
+  },
+  [22986] = {
+    'Skettis - piedra del Cuervo invisible',
+    nil,
+  },
+  [22987] = {
+    'Raya abisal de la Guardia del cielo',
+    nil,
+  },
+  [22988] = {
+    'Señor de las Sombras Illidari',
+    nil,
+  },
+  [22989] = {
+    'Maiev Cantosombrío',
+    nil,
+  },
+  [22992] = {
+    'Guardián del Halcón',
+    nil,
+  },
+  [22993] = {
+    'Guardián del Águila',
+    nil,
+  },
+  [22994] = {
+    'Guardián del Falcón',
+    nil,
+  },
+  [22996] = {
+    'Hoja de Azzinoth',
+    nil,
+  },
+  [22997] = {
+    'Llama de Azzinoth',
+    nil,
+  },
+  [22998] = {
+    'Juerguista invernal elfa de sangre',
+    nil,
+  },
+  [22999] = {
+    'Juerguista invernal elfo de sangre',
+    nil,
+  },
+  [23000] = {
+    'Juerguista invernal draenei',
+    nil,
+  },
+  [23001] = {
+    'Juerguista invernal draenei',
+    nil,
+  },
+  [23002] = {
+    'Rizzle Engranágil',
+    nil,
+  },
+  [23004] = {
+    'Raya abisal de la Guardia del cielo (montura voladora)',
+    nil,
+  },
+  [23005] = {
+    'Juerguista invernal gnomo',
+    nil,
+  },
+  [23006] = {
+    'Juerguista invernal gnoma',
+    nil,
+  },
+  [23007] = {
+    nil,
+    'Intendente del Consorcio',
+  },
+  [23008] = {
+    'Carcelero El Etereum',
+    nil,
+  },
+  [23009] = {
+    'Bessbi Calderilla',
+    'Pastos de Bosquehumeante',
+  },
+  [23010] = {
+    'Wolgren Calderilla',
+    'Pastos de Bosquehumeante',
+  },
+  [23011] = {
+    'Morshelz Cobrellizco',
+    'Pastos de Bosquehumeante',
+  },
+  [23012] = {
+    'Hotoppik Cobrellizco',
+    'Pastos de Bosquehumeante',
+  },
+  [23015] = {
+    'Dracohalcón del aire',
+    nil,
+  },
+  [23016] = {
+    'Cuidadora de la Guardia del cielo',
+    nil,
+  },
+  [23018] = {
+    'Maestro de canes de Sombraluna',
+    nil,
+  },
+  [23019] = {
+    'El Moledor de Almas',
+    nil,
+  },
+  [23020] = {
+    'Serpiente de las Sombras',
+    nil,
+  },
+  [23022] = {
+    'Segador de almas Gordunni',
+    nil,
+  },
+  [23023] = {
+    'Juerguista Arúspice',
+    nil,
+  },
+  [23024] = {
+    'Juerguista Aldor',
+    nil,
+  },
+  [23025] = {
+    'Carga profunda de Rizzle',
+    nil,
+  },
+  [23026] = {
+    'Serpiente Crepuscular',
+    nil,
+  },
+  [23028] = {
+    'Capataz Mascahuesos',
+    nil,
+  },
+  [23029] = {
+    'Furibundo de bosque juragarra',
+    nil,
+  },
+  [23030] = {
+    'Acechador del cielo Faucedraco',
+    nil,
+  },
+  [23031] = {
+    'Draco abisal acorazado',
+    nil,
+  },
+  [23032] = {
+    'Raya abisal de la Guardia del cielo (montura de suelo)',
+    nil,
+  },
+  [23033] = {
+    'Acechador invisible (flotante)',
+    nil,
+  },
+  [23034] = {
+    'Soulgrinder Ghost (Appearance)',
+    nil,
+  },
+  [23036] = {
+    'Gavilán cautivo',
+    nil,
+  },
+  [23038] = {
+    'Comandante del cielo Adaris',
+    nil,
+  },
+  [23039] = {
+    'Juerguista draenei',
+    nil,
+  },
+  [23042] = {
+    nil,
+    'Médico de la Guardia del cielo',
+  },
+  [23043] = {
+    'Invis Guardiánn Caster',
+    nil,
+  },
+  [23044] = {
+    'Infernal Karabor',
+    nil,
+  },
+  [23045] = {
+    'Juerguista elfo de sangre',
+    nil,
+  },
+  [23047] = {
+    'Soldado de Sombraluna',
+    nil,
+  },
+  [23048] = {
+    'Sargento del cielo Doryn',
+    nil,
+  },
+  [23049] = {
+    'Maestro de armas de Sombraluna',
+    nil,
+  },
+  [23050] = {
+    'Pequeño Noah',
+    nil,
+  },
+  [23051] = {
+    'Kaliri monstruoso',
+    nil,
+  },
+  [23052] = {
+    'Suplicante Machacasangre',
+    nil,
+  },
+  [23053] = {
+    'Suplicante Aguja del Filo',
+    nil,
+  },
+  [23054] = {
+    'Kael\'thas Caminante del Sol',
+    'Señor de los elfos de sangre',
+  },
+  [23055] = {
+    'Degradador guardia vil',
+    nil,
+  },
+  [23060] = {
+    'Cría Ala Abisal',
+    nil,
+  },
+  [23061] = {
+    'Desgarro Oscuro',
+    nil,
+  },
+  [23062] = {
+    'Consorte obsidiana',
+    nil,
+  },
+  [23063] = {
+    'Sobrestante Shartuul',
+    nil,
+  },
+  [23064] = {
+    'Eebee Calderilla',
+    'Pastos de Bosquehumeante',
+  },
+  [23065] = {
+    'Olnayvi Cobrellizco',
+    'Pastos de Bosquehumeante',
+  },
+  [23066] = {
+    'Sacerdote de la garra Ishaal',
+    nil,
+  },
+  [23067] = {
+    'Sacerdote de la garra Skizzik',
+    nil,
+  },
+  [23068] = {
+    'Sacerdote de la garra Zellek',
+    nil,
+  },
+  [23069] = {
+    'Fuego demoníaco',
+    nil,
+  },
+  [23076] = {
+    'Cañón antiaéreo de la Legión',
+    nil,
+  },
+  [23078] = {
+    'Defensor diablillo vil',
+    nil,
+  },
+  [23079] = {
+    'Pacificador Jadaar',
+    nil,
+  },
+  [23080] = {
+    'Géiser Cicatriz Espiral',
+    nil,
+  },
+  [23082] = {
+    'Cañón antiaéreo de la Legión',
+    nil,
+  },
+  [23083] = {
+    'Can de montar de Sombraluna',
+    nil,
+  },
+  [23085] = {
+    'Volcán Supremus',
+    nil,
+  },
+  [23086] = {
+    'Rata de cloaca',
+    nil,
+  },
+  [23087] = {
+    'Crocolisco de cloaca',
+    nil,
+  },
+  [23088] = {
+    'Imagen de humo de ogro',
+    nil,
+  },
+  [23090] = {
+    'Acechatejados trol',
+    nil,
+  },
+  [23091] = {
+    'Discípulo de Sar\'this',
+    nil,
+  },
+  [23092] = {
+    'Evocador de Sar\'this',
+    nil,
+  },
+  [23094] = {
+    'Esbirro de Sar\'this',
+    nil,
+  },
+  [23096] = {
+    'Acólito de aire',
+    nil,
+  },
+  [23097] = {
+    'Acólito de agua',
+    nil,
+  },
+  [23098] = {
+    'Acólito de tierra',
+    nil,
+  },
+  [23099] = {
+    'Acólito de fuego',
+    nil,
+  },
+  [23100] = {
+    'Elemental Arcano perfecto',
+    nil,
+  },
+  [23103] = {
+    'Derek el Imperecedero',
+    'Instructor de magos',
+  },
+  [23109] = {
+    'Espíritu vengativo',
+    nil,
+  },
+  [23110] = {
+    'Rey del barril Ogri\'la',
+    'Vendedor de bebidas',
+  },
+  [23111] = {
+    'Ensamblaje enigmático',
+    nil,
+  },
+  [23112] = {
+    nil,
+    'Componentes',
+  },
+  [23113] = {
+    'Castigador guardia apocalíptico',
+    nil,
+  },
+  [23114] = {
+    'Suertudo',
+    nil,
+  },
+  [23115] = {
+    'Pacificador Ogri\'la',
+    nil,
+  },
+  [23116] = {
+    'Escudo de portal de distorsión',
+    nil,
+  },
+  [23117] = {
+    'Hombre de cristal',
+    nil,
+  },
+  [23120] = {
+    'Sargento del cielo Vanderlip',
+    nil,
+  },
+  [23121] = {
+    'Imagen de humo de Gronn',
+    nil,
+  },
+  [23123] = {
+    'Flor de fatalidad',
+    nil,
+  },
+  [23124] = {
+    'Objetivo de flor de fatalidad',
+    nil,
+  },
+  [23125] = {
+    'Granjero Leon',
+    nil,
+  },
+  [23126] = {
+    '[UNUSED] Jefe Teron Sanguino (montado)',
+    nil,
+  },
+  [23127] = {
+    'Clarividente Javad',
+    'Instructor de chamanes',
+  },
+  [23128] = {
+    'Maestro Pyreanor',
+    'Instructor de paladines',
+  },
+  [23129] = {
+    'Ilusión de orco vil (Hombre)',
+    nil,
+  },
+  [23130] = {
+    'Ilusión de orco vil (Alterna)',
+    nil,
+  },
+  [23131] = {
+    'Guardia de honor Caballero de sangre',
+    nil,
+  },
+  [23132] = {
+    'Linaje de Anzu',
+    nil,
+  },
+  [23133] = {
+    'Aventurero de la Alianza',
+    nil,
+  },
+  [23134] = {
+    'Espíritu de halcón',
+    nil,
+  },
+  [23135] = {
+    'Espíritu de falcón',
+    nil,
+  },
+  [23136] = {
+    'Espíritu de águila',
+    nil,
+  },
+  [23139] = {
+    'Señor supremo Mor\'ghor',
+    nil,
+  },
+  [23140] = {
+    'Capataz Varkule Aliento de Dragón',
+    nil,
+  },
+  [23141] = {
+    'Yarzill el Condotiero',
+    nil,
+  },
+  [23142] = {
+    'Condotiero goblin',
+    nil,
+  },
+  [23143] = {
+    nil,
+    'Tabernero',
+  },
+  [23144] = {
+    nil,
+    'Forjador de armaduras',
+  },
+  [23145] = {
+    nil,
+    'Suministros de venenos y componentes',
+  },
+  [23146] = {
+    'Déspota Faucedraco',
+    nil,
+  },
+  [23147] = {
+    'Bruto de Sombraluna',
+    nil,
+  },
+  [23148] = {
+    nil,
+    'Organizador de lucha en el foso',
+  },
+  [23149] = {
+    'Maestra de las minas',
+    nil,
+  },
+  [23150] = {
+    'Luchador de foso Faucedraco',
+    nil,
+  },
+  [23151] = {
+    'El Julkster',
+    nil,
+  },
+  [23153] = {
+    'Perito Bash\'ir',
+    nil,
+  },
+  [23154] = {
+    'Esclavo con deuda de maná',
+    nil,
+  },
+  [23155] = {
+    'Acechador invisible (escala x 3)',
+    nil,
+  },
+  [23156] = {
+    nil,
+    'Aprendiza médico brujo',
+  },
+  [23157] = {
+    nil,
+    'Componentes',
+  },
+  [23158] = {
+    'Vidente Kanai',
+    nil,
+  },
+  [23159] = {
+    nil,
+    'Intendente juramorte Lengua de ceniza',
+  },
+  [23161] = {
+    'Estridador oscuro Akkarai',
+    nil,
+  },
+  [23162] = {
+    'Vakkiz, la Furia del Viento',
+    nil,
+  },
+  [23163] = {
+    'Gezzarak la Cazadora',
+    nil,
+  },
+  [23166] = {
+    'Ronag el Explotador',
+    nil,
+  },
+  [23167] = {
+    'Prole Anzuli',
+    nil,
+  },
+  [23168] = {
+    'Or\'kaos el Demente',
+    nil,
+  },
+  [23169] = {
+    'Despellejador mina abisal',
+    nil,
+  },
+  [23170] = {
+    'Soldado de la Alianza',
+    nil,
+  },
+  [23171] = {
+    'Soldado de la Horda',
+    nil,
+  },
+  [23172] = {
+    'Mano de Sanguino',
+    nil,
+  },
+  [23173] = {
+    'Defensor can manáfago',
+    nil,
+  },
+  [23174] = {
+    'Minero de cristal imbuido',
+    nil,
+  },
+  [23175] = {
+    'Custodio de Molino Tarren',
+    nil,
+  },
+  [23176] = {
+    'Custodio de Molino Tarren',
+    nil,
+  },
+  [23177] = {
+    'Oteador de Molino Tarren',
+    nil,
+  },
+  [23178] = {
+    'Oteador de Molino Tarren',
+    nil,
+  },
+  [23179] = {
+    'Protector de Molino Tarren',
+    nil,
+  },
+  [23180] = {
+    'Protector de Molino Tarren',
+    nil,
+  },
+  [23187] = {
+    'Draco Ala Abisal esclavizado',
+    nil,
+  },
+  [23188] = {
+    'Transportador Faucedraco',
+    nil,
+  },
+  [23189] = {
+    'Imagen de humo etéreo',
+    nil,
+  },
+  [23190] = {
+    'Imagen de humo de dragón Negro',
+    nil,
+  },
+  [23192] = {
+    'Brasa de Azzinoth',
+    nil,
+  },
+  [23193] = {
+    'Ciudadano de Lordaeron (Jesse)',
+    nil,
+  },
+  [23194] = {
+    'Trabajador de Ruta aérea',
+    nil,
+  },
+  [23195] = {
+    'Forma de demonio de Illidan',
+    'El Traidor',
+  },
+  [23196] = {
+    'Behemoth Mascahuesos',
+    nil,
+  },
+  [23197] = {
+    'Maiev Cantosombrío',
+    nil,
+  },
+  [23198] = {
+    'Suertudo',
+    nil,
+  },
+  [23199] = {
+    'Subordinado Gan\'arg',
+    nil,
+  },
+  [23200] = {
+    'Granjero Leon',
+    'Porquero',
+  },
+  [23201] = {
+    nil,
+    'Aprendiza médico brujo',
+  },
+  [23202] = {
+    nil,
+    'Porquero',
+  },
+  [23203] = {
+    'Transformación de esbirro Gan\'arg',
+    nil,
+  },
+  [23204] = {
+    'Vakkiz, la Furia del Viento',
+    nil,
+  },
+  [23205] = {
+    'Fragmentizo de Karrog',
+    nil,
+  },
+  [23206] = {
+    'Prole akkarai',
+    nil,
+  },
+  [23207] = {
+    'Asesino de Skettis',
+    nil,
+  },
+  [23208] = {
+    'Pirotécnico de la Guardia del cielo',
+    nil,
+  },
+  [23210] = {
+    'Generador de criaturas (Akama)',
+    nil,
+  },
+  [23211] = {
+    'Tester de facción Aldor',
+    nil,
+  },
+  [23212] = {
+    'Atormentador Mo\'arg',
+    nil,
+  },
+  [23213] = {
+    'Cordero peón Faucedraco',
+    nil,
+  },
+  [23215] = {
+    'Hechicero Lengua de ceniza',
+    nil,
+  },
+  [23216] = {
+    'Defensor Lengua de ceniza',
+    nil,
+  },
+  [23217] = {
+    'Agente Aguja del Filo',
+    nil,
+  },
+  [23218] = {
+    'Agente Machacasangre',
+    nil,
+  },
+  [23219] = {
+    'Persecutor de distorsión Vientonegro',
+    nil,
+  },
+  [23220] = {
+    'Shivarra asesina',
+    nil,
+  },
+  [23222] = {
+    'Camorrista Mascahuesos',
+    nil,
+  },
+  [23223] = {
+    'Espectador Mascahuesos',
+    nil,
+  },
+  [23224] = {
+    'Diablillo en bola',
+    nil,
+  },
+  [23225] = {
+    'Punto de fuga de draco Ala Abisal',
+    nil,
+  },
+  [23226] = {
+    'Élite Illidari',
+    nil,
+  },
+  [23227] = {
+    'Transformación de Ojo de Shartuul',
+    nil,
+  },
+  [23228] = {
+    'Ojo de Shartuul',
+    nil,
+  },
+  [23229] = {
+    'Diablillo en bola (pícaro)',
+    nil,
+  },
+  [23232] = {
+    'Can de guerra mutante',
+    nil,
+  },
+  [23234] = {
+    'Plátanos',
+    nil,
+  },
+  [23235] = {
+    'Furia Afilada Mascahuesos',
+    nil,
+  },
+  [23236] = {
+    'Discípulo escudo Mascahuesos',
+    nil,
+  },
+  [23237] = {
+    'Profeta de sangre Mascahuesos',
+    nil,
+  },
+  [23239] = {
+    'Combatiente Mascahuesos',
+    nil,
+  },
+  [23241] = {
+    'Técnico de éter de la Guardia del cielo',
+    nil,
+  },
+  [23242] = {
+    'Forestal de la Guardia del cielo',
+    nil,
+  },
+  [23243] = {
+    'Ayudante técnico de éter',
+    nil,
+  },
+  [23244] = {
+    'Adepto técnico de éter',
+    nil,
+  },
+  [23245] = {
+    'Maestro técnico de éter',
+    nil,
+  },
+  [23246] = {
+    'Esclavo esclavizante',
+    nil,
+  },
+  [23247] = {
+    'Subprimigenio Bash\'ir',
+    nil,
+  },
+  [23249] = {
+    'Maligno de carne Bash\'ir',
+    nil,
+  },
+  [23250] = {
+    'Torre de interrupción',
+    nil,
+  },
+  [23252] = {
+    'Imagen de humo de guardia vil',
+    nil,
+  },
+  [23254] = {
+    'Géiser vil',
+    nil,
+  },
+  [23256] = {
+    'Cuentista Ogri\'la',
+    nil,
+  },
+  [23257] = {
+    'Embestidor del viento de la Guardia del cielo',
+    nil,
+  },
+  [23259] = {
+    'Llamarada',
+    nil,
+  },
+  [23261] = {
+    'Alafuria',
+    nil,
+  },
+  [23263] = {
+    nil,
+    'Vendedora de carne',
+  },
+  [23264] = {
+    'Despellejador sobremina',
+    nil,
+  },
+  [23265] = {
+    'Vidente Nakha',
+    nil,
+  },
+  [23266] = {
+    'Cacahuete',
+    nil,
+  },
+  [23267] = {
+    'Arvoar el Rapaz',
+    nil,
+  },
+  [23268] = {
+    'Vidente Jovar',
+    nil,
+  },
+  [23269] = {
+    'Barash, la madre del cubil',
+    nil,
+  },
+  [23270] = {
+    'Vindicador Aeus',
+    nil,
+  },
+  [23271] = {
+    'Vindicador Kaan',
+    nil,
+  },
+  [23272] = {
+    'Arcanista Savan',
+    nil,
+  },
+  [23273] = {
+    'Arcanista Raestan',
+    nil,
+  },
+  [23274] = {
+    'Cuesqui',
+    nil,
+  },
+  [23275] = {
+    'Fauces Temibles',
+    nil,
+  },
+  [23277] = {
+    'Objetivo de la Guardia del cielo',
+    nil,
+  },
+  [23278] = {
+    'Cañón vil portátil',
+    nil,
+  },
+  [23280] = {
+    nil,
+    'Aprendiz de jinetes del viento',
+  },
+  [23285] = {
+    'Reventador mina abisal',
+    nil,
+  },
+  [23286] = {
+    'Sangre Negra de Draenor',
+    nil,
+  },
+  [23287] = {
+    'Minero Sangreoscura',
+    nil,
+  },
+  [23290] = {
+    'Terror de sangre de Draenor',
+    nil,
+  },
+  [23291] = {
+    'Sobrestante jefe Limo',
+    'Azote de peones',
+  },
+  [23305] = {
+    'Supervisor Sangreoscura enloquecido',
+    nil,
+  },
+  [23308] = {
+    'Nodo de trabajo de peón Faucedraco',
+    nil,
+  },
+  [23309] = {
+    'Sobrestante Sangreoscura',
+    nil,
+  },
+  [23310] = {
+    'Alarma de portal vil',
+    nil,
+  },
+  [23311] = {
+    'Peón Faucedraco desobediente',
+    nil,
+  },
+  [23318] = {
+    'Pícaro Lengua de ceniza',
+    nil,
+  },
+  [23319] = {
+    'Tábido Lengua de ceniza',
+    nil,
+  },
+  [23320] = {
+    'Aliado Ala Abisal',
+    nil,
+  },
+  [23321] = {
+    'Instructor de vuelo Faucedraco',
+    nil,
+  },
+  [23323] = {
+    'Ojo acechador vil',
+    nil,
+  },
+  [23324] = {
+    'Minero Sangreoscura enloquecido',
+    nil,
+  },
+  [23325] = {
+    'Objetivo de instructor de vuelo Faucedraco',
+    nil,
+  },
+  [23326] = {
+    'Devastador mina abisal',
+    nil,
+  },
+  [23330] = {
+    'Atracador del viento Faucedraco',
+    nil,
+  },
+  [23331] = {
+    'Ray Estrella Matinal',
+    nil,
+  },
+  [23332] = {
+    'Ajustador de cuentas Bash\'ir',
+    nil,
+  },
+  [23333] = {
+    'El Gran Coleccionista',
+    nil,
+  },
+  [23334] = {
+    'Comandante del cielo Keller',
+    nil,
+  },
+  [23335] = {
+    'Guardia del cielo Khatie',
+    nil,
+  },
+  [23336] = {
+    'Colisión de llamas',
+    nil,
+  },
+  [23337] = {
+    'Centurión Illidari',
+    nil,
+  },
+  [23338] = {
+    'Gavilán de Arthorn',
+    nil,
+  },
+  [23339] = {
+    'Buscacorazones Illidari',
+    nil,
+  },
+  [23340] = {
+    'Murg Quijada Sucia "el Viejo"',
+    nil,
+  },
+  [23341] = {
+    'Montura de polilla Faucedraco',
+    nil,
+  },
+  [23342] = {
+    'Trope el Vomitador',
+    nil,
+  },
+  [23343] = {
+    'Raya de éter enlazada',
+    nil,
+  },
+  [23344] = {
+    'Corlok el Veterano',
+    nil,
+  },
+  [23345] = {
+    'Comandante del aire Ichman',
+    nil,
+  },
+  [23346] = {
+    'Comandante del aire Mulverick',
+    nil,
+  },
+  [23348] = {
+    'Capitán Devastador del Cielo',
+    nil,
+  },
+  [23349] = {
+    'Draco abisal del Capitán Rompecielos',
+    nil,
+  },
+  [23350] = {
+    'El Gran Coleccionista',
+    nil,
+  },
+  [23354] = {
+    'Incinerador Mo\'arg',
+    nil,
+  },
+  [23363] = {
+    nil,
+    'Vigilante de pergaminos',
+  },
+  [23364] = {
+    'Vástago de dragón Negro',
+    nil,
+  },
+  [23367] = {
+    nil,
+    'Intendente de la Guardia del cielo',
+  },
+  [23368] = {
+    'Controlador Bash\'ir',
+    nil,
+  },
+  [23369] = {
+    'Hoja giratoria',
+    nil,
+  },
+  [23370] = {
+    'Controlador de torre Faucedraco',
+    nil,
+  },
+  [23371] = {
+    'Caído de Sombraluna',
+    nil,
+  },
+  [23372] = {
+    'Vagoneta (taxi)',
+    nil,
+  },
+  [23373] = {
+    'Mortog Testavapor',
+    nil,
+  },
+  [23374] = {
+    'Acechador Lengua de ceniza',
+    nil,
+  },
+  [23375] = {
+    'Demonio de las Sombras',
+    nil,
+  },
+  [23376] = {
+    'Supervisor Faucedraco',
+    nil,
+  },
+  [23377] = {
+    'As de la Guardia del cielo',
+    nil,
+  },
+  [23381] = {
+    nil,
+    'Vigilante de artefactos perdidos',
+  },
+  [23383] = {
+    'Prisionero de la Guardia del cielo',
+    nil,
+  },
+  [23384] = {
+    'Pequeño Hurra',
+    'Ayudante de Forgus',
+  },
+  [23385] = {
+    'Unidad Simon',
+    nil,
+  },
+  [23386] = {
+    'Analizador Gan\'arg',
+    nil,
+  },
+  [23388] = {
+    'Montura de Nacho',
+    nil,
+  },
+  [23389] = {
+    'Aliado caído',
+    nil,
+  },
+  [23390] = {
+    'Presagista Bash\'ir',
+    nil,
+  },
+  [23392] = {
+    'Maestro de establos de la Guardia del cielo',
+    'Maestra de establos',
+  },
+  [23393] = {
+    'Agente Sombra de Muerte',
+    nil,
+  },
+  [23394] = {
+    'Centinela del paseo',
+    nil,
+  },
+  [23396] = {
+    'Krixel Silbapellizco',
+    'Intendente de conquista',
+  },
+  [23397] = {
+    'Señor de sangre Illidari',
+    nil,
+  },
+  [23398] = {
+    'Trozo de alma enfadado',
+    nil,
+  },
+  [23399] = {
+    'Trozo de alma sufrida',
+    nil,
+  },
+  [23400] = {
+    'Arconte Illidari',
+    nil,
+  },
+  [23401] = {
+    'Trozo de alma hambrienta',
+    nil,
+  },
+  [23402] = {
+    'Mago de batalla Illidari',
+    nil,
+  },
+  [23403] = {
+    'Asesino Illidari',
+    nil,
+  },
+  [23404] = {
+    'Criado diablillo',
+    nil,
+  },
+  [23405] = {
+    'Frascotaur',
+    nil,
+  },
+  [23406] = {
+    'Jimmy MacSalsafloja',
+    'Hermanos MacSalsafloja',
+  },
+  [23407] = {
+    'Johnny MacSalsafloja',
+    'Hermanos MacSalsafloja',
+  },
+  [23410] = {
+    'Espíritu de Udalo',
+    nil,
+  },
+  [23411] = {
+    'Espíritu de Olum',
+    nil,
+  },
+  [23413] = {
+    'Cuidadora de la Guardia del cielo Irena',
+    nil,
+  },
+  [23414] = {
+    'Inquisidor Bash\'ir',
+    nil,
+  },
+  [23415] = {
+    'Cuidador de la Guardia del cielo Deesak',
+    nil,
+  },
+  [23416] = {
+    'Objetivo de Reth\'hedron',
+    nil,
+  },
+  [23418] = {
+    'Esencia de sufrimiento',
+    nil,
+  },
+  [23419] = {
+    'Esencia de deseo',
+    nil,
+  },
+  [23420] = {
+    'Esencia de inquina',
+    nil,
+  },
+  [23421] = {
+    'Canalizador Lengua de ceniza',
+    nil,
+  },
+  [23422] = {
+    'Raya abisal de montar',
+    nil,
+  },
+  [23423] = {
+    'Ilusión arakkoa',
+    nil,
+  },
+  [23426] = {
+    'El Consejo Illidari',
+    nil,
+  },
+  [23427] = {
+    'Señor de los Illidari Balthas',
+    nil,
+  },
+  [23428] = {
+    nil,
+    'Intendente Ogri\'la',
+  },
+  [23429] = {
+    'Carga Arcana',
+    nil,
+  },
+  [23430] = {
+    'Teniente de la Guardia del cielo',
+    nil,
+  },
+  [23434] = {
+    'Comandante Hobb',
+    nil,
+  },
+  [23435] = {
+    'Defensor del Sagrario',
+    nil,
+  },
+  [23436] = {
+    'Imagen de Demencia',
+    nil,
+  },
+  [23437] = {
+    nil,
+    'Vigilante de conocimiento de gemas antiguas',
+  },
+  [23439] = {
+    'Raya abisal hambrienta',
+    nil,
+  },
+  [23440] = {
+    'Rompecielos Faucedraco',
+    nil,
+  },
+  [23441] = {
+    'Rompecielos Faucedraco',
+    nil,
+  },
+  [23442] = {
+    'Desaparición de raya abisal',
+    nil,
+  },
+  [23446] = {
+    'Teniente Tristia',
+    'Intendente de armaduras',
+  },
+  [23447] = {
+    'Sargento Kien',
+    'Intendente de armaduras',
+  },
+  [23449] = {
+    nil,
+    'Oficial de reclutamiento',
+  },
+  [23450] = {
+    'Apoderado Gordunni',
+    nil,
+  },
+  [23452] = {
+    'Comandante Arcus',
+    nil,
+  },
+  [23453] = {
+    'Defensor del altar',
+    nil,
+  },
+  [23455] = {
+    'Draco Ala Abisal ónice',
+    nil,
+  },
+  [23456] = {
+    'Draco Ala Abisal azur',
+    nil,
+  },
+  [23457] = {
+    'Draco Ala Abisal veridiana',
+    nil,
+  },
+  [23458] = {
+    'Draco Ala Abisal morado',
+    nil,
+  },
+  [23459] = {
+    'Draco Ala Abisal violeta',
+    nil,
+  },
+  [23460] = {
+    'Draco Ala Abisal cobalto',
+    nil,
+  },
+  [23467] = {
+    'Illidan Tempestira',
+    'El Traidor',
+  },
+  [23468] = {
+    'Forma de dragón de Yarzill',
+    nil,
+  },
+  [23469] = {
+    'Alma esclavizada',
+    nil,
+  },
+  [23471] = {
+    'Escolta de Skettis',
+    nil,
+  },
+  [23473] = {
+    'Aprendiz técnico de éter',
+    nil,
+  },
+  [23474] = {
+    'Asesina shivaísta (roja)',
+    nil,
+  },
+  [23475] = {
+    'Asesina shivaísta (azul)',
+    nil,
+  },
+  [23476] = {
+    'Asesina shivaísta (negra)',
+    nil,
+  },
+  [23481] = {
+    'Keiran Franfur',
+    'Vendedor de salchichas',
+  },
+  [23482] = {
+    'Aprendiz Cebadiz',
+    'Vendedor de cerveza Cebadiz',
+  },
+  [23483] = {
+    'Arcanista Xorith',
+    'Boticario Arúspice',
+  },
+  [23484] = {
+    'Haldor el Compulsivo',
+    'Boticario Aldor',
+  },
+  [23486] = {
+    'Goldark Novatada',
+    nil,
+  },
+  [23487] = {
+    'Wolpertinger salvaje',
+    nil,
+  },
+  [23488] = {
+    'Gentío de la Fiesta de la Cerveza',
+    nil,
+  },
+  [23489] = {
+    'Tratante de dracos Hurlunk',
+    nil,
+  },
+  [23497] = {
+    'Draeg Cebadiz',
+    nil,
+  },
+  [23498] = {
+    'Maligno de las Sombras parasitario',
+    nil,
+  },
+  [23501] = {
+    'Raya Ala Abisal',
+    nil,
+  },
+  [23503] = {
+    'Vórtice enigmático',
+    nil,
+  },
+  [23504] = {
+    'Equipo de montaje de la Fiesta de la Cerveza',
+    nil,
+  },
+  [23506] = {
+    'Ilusión de Tábido',
+    nil,
+  },
+  [23507] = {
+    'Elekk rosa de Elwynn',
+    nil,
+  },
+  [23509] = {
+    'Espíritu del pasado',
+    nil,
+  },
+  [23510] = {
+    'Aprendiz Cebatruenos',
+    'Vendedor de cerveza Cebatruenos',
+  },
+  [23511] = {
+    'Aprendiz de cerveza Gordok',
+    'Vendedor de cerveza Gordok',
+  },
+  [23521] = {
+    'Anne Kabrales',
+    'Vendedora de queso',
+  },
+  [23522] = {
+    'Arlen Hornada',
+    'Vendedora de pan',
+  },
+  [23523] = {
+    'Elementalista Lengua de ceniza',
+    nil,
+  },
+  [23524] = {
+    'Vinculador de espíritus Lengua de ceniza',
+    nil,
+  },
+  [23525] = {
+    'Hermano Rioxa',
+    'Vendedora de vino',
+  },
+  [23527] = {
+    'Elekk rosa de Teldrassil',
+    nil,
+  },
+  [23528] = {
+    'Elekk rosa de Bruma Azur',
+    nil,
+  },
+  [23529] = {
+    'Elekk rosa de Mulgore',
+    nil,
+  },
+  [23530] = {
+    'Elekk rosa de Tirisfal',
+    nil,
+  },
+  [23531] = {
+    'Elekk rosa de Canción Eterna',
+    nil,
+  },
+  [23533] = {
+    'Aprendiz de cervecería vudú de T\'chali',
+    'Vendedor de cerveza vudú',
+  },
+  [23534] = {
+    'Babagaya Hiendesombra',
+    'Instructora de brujos',
+  },
+  [23535] = {
+    nil,
+    'Instructor de demonios',
+  },
+  [23536] = {
+    nil,
+    'Esbirro de Matero Zeshuwal',
+  },
+  [23537] = {
+    'Jinete decapitado - Fuego (DND)',
+    nil,
+  },
+  [23542] = {
+    'Lanzahachas Amani\'shi',
+    nil,
+  },
+  [23543] = {
+    'Sombra de El Jinete',
+    nil,
+  },
+  [23545] = {
+    'Maligno calabaza',
+    nil,
+  },
+  [23554] = {
+    'Espíritu resucitado',
+    nil,
+  },
+  [23555] = {
+    'Raquítico resucitado',
+    nil,
+  },
+  [23558] = {
+    nil,
+    'Maestro de carreras de carneros',
+  },
+  [23559] = {
+    'Budd',
+    nil,
+  },
+  [23560] = {
+    'Proveedora Ameenah',
+    'Componentes',
+  },
+  [23561] = {
+    'Soldado de los Baldíos Helados',
+    nil,
+  },
+  [23562] = {
+    'Abominación imparable',
+    nil,
+  },
+  [23563] = {
+    'Tejealmas',
+    nil,
+  },
+  [23565] = {
+    'Turgencio',
+    nil,
+  },
+  [23566] = {
+    'Calia Castilla',
+    nil,
+  },
+  [23568] = {
+    'Capitán Darill',
+    nil,
+  },
+  [23569] = {
+    'Renn McBranquia',
+    'Buzo de salvamento del IV:7',
+  },
+  [23570] = {
+    'Gizzix Gluglú',
+    nil,
+  },
+  [23571] = {
+    'Razbo Piñóxido',
+    'Mercader de armas y armaduras',
+  },
+  [23572] = {
+    'Drazzit Gotera',
+    nil,
+  },
+  [23573] = {
+    'Krixil Lentorruptor',
+    'Alimentos y bebidas',
+  },
+  [23574] = {
+    nil,
+    'Avatar de águila',
+  },
+  [23576] = {
+    nil,
+    'Avatar de oso',
+  },
+  [23577] = {
+    nil,
+    'Avatar de lince',
+  },
+  [23578] = {
+    nil,
+    'Avatar de dracohalcón',
+  },
+  [23579] = {
+    nil,
+    'Superviviente Quebrantarrocas',
+  },
+  [23580] = {
+    'Belisario Amani\'shi',
+    nil,
+  },
+  [23581] = {
+    'Auxiliador Amani\'shi',
+    nil,
+  },
+  [23582] = {
+    'Miembro de tribu Amani\'shi',
+    nil,
+  },
+  [23583] = {
+    'Indicador de evidencia',
+    nil,
+  },
+  [23584] = {
+    'Oso Amani',
+    nil,
+  },
+  [23585] = {
+    'Luz de bruja',
+    nil,
+  },
+  [23586] = {
+    'Explorador Amani\'shi',
+    nil,
+  },
+  [23587] = {
+    'Refuerzo Amani\'shi',
+    nil,
+  },
+  [23589] = {
+    'Estibador Defias',
+    nil,
+  },
+  [23590] = {
+    'Conjurador Defias',
+    nil,
+  },
+  [23591] = {
+    'Buzo Defias',
+    nil,
+  },
+  [23592] = {
+    'Rompedor Tótem Siniestro',
+    nil,
+  },
+  [23593] = {
+    'Transfigurador de espíritu Tótem Siniestro',
+    nil,
+  },
+  [23594] = {
+    'Destructor Tótem Siniestro',
+    nil,
+  },
+  [23595] = {
+    'Vinculador terrestre Tótem Siniestro',
+    nil,
+  },
+  [23596] = {
+    'Lanzallamas Amani\'shi',
+    nil,
+  },
+  [23597] = {
+    'Guardián Amani\'shi',
+    nil,
+  },
+  [23598] = {
+    'Prole de dracohalcón Amani',
+    nil,
+  },
+  [23600] = {
+    'Aprendiz Morlann',
+    'Aprendiz de Tabetha',
+  },
+  [23601] = {
+    'Aprendiz Garion',
+    'Aprendiz de Tabetha',
+  },
+  [23602] = {
+    'Agitador desertor',
+    nil,
+  },
+  [23603] = {
+    'Uta Mendrugo',
+    'Vendedora de pan',
+  },
+  [23604] = {
+    'Agnes Tufarada',
+    'Vendedora de queso',
+  },
+  [23605] = {
+    nil,
+    'Vendedor de salchichas',
+  },
+  [23606] = {
+    'Aprendiz Toquesol',
+    'Vendedora de vino',
+  },
+  [23612] = {
+    '[UNUSED] Dyslix Kami-Kaze',
+    'Maestro de vuelo',
+  },
+  [23616] = {
+    'Kyle el Demenciado',
+    nil,
+  },
+  [23617] = {
+    'Matrona Buenhacer',
+    nil,
+  },
+  [23618] = {
+    'Ahab Pezuña de Trigo',
+    'El Viejo ranchero',
+  },
+  [23619] = {
+    nil,
+    'Los Tauren Chieftains',
+  },
+  [23620] = {
+    'Corsario',
+    nil,
+  },
+  [23621] = {
+    'Testy McCasco',
+    nil,
+  },
+  [23622] = {
+    'Kyle el Amistoso',
+    nil,
+  },
+  [23623] = {
+    'Jefe Pieles de Trueno',
+    'Los Tauren Chieftains',
+  },
+  [23624] = {
+    nil,
+    'Los Tauren Chieftains',
+  },
+  [23625] = {
+    nil,
+    'Los Tauren Chieftains',
+  },
+  [23626] = {
+    nil,
+    'Los Tauren Chieftains',
+  },
+  [23627] = {
+    'Becan Cebadiz',
+    nil,
+  },
+  [23628] = {
+    'Daran Cebatruenos',
+    nil,
+  },
+  [23635] = {
+    nil,
+    'Ingeniero de zepelines',
+  },
+  [23636] = {
+    'Truhán de Piñón de Barro',
+    nil,
+  },
+  [23637] = {
+    'Teniente desertor',
+    nil,
+  },
+  [23681] = {
+    'Capitán Averen',
+    nil,
+  },
+  [23682] = {
+    'El Jinete decapitado',
+    nil,
+  },
+  [23683] = {
+    'Maeve Cebadiz',
+    'Camarera',
+  },
+  [23684] = {
+    'Ita Cebatruenos',
+    'Camarera',
+  },
+  [23685] = {
+    'Voceador de cerveza Gordok',
+    nil,
+  },
+  [23687] = {
+    'Draco brasaescama',
+    nil,
+  },
+  [23694] = {
+    'Calabaza con pulso',
+    nil,
+  },
+  [23696] = {
+    'Jefe de cerveza Gordok',
+    nil,
+  },
+  [23697] = {
+    'Gafas de cerveza de gnomo',
+    nil,
+  },
+  [23698] = {
+    'Juerguista de la Fiesta de la Cerveza borracho',
+    nil,
+  },
+  [23699] = {
+    nil,
+    'Aficionado al café',
+  },
+  [23700] = {
+    'Barril festivo de Cebadiz',
+    nil,
+  },
+  [23701] = {
+    'Emboscador Ancalodo',
+    nil,
+  },
+  [23702] = {
+    'Barril festivo de Cebatruenos',
+    nil,
+  },
+  [23704] = {
+    'Cassa Ala Carmesí',
+    'Aprendiza de maestra de grifos',
+  },
+  [23705] = {
+    'Cadáver de Señor de los felinos',
+    nil,
+  },
+  [23706] = {
+    'Barril festivo de Gordok',
+    nil,
+  },
+  [23707] = {
+    'Sistema de alarma de Cebatruenos',
+    nil,
+  },
+  [23708] = {
+    'Guardián mecánico oxidado',
+    nil,
+  },
+  [23709] = {
+    'Tragón Hierro Negro',
+    nil,
+  },
+  [23710] = {
+    'Belbi Tiratrastos',
+    'Canje de fichas',
+  },
+  [23712] = {
+    'Huérfano ambulante',
+    nil,
+  },
+  [23713] = {
+    nil,
+    'Ingeniero de zepelines',
+  },
+  [23714] = {
+    'Anciano Tótem Siniestro',
+    nil,
+  },
+  [23716] = {
+    'Cadáver de aojador',
+    nil,
+  },
+  [23719] = {
+    'Investigador Asric',
+    nil,
+  },
+  [23720] = {
+    'Prisionero de Theramore',
+    nil,
+  },
+  [23721] = {
+    'Gorila de concierto',
+    nil,
+  },
+  [23722] = {
+    nil,
+    'Alquiler de magos de Dalaran',
+  },
+  [23723] = {
+    'Sargento Lukas',
+    nil,
+  },
+  [23741] = {
+    'Raptor capturado',
+    nil,
+  },
+  [23748] = {
+    nil,
+    'Alimentos y bebidas',
+  },
+  [23751] = {
+    'Tienda norte',
+    nil,
+  },
+  [23752] = {
+    'Tienda noreste',
+    nil,
+  },
+  [23753] = {
+    'Tienda este',
+    nil,
+  },
+  [23754] = {
+    'Traje de múrloc',
+    nil,
+  },
+  [23757] = {
+    'Guarda de sanación Amani',
+    nil,
+  },
+  [23765] = {
+    'Sylvanas Brisaveloz (elfa noble)',
+    nil,
+  },
+  [23774] = {
+    'Instructor Amani\'shi',
+    nil,
+  },
+  [23775] = {
+    'Cabeza de El Jinete decapitado',
+    nil,
+  },
+  [23786] = {
+    'Espíritu Quebrantarrocas',
+    nil,
+  },
+  [23787] = {
+    'Señor Manny',
+    nil,
+  },
+  [23788] = {
+    'Wixa Vigía de crías',
+    nil,
+  },
+  [23789] = {
+    'Ala Incandescente',
+    nil,
+  },
+  [23795] = {
+    'Antagonista Hierro Negro',
+    nil,
+  },
+  [23797] = {
+    'Moxie Soplete',
+    nil,
+  },
+  [23800] = {
+    'El Jinete decapitado, desmontado',
+    nil,
+  },
+  [23811] = {
+    'Tótem capturado',
+    nil,
+  },
+  [23812] = {
+    'Espíritu de lince',
+    nil,
+  },
+  [23817] = {
+    'Huevo de dracohalcón',
+    nil,
+  },
+  [23818] = {
+    'Criador Amani\'shi',
+    nil,
+  },
+  [23822] = {
+    'Guarda protector Amani',
+    nil,
+  },
+  [23832] = {
+    'Batería del zepelín',
+    nil,
+  },
+  [23834] = {
+    'Dracohalcón Amani',
+    nil,
+  },
+  [23835] = {
+    'Sargento Amelyn',
+    nil,
+  },
+  [23841] = {
+    'Espinafilada',
+    nil,
+  },
+  [23843] = {
+    'Mordant Navarro',
+    nil,
+  },
+  [23861] = {
+    'Aparecido inquieto',
+    nil,
+  },
+  [23863] = {
+    'Daakara',
+    nil,
+  },
+  [23872] = {
+    'Coren Cerveza Temible',
+    nil,
+  },
+  [23873] = {
+    'Garrasangrienta el Voraz',
+    nil,
+  },
+  [23877] = {
+    'Espíritu de lince Amani',
+    nil,
+  },
+  [23878] = {
+    'Espíritu de oso Amani',
+    nil,
+  },
+  [23879] = {
+    'Espíritu de dracohalcón Amani',
+    nil,
+  },
+  [23880] = {
+    'Espíritu de águila Amani',
+    nil,
+  },
+  [23881] = {
+    'Boticaria Cylla',
+    nil,
+  },
+  [23889] = {
+    'Salvaje Amani\'shi',
+    nil,
+  },
+  [23892] = {
+    'Babs Dinamométrica',
+    nil,
+  },
+  [23896] = {
+    '"Sucio" Michael Crowe',
+    'Mercader de pescado',
+  },
+  [23900] = {
+    'Tirador de Theramore',
+    nil,
+  },
+  [23902] = {
+    'Lobo de montar (fantasma) OLD',
+    nil,
+  },
+  [23903] = {
+    'Lobo de montar presto (fantasma) OLD',
+    nil,
+  },
+  [23904] = {
+    nil,
+    'Hijo de Thomas',
+  },
+  [23905] = {
+    'Mayor Molina',
+    nil,
+  },
+  [23907] = {
+    'Cañón de Theramore',
+    nil,
+  },
+  [23909] = {
+    'Calabacino siniestro',
+    nil,
+  },
+  [23910] = {
+    'Tenacitas',
+    nil,
+  },
+  [23920] = {
+    'Bomba de Fuego (Zul\'Aman)',
+    nil,
+  },
+  [23928] = {
+    'Tiburón acechante',
+    nil,
+  },
+  [23941] = {
+    'Gavis Rodelagris',
+    nil,
+  },
+  [23944] = {
+    'Esencia de Zul\'jin',
+    nil,
+  },
+  [23948] = {
+    'Aprendiz Tasserel',
+    nil,
+  },
+  [23949] = {
+    'Teniente Nath',
+    nil,
+  },
+  [23950] = {
+    'Teniente Khand',
+    nil,
+  },
+  [23951] = {
+    'Teniente Aden',
+    nil,
+  },
+  [23952] = {
+    'Escoba voladora',
+    nil,
+  },
+  [23966] = {
+    'Escoba mágica',
+    nil,
+  },
+  [23969] = {
+    'Draco Pirocabello',
+    nil,
+  },
+  [23971] = {
+    'Huérfano itinerante',
+    nil,
+  },
+  [23973] = {
+    'Supervisora de huérfanos enmascarada',
+    nil,
+  },
+  [23979] = {
+    'Rana de marisma gigante',
+    nil,
+  },
+  [23988] = {
+    nil,
+    'Representante musical',
+  },
+  [23995] = {
+    nil,
+    'Tabernero',
+  },
+  [24005] = {
+    'Trabajador de la serrería',
+    nil,
+  },
+  [24006] = {
+    'Supervisor Tionn',
+    nil,
+  },
+  [24007] = {
+    'Enviado de la serrería',
+    nil,
+  },
+  [24039] = {
+    'Fantasma hendido',
+    nil,
+  },
+  [24043] = {
+    'Lince Amani',
+    nil,
+  },
+  [24047] = {
+    'Crocolisco Amani',
+    nil,
+  },
+  [24059] = {
+    'Domador de bestias Amani\'shi',
+    nil,
+  },
+  [24064] = {
+    'Cachorro de lince Amani',
+    nil,
+  },
+  [24065] = {
+    'Cuidador Amani\'shi',
+    nil,
+  },
+  [24108] = {
+    'Gran utilidad autogiratoria oscilante',
+    'G.U.A.O.',
+  },
+  [24133] = {
+    'Guía espiritual Tótem Siniestro ancestral',
+    nil,
+  },
+  [24136] = {
+    'Vórtice de plumas',
+    nil,
+  },
+  [24138] = {
+    'Crocolisco Amani domesticado',
+    nil,
+  },
+  [24143] = {
+    'Espíritu del lince',
+    nil,
+  },
+  [24144] = {
+    nil,
+    'Avatar de lince',
+  },
+  [24159] = {
+    'Águila Amani',
+    nil,
+  },
+  [24175] = {
+    'Oteador Amani\'shi',
+    nil,
+  },
+  [24179] = {
+    'Surcavientos Amani\'shi',
+    nil,
+  },
+  [24180] = {
+    'Protector Amani\'shi',
+    nil,
+  },
+  [24187] = {
+    'Columna de Fuego',
+    nil,
+  },
+  [24208] = {
+    '"Pequeño" Logok',
+    'Tabernero',
+  },
+  [24217] = {
+    'Montura de oso Amani',
+    nil,
+  },
+  [24222] = {
+    'Nube ventosa',
+    nil,
+  },
+  [24224] = {
+    'Tótem de relámpagos corrupto',
+    nil,
+  },
+  [24225] = {
+    'Guerrero Amani\'shi',
+    nil,
+  },
+  [24239] = {
+    'Señor aojador Malacrass',
+    nil,
+  },
+  [24242] = {
+    'Ofidiss',
+    nil,
+  },
+  [24245] = {
+    'Acechador de pantano',
+    nil,
+  },
+  [24246] = {
+    'Corazón oscuro',
+    nil,
+  },
+  [24312] = {
+    'Huevo de dracohalcón',
+    nil,
+  },
+  [24320] = {
+    'zzOLDTótem Nova de Fuego',
+    nil,
+  },
+  [24338] = {
+    'Culebra Amani',
+    nil,
+  },
+  [24363] = {
+    'Señor aojador Malacrass',
+    nil,
+  },
+  [24364] = {
+    'Flynn Aguardiente',
+    nil,
+  },
+  [24365] = {
+    'Cadáver de Harrison',
+    nil,
+  },
+  [24366] = {
+    nil,
+    'Maestro de grifos',
+  },
+  [24367] = {
+    'Guardia de las puertas Amani\'shi',
+    nil,
+  },
+  [24369] = {
+    'Comerciante de viento Zhareem',
+    nil,
+  },
+  [24370] = {
+    'Acechador abisal Mah\'duun',
+    nil,
+  },
+  [24372] = {
+    'Barril festivo de la Destilería de Drohn',
+    nil,
+  },
+  [24373] = {
+    'Barril festivo de cerveza vudú de T\'chali',
+    nil,
+  },
+  [24374] = {
+    'Rabioso Amani\'shi',
+    nil,
+  },
+  [24379] = {
+    'Oso de guerra Amani',
+    nil,
+  },
+  [24388] = {
+    'Dientecitos',
+    nil,
+  },
+  [24389] = {
+    'Malaliento',
+    nil,
+  },
+  [24392] = {
+    'Leeni "Sonrisa" Menuda',
+    'Intendente de conquista',
+  },
+  [24393] = {
+    'El Rokk',
+    'Maestro de cocina',
+  },
+  [24394] = {
+    'Dellix Silbapellizco',
+    'Intendente de conquista',
+  },
+  [24395] = {
+    'Zindik Silbapellizco',
+    'Intendente de conquista',
+  },
+  [24396] = {
+    'Rana campera',
+    nil,
+  },
+  [24406] = {
+    'Natarrico',
+    nil,
+  },
+  [24408] = {
+    nil,
+    'Vendedor de alimentos',
+  },
+  [24409] = {
+    nil,
+    'Componentes',
+  },
+  [24410] = {
+    'Imagen de Vazruden el Heraldo',
+    nil,
+  },
+  [24411] = {
+    'Imagen de centurión Mano Destrozada',
+    nil,
+  },
+  [24413] = {
+    'Imagen de Keli\'dan el Ultrajador',
+    nil,
+  },
+  [24414] = {
+    'Imagen de Jefe de Guerra Garrafilada',
+    nil,
+  },
+  [24415] = {
+    'Imagen de mirmidón Colmillo Torcido',
+    nil,
+  },
+  [24416] = {
+    'Grisy Piquillo',
+    'Pinche',
+  },
+  [24419] = {
+    'Imagen de Quagmirran',
+    nil,
+  },
+  [24420] = {
+    'Imagen de la Acechadora Negra',
+    nil,
+  },
+  [24421] = {
+    'Imagen de señor de la guerra Kalithresh',
+    nil,
+  },
+  [24422] = {
+    'Imagen de rey Garra Ikiss',
+    nil,
+  },
+  [24423] = {
+    'Imagen del príncipe-nexo Shaffar',
+    nil,
+  },
+  [24424] = {
+    'Imagen de exarca Maladaar',
+    nil,
+  },
+  [24425] = {
+    'Imagen de Murmullo',
+    nil,
+  },
+  [24426] = {
+    'Imagen de instructora maliciosa',
+    nil,
+  },
+  [24427] = {
+    'Imagen de cazador de Época',
+    nil,
+  },
+  [24428] = {
+    'Imagen de Aeonus',
+    nil,
+  },
+  [24429] = {
+    'Imagen de Señor de la falla',
+    nil,
+  },
+  [24430] = {
+    'Imagen de canalizador Buscasol',
+    nil,
+  },
+  [24431] = {
+    'Imagen de disidente de distorsión',
+    nil,
+  },
+  [24432] = {
+    'Imagen de destructor de Forja de Tempestad',
+    nil,
+  },
+  [24433] = {
+    'Imagen de Pathaleon',
+    nil,
+  },
+  [24434] = {
+    'Imagen de centinela de Arcatraz',
+    nil,
+  },
+  [24435] = {
+    'Imagen de presagista Cieloriss',
+    nil,
+  },
+  [24436] = {
+    nil,
+    'Pinche',
+  },
+  [24437] = {
+    'Ayudante del Consorcio',
+    nil,
+  },
+  [24441] = {
+    'Cadáver de Ashli',
+    nil,
+  },
+  [24442] = {
+    'Cadáver de Tanzar',
+    nil,
+  },
+  [24443] = {
+    'Cadáver de Harkor',
+    nil,
+  },
+  [24444] = {
+    'Cadáver de Kraz',
+    nil,
+  },
+  [24451] = {
+    'Elli Tobera',
+    'Intendente de conquista',
+  },
+  [24452] = {
+    'Paree Tobera',
+    'Intendente de conquista',
+  },
+  [24456] = {
+    'Capitán Taldar Vientocantor',
+    'Espuma de la Luna',
+  },
+  [24457] = {
+    'Capitán O\'Dell',
+    nil,
+  },
+  [24462] = {
+    'Carnero de carreras',
+    nil,
+  },
+  [24463] = {
+    'Carnero de carreras presto',
+    nil,
+  },
+  [24468] = {
+    'Pol Semperámbar',
+    'Aprendiz de carreras de carneros',
+  },
+  [24476] = {
+    'Abisario menor',
+    nil,
+  },
+  [24477] = {
+    'Ladrón de la Hermandad',
+    nil,
+  },
+  [24483] = {
+    'Transformación en rana',
+    nil,
+  },
+  [24484] = {
+    'Juerguista de la Fiesta de la Cerveza',
+    nil,
+  },
+  [24486] = {
+    'Hipogrifo acorazado morado',
+    nil,
+  },
+  [24487] = {
+    'Hipogrifo acorazado marrón',
+    nil,
+  },
+  [24489] = {
+    'Hipogrifo acorazado blanco',
+    nil,
+  },
+  [24490] = {
+    'Hipogrifo de montar azul',
+    nil,
+  },
+  [24491] = {
+    'Guardia de la Muerte Florence',
+    nil,
+  },
+  [24492] = {
+    'Voceador de la Destilería de Drohn',
+    nil,
+  },
+  [24493] = {
+    'Voceador de la Cervecería vudú de T\'chali',
+    nil,
+  },
+  [24495] = {
+    'Blix Chirimbolo',
+    nil,
+  },
+  [24496] = {
+    'Gafas de cerveza de mujer orco',
+    nil,
+  },
+  [24497] = {
+    'Maestro de carneros Rayo',
+    'Maestro de carreras de carneros',
+  },
+  [24501] = {
+    'Aprendiz de la Destilería de Drohn',
+    'Vendedor de cerveza de la Destilería de Drohn',
+  },
+  [24503] = {
+    'Tufillo',
+    nil,
+  },
+  [24504] = {
+    'Criador Amani\'shi',
+    nil,
+  },
+  [24510] = {
+    'Driz Pataplaf',
+    'Aprendiz de carreras de carneros',
+  },
+  [24519] = {
+    'Supervisora de huérfanos disfrazada',
+    nil,
+  },
+  [24520] = {
+    nil,
+    'Intendente de armaduras',
+  },
+  [24522] = {
+    'Equipo de montaje goblin de la Fiesta de la Cerveza',
+    nil,
+  },
+  [24527] = {
+    'Bok Caída Segura',
+    nil,
+  },
+  [24529] = {
+    'Sirviente de vudú',
+    nil,
+  },
+  [24530] = {
+    'Lince mayor Amani',
+    nil,
+  },
+  [24536] = {
+    'Heraldo Hierro Negro',
+    nil,
+  },
+  [24545] = {
+    'Aprendiz Cebatruenos',
+    'Vendedor de cerveza Cebatruenos',
+  },
+  [24549] = {
+    'Tempestad Amani\'shi',
+    nil,
+  },
+  [24552] = {
+    'Tajada',
+    'Mascota de Garaxxas',
+  },
+  [24554] = {
+    'Eramas Llamarada Brillante',
+    nil,
+  },
+  [24557] = {
+    'Kajani Golpe de la Noche',
+    nil,
+  },
+  [24558] = {
+    'Ellrys Sacronoche',
+    nil,
+  },
+  [24559] = {
+    'Señor de la guerra Salaris',
+    nil,
+  },
+  [24560] = {
+    'Sacerdotisa Delrissa',
+    nil,
+  },
+  [24631] = {
+    'Juerguista enano borracho',
+    nil,
+  },
+  [24632] = {
+    'Juerguista goblin borracho',
+    nil,
+  },
+  [24649] = {
+    'Tótem de elemental de Tierra Tábido',
+    nil,
+  },
+  [24650] = {
+    'Elemental de Tierra Tábido',
+    nil,
+  },
+  [24653] = {
+    'Máquina voladora',
+    nil,
+  },
+  [24654] = {
+    'Máquina voladora turboalimentada',
+    nil,
+  },
+  [24656] = {
+    'Fizel',
+    nil,
+  },
+  [24657] = {
+    'Glodrak Guasa',
+    nil,
+  },
+  [24664] = {
+    'Kael\'thas Caminante del Sol',
+    'Señor de los elfos de sangre',
+  },
+  [24667] = {
+    'Sargento Tronacuerno',
+    'Intendente de armas',
+  },
+  [24668] = {
+    nil,
+    'Intendente de armaduras',
+  },
+  [24670] = {
+    'Teniente Tristia',
+    'Intendente de armaduras',
+  },
+  [24671] = {
+    'Capitán O\'Neal',
+    'Intendente de armas',
+  },
+  [24672] = {
+    'Capitán Martillo de Endecha',
+    'Intendente de armaduras',
+  },
+  [24674] = {
+    'Fénix',
+    nil,
+  },
+  [24675] = {
+    'Huevo de fénix',
+    nil,
+  },
+  [24683] = {
+    'Guardia mago Filosol',
+    nil,
+  },
+  [24684] = {
+    'Caballero de sangre Filosol',
+    nil,
+  },
+  [24685] = {
+    'Magister Filosol',
+    nil,
+  },
+  [24686] = {
+    'Brujo Filosol',
+    nil,
+  },
+  [24687] = {
+    'Médico Filosol',
+    nil,
+  },
+  [24688] = {
+    'Vagador desdichado',
+    nil,
+  },
+  [24689] = {
+    'Truhán desdichado',
+    nil,
+  },
+  [24690] = {
+    'Cáscara desdichada',
+    nil,
+  },
+  [24696] = {
+    'Bruja Cicatriz Espiral',
+    nil,
+  },
+  [24697] = {
+    'Hermana del tormento',
+    nil,
+  },
+  [24698] = {
+    'Contrabandista de El Etereum',
+    nil,
+  },
+  [24708] = {
+    'Esfera Arcana',
+    nil,
+  },
+  [24710] = {
+    'Ipfelkofer Barril de Hierro',
+    'Organizador de la Fiesta de la Cerveza',
+  },
+  [24711] = {
+    'Espitador Barritimo',
+    'Organizador de la Fiesta de la Cerveza',
+  },
+  [24715] = {
+    'Oveja muy explosiva',
+    nil,
+  },
+  [24722] = {
+    'Cristal vil',
+    nil,
+  },
+  [24723] = {
+    'Selin Corazón de Fuego',
+    nil,
+  },
+  [24728] = {
+    'Penumbra',
+    'Mascota de Caylee',
+  },
+  [24740] = {
+    'Gudi',
+    'Mascota de Elenna Edune',
+  },
+  [24743] = {
+    'Draco abisal despiadado',
+    nil,
+  },
+  [24745] = {
+    'Energía pura',
+    nil,
+  },
+  [24761] = {
+    'Vermis de escamas brillantes',
+    nil,
+  },
+  [24762] = {
+    'Vigilante Filosol',
+    nil,
+  },
+  [24777] = {
+    'Centinela Filosol',
+    nil,
+  },
+  [24780] = {
+    'Robot de reparación de campo 110G',
+    nil,
+  },
+  [24781] = {
+    'Energía abisal',
+    nil,
+  },
+  [24782] = {
+    'Morbent vil debilitado',
+    nil,
+  },
+  [24792] = {
+    'Muñeco de entrenamiento avanzado',
+    nil,
+  },
+  [24805] = {
+    'Elekk de guerra',
+    nil,
+  },
+  [24808] = {
+    'Centinela partido',
+    nil,
+  },
+  [24813] = {
+    'Exarca Larethor',
+    nil,
+  },
+  [24815] = {
+    'Diablillo Filosol',
+    nil,
+  },
+  [24818] = {
+    'Capataz Yunque Colérico',
+    nil,
+  },
+  [24819] = {
+    'Déspota Yunque Colérico',
+    nil,
+  },
+  [24830] = {
+    'Saqueador Grutacanto',
+    nil,
+  },
+  [24833] = {
+    'Capitán "Alijo" Torgoley',
+    'El Lady Mehley',
+  },
+  [24834] = {
+    'Jefa de galera Grace',
+    'El Lady Mehley',
+  },
+  [24835] = {
+    'Contramaestre Kowalski',
+    'El Lady Mehley',
+  },
+  [24836] = {
+    'Abe el mozo de camarote',
+    'El Lady Mehley',
+  },
+  [24837] = {
+    'Navegante Mehran',
+    'El Lady Mehley',
+  },
+  [24838] = {
+    'Marinero Henders',
+    'El Lady Mehley',
+  },
+  [24839] = {
+    'Marinero Wicks',
+    'El Lady Mehley',
+  },
+  [24840] = {
+    'Marinera Vines',
+    'El Lady Mehley',
+  },
+  [24841] = {
+    'Marino Halters',
+    nil,
+  },
+  [24842] = {
+    'Marina Anderson',
+    nil,
+  },
+  [24843] = {
+    'Ingeniero Combs',
+    'El Lady Mehley',
+  },
+  [24851] = {
+    'Kiz Voltereta',
+    'Maestro de vuelo',
+  },
+  [24854] = {
+    'Imagen de hermana del tormento',
+    nil,
+  },
+  [24855] = {
+    'Imagen de Kael\'thas Caminante del Sol',
+    'Señor de los elfos de sangre',
+  },
+  [24857] = {
+    nil,
+    'Señor de los elfos de sangre',
+  },
+  [24858] = {
+    'Águila planeadora',
+    nil,
+  },
+  [24860] = {
+    'Pirata Defias, femenino',
+    nil,
+  },
+  [24867] = {
+    'Combatiente enemigo de Halaa',
+    nil,
+  },
+  [24868] = {
+    'Niobe Chisporroteo',
+    'Instructora de ingeniería',
+  },
+  [24885] = {
+    'Exorcista Sullivan',
+    nil,
+  },
+  [24886] = {
+    'Exorcista Vaisha',
+    nil,
+  },
+  [24892] = {
+    'Sathrovarr el Corruptor',
+    nil,
+  },
+  [24905] = {
+    nil,
+    'Maestra de establos',
+  },
+  [24906] = {
+    'Reno montado volador',
+    nil,
+  },
+  [24916] = {
+    'Centella viva',
+    nil,
+  },
+  [24917] = {
+    'Vermis de fase',
+    nil,
+  },
+  [24918] = {
+    'Iniciado sangrevil',
+    nil,
+  },
+  [24919] = {
+    'Heraldo de cólera',
+    nil,
+  },
+  [24920] = {
+    'Despellejador Rajaespina',
+    nil,
+  },
+  [24922] = {
+    'Devastador Rajaespina',
+    nil,
+  },
+  [24923] = {
+    'Canalizador Sol Devastado',
+    nil,
+  },
+  [24924] = {
+    'Capitán del cielo Bombazo',
+    'El Águila de Hierro',
+  },
+  [24926] = {
+    'Oficial jefe Tornilatón',
+    'El Águila de Hierro',
+  },
+  [24927] = {
+    'Navegante Xiribita',
+    'El Águila de Hierro',
+  },
+  [24929] = {
+    'Tripulante Cable Cruzado',
+    'El Águila de Hierro',
+  },
+  [24930] = {
+    'Tripulante Tornillo Suelto',
+    'El Águila de Hierro',
+  },
+  [24931] = {
+    'Tripulante Llave Astuta',
+    'El Águila de Hierro',
+  },
+  [24932] = {
+    'Exarca Nasuun',
+    nil,
+  },
+  [24933] = {
+    'Guardia terrorífico suspendido',
+    nil,
+  },
+  [24934] = {
+    'Aperitivi-mática IV',
+    nil,
+  },
+  [24938] = {
+    'Tirador Sol Devastado',
+    nil,
+  },
+  [24955] = {
+    'Sangrevil demacrado',
+    nil,
+  },
+  [24958] = {
+    'Centella viva inestable',
+    nil,
+  },
+  [24960] = {
+    'Devorador desdichado',
+    nil,
+  },
+  [24961] = {
+    'Falla de sagrario',
+    nil,
+  },
+  [24962] = {
+    'Guardia asesinado',
+    nil,
+  },
+  [24964] = {
+    'Explorador Sol Devastado',
+    nil,
+  },
+  [24965] = {
+    'Vindicadora Xayann',
+    nil,
+  },
+  [24966] = {
+    'Maligno desdichado',
+    nil,
+  },
+  [24967] = {
+    'Capitán Theris Albahogar',
+    nil,
+  },
+  [24968] = {
+    'Robot cohete de cuerda azul',
+    nil,
+  },
+  [24969] = {
+    'Mecanoman',
+    nil,
+  },
+  [24970] = {
+    'Mecanojuguete azul de batalla',
+    nil,
+  },
+  [24971] = {
+    'Mecanojuguete rojo pendenciero',
+    nil,
+  },
+  [24972] = {
+    'Avizor errático',
+    nil,
+  },
+  [24974] = {
+    'Liza Cuchiflix',
+    'Maestra de establos',
+  },
+  [24975] = {
+    nil,
+    'Alquimista',
+  },
+  [24976] = {
+    'Caballero de sangre Hojalba',
+    nil,
+  },
+  [24977] = {
+    'Distorsi',
+    'Mascota de Liza',
+  },
+  [24978] = {
+    'Invocador Hojalba',
+    nil,
+  },
+  [24979] = {
+    'Tirador Hojalba',
+    nil,
+  },
+  [24980] = {
+    'Resguardo de cristal',
+    nil,
+  },
+  [24981] = {
+    'Avizor transformado',
+    nil,
+  },
+  [24982] = {
+    'Sra. Frascotaur',
+    'Compañera de Frascotaur',
+  },
+  [24984] = {
+    'Brujo supremo Malbisal de Navidad',
+    nil,
+  },
+  [24985] = {
+    'Maestro mayor Vorpil de Navidad',
+    nil,
+  },
+  [24986] = {
+    'Exarca Maladaar de Navidad',
+    nil,
+  },
+  [24987] = {
+    'Capitán Skarloc de Navidad',
+    nil,
+  },
+  [24988] = {
+    'Abisálica Sepethrea de Navidad',
+    nil,
+  },
+  [24989] = {
+    'Jebediah MacSalsafloja',
+    'Hermanos MacSalsafloja',
+  },
+  [24990] = {
+    'Gran botánico Freywinn de Navidad',
+    nil,
+  },
+  [24993] = {
+    'Jefa de galera Mariss',
+    'Espuma de la Luna',
+  },
+  [24994] = {
+    'Avizor Sol Devastado',
+    nil,
+  },
+  [24995] = {
+    'Mercader Fallel Mirada Estelar',
+    'Espuma de la Luna',
+  },
+  [24996] = {
+    'Marina Filosusurro',
+    'Espuma de la Luna',
+  },
+  [24997] = {
+    'Marina Estrella Presta',
+    'Espuma de la Luna',
+  },
+  [24998] = {
+    'Marina Vista Lejana',
+    'Espuma de la Luna',
+  },
+  [24999] = {
+    'Portavoz de ira',
+    nil,
+  },
+  [25000] = {
+    'Criatura del abismo',
+    nil,
+  },
+  [25001] = {
+    'Caminallamas abismal',
+    nil,
+  },
+  [25002] = {
+    'Helión desatado',
+    nil,
+  },
+  [25003] = {
+    'Emisario del Odio',
+    nil,
+  },
+  [25004] = {
+    'Emisario de la Desesperación',
+    nil,
+  },
+  [25005] = {
+    'Emisario del Terror',
+    nil,
+  },
+  [25007] = {
+    'Marina Brumapar',
+    'Espuma de la Luna',
+  },
+  [25008] = {
+    'Caminallamas abismal (Display)',
+    nil,
+  },
+  [25009] = {
+    'Capitana Angelina Soluna',
+    'El Valentía',
+  },
+  [25010] = {
+    'Ingeniero Rodela Brillante',
+    'El Valentía',
+  },
+  [25011] = {
+    'Contramaestre Canto de las Olas',
+    'El Valentía',
+  },
+  [25012] = {
+    'Jefe de galera Gaders',
+    'El Valentía',
+  },
+  [25013] = {
+    'Centinela Hierba Fresca',
+    nil,
+  },
+  [25014] = {
+    'Centinela Rocío Invernal',
+    nil,
+  },
+  [25015] = {
+    'Navegante Landerson',
+    'El Valentía',
+  },
+  [25016] = {
+    'Marinero Wills',
+    'El Valentía',
+  },
+  [25017] = {
+    'Marinera Ferfolc',
+    'El Valentía',
+  },
+  [25018] = {
+    'Marinera Talón de Piedra',
+    'El Valentía',
+  },
+  [25019] = {
+    'Mercader Felegunne',
+    'Barco, elfo de la noche (Ferry Plumaluna)',
+  },
+  [25020] = {
+    'Jefa de galera Alunwea',
+    'Barco, elfo de la noche (Ferry Plumaluna)',
+  },
+  [25021] = {
+    'Marina Filoluna',
+    'Barco, elfo de la noche (Ferry Plumaluna)',
+  },
+  [25022] = {
+    'Marina Estela Sosegada',
+    'Barco, elfo de la noche (Ferry Plumaluna)',
+  },
+  [25023] = {
+    'Marina Guardia Eterna',
+    'Barco, elfo de la noche (Ferry Plumaluna)',
+  },
+  [25024] = {
+    'Marina Dulce Cántico',
+    'Barco, elfo de la noche (Ferry Plumaluna)',
+  },
+  [25025] = {
+    'Capitán Idrilae',
+    'Barco, elfo de la noche (Ferry Plumaluna)',
+  },
+  [25027] = {
+    'Necrófago demenciado',
+    nil,
+  },
+  [25028] = {
+    'Devastador esquelético',
+    nil,
+  },
+  [25030] = {
+    'Déspota de cólera',
+    nil,
+  },
+  [25031] = {
+    'Señor supremo del foso',
+    nil,
+  },
+  [25032] = {
+    'Eldara Correalba',
+    'Intendente Sol Devastado',
+  },
+  [25033] = {
+    'Hechicero eredar',
+    nil,
+  },
+  [25034] = {
+    'Proveedor Portanuus',
+    'Suministros comerciales',
+  },
+  [25035] = {
+    'Tyrael Besollama',
+    'Pertrechos',
+  },
+  [25036] = {
+    'Cuidadora Inaara',
+    'Tabernero',
+  },
+  [25037] = {
+    'Seraphina Corasangre',
+    'Maestra de establos',
+  },
+  [25038] = {
+    'Brumavil',
+    nil,
+  },
+  [25039] = {
+    nil,
+    'Vendedor de componentes',
+  },
+  [25040] = {
+    'Elemental de agua verde',
+    nil,
+  },
+  [25041] = {
+    'Visual de Brumavil',
+    nil,
+  },
+  [25043] = {
+    'Sereth Portaocaso',
+    'Proveedora de veneno',
+  },
+  [25045] = {
+    'Centinela',
+    'Mascota de Seraphina',
+  },
+  [25046] = {
+    'Herrera Hauthaa',
+    'Armas y forjado de armaduras',
+  },
+  [25047] = {
+    'Hambriento desdichado',
+    nil,
+  },
+  [25049] = {
+    'Destrero Estrella del Alba',
+    nil,
+  },
+  [25050] = {
+    'Capitán Galind Hoja del Viento',
+    'La bendición de Elune',
+  },
+  [25051] = {
+    'Mercader Caminaescarcha',
+    'La bendición de Elune',
+  },
+  [25052] = {
+    'Jefa de galera Halumvorea',
+    'La bendición de Elune',
+  },
+  [25053] = {
+    'Marina Buscalongo',
+    'La bendición de Elune',
+  },
+  [25054] = {
+    'Marina Fina Estrella',
+    'La bendición de Elune',
+  },
+  [25055] = {
+    'Marina Noche Escarcha',
+    'La bendición de Elune',
+  },
+  [25056] = {
+    'Marina Desliza Calma',
+    'La bendición de Elune',
+  },
+  [25057] = {
+    'Maga de batalla Arynna',
+    nil,
+  },
+  [25058] = {
+    'Pelusa',
+    nil,
+  },
+  [25059] = {
+    'Ayren Rompenubes',
+    nil,
+  },
+  [25060] = {
+    'Mirmidón Espina Siniestra',
+    nil,
+  },
+  [25061] = {
+    'Presagista Inuuro',
+    nil,
+  },
+  [25062] = {
+    'Esporiélago diminuto',
+    nil,
+  },
+  [25063] = {
+    'Jinete de halcones Hojalba',
+    nil,
+  },
+  [25068] = {
+    'Demonio de la Legión Ardiente',
+    nil,
+  },
+  [25070] = {
+    'Oficial jefe Tornillos de Cobre',
+    'El Invocador del Trueno',
+  },
+  [25071] = {
+    'Tripulante Martillo Oxidado',
+    'El Invocador del Trueno',
+  },
+  [25072] = {
+    'Tripulante Arreglo Veloz',
+    'El Invocador del Trueno',
+  },
+  [25073] = {
+    'Sirena Espina Siniestra',
+    nil,
+  },
+  [25074] = {
+    'Tripulante Chispa Vuelo',
+    'El Invocador del Trueno',
+  },
+  [25075] = {
+    'Mandos de zepelín',
+    nil,
+  },
+  [25076] = {
+    'Navegante Buentiempo',
+    'El Invocador del Trueno',
+  },
+  [25077] = {
+    'Capitán del cielo Pateanubes',
+    'El Invocador del Trueno',
+  },
+  [25078] = {
+    'Capitán Krick Cánula',
+    'La Fantasía de la Doncella',
+  },
+  [25079] = {
+    'Guardia de la Muerte Fowles',
+    'El Invocador del Trueno',
+  },
+  [25080] = {
+    'Bruto Umgor',
+    nil,
+  },
+  [25081] = {
+    'Bruta Ounda',
+    nil,
+  },
+  [25082] = {
+    'Ingeniero Ejepar',
+    'La Fantasía de la Doncella',
+  },
+  [25083] = {
+    'Guardia de la Muerte Lawson',
+    'El Invocador del Trueno',
+  },
+  [25084] = {
+    'Esclavo Branquia Verde',
+    nil,
+  },
+  [25085] = {
+    'Esclavo Branquia Verde liberado',
+    nil,
+  },
+  [25087] = {
+    'Reservista Hojalba',
+    nil,
+  },
+  [25088] = {
+    'Capitana Valindria',
+    nil,
+  },
+  [25089] = {
+    'Jefe de galera Tripacero',
+    'La Fantasía de la Doncella',
+  },
+  [25093] = {
+    'Contramaestre Masker',
+    'La Fantasía de la Doncella',
+  },
+  [25094] = {
+    'Navegante Tah\'re',
+    'La Fantasía de la Doncella',
+  },
+  [25095] = {
+    'Tripulante Salto Presión',
+    'La Fantasía de la Doncella',
+  },
+  [25096] = {
+    'Tripulante Giro Engranaje',
+    'La Fantasía de la Doncella',
+  },
+  [25097] = {
+    'Tripulante Martillo Pumba',
+    'La Fantasía de la Doncella',
+  },
+  [25098] = {
+    'Bosun Tronacuerno',
+    'La Fantasía de la Doncella',
+  },
+  [25099] = {
+    nil,
+    'Instructora de ingeniería',
+  },
+  [25100] = {
+    'Oficial jefe Ala Martillo',
+    'La Princesa Púrpura',
+  },
+  [25101] = {
+    'Tripulante Cortatubo',
+    'La Princesa Púrpura',
+  },
+  [25102] = {
+    'Tripulante Giro Eje',
+    'La Princesa Púrpura',
+  },
+  [25103] = {
+    'Tripulante Perno Lustre',
+    'La Princesa Púrpura',
+  },
+  [25104] = {
+    'Navegante Escotilla',
+    'La Princesa Púrpura',
+  },
+  [25105] = {
+    'Capitana del cielo Pinza Cable',
+    'La Princesa Púrpura',
+  },
+  [25106] = {
+    'Vigía Du\'una',
+    nil,
+  },
+  [25107] = {
+    'Vigía Umjin',
+    nil,
+  },
+  [25108] = {
+    'Vindicador Kaalan',
+    nil,
+  },
+  [25109] = {
+    'Gallina cohete',
+    nil,
+  },
+  [25110] = {
+    'Cometa de dragón',
+    nil,
+  },
+  [25111] = {
+    'Tesoro',
+    'La Fantasía de la Doncella',
+  },
+  [25112] = {
+    'Anacoreta Ayuri',
+    nil,
+  },
+  [25113] = {
+    'Serpiente astuta',
+    nil,
+  },
+  [25115] = {
+    'Guerrera Sol Devastado',
+    nil,
+  },
+  [25132] = {
+    'Oteador Filosol',
+    nil,
+  },
+  [25133] = {
+    'Astromante Darnarian',
+    nil,
+  },
+  [25134] = {
+    'Practicante Sol Devastado',
+    nil,
+  },
+  [25135] = {
+    'Practicante Sol Devastado',
+    nil,
+  },
+  [25136] = {
+    'Practicante Sol Devastado',
+    nil,
+  },
+  [25137] = {
+    'Practicante Sol Devastado',
+    nil,
+  },
+  [25138] = {
+    'Capitán Dranarus',
+    nil,
+  },
+  [25141] = {
+    'Comandante Steele',
+    nil,
+  },
+  [25142] = {
+    'Tirador Sol Devastado',
+    nil,
+  },
+  [25143] = {
+    'Veterano Sol Devastado',
+    nil,
+  },
+  [25144] = {
+    'Bombardero Sol Devastado',
+    nil,
+  },
+  [25145] = {
+    'Guardaespaldas de Budd',
+    nil,
+  },
+  [25146] = {
+    'Cerdo de oro',
+    nil,
+  },
+  [25147] = {
+    'Cerdo de plata',
+    nil,
+  },
+  [25148] = {
+    nil,
+    'Los Tauren Chieftains',
+  },
+  [25149] = {
+    'Jefe Pieles de Trueno',
+    'Los Tauren Chieftains',
+  },
+  [25150] = {
+    nil,
+    'Los Tauren Chieftains',
+  },
+  [25151] = {
+    nil,
+    'Los Tauren Chieftains',
+  },
+  [25152] = {
+    nil,
+    'Los Tauren Chieftains',
+  },
+  [25153] = {
+    'Magi Sol Devastado',
+    nil,
+  },
+  [25155] = {
+    'Clérigo Sol Devastado',
+    nil,
+  },
+  [25161] = {
+    'Dracohalcón Hojalba',
+    nil,
+  },
+  [25162] = {
+    'Sargento de maniobras Bahduum',
+    nil,
+  },
+  [25163] = {
+    'Anacoreta Kairthos',
+    nil,
+  },
+  [25164] = {
+    'Recluta Sol Devastado',
+    nil,
+  },
+  [25166] = {
+    'Bruja suprema Alythess',
+    nil,
+  },
+  [25169] = {
+    'Archimago Ne\'thul',
+    nil,
+  },
+  [25170] = {
+    'Archimago Sol Devastado',
+    nil,
+  },
+  [25171] = {
+    'Acechador invisible (escala x 0.5)',
+    nil,
+  },
+  [25175] = {
+    'Dracohalcón Sol Devastado',
+    nil,
+  },
+  [25176] = {
+    'Grikkin Muellecobre',
+    'Intendente de conquista',
+  },
+  [25177] = {
+    'Evee Muellecobre',
+    'Intendente de conquista',
+  },
+  [25178] = {
+    'Ecton Cabriolatón',
+    'Intendente de conquista',
+  },
+  [25179] = {
+    'Frixee Cabriolatón',
+    'Intendente de conquista',
+  },
+  [25180] = {
+    'Carnero de guerra negro veloz',
+    nil,
+  },
+  [25181] = {
+    'Lobo de guerra negro veloz',
+    nil,
+  },
+  [25182] = {
+    'Draco Ala Abisal esclavizado de Corlok',
+    nil,
+  },
+  [25183] = {
+    'Grifo Martillo Salvaje (morado)',
+    nil,
+  },
+  [25184] = {
+    'Montura de comandante del aire Ichman',
+    nil,
+  },
+  [25185] = {
+    'Dracoleón de Quijada Sucia',
+    nil,
+  },
+  [25186] = {
+    'Montura de Kor\'kron',
+    nil,
+  },
+  [25187] = {
+    'Montura de Mulverick',
+    nil,
+  },
+  [25188] = {
+    'Montura de Trope',
+    nil,
+  },
+  [25190] = {
+    'Caballo de guerra de Skarloc',
+    nil,
+  },
+  [25193] = {
+    'Draco abismal de Ruul',
+    nil,
+  },
+  [25195] = {
+    'Tirador Bova',
+    nil,
+  },
+  [25196] = {
+    'Arquero Delvinar',
+    nil,
+  },
+  [25202] = {
+    'Arcanista Myndimendez',
+    nil,
+  },
+  [25214] = {
+    'Imagen de sombra',
+    nil,
+  },
+  [25223] = {
+    'Lord Solanar Sangre Colérica',
+    nil,
+  },
+  [25225] = {
+    'Muñeco-diana de prácticas',
+    nil,
+  },
+  [25236] = {
+    'Dracohalcón desatado',
+    nil,
+  },
+  [25246] = {
+    nil,
+    'Matriarca Caballero de sangre',
+  },
+  [25265] = {
+    'Vapor demoníaco',
+    nil,
+  },
+  [25268] = {
+    'Muerto implacable',
+    nil,
+  },
+  [25305] = {
+    'Llamas bailarinas',
+    nil,
+  },
+  [25315] = {
+    nil,
+    'El Falsario',
+  },
+  [25324] = {
+    'Guía del Anillo de la Tierra',
+    nil,
+  },
+  [25325] = {
+    'Forma de lobo guía del Anillo de la Tierra',
+    nil,
+  },
+  [25344] = {
+    'Vidente Cragh Colmigrima',
+    nil,
+  },
+  [25345] = {
+    'Disfraz de Horda del Anillo de la Tierra',
+    nil,
+  },
+  [25346] = {
+    'Espía Crepuscular Viktor',
+    'Martillo Crepuscular',
+  },
+  [25347] = {
+    'Visión de Nobundo',
+    nil,
+  },
+  [25348] = {
+    'Visión de Thrall',
+    nil,
+  },
+  [25354] = {
+    'Azotador de carne mutado',
+    nil,
+  },
+  [25360] = {
+    'Disfraz de Alianza del Anillo de la Tierra',
+    nil,
+  },
+  [25363] = {
+    'Cabalista Filosol',
+    nil,
+  },
+  [25367] = {
+    'Archimago Filosol',
+    nil,
+  },
+  [25368] = {
+    'Destripador Filosol',
+    nil,
+  },
+  [25369] = {
+    'Vindicador Filosol',
+    nil,
+  },
+  [25370] = {
+    'Sacerdote del anochecer Filosol',
+    nil,
+  },
+  [25371] = {
+    'Sacerdote del amanecer Filosol',
+    nil,
+  },
+  [25372] = {
+    'Explorador Filosol',
+    nil,
+  },
+  [25373] = {
+    'Vinculadora de almas Espada Sombría',
+    nil,
+  },
+  [25483] = {
+    'Maligno de maná Espada Sombría',
+    nil,
+  },
+  [25484] = {
+    'Asesina Espada Sombría',
+    nil,
+  },
+  [25485] = {
+    'Libramorte Espada Sombría',
+    nil,
+  },
+  [25486] = {
+    'Vencedor Espada Sombría',
+    nil,
+  },
+  [25499] = {
+    'PattyMack: La Muñeco',
+    nil,
+  },
+  [25500] = {
+    'PattyMack - Flying Dummy',
+    nil,
+  },
+  [25502] = {
+    'Orbe escudo',
+    nil,
+  },
+  [25506] = {
+    'Modelador de vida Espada Sombría',
+    nil,
+  },
+  [25507] = {
+    'Protector Filosol',
+    nil,
+  },
+  [25508] = {
+    'Guardián Espada Sombría',
+    nil,
+  },
+  [25509] = {
+    'Sacerdotisa del Tormento',
+    nil,
+  },
+  [25515] = {
+    'Malabarista de fuego del Festival',
+    nil,
+  },
+  [25518] = {
+    'Mariposa',
+    nil,
+  },
+  [25564] = {
+    nil,
+    'Mascota de Garaxxas',
+  },
+  [25580] = {
+    'Viejo Barlo',
+    'Maestro de pesca',
+  },
+  [25588] = {
+    'Mano del Falsario',
+    nil,
+  },
+  [25591] = {
+    'Castigador',
+    nil,
+  },
+  [25592] = {
+    'Destructor Fuego apocalíptico',
+    nil,
+  },
+  [25593] = {
+    'Guardia del apocalipsis',
+    nil,
+  },
+  [25595] = {
+    'Observador del caos',
+    nil,
+  },
+  [25597] = {
+    'Mago del olvido',
+    nil,
+  },
+  [25598] = {
+    'Maligno de fuego vil volátil',
+    nil,
+  },
+  [25599] = {
+    'Can cataclísmico',
+    nil,
+  },
+  [25603] = {
+    'Portal de fuego vil',
+    nil,
+  },
+  [25632] = {
+    'Vindicador Moorba',
+    nil,
+  },
+  [25633] = {
+    'Arcanista Evandor',
+    'Suministros de componentes',
+  },
+  [25634] = {
+    'Herrera Vedral',
+    'Reparación de equipos',
+  },
+  [25638] = {
+    'Capitana Selana',
+    nil,
+  },
+  [25639] = {
+    'Anacoreta Elbadon',
+    nil,
+  },
+  [25644] = {
+    'Neófita Narama',
+    nil,
+  },
+  [25653] = {
+    'Poder del Vuelo Azul',
+    nil,
+  },
+  [25661] = {
+    'Soldado Sol Devastado',
+    nil,
+  },
+  [25662] = {
+    'Arquero Sol Devastado',
+    nil,
+  },
+  [25663] = {
+    'Mago Sol Devastado',
+    nil,
+  },
+  [25695] = {
+    'Draco rojo',
+    nil,
+  },
+  [25697] = {
+    'Luma Cielomater',
+    nil,
+  },
+  [25703] = {
+    'Nube de muerte de Brutallus',
+    nil,
+  },
+  [25706] = {
+    'Agostizo abrasador',
+    nil,
+  },
+  [25708] = {
+    'Reflejo siniestro',
+    nil,
+  },
+  [25710] = {
+    'Numa Nubesoror',
+    nil,
+  },
+  [25731] = {
+    'Espíritu de lobo Tótem Siniestro ancestral',
+    nil,
+  },
+  [25735] = {
+    'Objetivo de armagedón',
+    nil,
+  },
+  [25740] = {
+    nil,
+    'El Señor de la Escarcha',
+  },
+  [25744] = {
+    'Maligno oscuro',
+    nil,
+  },
+  [25754] = {
+    'Clamallamas del Anillo de la Tierra',
+    nil,
+  },
+  [25755] = {
+    'Ahunita granizo',
+    nil,
+  },
+  [25756] = {
+    'Ahunita ola de frío',
+    nil,
+  },
+  [25757] = {
+    'Ahunita Viento Helado',
+    nil,
+  },
+  [25770] = {
+    'Objetivo de portal M\'uru',
+    nil,
+  },
+  [25772] = {
+    'Centinela del vacío',
+    nil,
+  },
+  [25782] = {
+    'Invocador de centinela del vacío',
+    nil,
+  },
+  [25795] = {
+    'Reino normal',
+    nil,
+  },
+  [25796] = {
+    'Reino espectral',
+    nil,
+  },
+  [25798] = {
+    'Rabiosa Espada Sombría',
+    nil,
+  },
+  [25799] = {
+    'Maga de furia Espada Sombría',
+    nil,
+  },
+  [25824] = {
+    'Engendro de vacío',
+    nil,
+  },
+  [25837] = {
+    'Comandante Espada Sombría',
+    nil,
+  },
+  [25851] = {
+    'Maligno volátil',
+    nil,
+  },
+  [25855] = {
+    'Singularidad',
+    nil,
+  },
+  [25860] = {
+    'Infernal llameante',
+    nil,
+  },
+  [25863] = {
+    'Jurafuegos Crepuscular',
+    'Martillo Crepuscular',
+  },
+  [25864] = {
+    'Destripador guardia vil',
+    nil,
+  },
+  [25865] = {
+    'Núcleo helado',
+    nil,
+  },
+  [25866] = {
+    'Guardia de llamas Crepuscular',
+    'Martillo Crepuscular',
+  },
+  [25867] = {
+    'Dracohalcón Filosol',
+    nil,
+  },
+  [25879] = {
+    'Oscuridad',
+    nil,
+  },
+  [25882] = {
+    'Perturbación multifase',
+    nil,
+  },
+  [25883] = {
+    'Celador de las llamas de Vallefresno',
+    nil,
+  },
+  [25884] = {
+    'Vigilante de las llamas de Vallefresno',
+    nil,
+  },
+  [25885] = {
+    'Willy Papasfritas',
+    'Inventor gnomo',
+  },
+  [25886] = {
+    'Rata del día del Juicio Final',
+    nil,
+  },
+  [25887] = {
+    'Celador de las llamas de Arathi',
+    nil,
+  },
+  [25888] = {
+    'Celador de las llamas de Isla Bruma Azur',
+    nil,
+  },
+  [25889] = {
+    'Celador de las llamas de Filospada',
+    nil,
+  },
+  [25890] = {
+    'Celadora de las llamas de Las Tierras Devastadas',
+    nil,
+  },
+  [25891] = {
+    'Celador de las llamas de Isla Bruma de Sangre',
+    nil,
+  },
+  [25892] = {
+    'Celador de llamas de Las Estepas Ardientes',
+    nil,
+  },
+  [25893] = {
+    'Celador de las llamas de Costa Oscura',
+    nil,
+  },
+  [25894] = {
+    'Celador de las llamas de Desolace',
+    nil,
+  },
+  [25895] = {
+    'Celador de las llamas de Dun Morogh',
+    nil,
+  },
+  [25896] = {
+    'Celador de las llamas de Bosque del Ocaso',
+    nil,
+  },
+  [25897] = {
+    'Celadora de las llamas de Marjal Revolcafango',
+    nil,
+  },
+  [25898] = {
+    'Celadora de las llamas del Bosque de Elwynn',
+    nil,
+  },
+  [25899] = {
+    'Celador de las llamas de Feralas',
+    nil,
+  },
+  [25900] = {
+    'Celador de las llamas de Península del Fuego Infernal',
+    nil,
+  },
+  [25901] = {
+    'Celadora de las llamas de Trabalomas',
+    nil,
+  },
+  [25902] = {
+    'Celador de las llamas de Loch Modan',
+    nil,
+  },
+  [25903] = {
+    'Celador de las llamas de Nagrand',
+    nil,
+  },
+  [25904] = {
+    'Celador de las llamas de Crestagrana',
+    nil,
+  },
+  [25905] = {
+    'Celador de las llamas de Valle Sombraluna',
+    nil,
+  },
+  [25906] = {
+    'Celador de las llamas de Teldrassil',
+    nil,
+  },
+  [25907] = {
+    'Celadora de las llamas de Bosque de Terokkar',
+    nil,
+  },
+  [25908] = {
+    'Celador de las llamas de Tierras del Interior',
+    nil,
+  },
+  [25909] = {
+    'Celadora de las llamas de Tierras de la Peste del Oeste',
+    nil,
+  },
+  [25910] = {
+    'Celador de las llamas de los Páramos de Poniente',
+    nil,
+  },
+  [25911] = {
+    'Celadora de las llamas de Los Humedales',
+    nil,
+  },
+  [25912] = {
+    'Celador de las llamas de Marisma de Zangar',
+    nil,
+  },
+  [25913] = {
+    'Celador de las llamas de Tormenta Abisal',
+    nil,
+  },
+  [25914] = {
+    'Celador de las llamas de Silithus',
+    nil,
+  },
+  [25915] = {
+    'Celador de las llamas de El Cabo de Tuercespina',
+    nil,
+  },
+  [25916] = {
+    'Celador de las llamas de Tanaris',
+    nil,
+  },
+  [25917] = {
+    'Celador de las llamas de Cuna del Invierno',
+    nil,
+  },
+  [25918] = {
+    'Vigilante de las llamas de Tormenta Abisal',
+    nil,
+  },
+  [25919] = {
+    'Vigilante de las llamas de Silithus',
+    nil,
+  },
+  [25920] = {
+    'Vigilante de las llamas de El Cabo de Tuercespina',
+    nil,
+  },
+  [25921] = {
+    'Vigilante de las llamas de Tanaris',
+    nil,
+  },
+  [25922] = {
+    'Vigilante de las llamas de Cuna del Invierno',
+    nil,
+  },
+  [25923] = {
+    'Vigilante de las llamas de Arathi',
+    nil,
+  },
+  [25924] = {
+    'Portavoz Crepuscular Viktor',
+    'Martillo Crepuscular',
+  },
+  [25925] = {
+    'Vigilante de las llamas de Tierras Inhóspitas',
+    nil,
+  },
+  [25926] = {
+    'Vigilante de las llamas de Filospada',
+    nil,
+  },
+  [25927] = {
+    'Vigilante de las llamas de Las Estepas Ardientes',
+    nil,
+  },
+  [25928] = {
+    'Vigilante de las llamas de Desolace',
+    nil,
+  },
+  [25929] = {
+    'Vigilante de las llamas de Durotar',
+    nil,
+  },
+  [25930] = {
+    'Vigilante de las llamas de Marjal Revolcafango',
+    nil,
+  },
+  [25931] = {
+    'Vigilante de las llamas de Bosque Canción Eterna',
+    nil,
+  },
+  [25932] = {
+    'Vigilante de las llamas de Feralas',
+    nil,
+  },
+  [25933] = {
+    'Vigilante de las llamas de Tierras Fantasma',
+    nil,
+  },
+  [25934] = {
+    'Vigilante de las llamas de Península del Fuego Infernal',
+    nil,
+  },
+  [25935] = {
+    'Vigilante de las llamas de Trabalomas',
+    nil,
+  },
+  [25936] = {
+    'Vigilante de las llamas de Mulgore',
+    nil,
+  },
+  [25937] = {
+    'Vigilante de las llamas de Nagrand',
+    nil,
+  },
+  [25938] = {
+    'Vigilante de las llamas de Valle Sombraluna',
+    nil,
+  },
+  [25939] = {
+    'Vigilante de las llamas de Bosque de Argénteos',
+    nil,
+  },
+  [25940] = {
+    'Vigilante de las llamas de Sierra Espolón',
+    nil,
+  },
+  [25941] = {
+    'Vigilante de las llamas de Pantano de las Penas',
+    nil,
+  },
+  [25942] = {
+    'Vigilante de las llamas de Bosque de Terokkar',
+    nil,
+  },
+  [25943] = {
+    'Vigilante de las llamas de Los Baldíos del Norte',
+    nil,
+  },
+  [25944] = {
+    'Vigilante de las llamas de Tierras del Interior',
+    nil,
+  },
+  [25945] = {
+    'Vigilante de las llamas de Las Mil Agujas',
+    nil,
+  },
+  [25946] = {
+    'Vigilante de las llamas de Claros de Tirisfal',
+    nil,
+  },
+  [25947] = {
+    'Vigilante de las llamas de Marisma de Zangar',
+    nil,
+  },
+  [25948] = {
+    'Fragmento Fuego apocalíptico',
+    nil,
+  },
+  [25949] = {
+    'Clamahielo Briatha',
+    'Martillo Crepuscular',
+  },
+  [25950] = {
+    nil,
+    'Suministros de joyería',
+  },
+  [25951] = {
+    'Emisaria hereje',
+    nil,
+  },
+  [25954] = {
+    'Guardián Espada Sombría Fuente del Sol',
+    nil,
+  },
+  [25955] = {
+    'Mano del Falsario Fuente del Sol',
+    nil,
+  },
+  [25956] = {
+    'Observador del caos Fuente del Sol',
+    nil,
+  },
+  [25957] = {
+    'Can cataclísmico Fuente del Sol',
+    nil,
+  },
+  [25958] = {
+    'Maligno de fuego vil Fuente del Sol',
+    nil,
+  },
+  [25959] = {
+    'Guardia del apocalipsis Fuente del Sol',
+    nil,
+  },
+  [25960] = {
+    'M\'uru Fuente del Sol',
+    nil,
+  },
+  [25961] = {
+    'Tótem del Anillo de la Tierra',
+    nil,
+  },
+  [25962] = {
+    'Tragafuegos',
+    nil,
+  },
+  [25967] = {
+    'Céfiro',
+    nil,
+  },
+  [25970] = {
+    'Danzarín con fuego',
+    nil,
+  },
+  [25974] = {
+    'Maestro de danza con fuego',
+    nil,
+  },
+  [25975] = {
+    'Maestro tragafuegos',
+    nil,
+  },
+  [25976] = {
+    nil,
+    'Vigilante de artefactos perdidos',
+  },
+  [25977] = {
+    nil,
+    'Transmutadora de reliquias sin\'dorei',
+  },
+  [25980] = {
+    'Guardaespaldas hereje',
+    nil,
+  },
+  [25991] = {
+    'Kixi la Chafarote',
+    'Maestro de batalla de arena',
+  },
+  [25992] = {
+    'Truhán grande',
+    nil,
+  },
+  [25994] = {
+    'Tragallamas',
+    nil,
+  },
+  [26007] = {
+    'Maestro de batalla de arena',
+    nil,
+  },
+  [26012] = {
+    'Organizadora de arena',
+    nil,
+  },
+  [26016] = {
+    'Lobo domesticable',
+    nil,
+  },
+  [26017] = {
+    'Murciélago domesticable',
+    nil,
+  },
+  [26019] = {
+    'Ave carroñera domesticable',
+    nil,
+  },
+  [26020] = {
+    'Jabalí domesticable',
+    nil,
+  },
+  [26021] = {
+    'Felino domesticable',
+    nil,
+  },
+  [26024] = {
+    'Dracohalcón domesticable',
+    nil,
+  },
+  [26027] = {
+    'Raya abisal domesticable',
+    nil,
+  },
+  [26029] = {
+    'Raptor domesticable',
+    nil,
+  },
+  [26030] = {
+    'Devastador domesticable',
+    nil,
+  },
+  [26031] = {
+    'Escórpido domesticable',
+    nil,
+  },
+  [26032] = {
+    'Serpiente domesticable',
+    nil,
+  },
+  [26033] = {
+    'Araña domesticable',
+    nil,
+  },
+  [26037] = {
+    'Acechador de distorsión domesticable',
+    nil,
+  },
+  [26038] = {
+    'Serpiente alada domesticable',
+    nil,
+  },
+  [26042] = {
+    'Disfraz masculino de solsticio de verano Crepuscular',
+    nil,
+  },
+  [26050] = {
+    'Gruñi',
+    nil,
+  },
+  [26057] = {
+    'Marcador de Anveena',
+    nil,
+  },
+  [26075] = {
+    'Pagadora',
+    nil,
+  },
+  [26089] = {
+    nil,
+    'Abastecedor de equipo exótico',
+  },
+  [26090] = {
+    nil,
+    'Abastecedor de equipo exótico',
+  },
+  [26091] = {
+    nil,
+    'Abastecedor de equipo exótico',
+  },
+  [26092] = {
+    nil,
+    'Abastecedor de equipo exótico',
+  },
+  [26101] = {
+    'Maligno de fuego',
+    nil,
+  },
+  [26111] = {
+    'Espíritu de lobo Tótem Siniestro',
+    nil,
+  },
+  [26113] = {
+    'Maestro tragallamas',
+    nil,
+  },
+  [26116] = {
+    'Teniente Olaescarcha',
+    nil,
+  },
+  [26119] = {
+    'Prole de fénix',
+    nil,
+  },
+  [26123] = {
+    'Proveedora del Solsticio de Verano',
+    nil,
+  },
+  [26124] = {
+    'Mercader del Solsticio de Verano',
+    nil,
+  },
+  [26131] = {
+    'Halcón zancudo blanco presto',
+    nil,
+  },
+  [26166] = {
+    'Guardia de cristal hereje',
+    nil,
+  },
+  [26177] = {
+    nil,
+    'Mátame',
+  },
+  [26178] = {
+    'Teniente Granizo',
+    nil,
+  },
+  [26204] = {
+    'Teniente Viento Gélido',
+    nil,
+  },
+  [26207] = {
+    'Jabalí fiel',
+    nil,
+  },
+  [26214] = {
+    'Teniente Frígido',
+    nil,
+  },
+  [26215] = {
+    'Teniente Glacial',
+    nil,
+  },
+  [26216] = {
+    'Templario glacial',
+    nil,
+  },
+  [26221] = {
+    'Anciano del Anillo de la Tierra',
+    nil,
+  },
+  [26222] = {
+    'Criomántico Crepuscular',
+    'Martillo Crepuscular',
+  },
+  [26223] = {
+    'Filoescarcha Crepuscular',
+    'Martillo Crepuscular',
+  },
+  [26230] = {
+    'Conejo de nieve',
+    nil,
+  },
+  [26238] = {
+    'Jabalí de korio',
+    nil,
+  },
+  [26239] = {
+    'Fantasma de Ahune',
+    nil,
+  },
+  [26240] = {
+    'Albatros de espuma marina',
+    nil,
+  },
+  [26242] = {
+    'Tortuga empírea',
+    nil,
+  },
+  [26243] = {
+    'Serpiente carmesí',
+    nil,
+  },
+  [26244] = {
+    'Pantera Cantosombrío',
+    nil,
+  },
+  [26246] = {
+    'Profeta Velen',
+    nil,
+  },
+  [26247] = {
+    nil,
+    'Matriarca Caballero de sangre',
+  },
+  [26253] = {
+    'Pacificador Sol Devastado',
+    nil,
+  },
+  [26254] = {
+    'Portal inerte',
+    nil,
+  },
+  [26255] = {
+    'Portal de Shattrath',
+    nil,
+  },
+  [26259] = {
+    'Soldado Sol Devastado',
+    nil,
+  },
+  [26262] = {
+    'El núcleo de Entropius',
+    nil,
+  },
+  [26267] = {
+    'Grandes llamas bailarinas',
+    nil,
+  },
+  [26289] = {
+    'Levantafallas Sol Devastado',
+    nil,
+  },
+  [26300] = {
+    'Vendedor de accesorios',
+    nil,
+  },
+  [26302] = {
+    'Vendedor de encantamientos',
+    nil,
+  },
+  [26307] = {
+    'Maestra de bestias',
+    nil,
+  },
+  [26309] = {
+    'Vendedor de armas',
+    nil,
+  },
+  [26323] = {
+    'Kodo de carga goblin',
+    nil,
+  },
+  [26324] = {
+    'Instructor de druidas',
+    nil,
+  },
+  [26325] = {
+    'Instructor de cazadores',
+    nil,
+  },
+  [26326] = {
+    'Instructor de magos',
+    nil,
+  },
+  [26327] = {
+    'Instructor de paladines',
+    nil,
+  },
+  [26328] = {
+    'Instructora de sacerdotes',
+    nil,
+  },
+  [26329] = {
+    'Instructor de pícaros',
+    nil,
+  },
+  [26330] = {
+    'Instructor de chamanes',
+    nil,
+  },
+  [26331] = {
+    'Instructora de brujos',
+    nil,
+  },
+  [26332] = {
+    'Instructor de guerreros',
+    nil,
+  },
+  [26338] = {
+    nil,
+    'El Señor de la Escarcha',
+  },
+  [26350] = {
+    'Teletransportador a cementerio de la Alianza',
+    nil,
+  },
+  [26351] = {
+    'Teletransportador a cementerio de Horda',
+    nil,
+  },
+  [26352] = {
+    'Gran Zokk Llave Dinamométrica',
+    'Intendente de conquista',
+  },
+  [26353] = {
+    'Oso de batalla de arena',
+    nil,
+  },
+  [26354] = {
+    'Gladiador desarmado',
+    nil,
+  },
+  [26367] = {
+    'Teletransportador',
+    nil,
+  },
+  [26378] = {
+    'Evee Muellecobre',
+    'Intendente de conquista',
+  },
+  [26383] = {
+    'Grikkin Muellecobre',
+    'Intendente de conquista',
+  },
+  [26384] = {
+    'Frixee Cabriolatón',
+    'Intendente de conquista',
+  },
+  [26393] = {
+    'Capitán Martillo de Endecha',
+    'Intendente de armaduras',
+  },
+  [26394] = {
+    'Capitán O\'Neal',
+    'Intendente de armas',
+  },
+  [26395] = {
+    'Teniente Tristia',
+    'Intendente de armaduras',
+  },
+  [26396] = {
+    'Sargento Tronacuerno',
+    'Intendente de armas',
+  },
+  [26397] = {
+    nil,
+    'Intendente de armaduras',
+  },
+  [26398] = {
+    nil,
+    'Intendente de armaduras',
+  },
+  [26401] = {
+    'Agostizo de verano',
+    nil,
+  },
+  [26438] = {
+    'Espíritu de aire tranquilo',
+    nil,
+  },
+  [26439] = {
+    'Elekk de guerra negro',
+    nil,
+  },
+  [26502] = {
+    'Fuego fatuo de Ragnaros',
+    nil,
+  },
+  [26520] = {
+    'Agostizo del Festival',
+    nil,
+  },
+  [26534] = {
+    'Baliza totémica',
+    nil,
+  },
+  [26560] = {
+    nil,
+    'Maestro de dracohalcones',
+  },
+  [26579] = {
+    'Réplica de Anveena',
+    nil,
+  },
+  [26650] = {
+    'Capitán de Durnholde',
+    nil,
+  },
+  [26698] = {
+    'Kodo de montar (TAR - PNJ solo)',
+    nil,
+  },
+  [26719] = {
+    'Espía de la Fiesta de la Cerveza',
+    nil,
+  },
+  [26760] = {
+    'Promotor de lucha',
+    'Ayudante de maestro de batalla de arena',
+  },
+  [26764] = {
+    'Ilsa Cerveza Temible',
+    'Camarera Hierro Negro',
+  },
+  [26776] = {
+    'Esbirro Cerveza Temible',
+    nil,
+  },
+  [26822] = {
+    'Ursula Cerveza Temible',
+    'Camarera Hierro Negro',
+  },
+  [27166] = {
+    'La Camarera',
+    nil,
+  },
+  [27169] = {
+    'La Camarera Negra',
+    nil,
+  },
+  [27215] = {
+    'Boxey Bolahuso',
+    nil,
+  },
+  [27216] = {
+    'Bizzle Birlotutti',
+    nil,
+  },
+  [27217] = {
+    'Espíritu de competición',
+    nil,
+  },
+  [27346] = {
+    'Esencia de competición',
+    nil,
+  },
+  [27398] = {
+    'Gilbarta Granmartillo',
+    'Entusiasta de campo de batalla',
+  },
+  [27399] = {
+    nil,
+    'Entusiasta de campo de batalla',
+  },
+  [27478] = {
+    'Larkin Cebatruenos',
+    'Club de la Cerveza del Mes',
+  },
+  [27487] = {
+    'Club de la Cerveza del Mes',
+    'Vendedor de cerveza',
+  },
+  [27489] = {
+    nil,
+    'Club de la Cerveza del Mes',
+  },
+  [27541] = {
+    'Zhebra presta',
+    nil,
+  },
+  [27584] = {
+    'Darna Mielbock',
+    'Representante de cerveza',
+  },
+  [27637] = {
+    'Draco abisal vengativo',
+    nil,
+  },
+  [27666] = {
+    nil,
+    'Suministros de joyería',
+  },
+  [27667] = {
+    nil,
+    'Armas y forjado de armaduras',
+  },
+  [27668] = {
+    'Ontok Quebrantacuernos',
+    'Intendente de conquista',
+  },
+  [27684] = {
+    'Zhebra presta',
+    nil,
+  },
+  [27703] = {
+    nil,
+    'Instructora de portal',
+  },
+  [27704] = {
+    nil,
+    'Instructor de magos',
+  },
+  [27705] = {
+    'Lorrin Zorro de Fuego',
+    'Instructora de portal',
+  },
+  [27707] = {
+    'Gran kodo de la Fiesta de la Cerveza',
+    nil,
+  },
+  [27711] = {
+    'Técnico Halmaha',
+    'Suministros de ingeniería',
+  },
+  [27721] = {
+    'Drelik Revientatubos',
+    'Intendente de conquista',
+  },
+  [27722] = {
+    'Drolig Revientatubos',
+    'Intendente de conquista',
+  },
+  [27806] = {
+    'Vendedor de cerveza',
+    'Club de la Cerveza del Mes',
+  },
+  [27810] = {
+    'Vendedor de cerveza',
+    'Club de la Cerveza del Mes',
+  },
+  [27811] = {
+    'Vendedor de cerveza',
+    'Club de la Cerveza del Mes',
+  },
+  [27812] = {
+    'Vendedor de cerveza',
+    'Club de la Cerveza del Mes',
+  },
+  [27813] = {
+    'Vendedor de cerveza',
+    'Club de la Cerveza del Mes',
+  },
+  [27814] = {
+    'Vendedor de cerveza',
+    'Club de la Cerveza del Mes',
+  },
+  [27815] = {
+    'Vendedor de cerveza',
+    'Club de la Cerveza del Mes',
+  },
+  [27816] = {
+    'Vendedor de cerveza',
+    'Club de la Cerveza del Mes',
+  },
+  [27817] = {
+    'Vendedor de cerveza',
+    'Club de la Cerveza del Mes',
+  },
+  [27818] = {
+    'Vendedor de cerveza',
+    'Club de la Cerveza del Mes',
+  },
+  [27819] = {
+    'Vendedor de cerveza',
+    'Club de la Cerveza del Mes',
+  },
+  [27820] = {
+    'Vendedor de cerveza',
+    'Club de la Cerveza del Mes',
+  },
+  [27867] = {
+    'Ardilla de los bosques',
+    nil,
+  },
+  [27914] = {
+    'Comerciante de almas etéreo',
+    nil,
+  },
+  [27946] = {
+    'Dracohalcón de Lunargenta',
+    nil,
+  },
+  [28067] = {
+    'Cervecero Hierro Negro',
+    nil,
+  },
+  [28209] = {
+    'Mitzi Manivela',
+    nil,
+  },
+  [28210] = {
+    'Ognip Cargarrayo',
+    nil,
+  },
+  [28225] = {
+    'Griz Pataguata',
+    'Intendente de conquista',
+  },
+  [28226] = {
+    'Jaladiente',
+    nil,
+  },
+  [28227] = {
+    'Bocababa',
+    nil,
+  },
+  [28267] = {
+    'Espíritu de coyote',
+    nil,
+  },
+  [28329] = {
+    'Slurpo Cubagás',
+    'Representante de cerveza',
+  },
+  [28343] = {
+    nil,
+    'Banquera',
+  },
+  [28344] = {
+    nil,
+    'Suministros de herrería',
+  },
+  [28363] = {
+    'Oso de batalla grande',
+    nil,
+  },
+  [28470] = {
+    'Raya abisal pequeña',
+    nil,
+  },
+  [28569] = {
+    'Albañil',
+    nil,
+  },
+  [28571] = {
+    'Supervisor Wick',
+    nil,
+  },
+  [28572] = {
+    'Mampostero Doraoro',
+    'Real hermandad de talladores de piedra',
+  },
+  [28573] = {
+    'Albañil subacuático',
+    nil,
+  },
+  [28596] = {
+    'Albañil enano',
+    nil,
+  },
+  [29093] = {
+    nil,
+    'Anciano',
+  },
+  [29095] = {
+    nil,
+    'Anciano',
+  },
+}
