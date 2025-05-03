@@ -113,7 +113,7 @@ function export.GenerateL10nTranslation(locales, entityTypes, l10nObject)
     print("Dumping: " .. lookupKey)
     local lookup = l10nObject[lookupKey]
     for _, localeKey in ipairs(locales) do
-      local allLocaleData = lookup[localeKey]()
+      local allLocaleData = type(lookup[localeKey]) == "function" and lookup[localeKey]() or lookup[localeKey]
       local sortTable = {}
 
       for id in pairs(allLocaleData) do
@@ -128,6 +128,7 @@ function export.GenerateL10nTranslation(locales, entityTypes, l10nObject)
         newL10nObject[id][lEntityType][localeKey] = localeData
       end
     end
+    print("Done: " .. lookupKey)
   end
 
   return newL10nObject
