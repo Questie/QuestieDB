@@ -95,6 +95,8 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     nrDataKeys = nrDataKeys + 1
   end
 
+  print("Writing HTML files...")
+
   -- 3. Main Loop: Iterate Through Sorted IDs
   for i = 1, #sorted_keys do
     local dataId = sorted_keys[i]
