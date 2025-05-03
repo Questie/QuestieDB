@@ -22,7 +22,7 @@ function Database.GetTemplateNames()
     currentVersion = "Wotlk"
   elseif LibQuestieDB.IsCata then
     currentVersion = "Cata"
-  elseif LibQuestieDB.IsMoP then
+  elseif LibQuestieDB.IsMists then
     currentVersion = "MoP"
   end
   print("Current version: " .. currentVersion)
