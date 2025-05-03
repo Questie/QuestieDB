@@ -45,6 +45,7 @@
     ".build":true,
     "Perfy":true,
     ".database_generator/Questie-translations": true,
+    ".database_generator/mangos_translation/translations": true,
     ".vscode/*.lua": true,
     "translations.json": true,
     "**/*.lua-table": true,
