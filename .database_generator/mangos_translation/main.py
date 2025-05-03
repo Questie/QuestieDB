@@ -64,7 +64,7 @@ def import_sql_file(conn, file_path):
 def process(locales, version):
   """Process the locales and version"""
   db_file = f"{version}.db"
-  # os.remove(db_file) if os.path.exists(db_file) else None
+  os.remove(db_file) if os.path.exists(db_file) else None
   connection = create_connection(db_file)
 
   if connection:
