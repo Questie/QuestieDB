@@ -189,7 +189,7 @@ def getDataSqlite(idType, id, version, locale="enUS", useCache=True) -> dict[str
   data = {}
 
   # Open the SQLite database connection
-  cache = sqlite3.connect(f"C:\\questiedb-data\\.cache-{version.lower()}.db")
+  cache = sqlite3.connect(f".cache-{version.lower()}.db")
 
   print(f"Fetching {idType} {id} for {locale}")
 
