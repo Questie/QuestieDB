@@ -2,7 +2,7 @@ import os
 import sqlite3
 from convertSQL import convert_file, convert_locale_file, convert_locale_string
 from download import download_loadDB, download_alterDB, download_locales
-from export import export_item, export_gameobject, export_creature, export_quest
+from export import export_item, export_gameobject, export_creature, export_quest, generate_xml_import
 import threading
 
 
@@ -139,6 +139,13 @@ def process(locales, version):
       export_gameobject(connection, locale, version)
       export_creature(connection, locale, version)
       export_quest(connection, locale, version)
+
+    # Generate import xml file
+    # <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
+    #   <Script file="deDE/item_era_deDE.lua"/>
+    #   ...
+    # </Ui>
+    generate_xml_import(version)
 
     connection.close()
 
