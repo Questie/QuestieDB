@@ -18,7 +18,7 @@ C_Timer = {
     end
   end,
   ---@diagnostic disable-next-line: undefined-doc-name
-  ---@return cbObject
+  ---@return FunctionContainer
   NewTimer = function(_, f)
     timerList[#timerList + 1] = f
     ---@diagnostic disable-next-line: return-type-mismatch

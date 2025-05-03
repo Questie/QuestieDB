@@ -37,7 +37,7 @@ LibQuestieDB.RegisteredEvents = LibQuestieDB.EventRegistrator()
 --! Start the addon
 --* Initialize the database
 do
-  ---@type cbObject
+  ---@type FunctionContainer
   local timer
   local function bucketLoaded()
     print("All Addons loaded")
