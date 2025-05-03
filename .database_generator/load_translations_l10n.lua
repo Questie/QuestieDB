@@ -276,6 +276,7 @@ end
 ---@param l10nData table<AllIdTypes, table<L10nDBKeys, table<L10nLocales, any>>> The structured localization data.
 ---@return string luaTableString The generated Lua table as a string.
 function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
+  print("Creating l10n data dump...")
   local outputLines = {}
   tInsert(outputLines, "{\n")
 
@@ -372,6 +373,8 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
     outputLines[#outputLines] = string.sub(lastLine, 1, -3) .. "\n"
   end
   tInsert(outputLines, "}\n")
+
+  print("Done creating l10n data dump.")
 
   return table.concat(outputLines)
 end
