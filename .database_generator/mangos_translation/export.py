@@ -1,5 +1,6 @@
 import sqlite3
 import os
+import re
 
 localeToDBIndex = {
   # Title_loc1 	text 	YES 		NULL 	  	Korean localization of Title in the "quest_template" table.
@@ -20,8 +21,25 @@ localeToDBIndex = {
   "esMX": 7,  # Spanish (Mexico)
   "zhTW": 5,  # Traditional Chinese (Taiwan)
   "zhCN": 4,  # Simplified Chinese (China)
-  "itIT": 9,  # Italian (Italy)
+  "itIT": 9,  # Italian (Italy) it is 11 in cata, but 9 in era, tbc and wotlk
 }
+
+
+def getDbIndexFromLocale(locale: str, version: str) -> int:
+  """
+  Get the database index from the locale string.
+  """
+  # Check if the locale is in the dictionary
+  if locale in localeToDBIndex:
+    if locale == "itIT" and version == "three":
+      # Italian is 11 in cata, but 9 in era, tbc and wotlk
+      return 11
+    return localeToDBIndex[locale]
+  else:
+    # If not, return -1 or raise an error
+    print(f"Locale {locale} not found in localeToDBIndex")
+    exit(1)
+
 
 fullLocaleToShort = {
   "Chinese": "zhCN",
@@ -104,6 +122,86 @@ def generate_xml_import(version: str):
   print(f"Finished generating XML import file: {xml_filepath}")
 
 
+# https://github.com/cmangos/mangos-classic/blob/master/doc/scripts%20docs/SQL_guide.txt
+# [horizontal]
+# %s;;  self, is the name of the Unit saying the text +
+# The $-placeholders work only if you use DoScriptText with a 'target'.
+# $N, $n;;  the [N, n]ame of the target
+# $C, $c;;  the [C, c]lass of the target
+# $R, $r;;  the [R, r]ace of the target
+# $GA:B; ;;  if the target is male then A else B is displayed, Example:
+def clean_string_quest(data: str) -> str:
+  data = data.replace("'", "\\'")
+
+  # We do this in the l10ndumper instead.
+  # data = data.replace("<", "＜")
+  # data = data.replace(">", "＞")
+
+  # data = data.replace("&", "＆")
+
+  data = data.replace("$B", "|n")
+  data = data.replace("$b", "|n")
+
+  # ! We replace this in the l10ndumper or during runtime instead.
+  # data = data.replace("$C", "%player_class%")
+  # data = data.replace("$c", "%player_class%")
+
+  # data = data.replace("$R", "%player_race%")
+  # data = data.replace("$r", "%player_race%")
+
+  # data = data.replace("$n", "%player_name%")
+  # data = data.replace("$N", "%player_name%")
+
+  # TODO: Implement this
+  # $GBienvenido:Bienvenida;
+  # is not implemented
+  # $GA:B; , A if the player is male and B if the player is female
+
+  return data
+
+
+def clean_string_item_object(data: str) -> str:
+  data = data.replace("'", "\\'")
+
+  # data = data.replace("<", "")
+  # data = data.replace(">", "")
+
+  # data = data.replace("&", "＆")
+  return data
+
+
+def clean_string_npc(data: str) -> str:
+  data = data.replace("'", "\\'")
+
+  # data = data.replace("<", "")
+  # data = data.replace(">", "")
+
+  # data = data.replace("&", "＆")
+  return data
+
+
+def filter_is_good_string(data: str) -> bool:
+  if data is None:
+    return False
+  if data == "":
+    return False
+  if data == "None":
+    return False
+  if data == "NULL":
+    return False
+  if data == "<UNUSED>":
+    return False
+  if data == "<NULL>":
+    return False
+  if data == "<PH>":
+    return False
+  if data == "<NYI>":
+    return False
+  if data == "x":
+    return False
+  return True
+
+
 def export_item(conn: sqlite3.Connection, fullLocale: str, version: str):
   # Table locales_item
   # entry
@@ -124,7 +222,10 @@ def export_item(conn: sqlite3.Connection, fullLocale: str, version: str):
 
   print(f"Exporting locales_item for {fullLocale}")
   cursor = conn.cursor()
-  cursor.execute(f"SELECT entry, name_loc{localeToDBIndex[shortLocale]} FROM locales_item")
+
+  # In cata the locale index for Italian is 11, but in era, tbc and wotlk it is 9
+  localeIndex = getDbIndexFromLocale(shortLocale, version)
+  cursor.execute(f"SELECT entry, name_loc{localeIndex} FROM locales_item")
   rows = cursor.fetchall()
 
   output_path = f"translations/{questieDBVersion}/{shortLocale}"
@@ -137,8 +238,8 @@ def export_item(conn: sqlite3.Connection, fullLocale: str, version: str):
     for row in rows:
       entry = row[0]
       name = row[1]
-      if name != "":
-        name = str(name).replace("'", "\\'")
+      if filter_is_good_string(name):
+        name = clean_string_item_object(str(name))
         file.write(f"  [{entry}] = '{name}',\n")
     file.write("}\n")
 
@@ -163,7 +264,10 @@ def export_gameobject(conn: sqlite3.Connection, fullLocale: str, version: str):
 
   print(f"Exporting locales_gameobject for {fullLocale}")
   cursor = conn.cursor()
-  cursor.execute(f"SELECT entry, name_loc{localeToDBIndex[shortLocale]} FROM locales_gameobject")
+
+  # In cata the locale index for Italian is 11, but in era, tbc and wotlk it is 9
+  localeIndex = getDbIndexFromLocale(shortLocale, version)
+  cursor.execute(f"SELECT entry, name_loc{localeIndex} FROM locales_gameobject")
   rows = cursor.fetchall()
 
   output_path = f"translations/{questieDBVersion}/{shortLocale}"
@@ -176,8 +280,8 @@ def export_gameobject(conn: sqlite3.Connection, fullLocale: str, version: str):
     for row in rows:
       entry = row[0]
       name = row[1]
-      if name != "":
-        name = str(name).replace("'", "\\'")
+      if filter_is_good_string(name):
+        name = clean_string_item_object(str(name))
         file.write(f"  [{entry}] = '{name}',\n")
     file.write("}\n")
 
@@ -203,7 +307,10 @@ def export_creature(conn: sqlite3.Connection, fullLocale: str, version: str):
 
   print(f"Exporting locales_creature for {fullLocale}")
   cursor = conn.cursor()
-  cursor.execute(f"SELECT entry, name_loc{localeToDBIndex[shortLocale]}, subname_loc{localeToDBIndex[shortLocale]} FROM locales_creature")
+
+  # In cata the locale index for Italian is 11, but in era, tbc and wotlk it is 9
+  localeIndex = getDbIndexFromLocale(shortLocale, version)
+  cursor.execute(f"SELECT entry, name_loc{localeIndex}, subname_loc{localeIndex} FROM locales_creature")
   rows = cursor.fetchall()
 
   output_path = f"translations/{questieDBVersion}/{shortLocale}"
@@ -221,13 +328,13 @@ def export_creature(conn: sqlite3.Connection, fullLocale: str, version: str):
         continue
 
       file.write(f"  [{entry}] = {{\n")
-      name = str(name).replace("'", "\\'")
-      subname = str(subname).replace("'", "\\'")
-      if not_null_text(name):
+      name = clean_string_npc(str(name))
+      subname = clean_string_npc(str(subname))
+      if filter_is_good_string(name):
         file.write(f"    '{name}',\n")
       else:
         file.write("    nil,\n")
-      if not_null_text(subname):
+      if filter_is_good_string(subname):
         file.write(f"    '{subname}',\n")
       else:
         file.write("    nil,\n")
@@ -257,7 +364,10 @@ def export_quest(conn: sqlite3.Connection, fullLocale: str, version: str):
 
   print(f"Exporting locales_quest for {fullLocale}")
   cursor = conn.cursor()
-  cursor.execute(f"SELECT entry, Title_loc{localeToDBIndex[shortLocale]}, Details_loc{localeToDBIndex[shortLocale]}, Objectives_loc{localeToDBIndex[shortLocale]} FROM locales_quest")
+
+  # In cata the locale index for Italian is 11, but in era, tbc and wotlk it is 9
+  localeIndex = getDbIndexFromLocale(shortLocale, version)
+  cursor.execute(f"SELECT entry, Title_loc{localeIndex}, Details_loc{localeIndex}, Objectives_loc{localeIndex} FROM locales_quest")
   rows = cursor.fetchall()
 
   output_path = f"translations/{questieDBVersion}/{shortLocale}"
@@ -275,19 +385,19 @@ def export_quest(conn: sqlite3.Connection, fullLocale: str, version: str):
       if not not_null_text(title) and not not_null_text(details) and not not_null_text(objectives):
         continue
 
-      title = str(title).replace("'", "\\'")
-      details = str(details).replace("'", "\\'")
-      objectives = str(objectives).replace("'", "\\'")
+      title = clean_string_quest(str(title))
+      details = clean_string_quest(str(details))
+      objectives = clean_string_quest(str(objectives))
       file.write(f"  [{entry}] = {{\n")
-      if not_null_text(title):
+      if filter_is_good_string(title):
         file.write(f"    '{title}',\n")
       else:
         file.write("    nil,\n")
-      if not_null_text(details):
+      if filter_is_good_string(details):
         file.write(f"    {{'{details}', }},\n")
       else:
         file.write("    nil,\n")
-      if not_null_text(objectives):
+      if filter_is_good_string(objectives):
         file.write(f"    {{'{objectives}', }},\n")
       else:
         file.write("    nil,\n")
