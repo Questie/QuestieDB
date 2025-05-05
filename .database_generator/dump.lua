@@ -17,6 +17,9 @@ assert(Is_CLI, "This function should only be called from the CLI environment")
 
 local f = string.format
 
+--- Function to sanitize translation strings by replacing special characters with HTML entities
+---@param str string
+---@return string
 local function escapeString(str)
   -- str = str:gsub('&', "and") -- Escape ampersands
   -- str = str:gsub("&", "＆")
@@ -34,6 +37,9 @@ local function escapeString(str)
   return str
 end
 
+--- Function to replace special characters with HTML entities
+--- @param str string
+--- @return string
 local function replaceWithCorrect(str)
   str = str:gsub("🗡", "<br/>") -- Replace 🗡 with <br /> : Use <br /> for XHTML validity
   str = str:gsub('＆', "&amp;") -- Escape ampersands
