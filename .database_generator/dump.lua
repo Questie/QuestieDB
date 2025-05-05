@@ -17,6 +17,90 @@ assert(Is_CLI, "This function should only be called from the CLI environment")
 
 local f = string.format
 
+--- Function to sanitize translation strings by replacing special characters with HTML entities
+---@param str string
+---@return string
+local function escapeString(str)
+  -- str = str:gsub('&', "and") -- Escape ampersands
+  -- str = str:gsub("&", "＆")
+  -- str = str:gsub("<", "❮") -- Escape less-than signs
+  -- str = str:gsub('>', "❯") -- Escape greater-than signs
+  str = str:gsub('&', "＆") -- Escape ampersands
+  str = str:gsub('<', "＜") -- Escape less-than signs
+  str = str:gsub('>', "＞") -- Escape greater-than signs
+
+  -- We use this "cool" utf-8 dagger because the segmented split can split multi-chars ... 🗡
+  str = str:gsub('|n', "🗡")
+  str = str:gsub("\\n", "🗡")
+  str = str:gsub("\n", "🗡")
+  str = str:gsub('\\\\"', '"') -- Unescape double quotes if needed
+  return str
+end
+
+--- Function to replace special characters with HTML entities
+--- @param str string
+--- @return string
+local function replaceWithCorrect(str)
+  str = str:gsub("🗡", "<br/>") -- Replace 🗡 with <br /> : Use <br /> for XHTML validity
+  str = str:gsub('＆', "&amp;") -- Escape ampersands
+  str = str:gsub('＜', "&lt;") -- Escape less-than signs
+  str = str:gsub('＞', "&gt;") -- Escape greater-than signs
+  return str
+end
+
+-- ! -------------------------------------------
+-- !
+-- !  The reason for all these utf-8 things is that chinese characters are multiple "chars" in a lua string
+-- !  So if we just do the normal len for strings it would split a chinese character in the middle -
+-- !  creating errors ingame.
+-- !
+-- ! -------------------------------------------
+-- UTF-8 char boundary pattern for Lua 5.1 (no \x escapes)
+local _CHARPAT = "[%z\1-\127\194-\244][\128-\191]*"
+
+--- utf8_sub(s, i, j) -> substring of s from character i to j (both 1-based, negative ok)
+---@param s (string) UTF-8 encoded string
+---@param i (number) start index in characters (1 = first char; negative = from end)
+---@param j (number) end index in characters (inclusive; positive or negative).
+---              If nil, defaults to -1 (last character).
+---@return (string) the UTF-8-safe substring
+local function utf8_sub(s, i, j)
+  -- 1) collect byte-offsets of each UTF-8 character
+  local offsets = {}
+  for pos in s:gmatch("()" .. _CHARPAT) do
+    offsets[#offsets + 1] = pos
+  end
+  local n = #offsets
+  if n == 0 then return "" end
+
+  -- 2) handle defaults & negative indices
+  if not j then j = -1 end
+  if i < 0 then i = n + 1 + i end
+  if j < 0 then j = n + 1 + j end
+
+  -- 3) clamp to [1..n]
+  if i < 1 then i = 1 end
+  if j > n then j = n end
+  if i > j then return "" end
+
+  -- 4) byte positions for slicing
+  local start_byte = offsets[i]
+  local end_byte = offsets[j + 1] and (offsets[j + 1] - 1) or #s
+
+  return s:sub(start_byte, end_byte)
+end
+
+--- utf8_len(s) -> number of UTF-8 characters in s
+---@param s (string) UTF-8 encoded string
+---@return (number) count of codepoints
+local function utf8_len(s)
+  local count = 0
+  for _ in s:gmatch(_CHARPAT) do
+    count = count + 1
+  end
+  return count
+end
+
 --- Generates the HTML and XML files for a given entity type and expansion.
 --- @see Corrections.ItemMeta
 --- @see Corrections.NpcMeta
@@ -155,9 +239,18 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
           formatted_line = formatted_line:sub(2, -2)
         end
 
-        formatted_line = formatted_line:gsub("\\n", "<br>") -- Use <br/> for XHTML validity if needed
-        formatted_line = formatted_line:gsub("\n", "<br>")  -- Use <br/> for XHTML validity if needed
-        formatted_line = formatted_line:gsub('\\\\"', '"')  -- Unescape double quotes if needed
+        -- -- formatted_line = formatted_line:gsub('&', "and") -- Escape ampersands
+        -- formatted_line = formatted_line:gsub("&", "＆")
+        -- formatted_line = formatted_line:gsub("<", "❮") -- Escape less-than signs
+        -- formatted_line = formatted_line:gsub('>', "❯") -- Escape greater-than signs
+        -- -- formatted_line = formatted_line:gsub('<', "lt;")    -- Escape less-than signs
+        -- -- formatted_line = formatted_line:gsub('>', "gt;")    -- Escape greater-than signs
+        -- -- We use this cool dagger because the segmented split can split multi-chars ... 🗡
+        -- formatted_line = formatted_line:gsub('|n', "<br/>")
+        -- formatted_line = formatted_line:gsub("\\n", "<br/>") -- Use <br/> for XHTML validity if needed
+        -- formatted_line = formatted_line:gsub("\n", "<br/>")  -- Use <br/> for XHTML validity if needed
+        -- formatted_line = formatted_line:gsub('\\\\"', '"')   -- Unescape double quotes if needed
+        formatted_line = escapeString(formatted_line)
 
         -- Remove surrounding quotes ONLY if not a table literal
         if not formatted_line:match("^%s*{") and not formatted_line:match("}%s*$") then
@@ -174,15 +267,17 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
         -- formatted_line = formatted_line:gsub(" = ", "=")
 
         -- Check length and split if necessary
-        if #formatted_line > max_p_size then
+        if utf8_len(formatted_line) > max_p_size then
           if debug then
             table.insert(output_data_local, f("  <!-- %s -->\n", meta.NameIndexLookupTable[entityDataIndex]))
           end
-          table.insert(output_data_local, f("<!-- Segment start: %s -->\n", entityDataIndex))
-          local segments = math.ceil(#formatted_line / max_p_size)
+          if outputSegments then
+            table.insert(output_data_local, f("<!-- Segment start: %s -->\n", entityDataIndex))
+          end
+          local segments = math.ceil(utf8_len(formatted_line) / max_p_size)
           for seg = 1, segments do
             local start = (seg - 1) * max_p_size + 1
-            local stop = math.min(seg * max_p_size, #formatted_line)
+            local stop = math.min(seg * max_p_size, utf8_len(formatted_line))
             local segmentMarker
             if seg < segments then
               segmentMarker = f("%s-%d", entityDataIndex, seg)
@@ -191,9 +286,11 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
             end
             p_tags_written = p_tags_written + 1
             table.insert(writtenDataIndexes, segmentMarker)
-            table.insert(output_data_local, f("<p>%s</p>\n", formatted_line:sub(start, stop)))
+            table.insert(output_data_local, f("<p>%s</p>\n", replaceWithCorrect(utf8_sub(formatted_line, start, stop))))
           end
-          table.insert(output_data_local, f("<!-- Segment end: %s -->\n", entityDataIndex))
+          if outputSegments then
+            table.insert(output_data_local, f("<!-- Segment end: %s -->\n", entityDataIndex))
+          end
         else
           -- Add the single <p> tag
           table.insert(writtenDataIndexes, tostring(entityDataIndex))
@@ -201,7 +298,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
             table.insert(output_data_local, f("  <!-- %s -->\n", meta.NameIndexLookupTable[entityDataIndex]))
           end
           p_tags_written = p_tags_written + 1
-          table.insert(output_data_local, f("<p>%s</p>\n", formatted_line))
+          table.insert(output_data_local, f("<p>%s</p>\n", replaceWithCorrect(formatted_line)))
         end
       end
     end -- End inner loop (data fields)

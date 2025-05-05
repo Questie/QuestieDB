@@ -417,7 +417,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   else
     print("Failed to open file for writing: " .. f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedVersion))
   end
-  -- TODO: When we refactor the python code to lua this entire section will have changes
+
   local path = f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedVersion)
   print("Reading L10n data from " .. path)
   local l10nFile = io.open(path, "r")

@@ -60,7 +60,8 @@ end
 
 print("Starting database file downloads...")
 
-for github_expansion, local_prefix in pairs(helpers.Expansions) do
+for _, exp_data in ipairs(helpers.Expansions) do
+  local github_expansion, local_prefix = unpack(exp_data)
   print("\nProcessing expansion: " .. github_expansion)
   for _, entity_type in ipairs(entity_types) do
     download_and_save(github_expansion, local_prefix, entity_type)

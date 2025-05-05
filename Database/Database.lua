@@ -276,7 +276,7 @@ do
 
     -- Get all the filenames from the frame, they are split into different <p> tags that we have to combine
     ---@type FontString[]
-    local dataFilenameRegions = { dataFilenameFrame:GetRegions(), --[[@as FontString]] }
+    local dataFilenameRegions = { dataFilenameFrame:GetRegions() --[[@as FontString]], }
     local combinedString = ""
     for i = 1, #dataFilenameRegions do
       combinedString = combinedString .. dataFilenameRegions[i]:GetText()
@@ -305,7 +305,7 @@ do
 
       -- Get all the filenames from the frame, they are split into different <p> tags that we have to combine
       ---@type FontString[]
-      local idDataRegions = { idDataFilenameFrame:GetRegions(), --[[@as FontString]] }
+      local idDataRegions = { idDataFilenameFrame:GetRegions() --[[@as FontString]], }
       local combinedString = ""
       for i = 1, #idDataRegions do
         combinedString = combinedString .. idDataRegions[i]:GetText()
@@ -342,7 +342,7 @@ do
     -- Creating a frame for each file and reading data
     local dataFrame = CreateFrame(frameType, nil, nil, fileTemplateName)
     ---@type FontString[]
-    local dataRegions = { dataFrame:GetRegions(), --[[@as FontString]] }
+    local dataRegions = { dataFrame:GetRegions() --[[@as FontString]], }
 
     -- This is very important to prevent the frame from updating and causing lag
     -- dataFrame:SetScript("OnUpdate", nil)
@@ -352,6 +352,9 @@ do
     -- This means we start at index 2 for the data
     local dataRegionsIndex = 2
     local idLookupData = strsplittable(",", dataRegions[1]:GetText())
+
+    -- * Future optimizers, the way below is slower than using strsplittable and tonumber convert
+    -- local idLookupData = loadstring("return {" .. dataRegions[1]:GetText() .. "}")()
 
     -- Iterating over all ids in idLookupData
     for idIndex = 1, #idLookupData do

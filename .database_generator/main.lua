@@ -20,7 +20,8 @@ local function main()
 
 
   -- for expansion, local_prefix in pairs(Expansions) do
-  for questie_prefix_expansion, local_prefix_expansion in pairs(helpers.Expansions) do
+  for _, exp_data in ipairs(helpers.Expansions) do
+    local questie_prefix_expansion, local_prefix_expansion = unpack(exp_data)
     local capitalized_expansion = local_prefix_expansion:sub(1, 1):upper() .. local_prefix_expansion:sub(2)
     print("Downloading " .. capitalized_expansion .. " databases...")
     DumpDatabase(capitalized_expansion, questie_prefix_expansion, DB_GEN_DEBUG_MODE)
@@ -44,8 +45,6 @@ CLI_Helpers.loadXML(helpers.get_project_dir_path() .. "/.database_generator/Ques
 
 local single_translation = {}
 for key, value in pairs(translations) do
-  -- local translation = string.gsub(key, "\n", "<br>")
-  -- translation = string.gsub(translation, '"', '\\"')
   table.insert(single_translation, key)
 end
 
