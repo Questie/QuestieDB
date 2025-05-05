@@ -44,8 +44,6 @@ CLI_Helpers.loadXML(helpers.get_project_dir_path() .. "/.database_generator/Ques
 
 local single_translation = {}
 for key, value in pairs(translations) do
-  -- local translation = string.gsub(key, "\n", "<br>")
-  -- translation = string.gsub(translation, '"', '\\"')
   table.insert(single_translation, key)
 end
 
