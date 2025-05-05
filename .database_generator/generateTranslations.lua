@@ -50,8 +50,6 @@ local function sanitize_translation(str)
   str = string.gsub(str, "&", "&amp;")
   str = string.gsub(str, "<", "&lt;")
   str = string.gsub(str, ">", "&gt;")
-  -- str = string.gsub(str, "\n", "<br>")
-  -- str = string.gsub(str, '"', '\\"')
   return str
 end
 

@@ -166,16 +166,16 @@ local function joinAndEscape(tbl, separator, emptyValue)
     if val == nil then
       result[i] = ""
     else
-      -- Quest text is a table, join it with <br>
+      -- Quest text is a table, join it with |n
       if type(val) == "table" then
-        val = joinAndEscape(val, "<br>", "")
+        val = joinAndEscape(val, "|n", "")
       elseif type(val) == "string" then
         -- Escape single quotes
         val = string.gsub(val, "'", "\\'")
       end
       -- Replace newlines specifically for quest text as per python script logic
       val = string.gsub(val, "\r", "")
-      val = string.gsub(val, "\n", "<br>")
+      val = string.gsub(val, "\n", "|n")
       result[i] = val
       if val ~= "" then
         hasContent = true
