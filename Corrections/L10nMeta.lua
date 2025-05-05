@@ -28,6 +28,7 @@ L10nMeta.locales = {
   "frFR", -- [8]
   "zhCN", -- [9]
   "zhTW", -- [10]
+  -- "itIT", -- [11] -- This does not work, as Questie today does not support itIT
 }
 
 
@@ -77,10 +78,25 @@ do
     end
     return false
   end
+
+  ---@param index integer
+  ---@param skipIndex table<integer>? If this is set, the index will be skipped in the output
+  local function shouldSkip(index, skipIndex)
+    if skipIndex then
+      for _, skip in ipairs(skipIndex) do
+        if index == skip then
+          return true
+        end
+      end
+    end
+    return false
+  end
+
   ---@param entityType string Will write the entitytype in a comment, not used for anything else (e.g., "Item", "Npc", "Object", "Quest")
   ---@param val table<string>|string !IMPORTANT! always insert empty strings instead of nils
+  ---@param skipIndex table<integer>? If this is set, the index will be skipped in the output
   ---@return string The string that will be inserted into the database
-  local function dumpl10n(entityType, val)
+  local function dumpl10n(entityType, val, skipIndex)
     local indentation = "  "
     local capitalizedEntityType = entityType:sub(1, 1):upper() .. entityType:sub(2)
 
@@ -96,7 +112,7 @@ do
       tInsert(lines, f("%s{ -- %s\n", indentation, capitalizedEntityType))
       for i = 1, #val do
         local value = val[i]
-        if value ~= nil and value ~= "" then
+        if value ~= nil and value ~= "" and not shouldSkip(i, skipIndex) then
           -- Escape single quotes in the joined string
           tInsert(lines, f("%s'%s',\n", indent(indentation, 2), value))
         else
@@ -123,7 +139,9 @@ do
       return dumpl10n("object", val)
     end,
     ['quest'] = function(val)
-      return dumpl10n("quest", val)
+      -- ? Here we skip the questText as it is not used in Questie
+      -- ? Just remove the { 2, } from the table to enable again.
+      return dumpl10n("quest", val, { 2, })
     end,
   }
 end
