@@ -9,10 +9,24 @@ local ltn12 = require("ltn12")
 
 ---@type table<string, string>
 local expansions = {
-  Classic = "era", -- Map GitHub folder name to local name prefix
-  TBC = "tbc",
-  Wotlk = "wotlk",
-  Cata = "cata",
+  -- Map GitHub folder name to local name prefix
+  -- We want to move away from the word "Classic" as it changes definitions on each new exp cycle
+  {
+    "Classic", -- Questie_prefix_expansion (The name in the Questie Repo)
+    "era",     -- Local_prefix_expansion (The name in QuestieDB Repo)
+  },
+  {
+    "TBC", -- Questie_prefix_expansion (The name in the Questie Repo)
+    "tbc", -- Local_prefix_expansion (The name in QuestieDB Repo)
+  },
+  {
+    "Wotlk", -- Questie_prefix_expansion (The name in the Questie Repo)
+    "wotlk", -- Local_prefix_expansion (The name in QuestieDB Repo)
+  },
+  {
+    "Cata", -- Questie_prefix_expansion (The name in the Questie Repo)
+    "cata", -- Local_prefix_expansion (The name in QuestieDB Repo)
+  },
   -- MoP = "mop",
 }
 

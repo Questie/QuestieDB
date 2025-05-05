@@ -20,7 +20,8 @@ local function main()
 
 
   -- for expansion, local_prefix in pairs(Expansions) do
-  for questie_prefix_expansion, local_prefix_expansion in pairs(helpers.Expansions) do
+  for _, exp_data in ipairs(helpers.Expansions) do
+    local questie_prefix_expansion, local_prefix_expansion = unpack(exp_data)
     local capitalized_expansion = local_prefix_expansion:sub(1, 1):upper() .. local_prefix_expansion:sub(2)
     print("Downloading " .. capitalized_expansion .. " databases...")
     DumpDatabase(capitalized_expansion, questie_prefix_expansion, DB_GEN_DEBUG_MODE)
