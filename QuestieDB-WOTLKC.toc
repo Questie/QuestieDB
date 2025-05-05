@@ -2,7 +2,7 @@
 ## Title: QuestieDB
 ## Author: Logon (Data: TheCrux/Drejjmit/Muehe/Yttrium/TechnoHunter/Everyone else)
 ## Notes: A standalone QuestieDB
-## Version: 0.5.0
+## Version: 0.6.0
 ## RequiredDeps:
 ## OptionalDeps:
 #### SavedVariables: QuestieDB
