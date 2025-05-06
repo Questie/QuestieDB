@@ -1,8 +1,41 @@
 -- main.lua
 -- Prepend your script's directory to the package.path
-local script_path = debug.getinfo(1, "S").source:sub(2)
-local script_dir = script_path:match("(.*/)")
-package.path = script_dir .. "?.lua;" .. package.path
+do
+  local lfs = require("lfs")
+
+  -- Get the path separator
+  local sep = package.config:sub(1, 1)
+
+  -- If we are executing from any other location than the script dir
+  local relative_script_path = debug.getinfo(1, "S").source:sub(2):match("(.*)[/\\]")
+  if relative_script_path then
+    print("SETUP: Relative script path:", debug.getinfo(1, "S").source:sub(2):match("(.*)[/\\]"))
+
+    -- First we change into the script directory
+    lfs.chdir(debug.getinfo(1, "S").source:sub(2):match("(.*)[/\\]"))
+  end
+
+  -- Then we get the full path to the script directory
+  local full_script_dir = lfs.currentdir()
+  print("SETUP: Changed directory to absolute script directory : ", full_script_dir)
+
+  -- Then we get the full path to the project directory
+  local full_project_dir = full_script_dir:match("(.*)[/\\]") -- Remove last slash
+
+  -- Then we set the package.path to include the script and project directories
+  package.path = full_project_dir .. sep .. "?.lua;" .. full_script_dir .. sep .. "?.lua;" .. package.path
+
+  -- Then we change back to the project directory
+  lfs.chdir(full_project_dir)
+  print("SETUP: Changed directory to absolute project directory: ", lfs.currentdir())
+  if lfs.attributes("Library.lua", "mode") == "file" then
+    print("SETUP: Library.lua found in project directory.")
+  else
+    print("SETUP: ERROR - Library.lua not found in project directory.")
+    error("SETUP: ERROR - Library.lua not found in project directory.")
+    os.exit(1)
+  end
+end
 
 local helpers = require(".db_helpers")
 require("cli.CLI_Helpers")
@@ -15,7 +48,7 @@ DB_GEN_DEBUG_MODE = false
 -- Main function to demonstrate the usage of helper functions
 local function main()
   print("Running database download script...")
-  require("dl_database")
+  require(".dl_database")
   print("Database download script finished.")
 
 

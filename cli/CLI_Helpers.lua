@@ -24,10 +24,12 @@ local excludedDirectories = {
   [".wowhead"] = true,
   [".generate_database"] = true,
   [".database_generator"] = true,
+  [".tests"] = true,
   ["venv"] = true,
   [".build"] = true,
   [".vscode"] = true,
   ["_data"] = true,
+  ["WoW-API"] = true,
 }
 
 ---@param searchName string filename to search for
@@ -104,10 +106,10 @@ function CLI_Helpers.loadFile(filepath)
 end
 
 --- Loads all files in a xml file
----@param file string file path e.g ".generate_database_lua/Questie/Localization/Translations/Translations.xml"
+---@param file string file path e.g ".database_generator/Questie/Localization/Translations/Translations.xml"
 ---@param failIfMissing boolean?
 function CLI_Helpers.loadXML(file, failIfMissing)
-  local xmlFilePath = file:match("^(.*)/.-%.xml$") .. "/"
+  local xmlFilePath = file:match("^(.*)[/\\].-%.xml$") .. "/"
   local filedata = io.open(file, "r")
   -- Only load the file if it exists
   -- If you generate for the first time some files in the toc arn't present
@@ -129,7 +131,7 @@ function CLI_Helpers.loadXML(file, failIfMissing)
 end
 
 --- Loads all files in a TOC file
----@param file string file path e.g ".generate_database_lua/Questie/Questie.toc"
+---@param file string file path e.g ".database_generator/Questie/Questie.toc"
 function CLI_Helpers.loadTOC(file)
   local rfile = io.open(file, "r")
   assert(rfile, "TOC file not found: " .. file)

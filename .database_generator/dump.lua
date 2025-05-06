@@ -1,10 +1,3 @@
--- Prepend your script's directory to the package.path
----@type string
-local script_path = debug.getinfo(1, "S").source:sub(2)
----@type string
-local script_dir = script_path:match("(.*/)")
-package.path = script_dir .. "?.lua;" .. package.path
-
 -- Allow accessing private fields
 ---@diagnostic disable: invisible
 require("cli.dump")

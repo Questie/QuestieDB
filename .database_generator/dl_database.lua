@@ -1,13 +1,6 @@
 -- dl_database.lua
 -- This script downloads the database files from the Questie GitHub repository.
 
--- Prepend your script's directory to the package.path
----@type string
-local script_path = debug.getinfo(1, "S").source:sub(2)
----@type string
-local script_dir = script_path:match("(.*/)")
-package.path = script_dir .. "?.lua;" .. package.path
-
 ---@type helpers
 local helpers = require(".db_helpers")
 

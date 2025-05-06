@@ -1,13 +1,9 @@
-local script_path = debug.getinfo(1, "S").source:sub(2)
-local script_dir = script_path:match("(.*/)")
-package.path = script_dir .. "?.lua;" .. package.path
-
 -- Allow accessing private fields
 ---@diagnostic disable: invisible
 require("cli.dump")
 local helpers = require(".db_helpers")
 
-local l10n_loader = require("load_translations_l10n")
+local l10n_loader = require(".load_translations_l10n")
 
 require(".dump")
 
@@ -385,7 +381,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   -- ---@type string
   -- local basePath = f("%s/_data/output", helpers.get_script_dir())
   ---@type string
-  local basePath = f("%s../Database", helpers.get_script_dir())
+  local basePath = f("%s/Database", helpers.get_project_dir_path())
   if not lfs.attributes(basePath, "mode") then
     lfs.mkdir(basePath)
     print("Created directory: " .. basePath)
