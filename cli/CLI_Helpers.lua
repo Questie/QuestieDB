@@ -86,6 +86,7 @@ function CLI_Helpers.loadFile(filepath)
   end
   local filetext = filedata:read("*all")
   filetext = filetext:gsub("select%(2, %.%.%.%)", "LibQuestieDBTable")
+  filetext = filetext:gsub("select%(1, %.%.%.%)", "'QuestieDB'")
   local pcallResult, errorMessage
 
   local chunk = loadstring(filetext, filepath)
