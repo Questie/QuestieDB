@@ -27,17 +27,20 @@ local PublicLibQuestieDB = {
   Object = {},
 }
 
----Get LibQuestieDB
----@return QuestieDB
-function LibQuestieDB()
-  ---@type QuestieDB
-  return setmetatable(PublicLibQuestieDB, {
-    __newindex = function(_, _, _)
-      error("Attempt to write to a read-only table")
-    end,
-  })
+local addonName = select(1, ...)
+-- Only make the library available if QuestieDB is running in standalone mode
+if addonName == "QuestieDB" then
+  ---Get LibQuestieDB
+  ---@return QuestieDB
+  function LibQuestieDB()
+    ---@type QuestieDB
+    return setmetatable(PublicLibQuestieDB, {
+      __newindex = function(_, _, _)
+        error("Attempt to write to a read-only table")
+      end,
+    })
+  end
 end
-
 ---- Private namespace -----
 
 -- The main namespace class for the QuestieDB library.
