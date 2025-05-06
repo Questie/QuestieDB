@@ -33,18 +33,29 @@ local expansions = {
 --- Get the script directory.
 ---@return string The directory containing the script. Ends with a "/".
 local function get_script_dir()
-  local script_path = debug.getinfo(1, "S").source:sub(2)
-  -- Remove filename from path
-  script_path = script_path:match("(.*/)")
+  local script_path, script_name = debug.getinfo(1, "S").source:sub(2):match("(.*[/\\])(.*)")
   -- Remove trailing / or \ if present
-  script_path = script_path:gsub("[/\\]*$", "") .. "/"
+  script_path = script_path:gsub("[/\\]*$", "")
+  -- Sanity check that the file exists in the path
+  if not lfs.attributes(script_path .. "/" .. script_name, "mode") then
+    print("Script file not found in path: " .. script_path .. "/" .. script_name)
+    os.exit(1)
+  end
   return script_path
 end
 
 --- Get the project directory path.
 ---@return string The project directory path.
 local function get_project_dir_path()
-  return get_script_dir() .. ".."
+  -- Get the script directory and remove the last part to get the project directory
+  local project_dir = get_script_dir():match("(.*[/\\])"):gsub("[/\\]*$", "")
+  -- Sanity check by looking for the Library.lua
+  if not lfs.attributes(project_dir .. "/Library.lua", "mode") then
+    print("Project directory not found, exiting.")
+    print("Looked for file: " .. project_dir .. "/Library.lua")
+    os.exit(1)
+  end
+  return project_dir
 end
 
 --- Capitalize a string.
@@ -92,9 +103,7 @@ end
 --- Find the addon name.
 ---@return string The addon name.
 local function find_addon_name()
-  local current_dir = get_script_dir()
-  -- Remove the trailing .database_generator
-  current_dir = current_dir:gsub("/%.database_generator/", "/")
+  local current_dir = get_project_dir_path()
 
   local previous_dir = nil
   local addon_dir = nil
@@ -102,10 +111,11 @@ local function find_addon_name()
   local level = 0
 
   while level < max_level do
-    local dir_name = current_dir:match("([^/]+)$")
-    local parent_dir = current_dir:match("^(.*)/[^/]+$")
+    local dir_name = current_dir:match("([^/\\]+)$")
+    local parent_dir = current_dir:match("^(.*)[/\\][^/\\]+$")
     if type(dir_name) == "nil" then
-      addon_dir = previous_dir
+      -- Nothing was found, break, will default to QuestieDB
+      addon_dir = nil
       break
     elseif dir_name:lower() == "addons" and parent_dir:match("([^/]+)$"):lower() == "interface" then
       addon_dir = previous_dir
@@ -194,7 +204,7 @@ local function ensureDirExists(dir_path)
 
   -- Try to create the directory
   -- Find the parent directory
-  local parent_dir = dir_path:match("^(.*)/[^/]+$") or dir_path:match("^(.*)\\[^\\]+$")
+  local parent_dir = dir_path:match("^(.*)[/\\][^/\\]+$")
   if parent_dir and parent_dir ~= "" and parent_dir ~= "." and parent_dir ~= ".." then
     -- Recursively ensure the parent directory exists
     ensureDirExists(parent_dir)
