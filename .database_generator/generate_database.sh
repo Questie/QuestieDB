@@ -5,6 +5,9 @@
 script_dir=$(dirname "$0")
 echo "Script directory: $script_dir"
 
+cd $script_dir
+FULL_PATH="$(pwd)"
+
 # First argument points to lua executable set "lua" if not set
 if [ -z "$1" ]; then
   LUA=lua
@@ -12,7 +15,7 @@ else
   LUA=$1
 fi
 
-echo "Current directory: $(pwd)"
+echo "Current directory: $FULL_PATH"
 echo "$LUA is the lua executable"
 
 git_sparse_clone_addon_translations() {
@@ -47,9 +50,10 @@ cd /QuestieDB
 
 LAST_PATH="$(pwd)"
 
-# cd to current script directory
-cd "$(dirname "$0")"
+# Goto the QuestieDB/.database_generator directory
+cd $FULL_PATH
 
+# Make sure the Questie-translations directory is there
 git_sparse_clone_addon_translations
 
 echo "$(pwd)"
@@ -58,4 +62,9 @@ cd $LAST_PATH
 
 echo "$(pwd)"
 
-$LUA $script_dir/main.lua
+# Goto the QuestieDB directory
+cd $FULL_PATH/..
+
+$LUA $FULL_PATH/main.lua
+
+cd $LAST_PATH
