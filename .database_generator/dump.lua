@@ -260,17 +260,18 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
         -- formatted_line = formatted_line:gsub(" = ", "=")
 
         -- Check length and split if necessary
-        if utf8_len(formatted_line) > max_p_size then
+        local length = #formatted_line > max_p_size and utf8_len(formatted_line) or #formatted_line
+        if length > max_p_size then
           if debug then
             table.insert(output_data_local, f("  <!-- %s -->\n", meta.NameIndexLookupTable[entityDataIndex]))
           end
           if outputSegments then
             table.insert(output_data_local, f("<!-- Segment start: %s -->\n", entityDataIndex))
           end
-          local segments = math.ceil(utf8_len(formatted_line) / max_p_size)
+          local segments = math.ceil(length / max_p_size)
           for seg = 1, segments do
             local start = (seg - 1) * max_p_size + 1
-            local stop = math.min(seg * max_p_size, utf8_len(formatted_line))
+            local stop = math.min(seg * max_p_size, length)
             local segmentMarker
             if seg < segments then
               segmentMarker = f("%s-%d", entityDataIndex, seg)
