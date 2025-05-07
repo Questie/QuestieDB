@@ -62,7 +62,7 @@ end
 local tInsert = table.insert
 l10n.testItemGetFunctions = function(fast)
   debugprofilestart()
-  local functions = 6
+  local functions = 1
   local count = 0
   for id in pairs(item.GetAllIds()) do
     l10n.lastTestedID = id
@@ -91,7 +91,7 @@ end
 
 l10n.testNpcGetFunctions = function(fast)
   debugprofilestart()
-  local functions = 6
+  local functions = 2
   local count = 0
   for id in pairs(npc.GetAllIds()) do
     l10n.lastTestedID = id
@@ -124,7 +124,7 @@ end
 
 l10n.testObjectGetFunctions = function(fast)
   debugprofilestart()
-  local functions = 6
+  local functions = 1
   local count = 0
   for id in pairs(object.GetAllIds()) do
     l10n.lastTestedID = id
@@ -153,7 +153,7 @@ end
 
 l10n.testQuestGetFunctions = function(fast)
   debugprofilestart()
-  local functions = 6
+  local functions = 3
   local count = 0
   for id in pairs(quest.GetAllIds()) do
     l10n.lastTestedID = id

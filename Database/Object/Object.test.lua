@@ -21,7 +21,11 @@ end
 local tInsert = table.insert
 Object.testGetFunctions = function(fast)
   debugprofilestart()
-  local functions = 6
+  local functions = 0
+  for _, _ in pairs(LibQuestieDB.Corrections.ObjectMeta.objectKeys) do
+    functions = functions + 1
+  end
+
   local count = 0
   for id in pairs(Object.GetAllIds()) do
     Object.lastTestedID = id
