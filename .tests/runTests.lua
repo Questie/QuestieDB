@@ -22,7 +22,8 @@ do
   local full_project_dir = full_script_dir:match("(.*)[/\\]") -- Remove last slash
 
   -- Then we set the package.path to include the script and project directories
-  package.path = full_project_dir .. sep .. "?.lua;" .. full_script_dir .. sep .. "?.lua;" .. package.path
+  package.path = full_project_dir .. sep .. "?.lua;" .. package.path
+  package.path = full_script_dir .. sep .. "?.lua;" .. package.path
 
   -- Then we change back to the project directory
   lfs.chdir(full_project_dir)
