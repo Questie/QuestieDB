@@ -21,7 +21,11 @@ end
 local tInsert = table.insert
 Quest.testGetFunctions = function(fast)
   debugprofilestart()
-  local functions = 30
+  local functions = 0
+  for _, _ in pairs(LibQuestieDB.Corrections.QuestMeta.questKeys) do
+    functions = functions + 1
+  end
+
   local count = 0
   -- for id in pairs(glob) do
   for id in pairs(Quest.GetAllIds()) do
