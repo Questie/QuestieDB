@@ -72,9 +72,9 @@ do
     ---@type fun(id: QuestId):Name?
     QuestFunctions.name = Quest.AddStringGetter(1, "name")
   else
-    local fallbackQuest = Quest.AddStringGetter(1, "name")
+    local questName_enUS = Quest.AddStringGetter(1, "name")
     QuestFunctions.name = function(id)
-      return l10n.questName(id) or fallbackQuest(id)
+      return l10n.questName(id) or questName_enUS(id)
     end
   end
 

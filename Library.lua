@@ -19,7 +19,7 @@
 ---@field public Item ItemFunctions
 ---@field public Npc NpcFunctions
 ---@field public Object ObjectFunctions
----@field public ChangeLocale fun(locale: string)
+---@field public SetLocale fun(locale: localeType)
 local PublicLibQuestieDB = {
   Quest = {},
   Item = {},

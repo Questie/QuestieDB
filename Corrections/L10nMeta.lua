@@ -16,6 +16,7 @@ Corrections.L10nMeta = L10nMeta
 -- This is a special character used to split stringdata
 L10nMeta.magicalSpecialCharacter = "‡"
 
+---@alias localeType "ptBR"|"ruRU"|"deDE"|"koKR"|"esES"|"esMX"|"frFR"|"zhCN"|"zhTW" "|itIT" Questie today does not support itIT
 ---@class L10nLocales
 L10nMeta.locales = {
   -- "enUS", -- [1]

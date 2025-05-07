@@ -38,9 +38,9 @@ do
     ---@type fun(id: NpcId):string?
     NpcFunctions.name = Npc.AddStringGetter(1, "name")
   else
-    local fallbackNpc = Npc.AddStringGetter(1, "name")
+    local npcName_enUS = Npc.AddStringGetter(1, "name")
     NpcFunctions.name = function(id)
-      return l10n.npcName(id) or fallbackNpc(id)
+      return l10n.npcName(id) or npcName_enUS(id)
     end
   end
   ---Returns the minimum level health of the npc.
