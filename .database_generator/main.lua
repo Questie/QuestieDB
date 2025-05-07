@@ -95,12 +95,17 @@ local function getTranslation(enUStext)
   end
 end
 
-local profile = require("profile")
 -- Find the addon name
 local addon_name = helpers.find_addon_name()
 print("Addon Name: " .. addon_name)
 
-profile.start()
+---@type profile
+local profile
+if DB_GEN_DEBUG_MODE then
+  profile = require("libs.profile")
+  profile.start()
+  print("Profiler started.")
+end
 
 
 -- Generate Trie-translations
@@ -110,7 +115,9 @@ Compile_translations_to_html(single_translation, addon_name, getTranslation)
 -- Run the main function
 main()
 
-profile.stop()
-print("Profiler stopped.")
--- Print the profiling results
-print(profile.report(100))
+if profile then
+  profile.stop()
+  print("Profiler stopped.")
+  -- Print the profiling results
+  print(profile.report(100))
+end
