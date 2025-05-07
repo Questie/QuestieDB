@@ -31,9 +31,9 @@ do
     ---@type fun(id: ObjectId):Name?
     ObjectFunctions.name = Object.AddStringGetter(1, "name")
   else
-    local fallbackObject = Object.AddStringGetter(1, "name")
+    local objectName_enUS = Object.AddStringGetter(1, "name")
     ObjectFunctions.name = function(id)
-      return l10n.objectName(id) or fallbackObject(id)
+      return l10n.objectName(id) or objectName_enUS(id)
     end
   end
 

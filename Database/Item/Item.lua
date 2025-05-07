@@ -39,10 +39,10 @@ do
     ---@type fun(id: ItemId):Name?
     ItemFunctions.name = Item.AddStringGetter(1, "name")
   else
-    local fallbackName = Item.AddStringGetter(1, "name")
+    local itemName_enUS = Item.AddStringGetter(1, "name")
     ItemFunctions.name = function(id)
       ---@diagnostic disable-next-line: return-type-mismatch
-      return l10n.itemName(id) or fallbackName(id)
+      return l10n.itemName(id) or itemName_enUS(id)
     end
   end
 

@@ -188,7 +188,10 @@ do
   -- ? It gets called at the end of this file
   local function exportFunctions()
     local public = LibQuestieDB.PublicLibQuestieDB
-    public.ChangeLocale = function(locale)
+
+    ---Change the locale of the l10n module.
+    ---@param locale localeType Set locale getters to locale
+    function l10n.SetLocale(locale)
       if localeToPattern[locale] then
         l10n.currentLocale = locale
         SetGetters()
@@ -196,6 +199,8 @@ do
         error(f("Invalid locale: %s", locale))
       end
     end
+
+    public.SetLocale = l10n.SetLocale
 
     -- Do not SetGetters if the locale does not exist
     if localeToPattern[l10n.currentLocale] then
