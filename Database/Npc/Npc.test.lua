@@ -21,7 +21,11 @@ end
 local tInsert = table.insert
 Npc.testGetFunctions = function(fast)
   debugprofilestart()
-  local functions = 15
+  local functions = 0
+  for _, _ in pairs(LibQuestieDB.Corrections.NpcMeta.npcKeys) do
+    functions = functions + 1
+  end
+
   local count = 0
   for id in pairs(Npc.GetAllIds()) do
     Npc.lastTestedID = id
