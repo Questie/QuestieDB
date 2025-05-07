@@ -1,8 +1,8 @@
 local clock = os.clock
 
 --- The "profile" module controls when to start or stop collecting data and can be used to generate reports.
--- @module profile
--- @alias profile
+---@class profile
+---@module 'libs.profile'
 local profile = {}
 
 -- function labels
@@ -19,9 +19,9 @@ local _ncalls = {}
 local _internal = {}
 
 --- This is an internal function.
--- @tparam string event Event type
--- @tparam number line Line number
--- @tparam[opt] table info Debug info table
+---@param event string  Event type
+---@param line  number Line number
+---@param info table Debug info table
 function profile.hooker(event, line, info)
   info = info or debug.getinfo(2, 'fnS')
   local f = info.func
@@ -56,7 +56,7 @@ function profile.hooker(event, line, info)
 end
 
 --- Sets a clock function to be used by the profiler.
--- @tparam function func Clock function that returns a number
+---@param f function func Clock function that returns a number
 function profile.setclock(f)
   assert(type(f) == "function", "clock must be a function")
   clock = f
@@ -65,7 +65,9 @@ end
 --- Starts collecting data.
 function profile.start()
   if rawget(_G, 'jit') then
+    ---@diagnostic disable-next-line: undefined-global
     jit.off()
+    ---@diagnostic disable-next-line: undefined-global
     jit.flush()
   end
   debug.sethook(profile.hooker, "cr")
@@ -111,9 +113,9 @@ function profile.reset()
 end
 
 --- This is an internal function.
--- @tparam function a First function
--- @tparam function b Second function
--- @treturn boolean True if "a" should rank higher than "b"
+---@param a function First function
+---@param b function Second function
+---@return boolean True if "a" should rank higher than "b"
 function profile.comp(a, b)
   local dt = _telapsed[b] - _telapsed[a]
   if dt == 0 then
@@ -124,8 +126,8 @@ end
 
 --- Generates a report of functions that have been called since the profile was started.
 -- Returns the report as a numeric table of rows containing the rank, function label, number of calls, total execution time and source code line number.
--- @tparam[opt] number limit Maximum number of rows
--- @treturn table Table of rows
+---@param limit number Maximum number of rows
+---@return table Table of rows
 function profile.query(limit)
   local t = {}
   for f, n in pairs(_ncalls) do
@@ -153,8 +155,8 @@ local cols = { 3, 29, 11, 24, 32, }
 
 --- Generates a text report of functions that have been called since the profile was started.
 -- Returns the report as a string that can be printed to the console.
--- @tparam[opt] number limit Maximum number of rows
--- @treturn string Text-based profiling report
+---@param n number limit Maximum number of rows
+---@return string Text-based profiling report
 function profile.report(n)
   local out = {}
   local report = profile.query(n)
