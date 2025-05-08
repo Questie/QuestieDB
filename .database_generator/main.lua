@@ -39,6 +39,7 @@ do
 end
 
 local helpers = require(".db_helpers")
+local dl_helpers = require(".dl_database")
 require("cli.CLI_Helpers")
 
 require(".createStatic")
@@ -48,16 +49,18 @@ DB_GEN_DEBUG_MODE = false
 
 -- Main function to demonstrate the usage of helper functions
 local function main()
-  print("Running database download script...")
-  require(".dl_database")
-  print("Database download script finished.")
-
+  ---@type string[]
+  local entity_types = { "Item", "Npc", "Object", "Quest", }
 
   -- for expansion, local_prefix in pairs(Expansions) do
   for _, exp_data in ipairs(helpers.Expansions) do
     local questie_prefix_expansion, local_prefix_expansion = unpack(exp_data)
     local capitalized_expansion = local_prefix_expansion:sub(1, 1):upper() .. local_prefix_expansion:sub(2)
     print("Downloading " .. capitalized_expansion .. " databases...")
+    for _, entity_type in ipairs(entity_types) do
+      dl_helpers.download_and_save(questie_prefix_expansion, local_prefix_expansion, entity_type)
+    end
+    print("\nDatabase file download finished.")
     DumpDatabase(capitalized_expansion, questie_prefix_expansion, DB_GEN_DEBUG_MODE)
   end
 end

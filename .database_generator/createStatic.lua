@@ -14,8 +14,25 @@ local lfs = require("lfs")
 assert(Is_CLI, "This function should only be called from the CLI environment")
 
 local f = string.format
+local rep = string.rep
 
 Is_Create_Static = true
+
+local function c(text, color)
+  if color == "green" then
+    return "\27[32m" .. text .. "\27[0m"
+  elseif color == "red" then
+    return "\27[31m" .. text .. "\27[0m"
+  elseif color == "yellow" then
+    return "\27[33m" .. text .. "\27[0m"
+  elseif color == "blue" then
+    return "\27[34m" .. text .. "\27[0m"
+  elseif color == "cyan" then
+    return "\27[36m" .. text .. "\27[0m"
+  else
+    return text
+  end
+end
 
 --- Takes the raw database files (_data/*DB.lua) and the static corrections,
 --- merges them, and outputs the final combined data into both .lua-table format
@@ -295,16 +312,18 @@ function DumpDatabase(questiedb_version, questie_version, debug)
       end,
     }
 
+    print("\n")
+
     -- Iterate through each entity type (Item, Npc, Object, Quest)
     ---@param entityType "Item"|"Npc"|"Object"|"Quest"
     for _, entityType in ipairs(entityTypes) do
-      print("Trying to load mangos translations for " .. entityType)
+      print(c("Trying to load mangos translations for " .. entityType, "yellow"))
       -- Get the Questie lookup table for this entity type (e.g., l10n.itemLookup)
       local lookup = l10n[entityType:lower() .. "Lookup"]
       -- Get the Mangos data loaded from the XML file (e.g., locales_item)
       ---@type table<L10nLocales, table<number, any>>?
       local mangos_data = _G[f("locales_%s", entityType:lower())]
-      assert(mangos_data, "Failed to load mangos data, run the script in mangos_translation")
+      assert(mangos_data, c("Failed to load mangos data, run the script in mangos_translation", "red"))
 
       -- Iterate through each locale provided by the Mangos data (e.g., "deDE", "frFR")
       ---@param locale L10nLocales
@@ -355,18 +374,17 @@ function DumpDatabase(questiedb_version, questie_version, debug)
               lookup_data[entityId] = v
             end
           end
+          print(f("%sLocale [%s]: Added %d new entries, Merged data into %d existing entries.", rep(" ", 4), locale, added_data, merged_data))
         end
-        print(f("  Locale [%s]: Added %d new entries, Merged data into %d existing entries.", locale, added_data, merged_data))
       end
     end
 
 
-    print("All lookups and locales loaded successfully")
+    print(c("All lookups and locales loaded successfully\n", "green"))
 
     -- Create the l10n data table
+    print(c("Creating l10n object data[id][entityType][locale]", "green"))
     l10nOverride = l10n_loader.GenerateL10nTranslation(Corrections.L10nMeta.locales, entityTypes, l10n)
-
-    output = l10n_loader.DumpL10nData(Corrections.L10nMeta, entityTypes, l10nOverride)
   end
 
   --------------------------------------------------------------------
@@ -403,11 +421,12 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   -- Write all the overrides to disk
 
   -- ? Dump L10n Data
-  print("Dumping L10n overrides")
-
+  print(c("\nDumping L10n overrides", "yellow"))
+  ---@type string
+  local l10nDataString = l10n_loader.DumpL10nData(Corrections.L10nMeta, entityTypes, l10nOverride)
   local l10nDumpFile = io.open(f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedVersion), "w")
-  if l10nDumpFile and output then
-    l10nDumpFile:write(output)
+  if l10nDumpFile and l10nDataString then
+    l10nDumpFile:write(l10nDataString)
     l10nDumpFile:close()
     print("Dumped l10n data to " .. f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedVersion))
   else
@@ -418,7 +437,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   print("Reading L10n data from " .. path)
   local l10nFile = io.open(path, "r")
   assert(l10nFile, "Failed to open file for reading " .. path)
-  local l10nDataString = l10nFile:read("*a")
+  l10nDataString = l10nFile:read("*a")
   l10nFile:close()
   local l10nData, errormsg = loadstring("return " .. l10nDataString)
   if not l10nData then
@@ -426,11 +445,13 @@ function DumpDatabase(questiedb_version, questie_version, debug)
     return
   end
   l10nData = l10nData()
+
+  -- Dumping l10n overrides to HTML
   GenerateHtmlForEntityType(l10nData, Corrections.L10nMeta, "L10n", questiedb_version, nil, nil, debug)
   -- GenerateHtmlForEntityType(l10nData, Corrections.L10nMeta, "L10n", version, 75, 650, debug)
 
   -- ? Dump Item Data
-  print("Dumping item overrides")
+  print(c("\nDumping item overrides", "yellow"))
   -- Generate the string representation of the merged item data.
   ---@type string
   local itemDataString = helpers.dumpData(itemOverride, Corrections.ItemMeta.itemKeys, Corrections.ItemMeta.dumpFuncs,
@@ -440,43 +461,46 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   assert(itemFile, "Failed to open file for writing")
   itemFile:write(itemDataString)
   itemFile:close()
-  -- Generate the SimpleHTML files used by the addon.
-  print("Dumping item overrides to HTML")
+
+  -- Dumping item overrides to HTML
   GenerateHtmlForEntityType(itemOverride, Corrections.ItemMeta, "Item", questiedb_version, nil, nil, debug)
   -- GenerateHtmlForEntityType(itemOverride, Corrections.ItemMeta, "Item", version, 75, 650, debug)
 
   -- ? Dump Quest Data
-  print("Dumping quest overrides")
+  print(c("\nDumping quest overrides", "yellow"))
   local questDataString = helpers.dumpData(questOverride, Corrections.QuestMeta.questKeys, Corrections.QuestMeta.dumpFuncs)
   local questFile = io.open(f("%s/Quest/%s/QuestData.lua-table", basePath, capitalizedVersion), "w")
   assert(questFile, "Failed to open file for writing")
   questFile:write(questDataString)
   questFile:close()
-  print("Dumping quest overrides to HTML")
+
+  -- Dumping quest overrides to HTML
   GenerateHtmlForEntityType(questOverride, Corrections.QuestMeta, "Quest", questiedb_version, nil, nil, debug)
   -- GenerateHtmlForEntityType(questOverride, Corrections.QuestMeta, "Quest", version, 75, 650, debug)
 
   -- ? Dump Npc Data
-  print("Dumping npc overrides")
+  print(c("\nDumping npc overrides", "yellow"))
   local npcDataString = helpers.dumpData(npcOverride, Corrections.NpcMeta.npcKeys, Corrections.NpcMeta.dumpFuncs,
                                          Corrections.NpcMeta.combine)
   local npcFile = io.open(f("%s/Npc/%s/NpcData.lua-table", basePath, capitalizedVersion), "w")
   assert(npcFile, "Failed to open file for writing")
   npcFile:write(npcDataString)
   npcFile:close()
-  print("Dumping npc overrides to HTML")
+
+  -- Dumping npc overrides to HTML
   GenerateHtmlForEntityType(npcOverride, Corrections.NpcMeta, "Npc", questiedb_version, nil, nil, debug)
   -- GenerateHtmlForEntityType(npcOverride, Corrections.NpcMeta, "Npc", version, 75, 650, debug)
 
   -- ? Dump Object Data
-  print("Dumping object overrides")
+  print(c("\nDumping object overrides", "yellow"))
   local objectDataString = helpers.dumpData(objectOverride, Corrections.ObjectMeta.objectKeys,
                                             Corrections.ObjectMeta.dumpFuncs)
   local objectFile = io.open(f("%s/Object/%s/ObjectData.lua-table", basePath, capitalizedVersion), "w")
   assert(objectFile, "Failed to open file for writing")
   objectFile:write(objectDataString)
   objectFile:close()
-  print("Dumping object overrides to HTML")
+
+  -- Dumping object overrides to HTML
   GenerateHtmlForEntityType(objectOverride, Corrections.ObjectMeta, "Object", questiedb_version, nil, nil, debug)
   -- GenerateHtmlForEntityType(objectOverride, Corrections.ObjectMeta, "Object", version, 75, 650, debug)
 

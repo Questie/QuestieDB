@@ -10,6 +10,22 @@ assert(Is_CLI, "This function should only be called from the CLI environment")
 
 local f = string.format
 
+local function c(text, color)
+  if color == "green" then
+    return "\27[32m" .. text .. "\27[0m"
+  elseif color == "red" then
+    return "\27[31m" .. text .. "\27[0m"
+  elseif color == "yellow" then
+    return "\27[33m" .. text .. "\27[0m"
+  elseif color == "blue" then
+    return "\27[34m" .. text .. "\27[0m"
+  elseif color == "cyan" then
+    return "\27[36m" .. text .. "\27[0m"
+  else
+    return text
+  end
+end
+
 --- Function to sanitize translation strings by replacing special characters with HTML entities
 ---@param str string
 ---@return string
@@ -107,7 +123,7 @@ end
 --- @param ptagPerFile number? The number of <p> tags per file (default: 65000).
 --- @param debug boolean? Do you want to print extra debug output to the html files?
 function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, idsPerFile, ptagPerFile, debug)
-  print(f("Generating HTML for %s (%s)...", entityType, expansionName))
+  print(c(f("Generating HTML for %s (%s)...", entityType, expansionName), "green"))
 
   local p_tags_per_file_avg = 0
   local p_tags_highest = 0
@@ -127,9 +143,9 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
   local dataDirPathInAddon = f("Interface\\AddOns\\%s\\Database\\%s\\%s", addon_dir, entityTypeCapitalized, helpers.capitalize(expansionName)) -- Helper needed for capitalize
 
 
-  print(f("Addon Directory:      %s", addon_dir))
-  print(f("Output Base Path:     %s", outputBasePath))
-  print(f("Output Data Path:     %s", outputDataPath))
+  print(f("Addon Directory:       %s", addon_dir))
+  print(f("Output Base Path:      %s", outputBasePath))
+  print(f("Output Data Path:      %s", outputDataPath))
   print(f("Data Dir Path (Addon): %s", dataDirPathInAddon))
 
   -- Ensure output directories exist (Helper needed: helpers.ensureDirExists(path))
@@ -328,7 +344,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
         local chunk_filepath = outputDataPath .. "/" .. chunk_filename
         local chunk_frame_name = f("%sData%d-%d", entityTypeCapitalized, lowest_id, highest_id)
 
-        print(f("Writing chunk: %s (%s entries)", chunk_filename, entries_written))
+        print(f("  Writing chunk: %s (%s entries)", chunk_filename, entries_written))
 
         -- Write the chunk file
         local file = io.open(chunk_filepath, "w")
@@ -436,6 +452,6 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     error("Failed to open file for writing: " .. xml_filepath)
   end
 
-  print(f("Finished HTML generation for %s (%s).", entityType, expansionName))
   print(f("Average <p> tags per file: Avg: %d , High: %d , Low: %d", p_tags_per_file_avg, p_tags_highest, p_tags_lowest))
+  print(c(f("Finished HTML generation for %s (%s).", entityType, expansionName), "green"))
 end -- End GenerateHtmlForEntityType

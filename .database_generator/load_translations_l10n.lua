@@ -6,6 +6,9 @@ local helpers = require(".db_helpers")
 local f = string.format
 local tInsert = table.insert
 
+-- Double Dagger
+local splitCharacter = "‡"
+
 local export = {}
 
 ---Remove the first 3 lines which checks the GetLocale() if it should load, we want to load all
@@ -94,7 +97,7 @@ function export.CleanFiles(version, type)
   return cleaned_files
 end
 
----comment
+---Creates a new l10n object with the translations for the specified locales and entity types.
 ---@param locales L10nLocales The locales to be dumped
 ---@param entityTypes table<string> The entity types to be dumped (e.g., "Item", "Npc", "Object", "Quest")
 ---@param l10nObject table The full l10n object containing all the lookups
@@ -106,7 +109,7 @@ function export.GenerateL10nTranslation(locales, entityTypes, l10nObject)
   for _, entityType in ipairs(entityTypes) do
     local lEntityType = entityType:lower()
     local lookupKey = lEntityType .. "Lookup"
-    print("Dumping: " .. lookupKey)
+
     local lookup = l10nObject[lookupKey]
     for _, localeKey in ipairs(locales) do
       local allLocaleData = type(lookup[localeKey]) == "function" and lookup[localeKey]() or lookup[localeKey]
@@ -124,7 +127,6 @@ function export.GenerateL10nTranslation(locales, entityTypes, l10nObject)
         newL10nObject[id][lEntityType][localeKey] = localeData
       end
     end
-    print("Done: " .. lookupKey)
   end
 
   return newL10nObject
@@ -199,7 +201,7 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
 
   local localeCount = #L10nMeta.locales
   -- Create the string representing an empty value for comparison
-  local emptyValue = string.rep("‡", #L10nMeta.locales - 1)
+  local emptyValue = string.rep(splitCharacter, #L10nMeta.locales - 1)
 
   -- Get entity types sorted by their index in L10nMeta.l10nKeys
   local sortedEntityTypes = {}
@@ -238,7 +240,7 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
 
         if entityType == "item" or entityType == "object" then
           tInsert(outputLines, L10nMeta.lua_tableDumpFuncs[entityType](
-            joinAndEscape(translations, "‡", emptyValue)
+            joinAndEscape(translations, splitCharacter, emptyValue)
           ))
         elseif entityType == "npc" then
           -- translations is a table of {name, subname} pairs
@@ -251,8 +253,8 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
           end
           tInsert(outputLines, L10nMeta.lua_tableDumpFuncs[entityType](
             {
-              joinAndEscape(names, "‡", emptyValue),
-              joinAndEscape(subnames, "‡", emptyValue),
+              joinAndEscape(names, splitCharacter, emptyValue),
+              joinAndEscape(subnames, splitCharacter, emptyValue),
             }))
         elseif entityType == "quest" then
           -- translations is a table of {title, description, text} triples
@@ -267,9 +269,9 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
           end
           tInsert(outputLines, L10nMeta.lua_tableDumpFuncs[entityType](
             {
-              joinAndEscape(titles, "‡", emptyValue),
-              joinAndEscape(descriptions, "‡", emptyValue),
-              joinAndEscape(texts, "‡", emptyValue),
+              joinAndEscape(titles, splitCharacter, emptyValue),
+              joinAndEscape(descriptions, splitCharacter, emptyValue),
+              joinAndEscape(texts, splitCharacter, emptyValue),
             }))
         end
       else
