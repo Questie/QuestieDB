@@ -41,13 +41,16 @@ end
 ---@param questie_version string # The Questie version identifier (e.g., "Classic", "TBC", "Wotlk"). Case-insensitive.
 ---@param debug boolean? # Optional debug flag
 function DumpDatabase(questiedb_version, questie_version, debug)
-  local lowerVersion = questiedb_version:lower()
-  local capitalizedVersion = lowerVersion:gsub("^%l", string.upper)
-  print(f("\n\27[36mCompiling %s database...\27[0m", capitalizedVersion))
+  local lowerQuestieDBVersion = questiedb_version:lower()
+  local capitalizedQuestieDBVersion = lowerQuestieDBVersion:gsub("^%l", string.upper)
+
+  local lowerQuestieVersion = questie_version:lower()
+
+  print(f("\n\27[36mCompiling %s database...\27[0m", capitalizedQuestieDBVersion))
 
   -- Reset data objects, load the core addon files for the specified version, and set WoW version globals.
   ---@type LibQuestieDB
-  LibQuestieDBTable = AddonInitializeVersion(capitalizedVersion)
+  LibQuestieDBTable = AddonInitializeVersion(capitalizedQuestieDBVersion)
 
   -- Drain all the timers
   print("Pre-Drain timer list")
@@ -87,8 +90,15 @@ function DumpDatabase(questiedb_version, questie_version, debug)
 
   -- Process Item Data: Load raw DB, load static corrections, merge corrections into raw data.
   do
+    local file = FindFile(f("%sItemDB.lua", lowerQuestieVersion), nil, {}, helpers.get_script_dir())
+    if not file then
+      print(f("Failed to find %sItemDB.lua", lowerQuestieVersion))
+      print("Please run generate_database.sh or manually check out Questie into Questie-data folder")
+
+      return
+    end
     -- Load the raw ItemDB.lua file content as a string.
-    CLI_Helpers.loadFile(f("%s/_data/%sItemDB.lua", helpers.get_script_dir(), lowerVersion))
+    CLI_Helpers.loadFile(file)
     -- Execute the string to get the raw item data table.
     ---@type table<ItemId, table<number, any>>
     itemOverride = loadstring(QuestieDB.itemData)()      -- QuestieDB.itemData is loaded by loadFile
@@ -117,7 +127,15 @@ function DumpDatabase(questiedb_version, questie_version, debug)
 
   -- Process NPC Data: Load raw DB, load static corrections, merge corrections into raw data.
   do
-    CLI_Helpers.loadFile(f("%s/_data/%sNpcDB.lua", helpers.get_script_dir(), lowerVersion))
+    local file = FindFile(f("%sNpcDB.lua", lowerQuestieVersion), nil, {}, helpers.get_script_dir())
+    if not file then
+      print(f("Failed to find %sNpcDB.lua", lowerQuestieVersion))
+      print("Please run generate_database.sh or manually check out Questie into Questie-data folder")
+
+      return
+    end
+    -- Load the raw NpcDB.lua file content as a string.
+    CLI_Helpers.loadFile(file)
 
     ---@type table<NpcId, table<number, any>>
     npcOverride = loadstring(QuestieDB.npcData)()
@@ -145,7 +163,15 @@ function DumpDatabase(questiedb_version, questie_version, debug)
 
   -- Process Object Data: Load raw DB, load static corrections, merge corrections into raw data.
   do
-    CLI_Helpers.loadFile(f("%s/_data/%sObjectDB.lua", helpers.get_script_dir(), lowerVersion))
+    local file = FindFile(f("%sObjectDB.lua", lowerQuestieVersion), nil, {}, helpers.get_script_dir())
+    if not file then
+      print(f("Failed to find %sObjectDB.lua", lowerQuestieVersion))
+      print("Please run generate_database.sh or manually check out Questie into Questie-data folder")
+
+      return
+    end
+    -- Load the raw ObjectDB.lua file content as a string.
+    CLI_Helpers.loadFile(file)
 
     ---@type table<ObjectId, table<number, any>>
     objectOverride = loadstring(QuestieDB.objectData)()
@@ -173,7 +199,15 @@ function DumpDatabase(questiedb_version, questie_version, debug)
 
   -- Process Quest Data: Load raw DB, load static corrections, merge corrections into raw data.
   do
-    CLI_Helpers.loadFile(f("%s/_data/%sQuestDB.lua", helpers.get_script_dir(), lowerVersion))
+    local file = FindFile(f("%sQuestDB.lua", lowerQuestieVersion), nil, {}, helpers.get_script_dir())
+    if not file then
+      print(f("Failed to find %sQuestDB.lua", lowerQuestieVersion))
+      print("Please run generate_database.sh or manually check out Questie into Questie-data folder")
+
+      return
+    end
+    -- Load the raw QuestDB.lua file content as a string.
+    CLI_Helpers.loadFile(file)
 
     ---@type table<QuestId, table<number, any>>
     questOverride = loadstring(QuestieDB.questData)()
@@ -215,8 +249,8 @@ function DumpDatabase(questiedb_version, questie_version, debug)
     for _, entityType in ipairs(entityTypes) do
       local newLookup = entityType:lower() .. "Lookup"
       l10n[newLookup] = {}
-      CLI_Helpers.loadXML(helpers.get_project_dir_path() ..
-        f("/.database_generator/Questie-data/Localization/lookups/%s/lookup%ss/lookup%ss.clean.xml", questie_version, entityType, entityType))
+      CLI_Helpers.loadXML(helpers.get_script_dir() ..
+        f("/Questie-data/Localization/lookups/%s/lookup%ss/lookup%ss.clean.xml", questie_version, entityType, entityType))
     end
 
     -- Validate that all the lookups are loaded
@@ -242,11 +276,11 @@ function DumpDatabase(questiedb_version, questie_version, debug)
     end
 
     -- Load the mangos translations, it will not replace the existing translations, but will add to them.
-    print("Trying to load", helpers.get_project_dir_path() ..
-      f("/.database_generator/mangos_translation/translations/%s/locales_%s.xml", lowerVersion, lowerVersion))
+    print("Trying to load", helpers.get_script_dir() ..
+      f("/mangos_translation/translations/%s/locales_%s.xml", lowerQuestieDBVersion, lowerQuestieDBVersion))
     CLI_Helpers.loadXML(
-      helpers.get_project_dir_path() ..
-      f("/.database_generator/mangos_translation/translations/%s/locales_%s.xml", lowerVersion, lowerVersion),
+      helpers.get_script_dir() ..
+      f("/mangos_translation/translations/%s/locales_%s.xml", lowerQuestieDBVersion, lowerQuestieDBVersion),
       true
     )
 
@@ -396,8 +430,6 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   --------------------------------------------------------------------
 
   -- Create output directories if they don't exist.
-  -- ---@type string
-  -- local basePath = f("%s/_data/output", helpers.get_script_dir())
   ---@type string
   local basePath = f("%s/Database", helpers.get_project_dir_path())
   if not lfs.attributes(basePath, "mode") then
@@ -410,7 +442,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
       lfs.mkdir(path)
       print("Created directory: " .. path)
     end
-    local versionPath = f("%s/%s", path, capitalizedVersion)
+    local versionPath = f("%s/%s", path, capitalizedQuestieDBVersion)
     if not lfs.attributes(versionPath, "mode") then
       lfs.mkdir(versionPath)
       print("Created directory: " .. versionPath)
@@ -424,16 +456,16 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   print(c("\nDumping L10n overrides", "yellow"))
   ---@type string
   local l10nDataString = l10n_loader.DumpL10nData(Corrections.L10nMeta, entityTypes, l10nOverride)
-  local l10nDumpFile = io.open(f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedVersion), "w")
+  local l10nDumpFile = io.open(f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedQuestieDBVersion), "w")
   if l10nDumpFile and l10nDataString then
     l10nDumpFile:write(l10nDataString)
     l10nDumpFile:close()
-    print("Dumped l10n data to " .. f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedVersion))
+    print("Dumped l10n data to " .. f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedQuestieDBVersion))
   else
-    print("Failed to open file for writing: " .. f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedVersion))
+    print("Failed to open file for writing: " .. f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedQuestieDBVersion))
   end
 
-  local path = f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedVersion)
+  local path = f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedQuestieDBVersion)
   print("Reading L10n data from " .. path)
   local l10nFile = io.open(path, "r")
   assert(l10nFile, "Failed to open file for reading " .. path)
@@ -457,7 +489,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   local itemDataString = helpers.dumpData(itemOverride, Corrections.ItemMeta.itemKeys, Corrections.ItemMeta.dumpFuncs,
                                           Corrections.ItemMeta.combine)
   -- Write the string to ItemData.lua-table.
-  local itemFile = io.open(f("%s/Item/%s/ItemData.lua-table", basePath, capitalizedVersion), "w")
+  local itemFile = io.open(f("%s/Item/%s/ItemData.lua-table", basePath, capitalizedQuestieDBVersion), "w")
   assert(itemFile, "Failed to open file for writing")
   itemFile:write(itemDataString)
   itemFile:close()
@@ -469,7 +501,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   -- ? Dump Quest Data
   print(c("\nDumping quest overrides", "yellow"))
   local questDataString = helpers.dumpData(questOverride, Corrections.QuestMeta.questKeys, Corrections.QuestMeta.dumpFuncs)
-  local questFile = io.open(f("%s/Quest/%s/QuestData.lua-table", basePath, capitalizedVersion), "w")
+  local questFile = io.open(f("%s/Quest/%s/QuestData.lua-table", basePath, capitalizedQuestieDBVersion), "w")
   assert(questFile, "Failed to open file for writing")
   questFile:write(questDataString)
   questFile:close()
@@ -482,7 +514,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   print(c("\nDumping npc overrides", "yellow"))
   local npcDataString = helpers.dumpData(npcOverride, Corrections.NpcMeta.npcKeys, Corrections.NpcMeta.dumpFuncs,
                                          Corrections.NpcMeta.combine)
-  local npcFile = io.open(f("%s/Npc/%s/NpcData.lua-table", basePath, capitalizedVersion), "w")
+  local npcFile = io.open(f("%s/Npc/%s/NpcData.lua-table", basePath, capitalizedQuestieDBVersion), "w")
   assert(npcFile, "Failed to open file for writing")
   npcFile:write(npcDataString)
   npcFile:close()
@@ -495,7 +527,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   print(c("\nDumping object overrides", "yellow"))
   local objectDataString = helpers.dumpData(objectOverride, Corrections.ObjectMeta.objectKeys,
                                             Corrections.ObjectMeta.dumpFuncs)
-  local objectFile = io.open(f("%s/Object/%s/ObjectData.lua-table", basePath, capitalizedVersion), "w")
+  local objectFile = io.open(f("%s/Object/%s/ObjectData.lua-table", basePath, capitalizedQuestieDBVersion), "w")
   assert(objectFile, "Failed to open file for writing")
   objectFile:write(objectDataString)
   objectFile:close()
@@ -505,5 +537,5 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   -- GenerateHtmlForEntityType(objectOverride, Corrections.ObjectMeta, "Object", version, 75, 650, debug)
 
 
-  print(f("\n\27[32m%s corrections dumped successfully\27[0m", capitalizedVersion))
+  print(f("\n\27[32m%s corrections dumped successfully\27[0m", capitalizedQuestieDBVersion))
 end
