@@ -77,7 +77,7 @@ QuestieLoader = {
 }
 
 -- ? Load all the tables.
-CLI_Helpers.loadXML(helpers.get_project_dir_path() .. "/.database_generator/Questie-translations/Localization/Translations/Translations.xml")
+CLI_Helpers.loadXML(helpers.get_project_dir_path() .. "/.database_generator/Questie-data/Localization/Translations/Translations.xml")
 
 
 local single_translation = {}

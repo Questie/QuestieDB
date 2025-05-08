@@ -216,7 +216,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
       local newLookup = entityType:lower() .. "Lookup"
       l10n[newLookup] = {}
       CLI_Helpers.loadXML(helpers.get_project_dir_path() ..
-        f("/.database_generator/Questie-translations/Localization/lookups/%s/lookup%ss/lookup%ss.clean.xml", questie_version, entityType, entityType))
+        f("/.database_generator/Questie-data/Localization/lookups/%s/lookup%ss/lookup%ss.clean.xml", questie_version, entityType, entityType))
     end
 
     -- Validate that all the lookups are loaded

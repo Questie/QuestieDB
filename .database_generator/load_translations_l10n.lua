@@ -17,9 +17,9 @@ local export = {}
 function export.CleanFiles(version, type)
   local cleaned_files = {}
   local capitalized_type = helpers.capitalize(type)
-  -- Remove the first 3 lines in all .lua files in .database_generator\Questie-translations\Localization\lookups\Classic\lookupItems
+  -- Remove the first 3 lines in all .lua files in .database_generator\Questie-data\Localization\lookups\Classic\lookupItems
   local path = helpers.get_project_dir_path() ..
-      "/.database_generator/Questie-translations/Localization/lookups/" .. version .. "/lookup" .. capitalized_type .. "s/"
+      "/.database_generator/Questie-data/Localization/lookups/" .. version .. "/lookup" .. capitalized_type .. "s/"
   -- Get all .lua files in the directory
   local files = helpers.get_files_in_directory(path, "lua")
   for _, file in ipairs(files) do
@@ -64,9 +64,9 @@ function export.CleanFiles(version, type)
   end
 
   -- Change the XML file to point to the cleaned files
-  -- Example path: .database_generator\Questie-translations\Localization\lookups\Classic\lookupItems\lookupItems.xml
+  -- Example path: .database_generator\Questie-data\Localization\lookups\Classic\lookupItems\lookupItems.xml
   local xml_path = helpers.get_project_dir_path() ..
-      "/.database_generator/Questie-translations/Localization/lookups/" .. version .. "/lookup" .. capitalized_type .. "s/lookup" .. capitalized_type .. "s.xml"
+      "/.database_generator/Questie-data/Localization/lookups/" .. version .. "/lookup" .. capitalized_type .. "s/lookup" .. capitalized_type .. "s.xml"
   local xml_filedata = io.open(xml_path, "r")
   -- <Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
   --   <Script file="deDE.lua"/>
