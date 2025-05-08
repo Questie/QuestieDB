@@ -234,7 +234,6 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   end
 
   -- Process L10n Data: Load raw DB, load static corrections, merge corrections into raw data.
-  local output
   do
     -- ? l10n dump
     print("Loading version: " .. questie_version)
