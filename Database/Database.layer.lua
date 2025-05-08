@@ -3,13 +3,15 @@
 ---@class LibQuestieDB
 local LibQuestieDB = select(2, ...)
 
+
+---@type table<string, string> @ Only used when running the CLI
+local TemplateToPath = {}
+
 ---@class Database
----@field package TemplateToPath table<string, string> @ Only used when running the CLI
----@field package CreateFakeFrame fun(GetTextTable: table):table
 local Database = LibQuestieDB.Database
 
 local f = string.format
-function Database.GetTemplateNames()
+local function GetTemplateNames()
   print("Getting all template names")
 
   -- Figure out current version
@@ -28,7 +30,7 @@ function Database.GetTemplateNames()
   print("Current version: " .. currentVersion)
 
   ---@type table<string, string>
-  Database.TemplateToPath = {}
+  TemplateToPath = {}
   for entityType in pairs(Database.entityTypes) do
     local templateFile = entityType .. "DataFiles.xml"
     assert(type(FindFile) == "function", "FindFile function is missing.")
@@ -42,9 +44,9 @@ function Database.GetTemplateNames()
     for line in io.lines(filepath) do
       local templateName, filePath = line:match('<SimpleHTML name="([^"]+)" file="Interface\\AddOns\\QuestieDB\\([^"]+)"')
       if templateName and filePath then
-        Database.TemplateToPath[templateName] = "./" .. filePath:gsub("\\", "/")
+        TemplateToPath[templateName] = "./" .. filePath:gsub("\\", "/")
         -- I was stupid once upon a time and saved the folder as lowercase... stupid me...
-        Database.TemplateToPath[templateName] = Database.TemplateToPath[templateName]:gsub("/L10n/", "/l10n/")
+        TemplateToPath[templateName] = TemplateToPath[templateName]:gsub("/L10n/", "/l10n/")
       else
         if not line:match('</*Ui>') and not line:match('<Ui ') then
           print("WARNING - Template not found in line: " .. line)
@@ -54,20 +56,18 @@ function Database.GetTemplateNames()
   end
 end
 
-do
-  local NOP = function() end
-  ---
-  function Database.CreateFakeFrame(GetTextTable)
-    local frame = {}
-    frame.Hide = NOP
-    frame.UnregisterEvent = NOP
-    frame.RegisterEvent = NOP
-    frame.SetScript = NOP
-    frame.GetRegions = function()
-      return unpack(GetTextTable)
-    end
-    return frame
+local NOP = function() end
+---
+local function CreateFakeFrame(GetTextTable)
+  local frame = {}
+  frame.Hide = NOP
+  frame.UnregisterEvent = NOP
+  frame.RegisterEvent = NOP
+  frame.SetScript = NOP
+  frame.GetRegions = function()
+    return unpack(GetTextTable)
   end
+  return frame
 end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_CreateFrame)
@@ -84,14 +84,14 @@ function Database.CreateFrame(frameType, name, parent, template, id)
   if Is_CLI then
     assert(frameType == "SimpleHTML" or frameType == "Frame", "Only SimpleHTML frames are supported in the CLI environment.")
     if frameType == "SimpleHTML" then
-      if Database.TemplateToPath == nil then
-        Database.GetTemplateNames()
+      if TemplateToPath == nil then
+        GetTemplateNames()
       end
-      assert(Database.TemplateToPath[template], "Template not found: " .. template)
+      assert(TemplateToPath[template], "Template not found: " .. template)
       -- In the CLI environment, we don't want to create frames but instead find the files that would be loaded.
       -- Example: If template is ItemData, we want to find the file "ItemDataFiles.xml" and return the path to it.
       assert(type(FindFile) == "function", "FindFile function is missing.")
-      local filepath = Database.TemplateToPath[template]
+      local filepath = TemplateToPath[template]
 
       -- ? Load the file
       local file = io.open(filepath, "r")
@@ -101,7 +101,7 @@ function Database.CreateFrame(frameType, name, parent, template, id)
 
       -- Replace all newlines with spaces
       -- TODO: When l10n is fixed to not create newlines, remove this
-      content = content:gsub("\n", " ")
+      -- content = content:gsub("\n", " ")
 
       -- ? Read all the data between <p> tags
       local allPData = {}
@@ -113,10 +113,10 @@ function Database.CreateFrame(frameType, name, parent, template, id)
         table.insert(allPData, fakeFontString)
       end
 
-      return Database.CreateFakeFrame(allPData)
+      return CreateFakeFrame(allPData)
     else
       -- ? Create a fake frame
-      return Database.CreateFakeFrame({})
+      return CreateFakeFrame({})
     end
   else
     -- ? Create a real frame

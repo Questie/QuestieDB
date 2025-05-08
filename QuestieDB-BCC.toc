@@ -30,6 +30,8 @@ Database\Quest\Tbc\QuestDataFiles.xml
 ## l10n
 Database\l10n\Tbc\L10nDataFiles.xml
 ## Translations
+Translations\Translations.layer.lua
+Translations\Translations.lua
 Translations\Translations.xml
 
 ##* Corrections Meta

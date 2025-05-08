@@ -91,6 +91,28 @@ local function RunTest(version)
   local Corrections = LibQuestieDBTable.Corrections
   local publicLibQuestieDB = LibQuestieDB()
 
+  local t = LibQuestieDBTable.Translation
+  -- print(type(t.GetTranslationFile))
+  -- for k, v in pairs(t) do
+  --   print(k, v)
+  -- end
+  -- local returnedFile = t.GetTranslationFile("Use the Apex's Crystal Focus near Archmage Vargoth's Orb")
+  -- returnedFile = t.GetTranslationFile(
+  --   "\nWhen selected, hides the quest from the map, even if it is active.\n\nHiding a quest is also possible by Shift-clicking it on the map.")
+  -- print("Returned file: ", returnedFile)
+  -- t.GetTemplateNames()
+  -- for k, v in pairs(t.TemplateToPath) do
+  --   print(k, v)
+  -- end
+  -- local foutput = t.LoadTranslationfile(returnedFile)
+  -- for k, v in pairs(foutput) do
+  --   print(k, v)
+  -- end
+  print(t.l10n("Use the Apex's Crystal Focus near Archmage Vargoth's Orb"))
+  print(t.l10n("Use the Apex's Crystal Focus near Archmage Vargoth's Orb"))
+  print(t.l10n("Use the Aspect of Neptulon."))
+  --
+  os.exit(0)
   --- Function to print details of the database
   ---@param dataType string
   ---@param dataDB QuestFunctions|ItemFunctions|NpcFunctions|ObjectFunctions

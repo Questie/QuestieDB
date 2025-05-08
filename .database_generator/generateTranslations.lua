@@ -131,7 +131,8 @@ local function write_html_file(key_path, translations, translation_func)
     file:write("<html><body>\n")
     for _, translation in ipairs(translations) do
       local fullTranslationTable, enUS = translation_func(translation)
-      file:write("<!--" .. enUS .. "-->\n")
+      -- file:write("<!--" .. enUS .. "-->\n")
+      file:write("<p>" .. enUS .. "</p>\n")
 
       if #tConcat(fullTranslationTable, splitCharacter) > SEGMENT_SIZE - REDUCE_SEGMENT_SIZE then
         print("Splitting translation into segments", translation, filename)

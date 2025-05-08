@@ -106,6 +106,8 @@ end
 require("generateTranslations")
 Compile_translations_to_html(single_translation, addon_name, getTranslation)
 
+os.exit(0)
+
 -- Run the main function
 main()
 
