@@ -45,8 +45,6 @@ require("cli.Addon_Meta")
 
 local f = string.format
 
-Is_Test = true
-
 do
   ---@diagnostic disable-next-line: lowercase-global
   function printableTable(table)
@@ -111,6 +109,7 @@ local function RunTest(version)
   print(t.l10n("Use the Apex's Crystal Focus near Archmage Vargoth's Orb"))
   print(t.l10n("Use the Apex's Crystal Focus near Archmage Vargoth's Orb"))
   print(t.l10n("Use the Aspect of Neptulon."))
+  print(t.l10n("\nWhen selected, hides the quest from the map, even if it is active.\n\nHiding a quest is also possible by Shift-clicking it on the map."))
   --
   os.exit(0)
   --- Function to print details of the database

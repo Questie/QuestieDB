@@ -12,12 +12,8 @@ l10n.currentLocale = GetLocale()
 -- Set this to nil to use the locale of the client
 -- Override locale
 -- l10n.currentLocale = "ptBR"
-
-if Is_CLI and Is_Test then
-  -- All the other data is run through the normal databases
-  -- In testing it is better to actually test another locale than enUS
-  l10n.currentLocale = "deDE"
-end
+-- If you are in the CLI environment change:
+---@see CLI_Locale which exists in cli/Addon_Meta.lua
 
 -- Order Item, Npc, Object, Quest
 -- "enUS": "", # English (US) # Yes EN is empty
@@ -196,7 +192,8 @@ do
         l10n.currentLocale = locale
         SetGetters()
       else
-        error(f("Invalid locale: %s", locale))
+        -- error(f("Invalid locale: %s", locale))
+        print(f("Invalid locale: %s", locale))
       end
     end
 

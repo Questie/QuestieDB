@@ -24,7 +24,7 @@ end
 
 --- Addon is running on Classic MoP client
 ---@type boolean
-LibQuestieDB.IsMists = WOW_PROJECT_ID == WOW_PROJECT_MISTS_CLASSIC
+LibQuestieDB.IsMoP = WOW_PROJECT_ID == WOW_PROJECT_MISTS_CLASSIC
 
 --- Addon is running on Classic Cata client
 ---@type boolean
