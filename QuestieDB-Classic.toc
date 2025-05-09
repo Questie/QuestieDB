@@ -13,13 +13,8 @@
 Library.lua
 #########################
 
-Helpers\VersionCheck.lua
-Helpers\_s.lua
-
 #* Helpers
-Helpers\DebugText.lua
-Helpers\ThreadLib.lua
-Helpers\Helpers.lua
+Helpers\Helpers.xml
 
 #* Database
 ## Data embeds
