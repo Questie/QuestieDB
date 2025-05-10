@@ -75,3 +75,38 @@ LibQuestieDB.IsAnniversaryHardcore = LibQuestieDB.IsClassic and C_Seasons.HasAct
 --- Addon is running on a HardCore realm specifically
 ---@type boolean
 LibQuestieDB.IsHardcore = C_GameRules and C_GameRules.IsHardcoreActive()
+
+do
+  -- Figure out current version
+  -- This is used mainly (or maybe only) for the CLI
+  -- But we might as well make it always available as it is more natually defined here.
+  if LibQuestieDB.IsClassic then
+    LibQuestieDB.CurrentVersion = "Era"
+  elseif LibQuestieDB.IsTBC then
+    LibQuestieDB.CurrentVersion = "Tbc"
+  elseif LibQuestieDB.IsWotlk then
+    LibQuestieDB.CurrentVersion = "Wotlk"
+  elseif LibQuestieDB.IsCata then
+    LibQuestieDB.CurrentVersion = "Cata"
+  elseif LibQuestieDB.IsMoP then
+    LibQuestieDB.CurrentVersion = "MoP"
+  end
+
+  -- If LibQuestieDB.CurrentVersion is not set, then we are running on a non-supported client
+  if not LibQuestieDB.CurrentVersion then
+    C_Timer.After(1, function()
+      LibQuestieDB.ColorizePrint("red", "WARNING - Current version not set. This is likely a bug.")
+      -- ? Print all the IsEra, IsSoD, IsTbc, IsWotlk, IsCata and so on...
+      for k, v in pairs(LibQuestieDB) do
+        if type(k) == "string" then
+          if k:sub(1, 2) == "Is" and type(v) == "boolean" then
+            local enabled = v and LibQuestieDB.ColorizeText("green", tostring(v)) or LibQuestieDB.ColorizeText("gray", tostring(v))
+            print(LibQuestieDB.ColorizeText("yellow", k), ":", enabled)
+          end
+        end
+      end
+      error("Current version not set. This is likely a bug. Or the version is not supported.")
+    end)
+    return
+  end
+end

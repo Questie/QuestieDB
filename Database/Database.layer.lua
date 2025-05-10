@@ -14,27 +14,15 @@ local f = string.format
 local function GetTemplateNames()
   print("Getting all template names")
 
-  -- Figure out current version
-  local currentVersion = "Era"
-  if LibQuestieDB.IsClassic then
-    currentVersion = "Era"
-  elseif LibQuestieDB.IsTBC then
-    currentVersion = "TBC"
-  elseif LibQuestieDB.IsWotlk then
-    currentVersion = "Wotlk"
-  elseif LibQuestieDB.IsCata then
-    currentVersion = "Cata"
-  elseif LibQuestieDB.IsMoP then
-    currentVersion = "MoP"
-  end
-  print("Current version: " .. currentVersion)
+  assert(LibQuestieDB.CurrentVersion ~= nil, "Current version not set. This is likely a bug.")
+  print("Current version: " .. LibQuestieDB.CurrentVersion)
 
   ---@type table<string, string>
   TemplateToPath = {}
   for entityType in pairs(Database.entityTypes) do
     local templateFile = entityType .. "DataFiles.xml"
     assert(type(FindFile) == "function", "FindFile function is missing.")
-    local filepath = FindFile(templateFile, currentVersion)
+    local filepath = FindFile(templateFile, LibQuestieDB.CurrentVersion)
     print(f("Data file found (%s): %s", tostring(templateFile), tostring(filepath)))
     -- Read the file and parse the XML
     -- Example content
