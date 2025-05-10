@@ -40,10 +40,13 @@ do
   ---@type FunctionContainer
   local timer
   local function bucketLoaded()
-    print("All Addons loaded")
-    --- We give it 0.2 seconds to allow other code to run first
+    --? We give it 0.2 seconds to allow other code to run first
+    --? We listen to the ADDON_LOADED event to allow all other addons to load first
+    --? As we are a library, we need to wait for the other addons to load allowing them to register
+    --? overrides and similar things
     C_Timer.After(0.2, function()
       if Database.debugEnabled then
+        print("All Addons loaded")
         LibQuestieDB.ColorizePrint("lightBlue", "QuestieDB: Debug mode enabled")
         _GLibQuestieDB = LibQuestieDB
       end
@@ -53,7 +56,6 @@ do
     LibQuestieDB.RegisteredEvents["ADDON_LOADED"] = nil
   end
   LibQuestieDB.RegisteredEvents["ADDON_LOADED"] = function(addonName)
-    print("Addon loaded: " .. addonName)
     if timer then
       timer:Cancel()
     end

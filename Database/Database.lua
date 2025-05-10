@@ -20,12 +20,14 @@ local l10n = LibQuestieDB.l10n
 ------------------------------
 
 --? Some prints require both to be true some only debugPrintEnabled
---? debugEnabled: Enable more debug code and the FontString box prints
-Database.debugEnabled = true
---? debugPrintEnabled: Enable debug message box prints, if only enabled provides some basic information
-Database.debugPrintEnabled = true
+--? debugEnabled: Enable more debug code and prints
+Database.debugEnabled = false
+--? debugPrintEnabled: Enable debug message box prints, it only enabled provides some basic information
+Database.debugPrintEnabled = false
 --? debugLoadStaticEnabled: Enable loading of the static data into override tables (Useful for correction development)
-Database.debugLoadStaticEnabled = true
+Database.debugLoadStaticEnabled = false
+--? debugPrintNewIdsEnabled: Enable debug prints for new ids (Useful when doing corrections, but can get spammy for SoD or other dynamic heavy versions)
+Database.debugPrintNewIdsEnabled = false
 
 --* We want these to always be enabled in CLI
 Database.debugEnabled = Is_CLI and true or Database.debugEnabled
@@ -67,7 +69,9 @@ local assert        = assert
 
 function Database.Init()
   local startTotal = 0
-  print("-- Database Initialization --")
+  if Database.debugPrintEnabled or Database.debugEnabled then
+    LibQuestieDB.ColorizePrint("purple", "-- Database Initialization --")
+  end
   -- l10n
   debugprofilestart()
   l10n.InitializeDynamic()
@@ -239,9 +243,9 @@ do
     for id in pairs(dataOverride) do
       if not allIdsSet[tostring(id)] then
         -- Print what we found
-        -- if not Database.debugLoadStaticEnabled and Database.debugPrintEnabled and Database.debugEnabled then
-        --   LibQuestieDB.ColorizePrint("reputationBlue", "  Adding new ID", id)
-        -- end
+        if Database.debugPrintNewIdsEnabled and Database.debugPrintEnabled then
+          LibQuestieDB.ColorizePrint("reputationBlue", "  Adding new ID", id)
+        end
         tInsert(newIds, id)
       end
     end

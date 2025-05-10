@@ -27,11 +27,11 @@ function LibQuestieDB.EventRegistrator()
     end,
     __newindex = function(_, event, func)
       if RegisteredEvents[event] and func == nil then
-        print("Unregistering", event)
+        -- print("Unregistering", event)
         eventFrame:UnregisterEvent(event)
         RegisteredEvents[event] = nil
       else
-        print("Registering", event)
+        -- print("Registering", event)
         eventFrame:RegisterEvent(event)
         RegisteredEvents[event] = func
       end

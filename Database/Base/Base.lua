@@ -157,6 +157,7 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
       local correctionList = allCorrections[correctionType]
       if correctionList then
         if Database.debugPrintEnabled then
+          LibQuestieDB.ColorizePrint("blue", f(" Loading %s", correctionType:gsub("^%l", string.upper)))
           debugPrint(f("  %s Applied", LibQuestieDB.Capitalized(correctionType)))
         end
         for _, correctionObject in pairs(correctionList) do
