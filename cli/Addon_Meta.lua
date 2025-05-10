@@ -26,7 +26,8 @@ CLI_addonName = "QuestieDB"
 CLI_addonTable = {}
 
 -- "Client" data
-CLI_Locale = "enUS"
+CLI_Locale = "deDE"
+-- CLI_Locale = "enUS"
 
 -- "Player" data
 CLI_PlayerLevel = 60

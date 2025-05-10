@@ -4,6 +4,7 @@ local LibQuestieDB = select(2, ...)
 
 local Corrections = LibQuestieDB.Corrections
 local l10n = LibQuestieDB.l10n
+local ExtraTranslation = LibQuestieDB.ExtraTranslation
 
 --- Multiple inheritance for Quest
 
@@ -211,10 +212,37 @@ do
   ---@type fun(id: QuestId):ReputationPair[]?
   QuestFunctions.reputationReward = Quest.AddTableGetter(26, "reputationReward")
 
-  -- Function to get the extra objectives of the quest<br>
-  -- Returns <INSERT EXAMPLE>
-  ---@type fun(id: QuestId):ExtraObjective?
-  QuestFunctions.extraObjectives = Quest.AddTableGetter(27, "extraObjectives")
+  do
+    -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
+    if l10n.currentLocale == "enUS" and not LibQuestieDB.Database.debugEnabled then
+      -- Function to get the extra objectives of the quest<br>
+      -- Returns <INSERT EXAMPLE>
+      ---@type fun(id: QuestId):ExtraObjective[]?
+      QuestFunctions.extraObjectives = Quest.AddTableGetter(27, "extraObjectives")
+    else
+      -- Funfction to get the extra objectives of the quest<br>
+      -- Returns <INSERT EXAMPLE>
+      ---@type fun(id: QuestId):ExtraObjective[]?
+      local extraObjectives_enUS = Quest.AddTableGetter(27, "extraObjectives")
+
+      -- Function to get the extra objectives of the quest<br>
+      -- Returns <INSERT EXAMPLE>
+      ---@type fun(id: QuestId):ExtraObjective[]?
+      QuestFunctions.extraObjectives = function(id)
+        local extraObjectives = extraObjectives_enUS(id)
+        if extraObjectives then
+          -- We loop through the extra objectives and translate them
+          for _, extraObjective in ipairs(extraObjectives) do
+            if extraObjective[3] and type(extraObjective[3]) == "string" then
+              extraObjective[3] = ExtraTranslation.GetTranslation(extraObjective[3])
+            end
+          end
+        end
+        return extraObjectives
+      end
+    end
+  end
+  -- /dump LibQuestieDB().Quest.extraObjectives(735)
 
   -- Function to get the spell required to start the quest<br>
   -- Returns 12345
