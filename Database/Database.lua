@@ -123,12 +123,6 @@ function Database.Init()
     print("Total time elapsed:", format("%.4f", startTotal), "ms")
   end
   Database.Initialized = true
-
-  --- Is the database initialized
-  ---@return boolean
-  LibQuestieDB.PublicLibQuestieDB.IsInitialized = function()
-    return Database.Initialized
-  end
 end
 
 --? Fetch functions for the database
