@@ -9,7 +9,7 @@ local f = string.format
 ---@class l10n:DatabaseType
 local l10n = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.l10n, "l10n", {})
 l10n.currentLocale = GetLocale()
--- Set this to nil to use the locale of the client
+-- Set this to nil to use the locale of the ingame client
 -- Override locale
 -- l10n.currentLocale = "ptBR"
 -- If you are in the CLI environment change:

@@ -34,7 +34,7 @@ do
   -- 10. ['teachesSpell'] -- int, spellID taught by this item upon use
 
   -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
-  if l10n.currentLocale == "enUS" then
+  if l10n.currentLocale == "enUS" and not LibQuestieDB.Database.debugEnabled then
     ---Returns the name of the item.
     ---@type fun(id: ItemId):Name?
     ItemFunctions.name = Item.AddStringGetter(1, "name")

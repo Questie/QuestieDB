@@ -26,7 +26,7 @@ do
   -- ? QuestieDB Data structure for Quests
 
   -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
-  if l10n.currentLocale == "enUS" then
+  if l10n.currentLocale == "enUS" and not LibQuestieDB.Database.debugEnabled then
     ---Returns the object name.
     ---@type fun(id: ObjectId):Name?
     ObjectFunctions.name = Object.AddStringGetter(1, "name")

@@ -66,7 +66,7 @@ do
   local emptyTable = LibQuestieDB.CreateReadOnlyEmptyTable()
 
   -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
-  if l10n.currentLocale == "enUS" then
+  if l10n.currentLocale == "enUS" and not LibQuestieDB.Database.debugEnabled then
     -- Function to get the name of the quest<br>
     -- Returns "The Lost Artifact"
     ---@type fun(id: QuestId):Name?
@@ -109,7 +109,7 @@ do
   QuestFunctions.requiredClasses = Quest.AddNumberGetter(7, "requiredClasses", 0)
 
   -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
-  if l10n.currentLocale == "enUS" then
+  if l10n.currentLocale == "enUS" and not LibQuestieDB.Database.debugEnabled then
     -- Function to get the text of the quest objectives<br>
     -- Returns {"Find the lost artifact", "Return to the qu
     ---@type fun(id: QuestId):string[]?
