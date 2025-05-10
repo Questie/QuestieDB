@@ -72,8 +72,10 @@ SlashCmdList["QuestieDB"] = function(args)
     Object.RunGetTest(true)
     Quest.RunGetTest(true)
     Item.RunGetTest(true)
-    LibQuestieDB.ColorizePrint("yellow", "Running l10n tests")
+    LibQuestieDB.ColorizePrint("yellow", "Running l10n tests (deDE)")
+    l10n.SetLocale("deDE")
     l10n.RunGetTest(true)
+    l10n.SetLocale(GetLocale())
     LibQuestieDB.ColorizePrint("yellow", "--- Testing Done ---")
   elseif args == "t" then
     local floor = math.floor
