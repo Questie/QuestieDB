@@ -140,7 +140,7 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
     if Database.debugPrintEnabled then
       LibQuestieDB.ColorizePrint("yellow", f("Loading %s Corrections", captializedType))
       if not Database.debugLoadStaticEnabled then
-        LibQuestieDB.ColorizePrint("gray", "Skipping static correction loading for", captializedType)
+        LibQuestieDB.ColorizePrint("gray", " Skipping static correction loading for", captializedType)
       end
     end
 

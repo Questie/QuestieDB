@@ -72,7 +72,7 @@ function ExtraTranslation.CreateFrame(frameType, name, parent, template, id)
       if TemplateToPath == nil then
         GetTemplateNames()
       end
-      assert(TemplateToPath and TemplateToPath[template], "Template not found: " .. template)
+      assert(TemplateToPath and TemplateToPath[template], "Template not found: " .. tostring(template))
       -- In the CLI environment, we don't want to create frames but instead find the files that would be loaded.
       assert(type(FindFile) == "function", "FindFile function is missing.")
       local filepath = TemplateToPath[template]
