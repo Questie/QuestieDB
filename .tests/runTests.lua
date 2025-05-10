@@ -177,16 +177,17 @@ local function RunTest(version)
   end
 
   print("------------------ Running all tests")
-  LibQuestieDBTable.Item.RunGetTest(true)
-  LibQuestieDBTable.Npc.RunGetTest(true)
-  LibQuestieDBTable.Object.RunGetTest(true)
-  LibQuestieDBTable.Quest.RunGetTest(true)
+  print("NOTE: The first test initializes frames so it take more time than other functions")
   for _, locale in ipairs(LibQuestieDBTable.Corrections.L10nMeta.locales) do
     LibQuestieDBTable.l10n.SetLocale(locale)
     print(f("Running l10n tests", locale))
     print(f(" Locale:  (%s)", locale))
     LibQuestieDBTable.l10n.RunGetTest(true)
   end
+  LibQuestieDBTable.Item.RunGetTest(true)
+  LibQuestieDBTable.Npc.RunGetTest(true)
+  LibQuestieDBTable.Object.RunGetTest(true)
+  LibQuestieDBTable.Quest.RunGetTest(true)
 end
 local validVersions = {
   ["era"] = true,

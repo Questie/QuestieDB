@@ -68,12 +68,9 @@ end
 SlashCmdList["QuestieDB"] = function(args)
   if args == "test" then
     LibQuestieDB.ColorizePrint("yellow", "Running data tests")
-    Npc.RunGetTest(true)
-    Object.RunGetTest(true)
-    Quest.RunGetTest(true)
-    Item.RunGetTest(true)
     if LibQuestieDB.Database.debugEnabled then
       LibQuestieDB.ColorizePrint("yellow", "Running l10n tests (deDE)")
+      LibQuestieDB.ColorizePrint("orange", "The first test initializes frames so it take more time than other functions")
       l10n.SetLocale("deDE")
       l10n.RunGetTest(true)
       l10n.SetLocale(GetLocale())
@@ -81,6 +78,10 @@ SlashCmdList["QuestieDB"] = function(args)
       LibQuestieDB.ColorizePrint("red", "l10n tests skipped (debug mode not enabled)")
       LibQuestieDB.ColorizePrint("red", "Please enable debug otherwise the l10n tests can't run properly")
     end
+    Npc.RunGetTest(true)
+    Object.RunGetTest(true)
+    Quest.RunGetTest(true)
+    Item.RunGetTest(true)
     LibQuestieDB.ColorizePrint("yellow", "--- Testing Done ---")
   elseif args == "t" then
     local floor = math.floor
