@@ -65,6 +65,9 @@ end
 function LibQuestieDB.ColorizeText(color, text)
   assert(type(color) == "string", "Color must be a string")
   assert(type(text) == "string", "Text must be a string")
+  if Is_CLI then
+    return text -- CLI does not support these color codes
+  end
 
   local c;
 
