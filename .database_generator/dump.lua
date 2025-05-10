@@ -392,17 +392,17 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     local current_len = 0
     for _, id in ipairs(all_ids) do
       local id_str = tostring(id)
-      local id_len = #id_str + 1 -- Include comma
+      local id_len = #id_str + 1                                                 -- Include comma
       if current_len + id_len > max_p_size and #current_p > 0 then
-        ids_file:write("<p>" .. table.concat(current_p, ",") .. "</p>\n")
+        ids_file:write("<p>" .. table.concat(current_p, ",") .. "," .. "</p>\n") -- Always end with a , because we split on ,
         current_p = {}
         current_len = 0
       end
       table.insert(current_p, id_str)
       current_len = current_len + id_len
     end
-    if #current_p > 0 then -- Write remaining IDs
-      ids_file:write("<p>" .. table.concat(current_p, ",") .. "</p>\n")
+    if #current_p > 0 then                                                     -- Write remaining IDs
+      ids_file:write("<p>" .. table.concat(current_p, ",") .. "," .. "</p>\n") -- Always end with a , because we split on ,
     end
     ids_file:write("</body></html>\n")
     ids_file:close()
