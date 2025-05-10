@@ -11,7 +11,7 @@ local l10n = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.l10n, "l10n", {})
 l10n.currentLocale = GetLocale()
 -- Set this to nil to use the locale of the ingame client
 -- Override locale
--- l10n.currentLocale = "ptBR"
+-- l10n.currentLocale = "deDE"
 -- If you are in the CLI environment change:
 ---@see CLI_Locale which exists in cli/Addon_Meta.lua
 

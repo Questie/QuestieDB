@@ -1,25 +1,25 @@
 ---@class LibQuestieDB
----@field Translation Translation
-local LibQuestieDB = select(2, ...)
+---@field ExtraTranslation ExtraTranslation
+local LibQuestieDB     = select(2, ...)
 
 --*---- Create Module --------
----@class Translation
-local Translation  = LibQuestieDB.Translation
-local pTranslation = {}
+---@class ExtraTranslation
+local ExtraTranslation = LibQuestieDB.ExtraTranslation
+local pTranslation     = {}
 
 ---- Local Functions ----
 --* For performance reasons we check Is_CLI here, Translation.CreateFrame supports both CLI and WOW
-local CreateFrame  = Is_CLI and Translation.CreateFrame or CreateFrame
-local gsub         = string.gsub
-local sub          = string.sub
-local type         = type
-local f            = string.format
+local CreateFrame      = Is_CLI and ExtraTranslation.CreateFrame or CreateFrame
+local gsub             = string.gsub
+local sub              = string.sub
+local type             = type
+local f                = string.format
 
-local allLowerCase = true
-
-Translation.l10n   = {}
+local allLowerCase     = true
 
 local function extractLocaleText(text, locale)
+  -- Pattern to select everything between [] prefixed with the locale
+  -- E.g. deDE[Benutze den Aspekt von Neptulon.]
   -- deDE%[([^‡]*)%]
   local pattern = locale .. "%[([^‡]*)%]"
   local result = text:match(pattern)
@@ -31,41 +31,40 @@ local function extractLocaleText(text, locale)
   end
 end
 
-local translationLookups = setmetatable(Translation.l10n, {
-  __index = function(t, k)
-    local returnedFile = pTranslation.GetTranslationFile(k)
-    pTranslation.LoadTranslationfile(returnedFile)
-    if t[k] then
-      print("Found translation for: " .. k)
-      -- return t[k]
-      return extractLocaleText(t[k], LibQuestieDB.l10n.currentLocale) or k
-    else
-      -- If the file is not found, return enUS
-      print("Translation not found for: " .. k)
-      return k
-    end
-  end,
-  __call = function(t, k)
-    if not k or k == "" then
-      return nil
-    end
-    if t[k] then
-      -- return t[k]
-      return extractLocaleText(t[k], LibQuestieDB.l10n.currentLocale) or k
-    end
+local translationsData = {}
 
-    local returnedFile = pTranslation.GetTranslationFile(k)
+---Get translation for a given string if it exists, otherwise return the string itself.
+---@param text string -- The text to be translated, will return the current locale.
+---@param locale localeType? -- Mostly a helper for testing
+---@return nil
+function ExtraTranslation.GetTranslation(text, locale)
+  -- If the text is nil or empty, return nil
+  if not text then
+    return nil
+  end
+  -- If the locale is enUS, return text
+  if LibQuestieDB.l10n.currentLocale == "enUS" and not locale then
+    return text
+  end
+  -- If the locale is not set, use the current locale
+  if not locale then
+    locale = LibQuestieDB.l10n.currentLocale
+  end
+
+  -- Do we have the translation already?
+  local translations = translationsData[text]
+  if not translations then
+    -- If not, load the translation file
+    local returnedFile = pTranslation.GetTranslationFile(text)
     pTranslation.LoadTranslationfile(returnedFile)
-    if t[k] then
-      print("Found translation for: " .. k)
-      return extractLocaleText(t[k], LibQuestieDB.l10n.currentLocale) or k
-    else
-      -- If the file is not found, return enUS
-      print("Translation not found for: " .. k)
-      return k
-    end
-  end,
-})
+
+    -- Get the translation again
+    translations = translationsData[text]
+  end
+
+  -- If we have the translation, extract the locale text,
+  return translations and (extractLocaleText(translations, locale) or text) or text
+end
 
 do
   ---@type table<string, boolean>
@@ -89,7 +88,8 @@ do
       local combinedString = translationRegions[i + 1]:GetText()
       -- print(f("English: %s", englishString))
       -- print(f("Combined: %s", combinedString))
-      rawset(translationLookups, englishString, combinedString)
+      -- rawset(translationLookups, englishString, combinedString)
+      translationsData[englishString] = combinedString
     end
     -- fileCache[FrameName] = strsplittable(",", combinedString)
     -- return fileCache[FrameName]
@@ -109,6 +109,8 @@ function pTranslation.GetTranslationFile(key)
     return nil
   end
 
+  -- You can find LibQuestieDB.translationsLookup in the Translations\TranslationsLookup.lua - file
+  -- If you don't have it you have to run the database generator script.
   local current = LibQuestieDB.translationsLookup
   -- Remove all whitespaces from the string
   local cleanedKey = gsub(allLowerCase and key:lower() or key, "%s", "")
@@ -124,6 +126,7 @@ function pTranslation.GetTranslationFile(key)
 
     if type(current) == "table" then
       if current[char] then
+        ---@diagnostic disable-next-line: cast-local-type
         current = current[char] -- Advance to the next part of the lookup or the final value
 
         -- If the new 'current' value is a string, we've found our target
@@ -159,3 +162,16 @@ function pTranslation.GetTranslationFile(key)
   -- This is a fallback.
   return nil
 end
+
+--? This function is used to export all the functions to the Public and Private namespaces
+--? It gets called at the end of this file
+local function exportFunctions()
+  -- local publicL10n = {}
+
+  -- publicL10n.l10n = translationLookups
+
+  assert(not LibQuestieDB.PublicLibQuestieDB.l10n, "LibQuestieDB.PublicLibQuestieDB.l10n is not nil")
+  LibQuestieDB.PublicLibQuestieDB.l10n = ExtraTranslation.GetTranslation
+end
+
+exportFunctions()

@@ -7,8 +7,8 @@ local LibQuestieDB = select(2, ...)
 ---@type table<string, string> @ Only used when running the CLI
 local TemplateToPath
 
----@class Translation
-local Translation = LibQuestieDB.Translation
+---@class ExtraTranslation
+local ExtraTranslation = LibQuestieDB.ExtraTranslation
 
 local f = string.format
 
@@ -55,6 +55,7 @@ local function CreateFakeFrame(GetTextTable)
 end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_CreateFrame)
+---@private
 ---@generic T, Tp
 ---@param frameType `T` | FrameType
 ---@param name? string
@@ -62,7 +63,7 @@ end
 ---@param template? `Tp` | Template
 ---@param id? number
 ---@return table|T|Tp frame
-function Translation.CreateFrame(frameType, name, parent, template, id)
+function ExtraTranslation.CreateFrame(frameType, name, parent, template, id)
   -- Is_CLI is set in the CLI environment, otherwise it is nil
   ---@diagnostic disable-next-line: undefined-global
   if Is_CLI then

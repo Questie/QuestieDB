@@ -60,11 +60,12 @@ local function CreateFakeFrame(GetTextTable)
 end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_CreateFrame)
+---@private
 ---@generic T, Tp
 ---@param frameType `T` | FrameType
 ---@param name? string
 ---@param parent? any
----@param template? `Tp` | TemplateType
+---@param template? `Tp` | Template
 ---@param id? number
 ---@return T|Tp frame
 function Database.CreateFrame(frameType, name, parent, template, id)
