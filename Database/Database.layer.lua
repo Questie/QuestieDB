@@ -4,8 +4,9 @@
 local LibQuestieDB = select(2, ...)
 
 
+-- Gets set the first time GetTemplateNames is called
 ---@type table<string, string> @ Only used when running the CLI
-local TemplateToPath = {}
+local TemplateToPath
 
 ---@class Database
 local Database = LibQuestieDB.Database
@@ -75,7 +76,7 @@ function Database.CreateFrame(frameType, name, parent, template, id)
       if TemplateToPath == nil then
         GetTemplateNames()
       end
-      assert(TemplateToPath[template], "Template not found: " .. template)
+      assert(TemplateToPath and TemplateToPath[template], "Template not found: " .. template)
       -- In the CLI environment, we don't want to create frames but instead find the files that would be loaded.
       -- Example: If template is ItemData, we want to find the file "ItemDataFiles.xml" and return the path to it.
       assert(type(FindFile) == "function", "FindFile function is missing.")
@@ -108,6 +109,7 @@ function Database.CreateFrame(frameType, name, parent, template, id)
     end
   else
     -- ? Create a real frame
+    ---@diagnostic disable-next-line: undefined-global
     return CreateFrame(frameType, name, parent, template, id)
   end
 end
