@@ -20,6 +20,7 @@
 ---@field public Npc NpcFunctions
 ---@field public Object ObjectFunctions
 ---@field public SetLocale fun(locale: localeType)
+---@field public IsInitialized fun(): boolean
 local PublicLibQuestieDB = {
   Quest = {},
   Item = {},
