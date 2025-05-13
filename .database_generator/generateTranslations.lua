@@ -351,7 +351,7 @@ function Compile_translations_to_html(strings, addonName, translation_func)
   end
 
   -- ? Generate the XML file that creates the virtual SimpleHTML objects
-  local fileString = '<SimpleHTML name="%s" file="Interface\\AddOns\\%s\\translations\\%s\\%s" virtual="true" font="GameFontNormal"/>\n'
+  local fileString = '<SimpleHTML name="%s" file="Interface\\AddOns\\%s\\Translations\\%s\\%s" virtual="true" font="GameFontNormal"/>\n'
   lua_file = io.open(root_folder .. "/TranslationsDataFiles.xml", "w")
   if lua_file then
     lua_file:write(
