@@ -1,0 +1,69 @@
+---@class LibQuestieDB
+local LibQuestieDB = select(2, ...)
+
+---@class QuestCorrection
+local QuestCorrection = {}
+
+-- Add QuestCorrection
+---@class Corrections
+local Corrections = LibQuestieDB.Corrections
+Corrections.QuestCorrection = QuestCorrection
+
+---@enum QuestSortKeys @ These are the values for the 'zoneOrSort' field
+QuestCorrection.sortKeys = {
+  EPIC = -1,
+  HALLOWS_END = -21,
+  SEASONAL = -22,
+  CATACLYSM = -23,
+  HERBALISM = -24,
+  BATTLEGROUNDS = -25,
+  DAY_OF_THE_DEAD = -41,
+  WARLOCK = -61,
+  WARRIOR = -81,
+  SHAMAN = -82,
+  FISHING = -101,
+  BLACKSMITHING = -121,
+  PALADIN = -141,
+  MAGE = -161,
+  ROGUE = -162,
+  ALCHEMY = -181,
+  LEATHERWORKING = -182,
+  ENGINEERING = -201,
+  TREASURE_MAP = -221,
+  TOURNAMENT = -241,
+  HUNTER = -261,
+  PRIEST = -262,
+  DRUID = -263,
+  TAILORING = -264,
+  SPECIAL = -284,
+  COOKING = -304,
+  FIRST_AID = -324,
+  LEGENDARY = -344,
+  DARKMOON_FAIRE = -364,
+  AHNQIRAJ_WAR = -365,
+  LUNAR_FESTIVAL = -366,
+  REPUTATION = -367,
+  INVASION = -368,
+  MIDSUMMER = -369,
+  BREWFEST = -370,
+  INSCRIPTION = -371,
+  DEATH_KNIGHT = -372,
+  JEWELCRAFTING = -373,
+  NOBLEGARDEN = -374,
+  PILGRIMS_BOUNTY = -375,
+  LOVE_IS_IN_THE_AIR = -376,
+  ARCHAEOLOGY = -377,
+  CHILDRENS_WEEK = -378,
+  FIRELANDS_INVASION = -379,
+  THE_ZANDALARI = -380,
+  ELEMENTAL_BONDS = -381,
+  PANDAREN_BREWMASTERS = -391,
+  SCENARIO = -392,
+  BATTLE_PETS = -394,
+  MONK = -395,
+  LANDFALL = -396,
+  PANDAREN_CAMPAIGN = -397,
+  RIDING = -398,
+  BRAWLERS_GUILD = -399,
+  PROVING_GROUNDS = -400,
+}
