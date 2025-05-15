@@ -3,43 +3,38 @@
 ---@class LibQuestieDB
 local LibQuestieDB = select(2, ...)
 
-
 -- Gets set the first time GetTemplateNames is called
 ---@type table<string, string> @ Only used when running the CLI
 local TemplateToPath
 
----@class Database
-local Database = LibQuestieDB.Database
+---@class ExtraTranslation
+local ExtraTranslation = LibQuestieDB.ExtraTranslation
 
 local f = string.format
+
+---@package
 local function GetTemplateNames()
   print("Getting all template names")
 
-  assert(LibQuestieDB.CurrentVersion ~= nil, "Current version not set. This is likely a bug.")
-  print("Current version: " .. LibQuestieDB.CurrentVersion)
-
   ---@type table<string, string>
   TemplateToPath = {}
-  for entityType in pairs(Database.entityTypes) do
-    local templateFile = entityType .. "DataFiles.xml"
-    assert(type(FindFile) == "function", "FindFile function is missing.")
-    local filepath = FindFile(templateFile, LibQuestieDB.CurrentVersion)
-    print(f("Data file found (%s): %s", tostring(templateFile), tostring(filepath)))
-    -- Read the file and parse the XML
-    -- Example content
-    -- <SimpleHTML name="ItemDataIds" file="Interface\AddOns\QuestieDB\Database\Item\Era\ItemDataIds.html" virtual="true" font="GameFontNormal"/>
-    -- <SimpleHTML name="ItemDataFiles" file="Interface\AddOns\QuestieDB\Database\Item\Era\ItemDataTemplates.html" virtual="true" font="GameFontNormal"/>
-    -- <SimpleHTML name="ItemData25-236" file="Interface\AddOns\QuestieDB\Database\Item\Era\_data\25-236.html" virtual="true" font="GameFontNormal"/>
-    for line in io.lines(filepath) do
-      local templateName, filePath = line:match('<SimpleHTML name="([^"]+)" file="Interface\\AddOns\\QuestieDB\\([^"]+)"')
-      if templateName and filePath then
-        TemplateToPath[templateName] = "./" .. filePath:gsub("\\", "/")
-        -- I was stupid once upon a time and saved the folder as lowercase... stupid me...
-        TemplateToPath[templateName] = TemplateToPath[templateName]:gsub("/L10n/", "/l10n/")
-      else
-        if not line:match('</*Ui>') and not line:match('<Ui ') then
-          print("WARNING - Template not found in line: " .. line)
-        end
+  local templateFile = "TranslationsDataFiles.xml"
+  assert(type(FindFile) == "function", "FindFile function is missing.")
+  local filepath = FindFile(templateFile, nil, nil, "Translations")
+  print(f("Data file found (%s): %s", tostring(templateFile), tostring(filepath)))
+  -- Read the file and parse the XML
+  -- Example content
+  -- <SimpleHTML name="ac.html" file="Interface\AddOns\QuestieDB\translations\_data\ac.html" virtual="true" font="GameFontNormal"/>
+  -- <SimpleHTML name="ab.html" file="Interface\AddOns\QuestieDB\translations\_data\ab.html" virtual="true" font="GameFontNormal"/>
+  for line in io.lines(filepath) do
+    local templateName, filePath = line:match('<SimpleHTML name="([^"]+)" file="Interface\\AddOns\\QuestieDB\\([^"]+)"')
+    if templateName and filePath then
+      TemplateToPath[templateName] = "./" .. filePath:gsub("\\", "/")
+      -- I was stupid once upon a time and saved the folder as lowercase... stupid me...
+      TemplateToPath[templateName] = TemplateToPath[templateName]:gsub("/L10n/", "/l10n/")
+    else
+      if not line:match('</*Ui>') and not line:match('<Ui ') then
+        print("WARNING - Template not found in line: " .. line)
       end
     end
   end
@@ -67,8 +62,8 @@ end
 ---@param parent? any
 ---@param template? `Tp` | Template
 ---@param id? number
----@return T|Tp frame
-function Database.CreateFrame(frameType, name, parent, template, id)
+---@return table|T|Tp frame
+function ExtraTranslation.CreateFrame(frameType, name, parent, template, id)
   -- Is_CLI is set in the CLI environment, otherwise it is nil
   ---@diagnostic disable-next-line: undefined-global
   if Is_CLI then
@@ -77,9 +72,8 @@ function Database.CreateFrame(frameType, name, parent, template, id)
       if TemplateToPath == nil then
         GetTemplateNames()
       end
-      assert(TemplateToPath and TemplateToPath[template], "Template not found: " .. template)
+      assert(TemplateToPath and TemplateToPath[template], "Template not found: " .. tostring(template))
       -- In the CLI environment, we don't want to create frames but instead find the files that would be loaded.
-      -- Example: If template is ItemData, we want to find the file "ItemDataFiles.xml" and return the path to it.
       assert(type(FindFile) == "function", "FindFile function is missing.")
       local filepath = TemplateToPath[template]
 

@@ -4,6 +4,7 @@ local LibQuestieDB = select(2, ...)
 
 local Corrections = LibQuestieDB.Corrections
 local l10n = LibQuestieDB.l10n
+local ExtraTranslation = LibQuestieDB.ExtraTranslation
 
 --- Multiple inheritance for Quest
 
@@ -57,6 +58,9 @@ do
 
   -- ? QuestieDB Data structure for Quests
 
+  local upack = unpack
+  local tInsert = table.insert
+
   -- Class for all the public functions for the Quest namespace
   ---@class QuestFunctions
   local QuestFunctions = {}
@@ -66,7 +70,7 @@ do
   local emptyTable = LibQuestieDB.CreateReadOnlyEmptyTable()
 
   -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
-  if l10n.currentLocale == "enUS" then
+  if l10n.currentLocale == "enUS" and not LibQuestieDB.Database.debugEnabled then
     -- Function to get the name of the quest<br>
     -- Returns "The Lost Artifact"
     ---@type fun(id: QuestId):Name?
@@ -109,7 +113,7 @@ do
   QuestFunctions.requiredClasses = Quest.AddNumberGetter(7, "requiredClasses", 0)
 
   -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
-  if l10n.currentLocale == "enUS" then
+  if l10n.currentLocale == "enUS" and not LibQuestieDB.Database.debugEnabled then
     -- Function to get the text of the quest objectives<br>
     -- Returns {"Find the lost artifact", "Return to the qu
     ---@type fun(id: QuestId):string[]?
@@ -211,10 +215,53 @@ do
   ---@type fun(id: QuestId):ReputationPair[]?
   QuestFunctions.reputationReward = Quest.AddTableGetter(26, "reputationReward")
 
-  -- Function to get the extra objectives of the quest<br>
-  -- Returns <INSERT EXAMPLE>
-  ---@type fun(id: QuestId):ExtraObjective?
-  QuestFunctions.extraObjectives = Quest.AddTableGetter(27, "extraObjectives")
+  do
+    -- /dump LibQuestieDB().Quest.extraObjectives(735)
+    -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
+    if l10n.currentLocale == "enUS" and not LibQuestieDB.Database.debugEnabled then
+      -- Function to get the extra objectives of the quest<br>
+      -- Returns <INSERT EXAMPLE>
+      ---@type fun(id: QuestId):ExtraObjective[]?
+      QuestFunctions.extraObjectives = Quest.AddTableGetter(27, "extraObjectives")
+    else
+      -- Function to get the extra objectives of the quest<br>
+      -- Returns <INSERT EXAMPLE>
+      ---@type fun(id: QuestId):ExtraObjective[]?
+      local extraObjectives_enUS = Quest.AddTableGetter(27, "extraObjectives")
+
+      -- Function to get the extra objectives of the quest<br>
+      -- Returns <INSERT EXAMPLE>
+      ---@type fun(id: QuestId):ExtraObjective[]?
+      QuestFunctions.extraObjectives = function(id)
+        -- TODO: Future person: This logical can most likely be improved a lot if we feel like the performance is bad
+        -- We could for example cache it in a table sacrificing some memory for performance
+        local extraObjectives = extraObjectives_enUS(id)
+
+        if extraObjectives then
+          -- ? We have to create a copy of the objective as a cached version is stored with the english translation
+          -- ? If we do not copy we will overwrite the base data with the translation and run into issues.
+          local copyExtraObjectives = {}
+
+          -- We loop through the extra objectives and translate them
+          for _, extraObjective in ipairs(extraObjectives) do
+            -- ? By unpacking we create a copy of the table
+            local copyExtraObjective = { upack(extraObjective), }
+
+            -- ? We translate the text of the extra objective
+            if copyExtraObjective[3] and type(copyExtraObjective[3]) == "string" then
+              copyExtraObjective[3] = ExtraTranslation.GetTranslation(copyExtraObjective[3])
+            end
+
+            tInsert(copyExtraObjectives, copyExtraObjective)
+          end
+          return copyExtraObjectives
+        end
+
+        -- Just return whatever we have (should always be nil)
+        return extraObjectives
+      end
+    end
+  end
 
   -- Function to get the spell required to start the quest<br>
   -- Returns 12345

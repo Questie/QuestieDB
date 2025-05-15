@@ -14,9 +14,6 @@ local output_base_dir = helpers.get_project_dir_path() .. "/.database_generator/
 helpers.ensureDirExists(output_base_dir)
 print("Ensured directory exists: " .. output_base_dir)
 
----@type string[]
-local entity_types = { "Item", "Npc", "Object", "Quest", }
-
 --- Downloads a database file from GitHub and saves it locally.
 ---@param github_expansion string @ The expansion name used in the GitHub URL path (e.g., "Classic", "TBC").
 ---@param local_prefix string @ The prefix used for the local filename (e.g., "era", "tbc").
@@ -51,14 +48,6 @@ local function download_and_save(github_expansion, local_prefix, entity_type)
   end
 end
 
-print("Starting database file downloads...")
-
-for _, exp_data in ipairs(helpers.Expansions) do
-  local github_expansion, local_prefix = unpack(exp_data)
-  print("\nProcessing expansion: " .. github_expansion)
-  for _, entity_type in ipairs(entity_types) do
-    download_and_save(github_expansion, local_prefix, entity_type)
-  end
-end
-
-print("\nDatabase file downloads finished.")
+return {
+  download_and_save = download_and_save,
+}

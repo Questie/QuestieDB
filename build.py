@@ -25,6 +25,7 @@ disallowed_folders = [
   ".vscode",
   ".generate_database",
   ".database_generator",
+  ".generate",  # General generate folders
   ".tests",
   # Python venv
   "venv",

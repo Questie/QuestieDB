@@ -17,7 +17,7 @@ local tostring, Round, select = tostring, Round, select
 local debugTable = {}
 
 local function writeDebug()
-  if LibQuestieDB.Database and (not Database.debugEnabled) and debugTextString then
+  if LibQuestieDB.Database and (not Database.debugEnabled or not Database.debugPrintEnabled) and debugTextString then
     if debugTextString:IsShown() then
       debugTextString:SetVertexColor(1, 1, 1, 0)
       debugTextString:SetText("")
@@ -26,6 +26,12 @@ local function writeDebug()
       return
     end
   end
+
+  --- Debug text is not enabled
+  if LibQuestieDB.Database and (not Database.debugEnabled or not Database.debugPrintEnabled) then
+    return
+  end
+
   if debugTextString == nil then
     debugTextString = UIParent:CreateFontString(nil, "OVERLAY", "QuestFont")
     debugTextString:SetWidth(500) --QuestLogObjectivesText default width = 275
