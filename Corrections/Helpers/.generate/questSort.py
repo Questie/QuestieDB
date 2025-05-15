@@ -1,6 +1,8 @@
 import os
-from functions import load_csv, format_key, update_lua_block, current_dir
+from functions import load_csv, format_key, update_lua_block, current_dir, download_csv
 
+# Download the CSV files
+download_csv("https://wago.tools/db2/QuestSort/csv?build=5.5.0.60700", "QuestSort.5.5.0.60700.csv")
 data = load_csv("QuestSort.5.5.0.60700.csv")
 
 lua_table_parts = [

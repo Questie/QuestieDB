@@ -1,6 +1,7 @@
 import csv
 import re
 import os
+import requests
 
 # Get current script directory
 curr_dir = os.path.dirname(os.path.abspath(__file__))
@@ -9,6 +10,16 @@ print(curr_dir)
 
 def current_dir():
   return curr_dir
+
+
+def download_csv(url, filename):
+  response = requests.get(url)
+  if response.status_code == 200:
+    with open(filename, "wb") as file:
+      file.write(response.content)
+    print(f"Downloaded {filename}")
+  else:
+    print(f"Failed to download {filename}: {response.status_code}")
 
 
 # Load the CSV file

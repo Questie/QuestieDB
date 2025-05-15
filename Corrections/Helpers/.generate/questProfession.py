@@ -1,5 +1,8 @@
 import os
-from functions import load_csv, format_key, update_lua_block, current_dir
+from functions import load_csv, format_key, update_lua_block, current_dir, download_csv
+
+# Download the CSV files
+download_csv("https://wago.tools/db2/SkillLine/csv?build=5.5.0.60700", "SkillLine.5.5.0.60700.csv")
 
 data = load_csv("SkillLine.5.5.0.60700.csv")
 
