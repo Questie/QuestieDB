@@ -129,6 +129,8 @@ QuestMeta.questFlags = {
   UNKNOWN = 256,
   HIDDEN_REWARDS = 512,
   AUTO_REWARDED = 1024,
+  DAILY = 4096,
+  WEEKLY = 32768,
 }
 
 -- TODO: Should this really be here?

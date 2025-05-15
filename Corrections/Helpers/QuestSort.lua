@@ -9,8 +9,27 @@ local QuestCorrection = {}
 local Corrections = LibQuestieDB.Corrections
 Corrections.QuestCorrection = QuestCorrection
 
----@enum QuestSortKeys @ These are the values for the 'zoneOrSort' field
+--- Adds the ability to override the sort keys for quest corrections
+---@class OverrideQuestSortKeys
+local sortKeysOverride = {
+  -- Example:
+  --   PROVING_GROUNDS_TEST = -1337,
+  --   ...
+  -- Insert overrides below:
+  -- Dummy Ids for professions (Source: https://github.com/Questie/Questie/blob/7c787addf6a52cbe9ff279152c5558ffb1bb0746/Modules/QuestieProfessions.lua#L216)
+  MINING = -667,     -- Dummy Id
+  ENCHANTING = -668, -- Dummy Id
+  SKINNING = -666,   -- Dummy Id
+}
+
+--- These are the values for the 'zoneOrSort' field
+--- The table is used when creating corrections for quests
+---@class QuestSortKeys:OverrideQuestSortKeys
 QuestCorrection.sortKeys = {
+  -- This table is auto-generated from the CSV file
+  -- Do not edit this table directly
+  -- Instead, edit the override table above
+
   EPIC = -1,
   HALLOWS_END = -21,
   SEASONAL = -22,
@@ -66,4 +85,13 @@ QuestCorrection.sortKeys = {
   RIDING = -398,
   BRAWLERS_GUILD = -399,
   PROVING_GROUNDS = -400,
+
+  -- This table is auto-generated from the CSV file
+  -- Do not edit this table directly
+  -- Instead, edit the override table above
 }
+
+-- Add the override keys to the sortKeys table
+for k, v in pairs(sortKeysOverride) do
+  QuestCorrection.sortKeys[k] = v
+end
