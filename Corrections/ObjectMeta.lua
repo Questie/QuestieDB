@@ -21,6 +21,7 @@ ObjectMeta.objectKeys = {
   ['spawns'] = 4,      -- table {[zoneID(int)] = {coordPair(floatVector2D),...},...}
   ['zoneID'] = 5,      -- guess as to where this object is most common
   ['factionID'] = 6,   -- faction restriction mask (same as spawndb factionid)
+  ['waypoints'] = 7,   -- waypoints for objects on ships/zeppelins/etc
 }
 
 --- Contains the name of data as keys and their index as value for quick lookup
@@ -38,6 +39,7 @@ ObjectMeta.objectTypes = {
   ['spawns'] = "table",
   ['zoneID'] = "number",
   ['factionID'] = "number",
+  ['waypoints'] = "table",
 }
 -- Add the index keys to objectTypes
 for key, index in pairs(ObjectMeta.objectKeys) do
@@ -52,6 +54,7 @@ ObjectMeta.dumpFuncs = {
   ['spawns'] = DumpFunctions.dumpCoordiates,
   ['zoneID'] = DumpFunctions.dump,
   ['factionID'] = DumpFunctions.dump,
+  ['waypoints'] = DumpFunctions.dumpCoordiates,
 }
 
 -- Localize these variables to clean up the code
