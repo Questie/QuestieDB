@@ -1,16 +1,12 @@
 ---@class LibQuestieDB
 local LibQuestieDB = select(2, ...)
 
----@class QuestCorrection
-local QuestCorrection = {}
-
 -- Add QuestCorrection
----@class Corrections
-local Corrections = LibQuestieDB.Corrections
-Corrections.QuestCorrection = QuestCorrection
+---@class Enum
+local Enum = LibQuestieDB.Enum
 
 --- Adds the ability to override the sort keys for quest corrections
----@class OverrideQuestSortKeys
+---@class OverrideEnumSortKeys
 local sortKeysOverride = {
   -- Example:
   --   PROVING_GROUNDS_TEST = -1337,
@@ -24,8 +20,8 @@ local sortKeysOverride = {
 
 --- These are the values for the 'zoneOrSort' field
 --- The table is used when creating corrections for quests
----@class QuestSortKeys:OverrideQuestSortKeys
-QuestCorrection.sortKeys = {
+---@class EnumSortKeys:OverrideEnumSortKeys
+Enum.sortKeys = {
   -- This table is auto-generated from the CSV file
   -- Do not edit this table directly
   -- Instead, edit the override table above
@@ -93,5 +89,5 @@ QuestCorrection.sortKeys = {
 
 -- Add the override keys to the sortKeys table
 for k, v in pairs(sortKeysOverride) do
-  QuestCorrection.sortKeys[k] = v
+  Enum.sortKeys[k] = v
 end

@@ -1,16 +1,11 @@
 ---@class LibQuestieDB
 local LibQuestieDB = select(2, ...)
 
----@class Faction
-local Faction = {}
+---@class Enum
+local Enum = LibQuestieDB.Enum
 
--- Add Faction
----@class Corrections
-local Corrections = LibQuestieDB.Corrections
-Corrections.Faction = Faction
-
---- Adds the ability to override the sort keys for quest corrections
----@class OverrideFactions
+--- Adds the ability to override the sort keys for quest enum
+---@class OverrideEnumFaction
 local factionsOverride = {
   -- Example:
   --   THE_CHEESE_TRIBE = 1337,
@@ -20,8 +15,8 @@ local factionsOverride = {
 }
 
 
----@class Factions:OverrideFactions
-Faction.factions = {
+---@class EnumFaction:OverrideEnumFaction
+Enum.factions = {
   -- This table is auto-generated from the CSV file
   -- Do not edit this table directly
   -- Instead, edit the override table above
@@ -158,5 +153,5 @@ Faction.factions = {
 
 -- Add the override keys to the factions table
 for k, v in pairs(factionsOverride) do
-  Faction.factions[k] = v
+  Enum.factions[k] = v
 end
