@@ -57,6 +57,10 @@ do
   ---@type fun(id: ObjectId):number?
   ObjectFunctions.factionID = Object.AddNumberGetter(6, "factionID")
 
+  ---Returns the waypoints of the object. (e.g. for ships and zeppelins)
+  ---@type fun(id: ObjectId):table<AreaId, CoordPair[]>?
+  ObjectFunctions.waypoints = Object.AddTableGetter(7, "waypoints")
+
   --? This function is used to export all the functions to the Public and Private namespaces
   --? It gets called at the end of this file
   local function exportFunctions()
