@@ -24,6 +24,7 @@
     "Corrections/Tbc",
     "Corrections/Wotlk",
     "Corrections/Cata",
+    "WoW-API",
   ],
   "files.exclude": {
     "**/.git": true,
@@ -47,6 +48,7 @@
     ".build":true,
     "Perfy":true,
     ".database_generator/Questie-translations": true,
+    ".database_generator/Questie-data": true,
     ".database_generator/mangos_translation/translations": true,
     ".vscode/*.lua": true,
     "translations.json": true,
@@ -65,7 +67,7 @@
 
   // The number of spaces a tab is equal to. This setting is overridden
   // based on the file contents when `editor.detectIndentation` is true.
-//   "editor.tabSize": 4,
+  "editor.tabSize": 2,
 
   // Insert spaces when pressing Tab. This setting is overriden
   // based on the file contents when `editor.detectIndentation` is true.
@@ -81,6 +83,8 @@
 
   "Lua.diagnostics.ignoredFiles": "Opened",
   "Lua.diagnostics.libraryFiles": "Opened",
+  "search.quickOpen.includeSymbols": false, // Include symbols in quick open
+  "Lua.workspace.useGitIgnore": false,
 
   "Lua.diagnostics.severity": {},
   "Lua.diagnostics.enable": true,

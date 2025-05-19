@@ -3,8 +3,10 @@
 local LibQuestieDB     = select(2, ...)
 
 --*---- Create Module --------
+
 ---@class ExtraTranslation
 local ExtraTranslation = LibQuestieDB.ExtraTranslation
+
 local pTranslation     = {}
 
 ---- Local Functions ----

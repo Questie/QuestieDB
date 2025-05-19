@@ -5,9 +5,9 @@ local LibQuestieDB = select(2, ...)
 local Database = LibQuestieDB.Database
 
 -- Event registration
--- Usage:
--- Register   an event: ReturnedObject["EVENT_NAME"] = func
--- Unregister an event: ReturnedObject["EVENT_NAME"] = nil
+-- Usage:<br>
+-- Register   an event: ReturnedObject["EVENT_NAME"] = func<br>
+-- Unregister an event: ReturnedObject["EVENT_NAME"] = nil<br>
 ---@return table<string, function>
 function LibQuestieDB.EventRegistrator()
   ---@type table<string, function>

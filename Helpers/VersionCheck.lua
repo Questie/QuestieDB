@@ -18,10 +18,6 @@ if not Enum then
   }
 end
 
--- --- Addon is running on Classic MoP client
--- ---@type boolean
--- LibQuestieDB.IsMop = WOW_PROJECT_ID == WOW_PROJECT_MIST_OF_PANDARIA_CLASSIC
-
 --- Addon is running on Classic MoP client
 ---@type boolean
 LibQuestieDB.IsMoP = WOW_PROJECT_ID == WOW_PROJECT_MISTS_CLASSIC

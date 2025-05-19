@@ -3,6 +3,7 @@
 local LibQuestieDB = select(2, ...)
 
 --*---- Create Module --------
+
 ---@class Database
 local Database = LibQuestieDB.Database
 ---@type table<string, boolean>
