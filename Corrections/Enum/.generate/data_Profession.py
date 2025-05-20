@@ -7,8 +7,8 @@ download_csv("https://wago.tools/db2/SkillLine/csv?build=5.5.0.60700", "SkillLin
 data = load_csv("SkillLine.5.5.0.60700.csv")
 
 lua_table_parts = [
-  "---@class QuestProfessionKeys:OverrideQuestProfessionKeys",
-  "QuestCorrection.professionKeys = {",
+  "---@class EnumProfessionKeys:OverrideEnumProfessionKeys",
+  "Enum.professionKeys = {",
   "  -- This table is auto-generated from the CSV file",
   "  -- Do not edit this table directly",
   "  -- Instead, edit the override table above",
@@ -54,11 +54,11 @@ lua_table_parts.append("}")
 generated_lua_table_string = "\n".join(lua_table_parts)
 print(generated_lua_table_string)
 
-# --- Use the helper function to update QuestProfession.lua ---
-quest_profession_lua_file_path = os.path.join(current_dir(), "..", "QuestProfession.lua")
+# --- Use the helper function to update Profession.lua ---
+quest_profession_lua_file_path = os.path.join(current_dir(), "..", "Profession.lua")
 
-# This regex matches the "---@class QuestProfessionKeys:OverrideQuestProfessionKeys" comment, any characters in between (non-greedy),
-# and "QuestCorrection.professionKeys = {"
-profession_keys_block_start_regex = r"---@class QuestProfessionKeys:OverrideQuestProfessionKeys.*?QuestCorrection\.professionKeys\s*=\s*\{"
+# This regex matches the "---@class EnumProfessionKeys:OverrideEnumProfessionKeys" comment, any characters in between (non-greedy),
+# and "Enum.professionKeys = {"
+profession_keys_block_start_regex = r"---@class EnumProfessionKeys:OverrideEnumProfessionKeys.*?Enum\.professionKeys\s*=\s*\{"
 
 update_lua_block(quest_profession_lua_file_path, generated_lua_table_string, profession_keys_block_start_regex)
