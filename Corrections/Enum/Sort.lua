@@ -1,7 +1,7 @@
 ---@class LibQuestieDB
 local LibQuestieDB = select(2, ...)
 
--- Add QuestCorrection
+--*---- Import Module --------
 ---@class Enum
 local Enum = LibQuestieDB.Enum
 

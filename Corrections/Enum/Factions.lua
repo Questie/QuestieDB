@@ -1,6 +1,7 @@
 ---@class LibQuestieDB
 local LibQuestieDB = select(2, ...)
 
+--*---- Import Module --------
 ---@class Enum
 local Enum = LibQuestieDB.Enum
 

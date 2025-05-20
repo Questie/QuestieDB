@@ -6,5 +6,6 @@ local LibQuestieDB = select(2, ...)
 -- in a logical place and not within one of the enum definitions
 
 --*---- Create Module --------
+
 ---@class Enum
 local Enum = LibQuestieDB.Enum
