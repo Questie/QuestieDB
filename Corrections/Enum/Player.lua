@@ -5,12 +5,36 @@ local LibQuestieDB = select(2, ...)
 ---@class Enum
 local Enum = LibQuestieDB.Enum
 
--- ? The index can be found in ChrRaces.dbc
--- ? https://wago.tools/db2/ChrRaces?build=5.5.0.60802
--- ? Or look at the url id on wowhead https://wowhead.com/races
+-- * class bitmask data, for easy access
+-- ? The ID can be found in ChrClasses.dbc
+-- ? https://wago.tools/db2/ChrClasses?build=5.5.0.60802
+-- ? The values below are calculated by 2^(ID - 1)
+-- ? Combining these with "and" makes the order matter
+-- ? 1 and 2 ~= 2 and 1
+Enum.classKeys = {
+  -- Allow all classes (No limit on allowed classes)
+  NONE = 0,
 
--- race bitmask data, for easy access
+  --[[ID]]
+  --[[ 1]] WARRIOR = 1,
+  --[[ 2]] PALADIN = 2,
+  --[[ 3]] HUNTER = 4,
+  --[[ 4]] ROGUE = 8,
+  --[[ 5]] PRIEST = 16,
+  --[[ 6]] DEATH_KNIGHT = 32,
+  --[[ 7]] SHAMAN = 64,
+  --[[ 8]] MAGE = 128,
+  --[[ 9]] WARLOCK = 256,
+  --[[10]] MONK = 512,
+  --[[11]] DRUID = 1024,
+}
+
+-- * race bitmask data, for easy access
+-- ? The PlayableRaceBit can be found in ChrRaces.dbc
+-- ? https://wago.tools/db2/ChrRaces?build=5.5.0.60802&filter[PlayableRaceBit]=>-1
+-- ? The values below are calculated by 2^PlayableRaceBit
 Enum.raceKeys = {
+  -- Allow all alliance races
   ALL_ALLIANCE = (function()
     if LibQuestieDB.IsClassic then
       return 77
@@ -20,9 +44,12 @@ Enum.raceKeys = {
       return 2098253
     elseif LibQuestieDB.IsMoP then
       return 18875469
+    else
+      print("Unknown expansion for ALL_ALLIANCE")
+      return 77
     end
-    error("Unknown expansion for ALL_ALLIANCE")
   end)(),
+  -- ALlow all horde races
   ALL_HORDE = (function()
     if LibQuestieDB.IsClassic then
       return 178
@@ -32,26 +59,30 @@ Enum.raceKeys = {
       return 946
     elseif LibQuestieDB.IsMoP then
       return 33555378
+    else
+      print("Unknown expansion for ALL_HORDE")
+      return 178
     end
-    error("Unknown expansion for ALL_HORDE")
   end)(),
+  -- Allow all races (No limit on allowed races)
   NONE = 0,
 
-  --[[ 1]] HUMAN = 1,
-  --[[ 2]] ORC = 2,
-  --[[ 3]] DWARF = 4,
-  --[[ 4]] NIGHT_ELF = 8,
-  --[[ 5]] UNDEAD = 16,
-  --[[ 6]] TAUREN = 32,
-  --[[ 7]] GNOME = 64,
-  --[[ 8]] TROLL = 128,
-  --[[ 9]] GOBLIN = 256,
-  --[[10]] BLOOD_ELF = 512,
-  --[[11]] DRAENEI = 1024,
-  --[[22]] WORGEN = 2097152,      -- lol
-  --[[24]] PANDAREN_N = 8388608,  -- Pandaren Neutral
-  --[[25]] PANDAREN_A = 16777216, -- Pandaren Alliance
-  --[[26]] PANDAREN_H = 33554432, -- Pandaren Horde
+  --[[PlayableRaceBit]]
+  --[[ 0]] HUMAN  = 1,
+  --[[ 1]] ORC    = 2,
+  --[[ 2]] DWARF  = 4,
+  --[[ 3]] NIGHT_ELF = 8,
+  --[[ 4]] UNDEAD = 16,
+  --[[ 5]] TAUREN = 32,
+  --[[ 6]] GNOME  = 64,
+  --[[ 7]] TROLL  = 128,
+  --[[ 8]] GOBLIN = 256,                 -- Cata
+  --[[ 9]] BLOOD_ELF = 512,              -- TBC
+  --[[10]] DRAENEI = 1024,               -- TBC
+  --[[21]] WORGEN = 2097152,             -- Cata
+  --[[23]] PANDAREN_NEUTRAL = 8388608,   -- MoP
+  --[[24]] PANDAREN_ALLIANCE = 16777216, -- MoP
+  --[[25]] PANDAREN_HORDE = 33554432,    -- MoP
 }
 
 -- ---@class AllianceRaceKeys

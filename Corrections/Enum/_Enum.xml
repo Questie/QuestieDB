@@ -5,7 +5,9 @@
 
   <!-- Load Enum files -->
   <Script file="Factions.lua" />
+  <Script file="Flags.lua" />
+  <Script file="Npc.lua" />
+  <Script file="Player.lua" />
   <Script file="Profession.lua" />
   <Script file="Sort.lua" />
-  <Script file="Npc.lua" />
 </Ui>

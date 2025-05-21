@@ -1,0 +1,85 @@
+{
+	// Place your snippets for lua here. Each snippet is defined under a snippet name and has a prefix, body and
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+  // Import Module
+  // --*---- Import Module --------
+  // ---@class Enum
+  // local Enum = LibQuestieDB.Enum
+  "Import Module-Comment": {
+    "prefix": "import-comment",
+    "body": [
+      "--*---- Import Module --------",
+      "",
+    ],
+    "description": "Import Module"
+  },
+  "Import Module": {
+    "prefix": "import-module",
+    "body": [
+      "local ${1/(.*)/${1:/capitalize}/} = LibQuestieDB.${1/(.*)/${1:/capitalize}/}",
+      "",
+    ],
+    "description": "Import Module"
+  },
+  "Extend Module": {
+    "prefix": "extend-module",
+    "body": [
+      "--*---- Extend Module --------",
+      "",
+      "---@class ${1/(.*)/${1:/capitalize}/}",
+      "local ${1/(.*)/${1:/capitalize}/} = LibQuestieDB.${1/(.*)/${1:/capitalize}/}",
+      "",
+    ],
+    "description": "Extend Module"
+  },
+  // Create Module (Top of the file)
+  // ---@class LibQuestieDB
+  // ---@field ExtraTranslation ExtraTranslation
+  // local LibQuestieDB     = select(2, ...)
+  // --*---- Create Module --------
+  // ---@class ExtraTranslation
+  // local ExtraTranslation = LibQuestieDB.ExtraTranslation
+  "Create Module": {
+    "prefix": "create-module",
+    "body": [
+      // "--*--- Addon Namespace -------",
+      "---@class LibQuestieDB",
+      "---@field ${1/(.*)/${1:/capitalize}/} ${1/(.*)/${1:/capitalize}/}",
+      "local LibQuestieDB = select(2, ...)",
+      "",
+      "--*---- Create Module --------",
+      "",
+      "---@class ${1/(.*)/${1:/capitalize}/}",
+      "local ${1/(.*)/${1:/capitalize}/} = LibQuestieDB.${1/(.*)/${1:/capitalize}/}",
+      "",
+    ],
+    "description": "Create Module"
+  },
+    // Create Module (Top of the file)
+  // ---@class LibQuestieDB
+  // ---@field ExtraTranslation ExtraTranslation
+  // local LibQuestieDB     = select(2, ...)
+  // --*---- Create Module --------
+  // ---@class ExtraTranslation
+  // local ExtraTranslation = LibQuestieDB.ExtraTranslation
+  "Namespace": {
+    "prefix": "namespace-import",
+    "body": [
+      // "--*--- Addon Namespace -------",
+      "---@class LibQuestieDB",
+      "local LibQuestieDB = select(2, ...)",
+    ],
+    "description": "Imports LibQuestieDB Namespace"
+  },
+}

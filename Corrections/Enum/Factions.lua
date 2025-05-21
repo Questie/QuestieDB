@@ -4,6 +4,8 @@ local LibQuestieDB = select(2, ...)
 --*---- Import Module --------
 ---@class Enum
 local Enum = LibQuestieDB.Enum
+local Expansions = LibQuestieDB.Expansions
+
 
 --- Adds the ability to override the sort keys for quest enum
 ---@class OverrideEnumFaction
@@ -12,10 +14,12 @@ local factionsOverride = {
   --   THE_CHEESE_TRIBE = 1337,
   --   ...
   -- Insert overrides below:
-
+  -- ? Blizzard reuses this name, after cata it is a new faction before it is the hinterlands
+  WILDHAMMER_CLAN = Expansions.Current >= Expansions.Cata and 1174 or 471,
 }
 
 
+-- ? Data from https://wago.tools/db2/Faction/csv?build=5.5.0.60700
 ---@class EnumFaction:OverrideEnumFaction
 Enum.factions = {
   -- This table is auto-generated from the CSV file
