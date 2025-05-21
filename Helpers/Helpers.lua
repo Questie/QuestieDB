@@ -5,9 +5,9 @@ local LibQuestieDB = select(2, ...)
 local Database = LibQuestieDB.Database
 
 -- Event registration
--- Usage:
--- Register   an event: ReturnedObject["EVENT_NAME"] = func
--- Unregister an event: ReturnedObject["EVENT_NAME"] = nil
+-- Usage:<br>
+-- Register   an event: ReturnedObject["EVENT_NAME"] = func<br>
+-- Unregister an event: ReturnedObject["EVENT_NAME"] = nil<br>
 ---@return table<string, function>
 function LibQuestieDB.EventRegistrator()
   ---@type table<string, function>
@@ -27,11 +27,11 @@ function LibQuestieDB.EventRegistrator()
     end,
     __newindex = function(_, event, func)
       if RegisteredEvents[event] and func == nil then
-        print("Unregistering", event)
+        -- print("Unregistering", event)
         eventFrame:UnregisterEvent(event)
         RegisteredEvents[event] = nil
       else
-        print("Registering", event)
+        -- print("Registering", event)
         eventFrame:RegisterEvent(event)
         RegisteredEvents[event] = func
       end
@@ -56,6 +56,48 @@ function LibQuestieDB.CreateReadOnlyEmptyTable()
       error("Attempt to modify read-only table")
     end,
   })
+end
+
+---comment
+---@param color "red"|"gray"|"purple"|"blue"|"lightBlue"|"reputationBlue"|"yellow"|"orange"|"green"|"white"|"gold"|string
+---@param text string
+---@return string
+function LibQuestieDB.ColorizeText(color, text)
+  assert(type(color) == "string", "Color must be a string")
+  assert(type(text) == "string", "Text must be a string")
+  if Is_CLI then
+    return text -- CLI does not support these color codes
+  end
+
+  local c;
+
+  if color == "red" then
+    c = "|cFFff0000";
+  elseif color == "gray" then
+    c = "|cFFa6a6a6";
+  elseif color == "purple" then
+    c = "|cFFB900FF";
+  elseif color == "blue" then
+    c = "|cB900FFFF";
+  elseif color == "lightBlue" then
+    c = "|cB900FFFF";
+  elseif color == "reputationBlue" then
+    c = "|cFF8080ff";
+  elseif color == "yellow" then
+    c = "|cFFffff00";
+  elseif color == "orange" then
+    c = "|cFFFF6F22";
+  elseif color == "green" then
+    c = "|cFF00ff00";
+  elseif color == "white" then
+    c = "|cFFffffff";
+  elseif color == "gold" then
+    c = "|cFFffd100"
+  else
+    c = "|cFF" .. color
+  end
+
+  return c .. text .. "|r"
 end
 
 --- Colorize a string with a color code

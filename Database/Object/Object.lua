@@ -26,7 +26,7 @@ do
   -- ? QuestieDB Data structure for Quests
 
   -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
-  if l10n.currentLocale == "enUS" then
+  if l10n.currentLocale == "enUS" and not LibQuestieDB.Database.debugEnabled then
     ---Returns the object name.
     ---@type fun(id: ObjectId):Name?
     ObjectFunctions.name = Object.AddStringGetter(1, "name")
@@ -56,6 +56,10 @@ do
   ---Returns the faction ID of the object.
   ---@type fun(id: ObjectId):number?
   ObjectFunctions.factionID = Object.AddNumberGetter(6, "factionID")
+
+  ---Returns the waypoints of the object. (e.g. for ships and zeppelins)
+  ---@type fun(id: ObjectId):table<AreaId, CoordPair[]>?
+  ObjectFunctions.waypoints = Object.AddTableGetter(7, "waypoints")
 
   --? This function is used to export all the functions to the Public and Private namespaces
   --? It gets called at the end of this file

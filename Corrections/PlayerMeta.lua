@@ -15,17 +15,17 @@ PlayerMeta.raceKeys = {
   ALL_HORDE = LibQuestieDB.IsClassic and 178 or 690,
   NONE = 0,
 
-  HUMAN = 1,
-  ORC = 2,
-  DWARF = 4,
-  NIGHT_ELF = 8,
-  UNDEAD = 16,
-  TAUREN = 32,
-  GNOME = 64,
-  TROLL = 128,
-  --GOBLIN = 256,
-  BLOOD_ELF = 512,
-  DRAENEI = 1024,
+  --[[1]] HUMAN = 1,
+  --[[2]] ORC = 2,
+  --[[3]] DWARF = 4,
+  --[[4]] NIGHT_ELF = 8,
+  --[[5]] UNDEAD = 16,
+  --[[6]] TAUREN = 32,
+  --[[7]] GNOME = 64,
+  --[[8]] TROLL = 128,
+  --[[9]] --GOBLIN = 256,
+  --[[10]] BLOOD_ELF = 512,
+  --[[11]] DRAENEI = 1024,
 }
 
 -- Combining these with "and" makes the order matter
