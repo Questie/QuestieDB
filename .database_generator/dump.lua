@@ -142,6 +142,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
   -- When doing paths in xml the full path all the way from Interface needs to be used.
   local dataDirPathInAddon = f("Interface\\AddOns\\%s\\Database\\%s\\%s", addon_dir, entityTypeCapitalized, helpers.capitalize(expansionName)) -- Helper needed for capitalize
 
+  local fileIndex = 1
 
   print(f("Addon Directory:       %s", addon_dir))
   print(f("Output Base Path:      %s", outputBasePath))
@@ -340,7 +341,8 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     -- Check if chunk needs to be written
     if entries_written == range_size or i == #sorted_keys or p_tags_written >= p_tags_per_file then
       if entries_written > 0 then -- Don't write empty chunks
-        local chunk_filename = f("%d-%d.html", lowest_id, highest_id)
+        -- local chunk_filename = f("%d-%d.html", lowest_id, highest_id)
+        local chunk_filename = f("%d.html", fileIndex)
         local chunk_filepath = outputDataPath .. "/" .. chunk_filename
         local chunk_frame_name = f("%sData%d-%d", entityTypeCapitalized, lowest_id, highest_id)
 
@@ -371,6 +373,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
         p_tags_per_file_avg = (p_tags_per_file_avg + p_tags_written) / 2
 
         -- Reset chunk state
+        fileIndex = fileIndex + 1
         entries_written = 0
         p_tags_written = 0
         lowest_id, highest_id = math.huge, -math.huge
