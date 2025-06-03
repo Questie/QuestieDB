@@ -1,1 +1,3 @@
 *.lua
+AI_Context
+setEnv.sh
