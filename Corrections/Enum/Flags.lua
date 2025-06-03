@@ -6,6 +6,10 @@ local LibQuestieDB = select(2, ...)
 ---@class Enum
 local Enum = LibQuestieDB.Enum
 
+--*---- Import Module --------
+local Expansions = LibQuestieDB.Expansions
+
+
 -- * ---- NPC --------
 
 ---@enum NpcFlags
@@ -26,9 +30,9 @@ LibQuestieDB.npcFlags = {
   AUCTIONEER = LibQuestieDB.IsClassic and 4096 or 2097152,
   STABLEMASTER = LibQuestieDB.IsClassic and 8192 or 4194304,
   REPAIR = LibQuestieDB.IsClassic and 16384 or 4096,
-  BARBER = (LibQuestieDB.IsWotlk or LibQuestieDB.IsCata) and 16777216 or nil,
-  ARCANE_REFORGER = LibQuestieDB.IsCata and 134217728 or nil,
-  TRANSMOGRIFIER = LibQuestieDB.IsCata and 268435456 or nil,
+  BARBER = (Expansions.Current >= Expansions.Wotlk) and 16777216 or nil,
+  ARCANE_REFORGER = Expansions.Current >= Expansions.Cata and 134217728 or nil,
+  TRANSMOGRIFIER = Expansions.Current >= Expansions.Cata and 268435456 or nil,
 }
 
 -- * ---- Quest --------
