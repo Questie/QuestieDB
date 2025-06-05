@@ -60,6 +60,8 @@ DAT=$(find . \
     -name ".database_generator" -type d -prune -o \
     -name ".tests" -type d -prune -o \
     -name ".vscode" -type d -prune -o \
+    -name ".wowhead" -type d -prune -o \
+    -name "__pycache__" -type d -prune -o \
     -name "cli" -type d -prune -o \
     \( \
         -type f \
@@ -83,8 +85,8 @@ DAT=$(find . \
         -not -name "*.lua.backup" \
         -not -name "*.yml" \
         -not -name "*.db" \
-        -not -name "*.test" \
-        -not -name "*t.lua" \
+        -not -name "*.test.lua" \
+        -not -name "*.t.lua" \
         -not -path "./Corrections/*/*Fixes.lua" \
         -not -path "./Corrections/*/base/*Items.lua" \
         -not -path "./Corrections/*/base/*NPCs.lua" \
@@ -101,6 +103,10 @@ DAT=$(find . \
         -not -path "./Helpers/_s.lua" \
         -not -path "./Translations/TranslationsLookup.lua" \
     \) -print)
+
+# echo "Found Lua files:"
+# echo "$DAT"
+# exit
 # -exec sh -c '
 #     ai_file="$1"
 #     lua_file="${ai_file%.ai}.lua"
@@ -114,7 +120,8 @@ generate_ai_content() {
 
     GEMINI_API_KEY="$GEMINI_API_KEY"
     # MODEL_ID="gemini-2.5-pro-preview-05-06"
-    MODEL_ID="gemini-2.5-flash-preview-05-20"
+    # MODEL_ID="gemini-2.5-flash-preview-05-20"
+    MODEL_ID="gemini-2.0-flash"
     GENERATE_CONTENT_API="streamGenerateContent"
 
     # Read the content of the input file
@@ -125,45 +132,21 @@ generate_ai_content() {
     local request_json
     request_json=$(jq -n \
                   --arg content "$input_content" \
-                  '{
-                    "system_instruction": {
-                      "parts": [
-                        {
-                            "text": "Explain what this files does, and what it is used for. If it is a Questie file, explain what Questie is."
-                        }
-                      ]
-                    },
-                    "contents": [
-                      {
-                        "role": "user",
-                        "parts": [
-                          {
-                            "text": "This is some context"
-                          }
-                        ]
-                      },
-                      {
-                        "role": "user",
-                        "parts": [
-                          {
-                            "text": $content
-                          }
-                        ]
-                      }
-                    ],
-                    "generationConfig": {
-                      "thinkingConfig": {
-                        "thinkingBudget": 0,
-                      },
-                      "responseMimeType": "text/plain"
-                    }
-                  }')
-
+                  --arg filename "$input_file" \
+                  --rawfile all_context_data "$script_dir/combined_QuestieDB_AI.ai" \
+                  -f "$script_dir/jq-template.jq"
+                  )
+    echo "Request JSON: $request_json" > "$script_dir/request.log"
     output_data=$(curl -s \
     -X POST \
     -H "Content-Type: application/json" \
     "https://generativelanguage.googleapis.com/v1beta/models/${MODEL_ID}:${GENERATE_CONTENT_API}?key=${GEMINI_API_KEY}" \
     -d "$request_json")
+
+    echo "Output Data: $input_file \n $output_data" >> "$script_dir/streaming_output.log"
+    echo "" >> "$script_dir/streaming_output.log"
+    echo "" >> "$script_dir/streaming_output.log"
+    echo "" >> "$script_dir/streaming_output.log"
 
     # Extract and concatenate all text parts from the streaming response
     extracted_text=$(echo "$output_data" | jq -r 'map(.candidates[0].content.parts[0].text) | join("")')
@@ -174,14 +157,51 @@ generate_ai_content() {
 
 mkdir -p .vscode/AI_Context
 
-# Loop over DAT and generate AI files
+> "$script_dir/streaming_output.log" # Clear the log file before writing
+
+# Read and combine all .ai files into a variable from .vscode/AI_Context
+bash $script_dir/generate_combined_ai_file.sh
+
+total_count_dat=$(echo "$DAT" | wc -l)
+echo "Total Lua files to process: $total_count_dat"
+
+processed_count=1
+RPM=2000
+RPM=$RPM-100 # Reduce RPM just to be safe, as the API might have rate limits
+SLEEP_COUNT=$((RPM / 60)) # Calculate sleep time based on RPM
+
+
+# Step-by-step explanation:
+# 1. The script collects all relevant Lua source files into the DAT variable, excluding unwanted files and directories.
+# 2. It loops over each file in DAT:
+#    a. Checks if the file has a .lua extension.
+#    b. Removes any leading './' from the file path for consistency.
+#    c. Extracts the base filename (without extension) and its directory path.
+#    d. Replaces all '/' in the directory path with '#' to create a valid filename (since '/' is not allowed in filenames).
+#    e. Constructs the output .ai filename using the transformed path and base name, placing it in .vscode/AI_Context/.
+#    f. Calls the generate_ai_content function to generate AI content for the Lua file and writes it to the corresponding .ai file.
+#    g. Runs up to 3 jobs in parallel, then waits to avoid overloading the system or API.
+# 3. After all files are processed, the script waits for any remaining background jobs to finish.
+# 4. Finally, it combines all generated .ai files into a single combined_QuestieDB_AI.ai file.
 for file in $DAT; do
+    echo "Processing file $processed_count of $total_count_dat: $file"
     # Check if the file is a Lua file
     if [[ "$file" == *.lua ]]; then
+        # Remove the leading './' if present
+        file=$(echo "$file" | sed 's|^\./||')
         # Extract the base name without extension
-        base_name=$(basename "$file" .lua)
+        base_name=$(basename "$file" ".lua")
+        # echo "Base name: $base_name"
+        # Get the path without file name
+        dir_path=$(dirname "$file")
+        # echo "Directory path: $dir_path"
+
+        # Replace / with # in the path to create a valid file name
+        name=$(echo "$dir_path" | sed 's/\//#/g')#"$base_name"
+        # echo "AI file name: $name"
+
         # Create the AI file name
-        ai_file=".vscode/AI_Context/${base_name}.ai"
+        ai_file=".vscode/AI_Context/${name}.ai"
 
         # Generate AI content (this is a placeholder, replace with actual AI generation logic)
         echo "Generating AI content for $file..."
@@ -189,12 +209,28 @@ for file in $DAT; do
         # Here you would call your AI generation script or API to generate the content
         # For example, using a hypothetical command:
         # generate_ai_content "$file" > "$ai_file"
-        generate_ai_content "$file" "$ai_file"
-
-        # For demonstration, we will just create an empty AI file
-        # touch "$ai_file"
-        exit 0
+        generate_ai_content "$file" "$ai_file" &
+        # wait
+        # exit
+    fi
+    processed_count=$((processed_count + 1))
+    # Sleep for a short duration to avoid overwhelming the API
+    sleep 0.1
+    # Limit the number of parallel jobs to avoid overwhelming the system
+    if (( processed_count % $SLEEP_COUNT == 0 )); then
+        wait # Wait for all background jobs to finish before continuing
+        sleep 3
+        # if (( processed_count % 3 == 0 )); then
+        # Use this for flash 2.5
+        # Sleep for a short duration to avoid overwhelming the API
+        # sleep 5
     fi
 done
 
+wait
+echo ""
 echo "AI files generated in .vscode/AI_Context"
+
+echo ""
+echo "Combining all AI files into combined_QuestieDB_AI.ai"
+bash $script_dir/generate_combined_ai_file.sh
