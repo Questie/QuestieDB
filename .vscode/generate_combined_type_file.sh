@@ -14,9 +14,11 @@ cd ..
 # Define the output file
 output_file=".vscode/combined_QuestieDB_LuaLS_Alias.lua"
 
+echo "---@diagnostic disable: duplicate-doc-alias, duplicate-doc-field" > "$output_file"
+
 # Find all files .*\.t\.lua
 # For each file, print its path as a comment header, then print its content.
 # Redirect the combined output to the output file.
-find . -name "*.t.lua" -exec sh -c 'echo ""; echo "-- filepath: {}"; cat "{}"' \; > "$output_file"
+find . -name "*.t.lua" -exec sh -c 'echo ""; echo "-- filepath: {}"; cat "{}"' \; >> "$output_file"
 
 echo "Combined types generated in $output_file"

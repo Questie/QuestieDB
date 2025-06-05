@@ -28,7 +28,7 @@ echo "" >> "$output_file"
 #    c. It tries to find the corresponding .lua file in the same directory or elsewhere in the project.
 #    d. If the .ai file is not empty, it appends its content (and optionally the Lua source) to the combined output file in a Markdown format.
 # 3. After processing all .ai files, it replaces escaped code block markers with proper Markdown code fences for formatting.
-find . -name "*.ai" ! -samefile "$script_dir/combined_QuestieDB_AI_n_Code.ai" ! -samefile "$output_file" -exec sh -c '
+find . -name "*.ai" ! -samefile "$output_file" ! -name "combined_QuestieDB_AI_n_Code.ai" -exec sh -c '
     ai_file="$1"
     ai_filename=$(basename "$ai_file")
     # echo "AI Filename: $ai_filename"
@@ -56,10 +56,14 @@ find . -name "*.ai" ! -samefile "$script_dir/combined_QuestieDB_AI_n_Code.ai" ! 
 
     # Only process if the .ai file is not empty (ignoring whitespace)
     if grep -qve "^[[:space:]]*$" "$ai_file"; then
-        echo "---\n"
-        echo "## AI Context for $clean_lua_file\n"
+        echo "---"
+        echo ""
+        echo "## AI Context for $clean_lua_file"
+        echo ""
 
-        echo "### AI Explanation\n"
+        echo "### AI Explanation"
+        echo ""
+
         # echo "**File:** $clean_ai_file\n\n"
         # echo "\\\`\\\`\\\`text\n"
         cat "${ai_file}"

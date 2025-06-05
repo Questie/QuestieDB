@@ -86,6 +86,7 @@ DAT=$(find . \
         -not -name "*.yml" \
         -not -name "*.db" \
         -not -name "*.test.lua" \
+        -not -name "*.data" \
         -not -name "*.t.lua" \
         -not -path "./Corrections/*/*Fixes.lua" \
         -not -path "./Corrections/*/base/*Items.lua" \
