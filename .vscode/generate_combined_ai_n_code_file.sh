@@ -12,7 +12,7 @@ cd "$script_dir"
 cd ..
 
 # Define the output file
-output_file="$script_dir/combined_QuestieDB_AI.ai"
+output_file="$script_dir/combined_QuestieDB_AI_n_Code.ai"
 
 echo "---" > "$output_file" # Clear the output file before writing
 echo "# AI Context Entries" >> "$output_file"
@@ -28,53 +28,53 @@ echo "" >> "$output_file"
 #    c. It tries to find the corresponding .lua file in the same directory or elsewhere in the project.
 #    d. If the .ai file is not empty, it appends its content (and optionally the Lua source) to the combined output file in a Markdown format.
 # 3. After processing all .ai files, it replaces escaped code block markers with proper Markdown code fences for formatting.
-find . -name "*.ai" ! -samefile "$script_dir/combined_QuestieDB_AI_n_Code.ai" ! -samefile "$output_file" -exec sh -c '
-    ai_file="$1"
-    ai_filename=$(basename "$ai_file")
-    # echo "AI Filename: $ai_filename"
+find . -name "*.ai" ! -samefile "$script_dir/combined_QuestieDB_AI.ai" ! -samefile "$output_file" -exec sh -c '
+  ai_file="$1"
+  ai_filename=$(basename "$ai_file")
+  # echo "AI Filename: $ai_filename"
 
 
 
-    # Replace # with / in the file path to make it a valid path
-    ai_filename="${ai_filename//\#//}"
-    # echo "$ai_filename"
+  # Replace # with / in the file path to make it a valid path
+  ai_filename="${ai_filename//\#//}"
+  # echo "$ai_filename"
 
-    clean_ai_file="${ai_filename#./}"
-    base_name_no_ext="${ai_filename%.ai}"
-    ai_filename_no_ext="${base_name_no_ext##*/}"
-    # echo "AI Filename No Ext: $ai_filename_no_ext"
-    ai_file_dir=$(dirname "$ai_filename")
-    # echo "AI File Directory: $ai_file_dir"
-    lua_file=$(find "$ai_file_dir" -maxdepth 1 -name "${ai_filename_no_ext}.lua" -print -quit)
-    if [ -z "$lua_file" ]; then
-        lua_file=$(find . -name "${ai_filename_no_ext}.lua" | head -n 1)
+  clean_ai_file="${ai_filename#./}"
+  base_name_no_ext="${ai_filename%.ai}"
+  ai_filename_no_ext="${base_name_no_ext##*/}"
+  # echo "AI Filename No Ext: $ai_filename_no_ext"
+  ai_file_dir=$(dirname "$ai_filename")
+  # echo "AI File Directory: $ai_file_dir"
+  lua_file=$(find "$ai_file_dir" -maxdepth 1 -name "${ai_filename_no_ext}.lua" -print -quit)
+  if [ -z "$lua_file" ]; then
+    lua_file=$(find . -name "${ai_filename_no_ext}.lua" | head -n 1)
+  fi
+  clean_lua_file=""
+  if [ -n "$lua_file" ]; then
+    clean_lua_file="${lua_file#./}"
+  fi
+
+  # Only process if the .ai file is not empty (ignoring whitespace)
+  if grep -qve "^[[:space:]]*$" "$ai_file"; then
+    echo "---\n"
+    echo "## AI Context for $clean_lua_file\n"
+
+    echo "### AI Explanation\n"
+    # echo "**File:** $clean_ai_file\n\n"
+    # echo "\\\`\\\`\\\`text\n"
+    cat "${ai_file}"
+    # echo "\n\\\`\\\`\\\`\n"
+    echo "\n"
+
+    if [ -n "$lua_file" ] && [ -f "$lua_file" ]; then
+      echo "### Lua Source Code\n"
+      printf "**File:** %s\n\n" "$clean_lua_file"
+      echo "\\\`\\\`\\\`lua\n"
+      cat "${lua_file}"
+      echo "\n\\\`\\\`\\\`\n"
     fi
-    clean_lua_file=""
-    if [ -n "$lua_file" ]; then
-        clean_lua_file="${lua_file#./}"
-    fi
-
-    # Only process if the .ai file is not empty (ignoring whitespace)
-    if grep -qve "^[[:space:]]*$" "$ai_file"; then
-        echo "---\n"
-        echo "## AI Context for $clean_lua_file\n"
-
-        echo "### AI Explanation\n"
-        # echo "**File:** $clean_ai_file\n\n"
-        # echo "\\\`\\\`\\\`text\n"
-        cat "${ai_file}"
-        # echo "\n\\\`\\\`\\\`\n"
-        echo "\n"
-
-        # if [ -n "$lua_file" ] && [ -f "$lua_file" ]; then
-        #   echo "### Lua Source Code\n"
-        #   printf "**File:** %s\n\n" "$clean_lua_file"
-        #   echo "\\\`\\\`\\\`lua\n"
-        #   cat "${lua_file}"
-        #   echo "\n\\\`\\\`\\\`\n"
-        # fi
-        # echo "\n"
-    fi
+    echo "\n"
+  fi
 ' sh {} \; >> "$output_file"
 
 # Sed replace all instances of \\\`\\\`\\\` with ``` for proper Markdown formatting

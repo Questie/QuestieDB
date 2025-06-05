@@ -51,6 +51,7 @@
     ".database_generator/Questie-data": true,
     ".database_generator/mangos_translation/translations": true,
     ".vscode/*.lua": true,
+    ".vscode/AI_Context/*.ai": true,
     "translations.json": true,
     "**/*.lua-table": true,
   },
