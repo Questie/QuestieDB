@@ -62,7 +62,7 @@ DAT=$(find . \
     -name ".vscode" -type d -prune -o \
     -name ".ai_lua" -type d -prune -o \
     -name ".ai_py" -type d -prune -o \
-    -name ".ai" -type d -prune -o \
+    -name ".ai_scripts" -type d -prune -o \
     -name ".wowhead" -type d -prune -o \
     -name "__pycache__" -type d -prune -o \
     -name "cli" -type d -prune -o \
