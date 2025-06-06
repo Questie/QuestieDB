@@ -12,7 +12,7 @@ cd "$script_dir"
 cd ..
 
 # Define the output file
-output_file=".vscode/combined_QuestieDB_LuaLS_Alias.lua"
+output_file=".ai_lua/combined_QuestieDB_LuaLS_Alias.lua"
 
 echo "---@diagnostic disable: duplicate-doc-alias, duplicate-doc-field" > "$output_file"
 

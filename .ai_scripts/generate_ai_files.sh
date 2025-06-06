@@ -60,6 +60,9 @@ DAT=$(find . \
     -name ".database_generator" -type d -prune -o \
     -name ".tests" -type d -prune -o \
     -name ".vscode" -type d -prune -o \
+    -name ".ai_lua" -type d -prune -o \
+    -name ".ai_py" -type d -prune -o \
+    -name ".ai" -type d -prune -o \
     -name ".wowhead" -type d -prune -o \
     -name "__pycache__" -type d -prune -o \
     -name "cli" -type d -prune -o \
@@ -118,6 +121,9 @@ DAT=$(find . \
 generate_ai_content() {
     local input_file="$1"
     local output_file="$2"
+    local basefilename=$(basename "$input_file" ".lua")
+    # Temporary file for JSON payload
+    local tmp_json_file="$script_dir/$basefilename-payload.jq-temp"
 
     GEMINI_API_KEY="$GEMINI_API_KEY"
     # MODEL_ID="gemini-2.5-pro-preview-05-06"
@@ -128,21 +134,22 @@ generate_ai_content() {
     # Read the content of the input file
     local input_content
     input_content=$(cat "$input_file")
-    # Prepare the request JSON
+
     # Prepare the request JSON using jq to safely embed input_content
-    local request_json
-    request_json=$(jq -n \
-                  --arg content "$input_content" \
-                  --arg filename "$input_file" \
-                  --rawfile all_context_data "$script_dir/combined_QuestieDB_AI.ai" \
-                  -f "$script_dir/jq-template.jq"
-                  )
-    echo "Request JSON: $request_json" > "$script_dir/request.log"
+    jq -n \
+    --arg content "$input_content" \
+    --arg filename "$input_file" \
+    --rawfile all_context_data "$script_dir/combined_QuestieDB_AI.ai" \
+    -f "$script_dir/jq-template.jq" > "$tmp_json_file"
+
     output_data=$(curl -s \
     -X POST \
     -H "Content-Type: application/json" \
     "https://generativelanguage.googleapis.com/v1beta/models/${MODEL_ID}:${GENERATE_CONTENT_API}?key=${GEMINI_API_KEY}" \
-    -d "$request_json")
+    --data @"$tmp_json_file")
+
+    # Clean up the temporary JSON file
+    rm -f "$tmp_json_file"
 
     echo "Output Data: $input_file \n $output_data" >> "$script_dir/streaming_output.log"
     echo "" >> "$script_dir/streaming_output.log"
@@ -156,12 +163,15 @@ generate_ai_content() {
     echo "$extracted_text" > "$output_file"
 }
 
-mkdir -p .vscode/AI_Context
+mkdir -p .ai_lua/AI_Context
 
 > "$script_dir/streaming_output.log" # Clear the log file before writing
 
-# Read and combine all .ai files into a variable from .vscode/AI_Context
+# Read and combine all .ai files into a variable from .ai_lua/AI_Context
 bash $script_dir/generate_combined_ai_file.sh
+
+# Remove any existing .ai files in the AI_Context directory
+rm -f .ai_lua/AI_Context/*.ai
 
 total_count_dat=$(echo "$DAT" | wc -l)
 echo "Total Lua files to process: $total_count_dat"
@@ -179,7 +189,7 @@ SLEEP_COUNT=$((RPM / 60)) # Calculate sleep time based on RPM
 #    b. Removes any leading './' from the file path for consistency.
 #    c. Extracts the base filename (without extension) and its directory path.
 #    d. Replaces all '/' in the directory path with '#' to create a valid filename (since '/' is not allowed in filenames).
-#    e. Constructs the output .ai filename using the transformed path and base name, placing it in .vscode/AI_Context/.
+#    e. Constructs the output .ai filename using the transformed path and base name, placing it in .ai_lua/AI_Context/.
 #    f. Calls the generate_ai_content function to generate AI content for the Lua file and writes it to the corresponding .ai file.
 #    g. Runs up to 3 jobs in parallel, then waits to avoid overloading the system or API.
 # 3. After all files are processed, the script waits for any remaining background jobs to finish.
@@ -202,7 +212,7 @@ for file in $DAT; do
         # echo "AI file name: $name"
 
         # Create the AI file name
-        ai_file=".vscode/AI_Context/${name}.ai"
+        ai_file=".ai_lua/AI_Context/${name}.ai"
 
         # Generate AI content (this is a placeholder, replace with actual AI generation logic)
         echo "Generating AI content for $file..."
@@ -230,7 +240,7 @@ done
 
 wait
 echo ""
-echo "AI files generated in .vscode/AI_Context"
+echo "AI files generated in .ai_lua/AI_Context"
 
 echo ""
 echo "Combining all AI files into combined_QuestieDB_AI.ai"

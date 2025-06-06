@@ -68,7 +68,7 @@ find . -name "*.ai" ! -samefile "$output_file" ! -name "combined_QuestieDB_AI_n_
         # echo "\\\`\\\`\\\`text\n"
         cat "${ai_file}"
         # echo "\n\\\`\\\`\\\`\n"
-        echo "\n"
+        echo ""
 
         # if [ -n "$lua_file" ] && [ -f "$lua_file" ]; then
         #   echo "### Lua Source Code\n"
