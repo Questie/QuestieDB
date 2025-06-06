@@ -7,11 +7,9 @@ local DumpFunctions = LibQuestieDB.Corrections.DumpFunctions
 ---@class QuestMeta
 local QuestMeta = {}
 
--- Add QuestMeta
----@class Corrections
-local Corrections = LibQuestieDB.Corrections
-Corrections.QuestMeta = QuestMeta
-
+---@class Meta
+local Meta = LibQuestieDB.Meta
+Meta.QuestMeta = QuestMeta
 
 ---@class QuestDBKeys @ Contains name of data as keys and their index as value
 QuestMeta.questKeys = {

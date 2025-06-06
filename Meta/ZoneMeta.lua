@@ -4,10 +4,9 @@ local LibQuestieDB = select(2, ...)
 ---@class ZoneMeta
 local ZoneMeta = {}
 
--- Add ZoneMeta
----@class Corrections
-local Corrections = LibQuestieDB.Corrections
-Corrections.ZoneMeta = ZoneMeta
+---@class Meta
+local Meta = LibQuestieDB.Meta
+Meta.ZoneMeta = ZoneMeta
 
 -- Different source of zoneIds
 -- These are not in use anymore but are quite helpful when fixing the database

@@ -4,10 +4,10 @@ local LibQuestieDB = select(2, ...)
 ---@class PlayerMeta
 local PlayerMeta = {}
 
--- Add PlayerMeta
----@class Corrections
-local Corrections = LibQuestieDB.Corrections
-Corrections.PlayerMeta = PlayerMeta
+-- Add PlayerMeta to Meta namespace
+---@class Meta
+local Meta = LibQuestieDB.Meta
+Meta.PlayerMeta = PlayerMeta
 
 ---@enum RaceIDs
 PlayerMeta.raceKeys = {

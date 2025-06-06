@@ -7,11 +7,10 @@ local DumpFunctions = LibQuestieDB.Corrections.DumpFunctions
 ---@class ObjectMeta
 local ObjectMeta = {}
 
--- Add ObjectMeta
----@class Corrections
-local Corrections = LibQuestieDB.Corrections
-Corrections.ObjectMeta = ObjectMeta
-
+-- Add ObjectMeta to Meta namespace
+---@class Meta
+local Meta = LibQuestieDB.Meta
+Meta.ObjectMeta = ObjectMeta
 
 ---@class ObjectDBKeys @ Contains name of data as keys and their index as value
 ObjectMeta.objectKeys = {
