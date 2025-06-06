@@ -86,7 +86,7 @@ local function RunTest(version)
     error("Database not initialized")
   end
 
-  local Corrections = LibQuestieDBTable.Corrections
+  local Meta = LibQuestieDBTable.Meta
   local publicLibQuestieDB = LibQuestieDB()
 
   --- Function to print details of the database
@@ -130,7 +130,7 @@ local function RunTest(version)
     table.sort(AllItemIds)
 
     local functionOrder = {}
-    for functionName, index in pairs(Corrections.ItemMeta.itemKeys) do
+    for functionName, index in pairs(Meta.ItemMeta.itemKeys) do
       functionOrder[index] = functionName
     end
 
@@ -143,7 +143,7 @@ local function RunTest(version)
     table.sort(AllNpcIds)
 
     local functionOrder = {}
-    for functionName, index in pairs(Corrections.NpcMeta.npcKeys) do
+    for functionName, index in pairs(Meta.NpcMeta.npcKeys) do
       functionOrder[index] = functionName
     end
 
@@ -156,7 +156,7 @@ local function RunTest(version)
     table.sort(AllObjectIds)
 
     local functionOrder = {}
-    for functionName, index in pairs(Corrections.ObjectMeta.objectKeys) do
+    for functionName, index in pairs(Meta.ObjectMeta.objectKeys) do
       functionOrder[index] = functionName
     end
 
@@ -169,7 +169,7 @@ local function RunTest(version)
     table.sort(AllQuestIds)
 
     local functionOrder = {}
-    for functionName, index in pairs(Corrections.QuestMeta.questKeys) do
+    for functionName, index in pairs(Meta.QuestMeta.questKeys) do
       functionOrder[index] = functionName
     end
 
@@ -178,7 +178,7 @@ local function RunTest(version)
 
   print("------------------ Running all tests")
   print("NOTE: The first test initializes frames so it take more time than other functions")
-  for _, locale in ipairs(LibQuestieDBTable.Corrections.L10nMeta.locales) do
+  for _, locale in ipairs(LibQuestieDBTable.Meta.L10nMeta.locales) do
     LibQuestieDBTable.l10n.SetLocale(locale)
     print(f("Running l10n tests", locale))
     print(f(" Locale:  (%s)", locale))
