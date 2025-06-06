@@ -1,6 +1,9 @@
 {
   "Lua.workspace.ignoreDir": [
     ".generate_database",
+    ".ai_lua",
+    ".ai_py",
+    ".ai_scripts",
     ".database_generator/mangos_translation",
     ".database_generator/Questie-translations",
     ".database_generator/Questie-data",
@@ -38,6 +41,8 @@
     "**/_data/*.html": true,
     "**/venv": true,
     "WoW-API": true,
+    "**/*.jq-temp": true,
+    "*.jq-temp": true,
   },
   "search.exclude": {
     "**/node_modules": true,
@@ -52,8 +57,12 @@
     ".database_generator/mangos_translation/translations": true,
     ".vscode/*.lua": true,
     ".vscode/AI_Context/*.ai": true,
+    ".ai_lua": true,
+    ".ai_py": true,
     "translations.json": true,
     "**/*.lua-table": true,
+    "**/*.jq-temp": true,
+    "*.jq-temp": true,
   },
 
   "[lua]": {
