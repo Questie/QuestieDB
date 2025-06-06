@@ -2,10 +2,11 @@
 local LibQuestieDB = select(2, ...)
 
 --- Imports
-local Enum = LibQuestieDB.Enum
 local Corrections = LibQuestieDB.Corrections
-local NpcMeta = Corrections.NpcMeta
-local ZoneMeta = Corrections.ZoneMeta
+local Enum = LibQuestieDB.Enum
+local Meta = LibQuestieDB.Meta
+local NpcMeta = Meta.NpcMeta
+local ZoneMeta = Meta.ZoneMeta
 
 ---@class NpcFixesEra
 local NpcFixes = {}

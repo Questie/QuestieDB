@@ -4,7 +4,8 @@ local LibQuestieDB = select(2, ...)
 
 --- Imports
 local Corrections = LibQuestieDB.Corrections
-local QuestMeta = Corrections.QuestMeta
+local Meta = LibQuestieDB.Meta
+local QuestMeta = Meta.QuestMeta
 
 ---@class QuestFixesEra
 local QuestFixes = {}

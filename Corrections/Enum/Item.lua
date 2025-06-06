@@ -1,0 +1,88 @@
+---@class LibQuestieDB
+local LibQuestieDB = select(2, ...)
+
+--*---- Extend Module --------
+
+---@class Enum
+local Enum = LibQuestieDB.Enum
+
+-- See end of Enum/Item.lua to see all the itemClasses
+---@enum ItemClass
+Enum.itemClasses = {
+  QUEST = 12,
+}
+-- item class/subClass combinations
+--class subClass
+-- 0         0     Consumable
+-- 1         0     Container, Bag
+-- 1         1     Container, Soul bag
+-- 1         2     Container, Herb bag
+-- 1         3     Container, Enchanting bag
+-- 1         4     Container, Engineering bag
+-- 2         0     Weapon, Axe 1H
+-- 2         1     Weapon, Axe 2H
+-- 2         2     Weapon, Bow
+-- 2         3     Weapon, Gun
+-- 2         4     Weapon, Mace 1H
+-- 2         5     Weapon, Mace 2H
+-- 2         6     Weapon, Polearm
+-- 2         7     Weapon, Sword 1H
+-- 2         8     Weapon, Sword 2H
+-- 2         9     Weapon, Obsolete
+-- 2         10    Weapon, Staff
+-- 2         11    Weapon, Exotic
+-- 2         12    Weapon, Exotic
+-- 2         13    Weapon, Fist
+-- 2         14    Weapon, Miscellaneous
+-- 2         15    Weapon, Dagger
+-- 2         16    Weapon, Thrown
+-- 2         17    Weapon, Spear
+-- 2         18    Weapon, Crossbow
+-- 2         19    Weapon, Wand
+-- 2         20    Weapon, Fishing Pole
+-- 4         0     Armor, Miscellaneous
+-- 4         1     Armor, Cloth
+-- 4         2     Armor, Leather
+-- 4         3     Armor, Mail
+-- 4         4     Armor, Plate
+-- 4         5     Armor, Buckler(OBSOLETE)
+-- 4         6     Armor, Shield
+-- 4         7     Armor, Libram
+-- 4         8     Armor, Idol
+-- 4         9     Armor, Totem
+-- 5         0     Reagent
+-- 6         0     Projectile, Wand(OBSOLETE)
+-- 6         1     Projectile, Bolt(OBSOLETE)
+-- 6         2     Projectile, Arrow
+-- 6         3     Projectile, Bullet
+-- 6         4     Projectile, Thrown(OBSOLETE)
+-- 7         0     Trade Goods
+-- 9         0     Recipe, Book
+-- 9         1     Recipe, Leatherworking
+-- 9         2     Recipe, Tailoring
+-- 9         3     Recipe, Engineering
+-- 9         4     Recipe, Blacksmithing
+-- 9         5     Recipe, Cooking
+-- 9         6     Recipe, Alchemy
+-- 9         7     Recipe, First Aid
+-- 9         8     Recipe, Enchanting
+-- 9         9     Recipe, Fishing
+-- 11        0     Quiver, Quiver(OBSOLETE)
+-- 11        1     Quiver, Quiver(OBSOLETE)
+-- 11        2     Quiver, Quiver
+-- 11        3     Quiver, Ammo Pouch
+-- 12        0     Quest
+-- 13        0     Key, Key
+-- 13        1     Key, Lockpick
+-- 14        0     Permanent, Permanent
+-- 15        0     Junk, Junk
+-- 16        0     Glyph, Warrior
+-- 16        1     Glyph, Paladin
+-- 16        2     Glyph, Hunter
+-- 16        3     Glyph, Rogue
+-- 16        4     Glyph, Priest
+-- 16        5     Glyph, Death Knight
+-- 16        6     Glyph, Shaman
+-- 16        7     Glyph, Mage
+-- 16        8     Glyph, Warlock
+-- 16        9     Glyph, Druid

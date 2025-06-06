@@ -3,11 +3,11 @@ local LibQuestieDB = select(2, ...)
 
 
 --- Imports
-local Enum = LibQuestieDB.Enum
 local Corrections = LibQuestieDB.Corrections
-local QuestMeta = Corrections.QuestMeta
-local ZoneMeta = Corrections.ZoneMeta
-local PlayerMeta = Corrections.PlayerMeta
+local Enum = LibQuestieDB.Enum
+local Meta = LibQuestieDB.Meta
+local QuestMeta = Meta.QuestMeta
+local ZoneMeta = Meta.ZoneMeta
 
 ---@class QuestFixesEra
 local QuestFixes = {}
@@ -63,8 +63,8 @@ function QuestFixes:Load()
 
   local questKeys = QuestMeta.questKeys
   local zoneIDs = ZoneMeta.zoneIDs
-  local raceIDs = PlayerMeta.raceKeys
-  local classIDs = PlayerMeta.classKeys
+  local raceIDs = Enum.raceKeys
+  local classIDs = Enum.classKeys
   local sortKeys = Enum.sortKeys
   local profKeys = Enum.professionKeys
   local specKeys = Enum.specializationKeys

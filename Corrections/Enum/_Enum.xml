@@ -5,7 +5,9 @@
   <Script file="Factions.lua" />
   <Script file="Flags.lua" />
   <Script file="Npc.lua" />
+  <Script file="Item.lua" />
   <Script file="Player.lua" />
   <Script file="Profession.lua" />
   <Script file="Sort.lua" />
+  <Script file="Waypoints.lua" />
 </Ui>

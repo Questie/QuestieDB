@@ -1,4 +1,5 @@
 ---@class LibQuestieDB
+---@field QuestMeta QuestMeta
 local LibQuestieDB = select(2, ...)
 
 --- Imports
@@ -113,114 +114,114 @@ for key, index in pairs(QuestMeta.questKeys) do
 end
 
 
----@enum QuestFlags
-QuestMeta.questFlags = {
-  NONE = 0,
-  STAY_ALIVE = 1,
-  PARTY_ACCEPT = 2,
-  EXPLORATION = 4,
-  SHARABLE = 8,
-  UNUSED1 = 16,
-  EPIC = 32,
-  RAID = 64,
-  UNUSED2 = 128,
-  UNKNOWN = 256,
-  HIDDEN_REWARDS = 512,
-  AUTO_REWARDED = 1024,
-  DAILY = 4096,
-  WEEKLY = 32768,
-}
+-- ---@enum QuestFlags
+-- QuestMeta.questFlags = {
+--   NONE = 0,
+--   STAY_ALIVE = 1,
+--   PARTY_ACCEPT = 2,
+--   EXPLORATION = 4,
+--   SHARABLE = 8,
+--   UNUSED1 = 16,
+--   EPIC = 32,
+--   RAID = 64,
+--   UNUSED2 = 128,
+--   UNKNOWN = 256,
+--   HIDDEN_REWARDS = 512,
+--   AUTO_REWARDED = 1024,
+--   DAILY = 4096,
+--   WEEKLY = 32768,
+-- }
 
--- TODO: Should this really be here?
----@enum Factions
-QuestMeta.factionIDs = {
-  UNDERCITY = 68,
-  DARNASSUS = 69,
-  DARKMOON_FAIRE = 909,
-  EXODAR = 930,
-  THE_KALUAK = 1073,
-  KIRIN_TOR = 1090,
-}
+-- -- TODO: Should this really be here?
+-- ---@enum Factions
+-- QuestMeta.factionIDs = {
+--   UNDERCITY = 68,
+--   DARNASSUS = 69,
+--   DARKMOON_FAIRE = 909,
+--   EXODAR = 930,
+--   THE_KALUAK = 1073,
+--   KIRIN_TOR = 1090,
+-- }
 
----@enum QuestSortKeys @ These are the values for the 'zoneOrSort' field
-QuestMeta.sortKeys = {
-  SEASONAL = -22,
-  HERBALISM = -24,
-  BATTLEGROUND = -25,
-  WARLOCK = -61,
-  WARRIOR = -81,
-  SHAMAN = -82,
-  FISHING = -101,
-  BLACKSMITHING = -121,
-  PALADIN = -141,
-  MAGE = -161,
-  ROGUE = -162,
-  ALCHEMY = -181,
-  LEATHERWORKING = -182,
-  ENGINEERING = -201,
-  HUNTER = -261,
-  PRIEST = -262,
-  DRUID = -263,
-  TAILORING = -264,
-  SPECIAL = -284,
-  COOKING = -304,
-  FIRST_AID = -324,
-  DARKMOON_FAIRE = -364,
-  LUNAR_FESTIVAL = -366,
-  REPUTATION = -367,
-  MIDSUMMER = -369,
-  BREWFEST = -370,
-  INSCRIPTION = -371,
-  DEATHKNIGHT = -372,
-  JEWELCRAFTING = -373,
-  NOBLEGARDEN = -374,
-  PILGRIMS_BOUNTY = -375,
-  LOVE_IS_IN_THE_AIR = -376,
-}
+-- ---@enum QuestSortKeys @ These are the values for the 'zoneOrSort' field
+-- QuestMeta.sortKeys = {
+--   SEASONAL = -22,
+--   HERBALISM = -24,
+--   BATTLEGROUND = -25,
+--   WARLOCK = -61,
+--   WARRIOR = -81,
+--   SHAMAN = -82,
+--   FISHING = -101,
+--   BLACKSMITHING = -121,
+--   PALADIN = -141,
+--   MAGE = -161,
+--   ROGUE = -162,
+--   ALCHEMY = -181,
+--   LEATHERWORKING = -182,
+--   ENGINEERING = -201,
+--   HUNTER = -261,
+--   PRIEST = -262,
+--   DRUID = -263,
+--   TAILORING = -264,
+--   SPECIAL = -284,
+--   COOKING = -304,
+--   FIRST_AID = -324,
+--   DARKMOON_FAIRE = -364,
+--   LUNAR_FESTIVAL = -366,
+--   REPUTATION = -367,
+--   MIDSUMMER = -369,
+--   BREWFEST = -370,
+--   INSCRIPTION = -371,
+--   DEATHKNIGHT = -372,
+--   JEWELCRAFTING = -373,
+--   NOBLEGARDEN = -374,
+--   PILGRIMS_BOUNTY = -375,
+--   LOVE_IS_IN_THE_AIR = -376,
+-- }
 
----@enum ProfessionEnum
-QuestMeta.professionKeys = {
-  FIRST_AID = 129,
-  BLACKSMITHING = 164,
-  LEATHERWORKING = 165,
-  ALCHEMY = 171,
-  HERBALISM = 182,
-  COOKING = 185,
-  MINING = 186,
-  TAILORING = 197,
-  ENGINEERING = 202,
-  ENCHANTING = 333,
-  FISHING = 356,
-  SKINNING = 393,
-  JEWELCRAFTING = 755,
-  INSCRIPTION = 773,
-  RIDING = 762,
-}
+-- ---@enum ProfessionEnum
+-- QuestMeta.professionKeys = {
+--   FIRST_AID = 129,
+--   BLACKSMITHING = 164,
+--   LEATHERWORKING = 165,
+--   ALCHEMY = 171,
+--   HERBALISM = 182,
+--   COOKING = 185,
+--   MINING = 186,
+--   TAILORING = 197,
+--   ENGINEERING = 202,
+--   ENCHANTING = 333,
+--   FISHING = 356,
+--   SKINNING = 393,
+--   JEWELCRAFTING = 755,
+--   INSCRIPTION = 773,
+--   RIDING = 762,
+-- }
 
----@enum ProfessionSpecializationEnum
-QuestMeta.specializationKeys = { -- specializations use spellID, professions use skillID
-  ALCHEMY = QuestMeta.professionKeys.ALCHEMY,
-  ALCHEMY_ELIXIR = 28677,
-  ALCHEMY_POTION = 28675,
-  ALCHEMY_TRANSMUTATION = 28672,
-  BLACKSMITHING = QuestMeta.professionKeys.BLACKSMITHING,
-  BLACKSMITHING_ARMOR = 9788,
-  BLACKSMITHING_WEAPON = 9787,
-  BLACKSMITHING_WEAPON_AXE = 17041,
-  BLACKSMITHING_WEAPON_HAMMER = 17040,
-  BLACKSMITHING_WEAPON_SWORD = 17039,
-  ENGINEERING = QuestMeta.professionKeys.ENGINEERING,
-  ENGINEERING_GNOMISH = 20219,
-  ENGINEERING_GOBLIN = 20222,
-  LEATHERWORKING = QuestMeta.professionKeys.LEATHERWORKING,
-  LEATHERWORKING_DRAGONSCALE = 10656,
-  LEATHERWORKING_ELEMENTAL = 10658,
-  LEATHERWORKING_TRIBAL = 10660,
-  TAILORING = QuestMeta.professionKeys.TAILORING,
-  TAILORING_MOONCLOTH = 26798,
-  TAILORING_SHADOWEAVE = 26801,
-  TAILORING_SPELLFIRE = 26797,
-}
+-- ---@enum ProfessionSpecializationEnum
+-- QuestMeta.specializationKeys = { -- specializations use spellID, professions use skillID
+--   ALCHEMY = QuestMeta.professionKeys.ALCHEMY,
+--   ALCHEMY_ELIXIR = 28677,
+--   ALCHEMY_POTION = 28675,
+--   ALCHEMY_TRANSMUTATION = 28672,
+--   BLACKSMITHING = QuestMeta.professionKeys.BLACKSMITHING,
+--   BLACKSMITHING_ARMOR = 9788,
+--   BLACKSMITHING_WEAPON = 9787,
+--   BLACKSMITHING_WEAPON_AXE = 17041,
+--   BLACKSMITHING_WEAPON_HAMMER = 17040,
+--   BLACKSMITHING_WEAPON_SWORD = 17039,
+--   ENGINEERING = QuestMeta.professionKeys.ENGINEERING,
+--   ENGINEERING_GNOMISH = 20219,
+--   ENGINEERING_GOBLIN = 20222,
+--   LEATHERWORKING = QuestMeta.professionKeys.LEATHERWORKING,
+--   LEATHERWORKING_DRAGONSCALE = 10656,
+--   LEATHERWORKING_ELEMENTAL = 10658,
+--   LEATHERWORKING_TRIBAL = 10660,
+--   TAILORING = QuestMeta.professionKeys.TAILORING,
+--   TAILORING_MOONCLOTH = 26798,
+--   TAILORING_SHADOWEAVE = 26801,
+--   TAILORING_SPELLFIRE = 26797,
+-- }
 
 -- Used for dumping the database
 QuestMeta.dumpFuncs = {

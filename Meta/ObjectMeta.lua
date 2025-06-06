@@ -1,4 +1,5 @@
 ---@class LibQuestieDB
+---@field ObjectMeta ObjectMeta
 local LibQuestieDB = select(2, ...)
 
 --- Imports

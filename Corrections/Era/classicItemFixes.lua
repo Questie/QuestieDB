@@ -3,7 +3,9 @@ local LibQuestieDB = select(2, ...)
 
 --- Imports
 local Corrections = LibQuestieDB.Corrections
-local ItemMeta = Corrections.ItemMeta
+local Meta = LibQuestieDB.Meta
+local ItemMeta = Meta.ItemMeta
+local Enum = LibQuestieDB.Enum
 
 ---@class ItemFixesEra
 local ItemFixes = {}
@@ -30,7 +32,7 @@ end)
 ---@return table<ItemId, Correction[]>>
 function ItemFixes.Load()
   local itemKeys = ItemMeta.itemKeys
-  local itemClasses = ItemMeta.itemClasses
+  local itemClasses = Enum.itemClasses
 
   return {
     [730] = {
