@@ -2,12 +2,11 @@
 ---@field Item Item
 local LibQuestieDB = select(2, ...)
 
-local Corrections = LibQuestieDB.Corrections
 local l10n = LibQuestieDB.l10n
 
 ---@class (exact) Item:DatabaseType
 ---@class (exact) Item:ItemFunctions
-local Item = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Item, "Item", Corrections.ItemMeta.itemKeys)
+local Item = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Item, "Item", LibQuestieDB.Meta.ItemMeta.itemKeys)
 GItem = Item
 
 do

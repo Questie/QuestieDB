@@ -23,7 +23,7 @@ Npc.testGetFunctions = function(fast)
   debugprofilestart()
   local beginTime = debugprofilestop()
   local functions = 0
-  for _, _ in pairs(LibQuestieDB.Corrections.NpcMeta.npcKeys) do
+  for _, _ in pairs(LibQuestieDB.Meta.NpcMeta.npcKeys) do
     functions = functions + 1
   end
 
@@ -193,7 +193,7 @@ Npc.testGetFunctions = function(fast)
   print("  ", count, "npcs tested")
   print("  ", "time per npc:", tostring(time / count):sub(1, 6), "ms")
   print("  ", "avg time per function", tostring(time / (count * functions)):sub(1, 6), "ms")
-  for i, functionName in ipairs(LibQuestieDB.Corrections.NpcMeta.NameIndexLookupTable) do
+  for i, functionName in ipairs(LibQuestieDB.Meta.NpcMeta.NameIndexLookupTable) do
     local v = perFunctionPerformace[functionName] or 0
     print("    ", i, functionName, ":", tostring((v / count) * 1000):sub(1, 6), "µs")
   end

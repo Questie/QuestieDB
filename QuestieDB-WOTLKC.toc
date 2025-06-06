@@ -20,6 +20,9 @@ Helpers\Helpers.xml
 #* Metadata
 Meta\Meta.xml
 
+#* Enum
+Corrections\Enum\_Enum.xml
+
 #* Database
 ## Data embeds
 Database\Item\Wotlk\ItemDataFiles.xml

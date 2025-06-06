@@ -2,12 +2,11 @@
 ---@field Npc Npc
 local LibQuestieDB = select(2, ...)
 
-local Corrections = LibQuestieDB.Corrections
 local l10n = LibQuestieDB.l10n
 
 ---@class (exact) Npc:DatabaseType
 ---@class (exact) Npc:NpcFunctions
-local Npc = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Npc, "Npc", Corrections.NpcMeta.npcKeys)
+local Npc = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Npc, "Npc", LibQuestieDB.Meta.NpcMeta.npcKeys)
 
 do
   -- Class for all the GET functions for the Npc namespace

@@ -3,7 +3,7 @@ local LibQuestieDB = select(2, ...)
 
 --*---- Extend Module --------
 
-local ZoneMeta = LibQuestieDB.ZoneMeta
+local ZoneMeta = LibQuestieDB.Meta.ZoneMeta
 
 
 ---@class Enum

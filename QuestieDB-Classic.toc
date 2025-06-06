@@ -9,7 +9,6 @@
 ## SavedVariables: QuestieDB_var, QuestieDB_trace
 ## SavedVariablesPerCharacter: QuestieDB_c
 ## Dedicated to my cat - Suddis
-start.lua
 
 ####### API Here ########
 Library.lua
@@ -20,6 +19,9 @@ Helpers\Helpers.xml
 
 #* Metadata
 Meta\Meta.xml
+
+#* Enum
+Corrections\Enum\_Enum.xml
 
 #* Database
 ## Data embeds
@@ -68,5 +70,3 @@ Corrections\Sod\_SodCorrections.xml
 
 # Standalone
 QuestieDB.lua
-
-stop.lua

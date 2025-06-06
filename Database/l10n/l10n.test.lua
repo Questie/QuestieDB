@@ -17,7 +17,7 @@ local object = LibQuestieDB.Object
 local quest = LibQuestieDB.Quest
 
 l10n.RunGetTestAllLocales = function(fast)
-  for _, locale in ipairs(LibQuestieDB.Corrections.L10nMeta.locales) do
+  for _, locale in ipairs(LibQuestieDB.Meta.L10nMeta.locales) do
     LibQuestieDB.ColorizePrint("yellow", "Testing l10n for locale: " .. locale)
     l10n.SetLocale(locale)
     l10n.RunGetTest(fast)

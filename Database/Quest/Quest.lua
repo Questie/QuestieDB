@@ -2,7 +2,6 @@
 ---@field Quest Quest
 local LibQuestieDB = select(2, ...)
 
-local Corrections = LibQuestieDB.Corrections
 local l10n = LibQuestieDB.l10n
 local ExtraTranslation = LibQuestieDB.ExtraTranslation
 
@@ -10,7 +9,7 @@ local ExtraTranslation = LibQuestieDB.ExtraTranslation
 
 ---@class (exact) Quest:DatabaseType
 ---@class (exact) Quest:QuestFunctions
-local Quest = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Quest, "Quest", Corrections.QuestMeta.questKeys)
+local Quest = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Quest, "Quest", LibQuestieDB.Meta.QuestMeta.questKeys)
 
 do
   -- ? Questie Data structure for Quests

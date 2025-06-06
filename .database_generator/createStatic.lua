@@ -79,11 +79,11 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   ---@type table<ItemId|NpcId|ObjectId|QuestId, table<L10nDBKeys, table<L10nLocales, any>>>
   local l10nOverride = {}
 
-  ---@type Corrections
-  local Corrections = LibQuestieDBTable.Corrections
+  ---@type Meta
+  local Meta = LibQuestieDBTable.Meta
 
   -- Run self-tests on the dump functions to ensure they produce correct output.
-  Corrections.DumpFunctions.testDumpFunctions()
+  Meta.DumpFunctions.testDumpFunctions()
 
   -- Define the entity types for which we will generate HTML files.
   local entityTypes = { "Item", "Npc", "Object", "Quest", }
@@ -105,7 +105,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
     -- Load static corrections registered within the addon environment.
     LibQuestieDBTable.Item.LoadOverrideData(false, true) -- includeStatic = true
     ---@type ItemMeta
-    local itemMeta = Corrections.ItemMeta
+    local itemMeta = Meta.ItemMeta
     -- Iterate through the loaded static corrections.
     ---@param itemId ItemId
     ---@param corrections table<string, any> @ Map of field name -> corrected value
@@ -142,7 +142,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
     LibQuestieDBTable.Npc.LoadOverrideData(false, true)
 
     ---@type NpcMeta
-    local npcMeta = Corrections.NpcMeta
+    local npcMeta = Meta.NpcMeta
 
     ---@param npcId NpcId
     ---@param corrections table<string, any>
@@ -178,7 +178,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
     LibQuestieDBTable.Object.LoadOverrideData(false, true)
 
     ---@type ObjectMeta
-    local objectMeta = Corrections.ObjectMeta
+    local objectMeta = Meta.ObjectMeta
 
     ---@param objectId ObjectId
     ---@param corrections table<string, any>
@@ -214,7 +214,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
     LibQuestieDBTable.Quest.LoadOverrideData(false, true)
 
     ---@type QuestMeta
-    local questMeta = Corrections.QuestMeta
+    local questMeta = Meta.QuestMeta
 
     ---@param questId QuestId
     ---@param corrections table<string, any>
@@ -237,7 +237,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   do
     -- ? l10n dump
     print("Loading version: " .. questie_version)
-    for datatype in pairs(Corrections.L10nMeta.l10nKeys) do
+    for datatype in pairs(Meta.L10nMeta.l10nKeys) do
       l10n_loader.CleanFiles(questie_version, datatype)
     end
 
@@ -262,7 +262,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
         return
       end
       -- Validate that all locales are loaded
-      for _, locale in ipairs(Corrections.L10nMeta.locales) do
+      for _, locale in ipairs(Meta.L10nMeta.locales) do
         -- if locale ~= "enUS" then
         print("    Validating " .. entityType .. " lookup for locale: " .. locale)
         if not lookup[locale] then
@@ -417,7 +417,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
 
     -- Create the l10n data table
     print(c("Creating l10n object data[id][entityType][locale]", "green"))
-    l10nOverride = l10n_loader.GenerateL10nTranslation(Corrections.L10nMeta.locales, entityTypes, l10n)
+    l10nOverride = l10n_loader.GenerateL10nTranslation(Meta.L10nMeta.locales, entityTypes, l10n)
   end
 
   --------------------------------------------------------------------
@@ -454,7 +454,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   -- ? Dump L10n Data
   print(c("\nDumping L10n overrides", "yellow"))
   ---@type string
-  local l10nDataString = l10n_loader.DumpL10nData(Corrections.L10nMeta, entityTypes, l10nOverride)
+  local l10nDataString = l10n_loader.DumpL10nData(Meta.L10nMeta, entityTypes, l10nOverride)
   local l10nDumpFile = io.open(f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedQuestieDBVersion), "w")
   if l10nDumpFile and l10nDataString then
     l10nDumpFile:write(l10nDataString)
@@ -478,15 +478,15 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   l10nData = l10nData()
 
   -- Dumping l10n overrides to HTML
-  GenerateHtmlForEntityType(l10nData, Corrections.L10nMeta, "L10n", questiedb_version, nil, nil, debug)
+  GenerateHtmlForEntityType(l10nData, Meta.L10nMeta, "L10n", questiedb_version, nil, nil, debug)
   -- GenerateHtmlForEntityType(l10nData, Corrections.L10nMeta, "L10n", version, 75, 650, debug)
 
   -- ? Dump Item Data
   print(c("\nDumping item overrides", "yellow"))
   -- Generate the string representation of the merged item data.
   ---@type string
-  local itemDataString = helpers.dumpData(itemOverride, Corrections.ItemMeta.itemKeys, Corrections.ItemMeta.dumpFuncs,
-                                          Corrections.ItemMeta.combine)
+  local itemDataString = helpers.dumpData(itemOverride, Meta.ItemMeta.itemKeys, Meta.ItemMeta.dumpFuncs,
+                                          Meta.ItemMeta.combine)
   -- Write the string to ItemData.lua-table.
   local itemFile = io.open(f("%s/Item/%s/ItemData.lua-table", basePath, capitalizedQuestieDBVersion), "w")
   assert(itemFile, "Failed to open file for writing")
@@ -494,45 +494,45 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   itemFile:close()
 
   -- Dumping item overrides to HTML
-  GenerateHtmlForEntityType(itemOverride, Corrections.ItemMeta, "Item", questiedb_version, nil, nil, debug)
+  GenerateHtmlForEntityType(itemOverride, Meta.ItemMeta, "Item", questiedb_version, nil, nil, debug)
   -- GenerateHtmlForEntityType(itemOverride, Corrections.ItemMeta, "Item", version, 75, 650, debug)
 
   -- ? Dump Quest Data
   print(c("\nDumping quest overrides", "yellow"))
-  local questDataString = helpers.dumpData(questOverride, Corrections.QuestMeta.questKeys, Corrections.QuestMeta.dumpFuncs)
+  local questDataString = helpers.dumpData(questOverride, Meta.QuestMeta.questKeys, Meta.QuestMeta.dumpFuncs)
   local questFile = io.open(f("%s/Quest/%s/QuestData.lua-table", basePath, capitalizedQuestieDBVersion), "w")
   assert(questFile, "Failed to open file for writing")
   questFile:write(questDataString)
   questFile:close()
 
   -- Dumping quest overrides to HTML
-  GenerateHtmlForEntityType(questOverride, Corrections.QuestMeta, "Quest", questiedb_version, nil, nil, debug)
+  GenerateHtmlForEntityType(questOverride, Meta.QuestMeta, "Quest", questiedb_version, nil, nil, debug)
   -- GenerateHtmlForEntityType(questOverride, Corrections.QuestMeta, "Quest", version, 75, 650, debug)
 
   -- ? Dump Npc Data
   print(c("\nDumping npc overrides", "yellow"))
-  local npcDataString = helpers.dumpData(npcOverride, Corrections.NpcMeta.npcKeys, Corrections.NpcMeta.dumpFuncs,
-                                         Corrections.NpcMeta.combine)
+  local npcDataString = helpers.dumpData(npcOverride, Meta.NpcMeta.npcKeys, Meta.NpcMeta.dumpFuncs,
+                                         Meta.NpcMeta.combine)
   local npcFile = io.open(f("%s/Npc/%s/NpcData.lua-table", basePath, capitalizedQuestieDBVersion), "w")
   assert(npcFile, "Failed to open file for writing")
   npcFile:write(npcDataString)
   npcFile:close()
 
   -- Dumping npc overrides to HTML
-  GenerateHtmlForEntityType(npcOverride, Corrections.NpcMeta, "Npc", questiedb_version, nil, nil, debug)
+  GenerateHtmlForEntityType(npcOverride, Meta.NpcMeta, "Npc", questiedb_version, nil, nil, debug)
   -- GenerateHtmlForEntityType(npcOverride, Corrections.NpcMeta, "Npc", version, 75, 650, debug)
 
   -- ? Dump Object Data
   print(c("\nDumping object overrides", "yellow"))
-  local objectDataString = helpers.dumpData(objectOverride, Corrections.ObjectMeta.objectKeys,
-                                            Corrections.ObjectMeta.dumpFuncs)
+  local objectDataString = helpers.dumpData(objectOverride, Meta.ObjectMeta.objectKeys,
+                                            Meta.ObjectMeta.dumpFuncs)
   local objectFile = io.open(f("%s/Object/%s/ObjectData.lua-table", basePath, capitalizedQuestieDBVersion), "w")
   assert(objectFile, "Failed to open file for writing")
   objectFile:write(objectDataString)
   objectFile:close()
 
   -- Dumping object overrides to HTML
-  GenerateHtmlForEntityType(objectOverride, Corrections.ObjectMeta, "Object", questiedb_version, nil, nil, debug)
+  GenerateHtmlForEntityType(objectOverride, Meta.ObjectMeta, "Object", questiedb_version, nil, nil, debug)
   -- GenerateHtmlForEntityType(objectOverride, Corrections.ObjectMeta, "Object", version, 75, 650, debug)
 
 

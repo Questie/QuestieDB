@@ -2,12 +2,11 @@
 ---@field Object Object
 local LibQuestieDB = select(2, ...)
 
-local Corrections = LibQuestieDB.Corrections
 local l10n = LibQuestieDB.l10n
 
 ---@class (exact) Object:DatabaseType
 ---@class (exact) Object:ObjectFunctions
-local Object = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Object, "Object", Corrections.ObjectMeta.objectKeys)
+local Object = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Object, "Object", LibQuestieDB.Meta.ObjectMeta.objectKeys)
 
 
 do

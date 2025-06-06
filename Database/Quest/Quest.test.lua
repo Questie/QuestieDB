@@ -23,7 +23,7 @@ Quest.testGetFunctions = function(fast)
   debugprofilestart()
   local beginTime = debugprofilestop()
   local functions = 0
-  for _, _ in pairs(LibQuestieDB.Corrections.QuestMeta.questKeys) do
+  for _, _ in pairs(LibQuestieDB.Meta.QuestMeta.questKeys) do
     functions = functions + 1
   end
 
@@ -400,7 +400,7 @@ Quest.testGetFunctions = function(fast)
   print("  ", count, "quests tested")
   print("  ", "time per quest:", tostring(time / count):sub(1, 6), "ms")
   print("  ", "avg time per function", tostring(time / (count * functions)):sub(1, 6), "ms")
-  for i, functionName in ipairs(LibQuestieDB.Corrections.QuestMeta.NameIndexLookupTable) do
+  for i, functionName in ipairs(LibQuestieDB.Meta.QuestMeta.NameIndexLookupTable) do
     local v = perFunctionPerformace[functionName] or 0
     print("    ", i, functionName, ":", tostring((v / count) * 1000):sub(1, 6), "µs")
   end

@@ -23,7 +23,7 @@ Object.testGetFunctions = function(fast)
   debugprofilestart()
   local beginTime = debugprofilestop()
   local functions = 0
-  for _, _ in pairs(LibQuestieDB.Corrections.ObjectMeta.objectKeys) do
+  for _, _ in pairs(LibQuestieDB.Meta.ObjectMeta.objectKeys) do
     functions = functions + 1
   end
 
@@ -121,7 +121,7 @@ Object.testGetFunctions = function(fast)
   print("  ", count, "objects tested")
   print("  ", "time per object:", tostring(time / count):sub(1, 6), "ms")
   print("  ", "avg time per function", tostring(time / (count * functions)):sub(1, 6), "ms")
-  for i, functionName in ipairs(LibQuestieDB.Corrections.ObjectMeta.NameIndexLookupTable) do
+  for i, functionName in ipairs(LibQuestieDB.Meta.ObjectMeta.NameIndexLookupTable) do
     local v = perFunctionPerformace[functionName] or 0
     print("    ", i, functionName, ":", tostring((v / count) * 1000):sub(1, 6), "µs")
   end

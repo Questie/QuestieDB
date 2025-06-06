@@ -2,7 +2,7 @@
 ---@field l10n l10n
 local LibQuestieDB = select(2, ...)
 
-local L10nMeta = LibQuestieDB.Corrections.L10nMeta
+local L10nMeta = LibQuestieDB.Meta.L10nMeta
 
 local f = string.format
 
