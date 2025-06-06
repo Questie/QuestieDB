@@ -13,7 +13,7 @@ C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("item",
                                        "ItemFixes-QuestStarts-Tbc-Automatic",
                                        ItemFixes.LoadItemQuestStarts,
-                                       29)
+                                       Corrections.TbcBaseStaticOrder + 29)
 
   -- Clear the table to save memory
   ItemFixes = wipe(ItemFixes)

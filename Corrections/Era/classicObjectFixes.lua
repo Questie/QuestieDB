@@ -13,12 +13,12 @@ C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("object",
                                        "ObjectFixes-Era",
                                        ObjectFixes.Load,
-                                       10)
+                                       Corrections.EraBaseStaticOrder + 10)
 
   Corrections.RegisterCorrectionDynamic("object",
                                         "ObjectFixes-Faction-Era",
                                         ObjectFixes.LoadFactionFixes,
-                                        20)
+                                        Corrections.EraBaseDynamicOrder + 20)
 
   -- Clear the table to save memory
   ObjectFixes = wipe(ObjectFixes)

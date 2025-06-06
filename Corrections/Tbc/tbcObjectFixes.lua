@@ -13,12 +13,12 @@ C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("object",
                                        "ObjectFixes-Tbc",
                                        ObjectFixes.Load,
-                                       30)
+                                       Corrections.TbcBaseStaticOrder + 30)
 
   Corrections.RegisterCorrectionDynamic("object",
                                         "ObjectFixes-Faction-Tbc",
                                         ObjectFixes.LoadFactionFixes,
-                                        40)
+                                        Corrections.TbcBaseDynamicOrder + 40)
 
   -- Clear the table to save memory
   ObjectFixes = wipe(ObjectFixes)

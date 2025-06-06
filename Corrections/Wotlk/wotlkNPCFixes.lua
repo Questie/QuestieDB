@@ -14,17 +14,17 @@ C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("npc",
                                        "NpcFixes-Wotlk",
                                        NpcFixes.Load,
-                                       51)
+                                       Corrections.WotlkBaseStaticOrder + 51)
 
   Corrections.RegisterCorrectionStatic("npc",
                                        "NpcFixes-Spawns-Wotlk-Automatic",
                                        NpcFixes.LoadSpawnFixes,
-                                       50)
+                                       Corrections.WotlkBaseStaticOrder + 50)
 
   Corrections.RegisterCorrectionDynamic("npc",
                                         "NpcFixes-FactionWotlk",
                                         NpcFixes.LoadFactionFixes,
-                                        60)
+                                        Corrections.WotlkBaseDynamicOrder + 60)
 
   -- Clear the table to save memory
   NpcFixes = wipe(NpcFixes)

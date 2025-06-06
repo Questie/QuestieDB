@@ -13,12 +13,12 @@ C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("object",
                                        "ObjectFixes-Wotlk",
                                        ObjectFixes.Load,
-                                       50)
+                                       Corrections.WotlkBaseStaticOrder + 50)
 
   Corrections.RegisterCorrectionDynamic("object",
                                         "ObjectFixes-Faction-Wotlk",
                                         ObjectFixes.LoadFactionFixes,
-                                        60)
+                                        Corrections.WotlkBaseDynamicOrder + 60)
 
   -- Clear the table to save memory
   ObjectFixes = wipe(ObjectFixes)

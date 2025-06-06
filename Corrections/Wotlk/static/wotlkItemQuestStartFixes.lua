@@ -13,7 +13,7 @@ C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("item",
                                        "ItemFixes-QuestStarts-Wotlk-Automatic",
                                        ItemFixes.LoadItemQuestStarts,
-                                       49)
+                                       Corrections.WotlkBaseStaticOrder + 49)
 
   -- Clear the table to save memory
   ItemFixes = wipe(ItemFixes)

@@ -14,6 +14,20 @@ local tSort = table.sort
 local pairs = pairs
 local ipairs = ipairs
 
+-- Base Load Orders
+Corrections.EraBaseStaticOrder = 0
+Corrections.EraBaseDynamicOrder = 100
+Corrections.SoDBaseStaticOrder = 200
+Corrections.SoDBaseDynamicOrder = 300
+Corrections.TbcBaseStaticOrder = 400
+Corrections.TbcBaseDynamicOrder = 500
+Corrections.WotlkBaseStaticOrder = 600
+Corrections.WotlkBaseDynamicOrder = 700
+Corrections.CataBaseStaticOrder = 800
+Corrections.CataBaseDynamicOrder = 900
+Corrections.MoPBaseStaticOrder = 1000
+Corrections.MoPBaseDynamicOrder = 1100
+
 --? Lists of functions returning corrections
 --? 1. The static lists are meant to be used for pre-compile or debugging
 --? 2. The dynamic lists are applied on login for faction specific corrections etc.

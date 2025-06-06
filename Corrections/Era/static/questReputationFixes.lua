@@ -13,7 +13,7 @@ C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("quest",
                                        "QuestFixes-Reputation-Era",
                                        QuestFixes.LoadQuestReputationFixes,
-                                       9)
+                                       Corrections.EraBaseStaticOrder + 9)
 
   -- Clear the table to save memory
   QuestFixes = wipe(QuestFixes)

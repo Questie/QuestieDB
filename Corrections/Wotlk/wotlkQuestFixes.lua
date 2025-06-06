@@ -20,7 +20,7 @@ C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("quest",
                                        "QuestFixes-Wotlk",
                                        QuestFixes.Load,
-                                       50)
+                                       Corrections.WotlkBaseStaticOrder + 50)
 
   -- Clear the table to save memory
   QuestFixes = wipe(QuestFixes)

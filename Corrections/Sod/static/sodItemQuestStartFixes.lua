@@ -14,7 +14,7 @@ C_Timer.After(0, function()
     Corrections.RegisterCorrectionDynamic("item",
                                           "ItemFixes-QuestStarts-Sod-Automatic",
                                           ItemFixes.LoadItemQuestStarts,
-                                          80)
+                                          Corrections.SoDBaseDynamicOrder + 80)
   end
 
   -- Clear the table to save memory

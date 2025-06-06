@@ -3,6 +3,7 @@ local LibQuestieDB = select(2, ...)
 
 
 --- Imports
+local Enum = LibQuestieDB.Enum
 local Corrections = LibQuestieDB.Corrections
 local QuestMeta = Corrections.QuestMeta
 local ZoneMeta = Corrections.ZoneMeta
@@ -11,7 +12,8 @@ local PlayerMeta = Corrections.PlayerMeta
 ---@class QuestFixesEra
 local QuestFixes = {}
 
---TODO: Add actual l10n support
+--? We are doing translations differently so l10n is not needed
+--? But for copy simplicity we are keeping it here
 local function l10n(string)
   return string
 end
@@ -20,12 +22,12 @@ C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("quest",
                                        "QuestFixes-Era",
                                        QuestFixes.Load,
-                                       10)
+                                       Corrections.EraBaseStaticOrder + 10)
 
   Corrections.RegisterCorrectionDynamic("quest",
                                         "QuestFixes-Faction-Era",
                                         QuestFixes.LoadFactionFixes,
-                                        20)
+                                        Corrections.EraBaseDynamicOrder + 20)
 
   -- Clear the table to save memory
   QuestFixes = wipe(QuestFixes)
@@ -63,9 +65,9 @@ function QuestFixes:Load()
   local zoneIDs = ZoneMeta.zoneIDs
   local raceIDs = PlayerMeta.raceKeys
   local classIDs = PlayerMeta.classKeys
-  local sortKeys = QuestMeta.sortKeys
-  local profKeys = QuestMeta.professionKeys
-  local specKeys = QuestMeta.specializationKeys
+  local sortKeys = Enum.sortKeys
+  local profKeys = Enum.professionKeys
+  local specKeys = Enum.specializationKeys
   local ICON_TYPE_EVENT = Questie and Questie.ICON_TYPE_EVENT or "ICON_TYPE_EVENT"
   local ICON_TYPE_OBJECT = Questie and Questie.ICON_TYPE_OBJECT or "ICON_TYPE_OBJECT"
   local ICON_TYPE_SLAY = Questie and Questie.ICON_TYPE_SLAY or "ICON_TYPE_SLAY"
@@ -2996,7 +2998,7 @@ function QuestFixes:Load()
       [questKeys.exclusiveTo] = { 8368, 8426, 8427, 8428, 8429, },
     },
     [8438]  = {
-      [questKeys.zoneOrSort] = sortKeys.ARATHI_BASIN,
+      [questKeys.zoneOrSort] = zoneIDs.ARATHI_BASIN,
     },
     [8446]  = {
       [questKeys.startedBy] = { { 14887, 14888, 14889, 14890, }, nil, { 20644, }, },
