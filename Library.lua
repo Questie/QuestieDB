@@ -17,6 +17,7 @@
 ---@class LibQuestieDB
 local PrivateLibQuestieDB = select(2, ...)
 
+---@diagnostic disable: missing-fields
 --- The main public namespace for QuestieDB
 ---@class QuestieDB
 ---@field public Quest QuestFunctions
