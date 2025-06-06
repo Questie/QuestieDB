@@ -1,11 +1,10 @@
 ---@class LibQuestieDB
----@field NpcMeta NpcMeta
 local LibQuestieDB = select(2, ...)
 
 --*---- Import Module --------
 
 local ZoneMeta = LibQuestieDB.Meta.ZoneMeta
-local DumpFunctions = LibQuestieDB.Corrections.DumpFunctions
+local DumpFunctions = LibQuestieDB.Meta.DumpFunctions
 
 ---@class NpcMeta
 local NpcMeta = {}

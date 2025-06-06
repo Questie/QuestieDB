@@ -1,5 +1,4 @@
 ---@class LibQuestieDB
----@field ZoneMeta ZoneMeta
 local LibQuestieDB = select(2, ...)
 
 ---@class ZoneMeta

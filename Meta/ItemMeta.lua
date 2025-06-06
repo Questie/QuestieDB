@@ -2,7 +2,7 @@
 local LibQuestieDB = select(2, ...)
 
 --- Imports
-local DumpFunctions = LibQuestieDB.Corrections.DumpFunctions
+local DumpFunctions = LibQuestieDB.Meta.DumpFunctions
 
 ---@class ItemMeta
 local ItemMeta = {}

@@ -1,9 +1,8 @@
 ---@class LibQuestieDB
----@field L10nMeta L10nMeta
 local LibQuestieDB = select(2, ...)
 
 --- Imports
-local DumpFunctions = LibQuestieDB.Corrections.DumpFunctions
+local DumpFunctions = LibQuestieDB.Meta.DumpFunctions
 
 ---@class L10nMeta
 local L10nMeta = {}
