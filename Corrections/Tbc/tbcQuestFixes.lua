@@ -5386,7 +5386,7 @@ end
 
 function QuestFixes:LoadFactionFixes()
   local questKeys = QuestMeta.questKeys
-  local raceIDs = PlayerMeta.raceKeys
+  local raceIDs = Enum.raceKeys
 
   local questFixesHorde = {
     [2861] = {
