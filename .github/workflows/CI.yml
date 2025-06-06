@@ -14,8 +14,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Check out ${{ github.repository }} code
+      uses: actions/checkout@v4
+
     - name: Install Lua 5.1.5
-      id: setup-lua # Added id to reference its outputs
       uses: leafo/gh-actions-lua@v10
       with:
         luaVersion: "5.1.5"
@@ -23,31 +25,14 @@ jobs:
     - name: Install LuaRocks
       uses: leafo/gh-actions-luarocks@v4.3.0
 
-    - name: Cache Lua modules
-      id: cache-lua-modules
-      uses: actions/cache@v4
-      with:
-        # Path to cache: LuaRocks installs packages to lua_modules in the workspace root by default with leafo/gh-actions-luarocks
-        path: ${{ github.workspace }}/lua_modules
-        # Cache key: uses OS, Lua version from the setup-lua step, and a version suffix.
-        # Increment '-v1' (e.g., to '-v2') if you change the list of Lua packages to invalidate the old cache.
-        key: ${{ runner.os }}-lua-${{ steps.setup-lua.outputs.lua-version }}-modules-v1
-        restore-keys: |
-          ${{ runner.os }}-lua-${{ steps.setup-lua.outputs.lua-version }}-modules-
-
     # Install LuaRocks packages
     - name: Install Lua Packages
-      # Run this step only if the cache was not restored (cache miss)
-      if: steps.cache-lua-modules.outputs.cache-hit != 'true'
       run: |
         luarocks install bit32
         luarocks install argparse
         luarocks install luafilesystem
         luarocks install luasocket
         luarocks install luasec
-
-    - name: Check out ${{ github.repository }} code
-      uses: actions/checkout@v4
 
     # Runs a single command using the runners shell
     - name: Generate HTML
