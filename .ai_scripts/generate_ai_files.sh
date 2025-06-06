@@ -161,6 +161,11 @@ generate_ai_content() {
 
     # Write the extracted text to the output file
     echo "$extracted_text" > "$output_file"
+
+    # Write it as a .md file as well
+    bName=$(basename "$output_file" ".ai")
+    output_md_file=".ai_lua/AI_Context/${bName}.md"
+    echo "$extracted_text" > "$output_md_file"
 }
 
 mkdir -p .ai_lua/AI_Context
@@ -172,6 +177,7 @@ bash $script_dir/generate_combined_ai_file.sh
 
 # Remove any existing .ai files in the AI_Context directory
 rm -f .ai_lua/AI_Context/*.ai
+rm -f .ai_lua/AI_Context/*.md
 
 total_count_dat=$(echo "$DAT" | wc -l)
 echo "Total Lua files to process: $total_count_dat"

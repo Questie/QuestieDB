@@ -12,9 +12,9 @@ cd "$script_dir"
 cd ..
 
 # Define the output file
-output_file=".ai_lua/combined_QuestieDB_LuaLS_Alias.lua"
+output_file=".ai_lua/QuestieDB_LuaLS_Types.lua"
 
-echo "---@diagnostic disable: duplicate-doc-alias, duplicate-doc-field" > "$output_file"
+echo "---@diagnostic disable: duplicate-doc-alias, duplicate-doc-field, undefined-doc-name" > "$output_file"
 
 # Find all files .*\.t\.lua
 # For each file, print its path as a comment header, then print its content.
