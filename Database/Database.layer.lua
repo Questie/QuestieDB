@@ -60,7 +60,6 @@ local function CreateFakeFrame(GetTextTable)
 end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_CreateFrame)
----@private
 ---@generic T, Tp
 ---@param frameType `T` | FrameType
 ---@param name? string

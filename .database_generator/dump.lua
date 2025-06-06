@@ -282,7 +282,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
           if debug then
             table.insert(output_data_local, f("  <!-- %s -->\n", meta.NameIndexLookupTable[entityDataIndex]))
           end
-          if outputSegments then
+          if debug then
             table.insert(output_data_local, f("<!-- Segment start: %s -->\n", entityDataIndex))
           end
           local segments = math.ceil(length / max_p_size)
@@ -299,7 +299,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
             table.insert(writtenDataIndexes, segmentMarker)
             table.insert(output_data_local, f("<p>%s</p>\n", replaceWithCorrect(utf8_sub(formatted_line, start, stop))))
           end
-          if outputSegments then
+          if debug then
             table.insert(output_data_local, f("<!-- Segment end: %s -->\n", entityDataIndex))
           end
         else
