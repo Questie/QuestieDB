@@ -6,8 +6,10 @@
 ## RequiredDeps:
 ## OptionalDeps:
 #### SavedVariables: QuestieDB
+## SavedVariables: QuestieDB_var, QuestieDB_trace
 ## SavedVariablesPerCharacter: QuestieDB_c
 ## Dedicated to my cat - Suddis
+start.lua
 
 ####### API Here ########
 Library.lua
@@ -15,6 +17,9 @@ Library.lua
 
 #* Helpers
 Helpers\Helpers.xml
+
+#* Metadata
+Meta\Meta.xml
 
 #* Database
 ## Data embeds
@@ -63,3 +68,5 @@ Corrections\Sod\_SodCorrections.xml
 
 # Standalone
 QuestieDB.lua
+
+stop.lua

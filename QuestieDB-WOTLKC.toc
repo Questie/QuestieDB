@@ -6,6 +6,7 @@
 ## RequiredDeps:
 ## OptionalDeps:
 #### SavedVariables: QuestieDB
+## SavedVariables: QuestieDB_var, QuestieDB_trace
 ## SavedVariablesPerCharacter: QuestieDB_c
 ## Dedicated to my cat - Suddis
 
@@ -15,6 +16,9 @@ Library.lua
 
 #* Helpers
 Helpers\Helpers.xml
+
+#* Metadata
+Meta\Meta.xml
 
 #* Database
 ## Data embeds
