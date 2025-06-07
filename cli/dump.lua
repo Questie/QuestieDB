@@ -58,6 +58,7 @@ local string_gsub = string.gsub;
 local string_format = string.format;
 local string_match = string.match;
 local function GetScrollingMessageFrame()
+  ---@diagnostic disable-next-line: unused-function, undefined-global
   return DEFAULT_CHAT_FRAME or DeveloperConsole.MessageFrame;
 end
 local function WriteMessage(msg)

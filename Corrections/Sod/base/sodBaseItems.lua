@@ -3,7 +3,9 @@ local LibQuestieDB = select(2, ...)
 
 --- Imports
 local Corrections = LibQuestieDB.Corrections
-local ItemMeta = Corrections.ItemMeta
+local Enum = LibQuestieDB.Enum
+local Meta = LibQuestieDB.Meta
+local ItemMeta = Meta.ItemMeta
 
 ---@class ItemBaseSod
 local ItemBase = {}
@@ -28,7 +30,7 @@ end)
 --- If you want to edit an item, do so in sodItemFixes.lua
 function ItemBase:LoadBaseItems()
   local itemKeys = ItemMeta.itemKeys
-  local itemClasses = ItemMeta.itemClasses
+  local itemClasses = Enum.itemClasses
 
   return {
     [202251] = {

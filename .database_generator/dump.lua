@@ -10,6 +10,22 @@ assert(Is_CLI, "This function should only be called from the CLI environment")
 
 local f = string.format
 
+local function c(text, color)
+  if color == "green" then
+    return "\27[32m" .. text .. "\27[0m"
+  elseif color == "red" then
+    return "\27[31m" .. text .. "\27[0m"
+  elseif color == "yellow" then
+    return "\27[33m" .. text .. "\27[0m"
+  elseif color == "blue" then
+    return "\27[34m" .. text .. "\27[0m"
+  elseif color == "cyan" then
+    return "\27[36m" .. text .. "\27[0m"
+  else
+    return text
+  end
+end
+
 --- Function to sanitize translation strings by replacing special characters with HTML entities
 ---@param str string
 ---@return string
@@ -107,7 +123,7 @@ end
 --- @param ptagPerFile number? The number of <p> tags per file (default: 65000).
 --- @param debug boolean? Do you want to print extra debug output to the html files?
 function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, idsPerFile, ptagPerFile, debug)
-  print(f("Generating HTML for %s (%s)...", entityType, expansionName))
+  print(c(f("Generating HTML for %s (%s)...", entityType, expansionName), "green"))
 
   local p_tags_per_file_avg = 0
   local p_tags_highest = 0
@@ -126,10 +142,11 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
   -- When doing paths in xml the full path all the way from Interface needs to be used.
   local dataDirPathInAddon = f("Interface\\AddOns\\%s\\Database\\%s\\%s", addon_dir, entityTypeCapitalized, helpers.capitalize(expansionName)) -- Helper needed for capitalize
 
+  local fileIndex = 1
 
-  print(f("Addon Directory:      %s", addon_dir))
-  print(f("Output Base Path:     %s", outputBasePath))
-  print(f("Output Data Path:     %s", outputDataPath))
+  print(f("Addon Directory:       %s", addon_dir))
+  print(f("Output Base Path:      %s", outputBasePath))
+  print(f("Output Data Path:      %s", outputDataPath))
   print(f("Data Dir Path (Addon): %s", dataDirPathInAddon))
 
   -- Ensure output directories exist (Helper needed: helpers.ensureDirExists(path))
@@ -265,7 +282,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
           if debug then
             table.insert(output_data_local, f("  <!-- %s -->\n", meta.NameIndexLookupTable[entityDataIndex]))
           end
-          if outputSegments then
+          if debug then
             table.insert(output_data_local, f("<!-- Segment start: %s -->\n", entityDataIndex))
           end
           local segments = math.ceil(length / max_p_size)
@@ -282,7 +299,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
             table.insert(writtenDataIndexes, segmentMarker)
             table.insert(output_data_local, f("<p>%s</p>\n", replaceWithCorrect(utf8_sub(formatted_line, start, stop))))
           end
-          if outputSegments then
+          if debug then
             table.insert(output_data_local, f("<!-- Segment end: %s -->\n", entityDataIndex))
           end
         else
@@ -324,11 +341,12 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     -- Check if chunk needs to be written
     if entries_written == range_size or i == #sorted_keys or p_tags_written >= p_tags_per_file then
       if entries_written > 0 then -- Don't write empty chunks
-        local chunk_filename = f("%d-%d.html", lowest_id, highest_id)
+        -- local chunk_filename = f("%d-%d.html", lowest_id, highest_id)
+        local chunk_filename = f("%d.html", fileIndex)
         local chunk_filepath = outputDataPath .. "/" .. chunk_filename
         local chunk_frame_name = f("%sData%d-%d", entityTypeCapitalized, lowest_id, highest_id)
 
-        print(f("Writing chunk: %s (%s entries)", chunk_filename, entries_written))
+        print(f("  Writing chunk: %s (%s entries)", chunk_filename, entries_written))
 
         -- Write the chunk file
         local file = io.open(chunk_filepath, "w")
@@ -355,6 +373,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
         p_tags_per_file_avg = (p_tags_per_file_avg + p_tags_written) / 2
 
         -- Reset chunk state
+        fileIndex = fileIndex + 1
         entries_written = 0
         p_tags_written = 0
         lowest_id, highest_id = math.huge, -math.huge
@@ -376,17 +395,17 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     local current_len = 0
     for _, id in ipairs(all_ids) do
       local id_str = tostring(id)
-      local id_len = #id_str + 1 -- Include comma
+      local id_len = #id_str + 1                                                 -- Include comma
       if current_len + id_len > max_p_size and #current_p > 0 then
-        ids_file:write("<p>" .. table.concat(current_p, ",") .. "</p>\n")
+        ids_file:write("<p>" .. table.concat(current_p, ",") .. "," .. "</p>\n") -- Always end with a , because we split on ,
         current_p = {}
         current_len = 0
       end
       table.insert(current_p, id_str)
       current_len = current_len + id_len
     end
-    if #current_p > 0 then -- Write remaining IDs
-      ids_file:write("<p>" .. table.concat(current_p, ",") .. "</p>\n")
+    if #current_p > 0 then                                                     -- Write remaining IDs
+      ids_file:write("<p>" .. table.concat(current_p, ",") .. "," .. "</p>\n") -- Always end with a , because we split on ,
     end
     ids_file:write("</body></html>\n")
     ids_file:close()
@@ -436,6 +455,6 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     error("Failed to open file for writing: " .. xml_filepath)
   end
 
-  print(f("Finished HTML generation for %s (%s).", entityType, expansionName))
   print(f("Average <p> tags per file: Avg: %d , High: %d , Low: %d", p_tags_per_file_avg, p_tags_highest, p_tags_lowest))
+  print(c(f("Finished HTML generation for %s (%s).", entityType, expansionName), "green"))
 end -- End GenerateHtmlForEntityType

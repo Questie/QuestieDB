@@ -1,3 +1,5 @@
+---@meta
+
 ---A General name alias
 ---@alias Name string
 ---@alias Level number

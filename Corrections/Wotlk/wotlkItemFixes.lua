@@ -3,7 +3,9 @@ local LibQuestieDB = select(2, ...)
 
 --- Imports
 local Corrections = LibQuestieDB.Corrections
-local ItemMeta = Corrections.ItemMeta
+local Enum = LibQuestieDB.Enum
+local Meta = LibQuestieDB.Meta
+local ItemMeta = Meta.ItemMeta
 
 ---@class ItemFixesWotlk
 local ItemFixes = {}
@@ -13,12 +15,12 @@ C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("item",
                                        "ItemFixes-Wotlk",
                                        ItemFixes.Load,
-                                       50)
+                                       Corrections.WotlkBaseStaticOrder + 50)
 
   Corrections.RegisterCorrectionDynamic("item",
                                         "ItemFixes-Faction-Wotlk",
                                         ItemFixes.LoadFactionFixes,
-                                        60)
+                                        Corrections.WotlkBaseDynamicOrder + 60)
 
   -- Clear the table to save memory
   ItemFixes = wipe(ItemFixes)
@@ -31,7 +33,7 @@ end)
 function ItemFixes.Load()
   -- _QuestieWotlkItemFixes:InsertMissingItemIds()
   local itemKeys = ItemMeta.itemKeys
-  local itemClasses = ItemMeta.itemClasses
+  local itemClasses = Enum.itemClasses
 
   return {
     [5085] = {

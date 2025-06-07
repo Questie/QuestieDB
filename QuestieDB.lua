@@ -40,10 +40,13 @@ do
   ---@type FunctionContainer
   local timer
   local function bucketLoaded()
-    print("All Addons loaded")
-    --- We give it 0.2 seconds to allow other code to run first
+    --? We give it 0.2 seconds to allow other code to run first
+    --? We listen to the ADDON_LOADED event to allow all other addons to load first
+    --? As we are a library, we need to wait for the other addons to load allowing them to register
+    --? overrides and similar things
     C_Timer.After(0.2, function()
       if Database.debugEnabled then
+        print("All Addons loaded")
         LibQuestieDB.ColorizePrint("lightBlue", "QuestieDB: Debug mode enabled")
         _GLibQuestieDB = LibQuestieDB
       end
@@ -53,7 +56,6 @@ do
     LibQuestieDB.RegisteredEvents["ADDON_LOADED"] = nil
   end
   LibQuestieDB.RegisteredEvents["ADDON_LOADED"] = function(addonName)
-    print("Addon loaded: " .. addonName)
     if timer then
       timer:Cancel()
     end
@@ -66,12 +68,20 @@ end
 SlashCmdList["QuestieDB"] = function(args)
   if args == "test" then
     LibQuestieDB.ColorizePrint("yellow", "Running data tests")
+    if LibQuestieDB.Database.debugEnabled then
+      LibQuestieDB.ColorizePrint("yellow", "Running l10n tests (deDE)")
+      LibQuestieDB.ColorizePrint("orange", "The first test initializes frames so it take more time than other functions")
+      l10n.SetLocale("deDE")
+      l10n.RunGetTest(true)
+      l10n.SetLocale(GetLocale())
+    else
+      LibQuestieDB.ColorizePrint("red", "l10n tests skipped (debug mode not enabled)")
+      LibQuestieDB.ColorizePrint("red", "Please enable debug otherwise the l10n tests can't run properly")
+    end
     Npc.RunGetTest(true)
     Object.RunGetTest(true)
     Quest.RunGetTest(true)
     Item.RunGetTest(true)
-    LibQuestieDB.ColorizePrint("yellow", "Running l10n tests")
-    l10n.RunGetTest(true)
     LibQuestieDB.ColorizePrint("yellow", "--- Testing Done ---")
   elseif args == "t" then
     local floor = math.floor

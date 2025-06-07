@@ -3,8 +3,9 @@ local LibQuestieDB = select(2, ...)
 
 --- Imports
 local Corrections = LibQuestieDB.Corrections
-local ObjectMeta = Corrections.ObjectMeta
-local ZoneMeta = Corrections.ZoneMeta
+local Meta = LibQuestieDB.Meta
+local ObjectMeta = Meta.ObjectMeta
+local ZoneMeta = Meta.ZoneMeta
 
 ---@class ObjectFixesWotlk
 local ObjectFixes = {}
@@ -13,12 +14,12 @@ C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("object",
                                        "ObjectFixes-Wotlk",
                                        ObjectFixes.Load,
-                                       50)
+                                       Corrections.WotlkBaseStaticOrder + 50)
 
   Corrections.RegisterCorrectionDynamic("object",
                                         "ObjectFixes-Faction-Wotlk",
                                         ObjectFixes.LoadFactionFixes,
-                                        60)
+                                        Corrections.WotlkBaseDynamicOrder + 60)
 
   -- Clear the table to save memory
   ObjectFixes = wipe(ObjectFixes)

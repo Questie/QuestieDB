@@ -3,7 +3,8 @@ local LibQuestieDB = select(2, ...)
 
 --- Imports
 local Corrections = LibQuestieDB.Corrections
-local ItemMeta = Corrections.ItemMeta
+local Meta = LibQuestieDB.Meta
+local ItemMeta = Meta.ItemMeta
 
 ---@class ItemFixesWotlk
 local ItemFixes = {}
@@ -13,7 +14,7 @@ C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("item",
                                        "ItemFixes-QuestStarts-Wotlk-Automatic",
                                        ItemFixes.LoadItemQuestStarts,
-                                       49)
+                                       Corrections.WotlkBaseStaticOrder + 49)
 
   -- Clear the table to save memory
   ItemFixes = wipe(ItemFixes)

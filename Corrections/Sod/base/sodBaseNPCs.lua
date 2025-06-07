@@ -3,8 +3,9 @@ local LibQuestieDB = select(2, ...)
 
 --- Imports
 local Corrections = LibQuestieDB.Corrections
-local NpcMeta = Corrections.NpcMeta
-local ZoneMeta = Corrections.ZoneMeta
+local Meta = LibQuestieDB.Meta
+local NpcMeta = Meta.NpcMeta
+local ZoneMeta = Meta.ZoneMeta
 
 ---@class NpcBaseSod
 local NpcBase = {}

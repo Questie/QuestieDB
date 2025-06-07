@@ -5,9 +5,9 @@ local LibQuestieDB = select(2, ...)
 local DumpFunctions = {}
 
 -- Add DumpFunctions
----@class Corrections
-local Corrections = LibQuestieDB.Corrections
-Corrections.DumpFunctions = DumpFunctions
+---@class Meta
+local Meta = LibQuestieDB.Meta
+Meta.DumpFunctions = DumpFunctions
 
 local type, pairs = type, pairs
 local gsub = string.gsub

@@ -1,4 +1,4 @@
 ---@meta
 
 
----@alias Expansions "Era"|"Tbc"|"Wotlk"|"Cata"|"MoP"
+---@alias ExpansionStrings "Era"|"Tbc"|"Wotlk"|"Cata"|"MoP"

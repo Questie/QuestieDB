@@ -1,0 +1,3 @@
+---@meta
+---@class LibQuestieDB
+---@field Enum Enum

@@ -3,7 +3,9 @@ local LibQuestieDB = select(2, ...)
 
 --- Imports
 local Corrections = LibQuestieDB.Corrections
-local ItemMeta = Corrections.ItemMeta
+local Meta = LibQuestieDB.Meta
+local ItemMeta = Meta.ItemMeta
+local Enum = LibQuestieDB.Enum
 
 ---@class ItemFixesEra
 local ItemFixes = {}
@@ -13,12 +15,12 @@ C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("item",
                                        "ItemFixes-Era",
                                        ItemFixes.Load,
-                                       10)
+                                       Corrections.EraBaseStaticOrder + 10)
 
   Corrections.RegisterCorrectionDynamic("item",
                                         "ItemFixes-Faction-Era",
                                         ItemFixes.LoadFactionFixes,
-                                        20)
+                                        Corrections.EraBaseDynamicOrder + 20)
 
   -- Clear the table to save memory
   ItemFixes = wipe(ItemFixes)
@@ -30,7 +32,7 @@ end)
 ---@return table<ItemId, Correction[]>>
 function ItemFixes.Load()
   local itemKeys = ItemMeta.itemKeys
-  local itemClasses = ItemMeta.itemClasses
+  local itemClasses = Enum.itemClasses
 
   return {
     [730] = {

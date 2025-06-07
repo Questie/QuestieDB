@@ -1,0 +1,6 @@
+*.lua
+AI_Context
+setEnv.sh
+*.txt
+*.jq-temp
+*.md

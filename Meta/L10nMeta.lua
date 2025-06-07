@@ -2,19 +2,17 @@
 local LibQuestieDB = select(2, ...)
 
 --- Imports
-local DumpFunctions = LibQuestieDB.Corrections.DumpFunctions
+local DumpFunctions = LibQuestieDB.Meta.DumpFunctions
 
 ---@class L10nMeta
----@field magicalSpecialCharacter "‡"
 local L10nMeta = {}
-
--- Add L10nMeta
----@class Corrections
-local Corrections = LibQuestieDB.Corrections
-Corrections.L10nMeta = L10nMeta
-
 -- This is a special character used to split stringdata
 L10nMeta.magicalSpecialCharacter = "‡"
+
+-- Add L10nMeta to Meta namespace
+---@class Meta
+local Meta = LibQuestieDB.Meta
+Meta.L10nMeta = L10nMeta
 
 ---@alias localeType "ptBR"|"ruRU"|"deDE"|"koKR"|"esES"|"esMX"|"frFR"|"zhCN"|"zhTW" "|itIT" Questie today does not support itIT
 ---@class L10nLocales
