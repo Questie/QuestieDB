@@ -139,7 +139,7 @@ generate_ai_content() {
     jq -n \
     --arg content "$input_content" \
     --arg filename "$input_file" \
-    --rawfile all_context_data "$script_dir/combined_QuestieDB_AI.ai" \
+    --rawfile all_context_data "$script_dir/combined_QuestieDB_AI.md" \
     -f "$script_dir/jq-template.jq" > "$tmp_json_file"
 
     output_data=$(curl -s \
@@ -163,20 +163,20 @@ generate_ai_content() {
     echo "$extracted_text" > "$output_file"
 
     # Write it as a .md file as well
-    bName=$(basename "$output_file" ".ai")
-    output_md_file=".ai_lua/AI_Context/${bName}.md"
+    bName=$(basename "$output_file" ".md")
+    output_md_file=".ai_lua/AI_Context/${bName}.ai"
     echo "$extracted_text" > "$output_md_file"
+
 }
 
 mkdir -p .ai_lua/AI_Context
 
 > "$script_dir/streaming_output.log" # Clear the log file before writing
 
-# Read and combine all .ai files into a variable from .ai_lua/AI_Context
-bash $script_dir/generate_combined_ai_file.sh
+# Read and combine all .md files into a variable from .ai_lua/AI_Context
+bash $script_dir/generate_combined_lua_ai_file.sh
 
-# Remove any existing .ai files in the AI_Context directory
-rm -f .ai_lua/AI_Context/*.ai
+# Remove any existing .md files in the AI_Context directory
 rm -f .ai_lua/AI_Context/*.md
 
 total_count_dat=$(echo "$DAT" | wc -l)
@@ -195,11 +195,11 @@ SLEEP_COUNT=$((RPM / 60)) # Calculate sleep time based on RPM
 #    b. Removes any leading './' from the file path for consistency.
 #    c. Extracts the base filename (without extension) and its directory path.
 #    d. Replaces all '/' in the directory path with '#' to create a valid filename (since '/' is not allowed in filenames).
-#    e. Constructs the output .ai filename using the transformed path and base name, placing it in .ai_lua/AI_Context/.
-#    f. Calls the generate_ai_content function to generate AI content for the Lua file and writes it to the corresponding .ai file.
-#    g. Runs up to 3 jobs in parallel, then waits to avoid overloading the system or API.
+#    e. Constructs the output .md filename using the transformed path and base name, placing it in .ai_lua/AI_Context/.
+#    f. Calls the generate_ai_content function to generate AI content for the Lua file and writes it to the corresponding .md file.
+#    g. Runs up to $SLEEP_COUNT jobs in parallel, then waits to avoid overloading the system or API.
 # 3. After all files are processed, the script waits for any remaining background jobs to finish.
-# 4. Finally, it combines all generated .ai files into a single combined_QuestieDB_AI.ai file.
+# 4. Finally, it combines all generated .md files into a single combined_QuestieDB_AI.md file.
 for file in $DAT; do
     echo "Processing file $processed_count of $total_count_dat: $file"
     # Check if the file is a Lua file
@@ -215,20 +215,18 @@ for file in $DAT; do
 
         # Replace / with # in the path to create a valid file name
         name=$(echo "$dir_path" | sed 's/\//#/g')#"$base_name"
-        # echo "AI file name: $name"
+        # echo "MD file name: $name"
 
-        # Create the AI file name
-        ai_file=".ai_lua/AI_Context/${name}.ai"
+        # Create the MD file name
+        md_file=".ai_lua/AI_Context/${name}.md"
 
         # Generate AI content (this is a placeholder, replace with actual AI generation logic)
         echo "Generating AI content for $file..."
 
         # Here you would call your AI generation script or API to generate the content
         # For example, using a hypothetical command:
-        # generate_ai_content "$file" > "$ai_file"
-        generate_ai_content "$file" "$ai_file" &
-        # wait
-        # exit
+        # generate_ai_content "$file" > "$md_file"
+        generate_ai_content "$file" "$md_file" &
     fi
     processed_count=$((processed_count + 1))
     # Sleep for a short duration to avoid overwhelming the API
@@ -246,8 +244,8 @@ done
 
 wait
 echo ""
-echo "AI files generated in .ai_lua/AI_Context"
+echo "MD files generated in .ai_lua/AI_Context"
 
 echo ""
-echo "Combining all AI files into combined_QuestieDB_AI.ai"
-bash $script_dir/generate_combined_ai_file.sh
+echo "Combining all MD files into combined_QuestieDB_AI.md"
+bash $script_dir/generate_combined_lua_ai_file.sh
