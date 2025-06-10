@@ -27,7 +27,7 @@ Item.testGetFunctions = function(fast)
     functions = functions + 1
   end
 
-  local perFunctionPerformace = {}
+  local perFunctionPerformance = {}
 
   local count = 0
   for id in pairs(Item.GetAllIds()) do
@@ -44,14 +44,14 @@ Item.testGetFunctions = function(fast)
     time = debugprofilestop()
     tInsert(data, "Name: " .. (Item.name(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Item.lastTestedData] = (perFunctionPerformace[Item.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Item.lastTestedData] = (perFunctionPerformance[Item.lastTestedData] or 0) + runTime
 
     -- Test Item.npcDrops
     Item.lastTestedData = "npcDrops"
     time = debugprofilestop()
     local npcDrops = Item.npcDrops(id)
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Item.lastTestedData] = (perFunctionPerformace[Item.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Item.lastTestedData] = (perFunctionPerformance[Item.lastTestedData] or 0) + runTime
     if npcDrops then
       tInsert(data, "NPC Drops:")
       for _, npcID in ipairs(npcDrops) do
@@ -66,7 +66,7 @@ Item.testGetFunctions = function(fast)
     time = debugprofilestop()
     local objectDrops = Item.objectDrops(id)
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Item.lastTestedData] = (perFunctionPerformace[Item.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Item.lastTestedData] = (perFunctionPerformance[Item.lastTestedData] or 0) + runTime
     if objectDrops then
       tInsert(data, "Object Drops:")
       for _, objectID in ipairs(objectDrops) do
@@ -81,7 +81,7 @@ Item.testGetFunctions = function(fast)
     time = debugprofilestop()
     local itemDrops = Item.itemDrops(id)
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Item.lastTestedData] = (perFunctionPerformace[Item.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Item.lastTestedData] = (perFunctionPerformance[Item.lastTestedData] or 0) + runTime
     if itemDrops then
       tInsert(data, "Item Drops:")
       for _, itemID in ipairs(itemDrops) do
@@ -96,14 +96,14 @@ Item.testGetFunctions = function(fast)
     time = debugprofilestop()
     tInsert(data, "Start Quest: " .. (Item.startQuest(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Item.lastTestedData] = (perFunctionPerformace[Item.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Item.lastTestedData] = (perFunctionPerformance[Item.lastTestedData] or 0) + runTime
 
     -- Test Item.questRewards
     Item.lastTestedData = "questRewards"
     time = debugprofilestop()
     local questRewards = Item.questRewards(id)
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Item.lastTestedData] = (perFunctionPerformace[Item.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Item.lastTestedData] = (perFunctionPerformance[Item.lastTestedData] or 0) + runTime
     if questRewards then
       tInsert(data, "Quest Rewards:")
       for _, questID in ipairs(questRewards) do
@@ -118,56 +118,56 @@ Item.testGetFunctions = function(fast)
     time = debugprofilestop()
     tInsert(data, "Flags: " .. (Item.flags(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Item.lastTestedData] = (perFunctionPerformace[Item.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Item.lastTestedData] = (perFunctionPerformance[Item.lastTestedData] or 0) + runTime
 
     -- Test Item.foodType
     Item.lastTestedData = "foodType"
     time = debugprofilestop()
     tInsert(data, "Food Type: " .. (Item.foodType(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Item.lastTestedData] = (perFunctionPerformace[Item.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Item.lastTestedData] = (perFunctionPerformance[Item.lastTestedData] or 0) + runTime
 
     -- Test Item.itemLevel
     Item.lastTestedData = "itemLevel"
     time = debugprofilestop()
     tInsert(data, "Item Level: " .. (Item.itemLevel(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Item.lastTestedData] = (perFunctionPerformace[Item.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Item.lastTestedData] = (perFunctionPerformance[Item.lastTestedData] or 0) + runTime
 
     -- Test Item.requiredLevel
     Item.lastTestedData = "requiredLevel"
     time = debugprofilestop()
     tInsert(data, "Required Level: " .. (Item.requiredLevel(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Item.lastTestedData] = (perFunctionPerformace[Item.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Item.lastTestedData] = (perFunctionPerformance[Item.lastTestedData] or 0) + runTime
 
     -- Test Item.ammoType
     Item.lastTestedData = "ammoType"
     time = debugprofilestop()
     tInsert(data, "Ammo Type: " .. (Item.ammoType(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Item.lastTestedData] = (perFunctionPerformace[Item.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Item.lastTestedData] = (perFunctionPerformance[Item.lastTestedData] or 0) + runTime
 
     -- Test Item.class
     Item.lastTestedData = "class"
     time = debugprofilestop()
     tInsert(data, "Class: " .. (Item.class(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Item.lastTestedData] = (perFunctionPerformace[Item.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Item.lastTestedData] = (perFunctionPerformance[Item.lastTestedData] or 0) + runTime
 
     -- Test Item.subClass
     Item.lastTestedData = "subClass"
     time = debugprofilestop()
     tInsert(data, "Subclass: " .. (Item.subClass(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Item.lastTestedData] = (perFunctionPerformace[Item.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Item.lastTestedData] = (perFunctionPerformance[Item.lastTestedData] or 0) + runTime
 
     -- Test Item.vendors
     Item.lastTestedData = "vendors"
     time = debugprofilestop()
     local vendors = Item.vendors(id)
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Item.lastTestedData] = (perFunctionPerformace[Item.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Item.lastTestedData] = (perFunctionPerformance[Item.lastTestedData] or 0) + runTime
     if vendors then
       tInsert(data, "Vendors:")
       for _, npcID in ipairs(vendors) do
@@ -182,7 +182,7 @@ Item.testGetFunctions = function(fast)
     time = debugprofilestop()
     local relatedQuests = Item.relatedQuests(id)
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Item.lastTestedData] = (perFunctionPerformace[Item.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Item.lastTestedData] = (perFunctionPerformance[Item.lastTestedData] or 0) + runTime
     if relatedQuests then
       tInsert(data, "Related Quests:")
       for _, questID in ipairs(relatedQuests) do
@@ -197,7 +197,7 @@ Item.testGetFunctions = function(fast)
     time = debugprofilestop()
     tInsert(data, "TeachesSpell: " .. (Item.teachesSpell(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Item.lastTestedData] = (perFunctionPerformace[Item.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Item.lastTestedData] = (perFunctionPerformance[Item.lastTestedData] or 0) + runTime
 
     tInsert(data, "--------------------------------------------------")
     if not fast then
@@ -211,7 +211,7 @@ Item.testGetFunctions = function(fast)
   print("  ", "time per item:", tostring(time / count):sub(1, 6), "ms")
   print("  ", "avg time per function", tostring(time / (count * functions)):sub(1, 6), "ms")
   for i, functionName in ipairs(LibQuestieDB.Corrections.ItemMeta.NameIndexLookupTable) do
-    local v = perFunctionPerformace[functionName] or 0
+    local v = perFunctionPerformance[functionName] or 0
     print("    ", i, functionName, ":", tostring((v / count) * 1000):sub(1, 6), "µs")
   end
 end

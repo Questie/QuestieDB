@@ -27,7 +27,7 @@ Npc.testGetFunctions = function(fast)
     functions = functions + 1
   end
 
-  local perFunctionPerformace = {}
+  local perFunctionPerformance = {}
 
   local count = 0
   for id in pairs(Npc.GetAllIds()) do
@@ -44,49 +44,49 @@ Npc.testGetFunctions = function(fast)
     time = debugprofilestop()
     tInsert(data, "Name: " .. (Npc.name(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Npc.lastTestedData] = (perFunctionPerformace[Npc.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Npc.lastTestedData] = (perFunctionPerformance[Npc.lastTestedData] or 0) + runTime
 
     -- Test Npc.minLevelHealth
     Npc.lastTestedData = "minLevelHealth"
     time = debugprofilestop()
     tInsert(data, "Min Level Health: " .. (Npc.minLevelHealth(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Npc.lastTestedData] = (perFunctionPerformace[Npc.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Npc.lastTestedData] = (perFunctionPerformance[Npc.lastTestedData] or 0) + runTime
 
     -- Test Npc.maxLevelHealth
     Npc.lastTestedData = "maxLevelHealth"
     time = debugprofilestop()
     tInsert(data, "Max Level Health: " .. (Npc.maxLevelHealth(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Npc.lastTestedData] = (perFunctionPerformace[Npc.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Npc.lastTestedData] = (perFunctionPerformance[Npc.lastTestedData] or 0) + runTime
 
     -- Test Npc.minLevel
     Npc.lastTestedData = "minLevel"
     time = debugprofilestop()
     tInsert(data, "Min Level: " .. (Npc.minLevel(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Npc.lastTestedData] = (perFunctionPerformace[Npc.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Npc.lastTestedData] = (perFunctionPerformance[Npc.lastTestedData] or 0) + runTime
 
     -- Test Npc.maxLevel
     Npc.lastTestedData = "maxLevel"
     time = debugprofilestop()
     tInsert(data, "Max Level: " .. (Npc.maxLevel(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Npc.lastTestedData] = (perFunctionPerformace[Npc.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Npc.lastTestedData] = (perFunctionPerformance[Npc.lastTestedData] or 0) + runTime
 
     -- Test Npc.rank
     Npc.lastTestedData = "rank"
     time = debugprofilestop()
     tInsert(data, "Rank: " .. (Npc.rank(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Npc.lastTestedData] = (perFunctionPerformace[Npc.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Npc.lastTestedData] = (perFunctionPerformance[Npc.lastTestedData] or 0) + runTime
 
     -- Test Npc.spawns
     Npc.lastTestedData = "spawns"
     time = debugprofilestop()
     local spawns = Npc.spawns(id)
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Npc.lastTestedData] = (perFunctionPerformace[Npc.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Npc.lastTestedData] = (perFunctionPerformance[Npc.lastTestedData] or 0) + runTime
     if spawns then
       for zoneID, coords in pairs(spawns) do
         tInsert(data, "Spawns in Zone " .. zoneID .. ":")
@@ -103,7 +103,7 @@ Npc.testGetFunctions = function(fast)
     time = debugprofilestop()
     local waypoints = Npc.waypoints(id)
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Npc.lastTestedData] = (perFunctionPerformace[Npc.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Npc.lastTestedData] = (perFunctionPerformance[Npc.lastTestedData] or 0) + runTime
     if waypoints then
       for zoneID, waypointSegments in pairs(waypoints) do
         tInsert(data, "Waypoints in Zone " .. zoneID .. ":")
@@ -122,14 +122,14 @@ Npc.testGetFunctions = function(fast)
     time = debugprofilestop()
     tInsert(data, "Zone ID: " .. (Npc.zoneID(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Npc.lastTestedData] = (perFunctionPerformace[Npc.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Npc.lastTestedData] = (perFunctionPerformance[Npc.lastTestedData] or 0) + runTime
 
     -- Test Npc.questStarts
     Npc.lastTestedData = "questStarts"
     time = debugprofilestop()
     local questStarts = Npc.questStarts(id)
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Npc.lastTestedData] = (perFunctionPerformace[Npc.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Npc.lastTestedData] = (perFunctionPerformance[Npc.lastTestedData] or 0) + runTime
     if questStarts then
       tInsert(data, "Quest Starts:")
       for _, questID in ipairs(questStarts) do
@@ -144,7 +144,7 @@ Npc.testGetFunctions = function(fast)
     time = debugprofilestop()
     local questEnds = Npc.questEnds(id)
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Npc.lastTestedData] = (perFunctionPerformace[Npc.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Npc.lastTestedData] = (perFunctionPerformance[Npc.lastTestedData] or 0) + runTime
     if questEnds then
       tInsert(data, "Quest Ends:")
       for _, questID in ipairs(questEnds) do
@@ -159,28 +159,28 @@ Npc.testGetFunctions = function(fast)
     time = debugprofilestop()
     tInsert(data, "Faction ID: " .. (Npc.factionID(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Npc.lastTestedData] = (perFunctionPerformace[Npc.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Npc.lastTestedData] = (perFunctionPerformance[Npc.lastTestedData] or 0) + runTime
 
     -- Test Npc.friendlyToFaction
     Npc.lastTestedData = "friendlyToFaction"
     time = debugprofilestop()
     tInsert(data, "Friendly to Faction: " .. (Npc.friendlyToFaction(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Npc.lastTestedData] = (perFunctionPerformace[Npc.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Npc.lastTestedData] = (perFunctionPerformance[Npc.lastTestedData] or 0) + runTime
 
     -- Test Npc.subName
     Npc.lastTestedData = "subName"
     time = debugprofilestop()
     tInsert(data, "Sub Name: " .. (Npc.subName(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Npc.lastTestedData] = (perFunctionPerformace[Npc.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Npc.lastTestedData] = (perFunctionPerformance[Npc.lastTestedData] or 0) + runTime
 
     -- Test Npc.npcFlags
     Npc.lastTestedData = "npcFlags"
     time = debugprofilestop()
     tInsert(data, "NPC Flags: " .. (Npc.npcFlags(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Npc.lastTestedData] = (perFunctionPerformace[Npc.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Npc.lastTestedData] = (perFunctionPerformance[Npc.lastTestedData] or 0) + runTime
 
     tInsert(data, "--------------------------------------------------")
     if not fast then
@@ -194,7 +194,7 @@ Npc.testGetFunctions = function(fast)
   print("  ", "time per npc:", tostring(time / count):sub(1, 6), "ms")
   print("  ", "avg time per function", tostring(time / (count * functions)):sub(1, 6), "ms")
   for i, functionName in ipairs(LibQuestieDB.Corrections.NpcMeta.NameIndexLookupTable) do
-    local v = perFunctionPerformace[functionName] or 0
+    local v = perFunctionPerformance[functionName] or 0
     print("    ", i, functionName, ":", tostring((v / count) * 1000):sub(1, 6), "µs")
   end
 end
