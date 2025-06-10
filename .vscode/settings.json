@@ -138,4 +138,9 @@
       "builtin": "enable"
     },
     "Lua.diagnostics.globals": [],
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+      {
+        "file": ".vscode/.copilot-commit-message-instruction.md"
+      },
+    ],
 }
