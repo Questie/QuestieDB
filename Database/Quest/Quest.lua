@@ -134,6 +134,103 @@ do
   ---@type fun(id: QuestId):RawObjectives?
   QuestFunctions.objectives = Quest.AddTableGetter(10, "objectives", emptyTable)
 
+  do
+    --- {typeKey, subIndex, slot?}
+    ---@alias ObjectiveOrderEntry { [1]: QuestObjectiveKeys, [2]:integer, [3]: integer? }  -- one row inside quest.orderedObjectives
+
+    ---@alias ObjectiveOrderSpec ObjectiveOrderEntry[]  -- the whole array
+
+    --- flattened objective = metadata + data
+    --- /*typeKey*/, /*subIndex*/, /*objective data*/
+    ---@alias ObjectiveTriple { [1]: integer, [2]:integer, [3]: RawObjective }
+
+    -- Build a lookup table     "<type>:<idx>" → slotNumber
+    ----------------------------------------------------------------
+    ---@param orderSpec ObjectiveOrderSpec?
+    ---@return table<string, integer>|nil
+    local function buildOrderLUT(orderSpec)
+      if not orderSpec or #orderSpec == 0 then
+        return nil -- quest has no explicit ordering
+      end
+      local lut = {} ---@type table<string, integer>
+      for pos, entry in ipairs(orderSpec) do
+        local tKey, subIdx, slot = entry[1], entry[2], entry[3] or pos
+        local key = tKey .. ":" .. subIdx
+
+        -- Diagnostic for duplicate declarations
+        --if lut[key] then
+        --  warn(("Quest orderedObjectives duplicate: %s (keeping first = %d, ignoring %d)")
+        --       :format(key, lut[key], slot))
+        --end
+
+
+        lut[key] = lut[key] or slot -- “first wins”
+      end
+      return lut
+    end
+
+    ---@type fun(id):table<number, { [1]: QuestObjectiveKeys, [2]: number }[]> -- Maps QuestId to ordered pairs of objective type and index
+    local orderedObjectivesGetter = Quest.AddTableGetter(31, "orderedObjectives", emptyTable)
+
+    local reputationObjectiveIndex = Corrections.QuestMeta.objectiveKeys.REPUTATION
+
+    ----------------------------------------------------------------
+    ---Return objectives in UI order.
+    ----------------------------------------------------------------
+    ---@param id QuestId
+    ---@return ObjectiveTriple[]
+    function QuestFunctions.orderedObjectives(id)
+      local objectives = QuestFunctions.objectives(id)
+      if not objectives then
+        return emptyTable
+      end
+
+      --------------------------------------------------------------------------
+      -- 1. Flatten nested objective structure
+      --------------------------------------------------------------------------
+      local flat = {} ---@type ObjectiveTriple[]
+
+      for typeKey, objectivesOfType in ipairs(objectives) do
+        if objectivesOfType == reputationObjectiveIndex then
+          -- Special case for reputation objectives, which are stored as a single table
+          -- with the faction ID and the value.
+          local tbl = objectivesOfType --[[@as RawReputationObjective]]
+          flat[#flat + 1] = { typeKey, 1, tbl, }
+        else
+          for objIdx, objTbl in ipairs(objectivesOfType) do
+            local tbl = objTbl --[[@as RawNpcObjective | RawObjectObjective | RawItemObjective | RawKillObjective]]
+            flat[#flat + 1] = { typeKey, objIdx, tbl, }
+          end
+        end
+      end
+
+      --------------------------------------------------------------------------
+      -- 2. Apply custom ordering if the quest defines it
+      --------------------------------------------------------------------------
+      local orderLUT = buildOrderLUT(orderedObjectivesGetter(id))
+      if orderLUT then
+        table.sort(flat, function(a, b)
+          local aKey = a[1] .. ":" .. a[2]
+          local bKey = b[1] .. ":" .. b[2]
+
+          local aSlot = orderLUT[aKey] or math.huge -- unspecified → bottom
+          local bSlot = orderLUT[bKey] or math.huge
+
+          if aSlot ~= bSlot then
+            return aSlot < bSlot -- primary: custom slot
+          end
+          -- secondary: deterministic fallback (typeKey, then subIndex)
+          if a[1] ~= b[1] then
+            return a[1] < b[1]
+          end
+          return a[2] < b[2]
+        end)
+      end
+
+      return flat
+    end
+  end
+
   -- Function to get the item ID that starts the quest<br>
   -- Returns 12345
   ---@type fun(id: QuestId):ItemId?

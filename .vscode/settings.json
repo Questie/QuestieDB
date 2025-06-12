@@ -152,4 +152,10 @@
         "file": ".vscode/.copilot-commit-message-instruction.md"
       },
     ],
+    "chat.instructionsFilesLocations": {
+      ".vscode/Instructions": true,
+    },
+    "chat.promptFilesLocations": {
+      ".vscode/Prompts": true,
+    },
 }
