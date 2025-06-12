@@ -108,7 +108,8 @@
 ---@field [4] ObjectiveIndex? Optional ObjectiveIndex
 ---@field [5] table<"monster"|"object", function>? dbReference which uses _QuestieQuest.objectiveSpawnListCallTable to fetch spawns
 
----@class RawObjectives : {[1]: RawNpcObjective[], [2]: RawObjectObjective[], [3]: RawItemObjective[], [4]: RawReputationObjective, [5]: RawKillObjective[]}
+---@alias RawObjectives { [1]: RawNpcObjective[], [2]: RawObjectObjective[], [3]: RawItemObjective[], [4]: RawReputationObjective, [5]: RawKillObjective[] }
+---@alias RawObjective RawNpcObjective | RawObjectObjective | RawItemObjective | RawReputationObjective | RawKillObjective
 ---@class RawNpcObjective : { [1]: NpcId, [2]: string }
 ---@class RawObjectObjective : { [1]: ObjectId, [2]: string }
 ---@class RawItemObjective : { [1]: ItemId, [2]: string }
