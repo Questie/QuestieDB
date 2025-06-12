@@ -27,7 +27,7 @@ Object.testGetFunctions = function(fast)
     functions = functions + 1
   end
 
-  local perFunctionPerformace = {}
+  local perFunctionPerformance = {}
 
   local count = 0
   for id in pairs(Object.GetAllIds()) do
@@ -44,7 +44,7 @@ Object.testGetFunctions = function(fast)
     time = debugprofilestop()
     tInsert(data, "Name: " .. (Object.name(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Object.lastTestedData] = (perFunctionPerformace[Object.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Object.lastTestedData] = (perFunctionPerformance[Object.lastTestedData] or 0) + runTime
 
     -- Test Object.questStarts
     Object.lastTestedData = "questStarts"
@@ -52,7 +52,7 @@ Object.testGetFunctions = function(fast)
     local questStarts = Object.questStarts(id)
     if questStarts then
       runTime = debugprofilestop() - time
-      perFunctionPerformace[Object.lastTestedData] = (perFunctionPerformace[Object.lastTestedData] or 0) + runTime
+      perFunctionPerformance[Object.lastTestedData] = (perFunctionPerformance[Object.lastTestedData] or 0) + runTime
 
       tInsert(data, "Quest Starts:")
       for _, questID in ipairs(questStarts) do
@@ -68,7 +68,7 @@ Object.testGetFunctions = function(fast)
     local questEnds = Object.questEnds(id)
     if questEnds then
       runTime = debugprofilestop() - time
-      perFunctionPerformace[Object.lastTestedData] = (perFunctionPerformace[Object.lastTestedData] or 0) + runTime
+      perFunctionPerformance[Object.lastTestedData] = (perFunctionPerformance[Object.lastTestedData] or 0) + runTime
 
       tInsert(data, "Quest Ends:")
       for _, questID in ipairs(questEnds) do
@@ -84,7 +84,7 @@ Object.testGetFunctions = function(fast)
     local spawns = Object.spawns(id)
     if spawns then
       runTime = debugprofilestop() - time
-      perFunctionPerformace[Object.lastTestedData] = (perFunctionPerformace[Object.lastTestedData] or 0) + runTime
+      perFunctionPerformance[Object.lastTestedData] = (perFunctionPerformance[Object.lastTestedData] or 0) + runTime
 
       for zoneID, coords in pairs(spawns) do
         tInsert(data, "Spawns in Zone " .. zoneID .. ":")
@@ -101,14 +101,14 @@ Object.testGetFunctions = function(fast)
     time = debugprofilestop()
     tInsert(data, "Zone ID: " .. (Object.zoneID(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Object.lastTestedData] = (perFunctionPerformace[Object.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Object.lastTestedData] = (perFunctionPerformance[Object.lastTestedData] or 0) + runTime
 
     -- Test Object.factionID
     Object.lastTestedData = "factionID"
     time = debugprofilestop()
     tInsert(data, "Faction ID: " .. (Object.factionID(id) or "nil"))
     runTime = debugprofilestop() - time
-    perFunctionPerformace[Object.lastTestedData] = (perFunctionPerformace[Object.lastTestedData] or 0) + runTime
+    perFunctionPerformance[Object.lastTestedData] = (perFunctionPerformance[Object.lastTestedData] or 0) + runTime
 
     tInsert(data, "--------------------------------------------------")
     if not fast then
@@ -122,7 +122,7 @@ Object.testGetFunctions = function(fast)
   print("  ", "time per object:", tostring(time / count):sub(1, 6), "ms")
   print("  ", "avg time per function", tostring(time / (count * functions)):sub(1, 6), "ms")
   for i, functionName in ipairs(LibQuestieDB.Meta.ObjectMeta.NameIndexLookupTable) do
-    local v = perFunctionPerformace[functionName] or 0
+    local v = perFunctionPerformance[functionName] or 0
     print("    ", i, functionName, ":", tostring((v / count) * 1000):sub(1, 6), "µs")
   end
 end
