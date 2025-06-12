@@ -54,6 +54,17 @@ QuestMeta.questKeys = {
   ['requiredSpell'] = 28,          -- int: quest is only available if character has this spellID
   ['requiredSpecialization'] = 29, -- int: quest is only available if character meets the spec requirements. Use QuestieProfessions.specializationKeys for having a spec, or QuestieProfessions.professionKeys to indicate having the profession with no spec. See QuestieProfessions.lua for more info.
   ['requiredMaxLevel'] = 30,       -- int: quest is only available up to a certain level
+  ['orderedObjectives'] = 31,      -- table: {objectiveTypeKey, objectiveInstanceIndex, orderIndex} pairs defining display order of objectives.
+}
+
+---@enum QuestObjectiveKeys
+QuestMeta.objectiveKeys = {
+  CREATURE   = 1,  -- Creature Objective
+  OBJECT     = 2,  -- Object Objective
+  ITEM       = 3,  -- Item Objective
+  REPUTATION = 4,  -- Reputation Objective
+  KILLCREDIT = 5,  -- Kill Credit Objective
+  SPELL      = 6,  -- Spell Objective
 }
 
 --- Contains the name of data as keys and their index as value for quick lookup
@@ -106,6 +117,7 @@ QuestMeta.questTypes = {
   ['requiredSpell'] = "number",
   ['requiredSpecialization'] = "number",
   ['requiredMaxLevel'] = "number",
+  ['orderedObjectives'] = "table",
 }
 -- Add the index keys to questTypes
 for key, index in pairs(QuestMeta.questKeys) do

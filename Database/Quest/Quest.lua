@@ -4,6 +4,7 @@ local LibQuestieDB = select(2, ...)
 
 local l10n = LibQuestieDB.l10n
 local ExtraTranslation = LibQuestieDB.ExtraTranslation
+local Meta = LibQuestieDB.Meta
 
 --- Multiple inheritance for Quest
 
@@ -135,14 +136,27 @@ do
   QuestFunctions.objectives = Quest.AddTableGetter(10, "objectives", emptyTable)
 
   do
-    --- {typeKey, subIndex, slot?}
-    ---@alias ObjectiveOrderEntry { [1]: QuestObjectiveKeys, [2]:integer, [3]: integer? }  -- one row inside quest.orderedObjectives
+    ---@type fun(id):table<number, { [1]: QuestObjectiveKeys, [2]: number }[]> -- Maps QuestId to ordered pairs of objective type and index
+    local orderedObjectivesGetter = Quest.AddTableGetter(31, "orderedObjectives", emptyTable)
 
-    ---@alias ObjectiveOrderSpec ObjectiveOrderEntry[]  -- the whole array
+    -- maxObjectiveType is the highest numeric value in objectiveKeys.
+    -- It is used to iterate over all possible objective types in order,
+    -- ensuring that all types (CREATURE, OBJECT, ITEM, etc.) are checked
+    -- when flattening objectives for a quest.
+    ---@type integer
+    local maxObjectiveType = (function()
+      local m = 0
+      for _, idx in pairs(Meta.QuestMeta.objectiveKeys) do
+        if type(idx) == "number" and idx > m then
+          m = idx
+        end
+      end
+      return m
+    end)()
 
-    --- flattened objective = metadata + data
-    --- /*typeKey*/, /*subIndex*/, /*objective data*/
-    ---@alias ObjectiveTriple { [1]: integer, [2]:integer, [3]: RawObjective }
+    -- Reputation objectives are special: they are a single table, not an array.
+    ---@type integer
+    local reputationObjectiveIndex = Meta.QuestMeta.objectiveKeys.REPUTATION
 
     -- Build a lookup table     "<type>:<idx>" → slotNumber
     ----------------------------------------------------------------
@@ -169,16 +183,12 @@ do
       return lut
     end
 
-    ---@type fun(id):table<number, { [1]: QuestObjectiveKeys, [2]: number }[]> -- Maps QuestId to ordered pairs of objective type and index
-    local orderedObjectivesGetter = Quest.AddTableGetter(31, "orderedObjectives", emptyTable)
-
-    local reputationObjectiveIndex = Corrections.QuestMeta.objectiveKeys.REPUTATION
-
     ----------------------------------------------------------------
     ---Return objectives in UI order.
     ----------------------------------------------------------------
     ---@param id QuestId
-    ---@return ObjectiveTriple[]
+    ---@return ObjectiveTriple[] -- Returns a flattened list of objectives, ordered by the custom order defined in the quest.
+    ---@return ObjectiveOrderSpec? -- This is just to allow the caller to access the custom ordering of the quest.
     function QuestFunctions.orderedObjectives(id)
       local objectives = QuestFunctions.objectives(id)
       if not objectives then
@@ -190,16 +200,19 @@ do
       --------------------------------------------------------------------------
       local flat = {} ---@type ObjectiveTriple[]
 
-      for typeKey, objectivesOfType in ipairs(objectives) do
-        if objectivesOfType == reputationObjectiveIndex then
-          -- Special case for reputation objectives, which are stored as a single table
-          -- with the faction ID and the value.
-          local tbl = objectivesOfType --[[@as RawReputationObjective]]
-          flat[#flat + 1] = { typeKey, 1, tbl, }
-        else
-          for objIdx, objTbl in ipairs(objectivesOfType) do
-            local tbl = objTbl --[[@as RawNpcObjective | RawObjectObjective | RawItemObjective | RawKillObjective]]
-            flat[#flat + 1] = { typeKey, objIdx, tbl, }
+      for typeKey = 1, maxObjectiveType do
+        local objectivesOfType = objectives[typeKey]
+        if objectivesOfType then
+          if objectivesOfType == reputationObjectiveIndex then
+            -- Special case for reputation objectives, which are stored as a single table
+            -- with the faction ID and the value.
+            local tbl = objectivesOfType --[[@as RawReputationObjective]]
+            flat[#flat + 1] = { typeKey, 1, tbl, }
+          else
+            for objIdx, objTbl in ipairs(objectivesOfType) do
+              local tbl = objTbl --[[@as RawNpcObjective | RawObjectObjective | RawItemObjective | RawKillObjective]]
+              flat[#flat + 1] = { typeKey, objIdx, tbl, }
+            end
           end
         end
       end
@@ -207,7 +220,8 @@ do
       --------------------------------------------------------------------------
       -- 2. Apply custom ordering if the quest defines it
       --------------------------------------------------------------------------
-      local orderLUT = buildOrderLUT(orderedObjectivesGetter(id))
+      local orderedObjectives = orderedObjectivesGetter(id)
+      local orderLUT = buildOrderLUT(orderedObjectives)
       if orderLUT then
         table.sort(flat, function(a, b)
           local aKey = a[1] .. ":" .. a[2]
@@ -227,7 +241,7 @@ do
         end)
       end
 
-      return flat
+      return flat, orderedObjectives
     end
   end
 

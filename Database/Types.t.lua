@@ -115,3 +115,12 @@
 ---@class RawItemObjective : { [1]: ItemId, [2]: string }
 ---@class RawReputationObjective : { [1]: FactionId, [2]: number }
 ---@class RawKillObjective : { [1]: NpcId[], [2]: NpcId, [3]: string }
+
+--- {typeKey, subIndex, slot?}
+---@alias ObjectiveOrderEntry { [1]: QuestObjectiveKeys, [2]:integer, [3]: integer? }  -- one row inside quest.orderedObjectives
+
+---@alias ObjectiveOrderSpec ObjectiveOrderEntry[]  -- the whole array
+
+--- flattened objective = metadata + data
+--- /*typeKey*/, /*subIndex*/, /*objective data*/
+---@alias ObjectiveTriple { [1]: integer, [2]:integer, [3]: RawObjective }
