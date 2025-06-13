@@ -17,6 +17,14 @@ jobs:
     - name: Check out ${{ github.repository }} code
       uses: actions/checkout@v4
 
+    - name: Check version is higher than latest release
+      run: |
+        pip install requests
+        python .github/check_version.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+
     - name: Install Lua 5.1.5
       uses: leafo/gh-actions-lua@v10
       with:
