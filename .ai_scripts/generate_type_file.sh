@@ -12,13 +12,23 @@ cd "$script_dir"
 cd ..
 
 # Define the output file
-output_file=".ai_lua/QuestieDB_LuaLS_Types.lua"
+output_file=".ai_lua/Instructions/QuestieDB_Lua_Types.instructions.md"
 
-echo "---@diagnostic disable: duplicate-doc-alias, duplicate-doc-field, undefined-doc-name" > "$output_file"
+# Multiline echo to outputfile
+cat << EOF > "$output_file"
+---
+applyTo: '**/*.lua'
+---
+# QuestieDB Lua Types
 
-# Find all files .*\.t\.lua
-# For each file, print its path as a comment header, then print its content.
-# Redirect the combined output to the output file.
-find . -name "*.t.lua" -exec sh -c 'echo ""; echo "-- filepath: {}"; cat "{}"' \; >> "$output_file"
+EOF
+
+# Find all files .*\.t\.lua, excluding the .shit directory
+find . -name '.shit' -type d -prune -o -name '*.t.lua' -print | while read -r file; do
+  printf "\n-- filepath: %s\n" "$file"
+  printf "\`\`\`lua\n"
+  cat "$file"
+  printf "\n\`\`\`\n"
+done >> "$output_file"
 
 echo "Combined types generated in $output_file"

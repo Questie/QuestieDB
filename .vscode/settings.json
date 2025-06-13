@@ -154,8 +154,26 @@
     ],
     "chat.instructionsFilesLocations": {
       ".vscode/Instructions": true,
+      ".ai_lua/Instructions": true,
+      ".ai_py/Instructions": true,
     },
     "chat.promptFilesLocations": {
       ".vscode/Prompts": true,
+      ".ai_lua/Prompts": true,
+      ".ai_py/Prompts": true,
     },
+    "github.copilot.chat.codeGeneration.instructions": [
+      {
+        "file": "README.ai"
+      },
+      // {
+      //   "file": ".ai_lua/LuaLS-annotations.md"
+      // },
+      // {
+      //   "file": ".ai_lua/QuestieDB_LuaLS_Types.lua"
+      // },
+      {
+        "text": "Always try to use relevant LuaLS annotations, favor any type created for the project over primitives."
+      }
+    ],
 }
