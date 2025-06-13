@@ -45,9 +45,9 @@ def parse_version(version):
   Parse a version string (e.g., '1.2.3' or 'v1.2.3-abcdef') into a tuple of integers (1, 2, 3).
   Strips leading 'v' and any suffix after a dash.
   """
+  print("Parse String:", version)
   version = version.lstrip("v").split("-")[0]
   version = version.strip('"')  # Remove any surrounding quotes
-  print(version)
   return tuple(int(x) for x in version.split("."))
 
 
@@ -65,7 +65,9 @@ except Exception as exc:
 # Parse both the latest release version and the current version
 try:
   latest_version_tuple = parse_version(latest_tag)
+  print("Latest version:", latest_version_tuple)
   current_version_tuple = parse_version(current_version)
+  print("Current version:", current_version_tuple)
 except Exception as e:
   print(f"Error parsing versions: {e}")
   sys.exit(1)
