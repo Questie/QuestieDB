@@ -2,14 +2,15 @@
 ---@field Quest Quest
 local LibQuestieDB = select(2, ...)
 
-local Corrections = LibQuestieDB.Corrections
 local l10n = LibQuestieDB.l10n
+local ExtraTranslation = LibQuestieDB.ExtraTranslation
+local Meta = LibQuestieDB.Meta
 
 --- Multiple inheritance for Quest
 
 ---@class (exact) Quest:DatabaseType
 ---@class (exact) Quest:QuestFunctions
-local Quest = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Quest, "Quest", Corrections.QuestMeta.questKeys)
+local Quest = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Quest, "Quest", LibQuestieDB.Meta.QuestMeta.questKeys)
 
 do
   -- ? Questie Data structure for Quests
@@ -57,6 +58,9 @@ do
 
   -- ? QuestieDB Data structure for Quests
 
+  local upack = unpack
+  local tInsert = table.insert
+
   -- Class for all the public functions for the Quest namespace
   ---@class QuestFunctions
   local QuestFunctions = {}
@@ -66,7 +70,7 @@ do
   local emptyTable = LibQuestieDB.CreateReadOnlyEmptyTable()
 
   -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
-  if l10n.currentLocale == "enUS" then
+  if l10n.currentLocale == "enUS" and not LibQuestieDB.Database.debugEnabled then
     -- Function to get the name of the quest<br>
     -- Returns "The Lost Artifact"
     ---@type fun(id: QuestId):Name?
@@ -109,7 +113,7 @@ do
   QuestFunctions.requiredClasses = Quest.AddNumberGetter(7, "requiredClasses", 0)
 
   -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
-  if l10n.currentLocale == "enUS" then
+  if l10n.currentLocale == "enUS" and not LibQuestieDB.Database.debugEnabled then
     -- Function to get the text of the quest objectives<br>
     -- Returns {"Find the lost artifact", "Return to the qu
     ---@type fun(id: QuestId):string[]?
@@ -130,6 +134,116 @@ do
   -- Returns {{{9021,"Kharan's Tale"},}, ...}
   ---@type fun(id: QuestId):RawObjectives?
   QuestFunctions.objectives = Quest.AddTableGetter(10, "objectives", emptyTable)
+
+  do
+    ---@type fun(id):table<number, { [1]: QuestObjectiveKeys, [2]: number }[]> -- Maps QuestId to ordered pairs of objective type and index
+    local orderedObjectivesGetter = Quest.AddTableGetter(31, "orderedObjectives", emptyTable)
+
+    -- maxObjectiveType is the highest numeric value in objectiveKeys.
+    -- It is used to iterate over all possible objective types in order,
+    -- ensuring that all types (CREATURE, OBJECT, ITEM, etc.) are checked
+    -- when flattening objectives for a quest.
+    ---@type integer
+    local maxObjectiveType = (function()
+      local m = 0
+      for _, idx in pairs(Meta.QuestMeta.objectiveKeys) do
+        if type(idx) == "number" and idx > m then
+          m = idx
+        end
+      end
+      return m
+    end)()
+
+    -- Reputation objectives are special: they are a single table, not an array.
+    ---@type integer
+    local reputationObjectiveIndex = Meta.QuestMeta.objectiveKeys.REPUTATION
+
+    -- Build a lookup table     "<type>:<idx>" → slotNumber
+    ----------------------------------------------------------------
+    ---@param orderSpec ObjectiveOrderSpec?
+    ---@return table<string, integer>|nil
+    local function buildOrderLUT(orderSpec)
+      if not orderSpec or #orderSpec == 0 then
+        return nil -- quest has no explicit ordering
+      end
+      local lut = {} ---@type table<string, integer>
+      for pos, entry in ipairs(orderSpec) do
+        local tKey, subIdx, slot = entry[1], entry[2], entry[3] or pos
+        local key = tKey .. ":" .. subIdx
+
+        -- Diagnostic for duplicate declarations
+        --if lut[key] then
+        --  warn(("Quest orderedObjectives duplicate: %s (keeping first = %d, ignoring %d)")
+        --       :format(key, lut[key], slot))
+        --end
+
+
+        lut[key] = lut[key] or slot -- “first wins”
+      end
+      return lut
+    end
+
+    ----------------------------------------------------------------
+    ---Return objectives in UI order.
+    ----------------------------------------------------------------
+    ---@param id QuestId
+    ---@return ObjectiveTriple[] -- Returns a flattened list of objectives, ordered by the custom order defined in the quest.
+    ---@return ObjectiveOrderSpec? -- This is just to allow the caller to access the custom ordering of the quest.
+    function QuestFunctions.orderedObjectives(id)
+      local objectives = QuestFunctions.objectives(id)
+      if not objectives then
+        return emptyTable
+      end
+
+      --------------------------------------------------------------------------
+      -- 1. Flatten nested objective structure
+      --------------------------------------------------------------------------
+      local flat = {} ---@type ObjectiveTriple[]
+
+      for typeKey = 1, maxObjectiveType do
+        local objectivesOfType = objectives[typeKey]
+        if objectivesOfType then
+          if objectivesOfType == reputationObjectiveIndex then
+            -- Special case for reputation objectives, which are stored as a single table
+            -- with the faction ID and the value.
+            local tbl = objectivesOfType --[[@as RawReputationObjective]]
+            flat[#flat + 1] = { typeKey, 1, tbl, }
+          else
+            for objIdx, objTbl in ipairs(objectivesOfType) do
+              local tbl = objTbl --[[@as RawNpcObjective | RawObjectObjective | RawItemObjective | RawKillObjective]]
+              flat[#flat + 1] = { typeKey, objIdx, tbl, }
+            end
+          end
+        end
+      end
+
+      --------------------------------------------------------------------------
+      -- 2. Apply custom ordering if the quest defines it
+      --------------------------------------------------------------------------
+      local orderedObjectives = orderedObjectivesGetter(id)
+      local orderLUT = buildOrderLUT(orderedObjectives)
+      if orderLUT then
+        table.sort(flat, function(a, b)
+          local aKey = a[1] .. ":" .. a[2]
+          local bKey = b[1] .. ":" .. b[2]
+
+          local aSlot = orderLUT[aKey] or math.huge -- unspecified → bottom
+          local bSlot = orderLUT[bKey] or math.huge
+
+          if aSlot ~= bSlot then
+            return aSlot < bSlot -- primary: custom slot
+          end
+          -- secondary: deterministic fallback (typeKey, then subIndex)
+          if a[1] ~= b[1] then
+            return a[1] < b[1]
+          end
+          return a[2] < b[2]
+        end)
+      end
+
+      return flat, orderedObjectives
+    end
+  end
 
   -- Function to get the item ID that starts the quest<br>
   -- Returns 12345
@@ -211,10 +325,53 @@ do
   ---@type fun(id: QuestId):ReputationPair[]?
   QuestFunctions.reputationReward = Quest.AddTableGetter(26, "reputationReward")
 
-  -- Function to get the extra objectives of the quest<br>
-  -- Returns <INSERT EXAMPLE>
-  ---@type fun(id: QuestId):ExtraObjective?
-  QuestFunctions.extraObjectives = Quest.AddTableGetter(27, "extraObjectives")
+  do
+    -- /dump LibQuestieDB().Quest.extraObjectives(735)
+    -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
+    if l10n.currentLocale == "enUS" and not LibQuestieDB.Database.debugEnabled then
+      -- Function to get the extra objectives of the quest<br>
+      -- Returns <INSERT EXAMPLE>
+      ---@type fun(id: QuestId):ExtraObjective[]?
+      QuestFunctions.extraObjectives = Quest.AddTableGetter(27, "extraObjectives")
+    else
+      -- Function to get the extra objectives of the quest<br>
+      -- Returns <INSERT EXAMPLE>
+      ---@type fun(id: QuestId):ExtraObjective[]?
+      local extraObjectives_enUS = Quest.AddTableGetter(27, "extraObjectives")
+
+      -- Function to get the extra objectives of the quest<br>
+      -- Returns <INSERT EXAMPLE>
+      ---@type fun(id: QuestId):ExtraObjective[]?
+      QuestFunctions.extraObjectives = function(id)
+        -- TODO: Future person: This logical can most likely be improved a lot if we feel like the performance is bad
+        -- We could for example cache it in a table sacrificing some memory for performance
+        local extraObjectives = extraObjectives_enUS(id)
+
+        if extraObjectives then
+          -- ? We have to create a copy of the objective as a cached version is stored with the english translation
+          -- ? If we do not copy we will overwrite the base data with the translation and run into issues.
+          local copyExtraObjectives = {}
+
+          -- We loop through the extra objectives and translate them
+          for _, extraObjective in ipairs(extraObjectives) do
+            -- ? By unpacking we create a copy of the table
+            local copyExtraObjective = { upack(extraObjective), }
+
+            -- ? We translate the text of the extra objective
+            if copyExtraObjective[3] and type(copyExtraObjective[3]) == "string" then
+              copyExtraObjective[3] = ExtraTranslation.GetTranslation(copyExtraObjective[3])
+            end
+
+            tInsert(copyExtraObjectives, copyExtraObjective)
+          end
+          return copyExtraObjectives
+        end
+
+        -- Just return whatever we have (should always be nil)
+        return extraObjectives
+      end
+    end
+  end
 
   -- Function to get the spell required to start the quest<br>
   -- Returns 12345

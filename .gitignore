@@ -11,6 +11,12 @@ Translations/*Lookup.lua
 Translations/_data/*.html
 
 .database_generator/Questie-translations
+.database_generator/Questie-data
+
+start.lua
+stop.lua
+
+notes.md
 
 .shit
 .translator

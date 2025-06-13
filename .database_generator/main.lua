@@ -48,16 +48,10 @@ DB_GEN_DEBUG_MODE = false
 
 -- Main function to demonstrate the usage of helper functions
 local function main()
-  print("Running database download script...")
-  require(".dl_database")
-  print("Database download script finished.")
-
-
   -- for expansion, local_prefix in pairs(Expansions) do
   for _, exp_data in ipairs(helpers.Expansions) do
     local questie_prefix_expansion, local_prefix_expansion = unpack(exp_data)
     local capitalized_expansion = local_prefix_expansion:sub(1, 1):upper() .. local_prefix_expansion:sub(2)
-    print("Downloading " .. capitalized_expansion .. " databases...")
     DumpDatabase(capitalized_expansion, questie_prefix_expansion, DB_GEN_DEBUG_MODE)
   end
 end
@@ -74,7 +68,7 @@ QuestieLoader = {
 }
 
 -- ? Load all the tables.
-CLI_Helpers.loadXML(helpers.get_project_dir_path() .. "/.database_generator/Questie-translations/Localization/Translations/Translations.xml")
+CLI_Helpers.loadXML(helpers.get_project_dir_path() .. "/.database_generator/Questie-data/Localization/Translations/Translations.xml")
 
 
 local single_translation = {}
@@ -86,7 +80,7 @@ end
 ---comment
 ---@param enUStext string
 ---@return table<string, string|boolean>?
----@return error?
+---@return string? Error
 local function getTranslation(enUStext)
   if translations[enUStext] then
     return translations[enUStext], nil
@@ -106,7 +100,6 @@ if DB_GEN_DEBUG_MODE then
   profile.start()
   print("Profiler started.")
 end
-
 
 -- Generate Trie-translations
 require("generateTranslations")

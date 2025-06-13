@@ -4,7 +4,8 @@ local LibQuestieDB = select(2, ...)
 
 --- Imports
 local Corrections = LibQuestieDB.Corrections
-local QuestMeta = Corrections.QuestMeta
+local Meta = LibQuestieDB.Meta
+local QuestMeta = Meta.QuestMeta
 
 ---@class QuestFixesEra
 local QuestFixes = {}
@@ -13,7 +14,7 @@ C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("quest",
                                        "QuestFixes-Reputation-Era",
                                        QuestFixes.LoadQuestReputationFixes,
-                                       9)
+                                       Corrections.EraBaseStaticOrder + 9)
 
   -- Clear the table to save memory
   QuestFixes = wipe(QuestFixes)

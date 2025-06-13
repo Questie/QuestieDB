@@ -3,17 +3,17 @@ local LibQuestieDB = select(2, ...)
 
 --- Imports
 local Corrections = LibQuestieDB.Corrections
-local ItemMeta = Corrections.ItemMeta
+local Meta = LibQuestieDB.Meta
+local ItemMeta = Meta.ItemMeta
 
 ---@class ItemFixesEra
 local ItemFixes = {}
-
 
 C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("item",
                                        "ItemFixes-QuestStarts-Era-Automatic",
                                        ItemFixes.LoadItemQuestStarts,
-                                       9)
+                                       Corrections.EraBaseStaticOrder + 9)
 
   -- Clear the table to save memory
   ItemFixes = wipe(ItemFixes)

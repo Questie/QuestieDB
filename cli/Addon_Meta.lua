@@ -26,7 +26,8 @@ CLI_addonName = "QuestieDB"
 CLI_addonTable = {}
 
 -- "Client" data
-CLI_Locale = "enUS"
+CLI_Locale = "deDE"
+-- CLI_Locale = "enUS"
 
 -- "Player" data
 CLI_PlayerLevel = 60
@@ -45,6 +46,7 @@ do
   local initByVersion = {
     ["Era"] = function()
       ---@type LibQuestieDB
+      ---@diagnostic disable-next-line: missing-fields
       LibQuestieDBTable = {}
 
       -- When creating the static database, we load the QuestieDB which writes to this global, so we reset it here
@@ -178,7 +180,7 @@ do
   }
 
   --- (Re-)Initializes the global variables for the addon
-  ---@param version Expansions|string e.g. "Classic", "TBC", "Wotlk"
+  ---@param version ExpansionStrings|string e.g. "Classic", "TBC", "Wotlk"
   ---@return LibQuestieDB
   function AddonInitializeVersion(version)
     local lowerVersion = version:lower()

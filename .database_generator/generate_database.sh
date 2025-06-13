@@ -20,29 +20,29 @@ echo "$LUA is the lua executable"
 
 git_sparse_clone_addon_translations() {
   # Delete repo if it exists
-  if [ -d "Questie-translations" ]; then
-    echo "Removing already existing Questie-translations $(pwd)/Questie-translations"
-    rm -rf Questie-translations
+  if [ -d "Questie-data" ]; then
+    echo "Removing already existing Questie-data $(pwd)/Questie-data"
+    rm -rf Questie-data
   fi
 
   # Cloning an empty repo
-  git clone -n --depth=1 --filter=tree:0 https://github.com/Questie/Questie.git Questie-translations
+  git clone -n --depth=1 --filter=tree:0 https://github.com/Questie/Questie.git Questie-data
 
   # # Cd into the git directory
-  cd Questie-translations
+  cd Questie-data
 
   # # Sparse checkout only the Localization directory
-  echo "Setting sparse checkout for Localization"
-  git sparse-checkout set --no-cone Localization
+  echo "# Setting sparse checkout for Localization, Database/Classic, Database/TBC, Database/Wotlk, Database/Cata"
+  git sparse-checkout set --no-cone Localization Database/Classic Database/TBC Database/Wotlk Database/Cata
 
   # # Pull the sparse checkout
-  echo "Pulling the sparse checkout"
+  echo "# Pulling the sparse checkout"
   git checkout
 
   # Remove the .git directory
   rm -rf .git
 
-  echo "Done sparse checkout"
+  echo "# Done sparse checkout"
 }
 
 # Needed for the docker container but not action but it doesn't hurt the run if it fails
@@ -53,7 +53,7 @@ LAST_PATH="$(pwd)"
 # Goto the QuestieDB/.database_generator directory
 cd $FULL_PATH
 
-# Make sure the Questie-translations directory is there
+# Make sure the Questie-data directory is there
 git_sparse_clone_addon_translations
 
 echo "$(pwd)"

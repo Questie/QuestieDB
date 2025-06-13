@@ -13,6 +13,11 @@
 --* The Public namespace is the one that is returned when you call LibQuestieDB()
 -- The Private namespace is the one that is used internally in the library.
 
+-- The main private namespace class for the QuestieDB library.
+---@class LibQuestieDB
+local PrivateLibQuestieDB = select(2, ...)
+
+---@diagnostic disable: missing-fields
 --- The main public namespace for QuestieDB
 ---@class QuestieDB
 ---@field public Quest QuestFunctions
@@ -20,12 +25,18 @@
 ---@field public Npc NpcFunctions
 ---@field public Object ObjectFunctions
 ---@field public SetLocale fun(locale: localeType)
+---@field public l10n fun(text: string): string
 local PublicLibQuestieDB = {
   Quest = {},
   Item = {},
   Npc = {},
   Object = {},
 }
+--- Is the database initialized
+---@return boolean
+PublicLibQuestieDB.IsInitialized = function()
+  return PrivateLibQuestieDB.Database and PrivateLibQuestieDB.Database.Initialized or false
+end
 
 local addonName = select(1, ...)
 -- Only make the library available if QuestieDB is running in standalone mode
@@ -43,9 +54,6 @@ if addonName == "QuestieDB" then
 end
 ---- Private namespace -----
 
--- The main namespace class for the QuestieDB library.
----@class LibQuestieDB
-local PrivateLibQuestieDB = select(2, ...)
 -- Set a metatable to create a new table when a key is accessed
 ---@private
 function PrivateLibQuestieDB:initNamespace()
@@ -54,7 +62,7 @@ function PrivateLibQuestieDB:initNamespace()
     ---@param key `T`
     ---@return T
     __index = function(s, key)
-      print("Creating Module", key)
+      -- print("Creating Module", key)
       s[key] = {}
       return s[key]
     end,
@@ -67,7 +75,6 @@ PrivateLibQuestieDB.initNamespace = nil -- Remove it, no one should be able to c
 
 
 PrivateLibQuestieDB.PublicLibQuestieDB = PublicLibQuestieDB
-
 
 do
   local savedFunction = LibQuestieDB

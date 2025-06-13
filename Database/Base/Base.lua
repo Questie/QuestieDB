@@ -140,7 +140,7 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
     if Database.debugPrintEnabled then
       LibQuestieDB.ColorizePrint("yellow", f("Loading %s Corrections", captializedType))
       if not Database.debugLoadStaticEnabled then
-        LibQuestieDB.ColorizePrint("gray", "Skipping static correction loading for", captializedType)
+        LibQuestieDB.ColorizePrint("gray", " Skipping static correction loading for", captializedType)
       end
     end
 
@@ -157,6 +157,7 @@ function LibQuestieDB.CreateDatabaseInTable(refTable, databaseType, databaseType
       local correctionList = allCorrections[correctionType]
       if correctionList then
         if Database.debugPrintEnabled then
+          LibQuestieDB.ColorizePrint("blue", f(" Loading %s", correctionType:gsub("^%l", string.upper)))
           debugPrint(f("  %s Applied", LibQuestieDB.Capitalized(correctionType)))
         end
         for _, correctionObject in pairs(correctionList) do

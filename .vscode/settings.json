@@ -1,8 +1,12 @@
 {
   "Lua.workspace.ignoreDir": [
     ".generate_database",
+    ".ai_lua",
+    ".ai_py",
+    ".ai_scripts",
     ".database_generator/mangos_translation",
     ".database_generator/Questie-translations",
+    ".database_generator/Questie-data",
     ".database_generator/_data",
     ".shit",
     ".vscode",
@@ -17,11 +21,13 @@
     ".build",
     "Perfy",
     "**/Questie-translations",
+    "**/Questie-data",
     "Corrections/Era",
     "Corrections/Sod",
     "Corrections/Tbc",
     "Corrections/Wotlk",
     "Corrections/Cata",
+    "WoW-API",
   ],
   "files.exclude": {
     "**/.git": true,
@@ -35,6 +41,8 @@
     "**/_data/*.html": true,
     "**/venv": true,
     "WoW-API": true,
+    "**/*.jq-temp": true,
+    "*.jq-temp": true,
   },
   "search.exclude": {
     "**/node_modules": true,
@@ -45,10 +53,16 @@
     ".build":true,
     "Perfy":true,
     ".database_generator/Questie-translations": true,
+    ".database_generator/Questie-data": true,
     ".database_generator/mangos_translation/translations": true,
     ".vscode/*.lua": true,
+    ".vscode/AI_Context/*.ai": true,
+    ".ai_lua": true,
+    ".ai_py": true,
     "translations.json": true,
     "**/*.lua-table": true,
+    "**/*.jq-temp": true,
+    "*.jq-temp": true,
   },
 
   "[lua]": {
@@ -63,7 +77,7 @@
 
   // The number of spaces a tab is equal to. This setting is overridden
   // based on the file contents when `editor.detectIndentation` is true.
-//   "editor.tabSize": 4,
+  "editor.tabSize": 2,
 
   // Insert spaces when pressing Tab. This setting is overriden
   // based on the file contents when `editor.detectIndentation` is true.
@@ -79,6 +93,8 @@
 
   "Lua.diagnostics.ignoredFiles": "Opened",
   "Lua.diagnostics.libraryFiles": "Opened",
+  "search.quickOpen.includeSymbols": false, // Include symbols in quick open
+  "Lua.workspace.useGitIgnore": false,
 
   "Lua.diagnostics.severity": {},
   "Lua.diagnostics.enable": true,
@@ -131,4 +147,33 @@
       "builtin": "enable"
     },
     "Lua.diagnostics.globals": [],
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+      {
+        "file": ".vscode/.copilot-commit-message-instruction.md"
+      },
+    ],
+    "chat.instructionsFilesLocations": {
+      ".vscode/Instructions": true,
+      ".ai_lua/Instructions": true,
+      ".ai_py/Instructions": true,
+    },
+    "chat.promptFilesLocations": {
+      ".vscode/Prompts": true,
+      ".ai_lua/Prompts": true,
+      ".ai_py/Prompts": true,
+    },
+    "github.copilot.chat.codeGeneration.instructions": [
+      {
+        "file": "README.ai"
+      },
+      // {
+      //   "file": ".ai_lua/LuaLS-annotations.md"
+      // },
+      // {
+      //   "file": ".ai_lua/QuestieDB_LuaLS_Types.lua"
+      // },
+      {
+        "text": "Always try to use relevant LuaLS annotations, favor any type created for the project over primitives."
+      }
+    ],
 }

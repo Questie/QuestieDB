@@ -2,22 +2,18 @@
 ---@field l10n l10n
 local LibQuestieDB = select(2, ...)
 
-local L10nMeta = LibQuestieDB.Corrections.L10nMeta
+local L10nMeta = LibQuestieDB.Meta.L10nMeta
 
 local f = string.format
 
 ---@class l10n:DatabaseType
 local l10n = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.l10n, "l10n", {})
 l10n.currentLocale = GetLocale()
--- Set this to nil to use the locale of the client
+-- Set this to nil to use the locale of the ingame client
 -- Override locale
--- l10n.currentLocale = "ptBR"
-
-if Is_CLI and Is_Test then
-  -- All the other data is run through the normal databases
-  -- In testing it is better to actually test another locale than enUS
-  l10n.currentLocale = "deDE"
-end
+-- l10n.currentLocale = "deDE"
+-- If you are in the CLI environment change:
+---@see CLI_Locale which exists in cli/Addon_Meta.lua
 
 -- Order Item, Npc, Object, Quest
 -- "enUS": "", # English (US) # Yes EN is empty
@@ -196,7 +192,8 @@ do
         l10n.currentLocale = locale
         SetGetters()
       else
-        error(f("Invalid locale: %s", locale))
+        -- error(f("Invalid locale: %s", locale))
+        print(f("Invalid locale: %s", locale))
       end
     end
 

@@ -1,0 +1,7 @@
+*.lua
+AI_Context
+setEnv.sh
+*.txt
+*.jq-temp
+AI_Context/*.md
+Instructions/QuestieDB_Lua_Types.instructions.md
