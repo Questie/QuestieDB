@@ -56,6 +56,7 @@ def parse_version(version):
   """
   version = version.lstrip("v").split("-")[0]
   version = version.strip('"')  # Remove any surrounding quotes
+  print(version)
   return tuple(int(x) for x in version.split("."))
 
 
