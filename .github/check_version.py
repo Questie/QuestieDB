@@ -39,6 +39,7 @@ def parse_version(version):
   Strips leading 'v' and any suffix after a dash.
   """
   version = version.lstrip("v").split("-")[0]
+  version = version.strip('"')  # Remove any surrounding quotes
   return tuple(int(x) for x in version.split("."))
 
 
