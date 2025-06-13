@@ -23,14 +23,30 @@ if GITHUB_TOKEN:
   headers["Authorization"] = f"token {GITHUB_TOKEN}"
 
 # Fetch the latest (non-prerelease) release from GitHub using the REST API
-resp = requests.get(f"https://api.github.com/repos/{REPO}/releases/latest", headers=headers)
-if resp.status_code != 200:
-  print("Could not fetch latest release from GitHub API")
+resp = requests.get(
+  f"https://api.github.com/repos/{REPO}/releases/latest",
+  headers=headers,
+  timeout=10,
+)
+if resp.status_code == 404:
+  # No releases yet – treat as version 0.0.0
+  latest_tag = "0.0.0"
+elif resp.ok:
+  latest_tag = resp.json().get("tag_name", "0.0.0")
+else:
+  print(f"GitHub API error ({resp.status_code}): {resp.text}")
   sys.exit(1)
-latest_tag = resp.json()["tag_name"]
 
 # Get the current version from build.py (which reads from the TOC file)
-current_version = subprocess.check_output([sys.executable, "build.py", "version"]).decode().strip()
+try:
+  current_version = subprocess.check_output(
+    [sys.executable, "build.py", "version"],
+    stderr=subprocess.STDOUT,
+    text=True,
+  ).strip()
+except subprocess.CalledProcessError as exc:
+  print(f"`build.py version` failed:\n{exc.output}")
+  sys.exit(exc.returncode)
 
 
 def parse_version(version):
