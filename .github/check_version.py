@@ -39,11 +39,19 @@ else:
 
 # Get the current version from build.py (which reads from the TOC file)
 try:
-  current_version = subprocess.check_output(
+  build_output = subprocess.check_output(
     [sys.executable, "build.py", "version"],
     stderr=subprocess.STDOUT,
     text=True,
-  ).strip()
+  )
+  # Extract the first line that looks like a version (e.g., 0.5.0)
+  for line in build_output.splitlines():
+    if line.strip() and all(part.isdigit() for part in line.strip().lstrip("v").split(".") if part.isdigit()):
+      current_version = line.strip()
+      break
+  else:
+    print(f"No valid version string found in build.py output:\n{build_output}")
+    sys.exit(1)
 except subprocess.CalledProcessError as exc:
   print(f"`build.py version` failed:\n{exc.output}")
   sys.exit(exc.returncode)
