@@ -79,6 +79,14 @@ jobs:
       run: lua ./.tests/runTests.lua Cata
 
     # Create the QuestieDB build, will output toc_version
+    - name: Check version is higher than latest release
+      run: |
+        pip install requests
+        python .github/check_version.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+
     - name: Build QuestieDB
       id: build
       run: python build.py build QuestieDB
