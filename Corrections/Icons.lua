@@ -42,9 +42,10 @@ local Icons = setmetatable({}, {
       return nil -- Only allow string keys
     end
 
-    -- Check if the value is already cached
-    if t[k] ~= nil then
-      return t[k]
+    -- Use rawget to check cache
+    local cached = rawget(t, k)
+    if cached ~= nil then
+      return cached
     end
 
     -- Try fetching from the Questie global object first
@@ -52,14 +53,14 @@ local Icons = setmetatable({}, {
     if Questie and Questie[k] and type(Questie[k]) == "number" then
       ---@diagnostic disable-next-line: undefined-global
       local valueFromQuestie = Questie[k]
-      t[k] = valueFromQuestie -- Cache the value
+      rawset(t, k, valueFromQuestie) -- Cache the value
       return valueFromQuestie
     end
 
     -- If not found in Questie, try fetching from QuestieLocalTable
     local valueFromLocalTable = QuestieLocalTable[k]
     if valueFromLocalTable ~= nil then
-      t[k] = valueFromLocalTable -- Cache the value
+      rawset(t, k, valueFromLocalTable) -- Cache the value
       return valueFromLocalTable
     end
 
@@ -67,6 +68,5 @@ local Icons = setmetatable({}, {
     return nil
   end,
 })
-
 
 Corrections.Icons = Icons
