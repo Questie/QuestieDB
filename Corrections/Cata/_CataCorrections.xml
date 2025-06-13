@@ -1,0 +1,4 @@
+<Ui>
+  <Script file="static/cataObjectiveOrderFixes.lua"/>
+  <Script file="cataQuestFixes.lua"/>
+</Ui>
