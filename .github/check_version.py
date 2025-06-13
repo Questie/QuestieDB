@@ -2,12 +2,18 @@
 # This script is used in the CI workflow to ensure that any new release on the main branch
 # has a version number that is strictly higher than the latest published GitHub release.
 # It fetches the latest release tag from GitHub, parses the version, and compares it to the
-# version reported by build.py. If the new version is not higher, the workflow fails.
+# version reported by the TOC file. If the new version is not higher, the workflow fails.
 
-import subprocess
 import sys
 import requests
 import os
+
+toc_files = {
+  "classic": "QuestieDB-Classic.toc",
+  "tbc": "QuestieDB-BCC.toc",
+  "wotlk": "QuestieDB-WOTLKC.toc",
+  "cata": "QuestieDB-Cata.toc",
+}
 
 # Get repository and token from environment variables set by GitHub Actions
 REPO = os.environ.get("GITHUB_REPOSITORY")
@@ -37,28 +43,38 @@ else:
   print(f"GitHub API error ({resp.status_code}): {resp.text}")
   sys.exit(1)
 
-# Get the current version from build.py (which reads from the TOC file)
-try:
-  # Find the absolute path to build.py relative to this script
-  script_dir = os.path.dirname(os.path.abspath(__file__))
-  repo_root = os.path.abspath(os.path.join(script_dir, "..", ".."))
-  build_py_path = os.path.join(repo_root, "build.py")
-  build_output = subprocess.check_output(
-    [sys.executable, build_py_path, "version"],
-    stderr=subprocess.STDOUT,
-    text=True,
-  )
-  # Extract the first line that looks like a version (e.g., 0.5.0)
-  for line in build_output.splitlines():
-    if line.strip() and all(part.isdigit() for part in line.strip().lstrip("v").split(".") if part.isdigit()):
-      current_version = line.strip()
-      break
-  else:
-    print(f"No valid version string found in build.py output:\n{build_output}")
-    sys.exit(1)
-except subprocess.CalledProcessError as exc:
-  print(f"`build.py version` failed:\n{exc.output}")
-  sys.exit(exc.returncode)
+
+def get_versions_from_toc(path=".."):
+  """
+  Reads all TOC files and returns a dict of {key: version} for each expansion.
+  """
+  versions = {}
+  for key, filename in toc_files.items():
+    toc_path = os.path.join(path, filename)
+    version = None
+    try:
+      with open(toc_path, "r") as f:
+        for line in f:
+          if line.startswith("## Version:"):
+            version = line.split(":", 1)[1].strip()
+            break
+    except FileNotFoundError:
+      print(f"TOC file not found at {toc_path}")
+      sys.exit(1)
+    except Exception as e:
+      print(f"Error reading {toc_path}: {e}")
+      sys.exit(1)
+    versions[key] = version
+  return versions
+
+
+def validate_same_version(versions):
+  """Checks if all version values in the dictionary are the same."""
+  version_values = [v for v in versions.values() if v is not None]
+  if len(version_values) <= 1:
+    return True
+  first_version = version_values[0]
+  return all(v == first_version for v in version_values)
 
 
 def parse_version(version):
@@ -71,6 +87,17 @@ def parse_version(version):
   print(version)
   return tuple(int(x) for x in version.split("."))
 
+
+# Use the new functions to get and check all TOC versions
+try:
+  versions = get_versions_from_toc(os.path.join(os.path.dirname(__file__), ".."))
+  if not validate_same_version(versions):
+    print(f"Version mismatch in TOC files: {versions}")
+    sys.exit(1)
+  current_version = versions["classic"]
+except Exception as exc:
+  print(f"Failed to get version from TOC files: {exc}")
+  sys.exit(1)
 
 # Parse both the latest release version and the current version
 try:
