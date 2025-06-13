@@ -8,12 +8,8 @@ import sys
 import requests
 import os
 
-toc_files = {
-  "classic": "QuestieDB-Classic.toc",
-  "tbc": "QuestieDB-BCC.toc",
-  "wotlk": "QuestieDB-WOTLKC.toc",
-  "cata": "QuestieDB-Cata.toc",
-}
+sys.path.insert(0, os.path.join(os.path.dirname(__file__)))
+from version_utils import get_versions_from_toc, validate_same_version
 
 # Get repository and token from environment variables set by GitHub Actions
 REPO = os.environ.get("GITHUB_REPOSITORY")
@@ -42,39 +38,6 @@ elif resp.ok:
 else:
   print(f"GitHub API error ({resp.status_code}): {resp.text}")
   sys.exit(1)
-
-
-def get_versions_from_toc(path=".."):
-  """
-  Reads all TOC files and returns a dict of {key: version} for each expansion.
-  """
-  versions = {}
-  for key, filename in toc_files.items():
-    toc_path = os.path.join(path, filename)
-    version = None
-    try:
-      with open(toc_path, "r") as f:
-        for line in f:
-          if line.startswith("## Version:"):
-            version = line.split(":", 1)[1].strip()
-            break
-    except FileNotFoundError:
-      print(f"TOC file not found at {toc_path}")
-      sys.exit(1)
-    except Exception as e:
-      print(f"Error reading {toc_path}: {e}")
-      sys.exit(1)
-    versions[key] = version
-  return versions
-
-
-def validate_same_version(versions):
-  """Checks if all version values in the dictionary are the same."""
-  version_values = [v for v in versions.values() if v is not None]
-  if len(version_values) <= 1:
-    return True
-  first_version = version_values[0]
-  return all(v == first_version for v in version_values)
 
 
 def parse_version(version):
