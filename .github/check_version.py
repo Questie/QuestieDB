@@ -39,8 +39,12 @@ else:
 
 # Get the current version from build.py (which reads from the TOC file)
 try:
+  # Find the absolute path to build.py relative to this script
+  script_dir = os.path.dirname(os.path.abspath(__file__))
+  repo_root = os.path.abspath(os.path.join(script_dir, "..", ".."))
+  build_py_path = os.path.join(repo_root, "build.py")
   build_output = subprocess.check_output(
-    [sys.executable, "build.py", "version"],
+    [sys.executable, build_py_path, "version"],
     stderr=subprocess.STDOUT,
     text=True,
   )
