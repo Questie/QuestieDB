@@ -42,9 +42,6 @@ end)
 function QuestFixes:Load()
   -- _QuestieTBCQuestFixes:InsertMissingQuestIds()
 
-  ---@diagnostic disable-next-line: undefined-global
-  local Questie = Questie
-
   local questKeys = QuestMeta.questKeys
   local zoneIDs = ZoneMeta.zoneIDs
   local raceIDs = Enum.raceKeys
@@ -54,11 +51,11 @@ function QuestFixes:Load()
   local specKeys = Enum.specializationKeys
   local factionIDs = Enum.factions
   local questFlags = Enum.questFlags
-  local ICON_TYPE_EVENT = Questie and Questie.ICON_TYPE_EVENT or "ICON_TYPE_EVENT"
-  local ICON_TYPE_OBJECT = Questie and Questie.ICON_TYPE_OBJECT or "ICON_TYPE_OBJECT"
-  local ICON_TYPE_LOOT = Questie and Questie.ICON_TYPE_LOOT or "ICON_TYPE_LOOT"
-  local ICON_TYPE_SLAY = Questie and Questie.ICON_TYPE_SLAY or "ICON_TYPE_SLAY"
-  local ICON_TYPE_TALK = Questie and Questie.ICON_TYPE_TALK or "ICON_TYPE_TALK"
+  local ICON_TYPE_EVENT = Corrections.Icons.ICON_TYPE_EVENT
+  local ICON_TYPE_OBJECT = Corrections.Icons.ICON_TYPE_OBJECT
+  local ICON_TYPE_LOOT = Corrections.Icons.ICON_TYPE_LOOT
+  local ICON_TYPE_SLAY = Corrections.Icons.ICON_TYPE_SLAY
+  local ICON_TYPE_TALK = Corrections.Icons.ICON_TYPE_TALK
 
   return {
     [62] = {
