@@ -70,7 +70,7 @@ do
 
       WOW_PROJECT_ID = WOW_PROJECT_CLASSIC
 
-      CLI_Helpers.loadTOC("QuestieDB-Classic.toc")
+      CLI_Helpers.loadTOC("QuestieDB-Vanilla.toc")
 
       return LibQuestieDBTable
     end,
@@ -101,7 +101,7 @@ do
 
       WOW_PROJECT_ID = WOW_PROJECT_CLASSIC
 
-      CLI_Helpers.loadTOC("QuestieDB-Classic.toc")
+      CLI_Helpers.loadTOC("QuestieDB-Vanilla.toc")
 
       return LibQuestieDBTable
     end,
