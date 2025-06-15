@@ -10,6 +10,9 @@
 ## SavedVariablesPerCharacter: QuestieDB_c
 ## Dedicated to my cat - Suddis
 
+# Load Environment
+_dotenv.lua
+
 ####### API Here ########
 Library.lua
 #########################
