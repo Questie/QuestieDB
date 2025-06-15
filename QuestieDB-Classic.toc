@@ -68,5 +68,8 @@ Corrections\Sod\_SodCorrections.xml
 ### Corrections - Cata
 # Corrections\Cata\_CataCorrections.xml
 
+# Settings
+Settings\Search.lua
+
 # Standalone
 QuestieDB.lua
