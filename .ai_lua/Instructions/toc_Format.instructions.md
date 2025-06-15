@@ -1,3 +1,6 @@
+---
+applyTo: '**/*.toc'
+---
 
 # World of Warcraft Addon `.toc` File Specification (Definitive Guide)
 

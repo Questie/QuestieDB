@@ -20,6 +20,10 @@ local l10n = LibQuestieDB.l10n
 --? Debug settings
 ------------------------------
 
+-- ! Override debug settings from _dotenv.lua
+---@see DotEnv which exists in _dotenv.lua
+
+
 --? Some prints require both to be true some only debugPrintEnabled
 --? debugEnabled: Enable more debug code and prints
 Database.debugEnabled = false

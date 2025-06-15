@@ -1,4 +1,5 @@
 *.lua
+*.py
 AI_Context
 setEnv.sh
 *.txt

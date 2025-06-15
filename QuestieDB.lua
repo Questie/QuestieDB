@@ -66,7 +66,11 @@ end
 
 -- Register slash command
 SlashCmdList["QuestieDB"] = function(args)
-  if args == "test" then
+  if args == "ui" then
+    local category = LibQuestieDB.QuestieDBSettings.category
+    Settings.OpenToCategory(category.ID)
+    return
+  elseif args == "test" then
     LibQuestieDB.ColorizePrint("yellow", "Running data tests")
     if LibQuestieDB.Database.debugEnabled then
       LibQuestieDB.ColorizePrint("yellow", "Running l10n tests (deDE)")

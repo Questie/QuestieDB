@@ -1,4 +1,4 @@
-## Interface: 11507
+## Interface: 50500
 ## Title: QuestieDB
 ## Author: Logon (Data: TheCrux/Drejjmit/Muehe/Yttrium/TechnoHunter/Everyone else)
 ## Notes: A standalone QuestieDB
@@ -9,6 +9,9 @@
 ## SavedVariables: QuestieDB_var, QuestieDB_trace
 ## SavedVariablesPerCharacter: QuestieDB_c
 ## Dedicated to my cat - Suddis
+
+# Load Environment
+_dotenv.lua
 
 ####### API Here ########
 Library.lua
@@ -25,12 +28,12 @@ Corrections\Enum\_Enum.xml
 
 #* Database
 ## Data embeds
-Database\Item\Era\ItemDataFiles.xml
-Database\Npc\Era\NpcDataFiles.xml
-Database\Object\Era\ObjectDataFiles.xml
-Database\Quest\Era\QuestDataFiles.xml
+Database\Item\Cata\ItemDataFiles.xml
+Database\Npc\Cata\NpcDataFiles.xml
+Database\Object\Cata\ObjectDataFiles.xml
+Database\Quest\Cata\QuestDataFiles.xml
 ## l10n
-Database\l10n\Era\L10nDataFiles.xml
+Database\l10n\Cata\L10nDataFiles.xml
 ## Translations
 Translations\Translations.layer.lua
 Translations\Translations.lua
@@ -59,14 +62,17 @@ Database\Quest\Quest.xml
 ##* Corrections
 ### Corrections - Era
 Corrections\Era\_EraCorrections.xml
-### Corrections - Sod
-Corrections\Sod\_SodCorrections.xml
 ### Corrections - Tbc
-# Corrections\Tbc\_TbcCorrections.xml
+Corrections\Tbc\_TbcCorrections.xml
 ### Corrections - Wotlk
-# Corrections\Wotlk\_WotlkCorrections.xml
+Corrections\Wotlk\_WotlkCorrections.xml
 ### Corrections - Cata
-# Corrections\Cata\_CataCorrections.xml
+Corrections\Cata\_CataCorrections.xml
+### Corrections - MoP
+Corrections\MoP\_MoPCorrections.xml
+
+# Settings
+Settings\Search.lua
 
 # Standalone
 QuestieDB.lua

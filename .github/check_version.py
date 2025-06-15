@@ -57,7 +57,7 @@ try:
   if not validate_same_version(versions):
     print(f"Version mismatch in TOC files: {versions}")
     sys.exit(1)
-  current_version = versions["classic"]
+  current_version = versions["vanilla"]
 except Exception as exc:
   print(f"Failed to get version from TOC files: {exc}")
   sys.exit(1)
