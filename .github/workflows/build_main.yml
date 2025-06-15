@@ -58,11 +58,37 @@ jobs:
       run: lua ./.tests/runTests.lua Cata
 
     # Create the QuestieDB build, will output toc_version
+    - name: Check version changed from last release
+      run: |
+        pip install requests
+        python .github/check_version.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+
     - name: Build QuestieDB
       id: build
       run: python build.py build QuestieDB
       env:
         GITHUB_ACTIONS: "true"
+
+    - name: Tag commit with version
+      run: |
+        VERSION=$(python build.py version)
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        # Set authenticated origin for push
+        git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        # Only create and push tag if it doesn't exist
+        if git rev-parse "v$VERSION" >/dev/null 2>&1; then
+          echo "Tag v$VERSION already exists. Skipping tag creation."
+        else
+          git tag -a "v$VERSION" -m "Release v$VERSION"
+          git push origin "v$VERSION"
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
 
     - name: Create QuestieDB.zip
       uses: TheDoctor0/zip-release@0.7.6

@@ -8,7 +8,6 @@ local Enum = LibQuestieDB.Enum
 local Meta = LibQuestieDB.Meta
 local QuestMeta = Meta.QuestMeta
 local ZoneMeta = Meta.ZoneMeta
-local PlayerMeta = Meta.PlayerMeta
 
 ---@class QuestFixesWotlk
 local QuestFixes = {}
@@ -50,9 +49,6 @@ end)
 -- https://github.com/Questie/Questie/wiki/Corrections
 
 function QuestFixes:Load()
-  ---@diagnostic disable-next-line: undefined-global
-  local Questie = Questie
-
   local questKeys = QuestMeta.questKeys
   local zoneIDs = ZoneMeta.zoneIDs
   local raceIDs = Enum.raceKeys
@@ -61,11 +57,11 @@ function QuestFixes:Load()
   local profKeys = Enum.professionKeys
   local specKeys = Enum.specializationKeys
   local factionIDs = Enum.factions
-  local ICON_TYPE_EVENT = Questie and Questie.ICON_TYPE_EVENT or "ICON_TYPE_EVENT"
-  local ICON_TYPE_OBJECT = Questie and Questie.ICON_TYPE_OBJECT or "ICON_TYPE_OBJECT"
-  local ICON_TYPE_LOOT = Questie and Questie.ICON_TYPE_LOOT or "ICON_TYPE_LOOT"
-  local ICON_TYPE_SLAY = Questie and Questie.ICON_TYPE_SLAY or "ICON_TYPE_SLAY"
-  local ICON_TYPE_TALK = Questie and Questie.ICON_TYPE_TALK or "ICON_TYPE_TALK"
+  local ICON_TYPE_EVENT = Corrections.Icons.ICON_TYPE_EVENT
+  local ICON_TYPE_OBJECT = Corrections.Icons.ICON_TYPE_OBJECT
+  local ICON_TYPE_LOOT = Corrections.Icons.ICON_TYPE_LOOT
+  local ICON_TYPE_SLAY = Corrections.Icons.ICON_TYPE_SLAY
+  local ICON_TYPE_TALK = Corrections.Icons.ICON_TYPE_TALK
 
   return {
     [55]    = {

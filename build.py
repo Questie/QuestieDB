@@ -7,6 +7,9 @@ import shutil
 import sys
 import json
 
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".github"))
+from version_utils import get_versions_from_toc, validate_same_version  # type: ignore
+
 
 base_build_dir = "./.build"
 
@@ -27,6 +30,7 @@ disallowed_folders = [
   ".database_generator",
   ".generate",  # General generate folders
   ".tests",
+  ".shit",
   # Python venv
   "venv",
   # Github actions
@@ -78,60 +82,22 @@ def copy_files(src, dest):
   return files_copied
 
 
-def get_versions_from_toc(path="."):
-  versions = {}
-  for key, filename in toc_files.items():
-    version = None
-    filepath = os.path.join(path, filename)
-    try:
-      with open(filepath, "r") as f:
-        for line in f:
-          if line.startswith("## Version:"):
-            version = line.split(":", 1)[1].strip()
-            break  # Found the version, no need to read further
-    except FileNotFoundError:
-      print(f"Warning: TOC file not found at {filepath}")
-      # Keep version as None
-    except Exception as e:
-      print(f"Warning: Error reading {filepath}: {e}")
-      # Keep version as None
-    versions[key] = version
-  return versions
-
-
-def validate_same_version(versions):
-  """Checks if all version values in the dictionary are the same."""
-  if not versions:
-    return True  # Or False, depending on desired behavior for empty input
-
-  # Get all version values, filtering out None in case a file is missing or lacks the version line
-  version_values = [v for v in versions.values() if v is not None]
-
-  # If there are no valid versions or only one, they are considered the same
-  if len(version_values) <= 1:
-    return True
-
-  # Check if all valid version values are identical by comparing them to the first one
-  first_version = version_values[0]
-  return all(v == first_version for v in version_values)
-
-
-def get_versionstring_from_toc():
-  versions = get_versions_from_toc()
-  if validate_same_version(versions):
-    return versions["classic"]
-  else:
-    raise Exception("Version mismatch")
-
-
 def export_version_github_actions(versions):
   if "GITHUB_ACTIONS" in os.environ and os.environ["GITHUB_ACTIONS"] == "true":
     print("::set-output name=toc_version::" + get_versionstring_from_toc())
-    versions = get_versions_from_toc()
+    versions = get_versions_from_toc(".")
     split_version = versions["classic"].split(".")
     print("::set-output name=major_toc_version::" + split_version[0])
     print("::set-output name=minor_toc_version::" + split_version[1])
     print("::set-output name=patch_toc_version::" + split_version[2])
+
+
+def get_versionstring_from_toc():
+  versions = get_versions_from_toc(".")
+  if validate_same_version(versions):
+    return versions["classic"]
+  else:
+    raise Exception("Version mismatch")
 
 
 def main():
@@ -164,7 +130,7 @@ def main():
     print(f"Copying files to build directory '{build_dir}'...")
     copy_files(".", build_dir)
     # If we are in github actions we output the toc version
-    versions = get_versions_from_toc()
+    versions = get_versions_from_toc(".")
     export_version_github_actions(versions)
 
     if "GITHUB_SHA" in os.environ and os.environ["GITHUB_SHA"] and len(os.environ["GITHUB_SHA"]) >= 7:
@@ -188,7 +154,7 @@ def main():
     print("Done")
   elif command == "version":
     # If we are in github actions we output the toc version
-    versions = get_versions_from_toc()
+    versions = get_versions_from_toc(".")
     export_version_github_actions(versions)
 
     print(json.dumps(get_versionstring_from_toc(), ensure_ascii=False))
