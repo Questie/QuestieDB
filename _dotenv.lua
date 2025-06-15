@@ -1,3 +1,8 @@
+if not C_BattleNet then
+  print("|cFFff0000" .. "C_BattleNet is not available, _dotenv.lua cannot load developer environment variables.")
+  return
+end
+
 ---@class LibQuestieDB
 local LibQuestieDB = select(2, ...)
 local dat = C_BattleNet.GetAccountInfoByID(select(3, BNGetInfo()))
