@@ -235,6 +235,21 @@ function DumpDatabase(questiedb_version, questie_version, debug)
 
   -- Process L10n Data: Load raw DB, load static corrections, merge corrections into raw data.
   do
+    -- Get all ids for all entity types
+    local idTable = {}
+    for id in pairs(itemOverride) do
+      idTable[id] = true
+    end
+    for id in pairs(npcOverride) do
+      idTable[id] = true
+    end
+    for id in pairs(objectOverride) do
+      idTable[id] = true
+    end
+    for id in pairs(questOverride) do
+      idTable[id] = true
+    end
+
     -- ? l10n dump
     print("Loading version: " .. questie_version)
     for datatype in pairs(Meta.L10nMeta.l10nKeys) do
@@ -371,6 +386,37 @@ function DumpDatabase(questiedb_version, questie_version, debug)
           ---@type table<number, any>
           local lookup_data = lookup[locale]()                       -- Execute the function to get the table
           l10n[entityType:lower() .. "Lookup"][locale] = lookup_data -- Store the loaded table back
+
+
+          -- Remove all ids from locale data that are not in the idTable
+          print(rep(" ", 2) .. "Filtering " .. entityType .. " lookup for locale: " .. locale .. " to only include ids that we have data for")
+
+          local removedIds = 0
+          for entityId in pairs(lookup_data) do
+            if not idTable[entityId] then
+              -- Remove the entry from the lookup data
+              lookup_data[entityId] = nil
+              removedIds = removedIds + 1
+            end
+          end
+
+          print(rep(" ", 6) .. "Removed " .. removedIds .. " ids from " .. entityType .. " lookup for locale: " .. locale)
+
+          -- Sort Mangos IDs for deterministic processing
+          local skippedIds = 0
+          ---@type number[]
+          local sorted_ids = {}
+          ---@param entityId number
+          for entityId in pairs(mangos_item) do
+            if idTable[entityId] then
+              table.insert(sorted_ids, entityId)
+            else
+              skippedIds = skippedIds + 1
+            end
+          end
+          table.sort(sorted_ids) -- Simple numeric sort
+          print(rep(" ", 6) .. "Skipped " .. skippedIds .. " ids from " .. entityType .. " lookup for locale: " .. locale)
+
 
           -- Sort Mangos IDs for deterministic processing
           ---@type number[]
