@@ -299,6 +299,8 @@ local function Pick_Cache_Function(func, setting)
     return DevTools_Cache_Nil;
   end
 end
+
+---@package
 function DevTools_RunDump(value, context)
   local prefix = "";
   local firstPrefix = prefix;
@@ -336,6 +338,7 @@ function DevTools_Dump(value, startKey)
   DevTools_RunDump(value, context);
 end
 
+---@package
 function DevTools_DumpCommand(msg, editBox)
   if (string_match(msg, "^[A-Za-z_][A-Za-z0-9_]*$")) then
     WriteMessage("Dump: " .. msg);
