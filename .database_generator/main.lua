@@ -46,19 +46,16 @@ require(".createStatic")
 DB_GEN_DEBUG_MODE = false
 
 
--- Main function to demonstrate the usage of helper functions
-local function main()
-  -- for expansion, local_prefix in pairs(Expansions) do
-  for _, exp_data in ipairs(helpers.Expansions) do
-    local questie_prefix_expansion, local_prefix_expansion = unpack(exp_data)
-    local capitalized_expansion = local_prefix_expansion:sub(1, 1):upper() .. local_prefix_expansion:sub(2)
-    DumpDatabase(capitalized_expansion, questie_prefix_expansion, DB_GEN_DEBUG_MODE)
-  end
-end
 
 
 require("cli.Addon_Meta")
 
+-- Find the addon name
+local addon_name = helpers.find_addon_name()
+print("Addon Name: " .. addon_name)
+
+
+------ * Get custom string translations from Questie * -------
 -- ? This code makes it so that all ImportModule("l10n") gets redirected to the same table.
 local translations = {}
 QuestieLoader = {
@@ -67,7 +64,7 @@ QuestieLoader = {
   end,
 }
 
--- ? Load all the tables.
+-- ? Load all the translation tables.
 CLI_Helpers.loadXML(helpers.get_project_dir_path() .. "/.database_generator/Questie-data/Localization/Translations/Translations.xml")
 
 
@@ -75,7 +72,6 @@ local single_translation = {}
 for key, value in pairs(translations) do
   table.insert(single_translation, key)
 end
-
 
 ---comment
 ---@param enUStext string
@@ -89,9 +85,6 @@ local function getTranslation(enUStext)
   end
 end
 
--- Find the addon name
-local addon_name = helpers.find_addon_name()
-print("Addon Name: " .. addon_name)
 
 ---@type profile
 local profile
@@ -105,8 +98,17 @@ end
 require("generateTranslations")
 Compile_translations_to_html(single_translation, addon_name, getTranslation)
 
--- Run the main function
-main()
+------ * End of custom string translations * -------
+
+
+-- * Dump the database
+-- for expansion, local_prefix in pairs(Expansions) do
+for _, exp_data in ipairs(helpers.Expansions) do
+  local questie_prefix_expansion, local_prefix_expansion = unpack(exp_data)
+  local capitalized_expansion = local_prefix_expansion:sub(1, 1):upper() .. local_prefix_expansion:sub(2)
+  DumpDatabase(capitalized_expansion, questie_prefix_expansion, DB_GEN_DEBUG_MODE)
+end
+
 
 if profile then
   profile.stop()
