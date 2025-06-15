@@ -359,21 +359,21 @@ local test_names_ordered = {}
 ---@param index number
 local function run_next_test(index)
   if index > #test_names_ordered then
-    original_print("----------------------------------------------------")
-    original_print(string.format("All %d tests completed.", #test_names_ordered))
-    original_print(string.format("Assertions: %d made, %d failed.", assertions_made, assertions_failed))
-    original_print("----------------------------------------------------")
+    -- original_print("----------------------------------------------------")
+    original_print(string.format("  All %d tests completed.", #test_names_ordered))
+    original_print(string.format("  Assertions: %d made, %d failed.", assertions_made, assertions_failed))
+    -- original_print("----------------------------------------------------")
     if assertions_failed > 0 then
-      original_print(string.format("WARNING: %d assertion(s) FAILED!", assertions_failed))
-    else
-      original_print("All tests passed successfully!")
+      original_print(string.format("  WARNING: %d assertion(s) FAILED!", assertions_failed))
+      -- else
+      --   original_print("All tests passed successfully!")
     end
     restore_test_environment()
     return
   end
 
   current_test_name = test_names_ordered[index]
-  original_print(string.format("Running test [%d/%d]: %s", index, #test_names_ordered, current_test_name))
+  -- original_print(string.format("Running test [%d/%d]: %s", index, #test_names_ordered, current_test_name))
 
   local test_func = tests[current_test_name]
   if type(test_func) == "function" then
@@ -419,7 +419,6 @@ function LibQuestieDB.QuestieDB_Defer_RunTests()
 end
 
 C_Timer.After(1, function()
-  print("QuestieDB Defer Test Suite is starting...")
   if LibQuestieDB.Database.debugEnabled and LibQuestieDB.Database.debugPrintEnabled then
     -- TODO: Add a settings panel where all the test outputs are printed to.
     LibQuestieDB.QuestieDB_Defer_RunTests()
