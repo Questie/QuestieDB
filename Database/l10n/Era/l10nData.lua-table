@@ -11799,7 +11799,7 @@
   { -- Quest
     'Que a sorte esteja contigo‡Да пребудет с тобой удача!‡Das Glück sei mit Euch‡행운이 함께하기를‡Que la suerte sea contigo‡Que la suerte sea contigo‡Que la chance soit avec vous‡祝你好运‡祝妳好運',
     nil,
-    'Colete 10 Lascas de Friomalho para Mandingueira Mau\'ari, em Visteterna.‡Соберите 10 кристаллов великанов Ледяного Молота для знахарки Мау\'ари из Круговзора.‡Sammelt 10 Frosthagelsplitter für die Hexendoktorin Mau\'ari in Everlook.‡눈망루 마을의 의술사 마우아리에게 서리망치거인조각 10개를 가져가야 합니다.‡Recoge 10 esquirlas de machacahielo para la médica bruja Mau\'ari en Vista Eterna.‡Recoge 4 esquirlas de Machacahielo para la médica bruja Mau\'ari de Vista Eterna.‡Collecter 10 Eclats cognegivre pour le sorcier-docteur Mau\'ari à Long-guet.‡收集10块霜槌碎片，把它们交给永望镇的巫医玛艾里。‡收集10塊霜槌碎片，把它們交給永望鎮的巫醫瑪艾裏。',
+    'Colete 10 Lascas de Friomalho para Mandingueira Mau\'ari, em Visteterna.‡Соберите 10 кристаллов великанов Ледяного Молота для знахарки Мау\'ари из Круговзора.‡Sammelt 10 Frosthagelsplitter für die Hexendoktorin Mau\'ari in Everlook.‡눈망루 마을의 의술사 마우아리에게 서리망치거인조각 10개를 가져가야 합니다.‡Recoge 10 esquirlas de machacahielo para la médica bruja Mau\'ari en Vista Eterna.‡Recoge 10 esquirlas de machacahielo para la médica bruja Mau\'ari en Vista Eterna.‡Collecter 10 Eclats cognegivre pour le sorcier-docteur Mau\'ari à Long-guet.‡收集10块霜槌碎片，把它们交给永望镇的巫医玛艾里。‡收集10塊霜槌碎片，把它們交給永望鎮的巫醫瑪艾裏。',
   }
 },
 [970] = {
@@ -31931,8 +31931,8 @@
   -- Item
   '‡Посылка для Грозовой Вершины‡Päckchen für Sturmlanze‡스톰파이크의 소포‡Paquete para Pico Tormenta‡Paquete para Pico Tormenta‡Paquet pour Foudrepique‡给卡尔·雷矛的包裹‡給雷矛的包裹',
   { -- Npc
-    'Fardo‡Тюкн‡Bale‡베일‡Bale‡Bale‡Bale‡拜尔‡拜爾',
-    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Víveres‡Fournitures générales‡杂货商‡雜貨商',
+    'Fardo‡Тюкн‡Bale‡베일‡Bale‡Fardo‡Bale‡拜尔‡拜爾',
+    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Pertrechos‡Fournitures générales‡杂货商‡雜貨商',
   },
   nil,
   nil
@@ -32991,7 +32991,7 @@
   '‡Клинок-шип‡Dornenklinge‡뾰족칼‡Espada espinada‡Espada espinada‡Lame-épine‡荆棘之刃‡荊棘之刃',
   { -- Npc
     'Rosnado‡Граул‡Grawl‡그롤‡Graul‡Graul‡Grawl‡格劳尔‡格勞爾',
-    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Víveres‡Fournitures générales‡杂货商‡雜貨商',
+    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Pertrechos‡Fournitures générales‡杂货商‡雜貨商',
   },
   -- Object
   'Caixote de Suprimentos Lacrado‡Запечатанный ящик с припасами‡Versiegelte Vorratskiste‡도장 찍힌 보급상자‡Cajón de provisiones sellado‡Cajón de suministros sellado‡Caisse de ravitaillements scellée‡密封的补给箱‡密封的補給木箱',
@@ -34381,7 +34381,7 @@
   -- Item
   '‡Благородное одеяние‡Adligenrobe‡귀족의 로브‡Toga de noble‡Toga de noble‡Robe noble‡贵族长袍‡貴族長袍',
   { -- Npc
-    'Delgo Totem da Fúria‡Дельго Тотем Гнева‡Delgo Ragetotem‡델고 레이지토템‡Delgo Furiatótem‡Delgo Furiatótem‡Delgo Ragetotem‡德尔贡·狂暴图腾‡德爾貢·狂暴圖騰',
+    'Delgo Totem da Fúria‡Дельго Тотем Гнева‡Delgo Ragetotem‡델고 레이지토템‡Delgo Furiatótem‡Delgo Tótem de Ira‡Delgo Ragetotem‡德尔贡·狂暴图腾‡德爾貢·狂暴圖騰',
     'Machados‡Торговец топорами‡Axthändler‡도끼 상인‡Mercader de hachas‡Mercader de hachas‡Marchand de haches‡斧商‡斧商',
   },
   nil,
@@ -34391,7 +34391,7 @@
   -- Item
   '‡Шапка терпения‡Ausdauernde Kappe‡인내의 모자‡Almete duradero‡Almete duradero‡Coiffe endurcie‡不朽军帽‡耐久軟帽',
   { -- Npc
-    'Etu Totem da Fúria‡Эту Тотем Гнева‡Etu Ragetotem‡에투 레이지토템‡Etu Furiatótem‡Etu Furiatótem‡Etu Ragetotem‡伊图·狂暴图腾‡伊圖·狂暴圖騰',
+    'Etu Totem da Fúria‡Эту Тотем Гнева‡Etu Ragetotem‡에투 레이지토템‡Etu Furiatótem‡Etu Tótem de Ira‡Etu Ragetotem‡伊图·狂暴图腾‡伊圖·狂暴圖騰',
     'Maças e Cajados‡Торговец булавами и посохами‡Streitkolben- und Stabhändler‡둔기 및 지팡이 상인‡Mercader de mazas y bastones‡Mercader de mazas y bastones‡Marchand de masses & bâtons‡锤和法杖商人‡錘和法杖商人',
   },
   nil,
@@ -34401,7 +34401,7 @@
   -- Item
   '‡Лук следопыта‡Waldläuferbogen‡순찰자의 활‡Arco de forestal‡Arco de forestal‡Arc de forestier‡游侠之弓‡遊俠之弓',
   { -- Npc
-    'Kard Totem da Fúria‡Кард Тотем Гнева‡Kard Ragetotem‡카드 레이지토템‡Kard Furiatótem‡Kard Furiatótem‡Kard Ragetotem‡卡德·狂暴图腾‡卡德·狂暴圖騰',
+    'Kard Totem da Fúria‡Кард Тотем Гнева‡Kard Ragetotem‡카드 레이지토템‡Kard Furiatótem‡Kard Tótem de Ira‡Kard Ragetotem‡卡德·狂暴图腾‡卡德·狂暴圖騰',
     'Espadas e Adagas‡Торговец мечами и кинжалами‡Schwert- und Dolchhändler‡검과 단검 상인‡Mercader de espadas y puñales‡Mercader de espadas y puñales‡Marchand d\'épées et dagues‡剑和匕首商人‡劍和匕首商人',
   },
   nil,
@@ -34411,7 +34411,7 @@
   -- Item
   '‡Брюки Синежабрых‡Bundhose der Blaukiemen‡푸른아가미일족 반바지‡Calzones de Branquiazul‡Calzones de Branquiazul‡Braies branchie-bleue‡蓝腮长裤‡藍鰓長褲',
   { -- Npc
-    'Sunn Totem da Fúria‡Сунна Тотем Гнева‡Sunn Ragetotem‡순 레이지토템‡Sunn Furiatótem‡Sunn Furiatótem‡Sunn Ragetotem‡苏恩·狂暴图腾‡蘇恩·狂暴圖騰',
+    'Sunn Totem da Fúria‡Сунна Тотем Гнева‡Sunn Ragetotem‡순 레이지토템‡Sunn Furiatótem‡Sunn Tótem de Ira‡Sunn Ragetotem‡苏恩·狂暴图腾‡蘇恩·狂暴圖騰',
     'Cajados‡Торговец посохами‡Stabhändlerin‡지팡이 상인‡Mercader de bastones‡Mercader de bastones‡Marchand de bâtons‡法杖商‡法杖商',
   },
   nil,
@@ -36016,7 +36016,7 @@
   'Coração Descolorido de Worg‡Обесцвеченное сердце ворга‡Verfärbtes Worgherz‡변색된 검은늑대 심장‡Corazón de huargo descolorido‡Corazón de huargo descolorido‡Coeur de worg décoloré‡变色的狼心‡變色的狼心',
   { -- Npc
     'Jark‡Джарк‡Jark‡자르크‡Jark‡Jark‡Jark‡加尔克‡加爾克',
-    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Víveres‡Fournitures générales‡杂货商‡雜貨商',
+    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Pertrechos‡Fournitures générales‡杂货商‡雜貨商',
   },
   nil,
   nil
@@ -45065,7 +45065,7 @@
   { -- Quest
     'A princesa foi resgatada?‡Спасенная принцесса‡Ist die Prinzessin gerettet?‡구출된 공주?‡¿Princesa salvada?‡¿Princesa salvada?‡La Princesse sauvée ?‡拯救公主？‡拯救公主？',
     nil,
-    'Fale novamente com Thrall!‡Вернитесь к Траллу.‡Kehrt zu Thrall zurück!‡스랄에게 돌아가야 합니다!‡¡Vuelve junto a Thrall!‡Vuelve junto a Thrall en el Fuerte Grommash en Orgrimmar.‡Retourner voir Thrall !‡向萨尔报告！‡向薩爾報告！',
+    'Fale novamente com Thrall!‡Вернитесь к Траллу.‡Kehrt zu Thrall zurück!‡스랄에게 돌아가야 합니다!‡¡Vuelve junto a Thrall!‡¡Vuelve con Thrall!‡Retourner voir Thrall !‡向萨尔报告！‡向薩爾報告！',
   }
 },
 [4005] = {
@@ -46089,7 +46089,7 @@
   -- Object
   '‡Перекресток‡Das Wegekreuz‡십자로‡El Cruce‡El Cruce‡La Croisée‡十字路口‡十字路口',
   { -- Quest
-    'Purificar Selva Maleva‡Очищение Оскверненного леса‡Den Teufelswald säubern‡악령의 숲 정화‡Limpiar Frondavil‡Limpiar Frondavil‡Purifie Gangrebois‡净化费伍德‡凈化費伍德',
+    'Purificar Selva Maleva‡Очищение Оскверненного леса‡Den Teufelswald säubern‡악령의 숲 정화‡Limpiar Frondavil‡Purificación de Frondavil‡Purifie Gangrebois‡净化费伍德‡凈化費伍德',
     nil,
     'Leve 15 Âmbares de Sangue para Arathandris Argencélio na Selva Maleva.‡Принесите 15 кровавых янтарей Аратандис Серебряному Небу в Оскверненный лес.‡Bringt 15 Einheiten Blutharz zu Arathandris Silversky im Teufelswald.‡악령의 숲에 있는 아라탄드리스 실버스카이에게 핏빛 호박석 15개를 가져가야 합니다.‡Lleva 15 unidades de sangre ámbar a Arathandris Cielargente a Frondavil.‡Lleva 15 unidades de ámbar de sangre a Arathandris Cielargento a Frondavil.‡Apporter 15 Ambres de sang à Arathandris Silversky à Gangrebois.‡收集15颗血琥珀，把它们交给费伍德森林的阿拉珊蒂丝·银空。‡收集15顆血琥珀，把它們交給費伍德森林的阿拉珊蒂絲·銀空。',
   }
@@ -46101,9 +46101,9 @@
   -- Object
   '‡Перекресток‡Das Wegekreuz‡십자로‡El Cruce‡El Cruce‡La Croisée‡十字路口‡十字路口',
   { -- Quest
-    'Purificar Selva Maleva‡Очищение Оскверненного леса‡Den Teufelswald säubern‡악령의 숲 정화‡Purificación de Frondavil‡Limpiar Frondavil‡Purifie Gangrebois‡净化费伍德‡凈化費伍德',
+    'Purificar Selva Maleva‡Очищение Оскверненного леса‡Den Teufelswald säubern‡악령의 숲 정화‡Limpiar Frondavil‡Purificación de Frondavil‡Purifie Gangrebois‡净化费伍德‡凈化費伍德',
     nil,
-    'Leve 15 Âmbares de Sangue para Maibess Brisa do Rio em Selva Maleva.‡Принесите 15 кровавых янтарей Майбессе Речному Ветру в Оскверненный лес.‡Bringt 15 Einheiten Blutharz zu Maybess Riverbreeze im Teufelswald.‡악령의 숲에 있는 메이베스 리버브리즈에게 핏빛 호박석 15개를 가져가야 합니다.‡Lleva 15 unidades de ámbar de sangre a Maybess Brisa de Río a Frondavil.‡Lleva 15 unidades de ámbar de sangre a Maybess Brisa de Río a Frondavil.‡Apporter 15 Ambres de sang à Maybess Riverbreeze à Gangrebois.‡收集15颗血琥珀，把它们交给费伍德森林的梅贝丝·河风。‡收集15顆血琥珀，把它們交給費伍德森林的梅貝絲·河風。',
+    'Leve 15 Âmbares de Sangue para Maibess Brisa do Rio em Selva Maleva.‡Принесите 15 кровавых янтарей Майбессе Речному Ветру в Оскверненный лес.‡Bringt 15 Einheiten Blutharz zu Maybess Riverbreeze im Teufelswald.‡악령의 숲에 있는 메이베스 리버브리즈에게 핏빛 호박석 15개를 가져가야 합니다.‡Lleva 15 unidades de sangre ámbar a Maybess Brisafluvial a Frondavil.‡Lleva 15 unidades de ámbar de sangre a Maybess Brisa de Río a Frondavil.‡Apporter 15 Ambres de sang à Maybess Riverbreeze à Gangrebois.‡收集15颗血琥珀，把它们交给费伍德森林的梅贝丝·河风。‡收集15顆血琥珀，把它們交給費伍德森林的梅貝絲·河風。',
   }
 },
 [4103] = {
@@ -46705,7 +46705,7 @@
   nil,
   nil,
   { -- Quest
-    'Fulminadora de Pétala Sangrenta‡Антикровоцветный шокер‡Blutblütenschrumpfer‡붉은꽃잎 구제장치‡Liquidador de pétalos de sangre‡Liquidador de Sangrepétalo‡La baguette Pétale-de-sang‡血瓣花除草器‡血瓣花除草器',
+    'Fulminadora de Pétala Sangrenta‡Антикровоцветный шокер‡Blutblütenschrumpfer‡붉은꽃잎 구제장치‡Liquidador de pétalos de sangre‡Liquidador de pétalos de sangre‡La baguette Pétale-de-sang‡血瓣花除草器‡血瓣花除草器',
     nil,
     nil,
   }
@@ -48321,7 +48321,7 @@
   { -- Quest
     'Tabuletas dos Sete‡Табличка Семерых‡Schrifttafel der Sieben‡일곱 현자의 서판‡La tablilla de los Siete‡La tablilla de los Siete‡Tablette des Sept‡七贤石板‡七賢石板',
     nil,
-    'Leve a Transcrição de Tabuleta para Maxwort Uberraio nas Estepes Ardentes.‡Принесите переписанный с таблички текст Максворту Суперблеску в Пылающие степи.‡Bringt Maxwort Uberglint in der brennenden Steppe die Abschrift der Schrifttafel.‡불타는 평원에 있는 맥스워트 우버글린트에게 서판 사본을 가져가야 합니다.‡Llévale la transcripción de la tablilla a Maxwort Suprandor en Las Estepas Ardientes.‡Obtén la transcripción de tablilla.‡Apporter la Transcription de la tablette à Maxwort Uberglint dans les Steppes ardentes.‡把石板拓文交给燃烧平原的麦克斯沃特·尤博格林。‡把石板拓文交給燃燒平原的麥克斯沃特·尤博格林。',
+    'Leve a Transcrição de Tabuleta para Maxwort Uberraio nas Estepes Ardentes.‡Принесите переписанный с таблички текст Максворту Суперблеску в Пылающие степи.‡Bringt Maxwort Uberglint in der brennenden Steppe die Abschrift der Schrifttafel.‡불타는 평원에 있는 맥스워트 우버글린트에게 서판 사본을 가져가야 합니다.‡Llévale la transcripción de la tablilla a Maxwort Suprandor en Las Estepas Ardientes.‡Lleva la trascripción de tablilla a Maxwort Suprandor en las Estepas Ardientes.‡Apporter la Transcription de la tablette à Maxwort Uberglint dans les Steppes ardentes.‡把石板拓文交给燃烧平原的麦克斯沃特·尤博格林。‡把石板拓文交給燃燒平原的麥克斯沃特·尤博格林。',
   }
 },
 [4297] = {
@@ -50464,7 +50464,7 @@
   { -- Quest
     'Cuidado com os pterrordaxes‡Осторожно, злой жутедактиль‡Vorsicht, Pterrordax!‡테러닥스 주의‡Cuidado con los pterrordáctilos‡Cuidado con los pterrordáctilos‡Attention aux pterreurdactyles‡当心翼手龙‡當心翼手龍',
     nil,
-    'Mate 10 Pterrordaxes e 15 Pterrordaxes Frenéticos, então fale com Espraga Froque no Refúgio do Marshal.‡Убейте 10 жутедактилей и 15 бесноватых жутедактилей, затем поговорите со Мучей Кусора в Укрытии Маршалла.‡Tötet 10 Pterrordax und 15 rasende Pterrordax und sprecht dann mit Spraggle Frock in Marshals Zuflucht.‡테러닥스 10마리와 광포한 테러닥스 15마리를 처치한 후 마샬의 야영지에 있는 스프래글 프록과 대화해야 합니다.‡Mata a 10 Pterrordáctilos y a 15 Pterrordáctilos dementes. Cuando lo hayas hecho habla con Spraggle Habitus en el Refugio de Marshal.‡Mata a 10 pterrordáctilos demenciados. Cuando lo hayas hecho habla con Spraggle Frock en el Refugio de Marshal.‡Tuer 10 Pterreurdactyles et 15 Pterreurdactyles frénétiques, puis parler à Spraggle Frock, au refuge des Marshal.‡杀掉10只翼手龙和15只狂怒的翼手龙，然后向马绍尔营地的斯普拉格·弗劳克报告。‡殺掉10只翼手龍和15只狂怒的翼手龍，然後向馬紹爾營地的斯普拉格·弗勞克報告。',
+    'Mate 10 Pterrordaxes e 15 Pterrordaxes Frenéticos, então fale com Espraga Froque no Refúgio do Marshal.‡Убейте 10 жутедактилей и 15 бесноватых жутедактилей, затем поговорите со Мучей Кусора в Укрытии Маршалла.‡Tötet 10 Pterrordax und 15 rasende Pterrordax und sprecht dann mit Spraggle Frock in Marshals Zuflucht.‡테러닥스 10마리와 광포한 테러닥스 15마리를 처치한 후 마샬의 야영지에 있는 스프래글 프록과 대화해야 합니다.‡Mata a 10 Pterrordáctilos y a 15 Pterrordáctilos dementes. Cuando lo hayas hecho habla con Spraggle Habitus en el Refugio de Marshal.‡Mata a 10 pterrordáctilos y 15 pterrordáctilos demenciados, y habla con Spraggle Frock en Refugio de Marshal.‡Tuer 10 Pterreurdactyles et 15 Pterreurdactyles frénétiques, puis parler à Spraggle Frock, au refuge des Marshal.‡杀掉10只翼手龙和15只狂怒的翼手龙，然后向马绍尔营地的斯普拉格·弗劳克报告。‡殺掉10只翼手龍和15只狂怒的翼手龍，然後向馬紹爾營地的斯普拉格·弗勞克報告。',
   }
 },
 [4502] = {
@@ -50518,7 +50518,7 @@
   },
   nil,
   { -- Quest
-    'Poço da Corrupção‡Источник порчи‡Brunnen der Verderbnis‡오염된 달샘‡El pozo de la corrupción‡El pozo de la corrupción‡Puits de la corruption‡腐化之井‡腐化之井',
+    'Poço da Corrupção‡Источник порчи‡Brunnen der Verderbnis‡오염된 달샘‡El pozo de la corrupción‡Pozo de corrupción‡Puits de la corruption‡腐化之井‡腐化之井',
     nil,
     'Colete uma amostra de água corrompida do poço lunar dos Sátiros Flamejade e leve-a para Winna Perícon no Posto Peçonha.‡Принесите образец оскверненной воды из лунного колодца сатиров Нефритового Пламени Винне Хеззард на Заставу Отравленной Крови.‡Beschafft eine Probe verderbten Wassers vom Mondbrunnen der Jadefeuersatyrn und bringt sie zu Winna Hazzard am Blutgiftposten.‡비취불꽃의 사티로스가 지키는 달샘에서 오염된 물 견본을 채취하여 피멍울 초소에 있는 위나 해저드에게 가져가야 합니다.‡Recoge una muestra de agua corrupta de la Poza de la Luna de los sátiros Fuego de Jade y llévasela a Winna Hazzard al Puesto del Veneno.‡Recoge una muestra de agua corrupta de la Poza de la Luna de los sátiros Fuego de Jade y llévasela a Winna Riessgo al Puesto del Veneno.‡Collecter un échantillon d’eau corrompue dans le Puits de lune des satyres Jadefeu, puis le rapporter à Winna Hazzard, au Poste de la Vénéneuse.‡从碧火萨特的月亮井中收集一份被腐化的水的样本，把它交给血毒哨所的温娜·哈萨德。‡從碧火薩特的月亮井中收集壹份被腐化的水的樣本，把它交給血毒哨所的溫娜·哈薩德。',
   }
@@ -50532,9 +50532,9 @@
   },
   nil,
   { -- Quest
-    'Dentes-de-sabre corrompidos‡Зараженные саблезубы‡Verderbte Säbler‡오염된 고양이‡Dientes de sable corruptos‡Dientes de sable corruptos‡Sabres corrompus‡被腐蚀的猫‡被腐蝕的貓',
+    'Dentes-de-sabre corrompidos‡Зараженные саблезубы‡Verderbte Säbler‡오염된 고양이‡Dientes de sable corruptos‡Sables corruptos‡Sabres corrompus‡被腐蚀的猫‡被腐蝕的貓',
     nil,
-    'Leve o gatinho de Winna para o poço lunar corrompido, solte-o e depois o leve de volta para Winna.|nQuando retornar, clique no gato para deixá-lo com Winna.‡Отнесите котенка Винны к оскверненному лунному колодцу, выпустите его, затем снова принесите Винне.|nКак только вернетесь к Винне, щелкните мышкой по котенку, чтобы выпустить его.‡Bringt Winnas Kätzchen zum verderbten Mondbrunnen, lasst es dort frei und bringt es dann wieder zu Winna zurück.|nSobald Ihr wieder bei Winna seid, klickt auf die Katze, um sie Winna zu übergeben.‡위나의 고양이를 오염된 달샘으로 데려가서 풀어 준 다음 위나에게 다시 데려가야 합니다.|n위나에게로 데려간 후 클릭하면 위나에게 돌아갈 것입니다.‡Lleva el gatito de Winna a la poza de la luna corrupta, libéralo allí y luego llévaselo a Winna.|nCuando hayas vuelto con Winna, haz clic en el felino para dárselo.‡Lleva el gatito de Winna a la Poza de la Luna corrupta, libéralo allí y luego llévaselo a Winna.|nCuando hayas vuelto con Winna, haz clic en el felino para dárselo.‡Amener le chaton de Winna au Puits de lune corrompu, le relâcher, puis le rapporter à Winna.|nUne fois de retour auprès de Winna, cliquer sur le chat pour le lui rendre.‡把温娜的小猫带到堕落的月亮井旁边，把猫放出来，然后把它还给温娜。|n当你回到温娜那里之后，点击猫就可以将它还给温娜。‡把溫娜的小貓帶到墮落的月亮井旁邊，把貓放出來，然後把它還給溫娜。|n當妳回到溫娜那裏之後，點擊貓就可以將它還給溫娜。',
+    'Leve o gatinho de Winna para o poço lunar corrompido, solte-o e depois o leve de volta para Winna.|nQuando retornar, clique no gato para deixá-lo com Winna.‡Отнесите котенка Винны к оскверненному лунному колодцу, выпустите его, затем снова принесите Винне.|nКак только вернетесь к Винне, щелкните мышкой по котенку, чтобы выпустить его.‡Bringt Winnas Kätzchen zum verderbten Mondbrunnen, lasst es dort frei und bringt es dann wieder zu Winna zurück.|nSobald Ihr wieder bei Winna seid, klickt auf die Katze, um sie Winna zu übergeben.‡위나의 고양이를 오염된 달샘으로 데려가서 풀어 준 다음 위나에게 다시 데려가야 합니다.|n위나에게로 데려간 후 클릭하면 위나에게 돌아갈 것입니다.‡Lleva el gatito de Winna a la poza de la luna corrupta, libéralo allí y luego llévaselo a Winna.|nCuando hayas vuelto con Winna, haz clic en el felino para dárselo.‡Lleva el gatito de Winna a la poza de la luna corrupta, libéralo y llévaselo de nuevo a Winna.|nHaz clic en el gato para liberarlo y devolvérselo a Winna cuando estés cerca de ella.‡Amener le chaton de Winna au Puits de lune corrompu, le relâcher, puis le rapporter à Winna.|nUne fois de retour auprès de Winna, cliquer sur le chat pour le lui rendre.‡把温娜的小猫带到堕落的月亮井旁边，把猫放出来，然后把它还给温娜。|n当你回到温娜那里之后，点击猫就可以将它还给温娜。‡把溫娜的小貓帶到墮落的月亮井旁邊，把貓放出來，然後把它還給溫娜。|n當妳回到溫娜那裏之後，點擊貓就可以將它還給溫娜。',
   }
 },
 [4507] = {
@@ -52892,7 +52892,7 @@
   { -- Quest
     'Congelar os ovos‡Заморозка яйца‡Ei-Frosten‡알껍질 냉동‡Un huevo congelado‡Un huevo congelado‡Un oeuf congelé‡冷冻龙蛋‡冷凍龍蛋',
     nil,
-    'Use o Protótipo de Ovosciloscópio em um ovo no Viveiro.‡Испытайте прототип яйцехладоскопа на одном из яиц в Гнездовье.‡Benutzt den Prototyp des Eiszilloskops an einem Ei im Horst.‡알껍질급속냉각기 견본을 둥지에 있는 알에 사용해야 합니다.‡Usa el prototipo de ovosciloscopio sobre un huevo de El Grajero.‡Usa el prototipo de ovosciloscopio sobre un huevo de El Grajero, en la Cumbre de Roca Negra.‡Utiliser le Prototype d\'Oeufilloscope sur un oeuf dans la Colonie.‡在孵化间对着某颗龙蛋使用龙蛋冷冻器初号机。‡在孵化間對著某顆龍蛋使用龍蛋冷凍器初號機。',
+    'Use o Protótipo de Ovosciloscópio em um ovo no Viveiro.‡Испытайте прототип яйцехладоскопа на одном из яиц в Гнездовье.‡Benutzt den Prototyp des Eiszilloskops an einem Ei im Horst.‡알껍질급속냉각기 견본을 둥지에 있는 알에 사용해야 합니다.‡Usa el prototipo de ovosciloscopio sobre un huevo de El Grajero.‡Usa el prototipo de ovosciloscopio en un huevo del Grajero.‡Utiliser le Prototype d\'Oeufilloscope sur un oeuf dans la Colonie.‡在孵化间对着某颗龙蛋使用龙蛋冷冻器初号机。‡在孵化間對著某顆龍蛋使用龍蛋冷凍器初號機。',
   }
 },
 [4735] = {
@@ -53621,7 +53621,7 @@
   { -- Quest
     'Felnok Molaço‡Фелнок Сталлист‡Felnok Steelspring‡펠노크 스틸스프링‡Felnok Acerovera‡Felnok Acerovera‡Felnok Steelspring‡菲诺克‡菲諾克',
     nil,
-    'Leve a Carta de Vera para Felnok Molaço.‡Отнесите письмо Тинки Фелноку Сталлисту.‡Gebt Felnok Steelspring Tinkees Brief.‡팅키의 편지를 펠노크 윈터스프링에게 가져다주어야 합니다.‡Entrégale la carta de Tinkee a Felnok Acerovera.‡Entrégale la carta de Tinkee a Felnok Acerovera en Vista Eterna, en Cuna del Invierno.‡Donner la Lettre de Tinkee à Felnok Steelspring.‡把丁奇的信交给菲诺克。‡把丁奇的信交給菲諾克。',
+    'Leve a Carta de Vera para Felnok Molaço.‡Отнесите письмо Тинки Фелноку Сталлисту.‡Gebt Felnok Steelspring Tinkees Brief.‡팅키의 편지를 펠노크 윈터스프링에게 가져다주어야 합니다.‡Entrégale la carta de Tinkee a Felnok Acerovera.‡Entrega la carta de Tinkee a Felnok Acerovera.‡Donner la Lettre de Tinkee à Felnok Steelspring.‡把丁奇的信交给菲诺克。‡把丁奇的信交給菲諾克。',
   }
 },
 [4809] = {
@@ -53635,7 +53635,7 @@
   { -- Quest
     'Chifres de ventogelante‡Рога стылодыхов‡Hörner der Eiswindschimären‡서리바람 키메라의 뿔‡Cuernos de quimera venfresco‡Cuernos de Orvallo‡Cornes de Noroît‡冰风奇美拉角‡冰風奇美拉角',
     nil,
-    'Leve 8 Chifres Inteiriços de Quimera Ventogelante para Felnok Molaço.‡Принесите 8 безупречных рогов стылодыха Фелноку Сталлисту.‡Bringt Felnok Steelspring 8 unbeschädigte Hörner einer Eiswindschimäre.‡펠노크 윈터스프링에게 온전한 서리바람 키메라의 뿔 8개를 가져가야 합니다.‡Llévale 8 cuernos de quimera venfresco sin fisuras a Felnok Acerovera.‡Reúne 8 cuernos de quimera del Orvallo.‡Apporter 8 Cornes intactes de Noroît à Felnok Steelspring.‡将8支完整的冰风奇美拉角交给菲诺克。‡將8支完整的冰風奇美拉角交給菲諾克。',
+    'Leve 8 Chifres Inteiriços de Quimera Ventogelante para Felnok Molaço.‡Принесите 8 безупречных рогов стылодыха Фелноку Сталлисту.‡Bringt Felnok Steelspring 8 unbeschädigte Hörner einer Eiswindschimäre.‡펠노크 윈터스프링에게 온전한 서리바람 키메라의 뿔 8개를 가져가야 합니다.‡Llévale 8 cuernos de quimera venfresco sin fisuras a Felnok Acerovera.‡Lleva 8 cuernos de Orvallos intactos a Felnok Acerovera.‡Apporter 8 Cornes intactes de Noroît à Felnok Steelspring.‡将8支完整的冰风奇美拉角交给菲诺克。‡將8支完整的冰風奇美拉角交給菲諾克。',
   }
 },
 [4810] = {
@@ -53649,7 +53649,7 @@
   { -- Quest
     'Fale novamente com Vera‡Возвращение к Тинки‡Rückkehr zu Tinkee‡팅키에게 돌아가는 길‡Vuelve con Tinkee‡Regresa junto a Tinkee‡Retourner voir Tinkee‡返回丁奇身边‡返回丁奇身邊',
     nil,
-    'Leve o Pacote do Felnok para Vera Brequim, nas Estepes Ardentes.‡Отнесите ящик Фелнока Тинки Кипеллер в Пылающие степи.‡Bringt Tinkee Steamboil in der brennenden Steppe Felnoks Päckchen.‡불타는 평원의 팅키 스팀보일에게 펠노크의 소포를 가져가야 합니다.‡Llévale el paquete de Felnok a Tinkee Vaporio en Las Estepas Ardientes.‡Llévale el paquete de Felnok a Tinkee Vaporio en el Peñasco Llamarada en Las Estepas Ardientes.‡Apporter le Paquet de Felnok à Tinkee Steamboil dans les Steppes ardentes.‡把菲诺克的包裹交给燃烧平原的丁奇·斯迪波尔。‡把菲諾克的包裹交給燃燒平原的丁奇·斯迪波爾。',
+    'Leve o Pacote do Felnok para Vera Brequim, nas Estepes Ardentes.‡Отнесите ящик Фелнока Тинки Кипеллер в Пылающие степи.‡Bringt Tinkee Steamboil in der brennenden Steppe Felnoks Päckchen.‡불타는 평원의 팅키 스팀보일에게 펠노크의 소포를 가져가야 합니다.‡Llévale el paquete de Felnok a Tinkee Vaporio en Las Estepas Ardientes.‡Llévale la talega de Felnok a Tinkee Vaporio en Las Estepas Ardientes.‡Apporter le Paquet de Felnok à Tinkee Steamboil dans les Steppes ardentes.‡把菲诺克的包裹交给燃烧平原的丁奇·斯迪波尔。‡把菲諾克的包裹交給燃燒平原的丁奇·斯迪波爾。',
   }
 },
 [4811] = {
@@ -54592,7 +54592,7 @@
   { -- Quest
     'Vera Brequim‡Тинки Кипеллер‡Tinkee Steamboil‡팅키 스팀보일‡Tinkee Vaporino‡Tinkee Vaporio‡Tinkee Steamboil‡丁奇·斯迪波尔‡丁奇·斯迪波爾',
     nil,
-    'Fale com Vera Brequim.‡Поговорите с Тинки Кипеллер.‡Sprecht mit Tinkee Steamboil.‡팅키 스팀보일과 대화해야 합니다.‡Habla con Tinkee Vaporio.‡Habla con Tinkee Vaporio en el Peñasco Llamarada, en las Estepas Ardientes.‡Parler à Tinkee Steamboil.‡与丁奇·斯迪波尔谈一谈。‡與丁奇·斯迪波爾談壹談。',
+    'Fale com Vera Brequim.‡Поговорите с Тинки Кипеллер.‡Sprecht mit Tinkee Steamboil.‡팅키 스팀보일과 대화해야 합니다.‡Habla con Tinkee Vaporio.‡Habla con Tinkee Vaporio.‡Parler à Tinkee Steamboil.‡与丁奇·斯迪波尔谈一谈。‡與丁奇·斯迪波爾談壹談。',
   }
 },
 [4908] = {
@@ -55163,7 +55163,7 @@
   { -- Quest
     'É questão de tempo‡Вопрос времени‡Eine Frage der Zeit‡시간 문제‡Una cuestión de tiempo‡Una cuestión de tiempo‡Une question de temps‡时间问题‡時間問題',
     nil,
-    'Use o Deslocador Temporal perto de um dos silos de Andorhal e desencave Parasitas Temporais.|nMate 15 Parasitas Temporais e depois devolva o Deslocador Temporal para Crona na Estalagem Andorhal, que fica nas Terras Pestilentas Ocidentais.‡Воспользуйтесь временным переместителем рядом с одним из амбаров Андорала и найдите временных паразитов.|nУбейте 10 временных паразитов и верните временной переместитель Хроми в таверну Андорала в Западных Чумных землях.‡Benutzt den Temporalversetzer in der Nähe eines der Silos von Andorhal, um die temporalen Parasiten aufzuspüren.|nTötet 15 temporale Parasiten und bringt dann den Temporalversetzer zu Chromie im Gasthaus Andorhal in den Westlichen Pestländern.‡안돌할 저장고 근처에서 시간의 재배열기를 이용해 시간의 기생충들을 찾아내십시오.|n시간의 기생충 15마리를 처치한 후, 서부 역병지대의 안돌할 여관에 있는 크로미에게 시간의 재배열기를 가져가야 합니다.‡Utiliza el desplazador temporal junto a uno de los silos de Andorhal y saca a la luz los parásitos temporales.|nMata a 15 parásitos temporales y devuélvele el desplazador temporal a Chromie en la posada de Andorhal, en las Tierras de la Peste del Oeste.‡Utiliza el desplazador temporal junto a uno de los silos de Andorhal y saca a la luz los parásitos temporales.|nMata a 10 parásitos temporales y devuélvele el desplazador temporal a Cromi en la posada de Andorhal, en las Tierras de la Peste del Oeste.‡Utiliser le Déplaceur temporel à côté de l’un des silos d’Andorhal pour révéler des Parasites temporels.|nTuer 15 Parasites temporels et rapporter le Déplaceur temporel à Chromie, à l’auberge d’Andorhal, dans les Maleterres de l’ouest.‡在安多哈尔的一处仓库附近使用时光置换器，使时光寄生虫现身。|n杀掉15只时光寄生虫，然后将时光置换器还给西瘟疫之地安多哈尔旅店的克罗米。‡在安多哈爾的壹處倉庫附近使用時光置換器，使時光寄生蟲現身。|n殺掉15只時光寄生蟲，然後將時光置換器還給西瘟疫之地安多哈爾旅店的克羅米。',
+    'Use o Deslocador Temporal perto de um dos silos de Andorhal e desencave Parasitas Temporais.|nMate 15 Parasitas Temporais e depois devolva o Deslocador Temporal para Crona na Estalagem Andorhal, que fica nas Terras Pestilentas Ocidentais.‡Воспользуйтесь временным переместителем рядом с одним из амбаров Андорала и найдите временных паразитов.|nУбейте 10 временных паразитов и верните временной переместитель Хроми в таверну Андорала в Западных Чумных землях.‡Benutzt den Temporalversetzer in der Nähe eines der Silos von Andorhal, um die temporalen Parasiten aufzuspüren.|nTötet 15 temporale Parasiten und bringt dann den Temporalversetzer zu Chromie im Gasthaus Andorhal in den Westlichen Pestländern.‡안돌할 저장고 근처에서 시간의 재배열기를 이용해 시간의 기생충들을 찾아내십시오.|n시간의 기생충 15마리를 처치한 후, 서부 역병지대의 안돌할 여관에 있는 크로미에게 시간의 재배열기를 가져가야 합니다.‡Utiliza el desplazador temporal junto a uno de los silos de Andorhal y saca a la luz los parásitos temporales.|nMata a 15 parásitos temporales y devuélvele el desplazador temporal a Chromie en la posada de Andorhal, en las Tierras de la Peste del Oeste.‡Utiliza el desplazador temporal junto a uno de los silos de Andorhal y saca a la luz los parásitos temporales.|nMata a 15 parásitos temporales y devuélvele el desplazador temporal a Cromi en la posada de Andorhal, en las Tierras de la Peste del Oeste.‡Utiliser le Déplaceur temporel à côté de l’un des silos d’Andorhal pour révéler des Parasites temporels.|nTuer 15 Parasites temporels et rapporter le Déplaceur temporel à Chromie, à l’auberge d’Andorhal, dans les Maleterres de l’ouest.‡在安多哈尔的一处仓库附近使用时光置换器，使时光寄生虫现身。|n杀掉15只时光寄生虫，然后将时光置换器还给西瘟疫之地安多哈尔旅店的克罗米。‡在安多哈爾的壹處倉庫附近使用時光置換器，使時光寄生蟲現身。|n殺掉15只時光寄生蟲，然後將時光置換器還給西瘟疫之地安多哈爾旅店的克羅米。',
   }
 },
 [4972] = {
@@ -55999,7 +55999,7 @@
   },
   nil,
   { -- Quest
-    'Jonas Tiragosto ao seu dispor!‡Айс Вентурон, к вашим услугам!‡Finkle Einhorn, zu Euren Diensten!‡핀클 에인혼, 명을 받듭니다!‡¡Finkle Unicornín, a tu servicio!‡¡Finkle Einhorn, a tu servicio!‡Finkle Einhorn, à votre service !‡芬克·恩霍尔，为您效劳！‡芬克·恩霍爾，為您效勞！',
+    'Lépido Fagueiro, ao seu dispor!‡Пип Смышлен, к вашим услугам!‡Pip Quickwit, zu Euren Diensten!‡핍 퀵윗, 명을 받듭니다!‡¡Pip Perspicaz, a su servicio!‡¡Pip Perspicaz, a tu servicio!‡Pépin Preste-Jugeote, à votre service !‡皮普·急智，为您效劳！‡皮普·捷思，為您效勞！',
     nil,
     'Fale com Málifus Trevamalho em Visteterna.‡Переговорите с Малифоем Черномолотом в Круговзоре.‡Sprecht mit Malyfous Darkhammer in Everlook.‡눈망루 마을에 있는 말리퍼스 다크해머와 대화해야 합니다.‡Habla con Malyfous Martilloscuro en Vista Eterna.‡Habla con Malyfous Martilloscuro en Vista Eterna.‡Parler à Malyfous Darkhammer à Long-guet.‡与永望镇的玛雷弗斯·暗锤谈一谈。‡與永望鎮的瑪雷弗斯·暗錘談壹談。',
   }
@@ -56938,7 +56938,7 @@
   },
   nil,
   { -- Quest
-    'Palavras do Chefe Supremo‡Слова верховного вождя‡Worte des Oberhäuptlings‡대족장의 기록‡Palabras del Gran Jefe‡Las palabras del Gran Jefe‡Paroles du Grand Chef‡熊怪酋长的话‡熊怪酋長的話',
+    'Palavras do Chefe Supremo‡Слова верховного вождя‡Worte des Oberhäuptlings‡대족장의 기록‡Palabras del Gran Jefe‡Palabras del Gran Jefe‡Paroles du Grand Chef‡熊怪酋长的话‡熊怪酋長的話',
     nil,
     'Leve o Registro Escrito Grosseiramente para Kelek Guardacéus, na parte sul da Selva Maleva.‡Отнесите неразборчиво исписанный журнал Келеку Стражу Неба в южную часть Оскверненного леса.‡Bringt das kunstlos geschriebene Logbuch zu Kelek Skykeeper im südlichen Teil des Teufelswalds.‡악령의 숲 남부에 있는 켈레크 스카이키퍼에게 휘갈겨 쓴 일지를 갖다주어야 합니다.‡Lleva el registro escrito de forma rudimentaria a Kelek Guardacielo en el sur de Frondavil.‡Lleva el registro escrito de forma rudimentaria a Kelek Guardacielo en el sur de Frondavil.‡Rapporter le Journal mal écrit à Kelek Skykeeper dans le sud de Gangrebois.‡将潦草的日志交给费伍德森林南部的科雷克·望天。‡將潦草的日誌交給費伍德森林南部的科雷克·望天。',
   }
@@ -57274,7 +57274,7 @@
   },
   nil,
   { -- Quest
-    'Verificar a corrupção‡Проверка на порчу‡Die Verderbnis überprüfen‡오염 확인‡Investigación acerca de la corrupción‡Investigación acerca de la corrupción‡Enquête sur la corruption‡验证腐蚀‡驗證腐蝕',
+    'Verificar a corrupção‡Проверка на порчу‡Die Verderbnis überprüfen‡오염 확인‡Investigación acerca de la corrupción‡Verificación de la corrupción‡Enquête sur la corruption‡验证腐蚀‡驗證腐蝕',
     nil,
     'Procure e destrua 2 Feras Entrópicas e 2 Horrores Entrópicos enquanto explora o Vale das Escaras Pungentes. Depois de ver se as crateras ainda estão cheias de água contaminada com vileza, fale novamente com Taronn Pena Vermelha, na Selva Maleva.‡Найдите и уничтожьте 2 энтропических зверей и 2 энтропических ужасов при обследовании долины Рваных Ран. После проверьте, по-прежнему ли заполнены кратеры оскверненной водой. Затем возвращайтесь к Таруну Красному Перу в Оскверненный лес.‡Sucht und zerstört 2 entropische Bestien und 2 entropische Schrecken, während Ihr das Shatter Scar-Tal erforscht. Nachdem Ihr überprüft habt, ob die Krater immer noch mit verderbtem Fel-Wasser gefüllt sind, kehrt zu Taronn Redfeather im Teufelswald zurück.‡불벼락 골짜기를 탐색하는 동안 혼돈의 불길 2마리와 혼돈의 소산물 2마리를 처치해야 합니다. 분화구를 조사해 아직도 부패한 물이 남아 있는지 확인하고 악령의 숲의 타론 레드페더에게 돌아가야 합니다.‡Busca y destruye a 2 bestias entrópicas y 2 horrores entrópicos a la vez que exploras la Cañada Gran Cicatriz. Cuando hayas comprobado si los cráteres del lugar aún contienen putraqua corrupta, vuelve con Taronn Plumarroja a Frondavil.‡Busca y destruye a 2 bestias entrópicas y 2 horrores entrópicos a la vez que exploras la Cañada Gran Cicatriz. Cuando hayas comprobado si los cráteres del lugar aún contienen agua vil corrupta, vuelve con Taronn Plumarroja a Frondavil.‡Trouver et détruire 2 Bêtes d\'entropie et 2 Horreurs d\'entropie tout en explorant le Val Grêlé. Après avoir vérifié que les cratères à cet endroit sont toujours remplis d’eau corrompue, retourner auprès de Taronn Redfeather dans Gangrebois.‡杀掉2个热能野兽和2个热能恐兽，并探索碎痕谷。然后查看凹坑中是否仍然充满了堕落的恶臭之水，完成这些任务之后，向费伍德森林中的塔诺恩·红羽复命。‡殺掉2個熱能野獸和2個熱能恐獸，並探索碎痕谷。然後查看凹坑中是否仍然充滿了墮落的惡臭之水，完成這些任務之後，向費伍德森林中的塔諾恩·紅羽復命。',
   }
@@ -57287,7 +57287,7 @@
   },
   nil,
   { -- Quest
-    'Coletar a água corrompida‡Собрать оскверненную воду‡Verderbtes Wasser sammeln‡부패한 물 채취‡Una muestra de agua corrupta‡Una muestra de agua corrupta‡Recueillir de l\'eau souillée‡收集堕落之水‡收集墮落之水',
+    'Coletar a água corrompida‡Собрать оскверненную воду‡Verderbtes Wasser sammeln‡부패한 물 채취‡Una muestra de agua corrupta‡Recolección de agua corrupta‡Recueillir de l\'eau souillée‡收集堕落之水‡收集墮落之水',
     nil,
     'Leve o Cantil Vazio para o Poço Lunar no meio de Jaedenar e encha-o. Depois, fale novamente com Greta Musgo no Casco na Selva Maleva.‡Возьмите пустую флягу и наполните ее водой из лунного колодца, что находится в центре Джеденара. Возвращайтесь к Грете Замшелому Копыту в Оскверненный лес.‡Bringt die leere Feldflasche zum Mondbrunnen im Zentrum von Jaedenar und füllt sie, bevor Ihr zu Greta Mosshoof im Teufelswald zurückkehrt.‡빈 수통을 자에데나르 중심부의 달샘으로 가져가서 채운 다음 악령의 숲에 있는 그레타 모스후프에게 가져 가야 합니다.‡Lleva la cantimplora vacía a la poza de la luna que hay en el centro de Jaedenar y llénala antes de volver con Greta Pezuñamusgo a Frondavil.‡Lleva la cantimplora vacía a la Poza de la Luna que hay en el centro de Jaedenar y llénala antes de volver con Greta Pezuñamusgo a Frondavil.‡Amener la Gourde vide au Puits de lune au centre de Jaedenar et la remplir avant de retourner voir Greta Mosshoof dans Gangrebois.‡把空壶拿到加德纳尔中心的月亮井去，装满井水之后再回到费伍德森林的格雷塔·苔蹄那里。‡把空壺拿到加德納爾中心的月亮井去，裝滿井水之後再回到費伍德森林的格雷塔·苔蹄那裏。',
   }
@@ -57301,7 +57301,7 @@
   },
   nil,
   { -- Quest
-    'À procura de auxílio espiritual‡В поисках духовной помощи‡Spirituelle Hilfe suchen‡영혼의 도움을 찾아서‡Buscando ayuda espiritual‡Buscando ayuda espiritual‡À la recherche de soutien spirituel‡水之魂的帮助‡水之魂的幫助',
+    'À procura de auxílio espiritual‡В поисках духовной помощи‡Spirituelle Hilfe suchen‡영혼의 도움을 찾아서‡Buscando ayuda espiritual‡En busca de ayuda espiritual‡À la recherche de soutien spirituel‡水之魂的帮助‡水之魂的幫助',
     nil,
     'Leve a Água Corrompida do Poço Lunar para Islen Vidente da Água, nos Sertões.‡Отнесите порченую воду из Лунного колодца Ислен Заклинателю Воды в Степи.‡Bringt das verderbte Mondbrunnenwasser in das Brachland zu Islen Waterseer.‡부패한 달샘 물을 불모의 땅에 있는 이슬렌 워터시어에게 가져 가야 합니다.‡Lleva el agua de poza de luna corrupta a Islen Vident\'aqua a Los Baldíos.‡Lleva el agua de la Poza de la Luna corrupta a Islen Vidente del Agua a Los Baldíos.‡Apporter l’Eau de Puits de lune corrompue à Islen Waterseer dans les Tarides.‡把腐化的月亮井水交给贫瘠之地的水之先知伊斯伦。‡把腐化的月亮井水交給貧瘠之地的水之先知伊斯倫。',
   }
@@ -57314,7 +57314,7 @@
   },
   nil,
   { -- Quest
-    'O retorno da água purificada à Selva Maleva‡Чистая вода возвращается в Оскверненный лес‡Gesäubertes Wasser wird zum Teufelswald gebracht‡악령의 숲으로 정화된 물 가져가기‡El agua purificada vuelve a Frondavil‡El agua purificada vuelve a Frondavil‡L\'eau purifiée retourne à Gangrebois‡净化过的水‡凈化過的水',
+    'O retorno da água purificada à Selva Maleva‡Чистая вода возвращается в Оскверненный лес‡Gesäubertes Wasser wird zum Teufelswald gebracht‡악령의 숲으로 정화된 물 가져가기‡El agua purificada vuelve a Frondavil‡El agua purificada regresa a Frondavil‡L\'eau purifiée retourne à Gangrebois‡净化过的水‡凈化過的水',
     nil,
     'Leve a Água Purificada do Poço Lunar para Greta Musgo no Casco, na Selva Maleva.‡Отнесите очищенную воду из лунного колодца Грете Замшелому Копыту в Оскверненный лес.‡Bringt das geläuterte Mondbrunnenwasser zu Greta Mosshoof im Teufelswald.‡정화된 달샘 물을 악령의 숲에 있는 그레타 모스후프에게 가져가야 합니다.‡Lleva el agua de poza de luna purificada a Greta Pezuñamusgo en Frondavil.‡Lleva el agua de la Poza de la Luna purificada a Greta Pezuñamusgo en Frondavil.‡Apporter l’Eau de Puits de lune purifiée à Greta Mosshoof dans Gangrebois.‡把净化过的月亮井水交给费伍德森林的格雷塔·苔蹄。‡把凈化過的月亮井水交給費伍德森林的格雷塔·苔蹄。',
   }
@@ -57773,7 +57773,7 @@
   nil,
   nil,
   { -- Quest
-    'Resgate de Jaedenar‡Спасение из Джеденара‡Rettung aus Jaedenar‡자에데나르 탈출‡El rescate en Jaedenar‡El rescate en Jaedenar‡Sauvetage à Jaedenar‡逃出加德纳尔‡逃出加德納爾',
+    'Resgate de Jaedenar‡Спасение из Джеденара‡Rettung aus Jaedenar‡자에데나르 탈출‡El rescate en Jaedenar‡Rescate de Jaedenar‡Sauvetage à Jaedenar‡逃出加德纳尔‡逃出加德納爾',
     nil,
     'Escolte Arko\'narin até onde Forjaleve e o equipamento dela estão, e então a proteja enquanto escapam da Fortaleza do Concílio das Sombras. Depois, procure Jessir Lunarco em Selva Maleva para informá-la sobre o que houve com os amigos dela.‡Сопроводите Арко\'нарин туда, где лежат меч Светлая Сталь и снаряжение Арконарин, и защитите ее при побеге из Оплота Теней. Потом разыщите Джессиру Лунную Радугу в Оскверненном лесу и расскажите ей, что случилось с ее друзьями.‡Bringt Arko\'narin dorthin, wo Lightforge und ihre Ausrüstung aufbewahrt werden, und beschützt sie dann bei eurer Flucht aus der Schattenfeste. Sucht danach Jessir Moonbow im Teufelswald auf und lasst sie wissen, was mit ihren Freunden geschehen ist.‡아르코나린을 그녀의 방어구와 라이트포지가 있는 곳까지 호위해 간 후, 함께 어둠의 요새에서 빠져나가야 합니다. 그런 다음, 악령의 숲에 있는 제시 문보우를 찾아가 그녀의 친구들에게 무슨 일이 있었는지 알려 주어야 합니다.‡Escolta a Arko\'narin hasta el lugar en el que están Forjaluz y su equipo y protégela en la huida de la Guarida Sombría. Después, busca a Jessir Arcolunar en Frondavil para contarle lo que les ha ocurrido a sus amigos.‡Escolta a Arko\'narin hasta el lugar en el que están Forjaluz y su equipo y protégela en la huida de la Guarida Sombría. Después, busca a Jessir Arcolunar en Frondavil para contarle lo que les ha ocurrido a sus amigos.‡Escorter Arko\'narin à l’endroit où Lightforge et son équipement sont détenus, puis la protéger lors de l’évasion du Fort des ombres. Ensuite, aller trouver Jessir Moonbow dans Gangrebois pour lui apprendre ce qui est arrivé à ses amis.‡护送亚科纳琳到莱弗治和她的装备所在的地方，然后保护她逃离暗影堡。之后，在费伍德森林找杰希尔·月弓，并告诉她刚才发生的事情。‡護送亞科納琳到萊弗治和她的裝備所在的地方，然後保護她逃離暗影堡。之後，在費伍德森林找傑希爾·月弓，並告訴她剛才發生的事情。',
   }
@@ -57787,7 +57787,7 @@
   },
   nil,
   { -- Quest
-    'Retaliação da Luz‡Воздаяние Света‡Vergeltung des Lichts‡정의의 복수‡La reprensión de la Luz‡La reprensión de la Luz‡Le châtiment de la Lumière‡光明的惩戒‡光明的懲戒',
+    'Retaliação da Luz‡Воздаяние Света‡Vergeltung des Lichts‡정의의 복수‡La reprensión de la Luz‡Reprensión de la Luz‡Le châtiment de la Lumière‡光明的惩戒‡光明的懲戒',
     nil,
     'Volte a Jaedenar e mate o súcubo Rakaiah antes de encontrar os Restos Mortais de Trey Forjaleve.‡Вернитесь в Джеденар и убейте суккуба Ракайю, затем отыщите останки Трея Светогорна.‡Kehrt nach Jaedenar zurück und tötet den Sukkubus Rakaiah, bevor Ihr die Überreste von Trey Lightforge sucht.‡자에데나르로 돌아가 서큐버스 라카이아를 처치한 후, 트레이 라이트포지의 유해를 찾아와야 합니다.‡Vuelve a Jaedenar y mata al súcubo Rakaiah antes de encontrar los Restos de Trey Forjaluz.‡Vuelve a Jaedenar y mata al súcubo Rakaiah antes de encontrar los Restos de Trey Forjaluz.‡Revenir à Jaedenar et tuer la succube Rakaiah avant de trouver le Cadavre de Trey Lightforge.‡回到加德纳尔杀了魅魔拉凯雅，然后找到特雷·莱弗治的残骸。‡回到加德納爾殺了魅魔拉凱雅，然後找到特雷·萊弗治的殘骸。',
   }
@@ -57877,7 +57877,7 @@
   { -- Quest
     'A carne não mente‡Плоть не лжет‡Das Fleisch lügt nicht‡거짓말하지 않는 육체‡La carne no miente‡La carne no miente‡La chair ne ment pas‡血肉不会撒谎‡血肉不會撒謊',
     nil,
-    'Recupere 20 Amostras de Carne Infectada de Stratholme e leve-as para Betina Bigozinco. Você desconfia que qualquer criatura em Stratholme poderia ter essa amostra de carne.‡Принесите 20 препаратов чумной плоти из Стратхольма Бетине Биггльцинк. Предположительно, любая тварь из Стратхольма сойдет за препарат.‡Sammelt 20 verseuchte Fleischproben in Stratholme und bringt sie zu Betina Bigglezink zurück. Ihr vermutet, dass Ihr besagte Fleischproben bei jeder Kreatur in Stratholme finden könnt.‡스트라솔름에서 20개의 역병걸린 살덩어리 견본을 베티나 비글징크에게 가져다주어야 합니다. 스트라솔름의 어떤 생물에서든 살덩어리 견본을 구할 수 있을 것 같습니다.‡Consigue 20 muestras de carne apestadas de Stratholme y llévaselas a Betina Bigglezink. Tienes la sospecha de que podrás obtener ese tipo de carne de cualquier criatura de Stratholme.‡Recoge 10 muestras de carne apestada de Stratholme y vuelve con Betina Bigglezink. Sospechas que podrías obtener una muestra de cualquier criatura de Stratholme.‡Récupérer 20 Echantillons de chair pestiférée à Stratholme puis les rapporter à Betina Bigglezink. Vous pensez que toutes les créatures de Stratholme possèdent de tels échantillons de chair.‡从斯坦索姆找回20个瘟疫肉块，并把它们交给贝蒂娜·比格辛克。你觉得斯坦索姆中的生灵都不大可能长着肉……‡從斯坦索姆找回20個瘟疫肉塊，並把它們交給貝蒂娜·比格辛克。妳覺得斯坦索姆中的生靈都不大可能長著肉……',
+    'Recupere 20 Amostras de Carne Infectada de Stratholme e leve-as para Betina Bigozinco. Você desconfia que qualquer criatura em Stratholme poderia ter essa amostra de carne.‡Принесите 20 препаратов чумной плоти из Стратхольма Бетине Биггльцинк. Предположительно, любая тварь из Стратхольма сойдет за препарат.‡Sammelt 20 verseuchte Fleischproben in Stratholme und bringt sie zu Betina Bigglezink zurück. Ihr vermutet, dass Ihr besagte Fleischproben bei jeder Kreatur in Stratholme finden könnt.‡스트라솔름에서 20개의 역병걸린 살덩어리 견본을 베티나 비글징크에게 가져다주어야 합니다. 스트라솔름의 어떤 생물에서든 살덩어리 견본을 구할 수 있을 것 같습니다.‡Consigue 20 muestras de carne apestadas de Stratholme y llévaselas a Betina Bigglezink. Tienes la sospecha de que podrás obtener ese tipo de carne de cualquier criatura de Stratholme.‡Consigue 20 muestras de carne apestadas de Stratholme y llévaselas a Betina Bigglezink. Tienes la sospecha de que podrás obtener ese tipo de carne de cualquier criatura de Stratholme.‡Récupérer 20 Echantillons de chair pestiférée à Stratholme puis les rapporter à Betina Bigglezink. Vous pensez que toutes les créatures de Stratholme possèdent de tels échantillons de chair.‡从斯坦索姆找回20个瘟疫肉块，并把它们交给贝蒂娜·比格辛克。你觉得斯坦索姆中的生灵都不大可能长着肉……‡從斯坦索姆找回20個瘟疫肉塊，並把它們交給貝蒂娜·比格辛克。妳覺得斯坦索姆中的生靈都不大可能長著肉……',
   }
 },
 [5213] = {
@@ -58235,7 +58235,7 @@
   nil,
   nil,
   { -- Quest
-    'O golpe final‡Окончательный удар‡Der endgültige Schlag‡마지막 일격‡El golpe final‡Un golpe final‡Un coup final‡最终一击‡最終壹擊',
+    'O golpe final‡Окончательный удар‡Der endgültige Schlag‡마지막 일격‡El golpe final‡El golpe final‡Un coup final‡最终一击‡最終壹擊',
     nil,
     'Mate Moora e Salia, e leve a Cabeça do Lorde das Sombras Fel\'dan para Greta Musgo no Casco em Selva Maleva.‡Убейте Моору и Салию и принесите голову владыки теней Скверн\'дана Грете Замшелому Копыту в Оскверненный лес.‡Tötet Moora und Salia und bringt den Kopf von Schattenlord Fel\'dan zu Greta Mosshoof im Teufelswald.‡무라와 살리라, 그리고 어둠의 군주 펠단을 처치하십시오. 그리고 그 증거로 펠단의 머리카락을 악령의 숲에 있는 그레타 모스후프에게 가져가야 합니다.‡Mata a Moora y Salia y lleva la cabeza del Señor de las Sombras Fel\'dan a Greta Pezuñamusgo a Frondavil.‡Mata a Moora y Salia y lleva la cabeza de Señor de las Sombras Fel\'dan a Greta Pezuñamusgo a Frondavil.‡Tuer Moora et Salia, et rapporter la Tête du Seigneur des ténèbres Fel\'dan à Greta Mosshoof dans Gangrebois.‡杀掉米莱恩和萨莉亚，并把暗影领主费尔丹的头颅交给费伍德森林的格雷塔·苔蹄。‡殺掉米萊恩和薩莉亞，並把暗影領主費爾丹的頭顱交給費伍德森林的格雷塔·苔蹄。',
   }
@@ -64412,7 +64412,7 @@
   -- Item
   'Esquemas do Regulador de Combustível‡Чертежи топливного регулятора‡Treibstoffreglerblaupausen‡연료조절장치 설계도‡Planos de regulador de combustible‡Planos de regulador de combustible‡Plan de régulateur de fuel‡燃料调节器的蓝图‡燃料調節器的藍圖',
   { -- Npc
-    'Elemental do Inferno‡Инфернальный элементаль‡Infernoelementar‡불지옥 정령‡Elemental inferno‡Elemental inferno‡Elémentaire infernal‡地狱元素‡地獄元素',
+    'Elemental do Inferno‡Инфернальный элементаль‡Infernoelementar‡불지옥 정령‡Elemental inferno‡Elemental del infierno‡Elémentaire infernal‡地狱元素‡地獄元素',
     nil,
   },
   nil,
@@ -64462,7 +64462,7 @@
   -- Item
   '‡‡‡노움 상품‡‡‡‡‡地精抽獎盒',
   { -- Npc
-    'Aranha de Lava Causticante‡Опаляющий лавовый паук‡Sengende Lavaspinne‡불타는 용암거미‡Lavaraña abrasadora‡Lavaraña abrasadora‡Araignée de lave incendiaire‡灼热熔岩蜘蛛‡灼熱熔岩蜘蛛',
+    'Aranha de Lava Causticante‡Опаляющий лавовый паук‡Sengende Lavaspinne‡불타는 용암거미‡Lavaraña abrasadora‡Araña de lava abrasadora‡Araignée de lave incendiaire‡灼热熔岩蜘蛛‡灼熱熔岩蜘蛛',
     nil,
   },
   nil,
@@ -64472,7 +64472,7 @@
   -- Item
   '‡‡‡고블린 상품‡‡‡‡‡哥布林抽獎盒',
   { -- Npc
-    'Grande Aranha de Lava‡Большой лавовый паук‡Große Lavaspinne‡거대한 용암거미‡Lavaraña superior‡Lavaraña superior‡Grande araignée de lave‡巨型熔岩蜘蛛‡巨型熔岩蜘蛛',
+    'Grande Aranha de Lava‡Большой лавовый паук‡Große Lavaspinne‡거대한 용암거미‡Lavaraña superior‡Araña de lava superior‡Grande araignée de lave‡巨型熔岩蜘蛛‡巨型熔岩蜘蛛',
     nil,
   },
   nil,
@@ -65806,7 +65806,7 @@
 [5984] = {
   nil,
   { -- Npc
-    'Rasgarrindo Faminta‡Голодный хохотун‡Verhungernder Kicherfang‡굶주린 칼송곳니하이에나‡Hiena risitas hambrienta‡Hiena risitas hambrienta‡Raillecroc affamée‡饥饿的弯牙土狼‡饑餓的彎牙土狼',
+    'Rasgarrindo Faminta‡Голодный хохотун‡Verhungernder Kicherfang‡굶주린 칼송곳니하이에나‡Hiena risitas hambrienta‡Hiena risitas famélica‡Raillecroc affamée‡饥饿的弯牙土狼‡饑餓的彎牙土狼',
     nil,
   },
   nil,
@@ -67498,7 +67498,7 @@
   nil,
   nil,
   { -- Quest
-    'A última batalha de um marido‡Последняя битва супруга‡Eines Ehemanns letzter Kampf‡남편의 마지막 전투‡La última batalla de un esposo‡La última batalla de un marido‡La dernière bataille d\'un mari‡最后一战‡最後壹戰',
+    'A última batalha de um marido‡Последняя битва супруга‡Eines Ehemanns letzter Kampf‡남편의 마지막 전투‡La última batalla de un esposo‡La última batalla de un esposo‡La dernière bataille d\'un mari‡最后一战‡最後壹戰',
     nil,
     'Mate o Suserano Ror e leve a garra dele para Dreka\'Sur no Posto Peçonha, na Selva Maleva.‡Убейте властителя Рора и принесите его коготь Дрейка\'Сур на заставу Отравленной Крови в Оскверненном лесу.‡Tötet Oberanführer Ror und bringt seine Klaue zu Dreka\'Sur beim Blutgiftposten im Teufelswald.‡대군주 로르를 처치하고 그의 발톱을 악령의 숲, 피멍울 초소에 있는 드레카술에게 가져가야 합니다.‡Mata al Señor Supremo Ror y lleva su zarpa a Dreka\'Sur al Puesto del Veneno de Frondavil.‡Mata al señor supremo Ror y lleva su garra a Dreka\'Sur al Puesto del Veneno de Frondavil.‡Tuer le Seigneur Ror et apporter sa Griffe à Dreka\'Sur, au Poste de la Vénéneuse, en Gangrebois.‡杀死主宰洛尔，把他的爪子交给费伍德森林血毒岗哨的德雷卡苏。‡殺死主宰洛爾，把他的爪子交給費伍德森林血毒崗哨的德雷卡蘇。',
   }
@@ -67520,7 +67520,7 @@
   { -- Quest
     'O livro-caixa do Augustus‡Книга рецептов Августа‡Augustus\' Rezeptbuch‡아우구스투스의 회계장부‡Libro de entradas de Augustus‡Libro de entradas de Augustus‡Le livre de compte d\'Augustus‡奥古斯图斯的收据册‡奧古斯圖斯的收據冊',
     nil,
-    'Leve o Livro-caixa do Augustus para Augustus, o Pirado, na Várzea do Medo.‡Принесите Августу Помешанному в Долину Ужаса его книгу рецептов.‡Bringt Augustus\' Quittungsbuch zu Augustus dem Meschuggenen im Schreckenstal.‡테러데일에 있는 정신나간 아우구스투스에게 아우구스투스의 회계장부를 가져가야 합니다.‡Lleva el libro de entradas de Augustus a Augustus el Agraciado a Valle del Terror.‡Consigue el libro de entradas de Augustus en la posada del Valle del Terror.‡Apporter le Livre de compte d\'Augustus à Augustus le Touché à Val-Terreur.‡把奥古斯图斯的收据册交给恶蛛隧道中的被感动的奥古斯图斯。‡把奧古斯圖斯的收據冊交給惡蛛隧道中的被感動的奧古斯圖斯。',
+    'Leve o Livro-caixa do Augustus para Augustus, o Pirado, na Várzea do Medo.‡Принесите Августу Помешанному в Долину Ужаса его книгу рецептов.‡Bringt Augustus\' Quittungsbuch zu Augustus dem Meschuggenen im Schreckenstal.‡테러데일에 있는 정신나간 아우구스투스에게 아우구스투스의 회계장부를 가져가야 합니다.‡Lleva el libro de entradas de Augustus a Augustus el Agraciado a Valle del Terror.‡Lleva el libro de entradas de Augustus a Augustus el Agraciado en Valle del Terror.‡Apporter le Livre de compte d\'Augustus à Augustus le Touché à Val-Terreur.‡把奥古斯图斯的收据册交给恶蛛隧道中的被感动的奥古斯图斯。‡把奧古斯圖斯的收據冊交給惡蛛隧道中的被感動的奧古斯圖斯。',
   }
 },
 [6165] = {
@@ -69678,7 +69678,7 @@
   -- Item
   '‡Сребротканевые перчатки‡Silberfadenhandschuhe‡은빛매듭 장갑‡Guantes de hilo de plata‡Guantes de hilo de plata‡Gants brochés d\'argent‡银丝手套‡銀絲手套',
   { -- Npc
-    'Henen Totem da Fúria‡Хелен Тотем Гнева‡Henen Ragetotem‡헤넨 레이지토템‡Henen Furiatótem‡Henen Furiatótem‡Henen Ragetotem‡赫纳·狂暴图腾‡赫納·狂暴圖騰',
+    'Henen Totem da Fúria‡Хелен Тотем Гнева‡Henen Ragetotem‡헤넨 레이지토템‡Henen Furiatótem‡Henen Tótem de Ira‡Henen Ragetotem‡赫纳·狂暴图腾‡赫納·狂暴圖騰',
     nil,
   },
   nil,
@@ -71212,7 +71212,7 @@
   { -- Quest
     'O campeão da Horda‡Защитник Орды‡Der Champion der Horde‡호드의 용사‡El Campeón de la Horda‡El Campeón de la Horda‡Le Champion de la Horde‡部落的勇士‡部落的勇士',
     nil,
-    'Procure Rexxar. O Chefe Guerreiro <o/a> instruiu quanto ao paradeiro dele. Procure nos caminhos de Desolação, entre a Cordilheira das Torres de Pedra e Feralas.‡Найдите Рексара. Вождь сказал, что он бродит в Пустошах, по дороге, что ведет из Когтичтых гор в Фералас.‡Sucht Rexxar auf. Der Kriegshäuptling hat Euch erklärt, wo Ihr ihn finden könnt. Sucht die Wege von Desolace zwischen dem Steinkrallengebirge und Feralas ab.‡렉사르를 찾아야 합니다. 그의 행방은 대족장이 설명해 주었습니다. 돌발톱 산맥과 페랄라스 사이에 있는 잊혀진 땅의 길에서 찾아 보십시오.‡Busca a Rexxar. El jefe de guerra te ha indicado dónde encontrarlo. Recorre los caminos de Desolace, entre la Sierra Espolón y Feralas.‡Busca a Rokaro en la Aldea Cazasombras, en Desolace.‡Chercher Rexxar. Le Chef de guerre vous a dit où il était. Chercher sur les chemins de Désolace, entre les Serres-Rocheuses et Feralas.‡按照酋长的指示找到雷克萨。他在石爪山和菲拉斯之间的凄凉之地游荡。‡按照酋長的指示找到雷克薩。他在石爪山和菲拉斯之間的淒涼之地遊蕩。',
+    'Procure Rexxar. O Chefe Guerreiro <o/a> instruiu quanto ao paradeiro dele. Procure nos caminhos de Desolação, entre a Cordilheira das Torres de Pedra e Feralas.‡Найдите Рексара. Вождь сказал, что он бродит в Пустошах, по дороге, что ведет из Когтичтых гор в Фералас.‡Sucht Rexxar auf. Der Kriegshäuptling hat Euch erklärt, wo Ihr ihn finden könnt. Sucht die Wege von Desolace zwischen dem Steinkrallengebirge und Feralas ab.‡렉사르를 찾아야 합니다. 그의 행방은 대족장이 설명해 주었습니다. 돌발톱 산맥과 페랄라스 사이에 있는 잊혀진 땅의 길에서 찾아 보십시오.‡Busca a Rexxar. El jefe de guerra te ha indicado dónde encontrarlo. Recorre los caminos de Desolace, entre la Sierra Espolón y Feralas.‡Busca a Rexxar. El jefe de guerra te ha indicado dónde encontrarlo. Recorre los caminos de Desolace, entre la Sierra Espolón y Feralas.‡Chercher Rexxar. Le Chef de guerre vous a dit où il était. Chercher sur les chemins de Désolace, entre les Serres-Rocheuses et Feralas.‡按照酋长的指示找到雷克萨。他在石爪山和菲拉斯之间的凄凉之地游荡。‡按照酋長的指示找到雷克薩。他在石爪山和菲拉斯之間的淒涼之地遊蕩。',
   }
 },
 [6568] = {
@@ -71224,9 +71224,9 @@
   },
   nil,
   { -- Quest
-    'O testamento de Rexxar‡Завет Рексара‡Nachricht von Rexxar‡렉사르의 유언‡El testamento de Rexxar‡Profesora del engaño‡Le testament de Rexxar‡雷克萨的证明‡雷克薩的證明',
+    'O testamento de Rexxar‡Завет Рексара‡Nachricht von Rexxar‡렉사르의 유언‡El testamento de Rexxar‡El testimonio de Rexxar‡Le testament de Rexxar‡雷克萨的证明‡雷克薩的證明',
     nil,
-    'Leve o Testamento de Rexxar para Myranda, a Bruxa Velha, nas Terras Pestilentas Ocidentais.‡Доставьте письмо Рексара Миранде Колдунье в Западные Чумные земли.‡Überbringt Myranda der Vettel in den westlichen Pestländern Rexxars Nachricht.‡서부 역병지대에 있는 노파 미란다에게 렉사르의 유서를 전달해야 합니다.‡Entrega el testamento de Rexxar a Myranda la Fada. Está en las Tierras de la Peste del Oeste.‡Entrega la carta de Rokaro a Myranda la Fada en las Tierras de la Peste del Oeste.‡Apporter le Testament de Rexxar à Myranda la Mégère, dans les Maleterres de l’ouest.‡把雷克萨的证明交给西瘟疫之地的巫女麦兰达。‡把雷克薩的證明交給西瘟疫之地的巫女麥蘭達。',
+    'Leve o Testamento de Rexxar para Myranda, a Bruxa Velha, nas Terras Pestilentas Ocidentais.‡Доставьте письмо Рексара Миранде Колдунье в Западные Чумные земли.‡Überbringt Myranda der Vettel in den westlichen Pestländern Rexxars Nachricht.‡서부 역병지대에 있는 노파 미란다에게 렉사르의 유서를 전달해야 합니다.‡Entrega el testamento de Rexxar a Myranda la Fada. Está en las Tierras de la Peste del Oeste.‡Entrégale el testimonio de Rexxar a Myranda la Fada en las Tierras de la Peste del Oeste.‡Apporter le Testament de Rexxar à Myranda la Mégère, dans les Maleterres de l’ouest.‡把雷克萨的证明交给西瘟疫之地的巫女麦兰达。‡把雷克薩的證明交給西瘟疫之地的巫女麥蘭達。',
   }
 },
 [6569] = {
@@ -71544,7 +71544,7 @@
   { -- Quest
     'Ascensão...‡Вознесение‡Aufstieg...‡진급‡El ascenso‡El ascenso‡Ascension...‡晋升……‡晉升……',
     nil,
-    'Pelo jeito, a farsa chegou ao fim. Você já sabe que o Amuleto de Subversão Dracônica criado por Myranda, a Bruxa Velha, não vai funcionar no Pico da Rocha Negra. Você devia ir atrás de Rexxar e explicar a situação. Mostre a ele o Amuleto da Chama Dracônica Fraco. Pode ser que ele saiba o que fazer.‡Казалось бы, загадка разгадана. Вы знаете, что амулет Обмана Драконов, который сделала для вас Миранда Колдунья, не будет работать на пике Черной горы. Найдите Рокаро и расскажите о ваших затруднениях. Покажите ему амулет Угасающего Пламени Дракона. Будем надеяться, он знает что делать.‡Mir scheint, als sei die Charade jetzt vorüber. Ihr wisst, dass das Amulett der drachischen Unterwanderung, das Myranda die Vettel für Euch erschuf, auf der Blackrockspitze nicht funktioniert. Vielleicht solltet Ihr Rexxar aufsuchen und ihm Eure Notlage erklären. Zeigt ihm das glanzlose Drachenfeueramulett. Er wird hoffentlich wissen, was als Nächstes zu tun ist.‡이제 가면놀이는 끝난 것 같습니다. 노파 미란다가 만든 용족 파멸의 아뮬렛이 검은바위 첨탐 안에서 원래 구실을 하지 않는 것을 알고 있습니다. 아마도 렉사르를 찾아가 곤경에 처한 상황을 설명하는 것이 좋겠습니다. 렉사르에게 흐릿한 비룡불꽃 아뮬렛을 보여주면 아마도 필요한 게 무엇인지 알 수 있을 겁니다.‡Diría que se acabaron las charadas. Ya sabes que el Amuleto de Subversión Dracónica que Myranda la Fada creó para ti no funcionará en el interior de la Cumbre de Roca Negra. Quizás deberías buscar a Rexxar y explicarle el apuro en el que te encuentras. Enséñale el amuleto pirodraco apagado. Con un poco de suerte, él sabrá que hay que hacer ahora.‡Diría que se acabaron las charadas. Ya sabes que el amuleto de Subversión Dracónica que Myranda la Fada creó para ti no funcionará en el interior de la Cumbre de Roca Negra. Quizás deberías buscar a Rokaro y explicarle el apuro en el que te encuentras. Enséñale el amuleto Pirodraco apagado. Con un poco de suerte, él sabrá que hay que hacer ahora.‡Il semble que la comédie soit finie. Vous savez que l’Amulette de subversion draconique, créée par Myranda la Mégère, ne fonctionnera pas à l’intérieur du pic Blackrock. Peut-être devriez-vous trouver Rexxar et lui exposer votre fâcheuse situation. Montrez-lui l\'Amulette drakefeu terne. Avec un peu de chance, il saura quoi faire.‡看来这场假面舞会就要结束了。你知道麦兰达为你制作的龙形护符在黑石塔里面不会发挥作用，也许你应该去找雷克萨，将你的困境告诉他。把黯淡的龙火护符给他看看，也许他知道下一步该怎么做。‡看來這場假面舞會就要結束了。妳知道麥蘭達為妳制作的龍形護符在黑石塔裏面不會發揮作用，也許妳應該去找雷克薩，將妳的困境告訴他。把黯淡的龍火護符給他看看，也許他知道下壹步該怎麽做。',
+    'Pelo jeito, a farsa chegou ao fim. Você já sabe que o Amuleto de Subversão Dracônica criado por Myranda, a Bruxa Velha, não vai funcionar no Pico da Rocha Negra. Você devia ir atrás de Rexxar e explicar a situação. Mostre a ele o Amuleto da Chama Dracônica Fraco. Pode ser que ele saiba o que fazer.‡Казалось бы, загадка разгадана. Вы знаете, что амулет Обмана Драконов, который сделала для вас Миранда Колдунья, не будет работать на пике Черной горы. Найдите Рокаро и расскажите о ваших затруднениях. Покажите ему амулет Угасающего Пламени Дракона. Будем надеяться, он знает что делать.‡Mir scheint, als sei die Charade jetzt vorüber. Ihr wisst, dass das Amulett der drachischen Unterwanderung, das Myranda die Vettel für Euch erschuf, auf der Blackrockspitze nicht funktioniert. Vielleicht solltet Ihr Rexxar aufsuchen und ihm Eure Notlage erklären. Zeigt ihm das glanzlose Drachenfeueramulett. Er wird hoffentlich wissen, was als Nächstes zu tun ist.‡이제 가면놀이는 끝난 것 같습니다. 노파 미란다가 만든 용족 파멸의 아뮬렛이 검은바위 첨탐 안에서 원래 구실을 하지 않는 것을 알고 있습니다. 아마도 렉사르를 찾아가 곤경에 처한 상황을 설명하는 것이 좋겠습니다. 렉사르에게 흐릿한 비룡불꽃 아뮬렛을 보여주면 아마도 필요한 게 무엇인지 알 수 있을 겁니다.‡Diría que se acabaron las charadas. Ya sabes que el Amuleto de Subversión Dracónica que Myranda la Fada creó para ti no funcionará en el interior de la Cumbre de Roca Negra. Quizás deberías buscar a Rexxar y explicarle el apuro en el que te encuentras. Enséñale el amuleto pirodraco apagado. Con un poco de suerte, él sabrá que hay que hacer ahora.‡Parece que la farsa se acabó. Sabes que el Amuleto de Subversión Dracónica que Myranda la Fada creó para ti no funcionará en la Cumbre de Roca Negra. Quizá debas buscar a Rexxar y explicarle tu situación. Muéstrale el Amuleto Pirodraco apagado. Con suerte, él sabrá qué hacer.‡Il semble que la comédie soit finie. Vous savez que l’Amulette de subversion draconique, créée par Myranda la Mégère, ne fonctionnera pas à l’intérieur du pic Blackrock. Peut-être devriez-vous trouver Rexxar et lui exposer votre fâcheuse situation. Montrez-lui l\'Amulette drakefeu terne. Avec un peu de chance, il saura quoi faire.‡看来这场假面舞会就要结束了。你知道麦兰达为你制作的龙形护符在黑石塔里面不会发挥作用，也许你应该去找雷克萨，将你的困境告诉他。把黯淡的龙火护符给他看看，也许他知道下一步该怎么做。‡看來這場假面舞會就要結束了。妳知道麥蘭達為妳制作的龍形護符在黑石塔裏面不會發揮作用，也許妳應該去找雷克薩，將妳的困境告訴他。把黯淡的龍火護符給他看看，也許他知道下壹步該怎麽做。',
   }
 },
 [6602] = {
@@ -73172,7 +73172,7 @@
   { -- Quest
     'Tempestades e estrondores‡Буря в пустыне‡Stürmer und Rumpler‡먼지 폭풍과 우레의 모래정령‡Sirocosos y reptarenas‡Sirocosos y reptarenas‡Tempêtes‡雷暴和磐石‡雷暴和磐石',
     nil,
-    'Mate 15 Tempestades de Poeira e 15 Estrondores do Deserto e fale novamente com o Duque Hidráxis em Azshara.‡Убейте 15 пылевихрей и 15 пустынных грохотунов, а затем возвращайтесь к герцогу Гидраксису в Азшару.‡Tötet 15 Staubstürmer und 15 Wüstenrumpler und kehrt dann zu Fürst Hydraxis in Azshara zurück.‡먼지 폭풍 15마리와 우레의 모래정령 15마리를 처치하고 아즈샤라에 있는 군주 히드락시스에게 돌아가야 합니다.‡Mata a 15 agitadores sirocosos y 15 estruendores del desierto y vuelve a ver al duque Hydraxis a Azshara.‡Acaba con 15 agitadores sirocosos y 15 estruendores del desierto. Después, regresa con el duque Hydraxis en Azshara.‡Tuer 15 Tempétueux de poussière et 15 Grondeurs du désert, puis retourner voir le duc Hydraxis, en Azshara.‡杀死15个灰尘风暴和15个沙漠奔行者，然后回到艾萨拉的海达克西斯公爵那儿。‡殺死15個灰塵風暴和15個沙漠奔行者，然後回到艾薩拉的海達克西斯公爵那兒。',
+    'Mate 15 Tempestades de Poeira e 15 Estrondores do Deserto e fale novamente com o Duque Hidráxis em Azshara.‡Убейте 15 пылевихрей и 15 пустынных грохотунов, а затем возвращайтесь к герцогу Гидраксису в Азшару.‡Tötet 15 Staubstürmer und 15 Wüstenrumpler und kehrt dann zu Fürst Hydraxis in Azshara zurück.‡먼지 폭풍 15마리와 우레의 모래정령 15마리를 처치하고 아즈샤라에 있는 군주 히드락시스에게 돌아가야 합니다.‡Mata a 15 agitadores sirocosos y 15 estruendores del desierto y vuelve a ver al duque Hydraxis a Azshara.‡Mata a 15 agitadores sirocosos y 15 estruendores del desierto y vuelve a ver al duque Hydraxis a Azshara.‡Tuer 15 Tempétueux de poussière et 15 Grondeurs du désert, puis retourner voir le duc Hydraxis, en Azshara.‡杀死15个灰尘风暴和15个沙漠奔行者，然后回到艾萨拉的海达克西斯公爵那儿。‡殺死15個灰塵風暴和15個沙漠奔行者，然後回到艾薩拉的海達克西斯公爵那兒。',
   }
 },
 [6806] = {
@@ -74779,7 +74779,7 @@
   -- Item
   '‡Перчатки истинной веры‡Handschuhe des wahren Glaubens‡신앙의 장갑‡Guantes de fe verdadera‡Guantes de fe verdadera‡Gants de vraie foi‡信念手套‡真誠手套',
   { -- Npc
-    'Filhote Flamescama‡Детеныш огнечешуйного дракона‡Flammenschuppenbrutling‡화염비늘 새끼용‡Cachorrillo flamascala‡Cachorrillo flamascala‡Rejeton Flammécaille‡火鳞小龙‡火鱗小龍',
+    'Filhote Flamescama‡Детеныш огнечешуйного дракона‡Flammenschuppenbrutling‡화염비늘 새끼용‡Cachorrillo flamascala‡Estirpe Flamaescama‡Rejeton Flammécaille‡火鳞小龙‡火鱗小龍',
     nil,
   },
   nil,
@@ -77825,7 +77825,7 @@
   -- Item
   '‡‡‡청명 부적‡‡‡‡‡天藍護符',
   { -- Npc
-    'Taim Totem da Fúria‡Тайм Бешеный Тотем‡Taim Ragetotem‡타임 레이지토템‡Taim Furiatótem‡Taim Furiatótem‡Taim Ragetotem‡泰姆·狂暴图腾‡泰姆·狂暴圖騰',
+    'Taim Totem da Fúria‡Тайм Бешеный Тотем‡Taim Ragetotem‡타임 레이지토템‡Taim Furiatótem‡Taim Tótem de Ira‡Taim Ragetotem‡泰姆·狂暴图腾‡泰姆·狂暴圖騰',
     'Mestre de Batalha do Vale Alterac‡Военачальник Альтеракской долины‡Kampfmeister des Alteractals‡알터랙 계곡 전투모병관‡Maestro de batalla del valle de Alterac‡Maestro de batalla del valle de Alterac‡Maître de guerre de la vallée d\'Alterac‡奥特兰克山谷军官‡奧特蘭克山谷戰場軍官',
   },
   nil,
@@ -78364,7 +78364,7 @@
   { -- Quest
     'Lendas élficas‡Эльфийские легенды‡Elfische Legenden‡엘프의 전설‡Leyendas élficas‡Leyendas élficas‡Légendes elfiques‡精灵的传说‡精靈的傳說',
     nil,
-    'Procure Kariel Winthalus em Gládio Cruel. Reporte-se, então, ao Sábio Korolusk na Aldeia Mojache com qualquer informação que você possa encontrar.‡Попытайтесь найти в Забытом Городе Кариэля Винтхалуса. Вернитесь в Лагерь Мохаче к ведуну Королуску и сообщите ему все, что вам удалось узнать.‡Sucht in Düsterbruch nach Kariel Winthalus. Meldet Euch anschließend bei Sage Korolusk in Camp Mojache.‡혈투의 전장을 뒤져 카리엘 윈탈루스를 찾으십시오. 찾을 수 있는 정보는 모두 찾아 모자케 야영지에 있는 현자 코로루스크에게 돌아가야 합니다.‡Busca a Kariel Winthalus en La Masacre. Vuelve al Campamento Mojache e informa al Sabio Korolusk de cualquier cosa que encuentres.‡Busca a Kariel Winthalus en La Masacre. Vuelve al Campamento Mojache e informa al Sabio Korolusk de cualquier cosa que encuentres.‡Fouillez Hache-tripes à la recherche de Kariel Winthalus. Lorsque vous aurez des informations, donnez-les au Sage Korolusk de Camp Mojache.‡到厄运之槌去寻找卡里尔·温萨鲁斯。向莫沙彻营地的先知科鲁拉克报告你所找到的信息。‡到厄運之槌去尋找卡裏爾·溫薩魯斯。向莫沙徹營地的先知科魯拉克報告妳所找到的信息。',
+    'Procure Telmius Romanesca no Gládio Cruel. Reporte-se, então, ao Sábio Korolusk na Aldeia Mojache com qualquer informação que você encontrar.‡Отыщите в Забытом Городе Тельмия Сновидца. Вернитесь в лагерь Мохаче к ведуну Королуску и сообщите ему все, что вам удалось узнать.‡Sucht in Düsterbruch nach Telmius Dreamseeker. Meldet Euch anschließend bei Sage Korolusk in Camp Mojache.‡혈투의 전장을 뒤져 텔미우스 드림시커를 찾으십시오. 찾을 수 있는 정보는 모두 찾아 모자케 야영지에 있는 현자 코로루스크에게 돌아가야 합니다.‡Busca a Telmius Buscasueños en La Masacre. Vuelve al Campamento Mojache e informa al Sabio Korolusk de cualquier cosa que encuentres.‡Busca a Telmius Buscasueños en La Masacre. Vuelve al Campamento Mojache e informa al Sabio Korolusk de cualquier cosa que encuentres.‡Fouillez Hache-tripes à la recherche de Telmius Cherche-Rêve. Lorsque vous aurez des informations, donnez-les au Sage Korolusk du Camp Mojache.‡到厄运之槌去寻找泰尔米乌斯·探梦者。向莫沙彻营地的先知科鲁拉克报告你所找到的信息。‡到厄運之槌去尋找卡裏爾·溫薩魯斯。向莫沙徹營地的先知科魯拉克報告妳所找到的信息。',
   }
 },
 [7482] = {
@@ -78375,7 +78375,7 @@
   { -- Quest
     'Lendas élficas‡Эльфийские легенды‡Elfische Legenden‡엘프의 전설‡Leyendas élficas‡Leyendas élficas‡Légendes elfiques‡精灵的传说‡精靈的傳說',
     nil,
-    'Procure Kariel Winthalus em Gládio Cruel. Reporte-se, então, à Erudita Runacardos em Plumaluna com qualquer informação que você encontrar.‡Попытайтесь найти в Забытом Городе Кариэля Винтхалуса. Вернитесь в крепость Оперенной Луны к школяру Рунному Шипу и сообщите ей все, что вам удалось узнать.‡Sucht in Düsterbruch nach Kariel Winthalus. Meldet Euch anschließend bei der Gelehrten Runethorn in Feathermoon.‡혈투의 전장을 뒤져 카리엘 윈탈루스를 찾으십시오. 찾을 수 있는 정보는 모두 찾아 페더문 요새에 있는 학자 룬쏜에게 돌아가야 합니다.‡Busca a Kariel Winthalus en La Masacre. Vuelve al Bastión Plumaluna a informar al erudito Runaespina de lo que hayas encontrado.‡Busca a Kariel Winthalus en La Masacre. Vuelve al Bastión Plumaluna a informar al erudita Runaespina de lo que hayas encontrado.‡Fouillez Hache-tripes à la recherche de Kariel Winthalus. Lorsque vous aurez des informations, donnez-les à l’Erudite Runethorn, à Feathermoon.‡到厄运之槌去寻找卡里尔·温萨鲁斯。向羽月要塞的学者卢索恩·纹角报告你所找到的信息。‡到厄運之槌去尋找卡裏爾·溫薩魯斯。向羽月要塞的學者盧索恩·紋角報告妳所找到的信息。',
+    'Procure Telmius Romanesca no Gládio Cruel. Reporte-se, então, à Erudita Runacardos em Plumaluna com qualquer informação que você encontrar.‡Отыщите в Забытом Городе Тельмия Сновидца. Вернитесь в крепость Оперенной Луны к исследовательнице Рунический Шип и сообщите ей все, что вам удалось узнать.‡Sucht in Düsterbruch nach Telmius Dreamseeker. Meldet Euch anschließend bei der Gelehrten Runethorn in Feathermoon.‡혈투의 전장을 뒤져 텔미우스 드림시커를 찾으십시오. 찾을 수 있는 정보는 모두 찾아 페더문 요새에 있는 학자 룬쏜에게 돌아가야 합니다.‡Busca a Telmius Buscasueños en La Masacre. Vuelve al Bastión Plumaluna a informar a la erudita Runaespina de lo que hayas encontrado.‡Busca a Telmius Buscasueños en La Masacre. Vuelve al Bastión Plumaluna a informar a la erudita Runaespina de lo que hayas encontrado.‡Fouillez Hache-tripes à la recherche de Telmius Cherche-Rêve. Lorsque vous aurez des informations, donnez-les à l’Erudite Runethorn, à Feathermoon.‡到厄运之槌去寻找泰尔米乌斯·探梦者。向羽月要塞的学者卢索恩·纹角报告你所找到的信息。‡到厄運之槌去尋找卡裏爾·溫薩魯斯。向羽月要塞的學者盧索恩·紋角報告妳所找到的信息。',
   }
 },
 [7483] = {
@@ -78484,7 +78484,7 @@
   { -- Quest
     'Vitória da Horda‡Победа Орды‡Sieg für die Horde‡호드의 승리‡Victoria para la Horda‡Victoria para la Horda‡Victoire pour la Horde !‡部落的胜利‡部落的勝利',
     nil,
-    'Leve a Cabeça da Onyxia para Thrall em Orgrimmar.‡Отнесите голову Ониксии Траллу в Оргриммар.‡Bringt Onyxias Kopf zu Thrall in Orgrimmar.‡오그리마에 있는 대족장 스랄에게 오닉시아의 머리를 보여줘야 합니다.‡Llévale la cabeza de Onyxia a Thrall en Orgrimmar.‡Lleva la cabeza de Onyxia a Garrosh a Orgrimmar.‡Apportez la Tête d’Onyxia à Thrall à Orgrimmar.‡将奥妮克希亚的头颅交给奥格瑞玛的萨尔。‡將奧妮克希亞的頭顱交給奧格瑞瑪的薩爾。',
+    'Leve a Cabeça da Onyxia para Thrall em Orgrimmar.‡Отнесите голову Ониксии Траллу в Оргриммар.‡Bringt Onyxias Kopf zu Thrall in Orgrimmar.‡오그리마에 있는 대족장 스랄에게 오닉시아의 머리를 보여줘야 합니다.‡Llévale la cabeza de Onyxia a Thrall en Orgrimmar.‡Llévale la cabeza de Onyxia a Thrall en Orgrimmar.‡Apportez la Tête d’Onyxia à Thrall à Orgrimmar.‡将奥妮克希亚的头颅交给奥格瑞玛的萨尔。‡將奧妮克希亞的頭顱交給奧格瑞瑪的薩爾。',
   }
 },
 [7491] = {
@@ -78539,7 +78539,7 @@
   { -- Quest
     'Vitória pela Aliança‡Славная победа Альянса‡Sieg für die Allianz‡얼라이언스의 승리‡Victoria para la Alianza‡Victoria para la Alianza‡Victoire pour l\'Alliance !‡联盟的胜利‡聯盟的勝利',
     nil,
-    'Leve a Cabeça da Onyxia ao Grão-lorde Bolvar Fordragon em Ventobravo.‡Отнесите голову Ониксии Верховному лорду Болвару Фордрагону в Штормград.‡Bringt Onyxias Kopf zu Hochlord Bolvar Fordragon in Stormwind.‡오닉시아의 머리를 스톰윈드로 갖고 가서 대영주 볼바르 폴드라곤에게 보여주어야 합니다.‡Lleva la cabeza de Onyxia al Alto Señor Bolvar Fordragon, en Ventormenta.‡Lleva la cabeza de Onyxia al rey Varian Wrynn en Ventormenta.‡Apportez la Tête d’Onyxia au généralissime Bolvar Fordragon à Stormwind.‡将奥妮克希亚的头颅交给暴风城的伯瓦尔·弗塔根公爵。‡將奧妮克希亞的頭顱交給暴風城的伯瓦爾·弗塔根公爵。',
+    'Leve a Cabeça da Onyxia ao Grão-lorde Bolvar Fordragon em Ventobravo.‡Отнесите голову Ониксии Верховному лорду Болвару Фордрагону в Штормград.‡Bringt Onyxias Kopf zu Hochlord Bolvar Fordragon in Stormwind.‡오닉시아의 머리를 스톰윈드로 갖고 가서 대영주 볼바르 폴드라곤에게 보여주어야 합니다.‡Lleva la cabeza de Onyxia al Alto Señor Bolvar Fordragon, en Ventormenta.‡Llévale la cabeza de Onyxia al alto señor Bolvar Fordragón en Ventormenta.‡Apportez la Tête d’Onyxia au généralissime Bolvar Fordragon à Stormwind.‡将奥妮克希亚的头颅交给暴风城的伯瓦尔·弗塔根公爵。‡將奧妮克希亞的頭顱交給暴風城的伯瓦爾·弗塔根公爵。',
   }
 },
 [7496] = {
@@ -78660,7 +78660,7 @@
   -- Item
   '‡Универсальный гномский дистанционный пульт‡Gnomenuniversalfernbedienung‡노움의 만능 원격조종기‡Mando universal gnómico‡Mando universal gnómico‡Télécommande universelle gnome‡侏儒通用遥控器‡地精通用遙控器',
   { -- Npc
-    'Maga Sangrenta Lynnore‡Волшебница крови Линора‡Blutmagierin Lynnore‡혈법사 린노어‡Mago sangriento Lynnore‡Mago sangriento Lynnore‡Mage de sang Lynnore‡血法师莱诺雷‡血法師萊諾雷',
+    'Maga Sangrenta Lynnore‡Волшебница крови Линора‡Blutmagierin Lynnore‡혈법사 린노어‡Mago sangriento Lynnore‡Maga sangrienta Lynnore‡Mage de sang Lynnore‡血法师莱诺雷‡血法師萊諾雷',
     nil,
   },
   nil,
@@ -79935,7 +79935,7 @@
   -- Item
   'Rubi do Colar Estilhaçado‡Рубин поврежденного ожерелья‡Zerrissene Halskette-Rubin‡부서진 목걸이의 루비‡Rubí del collar destrozado‡Rubí del collar destrozado‡Rubis de collier brisé‡破碎项链上的红宝石‡破碎項鍊上的紅寶石',
   { -- Npc
-    'Serviçal de Grol‡Слуга Грола‡Diener von Grol‡그롤의 하수인‡Vasallo de Grol‡Vasallo de Grol‡Serviteur de Grol‡戈洛尔的仆从‡戈洛爾的僕從',
+    'Serviçal de Grol‡Слуга Грола‡Diener von Grol‡그롤의 하수인‡Vasallo de Grol‡Sirviente de Grol‡Serviteur de Grol‡戈洛尔的仆从‡戈洛爾的僕從',
     nil,
   },
   nil,
@@ -79963,7 +79963,7 @@
   -- Item
   'Topázio do Colar Estilhaçado‡Топаз поврежденного ожерелья‡Zerrissene Halskette-Topas‡부서진 목걸이의 토파즈‡Topacio del collar destrozado‡Topacio del collar destrozado‡Topaze de collier brisé‡破碎项链上的黄宝石‡破碎項鍊上的黃寶石',
   { -- Npc
-    'Serviçal de Sevine‡Слуга Севины‡Diener von Sevine‡세바인의 하수인‡Vasallo de Sevine‡Vasallo de Sevine‡Serviteur de Sevine‡瑟温妮的仆从‡瑟溫妮的僕從',
+    'Serviçal de Sevine‡Слуга Севины‡Diener von Sevine‡세바인의 하수인‡Vasallo de Sevine‡Sirviente de Sevine‡Serviteur de Sevine‡瑟温妮的仆从‡瑟溫妮的僕從',
     nil,
   },
   nil,
@@ -80874,7 +80874,7 @@
 [7775] = {
   nil,
   { -- Npc
-    'Gregan Cospechope‡Греган Пивоплюй‡Gregan Brewspewer‡그레간 브루스퓨‡Gregan Vomitabrebaje‡Gregan Vomitabrebaje‡Gregan Brewspewer‡格雷甘·山酒‡格雷甘·山酒',
+    'Gregan Cospechope‡Греган Пивоплюй‡Gregan Brewspewer‡그레간 브루스퓨‡Gregan Vomitabrebaje‡Gregan Tirabirras‡Gregan Brewspewer‡格雷甘·山酒‡格雷甘·山酒',
     nil,
   },
   nil,
@@ -80932,7 +80932,7 @@
   { -- Quest
     'O Senhor dos Rocha Negra‡Владыка Черной горы‡Der Herrscher von Blackrock‡검은바위부족의 군주‡Señor de Roca Negra‡Señor de Roca Negra‡Le seigneur de Blackrock‡黑石之王‡黑石之王',
     nil,
-    'Leve a Cabeça de Nefarian para o Grão-lorde Bolvar Fordragon, em Ventobravo.‡Отнесите голову Нефариана Верховному лорду Болвару Фордрагону в Штормград.‡Bringt Hochlord Bolvar Fordragon in Stormwind den Kopf von Nefarian.‡스톰윈드에 있는 대영주 볼바르 폴드라곤에게 네파리안의 머리를 가져가야 합니다.‡Llévale la cabeza de Nefarian al alto señor Bolvar Fordragón en Ventormenta.‡Lleva la cabeza de Nefarian al rey Varian Wrynn en Ventormenta.‡Apporter la Tête de Nefarian au généralissime Bolvar Fordragon à Stormwind.‡将奈法利安的头颅交给暴风城的伯瓦尔·弗塔根公爵。‡將奈法利安的頭顱交給暴風城的伯瓦爾·弗塔根公爵。',
+    'Leve a Cabeça de Nefarian para o Grão-lorde Bolvar Fordragon, em Ventobravo.‡Отнесите голову Нефариана Верховному лорду Болвару Фордрагону в Штормград.‡Bringt Hochlord Bolvar Fordragon in Stormwind den Kopf von Nefarian.‡스톰윈드에 있는 대영주 볼바르 폴드라곤에게 네파리안의 머리를 가져가야 합니다.‡Llévale la cabeza de Nefarian al alto señor Bolvar Fordragón en Ventormenta.‡Llévale la cabeza de Nefarian al alto señor Bolvar Fordragón en Ventormenta.‡Apporter la Tête de Nefarian au généralissime Bolvar Fordragon à Stormwind.‡将奈法利安的头颅交给暴风城的伯瓦尔·弗塔根公爵。‡將奈法利安的頭顱交給暴風城的伯瓦爾·弗塔根公爵。',
   }
 },
 [7782] = {
@@ -80942,20 +80942,20 @@
   { -- Quest
     'O Senhor dos Rocha Negra‡Владыка Черной горы‡Der Herrscher von Blackrock‡검은바위부족의 군주‡Señor de Roca Negra‡Señor de Roca Negra‡Le seigneur de Rochenoire‡黑石之王‡黑石之王',
     nil,
-    'Vá até o Vale dos Heróis, em Ventobravo, e fale com o Marechal de Campo Afrasiabi.‡Поговорите с фельдмаршалом Афрасиаби в Аллее Героев рядом со Штормградом.‡Reist in nach Stormwind in das Tal der Helden und sprecht mit Feldmarschall Afrasiabi.‡스톰윈드에 있는 영웅의 계곡으로 가서 야전사령관 아프라샤비와 대화하십시오.‡Vete al Valle de los Héroes, en la Ciudad de Ventormenta, y habla con el mariscal de campo Afrasiabi.‡Vete al Valle de los Héroes, en la Ciudad de Ventormenta, y habla con el mariscal de campo Afrasiabi.‡Allez à la vallée des Héros de Hurlevent et parlez au grand maréchal Afrasiabi.‡回到暴风城的英雄谷，与艾法希比元帅谈一谈。‡回到暴風城的英雄谷，與艾法希比元帥談壹談。',
+    'Vá até o Vale dos Heróis, em Ventobravo, e fale com o Marechal de Campo Afrasiabi.‡Поговорите с фельдмаршалом Афрасиаби в Аллее Героев рядом со Штормградом.‡Reist in nach Stormwind in das Tal der Helden und sprecht mit Feldmarschall Afrasiabi.‡스톰윈드에 있는 영웅의 계곡으로 가서 야전사령관 아프라샤비와 대화하십시오.‡Vete al Valle de los Héroes, en la Ciudad de Ventormenta, y habla con el mariscal de campo Afrasiabi.‡Vete al Valle de los Héroes, en la Ciudad de Ventormenta, y habla con el mariscal de campo Petraponte.‡Allez à la vallée des Héros de Hurlevent et parlez au grand maréchal Afrasiabi.‡回到暴风城的英雄谷，与艾法希比元帅谈一谈。‡回到暴風城的英雄谷，與艾法希比元帥談壹談。',
   }
 },
 [7783] = {
   nil,
   { -- Npc
-    'Loramus Talípedes‡Лорамус Многоног‡Loramus Thalipedes‡로라무스 탈리뻬데스‡Loramus Thalipedes‡Loramus Thalipedes‡Loramus Thalipedes‡洛拉姆斯·萨里比迪斯‡洛拉姆斯·薩里比迪斯',
+    'Loramus Talípedes‡Лорамус Многоног‡Loramus Thalipedes‡로라무스 탈리뻬데스‡Loramus Thalipedes‡Loramus Thalimedes‡Loramus Thalipedes‡洛拉姆斯·萨里比迪斯‡洛拉姆斯·薩里比迪斯',
     nil,
   },
   nil,
   { -- Quest
     'O senhor dos Rocha Negra‡Владыка Черной горы‡Der Herrscher von Blackrock‡검은바위부족의 군주‡Señor de Roca Negra‡Señor de Roca Negra‡Le seigneur de Blackrock‡黑石之王‡黑石之王',
     nil,
-    'Leve a Cabeça de Nefarian para Thrall, em Orgrimmar.‡Отнесите голову Нефариана Траллу в Оргриммар.‡Bringt Thrall in Orgrimmar den Kopf von Nefarian.‡오그리마에 있는 스랄에게 네파리안의 머리을 가져가야 합니다.‡Llévale la cabeza de Nefarian a Thrall en Orgrimmar.‡Lleva la cabeza de Nefarian a Garrosh a Orgrimmar.‡Apportez la Tête de Nefarian à Thrall à Orgrimmar.‡将奈法利安的头颅交给奥格瑞玛的萨尔。‡將奈法利安的頭顱交給奧格瑞瑪的薩爾。',
+    'Leve a Cabeça de Nefarian para Thrall, em Orgrimmar.‡Отнесите голову Нефариана Траллу в Оргриммар.‡Bringt Thrall in Orgrimmar den Kopf von Nefarian.‡오그리마에 있는 스랄에게 네파리안의 머리을 가져가야 합니다.‡Llévale la cabeza de Nefarian a Thrall en Orgrimmar.‡Llévale la cabeza de Nefarian a Thrall en Orgrimmar.‡Apportez la Tête de Nefarian à Thrall à Orgrimmar.‡将奈法利安的头颅交给奥格瑞玛的萨尔。‡將奈法利安的頭顱交給奧格瑞瑪的薩爾。',
   }
 },
 [7784] = {
@@ -82246,7 +82246,7 @@
   },
   nil,
   { -- Quest
-    'Fogos de artifício verdes‡Зеленые петарды‡Grünes Feuerwerk‡녹색 폭죽‡Fuegos artificiales verdes‡Fuego de artificio verde‡Feux d\'artifice vert‡绿色焰火‡綠色焰火',
+    'Fogos de artifício verdes‡Зеленые петарды‡Grünes Feuerwerk‡녹색 폭죽‡Fuegos artificiales verdes‡Fuegos artificiales verdes‡Feux d\'artifice vert‡绿色焰火‡綠色焰火',
     nil,
     nil,
   }
@@ -83597,7 +83597,7 @@
   { -- Quest
     'Epítomes de poder: as braçadeiras do livre-pensador‡Знаки Силы: боевые наручи вольнодумца‡Symbole der Macht: Die Armschützer des Freidenkers‡마력의 보물: 자유사상가의 손목보호대‡Dechados de Poder: los Guardabrazos de librepensador‡Dechados de Poder: los Guardabrazos de librepensador‡Parangons de puissance : les garde-bras de libre-penseur‡权力珍宝：思考者护臂‡權力珍寶：思考者護臂',
     nil,
-    'Leve as Braçadeiras Hakkari Primevas a Jin\'rokh, o Rebentador, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Respeitado/Respeitada> pela Tribo Zandalar.‡Принесите Джин\'року Разрушителю изначальные поручья Хаккари. Кроме того, вам необходимо заслужить как минимум дружелюбное отношение племени Зандалар.|nДжин\'рок Разрушитель живет на острове Йоджамба, в Тернистой долине.‡Bringt urzeitliche Hakkaribindungen zu Jin\'rokh dem Zerstörer. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens freundlich oder höher sein.|nJin\'rokh der Zerstörer befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 팔보호구를 구해 가시덤불 골짜기의 요잠바 섬에 있는 파괴자 진로크에게 가져가야 합니다.|n잔달라 부족에게 약간 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Jin\'rokh el Cercenador: una pretina Hakkari primigenia. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nJin\'rokh el Cercenador está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Jin\'rokh el Rompedor: una pretina Hakkari primigenia. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nJin\'rokh el Rompedor está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez des Manchettes primordiales hakkari à Jin\'rokh le Briseur. La tribu Zandalar doit aussi être Amicale envers vous (au minimum).|nJin\'rokh le Briseur se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给击碎者金罗克：1条原始哈卡莱护腕。你还必须在赞达拉部族中达到友善或更高的声望。|n击碎者金罗克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給擊碎者金羅克：1條原始哈卡萊護腕。妳還必須在贊達拉部族中達到友善或更高的聲望。|n擊碎者金羅克在荊棘谷的尤亞姆巴島上。',
+    'Leve as Braçadeiras Hakkari Primevas a Jin\'rokh, o Rebentador, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Respeitado/Respeitada> pela Tribo Zandalar.‡Принесите Джин\'року Разрушителю изначальные поручья Хаккари. Кроме того, вам необходимо заслужить как минимум дружелюбное отношение племени Зандалар.|nДжин\'рок Разрушитель живет на острове Йоджамба, в Тернистой долине.‡Bringt urzeitliche Hakkaribindungen zu Jin\'rokh dem Zerstörer. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens freundlich oder höher sein.|nJin\'rokh der Zerstörer befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 팔보호구를 구해 가시덤불 골짜기의 요잠바 섬에 있는 파괴자 진로크에게 가져가야 합니다.|n잔달라 부족에게 약간 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Jin\'rokh el Cercenador: una pretina Hakkari primigenia. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nJin\'rokh el Cercenador está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Jin\'rokh el Rompedor unas ataduras Hakkari primigenias. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nJin\'rokh el Rompedor está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez des Manchettes primordiales hakkari à Jin\'rokh le Briseur. La tribu Zandalar doit aussi être Amicale envers vous (au minimum).|nJin\'rokh le Briseur se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给击碎者金罗克：1条原始哈卡莱护腕。你还必须在赞达拉部族中达到友善或更高的声望。|n击碎者金罗克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給擊碎者金羅克：1條原始哈卡萊護腕。妳還必須在贊達拉部族中達到友善或更高的聲望。|n擊碎者金羅克在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8054] = {
@@ -83630,7 +83630,7 @@
   { -- Quest
     'Epítomes de poder: as braçadeiras do áugure‡Знаки Силы: наручи авгура‡Symbole der Macht: Die Armschienen des Weissagers‡마력의 보물: 점술가의 팔보호구‡Dechados de Poder: los Brazales de augur‡Dechados de Poder: los Brazales de augur‡Parangons de puissance : les brassards d\'augure‡权力珍宝：预言者护腕‡權力珍寶：預言者護腕',
     nil,
-    'Leve uma Tala Hakkari Primeva a Maywiki de Zuldazar, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Respeitado/Respeitada> pela Tribo Zandalar.‡Принесите Майвики Зулдазарской Изначальные обручья Хаккари. Кроме того, вам необходимо заслужить как минимум дружелюбное отношение племени Зандалар.|nМайвики Зулдазарская живет на острове Йоджамба, в Тернистой долине.‡Bringt urzeitliche Hakkariarmsplinte zu Maywiki von Zuldazar. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens freundlich oder höher sein.|nMaywiki von Zuldazar befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 어깨갑옷을 구해 가시덤불 골짜기의 요잠바 섬에 있는 줄다자르의 메이위키에게 가져가야 합니다.B|n또한 잔달라 부족에게 약간 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Maywiki de Zuldazar: un cabestrillo Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nMaywiki de Zuldazar está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Maywiki de Zuldazar: un cabestrillo Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nMaywiki de Zuldazar está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez des Brachiales primordiales hakkari à Maywiki de Zuldazar. La tribu Zandalar doit aussi être Amicale envers vous (au minimum).|nMaywiki de Zuldazar se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给祖达萨的梅维克：1条原始哈卡莱护臂。你还必须在赞达拉部族中达到友善或更高的声望。|n祖达萨的梅维克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給祖達薩的梅維克：1條原始哈卡萊護臂。妳還必須在贊達拉部族中達到友善或更高的聲望。|n祖達薩的梅維克在荊棘谷的尤亞姆巴島上。',
+    'Leve uma Tala Hakkari Primeva a Maywiki de Zuldazar, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Respeitado/Respeitada> pela Tribo Zandalar.‡Принесите Майвики Зулдазарской Изначальные обручья Хаккари. Кроме того, вам необходимо заслужить как минимум дружелюбное отношение племени Зандалар.|nМайвики Зулдазарская живет на острове Йоджамба, в Тернистой долине.‡Bringt urzeitliche Hakkariarmsplinte zu Maywiki von Zuldazar. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens freundlich oder höher sein.|nMaywiki von Zuldazar befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 어깨갑옷을 구해 가시덤불 골짜기의 요잠바 섬에 있는 줄다자르의 메이위키에게 가져가야 합니다.B|n또한 잔달라 부족에게 약간 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Maywiki de Zuldazar: un cabestrillo Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nMaywiki de Zuldazar está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Maywiki de Zuldazar un cabestrillo Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nMaywiki de Zuldazar está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez des Brachiales primordiales hakkari à Maywiki de Zuldazar. La tribu Zandalar doit aussi être Amicale envers vous (au minimum).|nMaywiki de Zuldazar se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给祖达萨的梅维克：1条原始哈卡莱护臂。你还必须在赞达拉部族中达到友善或更高的声望。|n祖达萨的梅维克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給祖達薩的梅維克：1條原始哈卡萊護臂。妳還必須在贊達拉部族中達到友善或更高的聲望。|n祖達薩的梅維克在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8057] = {
@@ -83640,7 +83640,7 @@
   { -- Quest
     'Epítomes de Poder: as braçadeiras do harúspice‡Знаки Силы: наручи гаруспика‡Symbole der Macht: Die Haruspexarmschienen‡마력의 보물: 제사장의 팔보호구‡Dechados de Poder: los Brazales de adivino‡Dechados de Poder: los brazales de haruspex‡Parangons de puissance : les brassards d\'haruspice‡权力珍宝：占卜师护腕‡權力珍寶：占蔔師護腕',
     nil,
-    'Leve um Pilar Hakkari Primevo a Maywiki de Zuldazar, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Respeitado/Respeitada> pela Tribo Zandalar.‡Принесите Майвики Зулдазарской изначальный браслет Хаккари. Кроме того, вам необходимо заслужить как минимум дружественное отношение племени Зандалар.|nМайвики Зулдазарская находится на острове Йоджамба, в Тернистой долине.‡Bringt eine urzeitliche Hakkaristütze zu Maywiki von Zuldazar. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens freundlich oder höher sein.|nMaywiki von Zuldazar befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 손목갑옷을 구해 가시덤불 골짜기의 요잠바 섬에 있는 줄다자르의 메이위키에게 가져가야 합니다.|n잔달라 부족의 평판이 우호적 이상이어야만 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Maywiki de Zuldazar: un puntal Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nMaywiki de Zuldazar está en Isla Yojamba, en la Vega de Tuercespina.‡Llévale a Maywiki de Zuldazar un puntal Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nMaywiki de Zuldazar está en Isla Yojamba, en la Vega de Tuercespina.‡Rapportez un Étançon primordial hakkari à Maywiki de Zuldazar. La tribu Zandalar doit aussi être Amicale (au minimum).|nMaywiki de Zuldazar se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给祖达萨的梅维克：1条原始哈卡莱直柱。你还必须在赞达拉部族中达到友好或更高的声望。|n祖达萨的梅维克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給祖達薩的梅維克：1條原始哈卡萊直柱。妳還必須在贊達拉部族中達到友好或更高的聲望。|n祖達薩的梅維克在荊棘谷的尤亞姆巴島上。',
+    'Leve um Pilar Hakkari Primevo a Maywiki de Zuldazar, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Respeitado/Respeitada> pela Tribo Zandalar.‡Принесите Майвики Зулдазарской изначальный браслет Хаккари. Кроме того, вам необходимо заслужить как минимум дружественное отношение племени Зандалар.|nМайвики Зулдазарская находится на острове Йоджамба, в Тернистой долине.‡Bringt eine urzeitliche Hakkaristütze zu Maywiki von Zuldazar. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens freundlich oder höher sein.|nMaywiki von Zuldazar befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 손목갑옷을 구해 가시덤불 골짜기의 요잠바 섬에 있는 줄다자르의 메이위키에게 가져가야 합니다.|n잔달라 부족의 평판이 우호적 이상이어야만 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Maywiki de Zuldazar: un puntal Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nMaywiki de Zuldazar está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Maywiki de Zuldazar un puntal Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nMaywiki de Zuldazar está en Isla Yojamba, en la Vega de Tuercespina.‡Rapportez un Étançon primordial hakkari à Maywiki de Zuldazar. La tribu Zandalar doit aussi être Amicale (au minimum).|nMaywiki de Zuldazar se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给祖达萨的梅维克：1条原始哈卡莱直柱。你还必须在赞达拉部族中达到友好或更高的声望。|n祖达萨的梅维克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給祖達薩的梅維克：1條原始哈卡萊直柱。妳還必須在贊達拉部族中達到友好或更高的聲望。|n祖達薩的梅維克在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8058] = {
@@ -83650,7 +83650,7 @@
   { -- Quest
     'As epítomes do poder: as braçadeiras do vindicante‡Знаки Силы: боевые наручи блюстителя‡Symbole der Macht: Die Armschützer des Vollstreckers‡마력의 보물: 구원자의 손목보호대‡Dechados de Poder: los Guardabrazos de vindicador‡Dechados de Poder: los Guardabrazos de vindicador‡Parangons de puissance : les garde-bras de redresseur de torts‡权力珍宝：辩护者护臂‡權力珍寶：辯護者護臂',
     nil,
-    'Leve uma Tala Hakkari Primeva a Jin\'rokh, o Rebentador. Sua reputação com a Tribo Zandalar precisa ser igual ou superior a <Amistoso/Amistosa>.|nJin\'rokh, o Rebentador, se encontra na Ilha Yojamba, que fica na Selva do Espinhaço.‡Принесите Джин\'року Разрушителю изначальные обручья Хаккари. Кроме того, вам необходимо заслужить как минимум дружелюбное отношение племени Зандалар.|nДжин\'рок Разрушитель живет на острове Йоджамба, в Тернистой долине.‡Bringt urzeitliche Hakkariarmsplinte zu Jin\'rokh dem Zerstörer. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens freundlich oder höher sein.|nJin\'rokh der Zerstörer befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 어깨갑옷을 구해 가시덤불 골짜기의 요잠바 섬에 있는 파괴자 진로크에게 가져가야 합니다.|n잔달라 부족에게 약간 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Jin\'rokh el Cercenador: un cabestrillo Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nJin\'rokh el Cercenador está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Jin\'rokh el Rompedor: un cabestrillo Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nJin\'rokh el Rompedor está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez des Brachiales primordiales hakkari à Jin\'rokh le Briseur. La tribu Zandalar doit aussi être Amicale envers vous (au minimum).|nJin\'rokh le Briseur se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给击碎者金罗克：1条原始哈卡莱护臂。你还必须在赞达拉部族中达到友善或更高的声望。|n击碎者金罗克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給擊碎者金羅克：1條原始哈卡萊護臂。妳還必須在贊達拉部族中達到友善或更高的聲望。|n擊碎者金羅克在荊棘谷的尤亞姆巴島上。',
+    'Leve uma Tala Hakkari Primeva a Jin\'rokh, o Rebentador. Sua reputação com a Tribo Zandalar precisa ser igual ou superior a <Amistoso/Amistosa>.|nJin\'rokh, o Rebentador, se encontra na Ilha Yojamba, que fica na Selva do Espinhaço.‡Принесите Джин\'року Разрушителю изначальные обручья Хаккари. Кроме того, вам необходимо заслужить как минимум дружелюбное отношение племени Зандалар.|nДжин\'рок Разрушитель живет на острове Йоджамба, в Тернистой долине.‡Bringt urzeitliche Hakkariarmsplinte zu Jin\'rokh dem Zerstörer. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens freundlich oder höher sein.|nJin\'rokh der Zerstörer befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 어깨갑옷을 구해 가시덤불 골짜기의 요잠바 섬에 있는 파괴자 진로크에게 가져가야 합니다.|n잔달라 부족에게 약간 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Jin\'rokh el Cercenador: un cabestrillo Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nJin\'rokh el Cercenador está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Jin\'rokh el Rompedor un cabestrillo Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nJin\'rokh el Rompedor está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez des Brachiales primordiales hakkari à Jin\'rokh le Briseur. La tribu Zandalar doit aussi être Amicale envers vous (au minimum).|nJin\'rokh le Briseur se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给击碎者金罗克：1条原始哈卡莱护臂。你还必须在赞达拉部族中达到友善或更高的声望。|n击碎者金罗克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給擊碎者金羅克：1條原始哈卡萊護臂。妳還必須在贊達拉部族中達到友善或更高的聲望。|n擊碎者金羅克在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8059] = {
@@ -83660,7 +83660,7 @@
   { -- Quest
     'Epítomes de poder: as braçadeiras do demoníaco‡Знаки Силы: напульсники бесноватого‡Symbole der Macht: Die Handlappen des Besessenen‡마력의 보물: 악령술사의 손목띠‡Dechados de Poder: los Brazaletes de endemoniado‡Dechados de Poder: los Brazaletes de endemoniado‡Parangons de puissance : les couvre-bras de démoniaque‡权力珍宝：恶魔师裹带‡權力珍寶：惡魔師裹帶',
     nil,
-    'Leve um Pilar Hakkari Primevo a Al\'tabim, que Tudo Vê. Sua reputação com a Tribo Zandalar precisa ser igual ou superior a <Amistoso/Amistosa>.|nAl\'tabim, que Tudo Vê, se encontra na Ilha Yojamba, que fica na Selva do Espinhaço.‡Принесите Джин\'року Разрушителю изначальные обручья Хаккари. Кроме того, вам необходимо заслужить как минимум дружелюбное отношение племени Зандалар.|nДжин\'рок Разрушитель живет на острове Йоджамба, в Тернистой долине.‡Bringt eine urzeitliche Hakkaristütze zu Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens freundlich oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 손목갑옷을 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 약간 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: un puntal Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim, El que todo lo ve: un puntal Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nAl\'tabim, El que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez un Etançon primordial hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi être Amicale (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给全知者阿塔比姆：1条原始哈卡莱直柱。你还必须在赞达拉部族中达到友善或更高的声望。|n全知者阿塔比姆在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給全知者阿塔比姆：1條原始哈卡萊直柱。妳還必須在贊達拉部族中達到友善或更高的聲望。|n全知者阿塔比姆在荊棘谷的尤亞姆巴島上。',
+    'Leve um Pilar Hakkari Primevo a Al\'tabim, que Tudo Vê. Sua reputação com a Tribo Zandalar precisa ser igual ou superior a <Amistoso/Amistosa>.|nAl\'tabim, que Tudo Vê, se encontra na Ilha Yojamba, que fica na Selva do Espinhaço.‡Принесите Джин\'року Разрушителю изначальные обручья Хаккари. Кроме того, вам необходимо заслужить как минимум дружелюбное отношение племени Зандалар.|nДжин\'рок Разрушитель живет на острове Йоджамба, в Тернистой долине.‡Bringt eine urzeitliche Hakkaristütze zu Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens freundlich oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 손목갑옷을 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 약간 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: un puntal Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Al\'tabim el que todo lo ve un puntal Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez un Etançon primordial hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi être Amicale (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给全知者阿塔比姆：1条原始哈卡莱直柱。你还必须在赞达拉部族中达到友善或更高的声望。|n全知者阿塔比姆在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給全知者阿塔比姆：1條原始哈卡萊直柱。妳還必須在贊達拉部族中達到友善或更高的聲望。|n全知者阿塔比姆在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8060] = {
@@ -83670,7 +83670,7 @@
   { -- Quest
     'Epítomes de poder: os braceletes do ilusionista‡Знаки Силы: напульсники мастера иллюзий‡Symbole der Macht: Die Handlappen des Illusionisten‡마력의 보물: 환영술사의 손목띠‡Dechados de Poder: los Brazaletes de ilusionista‡Dechados de Poder: los Brazaletes de ilusionista‡Parangons de puissance : les couvre-bras d’illusionniste‡权力珍宝：幻术师裹布‡權力珍寶：幻術師裹布',
     nil,
-    'Leve as Braçadeiras Hakkari Primevas a Al\'tabim, que Tudo Vê, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Respeitado/Respeitada> pela Tribo Zandalar.‡Принесите Джин\'року Разрушителю изначальные обручья Хаккари. Кроме того, вам необходимо заслужить как минимум дружелюбное отношение племени Зандалар.|nДжин\'рок Разрушитель живет на острове Йоджамба, в Тернистой долине.‡Bringt urzeitliche Hakkaribindungen zu Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens freundlich oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 팔보호구를 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 약간 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: una pretina Hakkari primigenia. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim, El que todo lo ve: una pretina Hakkari primigenia. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nAl\'tabim, El que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez des Manchettes primordiales hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi être Amicale (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给全知者阿塔比姆：1条原始哈卡莱护腕。你还必须在赞达拉部族中达到友善或更高的声望。|n全知者阿塔比姆克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給全知者阿塔比姆：1條原始哈卡萊護腕。妳還必須在贊達拉部族中達到友善或更高的聲望。|n全知者阿塔比姆克在荊棘谷的尤亞姆巴島上。',
+    'Leve as Braçadeiras Hakkari Primevas a Al\'tabim, que Tudo Vê, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Respeitado/Respeitada> pela Tribo Zandalar.‡Принесите Джин\'року Разрушителю изначальные обручья Хаккари. Кроме того, вам необходимо заслужить как минимум дружелюбное отношение племени Зандалар.|nДжин\'рок Разрушитель живет на острове Йоджамба, в Тернистой долине.‡Bringt urzeitliche Hakkaribindungen zu Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens freundlich oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 팔보호구를 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 약간 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: una pretina Hakkari primigenia. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Al\'tabim el que todo lo ve unas ataduras Hakkari primigenias. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez des Manchettes primordiales hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi être Amicale (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给全知者阿塔比姆：1条原始哈卡莱护腕。你还必须在赞达拉部族中达到友善或更高的声望。|n全知者阿塔比姆克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給全知者阿塔比姆：1條原始哈卡萊護腕。妳還必須在贊達拉部族中達到友善或更高的聲望。|n全知者阿塔比姆克在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8061] = {
@@ -83680,7 +83680,7 @@
   { -- Quest
     'Epítomes de poder: as braçadeiras do confessor‡Знаки Силы: напульсники исповедника‡Symbole der Macht: Die Handlappen des Glaubenshüters‡마력의 보물: 성자의 손목띠‡Dechados de Poder: los Brazaletes de confesor‡Dechados de Poder: los Brazaletes de confesor‡Parangons de puissance : les couvre-bras de confesseur‡权力珍宝：忏悔者裹布‡權力珍寶：懺悔者裹布',
     nil,
-    'Leve um Pilar Hakkari Primevo a Al\'tabim, que Tudo Vê, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Respeitado/Respeitada> pela Tribo Zandalar.‡Принесите Джин\'року Разрушителю изначальные обручья Хаккари. Кроме того, вам необходимо заслужить как минимум дружелюбное отношение племени Зандалар.|nДжин\'рок Разрушитель живет на острове Йоджамба, в Тернистой долине.‡Bringt eine urzeitliche Hakkaristütze zu Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens freundlich oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 손목갑옷을 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 약간 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: un puntal Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim, El que todo lo ve: un puntal Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nAl\'tabim, El que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez un Etançon primordial hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi être Amicale (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给全知者阿塔比姆：1条原始哈卡莱直柱。你还必须在赞达拉部族中达到友善或更高的声望。|n全知者阿塔比姆在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給全知者阿塔比姆：1條原始哈卡萊直柱。妳還必須在贊達拉部族中達到友善或更高的聲望。|n全知者阿塔比姆在荊棘谷的尤亞姆巴島上。',
+    'Leve um Pilar Hakkari Primevo a Al\'tabim, que Tudo Vê, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Respeitado/Respeitada> pela Tribo Zandalar.‡Принесите Джин\'року Разрушителю изначальные обручья Хаккари. Кроме того, вам необходимо заслужить как минимум дружелюбное отношение племени Зандалар.|nДжин\'рок Разрушитель живет на острове Йоджамба, в Тернистой долине.‡Bringt eine urzeitliche Hakkaristütze zu Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens freundlich oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 손목갑옷을 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 약간 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: un puntal Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Al\'tabim el que todo lo ve un puntal Hakkari primigenio. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez un Etançon primordial hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi être Amicale (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给全知者阿塔比姆：1条原始哈卡莱直柱。你还必须在赞达拉部族中达到友善或更高的声望。|n全知者阿塔比姆在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給全知者阿塔比姆：1條原始哈卡萊直柱。妳還必須在贊達拉部族中達到友善或更高的聲望。|n全知者阿塔比姆在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8062] = {
@@ -83690,7 +83690,7 @@
   { -- Quest
     'Epítomes de poder: as braçadeiras do predador‡Знаки Силы: наручи хищника‡Symbole der Macht: Die Armschienen des Raubtiers‡마력의 보물: 수렵꾼의 팔보호구‡Dechados de Poder: los Brazales de depredador‡Dechados de Poder: los Brazales de depredador‡Parangons de puissance : les brassards de prédateur‡权力珍宝：捕猎者护腕‡權力珍寶：捕獵者護腕',
     nil,
-    'Leve as Braçadeiras Hakkari Primevas a Falthir, o Cego, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Respeitado/Respeitada> pela Tribo Zandalar.‡Принесите Фальтиру Слепому из Зул\'Гуруба изначальные наручники Хаккари. Кроме того, вам необходимо заслужить как минимум дружественное отношение племени Зандалар.|nФальтир Слепой живет на острове Йоджамба, в Тернистой долине.‡Bringt das folgende Symbol der Macht aus Zul\'Gurub zu Falthir dem Blinden: Urzeitliche Hakkaribindungen. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens freundlich oder höher sein.|nFalthir der Blinde befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 다음의 마력의 보물을 가시덤불 골짜기의 요잠바 섬에 있는 장님 팔디르에게 가져가야 합니다: 고대 학카리 팔보호구 1개|n잔달라 부족에게 약간 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Falthir el Ciego: una pretina Hakkari primigenia. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar. Falthir el Ciego está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Falthir el Ciego: una pretina Hakkari primigenia. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nFalthir el Ciego está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez des Manchettes primordiales hakkari à Falthir le Sans-vue. La tribu Zandalar doit aussi être Amicale envers vous (au minimum).|nFalthir le Sans-vue se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给盲眼法希尔克：1条原始哈卡莱护腕。你还必须在赞达拉部族中达到友善或更高的声望。|n盲眼法希尔克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給盲眼法希爾克：1條原始哈卡萊護腕。妳還必須在贊達拉部族中達到友善或更高的聲望。|n盲眼法希爾克在荊棘谷的尤亞姆巴島上。',
+    'Leve as Braçadeiras Hakkari Primevas a Falthir, o Cego, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Respeitado/Respeitada> pela Tribo Zandalar.‡Принесите Фальтиру Слепому из Зул\'Гуруба изначальные наручники Хаккари. Кроме того, вам необходимо заслужить как минимум дружественное отношение племени Зандалар.|nФальтир Слепой живет на острове Йоджамба, в Тернистой долине.‡Bringt das folgende Symbol der Macht aus Zul\'Gurub zu Falthir dem Blinden: Urzeitliche Hakkaribindungen. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens freundlich oder höher sein.|nFalthir der Blinde befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 다음의 마력의 보물을 가시덤불 골짜기의 요잠바 섬에 있는 장님 팔디르에게 가져가야 합니다: 고대 학카리 팔보호구 1개|n잔달라 부족에게 약간 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Falthir el Ciego: una pretina Hakkari primigenia. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar. Falthir el Ciego está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Falthir el Ciego: unas ataduras Hakkari primigenias. También debes tener una reputación mínima de <amistoso/amistosa> con la tribu Zandalar.|nFalthir el Ciego está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez des Manchettes primordiales hakkari à Falthir le Sans-vue. La tribu Zandalar doit aussi être Amicale envers vous (au minimum).|nFalthir le Sans-vue se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给盲眼法希尔克：1条原始哈卡莱护腕。你还必须在赞达拉部族中达到友善或更高的声望。|n盲眼法希尔克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給盲眼法希爾克：1條原始哈卡萊護腕。妳還必須在贊達拉部族中達到友善或更高的聲望。|n盲眼法希爾克在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8063] = {
@@ -83720,7 +83720,7 @@
   { -- Quest
     'Epítomes de poder: a túnica do harúspice‡Знаки Силы: мундир гаруспика‡Symbole der Macht: Die Haruspextunika‡마력의 보물: 제사장의 튜닉‡Dechados de Poder: la guerrera de haruspex‡Dechados de Poder: la guerrera de haruspex‡Parangons de puissance : la tunique d\'haruspice‡权力珍宝：占卜师外套‡權力珍寶：占蔔師外套',
     nil,
-    'Leve um Tabardo Hakkari Primevo a Maywiki de Zuldazar, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser <Reverenciado/Reverenciada> pela Tribo Zandalar.‡Принесите Майвики Зулдазарской Изначальную гербовую накидку Хаккари.|nМайвики Зулдазарская находится на острове Йоджамба, в Тернистой долине.‡Bringt einen urzeitlichen Hakkariwaffenrock zu Maywiki von Zuldazar. Maywiki von Zuldazar befindet sich auf der Insel Yojamba im Schlingendorntal. Die Einstellung des Stammes der Zandalar muss Euch gegenüber außerdem respektvoll sein.‡줄구룹에서 고대 학카리 휘장을 구해 가시덤불 골짜기의 요잠바 섬에 있는 줄다자르의 메이위키에게 가져가야 합니다. 또한 잔달라 부족에게 매우 우호적 이상의 평판을 얻어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Maywiki de Zuldazar: un tabardo Hakkari primigenio. Maywiki de Zuldazar está en Isla Yojamba, en Vega de Tuercespina. También debes tener una reputación de <venerado/venerada> con Zandalar.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Maywiki de Zuldazar: un tabardo Hakkari primigenio. Maywiki de Zuldazar está en Isla Yojamba, en Vega de Tuercespina. También debes tener una reputación de <venerado/venerada> con Zandalar.‡Rapportez un Tabard primordial hakkari à Maywiki de Zuldazar. Maywiki de Zuldazar se trouve sur l’île de Yojamba, dans la vallée de Strangleronce. La tribu Zandalar doit aussi vous Révérer (au minimum).‡从祖尔格拉布把以下权力珍宝带给祖达萨的梅维克：1条原始哈卡莱徽章。你还必须在赞达拉部族中达到崇敬或更高的声望。|n祖达萨的梅维克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給祖達薩的梅維克：1條原始哈卡萊徽章。妳還必須在贊達拉部族中達到崇敬或更高的聲望。|n祖達薩的梅維克在荊棘谷的尤亞姆巴島上。',
+    'Leve um Tabardo Hakkari Primevo a Maywiki de Zuldazar, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser <Reverenciado/Reverenciada> pela Tribo Zandalar.‡Принесите Майвики Зулдазарской Изначальную гербовую накидку Хаккари.|nМайвики Зулдазарская находится на острове Йоджамба, в Тернистой долине.‡Bringt einen urzeitlichen Hakkariwaffenrock zu Maywiki von Zuldazar. Maywiki von Zuldazar befindet sich auf der Insel Yojamba im Schlingendorntal. Die Einstellung des Stammes der Zandalar muss Euch gegenüber außerdem respektvoll sein.‡줄구룹에서 고대 학카리 휘장을 구해 가시덤불 골짜기의 요잠바 섬에 있는 줄다자르의 메이위키에게 가져가야 합니다. 또한 잔달라 부족에게 매우 우호적 이상의 평판을 얻어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Maywiki de Zuldazar: un tabardo Hakkari primigenio. Maywiki de Zuldazar está en Isla Yojamba, en Vega de Tuercespina. También debes tener una reputación de <venerado/venerada> con Zandalar.‡Lleva a Maywiki de Zuldazar un tabardo Hakkari primigenio. Maywiki de Zuldazar está en Isla Yojamba, en Vega de Tuercespina. También debes tener una reputación de <venerado/venerada> con Zandalar.‡Rapportez un Tabard primordial hakkari à Maywiki de Zuldazar. Maywiki de Zuldazar se trouve sur l’île de Yojamba, dans la vallée de Strangleronce. La tribu Zandalar doit aussi vous Révérer (au minimum).‡从祖尔格拉布把以下权力珍宝带给祖达萨的梅维克：1条原始哈卡莱徽章。你还必须在赞达拉部族中达到崇敬或更高的声望。|n祖达萨的梅维克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給祖達薩的梅維克：1條原始哈卡萊徽章。妳還必須在贊達拉部族中達到崇敬或更高的聲望。|n祖達薩的梅維克在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8066] = {
@@ -83742,7 +83742,7 @@
   { -- Quest
     'Epítomes de poder: as dragonas do predador‡Знаки Силы: оплечье хищника‡Symbole der Macht: Der Mantel des Raubtiers‡마력의 보물: 수렵꾼의 어깨보호대‡Dechados de Poder: el Manto de depredador‡Dechados de Poder: el Manto de depredador‡Parangons de puissance : le mantelet de prédateur‡权力珍宝：捕猎者衬肩‡權力珍寶：捕獵者襯肩',
     nil,
-    'Leve a Égide Hakkari Primeva a Falthir, o Cego, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Reverenciado/Reverenciada> pela Tribo Zandalar.‡Принесите Фальтиру Слепому из Зул\'Гуруба изначальную эгиду Хаккари. Кроме того, вам необходимо заслужить как минимум почтительное отношение племени Зандалар.|nФальтир Слепой живет на острове Йоджамба, в Тернистой долине.‡Bringt das folgende Symbol der Macht aus Zul\'Gurub zu Falthir dem Blinden: Eine urzeitliche Aegis der Hakkari. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens respektvoll oder höher sein.|nFalthir der Blinde befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 다음의 마력의 보물을 구해 가시덤불 골짜기의 요잠바 섬에 있는 장님 팔디르에게 가져가야 합니다: 고대 학카리 아이기스 1개|n잔달라 부족에게 매우 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Falthir el Ciego: unos auspicios Hakkari primigenio. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar. Falthir el Ciego está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Falthir el Ciego: unos auspicios Hakkari primigenio. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nFalthir el Ciego está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez une Egide primordiale hakkari à Falthir le Sans-vue. La tribu Zandalar doit aussi vous Révérer (au minimum).|nFalthir le Sans-vue se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给盲眼法希尔：1块原始哈卡莱盾牌。你还必须在赞达拉部族中达到崇敬或更高的声望。|n盲眼法希尔在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給盲眼法希爾：1塊原始哈卡萊盾牌。妳還必須在贊達拉部族中達到崇敬或更高的聲望。|n盲眼法希爾在荊棘谷的尤亞姆巴島上。',
+    'Leve a Égide Hakkari Primeva a Falthir, o Cego, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Reverenciado/Reverenciada> pela Tribo Zandalar.‡Принесите Фальтиру Слепому из Зул\'Гуруба изначальную эгиду Хаккари. Кроме того, вам необходимо заслужить как минимум почтительное отношение племени Зандалар.|nФальтир Слепой живет на острове Йоджамба, в Тернистой долине.‡Bringt das folgende Symbol der Macht aus Zul\'Gurub zu Falthir dem Blinden: Eine urzeitliche Aegis der Hakkari. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens respektvoll oder höher sein.|nFalthir der Blinde befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 다음의 마력의 보물을 구해 가시덤불 골짜기의 요잠바 섬에 있는 장님 팔디르에게 가져가야 합니다: 고대 학카리 아이기스 1개|n잔달라 부족에게 매우 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Falthir el Ciego: unos auspicios Hakkari primigenio. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar. Falthir el Ciego está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Falthir el Ciego: una égida Hakkari primigenia. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nFalthir el Ciego está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez une Egide primordiale hakkari à Falthir le Sans-vue. La tribu Zandalar doit aussi vous Révérer (au minimum).|nFalthir le Sans-vue se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给盲眼法希尔：1块原始哈卡莱盾牌。你还必须在赞达拉部族中达到崇敬或更高的声望。|n盲眼法希尔在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給盲眼法希爾：1塊原始哈卡萊盾牌。妳還必須在贊達拉部族中達到崇敬或更高的聲望。|n盲眼法希爾在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8068] = {
@@ -83753,7 +83753,7 @@
   { -- Quest
     'Epítomes de poder: as dragonas do ilusionista‡Знаки Силы: оплечье мастера иллюзий‡Symbole der Macht: Der Mantel des Illusionisten‡마력의 보물: 환영술사의 어깨보호대‡Dechados de Poder: el Manto de ilusionista‡Dechados de Poder: el Manto de ilusionista‡Parangons de puissance : le mantelet d’illusionniste‡权力珍宝：幻术师衬肩‡權力珍寶：幻術師襯肩',
     nil,
-    'Leve um Xale Hakkari Primevo a Al\'tabim, que Tudo Vê, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Honrado/Honrada> pela Tribo Zandalar.‡Принесите Ал\'табиму Всевидящему изначальную лацерну Хаккари. Кроме того, вам необходимо заслужить как минимум уважительное отношение племени Зандалар.|nАльтабим Всевидящий живет на острове Йоджамба, в Тернистой долине.‡Bringt einen urzeitlichen Hakkarischal zu Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens wohlwollend oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 어깨걸이를 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: un chal Hakkari primigenio. También debes tener una reputación mínima de <honrado/honrada> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim, El que todo lo ve: un chal Hakkari primigenio. También debes tener una reputación mínima de honorable con la tribu Zandalar.|nAl\'tabim, El que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez un Châle primordial hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi vous Honorer (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给全知者阿塔比姆：1条原始哈卡莱披肩。你还必须在赞达拉部族中达到尊敬或更高的声望。|n全知者阿塔比姆克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給全知者阿塔比姆：1條原始哈卡萊披肩。妳還必須在贊達拉部族中達到尊敬或更高的聲望。|n全知者阿塔比姆克在荊棘谷的尤亞姆巴島上。',
+    'Leve um Xale Hakkari Primevo a Al\'tabim, que Tudo Vê, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Honrado/Honrada> pela Tribo Zandalar.‡Принесите Ал\'табиму Всевидящему изначальную лацерну Хаккари. Кроме того, вам необходимо заслужить как минимум уважительное отношение племени Зандалар.|nАльтабим Всевидящий живет на острове Йоджамба, в Тернистой долине.‡Bringt einen urzeitlichen Hakkarischal zu Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens wohlwollend oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 어깨걸이를 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: un chal Hakkari primigenio. También debes tener una reputación mínima de <honrado/honrada> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Al\'tabim el que todo lo ve un chal Hakkari primigenio. También debes tener una reputación mínima de honorable con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez un Châle primordial hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi vous Honorer (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给全知者阿塔比姆：1条原始哈卡莱披肩。你还必须在赞达拉部族中达到尊敬或更高的声望。|n全知者阿塔比姆克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給全知者阿塔比姆：1條原始哈卡萊披肩。妳還必須在贊達拉部族中達到尊敬或更高的聲望。|n全知者阿塔比姆克在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8069] = {
@@ -83764,7 +83764,7 @@
   { -- Quest
     'Epítomes de poder: a veste do ilusionista‡Знаки Силы: одеяние мастера иллюзий‡Symbole der Macht: Die Roben des Illusionisten‡마력의 보물: 환영술사의 로브‡Dechados de Poder: la Toga de ilusionista‡Dechados de Poder: la Toga de ilusionista‡Parangons de puissance : la robe d’illusionniste‡权力珍宝：幻术师长袍‡權力珍寶：幻術師長袍',
     nil,
-    'Leve um Gibão Hakkari Primevo a Al\'tabim, que Tudo Vê, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Reverenciado/Reverenciada> pela Tribo Zandalar.‡Принесите Ал\'табиму Всевидящему изначальную рубашку Хаккари. Кроме того, вам необходимо заслужить как минимум почтительное отношение племени Зандалар.|nАльтабим Всевидящий живет на острове Йоджамба, в Тернистой долине.‡Bringt einen urzeitlichen Hakkarikosak Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens respektvoll oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 조끼를 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 매우 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: un cosaco Hakkari primigenio. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Al\'tabim, El que todo lo ve una casaca hakkari primigenia. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nAl\'tabim, El que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez une Casaque primordiale hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi vous Révérer (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给全知者阿塔比姆：1块原始哈卡莱套索。你还必须在赞达拉部族中达到崇敬或更高的声望。|n全知者阿塔比姆在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給全知者阿塔比姆：1塊原始哈卡萊套索。妳還必須在贊達拉部族中達到崇敬或更高的聲望。|n全知者阿塔比姆在荊棘谷的尤亞姆巴島上。',
+    'Leve um Gibão Hakkari Primevo a Al\'tabim, que Tudo Vê, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Reverenciado/Reverenciada> pela Tribo Zandalar.‡Принесите Ал\'табиму Всевидящему изначальную рубашку Хаккари. Кроме того, вам необходимо заслужить как минимум почтительное отношение племени Зандалар.|nАльтабим Всевидящий живет на острове Йоджамба, в Тернистой долине.‡Bringt einen urzeitlichen Hakkarikosak Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens respektvoll oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 조끼를 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 매우 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: un cosaco Hakkari primigenio. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Al\'tabim el que todo lo ve una casaca hakkari primigenia. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez une Casaque primordiale hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi vous Révérer (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给全知者阿塔比姆：1块原始哈卡莱套索。你还必须在赞达拉部族中达到崇敬或更高的声望。|n全知者阿塔比姆在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給全知者阿塔比姆：1塊原始哈卡萊套索。妳還必須在贊達拉部族中達到崇敬或更高的聲望。|n全知者阿塔比姆在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8070] = {
@@ -83775,7 +83775,7 @@
   { -- Quest
     'Epítomes de poder: o cinturão do confessor‡Знаки Силы: пояс исповедника‡Symbole der Macht: Die Bindungen des Glaubenshüters‡마력의 보물: 성자의 허리띠‡Dechados de Poder: las Ataduras de confesor‡Dechados de Poder: las Ataduras de confesor‡Parangons de puissance : le cordon de confesseur‡权力珍宝：忏悔者腰带‡權力珍寶：懺悔者腰帶',
     nil,
-    'Leve uma Faixa Hakkari Primeva a Al\'tabim, que Tudo Vê, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Honrado/Honrada> pela Tribo Zandalar.‡Принесите Ал\'табиму Всевидящему изначальный кушак Хаккари. Кроме того, вам необходимо заслужить как минимум уважительное отношение племени Зандалар.|nАл\'табим Всевидящий живет на острове Йоджамба, в Тернистой долине.‡Bringt eine urzeitliche Hakkarischärpe zu Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens wohlwollend oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 장식띠를 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: una banda Hakkari primigenia. También debes tener una reputación mínima de <honrado/honrada> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Al\'tabim, El que todo lo ve un fajín hakkari primigenio. También debes tener una reputación mínima de honorable con la tribu Zandalar.|nAl\'tabim, El que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez une Echarpe primordiale hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi vous Honorer (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给全知者阿塔比姆：1条原始哈卡莱腰带。你还必须在赞达拉部族中达到尊敬或更高的声望。|n全知者阿塔比姆在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給全知者阿塔比姆：1條原始哈卡萊腰帶。妳還必須在贊達拉部族中達到尊敬或更高的聲望。|n全知者阿塔比姆在荊棘谷的尤亞姆巴島上。',
+    'Leve uma Faixa Hakkari Primeva a Al\'tabim, que Tudo Vê, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Honrado/Honrada> pela Tribo Zandalar.‡Принесите Ал\'табиму Всевидящему изначальный кушак Хаккари. Кроме того, вам необходимо заслужить как минимум уважительное отношение племени Зандалар.|nАл\'табим Всевидящий живет на острове Йоджамба, в Тернистой долине.‡Bringt eine urzeitliche Hakkarischärpe zu Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens wohlwollend oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 장식띠를 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: una banda Hakkari primigenia. También debes tener una reputación mínima de <honrado/honrada> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Al\'tabim el que todo lo ve un fajín hakkari primigenio. También debes tener una reputación mínima de honorable con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez une Echarpe primordiale hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi vous Honorer (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给全知者阿塔比姆：1条原始哈卡莱腰带。你还必须在赞达拉部族中达到尊敬或更高的声望。|n全知者阿塔比姆在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給全知者阿塔比姆：1條原始哈卡萊腰帶。妳還必須在贊達拉部族中達到尊敬或更高的聲望。|n全知者阿塔比姆在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8071] = {
@@ -83786,7 +83786,7 @@
   { -- Quest
     'Epítomes de poder: as dragonas do confessor‡Знаки Силы: оплечье исповедника‡Symbole der Macht: Der Mantel des Glaubenshüters‡마력의 보물: 성자의 어깨보호대‡Dechados de Poder: el Manto de confesor‡Dechados de Poder: el Manto de confesor‡Parangons de puissance : le mantelet de confesseur‡权力珍宝：忏悔者衬肩‡權力珍寶：懺悔者襯肩',
     nil,
-    'Leve uma Égide Hakkari Primeva a Al\'tabim, que Tudo Vê, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Reverenciado/Reverenciada> pela Tribo Zandalar.‡Принесите Ал\'табиму Всевидящему изначальную эгиду Хаккари. Кроме того, вам необходимо заслужить как минимум почтительное отношение племени Зандалар.|nАл\'табим Всевидящий живет на острове Йоджамба, в Тернистой долине.‡Bringt eine urzeitliche Aegis der Hakkari zu Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens respektvoll oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 아이기스를 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 매우 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: unos auspicios Hakkari primigenios. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim, El que todo lo ve: unos auspicios Hakkari primigenios. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nAl\'tabim, El que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez une Egide primordiale hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi vous Révérer (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给全知者阿塔比姆：1块原始哈卡莱之盾。你还必须在赞达拉部族中达到崇敬或更高的声望。|n全知者阿塔比姆在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給全知者阿塔比姆：1塊原始哈卡萊之盾。妳還必須在贊達拉部族中達到崇敬或更高的聲望。|n全知者阿塔比姆在荊棘谷的尤亞姆巴島上。',
+    'Leve uma Égide Hakkari Primeva a Al\'tabim, que Tudo Vê, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Reverenciado/Reverenciada> pela Tribo Zandalar.‡Принесите Ал\'табиму Всевидящему изначальную эгиду Хаккари. Кроме того, вам необходимо заслужить как минимум почтительное отношение племени Зандалар.|nАл\'табим Всевидящий живет на острове Йоджамба, в Тернистой долине.‡Bringt eine urzeitliche Aegis der Hakkari zu Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens respektvoll oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 아이기스를 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 매우 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: unos auspicios Hakkari primigenios. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Al\'tabim el que todo lo ve una égida Hakkari primigenia. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez une Egide primordiale hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi vous Révérer (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给全知者阿塔比姆：1块原始哈卡莱之盾。你还必须在赞达拉部族中达到崇敬或更高的声望。|n全知者阿塔比姆在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給全知者阿塔比姆：1塊原始哈卡萊之盾。妳還必須在贊達拉部族中達到崇敬或更高的聲望。|n全知者阿塔比姆在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8072] = {
@@ -83808,7 +83808,7 @@
   { -- Quest
     'Epítomes de poder: a túnica do lunático‡Знаки Силы: мундир безумца‡Symbole der Macht: Die Tunika des Wildfangs‡마력의 보물: 개혁가의 튜닉‡Dechados de Poder: la guerrera de sinconcierto‡Dechados de Poder: la guerrera de sinconcierto‡Parangons de puissance : la tunique d\'insensé‡权力珍宝：狂妄者外套‡權力珍寶：狂妄者外套',
     nil,
-    'Leve uma Égide Hakkari Primeva a Falthir, o Cego, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Reverenciado/Reverenciada> pela Tribo Zandalar.‡Принесите Фальтиру Слепому из Зул-Гуруба изначальную эгиду Хаккари. Кроме того, вам необходимо заслужить как минимум почтительное отношение племени Зандалар.|nФальтир Слепой живет на острове Йоджамба, в Тернистой долине.‡Bringt eine urzeitliche Aegis der Hakkari zu Falthir dem Blinden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens respektvoll oder höher sein.|nFalthir der Blinde befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 아이기스를 구해 가시덤불 골짜기의 요잠바 섬에 있는 장님 팔디르에게 가져가야 합니다.|n잔달라 부족에게 매우 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Falthir el Ciego: unos auspicios Hakkari primigenio. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar. Falthir el Ciego está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Falthir el Ciego: unos auspicios Hakkari primigenio. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nFalthir el Ciego está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez une Egide primordiale hakkari à Falthir le Sans-vue. La tribu Zandalar doit aussi vous Révérer (au minimum).|nFalthir le Sans-vue se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给盲眼法希尔：1块原始哈卡莱之盾。你还必须在赞达拉部族中达到崇敬或更高的声望。|n盲眼法希尔在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給盲眼法希爾：1塊原始哈卡萊之盾。妳還必須在贊達拉部族中達到崇敬或更高的聲望。|n盲眼法希爾在荊棘谷的尤亞姆巴島上。',
+    'Leve uma Égide Hakkari Primeva a Falthir, o Cego, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Reverenciado/Reverenciada> pela Tribo Zandalar.‡Принесите Фальтиру Слепому из Зул-Гуруба изначальную эгиду Хаккари. Кроме того, вам необходимо заслужить как минимум почтительное отношение племени Зандалар.|nФальтир Слепой живет на острове Йоджамба, в Тернистой долине.‡Bringt eine urzeitliche Aegis der Hakkari zu Falthir dem Blinden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens respektvoll oder höher sein.|nFalthir der Blinde befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 아이기스를 구해 가시덤불 골짜기의 요잠바 섬에 있는 장님 팔디르에게 가져가야 합니다.|n잔달라 부족에게 매우 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Falthir el Ciego: unos auspicios Hakkari primigenio. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar. Falthir el Ciego está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Falthir el Ciego una égida Hakkari primigenia. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nFalthir el Ciego está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez une Egide primordiale hakkari à Falthir le Sans-vue. La tribu Zandalar doit aussi vous Révérer (au minimum).|nFalthir le Sans-vue se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给盲眼法希尔：1块原始哈卡莱之盾。你还必须在赞达拉部族中达到崇敬或更高的声望。|n盲眼法希尔在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給盲眼法希爾：1塊原始哈卡萊之盾。妳還必須在贊達拉部族中達到崇敬或更高的聲望。|n盲眼法希爾在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8074] = {
@@ -83819,7 +83819,7 @@
   { -- Quest
     'Epítomes de poder: o cinto do áugure‡Знаки Силы: пояс авгура‡Symbole der Macht: Der Gürtel des Weissagers‡마력의 보물: 점술가의 허리띠‡Dechados de Poder: el Cinturón de augur‡Dechados de Poder: el Cinturón de augur‡Parangons de puissance : la ceinture d\'augure‡权力珍宝：预言者腰带‡權力珍寶：預言者腰帶',
     nil,
-    'Leve um Cinturão Hakkari Primevo a Maywiki de Zuldazar, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Honrado/Honrada> pela Tribo Zandalar.‡Принесите Майвики Зулдазарской изначальный ремень Хаккари. Кроме того, вам необходимо заслужить как минимум уважительное отношение племени Зандалар.|nМайвики Зулдазарская находится на острове Йоджамба, в Тернистой долине.‡Bringt einen urzeitlichen Hakkarigurt zu Maywiki von Zuldazar. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens wohlwollend oder höher sein.|nMaywiki von Zuldazar befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 벨트를 구해 가시덤불 골짜기의 요잠바 섬에 있는 줄다자르의 메이위키에게 가져가야 합니다.|n또한 잔달라 부족에게 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Maywiki de Zuldazar: una faja Hakkari primigenia. También debes tener una reputación mínima de <honrado/honrada> con la tribu Zandalar.|nMaywiki de Zuldazar está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Maywiki de Zuldazar: una faja Hakkari primigenia. También debes tener una reputación mínima de honorable con la tribu Zandalar.|nMaywiki de Zuldazar está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez un Ceinturon primordial hakkari à Maywiki de Zuldazar. La tribu Zandalar doit aussi vous Honorer (au minimum).|nMaywiki de Zuldazar se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给祖达萨的梅维克：1条原始哈卡莱束带。你还必须在赞达拉部族中达到尊敬或更高的声望。|n祖达萨的梅维克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給祖達薩的梅維克：1條原始哈卡萊束帶。妳還必須在贊達拉部族中達到尊敬或更高的聲望。|n祖達薩的梅維克在荊棘谷的尤亞姆巴島上。',
+    'Leve um Cinturão Hakkari Primevo a Maywiki de Zuldazar, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Honrado/Honrada> pela Tribo Zandalar.‡Принесите Майвики Зулдазарской изначальный ремень Хаккари. Кроме того, вам необходимо заслужить как минимум уважительное отношение племени Зандалар.|nМайвики Зулдазарская находится на острове Йоджамба, в Тернистой долине.‡Bringt einen urzeitlichen Hakkarigurt zu Maywiki von Zuldazar. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens wohlwollend oder höher sein.|nMaywiki von Zuldazar befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 벨트를 구해 가시덤불 골짜기의 요잠바 섬에 있는 줄다자르의 메이위키에게 가져가야 합니다.|n또한 잔달라 부족에게 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Maywiki de Zuldazar: una faja Hakkari primigenia. También debes tener una reputación mínima de <honrado/honrada> con la tribu Zandalar.|nMaywiki de Zuldazar está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Maywiki de Zuldazar una faja Hakkari primigenia. También debes tener una reputación mínima de honorable con la tribu Zandalar.|nMaywiki de Zuldazar está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez un Ceinturon primordial hakkari à Maywiki de Zuldazar. La tribu Zandalar doit aussi vous Honorer (au minimum).|nMaywiki de Zuldazar se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给祖达萨的梅维克：1条原始哈卡莱束带。你还必须在赞达拉部族中达到尊敬或更高的声望。|n祖达萨的梅维克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給祖達薩的梅維克：1條原始哈卡萊束帶。妳還必須在贊達拉部族中達到尊敬或更高的聲望。|n祖達薩的梅維克在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8075] = {
@@ -83833,7 +83833,7 @@
   { -- Quest
     'Epítomes de poder: a cota do áugure‡Знаки Силы: хауберк авгура‡Symbole der Macht: Die Halsberge des Weissagers‡마력의 보물: 점술가의 갑옷‡Dechados de Poder: el Camisote de augur‡Dechados de Poder: el Camisote de augur‡Parangons de puissance : le haubert d\'augure‡权力珍宝：预言者外套‡權力珍寶：預言者外套',
     nil,
-    'Leve um Tabardo Hakkari Primevo a Maywiki de Zuldazar, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Reverenciado/Reverenciada> pela Tribo Zandalar.‡Принесите Майвики Зулдазарской изначальную гербовую накидку Хаккари. Кроме того, вам необходимо заслужить как минимум почтительное отношение племени Зандалар.|nМайвики Зулдазарская находится на острове Йоджамба, в Тернистой долине.‡Bringt einen urzeitlichen Hakkariwaffenrock zu Maywiki von Zuldazar. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens respektvoll oder höher sein.|nMaywiki von Zuldazar befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 휘장을 구해 가시덤불 골짜기의 요잠바 섬에 있는 줄다자르의 메이위키에게 가져가야 합니다.|n또한 잔달라 부족에게 매우 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Maywiki de Zuldazar: un tabardo Hakkari primigenio. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nMaywiki de Zuldazar está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Maywiki de Zuldazar: un tabardo Hakkari primigenio. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nMaywiki de Zuldazar está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez un Tabard primordial hakkari à Maywiki de Zuldazar. La tribu Zandalar doit aussi vous Révérer (au minimum).|nMaywiki de Zuldazar se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给祖达萨的梅维克：1条原始哈卡莱徽章。你还必须在赞达拉部族中达到崇敬或更高的声望。|n祖达萨的梅维克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給祖達薩的梅維克：1條原始哈卡萊徽章。妳還必須在贊達拉部族中達到崇敬或更高的聲望。|n祖達薩的梅維克在荊棘谷的尤亞姆巴島上。',
+    'Leve um Tabardo Hakkari Primevo a Maywiki de Zuldazar, que se encontra na Ilha Yojamba, que fica na Selva do Espinhaço. Você precisa ser no mínimo <Reverenciado/Reverenciada> pela Tribo Zandalar.‡Принесите Майвики Зулдазарской изначальную гербовую накидку Хаккари. Кроме того, вам необходимо заслужить как минимум почтительное отношение племени Зандалар.|nМайвики Зулдазарская находится на острове Йоджамба, в Тернистой долине.‡Bringt einen urzeitlichen Hakkariwaffenrock zu Maywiki von Zuldazar. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens respektvoll oder höher sein.|nMaywiki von Zuldazar befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 휘장을 구해 가시덤불 골짜기의 요잠바 섬에 있는 줄다자르의 메이위키에게 가져가야 합니다.|n또한 잔달라 부족에게 매우 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Maywiki de Zuldazar: un tabardo Hakkari primigenio. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nMaywiki de Zuldazar está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Maywiki de Zuldazar un tabardo Hakkari primigenio. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nMaywiki de Zuldazar está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez un Tabard primordial hakkari à Maywiki de Zuldazar. La tribu Zandalar doit aussi vous Révérer (au minimum).|nMaywiki de Zuldazar se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给祖达萨的梅维克：1条原始哈卡莱徽章。你还必须在赞达拉部族中达到崇敬或更高的声望。|n祖达萨的梅维克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給祖達薩的梅維克：1條原始哈卡萊徽章。妳還必須在贊達拉部族中達到崇敬或更高的聲望。|n祖達薩的梅維克在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8076] = {
@@ -83844,7 +83844,7 @@
   { -- Quest
     'Epítomes de poder: as dragonas do demoníaco‡Знаки Силы: оплечье бесноватого‡Symbole der Macht: Der Mantel des Besessenen‡마력의 보물: 악령술사의 어깨보호대‡Dechados de Poder: el Manto de endemoniado‡Dechados de Poder: el Manto de endemoniado‡Parangons de puissance : le mantelet de démoniaque‡权力珍宝：恶魔师衬肩‡權力珍寶：惡魔師襯肩',
     nil,
-    'Leve uma Faixa Hakkari Primeva a Al\'tabim, que Tudo Vê. Sua reputação com a Tribo Zandalar precisa ser igual ou superior a <Honrado/Honrada>.|nAl\'tabim, que Tudo Vê, se encontra na Ilha Yojamba, que fica na Selva do Espinhaço.‡Принесите Ал\'табиму Всевидящему изначальный кушак Хаккари. Кроме того, вам необходимо заслужить как минимум уважительное отношение племени Зандалар.|nАл\'табим Всевидящий живет на острове Йоджамба, в Тернистой долине.‡Bringt eine urzeitliche Hakkarischärpe zu Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens wohlwollend oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 장식띠를 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: una banda Hakkari primigenia. También debes tener una reputación mínima de <honrado/honrada> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Al\'tabim, El que todo lo ve un fajín hakkari primigenio. También debes tener una reputación mínima de honorable con la tribu Zandalar.|nAl\'tabim, El que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez une Echarpe primordiale hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi vous Honorer (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给全知者阿塔比姆：1条原始哈卡莱腰带。你还必须在赞达拉部族中达到尊敬或更高的声望。|n全知者阿塔比姆在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給全知者阿塔比姆：1條原始哈卡萊腰帶。妳還必須在贊達拉部族中達到尊敬或更高的聲望。|n全知者阿塔比姆在荊棘谷的尤亞姆巴島上。',
+    'Leve uma Faixa Hakkari Primeva a Al\'tabim, que Tudo Vê. Sua reputação com a Tribo Zandalar precisa ser igual ou superior a <Honrado/Honrada>.|nAl\'tabim, que Tudo Vê, se encontra na Ilha Yojamba, que fica na Selva do Espinhaço.‡Принесите Ал\'табиму Всевидящему изначальный кушак Хаккари. Кроме того, вам необходимо заслужить как минимум уважительное отношение племени Зандалар.|nАл\'табим Всевидящий живет на острове Йоджамба, в Тернистой долине.‡Bringt eine urzeitliche Hakkarischärpe zu Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens wohlwollend oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 장식띠를 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: una banda Hakkari primigenia. También debes tener una reputación mínima de <honrado/honrada> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Al\'tabim el que todo lo ve un fajín hakkari primigenio. También debes tener una reputación mínima de honorable con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez une Echarpe primordiale hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi vous Honorer (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给全知者阿塔比姆：1条原始哈卡莱腰带。你还必须在赞达拉部族中达到尊敬或更高的声望。|n全知者阿塔比姆在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給全知者阿塔比姆：1條原始哈卡萊腰帶。妳還必須在贊達拉部族中達到尊敬或更高的聲望。|n全知者阿塔比姆在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8077] = {
@@ -83855,7 +83855,7 @@
   { -- Quest
     'Epítomes de poder: a veste do demoníaco‡Знаки Силы: одеяние бесноватого‡Symbole der Macht: Die Roben des Besessenen‡마력의 보물: 악령술사의 로브‡Dechados de Poder: la Toga de endemoniado‡Dechados de Poder: la Toga de endemoniado‡Parangons de puissance : la robe de démoniaque‡权力珍宝：恶魔师长袍‡權力珍寶：惡魔師長袍',
     nil,
-    'Leve um Gibão Hakkari Primevo a Al\'tabim, que Tudo Vê. Sua reputação com a Tribo Zandalar precisa ser igual ou superior a <Reverenciado/Reverenciada>.|nAl\'tabim, que Tudo Vê, se encontra na Ilha Yojamba, que fica na Selva do Espinhaço.‡Принесите Ал\'табиму Всевидящему изначальную рубашку Хаккари. Кроме того, вам необходимо заслужить как минимум почтительное отношение племени Зандалар.|nАл\'табим Всевидящий живет на острове Йоджамба, в Тернистой долине.‡Bringt einen urzeitlichen Hakkarikosak zu Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens respektvoll oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 조끼를 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 매우 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: un cosaco Hakkari primigenio. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Al\'tabim, El que todo lo ve una casaca hakkari primigenia. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nAl\'tabim, El que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez une Casaque primordiale hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi vous Révérer (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给全知者阿塔比姆：1块原始哈卡莱套索。你还必须在赞达拉部族中达到崇敬或更高的声望。|n全知者阿塔比姆在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給全知者阿塔比姆：1塊原始哈卡萊套索。妳還必須在贊達拉部族中達到崇敬或更高的聲望。|n全知者阿塔比姆在荊棘谷的尤亞姆巴島上。',
+    'Leve um Gibão Hakkari Primevo a Al\'tabim, que Tudo Vê. Sua reputação com a Tribo Zandalar precisa ser igual ou superior a <Reverenciado/Reverenciada>.|nAl\'tabim, que Tudo Vê, se encontra na Ilha Yojamba, que fica na Selva do Espinhaço.‡Принесите Ал\'табиму Всевидящему изначальную рубашку Хаккари. Кроме того, вам необходимо заслужить как минимум почтительное отношение племени Зандалар.|nАл\'табим Всевидящий живет на острове Йоджамба, в Тернистой долине.‡Bringt einen urzeitlichen Hakkarikosak zu Al\'tabim dem Allsehenden. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens respektvoll oder höher sein.|nAl\'tabim der Allsehende befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 조끼를 구해 가시덤불 골짜기의 요잠바 섬에 있는 천리안 알타빔에게 가져가야 합니다.|n잔달라 부족에게 매우 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Al\'tabim el que todo lo ve: un cosaco Hakkari primigenio. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Al\'tabim el que todo lo ve una casaca hakkari primigenia. También debes tener una reputación mínima de <venerado/venerada> con la tribu Zandalar.|nAl\'tabim el que todo lo ve está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez une Casaque primordiale hakkari à Al’tabim Qui-voit-tout. La tribu Zandalar doit aussi vous Révérer (au minimum).|nAl’tabim Qui-voit-tout se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝交给全知者阿塔比姆：1块原始哈卡莱套索。你还必须在赞达拉部族中达到崇敬或更高的声望。|n全知者阿塔比姆在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶交給全知者阿塔比姆：1塊原始哈卡萊套索。妳還必須在贊達拉部族中達到崇敬或更高的聲望。|n全知者阿塔比姆在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8078] = {
@@ -83866,7 +83866,7 @@
   { -- Quest
     'Epítomes de poder: o cinto do vindicante‡Знаки Силы: пояс блюстителя‡Symbole der Macht: Der Gürtel des Vollstreckers‡마력의 보물: 구원자의 허리띠‡Dechados de Poder: el Cinturón de vindicador‡Dechados de Poder: el Cinturón de vindicador‡Parangons de puissance : la ceinture de redresseur de torts‡权力珍宝：辩护者腰带‡權力珍寶：辯護者腰帶',
     nil,
-    'Leve um Cinturão Hakkari Primevo a Jin\'rokh, o Rebentador. Sua reputação com a Tribo Zandalar precisa ser igual ou superior a <Honrado/Honrada>.|nJin\'rokh, o Rebentador, se encontra na Ilha Yojamba, que fica na Selva do Espinhaço.‡Принесите Джин\'року Разрушителю изначальный ремень Хаккари. Кроме того, вам необходимо заслужить как минимум уважительное отношение племени Зандалар.|nДжин\'рок Разрушитель живет на острове Йоджамба, в Тернистой долине.‡Bringt einen urzeitlichen Hakkarigurt zu Jin\'rokh dem Zerstörer. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens wohlwollend oder höher sein.|nJin\'rokh der Zerstörer befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 벨트를 구해 가시덤불 골짜기의 요잠바 섬에 있는 파괴자 진로크에게 가져가야 합니다.|n잔달라 부족에게 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Jin\'rokh el Cercenador: una faja Hakkari primigenia. También debes tener una reputación mínima de <honrado/honrada> con la tribu Zandalar.|nJin\'rokh el Cercenador está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Jin\'rokh el Rompedor: una faja Hakkari primigenia. También debes tener una reputación mínima de honorable con la tribu Zandalar.|nJin\'rokh el Rompedor está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez un Ceinturon primordial hakkari à Jin’rokh le Briseur. La tribu Zandalar doit aussi vous Honorer (au minimum).|nJin’rokh le Briseur se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给击碎者金罗克：1条原始哈卡莱束带。你还必须在赞达拉部族中达到尊敬或更高的声望。|n击碎者金罗克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給擊碎者金羅克：1條原始哈卡萊束帶。妳還必須在贊達拉部族中達到尊敬或更高的聲望。|n擊碎者金羅克在荊棘谷的尤亞姆巴島上。',
+    'Leve um Cinturão Hakkari Primevo a Jin\'rokh, o Rebentador. Sua reputação com a Tribo Zandalar precisa ser igual ou superior a <Honrado/Honrada>.|nJin\'rokh, o Rebentador, se encontra na Ilha Yojamba, que fica na Selva do Espinhaço.‡Принесите Джин\'року Разрушителю изначальный ремень Хаккари. Кроме того, вам необходимо заслужить как минимум уважительное отношение племени Зандалар.|nДжин\'рок Разрушитель живет на острове Йоджамба, в Тернистой долине.‡Bringt einen urzeitlichen Hakkarigurt zu Jin\'rokh dem Zerstörer. Die Einstellung des Stammes der Zandalar muss Euch gegenüber wenigstens wohlwollend oder höher sein.|nJin\'rokh der Zerstörer befindet sich auf der Insel Yojamba im Schlingendorntal.‡줄구룹에서 고대 학카리 벨트를 구해 가시덤불 골짜기의 요잠바 섬에 있는 파괴자 진로크에게 가져가야 합니다.|n잔달라 부족에게 우호적 이상의 평판이어야 합니다.‡Lleva los siguientes Dechados de Poder de Zul\'Gurub a Jin\'rokh el Cercenador: una faja Hakkari primigenia. También debes tener una reputación mínima de <honrado/honrada> con la tribu Zandalar.|nJin\'rokh el Cercenador está en Isla Yojamba, en la Vega de Tuercespina.‡Lleva a Jin\'rokh el Rompedor una faja Hakkari primigenia. También debes tener una reputación mínima de honorable con la tribu Zandalar.|nJin\'rokh el Rompedor está en Isla Yojamba, en la Vega de Tuercespina.‡Ramenez un Ceinturon primordial hakkari à Jin’rokh le Briseur. La tribu Zandalar doit aussi vous Honorer (au minimum).|nJin’rokh le Briseur se trouve sur l’île de Yojamba, dans la vallée de Strangleronce.‡从祖尔格拉布把以下权力珍宝带给击碎者金罗克：1条原始哈卡莱束带。你还必须在赞达拉部族中达到尊敬或更高的声望。|n击碎者金罗克在荆棘谷的尤亚姆巴岛上。‡從祖爾格拉布把以下權力珍寶帶給擊碎者金羅克：1條原始哈卡萊束帶。妳還必須在贊達拉部族中達到尊敬或更高的聲望。|n擊碎者金羅克在荊棘谷的尤亞姆巴島上。',
   }
 },
 [8079] = {
@@ -85060,7 +85060,7 @@
   nil,
   nil,
   { -- Quest
-    'Mestre Pescador‡Лучший удильщик‡Anglermeister‡낚시왕 선발 대회‡Maestro pescador‡Gran premio‡Maître pêcheur‡钓鱼大师‡釣魚大師',
+    'Mestre Pescador‡Лучший удильщик‡Anglermeister‡낚시왕 선발 대회‡Maestro pescador‡Maestro pescador‡Maître pêcheur‡钓鱼大师‡釣魚大師',
     nil,
     nil,
   }
@@ -85519,9 +85519,9 @@
   nil,
   nil,
   { -- Quest
-    'Uma joia para Zanza‡Драгоценности для Занзы‡Ein Schmuckstück für Zanza‡잔자를 위한 장신구‡Una presea para Zanza‡Una joya para Zanza‡Un Bijou pour Zanza‡赞扎的宝石‡贊紮的寶石',
+    'Uma joia para Zanza‡Драгоценности для Занзы‡Ein Schmuckstück für Zanza‡잔자를 위한 장신구‡Una presea para Zanza‡Una presea para Zanza‡Un Bijou pour Zanza‡赞扎的宝石‡贊紮的寶石',
     nil,
-    'Destrua as Joias Hakkari encontradas em Zul\'Gurub no Altar de Zanza, que fica na Ilha Yojamba. Quando terminar, fale com Vinchaxa.‡Найдите в Зул\'Гурубе драгоценности Хаккари и уничтожьте их на Алтаре Занзы на острове Йоджамба. Поговорите с Винчаксой.‡Zerstört jedes Schmuckstück der Hakkari, das Ihr in Zul\'Gurub findet, am Altar von Zanza auf der Insel Yojamba. Sobald Ihr dies getan habt, sprecht ganz in der Nähe mit Vinchaxa.‡줄구룹에서 찾은 학카리 장신구 중 아무거나 가져와 요잠바 섬에 있는 잔자의 제단에서 파괴한 후, 제단 근처에 있는 빈차샤와 대화해야 합니다.‡Destruye una de las preseas Hakkari que hayas encontrado en Zul\'Gurub en el Altar de Zanza en Isla Yojamba. Cuando lo hayas hecho ve a hablar con Vinchaxa.‡Destruye una de las Joyas Hakkari que hayas encontrado en Zul\'Gurub en el Altar de Zanza en Isla Yojamba. Cuando lo hayas hecho ve a hablar con Vinchaxa.‡Détruisez n\'importe lequel des Bijoux hakkari trouvé à Zul\'Gurub à l\'Autel de Zanza, sur l\'Ile de Yojamba. Quand ce sera fait, parlez à Vinchaxa qui se trouve à côté.‡将你在祖尔格拉布找到的哈卡莱宝石带往尤亚姆巴岛的赞扎祭坛进行销毁，然后跟祭坛旁边的温卡萨谈一谈。‡將妳在祖爾格拉布找到的哈卡萊寶石帶往尤亞姆巴島的贊紮祭壇進行銷毀，然後跟祭壇旁邊的溫卡薩談壹談。',
+    'Destrua as Joias Hakkari encontradas em Zul\'Gurub no Altar de Zanza, que fica na Ilha Yojamba. Quando terminar, fale com Vinchaxa.‡Найдите в Зул\'Гурубе драгоценности Хаккари и уничтожьте их на Алтаре Занзы на острове Йоджамба. Поговорите с Винчаксой.‡Zerstört jedes Schmuckstück der Hakkari, das Ihr in Zul\'Gurub findet, am Altar von Zanza auf der Insel Yojamba. Sobald Ihr dies getan habt, sprecht ganz in der Nähe mit Vinchaxa.‡줄구룹에서 찾은 학카리 장신구 중 아무거나 가져와 요잠바 섬에 있는 잔자의 제단에서 파괴한 후, 제단 근처에 있는 빈차샤와 대화해야 합니다.‡Destruye una de las preseas Hakkari que hayas encontrado en Zul\'Gurub en el Altar de Zanza en Isla Yojamba. Cuando lo hayas hecho ve a hablar con Vinchaxa.‡Destruye una de las preseas Hakkari que hayas encontrado en Zul\'Gurub en el Altar de Zanza en Isla Yojamba. Cuando lo hayas hecho ve a hablar con Vinchaxa.‡Détruisez n\'importe lequel des Bijoux hakkari trouvé à Zul\'Gurub à l\'Autel de Zanza, sur l\'Ile de Yojamba. Quand ce sera fait, parlez à Vinchaxa qui se trouve à côté.‡将你在祖尔格拉布找到的哈卡莱宝石带往尤亚姆巴岛的赞扎祭坛进行销毁，然后跟祭坛旁边的温卡萨谈一谈。‡將妳在祖爾格拉布找到的哈卡萊寶石帶往尤亞姆巴島的贊紮祭壇進行銷毀，然後跟祭壇旁邊的溫卡薩談壹談。',
   }
 },
 [8241] = {
@@ -86786,7 +86786,7 @@
   nil,
   { -- Npc
     'Chepi‡Чепи‡Chepi‡체피‡Chepi‡Chepi‡Chepi‡切比‡切比',
-    'Reagentes‡Реагенты‡Reagenzienverkäuferin‡마법 재료 상인‡Vendedor de componentes‡Vendedor de componentes‡Marchande de composants‡施法材料商‡施法材料',
+    'Reagentes‡Реагенты‡Reagenzienverkäuferin‡마법 재료 상인‡Vendedor de componentes‡Vendedora de componentes‡Marchande de composants‡施法材料商‡施法材料',
   },
   nil,
   { -- Quest
@@ -86866,7 +86866,7 @@
   { -- Quest
     'Por grande honra‡Ради славы‡Große Ehre‡커다란 영광을 위하여‡Por Gran Honor‡Cuestión de honor‡Pour un grand honneur‡无上的荣耀‡無上的榮耀',
     nil,
-    'Leve 3 Marcas de Honra do Vale Alterac, 3 Marcas de Honra da Bacia Arathi e 3 Marcas de Honra da Ravina Brado Guerreiro a um Armipotente da Horda fora dos campo de batalha.‡Принесите 3 почетных знака Альтеракской долины, 3 почетных знака Низины Арати и 3 почетных знака Ущелья Песни Войны ордынскому вестнику войны рядом со входом на поля боя.‡Bring je 3 Ehrenabzeichen des Alteractals, des Arathibeckens und der Warsongschlucht zu einem Kriegshetzer der Horde, außerhalb der Schlachtfelder.‡전장 밖에 있는 호드 돌격대장에게 전쟁노래 협곡 명예 훈장, 아라시 분지 명예 훈장, 알터랙 계곡 명예 훈장을 각각 3개씩 가져가야 합니다.‡Entrega 3 marcas de honor del Valle de Alterac, 3 marcas de Honor de la Cuenca de Arathi y 3 marcas de honor de Grito de Guerra a un Belisario de la Horda fuera de los campos de batalla.‡Entrega 1 marca de Honor de cada campo de batalla a un belisario de la Horda en cualquiera de las capitales de la Horda o en Shattrath.‡Apportez 3 Marques d’honneur de la vallée d’Alterac, 3 Marques d’honneur du bassin d’Arathi et 3 Marques d’honneur du goulet des Warsong à l’un des porteguerre de la Horde, devant les champs de bataille.‡把3枚奥特兰克山谷荣誉奖章，3枚阿拉希盆地荣誉奖章和3枚战歌峡谷荣誉奖章交给战场外的部落战争使者。‡把3枚奧特蘭克山谷榮譽獎章，3枚阿拉希盆地榮譽獎章和3枚戰歌峽谷榮譽獎章交給戰場外的部落戰爭使者。',
+    'Leve 3 Marcas de Honra do Vale Alterac, 3 Marcas de Honra da Bacia Arathi e 3 Marcas de Honra da Ravina Brado Guerreiro a um Armipotente da Horda fora dos campo de batalha.‡Принесите 3 почетных знака Альтеракской долины, 3 почетных знака Низины Арати и 3 почетных знака Ущелья Песни Войны ордынскому вестнику войны рядом со входом на поля боя.‡Bring je 3 Ehrenabzeichen des Alteractals, des Arathibeckens und der Warsongschlucht zu einem Kriegshetzer der Horde, außerhalb der Schlachtfelder.‡전장 밖에 있는 호드 돌격대장에게 전쟁노래 협곡 명예 훈장, 아라시 분지 명예 훈장, 알터랙 계곡 명예 훈장을 각각 3개씩 가져가야 합니다.‡Entrega 3 marcas de honor del Valle de Alterac, 3 marcas de Honor de la Cuenca de Arathi y 3 marcas de honor de Grito de Guerra a un Belisario de la Horda fuera de los campos de batalla.‡Lleva 3 marcas de honor del Valle de Alterac, 3 marcas de honor de la Cuenca de Arathi y 3 marcas de honor de la Garganta Grito de Guerra a un belisario de la Horda afuera de los campos de batalla.‡Apportez 3 Marques d’honneur de la vallée d’Alterac, 3 Marques d’honneur du bassin d’Arathi et 3 Marques d’honneur du goulet des Warsong à l’un des porteguerre de la Horde, devant les champs de bataille.‡把3枚奥特兰克山谷荣誉奖章，3枚阿拉希盆地荣誉奖章和3枚战歌峡谷荣誉奖章交给战场外的部落战争使者。‡把3枚奧特蘭克山谷榮譽獎章，3枚阿拉希盆地榮譽獎章和3枚戰歌峽谷榮譽獎章交給戰場外的部落戰爭使者。',
   }
 },
 [8368] = {
@@ -87880,7 +87880,7 @@
   nil,
   nil,
   { -- Quest
-    'Aliando-se aos Presamatos‡Союзник Древобрюхов‡Verbündeter der Holzschlundfeste‡나무구렁일족‡Aliado a los Fauces de Madera‡Aliado Fauces de Madera‡Allié des Grumegueules‡木喉熊怪的盟友‡木喉熊怪的盟友',
+    'Aliando-se aos Presamatos‡Союзник Древобрюхов‡Verbündeter der Holzschlundfeste‡나무구렁일족‡Aliado a los Fauces de Madera‡Aliado a los Fauces de Madera‡Allié des Grumegueules‡木喉熊怪的盟友‡木喉熊怪的盟友',
     nil,
     'Grazle quer que você prove seu valor matando 6 Guerreiros de Lenha Morta, 6 Desbravadores de Lenha Morta e 6 Jardineiros de Lenha Morta. Quando você terminar, fale novamente com ele na parte sul da Selva Maleva, perto do Santuário Esmeralda.‡Гразл желает, чтобы вы заслужили доверие. Вам нужно убить 6 воинов, 6 землепроходцев и 6 садовников из племени Мертвого Леса. Выполнив поручение, возвращайтесь в южную часть Оскверненного леса к Изумрудному святилищу.‡Grazle möchte, dass Ihr Euch beweist, indem Ihr 6 Krieger der Totenwaldfelle, 6 Pfadfinder der Totenwaldfelle und 6 Gärtner der Totenwaldfelle besiegt. Kehrt zu ihm in den Süden des Teufelswalds nahe des Smaragdrefugiums zurück, sobald Ihr dies getan habt.‡그라즐이 자기 일족의 친구임을 입증하려면 마른가지일족 전사, 길잡이, 정원사를 각각 6마리씩 처치해달라고 부탁했습니다. 임무를 마치면 악령의 숲 남쪽, 에메랄드 성소 근처에 있는 그라즐에게 돌아가십시오.‡Grazle quiere que demuestres tu valía matando a 6 guerreros Muertobosque, 6 abrecaminos Muertobosque y 6 jardineros Muertobosque. Cuando lo hayas hecho, vuelve con él al sur de Frondavil, cerca del Santuario Esmeralda.‡Grazle quiere que demuestres tu valía matando a 6 guerreros Muertobosque, 6 abrecaminos Muertobosque y 6 jardineros Muertobosque. Cuando lo hayas hecho, vuelve con él al sur de Frondavil, cerca del Santuario Esmeralda.‡Grifleur veut que vous prouviez votre valeur en tuant 6 Guerriers Mort-bois, 6 Guides Mort-bois et 6 Jardiniers Mort-bois. Lorsque ce sera fait, retournez le voir dans le sud de Gangrebois, près du Sanctuaire d\'émeraude.‡格拉兹要你去杀死6个死木战士、6个死木探路者以及6个死木园丁。‡格拉茲要妳去殺死6個死木戰士、6個死木探路者以及6個死木園丁。',
   }
@@ -88025,7 +88025,7 @@
   { -- Quest
     'A raiz de todo o mal‡Корень всех зол‡Die Wurzel alles Bösen‡모든 악의 근원‡La raíz de todos los males‡La raíz de todos los males‡La racine du mal‡万恶之源‡萬惡之源',
     nil,
-    'Bote a Tocha de Evocação Demoníaca na entrada da caverna do Chefe Supremo Invernoso, na aldeia dos pelursos Invernosos. Em seguida, derrote o demônio, recolha a Essência de Shandivious e entregue-a para Gorn Caolho, no Domínio dos Presamatos.‡Установите факел призыва демона у входа в пещеру верховного вождя племени Зимней Спячки в деревне фурболгов Зимней Спячки. Сразите демона и добудьте сущность Зандивиуса для Горна Одноглаза из Крепости Древобрюхов.‡Stellt die Fackel zur Dämonenbeschwörung im Eingang der Höhle des Oberhäuptlings der Winterfelle, im Lager der Winterfellfurbolgs auf. Besiegt den Dämon und erlangt die Essenz von Xandivious für Gorn Einauge in der Holzschlundfeste.‡눈사태일족 펄볼그 마을에 있는 대족장 눈사태의 동굴 입구에 악마 소환의 횃불을 꽂은 후 악마를 해치우고 나무구렁 요새에 있는 외눈 고른에게 잔디비어스의 정수를 가져가야 합니다.‡Clava la antorcha de invocación del Demonio en la entrada de la cueva del Gran Jefe Nevada en el Poblado Nevada de los furbolgs. Derrota al demonio y consigue la esencia de Xandivious para Gorn Monóculo del Bastión de los Fauces de Madera.‡Clava la antorcha para invocar demonios en la entrada de la cueva de Grolnar en el Poblado Nevada de los fúrbolgs. Derrota al demonio y consigue la esencia de Xandivious para Monóculo de Gorn en el Bastión Fauces de Madera.‡Plantez la Torche d\'invocation de démon à l’entrée de la caverne du grand chef Tombe-hiver, dans le village des furbolgs Tombe-hiver. Triomphez du démon et récupérez l’Essence de Xandivious pour Gorn le Borgne du Repaire des Grumegueules.‡把恶魔召唤火炬放在寒水村的冬泉酋长的洞穴入口处。击败召唤出来的恶魔，然后把沙迪维尔斯精华交给木喉要塞的独眼高恩。‡把惡魔召喚火炬放在寒水村的冬泉酋長的洞穴入口處。擊敗召喚出來的惡魔，然後把沙迪維爾斯精華交給木喉要塞的獨眼高恩。',
+    'Bote a Tocha de Evocação Demoníaca na entrada da caverna do Chefe Supremo Invernoso, na aldeia dos pelursos Invernosos. Em seguida, derrote o demônio, recolha a Essência de Shandivious e entregue-a para Gorn Caolho, no Domínio dos Presamatos.‡Установите факел призыва демона у входа в пещеру верховного вождя племени Зимней Спячки в деревне фурболгов Зимней Спячки. Сразите демона и добудьте сущность Зандивиуса для Горна Одноглаза из Крепости Древобрюхов.‡Stellt die Fackel zur Dämonenbeschwörung im Eingang der Höhle des Oberhäuptlings der Winterfelle, im Lager der Winterfellfurbolgs auf. Besiegt den Dämon und erlangt die Essenz von Xandivious für Gorn Einauge in der Holzschlundfeste.‡눈사태일족 펄볼그 마을에 있는 대족장 눈사태의 동굴 입구에 악마 소환의 횃불을 꽂은 후 악마를 해치우고 나무구렁 요새에 있는 외눈 고른에게 잔디비어스의 정수를 가져가야 합니다.‡Clava la antorcha de invocación del Demonio en la entrada de la cueva del Gran Jefe Nevada en el Poblado Nevada de los furbolgs. Derrota al demonio y consigue la esencia de Xandivious para Gorn Monóculo del Bastión de los Fauces de Madera.‡Clava la antorcha para invocar demonios en la entrada de la cueva del gran jefe Nevada en el Poblado Nevada de los fúrbolgs. Derrota al demonio y consigue la esencia de Xandivious para Gorn el Tuerto‡Plantez la Torche d\'invocation de démon à l’entrée de la caverne du grand chef Tombe-hiver, dans le village des furbolgs Tombe-hiver. Triomphez du démon et récupérez l’Essence de Xandivious pour Gorn le Borgne du Repaire des Grumegueules.‡把恶魔召唤火炬放在寒水村的冬泉酋长的洞穴入口处。击败召唤出来的恶魔，然后把沙迪维尔斯精华交给木喉要塞的独眼高恩。‡把惡魔召喚火炬放在寒水村的冬泉酋長的洞穴入口處。擊敗召喚出來的惡魔，然後把沙迪維爾斯精華交給木喉要塞的獨眼高恩。',
   }
 },
 [8483] = {
@@ -88054,7 +88054,7 @@
   { -- Quest
     'Promovendo a paz‡Знак мира‡Das Bemühen um Frieden‡평화 협정‡Negociar la paz‡Negociar la paz‡Négocier la paix‡重铸和平‡重鑄和平',
     nil,
-    'Leve a Oferenda de Paz dos Presamatos para Thrall em Orgrimmar.‡Отнесите мирное приношение Древобрюхов Траллу в Оргриммар.‡Bringt das Friedensangebot der Holzschlundfeste zu Thrall in Orgrimmar.‡오그리마의 스랄에게 평화의 나무구렁일족 공물을 가져가야 합니다.‡Llévale la ofrenda de paz de los Fauces de Madera a Thrall, que está en Orgrimmar.‡Llévale la ofrenda de paz de los Fauces de Madera a Shok Narnes a Orgrimmar.‡Apporter l’Offrande de paix grumegueule à Thrall, à Orgrimmar.‡将木喉和平契约交给奥格瑞玛的萨尔。‡將木喉和平契約交給奧格瑞瑪的薩爾。',
+    'Leve a Oferenda de Paz dos Presamatos para Thrall em Orgrimmar.‡Отнесите мирное приношение Древобрюхов Траллу в Оргриммар.‡Bringt das Friedensangebot der Holzschlundfeste zu Thrall in Orgrimmar.‡오그리마의 스랄에게 평화의 나무구렁일족 공물을 가져가야 합니다.‡Llévale la ofrenda de paz de los Fauces de Madera a Thrall, que está en Orgrimmar.‡Llévale la ofrenda de paz de los Fauces de Madera a Thrall en Orgrimmar.‡Apporter l’Offrande de paix grumegueule à Thrall, à Orgrimmar.‡将木喉和平契约交给奥格瑞玛的萨尔。‡將木喉和平契約交給奧格瑞瑪的薩爾。',
   }
 },
 [8486] = {
@@ -89010,7 +89010,7 @@
   -- Item
   'Ovo de Hipogrifo‡Яйцо гиппогрифа‡Hippogryphen-Ei‡히포그리프 알‡Huevo de hipogrifo‡Huevo de hipogrifo‡Oeuf d\'hippogryphe‡角鹰兽的蛋‡角鷹獸的蛋',
   { -- Npc
-    'Patrulheiro‡Cледопыт‡Waldläufer‡순찰자‡Especialista‡Especialista‡Forestier‡游侠‡遊俠',
+    'Patrulheiro‡Cледопыт‡Waldläufer‡순찰자‡Especialista‡Forestal‡Forestier‡游侠‡遊俠',
     nil,
   },
   nil,
@@ -89032,7 +89032,7 @@
 [8566] = {
   nil,
   { -- Npc
-    'Atalaia Ferro Negro‡Наблюдатель из клана Черного Железа‡Ausguck der Dunkeleisenzwerge‡검은무쇠단 망꾼‡Vigía Hierro Negro‡Vigía Hierro Negro‡Guetteur Sombrefer‡黑铁哨兵‡黑鐵監視者',
+    'Atalaia Ferro Negro‡Наблюдатель из клана Черного Железа‡Ausguck der Dunkeleisenzwerge‡검은무쇠단 망꾼‡Vigía Hierro Negro‡Oteador Hierro Negro‡Guetteur Sombrefer‡黑铁哨兵‡黑鐵監視者',
     nil,
   },
   nil,
@@ -92728,7 +92728,7 @@
   -- Item
   '‡‡‡마법서: 마나석 창조 IV‡‡‡‡‡秘典:製造法術寶石 IV',
   { -- Npc
-    'Feitor Furiadastra‡Надзиратель из клана Ярости Горна‡Vorarbeiter der Zorneshämmer‡성난모루단 감독관‡Sobrestante de Yunque Colérico‡Sobrestante de Yunque Colérico‡Surveillant Ragenclume‡铁怒监军‡鐵怒監督者',
+    'Feitor Furiadastra‡Надзиратель из клана Ярости Горна‡Vorarbeiter der Zorneshämmer‡성난모루단 감독관‡Sobrestante de Yunque Colérico‡Sobrestante Yunque Colérico‡Surveillant Ragenclume‡铁怒监军‡鐵怒監督者',
     nil,
   },
   nil,
@@ -92738,7 +92738,7 @@
   -- Item
   '‡‡‡마법서: 화염구 XI‡‡‡‡‡秘典:火球術 XI',
   { -- Npc
-    'Carcereiro Furiadastra‡Надсмотрщик из клана Ярости Горна‡Aufseher der Zorneshämmer‡성난모루단 교도관‡Alcaide de Yunque Colérico‡Alcaide de Yunque Colérico‡Gardien Ragenclume‡铁怒狱卒‡鐵怒衛兵',
+    'Carcereiro Furiadastra‡Надсмотрщик из клана Ярости Горна‡Aufseher der Zorneshämmer‡성난모루단 교도관‡Alcaide de Yunque Colérico‡Celador Yunque Colérico‡Gardien Ragenclume‡铁怒狱卒‡鐵怒衛兵',
     nil,
   },
   nil,
@@ -92945,7 +92945,7 @@
   { -- Quest
     'Uma proposta honesta‡Серьезное предложение‡Ein aufrichtiges Angebot‡진지한 제안‡Una propuesta seria‡Una propuesta seria‡Une proposition sérieuse‡热心的建议‡熱心的建議',
     nil,
-    'Consiga 15 Amostras de Sangue de Hibérnia, 20 peças de ouro, um par de Braceletes do Espreitador de Feras e leve para Deliana, em Altaforja.‡Добудьте 15 порций крови животных Зимних ключей и 20 золотых и отдайте их вместе с наручниками Загонщика Делиане в Стальгорне.‡Sammelt 15 Blutproben aus Winterspring und bringt sie zusammen mit 20 Gold und einem Paar Bestienjägerbindungen zu Deliana in Ironforge.‡여명의 설원 혈액 견본 15개와 20골드, 야수추적자 손목띠를 아이언포지에 있는 델리아나에게 가져가야 합니다.‡Lleva 15 muestras de sangre de Cuna del Invierno, 20 piezas de oro y 1 juego de ataduras de acechabestias a Deliana a Forjaz.‡Lleva 15 muestras de sangre de Cuna del Invierno, 20 piezas de oro y 1 juego de ataduras de acechabestias a Deliana a Forjaz.‡Procurez-vous 15 Echantillons de sang du Berceau-de-l\'hiver et 20 pièces d’or, et apportez-les avec une paire de Manchettes de bestiaire à Deliana à Ironforge.‡将15份冬泉谷血样、20枚金币，以及一副野兽追猎者护腕交给铁炉堡的德莉亚娜。‡將15份冬泉谷血樣、20枚金幣，以及壹副野獸追獵者護腕交給鐵爐堡的德莉亞娜。',
+    'Consiga 15 Amostras de Sangue de Hibérnia, 20 peças de ouro, um par de Braceletes do Espreitador de Feras e leve para Deliana, em Altaforja.‡Добудьте 15 порций крови животных Зимних ключей и 20 золотых и отдайте их вместе с наручниками Загонщика Делиане в Стальгорне.‡Sammelt 15 Blutproben aus Winterspring und bringt sie zusammen mit 20 Gold und einem Paar Bestienjägerbindungen zu Deliana in Ironforge.‡여명의 설원 혈액 견본 15개와 20골드, 야수추적자 손목띠를 아이언포지에 있는 델리아나에게 가져가야 합니다.‡Lleva 15 muestras de sangre de Cuna del Invierno, 20 piezas de oro y 1 juego de ataduras de acechabestias a Deliana a Forjaz.‡Lleva 15 muestras de sangre de Cuna del Invierno, 20 piezas de oro y 1 par de brazales de acechabestias a Deliana a Forjaz.‡Procurez-vous 15 Echantillons de sang du Berceau-de-l\'hiver et 20 pièces d’or, et apportez-les avec une paire de Manchettes de bestiaire à Deliana à Ironforge.‡将15份冬泉谷血样、20枚金币，以及一副野兽追猎者护腕交给铁炉堡的德莉亚娜。‡將15份冬泉谷血樣、20枚金幣，以及壹副野獸追獵者護腕交給鐵爐堡的德莉亞娜。',
   }
 },
 [8907] = {
@@ -92959,7 +92959,7 @@
   { -- Quest
     'Uma proposta honesta‡Серьезное предложение‡Ein aufrichtiges Angebot‡진지한 제안‡Una propuesta seria‡Una propuesta seria‡Une proposition sérieuse‡热心的建议‡熱心的建議',
     nil,
-    'Adquira 15 Amostras de Sangue de Hibérnia, 20 peças de ouro, um par de Braceletes do Magíster e leve para Deliana, em Altaforja.‡Добудьте 15 порций крови животных Зимних Ключей и 20 золотых монет и отдайте их вместе с наручниками Магистра Делиане в Стальгорне.‡Sammelt 15 Blutproben aus Winterspring und bringt sie zusammen mit 20 Gold und einem Paar Bindungen des Magisters zu Deliana in Ironforge.‡여명의 설원 혈액 견본 15개와 20골드, 원소술사 손목띠를 아이언포지에 있는 델리아나에게 가져가야 합니다.‡Lleva 15 muestras de sangre de Cuna del Invierno, 20 piezas de oro y 1 juego de ataduras de magister a Deliana a Forjaz.‡Lleva 15 muestras de sangre de Cuna del Invierno, 20 piezas de oro y 1 juego de ataduras de magister a Deliana a Forjaz.‡Procurez-vous 15 Echantillons de sang du Berceau-de-l\'hiver et 20 pièces d’or, et apportez-les avec une paire de Bracelets de magistère à Deliana à Ironforge.‡将15份冬泉谷血样、20枚金币，以及一副博学者腕轮交给铁炉堡的德莉亚娜。‡將15份冬泉谷血樣、20枚金幣，以及壹副博學者腕輪交給鐵爐堡的德莉亞娜。',
+    'Adquira 15 Amostras de Sangue de Hibérnia, 20 peças de ouro, um par de Braceletes do Magíster e leve para Deliana, em Altaforja.‡Добудьте 15 порций крови животных Зимних Ключей и 20 золотых монет и отдайте их вместе с наручниками Магистра Делиане в Стальгорне.‡Sammelt 15 Blutproben aus Winterspring und bringt sie zusammen mit 20 Gold und einem Paar Bindungen des Magisters zu Deliana in Ironforge.‡여명의 설원 혈액 견본 15개와 20골드, 원소술사 손목띠를 아이언포지에 있는 델리아나에게 가져가야 합니다.‡Lleva 15 muestras de sangre de Cuna del Invierno, 20 piezas de oro y 1 juego de ataduras de magister a Deliana a Forjaz.‡Lleva 15 muestras de sangre de Cuna del Invierno, 20 piezas de oro y 1 par de brazales de magister a Deliana a Forjaz.‡Procurez-vous 15 Echantillons de sang du Berceau-de-l\'hiver et 20 pièces d’or, et apportez-les avec une paire de Bracelets de magistère à Deliana à Ironforge.‡将15份冬泉谷血样、20枚金币，以及一副博学者腕轮交给铁炉堡的德莉亚娜。‡將15份冬泉谷血樣、20枚金幣，以及壹副博學者腕輪交給鐵爐堡的德莉亞娜。',
   }
 },
 [8908] = {
@@ -93056,7 +93056,7 @@
   { -- Quest
     'Uma proposta honesta‡Серьезное предложение‡Ein aufrichtiges Angebot‡진지한 제안‡Una propuesta seria‡Una propuesta seria‡Une proposition sérieuse‡热心的建议‡熱心的建議',
     nil,
-    'Adquira 15 Amostras de Peçonha de Silithus, 20 peças de ouro, um par de Braceletes do Espreitador de Feras e leve para Mokvar, em Orgrimmar.‡Добудьте 15 порций яда силитида и 20 золотых и принесите их вместе с наручниками Загонщика Моквару в Оргриммар.‡Sammelt 15 Giftproben aus Silithus und bringt sie zusammen mit 20 Gold und einem Paar Bestienjägerbindungen zu Mokvar in Orgrimmar zurück.‡오그리마에 있는 모크바르에게 실리시드 독 견본 15개와 20골드를 야수추적자 손목띠 1개와 함께 가져가야 합니다.‡Lleva 15 muestras de veneno de Silithus, 20 piezas de oro y 1 juego de ataduras de acechabestias a Mokvar a Orgrimmar.‡Lleva 15 muestras de veneno de Silithus, 20 piezas de oro y 1 juego de ataduras de acechabestias a Mokvar a Orgrimmar.‡Procurez-vous 15 Echantillons de venin de Silithus et 20 pièces d’or, et apportez-les avec une paire de Manchettes de bestiaire à Mokvar, à Orgrimmar.‡将15份希利苏斯毒液样品、20枚金币以及一副野兽追猎者护腕交给奥格瑞玛的莫克瓦尔。‡將15份希利蘇斯毒液樣品、20枚金幣以及壹副野獸追獵者護腕交給奧格瑞瑪的莫克瓦爾。',
+    'Adquira 15 Amostras de Peçonha de Silithus, 20 peças de ouro, um par de Braceletes do Espreitador de Feras e leve para Mokvar, em Orgrimmar.‡Добудьте 15 порций яда силитида и 20 золотых и принесите их вместе с наручниками Загонщика Моквару в Оргриммар.‡Sammelt 15 Giftproben aus Silithus und bringt sie zusammen mit 20 Gold und einem Paar Bestienjägerbindungen zu Mokvar in Orgrimmar zurück.‡오그리마에 있는 모크바르에게 실리시드 독 견본 15개와 20골드를 야수추적자 손목띠 1개와 함께 가져가야 합니다.‡Lleva 15 muestras de veneno de Silithus, 20 piezas de oro y 1 juego de ataduras de acechabestias a Mokvar a Orgrimmar.‡Lleva 15 muestras de veneno de Silithus, 20 piezas de oro y 1 par de brazales de acechabestias a Mokvar a Orgrimmar.‡Procurez-vous 15 Echantillons de venin de Silithus et 20 pièces d’or, et apportez-les avec une paire de Manchettes de bestiaire à Mokvar, à Orgrimmar.‡将15份希利苏斯毒液样品、20枚金币以及一副野兽追猎者护腕交给奥格瑞玛的莫克瓦尔。‡將15份希利蘇斯毒液樣品、20枚金幣以及壹副野獸追獵者護腕交給奧格瑞瑪的莫克瓦爾。',
   }
 },
 [8915] = {
@@ -93070,7 +93070,7 @@
   { -- Quest
     'Uma proposta honesta‡Серьезное предложение‡Ein aufrichtiges Angebot‡진지한 제안‡Una propuesta seria‡Una propuesta seria‡Une proposition sérieuse‡热心的建议‡熱心的建議',
     nil,
-    'Adquira 15 Amostras de Peçonha de Silithus, 20 peças de ouro, um par de Braceletes do Magíster e leve para Mokvar, em Orgrimmar.‡Добудьте 15 порций яда силитида и 20 золотых и принесите их вместе с наручниками Магистра Моквару в Оргриммар.‡Sammelt 15 Giftproben aus Silithus und bringt sie zusammen mit 20 Gold und einem Paar Bindungen des Magisters zu Mokvar in Orgrimmar zurück.‡오그리마에 있는 모크바르에게 실리시드 독 견본 15개와 20골드를 원소술사 손목띠 1개와 함께 가져가야 합니다.‡Lleva 15 muestras de veneno de Silithus, 20 piezas de oro y 1 par de brazales Magister a Mokvar a Orgrimmar.‡Lleva 15 muestras de veneno de Silithus, 20 piezas de oro y 1 juego de ataduras de magister a Mokvar a Orgrimmar.‡Procurez-vous 15 Echantillons de venin de Silithus et 20 pièces d’or, et apportez-les avec une paire de Bracelets de magistère à Mokvar, à Orgrimmar.‡将15份希利苏斯毒液样品、20枚金币以及一副博学者腕轮交给奥格瑞玛的莫克瓦尔。‡將15份希利蘇斯毒液樣品、20枚金幣以及壹副博學者腕輪交給奧格瑞瑪的莫克瓦爾。',
+    'Adquira 15 Amostras de Peçonha de Silithus, 20 peças de ouro, um par de Braceletes do Magíster e leve para Mokvar, em Orgrimmar.‡Добудьте 15 порций яда силитида и 20 золотых и принесите их вместе с наручниками Магистра Моквару в Оргриммар.‡Sammelt 15 Giftproben aus Silithus und bringt sie zusammen mit 20 Gold und einem Paar Bindungen des Magisters zu Mokvar in Orgrimmar zurück.‡오그리마에 있는 모크바르에게 실리시드 독 견본 15개와 20골드를 원소술사 손목띠 1개와 함께 가져가야 합니다.‡Lleva 15 muestras de veneno de Silithus, 20 piezas de oro y 1 par de brazales Magister a Mokvar a Orgrimmar.‡Lleva 15 muestras de veneno de Silithus, 20 piezas de oro y 1 par de brazales de magister a Mokvar a Orgrimmar.‡Procurez-vous 15 Echantillons de venin de Silithus et 20 pièces d’or, et apportez-les avec une paire de Bracelets de magistère à Mokvar, à Orgrimmar.‡将15份希利苏斯毒液样品、20枚金币以及一副博学者腕轮交给奥格瑞玛的莫克瓦尔。‡將15份希利蘇斯毒液樣品、20枚金幣以及壹副博學者腕輪交給奧格瑞瑪的莫克瓦爾。',
   }
 },
 [8916] = {
@@ -93109,7 +93109,7 @@
   { -- Quest
     'Uma proposta honesta‡Серьезное предложение‡Ein aufrichtiges Angebot‡진지한 제안‡Una propuesta seria‡Una propuesta seria‡Une proposition sérieuse‡热心的建议‡熱心的建議',
     nil,
-    'Adquira 15 Amostras de Peçonha de Silithus, 20 peças de ouro, um par de Braceletes dos Elementos e leve para Mokvar, em Orgrimmar.‡Добудьте 15 порций яда силитида и 20 золотых, а затем принесите их вместе с поручьями Стихий Моквару в Оргриммар.‡Sammelt 15 Giftproben aus Silithus und bringt sie zusammen mit 20 Gold und einem Paar Bindungen der Elemente zu Mokvar in Orgrimmar zurück.‡오그리마에 있는 모크바르에게 실리시드 독 견본 15개와 20골드를 정령의 손목띠 1개와 함께 가져가야 합니다.‡Lleva 15 muestras de veneno de Silithus, 20 piezas de oro y 1 par de brazales de los elementos a Mokvar a Orgrimmar.‡Lleva 15 muestras de veneno de Silithus, 20 piezas de oro y 1 par de ataduras de elementos a Mokvar a Orgrimmar.‡Procurez-vous 15 Echantillons de venin de Silithus et 20 pièces d’or, et apportez-les avec une paire de Bracelets des éléments à Mokvar, à Orgrimmar.‡将15份希利苏斯毒液样品、20枚金币以及一副元素腕轮交给奥格瑞玛的莫克瓦尔。‡將15份希利蘇斯毒液樣品、20枚金幣以及壹副元素腕輪交給奧格瑞瑪的莫克瓦爾。',
+    'Adquira 15 Amostras de Peçonha de Silithus, 20 peças de ouro, um par de Braceletes dos Elementos e leve para Mokvar, em Orgrimmar.‡Добудьте 15 порций яда силитида и 20 золотых, а затем принесите их вместе с поручьями Стихий Моквару в Оргриммар.‡Sammelt 15 Giftproben aus Silithus und bringt sie zusammen mit 20 Gold und einem Paar Bindungen der Elemente zu Mokvar in Orgrimmar zurück.‡오그리마에 있는 모크바르에게 실리시드 독 견본 15개와 20골드를 정령의 손목띠 1개와 함께 가져가야 합니다.‡Lleva 15 muestras de veneno de Silithus, 20 piezas de oro y 1 par de brazales de los elementos a Mokvar a Orgrimmar.‡Lleva 15 muestras de veneno de Silithus, 20 piezas de oro y 1 par de ataduras de los elementos a Mokvar en Orgrimmar.‡Procurez-vous 15 Echantillons de venin de Silithus et 20 pièces d’or, et apportez-les avec une paire de Bracelets des éléments à Mokvar, à Orgrimmar.‡将15份希利苏斯毒液样品、20枚金币以及一副元素腕轮交给奥格瑞玛的莫克瓦尔。‡將15份希利蘇斯毒液樣品、20枚金幣以及壹副元素腕輪交給奧格瑞瑪的莫克瓦爾。',
   }
 },
 [8919] = {
@@ -95036,7 +95036,7 @@
   -- Item
   '‡‡‡서판: 마법정화 토템‡‡‡‡‡石板:根基圖騰',
   { -- Npc
-    'Umbramante Vivian Latumba‡Темный маг Вивиана Лягроб‡Schattenmagierin Vivian Lagrave‡어둠마법사 비비안 라그레이브‡Maga oscura Vivian Latumba‡Maga oscura Vivian Latumba‡Ombremage Vivian Lagrave‡暗法师薇薇安·拉格雷‡暗影法師薇薇安·拉格雷',
+    'Umbramante Vivian Latumba‡Темный маг Вивиана Лягроб‡Schattenmagierin Vivian Lagrave‡어둠마법사 비비안 라그레이브‡Maga oscura Vivian Latumba‡Maga oscura Vivian Lagrave‡Ombremage Vivian Lagrave‡暗法师薇薇安·拉格雷‡暗影法師薇薇安·拉格雷',
     'Força Expedicionária de Karrath‡Каргатский экспедиционный корпус‡Expeditionskorps von Kargath‡카르가스 원정대‡Fuerza Expedicionaria de Kargath‡Fuerza Expedicionaria de Kargath‡Corps expéditionnaire de Kargath‡卡加斯远征军‡卡加斯遠征軍',
   },
   nil,
@@ -95078,7 +95078,7 @@
   -- Item
   '‡‡‡서판: 치유의 토템 II‡‡‡‡‡石板:治療之泉圖騰 II',
   { -- Npc
-    'Galamav, o Atirador Perito‡Галамав Стрелок‡Galamav der Schütze‡명사수 갈라마브‡Galamav el Preciso‡Galamav el Preciso‡Galamav le Tireur d\'élite‡神射手贾拉玛弗‡『神射手』賈拉瑪弗',
+    'Galamav, o Atirador Perito‡Галамав Стрелок‡Galamav der Schütze‡명사수 갈라마브‡Galamav el Preciso‡Galamav el Tirador‡Galamav le Tireur d\'élite‡神射手贾拉玛弗‡『神射手』賈拉瑪弗',
     'Força Expedicionária de Karrath‡Каргатский экспедиционный корпус‡Expeditionskorps von Kargath‡카르가스 원정대‡Fuerza Expedicionaria de Kargath‡Fuerza Expedicionaria de Kargath‡Corps expéditionnaire de Kargath‡卡加斯远征军‡卡加斯遠征軍',
   },
   nil,
@@ -95695,7 +95695,7 @@
   -- Item
   '‡‡‡서판: 마나 토템 III‡‡‡‡‡石板:法力之泉圖騰 III',
   { -- Npc
-    'Sha\'ni Altapresa‡Ша\'ни Гордый Клык‡Sha\'ni Proudtusk‡샤니 프라우드터스크‡Sha\'ni Colminilludo‡Sha\'ni Colminilludo‡Sha\'ni Proudtusk‡沙妮·长齿‡沙妮·長齒',
+    'Sha\'ni Altapresa‡Ша\'ни Гордый Клык‡Sha\'ni Proudtusk‡샤니 프라우드터스크‡Sha\'ni Colminilludo‡Sha\'ni Colmillo Orgulloso‡Sha\'ni Proudtusk‡沙妮·长齿‡沙妮·長齒',
     nil,
   },
   nil,
@@ -98703,7 +98703,7 @@
   -- Item
   '‡Клык Газ\'риллы‡Fangzahn von Gahz\'rilla‡가즈릴라의 송곳니‡Colmillo de Gahz\'rilla‡Colmillo de Gahz\'rilla‡Croc de Gahz\'rilla‡加兹瑞拉之牙‡加茲瑞拉之牙',
   { -- Npc
-    'Miblon Rosnadente‡Миблон Рыкозуб‡Miblon Fletschmaul‡미블론 스날투스‡Miblon Gruñediente‡Miblon Gruñediente‡Miblon Grondequenotte‡米布隆·乱齿‡米布隆·亂齒',
+    'Miblon Rosnadente‡Миблон Рыкозуб‡Miblon Fletschmaul‡미블론 스날투스‡Miblon Gruñedientes‡Miblon Gruñediente‡Miblon Grondequenotte‡米布隆·乱齿‡米布隆·亂齒',
     nil,
   },
   nil,
@@ -99168,7 +99168,7 @@
   -- Item
   '‡‡‡시험용 25레벨 전사용 장비 L25‡‡‡‡‡內裝戰士設備護甲 L25型',
   { -- Npc
-    'Maibess Brisa do Rio‡Майбесса Речной Ветер‡Maybess Riverbreeze‡메이베스 리버브리즈‡Maybess Brisa de Río‡Maybess Brisa de Río‡Maybess Riverbreeze‡梅贝丝·河风‡梅貝絲·河風',
+    'Maibess Brisa do Rio‡Майбесса Речной Ветер‡Maybess Riverbreeze‡메이베스 리버브리즈‡Maybess Brisafluvial‡Maybess Brisa de Río‡Maybess Riverbreeze‡梅贝丝·河风‡梅貝絲·河風',
     'Círculo Esmeraldino‡Изумрудный Круг‡Smaragdkreis‡에메랄드 의회‡Círculo Esmeralda‡Círculo Esmeralda‡Cercle d\'émeraude‡翡翠议会‡翡翠議會',
   },
   nil,
@@ -99884,7 +99884,7 @@
   -- Item
   '‡Сосуд для уменьшенных гиппогрифов‡Gefäß für Hippogryphenmuisek‡히포그리프 뮤세크 단지‡Vasija de muisek hipogrifo‡Vasija de muisek de hipogrifo‡Récipient à muisek d\'hippogriffe‡角鹰兽灵魂精华容器‡角鷹獸靈魂精華容器',
   { -- Npc
-    'Torwa Mateiro‡Землепроходец Торва‡Torwa Pathfinder‡토르와 패스파인더‡Abrecaminos Torwa‡Abrecaminos Torwa‡Torwa Pathfinder‡托尔瓦·寻路者‡托爾瓦·尋路者',
+    'Torwa Mateiro‡Землепроходец Торва‡Torwa Pathfinder‡토르와 패스파인더‡Abrecaminos Torwa‡Torwa Abrecaminos‡Torwa Pathfinder‡托尔瓦·寻路者‡托爾瓦·尋路者',
     nil,
   },
   nil,
@@ -100323,7 +100323,7 @@
   -- Item
   '‡Сила древня‡Kraft des Treant‡나무정령의 힘‡Fuerza del antárbol‡Fuerza del antárbol‡Force du tréant‡树人之力‡樹人之力',
   { -- Npc
-    'Lar\'korwi Fêmea‡Самка Лар\'корви‡Lar\'korwi-Weibchen‡라르코르위의 짝‡Amigo de Lar\'korwi‡Amigo de Lar\'korwi‡Compagne de Lar\'korwi‡拉克维的配偶‡拉克維的配偶',
+    'Lar\'korwi Fêmea‡Самка Лар\'корви‡Lar\'korwi-Weibchen‡라르코르위의 짝‡Amigo de Lar\'korwi‡Compañera de Lar\'korwi‡Compagne de Lar\'korwi‡拉克维的配偶‡拉克維的配偶',
     nil,
   },
   nil,
@@ -102905,7 +102905,7 @@
   '‡Простое черное платье‡Einfaches schwarzes Kleid‡수수한 검은색 드레스‡Vestido negro sencillo‡Vestido negro sencillo‡Robe noire simple‡简易的黑裙子‡簡單的黑裙子',
   { -- Npc
     'Anita Malho‡Аня Молрэ‡Anya Maulray‡안야 마울레이‡Anya Maulray‡Anya Maulray‡Anya Maulray‡安雅·玛尔雷‡安雅·瑪爾雷',
-    'Mestre de Estábulo‡Смотритель стойл‡Stallmeister‡야수 관리인‡Maestro de establos‡Maestro de establos‡Maître des écuries‡兽栏管理员‡獸欄管理員',
+    'Mestre de Estábulo‡Смотритель стойл‡Stallmeister‡야수 관리인‡Maestro de establos‡Maestra de establos‡Maître des écuries‡兽栏管理员‡獸欄管理員',
   },
   nil,
   nil
@@ -104896,7 +104896,7 @@
   -- Item
   '‡Гномреганский амулет‡Gnomereganamulett‡놈리건 아뮬렛‡Amuleto de Gnomeregan‡Amuleto de Gnomeregan‡Amulette de Gnomeregan‡诺莫瑞根护符‡諾姆瑞根護符',
   { -- Npc
-    'Infiltrador Escudo Marcado‡Секретный агент из легиона Изрубленного Щита‡Spitzel der Schmetterschilde‡방패부대 첩보원‡Infiltrador Escudo del Estigma‡Infiltrador Escudo del Estigma‡Infiltrateur du Bouclier balafré‡裂盾渗透者‡裂盾滲透者',
+    'Infiltrador Escudo Marcado‡Секретный агент из легиона Изрубленного Щита‡Spitzel der Schmetterschilde‡방패부대 첩보원‡Infiltrador Escudo del Estigma‡Infiltrado del Escudo del Estigma‡Infiltrateur du Bouclier balafré‡裂盾渗透者‡裂盾滲透者',
     'Legião do Escudo Marcado‡Легион Изрубленного Щита‡Schmetterschildlegion‡방패 부대‡Legión Escudo del Estigma‡Legión Escudo del Estigma‡Légion du Bouclier balafré‡裂盾军团‡裂盾軍團',
   },
   nil,
@@ -105217,7 +105217,7 @@
   nil,
   { -- Npc
     'Gyth‡Гит‡Gyth‡기스‡Gyth‡Gyth‡Gyth‡盖斯‡蓋斯',
-    'Montaria de Laceral Mão Negra‡Верховое животное Ренда Чернорука‡Rend Blackhands Reittier‡렌드 블랙핸드의 탈것‡Montura de Desgarro Puño Negro‡Montura de Desgarro Puño Negro‡Monture de Rend Blackhand‡雷德·黑手的坐骑‡雷德·黑手的坐騎',
+    'Montaria de Laceral Mão Negra‡Верховое животное Ренда Чернорука‡Rend Blackhands Reittier‡렌드 블랙핸드의 탈것‡Montura de Desgarro Puño Negro‡Montura de Rend Puño Negro‡Monture de Rend Blackhand‡雷德·黑手的坐骑‡雷德·黑手的坐騎',
   },
   nil,
   nil
@@ -105451,7 +105451,7 @@
   -- Item
   '‡Шлем командора‡Kommandantenhelm‡지휘관 투구‡Yelmo de Comandante‡Yelmo de Comandante‡Heaume de commandant‡恶魔板甲头盔‡指揮官鎧甲頭盔',
   { -- Npc
-    'Altsoba Totem da Fúria‡Альтсоба Тотем Гнева‡Altsoba Ragetotem‡알트소바 레이지토템‡Altsoba Furiatótem‡Altsoba Furiatótem‡Altsoba Ragetotem‡奥索巴·狂怒图腾‡奧索巴·狂暴圖騰',
+    'Altsoba Totem da Fúria‡Альтсоба Тотем Гнева‡Altsoba Ragetotem‡알트소바 레이지토템‡Altsoba Furiatótem‡Altsoba Tótem de Ira‡Altsoba Ragetotem‡奥索巴·狂怒图腾‡奧索巴·狂暴圖騰',
     'Armas‡Торговец оружием‡Waffenhändler‡무기 상인‡Mercader de armas‡Mercader de armas‡Marchand d\'armes‡武器商‡武器商',
   },
   nil,
@@ -105909,7 +105909,7 @@
 [10429] = {
   nil,
   { -- Npc
-    'Chefe Guerreiro Laceral Mão Negra‡Вождь Ренд Чернорук‡Kriegshäuptling Rend Blackhand‡대족장 렌드 블랙핸드‡Jefe de Guerra Desgarro Puño Negro‡Jefe de Guerra Desgarro Puño Negro‡Chef de guerre Rend Blackhand‡大酋长雷德·黑手‡大酋長雷德·黑手',
+    'Chefe Guerreiro Laceral Mão Negra‡Вождь Ренд Чернорук‡Kriegshäuptling Rend Blackhand‡대족장 렌드 블랙핸드‡Jefe de Guerra Desgarro Puño Negro‡Jefe de Guerra Rend Puño Negro‡Chef de guerre Rend Blackhand‡大酋长雷德·黑手‡大酋長雷德·黑手',
     nil,
   },
   nil,
@@ -107737,7 +107737,7 @@
   -- Item
   '‡Записка Магаты‡Magathas Notiz‡마가타의 쪽지‡Nota de Magatha‡Nota de Magatha‡Note de Magatha‡玛加萨的便笺‡瑪加薩的便箋',
   { -- Npc
-    'Filhote Pestilento‡Зачумленный детеныш дракона‡Verseuchtes Jungtier‡역병 걸린 작은 새끼용‡Trampedor infestado‡Trampedor infestado‡Jeune pestiféré‡瘟疫龙崽‡瘟疫幼龍',
+    'Filhote Pestilento‡Зачумленный детеныш дракона‡Verseuchtes Jungtier‡역병 걸린 작은 새끼용‡Trampedor infestado‡Cría de dragón apestada‡Jeune pestiféré‡瘟疫龙崽‡瘟疫幼龍',
     nil,
   },
   nil,
@@ -108163,7 +108163,7 @@
   -- Item
   '‡Кольцо стойкости‡Ring der Seelenstärke‡인내의 반지‡Anillo de Entereza‡Anillo de Entereza‡Anneau de robustesse‡坚韧之戒‡堅韌之戒',
   { -- Npc
-    'Mulgris Riofundo‡Мулгрис Глубокая Река‡Mulgris Deepriver‡멀그리스 딥리버‡Mulgris Riohondo‡Mulgris Riohondo‡Mulgris Deepriver‡穆格雷斯·深水‡穆格雷斯·深水',
+    'Mulgris Riofundo‡Мулгрис Глубокая Река‡Mulgris Deepriver‡멀그리스 딥리버‡Mulgris Riohondo‡Mulgris Río Hondo‡Mulgris Deepriver‡穆格雷斯·深水‡穆格雷斯·深水',
     nil,
   },
   nil,
@@ -108403,7 +108403,7 @@
 },
 [10769] = {
   -- Item
-  '‡Светящееся Око Мордреша‡Glühendes Auge von Mordresh‡모드레쉬의 이글거리는 눈‡Ojo resplandeciente de Mordresh‡Ojo resplandeciente de Mordresh‡Oeil luminescent de Mordresh‡莫德雷斯之眼‡莫德雷斯之眼',
+  '‡Светящееся Око Мордреша‡Glühendes Auge von Mordresh‡모드레쉬의 이글거리는 눈‡Ojo resplandeciente de Mordresh‡Nota de Andron‡Oeil luminescent de Mordresh‡莫德雷斯之眼‡莫德雷斯之眼',
   nil,
   nil,
   nil
@@ -108454,7 +108454,7 @@
   -- Item
   '‡Накидка шелкопряда‡Seidenes Spinnencape‡비단거미 단망토‡Manteo de araña sedosa‡Manteo de araña sedosa‡Cape d\'araignée soyeuse‡蜘蛛银丝斗篷‡蜘蛛銀絲斗篷',
   { -- Npc
-    'Jonas Tiragosto‡Айс Вентурон‡Finkle Einhorn‡핀클 에인혼‡Finkle Unicornín‡Finkle Unicornín‡Finkle Einhorn‡芬克·恩霍尔‡芬克·恩霍爾',
+    'Lépido Fagueiro‡Пип Смышлен‡Pip Quickwit‡핍 퀵윗‡Pip Perspicaz‡Pip Perspicaz‡Pépin Preste-Jugeote‡皮普·急智‡皮普·捷思',
     nil,
   },
   nil,
@@ -109817,7 +109817,7 @@
 [11016] = {
   nil,
   { -- Npc
-    'Arko\'narin Capturada‡Пленная Арко\'нарина‡Gefangener Arko\'narin‡사로잡힌 아르코나린‡Arko\'narin capturado‡Arko\'narin capturado‡Arko\'narin capturée‡被俘虏的亚科纳琳‡被俘虜的亞科納琳',
+    'Arko\'narin Capturada‡Пленная Арко\'нарина‡Gefangener Arko\'narin‡사로잡힌 아르코나린‡Arko\'narin capturado‡Arko\'narin capturada‡Arko\'narin capturée‡被俘虏的亚科纳琳‡被俘虜的亞科納琳',
     nil,
   },
   nil,
@@ -112245,7 +112245,7 @@
 [11380] = {
   nil,
   { -- Npc
-    'Jin\'do, o Bagateiro‡Джин\'до Проклинатель‡Jin\'do der Verhexer‡주술사 진도‡Jin\'do el Malhechor‡Jin\'do el Malhechor‡Jin\'do le Maléficieur‡妖术师金度‡『妖術師』金度',
+    'Jin\'do, o Bagateiro‡Джин\'до Проклинатель‡Jin\'do der Verhexer‡주술사 진도‡Jin\'do el Malhechor‡Jin\'do el Aojador‡Jin\'do le Maléficieur‡妖术师金度‡『妖術師』金度',
     nil,
   },
   nil,
@@ -113776,7 +113776,7 @@
   -- Item
   '‡‡‡디버그 사모플랜지 설명서 표지‡‡‡‡‡',
   { -- Npc
-    'Guarda-caça Eiras‡Охотник Радли‡Jägerin Radley‡사냥꾼 래들리‡Cazador Radley‡Cazador Radley‡Veneur Radley‡猎人莱德雷‡獵人萊德雷',
+    'Guarda-caça Eiras‡Охотник Радли‡Jägerin Radley‡사냥꾼 래들리‡Cazador Radley‡Montero Radley‡Veneur Radley‡猎人莱德雷‡獵人萊德雷',
     nil,
   },
   nil,
@@ -119306,7 +119306,7 @@
 },
 [12368] = {
   -- Item
-  '‡Рассветный гамбит‡Dämmerungstrickfalle‡여명의 계략‡Gambito de Alexi‡Gambito de Alexi‡Gambit d\'Alexi‡黎明先锋‡黎明先鋒',
+  '‡Рассветный гамбит‡Dämmerungstrickfalle‡여명의 계략‡Gambito de Alexi‡Gambito del Alba‡Gambit d\'Alexi‡黎明先锋‡黎明先鋒',
   { -- Npc
     'Mecanostruz Branco Modelo A‡Белый механодолгоног модель А‡Weißer Roboschreiter Mod. A‡최신형 흰색 기계타조‡Mecazancudo blanco modelo A‡Mecazancudo blanco modelo A‡Mécanotrotteur blanc modèle A‡白色机械陆行鸟A型‡白色機械陸行鳥A型',
     nil,
@@ -131150,7 +131150,7 @@
 [14358] = {
   nil,
   { -- Npc
-    'Anciã Shen\'dralar‡Прародительница Шен\'дралар‡Uralte Shen\'dralar‡셴드랄라 고대인‡Anciano Shen\'dralar‡Anciano Shen\'dralar‡Ancienne de Shen\'Dralar‡辛德拉古灵‡辛德拉古靈',
+    'Anciã Shen\'dralar‡Прародительница Шен\'дралар‡Uralte Shen\'dralar‡셴드랄라 고대인‡Anciano Shen\'dralar‡Ancestro Shen\'dralar‡Ancienne de Shen\'Dralar‡辛德拉古灵‡辛德拉古靈',
     nil,
   },
   nil,
@@ -131909,7 +131909,7 @@
   -- Item
   '‡Маска ядовитой дымки‡Giftschleiermaske‡독구름 복면‡Máscara de embozo de veneno‡Máscara de embozo de veneno‡Masque du voile vénéneux‡毒丝面具‡毒幕面具',
   { -- Npc
-    'Caçador Totem da Fúria‡Охотник Бешеный Тотем‡Jäger Ragetotem‡사냥꾼 레이지토템‡Cazador Furiatótem‡Cazador Furiatótem‡Chasseur Ragetotem‡捕猎者拉图特‡捕獵者拉圖特',
+    'Caçador Totem da Fúria‡Охотник Бешеный Тотем‡Jäger Ragetotem‡사냥꾼 레이지토템‡Cazador Furiatótem‡Cazador Tótem de Ira‡Chasseur Ragetotem‡捕猎者拉图特‡捕獵者拉圖特',
     nil,
   },
   nil,
@@ -132565,7 +132565,7 @@
   -- Item
   '‡Выкройка: наплечники из луноткани‡Muster: Mondstoffschultern‡도안: 달빛매듭 어깨보호구‡Patrón: sobrehombros de tela lunar‡Patrón: sobrehombros de tela lunar‡Patron : Epaulières en étoffe lunaire‡图样：月布护肩‡圖樣:月布護肩',
   { -- Npc
-    'Sumo Sacerdote Venoxis‡Верховный жрец Веноксис‡Hohepriester Venoxis‡대사제 베녹시스‡Sumo Sacerdote Venoxis‡Sumo Sacerdote Venoxis‡Grand prêtre Venoxis‡高阶祭司温诺希斯‡高階祭司溫諾希斯',
+    'Sumo Sacerdote Venoxis‡Верховный жрец Веноксис‡Hohepriester Venoxis‡대사제 베녹시스‡Sumo Sacerdote Venoxis‡Sumo sacerdote Venoxis‡Grand prêtre Venoxis‡高阶祭司温诺希斯‡高階祭司溫諾希斯',
     nil,
   },
   nil,
@@ -132585,7 +132585,7 @@
   -- Item
   '‡Выкройка: венец из луноткани‡Muster: Mondstoffreif‡도안: 달빛매듭 머리장식‡Patrón: aro de tela lunar‡Patrón: aro de tela lunar‡Patron : Diadème en étoffe lunaire‡图样：月布头饰‡圖樣:月布頭環',
   { -- Npc
-    'Sumo Sacerdote Thekal‡Верховный жрец Текал‡Hohepriester Thekal‡대사제 데칼‡Sumo Sacerdote Thekal‡Sumo Sacerdote Thekal‡Grand prêtre Thekal‡高阶祭司塞卡尔‡高階祭司塞卡爾',
+    'Sumo Sacerdote Thekal‡Верховный жрец Текал‡Hohepriester Thekal‡대사제 데칼‡Sumo Sacerdote Thekal‡Sumo sacerdote Thekal‡Grand prêtre Thekal‡高阶祭司塞卡尔‡高階祭司塞卡爾',
     nil,
   },
   nil,
@@ -132595,7 +132595,7 @@
   -- Item
   '‡Выкройка: бездонная сумка‡Muster: Bodenlose Tasche‡도안: 무한의 가방‡Patrón: bolsa sin fondo‡Patrón: bolsa sin fondo‡Patron : Sac sans fond‡图样：无底包‡圖樣:無底之包',
   { -- Npc
-    'Alta-sacerdotisa Mar\'li‡Верховная жрица Мар\'ли‡Hohepriesterin Mar\'li‡대여사제 말리‡Suma Sacerdotisa Mar\'li‡Suma Sacerdotisa Mar\'li‡Grande prêtresse Mar\'li‡高阶祭司玛尔里‡高階祭司瑪俐',
+    'Alta-sacerdotisa Mar\'li‡Верховная жрица Мар\'ли‡Hohepriesterin Mar\'li‡대여사제 말리‡Suma Sacerdotisa Mar\'li‡Suma sacerdotisa Mar\'li‡Grande prêtresse Mar\'li‡高阶祭司玛尔里‡高階祭司瑪俐',
     nil,
   },
   nil,
@@ -132644,7 +132644,7 @@
 [14515] = {
   nil,
   { -- Npc
-    'Alta-sacerdotisa Arlokk‡Верховная жрица Арлокк‡Hohepriesterin Arlokk‡대여사제 알로크‡Suma Sacerdotisa Arlokk‡Suma Sacerdotisa Arlokk‡Grande prêtresse Arlokk‡高阶祭司娅尔罗‡高階祭司阿洛克',
+    'Alta-sacerdotisa Arlokk‡Верховная жрица Арлокк‡Hohepriesterin Arlokk‡대여사제 알로크‡Suma Sacerdotisa Arlokk‡Suma sacerdotisa Arlokk‡Grande prêtresse Arlokk‡高阶祭司娅尔罗‡高階祭司阿洛克',
     nil,
   },
   nil,
@@ -132662,7 +132662,7 @@
 [14517] = {
   nil,
   { -- Npc
-    'Alta-sacerdotisa Jeklik‡Верховная жрица Джеклик‡Hohepriesterin Jeklik‡대여사제 제클릭‡Suma Sacerdotisa Jeklik‡Suma Sacerdotisa Jeklik‡Grande prêtresse Jeklik‡高阶祭司耶克里克‡高階祭司耶克里克',
+    'Alta-sacerdotisa Jeklik‡Верховная жрица Джеклик‡Hohepriesterin Jeklik‡대여사제 제클릭‡Suma Sacerdotisa Jeklik‡Suma sacerdotisa Jeklik‡Grande prêtresse Jeklik‡高阶祭司耶克里克‡高階祭司耶克里克',
     nil,
   },
   nil,
@@ -134333,7 +134333,7 @@
 [14721] = {
   nil,
   { -- Npc
-    'Marechal de Campo Afrasiabi‡Фельдмаршал Афрасиаби‡Feldmarschall Afrasiabi‡야전사령관 아프라샤비‡Alguacil de campo Afrasiabi‡Alguacil de campo Afrasiabi‡Grand maréchal Afrasiabi‡艾法希比元帅‡戰場元帥艾法希比',
+    'Marechal-de-campo Pontepedra‡Фельдмаршал Стоунбридж‡Feldmarschall Steinsteg‡야전사령관 스톤브릿지‡Mariscal de campo Petraponte‡Mariscal de campo Petraponte‡Grand maréchal Pont-de-Pierre‡斯托布里奇元帅‡戰場元帥石橋',
     nil,
   },
   nil,
@@ -143611,7 +143611,7 @@
   -- Item
   '‡Выкройка: наплечники из чешуи синего дракона‡Muster: Blaue Drachenschuppenschultern‡도안: 푸른용비늘 어깨보호구‡Patrón: sobrehombros de dragontina azul‡Patrón: sobrehombros de dragontina azul‡Patron : Epaulières en écailles de dragon bleu‡图样：蓝色龙鳞护肩‡圖樣:藍龍鱗片護肩',
   { -- Npc
-    'Oficial Patranhos‡Офицер Бифштеккер‡Offizier Porterhouse‡장교 포터하우스‡Oficial Porterodificio‡Oficial Porterodificio‡Officier Porterhouse‡军官波特霍斯‡軍官波特霍斯',
+    'Oficial Patranhos‡Офицер Бифштеккер‡Offizier Porterhouse‡장교 포터하우스‡Oficial Porterodificio‡Oficial Chatobrian‡Officier Porterhouse‡军官波特霍斯‡軍官波特霍斯',
     'Comendas de Gnomeregan‡Наградной отдел Гномрегана‡Belobigungsoffizier von Gnomeregan‡놈리건 인사장교‡Menciones honoríficas de Gnomeregan‡Menciones honoríficas de Gnomeregan‡Mérite de Gnomeregan‡诺莫瑞根嘉奖处‡諾姆瑞根表揚處',
   },
   nil,
@@ -143651,7 +143651,7 @@
   -- Item
   'Chave de Hameya‡Ключ Хамейя‡Hameyas Schlüssel‡하메야의 열쇠‡Llave de Hameya‡Llave de Hameya‡Clé d\'Hameya‡哈米亚的钥匙‡哈米亞的鑰匙',
   { -- Npc
-    'Oficial Andarilho do Trovão‡Офицер Громовая Странница‡Offizier Thunderstrider‡장교 썬더스트라이더‡Oficial Tronazanco‡Oficial Tronazanco‡Officier Thunderstrider‡军官森德·雷蹄‡軍官森德·雷蹄',
+    'Oficial Andarilho do Trovão‡Офицер Громовая Странница‡Offizier Thunderstrider‡장교 썬더스트라이더‡Oficial Tronazanco‡Oficial Zancada del Trueno‡Officier Thunderstrider‡军官森德·雷蹄‡軍官森德·雷蹄',
     'Comendas do Penhasco do Trovão‡Наградной отдел Громового Утеса‡Belobigungsoffizier von Thunder Bluff‡썬더 블러프 인사장교‡Menciones honoríficas de Cima del Trueno‡Menciones honoríficas de Cima del Trueno‡Mérite de Thunder Bluff‡雷霆崖嘉奖处‡雷霆崖表揚處',
   },
   nil,
@@ -153054,7 +153054,7 @@
 },
 [16785] = {
   -- Item
-  '‡Письмо Рокаро‡Rokaros Brief‡로카로의 편지‡Carta de Rokaro‡Carta de Rokaro‡Lettre de Rokaro‡罗卡鲁的信‡羅卡洛的證明',
+  '‡Письмо Рокаро‡Rokaros Brief‡로카로의 편지‡Carta de Rokaro‡Testamento de Rexxar‡Lettre de Rokaro‡罗卡鲁的信‡羅卡洛的證明',
   { -- Npc
     'Visgo Pestilento (Verde)‡Чумная слизь (зеленая)‡Grüner Seuchenbrühschleimer‡역병 걸린 초록색 진흙괴물‡Babosa de peste (verde)‡Babosa de peste (verde)‡Gelée de la peste (verte)‡绿色瘟疫软泥怪‡瘟疫軟泥怪(綠色)',
     nil,
@@ -201061,7 +201061,7 @@
 },
 [22036] = {
   -- Item
-  '‡‡‡QAEnchant Bracer +4 Mana‡‡‡‡‡',
+  '‡‡‡QAEnchant Bracer +4 Mana\\5‡‡‡‡‡',
   { -- Npc
     '‡‡‡‡‡‡‡‡腐化的海卓司之子',
     nil,
@@ -226344,7 +226344,7 @@
   -- Item
   '‡‡‡‡‡‡‡‡戰槌肩冑',
   { -- Npc
-    '‡‡‡‡‡‡‡‡海員刃語',
+    '‡‡‡‡‡‡‡‡\\127海員刃語',
     '‡‡‡‡‡‡‡‡月霧號',
   },
   nil,
@@ -289647,7 +289647,7 @@
   nil,
   nil,
   -- Object
-  'Livros Roubados‡Краденые книги‡Gestohlene Bücher‡도난당한 책‡Libros robados‡‡Livres dérobés‡被偷走的书‡',
+  'Livros Roubados‡Краденые книги‡Gestohlene Bücher‡도난당한 책‡Libros robados‡Libros robados‡Livres dérobés‡被偷走的书‡',
   nil
 },
 [85556] = {
@@ -297144,7 +297144,7 @@
   nil,
   nil,
   -- Object
-  '‡‡‡‡‡Foco de hechizo del Dios malvado (DND)‡‡‡',
+  '‡Злой Бог - фокус заклинания‡Böser Gott, Zauber-Fokus‡악의 신 소환진‡Foco de hechizo del Dios malvado‡Foco de hechizo del Dios malvado‡Focus du sort du dieu maléfique‡邪神法術集中‡邪神法術集中',
   nil
 },
 [148423] = {
@@ -297207,7 +297207,7 @@
   nil,
   nil,
   -- Object
-  '‡‡‡‡‡Foco de hechizo de la Poza de la Luna corrupta (DND)‡‡‡',
+  'Poço Lunar Corrompido‡Оскверненный Лунный колодец‡Der verderbte Mondbrunnen‡오염된 달샘‡La Poza de la Luna corrupta‡La Poza de la Luna corrupta‡Le Puits de lune corrompu‡被污染的月井‡被污染的月井',
   nil
 },
 [148502] = {
@@ -299020,7 +299020,7 @@
   nil,
   nil,
   -- Object
-  'Tomo Kaldorei da Evocação‡Кальдорайский фолиант Призыва‡Kaldorei Foliant des Beschwörens‡나이트 엘프 소환의 고서‡Tomo de invocación Kaldorei‡Tomo de invocación Kaldorei‡Tome d\'invocation kaldorei‡卡多雷召唤宝典‡',
+  'Tomo Kaldorei da Evocação‡Кальдорайский фолиант Призыва‡Kaldorei Foliant des Beschwörens‡나이트 엘프 소환의 고서‡Tomo de invocación Kaldorei‡Escrito sobre invocación Kaldorei‡Tome d\'invocation kaldorei‡卡多雷召唤宝典‡',
   nil
 },
 [151951] = {
@@ -299580,28 +299580,28 @@
   nil,
   nil,
   -- Object
-  '‡‡‡‡‡la poza de la primera marea‡‡‡',
+  'A poça da primeira maré‡Первая приливная заводь‡Der erste Gezeitenteich‡첫번째 해일의 웅덩이‡La poza de la primera marea‡La poza de la primera marea‡La première Cuvette de marée‡第一座海潮之池‡第一座海潮之池',
   nil
 },
 [152604] = {
   nil,
   nil,
   -- Object
-  '‡‡‡‡‡la poza de la segunda marea‡‡‡',
+  'A poça da segunda maré‡Вторая приливная заводь‡Der zweite Gezeitenteich‡두번째 해일의 웅덩이‡La poza de la segunda marea‡La poza de la segunda marea‡La seconde Cuvette de marée‡第二座海潮之池‡第二座海潮之池',
   nil
 },
 [152605] = {
   nil,
   nil,
   -- Object
-  '‡‡‡‡‡la poza de la tercera marea‡‡‡',
+  'A poça da terceira maré‡Третья приливная заводь‡Der dritte Gezeitenteich‡세번째 해일의 웅덩이‡La poza de la tercera marea‡La poza de la tercera marea‡La troisième Cuvette de marée‡第三座海潮之池‡第三座海潮之池',
   nil
 },
 [152606] = {
   nil,
   nil,
   -- Object
-  '‡‡‡‡‡la poza de la cuarta marea‡‡‡',
+  'A poça da quarta maré‡Четвертая приливная заводь‡Der vierte Gezeitenteich‡네번째 해일의 웅덩이‡La poza de la cuarta marea‡La poza de la cuarta marea‡La quatrième Cuvette de marée‡第四座海潮之池‡第四座海潮之池',
   nil
 },
 [152608] = {
@@ -300106,6 +300106,13 @@
   nil,
   -- Object
   'Monte de Terra de Un\'Goro‡Куча земли Ун\'Горо‡Un’Goro-Erdhaufen‡운고로 흙더미‡Montón de porquería de Un\'Goro‡Montón de porquería de Un\'Goro‡Tas de poussière d\'Un\'Goro‡安戈洛土堆‡安戈洛土堆',
+  nil
+},
+[157937] = {
+  nil,
+  nil,
+  -- Object
+  'Lago de Lava do Pico Penacho de Fogo‡‡‡‡Lago de lava de la Cresta del Penacho en Llamas‡Lago de lava de la Cresta del Penacho en Llamas‡Lac de Lave de la Crête de la Fournaise‡‡',
   nil
 },
 [157968] = {
@@ -301708,7 +301715,7 @@
   nil,
   nil,
   -- Object
-  '‡‡‡‡‡Cráter de Golakka‡‡‡',
+  'Cratera de Golakka‡Кратер Голакка‡Golakkakrater‡골락카 분화구‡Cráter de Golakka‡Cráter de Golakka‡Cratère de Golakka‡葛拉卡盆地‡葛拉卡盆地',
   nil
 },
 [165738] = {
@@ -307329,7 +307336,7 @@
   nil,
   nil,
   -- Object
-  '‡Черная Кузня‡Die schwarze Schmiede‡검은 가열로‡La Forja Negra‡La Forja Negra‡La Forge noire‡黑熔炉‡黑熔爐',
+  'A Forja Negra‡Черная Кузня‡Die schwarze Schmiede‡검은 가열로‡La Forja Negra‡La Forja Negra‡La Forge noire‡黑熔炉‡黑熔爐',
   nil
 },
 [174407] = {
@@ -313433,7 +313440,7 @@
   nil,
   nil,
   -- Object
-  '‡Оскверненный Лунный колодец Джеденара‡der verderbte Mondbrunnen von Jaedenar‡오염된 제데나르 달샘‡La Poza de la Luna corrupta de Jaedenar‡La Poza de la Luna corrupta de Jaedenar‡Le Puits de lune corrompu de Jaedenar‡加德纳尔月亮井‡加德納爾月井',
+  'Poço Lunar Corrompido de Jaedenar‡Оскверненный Лунный колодец Джеденара‡Der verderbte Mondbrunnen von Jaedenar‡오염된 제데나르 달샘‡La Poza de la Luna corrupta de Jaedenar‡La Poza de la Luna corrupta de Jaedenar‡Le Puits de lune corrompu de Jaedenar‡加德纳尔月亮井‡加德納爾月井',
   nil
 },
 [176186] = {
@@ -321357,7 +321364,7 @@
   nil,
   nil,
   -- Object
-  'Restos Descarnados de Kariel Winthalus‡Скелет Кариэля Винтхалуса‡Die sterblichen Überreste von Kariel Winthalus‡카리엘 윈탈루스의 유해‡Restos de Kariel Winthalus‡Restos de Kariel Winthalus‡Squelette de Kariel Winthalus‡卡里尔·温萨鲁斯的骸骨‡卡里爾·溫薩魯斯的骨骸',
+  'Restos Descarnados de Telmius Romanesca‡Останки Тельмия Сновидца‡Die sterblichen Überreste von Telmius Dreamseeker‡텔미우스 드림시커의 유해‡Restos de Telmius Buscasueños‡Restos esqueléticos de Telmius Buscasueños‡Squelette de Telmius Cherche-Rêve‡泰尔米乌斯·探梦者的骸骨‡泰謬斯·尋夢者的骨骸',
   nil
 },
 [179545] = {
