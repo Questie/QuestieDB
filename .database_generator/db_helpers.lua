@@ -27,7 +27,10 @@ local expansions = {
     "Cata", -- Questie_prefix_expansion (The name in the Questie Repo)
     "cata", -- Local_prefix_expansion (The name in QuestieDB Repo)
   },
-  -- MoP = "mop",
+  {
+    "MoP", -- Questie_prefix_expansion (The name in the Questie Repo)
+    "mop", -- Local_prefix_expansion (The name in QuestieDB Repo)
+  },
 }
 
 --- Get the script directory.

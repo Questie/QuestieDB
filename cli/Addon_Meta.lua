@@ -177,6 +177,30 @@ do
 
       return LibQuestieDBTable
     end,
+    ["Mop"] = function()
+      ---@type LibQuestieDB
+      ---@diagnostic disable-next-line: missing-fields
+      LibQuestieDBTable = {}
+
+      -- When creating the static database, we load the QuestieDB which writes to this global, so we reset it here
+      QuestieDB = {}
+      -- Same here, the old Questie code expects this.
+      QuestieLoader = {
+        ImportModule = function()
+          return QuestieDB
+        end,
+      }
+
+      GetBuildInfo = function()
+        return "5.0.5", "16057", "Oct 2012", 50500
+      end
+
+      WOW_PROJECT_ID = WOW_PROJECT_MISTS_CLASSIC
+
+      CLI_Helpers.loadTOC("QuestieDB-Mists.toc")
+
+      return LibQuestieDBTable
+    end,
   }
 
   --- (Re-)Initializes the global variables for the addon
