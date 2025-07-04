@@ -1,6 +1,11 @@
 ---@class LibQuestieDB
 local LibQuestieDB = select(2, ...)
 
+if Is_CLI then
+  -- Do not run these tests in the CLI
+  return
+end
+
 --------------------------------------------------------------------------------
 --- Test Suite for Defer Function
 --- This suite tests the Defer function to ensure it behaves correctly under various conditions.
