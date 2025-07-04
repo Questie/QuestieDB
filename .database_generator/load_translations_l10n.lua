@@ -12,7 +12,7 @@ local splitCharacter = "‡"
 local export = {}
 
 ---Remove the first 3 lines which checks the GetLocale() if it should load, we want to load all
----@param version string Expansions e.g. "Classic", "TBC", "Wotlk"
+---@param version string Expansions e.g. "Classic", "TBC", "Wotlk", etc
 ---@param type string Type of data e.g. "item", "npc", "object", "quest"
 ---@return table<number, string>? files A table containing the names of files with the specified extension.
 function export.CleanFiles(version, type)
