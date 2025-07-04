@@ -173,8 +173,20 @@ local function joinAndEscape(tbl, separator, emptyValue)
       if type(val) == "table" then
         val = joinAndEscape(val, "|n", "")
       elseif type(val) == "string" then
-        -- Escape single quotes
-        val = string.gsub(val, "'", "\\'")
+        -- Escape characters that are special in Lua strings or problematic for other formats.
+        -- Backslashes and single quotes are escaped for Lua string syntax.
+        -- Control characters are replaced with a textual representation (e.g., the string "\\5")
+        -- to avoid writing raw control bytes, which can be invalid in other contexts (e.g. HTML/XML).
+        -- This is UTF-8 safe as it only operates on single-byte ASCII control characters.
+        val = string.gsub(val, "['\\%z\1-\8\11\12\14-\31\127]", function(c)
+          if c == "'" then
+            return "\\'"
+          elseif c == "\\" then
+            return "\\\\"
+          else
+            return string.format("\\\\%d", string.byte(c))
+          end
+        end)
       end
       -- Replace newlines specifically for quest text as per python script logic
       val = string.gsub(val, "\r", "")
