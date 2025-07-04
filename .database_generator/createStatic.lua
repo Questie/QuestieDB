@@ -238,7 +238,12 @@ function DumpDatabase(questiedb_version, questie_version, debug)
     -- ? l10n dump
     print("Loading version: " .. questie_version)
     for datatype in pairs(Meta.L10nMeta.l10nKeys) do
-      l10n_loader.CleanFiles(questie_version, datatype)
+      local found_files = l10n_loader.CleanFiles(questie_version, datatype)
+      if not found_files then
+        print("No files found for " .. datatype .. " in " .. questie_version)
+        os.exit(0)
+        return
+      end
     end
 
     -- Create the lookup tables for the translations (This will import a singular ImportModule table)
@@ -428,13 +433,14 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   --------------------------------------------------------------------
   --------------------------------------------------------------------
 
-  -- Create output directories if they don't exist.
+  -- Create the base output directory if it doesn't exist.
   ---@type string
   local basePath = f("%s/Database", helpers.get_project_dir_path())
   if not lfs.attributes(basePath, "mode") then
     lfs.mkdir(basePath)
     print("Created directory: " .. basePath)
   end
+  -- Create the entity type directories if they don't exist.
   for _, entityType in ipairs(entityTypes) do
     local path = f("%s/%s", basePath, entityType)
     if not lfs.attributes(path, "mode") then
@@ -447,6 +453,18 @@ function DumpDatabase(questiedb_version, questie_version, debug)
       print("Created directory: " .. versionPath)
     end
   end
+  -- Create the l10n directory if it doesn't exist.
+  local l10nPath = f("%s/l10n", basePath)
+  if not lfs.attributes(l10nPath, "mode") then
+    lfs.mkdir(l10nPath)
+    print("Created directory: " .. l10nPath)
+  end
+  local versionPath = f("%s/%s", l10nPath, capitalizedQuestieDBVersion)
+  if not lfs.attributes(versionPath, "mode") then
+    lfs.mkdir(versionPath)
+    print("Created directory: " .. versionPath)
+  end
+
 
   -- ! We write all these files to disk for the sake of comparing changes between versions
   -- Write all the overrides to disk

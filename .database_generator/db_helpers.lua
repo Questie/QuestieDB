@@ -81,8 +81,14 @@ end
 
 ---@param path string The directory path to search in.
 ---@param extension string The file extension to filter by (e.g., "lua").
----@return table<number, string> A table containing the names of files with the specified extension.
+---@return table<number, string>? A table containing the names of files with the specified extension.
 local function get_files_in_directory(path, extension)
+  local mode = lfs.attributes(path, "mode")
+  if mode ~= "directory" then
+    print("Warning: Cannot get files, path is not a directory or does not exist: " .. path)
+    return nil
+  end
+
   local files = {}
   for file in lfs.dir(path) do
     -- Skip '.' and '..' directories

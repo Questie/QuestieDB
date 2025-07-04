@@ -14,6 +14,7 @@ local export = {}
 ---Remove the first 3 lines which checks the GetLocale() if it should load, we want to load all
 ---@param version string Expansions e.g. "Classic", "TBC", "Wotlk"
 ---@param type string Type of data e.g. "item", "npc", "object", "quest"
+---@return table<number, string>? files A table containing the names of files with the specified extension.
 function export.CleanFiles(version, type)
   local cleaned_files = {}
   local capitalized_type = helpers.capitalize(type)
@@ -22,6 +23,10 @@ function export.CleanFiles(version, type)
       "/.database_generator/Questie-data/Localization/lookups/" .. version .. "/lookup" .. capitalized_type .. "s/"
   -- Get all .lua files in the directory
   local files = helpers.get_files_in_directory(path, "lua")
+  if not files then
+    print("No files found in directory: " .. path)
+    return nil
+  end
   for _, file in ipairs(files) do
     local file_path = path .. file
     local filedata = io.open(file_path, "r")
