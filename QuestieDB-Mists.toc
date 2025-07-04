@@ -69,7 +69,7 @@ Corrections\Wotlk\_WotlkCorrections.xml
 ### Corrections - Cata
 Corrections\Cata\_CataCorrections.xml
 ### Corrections - MoP
-Corrections\MoP\_MoPCorrections.xml
+Corrections\MoP\_MopCorrections.xml
 
 # Settings
 Settings\Search.lua
