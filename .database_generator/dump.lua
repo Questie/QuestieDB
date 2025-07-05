@@ -157,7 +157,9 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
   helpers.ensureGitKeepFile(outputDataPath)
 
   -- Optional: Clear old *.html files in _data (Helper needed: helpers.clearHtmlFiles(path))
-  helpers.clearHtmlFiles(outputDataPath)
+  print("Clearing *.html files from: " .. outputDataPath)
+  local removed_count = helpers.clearHtmlFiles(outputDataPath)
+  print(f("Removed %d HTML files from %s", removed_count, outputDataPath))
 
   -- 2. Initialize State Variables
   local all_ids = {}
@@ -341,12 +343,12 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     -- Check if chunk needs to be written
     if entries_written == range_size or i == #sorted_keys or p_tags_written >= p_tags_per_file then
       if entries_written > 0 then -- Don't write empty chunks
-        -- local chunk_filename = f("%d-%d.html", lowest_id, highest_id)
+        -- local chunk_filename = f("%d-%d.html", lowest_id, highest_id) -- This is the old way of doing it, it wrote the id range.
         local chunk_filename = f("%d.html", fileIndex)
         local chunk_filepath = outputDataPath .. "/" .. chunk_filename
         local chunk_frame_name = f("%sData%d-%d", entityTypeCapitalized, lowest_id, highest_id)
 
-        print(f("  Writing chunk: %s (%s entries)", chunk_filename, entries_written))
+        -- print(f("  Writing chunk: %s (%s entries)", chunk_filename, entries_written))
 
         -- Write the chunk file
         local file = io.open(chunk_filepath, "w")
@@ -381,7 +383,13 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
         current_chunk_lookup_data = {}
       end
     end
-  end -- End main loop (IDs)
+  end
+  -- End main loop (IDs)
+
+  -- Last fileIndex is not written, so we need to subtract 1
+  fileIndex = fileIndex - 1
+  print(f("  Created files: %d.html - %d.html", 1, fileIndex))
+  print(f("  Delta in files: %d", fileIndex - removed_count))
 
   -- 4. Generate Auxiliary Files
 
