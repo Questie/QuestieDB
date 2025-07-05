@@ -234,6 +234,7 @@ end
 
 --- Remove all .html files from a specified directory.
 ---@param dir_path string The directory path from which to remove HTML files.
+---@return number The number of HTML files removed.
 local function clearHtmlFiles(dir_path)
   local mode = lfs.attributes(dir_path, "mode")
   if mode ~= "directory" then
@@ -241,7 +242,6 @@ local function clearHtmlFiles(dir_path)
     return
   end
 
-  print("Clearing *.html files from: " .. dir_path)
   local removed_count = 0
   for file in lfs.dir(dir_path) do
     -- Skip '.' and '..' directories
@@ -259,7 +259,7 @@ local function clearHtmlFiles(dir_path)
       end
     end
   end
-  print("Removed " .. removed_count .. " HTML files.")
+  return removed_count
 end
 
 --- Ensures a .gitkeep file exists in the specified directory.
