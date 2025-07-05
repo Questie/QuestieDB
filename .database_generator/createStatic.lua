@@ -145,7 +145,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   -- Phase 4: Load localization data
   -- Load translation data for all entity types and merge with Mangos translations
   ---@type table<ItemId|NpcId|ObjectId|QuestId, table<L10nDBKeys, table<L10nLocales, any>>>
-  local l10nOverride = l10n_data_loader.LoadL10nData(lowerQuestieVersion, lowerQuestieDBVersion, Meta, entityTypes, idTable)
+  local l10nOverride = l10n_data_loader.LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, entityTypes, idTable)
 
   --------------------------------------------------------------------
   -- Phase 5: File output preparation
