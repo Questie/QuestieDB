@@ -105,7 +105,6 @@ local function get_files_in_directory(path, extension)
       end
     end
   end
-  print("Found " .. #files .. " files with extension '" .. extension .. "' in directory: " .. path)
   return files
 end
 

@@ -233,19 +233,28 @@ function DumpDatabase(questiedb_version, questie_version, debug)
     end
   end
 
+  print("\n")
+  print(c("Startup of database successful!", "green"))
+  print("\n")
+
+  print(c("Loading L10n Data", "yellow"))
   -- Process L10n Data: Load raw DB, load static corrections, merge corrections into raw data.
   do
     -- ? l10n dump
-    print("Loading version: " .. questie_version)
+    print(" Loading version: " .. questie_version)
     for datatype in pairs(Meta.L10nMeta.l10nKeys) do
       local found_files = l10n_loader.CleanFiles(questie_version, datatype)
+
       if not found_files then
-        print("No files found for " .. datatype .. " in " .. questie_version)
+        print("  No files found for " .. datatype .. " in " .. questie_version)
         os.exit(0)
         return
       end
+
+      print(c(f(" Cleaned %d files in total for %s\n", #found_files, datatype), "green"))
     end
 
+    print(c(" Loading all lookup files!", "yellow"))
     -- Create the lookup tables for the translations (This will import a singular ImportModule table)
     -- The "l10n" is not required here.
     ---@see AddonInitializeVersion
@@ -259,19 +268,19 @@ function DumpDatabase(questiedb_version, questie_version, debug)
 
     -- Validate that all the lookups are loaded
     for _, entityType in ipairs(entityTypes) do
-      print("Validating " .. entityType .. " lookup")
+      print(c(" Validating " .. entityType .. " lookup", "yellow"))
       local lookup = l10n[entityType:lower() .. "Lookup"]
       if not lookup then
-        print("Failed to load " .. entityType .. " lookup")
+        print(c("Failed to load " .. entityType .. " lookup", "red"))
         os.exit(0)
         return
       end
       -- Validate that all locales are loaded
       for _, locale in ipairs(Meta.L10nMeta.locales) do
         -- if locale ~= "enUS" then
-        print("    Validating " .. entityType .. " lookup for locale: " .. locale)
+        -- print("    Validating " .. entityType .. " lookup for locale: " .. locale)
         if not lookup[locale] then
-          print("Failed to load " .. entityType .. " lookup for locale: " .. locale)
+          print(c("  Failed to load " .. entityType .. " lookup for locale: " .. locale, "red"))
           os.exit(0)
           return
         end
@@ -280,12 +289,15 @@ function DumpDatabase(questiedb_version, questie_version, debug)
     end
 
     -- Load the mangos translations, it will not replace the existing translations, but will add to them.
-    print("Trying to load", helpers.get_script_dir() ..
+    print("\n")
+    print(c(" Loading all mangos_translation files!", "yellow"))
+    print("  Trying to load", helpers.get_script_dir() ..
       f("/mangos_translation/translations/%s/locales_%s.xml", lowerQuestieDBVersion, lowerQuestieDBVersion))
     CLI_Helpers.loadXML(
       helpers.get_script_dir() ..
       f("/mangos_translation/translations/%s/locales_%s.xml", lowerQuestieDBVersion, lowerQuestieDBVersion),
-      true
+      true,
+      3
     )
 
     --- Defines how to merge Mangos data into existing Questie data for each entity type
@@ -355,13 +367,13 @@ function DumpDatabase(questiedb_version, questie_version, debug)
     -- Iterate through each entity type (Item, Npc, Object, Quest)
     ---@param entityType "Item"|"Npc"|"Object"|"Quest"
     for _, entityType in ipairs(entityTypes) do
-      print(c("Trying to load mangos translations for " .. entityType, "yellow"))
+      print(c(" Trying to load mangos translations for " .. entityType, "yellow"))
       -- Get the Questie lookup table for this entity type (e.g., l10n.itemLookup)
       local lookup = l10n[entityType:lower() .. "Lookup"]
       -- Get the Mangos data loaded from the XML file (e.g., locales_item)
       ---@type table<L10nLocales, table<number, any>>?
       local mangos_data = _G[f("locales_%s", entityType:lower())]
-      assert(mangos_data, c("Failed to load mangos data, run the script in mangos_translation", "red"))
+      assert(mangos_data, c("  Failed to load mangos data, run the script in mangos_translation", "red"))
 
       -- Iterate through each locale provided by the Mangos data (e.g., "deDE", "frFR")
       ---@param locale L10nLocales
@@ -541,7 +553,8 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   -- GenerateHtmlForEntityType(npcOverride, Corrections.NpcMeta, "Npc", version, 75, 650, debug)
 
   -- ? Dump Object Data
-  print(c("\nDumping object overrides", "yellow"))
+  print("\n")
+  print(c("Dumping object overrides", "yellow"))
   local objectDataString = helpers.dumpData(objectOverride, Meta.ObjectMeta.objectKeys,
                                             Meta.ObjectMeta.dumpFuncs)
   local objectFile = io.open(f("%s/Object/%s/ObjectData.lua-table", basePath, capitalizedQuestieDBVersion), "w")

@@ -62,11 +62,12 @@ function export.CleanFiles(version, type)
         clean_filedata:write(combined_lines)
 
         clean_filedata:close()
-        print("Cleaned file: " .. filename)
         tInsert(cleaned_files, filename)
       end
     end
   end
+  print("  Cleaned " .. #files .. " " .. "LUA" .. " files in directory: " .. path)
+
 
   -- Change the XML file to point to the cleaned files
   -- Example path: .database_generator\Questie-data\Localization\lookups\Classic\lookupItems\lookupItems.xml
@@ -95,7 +96,7 @@ function export.CleanFiles(version, type)
     if clean_xml_filedata then
       clean_xml_filedata:write(data)
       clean_xml_filedata:close()
-      print("Cleaned XML file: " .. xml_path .. ".clean.xml")
+      print("  Cleaned 1 XML file: " .. xml_path .. ".clean.xml")
       tInsert(cleaned_files, filename)
     end
   end
