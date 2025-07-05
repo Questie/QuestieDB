@@ -78,6 +78,9 @@ jobs:
     - name: Run Cata Tests
       run: lua ./.tests/runTests.lua Cata
 
+    - name: Run Mop Tests
+      run: lua ./.tests/runTests.lua Mop
+
     # Create the QuestieDB build, will output toc_version
     - name: Check version is higher than latest release
       run: |

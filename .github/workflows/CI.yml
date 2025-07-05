@@ -58,3 +58,6 @@ jobs:
 
     - name: Run Cata Tests
       run: lua ./.tests/runTests.lua Cata
+
+    - name: Run Mop Tests
+      run: lua ./.tests/runTests.lua Mop
