@@ -238,7 +238,7 @@ local function clearHtmlFiles(dir_path)
   local mode = lfs.attributes(dir_path, "mode")
   if mode ~= "directory" then
     print("Warning: Cannot clear HTML files, path is not a directory or does not exist: " .. dir_path)
-    return
+    return 0
   end
 
   local removed_count = 0
