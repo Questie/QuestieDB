@@ -4,7 +4,7 @@ local f = string.format
 ---Loads quest data from the database and merges it with static corrections.
 ---This function reads the raw quest database file, applies static corrections
 ---from the addon environment, and returns a merged override table.
----@param lowerQuestieVersion string The version prefix for the database file (e.g., "classic", "tbc")
+---@param lowerQuestieVersion string The version prefix for the database file (e.g., "Classic", "TBC")
 ---@param LibQuestieDBTable LibQuestieDB The QuestieDB library table containing correction data
 ---@return table<QuestId, table<number, any>>? Returns merged quest data table, or nil if database file not found
 local function LoadQuestData(lowerQuestieVersion, LibQuestieDBTable)

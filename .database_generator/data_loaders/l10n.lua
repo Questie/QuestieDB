@@ -25,7 +25,7 @@ end
 ---Injects Mangos translations into existing Questie translation data.
 ---This function loads Mangos translation XML files and merges them with Questie translations,
 ---using entity-specific merge strategies to avoid overwriting existing good data.
----@param lowerQuestieDBVersion string The version prefix for the database file (e.g., "classic", "tbc")
+---@param lowerQuestieDBVersion string The version prefix for the database file (e.g., "era", "tbc")
 ---@param entityTypes string[] Array of entity types to process (e.g., {"Item", "Npc", "Object", "Quest"})
 ---@param idTable table<number, boolean> Lookup table of valid entity IDs to include in processing
 ---@param l10n table The loaded Questie localization data structure containing lookup tables
@@ -199,7 +199,7 @@ end
 ---Loads localization data from Questie database files and merges with Mangos translations.
 ---This function orchestrates the complete l10n loading process: cleans files, loads lookup tables,
 ---injects Mangos translations, and generates the final translation data structure.
----@param questie_version string The Questie version directory name (e.g., "classic", "tbc", "wotlk")
+---@param questie_version string The Questie version directory name (e.g., "Classic", "TBC", "Wotlk")
 ---@param lowerQuestieDBVersion string The lowercase version prefix for database files
 ---@param Meta Meta The metadata structure containing l10n configuration
 ---@param entityTypes string[] Array of entity types to process (e.g., {"Item", "Npc", "Object", "Quest"})
