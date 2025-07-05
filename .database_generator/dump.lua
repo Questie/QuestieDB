@@ -157,7 +157,6 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
   helpers.ensureGitKeepFile(outputDataPath)
 
   -- Optional: Clear old *.html files in _data (Helper needed: helpers.clearHtmlFiles(path))
-  print("Clearing *.html files from: " .. outputDataPath)
   local removed_count = helpers.clearHtmlFiles(outputDataPath)
   print(f("Removed %d HTML files from %s", removed_count, outputDataPath))
 
@@ -191,7 +190,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     nrDataKeys = nrDataKeys + 1
   end
 
-  print("Writing HTML files...")
+  print(c("Writing HTML files...", "green"))
 
   -- 3. Main Loop: Iterate Through Sorted IDs
   for i = 1, #sorted_keys do
@@ -389,9 +388,15 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
   -- Last fileIndex is not written, so we need to subtract 1
   fileIndex = fileIndex - 1
   print(f("  Created files: %d.html - %d.html", 1, fileIndex))
-  print(f("  Delta in files: %d", fileIndex - removed_count))
+  if fileIndex - removed_count > 0 then
+    print(c(f("  Added: %d files.", fileIndex - removed_count), "yellow"))
+  elseif fileIndex - removed_count < 0 then
+    print(c(f("  Removed: %d files.", removed_count - fileIndex), "yellow"))
+  end
 
   -- 4. Generate Auxiliary Files
+
+  print(c(f("Writing Meta Files for: %s (%s)", entityType, expansionName), "green"))
 
   -- Write ID File (<Type>DataIds.html)
   local ids_filepath = outputBasePath .. "/" .. entityTypeCapitalized .. "DataIds.html"
@@ -417,7 +422,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     end
     ids_file:write("</body></html>\n")
     ids_file:close()
-    print(f("Written ID file: %s", ids_filepath))
+    print(f("  Written ID file: %s", ids_filepath))
     -- Add embed string for XML file (insert at beginning)
     table.insert(embed_file_strings, 1,
                  f('<SimpleHTML name="%sDataIds" file="%s\\%sDataIds.html" virtual="true" font="GameFontNormal"/>\n', entityTypeCapitalized, dataDirPathInAddon,
@@ -442,7 +447,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     end
     templates_file:write("</body></html>\n")
     templates_file:close()
-    print(f("Written Templates file: %s", templates_filepath))
+    print(f("  Written Templates file: %s", templates_filepath))
   else
     error("Failed to open file for writing: " .. templates_filepath)
   end
@@ -458,7 +463,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     end
     xml_file:write("</Ui>\n")
     xml_file:close()
-    print(f("Written XML file: %s", xml_filepath))
+    print(f("  Written XML file: %s", xml_filepath))
   else
     error("Failed to open file for writing: " .. xml_filepath)
   end
