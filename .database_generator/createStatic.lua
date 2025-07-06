@@ -219,7 +219,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   l10nData = l10nData()
 
   -- Generate HTML format for addon consumption
-  GenerateHtmlForEntityType(l10nData, Meta.L10nMeta, "L10n", questiedb_version, nil, nil, debug)
+  GenerateHtmlForEntityType(l10nData, Meta.L10nMeta, "l10n", questiedb_version, nil, nil, debug)
   -- GenerateHtmlForEntityType(l10nData, Corrections.L10nMeta, "L10n", version, 75, 650, debug)
 
   -- ! Export Item data in both formats
