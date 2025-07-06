@@ -1,12 +1,6 @@
 -- helpers.lua
 local lfs = require("lfs")
 
--- Require the necessary LuaSocket modules
-local http = require("socket.http")
-local https = require("ssl.https")
-local ltn12 = require("ltn12")
-
-
 ---@type table<string, string>
 local expansions = {
   -- Map GitHub folder name to local name prefix
@@ -177,25 +171,6 @@ local function read_expansion_data(expansion, entity_type)
   -- Perform any necessary replacements on the data string
   data = data:gsub("&", "and"):gsub("<", "|"):gsub(">", "|")
   return data
-end
-
---- Download a raw text file from a URL and return its contents as a string.
--- @param url string The URL of the text file to download.
--- @return string|nil The contents of the text file, or nil if the download fails.
-local function download_text_file(url)
-  local response_body = {}
-  local res, code, response_headers = https.request {
-    url = url,
-    sink = ltn12.sink.table(response_body),
-  }
-
-  if res == 1 and code == 200 then
-    -- Concatenate the table into a single string
-    return table.concat(response_body)
-  else
-    print("Failed to download file: HTTP response code " .. tostring(code))
-    return nil
-  end
 end
 
 --- Recursively create directories if they don't exist.
@@ -388,7 +363,6 @@ local return_table = {
   find_addon_name = find_addon_name,
   read_expansion_data = read_expansion_data,
   dumpData = dumpData,
-  download_text_file = download_text_file,
   ensureDirExists = ensureDirExists,
   clearHtmlFiles = clearHtmlFiles,
   ensureGitKeepFile = ensureGitKeepFile,

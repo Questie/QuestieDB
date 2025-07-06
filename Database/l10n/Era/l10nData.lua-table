@@ -40931,7 +40931,7 @@
   { -- Quest
     'Retorno à Barreira do Inferno‡Возвращение в Выжженные земли‡Rückkehr in die verwüsteten Lande‡저주받은 땅으로의 귀환‡El regreso a Las Tierras Devastadas‡Regresa a Las Tierras Devastadas‡Retour aux Terres foudroyées‡返回诅咒之地‡返回詛咒之地',
     nil,
-    'Fale novamente com o Herói Caído da Horda.‡Вернитесь к Павшему герою Орды.‡Kehrt zum Gefallenen Helden der Horde zurück.‡호드 영웅의 넋에게 돌아가야 합니다.‡Vuelve junto al Héroe Caído de la Horda.‡Vuelve junto al héroe caído de la Horda en el Cruce Lanzarrota, en el Pantano de las Penas.‡Retourner voir le Héros déchu de la Horde.‡回到部落英雄的灵魂那里。‡回到部落英雄的靈魂那裏。',
+    'Fale novamente com o Herói Caído da Horda.‡Вернитесь к Павшему герою Орды.‡Kehrt zum Gefallenen Helden der Horde zurück.‡호드 영웅의 넋에게 돌아가야 합니다.‡Vuelve junto al Héroe Caído de la Horda.‡Vuelve con el héroe caído de la Horda.‡Retourner voir le Héros déchu de la Horde.‡回到部落英雄的灵魂那里。‡回到部落英雄的靈魂那裏。',
   }
 },
 [3627] = {
@@ -67183,7 +67183,7 @@
   { -- Quest
     'Chamado ao comando‡Приказ по армии‡Der Befehl‡지휘 임무‡La llamada del teniente‡La llamada del teniente‡L\'appel du commandement‡上级的命令‡上級的命令',
     nil,
-    'Vá à Cidade Baixa e fale com Varimatras.‡Отправляйтесь в Подгород и предстаньте перед Вериматасом.‡Reist in die Undercity und sprecht mit Varimathras.‡언더시티로 가서 바리마트라스와 대화해야 합니다.‡Ve a Entrañas y habla con Varimathras.‡Viaja a Entrañas y habla con Bragor Puñosangre.‡Aller à Undercity et parler à Varimathras.‡到幽暗城去与瓦里玛萨斯谈一谈。‡到幽暗城去與瓦裏瑪薩斯談壹談。',
+    'Vá à Cidade Baixa e fale com Varimatras.‡Отправляйтесь в Подгород и предстаньте перед Вериматасом.‡Reist in die Undercity und sprecht mit Varimathras.‡언더시티로 가서 바리마트라스와 대화해야 합니다.‡Ve a Entrañas y habla con Varimathras.‡Viaja a Entrañas y habla con Varimathras.‡Aller à Undercity et parler à Varimathras.‡到幽暗城去与瓦里玛萨斯谈一谈。‡到幽暗城去與瓦裏瑪薩斯談壹談。',
   }
 },
 [6145] = {
@@ -71227,7 +71227,7 @@
   { -- Quest
     'Sangue do Campeão dos Dragões Negros‡Кровь могучего черного дракона‡Blut des schwarzen Großdrachen-Helden‡검은용 용사의 피‡La sangre de dragón negro campeón‡La sangre de dragón Negro Campeón‡Le sang du champion des dragons noirs‡黑龙勇士之血‡黑龍勇士之血',
     nil,
-    'Viaje para o Pico da Rocha Negra e mate o General Drakkisath. Recolha seu sangue e leve-o para Rexxar.‡Отправляйтесь к пику Черной горы и убейте генерала Драккисата. Соберите его кровь и вернитесь к Рокаро.‡Begebt Euch zur Blackrockspitze und tötet General Drakkisath. Sammelt sein Blut und bringt es zu Rexxar.‡검은바위 첨탑으로 가서 사령관 드라키사스를 처치하고 사령관의 피를 모아 렉사르에게 가져가야 합니다.‡Viaja a la Cumbre de Roca Negra y mata al general Drakkisath. Recoge su sangre y llévasela a Rexxar.‡Viaja a la Cumbre de Roca Negra y mata al general Drakkisath. Recoge su sangre y llévasela a Rokaro.‡Aller au Pic Blackrock, et tuer le général Drakkisath. Récupérer son sang et retourner voir Rexxar.‡到黑石塔去杀掉达基萨斯将军，把它的血交给雷克萨。‡到黑石塔去殺掉達基薩斯將軍，把它的血交給雷克薩。',
+    'Viaje para o Pico da Rocha Negra e mate o General Drakkisath. Recolha seu sangue e leve-o para Rexxar.‡Отправляйтесь к пику Черной горы и убейте генерала Драккисата. Соберите его кровь и вернитесь к Рокаро.‡Begebt Euch zur Blackrockspitze und tötet General Drakkisath. Sammelt sein Blut und bringt es zu Rexxar.‡검은바위 첨탑으로 가서 사령관 드라키사스를 처치하고 사령관의 피를 모아 렉사르에게 가져가야 합니다.‡Viaja a la Cumbre de Roca Negra y mata al general Drakkisath. Recoge su sangre y llévasela a Rexxar.‡Viaja a la Cumbre de Roca Negra y mata al general Drakkisath. Recoge su sangre y entrégasela a Rexxar.‡Aller au Pic Blackrock, et tuer le général Drakkisath. Récupérer son sang et retourner voir Rexxar.‡到黑石塔去杀掉达基萨斯将军，把它的血交给雷克萨。‡到黑石塔去殺掉達基薩斯將軍，把它的血交給雷克薩。',
   }
 },
 [6603] = {
@@ -113825,7 +113825,7 @@
   -- Item
   '‡Кровавая боевая перчатка‡Blutfaust‡핏빛주먹‡Puñosangre‡Puñosangre‡Poing de sang‡血拳‡血拳',
   { -- Npc
-    'Tempestade de Poeira‡Пылевихрь‡Staubstürmer‡먼지 폭풍‡Sirocoso‡Sirocoso‡Tempétueux de poussière‡灰尘风暴‡灰塵風暴',
+    'Tempestade de Poeira‡Пылевихрь‡Staubstürmer‡먼지 폭풍‡Sirocoso‡Agitador sirocoso‡Tempétueux de poussière‡灰尘风暴‡灰塵風暴',
     nil,
   },
   nil,
@@ -116719,7 +116719,7 @@
 [12126] = {
   nil,
   { -- Npc
-    'Lorde Tirion Fordring‡Лорд Тирион Фордринг‡Lord Tirion Fordring‡티리온 폴드링 경‡Lord Tirion Fordring‡Lord Tirion Fordring‡Seigneur Tirion Fordring‡提里奥·弗丁‡提里恩·弗丁領主',
+    'Lorde Tirion Fordring‡Лорд Тирион Фордринг‡Lord Tirion Fordring‡티리온 폴드링 경‡Lord Tirion Fordring‡Lord Tirion Vadín‡Seigneur Tirion Fordring‡提里奥·弗丁‡提里恩·弗丁領主',
     'Ordem do Punho de Prata‡Орден Серебряной Длани‡Orden der Silbernen Hand‡은빛 기사단‡Orden de la Mano de Plata‡Orden de la Mano de Plata‡Ordre de la Main d\'argent‡白银之手骑士团‡白銀之手騎士團',
   },
   nil,
@@ -123578,7 +123578,7 @@
 [13220] = {
   nil,
   { -- Npc
-    'Layo Golpestela‡Лайо Звездный Всполох‡Layo Starstrike‡라요 스타스트라이크‡Layo Estrella‡Layo Estrella‡Layo Starstrike‡莱耶·星击‡萊耶·星擊',
+    'Layo Golpestela‡Лайо Звездный Всполох‡Layo Starstrike‡라요 스타스트라이크‡Layo Estrella‡Layo Golpe Estelar‡Layo Starstrike‡莱耶·星击‡萊耶·星擊',
     'O Círculo Cenariano‡Круг Кенария‡Der Zirkel des Cenarius‡세나리온 의회‡El Círculo Cenarion‡El Círculo Cenarion‡Le Cercle cénarien‡塞纳里奥议会‡塞納里奧議會',
   },
   nil,
@@ -136637,7 +136637,7 @@
   '‡Могучие перчатки‡Potente Handschuhe‡강력 장갑‡Guantes pujantes‡Guantes pujantes‡Gants tout-puissants‡权力手套‡高效手套',
   { -- Npc
     'Calandrath‡Каландрата‡Calandrath‡캘랜드라스‡Calandrath‡Calandrath‡Calandrath‡卡兰德拉斯‡卡蘭德拉斯',
-    'Hospedagem‡Хозяйка таверны‡Gastwirt‡여관주인‡Tabernero‡Tabernero‡Aubergiste‡旅店老板‡旅店老闆',
+    'Hospedagem‡Хозяйка таверны‡Gastwirt‡여관주인‡Tabernero‡Tabernera‡Aubergiste‡旅店老板‡旅店老闆',
   },
   nil,
   nil
@@ -136786,7 +136786,7 @@
   -- Item
   '‡Великие сапоги‡Großartige Stiefel‡대용사 장화‡Botas grandiosas‡Botas grandiosas‡Bottes grandioses‡豪华战靴‡豪華長靴',
   { -- Npc
-    'Belhatriz Corredente‡Битисса Шаткобрус‡Beetix Ficklespragg‡비틱스 픽클스프라그‡Beetix Castaneo‡Beetix Castaneo‡Beetix Ficklespragg‡比提克斯·斯巴格‡比提克斯·斯巴格',
+    'Belhatriz Corredente‡Битисса Шаткобрус‡Beetix Ficklespragg‡비틱스 픽클스프라그‡Beetix Castaneo‡Beetix Castañeta‡Beetix Ficklespragg‡比提克斯·斯巴格‡比提克斯·斯巴格',
     nil,
   },
   nil,
@@ -136796,7 +136796,7 @@
   -- Item
   '‡Великий плащ‡Großartiger Umhang‡대용사 망토‡Capa grandiosa‡Capa grandiosa‡Cape grandiose‡豪华披风‡豪華披風',
   { -- Npc
-    'Noggel Corredente‡Ноггл Шаткобрус‡Noggle Ficklespragg‡노글 픽클스프라그‡Noggle Castaneo‡Noggle Castaneo‡Noggle Ficklespragg‡诺格·斯巴格‡諾格·斯巴格',
+    'Noggel Corredente‡Ноггл Шаткобрус‡Noggle Ficklespragg‡노글 픽클스프라그‡Noggle Castaneo‡Noggle Castañeta‡Noggle Ficklespragg‡诺格·斯巴格‡諾格·斯巴格',
     nil,
   },
   nil,
@@ -136806,7 +136806,7 @@
   -- Item
   '‡Великий пояс‡Großartiger Gürtel‡대용사 허리띠‡Cinturón grandioso‡Cinturón grandioso‡Ceinture grandiose‡豪华腰带‡豪華腰帶',
   { -- Npc
-    'Arauto do Vento Chifre Altivo‡Призывательница ветров Гордый Рог‡Windruferin Proudhorn‡바람소환사 프라우드혼‡Clamavientos Cuernorgullo‡Clamavientos Cuernorgullo‡Imploratrice céleste Proudhorn‡唤风者梅恩·长角‡喚風者傲角',
+    'Arauto do Vento Chifre Altivo‡Призывательница ветров Гордый Рог‡Windruferin Proudhorn‡바람소환사 프라우드혼‡Clamavientos Cuernorgullo‡Clamavientos Cuerno Digno‡Imploratrice céleste Proudhorn‡唤风者梅恩·长角‡喚風者傲角',
     nil,
   },
   nil,
@@ -202957,28 +202957,28 @@
   nil,
   nil,
   -- Object
-  'Formação de Azsharita‡Отложение азшарита‡Azsharit-Formation‡아즈샤리트 결정체‡Formación Azsharita‡Formación Azsharita‡Formation d\'Azsharite‡艾萨拉晶体‡艾薩拉晶體',
+  'Formação de Azsharita‡Отложение азшарита‡Azsharit-Formation‡아즈샤리트 결정체‡Formación Azsharita‡Formación de azsharita‡Formation d\'Azsharite‡艾萨拉晶体‡艾薩拉晶體',
   nil
 },
 [152621] = {
   nil,
   nil,
   -- Object
-  'Formação de Azsharita‡Отложение азшарита‡Azsharit-Formation‡아즈샤리트 결정체‡Formación Azsharita‡Formación Azsharita‡Formation d\'Azsharite‡艾萨拉晶体‡艾薩拉晶體',
+  'Formação de Azsharita‡Отложение азшарита‡Azsharit-Formation‡아즈샤리트 결정체‡Formación Azsharita‡Formación de azsharita‡Formation d\'Azsharite‡艾萨拉晶体‡艾薩拉晶體',
   nil
 },
 [152622] = {
   nil,
   nil,
   -- Object
-  'Formação de Azsharita‡Отложение азшарита‡Azsharit-Formation‡아즈샤리트 결정체‡Formación Azsharita‡Formación Azsharita‡Formation d\'Azsharite‡艾萨拉晶体‡艾薩拉晶體',
+  'Formação de Azsharita‡Отложение азшарита‡Azsharit-Formation‡아즈샤리트 결정체‡Formación Azsharita‡Formación de azsharita‡Formation d\'Azsharite‡艾萨拉晶体‡艾薩拉晶體',
   nil
 },
 [152631] = {
   nil,
   nil,
   -- Object
-  'Formação de Azsharita‡Отложение азшарита‡Azsharit-Formation‡아즈샤리트 결정체‡Formación Azsharita‡Formación Azsharita‡Formation d\'Azsharite‡艾萨拉晶体‡艾薩拉晶體',
+  'Formação de Azsharita‡Отложение азшарита‡Azsharit-Formation‡아즈샤리트 결정체‡Formación Azsharita‡Formación de azsharita‡Formation d\'Azsharite‡艾萨拉晶体‡艾薩拉晶體',
   nil
 },
 [153123] = {
