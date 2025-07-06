@@ -63,7 +63,7 @@ Each entity type (Item, NPC, Object, Quest) has a dedicated loader:
 ### Input Files
 ```
 .database_generator/
-├── data_loaders/           # Data loading modules
+├── data_loaders/          # Data loading modules
 │   ├── item.lua           # Item data loader
 │   ├── npc.lua            # NPC data loader
 │   ├── object.lua         # Object data loader
@@ -79,17 +79,17 @@ Each entity type (Item, NPC, Object, Quest) has a dedicated loader:
 Database/
 ├── Item/
 │   └── [Version]/
-│       ├── _data/         # Chunked HTML files (1.html, 2.html, etc.)
-│       ├── ItemData.lua-table  # Debug format
-│       ├── ItemDataIds.html    # All item IDs
+│       ├── _data/                  # Chunked HTML files (1.html, 2.html, etc.)
+│       ├── ItemData.lua-table      # Debug format
+│       ├── ItemDataIds.html        # All item IDs
 │       ├── ItemDataTemplates.html  # Template references
-│       └── ItemDataFiles.xml   # Addon XML definitions
+│       └── ItemDataFiles.xml       # Addon XML definitions
 ├── Npc/
 ├── Object/
 ├── Quest/
 └── l10n/
     └── [Version]/
-        ├── _data/         # Chunked localization files
+        ├── _data/              # Chunked localization files
         ├── l10nData.lua-table  # Debug format
         └── [metadata files]
 ```
@@ -304,11 +304,11 @@ QuestieDB Database Generation Flow
 │  └─────────────────┘          └──────────────────┘      │ │ etc...      │ │     │
 │                                                         │ └─────────────┘ │     │
 │                                                         └─────────────────┘     │
-│                                                          ┌─────────────────┐    │
-│                                                          │ Mangos L10n     │    │
-│                                                          │ XML Files       │    │
-│                                                          │ (Gap-filling)   │    │
-│                                                          └─────────────────┘    │
+│                                                         ┌─────────────────┐     │
+│                                                         │ Mangos L10n     │     │
+│                                                         │ XML Files       │     │
+│                                                         │ (Gap-filling)   │     │
+│                                                         └─────────────────┘     │
 └─────────────────────────────────────────────────────────────────────────────────┘
                                          │
                                          ▼
