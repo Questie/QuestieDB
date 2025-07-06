@@ -1,12 +1,6 @@
 -- helpers.lua
 local lfs = require("lfs")
 
--- Require the necessary LuaSocket modules
-local http = require("socket.http")
-local https = require("ssl.https")
-local ltn12 = require("ltn12")
-
-
 ---@type table<string, string>
 local expansions = {
   -- Map GitHub folder name to local name prefix
@@ -27,7 +21,10 @@ local expansions = {
     "Cata", -- Questie_prefix_expansion (The name in the Questie Repo)
     "cata", -- Local_prefix_expansion (The name in QuestieDB Repo)
   },
-  -- MoP = "mop",
+  {
+    "MoP", -- Questie_prefix_expansion (The name in the Questie Repo)
+    "mop", -- Local_prefix_expansion (The name in QuestieDB Repo)
+  },
 }
 
 --- Get the script directory.
@@ -81,8 +78,14 @@ end
 
 ---@param path string The directory path to search in.
 ---@param extension string The file extension to filter by (e.g., "lua").
----@return table<number, string> A table containing the names of files with the specified extension.
+---@return table<number, string>? A table containing the names of files with the specified extension.
 local function get_files_in_directory(path, extension)
+  local mode = lfs.attributes(path, "mode")
+  if mode ~= "directory" then
+    print("Warning: Cannot get files, path is not a directory or does not exist: " .. path)
+    return nil
+  end
+
   local files = {}
   for file in lfs.dir(path) do
     -- Skip '.' and '..' directories
@@ -96,7 +99,6 @@ local function get_files_in_directory(path, extension)
       end
     end
   end
-  print("Found " .. #files .. " files with extension '" .. extension .. "' in directory: " .. path)
   return files
 end
 
@@ -171,25 +173,6 @@ local function read_expansion_data(expansion, entity_type)
   return data
 end
 
---- Download a raw text file from a URL and return its contents as a string.
--- @param url string The URL of the text file to download.
--- @return string|nil The contents of the text file, or nil if the download fails.
-local function download_text_file(url)
-  local response_body = {}
-  local res, code, response_headers = https.request {
-    url = url,
-    sink = ltn12.sink.table(response_body),
-  }
-
-  if res == 1 and code == 200 then
-    -- Concatenate the table into a single string
-    return table.concat(response_body)
-  else
-    print("Failed to download file: HTTP response code " .. tostring(code))
-    return nil
-  end
-end
-
 --- Recursively create directories if they don't exist.
 ---@param dir_path string The directory path to ensure exists.
 local function ensureDirExists(dir_path)
@@ -225,14 +208,14 @@ end
 
 --- Remove all .html files from a specified directory.
 ---@param dir_path string The directory path from which to remove HTML files.
+---@return number The number of HTML files removed.
 local function clearHtmlFiles(dir_path)
   local mode = lfs.attributes(dir_path, "mode")
   if mode ~= "directory" then
     print("Warning: Cannot clear HTML files, path is not a directory or does not exist: " .. dir_path)
-    return
+    return 0
   end
 
-  print("Clearing *.html files from: " .. dir_path)
   local removed_count = 0
   for file in lfs.dir(dir_path) do
     -- Skip '.' and '..' directories
@@ -250,7 +233,7 @@ local function clearHtmlFiles(dir_path)
       end
     end
   end
-  print("Removed " .. removed_count .. " HTML files.")
+  return removed_count
 end
 
 --- Ensures a .gitkeep file exists in the specified directory.
@@ -380,7 +363,6 @@ local return_table = {
   find_addon_name = find_addon_name,
   read_expansion_data = read_expansion_data,
   dumpData = dumpData,
-  download_text_file = download_text_file,
   ensureDirExists = ensureDirExists,
   clearHtmlFiles = clearHtmlFiles,
   ensureGitKeepFile = ensureGitKeepFile,

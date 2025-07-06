@@ -12,8 +12,9 @@ local splitCharacter = "‡"
 local export = {}
 
 ---Remove the first 3 lines which checks the GetLocale() if it should load, we want to load all
----@param version string Expansions e.g. "Classic", "TBC", "Wotlk"
+---@param version string Expansions e.g. "Classic", "TBC", "Wotlk", etc
 ---@param type string Type of data e.g. "item", "npc", "object", "quest"
+---@return table<number, string>? files A table containing the names of files with the specified extension.
 function export.CleanFiles(version, type)
   local cleaned_files = {}
   local capitalized_type = helpers.capitalize(type)
@@ -22,6 +23,10 @@ function export.CleanFiles(version, type)
       "/.database_generator/Questie-data/Localization/lookups/" .. version .. "/lookup" .. capitalized_type .. "s/"
   -- Get all .lua files in the directory
   local files = helpers.get_files_in_directory(path, "lua")
+  if not files then
+    print("No files found in directory: " .. path)
+    return nil
+  end
   for _, file in ipairs(files) do
     local file_path = path .. file
     local filedata = io.open(file_path, "r")
@@ -57,11 +62,12 @@ function export.CleanFiles(version, type)
         clean_filedata:write(combined_lines)
 
         clean_filedata:close()
-        print("Cleaned file: " .. filename)
         tInsert(cleaned_files, filename)
       end
     end
   end
+  print("  Cleaned " .. #files .. " " .. "LUA" .. " files in directory: " .. path)
+
 
   -- Change the XML file to point to the cleaned files
   -- Example path: .database_generator\Questie-data\Localization\lookups\Classic\lookupItems\lookupItems.xml
@@ -90,7 +96,7 @@ function export.CleanFiles(version, type)
     if clean_xml_filedata then
       clean_xml_filedata:write(data)
       clean_xml_filedata:close()
-      print("Cleaned XML file: " .. xml_path .. ".clean.xml")
+      print("  Cleaned 1 XML file: " .. xml_path .. ".clean.xml")
       tInsert(cleaned_files, filename)
     end
   end
@@ -168,8 +174,20 @@ local function joinAndEscape(tbl, separator, emptyValue)
       if type(val) == "table" then
         val = joinAndEscape(val, "|n", "")
       elseif type(val) == "string" then
-        -- Escape single quotes
-        val = string.gsub(val, "'", "\\'")
+        -- Escape characters that are special in Lua strings or problematic for other formats.
+        -- Backslashes and single quotes are escaped for Lua string syntax.
+        -- Control characters are replaced with a textual representation (e.g., the string "\\5")
+        -- to avoid writing raw control bytes, which can be invalid in other contexts (e.g. HTML/XML).
+        -- This is UTF-8 safe as it only operates on single-byte ASCII control characters.
+        val = string.gsub(val, "['\\%z\1-\8\11\12\14-\31\127]", function(c)
+          if c == "'" then
+            return "\\'"
+          elseif c == "\\" then
+            return "\\\\"
+          else
+            return string.format("\\\\%d", string.byte(c))
+          end
+        end)
       end
       -- Replace newlines specifically for quest text as per python script logic
       val = string.gsub(val, "\r", "")

@@ -10,6 +10,7 @@ assert(Is_CLI, "This function should only be called from the CLI environment")
 
 local f = string.format
 
+-- Color helper function for terminal output formatting
 local function c(text, color)
   if color == "green" then
     return "\27[32m" .. text .. "\27[0m"
@@ -26,9 +27,11 @@ local function c(text, color)
   end
 end
 
---- Function to sanitize translation strings by replacing special characters with HTML entities
----@param str string
----@return string
+---Sanitizes translation strings by replacing special characters with safe HTML entities.
+---This is the first phase of string processing - characters are replaced with safe HTML entities
+---equivalents to prevent issues during string manipulation and chunking operations.
+---@param str string The input string to sanitize
+---@return string The sanitized string with special characters replaced by UTF-8 equivalents
 local function escapeString(str)
   -- str = str:gsub('&', "and") -- Escape ampersands
   -- str = str:gsub("&", "＆")
@@ -46,9 +49,11 @@ local function escapeString(str)
   return str
 end
 
---- Function to replace special characters with HTML entities
---- @param str string
---- @return string
+---Replaces HTML entities with proper HTML entities for final output.
+---This is the second phase of string processing - converts the safe HTML entities
+---back to proper HTML entities for valid HTML/XML output.
+---@param str string The input string with UTF-8 safe characters
+---@return string The string with proper HTML entities
 local function replaceWithCorrect(str)
   str = str:gsub("🗡", "<br/>") -- Replace 🗡 with <br /> : Use <br /> for XHTML validity
   str = str:gsub('＆', "&amp;") -- Escape ampersands
@@ -67,12 +72,13 @@ end
 -- UTF-8 char boundary pattern for Lua 5.1 (no \x escapes)
 local _CHARPAT = "[%z\1-\127\194-\244][\128-\191]*"
 
---- utf8_sub(s, i, j) -> substring of s from character i to j (both 1-based, negative ok)
----@param s (string) UTF-8 encoded string
----@param i (number) start index in characters (1 = first char; negative = from end)
----@param j (number) end index in characters (inclusive; positive or negative).
----              If nil, defaults to -1 (last character).
----@return (string) the UTF-8-safe substring
+---UTF-8 safe substring function that respects character boundaries.
+---Unlike Lua's built-in string.sub which works on bytes, this function works on
+---UTF-8 characters to prevent splitting multi-byte characters (like Chinese text).
+---@param s string UTF-8 encoded string
+---@param i number Start index in characters (1 = first char; negative = from end)
+---@param j number? End index in characters (inclusive; positive or negative). If nil, defaults to -1 (last character)
+---@return string The UTF-8-safe substring
 local function utf8_sub(s, i, j)
   -- 1) collect byte-offsets of each UTF-8 character
   local offsets = {}
@@ -99,9 +105,11 @@ local function utf8_sub(s, i, j)
   return s:sub(start_byte, end_byte)
 end
 
---- utf8_len(s) -> number of UTF-8 characters in s
----@param s (string) UTF-8 encoded string
----@return (number) count of codepoints
+---Returns the number of UTF-8 characters in a string.
+---Unlike Lua's built-in string.len which counts bytes, this function counts
+---actual UTF-8 characters for proper length calculation.
+---@param s string UTF-8 encoded string
+---@return number Count of UTF-8 codepoints/characters
 local function utf8_len(s)
   local count = 0
   for _ in s:gmatch(_CHARPAT) do
@@ -110,37 +118,41 @@ local function utf8_len(s)
   return count
 end
 
---- Generates the HTML and XML files for a given entity type and expansion.
+---Generates HTML and XML files for a given entity type and WoW expansion.
+---This is the main function that processes database data and converts it into the HTML format
+---consumed by the QuestieDB addon. It handles chunking large datasets, UTF-8 safe string
+---processing, and generates all necessary auxiliary files for the addon to load the data.
 --- @see Corrections.ItemMeta
 --- @see Corrections.NpcMeta
 --- @see Corrections.ObjectMeta
 --- @see Corrections.QuestMeta
---- @param dataTbl table<number, table> The final, corrected data table (e.g., itemOverride).
---- @param meta ObjectMeta|ItemMeta|QuestMeta|NpcMeta|L10nMeta The metadata table (e.g., Corrections.ItemMeta). L10n is just nil
---- @param entityType string The type name ("Item", "Quest", etc.).
---- @param expansionName string The expansion name ("Era", "Tbc", "Wotlk").
---- @param idsPerFile number? The number of IDs per file (default: 50).
---- @param ptagPerFile number? The number of <p> tags per file (default: 65000).
---- @param debug boolean? Do you want to print extra debug output to the html files?
+---@param dataTbl table<number, table> The final, corrected data table (e.g., itemOverride)
+---@param meta ObjectMeta|ItemMeta|QuestMeta|NpcMeta|L10nMeta The metadata table containing keys and dump functions
+---@param entityType string The type name ("Item", "Quest", "Npc", "Object", "L10n")
+---@param expansionName string The expansion name ("Era", "Tbc", "Wotlk", "Cata")
+---@param idsPerFile number? The number of IDs per file chunk (default: 50)
+---@param ptagPerFile number? The number of <p> tags per file chunk (default: 65000)
+---@param debug boolean? Whether to include debug comments in generated HTML files
 function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, idsPerFile, ptagPerFile, debug)
   print(c(f("Generating HTML for %s (%s)...", entityType, expansionName), "green"))
 
+  -- Statistics tracking for file generation analysis
   local p_tags_per_file_avg = 0
   local p_tags_highest = 0
   local p_tags_lowest = math.huge
 
-  -- 1. Define Constants & Paths (mirroring Python)
-  local range_size = idsPerFile or 50
-  local p_tags_per_file = ptagPerFile or 65000
-  local max_file_size = 45000 -- Less critical now, but good for reference
-  local max_p_size = 4000
+  -- 1. Define Constants & Paths - Configuration for file generation
+  local range_size = idsPerFile or 50          -- Number of entity IDs per HTML file
+  local p_tags_per_file = ptagPerFile or 65000 -- Maximum <p> tags per file to prevent memory issues
+  local max_file_size = 45000                  -- Less critical now, but good for reference
+  local max_p_size = 4000                      -- Maximum characters per <p> tag (forces chunking)
   local entityTypeLower = entityType:lower()
   local entityTypeCapitalized = entityType:gsub("^%l", string.upper)
   local addon_dir = helpers.find_addon_name()
   local outputBasePath = helpers.get_data_dir_path(entityType, expansionName)
   local outputDataPath = outputBasePath .. "/_data"
   -- When doing paths in xml the full path all the way from Interface needs to be used.
-  local dataDirPathInAddon = f("Interface\\AddOns\\%s\\Database\\%s\\%s", addon_dir, entityTypeCapitalized, helpers.capitalize(expansionName)) -- Helper needed for capitalize
+  local dataDirPathInAddon = f("Interface\\AddOns\\%s\\Database\\%s\\%s", addon_dir, entityTypeCapitalized, helpers.capitalize(expansionName))
 
   local fileIndex = 1
 
@@ -149,36 +161,38 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
   print(f("Output Data Path:      %s", outputDataPath))
   print(f("Data Dir Path (Addon): %s", dataDirPathInAddon))
 
-  -- Ensure output directories exist (Helper needed: helpers.ensureDirExists(path))
+  -- Ensure output directories exist and are prepared
   helpers.ensureDirExists(outputBasePath)
   helpers.ensureDirExists(outputDataPath)
 
   -- Add .gitkeep file if needed
   helpers.ensureGitKeepFile(outputDataPath)
 
-  -- Optional: Clear old *.html files in _data (Helper needed: helpers.clearHtmlFiles(path))
-  helpers.clearHtmlFiles(outputDataPath)
+  -- Clean up old HTML files from previous runs
+  local removed_count = helpers.clearHtmlFiles(outputDataPath)
+  print(f("Removed %d HTML files from %s", removed_count, outputDataPath))
 
-  -- 2. Initialize State Variables
-  local all_ids = {}
-  local sorted_keys = {}
+  -- 2. Initialize State Variables for processing
+  local all_ids = {}            -- Track all valid entity IDs for the IDs file
+  local sorted_keys = {}        -- Sort entity IDs for consistent file generation
   for k in pairs(dataTbl) do table.insert(sorted_keys, k) end
-  table.sort(sorted_keys) -- Sort IDs numerically
+  table.sort(sorted_keys)       -- Sort IDs numerically
 
-  local all_filenames = {}
-  local embed_file_strings = {}
+  local all_filenames = {}      -- Track generated filenames for the Templates file
+  local embed_file_strings = {} -- Track XML embed strings for the XML file
   table.insert(embed_file_strings,
                f('<SimpleHTML name="%sDataFiles" file="%s\\%sDataTemplates.html" virtual="true" font="GameFontNormal"/>\n', entityTypeCapitalized,
                  dataDirPathInAddon,
                  entityTypeCapitalized))
 
+  -- Chunk processing state variables
   local entries_written           = 0
   local p_tags_written            = 0
   local lowest_id, highest_id     = math.huge, -math.huge
   local current_chunk_output_data = {} -- Use a table for efficient string building
   local current_chunk_lookup_data = {} -- Use a table
 
-  -- Get reversed keys and dump functions from meta
+  -- Get metadata for processing entity data
   local reversedKeys              = {}
   local nrDataKeys                = 0
   local dataKeys                  = meta[entityTypeLower .. "Keys"] -- e.g., meta.itemKeys
@@ -189,15 +203,14 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     nrDataKeys = nrDataKeys + 1
   end
 
-  print("Writing HTML files...")
+  print(c("Writing HTML files...", "green"))
 
-  -- 3. Main Loop: Iterate Through Sorted IDs
+  -- 3. Main Loop: Process each entity ID and generate HTML content
   for i = 1, #sorted_keys do
     local dataId = sorted_keys[i]
     local entity_data_raw = dataTbl[dataId] -- This is the array of values
 
     local entity_data_processed = entity_data_raw
-
 
     local output_data_local = {}  -- For the current ID's <p> tags
     local writtenDataIndexes = {} -- Tracks indices (1, 2, '3-1', '3-e', etc.)
@@ -220,7 +233,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
       end
     end
 
-    -- Apply combine function *here* if it modifies the resulttable
+    -- Apply combine function if specified (modifies the resulttable structure)
     if combineFunc then
       -- Ensure resulttable has the expected structure for combineFunc
       local tempTableForCombine = {}
@@ -232,23 +245,23 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
       resulttable = tempTableForCombine
     end
 
-
-    -- Inner Loop: Iterate Through Serialized Data Fields (resulttable)
+    -- Inner Loop: Process each data field and generate HTML <p> tags
     for entityDataIndex = 1, #resulttable do -- Use the length of the potentially combined table
       local serialized_line = resulttable[entityDataIndex]
 
       -- Skip nil/empty entries *after* serialization
       if serialized_line ~= "nil" and serialized_line ~= "" then
-        -- HTML Formatting (similar to Python)
+        -- HTML Formatting and string sanitization
         local formatted_line = tostring(serialized_line)
 
-        -- We have to check if first and last character is ' and remove them
+        -- Remove surrounding quotes added by dump functions
         -- The reason for this is that the dump function adds ' to the start and end of the string
         ---@see DumpFunctions.dump
         if formatted_line:sub(1, 1) == "'" and formatted_line:sub(-1) == "'" then
           formatted_line = formatted_line:sub(2, -2)
         end
 
+        -- Apply first phase of string sanitization (UTF-8 safe characters)
         -- -- formatted_line = formatted_line:gsub('&', "and") -- Escape ampersands
         -- formatted_line = formatted_line:gsub("&", "＆")
         -- formatted_line = formatted_line:gsub("<", "❮") -- Escape less-than signs
@@ -276,9 +289,10 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
         -- formatted_line = formatted_line:gsub("nil}", "}")
         -- formatted_line = formatted_line:gsub(" = ", "=")
 
-        -- Check length and split if necessary
+        -- Check length and split if necessary to prevent overly large <p> tags
         local length = #formatted_line > max_p_size and utf8_len(formatted_line) or #formatted_line
         if length > max_p_size then
+          -- Large content needs to be split into multiple <p> tags
           if debug then
             table.insert(output_data_local, f("  <!-- %s -->\n", meta.NameIndexLookupTable[entityDataIndex]))
           end
@@ -303,7 +317,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
             table.insert(output_data_local, f("<!-- Segment end: %s -->\n", entityDataIndex))
           end
         else
-          -- Add the single <p> tag
+          -- Add the single <p> tag for normal-sized content
           table.insert(writtenDataIndexes, tostring(entityDataIndex))
           if (debug) then
             table.insert(output_data_local, f("  <!-- %s -->\n", meta.NameIndexLookupTable[entityDataIndex]))
@@ -314,11 +328,11 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
       end
     end -- End inner loop (data fields)
 
-    -- If data was written for this ID, add it to the chunk
+    -- If data was written for this ID, add it to the current chunk
     if #writtenDataIndexes > 0 then
       table.insert(all_ids, dataId) -- Track all valid IDs
 
-      -- Update chunk state
+      -- Update chunk state tracking
       lowest_id = math.min(lowest_id, dataId)
       highest_id = math.max(highest_id, dataId)
       entries_written = entries_written + 1
@@ -332,35 +346,38 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
         p_tags_lowest = p_tags_written
       end
 
+      -- Add this entity's data to the current chunk
       table.insert(current_chunk_lookup_data, tostring(dataId))
       table.insert(current_chunk_output_data, f("<!-- %d -->\n", dataId))      -- Add ID comment
       table.insert(current_chunk_output_data, "<p>" .. table.concat(writtenDataIndexes, ",") .. "</p>\n")
       table.insert(current_chunk_output_data, table.concat(output_data_local)) -- Add the generated <p> tags
     end
 
-    -- Check if chunk needs to be written
+    -- Check if current chunk should be written to file
+    -- Triggers: reached max IDs per file, processed all IDs, or hit <p> tag limit
     if entries_written == range_size or i == #sorted_keys or p_tags_written >= p_tags_per_file then
       if entries_written > 0 then -- Don't write empty chunks
-        -- local chunk_filename = f("%d-%d.html", lowest_id, highest_id)
+        -- local chunk_filename = f("%d-%d.html", lowest_id, highest_id) -- This is the old way of doing it, it wrote the id range.f
+        -- Generate chunk filename and metadata
         local chunk_filename = f("%d.html", fileIndex)
         local chunk_filepath = outputDataPath .. "/" .. chunk_filename
         local chunk_frame_name = f("%sData%d-%d", entityTypeCapitalized, lowest_id, highest_id)
 
-        print(f("  Writing chunk: %s (%s entries)", chunk_filename, entries_written))
+        -- print(f("  Writing chunk: %s (%s entries)", chunk_filename, entries_written))
 
-        -- Write the chunk file
+        -- Write the chunk file with HTML structure
         local file = io.open(chunk_filepath, "w")
         if file then
           file:write("<html><body>\n")
-          -- Write Index -> ID lookup <p>
+          -- Write Index -> ID lookup <p> (first <p> tag contains ID mapping)
           file:write("<!-- Index to Id table -->\n")
           file:write("<p>" .. table.concat(current_chunk_lookup_data, ",") .. "</p>\n")
-          -- Write Data
+          -- Write actual entity data
           file:write(table.concat(current_chunk_output_data))
           file:write("</body></html>\n")
           file:close()
 
-          -- Add filename for Templates file
+          -- Track filename for Templates file and XML embed generation
           table.insert(all_filenames, chunk_frame_name)
           -- Add embed string for XML file
           local embed_str = f('<SimpleHTML name="%s" file="%s\\_data\\%s" virtual="true" font="GameFontNormal"/>\n',
@@ -370,9 +387,10 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
           error("Failed to open file for writing: " .. chunk_filepath)
         end
 
+        -- Update statistics
         p_tags_per_file_avg = (p_tags_per_file_avg + p_tags_written) / 2
 
-        -- Reset chunk state
+        -- Reset chunk state for next chunk
         fileIndex = fileIndex + 1
         entries_written = 0
         p_tags_written = 0
@@ -381,11 +399,23 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
         current_chunk_lookup_data = {}
       end
     end
-  end -- End main loop (IDs)
+  end
+  -- End main loop (IDs)
 
-  -- 4. Generate Auxiliary Files
+  -- Report file generation statistics
+  fileIndex = fileIndex - 1 -- Last fileIndex is not written, so we need to subtract 1
+  print(f("  Created files: %d.html - %d.html", 1, fileIndex))
+  if fileIndex - removed_count > 0 then
+    print(c(f("  Added: %d files.", fileIndex - removed_count), "yellow"))
+  elseif fileIndex - removed_count < 0 then
+    print(c(f("  Removed: %d files.", removed_count - fileIndex), "yellow"))
+  end
 
-  -- Write ID File (<Type>DataIds.html)
+  -- 4. Generate Auxiliary Files required by the addon
+
+  print(c(f("Writing Meta Files for: %s (%s)", entityType, expansionName), "green"))
+
+  -- Write ID File (<Type>DataIds.html) - Contains all valid entity IDs
   local ids_filepath = outputBasePath .. "/" .. entityTypeCapitalized .. "DataIds.html"
   local ids_file = io.open(ids_filepath, "w")
   if ids_file then
@@ -409,7 +439,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     end
     ids_file:write("</body></html>\n")
     ids_file:close()
-    print(f("Written ID file: %s", ids_filepath))
+    print(f("  Written ID file: %s", ids_filepath))
     -- Add embed string for XML file (insert at beginning)
     table.insert(embed_file_strings, 1,
                  f('<SimpleHTML name="%sDataIds" file="%s\\%sDataIds.html" virtual="true" font="GameFontNormal"/>\n', entityTypeCapitalized, dataDirPathInAddon,
@@ -418,7 +448,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     error("Failed to open file for writing: " .. ids_filepath)
   end
 
-  -- Write Template File (<Type>DataTemplates.html)
+  -- Write Template File (<Type>DataTemplates.html) - Contains references to all chunk files
   local templates_filepath = outputBasePath .. "/" .. entityTypeCapitalized .. "DataTemplates.html"
   local templates_file = io.open(templates_filepath, "w")
   if templates_file then
@@ -426,6 +456,7 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     templates_file:write("<html><body>\n")
     local full_template_string = table.concat(all_filenames, ",")
     local current_pos = 1
+    -- Split template string into chunks to avoid overly large <p> tags
     while current_pos <= #full_template_string do
       local end_pos = math.min(current_pos + max_p_size - 1, #full_template_string)
       -- Avoid splitting mid-filename if possible (optional refinement)
@@ -434,12 +465,12 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     end
     templates_file:write("</body></html>\n")
     templates_file:close()
-    print(f("Written Templates file: %s", templates_filepath))
+    print(f("  Written Templates file: %s", templates_filepath))
   else
     error("Failed to open file for writing: " .. templates_filepath)
   end
 
-  -- Write XML File (<Type>DataFiles.xml)
+  -- Write XML File (<Type>DataFiles.xml) - Contains SimpleHTML definitions for addon loading
   local xml_filepath = outputBasePath .. "/" .. entityTypeCapitalized .. "DataFiles.xml"
   local xml_file = io.open(xml_filepath, "w")
   if xml_file then
@@ -450,11 +481,12 @@ function GenerateHtmlForEntityType(dataTbl, meta, entityType, expansionName, ids
     end
     xml_file:write("</Ui>\n")
     xml_file:close()
-    print(f("Written XML file: %s", xml_filepath))
+    print(f("  Written XML file: %s", xml_filepath))
   else
     error("Failed to open file for writing: " .. xml_filepath)
   end
 
+  -- Report final statistics
   print(f("Average <p> tags per file: Avg: %d , High: %d , Low: %d", p_tags_per_file_avg, p_tags_highest, p_tags_lowest))
   print(c(f("Finished HTML generation for %s (%s).", entityType, expansionName), "green"))
 end -- End GenerateHtmlForEntityType

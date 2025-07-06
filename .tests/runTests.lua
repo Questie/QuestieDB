@@ -195,6 +195,7 @@ local validVersions = {
   ["tbc"] = true,
   ["wotlk"] = true,
   ["cata"] = true,
+  ["mop"] = true,
 }
 local versionString = ""
 for version in pairs(validVersions) do

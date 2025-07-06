@@ -6,7 +6,7 @@ cd /QuestieDB
 mkdir -p ./.tests/_data
 
 # Each expansion has its own dump process for each type
-for name in Era Sod Tbc Wotlk Cata
+for name in Era Sod Tbc Wotlk Cata Mop
 do
   echo "Running test for $name"
   echo "Log output saved to ./.tests/_data/$name-output.log"

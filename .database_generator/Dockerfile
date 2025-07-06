@@ -8,12 +8,12 @@ RUN add-apt-repository ppa:git-core/ppa -y
 RUN apt-get update && apt-get install -y git
 
 # Install OpenSSL for LuaSec
-RUN apt-get install -y libssl-dev
+# RUN apt-get install -y libssl-dev
 
 RUN luarocks install bit32
 RUN luarocks install argparse
 RUN luarocks install luafilesystem
-RUN luarocks install luasocket
-RUN luarocks install luasec
+# RUN luarocks install luasocket
+# RUN luarocks install luasec
 
 RUN apt-get update && apt-get install -y wget
