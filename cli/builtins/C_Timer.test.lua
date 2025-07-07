@@ -1,9 +1,11 @@
 -- Test file for C_Timer implementation using luv
 
-package.path = '?.lua;' .. package.path
+-- We want it to use the same import as other files so we add the root workspace folder
+-- into the package path to avoid the error of different imports.
+package.path = '../../?.lua;' .. package.path
 
 -- Load the C_Timer module and luv
-require("C_Timer")
+require("cli.builtin.C_Timer")
 local uv = require('luv')
 
 print("Testing C_Timer with luv library...")
