@@ -45,6 +45,162 @@ require(".createStatic")
 
 DB_GEN_DEBUG_MODE = false
 
+---@class ThreadLib
+local ThreadLib = {}
+
+--Coroutine functions
+local coStatus, coResume, coCreate = coroutine.status, coroutine.resume, coroutine.create
+local lType = type
+-- local cTimer = C_Timer
+local newTicker = C_Timer.NewTicker
+
+
+---Thread a function, callback function is called when the thread is done.
+---@param threadFunction function @The function to thread
+---@param delay integer @Anything below 0.05 is each frame
+---@param errorMessage string? @What is the "Prepend" of the error message, could be something like "Error in thread: ", or "[main.lua:123]"
+---@param callbackFunction function? @Function to call when the thread is done
+---@param errorCallback fun(errorMessage: string, error: string, traceback: string)? @Function to call when an error occurs
+function ThreadLib.Thread(threadFunction, delay, errorMessage, callbackFunction, errorCallback)
+  if lType(threadFunction) ~= "function" then
+    error("ThreadLib:Thread: threadFunction is not a function")
+  end
+  if lType(delay) ~= "number" then
+    error("ThreadLib:Thread: delay is not a number")
+  end
+  if errorMessage and lType(errorMessage) ~= "string" then
+    error("ThreadLib:Thread: errorMessage is not a string")
+  end
+  if errorCallback and lType(errorCallback) ~= "function" then
+    error("ThreadLib:Thread: errorCallback is not a function")
+  end
+  if callbackFunction and lType(callbackFunction) ~= "function" then
+    error("ThreadLib:Thread: callbackFunction is not a function")
+  end
+
+  local thread = coCreate(threadFunction)
+
+  print(debug.traceback(errorMessage or "", 2))
+
+  local timer
+  timer = newTicker(delay or 0, function()
+    if (coStatus(thread) == "suspended") then --It's faster not to lookup the value but instead have it here
+      local success, err = coResume(thread)
+      -- Something in the coroutine went wrong, print the error and stop the timer
+      if not success and timer then
+        timer:Cancel();
+        if errorCallback then
+          errorCallback(errorMessage or "Error In Thread:", err, debug.traceback(errorMessage or err, 4))
+        else
+          print((errorMessage or "Error In Thread:") .. ": " .. tostring(err) .. "\n" .. debug.traceback(errorMessage or err, 4))
+          error((errorMessage or "Error In Thread:") .. ": " .. tostring(err) .. "\n" .. debug.traceback(errorMessage or err, 4))
+        end
+      end
+    elseif (coStatus(thread) == "dead") then --It's faster not to lookup the value but instead have it here
+      if timer then
+        timer:Cancel();
+      end
+      if (callbackFunction) then
+        callbackFunction()
+      end
+
+      --? Is this needed?
+      timer = nil
+      ---@diagnostic disable-next-line: cast-local-type
+      thread = nil
+    end
+  end)
+
+  -- C_Timer.drainTimerList()
+
+  print("After ticker")
+  -- ? This code is a duplicate of the above, but it is needed to ensure the coroutine starts running
+  local success, err = coResume(thread)
+  -- Something in the coroutine went wrong, print the error and stop the timer
+  if not success and timer then
+    timer:Cancel();
+    if errorCallback then
+      errorCallback(errorMessage or "Error In Thread:", err, debug.traceback(errorMessage or err, 2))
+    else
+      error((errorMessage or "Error In Thread:") .. ": " .. tostring(err) .. "\n" .. debug.traceback(errorMessage or err, 2))
+    end
+  end
+
+  return timer, thread
+end
+
+---Thread a function, callback function is called when the thread is done.
+---@param threadFunction function @The function to thread
+---@param delay integer @Anything below 0.05 is each frame
+---@param callbackFunction function @Function to call when the thread is done
+function ThreadLib.ThreadCallback(threadFunction, delay, callbackFunction)
+  return ThreadLib.Thread(threadFunction, delay, nil, callbackFunction)
+end
+
+---Thread a function, using a specific error message.
+---@param threadFunction function @The function to thread
+---@param delay integer @Anything below 0.05 is each frame
+---@param errorMessage string @What is the "Prepend" of the error message
+function ThreadLib.ThreadError(threadFunction, delay, errorMessage)
+  return ThreadLib.Thread(threadFunction, delay, errorMessage)
+end
+
+---Thread a function
+---@param threadFunction function @The function to thread
+---@param delay integer @Anything below 0.05 is each frame
+function ThreadLib.ThreadSimple(threadFunction, delay)
+  return ThreadLib.Thread(threadFunction, delay)
+end
+
+-- print(debug.traceback("Test", 1))
+
+local function test()
+  -- print(debug.traceback("coroutine lvl1", 1))
+
+  -- print(debug.traceback("coroutine lvl2", 2))
+
+  sasdf()
+
+  print("This line will not be executed due to the error above.")
+  return "asdf"
+end
+
+-- ThreadLib.Thread(test, 0.05, "Error In Test Thread:", function()
+--                    print("Thread finished.")
+--                  end, function(errorMessage, error, traceback)
+--                    print("Err Msg:", errorMessage)
+--                    print("Error:", error)
+--                    print("Traceback:", traceback)
+--                  end)
+ThreadLib.Thread(test, 0.05, "Error In Test Thread:", function()
+  print("Thread finished.")
+end)
+
+print("done")
+-- local g = coroutine.create(test)
+
+-- local success, result = coroutine.resume(g)
+-- if not success then
+--   print("Error in coroutine:", result)
+-- end
+-- print("Coroutine result:", result)
+
+-- print("asdf")
+-- print(debug.traceback(g, "coroutine", 2))
+-- print(pcall(coroutine.resume, g))
+
+-- local ret = coroutine.wrap(function()
+--   print(debug.traceback("coroutine", 1))
+
+--   print(debug.traceback("coroutine", 2))
+-- end)
+
+-- ret()
+
+
+
+
+os.exit(0)
 
 
 
