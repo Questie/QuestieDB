@@ -52,7 +52,10 @@ local function writeDebug()
     debugTextString:SetText((debugTextString:GetText() or "") .. text .. "\n")
   end
 end
-C_Timer.NewTicker(0.5, writeDebug)
+-- Only run in non-CLI environments
+if not Is_CLI then
+  C_Timer.NewTicker(0.5, writeDebug)
+end
 
 
 --- Create a new DebugText object for a given namespace

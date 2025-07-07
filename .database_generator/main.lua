@@ -111,9 +111,6 @@ function ThreadLib.Thread(threadFunction, delay, errorMessage, callbackFunction,
     end
   end)
 
-  -- C_Timer.drainTimerList()
-
-  print("After ticker")
   -- ? This code is a duplicate of the above, but it is needed to ensure the coroutine starts running
   local success, err = coResume(thread)
   -- Something in the coroutine went wrong, print the error and stop the timer
@@ -172,11 +169,11 @@ end
 --                    print("Error:", error)
 --                    print("Traceback:", traceback)
 --                  end)
-ThreadLib.Thread(test, 0.05, "Error In Test Thread:", function()
-  print("Thread finished.")
-end)
+-- ThreadLib.Thread(test, 0.05, "Error In Test Thread:", function()
+--   print("Thread finished.")
+-- end)
 
-print("done")
+-- print("done")
 -- local g = coroutine.create(test)
 
 -- local success, result = coroutine.resume(g)
@@ -200,7 +197,7 @@ print("done")
 
 
 
-os.exit(0)
+-- os.exit(0)
 
 
 
