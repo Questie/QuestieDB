@@ -84,41 +84,22 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   -- Run self-tests on the dump functions to ensure they produce correct output.
   Meta.DumpFunctions.testDumpFunctions()
 
-  -- -- Define the entity types for which we will generate database files.
-  -- local entityTypes = { "Item", "Npc", "Object", "Quest", }
-
+  --------------------------------------------------------------------
   -- Phase 3: Load and merge data from all entity types
-
-  -- -- Load item data: raw database + static corrections
-  -- ---@type table<ItemId, table<number, any>>?
-  -- local itemOverride = item_loader.LoadItemData(lowerQuestieVersion, LibQuestieDBTable)
-
-  -- -- Load NPC data: raw database + static corrections
-  -- ---@type table<NpcId, table<number, any>>?
-  -- local npcOverride = npc_loader.LoadNpcData(lowerQuestieVersion, LibQuestieDBTable)
-
-  -- -- Load object data: raw database + static corrections
-  -- ---@type table<ObjectId, table<number, any>>?
-  -- local objectOverride = object_loader.LoadObjectData(lowerQuestieVersion, LibQuestieDBTable)
-
-  -- -- Load quest data: raw database + static corrections
-  -- ---@type table<QuestId, table<number, any>>?
-  -- local questOverride = quest_loader.LoadQuestData(lowerQuestieVersion, LibQuestieDBTable)
-
-  -- -@type table<AllIdTypes, boolean>|any
+  --------------------------------------------------------------------
 
   ---@class dbData
   local dbData = {
-    -- Contains all entity type strings
+    -- Define the entity types for which we will generate database files.
     ---@type table<string>
     entityTypes = { "Item", "Npc", "Object", "Quest", },
 
     --- Check if an ID exists in any of the tables
     ---@param id ItemId|NpcId|ObjectId|QuestId
     ---@return boolean
-    exists = function(self, id)
+    exists = function(self, entityType, id)
       -- Check if the id exists in any of the override tables
-      if self.itemOverride[id] or self.npcOverride[id] or self.objectOverride[id] or self.questOverride[id] then
+      if self[entityType:lower() .. "Override"][id] then
         return true
       end
       return false
@@ -139,15 +120,15 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   }
 
   print("\n")
-  -- Report total number of unique entities across all types
-  -- print(c("Number of ids in the idTable: " .. #idTable, "yellow"))
   print(c("Startup of database successful!", "green"))
   print("\n")
 
+  --------------------------------------------------------------------
   -- Phase 4: Load localization data
   -- Load translation data for all entity types and merge with Mangos translations
+  --------------------------------------------------------------------
   ---@type table<ItemId|NpcId|ObjectId|QuestId, table<L10nDBKeys, table<L10nLocales, any>>>
-  local l10nOverride = l10n_data_loader.LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, entityTypes, idTable)
+  local l10nOverride = l10n_data_loader.LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, dbData)
 
   --------------------------------------------------------------------
   -- Phase 5: File output preparation
@@ -163,7 +144,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   end
 
   -- Create entity type directories for each data type
-  for _, entityType in ipairs(entityTypes) do
+  for _, entityType in ipairs(dbData.entityTypes) do
     local path = f("%s/%s", basePath, entityType)
     if not lfs.attributes(path, "mode") then
       lfs.mkdir(path)
@@ -195,7 +176,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   -- ! Export L10n data in both formats
   print(c("\nDumping L10n overrides", "yellow"))
   ---@type string
-  local l10nDataString = l10n_loader.DumpL10nData(Meta.L10nMeta, entityTypes, l10nOverride)
+  local l10nDataString = l10n_loader.DumpL10nData(Meta.L10nMeta, dbData.entityTypes, l10nOverride)
   -- Write L10n data to l10nData.lua-table for debugging
   local l10nDumpFile = io.open(f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedQuestieDBVersion), "w")
   if l10nDumpFile and l10nDataString then
@@ -228,7 +209,7 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   print(c("\nDumping item overrides", "yellow"))
   -- Generate the string representation of the merged item data
   ---@type string
-  local itemDataString = helpers.dumpData(itemOverride, Meta.ItemMeta.itemKeys, Meta.ItemMeta.dumpFuncs,
+  local itemDataString = helpers.dumpData(dbData.itemOverride, Meta.ItemMeta.itemKeys, Meta.ItemMeta.dumpFuncs,
                                           Meta.ItemMeta.combine)
   -- Write item data to ItemData.lua-table for debugging
   local itemFile = io.open(f("%s/Item/%s/ItemData.lua-table", basePath, capitalizedQuestieDBVersion), "w")
@@ -237,12 +218,12 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   itemFile:close()
 
   -- Generate HTML format for addon consumption
-  GenerateHtmlForEntityType(itemOverride, Meta.ItemMeta, "Item", questiedb_version, nil, nil, debug)
-  -- GenerateHtmlForEntityType(itemOverride, Corrections.ItemMeta, "Item", version, 75, 650, debug)
+  GenerateHtmlForEntityType(dbData.itemOverride, Meta.ItemMeta, "Item", questiedb_version, nil, nil, debug)
+  -- GenerateHtmlForEntityType(dbData.itemOverride, Corrections.ItemMeta, "Item", version, 75, 650, debug)
 
   -- ! Export Quest data in both formats
   print(c("\nDumping quest overrides", "yellow"))
-  local questDataString = helpers.dumpData(questOverride, Meta.QuestMeta.questKeys, Meta.QuestMeta.dumpFuncs)
+  local questDataString = helpers.dumpData(dbData.questOverride, Meta.QuestMeta.questKeys, Meta.QuestMeta.dumpFuncs)
   -- Write quest data to QuestData.lua-table for debugging
   local questFile = io.open(f("%s/Quest/%s/QuestData.lua-table", basePath, capitalizedQuestieDBVersion), "w")
   assert(questFile, "Failed to open file for writing")
@@ -250,12 +231,12 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   questFile:close()
 
   -- Generate HTML format for addon consumption
-  GenerateHtmlForEntityType(questOverride, Meta.QuestMeta, "Quest", questiedb_version, nil, nil, debug)
-  -- GenerateHtmlForEntityType(questOverride, Corrections.QuestMeta, "Quest", version, 75, 650, debug)
+  GenerateHtmlForEntityType(dbData.questOverride, Meta.QuestMeta, "Quest", questiedb_version, nil, nil, debug)
+  -- GenerateHtmlForEntityType(dbData.questOverride, Corrections.QuestMeta, "Quest", version, 75, 650, debug)
 
   -- ! Export NPC data in both formats
   print(c("\nDumping npc overrides", "yellow"))
-  local npcDataString = helpers.dumpData(npcOverride, Meta.NpcMeta.npcKeys, Meta.NpcMeta.dumpFuncs,
+  local npcDataString = helpers.dumpData(dbData.npcOverride, Meta.NpcMeta.npcKeys, Meta.NpcMeta.dumpFuncs,
                                          Meta.NpcMeta.combine)
   -- Write NPC data to NpcData.lua-table for debugging
   local npcFile = io.open(f("%s/Npc/%s/NpcData.lua-table", basePath, capitalizedQuestieDBVersion), "w")
@@ -264,13 +245,13 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   npcFile:close()
 
   -- Generate HTML format for addon consumption
-  GenerateHtmlForEntityType(npcOverride, Meta.NpcMeta, "Npc", questiedb_version, nil, nil, debug)
-  -- GenerateHtmlForEntityType(npcOverride, Corrections.NpcMeta, "Npc", version, 75, 650, debug)
+  GenerateHtmlForEntityType(dbData.npcOverride, Meta.NpcMeta, "Npc", questiedb_version, nil, nil, debug)
+  -- GenerateHtmlForEntityType(dbData.npcOverride, Corrections.NpcMeta, "Npc", version, 75, 650, debug)
 
   -- ! Export Object data in both formats
   print("\n")
   print(c("Dumping object overrides", "yellow"))
-  local objectDataString = helpers.dumpData(objectOverride, Meta.ObjectMeta.objectKeys,
+  local objectDataString = helpers.dumpData(dbData.objectOverride, Meta.ObjectMeta.objectKeys,
                                             Meta.ObjectMeta.dumpFuncs)
   -- Write object data to ObjectData.lua-table for debugging
   local objectFile = io.open(f("%s/Object/%s/ObjectData.lua-table", basePath, capitalizedQuestieDBVersion), "w")
@@ -279,8 +260,8 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   objectFile:close()
 
   -- Generate HTML format for addon consumption
-  GenerateHtmlForEntityType(objectOverride, Meta.ObjectMeta, "Object", questiedb_version, nil, nil, debug)
-  -- GenerateHtmlForEntityType(objectOverride, Corrections.ObjectMeta, "Object", version, 75, 650, debug)
+  GenerateHtmlForEntityType(dbData.objectOverride, Meta.ObjectMeta, "Object", questiedb_version, nil, nil, debug)
+  -- GenerateHtmlForEntityType(dbData.objectOverride, Corrections.ObjectMeta, "Object", version, 75, 650, debug)
 
   print(f("\n\27[32m%s corrections dumped successfully\27[0m", capitalizedQuestieDBVersion))
 end

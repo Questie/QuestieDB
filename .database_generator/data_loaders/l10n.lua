@@ -26,11 +26,10 @@ end
 ---This function loads Mangos translation XML files and merges them with Questie translations,
 ---using entity-specific merge strategies to avoid overwriting existing good data.
 ---@param lowerQuestieDBVersion string The version prefix for the database file (e.g., "era", "tbc")
----@param entityTypes string[] Array of entity types to process (e.g., {"Item", "Npc", "Object", "Quest"})
----@param idTable table<number, boolean> Lookup table of valid entity IDs to include in processing
+---@param dbData dbData The database data structure containing data and helper functions
 ---@param l10n table The loaded Questie localization data structure containing lookup tables
 ---@return boolean success Returns true if all Mangos translations were successfully injected
-local function InjectMangosTranslations(lowerQuestieDBVersion, entityTypes, idTable, l10n)
+local function InjectMangosTranslations(lowerQuestieDBVersion, dbData, l10n)
   -- Load the mangos translations, it will not replace the existing translations, but will add to them.
   print("\n")
   print(c(" Loading all mangos_translation files!", "yellow"))
@@ -109,7 +108,7 @@ local function InjectMangosTranslations(lowerQuestieDBVersion, entityTypes, idTa
 
   -- Iterate through each entity type (Item, Npc, Object, Quest)
   ---@param entityType "Item"|"Npc"|"Object"|"Quest"
-  for _, entityType in ipairs(entityTypes) do
+  for _, entityType in ipairs(dbData.entityTypes) do
     print(c(" Trying to load mangos translations for " .. entityType, "yellow"))
     -- Get the Questie lookup table for this entity type (e.g., l10n.itemLookup)
     local lookup = l10n[entityType:lower() .. "Lookup"]
@@ -138,7 +137,7 @@ local function InjectMangosTranslations(lowerQuestieDBVersion, entityTypes, idTa
         -- This removes translations for entities that don't exist in the current database
         local removedIds = 0
         for entityId in pairs(lookup_data) do
-          if not idTable[entityId] then
+          if not dbData:exists(entityType, entityId) then
             -- Remove the entry from the lookup data
             lookup_data[entityId] = nil
             removedIds = removedIds + 1
@@ -153,7 +152,7 @@ local function InjectMangosTranslations(lowerQuestieDBVersion, entityTypes, idTa
         local sorted_ids = {}
         ---@param entityId number
         for entityId in pairs(mangos_item) do
-          if idTable[entityId] then
+          if dbData:exists(entityType, entityId) then
             table.insert(sorted_ids, entityId)
           else
             skippedIds = skippedIds + 1
@@ -202,10 +201,9 @@ end
 ---@param questie_version string The Questie version directory name (e.g., "Classic", "TBC", "Wotlk")
 ---@param lowerQuestieDBVersion string The lowercase version prefix for database files
 ---@param Meta Meta The metadata structure containing l10n configuration
----@param entityTypes string[] Array of entity types to process (e.g., {"Item", "Npc", "Object", "Quest"})
----@param idTable table<number, boolean> Lookup table of valid entity IDs to include in processing
+---@param dbData dbData The database data structure containing data and helper functions
 ---@return table<ItemId|NpcId|ObjectId|QuestId, table<L10nDBKeys, table<L10nLocales, any>>> l10nOverride Returns structured translation data indexed by entity ID
-local function LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, entityTypes, idTable)
+local function LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, dbData)
   print(c("Loading L10n Data", "yellow"))
   -- Process L10n Data: Load raw DB, load static corrections, merge corrections into raw data.
 
@@ -229,7 +227,7 @@ local function LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, entity
   -- The "l10n" is not required here.
   ---@see AddonInitializeVersion
   local l10n = QuestieLoader:ImportModule()
-  for _, entityType in ipairs(entityTypes) do
+  for _, entityType in ipairs(dbData.entityTypes) do
     local newLookup = entityType:lower() .. "Lookup"
     l10n[newLookup] = {}
     -- Load the XML file containing lookup functions for this entity type
@@ -238,7 +236,7 @@ local function LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, entity
   end
 
   -- Validate that all the lookups are loaded correctly
-  for _, entityType in ipairs(entityTypes) do
+  for _, entityType in ipairs(dbData.entityTypes) do
     print(c(" Validating " .. entityType .. " lookup", "yellow"))
     local lookup = l10n[entityType:lower() .. "Lookup"]
     if not lookup then
@@ -260,7 +258,7 @@ local function LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, entity
   end
 
   -- Inject Mangos translations to fill gaps in Questie translation data
-  local success = InjectMangosTranslations(lowerQuestieDBVersion, entityTypes, idTable, l10n)
+  local success = InjectMangosTranslations(lowerQuestieDBVersion, dbData, l10n)
   if not success then
     print(c("Failed to inject mangos translations", "red"))
     os.exit(0)
@@ -271,7 +269,7 @@ local function LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, entity
 
   -- Generate the final l10n data structure from all loaded translation sources
   print(c("Creating l10n object data[id][entityType][locale]", "green"))
-  return l10n_loader.GenerateL10nTranslation(Meta.L10nMeta.locales, entityTypes, l10n)
+  return l10n_loader.GenerateL10nTranslation(Meta.L10nMeta.locales, dbData.entityTypes, l10n)
 end
 
 return {
