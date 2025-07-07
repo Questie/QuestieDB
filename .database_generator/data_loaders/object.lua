@@ -54,6 +54,8 @@ local function LoadObjectData(lowerQuestieVersion, LibQuestieDBTable)
     end
   end
 
+  assert(objectOverride, "Object override table is nil after loading corrections")
+
   return objectOverride
 end
 

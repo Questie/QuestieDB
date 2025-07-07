@@ -84,61 +84,63 @@ function DumpDatabase(questiedb_version, questie_version, debug)
   -- Run self-tests on the dump functions to ensure they produce correct output.
   Meta.DumpFunctions.testDumpFunctions()
 
-  -- Define the entity types for which we will generate database files.
-  local entityTypes = { "Item", "Npc", "Object", "Quest", }
+  -- -- Define the entity types for which we will generate database files.
+  -- local entityTypes = { "Item", "Npc", "Object", "Quest", }
 
   -- Phase 3: Load and merge data from all entity types
 
-  -- Load item data: raw database + static corrections
-  ---@type table<ItemId, table<number, any>>?
-  local itemOverride = item_loader.LoadItemData(lowerQuestieVersion, LibQuestieDBTable)
-  if not itemOverride then
-    return
-  end
+  -- -- Load item data: raw database + static corrections
+  -- ---@type table<ItemId, table<number, any>>?
+  -- local itemOverride = item_loader.LoadItemData(lowerQuestieVersion, LibQuestieDBTable)
 
-  -- Load NPC data: raw database + static corrections
-  ---@type table<NpcId, table<number, any>>?
-  local npcOverride = npc_loader.LoadNpcData(lowerQuestieVersion, LibQuestieDBTable)
-  if not npcOverride then
-    return
-  end
+  -- -- Load NPC data: raw database + static corrections
+  -- ---@type table<NpcId, table<number, any>>?
+  -- local npcOverride = npc_loader.LoadNpcData(lowerQuestieVersion, LibQuestieDBTable)
 
-  -- Load object data: raw database + static corrections
-  ---@type table<ObjectId, table<number, any>>?
-  local objectOverride = object_loader.LoadObjectData(lowerQuestieVersion, LibQuestieDBTable)
-  if not objectOverride then
-    return
-  end
+  -- -- Load object data: raw database + static corrections
+  -- ---@type table<ObjectId, table<number, any>>?
+  -- local objectOverride = object_loader.LoadObjectData(lowerQuestieVersion, LibQuestieDBTable)
 
-  -- Load quest data: raw database + static corrections
-  ---@type table<QuestId, table<number, any>>?
-  local questOverride = quest_loader.LoadQuestData(lowerQuestieVersion, LibQuestieDBTable)
-  if not questOverride then
-    return
-  end
+  -- -- Load quest data: raw database + static corrections
+  -- ---@type table<QuestId, table<number, any>>?
+  -- local questOverride = quest_loader.LoadQuestData(lowerQuestieVersion, LibQuestieDBTable)
 
-  -- This creates a master ID table to track all valid entity IDs across all types
-  local idTable = {}
-  -- Add all item IDs to the master ID table
-  for id in pairs(itemOverride) do
-    idTable[id] = true
-  end
-  -- Add all NPC IDs to the master ID table
-  for id in pairs(npcOverride) do
-    idTable[id] = true
-  end
-  -- Add all object IDs to the master ID table
-  for id in pairs(objectOverride) do
-    idTable[id] = true
-  end
-  -- Add all quest IDs to the master ID table
-  for id in pairs(questOverride) do
-    idTable[id] = true
-  end
+  -- -@type table<AllIdTypes, boolean>|any
+
+  ---@class dbData
+  local dbData = {
+    -- Contains all entity type strings
+    ---@type table<string>
+    entityTypes = { "Item", "Npc", "Object", "Quest", },
+
+    --- Check if an ID exists in any of the tables
+    ---@param id ItemId|NpcId|ObjectId|QuestId
+    ---@return boolean
+    exists = function(self, id)
+      -- Check if the id exists in any of the override tables
+      if self.itemOverride[id] or self.npcOverride[id] or self.objectOverride[id] or self.questOverride[id] then
+        return true
+      end
+      return false
+    end,
+
+    -- Load item data: raw database + static corrections
+    ---@type table<ItemId, table<number, any>>?
+    itemOverride = item_loader.LoadItemData(lowerQuestieVersion, LibQuestieDBTable),
+    -- Load NPC data: raw database + static corrections
+    ---@type table<NpcId, table<number, any>>?
+    npcOverride = npc_loader.LoadNpcData(lowerQuestieVersion, LibQuestieDBTable),
+    -- Load object data: raw database + static corrections
+    ---@type table<ObjectId, table<number, any>>?
+    objectOverride = object_loader.LoadObjectData(lowerQuestieVersion, LibQuestieDBTable),
+    -- Load quest data: raw database + static corrections
+    ---@type table<QuestId, table<number, any>>?
+    questOverride = quest_loader.LoadQuestData(lowerQuestieVersion, LibQuestieDBTable),
+  }
 
   print("\n")
   -- Report total number of unique entities across all types
-  print(c("Number of ids in the idTable: " .. #idTable, "yellow"))
+  -- print(c("Number of ids in the idTable: " .. #idTable, "yellow"))
   print(c("Startup of database successful!", "green"))
   print("\n")
 

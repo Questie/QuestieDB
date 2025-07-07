@@ -54,6 +54,8 @@ local function LoadItemData(lowerQuestieVersion, LibQuestieDBTable)
     end
   end
 
+  assert(itemOverride, "Item override table is nil after loading corrections")
+
   return itemOverride
 end
 

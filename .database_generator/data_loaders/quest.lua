@@ -54,6 +54,8 @@ local function LoadQuestData(lowerQuestieVersion, LibQuestieDBTable)
     end
   end
 
+  assert(questOverride, "Quest override table is nil after loading corrections")
+
   return questOverride
 end
 

@@ -54,6 +54,8 @@ local function LoadNpcData(lowerQuestieVersion, LibQuestieDBTable)
     end
   end
 
+  assert(npcOverride, "NPC override table is nil after loading corrections")
+
   return npcOverride
 end
 
