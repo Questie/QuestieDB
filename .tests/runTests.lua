@@ -45,6 +45,8 @@ require("cli.Addon_Meta")
 
 local f = string.format
 
+Is_Test = true -- Set this to true to enable test mode
+
 do
   ---@diagnostic disable-next-line: lowercase-global
   function printableTable(table)

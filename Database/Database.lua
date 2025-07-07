@@ -77,9 +77,16 @@ function Database.Init()
   if Database.debugPrintEnabled or Database.debugEnabled then
     LibQuestieDB.ColorizePrint("purple", "-- Database Initialization --")
   end
+
+  -- ? We do not need to load the dynamic databases in the create CLI
+  -- ? But we do need to load the data during tests
+  local loadDynamic = not Is_CLI or Is_Test
+
   -- l10n
   debugprofilestart()
-  l10n.InitializeDynamic()
+  if loadDynamic then
+    l10n.InitializeDynamic()
+  end
   if Database.debugPrintEnabled or Database.debugEnabled then
     local msTime = debugprofilestop()
     LibQuestieDB.ColorizePrint("green", "l10n data database initialized:")
@@ -88,7 +95,9 @@ function Database.Init()
   end
   -- Quest
   debugprofilestart()
-  Quest.InitializeDynamic()
+  if loadDynamic then
+    Quest.InitializeDynamic()
+  end
   if Database.debugPrintEnabled or Database.debugEnabled then
     local msTime = debugprofilestop()
     LibQuestieDB.ColorizePrint("green", "Quest data database initialized:")
@@ -97,7 +106,9 @@ function Database.Init()
   end
   -- Object
   debugprofilestart()
-  Object.InitializeDynamic()
+  if loadDynamic then
+    Object.InitializeDynamic()
+  end
   if Database.debugPrintEnabled or Database.debugEnabled then
     local msTime = debugprofilestop()
     LibQuestieDB.ColorizePrint("green", "Object data database initialized:")
@@ -106,7 +117,9 @@ function Database.Init()
   end
   -- Npc
   debugprofilestart()
-  Npc.InitializeDynamic()
+  if loadDynamic then
+    Npc.InitializeDynamic()
+  end
   -- Npc.AddOverrideData(QuestieNPCFixes:LoadFactionFixes(), QuestieDB.npcKeys)
   if Database.debugPrintEnabled or Database.debugEnabled then
     local msTime = debugprofilestop()
@@ -116,7 +129,9 @@ function Database.Init()
   end
   -- Item
   debugprofilestart()
-  Item.InitializeDynamic()
+  if loadDynamic then
+    Item.InitializeDynamic()
+  end
   -- Item.AddOverrideData(QuestieItemFixes:LoadFactionFixes(), QuestieDB.itemKeys)
   if Database.debugPrintEnabled or Database.debugEnabled then
     local msTime = debugprofilestop()
