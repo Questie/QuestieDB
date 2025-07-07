@@ -207,6 +207,9 @@ do
   ---@param version ExpansionStrings|string e.g. "Classic", "TBC", "Wotlk"
   ---@return LibQuestieDB
   function AddonInitializeVersion(version)
+    -- Cancel any potential timers that might be running
+    C_Timer.CancelAllTimers()
+
     local lowerVersion = version:lower()
     local capitalizedVersion = lowerVersion:gsub("^%l", string.upper)
     assert(initByVersion[capitalizedVersion], "Invalid version: " .. version)

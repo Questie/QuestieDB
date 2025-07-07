@@ -43,7 +43,11 @@ require("cli.CLI_Helpers")
 
 require(".createStatic")
 
+-- ! Debug mode settings
+-- Output extra debug information in the HTML files
 DB_GEN_DEBUG_MODE = false
+-- Output timer creation and execution information
+DB_C_TIMER_DEBUG = true
 
 ---@class ThreadLib
 local ThreadLib = {}

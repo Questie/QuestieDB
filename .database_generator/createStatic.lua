@@ -56,31 +56,35 @@ function DumpDatabase(questiedb_version, questie_version, debug)
 
   print(f("\n\27[36mCompiling %s database...\27[0m", capitalizedQuestieDBVersion))
 
+  --------------------------------------------------------------------
   -- Phase 1: Initialize the addon environment for the specified version
+  --------------------------------------------------------------------
+
   -- Reset data objects, load the core addon files for the specified version, and set WoW version globals.
   ---@type LibQuestieDB
   LibQuestieDBTable = AddonInitializeVersion(capitalizedQuestieDBVersion)
 
-  -- Drain all pending timers from the initialization process
-  print("Pre-Drain timer list")
-  C_Timer.drainTimerList()
-
   -- Note: ADDON_LOADED event processing is currently disabled
   -- This would trigger final database initialization in a real addon environment
-  -- print("Executing event: ADDON_LOADED")
-  -- LibQuestieDBTable.RegisteredEvents["ADDON_LOADED"](CLI_addonName or "QuestieDB")
+  print("Executing event: ADDON_LOADED")
+  LibQuestieDBTable.RegisteredEvents["ADDON_LOADED"](CLI_addonName or "QuestieDB")
 
-  -- print("ADDON_LOADED timer list")
+  -- Run until database is initialized or timeout occurs
+  C_Timer.WaitForAllTimers(10, function()
+    return LibQuestieDBTable.Database.Initialized
+  end)
 
-  -- C_Timer.drainTimerList()
-  -- if not LibQuestieDBTable.Database.Initialized then
-  --   error("Database not initialized")
-  -- end
+  -- Check if the database was initialized successfully
+  if not LibQuestieDBTable.Database.Initialized then
+    error("Database not initialized")
+  end
 
   ---@type Meta
   local Meta = LibQuestieDBTable.Meta
 
+  --------------------------------------------------------------------
   -- Phase 2: Validate dump functions before processing
+  --------------------------------------------------------------------
   -- Run self-tests on the dump functions to ensure they produce correct output.
   Meta.DumpFunctions.testDumpFunctions()
 

@@ -5,8 +5,12 @@
 package.path = '../../?.lua;' .. package.path
 
 -- Load the C_Timer module and luv
-require("cli.builtin.C_Timer")
+require("cli.builtins.C_Timer")
+---@type luv
 local uv = require('luv')
+
+-- Enable debug mode for C_Timer
+DB_C_TIMER_DEBUG = true
 
 print("Testing C_Timer with luv library...")
 print("Start time:", os.date("%X"))
@@ -50,7 +54,7 @@ print("\n2. Testing C_Timer.NewTimer...")
 local timerTest = createTestTracker("C_Timer.NewTimer", 2.0)
 local timer = C_Timer.NewTimer(2, function(container)
   timerTest()
-  ---@cast container TimerContainer
+  ---@cast container FunctionContainer
   print("   Timer container cancelled status:", container:IsCancelled())
 end)
 
@@ -113,23 +117,49 @@ infiniteCancelTest:start(2500, 0, function()
   infiniteCancelTest:close()
 end)
 
--- Test 6: Test drainTimerList legacy functionality
-print("\n6. Testing legacy drainTimerList...")
--- This should still work for backwards compatibility, but won't actually delay
-local legacyCallCount = 0
-C_Timer.drainTimerList = function()
-  for _, f in ipairs({
-    function() legacyCallCount = legacyCallCount + 1 end,
-    function() legacyCallCount = legacyCallCount + 1 end,
-  }) do
-    f()
-  end
-  print("   ✓ Legacy drainTimerList executed", legacyCallCount, "functions")
+-- Test 6: Test WaitForAllTimers and CancelAllTimers functionality
+print("\n6. Testing WaitForAllTimers and CancelAllTimers...")
+-- Test that these methods exist and are callable
+if type(C_Timer.WaitForAllTimers) == "function" then
+  print("   ✓ WaitForAllTimers method exists and is callable")
+else
+  print("   ✗ WaitForAllTimers method missing or not a function - FAILED")
 end
-C_Timer.drainTimerList()
+
+if type(C_Timer.CancelAllTimers) == "function" then
+  print("   ✓ CancelAllTimers method exists and is callable")
+else
+  print("   ✗ CancelAllTimers method missing or not a function - FAILED")
+end
+
+-- Test 7: Test FunctionContainer Invoke method
+print("\n7. Testing FunctionContainer Invoke method...")
+local invokeTestCalled = false
+local testContainer = C_Timer.NewTimer(0.1, function()
+  invokeTestCalled = true
+  print("   ✓ Timer callback executed via normal execution")
+end)
+
+-- Test the Invoke method
+local manualInvokeTest = C_Timer.NewTimer(10, function() -- Long timer that we'll invoke manually
+  print("   ✓ FunctionContainer:Invoke() method works correctly")
+end)
+
+-- Manually invoke the callback after 0.2 seconds
+local invokeTest = uv.new_timer()
+invokeTest:start(200, 0, function()
+  if type(manualInvokeTest.Invoke) == "function" then
+    manualInvokeTest:Invoke()
+    manualInvokeTest:Cancel() -- Cancel the original timer since we invoked it manually
+    print("   ✓ FunctionContainer Invoke method exists and is callable")
+  else
+    print("   ✗ FunctionContainer Invoke method missing or not a function - FAILED")
+  end
+  invokeTest:close()
+end)
 
 -- Create a timer to end the test after 6 seconds
-print("\n7. Setting up test completion timer...")
+print("\n8. Setting up test completion timer...")
 local testEndTimer = uv.new_timer()
 testEndTimer:start(6000, 0, function()
   print("\n" .. string.rep("=", 50))
