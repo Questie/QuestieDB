@@ -30,8 +30,6 @@ Raw Database Files (ItemDB.lua, NpcDB.lua, etc.)
                     ↓
             Static Corrections Applied
                     ↓
-            Master ID Table Generation
-                    ↓
         Localization Data Loading & Merging
                     ↓
             HTML Generation & Chunking
@@ -150,7 +148,7 @@ LibQuestieDBTable.Item.LoadOverrideData(false, true)  -- static corrections only
 The l10n system uses sophisticated merge strategies:
 - **Items/Objects**: Replace empty Questie data with Mangos data
 - **NPCs/Quests**: Merge missing fields from Mangos into Questie data
-- **Filtering**: Only processes entities with valid IDs from the master ID table
+- **Filtering**: Only processes entities with valid IDs
 
 ### HTML Generation
 
@@ -343,15 +341,7 @@ QuestieDB Database Generation Flow
 │   │   Generate      │     │                 │     │                 │           │
 │   │   Files         │     │                 │     │                 │           │
 │   └─────────────────┘     └─────────────────┘     └─────────────────┘           │
-│                                         │                                       │
-│                                         ▼                                       │
-│                           ┌─────────────────────────┐                           │
-│                           │     Master ID Table     │                           │
-│                           │                         │                           │
-│                           │ Consolidates all valid  │                           │
-│                           │ entity IDs across all   │                           │
-│                           │ types for L10n filtering│                           │
-│                           └─────────────────────────┘                           │
+│                                                                                 │
 └─────────────────────────────────────────────────────────────────────────────────┘
                                          │
                                          ▼
