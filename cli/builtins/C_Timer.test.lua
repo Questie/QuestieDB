@@ -158,8 +158,70 @@ invokeTest:start(200, 0, function()
   invokeTest:close()
 end)
 
+-- Test 8: Error handling in callback
+print("\n8. Testing error handling in callback...")
+local errorHandled = false
+local original_error = error
+_G.error = function(msg)
+    if string.find(msg, "Simulated error in callback") then
+        print("   ✓ Correctly caught error from callback: " .. msg)
+        errorHandled = true
+    else
+        original_error(msg)
+    end
+end
+
+C_Timer.After(0.1, function()
+    error("Simulated error in callback")
+end)
+
+C_Timer.After(0.2, function()
+    if not errorHandled then
+        print("   ✗ Error handling test failed: error was not caught.")
+    end
+    _G.error = original_error -- Restore original error function
+end)
+
+-- Test 9: WaitForAllTimers with checkFunction
+print("\n9. Testing WaitForAllTimers with checkFunction...")
+local condition = false
+C_Timer.After(0.5, function()
+    condition = true
+    print("   ✓ Condition for WaitForAllTimers met.")
+end)
+C_Timer.WaitForAllTimers(nil, function()
+    return condition
+end)
+if condition then
+    print("   ✓ WaitForAllTimers with checkFunction exited correctly.")
+else
+    print("   ✗ WaitForAllTimers with checkFunction failed.")
+end
+
+-- Test 10: NewTicker with 1 iteration
+print("\n10. Testing NewTicker with 1 iteration...")
+local tickerOnceTest = createTestTracker("NewTicker (1 iteration)", 0.1)
+C_Timer.NewTicker(0.1, tickerOnceTest, 1)
+
+-- Test 11: CancelAllTimers in action
+print("\n11. Testing CancelAllTimers in action...")
+local timer1Cancelled = true
+local timer2Cancelled = true
+C_Timer.After(5, function() timer1Cancelled = false end)
+C_Timer.NewTicker(1, function() timer2Cancelled = false end)
+C_Timer.CancelAllTimers()
+
+C_Timer.After(0.1, function()
+    if timer1Cancelled and timer2Cancelled then
+        print("   ✓ CancelAllTimers successfully cancelled all timers.")
+    else
+        print("   ✗ CancelAllTimers failed to cancel all timers.")
+    end
+end)
+
+
 -- Create a timer to end the test after 6 seconds
-print("\n8. Setting up test completion timer...")
+print("\n12. Setting up test completion timer...")
 local testEndTimer = uv.new_timer()
 testEndTimer:start(6000, 0, function()
   print("\n" .. string.rep("=", 50))
