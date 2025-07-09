@@ -232,11 +232,12 @@ Provides type declarations for metamethod operators like `+`, `-`, `call`, etc.
 
 #### Optional Type
 ```lua
----@param value string | number
----@param debugActive boolean?
-function printValue(value, debugActive)
-  if debugActive then
-    print(value)
+---@param message string?
+function printValue(message)
+  if message then
+    print(message)
+  else
+    print("No message provided")
   end
 end
 ```
