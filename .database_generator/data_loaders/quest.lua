@@ -24,7 +24,12 @@ local function LoadQuestData(lowerQuestieVersion, LibQuestieDBTable)
   CLI_Helpers.loadFile(file)
 
   -- Execute the string to get the raw quest data table.
-  questOverride = loadstring(QuestieDB.questData)() -- QuestieDB.questData is loaded by loadFile
+  local err
+  questOverride, err = loadstring(QuestieDB.questData)() -- QuestieDB.questData is loaded by loadFile
+  if not questOverride or err then
+    print("Error loading quest data:", err)
+    return nil
+  end
 
   -- Load static corrections registered within the addon environment.
   -- * Do not load dynamic corrections (includeDynamic = false)
@@ -54,7 +59,15 @@ local function LoadQuestData(lowerQuestieVersion, LibQuestieDBTable)
     end
   end
 
-  assert(questOverride, "Quest override table is nil after loading corrections")
+  -- Validate that corrections were processed if they exist
+  local correctionCount = 0
+  ---@diagnostic disable-next-line: invisible -- Allow accessing private fields
+  for _ in pairs(LibQuestieDBTable.Quest.override) do
+    correctionCount = correctionCount + 1
+  end
+  if correctionCount > 0 then
+    assert(next(questOverride), "Quest override table is empty despite having corrections to apply")
+  end
 
   return questOverride
 end
