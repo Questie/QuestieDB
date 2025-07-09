@@ -103,7 +103,8 @@ local function CreateSearchUI()
   local output = CreateFrame("EditBox", nil, scrollFrame)
   output:SetMultiLine(true)
   output:SetFontObject(ChatFontNormal)
-  output:SetWidth(f:GetParent():GetWidth() * 0.8) -- Adjust width to fit the frame
+  local parent = f:GetParent()
+  output:SetWidth(parent and parent:GetWidth() and (parent:GetWidth() * 0.8) or 600) -- Default to 600 if parent not available
   output:SetAutoFocus(false)
   scrollFrame:SetScrollChild(output)
   output:SetScript("OnEscapePressed", function() output:ClearFocus() end)
