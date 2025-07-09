@@ -237,13 +237,12 @@ Provides type declarations for metamethod operators like `+`, `-`, `call`, etc.
 
 Always use `string?` for optional types, not `string | nil`.
 ```lua
----@param value string?
-function printValue(value)
-    if value then
-        print(value)
-    else
-        print("No value provided")
-    end
+---@param value string | number
+---@param debugActive boolean?
+function printValue(value, debugActive)
+  if debugActive then
+    print(value)
+  end
 end
 ```
 
