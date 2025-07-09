@@ -1,7 +1,7 @@
 --* C_Timer
 
 ---Should debug timers print out creation and execution information?
-DB_C_TIMER_DEBUG = DB_C_TIMER_DEBUG or true
+DB_C_TIMER_DEBUG = DB_C_TIMER_DEBUG ~= nil and DB_C_TIMER_DEBUG or false
 
 -- Import luv library for real timer functionality
 ---@type luv
