@@ -12,9 +12,9 @@ local uv = require('luv')
 local timerLookup = {}
 
 ---@class FunctionContainer
----@field package _timer any
+---@field package _timer uv_timer_t
 ---@field package _cancelled boolean
----@field package callback function
+---@field package callback function?
 local FunctionContainer = {}
 ---@package
 FunctionContainer.__index = FunctionContainer
