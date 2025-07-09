@@ -62,6 +62,7 @@ jobs:
         luarocks install luafilesystem
         luarocks install luasocket
         luarocks install luasec
+        luarocks install luv
 
     - name: Generate HTML
       run: sh ./.database_generator/generate_database.sh ./.lua/bin/lua

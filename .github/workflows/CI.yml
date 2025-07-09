@@ -41,6 +41,7 @@ jobs:
         luarocks install luafilesystem
         luarocks install luasocket
         luarocks install luasec
+        luarocks install luv
 
     # Runs a single command using the runners shell
     - name: Generate HTML
