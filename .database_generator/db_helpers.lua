@@ -304,7 +304,8 @@ local function dumpData(tbl, dataKeys, dumpFunctions, combineFunc)
       -- Get the data from the table
       local data = value[key]
 
-      -- Because we build it with nil we have to check for nil here, if the value is nil we just print nil
+      ---@see Database._nil
+      -- Because we set Database._nil to "nil" we have to check for "nil" here, if the value is nil we just print "nil"
       if data ~= "nil" and data ~= nil then
         local dumpFunction = dumpFunctions[dataName]
         if dumpFunction then

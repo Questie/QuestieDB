@@ -24,7 +24,12 @@ local function LoadNpcData(lowerQuestieVersion, LibQuestieDBTable)
   CLI_Helpers.loadFile(file)
 
   -- Execute the string to get the raw NPC data table.
-  npcOverride = loadstring(QuestieDB.npcData)() -- QuestieDB.npcData is loaded by loadFile
+  local err
+  npcOverride, err = loadstring(QuestieDB.npcData)() -- QuestieDB.npcData is loaded by loadFile
+  if not npcOverride or err then
+    print("Error loading NPC data:", err)
+    return nil
+  end
 
   -- Load static corrections registered within the addon environment.
   -- * Do not load dynamic corrections (includeDynamic = false)
@@ -52,6 +57,16 @@ local function LoadNpcData(lowerQuestieVersion, LibQuestieDBTable)
       local correctionIndex = npcMeta.npcKeys[key]
       npcOverride[npcId][correctionIndex] = correction
     end
+  end
+
+  -- Validate that corrections were processed if they exist
+  local correctionCount = 0
+  ---@diagnostic disable-next-line: invisible -- Allow accessing private fields
+  for _ in pairs(LibQuestieDBTable.Npc.override) do
+    correctionCount = correctionCount + 1
+  end
+  if correctionCount > 0 then
+    assert(next(npcOverride), "NPC override table is empty despite having corrections to apply")
   end
 
   return npcOverride

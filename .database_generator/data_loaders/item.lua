@@ -24,7 +24,12 @@ local function LoadItemData(lowerQuestieVersion, LibQuestieDBTable)
   CLI_Helpers.loadFile(file)
 
   -- Execute the string to get the raw item data table.
-  itemOverride = loadstring(QuestieDB.itemData)() -- QuestieDB.itemData is loaded by loadFile
+  local err
+  itemOverride, err = loadstring(QuestieDB.itemData)() -- QuestieDB.itemData is loaded by loadFile
+  if not itemOverride or err then
+    print("Error loading item data:", err)
+    return nil
+  end
 
   -- Load static corrections registered within the addon environment.
   -- * Do not load dynamic corrections (includeDynamic = false)
@@ -52,6 +57,16 @@ local function LoadItemData(lowerQuestieVersion, LibQuestieDBTable)
       local correctionIndex = itemMeta.itemKeys[key]
       itemOverride[itemId][correctionIndex] = correction
     end
+  end
+
+  -- Validate that corrections were processed if they exist
+  local correctionCount = 0
+  ---@diagnostic disable-next-line: invisible -- Allow accessing private fields
+  for _ in pairs(LibQuestieDBTable.Item.override) do
+    correctionCount = correctionCount + 1
+  end
+  if correctionCount > 0 then
+    assert(next(itemOverride), "Item override table is empty despite having corrections to apply")
   end
 
   return itemOverride

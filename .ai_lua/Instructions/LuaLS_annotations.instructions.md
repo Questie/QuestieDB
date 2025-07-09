@@ -233,6 +233,20 @@ Provides type declarations for metamethod operators like `+`, `-`, `call`, etc.
 
 ### Examples for Common Type Patterns
 
+#### Optional Type
+
+Always use `string?` for optional types, not `string | nil`.
+```lua
+---@param value string | number
+---@param debugActive boolean?
+function printValue(value, debugActive)
+  if debugActive then
+    print(value)
+  end
+end
+```
+
+
 #### Union Type
 
 ```lua
@@ -291,5 +305,5 @@ end
 
 ## Advanced Notes
 
-- `?` after a type means `nil` is allowed, e.g., `boolean?` is `boolean | nil`.
+- `?` after a type means `nil` is allowed, e.g., `boolean?` is `boolean | nil` only use `<type>?`.
 - Parentheses sometimes needed for unions: `(string | number)[]`.

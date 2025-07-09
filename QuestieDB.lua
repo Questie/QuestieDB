@@ -40,6 +40,13 @@ do
   ---@type FunctionContainer
   local timer
   local function bucketLoaded()
+    if timer then
+      --? Cancel the timer if it exists
+      --? This is to prevent multiple calls to the function if the event is triggered multiple times
+      --? within the 1 second interval
+      timer:Cancel()
+    end
+
     --? We give it 0.2 seconds to allow other code to run first
     --? We listen to the ADDON_LOADED event to allow all other addons to load first
     --? As we are a library, we need to wait for the other addons to load allowing them to register

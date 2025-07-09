@@ -45,6 +45,8 @@ require("cli.Addon_Meta")
 
 local f = string.format
 
+Is_Test = true -- Set this to true to enable test mode
+
 do
   ---@diagnostic disable-next-line: lowercase-global
   function printableTable(table)
@@ -71,17 +73,15 @@ local function RunTest(version)
   -- Reset data objects, load the files and set wow version
   LibQuestieDBTable = AddonInitializeVersion(capitalizedVersion)
 
-  -- Drain all the timers
-  print("Pre-Drain timer list")
-  C_Timer.drainTimerList()
-
   print("Executing event: ADDON_LOADED")
   LibQuestieDBTable.RegisteredEvents["ADDON_LOADED"](CLI_addonName or "QuestieDB")
 
-  -- Drain all the timers
-  print("ADDON_LOADED timer list")
-  C_Timer.drainTimerList()
+  -- Run until database is initialized or timeout occurs
+  C_Timer.WaitForAllTimers(10, function()
+    return LibQuestieDBTable.Database.Initialized
+  end)
 
+  -- Check if the database was initialized successfully
   if not LibQuestieDBTable.Database.Initialized then
     error("Database not initialized")
   end
@@ -211,9 +211,15 @@ parser:argument("version", f("Game version, %s.", versionString))
 local args = parser:parse()
 
 if args.version and validVersions[args.version:lower()] then
+  -- Cancel all timers before running the test
+  C_Timer.CancelAllTimers()
+
   RunTest(args.version)
 elseif args.version and args.version:lower() == "all" then
   for version in pairs(validVersions) do
+    -- Cancel all timers before running the test
+    C_Timer.CancelAllTimers()
+
     RunTest(version)
   end
 else

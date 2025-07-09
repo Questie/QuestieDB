@@ -116,13 +116,13 @@ do
           tInsert(lines, f("%s'%s',\n", indent(indentation, 2), value))
         else
           -- If the joined string is nil, add a placeholder
-          tInsert(lines, f("%snil,\n", indent(indentation, 2)))
+          tInsert(lines, f("%s%s,\n", indent(indentation, 2), "nil"))
         end
       end
       tInsert(lines, f("%s},\n", indentation))
     else
       -- If data for this entity type doesn't exist for this ID, add nil placeholder
-      tInsert(lines, f("%snil,\n", indentation))
+      tInsert(lines, f("%s%s,\n", indentation, "nil"))
     end
     return table.concat(lines)
   end

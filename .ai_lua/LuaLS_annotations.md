@@ -230,6 +230,17 @@ Provides type declarations for metamethod operators like `+`, `-`, `call`, etc.
 
 ### Examples for Common Type Patterns
 
+#### Optional Type
+```lua
+---@param value string | number
+---@param debugActive boolean?
+function printValue(value, debugActive)
+  if debugActive then
+    print(value)
+  end
+end
+```
+
 #### Union Type
 
 ```lua

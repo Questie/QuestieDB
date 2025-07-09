@@ -293,8 +293,8 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
             }))
         end
       else
-        -- If data for this entity type doesn't exist for this ID, add nil placeholder
-        tInsert(outputLines, f("%snil,\n", indentation))
+        -- If data for this entity type doesn't exist for this ID, add nil value
+        tInsert(outputLines, f("%s%s,\n", indentation, "nil"))
       end
     end
     -- Remove trailing comma from the last element within the ID's table
