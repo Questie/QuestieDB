@@ -99,11 +99,19 @@ function DumpDatabase(questiedb_version, questie_version, debug)
     entityTypes = { "Item", "Npc", "Object", "Quest", },
 
     --- Check if an ID exists in any of the tables
+    ---@param entityType string The entity type to check (Item, Npc, Object, Quest)
     ---@param id ItemId|NpcId|ObjectId|QuestId
     ---@return boolean
     exists = function(self, entityType, id)
+      if not entityType or type(entityType) ~= "string" then
+        error("entityType must be a non-empty string")
+      end
+      local overrideTable = self[entityType:lower() .. "Override"]
+      if not overrideTable then
+        error("Unknown entity type: " .. entityType)
+      end
       -- Check if the id exists in any of the override tables
-      if self[entityType:lower() .. "Override"][id] then
+      if overrideTable[id] then
         return true
       end
       return false
