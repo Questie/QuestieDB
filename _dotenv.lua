@@ -5,7 +5,7 @@ end
 
 ---@class LibQuestieDB
 local LibQuestieDB = select(2, ...)
-local dat = C_BattleNet.GetAccountInfoByID(select(3, BNGetInfo()))
+local dat = BNGetInfo and C_BattleNet.GetAccountInfoByID(select(3, BNGetInfo()))
 local battle_tags = {
   -- Please do not add us to battle.net friends... contact us on Discord instead.
   -- https://discord.gg/s33MAYKeZd
