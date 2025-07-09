@@ -11,6 +11,21 @@ local lType = type
 
 local newTicker = C_Timer.NewTicker
 
+local function handleThreadError(timer, errorMessage, errorCallback, err, tracebackLevel)
+  if timer then
+    timer:Cancel()
+  end
+  -- TODO: Change this to WoW debugstack function
+  if debug then
+    if errorCallback then
+      errorCallback(errorMessage or "Error In Thread:", err, debug.traceback(errorMessage or err, tracebackLevel))
+    else
+      local fullError = (errorMessage or "Error In Thread:") .. ": " .. tostring(err) .. "\n" .. debug.traceback(errorMessage or err, tracebackLevel)
+      print(fullError)
+      error(fullError)
+    end
+  end
+end
 
 ---Thread a function, callback function is called when the thread is done.
 ---@param threadFunction function @The function to thread
@@ -46,12 +61,7 @@ function ThreadLib.Thread(threadFunction, delay, callbackFunction, errorMessage,
       -- Something in the coroutine went wrong, print the error and stop the timer
       if not success and timer then
         timer:Cancel();
-        if errorCallback then
-          errorCallback(errorMessage or "Error In Thread:", err, debug.traceback(errorMessage or err, 4))
-        else
-          print((errorMessage or "Error In Thread:") .. ": " .. tostring(err) .. "\n" .. debug.traceback(errorMessage or err, 4))
-          error((errorMessage or "Error In Thread:") .. ": " .. tostring(err) .. "\n" .. debug.traceback(errorMessage or err, 4))
-        end
+        handleThreadError(timer, errorMessage, errorCallback, err, 4)
       end
     elseif (coStatus(thread) == "dead") then --It's faster not to lookup the value but instead have it here
       if timer then
@@ -73,11 +83,7 @@ function ThreadLib.Thread(threadFunction, delay, callbackFunction, errorMessage,
   -- Something in the coroutine went wrong, print the error and stop the timer
   if not success and timer then
     timer:Cancel();
-    if errorCallback then
-      errorCallback(errorMessage or "Error In Thread:", err, debug.traceback(errorMessage or err, 2))
-    else
-      error((errorMessage or "Error In Thread:") .. ": " .. tostring(err) .. "\n" .. debug.traceback(errorMessage or err, 2))
-    end
+    handleThreadError(timer, errorMessage, errorCallback, err, 2)
   end
 
   return timer, thread
