@@ -133,7 +133,7 @@ C_Timer = {
     end
 
     local caller = debug.getinfo(2)
-    -- print(debug.traceback("After", 2))
+
     local timer = uv.new_timer()
     if not timer then
       error("C_Timer.After: Failed to create timer")
@@ -186,7 +186,7 @@ C_Timer = {
     end
 
     local caller = debug.getinfo(2)
-    -- print(debug.traceback("NewTicker", 2))
+
     local timer = uv.new_timer()
     if not timer then
       error("C_Timer.NewTicker: Failed to create timer")
