@@ -17,7 +17,7 @@ local battle_tags = {
 if dat then
   local developer_account = battle_tags[dat.battleTag] and dat.battleTag or false
   if developer_account then
-    print("|cFFffff00" .. "Developer account detected: Logon#1822")
+    print("|cFFffff00" .. "Developer account detected: " .. developer_account)
     do
       -- Variables to load before all files
       print("|cB900FFFF" .. "  _dotenv.lua is loading pre-files environment variables...")
