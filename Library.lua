@@ -85,5 +85,7 @@ do
       PrivateLibQuestieDB.ColorizePrint("green", "LibQuestieDB was restored!")
     end
   end
-  C_Timer.NewTicker(1, checkFunction)
+  if not Is_CLI then
+    C_Timer.NewTicker(1, checkFunction)
+  end
 end

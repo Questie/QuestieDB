@@ -10,6 +10,9 @@
 ## SavedVariablesPerCharacter: QuestieDB_c
 ## Dedicated to my cat - Suddis
 
+# Load Environment
+_dotenv.lua
+
 ####### API Here ########
 Library.lua
 #########################
@@ -65,6 +68,9 @@ Corrections\Tbc\_TbcCorrections.xml
 Corrections\Wotlk\_WotlkCorrections.xml
 ### Corrections - Cata
 # Corrections\Cata\_CataCorrections.xml
+
+# Settings
+Settings\Search.lua
 
 # Standalone
 QuestieDB.lua

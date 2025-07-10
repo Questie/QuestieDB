@@ -115,9 +115,12 @@ end
 --- Loads all files in a xml file
 ---@param file string file path e.g ".database_generator/Questie/Localization/Translations/Translations.xml"
 ---@param failIfMissing boolean?
-function CLI_Helpers.loadXML(file, failIfMissing)
+---@param spaces number?
+function CLI_Helpers.loadXML(file, failIfMissing, spaces)
   local xmlFilePath = file:match("^(.*)[/\\].-%.xml$") .. "/"
   local filedata = io.open(file, "r")
+  local spaceString = string.rep(" ", spaces or 2)
+
   -- Only load the file if it exists
   -- If you generate for the first time some files in the toc arn't present
   if filedata then
@@ -126,12 +129,12 @@ function CLI_Helpers.loadXML(file, failIfMissing)
     for xmlFile in string.gmatch(filetext, "<Script.-file%=\"(.-)\"") do
       -- Replace \ with /
       local slashxmlFile = xmlFile:gsub("\\", "/")
-      print("  Loading file: ", xmlFilePath .. slashxmlFile)
+      print(spaceString .. "  Loading file: ", xmlFilePath .. slashxmlFile)
       CLI_Helpers.loadFile(xmlFilePath .. slashxmlFile)
     end
   else
     if failIfMissing then
-      error("Error loading " .. file .. " - File not found")
+      error(spaceString .. "Error loading " .. file .. " - File not found")
       os.exit(1)
     end
   end

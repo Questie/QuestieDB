@@ -39,6 +39,7 @@ jobs:
         luarocks install luafilesystem
         luarocks install luasocket
         luarocks install luasec
+        luarocks install luv
 
     # Runs a single command using the runners shell
     - name: Generate HTML
@@ -56,6 +57,9 @@ jobs:
 
     - name: Run Cata Tests
       run: lua ./.tests/runTests.lua Cata
+
+    - name: Run Mop Tests
+      run: lua ./.tests/runTests.lua Mop
 
     # Create the QuestieDB build, will output toc_version
     - name: Check version changed from last release

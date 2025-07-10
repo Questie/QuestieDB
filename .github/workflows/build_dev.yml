@@ -62,6 +62,7 @@ jobs:
         luarocks install luafilesystem
         luarocks install luasocket
         luarocks install luasec
+        luarocks install luv
 
     - name: Generate HTML
       run: sh ./.database_generator/generate_database.sh ./.lua/bin/lua
@@ -77,6 +78,9 @@ jobs:
 
     - name: Run Cata Tests
       run: lua ./.tests/runTests.lua Cata
+
+    - name: Run Mop Tests
+      run: lua ./.tests/runTests.lua Mop
 
     # Create the QuestieDB build, will output toc_version
     - name: Check version is higher than latest release
