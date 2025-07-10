@@ -170,39 +170,39 @@ print("\n8. Testing error handling in callback...")
 local errorHandled = false
 local original_error = error
 _G.error = function(msg)
-    if string.find(msg, "Simulated error in callback") then
-        print("   ✓ Correctly caught error from callback: " .. msg)
-        errorHandled = true
-    else
-        original_error(msg)
-    end
+  if string.find(msg, "Simulated error in callback") then
+    print("   ✓ Correctly caught error from callback: " .. msg)
+    errorHandled = true
+  else
+    original_error(msg)
+  end
 end
 
 C_Timer.After(0.1, function()
-    error("Simulated error in callback")
+  error("Simulated error in callback")
 end)
 
 C_Timer.After(0.2, function()
-    if not errorHandled then
-        print("   ✗ Error handling test failed: error was not caught.")
-    end
-    _G.error = original_error -- Restore original error function
+  if not errorHandled then
+    print("   ✗ Error handling test failed: error was not caught.")
+  end
+  _G.error = original_error -- Restore original error function
 end)
 
 -- Test 9: WaitForAllTimers with checkFunction
 print("\n9. Testing WaitForAllTimers with checkFunction...")
 local condition = false
 C_Timer.After(0.5, function()
-    condition = true
-    print("   ✓ Condition for WaitForAllTimers met.")
+  condition = true
+  print("   ✓ Condition for WaitForAllTimers met.")
 end)
 C_Timer.WaitForAllTimers(nil, function()
-    return condition
+  return condition
 end)
 if condition then
-    print("   ✓ WaitForAllTimers with checkFunction exited correctly.")
+  print("   ✓ WaitForAllTimers with checkFunction exited correctly.")
 else
-    print("   ✗ WaitForAllTimers with checkFunction failed.")
+  print("   ✗ WaitForAllTimers with checkFunction failed.")
 end
 
 -- Test 10: NewTicker with 1 iteration
@@ -219,11 +219,11 @@ C_Timer.NewTicker(1, function() timer2Cancelled = false end)
 C_Timer.CancelAllTimers()
 
 C_Timer.After(0.1, function()
-    if timer1Cancelled and timer2Cancelled then
-        print("   ✓ CancelAllTimers successfully cancelled all timers.")
-    else
-        print("   ✗ CancelAllTimers failed to cancel all timers.")
-    end
+  if timer1Cancelled and timer2Cancelled then
+    print("   ✓ CancelAllTimers successfully cancelled all timers.")
+  else
+    print("   ✗ CancelAllTimers failed to cancel all timers.")
+  end
 end)
 
 
