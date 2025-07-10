@@ -424,7 +424,9 @@ function LibQuestieDB.QuestieDB_Defer_RunTests()
 end
 
 C_Timer.After(1, function()
-  if LibQuestieDB.Database.debugEnabled and LibQuestieDB.Database.debugPrintEnabled then
+  if LibQuestieDB and LibQuestieDB.Database and
+      LibQuestieDB.Database.debugEnabled and
+      LibQuestieDB.Database.debugPrintEnabled then
     -- TODO: Add a settings panel where all the test outputs are printed to.
     LibQuestieDB.QuestieDB_Defer_RunTests()
   end
