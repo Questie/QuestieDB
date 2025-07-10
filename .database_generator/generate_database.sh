@@ -29,7 +29,7 @@ git_sparse_clone_addon_translations() {
   git clone -n --depth=1 --filter=tree:0 -b master https://github.com/Questie/Questie.git Questie-data
 
   # # Cd into the git directory
-  cd Questie-data
+  cd Questie-data || exit 1
 
   # # Sparse checkout only the Localization directory
   echo "# Setting sparse checkout for Localization, Database/Classic, Database/TBC, Database/Wotlk, Database/Cata Database/MoP"
