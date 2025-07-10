@@ -1,4 +1,3 @@
--- .database_generator/loaders/l10n.lua
 local helpers = require(".db_helpers")
 local l10n_loader = require(".load_translations_l10n")
 
