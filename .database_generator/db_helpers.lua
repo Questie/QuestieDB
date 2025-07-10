@@ -353,6 +353,23 @@ local function dumpData(tbl, dataKeys, dumpFunctions, combineFunc)
   return table.concat(allResults), allResultsTbl, allResultsDataTbl
 end
 
+-- Color helper function for terminal output formatting
+local function colorizeText(text, color)
+  if color == "green" then
+    return "\27[32m" .. text .. "\27[0m"
+  elseif color == "red" then
+    return "\27[31m" .. text .. "\27[0m"
+  elseif color == "yellow" then
+    return "\27[33m" .. text .. "\27[0m"
+  elseif color == "blue" then
+    return "\27[34m" .. text .. "\27[0m"
+  elseif color == "cyan" then
+    return "\27[36m" .. text .. "\27[0m"
+  else
+    return text
+  end
+end
+
 ---@class helpers
 local return_table = {
   capitalize = capitalize,
@@ -367,6 +384,7 @@ local return_table = {
   ensureDirExists = ensureDirExists,
   clearHtmlFiles = clearHtmlFiles,
   ensureGitKeepFile = ensureGitKeepFile,
+  colorizeText = colorizeText,
 }
 -- Expose functions
 return return_table

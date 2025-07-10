@@ -5,21 +5,7 @@ local f = string.format
 local rep = string.rep
 
 -- Color helper function for terminal output formatting
-local function c(text, color)
-  if color == "green" then
-    return "\27[32m" .. text .. "\27[0m"
-  elseif color == "red" then
-    return "\27[31m" .. text .. "\27[0m"
-  elseif color == "yellow" then
-    return "\27[33m" .. text .. "\27[0m"
-  elseif color == "blue" then
-    return "\27[34m" .. text .. "\27[0m"
-  elseif color == "cyan" then
-    return "\27[36m" .. text .. "\27[0m"
-  else
-    return text
-  end
-end
+local c = helpers.colorizeText
 
 ---Injects Mangos translations into existing Questie translation data.
 ---This function loads Mangos translation XML files and merges them with Questie translations,
