@@ -214,7 +214,6 @@ local function LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, dbData
     if not found_files then
       print("  No files found for " .. datatype .. " in " .. questie_version)
       os.exit(0)
-      return {}
     end
 
     print(c(f(" Cleaned %d files in total for %s\n", #found_files, datatype), "green"))
