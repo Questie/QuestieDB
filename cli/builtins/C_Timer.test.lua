@@ -2,7 +2,14 @@
 
 -- We want it to use the same import as other files so we add the root workspace folder
 -- into the package path to avoid the error of different imports.
-package.path = '../../?.lua;' .. package.path
+local script_dir = arg and arg[0] and arg[0]:match("(.*/)")
+print(script_dir)
+if script_dir then
+  package.path = script_dir .. '../../?.lua;' .. package.path
+else
+  -- Fallback to relative path if script directory detection fails
+  package.path = '../../?.lua;' .. package.path
+end
 
 -- Load the C_Timer module and luv
 require("cli.builtins.C_Timer")
