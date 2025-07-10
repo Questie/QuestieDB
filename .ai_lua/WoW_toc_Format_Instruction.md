@@ -5,7 +5,7 @@
 
 A `.toc` (Table of Contents) file is the mandatory entry point for any World of Warcraft addon. It acts as a manifest, defining the addon's identity and instructing the game client on which files to load.
 
-#### Key Structural Rules:
+### Key Structural Rules:
 -   **File Naming:** The `.toc` filename **must** be identical to its parent folder's name (e.g., `..\Interface\AddOns\MyAddon\MyAddon.toc`).
 -   **Metadata:** Lines starting with `##` define addon properties (e.g., `## Title: My Addon`). The format is `## Directive: Value`.
 -   **Comments:** Lines starting with `#` are comments and are ignored. **Crucially, any whitespace before the `#` will cause the line to be treated as a filename.**
