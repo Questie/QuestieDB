@@ -166,6 +166,7 @@ invokeTest:start(200, 0, function()
 end)
 
 -- Test 8: Error handling in callback
+-- We don't use pcall here because the timers in WoW does not have any error handling / return
 print("\n8. Testing error handling in callback...")
 local errorHandled = false
 local original_error = error
