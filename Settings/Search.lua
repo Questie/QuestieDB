@@ -47,21 +47,177 @@ local function CreateSearchUI()
   -- f:SetClampedToScreen(true)
 
   -- Close button
-  local close = CreateFrame("Button", nil, f, "UIPanelCloseButton")
-  close:SetPoint("TOPRIGHT", f, "TOPRIGHT", -4, -4)
-  close:SetScript("OnClick", function() f:Hide() end)
+  -- local close = CreateFrame("Button", nil, f, "UIPanelCloseButton")
+  -- close:SetPoint("TOPRIGHT", f, "TOPRIGHT", -4, -4)
+  -- close:SetScript("OnClick", function() f:Hide() end)
 
   -- Title
   local title = f:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
   title:SetPoint("TOPLEFT", f, "TOPLEFT", 16, -16)
   title:SetText("QuestieDB Search")
 
+  -- Helper functions for custom tabs
+  local function DeselectTab(tab)
+    tab.Left:Show()
+    tab.Middle:Show()
+    tab.Right:Show()
+    tab.Text:SetFontObject(GameFontNormalSmall)
+    tab:Enable()
+
+    tab.LeftDisabled:Hide()
+    tab.MiddleDisabled:Hide()
+    tab.RightDisabled:Hide()
+  end
+
+  local function SelectTab(tab)
+    tab.Left:Hide()
+    tab.Middle:Hide()
+    tab.Right:Hide()
+    tab.Text:SetFontObject(GameFontHighlightSmall)
+    tab:Disable()
+
+    tab.LeftDisabled:Show()
+    tab.MiddleDisabled:Show()
+    tab.RightDisabled:Show()
+  end
+
+  local function ResizeTab(tab)
+    local left = tab.Left
+    local sideWidths = 2 * left:GetWidth()
+    local tabText = tab.Text
+    tabText:SetWidth(0)
+    local textWidth = tabText:GetWidth()
+    local padding = 24
+    local width = textWidth + padding
+    local minWidth = 36
+    if width < minWidth then
+      width = minWidth
+    end
+    local tabWidth = width + sideWidths
+    tab.Middle:SetWidth(width)
+    tab.MiddleDisabled:SetWidth(width)
+    tab:SetWidth(tabWidth)
+  end
+
+  local function CreateStyledTab(id, text)
+    local tab = CreateFrame("Button", nil, f)
+    tab:SetHeight(32)
+    tab:SetID(id)
+    tab.Text = tab:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
+    tab.Text:SetText(text)
+    tab.Text:SetPoint("CENTER", 0, 0)
+    -- tab.Text:SetPoint("CENTER", tab, "CENTER", 0, -3)
+
+    tab:SetNormalFontObject("GameFontNormalSmall")
+    tab:SetDisabledFontObject("GameFontHighlightSmall")
+
+    -- Shrink the disabled textures by 6px to make them look like the active textures
+    local shrinkDisabled = 6
+
+    tab.LeftDisabled = tab:CreateTexture(nil, "BORDER")
+    tab.LeftDisabled:SetTexture("Interface\\OptionsFrame\\UI-OptionsFrame-ActiveTab")
+    tab.LeftDisabled:SetSize(20, 24 - shrinkDisabled)
+    tab.LeftDisabled:SetPoint("TOPLEFT", 0, -shrinkDisabled)
+    -- tab.LeftDisabled:SetPoint("BOTTOMLEFT", 0, -3)
+    tab.LeftDisabled:SetTexCoord(0, 0.15625, 0, 1.0)
+
+    tab.MiddleDisabled = tab:CreateTexture(nil, "BORDER")
+    tab.MiddleDisabled:SetTexture("Interface\\OptionsFrame\\UI-OptionsFrame-ActiveTab")
+    tab.MiddleDisabled:SetHeight(24 - shrinkDisabled)
+    tab.MiddleDisabled:SetPoint("LEFT", tab.LeftDisabled, "RIGHT", 0, 0)
+    -- tab.MiddleDisabled:SetPoint("LEFT", tab.LeftDisabled, "RIGHT")
+    tab.MiddleDisabled:SetTexCoord(0.15625, 0.84375, 0, 1.0)
+
+    tab.RightDisabled = tab:CreateTexture(nil, "BORDER")
+    tab.RightDisabled:SetTexture("Interface\\OptionsFrame\\UI-OptionsFrame-ActiveTab")
+    tab.RightDisabled:SetSize(20, 24 - shrinkDisabled)
+    tab.RightDisabled:SetPoint("LEFT", tab.MiddleDisabled, "RIGHT", 0, 0)
+    -- tab.RightDisabled:SetPoint("LEFT", tab.MiddleDisabled, "RIGHT")
+    tab.RightDisabled:SetTexCoord(0.84375, 1.0, 0, 1.0)
+
+    tab.Left = tab:CreateTexture(nil, "BORDER")
+    tab.Left:SetTexture("Interface\\OptionsFrame\\UI-OptionsFrame-InActiveTab")
+    tab.Left:SetSize(20, 24)
+    tab.Left:SetPoint("TOPLEFT")
+    tab.Left:SetTexCoord(0, 0.15625, 0, 1.0)
+
+    tab.Middle = tab:CreateTexture(nil, "BORDER")
+    tab.Middle:SetTexture("Interface\\OptionsFrame\\UI-OptionsFrame-InActiveTab")
+    tab.Middle:SetHeight(24)
+    tab.Middle:SetPoint("LEFT", tab.Left, "RIGHT")
+    tab.Middle:SetTexCoord(0.15625, 0.84375, 0, 1.0)
+
+    tab.Right = tab:CreateTexture(nil, "BORDER")
+    tab.Right:SetTexture("Interface\\OptionsFrame\\UI-OptionsFrame-InActiveTab")
+    tab.Right:SetSize(20, 24)
+    tab.Right:SetPoint("LEFT", tab.Middle, "RIGHT")
+    tab.Right:SetTexCoord(0.84375, 1.0, 0, 1.0)
+
+    tab:SetHighlightTexture("Interface\\PaperDollInfoFrame\\UI-Character-Tab-Highlight", "ADD")
+    local highlightTexture = tab:GetHighlightTexture()
+    highlightTexture:ClearAllPoints()
+    highlightTexture:SetPoint("LEFT", tab, "LEFT", 10, 0)
+    highlightTexture:SetPoint("RIGHT", tab, "RIGHT", -10, 0)
+
+    ResizeTab(tab)
+    return tab
+  end
+
+  -- Tab setup
+  f.tabs = {}
+  f.tabContents = {}
+
+  local function SwitchToTab(tabIndex)
+    for i, content in ipairs(f.tabContents) do
+      if i == tabIndex then
+        content:Show()
+        SelectTab(f.tabs[i])
+      else
+        content:Hide()
+        DeselectTab(f.tabs[i])
+      end
+    end
+    f.selectedTab = tabIndex
+  end
+
+  -- Tab 1 (Search)
+  local tab1 = CreateStyledTab(1, "Search")
+  tab1:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 10, -8)
+  tab1:SetScript("OnClick", function(self) SwitchToTab(self:GetID()) end)
+  table.insert(f.tabs, tab1)
+
+  local tabContentContainer = CreateFrame("Frame", nil, f)
+  tabContentContainer:SetPoint("TOPLEFT", f, "TOPLEFT", 4, -70)
+  tabContentContainer:SetPoint("BOTTOMRIGHT", f, "BOTTOMRIGHT", -4, 4)
+  local tab1Content = CreateFrame("Frame", nil, tabContentContainer)
+  tab1Content:SetAllPoints(true)
+  table.insert(f.tabContents, tab1Content)
+
+  -- Tab 2 (New Button)
+  local tab2 = CreateStyledTab(2, "Tab 2")
+  tab2:SetPoint("LEFT", tab1, "RIGHT", -10, 0)
+  tab2:SetScript("OnClick", function(self) SwitchToTab(self:GetID()) end)
+  table.insert(f.tabs, tab2)
+
+  local tab2Content = CreateFrame("Frame", nil, tabContentContainer)
+  tab2Content:SetAllPoints(true)
+  table.insert(f.tabContents, tab2Content)
+  -- New Button for Tab 2
+  local helloButton = CreateFrame("Button", nil, tab2Content, "UIPanelButtonTemplate")
+  helloButton:SetSize(120, 30)
+  helloButton:SetPoint("CENTER")
+  helloButton:SetText("Hello!")
+  helloButton:SetScript("OnClick", function() print("hello from tab2") end)
+
+  -- Initially select tab 1
+  SwitchToTab(1)
+
   -- Dropdown for type
-  local typeLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-  typeLabel:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -16)
+  local typeLabel = tab1Content:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+  typeLabel:SetPoint("TOPLEFT", 16, -16)
   typeLabel:SetText("Type:")
 
-  local typeDropdown = CreateFrame("Frame", "QuestieDB_SearchTypeDropdown", f, "UIDropDownMenuTemplate")
+  local typeDropdown = CreateFrame("Frame", "QuestieDB_SearchTypeDropdown", tab1Content, "UIDropDownMenuTemplate")
   typeDropdown:SetPoint("LEFT", typeLabel, "RIGHT", 8, 2)
   local searchTypes = { { text = "Quest", value = "Quest", }, { text = "Item", value = "Item", }, { text = "Object", value = "Object", }, { text = "Npc", value = "Npc", }, }
   local selectedType = "Quest"
@@ -81,25 +237,25 @@ local function CreateSearchUI()
   end)
 
   -- EditBox for ID
-  local idLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+  local idLabel = tab1Content:CreateFontString(nil, "OVERLAY", "GameFontNormal")
   idLabel:SetPoint("TOPLEFT", typeLabel, "BOTTOMLEFT", 0, -24)
   idLabel:SetText("ID:")
-  local idBox = CreateFrame("EditBox", nil, f, "InputBoxTemplate")
+  local idBox = CreateFrame("EditBox", nil, tab1Content, "InputBoxTemplate")
   idBox:SetSize(120, 24)
   idBox:SetPoint("LEFT", idLabel, "RIGHT", 8, 0)
   idBox:SetAutoFocus(false)
   idBox:SetNumeric(true)
 
   -- Search button
-  local searchBtn = CreateFrame("Button", nil, f, "UIPanelButtonTemplate")
+  local searchBtn = CreateFrame("Button", nil, tab1Content, "UIPanelButtonTemplate")
   searchBtn:SetSize(80, 24)
   searchBtn:SetPoint("LEFT", idBox, "RIGHT", 12, 0)
   searchBtn:SetText("Search")
 
   -- ScrollFrame for output
-  local scrollFrame = CreateFrame("ScrollFrame", nil, f, "UIPanelScrollFrameTemplate")
+  local scrollFrame = CreateFrame("ScrollFrame", nil, tab1Content, "UIPanelScrollFrameTemplate")
   scrollFrame:SetPoint("TOPLEFT", idLabel, "BOTTOMLEFT", 0, -32)
-  scrollFrame:SetPoint("BOTTOMRIGHT", f, "BOTTOMRIGHT", -32, 16)
+  scrollFrame:SetPoint("BOTTOMRIGHT", tab1Content, "BOTTOMRIGHT", -32, 16)
   local output = CreateFrame("EditBox", nil, scrollFrame)
   output:SetMultiLine(true)
   output:SetFontObject(ChatFontNormal)
