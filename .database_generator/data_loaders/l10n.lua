@@ -226,7 +226,6 @@ local function LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, dbData
     if not lookup then
       print(c("Failed to load " .. entityType .. " lookup", "red"))
       os.exit(0)
-      return {}
     end
     -- Validate that all required locales are loaded for this entity type
     for _, locale in ipairs(Meta.L10nMeta.locales) do
@@ -235,7 +234,6 @@ local function LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, dbData
       if not lookup[locale] then
         print(c("  Failed to load " .. entityType .. " lookup for locale: " .. locale, "red"))
         os.exit(0)
-        return {}
       end
       -- end
     end
@@ -246,7 +244,6 @@ local function LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, dbData
   if not success then
     print(c("Failed to inject mangos translations", "red"))
     os.exit(0)
-    return {}
   end
 
   print(c("All lookups and locales loaded successfully\n", "green"))
