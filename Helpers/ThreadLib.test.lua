@@ -86,12 +86,12 @@ local function setup_test_environment()
   mock_print_messages = {}
   test_start_time = GetTimePreciseSec() -- Reset timer for each test
   -- _G.print = mock_print                 -- Mock global print
-  LibQuestieDB.print = mock_print
+  LibQuestieDB.ErrorPrint = mock_print
 end
 
 local function restore_test_environment()
   -- _G.print = original_print
-  LibQuestieDB.print = original_print
+  LibQuestieDB.ErrorPrint = original_print
 end
 
 --------------------------------------------------------------------------------
@@ -193,7 +193,7 @@ tests["6. Error Handling: Error in threaded function is handled"] = function(don
   ---@diagnostic disable-next-line: duplicate-set-field
   _G.error = function(message)
     if string.find(message, "Test error in thread") then
-      LibQuestieDB.print("Test error in thread")
+      LibQuestieDB.ErrorPrint("Test error in thread")
       return
     else
       original_error_fn(message)

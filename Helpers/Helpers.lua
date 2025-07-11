@@ -4,6 +4,10 @@ local LibQuestieDB = select(2, ...)
 ---@type Database
 local Database = LibQuestieDB.Database
 
+-- This is used because during testing we might check how print it outputting
+-- We need something that no other addon uses.
+LibQuestieDB.ErrorPrint = print
+
 -- Event registration
 -- Usage:<br>
 -- Register   an event: ReturnedObject["EVENT_NAME"] = func<br>

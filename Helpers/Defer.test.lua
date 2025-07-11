@@ -85,12 +85,12 @@ end
 local function setup_test_environment()
   mock_print_messages = {}
   -- _G.print = mock_print -- Mock global print
-  LibQuestieDB.print = mock_print -- Mock LibQuestieDB print
+  LibQuestieDB.ErrorPrint = mock_print -- Mock LibQuestieDB print
 end
 
 local function restore_test_environment()
   -- _G.print = original_print
-  LibQuestieDB.print = original_print -- Restore original print
+  LibQuestieDB.ErrorPrint = original_print -- Restore original print
 end
 
 --------------------------------------------------------------------------------
