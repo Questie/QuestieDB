@@ -2,6 +2,7 @@
 
 ---Should debug timers print out creation and execution information?
 DB_C_TIMER_DEBUG = DB_C_TIMER_DEBUG ~= nil and DB_C_TIMER_DEBUG or false
+DB_C_TIMER_QUIET_TIMERS = DB_C_TIMER_QUIET_TIMERS ~= nil and DB_C_TIMER_QUIET_TIMERS or false
 
 -- Import luv library for real timer functionality
 ---@type luv
@@ -63,7 +64,7 @@ end
 
 -- Color helper function for terminal output formatting
 local function c(text, color)
-  if not DB_C_TIMER_DEBUG then
+  if not DB_C_TIMER_DEBUG or DB_C_TIMER_QUIET_TIMERS then
     return
   end
   if color == "green" then
