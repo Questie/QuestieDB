@@ -52,7 +52,7 @@ do
     --? As we are a library, we need to wait for the other addons to load allowing them to register
     --? overrides and similar things
     C_Timer.After(0.2, function()
-      if Database.debugEnabled then
+      if LibQuestieDB.Database.debugEnabled then
         print("All Addons loaded")
         LibQuestieDB.ColorizePrint("lightBlue", "QuestieDB: Debug mode enabled")
         _GLibQuestieDB = LibQuestieDB
