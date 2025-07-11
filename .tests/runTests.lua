@@ -45,7 +45,7 @@ require("cli.Addon_Meta")
 
 local f = string.format
 
-Is_Test = true
+Is_Test = true -- Set this to true to enable test mode
 
 do
   ---@diagnostic disable-next-line: lowercase-global
@@ -73,22 +73,20 @@ local function RunTest(version)
   -- Reset data objects, load the files and set wow version
   LibQuestieDBTable = AddonInitializeVersion(capitalizedVersion)
 
-  -- Drain all the timers
-  print("Pre-Drain timer list")
-  C_Timer.drainTimerList()
-
   print("Executing event: ADDON_LOADED")
   LibQuestieDBTable.RegisteredEvents["ADDON_LOADED"](CLI_addonName or "QuestieDB")
 
-  -- Drain all the timers
-  print("ADDON_LOADED timer list")
-  C_Timer.drainTimerList()
+  -- Run until database is initialized or timeout occurs
+  C_Timer.WaitForAllTimers(10, function()
+    return LibQuestieDBTable.Database.Initialized
+  end)
 
+  -- Check if the database was initialized successfully
   if not LibQuestieDBTable.Database.Initialized then
     error("Database not initialized")
   end
 
-  local Corrections = LibQuestieDBTable.Corrections
+  local Meta = LibQuestieDBTable.Meta
   local publicLibQuestieDB = LibQuestieDB()
 
   --- Function to print details of the database
@@ -132,7 +130,7 @@ local function RunTest(version)
     table.sort(AllItemIds)
 
     local functionOrder = {}
-    for functionName, index in pairs(Corrections.ItemMeta.itemKeys) do
+    for functionName, index in pairs(Meta.ItemMeta.itemKeys) do
       functionOrder[index] = functionName
     end
 
@@ -145,7 +143,7 @@ local function RunTest(version)
     table.sort(AllNpcIds)
 
     local functionOrder = {}
-    for functionName, index in pairs(Corrections.NpcMeta.npcKeys) do
+    for functionName, index in pairs(Meta.NpcMeta.npcKeys) do
       functionOrder[index] = functionName
     end
 
@@ -158,7 +156,7 @@ local function RunTest(version)
     table.sort(AllObjectIds)
 
     local functionOrder = {}
-    for functionName, index in pairs(Corrections.ObjectMeta.objectKeys) do
+    for functionName, index in pairs(Meta.ObjectMeta.objectKeys) do
       functionOrder[index] = functionName
     end
 
@@ -171,7 +169,7 @@ local function RunTest(version)
     table.sort(AllQuestIds)
 
     local functionOrder = {}
-    for functionName, index in pairs(Corrections.QuestMeta.questKeys) do
+    for functionName, index in pairs(Meta.QuestMeta.questKeys) do
       functionOrder[index] = functionName
     end
 
@@ -179,16 +177,17 @@ local function RunTest(version)
   end
 
   print("------------------ Running all tests")
-  LibQuestieDBTable.Item.RunGetTest(true)
-  LibQuestieDBTable.Npc.RunGetTest(true)
-  LibQuestieDBTable.Object.RunGetTest(true)
-  LibQuestieDBTable.Quest.RunGetTest(true)
-  for _, locale in ipairs(LibQuestieDBTable.Corrections.L10nMeta.locales) do
+  print("NOTE: The first test initializes frames so it take more time than other functions")
+  for _, locale in ipairs(LibQuestieDBTable.Meta.L10nMeta.locales) do
     LibQuestieDBTable.l10n.SetLocale(locale)
     print(f("Running l10n tests", locale))
     print(f(" Locale:  (%s)", locale))
     LibQuestieDBTable.l10n.RunGetTest(true)
   end
+  LibQuestieDBTable.Item.RunGetTest(true)
+  LibQuestieDBTable.Npc.RunGetTest(true)
+  LibQuestieDBTable.Object.RunGetTest(true)
+  LibQuestieDBTable.Quest.RunGetTest(true)
 end
 local validVersions = {
   ["era"] = true,
@@ -196,6 +195,7 @@ local validVersions = {
   ["tbc"] = true,
   ["wotlk"] = true,
   ["cata"] = true,
+  ["mop"] = true,
 }
 local versionString = ""
 for version in pairs(validVersions) do
@@ -211,9 +211,15 @@ parser:argument("version", f("Game version, %s.", versionString))
 local args = parser:parse()
 
 if args.version and validVersions[args.version:lower()] then
+  -- Cancel all timers before running the test
+  C_Timer.CancelAllTimers()
+
   RunTest(args.version)
 elseif args.version and args.version:lower() == "all" then
   for version in pairs(validVersions) do
+    -- Cancel all timers before running the test
+    C_Timer.CancelAllTimers()
+
     RunTest(version)
   end
 else

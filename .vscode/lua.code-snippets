@@ -1,0 +1,73 @@
+{
+	// Place your snippets for lua here. Each snippet is defined under a snippet name and has a prefix, body and
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Namespace Import": {
+		"prefix": "namespace-import",
+		"body": [
+			"---@class LibQuestieDB",
+			"local LibQuestieDB = select(2, ...)"
+		],
+		"description": "Imports LibQuestieDB Namespace"
+	},
+
+	"Import Module Comment": {
+		"prefix": "import-comment",
+		"body": [
+			"--*---- Import Module --------"
+		],
+		"description": "Adds import module comment separator"
+	},
+
+	"Import Module": {
+		"prefix": "import-module",
+		"body": [
+			"local ${1/(.*)/${1:/capitalize}/} = LibQuestieDB.${1/(.*)/${1:/capitalize}/}"
+		],
+		"description": "Import a module from LibQuestieDB"
+	},
+
+	"Create Module Comment": {
+		"prefix": "create-comment",
+		"body": [
+			"--*---- Create Module --------"
+		],
+		"description": "Adds create module comment separator"
+	},
+
+	"Create Module": {
+		"prefix": "create-module",
+		"body": [
+			"---@class LibQuestieDB",
+			"---@field ${1/(.*)/${1:/capitalize}/} ${1/(.*)/${1:/capitalize}/}",
+			"local LibQuestieDB = select(2, ...)",
+			"",
+			"--*---- Create Module --------",
+			"",
+			"---@class ${1/(.*)/${1:/capitalize}/}",
+			"local ${1/(.*)/${1:/capitalize}/} = LibQuestieDB.${1/(.*)/${1:/capitalize}/}"
+		],
+		"description": "Creates a complete module with namespace and class definition"
+	},
+
+	"Extend Module": {
+		"prefix": "extend-module",
+		"body": [
+			"--*---- Extend Module --------",
+			"",
+			"---@class ${1/(.*)/${1:/capitalize}/}",
+			"local ${1/(.*)/${1:/capitalize}/} = LibQuestieDB.${1/(.*)/${1:/capitalize}/}"
+		],
+		"description": "Extends an existing module"
+	}
+}

@@ -1,1 +1,2 @@
+---@meta
 ---@alias AllIdTypes ItemId|NpcId|ObjectId|QuestId

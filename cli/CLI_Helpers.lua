@@ -19,30 +19,36 @@ function print(...)
 end
 
 local excludedDirectories = {
-  [".git"] = true,
   [".translator"] = true,
   [".wowhead"] = true,
-  [".generate_database"] = true,
   [".database_generator"] = true,
   [".tests"] = true,
-  ["venv"] = true,
-  [".build"] = true,
-  [".vscode"] = true,
-  ["_data"] = true,
-  ["WoW-API"] = true,
 }
 
 ---@param searchName string filename to search for
 ---@param version string? version to search for
+---@param excludedDirs table<string, boolean>? directories to exclude from the search
+---@param startDirectory string? Full path to the directory to start the search from
 ---@return unknown
-function FindFile(searchName, version)
+function FindFile(searchName, version, excludedDirs, startDirectory)
+  if not excludedDirs then
+    excludedDirs = excludedDirectories or {}
+  end
+  -- Always exclude the these directories
+  excludedDirs[".git"] = true
+  excludedDirs["venv"] = true
+  excludedDirs[".build"] = true
+  excludedDirs[".vscode"] = true
+  excludedDirs["_data"] = true
+  excludedDirs["WoW-API"] = true
+
   local function search(path)
     for file in lfs.dir(path) do
       if file ~= "." and file ~= ".." and file ~= ".build" then
         local f = path .. '/' .. file
         local attr = lfs.attributes(f)
         if attr.mode == 'directory' then
-          if excludedDirectories[file] then
+          if excludedDirs[file] then
             -- print("Skipping directory: " .. f)
           else
             -- print("Searching directory: " .. f)
@@ -69,7 +75,7 @@ function FindFile(searchName, version)
       end
     end
   end
-  local currentDir = lfs.currentdir()
+  local currentDir = startDirectory or lfs.currentdir()
   print("FindFile: Searching in: " .. currentDir)
   return search(currentDir)
 end
@@ -109,9 +115,12 @@ end
 --- Loads all files in a xml file
 ---@param file string file path e.g ".database_generator/Questie/Localization/Translations/Translations.xml"
 ---@param failIfMissing boolean?
-function CLI_Helpers.loadXML(file, failIfMissing)
+---@param spaces number?
+function CLI_Helpers.loadXML(file, failIfMissing, spaces)
   local xmlFilePath = file:match("^(.*)[/\\].-%.xml$") .. "/"
   local filedata = io.open(file, "r")
+  local spaceString = string.rep(" ", spaces or 2)
+
   -- Only load the file if it exists
   -- If you generate for the first time some files in the toc arn't present
   if filedata then
@@ -120,12 +129,12 @@ function CLI_Helpers.loadXML(file, failIfMissing)
     for xmlFile in string.gmatch(filetext, "<Script.-file%=\"(.-)\"") do
       -- Replace \ with /
       local slashxmlFile = xmlFile:gsub("\\", "/")
-      print("  Loading file: ", xmlFilePath .. slashxmlFile)
+      print(spaceString .. "  Loading file: ", xmlFilePath .. slashxmlFile)
       CLI_Helpers.loadFile(xmlFilePath .. slashxmlFile)
     end
   else
     if failIfMissing then
-      error("Error loading " .. file .. " - File not found")
+      error(spaceString .. "Error loading " .. file .. " - File not found")
       os.exit(1)
     end
   end

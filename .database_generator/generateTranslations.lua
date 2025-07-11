@@ -131,7 +131,8 @@ local function write_html_file(key_path, translations, translation_func)
     file:write("<html><body>\n")
     for _, translation in ipairs(translations) do
       local fullTranslationTable, enUS = translation_func(translation)
-      file:write("<!--" .. enUS .. "-->\n")
+      -- file:write("<!--" .. enUS .. "-->\n")
+      file:write("<p>" .. enUS .. "</p>\n")
 
       if #tConcat(fullTranslationTable, splitCharacter) > SEGMENT_SIZE - REDUCE_SEGMENT_SIZE then
         print("Splitting translation into segments", translation, filename)
@@ -350,7 +351,7 @@ function Compile_translations_to_html(strings, addonName, translation_func)
   end
 
   -- ? Generate the XML file that creates the virtual SimpleHTML objects
-  local fileString = '<SimpleHTML name="%s" file="Interface\\AddOns\\%s\\translations\\%s\\%s" virtual="true" font="GameFontNormal"/>\n'
+  local fileString = '<SimpleHTML name="%s" file="Interface\\AddOns\\%s\\Translations\\%s\\%s" virtual="true" font="GameFontNormal"/>\n'
   lua_file = io.open(root_folder .. "/TranslationsDataFiles.xml", "w")
   if lua_file then
     lua_file:write(

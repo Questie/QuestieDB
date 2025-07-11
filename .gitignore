@@ -10,7 +10,18 @@ Translations/*DataFiles.xml
 Translations/*Lookup.lua
 Translations/_data/*.html
 
+# Some test files i don't want to commit
+*.toc-stupid
+toc-stupid.py
+
+
 .database_generator/Questie-translations
+.database_generator/Questie-data
+
+start.lua
+stop.lua
+
+notes.md
 
 .shit
 .translator

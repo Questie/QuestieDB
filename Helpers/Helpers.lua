@@ -4,10 +4,14 @@ local LibQuestieDB = select(2, ...)
 ---@type Database
 local Database = LibQuestieDB.Database
 
+-- This is used because during testing we might check how print it outputting
+-- We need something that no other addon uses.
+LibQuestieDB.ErrorPrint = print
+
 -- Event registration
--- Usage:
--- Register   an event: ReturnedObject["EVENT_NAME"] = func
--- Unregister an event: ReturnedObject["EVENT_NAME"] = nil
+-- Usage:<br>
+-- Register   an event: ReturnedObject["EVENT_NAME"] = func<br>
+-- Unregister an event: ReturnedObject["EVENT_NAME"] = nil<br>
 ---@return table<string, function>
 function LibQuestieDB.EventRegistrator()
   ---@type table<string, function>
@@ -27,11 +31,11 @@ function LibQuestieDB.EventRegistrator()
     end,
     __newindex = function(_, event, func)
       if RegisteredEvents[event] and func == nil then
-        print("Unregistering", event)
+        -- print("Unregistering", event)
         eventFrame:UnregisterEvent(event)
         RegisteredEvents[event] = nil
       else
-        print("Registering", event)
+        -- print("Registering", event)
         eventFrame:RegisterEvent(event)
         RegisteredEvents[event] = func
       end
@@ -58,39 +62,60 @@ function LibQuestieDB.CreateReadOnlyEmptyTable()
   })
 end
 
+---Get the color code for a given color name
+---@param color "red"|"gray"|"purple"|"blue"|"lightBlue"|"reputationBlue"|"yellow"|"orange"|"green"|"white"|"gold"|string
+---@return string
+function LibQuestieDB.GetColorCode(color)
+  if color == "red" then
+    return "|cFFff0000"
+  elseif color == "gray" then
+    return "|cFFa6a6a6"
+  elseif color == "purple" then
+    return "|cFFB900FF"
+  elseif color == "blue" then
+    return "|cB900FFFF"
+  elseif color == "lightBlue" then
+    return "|cB900FFFF"
+  elseif color == "reputationBlue" then
+    return "|cFF8080ff"
+  elseif color == "yellow" then
+    return "|cFFffff00"
+  elseif color == "orange" then
+    return "|cFFFF6F22"
+  elseif color == "green" then
+    return "|cFF00ff00"
+  elseif color == "white" then
+    return "|cFFffffff"
+  elseif color == "gold" then
+    return "|cFFffd100"
+  else
+    return "|cFF" .. color
+  end
+end
+
+---Colorize text with a specified color for UI display
+---@param color "red"|"gray"|"purple"|"blue"|"lightBlue"|"reputationBlue"|"yellow"|"orange"|"green"|"white"|"gold"|string
+---@param text string
+---@return string
+function LibQuestieDB.ColorizeText(color, text)
+  assert(type(color) == "string", "Color must be a string")
+  assert(type(text) == "string", "Text must be a string")
+  if Is_CLI then
+    return text -- CLI does not support these color codes
+  end
+
+  local c = LibQuestieDB.GetColorCode(color)
+
+  return c .. text .. "|r"
+end
+
 --- Colorize a string with a color code
 ---@param color "red"|"gray"|"purple"|"blue"|"lightBlue"|"reputationBlue"|"yellow"|"orange"|"green"|"white"|"gold"|string
 ---@param ... string
 function LibQuestieDB.ColorizePrint(color, ...)
   assert(type(color) == "string", "Color must be a string")
 
-  local c;
+  local c = LibQuestieDB.GetColorCode(color)
 
-  if color == "red" then
-    c = "|cFFff0000";
-  elseif color == "gray" then
-    c = "|cFFa6a6a6";
-  elseif color == "purple" then
-    c = "|cFFB900FF";
-  elseif color == "blue" then
-    c = "|cB900FFFF";
-  elseif color == "lightBlue" then
-    c = "|cB900FFFF";
-  elseif color == "reputationBlue" then
-    c = "|cFF8080ff";
-  elseif color == "yellow" then
-    c = "|cFFffff00";
-  elseif color == "orange" then
-    c = "|cFFFF6F22";
-  elseif color == "green" then
-    c = "|cFF00ff00";
-  elseif color == "white" then
-    c = "|cFFffffff";
-  elseif color == "gold" then
-    c = "|cFFffd100" -- this is the default game color
-  elseif not c then
-    c = "|cFF" .. color
-  end
-
-  print(c, ...)
+  print(c, ..., "|r")
 end

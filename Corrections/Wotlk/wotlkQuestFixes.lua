@@ -4,9 +4,10 @@ local LibQuestieDB = select(2, ...)
 
 --- Imports
 local Corrections = LibQuestieDB.Corrections
-local QuestMeta = Corrections.QuestMeta
-local ZoneMeta = Corrections.ZoneMeta
-local PlayerMeta = Corrections.PlayerMeta
+local Enum = LibQuestieDB.Enum
+local Meta = LibQuestieDB.Meta
+local QuestMeta = Meta.QuestMeta
+local ZoneMeta = Meta.ZoneMeta
 
 ---@class QuestFixesWotlk
 local QuestFixes = {}
@@ -20,7 +21,7 @@ C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("quest",
                                        "QuestFixes-Wotlk",
                                        QuestFixes.Load,
-                                       50)
+                                       Corrections.WotlkBaseStaticOrder + 50)
 
   -- Clear the table to save memory
   QuestFixes = wipe(QuestFixes)
@@ -48,22 +49,19 @@ end)
 -- https://github.com/Questie/Questie/wiki/Corrections
 
 function QuestFixes:Load()
-  ---@diagnostic disable-next-line: undefined-global
-  local Questie = Questie
-
   local questKeys = QuestMeta.questKeys
   local zoneIDs = ZoneMeta.zoneIDs
-  local raceIDs = PlayerMeta.raceKeys
-  local classIDs = PlayerMeta.classKeys
-  local sortKeys = QuestMeta.sortKeys
-  local profKeys = QuestMeta.professionKeys
-  local specKeys = QuestMeta.specializationKeys
-  local factionIDs = QuestMeta.factionIDs
-  local ICON_TYPE_EVENT = Questie and Questie.ICON_TYPE_EVENT or "ICON_TYPE_EVENT"
-  local ICON_TYPE_OBJECT = Questie and Questie.ICON_TYPE_OBJECT or "ICON_TYPE_OBJECT"
-  local ICON_TYPE_LOOT = Questie and Questie.ICON_TYPE_LOOT or "ICON_TYPE_LOOT"
-  local ICON_TYPE_SLAY = Questie and Questie.ICON_TYPE_SLAY or "ICON_TYPE_SLAY"
-  local ICON_TYPE_TALK = Questie and Questie.ICON_TYPE_TALK or "ICON_TYPE_TALK"
+  local raceIDs = Enum.raceKeys
+  local classIDs = Enum.classKeys
+  local sortKeys = Enum.sortKeys
+  local profKeys = Enum.professionKeys
+  local specKeys = Enum.specializationKeys
+  local factionIDs = Enum.factions
+  local ICON_TYPE_EVENT = Corrections.Icons.ICON_TYPE_EVENT
+  local ICON_TYPE_OBJECT = Corrections.Icons.ICON_TYPE_OBJECT
+  local ICON_TYPE_LOOT = Corrections.Icons.ICON_TYPE_LOOT
+  local ICON_TYPE_SLAY = Corrections.Icons.ICON_TYPE_SLAY
+  local ICON_TYPE_TALK = Corrections.Icons.ICON_TYPE_TALK
 
   return {
     [55]    = {

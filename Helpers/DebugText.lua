@@ -2,8 +2,15 @@
 ---@field DebugText DebugText
 local LibQuestieDB = select(2, ...)
 
+--*---- Create Module --------
+
 ---@class DebugText
 local DebugText = LibQuestieDB.DebugText
+
+--*---- Import Module --------
+
+local Database = LibQuestieDB.Database
+
 
 local debugTextString
 
@@ -17,7 +24,7 @@ local tostring, Round, select = tostring, Round, select
 local debugTable = {}
 
 local function writeDebug()
-  if LibQuestieDB.Database and (not Database.debugEnabled) and debugTextString then
+  if Database and (not Database.debugEnabled or not Database.debugPrintEnabled) and debugTextString then
     if debugTextString:IsShown() then
       debugTextString:SetVertexColor(1, 1, 1, 0)
       debugTextString:SetText("")
@@ -26,6 +33,13 @@ local function writeDebug()
       return
     end
   end
+
+
+  --- Debug text is not enabled
+  if Database and (not Database.debugEnabled or not Database.debugPrintEnabled) then
+    return
+  end
+
   if debugTextString == nil then
     debugTextString = UIParent:CreateFontString(nil, "OVERLAY", "QuestFont")
     debugTextString:SetWidth(500) --QuestLogObjectivesText default width = 275
@@ -46,7 +60,10 @@ local function writeDebug()
     debugTextString:SetText((debugTextString:GetText() or "") .. text .. "\n")
   end
 end
-C_Timer.NewTicker(0.5, writeDebug)
+-- Only run in non-CLI environments
+if not Is_CLI then
+  C_Timer.NewTicker(0.5, writeDebug)
+end
 
 
 --- Create a new DebugText object for a given namespace

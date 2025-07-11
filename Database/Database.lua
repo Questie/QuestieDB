@@ -3,6 +3,7 @@
 local LibQuestieDB = select(2, ...)
 
 --*---- Create Module --------
+
 ---@class Database
 local Database = LibQuestieDB.Database
 ---@type table<string, boolean>
@@ -19,13 +20,19 @@ local l10n = LibQuestieDB.l10n
 --? Debug settings
 ------------------------------
 
+-- ! Override debug settings from _dotenv.lua
+---@see DotEnv which exists in _dotenv.lua
+
+
 --? Some prints require both to be true some only debugPrintEnabled
---? debugEnabled: Enable more debug code and the FontString box prints
-Database.debugEnabled = true
---? debugPrintEnabled: Enable debug message box prints, if only enabled provides some basic information
-Database.debugPrintEnabled = true
+--? debugEnabled: Enable more debug code and prints
+Database.debugEnabled = false
+--? debugPrintEnabled: Enable debug message box prints, it only enabled provides some basic information
+Database.debugPrintEnabled = false
 --? debugLoadStaticEnabled: Enable loading of the static data into override tables (Useful for correction development)
-Database.debugLoadStaticEnabled = true
+Database.debugLoadStaticEnabled = false
+--? debugPrintNewIdsEnabled: Enable debug prints for new ids (Useful when doing corrections, but can get spammy for SoD or other dynamic heavy versions)
+Database.debugPrintNewIdsEnabled = false
 
 --* We want these to always be enabled in CLI
 Database.debugEnabled = Is_CLI and true or Database.debugEnabled
@@ -67,10 +74,19 @@ local assert        = assert
 
 function Database.Init()
   local startTotal = 0
-  print("-- Database Initialization --")
+  if Database.debugPrintEnabled or Database.debugEnabled then
+    LibQuestieDB.ColorizePrint("purple", "-- Database Initialization --")
+  end
+
+  -- ? We do not need to load the dynamic databases in the create CLI
+  -- ? But we do need to load the data during tests
+  local loadDynamic = not Is_CLI or Is_Test
+
   -- l10n
   debugprofilestart()
-  l10n.InitializeDynamic()
+  if loadDynamic then
+    l10n.InitializeDynamic()
+  end
   if Database.debugPrintEnabled or Database.debugEnabled then
     local msTime = debugprofilestop()
     LibQuestieDB.ColorizePrint("green", "l10n data database initialized:")
@@ -79,7 +95,9 @@ function Database.Init()
   end
   -- Quest
   debugprofilestart()
-  Quest.InitializeDynamic()
+  if loadDynamic then
+    Quest.InitializeDynamic()
+  end
   if Database.debugPrintEnabled or Database.debugEnabled then
     local msTime = debugprofilestop()
     LibQuestieDB.ColorizePrint("green", "Quest data database initialized:")
@@ -88,7 +106,9 @@ function Database.Init()
   end
   -- Object
   debugprofilestart()
-  Object.InitializeDynamic()
+  if loadDynamic then
+    Object.InitializeDynamic()
+  end
   if Database.debugPrintEnabled or Database.debugEnabled then
     local msTime = debugprofilestop()
     LibQuestieDB.ColorizePrint("green", "Object data database initialized:")
@@ -97,7 +117,9 @@ function Database.Init()
   end
   -- Npc
   debugprofilestart()
-  Npc.InitializeDynamic()
+  if loadDynamic then
+    Npc.InitializeDynamic()
+  end
   -- Npc.AddOverrideData(QuestieNPCFixes:LoadFactionFixes(), QuestieDB.npcKeys)
   if Database.debugPrintEnabled or Database.debugEnabled then
     local msTime = debugprofilestop()
@@ -107,7 +129,9 @@ function Database.Init()
   end
   -- Item
   debugprofilestart()
-  Item.InitializeDynamic()
+  if loadDynamic then
+    Item.InitializeDynamic()
+  end
   -- Item.AddOverrideData(QuestieItemFixes:LoadFactionFixes(), QuestieDB.itemKeys)
   if Database.debugPrintEnabled or Database.debugEnabled then
     local msTime = debugprofilestop()
@@ -119,6 +143,20 @@ function Database.Init()
     print("Total time elapsed:", format("%.4f", startTotal), "ms")
   end
   Database.Initialized = true
+
+  -- Trigger testing if we are in debug mode
+  if LibQuestieDB and LibQuestieDB.Database and
+      LibQuestieDB.Database.debugEnabled and
+      LibQuestieDB.Database.debugPrintEnabled then
+    C_Timer.After(2, function()
+      LibQuestieDB.ColorizePrint("yellow", "Running Tests")
+      LibQuestieDB.QuestieDB_Defer_RunTests(
+        function()
+          LibQuestieDB.QuestieDB_ThreadLib_RunTests()
+        end
+      )
+    end)
+  end
 end
 
 --? Fetch functions for the database
@@ -239,9 +277,9 @@ do
     for id in pairs(dataOverride) do
       if not allIdsSet[tostring(id)] then
         -- Print what we found
-        -- if not Database.debugLoadStaticEnabled and Database.debugPrintEnabled and Database.debugEnabled then
-        --   LibQuestieDB.ColorizePrint("reputationBlue", "  Adding new ID", id)
-        -- end
+        if Database.debugPrintNewIdsEnabled and Database.debugPrintEnabled then
+          LibQuestieDB.ColorizePrint("reputationBlue", "  Adding new ID", id)
+        end
         tInsert(newIds, id)
       end
     end

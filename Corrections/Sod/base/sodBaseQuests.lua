@@ -3,9 +3,10 @@ local LibQuestieDB = select(2, ...)
 
 --- Imports
 local Corrections = LibQuestieDB.Corrections
-local QuestMeta = Corrections.QuestMeta
-local PlayerMeta = Corrections.PlayerMeta
-local ZoneMeta = Corrections.ZoneMeta
+local Enum = LibQuestieDB.Enum
+local Meta = LibQuestieDB.Meta
+local QuestMeta = Meta.QuestMeta
+local ZoneMeta = Meta.ZoneMeta
 
 ---@class QuestBaseSod
 local QuestBase = {}
@@ -30,9 +31,9 @@ end)
 function QuestBase:LoadBaseQuests()
   local questKeys = QuestMeta.questKeys
   local zoneIDs = ZoneMeta.zoneIDs
-  local raceIDs = PlayerMeta.raceKeys
-  local classIDs = PlayerMeta.classKeys
-  local sortKeys = QuestMeta.sortKeys
+  local raceIDs = Enum.raceKeys
+  local classIDs = Enum.classKeys
+  local sortKeys = Enum.sortKeys
 
   return {
     [76156] = {

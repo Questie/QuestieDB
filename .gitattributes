@@ -3,6 +3,8 @@
 
 _data/*.html binary
 
+*.gitignore text eol=lf
+
 *.lua  text
 *.toc  text
 *.xml  text

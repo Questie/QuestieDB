@@ -6,19 +6,27 @@ local helpers = require(".db_helpers")
 local f = string.format
 local tInsert = table.insert
 
+-- Double Dagger
+local splitCharacter = "‡"
+
 local export = {}
 
 ---Remove the first 3 lines which checks the GetLocale() if it should load, we want to load all
----@param version string Expansions e.g. "Classic", "TBC", "Wotlk"
+---@param version string Expansions e.g. "Classic", "TBC", "Wotlk", etc
 ---@param type string Type of data e.g. "item", "npc", "object", "quest"
+---@return table<number, string>? files A table containing the names of files with the specified extension.
 function export.CleanFiles(version, type)
   local cleaned_files = {}
   local capitalized_type = helpers.capitalize(type)
-  -- Remove the first 3 lines in all .lua files in .database_generator\Questie-translations\Localization\lookups\Classic\lookupItems
+  -- Remove the first 3 lines in all .lua files in .database_generator\Questie-data\Localization\lookups\Classic\lookupItems
   local path = helpers.get_project_dir_path() ..
-      "/.database_generator/Questie-translations/Localization/lookups/" .. version .. "/lookup" .. capitalized_type .. "s/"
+      "/.database_generator/Questie-data/Localization/lookups/" .. version .. "/lookup" .. capitalized_type .. "s/"
   -- Get all .lua files in the directory
   local files = helpers.get_files_in_directory(path, "lua")
+  if not files then
+    print("No files found in directory: " .. path)
+    return nil
+  end
   for _, file in ipairs(files) do
     local file_path = path .. file
     local filedata = io.open(file_path, "r")
@@ -54,16 +62,17 @@ function export.CleanFiles(version, type)
         clean_filedata:write(combined_lines)
 
         clean_filedata:close()
-        print("Cleaned file: " .. filename)
         tInsert(cleaned_files, filename)
       end
     end
   end
+  print("  Cleaned " .. #files .. " " .. "LUA" .. " files in directory: " .. path)
+
 
   -- Change the XML file to point to the cleaned files
-  -- Example path: .database_generator\Questie-translations\Localization\lookups\Classic\lookupItems\lookupItems.xml
+  -- Example path: .database_generator\Questie-data\Localization\lookups\Classic\lookupItems\lookupItems.xml
   local xml_path = helpers.get_project_dir_path() ..
-      "/.database_generator/Questie-translations/Localization/lookups/" .. version .. "/lookup" .. capitalized_type .. "s/lookup" .. capitalized_type .. "s.xml"
+      "/.database_generator/Questie-data/Localization/lookups/" .. version .. "/lookup" .. capitalized_type .. "s/lookup" .. capitalized_type .. "s.xml"
   local xml_filedata = io.open(xml_path, "r")
   -- <Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
   --   <Script file="deDE.lua"/>
@@ -87,14 +96,14 @@ function export.CleanFiles(version, type)
     if clean_xml_filedata then
       clean_xml_filedata:write(data)
       clean_xml_filedata:close()
-      print("Cleaned XML file: " .. xml_path .. ".clean.xml")
+      print("  Cleaned 1 XML file: " .. xml_path .. ".clean.xml")
       tInsert(cleaned_files, filename)
     end
   end
   return cleaned_files
 end
 
----comment
+---Creates a new l10n object with the translations for the specified locales and entity types.
 ---@param locales L10nLocales The locales to be dumped
 ---@param entityTypes table<string> The entity types to be dumped (e.g., "Item", "Npc", "Object", "Quest")
 ---@param l10nObject table The full l10n object containing all the lookups
@@ -106,7 +115,7 @@ function export.GenerateL10nTranslation(locales, entityTypes, l10nObject)
   for _, entityType in ipairs(entityTypes) do
     local lEntityType = entityType:lower()
     local lookupKey = lEntityType .. "Lookup"
-    print("Dumping: " .. lookupKey)
+
     local lookup = l10nObject[lookupKey]
     for _, localeKey in ipairs(locales) do
       local allLocaleData = type(lookup[localeKey]) == "function" and lookup[localeKey]() or lookup[localeKey]
@@ -124,7 +133,6 @@ function export.GenerateL10nTranslation(locales, entityTypes, l10nObject)
         newL10nObject[id][lEntityType][localeKey] = localeData
       end
     end
-    print("Done: " .. lookupKey)
   end
 
   return newL10nObject
@@ -166,8 +174,20 @@ local function joinAndEscape(tbl, separator, emptyValue)
       if type(val) == "table" then
         val = joinAndEscape(val, "|n", "")
       elseif type(val) == "string" then
-        -- Escape single quotes
-        val = string.gsub(val, "'", "\\'")
+        -- Escape characters that are special in Lua strings or problematic for other formats.
+        -- Backslashes and single quotes are escaped for Lua string syntax.
+        -- Control characters are replaced with a textual representation (e.g., the string "\\5")
+        -- to avoid writing raw control bytes, which can be invalid in other contexts (e.g. HTML/XML).
+        -- This is UTF-8 safe as it only operates on single-byte ASCII control characters.
+        val = string.gsub(val, "['\\%z\1-\8\11\12\14-\31\127]", function(c)
+          if c == "'" then
+            return "\\'"
+          elseif c == "\\" then
+            return "\\\\"
+          else
+            return string.format("\\\\%d", string.byte(c))
+          end
+        end)
       end
       -- Replace newlines specifically for quest text as per python script logic
       val = string.gsub(val, "\r", "")
@@ -199,7 +219,7 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
 
   local localeCount = #L10nMeta.locales
   -- Create the string representing an empty value for comparison
-  local emptyValue = string.rep("‡", #L10nMeta.locales - 1)
+  local emptyValue = string.rep(splitCharacter, #L10nMeta.locales - 1)
 
   -- Get entity types sorted by their index in L10nMeta.l10nKeys
   local sortedEntityTypes = {}
@@ -238,7 +258,7 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
 
         if entityType == "item" or entityType == "object" then
           tInsert(outputLines, L10nMeta.lua_tableDumpFuncs[entityType](
-            joinAndEscape(translations, "‡", emptyValue)
+            joinAndEscape(translations, splitCharacter, emptyValue)
           ))
         elseif entityType == "npc" then
           -- translations is a table of {name, subname} pairs
@@ -251,8 +271,8 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
           end
           tInsert(outputLines, L10nMeta.lua_tableDumpFuncs[entityType](
             {
-              joinAndEscape(names, "‡", emptyValue),
-              joinAndEscape(subnames, "‡", emptyValue),
+              joinAndEscape(names, splitCharacter, emptyValue),
+              joinAndEscape(subnames, splitCharacter, emptyValue),
             }))
         elseif entityType == "quest" then
           -- translations is a table of {title, description, text} triples
@@ -267,14 +287,14 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
           end
           tInsert(outputLines, L10nMeta.lua_tableDumpFuncs[entityType](
             {
-              joinAndEscape(titles, "‡", emptyValue),
-              joinAndEscape(descriptions, "‡", emptyValue),
-              joinAndEscape(texts, "‡", emptyValue),
+              joinAndEscape(titles, splitCharacter, emptyValue),
+              joinAndEscape(descriptions, splitCharacter, emptyValue),
+              joinAndEscape(texts, splitCharacter, emptyValue),
             }))
         end
       else
-        -- If data for this entity type doesn't exist for this ID, add nil placeholder
-        tInsert(outputLines, f("%snil,\n", indentation))
+        -- If data for this entity type doesn't exist for this ID, add nil value
+        tInsert(outputLines, f("%s%s,\n", indentation, "nil"))
       end
     end
     -- Remove trailing comma from the last element within the ID's table

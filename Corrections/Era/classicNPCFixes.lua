@@ -3,8 +3,10 @@ local LibQuestieDB = select(2, ...)
 
 --- Imports
 local Corrections = LibQuestieDB.Corrections
-local NpcMeta = Corrections.NpcMeta
-local ZoneMeta = Corrections.ZoneMeta
+local Enum = LibQuestieDB.Enum
+local Meta = LibQuestieDB.Meta
+local NpcMeta = Meta.NpcMeta
+local ZoneMeta = Meta.ZoneMeta
 
 ---@class NpcFixesEra
 local NpcFixes = {}
@@ -14,12 +16,12 @@ C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("npc",
                                        "NpcFixes-Era",
                                        NpcFixes.Load,
-                                       10)
+                                       Corrections.EraBaseStaticOrder + 10)
 
   Corrections.RegisterCorrectionDynamic("npc",
                                         "NpcFixes-Faction-Era",
                                         NpcFixes.LoadFactionFixes,
-                                        20)
+                                        Corrections.EraBaseDynamicOrder + 20)
 
   -- Clear the table to save memory
   NpcFixes = wipe(NpcFixes)
@@ -31,7 +33,7 @@ end)
 function NpcFixes:Load()
   local npcKeys = NpcMeta.npcKeys
   local zoneIDs = ZoneMeta.zoneIDs
-  local npcFlags = NpcMeta.npcFlags
+  local npcFlags = Enum.npcFlags
   -- local waypointPresets = NpcMeta.waypointPresets
 
   return {

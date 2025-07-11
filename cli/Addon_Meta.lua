@@ -26,7 +26,8 @@ CLI_addonName = "QuestieDB"
 CLI_addonTable = {}
 
 -- "Client" data
-CLI_Locale = "enUS"
+CLI_Locale = "deDE"
+-- CLI_Locale = "enUS"
 
 -- "Player" data
 CLI_PlayerLevel = 60
@@ -45,6 +46,7 @@ do
   local initByVersion = {
     ["Era"] = function()
       ---@type LibQuestieDB
+      ---@diagnostic disable-next-line: missing-fields
       LibQuestieDBTable = {}
 
       -- When creating the static database, we load the QuestieDB which writes to this global, so we reset it here
@@ -68,7 +70,7 @@ do
 
       WOW_PROJECT_ID = WOW_PROJECT_CLASSIC
 
-      CLI_Helpers.loadTOC("QuestieDB-Classic.toc")
+      CLI_Helpers.loadTOC("QuestieDB-Vanilla.toc")
 
       return LibQuestieDBTable
     end,
@@ -99,7 +101,7 @@ do
 
       WOW_PROJECT_ID = WOW_PROJECT_CLASSIC
 
-      CLI_Helpers.loadTOC("QuestieDB-Classic.toc")
+      CLI_Helpers.loadTOC("QuestieDB-Vanilla.toc")
 
       return LibQuestieDBTable
     end,
@@ -175,12 +177,39 @@ do
 
       return LibQuestieDBTable
     end,
+    ["Mop"] = function()
+      ---@type LibQuestieDB
+      ---@diagnostic disable-next-line: missing-fields
+      LibQuestieDBTable = {}
+
+      -- When creating the static database, we load the QuestieDB which writes to this global, so we reset it here
+      QuestieDB = {}
+      -- Same here, the old Questie code expects this.
+      QuestieLoader = {
+        ImportModule = function()
+          return QuestieDB
+        end,
+      }
+
+      GetBuildInfo = function()
+        return "5.0.5", "16057", "Oct 2012", 50500
+      end
+
+      WOW_PROJECT_ID = WOW_PROJECT_MISTS_CLASSIC
+
+      CLI_Helpers.loadTOC("QuestieDB-Mists.toc")
+
+      return LibQuestieDBTable
+    end,
   }
 
   --- (Re-)Initializes the global variables for the addon
-  ---@param version Expansions|string e.g. "Classic", "TBC", "Wotlk"
+  ---@param version ExpansionStrings|string e.g. "Classic", "TBC", "Wotlk"
   ---@return LibQuestieDB
   function AddonInitializeVersion(version)
+    -- Cancel any potential timers that might be running
+    C_Timer.CancelAllTimers()
+
     local lowerVersion = version:lower()
     local capitalizedVersion = lowerVersion:gsub("^%l", string.upper)
     assert(initByVersion[capitalizedVersion], "Invalid version: " .. version)

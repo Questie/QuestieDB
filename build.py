@@ -7,17 +7,16 @@ import shutil
 import sys
 import json
 
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".github"))
+from version_utils import get_versions_from_toc, validate_same_version, toc_files  # type: ignore
+
 
 base_build_dir = "./.build"
 
-toc_files = {
-  "classic": "QuestieDB-Classic.toc",
-  "tbc": "QuestieDB-BCC.toc",
-  "wotlk": "QuestieDB-WOTLKC.toc",
-  "cata": "QuestieDB-Cata.toc",
-}
-
 disallowed_folders = [
+  ".ai_lua",
+  ".ai_py",
+  ".ai_scripts",
   "cli",
   ".wowhead",
   ".translator",
@@ -25,7 +24,9 @@ disallowed_folders = [
   ".vscode",
   ".generate_database",
   ".database_generator",
+  ".generate",  # General generate folders
   ".tests",
+  ".shit",
   # Python venv
   "venv",
   # Github actions
@@ -35,6 +36,15 @@ disallowed_folders = [
   "Perfy",
   # Stuff
   "WoW-API",
+]
+
+disallowed_files_exact = [
+  "_dotenv.lua",
+]
+
+remove_lines_from_toc = [
+  "_dotenv.lua",  # Remove dotenv file from toc
+  "# Load Environment",
 ]
 
 
@@ -55,6 +65,8 @@ def copy_files(src, dest):
       continue
 
     for file in files:
+      if file in disallowed_files_exact:  # Skip disallowed files
+        continue
       if file.endswith(".lua") or file.endswith(".html") or file.endswith(".toc") or file.endswith(".xml") or file.endswith("LICENSE") or file.endswith("README.md"):
         # print(file)
         filepath = os.path.join(root, file).replace("\\", "/")
@@ -77,60 +89,22 @@ def copy_files(src, dest):
   return files_copied
 
 
-def get_versions_from_toc(path="."):
-  versions = {}
-  for key, filename in toc_files.items():
-    version = None
-    filepath = os.path.join(path, filename)
-    try:
-      with open(filepath, "r") as f:
-        for line in f:
-          if line.startswith("## Version:"):
-            version = line.split(":", 1)[1].strip()
-            break  # Found the version, no need to read further
-    except FileNotFoundError:
-      print(f"Warning: TOC file not found at {filepath}")
-      # Keep version as None
-    except Exception as e:
-      print(f"Warning: Error reading {filepath}: {e}")
-      # Keep version as None
-    versions[key] = version
-  return versions
-
-
-def validate_same_version(versions):
-  """Checks if all version values in the dictionary are the same."""
-  if not versions:
-    return True  # Or False, depending on desired behavior for empty input
-
-  # Get all version values, filtering out None in case a file is missing or lacks the version line
-  version_values = [v for v in versions.values() if v is not None]
-
-  # If there are no valid versions or only one, they are considered the same
-  if len(version_values) <= 1:
-    return True
-
-  # Check if all valid version values are identical by comparing them to the first one
-  first_version = version_values[0]
-  return all(v == first_version for v in version_values)
-
-
-def get_versionstring_from_toc():
-  versions = get_versions_from_toc()
-  if validate_same_version(versions):
-    return versions["classic"]
-  else:
-    raise Exception("Version mismatch")
-
-
 def export_version_github_actions(versions):
   if "GITHUB_ACTIONS" in os.environ and os.environ["GITHUB_ACTIONS"] == "true":
     print("::set-output name=toc_version::" + get_versionstring_from_toc())
-    versions = get_versions_from_toc()
-    split_version = versions["classic"].split(".")
+    versions = get_versions_from_toc(".")
+    split_version = versions["vanilla"].split(".")
     print("::set-output name=major_toc_version::" + split_version[0])
     print("::set-output name=minor_toc_version::" + split_version[1])
     print("::set-output name=patch_toc_version::" + split_version[2])
+
+
+def get_versionstring_from_toc():
+  versions = get_versions_from_toc(".")
+  if validate_same_version(versions):
+    return versions["vanilla"]
+  else:
+    raise Exception("Version mismatch")
 
 
 def main():
@@ -163,31 +137,54 @@ def main():
     print(f"Copying files to build directory '{build_dir}'...")
     copy_files(".", build_dir)
     # If we are in github actions we output the toc version
-    versions = get_versions_from_toc()
+    versions = get_versions_from_toc(".")
     export_version_github_actions(versions)
 
+    # Always build toc_files_path and short_commit_hash
+    toc_files_path = [os.path.join(build_dir, filename) for _, filename in toc_files.items()]
+    short_commit_hash = ""
     if "GITHUB_SHA" in os.environ and os.environ["GITHUB_SHA"] and len(os.environ["GITHUB_SHA"]) >= 7:
-      short_commit_hash = os.environ["GITHUB_SHA"][:7]
-      toc_files_path = []
-      for _, filename in toc_files.items():
-        toc_files_path.append(os.path.join(build_dir, filename))
-      # Check if toc files exist
-      for toc_file in toc_files_path:
-        print(f"Adding sha {short_commit_hash} commit hash to toc file: {toc_file}")
-        with open(toc_file, "r") as f:
-          full_file = f.readlines()
-        with open(toc_file, "w") as f:
-          for line in full_file:
-            if "## Version:" in line:
-              version = line.split(":")[1].strip()
-              f.write(f"## Version: {version}-{short_commit_hash}\n")
+      short_commit_hash = f"-{os.environ['GITHUB_SHA'][:7]}"
+
+    # If short_commit_hash is not empty, we will update the toc files with the current commit hash
+    if short_commit_hash == "":
+      # Use git to get the current commit hash
+      try:
+        import subprocess
+
+        short_commit_hash_raw = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"]).strip().decode("utf-8")
+        short_commit_hash = f"-{short_commit_hash_raw}"
+        print("Updating toc files with commit hash:", short_commit_hash)
+      except Exception as e:
+        print(f"Error getting git commit hash: {e}")
+        short_commit_hash = ""
+
+    for toc_file in toc_files_path:
+      if not os.path.exists(toc_file):
+        print(f"Warning: TOC file {toc_file} not found in build directory. Skipping.")
+        continue
+      print(f"Processing toc file{' with sha' if short_commit_hash else ' (no commit hash)'}: {toc_file}")
+      with open(toc_file, "r") as f:
+        full_file = f.readlines()
+      with open(toc_file, "w") as f:
+        for line in full_file:
+          # Remove lines from toc, for example `_dotenv.lua`
+          if line.strip() in remove_lines_from_toc:
+            print(f"  Removing line: {line.strip()}")
+            continue
+          if "## Version:" in line:
+            version = line.split(":")[1].strip()
+            if short_commit_hash:
+              print(f"  Updating version with sha: {version}{short_commit_hash}")
+              f.write(f"## Version: {version}{short_commit_hash}\n")
             else:
               f.write(line)
-
+          else:
+            f.write(line)
     print("Done")
   elif command == "version":
     # If we are in github actions we output the toc version
-    versions = get_versions_from_toc()
+    versions = get_versions_from_toc(".")
     export_version_github_actions(versions)
 
     print(json.dumps(get_versionstring_from_toc(), ensure_ascii=False))

@@ -1,5 +1,6 @@
 _data
 Questie-translations
+Questie-data
 *.json
 *.lua-table
 *.txt

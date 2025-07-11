@@ -3,8 +3,10 @@ local LibQuestieDB = select(2, ...)
 
 --- Imports
 local Corrections = LibQuestieDB.Corrections
-local NpcMeta = Corrections.NpcMeta
-local ZoneMeta = Corrections.ZoneMeta
+local Enum = LibQuestieDB.Enum
+local Meta = LibQuestieDB.Meta
+local NpcMeta = Meta.NpcMeta
+local ZoneMeta = Meta.ZoneMeta
 
 ---@class NpcFixesTbc
 local NpcFixes = {}
@@ -14,12 +16,12 @@ C_Timer.After(0, function()
   Corrections.RegisterCorrectionStatic("npc",
                                        "NpcFixes-Tbc",
                                        NpcFixes.Load,
-                                       30)
+                                       Corrections.TbcBaseStaticOrder + 30)
 
   Corrections.RegisterCorrectionDynamic("npc",
                                         "NpcFixes-Faction-Tbc",
                                         NpcFixes.LoadFactionFixes,
-                                        40)
+                                        Corrections.TbcBaseDynamicOrder + 40)
 
   -- Clear the table to save memory
   NpcFixes = wipe(NpcFixes)
@@ -30,7 +32,7 @@ end)
 function NpcFixes:Load()
   local npcKeys = NpcMeta.npcKeys
   local zoneIDs = ZoneMeta.zoneIDs
-  local npcFlags = NpcMeta.npcFlags
+  local npcFlags = Enum.npcFlags
 
   return {
     [331] = {

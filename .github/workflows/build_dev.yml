@@ -62,6 +62,7 @@ jobs:
         luarocks install luafilesystem
         luarocks install luasocket
         luarocks install luasec
+        luarocks install luv
 
     - name: Generate HTML
       run: sh ./.database_generator/generate_database.sh ./.lua/bin/lua
@@ -78,7 +79,18 @@ jobs:
     - name: Run Cata Tests
       run: lua ./.tests/runTests.lua Cata
 
+    - name: Run Mop Tests
+      run: lua ./.tests/runTests.lua Mop
+
     # Create the QuestieDB build, will output toc_version
+    - name: Check version is higher than latest release
+      run: |
+        pip install requests
+        python .github/check_version.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+
     - name: Build QuestieDB
       id: build
       run: python build.py build QuestieDB
