@@ -5,9 +5,6 @@ local LibQuestieDB = select(2, ...)
 ---@class Corrections
 local Corrections = LibQuestieDB.Corrections
 
---- Imports
-Database = LibQuestieDB.Database
-
 -- Localized functions
 local f = string.format
 local tSort = table.sort
