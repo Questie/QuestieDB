@@ -28,7 +28,7 @@ local function handleThreadError(timer, err, tracebackLevel)
         tostring(err) ..
         -- If debug is enabled, append the traceback
         (debug and ("\n" .. debug.traceback(timer.errorMessage or err, tracebackLevel or 1)) or "")
-    print(fullError)
+    LibQuestieDB.print(fullError)
     error(fullError)
   end
 end

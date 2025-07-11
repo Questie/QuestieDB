@@ -85,11 +85,13 @@ end
 local function setup_test_environment()
   mock_print_messages = {}
   test_start_time = GetTimePreciseSec() -- Reset timer for each test
-  _G.print = mock_print                 -- Mock global print
+  -- _G.print = mock_print                 -- Mock global print
+  LibQuestieDB.print = mock_print
 end
 
 local function restore_test_environment()
-  _G.print = original_print
+  -- _G.print = original_print
+  LibQuestieDB.print = original_print
 end
 
 --------------------------------------------------------------------------------
@@ -191,7 +193,7 @@ tests["6. Error Handling: Error in threaded function is handled"] = function(don
   ---@diagnostic disable-next-line: duplicate-set-field
   _G.error = function(message)
     if string.find(message, "Test error in thread") then
-      print("Test error in thread")
+      LibQuestieDB.print("Test error in thread")
       return
     else
       original_error_fn(message)
@@ -505,16 +507,20 @@ end
 local test_names_ordered = {}
 
 ---@param index number
-local function run_next_test(index)
+---@param completed_callback fun()
+local function run_next_test(index, completed_callback)
   if index > #test_names_ordered then
-    original_print(string.format("  All %d ThreadLib tests completed.", #test_names_ordered))
-    original_print(string.format("  Assertions: %d made, %d failed.", assertions_made, assertions_failed))
+    LibQuestieDB.ColorizePrint("green", string.format("   All %d ThreadLib tests completed.", #test_names_ordered))
+    LibQuestieDB.ColorizePrint("yellow", string.format("   Assertions: %d made, %d failed.", assertions_made, assertions_failed))
     if assertions_failed > 0 then
-      original_print(string.format("  WARNING: %d assertion(s) FAILED!", assertions_failed))
+      LibQuestieDB.ColorizePrint("red", string.format("   WARNING: %d assertion(s) FAILED!", assertions_failed))
     else
-      original_print("  All ThreadLib tests passed successfully!")
+      LibQuestieDB.ColorizePrint("green", "  All ThreadLib tests passed successfully!")
     end
     restore_test_environment()
+    if completed_callback then
+      completed_callback()
+    end
     return
   end
 
@@ -527,27 +533,27 @@ local function run_next_test(index)
 
     local success, err = pcall(test_func, function()
       -- This is the done_callback
-      original_C_Timer_After(0, function() run_next_test(index + 1) end)
+      original_C_Timer_After(0, function() run_next_test(index + 1, completed_callback) end)
     end)
     if not success then
-      original_print(string.format("ERROR EXECUTING TEST '%s': %s", current_test_name, tostring(err)))
+      LibQuestieDB.ColorizePrint("red", string.format("ERROR EXECUTING TEST '%s': %s", current_test_name, tostring(err)))
       assertions_failed = assertions_failed + 1
-      original_C_Timer_After(0, function() run_next_test(index + 1) end)
+      original_C_Timer_After(0, function() run_next_test(index + 1, completed_callback) end)
     end
   else
-    original_print(string.format("SKIPPING test '%s': Not a function.", current_test_name))
-    original_C_Timer_After(0, function() run_next_test(index + 1) end)
+    LibQuestieDB.ColorizePrint("yellow", string.format("SKIPPING test '%s': Not a function.", current_test_name))
+    original_C_Timer_After(0, function() run_next_test(index + 1, completed_callback) end)
   end
 end
 
 -- Global function to trigger tests
-function LibQuestieDB.QuestieDB_ThreadLib_RunTests()
+function LibQuestieDB.QuestieDB_ThreadLib_RunTests(completed_callback)
   if not LibQuestieDB.ThreadLib or not LibQuestieDB.ThreadLib.Thread then
-    original_print("ThreadLib not found. Ensure ThreadLib.lua is loaded before this test script.")
+    LibQuestieDB.ColorizePrint("red", "ThreadLib not found. Ensure ThreadLib.lua is loaded before this test script.")
     return
   end
 
-  original_print("Starting QuestieDB ThreadLib Test Suite...")
+  LibQuestieDB.ColorizePrint("lightBlue", "Starting QuestieDB ThreadLib Test Suite...")
   assertions_made = 0
   assertions_failed = 0
 
@@ -559,14 +565,5 @@ function LibQuestieDB.QuestieDB_ThreadLib_RunTests()
   table.sort(temp_keys)
   test_names_ordered = temp_keys
 
-  run_next_test(1)
+  run_next_test(1, completed_callback)
 end
-
--- Auto-run tests when database is ready (similar to other test files)
-C_Timer.After(10, function()
-  if LibQuestieDB and LibQuestieDB.Database and
-      LibQuestieDB.Database.debugEnabled and
-      LibQuestieDB.Database.debugPrintEnabled then
-    LibQuestieDB.QuestieDB_ThreadLib_RunTests()
-  end
-end)

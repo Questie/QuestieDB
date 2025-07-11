@@ -143,6 +143,20 @@ function Database.Init()
     print("Total time elapsed:", format("%.4f", startTotal), "ms")
   end
   Database.Initialized = true
+
+  -- Trigger testing if we are in debug mode
+  if LibQuestieDB and LibQuestieDB.Database and
+      LibQuestieDB.Database.debugEnabled and
+      LibQuestieDB.Database.debugPrintEnabled then
+    C_Timer.After(2, function()
+      LibQuestieDB.ColorizePrint("yellow", "Running Tests")
+      LibQuestieDB.QuestieDB_Defer_RunTests(
+        function()
+          LibQuestieDB.QuestieDB_ThreadLib_RunTests()
+        end
+      )
+    end)
+  end
 end
 
 --? Fetch functions for the database

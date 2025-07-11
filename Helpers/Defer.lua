@@ -25,7 +25,7 @@ do
       local success, err = pcall(q_to_process[i])
       if not success then
         -- You can customize error handling, e.g., log to a specific addon channel
-        print("Error in deferred function: " .. tostring(err))
+        LibQuestieDB.print("Error in deferred function: " .. tostring(err))
       end
     end
 
@@ -48,7 +48,7 @@ do
   ---@param func fun() The function to execute. It should take no arguments.
   Defer = function(func)
     if type(func) ~= "function" then
-      print("Defer Error: Argument must be a function. Got type: " .. type(func))
+      LibQuestieDB.print("Defer Error: Argument must be a function. Got type: " .. type(func))
       return
     end
 

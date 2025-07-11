@@ -84,11 +84,13 @@ end
 
 local function setup_test_environment()
   mock_print_messages = {}
-  _G.print = mock_print -- Mock global print
+  -- _G.print = mock_print -- Mock global print
+  LibQuestieDB.print = mock_print -- Mock LibQuestieDB print
 end
 
 local function restore_test_environment()
-  _G.print = original_print
+  -- _G.print = original_print
+  LibQuestieDB.print = original_print -- Restore original print
 end
 
 --------------------------------------------------------------------------------
@@ -101,7 +103,7 @@ tests["1. Basic Deferral: Single function executes"] = function(done_callback)
     executed = true
   end)
 
-  original_C_Timer_After(0.05, function() -- Wait a bit for the deferred function
+  original_C_Timer_After(0.1, function() -- Wait a bit for the deferred function
     assert_true(executed, "Deferred function should have executed")
     done_callback()
   end)
@@ -114,7 +116,7 @@ tests["2. Order of Execution (FIFO)"] = function(done_callback)
   Defer(function() table.insert(execution_order, 2) end)
   Defer(function() table.insert(execution_order, 3) end)
 
-  original_C_Timer_After(0.05, function()
+  original_C_Timer_After(0.1, function()
     assert_equal(#execution_order, 3, "Should be 3 functions executed")
     if #execution_order == 3 then
       assert_equal(execution_order[1], 1, "First function executed first")
@@ -130,7 +132,7 @@ tests["3. Argument Validation: Non-function argument (string)"] = function(done_
   ---@diagnostic disable-next-line: param-type-mismatch
   Defer("not a function")
 
-  original_C_Timer_After(0.05, function()
+  original_C_Timer_After(0.1, function()
     assert_equal(#mock_print_messages, 1, "Should be one print message for error")
     if #mock_print_messages > 0 then
       assert_true(string.find(mock_print_messages[1], "Defer Error: Argument must be a function. Got type: string") ~= nil,
@@ -145,7 +147,7 @@ tests["4. Argument Validation: Nil argument"] = function(done_callback)
   ---@diagnostic disable-next-line: param-type-mismatch
   Defer(nil) --[[@as any]]
 
-  original_C_Timer_After(0.05, function()
+  original_C_Timer_After(0.1, function()
     assert_equal(#mock_print_messages, 1, "Should be one print message for nil error")
     if #mock_print_messages > 0 then
       assert_true(string.find(mock_print_messages[1], "Defer Error: Argument must be a function. Got type: nil") ~= nil,
@@ -223,7 +225,7 @@ tests["7. No arguments to deferred function"] = function(done_callback)
   end
   Defer(my_func_no_args)
 
-  original_C_Timer_After(0.05, function()
+  original_C_Timer_After(0.1, function()
     assert_true(executed, "Function with no args should execute")
     done_callback()
   end)
@@ -362,18 +364,20 @@ end
 local test_names_ordered = {}
 
 ---@param index number
-local function run_next_test(index)
+---@param completed_callback fun()
+local function run_next_test(index, completed_callback)
   if index > #test_names_ordered then
-    -- original_print("----------------------------------------------------")
-    original_print(string.format("  All %d tests completed.", #test_names_ordered))
-    original_print(string.format("  Assertions: %d made, %d failed.", assertions_made, assertions_failed))
-    -- original_print("----------------------------------------------------")
+    LibQuestieDB.ColorizePrint("green", string.format("   All %d tests completed.", #test_names_ordered))
+    LibQuestieDB.ColorizePrint("yellow", string.format("   Assertions: %d made, %d failed.", assertions_made, assertions_failed))
     if assertions_failed > 0 then
-      original_print(string.format("  WARNING: %d assertion(s) FAILED!", assertions_failed))
-      -- else
-      --   original_print("All tests passed successfully!")
+      LibQuestieDB.ColorizePrint("red", string.format("   WARNING: %d assertion(s) FAILED!", assertions_failed))
+    else
+      LibQuestieDB.ColorizePrint("green", "  All Defer tests passed successfully!")
     end
     restore_test_environment()
+    if completed_callback then
+      completed_callback()
+    end
     return
   end
 
@@ -386,27 +390,27 @@ local function run_next_test(index)
     mock_print_messages = {}
     local success, err = pcall(test_func, function()
       -- This is the done_callback
-      original_C_Timer_After(0, function() run_next_test(index + 1) end) -- Schedule next test on next frame
+      original_C_Timer_After(0, function() run_next_test(index + 1, completed_callback) end) -- Schedule next test on next frame
     end)
     if not success then
-      original_print(string.format("ERROR EXECUTING TEST '%s': %s", current_test_name, tostring(err)))
-      assertions_failed = assertions_failed + 1                          -- Count test execution error as a failure
-      original_C_Timer_After(0, function() run_next_test(index + 1) end) -- Continue to next test
+      LibQuestieDB.ColorizePrint("red", string.format("ERROR EXECUTING TEST '%s': %s", current_test_name, tostring(err)))
+      assertions_failed = assertions_failed + 1                                              -- Count test execution error as a failure
+      original_C_Timer_After(0, function() run_next_test(index + 1, completed_callback) end) -- Continue to next test
     end
   else
-    original_print(string.format("SKIPPING test '%s': Not a function.", current_test_name))
-    original_C_Timer_After(0, function() run_next_test(index + 1) end)
+    LibQuestieDB.ColorizePrint("yellow", string.format("SKIPPING test '%s': Not a function.", current_test_name))
+    original_C_Timer_After(0, function() run_next_test(index + 1, completed_callback) end)
   end
 end
 
 -- Global function to trigger tests
-function LibQuestieDB.QuestieDB_Defer_RunTests()
+function LibQuestieDB.QuestieDB_Defer_RunTests(completed_callback)
   if not _G.Defer then
-    original_print("Defer function not found. Ensure Defer.lua is loaded before this test script.")
+    LibQuestieDB.ColorizePrint("red", "Defer function not found. Ensure Defer.lua is loaded before this test script.")
     return
   end
 
-  original_print("Starting QuestieDB Defer Test Suite...")
+  LibQuestieDB.ColorizePrint("lightBlue", "Starting QuestieDB Defer Test Suite...")
   assertions_made = 0
   assertions_failed = 0
 
@@ -420,14 +424,5 @@ function LibQuestieDB.QuestieDB_Defer_RunTests()
   table.sort(temp_keys)
   test_names_ordered = temp_keys
 
-  run_next_test(1)
+  run_next_test(1, completed_callback)
 end
-
-C_Timer.After(1, function()
-  if LibQuestieDB and LibQuestieDB.Database and
-      LibQuestieDB.Database.debugEnabled and
-      LibQuestieDB.Database.debugPrintEnabled then
-    -- TODO: Add a settings panel where all the test outputs are printed to.
-    LibQuestieDB.QuestieDB_Defer_RunTests()
-  end
-end)
