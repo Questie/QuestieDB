@@ -6,5 +6,6 @@
   <Script file="_s.lua"/>
   <Script file="DebugText.lua"/>
   <Script file="ThreadLib.lua"/>
+  <Script file="ThreadLib.test.lua"/>
   <Script file="Helpers.lua"/>
 </Ui>
