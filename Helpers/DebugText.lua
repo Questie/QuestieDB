@@ -2,8 +2,15 @@
 ---@field DebugText DebugText
 local LibQuestieDB = select(2, ...)
 
+--*---- Create Module --------
+
 ---@class DebugText
 local DebugText = LibQuestieDB.DebugText
+
+--*---- Import Module --------
+
+local Database = LibQuestieDB.Database
+
 
 local debugTextString
 
@@ -17,7 +24,7 @@ local tostring, Round, select = tostring, Round, select
 local debugTable = {}
 
 local function writeDebug()
-  if LibQuestieDB.Database and (not Database.debugEnabled or not Database.debugPrintEnabled) and debugTextString then
+  if Database and (not Database.debugEnabled or not Database.debugPrintEnabled) and debugTextString then
     if debugTextString:IsShown() then
       debugTextString:SetVertexColor(1, 1, 1, 0)
       debugTextString:SetText("")
@@ -27,8 +34,9 @@ local function writeDebug()
     end
   end
 
+
   --- Debug text is not enabled
-  if LibQuestieDB.Database and (not Database.debugEnabled or not Database.debugPrintEnabled) then
+  if Database and (not Database.debugEnabled or not Database.debugPrintEnabled) then
     return
   end
 
