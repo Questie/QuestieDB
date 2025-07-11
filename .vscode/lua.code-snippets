@@ -12,74 +12,62 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-  // Import Module
-  // --*---- Import Module --------
-  // ---@class Enum
-  // local Enum = LibQuestieDB.Enum
-  "Import Module-Comment": {
-    "prefix": "import-comment",
-    "body": [
-      "--*---- Import Module --------",
-      "",
-    ],
-    "description": "Import Module"
-  },
-  "Import Module": {
-    "prefix": "import-module",
-    "body": [
-      "local ${1/(.*)/${1:/capitalize}/} = LibQuestieDB.${1/(.*)/${1:/capitalize}/}",
-      "",
-    ],
-    "description": "Import Module"
-  },
-  "Extend Module": {
-    "prefix": "extend-module",
-    "body": [
-      "--*---- Extend Module --------",
-      "",
-      "---@class ${1/(.*)/${1:/capitalize}/}",
-      "local ${1/(.*)/${1:/capitalize}/} = LibQuestieDB.${1/(.*)/${1:/capitalize}/}",
-      "",
-    ],
-    "description": "Extend Module"
-  },
-  // Create Module (Top of the file)
-  // ---@class LibQuestieDB
-  // ---@field ExtraTranslation ExtraTranslation
-  // local LibQuestieDB     = select(2, ...)
-  // --*---- Create Module --------
-  // ---@class ExtraTranslation
-  // local ExtraTranslation = LibQuestieDB.ExtraTranslation
-  "Create Module": {
-    "prefix": "create-module",
-    "body": [
-      // "--*--- Addon Namespace -------",
-      "---@class LibQuestieDB",
-      "---@field ${1/(.*)/${1:/capitalize}/} ${1/(.*)/${1:/capitalize}/}",
-      "local LibQuestieDB = select(2, ...)",
-      "",
-      "--*---- Create Module --------",
-      "",
-      "---@class ${1/(.*)/${1:/capitalize}/}",
-      "local ${1/(.*)/${1:/capitalize}/} = LibQuestieDB.${1/(.*)/${1:/capitalize}/}",
-      "",
-    ],
-    "description": "Create Module"
-  },
-    // Create Module (Top of the file)
-  // ---@class LibQuestieDB
-  // ---@field ExtraTranslation ExtraTranslation
-  // local LibQuestieDB     = select(2, ...)
-  // --*---- Create Module --------
-  // ---@class ExtraTranslation
-  // local ExtraTranslation = LibQuestieDB.ExtraTranslation
-  "Namespace": {
-    "prefix": "namespace-import",
-    "body": [
-      // "--*--- Addon Namespace -------",
-      "---@class LibQuestieDB",
-      "local LibQuestieDB = select(2, ...)",
-    ],
-    "description": "Imports LibQuestieDB Namespace"
-  },
+	"Namespace Import": {
+		"prefix": "namespace-import",
+		"body": [
+			"---@class LibQuestieDB",
+			"local LibQuestieDB = select(2, ...)"
+		],
+		"description": "Imports LibQuestieDB Namespace"
+	},
+
+	"Import Module Comment": {
+		"prefix": "import-comment",
+		"body": [
+			"--*---- Import Module --------"
+		],
+		"description": "Adds import module comment separator"
+	},
+
+	"Import Module": {
+		"prefix": "import-module",
+		"body": [
+			"local ${1/(.*)/${1:/capitalize}/} = LibQuestieDB.${1/(.*)/${1:/capitalize}/}"
+		],
+		"description": "Import a module from LibQuestieDB"
+	},
+
+	"Create Module Comment": {
+		"prefix": "create-comment",
+		"body": [
+			"--*---- Create Module --------"
+		],
+		"description": "Adds create module comment separator"
+	},
+
+	"Create Module": {
+		"prefix": "create-module",
+		"body": [
+			"---@class LibQuestieDB",
+			"---@field ${1/(.*)/${1:/capitalize}/} ${1/(.*)/${1:/capitalize}/}",
+			"local LibQuestieDB = select(2, ...)",
+			"",
+			"--*---- Create Module --------",
+			"",
+			"---@class ${1/(.*)/${1:/capitalize}/}",
+			"local ${1/(.*)/${1:/capitalize}/} = LibQuestieDB.${1/(.*)/${1:/capitalize}/}"
+		],
+		"description": "Creates a complete module with namespace and class definition"
+	},
+
+	"Extend Module": {
+		"prefix": "extend-module",
+		"body": [
+			"--*---- Extend Module --------",
+			"",
+			"---@class ${1/(.*)/${1:/capitalize}/}",
+			"local ${1/(.*)/${1:/capitalize}/} = LibQuestieDB.${1/(.*)/${1:/capitalize}/}"
+		],
+		"description": "Extends an existing module"
+	}
 }
