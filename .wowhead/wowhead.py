@@ -5,7 +5,7 @@ import threading
 import requests
 import time
 
-rate_proxy_manager = RateLimitedProxyManager(db_path="proxy_usage.db", rate_limit_seconds=1)
+rate_proxy_manager = RateLimitedProxyManager(db_path="proxy_usage.db", rate_limit_seconds=0.5)
 
 # Dictionary mapping locales to their corresponding numeric codes
 localeLookup = {

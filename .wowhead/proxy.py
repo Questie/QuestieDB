@@ -11,13 +11,13 @@ from typing import Optional  # Import Optional for type hinting
 class RateLimitedProxyManager:
   """Provides proxies based on least recent usage, respecting a rate limit."""
 
-  def __init__(self, db_path="proxy_usage.db", rate_limit_seconds=1):
+  def __init__(self, db_path="proxy_usage.db", rate_limit_seconds: float = 1):
     """
     Initializes the manager, loading config, preparing URLs, and setting up SQLite.
 
     Args:
         db_path (str): Path to the SQLite database file.
-        rate_limit_seconds (int): Minimum time interval (in seconds) between uses of the same proxy.
+        rate_limit_seconds (float): Minimum time interval (in seconds) between uses of the same proxy.
     """
     load_dotenv()
     self.username = os.getenv("PROXY_USERNAME")
@@ -121,52 +121,54 @@ class RateLimitedProxyManager:
       cutoff_time = datetime.datetime.now() - datetime.timedelta(seconds=self.rate_limit_seconds)
       cutoff_timestamp_str = cutoff_time.isoformat()
 
-      # 1. Find ports used *since* the cutoff time
-      self.cursor.execute("SELECT DISTINCT port FROM proxy_usage WHERE timestamp >= ?", (cutoff_timestamp_str,))
-      recently_used_ports = {row[0] for row in self.cursor.fetchall()}
+      # Step 1: Find all ports that have NEVER been used
+      self.cursor.execute("SELECT DISTINCT port FROM proxy_usage")
+      used_ports_ever = {row[0] for row in self.cursor.fetchall()}
+      never_used_ports = self.all_ports_set - used_ports_ever
 
-      # 2. Determine available ports
-      available_ports = self.all_ports_set - recently_used_ports
-
-      selected_port = None
-
-      if available_ports:
-        # 3a. If ports are available, find the least recently used among them
-        # Prepare placeholders for the IN clause
-        placeholders = ",".join("?" * len(available_ports))
-        query = f"""
-                    SELECT port
-                    FROM proxy_usage
-                    WHERE port IN ({placeholders})
-                    GROUP BY port
-                    ORDER BY MAX(timestamp) ASC
-                    LIMIT 1
-                """
-        self.cursor.execute(query, tuple(available_ports))
-        result = self.cursor.fetchone()
-
-        if result:
-          selected_port = result[0]
-        else:
-          # If none of the available ports are in the usage table, pick the first available one
-          selected_port = list(available_ports)[0]
+      if never_used_ports:
+        # Priority 1: Use a port that has never been used (pick lowest number for consistency)
+        selected_port = min(never_used_ports)
       else:
-        # 3b. If *no* ports are available (all used recently), return None.
-        # print(f"Info: No proxies available outside the {self.rate_limit_seconds}s rate limit window.")
-        return None  # Return None if no proxy is available
+        # Step 2: All ports have been used, find ports outside rate limit window
+        self.cursor.execute("SELECT DISTINCT port FROM proxy_usage WHERE timestamp >= ?", (cutoff_timestamp_str,))
+        recently_used_ports = {row[0] for row in self.cursor.fetchall()}
+        available_ports = self.all_ports_set - recently_used_ports
 
-      # Ensure selected_port is not None before proceeding (should always be set if available_ports was not empty)
+        if available_ports:
+          # Priority 2: Find the least recently used among available ports
+          placeholders = ",".join("?" * len(available_ports))
+          query = f"""
+                        SELECT port, MAX(timestamp) as last_used
+                        FROM proxy_usage
+                        WHERE port IN ({placeholders})
+                        GROUP BY port
+                        ORDER BY last_used ASC
+                        LIMIT 1
+                    """
+          self.cursor.execute(query, tuple(available_ports))
+          result = self.cursor.fetchone()
+
+          if result:
+            selected_port = result[0]
+          else:
+            # This shouldn't happen if available_ports is not empty
+            selected_port = min(available_ports)
+        else:
+          # No ports available within rate limit
+          return None
+
+      # Ensure selected_port is not None
       if selected_port is None:
-        # This case should ideally not be reached if available_ports was non-empty
         print("Error: Could not select a port despite available ports existing.")
         return None
 
-      # 4. Log the usage of the selected port
+      # Log the usage of the selected port
       current_timestamp_str = datetime.datetime.now().isoformat()
       self.cursor.execute("INSERT INTO proxy_usage (port, timestamp) VALUES (?, ?)", (selected_port, current_timestamp_str))
-      self.conn.commit()  # Commit both cleanup and insert together
+      self.conn.commit()
 
-      # 5. Return the corresponding URL
+      # Return the corresponding URL
       return self.proxy_urls_by_port[selected_port]
 
   def get_total_number_of_proxies(self) -> int:
