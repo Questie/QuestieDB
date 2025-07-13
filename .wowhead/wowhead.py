@@ -26,6 +26,8 @@ reverselocaleLookup = {}
 for key, value in localeLookup.items():
   reverselocaleLookup[value] = key
 
+allLocaleString = f"{len(localeLookup)} locales: ({', '.join(localeLookup.keys())})"
+
 # Dictionary mapping locales to their corresponding URL locales (zhCN is the only one that differs...)
 localeToURLLocale = {
   "enUS": "",  # English (US) # Yes EN is empty
@@ -108,10 +110,9 @@ def getData(idType, id, version, locale="enUS", useCache=True):
   if not os.path.exists(f".cache/{version.lower()}"):
     os.mkdir(f".cache/{version.lower()}")
   if locale == "all":
+    print(f"Fetching {idType} {id} for {allLocaleString}")
     # If the locale is "all", fetch data for all locales
     for locale in localeLookup:
-      if id == 400080:
-        print(f"Fetching {idType} {id} for {locale}")
       if useCache:
         try:
           with open(f".cache/{version.lower()}/{idType}/{id}_{locale}.json", "r", encoding="utf-8") as f:
@@ -147,6 +148,7 @@ def getData(idType, id, version, locale="enUS", useCache=True):
         print(f"Entity not found: {id}")
         return None
   elif locale in localeLookup:
+    print(f"Fetching {idType} {id} for {locale}")
     if useCache:
       try:
         with open(f".cache/{version.lower()}/{idType}/{id}_{locale}.json", "r", encoding="utf-8") as f:
@@ -191,9 +193,8 @@ def getDataSqlite(idType, id, version, locale="enUS", useCache=True) -> dict[str
   # Open the SQLite database connection
   cache = sqlite3.connect(f".cache-{version.lower()}.db")
 
-  print(f"Fetching {idType} {id} for {locale}")
-
   if locale == "all":
+    print(f"Fetching {idType} {id} for all {allLocaleString}")
     # If the locale is "all", fetch data for all locales
     for locale in localeLookup:
       if useCache:
@@ -205,8 +206,8 @@ def getDataSqlite(idType, id, version, locale="enUS", useCache=True) -> dict[str
           if row:
             data[locale] = row[0]
             continue
-          else:
-            print(f"Cache is missing {idType} {id} for {locale}.")
+          # else:
+          #   print(f"Cache is missing {idType} {id} for {locale}.")
 
       # Get proxy port (RateLimited)
       next_proxy = None
@@ -240,6 +241,7 @@ def getDataSqlite(idType, id, version, locale="enUS", useCache=True) -> dict[str
         print(f"Entity not found: {id}")
         return None
   elif locale in localeLookup:
+    print(f"Fetching {idType} {id} for {locale}")
     if useCache:
       # Check if the data is already in the SQLite database
       with sqlite_processed_lock:
@@ -249,8 +251,8 @@ def getDataSqlite(idType, id, version, locale="enUS", useCache=True) -> dict[str
         if row:
           data[locale] = row[0]
           return data
-        else:
-          print(f"Cache is missing {idType} {id} for {locale}.")
+        # else:
+        #   print(f"Cache is missing {idType} {id} for {locale}.")
 
     # Get proxy port (RateLimited)
     next_proxy = None
