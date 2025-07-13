@@ -6,6 +6,7 @@ import threading
 import queue
 import datetime
 import os
+from typing import NamedTuple
 from wowhead import getData, getDataSqlite
 from http_controller import start_http_server
 from quest import getQuestSections
@@ -25,6 +26,7 @@ items_processed = 0
 items_processed_lock = threading.Lock()
 total_items = 0
 start_time_global = 0
+already_processed = 0
 # -------------------------
 
 # --- Control Flag ---
@@ -32,44 +34,124 @@ stop_event = threading.Event()
 # --------------------
 
 
-# --- Progress Monitoring Function ---
-def monitor_progress(total_items_to_process, start_time_global_ts, already_processed=0):
-  global items_processed  # Access global counter
-  while not stop_event.is_set():
-    with items_processed_lock:
-      current_processed = items_processed - already_processed  # Adjust for already processed items
+# --- Progress Data Structure ---
+class ProgressData(NamedTuple):
+  total_processed_now: int
+  total_items_to_process: int
+  current_session_processed: int
+  items_remaining_to_process: int
+  elapsed_time: float
+  items_per_second: float
+  estimated_time_remaining: float
+  eta_str: str
+  is_complete: bool
+  has_started: bool
 
-    if current_processed >= total_items_to_process and stop_event.is_set():
-      print("\nProcessing complete!")
+
+def calculate_progress_data() -> ProgressData:
+  """Calculate current progress data that can be used by both monitor and HTTP functions."""
+  global items_processed, total_items, start_time_global, already_processed
+
+  # Calculate items remaining to process in this session
+  items_remaining_to_process = total_items - already_processed
+
+  with items_processed_lock:
+    total_processed_now = items_processed  # Total items processed so far
+    current_session_processed = total_processed_now - already_processed  # Items processed in current session
+
+  # Check if current session is complete OR we've processed everything
+  is_complete = current_session_processed >= items_remaining_to_process or total_processed_now >= total_items
+
+  elapsed_time = time.time() - start_time_global if start_time_global > 0 else 0
+
+  # Ensure current session processed is not negative
+  current_session_processed = max(0, current_session_processed)
+
+  # Calculate rate and ETA
+  items_per_second = 0.0
+  estimated_time_remaining = 0.0
+  eta_str = "0:00:00"
+
+  if elapsed_time > 0 and current_session_processed > 0:
+    # Calculate rate based only on current session processing
+    items_per_second = current_session_processed / elapsed_time
+    remaining_items_in_session = items_remaining_to_process - current_session_processed
+    estimated_time_remaining = remaining_items_in_session / items_per_second if items_per_second > 0 else 0
+    # Format ETA
+    eta_str = str(datetime.timedelta(seconds=int(estimated_time_remaining)))
+
+  has_started = elapsed_time > 0
+
+  return ProgressData(
+    total_processed_now=total_processed_now,
+    total_items_to_process=total_items,
+    current_session_processed=current_session_processed,
+    items_remaining_to_process=items_remaining_to_process,
+    elapsed_time=elapsed_time,
+    items_per_second=items_per_second,
+    estimated_time_remaining=estimated_time_remaining,
+    eta_str=eta_str,
+    is_complete=is_complete,
+    has_started=has_started,
+  )
+
+
+def format_progress_string(progress_data: ProgressData) -> str:
+  """Format progress data into a human-readable string."""
+  if progress_data.is_complete:
+    return f"Processing complete! {progress_data.total_processed_now}/{progress_data.total_items_to_process} ids processed"
+
+  if progress_data.has_started and progress_data.current_session_processed > 0:
+    # Return progress update showing both total and session progress
+    return f"Progress: {progress_data.total_processed_now}/{progress_data.total_items_to_process} | Session: {progress_data.current_session_processed}/{progress_data.items_remaining_to_process} ({progress_data.items_per_second:.2f} ids/sec) | Elapsed: {str(datetime.timedelta(seconds=int(progress_data.elapsed_time)))} | ETA: {progress_data.eta_str}"
+  elif progress_data.current_session_processed == 0 and progress_data.has_started:
+    return f"Progress: {progress_data.total_processed_now}/{progress_data.total_items_to_process} | Session: 0/{progress_data.items_remaining_to_process} | Elapsed: {str(datetime.timedelta(seconds=int(progress_data.elapsed_time)))} | Calculating rate..."
+  else:
+    # Initial state or edge case
+    return f"Starting processing... {progress_data.items_remaining_to_process} ids queued for this session."
+
+
+# ----------------------------
+
+
+# --- Progress Monitoring Function ---
+def monitor_progress() -> None:
+  """Monitor progress and print updates to console."""
+
+  while not stop_event.is_set():
+    progress_data = calculate_progress_data()
+
+    # Check if processing is complete
+    if progress_data.is_complete:
+      print(f"\n{format_progress_string(progress_data)}")
       break  # Exit monitor loop
 
-    elapsed_time = time.time() - start_time_global_ts
-    if elapsed_time > 0 and current_processed > 0:
-      items_per_second = current_processed / elapsed_time
-      remaining_items = total_items_to_process - current_processed
-      estimated_time_remaining = remaining_items / items_per_second if items_per_second > 0 else 0
-
-      # Format ETA
-      eta_str = str(datetime.timedelta(seconds=int(estimated_time_remaining)))
-
-      # Print progress update
-      print(
-        f"\rProgress: {current_processed}/{total_items_to_process} ({items_per_second:.2f} items/sec) | Elapsed: {str(datetime.timedelta(seconds=int(elapsed_time)))} | ETA: {eta_str}   ", end="\n"
-      )
-    elif current_processed == 0 and elapsed_time > 0:
-      print(f"\rProgress: 0/{total_items_to_process} | Elapsed: {str(datetime.timedelta(seconds=int(elapsed_time)))} | Calculating rate...", end="\n")
+    # Print appropriate progress message based on current state
+    progress_string = format_progress_string(progress_data)
+    if progress_data.has_started and progress_data.current_session_processed > 0:
+      print(f"\r{progress_string}", end="\n")
+    elif progress_data.current_session_processed == 0 and progress_data.has_started:
+      print(f"\r{progress_string}", end="\n")
     else:
       # Initial state or edge case
-      print(f"\rStarting processing... {total_items_to_process} items queued.", end="\n")
+      print(progress_string, end="\r")
 
     time.sleep(2)  # Update frequency (in seconds)
 
   # --- Final message ---
-  if stop_event.is_set():
-    print("\nProcessing stopped by request.")
-  else:
-    print("\nProcessing complete!")
+  # Clear the progress line and show final status
+  print("\nMonitoring stopped.")
   # -------------------
+
+
+# --- Progress Information Function for HTTP Server ---
+def get_progress_info() -> str:
+  """Return current progress information as a formatted string."""
+  progress_data = calculate_progress_data()
+  return format_progress_string(progress_data)
+
+
+# -------------------------------------------------------
 
 
 faction_description_regex = re.compile(r"\"(.*)\",\n\s*\"article-all\"")
@@ -229,6 +311,7 @@ def scrape(version, db_path="./"):
   # Get already processed ids count for version
   cursor = cache.cursor()
   cursor.execute("SELECT COUNT(DISTINCT id) FROM wowhead_cache WHERE version = ?", (version,))
+  global already_processed
   already_processed = cursor.fetchone()[0]
   print(f"Already processed {already_processed} items for version {version}")
   cache.close()
@@ -273,13 +356,13 @@ def scrape(version, db_path="./"):
   # ------------------------------------------
 
   # --- Start the HTTP control server ---
-  start_http_server(stop_event)
+  start_http_server(stop_event, get_progress_info)
   time.sleep(2)  # Give the server a moment to start
   # -------------------------------------
 
   # --- Start Monitor Thread ---
   start_time_global = time.time()
-  monitor_thread = threading.Thread(target=monitor_progress, args=(total_items, start_time_global, already_processed), daemon=True)
+  monitor_thread = threading.Thread(target=monitor_progress, daemon=True)
   monitor_thread.start()
   # ----------------------------
 
