@@ -300,8 +300,8 @@ def dump_version_comparison(target_version: str, id_type: str, output_dir: str =
   target_ids.sort(key=extract_id_from_url)
 
   # Create file names
-  previous_file = f"{output_dir}/{previous_version}_{id_type}_ids.txt"
-  target_file = f"{output_dir}/{target_version}_{id_type}_ids.txt"
+  previous_file = f"{output_dir}/_{previous_version}_{id_type}_ids.txt"
+  target_file = f"{output_dir}/_{target_version}_{id_type}_ids.txt"
 
   # Write previous version IDs
   with open(previous_file, "w", encoding="utf-8") as f:
