@@ -86,7 +86,6 @@ def extract_version_and_locale_from_url(url: str) -> tuple[str, str]:
     Tuple of (version_string, locale_string) like ("classic", "deDE")
   """
   parsed = urlparse(url)
-  print(parsed)
   path_parts = [part for part in parsed.path.split("/") if part]
 
   if not path_parts:
