@@ -51,8 +51,8 @@ class Locale(Enum):
 
 # === STRONG TYPE ALIASES ===
 
-ContentType = Literal["quest", "item", "npc", "zone", "spell", "achievement"]
-"""Literal type for supported Wowhead content types."""
+EntityType = Literal["quest", "item", "npc", "zone", "spell", "achievement"]
+"""Literal type for supported Wowhead entity types."""
 
 CanonicalUrl = NewType("CanonicalUrl", str)
 """Strong type for canonical URLs without version paths."""
@@ -60,8 +60,8 @@ CanonicalUrl = NewType("CanonicalUrl", str)
 VersionSpecificUrl = NewType("VersionSpecificUrl", str)
 """Strong type for version-specific URLs with expansion paths."""
 
-ContentId = NewType("ContentId", int)
-"""Strong type for Wowhead content IDs extracted from URLs."""
+EntityId = NewType("EntityId", int)
+"""Strong type for Wowhead entity IDs extracted from URLs."""
 
 
 # === IMMUTABLE DATA STRUCTURES ===
@@ -73,19 +73,19 @@ class SitemapEntry:
   Represents a single sitemap entry with immutable fields.
 
   All fields are frozen to ensure immutability and thread safety.
-  The content_id is automatically extracted from the URL.
+  The entity_id is automatically extracted from the URL.
   """
 
   loc: str
   priority: float
   lastmod: str
-  content_id: ContentId
+  entity_id: EntityId
 
   def __post_init__(self) -> None:
-    """Extract content ID from URL during initialization."""
+    """Extract entity ID from URL during initialization."""
     try:
-      content_id = ContentId(int(self.loc.split("=")[1].split("/")[0]))
-      object.__setattr__(self, "content_id", content_id)
+      entity_id = EntityId(int(self.loc.split("=")[1].split("/")[0]))
+      object.__setattr__(self, "entity_id", entity_id)
     except (IndexError, ValueError) as error:
       raise ValueError(f"Invalid URL format: {self.loc}") from error
 
@@ -101,15 +101,15 @@ class DeltaResult:
 
   target_version: VersionSlug
   previous_version: VersionSlug
-  content_type: ContentType
-  fixed: tuple[VersionSpecificUrl, ...]
-  added: tuple[VersionSpecificUrl, ...]
-  removed: tuple[VersionSpecificUrl, ...]
+  entity_type: EntityType
+  all_urls: tuple[VersionSpecificUrl, ...]
+  added_urls: tuple[VersionSpecificUrl, ...]
+  removed_urls: tuple[VersionSpecificUrl, ...]
 
   @property
   def change_count(self) -> int:
     """Total number of changes (added + removed)."""
-    return len(self.added) + len(self.removed)
+    return len(self.added_urls) + len(self.removed_urls)
 
   @property
   def has_changes(self) -> bool:
@@ -161,7 +161,7 @@ class SitemapFetcher(Protocol):
 
     Args:
       url: The sitemap URL to fetch
-      locale: The language locale for content
+      locale: The language locale for entity
 
     Returns:
       List of parsed sitemap entries
@@ -206,8 +206,8 @@ class UrlTransformer(Protocol):
     """Add version segment to canonical URL."""
     ...
 
-  def extract_content_id(self, url: str) -> ContentId:
-    """Extract numeric content ID from URL."""
+  def extract_entity_id(self, url: str) -> EntityId:
+    """Extract numeric entity ID from URL."""
     ...
 
 

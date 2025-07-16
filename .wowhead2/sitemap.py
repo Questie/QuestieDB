@@ -196,7 +196,7 @@ def get_canonical_locs(version: str, id_type: str) -> set[str]:
 
   Args:
     version: The WoW version (e.g., "classic", "tbc")
-    id_type: The content type (e.g., "quest", "item", "npc")
+    id_type: The entity type (e.g., "quest", "item", "npc")
 
   Returns:
     Set of canonical URLs without version paths

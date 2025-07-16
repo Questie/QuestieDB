@@ -126,18 +126,18 @@ def _extract_version_from_url(url: str) -> Tuple[str, str]:
 
   first_segment = parts[3]  # The segment right after www.wowhead.com/
 
-  # If the first segment contains '=', it's content (quest=123), so no version
+  # If the first segment contains '=', it's entity (quest=123), so no version
   if "=" in first_segment:
     version_slug = "unknown"
     canonical_url = url.split("?")[0]  # Remove any query params, keep path as-is
   else:
-    # First segment is version, second should be content
+    # First segment is version, second should be entity
     if len(parts) < 5:
       raise ValueError(f"URL format not recognized: {url}")
 
     version_slug = first_segment
-    content_segment = parts[4]  # quest=123, item=456, etc.
-    canonical_url = f"https://www.wowhead.com/{content_segment}"
+    entity_segment = parts[4]  # quest=123, item=456, etc.
+    canonical_url = f"https://www.wowhead.com/{entity_segment}"
 
   return version_slug, canonical_url
 

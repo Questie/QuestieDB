@@ -10,3 +10,4 @@ Questie
 *.db-journal
 *.db-shm
 *.db-wal
+*.sqlite

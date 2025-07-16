@@ -11,7 +11,7 @@ import requests
 from functools import cache
 from xml.dom.minidom import parseString
 
-from sitemap_types import VersionSlug, Locale, ContentType, CanonicalUrl, VersionSpecificUrl, ContentId, SitemapEntry, DeltaResult, SitemapFetcher
+from sitemap_types import VersionSlug, Locale, EntityType, CanonicalUrl, VersionSpecificUrl, EntityId, SitemapEntry, DeltaResult, SitemapFetcher
 
 # All supported versions as a tuple for iteration
 VERSIONS: tuple[VersionSlug, ...] = tuple(VersionSlug)
@@ -45,12 +45,12 @@ def add_version_to_url(canonical_url: CanonicalUrl, version: VersionSlug) -> Ver
 
 
 @cache
-def extract_content_id_from_url(url: str) -> int:
-  """Extract the numeric content ID from a Wowhead URL."""
+def extract_entity_id_from_url(url: str) -> int:
+  """Extract the numeric entity ID from a Wowhead URL."""
   try:
     return int(url.split("=")[1].split("/")[0])
   except (IndexError, ValueError) as error:
-    raise ValueError(f"Cannot extract content ID from URL: {url}") from error
+    raise ValueError(f"Cannot extract entity ID from URL: {url}") from error
 
 
 def validate_version(version: VersionSlug) -> None:
@@ -130,7 +130,7 @@ class RequestsSitemapFetcher:
             loc=loc_value,
             priority=float(priority_value),
             lastmod=lastmod_value,
-            content_id=ContentId(0),  # Will be set by __post_init__
+            entity_id=EntityId(0),  # Will be set by __post_init__
           )
           entries.append(entry)
         except (ValueError, TypeError) as error:
@@ -228,23 +228,23 @@ def export_version_comparison(
   validate_version(target_version)
   previous_version = get_previous_version(target_version)
 
-  print(f"Exporting comparison files for '{previous_version}' vs '{target_version}' ({content_type})")
+  print(f"Exporting comparison files for '{previous_version}' vs '{target_version}' ({entity_type})")
 
   # Get canonical URLs for both versions
-  previous_canonical = get_canonical_locations(previous_version, content_type, fetcher, locale)
-  target_canonical = get_canonical_locations(target_version, content_type, fetcher, locale)
+  previous_canonical = get_canonical_locations(previous_version, entity_type, fetcher, locale)
+  target_canonical = get_canonical_locations(target_version, entity_type, fetcher, locale)
 
   # Convert to sorted lists
-  previous_ids = sorted(previous_canonical, key=extract_content_id_from_url)
-  target_ids = sorted(target_canonical, key=extract_content_id_from_url)
+  previous_ids = sorted(previous_canonical, key=extract_entity_id_from_url)
+  target_ids = sorted(target_canonical, key=extract_entity_id_from_url)
 
   # Create file names
-  previous_file = f"{output_dir}/_{previous_version.value}_{content_type}_ids.txt"
-  target_file = f"{output_dir}/_{target_version.value}_{content_type}_ids.txt"
+  previous_file = f"{output_dir}/_{previous_version.value}_{entity_type}_ids.txt"
+  target_file = f"{output_dir}/_{target_version.value}_{entity_type}_ids.txt"
 
   # Export previous version IDs
   with open(previous_file, "w", encoding="utf-8") as file:
-    file.write(f"# {previous_version.value.upper()} {content_type.upper()} IDs ({len(previous_ids)} total)\n")
+    file.write(f"# {previous_version.value.upper()} {entity_type.upper()} IDs ({len(previous_ids)} total)\n")
     file.write(f"# Generated with functional approach using requests\n")
     file.write(f"# Locale: {locale.value}\n\n")
     for url in previous_ids:
@@ -252,7 +252,7 @@ def export_version_comparison(
 
   # Export target version IDs
   with open(target_file, "w", encoding="utf-8") as file:
-    file.write(f"# {target_version.value.upper()} {content_type.upper()} IDs ({len(target_ids)} total)\n")
+    file.write(f"# {target_version.value.upper()} {entity_type.upper()} IDs ({len(target_ids)} total)\n")
     file.write(f"# Generated with functional approach using requests\n")
     file.write(f"# Locale: {locale.value}\n\n")
     for url in target_ids:
@@ -291,20 +291,20 @@ if __name__ == "__main__":
     print(f"\nDelta Results:")
     print(f"  Target Version: {delta_result.target_version.value}")
     print(f"  Previous Version: {delta_result.previous_version.value}")
-    print(f"  Content Type: {delta_result.content_type}")
+    print(f"  Entity Type: {delta_result.entity_type}")
     print(f"  Total changes: {delta_result.change_count}")
-    print(f"  Added: {len(delta_result.added)}")
-    print(f"  Removed: {len(delta_result.removed)}")
+    print(f"  Added: {len(delta_result.added_urls)}")
+    print(f"  Removed: {len(delta_result.removed_urls)}")
 
     # Show first few IDs as examples
-    if delta_result.added:
+    if delta_result.added_urls:
       print(f"\nFirst 5 added quest URLs:")
-      for url in delta_result.added[:5]:
+      for url in delta_result.added_urls[:5]:
         print(f"  {url}")
 
-    if delta_result.removed:
+    if delta_result.removed_urls:
       print(f"\nFirst 5 removed quest URLs:")
-      for url in delta_result.removed[:5]:
+      for url in delta_result.removed_urls[:5]:
         print(f"  {url}")
 
     # Example 2: Export comparison files

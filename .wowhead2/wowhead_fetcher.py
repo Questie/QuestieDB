@@ -1,7 +1,7 @@
 """Single-threaded Wowhead page fetcher with database integration.
 
 This module provides functionality to fetch Wowhead pages for specific versions
-and content types, storing the raw HTML in the local database for later parsing.
+and entity types, storing the raw HTML in the local database for later parsing.
 """
 
 from __future__ import annotations
@@ -14,7 +14,10 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 from wowhead_db import create_db, add_version, insert_translation_from_url
-from sitemap import get_all_locs, get_version_delta
+
+# from sitemap import get_all_locs, get_version_delta
+from sitemap_processor import calculate_version_delta, get_version_sitemap_urls
+from sitemap_types import VersionSlug, DeltaResult, EntityType
 
 
 class WowheadFetcher:
@@ -82,7 +85,7 @@ class WowheadFetcher:
       delay: Delay in seconds between requests
 
     Returns:
-      Raw HTML content or None if fetch failed
+      Raw HTML entity or None if fetch failed
     """
     try:
       print(f"Fetching: {url}")
@@ -111,12 +114,12 @@ class WowheadFetcher:
     Returns:
       True if successful, False otherwise
     """
-    html_content = self.fetch_url(url, delay)
-    if html_content is None:
+    html_entity = self.fetch_url(url, delay)
+    if html_entity is None:
       return False
 
     try:
-      insert_translation_from_url(self.conn, url, self.locale, html_content.encode("utf-8"))
+      insert_translation_from_url(self.conn, url, self.locale, html_entity.encode("utf-8"))
       print(f"Stored: {url}")
       return True
 
@@ -124,25 +127,28 @@ class WowheadFetcher:
       print(f"Database error storing {url}: {db_error}")
       return False
 
-  def fetch_version_content(self, version: str, content_type: str, limit: Optional[int] = None, delay: float = 1.0) -> tuple[int, int]:
-    """Fetch all content of a specific type for a version.
+  def fetch_version_entity(self, version: VersionSlug, entity_type: EntityType, limit: Optional[int] = None, delay: float = 1.0) -> tuple[int, int]:
+    """Fetch all entity of a specific type for a version.
 
     Args:
       version: The expansion version (classic, tbc, wotlk, etc.)
-      content_type: The content type (quest, item, npc, etc.)
+      entity_type: The entity type (quest, item, npc, etc.)
       limit: Maximum number of URLs to fetch (None for all)
       delay: Delay in seconds between requests
 
     Returns:
       Tuple of (successful_fetches, total_attempts)
     """
-    print(f"Fetching {content_type} content for {version}...")
+    print(f"Fetching {entity_type} entity for {version}...")
 
     try:
-      urls = get_all_locs(version, content_type)
+      urls = get_version_sitemap_urls(version, entity_type)
+      print(len(urls), "URLs found for version", version)
 
       if limit:
         urls = urls[:limit]
+
+      print(urls)
 
       print(f"Found {len(urls)} URLs to fetch")
 
@@ -161,32 +167,35 @@ class WowheadFetcher:
       return successful, total
 
     except Exception as error:
-      print(f"Error in fetch_version_content: {error}")
+      print(f"Error in fetch_version_entity: {error}")
       return 0, 0
 
-  def fetch_delta_content(self, target_version: str, content_type: str, limit: Optional[int] = None, delay: float = 1.0) -> tuple[int, int]:
-    """Fetch only the delta content between versions.
+  def fetch_delta_entity(self, target_version: VersionSlug, entity_type: EntityType, full_fetch: bool = False, limit: Optional[int] = None, delay: float = 1.0) -> tuple[int, int]:
+    """Fetch only the delta entity between versions.
 
     Args:
       target_version: The target expansion version
-      content_type: The content type (quest, item, npc, etc.)
+      entity_type: The entity type (quest, item, npc, etc.)
       delay: Delay in seconds between requests
 
     Returns:
       Tuple of (successful_fetches, total_attempts)
     """
-    print(f"Fetching delta {content_type} content for {target_version}...")
+    print(f"Fetching delta {entity_type} entity for {target_version}...")
 
     try:
-      delta_result = get_version_delta(target_version, content_type)
-      urls = delta_result.fixed  # Combined added and removed URLs
+      delta_result = calculate_version_delta(target_version, entity_type)
+      if full_fetch:
+        urls = delta_result.all_urls  # Fetch all URLs including fixed ones
+      else:
+        urls = delta_result.added_urls  # We only fetch new URLs for the target version
 
       if limit:
         urls = urls[:limit]
 
       print(f"Found {len(urls)} delta URLs to fetch")
-      print(f"  Added: {len(delta_result.added)}")
-      print(f"  Removed: {len(delta_result.removed)}")
+      print(f"  Added: {len(delta_result.added_urls)}")
+      print(f"  Removed: {len(delta_result.removed_urls)}")
 
       successful = 0
       total = len(urls)
@@ -203,39 +212,39 @@ class WowheadFetcher:
       return successful, total
 
     except Exception as error:
-      print(f"Error in fetch_delta_content: {error}")
+      print(f"Error in fetch_delta_entity: {error}")
       return 0, 0
 
-  def fetch_specific_ids(self, version: str, content_type: str, id_list: List[int], delay: float = 1.0) -> tuple[int, int]:
-    """Fetch specific content IDs for testing or targeted fetching.
+  def fetch_specific_ids(self, version: str, entity_type: str, id_list: List[int], delay: float = 1.0) -> tuple[int, int]:
+    """Fetch specific entity IDs for testing or targeted fetching.
 
     Args:
       version: The expansion version
-      content_type: The content type (quest, item, npc, etc.)
+      entity_type: The entity type (quest, item, npc, etc.)
       id_list: List of specific IDs to fetch
       delay: Delay in seconds between requests
 
     Returns:
       Tuple of (successful_fetches, total_attempts)
     """
-    print(f"Fetching specific {content_type} IDs for {version}: {id_list}")
+    print(f"Fetching specific {entity_type} IDs for {version}: {id_list}")
 
     successful = 0
     total = len(id_list)
 
-    for index, content_id in enumerate(id_list, 1):
-      # Construct URL based on version and content type
+    for index, entity_id in enumerate(id_list, 1):
+      # Construct URL based on version and entity type
       if version == "unknown":
-        url = f"https://www.wowhead.com/{content_type}={content_id}"
+        url = f"https://www.wowhead.com/{entity_type}={entity_id}"
       else:
-        url = f"https://www.wowhead.com/{version}/{content_type}={content_id}"
+        url = f"https://www.wowhead.com/{version}/{entity_type}={entity_id}"
 
       print(f"Progress: {index}/{total}")
 
       if self.fetch_and_store(url, delay):
         successful += 1
       else:
-        print(f"Failed to fetch ID {index}/{total}: {content_id}")
+        print(f"Failed to fetch ID {index}/{total}: {entity_id}")
 
     print(f"Completed: {successful}/{total} successful fetches")
     return successful, total
@@ -262,10 +271,10 @@ def main() -> None:
 
   with WowheadFetcher() as fetcher:
     print("\n--- Fetching first 5 Classic quests ---")
-    classic_success, classic_total = fetcher.fetch_version_content("classic", "quest", limit=5, delay=1.0)
+    classic_success, classic_total = fetcher.fetch_version_entity(VersionSlug.CLASSIC, "quest", limit=5, delay=1.0)
 
     print("\n--- Fetching first 5 TBC quests ---")
-    tbc_success, tbc_total = fetcher.fetch_delta_content("tbc", "quest", limit=5, delay=1.0)
+    tbc_success, tbc_total = fetcher.fetch_delta_entity(VersionSlug.TBC, "quest", limit=5, delay=1.0)
 
     print("\n=== Results ===")
     print(f"Classic: {classic_success}/{classic_total} successful")

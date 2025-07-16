@@ -103,13 +103,13 @@ def extract_version_and_locale_from_url(url: str) -> tuple[str, str]:
   return version_string, locale_string
 
 
-def generate_tooltip_url(content_type: str, content_id: int, version_string: str, locale_string: str) -> str:
+def generate_tooltip_url(entity_type: str, entity_id: int, version_string: str, locale_string: str) -> str:
   """
   Generate a tooltip URL from extracted data.
 
   Args:
-    content_type: Type like "quest", "item", "npc"
-    content_id: Numeric ID
+    entity_type: Type like "quest", "item", "npc"
+    entity_id: Numeric ID
     version_string: Version like "classic", "tbc"
     locale_string: Locale like "deDE", "enUS"
 
@@ -123,29 +123,29 @@ def generate_tooltip_url(content_type: str, content_id: int, version_string: str
   data_env = VERSION_TO_NUMERIC.get(version_enum, 4)  # Default to classic
   locale_code = LOCALE_TO_NUMERIC.get(locale_enum, 0)  # Default to English
 
-  return f"https://nether.wowhead.com/tooltip/{content_type}/{content_id}?dataEnv={data_env}&locale={locale_code}"
+  return f"https://nether.wowhead.com/tooltip/{entity_type}/{entity_id}?dataEnv={data_env}&locale={locale_code}"
 
 
-def convert_sitemap_url_to_tooltip_url(url: str, content_type: str) -> str:
+def convert_sitemap_url_to_tooltip_url(url: str, entity_type: str) -> str:
   """
   Convert a sitemap URL directly to a tooltip URL.
 
   Args:
     url: Sitemap URL like "https://www.wowhead.com/classic/de/quest=1/title"
-    content_type: Content type like "quest", "item", "npc"
+    entity_type: Entity type like "quest", "item", "npc"
 
   Returns:
     Tooltip URL like "https://nether.wowhead.com/tooltip/quest/1?dataEnv=4&locale=3"
   """
-  # Extract content ID from URL
-  match = re.search(rf"{content_type}=(\d+)", url)
+  # Extract entity ID from URL
+  match = re.search(rf"{entity_type}=(\d+)", url)
   if not match:
-    raise ValueError(f"Could not extract {content_type} ID from URL: {url}")
+    raise ValueError(f"Could not extract {entity_type} ID from URL: {url}")
 
-  content_id = int(match.group(1))
+  entity_id = int(match.group(1))
   version_string, locale_string = extract_version_and_locale_from_url(url)
 
-  return generate_tooltip_url(content_type, content_id, version_string, locale_string)
+  return generate_tooltip_url(entity_type, entity_id, version_string, locale_string)
 
 
 def _demo() -> None:
