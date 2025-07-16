@@ -19,7 +19,7 @@ Building a local cache serves several key purposes for a project like Questie:
 
 The system is composed of three main Python scripts:
 
--   **`sitemap.py`**: This is the discovery mechanism. It connects to Wowhead and parses its `sitemap.xml` files to find all the unique URLs for a given content type (e.g., `quest`) and game version (e.g., `wotlk`). It can also be used to calculate the "delta" between two versions, identifying which pages were added or removed.
+-   **`sitemap.py`**: This is the discovery mechanism. It connects to Wowhead and parses its `sitemap.xml` files to find all the unique URLs for a given entity type (e.g., `quest`) and game version (e.g., `wotlk`). It can also be used to calculate the "delta" between two versions, identifying which pages were added or removed.
 
 -   **`wowhead_db.py`**: This script is the heart of the storage system. It manages the `wowhead.sqlite` database file, including:
     -   Creating the necessary tables (`versions`, `translations`).
