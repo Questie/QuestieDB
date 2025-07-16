@@ -164,7 +164,9 @@ def get_version_sitemap_urls(version: VersionSlug, entity_type: EntityType, fetc
   return filtered_urls
 
 
-def get_canonical_locations(version: VersionSlug, entity_type: EntityType, fetcher: SitemapFetcher = RequestsSitemapFetcher(), locale: Locale = Locale.enUS) -> frozenset[CanonicalUrl]:
+def get_locations(
+  version: VersionSlug, entity_type: EntityType, fetcher: SitemapFetcher = RequestsSitemapFetcher(), locale: Locale = Locale.enUS
+) -> tuple[tuple[CanonicalUrl, ...], tuple[VersionSpecificUrl, ...]]:
   """Get all canonical URLs for a given version and entity type."""
   sitemap_urls = get_version_sitemap_urls(version, entity_type, fetcher)
 
@@ -175,9 +177,15 @@ def get_canonical_locations(version: VersionSlug, entity_type: EntityType, fetch
     entries = fetcher.get_sitemap_entries(url, locale)
     all_entries.extend(entries)
 
-  # Convert to canonical URLs and return as frozen set
+  # Convert to canonical URLs and return as tuple
   canonical_urls = {canonicalize_url(entry.loc) for entry in all_entries}
-  return frozenset(canonical_urls)
+  # Sort by entity ID for consistent output
+  canonical_sorted = tuple(sorted(canonical_urls, key=extract_entity_id_from_url))
+
+  # Convert to version-specific URLs
+  version_specific_urls = tuple(add_version_to_url(url, version) for url in canonical_sorted)
+
+  return canonical_sorted, version_specific_urls
 
 
 def calculate_version_delta(target_version: VersionSlug, entity_type: EntityType, fetcher: SitemapFetcher = RequestsSitemapFetcher(), locale: Locale = Locale.enUS) -> DeltaResult:
@@ -189,14 +197,14 @@ def calculate_version_delta(target_version: VersionSlug, entity_type: EntityType
 
   # Get canonical URLs for both versions (sequential)
   print(f"Fetching {previous_version} sitemap entries...")
-  previous_canonical = get_canonical_locations(previous_version, entity_type, fetcher, locale)
+  previous_canonical, _ = get_locations(previous_version, entity_type, fetcher, locale)
 
   print(f"Fetching {target_version} sitemap entries...")
-  target_canonical = get_canonical_locations(target_version, entity_type, fetcher, locale)
+  target_canonical, _ = get_locations(target_version, entity_type, fetcher, locale)
 
   # Calculate deltas using canonical URLs
-  added_canonical = target_canonical - previous_canonical
-  removed_canonical = previous_canonical - target_canonical
+  added_canonical = set(target_canonical) - set(previous_canonical)
+  removed_canonical = set(previous_canonical) - set(target_canonical)
 
   # Convert canonical URLs back to version-specific URLs
   added_versioned = tuple(add_version_to_url(url, target_version) for url in added_canonical)
@@ -231,8 +239,8 @@ def export_version_comparison(
   print(f"Exporting comparison files for '{previous_version}' vs '{target_version}' ({entity_type})")
 
   # Get canonical URLs for both versions
-  previous_canonical = get_canonical_locations(previous_version, entity_type, fetcher, locale)
-  target_canonical = get_canonical_locations(target_version, entity_type, fetcher, locale)
+  previous_canonical, _ = get_locations(previous_version, entity_type, fetcher, locale)
+  target_canonical, _ = get_locations(target_version, entity_type, fetcher, locale)
 
   # Convert to sorted lists
   previous_ids = sorted(previous_canonical, key=extract_entity_id_from_url)

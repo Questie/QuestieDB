@@ -114,7 +114,7 @@ def _extract_version_from_url(url: str) -> Tuple[str, str]:
 
   Examples:
     'https://www.wowhead.com/tbc/quest=7786/thunderaan-the-windseeker'
-    -> ('tbc', 'https://www.wowhead.com/quest=7786')
+    -> ('tbc', 'https://www.wowhead.com/quest=7786/thunderaan-the-windseeker')
 
     'https://www.wowhead.com/quest=7786/thunderaan-the-windseeker'
     -> ('unknown', 'https://www.wowhead.com/quest=7786/thunderaan-the-windseeker')
@@ -129,15 +129,20 @@ def _extract_version_from_url(url: str) -> Tuple[str, str]:
   # If the first segment contains '=', it's entity (quest=123), so no version
   if "=" in first_segment:
     version_slug = "unknown"
-    canonical_url = url.split("?")[0]  # Remove any query params, keep path as-is
+    # Remove any query params, keep path as-is
+    canonical_url = url.split("?")[0]
   else:
-    # First segment is version, second should be entity
+    # First segment is version, rest is entity path (may include /name)
+    version_slug = first_segment
+    # Reconstruct canonical URL: keep everything after version segment
+    # e.g. https://www.wowhead.com/tbc/quest=7786/thunderaan-the-windseeker
+    #   -> https://www.wowhead.com/quest=7786/thunderaan-the-windseeker
     if len(parts) < 5:
       raise ValueError(f"URL format not recognized: {url}")
-
-    version_slug = first_segment
-    entity_segment = parts[4]  # quest=123, item=456, etc.
-    canonical_url = f"https://www.wowhead.com/{entity_segment}"
+    entity_and_name = "/".join(parts[4:])  # quest=123/name
+    canonical_url = f"https://www.wowhead.com/{entity_and_name}"
+    # Remove any query params
+    canonical_url = canonical_url.split("?")[0]
 
   return version_slug, canonical_url
 

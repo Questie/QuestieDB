@@ -16,12 +16,12 @@ from dataclasses import dataclass
 class VersionSlug(Enum):
   """Enum for WoW expansion version slugs with chronological ordering."""
 
-  RETAIL = ""
-  CLASSIC = "classic"
-  TBC = "tbc"
-  WOTLK = "wotlk"
-  CATA = "cata"
-  MOP_CLASSIC = "mop-classic"
+  RETAIL = ""  # [0]
+  CLASSIC = "classic"  # [1]
+  TBC = "tbc"  # [2]
+  WOTLK = "wotlk"  # [3]
+  CATA = "cata"  # [4]
+  MOP_CLASSIC = "mop-classic"  # [5]
 
   @property
   def order_index(self) -> int:
