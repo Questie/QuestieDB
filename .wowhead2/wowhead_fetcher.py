@@ -16,8 +16,8 @@ from urllib3.util.retry import Retry
 from wowhead_db import create_db, add_version, insert_translation_from_url
 
 # from sitemap import get_all_locs, get_version_delta
-from sitemap_processor import calculate_version_delta, get_version_sitemap_urls, get_locations, add_version_to_url
-from sitemap_types import VersionSlug, DeltaResult, EntityType
+from sitemap_processor import calculate_version_delta, get_locations
+from sitemap_types import VersionSlug, EntityType
 
 
 class WowheadFetcher:
