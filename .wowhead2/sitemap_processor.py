@@ -6,6 +6,7 @@ WoW expansion versions by fetching and comparing sitemap data from Wowhead.
 Modern Python patterns with protocols, immutable data, and strong typing.
 """
 
+import os
 import requests
 from functools import cache
 from xml.dom.minidom import parseString
@@ -29,7 +30,7 @@ def canonicalize_url(url: str) -> CanonicalUrl:
       version_path = f"/{version.value}/"
       if version_path in url:
         return CanonicalUrl(url.replace(version_path, "/"))
-  
+
   # Handle edge case where no version path is found (already canonical)
   return CanonicalUrl(url)
 
@@ -211,6 +212,12 @@ class RequestsSitemapFetcher:
       self.session.close()
 
 
+# ! #####################################################
+# ! #####################################################
+# ! Below is test code rather than actual implementation.
+# ! #####################################################
+# ! #####################################################
+
 # === FILE EXPORT UTILITIES ===
 
 
@@ -260,15 +267,20 @@ def export_version_comparison(target_version: VersionSlug, content_type: Content
 
 # === MAIN ENTRY POINT ===
 
-
-def main() -> None:
+if __name__ == "__main__":
   """Main function demonstrating the functional approach."""
   fetcher = None
   try:
+    # Get script directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    output_dir = os.path.join(script_dir, "debug-output")
+
     print("=== Functional Sitemap Processing Demo ===")
 
     # Create fetcher with dependency injection
     fetcher = RequestsSitemapFetcher()
+
+    os.makedirs(output_dir, exist_ok=True)
 
     # Example: Calculate delta between classic and tbc for quests
     print("\n--- Calculating Delta (Classic -> TBC, Quest) ---")
@@ -295,7 +307,10 @@ def main() -> None:
 
     # Example 2: Export comparison files
     print(f"\n--- Exporting Comparison Files ---")
-    export_version_comparison(VersionSlug.TBC, "quest", fetcher)
+    export_version_comparison(VersionSlug.TBC, "quest", fetcher, output_dir=output_dir)
+    export_version_comparison(VersionSlug.WOTLK, "quest", fetcher, output_dir=output_dir)
+    export_version_comparison(VersionSlug.CATA, "quest", fetcher, output_dir=output_dir)
+    export_version_comparison(VersionSlug.MOP_CLASSIC, "quest", fetcher, output_dir=output_dir)
 
     # Example 3: Export tooltip URLs
     print(f"\n--- Exporting Tooltip URLs ---")
@@ -308,12 +323,3 @@ def main() -> None:
     # Clean up session
     if fetcher is not None:
       del fetcher
-
-  key = ""
-  test = {}
-  test[key] = "hello"
-  print(test[key])
-
-
-if __name__ == "__main__":
-  main()
