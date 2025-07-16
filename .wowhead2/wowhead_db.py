@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS versions (
 
 CREATE TABLE IF NOT EXISTS translations (
     canonical_loc TEXT NOT NULL,
+    full_loc      TEXT NOT NULL,
     version_id    INTEGER NOT NULL REFERENCES versions(version_id),
     locale        TEXT NOT NULL,
     data          TEXT,
@@ -62,6 +63,8 @@ CREATE TABLE IF NOT EXISTS translations (
 CREATE INDEX IF NOT EXISTS idx_translations_lookup
     ON translations (canonical_loc, locale, version_id);
 """
+
+# full_loc  TEXT GENERATED ALWAYS AS (canonical_loc || '/' || locale
 
 
 def create_db(path: str | Path) -> sqlite3.Connection:
@@ -103,21 +106,21 @@ def _get_version_id(conn: sqlite3.Connection, slug: str) -> int:
   return row[0]
 
 
-def _extract_version_from_url(url: str) -> Tuple[str, str]:
+def _extract_version_from_url(url: str) -> Tuple[str, str, str]:
   """Extract version and canonical URL from a Wowhead URL.
 
   Args:
     url: Full Wowhead URL like 'https://www.wowhead.com/tbc/quest=7786/thunderaan-the-windseeker'
 
   Returns:
-    Tuple of (version_slug, canonical_url)
+    Tuple of (version_slug, canonical_url, canonical_url_with_name)
 
   Examples:
     'https://www.wowhead.com/tbc/quest=7786/thunderaan-the-windseeker'
-    -> ('tbc', 'https://www.wowhead.com/quest=7786/thunderaan-the-windseeker')
+    -> ('tbc', 'https://www.wowhead.com/quest=7786', 'https://www.wowhead.com/quest=7786/thunderaan-the-windseeker')
 
     'https://www.wowhead.com/quest=7786/thunderaan-the-windseeker'
-    -> ('unknown', 'https://www.wowhead.com/quest=7786/thunderaan-the-windseeker')
+    -> ('unknown', 'https://www.wowhead.com/quest=7786', 'https://www.wowhead.com/quest=7786/thunderaan-the-windseeker')
   """
   # Split URL by '/' and get the part after wowhead.com
   parts = url.split("/")
@@ -131,6 +134,7 @@ def _extract_version_from_url(url: str) -> Tuple[str, str]:
     version_slug = "unknown"
     # Remove any query params, keep path as-is
     canonical_url = url.split("?")[0]
+    canonical_url_with_name = canonical_url
   else:
     # First segment is version, rest is entity path (may include /name)
     version_slug = first_segment
@@ -140,45 +144,47 @@ def _extract_version_from_url(url: str) -> Tuple[str, str]:
     if len(parts) < 5:
       raise ValueError(f"URL format not recognized: {url}")
     entity_and_name = "/".join(parts[4:])  # quest=123/name
-    canonical_url = f"https://www.wowhead.com/{entity_and_name}"
+    canonical_url_with_name = f"https://www.wowhead.com/{entity_and_name}"
     # Remove any query params
-    canonical_url = canonical_url.split("?")[0]
+    canonical_url_with_name = canonical_url_with_name.split("?")[0]
+    entity = parts[4].split("?")[0]  # e.g. 'quest=7786'
+    canonical_url = f"https://www.wowhead.com/{entity}"
 
-  return version_slug, canonical_url
+  return version_slug, canonical_url, canonical_url_with_name
 
 
-def insert_translation(
-  conn: sqlite3.Connection,
-  canonical_loc: str,
-  version_slug: str,
-  locale: str,
-  data: bytes | str,
-  fetched_at: Optional[str] = None,
-) -> None:
-  """Insert or update a raw HTML/JSON data.
+# def insert_translation(
+#   conn: sqlite3.Connection,
+#   canonical_loc: str,
+#   version_slug: str,
+#   locale: str,
+#   data: bytes | str,
+#   fetched_at: Optional[str] = None,
+# ) -> None:
+#   """Insert or update a raw HTML/JSON data.
 
-  * `data` can be bytes (for future compression support) or str.
-  * Currently stored as TEXT, but function supports both types for flexibility.
-  * If `fetched_at` None -> now in ISO‑8601.
-  """
-  if fetched_at is None:
-    # Use timezone-aware UTC datetime as recommended
-    fetched_at = _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+#   * `data` can be bytes (for future compression support) or str.
+#   * Currently stored as TEXT, but function supports both types for flexibility.
+#   * If `fetched_at` None -> now in ISO‑8601.
+#   """
+#   if fetched_at is None:
+#     # Use timezone-aware UTC datetime as recommended
+#     fetched_at = _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
-  version_id = _get_version_id(conn, version_slug)
+#   version_id = _get_version_id(conn, version_slug)
 
-  conn.execute(
-    """
-        INSERT INTO translations(canonical_loc, version_id, locale, data, fetched_at)
-        VALUES (?, ?, ?, ?, ?)
-        ON CONFLICT(canonical_loc, version_id, locale) DO UPDATE SET
-            data       = excluded.data,
-            fetched_at = excluded.fetched_at
-        WHERE excluded.data IS NOT translations.data;
-        """,
-    (canonical_loc, version_id, locale, data, fetched_at),
-  )
-  conn.commit()
+#   conn.execute(
+#     """
+#         INSERT INTO translations(canonical_loc, version_id, locale, data, fetched_at)
+#         VALUES (?, ?, ?, ?, ?)
+#         ON CONFLICT(canonical_loc, version_id, locale) DO UPDATE SET
+#             data       = excluded.data,
+#             fetched_at = excluded.fetched_at
+#         WHERE excluded.data IS NOT translations.data;
+#         """,
+#     (canonical_loc, version_id, locale, data, fetched_at),
+#   )
+#   conn.commit()
 
 
 def insert_translation_from_url(
@@ -201,19 +207,19 @@ def insert_translation_from_url(
     # Use timezone-aware UTC datetime as recommended
     fetched_at = _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
-  version_slug, canonical_loc = _extract_version_from_url(url)
+  version_slug, canonical_loc, canonical_url_with_name = _extract_version_from_url(url)
   version_id = _get_version_id(conn, version_slug)
 
   conn.execute(
     """
-        INSERT INTO translations(canonical_loc, version_id, locale, data, fetched_at)
-        VALUES (?, ?, ?, ?, ?)
+        INSERT INTO translations(canonical_loc, full_loc, version_id, locale, data, fetched_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(canonical_loc, version_id, locale) DO UPDATE SET
             data       = excluded.data,
             fetched_at = excluded.fetched_at
         WHERE excluded.data IS NOT translations.data;
         """,
-    (canonical_loc, version_id, locale, data, fetched_at),
+    (canonical_loc, canonical_url_with_name, version_id, locale, data, fetched_at),
   )
   conn.commit()
 
@@ -269,20 +275,20 @@ def _demo() -> None:  # pragma: no cover
   add_version(conn, "mop-classic", 5, "2012-09-25")
 
   # Insert two copies of quest=2 in English using old method
-  insert_translation(
-    conn,
-    "https://www.wowhead.com/quest=2",
-    "classic",
-    "enUS",
-    "Classic flavour text",
-  )
-  insert_translation(
-    conn,
-    "https://www.wowhead.com/quest=2",
-    "tbc",
-    "enUS",
-    "TBC flavour text",
-  )
+  # insert_translation(
+  #   conn,
+  #   "https://www.wowhead.com/quest=2",
+  #   "classic",
+  #   "enUS",
+  #   "Classic flavour text",
+  # )
+  # insert_translation(
+  #   conn,
+  #   "https://www.wowhead.com/quest=2",
+  #   "tbc",
+  #   "enUS",
+  #   "TBC flavour text",
+  # )
 
   # Insert translation using URL with version extraction
   insert_translation_from_url(
@@ -304,8 +310,8 @@ def _demo() -> None:  # pragma: no cover
 
   for url in test_urls:
     try:
-      version, canonical = _extract_version_from_url(url)
-      print(f"  {url} -> version: {version}, canonical: {canonical}")
+      version, canonical, canonical_with_name = _extract_version_from_url(url)
+      print(f"  {url} -> version: {version}, canonical: {canonical}, canonical_with_name: {canonical_with_name}")
     except ValueError as e:
       print(f"  {url} -> ERROR: {e}")
 

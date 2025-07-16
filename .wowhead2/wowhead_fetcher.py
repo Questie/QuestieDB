@@ -17,7 +17,7 @@ from wowhead_db import create_db, add_version, insert_translation_from_url
 
 # from sitemap import get_all_locs, get_version_delta
 from sitemap_processor import calculate_version_delta, get_locations
-from sitemap_types import VersionSlug, EntityType
+from sitemap_types import VersionSlug, EntityType, Locale
 
 
 class WowheadFetcher:
@@ -281,6 +281,17 @@ def main() -> None:
     print(f"TBC: {tbc_success}/{tbc_total} successful")
     print(f"\nDatabase saved to: {fetcher.db_path}")
     print("You can now inspect the SQLite file to see the differences!")
+
+    from wowhead_db import get_translation
+
+    # Example of fetching a specific translation quest 1
+    canonical_loc = "https://www.wowhead.com/quest=1"
+    translation = get_translation(fetcher.conn, canonical_loc, "enUS", VersionSlug.TBC.value)
+
+    if translation:
+      print(f"Translation for Quest {canonical_loc}: {translation}")
+    else:
+      print(f"No translation found for Quest {canonical_loc}")
 
 
 if __name__ == "__main__":
