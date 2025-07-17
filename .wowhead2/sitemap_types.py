@@ -167,7 +167,6 @@ class VersionInfo:
   slug: VersionSlug
   display_name: str
   order_index: int
-  release_date: str
 
   def __lt__(self, other: "VersionInfo") -> bool:
     """Enable sorting by order index."""
@@ -233,11 +232,11 @@ class DeltaExporter(Protocol):
 
 # Supported WoW expansion versions in chronological order
 SUPPORTED_VERSIONS: tuple[VersionInfo, ...] = (
-  VersionInfo(VersionSlug.CLASSIC, "Classic", 0, "2004-11-23"),
-  VersionInfo(VersionSlug.TBC, "The Burning Crusade", 1, "2007-01-16"),
-  VersionInfo(VersionSlug.WOTLK, "Wrath of the Lich King", 2, "2008-11-13"),
-  VersionInfo(VersionSlug.CATA, "Cataclysm", 3, "2010-12-07"),
-  VersionInfo(VersionSlug.MOP_CLASSIC, "Mists of Pandaria Classic", 4, "2012-09-25"),
+  VersionInfo(VersionSlug.CLASSIC, "Classic", 0),
+  VersionInfo(VersionSlug.TBC, "The Burning Crusade", 1),
+  VersionInfo(VersionSlug.WOTLK, "Wrath of the Lich King", 2),
+  VersionInfo(VersionSlug.CATA, "Cataclysm", 3),
+  VersionInfo(VersionSlug.MOP_CLASSIC, "Mists of Pandaria Classic", 4),
 )
 
 # Extract just the version slugs for backward compatibility
