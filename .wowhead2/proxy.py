@@ -5,7 +5,7 @@ import time
 import datetime
 from dotenv import load_dotenv
 from urllib.parse import quote
-from typing import Optional  # Import Optional for type hinting
+from typing import Optional
 
 
 class RateLimitedProxyManager:
@@ -14,6 +14,7 @@ class RateLimitedProxyManager:
   def __init__(self, db_path="proxy_usage.db", rate_limit_seconds: float = 1):
     """
     Initializes the manager, loading config, preparing URLs, and setting up SQLite.
+    If proxy environment variables are not set, proxy support is disabled.
 
     Args:
         db_path (str): Path to the SQLite database file.
@@ -24,11 +25,19 @@ class RateLimitedProxyManager:
     self.password = os.getenv("PROXY_PASSWORD")
     self.proxy_host = os.getenv("PROXY_HOST")
     self.rate_limit_seconds = rate_limit_seconds
+    self.proxy_enabled = False  # Default to disabled
 
     if not self.username or not self.password or not self.proxy_host:
-      print("Error: Please provide PROXY_USERNAME, PROXY_PASSWORD, and PROXY_HOST in .env file or environment variables.")
-      exit(1)
+      print("Warning: Proxy environment variables (PROXY_USERNAME, PROXY_PASSWORD, PROXY_HOST) not found. Proxy support is disabled.")
+      self.all_ports = []
+      self.all_ports_set = set()
+      self.proxy_urls_by_port = {}
+      self.conn = None
+      self.cursor = None
+      self._db_lock = threading.Lock()  # Still need a lock to prevent errors on calls
+      return
 
+    self.proxy_enabled = True
     print("Proxy username:", self.username)
     print("Proxy password:", self.password[0] + "********")
     print("Proxy host:", self.proxy_host)
@@ -64,10 +73,17 @@ class RateLimitedProxyManager:
 
     self._initialize_db()
 
+  def is_enabled(self) -> bool:
+    """Returns True if proxy support is enabled, False otherwise."""
+    return self.proxy_enabled
+
   def _initialize_db(self):
     """Creates the necessary table if it doesn't exist."""
     if self.conn is None:
       print("Error: Database connection is not established.")
+      return
+    if self.cursor is None:
+      print("Error: Database cursor is not initialized.")
       return
     with self._db_lock:
       self.cursor.execute("""
@@ -87,6 +103,9 @@ class RateLimitedProxyManager:
     if self.conn is None:
       print("Error: Database connection is not established for cleanup.")
       return
+    if self.cursor is None:
+      print("Error: Database cursor is not initialized for cleanup.")
+      return
     # No need for separate lock here if called within get_next_proxy's lock
     try:
       cleanup_cutoff_time = datetime.datetime.now() - datetime.timedelta(hours=24)
@@ -101,17 +120,21 @@ class RateLimitedProxyManager:
       print(f"Error during database cleanup: {e}")
       # Consider rolling back if part of a larger transaction, though commit is safe here.
 
-  def get_next_proxy(self) -> Optional[str]:  # Changed return type hint
+  def get_next_proxy(self) -> Optional[str]:
     """
     Returns the proxy URL that hasn't been used within the rate limit window
     and was least recently used among the available ones. Cleans up old entries first.
     Returns None if no proxy is available within the rate limit window.
     """
+    if not self.proxy_enabled:
+      return None
+
     if self.conn is None:
       print("Error: Database connection is not established.")
-      # Consider raising an exception instead of exiting
-      # raise ConnectionError("Database connection is not established.")
-      exit(1)  # Or return None here as well? Depends on desired behavior.
+      exit(1)
+    if self.cursor is None:
+      print("Error: Database cursor is not initialized.")
+      exit(1)
 
     with self._db_lock:
       # --- Cleanup old entries ---
@@ -189,6 +212,11 @@ class RateLimitedProxyManager:
 if __name__ == "__main__":
   # Example with a 5-second rate limit
   proxy_manager = RateLimitedProxyManager(db_path="proxy_usage-test.db", rate_limit_seconds=1)
+
+  if not proxy_manager.is_enabled():
+    print("\nProxy support is not configured. Skipping proxy tests.")
+    proxy_manager.close()
+    exit()
 
   print("\nGetting proxies based on rate limit and least recent use:")
 
