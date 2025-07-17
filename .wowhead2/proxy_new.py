@@ -484,7 +484,7 @@ if __name__ == "__main__":
       time.sleep(0.5)
 
   threads = []
-  num_workers = 42
+  num_workers = int(32 / manager.rate_limit_seconds)  # Number of workers based on rate limit
   start_time = time.monotonic()
 
   for i in range(num_workers):
