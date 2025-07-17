@@ -5,12 +5,12 @@ import time
 import datetime
 from dotenv import load_dotenv
 from urllib.parse import quote
-from typing import Optional
+from typing import Optional, Dict, Set, List, Tuple, Any
 
 
 # Ports for US and GER proxies
-USProxyPorts = list(range(8001, 8027))  # US proxy ports
-GERProxyPorts = list(range(8027, 8033))  # GER proxy ports
+USProxyPorts: List[int] = list(range(8001, 8027))  # US proxy ports
+GERProxyPorts: List[int] = list(range(8027, 8033))  # GER proxy ports
 
 
 class RateLimitedProxyManager:
@@ -43,20 +43,36 @@ class RateLimitedProxyManager:
   - Graceful fallback when slots become available
   """
 
+  # Type hints for instance attributes
+  username: Optional[str]
+  password: Optional[str]
+  proxy_host: Optional[str]
+  rate_limit_seconds: float
+  proxy_enabled: bool
+  all_ports: List[int]
+  proxy_urls_by_port: Dict[int, str]
+  all_ports_set: Set[int]
+  db_path: str
+  conn: Optional[sqlite3.Connection]
+  cursor: Optional[sqlite3.Cursor]
+  _db_lock: threading.Lock
+  _waiting_count: int
+  _waiting_lock: threading.Lock
+
   # Add context manager support for better resource cleanup
   def __enter__(self) -> "RateLimitedProxyManager":
     return self
 
-  def __exit__(self, exc_type, exc_val, exc_tb) -> None:
+  def __exit__(self, exc_type: Optional[type], exc_val: Optional[Exception], exc_tb: Optional[Any]) -> None:
     self.close()
 
-  def __init__(self, ports_or_slot: list[int] = (USProxyPorts + GERProxyPorts), db_path="rate_usage.db", rate_limit_seconds: float = 1):
+  def __init__(self, ports_or_slot: list[int] = (USProxyPorts + GERProxyPorts), db_path: str = "rate_usage.db", rate_limit_seconds: float = 1) -> None:
     """
     Initializes the manager. If proxy environment variables are set, it manages proxy URLs.
     If not, it functions as a simple concurrency/rate limiter using abstract IDs.
 
     Args:
-        ports_or_slot (list[int]): A list of proxy ports or, if proxies are disabled,
+        ports_or_slot (Optional[List[int]]): A list of proxy ports or, if proxies are disabled,
                            a list whose length determines the number of concurrent slots.
         db_path (str): Path to the SQLite database file.
         rate_limit_seconds (float): Minimum time interval (in seconds) between uses of the same proxy/slot.
@@ -75,9 +91,9 @@ class RateLimitedProxyManager:
       raise ValueError("ports list contains duplicates")
 
     load_dotenv()
-    self.username = os.getenv("PROXY_USERNAME")
-    self.password = os.getenv("PROXY_PASSWORD")
-    self.proxy_host = os.getenv("PROXY_HOST")
+    self.username = os.getenv("PROXY_USERNAME") or None
+    self.password = os.getenv("PROXY_PASSWORD") or None
+    self.proxy_host = os.getenv("PROXY_HOST") or None
     self.rate_limit_seconds = rate_limit_seconds
     self.proxy_enabled = False  # Default to disabled
 
@@ -132,7 +148,7 @@ class RateLimitedProxyManager:
     """Returns True if proxy support is enabled, False otherwise."""
     return self.proxy_enabled
 
-  def _initialize_db(self):
+  def _initialize_db(self) -> None:
     """Creates the necessary table if it doesn't exist."""
     if self.conn is None:
       print("Error: Database connection is not established.")
@@ -180,7 +196,7 @@ class RateLimitedProxyManager:
       self.cursor.execute("CREATE INDEX IF NOT EXISTS idx_port_timestamp ON rate_usage (port_or_slot, timestamp)")
       self.conn.commit()
 
-  def _cleanup_old_entries(self):
+  def _cleanup_old_entries(self) -> None:
     """Removes entries older than 24 hours from the rate_usage table."""
     if self.conn is None:
       print("Error: Database connection is not established for cleanup.")
@@ -197,7 +213,7 @@ class RateLimitedProxyManager:
     except sqlite3.Error as e:
       print(f"Error during database cleanup: {e}")
 
-  def _get_next_available_slot(self) -> tuple[Optional[int], float]:
+  def _get_next_available_slot(self) -> Tuple[Optional[int], float]:
     """
     Internal method to find the next available port/slot and estimate wait time.
     Must be called within a _db_lock.
@@ -309,7 +325,7 @@ class RateLimitedProxyManager:
 
       return None, max(0, min(total_wait, max_wait))
 
-  def get_next_slot(self) -> tuple[Optional[int], float]:
+  def get_next_slot(self) -> Tuple[Optional[int], float]:
     """
     Checks for an available concurrency slot with queue-aware wait times.
 
@@ -354,7 +370,7 @@ class RateLimitedProxyManager:
 
         return None, wait_time
 
-  def get_next_proxy(self) -> tuple[Optional[str], float]:
+  def get_next_proxy(self) -> Tuple[Optional[str], float]:
     """
     Returns the next available proxy URL and an estimated wait time.
 
@@ -404,7 +420,7 @@ class RateLimitedProxyManager:
     """Returns the total number of concurrency slots available."""
     return len(self.all_ports)
 
-  def close(self):
+  def close(self) -> None:
     """Properly close the database connection and clean up WAL files."""
     if self.conn is not None:
       try:
@@ -443,8 +459,8 @@ if __name__ == "__main__":
   # --- Test Configuration ---
   # Set to True to test proxy mode, False to test rate-limiter-only mode.
   # For proxy mode to work, you must have a .env file with proxy credentials.
-  TEST_PROXY_MODE = False  # os.path.exists('.env')
-  DB_PATH = "ratelimit-test.db" if not TEST_PROXY_MODE else "rate_usage-test.db"
+  TEST_PROXY_MODE: bool = False  # os.path.exists('.env')
+  DB_PATH: str = "ratelimit-test.db" if not TEST_PROXY_MODE else "rate_usage-test.db"
   # --- End Test Configuration ---
 
   # Clean up old database file before test
@@ -472,14 +488,15 @@ if __name__ == "__main__":
   print(f"\nTotal available slots/proxies: {manager.concurrency_count()}")
   print("\nStarting workers to request access...")
 
-  successful_requests = 0
-  request_lock = threading.Lock()
+  successful_requests: int = 0
+  request_lock: threading.Lock = threading.Lock()
 
-  def worker(worker_id):
+  def worker(worker_id: int) -> None:
     global successful_requests
     for i in range(10):  # Each worker makes 10 requests
       if manager.is_enabled():  # Proxy mode test
-        next_proxy, wait_time = None, 0
+        next_proxy: Optional[str] = None
+        wait_time: float = 0
         while next_proxy is None:
           if wait_time > 0:
             # print(f"Sleeping for {wait_time}")
@@ -487,10 +504,11 @@ if __name__ == "__main__":
           next_proxy, wait_time = manager.get_next_proxy()
         with request_lock:
           successful_requests += 1
-        proxy_port = next_proxy.split(":")[-1]
+        proxy_port: str = next_proxy.split(":")[-1]
         print(f"Worker {worker_id},\t Request {i + 1}:\t Using proxy port {proxy_port}\t at {datetime.datetime.now().time()}")
       else:  # Rate-limiter mode test
-        can_proceed, wait_time = None, 0
+        can_proceed: Optional[int] = None
+        wait_time = 0
         while can_proceed is None:
           if wait_time > 0:
             # print(f"Sleeping for {wait_time}")
@@ -503,9 +521,9 @@ if __name__ == "__main__":
       # Simulate work
       time.sleep(0.5)
 
-  threads = []
-  num_workers = int(32 / manager.rate_limit_seconds)  # Number of workers based on rate limit
-  start_time = time.monotonic()
+  threads: List[threading.Thread] = []
+  num_workers: int = int(32 / manager.rate_limit_seconds)  # Number of workers based on rate limit
+  start_time: float = time.monotonic()
 
   for i in range(num_workers):
     t = threading.Thread(target=worker, args=(i + 1,), daemon=True)
@@ -516,8 +534,8 @@ if __name__ == "__main__":
   for t in threads:
     t.join()
 
-  end_time = time.monotonic()
-  elapsed_time = end_time - start_time
+  end_time: float = time.monotonic()
+  elapsed_time: float = end_time - start_time
 
   print("\nAll worker threads finished.")
   print("\n--- Performance Stats ---")
@@ -525,28 +543,28 @@ if __name__ == "__main__":
   print(f"Total successful requests: {successful_requests}")
   print(f"Total time elapsed: {elapsed_time:.2f} seconds")
   if elapsed_time > 0:
-    rate = successful_requests / elapsed_time
+    rate: float = successful_requests / elapsed_time
     print(f"Average request rate: {rate:.2f} requests/second")
 
   # --- Verification Step ---
   print("\n--- Verification ---")
-  db_path_to_verify = manager.db_path
-  total_slots_available = manager.concurrency_count()
-  all_slots_in_manager = set(manager.all_ports)
+  db_path_to_verify: str = manager.db_path
+  total_slots_available: int = manager.concurrency_count()
+  all_slots_in_manager: Set[int] = set(manager.all_ports)
 
   manager.close()  # Close the manager's connection to ensure all data is flushed
 
   print(f"Verifying database: {db_path_to_verify}")
   try:
-    conn_verify = sqlite3.connect(db_path_to_verify)
-    cursor_verify = conn_verify.cursor()
+    conn_verify: sqlite3.Connection = sqlite3.connect(db_path_to_verify)
+    cursor_verify: sqlite3.Cursor = conn_verify.cursor()
     cursor_verify.execute("SELECT DISTINCT port_or_slot FROM rate_usage")
-    used_ports = {row[0] for row in cursor_verify.fetchall()}
+    used_ports: Set[int] = {row[0] for row in cursor_verify.fetchall()}
     conn_verify.commit()
     cursor_verify.close()
     conn_verify.close()
 
-    used_ports_count = len(used_ports)
+    used_ports_count: int = len(used_ports)
     print(f"Total slots available in manager: {total_slots_available}")
     print(f"Unique slots used in test: {used_ports_count}")
 
@@ -554,7 +572,7 @@ if __name__ == "__main__":
       print("✅ Success: All available slots were utilized during the test.")
     else:
       print(f"❌ Failure: Expected {total_slots_available} slots to be used, but only {used_ports_count} were.")
-      missed_slots = all_slots_in_manager - used_ports
+      missed_slots: Set[int] = all_slots_in_manager - used_ports
       if missed_slots:
         print(f"   Missed slots: {sorted(list(missed_slots))}")
   except sqlite3.Error as e:
