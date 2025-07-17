@@ -127,29 +127,25 @@ class RateLimitedProxyManager:
       # we can trade durability for significant performance gains.
 
       # WAL mode: Allows concurrent readers while writing
-      self.cursor.execute("PRAGMA journal_mode=WAL")
+      # self.cursor.execute("PRAGMA journal_mode=WAL")
 
-      # Aggressive synchronization settings for maximum speed
-      # NORMAL: Only sync at critical moments (WAL checkpoints)
-      # OFF: Never sync (fastest, but risk of corruption on crash)
-      self.cursor.execute("PRAGMA synchronous=NORMAL")  # Change to OFF for maximum speed
+      # # Aggressive synchronization settings for maximum speed
+      # # NORMAL: Only sync at critical moments (WAL checkpoints)
+      # # OFF: Never sync (fastest, but risk of corruption on crash)
+      # self.cursor.execute("PRAGMA synchronous=NORMAL")  # Change to OFF for maximum speed
 
-      # Keep more data in memory before writing to disk
+      # # Keep more data in memory before writing to disk
       self.cursor.execute("PRAGMA cache_size=-64000")  # 64MB cache (negative = KB)
 
-      # Faster temporary storage (uses memory for temp tables/indexes)
+      # # Faster temporary storage (uses memory for temp tables/indexes)
       self.cursor.execute("PRAGMA temp_store=MEMORY")
 
-      # Reduce WAL checkpoint frequency (trade memory for fewer I/O operations)
-      # Default is 1000 pages, we increase to 10000 for less frequent checkpoints
-      self.cursor.execute("PRAGMA wal_autocheckpoint=10000")
-
-      # Optimize for our specific use case: many small transactions
-      # This reduces the number of page locks needed
+      # # Optimize for our specific use case: many small transactions
+      # # This reduces the number of page locks needed
       self.cursor.execute("PRAGMA locking_mode=NORMAL")  # Keep NORMAL for concurrent access
 
-      # Memory-mapped I/O for faster access (256MB mmap)
-      # This maps database pages directly into memory
+      # # Memory-mapped I/O for faster access (256MB mmap)
+      # # This maps database pages directly into memory
       self.cursor.execute("PRAGMA mmap_size=268435456")
 
       self.cursor.execute("""
@@ -202,6 +198,12 @@ class RateLimitedProxyManager:
 
     now = datetime.datetime.now()
     cutoff_time = now - datetime.timedelta(seconds=self.rate_limit_seconds)
+    if self.cursor is None:
+      print("Error: Database cursor is not initialized.")
+      return None, self.rate_limit_seconds
+    if self.conn is None:
+      print("Error: Database connection is not initialized.")
+      return None, self.rate_limit_seconds
 
     # Step 1: Find all ports_or_slots that have NEVER been used
     # These are immediately available with no wait time
@@ -383,12 +385,36 @@ class RateLimitedProxyManager:
     return len(self.all_ports)
 
   def close(self):
-    """Closes the database connection."""
-    with self._db_lock:
-      if self.conn:
-        self.conn.close()
-        self.conn = None
-        print("Database connection closed.")
+    """Properly close the database connection and clean up WAL files."""
+    if self.conn is not None:
+      try:
+        with self._db_lock:
+          # Force WAL checkpoint to merge WAL back into main database
+          # This is crucial for cleaning up .db-wal and .db-shm files
+          # if self.cursor is not None:
+          #   print("Performing WAL checkpoint to clean up WAL files...")
+          #   self.cursor.execute("PRAGMA wal_checkpoint(TRUNCATE)")
+
+          # Commit any pending transactions
+          self.conn.commit()
+
+          # Close cursor first
+          if self.cursor is not None:
+            self.cursor.close()
+            self.cursor = None
+
+          # Close connection
+          self.conn.close()
+          self.conn = None
+
+          print("Database connection closed and WAL files cleaned up.")
+
+      except sqlite3.Error as e:
+        print(f"Error during database cleanup: {e}")
+        # Force close even if there's an error
+        if self.conn is not None:
+          self.conn.close()
+          self.conn = None
 
 
 # ! Below is just test code for the class, not part of the class itself
@@ -496,6 +522,8 @@ if __name__ == "__main__":
     cursor_verify = conn_verify.cursor()
     cursor_verify.execute("SELECT DISTINCT port_or_slot FROM rate_usage")
     used_ports = {row[0] for row in cursor_verify.fetchall()}
+    conn_verify.commit()
+    cursor_verify.close()
     conn_verify.close()
 
     used_ports_count = len(used_ports)
