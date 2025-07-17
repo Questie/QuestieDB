@@ -5,7 +5,7 @@ canonical URL + expansion version, with automatic fallback queries.
 Schema
 ======
 versions(version_id PK, slug UNIQUE, order_idx UNIQUE)
-translations(canonical_loc, version_id → versions, locale, data, fetched_at)
+wowhead_data(canonical_loc, version_id → versions, locale, data, fetched_at)
 PRIMARY KEY(canonical_loc, version_id, locale)
 
 All SQL is vanilla SQLite 3 and runs on the builtin `sqlite3` module.
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS versions (
     order_idx    INTEGER UNIQUE NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS translations (
+CREATE TABLE IF NOT EXISTS wowhead_data (
     version_slug            TEXT    NOT NULL,
     locale                  TEXT    NOT NULL,
     entity_type             TEXT    NOT NULL,
@@ -59,8 +59,8 @@ CREATE TABLE IF NOT EXISTS translations (
     PRIMARY KEY (entity_id, entity_type, version_slug, locale)
 );
 
-CREATE INDEX IF NOT EXISTS idx_translations_lookup
-  ON translations (entity_id, entity_type, locale, version_slug);
+CREATE INDEX IF NOT EXISTS idx_wowhead_data_lookup
+  ON wowhead_data (entity_id, entity_type, locale, version_slug);
 """
 
 # full_loc                TEXT GENERATED ALWAYS AS (
@@ -113,14 +113,14 @@ def insert_raw_data_html(
 
   conn.execute(
     """
-        INSERT INTO translations(entity_id, entity_type, version_slug, locale, name_slug, lastmod, raw_html_data, fetched_at_raw_html)
+        INSERT INTO wowhead_data(entity_id, entity_type, version_slug, locale, name_slug, lastmod, raw_html_data, fetched_at_raw_html)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(entity_id, entity_type, version_slug, locale) DO UPDATE SET
             raw_html_data = excluded.raw_html_data,
             fetched_at_raw_html = excluded.fetched_at_raw_html,
             name_slug     = excluded.name_slug,
             lastmod       = excluded.lastmod
-        WHERE excluded.raw_html_data IS NOT translations.raw_html_data;
+        WHERE excluded.raw_html_data IS NOT wowhead_data.raw_html_data;
         """,
     (
       entity.entity_id,
@@ -148,14 +148,14 @@ def insert_raw_data_tooltip(
 
   conn.execute(
     """
-        INSERT INTO translations(entity_id, entity_type, version_slug, locale, name_slug, lastmod, raw_tooltip_data, fetched_at_raw_tooltip)
+        INSERT INTO wowhead_data(entity_id, entity_type, version_slug, locale, name_slug, lastmod, raw_tooltip_data, fetched_at_raw_tooltip)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(entity_id, entity_type, version_slug, locale) DO UPDATE SET
             raw_tooltip_data = excluded.raw_tooltip_data,
             fetched_at_raw_tooltip = excluded.fetched_at_raw_tooltip,
             name_slug        = excluded.name_slug,
             lastmod          = excluded.lastmod
-        WHERE excluded.raw_tooltip_data IS NOT translations.raw_tooltip_data;
+        WHERE excluded.raw_tooltip_data IS NOT wowhead_data.raw_tooltip_data;
         """,
     (
       entity.entity_id,
@@ -184,7 +184,7 @@ def get_raw_data_html(
   sql = """
     SELECT t.raw_html_data,
            v.slug AS version_used
-    FROM   translations AS t
+    FROM   wowhead_data AS t
     JOIN   versions     AS v ON v.slug = t.version_slug
     WHERE  t.entity_id   = ?
       AND  t.entity_type = ?
@@ -219,7 +219,7 @@ def get_raw_data_tooltip(
   sql = """
     SELECT t.raw_tooltip_data,
            v.slug AS version_used
-    FROM   translations AS t
+    FROM   wowhead_data AS t
     JOIN   versions     AS v ON v.slug = t.version_slug
     WHERE  t.entity_id   = ?
       AND  t.entity_type = ?
@@ -260,7 +260,7 @@ def _demo() -> None:  # pragma: no cover
   add_version(conn, VersionSlug.WOTLK.value, 3)
   print("Seeding complete.")
 
-  print("\n--- Inserting Translations ---")
+  print("\n--- Inserting Wowhead_data ---")
   # Create two entities for the same quest, but different versions
   quest_classic = WowheadEntity(
     entity_id=EntityId(2),
