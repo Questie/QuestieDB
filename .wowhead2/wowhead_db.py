@@ -16,7 +16,7 @@ from __future__ import annotations
 import datetime as _dt
 import sqlite3
 from pathlib import Path
-from typing import Optional, Tuple, Any
+from typing import Tuple, Any
 
 from sitemap_types import WowheadEntity, VersionSlug, Locale, EntityId
 
