@@ -72,6 +72,9 @@ class WowheadEntity:
   # The human-readable slug, e.g., "the-lich-king"
   name_slug: str | None = None
 
+  # Metadata
+  lastmod: str | None = None
+
   def generate_url(self) -> str:
     """
     Generate the full Wowhead URL for this entity.

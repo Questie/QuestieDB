@@ -46,29 +46,32 @@ CREATE TABLE IF NOT EXISTS versions (
 );
 
 CREATE TABLE IF NOT EXISTS translations (
-    entity_id         INTEGER NOT NULL,
-    entity_type       TEXT    NOT NULL,
-    version_slug      TEXT    NOT NULL,
-    locale            TEXT    NOT NULL,
-    full_loc          TEXT GENERATED ALWAYS AS (
-        'https://www.wowhead.com/' ||
-        CASE WHEN version_slug != '' THEN version_slug || '/' ELSE '' END ||
-        entity_type ||
-        '=' ||
-        entity_id ||
-        '/' ||
-        COALESCE(name_slug, '')
-    ),
-    fetched_at        TEXT DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
-    name_slug         TEXT,
-    raw_html_data     TEXT,
-    raw_tooltip_data  TEXT,
+    version_slug            TEXT    NOT NULL,
+    locale                  TEXT    NOT NULL,
+    entity_type             TEXT    NOT NULL,
+    entity_id               INTEGER NOT NULL,
+    name_slug               TEXT,
+    lastmod                 TEXT,
+    fetched_at_raw_html     TEXT,
+    fetched_at_raw_tooltip  TEXT,
+    raw_html_data           TEXT,
+    raw_tooltip_data        TEXT,
     PRIMARY KEY (entity_id, entity_type, version_slug, locale)
 );
 
 CREATE INDEX IF NOT EXISTS idx_translations_lookup
   ON translations (entity_id, entity_type, locale, version_slug);
 """
+
+# full_loc                TEXT GENERATED ALWAYS AS (
+#     'https://www.wowhead.com/' ||
+#     CASE WHEN version_slug != '' THEN version_slug || '/' ELSE '' END ||
+#     entity_type ||
+#     '=' ||
+#     entity_id ||
+#     '/' ||
+#     COALESCE(name_slug, '')
+# ),
 
 
 def create_db(path: str | Path) -> sqlite3.Connection:
@@ -110,12 +113,13 @@ def insert_raw_data_html(
 
   conn.execute(
     """
-        INSERT INTO translations(entity_id, entity_type, version_slug, locale, name_slug, raw_html_data, fetched_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO translations(entity_id, entity_type, version_slug, locale, name_slug, lastmod, raw_html_data, fetched_at_raw_html)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(entity_id, entity_type, version_slug, locale) DO UPDATE SET
             raw_html_data = excluded.raw_html_data,
-            fetched_at    = excluded.fetched_at,
-            name_slug     = excluded.name_slug
+            fetched_at_raw_html = excluded.fetched_at_raw_html,
+            name_slug     = excluded.name_slug,
+            lastmod       = excluded.lastmod
         WHERE excluded.raw_html_data IS NOT translations.raw_html_data;
         """,
     (
@@ -124,6 +128,7 @@ def insert_raw_data_html(
       entity.version.value,
       entity.locale.value,
       entity.name_slug,
+      entity.lastmod,
       data,
       fetched_at,
     ),
@@ -143,12 +148,13 @@ def insert_raw_data_tooltip(
 
   conn.execute(
     """
-        INSERT INTO translations(entity_id, entity_type, version_slug, locale, name_slug, raw_tooltip_data, fetched_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO translations(entity_id, entity_type, version_slug, locale, name_slug, lastmod, raw_tooltip_data, fetched_at_raw_tooltip)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(entity_id, entity_type, version_slug, locale) DO UPDATE SET
             raw_tooltip_data = excluded.raw_tooltip_data,
-            fetched_at       = excluded.fetched_at,
-            name_slug        = excluded.name_slug
+            fetched_at_raw_tooltip = excluded.fetched_at_raw_tooltip,
+            name_slug        = excluded.name_slug,
+            lastmod          = excluded.lastmod
         WHERE excluded.raw_tooltip_data IS NOT translations.raw_tooltip_data;
         """,
     (
@@ -157,6 +163,7 @@ def insert_raw_data_tooltip(
       entity.version.value,
       entity.locale.value,
       entity.name_slug,
+      entity.lastmod,
       data,
       fetched_at,
     ),
@@ -170,7 +177,7 @@ def insert_raw_data_tooltip(
 def get_raw_data_html(
   conn: sqlite3.Connection,
   entity: WowheadEntity,
-) -> Optional[Tuple[Any, str]]:
+) -> Tuple[Any, str | None]:
   """Return `(raw_html_data, version_used)` or `None` if no expansion up to target exists."""
   target_version_order_idx = conn.execute("SELECT order_idx FROM versions WHERE slug = ?", (entity.version.value,)).fetchone()["order_idx"]
 
@@ -199,13 +206,13 @@ def get_raw_data_html(
   row = cur.fetchone()
   if row:
     return row["raw_html_data"], row["version_used"]
-  return None
+  return None, ""
 
 
 def get_raw_data_tooltip(
   conn: sqlite3.Connection,
   entity: WowheadEntity,
-) -> Optional[Tuple[Any, str]]:
+) -> Tuple[Any, str | None]:
   """Return `(raw_tooltip_data, version_used)` or `None` if no expansion up to target exists."""
   target_version_order_idx = conn.execute("SELECT order_idx FROM versions WHERE slug = ?", (entity.version.value,)).fetchone()["order_idx"]
 
@@ -234,7 +241,7 @@ def get_raw_data_tooltip(
   row = cur.fetchone()
   if row:
     return row["raw_tooltip_data"], row["version_used"]
-  return None
+  return None, None
 
 
 # === EXAMPLE CLI USAGE ===

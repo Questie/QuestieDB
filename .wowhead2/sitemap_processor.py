@@ -122,7 +122,7 @@ def get_entities(
     all_entries.extend(entries)
 
   # Parse all URLs into structured entities
-  entities = [parse_url(entry.loc) for entry in all_entries]
+  entities = [parse_url(entry.loc, entry.lastmod) for entry in all_entries]
 
   # Sort by entity_id for consistent ordering
   return tuple(sorted(entities, key=lambda e: e.entity_id))

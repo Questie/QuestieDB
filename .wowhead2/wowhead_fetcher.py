@@ -154,14 +154,31 @@ def main() -> None:
       version=VersionSlug.CLASSIC,
       locale=Locale.enUS,
     )
-    translation = get_raw_data_html(fetcher.conn, test_entity)
+    dataClassic, versionClassic = get_raw_data_html(fetcher.conn, test_entity)
 
-    if translation:
+    if dataClassic:
       print(f"Successfully retrieved quest 1 for Classic.")
-      print(translation)
-      # print(f"  Data: {translation[0][:80]}...") # Print snippet
+      print(f"  Data: {dataClassic[:10]}...")  # Print snippet
+      print(versionClassic)
     else:
       print(f"Could not retrieve quest 1 for Classic.")
+
+    dataTbc, versionTbc = get_raw_data_html(
+      fetcher.conn,
+      WowheadEntity(
+        entity_id=EntityId(1),  # Assuming quest 1 exists in TBC
+        entity_type="quest",
+        version=VersionSlug.TBC,
+        locale=Locale.enUS,
+      ),
+    )
+
+    if dataTbc:
+      print(f"Successfully retrieved quest 1 for TBC.")
+      print(f"  Data: {dataTbc[:10]}...")  # Print snippet
+      print(versionTbc)
+    else:
+      print(f"Could not retrieve quest 1 for TBC.")
 
     print(f"\nDatabase saved to: {fetcher.db_path}")
 

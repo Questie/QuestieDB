@@ -59,7 +59,7 @@ VERSION_TO_NUMERIC = {
 # === CORE CONVERSION LOGIC ===
 
 
-def parse_url(url: str) -> WowheadEntity:
+def parse_url(url: str, lastmod: str | None = None) -> WowheadEntity:
   """
   Parses a Wowhead URL into a structured WowheadEntity.
   Automatically detects the entity type from the URL.
@@ -68,7 +68,7 @@ def parse_url(url: str) -> WowheadEntity:
       url: The full Wowhead URL to parse.
 
   Returns:
-      WowheadEntity: A structured identifier containing entity type, ID, version, locale, and optional name slug.
+      WowheadEntity: A structured entity containing entity type, ID, version, locale, and optional name slug.
   """
   parsed = urlparse(url)
   path_parts = [part for part in parsed.path.split("/") if part]
@@ -107,35 +107,36 @@ def parse_url(url: str) -> WowheadEntity:
     version=version,
     locale=locale,
     name_slug=name_slug,
+    lastmod=lastmod,
   )
 
 
-# def generate_url(identifier: WowheadEntity) -> str:
-#   """Generates a standard, versioned Wowhead URL from an identifier."""
+# def generate_url(entity: WowheadEntity) -> str:
+#   """Generates a standard, versioned Wowhead URL from an entity."""
 #   base = "https://www.wowhead.com"
 #   path_parts = []
 
-#   if identifier.version != VersionSlug.RETAIL:
-#     path_parts.append(identifier.version.value)
+#   if entity.version != VersionSlug.RETAIL:
+#     path_parts.append(entity.version.value)
 
-#   locale_segment = LOCALE_TO_URL_SEGMENT.get(identifier.locale)
+#   locale_segment = LOCALE_TO_URL_SEGMENT.get(entity.locale)
 #   if locale_segment:
 #     path_parts.append(locale_segment)
 
-#   path_parts.append(f"{identifier.entity_type}={identifier.entity_id}")
+#   path_parts.append(f"{entity.entity_type}={entity.entity_id}")
 
-#   if identifier.name_slug:
-#     path_parts.append(identifier.name_slug)
+#   if entity.name_slug:
+#     path_parts.append(entity.name_slug)
 
 #   return f"{base}/{'/'.join(path_parts)}"
 
 
-# def generate_tooltip_url(identifier: WowheadEntity) -> str:
+# def generate_tooltip_url(entity: WowheadEntity) -> str:
 #   """Generates a Wowhead tooltip URL (nether.wowhead.com)."""
-#   data_env = VERSION_TO_NUMERIC.get(identifier.version, 4)  # Default to Classic
-#   locale_code = LOCALE_TO_NUMERIC.get(identifier.locale, 0)  # Default to enUS
+#   data_env = VERSION_TO_NUMERIC.get(entity.version, 4)  # Default to Classic
+#   locale_code = LOCALE_TO_NUMERIC.get(entity.locale, 0)  # Default to enUS
 
-#   return f"https://nether.wowhead.com/tooltip/{identifier.entity_type}/{identifier.entity_id}?dataEnv={data_env}&locale={locale_code}"
+#   return f"https://nether.wowhead.com/tooltip/{entity.entity_type}/{entity.entity_id}?dataEnv={data_env}&locale={locale_code}"
 
 
 # === DEMO ===
@@ -154,10 +155,10 @@ def _demo() -> None:
   for url in urls_to_test:
     print(f"--- Testing URL: {url} ---")
     try:
-      identifier = parse_url(url)
-      print(f"  Parsed Identifier: {identifier}")
-      print(f"  Generated URL:     {identifier.generate_url()}")
-      print(f"  Tooltip URL:       {identifier.generate_tooltip_url()}\n")
+      entity = parse_url(url)
+      print(f"  Parsed Entity: {entity}")
+      print(f"  Generated URL:     {entity.generate_url()}")
+      print(f"  Tooltip URL:       {entity.generate_tooltip_url()}\n")
     except ValueError as e:
       print(f"  Error parsing: {e}\n")
 
