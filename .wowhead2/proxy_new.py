@@ -17,25 +17,25 @@ class RateLimitedProxyManager:
   """
   Provides proxies based on least recent usage, respecting a rate limit.
   Can also function as a simple rate limiter if proxy credentials are not provided.
-  
+
   ARCHITECTURE OVERVIEW:
   =====================
   This class solves the "thundering herd" problem that occurs when many workers
   compete for a limited number of rate-limited resources (proxy slots).
-  
+
   Traditional approach problems:
   - All workers calculate when the next slot becomes available
-  - Everyone gets the same tiny wait time (e.g., 0.01 seconds) 
+  - Everyone gets the same tiny wait time (e.g., 0.01 seconds)
   - All workers wake up simultaneously
   - Only one succeeds, others repeat the cycle
   - Creates database contention and poor performance
-  
+
   Our queue-aware solution:
   - Tracks how many workers are currently waiting (_waiting_count)
   - Distributes wait times based on queue position
   - Workers wake up in staggered batches instead of all at once
   - Reduces database contention and improves overall throughput
-  
+
   Key components:
   - SQLite database tracks last usage time for each slot/proxy
   - _waiting_count tracks current queue length
@@ -121,6 +121,37 @@ class RateLimitedProxyManager:
       print("Error: Database cursor is not initialized.")
       return
     with self._db_lock:
+      # PERFORMANCE OPTIMIZATIONS FOR RATE LIMITING
+      # ===========================================
+      # Since losing a few rate limit entries isn't critical for a scraper,
+      # we can trade durability for significant performance gains.
+
+      # WAL mode: Allows concurrent readers while writing
+      self.cursor.execute("PRAGMA journal_mode=WAL")
+
+      # Aggressive synchronization settings for maximum speed
+      # NORMAL: Only sync at critical moments (WAL checkpoints)
+      # OFF: Never sync (fastest, but risk of corruption on crash)
+      self.cursor.execute("PRAGMA synchronous=NORMAL")  # Change to OFF for maximum speed
+
+      # Keep more data in memory before writing to disk
+      self.cursor.execute("PRAGMA cache_size=-64000")  # 64MB cache (negative = KB)
+
+      # Faster temporary storage (uses memory for temp tables/indexes)
+      self.cursor.execute("PRAGMA temp_store=MEMORY")
+
+      # Reduce WAL checkpoint frequency (trade memory for fewer I/O operations)
+      # Default is 1000 pages, we increase to 10000 for less frequent checkpoints
+      self.cursor.execute("PRAGMA wal_autocheckpoint=10000")
+
+      # Optimize for our specific use case: many small transactions
+      # This reduces the number of page locks needed
+      self.cursor.execute("PRAGMA locking_mode=NORMAL")  # Keep NORMAL for concurrent access
+
+      # Memory-mapped I/O for faster access (256MB mmap)
+      # This maps database pages directly into memory
+      self.cursor.execute("PRAGMA mmap_size=268435456")
+
       self.cursor.execute("""
                 CREATE TABLE IF NOT EXISTS rate_usage (
                     port_or_slot INTEGER NOT NULL,
@@ -154,7 +185,7 @@ class RateLimitedProxyManager:
     """
     Internal method to find the next available port/slot and estimate wait time.
     Must be called within a _db_lock.
-    
+
     WAIT TIME CALCULATION STRATEGY:
     ===============================
     The goal is to provide realistic wait times that account for multiple workers
@@ -162,7 +193,7 @@ class RateLimitedProxyManager:
     all workers would get very short wait times (e.g., 0.01 seconds) because they're
     all calculating when the NEXT slot becomes available. This leads to a "thundering
     herd" effect where everyone wakes up at once and only one succeeds.
-    
+
     Our solution tracks how many workers are currently waiting and distributes
     the wait times based on queue position, ensuring workers don't all wake up
     simultaneously and create database contention.
@@ -217,21 +248,21 @@ class RateLimitedProxyManager:
     # Problem: If 100 workers all ask for the next available slot, they'll all get
     # the same short wait time (e.g., when slot #1 becomes free in 0.01 seconds).
     # When they all wake up, only 1 gets the slot, and the other 99 repeat the cycle.
-    # 
+    #
     # Solution: Distribute workers across time by considering their queue position.
     with self._waiting_lock:
       queue_position = self._waiting_count  # How many workers are ahead of us
-      
+
       # How many slots will become available in the next "batch"?
       # This is limited by either available slots or our total concurrency
       waiting_batch_size = min(len(available_slots), self.concurrency_count())
-      
+
       # Which "batch" does this worker fall into?
       # Batch 0 = workers 0-7 (if batch size is 8)
       # Batch 1 = workers 8-15, etc.
       batch_number = queue_position // waiting_batch_size
       slot_in_batch = queue_position % waiting_batch_size
-      
+
       # Calculate base wait time for this worker's position
       if slot_in_batch < len(available_slots):
         # This worker gets one of the slots in the current batch
@@ -241,30 +272,33 @@ class RateLimitedProxyManager:
         # This worker needs to wait for the next full cycle
         # (more workers than available slots in this batch)
         base_wait = available_slots[-1][1] + self.rate_limit_seconds
-      
+
       # Add additional wait time for workers in later batches
       # Each batch must wait an additional rate_limit_seconds beyond the previous batch
       total_wait = base_wait + (batch_number * self.rate_limit_seconds)
-      
+
       # Example with 8 slots, 20 workers, 1s rate limit:
       # Workers 0-7 (batch 0): Wait 0.01s, 0.02s, 0.03s, etc. (base times)
-      # Workers 8-15 (batch 1): Wait base_times + 1s 
+      # Workers 8-15 (batch 1): Wait base_times + 1s
       # Workers 16-19 (batch 2): Wait base_times + 2s
-      
-      return None, max(0, total_wait)
+
+      # Simple cap to prevent astronomical wait times
+      max_wait = self.rate_limit_seconds * 5  # Never wait more than 5x rate limit
+
+      return None, max(0, min(total_wait, max_wait))
 
   def get_next_slot(self) -> tuple[Optional[int], float]:
     """
     Checks for an available concurrency slot with queue-aware wait times.
-    
+
     WAITING COUNTER MANAGEMENT:
     ==========================
     We track _waiting_count to know how many workers are currently waiting for slots.
     This counter is used in _get_next_available_slot() to calculate realistic wait times.
-    
+
     - INCREMENT when we return None (worker is about to wait)
     - DECREMENT when we return a slot (worker is no longer waiting)
-    
+
     This prevents the "thundering herd" problem where all workers get tiny wait times
     and wake up simultaneously, creating database contention.
     """
@@ -305,7 +339,7 @@ class RateLimitedProxyManager:
     If a proxy is available, returns its URL and a wait time of 0.
     If not, returns None and the estimated time in seconds until the
     next proxy is free. Returns (None, 0.0) if proxy support is disabled.
-    
+
     Uses the same queue-aware wait time calculation as get_next_slot() to prevent
     the "thundering herd" effect when many workers compete for limited proxy slots.
     """
@@ -325,13 +359,13 @@ class RateLimitedProxyManager:
         current_timestamp_str = datetime.datetime.now().isoformat()
         self.cursor.execute("INSERT INTO rate_usage (port_or_slot, timestamp) VALUES (?, ?)", (selected_port, current_timestamp_str))
         self.conn.commit()
-        
+
         # Decrement waiting count since we're no longer waiting
         # (Important: this worker was counted in _get_next_available_slot())
         with self._waiting_lock:
           if self._waiting_count > 0:
             self._waiting_count -= 1
-        
+
         # Return the corresponding proxy URL
         return self.proxy_urls_by_port.get(selected_port), 0.0
       else:
@@ -340,7 +374,7 @@ class RateLimitedProxyManager:
         # (This count will be used by future calls to calculate queue position)
         with self._waiting_lock:
           self._waiting_count += 1
-        
+
         # Return calculated wait time (includes queue-aware distribution)
         return None, wait_time
 
@@ -424,7 +458,7 @@ if __name__ == "__main__":
       time.sleep(0.5)
 
   threads = []
-  num_workers = 64
+  num_workers = 42
   start_time = time.monotonic()
 
   for i in range(num_workers):
