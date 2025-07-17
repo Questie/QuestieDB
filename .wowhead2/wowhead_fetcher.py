@@ -8,290 +8,162 @@ from __future__ import annotations
 
 import time
 from pathlib import Path
-from typing import Optional, List
+from typing import Optional, Iterable
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-from wowhead_db import create_db, add_version, insert_translation_from_url
-
-# from sitemap import get_all_locs, get_version_delta
-from sitemap_processor import calculate_version_delta, get_locations
-from sitemap_types import VersionSlug, EntityType, Locale
+from wowhead_db import create_db, add_version, insert_raw_data_html, get_raw_data_html
+from sitemap_processor import (
+  calculate_version_delta,
+  get_entities,
+  RequestsSitemapFetcher,
+)
+from sitemap_types import (
+  VersionSlug,
+  EntityType,
+  Locale,
+  WowheadEntity,
+  EntityId,
+)
 
 
 class WowheadFetcher:
   """Single-threaded fetcher for Wowhead pages."""
 
-  def __init__(self, db_path: str | Path = "wowhead.sqlite", locale: str = "enUS"):
-    """Initialize the fetcher with database connection and HTTP session.
-
-    Args:
-      db_path: Path to the SQLite database file
-      locale: Locale for fetching pages (enUS, deDE, frFR, etc.)
-    """
+  def __init__(self, db_path: str | Path = "wowhead.sqlite", locale: Locale = Locale.enUS):
     self.db_path = Path(db_path)
     self.locale = locale
     self.conn = create_db(self.db_path)
     self.session = self._create_session()
-
-    # Initialize versions in database
+    self.sitemap_fetcher = RequestsSitemapFetcher()
     self._seed_versions()
 
   def _create_session(self) -> requests.Session:
-    """Create a configured requests session with retries and proper headers."""
     session = requests.Session()
-
-    # Configure retry strategy
-    retry_strategy = Retry(total=3, backoff_factor=1, status_forcelist=[429, 500, 502, 503, 504], allowed_methods=["HEAD", "GET", "OPTIONS"])
-
+    retry_strategy = Retry(
+      total=3,
+      backoff_factor=1,
+      status_forcelist=[429, 500, 502, 503, 504],
+    )
     adapter = HTTPAdapter(max_retries=retry_strategy)
-    session.mount("http://", adapter)
     session.mount("https://", adapter)
-
-    # Set proper headers to avoid being blocked
     session.headers.update(
       {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-        "Accept-Language": "en-US,en;q=0.5",
-        "Accept-Encoding": "gzip, deflate",
-        "Connection": "keep-alive",
-        "Upgrade-Insecure-Requests": "1",
+        "Accept-Language": f"{self.locale.value.split('US')[0]}-US,en;q=0.5",
       }
     )
-
     return session
 
   def _seed_versions(self) -> None:
     """Seed the database with known expansion versions."""
-    versions = [
-      ("unknown", 0, None),
-      ("classic", 1, "2004-11-23"),
-      ("tbc", 2, "2007-01-16"),
-      ("wotlk", 3, "2008-11-13"),
-      ("cata", 4, "2010-12-07"),
-      ("mop-classic", 5, "2012-09-25"),
-    ]
-
-    for slug, order_idx, released_at in versions:
-      add_version(self.conn, slug, order_idx, released_at)
+    for version in VersionSlug:
+      add_version(self.conn, version.value, version.order_index)
 
   def fetch_url(self, url: str, delay: float = 1.0) -> Optional[str]:
-    """Fetch a single URL with error handling and rate limiting.
-
-    Args:
-      url: The URL to fetch
-      delay: Delay in seconds between requests
-
-    Returns:
-      Raw HTML entity or None if fetch failed
-    """
     try:
       print(f"Fetching: {url}")
       response = self.session.get(url, timeout=30)
       response.raise_for_status()
-
-      # Add delay to be respectful to the server
       time.sleep(delay)
-
       return response.text
-
-    except requests.exceptions.RequestException as request_error:
-      print(f"Error fetching {url}: {request_error}")
-      return None
-    except Exception as general_error:
-      print(f"Unexpected error fetching {url}: {general_error}")
+    except requests.exceptions.RequestException as e:
+      print(f"Error fetching {url}: {e}")
       return None
 
-  def fetch_and_store(self, url: str, delay: float = 1.0) -> bool:
-    """Fetch a URL and store it in the database.
-
-    Args:
-      url: The URL to fetch and store
-      delay: Delay in seconds between requests
-
-    Returns:
-      True if successful, False otherwise
-    """
-    html_entity = self.fetch_url(url, delay)
-    if html_entity is None:
+  def fetch_and_store(self, entity: WowheadEntity, delay: float = 1.0) -> bool:
+    url = entity.generate_url()
+    html_content = self.fetch_url(url, delay)
+    if html_content is None:
       return False
 
     try:
-      insert_translation_from_url(self.conn, url, self.locale, html_entity.encode("utf-8"))
+      insert_raw_data_html(self.conn, entity, html_content)
       print(f"Stored: {url}")
       return True
-
-    except Exception as db_error:
-      print(f"Database error storing {url}: {db_error}")
+    except Exception as e:
+      print(f"Database error storing {url}: {e}")
       return False
 
-  def fetch_version_entity(self, version: VersionSlug, entity_type: EntityType, limit: Optional[int] = None, delay: float = 1.0) -> tuple[int, int]:
-    """Fetch all entity of a specific type for a version.
+  def _fetch_entities(self, entities: Iterable[WowheadEntity], limit: Optional[int], delay: float) -> tuple[int, int]:
+    """Helper to fetch and store a list of entities."""
+    entities_to_fetch = list(entities)
+    if limit:
+      entities_to_fetch = entities_to_fetch[:limit]
 
-    Args:
-      version: The expansion version (classic, tbc, wotlk, etc.)
-      entity_type: The entity type (quest, item, npc, etc.)
-      limit: Maximum number of URLs to fetch (None for all)
-      delay: Delay in seconds between requests
-
-    Returns:
-      Tuple of (successful_fetches, total_attempts)
-    """
-    print(f"Fetching {entity_type} entity for {version}...")
-
-    try:
-      _, urls = get_locations(version, entity_type)
-      urls = tuple(urls)
-
-      if limit:
-        urls = urls[:limit]
-
-      print(urls)
-
-      print(f"Found {len(urls)} URLs to fetch")
-
-      successful = 0
-      total = len(urls)
-
-      for index, url in enumerate(urls, 1):
-        print(f"Progress: {index}/{total}")
-
-        if self.fetch_and_store(url, delay):
-          successful += 1
-        else:
-          print(f"Failed to fetch URL {index}/{total}: {url}")
-
-      print(f"Completed: {successful}/{total} successful fetches")
-      return successful, total
-
-    except Exception as error:
-      print(f"Error in fetch_version_entity: {error}")
-      return 0, 0
-
-  def fetch_delta_entity(self, target_version: VersionSlug, entity_type: EntityType, full_fetch: bool = False, limit: Optional[int] = None, delay: float = 1.0) -> tuple[int, int]:
-    """Fetch only the delta entity between versions.
-
-    Args:
-      target_version: The target expansion version
-      entity_type: The entity type (quest, item, npc, etc.)
-      delay: Delay in seconds between requests
-
-    Returns:
-      Tuple of (successful_fetches, total_attempts)
-    """
-    print(f"Fetching delta {entity_type} entity for {target_version}...")
-
-    try:
-      delta_result = calculate_version_delta(target_version, entity_type)
-      if full_fetch:
-        urls = delta_result.all_urls  # Fetch all URLs including fixed ones
-      else:
-        urls = delta_result.added_urls  # We only fetch new URLs for the target version
-
-      if limit:
-        urls = urls[:limit]
-
-      print(f"Found {len(urls)} delta URLs to fetch")
-      print(f"  Added: {len(delta_result.added_urls)}")
-      print(f"  Removed: {len(delta_result.removed_urls)}")
-
-      successful = 0
-      total = len(urls)
-
-      for index, url in enumerate(urls, 1):
-        print(f"Progress: {index}/{total}")
-
-        if self.fetch_and_store(url, delay):
-          successful += 1
-        else:
-          print(f"Failed to fetch URL {index}/{total}: {url}")
-
-      print(f"Completed: {successful}/{total} successful fetches")
-      return successful, total
-
-    except Exception as error:
-      print(f"Error in fetch_delta_entity: {error}")
-      return 0, 0
-
-  def fetch_specific_ids(self, version: str, entity_type: str, id_list: List[int], delay: float = 1.0) -> tuple[int, int]:
-    """Fetch specific entity IDs for testing or targeted fetching.
-
-    Args:
-      version: The expansion version
-      entity_type: The entity type (quest, item, npc, etc.)
-      id_list: List of specific IDs to fetch
-      delay: Delay in seconds between requests
-
-    Returns:
-      Tuple of (successful_fetches, total_attempts)
-    """
-    print(f"Fetching specific {entity_type} IDs for {version}: {id_list}")
-
+    total = len(entities_to_fetch)
     successful = 0
-    total = len(id_list)
-
-    for index, entity_id in enumerate(id_list, 1):
-      # Construct URL based on version and entity type
-      if version == "unknown":
-        url = f"https://www.wowhead.com/{entity_type}={entity_id}"
-      else:
-        url = f"https://www.wowhead.com/{version}/{entity_type}={entity_id}"
-
-      print(f"Progress: {index}/{total}")
-
-      if self.fetch_and_store(url, delay):
+    for i, entity in enumerate(entities_to_fetch, 1):
+      print(f"Progress: {i}/{total}")
+      if self.fetch_and_store(entity, delay):
         successful += 1
       else:
-        print(f"Failed to fetch ID {index}/{total}: {entity_id}")
+        print(f"Failed to fetch {i}/{total}: {entity.generate_url()}")
 
     print(f"Completed: {successful}/{total} successful fetches")
     return successful, total
 
+  def fetch_version_entities(self, version: VersionSlug, entity_type: EntityType, limit: Optional[int] = None, delay: float = 1.0) -> tuple[int, int]:
+    print(f"Fetching all '{entity_type}' entities for '{version.value}'...")
+    entities = get_entities(version, entity_type, self.sitemap_fetcher, self.locale)
+    return self._fetch_entities(entities, limit, delay)
+
+  def fetch_delta_entities(self, target_version: VersionSlug, entity_type: EntityType, limit: Optional[int] = None, delay: float = 1.0) -> tuple[int, int]:
+    print(f"Fetching delta '{entity_type}' entities for '{target_version.value}'...")
+    delta = calculate_version_delta(target_version, entity_type, self.sitemap_fetcher, self.locale)
+    # We only care about newly added things for the target version
+    return self._fetch_entities(delta.added_entities, limit, delay)
+
+  def fetch_specific_ids(self, version: VersionSlug, entity_type: EntityType, id_list: list[int], delay: float = 1.0) -> tuple[int, int]:
+    print(f"Fetching specific {entity_type} IDs for {version.value}: {id_list}")
+    entities = [WowheadEntity(entity_id=EntityId(id), entity_type=entity_type, version=version, locale=self.locale) for id in id_list]
+    return self._fetch_entities(entities, None, delay)
+
   def close(self) -> None:
-    """Close the database connection and HTTP session."""
     if hasattr(self, "conn"):
       self.conn.close()
     if hasattr(self, "session"):
       self.session.close()
 
   def __enter__(self):
-    """Context manager entry."""
     return self
 
   def __exit__(self, exc_type, exc_val, exc_tb):
-    """Context manager exit."""
     self.close()
 
 
 def main() -> None:
-  """Main function to fetch first 5 quests from classic iand TBC for comparison."""
-  print("=== Wowhead Fetcher: First 5 Quests (Classic vs TBC) ===")
+  db_path = Path("wowhead_refactored.db")
+  if db_path.exists():
+    db_path.unlink()
 
-  with WowheadFetcher() as fetcher:
+  print("=== Wowhead Fetcher Demo ===")
+  with WowheadFetcher(db_path=db_path) as fetcher:
     print("\n--- Fetching first 5 Classic quests ---")
-    classic_success, classic_total = fetcher.fetch_version_entity(VersionSlug.CLASSIC, "quest", limit=5, delay=1.0)
+    fetcher.fetch_version_entities(VersionSlug.CLASSIC, "quest", limit=5)
 
-    print("\n--- Fetching first 5 TBC quests ---")
-    tbc_success, tbc_total = fetcher.fetch_delta_entity(VersionSlug.TBC, "quest", limit=5, delay=1.0)
+    print("\n--- Fetching first 5 added TBC quests ---")
+    fetcher.fetch_delta_entities(VersionSlug.TBC, "quest", limit=5)
 
-    print("\n=== Results ===")
-    print(f"Classic: {classic_success}/{classic_total} successful")
-    print(f"TBC: {tbc_success}/{tbc_total} successful")
-    print(f"\nDatabase saved to: {fetcher.db_path}")
-    print("You can now inspect the SQLite file to see the differences!")
-
-    from wowhead_db import get_translation
-
-    # Example of fetching a specific translation quest 1
-    canonical_loc = "https://www.wowhead.com/quest=1"
-    translation = get_translation(fetcher.conn, canonical_loc, "enUS", VersionSlug.TBC.value)
+    print("\n=== Verifying a Fetched Quest ===")
+    # Verify that a quest fetched from Classic can be retrieved
+    test_entity = WowheadEntity(
+      entity_id=EntityId(1),  # Assuming quest 1 exists and was fetched
+      entity_type="quest",
+      version=VersionSlug.CLASSIC,
+      locale=Locale.enUS,
+    )
+    translation = get_raw_data_html(fetcher.conn, test_entity)
 
     if translation:
-      print(f"Translation for Quest {canonical_loc}: {translation}")
+      print(f"Successfully retrieved quest 1 for Classic.")
+      print(translation)
+      # print(f"  Data: {translation[0][:80]}...") # Print snippet
     else:
-      print(f"No translation found for Quest {canonical_loc}")
+      print(f"Could not retrieve quest 1 for Classic.")
+
+    print(f"\nDatabase saved to: {fetcher.db_path}")
 
 
 if __name__ == "__main__":

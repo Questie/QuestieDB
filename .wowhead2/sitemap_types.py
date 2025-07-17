@@ -54,17 +54,56 @@ class Locale(Enum):
 EntityType = Literal["quest", "item", "npc", "zone", "spell", "achievement"]
 """Literal type for supported Wowhead entity types."""
 
-CanonicalUrl = NewType("CanonicalUrl", str)
-"""Strong type for canonical URLs without version paths."""
-
-VersionSpecificUrl = NewType("VersionSpecificUrl", str)
-"""Strong type for version-specific URLs with expansion paths."""
-
 EntityId = NewType("EntityId", int)
 """Strong type for Wowhead entity IDs extracted from URLs."""
 
 
 # === IMMUTABLE DATA STRUCTURES ===
+
+
+@dataclass(frozen=True, order=True)
+class WowheadEntity:
+  """A type-safe, structured representation of a Wowhead entity's identity."""
+
+  entity_id: EntityId
+  entity_type: EntityType
+  version: VersionSlug
+  locale: Locale
+  # The human-readable slug, e.g., "the-lich-king"
+  name_slug: str | None = None
+
+  def generate_url(self) -> str:
+    """
+    Generate the full Wowhead URL for this entity.
+
+    Returns:
+      The complete URL string for the entity.
+    """
+    base_url = "https://www.wowhead.com/"
+
+    locale_segment = LOCALE_TO_URL_SEGMENT.get(self.locale)
+    if locale_segment is None:
+      raise ValueError(f"Unsupported locale: {self.locale}")
+
+    version_segment = self.version.value + "/" if self.version != VersionSlug.RETAIL else ""
+
+    # enUS is "" empty, otherwise they are 2 characters, so check for len(locale_segment) > 0
+    locale_separator = "/" if len(locale_segment) > 0 else ""
+
+    return f"{base_url}{version_segment}{locale_segment}{locale_separator}{self.entity_type}={self.entity_id}/{self.name_slug or ''}".rstrip("/")
+
+  def generate_tooltip_url(self) -> str:
+    """
+    Generate the tooltip URL for this entity.
+
+    Returns:
+      The complete tooltip URL string for the entity.
+    """
+    # Default to Classic
+    data_env = VERSION_TO_NUMERIC.get(self.version, VERSION_TO_NUMERIC[VersionSlug.CLASSIC])
+    # Default to enUS
+    locale_code = LOCALE_TO_NUMERIC.get(self.locale, LOCALE_TO_NUMERIC[Locale.enUS])
+    return f"https://www.wowhead.com/tooltip?{self.entity_type}={self.entity_id}&locale={locale_code}&version={data_env}"
 
 
 @dataclass(frozen=True)
@@ -102,14 +141,14 @@ class DeltaResult:
   target_version: VersionSlug
   previous_version: VersionSlug
   entity_type: EntityType
-  all_urls: tuple[VersionSpecificUrl, ...]
-  added_urls: tuple[VersionSpecificUrl, ...]
-  removed_urls: tuple[VersionSpecificUrl, ...]
+  all_entities: tuple[WowheadEntity, ...]
+  added_entities: tuple[WowheadEntity, ...]
+  removed_entities: tuple[WowheadEntity, ...]
 
   @property
   def change_count(self) -> int:
     """Total number of changes (added + removed)."""
-    return len(self.added_urls) + len(self.removed_urls)
+    return len(self.added_entities) + len(self.removed_entities)
 
   @property
   def has_changes(self) -> bool:
@@ -190,27 +229,6 @@ class DeltaExporter(Protocol):
     ...
 
 
-class UrlTransformer(Protocol):
-  """
-  Protocol for URL transformation operations.
-
-  Enables different URL handling strategies while maintaining
-  a consistent interface.
-  """
-
-  def canonicalize_url(self, url: str) -> CanonicalUrl:
-    """Convert version-specific URL to canonical form."""
-    ...
-
-  def add_version_to_url(self, canonical_url: CanonicalUrl, version: VersionSlug) -> VersionSpecificUrl:
-    """Add version segment to canonical URL."""
-    ...
-
-  def extract_entity_id(self, url: str) -> EntityId:
-    """Extract numeric entity ID from URL."""
-    ...
-
-
 # === CONSTANTS ===
 
 # Supported WoW expansion versions in chronological order
@@ -227,3 +245,49 @@ VERSION_SLUGS: tuple[VersionSlug, ...] = tuple(version.slug for version in SUPPO
 
 # All supported locales (using enum values)
 SUPPORTED_LOCALES: tuple[Locale, ...] = tuple(Locale)
+
+# === MAPPINGS ===
+
+# Reverse lookups for string to enum conversion
+STRING_TO_LOCALE = {locale.value: locale for locale in Locale}
+STRING_TO_VERSION = {version.value: version for version in VersionSlug}
+
+# URL segment mappings for locales
+LOCALE_TO_URL_SEGMENT = {
+  Locale.enUS: "",  # English (US) # Yes EN is empty
+  Locale.ptBR: "pt",  # Portuguese (Brazil)
+  Locale.ruRU: "ru",  # Russian (Russia)
+  Locale.deDE: "de",  # German (Germany)
+  Locale.koKR: "ko",  # Korean (Korea)
+  Locale.esES: "es",  # Spanish (Spain)
+  Locale.frFR: "fr",  # French (France)
+  Locale.esMX: "mx",  # Spanish (Mexico)
+  Locale.zhTW: "tw",  # Traditional Chinese (Taiwan)
+  Locale.zhCN: "cn",  # Simplified Chinese (China)
+  Locale.itIT: "it",  # Italian (Italy)
+}
+URL_SEGMENT_TO_LOCALE = {v: k for k, v in LOCALE_TO_URL_SEGMENT.items()}
+
+# Numeric codes used in tooltip URLs
+LOCALE_TO_NUMERIC = {
+  Locale.enUS: 0,  # English (US)
+  Locale.ptBR: 8,  # Portuguese (Brazil)
+  Locale.ruRU: 7,  # Russian (Russia)
+  Locale.deDE: 3,  # German (Germany)
+  Locale.koKR: 1,  # Korean (Korea)
+  Locale.esES: 6,  # Spanish (Spain)
+  Locale.frFR: 2,  # French (France)
+  Locale.esMX: 11,  # Spanish (Mexico)
+  Locale.zhTW: 10,  # Traditional Chinese (Taiwan)
+  Locale.zhCN: 4,  # Simplified Chinese (China)
+  Locale.itIT: 9,  # Italian (Italy)
+}
+
+VERSION_TO_NUMERIC = {
+  VersionSlug.RETAIL: 1,  # Retail version of the game
+  VersionSlug.CLASSIC: 4,  # Classic version of the game
+  VersionSlug.TBC: 5,  # The Burning Crusade version
+  VersionSlug.WOTLK: 8,  # Wrath of the Lich King version
+  VersionSlug.CATA: 11,  # Cataclysm version
+  VersionSlug.MOP_CLASSIC: 15,  # Mists of Pandaria version
+}

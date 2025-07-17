@@ -4,20 +4,11 @@ canonical URL + expansion version, with automatic fallback queries.
 
 Schema
 ======
-versions(version_id PK, slug UNIQUE, order_idx UNIQUE, released_at)
+versions(version_id PK, slug UNIQUE, order_idx UNIQUE)
 translations(canonical_loc, version_id → versions, locale, data, fetched_at)
 PRIMARY KEY(canonical_loc, version_id, locale)
 
-Public helpers
---------------
-create_db(path)               → initialise / upgrade schema
-add_version(conn, slug, idx)  → insert row in versions (idempotent)
-insert_translation(conn, canonical_loc, version_slug, locale, data,
-                   fetched_at=None) → UPSERT raw HTML/JSON
-insert_translation_from_url(conn, url, locale, data, fetched_at=None) → UPSERT raw HTML/JSON from URL
-get_translation(conn, canonical_loc, locale, target_slug) → fallback lookup
-
-All SQL is vanilla SQLite 3 and runs on the builtin `sqlite3` module.
+All SQL is vanilla SQLite 3 and runs on the builtin `sqlite3` module.
 """
 
 from __future__ import annotations
@@ -27,297 +18,318 @@ import sqlite3
 from pathlib import Path
 from typing import Optional, Tuple, Any
 
-###############################################################################
-# Schema & connection helpers
-###############################################################################
+from sitemap_types import WowheadEntity, VersionSlug, Locale, EntityId
+
+
+# === SCHEMA & CONNECTION HELPERS ===
 
 _SCHEMA_SQL = """
-PRAGMA journal_mode = WAL;
-PRAGMA synchronous = NORMAL;
-PRAGMA cache_size = -262144;  -- 256MB cache (negative = KB)
-PRAGMA temp_store = MEMORY;
-PRAGMA mmap_size = 2147483648;  -- 2GB memory mapping
-PRAGMA wal_autocheckpoint = 10000;
-PRAGMA busy_timeout = 30000;  -- 30 seconds
+-- ── 1. Safety+concurrency ────────────────────────────────────────────────────
+PRAGMA foreign_keys = ON;          -- enforce FK to versions table
+PRAGMA journal_mode  = WAL;        -- readers don't block the single writer
+PRAGMA synchronous   = NORMAL;     -- WAL+NORMAL ≈ FULL durability at half the fsyncs
+PRAGMA busy_timeout  = 5000;       -- wait up to 5 s when file is busy
 
--- Safety & Integrity
-PRAGMA foreign_keys = ON;
+-- ── 2. WAL & checkpoint tuning ───────────────────────────────────────────────
+PRAGMA wal_autocheckpoint = 10000; -- checkpoint at ~40 MB (10k x 4 KiB pages)
+PRAGMA journal_size_limit = 536870912;  -- trim WAL at 512 MB after checkpoint
+
+-- ── 3. Memory for hotter pages ───────────────────────────────────────────────
+PRAGMA cache_size = -262144;       -- 256 MB (negative = KB) page cache
+PRAGMA mmap_size  = 2147483648;    -- memory map first 2 GB if RAM is available
+PRAGMA temp_store = MEMORY;        -- keep temp B trees off disk
 
 CREATE TABLE IF NOT EXISTS versions (
     version_id   INTEGER PRIMARY KEY AUTOINCREMENT,
     slug         TEXT    UNIQUE NOT NULL,
-    order_idx    INTEGER UNIQUE NOT NULL,
-    released_at  DATE
+    order_idx    INTEGER UNIQUE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS translations (
-    canonical_loc TEXT NOT NULL,
-    full_loc      TEXT NOT NULL,
-    version_id    INTEGER NOT NULL REFERENCES versions(version_id),
-    locale        TEXT NOT NULL,
-    data          TEXT,
-    fetched_at    TEXT DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
-    PRIMARY KEY   (canonical_loc, version_id, locale)
+    entity_id         INTEGER NOT NULL,
+    entity_type       TEXT    NOT NULL,
+    version_slug      TEXT    NOT NULL,
+    locale            TEXT    NOT NULL,
+    full_loc          TEXT GENERATED ALWAYS AS (
+        'https://www.wowhead.com/' ||
+        CASE WHEN version_slug != '' THEN version_slug || '/' ELSE '' END ||
+        entity_type ||
+        '=' ||
+        entity_id ||
+        '/' ||
+        COALESCE(name_slug, '')
+    ),
+    fetched_at        TEXT DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
+    name_slug         TEXT,
+    raw_html_data     TEXT,
+    raw_tooltip_data  TEXT,
+    PRIMARY KEY (entity_id, entity_type, version_slug, locale)
 );
 
 CREATE INDEX IF NOT EXISTS idx_translations_lookup
-    ON translations (canonical_loc, locale, version_id);
+  ON translations (entity_id, entity_type, locale, version_slug);
 """
-
-# full_loc  TEXT GENERATED ALWAYS AS (canonical_loc || '/' || locale
 
 
 def create_db(path: str | Path) -> sqlite3.Connection:
   """Create a new database or connect & ensure schema exists."""
   conn = sqlite3.connect(Path(path))
   conn.row_factory = sqlite3.Row
-  # executescript commits implicitly so we wrap in transaction
   with conn:
     conn.executescript(_SCHEMA_SQL)
   return conn
 
 
-###############################################################################
-# Seed & insert helpers
-###############################################################################
+# === SEED & INSERT HELPERS ===
 
 
-def add_version(conn: sqlite3.Connection, slug: str, order_idx: int, released_at: str | None = None) -> int:
+def add_version(conn: sqlite3.Connection, slug: str, order_idx: int) -> int:
   """Insert or ignore an expansion row; returns version_id."""
   cur = conn.execute(
     """
-        INSERT INTO versions(slug, order_idx, released_at)
-        VALUES(?, ?, ?)
+        INSERT INTO versions(slug, order_idx)
+        VALUES(?, ?)
         ON CONFLICT(slug) DO UPDATE SET
-            order_idx   = excluded.order_idx,
-            released_at = COALESCE(excluded.released_at, versions.released_at)
+            order_idx   = excluded.order_idx
         RETURNING version_id;
         """,
-    (slug, order_idx, released_at),
+    (slug, order_idx),
   )
   return cur.fetchone()[0]
 
 
-def _get_version_id(conn: sqlite3.Connection, slug: str) -> int:
-  cur = conn.execute("SELECT version_id FROM versions WHERE slug = ?", (slug,))
-  row = cur.fetchone()
-  if row is None:
-    raise ValueError(f"Version '{slug}' missing. Add it with add_version().")
-  return row[0]
-
-
-def _extract_version_from_url(url: str) -> Tuple[str, str, str]:
-  """Extract version and canonical URL from a Wowhead URL.
-
-  Args:
-    url: Full Wowhead URL like 'https://www.wowhead.com/tbc/quest=7786/thunderaan-the-windseeker'
-
-  Returns:
-    Tuple of (version_slug, canonical_url, canonical_url_with_name)
-
-  Examples:
-    'https://www.wowhead.com/tbc/quest=7786/thunderaan-the-windseeker'
-    -> ('tbc', 'https://www.wowhead.com/quest=7786', 'https://www.wowhead.com/quest=7786/thunderaan-the-windseeker')
-
-    'https://www.wowhead.com/quest=7786/thunderaan-the-windseeker'
-    -> ('unknown', 'https://www.wowhead.com/quest=7786', 'https://www.wowhead.com/quest=7786/thunderaan-the-windseeker')
-  """
-  # Split URL by '/' and get the part after wowhead.com
-  parts = url.split("/")
-  if len(parts) < 4 or parts[2] != "www.wowhead.com":
-    raise ValueError(f"URL format not recognized: {url}")
-
-  first_segment = parts[3]  # The segment right after www.wowhead.com/
-
-  # If the first segment contains '=', it's entity (quest=123), so no version
-  if "=" in first_segment:
-    version_slug = "unknown"
-    # Remove any query params, keep path as-is
-    canonical_url = url.split("?")[0]
-    canonical_url_with_name = canonical_url
-  else:
-    # First segment is version, rest is entity path (may include /name)
-    version_slug = first_segment
-    # Reconstruct canonical URL: keep everything after version segment
-    # e.g. https://www.wowhead.com/tbc/quest=7786/thunderaan-the-windseeker
-    #   -> https://www.wowhead.com/quest=7786/thunderaan-the-windseeker
-    if len(parts) < 5:
-      raise ValueError(f"URL format not recognized: {url}")
-    entity_and_name = "/".join(parts[4:])  # quest=123/name
-    canonical_url_with_name = f"https://www.wowhead.com/{entity_and_name}"
-    # Remove any query params
-    canonical_url_with_name = canonical_url_with_name.split("?")[0]
-    entity = parts[4].split("?")[0]  # e.g. 'quest=7786'
-    canonical_url = f"https://www.wowhead.com/{entity}"
-
-  return version_slug, canonical_url, canonical_url_with_name
-
-
-# def insert_translation(
-#   conn: sqlite3.Connection,
-#   canonical_loc: str,
-#   version_slug: str,
-#   locale: str,
-#   data: bytes | str,
-#   fetched_at: Optional[str] = None,
-# ) -> None:
-#   """Insert or update a raw HTML/JSON data.
-
-#   * `data` can be bytes (for future compression support) or str.
-#   * Currently stored as TEXT, but function supports both types for flexibility.
-#   * If `fetched_at` None -> now in ISO‑8601.
-#   """
-#   if fetched_at is None:
-#     # Use timezone-aware UTC datetime as recommended
-#     fetched_at = _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-
-#   version_id = _get_version_id(conn, version_slug)
-
-#   conn.execute(
-#     """
-#         INSERT INTO translations(canonical_loc, version_id, locale, data, fetched_at)
-#         VALUES (?, ?, ?, ?, ?)
-#         ON CONFLICT(canonical_loc, version_id, locale) DO UPDATE SET
-#             data       = excluded.data,
-#             fetched_at = excluded.fetched_at
-#         WHERE excluded.data IS NOT translations.data;
-#         """,
-#     (canonical_loc, version_id, locale, data, fetched_at),
-#   )
-#   conn.commit()
-
-
-def insert_translation_from_url(
+def insert_raw_data_html(
   conn: sqlite3.Connection,
-  url: str,
-  locale: str,
-  data: bytes | str,
-  fetched_at: Optional[str] = None,
+  entity: WowheadEntity,
+  data: str,
+  fetched_at: str | None = None,
 ) -> None:
-  """Insert or update a raw HTML/JSON data, extracting version from URL.
-
-  * `url` should be a full Wowhead URL like 'https://www.wowhead.com/tbc/quest=7786/thunderaan-the-windseeker'
-  * `data` can be bytes (for future compression support) or str.
-  * Currently stored as TEXT, but function supports both types for flexibility.
-  * If `fetched_at` None -> now in ISO‑8601.
-
-  The function will extract the version slug from the URL and convert it to a canonical format.
-  """
+  """Insert or update a raw HTML data for a given WowheadEntity."""
   if fetched_at is None:
-    # Use timezone-aware UTC datetime as recommended
-    fetched_at = _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-
-  version_slug, canonical_loc, canonical_url_with_name = _extract_version_from_url(url)
-  version_id = _get_version_id(conn, version_slug)
+    fetched_at = _dt.datetime.now(_dt.timezone.utc).isoformat()
 
   conn.execute(
     """
-        INSERT INTO translations(canonical_loc, full_loc, version_id, locale, data, fetched_at)
+        INSERT INTO translations(entity_id, entity_type, version_slug, locale, name_slug, raw_html_data, fetched_at)
         VALUES (?, ?, ?, ?, ?, ?, ?)
-        ON CONFLICT(canonical_loc, version_id, locale) DO UPDATE SET
-            data       = excluded.data,
-            fetched_at = excluded.fetched_at
-        WHERE excluded.data IS NOT translations.data;
+        ON CONFLICT(entity_id, entity_type, version_slug, locale) DO UPDATE SET
+            raw_html_data = excluded.raw_html_data,
+            fetched_at    = excluded.fetched_at,
+            name_slug     = excluded.name_slug
+        WHERE excluded.raw_html_data IS NOT translations.raw_html_data;
         """,
-    (canonical_loc, canonical_url_with_name, version_id, locale, data, fetched_at),
+    (
+      entity.entity_id,
+      entity.entity_type,
+      entity.version.value,
+      entity.locale.value,
+      entity.name_slug,
+      data,
+      fetched_at,
+    ),
   )
   conn.commit()
 
 
-###############################################################################
-# Fallback query helper
-###############################################################################
-
-
-def get_translation(
+def insert_raw_data_tooltip(
   conn: sqlite3.Connection,
-  canonical_loc: str,
-  locale: str,
-  target_version_slug: str,
+  entity: WowheadEntity,
+  data: str,
+  fetched_at: str | None = None,
+) -> None:
+  """Insert or update a raw tooltip data for a given WowheadEntity."""
+  if fetched_at is None:
+    fetched_at = _dt.datetime.now(_dt.timezone.utc).isoformat()
+
+  conn.execute(
+    """
+        INSERT INTO translations(entity_id, entity_type, version_slug, locale, name_slug, raw_tooltip_data, fetched_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT(entity_id, entity_type, version_slug, locale) DO UPDATE SET
+            raw_tooltip_data = excluded.raw_tooltip_data,
+            fetched_at       = excluded.fetched_at,
+            name_slug        = excluded.name_slug
+        WHERE excluded.raw_tooltip_data IS NOT translations.raw_tooltip_data;
+        """,
+    (
+      entity.entity_id,
+      entity.entity_type,
+      entity.version.value,
+      entity.locale.value,
+      entity.name_slug,
+      data,
+      fetched_at,
+    ),
+  )
+  conn.commit()
+
+
+# === FALLBACK QUERY HELPER ===
+
+
+def get_raw_data_html(
+  conn: sqlite3.Connection,
+  entity: WowheadEntity,
 ) -> Optional[Tuple[Any, str]]:
-  """Return `(data, version_used)` or `None` if no expansion up to target exists."""
+  """Return `(raw_html_data, version_used)` or `None` if no expansion up to target exists."""
+  target_version_order_idx = conn.execute("SELECT order_idx FROM versions WHERE slug = ?", (entity.version.value,)).fetchone()["order_idx"]
 
   sql = """
-    SELECT t.data,
+    SELECT t.raw_html_data,
            v.slug AS version_used
     FROM   translations AS t
-    JOIN   versions     AS v ON v.version_id = t.version_id
-    WHERE  t.canonical_loc = ?
-      AND  t.locale        = ?
-      AND  v.order_idx     <= (SELECT order_idx
-                               FROM   versions
-                               WHERE  slug = ?)
+    JOIN   versions     AS v ON v.slug = t.version_slug
+    WHERE  t.entity_id   = ?
+      AND  t.entity_type = ?
+      AND  t.locale      = ?
+      AND  v.order_idx   <= ?
+      AND  t.raw_html_data IS NOT NULL
     ORDER BY v.order_idx DESC
     LIMIT 1;
     """
-  cur = conn.execute(sql, (canonical_loc, locale, target_version_slug))
+  cur = conn.execute(
+    sql,
+    (
+      entity.entity_id,
+      entity.entity_type,
+      entity.locale.value,
+      target_version_order_idx,
+    ),
+  )
   row = cur.fetchone()
   if row:
-    return row["data"], row["version_used"]
+    return row["raw_html_data"], row["version_used"]
   return None
 
 
-###############################################################################
-# Example CLI usage
-###############################################################################
+def get_raw_data_tooltip(
+  conn: sqlite3.Connection,
+  entity: WowheadEntity,
+) -> Optional[Tuple[Any, str]]:
+  """Return `(raw_tooltip_data, version_used)` or `None` if no expansion up to target exists."""
+  target_version_order_idx = conn.execute("SELECT order_idx FROM versions WHERE slug = ?", (entity.version.value,)).fetchone()["order_idx"]
+
+  sql = """
+    SELECT t.raw_tooltip_data,
+           v.slug AS version_used
+    FROM   translations AS t
+    JOIN   versions     AS v ON v.slug = t.version_slug
+    WHERE  t.entity_id   = ?
+      AND  t.entity_type = ?
+      AND  t.locale      = ?
+      AND  v.order_idx   <= ?
+      AND  t.raw_tooltip_data IS NOT NULL
+    ORDER BY v.order_idx DESC
+    LIMIT 1;
+    """
+  cur = conn.execute(
+    sql,
+    (
+      entity.entity_id,
+      entity.entity_type,
+      entity.locale.value,
+      target_version_order_idx,
+    ),
+  )
+  row = cur.fetchone()
+  if row:
+    return row["raw_tooltip_data"], row["version_used"]
+  return None
+
+
+# === EXAMPLE CLI USAGE ===
 
 
 def _demo() -> None:  # pragma: no cover
-  db = Path("wowhead.db")
-  conn = create_db(db)
+  db_path = Path("wowhead_refactored_testing.db")
+  if db_path.exists():
+    db_path.unlink()
+  conn = create_db(db_path)
 
-  # Seed expansions
-  add_version(conn, "unknown", 0, None)  # For URLs without explicit version
-  add_version(conn, "classic", 1, "2004-11-23")
-  add_version(conn, "tbc", 2, "2007-01-16")
-  add_version(conn, "wotlk", 3, "2008-11-13")
-  add_version(conn, "cata", 4, "2010-12-07")
-  add_version(conn, "mop-classic", 5, "2012-09-25")
+  print("--- Seeding Versions ---")
+  add_version(conn, VersionSlug.RETAIL.value, 0)
+  add_version(conn, VersionSlug.CLASSIC.value, 1)
+  add_version(conn, VersionSlug.TBC.value, 2)
+  add_version(conn, VersionSlug.WOTLK.value, 3)
+  print("Seeding complete.")
 
-  # Insert two copies of quest=2 in English using old method
-  # insert_translation(
-  #   conn,
-  #   "https://www.wowhead.com/quest=2",
-  #   "classic",
-  #   "enUS",
-  #   "Classic flavour text",
-  # )
-  # insert_translation(
-  #   conn,
-  #   "https://www.wowhead.com/quest=2",
-  #   "tbc",
-  #   "enUS",
-  #   "TBC flavour text",
-  # )
-
-  # Insert translation using URL with version extraction
-  insert_translation_from_url(
-    conn,
-    "https://www.wowhead.com/tbc/quest=7786/thunderaan-the-windseeker",
-    "enUS",
-    "TBC quest flavour text",
+  print("\n--- Inserting Translations ---")
+  # Create two entities for the same quest, but different versions
+  quest_classic = WowheadEntity(
+    entity_id=EntityId(2),
+    entity_type="quest",
+    version=VersionSlug.CLASSIC,
+    locale=Locale.enUS,
+    name_slug="a-low-level-quest",
+  )
+  quest_tbc = WowheadEntity(
+    entity_id=EntityId(2),
+    entity_type="quest",
+    version=VersionSlug.TBC,
+    locale=Locale.enUS,
+    name_slug="a-low-level-quest",
   )
 
-  # Test URL parsing examples
-  print("Testing URL parsing:")
-  test_urls = [
-    "https://www.wowhead.com/tbc/quest=7786/thunderaan-the-windseeker",
-    "https://www.wowhead.com/wotlk/item=12345",
-    "https://www.wowhead.com/quest=7786/thunderaan-the-windseeker",
-    "https://www.wowhead.com/quest=2",
-    "https://www.wowhead.com/item=1234/some-item-name",
-  ]
+  insert_raw_data_html(conn, quest_classic, "<html>Classic flavour text</html>")
+  insert_raw_data_tooltip(conn, quest_classic, "{tooltip: 'Classic tooltip'}")
+  print(f"Inserted Classic quest (ID: 2)")
+  insert_raw_data_html(conn, quest_tbc, "<html>TBC flavour text</html>")
+  print(f"Inserted TBC quest (ID: 2)")
 
-  for url in test_urls:
-    try:
-      version, canonical, canonical_with_name = _extract_version_from_url(url)
-      print(f"  {url} -> version: {version}, canonical: {canonical}, canonical_with_name: {canonical_with_name}")
-    except ValueError as e:
-      print(f"  {url} -> ERROR: {e}")
+  print("\n--- Testing Fallback Logic ---")
+  # 1. Request WotLK version, should fall back to TBC
+  print("\n1. Requesting WotLK (should fall back to TBC)")
+  lookup_wotlk = WowheadEntity(
+    entity_id=EntityId(2),
+    entity_type="quest",
+    version=VersionSlug.WOTLK,
+    locale=Locale.enUS,
+  )
+  res = get_raw_data_html(conn, lookup_wotlk)
+  print(f"  Lookup for {lookup_wotlk.version.value} returned: {res}")
+  assert res and res[0] == "<html>TBC flavour text</html>" and res[1] == "tbc"
 
-  # Query requesting WotLK but falling back
-  res = get_translation(conn, "https://www.wowhead.com/quest=2", "enUS", "wotlk")
-  print("Lookup result:", res)
+  # 2. Request TBC version, should get exact match
+  print("\n2. Requesting TBC (should find exact match)")
+  lookup_tbc = quest_tbc
+  res = get_raw_data_html(conn, lookup_tbc)
+  print(f"  Lookup for {lookup_tbc.version.value} returned: {res}")
+  assert res and res[0] == "<html>TBC flavour text</html>" and res[1] == "tbc"
+
+  # 3. Request Classic version, should get exact match
+  print("\n3. Requesting Classic (should find exact match)")
+  lookup_classic = quest_classic
+  res = get_raw_data_html(conn, lookup_classic)
+  print(f"  Lookup for {lookup_classic.version.value} returned: {res}")
+  assert res and res[0] == "<html>Classic flavour text</html>" and res[1] == "classic"
+
+  # 4. Request a non-existent locale, should return None
+  print("\n4. Requesting deDE (should find nothing)")
+  lookup_de = WowheadEntity(
+    entity_id=EntityId(2),
+    entity_type="quest",
+    version=VersionSlug.WOTLK,
+    locale=Locale.deDE,
+  )
+  res = get_raw_data_html(conn, lookup_de)
+  print(f"  Lookup for {lookup_de.locale.value} returned: {res}")
+  assert res is None
+
+  print("\n--- Testing Tooltip Fallback Logic ---")
+  # 5. Request Classic tooltip, should get exact match
+  print("\n5. Requesting Classic tooltip (should find exact match)")
+  res = get_raw_data_tooltip(conn, lookup_classic)
+  print(f"  Lookup for {lookup_classic.version.value} returned: {res}")
+  assert res and res[0] == "{tooltip: 'Classic tooltip'}" and res[1] == "classic"
+
+  # 6. Request WotLK tooltip, should fall back to Classic
+  print("\n6. Requesting WotLK tooltip (should fall back to Classic)")
+  res = get_raw_data_tooltip(conn, lookup_wotlk)
+  print(f"  Lookup for {lookup_wotlk.version.value} returned: {res}")
+  assert res and res[0] == "{tooltip: 'Classic tooltip'}" and res[1] == "classic"
+
+  print("\nDemo finished successfully!")
+  conn.close()
 
 
 if __name__ == "__main__":
