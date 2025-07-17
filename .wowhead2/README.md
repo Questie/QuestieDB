@@ -35,7 +35,7 @@ The system is composed of several focused Python scripts:
 
 -   **`sitemap_processor.py`**: This is the discovery and comparison engine. It connects to Wowhead, parses its `sitemap.xml` files, and uses `wowhead_mappings.py` to transform URLs into `WowheadEntity` objects. Its key function is to calculate the "delta" between two game versions, identifying which entities were added or removed.
 
--   **`wowhead_db.py`**: This script is the heart of the storage system. It manages the `wowhead.sqlite` database file, including:
+-   **`wowhead_db.py`**: This script is the heart of the storage system. It manages the `wowhead.db` database file, including:
     -   Creating the necessary tables (`versions`, `wowhead_data`).
     -   Seeding the database with game version information.
     -   Inserting and retrieving page data.
@@ -59,4 +59,4 @@ To perform a full fetch for a specific version and entity type, you would use th
 -   `fetch_delta_entities(target_version, entity_type)`: Fetches only the entities that were added in the target version.
 -   `fetch_specific_ids(version, entity_type, id_list)`: Fetches a specific list of entity IDs.
 
-The script will create a `wowhead.sqlite` file in the same directory, which can then be used for data extraction and analysis.
+The script will create a `wowhead.db` file in the same directory, which can then be used for data extraction and analysis.

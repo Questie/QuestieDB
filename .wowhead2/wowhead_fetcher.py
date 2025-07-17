@@ -31,7 +31,7 @@ from sitemap_types import (
 class WowheadFetcher:
   """Single-threaded fetcher for Wowhead pages."""
 
-  def __init__(self, db_path: str | Path = "wowhead.sqlite", locale: Locale = Locale.enUS):
+  def __init__(self, db_path: str | Path = "wowhead.db", locale: Locale = Locale.enUS):
     self.db_path = Path(db_path)
     self.locale = locale
     self.conn = create_db(self.db_path)
