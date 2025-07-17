@@ -43,17 +43,37 @@ class RateLimitedProxyManager:
   - Graceful fallback when slots become available
   """
 
-  def __init__(self, ports: list[int] = (USProxyPorts + GERProxyPorts), db_path="rate_usage.db", rate_limit_seconds: float = 1):
+  # Add context manager support for better resource cleanup
+  def __enter__(self) -> "RateLimitedProxyManager":
+    return self
+
+  def __exit__(self, exc_type, exc_val, exc_tb) -> None:
+    self.close()
+
+  def __init__(self, ports_or_slot: list[int] = (USProxyPorts + GERProxyPorts), db_path="rate_usage.db", rate_limit_seconds: float = 1):
     """
     Initializes the manager. If proxy environment variables are set, it manages proxy URLs.
     If not, it functions as a simple concurrency/rate limiter using abstract IDs.
 
     Args:
-        ports (list[int]): A list of proxy ports or, if proxies are disabled,
+        ports_or_slot (list[int]): A list of proxy ports or, if proxies are disabled,
                            a list whose length determines the number of concurrent slots.
         db_path (str): Path to the SQLite database file.
         rate_limit_seconds (float): Minimum time interval (in seconds) between uses of the same proxy/slot.
     """
+    if ports_or_slot is None:
+      ports_or_slot = USProxyPorts + GERProxyPorts
+
+    # Validate configuration
+    if rate_limit_seconds <= 0:
+      raise ValueError("rate_limit_seconds must be positive")
+
+    if not ports_or_slot:
+      raise ValueError("ports list cannot be empty")
+
+    if len(set(ports_or_slot)) != len(ports_or_slot):
+      raise ValueError("ports list contains duplicates")
+
     load_dotenv()
     self.username = os.getenv("PROXY_USERNAME")
     self.password = os.getenv("PROXY_PASSWORD")
@@ -66,7 +86,7 @@ class RateLimitedProxyManager:
       self.proxy_enabled = False
       # In rate-limiter mode, ports are just abstract IDs.
       # Replace the list of actual ports with a list of simple integers.
-      self.all_ports = list(range(1, len(ports) + 1))
+      self.all_ports = list(range(1, len(ports_or_slot) + 1))
       self.proxy_urls_by_port = {}
     else:
       self.proxy_enabled = True
@@ -75,7 +95,7 @@ class RateLimitedProxyManager:
       print("Proxy password:", self.password[0] + "********")
       print("Proxy host:", self.proxy_host)
       # In proxy mode, use the provided ports
-      self.all_ports = ports
+      self.all_ports = ports_or_slot
       # Pre-format all proxy URLs keyed by port
       self.proxy_urls_by_port = {}
       encoded_username = quote(self.username)
@@ -439,7 +459,7 @@ if __name__ == "__main__":
   else:
     print("--- TESTING RATE-LIMITER-ONLY MODE ---")
     manager = RateLimitedProxyManager(
-      ports=(USProxyPorts + GERProxyPorts),
+      ports_or_slot=(USProxyPorts + GERProxyPorts),
       db_path=DB_PATH,
       rate_limit_seconds=1,
     )
