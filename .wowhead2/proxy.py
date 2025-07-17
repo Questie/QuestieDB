@@ -8,10 +8,15 @@ from urllib.parse import quote
 from typing import Optional
 
 
+# Ports for US and GER proxies
+USProxyPorts = list(range(8001, 8027))  # US proxy ports
+GERProxyPorts = list(range(8027, 8033))  # GER proxy ports
+
+
 class RateLimitedProxyManager:
   """Provides proxies based on least recent usage, respecting a rate limit."""
 
-  def __init__(self, db_path="proxy_usage.db", rate_limit_seconds: float = 1):
+  def __init__(self, ports: list[int] = (USProxyPorts + GERProxyPorts), db_path="proxy_usage.db", rate_limit_seconds: float = 1):
     """
     Initializes the manager, loading config, preparing URLs, and setting up SQLite.
     If proxy environment variables are not set, proxy support is disabled.
@@ -43,10 +48,8 @@ class RateLimitedProxyManager:
     print("Proxy host:", self.proxy_host)
     print(f"Rate limit window: {self.rate_limit_seconds} seconds")
 
-    # Define proxy port ranges
-    USProxyPorts = list(range(8001, 8027))
-    GERProxyPorts = list(range(8027, 8033))
-    self.all_ports = USProxyPorts + GERProxyPorts
+    # Define proxy ports
+    self.all_ports = ports
     self.all_ports_set = set(self.all_ports)  # For faster lookups
 
     # Pre-format all proxy URLs keyed by port
