@@ -1,6 +1,5 @@
 import os
 import requests
-from functools import cache
 from xml.dom.minidom import parseString
 
 from sitemap_types import (
