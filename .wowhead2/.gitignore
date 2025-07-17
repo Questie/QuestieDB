@@ -11,3 +11,4 @@ Questie
 *.db-shm
 *.db-wal
 *.sqlite
+!requirements.txt
