@@ -16,7 +16,7 @@ from __future__ import annotations
 import datetime as _dt
 import sqlite3
 from pathlib import Path
-from typing import Tuple, Any
+from typing import Tuple, Any, Optional
 
 from sitemap_types import WowheadEntity, VersionSlug, Locale, EntityId
 
@@ -177,7 +177,7 @@ def insert_raw_data_tooltip(
 def get_raw_data_html(
   conn: sqlite3.Connection,
   entity: WowheadEntity,
-) -> Tuple[Any, str | None]:
+) -> Tuple[Any, Optional[str]]:
   """Return `(raw_html_data, version_used)` or `None` if no expansion up to target exists."""
   target_version_order_idx = conn.execute("SELECT order_idx FROM versions WHERE slug = ?", (entity.version.value,)).fetchone()["order_idx"]
 
@@ -206,13 +206,13 @@ def get_raw_data_html(
   row = cur.fetchone()
   if row:
     return row["raw_html_data"], row["version_used"]
-  return None, ""
+  return None, None
 
 
 def get_raw_data_tooltip(
   conn: sqlite3.Connection,
   entity: WowheadEntity,
-) -> Tuple[Any, str | None]:
+) -> Tuple[Any, Optional[str]]:
   """Return `(raw_tooltip_data, version_used)` or `None` if no expansion up to target exists."""
   target_version_order_idx = conn.execute("SELECT order_idx FROM versions WHERE slug = ?", (entity.version.value,)).fetchone()["order_idx"]
 
@@ -241,6 +241,40 @@ def get_raw_data_tooltip(
   row = cur.fetchone()
   if row:
     return row["raw_tooltip_data"], row["version_used"]
+  return None, None
+
+
+def get_entity_row(
+  conn: sqlite3.Connection,
+  entity: WowheadEntity,
+) -> Tuple[Optional[sqlite3.Row], Optional[str]]:
+  """Return `(row, version_used)` or `None` if no expansion up to target exists."""
+  target_version_order_idx = conn.execute("SELECT order_idx FROM versions WHERE slug = ?", (entity.version.value,)).fetchone()["order_idx"]
+
+  sql = """
+    SELECT t.*,
+           v.slug AS version_used
+    FROM   wowhead_data AS t
+    JOIN   versions     AS v ON v.slug = t.version_slug
+    WHERE  t.entity_id   = ?
+      AND  t.entity_type = ?
+      AND  t.locale      = ?
+      AND  v.order_idx   <= ?
+    ORDER BY v.order_idx DESC
+    LIMIT 1;
+    """
+  cur = conn.execute(
+    sql,
+    (
+      entity.entity_id,
+      entity.entity_type,
+      entity.locale.value,
+      target_version_order_idx,
+    ),
+  )
+  row = cur.fetchone()
+  if row:
+    return row, row["version_used"]
   return None, None
 
 
@@ -318,7 +352,7 @@ def _demo() -> None:  # pragma: no cover
     version=VersionSlug.WOTLK,
     locale=Locale.deDE,
   )
-  res = get_raw_data_html(conn, lookup_de)
+  res, _ = get_raw_data_html(conn, lookup_de)
   print(f"  Lookup for {lookup_de.locale.value} returned: {res}")
   assert res is None
 
@@ -334,6 +368,25 @@ def _demo() -> None:  # pragma: no cover
   res = get_raw_data_tooltip(conn, lookup_wotlk)
   print(f"  Lookup for {lookup_wotlk.version.value} returned: {res}")
   assert res and res[0] == "{tooltip: 'Classic tooltip'}" and res[1] == "classic"
+
+  print("\n--- Testing Row Fallback Logic ---")
+  # 7. Request WotLK row, should fall back to TBC and contain all TBC data
+  print("\n7. Requesting WotLK row (should fall back to TBC)")
+  res, version_used = get_entity_row(conn, lookup_wotlk)
+  print(f"  Lookup for {lookup_wotlk.version.value} returned version: {version_used}")
+  assert res is not None
+  assert version_used == "tbc"
+  assert res["raw_html_data"] == "<html>TBC flavour text</html>"
+  assert res["raw_tooltip_data"] is None
+
+  # 8. Request Classic row, should get exact match
+  print("\n8. Requesting Classic row (should find exact match)")
+  res, version_used = get_entity_row(conn, lookup_classic)
+  print(f"  Lookup for {lookup_classic.version.value} returned version: {version_used}")
+  assert res is not None
+  assert version_used == "classic"
+  assert res["raw_html_data"] == "<html>Classic flavour text</html>"
+  assert res["raw_tooltip_data"] == "{tooltip: 'Classic tooltip'}"
 
   print("\nDemo finished successfully!")
   conn.close()
