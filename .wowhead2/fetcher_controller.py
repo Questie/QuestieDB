@@ -1,0 +1,369 @@
+"""HTTP Controller for monitoring and controlling the WowheadFetcher.
+
+This module provides a web interface to monitor fetching progress and
+gracefully stop the fetcher when needed.
+"""
+
+from __future__ import annotations
+
+import threading
+import time
+from http.server import BaseHTTPRequestHandler, HTTPServer
+from typing import Optional, TYPE_CHECKING
+
+if TYPE_CHECKING:
+  from wowhead_fetcher import WowheadFetcher
+
+
+class FetcherControlHandler(BaseHTTPRequestHandler):
+  """HTTP request handler for fetcher control and monitoring."""
+
+  def log_message(self, format: str, *args) -> None:
+    """Override to disable HTTP access logging."""
+    pass
+
+  def _generate_html_page(self) -> str:
+    """Generate HTML page with progress info and stop button."""
+    fetcher: WowheadFetcher = getattr(self.server, "fetcher", None)  # type: ignore
+    default_refresh_ms: int = getattr(self.server, "default_refresh_ms", 2000)  # type: ignore
+
+    progress_info = ""
+    status = "Unknown"
+
+    if fetcher:
+      if fetcher.is_stopped():
+        status = "Stopped"
+        progress_info = "Fetcher has been stopped."
+      elif fetcher.is_running():
+        status = "Running"
+        progress_info = fetcher.get_progress_info()
+      else:
+        status = "Idle"
+        progress_info = "Fetcher is idle and ready to start."
+
+    # Generate frequency options with the default selected
+    frequency_options = [(1000, "1 second"), (2000, "2 seconds"), (5000, "5 seconds"), (10000, "10 seconds"), (30000, "30 seconds"), (60000, "1 minute")]
+
+    options_html = ""
+    default_label = "2s"  # Default fallback
+    for value, label in frequency_options:
+      selected = "selected" if value == default_refresh_ms else ""
+      if value == default_refresh_ms:
+        if value < 1000:
+          default_label = f"{value}ms"
+        elif value < 60000:
+          default_label = f"{value // 1000}s"
+        else:
+          default_label = f"{value // 60000}m"
+      options_html += f'<option value="{value}" {selected}>{label}</option>'
+
+    html = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Wowhead Fetcher Controller</title>
+        <style>
+            body {{ font-family: Arial, sans-serif; margin: 40px; }}
+            .container {{ max-width: 800px; margin: 0 auto; }}
+            .status {{ font-size: 18px; margin: 20px 0; }}
+            .running {{ color: green; }}
+            .stopped {{ color: red; }}
+            .idle {{ color: blue; }}
+            .progress {{ background: #f0f0f0; padding: 20px; margin: 20px 0; border-radius: 5px; }}
+            .button {{
+                color: white; padding: 10px 20px;
+                border: none; font-size: 16px; cursor: pointer; margin: 10px 5px;
+                border-radius: 5px;
+            }}
+            .stop-button {{ background: #dc3545; }}
+            .stop-button:hover {{ background: #c82333; }}
+            .stop-button:disabled {{ background: #6c757d; cursor: not-allowed; }}
+            .refresh-button {{ background: #007bff; }}
+            .refresh-button:hover {{ background: #0056b3; }}
+            .info {{ background: #e8f4f8; padding: 15px; margin: 20px 0; border-radius: 5px; }}
+            pre {{ background: #f8f9fa; padding: 10px; border-radius: 3px; white-space: pre-wrap; }}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Wowhead Fetcher Controller</h1>
+
+            <div class="status {status.lower()}">
+                Status: <strong id="status-text">{status}</strong>
+            </div>
+
+            <div class="progress">
+                <h3>Progress Information:</h3>
+                <pre id="progress-info">{progress_info}</pre>
+            </div>            <div id="control-buttons">
+                <button class="button stop-button" id="stop-btn" onclick="stopFetcher()">Stop Fetcher</button>
+                <button class="button refresh-button" onclick="refreshProgress()">Refresh Progress</button>
+
+                <div style="margin-top: 15px; font-size: 14px; color: #666;">
+                    Auto-refresh: <span id="auto-refresh-status">Enabled ({default_label})</span> |
+                    <button onclick="toggleAutoRefresh()" id="toggle-auto-refresh" style="background: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Disable</button>
+                    <br><br>
+                    <label for="refresh-frequency">Update Frequency:</label>
+                    <select id="refresh-frequency" onchange="changeRefreshFrequency()" style="margin-left: 10px; padding: 5px;">
+                        {options_html}
+                    </select>
+                </div>
+            </div>
+
+            <div class="info">
+                <h3>Instructions:</h3>
+                <ul>
+                    <li>Progress updates automatically every 5 seconds</li>
+                    <li>Click "Stop Fetcher" to gracefully stop the current operation</li>
+                    <li>The fetcher will finish current requests before stopping</li>
+                    <li>Database connections will be properly closed</li>
+                    <li>Use Ctrl+C in the terminal as a backup stop method</li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 40px; color: #666; font-size: 12px;">
+                Last updated: <span id="last-updated">{time.strftime("%Y-%m-%d %H:%M:%S")}</span>
+            </div>
+        </div>
+
+        <script>
+            let autoRefreshInterval = null;
+            let isAutoRefreshEnabled = true;
+            let failureCount = 0;
+            const maxFailures = 10;
+            let currentRefreshFrequency = {default_refresh_ms}; // Configurable default
+
+            function updateProgress(isManual = false) {{
+                if (!isManual && failureCount > maxFailures) {{
+                    document.getElementById('progress-info').textContent = 'Too many failed refresh attempts. Please refresh page manually.';
+                    clearInterval(autoRefreshInterval);
+                    autoRefreshInterval = null;
+                    isAutoRefreshEnabled = false;
+                    return;
+                }}
+
+                fetch('/progress')
+                    .then(response => response.text())
+                    .then(data => {{
+                        document.getElementById('progress-info').textContent = data;
+                        document.getElementById('last-updated').textContent = new Date().toLocaleString();
+                        failureCount = 0;
+                    }})
+                    .catch(error => {{
+                        console.error('Error fetching progress:', error);
+                        document.getElementById('progress-info').textContent = 'Error loading progress: ' + error.message;
+                        if (!isManual) {{
+                            failureCount++;
+                        }}
+                    }});
+
+                // Also update status
+                fetch('/status_check')
+                    .then(response => response.text())
+                    .then(status => {{
+                        const statusElement = document.getElementById('status-text');
+                        const statusContainer = statusElement.parentElement;
+                        statusElement.textContent = status;
+                        statusContainer.className = 'status ' + status.toLowerCase();
+                    }})
+                    .catch(error => console.error('Error fetching status:', error));
+            }}
+
+            function refreshProgress() {{
+                updateProgress(true);
+            }}
+
+            function getFrequencyLabel(ms) {{
+                if (ms < 1000) return ms + 'ms';
+                if (ms < 60000) return (ms / 1000) + 's';
+                return (ms / 60000) + 'm';
+            }}
+
+            function changeRefreshFrequency() {{
+                const select = document.getElementById('refresh-frequency');
+                const newFrequency = parseInt(select.value);
+                currentRefreshFrequency = newFrequency;
+
+                // Update status display
+                const statusSpan = document.getElementById('auto-refresh-status');
+                const frequencyLabel = getFrequencyLabel(newFrequency);
+
+                if (isAutoRefreshEnabled) {{
+                    statusSpan.textContent = `Enabled (${{frequencyLabel}})`;
+                    // Restart auto-refresh with new frequency
+                    startAutoRefresh();
+                }}
+
+                console.log(`Refresh frequency changed to ${{frequencyLabel}}`);
+            }}
+
+            function toggleAutoRefresh() {{
+                const toggleButton = document.getElementById('toggle-auto-refresh');
+                const statusSpan = document.getElementById('auto-refresh-status');
+                const frequencyLabel = getFrequencyLabel(currentRefreshFrequency);
+
+                if (isAutoRefreshEnabled) {{
+                    clearInterval(autoRefreshInterval);
+                    autoRefreshInterval = null;
+                    isAutoRefreshEnabled = false;
+                    toggleButton.textContent = 'Enable';
+                    toggleButton.style.background = '#dc3545';
+                    statusSpan.textContent = 'Disabled';
+                }} else {{
+                    startAutoRefresh();
+                    failureCount = 0;
+                    isAutoRefreshEnabled = true;
+                    toggleButton.textContent = 'Disable';
+                    toggleButton.style.background = '#28a745';
+                    statusSpan.textContent = `Enabled (${{frequencyLabel}})`;
+                }}
+            }}
+
+            function startAutoRefresh() {{
+                // Clear any existing interval
+                if (autoRefreshInterval) {{
+                    clearInterval(autoRefreshInterval);
+                }}
+                // Start new interval with current frequency
+                autoRefreshInterval = setInterval(updateProgress, currentRefreshFrequency);
+            }}
+
+            function stopFetcher() {{
+                if (confirm('Are you sure you want to stop the fetcher?')) {{
+                    const stopBtn = document.getElementById('stop-btn');
+                    stopBtn.disabled = true;
+                    stopBtn.textContent = 'Stopping...';
+
+                    fetch('/stop')
+                        .then(response => response.text())
+                        .then(data => {{
+                            document.getElementById('progress-info').textContent = data;
+                            stopBtn.textContent = 'Stop Request Sent';
+                            stopBtn.style.background = '#6c757d';
+
+                            // Stop auto-refresh when processing is stopped
+                            if (autoRefreshInterval) {{
+                                clearInterval(autoRefreshInterval);
+                                autoRefreshInterval = null;
+                                isAutoRefreshEnabled = false;
+                                document.getElementById('toggle-auto-refresh').disabled = true;
+                                document.getElementById('auto-refresh-status').textContent = 'Disabled (Stopped)';
+                                document.getElementById('refresh-frequency').disabled = true;
+                            }}
+                        }})
+                        .catch(error => {{
+                            alert('Error sending stop request: ' + error);
+                            stopBtn.disabled = false;
+                            stopBtn.textContent = 'Stop Fetcher';
+                        }});
+                }}
+            }}
+
+            // Start auto-refresh when page loads
+            document.addEventListener('DOMContentLoaded', function() {{
+                startAutoRefresh();
+            }});
+        </script>
+    </body>
+    </html>
+    """
+    return html
+
+  def do_GET(self) -> None:
+    """Handle GET requests."""
+    fetcher: WowheadFetcher = getattr(self.server, "fetcher", None)  # type: ignore
+
+    if self.path == "/" or self.path.startswith("/?"):
+      self.send_response(200)
+      self.send_header("Content-type", "text/html")
+      self.end_headers()
+      self.wfile.write(self._generate_html_page().encode())
+
+    elif self.path == "/progress":
+      self.send_response(200)
+      self.send_header("Content-type", "text/plain")
+      self.end_headers()
+      if fetcher:
+        progress_info = fetcher.get_progress_info()
+        self.wfile.write(progress_info.encode("utf-8"))
+      else:
+        self.wfile.write(b"Progress information not available.")
+
+    elif self.path == "/status_check":
+      self.send_response(200)
+      self.send_header("Content-type", "text/plain")
+      self.end_headers()
+      if fetcher:
+        if fetcher.is_stopped():
+          status = "Stopped"
+        elif fetcher.is_running():
+          status = "Running"
+        else:
+          status = "Idle"
+        self.wfile.write(status.encode("utf-8"))
+      else:
+        self.wfile.write(b"Unknown")
+
+    elif self.path == "/stop":
+      # Handle stop via GET for fetch API
+      if fetcher:
+        print("HTTP Controller: Received stop request")
+        fetcher.request_stop()
+        message = "Stop request sent. The fetcher will finish current operations and stop gracefully."
+      else:
+        message = "No fetcher instance available."
+
+      self.send_response(200)
+      self.send_header("Content-type", "text/plain")
+      self.end_headers()
+      self.wfile.write(message.encode("utf-8"))
+
+    else:
+      self.send_response(404)
+      self.end_headers()
+
+
+class FetcherControlServer:
+  """HTTP server for controlling and monitoring WowheadFetcher."""
+
+  def __init__(self, fetcher: WowheadFetcher, port: int = 8000, default_refresh_ms: int = 2000):
+    self.fetcher = fetcher
+    self.port = port
+    self.default_refresh_ms = default_refresh_ms
+    self.server: Optional[HTTPServer] = None
+    self.server_thread: Optional[threading.Thread] = None
+
+  def start(self) -> None:
+    """Start the HTTP control server."""
+    if self.server is not None:
+      print("Control server is already running")
+      return
+
+    try:
+      self.server = HTTPServer(("", self.port), FetcherControlHandler)
+      # Attach the fetcher and default refresh frequency to the server so handlers can access it
+      setattr(self.server, "fetcher", self.fetcher)
+      setattr(self.server, "default_refresh_ms", self.default_refresh_ms)
+
+      self.server_thread = threading.Thread(target=self.server.serve_forever, daemon=True)
+      self.server_thread.start()
+
+      print(f"Fetcher control server started on port {self.port}")
+      print(f"Access http://localhost:{self.port} to monitor and control the fetcher")
+
+    except OSError as e:
+      print(f"Failed to start control server on port {self.port}: {e}")
+      self.server = None
+      self.server_thread = None
+
+  def stop(self) -> None:
+    """Stop the HTTP control server."""
+    if self.server is not None:
+      print("Shutting down control server...")
+      self.server.shutdown()
+      self.server.server_close()
+      self.server = None
+
+    if self.server_thread is not None:
+      self.server_thread.join(timeout=5.0)
+      self.server_thread = None
