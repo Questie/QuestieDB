@@ -69,13 +69,22 @@ def _fetch_worker(entity: WowheadEntity, locale: Locale, stop_event: threading.E
     if stop_event.is_set():
       return entity, None
 
-    # Each worker gets a proxy right before its request
-    next_proxy, wait_time = manager.get_next_proxy()
-    if wait_time > 0:
-      # print(f"Waiting {wait_time} seconds for next proxy...")
-      # Use stop_event.wait() instead of time.sleep() for cancellable waiting
-      if stop_event.wait(timeout=wait_time):
-        return entity, None
+    # Keep trying until we get a proxy or should stop
+    while True:
+      next_proxy, wait_time = manager.get_next_proxy()
+
+      if next_proxy is not None:
+        # Got a proxy, proceed with request
+        break
+
+      if wait_time > 0:
+        # Need to wait before retrying
+        if stop_event.wait(timeout=wait_time):
+          return entity, None
+        # Continue loop to try getting proxy again
+      else:
+        # No proxies available and no wait time means no proxies configured
+        break
 
     proxies = {"http": next_proxy, "https": next_proxy} if next_proxy else {}
 
@@ -169,14 +178,6 @@ class WowheadFetcher:
     else:
       estimated_remaining_str = "N/A"
 
-    # calculate requests per second
-    if stats["start_time"] and stats["successful"] > 0:
-      elapsed_seconds = time.time() - stats["start_time"]
-      requests_per_second = stats["successful"] / elapsed_seconds if elapsed_seconds > 0 else 0
-      requests_per_second_str = f"{requests_per_second:.2f} req/s"
-    else:
-      requests_per_second_str = "N/A"
-
     info = f"""Current Operation: {self._current_operation}
 Entity Type: {stats["entity_type"]}
 Version: {stats["version"]}
@@ -184,7 +185,6 @@ Locale: {self.locale.value}
 Progress: {stats["successful"]}/{stats["total"]} successful
 Elapsed Time: {elapsed_str}
 Estimated Time Remaining: {estimated_remaining_str}
-Requests Per Second: {requests_per_second_str}
 Status: {"Stopping..." if self.is_stopped() else "Running"}"""
 
     return info
