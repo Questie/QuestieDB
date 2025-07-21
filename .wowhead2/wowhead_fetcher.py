@@ -81,7 +81,7 @@ def _fetch_worker(entity: WowheadEntity, locale: Locale, stop_event: threading.E
 
     with _create_worker_session(locale) as session:
       # print(f"Fetching: {url}")
-      response = session.get(url, timeout=30, proxies=proxies)
+      response = session.get(url, timeout=10, proxies=proxies)
       response.raise_for_status()
       # The RateLimitedProxyManager handles the delay, so no extra sleep is needed here.
       return entity, response.text
@@ -97,7 +97,7 @@ class WowheadFetcher:
     self,
     db_path: str | Path = "wowhead.db",
     locale: Locale = Locale.enUS,
-    max_workers: int = 32,
+    max_workers: int = 64,
   ):
     self.db_path = Path(db_path)
     self.locale = locale
@@ -116,6 +116,11 @@ class WowheadFetcher:
     self._setup_signal_handlers()
 
     self._seed_versions()
+
+  def update_locale(self, new_locale: Locale) -> None:
+    """Update the locale for the fetcher and its session."""
+    self.locale = new_locale
+    print(f"Locale updated to {new_locale.value}")
 
   def _setup_signal_handlers(self) -> None:
     """Set up signal handlers for graceful shutdown."""
@@ -155,11 +160,22 @@ class WowheadFetcher:
     else:
       elapsed_str = "N/A"
 
+    # calculate estimated time remaining
+    if stats["start_time"] and stats["successful"] > 0 and stats["total"] > 0:
+      avg_time_per_entity = (time.time() - stats["start_time"]) / stats["successful"]
+      remaining_entities = stats["total"] - stats["successful"]
+      estimated_remaining = remaining_entities * avg_time_per_entity
+      estimated_remaining_str = f"{estimated_remaining:.1f}s"
+    else:
+      estimated_remaining_str = "N/A"
+
     info = f"""Current Operation: {self._current_operation}
 Entity Type: {stats["entity_type"]}
 Version: {stats["version"]}
+Locale: {self.locale.value}
 Progress: {stats["successful"]}/{stats["total"]} successful
 Elapsed Time: {elapsed_str}
+Estimated Time Remaining: {estimated_remaining_str}
 Status: {"Stopping..." if self.is_stopped() else "Running"}"""
 
     return info
@@ -250,6 +266,7 @@ Status: {"Stopping..." if self.is_stopped() else "Running"}"""
           # Check if we should stop before processing results
           if self._stop_event.is_set():
             print(f"Stop requested - cancelling remaining {total_to_fetch - i + 1} tasks")
+            print(f"This might take a minute or two, please wait not to corrupt the database...")
             # Cancel remaining futures
             for f in future_to_entity.keys():
               if not f.done():
@@ -294,10 +311,10 @@ Status: {"Stopping..." if self.is_stopped() else "Running"}"""
       print("Fetcher is stopped - cannot start new operations")
       return 0, 0
 
-    self._current_operation = f"Fetching all {entity_type} entities for {version.value}"
+    self._current_operation = f"Fetching all {entity_type} entities for {self.locale.value} {version.value}"
     self._update_progress(entity_type=entity_type, version=version.value)
 
-    print(f"Fetching all '{entity_type}' entities for '{version.value}'...")
+    print(f"Fetching all '{entity_type}' entities for '{self.locale.value} {version.value}'...")
     entities = get_entities(version, entity_type, self.sitemap_fetcher, self.locale)
 
     entities, skipped_count = self._filter_existing_entities(entities, force)
@@ -321,10 +338,10 @@ Status: {"Stopping..." if self.is_stopped() else "Running"}"""
       print("Fetcher is stopped - cannot start new operations")
       return 0, 0
 
-    self._current_operation = f"Fetching delta {entity_type} entities for {target_version.value}"
+    self._current_operation = f"Fetching delta {entity_type} entities for {self.locale.value} {target_version.value}"
     self._update_progress(entity_type=entity_type, version=target_version.value)
 
-    print(f"Fetching delta '{entity_type}' entities for '{target_version.value}'...")
+    print(f"Fetching delta '{entity_type}' entities for '{self.locale.value} {target_version.value}'...")
     delta = calculate_version_delta(target_version, entity_type, self.sitemap_fetcher, self.locale)
     entities = delta.added_entities
 

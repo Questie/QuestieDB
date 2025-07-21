@@ -134,6 +134,11 @@ class FetcherControlHandler(BaseHTTPRequestHandler):
             let currentRefreshFrequency = {default_refresh_ms}; // Configurable default
 
             function updateProgress(isManual = false) {{
+                // Don't auto-update if page is not visible (saves resources)
+                if (!isManual && !document.hasFocus() && document.hidden) {{
+                    return;
+                }}
+
                 if (!isManual && failureCount > maxFailures) {{
                     document.getElementById('progress-info').textContent = 'Too many failed refresh attempts. Please refresh page manually.';
                     clearInterval(autoRefreshInterval);
@@ -142,31 +147,48 @@ class FetcherControlHandler(BaseHTTPRequestHandler):
                     return;
                 }}
 
-                fetch('/progress')
-                    .then(response => response.text())
-                    .then(data => {{
-                        document.getElementById('progress-info').textContent = data;
+                // Add timeout to prevent hanging requests
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 second timeout
+
+                const progressRequest = fetch('/progress', {{ signal: controller.signal }});
+                const statusRequest = fetch('/status_check', {{ signal: controller.signal }});
+
+                Promise.all([progressRequest, statusRequest])
+                    .then(async ([progressResponse, statusResponse]) => {{
+                        clearTimeout(timeoutId);
+
+                        const progressData = await progressResponse.text();
+                        const statusData = await statusResponse.text();
+
+                        document.getElementById('progress-info').textContent = progressData;
+                        document.getElementById('status-text').textContent = statusData;
                         document.getElementById('last-updated').textContent = new Date().toLocaleString();
+
+                        const statusContainer = document.getElementById('status-text').parentElement;
+                        statusContainer.className = 'status ' + statusData.toLowerCase();
+
                         failureCount = 0;
                     }})
                     .catch(error => {{
-                        console.error('Error fetching progress:', error);
-                        document.getElementById('progress-info').textContent = 'Error loading progress: ' + error.message;
+                        clearTimeout(timeoutId);
+                        console.error('Error fetching data:', error);
+
+                        let errorMessage = 'Error loading data: ';
+                        if (error.name === 'AbortError') {{
+                            errorMessage += 'Request timed out after 8 seconds';
+                        }} else if (error.message.includes('Failed to fetch')) {{
+                            errorMessage += 'Server unavailable or network error';
+                        }} else {{
+                            errorMessage += error.message;
+                        }}
+
+                        document.getElementById('progress-info').textContent = errorMessage;
+
                         if (!isManual) {{
                             failureCount++;
                         }}
                     }});
-
-                // Also update status
-                fetch('/status_check')
-                    .then(response => response.text())
-                    .then(status => {{
-                        const statusElement = document.getElementById('status-text');
-                        const statusContainer = statusElement.parentElement;
-                        statusElement.textContent = status;
-                        statusContainer.className = 'status ' + status.toLowerCase();
-                    }})
-                    .catch(error => console.error('Error fetching status:', error));
             }}
 
             function refreshProgress() {{
@@ -234,9 +256,14 @@ class FetcherControlHandler(BaseHTTPRequestHandler):
                     stopBtn.disabled = true;
                     stopBtn.textContent = 'Stopping...';
 
-                    fetch('/stop')
+                    // Add timeout for stop request too
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout for stop
+
+                    fetch('/stop', {{ signal: controller.signal }})
                         .then(response => response.text())
                         .then(data => {{
+                            clearTimeout(timeoutId);
                             document.getElementById('progress-info').textContent = data;
                             stopBtn.textContent = 'Stop Request Sent';
                             stopBtn.style.background = '#6c757d';
@@ -252,12 +279,33 @@ class FetcherControlHandler(BaseHTTPRequestHandler):
                             }}
                         }})
                         .catch(error => {{
-                            alert('Error sending stop request: ' + error);
+                            clearTimeout(timeoutId);
+                            let errorMsg = 'Error sending stop request: ';
+                            if (error.name === 'AbortError') {{
+                                errorMsg += 'Request timed out';
+                            }} else {{
+                                errorMsg += error.message;
+                            }}
+                            alert(errorMsg);
                             stopBtn.disabled = false;
                             stopBtn.textContent = 'Stop Fetcher';
                         }});
                 }}
             }}
+
+            // Handle page visibility changes to save resources
+            document.addEventListener('visibilitychange', function() {{
+                if (document.hidden && autoRefreshInterval) {{
+                    // Pause auto-refresh when page is hidden
+                    clearInterval(autoRefreshInterval);
+                    autoRefreshInterval = null;
+                    console.log('Auto-refresh paused (page hidden)');
+                }} else if (!document.hidden && isAutoRefreshEnabled && !autoRefreshInterval) {{
+                    // Resume auto-refresh when page becomes visible
+                    startAutoRefresh();
+                    console.log('Auto-refresh resumed (page visible)');
+                }}
+            }});
 
             // Start auto-refresh when page loads
             document.addEventListener('DOMContentLoaded', function() {{
