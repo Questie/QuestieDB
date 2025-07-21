@@ -17,6 +17,7 @@ from urllib3.util.retry import Retry
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from proxy import RateLimitedProxyManager
+from proxy_fast import FastProxyManager
 from wowhead_db import create_db, add_version, insert_raw_data_html, insert_raw_data_tooltip, get_raw_data_html, entity_exists
 from sitemap_processor import (
   calculate_version_delta,
@@ -31,7 +32,8 @@ from sitemap_types import (
   EntityId,
 )
 
-manager = RateLimitedProxyManager(rate_limit_seconds=0.5)
+# manager = RateLimitedProxyManager(rate_limit_seconds=0.1)
+manager = FastProxyManager(rate_limit_seconds=0.5)  # Use FastProxyManager for better performance
 
 
 def _create_worker_session(locale: Locale) -> requests.Session:
@@ -106,7 +108,7 @@ class WowheadFetcher:
     self,
     db_path: str | Path = "wowhead.db",
     locale: Locale = Locale.enUS,
-    max_workers: int = 64,
+    max_workers: int = 128,
   ):
     self.db_path = Path(db_path)
     self.locale = locale
@@ -178,6 +180,14 @@ class WowheadFetcher:
     else:
       estimated_remaining_str = "N/A"
 
+    # calculate requests per second
+    if stats["start_time"] and stats["successful"] > 0:
+      elapsed_seconds = time.time() - stats["start_time"]
+      requests_per_second = stats["successful"] / elapsed_seconds if elapsed_seconds > 0 else 0
+      requests_per_second_str = f"{requests_per_second:.2f} req/s"
+    else:
+      requests_per_second_str = "N/A"
+
     info = f"""Current Operation: {self._current_operation}
 Entity Type: {stats["entity_type"]}
 Version: {stats["version"]}
@@ -185,6 +195,7 @@ Locale: {self.locale.value}
 Progress: {stats["successful"]}/{stats["total"]} successful
 Elapsed Time: {elapsed_str}
 Estimated Time Remaining: {estimated_remaining_str}
+Requests Per Second: {requests_per_second_str}
 Status: {"Stopping..." if self.is_stopped() else "Running"}"""
 
     return info
