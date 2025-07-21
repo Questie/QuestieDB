@@ -12,7 +12,7 @@ from sitemap_types import (
   WowheadEntity,
   EntityId,
 )
-from wowhead_mappings import parse_url
+from wowhead_mappings import parse_url, LOCALE_TO_URL_SEGMENT
 
 # All supported versions as a tuple for iteration
 VERSIONS: tuple[VersionSlug, ...] = tuple(VersionSlug)
@@ -62,7 +62,11 @@ class RequestsSitemapFetcher:
   def get_sitemap_entries(self, url: str, locale: Locale = Locale.enUS) -> list[SitemapEntry]:
     """Fetch and parse individual sitemap entries."""
     if locale != Locale.enUS:
-      url = url.replace("sitemap", f"{locale.value}/sitemap")
+      locale_segment = LOCALE_TO_URL_SEGMENT.get(locale, None)
+      if locale_segment:
+        url = url.replace("sitemap", f"{locale_segment}/sitemap")
+      else:
+        raise ValueError(f"Unsupported locale: {locale}")
 
     print(f"  → Fetching entries from: {url}")
     response = self.session.get(url, timeout=self.timeout)
@@ -185,13 +189,13 @@ def export_version_comparison(
   validate_version(target_version)
   previous_version = get_previous_version(target_version)
 
-  print(f"Exporting comparison files for '{previous_version}' vs '{target_version}' ({entity_type})")
+  print(f"Exporting comparison files for '{previous_version}' vs '{target_version}' ({entity_type}, {locale.value})")
 
   previous_entities = get_entities(previous_version, entity_type, fetcher, locale)
   target_entities = get_entities(target_version, entity_type, fetcher, locale)
 
-  previous_file = f"{output_dir}/_{previous_version.value}_{entity_type}_ids"
-  target_file = f"{output_dir}/_{target_version.value}_{entity_type}_ids"
+  previous_file = f"{output_dir}/_{previous_version.value}_{entity_type}_{locale.value}_ids"
+  target_file = f"{output_dir}/_{target_version.value}_{entity_type}_{locale.value}_ids"
 
   with open(previous_file + "_fullurl.txt", "w", encoding="utf-8") as f:
     f.write(f"# {previous_version.value.upper()} {entity_type.upper()} IDs ({len(previous_entities)} total)\n")

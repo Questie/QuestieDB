@@ -51,8 +51,11 @@ class Locale(Enum):
 
 # === STRONG TYPE ALIASES ===
 
-EntityType = Literal["quest", "item", "npc", "zone", "spell", "achievement"]
+EntityType = Literal["quest", "item", "npc", "object", "zone", "spell", "achievement"]
 """Literal type for supported Wowhead entity types."""
+
+EntityDataType = Literal["tooltip", "full"]
+"""If the entity should fetch tooltip data or full HTML data."""
 
 EntityId = NewType("EntityId", int)
 """Strong type for Wowhead entity IDs extracted from URLs."""
@@ -74,6 +77,9 @@ class WowheadEntity:
 
   # Metadata
   lastmod: str | None = None
+
+  # Datatype for fetching
+  data_fetch_type: EntityDataType = "full"
 
   def generate_url(self) -> str:
     """
@@ -102,11 +108,12 @@ class WowheadEntity:
     Returns:
       The complete tooltip URL string for the entity.
     """
+    # Example URL:     f"https://nether.wowhead.com/tooltip/{idType}/{id}?dataEnv={dataEnv}&locale={locale}
     # Default to Classic
     data_env = VERSION_TO_NUMERIC.get(self.version, VERSION_TO_NUMERIC[VersionSlug.CLASSIC])
     # Default to enUS
     locale_code = LOCALE_TO_NUMERIC.get(self.locale, LOCALE_TO_NUMERIC[Locale.enUS])
-    return f"https://www.wowhead.com/tooltip?{self.entity_type}={self.entity_id}&locale={locale_code}&version={data_env}"
+    return f"https://nether.wowhead.com/tooltip/{self.entity_type}/{self.entity_id}?dataEnv={data_env}&locale={locale_code}"
 
 
 @dataclass(frozen=True)

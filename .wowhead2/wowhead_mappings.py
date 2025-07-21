@@ -8,7 +8,7 @@ ad-hoc string manipulation and ensures consistency across the application.
 
 import re
 from urllib.parse import urlparse
-from sitemap_types import Locale, VersionSlug, WowheadEntity, EntityId, EntityType
+from sitemap_types import Locale, VersionSlug, WowheadEntity, EntityId, EntityType, EntityDataType
 
 # === MAPPINGS ===
 
@@ -33,7 +33,7 @@ LOCALE_TO_URL_SEGMENT = {
 URL_SEGMENT_TO_LOCALE = {v: k for k, v in LOCALE_TO_URL_SEGMENT.items()}
 
 # Numeric codes used in tooltip URLs
-LOCALE_TO_NUMERIC = {
+LOCALE_TO_NUMERIC_LOCALE = {
   Locale.enUS: 0,  # English (US)
   Locale.ptBR: 8,  # Portuguese (Brazil)
   Locale.ruRU: 7,  # Russian (Russia)
@@ -47,13 +47,21 @@ LOCALE_TO_NUMERIC = {
   Locale.itIT: 9,  # Italian (Italy)
 }
 
-VERSION_TO_NUMERIC = {
+# This is the dataEnv numbers
+VERSION_TO_NUMERIC_VERSION = {
   VersionSlug.RETAIL: 1,  # Retail version of the game
   VersionSlug.CLASSIC: 4,  # Classic version of the game
   VersionSlug.TBC: 5,  # The Burning Crusade version
   VersionSlug.WOTLK: 8,  # Wrath of the Lich King version
   VersionSlug.CATA: 11,  # Cataclysm version
   VersionSlug.MOP_CLASSIC: 15,  # Mists of Pandaria version
+}
+
+ENTITY_DATA_TYPE: dict[str, EntityDataType] = {
+  "quest": "full",
+  "item": "tooltip",
+  "npc": "tooltip",
+  "object": "tooltip",
 }
 
 # === CORE CONVERSION LOGIC ===
@@ -108,6 +116,7 @@ def parse_url(url: str, lastmod: str | None = None) -> WowheadEntity:
     locale=locale,
     name_slug=name_slug,
     lastmod=lastmod,
+    data_fetch_type=ENTITY_DATA_TYPE.get(entity_type, "full"),
   )
 
 

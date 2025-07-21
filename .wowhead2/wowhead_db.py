@@ -174,6 +174,33 @@ def insert_raw_data_tooltip(
 # === FALLBACK QUERY HELPER ===
 
 
+def entity_exists(
+  conn: sqlite3.Connection,
+  entity: WowheadEntity,
+) -> bool:
+  """Check if an entity exists in the database with either HTML or tooltip data."""
+  sql = """
+    SELECT 1
+    FROM   wowhead_data
+    WHERE  entity_id   = ?
+      AND  entity_type = ?
+      AND  version_slug = ?
+      AND  locale      = ?
+      AND  (raw_html_data IS NOT NULL OR raw_tooltip_data IS NOT NULL)
+    LIMIT 1;
+    """
+  cur = conn.execute(
+    sql,
+    (
+      entity.entity_id,
+      entity.entity_type,
+      entity.version.value,
+      entity.locale.value,
+    ),
+  )
+  return cur.fetchone() is not None
+
+
 def get_raw_data_html(
   conn: sqlite3.Connection,
   entity: WowheadEntity,
