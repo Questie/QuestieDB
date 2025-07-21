@@ -178,7 +178,7 @@ def entity_exists(
   conn: sqlite3.Connection,
   entity: WowheadEntity,
 ) -> bool:
-  """Check if an entity exists in the database with either HTML or tooltip data."""
+  """Check if an entity exists in the database with either HTML or tooltip data and matching name_slug."""
   sql = """
     SELECT 1
     FROM   wowhead_data
@@ -186,6 +186,7 @@ def entity_exists(
       AND  entity_type = ?
       AND  version_slug = ?
       AND  locale      = ?
+      AND  (name_slug = ? OR (name_slug IS NULL AND ? IS NULL))
       AND  (raw_html_data IS NOT NULL OR raw_tooltip_data IS NOT NULL)
     LIMIT 1;
     """
@@ -196,6 +197,8 @@ def entity_exists(
       entity.entity_type,
       entity.version.value,
       entity.locale.value,
+      entity.name_slug,
+      entity.name_slug,
     ),
   )
   return cur.fetchone() is not None
