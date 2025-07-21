@@ -169,6 +169,14 @@ class WowheadFetcher:
     else:
       estimated_remaining_str = "N/A"
 
+    # calculate requests per second
+    if stats["start_time"] and stats["successful"] > 0:
+      elapsed_seconds = time.time() - stats["start_time"]
+      requests_per_second = stats["successful"] / elapsed_seconds if elapsed_seconds > 0 else 0
+      requests_per_second_str = f"{requests_per_second:.2f} req/s"
+    else:
+      requests_per_second_str = "N/A"
+
     info = f"""Current Operation: {self._current_operation}
 Entity Type: {stats["entity_type"]}
 Version: {stats["version"]}
@@ -176,6 +184,7 @@ Locale: {self.locale.value}
 Progress: {stats["successful"]}/{stats["total"]} successful
 Elapsed Time: {elapsed_str}
 Estimated Time Remaining: {estimated_remaining_str}
+Requests Per Second: {requests_per_second_str}
 Status: {"Stopping..." if self.is_stopped() else "Running"}"""
 
     return info

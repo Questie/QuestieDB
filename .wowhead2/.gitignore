@@ -12,3 +12,4 @@ Questie
 *.db-wal
 *.sqlite
 !requirements.txt
+AI

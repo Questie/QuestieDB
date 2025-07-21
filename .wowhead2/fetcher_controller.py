@@ -9,10 +9,11 @@ from __future__ import annotations
 import threading
 import time
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from typing import Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING, Callable
 
 if TYPE_CHECKING:
   from wowhead_fetcher import WowheadFetcher
+  from sitemap_types import VersionSlug, EntityType, Locale
 
 
 class FetcherControlHandler(BaseHTTPRequestHandler):
@@ -61,14 +62,41 @@ class FetcherControlHandler(BaseHTTPRequestHandler):
     <!DOCTYPE html>
     <html>
     <head>
+        <meta charset="utf-8">
         <title>Wowhead Fetcher Controller</title>
         <style>
-            body {{ font-family: Arial, sans-serif; margin: 40px; }}
-            .container {{ max-width: 800px; margin: 0 auto; }}
+            body {{ font-family: Arial, sans-serif; margin: 20px; }}
+            .container {{ max-width: 1200px; margin: 0 auto; }}
             .status {{ font-size: 18px; margin: 20px 0; }}
             .running {{ color: green; }}
             .stopped {{ color: red; }}
             .idle {{ color: blue; }}
+
+            .main-content {{ display: flex; gap: 20px; }}
+            .operations-panel {{ flex: 0 0 350px; }}
+            .progress-panel {{ flex: 1; }}
+
+            .operations {{
+                background: #f8f9fa; padding: 15px; border-radius: 5px;
+                height: 680px; overflow-y: auto;
+            }}
+            .operations h3 {{ margin-top: 0; }}
+            .operations ul {{ list-style: none; padding: 0; margin: 0; }}
+            .operations li {{
+                padding: 8px; margin: 2px 0; border-radius: 3px;
+                font-size: 14px; display: flex; align-items: center;
+            }}
+            .operations .status-icon {{ margin-right: 8px; font-size: 16px; }}
+            .operation.pending {{ background: #fff3cd; border-left: 4px solid #ffc107; }}
+            .operation.active {{ background: #d1ecf1; border-left: 4px solid #17a2b8; animation: pulse 2s infinite; }}
+            .operation.completed {{ background: #d4edda; border-left: 4px solid #28a745; }}
+
+            @keyframes pulse {{
+                0% {{ opacity: 1; }}
+                50% {{ opacity: 0.7; }}
+                100% {{ opacity: 1; }}
+            }}
+
             .progress {{ background: #f0f0f0; padding: 20px; margin: 20px 0; border-radius: 5px; }}
             .button {{
                 color: white; padding: 10px 20px;
@@ -92,37 +120,51 @@ class FetcherControlHandler(BaseHTTPRequestHandler):
                 Status: <strong id="status-text">{status}</strong>
             </div>
 
-            <div class="progress">
-                <h3>Progress Information:</h3>
-                <pre id="progress-info">{progress_info}</pre>
-            </div>            <div id="control-buttons">
-                <button class="button stop-button" id="stop-btn" onclick="stopFetcher()">Stop Fetcher</button>
-                <button class="button refresh-button" onclick="refreshProgress()">Refresh Progress</button>
-
-                <div style="margin-top: 15px; font-size: 14px; color: #666;">
-                    Auto-refresh: <span id="auto-refresh-status">Enabled ({default_label})</span> |
-                    <button onclick="toggleAutoRefresh()" id="toggle-auto-refresh" style="background: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Disable</button>
-                    <br><br>
-                    <label for="refresh-frequency">Update Frequency:</label>
-                    <select id="refresh-frequency" onchange="changeRefreshFrequency()" style="margin-left: 10px; padding: 5px;">
-                        {options_html}
-                    </select>
+            <div class="main-content">
+                <div class="operations-panel">
+                    <div class="operations">
+                        <h3>Operations Queue (<span id="operations-count">0</span>)</h3>
+                        <ul id="operations-list">
+                            <li>Loading operations...</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <div class="info">
-                <h3>Instructions:</h3>
-                <ul>
-                    <li>Progress updates automatically every 5 seconds</li>
-                    <li>Click "Stop Fetcher" to gracefully stop the current operation</li>
-                    <li>The fetcher will finish current requests before stopping</li>
-                    <li>Database connections will be properly closed</li>
-                    <li>Use Ctrl+C in the terminal as a backup stop method</li>
-                </ul>
-            </div>
+                <div class="progress-panel">
+                    <div class="progress">
+                        <h3>Progress Information:</h3>
+                        <pre id="progress-info">{progress_info}</pre>
+                        <div style="color: #666; font-size: 12px;">
+                          Last updated: <span id="last-updated">{time.strftime("%Y-%m-%d %H:%M:%S")}</span>
+                        </div>
+                    </div>
+                    <div id="control-buttons">
+                        <button class="button stop-button" id="stop-btn" onclick="stopFetcher()">Stop Fetcher</button>
+                        <button class="button refresh-button" onclick="refreshProgress()">Refresh Progress</button>
 
-            <div style="margin-top: 40px; color: #666; font-size: 12px;">
-                Last updated: <span id="last-updated">{time.strftime("%Y-%m-%d %H:%M:%S")}</span>
+                        <div style="margin-top: 15px; font-size: 14px; color: #666;">
+                            Auto-refresh: <span id="auto-refresh-status">Enabled ({default_label})</span> |
+                            <button onclick="toggleAutoRefresh()" id="toggle-auto-refresh" style="background: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Disable</button>
+                            <br><br>
+                            <label for="refresh-frequency">Update Frequency:</label>
+                            <select id="refresh-frequency" onchange="changeRefreshFrequency()" style="margin-left: 10px; padding: 5px;">
+                                {options_html}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="info">
+                        <h3>Instructions:</h3>
+                        <ul>
+                            <li>Operations list on the left shows all planned tasks</li>
+                            <li>&#x1F504; = Currently running, &#x2705; = Completed, &#x23F3; = Pending</li>
+                            <li>Progress updates automatically based on selected frequency</li>
+                            <li>Click "Stop Fetcher" to gracefully stop the current operation</li>
+                            <li>The fetcher will finish current requests before stopping</li>
+                            <li>Use Ctrl+C in the terminal as a backup stop method</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -153,13 +195,15 @@ class FetcherControlHandler(BaseHTTPRequestHandler):
 
                 const progressRequest = fetch('/progress', {{ signal: controller.signal }});
                 const statusRequest = fetch('/status_check', {{ signal: controller.signal }});
+                const operationsRequest = fetch('/current_index', {{ signal: controller.signal }});
 
-                Promise.all([progressRequest, statusRequest])
-                    .then(async ([progressResponse, statusResponse]) => {{
+                Promise.all([progressRequest, statusRequest, operationsRequest])
+                    .then(async ([progressResponse, statusResponse, operationsResponse]) => {{
                         clearTimeout(timeoutId);
 
                         const progressData = await progressResponse.text();
                         const statusData = await statusResponse.text();
+                        const operationsData = await operationsResponse.json();
 
                         document.getElementById('progress-info').textContent = progressData;
                         document.getElementById('status-text').textContent = statusData;
@@ -167,6 +211,9 @@ class FetcherControlHandler(BaseHTTPRequestHandler):
 
                         const statusContainer = document.getElementById('status-text').parentElement;
                         statusContainer.className = 'status ' + statusData.toLowerCase();
+
+                        // Update operations list
+                        updateOperationsList(operationsData);
 
                         failureCount = 0;
                     }})
@@ -189,6 +236,44 @@ class FetcherControlHandler(BaseHTTPRequestHandler):
                             failureCount++;
                         }}
                     }});
+            }}
+
+            function updateOperationsList(operationsData) {{
+                const operationsList = document.getElementById('operations-list');
+                const operationsCount = document.getElementById('operations-count');
+
+                if (!operationsData || operationsData.error) {{
+                    operationsList.innerHTML = '<li>Operations data not available</li>';
+                    operationsCount.textContent = '0';
+                    return;
+                }}
+
+                operationsCount.textContent = operationsData.total_operations;
+
+                if (operationsData.operations && operationsData.operations.length > 0) {{
+                    let html = '';
+                    operationsData.operations.forEach(op => {{
+                        let icon = '&#x23F3;'; // Pending (hourglass)
+                        let statusClass = 'pending';
+
+                        if (op.status === 'completed') {{
+                            icon = '&#x2705;'; // Completed (checkmark)
+                            statusClass = 'completed';
+                        }} else if (op.status === 'active') {{
+                            icon = '&#x1F504;'; // Active (rotating arrows)
+                            statusClass = 'active';
+                        }}
+
+                        const limitText = op.limit ? ' (' + op.limit + ')' : '';
+                        html += '<li class="operation ' + statusClass + '">' +
+                            '<span class="status-icon">' + icon + '</span>' +
+                            '<span>' + op.version + ' ' + op.entity_type + limitText + ' [' + op.locale + ']</span>' +
+                        '</li>';
+                    }});
+                    operationsList.innerHTML = html;
+                }} else {{
+                    operationsList.innerHTML = '<li>No operations defined</li>';
+                }}
             }}
 
             function refreshProgress() {{
@@ -310,6 +395,7 @@ class FetcherControlHandler(BaseHTTPRequestHandler):
             // Start auto-refresh when page loads
             document.addEventListener('DOMContentLoaded', function() {{
                 startAutoRefresh();
+                updateProgress(true); // Load initial data including operations list
             }});
         </script>
     </body>
@@ -320,6 +406,7 @@ class FetcherControlHandler(BaseHTTPRequestHandler):
   def do_GET(self) -> None:
     """Handle GET requests."""
     fetcher: WowheadFetcher = getattr(self.server, "fetcher", None)  # type: ignore
+    get_current_running_index: Optional[Callable[[], int]] = getattr(self.server, "get_current_running_index", None)  # type: ignore
 
     if self.path == "/" or self.path.startswith("/?"):
       self.send_response(200)
@@ -336,6 +423,36 @@ class FetcherControlHandler(BaseHTTPRequestHandler):
         self.wfile.write(progress_info.encode("utf-8"))
       else:
         self.wfile.write(b"Progress information not available.")
+
+    elif self.path == "/current_index":
+      self.send_response(200)
+      self.send_header("Content-type", "application/json")
+      self.end_headers()
+
+      operations = getattr(self.server, "operations", [])  # type: ignore
+      if get_current_running_index and operations:
+        import json
+
+        current_index = get_current_running_index()
+
+        # Build response with operations status
+        response_data = {"current_index": current_index, "total_operations": len(operations), "operations": []}
+
+        for i, (version, entity_type, limit, locale) in enumerate(operations):
+          if i < current_index:
+            status = "completed"
+          elif i == current_index:
+            status = "active"
+          else:
+            status = "pending"
+
+          response_data["operations"].append({"index": i, "version": version.value, "entity_type": entity_type, "limit": limit, "locale": locale.value, "status": status})
+
+        self.wfile.write(json.dumps(response_data).encode("utf-8"))
+      else:
+        import json
+
+        self.wfile.write(json.dumps({"error": "Operations data not available"}).encode("utf-8"))
 
     elif self.path == "/status_check":
       self.send_response(200)
@@ -374,12 +491,21 @@ class FetcherControlHandler(BaseHTTPRequestHandler):
 class FetcherControlServer:
   """HTTP server for controlling and monitoring WowheadFetcher."""
 
-  def __init__(self, fetcher: WowheadFetcher, port: int = 8000, default_refresh_ms: int = 2000):
+  def __init__(
+    self,
+    fetcher: WowheadFetcher,
+    port: int = 8000,
+    default_refresh_ms: int = 2000,
+    get_current_running_index: Optional[Callable[[], int]] = None,
+    operations: Optional[list[tuple[VersionSlug, EntityType, int | None, Locale]]] = None,
+  ) -> None:
     self.fetcher = fetcher
     self.port = port
     self.default_refresh_ms = default_refresh_ms
     self.server: Optional[HTTPServer] = None
     self.server_thread: Optional[threading.Thread] = None
+    self.get_current_running_index = get_current_running_index
+    self.operations = operations or []
 
   def start(self) -> None:
     """Start the HTTP control server."""
@@ -389,9 +515,11 @@ class FetcherControlServer:
 
     try:
       self.server = HTTPServer(("", self.port), FetcherControlHandler)
-      # Attach the fetcher and default refresh frequency to the server so handlers can access it
+      # Attach the fetcher, operations, and default refresh frequency to the server so handlers can access it
       setattr(self.server, "fetcher", self.fetcher)
       setattr(self.server, "default_refresh_ms", self.default_refresh_ms)
+      setattr(self.server, "get_current_running_index", self.get_current_running_index)
+      setattr(self.server, "operations", self.operations)
 
       self.server_thread = threading.Thread(target=self.server.serve_forever, daemon=True)
       self.server_thread.start()
