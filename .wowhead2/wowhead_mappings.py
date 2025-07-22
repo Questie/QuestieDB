@@ -120,34 +120,6 @@ def parse_url(url: str, lastmod: str | None = None) -> WowheadEntity:
   )
 
 
-# def generate_url(entity: WowheadEntity) -> str:
-#   """Generates a standard, versioned Wowhead URL from an entity."""
-#   base = "https://www.wowhead.com"
-#   path_parts = []
-
-#   if entity.version != VersionSlug.RETAIL:
-#     path_parts.append(entity.version.value)
-
-#   locale_segment = LOCALE_TO_URL_SEGMENT.get(entity.locale)
-#   if locale_segment:
-#     path_parts.append(locale_segment)
-
-#   path_parts.append(f"{entity.entity_type}={entity.entity_id}")
-
-#   if entity.name_slug:
-#     path_parts.append(entity.name_slug)
-
-#   return f"{base}/{'/'.join(path_parts)}"
-
-
-# def generate_tooltip_url(entity: WowheadEntity) -> str:
-#   """Generates a Wowhead tooltip URL (nether.wowhead.com)."""
-#   data_env = VERSION_TO_NUMERIC.get(entity.version, 4)  # Default to Classic
-#   locale_code = LOCALE_TO_NUMERIC.get(entity.locale, 0)  # Default to enUS
-
-#   return f"https://nether.wowhead.com/tooltip/{entity.entity_type}/{entity.entity_id}?dataEnv={data_env}&locale={locale_code}"
-
-
 # === DEMO ===
 
 

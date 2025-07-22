@@ -15,8 +15,8 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from concurrent.futures import ThreadPoolExecutor, as_completed
-
-from proxy import RateLimitedProxyManager
+import sitemap_filters
+from proxy import RateLimitedProxyManager  # noqa: F401
 from proxy_fast import FastProxyManager
 from wowhead_db import create_db, add_version, insert_raw_data_html, insert_raw_data_tooltip, get_raw_data_html, entity_exists
 from sitemap_processor import (
@@ -133,6 +133,32 @@ class WowheadFetcher:
     self.locale = new_locale
     print(f"Locale updated to {new_locale.value}")
 
+  # ? Control and Status functions
+
+  def close(self) -> None:
+    """Close the database connection and clean up resources."""
+    # Request stop if not already set
+    if not self._stop_event.is_set():
+      self.request_stop()
+
+    # Wait a moment for any running operations to finish
+    if self._running:
+      print("Waiting for current operations to finish...")
+      for _ in range(10):  # Wait up to 10 seconds
+        if not self._running:
+          break
+        time.sleep(1)
+
+    if hasattr(self, "conn") and self.conn:
+      print("Closing database connection...")
+      self.conn.close()
+
+  def __enter__(self):
+    return self
+
+  def __exit__(self, exc_type, exc_val, exc_tb):
+    self.close()
+
   def _setup_signal_handlers(self) -> None:
     """Set up signal handlers for graceful shutdown."""
 
@@ -205,6 +231,10 @@ Status: {"Stopping..." if self.is_stopped() else "Running"}"""
     with self._stats_lock:
       self._progress_stats.update(kwargs)
 
+  # ? #####################################################
+
+  # ? Fetching functions
+
   def _create_session(self) -> requests.Session:
     # This session is now only used for the sitemap fetcher, which is single-threaded.
     session = requests.Session()
@@ -228,7 +258,7 @@ Status: {"Stopping..." if self.is_stopped() else "Running"}"""
     for version in VersionSlug:
       add_version(self.conn, version.value, version.order_index)
 
-  def _filter_existing_entities(self, entities: Iterable[WowheadEntity], force: bool) -> tuple[list[WowheadEntity], int]:
+  def _filter_existing_entities(self, entities: Iterable[WowheadEntity], force: bool) -> tuple[list[WowheadEntity], list[WowheadEntity]]:
     """Filter out entities that already exist in the database unless force=True.
 
     Args:
@@ -236,26 +266,24 @@ Status: {"Stopping..." if self.is_stopped() else "Running"}"""
       force: If True, return all entities without filtering
 
     Returns:
-      Tuple of (filtered_entities, skipped_count)
+      Tuple of (filtered_entities, skipped_entities)
     """
     entities_list = list(entities)
 
     if force:
-      return entities_list, 0
+      return entities_list, []
 
     # Filter out entities that already exist in the database
     filtered_entities = []
-    skipped_count = 0
+    removed_entities = []
 
-    print("Checking which entities already exist in database...")
     for entity in entities_list:
       if entity_exists(self.conn, entity):
-        skipped_count += 1
+        removed_entities.append(entity)
       else:
         filtered_entities.append(entity)
 
-    print(f"Skipped {skipped_count} entities that already exist in database")
-    return filtered_entities, skipped_count
+    return filtered_entities, removed_entities
 
   def _fetch_entities(self, entities: Iterable[WowheadEntity], limit: Optional[int]) -> tuple[int, int]:
     """Helper to fetch and store a list of entities concurrently."""
@@ -294,7 +322,9 @@ Status: {"Stopping..." if self.is_stopped() else "Running"}"""
             break
 
           entity, html_content = future.result()
-          print(f"Progress: {i}/{total_to_fetch} - Received {entity.generate_url() if entity.data_fetch_type == 'full' else entity.generate_tooltip_url()}")
+          url = entity.generate_url() if entity.data_fetch_type == "full" else (f"{entity.generate_url()} (tooltip: {entity.generate_tooltip_url()})")
+          if i % 100 == 0 or i == total_to_fetch:
+            print(f"Progress: {i}/{total_to_fetch} - Received {url}")
 
           if html_content and len(html_content) > 3:
             try:
@@ -307,9 +337,9 @@ Status: {"Stopping..." if self.is_stopped() else "Running"}"""
               successful += 1
               self._update_progress(successful=successful)
             except Exception as e:
-              print(f"Database error storing {entity.generate_url() if entity.data_fetch_type == 'full' else entity.generate_tooltip_url()}: {e}")
+              print(f"Database error storing {url}: {e}")
           else:
-            print(f"Failed to fetch: {entity.generate_url()}")
+            print(f"Failed to fetch: {url}")
 
     finally:
       self._running = False
@@ -337,11 +367,25 @@ Status: {"Stopping..." if self.is_stopped() else "Running"}"""
     print(f"Fetching all '{entity_type}' entities for '{self.locale.value} {version.value}'...")
     entities = get_entities(version, entity_type, self.sitemap_fetcher, self.locale)
 
-    entities, skipped_count = self._filter_existing_entities(entities, force)
+    # Filter out unused entities
+    print("Filtering out unused entities...")
+    entities, skipped_entities = sitemap_filters.filter_unused_entities(entities)
+    print(f"Skipped {len(skipped_entities)} unused entities")
+
+    # For koKR, zhCN, zhTW and ruRU we can use their different character "scripts" to filter out incorrect entities
+    if self.locale in [Locale.koKR, Locale.zhCN, Locale.zhTW, Locale.ruRU]:
+      print("Filtering entities without scripts...")
+      entities, skipped_entities = sitemap_filters.filter_entities_without_scripts(entities)
+      print(f"Skipped {len(skipped_entities)} entities without scripts")
+
+    # Filter out entities that already exist in the database
+    print("Filtering out existing entities...")
+    entities, removed_entities = self._filter_existing_entities(entities, force)
+    print(f"Skipped {len(removed_entities)} entities that already exist in database")
 
     if len(entities) == 0:
       print("No new entities to fetch - all already exist in database")
-      return 0, skipped_count
+      return 0, len(removed_entities)
 
     return self._fetch_entities(entities, limit)
 
@@ -365,11 +409,25 @@ Status: {"Stopping..." if self.is_stopped() else "Running"}"""
     delta = calculate_version_delta(target_version, entity_type, self.sitemap_fetcher, self.locale)
     entities = delta.added_entities
 
-    entities, skipped_count = self._filter_existing_entities(entities, force)
+    # Filter out unused entities
+    print("Filtering out unused entities...")
+    entities, skipped_entities = sitemap_filters.filter_unused_entities(entities)
+    print(f"  Skipped {len(skipped_entities)} unused entities")
+
+    # For koKR, zhCN, zhTW and ruRU we can use their different character "scripts" to filter out incorrect entities
+    if self.locale in [Locale.koKR, Locale.zhCN, Locale.zhTW, Locale.ruRU]:
+      print("Filtering entities without scripts...")
+      entities, skipped_entities = sitemap_filters.filter_entities_without_scripts(entities)
+      print(f"  Skipped {len(skipped_entities)} entities without scripts")
+
+    # Filter out entities that already exist in the database
+    print("Filtering out existing entities...")
+    entities, removed_entities = self._filter_existing_entities(entities, force)
+    print(f"  Skipped {len(removed_entities)} entities that already exist in database")
 
     if len(entities) == 0:
       print("No new entities to fetch - all already exist in database")
-      return 0, skipped_count
+      return 0, len(removed_entities)
 
     return self._fetch_entities(entities, limit)
 
@@ -392,37 +450,13 @@ Status: {"Stopping..." if self.is_stopped() else "Running"}"""
     print(f"Fetching specific {entity_type} IDs for {version.value}: {id_list}")
     entities = [WowheadEntity(entity_id=EntityId(id), entity_type=entity_type, version=version, locale=self.locale) for id in id_list]
 
-    entities, skipped_count = self._filter_existing_entities(entities, force)
+    entities, removed_entities = self._filter_existing_entities(entities, force)
 
     if len(entities) == 0:
       print("No new entities to fetch - all already exist in database")
-      return 0, skipped_count
+      return 0, len(removed_entities)
 
     return self._fetch_entities(entities, None)
-
-  def close(self) -> None:
-    """Close the database connection and clean up resources."""
-    # Request stop if not already set
-    if not self._stop_event.is_set():
-      self.request_stop()
-
-    # Wait a moment for any running operations to finish
-    if self._running:
-      print("Waiting for current operations to finish...")
-      for _ in range(10):  # Wait up to 10 seconds
-        if not self._running:
-          break
-        time.sleep(1)
-
-    if hasattr(self, "conn") and self.conn:
-      print("Closing database connection...")
-      self.conn.close()
-
-  def __enter__(self):
-    return self
-
-  def __exit__(self, exc_type, exc_val, exc_tb):
-    self.close()
 
 
 def main() -> None:
@@ -484,42 +518,3 @@ def main() -> None:
 
 if __name__ == "__main__":
   main()
-
-
-#  def fetch_version_entities_count(self, version: VersionSlug, entity_type: EntityType, force: bool = False) -> int:
-#    """Fetch the count of entities for a specific version and entity type.
-#
-#    Args:
-#      version: The game version to fetch entities for
-#      entity_type: The type of entities to fetch (quest, npc, item, etc.)
-#    """
-#    if self._stop_event.is_set():
-#      print("Fetcher is stopped - cannot start new operations")
-#      return 0
-#
-#    print(f"Fetching count of all '{entity_type}' entities for '{version.value}'...")
-#    entities = get_entities(version, entity_type, self.sitemap_fetcher, self.locale)
-#
-#    entities, skipped_count = self._filter_existing_entities(entities, force)
-#
-#    return len(entities)
-#
-#  def fetch_delta_entities_count(self, target_version: VersionSlug, entity_type: EntityType, force: bool = False) -> int:
-#    """Fetch the count of entities that were added in a specific version.
-#
-#    Args:
-#      target_version: The game version to fetch delta entities for
-#      entity_type: The type of entities to fetch (quest, npc, item, etc.)
-#      force: If True, refetch entities even if they already exist in database
-#    """
-#    if self._stop_event.is_set():
-#      print("Fetcher is stopped - cannot start new operations")
-#      return 0
-#
-#    print(f"Fetching count of delta '{entity_type}' entities for '{target_version.value}'...")
-#    delta = calculate_version_delta(target_version, entity_type, self.sitemap_fetcher, self.locale)
-#    entities = delta.added_entities
-#
-#    entities, skipped_count = self._filter_existing_entities(entities, force)
-#
-#    return len(entities)

@@ -17,36 +17,31 @@ def run_with_controller():
   global current_running_index
   with WowheadFetcher(locale=Locale.enUS) as fetcher:
     # Run fetching operations
-    operations: list[tuple[VersionSlug, EntityType, int | None, Locale]] = [
-      # (VersionSlug.CLASSIC, "quest", None, Locale.enUS),
-      # # (VersionSlug.CLASSIC, "npc", 1000),
-      # # (VersionSlug.CLASSIC, "object", 1000),
-      # (VersionSlug.TBC, "quest", None, Locale.enUS),
-      # # (VersionSlug.TBC, "npc", 1000),
-      # # (VersionSlug.TBC, "object", 1000),
-      # (VersionSlug.WOTLK, "quest", None, Locale.enUS),
-      # # (VersionSlug.WOTLK, "npc", 1000),
-      # # (VersionSlug.WOTLK, "object", 1000),
-      # (VersionSlug.CATA, "quest", None, Locale.enUS),
-      # # (VersionSlug.CATA, "npc", 1000),
-      # # (VersionSlug.CATA, "object", 1000),
-      # (VersionSlug.MOP_CLASSIC, "quest", None, Locale.enUS),
-      # # (VersionSlug.MOP_CLASSIC, "npc", 1000),
-      # # (VersionSlug.MOP_CLASSIC, "object", 1000),
-    ]
+    operations: list[tuple[VersionSlug, EntityType, int | None, Locale]] = []
 
     for loc in Locale:
+      # if loc == Locale.koKR or loc == Locale.zhCN or loc == Locale.zhTW or loc == Locale.ruRU:
       operations.append((VersionSlug.CLASSIC, "quest", None, loc))
       operations.append((VersionSlug.TBC, "quest", None, loc))
-      # operations.append((VersionSlug.WOTLK, "quest", None, loc))
-      # operations.append((VersionSlug.CATA, "quest", None, loc))
-      # operations.append((VersionSlug.MOP_CLASSIC, "quest", None, loc))
+      operations.append((VersionSlug.WOTLK, "quest", None, loc))
+      operations.append((VersionSlug.CATA, "quest", None, loc))
+      operations.append((VersionSlug.MOP_CLASSIC, "quest", None, loc))
 
+    for loc in Locale:
+      # if loc == Locale.koKR or loc == Locale.zhCN or loc == Locale.zhTW or loc == Locale.ruRU:
       operations.append((VersionSlug.CLASSIC, "object", None, loc))
       operations.append((VersionSlug.TBC, "object", None, loc))
+      operations.append((VersionSlug.WOTLK, "object", None, loc))
+      operations.append((VersionSlug.CATA, "object", None, loc))
+      operations.append((VersionSlug.MOP_CLASSIC, "object", None, loc))
 
+    for loc in Locale:
+      # if loc == Locale.koKR or loc == Locale.zhCN or loc == Locale.zhTW or loc == Locale.ruRU:
       operations.append((VersionSlug.CLASSIC, "npc", None, loc))
       operations.append((VersionSlug.TBC, "npc", None, loc))
+      operations.append((VersionSlug.WOTLK, "npc", None, loc))
+      operations.append((VersionSlug.CATA, "npc", None, loc))
+      operations.append((VersionSlug.MOP_CLASSIC, "npc", None, loc))
 
     # Start the HTTP control server with configurable default refresh frequency
     # Options: 1000ms (1s), 2000ms (2s), 5000ms (5s), 10000ms (10s), 30000ms (30s), 60000ms (1m)
@@ -89,8 +84,10 @@ def run_with_controller():
 
       if not fetcher.is_stopped():
         print("\n=== All operations completed successfully ===")
+        time.sleep(10)  # Allow time for final updates to be processed
       else:
         print("\n=== Operations stopped by user request ===")
+        time.sleep(5)  # Allow time for final updates to be processed
 
     finally:
       print("Shutting down HTTP controller...")
