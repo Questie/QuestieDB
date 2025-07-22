@@ -93,7 +93,7 @@ def generate_xml_import(version: str):
   print(f"Generating XML import file: {xml_filepath}")
 
   # Generate import xml file
-  with open(xml_filepath, "w", encoding="utf-8") as file:
+  with open(xml_filepath, "w", encoding="utf-8", newline="\n") as file:
     file.write(
       '<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">\n'
     )
@@ -232,7 +232,7 @@ def export_item(conn: sqlite3.Connection, fullLocale: str, version: str):
   output_filename = f"item_{questieDBVersion}_{shortLocale}.lua"
 
   # Output data in lua table format
-  with open(os.path.join(output_path, output_filename), "w", encoding="utf-8") as file:
+  with open(os.path.join(output_path, output_filename), "w", encoding="utf-8", newline="\n") as file:
     file.write("locales_item = locales_item or {}\n")
     file.write(f"locales_item['{shortLocale}'] = {{\n")
     for row in rows:
@@ -274,7 +274,7 @@ def export_gameobject(conn: sqlite3.Connection, fullLocale: str, version: str):
   output_filename = f"object_{questieDBVersion}_{shortLocale}.lua"
 
   # Output data in lua table format
-  with open(os.path.join(output_path, output_filename), "w", encoding="utf-8") as file:
+  with open(os.path.join(output_path, output_filename), "w", encoding="utf-8", newline="\n") as file:
     file.write("locales_object = locales_object or {}\n")
     file.write(f"locales_object['{shortLocale}'] = {{\n")
     for row in rows:
@@ -317,7 +317,7 @@ def export_creature(conn: sqlite3.Connection, fullLocale: str, version: str):
   output_filename = f"npc_{questieDBVersion}_{shortLocale}.lua"
 
   # Output data in lua table format
-  with open(os.path.join(output_path, output_filename), "w", encoding="utf-8") as file:
+  with open(os.path.join(output_path, output_filename), "w", encoding="utf-8", newline="\n") as file:
     file.write("locales_npc = locales_npc or {}\n")
     file.write(f"locales_npc['{shortLocale}'] = {{\n")
     for row in rows:
@@ -374,7 +374,7 @@ def export_quest(conn: sqlite3.Connection, fullLocale: str, version: str):
   output_filename = f"quest_{questieDBVersion}_{shortLocale}.lua"
 
   # Output data in lua table format
-  with open(os.path.join(output_path, output_filename), "w", encoding="utf-8") as file:
+  with open(os.path.join(output_path, output_filename), "w", encoding="utf-8", newline="\n") as file:
     file.write("locales_quest = locales_quest or {}\n")
     file.write(f"locales_quest['{shortLocale}'] = {{\n")
     for row in rows:

@@ -67,7 +67,7 @@ def download_locales(locales: list[str], version: str, output_dir: str) -> None:
         try:
           response = requests.get(url)
           response.raise_for_status()  # Raise an exception for bad status codes
-          with open(output_path, "w", encoding="utf-8") as file:
+          with open(output_path, "w", encoding="utf-8", newline="\n") as file:
             file.write(response.text)
           # print(f"Downloaded {file_name} to {output_path}")
           anySuccess = file_name

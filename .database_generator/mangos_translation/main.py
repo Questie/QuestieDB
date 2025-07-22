@@ -49,7 +49,7 @@ def column_exists(connection, table_name, column_name):
 
 def import_sql_file(conn, file_path):
   """Import SQL file into the database"""
-  with open(file_path, "r", encoding="utf-8") as file:
+  with open(file_path, "r", encoding="utf-8", newline="\n") as file:
     sql_script = file.read()
   try:
     cursor = conn.cursor()
@@ -81,11 +81,10 @@ def process(locales, version):
     connection.commit()
 
     # Check if the locales directory exists
-    if not os.path.exists("locales"):
-      os.makedirs("locales")
+    os.makedirs("locales", exist_ok=True)
     # Check if the version directory exists
     if not os.path.exists(f"locales/{version}"):
-      os.makedirs(f"locales/{version}")
+      os.makedirs(f"locales/{version}", exist_ok=True)
     else:
       # Remove the version directory and its contents and recreate it
       for root, dirs, files in os.walk(f"locales/{version}", topdown=False):
@@ -95,14 +94,14 @@ def process(locales, version):
           os.rmdir(os.path.join(root, name))
 
     loaddb_file = f"locales/{version}/mangos{version}LoadDB.sql"
-    with open(loaddb_file, "w", encoding="utf-8") as file:
+    with open(loaddb_file, "w", encoding="utf-8", newline="\n") as file:
       create = download_loadDB(version)
       file.write(create)
     convert_file(loaddb_file, loaddb_file)
     import_sql_file(connection, loaddb_file)
 
     alterdb_file = f"locales/{version}/mangos{version}AlterDB.sql"
-    with open(alterdb_file, "w", encoding="utf-8") as file:
+    with open(alterdb_file, "w", encoding="utf-8", newline="\n") as file:
       alter = download_alterDB(version)
       file.write(alter)
     convert_file(alterdb_file, alterdb_file)
@@ -111,7 +110,7 @@ def process(locales, version):
     # This is a workaround for the fact that the ALTER TABLE statement does not support adding multiple columns in one statement
     # Append the ALTER TABLE statement to the file
     if not column_exists(connection, "locales_quest", "CompletedText_loc9"):
-      with open(alterdb_file, "a", encoding="utf-8") as file:
+      with open(alterdb_file, "a", encoding="utf-8", newline="\n") as file:
         file.write("ALTER TABLE locales_quest ADD COLUMN CompletedText_loc9 TEXT ;\n")
 
     import_sql_file(connection, alterdb_file)
