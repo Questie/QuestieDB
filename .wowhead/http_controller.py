@@ -25,7 +25,7 @@ class RequestHandler(BaseHTTPRequestHandler):
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Processing Control</title>
+        <title>QuestieDB Processing Control</title>
         <meta charset="utf-8">
         <style>
             body {{ font-family: Arial, sans-serif; margin: 20px; }}

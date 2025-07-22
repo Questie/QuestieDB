@@ -5,7 +5,7 @@ import threading
 import requests
 import time
 
-rate_proxy_manager = RateLimitedProxyManager(db_path="proxy_usage.db", rate_limit_seconds=0.5)
+rate_proxy_manager = RateLimitedProxyManager(db_path="proxy_usage.db", rate_limit_seconds=0.1)
 
 # Dictionary mapping locales to their corresponding numeric codes
 localeLookup = {
@@ -39,17 +39,20 @@ localeToURLLocale = {
   "frFR": "fr",  # French (France)
   "esMX": "mx",  # Spanish (Mexico)
   "zhTW": "tw",  # Traditional Chinese (Taiwan)
-  "zhCN": "cn",
+  "zhCN": "cn",  # Simplified Chinese (China)
   "itIT": "it",  # Italian (Italy)
 }
+reverseLocaleToURLLocale = {v: k for k, v in localeToURLLocale.items()}
 
 # Dictionary mapping game versions to their corresponding numeric codes
 dataEnvLookup = {
+  # "retail": 1,  # Retail version of the game
   "classic": 4,  # Classic version of the game
   "tbc": 5,  # The Burning Crusade version
   "wotlk": 8,  # Wrath of the Lich King version
   "cata": 11,  # Cataclysm version
   "mop-classic": 15,  # Mists of Pandaria version
+  # "mop-classic": 1,  # Mists of Pandaria version
 }
 # Add Flipped dataEnvLookup
 reversedataEnvLookup = {}
@@ -102,7 +105,7 @@ def cacheResponse(response, idType, id, version, locale):
 
 
 # Function to fetch data for a given game entity
-def getData(idType, id, version, locale="enUS", useCache=True):
+def getData(idType, id, version, locale="enUS", useCache=True, output_only=False):
   data = {}
 
   if not os.path.exists(".cache"):
@@ -110,7 +113,7 @@ def getData(idType, id, version, locale="enUS", useCache=True):
   if not os.path.exists(f".cache/{version.lower()}"):
     os.mkdir(f".cache/{version.lower()}")
   if locale == "all":
-    print(f"Fetching {idType} {id} for {allLocaleString}")
+    print(f"Processing {idType} {id} for {allLocaleString}")
     # If the locale is "all", fetch data for all locales
     for locale in localeLookup:
       if useCache:
@@ -121,6 +124,10 @@ def getData(idType, id, version, locale="enUS", useCache=True):
         except Exception as e:
           print(f"Cache is missing {idType} {id} for {locale}.")
           # continue
+
+      if output_only:
+        # If output_only is True and no data is found we just skip this locale
+        continue
 
       # Get proxy port (RateLimited)
       next_proxy = None
@@ -148,7 +155,7 @@ def getData(idType, id, version, locale="enUS", useCache=True):
         print(f"Entity not found: {id}")
         return None
   elif locale in localeLookup:
-    print(f"Fetching {idType} {id} for {locale}")
+    print(f"Processing {idType} {id} for {locale}")
     if useCache:
       try:
         with open(f".cache/{version.lower()}/{idType}/{id}_{locale}.json", "r", encoding="utf-8") as f:
@@ -187,14 +194,14 @@ def getData(idType, id, version, locale="enUS", useCache=True):
 sqlite_processed_lock = threading.Lock()
 
 
-def getDataSqlite(idType, id, version, locale="enUS", useCache=True) -> dict[str, str] | None:
+def getDataSqlite(idType, id, version, locale="enUS", useCache=True, output_only=False) -> dict[str, str] | None:
   data = {}
 
   # Open the SQLite database connection
   cache = sqlite3.connect(f".cache-{version.lower()}.db")
 
   if locale == "all":
-    print(f"Fetching {idType} {id} for all {allLocaleString}")
+    print(f"Processing {idType} {id} for all {allLocaleString}")
     # If the locale is "all", fetch data for all locales
     for locale in localeLookup:
       if useCache:
@@ -208,6 +215,10 @@ def getDataSqlite(idType, id, version, locale="enUS", useCache=True) -> dict[str
             continue
           # else:
           #   print(f"Cache is missing {idType} {id} for {locale}.")
+
+      if output_only:
+        # If output_only is True and no data is found we just skip this locale
+        continue
 
       # Get proxy port (RateLimited)
       next_proxy = None
@@ -241,7 +252,7 @@ def getDataSqlite(idType, id, version, locale="enUS", useCache=True) -> dict[str
         print(f"Entity not found: {id}")
         return None
   elif locale in localeLookup:
-    print(f"Fetching {idType} {id} for {locale}")
+    print(f"Processing {idType} {id} for {locale}")
     if useCache:
       # Check if the data is already in the SQLite database
       with sqlite_processed_lock:

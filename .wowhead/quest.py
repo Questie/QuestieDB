@@ -114,7 +114,12 @@ def getQuestSections(locale, data, id, idType="quest"):
       quest_text = []
       for element in h1_tag.next_siblings:
         if isinstance(element, Tag):
-          if element.name != "a":
+          if element.name == "b":
+            continue
+          # <div class="pad"></div>
+          elif element.name == "div" and "pad" in element.get("class", []):  # type: ignore
+            continue
+          elif element.name != "a":
             break
           quest_text.append(element.get_text())
         elif isinstance(element, NavigableString):
