@@ -248,6 +248,4 @@ def calculate_version_delta_smart(
     all_entities=all_entities,
     added_entities=added_entities,
     removed_entities=removed_entities,
-    added_suspected_english_entities=(),  # added_sus_english_entities,
-    removed_suspected_english_entities=(),  # removed_sus_english_entities,
   )
