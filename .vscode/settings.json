@@ -28,6 +28,7 @@
     "Corrections/Wotlk",
     "Corrections/Cata",
     "WoW-API",
+    ".tooling/deprecated_tools",
   ],
   "files.exclude": {
     "**/.git": true,

@@ -4,3 +4,4 @@ python-dotenv
 requests
 # requests-ratelimiter
 pyyaml
+google-genai
