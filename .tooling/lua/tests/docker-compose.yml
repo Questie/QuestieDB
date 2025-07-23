@@ -4,6 +4,6 @@ services:
   questiedb-test-lua:
     #image: nickblah/lua:5.1-luarocks
     build: .
-    command: sh /QuestieDB/.tests/run.sh
+    command: sh /QuestieDB/.tooling/lua/tests/run.sh
     volumes:
-      - '../:/QuestieDB'
+      - '../../../:/QuestieDB'
