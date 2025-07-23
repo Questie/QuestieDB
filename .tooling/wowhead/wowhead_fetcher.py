@@ -50,7 +50,7 @@ def _create_worker_session(locale: Locale) -> requests.Session:
   session.headers.update(
     {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-      "Accept-Language": f"{locale.value.split('US')[0]}-US,en;q=0.5",
+      "Accept-Language": f"{locale.value[:2]}-{locale.value[2:]},{locale.value[:2]};q=0.9,en;q=0.5",
     }
   )
   return session
@@ -248,7 +248,7 @@ Status: {"Stopping..." if self.is_stopped() else "Running"}"""
     session.headers.update(
       {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-        "Accept-Language": f"{self.locale.value.split('US')[0]}-US,en;q=0.5",
+        "Accept-Language": f"{self.locale.value[:2]}-{self.locale.value[2:]},{self.locale.value[:2]};q=0.9,en;q=0.5",
       }
     )
     return session
