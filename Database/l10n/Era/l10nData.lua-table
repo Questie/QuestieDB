@@ -2075,7 +2075,7 @@
   { -- Quest
     'A caverna dos trolls‡Пещера троллей‡Die Trollhöhle‡트롤 동굴‡La cueva de los trols‡La cueva de los trols‡La caverne des trolls‡巨魔洞穴‡巨魔洞穴',
     nil,
-    'Grolin Barbabranca quer que você mate 14 Jovens Trolls Jubafria.‡Убейте 14 троллей-подростков из племени Мерзлогривов.‡Grelin Whitebeard möchte, dass Ihr 14 Trollwelpen der Frostmane tötet.‡그렐린 화이트비어드가 어린 서리갈기트롤 14마리를 처치해 달라고 부탁했습니다.‡Grelin Barbablanca quiere que mates a 14 crías de trol Peloescarcha.‡Grelin Barbablanca quiere que mates a 10 crías de trol Peloescarcha.‡Grelin Whitebeard aimerait que vous tuiez 14 Jeunes trolls Frostmane.‡格瑞林·白须要你去杀掉14个霜鬃巨魔幼崽。‡格瑞林·白須要妳去殺掉14個霜鬃巨魔幼崽。',
+    'Grolin Barbabranca quer que você mate 14 Jovens Trolls Jubafria.‡Убейте 14 троллей-подростков из племени Мерзлогривов.‡Grelin Whitebeard möchte, dass Ihr 14 Trollwelpen der Frostmane tötet.‡그렐린 화이트비어드가 어린 서리갈기트롤 14마리를 처치해 달라고 부탁했습니다.‡Grelin Barbablanca quiere que mates a 14 crías de trol Peloescarcha.‡Grelin Barbablanca quiere que mates 14 crías de trol Peloescarcha.‡Grelin Whitebeard aimerait que vous tuiez 14 Jeunes trolls Frostmane.‡格瑞林·白须要你去杀掉14个霜鬃巨魔幼崽。‡格瑞林·白須要妳去殺掉14個霜鬃巨魔幼崽。',
   }
 },
 [183] = {
@@ -2684,7 +2684,7 @@
   { -- Quest
     'Correio de Vale Cristálgida‡Почта Холодной долины‡Postbeförderung im Coldridgetal‡눈마루 골짜기 편지 배달‡Entrega de correo en el Valle de Crestanevada‡Entrega de correo en el Valle de Crestanevada‡La distribution du courrier de la Vallée des Frigères‡寒脊山谷的送信任务‡寒脊山谷的送信任務',
     nil,
-    'Entregue a Pilha de Cartas para Talin Olhobom.‡Доставьте письма Талину Остроглазу.‡Liefert den Stapel Briefe bei Talin Keeneye ab.‡편지 뭉치를 탈린 킨아이에게 배달해야 합니다.‡Entrega el fajo de cartas a Talin Ojoagudo.‡Entrega el fajo de cartas a Talin Ojo Ávido en el Valle de Crestanevada.‡Apporter la pile de lettres à Talin Keeneye.‡把这一摞信件送给塔林·锐眼。‡把這壹摞信件送給塔林·銳眼。',
+    'Entregue a Pilha de Cartas para Talin Olhobom.‡Доставьте письма Талину Остроглазу.‡Liefert den Stapel Briefe bei Talin Keeneye ab.‡편지 뭉치를 탈린 킨아이에게 배달해야 합니다.‡Entrega el fajo de cartas a Talin Ojoagudo.‡Entrega el fajo de cartas a Talin Ojo Ávido.‡Apporter la pile de lettres à Talin Keeneye.‡把这一摞信件送给塔林·锐眼。‡把這壹摞信件送給塔林·銳眼。',
   }
 },
 [234] = {
@@ -2697,7 +2697,7 @@
   { -- Quest
     'Correio de Vale Cristálgida‡Почта Холодной долины‡Postbeförderung im Coldridgetal‡눈마루 골짜기 편지 배달‡Entrega de correo en el Valle de Crestanevada‡Entrega de correo en el Valle de Crestanevada‡La distribution du courrier de la Vallée des Frigères‡寒脊山谷的送信任务‡寒脊山谷的送信任務',
     nil,
-    'Entregue a Carta para Grolin Barbabranca.‡Доставьте письмо Грелину Белобороду.‡Liefert den Brief bei Grelin Whitebeard ab.‡편지를 그렐린 화이트비어드에게 배달해야 합니다.‡Entrega la carta a Grelin Barbablanca.‡Entrega la carta a Grelin Barbablanca en el Valle de Crestanevada.‡Remettre la lettre à Grelin Whitebeard.‡把这封信送给格瑞林·白须。‡把這封信送給格瑞林·白須。',
+    'Entregue a Carta para Grolin Barbabranca.‡Доставьте письмо Грелину Белобороду.‡Liefert den Brief bei Grelin Whitebeard ab.‡편지를 그렐린 화이트비어드에게 배달해야 합니다.‡Entrega la carta a Grelin Barbablanca.‡Entrégale la carta a Grelin Barbablanca.‡Remettre la lettre à Grelin Whitebeard.‡把这封信送给格瑞林·白须。‡把這封信送給格瑞林·白須。',
   }
 },
 [235] = {
@@ -8301,7 +8301,7 @@
 [707] = {
   nil,
   { -- Npc
-    'Trogg Pedraqueixo‡Трогг из племени Каменной Челюсти‡Trogg der Felsenkiefer‡바위턱트로그‡Trogg Mentueso‡Trogg Mentueso‡Trogg Mâcheroc‡石腭穴居人‡石齶穴居人',
+    'Trogg Pedraqueixo‡Трогг из племени Каменной Челюсти‡Trogg der Felsenkiefer‡바위턱트로그‡Trogg Mentueso‡Trogg Comepiedras‡Trogg Mâcheroc‡石腭穴居人‡石齶穴居人',
     nil,
   },
   nil,
@@ -10722,7 +10722,7 @@
   '‡Череп воргена‡Worgenschädel‡오울겐의 해골‡Calavera de huargen‡Calavera de huargen‡Crâne de worgen‡狼人的颅骨‡狼人的顱骨',
   { -- Npc
     'Thorgas Grimson‡Торгас Мрачнон‡Thorgas Grimson‡토르가스 그림슨‡Thorgas Grimson‡Thorgas Grimson‡Thorgas Grimson‡索加斯·格瑞姆森‡索加斯·格瑞姆森',
-    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   { -- Quest
@@ -10924,7 +10924,7 @@
   nil,
   { -- Npc
     'Lyria Du Lac‡Лирия дю Лак‡Lyria Du Lac‡리리아 뒤 라크‡Lyria Du Lac‡Lyria Du Lac‡Lyria Du Lac‡里瑞亚·杜拉克‡里瑞亞·杜拉克',
-    'Treinamento de Guerreiros‡Наставница воинов‡Kriegerlehrerin‡상급 전사‡Instructor de guerreros‡Instructor de guerreros‡Maître des guerriers‡战士训练师‡戰士訓練師',
+    'Treinamento de Guerreiros‡Наставница воинов‡Kriegerlehrerin‡상급 전사‡Instructor de guerreros‡Instructora de guerreros‡Maître des guerriers‡战士训练师‡戰士訓練師',
   },
   nil,
   { -- Quest
@@ -14850,7 +14850,7 @@
   nil,
   { -- Npc
     'Grif Selvacuore‡Гриф Дикое Сердце‡Grif Wildheart‡그리프 와일드하트‡Grif Corazón Salvaje‡Grif Corazón Salvaje‡Grif Wildheart‡格瑞夫‡格瑞夫',
-    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   nil
@@ -17050,7 +17050,7 @@
   -- Item
   '‡Лоскутные штаны‡Flickwerkhose‡기워 붙인 바지‡Pantalones de retales‡Pantalones de retales‡Pantalon en patchwork‡碎料短裤‡碎料便褲',
   { -- Npc
-    'Suzette Callina‡Сюзетта Галлина‡Suzetta Gallina‡수제타 갈리나‡Suzetta Gallina‡Suzetta Gallina‡Suzetta Gallina‡苏泽塔·加林纳‡蘇澤塔·加林納',
+    'Suzette Callina‡Сюзетта Галлина‡Suzetta Gallina‡수제타 갈리나‡Suzetta Gallina‡Suzetta Galina‡Suzetta Gallina‡苏泽塔·加林纳‡蘇澤塔·加林納',
     nil,
   },
   nil,
@@ -17063,7 +17063,7 @@
 [1432] = {
   nil,
   { -- Npc
-    'Renato Callina‡Ренато Галлина‡Renato Gallina‡레나토 갈리나‡Renato Gallina‡Renato Gallina‡Renato Gallina‡雷纳多·加林纳‡雷納多·加林納',
+    'Renato Callina‡Ренато Галлина‡Renato Gallina‡레나토 갈리나‡Renato Gallina‡Renato Galina‡Renato Gallina‡雷纳多·加林纳‡雷納多·加林納',
     nil,
   },
   nil,
@@ -20425,7 +20425,7 @@
   -- Item
   '‡Клепаные кольчужные наручи‡Gekettelte Armschienen‡고리 사슬 팔보호구‡Brazales de eslabones‡Brazales de eslabones‡Brassards en anneaux rivetés‡链甲护腕‡環接鍊甲護腕',
   { -- Npc
-    'Grão-lorde Bolvar Fordragon‡Верховный лорд Болвар Фордрагон‡Hochlord Bolvar Fordragon‡대영주 볼바르 폴드라곤‡Alto Señor Bolvar Fordragon‡Alto Señor Bolvar Fordragon‡Généralissime Bolvar Fordragon‡伯瓦尔·弗塔根公爵‡大領主伯瓦爾·弗塔根',
+    'Grão-lorde Bolvar Fordragon‡Верховный лорд Болвар Фордрагон‡Hochlord Bolvar Fordragon‡대영주 볼바르 폴드라곤‡Alto Señor Bolvar Fordragon‡Alto señor Bolvar Fordragón‡Généralissime Bolvar Fordragon‡伯瓦尔·弗塔根公爵‡大領主伯瓦爾·弗塔根',
     nil,
   },
   -- Object
@@ -24107,7 +24107,7 @@
   '‡Полуторный меч из темной стали‡Dunkelstahlbastardschwert‡검은강철 바스타드소드‡Espada bastarda de acero oscuro‡Espada bastarda de acero oscuro‡Epée bâtarde en sombracier‡黑铁重剑‡黑鐵重劍',
   { -- Npc
     'Natheril Clamachuva‡Натериль Заклинатель Дождя‡Natheril Raincaller‡내더릴 레인콜러‡Natheril Clamalluvias‡Natheril Clamalluvias‡Natheril Raincaller‡纳瑟瑞尔·祈雨‡納瑟瑞爾·祈雨者',
-    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Víveres‡Fournitures générales‡杂货商‡雜貨商',
+    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Pertrechos‡Fournitures générales‡杂货商‡雜貨商',
   },
   -- Object
   'Raiz Almiscarada‡Мускусный корень‡Bisamwurzel‡사향쥐 뿌리‡Zibética‡Zibética‡Racine de Musquash‡麝鼠根‡麝鼠根',
@@ -34004,7 +34004,7 @@
   nil,
   { -- Npc
     'Sewa Corre com a Névoa‡Сива Вестница Туманов‡Sewa Mistrunner‡세와 미스트러너‡Seua Correbruma‡Seua Correbruma‡Sewa Mistrunner‡苏瓦·迷雾行者‡蘇瓦·迷霧行者',
-    'Suprimentos de Pesca‡Рыболовные снасти‡Angelbedarfslieferant‡낚시용품 상인‡Proveedor de pescadería‡Proveedor de pescadería‡Fournitures de pêche‡渔具供应商‡釣魚供應商',
+    'Suprimentos de Pesca‡Рыболовные снасти‡Angelbedarfslieferant‡낚시용품 상인‡Proveedor de pescadería‡Suministros de pesca‡Fournitures de pêche‡渔具供应商‡釣魚供應商',
   },
   nil,
   nil
@@ -34091,7 +34091,7 @@
   nil,
   { -- Npc
     'Kari Chifre Troante‡Кари Громовой Рог‡Kary Thunderhorn‡캐리 썬더혼‡Kary Tronacuerno‡Kary Tronacuerno‡Kary Thunderhorn‡卡瑞·雷角‡卡瑞·雷角',
-    'Treinamento de Caçadores‡Наставница охотников‡Jägerlehrerin‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Treinamento de Caçadores‡Наставница охотников‡Jägerlehrerin‡상급 사냥꾼‡Instructor de caza‡Instructora de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   nil
@@ -34101,7 +34101,7 @@
   '‡Короткий ясеневый лук‡Kurzer Eschenbogen‡잿빛 단궁‡Arco de fresno corto‡Arco de fresno corto‡Arc court en frêne‡灰木短弓‡灰木短弓',
   { -- Npc
     'Holto Chifre Troante‡Хольт Громовой Рог‡Holt Thunderhorn‡홀트 썬더혼‡Holt Tronacuerno‡Holt Tronacuerno‡Holt Thunderhorn‡浩特·雷角‡浩特·雷角',
-    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   nil
@@ -34111,7 +34111,7 @@
   '‡Охотничья фузея‡Vorderlader des Jägers‡사냥꾼의 전장총‡Avancarga de cazador‡Avancarga de cazador‡Escopette de chasseur‡猎人长枪‡獵人裝填火槍',
   { -- Npc
     'Urek Chifre Troante‡Урек Громовой Рог‡Urek Thunderhorn‡우렉 썬더혼‡Urek Tronacuerno‡Urek Tronacuerno‡Urek Thunderhorn‡乌瑞克·雷角‡烏瑞克·雷角',
-    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   nil
@@ -35375,7 +35375,7 @@
   '‡Телсамарский топор‡Thelsamaraxt‡텔사마 도끼‡Hacha de Thelsamar‡Hacha de Thelsamar‡Hache de Thelsamar‡塞尔萨玛战斧‡塞爾薩瑪戰斧',
   { -- Npc
     'Jen\'shan‡Джен\'шан‡Jen\'shan‡젠샨‡Jen\'shan‡Jen\'shan‡Jen\'shan‡基沙‡基沙',
-    'Treinamento de Caçadores‡Наставница охотников‡Jägerlehrerin‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Treinamento de Caçadores‡Наставница охотников‡Jägerlehrerin‡상급 사냥꾼‡Instructor de caza‡Instructora de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   nil
@@ -37407,7 +37407,7 @@
   '‡Сумка, покрытая грязью‡Schlammbedeckte Tasche‡수액투성이 자루‡Bolsa cubierta de moco‡Bolsa cubierta de moco‡Sac couvert de vase‡污泥覆盖的背包‡污泥覆蓋的背包',
   { -- Npc
     'Ormak Tiroatroz‡Ормак Лютострел‡Ormak Grimshot‡오르막 그림샷‡Ormak Tirosiniestro‡Ormak Tirosiniestro‡Ormak Grimshot‡奥玛克‡奧瑪克',
-    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   nil
@@ -38027,7 +38027,7 @@
   'Cálamo de Pena Negra‡Черное перо‡Schwarzer Federkiel‡검은 깃털‡Cañón de pluma negra‡Cañón de pluma negra‡Plume noire‡黑色羽毛‡黑色羽毛',
   { -- Npc
     'Xor\'juul‡Ксор\'джуул‡Xor\'juul‡소르줄‡Xor\'juul‡Xor\'juul‡Xor\'juul‡科索祖尔‡科索祖爾',
-    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   nil
@@ -38037,7 +38037,7 @@
   'Safira do Céu‡Небесный сапфир‡Saphir des Himmels‡천상의 사파이어‡Zafiro de cielo‡Zafiro de cielo‡Saphir des cieux‡天蓝宝石‡天藍寶石',
   { -- Npc
     'Sian\'dur‡Шиан\'дара‡Sian\'dur‡시안두르‡Sian\'dur‡Sian\'dur‡Sian\'dur‡萨杜尔‡薩杜爾',
-    'Treinamento de Caçadores‡Наставница охотников‡Jägerlehrerin‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Treinamento de Caçadores‡Наставница охотников‡Jägerlehrerin‡상급 사냥꾼‡Instructor de caza‡Instructora de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   nil
@@ -39505,7 +39505,7 @@
   nil,
   { -- Npc
     'Sara Croft‡Сара Рэйкрофт‡Sarah Raycroft‡사라 레이크로프트‡Sarah Raycroft‡Sarah Raycroft‡Sarah Raycroft‡莎拉·雷克劳夫特‡薩拉·雷克勞夫特',
-    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Víveres‡Fournitures générales‡杂货商‡雜貨商',
+    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Pertrechos‡Fournitures générales‡杂货商‡雜貨商',
   },
   nil,
   { -- Quest
@@ -40128,7 +40128,7 @@
   'Missiva da Camarilha‡Послание Синдиката‡Schreiben des Syndikats‡비밀결사대 신서‡Misiva de la Hermandad‡Misiva de la Hermandad‡Missive du Syndicat‡辛迪加信件‡辛迪加信件',
   { -- Npc
     'Dazalar‡Дазалар‡Dazalar‡다잘라‡Dazalar‡Dazalar‡Dazalar‡达扎拉‡達札拉',
-    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   { -- Quest
@@ -40372,7 +40372,7 @@
   'Cabeça do Nek\'rosh‡Голова Некроша‡Nek\'roshs Kopf‡네크로쉬의 머리카락‡Cabeza de Nek\'rosh‡Cabeza de Nek\'rosh‡Tête de Nek\'rosh‡纳克罗什的头颅‡納克羅什的頭顱',
   { -- Npc
     'Rarck‡Рерк‡Rarck‡라륵크‡Rarck‡Rarck‡Rarck‡拉尔克‡拉爾克',
-    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Víveres‡Fournitures générales‡杂货商‡雜貨商',
+    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Pertrechos‡Fournitures générales‡杂货商‡雜貨商',
   },
   nil,
   { -- Quest
@@ -43969,7 +43969,7 @@
   '‡Утолщенные кожаные сапоги‡Dicke Lederstiefel‡두꺼운 가죽 장화‡Botas de cuero grueso‡Botas de cuero grueso‡Bottes en cuir épais‡厚皮战靴‡厚皮長靴',
   { -- Npc
     'Haljan Ruboralma‡Хальян Сердце Дуба‡Haljan Oakheart‡할잔 오크하트‡Haljan Roblezón‡Haljan Roblezón‡Haljan Oakheart‡哈尔詹·橡木之心‡哈爾詹·橡木之心',
-    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Víveres‡Fournitures générales‡杂货商‡雜貨商',
+    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Pertrechos‡Fournitures générales‡杂货商‡雜貨商',
   },
   -- Object
   '‡Раскаленные угли‡Brennende Glutspäne‡타오르는 잿불‡Ascuas ardientes‡Ascuas ardientes‡Braises ardentes‡火堆余烬‡火堆餘燼',
@@ -43984,7 +43984,7 @@
   '‡Утолщенные кожаные наручи‡Dicke Lederarmschienen‡두꺼운 가죽 팔보호구‡Brazales de cuero grueso‡Brazales de cuero grueso‡Brassards en cuir épais‡厚皮护腕‡厚皮護腕',
   { -- Npc
     'Danlaar Noctandas‡Данлаар Ночной странник‡Danlaar Nightstride‡단라르 나이트스트라이드‡Danlaar Zancanoche‡Danlaar Zancanoche‡Danlaar Nightstride‡丹拉尔·夜路‡丹拉爾·夜路',
-    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   -- Object
   '‡Буйное пламя‡Wilde Lohe‡이글거리는 화롯불‡Llamaradas feroces‡Llamaradas feroces‡Brasier ardent‡烈火‡烈火',
@@ -45195,7 +45195,7 @@
   '‡Кираса Черной Кузни‡Schwarzschmiedebrustplatte‡흑철로 흉갑‡Coraza Forjanegra‡Coraza Forjanegra‡Cuirasse forgenoire‡黑炉胸甲‡黑爐胸甲',
   { -- Npc
     'Grawnal‡Граунал‡Grawnal‡그라우날‡Grawnal‡Grawnal‡Grawnal‡格劳纳尔‡格勞納爾',
-    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Víveres‡Fournitures générales‡杂货商‡雜貨商',
+    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Pertrechos‡Fournitures générales‡杂货商‡雜貨商',
   },
   nil,
   { -- Quest
@@ -45901,8 +45901,8 @@
   -- Item
   '‡Черноводский мундир‡Schwarzmeertunika‡검은바다 튜닉‡Guerrera Aguasnegras‡Guerrera Aguasnegras‡Tunique des Flots noirs‡黑水外套‡黑水外套',
   { -- Npc
-    'Jeen\'ra Velonyx‡Джин\'ра Ночная Вестница‡Jeen\'ra Nightrunner‡진라 나이트러너‡Jeen\'ra Noctámbulus‡Jeen\'ra Noctámbulus‡Jeen\'ra Nightrunner‡吉恩拉‡吉恩拉',
-    'Treinamento de Caçadores‡Наставница охотников‡Jägerlehrerin‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Jeen\'ra Velonyx‡Джин\'ра Ночная Вестница‡Jeen\'ra Nightrunner‡진라 나이트러너‡Jeen\'ra Noctámbulus‡Jeen\'ra Corredor de la Noche‡Jeen\'ra Nightrunner‡吉恩拉‡吉恩拉',
+    'Treinamento de Caçadores‡Наставница охотников‡Jägerlehrerin‡상급 사냥꾼‡Instructor de caza‡Instructora de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   -- Object
   '‡Мулгор‡‡멀고어‡‡Mulgore‡‡莫高雷‡莫高雷',
@@ -45992,7 +45992,7 @@
   nil,
   { -- Npc
     'Jocasta‡Иокаста‡Jocaste‡조카스테‡Jocaste‡Jocaste‡Jocaste‡祖卡斯特‡祖卡斯特',
-    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrerin‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrerin‡상급 사냥꾼‡Instructor de caza‡Instructora de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   { -- Quest
@@ -46317,7 +46317,7 @@
   nil,
   { -- Npc
     'Dalmond‡Дальмонд‡Dalmond‡달몬드‡Dalmond‡Dalmond‡Dalmond‡达蒙德‡達蒙德',
-    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Víveres‡Fournitures générales‡杂货商‡雜貨商',
+    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Pertrechos‡Fournitures générales‡杂货商‡雜貨商',
   },
   nil,
   { -- Quest
@@ -46349,7 +46349,7 @@
   { -- Quest
     'Os verdadeiros mestres‡Подлинные хозяева‡Die wahren Meister‡진정한 지도자‡Los verdaderos maestros‡Los verdaderos maestros‡Les véritables maîtres‡真正的主人‡真正的主人',
     nil,
-    'Viaje para Ventobravo e entregue o Apelo de Salomão ao Grão-lorde Bolvar Fordragon.|nBolvar reside na Bastilha Ventobravo.‡Передайте обращение Соломона верховному лорду Болвару Фордрагону.|nБолвар Фордрагон пребывает в Крепости Штормграда.‡Reist nach Stormwind und tragt Solomons Hilfegesuch dem Hochlord Bolvar Fordragon vor.|nBolvar residiert in der Burg Stormwind.‡스톰윈드로 가서 대영주 볼바르 폴드라곤에게 볼바르에게 보내는 솔로몬의 탄원서를 전해주어야 합니다.|n볼바르는 스톰윈드 왕궁에 있습니다.‡Ve a Ventormenta para entregar la petición de ayuda de Solomon al Gran Señor Bolvar Fordragon.|nVive en el Castillo de Ventormenta.‡Ve a Ventormenta para entregar la petición de ayuda de Solomon al rey Varian Wrynn.|nVive en el Castillo de Ventormenta.‡Voyager vers Stormwind et remettre la Demande d\'aide de Solomon au généralissime Bolvar Fordragon.|nBolvar demeure dans le Donjon de Stormwind.‡到暴风城去把所罗门的求援信交给伯瓦尔·弗塔根公爵。|n伯瓦尔在暴风要塞里。‡到暴風城去把所羅門的求援信交給伯瓦爾·弗塔根公爵。|n伯瓦爾在暴風要塞裏。',
+    'Viaje para Ventobravo e entregue o Apelo de Salomão ao Grão-lorde Bolvar Fordragon.|nBolvar reside na Bastilha Ventobravo.‡Передайте обращение Соломона верховному лорду Болвару Фордрагону.|nБолвар Фордрагон пребывает в Крепости Штормграда.‡Reist nach Stormwind und tragt Solomons Hilfegesuch dem Hochlord Bolvar Fordragon vor.|nBolvar residiert in der Burg Stormwind.‡스톰윈드로 가서 대영주 볼바르 폴드라곤에게 볼바르에게 보내는 솔로몬의 탄원서를 전해주어야 합니다.|n볼바르는 스톰윈드 왕궁에 있습니다.‡Ve a Ventormenta para entregar la petición de ayuda de Solomon al Gran Señor Bolvar Fordragon.|nVive en el Castillo de Ventormenta.‡Viaja a Ventormenta y entrega la petición de Solomon al alto señor Bolvar Fordragón.|nBolvar se encuentra en el Castillo de Ventormenta.‡Voyager vers Stormwind et remettre la Demande d\'aide de Solomon au généralissime Bolvar Fordragon.|nBolvar demeure dans le Donjon de Stormwind.‡到暴风城去把所罗门的求援信交给伯瓦尔·弗塔根公爵。|n伯瓦尔在暴风要塞里。‡到暴風城去把所羅門的求援信交給伯瓦爾·弗塔根公爵。|n伯瓦爾在暴風要塞裏。',
   }
 },
 [4185] = {
@@ -46540,7 +46540,7 @@
   nil,
   { -- Npc
     'Dorion‡Дорион‡Dorion‡도리온‡Dorion‡Dorion‡Dorion‡多利安‡多利安',
-    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   nil
@@ -46698,7 +46698,7 @@
   nil,
   { -- Npc
     'Voloren‡Волорен‡Voloren‡볼로렌‡Voloren‡Voloren‡Voloren‡沃洛伦‡沃洛倫',
-    'Suprimentos de Pesca‡Рыболовные снасти‡Angelbedarfslieferant‡낚시용품 상인‡Proveedor de pescadería‡Proveedor de pescadería‡Fournitures de pêche‡渔具供应商‡釣魚供應商',
+    'Suprimentos de Pesca‡Рыболовные снасти‡Angelbedarfslieferant‡낚시용품 상인‡Proveedor de pescadería‡Suministros de pesca‡Fournitures de pêche‡渔具供应商‡釣魚供應商',
   },
   nil,
   { -- Quest
@@ -50419,7 +50419,7 @@
   nil,
   { -- Npc
     'Elisabete Tarrafa‡Лизбет Кромвель‡Lizbeth Cromwell‡리즈베스 크롬웰‡Lizbeth Cromaljibe‡Lizbeth Cromaljibe‡Lizbeth Cromwell‡莉兹白·克伦威尔‡莉茲白·克倫威爾',
-    'Suprimentos de Pesca‡Рыболовные снасти‡Angelbedarfslieferantin‡낚시용품 상인‡Proveedor de pescadería‡Proveedor de pescadería‡Fournitures de pêche‡渔具供应商‡釣魚供應商',
+    'Suprimentos de Pesca‡Рыболовные снасти‡Angelbedarfslieferantin‡낚시용품 상인‡Proveedor de pescadería‡Suministros de pesca‡Fournitures de pêche‡渔具供应商‡釣魚供應商',
   },
   nil,
   nil
@@ -53411,7 +53411,7 @@
   '‡Окровавленный кожаный сапог‡Blutiger Lederstiefel‡피투성이 가죽 장화‡Botas de cuero sangrientas‡Botas de cuero sangrientas‡Bottes en cuir sanglantes‡染血的皮靴‡染血的皮靴',
   { -- Npc
     'Jawn Chapadalta‡Джаун Высокий Холм‡Jawn Highmesa‡조운 하이메사‡Jawn Mesalta‡Jawn Mesalta‡Jawn Highmesa‡加恩·高塔‡加恩·高塔',
-    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Víveres‡Fournitures générales‡杂货商‡雜貨商',
+    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Pertrechos‡Fournitures générales‡杂货商‡雜貨商',
   },
   nil,
   nil
@@ -53617,7 +53617,7 @@
   'Fígado de Kodo‡Печень кодо‡Kodoleber‡코도 간‡Hígado de kodo‡Hígado de kodo‡Foie de kodo‡科多兽的肝脏‡科多獸的肝臟',
   { -- Npc
     'Caritas Lindin‡Милла Сердия‡Charity Mipsy‡자선단 밉시‡Caridad Mipsy‡Caridad Mipsy‡Charity Mipsy‡查瑞迪·米普斯‡查瑞迪·米普斯',
-    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Víveres‡Fournitures générales‡杂货商‡雜貨商',
+    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Pertrechos‡Fournitures générales‡杂货商‡雜貨商',
   },
   nil,
   nil
@@ -55882,8 +55882,8 @@
   -- Item
   '‡Сломанная косточка‡Zerbrochenes Gabelbein‡부러진 차골‡Hueso de la suerte partido‡Hueso de la suerte partido‡Os brisé‡折断的叉骨‡折斷的叉骨',
   { -- Npc
-    'Daera Setalume‡Дайра Яркое Копье‡Daera Brightspear‡데라 브라이트스피어‡Daera Relulanza‡Daera Relulanza‡Daera Brightspear‡戴拉·锐矛‡戴拉·銳矛',
-    'Treinamento de Caçadores‡Наставница охотников‡Jägerlehrerin‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Daera Setalume‡Дайра Яркое Копье‡Daera Brightspear‡데라 브라이트스피어‡Daera Relulanza‡Daera Lanza Reluciente‡Daera Brightspear‡戴拉·锐矛‡戴拉·銳矛',
+    'Treinamento de Caçadores‡Наставница охотников‡Jägerlehrerin‡상급 사냥꾼‡Instructor de caza‡Instructora de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   nil
@@ -55892,8 +55892,8 @@
   -- Item
   '‡Длинное хвостовое перо‡Lange Schwanzfeder‡긴 꼬리 깃털‡Pluma de cola larga‡Pluma de cola larga‡Longue plume de queue‡细长的尾羽‡細長的尾羽',
   { -- Npc
-    'Olmin Barbardente‡Олмин Пламебород‡Olmin Burningbeard‡올민 버닝비어드‡Olmin Barbanllamas‡Olmin Barbanllamas‡Olmin Burningbeard‡奥尔明·燃须‡奧爾明·燃鬚',
-    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Olmin Barbardente‡Олмин Пламебород‡Olmin Burningbeard‡올민 버닝비어드‡Olmin Barbanllamas‡Olmin Barbardiente‡Olmin Burningbeard‡奥尔明·燃须‡奧爾明·燃鬚',
+    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   nil
@@ -55903,7 +55903,7 @@
   'Pluma Vibrante‡Радужное перо‡Farbenprächtiger Federbusch‡흩날리는 솜깃털‡Péndola vibrante‡Péndola vibrante‡Plume vibrante‡鲜艳的羽毛‡鮮豔的羽毛',
   { -- Npc
     'Regnus Granitrondo‡Регнус Громовой Гранит‡Regnus Thundergranite‡레그누스 썬더그래니트‡Regnus Tronagranito‡Regnus Tronagranito‡Regnus Thundergranite‡雷格努斯·雷石‡雷格努斯·雷岩',
-    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   nil
@@ -56090,7 +56090,7 @@
   'Pequena Pata Peluda‡Маленькая мохнатая лапка‡Kleine pelzige Tatze‡작은 앞발‡Garra peluda pequeña‡Garra peluda pequeña‡Petite patte en fourrure‡毛茸茸的小爪子‡毛茸茸的小爪子',
   { -- Npc
     'Jonivera Montalgures‡Джонивера Дальногор‡Jonivera Farmountain‡요니베라 파마운틴‡Jonivera Montanalonga‡Jonivera Montanalonga‡Jonivera Farmountain‡约尼维拉·远山‡約尼維拉·遠山',
-    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Víveres‡Fournitures générales‡杂货商‡雜貨商',
+    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Pertrechos‡Fournitures générales‡杂货商‡雜貨商',
   },
   nil,
   nil
@@ -56429,7 +56429,7 @@
   nil,
   { -- Npc
     'Tansy Sibilama‡Танси Грязебульк‡Tansy Puddlefizz‡탄지 퍼들피즈‡Tansy Burbajea‡Tansy Burbajea‡Tansy Puddlefizz‡坦斯·泥泡‡坦斯·泥泡',
-    'Suprimentos de Pesca‡Рыболовные снасти‡Angelbedarfslieferantin‡낚시용품 상인‡Proveedor de pescadería‡Proveedor de pescadería‡Fournitures de pêche‡渔具供应商‡釣魚供應商',
+    'Suprimentos de Pesca‡Рыболовные снасти‡Angelbedarfslieferantin‡낚시용품 상인‡Proveedor de pescadería‡Suministros de pesca‡Fournitures de pêche‡渔具供应商‡釣魚供應商',
   },
   nil,
   { -- Quest
@@ -59560,7 +59560,7 @@
   '‡Постная оленина‡Mageres Wildbret‡사슴 살코기 구이‡Venado magro‡Venado magro‡Venaison dégraissée‡瘦鹿肉‡瘦鹿肉',
   { -- Npc
     'Ilsa Cletes‡Ильса Корбин‡Ilsa Corbin‡일사 코빈‡Ilsa Corbin‡Ilsa Corbin‡Ilsa Corbin‡伊尔萨·考宾‡伊爾莎·考賓',
-    'Treinamento de Guerreiros‡Наставница воинов‡Kriegerlehrerin‡상급 전사‡Instructor de guerreros‡Instructor de guerreros‡Maître des guerriers‡战士训练师‡戰士訓練師',
+    'Treinamento de Guerreiros‡Наставница воинов‡Kriegerlehrerin‡상급 전사‡Instructor de guerreros‡Instructora de guerreros‡Maître des guerriers‡战士训练师‡戰士訓練師',
   },
   nil,
   nil
@@ -59677,7 +59677,7 @@
   nil,
   { -- Npc
     'Katherine, a Pura‡Катерина Чистая‡Katharina die Reine‡성기사 캐서린‡Katherine la Pura‡Katherine la Pura‡Katherine la Pure‡纯洁的凯瑟琳‡純潔的凱薩琳',
-    'Treinamento de Paladinos‡Наставница паладинов‡Paladinlehrerin‡상급 성기사‡Instructor de paladines‡Instructor de paladines‡Maître des paladins‡圣骑士训练师‡聖騎士訓練師',
+    'Treinamento de Paladinos‡Наставница паладинов‡Paladinlehrerin‡상급 성기사‡Instructor de paladines‡Instructora de paladines‡Maître des paladins‡圣骑士训练师‡聖騎士訓練師',
   },
   nil,
   nil
@@ -59697,7 +59697,7 @@
   'Punhado de Poeira Estelar‡Горсть звездной пыли‡Hand voll Sternenstaub‡별가루 한줌‡Puñado de polvo estelar‡Puñado de polvo estelar‡Poignée de poussière d\'étoile‡一份星尘‡一抔星塵',
   { -- Npc
     'Catarina Gurjão‡Катрин Лиланд‡Catherine Leland‡캐서린 리랜드‡Catherine Leland‡Catherine Leland‡Catherine Leland‡凯瑟琳·利兰‡凱薩琳·利蘭',
-    'Suprimentos de Pesca‡Рыболовные снасти‡Angelbedarfslieferantin‡낚시용품 상인‡Proveedor de pescadería‡Proveedor de pescadería‡Fournitures de pêche‡渔具供应商‡釣魚供應商',
+    'Suprimentos de Pesca‡Рыболовные снасти‡Angelbedarfslieferantin‡낚시용품 상인‡Proveedor de pescadería‡Suministros de pesca‡Fournitures de pêche‡渔具供应商‡釣魚供應商',
   },
   nil,
   nil
@@ -59947,8 +59947,8 @@
 [5515] = {
   nil,
   { -- Npc
-    'Einris Setalume‡Эйнриса Яркошип‡Einris Brightspear‡아인리스 브라이트스피어‡Einris Relulanza‡Einris Relulanza‡Einris Brightspear‡恩瑞斯·锐矛‡恩瑞斯·銳矛',
-    'Treinamento de Caçadores‡Наставница охотников‡Jägerlehrerin‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Einris Setalume‡Эйнриса Яркошип‡Einris Brightspear‡아인리스 브라이트스피어‡Einris Relulanza‡Einris Lanza Reluciente‡Einris Brightspear‡恩瑞斯·锐矛‡恩瑞斯·銳矛',
+    'Treinamento de Caçadores‡Наставница охотников‡Jägerlehrerin‡상급 사냥꾼‡Instructor de caza‡Instructora de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   { -- Quest
@@ -59962,7 +59962,7 @@
   '‡Клык жесткозуба‡Dreschadonfangzahn‡트레샤돈 송곳니‡Colmillo de trillanodonte‡Colmillo de trillanodonte‡Croc de battrodon‡蛇颈龙的尖牙‡魚龍的尖牙',
   { -- Npc
     'Ulfir Barbaférrea‡Ульфир Железнобород‡Ulfir Ironbeard‡울피르 아이언비어드‡Ulfir Barbaférrea‡Ulfir Barbaférrea‡Ulfir Ironbeard‡奥菲尔·铁须‡奧菲爾·鐵鬚',
-    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   nil
@@ -59972,7 +59972,7 @@
   '‡Небольшой бронзовый ключ‡Winziger Bronzeschlüssel‡작은 청동 열쇠‡Llave pequeña de bronce‡Llave pequeña de bronce‡Petite clé en bronze‡青铜钥匙‡青銅鑰匙',
   { -- Npc
     'Thorfin Escudopétreo‡Торфин Камнещит‡Thorfin Stoneshield‡톨핀 스톤쉴드‡Thorfin Petrescudo‡Thorfin Petrescudo‡Thorfin Stoneshield‡索尔芬·石盾‡托爾芬·石盾',
-    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   { -- Quest
@@ -66643,7 +66643,7 @@
   { -- Quest
     'A ascensão do Arauto da Praga‡Пришествие Гнилостеня‡Der Blightcaller kommt‡블라이트콜러의 정체‡El regreso de Clamorinfecto‡El regreso de Clamañublo‡La venue du Flétrisseur‡凋零者‡雕零者',
     nil,
-    'Retorne a Ventobravo e informe o Grão-lorde Bolvar Fordragon sobre o destino de Nathanos Marris.‡Возвращайтесь в Штормград и сообщите верховному лорду Болвару Фордрагону о судьбе Натаноса Марриса.‡Kehrt nach Stormwind zurück und informiert Hochlord Bolvar Fordragon über das Schicksal von Nathanos Marris.‡스톰윈드로 대영주 볼바르 폴드라곤을 찾아가 나타노스 매리스의 운명에 대한 소식을 전해야 합니다.‡Regresa a Ventormenta e informa al alto señor Bolvar Fordragon sobre el destino de Nathanos Marris.‡Regresa a Ventormenta e informa al rey Varian Wrynn sobre el destino de Nathanos Marris.‡Retourner à Stormwind et informer le généralissime Bolvar Fordragon du destin de Nathanos Marris.‡回到暴风城，将纳萨诺斯·玛瑞斯的下落报告给伯瓦尔·弗塔根公爵。‡回到暴風城，將納薩諾斯·瑪瑞斯的下落報告給伯瓦爾·弗塔根公爵。',
+    'Retorne a Ventobravo e informe o Grão-lorde Bolvar Fordragon sobre o destino de Nathanos Marris.‡Возвращайтесь в Штормград и сообщите верховному лорду Болвару Фордрагону о судьбе Натаноса Марриса.‡Kehrt nach Stormwind zurück und informiert Hochlord Bolvar Fordragon über das Schicksal von Nathanos Marris.‡스톰윈드로 대영주 볼바르 폴드라곤을 찾아가 나타노스 매리스의 운명에 대한 소식을 전해야 합니다.‡Regresa a Ventormenta e informa al alto señor Bolvar Fordragon sobre el destino de Nathanos Marris.‡Regresa a Ventormenta e informa al alto señor Bolvar Fordragón sobre el destino de Nathanos Marris.‡Retourner à Stormwind et informer le généralissime Bolvar Fordragon du destin de Nathanos Marris.‡回到暴风城，将纳萨诺斯·玛瑞斯的下落报告给伯瓦尔·弗塔根公爵。‡回到暴風城，將納薩諾斯·瑪瑞斯的下落報告給伯瓦爾·弗塔根公爵。',
   }
 },
 [6187] = {
@@ -71360,7 +71360,7 @@
   '‡Лазурный кушак‡Azurblaue Schärpe‡청금석 장식띠‡Fajín azur‡Fajín azur‡Echarpe azur‡碧蓝腰带‡碧藍束帶',
   { -- Npc
     'Estalajadeira Cristine‡Хозяйка таверны Аллисон‡Gastwirtin Allison‡여관주인 앨리슨‡Tabernera Allison‡Tabernera Allison‡Aubergiste Allison‡旅店老板奥里森‡旅店老闆奧里森',
-    'Hospedagem‡Хозяйка таверны‡Gastwirtin‡여관주인‡Tabernero‡Tabernero‡Aubergiste‡旅店老板‡旅店老闆',
+    'Hospedagem‡Хозяйка таверны‡Gastwirtin‡여관주인‡Tabernero‡Tabernera‡Aubergiste‡旅店老板‡旅店老闆',
   },
   nil,
   nil
@@ -74458,7 +74458,7 @@
   },
   nil,
   { -- Quest
-    'Campo de testes‡Испытательные земли‡Flaggenjagd‡신병 계급장‡Terreno de pruebas‡Terreno de Pruebas‡Montrer sa valeur‡试炼场‡試煉場',
+    'Campo de testes‡Испытательные земли‡Flaggenjagd‡신병 계급장‡Terreno de pruebas‡Terreno de pruebas‡Montrer sa valeur‡试炼场‡試煉場',
     nil,
     'Vá até a caverna dos Garragreste, a sudeste da base principal no Vale Alterac, e encontre o Estandarte dos Lobo do Gelo. Entregue o Estandarte dos Lobo do Gelo para o Mestre Guerreiro Laggrond.‡Отправляйтесь в пещеры Дикой Лапы, расположенные на юго-востоке от основной базы в Альтеракской долине, и добудьте вымпел клана Северного Волка. Отнесите выпмел клана Северного Волка воеводе Лаггронду.‡Begebt euch in die Höhle der Wildpfoten südöstlich vom Hauptstützpunkt und findet das Banner der Frostwolf. Bringt anschließend Kriegsmeister Laggrond das Banner.‡알터랙 계곡의 서리늑대 요새 남동쪽에 위치한 자갈발 동굴로 가서 서리늑대부족 깃발을 찾아 전투대장 락그론드에게 가져가야 합니다.‡Viaja hasta la cueva Zarpa Salvaje ubicada al sureste del campamento base en el Valle de Alterac y encuentra el estandarte de los Lobo Gélido. Devuélvele el estandarte al maestro de guerra Laggrond.‡Viaja hasta la Caverna Zarpa Salvaje ubicada al sureste del campamento base en el Valle de Alterac y encuentra el estandarte Lobo Gélido. Devuélvele el estandarte al maestro de guerra Laggrond.‡Rendez-vous dans les cavernes des Follepattes, au sud-est de la base principale, et récupérez la Bannière Frostwolf qui s’y trouve. Ramenez-la au Maître de guerre Laggrond.‡到主基地东南边的蛮爪洞穴中去找到霜狼军旗，然后把它交给拉格隆德。‡到主基地東南邊的蠻爪洞穴中去找到霜狼軍旗，然後把它交給拉格隆德。',
   }
@@ -74468,7 +74468,7 @@
   nil,
   nil,
   { -- Quest
-    'Campo de testes‡Испытательные земли‡Flaggenjagd‡신병 계급장‡Terreno de pruebas‡Terreno de Pruebas‡Montrer sa valeur‡试炼场‡試煉場',
+    'Campo de testes‡Испытательные земли‡Flaggenjagd‡신병 계급장‡Terreno de pruebas‡Terreno de pruebas‡Montrer sa valeur‡试炼场‡試煉場',
     nil,
     'Viaje para a Caverna Asálgida a sudoeste de Dun Baldar, no Vale Alterac, e recupere o Estandarte dos Lançatroz. Entregue o Estandarte dos Lançatroz para o Tenente Haggerdin nas Montanhas de Alterac.‡Отправляйтесь в Пещеру Ледяного Крыла, которые расположены в Альтеракской долине, на юго-западе от Дун Болдара, и добудьте вымпел Грозовой Вершины. Отдайте вымпел лейтенанту Мурпу в Альтеракских горах.‡Begebt euch in die Icewinghöhle südwestlich von Dun Baldar und findet das Banner der Stormpike. Bringt anschließend Lieutenant Haggerdin im Alteracgebirge das Banner.‡알터랙 계곡에 있는 던 발다르에서 남서쪽에 위치한 얼음날개 동굴로 가서 스톰파이크 깃발을 찾아 알터랙 산맥에 있는 부관 해거딘에게 돌아가야 합니다.‡Viaja hasta la cueva Ala Gélida ubicada al suroeste de Dun Baldar en el Valle de Alterac y recupera el estandarte de Pico Tormenta. Devuélveselo al teniente Haggerdin en las Montañas de Alterac.‡Viaja hasta la cueva Ala Gélida ubicada al suroeste de Dun Baldar en el Valle de Alterac y recupera el estandarte Pico Tormenta. Devuélveselo al teniente Haggerdin en las Montañas de Alterac.‡Rendez-vous dans les cavernes de l\'Aile de glace, au sud-ouest de la base principale, et récupérez la Bannière Stormpike qui s’y trouve. Ramenez-la au lieutenant Haggerdin.‡到主基地东南边的冰翼洞穴中去找到雷矛军旗，然后把它交给哈格丁中尉。‡到主基地東南邊的冰翼洞穴中去找到雷矛軍旗，然後把它交給哈格丁中尉。',
   }
@@ -76571,7 +76571,7 @@
   -- Item
   '‡Брюки часового‡Schildwachenbeinkleider‡파수꾼 바지‡Calzas de centinela‡Calzas de centinela‡Chausses de sentinelle‡卫戍护胫‡衛戍長褲',
   { -- Npc
-    'Vigia do Covil dos Invernosos‡Дозорный из племени Зимней Спячки‡Höhlenbehüter der Winterfelle‡눈사태일족 보초‡Vigilante del cubil Nevada‡Vigilante del cubil Nevada‡Protecteur Tombe-hiver‡冬泉巢穴守卫‡冬泉巢穴守衛',
+    'Vigia do Covil dos Invernosos‡Дозорный из племени Зимней Спячки‡Höhlenbehüter der Winterfelle‡눈사태일족 보초‡Vigilante del cubil Nevada‡Vigía del cubil Nevada‡Protecteur Tombe-hiver‡冬泉巢穴守卫‡冬泉巢穴守衛',
     nil,
   },
   nil,
@@ -78460,7 +78460,7 @@
 [7664] = {
   nil,
   { -- Npc
-    'Razelikh, o Profanador‡Разелих Осквернитель‡Razelikh der Entweiher‡파멸자 라젤리크‡Razelikh el Envilecido‡Razelikh el Envilecido‡Razelikh le Souilleur‡污染者拉瑟莱克‡『污染者』拉瑟萊克',
+    'Razelikh, o Profanador‡Разелих Осквернитель‡Razelikh der Entweiher‡파멸자 라젤리크‡Razelikh el Envilecido‡Razelikh el Rapiñador‡Razelikh le Souilleur‡污染者拉瑟莱克‡『污染者』拉瑟萊克',
     nil,
   },
   nil,
@@ -79575,7 +79575,7 @@
   { -- Quest
     'Trovejardus, o Perseguidor dos Ventos‡Громораан Ветроносец‡Donneraan der Windsucher‡바람추적자 썬더란‡Thunderaan el Hijo del Viento‡Thunderaan el Hijo del Viento‡Thunderaan le Cherchevent‡逐风者桑德兰‡逐風者桑德蘭',
     nil,
-    'Para libertar Trovejardus, o Perseguidor dos Ventos, de sua prisão, você deve entregar as metades direita e esquerda dos Grilhões do Perseguidor dos Ventos, 10 Barras de Elemêntio Encantadas e a Essência do Senhor do Fogo para o Grão-lorde Dimitriano em Silithus.‡Чтобы освободить Громораана Ветроносца из тюрьмы, отнесите правый и левый наручник Ветроносца, 10 слитков элементия и сущность Повелителя огня верховному лорду Демитриану.‡Um Donneraan den Windsucher aus seiner Gefangenschaft zu befreien, müsst Ihr Hochlord Demitrian die rechten und linken Hälften der Fesseln des Windsuchers, 10 Elementiumbarren und die Essenz des Feuerfürsten bringen.‡바람추적자 썬더란을 감옥에서 해방시키려면 실리더스에 있는 대영주 데미트리안에게 바람추적자의 족쇄의 오른쪽 조각과 왼쪽 조각, 엘레멘티움 주괴 10개, 그리고 불의 군주의 정수를 가져가야 합니다.‡Para liberar a Thunderaan el Hijo del Viento de su cárcel, debes entregarle al alto señor Demitrian en Silithus la mitad izquierda y la derecha de las ataduras del Hijo del Viento, 10 barras de elementium y la esencia del Señor del Fuego.‡Para liberar a Thunderaan el Hijo del Viento de su cárcel, debes entregarle al alto señor Demitrian en Silithus la mitad izquierda y la derecha del vínculo del Hijo del Viento, 10 barras de elementium encantado y la esencia del Señor del Fuego.‡Pour libérer Thunderaan le Cherchevent de sa prison, vous devez présenter au généralissime Demetrian les moitiés droite et gauche des Liens du Cherchevent, 10 barres d\'élémentium, et l\'Essence du Seigneur du feu.‡如果你想要把逐风者桑德兰从监牢里释放出来，你就必须找到左右两块逐风者禁锢之颅，10块源质锭，以及火焰之王的精华，把它们交给德米提恩。‡如果妳想要把逐風者桑德蘭從監牢裏釋放出來，妳就必須找到左右兩塊逐風者禁錮之顱，10塊源質錠，以及火焰之王的精華，把它們交給德米提恩。',
+    'Para libertar Trovejardus, o Perseguidor dos Ventos, de sua prisão, você deve entregar as metades direita e esquerda dos Grilhões do Perseguidor dos Ventos, 10 Barras de Elemêntio Encantadas e a Essência do Senhor do Fogo para o Grão-lorde Dimitriano em Silithus.‡Чтобы освободить Громораана Ветроносца из тюрьмы, отнесите правый и левый наручник Ветроносца, 10 слитков элементия и сущность Повелителя огня верховному лорду Демитриану.‡Um Donneraan den Windsucher aus seiner Gefangenschaft zu befreien, müsst Ihr Hochlord Demitrian die rechten und linken Hälften der Fesseln des Windsuchers, 10 Elementiumbarren und die Essenz des Feuerfürsten bringen.‡바람추적자 썬더란을 감옥에서 해방시키려면 실리더스에 있는 대영주 데미트리안에게 바람추적자의 족쇄의 오른쪽 조각과 왼쪽 조각, 엘레멘티움 주괴 10개, 그리고 불의 군주의 정수를 가져가야 합니다.‡Para liberar a Thunderaan el Hijo del Viento de su cárcel, debes entregarle al alto señor Demitrian en Silithus la mitad izquierda y la derecha de las ataduras del Hijo del Viento, 10 barras de elementium y la esencia del Señor del Fuego.‡Para liberar a Thunderaan el Hijo del Viento de su cárcel, debes entregarle al alto señor Demitrian en Silithus la mitad izquierda y la derecha de las ataduras del Hijo del Viento, 10 barras de elementium y la esencia del Señor del Fuego.‡Pour libérer Thunderaan le Cherchevent de sa prison, vous devez présenter au généralissime Demetrian les moitiés droite et gauche des Liens du Cherchevent, 10 barres d\'élémentium, et l\'Essence du Seigneur du feu.‡如果你想要把逐风者桑德兰从监牢里释放出来，你就必须找到左右两块逐风者禁锢之颅，10块源质锭，以及火焰之王的精华，把它们交给德米提恩。‡如果妳想要把逐風者桑德蘭從監牢裏釋放出來，妳就必須找到左右兩塊逐風者禁錮之顱，10塊源質錠，以及火焰之王的精華，把它們交給德米提恩。',
   }
 },
 [7787] = {
@@ -82919,7 +82919,7 @@
   '‡Хромированные рукавицы‡Chromitstulpen‡흑암철 건틀릿‡Guanteletes de cromita‡Guanteletes de cromita‡Gantelets chromites‡铬铁护手‡鉻鐵護手',
   { -- Npc
     'Jebbs‡Джабби‡Jabbey‡재비‡Jabbey‡Jabbey‡Jabbey‡加贝‡加貝',
-    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Víveres‡Fournitures générales‡杂货商‡雜貨商',
+    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Pertrechos‡Fournitures générales‡杂货商‡雜貨商',
   },
   nil,
   nil
@@ -84728,7 +84728,7 @@
   { -- Quest
     'Querida Natália‡Дражайшая Наталиа‡Liebste Natalia‡사랑하는 여군주 나탈리아‡Queridísima Natalia‡Queridísima Natalia‡Chère Natalia‡亲爱的纳塔莉亚‡親愛的納塔莉亞',
     nil,
-    'O Comandante Mar\'alith, no Forte Cenariano, em Silithus, quer que você interrogue os ocupantes do Acampamento Barbabronze. Ele fica diretamente ao sul do Forte Cenariano.|nUma vez obtidas as informações solicitadas, fale novamente com o Comandante Mar\'alith.‡Допросите обитателей лагеря Бронзоборода по поручению командира Мар\'алита из крепости Кенария. Этот лагерь находится южнее крепости Кенария.|nСобрав необходимые сведения, вернитесь к командиру Мар\'алиту.‡Kommandant Mar\'alith auf Burg Cenarius in Silithus möchte, dass Ihr die Bewohner von Bronzebeards Lager befragt. Das Lager befindet sich südlich von Burg Cenarius.|nKehrt zu Kommandant Mar\'alith zurück, wenn Ihr die benötigten Informationen gesammelt habt.‡실리더스의 세나리온 요새에 있는 지휘관 마랄리스가 브론즈비어드 야영지에 있는 드워프들에게 부인의 행방을 조사해봐 달라고 부탁했습니다.|n브론즈비어드 야영지는 세나리온 요새의 남쪽에 있습니다.|n정보를 수집한 후 지휘관 마랄리스에게 돌아가야 합니다.‡El comandante Mar\'alith del Fuerte Cenarion de Silithus quiere que interrogues a los habitantes del campamento Barbabronce, que está al sur del fuerte.|nCuando consigas la información ve a ver al comandante Mar\'alith.‡Interroga a Frankal y a Rutgar en el Campamento Barbabronce acerca del paradero de Natalia Mar\'alith.‡Le commandant Mar’alith, du Fort cénarien en Silithus, veut que vous interrogiez les habitants du Campement de Bronzebeard, qui se trouve au sud du Fort cénarien.|nLorsque vous aurez réuni les informations demandées, retournez voir le commandant Mar’alith.‡希利苏斯塞纳里奥要塞的指挥官玛尔利斯想要你询问铜须营地的矮人。你可以在塞纳里奥要塞以南找到铜须营地。|n一旦你收集到有用的信息，就回到指挥官玛尔利斯那儿。‡希利蘇斯塞納裏奧要塞的指揮官瑪爾利斯想要妳詢問銅須營地的矮人。妳可以在塞納裏奧要塞以南找到銅須營地。|n壹旦妳收集到有用的信息，就回到指揮官瑪爾利斯那兒。',
+    'O Comandante Mar\'alith, no Forte Cenariano, em Silithus, quer que você interrogue os ocupantes do Acampamento Barbabronze. Ele fica diretamente ao sul do Forte Cenariano.|nUma vez obtidas as informações solicitadas, fale novamente com o Comandante Mar\'alith.‡Допросите обитателей лагеря Бронзоборода по поручению командира Мар\'алита из крепости Кенария. Этот лагерь находится южнее крепости Кенария.|nСобрав необходимые сведения, вернитесь к командиру Мар\'алиту.‡Kommandant Mar\'alith auf Burg Cenarius in Silithus möchte, dass Ihr die Bewohner von Bronzebeards Lager befragt. Das Lager befindet sich südlich von Burg Cenarius.|nKehrt zu Kommandant Mar\'alith zurück, wenn Ihr die benötigten Informationen gesammelt habt.‡실리더스의 세나리온 요새에 있는 지휘관 마랄리스가 브론즈비어드 야영지에 있는 드워프들에게 부인의 행방을 조사해봐 달라고 부탁했습니다.|n브론즈비어드 야영지는 세나리온 요새의 남쪽에 있습니다.|n정보를 수집한 후 지휘관 마랄리스에게 돌아가야 합니다.‡El comandante Mar\'alith del Fuerte Cenarion de Silithus quiere que interrogues a los habitantes del campamento Barbabronce, que está al sur del fuerte.|nCuando consigas la información ve a ver al comandante Mar\'alith.‡El comandante Mar\'alith de Fuerte Cenarion, en Silithus, quiere que interrogues a los habitantes de Campamento Barbabronce. Encontrarás el Campamento Barbabronce al sur de Fuerte Cenarion.|nUna vez que hayas obtenido la información solicitada, regresa a ver al comandante Mar\'alith.‡Le commandant Mar’alith, du Fort cénarien en Silithus, veut que vous interrogiez les habitants du Campement de Bronzebeard, qui se trouve au sud du Fort cénarien.|nLorsque vous aurez réuni les informations demandées, retournez voir le commandant Mar’alith.‡希利苏斯塞纳里奥要塞的指挥官玛尔利斯想要你询问铜须营地的矮人。你可以在塞纳里奥要塞以南找到铜须营地。|n一旦你收集到有用的信息，就回到指挥官玛尔利斯那儿。‡希利蘇斯塞納裏奧要塞的指揮官瑪爾利斯想要妳詢問銅須營地的矮人。妳可以在塞納裏奧要塞以南找到銅須營地。|n壹旦妳收集到有用的信息，就回到指揮官瑪爾利斯那兒。',
   }
 },
 [8305] = {
@@ -84798,7 +84798,7 @@
   { -- Quest
     'À procura de glifos‡Поиски рун‡Glyphenjagd‡상형 문자 추적‡Los grabados de los glifos‡Los grabados de los glifos‡À la poursuite des glyphes‡追查雕文‡追查雕文',
     nil,
-    'Rutgar Formaglifo, no Acampamento Barbabronze, em Silithus, quer que você vá a Colme\'Ashi, Colme\'Zora e Colme\'Régia e decalque os Cristais Entalhados de Glifos em cada colmeia.|nUse o Kit de Transcrição do Geólogo para tirar um decalque razoável dos glifos antigos. Fale novamente com Rutgar Formaglifo quando terminar a tarefa.‡Рутгар Знакописец из лагеря Бронзеборода в Силитусе просит отправиться в улья Аши, Зора и Регал и сделать оттиски со всех покрытых письменами кристаллов.|nЧтобы сделать приличные копии древних рун, можно воспользоваться копирующим устройством геолога. По выполнении задания вернуться к Рутгару Знакописцу.‡Rutgar Glyphshaper in Bronzebeards Lager in Silithus möchte, dass Ihr in den Bau des Ashischwarms, Bau des Zoraschwarms und Bau des Regalschwarms eindringt und dort Abpausbilder von den glyphenverzierten Kristallen anfertigt.|nBenutzt das Abschriftenset für Geologen, um Abpausbilder der uralten Glyphen herzustellen. Kehrt nach Abschluss der Aufgabe zu Rutgar Glyphshaper zurück.‡실리더스의 브론즈비어드 야영지에 루트거 글립쉐이퍼가 하이브아쉬, 하이브조라, 하이브레갈로 가서 각 곤충 집에 있는 문자가 새겨진 수정의 상형 문자 탁본을 구해 달라고 부탁했습니다.|n지질학자의 탁본 도구를 사용하여 고대 상형 문자의 탁본을 만든 후 루트거 글립쉐이퍼에게 돌아가야 합니다.‡Rutgar Glifoforma del campamento Barbabronce en Silithus quiere que vayas a Colmen\'Ashi, Colmen\'Regal y Colmen\'Zora y calques cristales en cada colmena.|nUsa el juego de calco para copiar los glifos antiguos. Vuelve a ver a Rutgar cuando hayas terminado la tarea.‡Utiliza el estuche de transcripción de geólogo para obtener un calco de Colmen\'Regal del cristal con inscripciones de Colmen\'Regal.‡Rutgar Glyphshaper, du campement de Bronzebeard en Silithus, veut que vous entriez dans Ruche’Ashi, Ruche’Zora et Ruche’Regal et que vous récupériez des reproductions des Cristaux ornés de glyphes dans chaque ruche.|nUtilisez la Trousse de transcription du géologue pour obtenir une copie correcte de ces glyphes antiques. Lorsque vous aurez terminé, retournez voir Rutgar Glyphshaper.‡希利苏斯铜须营地的鲁特加尔·雕石想要你前往亚什虫巢、佐拉虫巢和雷戈虫巢，从虫巢中的雕文水晶上取下拓文。|n使用地质学家的抄录工具包获取古老雕文的摹本。完成任务后回到鲁特加尔·雕石那儿。‡希利蘇斯銅須營地的魯特加爾·雕石想要妳前往亞什蟲巢、佐拉蟲巢和雷戈蟲巢，從蟲巢中的雕文水晶上取下拓文。|n使用地質學家的抄錄工具包獲取古老雕文的摹本。完成任務後回到魯特加爾·雕石那兒。',
+    'Rutgar Formaglifo, no Acampamento Barbabronze, em Silithus, quer que você vá a Colme\'Ashi, Colme\'Zora e Colme\'Régia e decalque os Cristais Entalhados de Glifos em cada colmeia.|nUse o Kit de Transcrição do Geólogo para tirar um decalque razoável dos glifos antigos. Fale novamente com Rutgar Formaglifo quando terminar a tarefa.‡Рутгар Знакописец из лагеря Бронзеборода в Силитусе просит отправиться в улья Аши, Зора и Регал и сделать оттиски со всех покрытых письменами кристаллов.|nЧтобы сделать приличные копии древних рун, можно воспользоваться копирующим устройством геолога. По выполнении задания вернуться к Рутгару Знакописцу.‡Rutgar Glyphshaper in Bronzebeards Lager in Silithus möchte, dass Ihr in den Bau des Ashischwarms, Bau des Zoraschwarms und Bau des Regalschwarms eindringt und dort Abpausbilder von den glyphenverzierten Kristallen anfertigt.|nBenutzt das Abschriftenset für Geologen, um Abpausbilder der uralten Glyphen herzustellen. Kehrt nach Abschluss der Aufgabe zu Rutgar Glyphshaper zurück.‡실리더스의 브론즈비어드 야영지에 루트거 글립쉐이퍼가 하이브아쉬, 하이브조라, 하이브레갈로 가서 각 곤충 집에 있는 문자가 새겨진 수정의 상형 문자 탁본을 구해 달라고 부탁했습니다.|n지질학자의 탁본 도구를 사용하여 고대 상형 문자의 탁본을 만든 후 루트거 글립쉐이퍼에게 돌아가야 합니다.‡Rutgar Glifoforma del campamento Barbabronce en Silithus quiere que vayas a Colmen\'Ashi, Colmen\'Regal y Colmen\'Zora y calques cristales en cada colmena.|nUsa el juego de calco para copiar los glifos antiguos. Vuelve a ver a Rutgar cuando hayas terminado la tarea.‡Rutgar Glifoforma del Campamento Barbabronce de Silithus quiere que recorras Colmen\'Ashi, Colmen\'Zora y Colmen\'Regal, y recuperes calcos con inscripciones de los cristales con inscripciones de cada colmena.|nUsa el estuche de transcripción de geólogo para crear una imitación verosímil de los glifos ancestrales. Habla con Rutgar Glifoforma cuando termines.‡Rutgar Glyphshaper, du campement de Bronzebeard en Silithus, veut que vous entriez dans Ruche’Ashi, Ruche’Zora et Ruche’Regal et que vous récupériez des reproductions des Cristaux ornés de glyphes dans chaque ruche.|nUtilisez la Trousse de transcription du géologue pour obtenir une copie correcte de ces glyphes antiques. Lorsque vous aurez terminé, retournez voir Rutgar Glyphshaper.‡希利苏斯铜须营地的鲁特加尔·雕石想要你前往亚什虫巢、佐拉虫巢和雷戈虫巢，从虫巢中的雕文水晶上取下拓文。|n使用地质学家的抄录工具包获取古老雕文的摹本。完成任务后回到鲁特加尔·雕石那儿。‡希利蘇斯銅須營地的魯特加爾·雕石想要妳前往亞什蟲巢、佐拉蟲巢和雷戈蟲巢，從蟲巢中的雕文水晶上取下拓文。|n使用地質學家的抄錄工具包獲取古老雕文的摹本。完成任務後回到魯特加爾·雕石那兒。',
   }
 },
 [8310] = {
@@ -84812,7 +84812,7 @@
   { -- Quest
     'Quebrando o código‡Расшифровка‡Knackt den Kode‡상형 문자 판독‡Descifrar el código‡Descifrar el código‡Déchiffrer le code‡破译密码‡破譯密碼',
     nil,
-    'Frankal Pontepedra, no Acampamento Barbabronze, em Silithus, quer que você obtenha um Cérebro de Silitídeo de Colme\'Zora, um Cérebro de Silitídeo de Colme\'Ashi e um Cérebro de Silitídeo de Colme\'Régia. Fale novamente com Frankal quando tiver concluído a tarefa.‡Добудьте для Франкала Каменного Моста из лагеря Бронзоборода в Силитусе мозг силитидов из ульев Зора, Аши и Регал. По выполнении задания вернитесь к Франкалу.‡Frankal Stonebridge in Bronzebeards Lager möchte, dass Ihr ihm jeweils ein Silithidengehirn des Zoraschwarms, Ashischwarms und des Regalschwarms bringt. Kehrt nach der Erfüllung Eurer Aufgabe zu Frankal zurück.‡실리더스의 브론즈비어드 야영지에 있는 프랭칼 스톤브리지가 하이브조라 실리시드 뇌, 하이브아쉬 실리시드 뇌, 하이브레갈 실리시드 뇌를 가져가야 합니다.‡Frankal Petraponte del campamento Barbabronce en Silithus quiere que le lleves 1 cerebro de silítido de Colmen\'Zora, 1 de Colmen\'Ashi y 1 de Colmen\'Regal. Vuelve a ver a Frankal cuando hayas terminado la tarea.‡Obtén un cerebro silítido de Colmen\'Regal de cualquier silítido de Colmen\'Regal.‡Obtenez un Cerveau de silithide intact provenant de la Ruche’Regal. N’importe quel silithide de cette ruche fera l’affaire.‡希利苏斯铜须营地的弗兰卡·石桥想让你取回一个亚什异种虫脑、一个佐拉异种虫脑和一个雷戈异种虫脑。完成任务后回到弗兰卡那儿。‡希利蘇斯銅須營地的弗蘭卡·石橋想讓妳取回壹個亞什異種蟲腦、壹個佐拉異種蟲腦和壹個雷戈異種蟲腦。完成任務後回到弗蘭卡那兒。',
+    'Frankal Pontepedra, no Acampamento Barbabronze, em Silithus, quer que você obtenha um Cérebro de Silitídeo de Colme\'Zora, um Cérebro de Silitídeo de Colme\'Ashi e um Cérebro de Silitídeo de Colme\'Régia. Fale novamente com Frankal quando tiver concluído a tarefa.‡Добудьте для Франкала Каменного Моста из лагеря Бронзоборода в Силитусе мозг силитидов из ульев Зора, Аши и Регал. По выполнении задания вернитесь к Франкалу.‡Frankal Stonebridge in Bronzebeards Lager möchte, dass Ihr ihm jeweils ein Silithidengehirn des Zoraschwarms, Ashischwarms und des Regalschwarms bringt. Kehrt nach der Erfüllung Eurer Aufgabe zu Frankal zurück.‡실리더스의 브론즈비어드 야영지에 있는 프랭칼 스톤브리지가 하이브조라 실리시드 뇌, 하이브아쉬 실리시드 뇌, 하이브레갈 실리시드 뇌를 가져가야 합니다.‡Frankal Petraponte del campamento Barbabronce en Silithus quiere que le lleves 1 cerebro de silítido de Colmen\'Zora, 1 de Colmen\'Ashi y 1 de Colmen\'Regal. Vuelve a ver a Frankal cuando hayas terminado la tarea.‡Frankal Petraponte del Campamento Barbabronce de Silithus quiere que consigas un cerebro silítido de Colmen\'Zora, un cerebro silítido de Colmen\'Ashi y un cerebro silítido de Colmen\'Regal. Habla con Frankal cuando termines.‡Obtenez un Cerveau de silithide intact provenant de la Ruche’Regal. N’importe quel silithide de cette ruche fera l’affaire.‡希利苏斯铜须营地的弗兰卡·石桥想让你取回一个亚什异种虫脑、一个佐拉异种虫脑和一个雷戈异种虫脑。完成任务后回到弗兰卡那儿。‡希利蘇斯銅須營地的弗蘭卡·石橋想讓妳取回壹個亞什異種蟲腦、壹個佐拉異種蟲腦和壹個雷戈異種蟲腦。完成任務後回到弗蘭卡那兒。',
   }
 },
 [8311] = {
@@ -84859,7 +84859,7 @@
   { -- Quest
     'Desvendando o mistério‡Разгадка тайны‡Des Rätsels Lösung‡밝혀지는 비밀‡Desentrañar el misterio‡Desentrañar el misterio‡Dévoiler le mystère‡揭开秘密‡揭開秘密',
     nil,
-    'Rutgar Formaglifo, no Acampamento Barbabronze, quer que você entregue o Prisma de Cristal com Glifos para a Geóloga Matarriso no Forte Cenariano, que fica em Silithus.‡Рутгар Знакописец из лагеря Бронзоборода в Силитусе просит вас отнести покрытую письменами хрустальную призму геологу Ехидной в крепость Кенария.‡Rutgar Glyphshaper in Bronzebeards Lager möchte, dass Ihr Geologin Larksbane auf Burg Cenarius in Silithus das glyphenverzierte Kristallprisma bringt.‡브론즈비어드 야영지에 있는 루트거 글립쉐이퍼가 실리더스의 세나리온 요새에 있는 지질학자 락스베인에게 문자가 새겨진 수정 프리즘을 가져가 달라고 부탁했습니다.‡Rutgar Glifoforma del campamento Barbabronce quiere que lleves el prisma cristalino con glifos a la geóloga Trotuina al Fuerte Cenarion de Silithus.‡Entrégale el prisma de cristal con inscripciones a la geóloga Trotuina en el Fuerte Cenarion de Silithus.‡Rutgar Glyphshaper, du campement de Bronzebeard, veut que vous remettiez le Prisme cristallin orné de glyphes à la géologue Larksbane, au Fort cénarien en Silithus.‡铜须营地的鲁特加尔·雕石想让你将雕文水晶棱柱交给希利苏斯塞纳里奥要塞的地质学家拉克斯班。‡銅須營地的魯特加爾·雕石想讓妳將雕文水晶棱柱交給希利蘇斯塞納裏奧要塞的地質學家拉克斯班。',
+    'Rutgar Formaglifo, no Acampamento Barbabronze, quer que você entregue o Prisma de Cristal com Glifos para a Geóloga Matarriso no Forte Cenariano, que fica em Silithus.‡Рутгар Знакописец из лагеря Бронзоборода в Силитусе просит вас отнести покрытую письменами хрустальную призму геологу Ехидной в крепость Кенария.‡Rutgar Glyphshaper in Bronzebeards Lager möchte, dass Ihr Geologin Larksbane auf Burg Cenarius in Silithus das glyphenverzierte Kristallprisma bringt.‡브론즈비어드 야영지에 있는 루트거 글립쉐이퍼가 실리더스의 세나리온 요새에 있는 지질학자 락스베인에게 문자가 새겨진 수정 프리즘을 가져가 달라고 부탁했습니다.‡Rutgar Glifoforma del campamento Barbabronce quiere que lleves el prisma cristalino con glifos a la geóloga Trotuina al Fuerte Cenarion de Silithus.‡Rutgar Glifoforma en Campamento Barbabronce quiere que le entregues el prisma de cristal con inscripciones a la geóloga Trotaruina en el Fuerte Cenarion en Silithus.‡Rutgar Glyphshaper, du campement de Bronzebeard, veut que vous remettiez le Prisme cristallin orné de glyphes à la géologue Larksbane, au Fort cénarien en Silithus.‡铜须营地的鲁特加尔·雕石想让你将雕文水晶棱柱交给希利苏斯塞纳里奥要塞的地质学家拉克斯班。‡銅須營地的魯特加爾·雕石想讓妳將雕文水晶棱柱交給希利蘇斯塞納裏奧要塞的地質學家拉克斯班。',
   }
 },
 [8315] = {
@@ -84947,7 +84947,7 @@
   { -- Quest
     'Viral, o Vil‡Вайрал Подлый‡Vyral der Üble‡타락의 바이랄‡Vyral el Vil‡Vyral el Vil‡Vyral le Vil‡邪恶的维拉尔‡邪惡的維拉爾',
     nil,
-    'Leve o Anel-sinete do Viral para Huum Juba Agreste no Forte Cenariano.‡Принесите перстень-печатку Вайрала Хууму Буйногривому в крепость Кенария.‡Bringt Vyrals Siegelring zu Huum Wildmane auf Burg Cenarius.‡세나리온 요새에 있는 후움 와일드메인에게 바이랄의 인장 반지를 가져다 주어야 합니다.‡Lleva el anillo con sello de Vyral a Huum Bravacrín en el Fuerte Cenarion.‡Mata a Vyral el Vil y consigue el sello de Vyral.‡Remettre la Chevalière de Vyral à Huum Wildmane au Fort cénarien.‡把维拉尔的徽记之戒交给塞纳里奥要塞的霍姆·蛮鬃。‡把維拉爾的徽記之戒交給塞納裏奧要塞的霍姆·蠻鬃。',
+    'Leve o Anel-sinete do Viral para Huum Juba Agreste no Forte Cenariano.‡Принесите перстень-печатку Вайрала Хууму Буйногривому в крепость Кенария.‡Bringt Vyrals Siegelring zu Huum Wildmane auf Burg Cenarius.‡세나리온 요새에 있는 후움 와일드메인에게 바이랄의 인장 반지를 가져다 주어야 합니다.‡Lleva el anillo con sello de Vyral a Huum Bravacrín en el Fuerte Cenarion.‡Llévale el sello de Vyral a Huum Ferocrín en el Fuerte Cenarion.‡Remettre la Chevalière de Vyral à Huum Wildmane au Fort cénarien.‡把维拉尔的徽记之戒交给塞纳里奥要塞的霍姆·蛮鬃。‡把維拉爾的徽記之戒交給塞納裏奧要塞的霍姆·蠻鬃。',
   }
 },
 [8322] = {
@@ -87113,7 +87113,7 @@
 [8539] = {
   nil,
   { -- Npc
-    'Vigia Sem Olhos‡Безглазый дозорный‡Augenloser Behüter‡보이지 않는 감시자‡Vigilante Sinojos‡Vigilante Sinojos‡Gardien aveugle‡无眼观察者‡無眼觀察者',
+    'Vigia Sem Olhos‡Безглазый дозорный‡Augenloser Behüter‡보이지 않는 감시자‡Vigilante Sinojos‡Vigía sin ojos‡Gardien aveugle‡无眼观察者‡無眼觀察者',
     nil,
   },
   nil,
@@ -89436,7 +89436,7 @@
   { -- Quest
     'Os espoliadores do Crepúsculo‡Сумеречные мародеры‡Marodeure der Twilight‡황혼의 약탈자‡Los merodeadores Crepusculares‡Los merodeadores Crepusculares‡Les maraudeurs du crépuscule‡暮光掠夺者‡暮光掠奪者',
     nil,
-    'Mate a Espoliadora do Crepúsculo Mirna e 5 Espoliadores do Crepúsculo. Apresente-se ao Arauto do Vento Chifre Altivo depois que tiver concluído a tarefa. Você também precisa entregar as Instruções Táticas IX para concluir a missão.‡Убейте сумеречного мародера Морну и 5 сумеречных мародеров. Доложите о выполнении задания Зовущей из клана Гордый Рог. Кроме того, сдайте тактическую задачу IX.‡Tötet den Marodeur der Twilight Morna und 5 Marodeure der Twilight. Erstattet anschließend Bericht bei Windruferin Proudhorn. Ihr benötigt auch den taktischen Einsatz IX, um diese Aufgabe abschließen zu können.‡황혼의 약탈자 5명과 황혼의 약탈자 모르나를 해치워야 합니다. 임무를 마치면 바람소환사 프라우드혼에게 보고하십시오. 또한, 이 퀘스트를 완료하려면 전술 임무 지령 IX도 함께 가져가야 합니다.‡Mata a la Maleante Crepuscular Morna y a 5 Maleantes Crepusculares. Cuando termines tu tarea, entrégale el informe al Clamavientos Cuerno Digno. También debes llevar las Instrucciones de la misión táctica IX para poder completar la misión.‡Mata a la maleante Crepuscular Morna y a 2 maleantes Crepusculares. Informa a Clamavientos Cuerno Digno cuando hayas completado tu misión. También debes llevar el Informe de tareas tácticas IX para poder completar la misión.‡Tuez la Maraudeuse du crépuscule Morna et 5 Maraudeurs du crépuscule. Lorsque ce sera fait, allez faire votre rapport à l’Imploratrice céleste Proudhorn. Pour terminer cette quête, vous devez aussi apporter le Briefing tactique IX.‡杀死暮光掠夺者莫娜和5个暮光掠夺者。任务完成之后就回去向唤风者梅恩·长角报告。你还必须随身带着战术任务简报 IX才能完成这个任务。‡殺死暮光掠奪者莫娜和5個暮光掠奪者。任務完成之後就回去向喚風者梅恩·長角報告。妳還必須隨身帶著戰術任務簡報 IX才能完成這個任務。',
+    'Mate a Espoliadora do Crepúsculo Mirna e 5 Espoliadores do Crepúsculo. Apresente-se ao Arauto do Vento Chifre Altivo depois que tiver concluído a tarefa. Você também precisa entregar as Instruções Táticas IX para concluir a missão.‡Убейте сумеречного мародера Морну и 5 сумеречных мародеров. Доложите о выполнении задания Зовущей из клана Гордый Рог. Кроме того, сдайте тактическую задачу IX.‡Tötet den Marodeur der Twilight Morna und 5 Marodeure der Twilight. Erstattet anschließend Bericht bei Windruferin Proudhorn. Ihr benötigt auch den taktischen Einsatz IX, um diese Aufgabe abschließen zu können.‡황혼의 약탈자 5명과 황혼의 약탈자 모르나를 해치워야 합니다. 임무를 마치면 바람소환사 프라우드혼에게 보고하십시오. 또한, 이 퀘스트를 완료하려면 전술 임무 지령 IX도 함께 가져가야 합니다.‡Mata a la Maleante Crepuscular Morna y a 5 Maleantes Crepusculares. Cuando termines tu tarea, entrégale el informe al Clamavientos Cuerno Digno. También debes llevar las Instrucciones de la misión táctica IX para poder completar la misión.‡Mata a la Maleante Crepuscular Morna y a 5 Maleantes Crepusculares. Cuando termines tu tarea, entrégale el informe al Clamavientos Cuerno Digno. También debes llevar las Instrucciones de la misión táctica IX para poder completar la misión.‡Tuez la Maraudeuse du crépuscule Morna et 5 Maraudeurs du crépuscule. Lorsque ce sera fait, allez faire votre rapport à l’Imploratrice céleste Proudhorn. Pour terminer cette quête, vous devez aussi apporter le Briefing tactique IX.‡杀死暮光掠夺者莫娜和5个暮光掠夺者。任务完成之后就回去向唤风者梅恩·长角报告。你还必须随身带着战术任务简报 IX才能完成这个任务。‡殺死暮光掠奪者莫娜和5個暮光掠奪者。任務完成之後就回去向喚風者梅恩·長角報告。妳還必須隨身帶著戰術任務簡報 IX才能完成這個任務。',
   }
 },
 [8741] = {
@@ -89979,7 +89979,7 @@
   { -- Quest
     'Armamentos Imperiais Qiraji‡Киражское императорское оружие‡Imperiale Qirajiwaffen‡제국의 퀴라지 무기‡Armamentos imperiales qiraji‡Armamentos imperiales qiraji‡Les armes impériales qiraji‡其拉帝王武器‡其拉帝王武器',
     nil,
-    'Arygos, no Templo de Ahn\'Qiraj, criará Armamentos Infundidos em Elemêntio para você. Para tanto, entregue-lhe Armamentos Imperiais Qirajis e 3 Minérios de Elemêntio.‡Аригос в Храме Ан\'Киража создаст для вас усиленное элементием оружие, если вы принесете ему киражское имперское оружие и 3 куска элементиевой руды.‡Arygos im Tempel von Ahn\'Qiraj wird Euch mit Elementium erfüllte Ausrüstung herstellen, wenn Ihr ihm imperiale Qirajiwaffen und 3 Einheiten Elementiumerz bringt.‡안퀴라즈 사원에 있는 아리고스에게 제국의 퀴라지 무기와 엘레멘티움 광석 3개를 가지고 가면 엘레멘티움을 주입한 무기를 만들어 줄 것입니다.‡Arygos en el Templo de Ahn\'Qiraj creará armamento imbuido de elementium para ti si le llevas armamento imperial qiraji y 3 menas de elementium.‡Arygos en el Templo de Ahn\'Qiraj creará armamento imbuido de elementium para ti si le llevas armamento imperial qiraji y 3 lingotes de elementium.‡Arygos, dans le temple d’Ahn’Qiraj, vous fabriquera des armes imprégnées d’élémentium si vous lui procurez des Armes impériales qiraji et 3 Minerais d’élémentium.‡把其拉帝王武器和3块源质矿石交给安其拉神殿的亚雷戈斯，他会帮你制作使用源质强化过的武器。‡把其拉帝王武器和3塊源質礦石交給安其拉神殿的亞雷戈斯，他會幫妳制作使用源質強化過的武器。',
+    'Arygos, no Templo de Ahn\'Qiraj, criará Armamentos Infundidos em Elemêntio para você. Para tanto, entregue-lhe Armamentos Imperiais Qirajis e 3 Minérios de Elemêntio.‡Аригос в Храме Ан\'Киража создаст для вас усиленное элементием оружие, если вы принесете ему киражское имперское оружие и 3 куска элементиевой руды.‡Arygos im Tempel von Ahn\'Qiraj wird Euch mit Elementium erfüllte Ausrüstung herstellen, wenn Ihr ihm imperiale Qirajiwaffen und 3 Einheiten Elementiumerz bringt.‡안퀴라즈 사원에 있는 아리고스에게 제국의 퀴라지 무기와 엘레멘티움 광석 3개를 가지고 가면 엘레멘티움을 주입한 무기를 만들어 줄 것입니다.‡Arygos en el Templo de Ahn\'Qiraj creará armamento imbuido de elementium para ti si le llevas armamento imperial qiraji y 3 menas de elementium.‡Arygos en el Templo de Ahn\'Qiraj creará armamento imbuido de elementium para ti si le llevas armamentos imperiales qiraji y 3 menas de elementium.‡Arygos, dans le temple d’Ahn’Qiraj, vous fabriquera des armes imprégnées d’élémentium si vous lui procurez des Armes impériales qiraji et 3 Minerais d’élémentium.‡把其拉帝王武器和3块源质矿石交给安其拉神殿的亚雷戈斯，他会帮你制作使用源质强化过的武器。‡把其拉帝王武器和3塊源質礦石交給安其拉神殿的亞雷戈斯，他會幫妳制作使用源質強化過的武器。',
   }
 },
 [8790] = {
@@ -89989,7 +89989,7 @@
   { -- Quest
     'Paramentos Imperiais Qiraji‡Киражские императорские регалии‡Imperiale Qirajiinsignien‡제국의 퀴라지 표장‡Regalos imperiales Qiraji‡Atavío imperial qiraji‡L\'équipement impérial qiraji‡其拉帝王徽记‡其拉帝王徽記',
     nil,
-    'Merithra do Sonho, no Templo de Ahn\'Qiraj, criará Armamentos Infundidos em Elemêntio para você. Para tanto, entregue-lhe Paramentos Imperiais Qiraji e 3 Minérios de Elemêntio.‡Меритра из Сна в Храме Ан\'Киража может создать для вас усиленное элементием оружие, если вы принесете ей киражские имперские регалии и 3 куска элементиевой руды.‡Merithra des Traums im Tempel von Ahn\'Qiraj wird Euch mit Elementium erfüllte Ausrüstung herstellen. Bringt ihr dazu imperiale Qirajiinsignien und 3 Einheiten Elementiumerz.‡안퀴라즈 사원에 있는 꿈의 메리스라에게 제국의 퀴라지 표장과 엘레멘티움 광석 3개를 가지고 가면 엘레멘티움을 주입한 무기를 만들어 줄 것입니다.‡Merithra del Sueño en el Templo de Ahn\'Qiraj creará armamento imbuido de Elementium para ti si le llevas regalos imperiales qiraji y 3 minerales de Elementium.‡Merithra del Sueño en el Templo de Ahn\'Qiraj creará armamento imbuido de elementium para ti si le llevas un atavío imperial qiraji y 3 lingotes de elementium.‡Merithra du Rêve, au temple d’Ahn’Qiraj, vous fabriquera des armes imprégnées d’élémentium si vous lui ramenez un Equipement impérial qiraji et 3 Minerais d’élémentium.‡把其拉帝王徽记和3块源质矿石交给安其拉神殿的梦境之龙麦琳瑟拉，她会帮你制作使用源质强化过的武器。‡把其拉帝王徽記和3塊源質礦石交給安其拉神殿的夢境之龍麥琳瑟拉，她會幫妳制作使用源質強化過的武器。',
+    'Merithra do Sonho, no Templo de Ahn\'Qiraj, criará Armamentos Infundidos em Elemêntio para você. Para tanto, entregue-lhe Paramentos Imperiais Qiraji e 3 Minérios de Elemêntio.‡Меритра из Сна в Храме Ан\'Киража может создать для вас усиленное элементием оружие, если вы принесете ей киражские имперские регалии и 3 куска элементиевой руды.‡Merithra des Traums im Tempel von Ahn\'Qiraj wird Euch mit Elementium erfüllte Ausrüstung herstellen. Bringt ihr dazu imperiale Qirajiinsignien und 3 Einheiten Elementiumerz.‡안퀴라즈 사원에 있는 꿈의 메리스라에게 제국의 퀴라지 표장과 엘레멘티움 광석 3개를 가지고 가면 엘레멘티움을 주입한 무기를 만들어 줄 것입니다.‡Merithra del Sueño en el Templo de Ahn\'Qiraj creará armamento imbuido de Elementium para ti si le llevas regalos imperiales qiraji y 3 minerales de Elementium.‡Merithra del Sueño en el Templo de Ahn\'Qiraj creará armamentos imbuidos de elementium para ti si le llevas un atavío imperial qiraji y 3 menas de elementium.‡Merithra du Rêve, au temple d’Ahn’Qiraj, vous fabriquera des armes imprégnées d’élémentium si vous lui ramenez un Equipement impérial qiraji et 3 Minerais d’élémentium.‡把其拉帝王徽记和3块源质矿石交给安其拉神殿的梦境之龙麦琳瑟拉，她会帮你制作使用源质强化过的武器。‡把其拉帝王徽記和3塊源質礦石交給安其拉神殿的夢境之龍麥琳瑟拉，她會幫妳制作使用源質強化過的武器。',
   }
 },
 [8791] = {
@@ -90245,7 +90245,7 @@
 [8816] = {
   nil,
   { -- Npc
-    'Psicopompus‡Привратник смерти‡Tödlicher Pförtner‡죽음의 안내인‡Recibidor mortal‡Recibidor mortal‡Mort silencieuse‡乌舍尔‡烏舍爾',
+    'Psicopompus‡Привратник смерти‡Tödlicher Pförtner‡죽음의 안내인‡Recibidor mortal‡Ujier sepulcral‡Mort silencieuse‡乌舍尔‡烏舍爾',
     nil,
   },
   nil,
@@ -91529,7 +91529,7 @@
   nil,
   { -- Npc
     'Estalajadeira Érica‡Хозяйка таверны Хизер‡Gastwirtin Heather‡여관주인 헤더‡Tabernera Heather‡Tabernera Heather‡Aubergiste Heather‡旅店老板希瑟尔‡旅店老闆希瑟爾',
-    'Hospedagem‡Хозяйка таверны‡Gastwirtin‡여관주인‡Tabernero‡Tabernero‡Aubergiste‡旅店老板‡旅店老闆',
+    'Hospedagem‡Хозяйка таверны‡Gastwirtin‡여관주인‡Tabernero‡Tabernera‡Aubergiste‡旅店老板‡旅店老闆',
   },
   nil,
   { -- Quest
@@ -91658,7 +91658,7 @@
   { -- Quest
     'Recompensa justa‡Справедливое вознаграждение‡Die angemessene Entlohnung‡정당한 보상‡Una compensación justa‡Una compensación justa‡Une juste compensation‡小小的补偿‡',
     nil,
-    'Leve um Cordão dos Elementos e um par de Manoplas dos Elementos para Mokvar em Orgrimmar.‡Принесите Моквару в Оргриммар плетеный ремень Стихий и рукавицы Стихий.‡Bringt Mokvar in Orgrimmar eine Kordel der Elemente und ein Paar Stulpen der Elemente.‡오그리마에 있는 모크바르에게 정령의 장식끈과 정령의 건틀릿을 가져가야 합니다.‡Lleva 1 cordón y 1 par de guanteletes de los elementos a Mokvar a Orgrimmar.‡Lleva 1 cordón y 1 par de guanteletes de elementos a Mokvar a Orgrimmar.‡Apportez une Corde des éléments et une paire de Gantelets des éléments à Mokvar à Orgrimmar.‡将一条元素束腰和一副元素护手交给奥格瑞玛的莫克瓦尔。‡',
+    'Leve um Cordão dos Elementos e um par de Manoplas dos Elementos para Mokvar em Orgrimmar.‡Принесите Моквару в Оргриммар плетеный ремень Стихий и рукавицы Стихий.‡Bringt Mokvar in Orgrimmar eine Kordel der Elemente und ein Paar Stulpen der Elemente.‡오그리마에 있는 모크바르에게 정령의 장식끈과 정령의 건틀릿을 가져가야 합니다.‡Lleva 1 cordón y 1 par de guanteletes de los elementos a Mokvar a Orgrimmar.‡Lleva un cordón de los elementos y un par de guanteletes de los elementos a Mokvar, que se encuentra en Orgrimmar.‡Apportez une Corde des éléments et une paire de Gantelets des éléments à Mokvar à Orgrimmar.‡将一条元素束腰和一副元素护手交给奥格瑞玛的莫克瓦尔。‡',
   }
 },
 [8943] = {
@@ -94041,7 +94041,7 @@
 [9196] = {
   nil,
   { -- Npc
-    'Grão-lorde Omokk‡Вождь Омокк‡Hochlord Omokk‡대군주 오모크‡Alto Señor Omokk‡Alto Señor Omokk‡Généralissime Omokk‡欧莫克大王‡歐莫克大王',
+    'Grão-lorde Omokk‡Вождь Омокк‡Hochlord Omokk‡대군주 오모크‡Alto Señor Omokk‡Alto señor Omokk‡Généralissime Omokk‡欧莫克大王‡歐莫克大王',
     nil,
   },
   nil,
@@ -97186,7 +97186,7 @@
   -- Item
   '‡Рунический пергамент‡Mit Runen beschriftetes Pergament‡룬으로 새겨진 양피지‡Papiro con runas grabadas‡Papiro con runas grabadas‡Parchemin runique‡符文羊皮纸‡符文羊皮紙',
   { -- Npc
-    'Lorde Supremo Wyrmthalak‡Властитель Змейталак‡Oberanführer Wyrmthalak‡대군주 웜타라크‡Señor Supremo Vermiothalak‡Señor Supremo Vermiothalak‡Seigneur Wyrmthalak‡维姆萨拉克‡維姆薩拉克主宰',
+    'Lorde Supremo Wyrmthalak‡Властитель Змейталак‡Oberanführer Wyrmthalak‡대군주 웜타라크‡Señor Supremo Vermiothalak‡Señor supremo Vermiothalak‡Seigneur Wyrmthalak‡维姆萨拉克‡維姆薩拉克主宰',
     nil,
   },
   nil,
@@ -98809,7 +98809,7 @@
   -- Item
   '‡Укрепленный щит‡Befestigter Schild‡강화 방패‡Escudo reforzado‡Escudo reforzado‡Bouclier fortifié‡强化盾牌‡固化盾牌',
   { -- Npc
-    'Piroguarda Mirabrasa‡Пиростраж Созерцатель Углей‡Feuerwache Glutseher‡불의수호자 엠버시어‡Piroguardián brasadivino‡Piroguardián brasadivino‡Pyrogarde Prophète ardent‡烈焰卫士艾博希尔‡烈焰衛士艾博希爾',
+    'Piroguarda Mirabrasa‡Пиростраж Созерцатель Углей‡Feuerwache Glutseher‡불의수호자 엠버시어‡Piroguardián brasadivino‡Piroguardia Brasadivino‡Pyrogarde Prophète ardent‡烈焰卫士艾博希尔‡烈焰衛士艾博希爾',
     nil,
   },
   nil,
@@ -102546,7 +102546,7 @@
   -- Item
   '‡Свиток выносливости IV‡Rolle der Ausdauer IV‡체력의 두루마리 IV‡Pergamino de aguante IV‡Pergamino de aguante IV‡Parchemin d\'Endurance IV‡耐力卷轴 IV‡耐力卷軸 IV',
   { -- Npc
-    'Mandingueira Mau\'ari‡Знахарь Мау\'ари‡Hexendoktorin Mau\'ari‡의술사 마우아리‡Médico bruja Mau\'ari‡Médico bruja Mau\'ari‡Sorcier-docteur Mau\'ari‡巫医玛艾里‡巫醫瑪艾里',
+    'Mandingueira Mau\'ari‡Знахарь Мау\'ари‡Hexendoktorin Mau\'ari‡의술사 마우아리‡Médico bruja Mau\'ari‡Médica bruja Mau\'ari‡Sorcier-docteur Mau\'ari‡巫医玛艾里‡巫醫瑪艾里',
     nil,
   },
   nil,
@@ -103554,7 +103554,7 @@
 },
 [10440] = {
   -- Item
-  '‡Кружка Нори‡Noris Becher‡노리의 머그잔‡Jarra de Nori‡Jarra de Nori‡Chope de Nori‡诺里斯的杯子‡諾里的杯子',
+  '‡Кружка Нори‡Noris Becher‡노리의 머그잔‡Jarra de Nori‡Taza de Nori‡Chope de Nori‡诺里斯的杯子‡諾里的杯子',
   { -- Npc
     'Barão Rivendare‡Барон Ривендер‡Baron Rivendare‡남작 리븐데어‡Barón Osahendido‡Barón Osahendido‡Baron Rivendare‡瑞文戴尔男爵‡瑞文戴爾男爵',
     nil,
@@ -106907,8 +106907,8 @@
 [10930] = {
   nil,
   { -- Npc
-    'Dargh Miracerta‡Дарг Верный Прицел‡Dargh Trueaim‡다그 트루에임‡Dargh Endiana‡Dargh Endiana‡Dargh Trueaim‡达恩·准星‡達恩·準星',
-    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de caza‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
+    'Dargh Miracerta‡Дарг Верный Прицел‡Dargh Trueaim‡다그 트루에임‡Dargh Endiana‡Dargh Tirojusto‡Dargh Trueaim‡达恩·准星‡達恩·準星',
+    'Treinamento de Caçadores‡Наставник охотников‡Jägerlehrer‡상급 사냥꾼‡Instructor de caza‡Instructor de cazadores‡Maître des chasseurs‡猎人训练师‡獵人訓練師',
   },
   nil,
   nil
@@ -109632,14 +109632,14 @@
 },
 [11367] = {
   -- Item
-  '‡Обращение Соломона к Болвару‡Solomons Hilfegesuch an Bolvar‡볼바르에게 보내는 솔로몬의 탄원서‡Petición al rey Wrynn de Solomon‡Petición al rey Wrynn de Solomon‡Supplique de Salomon au roi Wrynn‡所罗门写给伯瓦尔的求援信‡所羅門寫給伯瓦爾的求援信',
+  '‡Обращение Соломона к Болвару‡Solomons Hilfegesuch an Bolvar‡볼바르에게 보내는 솔로몬의 탄원서‡Petición al rey Wrynn de Solomon‡Petición de Solomon para Bolvar‡Supplique de Salomon au roi Wrynn‡所罗门写给伯瓦尔的求援信‡所羅門寫給伯瓦爾的求援信',
   nil,
   nil,
   nil
 },
 [11368] = {
   -- Item
-  '‡Указ Болвара‡Bolvars Erlass‡볼바르의 명령서‡Decreto de Wrynn‡Decreto de Wrynn‡Décret de Wrynn‡伯瓦尔的命令‡伯瓦爾的命令',
+  '‡Указ Болвара‡Bolvars Erlass‡볼바르의 명령서‡Decreto de Wrynn‡Decreto de Bolvar‡Décret de Wrynn‡伯瓦尔的命令‡伯瓦爾的命令',
   { -- Npc
     'Morcego Sanguinário‡Кровососущий нетопырь‡Blutsucherfledermaus‡흡혈박쥐‡Murciélago procurasangre‡Murciélago procurasangre‡Chauve-souris sanguinaire‡觅血蝙蝠‡覓血蝙蝠',
     nil,
@@ -112089,7 +112089,7 @@
   -- Item
   'Haste de Perna de Cristal Maciço‡Часть прочной хрустальной ноги‡Robuster Kristallbeinschaft‡단단한 수정 다리 마디‡Pata de cristal sólido‡Pata de cristal sólido‡Patte cristalline solide‡水晶蜘蛛腿‡水晶蜘蛛腿',
   { -- Npc
-    'Atalaia da Colme\'Zora‡Страж дорог из улья Зора‡Wegbehüter des Zoraschwarms‡길잡이 하이브조라‡Vigía de Colmen\'Zora‡Vigía de Colmen\'Zora‡Patrouilleuse de la Ruche\'Zora‡佐拉守卫‡佐拉守衛',
+    'Atalaia da Colme\'Zora‡Страж дорог из улья Зора‡Wegbehüter des Zoraschwarms‡길잡이 하이브조라‡Vigía de Colmen\'Zora‡Oteador de Colmen\'Zora‡Patrouilleuse de la Ruche\'Zora‡佐拉守卫‡佐拉守衛',
     nil,
   },
   nil,
@@ -112099,7 +112099,7 @@
   -- Item
   '‡Кольчуга свирепого гладиатора‡Wilde Gladiatorenkette‡잔인한 검투사의 사슬 갑옷‡Cota de malla de Gladiador indómito‡Cota de malla de Gladiador indómito‡Cotte d\'anneaux de gladiateur sauvage‡野蛮角斗士链甲‡野蠻角鬥士鍊甲',
   { -- Npc
-    'Escavador da Colme\'Zora‡Проходчик из улья Зора‡Tunnelgräber des Zoraschwarms‡땅꾼 하이브조라‡Tunelador Colmen\'Zora‡Tunelador Colmen\'Zora‡Tunnelière de la Ruche\'Zora‡佐拉坑道蝎‡佐拉坑道蠍',
+    'Escavador da Colme\'Zora‡Проходчик из улья Зора‡Tunnelgräber des Zoraschwarms‡땅꾼 하이브조라‡Tunelador Colmen\'Zora‡Tunelador de Colmen\'Zora‡Tunnelière de la Ruche\'Zora‡佐拉坑道蝎‡佐拉坑道蠍',
     nil,
   },
   nil,
@@ -112109,7 +112109,7 @@
   -- Item
   'Livro de A. Massoaço‡Учетная книга Сталлина‡Goodsteel-Geschäftsbuch‡굿스틸 장부‡Libro de contabilidad de Buenacero‡Libro de contabilidad de Buenacero‡Livre de Goodsteel‡古德斯迪尔的账本‡古德斯迪爾的帳本',
   { -- Npc
-    'Vespa da Colme\'Zora‡Оса из улья Зора‡Wespe des Zoraschwarms‡병정 하이브조라‡Avispa Colmen\'Zora‡Avispa Colmen\'Zora‡Guêpe de la Ruche\'Zora‡佐拉巨蜂‡佐拉黃蜂',
+    'Vespa da Colme\'Zora‡Оса из улья Зора‡Wespe des Zoraschwarms‡병정 하이브조라‡Avispa Colmen\'Zora‡Avispa de Colmen\'Zora‡Guêpe de la Ruche\'Zora‡佐拉巨蜂‡佐拉黃蜂',
     nil,
   },
   nil,
@@ -112119,7 +112119,7 @@
   -- Item
   '‡Поножи свирепого гладиатора‡Wilde Gladiatorengamaschen‡잔인한 검투사의 다리보호구‡Leotardos de Gladiador indómito‡Leotardos de Gladiador indómito‡Jambières de gladiateur sauvage‡野蛮角斗士护腿‡野蠻角鬥士護腿',
   { -- Npc
-    'Aniquilador da Colme\'Zora‡Разоритель из улья Зора‡Häscher des Zoraschwarms‡모래무지 하이브조라‡Atracador Colmen\'Zora‡Atracador Colmen\'Zora‡Ravageuse de la Ruche\'Zora‡佐拉掠夺者‡佐拉搶奪者',
+    'Aniquilador da Colme\'Zora‡Разоритель из улья Зора‡Häscher des Zoraschwarms‡모래무지 하이브조라‡Atracador Colmen\'Zora‡Atracador de Colmen\'Zora‡Ravageuse de la Ruche\'Zora‡佐拉掠夺者‡佐拉搶奪者',
     nil,
   },
   nil,
@@ -112129,7 +112129,7 @@
   -- Item
   '‡Шлем свирепого гладиатора‡Wilder Gladiatorenhelm‡잔인한 검투사의 투구‡Yelmo de Gladiador indómito‡Yelmo de Gladiador indómito‡Heaume de gladiateur sauvage‡野蛮角斗士头盔‡野蠻角鬥士頭盔',
   { -- Npc
-    'Irmã da Colme\'Zora‡Сестра-убийца из улья Зора‡Schwester des Zoraschwarms‡어미 하이브조라‡Hermana de colmena Colmen\'Zora‡Hermana de colmena Colmen\'Zora‡Sœur de la Ruche\'Zora‡佐拉雌蝎‡佐拉雌蠍',
+    'Irmã da Colme\'Zora‡Сестра-убийца из улья Зора‡Schwester des Zoraschwarms‡어미 하이브조라‡Hermana de colmena Colmen\'Zora‡Hermana de colmena de Colmen\'Zora‡Sœur de la Ruche\'Zora‡佐拉雌蝎‡佐拉雌蠍',
     nil,
   },
   nil,
@@ -112189,7 +112189,7 @@
   -- Item
   '‡Глазная повязка Ярилы‡Augenklappe des rasenden Zorns‡맹위의 안대‡Parche Furia Ardiente‡Parche Furia Ardiente‡Couvre-œil du forcené‡怒气眼罩‡怒氣眼罩',
   { -- Npc
-    'Escorpídeo Petraçoite‡Камнехвостый скорпид‡Steinpanzerskorpid‡돌꼬리전갈‡Escórpido Latigosólido‡Escórpido Latigosólido‡Scorpide Cinglepierre‡石鞭蝎‡石鞭蠍',
+    'Escorpídeo Petraçoite‡Камнехвостый скорпид‡Steinpanzerskorpid‡돌꼬리전갈‡Escórpido Latigosólido‡Escórpido Latipiedra‡Scorpide Cinglepierre‡石鞭蝎‡石鞭蠍',
     nil,
   },
   nil,
@@ -112199,7 +112199,7 @@
   -- Item
   'Incunábulo da Resiliência‡Манускрипт устойчивости‡Buchband der Widerstandsfähigkeit‡탄력의 고서‡Tratado sobre Resistencia‡Tratado sobre Resistencia‡Libram de résistance‡恢复圣典‡韌性聖契',
   { -- Npc
-    'Tenaz Petraçoite‡Камнехвостый клешневик‡Steinpanzerzange‡돌꼬리집게전갈‡Tnazario Latigosólido‡Tnazario Latigosólido‡Pinceur Cinglepierre‡石鞭巨钳蝎‡石鞭巨鉗蠍',
+    'Tenaz Petraçoite‡Камнехвостый клешневик‡Steinpanzerzange‡돌꼬리집게전갈‡Tnazario Latigosólido‡Tenazario Latipiedra‡Pinceur Cinglepierre‡石鞭巨钳蝎‡石鞭巨鉗蠍',
     nil,
   },
   nil,
@@ -112209,7 +112209,7 @@
   -- Item
   'Incunábulo da Voracidade‡Манускрипт Ненасытности‡Buchband der Gier‡탐욕의 고서‡Tratado sobre Voracidad‡Tratado sobre Voracidad‡Libram de voracité‡贪婪圣典‡貪婪聖契',
   { -- Npc
-    'Esfolador Petraçoite‡Камнехвостый живодер‡Steinpanzerschinder‡돌꼬리채찍전갈‡Cazador Latigosólido‡Cazador Latigosólido‡Ecorcheur Cinglepierre‡石鞭掠夺者‡石鞭撕掠者',
+    'Esfolador Petraçoite‡Камнехвостый живодер‡Steinpanzerschinder‡돌꼬리채찍전갈‡Cazador Latigosólido‡Despellejador Latipiedra‡Ecorcheur Cinglepierre‡石鞭掠夺者‡石鞭撕掠者',
     nil,
   },
   nil,
@@ -112227,7 +112227,7 @@
 [11739] = {
   nil,
   { -- Npc
-    'Espreitadora de Rocha‡Скальный паук-скакун‡Felspirscher‡긴다리 바위거미‡Acechador de piedra‡Acechador de piedra‡Traqueuse des rochers‡石行蜘蛛‡石行蜘蛛',
+    'Espreitadora de Rocha‡Скальный паук-скакун‡Felspirscher‡긴다리 바위거미‡Acechador de piedra‡Acecharrocas‡Traqueuse des rochers‡石行蜘蛛‡石行蜘蛛',
     nil,
   },
   nil,
@@ -112236,7 +112236,7 @@
 [11740] = {
   nil,
   { -- Npc
-    'Dragataca‡Землечерп‡Baggerschläger‡작살미늘벌레‡Artillero de arrastre‡Artillero de arrastre‡Frappeur térébrant‡掘泥打击者‡掘泥打擊者',
+    'Dragataca‡Землечерп‡Baggerschläger‡작살미늘벌레‡Artillero de arrastre‡Asediador deslizante‡Frappeur térébrant‡掘泥打击者‡掘泥打擊者',
     nil,
   },
   nil,
@@ -112245,7 +112245,7 @@
 [11741] = {
   nil,
   { -- Npc
-    'Dragasmaga‡Земляной сокрушитель‡Baggerbrecher‡망치미늘벌레‡Triturador de arrastre‡Triturador de arrastre‡Ecraseur térébrant‡掘泥摧毁者‡掘泥摧毀者',
+    'Dragasmaga‡Земляной сокрушитель‡Baggerbrecher‡망치미늘벌레‡Triturador de arrastre‡Triturador deslizante‡Ecraseur térébrant‡掘泥摧毁者‡掘泥摧毀者',
     nil,
   },
   nil,
@@ -114481,7 +114481,7 @@
   -- Item
   '‡Радужное кольцо‡Prismaband‡프리즘 띠‡Sortija centelleante‡Sortija centelleante‡Bague prismatique‡棱石指环‡稜彩指環',
   { -- Npc
-    'Prolemestre Flagelador‡Предводитель драконов Разящий Бич‡Brutwächter Dreschbringer‡용기대장 래쉬레이어‡Señor de prole Capazote‡Señor de prole Capazote‡Seigneur des couvées Lashlayer‡勒什雷尔‡龍領主勒西雷爾',
+    'Prolemestre Flagelador‡Предводитель драконов Разящий Бич‡Brutwächter Dreschbringer‡용기대장 래쉬레이어‡Señor de prole Capazote‡Señor de linaje Capazote‡Seigneur des couvées Lashlayer‡勒什雷尔‡龍領主勒西雷爾',
     nil,
   },
   nil,
@@ -114522,7 +114522,7 @@
   '‡Щитолатные башмаки‡Schildplattensabatons‡강철 판금 발덮개‡Escarpes de escudo de placas‡Escarpes de escudo de placas‡Solerets renforcés‡盾甲铁靴‡盾鎧脛甲',
   { -- Npc
     'Daeolyn Foliéstia‡Даолин Летний Лист‡Daeolyn Summerleaf‡대올린 서머리프‡Daeolun Hojestival‡Daeolun Hojestival‡Daeolyn Summerleaf‡黛欧琳·夏叶‡黛歐琳·夏葉',
-    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Víveres‡Fournitures générales‡杂货商‡雜貨商',
+    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Pertrechos‡Fournitures générales‡杂货商‡雜貨商',
   },
   nil,
   nil
@@ -114975,7 +114975,7 @@
 [12098] = {
   nil,
   { -- Npc
-    'Emissário de Sulfuron‡Предвестник Сульфурон‡Sulfuronherold‡설퍼론 사자‡Sulfuron Presagista‡Sulfuron Presagista‡Messager de Sulfuron‡萨弗隆先驱者‡薩弗隆先驅者',
+    'Emissário de Sulfuron‡Предвестник Сульфурон‡Sulfuronherold‡설퍼론 사자‡Sulfuron Presagista‡Presagista de Sulfuron‡Messager de Sulfuron‡萨弗隆先驱者‡薩弗隆先驅者',
     nil,
   },
   nil,
@@ -120107,7 +120107,7 @@
   '‡Перьевой венок‡Stammeskriegsfedern‡전통 전투 깃털장식‡Plumas de guerra tribales‡Plumas de guerra tribales‡Coiffure de plumes tribale‡部族作战羽盔‡部族作戰羽盔',
   { -- Npc
     'Christi Galvanis‡Кристи Гальванис‡Christi Galvanis‡크리스티 갈바니스‡Christi Galvanis‡Christi Galvanis‡Christi Galvanis‡克里斯蒂·加瓦尼斯‡克利斯蒂·加瓦尼斯',
-    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Víveres‡Fournitures générales‡杂货商‡雜貨商',
+    'Mercadorias Diversas‡Потребительские товары‡Gemischtwaren‡일용품 상인‡Víveres‡Pertrechos‡Fournitures générales‡杂货商‡雜貨商',
   },
   nil,
   nil
@@ -124458,8 +124458,8 @@
 [13616] = {
   nil,
   { -- Npc
-    'Mestre de Estábulo dos Lobo do Gelo‡Смотритель стойл из клана Северного Волка‡Stallmeisterin der Frostwolf‡서리늑대부족 야수관리인‡Maestro de establo Lobo Gélido‡Maestro de establo Lobo Gélido‡Maître des écuries Frostwolf‡霜狼兽栏管理员‡霜狼獸欄管理員',
-    'Mestre de Estábulo‡Смотритель стойл‡Stallmeisterin‡야수 관리인‡Maestro de establos‡Maestro de establos‡Maître des écuries‡兽栏管理员‡獸欄管理員',
+    'Mestre de Estábulo dos Lobo do Gelo‡Смотритель стойл из клана Северного Волка‡Stallmeisterin der Frostwolf‡서리늑대부족 야수관리인‡Maestro de establo Lobo Gélido‡Maestra de establos Lobo Gélido‡Maître des écuries Frostwolf‡霜狼兽栏管理员‡霜狼獸欄管理員',
+    'Mestre de Estábulo‡Смотритель стойл‡Stallmeisterin‡야수 관리인‡Maestro de establos‡Maestra de establos‡Maître des écuries‡兽栏管理员‡獸欄管理員',
   },
   nil,
   nil
@@ -124795,7 +124795,7 @@
 [13776] = {
   nil,
   { -- Npc
-    'Cabo Tika Rosnassangue‡Капрал Тика Кровавый Рык‡Corporal Teeka Bloodsnarl‡하사관 티카 블러드스날‡Cabo Teeka Gruñidosangriento‡Cabo Teeka Gruñidosangriento‡Caporal Teeka Bloodsnarl‡提卡·血牙‡提卡·血牙下士',
+    'Cabo Tika Rosnassangue‡Капрал Тика Кровавый Рык‡Corporal Teeka Bloodsnarl‡하사관 티카 블러드스날‡Cabo Teeka Gruñidosangriento‡Cabo Teeka Gruñido Sangriento‡Caporal Teeka Bloodsnarl‡提卡·血牙‡提卡·血牙下士',
     nil,
   },
   nil,
@@ -128170,7 +128170,7 @@
 [14347] = {
   nil,
   { -- Npc
-    'Grão-lorde Dimitriano‡Верховный лорд Демитриан‡Hochlord Demitrian‡대영주 데미트리안‡Alto Señor Demitrian‡Alto Señor Demitrian‡Généralissime Demetrian‡德米提恩‡大領主德米提恩',
+    'Grão-lorde Dimitriano‡Верховный лорд Демитриан‡Hochlord Demitrian‡대영주 데미트리안‡Alto Señor Demitrian‡Alto señor Demitrian‡Généralissime Demetrian‡德米提恩‡大領主德米提恩',
     nil,
   },
   nil,
@@ -133110,7 +133110,7 @@
   -- Item
   '‡Нефритовые эполеты‡Jadeschulterklappen‡비취 견장‡Cubrehombros de jade‡Cubrehombros de jade‡Epaulettes de jade‡翡翠护肩‡翡翠肩冑',
   { -- Npc
-    'Rin\'wosho, o Comerciante‡Рин\'вошо Торговец‡Rin\'wosho der Händler‡상인 린워쇼‡Rin\'wosho el Mercader‡Rin\'wosho el Mercader‡Rin\'wosho le marchand‡商人林沃斯‡商人林沃斯',
+    'Rin\'wosho, o Comerciante‡Рин\'вошо Торговец‡Rin\'wosho der Händler‡상인 린워쇼‡Rin\'wosho el Mercader‡Rin\'wosho el Comerciante‡Rin\'wosho le marchand‡商人林沃斯‡商人林沃斯',
     'Suprimentos e Consertos Zandalar‡Зандаларские припасы и ремонт‡Zandalarwaren & Reparaturen‡잔달라부족 보급 및 수리‡Suministros y reparaciones Zandalar‡Suministros y reparaciones Zandalar‡Fournitures et réparations zandalariennes‡赞达拉商人和修理者‡贊達拉供應商和修理者',
   },
   nil,
@@ -136192,7 +136192,7 @@
   -- Item
   '‡Дикий кулачный щит‡Wildrundschild‡야생 버클러‡Rodela feral‡Rodela feral‡Targe farouche‡野性圆盾‡野性圓盾',
   { -- Npc
-    'Templário Terrano‡Земной храмовник‡Irdener Templer‡황색 기사단‡Templario de tierra‡Templario de tierra‡Templier terrestre‡土色圣殿骑士‡土色聖殿騎士',
+    'Templário Terrano‡Земной храмовник‡Irdener Templer‡황색 기사단‡Templario de tierra‡Templario terráneo‡Templier terrestre‡土色圣殿骑士‡土色聖殿騎士',
     'Conselho Abissal‡Совет Бездны‡Abyssischer Rat‡심연의 의회‡Consejos Abisal‡Consejos Abisal‡Conseil abyssal‡深渊议会‡深淵議會',
   },
   nil,
@@ -137436,8 +137436,8 @@
   -- Item
   '‡Молот Оргриммара‡Hammer von Orgrimmar‡오그리마의 망치‡Martillo de Orgrimmar‡Martillo de Orgrimmar‡Marteau d\'Orgrimmar‡奥格瑞玛之锤‡奧格瑪之錘',
   { -- Npc
-    'Sargento-mor Germana‡Старший сержант Гермайн‡Sergeant Major Germaine‡선임하사 저메인‡Sargento Mayor Germaine‡Sargento Mayor Germaine‡Sergent-major Germaine‡士官长戈麦恩‡士官長戈麥恩',
-    'Doações de Lágrimas-de-arthas‡Приемщица слез Артаса‡Sammler für Arthas\' Tränen‡아서스의 눈물 수집원‡Recolector de lágrimas de Arthas‡Recolector de lágrimas de Arthas‡Collecte de larmes d\'Arthas‡阿尔萨斯之泪收集者‡阿薩斯之淚收集者',
+    'Sargento-mor Germana‡Старший сержант Гермайн‡Sergeant Major Germaine‡선임하사 저메인‡Sargento Mayor Germaine‡Alférez Germaine‡Sergent-major Germaine‡士官长戈麦恩‡士官長戈麥恩',
+    'Doações de Lágrimas-de-arthas‡Приемщица слез Артаса‡Sammler für Arthas\' Tränen‡아서스의 눈물 수집원‡Recolector de lágrimas de Arthas‡Recolectora de lágrimas de Arthas‡Collecte de larmes d\'Arthas‡阿尔萨斯之泪收集者‡阿薩斯之淚收集者',
   },
   nil,
   nil
@@ -137492,7 +137492,7 @@
   -- Item
   '‡Поножи горгульи‡Gargoylegamaschen‡가고일 다리보호구‡Leotardos gárgola‡Leotardos gárgola‡Jambières de la gargouille‡石像鬼护腿‡石像鬼護腿',
   { -- Npc
-    'Sentinela Argencélio‡Часовой Серебринка Небес‡Schildwache Silversky‡파수꾼 실버스카이‡Centinela Cielargente‡Centinela Cielargente‡Sentinelle Silversky‡哨兵塞尔瓦·银空‡哨兵塞爾瓦·銀空',
+    'Sentinela Argencélio‡Часовой Серебринка Небес‡Schildwache Silversky‡파수꾼 실버스카이‡Centinela Cielargente‡Centinela Cielargento‡Sentinelle Silversky‡哨兵塞尔瓦·银空‡哨兵塞爾瓦·銀空',
     'Doações de Bandagem de Linho‡Приемщик льняных бинтов‡Sammler für Leinenverbände‡리넨 붕대 수집원‡Recolector de vendas de lino‡Recolector de vendas de lino‡Collecte de bandages en lin‡亚麻绷带收集者‡亞麻繃帶收集者',
   },
   nil,
@@ -137512,7 +137512,7 @@
   -- Item
   '‡Наручи саванны‡Savannenarmschienen‡열대초원 팔보호구‡Brazales de sabana‡Brazales de sabana‡Brassards de la savane‡草原狮护腕‡草原獅護腕',
   { -- Npc
-    'Guardião Sombraluna‡Хранитель Лунный Сумрак‡Bewahrer Moonshade‡수호자 문셰이드‡Vigilante Sombraluna‡Vigilante Sombraluna‡Gardien Moonshade‡守护者莫沙·月影‡守護者莫沙·月影',
+    'Guardião Sombraluna‡Хранитель Лунный Сумрак‡Bewahrer Moonshade‡수호자 문셰이드‡Vigilante Sombraluna‡Vigilante Sombra Lunar‡Gardien Moonshade‡守护者莫沙·月影‡守護者莫沙·月影',
     'Doações de Bandagem de Runatrama‡Приемщик бинтов из рунной ткани‡Sammler für Runenstoffverbände‡룬매듭 붕대 수집원‡Recolector de vendas de paño rúnico‡Recolector de vendas de paño rúnico‡Collecte de bandages en étoffe runique‡符文布绷带收集者‡符文布繃帶收集者',
   },
   nil,
@@ -137905,7 +137905,7 @@
   -- Item
   '‡Походные манжеты‡Kundschaftermanschetten‡정찰꾼 소매장식‡Puños de avanzado‡Puños de avanzado‡Crispins d\'estafette‡先驱者护腕‡先驅者腕輪',
   { -- Npc
-    'Guardião Haro‡Страж-смотритель Харо‡Aufseher Haro‡감시자 하로‡Alcaide Haro‡Alcaide Haro‡Gardien Haro‡守望者哈尔洛‡守望者哈洛',
+    'Guardião Haro‡Страж-смотритель Харо‡Aufseher Haro‡감시자 하로‡Alcaide Haro‡Celador Haro‡Gardien Haro‡守望者哈尔洛‡守望者哈洛',
     nil,
   },
   nil,
@@ -138223,7 +138223,7 @@
   -- Item
   '‡Защитные наручи часового‡Wachpostenarmsplinte‡파수대 팔보호구‡Braquiales de avizor‡Braquiales de avizor‡Brachiales de factionnaire‡斥候护臂‡哨兵護臂',
   { -- Npc
-    'Guarda Pétrea Casco de Argila‡Камнестраж Илистое Копыто‡Steinwache Clayhoof‡투사 클레이후프‡Pezuñarcilla Garrapetra‡Pezuñarcilla Garrapetra‡Garde de pierre Clayhoof‡尼根·陶蹄‡尼根·陶蹄',
+    'Guarda Pétrea Casco de Argila‡Камнестраж Илистое Копыто‡Steinwache Clayhoof‡투사 클레이후프‡Pezuñarcilla Garrapetra‡Guardia de piedra Pezuña de Barro‡Garde de pierre Clayhoof‡尼根·陶蹄‡尼根·陶蹄',
     'Doações de Bandagem de Runatrama‡Приемщик бинтов из рунной ткани‡Sammler für Runenstoffverbände‡룬매듭 붕대 수집원‡Recolector de vendas de paño rúnico‡Recolector de vendas de paño rúnico‡Collecte de bandages en étoffe runique‡符文布收集者‡符文布收集者',
   },
   nil,
@@ -138233,8 +138233,8 @@
   -- Item
   '‡Охранный головной убор‡Wachpostenkopfputz‡파수대 투구‡Ornato de avizor‡Ornato de avizor‡Coiffure de factionnaire‡斥候头饰‡哨兵頭飾',
   { -- Npc
-    'Guarda-de-sangue Rawtar‡Кровостраж Сыросмолла‡Blutwache Rawtar‡혈투사 로타르‡Guardasangre Alquicrudo‡Guardasangre Alquicrudo‡Garde de sang Rawtar‡血卫士拉尔塔‡血衛士拉爾塔',
-    'Doações de Filé de Lobo Magro‡Собиратель постного стейка из волчатины‡Sammler für magere Wolfsteaks‡늑대 살코기 스테이크 수집원‡Recolector de filetes de lobo‡Recolector de filetes de lobo‡Collecte de steaks de loup‡瘦狼排收集者‡瘦狼排收集者',
+    'Guarda-de-sangue Rawtar‡Кровостраж Сыросмолла‡Blutwache Rawtar‡혈투사 로타르‡Guardasangre Alquicrudo‡Guardia de sangre Alquicrudo‡Garde de sang Rawtar‡血卫士拉尔塔‡血衛士拉爾塔',
+    'Doações de Filé de Lobo Magro‡Собиратель постного стейка из волчатины‡Sammler für magere Wolfsteaks‡늑대 살코기 스테이크 수집원‡Recolector de filetes de lobo‡Recolectora de filetes de lobo‡Collecte de steaks de loup‡瘦狼排收集者‡瘦狼排收集者',
   },
   nil,
   nil
@@ -139771,7 +139771,7 @@
 [15701] = {
   nil,
   { -- Npc
-    'Marechal-de-campo Nevado‡Фельдмаршал Снегопад‡Feldmarschall Snowfall‡야전사령관 스노우폴‡Alguacil de campo Nevanur‡Alguacil de campo Nevanur‡Grand maréchal Snowfall‡大元帅斯诺·落雪‡戰場元帥斯諾·落雪',
+    'Marechal-de-campo Nevado‡Фельдмаршал Снегопад‡Feldmarschall Snowfall‡야전사령관 스노우폴‡Alguacil de campo Nevanur‡Mariscal de campo Nevanur‡Grand maréchal Snowfall‡大元帅斯诺·落雪‡戰場元帥斯諾·落雪',
     'Comandante do Esforço de Guerra‡Ан\'киражский командир‡Kommandant der Kriegsanstrengungen‡전쟁 지원 지휘관‡Comandante de la campaña de guerra‡Comandante de la campaña de guerra‡Commandant de l\'effort de guerre‡战备军官‡戰備指揮官',
   },
   nil,
@@ -139781,8 +139781,8 @@
   -- Item
   '‡Кольцо аптекаря‡Ring des Chemikers‡약제사의 반지‡Anillo de químico‡Anillo de químico‡Anneau des chimistes‡药剂师戒指‡藥劑師戒指',
   { -- Npc
-    'Segundo-sargento Taiga‡Главный сержант Тайга‡Schlachtruferin Taiga‡정예수호병 타이가‡Sargento Jefe Taiga‡Sargento Jefe Taiga‡Sergent-chef Taiga‡高阶军士泰加‡高階軍士泰加',
-    'Recrutadora do Esforço de Guerra‡Ан\'киражская вербовщица‡Rekrutierungsoffizier‡전쟁 지원 징집관‡Reclutador para la campaña de guerra‡Reclutador para la campaña de guerra‡Recruteuse pour l\'effort de guerre‡战备招募员‡戰備招募員',
+    'Segundo-sargento Taiga‡Главный сержант Тайга‡Schlachtruferin Taiga‡정예수호병 타이가‡Sargento Jefe Taiga‡Capataz primera Taiga‡Sergent-chef Taiga‡高阶军士泰加‡高階軍士泰加',
+    'Recrutadora do Esforço de Guerra‡Ан\'киражская вербовщица‡Rekrutierungsoffizier‡전쟁 지원 징집관‡Reclutador para la campaña de guerra‡Reclutadora para la campaña de guerra‡Recruteuse pour l\'effort de guerre‡战备招募员‡戰備招募員',
   },
   nil,
   nil
@@ -139791,7 +139791,7 @@
   -- Item
   '‡Хламида химика‡Kittel des Chemikers‡약제사의 작업복‡Guardapolvo de químico‡Guardapolvo de químico‡Blouse de chimiste‡药剂师工作服‡藥劑師工作服',
   { -- Npc
-    'Segundo-sargento Repugna‡Главный сержант Гримсфорд‡Senior Sergeant Grimsford‡정예수호병 그림스포드‡Sargento Jefe Grimsford‡Sargento Jefe Grimsford‡Sergent-chef Grimsford‡高阶军士格瑞弗德‡高階軍士格瑞弗德',
+    'Segundo-sargento Repugna‡Главный сержант Гримсфорд‡Senior Sergeant Grimsford‡정예수호병 그림스포드‡Sargento Jefe Grimsford‡Capataz primero Grimsford‡Sergent-chef Grimsford‡高阶军士格瑞弗德‡高階軍士格瑞弗德',
     'Recrutador do Esforço de Guerra‡Ан\'киражский вербовщик‡Rekrutierungsoffizier‡전쟁 지원 징집관‡Reclutador para la campaña de guerra‡Reclutador para la campaña de guerra‡Recruteur pour l\'effort de guerre‡战备招募员‡戰備招募員',
   },
   nil,
@@ -139801,8 +139801,8 @@
   -- Item
   '‡Знак охотника‡Jägerinsignienmedaille‡사냥꾼의 휘장 목걸이‡Medalla insignia de cazador‡Medalla insignia de cazador‡Insigne des chasseurs‡猎人徽记勋章‡獵人徽記徽記',
   { -- Npc
-    'Segundo-sargento Kai\'jin‡Главный сержант Кай\'джин‡Schlachtruferin Kai\'jin‡정예수호병 카이진‡Sargento Jefe Kai\'jin‡Sargento Jefe Kai\'jin‡Sergent-chef Kai\'jin‡高阶军士凯金‡高階軍士凱金',
-    'Recrutadora do Esforço de Guerra‡Ан\'киражская вербовщица‡Rekrutierungsoffizier‡전쟁 지원 징집관‡Reclutador para la campaña de guerra‡Reclutador para la campaña de guerra‡Recruteuse pour l\'effort de guerre‡战备招募员‡戰備招募員',
+    'Segundo-sargento Kai\'jin‡Главный сержант Кай\'джин‡Schlachtruferin Kai\'jin‡정예수호병 카이진‡Sargento Jefe Kai\'jin‡Capataz primera Kai\'jin‡Sergent-chef Kai\'jin‡高阶军士凯金‡高階軍士凱金',
+    'Recrutadora do Esforço de Guerra‡Ан\'киражская вербовщица‡Rekrutierungsoffizier‡전쟁 지원 징집관‡Reclutador para la campaña de guerra‡Reclutadora para la campaña de guerra‡Recruteuse pour l\'effort de guerre‡战备招募员‡戰備招募員',
   },
   nil,
   nil
@@ -139831,7 +139831,7 @@
   -- Item
   '‡Кушак Гладкого дерева‡Brandholzschärpe‡옹이나무 장식띠‡Fajín Barnaleño‡Fajín Barnaleño‡Echarpe du bois des bernaches‡黑雁腰带‡黑雁束帶',
   { -- Npc
-    'Segundo-sargento Fizzlebolt‡Старший сержант Шпунтец‡Master Sergeant Fizzlebolt‡정예근위병 피즐볼트‡Sargento maestro Rayochirriante‡Sargento maestro Rayochirriante‡Sergent-chef Fizzlebolt‡军士长菲兹伯特‡軍士長菲茲伯特',
+    'Segundo-sargento Fizzlebolt‡Старший сержант Шпунтец‡Master Sergeant Fizzlebolt‡정예근위병 피즐볼트‡Sargento maestro Rayochirriante‡Sargento primero Rayochirriante‡Sergent-chef Fizzlebolt‡军士长菲兹伯特‡軍士長菲茲伯特',
     'Recrutador do Esforço de Guerra‡Ан\'киражский вербовщик‡Rekrutierungsoffizier‡전쟁 지원 징집관‡Reclutador para la campaña de guerra‡Reclutador para la campaña de guerra‡Recruteur pour l\'effort de guerre‡战备招募员‡戰備招募員',
   },
   nil,
@@ -139841,8 +139841,8 @@
   -- Item
   '‡Кожаные перчатки порчи‡Verseuchte Lederhandschuhe‡황폐의 가죽 장갑‡Guantes de cuero de añublo‡Guantes de cuero de añublo‡Gants en cuir chancreux‡毒皮手套‡枯皮手套',
   { -- Npc
-    'Segundo-sargento Maclure‡Старший сержант Маклюр‡Master Sergeant Maclure‡정예근위병 맥클루어‡Sargento maestro Maclure‡Sargento maestro Maclure‡Sergent-chef Maclure‡军士长玛克卢尔‡軍士長瑪克盧爾',
-    'Recrutadora do Esforço de Guerra‡Ан\'киражская вербовщица‡Rekrutierungsoffizier‡전쟁 지원 징집관‡Reclutador para la campaña de guerra‡Reclutador para la campaña de guerra‡Recruteuse pour l\'effort de guerre‡战备招募员‡戰備招募員',
+    'Segundo-sargento Maclure‡Старший сержант Маклюр‡Master Sergeant Maclure‡정예근위병 맥클루어‡Sargento maestro Maclure‡Sargento primera Maclure‡Sergent-chef Maclure‡军士长玛克卢尔‡軍士長瑪克盧爾',
+    'Recrutadora do Esforço de Guerra‡Ан\'киражская вербовщица‡Rekrutierungsoffizier‡전쟁 지원 징집관‡Reclutador para la campaña de guerra‡Reclutadora para la campaña de guerra‡Recruteuse pour l\'effort de guerre‡战备招募员‡戰備招募員',
   },
   nil,
   nil
@@ -139851,8 +139851,8 @@
   -- Item
   '‡Ремень Кузни Орудий‡Gedrehter Schmiedegurt‡강철톱니 벨트‡Faja de Forjaengranaje‡Faja de Forjaengranaje‡Ceinturon à outils de forge‡钢箍束带‡鋼箍束腰',
   { -- Npc
-    'Segundo-sargento Umbraluna‡Старший сержант Тень Луны‡Master Sergeant Moonshadow‡정예근위병 문섀도‡Sargento maestro Sombraluna‡Sargento maestro Sombraluna‡Sergent-chef Moonshadow‡军士长希德·月影‡軍士長希德·月影',
-    'Recrutadora do Esforço de Guerra‡Ан\'киражская вербовщица‡Rekrutierungsoffizier‡전쟁 지원 징집관‡Reclutador para la campaña de guerra‡Reclutador para la campaña de guerra‡Recruteuse pour l\'effort de guerre‡战备招募员‡戰備招募員',
+    'Segundo-sargento Umbraluna‡Старший сержант Тень Луны‡Master Sergeant Moonshadow‡정예근위병 문섀도‡Sargento maestro Sombraluna‡Sargento primera Umbraluna‡Sergent-chef Moonshadow‡军士长希德·月影‡軍士長希德·月影',
+    'Recrutadora do Esforço de Guerra‡Ан\'киражская вербовщица‡Rekrutierungsoffizier‡전쟁 지원 징집관‡Reclutador para la campaña de guerra‡Reclutadora para la campaña de guerra‡Recruteuse pour l\'effort de guerre‡战备招募员‡戰備招募員',
   },
   nil,
   nil
@@ -139888,7 +139888,7 @@
 [15713] = {
   nil,
   { -- Npc
-    'Blue Qiraji Battle Tank‡Blue Qiraji Battle Tank‡Blaue Qirajipanzerdrohne‡푸른 퀴라지 전차‡Blue Qiraji Battle Tank‡Blue Qiraji Battle Tank‡Char d\'assaut qiraji bleu‡蓝色其拉作战坦克‡藍色其拉作戰坦克',
+    'Blue Qiraji Battle Tank‡Blue Qiraji Battle Tank‡Blaue Qirajipanzerdrohne‡푸른 퀴라지 전차‡Tanque de batalla qiraji azul‡Tanque de batalla qiraji azul‡Char d\'assaut qiraji bleu‡蓝色其拉作战坦克‡藍色其拉作戰坦克',
     nil,
   },
   nil,
@@ -151298,7 +151298,7 @@
 },
 [17771] = {
   -- Item
-  '‡Элементиевый слиток‡Elementiumbarren‡엘레멘티움 주괴‡Barra de elementium encantado‡Barra de elementium encantado‡Barre d\'élémentium enchantée‡魔化源质锭‡源質錠',
+  '‡Элементиевый слиток‡Elementiumbarren‡엘레멘티움 주괴‡Barra de elementium encantado‡Barra de elementium‡Barre d\'élémentium enchantée‡魔化源质锭‡源質錠',
   nil,
   nil,
   nil
@@ -163972,7 +163972,7 @@
 },
 [20405] = {
   -- Item
-  '‡Переписанный с таблички расшифрованный текст‡Entschlüsselte Abschrift der Schrifttafel‡해독된 서판 탁본‡Trascripción de tablilla decodificada‡Trascripción de tablilla decodificada‡Transcription décodée de la tablette‡解密石板碑文‡解密石碑碑文',
+  '‡Переписанный с таблички расшифрованный текст‡Entschlüsselte Abschrift der Schrifttafel‡해독된 서판 탁본‡Trascripción de tablilla decodificada‡Transcripción de tablilla decodificada‡Transcription décodée de la tablette‡解密石板碑文‡解密石碑碑文',
   nil,
   nil,
   nil
@@ -164267,7 +164267,7 @@
 },
 [20453] = {
   -- Item
-  '‡Копирующее устройство геолога‡Abschriftenset für Geologen‡지질학자의 탁본 도구‡Estuche de trascripción de geólogo‡Estuche de trascripción de geólogo‡Trousse de transcription du géologue‡地质学家的抄录工具包‡地質學家的抄錄工具包',
+  '‡Копирующее устройство геолога‡Abschriftenset für Geologen‡지질학자의 탁본 도구‡Estuche de trascripción de geólogo‡Estuche de transcripción de geólogo‡Trousse de transcription du géologue‡地质学家的抄录工具包‡地質學家的抄錄工具包',
   nil,
   nil,
   nil
@@ -173888,7 +173888,7 @@
 },
 [22382] = {
   -- Item
-  '‡Запечатанный ларчик с ядом‡Versiegelter Giftbehälter‡봉인된 독액 용기‡Contenedor de veneno sellado‡Contenedor de veneno sellado‡Récipient de venin scellé‡封起来的毒液容器‡密封的毒液',
+  '‡Запечатанный ларчик с ядом‡Versiegelter Giftbehälter‡봉인된 독액 용기‡Contenedor de veneno sellado‡Contendedor de veneno sellado‡Récipient de venin scellé‡封起来的毒液容器‡密封的毒液',
   nil,
   nil,
   nil
@@ -183529,7 +183529,10 @@
   -- Object
   '‡Круг Призыва‡Beschwörungskreis‡소환 마법진‡Círculo de Invocación‡Círculo de Invocación‡Cercle d\'invocation‡召唤法阵‡召喚法陣',
   nil
-},
+}
+}
+-- break
+{
 [92419] = {
   nil,
   nil,
@@ -203372,7 +203375,7 @@
   nil,
   nil,
   -- Object
-  '‡Покрытый письменами кристалл Улья Регал‡Glyphenverzierter Kristall des Regalschwarms‡문자가 새겨진 하이브레갈 수정‡Cristal con inscripciones de Colmen\'Regal‡Cristal con inscripciones de Colmen\'Regal‡Cristal orné de glyphes de la Ruche\'Regal‡雷戈虫巢雕文水晶‡雷戈蟲巢雕紋水晶',
+  'Cristal Entalhado de Glifos de Colme\'Régia‡Покрытый письменами кристалл Улья Регал‡Glyphenverzierter Kristall des Regalschwarms‡문자가 새겨진 하이브레갈 수정‡Cristal con inscripciones de Colmen\'Regal‡Cristal con inscripciones de Colmen\'Regal‡Cristal orné de glyphes de la Ruche\'Regal‡雷戈虫巢雕文水晶‡雷戈蟲巢雕紋水晶',
   nil
 },
 [180454] = {
