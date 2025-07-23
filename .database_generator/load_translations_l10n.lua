@@ -207,12 +207,20 @@ local function joinAndEscape(tbl, separator, emptyValue)
 end
 
 
---- Dumps the structured l10n data into a Lua table string format.
+---------------------------------------------------------------------------
+-- Dumps the structured l10n data into a Lua table string format.
+-- •  Adds a “-- break / return {” marker every <maxIdsPerSlice> IDs
+--    to keep each compiled slice well below Lua‑5.1’s constant limit.
+-- •  The loader only needs to split on “-- break” and feed every slice
+--    to loadstring()/require(); see comments in the merge script.
+---------------------------------------------------------------------------
 ---@param L10nMeta L10nMeta
 ---@param entityTypes table<string> The entity types to be dumped (e.g., "Item", "Npc", "Object", "Quest")
 ---@param l10nData table<AllIdTypes, table<L10nDBKeys, table<L10nLocales, any>>> The structured localization data.
+---@param maxIdsPerSlice number? -- optional; defaults to 2000
 ---@return string luaTableString The generated Lua table as a string.
-function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
+function export.DumpL10nData(L10nMeta, entityTypes, l10nData, maxIdsPerSlice)
+  maxIdsPerSlice = maxIdsPerSlice or 20000 -- *** new parameter ***
   print("Creating l10n data dump...")
   local outputLines = {}
   tInsert(outputLines, "{\n")
@@ -239,6 +247,8 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
   table.sort(sortedIds)
 
   local indentation = "  "
+
+  local idsInCurrentSlice = 0
 
   ---@param id ItemId|NpcId|ObjectId|QuestId
   for _, id in ipairs(sortedIds) do
@@ -303,6 +313,23 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
       outputLines[#outputLines] = string.sub(lastLine, 1, -3) .. "\n"
     end
     tInsert(outputLines, "},\n")
+
+    ----------------------------------------------------------------
+    --  SLICE BREAK
+    ----------------------------------------------------------------
+    idsInCurrentSlice = idsInCurrentSlice + 1
+    if idsInCurrentSlice >= maxIdsPerSlice then
+      -- remove trailing comma from the final ID of this slice
+      local ll = outputLines[#outputLines]
+      if ll:sub(-2) == ",\n" then outputLines[#outputLines] = ll:sub(1, -3) .. "\n" end
+
+      -- close slice, insert marker, start new slice
+      tInsert(outputLines, "}\n")
+      tInsert(outputLines, "-- break\n")
+      tInsert(outputLines, "{\n")
+
+      idsInCurrentSlice = 0
+    end
   end
   -- Remove trailing comma from the last ID entry
   local lastLine = outputLines[#outputLines]
@@ -314,6 +341,79 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
   print("Done creating l10n data dump.")
 
   return table.concat(outputLines)
+end
+
+-------------------------------------------------------------------------------
+--- Loads a sliced localisation dump produced by `export.DumpL10nData`.
+---
+--- The dump is one text file that looks like:
+--- ```
+--- return {
+---   [1] = { … },
+---   ...
+--- }
+--- -- break
+--- {
+---   [2001] = { … },
+---   ...
+--- }
+--- -- break
+--- {
+---   ...
+--- }
+--- ```
+--- Each “slice” after a `-- break` marker is small enough to compile on Lua 5.1
+--- without tripping the *constant table overflow* limit.  This loader:
+---   1. Reads the file line‑by‑line.
+---   2. Whenever it sees `-- break`, it compiles the lines collected so far
+---      with `loadstring`, gets a partial table, and merges that into
+---      a shared result table.
+---   3. Repeats until EOF, then returns the merged table.
+---
+--- @param  path  string  Absolute or relative path to the dump file.
+--- @return table<AllIdTypes, table>  The fully merged localisation table.
+-------------------------------------------------------------------------------
+function export.LoadL10n(path)
+  ---------------------------------------------------------------------------
+  -- Locals
+  ---------------------------------------------------------------------------
+  local L10n  = {} --- Final result.
+  local lines = {} --- Buffer holding the current slice’s source lines.
+
+  --- Copies every key/value pair from *src* into *dest*.
+  --- Later slices overwrite earlier duplicates (last‑one‑wins).
+  --- @param dest table
+  --- @param src  table
+  local function merge(dest, src)
+    for k, v in pairs(src) do
+      dest[k] = v
+    end
+  end
+
+  ---------------------------------------------------------------------------
+  -- Pass 1 – stream the file, splitting on “-- break”
+  ---------------------------------------------------------------------------
+  for line in io.lines(path) do
+    if line:match("^%-%- break") then -- ➊ slice delimiter
+      if #lines > 0 then              -- compile current slice
+        local chunk = assert(loadstring("return " .. table.concat(lines, "\n")))
+        merge(L10n, chunk())          -- merge into result
+        lines = {}                    -- reset buffer
+      end
+    else
+      lines[#lines + 1] = line -- normal data line
+    end
+  end
+
+  ---------------------------------------------------------------------------
+  -- Pass 2 – compile the last slice (no “-- break” after it)
+  ---------------------------------------------------------------------------
+  if #lines > 0 then
+    local chunk = assert(loadstring("return " .. table.concat(lines, "\n")))
+    merge(L10n, chunk())
+  end
+
+  return L10n
 end
 
 return export
