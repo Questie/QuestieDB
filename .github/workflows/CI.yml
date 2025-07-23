@@ -12,9 +12,6 @@ on:
 jobs:
   lua-check:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        expansion: [Era, Tbc, Wotlk, Cata, Mop]
 
     steps:
     - name: Check out ${{ github.repository }} code
@@ -50,5 +47,18 @@ jobs:
     - name: Generate HTML
       run: sh ./.database_generator/generate_database.sh ./.lua/bin/lua
 
-    - name: Run ${{ matrix.expansion }} Tests
-      run: lua ./.tooling/lua/tests/runTests.lua ${{ matrix.expansion }}
+
+    - name: Run Era Tests
+      run: lua ./.tooling/lua/tests/runTests.lua Era
+
+    - name: Run Tbc Tests
+      run: lua ./.tooling/lua/tests/runTests.lua Tbc
+
+    - name: Run Wotlk Tests
+      run: lua ./.tooling/lua/tests/runTests.lua Wotlk
+
+    - name: Run Cata Tests
+      run: lua ./.tooling/lua/tests/runTests.lua Cata
+
+    - name: Run Mop Tests
+      run: lua ./.tooling/lua/tests/runTests.lua Mop

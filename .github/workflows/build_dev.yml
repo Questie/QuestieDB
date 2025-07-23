@@ -38,9 +38,6 @@ jobs:
   build_dev_release:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        expansion: [Era, Tbc, Wotlk, Cata, Mop]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -70,8 +67,20 @@ jobs:
     - name: Generate HTML
       run: sh ./.database_generator/generate_database.sh ./.lua/bin/lua
 
-    - name: Run ${{ matrix.expansion }} Tests
-      run: lua ./.tooling/lua/tests/runTests.lua ${{ matrix.expansion }}
+    - name: Run Era Tests
+      run: lua ./.tooling/lua/tests/runTests.lua Era
+
+    - name: Run Tbc Tests
+      run: lua ./.tooling/lua/tests/runTests.lua Tbc
+
+    - name: Run Wotlk Tests
+      run: lua ./.tooling/lua/tests/runTests.lua Wotlk
+
+    - name: Run Cata Tests
+      run: lua ./.tooling/lua/tests/runTests.lua Cata
+
+    - name: Run Mop Tests
+      run: lua ./.tooling/lua/tests/runTests.lua Mop
 
     # Create the QuestieDB build, will output toc_version
     - name: Check version is higher than latest release
