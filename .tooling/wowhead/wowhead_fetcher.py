@@ -258,32 +258,6 @@ Status: {"Stopping..." if self.is_stopped() else "Running"}"""
     for version in VersionSlug:
       add_version(self.conn, version.value, version.order_index)
 
-  def _filter_existing_entities(self, entities: Iterable[WowheadEntity], force: bool) -> tuple[list[WowheadEntity], list[WowheadEntity]]:
-    """Filter out entities that already exist in the database unless force=True.
-
-    Args:
-      entities: List of entities to potentially filter
-      force: If True, return all entities without filtering
-
-    Returns:
-      Tuple of (filtered_entities, skipped_entities)
-    """
-    entities_list = list(entities)
-
-    if force:
-      return entities_list, []
-
-    # Filter out entities that already exist in the database
-    filtered_entities = []
-    removed_entities = []
-
-    for entity in entities_list:
-      if entity_exists(self.conn, entity):
-        removed_entities.append(entity)
-      else:
-        filtered_entities.append(entity)
-
-    return filtered_entities, removed_entities
 
   def _fetch_entities(self, entities: Iterable[WowheadEntity], limit: Optional[int]) -> tuple[int, int]:
     """Helper to fetch and store a list of entities concurrently."""
@@ -380,7 +354,7 @@ Status: {"Stopping..." if self.is_stopped() else "Running"}"""
 
     # Filter out entities that already exist in the database
     print("Filtering out existing entities...")
-    entities, removed_entities = self._filter_existing_entities(entities, force)
+    entities, removed_entities = sitemap_filters.filter_existing_entities(entities, lambda e: entity_exists(self.conn, e), force)
     print(f"Skipped {len(removed_entities)} entities that already exist in database")
 
     if len(entities) == 0:
@@ -422,7 +396,7 @@ Status: {"Stopping..." if self.is_stopped() else "Running"}"""
 
     # Filter out entities that already exist in the database
     print("Filtering out existing entities...")
-    entities, removed_entities = self._filter_existing_entities(entities, force)
+    entities, removed_entities = sitemap_filters.filter_existing_entities(entities, lambda e: entity_exists(self.conn, e), force)
     print(f"  Skipped {len(removed_entities)} entities that already exist in database")
 
     if len(entities) == 0:
@@ -450,7 +424,7 @@ Status: {"Stopping..." if self.is_stopped() else "Running"}"""
     print(f"Fetching specific {entity_type} IDs for {version.value}: {id_list}")
     entities = [WowheadEntity(entity_id=EntityId(id), entity_type=entity_type, version=version, locale=self.locale) for id in id_list]
 
-    entities, removed_entities = self._filter_existing_entities(entities, force)
+    entities, removed_entities = sitemap_filters.filter_existing_entities(tuple(entities), lambda e: entity_exists(self.conn, e), force)
 
     if len(entities) == 0:
       print("No new entities to fetch - all already exist in database")

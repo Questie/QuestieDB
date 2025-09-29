@@ -65,7 +65,7 @@ jobs:
         luarocks install luv
 
     - name: Generate HTML
-      run: sh ./.database_generator/generate_database.sh ./.lua/bin/lua
+      run: sh ./.database_generator/generate_database.sh ./.lua/bin/lua true
 
     - name: Run Era Tests
       run: lua ./.tooling/lua/tests/runTests.lua Era

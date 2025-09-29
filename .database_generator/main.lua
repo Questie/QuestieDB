@@ -23,8 +23,15 @@ do
   local full_project_dir = full_script_dir:match("(.*)[/\\]") -- Remove last slash
 
   -- Then we set the package.path to include the script and project directories
+  print("Adding " .. full_project_dir .. sep .. "?.lua to package.path")
   package.path = full_project_dir .. sep .. "?.lua;" .. package.path
+  print("Adding " .. full_script_dir .. sep .. "?.lua to package.path")
   package.path = full_script_dir .. sep .. "?.lua;" .. package.path
+
+  -- Lua dir ".tooling\lua"
+  local lua_dir = full_project_dir .. sep .. ".tooling" .. sep .. "lua"
+  print("Adding " .. lua_dir .. sep .. "?.lua to package.path")
+  package.path = lua_dir .. sep .. "?.lua;" .. package.path
 
   -- Then we change back to the project directory
   lfs.chdir(full_project_dir)
