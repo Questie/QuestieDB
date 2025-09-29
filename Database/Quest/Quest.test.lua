@@ -353,6 +353,28 @@ Quest.testGetFunctions = function(fast)
       tInsert(data, "Reward Reputation: nil")
     end
 
+    -- Test Quest.breadcrumbForQuestId
+    Quest.lastTestedData = "breadcrumbForQuestId"
+    time = debugprofilestop()
+    tInsert(data, "Breadcrumb For Quest ID: " .. (Quest.breadcrumbForQuestId(id) or "nil"))
+    runTime = debugprofilestop() - time
+    perFunctionPerformance[Quest.lastTestedData] = (perFunctionPerformance[Quest.lastTestedData] or 0) + runTime
+
+    -- Test Quest.breadcrumbs
+    Quest.lastTestedData = "breadcrumbs"
+    time = debugprofilestop()
+    local breadcrumbs = Quest.breadcrumbs(id)
+    runTime = debugprofilestop() - time
+    perFunctionPerformance[Quest.lastTestedData] = (perFunctionPerformance[Quest.lastTestedData] or 0) + runTime
+    if breadcrumbs then
+      tInsert(data, "Breadcrumbs:")
+      for _, questID in ipairs(breadcrumbs) do
+        tInsert(data, "  Quest ID: " .. questID)
+      end
+    else
+      tInsert(data, "Breadcrumbs: nil")
+    end
+
     -- Test Quest.extraObjectives
     Quest.lastTestedData = "extraObjectives"
     time = debugprofilestop()
@@ -388,6 +410,21 @@ Quest.testGetFunctions = function(fast)
     tInsert(data, "Required Max Level: " .. (Quest.requiredMaxLevel(id) or "nil"))
     runTime = debugprofilestop() - time
     perFunctionPerformance[Quest.lastTestedData] = (perFunctionPerformance[Quest.lastTestedData] or 0) + runTime
+
+    -- Test Quest.orderedObjectives
+    Quest.lastTestedData = "orderedObjectives"
+    time = debugprofilestop()
+    local orderedObjectives = Quest.orderedObjectives(id)
+    runTime = debugprofilestop() - time
+    perFunctionPerformance[Quest.lastTestedData] = (perFunctionPerformance[Quest.lastTestedData] or 0) + runTime
+    if orderedObjectives then
+      tInsert(data, "Ordered Objectives:")
+      for i, objective in ipairs(orderedObjectives) do
+        tInsert(data, "  Objective " .. i .. ": type=" .. objective[1] .. ", index=" .. objective[2] .. ", data=" .. tostring(objective[3]))
+      end
+    else
+      tInsert(data, "Ordered Objectives: nil")
+    end
 
     tInsert(data, "--------------------------------------------------")
     if not fast then
