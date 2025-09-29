@@ -45,20 +45,20 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Generate HTML
-      run: sh ./.database_generator/generate_database.sh ./.lua/bin/lua
+      run: sh ./.database_generator/generate_database.sh ./.lua/bin/lua true
 
 
     - name: Run Era Tests
-      run: lua ./.tests/runTests.lua Era
+      run: lua ./.tooling/lua/tests/runTests.lua Era
 
     - name: Run Tbc Tests
-      run: lua ./.tests/runTests.lua Tbc
+      run: lua ./.tooling/lua/tests/runTests.lua Tbc
 
     - name: Run Wotlk Tests
-      run: lua ./.tests/runTests.lua Wotlk
+      run: lua ./.tooling/lua/tests/runTests.lua Wotlk
 
     - name: Run Cata Tests
-      run: lua ./.tests/runTests.lua Cata
+      run: lua ./.tooling/lua/tests/runTests.lua Cata
 
     - name: Run Mop Tests
-      run: lua ./.tests/runTests.lua Mop
+      run: lua ./.tooling/lua/tests/runTests.lua Mop

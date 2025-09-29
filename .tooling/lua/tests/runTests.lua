@@ -1,7 +1,6 @@
 -- Sets up the environment for running tests
 do
   local lfs = require("lfs")
-
   -- Get the path separator
   local sep = package.config:sub(1, 1)
 
@@ -18,12 +17,20 @@ do
   local full_script_dir = lfs.currentdir()
   print("SETUP: Changed directory to absolute script directory : ", full_script_dir)
 
-  -- Then we get the full path to the project directory
-  local full_project_dir = full_script_dir:match("(.*)[/\\]") -- Remove last slash
+  -- Then we get the full path to the project directory (go up 3 levels: tests -> lua -> .tooling -> project)
+  local lua_dir = full_script_dir:match("(.*)[/\\]")      -- lua
+  local tooling_dir = lua_dir:match("(.*)[/\\]")          -- .tooling
+  local full_project_dir = tooling_dir:match("(.*)[/\\]") -- project root
 
   -- Then we set the package.path to include the script and project directories
+  print("Adding " .. full_project_dir .. sep .. "?.lua to package.path")
   package.path = full_project_dir .. sep .. "?.lua;" .. package.path
+  print("Adding " .. full_script_dir .. sep .. "?.lua to package.path")
   package.path = full_script_dir .. sep .. "?.lua;" .. package.path
+  print("Adding " .. tooling_dir .. sep .. "?.lua to package.path")
+  package.path = tooling_dir .. sep .. "?.lua;" .. package.path
+  print("Adding " .. lua_dir .. sep .. "?.lua to package.path")
+  package.path = lua_dir .. sep .. "?.lua;" .. package.path
 
   -- Then we change back to the project directory
   lfs.chdir(full_project_dir)
@@ -33,10 +40,8 @@ do
   else
     print("SETUP: ERROR - Library.lua not found in project directory.")
     error("SETUP: ERROR - Library.lua not found in project directory.")
-    os.exit(1)
   end
 end
-
 ---@diagnostic disable: need-check-nil
 require("cli.dump")
 local argparse = require("argparse")

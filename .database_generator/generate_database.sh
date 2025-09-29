@@ -19,11 +19,22 @@ echo "Current directory: $FULL_PATH"
 echo "$LUA is the lua executable"
 
 git_sparse_clone_addon_translations() {
-  # Delete repo if it exists
-  if [ -d "Questie-data" ]; then
-    echo "Removing already existing Questie-data $(pwd)/Questie-data"
-    rm -rf Questie-data
+  local force_fetch=${1:-false}
+
+  # Check if directory exists and skip if not forcing
+  if [ -d "Questie-data" ] && [ "$force_fetch" != "true" ]; then
+    echo "# Questie-data directory already exists, skipping fetch (use force=true to override)"
+    return 0
   fi
+
+  # Delete repo if it exists (either forcing or doesn't exist)
+  if [ -d "Questie-data" ]; then
+    echo "# Force fetch enabled: Removing existing Questie-data $(pwd)/Questie-data"
+    rm -rf Questie-data
+  else
+    echo "# Questie-data directory not found, fetching fresh copy"
+  fi
+  git config --global --add safe.directory /QuestieDB/.database_generator/Questie-data
 
   # Cloning an empty repo
   git clone -n --depth=1 --filter=tree:0 -b master https://github.com/Questie/Questie.git Questie-data
@@ -54,7 +65,7 @@ LAST_PATH="$(pwd)"
 cd $FULL_PATH
 
 # Make sure the Questie-data directory is there
-git_sparse_clone_addon_translations
+git_sparse_clone_addon_translations $2
 
 echo "$(pwd)"
 
