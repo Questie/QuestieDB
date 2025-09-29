@@ -6,15 +6,18 @@ local LibQuestieDB = select(2, ...)
 local Corrections = LibQuestieDB.Corrections
 local Meta = LibQuestieDB.Meta
 local QuestMeta = Meta.QuestMeta
+local Expansions = LibQuestieDB.Expansions
 
 ---@class QuestFixesEra
 local QuestFixes = {}
 
 C_Timer.After(0, function()
-  Corrections.RegisterCorrectionStatic("quest",
-                                       "QuestFixes-Reputation-Era",
-                                       QuestFixes.LoadQuestReputationFixes,
-                                       Corrections.EraBaseStaticOrder + 9)
+  if Expansions.Current < Expansions.Cata then
+    Corrections.RegisterCorrectionStatic("quest",
+                                         "QuestFixes-Reputation-Era",
+                                         QuestFixes.LoadQuestReputationFixes,
+                                         Corrections.EraBaseStaticOrder + 9)
+  end
 
   -- Clear the table to save memory
   QuestFixes = wipe(QuestFixes)

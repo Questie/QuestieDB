@@ -1,0 +1,7 @@
+beautifulsoup4
+lxml
+python-dotenv
+requests
+# requests-ratelimiter
+pyyaml
+google-genai

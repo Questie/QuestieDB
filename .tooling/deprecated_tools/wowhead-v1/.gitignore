@@ -1,0 +1,13 @@
+venv
+.env
+.cache
+.output
+Questie
+*.txt
+*.json
+*.yaml
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+!requirements.txt

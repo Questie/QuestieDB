@@ -1,6 +1,9 @@
 line-length = 200
 indent-width = 2
 
+[lint]
+ignore = ["F541"] # F541: f-string is missing placeholders
+
 [format]
 quote-style = "double"
 indent-style = "space"
