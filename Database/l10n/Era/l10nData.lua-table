@@ -9885,7 +9885,7 @@
 [823] = {
   nil,
   { -- Npc
-    'Cabo Vilém‡Заместитель судьи Виллем‡Deputy Willem‡부관 윌렘‡Ayudante del alguacil Willem‡Ayudante del alguacil Willem‡Adjoint Willem‡维里副队长‡維里副隊長',
+    'Cabo Vilém‡Заместитель судьи Виллем‡Deputy Willem‡부관 윌렘‡Ayudante del alguacil Willem‡Ayudante de alguacil Willem‡Adjoint Willem‡维里副队长‡維里副隊長',
     nil,
   },
   nil,
@@ -18375,7 +18375,7 @@
   -- Item
   '‡Покоробленный кожаный жилет‡Verformte Lederweste‡주름진 가죽 조끼‡Jubón de cuero combado‡Jubón de cuero combado‡Gilet déformé en cuir‡皱皮外衣‡皺皮外衣',
   { -- Npc
-    'Carniceiro Roto‡Косматый падальщик‡Struppiger Aasfresser‡승냥이‡Carroñero andrajoso‡Carroñero andrajoso‡Charognard pouilleux‡蓬毛食腐狼‡蓬毛食腐狼',
+    'Carniceiro Roto‡Косматый падальщик‡Struppiger Aasfresser‡승냥이‡Carroñero andrajoso‡Carroñero pulgoso‡Charognard pouilleux‡蓬毛食腐狼‡蓬毛食腐狼',
     nil,
   },
   nil,
@@ -19730,7 +19730,7 @@
 [1661] = {
   nil,
   { -- Npc
-    'Noviça Elvira‡Ученица Элрет‡Novize Elreth‡수련사제 엘레스‡Novicio Elreth‡Novicio Elreth‡Novice Elreth‡新兵艾尔雷斯‡新兵艾爾雷斯',
+    'Noviça Elvira‡Ученица Элрет‡Novize Elreth‡수련사제 엘레스‡Novicio Elreth‡Novicia Elreth‡Novice Elreth‡新兵艾尔雷斯‡新兵艾爾雷斯',
     nil,
   },
   -- Object
@@ -20842,7 +20842,7 @@
   -- Item
   '‡Клепаный кольчужный нагрудник‡Gekettelte Weste‡고리 사슬 조끼‡Jubón de eslabones‡Jubón de eslabones‡Lorica rivetée‡链甲外衣‡環接鍊甲外衣',
   { -- Npc
-    'Olho de Verme‡Червеглаз‡Madenauge‡구더기눈‡Ojo de gusano‡Ojo de gusano‡Œil-de-ver‡蛆眼‡蛆眼',
+    'Olho de Verme‡Червеглаз‡Madenauge‡구더기눈‡Ojo de gusano‡Ojo de cresa‡Œil-de-ver‡蛆眼‡蛆眼',
     nil,
   },
   -- Object
@@ -24871,7 +24871,7 @@
   -- Item
   '‡Потрескавшиеся кожаные сапоги‡Gesprungene Lederstiefel‡갈라진 가죽 장화‡Botas de cuero rajado‡Botas de cuero rajado‡Bottes en cuir craquelé‡破损的皮靴‡破損的皮靴',
   { -- Npc
-    'Clérigo das Trevas Duesten‡Темный священник Дьюстен‡Dunkler Kleriker Duesten‡어둠의사제 듀스텐‡Clérico oscuro Duesten‡Clérico oscuro Duesten‡Sombre clerc Duesten‡黑暗牧师杜斯滕‡黑暗教士杜斯滕',
+    'Clérigo das Trevas Duesten‡Темный священник Дьюстен‡Dunkler Kleriker Duesten‡어둠의사제 듀스텐‡Clérico oscuro Duesten‡Clérigo oscuro Duesten‡Sombre clerc Duesten‡黑暗牧师杜斯滕‡黑暗教士杜斯滕',
     'Treinamento de Sacerdotes‡Наставник жрецов‡Priesterlehrer‡상급 사제‡Instructor de sacerdotes‡Instructor de sacerdotes‡Maître des prêtres‡牧师训练师‡牧師訓練師',
   },
   -- Object
@@ -24933,7 +24933,7 @@
   -- Item
   '‡Большой круглый щит‡Großer runder Schild‡대형 원형 방패‡Escudo redondo grande‡Escudo redondo grande‡Grand bouclier rond‡大圆盾‡大圓盾',
   { -- Npc
-    'Clérigo das Trevas Beryl‡Темный священник Берил‡Dunkler Kleriker Beryl‡어둠의사제 베릴‡Clérico oscuro Beryl‡Clérico oscuro Beryl‡Sombre clerc Beryl‡黑暗牧师贝里尔‡黑暗教士貝里爾',
+    'Clérigo das Trevas Beryl‡Темный священник Берил‡Dunkler Kleriker Beryl‡어둠의사제 베릴‡Clérico oscuro Beryl‡Clérigo oscuro Beryl‡Sombre clerc Beryl‡黑暗牧师贝里尔‡黑暗教士貝里爾',
     'Treinamento de Sacerdotes‡Наставник жрецов‡Priesterlehrer‡상급 사제‡Instructor de sacerdotes‡Instructor de sacerdotes‡Maître des prêtres‡牧师训练师‡牧師訓練師',
   },
   -- Object
@@ -35577,7 +35577,7 @@
   -- Item
   '‡‡‡법전: 내면의 열정 III‡‡‡‡‡聖典:心靈之火 III',
   { -- Npc
-    'Escorpídeo Operário‡Рабочий скорпид‡Skorpidarbeiter‡일꾼전갈‡Trabajador escórpido‡Trabajador escórpido‡Scorpide ouvrier‡蝎子‡工蠍',
+    'Escorpídeo Operário‡Рабочий скорпид‡Skorpidarbeiter‡일꾼전갈‡Trabajador escórpido‡Escórpido obrero‡Scorpide ouvrier‡蝎子‡工蠍',
     nil,
   },
   nil,
@@ -67078,7 +67078,7 @@
   -- Item
   '‡Рубашка рекрута‡Rekrutenhemd‡견습전사용 셔츠‡Camisa de recluta‡Camisa de recluta‡Chemise de recrue‡新兵衬衣‡新兵襯衣',
   { -- Npc
-    'Iago Chavenegra‡Лаго Злобноверт‡Lago Blackwrench‡라고 블랙렌치‡Llago Llavenegra‡Llago Llavenegra‡Lago Blackwrench‡拉戈·黑钳‡拉戈·黑鉗',
+    'Iago Chavenegra‡Лаго Злобноверт‡Lago Blackwrench‡라고 블랙렌치‡Llago Llavenegra‡Yago Llavenegra‡Lago Blackwrench‡拉戈·黑钳‡拉戈·黑鉗',
     nil,
   },
   nil,
@@ -80529,7 +80529,7 @@
   },
   nil,
   { -- Quest
-    'Conquistando a confiança‡Завоевать благосклонность‡Erlangte Anerkennung‡인정받기‡Conseguir aceptación‡Conseguir más aceptación‡Se faire accepter‡获得信任‡獲得信任',
+    'Conquistando a confiança‡Завоевать благосклонность‡Erlangte Anerkennung‡인정받기‡Ganarse el respeto‡Conseguir aceptación‡Se faire accepter‡获得信任‡獲得信任',
     nil,
     nil,
   }
@@ -117171,7 +117171,7 @@
   '‡Ониксовое колье‡Onyxhalsreif‡마노 목걸이‡Gargantilla de ónice‡Gargantilla de ónice‡Sautoir d\'onyx‡玉髓颈圈‡玉髓頸飾',
   { -- Npc
     'Lui\'Mala‡Люи\'Мала‡Lui\'Mala‡루이말라‡Lui\'Mala‡Lui\'Mala‡Lui\'Mala‡鲁伊马拉‡魯伊馬拉',
-    'Pescadora‡Рыбак‡Anglerin‡낚시꾼‡Pescador‡Pescador‡Pêcheur‡渔夫‡釣魚訓練師',
+    'Pescadora‡Рыбак‡Anglerin‡낚시꾼‡Pescador‡Pescadora‡Pêcheur‡渔夫‡釣魚訓練師',
   },
   nil,
   nil
@@ -131435,7 +131435,7 @@
   -- Item
   '‡‡‡내구도 시험용 지팡이‡‡‡‡‡堅耐之杖',
   { -- Npc
-    'Lorde Supremo Runthak‡Властитель Рунтак‡Oberanführer Runthak‡대군주 룬탁‡Señor Supremo Runthak‡Señor Supremo Runthak‡Seigneur Runthak‡伦萨克‡倫薩克霸主',
+    'Lorde Supremo Runthak‡Властитель Рунтак‡Oberanführer Runthak‡대군주 룬탁‡Señor Supremo Runthak‡Señor supremo Runthak‡Seigneur Runthak‡伦萨克‡倫薩克霸主',
     nil,
   },
   nil,
@@ -133519,7 +133519,7 @@
   -- Item
   '‡Бригантина Костяного Стража‡Brustplatte des Totenwächters‡죽음의 뼈흉갑‡Peto de hueso de muerto‡Peto de hueso de muerto‡Pansière des ossements‡亡骨胸甲‡亡骨胸鎧',
   { -- Npc
-    'Mestre Ferreiro Queimatar‡Мастер-кузнец Гориврат‡Meisterschmied Burninate‡수석대장장이 버니네이트‡Herrero maestro Burninate‡Herrero maestro Burninate‡Maître forgeron Burninate‡大铁匠博恩奈特‡大鐵匠博恩奈特',
+    'Mestre Ferreiro Queimatar‡Мастер-кузнец Гориврат‡Meisterschmied Burninate‡수석대장장이 버니네이트‡Maestro herrero Cremación‡Herrero maestro Burninate‡Maître forgeron Burninate‡大铁匠博恩奈特‡大鐵匠博恩奈特',
     'A Irmandade do Tório‡Братство Тория‡Die Thoriumbruderschaft‡토륨 대장조합‡La Hermandad del Torio‡La Hermandad del Torio‡La Confrérie du thorium‡瑟银兄弟会‡瑟銀兄弟會',
   },
   nil,
@@ -137907,7 +137907,7 @@
   -- Item
   '‡Могучий полный шлем‡Potenter Helm‡강력 투구‡Casco pujante‡Casco pujante‡Casque tout-puissant‡权力头盔‡高效盔帽',
   { -- Npc
-    'Khiran Chifre Curto‡Кхур Острый Рог‡Khur Hornstriker‡쿠르 혼스트라이커‡Khur Golpicórneo‡Khur Golpicórneo‡Khur Hornstriker‡库尔·锐角‡庫爾·銳角',
+    'Khiran Chifre Curto‡Кхур Острый Рог‡Khur Hornstriker‡쿠르 혼스트라이커‡Khur Golpicórneo‡Khur Cornada‡Khur Hornstriker‡库尔·锐角‡庫爾·銳角',
     'Reagentes‡Реагенты‡Reagenzienverkäufer‡마법 재료 상인‡Vendedor de componentes‡Vendedor de componentes‡Marchand de composants‡施法材料商‡施法材料',
   },
   nil,
@@ -137948,7 +137948,7 @@
   '‡Стеганый преторианский доспех‡Gefütterte Prätorianerrüstung‡근위병 솜댄갑옷‡Armadura acolchada pretoriana‡Armadura acolchada pretoriana‡Gambison prétorien‡禁卫钉甲‡禁衛墊甲',
   { -- Npc
     'Mishta‡Мишта‡Mishta‡미쉬타‡Mishta‡Mishta‡Mishta‡米什塔‡米希塔',
-    'Comerciante de Mercadorias Gerais‡Хозяйственные товары‡Gemischt- und Handwerkswarenverkäufer‡직업용품 상인‡Vendedor de víveres‡Vendedor de víveres‡Vendeur de fournitures générales‡杂货商‡貿易供應商',
+    'Comerciante de Mercadorias Gerais‡Хозяйственные товары‡Gemischt- und Handwerkswarenverkäufer‡직업용품 상인‡Vendedor de víveres‡Vendedora de objetos comerciales generales‡Vendeur de fournitures générales‡杂货商‡貿易供應商',
   },
   nil,
   nil
@@ -140196,7 +140196,7 @@
   '‡Кожа боевого медведя‡Kriegsbärenleder‡전투곰 가죽‡Cuero de oso de guerra‡Cuero de oso de guerra‡Cuir d\'ours de guerre‡战熊皮‡戰熊皮',
   { -- Npc
     'Kania‡Кания‡Kania‡케니아‡Kania‡Kania‡Kania‡卡妮亚‡卡妮亞',
-    'Suprimentos de Encantamento‡Товары для зачаровывателей‡Verzauberkunstbedarfslieferantin‡마법부여용품 상인‡Proveedor de objetos de encantamiento‡Proveedor de objetos de encantamiento‡Fournitures d\'enchanteur‡附魔材料商‡附魔供應商',
+    'Suprimentos de Encantamento‡Товары для зачаровывателей‡Verzauberkunstbedarfslieferantin‡마법부여용품 상인‡Proveedor de objetos de encantamiento‡Suministros de encantamiento‡Fournitures d\'enchanteur‡附魔材料商‡附魔供應商',
   },
   nil,
   nil

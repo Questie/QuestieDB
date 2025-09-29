@@ -152,3 +152,12 @@ local QuestIconEnum = {
 --- flattened objective = metadata + data
 --- /*typeKey*/, /*subIndex*/, /*objective data*/
 ---@alias ObjectiveTriple { [1]: integer, [2]:integer, [3]: RawObjective }
+
+--------------------------------------------------------------------------------
+-- Breadcrumb Types
+
+--- Single quest ID for breadcrumb target
+---@alias BreadcrumbForQuestId QuestId
+
+--- Array of quest IDs that are breadcrumbs leading to this quest
+---@alias BreadcrumbQuestIds QuestId[]
