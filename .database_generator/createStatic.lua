@@ -173,32 +173,26 @@ function DumpDatabase(questiedb_version, questie_version, debug)
 
   -- ! Export L10n data in both formats
   print(c("\nDumping L10n overrides", "yellow"))
-  ---@type string
-  local l10nDataString = l10n_loader.DumpL10nData(Meta.L10nMeta, dbData.entityTypes, l10nOverride)
-  -- Write L10n data to l10nData.lua-table for debugging
-  local l10nDumpFile = io.open(f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedQuestieDBVersion), "w")
-  if l10nDumpFile and l10nDataString then
-    l10nDumpFile:write(l10nDataString)
-    l10nDumpFile:close()
-    print("Dumped l10n data to " .. f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedQuestieDBVersion))
-  else
-    print("Failed to open file for writing: " .. f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedQuestieDBVersion))
+  local l10nDumpStrings = l10n_loader.DumpL10nDataByType(Meta.L10nMeta, dbData.entityTypes, l10nOverride)
+  local l10nPathsByType = {}
+  for _, entityType in ipairs(dbData.entityTypes) do
+    local dumpString = l10nDumpStrings[entityType]
+    local l10nPath = f("%s/l10n/%s/l10n%sData.lua-table", basePath, capitalizedQuestieDBVersion, entityType)
+    l10nPathsByType[entityType] = l10nPath
+
+    local l10nDumpFile = io.open(l10nPath, "w")
+    if l10nDumpFile and dumpString then
+      l10nDumpFile:write(dumpString)
+      l10nDumpFile:close()
+      print("Dumped l10n data to " .. l10nPath)
+    else
+      print("Failed to open file for writing: " .. l10nPath)
+    end
   end
 
-  -- Reload L10n data from file to ensure consistency
-  local path = f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedQuestieDBVersion)
-  print("Reading L10n data from " .. path)
-  -- local l10nFile = io.open(path, "r")
-  -- assert(l10nFile, "Failed to open file for reading " .. path)
-  -- l10nDataString = l10nFile:read("*a")
-  -- l10nFile:close()
-  -- local l10nData, errormsg = loadstring("return " .. l10nDataString)
-  -- if not l10nData then
-  --   print("Error loading L10n data: " .. errormsg)
-  --   error("Failed to load L10n data from file: " .. tostring(errormsg))
-  --   return
-  -- end
-  local l10nData = l10n_loader.LoadL10n(path)
+  -- Reload L10n data from files to ensure consistency
+  print("Reading L10n data from split dumps")
+  local l10nData = l10n_loader.LoadL10nByType(l10nPathsByType, Meta.L10nMeta)
 
   -- Generate HTML format for addon consumption
   GenerateHtmlForEntityType(l10nData, Meta.L10nMeta, "l10n", questiedb_version, nil, nil, debug)
