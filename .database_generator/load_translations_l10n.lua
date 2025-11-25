@@ -376,8 +376,10 @@ function export.DumpL10nDataByType(L10nMeta, entityTypes, l10nData, maxIdsPerSli
     local indentation = "  "
 
     local sortedIds = {}
-    for id in pairs(l10nData) do
-      tInsert(sortedIds, id)
+    for id, entryData in pairs(l10nData) do
+      if entryData and entryData[entityTypeLower] then
+        tInsert(sortedIds, id)
+      end
     end
     table.sort(sortedIds)
 
@@ -385,27 +387,28 @@ function export.DumpL10nDataByType(L10nMeta, entityTypes, l10nData, maxIdsPerSli
     for _, id in ipairs(sortedIds) do
       local entryData = l10nData[id]
       local typeData = entryData and entryData[entityTypeLower] or nil
+      if typeData ~= nil then
+        tInsert(outputLines, string.format("[%d] = {\n", id))
+        tInsert(outputLines, dumpSingleEntityType(entityTypeLower, typeData, L10nMeta, localeCount, emptyValue, indentation, false))
 
-      tInsert(outputLines, string.format("[%d] = {\n", id))
-      tInsert(outputLines, dumpSingleEntityType(entityTypeLower, typeData, L10nMeta, localeCount, emptyValue, indentation, false))
+        local lastLine = outputLines[#outputLines]
+        if string.sub(lastLine, -2) == ",\n" then
+          outputLines[#outputLines] = string.sub(lastLine, 1, -3) .. "\n"
+        end
 
-      local lastLine = outputLines[#outputLines]
-      if string.sub(lastLine, -2) == ",\n" then
-        outputLines[#outputLines] = string.sub(lastLine, 1, -3) .. "\n"
-      end
+        tInsert(outputLines, "},\n")
 
-      tInsert(outputLines, "},\n")
+        idsInCurrentSlice = idsInCurrentSlice + 1
+        if idsInCurrentSlice >= maxIdsPerSlice then
+          local ll = outputLines[#outputLines]
+          if ll:sub(-2) == ",\n" then outputLines[#outputLines] = ll:sub(1, -3) .. "\n" end
 
-      idsInCurrentSlice = idsInCurrentSlice + 1
-      if idsInCurrentSlice >= maxIdsPerSlice then
-        local ll = outputLines[#outputLines]
-        if ll:sub(-2) == ",\n" then outputLines[#outputLines] = ll:sub(1, -3) .. "\n" end
+          tInsert(outputLines, "}\n")
+          tInsert(outputLines, "-- break\n")
+          tInsert(outputLines, "{\n")
 
-        tInsert(outputLines, "}\n")
-        tInsert(outputLines, "-- break\n")
-        tInsert(outputLines, "{\n")
-
-        idsInCurrentSlice = 0
+          idsInCurrentSlice = 0
+        end
       end
     end
 
