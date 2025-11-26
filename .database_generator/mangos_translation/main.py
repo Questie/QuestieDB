@@ -66,7 +66,7 @@ def import_sql_file(conn, file_path):
     exit(1)
 
 
-def process(locales, version, datasources={"lightshope": False}):
+def process(locales, version, datasources={"emit": "inserts", "lightshope": False}):
   """Process the locales and version"""
   db_file = f"{version}.db"
   os.remove(db_file) if os.path.exists(db_file) else None
@@ -144,8 +144,10 @@ def process(locales, version, datasources={"lightshope": False}):
           if extracted:
             # Convert to SQLite and import
             # converted = convert_lightshope_sqlite(extracted)
-            # converted = convert_lightshope_sqlite_updates_only(extracted)
-            converted = convert_lightshope_sqlite_inserts_only(extracted)
+            if datasources["emit"] == "updates":
+              converted = convert_lightshope_sqlite_updates_only(extracted)
+            else:
+              converted = convert_lightshope_sqlite_inserts_only(extracted)
             for path in converted:
               import_sql_file(connection, path)
           else:
@@ -198,7 +200,10 @@ if __name__ == "__main__":
       args=(
         locales,
         version,
-        {"lightshope": False},
+        {
+          "emit": "inserts",
+          "lightshope": False,
+        },
       ),
       daemon=True,
     )
