@@ -36,8 +36,8 @@ git_sparse_clone_addon_translations() {
   fi
   git config --global --add safe.directory /QuestieDB/.database_generator/Questie-data
 
-  # Cloning an empty repo
-  git clone -n --depth=1 --filter=tree:0 -b master https://github.com/Questie/Questie.git Questie-data
+  # Shallow, partial clone with no tags to minimize download size
+  git clone --filter=blob:none --sparse --no-checkout --no-tags --depth=1 --single-branch -b master https://github.com/Questie/Questie.git Questie-data
 
   # # Cd into the git directory
   cd Questie-data || exit 1
