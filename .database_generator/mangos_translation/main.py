@@ -9,6 +9,7 @@ from convertSQL import convert_file, convert_locale_file
 from download import download_loadDB, download_alterDB, download_locales
 from export import export_item, export_gameobject, export_creature, export_quest, generate_xml_import
 from lightshope import download_lightshope, extract_lightshope_locales, convert_lightshope_sqlite_inserts_only, convert_lightshope_sqlite_updates_only
+from lightshope_merge import merge_lightshope
 
 
 def create_connection(db_file):
@@ -144,12 +145,21 @@ def process(locales, version, datasources={"emit": "inserts", "lightshope": Fals
           if extracted:
             # Convert to SQLite and import
             # converted = convert_lightshope_sqlite(extracted)
-            if datasources["emit"] == "updates":
-              converted = convert_lightshope_sqlite_updates_only(extracted)
-            else:
-              converted = convert_lightshope_sqlite_inserts_only(extracted)
-            for path in converted:
-              import_sql_file(connection, path)
+            # if datasources["emit"] == "updates":
+            #   converted = convert_lightshope_sqlite_updates_only(extracted)
+            # else:
+            converted = convert_lightshope_sqlite_inserts_only(extracted)
+            print(len(converted), "Lightshope locale SQL dumps converted.")
+            merge_lightshope(
+              os.path.join("locales", "world_full_14_june_2021", "lightshope_locales"),
+              db_file,
+              insert=(datasources["emit"] == "inserts"),
+              updates=(datasources["emit"] == "updates"),
+              target_conn=connection,
+            )
+
+            # for path in converted:
+            #   import_sql_file(connection, path)
           else:
             print("No Lightshope SQL dump found for extraction.")
         except (zipfile.BadZipFile, OSError) as exc:
@@ -188,9 +198,9 @@ if __name__ == "__main__":
   ]
   versions = [
     "zero",
-    "one",
-    "two",
-    "three",
+    # "one",
+    # "two",
+    # "three",
   ]  # four is mop but does not have locales
   threads = []
   for version in versions:
@@ -202,7 +212,7 @@ if __name__ == "__main__":
         version,
         {
           "emit": "inserts",
-          "lightshope": False,
+          "lightshope": True,
         },
       ),
       daemon=True,
@@ -216,6 +226,6 @@ if __name__ == "__main__":
 
   print("Removing locales directory...")
   # Remove the locales directory
-  shutil.rmtree("locales", ignore_errors=True)
+  # shutil.rmtree("locales", ignore_errors=True)
 
   print("All threads have finished processing.")
