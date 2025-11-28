@@ -263,7 +263,7 @@ end
 ---@param dataKeys ItemDBKeys|QuestDBKeys|NpcDBKeys|ObjectDBKeys @ Contains name of data as keys and their index as value
 ---@param dumpFunctions table<string, function> @ Contains the functions that will be used to dump the data
 ---@param combineFunc function? @ Function that will be used to combine the data, if nil the data will not be combined
----@return string,table<number, table<number, string>>,table<number, table<number, any>> @ Returns the dumped data as a string and a table of the dumped data
+---@return string,table<number, string>,function @ Returns the dumped data as a string, string table, and a lazy-loading function to parse the data
 local function dumpData(tbl, dataKeys, dumpFunctions, combineFunc)
   -- sort tbl by key
   local sortedKeys = {}
@@ -279,8 +279,10 @@ local function dumpData(tbl, dataKeys, dumpFunctions, combineFunc)
     nrDataKeys = nrDataKeys + 1
   end
 
+  local tConcat = table.concat
+  local gsub = string.gsub
+
   local allResultsTbl = {}
-  local allResultsDataTbl = {}
   local allResults = { "{\n", }
   for sortKeyIndex = 1, #sortedKeys do
     local sortKey = sortedKeys[sortKeyIndex]
@@ -328,19 +330,15 @@ local function dumpData(tbl, dataKeys, dumpFunctions, combineFunc)
     -- DevTools_Dump({resulttable})
 
     -- Concat the data into a string
-    local data = table.concat(resulttable, ",")
+    local data = tConcat(resulttable, ",")
 
     -- Save the data to a table
     allResultsTbl[sortKey] = data
-    -- Call me lazy but it is easier to load the string into a table
-    -- It is a bit slower but keeps the earlier code cleaner
-    allResultsDataTbl[sortKey] = loadstring("return {" .. data .. "}")()
-
 
     -- Remove trailing nil
     repeat
       local count = 0
-      data, count = string.gsub(data, ",nil$", "")
+      data, count = gsub(data, ",nil$", "")
     until count == 0
 
     -- Add the data to the result
@@ -350,7 +348,16 @@ local function dumpData(tbl, dataKeys, dumpFunctions, combineFunc)
   end
   allResults[#allResults + 1] = "}"
 
-  return table.concat(allResults), allResultsTbl, allResultsDataTbl
+  -- Return a function that lazily parses allResultsTbl on-demand
+  local function parseDataTbl()
+    local parsedTbl = {}
+    for sortKey, data in pairs(allResultsTbl) do
+      parsedTbl[sortKey] = loadstring("return {" .. data .. "}")()
+    end
+    return parsedTbl
+  end
+
+  return table.concat(allResults), allResultsTbl, parseDataTbl
 end
 
 -- Color helper function for terminal output formatting
