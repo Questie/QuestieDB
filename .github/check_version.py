@@ -24,31 +24,49 @@ headers = {}
 if GITHUB_TOKEN:
   headers["Authorization"] = f"token {GITHUB_TOKEN}"
 
-# Fetch the latest (non-prerelease) release from GitHub using the REST API
-resp = requests.get(
-  f"https://api.github.com/repos/{REPO}/releases/latest",
-  headers=headers,
-  timeout=10,
-)
-if resp.status_code == 404:
-  # No releases yet – treat as version 0.0.0
-  latest_tag = "0.0.0"
-elif resp.ok:
-  latest_tag = resp.json().get("tag_name", "0.0.0")
-else:
-  print(f"GitHub API error ({resp.status_code}): {resp.text}")
-  sys.exit(1)
-
 
 def parse_version(version):
   """
   Parse a version string (e.g., '1.2.3' or 'v1.2.3-abcdef') into a tuple of integers (1, 2, 3).
   Strips leading 'v' and any suffix after a dash.
+  Returns None if parsing fails.
   """
   print("Parse String:", version)
-  version = version.lstrip("v").split("-")[0]
-  version = version.strip('"')  # Remove any surrounding quotes
-  return tuple(int(x) for x in version.split("."))
+  try:
+    version = version.lstrip("v").split("-")[0]
+    version = version.strip('"')  # Remove any surrounding quotes
+    return tuple(int(x) for x in version.split("."))
+  except ValueError:
+    return None
+
+
+# Fetch the releases from GitHub using the REST API
+# We fetch the list of releases to find the latest one that has a valid semantic version tag.
+resp = requests.get(
+  f"https://api.github.com/repos/{REPO}/releases",
+  headers=headers,
+  timeout=10,
+)
+
+latest_tag = "0.0.0"
+latest_version_tuple = (0, 0, 0)
+
+if resp.status_code == 404:
+  # No releases yet – treat as version 0.0.0
+  pass
+elif resp.ok:
+  releases = resp.json()
+  if isinstance(releases, list):
+    for release in releases:
+      tag = release.get("tag_name", "")
+      parsed = parse_version(tag)
+      if parsed:
+        latest_tag = tag
+        latest_version_tuple = parsed
+        break
+else:
+  print(f"GitHub API error ({resp.status_code}): {resp.text}")
+  sys.exit(1)
 
 
 # Use the new functions to get and check all TOC versions
@@ -62,11 +80,12 @@ except Exception as exc:
   print(f"Failed to get version from TOC files: {exc}")
   sys.exit(1)
 
-# Parse both the latest release version and the current version
+# Parse the current version
 try:
-  latest_version_tuple = parse_version(latest_tag)
   print("Latest version:", latest_version_tuple)
   current_version_tuple = parse_version(current_version)
+  if current_version_tuple is None:
+    raise ValueError(f"Current version '{current_version}' is invalid")
   print("Current version:", current_version_tuple)
 except Exception as e:
   print(f"Error parsing versions: {e}")
