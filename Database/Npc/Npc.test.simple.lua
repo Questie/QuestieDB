@@ -32,7 +32,7 @@ function Npc.FastTest()
   assert(type(minLevel) == "number" and minLevel > 18, "[Npc.test.simple] minLevel should be larger than 18")
 
   local maxLevel = Npc.maxLevel(id)
-  assert(type(maxLevel) == "number" and maxLevel > 20, "[Npc.test.simple] maxLevel should be larger than 25")
+  assert(type(maxLevel) == "number" and maxLevel > 20, "[Npc.test.simple] maxLevel should be larger than 20")
 
   local rank = Npc.rank(id)
   assert(type(rank) == "number" and rank == 0, "[Npc.test.simple] rank should be 0")
