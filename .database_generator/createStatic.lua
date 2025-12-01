@@ -194,12 +194,15 @@ function DumpDatabase(questiedb_version, questie_version, debug)
     l10nPathsByType[entityType] = l10nPath
 
     local l10nDumpFile = io.open(l10nPath, "w")
-    if l10nDumpFile and dumpString then
+    if not l10nDumpFile then
+      print("Failed to open file for writing: " .. l10nPath)
+    elseif not dumpString then
+      l10nDumpFile:close()
+      print("No dump data for entity type: " .. entityType)
+    else
       l10nDumpFile:write(dumpString)
       l10nDumpFile:close()
       print("Dumped l10n data to " .. l10nPath)
-    else
-      print("Failed to open file for writing: " .. l10nPath)
     end
   end
 
