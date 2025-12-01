@@ -3,10 +3,11 @@
 local LibQuestieDB = select(2, ...)
 
 local l10n = LibQuestieDB.l10n
+local Meta = LibQuestieDB.Meta
 
 ---@class (exact) Item:DatabaseType
 ---@class (exact) Item:ItemFunctions
-local Item = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Item, "Item", LibQuestieDB.Meta.ItemMeta.itemKeys)
+local Item = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Item, "Item", Meta.ItemMeta.itemKeys)
 GItem = Item
 
 do
@@ -117,6 +118,7 @@ do
     publicItem.AddOverrideData = Item.AddOverrideData
     publicItem.ClearOverrideData = Item.ClearOverrideData
     publicItem.GetAllIds = Item.GetAllIds
+    publicItem.ItemDBKeys = Meta.CloneKeys(Meta.ItemMeta.itemKeys)
   end
 
   exportFunctions()

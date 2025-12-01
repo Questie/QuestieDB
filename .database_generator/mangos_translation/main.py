@@ -1,9 +1,15 @@
 import os
+import shutil
 import sqlite3
-from convertSQL import convert_file, convert_locale_file, convert_locale_string
+import threading
+
+import zipfile
+
+from convertSQL import convert_file, convert_locale_file
 from download import download_loadDB, download_alterDB, download_locales
 from export import export_item, export_gameobject, export_creature, export_quest, generate_xml_import
-import threading
+from lightshope import download_lightshope, extract_lightshope_locales, convert_lightshope_sqlite_inserts_only, convert_lightshope_sqlite_updates_only
+from lightshope_merge import merge_lightshope
 
 
 def create_connection(db_file):
@@ -49,7 +55,7 @@ def column_exists(connection, table_name, column_name):
 
 def import_sql_file(conn, file_path):
   """Import SQL file into the database"""
-  with open(file_path, "r", encoding="utf-8") as file:
+  with open(file_path, "r", encoding="utf-8", newline="\n") as file:
     sql_script = file.read()
   try:
     cursor = conn.cursor()
@@ -61,7 +67,7 @@ def import_sql_file(conn, file_path):
     exit(1)
 
 
-def process(locales, version):
+def process(locales, version, datasources={"emit": "inserts", "lightshope": False}):
   """Process the locales and version"""
   db_file = f"{version}.db"
   os.remove(db_file) if os.path.exists(db_file) else None
@@ -71,7 +77,7 @@ def process(locales, version):
     # Set PRAGMA to increase write speed
     cursor = connection.cursor()
     cursor.execute("PRAGMA synchronous = OFF")
-    # cursor.execute("PRAGMA journal_mode = OFF")
+    cursor.execute("PRAGMA journal_mode = MEMORY")
     cursor.execute("PRAGMA temp_store = MEMORY")
     cursor.execute("PRAGMA cache_size = 1000000")
     cursor.execute("PRAGMA locking_mode = EXCLUSIVE")
@@ -81,28 +87,21 @@ def process(locales, version):
     connection.commit()
 
     # Check if the locales directory exists
-    if not os.path.exists("locales"):
-      os.makedirs("locales")
+    os.makedirs("locales", exist_ok=True)
     # Check if the version directory exists
-    if not os.path.exists(f"locales/{version}"):
-      os.makedirs(f"locales/{version}")
-    else:
-      # Remove the version directory and its contents and recreate it
-      for root, dirs, files in os.walk(f"locales/{version}", topdown=False):
-        for name in files:
-          os.remove(os.path.join(root, name))
-        for name in dirs:
-          os.rmdir(os.path.join(root, name))
+    if os.path.exists(f"locales/{version}"):
+      shutil.rmtree(f"locales/{version}", ignore_errors=True)
+    os.makedirs(f"locales/{version}", exist_ok=True)
 
     loaddb_file = f"locales/{version}/mangos{version}LoadDB.sql"
-    with open(loaddb_file, "w", encoding="utf-8") as file:
+    with open(loaddb_file, "w", encoding="utf-8", newline="\n") as file:
       create = download_loadDB(version)
       file.write(create)
     convert_file(loaddb_file, loaddb_file)
     import_sql_file(connection, loaddb_file)
 
     alterdb_file = f"locales/{version}/mangos{version}AlterDB.sql"
-    with open(alterdb_file, "w", encoding="utf-8") as file:
+    with open(alterdb_file, "w", encoding="utf-8", newline="\n") as file:
       alter = download_alterDB(version)
       file.write(alter)
     convert_file(alterdb_file, alterdb_file)
@@ -111,7 +110,7 @@ def process(locales, version):
     # This is a workaround for the fact that the ALTER TABLE statement does not support adding multiple columns in one statement
     # Append the ALTER TABLE statement to the file
     if not column_exists(connection, "locales_quest", "CompletedText_loc9"):
-      with open(alterdb_file, "a", encoding="utf-8") as file:
+      with open(alterdb_file, "a", encoding="utf-8", newline="\n") as file:
         file.write("ALTER TABLE locales_quest ADD COLUMN CompletedText_loc9 TEXT ;\n")
 
     import_sql_file(connection, alterdb_file)
@@ -120,18 +119,51 @@ def process(locales, version):
     download_locales(locales, version, f"locales/{version}")
     # Convert and import locales
     # Recursively get all files in the locales directory
-    locales_files = []
     for locale in locales:
       locale_dir = os.path.join(f"locales/{version}", locale)
-      if os.path.exists(locale_dir):
-        for root, dirs, files in os.walk(locale_dir):
-          for file in files:
-            if file.endswith(".sql"):
-              locales_files.append(os.path.join(root, file))
-    for file in locales_files:
-      convert_locale_file(file, file)
-      import_sql_file(connection, file)
+      if not os.path.exists(locale_dir):
+        continue
+      for root, dirs, files in os.walk(locale_dir):
+        for file in files:
+          if not file.endswith(".sql"):
+            continue
+          path = os.path.join(root, file)
+          convert_locale_file(path, path)
+          import_sql_file(connection, path)
     connection.commit()
+
+    if version == "zero" and datasources["lightshope"]:
+      print("Processing Lightshope database...")
+      download_lightshope()
+      zip_path = os.path.join("locales", "world_full_14_june_2021.zip")
+      if os.path.exists(zip_path):
+        try:
+          with zipfile.ZipFile(zip_path, "r") as zip_ref:
+            zip_ref.extractall("locales")
+          print("Unpacked Lightshope database into locales/")
+          extracted = extract_lightshope_locales(os.path.join("locales", "world_full_14_june_2021"))
+          if extracted:
+            # Convert to SQLite and import
+            # converted = convert_lightshope_sqlite(extracted)
+            # if datasources["emit"] == "updates":
+            #   converted = convert_lightshope_sqlite_updates_only(extracted)
+            # else:
+            converted = convert_lightshope_sqlite_inserts_only(extracted)
+            print(len(converted), "Lightshope locale SQL dumps converted.")
+            merge_lightshope(
+              os.path.join("locales", "world_full_14_june_2021", "lightshope_locales"),
+              db_file,
+              insert=(datasources["emit"] == "inserts"),
+              updates=(datasources["emit"] == "updates"),
+              target_conn=connection,
+            )
+
+            # for path in converted:
+            #   import_sql_file(connection, path)
+          else:
+            print("No Lightshope SQL dump found for extraction.")
+        except (zipfile.BadZipFile, OSError) as exc:
+          print(f"Failed to unpack Lightshope zip: {exc}")
 
     # Export all entityType locales
     for locale in locales:
@@ -166,14 +198,25 @@ if __name__ == "__main__":
   ]
   versions = [
     "zero",
-    "one",
-    "two",
-    "three",
+    # "one",
+    # "two",
+    # "three",
   ]  # four is mop but does not have locales
   threads = []
   for version in versions:
     # Process the locales and version
-    thread = threading.Thread(target=process, args=(locales, version), daemon=True)
+    thread = threading.Thread(
+      target=process,
+      args=(
+        locales,
+        version,
+        {
+          "emit": "inserts",
+          "lightshope": True,
+        },
+      ),
+      daemon=True,
+    )
     threads.append(thread)
     thread.start()
 
@@ -183,12 +226,6 @@ if __name__ == "__main__":
 
   print("Removing locales directory...")
   # Remove the locales directory
-  if os.path.exists("locales"):
-    for root, dirs, files in os.walk("locales", topdown=False):
-      for name in files:
-        os.remove(os.path.join(root, name))
-      for name in dirs:
-        os.rmdir(os.path.join(root, name))
-    os.rmdir("locales")
+  # shutil.rmtree("locales", ignore_errors=True)
 
   print("All threads have finished processing.")

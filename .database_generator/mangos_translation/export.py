@@ -1,6 +1,5 @@
 import sqlite3
 import os
-import re
 
 localeToDBIndex = {
   # Title_loc1 	text 	YES 		NULL 	  	Korean localization of Title in the "quest_template" table.
@@ -93,14 +92,14 @@ def generate_xml_import(version: str):
   print(f"Generating XML import file: {xml_filepath}")
 
   # Generate import xml file
-  with open(xml_filepath, "w", encoding="utf-8") as file:
+  with open(xml_filepath, "w", encoding="utf-8", newline="\n") as file:
     file.write(
       '<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">\n'
     )
 
     # Iterate through locale subdirectories
     try:
-      locale_dirs = [d for d in os.listdir(output_dir) if os.path.isdir(os.path.join(output_dir, d))]
+      locale_dirs = sorted(d for d in os.listdir(output_dir) if os.path.isdir(os.path.join(output_dir, d)))
     except FileNotFoundError:
       print(f"Error: Directory not found {output_dir}")
       locale_dirs = []
@@ -108,7 +107,7 @@ def generate_xml_import(version: str):
     for shortLocale in locale_dirs:
       locale_path = os.path.join(output_dir, shortLocale)
       try:
-        lua_files = [f for f in os.listdir(locale_path) if f.endswith(".lua")]
+        lua_files = sorted(f for f in os.listdir(locale_path) if f.endswith(".lua"))
       except FileNotFoundError:
         print(f"Error: Directory not found {locale_path}")
         lua_files = []
@@ -202,6 +201,10 @@ def filter_is_good_string(data: str) -> bool:
   return True
 
 
+def _ensure_translation_dirs(questieDBVersion: str, shortLocale: str):
+  os.makedirs(f"translations/{questieDBVersion}/{shortLocale}", exist_ok=True)
+
+
 def export_item(conn: sqlite3.Connection, fullLocale: str, version: str):
   # Table locales_item
   # entry
@@ -210,15 +213,7 @@ def export_item(conn: sqlite3.Connection, fullLocale: str, version: str):
   shortLocale = fullLocaleToShort[fullLocale]
   questieDBVersion = mangosToVersion[version]
 
-  # Check if output directory exists
-  if not os.path.exists("translations"):
-    os.makedirs("translations")
-  # Check if version directory exists
-  if not os.path.exists(f"translations/{questieDBVersion}"):
-    os.makedirs(f"translations/{questieDBVersion}")
-  # Check if locale directory exists
-  if not os.path.exists(f"translations/{questieDBVersion}/{shortLocale}"):
-    os.makedirs(f"translations/{questieDBVersion}/{shortLocale}")
+  _ensure_translation_dirs(questieDBVersion, shortLocale)
 
   print(f"Exporting locales_item for {fullLocale}")
   cursor = conn.cursor()
@@ -226,18 +221,15 @@ def export_item(conn: sqlite3.Connection, fullLocale: str, version: str):
   # In cata the locale index for Italian is 11, but in era, tbc and wotlk it is 9
   localeIndex = getDbIndexFromLocale(shortLocale, version)
   cursor.execute(f"SELECT entry, name_loc{localeIndex} FROM locales_item")
-  rows = cursor.fetchall()
 
   output_path = f"translations/{questieDBVersion}/{shortLocale}"
   output_filename = f"item_{questieDBVersion}_{shortLocale}.lua"
 
   # Output data in lua table format
-  with open(os.path.join(output_path, output_filename), "w", encoding="utf-8") as file:
+  with open(os.path.join(output_path, output_filename), "w", encoding="utf-8", newline="\n") as file:
     file.write("locales_item = locales_item or {}\n")
     file.write(f"locales_item['{shortLocale}'] = {{\n")
-    for row in rows:
-      entry = row[0]
-      name = row[1]
+    for entry, name in cursor:
       if filter_is_good_string(name):
         name = clean_string_item_object(str(name))
         file.write(f"  [{entry}] = '{name}',\n")
@@ -252,15 +244,7 @@ def export_gameobject(conn: sqlite3.Connection, fullLocale: str, version: str):
   shortLocale = fullLocaleToShort[fullLocale]
   questieDBVersion = mangosToVersion[version]
 
-  # Check if output directory exists
-  if not os.path.exists("translations"):
-    os.makedirs("translations")
-  # Check if version directory exists
-  if not os.path.exists(f"translations/{questieDBVersion}"):
-    os.makedirs(f"translations/{questieDBVersion}")
-  # Check if locale directory exists
-  if not os.path.exists(f"translations/{questieDBVersion}/{shortLocale}"):
-    os.makedirs(f"translations/{questieDBVersion}/{shortLocale}")
+  _ensure_translation_dirs(questieDBVersion, shortLocale)
 
   print(f"Exporting locales_gameobject for {fullLocale}")
   cursor = conn.cursor()
@@ -268,18 +252,15 @@ def export_gameobject(conn: sqlite3.Connection, fullLocale: str, version: str):
   # In cata the locale index for Italian is 11, but in era, tbc and wotlk it is 9
   localeIndex = getDbIndexFromLocale(shortLocale, version)
   cursor.execute(f"SELECT entry, name_loc{localeIndex} FROM locales_gameobject")
-  rows = cursor.fetchall()
 
   output_path = f"translations/{questieDBVersion}/{shortLocale}"
   output_filename = f"object_{questieDBVersion}_{shortLocale}.lua"
 
   # Output data in lua table format
-  with open(os.path.join(output_path, output_filename), "w", encoding="utf-8") as file:
+  with open(os.path.join(output_path, output_filename), "w", encoding="utf-8", newline="\n") as file:
     file.write("locales_object = locales_object or {}\n")
     file.write(f"locales_object['{shortLocale}'] = {{\n")
-    for row in rows:
-      entry = row[0]
-      name = row[1]
+    for entry, name in cursor:
       if filter_is_good_string(name):
         name = clean_string_item_object(str(name))
         file.write(f"  [{entry}] = '{name}',\n")
@@ -295,15 +276,7 @@ def export_creature(conn: sqlite3.Connection, fullLocale: str, version: str):
   shortLocale = fullLocaleToShort[fullLocale]
   questieDBVersion = mangosToVersion[version]
 
-  # Check if output directory exists
-  if not os.path.exists("translations"):
-    os.makedirs("translations")
-  # Check if version directory exists
-  if not os.path.exists(f"translations/{questieDBVersion}"):
-    os.makedirs(f"translations/{questieDBVersion}")
-  # Check if locale directory exists
-  if not os.path.exists(f"translations/{questieDBVersion}/{shortLocale}"):
-    os.makedirs(f"translations/{questieDBVersion}/{shortLocale}")
+  _ensure_translation_dirs(questieDBVersion, shortLocale)
 
   print(f"Exporting locales_creature for {fullLocale}")
   cursor = conn.cursor()
@@ -311,19 +284,15 @@ def export_creature(conn: sqlite3.Connection, fullLocale: str, version: str):
   # In cata the locale index for Italian is 11, but in era, tbc and wotlk it is 9
   localeIndex = getDbIndexFromLocale(shortLocale, version)
   cursor.execute(f"SELECT entry, name_loc{localeIndex}, subname_loc{localeIndex} FROM locales_creature")
-  rows = cursor.fetchall()
 
   output_path = f"translations/{questieDBVersion}/{shortLocale}"
   output_filename = f"npc_{questieDBVersion}_{shortLocale}.lua"
 
   # Output data in lua table format
-  with open(os.path.join(output_path, output_filename), "w", encoding="utf-8") as file:
+  with open(os.path.join(output_path, output_filename), "w", encoding="utf-8", newline="\n") as file:
     file.write("locales_npc = locales_npc or {}\n")
     file.write(f"locales_npc['{shortLocale}'] = {{\n")
-    for row in rows:
-      entry = row[0]
-      name = row[1]
-      subname = row[2]
+    for entry, name, subname in cursor:
       if not not_null_text(name) and not not_null_text(subname):
         continue
 
@@ -352,15 +321,7 @@ def export_quest(conn: sqlite3.Connection, fullLocale: str, version: str):
   shortLocale = fullLocaleToShort[fullLocale]
   questieDBVersion = mangosToVersion[version]
 
-  # Check if output directory exists
-  if not os.path.exists("translations"):
-    os.makedirs("translations")
-  # Check if version directory exists
-  if not os.path.exists(f"translations/{questieDBVersion}"):
-    os.makedirs(f"translations/{questieDBVersion}")
-  # Check if locale directory exists
-  if not os.path.exists(f"translations/{questieDBVersion}/{shortLocale}"):
-    os.makedirs(f"translations/{questieDBVersion}/{shortLocale}")
+  _ensure_translation_dirs(questieDBVersion, shortLocale)
 
   print(f"Exporting locales_quest for {fullLocale}")
   cursor = conn.cursor()
@@ -368,20 +329,15 @@ def export_quest(conn: sqlite3.Connection, fullLocale: str, version: str):
   # In cata the locale index for Italian is 11, but in era, tbc and wotlk it is 9
   localeIndex = getDbIndexFromLocale(shortLocale, version)
   cursor.execute(f"SELECT entry, Title_loc{localeIndex}, Details_loc{localeIndex}, Objectives_loc{localeIndex} FROM locales_quest")
-  rows = cursor.fetchall()
 
   output_path = f"translations/{questieDBVersion}/{shortLocale}"
   output_filename = f"quest_{questieDBVersion}_{shortLocale}.lua"
 
   # Output data in lua table format
-  with open(os.path.join(output_path, output_filename), "w", encoding="utf-8") as file:
+  with open(os.path.join(output_path, output_filename), "w", encoding="utf-8", newline="\n") as file:
     file.write("locales_quest = locales_quest or {}\n")
     file.write(f"locales_quest['{shortLocale}'] = {{\n")
-    for row in rows:
-      entry = row[0]
-      title = row[1]
-      details = row[2]
-      objectives = row[3]
+    for entry, title, details, objectives in cursor:
       if not not_null_text(title) and not not_null_text(details) and not not_null_text(objectives):
         continue
 

@@ -3,10 +3,11 @@
 local LibQuestieDB = select(2, ...)
 
 local l10n = LibQuestieDB.l10n
+local Meta = LibQuestieDB.Meta
 
 ---@class (exact) Npc:DatabaseType
 ---@class (exact) Npc:NpcFunctions
-local Npc = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Npc, "Npc", LibQuestieDB.Meta.NpcMeta.npcKeys)
+local Npc = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Npc, "Npc", Meta.NpcMeta.npcKeys)
 
 do
   -- Class for all the GET functions for the Npc namespace
@@ -122,6 +123,7 @@ do
     publicNpc.AddOverrideData = Npc.AddOverrideData
     publicNpc.ClearOverrideData = Npc.ClearOverrideData
     publicNpc.GetAllIds = Npc.GetAllIds
+    publicNpc.NpcDBKeys = Meta.CloneKeys(Meta.NpcMeta.npcKeys)
   end
 
   exportFunctions()

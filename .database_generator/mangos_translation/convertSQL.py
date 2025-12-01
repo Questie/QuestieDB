@@ -157,13 +157,13 @@ def convert_file(input_path: str, output_path: str) -> None:
   Read SQL from input_path, convert it (including ALTER TABLE splitting),
   and write the result to output_path.
   """
-  with open(input_path, "r", encoding="utf-8") as infile:
+  with open(input_path, "r", encoding="utf-8", newline="\n") as infile:
     data = infile.read()
   # Apply general conversions first
   converted_general = convert(data)
   # Then apply ALTER TABLE splitting to the result
   converted_final = convert_alter(converted_general)
-  with open(output_path, "w", encoding="utf-8") as outfile:
+  with open(output_path, "w", encoding="utf-8", newline="\n") as outfile:
     outfile.write(converted_final)
 
 
@@ -172,13 +172,13 @@ def convert_locale_file(input_path: str, output_path: str) -> None:
   Read SQL from input_path, convert it (including ALTER TABLE splitting),
   and write the result to output_path.
   """
-  with open(input_path, "r", encoding="utf-8") as infile:
+  with open(input_path, "r", encoding="utf-8", newline="\n") as infile:
     data = infile.read()
   # Apply general conversions first
   converted_general = convert(data)
   # Then apply ALTER TABLE splitting to the result
   converted_final = convert_locale(converted_general)
-  with open(output_path, "w", encoding="utf-8") as outfile:
+  with open(output_path, "w", encoding="utf-8", newline="\n") as outfile:
     outfile.write(converted_final)
 
 
@@ -187,7 +187,7 @@ def convert_locale_string(input_path: str) -> str:
   Read SQL from input_path, convert it (including ALTER TABLE splitting),
   and write the result to output_path.
   """
-  with open(input_path, "r", encoding="utf-8") as infile:
+  with open(input_path, "r", encoding="utf-8", newline="\n") as infile:
     data = infile.read()
   # Apply general conversions first
   converted_general = convert(data)

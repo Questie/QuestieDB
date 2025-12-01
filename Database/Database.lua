@@ -142,6 +142,20 @@ function Database.Init()
     -- Print total time elapsed
     print("Total time elapsed:", format("%.4f", startTotal), "ms")
   end
+
+  -- Trigger simple tests
+  -- Just a quick sanity check to make sure the database is working
+  if not Is_CLI then
+    if Database.debugPrintEnabled or Database.debugEnabled then
+      LibQuestieDB.ColorizePrint("purple", "-- Fast Tests --")
+    end
+    Quest.FastTest();
+    Object.FastTest();
+    Npc.FastTest();
+    Item.FastTest();
+  end
+
+
   Database.Initialized = true
 
   -- Trigger testing if we are in debug mode
@@ -171,16 +185,39 @@ Database.getNumber = function(pObject)
   end
   return tonumber(text)
 end
-Database.getTable = function(pObject)
-  if pObject == nil then
-    return nil
+if Is_CLI then
+  -- A CLI version that spits out information about the loadstring
+  Database.getTable = function(pObject)
+    if pObject == nil then
+      return nil
+    end
+    local text = pObject:GetText()
+    --TODO: Check what happens if the text is nil or something
+    if text == nil or text == "" or text == "nil" then
+      return nil
+    end
+    local t, err = loadstring("return " .. text)
+    if err then
+      print("Error loading table:", err)
+    end
+    if t then
+      return t()
+    end
+    error("Unreachable")
   end
-  local text = pObject:GetText()
-  --TODO: Check what happens if the text is nil or something
-  if text == nil or text == "" or text == "nil" then
-    return nil
+else
+  -- A faster version for ingame
+  Database.getTable = function(pObject)
+    if pObject == nil then
+      return nil
+    end
+    local text = pObject:GetText()
+    --TODO: Check what happens if the text is nil or something
+    if text == nil or text == "" or text == "nil" then
+      return nil
+    end
+    return loadstring("return " .. text)()
   end
-  return loadstring("return " .. text)()
 end
 
 --- This function adds override data by function name to the override table.

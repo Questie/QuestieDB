@@ -10,7 +10,7 @@ local Meta = LibQuestieDB.Meta
 
 ---@class (exact) Quest:DatabaseType
 ---@class (exact) Quest:QuestFunctions
-local Quest = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Quest, "Quest", LibQuestieDB.Meta.QuestMeta.questKeys)
+local Quest = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Quest, "Quest", Meta.QuestMeta.questKeys)
 
 do
   -- ? Questie Data structure for Quests
@@ -137,7 +137,7 @@ do
 
   do
     ---@type fun(id):table<number, { [1]: QuestObjectiveKeys, [2]: number }[]> -- Maps QuestId to ordered pairs of objective type and index
-    local orderedObjectivesGetter = Quest.AddTableGetter(31, "orderedObjectives", emptyTable)
+    local orderedObjectivesGetter = Quest.AddTableGetter(33, "orderedObjectives", emptyTable)
 
     -- maxObjectiveType is the highest numeric value in objectiveKeys.
     -- It is used to iterate over all possible objective types in order,
@@ -325,6 +325,16 @@ do
   ---@type fun(id: QuestId):ReputationPair[]?
   QuestFunctions.reputationReward = Quest.AddTableGetter(26, "reputationReward")
 
+  -- Function to get the quest ID that this breadcrumb quest leads to<br>
+  -- Returns 133
+  ---@type fun(id: QuestId):BreadcrumbForQuestId?
+  QuestFunctions.breadcrumbForQuestId = Quest.AddNumberGetter(27, "breadcrumbForQuestId", 0)
+
+  -- Function to get the breadcrumb quests that lead to this quest<br>
+  -- Returns {134, 135, 136}
+  ---@type fun(id: QuestId):BreadcrumbQuestIds?
+  QuestFunctions.breadcrumbs = Quest.AddTableGetter(28, "breadcrumbs")
+
   do
     -- /dump LibQuestieDB().Quest.extraObjectives(735)
     -- ? If we have debug enabled always use l10n, but otherwise don't for performance reasons as most users will be using enUS
@@ -332,12 +342,12 @@ do
       -- Function to get the extra objectives of the quest<br>
       -- Returns <INSERT EXAMPLE>
       ---@type fun(id: QuestId):ExtraObjective[]?
-      QuestFunctions.extraObjectives = Quest.AddTableGetter(27, "extraObjectives")
+      QuestFunctions.extraObjectives = Quest.AddTableGetter(29, "extraObjectives")
     else
       -- Function to get the extra objectives of the quest<br>
       -- Returns <INSERT EXAMPLE>
       ---@type fun(id: QuestId):ExtraObjective[]?
-      local extraObjectives_enUS = Quest.AddTableGetter(27, "extraObjectives")
+      local extraObjectives_enUS = Quest.AddTableGetter(29, "extraObjectives")
 
       -- Function to get the extra objectives of the quest<br>
       -- Returns <INSERT EXAMPLE>
@@ -376,17 +386,17 @@ do
   -- Function to get the spell required to start the quest<br>
   -- Returns 12345
   ---@type fun(id: QuestId):number?
-  QuestFunctions.requiredSpell = Quest.AddNumberGetter(28, "requiredSpell", 0)
+  QuestFunctions.requiredSpell = Quest.AddNumberGetter(30, "requiredSpell", 0)
 
   -- Function to get the specialization required to start the quest<br>
   -- Returns 202 (ENGINEERING)
   ---@type fun(id: QuestId):number?
-  QuestFunctions.requiredSpecialization = Quest.AddNumberGetter(29, "requiredSpecialization", 0)
+  QuestFunctions.requiredSpecialization = Quest.AddNumberGetter(31, "requiredSpecialization", 0)
 
   -- Function to get the maximum level allowed to start the quest<br>
   -- Returns 60
   ---@type fun(id: QuestId):number?
-  QuestFunctions.requiredMaxLevel = Quest.AddNumberGetter(30, "requiredMaxLevel", 0)
+  QuestFunctions.requiredMaxLevel = Quest.AddNumberGetter(32, "requiredMaxLevel", 0)
 
   --? This function is used to export all the functions to the Public and Private namespaces
   --? It gets called at the end of this file
@@ -400,6 +410,7 @@ do
     publicQuest.AddOverrideData = Quest.AddOverrideData
     publicQuest.ClearOverrideData = Quest.ClearOverrideData
     publicQuest.GetAllIds = Quest.GetAllIds
+    publicQuest.QuestDBKeys = Meta.CloneKeys(Meta.QuestMeta.questKeys)
   end
 
   exportFunctions()

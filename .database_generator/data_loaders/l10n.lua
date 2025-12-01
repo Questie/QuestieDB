@@ -113,23 +113,11 @@ local function InjectMangosTranslations(lowerQuestieDBVersion, dbData, l10n)
       if lookup[locale] then
         -- Load the actual Questie translation data for this locale and entity type
         ---@type table<number, any>
-        local lookup_data = lookup[locale]()                       -- Execute the function to get the table
+        local lookup_data = type(lookup[locale]) == "function" and lookup[locale]() or
+            lookup[locale]                                         -- Execute the function to get the table
         l10n[entityType:lower() .. "Lookup"][locale] = lookup_data -- Store the loaded table back
 
         -- print(rep(" ", 2) .. "Filtering " .. entityType .. " lookup for locale: " .. locale .. " to only include ids that we have data for")
-
-        -- Filter out entity IDs that aren't in our valid ID table to reduce memory usage
-        -- This removes translations for entities that don't exist in the current database
-        local removedIds = 0
-        for entityId in pairs(lookup_data) do
-          if not dbData:exists(entityType, entityId) then
-            -- Remove the entry from the lookup data
-            lookup_data[entityId] = nil
-            removedIds = removedIds + 1
-          end
-        end
-
-        -- print(rep(" ", 6) .. "Removed " .. removedIds .. " ids from " .. entityType .. " lookup for locale: " .. locale)
 
         -- Sort Mangos IDs for deterministic processing and filter to valid IDs only
         local skippedIds = 0
@@ -172,7 +160,11 @@ local function InjectMangosTranslations(lowerQuestieDBVersion, dbData, l10n)
             lookup_data[entityId] = v
           end
         end
-        print(f("%sLocale [%s]: Added %d new entries, Merged data into %d existing entries.", rep(" ", 4), locale, added_data, merged_data))
+        if merged_data > 0 then
+          print(f("%sLocale [%s]: Added %d missing entries, Merged data into %d existing entries.", rep(" ", 4), locale, added_data, merged_data))
+        else
+          print(f("%sLocale [%s]: Added %d missing entries.", rep(" ", 4), locale, added_data))
+        end
       end
     end
   end
@@ -195,6 +187,7 @@ local function LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, dbData
   -- Clean and prepare localization files for each entity type
   print(" Loading version: " .. questie_version)
   for datatype in pairs(Meta.L10nMeta.l10nKeys) do
+    local start = os.clock()
     local found_files = l10n_loader.CleanFiles(questie_version, datatype)
 
     if not found_files then
@@ -202,7 +195,7 @@ local function LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, dbData
       os.exit(0)
     end
 
-    print(c(f(" Cleaned %d files in total for %s\n", #found_files, datatype), "green"))
+    print(c(f(" Cleaned %d files in %.3fs seconds for %s\n", #found_files, os.clock() - start, datatype), "green"))
   end
 
   -- Load all lookup tables from the cleaned XML files
@@ -230,12 +223,15 @@ local function LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, dbData
     -- Validate that all required locales are loaded for this entity type
     for _, locale in ipairs(Meta.L10nMeta.locales) do
       -- if locale ~= "enUS" then
-      -- print("    Validating " .. entityType .. " lookup for locale: " .. locale)
+      print("    Validating " .. entityType .. " lookup for locale: " .. locale)
       if not lookup[locale] then
         print(c("  Failed to load " .. entityType .. " lookup for locale: " .. locale, "red"))
         os.exit(0)
       end
-      -- end
+
+      -- Load the lookup data for this locale
+      local lookup_data = lookup[locale]()                       -- Execute the function to get the table
+      l10n[entityType:lower() .. "Lookup"][locale] = lookup_data -- Store the loaded table back
     end
   end
 

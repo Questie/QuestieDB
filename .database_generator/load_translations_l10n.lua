@@ -17,63 +17,52 @@ local export = {}
 ---@return table<number, string>? files A table containing the names of files with the specified extension.
 function export.CleanFiles(version, type)
   local cleaned_files = {}
-  local capitalized_type = helpers.capitalize(type)
   -- Remove the first 3 lines in all .lua files in .database_generator\Questie-data\Localization\lookups\Classic\lookupItems
+  local capitalized_type = helpers.capitalize(type)
+  -- Get all .lua files in the directory
   local path = helpers.get_project_dir_path() ..
       "/.database_generator/Questie-data/Localization/lookups/" .. version .. "/lookup" .. capitalized_type .. "s/"
-  -- Get all .lua files in the directory
+
   local files = helpers.get_files_in_directory(path, "lua")
   if not files then
     print("No files found in directory: " .. path)
     return nil
   end
+
   for _, file in ipairs(files) do
     local file_path = path .. file
-    local filedata = io.open(file_path, "r")
+    local filedata = io.open(file_path, "rb")
     if filedata then
-      local lines = {}
-      for line in filedata:lines() do
-        tInsert(lines, line)
-      end
+      local content = filedata:read("*a")
       filedata:close()
 
       -- Remove lines until "---@type l10n"
-      local new_lines = {}
-      local found_l10n = false
-      for _, line in ipairs(lines) do
-        if found_l10n then
-          if type == "npc" then
-            line = string.gsub(line, "l10n%.npcNameLookup", "l10n.npcLookup")
-          end
-          tInsert(new_lines, line)
-        elseif line:find("local l10n") then
-          found_l10n = true
-          tInsert(new_lines, line)
+      local start_index = content:find("local l10n", 1, true)
+      if start_index then
+        local sliced = content:sub(start_index)
+        if type == "npc" then
+          sliced = sliced:gsub("l10n%.npcNameLookup", "l10n.npcLookup")
         end
-      end
 
-
-      -- Write the new lines back to the file
-      local filename = string.gsub(file_path, ".lua", ".lua.clean")
-      local clean_filedata = io.open(filename, "w")
-      if clean_filedata then
-        local combined_lines = table.concat(new_lines, "\n")
         -- Write the new lines back to the file
-        clean_filedata:write(combined_lines)
-
-        clean_filedata:close()
-        tInsert(cleaned_files, filename)
+        local filename = string.gsub(file_path, ".lua", ".lua.clean")
+        local clean_filedata = io.open(filename, "wb")
+        if clean_filedata then
+          -- Write the new lines back to the file
+          clean_filedata:write(sliced)
+          clean_filedata:close()
+          tInsert(cleaned_files, filename)
+        end
       end
     end
   end
-  print("  Cleaned " .. #files .. " " .. "LUA" .. " files in directory: " .. path)
-
+  print("  Cleaned " .. #files .. " LUA files in directory: " .. path .. " (fast)")
 
   -- Change the XML file to point to the cleaned files
   -- Example path: .database_generator\Questie-data\Localization\lookups\Classic\lookupItems\lookupItems.xml
   local xml_path = helpers.get_project_dir_path() ..
       "/.database_generator/Questie-data/Localization/lookups/" .. version .. "/lookup" .. capitalized_type .. "s/lookup" .. capitalized_type .. "s.xml"
-  local xml_filedata = io.open(xml_path, "r")
+  local xml_filedata = io.open(xml_path, "rb")
   -- <Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
   --   <Script file="deDE.lua"/>
   --   <Script file="esES.lua"/>
@@ -89,17 +78,18 @@ function export.CleanFiles(version, type)
   if xml_filedata then
     local data = xml_filedata:read("*a")
     xml_filedata:close()
-    data = string.gsub(data, "%.lua", ".lua.clean") -- Replace .lua with .lua.clean
+    data = string.gsub(data, "%.lua", ".lua.clean")
     -- Write the new data back to the XML file
     local filename = string.gsub(xml_path, ".xml", ".clean.xml")
-    local clean_xml_filedata = io.open(filename, "w")
+    local clean_xml_filedata = io.open(filename, "wb")
     if clean_xml_filedata then
       clean_xml_filedata:write(data)
       clean_xml_filedata:close()
-      print("  Cleaned 1 XML file: " .. xml_path .. ".clean.xml")
+      print("  Cleaned 1 XML file: " .. xml_path .. ".clean.xml (fast)")
       tInsert(cleaned_files, filename)
     end
   end
+
   return cleaned_files
 end
 
@@ -206,13 +196,89 @@ local function joinAndEscape(tbl, separator, emptyValue)
   end
 end
 
+---Builds the l10n dump string for a single entity type.
+---@param entityType "item"|"npc"|"object"|"quest"
+---@param typeData table<L10nLocales, any>|nil
+---@param L10nMeta L10nMeta
+---@param localeCount integer
+---@param emptyValue string
+---@param indentation string
+---@param includeTypeComment boolean? Include the leading "-- <Type>" comment (default: true)
+---@return string
+local function dumpSingleEntityType(entityType, typeData, L10nMeta, localeCount, emptyValue, indentation, includeTypeComment)
+  includeTypeComment = includeTypeComment ~= false
+  if not typeData then
+    local dumpedNil = f("%s%s,\n", indentation, "nil")
+    if not includeTypeComment then
+      dumpedNil = dumpedNil:gsub("^%s*%-%-[^\n]*\n", "", 1)
+    end
+    return dumpedNil
+  end
 
---- Dumps the structured l10n data into a Lua table string format.
+  local translations = {}
+  for i = 1, localeCount do
+    translations[i] = typeData[L10nMeta.locales[i]] or ""
+  end
+
+  local dumped
+  if entityType == "item" or entityType == "object" then
+    dumped = L10nMeta.lua_tableDumpFuncs[entityType](joinAndEscape(translations, splitCharacter, emptyValue))
+  elseif entityType == "npc" then
+    local names = {}
+    local subnames = {}
+    for i = 1, #translations do
+      local npcData = translations[i] or { "", "", }
+      names[i] = npcData[1] or ""    -- Name is index 1
+      subnames[i] = npcData[2] or "" -- Subname is index 2
+    end
+    dumped = L10nMeta.lua_tableDumpFuncs[entityType]({
+      joinAndEscape(names, splitCharacter, emptyValue),
+      joinAndEscape(subnames, splitCharacter, emptyValue),
+    })
+  elseif entityType == "quest" then
+    local titles = {}
+    local descriptions = {}
+    local texts = {}
+    for i = 1, #translations do
+      local questData = translations[i] or { "", "", "", }
+      titles[i] = questData[1] or ""       -- Title
+      descriptions[i] = questData[2] or "" -- Description
+      texts[i] = questData[3] or ""        -- Text
+    end
+    dumped = L10nMeta.lua_tableDumpFuncs[entityType]({
+      joinAndEscape(titles, splitCharacter, emptyValue),
+      joinAndEscape(descriptions, splitCharacter, emptyValue),
+      joinAndEscape(texts, splitCharacter, emptyValue),
+    })
+  end
+
+  if not dumped then
+    dumped = f("%s%s,\n", indentation, "nil")
+  end
+
+  if not includeTypeComment then
+    dumped = dumped:gsub("^%s*%-%-[^\n]*\n", "", 1) -- Strip leading comment line (string dumps)
+    dumped = dumped:gsub("%-%-[^%]\n]*", "", 1)     -- Strip first inline comment (table dumps)
+    dumped = dumped:gsub("%s+\n", "\n", 1)          -- Clean extra spacing left behind
+  end
+  return dumped
+end
+
+
+---------------------------------------------------------------------------
+-- Dumps the structured l10n data into a Lua table string format.
+-- •  Adds a “-- break / return {” marker every <maxIdsPerSlice> IDs
+--    to keep each compiled slice well below Lua‑5.1’s constant limit.
+-- •  The loader only needs to split on “-- break” and feed every slice
+--    to loadstring()/require(); see comments in the merge script.
+---------------------------------------------------------------------------
 ---@param L10nMeta L10nMeta
 ---@param entityTypes table<string> The entity types to be dumped (e.g., "Item", "Npc", "Object", "Quest")
 ---@param l10nData table<AllIdTypes, table<L10nDBKeys, table<L10nLocales, any>>> The structured localization data.
+---@param maxIdsPerSlice number? -- optional; defaults to 2000
 ---@return string luaTableString The generated Lua table as a string.
-function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
+function export.DumpL10nData(L10nMeta, entityTypes, l10nData, maxIdsPerSlice)
+  maxIdsPerSlice = maxIdsPerSlice or 20000 -- *** new parameter ***
   print("Creating l10n data dump...")
   local outputLines = {}
   tInsert(outputLines, "{\n")
@@ -240,6 +306,8 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
 
   local indentation = "  "
 
+  local idsInCurrentSlice = 0
+
   ---@param id ItemId|NpcId|ObjectId|QuestId
   for _, id in ipairs(sortedIds) do
     local entryData = l10nData[id]
@@ -248,54 +316,7 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
 
     for _, entityType in ipairs(sortedEntityTypes) do
       local typeData = entryData[entityType]
-      if typeData then
-        local translations = {}
-        for i = 1, localeCount do
-          -- Get data in the order defined by L10nMeta.locales
-          -- Always set "" empty value here for the locale count to be correct.
-          translations[i] = typeData[L10nMeta.locales[i]] or ""
-        end
-
-        if entityType == "item" or entityType == "object" then
-          tInsert(outputLines, L10nMeta.lua_tableDumpFuncs[entityType](
-            joinAndEscape(translations, splitCharacter, emptyValue)
-          ))
-        elseif entityType == "npc" then
-          -- translations is a table of {name, subname} pairs
-          local names = {}
-          local subnames = {}
-          for i = 1, #translations do
-            local npcData = translations[i] or { "", "", }
-            names[i] = npcData[1] or ""    -- Name is index 1
-            subnames[i] = npcData[2] or "" -- Subname is index 2
-          end
-          tInsert(outputLines, L10nMeta.lua_tableDumpFuncs[entityType](
-            {
-              joinAndEscape(names, splitCharacter, emptyValue),
-              joinAndEscape(subnames, splitCharacter, emptyValue),
-            }))
-        elseif entityType == "quest" then
-          -- translations is a table of {title, description, text} triples
-          local titles = {}
-          local descriptions = {}
-          local texts = {}
-          for i = 1, #translations do
-            local questData = translations[i] or { "", "", "", }
-            titles[i] = questData[1] or ""       -- Title
-            descriptions[i] = questData[2] or "" -- Description
-            texts[i] = questData[3] or ""        -- Text
-          end
-          tInsert(outputLines, L10nMeta.lua_tableDumpFuncs[entityType](
-            {
-              joinAndEscape(titles, splitCharacter, emptyValue),
-              joinAndEscape(descriptions, splitCharacter, emptyValue),
-              joinAndEscape(texts, splitCharacter, emptyValue),
-            }))
-        end
-      else
-        -- If data for this entity type doesn't exist for this ID, add nil value
-        tInsert(outputLines, f("%s%s,\n", indentation, "nil"))
-      end
+      tInsert(outputLines, dumpSingleEntityType(entityType, typeData, L10nMeta, localeCount, emptyValue, indentation, true))
     end
     -- Remove trailing comma from the last element within the ID's table
     local lastLine = outputLines[#outputLines]
@@ -303,6 +324,23 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
       outputLines[#outputLines] = string.sub(lastLine, 1, -3) .. "\n"
     end
     tInsert(outputLines, "},\n")
+
+    ----------------------------------------------------------------
+    --  SLICE BREAK
+    ----------------------------------------------------------------
+    idsInCurrentSlice = idsInCurrentSlice + 1
+    if idsInCurrentSlice >= maxIdsPerSlice then
+      -- remove trailing comma from the final ID of this slice
+      local ll = outputLines[#outputLines]
+      if ll:sub(-2) == ",\n" then outputLines[#outputLines] = ll:sub(1, -3) .. "\n" end
+
+      -- close slice, insert marker, start new slice
+      tInsert(outputLines, "}\n")
+      tInsert(outputLines, "-- break\n")
+      tInsert(outputLines, "{\n")
+
+      idsInCurrentSlice = 0
+    end
   end
   -- Remove trailing comma from the last ID entry
   local lastLine = outputLines[#outputLines]
@@ -314,6 +352,182 @@ function export.DumpL10nData(L10nMeta, entityTypes, l10nData)
   print("Done creating l10n data dump.")
 
   return table.concat(outputLines)
+end
+
+---------------------------------------------------------------------------
+--- Splits the l10n dump into one file per entity type.
+---@param L10nMeta L10nMeta
+---@param entityTypes table<string>
+---@param l10nData table<AllIdTypes, table<L10nDBKeys, table<L10nLocales, any>>>
+---@param maxIdsPerSlice number?
+---@return table<string, string> dumps Table keyed by entity type (capitalized) to dump string
+---------------------------------------------------------------------------
+function export.DumpL10nDataByType(L10nMeta, entityTypes, l10nData, maxIdsPerSlice)
+  maxIdsPerSlice = maxIdsPerSlice or 20000
+  local dumps = {}
+
+  for _, entityType in ipairs(entityTypes) do
+    print(string.format("Creating l10n data dump for %s", entityType))
+
+    local entityTypeLower = entityType:lower()
+    local outputLines = { "{\n", }
+    local localeCount = #L10nMeta.locales
+    local emptyValue = string.rep(splitCharacter, #L10nMeta.locales - 1)
+    local indentation = "  "
+
+    local sortedIds = {}
+    for id, entryData in pairs(l10nData) do
+      if entryData and entryData[entityTypeLower] then
+        tInsert(sortedIds, id)
+      end
+    end
+    table.sort(sortedIds)
+
+    local idsInCurrentSlice = 0
+    for _, id in ipairs(sortedIds) do
+      local entryData = l10nData[id]
+      local typeData = entryData and entryData[entityTypeLower] or nil
+      if typeData ~= nil then
+        tInsert(outputLines, string.format("[%d] = {\n", id))
+        tInsert(outputLines, dumpSingleEntityType(entityTypeLower, typeData, L10nMeta, localeCount, emptyValue, indentation, false))
+
+        local lastLine = outputLines[#outputLines]
+        if string.sub(lastLine, -2) == ",\n" then
+          outputLines[#outputLines] = string.sub(lastLine, 1, -3) .. "\n"
+        end
+
+        tInsert(outputLines, "},\n")
+
+        idsInCurrentSlice = idsInCurrentSlice + 1
+        if idsInCurrentSlice >= maxIdsPerSlice then
+          local ll = outputLines[#outputLines]
+          if ll:sub(-2) == ",\n" then outputLines[#outputLines] = ll:sub(1, -3) .. "\n" end
+
+          tInsert(outputLines, "}\n")
+          tInsert(outputLines, "-- break\n")
+          tInsert(outputLines, "{\n")
+
+          idsInCurrentSlice = 0
+        end
+      end
+    end
+
+    local lastLine = outputLines[#outputLines]
+    if string.sub(lastLine, -2) == ",\n" then
+      outputLines[#outputLines] = string.sub(lastLine, 1, -3) .. "\n"
+    end
+    tInsert(outputLines, "}\n")
+
+    dumps[entityType] = table.concat(outputLines)
+  end
+
+  return dumps
+end
+
+-------------------------------------------------------------------------------
+--- Loads a sliced localisation dump produced by `export.DumpL10nData`.
+---
+--- The dump is one text file that looks like:
+--- ```
+--- return {
+---   [1] = { … },
+---   ...
+--- }
+--- -- break
+--- {
+---   [2001] = { … },
+---   ...
+--- }
+--- -- break
+--- {
+---   ...
+--- }
+--- ```
+--- Each “slice” after a `-- break` marker is small enough to compile on Lua 5.1
+--- without tripping the *constant table overflow* limit.  This loader:
+---   1. Reads the file line‑by‑line.
+---   2. Whenever it sees `-- break`, it compiles the lines collected so far
+---      with `loadstring`, gets a partial table, and merges that into
+---      a shared result table.
+---   3. Repeats until EOF, then returns the merged table.
+---
+--- @param  path  string  Absolute or relative path to the dump file.
+--- @return table<AllIdTypes, table>  The fully merged localisation table.
+-------------------------------------------------------------------------------
+function export.LoadL10n(path)
+  ---------------------------------------------------------------------------
+  -- Locals
+  ---------------------------------------------------------------------------
+  local L10n  = {} --- Final result.
+  local lines = {} --- Buffer holding the current slice’s source lines.
+
+  --- Copies every key/value pair from *src* into *dest*.
+  --- Later slices overwrite earlier duplicates (last‑one‑wins).
+  --- @param dest table
+  --- @param src  table
+  local function merge(dest, src)
+    for k, v in pairs(src) do
+      dest[k] = v
+    end
+  end
+
+  ---------------------------------------------------------------------------
+  -- Pass 1 – stream the file, splitting on “-- break”
+  ---------------------------------------------------------------------------
+  for line in io.lines(path) do
+    if line:match("^%-%- break") then -- ➊ slice delimiter
+      if #lines > 0 then              -- compile current slice
+        local chunk = assert(loadstring("return " .. table.concat(lines, "\n")))
+        merge(L10n, chunk())          -- merge into result
+        lines = {}                    -- reset buffer
+      end
+    else
+      lines[#lines + 1] = line -- normal data line
+    end
+  end
+
+  ---------------------------------------------------------------------------
+  -- Pass 2 – compile the last slice (no “-- break” after it)
+  ---------------------------------------------------------------------------
+  if #lines > 0 then
+    local chunk = assert(loadstring("return " .. table.concat(lines, "\n")))
+    merge(L10n, chunk())
+  end
+
+  return L10n
+end
+
+-------------------------------------------------------------------------------
+--- Loads multiple per-type l10n dumps and merges them into a single table.
+--- @param pathsByType table<string, string> Map of entity type (capitalized) -> file path.
+--- @param L10nMeta L10nMeta
+--- @return table<AllIdTypes, table>
+-------------------------------------------------------------------------------
+function export.LoadL10nByType(pathsByType, L10nMeta)
+  local l10n = {}
+
+  for entityType, path in pairs(pathsByType) do
+    local typeLower = entityType:lower()
+    local typeIndex = L10nMeta.l10nKeys[typeLower]
+    assert(typeIndex, string.format("Unknown entity type for l10n load: %s", tostring(entityType)))
+
+    local partial = export.LoadL10n(path)
+    for id, typeTable in pairs(partial) do
+      local value
+      if type(typeTable) == "table" then
+        value = typeTable[1]
+      else
+        value = typeTable
+      end
+
+      if value ~= nil then
+        l10n[id] = l10n[id] or {}
+        l10n[id][typeIndex] = value
+      end
+    end
+  end
+
+  return l10n
 end
 
 return export
