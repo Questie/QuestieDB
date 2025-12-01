@@ -1,3 +1,0 @@
----@meta
----@class LibQuestieDB
----@field Meta Meta

@@ -142,6 +142,20 @@ function Database.Init()
     -- Print total time elapsed
     print("Total time elapsed:", format("%.4f", startTotal), "ms")
   end
+
+  -- Trigger simple tests
+  -- Just a quick sanity check to make sure the database is working
+  if not Is_CLI then
+    if Database.debugPrintEnabled or Database.debugEnabled then
+      LibQuestieDB.ColorizePrint("purple", "-- Fast Tests --")
+    end
+    Quest.FastTest();
+    Object.FastTest();
+    Npc.FastTest();
+    Item.FastTest();
+  end
+
+
   Database.Initialized = true
 
   -- Trigger testing if we are in debug mode

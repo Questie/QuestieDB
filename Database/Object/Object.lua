@@ -3,6 +3,7 @@
 local LibQuestieDB = select(2, ...)
 
 local l10n = LibQuestieDB.l10n
+local Meta = LibQuestieDB.Meta
 
 ---@class (exact) Object:DatabaseType
 ---@class (exact) Object:ObjectFunctions
@@ -72,6 +73,7 @@ do
     publicObject.AddOverrideData = Object.AddOverrideData
     publicObject.ClearOverrideData = Object.ClearOverrideData
     publicObject.GetAllIds = Object.GetAllIds
+    publicObject.ObjectDBKeys = Meta.CloneKeys(Meta.ObjectMeta.objectKeys)
   end
 
   exportFunctions()

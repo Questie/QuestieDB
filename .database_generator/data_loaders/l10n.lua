@@ -160,7 +160,11 @@ local function InjectMangosTranslations(lowerQuestieDBVersion, dbData, l10n)
             lookup_data[entityId] = v
           end
         end
-        print(f("%sLocale [%s]: Added %d new entries, Merged data into %d existing entries.", rep(" ", 4), locale, added_data, merged_data))
+        if merged_data > 0 then
+          print(f("%sLocale [%s]: Added %d missing entries, Merged data into %d existing entries.", rep(" ", 4), locale, added_data, merged_data))
+        else
+          print(f("%sLocale [%s]: Added %d missing entries.", rep(" ", 4), locale, added_data))
+        end
       end
     end
   end
@@ -183,6 +187,7 @@ local function LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, dbData
   -- Clean and prepare localization files for each entity type
   print(" Loading version: " .. questie_version)
   for datatype in pairs(Meta.L10nMeta.l10nKeys) do
+    local start = os.clock()
     local found_files = l10n_loader.CleanFiles(questie_version, datatype)
 
     if not found_files then
@@ -190,7 +195,7 @@ local function LoadL10nData(questie_version, lowerQuestieDBVersion, Meta, dbData
       os.exit(0)
     end
 
-    print(c(f(" Cleaned %d files in total for %s\n", #found_files, datatype), "green"))
+    print(c(f(" Cleaned %d files in %.3fs seconds for %s\n", #found_files, os.clock() - start, datatype), "green"))
   end
 
   -- Load all lookup tables from the cleaned XML files

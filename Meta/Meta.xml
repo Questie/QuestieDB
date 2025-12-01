@@ -3,6 +3,8 @@
   <!-- Always load first -->
   <Script file="DumpFunctions.lua"/>
 
+  <Script file="Meta.lua"/>
+
   <Script file="ZoneMeta.lua"/>
   <Script file="ItemMeta.lua"/>
   <Script file="NpcMeta.lua"/>

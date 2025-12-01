@@ -105,8 +105,11 @@ function LibQuestieDB.ColorizeText(color, text)
   end
 
   local c = LibQuestieDB.GetColorCode(color)
-
-  return c .. text .. "|r"
+  if not Is_CLI then
+    return c .. text .. "|r"
+  else
+    return c .. text
+  end
 end
 
 --- Colorize a string with a color code
@@ -117,5 +120,9 @@ function LibQuestieDB.ColorizePrint(color, ...)
 
   local c = LibQuestieDB.GetColorCode(color)
 
-  print(c, ..., "|r")
+  if not Is_CLI then
+    print(c, ..., "|r")
+  else
+    print(c, ...)
+  end
 end
