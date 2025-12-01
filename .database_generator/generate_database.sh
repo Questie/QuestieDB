@@ -62,20 +62,20 @@ cd /QuestieDB
 LAST_PATH="$(pwd)"
 
 # Goto the QuestieDB/.database_generator directory
-cd $FULL_PATH
+cd "$FULL_PATH"
 
 # Make sure the Questie-data directory is there
 git_sparse_clone_addon_translations $2
 
 echo "$(pwd)"
 
-cd $LAST_PATH
+cd "$LAST_PATH"
 
 echo "$(pwd)"
 
 # Goto the QuestieDB directory
-cd $FULL_PATH/..
+cd "$FULL_PATH/.."
 
-$LUA $FULL_PATH/main.lua
+$LUA "$FULL_PATH/main.lua"
 
-cd $LAST_PATH
+cd "$LAST_PATH"
