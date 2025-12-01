@@ -145,13 +145,15 @@ function Database.Init()
 
   -- Trigger simple tests
   -- Just a quick sanity check to make sure the database is working
-  if Database.debugPrintEnabled or Database.debugEnabled then
-    LibQuestieDB.ColorizePrint("purple", "-- Fast Tests --")
+  if not Is_CLI then
+    if Database.debugPrintEnabled or Database.debugEnabled then
+      LibQuestieDB.ColorizePrint("purple", "-- Fast Tests --")
+    end
+    Quest.FastTest();
+    Object.FastTest();
+    Npc.FastTest();
+    Item.FastTest();
   end
-  Quest.FastTest();
-  Object.FastTest();
-  Npc.FastTest();
-  Item.FastTest();
 
 
   Database.Initialized = true
