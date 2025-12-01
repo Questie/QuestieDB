@@ -10,7 +10,7 @@ local Meta = LibQuestieDB.Meta
 
 ---@class (exact) Quest:DatabaseType
 ---@class (exact) Quest:QuestFunctions
-local Quest = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Quest, "Quest", LibQuestieDB.Meta.QuestMeta.questKeys)
+local Quest = LibQuestieDB.CreateDatabaseInTable(LibQuestieDB.Quest, "Quest", Meta.QuestMeta.questKeys)
 
 do
   -- ? Questie Data structure for Quests
@@ -410,6 +410,7 @@ do
     publicQuest.AddOverrideData = Quest.AddOverrideData
     publicQuest.ClearOverrideData = Quest.ClearOverrideData
     publicQuest.GetAllIds = Quest.GetAllIds
+    publicQuest.QuestDBKeys = Meta.CloneKeys(Meta.QuestMeta.questKeys)
   end
 
   exportFunctions()
