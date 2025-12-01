@@ -40,33 +40,54 @@ def parse_version(version):
     return None
 
 
-# Fetch the releases from GitHub using the REST API
-# We fetch the list of releases to find the latest one that has a valid semantic version tag.
+latest_tag = "0.0.0"
+latest_version_tuple = (0, 0, 0)
+found_valid_version = False
+
+# 1. Try /releases/latest
+print("Fetching latest release from /releases/latest...")
 resp = requests.get(
-  f"https://api.github.com/repos/{REPO}/releases",
+  f"https://api.github.com/repos/{REPO}/releases/latest",
   headers=headers,
   timeout=10,
 )
 
-latest_tag = "0.0.0"
-latest_version_tuple = (0, 0, 0)
+if resp.ok:
+  data = resp.json()
+  tag = data.get("tag_name", "")
+  parsed = parse_version(tag)
+  if parsed:
+    latest_tag = tag
+    latest_version_tuple = parsed
+    found_valid_version = True
+    print(f"Found latest release via /latest: {latest_tag}")
 
-if resp.status_code == 404:
-  # No releases yet – treat as version 0.0.0
-  pass
-elif resp.ok:
-  releases = resp.json()
-  if isinstance(releases, list):
-    for release in releases:
-      tag = release.get("tag_name", "")
-      parsed = parse_version(tag)
-      if parsed:
-        latest_tag = tag
-        latest_version_tuple = parsed
-        break
-else:
-  print(f"GitHub API error ({resp.status_code}): {resp.text}")
-  sys.exit(1)
+# 2. Fallback to /releases if needed
+if not found_valid_version:
+  print("Falling back to iterating /releases...")
+  resp = requests.get(
+    f"https://api.github.com/repos/{REPO}/releases",
+    headers=headers,
+    timeout=10,
+  )
+
+  if resp.status_code == 404:
+    # No releases yet – treat as version 0.0.0
+    pass
+  elif resp.ok:
+    releases = resp.json()
+    if isinstance(releases, list):
+      for release in releases:
+        tag = release.get("tag_name", "")
+        parsed = parse_version(tag)
+        if parsed:
+          latest_tag = tag
+          latest_version_tuple = parsed
+          found_valid_version = True
+          break
+  else:
+    print(f"GitHub API error ({resp.status_code}): {resp.text}")
+    sys.exit(1)
 
 
 # Use the new functions to get and check all TOC versions
