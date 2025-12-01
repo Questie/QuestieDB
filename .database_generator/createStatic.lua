@@ -173,6 +173,19 @@ function DumpDatabase(questiedb_version, questie_version, debug)
 
   -- ! Export L10n data in both formats
   print(c("\nDumping L10n overrides", "yellow"))
+
+  -- Dump the full l10n data (Kept for reference, not used currently)
+  -- local fullL10nDumpString = l10n_loader.DumpL10nData(Meta.L10nMeta, dbData.entityTypes, l10nOverride)
+  -- local fullL10nPath = f("%s/l10n/%s/l10nData.lua-table", basePath, capitalizedQuestieDBVersion)
+  -- local fullL10nFile = io.open(fullL10nPath, "w")
+  -- if fullL10nFile and fullL10nDumpString then
+  --   fullL10nFile:write(fullL10nDumpString)
+  --   fullL10nFile:close()
+  --   print("Dumped full l10n data to " .. fullL10nPath)
+  -- else
+  --   print("Failed to open file for writing: " .. fullL10nPath)
+  -- end
+
   local l10nDumpStrings = l10n_loader.DumpL10nDataByType(Meta.L10nMeta, dbData.entityTypes, l10nOverride)
   local l10nPathsByType = {}
   for _, entityType in ipairs(dbData.entityTypes) do
