@@ -9,11 +9,10 @@ from __future__ import annotations
 import signal
 import threading
 import time
+import os
 from pathlib import Path
 from typing import Optional, Iterable
-import requests
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
+import httpx
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import sitemap_filters
 from proxy import RateLimitedProxyManager  # noqa: F401
@@ -35,29 +34,53 @@ from sitemap_types import (
 # manager = RateLimitedProxyManager(rate_limit_seconds=0.1)
 manager = FastProxyManager(rate_limit_seconds=0.5)  # Use FastProxyManager for better performance
 
+# Thread-local storage for persistent httpx clients per thread
+_thread_local = threading.local()
 
-def _create_worker_session(locale: Locale) -> requests.Session:
-  """Creates a thread-safe requests session for a worker."""
-  session = requests.Session()
-  retry_strategy = Retry(
-    total=3,
-    backoff_factor=1,
-    status_forcelist=[429, 500, 502, 503, 504],
-  )
-  adapter = HTTPAdapter(max_retries=retry_strategy)
-  session.mount("https://", adapter)
-  session.mount("http://", adapter)
-  session.headers.update(
-    {
-      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-      "Accept-Language": f"{locale.value[:2]}-{locale.value[2:]},{locale.value[:2]};q=0.9,en;q=0.5",
-    }
-  )
-  return session
+
+def _get_worker_client(locale: Locale) -> httpx.Client:
+  """Get or create a thread-local persistent HTTP/2 client for a worker."""
+  if not hasattr(_thread_local, "client") or _thread_local.client is None:
+    _thread_local.client = httpx.Client(
+      http2=True,
+      timeout=10.0,
+      limits=httpx.Limits(max_connections=1, max_keepalive_connections=1),
+      headers={
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+        "Accept-Language": f"{locale.value[:2]}-{locale.value[2:]},{locale.value[:2]};q=0.9,en;q=0.5",
+        "Accept-Encoding": "gzip, deflate",
+      },
+    )
+  return _thread_local.client
+
+
+def _cleanup_worker_client() -> None:
+  """Clean up thread-local client when a worker thread finishes."""
+  if hasattr(_thread_local, "client") and _thread_local.client is not None:
+    _thread_local.client.close()
+    _thread_local.client = None
+
+
+LOG_FILE = os.path.join(os.path.dirname(__file__), "fetch_debug.log")
+
+
+def log_metadata(url, response, elapsed):
+  """Writes useful metadata to a local log file for debugging."""
+  enc = response.headers.get("Content-Encoding", "none")
+  cache = response.headers.get("X-Cache", "N/A")
+  size = len(response.content)
+  status = response.status_code
+
+  line = f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {url}\n  → status={status}, encoding={enc}, size={size} bytes, time={elapsed:.3f}s, cache={cache}\n"
+
+  # Append log entry safely even if multithreaded
+  with threading.Lock():
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
+      f.write(line)
 
 
 def _fetch_worker(entity: WowheadEntity, locale: Locale, stop_event: threading.Event) -> tuple[WowheadEntity, Optional[str]]:
-  """Worker function to fetch a single URL. Designed to be run in a thread pool."""
+  """Worker function to fetch a single URL using HTTP/2. Designed to be run in a thread pool."""
   # Check if we should stop before starting work
   if stop_event.is_set():
     return entity, None
@@ -66,6 +89,7 @@ def _fetch_worker(entity: WowheadEntity, locale: Locale, stop_event: threading.E
     url = entity.generate_tooltip_url()
   else:
     url = entity.generate_url()
+
   try:
     # Check again before network operation
     if stop_event.is_set():
@@ -88,17 +112,48 @@ def _fetch_worker(entity: WowheadEntity, locale: Locale, stop_event: threading.E
         # No proxies available and no wait time means no proxies configured
         break
 
-    proxies = {"http": next_proxy, "https": next_proxy} if next_proxy else {}
+    # Configure proxy for httpx (httpx uses tuple format)
+    proxy_url = f"http://{next_proxy}" if next_proxy else None
+    mounts = {
+      "http://": httpx.HTTPTransport(proxy=proxy_url) if proxy_url else None,
+      "https://": httpx.HTTPTransport(proxy=proxy_url) if proxy_url else None,
+    }
+    # Filter out None values
+    mounts = {k: v for k, v in mounts.items() if v is not None}
 
-    with _create_worker_session(locale) as session:
-      # print(f"Fetching: {url}")
-      response = session.get(url, timeout=10, proxies=proxies)
-      response.raise_for_status()
-      # The RateLimitedProxyManager handles the delay, so no extra sleep is needed here.
-      return entity, response.text
-  except requests.exceptions.RequestException as e:
+    client = _get_worker_client(locale)
+
+    # Retry logic with backoff
+    max_retries = 3
+    for attempt in range(max_retries):
+      try:
+        if stop_event.is_set():
+          return entity, None
+
+        response = client.get(url, timeout=10.0)
+        response.raise_for_status()
+
+        log_metadata(url, response, response.elapsed.total_seconds())
+
+        # The FastProxyManager handles the delay
+        return entity, response.text
+      except httpx.HTTPStatusError as e:
+        if e.response.status_code in [429, 500, 502, 503, 504]:
+          # Retryable error
+          if attempt < max_retries - 1:
+            backoff = 2**attempt
+            if stop_event.wait(timeout=backoff):
+              return entity, None
+            continue
+        raise
+  except httpx.RequestError as e:
     print(f"Error fetching {url}: {e}")
     return entity, None
+  finally:
+    # Don't close the client; it's thread-local and reused for subsequent requests in this thread
+    pass
+
+  return entity, None
 
 
 class WowheadFetcher:
@@ -235,29 +290,23 @@ Status: {"Stopping..." if self.is_stopped() else "Running"}"""
 
   # ? Fetching functions
 
-  def _create_session(self) -> requests.Session:
-    # This session is now only used for the sitemap fetcher, which is single-threaded.
-    session = requests.Session()
-    retry_strategy = Retry(
-      total=3,
-      backoff_factor=1,
-      status_forcelist=[429, 500, 502, 503, 504],
-    )
-    adapter = HTTPAdapter(max_retries=retry_strategy)
-    session.mount("https://", adapter)
-    session.headers.update(
-      {
+  def _create_session(self) -> httpx.Client:
+    # This client is used for single-threaded sitemap fetching with HTTP/2
+    client = httpx.Client(
+      http2=True,
+      timeout=10.0,
+      limits=httpx.Limits(max_connections=1, max_keepalive_connections=1),
+      headers={
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
         "Accept-Language": f"{self.locale.value[:2]}-{self.locale.value[2:]},{self.locale.value[:2]};q=0.9,en;q=0.5",
-      }
+      },
     )
-    return session
+    return client
 
   def _seed_versions(self) -> None:
     """Seed the database with known expansion versions."""
     for version in VersionSlug:
       add_version(self.conn, version.value, version.order_index)
-
 
   def _fetch_entities(self, entities: Iterable[WowheadEntity], limit: Optional[int]) -> tuple[int, int]:
     """Helper to fetch and store a list of entities concurrently."""

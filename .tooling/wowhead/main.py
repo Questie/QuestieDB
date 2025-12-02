@@ -22,26 +22,26 @@ def run_with_controller():
     for loc in Locale:
       # if loc == Locale.koKR or loc == Locale.zhCN or loc == Locale.zhTW or loc == Locale.ruRU:
       operations.append((VersionSlug.CLASSIC, "quest", None, loc))
-      operations.append((VersionSlug.TBC, "quest", None, loc))
-      operations.append((VersionSlug.WOTLK, "quest", None, loc))
-      operations.append((VersionSlug.CATA, "quest", None, loc))
-      operations.append((VersionSlug.MOP_CLASSIC, "quest", None, loc))
+    #   operations.append((VersionSlug.TBC, "quest", None, loc))
+    #   operations.append((VersionSlug.WOTLK, "quest", None, loc))
+    #   operations.append((VersionSlug.CATA, "quest", None, loc))
+    #   operations.append((VersionSlug.MOP_CLASSIC, "quest", None, loc))
 
-    for loc in Locale:
-      # if loc == Locale.koKR or loc == Locale.zhCN or loc == Locale.zhTW or loc == Locale.ruRU:
-      operations.append((VersionSlug.CLASSIC, "object", None, loc))
-      operations.append((VersionSlug.TBC, "object", None, loc))
-      operations.append((VersionSlug.WOTLK, "object", None, loc))
-      operations.append((VersionSlug.CATA, "object", None, loc))
-      operations.append((VersionSlug.MOP_CLASSIC, "object", None, loc))
+    # for loc in Locale:
+    #   # if loc == Locale.koKR or loc == Locale.zhCN or loc == Locale.zhTW or loc == Locale.ruRU:
+    #   operations.append((VersionSlug.CLASSIC, "object", None, loc))
+    #   operations.append((VersionSlug.TBC, "object", None, loc))
+    #   operations.append((VersionSlug.WOTLK, "object", None, loc))
+    #   operations.append((VersionSlug.CATA, "object", None, loc))
+    #   operations.append((VersionSlug.MOP_CLASSIC, "object", None, loc))
 
-    for loc in Locale:
-      # if loc == Locale.koKR or loc == Locale.zhCN or loc == Locale.zhTW or loc == Locale.ruRU:
-      operations.append((VersionSlug.CLASSIC, "npc", None, loc))
-      operations.append((VersionSlug.TBC, "npc", None, loc))
-      operations.append((VersionSlug.WOTLK, "npc", None, loc))
-      operations.append((VersionSlug.CATA, "npc", None, loc))
-      operations.append((VersionSlug.MOP_CLASSIC, "npc", None, loc))
+    # for loc in Locale:
+    #   # if loc == Locale.koKR or loc == Locale.zhCN or loc == Locale.zhTW or loc == Locale.ruRU:
+    #   operations.append((VersionSlug.CLASSIC, "npc", None, loc))
+    #   operations.append((VersionSlug.TBC, "npc", None, loc))
+    #   operations.append((VersionSlug.WOTLK, "npc", None, loc))
+    #   operations.append((VersionSlug.CATA, "npc", None, loc))
+    #   operations.append((VersionSlug.MOP_CLASSIC, "npc", None, loc))
 
     # Start the HTTP control server with configurable default refresh frequency
     # Options: 1000ms (1s), 2000ms (2s), 5000ms (5s), 10000ms (10s), 30000ms (30s), 60000ms (1m)

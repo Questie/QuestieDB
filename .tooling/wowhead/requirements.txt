@@ -1,4 +1,4 @@
 beautifulsoup4
 lxml
 python-dotenv
-requests
+httpx[http2]>=0.24.0
