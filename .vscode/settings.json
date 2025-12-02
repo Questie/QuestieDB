@@ -1,5 +1,6 @@
 {
   "Lua.workspace.ignoreDir": [
+    ".lua-data",
     ".generate_database",
     ".ai_lua",
     ".ai_py",
@@ -96,6 +97,9 @@
   "Lua.diagnostics.libraryFiles": "Opened",
   "search.quickOpen.includeSymbols": false, // Include symbols in quick open
   "Lua.workspace.useGitIgnore": false,
+  "Lua.diagnostics.groupFileStatus": {
+    "await": "Any"
+  },
 
   "Lua.diagnostics.severity": {},
   "Lua.diagnostics.enable": true,
@@ -163,5 +167,7 @@
       ".ai_lua/Prompts": true,
       ".ai_py/Prompts": true,
     },
-    "github.copilot.chat.codeGeneration.instructions": [],
+
+    // Some extension specific settings
+    "vstoys.git.fileDecorator.targetBranch": "dev"
 }

@@ -61,12 +61,12 @@ QuestMeta.questKeys = {
 
 ---@enum QuestObjectiveKeys
 QuestMeta.objectiveKeys = {
-  CREATURE   = 1,  -- Creature Objective
-  OBJECT     = 2,  -- Object Objective
-  ITEM       = 3,  -- Item Objective
-  REPUTATION = 4,  -- Reputation Objective
-  KILLCREDIT = 5,  -- Kill Credit Objective
-  SPELL      = 6,  -- Spell Objective
+  CREATURE   = 1, -- Creature Objective
+  OBJECT     = 2, -- Object Objective
+  ITEM       = 3, -- Item Objective
+  REPUTATION = 4, -- Reputation Objective
+  KILLCREDIT = 5, -- Kill Credit Objective
+  SPELL      = 6, -- Spell Objective
 }
 
 --- Contains the name of data as keys and their index as value for quick lookup

@@ -79,5 +79,7 @@ Perfy
 # AI related files
 *.ai
 .aider*
+.claude
 
 WoW-API
+.lua-data
