@@ -190,7 +190,7 @@ local function CreateSearchUI()
   tabContentContainer:SetPoint("TOPLEFT", f, "TOPLEFT", 4, -70)
   tabContentContainer:SetPoint("BOTTOMRIGHT", f, "BOTTOMRIGHT", -4, 4)
   local tab1Content = CreateFrame("Frame", nil, tabContentContainer)
-  tab1Content:SetAllPoints(true)
+  tab1Content:SetAllPoints(nil, true)
   table.insert(f.tabContents, tab1Content)
 
   -- Tab 2 (New Button)
@@ -200,7 +200,7 @@ local function CreateSearchUI()
   table.insert(f.tabs, tab2)
 
   local tab2Content = CreateFrame("Frame", nil, tabContentContainer)
-  tab2Content:SetAllPoints(true)
+  tab2Content:SetAllPoints(nil, true)
   table.insert(f.tabContents, tab2Content)
   -- New Button for Tab 2
   local helloButton = CreateFrame("Button", nil, tab2Content, "UIPanelButtonTemplate")
