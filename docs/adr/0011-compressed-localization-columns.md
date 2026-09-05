@@ -34,11 +34,16 @@ enUS decodes no localization blocks. A non-enUS client decodes its four availabl
 during addon load and retains them for the session. Locale changes decode replacement blocks
 first, swap them atomically, then invalidate entity caches.
 
-Providers find positions with a same-ID and sequential-position fast path, followed by binary
-search for random access. They use the backend's base ID list rather than composed IDs, so a
-Correction-added entity has no accidental translation.
+Base translation providers find positions with a same-ID and sequential-position fast path,
+followed by binary search for random access. They use the backend's base ID list rather than
+composed IDs, so a Correction-added entity has no accidental Base translation. ADR 0013 allows
+an explicit Dynamic Translation Correction to target that entity while it exists.
 
 ### 3. Existing read contracts stay unchanged
+
+**The Correction-priority statement below is superseded by
+[ADR 0013](./0013-locale-first-translatable-fields.md).** Its storage and value-ownership
+statements remain current.
 
 Corrections outrank localization. Missing translations fall back to base values. CBOR produces
 translated objective lists with their final type, and shared.lua's copy producer still returns

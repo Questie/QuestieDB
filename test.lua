@@ -2483,16 +2483,16 @@ suite("read-contract", function()
   equal(baked.Quest.Get(addedId, "name"), nil, "withdrawal removes readability")
   equal(#baked.Quest.GetAllIds(), baseCount, "withdrawal removes the id from enumeration")
 
-  --- ADR D8: Corrections win over localization, and provenance is honest.
+  --- ADR 0013: translations win over English Corrections, and provenance is honest.
   if baked.l10n.IsAvailable() then
     baked.l10n.SetLocale("deDE")
     equal(baked.Quest.Get(2, "name"), "Klaue von Scharfkralle", "the translation reads through")
     baked.Corrections.RegisterRuntimeCorrection("FixingAddon", "Quest", "fix-name",
       function() return { [2] = { [1] = "Corrected Name" } } end, 10)
     baked.Corrections.ApplyRegisteredCorrections("FixingAddon")
-    equal(baked.Quest.Get(2, "name"), "Corrected Name",
-      "a corrected field is NOT replaced by a stale lookup translation")
-    equal(baked.GetProvenance("Quest", 2, "name"), "FixingAddon",
+    equal(baked.Quest.Get(2, "name"), "Klaue von Scharfkralle",
+      "an English correction does not suppress the active translation")
+    equal(baked.GetProvenance("Quest", 2, "name"), "QuestieTDB",
       "provenance names the owner whose value is actually returned")
     equal(baked.Quest.Get(2, "objectivesText") ~= nil, true,
       "an uncorrected localizable field still translates")
@@ -2692,7 +2692,7 @@ suite("name-index", function()
   equal(Object.IdsByName("Old Lion Statue"), { 31 }, "withdrawing the deletion restores the name")
 
   -- The index follows the locale: after SetLocale the translated name resolves and the
-  -- English one does not, and switching back restores it. Corrections outrank translations
+  -- English one does not, and switching back restores it. Translations outrank Corrections
   -- here exactly as they do for the getter, because the index is built from it. The German
   -- name is read from the getter rather than spelled out, so the check is about the index
   -- agreeing with the read, not about one fixture string.
@@ -2707,8 +2707,8 @@ suite("name-index", function()
     Lib.Corrections.RegisterRuntimeCorrection("FixingAddon", "Object", "rename",
       function() return { [31] = { [1] = "Corrected In Every Locale" } } end, 10)
     Lib.Corrections.ApplyRegisteredCorrections("FixingAddon")
-    equal(Object.IdsByName("Corrected In Every Locale"), { 31 }, "deDE: a corrected name outranks the translation")
-    check(not contains(Object.IdsByName(german), 31), "deDE: the translation keeps no stale entry")
+    equal(Object.IdsByName("Corrected In Every Locale"), nil, "deDE: an English correction does not mask the translation")
+    check(contains(Object.IdsByName(german), 31), "deDE: the translation remains indexed")
     Lib.Corrections.UnregisterCorrection("FixingAddon", "Object", "rename")
     Lib.Corrections.ApplyRegisteredCorrections("FixingAddon")
     Lib.l10n.SetLocale("enUS")
@@ -3385,12 +3385,12 @@ suite("l10n", function()
     function() return { [2] = { [objectiveField] = correctedObjectives } } end, 10)
   Lib.Corrections.ApplyRegisteredCorrections("L10nTableTest")
   local correctedFirst = Lib.Quest.objectivesText(2)
-  equal(correctedFirst, correctedObjectives,
-    "a corrected objective list outranks the active translation")
+  equal(correctedFirst, expectedObjectives,
+    "the translated objective list outranks the English correction")
   correctedFirst[1] = "caller mutation"
-  equal(Lib.Quest.objectivesText(2), correctedObjectives,
-    "a corrected translated field still returns fresh table copies")
-  equal(Lib.GetProvenance("Quest", 2, "objectivesText"), "L10nTableTest",
+  equal(Lib.Quest.objectivesText(2), expectedObjectives,
+    "a translated field still returns fresh table copies")
+  equal(Lib.GetProvenance("Quest", 2, "objectivesText"), "QuestieTDB",
     "corrected objective provenance names the winning owner")
   Lib.Corrections.UnregisterCorrection("L10nTableTest", "Quest", "objectives")
   Lib.Corrections.ApplyRegisteredCorrections("L10nTableTest")
@@ -3496,6 +3496,22 @@ suite("l10n", function()
     "an initial non-enUS load rejects a missing selected-type block")
 
   client.reset()
+end)
+
+--------------------------------------------------------------------------------------------
+-- Translation corrections
+--------------------------------------------------------------------------------------------
+
+suite("localization-overrides", function()
+  dofile("tools/localization-overrides.test.lua")(check, QUESTIE_PATH)
+end)
+
+suite("translation-corrections", function()
+  dofile("tools/translation-corrections.test.lua")(check, equal)
+end)
+
+suite("titan-translations", function()
+  dofile("tools/titan-translations.test.lua")(check, equal, QUESTIE_PATH)
 end)
 
 --------------------------------------------------------------------------------------------

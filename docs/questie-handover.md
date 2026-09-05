@@ -202,47 +202,75 @@ See "Data-shaped corrections: `Set`" in docs/api.md.
 
 ### External translation addons
 
-On the assessed Questie migration branch, `QuestieDBLocale.BuildExternalLocaleCorrections` converts
-legacy `QUESTIE_LOCALES_OVERRIDE` entity lookups (`itemLookup`, `questLookup`, `npcNameLookup`, and
-`objectLookup`) into four function-shaped Dynamic Corrections under owner `Questie`. It filters to
-IDs the composed database already has, withdraws the old locale before filtering a replacement, and
-applies the initial values before `QuestieDB.Initialize`. This is a compatibility path, not the
-target direct-publisher design.
+#### Historical assessment
 
-The adapter expects a quest lookup row shaped as `{name, {objectives}}`: slot `[1]` becomes `name`
-and slot `[2]` becomes `objectivesText`. It does not support the older
-`{name, {description}, {objectives}}` shape and does not discard empty strings or tables. As of
-[Jakanis/QuestieUkrainianTranslation commit `0d6e1d3`](https://github.com/Jakanis/QuestieUkrainianTranslation/commit/0d6e1d3474972c54d205e1368689bf31011f2f4b),
-that addon still emits the older three-slot quest rows. The adapter and addon must agree on a shape
-before the migration branch can claim compatibility.
+The first assessed Questie migration converted legacy `QUESTIE_LOCALES_OVERRIDE` entity lookups
+into ordinary entity Corrections. It supported only the two-slot Quest shape and conflicted with
+QuestieTDB's later locale-first read contract. The limitation recorded for
+[Jakanis/QuestieUkrainianTranslation commit `0d6e1d3`](https://github.com/Jakanis/QuestieUkrainianTranslation/commit/0d6e1d3474972c54d205e1368689bf31011f2f4b)
+was accurate for that revision. It is retained as migration history, not current compatibility
+guidance.
 
-A translation addon can instead publish Correction rows under its own owner. That gives provenance
-to the real source and removes Questie from the entity data path:
+#### Current consumer integration
+
+The integration built on revision `cb986af34` in checkout
+`/home/logon/projects/Questie-clones/Questie-tdb-claude`, branch `QuestieTDB-implementation`, passed
+1,609 consumer tests with real-provider conformance, production lint, and loader validation.
+Support-wrapper checks passed for all five flavors and both factions. This is not evidence of a
+released Questie revision or a completed live smoke matrix.
+
+`l10n.InitializeUILocale` now handles UI strings only. Login Initialization then requires Contract
+Version 2 and a callable `LibQuestieDB.l10n.SetCorrection` before selecting the provider locale and
+calling `l10n.PublishLocaleOverrideEntityNames`. The adapter converts all four optional entity
+lookups to rows keyed by QuestieTDB's numeric entity field indexes. It publishes the four slots as
+owner `QuestieLocalesOverride`, name `EntityNames`.
+
+The Quest adapter accepts both `{name, objectives}` and the older
+`{name, description, objectives}` shape. A present third slot is treated only as objectives, so a
+malformed third slot cannot make the description become objective text. Unknown IDs and malformed
+lookup entries are skipped. Empty or malformed fields are omitted while other valid fields in the
+same row can still publish. `enUS` entity overrides are not published. Re-publishing replaces each complete slot; removing the external global or changing
+its locale withdraws the old locale's four slots without touching other names under the owner.
+
+The adapter also registers a valid inactive locale, so a later `SetLocale` can activate it without
+re-reading the external addon. This includes custom locales such as `ukUA`: `SetCorrection` accepts
+any non-empty locale other than `enUS`, while the generated Base locale list and `localeIndex`
+remain the same nine entries. Missing custom-locale fields fall through to the corrected or base
+English entity value.
+
+A translation addon can eventually publish Dynamic Translation Correction rows directly under its
+own owner. That gives provenance to the direct source and removes Questie from the entity data path:
 
 ```lua
-local registrar = LibQuestieDB.GetRegistrar("QuestieUkrainianTranslation")
-registrar.Set("Item", "names", itemRows)      -- entityId -> numeric field index -> value
-registrar.Set("Quest", "text", questRows)
-registrar.Set("Npc", "names", npcRows)
-registrar.Set("Object", "names", objectRows)
+LibQuestieDB.l10n.SetCorrection(
+    "MyTranslationAddon", locale, "Item", "names", itemRows)
+LibQuestieDB.l10n.SetCorrection(
+    "MyTranslationAddon", locale, "Quest", "text", questRows)
+LibQuestieDB.l10n.SetCorrection(
+    "MyTranslationAddon", locale, "Npc", "names", npcRows)
+LibQuestieDB.l10n.SetCorrection(
+    "MyTranslationAddon", locale, "Object", "names", objectRows)
 ```
 
 Requirements for that direct-publisher migration:
 
-1. Build Correction rows with the numeric field indexes from `LibQuestieDB.Meta`, not compact lookup
-   tuples.
-2. Publish only when the addon's locale is Questie's effective locale. Withdraw every owned slot
-   with `nil` before building a replacement locale, so an entity added only by the old layer cannot
-   pass the next `Exists` filter.
-3. Filter unknown IDs with `Exists` unless creating an entity is intended; a Correction can add one.
-4. Skip empty strings and `{}` unless a blank name or cleared field is intentional.
-5. Publish before Questie's Login Initialization reads the composed database, so tooltips and caches
-   never see English first.
-6. Keep `QUESTIE_LOCALES_OVERRIDE.locale`, `.localeName`, and `.translations` while Questie still
+1. Build rows with numeric **entity field indexes** from `LibQuestieDB.Meta`, not compact lookup
+   tuples or Localization-block column indexes.
+2. Pass the target locale with every slot. Locale selection activates only that locale's slots, so
+   changing locale does not require reapplying entity Corrections.
+3. Use a non-empty locale other than `enUS`. Custom locales need no generated Base block.
+4. Do not rely on translations to add entities. A row becomes visible only while the composed
+   entity database reports that ID as existing.
+5. Skip empty scalar strings and empty or sparse objective lists; the interface rejects them.
+   Withdraw a complete named slot with `nil` when it is no longer owned.
+6. Publishing after a localized read is safe because an active-locale write invalidates that
+   entity type's reads and Name index. Publishing before Questie's entity reads avoids doing that
+   work twice.
+7. Keep `QUESTIE_LOCALES_OVERRIDE.locale`, `.localeName`, and `.translations` while Questie still
    consumes the addon's UI strings.
 
-Once known translation addons publish directly, Questie can stop adapting their entity lookup
-fields.
+Once known translation addons publish through the localization interface, Questie can stop
+adapting their entity lookup fields.
 
 ## Questie-side checklist
 
@@ -268,9 +296,10 @@ Each item is behavior that would otherwise be lost by deleting the compiler and 
       Questie-owned policy.
 - [x] **Retain asynchronous missing-Item repair.** The migration branch publishes its results as
       `RuntimeItemRepair` under owner `Questie`; scheduling and cache knowledge stay consumer-owned.
-- [ ] **Consume support data through `LibQuestieDB.Support`.** Provider synchronization and drift
-      validation are complete in QuestieTDB, but the migration branch still loads Questie's Zone,
-      XP, Drop, and faction-template data files.
+- [x] **Consume support data through `LibQuestieDB.Support`.** The current review checkout binds
+      Zone, XP, Drop, and faction-template data from the provider while keeping Questie's wrapper
+      functions and policy. The local payload files remain in the tree but are no longer loaded by
+      the flavor TOCs. Mists still combines Mists Wowhead drops with Cata private-server drops.
 - [x] **QuestieTDB's waypoint pass is verified at zero divergences** on all five flavours, so
       `QuestieCorrections:PreCompile()` and `OptimizeWaypoints` can be deleted from Questie at
       switch-over. `Modules/Libs/RamerDouglasPeucker.lua` is byte-copied into QuestieTDB
@@ -295,11 +324,12 @@ Each item is behavior that would otherwise be lost by deleting the compiler and 
 The entity differential is strong, but it does not cover every value Questie consumes. The
 cutover audit found provider work outside ordinary entity-field parity:
 
-- Built-in lookup overrides and Titan zhCN corrections need importing
-  ([#14](https://github.com/Questie/QuestieTDB/issues/14)).
+- Built-in lookup overrides and Titan zhCN translations are implemented with locale-first reads
+  and Translation Corrections ([#14](https://github.com/Questie/QuestieTDB/issues/14)). The isolated
+  five-flavor generation and full gate passed; custom-locale support also passed focused checks.
 - Zone, XP, Drop, and faction-template support data is synchronized and covered by a semantic drift
-  gate ([#15](https://github.com/Questie/QuestieTDB/issues/15)). Questie's migration branch still
-  needs to consume `LibQuestieDB.Support`.
+  gate ([#15](https://github.com/Questie/QuestieTDB/issues/15)). The current Questie checkout consumes
+  it through `LibQuestieDB.Support`; consumer tests and all five-flavor wrapper checks passed.
 - Titan corrections require both the Wrath flavor and active season 109
   ([#16](https://github.com/Questie/QuestieTDB/issues/16)). The complete all-flavor matrix and
   accepted-record review passed, and the GitHub issue is closed.

@@ -33,7 +33,15 @@ return function(check, questiePath)
   local vanilla, scopedNamespace, env = fidelity.loadProvider(sourceFiles, "Vanilla", 0, "source")
   check(vanilla.killCreditObjectiveFirst[52] == nil, "Vanilla excludes Cata quest 52")
   check(vanilla.itemObjectiveFirst[503] == true, "Vanilla retains its own quest 503")
-  local sod = fidelity.loadProvider(sourceFiles, "Vanilla", 2, "source")
+  local sod, sodNamespace = fidelity.loadProvider(sourceFiles, "Vanilla", 2, "source")
+  check(lib.deepEqual(sodNamespace.Meta.Quest, dofile("src/meta/questMeta.lua")),
+    "lightweight correction loading uses the real Quest schema")
+  local requiredRacesProvider
+  for _, entry in ipairs(sodNamespace.Corrections.Select({ owner = "QuestieTDB", datatype = "Quest", dynamic = true })) do
+    if entry.name == "Sod:sodRequiredRaces" then requiredRacesProvider = entry.func end
+  end
+  check(type(requiredRacesProvider) == "function",
+    "lightweight correction loading retains authored SoD requiredRaces registration")
   for _, id in ipairs({ 85304, 85386, 89567 }) do
     check(vanilla.eventObjectiveFirst[id] == nil, "plain Vanilla excludes SoD event " .. id)
     check(sod.eventObjectiveFirst[id] == true, "SoD includes event " .. id)

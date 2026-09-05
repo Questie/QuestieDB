@@ -80,6 +80,10 @@ A's overlay-added ids were readable but invisible to enumeration.)
 
 ### 8. Corrections win over localization
 
+**Superseded by [ADR 0013](./0013-locale-first-translatable-fields.md).** This records the
+historical merge decision; the replacement makes active non-English localization authoritative
+for translatable fields.
+
 The Correction Overlay outranks the l10n overlay: when provenance records that a
 correction supplied a localizable field, the lookup translation is skipped — a copied
 lookup must not replace corrected text with stale text, and `GetProvenance` must never

@@ -117,6 +117,7 @@ config.runtimeFiles = {
   sourceReader = "src/read/source.lua",
   tail = {
     "src/l10n/overlay.lua",
+    "src/l10n/Titan/zhCN.lua",
     "src/ui/modeIndicator.lua",
     "src/api.lua",
   },

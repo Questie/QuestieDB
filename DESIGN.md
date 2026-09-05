@@ -42,7 +42,7 @@ truth for the data model.**
 | Schema / field keys | `Database/{quest,npc,item,object}DB.lua` → a `Meta` layer |
 | Data corrections | most of `Database/Corrections/*Fixes.lua` |
 | Corrections registry | `QuestieCorrections:Initialize` / `MinimalInit` |
-| Entity localization | `Localization/lookups/<Expansion>/lookup{Quests,Npcs,Objects,Items}/*` |
+| Entity localization | `Localization/lookups/<Expansion>/lookup{Quests,Npcs,Objects,Items}/*` plus entity rows from `lookupOverrides.lua` |
 | Support data | `Database/Zones/data/`, `QuestXP/DB/`, `DropTables/data/`, `FactionTemplates/` |
 | Data validators | `cli/validators.lua`, `cli/validate-*.lua` |
 | Icon / enum constants used by corrections | `Questie.ICON_TYPE_*` |
@@ -66,7 +66,7 @@ truth for the data model.**
 | Blacklists — `hiddenQuests`, `questItemBlacklist`, `questNPCBlacklist`, `HardcoreBlacklist` | Hiding is consumer policy, not a database fact |
 | Consumer-selected corrections — display suppression, calendar/location state, phases, settings, projections, caches, asynchronous Item repair | Depend on Questie-owned runtime state or policy; moving them would invert the dependency |
 | `Localization/Translations/*` and `l10n("...")` | UI text |
-| `lookupZones`, `lookupQuestCategories`, `lookupOverrides` | Zone/category names, not entity data |
+| `lookupZones`, `lookupQuestCategories` | Zone/category names, not entity data |
 | `Constants.lua`, `MeetingStones.lua` | Small, and Questie's own concepts |
 | Map, tracker, tooltips, everything above the seam | Unaffected |
 
@@ -79,6 +79,7 @@ export format.
 | --- | --- | --- |
 | `Database/<Exp>/<x>{Quest,Npc,Item,Object}DB.lua` | `QuestieDB.questData = [[return {...}]]` | mock `QuestieLoader`, execute, `loadstring` the inner string |
 | `Localization/lookups/<Exp>/lookup*/<locale>.lua` | guarded by `if GetLocale() ~= "deDE" then return end` | stub `GetLocale()` once per locale |
+| `Localization/lookups/lookupOverrides.lua` | locale-gated whole-row entity translation replacements plus Titan zhCN rows | import as Static or Dynamic Translation Corrections according to applicability |
 | `Database/Zones/data/`, `QuestXP/DB/`, `DropTables/data/`, `FactionTemplates/` | `QuestieLoader:ImportModule(...)` then table assignment | same mock |
 
 Every input is already Lua, so this is a **mocked-environment loader, not a parser**. Questie's
@@ -484,11 +485,13 @@ locale and entity type. The columns align with the entity backend's ascending ID
 repeat no IDs. enUS decodes no localization. A non-enUS client decodes four blocks during addon
 load and keeps that locale's translations in memory.
 
-Two contracts from ADR 0003 remain load-bearing. **Corrections outrank translations:** when the
-Correction Overlay supplies a localizable field, the provider skips localization, so corrected
-text is never replaced by a stale lookup. **Table-typed fields keep their table shape:** CBOR
-stores `objectivesText` as a list, including legitimate locale-specific element counts, and the
-shared copy producer still returns a fresh mutable table on every read.
+Two contracts remain load-bearing. **The active non-English translation is authoritative for a
+translatable field:** Dynamic Translation Corrections win first, then the Base translation with
+Static Translation Corrections folded in, then normal corrected and base entity values. `enUS`
+bypasses localization, and fields outside the localization field set never enter that stack
+(ADR 0013). **Table-typed fields keep their table shape:** CBOR stores `objectivesText` as a list,
+including legitimate locale-specific element counts, and the shared copy producer still returns
+a fresh mutable table on every read.
 
 l10n stays **inside** the QuestieTDB TOC rather than becoming a separate addon. Compression
 across whole field columns removes about 65% of localization directive bytes. The retained
@@ -497,7 +500,9 @@ Mists. The inactive eight locales remain compressed metadata and never enter the
 
 The nine stored locales are `deDE, esES, esMX, frFR, koKR, ptBR, ruRU, zhCN, zhTW`; base data
 is already enUS. Field coverage is quest `name` + `objectivesText`, npc `name` + `subName`, item
-`name`, and object `name`.
+`name`, and object `name`. Localization has three inputs: Base translations, Static Translation
+Corrections folded into generated blocks, and Dynamic Translation Corrections selected at query
+time. Source mode omits ordinary Base translations but can apply Dynamic Translation Corrections.
 
 ## Variants: SoD, Classic+
 

@@ -124,7 +124,17 @@ LibQuestieDB.ApplyRegisteredCorrections = LibQuestieDB.Corrections.ApplyRegister
 LibQuestieDB.RegisterCorrection = LibQuestieDB.Corrections.RegisterCorrection
 LibQuestieDB.RegisterRuntimeCorrection = LibQuestieDB.Corrections.RegisterRuntimeCorrection
 LibQuestieDB.GetRegistrar = LibQuestieDB.Corrections.GetRegistrar
-LibQuestieDB.GetProvenance = LibQuestieDB.Corrections.GetProvenance
+---Report the owner of the value returned by composed reads, including localization.
+---@param datatype string
+---@param id number
+---@param key string|number
+---@return string?
+function LibQuestieDB.GetProvenance(datatype, id, key)
+  local l10n = LibQuestieDB.l10n
+  local translatedOwner = l10n and l10n.GetProvenance and l10n.GetProvenance(datatype, id, key)
+  if translatedOwner then return translatedOwner end
+  return LibQuestieDB.Corrections.GetProvenance(datatype, id, key)
+end
 LibQuestieDB.GetOwners = LibQuestieDB.Corrections.GetOwners
 LibQuestieDB.SetCorrection = LibQuestieDB.Corrections.Set
 

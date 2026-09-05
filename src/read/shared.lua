@@ -263,13 +263,11 @@ function shared.CreateEntity(meta, backend)
 
     if l10nProvider and l10nScalarFields and l10nIsActive and l10nIsActive() then
       for scalarIndex in pairs(l10nScalarFields) do
-        if not layer or layer[scalarIndex] == nil then
-          local translated = l10nProvider(id, scalarIndex)
-          if translated ~= nil then
-            row[scalarIndex] = translated
-          elseif row[scalarIndex] == nil then
-            missingScalar(row, scalarIndex)
-          end
+        local translated = l10nProvider(id, scalarIndex)
+        if translated ~= nil then
+          row[scalarIndex] = translated
+        elseif row[scalarIndex] == nil then
+          missingScalar(row, scalarIndex)
         end
       end
     end
@@ -314,10 +312,8 @@ function shared.CreateEntity(meta, backend)
       cache[id] = byId
     end
 
-    -- The overlay probe happens here rather than in a helper so the localization step below
-    -- knows whether a Correction supplied the value: Corrections win over localization
-    -- (ADR 0003 D8) — a copied lookup must never replace corrected text with stale text, and
-    -- provenance must never name an owner for a value it did not supply.
+    -- Entity Corrections supply the English fallback. Active translations are authoritative
+    -- for translatable fields; a missing translation must still preserve an explicit delete.
     local value, corrected
     local layer = overlay[id]
     if layer ~= nil then
@@ -330,14 +326,13 @@ function shared.CreateEntity(meta, backend)
       end
     end
 
-    if not corrected then
-      -- Localization overlays base data only. A field with no translation falls back to the
-      -- base entity value; a corrected field never consults the lookup at all.
-      if l10nProvider then
-        local translated = l10nProvider(id, fieldIndex)
-        if translated ~= nil then value = translated end
-      end
-
+    local translated
+    if l10nProvider and (not l10nIsActive or l10nIsActive()) then
+      translated = l10nProvider(id, fieldIndex)
+    end
+    if translated ~= nil then
+      value = translated
+    elseif not corrected then
       if value == nil then
         if types[fieldIndex] == "table" and backend.tableProducer then
           -- The Producer closes over CBOR bytes. Its Presence-mask check uses the Scalar row
@@ -463,7 +458,7 @@ function shared.CreateEntity(meta, backend)
   --
   -- The reverse of the `name` getter: current composed name -> ascending ids. Built from the
   -- same `get` every read goes through, so it answers exactly what `Entity.name(id)` would —
-  -- the active locale, a Correction outranking a translation, an overlay-added entity present.
+  -- the active locale, the English fallback, and any overlay-added entity.
   --
   -- Built lazily on the first lookup, or explicitly through `BuildNameIndex` so a consumer
   -- chooses when to pay for the full pass. Never patched: any invalidation drops it and the

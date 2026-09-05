@@ -80,3 +80,23 @@ local spellObjectiveFirst = LibQuestieDB.ObjectiveFirst.spellObjectiveFirst[2]
 local currentLocale = LibQuestieDB.l10n.currentLocale
 ---@type string
 local selectedLocale = LibQuestieDB.l10n.SetLocale("deDE")
+
+-- Translation corrections are locale-specific, data-shaped slots using entity field indices.
+local translated = LibQuestieDB.l10n.SetCorrection("Consumer", "deDE", "Quest", "names", {
+  [2] = { [LibQuestieDB.Meta.QuestMeta.questKeys.name] = "Übersetzter Name" },
+})
+local translationOwner = LibQuestieDB.l10n.GetProvenance("Quest", 2, "name")
+LibQuestieDB.l10n.SetCorrection("Consumer", "deDE", "Quest", "names", nil)
+---@type boolean
+local translationChanged = translated
+---@type string?
+local translatedBy = translationOwner
+
+-- External translations can target a locale without generated Localization blocks.
+---@type QuestieTDBTranslationLocale
+local customLocale = "ukUA"
+LibQuestieDB.l10n.SetCorrection("Consumer", customLocale, "Quest", "names", {
+  [2] = { [LibQuestieDB.Meta.QuestMeta.questKeys.name] = "Перекладена назва" },
+})
+LibQuestieDB.l10n.SetLocale(customLocale)
+LibQuestieDB.l10n.SetCorrection("Consumer", customLocale, "Quest", "names", nil)

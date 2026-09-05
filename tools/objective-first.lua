@@ -106,7 +106,13 @@ function fidelity.loadProvider(files, flavorName, seasonId, mode, root)
   env.C_Seasons = { GetActiveSeason = function() return seasonId end }
   env.Enum = { SeasonID = { SeasonOfDiscovery = 2 } }
   local namespace = { config = config, flavor = assert(config.flavorByName[flavorName]), mode = mode }
-  -- The registry normally precedes the correction block in both full addon TOCs.
+  -- Authored corrections can resolve field keys at registration time. Load the real schema
+  -- before the registry, as both addon TOCs do, without loading any entity payloads.
+  for _, file in ipairs(files) do
+    if file:match("^src/meta/") then
+      execute(lib.readAll((root or ".") .. "/" .. file), file, env, namespace)
+    end
+  end
   execute(lib.readAll((root or ".") .. "/src/corrections/registry.lua"), "registry.lua", env, namespace)
   for _, file in ipairs(files) do
     if file:match("^src/corrections/") and file ~= "src/corrections/registry.lua" then

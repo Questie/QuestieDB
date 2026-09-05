@@ -35,7 +35,7 @@ Adjust the relative path if your editor workspace uses another layout.
 
 The declarations are a shipped API contract. Contributors must update `src/types/` when entity
 schemas or getters change, or when a public signature, overload, return nilability, structured
-value, or Corrections interface changes. Internal refactors that preserve those contracts do
+value, Corrections interface, or localization interface changes. Internal refactors that preserve those contracts do
 not require a type edit; `AGENTS.md` contains the file-by-file maintenance checklist.
 
 ---
@@ -111,8 +111,8 @@ they are shared, not copies.
 
 The reverse of the `name` getter: every composed id whose **current** name equals `name`
 exactly, ascending, or `nil` when none does. Current means what `Entity.name(id)` returns right
-now — the active locale, a Correction outranking a translation, an overlay-added entity present —
-because the index behind it is built from those reads and from nothing else.
+now, including the active locale and any overlay-added entities, because the index behind it is
+built from those reads and from nothing else.
 
 ```lua
 ObjectDB.IdsByName("Old Lion Statue")    --> { 31 }
@@ -322,7 +322,7 @@ apply, and constants the body reads are resolved at apply time.
 
 ### Precedence
 
-Two levels, the later-ranked writer wins:
+Within the corrected entity layer, the later-ranked writer wins at two levels:
 
 * outer: the order owners **first** applied or first wrote a `Set` slot — an owner's rank is
   fixed at that first write, and re-applying or re-writing refreshes that owner's layer **in
@@ -330,7 +330,9 @@ Two levels, the later-ranked writer wins:
 * inner: `loadOrder` within one owner
 
 `loadOrder` means "sequence within an owner", not a global sequence. Load order makes the outer
-level fall out naturally: `QuestieTDB` < `Questie` < third-party.
+level fall out naturally: `QuestieTDB` < `Questie` < third-party. An active non-English
+translation can replace the winning entity value for a translatable field; see
+[Localization](#localization).
 
 One idiom note: `[key] = {}` in a correction deletes the field for **every** field type — a
 deleted string or table reads `nil`, a deleted number falls to the existence-gated `0`
@@ -394,19 +396,37 @@ The long form is `LibQuestieDB.Corrections.Set(owner, datatype, name, rows)`, al
   (mutate your table, `Set` it again) is exactly right, while mutating it without a `Set`
   leaves the published view stale until some other write to the same datatype flushes.
 
-### Corrections outrank localization
+### Locale-first translatable fields
 
-A corrected field is returned as corrected in **every** locale — the lookup translation is
-skipped, because a copied lookup must not replace a fix with stale text. `GetProvenance`
-therefore always names the owner whose value you actually received. An *uncorrected*
-localizable field translates normally.
+Entity Corrections supply English values. For a translatable field and a locale other than
+`enUS`, localization resolves first:
+
+1. the winning Dynamic Translation Correction for that locale;
+2. the active Base translation, with Static Translation Corrections already folded in;
+3. the corrected entity value;
+4. the base entity value.
+
+`enUS` skips the first two layers. A missing non-English translation falls through to normal
+entity resolution. The winning English Correction is used when present; an explicit field
+deletion remains authoritative; otherwise the read reaches base data. Fields that are not
+translatable never enter localization. This keeps values such as `requiredRaces`
+entirely under normal entity Correction precedence. See [ADR 0013](./adr/0013-locale-first-translatable-fields.md).
 
 ### Who won
 
 ```lua
-LibQuestieDB.GetProvenance("Quest", 2, "name")   --> "MyAddon"
-LibQuestieDB.GetOwners()                         --> { "QuestieTDB", "Questie", "MyAddon" }
-LibQuestieDB.Corrections.debug = true            --> logs one owner overriding another
+LibQuestieDB.GetProvenance("Quest", 2, "name")
+    --> active Dynamic Translation Correction owner, "QuestieTDB" for a Base translation,
+    --> otherwise the winning entity Correction owner
+
+LibQuestieDB.l10n.GetProvenance("Quest", 2, "name")
+    --> active translation owner, or nil when the entity layers supplied the value
+
+LibQuestieDB.Corrections.GetProvenance("Quest", 2, "name")
+    --> winning entity Correction owner, without localization
+
+LibQuestieDB.GetOwners()                         --> entity Correction owners only
+LibQuestieDB.Corrections.debug = true            --> logs entity-owner collisions
 ```
 
 ---
@@ -420,23 +440,66 @@ LibQuestieDB.l10n.SetLocale("enUS")
 QuestDB.name(2)                       --> "Sharptalon's Claw"
 
 LibQuestieDB.l10n.currentLocale
-LibQuestieDB.l10n.IsAvailable()       --> false in Source mode
+LibQuestieDB.l10n.IsAvailable()       --> whether this artifact contains Base translations
 LibQuestieDB.l10n.onLocaleChanged[#… + 1] = function(locale) … end
 ```
 
-Nine locales — `deDE esES esMX frFR koKR ptBR ruRU zhCN zhTW`. `enUS` means "no overlay",
-because base data is already English. Missing translations fall back to English. A non-enUS
-locale eagerly loads its four compressed localization blocks; changing locale replaces those
-blocks and invalidates cached entity values without regenerating the database. Selecting the
-already-active locale is a no-op and preserves existing caches. An unsupported locale records
-the requested name in `currentLocale` but behaves like enUS because it has no blocks.
+Nine locales have generated Base translations: `deDE esES esMX frFR koKR ptBR ruRU zhCN
+zhTW`. `enUS` bypasses localization because entity data is already English. In Baked mode,
+selecting one of those nine locales decodes its four compressed Localization blocks. A custom
+locale has no generated block or `localeIndex` entry, but `SetLocale(customLocale)` activates
+Dynamic Translation Corrections registered for that exact string. Missing translated fields,
+including every field in a custom locale with no registered slot, fall through to the normal
+corrected entity value. Changing locale replaces the active Base blocks atomically and invalidates
+cached entity values and Name indexes. Selecting the active locale is a no-op.
+
+`l10n.IsAvailable()` reports only whether the artifact contains generated Base translation
+blocks. It is false in Source mode, where ordinary Base translations remain unavailable.
+Dynamic Translation Corrections work in either mode and do not change that result.
 
 A translated `objectivesText` remains a table; element counts follow the upstream lookup and
-may differ where a locale combines objectives. Every read returns a fresh mutable copy. A field
-a Correction supplied is never overridden by a translation (see Corrections above).
+may differ where a locale combines objectives. Every read returns a fresh mutable copy.
 
-Translated fields: quest `name` and `objectivesText`, npc `name` and `subName`, item `name`,
-object `name`.
+Translated fields: Quest `name` and `objectivesText`, Npc `name` and `subName`, Item `name`,
+and Object `name`. Fields such as `requiredRaces` are not localized.
+
+### Dynamic Translation Corrections
+
+Use a Dynamic Translation Correction for non-English entity text that cannot be folded into a
+Baked Localization block, or that depends on runtime facts owned by the publisher:
+
+```lua
+local questKeys = LibQuestieDB.Meta.QuestMeta.questKeys
+
+LibQuestieDB.l10n.SetCorrection("MyAddon", "deDE", "Quest", "quest-text", {
+    [2] = {
+        [questKeys.name] = "Klaue von Scharfkralle",
+        [questKeys.objectivesText] = { "Bringt die Klaue zu Senani Donnerherz." },
+    },
+})
+
+LibQuestieDB.l10n.SetCorrection("MyAddon", "deDE", "Quest", "quest-text", nil)
+```
+
+Rows use **entity field indexes** from `LibQuestieDB.Meta`, not compact Localization-block
+column indexes. Only the translated fields listed above are accepted. Scalar values are
+non-empty strings; `objectivesText` is a non-empty dense string array. The locale may be one of
+the nine generated locales or a custom locale. `SetCorrection` accepts any non-empty locale string
+except `enUS`; registering a custom locale does not add it to `locales` or `localeIndex`.
+
+Each `(owner, locale, datatype, name)` identifies one slot. A write snapshots its rows and
+publishes immediately; `nil` withdraws the slot; `{}` keeps an empty slot. Owners and slots keep
+their first successful write order, separately from entity Correction ordering, so refreshing
+or withdrawing a slot cannot hoist it above a later publisher. A write for the active locale
+invalidates only that entity type. Writes for inactive locales leave current caches alone, and
+`SetLocale` selects the already-composed rows without reapplying entity Corrections.
+
+Translation rows cannot create entities. They apply only while the entity exists in the
+composed entity database, including an entity added by a normal Dynamic Correction.
+
+QuestieTDB uses this interface for Titan Reforged's 14 zhCN Quest rows. That set registers only
+when the addon loads for Wrath season 109. Other flavors and seasons do not register it; changing
+locale selects or hides it without changing the English Titan entity Corrections.
 
 `extraObjectives` descriptions are different. Correction files author row slot `[3]` as an enUS
 localization key, and QuestieTDB preserves that English string. The entity localization overlay

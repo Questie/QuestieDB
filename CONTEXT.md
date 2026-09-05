@@ -98,6 +98,33 @@ _Avoid_: Conditional registration, feature flag
 The composed query-time layer of Dynamic Corrections that entity reads resolve through.
 _Avoid_: Runtime override, override table, merged correction
 
+### Localization
+
+**Generated locale**:
+A non-English locale included in Generation and represented by Base translation blocks in a Baked
+artifact. The generated inventory contains the nine official non-English client locales.
+_Avoid_: Supported locale (Dynamic translations also support Custom locales)
+
+**Custom locale**:
+A non-English locale outside the Generated locale inventory. It has no Base translation block and
+receives entity translations only from Dynamic Translation Corrections.
+_Avoid_: Unsupported locale
+
+**Base translation**:
+An authored non-English value for a translatable entity field. Static Translation Corrections
+are folded into Base translations during Generation.
+_Avoid_: Lookup value, localized correction
+
+**Static Translation Correction**:
+A change to a Base translation folded into Localization blocks during Generation.
+_Avoid_: Localization override, lookup override
+
+**Dynamic Translation Correction**:
+A locale-aware change to a translation selected at query time, optionally gated by generic
+character or game facts such as expansion and season. Its locale may be generated or custom,
+but must be a non-empty string other than `enUS`. It cannot create an entity.
+_Avoid_: Localized entity correction, runtime translation override
+
 ### Access
 
 **Entity global**:
@@ -135,8 +162,9 @@ Correction Overlay adds — an added entity is readable, enumerable, and exists,
 _Avoid_: Merged id list, extended pointers
 
 **l10n overlay**:
-The optional localization layer that resolves selected fields from the active Localization
-blocks. The Correction Overlay outranks it: a corrected field skips its lookup (ADR 0003 D8).
+The optional localization layer that resolves generated Base translations and Dynamic Translation
+Corrections for the active non-English locale, including custom locales with registered Dynamic
+slots. Locale-first read precedence is defined by ADR 0013.
 _Avoid_: Localization DB, translation patch
 
 **Name index**:

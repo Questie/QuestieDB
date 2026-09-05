@@ -4,8 +4,9 @@ The database Questie consumes. Stores entity data as WoW addon TOC metadata, rea
 runtime with no file I/O, and owns the offline generator that produces it.
 
 Quests, NPCs, items and objects for Classic Era, TBC, Wrath, Cataclysm and Mists. Baked
-artifacts include nine locales as compressed CBOR column blocks; Source and Baked modes return
-the same base entity values.
+artifacts include nine generated Base locales as compressed CBOR column blocks. Dynamic
+Translation Corrections can also supply any custom non-English locale. Source and Baked modes
+return the same base entity values.
 
 ---
 
@@ -20,6 +21,8 @@ existing.**
 | TOC | `QuestieTDB.toc` (committed) | `QuestieTDB_Vanilla.toc` etc. (generated, gitignored) |
 | Reads resolve from | raw entity data | CBOR rows and tables in the TOC metadata store |
 | Static Corrections | applied live | already folded in |
+| Base translations | unavailable | generated Localization blocks |
+| Dynamic Translation Corrections | any active non-English locale | any active non-English locale |
 | Requires | nothing but a clone | one bootstrap command, or Generation against pinned Questie |
 
 A fresh clone junctioned into `AddOns` is a working development environment — no download, no
@@ -49,14 +52,21 @@ LibQuestieDB.GetRegistrar("MyAddon")
 
 LibQuestieDB.GetRegistrar("MyAddon")
     .RegisterRuntimeCorrection("Quest", "fixes", function() ... end, 10)  -- function form, for large sets
+
+LibQuestieDB.l10n.SetCorrection("MyAddon", "deDE", "Quest", "text", {
+    [2] = { [LibQuestieDB.Meta.Quest.keys.name] = "Klaue von Scharfkralle" },
+})
 ```
 
-Two behaviours to internalise before writing anything:
+Three behaviours to internalise before writing anything:
 
 * **Numeric getters return `0`, never `nil`.** Test `~= 0`, not truthiness.
 * **Every table read returns a fresh, deeply independent copy you own.** Mutate it freely;
   the next read is unaffected, and `CopyTable` is wasted work. `GetAllIds` is the one
   exception: it hands back a shared table, so treat that one as read-only.
+* **Non-English translations are authoritative for translatable fields.** Publish translated
+  entity text through `LibQuestieDB.l10n.SetCorrection`, not an ordinary entity Correction.
+  The locale may be one of the nine generated locales or a custom non-English locale.
 
 ---
 
@@ -151,8 +161,11 @@ tools/bootstrap.sh "/path/to/Interface/AddOns"
 ### Re-syncing with Questie
 
 Entity schema, Corrections, and support data derive from Questie and are committed here, so
-drift is a build failure rather than a discovery months later. CI runs their checks and fails
-on any difference.
+drift is a build failure rather than a discovery months later. Entity translations remain
+direct Generation inputs from the pinned Questie checkout during migration. Their import
+adapter isolates Questie's executable lookup and whole-row override formats from QuestieTDB's
+three-part localization model, so transferring the authored files later does not require a
+runtime or storage change. CI runs the fidelity checks and fails on any difference.
 
 ```sh
 git -C ../Questie checkout "$(cat QUESTIE_COMMIT)"
@@ -162,6 +175,7 @@ lua5.1 generate.lua toc                      # refresh the committed Source-mode
 lua5.1 test.lua support support-fidelity     # check all copied support data and flavor selection
 lua5.1 test.lua objective-first              # check pinned hint contents and scope boundaries
 lua5.1 test.lua objective-first-addon        # check generated and static-stripped addons
+lua5.1 test.lua localization-overrides translation-corrections titan-translations
 ```
 
 `objective-first` runs without generated entity artifacts. It compares all five published hint
@@ -169,6 +183,16 @@ tables with the pinned correction sources across base flavors, SoD, Titan Reforg
 season cases. `objective-first-addon` requires all five generated artifacts and compares Source,
 Baked, and a staged package after Static Correction stripping. Issue #19 can invoke these two
 suites as its ObjectiveFirst release check rather than duplicate their persona matrix.
+
+The localization suites compare every effective entity translation against pinned Questie across
+all five flavors and nine locales, exercise Dynamic Translation Correction lifecycle and
+precedence, and check Titan's Wrath season 109 zhCN set. Issue #19 can invoke these three suites as
+its focused localization gate.
+
+During import, Questie's `lookupOverrides.lua` whole-row replacements become named Static
+Translation Correction fields. The internal value `false` explicitly clears an omitted field
+before the result is filtered to existing entities and encoded. This sentinel belongs only to
+the Generation adapter; it is not part of `LibQuestieDB.l10n.SetCorrection`.
 
 The 24 support inputs, their pinned Questie paths, published fields, and Lua-source-string
 fields are listed in [`tools/support-inventory.lua`](tools/support-inventory.lua). See
@@ -202,7 +226,7 @@ src/
   types/                  distributable LuaLS declarations, never loaded by a TOC
   read/                   shared getters + the two backends that differ
   corrections/            registry, compat shim, ported correction sets
-  l10n/                   eager active-locale block loading and lookup
+  l10n/                   active-locale blocks and Dynamic Translation Corrections
   support/                whole-table game reference data
   ui/                     the source-mode indicator
 

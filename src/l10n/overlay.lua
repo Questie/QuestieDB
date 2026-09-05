@@ -7,8 +7,8 @@
 -- available type blocks during addon load and keeps those translations in memory; enUS
 -- decodes none.
 --
--- Locale changes replace the active blocks and invalidate entity caches. Correction values
--- still outrank translations, and translated tables still pass through shared.lua's copy
+-- Locale changes replace the active blocks and invalidate entity caches. Translations outrank entity
+-- Corrections for translatable fields; translated tables pass through shared.lua's copy
 -- producer so every caller receives a fresh mutable value.
 
 local _, LibQuestieDB = ...
@@ -39,6 +39,156 @@ overlay.fields = {
   Item = { { name = "name" } },
   Object = { { name = "name" } },
 }
+
+--------------------------------------------------------------------------------------------
+-- Dynamic Translation Corrections
+--------------------------------------------------------------------------------------------
+
+-- Owner rank is fixed on its first successful write, independently of entity Corrections.
+-- Withdrawn slots retain their position but release their data, so reactivation cannot hoist
+-- an earlier translation above a later consumer. Composed rows are indexed by locale and type.
+local owners, ownerOrder = {}, {}
+local translations, translationOwners = {}, {}
+local providers = {}
+
+---Canonicalize the four entity datatype spellings without depending on Corrections.
+---@param datatype any
+---@return string?
+local function canonicalDatatype(datatype)
+  if type(datatype) ~= "string" then return nil end
+  local canonical = datatype:sub(1, 1):upper() .. datatype:sub(2):lower()
+  return overlay.fields[canonical] and canonical or nil
+end
+
+---Replace a named translation slot. Nil withdraws it; writes snapshot caller-owned data.
+---Any non-empty locale other than enUS is accepted, including locales without Baked blocks.
+---Rows may contain only translatable entity field indices.
+---@param owner string
+---@param locale string
+---@param datatype string
+---@param name string
+---@param rows table? Entity ID -> entity field index -> string or string list.
+---@return boolean changed
+function overlay.SetCorrection(owner, locale, datatype, name, rows)
+  if type(owner) ~= "string" or owner == "" then error("l10n.SetCorrection: owner must be non-empty", 2) end
+  if type(locale) ~= "string" or locale == "" or locale == "enUS" then
+    error("l10n.SetCorrection: expected a non-empty locale other than enUS", 2)
+  end
+  local canonical = canonicalDatatype(datatype)
+  if not canonical then error("l10n.SetCorrection: unknown entity datatype", 2) end
+  if type(name) ~= "string" or name == "" then error("l10n.SetCorrection: name must be non-empty", 2) end
+  if rows ~= nil and (type(rows) ~= "table" or getmetatable(rows) ~= nil) then
+    error("l10n.SetCorrection: rows must be a plain table or nil", 2)
+  end
+
+  -- Validate and copy the complete replacement before changing rank, slots, or caches.
+  local snapshot
+  if rows then
+    snapshot = {}
+    local meta = LibQuestieDB.Meta[canonical]
+    local allowed = {}
+    for _, field in ipairs(overlay.fields[canonical]) do
+      allowed[meta.keys[field.name]] = field.list and "list" or "string"
+    end
+    for id, fields in pairs(rows) do
+      if type(id) ~= "number" or id <= 0 or id == math.huge or id % 1 ~= 0 then
+        error("l10n.SetCorrection: entity IDs must be positive integers", 2)
+      end
+      if type(fields) ~= "table" or getmetatable(fields) ~= nil then
+        error("l10n.SetCorrection: each entity row must be a plain table", 2)
+      end
+      local copied = {}
+      for key, value in pairs(fields) do
+        local shape = allowed[key]
+        if not shape then error("l10n.SetCorrection: field is not translatable", 2) end
+        if shape == "string" then
+          if type(value) ~= "string" or value == "" then
+            error("l10n.SetCorrection: translated scalar must be a non-empty string", 2)
+          end
+          copied[key] = value
+        else
+          if type(value) ~= "table" or getmetatable(value) ~= nil or next(value) == nil then
+            error("l10n.SetCorrection: translated list must be a non-empty string array", 2)
+          end
+          local list, count = {}, 0
+          for index, text in pairs(value) do
+            if type(index) ~= "number" or index < 1 or index % 1 ~= 0 or
+                index == math.huge or type(text) ~= "string" then
+              error("l10n.SetCorrection: translated list must be a string array", 2)
+            end
+            list[index], count = text, count + 1
+          end
+          for index = 1, count do
+            if list[index] == nil then error("l10n.SetCorrection: translated list must be dense", 2) end
+          end
+          copied[key] = list
+        end
+      end
+      snapshot[id] = copied
+    end
+  end
+
+  local record, slot = owners[owner]
+  if record then
+    for _, candidate in ipairs(record) do
+      if candidate.locale == locale and candidate.datatype == canonical and candidate.name == name then
+        slot = candidate
+        break
+      end
+    end
+  end
+  if not snapshot and (not slot or slot.rows == nil) then return false end
+  if not record then
+    record = {}
+    owners[owner] = record
+    ownerOrder[#ownerOrder + 1] = owner
+  end
+  if not slot then
+    slot = { locale = locale, datatype = canonical, name = name }
+    record[#record + 1] = slot
+  end
+  slot.rows = snapshot
+
+  -- Only the written locale/type is recomposed. Locale selection does not rerun providers or
+  -- touch entity Correction state; inactive-locale writes leave active read caches alone.
+  local composed, provenance = {}, {}
+  for _, rankedOwner in ipairs(ownerOrder) do
+    for _, entry in ipairs(owners[rankedOwner]) do
+      if entry.locale == locale and entry.datatype == canonical and entry.rows then
+        for id, fields in pairs(entry.rows) do
+          local row, ownerRow = composed[id] or {}, provenance[id] or {}
+          composed[id], provenance[id] = row, ownerRow
+          for key, value in pairs(fields) do row[key], ownerRow[key] = value, rankedOwner end
+        end
+      end
+    end
+  end
+  translations[locale] = translations[locale] or {}
+  translationOwners[locale] = translationOwners[locale] or {}
+  translations[locale][canonical] = composed
+  translationOwners[locale][canonical] = provenance
+  local entity = LibQuestieDB[canonical]
+  if locale == overlay.currentLocale and entity then entity.InvalidateCache(nil) end
+  return true
+end
+
+---Translation-only provenance. Nil means normal entity resolution supplies the value.
+---@param datatype string
+---@param id number
+---@param key string|number
+---@return string?
+function overlay.GetProvenance(datatype, id, key)
+  if type(id) ~= "number" then return nil end
+  local canonical = canonicalDatatype(datatype)
+  local meta = canonical and LibQuestieDB.Meta[canonical]
+  local field = meta and (meta.keys[key] or (type(key) == "number" and key))
+  local provider = canonical and providers[canonical]
+  local entity = canonical and LibQuestieDB[canonical]
+  if entity and not entity.HasL10nProvider() then return nil end
+  if not field or not provider or overlay.currentLocale == "enUS" then return nil end
+  local _, owner = provider(id, field)
+  return owner
+end
 
 --------------------------------------------------------------------------------------------
 -- Block loading
@@ -99,11 +249,11 @@ end
 ---@param entity table Entity global owning the backend ID list.
 ---@return function? provider `(id, fieldIndex) -> translated | nil`.
 ---@return table<number, boolean>? scalarFields Translatable scalar field indices.
----@return function? isActive Whether a decoded locale is active.
+---@return function? isActive Whether base or Dynamic translations are active.
 function overlay.CreateProvider(meta, entity)
   local typeName = meta.entity
   local typeFields = overlay.fields[typeName]
-  if not typeFields or not availableTypes[typeName] then return nil end
+  if not typeFields then return nil end
 
   local columnByEntityField = {}
   local scalarFields = {}
@@ -115,7 +265,8 @@ function overlay.CreateProvider(meta, entity)
     end
   end
 
-  local baseIds = entity.backend.getAllIds()
+  -- Source startup must stay lazy; base IDs are needed only for an active stored block.
+  local baseIds
   local lastId, lastPosition
 
   ---Resolve a base entity ID to the column position Generation used.
@@ -126,6 +277,7 @@ function overlay.CreateProvider(meta, entity)
   local function findPosition(id)
     if id == lastId then return lastPosition end
 
+    if not baseIds then baseIds = entity.backend.getAllIds() end
     local position
     if lastPosition and baseIds[lastPosition + 1] == id then
       position = lastPosition + 1
@@ -149,20 +301,37 @@ function overlay.CreateProvider(meta, entity)
     return position
   end
 
-  ---Read one translation from the current block, or nil for base-data fallback.
+  ---Resolve only translations. Entity fallback belongs to shared.lua, not this module.
   ---@param id number
   ---@param entityFieldIndex integer
   ---@return any value
+  ---@return string? owner
   local function provider(id, entityFieldIndex)
+    if overlay.currentLocale == "enUS" or not columnByEntityField[entityFieldIndex] then return nil end
+    local byLocale = translations[overlay.currentLocale]
+    local byType = byLocale and byLocale[typeName]
+    local row = byType and byType[id]
+    if row and row[entityFieldIndex] ~= nil then
+      -- Translation-only IDs never extend the entity union. Withdrawn Dynamic entities lose
+      -- their translation too, without requiring the translation slot itself to be removed.
+      if not entity.Exists(id) then return nil end
+      return row[entityFieldIndex], translationOwners[overlay.currentLocale][typeName][id][entityFieldIndex]
+    end
     local block = activeBlocks[typeName]
     if not block then return nil end
     local column = block[columnByEntityField[entityFieldIndex]]
     if not column then return nil end
     local position = findPosition(id)
-    return position and column[position] or nil
+    local value = position and column[position] or nil
+    if value ~= nil then return value, "QuestieTDB" end
   end
 
-  return provider, scalarFields, function() return activeBlocks[typeName] ~= nil end
+  providers[typeName] = provider
+  return provider, scalarFields, function()
+    if overlay.currentLocale == "enUS" then return false end
+    local byLocale = translations[overlay.currentLocale]
+    return activeBlocks[typeName] ~= nil or (byLocale ~= nil and byLocale[typeName] ~= nil)
+  end
 end
 
 --------------------------------------------------------------------------------------------

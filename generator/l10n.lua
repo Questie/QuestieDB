@@ -26,7 +26,7 @@
 
 local config = dofile("src/config.lua")
 local lib = dofile("generator/lib.lua")
-local loader = dofile("generator/loader.lua")
+local inputs = dofile("generator/l10n-inputs.lua")
 local encode = dofile("generator/encode.lua")
 
 local l10n = {}
@@ -35,41 +35,10 @@ local l10n = {}
 -- Layout
 --------------------------------------------------------------------------------------------
 
----Which lookup directory and module field each entity type uses, and how source values map to
----compact Localization-block columns. Coverage matches what Questie translates today.
-l10n.types = {
-  Quest = {
-    dir = "lookupQuests", field = "questLookup",
-    -- [questId] = { name, { objectivesText, ... } }
-    fields = { { name = "name", from = 1 }, { name = "objectivesText", from = 2, list = true } },
-  },
-  Npc = {
-    dir = "lookupNpcs", field = "npcNameLookup",
-    -- [npcId] = { name, subName }
-    fields = { { name = "name", from = 1 }, { name = "subName", from = 2 } },
-  },
-  Item = {
-    dir = "lookupItems", field = "itemLookup",
-    -- [itemId] = name
-    scalar = true, fields = { { name = "name" } },
-  },
-  Object = {
-    dir = "lookupObjects", field = "objectLookup",
-    -- [objectId] = name
-    scalar = true, fields = { { name = "name" } },
-  },
-}
-
----Resolve one Questie localization lookup file.
----@param questiePath string
----@param flavor table
----@param typeCfg table
----@param locale string
----@return string path
-function l10n.lookupPath(questiePath, flavor, typeCfg, locale)
-  return ("%s/Localization/lookups/%s/%s/%s.lua")
-    :format(questiePath, flavor.expansion, typeCfg.dir, locale)
-end
+-- Input formats and source applicability belong to the import adapter. Keep these aliases
+-- for generation tooling that enumerates translated fields or constructs fixture paths.
+l10n.types = inputs.types
+l10n.lookupPath = inputs.lookupPath
 
 ---Fails before Generation opens an artifact when any required lookup file is absent.
 ---A missing tree is allowed only through the caller's explicit `--no-l10n` choice.
@@ -78,7 +47,7 @@ end
 ---@param typeFilter table<string, boolean>? Entity types selected for Generation.
 ---@return nil
 function l10n.assertInputs(questiePath, flavors, typeFilter)
-  local missing = {}
+  local missing, seen = {}, {}
 
   for _, flavor in ipairs(flavors) do
     for typeName, typeCfg in pairs(l10n.types) do
@@ -86,6 +55,11 @@ function l10n.assertInputs(questiePath, flavors, typeFilter)
         for _, locale in ipairs(config.locales) do
           local path = l10n.lookupPath(questiePath, flavor, typeCfg, locale)
           if not lib.fileExists(path) then missing[#missing + 1] = path end
+        end
+        for _, source in ipairs(inputs.correctionSources(flavor, typeName)) do
+          local path = questiePath .. "/" .. source.path
+          if not seen[path] and not lib.fileExists(path) then missing[#missing + 1] = path end
+          seen[path] = true
         end
       end
     end
@@ -109,76 +83,55 @@ end
 -- Extraction
 --------------------------------------------------------------------------------------------
 
---- Load one entity type's nine locale files and return `id -> fieldIndex -> { 9 slots }`.
----
+---Fold named Static Translation Correction fields into base translations.
+---False explicitly clears a translation; missing fields leave earlier values unchanged.
+---Entity existence is checked during extraction, so corrections cannot add database entities.
+---@param base table id -> named translated fields
+---@param corrections table id -> named translated fields or false
+---@return nil
+function l10n.applyStaticCorrections(base, corrections)
+  for id, fields in pairs(corrections) do
+    local row = base[id]
+    if not row then row = {}; base[id] = row end
+    for field, value in pairs(fields) do
+      if value == false then row[field] = nil else row[field] = value end
+    end
+  end
+end
+
+---Load one entity type's base translations and Static Translation Corrections.
 ---@param questiePath string
 ---@param flavor table
 ---@param typeName string
 ---@param knownIds table id -> true; entries with no main-DB row are dropped
----@return table values
+---@return table values id -> compact field index -> locale slots
 ---@return table stats
 function l10n.extract(questiePath, flavor, typeName, knownIds)
   local typeCfg = l10n.types[typeName]
   local values = {}
   local stats = { locales = 0, entries = 0, filtered = 0, missingFiles = {} }
 
-  local module = { questLookup = {}, npcNameLookup = {}, objectLookup = {}, itemLookup = {} }
-
   for localeIndex, locale in ipairs(config.locales) do
     local path = l10n.lookupPath(questiePath, flavor, typeCfg, locale)
     if not lib.fileExists(path) then
       stats.missingFiles[#stats.missingFiles + 1] = path
     else
-      loader.installEnvironment({ locale = locale })
-      -- The lookup files assign into the `l10n` module; give them a fresh one each time so a
-      -- locale that fails its own guard cannot leave the previous locale's table in place.
-      local modules = QuestieLoader._modules
-      modules.l10n = module
-      module[typeCfg.field] = {}
-
-      loader.executeFile(path)
-
-      local payload = module[typeCfg.field][locale]
-      if type(payload) == "function" then payload = payload() end
-      if type(payload) == "table" then
-        stats.locales = stats.locales + 1
-        for id, row in pairs(payload) do
-          if knownIds[id] then
-            local byField = values[id]
-            if not byField then byField = {}; values[id] = byField end
-            for fieldIndex, fieldCfg in ipairs(typeCfg.fields) do
-              local value
-              if typeCfg.scalar then
-                value = row
-              elseif fieldCfg.list then
-                -- List-valued fields keep their table shape; a bare string becomes a
-                -- one-element list so the field's type is stable across locales.
-                local list = row[fieldCfg.from]
-                if type(list) == "table" and next(list) ~= nil then
-                  value = list
-                elseif type(list) == "string" and list ~= "" then
-                  value = { list }
-                end
-              else
-                value = row[fieldCfg.from]
-              end
-              if type(value) == "string" then
-                -- Preserve the established display-text cleanup even though CBOR can carry
-                -- these bytes. Edge whitespace varied by the old segment position, and a
-                -- leading DEL was observed on TBC NPC 24996's zhTW name.
-                value = value:gsub("[%z\1-\31\127]", "")
-                value = value:match("^[ \t\r\n]*(.-)[ \t\r\n]*$")
-                if value == "" then value = nil end
-              end
-              if value ~= nil then
-                local slots = byField[fieldIndex]
-                if not slots then slots = {}; byField[fieldIndex] = slots end
-                slots[localeIndex] = value
-              end
+      local base, corrections = inputs.load(questiePath, flavor, typeName, locale)
+      for _, rows in ipairs(corrections) do l10n.applyStaticCorrections(base, rows) end
+      stats.locales = stats.locales + 1
+      for id, row in pairs(base) do
+        if knownIds[id] then
+          local byField = values[id] or {}
+          for fieldIndex, field in ipairs(typeCfg.fields) do
+            local value = row[field.name]
+            if value ~= nil then
+              byField[fieldIndex] = byField[fieldIndex] or {}
+              byField[fieldIndex][localeIndex] = value
             end
-          else
-            stats.filtered = stats.filtered + 1
           end
+          if next(byField) then values[id] = byField end
+        else
+          stats.filtered = stats.filtered + 1
         end
       end
     end
