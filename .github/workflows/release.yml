@@ -1,17 +1,12 @@
 name: Release
 
-# Every commit publishes a pre-release; a full release is triggered deliberately. Releases are
-# identifiable by content, not just by tag: the manifest carries per-artifact SHA-256, the
-# producing commit, the Questie input commit and the contract version.
+# Default-branch builds replace one rolling preview. Manual full releases use vX.X.X from
+# the committed Source TOC. The manifest identifies the exact producing and Questie commits.
 #
 # Publication is impossible on red. `publish` needs both the artifact quality bar and the
-# compiler differential. The token-bearing job runs no build code: everything it uploads came
-# through those gates, unmodified, via the workflow artifact.
-#
-# NOTE FOR THE MAINTAINER: this workflow needs secrets that are not configured here.
-#   GITHUB_TOKEN    provided automatically; used for the GitHub release
-#   CF_API_KEY      CurseForge upload token, if standalone publishing is wanted
-# Nothing below attempts to create or guess a credential.
+# compiler differential. The write-enabled jobs run no build or test code: publication uploads
+# only the artifacts handed through those gates, unmodified.
+# GitHub publication uses the automatic GITHUB_TOKEN; no external publishing is configured.
 
 on:
   push:
@@ -19,21 +14,79 @@ on:
   workflow_dispatch:
     inputs:
       release:
-        description: "Publish a full release rather than a pre-release"
+        description: "Publish vX.X.X from QuestieTDB.toc instead of updating preview"
         type: boolean
         default: false
-      tag:
-        description: "Tag for the release (defaults to the short SHA)"
-        type: string
-        required: false
+      override:
+        description: "Replace an existing full release's assets and move its tag to this commit"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
 
 env:
   SOURCE_DATE_EPOCH: 1700000000
+  QUESTIETDB_RELEASE: ${{ inputs.release && 'true' || 'false' }}
+  RELEASE_OVERRIDE: ${{ inputs.override && 'true' || 'false' }}
+  DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
 
 jobs:
+  preflight:
+    name: Release preflight
+    runs-on: ubuntu-latest
+    # Push access makes drafts visible. This job only reads GitHub state.
+    permissions:
+      contents: write
+    outputs:
+      tag: ${{ steps.release.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { path: QuestieTDB }
+      - name: Install Lua 5.1
+        run: sudo apt-get update && sudo apt-get install -y lua5.1
+      - name: Choose release and reject existing versions
+        id: release
+        working-directory: QuestieTDB
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "$GITHUB_REF" != "refs/heads/$DEFAULT_BRANCH" ]]; then
+            echo "::error::Releases must run from the default branch."
+            exit 1
+          fi
+          if [[ "$RELEASE_OVERRIDE" == true && "$QUESTIETDB_RELEASE" != true ]]; then
+            echo "::error::override applies only to full releases."
+            exit 1
+          fi
+          VERSION=$(lua5.1 -e 'print(dofile("generator/version.lua").read("QuestieTDB.toc"))')
+          TAG=preview
+          if [[ "$QUESTIETDB_RELEASE" == true ]]; then TAG="v$VERSION"; fi
+
+          # GraphQL includes drafts and distinguishes absence (null) from API/auth failures.
+          # Its $variables must reach the API unexpanded.
+          # shellcheck disable=SC2016
+          STATE=$(gh api graphql -f owner="${GITHUB_REPOSITORY%/*}" -f repo="${GITHUB_REPOSITORY#*/}" \
+            -f tag="$TAG" -f ref="refs/tags/$TAG" -f query='
+            query($owner:String!, $repo:String!, $tag:String!, $ref:String!) {
+              repository(owner:$owner, name:$repo) { release(tagName:$tag) { databaseId } ref(qualifiedName:$ref) { name } }
+            }' --jq '.data.repository')
+          jq -e 'type == "object"' <<< "$STATE" > /dev/null
+          if [[ "$QUESTIETDB_RELEASE" == true && "$RELEASE_OVERRIDE" != true ]] && \
+             jq -e '.release != null or .ref != null' <<< "$STATE" > /dev/null; then
+            echo "::error::$TAG already exists. Bump ## Version or explicitly enable override."
+            exit 1
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
   quality:
     name: Quality bar
+    needs: preflight
     runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ needs.preflight.outputs.tag }}
     steps:
       - uses: actions/checkout@v4
         with: { path: QuestieTDB }
@@ -41,6 +94,10 @@ jobs:
 
       - name: Install Lua 5.1
         run: sudo apt-get update && sudo apt-get install -y lua5.1
+
+      - name: Version tests (offline)
+        working-directory: QuestieTDB
+        run: lua5.1 tools/version.test.lua
 
       - name: Materialize the schema
         working-directory: QuestieTDB
@@ -58,6 +115,12 @@ jobs:
             echo "::error::Ported Corrections or copied libraries differ from Questie's. Review and commit the re-port."
             exit 1
           }
+
+      - name: Fail on Source TOC drift
+        working-directory: QuestieTDB
+        run: |
+          lua5.1 generate.lua toc
+          git diff --exit-code QuestieTDB.toc
 
       - name: Generate every flavor
         working-directory: QuestieTDB
@@ -119,6 +182,7 @@ jobs:
 
   differential:
     name: Compiler differential (${{ matrix.flavor }})
+    needs: preflight
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -152,11 +216,18 @@ jobs:
     name: Publish
     runs-on: ubuntu-latest
     needs: [quality, differential]
+    # Serialize mutations, not builds. Never cancel an upload midway through replacement.
+    # Builds can finish out of commit order, so the publisher also rejects stale previews.
+    concurrency:
+      group: questietdb-release-publication
+      cancel-in-progress: false
+      # Retain pending manual releases instead of letting a preview evict them.
+      queue: max
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
-        with: { path: QuestieTDB, fetch-depth: 0 }
+        with: { path: QuestieTDB }
 
       - uses: actions/download-artifact@v4
         with:
@@ -167,12 +238,76 @@ jobs:
         working-directory: QuestieTDB
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ needs.quality.outputs.tag }}
+        shell: bash
         run: |
-          TAG="${{ inputs.tag }}"
-          if [ -z "$TAG" ]; then TAG="build-$(git rev-parse --short=7 HEAD)"; fi
-          PRERELEASE="--prerelease"
-          if [ "${{ inputs.release }}" = "true" ]; then PRERELEASE=""; fi
-          gh release create "$TAG" .out/dist/* \
-            --title "QuestieTDB $TAG" \
-            --notes-file .out/dist/RELEASE_NOTES.md \
-            $PRERELEASE
+          set -euo pipefail
+          [[ "$(git rev-parse HEAD)" == "$GITHUB_SHA" ]]
+          [[ "$GITHUB_REF" == "refs/heads/$DEFAULT_BRANCH" ]]
+
+          # Check the gated handoff before touching a tag or release. Require the exact ZIP set.
+          jq -e --arg commit "$GITHUB_SHA" '
+            .producerCommit == $commit and
+            ([.artifacts[].file] | sort) == (["QuestieTDB-Vanilla.zip", "QuestieTDB-TBC.zip",
+              "QuestieTDB-Wrath.zip", "QuestieTDB-Cata.zip", "QuestieTDB-Mists.zip", "QuestieTDB-all.zip"] | sort) and
+            all(.artifacts[]; .sha256 | test("^[0-9a-f]{64}$"))
+            ' .out/dist/release.json > /dev/null
+          jq -r '.artifacts[] | "\(.sha256)  \(.file)"' .out/dist/release.json > .out/release.sha
+          (cd .out/dist && sha256sum --strict -c ../release.sha)
+          test -f .out/dist/RELEASE_NOTES.md
+
+          # Repeat the collision check under the publication lock: preflight can go stale.
+          # shellcheck disable=SC2016
+          STATE=$(gh api graphql -f owner="${GITHUB_REPOSITORY%/*}" -f repo="${GITHUB_REPOSITORY#*/}" \
+            -f tag="$TAG" -f ref="refs/tags/$TAG" -f query='
+            query($owner:String!, $repo:String!, $tag:String!, $ref:String!) {
+              repository(owner:$owner, name:$repo) { release(tagName:$tag) { databaseId } ref(qualifiedName:$ref) { name } }
+            }' --jq '.data.repository')
+          jq -e 'type == "object"' <<< "$STATE" > /dev/null
+          if [[ "$QUESTIETDB_RELEASE" == true && "$RELEASE_OVERRIDE" != true ]] && \
+             jq -e '.release != null or .ref != null' <<< "$STATE" > /dev/null; then
+            echo "::error::$TAG already exists. Bump ## Version or explicitly enable override."
+            exit 1
+          fi
+          RELEASE_ID=$(jq -r '.release.databaseId // empty' <<< "$STATE")
+          HAS_TAG=$(jq -r '.ref != null' <<< "$STATE")
+          if [[ -n "$RELEASE_ID" ]]; then
+            IMMUTABLE=$(gh api "repos/$GITHUB_REPOSITORY/releases/$RELEASE_ID" --jq '.immutable // false')
+            if [[ "$IMMUTABLE" == true ]]; then
+              echo "::error::$TAG is immutable on GitHub; override cannot replace it."
+              exit 1
+            fi
+          fi
+          if [[ "$TAG" == preview && "$HAS_TAG" == true ]]; then
+            CURRENT=$(gh api "repos/$GITHUB_REPOSITORY/commits/refs%2Ftags%2F$TAG" --jq '.sha')
+            STATUS=$(gh api "repos/$GITHUB_REPOSITORY/compare/$CURRENT...$GITHUB_SHA" --jq '.status')
+            case "$STATUS" in
+              behind) echo "A newer preview is already published; skipping this build."; exit 0 ;;
+              ahead|identical) ;;
+              *) echo "::error::Preview history diverged. Resolve its tag before publishing."; exit 1 ;;
+            esac
+          fi
+
+          TITLE="Development preview"
+          PRERELEASE=true
+          if [[ "$QUESTIETDB_RELEASE" == true ]]; then TITLE="QuestieTDB ${TAG#v}"; PRERELEASE=false; fi
+          if [[ "$HAS_TAG" == false ]]; then
+            gh api "repos/$GITHUB_REPOSITORY/git/refs" --method POST -f ref="refs/tags/$TAG" -f sha="$GITHUB_SHA"
+          fi
+          if [[ -z "$RELEASE_ID" ]]; then
+            # Only first publication uses a draft, so a failed first upload stays unpublished.
+            gh release create "$TAG" --verify-tag --target "$GITHUB_SHA" --draft \
+              --title "$TITLE" --notes-file .out/dist/RELEASE_NOTES.md
+          fi
+
+          # Updates are intentionally non-atomic. Keep the old manifest until all ZIPs upload;
+          # bootstrap rejects mixed downloads. Rerun after failure (full releases need override).
+          gh release upload "$TAG" .out/dist/QuestieTDB-{Vanilla,TBC,Wrath,Cata,Mists,all}.zip \
+            .out/dist/RELEASE_NOTES.md --clobber
+          if [[ "$HAS_TAG" == true ]]; then
+            gh api "repos/$GITHUB_REPOSITORY/git/refs/tags/$TAG" --method PATCH -f sha="$GITHUB_SHA" -F force=true
+          fi
+          gh release upload "$TAG" .out/dist/release.json --clobber
+          gh release edit "$TAG" --draft=false --target "$GITHUB_SHA" --title "$TITLE" \
+            --notes-file .out/dist/RELEASE_NOTES.md --prerelease="$PRERELEASE" --latest="$QUESTIETDB_RELEASE"

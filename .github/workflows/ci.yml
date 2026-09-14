@@ -29,6 +29,10 @@ jobs:
       - name: Install Lua 5.1
         run: sudo apt-get update && sudo apt-get install -y lua5.1
 
+      - name: Version tests (offline)
+        working-directory: QuestieTDB
+        run: lua5.1 tools/version.test.lua
+
       - name: Materialize the schema
         working-directory: QuestieTDB
         run: lua5.1 generate.lua meta ../Questie

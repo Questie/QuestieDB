@@ -174,8 +174,60 @@ nested tools.
 To refresh a local install instead of regenerating:
 
 ```sh
-tools/bootstrap.sh "/path/to/Interface/AddOns"
+tools/bootstrap.sh "/path/to/Interface/AddOns"           # latest stable release
+tools/bootstrap.sh "/path/to/Interface/AddOns" preview   # rolling development build
 ```
+
+### Releases
+
+Successful default-branch builds update one **Development preview** pre-release at tag
+`preview`. Its tag identifies the commit used to build its assets; older runs cannot roll it
+back. Preview never becomes GitHub's latest stable release. CI still provides per-run artifacts.
+
+To publish a real release:
+
+1. Set `## Version: X.X.X` in `QuestieTDB.toc` and commit it to the default branch. Use three
+   numeric components without leading zeros. TOC regeneration preserves this maintained value.
+2. Open **Actions → Release → Run workflow**, select the default branch, and check `release`.
+3. Leave `override` unchecked. An existing `vX.X.X` tag or release fails before building, and
+   publication checks again after all quality gates pass.
+
+`override` explicitly replaces that version's assets and moves its tag to the selected commit.
+Use it only to repair a release; normally bump the version instead. GitHub-immutable releases
+cannot be overridden. Repository-wide release immutability is incompatible with rolling preview.
+
+Baked addon versions are `X.X.X` for full releases and `X.X.X-dev.<short SHA>` otherwise.
+Local Generation follows the same rule; `QUESTIETDB_RELEASE=true` selects the full-release form.
+The manifest and TOCs retain the exact producing and Questie input commits.
+
+The release flow lives in [`.github/workflows/release.yml`](.github/workflows/release.yml):
+choose the tag, build/check/package, then publish. Only GitHub publication is configured.
+Publication jobs queue without cancelling active or pending releases. The publisher checks the
+handoff's commit and ZIP checksums before any mutation, then rejects stale preview builds.
+
+**Replacement is not atomic.** Existing releases stay public while ZIPs are replaced by name.
+The tag moves after the ZIP uploads; `release.json` uploads last. Downloads during an update
+may fail, and interruption can leave mixed assets or a tag ahead of the manifest. Bootstrap
+rejects checksum mismatches before installing; direct ZIP downloads do not have that protection.
+First publication uses a draft until every asset is uploaded. Build/check failures never touch
+an existing release.
+
+After a preview publication failure, rerun the failed workflow at the same commit. Do not rerun
+an older preview to repair a newer one. For a full release, dispatch again with `release` and
+`override` checked: GitHub reruns retain the original inputs, so they cannot enable override.
+Review the current default-branch commit and TOC version first; a new dispatch builds that
+commit, not necessarily the failed run's commit. Resolve tag-rule or permission errors before
+retrying. Divergent preview history (for example after a force-push) requires deliberate tag
+repair; the workflow will not guess which history to keep. Existing `build-*` releases and
+unrelated manually attached assets are left alone.
+
+Repository tag rules must allow the workflow token to create release tags and move `preview`
+(and version tags only when overriding). The preflight job needs Contents write permission to
+see drafts, but only reads GitHub state. No live publication is covered by the offline tests;
+GitHub permissions and replacement behavior should first be exercised in a disposable repository,
+not against an installed development or production channel.
+
+Run the focused offline version checks with `lua5.1 tools/version.test.lua`.
 
 ### Re-syncing with Questie
 

@@ -526,9 +526,12 @@ this case: a `-nolib` variant lets standalone installers avoid a folder collisio
 
 ### Release-backed data bootstrap
 
-Baked TOCs are **never committed**. CI builds a pre-release on every commit and a release on
-demand, publishing baked artifacts with a manifest carrying schema version, producer commit,
-per-artifact SHA-256, and the contract version.
+Baked TOCs are **never committed**. Successful default-branch builds update one rolling
+`preview` pre-release. A manual full release uses `vX.X.X` from the maintained `## Version:`
+in `QuestieTDB.toc`, rejecting an existing tag or release unless the maintainer explicitly
+selects `override`. The manifest carries the producer and Questie input commits, per-artifact
+SHA-256, and the contract version. See [release operations](./README.md#releases) for publication
+ordering, failure recovery, and local version selection.
 
 A bootstrap script — PowerShell or bash, no Lua — installs artifacts into the gitignored TOC
 slot in the developer's clone. Deviations from the generic pattern: the install target is

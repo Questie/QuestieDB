@@ -194,6 +194,11 @@ See ADR 0011.
 
 ## Build metadata
 
+The committed `QuestieTDB.toc` owns the maintained `## Version: X.X.X`; regeneration preserves
+it. Baked TOCs use `X.X.X-dev.<seven-character commit>` by default, or exactly `X.X.X` when
+`QUESTIETDB_RELEASE=true`. The rolling GitHub pre-release is tagged `preview`; full releases
+use `vX.X.X`. These addon versions are separate from the storage/API contract version.
+
 Every generated `.toc` carries provenance:
 
 ```toc
