@@ -106,6 +106,25 @@ tools/check.sh verify --flavors=Vanilla,Mists
 tools/check.sh determinism freeze --flavors=Vanilla
 ```
 
+### Automatic Questie inputs for the generator
+
+`lua5.1 generate.lua all` and `lua5.1 generate.lua meta` fetch the exact commit in
+`QUESTIE_COMMIT` into `.cache/questie/<sha>` on first use. This directory is gitignored.
+The fetch uses depth 1 and no tags, downloading the full pinned snapshot without its history.
+Git and a POSIX shell with `mktemp` are required. The first run needs network access; subsequent
+runs reuse the cache offline. Changing the pin creates a separate checkout rather than
+resetting an existing one.
+
+`--questie=<path>` overrides `QUESTIE_PATH`; either opts out of the automatic checkout.
+The generator validates that checkout's commit but never fetches, switches, or cleans it.
+`generate.lua toc` and `--no-l10n` do not fetch Questie.
+
+Automatic fetching is limited to direct `generate.lua` invocations. The `./questietdb` check
+runner, Reconstruction, imports, and compiler differential still default to `../Questie`.
+Point their `--questie` or `QUESTIE_PATH` override at `.cache/questie/<sha>` to reuse this checkout.
+
+Run the offline checkout tests with `lua5.1 tools/questie-checkout.test.lua`.
+
 ### Keeping LuaLS declarations in sync
 
 The files in `src/types/` are shipped to consumers and are part of the public API. Update them

@@ -205,7 +205,8 @@ Every generated `.toc` carries provenance:
 `X-BUILD-COMMIT` is `git rev-parse HEAD`, or forty zeros when git is unavailable.
 
 `X-QUESTIE-COMMIT` is the same for the Questie checkout Generation reads (`--questie=`,
-default `QUESTIE_PATH` or `../Questie`). It is provenance, not decoration: the localization
+then `QUESTIE_PATH`, otherwise an automatically fetched depth-1 checkout in
+`.cache/questie/<pinned-sha>` for direct `generate.lua` invocations). It is provenance, not decoration: the localization
 blocks are built from lookups in that checkout rather than committed here, so an artifact is
 reproducible only from the *pair* of commits. `QUESTIE_COMMIT` pins the reviewed input;
 Generation, Reconstruction, the compiler differential, and the Correction port reject a

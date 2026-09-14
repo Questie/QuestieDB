@@ -6,6 +6,9 @@ QuestieTDB_Wrath.toc
 QuestieTDB_Cata.toc
 QuestieTDB_Mists.toc
 
+# Pinned Questie checkouts fetched by generate.lua.
+/.cache/questie/
+
 # Diagnostic output retained as CI artifacts, not source.
 .out/
 *.log

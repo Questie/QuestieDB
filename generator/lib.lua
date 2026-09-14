@@ -254,11 +254,10 @@ function lib.gitCommit(dir)
   return rep("0", 40)
 end
 
----Fails unless a Questie checkout is at the reviewed input commit.
----@param questiePath string Questie checkout to validate.
+---Read and validate the reviewed Questie input commit before invoking Git.
 ---@param pinPath string? Pin file, defaulting to `QUESTIE_COMMIT`.
----@return string commit The validated Questie commit.
-function lib.assertQuestiePin(questiePath, pinPath)
+---@return string commit
+function lib.readQuestiePin(pinPath)
   pinPath = pinPath or "QUESTIE_COMMIT"
   if not lib.fileExists(pinPath) then
     error("Questie pin file not found: " .. pinPath, 0)
@@ -269,6 +268,15 @@ function lib.assertQuestiePin(questiePath, pinPath)
     error(pinPath .. " must contain one lowercase 40-character Git SHA", 0)
   end
 
+  return expected
+end
+
+---Fails unless a Questie checkout is at the reviewed input commit.
+---@param questiePath string Questie checkout to validate.
+---@param pinPath string? Pin file, defaulting to `QUESTIE_COMMIT`.
+---@return string commit The validated Questie commit.
+function lib.assertQuestiePin(questiePath, pinPath)
+  local expected = lib.readQuestiePin(pinPath)
   local actual = lib.gitCommit(questiePath)
   if actual ~= expected then
     error(("Questie checkout %s is at %s, expected pinned commit %s. Check out the pin or " ..

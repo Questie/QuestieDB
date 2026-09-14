@@ -9,7 +9,7 @@
 --   lua generate.lua Vanilla [TBC ...]    named flavors
 --
 -- Options:
---   --questie=<path>       Questie checkout used for schema and localization input
+--   --questie=<path>       use an existing pinned checkout instead of the automatic shallow clone
 --   --types=Quest,Npc      restrict entity types
 --   --fields=name,zoneOrSort   restrict fields (tracer-bullet slices only)
 --   --no-l10n              explicitly generate without localization
@@ -29,8 +29,9 @@ local rows = dofile("generator/rows.lua")
 local corrections = dofile("generator/corrections.lua")
 local flavorLoader = dofile("generator/flavor.lua")
 local l10nGen = dofile("generator/l10n.lua")
+local questie = dofile("generator/questie.lua")
 
-local DEFAULT_QUESTIE_PATH = os.getenv("QUESTIE_PATH") or "../Questie"
+local DEFAULT_QUESTIE_PATH = os.getenv("QUESTIE_PATH")
 
 -- The correction manifest drives which files each TOC lists. It is optional: a bare data
 -- round-trip works before any corrections are ported.
@@ -88,7 +89,7 @@ end
 --- compiler. Materializing captures the type map before it disappears; the key enum keeps
 --- deriving afterwards because every data file carries its own copy.
 function generate.materializeMeta(questiePath)
-  questiePath = questiePath or DEFAULT_QUESTIE_PATH
+  questiePath = questiePath or questie.resolve()
   lib.mkdirp("src/meta")
 
   for _, entityType in ipairs(config.entityTypes) do
@@ -347,13 +348,13 @@ QUIET = opts.quiet
 BUILD = {
   commit = lib.gitCommit(),
   time = lib.buildTime(),
-  questieCommit = lib.gitCommit(opts.questie or DEFAULT_QUESTIE_PATH),
+  questieCommit = (opts.questie or DEFAULT_QUESTIE_PATH)
+    and lib.gitCommit(opts.questie or DEFAULT_QUESTIE_PATH) or string.rep("0", 40),
 }
 BUILD.version = BUILD.commit:match("^0+$") and "0.0.0" or ("build-" .. BUILD.commit:sub(1, 7))
 
 if opts.target == "meta" then
-  local questiePath = opts.questie or opts.flavors[1] or DEFAULT_QUESTIE_PATH
-  lib.assertQuestiePin(questiePath)
+  local questiePath = questie.resolve(opts.questie or opts.flavors[1])
   generate.materializeMeta(questiePath)
   os.exit(0)
 end
@@ -379,9 +380,8 @@ end
 -- Missing localization input must fail before either TOC is opened. `--no-l10n` is the only
 -- supported way to request a partial artifact, so an incorrect checkout cannot look successful.
 if not opts.noL10n then
-  local questiePath = opts.questie or DEFAULT_QUESTIE_PATH
-  lib.assertQuestiePin(questiePath)
-  l10nGen.assertInputs(questiePath, flavors, opts.types)
+  opts.questie, BUILD.questieCommit = questie.resolve(opts.questie)
+  l10nGen.assertInputs(opts.questie, flavors, opts.types)
 end
 
 -- The base TOC is not flavour-scoped, so every invocation would rewrite the same file. That is
