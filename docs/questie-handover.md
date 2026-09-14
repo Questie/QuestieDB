@@ -23,7 +23,7 @@ uv run python tools/differential/compiler_diff.py Vanilla --self-check       # p
 ```
 
 Current counts use the full `QuestieInit` pre-compile sequence from the Questie commit in
-`QUESTIE_COMMIT`. Totals compared: 397,394 / 659,215 / 979,421 / 1,587,245 / 1,981,560
+`QUESTIE_COMMIT`. Totals compared: 397,395 / 659,216 / 979,423 / 1,587,244 / 1,981,559
 fields.
 
 Remaining divergences: **20,220 / 35,926 / 55,031 / 86,047 / 99,427**. Almost all are
@@ -39,6 +39,30 @@ flavors. Entity-id sets agree exactly across all five flavors.
 The same counts, with a reason per row, are committed under
 `tools/differential/compiler-baseline/`. The gate fails on anything new or grown and prints
 what is still owed on every run, so a known defect cannot quietly become permanent.
+
+## Questie input sync to `215b0c757`
+
+The input pin advances from `92ab8206f8fa24fdbf772a0d2330abddbc78396a` to
+`215b0c757e2cefdffc11414b2c70456e37573cc2`. The mechanical port updates ten correction files and
+copies a comments-only change to `support/Zones/uiMapIdToAreaId.lua`. Raw entity data, schema,
+constants, the correction manifest, and the Source TOC are unchanged. Blacklists and content-phase
+policy remain Questie-owned; the provider-authored SoD required-race rows are untouched.
+
+Validation ran in isolated worktrees, without updating installed or existing Baked artifacts:
+
+- All five flavors passed Generation, Verification, Source/Baked Equivalence, Reconstruction, and
+  data validators. The full Lua suite passed 3,339 checks. No validator baseline changes were needed.
+- Compiler comparisons passed on all five base flavors with the existing POLICY baselines unchanged.
+  Strict active-SoD `Quest.requiredRaces` comparisons matched all 5,534 quests for both factions.
+  Differential sensitivity checks passed.
+- Reviewed Golden changes affect 187 / 243 / 240 / 228 / 217 existing entities in Vanilla / TBC /
+  Wrath / Cata / Mists, with no additions or removals. The snapshots were refreshed for the imported
+  quest chains, Object locations, TBC Item drops, and NPC 20931. All five Golden sensitivity checks passed.
+
+Review found one upstream defect retained by this byte-faithful sync: quest 8604 sets
+`nextQuestInChain = 8604` in `Era/classicQuestFixes.lua`. Quest 8605 appears to be the intended
+follow-up. This self-link needs an upstream correction and subsequent re-port; matching the pinned
+compiler does not establish that the gameplay data is correct. It has not been silently changed here.
 
 ## Confirmed in a live client, 2026-08-19
 
