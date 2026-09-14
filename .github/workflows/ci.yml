@@ -19,7 +19,7 @@ jobs:
     name: Unit tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with: { path: QuestieTDB }
 
       # Localization, schema and Corrections all come from the reviewed commit in
@@ -99,7 +99,7 @@ jobs:
       matrix:
         flavor: [Vanilla, TBC, Wrath, Cata, Mists]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with: { path: QuestieTDB }
       - uses: ./QuestieTDB/.github/actions/checkout-questie
 
@@ -151,7 +151,7 @@ jobs:
 
       - name: Upload validator diagnostics
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: validator-diagnostics-${{ matrix.flavor }}
           path: QuestieTDB/.out/validators/
@@ -162,7 +162,7 @@ jobs:
         run: bash tools/package.sh ${{ matrix.flavor }}
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: QuestieTDB-${{ matrix.flavor }}
           path: QuestieTDB/.out/dist/*
@@ -179,7 +179,7 @@ jobs:
       matrix:
         flavor: [Vanilla, TBC, Wrath, Cata, Mists]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with: { path: QuestieTDB }
       - uses: ./QuestieTDB/.github/actions/checkout-questie
 

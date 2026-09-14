@@ -41,7 +41,7 @@ jobs:
     outputs:
       tag: ${{ steps.release.outputs.tag }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with: { path: QuestieTDB }
       - name: Install Lua 5.1
         run: sudo apt-get update && sudo apt-get install -y lua5.1
@@ -88,7 +88,7 @@ jobs:
     outputs:
       tag: ${{ needs.preflight.outputs.tag }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with: { path: QuestieTDB }
       - uses: ./QuestieTDB/.github/actions/checkout-questie
 
@@ -173,7 +173,7 @@ jobs:
         run: bash tools/package.sh all
 
       - name: Hand the packaged release to publish
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: release-dist
           path: QuestieTDB/.out/dist/*
@@ -189,7 +189,7 @@ jobs:
       matrix:
         flavor: [Vanilla, TBC, Wrath, Cata, Mists]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with: { path: QuestieTDB }
       - uses: ./QuestieTDB/.github/actions/checkout-questie
 
@@ -226,10 +226,10 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with: { path: QuestieTDB }
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: release-dist
           path: QuestieTDB/.out/dist
