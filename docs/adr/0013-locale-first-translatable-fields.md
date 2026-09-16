@@ -33,10 +33,16 @@ it does not reapply entity Corrections. Titan Reforged zhCN text is a Dynamic Tr
 Correction, not an exception to entity Correction precedence. Locale changes invalidate affected
 reads and Name indexes, and provenance reports the layer that supplied the returned value.
 
-Questie's pinned localization sources remain migration inputs that QuestieDB can resynchronize;
-physically transferring the authored lookup tree is deferred. This decision does not add
-ordinary Base translations to Source mode; Dynamic Translation Corrections remain available
-there. Moving English text out of entity data and through localization is possible in principle,
-but is also deferred.
+Generation reads a local localization snapshot under `l10n/`, copied byte-for-byte from the
+reviewed Questie revision. This does not mark the final synchronization or migration cutover:
+future `QUESTIE_COMMIT` bumps may require another reviewed localization sync, or the current
+snapshot may be the last one needed. Changing the pin alone does not refresh the local files.
+Pinned Questie localization remains the synchronization source and independent fidelity reference
+during migration, not an external Generation input. This change affects neither the read
+precedence above nor the storage format.
+
+Ordinary Base translations remain unavailable in Source mode; Dynamic Translation Corrections
+remain available there. Moving English text out of entity data and through localization is
+possible in principle, but remains deferred.
 
 This supersedes ADR 0003 Decision 8 and the Correction-priority statement in ADR 0011 Decision 3.

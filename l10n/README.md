@@ -29,8 +29,8 @@ in `src/l10n/Titan/zhCN.lua` and remain selected by the runtime flavor/season ga
 
 ## Import provenance
 
-The initial 181 Lua files were copied byte-for-byte from `Questie/Questie` commit
-`215b0c757e2cefdffc11414b2c70456e37573cc2`:
+The current snapshot contains 181 Lua files copied byte-for-byte from the `Questie/Questie`
+revision recorded in [`QUESTIE_COMMIT`](../QUESTIE_COMMIT):
 
 - 180 files from `Localization/lookups/<Expansion>/lookup<Type>/<locale>.lua`.
 - `Localization/lookups/lookupOverrides.lua`.
@@ -44,8 +44,12 @@ import/schema baseline, not an external localization checkout used during Genera
 
 The migration fidelity test still compares these local inputs with independent pinned Questie
 lookups, across all five flavors, four entity types, and nine locales. It will reject semantic
-translation changes until the migration checks are deliberately updated or retired. Advancing
-`QUESTIE_COMMIT` does not overwrite or refresh this directory.
+translation changes until the migration checks are deliberately updated or retired.
+
+This snapshot is not declared final. Questie remains the synchronization source during migration;
+future `QUESTIE_COMMIT` bumps may require reviewed updates to these files. Advancing the pin does
+not overwrite or refresh this directory automatically. Generation continues to read the local
+snapshot whether or not another synchronization is needed before cutover.
 
 ```sh
 # No Questie checkout needed. Exercises local Generation/Reconstruction and missing inputs.

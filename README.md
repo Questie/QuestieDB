@@ -243,14 +243,17 @@ Run the focused offline version checks with `lua5.1 tools/version.test.lua`.
 
 Entity schema, Corrections, and support data derive from Questie and are committed here, so
 drift is a build failure rather than a discovery months later. Entity translations are now
-owned in `l10n/`, initially copied byte-for-byte from Questie at `215b0c757`. The input adapter
-preserves their executable lookup format and whole-row override semantics without changing
+stored locally in `l10n/` and synchronized with the Questie revision recorded in
+[`QUESTIE_COMMIT`](QUESTIE_COMMIT). The input adapter preserves their executable lookup format
+and whole-row override semantics without changing
 runtime localization or storage.
 
 The migration fidelity gate still compares the local translations against independent inputs
 from pinned Questie. This deliberately rejects unexplained translation changes until the
-migration checks are retired. Bumping `QUESTIE_COMMIT` does not update `l10n/`; review any
-translation differences separately rather than assuming generation fetches them.
+migration checks are retired. The current snapshot is not declared final: future
+`QUESTIE_COMMIT` bumps may require another reviewed localization sync. Bumping the pin does not
+update `l10n/` automatically; review and import translation differences rather than assuming
+Generation fetches them.
 
 ```sh
 git -C ../Questie checkout "$(cat QUESTIE_COMMIT)"

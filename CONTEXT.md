@@ -7,6 +7,9 @@ QuestieDB is a separate project from Questie, with its own release cycle and con
 Its domain is nonetheless *Questie's data model* — the schema, including Questie-specific
 fields, is what QuestieDB stores and serves.
 
+QuestieDB was previously named **QuestieTDB**. Historical branch names, paths, and documents
+may still use that name; they refer to the same project. Use **QuestieDB** for current references.
+
 ## Language
 
 ### Storage
@@ -46,7 +49,8 @@ quantization in both Source and Baked mode (ADR 0006).
 _Avoid_: Unquantized coordinate, full-precision coordinate
 
 **Generation**:
-The offline process that turns raw entity data plus Static Corrections into a TOC metadata store.
+The offline process that turns QuestieDB-owned entity data, Static Corrections, and entity
+localization into a TOC metadata store.
 _Avoid_: Compilation, build, cooking
 
 **Derived Pass**:
@@ -100,6 +104,11 @@ _Avoid_: Runtime override, override table, merged correction
 
 ### Localization
 
+**Entity localization**:
+QuestieDB-owned translations of entity names, NPC subnames, and quest objective text.
+It excludes Questie's UI translations and zone/category names.
+_Avoid_: UI localization, Questie translations
+
 **Generated locale**:
 A non-English locale included in Generation and represented by Base translation blocks in a Baked
 artifact. The generated inventory contains the nine official non-English client locales.
@@ -111,8 +120,8 @@ receives entity translations only from Dynamic Translation Corrections.
 _Avoid_: Unsupported locale
 
 **Base translation**:
-An authored non-English value for a translatable entity field. Static Translation Corrections
-are folded into Base translations during Generation.
+A QuestieDB-owned, authored non-English value for a translatable entity field.
+Static Translation Corrections are folded into Base translations during Generation.
 _Avoid_: Lookup value, localized correction
 
 **Static Translation Correction**:
@@ -186,16 +195,19 @@ corrupted byte that must be detected exactly once. A gate without one is decorat
 _Avoid_: Sanity check, canary
 
 **Reconstruction gate**:
-`reconstruct.lua` — re-derives every data directive with the current generator and
-compares against the artifact as exact bytes, localizing mismatches to named keys.
-_Avoid_: Round-trip test (that is `verify.lua`, which decodes)
+The check that an artifact's data directives match the exact bytes re-derived from
+QuestieDB-owned sources, including entity localization.
+_Avoid_: Round-trip verification (which compares decoded values)
 
 **Golden snapshot**:
-The committed per-id hashes of accepted composed reads (`tools/differential/golden/`),
-checked per flavor in CI. The frozen mirror that catches defects where generator and
-source mode agree with each other while both diverge from upstream — the class the
-retired `-pi` sibling's independence caught during the merge program.
-_Avoid_: Baseline (that word belongs to the validators), reference dump
+A recorded set of accepted composed entity reads. It detects changes to those accepted
+results even when Generation and Source mode agree with each other.
+_Avoid_: Compiler snapshot, upstream oracle
+
+**Migration fidelity check**:
+A comparison of QuestieDB data or behavior against an independent reference from pinned
+legacy Questie. The reference may advance as synchronization continues before cutover.
+_Avoid_: Generation, Golden snapshot
 
 **Compiler comparison adapter**:
 The migration-only projection that converts QuestieDB base coordinates to Questie's legacy
