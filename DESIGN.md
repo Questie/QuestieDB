@@ -72,14 +72,15 @@ truth for the data model.**
 
 ### Generation inputs
 
-QuestieDB reads **Questie's tracked source files directly**. There is no intermediate
-export format.
+QuestieDB reads its owned entity, correction, support, and localization sources directly.
+These were imported from Questie's tracked files without an intermediate export format.
+Schema materialization and migration fidelity checks still read the pinned Questie checkout.
 
 | Input | Shape | Loading |
 | --- | --- | --- |
 | `Database/<Exp>/<x>{Quest,Npc,Item,Object}DB.lua` | `QuestieDB.questData = [[return {...}]]` | mock `QuestieLoader`, execute, `loadstring` the inner string |
-| `Localization/lookups/<Exp>/lookup*/<locale>.lua` | guarded by `if GetLocale() ~= "deDE" then return end` | stub `GetLocale()` once per locale |
-| `Localization/lookups/lookupOverrides.lua` | locale-gated whole-row entity translation replacements plus Titan zhCN rows | import as Static or Dynamic Translation Corrections according to applicability |
+| `l10n/<Exp>/lookup*/<locale>.lua` | owned copies of locale-guarded Questie lookup files | stub `GetLocale()` once per locale in a private environment |
+| `l10n/lookupOverrides.lua` | locale-gated whole-row entity translation replacements | fold applicable Quest/Item rows into Base translations; Titan Dynamic translations already live in `src/l10n/Titan/zhCN.lua` |
 | `Database/Zones/data/`, `QuestXP/DB/`, `DropTables/data/`, `FactionTemplates/` | `QuestieLoader:ImportModule(...)` then table assignment | same mock |
 
 Every input is already Lua, so this is a **mocked-environment loader, not a parser**. Questie's
@@ -133,8 +134,9 @@ caches, and asynchronous Item repair follow the same ownership rule.
 
 ## Schema
 
-**The schema is derived from Questie, not hand-written here.** Generation reads Questie's
-`*Keys` and `*CompilerTypes` and builds the field table from them.
+**The schema is still derived from Questie, not hand-written here.** Schema materialization
+(`generate.lua meta`) reads Questie's `*Keys` and `*CompilerTypes` and builds the field table.
+Flavor Generation uses that committed field table without reading Questie's checkout.
 
 A hand-maintained copy is a second version of someone else's schema, and it drifts. That is
 observed, not theoretical: `Getters`' schema sits at 32 fields against Questie's 36, having
@@ -529,8 +531,9 @@ this case: a `-nolib` variant lets standalone installers avoid a folder collisio
 Baked TOCs are **never committed**. Successful default-branch builds update one rolling
 `preview` pre-release. A manual full release uses `vX.X.X` from the maintained `## Version:`
 in `QuestieDB.toc`, rejecting an existing tag or release unless the maintainer explicitly
-selects `override`. The manifest carries the producer and Questie input commits, per-artifact
-SHA-256, and the contract version. See [release operations](./README.md#releases) for publication
+selects `override`. The manifest carries the producer commit and legacy Questie import/schema
+baseline, per-artifact SHA-256, and the contract version. Owned localization is identified by
+the producer commit. See [release operations](./README.md#releases) for publication
 ordering, failure recovery, and local version selection.
 
 A bootstrap script — PowerShell or bash, no Lua — installs artifacts into the gitignored TOC
@@ -601,6 +604,7 @@ QuestieDB/
     types/                    LuaLS annotations
 
   data/                       raw entity data, moved from Questie
+  l10n/                       owned entity translations and static lookup overrides
   support/                    zones, questXP, dropTables, factionTemplates
 
   generate.lua                data + Static Corrections -> TOC

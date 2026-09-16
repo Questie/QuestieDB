@@ -23,13 +23,13 @@ existing.**
 | Static Corrections | applied live | already folded in |
 | Base translations | unavailable | generated Localization blocks |
 | Dynamic Translation Corrections | any active non-English locale | any active non-English locale |
-| Requires | nothing but a clone | one bootstrap command, or Generation against pinned Questie |
+| Requires | nothing but a clone | one bootstrap command, or local Generation |
 
 A fresh clone junctioned into `AddOns` is a working development environment — no download, no
 Lua toolchain. Generating an artifact switches the same folder to baked mode with no code
-change. Generation reads localization from the Questie commit recorded in `QUESTIE_COMMIT` and
-fails before writing output if the checkout or required lookup files do not match. Use
-`--no-l10n` only for an intentional partial artifact.
+change. Generation reads the owned localization sources in `l10n/` and needs no Questie
+checkout or network access. It fails before writing output if required lookup files are missing.
+Use `--no-l10n` only for an intentional partial artifact.
 
 ---
 
@@ -106,24 +106,33 @@ tools/check.sh verify --flavors=Vanilla,Mists
 tools/check.sh determinism freeze --flavors=Vanilla
 ```
 
-### Automatic Questie inputs for the generator
+### Local inputs and remaining Questie checks
 
-`lua5.1 generate.lua all` and `lua5.1 generate.lua meta` fetch the exact commit in
-`QUESTIE_COMMIT` into `.cache/questie/<sha>` on first use. This directory is gitignored.
-The fetch uses depth 1 and no tags, downloading the full pinned snapshot without its history.
-Git and a POSIX shell with `mktemp` are required. The first run needs network access; subsequent
-runs reuse the cache offline. Changing the pin creates a separate checkout rather than
-resetting an existing one.
+`lua5.1 generate.lua all` reads entity data, Corrections, support data, and localization from
+this repository. Reconstruction also reads local sources. Neither command checks out Questie;
+`QUESTIE_PATH` does not select their translations. Localized Generation still reads the committed
+`QUESTIE_COMMIT` to stamp the legacy import/schema baseline, not to fetch localization.
+See [`l10n/README.md`](l10n/README.md) for the translation layout and import provenance.
 
-`--questie=<path>` overrides `QUESTIE_PATH`; either opts out of the automatic checkout.
-The generator validates that checkout's commit but never fetches, switches, or cleans it.
-`generate.lua toc` and `--no-l10n` do not fetch Questie.
+Only schema materialization (`lua5.1 generate.lua meta`) automatically fetches the exact commit
+in `QUESTIE_COMMIT` into `.cache/questie/<sha>` on first use. The shallow, tag-free snapshot is
+gitignored and reused offline. Git and a POSIX shell with `mktemp` are required for that fetch.
+Changing the pin creates a separate checkout rather than resetting an existing one.
 
-Automatic fetching is limited to direct `generate.lua` invocations. The `./questiedb` check
-runner, Reconstruction, imports, and compiler differential still default to `../Questie`.
-Point their `--questie` or `QUESTIE_PATH` override at `.cache/questie/<sha>` to reuse this checkout.
+For `meta`, `--questie=<path>` overrides `QUESTIE_PATH` and opts out of automatic fetching.
+The generator validates an explicit checkout but never fetches, switches, or cleans it.
+The option has no effect on flavor Generation. Reconstruction no longer accepts `--questie`.
 
-Run the offline checkout tests with `lua5.1 tools/questie-checkout.test.lua`.
+Correction imports, migration fidelity tests, and the compiler differential still need the
+pinned Questie checkout, defaulting to `../Questie`. Point `QUESTIE_PATH` or the check runner's
+`--questie` option at `.cache/questie/<sha>` to reuse the schema checkout.
+
+Focused offline checks:
+
+```sh
+lua5.1 tools/localization-inputs.test.lua
+lua5.1 tools/questie-checkout.test.lua
+```
 
 ### Keeping LuaLS declarations in sync
 
@@ -167,9 +176,9 @@ the Lua path, which it picks up from luarocks automatically. Accepted divergence
 Generation and the addon tooling use plain Lua 5.1 with no `lfs`, luarocks, or C dependency.
 Inputs are enumerated in `src/config.lua` rather than discovered by scanning directories. The
 compiler differential is the one exception because Questie's mocks require `bit32`.
-`tools/check.sh --questie=` propagates one checkout path through Generation, fidelity tests,
-Reconstruction, and the compiler differential; `QUESTIE_PATH` provides the same default for
-nested tools.
+`tools/check.sh --questie=` selects the checkout for fidelity tests and the compiler
+differential; `QUESTIE_PATH` provides the same default for nested migration tools. Generation,
+Determinism, Reconstruction, Verification, and Equivalence need no external checkout.
 
 To refresh a local install instead of regenerating:
 
@@ -198,7 +207,8 @@ cannot be overridden. Repository-wide release immutability is incompatible with 
 
 Baked addon versions are `X.X.X` for full releases and `X.X.X-dev.<short SHA>` otherwise.
 Local Generation follows the same rule; `QUESTIEDB_RELEASE=true` selects the full-release form.
-The manifest and TOCs retain the exact producing and Questie input commits.
+The manifest and TOCs retain the exact producing commit and legacy Questie import/schema
+baseline. The producing commit identifies the owned localization sources.
 
 The release flow lives in [`.github/workflows/release.yml`](.github/workflows/release.yml):
 choose the tag, build/check/package, then publish. Only GitHub publication is configured.
@@ -232,11 +242,15 @@ Run the focused offline version checks with `lua5.1 tools/version.test.lua`.
 ### Re-syncing with Questie
 
 Entity schema, Corrections, and support data derive from Questie and are committed here, so
-drift is a build failure rather than a discovery months later. Entity translations remain
-direct Generation inputs from the pinned Questie checkout during migration. Their import
-adapter isolates Questie's executable lookup and whole-row override formats from QuestieDB's
-three-part localization model, so transferring the authored files later does not require a
-runtime or storage change. CI runs the fidelity checks and fails on any difference.
+drift is a build failure rather than a discovery months later. Entity translations are now
+owned in `l10n/`, initially copied byte-for-byte from Questie at `215b0c757`. The input adapter
+preserves their executable lookup format and whole-row override semantics without changing
+runtime localization or storage.
+
+The migration fidelity gate still compares the local translations against independent inputs
+from pinned Questie. This deliberately rejects unexplained translation changes until the
+migration checks are retired. Bumping `QUESTIE_COMMIT` does not update `l10n/`; review any
+translation differences separately rather than assuming generation fetches them.
 
 ```sh
 git -C ../Questie checkout "$(cat QUESTIE_COMMIT)"
@@ -302,6 +316,7 @@ src/
   ui/                     the source-mode indicator
 
 data/                     raw entity data
+l10n/                     owned entity translations and static lookup overrides
 support/                  zones, quest XP, drop tables, faction templates
 
 questiedb                contributor command for generation and validation

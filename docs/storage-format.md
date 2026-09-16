@@ -209,15 +209,20 @@ Every generated `.toc` carries provenance:
 
 `X-BUILD-COMMIT` is `git rev-parse HEAD`, or forty zeros when git is unavailable.
 
-`X-QUESTIE-COMMIT` is the same for the Questie checkout Generation reads (`--questie=`,
-then `QUESTIE_PATH`, otherwise an automatically fetched depth-1 checkout in
-`.cache/questie/<pinned-sha>` for direct `generate.lua` invocations). It is provenance, not decoration: the localization
-blocks are built from lookups in that checkout rather than committed here, so an artifact is
-reproducible only from the *pair* of commits. `QUESTIE_COMMIT` pins the reviewed input;
-Generation, Reconstruction, the compiler differential, and the Correction port reject a
-different commit, and both workflows read that pin through the shared checkout action.
-`tools/package.sh` copies
-the commit into `release.json` and refuses to package artifacts that disagree about it.
+`X-QUESTIE-COMMIT` retains the legacy import/schema baseline from `QUESTIE_COMMIT` during
+migration. Localized Generation reads that pin file but does not inspect or fetch a Questie
+checkout. Intentional `--no-l10n` artifacts use forty zeros for this header. The manifest keeps
+the corresponding `questieCommit` field; `tools/package.sh` rejects artifacts with different
+baseline stamps in one release.
+
+Localization sources are owned in `l10n/`, so `X-BUILD-COMMIT` identifies their revision along
+with the generator and other local inputs. `X-QUESTIE-COMMIT` is no longer a claim that the
+translations came from an external checkout during Generation. Reconstruction also uses local
+sources and requires no Questie checkout or pin validation.
+
+Schema materialization, the compiler differential, Correction imports, and migration fidelity
+tests still validate the reviewed Questie pin. Both workflows retain the shared checkout action
+for those checks. See `l10n/README.md` for the localization import's historical provenance.
 
 ## Nil and empty semantics
 
