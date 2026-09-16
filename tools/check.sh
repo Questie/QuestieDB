@@ -198,12 +198,12 @@ LUA="$selected_lua"
 export QUESTIE_PATH="$QUESTIE"
 export LUA
 
-# Gates that read Questie must all use the reviewed input commit. Validators, Golden checks,
-# Verification, and Equivalence operate entirely on this repository and generated artifacts.
+# Only the compiler differential reads Questie here. Generation, Reconstruction,
+# and the other artifact gates use owned sources; unit suites enforce their own inputs.
 needs_questie=0
 for gate in "${GATES[@]}"; do
     case "$gate" in
-        generate|determinism|reconstruct|differential) needs_questie=1 ;;
+        differential) needs_questie=1 ;;
     esac
 done
 if [ "$needs_questie" -eq 1 ]; then
@@ -466,7 +466,7 @@ for gate in "${check_gates[@]}"; do
         reconstruct)
             for flavor in "${FLAVOURS[@]}"; do
                 add_job "reconstruct:$flavor" "$(flavour_weight "$flavor")" \
-                    "$(command_string "$LUA" reconstruct.lua "$flavor" --questie="$QUESTIE")"
+                    "$(command_string "$LUA" reconstruct.lua "$flavor")"
             done ;;
         validators)
             for flavor in "${FLAVOURS[@]}"; do

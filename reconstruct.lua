@@ -18,9 +18,9 @@
 -- Usage:
 --   lua reconstruct.lua                 Vanilla
 --   lua reconstruct.lua Cata Mists     named flavors
---   lua reconstruct.lua --toc-dir=.out/x --questie=../Questie --types=Quest --count-only --quiet
+--   lua reconstruct.lua --toc-dir=.out/x --types=Quest --count-only --quiet
 --
--- `--questie` overrides `QUESTIE_PATH`, whose fallback is `../Questie`.
+-- Reconstruction reads the owned localization sources under l10n/, not a Questie checkout.
 -- `--count-only` prints a single number (the mismatch count) for negative-control harnesses.
 -- Exits non-zero on any mismatch.
 
@@ -44,7 +44,6 @@ local MAX_REPORTED = 10
 local opts = {
   flavors = {},
   tocDir = ".",
-  questie = os.getenv("QUESTIE_PATH") or "../Questie",
   quiet = false,
   countOnly = false,
   types = nil,
@@ -56,8 +55,6 @@ for _, value in ipairs(arg or {}) do
   elseif key == "types" then
     opts.types = {}
     for name in val:gmatch("[^,]+") do opts.types[name] = true end
-  elseif key == "questie" then
-    opts.questie = val
   elseif value == "--count-only" then
     opts.countOnly, opts.quiet = true, true
   elseif value == "--quiet" then
@@ -68,10 +65,6 @@ for _, value in ipairs(arg or {}) do
     opts.flavors[#opts.flavors + 1] = value
   end
 end
-
--- Reconstruction re-reads Questie's localization source. Validate it before artifact bytes
--- are compared so direct invocations enforce the same provenance as Generation.
-lib.assertQuestiePin(opts.questie)
 
 local function say(...)
   if not opts.quiet then print(...) end
@@ -105,6 +98,9 @@ end
 ---@param includeLocalization boolean
 ---@return string[] lines
 local function expectedLines(flavor, includeLocalization)
+  if includeLocalization then
+    l10nGen.assertInputs(config.paths.l10n, { flavor }, opts.types)
+  end
   local sink = newSink()
   local loaded = flavorLoader.load(flavor, opts.types)
 
@@ -139,8 +135,7 @@ local function expectedLines(flavor, includeLocalization)
   end
 
   -- Localization, appended after entity data. Keep this loop byte-identical to generate.lua.
-  if includeLocalization and
-     lib.fileExists(opts.questie .. "/Localization/lookups/" .. flavor.expansion) then
+  if includeLocalization then
     l10nGen.writeHeader(sink)
     for _, entityType in ipairs(config.entityTypes) do
       local entry = loaded[entityType.name]
@@ -148,7 +143,7 @@ local function expectedLines(flavor, includeLocalization)
         local ids = lib.sortedIds(entry.entities)
         local knownIds = {}
         for _, id in ipairs(ids) do knownIds[id] = true end
-        local values = l10nGen.extract(opts.questie, flavor, entityType.name, knownIds)
+        local values = l10nGen.extract(config.paths.l10n, flavor, entityType.name, knownIds)
         l10nGen.writeMetadata(sink, entityType.name, values, ids)
         values = nil
         collectgarbage()

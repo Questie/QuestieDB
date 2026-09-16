@@ -1,6 +1,6 @@
 -- generator/l10n.lua
 --
--- Entity localization: extracts Questie's per-locale lookup tables and emits one compressed
+-- Entity localization: reads the owned per-locale lookup tables and emits one compressed
 -- CBOR column block per locale and entity type.
 --
 -- This removes Questie's recompile-on-locale-change. A non-enUS client decodes its available
@@ -42,22 +42,22 @@ l10n.lookupPath = inputs.lookupPath
 
 ---Fails before Generation opens an artifact when any required lookup file is absent.
 ---A missing tree is allowed only through the caller's explicit `--no-l10n` choice.
----@param questiePath string Questie checkout used as the localization source.
+---@param localizationRoot string Local localization directory.
 ---@param flavors table[] Flavors selected for Generation.
 ---@param typeFilter table<string, boolean>? Entity types selected for Generation.
 ---@return nil
-function l10n.assertInputs(questiePath, flavors, typeFilter)
+function l10n.assertInputs(localizationRoot, flavors, typeFilter)
   local missing, seen = {}, {}
 
   for _, flavor in ipairs(flavors) do
     for typeName, typeCfg in pairs(l10n.types) do
       if not typeFilter or typeFilter[typeName] then
         for _, locale in ipairs(config.locales) do
-          local path = l10n.lookupPath(questiePath, flavor, typeCfg, locale)
+          local path = l10n.lookupPath(localizationRoot, flavor, typeCfg, locale)
           if not lib.fileExists(path) then missing[#missing + 1] = path end
         end
         for _, source in ipairs(inputs.correctionSources(flavor, typeName)) do
-          local path = questiePath .. "/" .. source.path
+          local path = localizationRoot .. "/" .. source.path
           if not seen[path] and not lib.fileExists(path) then missing[#missing + 1] = path end
           seen[path] = true
         end
@@ -74,8 +74,8 @@ function l10n.assertInputs(questiePath, flavors, typeFilter)
     shown[#shown + 1] = ("  ... and %d more"):format(#missing - #shown)
   end
 
-  error(("l10n: %d required Questie lookup files are missing. Pass the correct Questie " ..
-    "checkout with --questie=<path>, or explicitly generate without localization with " ..
+  error(("l10n: %d required local lookup files are missing. Restore the localization sources " ..
+    "or explicitly generate without localization with " ..
     "--no-l10n:\n%s"):format(#missing, table.concat(shown, "\n")), 0)
 end
 
@@ -100,23 +100,23 @@ function l10n.applyStaticCorrections(base, corrections)
 end
 
 ---Load one entity type's base translations and Static Translation Corrections.
----@param questiePath string
+---@param localizationRoot string Local localization directory.
 ---@param flavor table
 ---@param typeName string
 ---@param knownIds table id -> true; entries with no main-DB row are dropped
 ---@return table values id -> compact field index -> locale slots
 ---@return table stats
-function l10n.extract(questiePath, flavor, typeName, knownIds)
+function l10n.extract(localizationRoot, flavor, typeName, knownIds)
   local typeCfg = l10n.types[typeName]
   local values = {}
   local stats = { locales = 0, entries = 0, filtered = 0, missingFiles = {} }
 
   for localeIndex, locale in ipairs(config.locales) do
-    local path = l10n.lookupPath(questiePath, flavor, typeCfg, locale)
+    local path = l10n.lookupPath(localizationRoot, flavor, typeCfg, locale)
     if not lib.fileExists(path) then
       stats.missingFiles[#stats.missingFiles + 1] = path
     else
-      local base, corrections = inputs.load(questiePath, flavor, typeName, locale)
+      local base, corrections = inputs.load(localizationRoot, flavor, typeName, locale)
       for _, rows in ipairs(corrections) do l10n.applyStaticCorrections(base, rows) end
       stats.locales = stats.locales + 1
       for id, row in pairs(base) do

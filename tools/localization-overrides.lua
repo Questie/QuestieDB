@@ -214,7 +214,7 @@ function fidelity.run(check, root)
       local known, ids = {}, {}
       for id in pairs(loaded[typeName].entities) do known[id] = true; ids[#ids + 1] = id end
       table.sort(ids)
-      local actual = generator.extract(root, flavor, typeName, known)
+      local actual = generator.extract(config.paths.l10n, flavor, typeName, known)
       for localeIndex, locale in ipairs(config.locales) do
         local expected = fidelity.lookup(root, flavor, typeName, locale)
         local differences = fidelity.compare(generator, typeName, actual, expected, ids, localeIndex)

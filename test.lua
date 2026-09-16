@@ -320,12 +320,6 @@ suite("generation-inputs", function()
   local present, presentErr = pcall(l10nGen.assertInputs, root, { flavor }, typeFilter)
   check(present, "a complete selected lookup set passes preflight: " .. tostring(presentErr))
 
-  -- When a checkout is supplied, local tests enforce the same reviewed commit as automation.
-  if lib.gitCommit(QUESTIE_PATH) ~= string.rep("0", 40) then
-    local pinned, pinErr = pcall(lib.assertQuestiePin, QUESTIE_PATH)
-    check(pinned, "the configured Questie checkout matches QUESTIE_COMMIT: " .. tostring(pinErr))
-  end
-
   for _, path in ipairs(paths) do os.remove(path) end
 end)
 
@@ -537,10 +531,16 @@ printf 'python\tquestie=%s\t%s\n' "${QUESTIE_PATH:-}" "$*" >> "$CHECK_FLOW_LOG"
   check(log:find("questie=/tmp/fake-questie\tgenerate.lua Vanilla", 1, true) ~= nil and
         log:find("questie=/tmp/fake-questie\ttest.lua", 1, true) ~= nil,
     "custom Questie path reaches Generation and unit tests through the environment")
-  check(log:find("reconstruct.lua Vanilla --questie=/tmp/fake-questie", 1, true) ~= nil,
-    "custom Questie path reaches Reconstruction")
+  check(log:find("reconstruct.lua Vanilla --questie=", 1, true) == nil,
+    "Reconstruction reads local localization rather than a Questie checkout")
   check(log:find("compiler_diff.py Vanilla --questie=/tmp/fake-questie", 1, true) ~= nil,
     "custom Questie path reaches the compiler differential")
+
+  check(runFlow("generate determinism reconstruct --flavors=Vanilla"),
+    "local artifact gates run without a Questie checkout")
+  local localGateLog = lib.readAll(logPath)
+  check(localGateLog:find("assertQuestiePin", 1, true) == nil,
+    "Generation, Determinism, and Reconstruction do not preflight Questie")
 
   check(runFlow("test"), "the standalone unit-test gate needs no Questie checkout")
   local testLog = lib.readAll(logPath)
@@ -4272,10 +4272,6 @@ suite("reconstruct-control", function()
     io.write("  SKIP reconstruct-control: ", sourceToc, " not generated\n")
     return
   end
-  if not pcall(lib.assertQuestiePin, QUESTIE_PATH) then
-    io.write("  SKIP reconstruct-control: no pinned Questie checkout at ", QUESTIE_PATH, "\n")
-    return
-  end
 
   lib.mkdirp(".out/corrupt")
   local original = lib.readAll(sourceToc)
@@ -4285,7 +4281,7 @@ suite("reconstruct-control", function()
   lib.writeAll(".out/corrupt/" .. sourceToc, corrupted)
 
   local countFile = ".out/reconstruct-count.txt"
-  local ok = os.execute("QUESTIE_PATH=" .. shellQuote(QUESTIE_PATH) .. " " .. shellQuote(LUA_BIN) ..
+  local ok = os.execute(shellQuote(LUA_BIN) ..
     " reconstruct.lua Vanilla --toc-dir=.out/corrupt --count-only > " ..
     shellQuote(countFile) .. " 2>/dev/null")
   local failed

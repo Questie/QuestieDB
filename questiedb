@@ -28,7 +28,7 @@ Flavors:
 Options:
   --flavors=Vanilla,Mists  Explicit flavor selection for scripts and CI
   --budget-mb=4000         Scheduler memory budget, 1 to 2147483647 MB
-  --questie=PATH           Questie checkout, default: ../Questie
+  --questie=PATH           Legacy differential/fidelity checkout, default: ../Questie
   --lua=COMMAND            Lua 5.1-compatible interpreter
   --sequential             Run one job at a time
   -h, --help               Show this help

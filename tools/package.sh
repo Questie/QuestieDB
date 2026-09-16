@@ -98,14 +98,14 @@ for FLAVOR in "${FLAVORS[@]}"; do
     SHA=$(sha256sum "$ZIP" | cut -d' ' -f1)
     RAW=$(stat -c %s "$TOC")
 
-    # The artifact records the Questie checkout its l10n was generated from. One release is
-    # one Questie state: artifacts that disagree must never share a manifest.
+    # Keep one legacy import/schema baseline across the release during migration.
+    # Owned localization is identified by producerCommit, not an external checkout.
     QC=$(sed -n 's/^## X-QUESTIE-COMMIT: //p' "$TOC" | head -1 | tr -d '\r')
     [ -n "$QC" ] || QC="$(printf '%040d' 0)"
     if [ -z "${QUESTIE_COMMIT:-}" ]; then
         QUESTIE_COMMIT="$QC"
     elif [ "$QUESTIE_COMMIT" != "$QC" ]; then
-        echo "package: $TOC was generated against Questie $QC but an earlier artifact against $QUESTIE_COMMIT — regenerate all flavors from one checkout" >&2
+        echo "package: $TOC was generated against Questie $QC but an earlier artifact against $QUESTIE_COMMIT — regenerate all flavors with one legacy baseline" >&2
         exit 1
     fi
 
@@ -170,7 +170,7 @@ rm -rf "$STAGE"
     echo "# QuestieDB"
     echo
     echo "Producing commit: \`$COMMIT\`"
-    echo "Questie input commit: \`${QUESTIE_COMMIT:-unknown}\`"
+    echo "Legacy Questie baseline: \`${QUESTIE_COMMIT:-unknown}\`"
     echo "Contract version: \`$CONTRACT\`"
     echo
     echo "Not sure which zip matches your client? \`QuestieDB-all.zip\` contains every flavor"

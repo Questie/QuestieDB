@@ -1,5 +1,5 @@
--- Questie's translation sources are migration inputs, not the localization read model.
--- Keep their TOC applicability, executable payloads, and whole-row replacement semantics here.
+-- Local translation sources retain their imported executable format. Keep flavor
+-- applicability, sandboxing, and whole-row replacement semantics at this input boundary.
 -- Generation receives named translation fields; false in a Static Translation Correction
 -- explicitly clears an imported field so an omitted override field cannot retain stale text.
 
@@ -19,12 +19,12 @@ inputs.types = {
   Object = { dir = "lookupObjects", field = "objectLookup", scalar = true, fields = { { name = "name" } } },
 }
 
--- These are the pinned Questie TOCs that include this source. Selection and preflight use
--- the same inventory. Another imported correction source belongs here, not in extract().
+-- Override applicability follows the original flavor TOCs. Selection and preflight use
+-- the same inventory; another correction source belongs here, not in extract().
 ---@type table[]
 inputs.staticSources = {
   {
-    path = "Localization/lookups/lookupOverrides.lua",
+    path = "lookupOverrides.lua",
     expansions = { TBC = true, Wotlk = true, Cata = true, MoP = true },
     fields = { Quest = "questLookupOverrides", Item = "itemLookupOverrides" },
   },
@@ -36,7 +36,7 @@ inputs.staticSources = {
 ---@param locale string
 ---@return string path
 function inputs.lookupPath(root, flavor, typeCfg, locale)
-  return ("%s/Localization/lookups/%s/%s/%s.lua")
+  return ("%s/%s/%s/%s.lua")
     :format(root, flavor.expansion, typeCfg.dir, locale)
 end
 
@@ -115,7 +115,7 @@ end
 
 ---Import base translations and ordered Static Translation Corrections independently.
 ---The executable source's row replacement becomes explicit field clearing at this seam.
----@param root string Pinned Questie checkout.
+---@param root string Local localization directory.
 ---@param flavor table
 ---@param typeName string
 ---@param locale string

@@ -9,7 +9,7 @@
 --   lua generate.lua Vanilla [TBC ...]    named flavors
 --
 -- Options:
---   --questie=<path>       use an existing pinned checkout instead of the automatic shallow clone
+--   --questie=<path>       existing pinned checkout for schema materialization (meta only)
 --   --types=Quest,Npc      restrict entity types
 --   --fields=name,zoneOrSort   restrict fields (tracer-bullet slices only)
 --   --no-l10n              explicitly generate without localization
@@ -34,8 +34,6 @@ local flavorLoader = dofile("generator/flavor.lua")
 local l10nGen = dofile("generator/l10n.lua")
 local questie = dofile("generator/questie.lua")
 local version = dofile("generator/version.lua")
-
-local DEFAULT_QUESTIE_PATH = os.getenv("QUESTIE_PATH")
 
 -- The correction manifest drives which files each TOC lists. It is optional: a bare data
 -- round-trip works before any corrections are ported.
@@ -156,9 +154,8 @@ local function writeHeader(out, flavor, fileList)
   out:write("## X-Mode: baked\n")
   out:write("## X-BUILD-COMMIT: ", BUILD.commit, "\n")
   out:write("## X-BUILD-TIME: ", BUILD.time, "\n")
-  -- The Questie checkout is a generation input (l10n lookups are read from it, not committed
-  -- here), so the artifact is reproducible only from this commit pair — see
-  -- docs/storage-format.md, "Build metadata".
+  -- Retain the legacy import/schema baseline while migration checks still use Questie.
+  -- Localization is owned here; BUILD.commit identifies the sources actually generated.
   out:write("## X-QUESTIE-COMMIT: ", BUILD.questieCommit, "\n")
   out:write("\n")
   for _, file in ipairs(fileList) do
@@ -313,7 +310,6 @@ function generate.flavor(flavor, opts)
   -- Localization follows entity data as compressed CBOR columns. A non-enUS client eagerly
   -- decodes its available type blocks; enUS keeps localization out of the Lua heap.
   if not opts.noL10n then
-    local questiePath = opts.questie or DEFAULT_QUESTIE_PATH
     out = assert(io.open(tocPath, "ab"), "Cannot append to " .. tocPath)
     totals.lines = totals.lines + l10nGen.writeHeader(out)
     for _, entityType in ipairs(config.entityTypes) do
@@ -323,7 +319,7 @@ function generate.flavor(flavor, opts)
         local knownIds = {}
         for _, id in ipairs(ids) do knownIds[id] = true end
         local values, extractStats = l10nGen.extract(
-          questiePath, flavor, entityType.name, knownIds)
+          config.paths.l10n, flavor, entityType.name, knownIds)
         local blockStats = l10nGen.writeMetadata(out, entityType.name, values, ids)
         totals.lines = totals.lines + blockStats.lines
         totals.l10nBytes = (totals.l10nBytes or 0) + blockStats.bytes
@@ -354,8 +350,7 @@ QUIET = opts.quiet
 BUILD = {
   commit = lib.gitCommit(),
   time = lib.buildTime(),
-  questieCommit = (opts.questie or DEFAULT_QUESTIE_PATH)
-    and lib.gitCommit(opts.questie or DEFAULT_QUESTIE_PATH) or string.rep("0", 40),
+  questieCommit = string.rep("0", 40),
 }
 BUILD.version = version.baked(version.read(config.addonName .. ".toc"),
   BUILD.commit, os.getenv("QUESTIEDB_RELEASE"))
@@ -385,10 +380,10 @@ else
 end
 
 -- Missing localization input must fail before either TOC is opened. `--no-l10n` is the only
--- supported way to request a partial artifact, so an incorrect checkout cannot look successful.
+-- supported way to request a partial artifact. No Questie checkout is read or fetched here.
 if not opts.noL10n then
-  opts.questie, BUILD.questieCommit = questie.resolve(opts.questie)
-  l10nGen.assertInputs(opts.questie, flavors, opts.types)
+  l10nGen.assertInputs(config.paths.l10n, flavors, opts.types)
+  BUILD.questieCommit = lib.readQuestiePin()
 end
 
 -- The base TOC is not flavour-scoped, so every invocation would rewrite the same file. That is

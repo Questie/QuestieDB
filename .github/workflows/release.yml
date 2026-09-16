@@ -99,6 +99,10 @@ jobs:
         working-directory: QuestieDB
         run: lua5.1 tools/version.test.lua
 
+      - name: Local localization tests (offline)
+        working-directory: QuestieDB
+        run: lua5.1 tools/localization-inputs.test.lua
+
       - name: Materialize the schema
         working-directory: QuestieDB
         run: lua5.1 generate.lua meta ../Questie
@@ -124,7 +128,7 @@ jobs:
 
       - name: Generate every flavor
         working-directory: QuestieDB
-        run: lua5.1 generate.lua all --questie=../Questie
+        run: lua5.1 generate.lua all
 
       - name: Determinism
         working-directory: QuestieDB
@@ -132,7 +136,7 @@ jobs:
         # second-generation bytes this check proved identical to the first generation.
         run: |
           sha256sum QuestieDB_{Vanilla,TBC,Wrath,Cata,Mists}.toc > first.sha
-          lua5.1 generate.lua all --questie=../Questie --quiet
+          lua5.1 generate.lua all --quiet
           sha256sum -c first.sha
 
       - name: Unit tests
@@ -142,7 +146,7 @@ jobs:
 
       - name: Reconstruct every artifact
         working-directory: QuestieDB
-        run: lua5.1 reconstruct.lua Vanilla TBC Wrath Cata Mists --questie=../Questie
+        run: lua5.1 reconstruct.lua Vanilla TBC Wrath Cata Mists
 
       - name: Verify every flavor
         working-directory: QuestieDB
