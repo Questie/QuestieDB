@@ -5,7 +5,7 @@
 # none are found, so a generated artifact wins simply by existing. A fresh clone
 # has no suffixed TOC, which is what makes it a working dev environment.
 ## Interface: 11508, 11509, 20506, 38000, 38001, 40402, 50503, 50504
-## Title: QuestieTDB
+## Title: QuestieDB
 ## Notes: |cFFFFD100(source mode)|r The database Questie consumes. No generated artifact present.
 ## Author: Questie contributors
 ## Version: 0.1.0

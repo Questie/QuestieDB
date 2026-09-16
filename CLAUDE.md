@@ -1,4 +1,4 @@
-# QuestieTDB
+# QuestieDB
 
 See [`AGENTS.md`](./AGENTS.md) — it holds the orientation notes and the `## Agent skills`
 configuration for this repo.

@@ -5,7 +5,7 @@
 --
 -- Stack: B's own generation loaders build the statically-corrected base exactly as B's
 -- generate.lua does (raw entity source -> derived schema -> ApplyStatic under owner
--- QuestieTDB), then B's production Dynamic Correction runtime composes over it through
+-- QuestieDB), then B's production Dynamic Correction runtime composes over it through
 -- emulator/with_dynamic_view.lua with the persona matched to A's offline default —
 -- Alliance / Human / Warrior / no active season.
 --
@@ -48,7 +48,7 @@ for _, generated in ipairs(generatedEntities) do
   mutableEntities[generated.config.name] = generated
 end
 local staticCorrections = loadStaticCorrections(flavor, generatedEntities)
-staticCorrections:ApplyStatic("QuestieTDB", mutableEntities, {
+staticCorrections:ApplyStatic("QuestieDB", mutableEntities, {
   flavor = flavor,
   entityTypes = config.entityTypes,
   normalizeValue = entitySchema.normalizeValue,

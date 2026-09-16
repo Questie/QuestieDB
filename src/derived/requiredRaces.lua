@@ -1,9 +1,9 @@
 -- src/derived/requiredRaces.lua
 --
 -- Temporary Derived Pass for Questie's requiredRaces inference. Questie runs this rule after
--- Static Corrections and before compiling; QuestieTDB must run it over the same corrected raw
+-- Static Corrections and before compiling; QuestieDB must run it over the same corrected raw
 -- Quest and Npc tables to preserve the current read contract. Explicit correction data remains
--- the proper representation, tracked by https://github.com/Questie/QuestieTDB/issues/1.
+-- the proper representation, tracked by https://github.com/Questie/QuestieDB/issues/1.
 --
 -- The active function is a behavioral transcription, including upstream's unsafe guesses. The
 -- corrected function beside it is deliberately unused: it records the conservative policy we

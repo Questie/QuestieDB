@@ -1,6 +1,6 @@
 -- validators/zones.lua
 --
--- Area-to-UiMap resolution over the support data QuestieTDB owns.
+-- Area-to-UiMap resolution over the support data QuestieDB owns.
 --
 -- Four of the fifteen invariant checks ask "does this spawn's area ID resolve to a map?", and
 -- in Questie that question is answered by `ZoneDB:GetUiMapIdByAreaId` — a module that stays
@@ -33,8 +33,8 @@ function zones.BuildAreaLookup(flavor)
   local config = dofile("src/config.lua")
   local LibQuestieDB = { config = config, flavor = flavor }
 
-  runtime.execute("src/corrections/enum/constants.lua", "QuestieTDB", LibQuestieDB)
-  runtime.execute("src/support/data.lua", "QuestieTDB", LibQuestieDB)
+  runtime.execute("src/corrections/enum/constants.lua", "QuestieDB", LibQuestieDB)
+  runtime.execute("src/support/data.lua", "QuestieDB", LibQuestieDB)
 
   -- `dungeons.lua` reads `UnitFactionGroup` at load time to pick faction-specific entry
   -- coordinates, so the client stubs have to be in place even for a pure data load.
@@ -44,7 +44,7 @@ function zones.BuildAreaLookup(flavor)
   support.Install(flavor)
   for _, file in ipairs(config.supportFiles(flavor)) do
     if file:match("^support/Zones/") then
-      runtime.execute(file, "QuestieTDB", LibQuestieDB)
+      runtime.execute(file, "QuestieDB", LibQuestieDB)
     end
   end
   support.Remove()

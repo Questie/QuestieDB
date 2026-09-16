@@ -5,7 +5,7 @@ replaces the "Object-hover tooltip name index" task: the plan there — build a 
 from composed Object ids after init and rebuild it on every locale change and Correction
 apply — is withdrawn. This is what to do instead.
 
-Lives at the QuestieTDB root for now; it moves to Questie with the work.
+Lives at the QuestieDB root for now; it moves to Questie with the work.
 
 ## The shape
 
@@ -231,7 +231,7 @@ The original task's checks, restated against this design:
 - Object-hover tooltips still show deduplicated quest/objective lines — Step 2, unchanged loop.
 - The optional Object ID line preserves the one, many, and `10+` presentation — Step 2.
 - Rebuilding replaces old-locale names and does not append duplicate Object IDs — the database
-  index is rebuilt from scratch on every invalidation (QuestieTDB's `name-index` suite); the
+  index is rebuilt from scratch on every invalidation (QuestieDB's `name-index` suite); the
   registration set is a set, and is locale-stable within a session because a locale change
   reloads.
 - Correction-added Objects become discoverable and withdrawn Objects disappear — proven for

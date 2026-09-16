@@ -35,12 +35,12 @@ end
 ---Only the explicit workflow flag removes development provenance from Baked versions.
 ---@param sourceVersion string Validated Source TOC version.
 ---@param commit string Git commit, or forty zeros when unavailable.
----@param releaseFlag string? QUESTIETDB_RELEASE environment value.
+---@param releaseFlag string? QUESTIEDB_RELEASE environment value.
 ---@return string value
 function version.baked(sourceVersion, commit, releaseFlag)
   if releaseFlag == "true" then return sourceVersion end
   if releaseFlag ~= nil and releaseFlag ~= "" and releaseFlag ~= "false" then
-    error("QUESTIETDB_RELEASE must be true or false", 0)
+    error("QUESTIEDB_RELEASE must be true or false", 0)
   end
   return sourceVersion .. "-dev." .. commit:sub(1, 7)
 end

@@ -37,7 +37,7 @@ That is the entire file (8 lines). Note it has NO `## Version`, NO `## Author`, 
 deliberately minimal "wrong client" stub. It is unconditionally shipped (`filesToInclude` in
 `build.py` always contains `"Questie.toc"`).
 
-**QuestieTDB analogue:** the base `QuestieTDB.toc` is *not* a stub — per `QuestieTDB/DESIGN.md:248`
+**QuestieDB analogue:** the base `QuestieDB.toc` is *not* a stub — per `QuestieDB/DESIGN.md:248`
 it is the committed **source mode** TOC. Different semantics, same "un-suffixed file is the
 fallback when no suffixed TOC matches" mechanic.
 
@@ -219,7 +219,7 @@ fallback when no suffixed TOC matches" mechanic.
 **Key observation:** the five real headers are byte-identical EXCEPT line 1 (`## Interface:`).
 Every other directive — Title, Author, Notes-*, Category-*, Version, RequiredDeps, OptionalDeps,
 SavedVariables*, IconTexture, X-Curse-Project-ID, X-Wago-ID — is shared verbatim across all five.
-That is the discipline QuestieTDB should mirror: **one canonical header template, one substituted
+That is the discipline QuestieDB should mirror: **one canonical header template, one substituted
 line per flavor.**
 
 ### 1.7 Body-section deltas per flavor (for completeness)
@@ -237,7 +237,7 @@ The body (file list) after the header is largely shared. Per-flavor differences 
 | Corrections stack | classic + SoD only | classic + tbc | classic + tbc + wotlk | classic + tbc + wotlk + cata | classic + tbc + wotlk + cata + mop |
 | SoD-specific | `SeasonOfDiscovery.lua`, `sodBase*.lua`, `sod*Fixes.lua`, `HardcoreBlacklist.lua`, `AutoTableUpdates.lua` | `AutoTableUpdates.lua` | `AutoTableUpdates.lua` | — | — |
 
-`Database\compiler.lua` is listed in ALL five (this is the file QuestieTDB replaces; see
+`Database\compiler.lua` is listed in ALL five (this is the file QuestieDB replaces; see
 `Questie/docs/adr/0001-questie-as-database-consumer.md:15`).
 
 Mists-only note quoted verbatim from `Questie-Mists.toc:141-143`:
@@ -250,19 +250,19 @@ Database\DropTables\data\cataItemDrops.lua
 
 ---
 
-## 2. Flavor mapping: Questie suffix → QuestieTDB modern underscore suffix
+## 2. Flavor mapping: Questie suffix → QuestieDB modern underscore suffix
 
-`QuestieTDB/DESIGN.md:229-244` fixes the target naming. Combined with the interface numbers found
+`QuestieDB/DESIGN.md:229-244` fixes the target naming. Combined with the interface numbers found
 in `Questie/*.toc`:
 
-| Questie TOC (legacy hyphen suffix) | build.py flavor string | WOW_PROJECT_ID | QuestieTDB TOC (modern underscore suffix) | Interface (copy verbatim) |
+| Questie TOC (legacy hyphen suffix) | build.py flavor string | WOW_PROJECT_ID | QuestieDB TOC (modern underscore suffix) | Interface (copy verbatim) |
 | --- | --- | ---: | --- | --- |
-| `Questie-Classic.toc` | `classic` | 2 | `QuestieTDB_Vanilla.toc` | `11508, 11509` |
-| `Questie-BCC.toc` | `bcc` | 5 | `QuestieTDB_TBC.toc` | `20506` |
-| `Questie-WOTLKC.toc` | `wrath` | 11 | `QuestieTDB_Wrath.toc` | `38000, 38001` |
-| `Questie-Cata.toc` | `cata` | 14 | `QuestieTDB_Cata.toc` | `40402` |
-| `Questie-Mists.toc` | `mists` | 19 | `QuestieTDB_Mists.toc` | `50503, 50504` |
-| `Questie.toc` (fallback stub) | — | — | `QuestieTDB.toc` (**source mode**, committed) | source-mode value TBD; NOT `00000` |
+| `Questie-Classic.toc` | `classic` | 2 | `QuestieDB_Vanilla.toc` | `11508, 11509` |
+| `Questie-BCC.toc` | `bcc` | 5 | `QuestieDB_TBC.toc` | `20506` |
+| `Questie-WOTLKC.toc` | `wrath` | 11 | `QuestieDB_Wrath.toc` | `38000, 38001` |
+| `Questie-Cata.toc` | `cata` | 14 | `QuestieDB_Cata.toc` | `40402` |
+| `Questie-Mists.toc` | `mists` | 19 | `QuestieDB_Mists.toc` | `50503, 50504` |
+| `Questie.toc` (fallback stub) | — | — | `QuestieDB.toc` (**source mode**, committed) | source-mode value TBD; NOT `00000` |
 
 `WOW_PROJECT_ID` values are from `Questie/Modules/Expansions.lua:6-20` and the CLI validators:
 
@@ -285,15 +285,15 @@ Expansions.Cata = expansionOrderLookup[WOW_PROJECT_CATACLYSM_CLASSIC or 14]
 Expansions.MoP = expansionOrderLookup[WOW_PROJECT_MISTS_CLASSIC or 19]
 ```
 
-Per `QuestieTDB/DESIGN.md:231-235` the flavor→TOC mapping including special clients:
+Per `QuestieDB/DESIGN.md:231-235` the flavor→TOC mapping including special clients:
 
 ```
-| WoW Classic                                  | `QuestieTDB_Vanilla.toc` |
-| Burning Crusade Classic, Classic Anniversary | `QuestieTDB_TBC.toc`     |
-| Wrath Classic, **Titan Reforged**            | `QuestieTDB_Wrath.toc`   |
-| Cataclysm Classic                            | `QuestieTDB_Cata.toc`    |
-| Mists of Pandaria Classic                    | `QuestieTDB_Mists.toc`   |
-| none of the above present                    | `QuestieTDB.toc` → source mode |
+| WoW Classic                                  | `QuestieDB_Vanilla.toc` |
+| Burning Crusade Classic, Classic Anniversary | `QuestieDB_TBC.toc`     |
+| Wrath Classic, **Titan Reforged**            | `QuestieDB_Wrath.toc`   |
+| Cataclysm Classic                            | `QuestieDB_Cata.toc`    |
+| Mists of Pandaria Classic                    | `QuestieDB_Mists.toc`   |
+| none of the above present                    | `QuestieDB.toc` → source mode |
 ```
 
 And `DESIGN.md:238-244`:
@@ -485,7 +485,7 @@ Facts:
 - **One metadata entry per interface number**, not per flavor — `11508, 11509` yields two `classic`
   entries.
 - `"nolib": false` is hard-coded, sibling of `"filename"`. `DESIGN.md:498` calls this out as the
-  CurseForge mechanism that lets a standalone QuestieTDB installer avoid a folder collision with
+  CurseForge mechanism that lets a standalone QuestieDB installer avoid a folder collision with
   the copy bundled inside Questie's zip.
 - `flavorString[:-1]` strips the trailing comma — the JSON is assembled by string concatenation, so
   an empty `includedExpansions` would produce `"metadata": []`-with-mangled-brace. Not reachable in
@@ -1086,7 +1086,7 @@ Two directives, both present in all five real TOCs at **lines 24 and 25**:
   8. `LibStub`
   9. `LibUIDropDownMenu`
 - **`## Dependencies:` does NOT appear anywhere in any `.toc` in this workspace.** Verified by grep
-  across `Questie/`, `Getters/`, `toc-database/`, `QuestieTDB/`. The only hits for the literal token
+  across `Questie/`, `Getters/`, `toc-database/`, `QuestieDB/`. The only hits for the literal token
   are prose in docs and the Blizzard API annotation `C_AddOns.GetAddOnDependencies`.
 - `## Dependencies:` and `## RequiredDeps:` are synonyms in the WoW TOC parser. Questie picked
   `RequiredDeps`; the ADR and DESIGN prose say `Dependencies`. **Pick one and be consistent.**
@@ -1095,29 +1095,29 @@ Two directives, both present in all five real TOCs at **lines 24 and 25**:
 
 `Questie/docs/adr/0001-questie-as-database-consumer.md:12-13`:
 
-> - Questie declares a hard `## Dependencies` on QuestieTDB. The client covers absence; a
+> - Questie declares a hard `## Dependencies` on QuestieDB. The client covers absence; a
 >   contract-version check in Questie covers "present but incompatible".
 
-`QuestieTDB/DESIGN.md:22`:
+`QuestieDB/DESIGN.md:22`:
 
-> | Dependency | Hard `## Dependencies: QuestieTDB`. The client's red warning covers absence; the contract version covers mismatch. |
+> | Dependency | Hard `## Dependencies: QuestieDB`. The client's red warning covers absence; the contract version covers mismatch. |
 
-`QuestieTDB/DESIGN.md:332` (third-party correction addons):
+`QuestieDB/DESIGN.md:332` (third-party correction addons):
 
 > `## Dependencies: Questie` and therefore register *after* Questie has already applied.
 
-`QuestieTDB/DESIGN.md:418`:
+`QuestieDB/DESIGN.md:418`:
 
 > Independent release cycles make skew inevitable. The hard `## Dependencies` covers *absence*;
 
 **Concrete syntax to write into Questie's five TOCs when the cut happens:**
 
 ```
-## Dependencies: QuestieTDB
+## Dependencies: QuestieDB
 ```
 or, keeping Questie's existing directive name:
 ```
-## RequiredDeps: QuestieTDB
+## RequiredDeps: QuestieDB
 ```
 Multiple deps use the same `, `-separated form as `OptionalDeps`.
 
@@ -1248,8 +1248,8 @@ copy-paste crib sheet of Windows `mklink /J` (directory junction) commands for w
 addon folders into a live WoW `Interface\AddOns` tree. It is byte-identical to `Getters/LOCAL.bat`
 (`diff` returns no differences).
 
-For QuestieTDB the equivalent is a single junction:
-`mklink /J "<WoW>\Interface\AddOns\QuestieTDB" "<repo>\QuestieTDB"` — and per `DESIGN.md:253-256`,
+For QuestieDB the equivalent is a single junction:
+`mklink /J "<WoW>\Interface\AddOns\QuestieDB" "<repo>\QuestieDB"` — and per `DESIGN.md:253-256`,
 "A fresh clone junctioned into `AddOns` is a working development environment with **no download and
 no Lua toolchain**."
 
@@ -1772,7 +1772,7 @@ CurseForge numeric `gameVersions` (opaque CF IDs, NOT interface numbers) —
     "gameVersions": [16081, 16630, 16533, 16168],
 ```
 
-**Recommended QuestieTDB `config.versions` table (correct values):**
+**Recommended QuestieDB `config.versions` table (correct values):**
 
 ```lua
 config.versions = {
@@ -1802,11 +1802,11 @@ Better still: **derive** these at build time by reading `Questie/*.toc` line 1 w
 2. **Cata is excluded from the default build set** (`build.py:82-87` appends 1,2,3,5) and from the
    `db-validation` matrix in `ci.yml` (`[era, sod, tbc, wotlk, mop, localization]`), and from both
    upload scripts. But `Questie-Cata.toc` exists and `get_interface_versions("Cata")` is called
-   unconditionally at `build.py:117`. QuestieTDB must decide Cata's status explicitly.
+   unconditionally at `build.py:117`. QuestieDB must decide Cata's status explicitly.
 
 3. **`get_interface_versions` requires `## Interface:` on line 1 and CWD = repo root.**
    `re.match` is anchored; a leading comment line (as in `Questie.toc`, where `## Interface:` is on
-   line 4) would break it. `Questie.toc` is never passed to it, but a generated QuestieTDB TOC that
+   line 4) would break it. `Questie.toc` is never passed to it, but a generated QuestieDB TOC that
    opens with a `# generated by ...` comment WOULD break an equivalent parser.
 
 4. **`ignorePatterns` matches basenames only.** `"Cata"` strips `Database/Cata` and
@@ -1823,7 +1823,7 @@ Better still: **derive** these at build time by reading `Questie/*.toc` line 1 w
 7. **`flavorString[:-1]`** chops the last character to remove the trailing comma. Any change to the
    `flavor_entries` template's trailing character breaks the JSON.
 
-8. **`"nolib": false` is hard-coded** in `build.py:146`. If QuestieTDB ever ships a `-nolib` variant
+8. **`"nolib": false` is hard-coded** in `build.py:146`. If QuestieDB ever ships a `-nolib` variant
    it must emit a second release entry, not flip this flag.
 
 9. **Beta detection is `*"-b"*` substring matching**, in three independent places with three
@@ -1836,14 +1836,14 @@ Better still: **derive** these at build time by reading `Questie/*.toc` line 1 w
     spelling and use it everywhere so grep stays reliable.
 
 11. **`## Interface: 00000`** in `Questie.toc` is a "never load" sentinel for the fallback stub.
-    QuestieTDB's base `QuestieTDB.toc` is a *working* source-mode TOC and must NOT use `00000`.
+    QuestieDB's base `QuestieDB.toc` is a *working* source-mode TOC and must NOT use `00000`.
 
 12. **Prototype interface numbers are stale** (`20504`, `30404`, `50500`) — see §7. Copying
     `Getters/src/config.lua` or `toc-database/src/config.lua` wholesale ships out-of-date TOCs.
 
-13. **Prototype suffixes are legacy** (`-BCC`, `-WOTLKC`, hyphen-separated). QuestieTDB uses
+13. **Prototype suffixes are legacy** (`-BCC`, `-WOTLKC`, hyphen-separated). QuestieDB uses
     underscore + modern names: `_Vanilla`, `_TBC`, `_Wrath`, `_Cata`, `_Mists`
-    (`QuestieTDB/DESIGN.md:229-244`).
+    (`QuestieDB/DESIGN.md:229-244`).
 
 14. **`toc-database/LOCAL.bat` is 100% `@REM`-commented** — it is documentation, not a script, and
     is byte-identical to `Getters/LOCAL.bat`.
@@ -1872,12 +1872,12 @@ Better still: **derive** these at build time by reading `Questie/*.toc` line 1 w
 
 20. **Secrets consumed:** `CF_API_TOKEN`, `WAGO_API_TOKEN`, `DISCORD_WEBHOOK` (plus `github.token`
     as `GH_TOKEN`). CurseForge project id `334372`; Wago project id `qv634BKb`. Both also appear as
-    `## X-Curse-Project-ID: 334372` / `## X-Wago-ID: qv634BKb` in every real Questie TOC — QuestieTDB
+    `## X-Curse-Project-ID: 334372` / `## X-Wago-ID: qv634BKb` in every real Questie TOC — QuestieDB
     will need its own pair.
 
 21. **`Questie/.gitignore` ignores `releases/`, `CHANGELOG.md`, `response.txt`, `*.log`, `*.zip`.**
-    CHANGELOG.md is generated per-release and never committed. QuestieTDB additionally must gitignore
-    the generated suffixed TOCs (`DESIGN.md:248`: "`QuestieTDB_Vanilla.toc` etc. (gitignored,
+    CHANGELOG.md is generated per-release and never committed. QuestieDB additionally must gitignore
+    the generated suffixed TOCs (`DESIGN.md:248`: "`QuestieDB_Vanilla.toc` etc. (gitignored,
     generated)").
 
 22. **`.gitattributes` forces LF** (`* text=lf`, plus explicit `*.lua *.toc *.xml *.py *.json text`;

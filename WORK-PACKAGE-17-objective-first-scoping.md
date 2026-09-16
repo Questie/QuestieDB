@@ -1,6 +1,6 @@
-# Work package: QuestieTDB issue #17, ObjectiveFirst scoping
+# Work package: QuestieDB issue #17, ObjectiveFirst scoping
 
-Issue: https://github.com/Questie/QuestieTDB/issues/17
+Issue: https://github.com/Questie/QuestieDB/issues/17
 
 Status: ready for implementation.
 
@@ -16,9 +16,9 @@ Implement and test this work in:
 /home/logon/projects/Questie-clones/Questie-toc/QuestieTDB
 ```
 
-Use the provider's sibling `../Questie` checkout at the revision in `QuestieTDB/QUESTIE_COMMIT` as the source and behavior oracle. Do not use this work-package checkout as the oracle, and do not fetch or reset the pinned checkout during this task.
+Use the provider's sibling `../Questie` checkout at the revision in `QuestieDB/QUESTIE_COMMIT` as the source and behavior oracle. Do not use this work-package checkout as the oracle, and do not fetch or reset the pinned checkout during this task.
 
-Read `QuestieTDB/AGENTS.md`, `DESIGN.md`, `docs/api.md`, and the correction ADRs before editing.
+Read `QuestieDB/AGENTS.md`, `DESIGN.md`, `docs/api.md`, and the correction ADRs before editing.
 
 ## Current baseline
 
@@ -126,7 +126,7 @@ Mode and package coverage:
 
 ## Validation
 
-Run focused checks from the QuestieTDB root:
+Run focused checks from the QuestieDB root:
 
 ```sh
 lua5.1 test.lua toc corrections correction-fidelity personas lua-types
@@ -141,7 +141,7 @@ Before completion, run:
 tools/check.sh all --questie=../Questie
 ```
 
-The full gate is heavy, generates artifacts, and writes under the checkout. Run it only in an isolated QuestieTDB checkout or output arrangement that cannot alter a symlinked daily-driver addon. Get confirmation first if the checkout's safety is unclear.
+The full gate is heavy, generates artifacts, and writes under the checkout. Run it only in an isolated QuestieDB checkout or output arrangement that cannot alter a symlinked daily-driver addon. Get confirmation first if the checkout's safety is unclear.
 
 Also run:
 
@@ -151,7 +151,7 @@ git diff --check
 
 ## Deliverables
 
-- Scoped ObjectiveFirst collection/publication and focused tests in QuestieTDB.
+- Scoped ObjectiveFirst collection/publication and focused tests in QuestieDB.
 - Pinned-oracle full-table fixtures or comparison code for every required persona.
 - Source, Baked, and stripped-package parity evidence.
 - Updated API documentation and type checks.

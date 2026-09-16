@@ -94,8 +94,8 @@ end
 
 --- Register everything the manifest describes, for one flavor.
 ---
---- The generator runs offline with only QuestieTDB present, so it can only ever bake
---- corrections owned by QuestieTDB. Anything registered by Questie or a third party is Dynamic
+--- The generator runs offline with only QuestieDB present, so it can only ever bake
+--- corrections owned by QuestieDB. Anything registered by Questie or a third party is Dynamic
 --- by definition; the owner recorded here makes that enforceable rather than conventional.
 ---@param flavor table? An entry from config.flavors; nil keeps file-gated variants closed.
 ---@param moduleFor fun(name: string): table? Resolves a module name to its loaded table

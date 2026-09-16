@@ -1,6 +1,6 @@
 # Retiring the prototypes
 
-`Getters` and `toc-database` were the prototypes QuestieTDB was mined from. Everything worth
+`Getters` and `toc-database` were the prototypes QuestieDB was mined from. Everything worth
 keeping has been ported, and nothing in this repository builds against them any more.
 
 **Nothing has been moved.** This document is the runbook for the move, not a record of it —
@@ -27,7 +27,7 @@ see [Why this was not done automatically](#why-this-was-not-done-automatically).
   keeps the option of shipping a bare `lua` binary for contributors. `validators/checks.lua`
   needed the same treatment when it moved.
 * **The `.lua-table` intermediate stage.** `Getters/data/*.lua-table` is `GetterDB`'s output,
-  with corrections **already applied** by the pipeline QuestieTDB replaces. Building on it would
+  with corrections **already applied** by the pipeline QuestieDB replaces. Building on it would
   double-apply corrections from the wrong system. It is a dead end, not an asset — and
   `test.lua`'s `no-prototype-inputs` suite fails the build if any file so much as names it.
 * **`Meta/*Meta.lua` field ordering.** It served the compiler's skip map. TOC storage is keyed
@@ -52,7 +52,7 @@ from. What is forbidden is a path that resolves into one.
 
 ## The runbook
 
-From the workspace root (the directory holding `QuestieTDB/`, `Questie/`, `Getters/` and
+From the workspace root (the directory holding `QuestieDB/`, `Questie/`, `Getters/` and
 `toc-database/`):
 
 ```sh
@@ -60,7 +60,7 @@ mkdir -p .retired
 git -C Getters/GetterDB remote -v          # MUST print a remote before continuing — see below
 mv Getters .retired/Getters
 mv toc-database .retired/toc-database
-cp QuestieTDB/docs/retired-README.md .retired/README.md
+cp QuestieDB/docs/retired-README.md .retired/README.md
 ```
 
 `.retired` is already excluded from version control by the workspace `.gitignore`.

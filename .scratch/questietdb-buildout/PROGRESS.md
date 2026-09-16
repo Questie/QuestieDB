@@ -1,4 +1,4 @@
-# QuestieTDB buildout — progress log
+# QuestieDB buildout — progress log
 
 Autonomous overnight run. One section per ticket: what was built, what verification passed,
 decisions taken, what was skipped and why.
@@ -18,9 +18,9 @@ lua5.1 test.lua                       # decoder, equivalence and negative-contro
 
 Recorded once here rather than repeated per ticket.
 
-### D1 — Raw entity data was copied into `QuestieTDB/data/`, not read from Questie
+### D1 — Raw entity data was copied into `QuestieDB/data/`, not read from Questie
 
-`DESIGN.md` lists raw entity data as moving into QuestieTDB, and source mode cannot work
+`DESIGN.md` lists raw entity data as moving into QuestieDB, and source mode cannot work
 without it in-repo. All 20 files (5 expansions × 4 entity types, 78 MB) were copied from
 `Questie/Database/<Exp>/`. Nothing was deleted from Questie — removing Questie's copy is
 its phase 13 and out of scope here.
@@ -61,15 +61,15 @@ It honours the intent (compact, deterministic output for the coordinate-heavy fi
 dominate artifact size) while rejecting the specific implementations. Sparse-array nil holes,
 compact number formatting and the no-trailing-separator discipline are ported as-is.
 
-### D5 — QuestieTDB is lossless where Questie's compiler was lossy
+### D5 — QuestieDB is lossless where Questie's compiler was lossy
 
 Nil and empty semantics match Questie exactly, per `docs/storage-format.md`. Reading
 `Questie/Database/compiler.lua` turned up several places where the *binary* format additionally
 lost or altered information that a text store simply keeps. Enumerated here because each is a
-place a consumer could observe a difference, and all of them are QuestieTDB being more
+place a consumer could observe a difference, and all of them are QuestieDB being more
 accurate, never less:
 
-| Compiler behaviour | QuestieTDB |
+| Compiler behaviour | QuestieDB |
 | --- | --- |
 | `spawnlist`/`waypointlist` coordinates quantized through `floor(x * 40.90)` then `/40.90` | exact source coordinates |
 | a genuine `{0, 0}` coordinate reads back as `{-1, -1}` | preserved as `{0, 0}` |
@@ -82,14 +82,14 @@ Field-level nil/empty semantics are reproduced exactly; nested content is preser
 `docs/storage-format.md` specifies the field level only, so this is the reading that follows
 the document.
 
-**Two of these need a decision from you.** The coordinate quantization means QuestieTDB
+**Two of these need a decision from you.** The coordinate quantization means QuestieDB
 returns coordinates that differ from today's by up to ~0.024, and the phase-`0` case changes a
 returned table's length. Neither is a nil semantic, and both are strictly more faithful to the
 source data, but both are observable at a call site that compares against a hardcoded value.
 
 ### D6 — `## X-Quest-<id>-<field>`, not `## X-<id>-<field>`
 
-Ticket 01's wording says `## X-<id>-1: <name>`. QuestieTDB is one addon holding four entity
+Ticket 01's wording says `## X-<id>-1: <name>`. QuestieDB is one addon holding four entity
 databases, which is the combined case in `docs/storage-format.md`, so keys carry the per-type
 prefix from the start rather than being renamed at ticket 04.
 
@@ -127,12 +127,12 @@ the documented read-back semantics, and the round-trip verifier proves it holds.
 ```
 $ lua5.1 generate.lua Vanilla --types=Quest --fields=name
   Quest     4244 entities      4244 fields
-Generated QuestieTDB_Vanilla.toc — 4244 entities, 4244 fields, 0.2 MB, 0.1s
+Generated QuestieDB_Vanilla.toc — 4244 entities, 4244 fields, 0.2 MB, 0.1s
 
 $ lua5.1 verify.lua Vanilla --types=Quest --fields=name
 [PASS] Vanilla: 4244 entities, 4244 fields, 1 chunked values, 0 errors
 
-$ grep -m1 '^## X-Quest-2-1:' QuestieTDB_Vanilla.toc
+$ grep -m1 '^## X-Quest-2-1:' QuestieDB_Vanilla.toc
 ## X-Quest-2-1: Sharptalon's Claw
 
 # through the emulator, running the shipped src/ files:
@@ -234,7 +234,7 @@ $ lua5.1 generate.lua Vanilla
   Npc      10119 entities     93356 fields
   Item     14889 entities     78162 fields
   Object    6645 entities     16877 fields
-Generated QuestieTDB_Vanilla.toc — 35897 entities, 235246 fields, 9.0 MB, 2.2s
+Generated QuestieDB_Vanilla.toc — 35897 entities, 235246 fields, 9.0 MB, 2.2s
 
 $ lua5.1 verify.lua Vanilla
 [PASS] Vanilla: 35897 entities, 589308 fields, 556 chunked values, 0 errors, 4.9s
@@ -271,11 +271,11 @@ exercises those fields.
 
 ```
 $ lua5.1 generate.lua all          # 31s total
-Generated QuestieTDB_Vanilla.toc — 35897 entities,  235246 fields,  9.0 MB, 2.2s
-Generated QuestieTDB_TBC.toc     — 59101 entities,  390524 fields, 14.7 MB, 3.8s
-Generated QuestieTDB_Wrath.toc   — 88398 entities,  593745 fields, 21.1 MB, 5.3s
-Generated QuestieTDB_Cata.toc    — 140812 entities, 950079 fields, 34.3 MB, 8.4s
-Generated QuestieTDB_Mists.toc   — 177724 entities, 1149311 fields, 41.2 MB, 10.6s
+Generated QuestieDB_Vanilla.toc — 35897 entities,  235246 fields,  9.0 MB, 2.2s
+Generated QuestieDB_TBC.toc     — 59101 entities,  390524 fields, 14.7 MB, 3.8s
+Generated QuestieDB_Wrath.toc   — 88398 entities,  593745 fields, 21.1 MB, 5.3s
+Generated QuestieDB_Cata.toc    — 140812 entities, 950079 fields, 34.3 MB, 8.4s
+Generated QuestieDB_Mists.toc   — 177724 entities, 1149311 fields, 41.2 MB, 10.6s
 
 $ lua5.1 verify.lua                # 73s total
 [PASS] Vanilla: 35897 entities,  589308 fields,  556 chunked, 0 errors
@@ -317,7 +317,7 @@ difference is that l10n is not in yet (ticket 14), which `DESIGN.md` sizes at ~7
   raw tables.
 * `data/<Exp>/_flavor.lua` × 5 and `data/_end.lua` — markers bracketing each expansion's block.
 * `src/ui/modeIndicator.lua` — the permanent in-game indicator.
-* `QuestieTDB.toc` — the committed base TOC, written by `lua generate.lua toc`.
+* `QuestieDB.toc` — the committed base TOC, written by `lua generate.lua toc`.
 
 **Decision — how one base TOC serves five clients without loading five databases**
 
@@ -350,7 +350,7 @@ client without the out-of-date prompt.
 **Decision — where the mode indicator lives**
 
 `DESIGN.md` puts it "on the map or in Questie's settings", which is the consumer's surface.
-QuestieTDB therefore publishes `LibQuestieDB.ModeIndicator.GetText()` / `.GetStatus()` for a
+QuestieDB therefore publishes `LibQuestieDB.ModeIndicator.GetText()` / `.GetStatus()` for a
 consumer to render properly, *and* draws its own small movable frame as a fallback, so the
 guarantee does not depend on a consumer existing. In Baked mode `GetText()` returns nil and no
 frame is created.
@@ -445,7 +445,7 @@ $ lua5.1 equivalence.lua Vanilla --freeze
 ```
 
 Both `--freeze` runs report **zero mutations**, so nothing in the read path writes to a value
-it hands out. That is the mutation audit `DESIGN.md` asks for, running clean on QuestieTDB's
+it hands out. That is the mutation audit `DESIGN.md` asks for, running clean on QuestieDB's
 own code; the volume on Questie's side stays unknown until the consumer is pointed at this.
 
 Covered by tests: table values from *both* read modes are frozen, nested tables too, source
@@ -598,7 +598,7 @@ cached values are invalidated when the composed view changes; debug mode reports
 **Built** — `support/` (24 files, 5.6 MB), `src/support/data.lua` plus its bracket files, and
 per-flavor selection in `src/config.lua`.
 
-Zone maps, quest XP, drop tables and faction templates now ship from QuestieTDB, exposed as
+Zone maps, quest XP, drop tables and faction templates now ship from QuestieDB, exposed as
 whole tables through `LibQuestieDB.Support.Get("ZoneDB" | "QuestXP" | "DropDB" | "QuestieDB")`.
 They stay plain Lua rather than becoming metadata because callers want the whole table — lazy
 decoding buys nothing when the first read materialises everything anyway.
@@ -690,7 +690,7 @@ the boundary rule costs.
 2. **Let the validator optionally read Questie's blacklist and event data** when a checkout is
    present, and run strict there. Restores full coverage in CI at the price of the validator
    depending on a consumer again — which is the thing this ticket moved away from.
-3. **Move blacklists and holiday gating into QuestieTDB.** Contradicts the boundary rule and
+3. **Move blacklists and holiday gating into QuestieDB.** Contradicts the boundary rule and
    `DESIGN.md` rejects it explicitly for `hidden`, so this is only worth revisiting if the
    baseline turns out to hide real bugs.
 
@@ -822,7 +822,7 @@ Measured: Vanilla 21.0 MB raw → **6.3 MB zipped**.
 
 `release.json` carries the producing commit, the contract version, the build time, `"nolib":
 false` (CurseForge's mechanism for letting a standalone install avoid a folder collision when
-QuestieTDB also ships bundled inside Questie's zip), and per-artifact SHA-256 and byte counts.
+QuestieDB also ships bundled inside Questie's zip), and per-artifact SHA-256 and byte counts.
 A consumer pins an exact release by tag.
 
 **Bootstrap** is a downloader in both bash and PowerShell — no Lua, no toolchain. It fetches the
@@ -841,7 +841,7 @@ folder may be a working clone.
 * Neither workflow has run — there is no remote. `package.sh` was executed locally and produced
   a valid zip and manifest; the YAML has not been exercised by GitHub Actions.
 * The pinned Questie integration job from `DESIGN.md`'s testing section is **not** built. It
-  belongs in Questie's CI, not here, and needs a published QuestieTDB release to pin against.
+  belongs in Questie's CI, not here, and needs a published QuestieDB release to pin against.
 
 ---
 
@@ -944,7 +944,7 @@ full runtime stood up. (D8, ticket 09)
 tracer bullet, TOC suffix precedence, the source-mode indicator, and a `‡`-joined localized read
 are all unproven against real WoW.
 
-**3. Two lossless-vs-faithful deviations.** QuestieTDB returns exact coordinates where the
+**3. Two lossless-vs-faithful deviations.** QuestieDB returns exact coordinates where the
 compiler quantized them (~0.024 divergence), and preserves a spawn phase of `0` where the
 compiler dropped it (changing a returned table's length). Both are strictly more faithful to
 the source, and neither is a nil semantic — but both are observable at a call site comparing

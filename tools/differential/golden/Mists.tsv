@@ -1,4 +1,4 @@
-# QuestieTDB golden composed-read hashes - Mists
+# QuestieDB golden composed-read hashes - Mists
 # One line per entity: type, id, sha256/16 over its sorted canonical field lines.
 # Produced from worktree at 186c7176e628d1254d822cbd2882f13106f3a1f9+dirty
 # Refresh (after an INTENTIONAL data change, with review):

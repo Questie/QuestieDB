@@ -11,14 +11,14 @@ Classic TOC loads SoD correction files unconditionally even when SoD is inactive
 
 ## Decision
 
-QuestieTDB preserves the hint values authored in the pinned correction sources, but applies its own
+QuestieDB preserves the hint values authored in the pinned correction sources, but applies its own
 explicit applicability boundary when those files load. Base-expansion hints are cumulative. SoD
 hints require Vanilla with season 2 active, and Titan Reforged hints require Wrath with season 109
 active. Plain Vanilla therefore excludes SoD hints despite Questie's unconditional file loading.
 
 Applicability controls only the five `ObjectiveFirst` hint tables. Seasonal files and their Dynamic
 Correction providers may still ship and load so they are available when their season becomes
-active. QuestieTDB does not split the seasonal artifact or edit the copied correction sources.
+active. QuestieDB does not split the seasonal artifact or edit the copied correction sources.
 
 Source, Baked, and Static-Correction-stripped packages publish identical applicable hint contents.
 The existing public shape remains five consumer-must-not-mutate `{ [questId] = true }` tables.

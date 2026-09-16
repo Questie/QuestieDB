@@ -1,11 +1,11 @@
 -- tools/differential/compiler_coordinates.lua
 --
--- Adapts QuestieTDB's raw coordinates to the values returned by Questie's retired binary
+-- Adapts QuestieDB's raw coordinates to the values returned by Questie's retired binary
 -- compiler. This belongs to the migration differential, never Generation or runtime reads:
 -- the TOC store preserves source precision, while this oracle can only compare at its legacy
 -- 12-bit precision.
 --
--- Quantization is not idempotent. Apply this adapter exactly once to QuestieTDB's raw side and
+-- Quantization is not idempotent. Apply this adapter exactly once to QuestieDB's raw side and
 -- never to the already-compiled Questie side. Dynamic Correction values bypassed compilation
 -- in Questie and therefore bypass this adapter too.
 
@@ -122,10 +122,10 @@ local adaptByStructure = {
   extraobjectives = adaptExtraObjectives,
 }
 
----Adapt one QuestieTDB field for comparison with Questie's compiled public read.
+---Adapt one QuestieDB field for comparison with Questie's compiled public read.
 ---@param meta table Entity metadata containing per-field structure names.
 ---@param fieldIndex number Positional field index.
----@param value any Raw QuestieTDB public value.
+---@param value any Raw QuestieDB public value.
 ---@param fromOverlay boolean Whether a Dynamic Correction supplied the composed value.
 ---@return any adapted
 function compilerCoordinates.adaptField(meta, fieldIndex, value, fromOverlay)

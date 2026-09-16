@@ -34,7 +34,7 @@ local type, rawget, setmetatable, ipairs = type, rawget, setmetatable, ipairs
 -- Lua 5.1, which is what the generator, verify.lua and the offline harness run on, so
 -- capability detection is mandatory and the harness installs a pure-Lua substitute.
 --
--- Since ADR 0003 Decision 10 was revised, freezing guards **QuestieTDB-internal shared
+-- Since ADR 0003 Decision 10 was revised, freezing guards **QuestieDB-internal shared
 -- structures only** — Source mode's base entity tables, which a Correction or consumer must
 -- not corrupt. Values returned from reads are never frozen: they are fresh copies the caller
 -- owns. The taint-ownership findings that motivated the revision (loadstring chunks are

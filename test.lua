@@ -177,7 +177,7 @@ suite("cbor", function()
 end)
 
 suite("deflate", function()
-  local input = string.rep("QuestieTDB zlib round trip \0", 100)
+  local input = string.rep("QuestieDB zlib round trip \0", 100)
   local compressed = LibDeflate:CompressZlib(input, { level = 9 })
   check(type(compressed) == "string" and #compressed < #input, "LibDeflate produced compressed zlib bytes")
   equal(LibDeflate:DecompressZlib(compressed), input, "LibDeflate zlib round trip")
@@ -390,7 +390,7 @@ suite("check-flow", function()
   commandSucceeded("rm -rf " .. shellQuote(root))
   lib.mkdirp(root .. "/tools")
   lib.mkdirp(root .. "/fake-bin")
-  lib.copyFile("questietdb", root .. "/questietdb")
+  lib.copyFile("questiedb", root .. "/questiedb")
   lib.copyFile("tools/check.sh", root .. "/tools/check.sh")
 
   local fakeLua = root .. "/fake-lua"
@@ -406,7 +406,7 @@ if [ "${CHECK_FLOW_FAIL_VERIFY:-0}" = "1" ] && [ "${1:-}" = "verify.lua" ]; then
 fi
 if [ "${1:-}" = "generate.lua" ]; then
   case "${2:-}" in
-    Vanilla|Mists) printf 'artifact\n' > "QuestieTDB_${2}.toc" ;;
+    Vanilla|Mists) printf 'artifact\n' > "QuestieDB_${2}.toc" ;;
   esac
 elif [ "${1:-}" = "verify.lua" ]; then
   printf '[PASS] fixture summary %0100d summary-tail\n' 0
@@ -426,7 +426,7 @@ exit 99
 set -eu
 printf 'python\tquestie=%s\t%s\n' "${QUESTIE_PATH:-}" "$*" >> "$CHECK_FLOW_LOG"
 ]])
-  check(commandSucceeded("chmod +x " .. shellQuote(root .. "/questietdb") .. " " ..
+  check(commandSucceeded("chmod +x " .. shellQuote(root .. "/questiedb") .. " " ..
     shellQuote(root .. "/tools/check.sh") .. " " .. shellQuote(fakeLua) .. " " ..
     shellQuote(wrongLua) .. " " .. shellQuote(root .. "/fake-bin/lua5.1") .. " " ..
     shellQuote(root .. "/fake-bin/python3")),
@@ -443,8 +443,8 @@ printf 'python\tquestie=%s\t%s\n' "${QUESTIE_PATH:-}" "$*" >> "$CHECK_FLOW_LOG"
   ---@return nil
   local function resetFlowFiles()
     commandSucceeded("rm -f " .. shellQuote(logPath) .. " " ..
-      shellQuote(rootAbs .. "/QuestieTDB_Vanilla.toc") .. " " ..
-      shellQuote(rootAbs .. "/QuestieTDB_Mists.toc"))
+      shellQuote(rootAbs .. "/QuestieDB_Vanilla.toc") .. " " ..
+      shellQuote(rootAbs .. "/QuestieDB_Mists.toc"))
   end
 
   ---@param arguments string
@@ -483,7 +483,7 @@ printf 'python\tquestie=%s\t%s\n' "${QUESTIE_PATH:-}" "$*" >> "$CHECK_FLOW_LOG"
     end
     local command = "cd " .. shellQuote(rootAbs) .. " && PATH=" ..
       shellQuote(rootAbs .. "/fake-bin") .. ":\"$PATH\" CHECK_FLOW_LOG=" ..
-      shellQuote(logPath) .. " ./questietdb " .. arguments .. fixtureOptions ..
+      shellQuote(logPath) .. " ./questiedb " .. arguments .. fixtureOptions ..
       " > " .. shellQuote(outputPath) .. " 2>&1"
     return commandSucceeded(command)
   end
@@ -565,7 +565,7 @@ printf 'python\tquestie=%s\t%s\n' "${QUESTIE_PATH:-}" "$*" >> "$CHECK_FLOW_LOG"
   -- they fail before the engine starts any work.
   check(runPublicFlow("", nil, false), "the argument-free public CLI prints help")
   local publicOutput = lib.readAll(outputPath)
-  check(publicOutput:find("Usage: ./questietdb", 1, true) ~= nil and
+  check(publicOutput:find("Usage: ./questiedb", 1, true) ~= nil and
         not lib.fileExists(logPath),
     "public CLI help runs no tools")
   check(runPublicFlow("--help"), "the explicit public CLI help passes")
@@ -1106,7 +1106,7 @@ suite("constant-fields", function()
     "Verification shares Generation's constant-field omission rule")
 
   ---Checks every public read form for the deprecated health placeholders.
-  ---@param Lib table Loaded QuestieTDB namespace.
+  ---@param Lib table Loaded QuestieDB namespace.
   ---@param label string Read mode shown in assertion failures.
   ---@return nil
   local function checkHealthPlaceholders(Lib, label)
@@ -1597,13 +1597,13 @@ suite("corrections", function()
   equal(objectives and objectives[2] and objectives[2][1] and objectives[2][1][3], 3,
     "source-mode corrections still resolve Questie's event icon")
   equal(rawget(_G, "Questie"), nil,
-    "loading the QuestieTDB addon leaves no Questie compatibility global")
+    "loading the QuestieDB addon leaves no Questie compatibility global")
   client.reset()
 
   -- Packaging invokes surviving Dynamic providers to compare staged and original behavior.
   -- Cata's faction provider reads an icon constant, so this catches any packaging path that
   -- bypasses the same invocation scope used by the runtime registry.
-  local stripStage = ".out/test-strip-static/QuestieTDB"
+  local stripStage = ".out/test-strip-static/QuestieDB"
   commandSucceeded("rm -rf " .. shellQuote(stripStage))
   lib.mkdirp(stripStage .. "/src/corrections/Cata")
   lib.copyFile("src/corrections/Cata/cataQuestFixes.lua",
@@ -1913,13 +1913,13 @@ suite("overlay", function()
   equal(Quest.Get(id, "name"), "Renamed by B", "B re-applying changes nothing")
   equal(Quest.Get(id, "requiredLevel"), 42, "B's apply did not disturb A's uncontested field")
 
-  -- A QuestieTDB-side refresh must leave every consumer layer's precedence intact.
+  -- A QuestieDB-side refresh must leave every consumer layer's precedence intact.
   local ownersBefore = table.concat(registry.GetOwners(), "<")
   registry.ApplyRegisteredCorrections(registry.OWNER)
   equal(table.concat(registry.GetOwners(), "<"), ownersBefore,
-    "a QuestieTDB refresh does not reorder owners")
+    "a QuestieDB refresh does not reorder owners")
   equal(Quest.Get(id, "name"), "Renamed by B",
-    "a QuestieTDB refresh does not reclaim consumer-corrected fields")
+    "a QuestieDB refresh does not reclaim consumer-corrected fields")
 
   -- Base data is never written to at runtime, in either read mode.
   equal(Quest.GetRaw(id, "name"), baseName, "base data is untouched by the overlay")
@@ -2386,7 +2386,7 @@ suite("value-ownership", function()
   -- And the internal freeze still degrades rather than fails when the VM refuses.
   source.shared.SetFreezeImplementation(function()
     error("attempted to freeze a table not owned by the calling function " ..
-          "(expected 'QuestieTDB', got '*** ForceTaint_Strong ***')", 0)
+          "(expected 'QuestieDB', got '*** ForceTaint_Strong ***')", 0)
   end)
   source.shared.freezeRefused = 0
   local refused = source.shared.Freeze({ 1, { 2 } })
@@ -2492,7 +2492,7 @@ suite("read-contract", function()
     baked.Corrections.ApplyRegisteredCorrections("FixingAddon")
     equal(baked.Quest.Get(2, "name"), "Klaue von Scharfkralle",
       "an English correction does not suppress the active translation")
-    equal(baked.GetProvenance("Quest", 2, "name"), "QuestieTDB",
+    equal(baked.GetProvenance("Quest", 2, "name"), "QuestieDB",
       "provenance names the owner whose value is actually returned")
     equal(baked.Quest.Get(2, "objectivesText") ~= nil, true,
       "an uncorrected localizable field still translates")
@@ -2807,7 +2807,7 @@ suite("lua-types", function()
     SkillId = true,
   }
   for alias in generalTypes:gmatch("%-%-%-@alias%s+([%a_][%w_]*)") do
-    check(sharedQuestieIdAliases[alias] or alias:find("^QuestieTDB") ~= nil,
+    check(sharedQuestieIdAliases[alias] or alias:find("^QuestieDB") ~= nil,
       "helper alias is shared with Questie or namespaced for consumer compatibility: " .. alias)
   end
 
@@ -2854,14 +2854,14 @@ suite("lua-types", function()
     end
 
     local aliasBody = generalTypes:match(
-      "%-%-%-@alias%s+QuestieTDB" .. entity.name .. "Field%s+([^\r\n]+)")
+      "%-%-%-@alias%s+QuestieDB" .. entity.name .. "Field%s+([^\r\n]+)")
     check(aliasBody ~= nil, entity.name .. " field-name alias exists")
     local aliasedFields = {}
     for field in (aliasBody or ""):gmatch('"([^"]+)"') do aliasedFields[field] = true end
     equal(aliasedFields, schemaFields, entity.name .. " field-name alias matches the schema")
   end
 
-  local tocPaths = { "QuestieTDB.toc" }
+  local tocPaths = { "QuestieDB.toc" }
   for _, flavor in ipairs(config.flavors) do
     local path = config.tocPath(flavor)
     if lib.fileExists(path) then tocPaths[#tocPaths + 1] = path end
@@ -2897,13 +2897,13 @@ suite("toc", function()
   -- The base TOC is committed, so changing the manifest is not enough: Source mode can only
   -- load a new Correction file after `generate.lua toc` refreshes this exact list.
   local committedSourceFiles = {}
-  for line in lib.readAll("QuestieTDB.toc"):gmatch("[^\r\n]+") do
+  for line in lib.readAll("QuestieDB.toc"):gmatch("[^\r\n]+") do
     if line ~= "" and line:sub(1, 1) ~= "#" then
       committedSourceFiles[#committedSourceFiles + 1] = line:gsub("\\", "/")
     end
   end
   equal(committedSourceFiles, config.sourceFileList(),
-    "QuestieTDB.toc exactly matches the computed Source-mode file list")
+    "QuestieDB.toc exactly matches the computed Source-mode file list")
 
   -- The client rejects a file listed twice with `Duplicate File Load Detected`, and it is
   -- right to: the file re-executes, rebuilding whatever it defines while earlier files still
@@ -2977,7 +2977,7 @@ suite("toc", function()
       "registration needs the registry")
     before("src/read/shared.lua", "src/api.lua", "api builds entities with shared.CreateEntity")
     before("src/corrections/_end.lua", "src/api.lua",
-      "api applies QuestieTDB's own corrections, so they must be registered first")
+      "api applies QuestieDB's own corrections, so they must be registered first")
     before("src/support/_begin.lua", "src/support/_end.lua", "brackets are ordered")
     before("src/corrections/_begin.lua", "src/corrections/_end.lua", "brackets are ordered")
   end
@@ -3064,7 +3064,7 @@ end)
 suite("no-prototype-inputs", function()
   -- `Getters` and `toc-database` are reference material, never a build input. Nothing here may
   -- open a path inside them, and in particular nothing may consume `Getters/data/*.lua-table`:
-  -- corrections are already applied there by the pipeline QuestieTDB replaces, so building on
+  -- corrections are already applied there by the pipeline QuestieDB replaces, so building on
   -- it would double-apply corrections from the wrong system.
   --
   -- Provenance comments naming a prototype are fine and wanted — they say where a design came
@@ -3101,7 +3101,7 @@ suite("no-prototype-inputs", function()
   end
   -- The top-level entry points, named rather than globbed: this file is a *test* and carries
   -- the search patterns as string literals, so scanning `.` would find itself.
-  for _, file in ipairs({ "generate.lua", "verify.lua", "equivalence.lua", "QuestieTDB.toc" }) do
+  for _, file in ipairs({ "generate.lua", "verify.lua", "equivalence.lua", "QuestieDB.toc" }) do
     local handle = io.open(file, "rb")
     if handle then
       local content = handle:read("*a")
@@ -3191,7 +3191,7 @@ suite("api", function()
   local metaTypeSource = lib.readAll("src/types/Meta.t.lua")
   local declaredKeyFields, runtimeKeyFields = {}, {}
   for _, entityType in ipairs(config.entityTypes) do
-    local classMarker = "---@class QuestieTDB" .. entityType.name .. "Keys\n"
+    local classMarker = "---@class QuestieDB" .. entityType.name .. "Keys\n"
     local classStart = metaTypeSource:find(classMarker, 1, true)
     assert(classStart, ("missing exact metadata key class marker %q"):format(classMarker))
 
@@ -3390,7 +3390,7 @@ suite("l10n", function()
   correctedFirst[1] = "caller mutation"
   equal(Lib.Quest.objectivesText(2), expectedObjectives,
     "a translated field still returns fresh table copies")
-  equal(Lib.GetProvenance("Quest", 2, "objectivesText"), "QuestieTDB",
+  equal(Lib.GetProvenance("Quest", 2, "objectivesText"), "QuestieDB",
     "corrected objective provenance names the winning owner")
   Lib.Corrections.UnregisterCorrection("L10nTableTest", "Quest", "objectives")
   Lib.Corrections.ApplyRegisteredCorrections("L10nTableTest")
@@ -3603,8 +3603,8 @@ suite("support", function()
   local env = setmetatable({ QuestieLoader = previousLoader }, { __index = _G })
   env._G = env
   local namespace = { config = config }
-  setfenv(assert(loadfile("src/corrections/enum/constants.lua")), env)("QuestieTDB", namespace)
-  setfenv(assert(loadfile("src/support/data.lua")), env)("QuestieTDB", namespace)
+  setfenv(assert(loadfile("src/corrections/enum/constants.lua")), env)("QuestieDB", namespace)
+  setfenv(assert(loadfile("src/support/data.lua")), env)("QuestieDB", namespace)
   local support = namespace.Support
 
   ---@param flavor table
@@ -3615,7 +3615,7 @@ suite("support", function()
     env.UnitFactionGroup = function() return faction end
     for _, file in ipairs(config.supportFiles(nil)) do
       if file ~= "src/corrections/enum/constants.lua" and file ~= "src/support/data.lua" then
-        setfenv(assert(loadfile(file)), env)("QuestieTDB", namespace)
+        setfenv(assert(loadfile(file)), env)("QuestieDB", namespace)
       end
     end
     return support.GetAll()
@@ -3708,10 +3708,10 @@ suite("emulator", function()
   equal(map["X-T-1-1"], "hello", "stored value parsed")
   equal(map["X-T-1-2"], "", "empty stored value parsed rather than dropped")
 
-  local handle = emulator.install("QuestieTDB", map)
-  equal(handle.get("QuestieTDB", "X-T-1-1"), "hello", "installed accessor reads")
+  local handle = emulator.install("QuestieDB", map)
+  equal(handle.get("QuestieDB", "X-T-1-1"), "hello", "installed accessor reads")
   equal(handle.get("SomeOtherAddon", "X-T-1-1"), nil, "accessor is scoped to its addon")
-  equal(C_AddOns.GetAddOnMetadata("QuestieTDB", "X-T-1-1"), "hello", "C_AddOns global installed")
+  equal(C_AddOns.GetAddOnMetadata("QuestieDB", "X-T-1-1"), "hello", "C_AddOns global installed")
 
   local ok = pcall(emulator.parse, ".out/does-not-exist.toc")
   check(not ok, "parsing a missing file must raise")
@@ -4081,7 +4081,7 @@ suite("personas", function()
   -- Titan Reforged is a Dynamic variant over Wrath, selected by Wrath plus season 109.
   -- Probe: quest 6823 "Agent of Hydraxis" gains level 80.
   ---Counts the dedicated Titan providers.
-  ---@param loaded table Loaded QuestieTDB namespace.
+  ---@param loaded table Loaded QuestieDB namespace.
   ---@return integer count
   local function titanSets(loaded)
     local count = 0

@@ -1,4 +1,4 @@
-# QuestieTDB — Questie TOC Database
+# QuestieDB — Questie TOC Database
 
 The design document this implementation was built from. Contracts decided after the
 buildout live in `docs/adr/`. ADR 0003 supersedes the broad read contract, ADR 0006 owns
@@ -18,10 +18,10 @@ its owner, while retaining the ability to register Corrections.
 | --- | --- |
 | Data source | **Questie's existing data.** No VibeQuest data, schema, or coordinates. |
 | Schema | Questie's existing `questKeys` / `npcKeys` / `itemKeys` / `objectKeys`, unchanged. |
-| Domain | QuestieTDB's domain is *Questie's data model*, including Questie-specific fields. |
-| Ownership | QuestieTDB owns the database. Questie owns what to do with it. |
+| Domain | QuestieDB's domain is *Questie's data model*, including Questie-specific fields. |
+| Ownership | QuestieDB owns the database. Questie owns what to do with it. |
 | Repos | Two repos, two addons, two independent version streams. |
-| Dependency | Hard `## Dependencies: QuestieTDB`. The client's red warning covers absence; the contract version covers mismatch. |
+| Dependency | Hard `## Dependencies: QuestieDB`. The client's red warning covers absence; the contract version covers mismatch. |
 | Runtime modes | **Source mode** and **Baked mode**, selected automatically by TOC suffix precedence. |
 | Variants | SoD / Classic+ are Dynamic Correction sets over the Era database, not separate databases. |
 | Localization | Baked into the TOC alongside entity data. |
@@ -34,7 +34,7 @@ truth for the data model.**
 
 ## Ownership
 
-### Moves into QuestieTDB
+### Moves into QuestieDB
 
 | What | Today |
 | --- | --- |
@@ -72,7 +72,7 @@ truth for the data model.**
 
 ### Generation inputs
 
-QuestieTDB reads **Questie's tracked source files directly**. There is no intermediate
+QuestieDB reads **Questie's tracked source files directly**. There is no intermediate
 export format.
 
 | Input | Shape | Loading |
@@ -90,7 +90,7 @@ how `validate-era.lua` loads the database today — and they move here with the 
 the mechanical reason Questie is the schema source of truth.
 
 **Do not build on the prototypes' intermediate format.** `Getters/data/*.lua-table` is
-`GetterDB`'s output, with corrections **already applied** by a pipeline QuestieTDB replaces.
+`GetterDB`'s output, with corrections **already applied** by a pipeline QuestieDB replaces.
 Using it would double-apply corrections from the wrong system. It is a dead end, not an asset.
 
 ### What to mine from the prototypes
@@ -107,10 +107,10 @@ Take accordingly.
 
 | Reject | Why |
 | --- | --- |
-| The `.lua-table` intermediate stage | Produces the dead-end format above. QuestieTDB goes raw → corrections → TOC in one pass. |
+| The `.lua-table` intermediate stage | Produces the dead-end format above. QuestieDB goes raw → corrections → TOC in one pass. |
 | `require("lfs")` | GetterDB depends on LuaFileSystem, a **C module**. `Getters/generate.lua` is pure Lua and proves it is avoidable by enumerating inputs in config. Keeping the generator dependency-free preserves the option of shipping a bare `lua` binary for contributors. |
 | `mangos_translation`, `translations` | Questie's lookups are taken as-is. |
-| `Meta/*Meta.lua` field ordering | Served the compiler's skip-map. QuestieTDB uses Questie's current positional indices in scalar rows and table keys instead. |
+| `Meta/*Meta.lua` field ordering | Served the compiler's skip-map. QuestieDB uses Questie's current positional indices in scalar rows and table keys instead. |
 
 Deterministic serialization is a requirement, not a preference: without it, every regeneration
 produces a spuriously different 85 MB artifact, making releases unreviewable and checksums
@@ -118,9 +118,9 @@ meaningless.
 
 ### The boundary rule
 
-> **QuestieTDB owns what is true about game entities. Questie owns what to do with that truth.**
+> **QuestieDB owns what is true about game entities. Questie owns what to do with that truth.**
 
-A Correction fixes what is *true* — a wrong coordinate, a missing prerequisite. QuestieTDB
+A Correction fixes what is *true* — a wrong coordinate, a missing prerequisite. QuestieDB
 may select a Dynamic Correction only from provider-owned data or generic character/game facts
 it determines itself: class, race, faction, expansion, and season. A Correction selected or
 constructed from consumer-owned runtime state or policy belongs to that consumer and is
@@ -174,7 +174,7 @@ The two halves of Questie's schema meet different fates at phase 13:
 
 | | Lives in | After phase 13 |
 | --- | --- | --- |
-| `*Keys` | `Database/<entity>DB.lua` **and** duplicated inside each data file | **Survives** — travels with the data into QuestieTDB |
+| `*Keys` | `Database/<entity>DB.lua` **and** duplicated inside each data file | **Survives** — travels with the data into QuestieDB |
 | `*CompilerTypes` | `Database/<entity>DB.lua` only | **Dies** with the compiler |
 
 Field names and ordering can therefore keep deriving indefinitely, because the data files
@@ -245,12 +245,12 @@ artifact wins simply by existing.
 
 | Client | TOC |
 | --- | --- |
-| WoW Classic | `QuestieTDB_Vanilla.toc` |
-| Burning Crusade Classic, Classic Anniversary | `QuestieTDB_TBC.toc` |
-| Wrath Classic, **Titan Reforged** | `QuestieTDB_Wrath.toc` |
-| Cataclysm Classic | `QuestieTDB_Cata.toc` |
-| Mists of Pandaria Classic | `QuestieTDB_Mists.toc` |
-| none of the above present | `QuestieTDB.toc` → **source mode** |
+| WoW Classic | `QuestieDB_Vanilla.toc` |
+| Burning Crusade Classic, Classic Anniversary | `QuestieDB_TBC.toc` |
+| Wrath Classic, **Titan Reforged** | `QuestieDB_Wrath.toc` |
+| Cataclysm Classic | `QuestieDB_Cata.toc` |
+| Mists of Pandaria Classic | `QuestieDB_Mists.toc` |
+| none of the above present | `QuestieDB.toc` → **source mode** |
 
 Use these modern underscore suffixes. `-WOTLKC` and `-BCC` are recognised legacy forms and
 are what the prototypes emit, but there is no reason to start on deprecated names.
@@ -262,7 +262,7 @@ runtime through its own flag rather than through separate data.
 
 | | Source mode | Baked mode |
 | --- | --- | --- |
-| TOC | base `QuestieTDB.toc` (committed) | `QuestieTDB_Vanilla.toc` etc. (gitignored, generated) |
+| TOC | base `QuestieDB.toc` (committed) | `QuestieDB_Vanilla.toc` etc. (gitignored, generated) |
 | Reads resolve from | raw entity data | TOC metadata store |
 | Static Corrections | applied live | already folded in; files absent |
 | Requires | nothing but a clone | a bootstrap download or local Generation |
@@ -299,8 +299,8 @@ nothing that can misfire.
 
 - **Static Correction** — folded in during Generation. Never shipped to end users.
 - **Dynamic Correction** — applied at query time through the **Correction Overlay**.
-  QuestieTDB-owned sets may depend only on provider-owned data or generic class, race, faction,
-  expansion, and season facts QuestieTDB determines itself. Consumer-owned state and policy
+  QuestieDB-owned sets may depend only on provider-owned data or generic class, race, faction,
+  expansion, and season facts QuestieDB determines itself. Consumer-owned state and policy
   stay in that consumer's owner-scoped layer.
 
 `GetterDB/Corrections/Corrections.lua` is the starting point and most of it survives: the
@@ -319,7 +319,7 @@ Every consumer reads the same data. There is no per-consumer view.
 ```
                 base data (raw or baked)
                           |
-   layer: QuestieTDB Dynamic Corrections   (faction, SoD)
+   layer: QuestieDB Dynamic Corrections   (faction, SoD)
                           |
    layer: Questie                          (events, phases, Quel'Danas)
                           |
@@ -350,7 +350,7 @@ This is required by load order, not a convenience: third-party addons declare
 Consumer-state corrections skip the function-and-apply shape entirely: `registrar.Set(datatype,
 name, rows)` writes a data slot through the same registry — replace by rewriting, withdraw with
 `nil`, published immediately, recomposed and invalidated per datatype, no `loadOrder`. Function
-registration remains for QuestieTDB's own ported sets and for large lazy tables (ADR 0009).
+registration remains for QuestieDB's own ported sets and for large lazy tables (ADR 0009).
 
 The owner parameter selects **which layer is being refreshed**, never which layers are
 visible. Recomposition always includes every live layer.
@@ -359,7 +359,7 @@ Precedence is two-level — outer by owner rank, inner by `loadOrder` within an 
 owner's rank is fixed at its first apply or first `Set`; re-applying or re-writing refreshes
 that owner's layer in place, never re-ranks it** (the original "last applied wins" let an owner-scoped state refresh
 hoist a whole layer above consumer corrections; caught in review, fixed). First-apply order follows load order naturally
-(`QuestieTDB` < `Questie` < third-party), and must be documented, because `loadOrder` changes
+(`QuestieDB` < `Questie` < third-party), and must be documented, because `loadOrder` changes
 meaning from "global sequence" to "sequence within an owner".
 
 ### Layers, recomposed on apply
@@ -378,8 +378,8 @@ freezing: a fresh object per recomposition can be frozen without conflict.
 
 ### Correction origin
 
-The generator runs offline with only QuestieTDB present, so it bakes only corrections owned
-by QuestieTDB. Anything registered by Questie or a third party is Dynamic by definition, and
+The generator runs offline with only QuestieDB present, so it bakes only corrections owned
+by QuestieDB. Anything registered by Questie or a third party is Dynamic by definition, and
 the generator can enforce this rather than trusting convention.
 
 ### `extraObjectives` and translated text
@@ -425,10 +425,10 @@ LibQuestieDB.contractVersion
 
 ### Initialization order
 
-QuestieTDB loads before Questie, so it cannot apply Questie's Corrections at its own load
+QuestieDB loads before Questie, so it cannot apply Questie's Corrections at its own load
 time:
 
-1. **QuestieTDB loads.** Registry available, base data queryable immediately.
+1. **QuestieDB loads.** Registry available, base data queryable immediately.
 2. **Questie loads and registers** its policy Corrections.
 3. **Questie calls `ApplyRegisteredCorrections("Questie")`** in its staged init — roughly
    where `QuestieCorrections:MinimalInit()` sits today — then queries.
@@ -468,7 +468,7 @@ Why the reversal, in short (full numbers in
   earlier literal chunks belonged to the force-taint context. Native CBOR now supplies the
   caller-owned tree directly.
 
-`table.freeze` remains in use only for QuestieTDB-internal shared structures (schema meta,
+`table.freeze` remains in use only for QuestieDB-internal shared structures (schema meta,
 ID maps), where addon ownership makes it real. `docs/table.freeze.md` holds the underlying
 API research, including the `__newindex` redirect hazard that still forbids metatable-carrying
 sentinels anywhere near frozen internals.
@@ -493,7 +493,7 @@ bypasses localization, and fields outside the localization field set never enter
 including legitimate locale-specific element counts, and the shared copy producer still returns
 a fresh mutable table on every read.
 
-l10n stays **inside** the QuestieTDB TOC rather than becoming a separate addon. Compression
+l10n stays **inside** the QuestieDB TOC rather than becoming a separate addon. Compression
 across whole field columns removes about 65% of localization directive bytes. The retained
 active-locale heap is the deliberate trade: 3.2 to 4.1 MB on Vanilla and 14.2 to 18.4 MB on
 Mists. The inactive eight locales remain compressed metadata and never enter the Lua heap.
@@ -518,9 +518,9 @@ Accepted: performance loss is fine for variants that are only a flag apart.
 
 Two repos, two addons, two version streams. Questie's `build.py` already does per-flavor
 packaging (`ignorePatterns.append(expansionStrings[i])`) and emits a `release.json` multi-flavor
-manifest — QuestieTDB mirrors that discipline rather than inventing one.
+manifest — QuestieDB mirrors that discipline rather than inventing one.
 
-QuestieTDB ships **bundled** inside Questie's zip and may also publish standalone.
+QuestieDB ships **bundled** inside Questie's zip and may also publish standalone.
 `release.json` already carries `"nolib": false`, which is CurseForge's mechanism for exactly
 this case: a `-nolib` variant lets standalone installers avoid a folder collision.
 
@@ -528,14 +528,14 @@ this case: a `-nolib` variant lets standalone installers avoid a folder collisio
 
 Baked TOCs are **never committed**. Successful default-branch builds update one rolling
 `preview` pre-release. A manual full release uses `vX.X.X` from the maintained `## Version:`
-in `QuestieTDB.toc`, rejecting an existing tag or release unless the maintainer explicitly
+in `QuestieDB.toc`, rejecting an existing tag or release unless the maintainer explicitly
 selects `override`. The manifest carries the producer and Questie input commits, per-artifact
 SHA-256, and the contract version. See [release operations](./README.md#releases) for publication
 ordering, failure recovery, and local version selection.
 
 A bootstrap script — PowerShell or bash, no Lua — installs artifacts into the gitignored TOC
 slot in the developer's clone. Deviations from the generic pattern: the install target is
-`Interface/AddOns/QuestieTDB/` rather than a project cache dir, and **all flavors are
+`Interface/AddOns/QuestieDB/` rather than a project cache dir, and **all flavors are
 downloaded** so switching test clients needs no re-bootstrap.
 
 ### Measured sizes
@@ -555,7 +555,7 @@ Compressed localization columns remove 113,654,275 bytes, or 40.3%, from the con
 artifacts. Mists localization directives alone fall from 57.48 MiB to 19.80 MiB. Package ZIP
 sizes are produced by the release workflow and were not remeasured in this acceptance pass.
 
-The compressed ID headers add 2.82 MB of fixed memory attributed to QuestieTDB on Vanilla.
+The compressed ID headers add 2.82 MB of fixed memory attributed to QuestieDB on Vanilla.
 The decoded arrays and existence maps are retained for the session and create no recurring
 GC work. ADR 0010 accepts that cost in exchange for portable typed storage and the measured
 40% reduction in Questie's `CalculateAndDrawAll` workload.
@@ -582,9 +582,9 @@ Not needed now — source mode covers the dev loop, and CI has Lua.
 ## Module layout
 
 ```text
-QuestieTDB/
-  QuestieTDB.toc              base TOC — source mode (committed)
-  QuestieTDB_<Flavor>.toc     generated, baked mode (gitignored)
+QuestieDB/
+  QuestieDB.toc              base TOC — source mode (committed)
+  QuestieDB_<Flavor>.toc     generated, baked mode (gitignored)
 
   src/
     config.lua                flavors, entity types, l10n block contract
@@ -642,8 +642,8 @@ Build on Questie's existing harness: `cli/loadTOC.lua`, `cli/apiMocks.lua`, bust
 6. **Fake backend + fixture.** An in-memory implementation of the 12-function seam, seeded
    from a few hundred entities checked into Questie. Default for Questie's 15 DB-touching unit
    tests: hermetic, fast, no network. Affordable only because the seam is 12 functions wide.
-7. **Pinned integration job.** One Questie CI job against a pinned QuestieTDB release, proving
-   the real artifact loads and the contract matches. Pinned, not latest, so a QuestieTDB
+7. **Pinned integration job.** One Questie CI job against a pinned QuestieDB release, proving
+   the real artifact loads and the contract matches. Pinned, not latest, so a QuestieDB
    release can never spontaneously break Questie's CI.
 
 ## Open risks and gates
@@ -736,7 +736,7 @@ little runtime benefit. It remains the first lever to pull if artifact size grow
 build, and support-data validators such as
 `checkNpcSpawnAreaIds(npcs, npcKeys, getUiMapIdByAreaId)` could not run without it.
 
-**A hand-written schema in QuestieTDB.** Reads more cleanly than derived compiler-type names,
+**A hand-written schema in QuestieDB.** Reads more cleanly than derived compiler-type names,
 and carries no dead width information. Rejected because it is a second copy of Questie's
 schema and would drift — which is precisely how `Getters` fell four fields behind. Derivation
 makes drift a build failure instead of a discovery. The translation map is needed either way,
@@ -750,7 +750,7 @@ Checks already performed, recorded so they are not repeated.
 representation, display suppression, phases and settings, projections and caches, and
 asynchronous Item repair are Questie-owned even when they ultimately construct entity-field
 Corrections. Questie registers those values through its generic owner-scoped registrar; no
-consumer-specific dispatch or state model belongs in QuestieTDB.
+consumer-specific dispatch or state model belongs in QuestieDB.
 
 **The mutation hazard is aliasing, not copying.** `QuestieDB.GetQuest` assigns
 `QO[stringKey] = rawdata[intKey]`, so the Quest object holds a *reference* to the query
@@ -763,7 +763,7 @@ search for.
 The ordering constraint that matters: **the compiler is the reference implementation, so it is
 removed last** — after the differential test runs clean and its golden snapshot is committed.
 
-1. **Tracer bullet.** One entity type, one flavor, end to end: generate `QuestieTDB_Vanilla.toc`
+1. **Tracer bullet.** One entity type, one flavor, end to end: generate `QuestieDB_Vanilla.toc`
    from Questie's `classicQuestDB.lua`, load it in-game, and read `QuestDB.name(2)` →
    `"Sharptalon's Claw"`. Pierces loader, serializer, TOC emission, decoder, and in-client read
    in one thin slice. Every later phase widens it.
@@ -801,7 +801,7 @@ Two independent retirements, easily confused: **step 11 removes the prototypes**
 (`Getters`, `toc-database`), and **step 13 removes Questie's compiler**. They gate on
 different things and must not be collapsed.
 
-**If QuestieTDB is merged only once step 13 is complete**, step 12 never ships and collapses
+**If QuestieDB is merged only once step 13 is complete**, step 12 never ships and collapses
 into 13. That is a reasonable choice given how thoroughly the approach has been tested, but it
 removes the in-the-wild fallback: there is no released build where a user can flip back to the
 compiler. The golden snapshot from step 6 then becomes the only regression guard, so committing

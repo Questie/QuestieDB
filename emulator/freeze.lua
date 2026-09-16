@@ -52,7 +52,7 @@ local nextSerial = 0
 
 local function refuse(_, key)
   error(("attempted to perform indexed assignment on a frozen table (key %s). " ..
-         "QuestieTDB owns the values it returns; take an explicit copy to modify one.")
+         "QuestieDB owns the values it returns; take an explicit copy to modify one.")
     :format(tostring(key)), 2)
 end
 

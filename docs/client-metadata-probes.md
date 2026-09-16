@@ -4,7 +4,7 @@ Measurements taken against a running client through WoWDevBridge. Recorded so th
 repeated, in the same spirit as [`table.freeze.md`](./table.freeze.md).
 
 **Client:** Classic Era 1.15.9, build 69109 (Aug 3 2026), enUS, interface 11509.
-**Artifact under test:** the installed `QuestieTDB_Vanilla.toc`, baked mode, producer
+**Artifact under test:** the installed `QuestieDB_Vanilla.toc`, baked mode, producer
 `0f540d3` (the dirty-worktree snapshot whose line-safe output matches `b5ca4bd`).
 Probes read the artifact through both raw `C_AddOns.GetAddOnMetadata` and the public
 `LibQuestieDB` getters.
@@ -46,7 +46,7 @@ ownership**, and the runtime's captured failure explains all 38 refusals observe
 the probe session:
 
     attempted to freeze a table not owned by the calling function
-    (expected 'QuestieTDB', got '*** ForceTaint_Strong ***')
+    (expected 'QuestieDB', got '*** ForceTaint_Strong ***')
 
 Chunks compiled by `loadstring` execute force-tainted, so every table the Baked decoder
 creates is owned by the taint context — addon-owned code can never freeze them. This is

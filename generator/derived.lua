@@ -41,7 +41,7 @@ local function supportProvider()
     end
     _G.QuestieLoader = { ImportModule = moduleFor, CreateModule = moduleFor }
     for _, path in ipairs(SUPPORT_FILES) do
-      if lib.fileExists(path) then runtime.execute(path, "QuestieTDB", {}) end
+      if lib.fileExists(path) then runtime.execute(path, "QuestieDB", {}) end
     end
     _G.QuestieLoader = previous
   end

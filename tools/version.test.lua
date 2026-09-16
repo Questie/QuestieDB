@@ -36,7 +36,7 @@ pwd:close()
 local root = os.tmpname()
 os.remove(root)
 assert(run("mkdir -p " .. shellQuote(root .. "/bin")))
-local sourcePath = root .. "/QuestieTDB.toc"
+local sourcePath = root .. "/QuestieDB.toc"
 
 ---@return nil
 local function testVersions()
@@ -89,7 +89,7 @@ local function testVersions()
   ---@param releaseFlag string
   ---@return boolean succeeded
   local function generate(arguments, releaseFlag)
-    return run("cd " .. shellQuote(root) .. " && env QUESTIE_PATH= QUESTIETDB_RELEASE=" ..
+    return run("cd " .. shellQuote(root) .. " && env QUESTIE_PATH= QUESTIEDB_RELEASE=" ..
       shellQuote(releaseFlag) .. " PATH=" .. shellQuote(root .. "/bin") .. ":\"$PATH\" " ..
       shellQuote(os.getenv("LUA") or "lua5.1") .. " " .. shellQuote(repo .. "/generate.lua") ..
       " " .. arguments .. " > " .. shellQuote(root .. "/output.log") .. " 2>&1")
@@ -103,7 +103,7 @@ local function testVersions()
   check(lib.readAll(sourcePath) == source, "release mode does not change the Source TOC")
 
   local arguments = "Vanilla --no-l10n --no-base-toc --types=Quest --fields=name --quiet"
-  local bakedPath = root .. "/QuestieTDB_Vanilla.toc"
+  local bakedPath = root .. "/QuestieDB_Vanilla.toc"
   check(generate(arguments, "false"), "development Generation: " .. lib.readAll(root .. "/output.log"))
   check(lib.readAll(bakedPath):find("## Version: 12.34.567-dev.1234567\n", 1, true) ~= nil,
     "real Baked header includes source version and commit")

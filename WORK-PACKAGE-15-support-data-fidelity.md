@@ -1,6 +1,6 @@
-# Work package: QuestieTDB issue #15, support-data fidelity
+# Work package: QuestieDB issue #15, support-data fidelity
 
-Issue: https://github.com/Questie/QuestieTDB/issues/15
+Issue: https://github.com/Questie/QuestieDB/issues/15
 
 Status: ready for implementation.
 
@@ -16,9 +16,9 @@ Implement and test this work in:
 /home/logon/projects/Questie-clones/Questie-toc/QuestieTDB
 ```
 
-Compare against the provider's sibling `../Questie` checkout at the revision in `QuestieTDB/QUESTIE_COMMIT`. Do not use this work-package checkout as the oracle. Do not fetch or reset the pinned Questie checkout as part of the task.
+Compare against the provider's sibling `../Questie` checkout at the revision in `QuestieDB/QUESTIE_COMMIT`. Do not use this work-package checkout as the oracle. Do not fetch or reset the pinned Questie checkout as part of the task.
 
-Read `QuestieTDB/AGENTS.md`, `DESIGN.md`, and `docs/api.md` before editing.
+Read `QuestieDB/AGENTS.md`, `DESIGN.md`, and `docs/api.md` before editing.
 
 ## Current baseline
 
@@ -55,7 +55,7 @@ Current Questie integration still loads its own support files and does not bind 
 
 - Switching Questie consumers to `LibQuestieDB.Support`.
 - Removing Questie's local support-data files or wrapper modules.
-- Moving wrapper behavior from `zoneDB.lua`, `QuestieXP.lua`, or `dropDB.lua` into QuestieTDB.
+- Moving wrapper behavior from `zoneDB.lua`, `QuestieXP.lua`, or `dropDB.lua` into QuestieDB.
 - Fixing entity data, localization overrides, or ObjectiveFirst.
 - Broad TOC architecture changes beyond correct Source support selection.
 - Live-client testing or release publication.
@@ -114,12 +114,12 @@ Drift and shape controls:
 
 ## Validation
 
-Run focused checks from the QuestieTDB root:
+Run focused checks from the QuestieDB root:
 
 ```sh
 lua5.1 test.lua generation-inputs questie-input-integrity toc support
 lua5.1 generate.lua toc --questie=../Questie
-git diff -- QuestieTDB.toc
+git diff -- QuestieDB.toc
 git diff --check
 ```
 
@@ -131,11 +131,11 @@ Before completion, run:
 tools/check.sh all --questie=../Questie
 ```
 
-The full gate is heavy, generates artifacts, and writes under the checkout. Run it only in an isolated QuestieTDB checkout or output arrangement that cannot alter a symlinked daily-driver addon. Get confirmation first if the checkout's safety is unclear.
+The full gate is heavy, generates artifacts, and writes under the checkout. Run it only in an isolated QuestieDB checkout or output arrangement that cannot alter a symlinked daily-driver addon. Get confirmation first if the checkout's safety is unclear.
 
 ## Deliverables
 
-- Synchronized support data and explicit Source flavor selection in QuestieTDB.
+- Synchronized support data and explicit Source flavor selection in QuestieDB.
 - Complete five-flavor semantic fidelity tests, including Source/Baked equality.
 - A pinned-source drift check and documentation of every copied dataset.
 - Reviewed generated TOC changes, if any.

@@ -1,7 +1,7 @@
 # Two read modes: source and baked
 
 Generation is an offline process, so a correction contributor would otherwise need a Lua
-toolchain before they could see a change in-game. QuestieTDB therefore ships two read
+toolchain before they could see a change in-game. QuestieDB therefore ships two read
 backends behind one getter API: **source mode** resolves reads from raw entity data with all
 corrections applied live, and **baked mode** resolves them from the generated TOC metadata
 store. The WoW client selects between them for free — it prefers a flavour-suffixed `.toc`

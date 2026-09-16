@@ -1,6 +1,6 @@
 -- emulator/client.lua
 --
--- The minimum WoW client environment a QuestieTDB addon file needs to load offline.
+-- The minimum WoW client environment a QuestieDB addon file needs to load offline.
 --
 -- Kept separate from emulator/metadata.lua because the two answer different questions: that
 -- file stands in for the addon-metadata API, this one stands in for the client. Both read
@@ -58,7 +58,7 @@ local function decompressString(value, method)
   return output
 end
 
---- Blizzard's project IDs, by the expansion directory name QuestieTDB uses.
+--- Blizzard's project IDs, by the expansion directory name QuestieDB uses.
 client.projectIds = {
   Classic = 2,
   TBC = 5,
@@ -112,7 +112,7 @@ function client.install(opts)
   _G.UnitClass = function() return opts.className or "Warrior", opts.classFile or "WARRIOR", opts.classId or 1 end
   _G.UnitRace = function() return opts.raceName or "Human", opts.raceFile or "Human", opts.raceId or 1 end
   _G.UnitLevel = function() return opts.level or 60 end
-  _G.UnitName = function() return "QuestieTDBTester" end
+  _G.UnitName = function() return "QuestieDBTester" end
   _G.GetRealmName = function() return opts.realm or "TestRealm" end
   _G.IsSpellKnown = function() return false end
   _G.GetCurrentRegion = function() return 3 end
@@ -161,7 +161,7 @@ function client.reset()
   _G.LibQuestieDB = nil
   _G.QuestieLoader = nil
   _G.Questie = nil
-  _G.QuestieTDBSourceModeIndicator = nil
+  _G.QuestieDBSourceModeIndicator = nil
 end
 
 return client

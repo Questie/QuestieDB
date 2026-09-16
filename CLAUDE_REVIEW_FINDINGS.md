@@ -46,7 +46,7 @@ correctly.
 
 Impact on a TBC client with `ContentPhases.activePhases.TBC < 3`:
 
-| Quest | Correct | QuestieTDB serves |
+| Quest | Correct | QuestieDB serves |
 |---|---|---|
 | 10944 "The Secret Compromised" | `preQuestGroup={10901,11052}` | `preQuestSingle={10708,11052}` |
 | 11007 "Kael'thas and the Verdant Sphere" | `preQuestSingle={10888}` | nil |
@@ -99,7 +99,7 @@ Fix: land the function definition with its first caller.
 
 `.github/workflows/ci.yml:3-4`, `:192-198` · VERIFIED
 
-`gh api repos/Questie/QuestieTDB/branches/master/protection` returns 404 "Branch not protected";
+`gh api repos/Questie/QuestieDB/branches/master/protection` returns 404 "Branch not protected";
 `rulesets` is `[]`. Meanwhile `ci.yml:3-4` states the terminal `gates` job "makes every matrix
 and unit result mandatory for branch protection" and `:195-197` says "branch protection requires
 exactly this one status."
@@ -111,7 +111,7 @@ exist. Red CI blocks neither merge nor direct push to `master`, and a push to `m
 so this is merge hygiene rather than a ship-broken-database path.
 
 Relevant context: `docs/merge-program.md`'s retirement checklist opens with "Merge this branch;
-push first — A and B share the `Questie/QuestieTDB` remote with divergent histories, and
+push first — A and B share the `Questie/QuestieDB` remote with divergent histories, and
 first-to-push owns the truth."
 
 ### B4 — The provenance stamp never consults the pin
@@ -243,11 +243,11 @@ Measured ungated surface:
 | Wrath TitanReforged | 40 | 113 |
 
 All eight SoD manifest entries are `dynamic`, so they never enter a baked artifact, but they are
-live on a SoD client. `test.lua` and `equivalence.lua` cover the plumbing but compare QuestieTDB
+live on a SoD client. `test.lua` and `equivalence.lua` cover the plumbing but compare QuestieDB
 to itself. A corrupted `sodQuestFixes` re-sync leaves all three gates green on all five flavors.
 
 Time-to-discovery for a defect in these personas is a user bug report after release, measured in
-weeks, and expensive to diagnose because both QuestieTDB modes agree with each other.
+weeks, and expensive to diagnose because both QuestieDB modes agree with each other.
 
 ### H4 — `check.sh test` is exempt from the pin preflight and self-skips to green
 
@@ -285,7 +285,7 @@ passed", exit 0. Reversing the words does produce a determinism phase. Both `che
 `.github/workflows/*.yml` · VERIFIED
 
 No `permissions:` block on any build job; only `publish` has one (`release.yml:155-156`).
-`gh api repos/Questie/QuestieTDB/actions/permissions/workflow` returns
+`gh api repos/Questie/QuestieDB/actions/permissions/workflow` returns
 `{"default_workflow_permissions":"write","can_approve_pull_request_reviews":true}`. Every job
 that executes upstream Questie code — `port-corrections.lua:471` evaluates Questie's correction
 files via `setfenv`/`chunk()`, `compiler_diff.py` runs Questie's compiler — inherits a
@@ -335,7 +335,7 @@ expansion-gated entry, so `registry.lua:301` returns early, `entry.options` is n
 
 Measured: **Mists +51 quests, Cata +1 item and +2 object fields.** `Tbc/tbcQuestFixes.lua:Load`
 supplies quests 253, 504, 510, 511, absent from Mists base data and carrying no field-1 name, so
-upstream refuses them and unmutated QuestieTDB refuses them too.
+upstream refuses them and unmutated QuestieDB refuses them too.
 
 No test catches it. `test.lua:594-596` checks the manifest spec, unchanged by the mutation;
 `test.lua:670-691` sets `sourceExpansionOrder` by hand on synthetic entries. Nothing asserts on a
@@ -449,7 +449,7 @@ CI-generated artifact actually contains localization.
 
 The l10n append reopens the TOC in `"ab"`; `l10n.join` can `error()` mid-append with no cleanup.
 Triggered with a control char in a German quest name and again with a syntactically broken lookup
-file: generation exits 1 (correct) but leaves a 12.9 MB `QuestieTDB_Vanilla.toc` with complete
+file: generation exits 1 (correct) but leaves a 12.9 MB `QuestieDB_Vanilla.toc` with complete
 entity data and zero l10n lines, and `verify.lua Vanilla` then passes with exit 0. Only
 reconstruct catches it. `generate.lua:315`'s comment ("must fail before either TOC is opened")
 holds for missing files, not content faults. Fix: temp file plus rename, or `os.remove` on failure.
@@ -501,7 +501,7 @@ Both golden snapshots are stamped `+dirty`, so neither is reproducible from a co
 
 The season is passed to the compiler dump only; `dump_a.lua` takes no season argument and
 `baseline_path()` ignores it. The usage in the script's own docstring (`:17`) compares
-SoD-Questie against non-SoD-QuestieTDB and scores it against the plain Vanilla baseline.
+SoD-Questie against non-SoD-QuestieDB and scores it against the plain Vanilla baseline.
 `--season=SoD --update-baseline` would overwrite `compiler-baseline/Vanilla.tsv` with thousands
 of bogus `ID_ONLY_IN_COMPILER` counts, destroying the plain Vanilla gate in a diff that looks
 like a routine refresh.
@@ -601,7 +601,7 @@ when the checkout is absent, or uses a superseded command name.
 | L29 | `release.yml:161-178` | `publish` does not re-verify the checksums it publishes, though `release.json` carries per-artifact SHA-256. |
 | L30 | `leafo/gh-actions-lua@v13.0.0`, `leafo/gh-actions-luarocks@v6.1.0` | Floating tags rather than commit SHAs, newly added to the release path in the commit whose theme is pinning inputs. `luarocks install bit32` is now a hard availability dependency on the publish path. |
 | L31 | CI vs release | CI reconstructs two flavors, release reconstructs five; CI never exercises the combined-zip path (`package.sh:102`) that the release depends on. Both asymmetries run release-stricter-than-CI, so CI green does not imply releasable. |
-| L32 | `QuestieTDB.toc` | A committed, generated, fully deterministic file with no drift gate, unlike `src/meta/` and `src/corrections/`. CI overwrites it before any reader and never compares. |
+| L32 | `QuestieDB.toc` | A committed, generated, fully deterministic file with no drift gate, unlike `src/meta/` and `src/corrections/`. CI overwrites it before any reader and never compares. |
 | L33 | pin ancestry | `actions/checkout` can fetch a SHA that exists only in a fork or unmerged PR; nothing checks the pin is an ancestor of upstream's default branch. `git merge-base --is-ancestor` closes it. |
 | L34 | `README.md:61` | A direct `lua5.1 generate.lua` is not byte-reproducible unless the caller sets `SOURCE_DATE_EPOCH`. Every automated path pins it (`ci.yml:15`, `release.yml:31`, `check.sh:45`); the documented manual form does not. |
 
@@ -804,7 +804,7 @@ fix.
 
 ## Not verified
 
-- **CI has never run.** `gh api repos/Questie/QuestieTDB/actions/runs --jq .total_count` returns
+- **CI has never run.** `gh api repos/Questie/QuestieDB/actions/runs --jq .total_count` returns
   0. The local composite-action reference, the `github.action_path` traversal, the brace
   expansion at `release.yml:71`, and the two `leafo/*` actions on the release path have never
   executed on GitHub. The first push to `master` fires CI and Release at once.

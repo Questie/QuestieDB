@@ -31,7 +31,7 @@
 # Exits non-zero if any job fails. Per-job logs land in .out/checks/.
 
 if (( BASH_VERSINFO[0] < 5 || (BASH_VERSINFO[0] == 5 && BASH_VERSINFO[1] < 1) )); then
-    printf 'QuestieTDB requires Bash 5.1 or newer; found %s.\n' "$BASH_VERSION" >&2
+    printf 'QuestieDB requires Bash 5.1 or newer; found %s.\n' "$BASH_VERSION" >&2
     exit 2
 fi
 
@@ -181,10 +181,10 @@ if [ -z "$selected_lua" ]; then
         if [ -z "$LUA" ] || ! command -v "$LUA" >/dev/null 2>&1; then
             echo "Lua interpreter not found: ${LUA:-<empty>}" >&2
         else
-            echo "QuestieTDB requires Lua 5.1; $LUA reports ${found_lua_versions[0]#*: }." >&2
+            echo "QuestieDB requires Lua 5.1; $LUA reports ${found_lua_versions[0]#*: }." >&2
         fi
     else
-        echo "QuestieTDB requires Lua 5.1, but neither lua5.1 nor a Lua 5.1 'lua' was found." >&2
+        echo "QuestieDB requires Lua 5.1, but neither lua5.1 nor a Lua 5.1 'lua' was found." >&2
         if [ "${#found_lua_versions[@]}" -gt 0 ]; then
             printf 'Found %s\n' "${found_lua_versions[@]}" >&2
         fi
@@ -430,7 +430,7 @@ done
 if [ "$run_determinism" -eq 1 ]; then
     labels=(); cmds=(); weights=(); priorities=()
     for flavor in "${FLAVOURS[@]}"; do
-        toc="QuestieTDB_${flavor}.toc"
+        toc="QuestieDB_${flavor}.toc"
         hash_file="$LOGDIR/determinism_${flavor}.sha"
         printf -v determinism_cmd \
             'set -euo pipefail; sha256sum %q > %q; %s; sha256sum -c %q' \

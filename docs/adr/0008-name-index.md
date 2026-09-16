@@ -12,7 +12,7 @@ different questions: which objects carry quest tooltip data, and — behind the 
 `enableTooltipsObjectID` setting — which ids in the database share the hovered name, the line
 contributors use to find ids for Corrections.
 
-Under QuestieTDB every read is a client metadata call and nothing materializes until accessed,
+Under QuestieDB every read is a client metadata call and nothing materializes until accessed,
 so "scan every object at boot" is the pattern the store exists to avoid: 6,666 (Vanilla) to
 20,326 (Mists) reads on every boot, for a map most sessions barely touch. A consumer-owned map
 also cannot be kept correct from the consumer side alone: `ApplyRegisteredCorrections` by a
@@ -39,7 +39,7 @@ Alternatives weighed:
 
 Which objects have quest tooltip data is consumer bookkeeping. Questie indexes the ids it
 registers `o_` tooltips for by their name at registration time, append-only, and never scans
-the database for it. QuestieTDB takes no part in that path. The consumer-side shape is written
+the database for it. QuestieDB takes no part in that path. The consumer-side shape is written
 up in `QUESTIE-OBJECT-NAME-INDEX.md` at the repo root.
 
 The Context's objection to consumer-owned maps applies here in one narrow form, and it is
@@ -49,7 +49,7 @@ in that exposure — an effective locale change reloads the UI — and no Correc
 object at runtime today. The registration set answers "what did Questie register, under the
 name it saw"; the Name index (D2) is the one that answers over the composed view.
 
-### 2. QuestieTDB owns the reverse of `name` as a Name index
+### 2. QuestieDB owns the reverse of `name` as a Name index
 
 "Which ids carry this name" is entity truth, so the database answers it. Every Entity global
 with a `name` field exposes `IdsByName(name)`: the ascending composed ids whose **current** name

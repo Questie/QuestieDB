@@ -1,6 +1,6 @@
 # Support data
 
-QuestieTDB publishes Questie's zone mappings, quest XP, faction templates, drop tables, and
+QuestieDB publishes Questie's zone mappings, quest XP, faction templates, drop tables, and
 drop-table Corrections as plain Lua values through `LibQuestieDB.Support`. These datasets are
 consumed as whole tables, so they do not use the TOC metadata store. The public access points
 and value examples are documented in [`api.md`](./api.md#support-data).
@@ -47,7 +47,7 @@ modules.
 [`tools/support-inventory.lua`](../tools/support-inventory.lua) is the authoritative inventory
 of all 24 copied support files. Each entry records:
 
-- `file`: the local QuestieTDB path;
+- `file`: the local QuestieDB path;
 - `questie`: the source path in the checkout pinned by `QUESTIE_COMMIT`;
 - `fields`: every public module field the file assigns;
 - `luaFields`: fields intentionally published as Lua source strings.
@@ -67,7 +67,7 @@ lua5.1 test.lua support support-fidelity
 ```
 
 `support-fidelity` executes Questie's applicable support inputs and compares their effective
-module values with QuestieTDB for every flavor and both factions. It checks configured Source
+module values with QuestieDB for every flavor and both factions. It checks configured Source
 and Baked loading, the committed Source TOC, and generated Baked TOCs when present. It also
 compares each copied input independently so a later assignment cannot hide stale data.
 

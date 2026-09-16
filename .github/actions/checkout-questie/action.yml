@@ -1,5 +1,5 @@
 name: Checkout pinned Questie
-description: Check out the Questie commit recorded by QuestieTDB
+description: Check out the Questie commit recorded by QuestieDB
 
 runs:
   using: composite

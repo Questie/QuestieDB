@@ -83,7 +83,7 @@ local capture = setmetatable({}, {
   end,
 })
 
---- Install the shim, remembering whatever was there so it can be handed back. QuestieTDB
+--- Install the shim, remembering whatever was there so it can be handed back. QuestieDB
 --- loads before its consumer, so squatting on `QuestieLoader` for the duration of the data
 --- block is safe as long as it is given up afterwards.
 function source.InstallLoaderShim()
@@ -133,7 +133,7 @@ local function materialize(entityTypeName)
   elseif type(payload) == "table" then
     entities = payload
   else
-    local chunk = loadstring(payload, "QuestieTDB:" .. entityTypeName .. "Data")
+    local chunk = loadstring(payload, "QuestieDB:" .. entityTypeName .. "Data")
     entities = chunk and chunk() or {}
   end
 

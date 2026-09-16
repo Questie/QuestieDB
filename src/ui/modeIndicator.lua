@@ -5,7 +5,7 @@
 -- will misread every symptom that follows.
 --
 -- `DESIGN.md` puts the indicator "on the map or in Questie's settings", which is the
--- consumer's surface, not this addon's. So QuestieTDB does two things: publishes the state for
+-- consumer's surface, not this addon's. So QuestieDB does two things: publishes the state for
 -- a consumer to render properly, and draws its own small always-on frame as a fallback so the
 -- guarantee does not depend on a consumer existing.
 
@@ -19,7 +19,7 @@ LibQuestieDB.ModeIndicator = indicator
 function indicator.GetText()
   if LibQuestieDB.readMode ~= "source" then return nil end
   local expansion = LibQuestieDB.read.source and LibQuestieDB.read.source.expansion or "?"
-  return "QuestieTDB: SOURCE MODE (" .. expansion .. ")"
+  return "QuestieDB: SOURCE MODE (" .. expansion .. ")"
 end
 
 --- Short form, for a settings line or a tooltip.
@@ -41,7 +41,7 @@ local function build()
   if frame or LibQuestieDB.readMode ~= "source" then return end
   if type(rawget(_G, "CreateFrame")) ~= "function" then return end
 
-  frame = CreateFrame("Frame", "QuestieTDBSourceModeIndicator", UIParent)
+  frame = CreateFrame("Frame", "QuestieDBSourceModeIndicator", UIParent)
   frame:SetSize(220, 20)
   frame:SetPoint("TOP", UIParent, "TOP", 0, -4)
   frame:SetMovable(true)

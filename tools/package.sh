@@ -26,9 +26,9 @@ CONTRACT="$(grep -oE 'config\.contractVersion = [0-9]+' src/config.lua | grep -o
 BUILT="$(date -u -d "@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y-%m-%dT%H:%M:%SZ)"
 LUA="${LUA:-lua5.1}"
 
-# The addon folder must be named QuestieTDB in the zip, because that is what
-# `## Dependencies: QuestieTDB` resolves against.
-mkdir -p "$STAGE/QuestieTDB"
+# The addon folder must be named QuestieDB in the zip, because that is what
+# `## Dependencies: QuestieDB` resolves against.
+mkdir -p "$STAGE/QuestieDB"
 
 # Stage exactly the runtime files a TOC lists, plus the TOC itself. Static-only correction files
 # are build-time input and are already absent from that list. Analysis-only files are staged
@@ -62,8 +62,8 @@ assert_type_artifacts() {
     listing="$(unzip -Z1 "$zip")"
     for type_file in src/types/*.t.lua; do
         basename="${type_file##*/}"
-        if ! grep -Fxq "QuestieTDB/Types/$basename" <<< "$listing"; then
-            echo "package: $zip is missing QuestieTDB/Types/$basename" >&2
+        if ! grep -Fxq "QuestieDB/Types/$basename" <<< "$listing"; then
+            echo "package: $zip is missing QuestieDB/Types/$basename" >&2
             exit 1
         fi
     done
@@ -72,26 +72,26 @@ assert_type_artifacts() {
 entries=()
 
 for FLAVOR in "${FLAVORS[@]}"; do
-    TOC="QuestieTDB_${FLAVOR}.toc"
+    TOC="QuestieDB_${FLAVOR}.toc"
     if [ ! -f "$TOC" ]; then
         echo "package: $TOC not generated, skipping" >&2
         continue
     fi
 
-    rm -rf "${STAGE:?}/QuestieTDB"
-    mkdir -p "$STAGE/QuestieTDB"
+    rm -rf "${STAGE:?}/QuestieDB"
+    mkdir -p "$STAGE/QuestieDB"
 
-    stage_toc "$TOC" "$STAGE/QuestieTDB"
-    stage_types "$STAGE/QuestieTDB"
+    stage_toc "$TOC" "$STAGE/QuestieDB"
+    stage_types "$STAGE/QuestieDB"
 
     # Mixed correction files ship for their Dynamic functions, but their Static bodies are
     # already folded into the metadata store — 94-96% of the bytes (issue #5). Strip the
     # staged copies; src/corrections/ keeps every upstream byte outside the declared ownership
     # exclusions, which is what the drift gate and port-corrections compare.
-    "$LUA" tools/strip-static.lua "$STAGE/QuestieTDB"
+    "$LUA" tools/strip-static.lua "$STAGE/QuestieDB"
 
-    ZIP="$DIST/QuestieTDB-${FLAVOR}.zip"
-    (cd "$STAGE" && zip -qr9X "../../$ZIP" QuestieTDB)
+    ZIP="$DIST/QuestieDB-${FLAVOR}.zip"
+    (cd "$STAGE" && zip -qr9X "../../$ZIP" QuestieDB)
     assert_type_artifacts "$ZIP"
 
     SIZE=$(stat -c %s "$ZIP")
@@ -110,7 +110,7 @@ for FLAVOR in "${FLAVORS[@]}"; do
     fi
 
     echo "packaged $ZIP  ($(( SIZE / 1048576 )) MB zipped, $(( RAW / 1048576 )) MB raw)"
-    entries+=("    {\"flavor\": \"${FLAVOR}\", \"file\": \"QuestieTDB-${FLAVOR}.zip\", \"sha256\": \"${SHA}\", \"bytes\": ${SIZE}, \"rawBytes\": ${RAW}}")
+    entries+=("    {\"flavor\": \"${FLAVOR}\", \"file\": \"QuestieDB-${FLAVOR}.zip\", \"sha256\": \"${SHA}\", \"bytes\": ${SIZE}, \"rawBytes\": ${RAW}}")
 done
 
 # The combined artifact: every flavor's TOC plus the union of the files they list. Dropped
@@ -118,40 +118,40 @@ done
 # precedence rule that makes a dev clone work everywhere. The per-flavor zips above stay as
 # the smaller downloads; this is the "works anywhere" install and what bootstrap fetches.
 #
-# The base QuestieTDB.toc deliberately does not ship: the package carries no data/, so source
+# The base QuestieDB.toc deliberately does not ship: the package carries no data/, so source
 # mode cannot run from it, and every Classic client matches one of the five suffixed TOCs.
 # Built only when every flavor was packaged in this run — CI's per-flavor matrix jobs skip it.
 if [ ${#entries[@]} -eq 5 ]; then
-    rm -rf "${STAGE:?}/QuestieTDB"
-    mkdir -p "$STAGE/QuestieTDB"
+    rm -rf "${STAGE:?}/QuestieDB"
+    mkdir -p "$STAGE/QuestieDB"
 
     RAW_ALL=0
     for FLAVOR in "${FLAVORS[@]}"; do
-        TOC="QuestieTDB_${FLAVOR}.toc"
-        stage_toc "$TOC" "$STAGE/QuestieTDB"
+        TOC="QuestieDB_${FLAVOR}.toc"
+        stage_toc "$TOC" "$STAGE/QuestieDB"
         RAW_ALL=$(( RAW_ALL + $(stat -c %s "$TOC") ))
     done
-    stage_types "$STAGE/QuestieTDB"
+    stage_types "$STAGE/QuestieDB"
 
-    "$LUA" tools/strip-static.lua "$STAGE/QuestieTDB"
+    "$LUA" tools/strip-static.lua "$STAGE/QuestieDB"
 
-    ZIP="$DIST/QuestieTDB-all.zip"
-    (cd "$STAGE" && zip -qr9X "../../$ZIP" QuestieTDB)
+    ZIP="$DIST/QuestieDB-all.zip"
+    (cd "$STAGE" && zip -qr9X "../../$ZIP" QuestieDB)
     assert_type_artifacts "$ZIP"
 
     SIZE=$(stat -c %s "$ZIP")
     SHA=$(sha256sum "$ZIP" | cut -d' ' -f1)
     echo "packaged $ZIP  ($(( SIZE / 1048576 )) MB zipped, $(( RAW_ALL / 1048576 )) MB raw, every flavor)"
-    entries+=("    {\"flavor\": \"All\", \"file\": \"QuestieTDB-all.zip\", \"sha256\": \"${SHA}\", \"bytes\": ${SIZE}, \"rawBytes\": ${RAW_ALL}}")
+    entries+=("    {\"flavor\": \"All\", \"file\": \"QuestieDB-all.zip\", \"sha256\": \"${SHA}\", \"bytes\": ${SIZE}, \"rawBytes\": ${RAW_ALL}}")
 else
-    echo "package: QuestieTDB-all.zip needs all five flavors in one run — skipped" >&2
+    echo "package: QuestieDB-all.zip needs all five flavors in one run — skipped" >&2
 fi
 
 rm -rf "$STAGE"
 
 # release.json mirrors the discipline of Questie's own multi-flavor manifest, including
 # "nolib" — CurseForge's mechanism for letting a standalone installer avoid a folder collision
-# when QuestieTDB also ships bundled inside Questie's zip.
+# when QuestieDB also ships bundled inside Questie's zip.
 {
     printf '{\n'
     printf '  "producerCommit": "%s",\n' "$COMMIT"
@@ -167,13 +167,13 @@ rm -rf "$STAGE"
 } > "$DIST/release.json"
 
 {
-    echo "# QuestieTDB"
+    echo "# QuestieDB"
     echo
     echo "Producing commit: \`$COMMIT\`"
     echo "Questie input commit: \`${QUESTIE_COMMIT:-unknown}\`"
     echo "Contract version: \`$CONTRACT\`"
     echo
-    echo "Not sure which zip matches your client? \`QuestieTDB-all.zip\` contains every flavor"
+    echo "Not sure which zip matches your client? \`QuestieDB-all.zip\` contains every flavor"
     echo "and the client loads the one that matches. The per-flavor zips are the same content,"
     echo "one flavor at a time, as smaller downloads."
     echo

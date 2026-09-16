@@ -2,7 +2,7 @@
 # Root contributor command. Scheduling and gate implementation live in tools/check.sh.
 
 if (( BASH_VERSINFO[0] < 5 || (BASH_VERSINFO[0] == 5 && BASH_VERSINFO[1] < 1) )); then
-    printf 'QuestieTDB requires Bash 5.1 or newer; found %s.\n' "$BASH_VERSION" >&2
+    printf 'QuestieDB requires Bash 5.1 or newer; found %s.\n' "$BASH_VERSION" >&2
     exit 2
 fi
 
@@ -10,7 +10,7 @@ set -uo pipefail
 
 print_usage() {
     cat <<'EOF'
-Usage: ./questietdb <task> [task ...] [flavor ...] [options]
+Usage: ./questiedb <task> [task ...] [flavor ...] [options]
 
 Common tasks:
   generate                 Generate baked artifacts
@@ -34,10 +34,10 @@ Options:
   -h, --help               Show this help
 
 Examples:
-  ./questietdb generate Vanilla
-  ./questietdb generate Vanilla Mists
-  ./questietdb check Vanilla
-  ./questietdb verify equivalence Vanilla Mists
+  ./questiedb generate Vanilla
+  ./questiedb generate Vanilla Mists
+  ./questiedb check Vanilla
+  ./questiedb verify equivalence Vanilla Mists
 EOF
 }
 
@@ -127,7 +127,7 @@ for arg in "$@"; do
             ;;
         --*)
             echo "unknown option: $arg" >&2
-            echo "Run ./questietdb --help for valid options." >&2
+            echo "Run ./questiedb --help for valid options." >&2
             exit 2
             ;;
         *)
@@ -141,7 +141,7 @@ done
 
 if [ "${#tasks[@]}" -eq 0 ]; then
     echo "no task selected" >&2
-    echo "Run ./questietdb --help for usage." >&2
+    echo "Run ./questiedb --help for usage." >&2
     exit 2
 fi
 

@@ -1,6 +1,6 @@
-# Work package: QuestieTDB issue #14, localization overrides
+# Work package: QuestieDB issue #14, localization overrides
 
-Issue: https://github.com/Questie/QuestieTDB/issues/14
+Issue: https://github.com/Questie/QuestieDB/issues/14
 
 Status: ready for implementation.
 
@@ -16,9 +16,9 @@ Implement and test this work in:
 /home/logon/projects/Questie-clones/Questie-toc/QuestieTDB
 ```
 
-The localization oracle is the provider's sibling `../Questie` checkout at the revision recorded in `QuestieTDB/QUESTIE_COMMIT`. Do not use this work-package checkout as the oracle because its entity lookup sources have been removed. Do not fetch or reset the pinned checkout during this task.
+The localization oracle is the provider's sibling `../Questie` checkout at the revision recorded in `QuestieDB/QUESTIE_COMMIT`. Do not use this work-package checkout as the oracle because its entity lookup sources have been removed. Do not fetch or reset the pinned checkout during this task.
 
-Read `QuestieTDB/AGENTS.md`, `DESIGN.md`, `docs/api.md`, and the localization/storage ADRs before editing.
+Read `QuestieDB/AGENTS.md`, `DESIGN.md`, `docs/api.md`, and the localization/storage ADRs before editing.
 
 ## Current baseline
 
@@ -114,7 +114,7 @@ Do not accept a manually maintained list of the known IDs as the drift mechanism
 
 ## Validation
 
-Run focused checks from the QuestieTDB root:
+Run focused checks from the QuestieDB root:
 
 ```sh
 lua5.1 test.lua generation-inputs l10n-blocks l10n read-contract personas lua-types
@@ -129,7 +129,7 @@ Before completion, regenerate and run the full gate against the pinned oracle:
 tools/check.sh all --questie=../Questie
 ```
 
-This command is heavy and writes generated artifacts. Run it only in an isolated QuestieTDB checkout or output arrangement that cannot alter a symlinked daily-driver addon. Get confirmation first if the checkout's safety is unclear.
+This command is heavy and writes generated artifacts. Run it only in an isolated QuestieDB checkout or output arrangement that cannot alter a symlinked daily-driver addon. Get confirmation first if the checkout's safety is unclear.
 
 Also run:
 
@@ -139,7 +139,7 @@ git diff --check
 
 ## Deliverables
 
-- Generator/runtime changes and focused tests in QuestieTDB.
+- Generator/runtime changes and focused tests in QuestieDB.
 - Complete pinned-override drift coverage.
 - Documentation of ordinary override merge semantics and Titan zhCN precedence.
 - Evidence for all known IDs, negative persona cases, locale transitions, and the full gate.

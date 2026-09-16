@@ -91,7 +91,7 @@ def refresh(flavor, lua):
     hashes = derive(run_dump(flavor, lua))
     os.makedirs(GOLDEN_DIR, exist_ok=True)
     with open(golden_path(flavor), "wb") as f:
-        f.write(b"# QuestieTDB golden composed-read hashes - %s\n" % flavor.encode())
+        f.write(b"# QuestieDB golden composed-read hashes - %s\n" % flavor.encode())
         f.write(b"# One line per entity: type, id, sha256/16 over its sorted canonical field lines.\n")
         f.write(b"# Produced from worktree at %s\n" % worktree_stamp().encode())
         f.write(b"# Refresh (after an INTENTIONAL data change, with review):\n")

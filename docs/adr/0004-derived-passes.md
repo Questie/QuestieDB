@@ -95,7 +95,7 @@ passes over corrected data, but they still have different final representations.
   the right final representation. Until those corrections exist, `src/derived/requiredRaces.lua`
   runs an exact compatibility transcription so Source and Baked mode match Questie's shipped
   database. This is a temporary parity bridge, not approval of the inference policy. The proper
-  fix remains tracked in [#1](https://github.com/Questie/QuestieTDB/issues/1).
+  fix remains tracked in [#1](https://github.com/Questie/QuestieDB/issues/1).
 
 The module keeps a corrected conservative variant beside the active transcription, unused. It
 preserves explicit zeroes and requires complete, unanimous faction evidence. Keeping both loops
@@ -104,20 +104,20 @@ registered while parity is the contract.
 
 The static pass does not see Season of Discovery's runtime Dynamic Corrections. SoD parity is a
 separate post-composition problem tracked in
-[#13](https://github.com/Questie/QuestieTDB/issues/13).
+[#13](https://github.com/Questie/QuestieDB/issues/13).
 
 ### 5. Disposition of each pass
 
 | Pass | Disposition | Rationale |
 | --- | --- | --- |
-| Derived `requiredRaces` | **Temporary compatibility pass.** Exact Questie behavior is ported; explicit corrections remain the final fix. | Closes the base-flavor parity gap without pretending the guess is authored data. Tracked by [#1](https://github.com/Questie/QuestieTDB/issues/1); SoD is separate in [#13](https://github.com/Questie/QuestieTDB/issues/13). |
+| Derived `requiredRaces` | **Temporary compatibility pass.** Exact Questie behavior is ported; explicit corrections remain the final fix. | Closes the base-flavor parity gap without pretending the guess is authored data. Tracked by [#1](https://github.com/Questie/QuestieDB/issues/1); SoD is separate in [#13](https://github.com/Questie/QuestieDB/issues/13). |
 | `l10n:Initialize` data writes | **Deleted.** The l10n overlay replaces it. | Writing translations into entity tables is what made the compiled database locale-specific and forced `dbCompiledLang`. Verified inert at enUS, so the differential is unaffected. |
-| `DeleteGatheringNodes` | **Reassigned to the consumer** as a Questie-owned Dynamic Correction. Not a pass, and QuestieTDB keeps the data. | Object 1617 genuinely has spawns; declining to render 17,191 gathering-node spawn points is policy. The boundary rule and the `hiddenQuests` precedent both put it in Questie. |
+| `DeleteGatheringNodes` | **Reassigned to the consumer** as a Questie-owned Dynamic Correction. Not a pass, and QuestieDB keeps the data. | Object 1617 genuinely has spawns; declining to render 17,191 gathering-node spawn points is policy. The boundary rule and the `hiddenQuests` precedent both put it in Questie. |
 | `PreCompile` waypoint simplification | **Ported** as a Derived Pass. | Decision 4. |
 
 ### 5a. Gathering nodes, concretely
 
-QuestieTDB **retains** the 17,191 gathering-node spawn points — in `data/`, in all five
+QuestieDB **retains** the 17,191 gathering-node spawn points — in `data/`, in all five
 generated artifacts, and in both read modes. Nothing is stripped at any stage of Generation.
 
 Questie suppresses them at query time through the ordinary Dynamic Correction path, the same

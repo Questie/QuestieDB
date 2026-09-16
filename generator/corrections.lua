@@ -26,10 +26,10 @@ function corrections.prepare(flavor)
   return prepared[key]
 end
 
---- Apply every Static Correction owned by QuestieTDB to a set of loaded entity tables.
+--- Apply every Static Correction owned by QuestieDB to a set of loaded entity tables.
 ---
---- The generator runs offline with only QuestieTDB present, so it can only ever bake
---- corrections owned by QuestieTDB — which is why the owner filter is explicit here rather
+--- The generator runs offline with only QuestieDB present, so it can only ever bake
+--- corrections owned by QuestieDB — which is why the owner filter is explicit here rather
 --- than assumed. Anything Questie or a third party registers is Dynamic by definition.
 ---@param loaded table entityTypeName -> { meta, entities, path }
 ---@param flavor table An entry from config.flavors

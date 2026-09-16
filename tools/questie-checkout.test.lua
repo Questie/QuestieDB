@@ -31,8 +31,8 @@ local function output(command)
   return value
 end
 
-local root = output("mktemp -d /tmp/questietdb-checkout-XXXXXX")
-assert(root:match("^/tmp/questietdb%-checkout%-%w+$"))
+local root = output("mktemp -d /tmp/questiedb-checkout-XXXXXX")
+assert(root:match("^/tmp/questiedb%-checkout%-%w+$"))
 local repo = output("pwd -P")
 -- Spaces and quotes exercise every shell boundary, not only Git's -C argument.
 local sandbox = root .. "/work tree's inputs"
@@ -84,15 +84,15 @@ local ok, err = pcall(function()
   end
   lib.writeAll(sandbox .. "/QUESTIE_COMMIT", pinned .. "\n")
   local baseCanary = "## Version: 1.2.3\nbase canary"
-  lib.writeAll(sandbox .. "/QuestieTDB.toc", baseCanary)
-  lib.writeAll(sandbox .. "/QuestieTDB_Vanilla.toc", "baked canary")
+  lib.writeAll(sandbox .. "/QuestieDB.toc", baseCanary)
+  lib.writeAll(sandbox .. "/QuestieDB_Vanilla.toc", "baked canary")
 
   -- The real driver must bootstrap before localization preflight, without opening output.
   assert(not succeeds("cd " .. quote(sandbox) .. " && " .. env .. lua ..
     " generate.lua Vanilla --types=Quest > " .. quote(root .. "/driver.log") .. " 2>&1"))
   assert(lib.readAll(root .. "/driver.log"):find("required Questie lookup files are missing", 1, true))
-  assert(lib.readAll(sandbox .. "/QuestieTDB.toc") == baseCanary)
-  assert(lib.readAll(sandbox .. "/QuestieTDB_Vanilla.toc") == "baked canary")
+  assert(lib.readAll(sandbox .. "/QuestieDB.toc") == baseCanary)
+  assert(lib.readAll(sandbox .. "/QuestieDB_Vanilla.toc") == "baked canary")
 
   local cached = sandbox .. "/.cache/questie/" .. pinned
   assert(lib.gitCommit(cached) == pinned, "must fetch the pin, not the remote tip")
@@ -107,10 +107,10 @@ local ok, err = pcall(function()
 
   run("cd " .. quote(sandbox) .. " && " .. env .. lua ..
     " generate.lua Vanilla --types=Object --no-base-toc --quiet")
-  local artifact = lib.readAll(sandbox .. "/QuestieTDB_Vanilla.toc")
+  local artifact = lib.readAll(sandbox .. "/QuestieDB_Vanilla.toc")
   assert(artifact:find("## X-QUESTIE-COMMIT: " .. pinned, 1, true), "provenance must use the fetched pin")
   assert(artifact:find("## X-l10n-deDE-Object:", 1, true), "the resolved checkout must supply translations")
-  assert(lib.readAll(sandbox .. "/QuestieTDB.toc") == baseCanary)
+  assert(lib.readAll(sandbox .. "/QuestieDB.toc") == baseCanary)
 
   local call = "local path, commit = dofile('generator/questie.lua').resolve(); " ..
     "assert(commit == dofile('generator/lib.lua').readQuestiePin()); assert(path:find(commit, 1, true))"
@@ -142,7 +142,7 @@ local ok, err = pcall(function()
   run("cd " .. quote(sandbox) .. " && " .. env .. lua .. " generate.lua toc --quiet")
   run("cd " .. quote(sandbox) .. " && " .. env .. lua ..
     " generate.lua Vanilla --types=Object --no-l10n --no-base-toc --quiet")
-  assert(lib.readAll(sandbox .. "/QuestieTDB_Vanilla.toc"):find("## X-QUESTIE-COMMIT: " .. string.rep("0", 40), 1, true))
+  assert(lib.readAll(sandbox .. "/QuestieDB_Vanilla.toc"):find("## X-QUESTIE-COMMIT: " .. string.rep("0", 40), 1, true))
 end)
 
 run("rm -rf -- " .. quote(root))

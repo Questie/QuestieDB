@@ -1,10 +1,10 @@
 # Generated artifacts. Baked TOCs are never committed — CI publishes them, and a bootstrap
 # script installs them into this gitignored slot in a developer's clone.
-QuestieTDB_Vanilla.toc
-QuestieTDB_TBC.toc
-QuestieTDB_Wrath.toc
-QuestieTDB_Cata.toc
-QuestieTDB_Mists.toc
+QuestieDB_Vanilla.toc
+QuestieDB_TBC.toc
+QuestieDB_Wrath.toc
+QuestieDB_Cata.toc
+QuestieDB_Mists.toc
 
 # Pinned Questie checkouts fetched by generate.lua.
 /.cache/questie/

@@ -47,7 +47,7 @@ local format = string.format
 -- two-level — outer by the order owners FIRST applied, inner by loadOrder — and within a
 -- field the later-ranked owner wins. An owner's rank is fixed at first apply; re-applying
 -- refreshes that owner's layer in place. That follows load order naturally:
--- QuestieTDB < Questie < third-party.
+-- QuestieDB < Questie < third-party.
 
 registry.loadOrder = {
   EraStatic = 0,      EraDynamic = 100,
@@ -59,7 +59,7 @@ registry.loadOrder = {
   MoPStatic = 1200,   MoPDynamic = 1300,
 }
 
-registry.OWNER = "QuestieTDB"
+registry.OWNER = "QuestieDB"
 
 --------------------------------------------------------------------------------------------
 -- State
@@ -115,7 +115,7 @@ end
 
 local function warn(message)
   if type(rawget(_G, "print")) == "function" then
-    print("|cFFFFD100QuestieTDB:|r " .. message)
+    print("|cFFFFD100QuestieDB:|r " .. message)
   end
 end
 
@@ -331,7 +331,7 @@ end
 ---@param datatype string "Quest" | "Npc" | "Item" | "Object"
 ---@param entities table
 ---@param flavor table? An entry from config.flavors
----@param owner string? Restrict to one owner; Generation passes "QuestieTDB"
+---@param owner string? Restrict to one owner; Generation passes "QuestieDB"
 ---@return number applied
 function registry.ApplyStaticToEntities(datatype, entities, flavor, owner)
   local applied = 0
@@ -375,7 +375,7 @@ end
 ---     and Object views, their read caches, and their shared ID maps untouched;
 ---   * a function-shaped entry materializes once and the result is memoized on the entry.
 ---     Re-applying an owner clears only that owner's memos, so its providers run again while
----     every other owner's layer reuses its last materialization. QuestieTDB's own Dynamic
+---     every other owner's layer reuses its last materialization. QuestieDB's own Dynamic
 ---     sets are session-constant, which is what makes reuse safe — and what keeps a consumer
 ---     write from re-materializing the multi-thousand-row SoD base sets on every change.
 ---@param flavor table? Active flavor, from LibQuestieDB.flavor
@@ -418,7 +418,7 @@ local function recompose(flavor, datatypes)
                 local constantValues = meta.constantValues
                 if constantValues and constantValues[fieldIndex] ~= nil then
                   -- Constant fields no longer accept runtime ownership. Reads keep the schema
-                  -- placeholder and provenance remains with QuestieTDB.
+                  -- placeholder and provenance remains with QuestieDB.
                   if registry.debug then
                     warn(format('owner "%s" wrote deprecated constant %s %s field %s — dropped',
                       owner, datatype, tostring(id), tostring(meta.names[fieldIndex])))
@@ -486,7 +486,7 @@ end
 
 --- Fix an owner's rank on its first apply or first `Set`. Moving a re-applying owner to the
 --- end would let a consumer state refresh hoist one owner's whole layer above corrections
---- registered later, inverting the documented QuestieTDB < Questie < third-party order.
+--- registered later, inverting the documented QuestieDB < Questie < third-party order.
 local function rankOwner(owner)
   for _, applied in ipairs(registry.appliedOrder) do
     if applied == owner then return end
@@ -645,7 +645,7 @@ function registry.GetProvenance(datatype, id, key)
   local row = byType and byType[id]
   if row and row[fieldIndex] then return row[fieldIndex] end
   -- No Dynamic Correction won, so the value came from base data — which in Baked mode already
-  -- has QuestieTDB's Static Corrections folded in.
+  -- has QuestieDB's Static Corrections folded in.
   return registry.OWNER
 end
 

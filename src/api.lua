@@ -17,7 +17,7 @@ local shared = LibQuestieDB.shared
 local mode = LibQuestieDB.mode or "source"
 local backendFactory = LibQuestieDB.read[mode]
 if not backendFactory then
-  error("QuestieTDB: no read backend for mode '" .. tostring(mode) .. "'", 0)
+  error("QuestieDB: no read backend for mode '" .. tostring(mode) .. "'", 0)
 end
 
 for _, entityType in ipairs(config.entityTypes) do
@@ -59,7 +59,7 @@ end
 -- Contract
 --------------------------------------------------------------------------------------------
 
---- Independent release cycles make skew inevitable. A hard `## Dependencies: QuestieTDB`
+--- Independent release cycles make skew inevitable. A hard `## Dependencies: QuestieDB`
 --- covers *absence*; it does not cover *presence with the wrong version*. A consumer checks
 --- this at init and fails with a specific message.
 LibQuestieDB.contractVersion = config.contractVersion
@@ -81,8 +81,8 @@ function LibQuestieDB.RequireContract(required)
      required >= config.minSupportedContract and required <= config.contractVersion then
     return true
   end
-  return false, ("QuestieTDB contract mismatch: this consumer needs version %s, the installed " ..
-    "QuestieTDB provides %s (supporting consumers back to %s). Update whichever is older.")
+  return false, ("QuestieDB contract mismatch: this consumer needs version %s, the installed " ..
+    "QuestieDB provides %s (supporting consumers back to %s). Update whichever is older.")
     :format(tostring(required), tostring(config.contractVersion),
             tostring(config.minSupportedContract))
 end
@@ -116,10 +116,10 @@ end
 -- Own corrections
 --------------------------------------------------------------------------------------------
 
---- QuestieTDB applies its own layer at load, so base data is queryable immediately and
+--- QuestieDB applies its own layer at load, so base data is queryable immediately and
 --- correctly — step 1 of the initialization order in DESIGN.md. A consumer then registers its
 --- policy Corrections and calls `ApplyRegisteredCorrections("<its own name>")` in its staged
---- init; recomposition always includes every live layer, so QuestieTDB's stays visible.
+--- init; recomposition always includes every live layer, so QuestieDB's stays visible.
 LibQuestieDB.ApplyRegisteredCorrections = LibQuestieDB.Corrections.ApplyRegisteredCorrections
 LibQuestieDB.RegisterCorrection = LibQuestieDB.Corrections.RegisterCorrection
 LibQuestieDB.RegisterRuntimeCorrection = LibQuestieDB.Corrections.RegisterRuntimeCorrection

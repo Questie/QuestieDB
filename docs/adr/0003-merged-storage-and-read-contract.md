@@ -99,7 +99,7 @@ SoD correction sets register only when the client reports the season active
 (`C_Seasons`), never on expansion alone. Parameterized corrections (Darkmoon Faire) are
 never applied automatically: they are exposed through an explicit
 `Corrections` API taking the runtime fact (the Faire location) as an argument, because
-selecting it requires game state that QuestieTDB does not own.
+selecting it requires game state that QuestieDB does not own.
 
 ### 10. Table reads return a fresh mutable copy per read, via cached compiled chunks
 
@@ -122,7 +122,7 @@ Why this replaces freezing: DESIGN.md rejected fresh-per-read *solely* for the
 `loadstring`-per-read parse cost, which chunk caching removes — and fresh-per-read is the
 **exact** semantics Questie's ~290 call sites were compiled against, so the consumer-side
 mutation audit disappears entirely. Scalar fields keep the plain decoded cache (strings
-and numbers are immutable). `table.freeze` remains in use only for QuestieTDB-internal
+and numbers are immutable). `table.freeze` remains in use only for QuestieDB-internal
 shared structures (schema meta, ID maps), where addon ownership makes it work; the
 taint-ownership findings and the validated in-chunk/loadstring-helper freeze patterns
 stay recorded in `client-metadata-probes.md` for any future return to shared values.

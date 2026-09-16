@@ -194,9 +194,9 @@ See ADR 0011.
 
 ## Build metadata
 
-The committed `QuestieTDB.toc` owns the maintained `## Version: X.X.X`; regeneration preserves
+The committed `QuestieDB.toc` owns the maintained `## Version: X.X.X`; regeneration preserves
 it. Baked TOCs use `X.X.X-dev.<seven-character commit>` by default, or exactly `X.X.X` when
-`QUESTIETDB_RELEASE=true`. The rolling GitHub pre-release is tagged `preview`; full releases
+`QUESTIEDB_RELEASE=true`. The rolling GitHub pre-release is tagged `preview`; full releases
 use `vX.X.X`. These addon versions are separate from the storage/API contract version.
 
 Every generated `.toc` carries provenance:
@@ -252,7 +252,7 @@ Two consequences for implementation:
 
 CBOR represents an empty string directly, so `""` occupies a scalar-row slot while nil has
 no slot. Questie's compiler instead uses a literal `"nil"` sentinel and cannot represent a
-genuine string with that value. QuestieTDB needs no inference or sentinel on the entity path.
+genuine string with that value. QuestieDB needs no inference or sentinel on the entity path.
 
 ### Element-level, not field-level
 

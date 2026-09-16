@@ -2,17 +2,17 @@
 
 This is historical evidence, not a baseline or a runtime correction list.
 
-- QuestieTDB before the fix: `e196726`.
+- QuestieDB before the fix: `e196726`.
 - Pinned Questie: `92ab8206f8fa24fdbf772a0d2330abddbc78396a`.
 - Inventory: [`sod-required-races-before.tsv`](sod-required-races-before.tsv).
 - Active SoD: 25 differing quests among 5,534, identical for Alliance Human Warrior and Horde Orc Warrior.
-- Direction: all 25 return explicit `0` in QuestieTDB. Questie returns 20 `ALL_ALLIANCE` (`77`) and five `ALL_HORDE` (`178`) masks.
+- Direction: all 25 return explicit `0` in QuestieDB. Questie returns 20 `ALL_ALLIANCE` (`77`) and five `ALL_HORDE` (`178`) masks.
 - All 25 are SoD-added quests: 16 generated base entries and nine correction-added entries.
 - Plain Vanilla: zero differences among 4,257 quests for the default Alliance persona.
 
 ## Reproduce the focused comparison
 
-Run from an isolated QuestieTDB copy; dumps are written under `.out/differential/`.
+Run from an isolated QuestieDB copy; dumps are written under `.out/differential/`.
 Pass the absolute path to the pinned Questie checkout if its sibling location differs.
 
 ```sh

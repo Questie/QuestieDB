@@ -4,7 +4,7 @@
 -- correct without launching the game.
 --
 -- Written as a library because Questie's test harness consumes it too: the same emulator
--- backs QuestieTDB's round-trip verification, the source/baked equivalence test, and Questie's
+-- backs QuestieDB's round-trip verification, the source/baked equivalence test, and Questie's
 -- own unit tests against a real generated artifact.
 --
 -- Chunk reassembly deliberately does NOT happen here. `GetAddOnMetadata` in a live client
@@ -87,7 +87,7 @@ end
 ---@return table header
 function emulator.load(path, addonName)
   local map, header = emulator.parse(path)
-  local handle = emulator.install(addonName or "QuestieTDB", map)
+  local handle = emulator.install(addonName or "QuestieDB", map)
   handle.header = header
   return handle, header
 end
@@ -132,7 +132,7 @@ end
 ---@return table addonTable The addon namespace, i.e. LibQuestieDB
 ---@return table files The file list the TOC declared, as loaded
 function emulator.loadAddon(tocPath, addonName, baseDir)
-  addonName = addonName or "QuestieTDB"
+  addonName = addonName or "QuestieDB"
   local addonTable = {}
 
   local file = assert(io.open(tocPath, "rb"), "Cannot open: " .. tostring(tocPath))

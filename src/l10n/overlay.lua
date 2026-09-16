@@ -229,10 +229,10 @@ local function loadLocaleBlocks(locale)
     if availableTypes[typeName] then
       local key = config.l10nBlockKey(typeName, locale)
       local encoded = readStored(key)
-      if not encoded then error("QuestieTDB: missing localization block " .. key, 0) end
+      if not encoded then error("QuestieDB: missing localization block " .. key, 0) end
       local block = decodeBlock(encoded)
       if type(block) ~= "table" then
-        error("QuestieTDB: localization block " .. key .. " did not decode to a table", 0)
+        error("QuestieDB: localization block " .. key .. " did not decode to a table", 0)
       end
       blocks[typeName] = block
     end
@@ -323,7 +323,7 @@ function overlay.CreateProvider(meta, entity)
     if not column then return nil end
     local position = findPosition(id)
     local value = position and column[position] or nil
-    if value ~= nil then return value, "QuestieTDB" end
+    if value ~= nil then return value, "QuestieDB" end
   end
 
   providers[typeName] = provider

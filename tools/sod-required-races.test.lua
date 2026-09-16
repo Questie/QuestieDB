@@ -35,12 +35,12 @@ return function(check, equal)
       flavor.name .. " ships only applicable authored SoD data")
   end
 
-  local modes = { { name = "Source", toc = "QuestieTDB.toc" } }
-  if lib.fileExists("QuestieTDB_Vanilla.toc") then
-    local toc = lib.readAll("QuestieTDB_Vanilla.toc"):gsub("\\", "/")
+  local modes = { { name = "Source", toc = "QuestieDB.toc" } }
+  if lib.fileExists("QuestieDB_Vanilla.toc") then
+    local toc = lib.readAll("QuestieDB_Vanilla.toc"):gsub("\\", "/")
     local current = toc:find(path, 1, true) ~= nil
     check(current, "Baked Vanilla TOC includes authored SoD data; regenerate stale artifacts in isolation")
-    if current then modes[#modes + 1] = { name = "Baked", toc = "QuestieTDB_Vanilla.toc" } end
+    if current then modes[#modes + 1] = { name = "Baked", toc = "QuestieDB_Vanilla.toc" } end
   else
     io.write("  SKIP sod-required-races Baked: Vanilla artifact not generated\n")
   end
@@ -49,8 +49,8 @@ return function(check, equal)
     for _, faction in ipairs({ "Alliance", "Horde" }) do
       client.reset()
       client.install({ expansion = "Classic", season = "SoD", faction = faction })
-      emulator.install("QuestieTDB", emulator.parse(mode.toc))
-      local db = emulator.loadAddon(mode.toc, "QuestieTDB")
+      emulator.install("QuestieDB", emulator.parse(mode.toc))
+      local db = emulator.loadAddon(mode.toc, "QuestieDB")
       local label = mode.name .. " " .. faction
       if mode.name == "Source" then
         check(db.read.source.entities.Quest == nil and db.read.source.entities.Npc == nil,
@@ -97,7 +97,7 @@ return function(check, equal)
     client.reset()
     client.install({ expansion = persona.expansion })
     _G.C_Seasons.GetActiveSeason = function() return persona.season end
-    local db = emulator.loadAddon("QuestieTDB.toc", "QuestieTDB")
+    local db = emulator.loadAddon("QuestieDB.toc", "QuestieDB")
     local found = false
     for _, entry in ipairs(db.Corrections.Select({ dynamic = true })) do
       if entry.name == name then found = true end

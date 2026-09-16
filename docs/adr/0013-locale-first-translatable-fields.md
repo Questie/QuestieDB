@@ -23,7 +23,7 @@ This applies only to Quest `name` and `objectivesText`, Npc `name` and `subName`
 Object `name`. Other fields, including `requiredRaces`, never enter localization. A translation
 cannot make an absent entity exist.
 
-QuestieTDB models localization as Base translations, Static Translation Corrections folded into
+QuestieDB models localization as Base translations, Static Translation Corrections folded into
 the generated Localization blocks, and locale-aware Dynamic Translation Corrections. Dynamic
 sets are data-shaped slots identified by owner, locale, entity type, and name. They accept any
 non-empty locale string other than `enUS`. This leaves the generated Base locale inventory and
@@ -33,7 +33,7 @@ it does not reapply entity Corrections. Titan Reforged zhCN text is a Dynamic Tr
 Correction, not an exception to entity Correction precedence. Locale changes invalidate affected
 reads and Name indexes, and provenance reports the layer that supplied the returned value.
 
-Questie's pinned localization sources remain migration inputs that QuestieTDB can resynchronize;
+Questie's pinned localization sources remain migration inputs that QuestieDB can resynchronize;
 physically transferring the authored lookup tree is deferred. This decision does not add
 ordinary Base translations to Source mode; Dynamic Translation Corrections remain available
 there. Moving English text out of entity data and through localization is possible in principle,

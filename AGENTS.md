@@ -1,4 +1,4 @@
-# QuestieTDB Agent Notes
+# QuestieDB Agent Notes
 
 The database Questie consumes. Stores entity data as WoW addon TOC metadata and owns the
 offline generator that produces it.
@@ -57,7 +57,7 @@ lua-language-server --check=src/types --checklevel=Warning --check_format=pretty
 
 ### Issue tracker
 
-Issues, specs, and Wayfinder maps live in GitHub Issues at `Questie/QuestieTDB`, via the `gh` CLI. This repository configuration overrides Wayfinder's default local Markdown tracker. See `docs/agents/issue-tracker.md`.
+Issues, specs, and Wayfinder maps live in GitHub Issues at `Questie/QuestieDB`, via the `gh` CLI. This repository configuration overrides Wayfinder's default local Markdown tracker. See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 

@@ -36,9 +36,9 @@ return function(check, equal, questiePath)
   env._G = env
   local declaration = assert(loadfile("src/l10n/Titan/zhCN.lua"))
   setfenv(declaration, env)
-  declaration("QuestieTDB", db)
+  declaration("QuestieDB", db)
   equal(declarations, {
-    { owner = "QuestieTDB", locale = "zhCN", datatype = "Quest", name = "Titan:zhCN", rows = oracle },
+    { owner = "QuestieDB", locale = "zhCN", datatype = "Quest", name = "Titan:zhCN", rows = oracle },
   }, "complete Titan declaration matches every pinned translated ID and field")
 
   local emulator = dofile("emulator/metadata.lua")
@@ -54,10 +54,10 @@ return function(check, equal, questiePath)
     [8191] = "光晕预言", [8192] = "万灵预言", [93975] = "拉格纳罗斯必须死！",
     [94577] = "凯尔萨斯必须死！", [94579] = "消灭帕奇维克！",
   }
-  local modes = { { name = "Source", toc = "QuestieTDB.toc" } }
-  if lib.fileExists("QuestieTDB_Wrath.toc") and
-      lib.readAll("QuestieTDB_Wrath.toc"):gsub("\\", "/"):find("src/l10n/Titan/zhCN.lua", 1, true) then
-    modes[#modes + 1] = { name = "Baked", toc = "QuestieTDB_Wrath.toc" }
+  local modes = { { name = "Source", toc = "QuestieDB.toc" } }
+  if lib.fileExists("QuestieDB_Wrath.toc") and
+      lib.readAll("QuestieDB_Wrath.toc"):gsub("\\", "/"):find("src/l10n/Titan/zhCN.lua", 1, true) then
+    modes[#modes + 1] = { name = "Baked", toc = "QuestieDB_Wrath.toc" }
   else
     io.write("  SKIP titan-translations Baked: Wrath artifact absent or needs new runtime file list\n")
   end
@@ -65,8 +65,8 @@ return function(check, equal, questiePath)
     for _, initialLocale in ipairs({ "enUS", "zhCN" }) do
       client.reset()
       client.install({ expansion = "Wotlk", season = "TitanReforged", locale = initialLocale })
-      emulator.install("QuestieTDB", emulator.parse(mode.toc))
-      local db = emulator.loadAddon(mode.toc, "QuestieTDB")
+      emulator.install("QuestieDB", emulator.parse(mode.toc))
+      local db = emulator.loadAddon(mode.toc, "QuestieDB")
       local label = mode.name .. " initially " .. initialLocale .. ": "
       if mode.name == "Source" then
         check(db.read.source.entities.Quest == nil and db.read.source.entities.Npc == nil,
@@ -84,7 +84,7 @@ return function(check, equal, questiePath)
       end
       for id, name in pairs(expected) do
         equal(db.Quest.name(id), name, label .. "Titan translation " .. id)
-        equal(db.GetProvenance("Quest", id, "name"), "QuestieTDB", label .. "Titan provenance " .. id)
+        equal(db.GetProvenance("Quest", id, "name"), "QuestieDB", label .. "Titan provenance " .. id)
       end
       equal(db.Quest.objectivesText(6805),
         { "消灭15个大型灰尘风暴和15个大型沙漠奔行者，然后回到艾萨拉的海达克西斯公爵那儿。" }, label .. "6805 objectives")
@@ -109,7 +109,7 @@ return function(check, equal, questiePath)
       equal(db.Quest.name(6805), "Consumer translation", label .. "consumer priority survives locale switch")
       db.l10n.SetCorrection("Consumer", "zhCN", "Quest", "name", nil)
       equal(db.Quest.name(6805), expected[6805], label .. "withdrawal restores built-in translation")
-      db.l10n.SetCorrection("QuestieTDB", "zhCN", "Quest", "Titan:zhCN", nil)
+      db.l10n.SetCorrection("QuestieDB", "zhCN", "Quest", "Titan:zhCN", nil)
       check(db.Quest.name(6805) ~= expected[6805], label .. "withdrawing Titan translation reveals fallback")
       db.l10n.SetLocale("enUS")
       db.l10n.SetLocale("zhCN")
@@ -132,7 +132,7 @@ return function(check, equal, questiePath)
     local calls = 0
     local db = { flavor = { expansion = persona.expansion },
       l10n = { SetCorrection = function() calls = calls + 1 end } }
-    assert(loadfile("src/l10n/Titan/zhCN.lua"))("QuestieTDB", db)
+    assert(loadfile("src/l10n/Titan/zhCN.lua"))("QuestieDB", db)
     equal(calls, 0, persona.expansion .. " season " .. persona.season .. " rejects Titan translations")
   end
   client.reset()

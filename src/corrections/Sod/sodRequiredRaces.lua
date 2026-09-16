@@ -1,11 +1,11 @@
--- QuestieTDB-authored SoD corrections. This file is not copied by tools/port-corrections.lua
+-- QuestieDB-authored SoD corrections. This file is not copied by tools/port-corrections.lua
 -- and is registered separately from its copied-source manifest. It lives beside the other
 -- SoD data while upstream synchronization leaves these owned rows untouched.
 --
 -- Why these rows exist
 -- --------------------
 -- Questie's Initialize applies SoD Quest/Npc corrections, infers requiredRaces from creature
--- starters, then calls MinimalInit for faction-specific corrections. QuestieTDB's base Derived
+-- starters, then calls MinimalInit for faction-specific corrections. QuestieDB's base Derived
 -- Pass runs before SoD's Dynamic Corrections, so it cannot infer these SoD-added quests.
 -- Against QUESTIE_COMMIT 92ab8206f8fa24fdbf772a0d2330abddbc78396a, all 25 rows below returned
 -- zero here but a faction mask from Questie's compiled public reads. Alliance and Horde
@@ -21,7 +21,7 @@
 -- ----------------------------
 -- Explicit data uses the normal Dynamic Correction lifecycle in both Source and Baked modes:
 -- no extra inference pass, eager entity decoding, generated sidecar, or cross-entity cache.
--- These rows belong to QuestieTDB and remain here when Questie retires its database. They
+-- These rows belong to QuestieDB and remain here when Questie retires its database. They
 -- run after copied SoD providers; consumers still override them through normal owner ranking.
 -- Correcting gameplay meaning is a separate, evidence-backed data change, not this parity fix.
 --

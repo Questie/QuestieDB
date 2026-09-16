@@ -418,19 +418,19 @@ For an acyclic static database owned by the addon:
 
 ## Ownership: measured in a live client, and it changes the conclusion
 
-Classic Era 1.15.9, read through QuestieTDB in Baked mode.
+Classic Era 1.15.9, read through QuestieDB in Baked mode.
 
 `table.freeze` **enforces ownership**. It raises unless the table's owner matches the calling
 function's owner:
 
 ```
 attempted to freeze a table not owned by the calling function
-(expected 'QuestieTDB', got '*** ForceTaint_Strong ***')
+(expected 'QuestieDB', got '*** ForceTaint_Strong ***')
 ```
 
 That interacts badly with lazy decoding, which is the whole point of a TOC metadata store. A
 table field is materialised by `loadstring` **inside whatever execution context asked for it**,
-and that context owns the result. The caller is never QuestieTDB — it is the consumer — so the
+and that context owns the result. The caller is never QuestieDB — it is the consumer — so the
 owner never matches.
 
 Measured over 200 consecutive table reads from a consumer's context:
@@ -454,12 +454,12 @@ Three ways out, none of them free:
 1. **Accept it.** Values are shared and mutable; ownership is convention, enforced offline by
    the harness in `emulator/freeze.lua` and its mutation audit. Costs nothing, guarantees
    nothing at runtime.
-2. **Decode eagerly at load, inside QuestieTDB's own context**, then freeze. Restores the
+2. **Decode eagerly at load, inside QuestieDB's own context**, then freeze. Restores the
    guarantee and defeats lazy decoding — which is the reason this storage format was chosen.
    Plausible for Source mode, where base data is one `loadstring` per entity type; ruinous for
    Baked mode.
-3. **Freeze only what QuestieTDB itself creates** — the composed Correction Overlay, which is
-   built during recomposition in QuestieTDB's context. Partial, cheap, and honest about its
+3. **Freeze only what QuestieDB itself creates** — the composed Correction Overlay, which is
+   built during recomposition in QuestieDB's context. Partial, cheap, and honest about its
    scope.
 
 **Resolved — twice over — on 2026-08-18** (see
@@ -467,14 +467,14 @@ Three ways out, none of them free:
 
 - The refusals were root-caused live: `table.freeze` is gated on taint *ownership*, and every
   table a `loadstring` chunk builds belongs to `*** ForceTaint_Strong ***`, not to the addon —
-  so option 2's "inside QuestieTDB's own context" could never have worked as written. The
+  so option 2's "inside QuestieDB's own context" could never have worked as written. The
   working mechanism is the inverse: perform the deep freeze **inside** loadstring-compiled
   code (a single shared helper, itself compiled via `loadstring`, freezes across separately
   compiled chunks — validated in-client, nested tables fully frozen).
 - And then the question became moot: ADR 0003 Decision 10 (revised) retired frozen shared
   values entirely. Re-executing the cached compiled chunk returns a fresh mutable copy per
   read at 0.13–1.8 µs for typical shapes, which is Questie's existing per-call semantics with
-  no consumer audit at all. Freezing now applies only to QuestieTDB-internal shared
+  no consumer audit at all. Freezing now applies only to QuestieDB-internal shared
   structures, where addon ownership makes it real — a strict superset of option 3.
 
 The validated in-chunk freeze pattern stays recorded in the probes document should shared

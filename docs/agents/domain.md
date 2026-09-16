@@ -47,8 +47,8 @@ If your output contradicts an existing ADR, surface it explicitly rather than si
 
 ## Relationship to Questie
 
-QuestieTDB is a separate project from Questie, tightly coupled but independently released. Storage vocabulary stops at the boundary: Questie has no terms for metadata fields, chunked values, or Generation.
+QuestieDB is a separate project from Questie, tightly coupled but independently released. Storage vocabulary stops at the boundary: Questie has no terms for metadata fields, chunked values, or Generation.
 
 The governing rule, from `CONTEXT.md`:
 
-> **QuestieTDB owns what is true about game entities. Questie owns what to do with that truth.**
+> **QuestieDB owns what is true about game entities. Questie owns what to do with that truth.**

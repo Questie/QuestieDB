@@ -39,7 +39,7 @@ end
 local function execute(source, label, env, namespace)
   local chunk = assert(loadstring(source, "@" .. label))
   setfenv(chunk, env)
-  chunk("QuestieTDB", namespace)
+  chunk("QuestieDB", namespace)
 end
 
 ---Execute the pinned files themselves, not parsed assignment literals or provider copies.
@@ -63,7 +63,7 @@ function fidelity.capture(sources)
 end
 
 ---Discover every hint-bearing correction source in the pinned TOC, including new files.
----Season admission is intentional policy, independent of QuestieTDB's manifest and markers.
+---Season admission is intentional policy, independent of QuestieDB's manifest and markers.
 ---@param questiePath string
 ---@param flavorName string
 ---@param seasonId number
@@ -179,7 +179,7 @@ fidelity.personas = {
 ---@return nil
 function fidelity.run(check, questiePath, stagedRoot)
   lib.assertQuestiePin(questiePath)
-  local sourceFiles = fidelity.tocFiles("QuestieTDB.toc")
+  local sourceFiles = fidelity.tocFiles("QuestieDB.toc")
   for _, persona in ipairs(fidelity.personas) do
     local flavor = config.flavorByName[persona.flavor]
     local expected, inputs = fidelity.loadOracle(questiePath, persona.flavor, persona.season)

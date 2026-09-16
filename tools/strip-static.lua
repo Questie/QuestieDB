@@ -28,7 +28,7 @@
 -- instead of the hint silently disappearing from shipped packages.
 --
 -- Usage: lua5.1 tools/strip-static.lua <stagedAddonDir> [--quiet]
---   e.g. lua5.1 tools/strip-static.lua .out/stage/QuestieTDB
+--   e.g. lua5.1 tools/strip-static.lua .out/stage/QuestieDB
 --
 -- Run from the repository root: originals are read from src/corrections/ for the
 -- pre-strip identity check and the behavior parity check.
@@ -189,7 +189,7 @@ local function observe(spec, content, label)
     remove()
     fail("%s (%s) does not compile: %s", spec.file, label, tostring(err))
   end
-  local ok, execErr = pcall(chunk, "QuestieTDB", Lib)
+  local ok, execErr = pcall(chunk, "QuestieDB", Lib)
   if not ok then
     remove()
     fail("%s (%s) failed to execute: %s", spec.file, label, tostring(execErr))

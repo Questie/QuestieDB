@@ -101,7 +101,7 @@ end
 local function execute(path, env, namespace)
   local chunk = assert(loadfile(path))
   setfenv(chunk, env)
-  chunk("QuestieTDB", namespace)
+  chunk("QuestieDB", namespace)
 end
 
 ---Load the real support block without loading unrelated entity data or requiring artifacts.
@@ -180,7 +180,7 @@ function fidelity.run(check, questiePath)
   local oracleTocs = { Vanilla = "Classic", TBC = "BCC", Wrath = "WOTLKC", Cata = "Cata", Mists = "Mists" }
   local visited = {}
   local sourceFiles = config.sourceFileList()
-  local committedFiles = tocFiles("QuestieTDB.toc")
+  local committedFiles = tocFiles("QuestieDB.toc")
 
   for _, flavor in ipairs(config.flavors) do
     local configured, expectedPaths, expectedSet = {}, {}, {}

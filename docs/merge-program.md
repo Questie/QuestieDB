@@ -44,7 +44,7 @@ verified and committed:
 | Harvest | A-vs-golden gate replacing the B oracle; `docs/pi/` idea and defect record |
 
 The Wire row records what landed during this historical program. ADR 0006 later superseded
-production coordinate quantization: QuestieTDB now stores raw coordinates, and a tool-only
+production coordinate quantization: QuestieDB now stores raw coordinates, and a tool-only
 Compiler comparison adapter reproduces the old grid while that migration oracle remains.
 
 ## Defects found and fixed in this tree
@@ -62,7 +62,7 @@ Every one was invisible to the tree's own pre-existing gates:
    extracted once at Era values (440 TBC divergences).
 4. **Titan Reforged sets ungated on plain Wrath** (92 divergences; season-109 gate,
    per-function).
-5. **Owner re-apply hoisted precedence** — `ApplyParameterized` moved QuestieTDB's whole
+5. **Owner re-apply hoisted precedence** — `ApplyParameterized` moved QuestieDB's whole
    dynamic layer above consumer corrections; rank is now fixed at first apply.
 6. **`{}` delete idiom corrupted scalar fields** through the dynamic overlay; now uniform
    delete, with author-error reporting for non-empty tables on scalar fields.
@@ -117,7 +117,7 @@ File with `gh issue create` per `agents/issue-tracker.md`; drafts here so nothin
 5. **Per-validator positive+negative fixtures** (B's pattern, `pi/consumer-tooling.md`)
    on top of the committed baselines.
 6. **File the upstream zhTW DEL-byte issue** — ready-to-file text sits at the workspace
-   root (`UPSTREAM-ISSUE-zhTW-del-byte.md`); QuestieTDB already sanitizes at extraction.
+   root (`UPSTREAM-ISSUE-zhTW-del-byte.md`); QuestieDB already sanitizes at extraction.
 7. **Trailing-tab / CRLF client probes** — the two micro-gaps the synthetic battery
    couldn't cover in one TOC (`tools/probe-addon/README.md`); the conservative splitter
    makes them non-blocking.
@@ -132,7 +132,7 @@ File with `gh issue create` per `agents/issue-tracker.md`; drafts here so nothin
 
 ## Retirement checklist for the sibling
 
-1. Merge this branch; **push first** — A and B share the `Questie/QuestieTDB` remote with
+1. Merge this branch; **push first** — A and B share the `Questie/QuestieDB` remote with
    divergent histories, and first-to-push owns the truth.
 2. Move `Questie-toc-pi` to the workspace's gitignored `.retired/`.
 3. Nothing in this repo references the live B checkout — the golden gate replaced the

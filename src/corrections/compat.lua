@@ -164,7 +164,7 @@ local saved
 
 -- Copied providers resolve these constants through the global at invocation time. Keep the
 -- stand-in private between calls so Questie's duplicate-installation check sees an unclaimed
--- global when it loads after QuestieTDB.
+-- global when it loads after QuestieDB.
 local correctionQuestie = {}
 for name, value in pairs(constants.iconTypes) do correctionQuestie[name] = value end
 

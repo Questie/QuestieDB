@@ -1,4 +1,4 @@
--- QuestieTDB-owned translations imported from pinned Questie's lookupOverrides.lua.
+-- QuestieDB-owned translations imported from pinned Questie's lookupOverrides.lua.
 -- Titan changes English entity text, but translation selection belongs entirely to l10n.
 -- Keep this declaration separate from byte-identical entity correction copies.
 local _, LibQuestieDB = ...
@@ -12,7 +12,7 @@ end
 local keys = LibQuestieDB.Meta.Quest.keys
 -- Register even on an English client: locale selection is l10n's job, and reserving the
 -- built-in owner's rank at load keeps later consumer translation corrections authoritative.
-LibQuestieDB.l10n.SetCorrection("QuestieTDB", "zhCN", "Quest", "Titan:zhCN", {
+LibQuestieDB.l10n.SetCorrection("QuestieDB", "zhCN", "Quest", "Titan:zhCN", {
   [6805] = {
     [keys.name] = "大雷暴和巨磐石",
     [keys.objectivesText] = { "消灭15个大型灰尘风暴和15个大型沙漠奔行者，然后回到艾萨拉的海达克西斯公爵那儿。" },

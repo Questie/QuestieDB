@@ -12,6 +12,6 @@ The skills speak in terms of five canonical triage roles. This file maps those r
 
 When a skill mentions a role (e.g. "apply the AFK-ready triage label"), use the corresponding label string from this table.
 
-This mapping is the fixed vocabulary for `Questie/QuestieTDB`. Change it only when the repository's actual GitHub labels change.
+This mapping is the fixed vocabulary for `Questie/QuestieDB`. Change it only when the repository's actual GitHub labels change.
 
 GitHub's stock labels (`bug`, `documentation`, `duplicate`, `enhancement`, `good first issue`, `help wanted`, `invalid`, `question`) are unrelated to triage roles.

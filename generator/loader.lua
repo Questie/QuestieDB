@@ -142,7 +142,7 @@ function loader.executeFile(path, addonName, addonTable)
   if not chunk then
     error("Cannot load " .. path .. ": " .. tostring(err), 0)
   end
-  local ok, execErr = pcall(chunk, addonName or "QuestieTDB", addonTable or {})
+  local ok, execErr = pcall(chunk, addonName or "QuestieDB", addonTable or {})
   if not ok then
     error("Error executing " .. path .. ": " .. tostring(execErr), 0)
   end

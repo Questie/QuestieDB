@@ -5,7 +5,7 @@
 -- Defaults to Alliance / Human / Warrior / no active season; options select SoD or Horde.
 -- Source/Baked equality is checked separately by equivalence.lua.
 --
--- Usage (cwd must be the QuestieTDB root):
+-- Usage (cwd must be the QuestieDB root):
 --   lua tools/differential/dump_a.lua Vanilla <outFile> [--compiler-coordinates] [--season=SoD] [--faction=Horde]
 --     [--only=Quest.requiredRaces]
 

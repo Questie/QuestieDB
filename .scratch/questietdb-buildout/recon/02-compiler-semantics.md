@@ -73,7 +73,7 @@ questRewards=u8u24array, name=u8string, teachesSpell=u24
 - `objective`, `spellobjective` — only used internally by `objectives`.
 - `reflist` — only used internally by `extraobjectives`.
 
-> Implication for QuestieTDB: only 20 type strings are load-bearing:
+> Implication for QuestieDB: only 20 type strings are load-bearing:
 > `u8 u16 u24 u32 s16 s24 u8string u12pair s24pair faction spawnlist waypointlist
 > u8u24array u8s24array u16u24array u8u16stringarray questgivers trigger objectives extraobjectives`
 > plus 4 internal-only: `u24pair objective spellobjective reflist`.
@@ -733,7 +733,7 @@ and every scalar numeric reader returns a plain number (never nil).
   ```
 - `Questie/Modules/Journey/tabs/QuestsByFaction/QuestsByFactions.lua:619` — `if nextQuestInChain and nextQuestInChain ~= 0 then`
 
-> **QuestieTDB must reproduce `nil → 0` for every field typed `u8/u16/u24/u32/s8/s16/s24`.**
+> **QuestieDB must reproduce `nil → 0` for every field typed `u8/u16/u24/u32/s8/s16/s24`.**
 
 ### (b) String fields: nil vs `""`, and the `"nil"` sentinel
 
@@ -1097,7 +1097,7 @@ and in corrections, e.g. `Corrections/wotlkQuestFixes.lua:7882`, `Corrections/cl
 Occurrence counts of `{}` per corrections file (grep):
 `Automatic/classicQuestReputationFixes.lua` 1611, `cataQuestFixes` 935, `wotlkQuestFixes` 554, `classicItemFixes` 300, `tbcQuestFixes` 287, `mopQuestFixes` 262, `classicQuestFixes` 252, `cataNPCFixes` 231, `classicNPCFixes` 139, `cataItemFixes` 126, `tbcNPCFixes` 87, `wotlkItemFixes` 63, `wotlkNPCFixes` 32, `tbcItemFixes` 17, `mopNPCFixes` 14, `classicObjectFixes` 14, `tbcObjectFixes` 10, `cataObjectFixes` 9, `sodNPCFixes` 9, `sodQuestFixes` 7, `mopItemFixes` 4, `sodObjectFixes` 3, `mopObjectFixes` 2, `wotlkObjectFixes` 2.
 
-> **QuestieTDB must therefore also implement `{}` → `nil`** for collection-typed fields, or corrections that clear a field will stop working.
+> **QuestieDB must therefore also implement `{}` → `nil`** for collection-typed fields, or corrections that clear a field will stop working.
 
 ---
 
@@ -1144,7 +1144,7 @@ MoP/mopNpcDB.lua id=61080 zone=365  coord={1387.78,2329.93} scaled={56760,95294}
 ```
 Observed raw ranges: `npc.spawns.x ∈ [0.01, 2943.67]`, `npc.spawns.y ∈ [0.02, 6025.32]` (object spawns are all sane, ≤ 99.84).
 
-> QuestieTDB storing raw floats will **not** reproduce this corruption — that is a *behavioural difference* (an improvement) that must be a conscious decision, because any consumer relying on the wrapped coordinates would change behaviour.
+> QuestieDB storing raw floats will **not** reproduce this corruption — that is a *behavioural difference* (an improvement) that must be a conscious decision, because any consumer relying on the wrapped coordinates would change behaviour.
 
 ---
 

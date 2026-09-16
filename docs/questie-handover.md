@@ -1,6 +1,6 @@
 # Questie handover ledger
 
-**Every known difference between QuestieTDB's reads and Questie's compiled database, what we
+**Every known difference between QuestieDB's reads and Questie's compiled database, what we
 decided to do about it, and whether it is done yet.**
 
 This file exists so the migration cannot lose track of an edge case. It is the register the
@@ -17,7 +17,7 @@ file is status, not rationale.
 ## Regenerating the evidence
 
 ```sh
-cd QuestieTDB
+cd QuestieDB
 uv run python tools/differential/compiler_diff.py all --questie=../Questie   # ~2 min, all five flavours
 uv run python tools/differential/compiler_diff.py Vanilla --self-check       # prove the gate is live
 ```
@@ -27,7 +27,7 @@ Current counts use the full `QuestieInit` pre-compile sequence from the Questie 
 fields.
 
 Remaining divergences: **20,220 / 35,926 / 55,031 / 86,047 / 99,427**. Almost all are
-the approved `minLevelHealth` and `maxLevelHealth` policy: QuestieTDB omits obsolete health
+the approved `minLevelHealth` and `maxLevelHealth` policy: QuestieDB omits obsolete health
 data and returns constant placeholders, while the migration oracle still reads compiler
 values. Raw coordinate storage removed the former NPC/Object spawn-value classes through the
 tool-only Compiler comparison adapter. Re-porting the pinned Corrections resolved the stale
@@ -70,7 +70,7 @@ The offline differential compares two Lua processes. This run compared the shipp
 against a running Questie inside the game, which is the only way to prove the client's real
 metadata reader behaves like the offline emulator.
 
-**Client:** Classic Era 1.15.9, enUS, Alliance. **Artifact:** `QuestieTDB_Vanilla.toc`, baked
+**Client:** Classic Era 1.15.9, enUS, Alliance. **Artifact:** `QuestieDB_Vanilla.toc`, baked
 mode, producer `build-7169b67`. **Compared against:** Questie 11.36.1 as loaded.
 **Scope:** every field of every entity, 4,257 quests, 10,122 NPCs, 14,899 items, 6,666
 objects. **590,128 field comparisons, 54 divergences.**
@@ -84,7 +84,7 @@ the recorded baseline.
 The five extra rows are all upstream data drift between 11.33.2, which
 `tools/port-corrections.lua` was last run against, and the 11.36.1 in the client. Each was
 confirmed at the source line, so all five should disappear on the next re-sync and none of
-them is a QuestieTDB defect:
+them is a QuestieDB defect:
 
 | Entity | Field(s) | 11.33.2 (ours) | 11.36.1 (client) |
 | --- | --- | --- | --- |
@@ -105,7 +105,7 @@ Two further sweeps ran clean in the same session:
 * **Correction Overlay**: `Apply()` 1.45 ms, withdrawal 1.22 ms. A `{}` correction cleared a
   field without touching its siblings, an added entity was readable and enumerable with
   `Exists` true, `GetRaw` still returned base data, `GetProvenance` named the registrar for
-  touched fields and `QuestieTDB` for untouched ones, and withdrawal restored the original
+  touched fields and `QuestieDB` for untouched ones, and withdrawal restored the original
   coordinates exactly. This is the mechanism the gathering-node POLICY row depends on,
   verified end to end.
 
@@ -122,9 +122,9 @@ Read cost and memory from the same session are in
 
 | Class | Vanilla | TBC | Wrath | Cata | Mists | Status | Disposition |
 | --- | ---: | ---: | ---: | ---: | ---: | --- | --- |
-| `Npc.minLevelHealth` value | 10,090 | 18,499 | 29,601 | 46,311 | 45,870 | **POLICY** | Deprecated health data is not stored. QuestieTDB returns the documented `0` placeholder for known NPCs; compiler parity is intentionally not required. |
+| `Npc.minLevelHealth` value | 10,090 | 18,499 | 29,601 | 46,311 | 45,870 | **POLICY** | Deprecated health data is not stored. QuestieDB returns the documented `0` placeholder for known NPCs; compiler parity is intentionally not required. |
 | `Npc.maxLevelHealth` value | 10,106 | 17,403 | 25,406 | 39,712 | 53,533 | **POLICY** | Same policy, with the documented `1` placeholder. |
-| `Object.spawns` absent-vs-value | 24 | 24 | 24 | 24 | 24 | **POLICY** | Gathering nodes. QuestieTDB keeps all 17,191 spawn points; Questie suppresses them with a registered Dynamic Correction. Permanent and correct. |
+| `Object.spawns` absent-vs-value | 24 | 24 | 24 | 24 | 24 | **POLICY** | Gathering nodes. QuestieDB keeps all 17,191 spawn points; Questie suppresses them with a registered Dynamic Correction. Permanent and correct. |
 
 Entity **id sets match exactly** on all five flavours and all four types — zero
 `ID_ONLY_IN_*` rows. Storage, generation and enumeration are not implicated in anything above.
@@ -145,9 +145,9 @@ Entity **id sets match exactly** on all five flavours and all four types — zer
 | Phantom entities from inherited Corrections | 0 / 0 / 1 / 4 / 99 ids, plus inherited fields | The Correction registry derives each file's source expansion and applies Questie's `noNewEntries` rule when a later flavor inherits it. Older Corrections can update surviving rows, but only a field-1/name Correction may create a missing entity. |
 | `Quest.questFlags` value | – / – / 2 / 72 / 72 | Resolved by the pinned Correction re-port. |
 | `Quest.reputationReward` absent-vs-value | – / – / 1 / 1 / 1 | Resolved by the pinned Correction re-port. |
-| `Quest.requiredRaces` value | 1 / 27 / 339 / 693 / 315 | `src/derived/requiredRaces.lua` temporarily transcribes Questie's exact base-flavor inference and reaches zero divergences. Explicit corrections remain the final fix in [#1](https://github.com/Questie/QuestieTDB/issues/1). For active SoD, `src/corrections/Sod/sodRequiredRaces.lua` supplies 25 QuestieTDB-owned Dynamic Correction rows. Alliance and Horde comparisons now match pinned Questie's returned values for all 5,534 SoD quests. |
+| `Quest.requiredRaces` value | 1 / 27 / 339 / 693 / 315 | `src/derived/requiredRaces.lua` temporarily transcribes Questie's exact base-flavor inference and reaches zero divergences. Explicit corrections remain the final fix in [#1](https://github.com/Questie/QuestieDB/issues/1). For active SoD, `src/corrections/Sod/sodRequiredRaces.lua` supplies 25 QuestieDB-owned Dynamic Correction rows. Alliance and Horde comparisons now match pinned Questie's returned values for all 5,534 SoD quests. |
 | WotLK NPC Static Correction order | – / – / 20 / 20 / 20 | The generated manifest now follows Questie: `LoadAutomatics()` first, then hand-authored `Load()`. This removed 16 wrong-value and four absent-vs-value spawn divergences per affected flavor. A real overlap on NPC 30208 guards the order. |
-| TBC prerequisite fields absent-vs-value | – / 3 / – / – / – | Questie's active TBC content phase advanced from 2 to 3, resolving the three compiler divergences for quests 10944 and 11007. `LoadContentPhaseFixes` remains excluded from QuestieTDB under ADR 0007 because content-phase selection is consumer policy. |
+| TBC prerequisite fields absent-vs-value | – / 3 / – / – / – | Questie's active TBC content phase advanced from 2 to 3, resolving the three compiler divergences for quests 10944 and 11007. `LoadContentPhaseFixes` remains excluded from QuestieDB under ADR 0007 because content-phase selection is consumer policy. |
 
 ## Deliberately not reproduced
 
@@ -159,12 +159,12 @@ Entity **id sets match exactly** on all five flavours and all four types — zer
 ## Consumer-owned Dynamic Corrections
 
 The TOC dependency/loading work is already complete. The remaining integration starts with
-`LibQuestieDB` loaded and uses its generic Correction registrar; QuestieTDB has no
+`LibQuestieDB` loaded and uses its generic Correction registrar; QuestieDB has no
 consumer-specific entry point or parameterized Correction API.
 
 Ownership follows the information needed to choose or construct a Correction:
 
-- QuestieTDB owns Corrections based only on provider data or generic WoW facts it can determine
+- QuestieDB owns Corrections based only on provider data or generic WoW facts it can determine
   itself, such as class, race, faction, expansion, and season.
 - Questie owns Corrections based on Questie runtime state or policy, including Darkmoon event
   state, gathering-node suppression, content phases, settings, projections/caches, and
@@ -200,17 +200,17 @@ the composed view and `GetProvenance` reports `"Questie"` for fields Questie cur
 
 For Darkmoon Faire specifically:
 
-- The database coordinates remain valid entity data in QuestieTDB.
+- The database coordinates remain valid entity data in QuestieDB.
 - Questie retains the existing correction tables and chooses among them from `QuestieEvent`
   state.
 - Questie registers the selected NPC Correction through owner `"Questie"` and reapplies when
   the event location changes.
-- QuestieTDB does not receive location booleans, know the schedule, select a location, or expose
+- QuestieDB does not receive location booleans, know the schedule, select a location, or expose
   a Darkmoon-specific API.
 
 Questie-side tests should cover the initial location, every supported transition, withdrawal of
 old coordinates, unchanged `GetRaw` data, and `"Questie"` provenance. Darkmoon behavior itself
-belongs in Questie's tests; QuestieTDB tests only the generic registrar lifecycle.
+belongs in Questie's tests; QuestieDB tests only the generic registrar lifecycle.
 
 Since the data-shaped slot API landed, the captured-table pattern above is only needed for
 corrections large enough to warrant lazy materialization. A state-driven consumer correction is
@@ -230,7 +230,7 @@ See "Data-shaped corrections: `Set`" in docs/api.md.
 
 The first assessed Questie migration converted legacy `QUESTIE_LOCALES_OVERRIDE` entity lookups
 into ordinary entity Corrections. It supported only the two-slot Quest shape and conflicted with
-QuestieTDB's later locale-first read contract. The limitation recorded for
+QuestieDB's later locale-first read contract. The limitation recorded for
 [Jakanis/QuestieUkrainianTranslation commit `0d6e1d3`](https://github.com/Jakanis/QuestieUkrainianTranslation/commit/0d6e1d3474972c54d205e1368689bf31011f2f4b)
 was accurate for that revision. It is retained as migration history, not current compatibility
 guidance.
@@ -246,7 +246,7 @@ released Questie revision or a completed live smoke matrix.
 `l10n.InitializeUILocale` now handles UI strings only. Login Initialization then requires Contract
 Version 2 and a callable `LibQuestieDB.l10n.SetCorrection` before selecting the provider locale and
 calling `l10n.PublishLocaleOverrideEntityNames`. The adapter converts all four optional entity
-lookups to rows keyed by QuestieTDB's numeric entity field indexes. It publishes the four slots as
+lookups to rows keyed by QuestieDB's numeric entity field indexes. It publishes the four slots as
 owner `QuestieLocalesOverride`, name `EntityNames`.
 
 The Quest adapter accepts both `{name, objectives}` and the older
@@ -303,19 +303,19 @@ Each item is behavior that would otherwise be lost by deleting the compiler and 
 
 - [x] **Register the gathering-node Dynamic Correction.** The migration branch registers
       `GatheringNodeDisplayPolicy` under owner `Questie`, preserving the 24-object suppression
-      policy without changing QuestieTDB's provider data.
+      policy without changing QuestieDB's provider data.
 - [x] **Remove entity writes from `l10n`.** Questie retains UI translations, zone names,
       categories, and locale selection. `QuestieDBLocale` owns entity-locale orchestration.
 - [x] **Replace the object-name scan with the provider Name index.** Object ID lookup uses
       `LibQuestieDB.Object.IdsByName`; tooltip registrations retain their consumer-owned set.
 - [x] **Bind `LibQuestieDB.ObjectiveFirst`.** Questie binds all five tables before rich Quest
-      projections run. QuestieTDB scopes their contents by flavor and season as recorded in
+      projections run. QuestieDB scopes their contents by flavor and season as recorded in
       [ADR 0012](./adr/0012-objective-first-applicability.md).
 - [x] **Translate `extraObjectives` descriptions while building Questie's runtime objectives.**
-      QuestieTDB stores row slot `[3]` as the enUS localization key; Questie translates it in the
+      QuestieDB stores row slot `[3]` as the enUS localization key; Questie translates it in the
       consumer projection.
 - [x] **Retain Questie's Darkmoon correction tables.** The migration branch selects and applies
-      them through owner `Questie`; QuestieTDB owns no Darkmoon-specific runtime API or state.
+      them through owner `Questie`; QuestieDB owns no Darkmoon-specific runtime API or state.
 - [x] **Preserve the TBC content-phase prerequisite Correction** for quests 10944 and 11007 as
       Questie-owned policy.
 - [x] **Retain asynchronous missing-Item repair.** The migration branch publishes its results as
@@ -324,17 +324,17 @@ Each item is behavior that would otherwise be lost by deleting the compiler and 
       Zone, XP, Drop, and faction-template data from the provider while keeping Questie's wrapper
       functions and policy. The local payload files remain in the tree but are no longer loaded by
       the flavor TOCs. Mists still combines Mists Wowhead drops with Cata private-server drops.
-- [x] **QuestieTDB's waypoint pass is verified at zero divergences** on all five flavours, so
+- [x] **QuestieDB's waypoint pass is verified at zero divergences** on all five flavours, so
       `QuestieCorrections:PreCompile()` and `OptimizeWaypoints` can be deleted from Questie at
-      switch-over. `Modules/Libs/RamerDouglasPeucker.lua` is byte-copied into QuestieTDB
+      switch-over. `Modules/Libs/RamerDouglasPeucker.lua` is byte-copied into QuestieDB
       (`src/derived/RamerDouglasPeucker.lua`) and re-diffed by `tools/port-corrections.lua`, so
-      it goes too — but note QuestieTDB *transcribes* `OptimizeWaypoints` itself, and the
+      it goes too — but note QuestieDB *transcribes* `OptimizeWaypoints` itself, and the
       reference differential is the only thing guarding that transcription.
-- [x] **Consume QuestieTDB's derived `requiredRaces` values.** The migration branch no longer
+- [x] **Consume QuestieDB's derived `requiredRaces` values.** The migration branch no longer
       contains Questie's inference pass. Base-flavor output and active SoD values are verified.
-      QuestieTDB preserves pinned Questie's 25 SoD results as owned Dynamic Corrections, including
+      QuestieDB preserves pinned Questie's 25 SoD results as owned Dynamic Corrections, including
       masks whose gameplay meaning is questionable because Questie inferred them before applying
-      faction-specific starter changes. [#13](https://github.com/Questie/QuestieTDB/issues/13)
+      faction-specific starter changes. [#13](https://github.com/Questie/QuestieDB/issues/13)
       records the audit; revisiting those masks is deferred unless player reports make it relevant.
 - [ ] **Audit `QuestieCorrections.lua` rather than deleting it.** It is the file where derived
       logic hid; the port copies correction *files* only, so anything in the orchestrator was
@@ -349,44 +349,44 @@ The entity differential is strong, but it does not cover every value Questie con
 cutover audit found provider work outside ordinary entity-field parity:
 
 - Built-in lookup overrides and Titan zhCN translations are implemented with locale-first reads
-  and Translation Corrections ([#14](https://github.com/Questie/QuestieTDB/issues/14)). The isolated
+  and Translation Corrections ([#14](https://github.com/Questie/QuestieDB/issues/14)). The isolated
   five-flavor generation and full gate passed; custom-locale support also passed focused checks.
 - Zone, XP, Drop, and faction-template support data is synchronized and covered by a semantic drift
-  gate ([#15](https://github.com/Questie/QuestieTDB/issues/15)). The current Questie checkout consumes
+  gate ([#15](https://github.com/Questie/QuestieDB/issues/15)). The current Questie checkout consumes
   it through `LibQuestieDB.Support`; consumer tests and all five-flavor wrapper checks passed.
 - Titan corrections require both the Wrath flavor and active season 109
-  ([#16](https://github.com/Questie/QuestieTDB/issues/16)). The complete all-flavor matrix and
+  ([#16](https://github.com/Questie/QuestieDB/issues/16)). The complete all-flavor matrix and
   accepted-record review passed, and the GitHub issue is closed.
 - `ObjectiveFirst` now has Source, Baked, and stripped-package parity under the documented
-  expansion and season boundary ([#17](https://github.com/Questie/QuestieTDB/issues/17),
+  expansion and season boundary ([#17](https://github.com/Questie/QuestieDB/issues/17),
   [ADR 0012](./adr/0012-objective-first-applicability.md)).
 - Differential coverage needs to include side channels and a working SoD oracle
-  ([#19](https://github.com/Questie/QuestieTDB/issues/19)).
+  ([#19](https://github.com/Questie/QuestieDB/issues/19)).
 
 ## Tracked on GitHub
 
-Work is tracked at [`Questie/QuestieTDB`](https://github.com/Questie/QuestieTDB/issues).
+Work is tracked at [`Questie/QuestieDB`](https://github.com/Questie/QuestieDB/issues).
 This ledger records the implementation status even when the corresponding GitHub issue has not
 yet been closed.
 
 | Issue | Work | Status here |
 | --- | --- | --- |
-| [#1](https://github.com/Questie/QuestieTDB/issues/1) | Materialize the derived `requiredRaces` patch | Open |
-| [#2](https://github.com/Questie/QuestieTDB/issues/2) | Triage the three unexplained divergence classes | Resolved by the pinned re-port and WotLK order fix |
-| [#3](https://github.com/Questie/QuestieTDB/issues/3) | Decide whether the overlay quantizes coordinates | Resolved by ADR 0006: production stays raw; only base values adapt for the compiler differential |
-| [#4](https://github.com/Questie/QuestieTDB/issues/4) | Validator baseline is stale, 78 new findings | Reviewed and refreshed in `validator-baseline-review.md` |
-| [#5](https://github.com/Questie/QuestieTDB/issues/5) | Baked artifacts ship static correction bodies | Implemented by package-time stripping; live-client acceptance remains with #6 |
-| [#6](https://github.com/Questie/QuestieTDB/issues/6) | Mists in-client acceptance at 97.7 MiB | Open |
-| [#7](https://github.com/Questie/QuestieTDB/issues/7) | Differential missing from `release.yml` | Resolved; release publication depends on the matrix |
-| [#8](https://github.com/Questie/QuestieTDB/issues/8) | Pin the Questie input checkout | Resolved by `QUESTIE_COMMIT` and shared workflow checkout |
-| [#9](https://github.com/Questie/QuestieTDB/issues/9) | Decide where corrections are authored after phase 13 | Open |
-| [#10](https://github.com/Questie/QuestieTDB/issues/10) | Institutionalize the live-client probe ritual | Open |
-| [#11](https://github.com/Questie/QuestieTDB/issues/11) | Decide the decoded-cache budget | Open |
-| [#12](https://github.com/Questie/QuestieTDB/issues/12) | Distribution polish: flavor table, wrong-flavor no-op, `builtAt` | Open |
-| [#13](https://github.com/Questie/QuestieTDB/issues/13) | Preserve active-SoD `requiredRaces` values | Implemented with 25 owned Dynamic Correction rows; gameplay-policy review deferred unless relevant |
-| [#14](https://github.com/Questie/QuestieTDB/issues/14) | Import lookup overrides and Titan zhCN corrections | Open |
-| [#15](https://github.com/Questie/QuestieTDB/issues/15) | Synchronize support data and add drift validation | Implemented in `5e0fc2c`; GitHub issue remains open |
-| [#16](https://github.com/Questie/QuestieTDB/issues/16) | Restrict Titan corrections to Wrath | Closed; full all-flavor matrix passed |
-| [#17](https://github.com/Questie/QuestieTDB/issues/17) | Keep `ObjectiveFirst` flavor-scoped in Source mode | Implemented and validated; GitHub issue remains open |
-| [#18](https://github.com/Questie/QuestieTDB/issues/18) | Former parameterized-correction follow-up | Closed — superseded by ADR 0007 |
-| [#19](https://github.com/Questie/QuestieTDB/issues/19) | Cover correction side channels and SoD in differential tests | Open |
+| [#1](https://github.com/Questie/QuestieDB/issues/1) | Materialize the derived `requiredRaces` patch | Open |
+| [#2](https://github.com/Questie/QuestieDB/issues/2) | Triage the three unexplained divergence classes | Resolved by the pinned re-port and WotLK order fix |
+| [#3](https://github.com/Questie/QuestieDB/issues/3) | Decide whether the overlay quantizes coordinates | Resolved by ADR 0006: production stays raw; only base values adapt for the compiler differential |
+| [#4](https://github.com/Questie/QuestieDB/issues/4) | Validator baseline is stale, 78 new findings | Reviewed and refreshed in `validator-baseline-review.md` |
+| [#5](https://github.com/Questie/QuestieDB/issues/5) | Baked artifacts ship static correction bodies | Implemented by package-time stripping; live-client acceptance remains with #6 |
+| [#6](https://github.com/Questie/QuestieDB/issues/6) | Mists in-client acceptance at 97.7 MiB | Open |
+| [#7](https://github.com/Questie/QuestieDB/issues/7) | Differential missing from `release.yml` | Resolved; release publication depends on the matrix |
+| [#8](https://github.com/Questie/QuestieDB/issues/8) | Pin the Questie input checkout | Resolved by `QUESTIE_COMMIT` and shared workflow checkout |
+| [#9](https://github.com/Questie/QuestieDB/issues/9) | Decide where corrections are authored after phase 13 | Open |
+| [#10](https://github.com/Questie/QuestieDB/issues/10) | Institutionalize the live-client probe ritual | Open |
+| [#11](https://github.com/Questie/QuestieDB/issues/11) | Decide the decoded-cache budget | Open |
+| [#12](https://github.com/Questie/QuestieDB/issues/12) | Distribution polish: flavor table, wrong-flavor no-op, `builtAt` | Open |
+| [#13](https://github.com/Questie/QuestieDB/issues/13) | Preserve active-SoD `requiredRaces` values | Implemented with 25 owned Dynamic Correction rows; gameplay-policy review deferred unless relevant |
+| [#14](https://github.com/Questie/QuestieDB/issues/14) | Import lookup overrides and Titan zhCN corrections | Open |
+| [#15](https://github.com/Questie/QuestieDB/issues/15) | Synchronize support data and add drift validation | Implemented in `5e0fc2c`; GitHub issue remains open |
+| [#16](https://github.com/Questie/QuestieDB/issues/16) | Restrict Titan corrections to Wrath | Closed; full all-flavor matrix passed |
+| [#17](https://github.com/Questie/QuestieDB/issues/17) | Keep `ObjectiveFirst` flavor-scoped in Source mode | Implemented and validated; GitHub issue remains open |
+| [#18](https://github.com/Questie/QuestieDB/issues/18) | Former parameterized-correction follow-up | Closed — superseded by ADR 0007 |
+| [#19](https://github.com/Questie/QuestieDB/issues/19) | Cover correction side channels and SoD in differential tests | Open |

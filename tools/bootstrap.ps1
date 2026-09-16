@@ -1,6 +1,6 @@
 # tools/bootstrap.ps1
 #
-# Windows counterpart of tools/bootstrap.sh. Installs generated QuestieTDB artifacts into a
+# Windows counterpart of tools/bootstrap.sh. Installs generated QuestieDB artifacts into a
 # developer's AddOns folder. A downloader, not a build tool — no Lua, no toolchain.
 #
 # All flavors are downloaded, so switching test clients needs no re-bootstrap.
@@ -12,7 +12,7 @@
 param(
     [Parameter(Mandatory = $true)][string] $AddOns,
     [string] $Tag = "latest",
-    [string] $Repo = "Questie/QuestieTDB"
+    [string] $Repo = "Questie/QuestieDB"
 )
 
 $ErrorActionPreference = "Stop"
@@ -27,7 +27,7 @@ $base = if ($Tag -eq "latest") {
     "https://github.com/$Repo/releases/download/$Tag"
 }
 
-$work = Join-Path ([System.IO.Path]::GetTempPath()) ("questietdb-" + [guid]::NewGuid())
+$work = Join-Path ([System.IO.Path]::GetTempPath()) ("questiedb-" + [guid]::NewGuid())
 New-Item -ItemType Directory -Path $work | Out-Null
 
 try {
@@ -55,22 +55,22 @@ try {
         }
     }
 
-    $target = Join-Path $AddOns "QuestieTDB"
+    $target = Join-Path $AddOns "QuestieDB"
     New-Item -ItemType Directory -Force -Path $target | Out-Null
     Write-Host "bootstrap: all checksums verified, installing into $target"
 
     # Remove only the generated TOCs. Everything else may be a working clone.
-    Get-ChildItem -Path $target -Filter "QuestieTDB_*.toc" -ErrorAction SilentlyContinue |
+    Get-ChildItem -Path $target -Filter "QuestieDB_*.toc" -ErrorAction SilentlyContinue |
         Remove-Item -Force
 
     $extract = Join-Path $work "extract"
     foreach ($artifact in $manifest.artifacts) {
         Expand-Archive -Path (Join-Path $work $artifact.file) -DestinationPath $extract -Force
     }
-    Copy-Item -Path (Join-Path $extract "QuestieTDB\*") -Destination $target -Recurse -Force
+    Copy-Item -Path (Join-Path $extract "QuestieDB\*") -Destination $target -Recurse -Force
 
     Write-Host "bootstrap: installed. Suffixed TOCs present:"
-    Get-ChildItem -Path $target -Filter "QuestieTDB_*.toc" | ForEach-Object { Write-Host "  $($_.Name)" }
+    Get-ChildItem -Path $target -Filter "QuestieDB_*.toc" | ForEach-Object { Write-Host "  $($_.Name)" }
     Write-Host "bootstrap: the client will now use Baked mode. Delete those TOCs to return to Source mode."
 }
 finally {

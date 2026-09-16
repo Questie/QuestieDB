@@ -1,7 +1,7 @@
 #!/usr/bin/env lua
 -- tools/port-corrections.lua
 --
--- Mechanical port of Questie's corrections into QuestieTDB.
+-- Mechanical port of Questie's corrections into QuestieDB.
 --
 -- Two jobs, both mechanical on purpose:
 --
@@ -245,7 +245,7 @@ end
 ---
 --- `static` names the functions whose output is data truth — foldable during Generation.
 --- `dynamic` names functions that depend only on provider-owned data or generic character and
---- game facts QuestieTDB determines itself, and therefore go through the Correction Overlay.
+--- game facts QuestieDB determines itself, and therefore go through the Correction Overlay.
 ---
 --- Blacklists, ContentPhases, Holidays and Titan quest tags are deliberately absent. Hiding,
 --- phase selection and semantic quest tags are consumer policy, not entity data. See
@@ -315,7 +315,7 @@ local FILES = {
   -- Titan Reforged
   --
   -- Questie's split compiler calls the `Load*` providers static because it builds a separate
-  -- Titan cache. QuestieTDB has one Wrath artifact, so every Titan function is Dynamic over
+  -- Titan cache. QuestieDB has one Wrath artifact, so every Titan function is Dynamic over
   -- the Wrath base, exactly like SoD over Era. The Titan/ directory supplies one file-level
   -- Wrath-plus-season-109 gate, and the declared order preserves base rows before overrides.
   { src = "titanReforgedQuestFixes.lua", dst = "Titan/titanReforgedQuestFixes.lua",

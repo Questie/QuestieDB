@@ -29,7 +29,7 @@ return function(check, questiePath)
     check(#differences == control.differences, control.name .. " self-proof: " .. table.concat(differences, "; "))
   end
 
-  local sourceFiles = fidelity.tocFiles("QuestieTDB.toc")
+  local sourceFiles = fidelity.tocFiles("QuestieDB.toc")
   local vanilla, scopedNamespace, env = fidelity.loadProvider(sourceFiles, "Vanilla", 0, "source")
   check(vanilla.killCreditObjectiveFirst[52] == nil, "Vanilla excludes Cata quest 52")
   check(vanilla.itemObjectiveFirst[503] == true, "Vanilla retains its own quest 503")
@@ -37,7 +37,7 @@ return function(check, questiePath)
   check(lib.deepEqual(sodNamespace.Meta.Quest, dofile("src/meta/questMeta.lua")),
     "lightweight correction loading uses the real Quest schema")
   local requiredRacesProvider
-  for _, entry in ipairs(sodNamespace.Corrections.Select({ owner = "QuestieTDB", datatype = "Quest", dynamic = true })) do
+  for _, entry in ipairs(sodNamespace.Corrections.Select({ owner = "QuestieDB", datatype = "Quest", dynamic = true })) do
     if entry.name == "Sod:sodRequiredRaces" then requiredRacesProvider = entry.func end
   end
   check(type(requiredRacesProvider) == "function",
@@ -75,7 +75,7 @@ return function(check, questiePath)
     local remove = compat.Install(scopedNamespace.flavor)
     local marker = assert(loadfile("src/corrections/scopes/" .. case.marker .. ".lua"))
     setfenv(marker, env)
-    marker("QuestieTDB", scopedNamespace)
+    marker("QuestieDB", scopedNamespace)
     env.QuestieLoader:ImportModule("QuestieCorrections").eventObjectiveFirst[2147483647] = true
     check((compat.objectiveFirst.eventObjectiveFirst[2147483647] == true) == case.admitted,
       case.flavor .. " season " .. case.season .. " admits " .. case.marker .. " hints correctly")

@@ -1,11 +1,11 @@
-# QuestieTDB
+# QuestieDB
 
 The database Questie consumes. Stores entity data as WoW addon TOC metadata, readable at
 runtime with no file I/O, and owns the offline generator that produces it.
 
-QuestieTDB is a separate project from Questie, with its own release cycle and consumers.
+QuestieDB is a separate project from Questie, with its own release cycle and consumers.
 Its domain is nonetheless *Questie's data model* — the schema, including Questie-specific
-fields, is what QuestieTDB stores and serves.
+fields, is what QuestieDB stores and serves.
 
 ## Language
 
@@ -83,8 +83,8 @@ A Correction folded into the TOC metadata store during Generation. Never shipped
 _Avoid_: Compile-time correction, baked correction
 
 **Dynamic Correction**:
-A Correction applied at query time. QuestieTDB-owned Dynamic Corrections may depend only on
-provider-owned data or generic character/game facts QuestieTDB determines itself: class, race,
+A Correction applied at query time. QuestieDB-owned Dynamic Corrections may depend only on
+provider-owned data or generic character/game facts QuestieDB determines itself: class, race,
 faction, expansion, and season. A consumer registers its own Dynamic Corrections for
 consumer-owned runtime state or policy.
 _Avoid_: Runtime correction, conditional fix
@@ -153,7 +153,7 @@ _Avoid_: Factory, thunk, generator (collides with the offline Generation vocabul
 **Caller-owned value**:
 Every table returned from an entity read is a fresh, mutable, deeply independent copy the
 caller owns — Questie's original per-call semantics (ADR 0003 D10, revised). `table.freeze`
-applies only to QuestieTDB-internal shared structures.
+applies only to QuestieDB-internal shared structures.
 _Avoid_: Frozen value (the retired original contract), shared value, borrowed table
 
 **Composed enumeration**:
@@ -198,7 +198,7 @@ retired `-pi` sibling's independence caught during the merge program.
 _Avoid_: Baseline (that word belongs to the validators), reference dump
 
 **Compiler comparison adapter**:
-The migration-only projection that converts QuestieTDB base coordinates to Questie's legacy
+The migration-only projection that converts QuestieDB base coordinates to Questie's legacy
 12-bit read values immediately before the compiler differential. It never runs in Generation
 or runtime reads and retires with the compiler oracle (ADR 0006).
 _Avoid_: Production quantizer, compatibility mode
@@ -210,9 +210,9 @@ _Avoid_: Test profile, mock player
 
 ## Boundary with Questie
 
-**QuestieTDB owns what is true about game entities. Questie owns what to do with that truth.**
+**QuestieDB owns what is true about game entities. Questie owns what to do with that truth.**
 
-A Correction fixes what is true — a wrong coordinate, a missing prerequisite. QuestieTDB may
+A Correction fixes what is true — a wrong coordinate, a missing prerequisite. QuestieDB may
 select a Dynamic Correction only from provider-owned data or generic character/game facts it
 determines itself: class, race, faction, expansion, and season. A Correction selected or
 constructed from consumer-owned runtime state or policy belongs to that consumer.

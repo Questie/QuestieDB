@@ -198,7 +198,7 @@ Use the `wow-lua-bridge` skill. A `/reload` re-reads TOC metadata on build 69547
 client restart is needed after regenerating.
 
 - Generate Vanilla, reload, confirm `LibQuestieDB.readMode == "baked"` and
-  `C_AddOns.GetAddOnMetadata("QuestieTDB", "X-Contract-Version") == "2"`.
+  `C_AddOns.GetAddOnMetadata("QuestieDB", "X-Contract-Version") == "2"`.
 - Run the harness in `docs/read-performance.md` §8 and record the results as a dated section
   of that document, extending the existing 2026-09-03 findings rather than duplicating them:
   cold and warm `Quest.name`, `Quest.requiredLevel`, `Quest.objectives`, `Npc.spawns`; the

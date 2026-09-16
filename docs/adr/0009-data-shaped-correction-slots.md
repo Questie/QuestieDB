@@ -20,7 +20,7 @@ every state change. Building Questie's integration on that shape exposed ceremon
 - Every apply dropped every datatype's decoded read cache, composed ID map, and Name index,
   even when a single Item row changed.
 
-`loadOrder` earns its keep only inside QuestieTDB's own layer, where SoD must beat Era and
+`loadOrder` earns its keep only inside QuestieDB's own layer, where SoD must beat Era and
 hand-maintained sets must beat generated ones across ~30 ported files. No consumer correction
 orders against another; a consumer's real operations are "publish this table", "replace it",
 and "withdraw it".
@@ -37,7 +37,7 @@ separate `Apply()`. Slots carry no loadOrder; within an owner they take effect i
 order, before explicitly numbered function entries. Rows flow through the same normalization,
 constant-field, and type validation as function results: one recompose path, two entry shapes.
 
-Function-shaped registration stays, for the two users that need it: QuestieTDB's own ported
+Function-shaped registration stays, for the two users that need it: QuestieDB's own ported
 sets (the port pipeline produces functions, Static Corrections must stay functions for
 Generation, and the expansion load-order windows do real cross-file work) and any third party
 with a table large enough to want lazy materialization and batch apply. A name already

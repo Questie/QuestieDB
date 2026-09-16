@@ -39,23 +39,23 @@ function runtime.build()
     "src/corrections/registry.lua",
   }
   for _, path in ipairs(files) do
-    execute(path, "QuestieTDB", LibQuestieDB)
+    execute(path, "QuestieDB", LibQuestieDB)
   end
 
   -- Correction support is optional: the tracer bullet and a bare data round-trip work without
   -- any corrections ported, and saying so beats failing on a missing file.
   if lib.fileExists("src/corrections/enum/constants.lua") then
-    execute("src/corrections/enum/constants.lua", "QuestieTDB", LibQuestieDB)
-    execute("src/corrections/compat.lua", "QuestieTDB", LibQuestieDB)
-    execute("src/corrections/manifest.lua", "QuestieTDB", LibQuestieDB)
-    execute("src/corrections/register.lua", "QuestieTDB", LibQuestieDB)
+    execute("src/corrections/enum/constants.lua", "QuestieDB", LibQuestieDB)
+    execute("src/corrections/compat.lua", "QuestieDB", LibQuestieDB)
+    execute("src/corrections/manifest.lua", "QuestieDB", LibQuestieDB)
+    execute("src/corrections/register.lua", "QuestieDB", LibQuestieDB)
   end
 
   -- Derived Passes share this namespace with the correction registry on purpose: Generation
   -- and Source mode must run the same pass code over the same corrected tables, exactly as
   -- they already share ApplyStaticToEntities. See docs/adr/0004-derived-passes.md.
   for _, path in ipairs(config.derivedFiles) do
-    execute(path, "QuestieTDB", LibQuestieDB)
+    execute(path, "QuestieDB", LibQuestieDB)
   end
 
   return LibQuestieDB
@@ -86,7 +86,7 @@ function runtime.loadCorrections(LibQuestieDB, flavor)
     if applies then
       local path = "src/corrections/" .. spec.file
       if lib.fileExists(path) then
-        execute(path, "QuestieTDB", LibQuestieDB)
+        execute(path, "QuestieDB", LibQuestieDB)
         loadedFiles = loadedFiles + 1
       end
     end

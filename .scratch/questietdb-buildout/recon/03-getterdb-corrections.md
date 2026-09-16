@@ -1223,7 +1223,7 @@ Five parallel members, mechanically derived from one another:
 | `ObjectMeta` (`ObjectMeta.lua:63`) | `{}` → `ObjectMeta.combine = nil` | none |
 
 This packing is an artifact of the `.lua-table` intermediate format. `DESIGN.md:107` rejects
-that stage outright ("The `.lua-table` intermediate stage … QuestieTDB goes raw → corrections
+that stage outright ("The `.lua-table` intermediate stage … QuestieDB goes raw → corrections
 → TOC in one pass"), so `combine`/`combineValues` should **not** be ported.
 
 ### 8.4 Verdict per member (against `DESIGN.md`)

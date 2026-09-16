@@ -1,6 +1,6 @@
 -- generator/schema.lua
 --
--- Derives QuestieTDB's field table from Questie's schema rather than hand-maintaining a copy.
+-- Derives QuestieDB's field table from Questie's schema rather than hand-maintaining a copy.
 --
 -- A hand-written schema is a second version of someone else's schema, and it drifts — observed,
 -- not theoretical: the `Getters` prototype sits at 32 quest fields against Questie's 36, having

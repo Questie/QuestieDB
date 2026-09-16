@@ -767,7 +767,7 @@ anywhere. Classic and MoP (the two explicitly requested) are covered above for a
 Classic quest/npc/object agree, Classic item is missing `teachesSpell`; MoP quest/npc agree,
 MoP item is missing `teachesSpell`, MoP object is missing `waypoints`.
 
-**Conclusion for QuestieTDB: trust `Database/<entity>DB.lua` only. Ignore the copies embedded
+**Conclusion for QuestieDB: trust `Database/<entity>DB.lua` only. Ignore the copies embedded
 in the data files.**
 
 ---
@@ -874,7 +874,7 @@ combined sub-order `flags(1), foodType(2), itemLevel(3), requiredLevel(4), ammoT
 2. **`teachesSpell` (item 16) has zero data anywhere.** Emitting it is safe but pointless today.
 3. **Object `waypoints` (7) and item `relatedQuests` (15) have no raw data** — corrections only
    (3 and 188 sites respectively).
-4. **Quest fields 27–36 have no raw data** — corrections only. If QuestieTDB is generated from
+4. **Quest fields 27–36 have no raw data** — corrections only. If QuestieDB is generated from
    raw `*Data` alone, ~10 quest fields will be silently empty.
 5. **`MoP/mopNpcDB.lua` has two blank lines** (59162, 59471) inside the data blob. Line-based
    parsers must skip them; `loadstring` does not care.

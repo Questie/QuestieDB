@@ -39,7 +39,7 @@ local function getStored(key)
     if not part then
       -- A truncated chunk set is corruption, not a missing value. Say so rather than
       -- silently returning a short string.
-      error(("QuestieTDB: metadata key %s declares %d parts but part %d is missing")
+      error(("QuestieDB: metadata key %s declares %d parts but part %d is missing")
         :format(key, parts, i), 0)
     end
     buffer[i] = part
@@ -65,7 +65,7 @@ function baked.CreateBackend(meta)
   -- The ID header is the only eager entity decode. Existence checks stay plain table lookups
   -- after addon load, while Scalar rows and table values remain proportional to what is read.
   local encodedIds = getStored(prefix .. "IDS")
-  if not encodedIds then error("QuestieTDB: missing metadata key " .. prefix .. "IDS", 0) end
+  if not encodedIds then error("QuestieDB: missing metadata key " .. prefix .. "IDS", 0) end
   local idList = Encoding.DeserializeCBOR(
     Encoding.DecompressString(Encoding.DecodeBase64(encodedIds), 1))
   local idMap = {}

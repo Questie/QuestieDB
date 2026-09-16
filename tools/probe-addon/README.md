@@ -43,7 +43,7 @@ Answers whether a base64 blob survives a TOC line and whether the offline
 `BlizzardCBOR.lua` encoder and the client's `C_EncodingUtil.DeserializeCBOR` agree on real
 data. Generated on demand, never committed: the output is 2.3 MB.
 
-Run from the QuestieTDB root:
+Run from the QuestieDB root:
 
 ```sh
 lua5.1 tools/probe-addon/gen-cbor-probe.lua <outdir>  # quests.cbor + data.lua

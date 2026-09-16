@@ -1,6 +1,6 @@
-# Work package: QuestieTDB issue #13, SoD `requiredRaces`
+# Work package: QuestieDB issue #13, SoD `requiredRaces`
 
-Issue: https://github.com/Questie/QuestieTDB/issues/13
+Issue: https://github.com/Questie/QuestieDB/issues/13
 
 Status: ready for implementation after a focused data audit.
 
@@ -16,9 +16,9 @@ Implement and test this work in:
 /home/logon/projects/Questie-clones/Questie-toc/QuestieTDB
 ```
 
-Use QuestieTDB's sibling `../Questie` checkout as the reference implementation. Its revision must match `QuestieTDB/QUESTIE_COMMIT`. Do not use this work-package checkout as the data oracle because its old database and compiler have already been removed.
+Use QuestieDB's sibling `../Questie` checkout as the reference implementation. Its revision must match `QuestieDB/QUESTIE_COMMIT`. Do not use this work-package checkout as the data oracle because its old database and compiler have already been removed.
 
-Read `QuestieTDB/AGENTS.md`, `DESIGN.md`, and the relevant ADRs before editing. Do not fetch, reset, or otherwise change the pinned Questie checkout as part of this work.
+Read `QuestieDB/AGENTS.md`, `DESIGN.md`, and the relevant ADRs before editing. Do not fetch, reset, or otherwise change the pinned Questie checkout as part of this work.
 
 ## Current baseline
 
@@ -34,7 +34,7 @@ The task is not to replace the working base-flavor pass or complete issue #1's e
 
 ## Scope
 
-1. Repair or add the focused SoD oracle needed to compare Questie's final composed Quest and Npc data with QuestieTDB under an active SoD persona.
+1. Repair or add the focused SoD oracle needed to compare Questie's final composed Quest and Npc data with QuestieDB under an active SoD persona.
 2. Audit every active SoD quest whose final `requiredRaces` is absent or zero using Questie's exact current rule:
    - inspect creature starters in `startedBy[1]` only;
    - read their final corrected `Npc.friendlyToFaction` values;
@@ -97,7 +97,7 @@ Completion requires a zero unaccepted `Quest.requiredRaces` difference for the a
 
 ## Validation
 
-Run focused checks from the QuestieTDB root:
+Run focused checks from the QuestieDB root:
 
 ```sh
 lua5.1 test.lua derived-required-races corrections overlay personas correction-fidelity
@@ -113,7 +113,7 @@ Before completion, run the repository's full gate against the pinned oracle:
 tools/check.sh all --questie=../Questie
 ```
 
-`tools/check.sh all` is heavy, generates artifacts, and writes under the checkout. Run it only in an isolated QuestieTDB checkout or output arrangement that cannot alter a symlinked daily-driver addon. Get confirmation first if the checkout's safety is unclear.
+`tools/check.sh all` is heavy, generates artifacts, and writes under the checkout. Run it only in an isolated QuestieDB checkout or output arrangement that cannot alter a symlinked daily-driver addon. Get confirmation first if the checkout's safety is unclear.
 
 Also run:
 
@@ -123,7 +123,7 @@ git diff --check
 
 ## Deliverables
 
-- The implementation and focused tests in QuestieTDB.
+- The implementation and focused tests in QuestieDB.
 - A complete pre-fix mismatch inventory and the final zero-difference result.
 - A short note explaining the chosen representation and correction ownership.
 - Focused test and full-gate command results in the handoff.

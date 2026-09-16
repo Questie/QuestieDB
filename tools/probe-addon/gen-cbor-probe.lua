@@ -1,5 +1,5 @@
 -- Offline half of the CBOR transport probe. Lua 5.1.
--- Extracts the Classic quest table from QuestieTDB source data, encodes it with the
+-- Extracts the Classic quest table from QuestieDB source data, encodes it with the
 -- verified BlizzardCBOR encoder, and writes: quests.cbor (raw bytes) and data.lua
 -- (the same table as a Lua literal, the ground truth the client compares against).
 local OUT = assert(arg[1], "usage: lua5.1 tools/probe-addon/gen-cbor-probe.lua <output-dir>")

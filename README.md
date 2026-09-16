@@ -1,4 +1,4 @@
-# QuestieTDB
+# QuestieDB
 
 The database Questie consumes. Stores entity data as WoW addon TOC metadata, readable at
 runtime with no file I/O, and owns the offline generator that produces it.
@@ -12,13 +12,13 @@ return the same base entity values.
 
 ## Two modes, and the client picks
 
-The client searches for flavour-suffixed TOCs first and falls back to `QuestieTDB.toc` only if
+The client searches for flavour-suffixed TOCs first and falls back to `QuestieDB.toc` only if
 none are found. That rule selects the mode at no cost: **a generated artifact wins simply by
 existing.**
 
 | | Source mode | Baked mode |
 | --- | --- | --- |
-| TOC | `QuestieTDB.toc` (committed) | `QuestieTDB_Vanilla.toc` etc. (generated, gitignored) |
+| TOC | `QuestieDB.toc` (committed) | `QuestieDB_Vanilla.toc` etc. (generated, gitignored) |
 | Reads resolve from | raw entity data | CBOR rows and tables in the TOC metadata store |
 | Static Corrections | applied live | already folded in |
 | Base translations | unavailable | generated Localization blocks |
@@ -36,7 +36,7 @@ fails before writing output if the checkout or required lookup files do not matc
 ## For consumers
 
 Start at **[`docs/api.md`](docs/api.md)**. It is written so a third-party addon author needs no
-source reading. Release zips also include LuaLS declarations under `QuestieTDB/Types`; point the
+source reading. Release zips also include LuaLS declarations under `QuestieDB/Types`; point the
 consumer's `workspace.library` at that folder for completion and diagnostics.
 
 ```lua
@@ -75,14 +75,14 @@ Three behaviours to internalise before writing anything:
 Use the root command for generation and validation workflows:
 
 ```sh
-./questietdb generate                    # generate every flavor
-./questietdb generate Vanilla            # generate one flavor
-./questietdb check Vanilla               # standard validation bundle for one flavor
-./questietdb verify equivalence Vanilla Mists
-./questietdb all                         # Generation, standard gates, Golden, and unit tests
+./questiedb generate                    # generate every flavor
+./questiedb generate Vanilla            # generate one flavor
+./questiedb check Vanilla               # standard validation bundle for one flavor
+./questiedb verify equivalence Vanilla Mists
+./questiedb all                         # Generation, standard gates, Golden, and unit tests
 ```
 
-Run `./questietdb --help` for every gate and option. It requires Bash 5.1 or newer and selects
+Run `./questiedb --help` for every gate and option. It requires Bash 5.1 or newer and selects
 `lua5.1`, or a `lua` command that reports Lua 5.1. `LUA` and `--lua=` can select another Lua
 5.1-compatible executable explicitly. The `freeze` gate supports Vanilla and Mists.
 
@@ -119,7 +119,7 @@ resetting an existing one.
 The generator validates that checkout's commit but never fetches, switches, or cleans it.
 `generate.lua toc` and `--no-l10n` do not fetch Questie.
 
-Automatic fetching is limited to direct `generate.lua` invocations. The `./questietdb` check
+Automatic fetching is limited to direct `generate.lua` invocations. The `./questiedb` check
 runner, Reconstruction, imports, and compiler differential still default to `../Questie`.
 Point their `--questie` or `QUESTIE_PATH` override at `.cache/questie/<sha>` to reuse this checkout.
 
@@ -186,7 +186,7 @@ back. Preview never becomes GitHub's latest stable release. CI still provides pe
 
 To publish a real release:
 
-1. Set `## Version: X.X.X` in `QuestieTDB.toc` and commit it to the default branch. Use three
+1. Set `## Version: X.X.X` in `QuestieDB.toc` and commit it to the default branch. Use three
    numeric components without leading zeros. TOC regeneration preserves this maintained value.
 2. Open **Actions → Release → Run workflow**, select the default branch, and check `release`.
 3. Leave `override` unchecked. An existing `vX.X.X` tag or release fails before building, and
@@ -197,7 +197,7 @@ Use it only to repair a release; normally bump the version instead. GitHub-immut
 cannot be overridden. Repository-wide release immutability is incompatible with rolling preview.
 
 Baked addon versions are `X.X.X` for full releases and `X.X.X-dev.<short SHA>` otherwise.
-Local Generation follows the same rule; `QUESTIETDB_RELEASE=true` selects the full-release form.
+Local Generation follows the same rule; `QUESTIEDB_RELEASE=true` selects the full-release form.
 The manifest and TOCs retain the exact producing and Questie input commits.
 
 The release flow lives in [`.github/workflows/release.yml`](.github/workflows/release.yml):
@@ -234,7 +234,7 @@ Run the focused offline version checks with `lua5.1 tools/version.test.lua`.
 Entity schema, Corrections, and support data derive from Questie and are committed here, so
 drift is a build failure rather than a discovery months later. Entity translations remain
 direct Generation inputs from the pinned Questie checkout during migration. Their import
-adapter isolates Questie's executable lookup and whole-row override formats from QuestieTDB's
+adapter isolates Questie's executable lookup and whole-row override formats from QuestieDB's
 three-part localization model, so transferring the authored files later does not require a
 runtime or storage change. CI runs the fidelity checks and fails on any difference.
 
@@ -278,7 +278,7 @@ check out that commit, then review schema drift, the Correction re-port, validat
 differential, and Golden snapshots in the same working tree. Automation reads the same pin
 through `.github/actions/checkout-questie`.
 
-The port requires Questie's four Titan entity files under `Database/Corrections/`. QuestieTDB
+The port requires Questie's four Titan entity files under `Database/Corrections/`. QuestieDB
 ports them under `src/corrections/Titan/` and applies every provider dynamically over the Wrath
 base, gated by Wrath plus active season 109. Titan quest tags and availability blacklists remain
 in Questie because they are consumer policy.
@@ -288,8 +288,8 @@ in Questie because they are consumer policy.
 ## Layout
 
 ```text
-QuestieTDB.toc            base TOC — source mode (committed)
-QuestieTDB_<Flavor>.toc   generated, baked mode (gitignored)
+QuestieDB.toc            base TOC — source mode (committed)
+QuestieDB_<Flavor>.toc   generated, baked mode (gitignored)
 
 src/
   config.lua              flavors, entity types, file lists, l10n block contract
@@ -304,7 +304,7 @@ src/
 data/                     raw entity data
 support/                  zones, quest XP, drop tables, faction templates
 
-questietdb                contributor command for generation and validation
+questiedb                contributor command for generation and validation
 generate.lua              data + Static Corrections -> TOC
 verify.lua                round-trip verification
 equivalence.lua           source/baked equivalence, every read form, self-proving

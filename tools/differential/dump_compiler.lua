@@ -2,11 +2,11 @@
 --
 -- Dump **Questie's compiler** reads for one flavor as canonical TSV — the reference
 -- implementation this database replaces. These values are already compiler reads: never pass
--- them through QuestieTDB's legacy-coordinate adapter a second time.
+-- them through QuestieDB's legacy-coordinate adapter a second time.
 --
 -- DESIGN.md phase 6 called for a compiled/TOC differential and gave it a deadline: the
 -- compiler is the reference implementation, so its output must be captured before it is
--- deleted. `golden.py` currently snapshots QuestieTDB's *own* source-mode reads, which can
+-- deleted. `golden.py` currently snapshots QuestieDB's *own* source-mode reads, which can
 -- only catch drift from itself. This dumper supplies the missing independent oracle.
 --
 -- It runs Questie's real compile path — the one `cli/validate-era.lua` already drives
@@ -17,7 +17,7 @@
 -- Usage (cwd MUST be the Questie checkout root, because Questie's loadTOC resolves
 -- relative paths):
 --
---   cd ../Questie && lua5.1 ../QuestieTDB/tools/differential/dump_compiler.lua Vanilla out.tsv
+--   cd ../Questie && lua5.1 ../QuestieDB/tools/differential/dump_compiler.lua Vanilla out.tsv
 --
 -- Options:
 --   --season=SoD             compile with Season of Discovery active
@@ -57,7 +57,7 @@ local canon = dofile(selfDir .. "/canon.lua")
 --
 -- TOC, project id and build info are copied verbatim from Questie's own cli/validate-*.lua
 -- so this dumper compiles exactly what Questie's CI compiles. Deviating here would make the
--- oracle disagree with upstream for a reason that has nothing to do with QuestieTDB.
+-- oracle disagree with upstream for a reason that has nothing to do with QuestieDB.
 
 local FLAVORS = {
   Vanilla = { toc = "Questie-Classic.toc", project = 2,
@@ -102,9 +102,9 @@ GetMaxPlayerLevel = function() return flavor.level end
 -- PERSONA ALIGNMENT — the load-bearing part of this file.
 --
 -- Faction-differentiated corrections branch on the player, so the two sides must be the same
--- player or every faction fix reads as a divergence. QuestieTDB's offline default persona is
+-- player or every faction fix reads as a divergence. QuestieDB's offline default persona is
 -- Alliance / Human / Warrior / 60 / plain realm (emulator/client.lua); Questie's apiMocks
--- default to Horde / Tauren / Druid. These lines make the compiler side match QuestieTDB.
+-- default to Horde / Tauren / Druid. These lines make the compiler side match QuestieDB.
 UnitFactionGroup = function() return faction end
 UnitRace = function()
   if faction == "Horde" then return "Orc", "Orc", 2 end
@@ -112,7 +112,7 @@ UnitRace = function()
 end
 UnitClass = function() return "Warrior", "WARRIOR", 1 end
 UnitClassBase = function() return "WARRIOR", 1 end
-UnitName = function() return "QuestieTDBTester" end
+UnitName = function() return "QuestieDBTester" end
 GetRealmName = function() return "TestRealm" end
 GetLocale = function() return "enUS" end
 
@@ -178,7 +178,7 @@ QuestieCorrections:Initialize({
 -- lookup translations into the entity tables, and at enUS every lookup resolves empty
 -- (`Localization/lookups/*/lookup*/` has no enUS.lua, and `lookupOverrides.lua` gates every
 -- branch on a non-enUS locale with no else). Verified inert; this dumper only ever runs enUS,
--- because QuestieTDB serves other locales from an overlay rather than from baked-in strings.
+-- because QuestieDB serves other locales from an overlay rather than from baked-in strings.
 QuestieDB.private:DeleteGatheringNodes()
 QuestieCorrections:PreCompile()
 
@@ -198,7 +198,7 @@ if not verbose then print = realPrint end
 --
 -- Read through QuerySingle — the surface Questie's call sites actually use, so the overrides
 -- layer (Questie's runtime corrections) is included exactly as a player would see it. That
--- corresponds to QuestieTDB's composed view: base data plus the Correction Overlay.
+-- corresponds to QuestieDB's composed view: base data plus the Correction Overlay.
 
 -- `QuestieDB.Query*Single` and `QuestieDB.*Pointers` are what QuestieDB:Initialize leaves
 -- behind, and they are the surface Questie's own call sites use. Reading the raw DB handles

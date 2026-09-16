@@ -299,10 +299,10 @@ Read at `Database/QuestieDB.lua:1556` (object), `1577` (item), `1609` (killCredi
 
 ## 2. Full file inventory + STATIC / DYNAMIC / STAYS-IN-QUESTIE classification
 
-Classification rule applied (from `QuestieTDB/DESIGN.md:286-287`):
+Classification rule applied (from `QuestieDB/DESIGN.md:286-287`):
 **STATIC** = data truth, knowable offline, foldable during Generation.
 **DYNAMIC** = conditional at runtime (faction/season/date/setting), applied via the
-Correction Overlay — may still be *owned* by QuestieTDB.
+Correction Overlay — may still be *owned* by QuestieDB.
 **STAYS-IN-QUESTIE** = consumer/display policy or Questie-internal machinery.
 
 ### 2.1 Per-expansion entity fix files

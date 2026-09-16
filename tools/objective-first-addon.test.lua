@@ -74,7 +74,7 @@ return function(check, questiePath)
     for _, persona in ipairs(personas) do
       local flavor = config.flavorByName[persona.flavor]
       local expected = fidelity.loadOracle(questiePath, persona.flavor, persona.season)
-      local modes = { { name = "Source", mode = "source", toc = "QuestieTDB.toc" } }
+      local modes = { { name = "Source", mode = "source", toc = "QuestieDB.toc" } }
       if available[flavor.name] then
         modes[#modes + 1] = { name = "Baked", mode = "baked", toc = config.tocPath(flavor) }
         modes[#modes + 1] = { name = "stripped package", mode = "baked",

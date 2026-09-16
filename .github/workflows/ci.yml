@@ -20,31 +20,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-        with: { path: QuestieTDB }
+        with: { path: QuestieDB }
 
       # Localization, schema and Corrections all come from the reviewed commit in
       # QUESTIE_COMMIT. Bumping that file makes upstream drift an explicit repository change.
-      - uses: ./QuestieTDB/.github/actions/checkout-questie
+      - uses: ./QuestieDB/.github/actions/checkout-questie
 
       - name: Install Lua 5.1
         run: sudo apt-get update && sudo apt-get install -y lua5.1
 
       - name: Version tests (offline)
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         run: lua5.1 tools/version.test.lua
 
       - name: Materialize the schema
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         run: lua5.1 generate.lua meta ../Questie
 
       - name: Fail on schema drift
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         # Deriving the schema turns drift into a build failure instead of a discovery months
         # later. If Questie added a field, this is where it shows up.
         run: git diff --exit-code src/meta/
 
       - name: Fail on correction drift
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         run: |
           lua5.1 tools/port-corrections.lua ../Questie
           git diff --exit-code src/corrections/ src/derived/RamerDouglasPeucker.lua || {
@@ -53,42 +53,42 @@ jobs:
           }
 
       - name: Fail on Source TOC drift
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         # Run before flavor Generation, which also refreshes the base TOC and would otherwise
         # hide an uncommitted file-list change from the unit test.
         run: |
           lua5.1 generate.lua toc
-          git diff --exit-code QuestieTDB.toc
+          git diff --exit-code QuestieDB.toc
 
       - name: Generate Vanilla
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         run: lua5.1 generate.lua Vanilla --questie=../Questie
 
       - name: Generate Mists
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         # The suites that read artifacts off disk sweep every generated flavor. Vanilla alone
         # left the largest artifact untested; Mists is the other end of the size range.
         run: lua5.1 generate.lua Mists --questie=../Questie
 
       - name: Generate Wrath runtime fixture
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         # Titan is a Dynamic variant over the Wrath artifact. A small no-l10n fixture keeps
         # the Source and Baked persona assertions mandatory in the unit job.
         run: lua5.1 generate.lua Wrath --no-l10n --no-base-toc
 
       - name: Unit tests
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         run: lua5.1 test.lua
 
       - name: Reconstruct Vanilla
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         # Byte-exact gate: re-derives every data directive with the current generator and
         # compares exact bytes against the artifact. The determinism check covers
         # regeneration stability; this covers generator-vs-artifact drift, key by key.
         run: lua5.1 reconstruct.lua Vanilla --questie=../Questie
 
       - name: Reconstruct Mists
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         run: lua5.1 reconstruct.lua Mists --questie=../Questie
 
   database:
@@ -100,31 +100,31 @@ jobs:
         flavor: [Vanilla, TBC, Wrath, Cata, Mists]
     steps:
       - uses: actions/checkout@v7
-        with: { path: QuestieTDB }
-      - uses: ./QuestieTDB/.github/actions/checkout-questie
+        with: { path: QuestieDB }
+      - uses: ./QuestieDB/.github/actions/checkout-questie
 
       - name: Install Lua 5.1
         run: sudo apt-get update && sudo apt-get install -y lua5.1
 
       - name: Generate
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         run: lua5.1 generate.lua ${{ matrix.flavor }} --questie=../Questie
 
       - name: Determinism
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         # Run this before any reader. Every later gate therefore approves the exact
         # second-generation bytes whose hash matched the first Generation.
         run: |
-          sha256sum QuestieTDB_${{ matrix.flavor }}.toc > first.sha
+          sha256sum QuestieDB_${{ matrix.flavor }}.toc > first.sha
           lua5.1 generate.lua ${{ matrix.flavor }} --questie=../Questie --quiet
           sha256sum -c first.sha
 
       - name: Round-trip verification
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         run: lua5.1 verify.lua ${{ matrix.flavor }}
 
       - name: Round-trip verification under freezing
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         # Opt-in because the pure-Lua freeze substitute costs about 2x wall clock. The smallest
         # and largest flavors keep the ownership guard present in CI without paying 2x on every
         # matrix leg.
@@ -132,16 +132,16 @@ jobs:
         run: lua5.1 verify.lua ${{ matrix.flavor }} --freeze
 
       - name: Source/baked equivalence
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         # The load-bearing test in the system. Two permanent read modes mean it never retires.
         run: lua5.1 equivalence.lua ${{ matrix.flavor }}
 
       - name: Data validators
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         run: lua5.1 validators/run.lua ${{ matrix.flavor }}
 
       - name: Golden composed reads
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         # A-vs-golden gate: composed public reads hashed per entity against the committed
         # snapshot. Successor to the cross-implementation differential that caught the
         # Era-gating defect chain - it guards the class of bug where generator and source
@@ -154,24 +154,24 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: validator-diagnostics-${{ matrix.flavor }}
-          path: QuestieTDB/.out/validators/
+          path: QuestieDB/.out/validators/
           if-no-files-found: ignore
 
       - name: Package
-        working-directory: QuestieTDB
+        working-directory: QuestieDB
         run: bash tools/package.sh ${{ matrix.flavor }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: QuestieTDB-${{ matrix.flavor }}
-          path: QuestieTDB/.out/dist/*
+          name: QuestieDB-${{ matrix.flavor }}
+          path: QuestieDB/.out/dist/*
           retention-days: 14
 
   differential:
     name: Compiler differential (${{ matrix.flavor }})
     runs-on: ubuntu-latest
-    # The only gate that compares against the database QuestieTDB replaces. Every other gate
+    # The only gate that compares against the database QuestieDB replaces. Every other gate
     # compares the two sides of this project's own seam, so a shared wrong assumption passes
     # them all. Needs no generated artifact: both dumps read source mode and a live compile.
     strategy:
@@ -180,8 +180,8 @@ jobs:
         flavor: [Vanilla, TBC, Wrath, Cata, Mists]
     steps:
       - uses: actions/checkout@v7
-        with: { path: QuestieTDB }
-      - uses: ./QuestieTDB/.github/actions/checkout-questie
+        with: { path: QuestieDB }
+      - uses: ./QuestieDB/.github/actions/checkout-questie
 
       # Questie's apiMocks require bit32, and this is the toolchain Questie's own CI uses to
       # provide it — so the oracle is built the same way upstream builds it. It installs `lua`
@@ -198,8 +198,8 @@ jobs:
       - name: Install bit32
         run: luarocks install bit32 5.3.5.1-1
 
-      - name: QuestieTDB vs Questie's compiler
-        working-directory: QuestieTDB
+      - name: QuestieDB vs Questie's compiler
+        working-directory: QuestieDB
         # Fails on a divergence class that is new or has grown against
         # tools/differential/compiler-baseline/, and prints what is still owed either way.
         # --self-check perturbs one agreeing value and requires exactly one detection.

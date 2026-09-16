@@ -1,6 +1,6 @@
 -- tools/differential/dump_value.lua
 --
--- Selects the coordinate view for QuestieTDB differential dumps. Default callers, including
+-- Selects the coordinate view for QuestieDB differential dumps. Default callers, including
 -- Golden snapshots, observe raw production values. The compiler differential explicitly asks
 -- for the legacy view, where base coordinates are projected onto Questie's compiler grid while
 -- Dynamic Correction values remain raw because they bypassed compilation in Questie.

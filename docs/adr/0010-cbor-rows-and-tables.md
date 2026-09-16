@@ -21,7 +21,7 @@ line byte for byte, that native decode is three to four times faster than `loads
 level with re-executing a compiled chunk, and that the offline encoder Questie already owns
 (`BlizzardCBOR.lua`) agrees with the client codec on the whole Classic quest table.
 
-Three layouts were prototyped (`tools/prototype-cbor/`) from QuestieTDB's own composition
+Three layouts were prototyped (`tools/prototype-cbor/`) from QuestieDB's own composition
 pipeline and verified in the client against every field of every Vanilla entity with zero
 differences:
 
@@ -127,7 +127,7 @@ presence masks, decoded on first touch of any id in the page.
 - Questie's integrated profiler measured `CalculateAndDrawAll` at 92 to 97 ms instead of 150
   to 165 ms. Its `IsDoable` portion fell from 57 to 60 ms to 31 to 33 ms.
 - The three-scalar sweep retained 2.48 MB of row cache, below the accepted 3.5 MB limit. A
-  controlled reload attributed 2.82 MB more fixed memory to QuestieTDB because native-decoded
+  controlled reload attributed 2.82 MB more fixed memory to QuestieDB because native-decoded
   ID arrays and loop-built existence maps now belong to the addon. Those structures are
   retained for the session and create no recurring garbage. The fixed cost is accepted and
   will be revisited only if client-wide memory profiles show pressure.

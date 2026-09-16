@@ -1,6 +1,6 @@
 -- Vendored from ../../Questie-PR-Review/cli/mocks/BlizzardCBOR.lua
 -- Source commit: cc11a99bf95271bf73cf40ae0d64ae39a716b35a
--- The deterministicMapOrder option below is local to QuestieTDB's offline generator.
+-- The deterministicMapOrder option below is local to QuestieDB's offline generator.
 
 -- luacheck: globals QuestieBlizzardCBORMock
 

@@ -20,10 +20,10 @@ return function(check, equal)
     for _, mode in ipairs({ "source", "baked" }) do
       local db = { config = config, Meta = {}, mode = mode, read = {}, flavor = config.flavorByName.Wrath }
       for _, file in ipairs(config.runtimeFiles.head) do
-        if file ~= "src/config.lua" then assert(loadfile(file))("QuestieTDB", db) end
+        if file ~= "src/config.lua" then assert(loadfile(file))("QuestieDB", db) end
       end
-      local shared = assert(loadfile("src/read/shared.lua"))("QuestieTDB", db)
-      assert(loadfile("src/corrections/registry.lua"))("QuestieTDB", db)
+      local shared = assert(loadfile("src/read/shared.lua"))("QuestieDB", db)
+      assert(loadfile("src/corrections/registry.lua"))("QuestieDB", db)
       local keys = db.Meta.Quest.keys
       local rows = {
         [1] = { [keys.name] = "Base English", [keys.objectivesText] = { "Base objective" }, [keys.requiredRaces] = 77 },
@@ -63,8 +63,8 @@ return function(check, equal)
           error("unexpected localization key " .. tostring(key))
         end
       end
-      assert(loadfile("src/l10n/overlay.lua"))("QuestieTDB", db)
-      assert(loadfile("src/api.lua"))("QuestieTDB", db)
+      assert(loadfile("src/l10n/overlay.lua"))("QuestieDB", db)
+      assert(loadfile("src/api.lua"))("QuestieDB", db)
       local l10n, quest = db.l10n, db.Quest
       local label = mode .. ": "
       equal(backendReads, 0, label .. "localization does not eagerly read entity fields")
@@ -77,7 +77,7 @@ return function(check, equal)
       if mode == "baked" then
         equal(quest.name(1), "Basisübersetzung", label .. "base translation wins over English correction")
         equal(quest.objectivesText(1), { "Basisziel" }, label .. "base objective translation wins")
-        equal(db.GetProvenance("Quest", 1, "name"), "QuestieTDB", label .. "base translation provenance")
+        equal(db.GetProvenance("Quest", 1, "name"), "QuestieDB", label .. "base translation provenance")
       else
         equal(quest.name(1), "Corrected English", label .. "Source has no ordinary translations")
       end

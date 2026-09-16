@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""QuestieTDB vs Questie's compiler — the reference-implementation differential.
+"""QuestieDB vs Questie's compiler — the reference-implementation differential.
 
 DESIGN.md phase 6 called for a compiled/TOC differential and gave it a deadline: the
 compiler is the reference implementation, so its behaviour must be captured before it is
-deleted. `golden.py` snapshots QuestieTDB's *own* composed reads, so it can only catch
-drift from itself; this gate compares against the thing QuestieTDB replaces.
+deleted. `golden.py` snapshots QuestieDB's *own* composed reads, so it can only catch
+drift from itself; this gate compares against the thing QuestieDB replaces.
 
 Both sides are read through their public per-field surface — `Entity.Get(id, field)` here,
 `QuestieDB.Query<Type>Single(id, field)` there — so what is compared is what the ~290
 consumer call sites actually observe, overrides and all.
 
-Usage (cwd = the QuestieTDB repo root):
+Usage (cwd = the QuestieDB repo root):
 
     python3 tools/differential/compiler_diff.py Vanilla
     python3 tools/differential/compiler_diff.py all --questie=../Questie
@@ -32,7 +32,7 @@ this is a regression gate rather than a wall of known noise — the same discipl
 validators/baseline uses. Reducing a count is also a failure, because it means the
 baseline is stale and should be re-recorded deliberately.
 
-`--self-check` perturbs one value in the QuestieTDB dump in memory and requires exactly one
+`--self-check` perturbs one value in the QuestieDB dump in memory and requires exactly one
 extra divergence to appear — a gate that cannot fail is not a gate.
 
 Requires `bit32` on the Lua path for Questie's compiler; the script picks it up from
@@ -117,7 +117,7 @@ def dump_both(flavor, questie, lua, season, faction="Alliance", only=None):
     if only:
         options.append("--only=" + only)
     run([lua, "tools/differential/dump_a.lua", flavor, tdb, "--compiler-coordinates"] + options,
-        ROOT, env, "QuestieTDB dump")
+        ROOT, env, "QuestieDB dump")
 
     questie_root = questie if os.path.isabs(questie) else os.path.join(ROOT, questie)
     script = os.path.join(ROOT, "tools", "differential", "dump_compiler.lua")
@@ -227,7 +227,7 @@ def write_baseline(flavor, counts, existing):
     os.makedirs(BASELINE_DIR, exist_ok=True)
     existing = existing or {}
     with open(baseline_path(flavor), "w") as handle:
-        handle.write("# Known QuestieTDB-vs-compiler divergences for %s.\n" % flavor)
+        handle.write("# Known QuestieDB-vs-compiler divergences for %s.\n" % flavor)
         handle.write("#\n")
         handle.write("# This is a to-do list, not an approval. Only %s rows are permanent;\n"
                      % REASON_POLICY)
@@ -243,7 +243,7 @@ def write_baseline(flavor, counts, existing):
 
 def report(flavor, rows, compared, a_ids, b_ids, counts, baseline, strict=False):
     print("=" * 78)
-    print("%s — QuestieTDB vs Questie compiler" % flavor)
+    print("%s — QuestieDB vs Questie compiler" % flavor)
     print("=" * 78)
     for t in sorted(a_ids):
         name = t.decode()

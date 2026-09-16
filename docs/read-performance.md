@@ -1,12 +1,12 @@
 # Read performance and cost model — measured 2026-08-19
 
-Live-client measurements of what a read actually costs, why, and how QuestieTDB compares to
+Live-client measurements of what a read actually costs, why, and how QuestieDB compares to
 the two other implementations of the same data. Recorded so the numbers are not re-derived,
 in the same spirit as [`client-metadata-probes.md`](./client-metadata-probes.md) and
 [`table.freeze.md`](./table.freeze.md).
 
 **Client:** Classic Era 1.15.9, build 69109 (Aug 3 2026), enUS, interface 11509.
-**Artifact under test:** the installed `QuestieTDB_Vanilla.toc`, baked mode, producer
+**Artifact under test:** the installed `QuestieDB_Vanilla.toc`, baked mode, producer
 `build-7169b67`, 25 MB.
 **Compared against:** `{Database}` (the `Getters` prototype, Vanilla TOC 21 MB, snapshot
 `7e9067a` from 2026-03-08) and Questie 11.36.1's compiled database.
@@ -27,8 +27,8 @@ noted:
 
 | | Measurement | µs |
 | --- | --- | ---: |
-| A | `g("QuestieTDB", "Version")`, one constant key | 0.252 |
-| B | `g("QuestieTDB", "X-Quest-2-1")`, one constant key, **our own field** | 0.259 |
+| A | `g("QuestieDB", "Version")`, one constant key | 0.252 |
+| B | `g("QuestieDB", "X-Quest-2-1")`, one constant key, **our own field** | 0.259 |
 | C | 4,257 distinct precomputed keys, all hits | 0.810 |
 | D | 4,257 distinct precomputed keys, all misses | 0.456 |
 | E | Building `"X-Quest-" .. id .. "-1"`, no client call | 0.497 |
@@ -79,7 +79,7 @@ Development here runs the addon through a Windows junction into `\\wsl.localhost
 9P mount rather than local disk. That is exactly the kind of thing that quietly invalidates a
 benchmark, so it was tested rather than assumed.
 
-A metadata-only copy of `QuestieTDB_Vanilla.toc` was placed on native NTFS under a second
+A metadata-only copy of `QuestieDB_Vanilla.toc` was placed on native NTFS under a second
 addon folder, keeping every `##` directive and dropping the 48 Lua file references so it
 loads no code and cannot collide with anything. Identical bytes, identical keys, best of five:
 
@@ -176,12 +176,12 @@ Quest `name`, 4,257 ids, one pass each:
 | Questie compiler, `QueryQuestSingle` | 0.82 |
 | `{Database}` named getter | 2.27 |
 | `{Database}` `Get` | 2.53 |
-| QuestieTDB `Get`, cold | 3.52 |
-| QuestieTDB `name()`, cold | 3.43 |
-| QuestieTDB `GetRaw` | 2.92 |
-| **QuestieTDB `name()`, warm** | **0.59** |
+| QuestieDB `Get`, cold | 3.52 |
+| QuestieDB `name()`, cold | 3.43 |
+| QuestieDB `GetRaw` | 2.92 |
+| **QuestieDB `name()`, warm** | **0.59** |
 
-`{Database}` adds about 0.9 µs on top of the 1.35 µs floor. QuestieTDB adds about 2.1 µs.
+`{Database}` adds about 0.9 µs on top of the 1.35 µs floor. QuestieDB adds about 2.1 µs.
 That extra 1.2 µs on a **first** read is the whole of the difference, and it is spent on
 things the prototype does not have:
 
@@ -209,10 +209,10 @@ decode work.
 
 For m reads of the same field:
 
-    QuestieTDB   3.43 + 0.59 × (m - 1)
+    QuestieDB   3.43 + 0.59 × (m - 1)
     {Database}   2.27 × m
 
-| m | QuestieTDB | `{Database}` |
+| m | QuestieDB | `{Database}` |
 | ---: | ---: | ---: |
 | 1 | 3.43 | **2.27** |
 | 2 | **4.02** | 4.54 |
@@ -220,7 +220,7 @@ For m reads of the same field:
 | 20 | **14.64** | 45.40 |
 
 Read a field once and never again, and the prototype wins by 1.2 µs. Read it twice, and
-QuestieTDB is ahead permanently.
+QuestieDB is ahead permanently.
 
 ---
 
@@ -246,7 +246,7 @@ This explains an aggregate result that otherwise looks strange. Over a full 32-f
 
 | | pass 1 | pass 2 |
 | --- | ---: | ---: |
-| QuestieTDB | 2.96 | **0.56** |
+| QuestieDB | 2.96 | **0.56** |
 | `{Database}` | 2.15 | 2.03 |
 | Questie compiler | 2.43 | 2.46 |
 
@@ -315,8 +315,8 @@ value the caller owns, and ADR 0003 Decision 10 chose that deliberately after
   database for every other consumer.
 * `table.freeze` is the mitigation that turns silent corruption into a loud error, and this
   client has it, with `canFreeze` true. But freezing is gated on taint ownership: a
-  `Freeze` call from outside QuestieTDB is refused, which this session confirmed by watching
-  `shared.freezeRefused` go from 0 to 1. Whether QuestieTDB's own compiled code can freeze
+  `Freeze` call from outside QuestieDB is refused, which this session confirmed by watching
+  `shared.freezeRefused` go from 0 to 1. Whether QuestieDB's own compiled code can freeze
   these values was validated separately in
   [`client-metadata-probes.md`](./client-metadata-probes.md) section 3 and is not re-proven
   here.
@@ -341,11 +341,11 @@ spawns for each. This is the shape of work Questie does when the log changes.
 
 | | pass 1 | pass 2 | pass 3 |
 | --- | ---: | ---: | ---: |
-| QuestieTDB | 1.86 ms | 0.47 ms | **0.44 ms** |
+| QuestieDB | 1.86 ms | 0.47 ms | **0.44 ms** |
 | `{Database}` | 1.47 ms | 1.41 ms | |
 | Questie compiler | 1.08 ms | 1.15 ms | |
 
-Garbage produced per pass: `{Database}` 174 KB, Questie 53 KB, QuestieTDB nothing once warm
+Garbage produced per pass: `{Database}` 174 KB, Questie 53 KB, QuestieDB nothing once warm
 (its 200 KB is cache, allocated once and retained).
 
 Every one of these is under two milliseconds. The practical difference between them is not
@@ -360,10 +360,10 @@ Floors, after `InvalidateCache()` and two full collections:
 | Addon | MB |
 | --- | ---: |
 | `{Database}` | 4.57 |
-| QuestieTDB | 6.65 |
+| QuestieDB | 6.65 |
 | Questie | 51.9 |
 
-QuestieTDB at rest immediately after a fresh UI reload, before any query: **6.37 MB**.
+QuestieDB at rest immediately after a fresh UI reload, before any query: **6.37 MB**.
 
 The cache is the variable. Growth measured across all 4,257 quest ids:
 
@@ -449,7 +449,7 @@ consumer who reaches for `GetRaw` in a loop will not get the read path they expe
 ## 7. Measurement hazard: the Entity globals collide
 
 `{Database}` defines the globals `QuestDB`, `NpcDB`, `ItemDB` and `ObjectDB`. So does
-QuestieTDB. `{` sorts after letters, so with both installed `{Database}` loads later (index 63
+QuestieDB. `{` sorts after letters, so with both installed `{Database}` loads later (index 63
 against 42) and **wins every one of those four names**.
 
 Anything that benchmarks or tests through a bare global with both addons installed is
@@ -458,13 +458,13 @@ ambiguity:
 
 ```lua
 _G.QuestDB == LibQuestieDB.Quest   -- false when the prototype has taken the global
-type(_G.QuestDB.test)              -- "function" on the prototype, nil on QuestieTDB
-type(_G.QuestDB.GetRaw)            -- "function" on QuestieTDB, nil on the prototype
+type(_G.QuestDB.test)              -- "function" on the prototype, nil on QuestieDB
+type(_G.QuestDB.GetRaw)            -- "function" on QuestieDB, nil on the prototype
 ```
 
 They also disagree about the signature, which makes a silent mismatch cheap to detect: the
 prototype's `Get` takes a **numeric index only** and returns nil for a string key, while
-QuestieTDB's `Get` accepts either. Every measurement in this document was taken through
+QuestieDB's `Get` accepts either. Every measurement in this document was taken through
 `LibQuestieDB.<Type>` and `_G.QuestDB` explicitly, with the identity asserted in the same
 call.
 
@@ -496,8 +496,8 @@ _G.__H = {
 }
 ```
 
-Fields 1 to 32 of the quest schema are identical in name and order between QuestieTDB and
-`{Database}`, so they compare directly. QuestieTDB has 36; the prototype has 32 plus an
+Fields 1 to 32 of the quest schema are identical in name and order between QuestieDB and
+`{Database}`, so they compare directly. QuestieDB has 36; the prototype has 32 plus an
 injected `xpReward`. Entity counts differ because the prototype is a March data snapshot:
 4,256 quests against 4,257, and 9,883 NPCs against 10,122.
 
@@ -509,7 +509,7 @@ A second measurement session, recorded in full so none of it is re-derived. Ever
 was taken live, and the ideas that lost are recorded beside the ones that won.
 
 **Client:** Classic Era 1.15.9, build 69547 (Aug 26 2026), enUS, interface 11509.
-**Artifact under test:** the installed `QuestieTDB_Vanilla.toc`, baked mode, producer
+**Artifact under test:** the installed `QuestieDB_Vanilla.toc`, baked mode, producer
 `build-eaea07d`, 20.8 MB. Four commits behind HEAD at the time, none touching the read path.
 **Compared against:** `{Database}` (the `Getters` prototype, loaded alongside), and the
 read shapes in the Questie fork on branch `QuestieTDB`, which still runs the compiler.
@@ -610,7 +610,7 @@ Other findings from the same pass:
 
 | Work | ms |
 | --- | ---: |
-| `ApplyRegisteredCorrections("QuestieTDB")` at load | 1.2, +184 KB |
+| `ApplyRegisteredCorrections("QuestieDB")` at load | 1.2, +184 KB |
 | `decodeIdMap` via `gsub` plus `loadstring`: Item / Npc / Object / Quest | 11.7 / 8.8 / 7.1 / 2.9 |
 | `decodeIdList` for the same: | 2.8 / 1.7 / 1.2 / 0.8 |
 | Building the Item map from the decoded list in a loop instead | 1.0 |
@@ -620,7 +620,7 @@ The id maps are lazy but land on the first `Exists` or `GetAllIds` per type, whi
 Questie is its init. Thirty milliseconds there against four is an easy change.
 
 Load-time CPU of the addon itself is still unmeasured. `scriptProfile` set to 1 followed by
-a `/reload` reported zero CPU for QuestieTDB, so that cvar needs a full client restart to
+a `/reload` reported zero CPU for QuestieDB, so that cvar needs a full client restart to
 catch addon load; it was reset to 0 afterwards.
 
 ## 9.5 A quest-log workload, and the prototype
@@ -629,7 +629,7 @@ catch addon load; it was reset to 0 afterwards.
 
 | | pass 1 | pass 2 | pass 3 |
 | --- | ---: | ---: | ---: |
-| QuestieTDB | 1.55 ms, 206 KB | 0.25 ms, 49 KB | 0.22 ms, 49 KB |
+| QuestieDB | 1.55 ms, 206 KB | 0.25 ms, 49 KB | 0.22 ms, 49 KB |
 | `{Database}` | 1.51 ms, 189 KB | 1.20 ms, 156 KB | 1.29 ms, 155 KB |
 
 The steady 49 KB is the copy-per-read contract on the table fields. Nothing else allocates
@@ -650,7 +650,7 @@ Side by side, same session. The prototype has no cold or warm state because it c
 | Npc `spawns` | 10.86 | 13.1 | 2.67 |
 | Npc `spawns` garbage per sweep | 28.7 MB | | 10.3 MB |
 
-Resting memory after invalidate and two collections: prototype 4.7 MB, QuestieTDB 8.7 MB.
+Resting memory after invalidate and two collections: prototype 4.7 MB, QuestieDB 8.7 MB.
 
 The prototype is faster on first touch by about 1.3 µs on a scalar and 3 µs on a table,
 which is exactly the cache layer in 9.1. It loses on every read after the first, on garbage,
@@ -659,11 +659,11 @@ own `test()` sweeps read every field once, which is the one shape where it wins.
 
 ## 9.6 What Questie actually reads
 
-The fork on branch `QuestieTDB` does not consume QuestieTDB yet. Its read shapes are the
+The fork on branch `QuestieTDB` does not consume QuestieDB yet. Its read shapes are the
 compiler's, and they are what any format must serve:
 
 * `GetQuest`, `GetNPC`, `GetObject`, `GetItem` read **every field** of one entity through
-  `Query<Type>(id, adapterOrder)` once and cache the object on Questie's side. QuestieTDB's
+  `Query<Type>(id, adapterOrder)` once and cache the object on Questie's side. QuestieDB's
   per-field cache never sees a second read from this path.
 * 184 single-field call sites: `QueryQuestSingle` 125, `QueryItemSingle` 27,
   `QueryNPCSingle` 20, `QueryObjectSingle` 12. The availability calculation is the hot one:
@@ -673,9 +673,9 @@ Whole quest row, 36 fields, 500 quests:
 
 | | µs per quest |
 | --- | ---: |
-| QuestieTDB cold, 36 reads (6 scalar hits, 12 scalar misses, 6 table hits, 12 table misses) | 110 |
+| QuestieDB cold, 36 reads (6 scalar hits, 12 scalar misses, 6 table hits, 12 table misses) | 110 |
 | Prototype, 32 getters | 67 |
-| QuestieTDB warm | 21 |
+| QuestieDB warm | 21 |
 | One row as a Lua literal, 369 bytes, `loadstring` and execute | 19.2 (14.5 compile) |
 | The 29 scalar slots joined in one string, split with `string.find` | 7.3 |
 
@@ -764,7 +764,7 @@ id-to-position map:
 | Object | 64 KB | 1.9 ms | 0.6 MB | 0.4 MB, 0.8 ms | 0.08 |
 | **Total** | **550 KB** | **22 ms** | **9.1 MB** | **1.9 MB** | |
 
-The position map can replace the id-to-true map QuestieTDB already builds for `Exists` and
+The position map can replace the id-to-true map QuestieDB already builds for `Exists` and
 `GetAllIds(true)` if that contract is relaxed from `true` to truthy, in which case it costs
 4.5 ms for all four types against the 30 ms `gsub` path in 9.4 and adds no memory.
 
@@ -930,7 +930,7 @@ the retired literal reader and 10,857 KB for the CBOR reader through
 `GetAddOnMemoryUsage`. This misses the original resting-memory threshold by 1.8 MB. A
 separate allocation probe attributed 1,311 KB to the native-decoded ID arrays and 1,969 KB
 to their existence maps. The old `loadstring` allocations were attributed outside
-QuestieTDB, so this is partly an ownership-accounting change. The fixed allocation is retained
+QuestieDB, so this is partly an ownership-accounting change. The fixed allocation is retained
 for the session and creates no recurring garbage. The accepted decision is to keep the
 portable compressed CBOR headers and revisit their representation only if client-wide memory
 profiling shows pressure.
@@ -975,7 +975,7 @@ every locale in the probe, Vanilla retained 3.2 to 4.1 MiB and decoded in 14 to 
 retained 14.2 to 18.4 MiB and decoded in 71 to 128 ms.
 
 The production contract-2 reader measured deDE at **16.36 ms and 3.26 MiB** of Lua heap on
-Vanilla. Returning to enUS released 3.44 MiB attributed to QuestieTDB. The generated Mists
+Vanilla. Returning to enUS released 3.44 MiB attributed to QuestieDB. The generated Mists
 artifact, loaded through the Era-selected TOC with only its `Interface` changed, measured
 **81.41 ms and 15.09 MiB** of Lua heap for deDE.
 

@@ -32,19 +32,19 @@ local objectPresent = ObjectDB.GetAllIds(true)[1]
 -- Representative reads cover nilability and nested tuple aliases.
 ---@type string?
 local questName = QuestDB.name(2)
----@type QuestieTDBExtraObjective[]?
+---@type QuestieDBExtraObjective[]?
 local extraObjectives = QuestDB.extraObjectives(2)
----@type QuestieTDBReference
+---@type QuestieDBReference
 local itemReference = { "item", 6948 }
 
 -- Correction methods are dot-called. Registrar methods already bind their owner.
----@type QuestieTDBCorrectionProvider
+---@type QuestieDBCorrectionProvider
 local correctionProvider = function()
   return { [2] = { [1] = "Sharptalon's Claw" } }
 end
 
 local registrar = LibQuestieDB.GetRegistrar("ConsumerAddon")
----@type QuestieTDBCorrectionEntry
+---@type QuestieDBCorrectionEntry
 local correctionEntry = registrar.RegisterRuntimeCorrection(
   "quest", "rename-quest", correctionProvider, 10)
 ---@type integer
@@ -54,7 +54,7 @@ local applied = registrar.Apply()
 ---@type boolean
 local removed = LibQuestieDB.Corrections.UnregisterCorrection(
   "ConsumerAddon", "Quest", "rename-quest")
----@type QuestieTDBCanonicalDatatype?
+---@type QuestieDBCanonicalDatatype?
 local canonical = LibQuestieDB.Corrections.CanonicalDatatype("quest")
 LibQuestieDB.Corrections.debug = true
 
@@ -93,7 +93,7 @@ local translationChanged = translated
 local translatedBy = translationOwner
 
 -- External translations can target a locale without generated Localization blocks.
----@type QuestieTDBTranslationLocale
+---@type QuestieDBTranslationLocale
 local customLocale = "ukUA"
 LibQuestieDB.l10n.SetCorrection("Consumer", customLocale, "Quest", "names", {
   [2] = { [LibQuestieDB.Meta.QuestMeta.questKeys.name] = "Перекладена назва" },

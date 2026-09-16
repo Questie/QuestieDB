@@ -12,10 +12,10 @@ they are relative to `/home/logon/projects/Questie-clones/Questie-toc/Questie/`.
 ## 0. Executive shape
 
 Four independent areas. In each, a **logic module** (`QuestieLoader:CreateModule`) stays in
-Questie and a set of **data files** move to QuestieTDB. There is **no dynamic selection at
+Questie and a set of **data files** move to QuestieDB. There is **no dynamic selection at
 runtime** — per-flavor selection is done entirely by *which file the `.toc` lists*. Every
 flavor's `.toc` names a different data file, and all of them assign to the **same** module
-field. This is the single most important fact for packaging: QuestieTDB must ship
+field. This is the single most important fact for packaging: QuestieDB must ship
 per-flavor `.toc`s that list exactly one variant of each file.
 
 | Area | Logic module (stays) | Data files (move) | Data bytes on disk |
@@ -853,7 +853,7 @@ QuestieItemDropCorrections.MoP = {
   `WOWHEAD` correction means "prefer the wowhead value over the pserver value", which is a
   *precedence* statement, not a value.
 - Two consistent ways to satisfy ticket 12 bullet 5:
-  1. Register it in QuestieTDB's corrections registry as a **Static Correction over drop
+  1. Register it in QuestieDB's corrections registry as a **Static Correction over drop
      data** and bake the result — requires eliminating the `-1`/`-2` sentinels by resolving
      them at generation time (possible: the generator knows which wowhead/pserver table each
      flavor uses). Output would be one flat `table<ItemId, table<NpcId, float>>` per flavor
@@ -1220,7 +1220,7 @@ Questie"). Note `lookupZonesCorrections.lua` is only listed in `Questie-Cata.toc
     are ~3-5× larger in entry count but *smaller* in bytes than classic/tbc/wotlk because
     the latter carry per-row provenance comments.
 16. **`QuestieDB.factionTemplate` has no initialiser.** The data file assigns it directly at
-    load. If QuestieTDB defers it behind a getter, `Townsfolk.lua:617-622` breaks (it indexes
+    load. If QuestieDB defers it behind a getter, `Townsfolk.lua:617-622` breaks (it indexes
     the raw table).
 17. **`Questie.toc` (Interface `00000`) loads none of this** — it is the
     unsupported-client stub. Don't mirror it.
@@ -1237,7 +1237,7 @@ Questie"). Note `lookupZonesCorrections.lua` is only listed in `Questie-Cata.toc
 20. **`cli/apiMocks.lua`'s `UnitFactionGroup` is `function() return arg[1] or "Horde" end`**
     — `arg` is the *command-line* argument table, not the function parameter. Headless loads
     of `dungeons.lua` therefore get Horde coordinates unless a CLI arg is passed. If
-    QuestieTDB bakes dungeons, the generator must not inherit this accident.
+    QuestieDB bakes dungeons, the generator must not inherit this accident.
 21. **`ZoneDB.Initialize` reads `Questie.db.profile.debugEnabled`** (line 67) — a nil
     `Questie.db.profile` throws. Any headless loader must set
     `Questie = {db = {profile = {}}}` first.

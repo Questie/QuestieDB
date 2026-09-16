@@ -4,14 +4,14 @@ Date: 2026-08-25. Status: accepted.
 
 ## Context
 
-ADR 0003 Decision 1 made QuestieTDB reproduce Questie's compiled coordinate reads:
+ADR 0003 Decision 1 made QuestieDB reproduce Questie's compiled coordinate reads:
 `floor(coord * 40.90) / 40.90`. That was useful while the binary compiler was treated as the
 permanent read contract, but TOC metadata does not share its 12-bit storage constraint. The
 result discarded source precision and then spelled the divided value as a 15–19 digit decimal,
 which enlarged artifacts without compactly storing the legacy representation.
 
 The compiler differential remains valuable during migration, but the compiler itself is due to
-be removed. A temporary oracle should not define QuestieTDB's permanent data precision.
+be removed. A temporary oracle should not define QuestieDB's permanent data precision.
 
 ## Decisions
 
@@ -36,8 +36,8 @@ The precision change does not broaden the public tuple shapes:
 
 ### 3. Compiler loss belongs to the migration differential
 
-A tool-only adapter projects QuestieTDB base values onto the legacy grid immediately before
-comparison with Questie's compiled reads. It runs exactly once on QuestieTDB's raw side; the
+A tool-only adapter projects QuestieDB base values onto the legacy grid immediately before
+comparison with Questie's compiled reads. It runs exactly once on QuestieDB's raw side; the
 already-compiled side is never transformed because compiler quantization is not idempotent.
 
 Questie's Dynamic Correction values bypassed compilation and were returned verbatim, so
@@ -47,12 +47,12 @@ differential.
 ### 4. Verification owns exact raw precision
 
 Verification, Source/Baked equivalence, reconstruction, and Golden snapshots validate exact raw
-QuestieTDB values. The compiler differential validates only what its legacy oracle can observe:
+QuestieDB values. The compiler differential validates only what its legacy oracle can observe:
 that base coordinates map to the same compiler-grid result and overlay coordinates remain raw.
 
 ### 5. Contract version remains 1
 
-QuestieTDB is still in heavy pre-release development. Coordinate values retain the same numeric
+QuestieDB is still in heavy pre-release development. Coordinate values retain the same numeric
 shapes and meaning for consumers, so this correction does not advance `contractVersion` or
 `minSupportedContract`.
 
@@ -66,7 +66,7 @@ shapes and meaning for consumers, so this correction does not advance `contractV
   grid bias.
 - Golden snapshots change for coordinate-bearing NPC, Object, and Quest fields.
 - The compiler differential cannot detect two raw values that fall in the same legacy grid
-  cell; QuestieTDB's own exact-value gates cover that precision.
+  cell; QuestieDB's own exact-value gates cover that precision.
 
 This ADR supersedes ADR 0003 Decision 1 and ADR 0004 Decision 3's statements that production
 normalization places coordinates on the 40.90 grid after Derived Passes. Derived Pass ordering

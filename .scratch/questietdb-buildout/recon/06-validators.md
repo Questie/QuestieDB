@@ -796,7 +796,7 @@ file; the pattern comes from the command line.
 
 1. **First failure aborts everything.** `os.exit(1)` lives inside each check, not in the driver.
    No aggregation, no summary, and later checks (and their correction files) never run.
-   A QuestieTDB port that collects all failures will surface *more* problems than Questie's CI
+   A QuestieDB port that collects all failures will surface *more* problems than Questie's CI
    currently shows.
 2. **The `return` after `os.exit(1)` is dead code in production.** It exists only so the busted
    tests (which stub `os.exit`) can assert on the result tables. Preserve the return values if
@@ -821,7 +821,7 @@ file; the pattern comes from the command line.
    questStarts/questEnds relation checks; cata is not in the CI matrix at all; localization runs
    zero validators.
 9. **`checkRequiredRaces`'s ceiling is a sum over `pairs(raceKeys)`**, including the composite
-   `ALL_ALLIANCE`/`ALL_HORDE` constants. It is deliberately loose. If QuestieTDB supplies a
+   `ALL_ALLIANCE`/`ALL_HORDE` constants. It is deliberately loose. If QuestieDB supplies a
    different `raceKeys` shape (e.g. only the individual bits) the ceiling drops and previously
    passing quests will fail.
 10. **`raceKeys` is expansion-dependent** and is itself computed from `Questie.IsClassic` /

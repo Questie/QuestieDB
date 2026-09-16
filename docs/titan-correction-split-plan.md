@@ -10,7 +10,7 @@ Questie PR [#7784](https://github.com/Questie/Questie/pull/7784) merged as:
 b1a6dc8c50a92ab88723a11556421d6462cdea49
 ```
 
-QuestieTDB is pinned to that commit. The reviewed accepted-record updates from the full matrix
+QuestieDB is pinned to that commit. The reviewed accepted-record updates from the full matrix
 were committed as `d2ac61d` (`test(corrections): refresh Titan split baselines`).
 
 ## Permanent design
@@ -19,9 +19,9 @@ These decisions are implemented and validated. They should not be reopened unles
 shows a defect:
 
 1. Titan Reforged is a Dynamic Correction set over the Wrath database, like SoD over Era.
-2. QuestieTDB continues to ship one Wrath TOC metadata store. It does not add a separate Titan
+2. QuestieDB continues to ship one Wrath TOC metadata store. It does not add a separate Titan
    artifact.
-3. Every provider from the four Titan entity files is Dynamic in QuestieTDB.
+3. Every provider from the four Titan entity files is Dynamic in QuestieDB.
 4. The complete Titan set registers only when the active flavor is Wrath and the active season
    ID is `109`.
 5. All four Titan source files are mandatory. Missing files are a hard port failure.
@@ -43,7 +43,7 @@ shows a defect:
 - [x] Regenerated the schema against a clean Questie project directory. No committed schema
   changes were required.
 - [x] Mechanically re-ported all Questie Correction files from the selected commit.
-- [x] Regenerated `QuestieTDB.toc`.
+- [x] Regenerated `QuestieDB.toc`.
 - [x] Added these committed provider files:
   - `src/corrections/Titan/titanReforgedQuestFixes.lua`
   - `src/corrections/Titan/titanReforgedNPCFixes.lua`
@@ -114,7 +114,7 @@ The permanent registration matrix is:
 - [x] Kept existing Darkmoon ownership exclusions.
 - [x] Updated the port exclusion helper to handle the ordinary comments attached to the
   upstream content-phase functions.
-- [x] Kept Titan quest tags and availability blacklists out of QuestieTDB.
+- [x] Kept Titan quest tags and availability blacklists out of QuestieDB.
 
 ### Tests
 
@@ -219,7 +219,7 @@ tools/port-corrections.lua
 
 ```text
 QUESTIE_COMMIT
-QuestieTDB.toc
+QuestieDB.toc
 src/corrections/manifest.lua
 src/corrections/Titan/*.lua
 src/corrections/Era/*.lua

@@ -1,12 +1,12 @@
-# QuestieTDB Public API
+# QuestieDB Public API
 
 Everything a consumer needs, without reading the source.
 
-QuestieTDB publishes a single global, `LibQuestieDB`, plus the shorthand Entity globals
+QuestieDB publishes a single global, `LibQuestieDB`, plus the shorthand Entity globals
 `QuestDB`, `NpcDB`, `ItemDB` and `ObjectDB`. Declare a hard dependency:
 
 ```toc
-## Dependencies: QuestieTDB
+## Dependencies: QuestieDB
 ```
 
 The client's red missing-dependency warning covers *absence*. It does not cover *presence with
@@ -16,7 +16,7 @@ the wrong version* — see [Contract version](#contract-version).
 
 ## LuaLS declarations
 
-Release zips include analysis-only declarations in `QuestieTDB/Types`. They cover the root
+Release zips include analysis-only declarations in `QuestieDB/Types`. They cover the root
 `LibQuestieDB` global, all entity methods, and every schema-backed named getter. WoW does not
 load these files because no TOC lists them.
 
@@ -26,7 +26,7 @@ Add the packaged folder to the consuming addon's `.luarc.json`. For sibling addo
 ```json
 {
   "workspace.library": [
-    "../QuestieTDB/Types"
+    "../QuestieDB/Types"
   ]
 }
 ```
@@ -228,7 +228,7 @@ drifting.
 ### Objective ordering hints
 
 Some Quest Corrections carry consumer hints about which objective type should be rendered first.
-They are not entity fields, so QuestieTDB publishes the five read-only ID sets separately:
+They are not entity fields, so QuestieDB publishes the five read-only ID sets separately:
 
 ```lua
 LibQuestieDB.ObjectiveFirst.killCreditObjectiveFirst
@@ -239,7 +239,7 @@ LibQuestieDB.ObjectiveFirst.spellObjectiveFirst
 ```
 
 Each table has the shape `{ [questId] = true }`. These are consumer-must-not-mutate tables;
-QuestieTDB publishes the underlying mutable values directly.
+QuestieDB publishes the underlying mutable values directly.
 
 Base-expansion hints are cumulative: TBC includes Era hints, Wrath includes Era and TBC hints,
 and so on through Mists. Seasonal hints require both their base flavor and active season. SoD
@@ -250,7 +250,7 @@ tables for a given flavor and season.
 A seasonal provider file may ship in a base-flavor addon because its Dynamic Corrections must be
 available when that season is active. Loading the file does not publish its objective-ordering
 hints when the season gate is closed. In the pinned Questie source, the Classic TOC lists SoD
-correction files unconditionally, but QuestieTDB deliberately excludes their load-time hints from
+correction files unconditionally, but QuestieDB deliberately excludes their load-time hints from
 plain Vanilla. [ADR 0012](./adr/0012-objective-first-applicability.md) records this applicability
 boundary and its relationship to pinned-source fidelity.
 
@@ -266,11 +266,11 @@ Two categories, declared by the author:
 
 | | |
 | --- | --- |
-| **Static** | Folded in during Generation. Only QuestieTDB can register these usefully — the generator runs offline with nothing else present. |
+| **Static** | Folded in during Generation. Only QuestieDB can register these usefully — the generator runs offline with nothing else present. |
 | **Dynamic** | Applied at query time through the Correction Overlay. **This is what a third-party addon registers.** |
 
-QuestieTDB-owned Dynamic Corrections may depend only on provider-owned data or generic
-character/game facts QuestieTDB determines itself: class, race, faction, expansion, and season.
+QuestieDB-owned Dynamic Corrections may depend only on provider-owned data or generic
+character/game facts QuestieDB determines itself: class, race, faction, expansion, and season.
 A Correction selected or constructed from consumer-owned runtime state or policy belongs to
 that consumer. Display suppression, consumer phases/settings, projections/caches, and
 asynchronous consumer-side repair are examples; register them through that consumer's
@@ -330,7 +330,7 @@ Within the corrected entity layer, the later-ranked writer wins at two levels:
 * inner: `loadOrder` within one owner
 
 `loadOrder` means "sequence within an owner", not a global sequence. Load order makes the outer
-level fall out naturally: `QuestieTDB` < `Questie` < third-party. An active non-English
+level fall out naturally: `QuestieDB` < `Questie` < third-party. An active non-English
 translation can replace the winning entity value for a translatable field; see
 [Localization](#localization).
 
@@ -341,10 +341,10 @@ error: the write is reported and dropped.
 
 ### When to apply
 
-QuestieTDB loads before its consumers, so it cannot apply their corrections at its own load
+QuestieDB loads before its consumers, so it cannot apply their corrections at its own load
 time:
 
-1. **QuestieTDB loads.** Registry available, base data queryable immediately, QuestieTDB's own
+1. **QuestieDB loads.** Registry available, base data queryable immediately, QuestieDB's own
    layer applied.
 2. **Your addon loads and registers.**
 3. **Your addon calls `ApplyRegisteredCorrections("MyAddon")`** in its init, then queries.
@@ -416,7 +416,7 @@ entirely under normal entity Correction precedence. See [ADR 0013](./adr/0013-lo
 
 ```lua
 LibQuestieDB.GetProvenance("Quest", 2, "name")
-    --> active Dynamic Translation Correction owner, "QuestieTDB" for a Base translation,
+    --> active Dynamic Translation Correction owner, "QuestieDB" for a Base translation,
     --> otherwise the winning entity Correction owner
 
 LibQuestieDB.l10n.GetProvenance("Quest", 2, "name")
@@ -497,12 +497,12 @@ invalidates only that entity type. Writes for inactive locales leave current cac
 Translation rows cannot create entities. They apply only while the entity exists in the
 composed entity database, including an entity added by a normal Dynamic Correction.
 
-QuestieTDB uses this interface for Titan Reforged's 14 zhCN Quest rows. That set registers only
+QuestieDB uses this interface for Titan Reforged's 14 zhCN Quest rows. That set registers only
 when the addon loads for Wrath season 109. Other flavors and seasons do not register it; changing
 locale selects or hides it without changing the English Titan entity Corrections.
 
 `extraObjectives` descriptions are different. Correction files author row slot `[3]` as an enUS
-localization key, and QuestieTDB preserves that English string. The entity localization overlay
+localization key, and QuestieDB preserves that English string. The entity localization overlay
 does not translate structured `extraObjectives` rows. Consumers must translate that description
 at render time with their own string-keyed localization function.
 
@@ -554,7 +554,7 @@ See [`support-data.md`](./support-data.md) for flavor selection and copied-data 
 
 ```lua
 LibQuestieDB.readMode                   --> "source" | "baked"
-LibQuestieDB.ModeIndicator.GetText()    --> "QuestieTDB: SOURCE MODE (Classic)" or nil
+LibQuestieDB.ModeIndicator.GetText()    --> "QuestieDB: SOURCE MODE (Classic)" or nil
 LibQuestieDB.ModeIndicator.GetStatus()  --> { mode =, expansion =, contractVersion = }
 ```
 
@@ -563,7 +563,7 @@ development environment from a clone alone, no download and no Lua toolchain. **
 reads from a generated TOC metadata store. The client picks by TOC suffix precedence, so a
 generated artifact wins simply by existing.
 
-A consumer should surface source mode somewhere permanent. QuestieTDB draws its own small
+A consumer should surface source mode somewhere permanent. QuestieDB draws its own small
 indicator as a fallback, but a consumer's own settings panel or map is the better home.
 
 ---
@@ -602,7 +602,7 @@ LibQuestieDB.InvalidateCache()             -- everything
 
 Applying corrections and changing locale already invalidate what they need to, the Name index
 included. Correction writes are scoped to their datatypes; a locale change covers all four.
-This API is for a consumer that mutates state QuestieTDB cannot see. Every form drops the Name
+This API is for a consumer that mutates state QuestieDB cannot see. Every form drops the Name
 index, including per-entity invalidation, because one entity's name can change.
 
 In Baked mode, the first read of a known entity decodes its CBOR scalar row and adopts that

@@ -1,6 +1,6 @@
 -- src/config.lua
 --
--- Shared configuration for the QuestieTDB addon and its offline generator.
+-- Shared configuration for the QuestieDB addon and its offline generator.
 --
 -- This file is dual-mode: the WoW client loads it as an addon file (where `...` is
 -- `addonName, addonTable`), and the offline tooling loads it with `dofile` (where `...` is
@@ -11,7 +11,7 @@ local _, LibQuestieDB = ...
 
 local config = {}
 
-config.addonName = "QuestieTDB"
+config.addonName = "QuestieDB"
 
 --- Bumped when the shape of the public API or the storage format changes in a way a consumer
 --- can observe. Questie checks this at init and fails with a specific message on mismatch.
@@ -31,7 +31,7 @@ config.maxValueLength = 1000
 --------------------------------------------------------------------------------------------
 --
 -- `suffix` is the modern underscore TOC suffix. The client searches for flavour-suffixed TOCs
--- first and falls back to the base `QuestieTDB.toc` only if none are found, which is what
+-- first and falls back to the base `QuestieDB.toc` only if none are found, which is what
 -- selects Baked mode over Source mode at no cost.
 --
 -- `expansion` is the directory under data/ holding this flavor's raw entity data.
@@ -356,7 +356,7 @@ function config.sourceFileList()
   return files
 end
 
---- Every interface version QuestieTDB supports, for the base TOC. A single comma-separated
+--- Every interface version QuestieDB supports, for the base TOC. A single comma-separated
 --- list is what lets one committed TOC load on any supported client, which is what source mode
 --- needs — a fresh clone has no suffixed TOC to match.
 function config.allInterfaceVersions()
