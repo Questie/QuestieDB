@@ -7,8 +7,20 @@
 ## Interface: 11508, 11509, 20506, 38000, 38001, 40402, 50503, 50504
 ## Title: QuestieDB
 ## Notes: |cFFFFD100(source mode)|r The database Questie consumes. No generated artifact present.
-## Author: Questie contributors
+## Author: Code: Logonz Data: Muehe/TheCrux(BreakBB)/Drejjmit/Dyaxler/Cheeq/TechnoHunter/Everyone else
 ## Version: 0.1.0
+## Category: Quests
+## Category-deDE: Quests
+## Category-esES: Misiones
+## Category-esMX: Misiones
+## Category-frFR: Quêtes
+## Category-itIT: Missioni
+## Category-koKR: 퀘스트
+## Category-ptBR: Missões
+## Category-ruRU: Задания
+## Category-zhCN: 任务
+## Category-zhTW: 任務
+## IconTexture: Interface\AddOns\QuestieDB\icons\QuestieTDB_64x64.png
 ## X-Contract-Version: 2
 ## X-Mode: source
 
