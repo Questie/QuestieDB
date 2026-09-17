@@ -67,7 +67,7 @@ Current Questie integration still loads its own support files and does not bind 
 - `src/support/_begin.lua` and `src/support/_end.lua`: load boundary.
 - `support/Zones/`, `support/QuestXP/`, `support/FactionTemplates/`, and `support/DropTables/`.
 - `test.lua`, suites `toc`, `support`, `generation-inputs`, and `questie-input-integrity`.
-- `validators/zones.lua` and the repository validator runner used by `tools/check.sh`.
+- `validators/zones.lua` and the repository validator runner used by `tools/cli/check.sh`.
 - Pinned Questie sources under `../Questie/Database/Zones/data`, `Database/QuestXP`, `Database/FactionTemplates`, and `Database/DropTables/data`.
 
 Preserve the deliberate Mists behavior in `config.supportData.perFlavor.Mists`:
@@ -128,7 +128,7 @@ git diff --check
 Before completion, run:
 
 ```sh
-tools/check.sh all --questie=../Questie
+tools/cli/check.sh all --questie=../Questie
 ```
 
 The full gate is heavy, generates artifacts, and writes under the checkout. Run it only in an isolated QuestieDB checkout or output arrangement that cannot alter a symlinked daily-driver addon. Get confirmation first if the checkout's safety is unclear.

@@ -60,7 +60,7 @@ shows a defect:
 - [x] Removed per-function variant-gate machinery from runtime registration and manifest
   generation.
 - [x] Removed conditional legacy-versus-split tests and counts.
-- [x] Made the four Titan file declarations unconditional in `tools/port-corrections.lua`.
+- [x] Made the four Titan file declarations unconditional in `tools/questie-sync/port-corrections.lua`.
 - [x] Confirmed no implementation reference to `LoadTitanReforgedFixes` remains.
 
 ### Permanent provider manifest
@@ -212,7 +212,7 @@ README.md
 src/corrections/register.lua
 src/corrections/registry.lua
 test.lua
-tools/port-corrections.lua
+tools/questie-sync/port-corrections.lua
 ```
 
 ### Mechanically generated or ported data

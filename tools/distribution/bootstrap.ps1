@@ -1,13 +1,13 @@
-# tools/bootstrap.ps1
+# tools/distribution/bootstrap.ps1
 #
-# Windows counterpart of tools/bootstrap.sh. Installs generated QuestieDB artifacts into a
+# Windows counterpart of tools/distribution/bootstrap.sh. Installs generated QuestieDB artifacts into a
 # developer's AddOns folder. A downloader, not a build tool — no Lua, no toolchain.
 #
 # All flavors are downloaded, so switching test clients needs no re-bootstrap.
 #
 # Usage:
-#   .\tools\bootstrap.ps1 -AddOns "C:\Program Files\World of Warcraft\_classic_era_\Interface\AddOns"
-#   .\tools\bootstrap.ps1 -AddOns ... -Tag build-a1b2c3d      # pin an exact release
+#   .\tools\distribution\bootstrap.ps1 -AddOns "C:\Program Files\World of Warcraft\_classic_era_\Interface\AddOns"
+#   .\tools\distribution\bootstrap.ps1 -AddOns ... -Tag build-a1b2c3d      # pin an exact release
 
 param(
     [Parameter(Mandatory = $true)][string] $AddOns,

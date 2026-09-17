@@ -3,7 +3,7 @@
 -- Turns loaded correction files into registry entries.
 --
 -- The correction files preserve Questie's source exactly outside the provider/consumer
--- ownership exclusions explicitly declared by `tools/port-corrections.lua`;
+-- ownership exclusions explicitly declared by `tools/questie-sync/port-corrections.lua`;
 -- `src/corrections/manifest.lua` says which functions each one provides and whether each is
 -- Static or Dynamic. That classification is **declared, never inferred** —
 -- folder names are not a reliable signal, as the prototype's `Sod/static/…` file registering
@@ -113,7 +113,7 @@ function register.FromManifest(flavor, moduleFor)
   -- metadata store, and ApplyStaticToEntities is only called by Source mode and the
   -- generator. Skip the registrations rather than build wrap() closures nothing can ever
   -- run — the packaged copies of these files have their static bodies stripped anyway
-  -- (tools/strip-static.lua, issue #5). Offline (`generator/runtime.lua`) and in Source
+  -- (tools/distribution/strip-static.lua, issue #5). Offline (`generator/runtime.lua`) and in Source
   -- mode `LibQuestieDB.mode` is never "baked", so statics register there as before.
   local registerStatics = LibQuestieDB.mode ~= "baked"
 

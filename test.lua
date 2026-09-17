@@ -382,10 +382,10 @@ end)
 suite("check-flow", function()
   local root = ".out/test-check-flow"
   commandSucceeded("rm -rf " .. shellQuote(root))
-  lib.mkdirp(root .. "/tools")
+  lib.mkdirp(root .. "/tools/cli")
   lib.mkdirp(root .. "/fake-bin")
-  lib.copyFile("questiedb", root .. "/questiedb")
-  lib.copyFile("tools/check.sh", root .. "/tools/check.sh")
+  lib.copyFile("questiedb.sh", root .. "/questiedb.sh")
+  lib.copyFile("tools/cli/check.sh", root .. "/tools/cli/check.sh")
 
   local fakeLua = root .. "/fake-lua"
   lib.writeAll(fakeLua, [[#!/usr/bin/env bash
@@ -420,8 +420,8 @@ exit 99
 set -eu
 printf 'python\tquestie=%s\t%s\n' "${QUESTIE_PATH:-}" "$*" >> "$CHECK_FLOW_LOG"
 ]])
-  check(commandSucceeded("chmod +x " .. shellQuote(root .. "/questiedb") .. " " ..
-    shellQuote(root .. "/tools/check.sh") .. " " .. shellQuote(fakeLua) .. " " ..
+  check(commandSucceeded("chmod +x " .. shellQuote(root .. "/questiedb.sh") .. " " ..
+    shellQuote(root .. "/tools/cli/check.sh") .. " " .. shellQuote(fakeLua) .. " " ..
     shellQuote(wrongLua) .. " " .. shellQuote(root .. "/fake-bin/lua5.1") .. " " ..
     shellQuote(root .. "/fake-bin/python3")),
     "full-flow fixture executables prepared")
@@ -457,7 +457,7 @@ printf 'python\tquestie=%s\t%s\n' "${QUESTIE_PATH:-}" "$*" >> "$CHECK_FLOW_LOG"
     local command = "cd " .. shellQuote(rootAbs) .. " && PATH=" ..
       shellQuote(rootAbs .. "/fake-bin") .. ":\"$PATH\" CHECK_FLOW_LOG=" ..
       shellQuote(logPath) .. failureEnvironment .. luaEnvironment ..
-      " bash tools/check.sh " .. arguments .. schedulingOption ..
+      " bash tools/cli/check.sh " .. arguments .. schedulingOption ..
       " --questie=/tmp/fake-questie" .. luaOption ..
       " > " .. shellQuote(outputPath) .. " 2>&1"
     return commandSucceeded(command)
@@ -477,7 +477,7 @@ printf 'python\tquestie=%s\t%s\n' "${QUESTIE_PATH:-}" "$*" >> "$CHECK_FLOW_LOG"
     end
     local command = "cd " .. shellQuote(rootAbs) .. " && PATH=" ..
       shellQuote(rootAbs .. "/fake-bin") .. ":\"$PATH\" CHECK_FLOW_LOG=" ..
-      shellQuote(logPath) .. " ./questiedb " .. arguments .. fixtureOptions ..
+      shellQuote(logPath) .. " ./questiedb.sh " .. arguments .. fixtureOptions ..
       " > " .. shellQuote(outputPath) .. " 2>&1"
     return commandSucceeded(command)
   end
@@ -565,7 +565,7 @@ printf 'python\tquestie=%s\t%s\n' "${QUESTIE_PATH:-}" "$*" >> "$CHECK_FLOW_LOG"
   -- they fail before the engine starts any work.
   check(runPublicFlow("", nil, false), "the argument-free public CLI prints help")
   local publicOutput = lib.readAll(outputPath)
-  check(publicOutput:find("Usage: ./questiedb", 1, true) ~= nil and
+  check(publicOutput:find("Usage: ./questiedb.sh", 1, true) ~= nil and
         not lib.fileExists(logPath),
     "public CLI help runs no tools")
   check(runPublicFlow("--help"), "the explicit public CLI help passes")
@@ -1608,7 +1608,7 @@ suite("corrections", function()
   lib.mkdirp(stripStage .. "/src/corrections/Cata")
   lib.copyFile("src/corrections/Cata/cataQuestFixes.lua",
     stripStage .. "/src/corrections/Cata/cataQuestFixes.lua")
-  check(commandSucceeded(shellQuote(LUA_BIN) .. " tools/strip-static.lua " ..
+  check(commandSucceeded(shellQuote(LUA_BIN) .. " tools/distribution/strip-static.lua " ..
     shellQuote(stripStage) .. " --quiet"),
     "package stripping invokes copied providers through the scoped Questie shim")
   commandSucceeded("rm -rf " .. shellQuote(stripStage))
@@ -1619,7 +1619,7 @@ end)
 --------------------------------------------------------------------------------------------
 
 suite("sod-required-races", function()
-  dofile("tools/sod-required-races.test.lua")(check, equal)
+  dofile("tools/validation/sod-required-races.test.lua")(check, equal)
 end)
 
 suite("derived-required-races", function()
@@ -3503,15 +3503,15 @@ end)
 --------------------------------------------------------------------------------------------
 
 suite("localization-overrides", function()
-  dofile("tools/localization-overrides.test.lua")(check, QUESTIE_PATH)
+  dofile("tools/questie-sync/localization-overrides.test.lua")(check, QUESTIE_PATH)
 end)
 
 suite("translation-corrections", function()
-  dofile("tools/translation-corrections.test.lua")(check, equal)
+  dofile("tools/validation/translation-corrections.test.lua")(check, equal)
 end)
 
 suite("titan-translations", function()
-  dofile("tools/titan-translations.test.lua")(check, equal, QUESTIE_PATH)
+  dofile("tools/questie-sync/titan-translations.test.lua")(check, equal, QUESTIE_PATH)
 end)
 
 --------------------------------------------------------------------------------------------
@@ -3519,11 +3519,11 @@ end)
 --------------------------------------------------------------------------------------------
 
 suite("objective-first", function()
-  dofile("tools/objective-first.test.lua")(check, QUESTIE_PATH)
+  dofile("tools/questie-sync/objective-first.test.lua")(check, QUESTIE_PATH)
 end)
 
 suite("objective-first-addon", function()
-  dofile("tools/objective-first-addon.test.lua")(check, QUESTIE_PATH)
+  dofile("tools/questie-sync/objective-first-addon.test.lua")(check, QUESTIE_PATH)
 end)
 
 --------------------------------------------------------------------------------------------
@@ -3531,7 +3531,7 @@ end)
 --------------------------------------------------------------------------------------------
 
 suite("support-fidelity", function()
-  local fidelity = dofile("tools/support-fidelity.lua")
+  local fidelity = dofile("tools/questie-sync/support-fidelity.lua")
   fidelity.run(check, QUESTIE_PATH)
 
   -- Mutate a temporary copy of real pinned input, never the oracle checkout. This proves
@@ -3561,7 +3561,7 @@ suite("support-fidelity", function()
 end)
 
 suite("support", function()
-  local fidelity = dofile("tools/support-fidelity.lua")
+  local fidelity = dofile("tools/questie-sync/support-fidelity.lua")
 
   -- The semantic comparator ignores formatting inside embedded Lua source, but rejects
   -- every kind of data drift. These controls exercise the same comparison used by the oracle.

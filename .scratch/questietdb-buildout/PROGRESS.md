@@ -473,7 +473,7 @@ expansions and Season of Discovery were entries in a table rather than new code.
 * `src/corrections/_begin.lua` / `_end.lua` — bracket the correction block in a TOC.
 * `src/corrections/enum/constants.lua` — 19 constant tables, generated.
 * `src/corrections/manifest.lua` — 30 files, generated, with the Static/Dynamic classification.
-* `tools/port-corrections.lua` — the one-shot port, re-runnable to re-sync.
+* `tools/questie-sync/port-corrections.lua` — the one-shot port, re-runnable to re-sync.
 * `generator/runtime.lua`, `generator/flavor.lua` — the generator stands up the *shipped*
   registry rather than a parallel one.
 
@@ -485,7 +485,7 @@ fork them from upstream permanently.
 
 They are copied **verbatim** instead, and `src/corrections/compat.lua` supplies the
 `QuestieLoader` / `QuestieDB` / `ZoneDB` / `QuestieProfessions` / `Phasing` / `l10n` surface
-they import. Re-syncing with upstream is `lua tools/port-corrections.lua ../Questie`.
+they import. Re-syncing with upstream is `lua tools/questie-sync/port-corrections.lua ../Questie`.
 
 The test suite asserts this mechanically: **all 30 ported files are byte-identical to
 Questie's**, checked on every run when a Questie checkout sits alongside.
@@ -499,7 +499,7 @@ definitions win the moment it loads.
 
 ### D9 — Constants are extracted, not transcribed
 
-`tools/port-corrections.lua` executes Questie's own sources under the mocked environment and
+`tools/questie-sync/port-corrections.lua` executes Questie's own sources under the mocked environment and
 dumps 19 constant tables — `questKeys`, `raceKeys`, `classKeys`, `sortKeys`, `specialFlags`,
 `factionIDs`, `zoneIDs`, `professionKeys`, `specializationKeys`, `rankNames`, `phases`,
 `waypointPresets`, `iconTypes`, and the rest. Same discipline as the schema, for the same
@@ -799,8 +799,8 @@ read changes, `GetRaw` still shows base data, and `GetProvenance` names the thir
 
 ## 16 — CI, release, and bootstrap ✅ (credentials are yours)
 
-**Built** — `.github/workflows/ci.yml`, `.github/workflows/release.yml`, `tools/package.sh`,
-`tools/bootstrap.sh`, `tools/bootstrap.ps1`.
+**Built** — `.github/workflows/ci.yml`, `.github/workflows/release.yml`, `tools/distribution/package.sh`,
+`tools/distribution/bootstrap.sh`, `tools/distribution/bootstrap.ps1`.
 
 **CI** runs on every commit: unit tests, then a five-way matrix that generates, round-trip
 verifies, runs source/baked equivalence, runs the validators, and re-generates to prove the
@@ -810,7 +810,7 @@ Two drift gates that would otherwise be silent:
 
 * **Schema drift** — `generate.lua meta` re-derives from Questie and `git diff --exit-code
   src/meta/` fails if the result differs. A field added upstream becomes a build failure.
-* **Correction drift** — `tools/port-corrections.lua` re-ports and diffs. Since the ported files
+* **Correction drift** — `tools/questie-sync/port-corrections.lua` re-ports and diffs. Since the ported files
   are byte-identical copies, any upstream edit shows up here.
 
 Freezing runs on one flavor per commit rather than all five: the pure-Lua substitute costs about
@@ -970,7 +970,7 @@ from a Questie checkout via `--questie=`. Moving it is a real decision about clo
 **8. Retiring the prototypes is prepared but not run**, and `GetterDB` still has no remote.
 (ticket 17)
 
-**9. CI has never executed.** There is no remote. `tools/package.sh` ran locally and produced a
+**9. CI has never executed.** There is no remote. `tools/distribution/package.sh` ran locally and produced a
 valid zip and manifest; the YAML has not been exercised by GitHub Actions, and no credentials
 were configured.
 

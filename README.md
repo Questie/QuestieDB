@@ -75,14 +75,14 @@ Three behaviours to internalise before writing anything:
 Use the root command for generation and validation workflows:
 
 ```sh
-./questiedb generate                    # generate every flavor
-./questiedb generate Vanilla            # generate one flavor
-./questiedb check Vanilla               # standard validation bundle for one flavor
-./questiedb verify equivalence Vanilla Mists
-./questiedb all                         # Generation, standard gates, Golden, and unit tests
+./questiedb.sh generate                    # generate every flavor
+./questiedb.sh generate Vanilla            # generate one flavor
+./questiedb.sh check Vanilla               # standard validation bundle for one flavor
+./questiedb.sh verify equivalence Vanilla Mists
+./questiedb.sh all                         # Generation, standard gates, Golden, and unit tests
 ```
 
-Run `./questiedb --help` for every gate and option. It requires Bash 5.1 or newer and selects
+Run `./questiedb.sh --help` for every gate and option. It requires Bash 5.1 or newer and selects
 `lua5.1`, or a `lua` command that reports Lua 5.1. `LUA` and `--lua=` can select another Lua
 5.1-compatible executable explicitly. The `freeze` gate supports Vanilla and Mists.
 
@@ -100,10 +100,10 @@ lua-language-server --check=src/types --checklevel=Warning --check_format=pretty
 python3 tools/differential/golden.py check Vanilla
 python3 tools/differential/compiler_diff.py Vanilla
 
-tools/check.sh                    # verify, equivalence, reconstruct, validators, differential
-tools/check.sh all                # Generation, standard gates, Golden, and unit tests
-tools/check.sh verify --flavors=Vanilla,Mists
-tools/check.sh determinism freeze --flavors=Vanilla
+tools/cli/check.sh                    # verify, equivalence, reconstruct, validators, differential
+tools/cli/check.sh all                # Generation, standard gates, Golden, and unit tests
+tools/cli/check.sh verify --flavors=Vanilla,Mists
+tools/cli/check.sh determinism freeze --flavors=Vanilla
 ```
 
 ### Local inputs and remaining Questie checks
@@ -130,8 +130,8 @@ pinned Questie checkout, defaulting to `../Questie`. Point `QUESTIE_PATH` or the
 Focused offline checks:
 
 ```sh
-lua5.1 tools/localization-inputs.test.lua
-lua5.1 tools/questie-checkout.test.lua
+lua5.1 tools/validation/localization-inputs.test.lua
+lua5.1 tools/questie-sync/questie-checkout.test.lua
 ```
 
 ### Keeping LuaLS declarations in sync
@@ -146,7 +146,7 @@ Update `src/types/consumer.test.lua` when the changed contract needs a semantic 
 Run the `lua-types` suite and LuaLS command above before packaging. `AGENTS.md` maps each kind
 of public change to the declaration files that own it.
 
-`tools/check.sh` remains the direct orchestration engine for automation and existing scripts.
+`tools/cli/check.sh` remains the direct orchestration engine for automation and existing scripts.
 It accepts the previous gate syntax and `--flavors=Vanilla,Mists`.
 
 The sweep parallelises by memory budget rather than core count, because the jobs are wildly
@@ -176,15 +176,15 @@ the Lua path, which it picks up from luarocks automatically. Accepted divergence
 Generation and the addon tooling use plain Lua 5.1 with no `lfs`, luarocks, or C dependency.
 Inputs are enumerated in `src/config.lua` rather than discovered by scanning directories. The
 compiler differential is the one exception because Questie's mocks require `bit32`.
-`tools/check.sh --questie=` selects the checkout for fidelity tests and the compiler
+`tools/cli/check.sh --questie=` selects the checkout for fidelity tests and the compiler
 differential; `QUESTIE_PATH` provides the same default for nested migration tools. Generation,
 Determinism, Reconstruction, Verification, and Equivalence need no external checkout.
 
 To refresh a local install instead of regenerating:
 
 ```sh
-tools/bootstrap.sh "/path/to/Interface/AddOns"           # latest stable release
-tools/bootstrap.sh "/path/to/Interface/AddOns" preview   # rolling development build
+tools/distribution/bootstrap.sh "/path/to/Interface/AddOns"           # latest stable release
+tools/distribution/bootstrap.sh "/path/to/Interface/AddOns" preview   # rolling development build
 ```
 
 ### Releases
@@ -237,7 +237,7 @@ see drafts, but only reads GitHub state. No live publication is covered by the o
 GitHub permissions and replacement behavior should first be exercised in a disposable repository,
 not against an installed development or production channel.
 
-Run the focused offline version checks with `lua5.1 tools/version.test.lua`.
+Run the focused offline version checks with `lua5.1 tools/validation/version.test.lua`.
 
 ### Re-syncing with Questie
 
@@ -258,7 +258,7 @@ Generation fetches them.
 ```sh
 git -C ../Questie checkout "$(cat QUESTIE_COMMIT)"
 lua5.1 generate.lua meta --questie=../Questie # schema -> src/meta/*Meta.lua
-lua5.1 tools/port-corrections.lua ../Questie  # corrections + constants
+lua5.1 tools/questie-sync/port-corrections.lua ../Questie  # corrections + constants
 lua5.1 generate.lua toc                      # refresh the committed Source-mode file list
 lua5.1 test.lua support support-fidelity     # check all copied support data and flavor selection
 lua5.1 test.lua objective-first              # check pinned hint contents and scope boundaries
@@ -283,12 +283,12 @@ before the result is filtered to existing entities and encoded. This sentinel be
 the Generation adapter; it is not part of `LibQuestieDB.l10n.SetCorrection`.
 
 The 24 support inputs, their pinned Questie paths, published fields, and Lua-source-string
-fields are listed in [`tools/support-inventory.lua`](tools/support-inventory.lua). See
+fields are listed in [`tools/questie-sync/support-inventory.lua`](tools/questie-sync/support-inventory.lua). See
 [`docs/support-data.md`](docs/support-data.md) before changing that inventory or support-file
 selection.
 
 The ported correction files preserve Questie's bytes except for explicit whole-function
-ownership exclusions in `tools/port-corrections.lua`; a compat shim supplies the module surface
+ownership exclusions in `tools/questie-sync/port-corrections.lua`; a compat shim supplies the module surface
 they import. The fidelity test compares every non-excluded byte and the port fails if an
 excluded block is absent or duplicated. To advance Questie, change `QUESTIE_COMMIT` first,
 check out that commit, then review schema drift, the Correction re-port, validators, compiler
@@ -322,7 +322,7 @@ data/                     raw entity data
 l10n/                     owned entity translations and static lookup overrides
 support/                  zones, quest XP, drop tables, faction templates
 
-questiedb                contributor command for generation and validation
+questiedb.sh             contributor command for generation and validation
 generate.lua              data + Static Corrections -> TOC
 verify.lua                round-trip verification
 equivalence.lua           source/baked equivalence, every read form, self-proving

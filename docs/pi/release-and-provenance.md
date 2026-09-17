@@ -21,7 +21,7 @@ stealing, ranked by recommendation.
 
 **This repo today:** `QUESTIE_COMMIT` records the global pinned upstream Questie commit, and
 the `correction-fidelity` test detects byte drift against that pinned checkout outside
-`tools/port-corrections.lua`'s explicitly declared provider/consumer ownership exclusions.
+`tools/questie-sync/port-corrections.lua`'s explicitly declared provider/consumer ownership exclusions.
 What remains missing from the retired design is finer-grained, per-file provenance: no manifest
 records each copied source path, byte count, and SHA-256. Recommended follow-up: emit a
 `PROVENANCE.tsv` from `port-corrections.lua` and byte-verify it in CI.
@@ -52,7 +52,7 @@ for every commit in a push. File under "known ceiling, known dodge."
 `bootstrap.sh` verified the checksum file's exact shape before touching anything
 (`bootstrap.sh:149-156`: exactly five SHA256SUMS lines, exactly one entry per asset),
 backed up all prior installed state, and rolled back on partial failure; PowerShell twin
-with the same contract. **This repo's** `tools/bootstrap.{sh,ps1}` verify checksums but
+with the same contract. **This repo's** `tools/distribution/bootstrap.{sh,ps1}` verify checksums but
 are lighter on backup/rollback — worth porting the prior-state backup if bootstrap
 becomes a contributor-facing daily tool.
 

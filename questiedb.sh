@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Root contributor command. Scheduling and gate implementation live in tools/check.sh.
+# Root contributor command. Scheduling and gate implementation live in tools/cli/check.sh.
 
 if (( BASH_VERSINFO[0] < 5 || (BASH_VERSINFO[0] == 5 && BASH_VERSINFO[1] < 1) )); then
     printf 'QuestieDB requires Bash 5.1 or newer; found %s.\n' "$BASH_VERSION" >&2
@@ -10,7 +10,7 @@ set -uo pipefail
 
 print_usage() {
     cat <<'EOF'
-Usage: ./questiedb <task> [task ...] [flavor ...] [options]
+Usage: ./questiedb.sh <task> [task ...] [flavor ...] [options]
 
 Common tasks:
   generate                 Generate baked artifacts
@@ -34,10 +34,10 @@ Options:
   -h, --help               Show this help
 
 Examples:
-  ./questiedb generate Vanilla
-  ./questiedb generate Vanilla Mists
-  ./questiedb check Vanilla
-  ./questiedb verify equivalence Vanilla Mists
+  ./questiedb.sh generate Vanilla
+  ./questiedb.sh generate Vanilla Mists
+  ./questiedb.sh check Vanilla
+  ./questiedb.sh verify equivalence Vanilla Mists
 EOF
 }
 
@@ -127,7 +127,7 @@ for arg in "$@"; do
             ;;
         --*)
             echo "unknown option: $arg" >&2
-            echo "Run ./questiedb --help for valid options." >&2
+            echo "Run ./questiedb.sh --help for valid options." >&2
             exit 2
             ;;
         *)
@@ -141,7 +141,7 @@ done
 
 if [ "${#tasks[@]}" -eq 0 ]; then
     echo "no task selected" >&2
-    echo "Run ./questiedb --help for usage." >&2
+    echo "Run ./questiedb.sh --help for usage." >&2
     exit 2
 fi
 
@@ -181,4 +181,4 @@ if [ "${#selected_flavors[@]}" -gt 0 ]; then
 fi
 
 root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
-exec "$BASH" "$root/tools/check.sh" "${tasks[@]}" "${options[@]}"
+exec "$BASH" "$root/tools/cli/check.sh" "${tasks[@]}" "${options[@]}"

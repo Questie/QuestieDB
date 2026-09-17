@@ -9,7 +9,7 @@ _G.LibStub = nil
 local generatorLoaded, generator = pcall(dofile, "generator/l10n.lua")
 _G.LibStub = savedLibStub
 assert(generatorLoaded, generator)
-local fidelity = dofile("tools/localization-overrides.lua")
+local fidelity = dofile("tools/questie-sync/localization-overrides.lua")
 
 ---@param check fun(condition: boolean, message: string)
 ---@param questiePath string

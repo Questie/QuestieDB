@@ -103,7 +103,7 @@ a storage format was rejected for artifact diffability.
 File with `gh issue create` per `agents/issue-tracker.md`; drafts here so nothing is lost:
 
 1. **Adopt byte-provenance discipline for copied upstream files.** PROVENANCE.tsv
-   (path, bytes, SHA-256, upstream commit) emitted by `tools/port-corrections.lua`, CI
+   (path, bytes, SHA-256, upstream commit) emitted by `tools/questie-sync/port-corrections.lua`, CI
    byte-verify. The adopt-soonest item in `pi/release-and-provenance.md`.
 2. **Fresh LuaLS consumer type stub** for the *current* API (packed `GetAll`,
    owner-scoped Corrections, ranged `RequireContract`). Written new — never ported from B

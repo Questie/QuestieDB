@@ -2,7 +2,7 @@
 -- the focused objective-first suite needs no entity payload generation.
 local lib = dofile("generator/lib.lua")
 local config = dofile("src/config.lua")
-local fidelity = dofile("tools/objective-first.lua")
+local fidelity = dofile("tools/questie-sync/objective-first.lua")
 -- Earlier suites may leave a LibStub mock that cannot register LibDeflate. Load the
 -- client's offline dependencies without it, then restore it even if loading fails.
 local savedLibStub = rawget(_G, "LibStub")
@@ -60,7 +60,7 @@ return function(check, questiePath)
       end
     end
     local lua = os.getenv("LUA") or "lua5.1"
-    assert(succeeds(quote(lua) .. " tools/strip-static.lua " .. quote(stage) .. " --quiet"),
+    assert(succeeds(quote(lua) .. " tools/distribution/strip-static.lua " .. quote(stage) .. " --quiet"),
       "staged package failed Static Correction stripping and per-file behavior parity")
     local stripped = lib.readAll(stage .. "/src/corrections/Era/classicQuestFixes.lua")
     check(stripped:find("Static body stripped at package time", 1, true) ~= nil,

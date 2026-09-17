@@ -4,7 +4,7 @@
 --
 -- The correction files under `src/corrections/<Expansion>/` preserve Questie's bytes exactly
 -- outside the provider/consumer ownership exclusions explicitly declared by
--- `tools/port-corrections.lua`.
+-- `tools/questie-sync/port-corrections.lua`.
 -- That fidelity avoids transcription errors across ~10 MB of hand-curated data and keeps
 -- upstream re-syncs mechanical: copy each file, then apply only the declared exclusions.
 --

@@ -14,7 +14,7 @@ see [Why this was not done automatically](#why-this-was-not-done-automatically).
 | --- | --- | --- |
 | `Getters/GetterDB/Meta/DumpFunctions.lua` | `generator/serialize.lua` | One generic serializer replaces the domain-specific dumpers, which produced byte-identical output but iterated with `pairs()` and so were not deterministic. Sparse-array nil holes, compact number formatting and the no-trailing-separator discipline carried over. |
 | `Getters/GetterDB/Corrections/Corrections.lua` | `src/corrections/registry.lua` | Load-order namespaces, corrections held behind functions, collision reporting. Registration became owner-scoped, and a collision no longer displaces the sitting entry. |
-| `Getters/GetterDB/Corrections/Enum/`, `Icons.lua` | `src/corrections/enum/constants.lua` | **Extracted from Questie rather than copied from the prototype**, by `tools/port-corrections.lua`. Same discipline as the schema: derived, so it cannot drift. |
+| `Getters/GetterDB/Corrections/Enum/`, `Icons.lua` | `src/corrections/enum/constants.lua` | **Extracted from Questie rather than copied from the prototype**, by `tools/questie-sync/port-corrections.lua`. Same discipline as the schema: derived, so it cannot drift. |
 | `toc-database/src/lib.lua` | `generator/lib.lua` | Chunked metadata emission with UTF-8-safe splitting. |
 | `toc-database/verify.lua` | `verify.lua` | Widened to run the shipped `src/` reader against the metadata emulator. |
 | `toc-database/test.lua` | `test.lua` | Rewritten around negative controls — a check that cannot fail is not a check. |

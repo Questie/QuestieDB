@@ -1,8 +1,8 @@
 -- Semantic support-data oracle. Runs through test.lua's support-fidelity suite, so both
--- the normal quality job and tools/check.sh all enforce it without generated entity data.
+-- the normal quality job and tools/cli/check.sh all enforce it without generated entity data.
 local lib = dofile("generator/lib.lua")
 local config = dofile("src/config.lua")
-local inventory = dofile("tools/support-inventory.lua")
+local inventory = dofile("tools/questie-sync/support-inventory.lua")
 
 local fidelity = {}
 

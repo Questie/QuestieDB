@@ -1,6 +1,6 @@
 -- Localized Generation and Reconstruction without any external Questie checkout.
 -- Uses real entity data and encoders, with tiny owned translation inputs in a temporary root.
--- Usage: lua5.1 tools/localization-inputs.test.lua
+-- Usage: lua5.1 tools/validation/localization-inputs.test.lua
 
 local lib = dofile("generator/lib.lua")
 local config = dofile("src/config.lua")

@@ -110,10 +110,10 @@ The SoD differential may fail before implementation because repairing that perso
 Before completion, run the repository's full gate against the pinned oracle:
 
 ```sh
-tools/check.sh all --questie=../Questie
+tools/cli/check.sh all --questie=../Questie
 ```
 
-`tools/check.sh all` is heavy, generates artifacts, and writes under the checkout. Run it only in an isolated QuestieDB checkout or output arrangement that cannot alter a symlinked daily-driver addon. Get confirmation first if the checkout's safety is unclear.
+`tools/cli/check.sh all` is heavy, generates artifacts, and writes under the checkout. Run it only in an isolated QuestieDB checkout or output arrangement that cannot alter a symlinked daily-driver addon. Get confirmation first if the checkout's safety is unclear.
 
 Also run:
 

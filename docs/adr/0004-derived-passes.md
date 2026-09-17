@@ -22,7 +22,7 @@ QuestieCorrections:PreCompile()            -- waypoint simplification, every NPC
 → compile
 ```
 
-None of them are correction *files*, so `tools/port-corrections.lua` — which byte-copies
+None of them are correction *files*, so `tools/questie-sync/port-corrections.lua` — which byte-copies
 `*Fixes.lua` and makes drift a build failure — never saw them. Two of them are not called by
 `cli/validate-*.lua` either, so neither Questie's own CI nor the first version of this
 differential executed them; both sides skipped them and they cancelled out.

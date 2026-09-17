@@ -6,7 +6,7 @@
 return function(check, equal, questiePath)
   local lib = dofile("generator/lib.lua")
   lib.assertQuestiePin(questiePath)
-  local oracle = dofile("tools/localization-overrides.lua").titan(questiePath)
+  local oracle = dofile("tools/questie-sync/localization-overrides.lua").titan(questiePath)
   local meta = dofile("src/meta/questMeta.lua")
 
   -- Capture the complete declaration through its public interface in a private environment.

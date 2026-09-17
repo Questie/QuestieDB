@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# tools/check.sh
+# tools/cli/check.sh
 #
 # Runs the gates across flavours in parallel, budgeted by memory rather than by core count.
 #
@@ -19,14 +19,14 @@
 # artifact. Explicit `determinism` checks form a second phase when requested.
 #
 # Usage:
-#   tools/check.sh                       verify equivalence reconstruct validators differential
-#   tools/check.sh verify equivalence    only these gates
-#   tools/check.sh all                   Generation, standard gates, Golden, and unit tests
-#   tools/check.sh determinism freeze    deterministic regeneration and freeze verification
-#   tools/check.sh --flavors=Vanilla,Mists
-#   tools/check.sh --budget-mb=4000      override the memory budget, maximum 2147483647 MB
-#   tools/check.sh --questie=../Questie  where Questie is checked out
-#   tools/check.sh --sequential          run one at a time, for comparison or a small machine
+#   tools/cli/check.sh                       verify equivalence reconstruct validators differential
+#   tools/cli/check.sh verify equivalence    only these gates
+#   tools/cli/check.sh all                   Generation, standard gates, Golden, and unit tests
+#   tools/cli/check.sh determinism freeze    deterministic regeneration and freeze verification
+#   tools/cli/check.sh --flavors=Vanilla,Mists
+#   tools/cli/check.sh --budget-mb=4000      override the memory budget, maximum 2147483647 MB
+#   tools/cli/check.sh --questie=../Questie  where Questie is checked out
+#   tools/cli/check.sh --sequential          run one at a time, for comparison or a small machine
 #
 # Exits non-zero if any job fails. Per-job logs land in .out/checks/.
 
@@ -36,7 +36,7 @@ if (( BASH_VERSINFO[0] < 5 || (BASH_VERSINFO[0] == 5 && BASH_VERSINFO[1] < 1) ))
 fi
 
 set -uo pipefail
-cd "$(dirname "${BASH_SOURCE[0]}")/.." || exit 1
+cd "$(dirname "${BASH_SOURCE[0]}")/../.." || exit 1
 
 LUA_EXPLICIT=0
 [ -n "${LUA:-}" ] && LUA_EXPLICIT=1

@@ -1,5 +1,5 @@
 #!/usr/bin/env lua
--- tools/strip-static.lua
+-- tools/distribution/strip-static.lua
 --
 -- Strips Static Correction function bodies from a staged package (issue #5).
 --
@@ -10,7 +10,7 @@
 -- correction file is data the client parses at login and can never use.
 --
 -- This tool rewrites the STAGED COPIES only. `src/corrections/` in the repository preserves
--- every upstream byte outside declared ownership exclusions, so `tools/port-corrections.lua`
+-- every upstream byte outside declared ownership exclusions, so `tools/questie-sync/port-corrections.lua`
 -- and the CI drift gate keep working — they compare the source tree, never the artifact.
 --
 -- Safety is layered, and every failure aborts packaging:
@@ -27,8 +27,8 @@
 -- module-level side effect ever moves inside a static body, the parity check fails loudly
 -- instead of the hint silently disappearing from shipped packages.
 --
--- Usage: lua5.1 tools/strip-static.lua <stagedAddonDir> [--quiet]
---   e.g. lua5.1 tools/strip-static.lua .out/stage/QuestieDB
+-- Usage: lua5.1 tools/distribution/strip-static.lua <stagedAddonDir> [--quiet]
+--   e.g. lua5.1 tools/distribution/strip-static.lua .out/stage/QuestieDB
 --
 -- Run from the repository root: originals are read from src/corrections/ for the
 -- pre-strip identity check and the behavior parity check.
@@ -53,7 +53,7 @@ for _, value in ipairs(arg or {}) do
   end
 end
 if not stagedDir then
-  io.stderr:write("usage: lua5.1 tools/strip-static.lua <stagedAddonDir> [--quiet]\n")
+  io.stderr:write("usage: lua5.1 tools/distribution/strip-static.lua <stagedAddonDir> [--quiet]\n")
   os.exit(2)
 end
 
@@ -82,7 +82,7 @@ local function isHeader(line, functionName)
 end
 
 local STUB_BODY = {
-  "  -- Static body stripped at package time (tools/strip-static.lua): this correction is",
+  "  -- Static body stripped at package time (tools/distribution/strip-static.lua): this correction is",
   "  -- already folded into the TOC metadata store. The repository copy keeps the full",
   "  -- upstream-identical body.",
   "  return {}",

@@ -20,7 +20,7 @@
 -- ## Why this is a transcription rather than a byte-copy
 --
 -- `RamerDouglasPeucker.lua` IS byte-copied (src/derived/RamerDouglasPeucker.lua, diffed by
--- tools/port-corrections.lua). `OptimizeWaypoints` cannot be: it is a method on
+-- tools/questie-sync/port-corrections.lua). `OptimizeWaypoints` cannot be: it is a method on
 -- `QuestieCorrections`, the orchestrator QuestieDB deliberately replaced, and copying that
 -- file would drag in the correction-loading this project owns. So this is hand-carried code,
 -- and the guard against upstream drift is the reference differential — if upstream changes the

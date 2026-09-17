@@ -82,7 +82,7 @@ The four baselined Vanilla classes reproduced **to the row**: `Object.spawns` ab
 the recorded baseline.
 
 The five extra rows are all upstream data drift between 11.33.2, which
-`tools/port-corrections.lua` was last run against, and the 11.36.1 in the client. Each was
+`tools/questie-sync/port-corrections.lua` was last run against, and the 11.36.1 in the client. Each was
 confirmed at the source line, so all five should disappear on the next re-sync and none of
 them is a QuestieDB defect:
 
@@ -327,7 +327,7 @@ Each item is behavior that would otherwise be lost by deleting the compiler and 
 - [x] **QuestieDB's waypoint pass is verified at zero divergences** on all five flavours, so
       `QuestieCorrections:PreCompile()` and `OptimizeWaypoints` can be deleted from Questie at
       switch-over. `Modules/Libs/RamerDouglasPeucker.lua` is byte-copied into QuestieDB
-      (`src/derived/RamerDouglasPeucker.lua`) and re-diffed by `tools/port-corrections.lua`, so
+      (`src/derived/RamerDouglasPeucker.lua`) and re-diffed by `tools/questie-sync/port-corrections.lua`, so
       it goes too — but note QuestieDB *transcribes* `OptimizeWaypoints` itself, and the
       reference differential is the only thing guarding that transcription.
 - [x] **Consume QuestieDB's derived `requiredRaces` values.** The migration branch no longer

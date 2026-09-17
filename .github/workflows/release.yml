@@ -97,11 +97,11 @@ jobs:
 
       - name: Version tests (offline)
         working-directory: QuestieDB
-        run: lua5.1 tools/version.test.lua
+        run: lua5.1 tools/validation/version.test.lua
 
       - name: Local localization tests (offline)
         working-directory: QuestieDB
-        run: lua5.1 tools/localization-inputs.test.lua
+        run: lua5.1 tools/validation/localization-inputs.test.lua
 
       - name: Materialize the schema
         working-directory: QuestieDB
@@ -114,7 +114,7 @@ jobs:
       - name: Fail on correction drift
         working-directory: QuestieDB
         run: |
-          lua5.1 tools/port-corrections.lua ../Questie
+          lua5.1 tools/questie-sync/port-corrections.lua ../Questie
           git diff --exit-code src/corrections/ src/derived/RamerDouglasPeucker.lua || {
             echo "::error::Ported Corrections or copied libraries differ from Questie's. Review and commit the re-port."
             exit 1
@@ -174,7 +174,7 @@ jobs:
 
       - name: Package and write the manifest
         working-directory: QuestieDB
-        run: bash tools/package.sh all
+        run: bash tools/distribution/package.sh all
 
       - name: Hand the packaged release to publish
         uses: actions/upload-artifact@v7

@@ -2,7 +2,7 @@
 local lib = dofile("generator/lib.lua")
 local config = dofile("src/config.lua")
 config.correctionManifest = dofile("src/corrections/manifest.lua")
-local fidelity = dofile("tools/objective-first.lua")
+local fidelity = dofile("tools/questie-sync/objective-first.lua")
 
 ---@param check fun(condition: boolean, message: string)
 ---@param questiePath string

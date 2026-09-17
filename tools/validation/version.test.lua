@@ -1,9 +1,9 @@
 #!/usr/bin/env lua
--- tools/version.test.lua
+-- tools/validation/version.test.lua
 --
 -- Version validation and real TOC Generation in an isolated directory. No network calls or
 -- writes to the checkout's Source/Baked TOCs.
--- Usage: lua5.1 tools/version.test.lua
+-- Usage: lua5.1 tools/validation/version.test.lua
 
 local lib = dofile("generator/lib.lua")
 local version = dofile("generator/version.lua")

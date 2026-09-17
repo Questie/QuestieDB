@@ -84,7 +84,7 @@ The public `ObjectiveFirst` value and all five table fields are already declared
 - `src/config.lua`, `config.correctionFiles`, `sourceFileList`, and `bakedFileList`: file selection.
 - `src/corrections/register.lua`: expansion, SoD, and Titan gates that currently run after side effects.
 - `src/corrections/*/*QuestFixes.lua`: top-level hint assignments.
-- `tools/strip-static.lua`: package-time side-effect preservation checks.
+- `tools/distribution/strip-static.lua`: package-time side-effect preservation checks.
 - `test.lua`, suites `toc`, `corrections`, `correction-fidelity`, `personas`, `lua-types`, and package-strip coverage within the correction tests.
 - `src/types/General.t.lua`, `src/types/LibQuestieDB.t.lua`, and `src/types/consumer.test.lua`: existing public declaration.
 - Pinned Questie TOCs and correction initialization under `../Questie`.
@@ -138,7 +138,7 @@ Run the repository's package-strip-focused correction checks if implementation a
 Before completion, run:
 
 ```sh
-tools/check.sh all --questie=../Questie
+tools/cli/check.sh all --questie=../Questie
 ```
 
 The full gate is heavy, generates artifacts, and writes under the checkout. Run it only in an isolated QuestieDB checkout or output arrangement that cannot alter a symlinked daily-driver addon. Get confirmation first if the checkout's safety is unclear.

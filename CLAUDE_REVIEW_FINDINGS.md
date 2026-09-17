@@ -76,7 +76,7 @@ public function. Across all 29 ported files that finds exactly one hit — this 
 
 ### B2 — `git bisect` is broken across the largest change of the day
 
-`tools/port-corrections.lua:471` vs `generator/lib.lua:251` · VERIFIED
+`tools/questie-sync/port-corrections.lua:471` vs `generator/lib.lua:251` · VERIFIED
 
 `port-corrections.lua` calls `lib.assertQuestiePin` from `029c716`, but `generator/lib.lua` does
 not define it until `ee74e57`, three commits later.
@@ -132,7 +132,7 @@ never validates. Both provenance holes below are consequences.
 **B4a — `--no-l10n` skips the pin check entirely.** `generate.lua:317` nests `assertQuestiePin`
 inside `if not opts.noL10n`, while the stamp at `:286` is unconditional.
 `generate.lua Vanilla --no-l10n --questie=<any other git repo>` exits 0 and writes a false
-`X-QUESTIE-COMMIT` (VERIFIED). `tools/package.sh:81-86` only checks the five artifacts agree
+`X-QUESTIE-COMMIT` (VERIFIED). `tools/distribution/package.sh:81-86` only checks the five artifacts agree
 with each other, never against `QUESTIE_COMMIT`, so five such artifacts package cleanly and
 `release.json` publishes the wrong commit. Reconstruct cannot catch it: `X-QUESTIE-COMMIT` is in
 `HEADER_KEYS` (`reconstruct.lua:147`) and excluded from comparison. The comment directly above
@@ -145,7 +145,7 @@ reachable from CI.
 
 **B4b — A dirty checkout at the correct SHA passes every gate.** Nothing anywhere checks whether
 the Questie checkout is dirty; there is no `git status --porcelain` in `generator/lib.lua`,
-`generate.lua`, `compiler_diff.py` or `tools/package.sh`. VERIFIED end to end: a reviewer
+`generate.lua`, `compiler_diff.py` or `tools/distribution/package.sh`. VERIFIED end to end: a reviewer
 checked out Questie at the pin, then edited
 `Localization/lookups/Classic/lookupQuests/deDE.lua` so it stayed valid Lua but held one quest
 instead of 4257 — what a bad merge or truncated rebase produces.
@@ -177,7 +177,7 @@ passing check, and there is exactly one place to add a dirty-tree check.
 
 ### H1 — `validators/run.lua --self-check` is invoked by nothing
 
-`validators/run.lua:442`, `tools/check.sh:272`, `ci.yml:123`, `release.yml:99` · VERIFIED
+`validators/run.lua:442`, `tools/cli/check.sh:272`, `ci.yml:123`, `release.yml:99` · VERIFIED
 
 `83e6378` added a self-check. All three call sites run `validators/run.lua <flavor>` bare. Both
 sibling gates pass the flag at all six of their call sites (`check.sh:277,282`, `ci.yml:132,190`,
@@ -251,13 +251,13 @@ weeks, and expensive to diagnose because both QuestieDB modes agree with each ot
 
 ### H4 — `check.sh test` is exempt from the pin preflight and self-skips to green
 
-`tools/check.sh:67-69`, `test.lua:193,933-936` · VERIFIED
+`tools/cli/check.sh:67-69`, `test.lua:193,933-936` · VERIFIED
 
 `needs_questie` lists only `generate|determinism|reconstruct|differential`. `test.lua:24` reads
 `QUESTIE_PATH`; `:935` and the reconstruct-control suite skip when no checkout exists; `:193`
 asserts the pin only `if gitCommit ~= 40 zeros`.
 
-`tools/check.sh test` with no `../Questie` gives `PASS test  759 checks, 0 failed`, exit 0,
+`tools/cli/check.sh test` with no `../Questie` gives `PASS test  759 checks, 0 failed`, exit 0,
 while `.out/checks/test.log` holds `SKIP correction-fidelity: no Questie checkout` and
 `SKIP reconstruct-control: no pinned Questie checkout`. Neither SKIP reaches the summary. The
 one suite comparing corrections against Questie reports green having never run — in the commit
@@ -269,13 +269,13 @@ the suite prints PASS.
 
 ### H5 — `check.sh all` is not every gate, and discards a preceding gate
 
-`tools/check.sh:55` · VERIFIED
+`tools/cli/check.sh:55` · VERIFIED
 
 ```
 all)  GATES=(generate verify equivalence reconstruct validators differential golden test) ;;
 ```
 
-It assigns rather than appends, and omits `determinism` and `freeze`. `tools/check.sh
+It assigns rather than appends, and omits `determinism` and `freeze`. `tools/cli/check.sh
 determinism all` never runs determinism, never lists it in the summary, prints "all stages
 passed", exit 0. Reversing the words does produce a determinism phase. Both `check.sh:23` and
 `README.md:76` document `all` as "every gate".
@@ -344,7 +344,7 @@ closes it.
 
 ### M3 — Published bytes are not the bytes the gates read
 
-`tools/package.sh:70,113`, `release.yml:8-9,108-110` · VERIFIED
+`tools/distribution/package.sh:70,113`, `release.yml:8-9,108-110` · VERIFIED
 
 `strip-static.lua` rewrites the staged correction files to remove Static function bodies, in the
 last step before upload, after every gate. Every gate reads `src/corrections/` in the working
@@ -378,7 +378,7 @@ Already corrected in ADR 0003 and `DESIGN.md:483`.
 
 ### M5 — The drift gate is blind to upstream additions
 
-`ci.yml:46`, `release.yml:57`, `tools/port-corrections.lua:380-382,411-423` · VERIFIED
+`ci.yml:46`, `release.yml:57`, `tools/questie-sync/port-corrections.lua:380-382,411-423` · VERIFIED
 
 `git diff --exit-code` reports modifications to tracked files only and returns 0 for untracked
 files. `port-corrections.lua` iterates a hardcoded `FILES` table rather than enumerating
@@ -472,7 +472,7 @@ same locales.
 
 ### M10 — `package.sh` skips a missing TOC and exits 0
 
-`tools/package.sh:56-59` · VERIFIED
+`tools/distribution/package.sh:56-59` · VERIFIED
 
 `if [ ! -f "$TOC" ]; then echo "... skipping" >&2; continue; fi`. `if-no-files-found: error`
 (`release.yml:118`) only checks that *some* file exists.
@@ -581,13 +581,13 @@ when the checkout is absent, or uses a superseded command name.
 | L9 | `generator/lib.lua:258` | A 40-zero `QUESTIE_COMMIT` passes the regex, and `gitCommit` returns 40 zeros on git failure, so on a git-less machine it validates ANY path. `test.lua:206` uses 40 zeros as its "wrong commit" fixture and `test.lua:255` accepts it as valid — the suite treats it as both. |
 | L10 | `generator/lib.lua:266` | `assertQuestiePin(nil)` crashes with an internal `bad argument #1 to 'format'` rather than a clear error. |
 | L11 | `generator/l10n.lua:128,135` | `stats.missingFiles` is accumulated and never read; the only in-band record that extraction skipped a file. |
-| L12 | `tools/check.sh:135-148,167` | `reap_one` returning 1 spins forever; silently requires bash >= 5.1 (`wait -n -p`) and >= 4.0 (`local -A`). Reproduced: 200,001 iterations, no progress, 100% CPU. CI is bash 5.2, unaffected. |
-| L13 | `tools/check.sh:288-293` | An empty job list reports success: `check.sh verify --flavors=` and `check.sh freeze --flavors=Cata` both exit 0 having run nothing. |
-| L14 | `tools/check.sh:91,95,156` | A non-numeric `--budget-mb` disables the budget instead of rejecting it; `--budget-mb=abc` started all 5 jobs at once. |
-| L15 | `tools/check.sh:160` | No cleanup trap; SIGINT to `check.sh all` orphans up to 26 lua/python processes at ~1.7 GB each. |
-| L16 | `tools/check.sh:74` | The pin preflight surfaces as a raw Lua traceback with a `lua5.1:` prefix, making the repo's front-door failure look like a crash. Fix: wrap in `pcall`, write to stderr, `os.exit(1)`. |
-| L17 | `tools/check.sh:92,235` | `sha256sum` is GNU-only with no fallback, so the determinism gate cannot run on macOS. |
-| L18 | `tools/check.sh:102-104` | `printf '%q'` breaks a multi-word `--lua`; `--lua="lua5.1 -W"` exits 127. Paths with spaces now work correctly, which is a genuine improvement. |
+| L12 | `tools/cli/check.sh:135-148,167` | `reap_one` returning 1 spins forever; silently requires bash >= 5.1 (`wait -n -p`) and >= 4.0 (`local -A`). Reproduced: 200,001 iterations, no progress, 100% CPU. CI is bash 5.2, unaffected. |
+| L13 | `tools/cli/check.sh:288-293` | An empty job list reports success: `check.sh verify --flavors=` and `check.sh freeze --flavors=Cata` both exit 0 having run nothing. |
+| L14 | `tools/cli/check.sh:91,95,156` | A non-numeric `--budget-mb` disables the budget instead of rejecting it; `--budget-mb=abc` started all 5 jobs at once. |
+| L15 | `tools/cli/check.sh:160` | No cleanup trap; SIGINT to `check.sh all` orphans up to 26 lua/python processes at ~1.7 GB each. |
+| L16 | `tools/cli/check.sh:74` | The pin preflight surfaces as a raw Lua traceback with a `lua5.1:` prefix, making the repo's front-door failure look like a crash. Fix: wrap in `pcall`, write to stderr, `os.exit(1)`. |
+| L17 | `tools/cli/check.sh:92,235` | `sha256sum` is GNU-only with no fallback, so the determinism gate cannot run on macOS. |
+| L18 | `tools/cli/check.sh:102-104` | `printf '%q'` breaks a multi-word `--lua`; `--lua="lua5.1 -W"` exits 127. Paths with spaces now work correctly, which is a genuine improvement. |
 | L19 | `compiler_diff.py:259-262` | A flavor with no recorded baseline and an empty dump exits 0 with "No baseline recorded". `--self-check` closes it and all three automated callers pass it. |
 | L20 | `compiler_diff.py:113-123` | `load()` silently drops malformed lines with no counter, understating the "compared" total. |
 | L21 | `validators/run.lua:149-153` | A display name with an unbalanced `(` defeats `%b()` and leaks the whole name into the fingerprint. Exactly one such name exists: NPC 43040 "Tock Sprysprocket (Goggles". |
@@ -697,7 +697,7 @@ against `QUESTIE_COMMIT` and fails closed:
 `package.sh:83-88` adds a second layer refusing to write a manifest whose artifacts disagree on
 `X-QUESTIE-COMMIT`.
 
-**`tools/check.sh` failure propagation is sound.** `RESULT[$label]` defaults to 1, so an
+**`tools/cli/check.sh` failure propagation is sound.** `RESULT[$label]` defaults to 1, so an
 unrecorded job is FAIL by construction. Run against zero artifacts: exit 1, 4 FAIL / 2 PASS. A
 failing generate job stops phases 2 and 3. No `continue-on-error` or `|| true` anywhere in
 `.github/`. No `local x=$(cmd)` masking. The memory budget is never a divisor, so no

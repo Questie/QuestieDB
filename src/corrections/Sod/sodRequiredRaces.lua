@@ -1,4 +1,4 @@
--- QuestieDB-authored SoD corrections. This file is not copied by tools/port-corrections.lua
+-- QuestieDB-authored SoD corrections. This file is not copied by tools/questie-sync/port-corrections.lua
 -- and is registered separately from its copied-source manifest. It lives beside the other
 -- SoD data while upstream synchronization leaves these owned rows untouched.
 --

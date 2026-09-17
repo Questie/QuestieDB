@@ -41,7 +41,7 @@ change when any of these contracts change:
   Correction entries and callbacks — update its shared alias in `General.t.lua`;
 - the exported Correction API changes — update both `General.t.lua` and
   `LibQuestieDB.t.lua`;
-- type packaging paths or the shipped declaration set changes — update `tools/package.sh`,
+- type packaging paths or the shipped declaration set changes — update `tools/distribution/package.sh`,
   the LuaLS tests, and the consumer documentation together.
 
 Internal refactors that preserve these contracts do not require a type change. Keep declarations

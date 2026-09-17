@@ -1,5 +1,5 @@
 -- Offline integration tests using real Git and a local upstream repository.
--- Run from the repository root: lua5.1 tools/questie-checkout.test.lua
+-- Run from the repository root: lua5.1 tools/questie-sync/questie-checkout.test.lua
 
 local lib = dofile("generator/lib.lua")
 

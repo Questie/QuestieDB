@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# tools/package.sh
+# tools/distribution/package.sh
 #
 # Packages generated artifacts and writes the release manifest.
 #
@@ -7,7 +7,7 @@
 # no-C-dependency rule exists so contributors can regenerate with a bare interpreter — it does
 # not extend to packaging, which only ever runs in CI or on a maintainer's machine.
 #
-# Usage: tools/package.sh <Vanilla|TBC|Wrath|Cata|Mists|all>
+# Usage: tools/distribution/package.sh <Vanilla|TBC|Wrath|Cata|Mists|all>
 
 set -euo pipefail
 
@@ -88,7 +88,7 @@ for FLAVOR in "${FLAVORS[@]}"; do
     # already folded into the metadata store — 94-96% of the bytes (issue #5). Strip the
     # staged copies; src/corrections/ keeps every upstream byte outside the declared ownership
     # exclusions, which is what the drift gate and port-corrections compare.
-    "$LUA" tools/strip-static.lua "$STAGE/QuestieDB"
+    "$LUA" tools/distribution/strip-static.lua "$STAGE/QuestieDB"
 
     ZIP="$DIST/QuestieDB-${FLAVOR}.zip"
     (cd "$STAGE" && zip -qr9X "../../$ZIP" QuestieDB)
@@ -133,7 +133,7 @@ if [ ${#entries[@]} -eq 5 ]; then
     done
     stage_types "$STAGE/QuestieDB"
 
-    "$LUA" tools/strip-static.lua "$STAGE/QuestieDB"
+    "$LUA" tools/distribution/strip-static.lua "$STAGE/QuestieDB"
 
     ZIP="$DIST/QuestieDB-all.zip"
     (cd "$STAGE" && zip -qr9X "../../$ZIP" QuestieDB)
@@ -183,7 +183,7 @@ rm -rf "$STAGE"
     echo "sha256sum -c <(jq -r '.artifacts[] | \"\\(.sha256)  \\(.file)\"' release.json)"
     echo '```'
     echo
-    echo "Or let \`tools/bootstrap.sh\` do it."
+    echo "Or let \`tools/distribution/bootstrap.sh\` do it."
 } > "$DIST/RELEASE_NOTES.md"
 
 echo "wrote $DIST/release.json"

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# tools/bootstrap.sh
+# tools/distribution/bootstrap.sh
 #
 # Installs generated QuestieDB artifacts into a developer's AddOns folder, so refreshing a
 # local copy is one command instead of a 50-second regeneration.
@@ -11,9 +11,9 @@
 #   * **all flavors are downloaded**, so switching test clients needs no re-bootstrap
 #
 # Usage:
-#   tools/bootstrap.sh <AddOns-path> [tag]
-#   tools/bootstrap.sh "/c/Program Files/World of Warcraft/_classic_era_/Interface/AddOns"
-#   tools/bootstrap.sh ~/wow/Interface/AddOns build-a1b2c3d      # pin an exact release
+#   tools/distribution/bootstrap.sh <AddOns-path> [tag]
+#   tools/distribution/bootstrap.sh "/c/Program Files/World of Warcraft/_classic_era_/Interface/AddOns"
+#   tools/distribution/bootstrap.sh ~/wow/Interface/AddOns build-a1b2c3d      # pin an exact release
 
 set -euo pipefail
 

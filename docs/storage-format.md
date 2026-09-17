@@ -212,7 +212,7 @@ Every generated `.toc` carries provenance:
 `X-QUESTIE-COMMIT` retains the legacy import/schema baseline from `QUESTIE_COMMIT` during
 migration. Localized Generation reads that pin file but does not inspect or fetch a Questie
 checkout. Intentional `--no-l10n` artifacts use forty zeros for this header. The manifest keeps
-the corresponding `questieCommit` field; `tools/package.sh` rejects artifacts with different
+the corresponding `questieCommit` field; `tools/distribution/package.sh` rejects artifacts with different
 baseline stamps in one release.
 
 Localization sources are owned in `l10n/`, so `X-BUILD-COMMIT` identifies their revision along
