@@ -4,8 +4,10 @@
 -- Storage codecs, read semantics, workflow contracts, and the negative controls that prove
 -- the verification gates can fail.
 --
--- Plain Lua 5.1 for database tests; Python's standard library handles orchestration and
--- filesystem fixtures. No busted, luarocks, or third-party Python packages are required.
+-- Deliberately dependency-free: plain Lua 5.1, no busted, no luarocks, no Python. The few
+-- filesystem operations Lua lacks go through tools/validation/test-files.lua, which uses the
+-- platform's own shell commands. The guard has to be present in CI rather than conditional
+-- on a toolchain being installed.
 --
 -- Usage:
 --   lua test.lua                 every suite

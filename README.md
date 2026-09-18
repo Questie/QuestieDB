@@ -72,7 +72,52 @@ Three behaviours to internalise before writing anything:
 
 ## For contributors
 
-Use the root command for generation and validation workflows:
+There are two tiers of tooling. Correction work needs only a Lua interpreter, on any
+operating system. The full validation and release toolchain adds Python.
+
+### Working on corrections
+
+Corrections are the same files as Questie's `Database/Corrections`, under
+`src/corrections/<expansion>/`, and the
+[Questie wiki page on corrections](https://github.com/Questie/Questie/wiki/Corrections) still
+applies. A clone junctioned or symlinked into `Interface/AddOns` already runs your edits live in
+Source mode; nothing needs generating for that. Generation is how you produce the Baked
+artifact Questie ships, and how you run the offline checks against your change.
+
+Install Lua 5.1. LuaJIT also works and reports itself as Lua 5.1:
+
+| | |
+| --- | --- |
+| Windows | `scoop install luajit`, or a LuaBinaries 5.1 `lua.exe`, somewhere on `PATH` |
+| macOS | `brew install lua@5.1` or `brew install luajit` |
+| Linux | `apt install lua5.1`, or your distribution's Lua 5.1 package |
+
+Check with `lua -v`. It must print `Lua 5.1` or `LuaJIT`; the scripts refuse any other version
+with a message pointing back here. The executable is `lua5.1` on Debian-family Linux and usually
+`lua` or `luajit` elsewhere; substitute yours in the commands below.
+
+The loop, from the repository root:
+
+```sh
+lua5.1 generate.lua Vanilla          # regenerate one flavor (Vanilla also serves SoD)
+lua5.1 verify.lua Vanilla            # every read of the artifact matches the corrected input
+lua5.1 validators/run.lua Vanilla    # cross-entity invariants; fails only on findings not in the baseline
+```
+
+Flavors are `Vanilla TBC Wrath Cata Mists`; `generate.lua all` does all five, which takes
+several minutes and up to a couple of gigabytes of memory for Mists, so generate only the
+flavor you are testing. Every script prints its options with `--help`. Nothing here needs
+Python, Git, Bash, or network access; Git only adds the commit hash to the artifact's version
+when it is present.
+
+Generation writes `QuestieDB_<Flavor>.toc` next to `QuestieDB.toc`. Those files are gitignored,
+and a clone in `AddOns` switches to Baked mode on the next `/reload` simply because they exist.
+Delete them to return to Source mode.
+
+### The full toolchain
+
+The root command orchestrates generation and every validation gate, in parallel, with per-job
+logs under `.out/checks/`:
 
 ```sh
 ./questiedb.sh generate                    # generate every flavor
@@ -83,11 +128,12 @@ Use the root command for generation and validation workflows:
 ./questiedb.sh package all                 # package already-generated artifacts
 ```
 
-On Windows, use the same arguments with `./questiedb.ps1`, or invoke
-`py -3 tools/cli/questiedb.py` directly if PowerShell script execution is restricted.
-The POSIX-shell and PowerShell launchers only locate Python 3.8+ and forward arguments and
-exit codes. Command parsing, scheduling, timing, logging, and checksums live in one Python
-standard-library implementation. No Bash installation, GNU utilities, or pip packages are needed.
+It needs Python 3.8+ in addition to Lua. On Windows, use the same arguments with
+`./questiedb.ps1`, or invoke `py -3 tools/cli/questiedb.py` directly if PowerShell script
+execution is restricted. The POSIX-shell and PowerShell launchers only locate Python and
+forward arguments and exit codes. Command parsing, scheduling, timing, logging, and checksums
+live in one Python standard-library implementation. No Bash installation, GNU utilities, or
+pip packages are needed.
 
 Run `./questiedb.sh --help` for every gate and option. The runner selects `lua5.1`, or a `lua`
 command that reports Lua 5.1. `LUA` and `--lua=` can select another Lua 5.1-compatible executable
@@ -95,7 +141,7 @@ explicitly. The `freeze` gate supports Vanilla and Mists. `all` validates but do
 packaging and bootstrap are separate commands, and bootstrap does not require Lua.
 The `test` task runs the Lua database suite and Python CLI suite as separate jobs.
 
-The individual entry points remain useful while developing a gate:
+The individual entry points remain useful while developing a gate. The Lua ones need only Lua:
 
 ```sh
 lua5.1 generate.lua all
@@ -109,6 +155,9 @@ lua-language-server --check=src/types --checklevel=Warning --check_format=pretty
 python3 tools/differential/golden.py check Vanilla
 python3 tools/differential/compiler_diff.py Vanilla
 ```
+
+The one Lua command that reaches for Python is `generate.lua meta`, which fetches the pinned
+Questie checkout to re-derive the schema; pass `--questie=<checkout>` to avoid that too.
 
 ### Local packages on Linux, macOS, and Windows
 
@@ -166,10 +215,12 @@ Lua. Python runs parallel jobs on every platform; `--sequential` opts out. Witho
 information the runner uses a fixed 4 GiB available-memory estimate; set `--budget-mb` explicitly
 if needed. Determinism checks use `hashlib`, not an external checksum command.
 
-The offline tooling tests use Python's standard library for temporary files and subprocesses,
-and real Lua for database behavior. Substantial Lua test code lives in `.lua` files, not escaped
-Python strings. The fixtures need no POSIX commands or symlink privileges.
-Run them with Python or `uv run`; all writes and installations use temporary fixtures:
+The Lua unit suite, `lua5.1 test.lua`, needs only Lua; its few filesystem operations go
+through the platform's own shell commands. The Python tooling tests use the standard library
+for temporary files and subprocesses, and real Lua for database behavior. Substantial Lua
+test code lives in `.lua` files, not escaped Python strings. The fixtures need no POSIX
+commands or symlink privileges. Run them with Python or `uv run`; all writes and installations
+use temporary fixtures:
 
 ```sh
 python3 tools/cli/questiedb.test.py
@@ -253,8 +304,8 @@ the Lua path, which it picks up from luarocks automatically. Accepted divergence
 
 Generation and runtime database logic use plain Lua 5.1 with no `lfs`, luarocks, or C dependency.
 Inputs are enumerated in `src/config.lua` rather than discovered by scanning directories.
-Python's standard library handles orchestration and offline filesystem fixtures. The migration
-compiler differential additionally requires `bit32` for Questie's mocks.
+Python's standard library handles orchestration, packaging, and the pinned Questie fetch. The
+migration compiler differential additionally requires `bit32` for Questie's mocks.
 `./questiedb.sh check --questie=` selects the checkout for fidelity tests and the compiler
 differential; `QUESTIE_PATH` provides the same default for nested migration tools. Generation,
 Determinism, Reconstruction, Verification, and Equivalence need no external checkout.
@@ -266,8 +317,9 @@ To refresh a local install instead of regenerating:
 ./questiedb.sh bootstrap "/path/to/Interface/AddOns" preview   # rolling development build
 ```
 
-Bootstrap uses the same Python implementation from either launcher. It installs `QuestieDB-all.zip`,
-verifies its checksum, and validates archive paths and extraction before changing the install.
+Bootstrap uses the same Python implementation from either launcher. It installs `QuestieDB-all.zip`
+only, so a release from before the combined archive existed cannot be bootstrapped. It
+verifies the checksum and validates archive paths and extraction before changing the install.
 The final file merge is not transactional. Matching runtime files are replaced, while unrelated
 files are retained. Back up local edits before bootstrapping over a source clone; returning to Source
 mode then requires restoring its full runtime sources as well as removing the generated TOCs.

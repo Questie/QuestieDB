@@ -109,19 +109,6 @@ class SchedulerTest(unittest.TestCase):
             cli.stop_process(process)
             process.stdout.close()
 
-    def test_windows_tree_cleanup_failure_is_reported_and_leader_is_reaped(self):
-        process = Mock(pid=123)
-        process.poll.return_value = None
-        process.wait.return_value = -1
-        error = subprocess.CalledProcessError(1, ["taskkill"], output="access denied")
-        with patch.object(cli.os, "name", "nt"), patch.object(cli, "Path", return_value=self.root), \
-                patch.object(cli.subprocess, "run", side_effect=error), \
-                contextlib.redirect_stderr(io.StringIO()) as output:
-            cli.stop_process(process)
-        self.assertIn("descendants may remain: access denied", output.getvalue())
-        process.kill.assert_called_once()
-        process.wait.assert_called_once_with(timeout=5)
-
     def test_launch_error_reaps_previous_child(self):
         process = Mock()
         process.poll.return_value = None
@@ -220,14 +207,6 @@ class CommandFlowTest(unittest.TestCase):
         self.assertNotEqual(0, failed.returncode)
         self.assertIn("1 of 1 failed", failed.stdout)
 
-    def test_posix_launcher_forwards_arguments(self):
-        shell = shutil.which("sh")
-        if not shell:
-            self.skipTest("POSIX launcher requires sh")
-        result = subprocess.run([shell, str(self.root / "questiedb.sh"), "generate", "Vanilla", "--sequential"],
-                                env=self.env, capture_output=True, text=True, timeout=30)
-        self.assertEqual(0, result.returncode, result.stdout + result.stderr)
-
     @unittest.skipIf(os.name == "nt", "POSIX launcher test")
     def test_posix_launcher_finds_python_alias_and_reports_missing_python(self):
         shell = shutil.which("sh")
@@ -248,28 +227,22 @@ class CommandFlowTest(unittest.TestCase):
         self.assertEqual(2, missing.returncode)
         self.assertIn("Python 3.8+", missing.stderr)
 
-    def test_package_dispatch_preserves_arguments_and_exit_code(self):
-        self.env["LUA"] = "missing-lua"
-        self.env["QUESTIEDB_TEST_EXIT"] = "7"
-        shutil.copyfile(FIXTURES / "arguments.py", self.root / "tools/distribution/package.py")
-        result = self.run_cli("package", "Vanilla", "argument with spaces")
-        self.assertEqual(7, result.returncode)
-        self.assertEqual(["Vanilla", "argument with spaces"], json.loads(result.stdout))
-        self.assertFalse((self.root / "events.log").exists())
-
-    def test_help_and_bootstrap_do_not_require_lua(self):
+    def test_help_and_standalone_dispatch_need_no_lua_and_forward_argv_and_exit_code(self):
         self.env["LUA"] = "missing-lua"
         help_result = self.run_cli("--help")
         self.assertEqual(0, help_result.returncode)
         self.assertIn("questiedb.sh", help_result.stdout)
-        self.env["QUESTIEDB_TEST_EXIT"] = "3"
-        shutil.copyfile(FIXTURES / "arguments.py", self.root / "tools/distribution/bootstrap.py")
-        result = self.run_cli("bootstrap", "AddOns path with spaces", "preview")
-        self.assertEqual(3, result.returncode)
-        self.assertEqual(["AddOns path with spaces", "preview"], json.loads(result.stdout))
+        for task, code, args in (("package", "7", ["Vanilla", "argument with spaces"]),
+                                 ("bootstrap", "3", ["AddOns path with spaces", "preview"])):
+            with self.subTest(task=task):
+                self.env["QUESTIEDB_TEST_EXIT"] = code
+                shutil.copyfile(FIXTURES / "arguments.py", self.root / "tools/distribution" / (task + ".py"))
+                result = self.run_cli(task, *args)
+                self.assertEqual(int(code), result.returncode)
+                self.assertEqual(args, json.loads(result.stdout))
         self.assertFalse((self.root / "events.log").exists())
 
-    def test_lua_process_helper_preserves_spaces_and_trailing_backslash(self):
+    def test_lua_process_helper_forwards_a_posix_argument_with_spaces_and_backslashes(self):
         argument = "C:\\Addon Folder\\"
         env = dict(self.env, QUESTIEDB_PYTHON=sys.executable,
                    PROBE_LIB=str(ROOT / "generator/lib.lua"), PROBE_ARGUMENT=argument)

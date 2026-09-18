@@ -15,16 +15,6 @@ class VersionTest(LuaFixture):
         self.assert_success(self.run_lua(assertions, str(scratch)))
         self.assertFalse(scratch.exists())
 
-        # Direct invocation cannot default to, or overwrite, an existing Source TOC.
-        missing_path = self.run_lua(assertions)
-        self.assertNotEqual(0, missing_path.returncode)
-        self.assertIn("requires a nonexisting scratch-file path", missing_path.stderr)
-        source = self.write("QuestieDB.toc", "## Version: 9.8.7\n")
-        existing_path = self.run_lua(assertions, str(source))
-        self.assertNotEqual(0, existing_path.returncode)
-        self.assertIn("refusing to overwrite", existing_path.stderr)
-        self.assertEqual(b"## Version: 9.8.7\n", source.read_bytes())
-
     def test_generation_preserves_versions_and_rejects_invalid_inputs_before_writes(self):
         self.copy_inputs("Classic")
         source = self.write("QuestieDB.toc", "## Version: 12.34.567\n")

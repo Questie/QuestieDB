@@ -223,18 +223,16 @@ class PackageTest(unittest.TestCase):
                 self.assertNotEqual(0, result.returncode, result.stdout)
                 self.assert_previous_output()
 
-    def test_invalid_runtime_ranges_preserve_previous_output(self):
+    def test_invalid_runtime_config_preserves_previous_output(self):
+        # test.lua's contract-config suite covers every rejected value; packaging only has to
+        # prove that a configuration that fails to load aborts before output is cleared.
+        self.preserve_previous_output()
         path = self.root / "src/config.lua"
-        original = path.read_text()
-        for replacement in ("0", "1.5", '"1"', "nil", "0/0", "math.huge", "3"):
-            with self.subTest(minimum=replacement):
-                self.preserve_previous_output()
-                path.write_text(original.replace("config.minSupportedContract = 1",
-                                                "config.minSupportedContract = " + replacement))
-                result = self.run_package("Vanilla")
-                self.assertNotEqual(0, result.returncode)
-                self.assertIn("minSupportedContract", result.stderr)
-                self.assert_previous_output()
+        path.write_text(path.read_text().replace("config.minSupportedContract = 1", "config.minSupportedContract = 3"))
+        result = self.run_package("Vanilla")
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn("minSupportedContract", result.stderr)
+        self.assert_previous_output()
 
     def test_stripping_failure_cannot_produce_a_manifest(self):
         self.env["QUESTIEDB_TEST_FAIL_STRIP"] = "1"

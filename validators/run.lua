@@ -55,7 +55,9 @@ local function parseArgs(argv)
   local opts = { flavors = {}, out = ".out/validators", raw = false, quiet = false }
   for _, value in ipairs(argv or {}) do
     local key, val = value:match("^%-%-([%w%-]+)=(.*)$")
-    if key == "out" then
+    if value == "--help" or value == "-h" then
+      lib.printUsage(arg[0])
+    elseif key == "out" then
       opts.out = val
     elseif value == "--raw" then
       opts.raw = true

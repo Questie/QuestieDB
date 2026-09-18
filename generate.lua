@@ -51,7 +51,9 @@ local function parseArgs(argv)
   local opts = { flavors = {}, types = nil, fields = nil, quiet = false, target = nil }
   for _, value in ipairs(argv) do
     local key, val = value:match("^%-%-([%w%-]+)=(.*)$")
-    if key == "types" then
+    if value == "--help" or value == "-h" then
+      lib.printUsage(arg[0])
+    elseif key == "types" then
       opts.types = {}
       for name in val:gmatch("[^,]+") do opts.types[name] = true end
     elseif key == "fields" then

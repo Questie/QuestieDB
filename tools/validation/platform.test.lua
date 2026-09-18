@@ -5,16 +5,38 @@
 ---@return nil
 return function(check, equal)
   local commands = {}
+  local outputs = {
+    -- `cd` at a drive root already ends in a backslash; `dir` may differ from it in case.
+    ["^cd 2>NUL$"] = "C:\\\r\n",
+    ["^dir /s /b /a%-d"] = "c:\\src\\types\\Quest.t.lua\r\nc:\\src\\types\\notes.md\r\nc:\\src\\types\\General.t.lua\r\n",
+    ["^dir /b /a%-d"] = "General.t.lua\r\nQuest.t.lua\r\n",
+  }
+  local function fakePipe(command)
+    local output = string.rep("a", 40) .. "\n"
+    for pattern, text in pairs(outputs) do
+      if command:match(pattern) then output = text end
+    end
+    return {
+      read = function() return output end,
+      lines = function() return output:gmatch("([^\n]*)\n") end,
+      close = function() end,
+    }
+  end
   local env = setmetatable({
     package = { config = "\\\n;\n?\n!\n-\n" },
     os = {
-      getenv = function(name) if name == "QUESTIEDB_PYTHON" then return "C:\\Python Tools\\python.exe" end end,
+      getenv = function(name)
+        if name == "QUESTIEDB_PYTHON" then return "C:\\Python Tools\\python.exe" end
+        if name == "TEMP" then return "C:\\Users\\dev\\AppData\\Local\\Temp" end
+      end,
       execute = function(command) commands[#commands + 1] = command; return 0 end,
+      time = function() return 1700000000 end,
+      clock = function() return 0.5 end,
     },
     io = {
       popen = function(command)
         commands[#commands + 1] = command
-        return { read = function() return string.rep("a", 40) .. "\n" end, close = function() end }
+        return fakePipe(command)
       end,
     },
   }, { __index = _G })
@@ -35,6 +57,30 @@ return function(check, equal)
   windows.execute(windows.pythonCommand({ "tools/cli/questiedb.test.py" }))
   equal(commands[#commands], '""C:\\Python Tools\\python.exe" "tools/cli/questiedb.test.py""',
     "cmd receives outer quotes for a quoted Python executable")
+
+  -- The test filesystem helper must resolve to the same Windows lib, not the real one.
+  env.dofile = function(path)
+    if path == "generator/lib.lua" then return windows end
+    return dofile(path)
+  end
+  load = assert(loadfile("tools/validation/test-files.lua"))
+  setfenv(load, env)
+  local testFiles = load()
+  equal(table.concat(testFiles.list("src/types", true, { ".t.lua" }), " "),
+    "src/types/General.t.lua src/types/Quest.t.lua",
+    "recursive Windows listing strips the working directory case-insensitively, filters suffixes, and sorts")
+  equal(commands[#commands], 'dir /s /b /a-d "src\\types" 2>NUL', "recursive Windows listing uses dir /s")
+  equal(table.concat(testFiles.list("src/types", false, {}), " "),
+    "src/types/General.t.lua src/types/Quest.t.lua",
+    "flat Windows listing keeps the requested prefix")
+  equal(testFiles.temporaryDirectory(), "C:/Users/dev/AppData/Local/Temp/questiedb-test-1700000000-05",
+    "Windows temporary directories live under TEMP, not the drive root")
+  equal(commands[#commands], 'mkdir "C:\\Users\\dev\\AppData\\Local\\Temp\\questiedb-test-1700000000-05"',
+    "Windows temporary directory creation fails loudly on a collision")
+  testFiles.removeTree("C:/Data Files/stage")
+  equal(commands[#commands],
+    'if exist "C:\\Data Files\\stage\\" (rmdir /s /q "C:\\Data Files\\stage") else (if exist "C:\\Data Files\\stage" del /f /q "C:\\Data Files\\stage") & if exist "C:\\Data Files\\stage" exit 1',
+    "Windows tree removal uses rmdir for directories, del for files, and proves the path is gone")
 
   local posixEnv = setmetatable({ package = { config = "/\n;\n?\n!\n-\n" } }, { __index = _G })
   load = assert(loadfile("generator/lib.lua"))

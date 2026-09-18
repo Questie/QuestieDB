@@ -4,6 +4,13 @@
 -- Pure Lua 5.1. No C dependencies — in particular no `lfs`; inputs are enumerated in
 -- src/config.lua rather than discovered by scanning directories.
 
+-- Everything offline relies on 5.1 semantics (setfenv, loadstring, unpack). LuaJIT reports
+-- "Lua 5.1" and works. Fail here, with the fix, rather than somewhere deep in a generator.
+if _VERSION ~= "Lua 5.1" then
+  error("QuestieDB tooling needs Lua 5.1 or LuaJIT; this interpreter is " .. tostring(_VERSION) ..
+    ". See README.md, 'Working on corrections', for install commands.", 0)
+end
+
 local lib = {}
 
 local floor = math.floor
@@ -261,7 +268,29 @@ function lib.mkdirp(path)
   assert(ok == 0 or ok == true, "Cannot create directory: " .. path)
 end
 
----Select Python for offline orchestration tests and migration tooling, never runtime reads.
+---Print a script's leading comment block, which is also its usage text, then exit. One
+---source of truth: the header contributors already read in the editor. A `-- ##` heading
+---ends the usage part, so design notes below it stay in the file but out of `--help`.
+---@param scriptPath string `arg[0]` of the running script
+---@return nil
+function lib.printUsage(scriptPath)
+  local file = assert(io.open(scriptPath, "rb"), "Cannot read usage from " .. tostring(scriptPath))
+  for line in file:lines() do
+    line = line:gsub("\r$", "")
+    if line:sub(1, 5) == "-- ##" then
+      break
+    elseif line:sub(1, 2) == "--" then
+      print((line:gsub("^%-%-%s?", "")))
+    elseif line:sub(1, 2) ~= "#!" then
+      break
+    end
+  end
+  file:close()
+  os.exit(0)
+end
+
+---Select Python for schema materialization (`generate.lua meta`) only. Generation,
+---verification, validators, and the unit tests never need it.
 ---@param arguments string[]
 ---@return string command
 function lib.pythonCommand(arguments)
@@ -279,7 +308,8 @@ function lib.pythonCommand(arguments)
       end
     end
   end
-  assert(prefix, "Python 3.8+ is required for offline tooling; use questiedb.sh or questiedb.ps1")
+  assert(prefix, "Python 3.8+ is required to fetch the pinned Questie checkout for `generate.lua meta`; " ..
+    "install it, set QUESTIEDB_PYTHON, or pass --questie=<checkout>")
   for _, argument in ipairs(arguments) do prefix = prefix .. " " .. lib.shellQuote(argument) end
   return prefix
 end

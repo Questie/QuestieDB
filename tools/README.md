@@ -14,10 +14,12 @@ See [the main README](../README.md#for-contributors).
 | `differential/` | Entity comparisons, migration baselines, and permanent golden snapshots |
 | `probe-addon/` | Live-client storage and API probes |
 
-Tests for a tool stay beside its implementation. Python owns temporary directories, process
-execution, and integration checks; substantial Lua assertions stay in Lua files. Adjacent
-`fixtures/` directories hold the small child programs used by orchestration tests, rather than
-hiding those programs inside escaped strings. Tiny interpreter probes can remain inline.
+Tests for a tool stay beside its implementation. Python owns process orchestration and the
+integration checks that drive Lua as a subprocess; substantial Lua assertions stay in Lua files.
+The Lua unit suite stays Python-free: `validation/test-files.lua` covers the few filesystem
+operations plain Lua lacks with the platform's own shell commands. Adjacent `fixtures/`
+directories hold the small child programs used by orchestration tests, rather than hiding
+those programs inside escaped strings. Tiny interpreter probes can remain inline.
 
 `validation/` holds checks without a corresponding tool here, plus shared test mechanics.
 `questie-sync/` makes the remaining upstream dependency explicit; those checks are not all
