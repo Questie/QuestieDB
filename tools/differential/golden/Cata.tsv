@@ -1,6 +1,6 @@
 # QuestieDB golden composed-read hashes - Cata
 # One line per entity: type, id, sha256/16 over its sorted canonical field lines.
-# Produced from worktree at 186c7176e628d1254d822cbd2882f13106f3a1f9+dirty
+# Produced from worktree at 3c814e9154cecd8eedc894dcab9083199b32b0b3+dirty
 # Refresh (after an INTENTIONAL data change, with review):
 #   python3 tools/differential/golden.py refresh Cata
 Quest	1	69a9eb529f63c5d2
@@ -3942,7 +3942,7 @@ Quest	8600	b3a47808f0da7fa0
 Quest	8601	f3e53f0c09d529b3
 Quest	8602	721df60d665bfff1
 Quest	8603	f034dee7c6b17e7e
-Quest	8604	03dd1a7f75802135
+Quest	8604	e449774bcf294263
 Quest	8605	c1a066036bccc021
 Quest	8606	3e2af37a687619f4
 Quest	8607	4ed57de7b2966e2a

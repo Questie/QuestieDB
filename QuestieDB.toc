@@ -8,7 +8,7 @@
 ## Title: QuestieDB
 ## Notes: |cFFFFD100(source mode)|r The database Questie consumes. No generated artifact present.
 ## Author: Code: Logonz Data: Muehe/TheCrux(BreakBB)/Drejjmit/Dyaxler/Cheeq/TechnoHunter/Everyone else
-## Version: 0.1.0
+## Version: 1.0.0
 ## Category: Quests
 ## Category-deDE: Quests
 ## Category-esES: Misiones

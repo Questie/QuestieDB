@@ -59,10 +59,32 @@ Validation ran in isolated worktrees, without updating installed or existing Bak
   Wrath / Cata / Mists, with no additions or removals. The snapshots were refreshed for the imported
   quest chains, Object locations, TBC Item drops, and NPC 20931. All five Golden sensitivity checks passed.
 
-Review found one upstream defect retained by this byte-faithful sync: quest 8604 sets
-`nextQuestInChain = 8604` in `Era/classicQuestFixes.lua`. Quest 8605 appears to be the intended
-follow-up. This self-link needs an upstream correction and subsequent re-port; matching the pinned
-compiler does not establish that the gameplay data is correct. It has not been silently changed here.
+Review found one upstream defect retained by this byte-faithful sync: quest 8604 set
+`nextQuestInChain = 8604` in `Era/classicQuestFixes.lua`. The subsequent sync below imports its
+upstream fix. Matching the pinned compiler alone did not establish that the gameplay data was correct.
+
+## Pre-cutover Questie input sync to `454b9d072`
+
+The input pin advances from `215b0c757e2cefdffc11414b2c70456e37573cc2` to
+`454b9d072965ee8f1a881429260fcf1fac8d60f7`, the `Questie/master` tip at synchronization time
+(Questie v11.38.0). In a fresh isolated QuestieDB worktree, `generate.lua meta` fetched the exact
+commit into a new `.cache/questie/<sha>` directory with `QUESTIE_PATH` unset. All subsequent import
+and migration checks used that checkout explicitly; no existing external Questie checkout was used.
+
+The only imported data change fixes quest 8604's `nextQuestInChain` from 8604 to 8605. Raw entity
+data, entity localization, schema, constants, support-data values, the Correction manifest, and the
+Source TOC are unchanged. Existing Quest XP indentation is preserved. Upstream's new breadcrumb
+handling and tracker changes remain consumer-owned; no pre-compile transform changed.
+
+The five Golden snapshots change only quest 8604's hash, plus their producer stamps. Generation
+and validation ran in the isolated worktree; existing installed Baked artifacts were not changed.
+
+- All five flavors passed Generation, Verification, Source/Baked Equivalence, Reconstruction,
+  validators, compiler comparison, and Golden checks, including the gates' sensitivity checks.
+- The full Lua suite passed 3,340 checks, including localization, support-data, correction, and
+  ObjectiveFirst fidelity. Compiler and validator baselines remain unchanged.
+- Strict active-SoD `Quest.requiredRaces` comparisons matched all 5,534 quests for both Alliance
+  and Horde, with no baseline allowances and successful sensitivity checks.
 
 ## Confirmed in a live client, 2026-08-19
 
