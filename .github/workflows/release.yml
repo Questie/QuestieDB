@@ -303,12 +303,11 @@ jobs:
           TITLE="Development preview"
           PRERELEASE=true
           if [[ "$QUESTIEDB_RELEASE" == true ]]; then TITLE="QuestieDB ${TAG#v}"; PRERELEASE=false; fi
-          if [[ "$HAS_TAG" == false ]]; then
-            gh api "repos/$GITHUB_REPOSITORY/git/refs" --method POST -f ref="refs/tags/$TAG" -f sha="$GITHUB_SHA"
-          fi
           if [[ -z "$RELEASE_ID" ]]; then
+            # Let GitHub create a missing tag at the target commit when publishing the draft.
+            # A separate ref creation followed by --verify-tag can race tag visibility.
             # Only first publication uses a draft, so a failed first upload stays unpublished.
-            gh release create "$TAG" --verify-tag --target "$GITHUB_SHA" --draft \
+            gh release create "$TAG" --target "$GITHUB_SHA" --draft \
               --title "$TITLE" --notes-file .out/dist/RELEASE_NOTES.md
           fi
 
