@@ -7,7 +7,16 @@
 ## Interface: 11508, 11509, 20506, 38000, 38001, 40402, 50503, 50504
 ## Title: QuestieDB
 ## Notes: |cFFFFD100(source mode)|r The database Questie consumes. No generated artifact present.
-## Author: Code: Logonz Data: Muehe/TheCrux(BreakBB)/Drejjmit/Dyaxler/Cheeq/TechnoHunter/Yttrium/Everyone else
+## Notes-deDE: Die Questie-Datenbank
+## Notes-esES: La base de datos de Questie
+## Notes-esMX: La base de datos de Questie
+## Notes-frFR: La base de données de Questie
+## Notes-ptBR: O banco de dados do Questie
+## Notes-ruRU: База данных Questie
+## Notes-koKR: Questie 데이터베이스
+## Notes-zhCN: Questie 数据库
+## Notes-zhTW: Questie 資料庫
+## Author: Code: Logonz Data: Muehe/TheCrux(BreakBB)/Drejjmit/Dyaxler/Cheeq/TechnoHunter/Anon/Yttrium/Everyone else
 ## Version: 1.0.0
 ## Category: Quests
 ## Category-deDE: Quests
