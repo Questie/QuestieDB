@@ -10,6 +10,8 @@ Tasks:
   all            Generate, check, golden snapshots, and unit tests (not packaging)
   package        Package existing TOCs: package [all|Vanilla TBC Wrath Cata Mists]
   bootstrap      Download an install: bootstrap <AddOns-path> [tag] [--repo=OWNER/REPO]
+  dbc-coordinates  Inspect Era/Forever map transforms (--help for build/point options)
+  convert-forever  Convert Era data/corrections into separate Forever files (--help)
   verify equivalence reconstruct validators differential golden test determinism freeze
 
 Flavors: Vanilla TBC Wrath Cata Mists; omitted means all applicable flavors.
@@ -361,6 +363,8 @@ def execute(options: Options, root: Path) -> int:
                 jobs.append(Job("test:" + flavor, [lua, "test.lua", "--flavor=" + flavor], WEIGHTS[flavor]))
             jobs.append(Job("test:cli", [sys.executable, "tools/cli/questiedb.test.py"], 100))
             jobs.append(Job("test:scopes", [sys.executable, "tools/validation/test-scopes.test.py"], 100))
+            for tool in ("coordinates", "download", "rewrite", "convert"):
+                jobs.append(Job("test:dbc:" + tool, [sys.executable, "tools/dbc/" + tool + ".test.py"], 100))
             continue
         for flavor in options.flavors:
             weight = WEIGHTS[flavor]
@@ -391,12 +395,16 @@ def execute(options: Options, root: Path) -> int:
 
 
 def main(argv: Optional[list[str]] = None) -> int:
-    """Dispatch standalone packaging/install commands without requiring an unrelated toolchain."""
+    """Dispatch standalone tools without requiring an unrelated generation toolchain."""
     args = list(sys.argv[1:] if argv is None else argv)
-    if args and args[0] in ("package", "bootstrap"):
+    standalone = {
+        "package": "tools/distribution/package.py", "bootstrap": "tools/distribution/bootstrap.py",
+        "dbc-coordinates": "tools/dbc/maps.py", "convert-forever": "tools/dbc/convert.py",
+    }
+    if args and args[0] in standalone:
         task = args.pop(0)
         try:
-            return run_command([sys.executable, str(ROOT / "tools/distribution" / (task + ".py")), *args])
+            return run_command([sys.executable, str(ROOT / standalone[task]), *args])
         except KeyboardInterrupt:
             return 130
         except OSError as error:

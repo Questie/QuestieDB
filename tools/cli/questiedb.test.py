@@ -252,7 +252,7 @@ class CommandFlowTest(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory(prefix="questiedb commands ")
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
-        for directory in ("tools/cli", "tools/distribution", "tools/differential", "tools/validation", "generator", "validators"):
+        for directory in ("tools/cli", "tools/distribution", "tools/differential", "tools/validation", "tools/dbc", "generator", "validators"):
             (self.root / directory).mkdir(parents=True)
         shutil.copy(ROOT / "tools/cli/questiedb.py", self.root / "tools/cli/questiedb.py")
         shutil.copy(ROOT / "questiedb.sh", self.root / "questiedb.sh")
@@ -267,7 +267,9 @@ class CommandFlowTest(unittest.TestCase):
         for script in ("verify.lua", "equivalence.lua", "reconstruct.lua", "validators/run.lua", "test.lua"):
             shutil.copyfile(FIXTURES / "read.lua", self.root / script)
         for script in ("tools/differential/compiler_diff.py", "tools/differential/golden.py",
-                       "tools/cli/questiedb.test.py", "tools/validation/test-scopes.test.py"):
+                       "tools/cli/questiedb.test.py", "tools/validation/test-scopes.test.py",
+                       "tools/dbc/coordinates.test.py", "tools/dbc/download.test.py",
+                       "tools/dbc/rewrite.test.py", "tools/dbc/convert.test.py"):
             shutil.copyfile(FIXTURES / "read.py", self.root / script)
 
     def run_cli(self, *args):
@@ -283,7 +285,7 @@ class CommandFlowTest(unittest.TestCase):
         self.assertEqual(1, events.count("generate:Mists"))
         last_generation = max(events.index("generate:Vanilla"), events.index("generate:Mists"))
         reads = [index for index, event in enumerate(events) if event.startswith("read:")]
-        self.assertEqual(17, len(reads))
+        self.assertEqual(21, len(reads))
         self.assertTrue(all(index > last_generation for index in reads))
         self.assertFalse((self.root / ".out/dist").exists())
 
@@ -370,6 +372,14 @@ class CommandFlowTest(unittest.TestCase):
                 shutil.copyfile(FIXTURES / "arguments.py", self.root / "tools/distribution" / (task + ".py"))
                 result = self.run_cli(task, *args)
                 self.assertEqual(int(code), result.returncode)
+                self.assertEqual(args, json.loads(result.stdout))
+        for task, script in (("dbc-coordinates", "maps.py"), ("convert-forever", "convert.py")):
+            with self.subTest(task=task):
+                self.env["QUESTIEDB_TEST_EXIT"] = "4"
+                shutil.copyfile(FIXTURES / "arguments.py", self.root / "tools/dbc" / script)
+                args = ["--database", "path with spaces/source.db", "--help"]
+                result = self.run_cli(task, *args)
+                self.assertEqual(4, result.returncode)
                 self.assertEqual(args, json.loads(result.stdout))
         self.assertFalse((self.root / "events.log").exists())
 

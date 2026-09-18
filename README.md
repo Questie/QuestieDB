@@ -161,7 +161,7 @@ accepting only an interpreter that reports Lua 5.1.
 `LUA` and `--lua=` can select another Lua 5.1-compatible executable explicitly. The `freeze` gate supports Vanilla and Mists. `all` validates but does not package;
 packaging and bootstrap are separate commands, and bootstrap does not require Lua.
 The `test` task runs shared Lua suites once, artifact suites for each selected flavor, and
-Python CLI and scope-selection tests as separate jobs. Generate the selected artifacts first.
+Python CLI, scope-selection, and DBC tests as separate jobs. Generate the selected artifacts first.
 
 The individual entry points remain useful while developing a gate. The Lua ones need only Lua:
 
@@ -204,6 +204,26 @@ Named-suite and unfiltered `test.lua` runs retain opportunistic checks of availa
 Use explicit scopes for required artifact coverage. The local command runner still uses phase
 barriers: selected Generation jobs finish before Determinism, and both finish before checks.
 It does not advance each flavor through those phases independently.
+
+### Era-to-Forever coordinate conversion
+
+The DBC tools compare explicit builds and create separate Forever entity/correction files
+without changing Era inputs or activating a runtime flavor. Run from this repository:
+
+```sh
+./questiedb.sh dbc-coordinates --from-build 1.15.9.69722 --to-build 1.60.1.69893 --allow-untracked-source --ui-map 1412 --point 44.18 76.06
+./questiedb.sh convert-forever --from-build 1.15.9.69722 --to-build 1.60.1.69893 --allow-untracked-source --keep-unmapped --dry-run
+```
+
+Use the same arguments with `./questiedb.ps1` on Windows. Both commands download the DBC
+SQLite to `.cache/dbc/dbc-source.db` only if missing; the private release needs an authenticated
+`gh` login. Conversion also requires Lua 5.1. `--dry-run` validates temporary copies without
+installing outputs, though it may populate that cache.
+
+Review unmapped points before removing `--dry-run`. `--keep-unmapped` explicitly leaves those
+coordinates unchanged; omitting it makes unresolved points block conversion. See
+[DBC coordinate tools](tools/dbc/README.md) for all ten output paths, coverage flags,
+provenance, overwrite protection and remaining Forever integration work.
 
 ### Local packages on Linux, macOS, and Windows
 
