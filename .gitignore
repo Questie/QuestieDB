@@ -22,3 +22,5 @@ QuestieDB_Mists.toc
 
 # Python bytecode from the differential tooling
 __pycache__/
+
+.scratch/
