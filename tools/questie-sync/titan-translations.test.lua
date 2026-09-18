@@ -2,8 +2,9 @@
 ---@param check fun(condition: boolean, message: string)
 ---@param equal fun(actual: any, expected: any, message: string)
 ---@param questiePath string Pinned Questie checkout used by the independent translation oracle.
+---@param modeScope? string Source or Baked; omitted preserves both modes.
 ---@return nil
-return function(check, equal, questiePath)
+return function(check, equal, questiePath, modeScope)
   local lib = dofile("generator/lib.lua")
   lib.assertQuestiePin(questiePath)
   local oracle = dofile("tools/questie-sync/localization-overrides.lua").titan(questiePath)
@@ -54,12 +55,15 @@ return function(check, equal, questiePath)
     [8191] = "光晕预言", [8192] = "万灵预言", [93975] = "拉格纳罗斯必须死！",
     [94577] = "凯尔萨斯必须死！", [94579] = "消灭帕奇维克！",
   }
-  local modes = { { name = "Source", toc = "QuestieDB.toc" } }
-  if lib.fileExists("QuestieDB_Wrath.toc") and
-      lib.readAll("QuestieDB_Wrath.toc"):gsub("\\", "/"):find("src/l10n/Titan/zhCN.lua", 1, true) then
-    modes[#modes + 1] = { name = "Baked", toc = "QuestieDB_Wrath.toc" }
-  else
-    io.write("  SKIP titan-translations Baked: Wrath artifact absent or needs new runtime file list\n")
+  local modes = modeScope == "Baked" and {} or { { name = "Source", toc = "QuestieDB.toc" } }
+  if modeScope ~= "Source" then
+    if lib.fileExists("QuestieDB_Wrath.toc") then
+      assert(lib.readAll("QuestieDB_Wrath.toc"):gsub("\\", "/"):find("src/l10n/Titan/zhCN.lua", 1, true),
+        "Wrath artifact needs the Titan translation runtime file")
+      modes[#modes + 1] = { name = "Baked", toc = "QuestieDB_Wrath.toc" }
+    else
+      io.write("  SKIP titan-translations Baked: Wrath artifact absent or needs new runtime file list\n")
+    end
   end
   for _, mode in ipairs(modes) do
     for _, initialLocale in ipairs({ "enUS", "zhCN" }) do

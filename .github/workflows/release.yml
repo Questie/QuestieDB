@@ -81,12 +81,10 @@ jobs:
           fi
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
 
-  quality:
-    name: Quality bar
+  shared:
+    name: Shared checks
     needs: preflight
     runs-on: ubuntu-latest
-    outputs:
-      tag: ${{ needs.preflight.outputs.tag }}
     steps:
       - uses: actions/checkout@v7
         with: { path: QuestieDB }
@@ -106,6 +104,7 @@ jobs:
         working-directory: QuestieDB
         run: |
           python3 tools/cli/questiedb.test.py
+          python3 tools/validation/test-scopes.test.py
           python3 tools/distribution/package.test.py
           python3 tools/distribution/bootstrap.test.py
 
@@ -132,50 +131,110 @@ jobs:
           lua5.1 generate.lua toc
           git diff --exit-code QuestieDB.toc
 
-      - name: Generate every flavor
+      - name: Shared unit tests
         working-directory: QuestieDB
-        run: lua5.1 generate.lua all
+        run: lua5.1 test.lua --shared
+
+  database:
+    name: Quality bar (${{ matrix.flavor }})
+    needs: preflight
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        flavor: [Vanilla, TBC, Wrath, Cata, Mists]
+    steps:
+      - uses: actions/checkout@v7
+        with: { path: QuestieDB }
+      # Flavor tests compare ObjectiveFirst and Titan behavior against the pinned oracle.
+      - uses: ./QuestieDB/.github/actions/checkout-questie
+
+      - name: Install Lua 5.1
+        run: sudo apt-get update && sudo apt-get install -y lua5.1
+
+      - name: Generate
+        working-directory: QuestieDB
+        run: lua5.1 generate.lua ${{ matrix.flavor }}
 
       - name: Determinism
         working-directory: QuestieDB
-        # Regenerate before the read gates. The artifacts they approve are therefore the exact
-        # second-generation bytes this check proved identical to the first generation.
+        # Every read gate approves the second-generation bytes whose hash matched the first.
+        # Keep a distinct checksum file per flavor for the packaging handoff.
         run: |
-          sha256sum QuestieDB_{Vanilla,TBC,Wrath,Cata,Mists}.toc > first.sha
-          lua5.1 generate.lua all --quiet
-          sha256sum -c first.sha
+          sha256sum QuestieDB_${{ matrix.flavor }}.toc > QuestieDB_${{ matrix.flavor }}.sha256
+          lua5.1 generate.lua ${{ matrix.flavor }} --quiet
+          sha256sum -c QuestieDB_${{ matrix.flavor }}.sha256
 
-      - name: Unit tests
+      - name: Flavor unit tests
         working-directory: QuestieDB
-        # Defense in depth: the same suite CI runs, here against the artifacts being released.
-        run: lua5.1 test.lua
+        run: lua5.1 test.lua --flavor=${{ matrix.flavor }}
 
-      - name: Reconstruct every artifact
+      - name: Reconstruct artifact
         working-directory: QuestieDB
-        run: lua5.1 reconstruct.lua Vanilla TBC Wrath Cata Mists
+        run: lua5.1 reconstruct.lua ${{ matrix.flavor }}
 
-      - name: Verify every flavor
+      - name: Verify artifact
         working-directory: QuestieDB
-        run: lua5.1 verify.lua
+        run: lua5.1 verify.lua ${{ matrix.flavor }}
 
       - name: Verify ownership under freezing
         working-directory: QuestieDB
         # Match CI's smallest/largest coverage without doubling every flavor's runtime.
-        run: lua5.1 verify.lua Vanilla Mists --freeze
+        if: matrix.flavor == 'Vanilla' || matrix.flavor == 'Mists'
+        run: lua5.1 verify.lua ${{ matrix.flavor }} --freeze
 
       - name: Source/baked equivalence
         working-directory: QuestieDB
-        run: lua5.1 equivalence.lua
+        run: lua5.1 equivalence.lua ${{ matrix.flavor }}
 
-      - name: Validate every flavor
+      - name: Data validators
         working-directory: QuestieDB
-        run: lua5.1 validators/run.lua
+        run: lua5.1 validators/run.lua ${{ matrix.flavor }}
 
       - name: Golden composed reads
         working-directory: QuestieDB
+        run: python3 tools/differential/golden.py check ${{ matrix.flavor }} --lua=lua5.1 --self-check
+
+      - name: Confirm checked bytes are unchanged
+        working-directory: QuestieDB
+        run: sha256sum -c QuestieDB_${{ matrix.flavor }}.sha256
+
+      - name: Hand verified TOC to packaging
+        uses: actions/upload-artifact@v7
+        with:
+          name: release-toc-${{ matrix.flavor }}
+          path: |
+            QuestieDB/QuestieDB_${{ matrix.flavor }}.toc
+            QuestieDB/QuestieDB_${{ matrix.flavor }}.sha256
+          retention-days: 7
+          if-no-files-found: error
+
+  quality:
+    name: Package verified artifacts
+    needs: [preflight, shared, database]
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ needs.preflight.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v7
+        with: { path: QuestieDB }
+
+      - name: Install Lua 5.1
+        run: sudo apt-get update && sudo apt-get install -y lua5.1
+
+      # These artifacts come only from this run's successful flavor pipelines. Packaging
+      # never regenerates them, so the combined ZIP contains the exact checked TOCs.
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: release-toc-*
+          merge-multiple: true
+          path: QuestieDB
+
+      - name: Check every flavor handoff
+        working-directory: QuestieDB
         run: |
           for flavor in Vanilla TBC Wrath Cata Mists; do
-            python3 tools/differential/golden.py check "$flavor" --lua=lua5.1 --self-check
+            sha256sum --strict -c "QuestieDB_${flavor}.sha256"
           done
 
       - name: Package and write the manifest

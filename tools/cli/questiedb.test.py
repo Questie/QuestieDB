@@ -136,7 +136,7 @@ class CommandFlowTest(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory(prefix="questiedb commands ")
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
-        for directory in ("tools/cli", "tools/distribution", "tools/differential", "generator", "validators"):
+        for directory in ("tools/cli", "tools/distribution", "tools/differential", "tools/validation", "generator", "validators"):
             (self.root / directory).mkdir(parents=True)
         shutil.copy(ROOT / "tools/cli/questiedb.py", self.root / "tools/cli/questiedb.py")
         shutil.copy(ROOT / "questiedb.sh", self.root / "questiedb.sh")
@@ -151,7 +151,7 @@ class CommandFlowTest(unittest.TestCase):
         for script in ("verify.lua", "equivalence.lua", "reconstruct.lua", "validators/run.lua", "test.lua"):
             shutil.copyfile(FIXTURES / "read.lua", self.root / script)
         for script in ("tools/differential/compiler_diff.py", "tools/differential/golden.py",
-                       "tools/cli/questiedb.test.py"):
+                       "tools/cli/questiedb.test.py", "tools/validation/test-scopes.test.py"):
             shutil.copyfile(FIXTURES / "read.py", self.root / script)
 
     def run_cli(self, *args):
@@ -167,9 +167,24 @@ class CommandFlowTest(unittest.TestCase):
         self.assertEqual(1, events.count("generate:Mists"))
         last_generation = max(events.index("generate:Vanilla"), events.index("generate:Mists"))
         reads = [index for index, event in enumerate(events) if event.startswith("read:")]
-        self.assertEqual(14, len(reads))
+        self.assertEqual(17, len(reads))
         self.assertTrue(all(index > last_generation for index in reads))
         self.assertFalse((self.root / ".out/dist").exists())
+
+    def test_test_task_selects_shared_and_only_requested_artifact_suites(self):
+        options = cli.parse_args(["test", "Wrath", "TBC"])
+        with patch.object(cli, "find_lua", return_value=self.lua), \
+                patch.object(cli, "run_jobs", return_value=True) as run_jobs, \
+                contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(0, cli.execute(options, self.root))
+        jobs = run_jobs.call_args.args[0]
+        lua_tests = [job.command for job in jobs if job.command[1] == "test.lua"]
+        self.assertEqual([
+            [self.lua, "test.lua", "--shared"],
+            [self.lua, "test.lua", "--flavor=Wrath"],
+            [self.lua, "test.lua", "--flavor=TBC"],
+        ], lua_tests)
+        self.assertEqual(len(jobs), len({job.label for job in jobs}))
 
     def test_generation_failure_blocks_later_phases(self):
         self.env["FAIL_GENERATE"] = "Vanilla"

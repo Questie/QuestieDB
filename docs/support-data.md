@@ -76,6 +76,12 @@ listed in `luaFields` retain their published source type while their decoded tab
 compared, so an equivalent string-to-table change still fails as a public shape change.
 Dungeon `alternativeAreaIds` receive a separate dense-list shape check.
 
-The suite runs with an unfiltered `lua5.1 test.lua`, including CI's unit job and the release
-quality job, and in the `test` job of `./questiedb.sh all`. Issue #19's aggregate side-channel
-gate can invoke the focused command above directly.
+CI and Release run source/configuration fidelity once in `test.lua --shared`. Each
+`test.lua --flavor=<Flavor>` scope checks that flavor's emitted TOC against the pinned inputs
+for both factions. It requires the selected artifact and never discovers another flavor's TOC.
+The local `test` task uses the same scopes; see
+[Independent test scopes](../README.md#independent-test-scopes).
+
+The named command above and unfiltered `test.lua` retain emitted checks for available artifacts.
+Issue #19's aggregate side-channel gate can invoke the focused command directly, but should use
+explicit flavor scopes when missing generated artifacts must fail.

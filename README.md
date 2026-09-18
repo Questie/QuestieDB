@@ -123,6 +123,7 @@ logs under `.out/checks/`:
 ./questiedb.sh generate                    # generate every flavor
 ./questiedb.sh generate Vanilla            # generate one flavor
 ./questiedb.sh check Vanilla               # standard validation bundle for one flavor
+./questiedb.sh test Wrath                  # shared tests and tests of the existing Wrath artifact
 ./questiedb.sh verify equivalence Vanilla Mists
 ./questiedb.sh all                         # Generation, standard gates, Golden, and unit tests
 ./questiedb.sh package all                 # package already-generated artifacts
@@ -139,7 +140,8 @@ Run `./questiedb.sh --help` for every gate and option. The runner selects `lua5.
 command that reports Lua 5.1. `LUA` and `--lua=` can select another Lua 5.1-compatible executable
 explicitly. The `freeze` gate supports Vanilla and Mists. `all` validates but does not package;
 packaging and bootstrap are separate commands, and bootstrap does not require Lua.
-The `test` task runs the Lua database suite and Python CLI suite as separate jobs.
+The `test` task runs shared Lua suites once, artifact suites for each selected flavor, and
+Python CLI and scope-selection tests as separate jobs. Generate the selected artifacts first.
 
 The individual entry points remain useful while developing a gate. The Lua ones need only Lua:
 
@@ -158,6 +160,30 @@ python3 tools/differential/compiler_diff.py Vanilla
 
 The one Lua command that reaches for Python is `generate.lua meta`, which fetches the pinned
 Questie checkout to re-derive the schema; pass `--questie=<checkout>` to avoid that too.
+
+### Independent test scopes
+
+CI and Release run shared checks alongside five independent flavor pipelines. A flavor pipeline
+never requires another flavor's generated output. Shared sources, configuration, and the pinned
+Questie checkout remain inputs.
+
+The Lua harness exposes the same test scopes locally:
+
+```sh
+lua5.1 test.lua --shared                 # no generated TOCs required or discovered
+lua5.1 test.lua --flavor=Wrath           # requires a complete, localized Wrath TOC
+lua5.1 test.lua --flavor=Wrath --list     # list selected suites without running them
+```
+
+Each flavor scope runs generic artifact checks and its own behavior tests. Vanilla owns the
+Vanilla/SoD cases; Wrath owns Titan. Missing or incomplete selected artifacts fail rather than
+skip. Both shared and flavor scopes include migration fidelity checks that need the
+[pinned Questie checkout](#local-inputs-and-remaining-questie-checks).
+
+Named-suite and unfiltered `test.lua` runs retain opportunistic checks of available artifacts.
+Use explicit scopes for required artifact coverage. The local command runner still uses phase
+barriers: selected Generation jobs finish before Determinism, and both finish before checks.
+It does not advance each flavor through those phases independently.
 
 ### Local packages on Linux, macOS, and Windows
 
@@ -227,6 +253,7 @@ python3 tools/cli/questiedb.test.py
 python3 tools/distribution/package.test.py
 python3 tools/distribution/bootstrap.test.py
 python3 tools/validation/version.test.py
+python3 tools/validation/test-scopes.test.py
 python3 tools/validation/localization-inputs.test.py
 python3 tools/questie-sync/questie-checkout.test.py
 ```
@@ -347,8 +374,16 @@ Local Generation follows the same rule; `QUESTIEDB_RELEASE=true` selects the ful
 The manifest and TOCs retain the exact producing commit and legacy Questie import/schema
 baseline. The producing commit identifies the owned localization sources.
 
-The release flow lives in [`.github/workflows/release.yml`](.github/workflows/release.yml):
-choose the tag, build/check/package, then publish. Only GitHub publication is configured.
+The release flow lives in [`.github/workflows/release.yml`](.github/workflows/release.yml).
+After choosing the tag, shared checks and the five [flavor pipelines](#independent-test-scopes)
+run independently. Each flavor runs Generation, Determinism, scoped tests, Reconstruction,
+Verification, Equivalence, validators, and Golden checks. Release reconstructs every flavor;
+CI reconstructs Vanilla and Mists. Both verify ownership under freezing on Vanilla and Mists.
+
+Release checks each TOC's checksum before uploading it and again after collecting all five.
+Packaging waits for the shared and flavor checks, creates per-flavor and combined ZIPs from
+those exact verified TOCs, and never regenerates them. Publication requires successful packaging
+and every compiler differential. Only GitHub publication is configured.
 Publication jobs queue without cancelling active or pending releases. The publisher checks the
 handoff's commit and ZIP checksums before any mutation, then rejects stale preview builds.
 
@@ -405,9 +440,11 @@ lua5.1 test.lua localization-overrides translation-corrections titan-translation
 
 `objective-first` runs without generated entity artifacts. It compares all five published hint
 tables with the pinned correction sources across base flavors, SoD, Titan Reforged, and negative
-season cases. `objective-first-addon` requires all five generated artifacts and compares Source,
-Baked, and a staged package after Static Correction stripping. Issue #19 can invoke these two
-suites as its ObjectiveFirst release check rather than duplicate their persona matrix.
+season cases. It also checks emitted TOCs when present. `objective-first-addon` compares Source,
+Baked, and a staged package after Static Correction stripping for available artifacts.
+The explicit [flavor scopes](#independent-test-scopes) require these artifact checks for their
+selected flavor; the shared scope retains the cross-expansion Source checks. Issue #19 can
+reuse these checks rather than duplicate their persona matrix.
 
 The localization suites compare every effective entity translation against pinned Questie across
 all five flavors and nine locales, exercise Dynamic Translation Correction lifecycle and

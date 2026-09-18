@@ -12,6 +12,9 @@
 -- Usage:
 --   lua test.lua                 every suite
 --   lua test.lua serialize cbor  one or more suites by name
+--   lua test.lua --shared        no generated artifacts
+--   lua test.lua --flavor=Wrath  only this complete, localized artifact
+--   lua test.lua --shared --list  list selected suites without running them
 
 local lib = dofile("generator/lib.lua")
 local testFiles = dofile("tools/validation/test-files.lua")
@@ -39,8 +42,16 @@ local QUESTIE_PATH = os.getenv("QUESTIE_PATH") or "../Questie"
 -- Harness
 --------------------------------------------------------------------------------------------
 
-local suites, order = {}, {}
-local function suite(name, fn)
+local suites, order, scopes = {}, {}, {}
+local selectedFlavor
+local artifactFlavors = config.flavors
+
+---@param name string
+---@param scope string shared, artifact, or an owning flavor.
+---@param fn function
+---@return nil
+local function suite(name, scope, fn)
+  scopes[name] = scope
   suites[name] = fn
   order[#order + 1] = name
 end
@@ -114,7 +125,7 @@ end
 -- Offline binary codecs
 --------------------------------------------------------------------------------------------
 
-suite("base64", function()
+suite("base64", "shared", function()
   local cases = {
     { "", "" },
     { "f", "Zg==" },
@@ -133,7 +144,7 @@ suite("base64", function()
   end
 end)
 
-suite("cbor", function()
+suite("cbor", "shared", function()
   local function toHex(bytes)
     return (bytes:gsub(".", function(character)
       return string.format("%02x", string.byte(character))
@@ -179,7 +190,7 @@ suite("cbor", function()
     "compressed CBOR ID headers are deterministic")
 end)
 
-suite("deflate", function()
+suite("deflate", "shared", function()
   local input = string.rep("QuestieDB zlib round trip \0", 100)
   local compressed = LibDeflate:CompressZlib(input, { level = 9 })
   check(type(compressed) == "string" and #compressed < #input, "LibDeflate produced compressed zlib bytes")
@@ -192,7 +203,7 @@ suite("deflate", function()
   equal(encoded, encode.compressedCbor(value), "compressed CBOR helper is deterministic")
 end)
 
-suite("encoding-util", function()
+suite("encoding-util", "shared", function()
   client.reset()
   client.install({ expansion = "Classic" })
   local encoding = C_EncodingUtil
@@ -230,7 +241,7 @@ end)
 -- serialize
 --------------------------------------------------------------------------------------------
 
-suite("serialize", function()
+suite("serialize", "shared", function()
   equal(serialize.value({ 1, 2, 3 }), "{1,2,3}", "dense array")
   equal(serialize.value({ [1] = { 12676 }, [3] = { 16305 } }), "{{12676},nil,{16305}}", "sparse array keeps holes")
   equal(serialize.value({}), "{}", "empty table")
@@ -287,7 +298,7 @@ end)
 -- codec
 --------------------------------------------------------------------------------------------
 
-suite("codec", function()
+suite("codec", "shared", function()
   equal(codec.chunkCount["~3~"], 3, "chunk header parsed")
   equal(codec.chunkCount["~21~"], 21, "chunk header beyond the warmed range")
   equal(codec.chunkCount["Sharptalon's Claw"], nil, "ordinary value is not a chunk header")
@@ -298,7 +309,7 @@ end)
 -- Generation inputs
 --------------------------------------------------------------------------------------------
 
-suite("generation-inputs", function()
+suite("generation-inputs", "shared", function()
   local l10nGen = dofile("generator/l10n.lua")
   local flavor = config.flavorByName.Vanilla
   local typeFilter = { Quest = true }
@@ -330,7 +341,7 @@ end)
 -- Questie input integrity
 --------------------------------------------------------------------------------------------
 
-suite("questie-input-integrity", function()
+suite("questie-input-integrity", "shared", function()
   local root = ".out/test-questie-pin"
   local pinPath = root .. "/PIN"
   lib.mkdirp(root)
@@ -359,7 +370,7 @@ end)
 -- Workflow contracts
 --------------------------------------------------------------------------------------------
 
-suite("workflow-contracts", function()
+suite("workflow-contracts", "shared", function()
   local release = lib.readAll(".github/workflows/release.yml")
   check(release:find("needs: [quality, differential]", 1, true) ~= nil,
     "release publication depends on the quality and compiler differential jobs")
@@ -382,7 +393,7 @@ end)
 -- Offline tooling platform helpers
 --------------------------------------------------------------------------------------------
 
-suite("tooling-platform", function()
+suite("tooling-platform", "shared", function()
   dofile("tools/validation/platform.test.lua")(check, equal)
 end)
 
@@ -390,7 +401,7 @@ end)
 -- chunking
 --------------------------------------------------------------------------------------------
 
-suite("chunking", function()
+suite("chunking", "shared", function()
   local function emit(value, maxLen)
     local path = ".out/test-chunk.toc"
     lib.mkdirp(".out")
@@ -449,8 +460,13 @@ suite("chunking", function()
     os.remove(path)
   end
 
+
+  os.remove(".out/test-chunk.toc")
+end)
+
+suite("artifact-lines", "artifact", function()
   -- And the same holds for every generated artifact on disk.
-  for _, flavor in ipairs(config.flavors) do
+  for _, flavor in ipairs(artifactFlavors) do
     local tocPath = config.tocPath(flavor)
     if lib.fileExists(tocPath) then
       local overLimit, worst = 0, 0
@@ -467,14 +483,13 @@ suite("chunking", function()
     end
   end
 
-  os.remove(".out/test-chunk.toc")
 end)
 
 --------------------------------------------------------------------------------------------
 -- nil and empty semantics
 --------------------------------------------------------------------------------------------
 
-suite("semantics", function()
+suite("semantics", "shared", function()
   local meta = {
     entity = "Test",
     fieldCount = 6,
@@ -542,7 +557,7 @@ suite("semantics", function()
   check(encode.hasStoredValue(meta, 3, { 1 }), "normalized populated table needs a stored value")
 end)
 
-suite("rows", function()
+suite("rows", "shared", function()
   local meta = {
     entity = "Fixture",
     fieldCount = 6,
@@ -595,7 +610,7 @@ suite("rows", function()
     "a schema wider than the exact presence mask is rejected")
 end)
 
-suite("l10n-blocks", function()
+suite("l10n-blocks", "shared", function()
   local l10nGen = dofile("generator/l10n.lua")
   local ids = { 10, 20, 30, 40 }
   local values = {
@@ -639,7 +654,7 @@ suite("l10n-blocks", function()
   end
 end)
 
-suite("cbor-cache", function()
+suite("cbor-cache", "shared", function()
   local questMeta = dofile("src/meta/questMeta.lua")
   local fixturePath = ".out/test-cbor-cache.toc"
   local lines = {
@@ -712,7 +727,7 @@ end)
 -- Deprecated constant fields
 --------------------------------------------------------------------------------------------
 
-suite("constant-fields", function()
+suite("constant-fields", "shared", function()
   local schema = dofile("generator/schema.lua")
   local npcMeta = dofile("src/meta/npcMeta.lua")
   local minHealth = npcMeta.keys.minLevelHealth
@@ -873,7 +888,7 @@ end)
 -- A check that cannot fail is not a check. Each of these mutates a generated artifact and
 -- asserts the failure is caught.
 
-suite("negative-controls", function()
+suite("negative-controls", "Vanilla", function()
   local flavor = config.flavorByName.Vanilla
   local sourceToc = config.tocPath(flavor)
   if not lib.fileExists(sourceToc) then
@@ -964,7 +979,7 @@ end)
 -- Corrections
 --------------------------------------------------------------------------------------------
 
-suite("corrections", function()
+suite("corrections", "shared", function()
   local runtime = dofile("generator/runtime.lua")
   local flavor = config.flavorByName.Vanilla
 
@@ -1271,11 +1286,11 @@ end)
 -- Derived requiredRaces compatibility
 --------------------------------------------------------------------------------------------
 
-suite("sod-required-races", function()
-  dofile("tools/validation/sod-required-races.test.lua")(check, equal)
+suite("sod-required-races", "shared", function()
+  dofile("tools/validation/sod-required-races.test.lua")(check, equal, "Source")
 end)
 
-suite("derived-required-races", function()
+suite("derived-required-races", "shared", function()
   local runtime = dofile("generator/runtime.lua")
   local Lib = runtime.build()
   local inference = Lib.DerivedRequiredRaces
@@ -1504,7 +1519,7 @@ end)
 -- Correction Overlay
 --------------------------------------------------------------------------------------------
 
-suite("overlay", function()
+suite("overlay", "Vanilla", function()
   local tocPath = config.tocPath(config.flavorByName.Vanilla)
   if not lib.fileExists(tocPath) then
     io.write("  SKIP overlay: ", tocPath, " not generated\n")
@@ -1693,7 +1708,7 @@ end)
 -- Data-shaped corrections: Set
 --------------------------------------------------------------------------------------------
 
-suite("set-corrections", function()
+suite("set-corrections", "Vanilla", function()
   local tocPath = config.tocPath(config.flavorByName.Vanilla)
   if not lib.fileExists(tocPath) then
     io.write("  SKIP set-corrections: ", tocPath, " not generated\n")
@@ -1831,7 +1846,7 @@ end)
 -- Ported correction files match Questie's
 --------------------------------------------------------------------------------------------
 
-suite("correction-fidelity", function()
+suite("correction-fidelity", "shared", function()
   local questie = QUESTIE_PATH
   if not lib.fileExists(questie .. "/Database/Corrections/classicQuestFixes.lua") then
     io.write("  SKIP correction-fidelity: no Questie checkout at ", questie, "\n")
@@ -1939,7 +1954,7 @@ end)
 -- Frozen values
 --------------------------------------------------------------------------------------------
 
-suite("value-ownership", function()
+suite("value-ownership", "Vanilla", function()
   -- ADR 0003 Decision 10, revised: table reads return a FRESH MUTABLE COPY on every read —
   -- the caller owns it outright, exactly matching the compiler semantics Questie's ~290 call
   -- sites were written against. Freezing now guards internal shared structures only
@@ -2054,7 +2069,7 @@ end)
 -- Read contract: existence, composed enumeration, precedence, season gating
 --------------------------------------------------------------------------------------------
 
-suite("read-contract", function()
+suite("read-contract", "Vanilla", function()
   local tocPath = config.tocPath(config.flavorByName.Vanilla)
   if not lib.fileExists(tocPath) then
     io.write("  SKIP read-contract: ", tocPath, " not generated\n")
@@ -2238,7 +2253,7 @@ end)
 -- Name index (ADR 0008)
 --------------------------------------------------------------------------------------------
 
-suite("name-index", function()
+suite("name-index", "Vanilla", function()
   local tocPath = config.tocPath(config.flavorByName.Vanilla)
   if not lib.fileExists(tocPath) then
     io.write("  SKIP name-index: ", tocPath, " not generated\n")
@@ -2350,6 +2365,7 @@ suite("name-index", function()
   -- name is read from the getter rather than spelled out, so the check is about the index
   -- agreeing with the read, not about one fixture string.
   if not Lib.l10n.IsAvailable() then
+    assert(not selectedFlavor, "scoped name-index checks require localization")
     io.write("  SKIP name-index locale checks: artifact generated with --no-l10n\n")
   else
     Lib.l10n.SetLocale("deDE")
@@ -2376,7 +2392,7 @@ end)
 -- Equivalence negative control
 --------------------------------------------------------------------------------------------
 
-suite("equivalence-control", function()
+suite("equivalence-control", "Vanilla", function()
   local flavor = config.flavorByName.Vanilla
   local sourceToc = config.tocPath(flavor)
   if not lib.fileExists(sourceToc) then
@@ -2424,7 +2440,7 @@ end)
 -- Distributable LuaLS declarations
 --------------------------------------------------------------------------------------------
 
-suite("lua-types", function()
+suite("lua-types", "shared", function()
   local commonMethods = {
     GetByIndex = true,
     Get = true,
@@ -2511,7 +2527,23 @@ suite("lua-types", function()
   end
 
   local tocPaths = { "QuestieDB.toc" }
-  for _, flavor in ipairs(config.flavors) do
+  for _, path in ipairs(tocPaths) do
+    local typeEntries = {}
+    for line in lib.readAll(path):gmatch("[^\r\n]+") do
+      if line:sub(1, 1) ~= "#" then
+        local lower = line:lower()
+        if lower:find("types/", 1, true) or lower:find("types\\", 1, true) then
+          typeEntries[#typeEntries + 1] = line
+        end
+      end
+    end
+    equal(typeEntries, {}, path .. " does not runtime-load LuaLS declarations")
+  end
+end)
+
+suite("artifact-types", "artifact", function()
+  local tocPaths = {}
+  for _, flavor in ipairs(artifactFlavors) do
     local path = config.tocPath(flavor)
     if lib.fileExists(path) then tocPaths[#tocPaths + 1] = path end
   end
@@ -2533,7 +2565,7 @@ end)
 -- TOC file lists
 --------------------------------------------------------------------------------------------
 
-suite("toc", function()
+suite("toc", "shared", function()
   -- The correction manifest drives which correction files a TOC lists, and `config` cannot
   -- load it itself — in a client it arrives as an addon file, so the generator assigns it
   -- explicitly. The same has to happen here, and it is asserted rather than assumed: without
@@ -2710,7 +2742,7 @@ end)
 -- Independence from the prototypes
 --------------------------------------------------------------------------------------------
 
-suite("no-prototype-inputs", function()
+suite("no-prototype-inputs", "shared", function()
   -- `Getters` and `toc-database` are reference material, never a build input. Nothing here may
   -- open a path inside them, and in particular nothing may consume `Getters/data/*.lua-table`:
   -- corrections are already applied there by the pipeline QuestieDB replaces, so building on
@@ -2779,7 +2811,7 @@ end)
 -- Public API
 --------------------------------------------------------------------------------------------
 
-suite("contract-config", function()
+suite("contract-config", "shared", function()
   local source = lib.readAll("src/config.lua")
   for _, field in ipairs({ "contractVersion", "minSupportedContract" }) do
     for _, value in ipairs({ "0", "-1", "1.5", '"2"', "nil", "0/0", "math.huge" }) do
@@ -2798,7 +2830,7 @@ suite("contract-config", function()
     "inverted range explains the invariant")
 end)
 
-suite("api", function()
+suite("api", "Vanilla", function()
   local tocPath = config.tocPath(config.flavorByName.Vanilla)
   if not lib.fileExists(tocPath) then
     io.write("  SKIP api: ", tocPath, " not generated\n")
@@ -2972,7 +3004,7 @@ end)
 -- Localization
 --------------------------------------------------------------------------------------------
 
-suite("l10n", function()
+suite("l10n", "Vanilla", function()
   local tocPath = config.tocPath(config.flavorByName.Vanilla)
   if not lib.fileExists(tocPath) then
     io.write("  SKIP l10n: ", tocPath, " not generated\n")
@@ -3005,6 +3037,7 @@ suite("l10n", function()
   local l10n = Lib.l10n
 
   if not l10n.IsAvailable() then
+    assert(not selectedFlavor, "scoped l10n checks require localization")
     io.write("  SKIP l10n: artifact generated with --no-l10n\n")
     client.reset()
     return
@@ -3174,35 +3207,57 @@ end)
 -- Translation corrections
 --------------------------------------------------------------------------------------------
 
-suite("localization-overrides", function()
+suite("localization-overrides", "shared", function()
   dofile("tools/questie-sync/localization-overrides.test.lua")(check, QUESTIE_PATH)
 end)
 
-suite("translation-corrections", function()
+suite("translation-corrections", "shared", function()
   dofile("tools/validation/translation-corrections.test.lua")(check, equal)
 end)
 
-suite("titan-translations", function()
-  dofile("tools/questie-sync/titan-translations.test.lua")(check, equal, QUESTIE_PATH)
+suite("titan-translations", "shared", function()
+  dofile("tools/questie-sync/titan-translations.test.lua")(check, equal, QUESTIE_PATH, "Source")
+end)
+
+suite("sod-required-races-baked", "Vanilla", function()
+  dofile("tools/validation/sod-required-races.test.lua")(check, equal, "Baked")
+end)
+
+suite("titan-translations-baked", "Wrath", function()
+  dofile("tools/questie-sync/titan-translations.test.lua")(check, equal, QUESTIE_PATH, "Baked")
 end)
 
 --------------------------------------------------------------------------------------------
 -- Objective ordering hints
 --------------------------------------------------------------------------------------------
 
-suite("objective-first", function()
+suite("objective-first", "shared", function()
   dofile("tools/questie-sync/objective-first.test.lua")(check, QUESTIE_PATH)
 end)
 
-suite("objective-first-addon", function()
-  dofile("tools/questie-sync/objective-first-addon.test.lua")(check, QUESTIE_PATH)
+-- Cross-expansion reload checks need Source mode, not another pipeline's artifact.
+suite("objective-first-source", "shared", function()
+  dofile("tools/questie-sync/objective-first-addon.test.lua")(check, QUESTIE_PATH, "Source")
+end)
+
+suite("objective-first-emitted", "artifact", function()
+  local fidelity = dofile("tools/questie-sync/objective-first.lua")
+  for _, flavor in ipairs(artifactFlavors) do
+    if selectedFlavor or lib.fileExists(config.tocPath(flavor)) then
+      fidelity.run(check, QUESTIE_PATH, nil, flavor)
+    end
+  end
+end)
+
+suite("objective-first-addon", "artifact", function()
+  dofile("tools/questie-sync/objective-first-addon.test.lua")(check, QUESTIE_PATH, selectedFlavor)
 end)
 
 --------------------------------------------------------------------------------------------
 -- Support data
 --------------------------------------------------------------------------------------------
 
-suite("support-fidelity", function()
+suite("support-fidelity", "shared", function()
   local fidelity = dofile("tools/questie-sync/support-fidelity.lua")
   fidelity.run(check, QUESTIE_PATH)
 
@@ -3232,7 +3287,16 @@ suite("support-fidelity", function()
   os.remove(controlPath)
 end)
 
-suite("support", function()
+suite("support-fidelity-emitted", "artifact", function()
+  local fidelity = dofile("tools/questie-sync/support-fidelity.lua")
+  for _, flavor in ipairs(artifactFlavors) do
+    if selectedFlavor or lib.fileExists(config.tocPath(flavor)) then
+      fidelity.run(check, QUESTIE_PATH, flavor)
+    end
+  end
+end)
+
+suite("support", "shared", function()
   local fidelity = dofile("tools/questie-sync/support-fidelity.lua")
 
   -- The semantic comparator ignores formatting inside embedded Lua source, but rejects
@@ -3361,7 +3425,7 @@ end)
 -- Emulator
 --------------------------------------------------------------------------------------------
 
-suite("emulator", function()
+suite("emulator", "shared", function()
   lib.mkdirp(".out")
   local path = ".out/test-emulator.toc"
   lib.writeAll(path, table.concat({
@@ -3395,7 +3459,7 @@ end)
 -- Wire safety: trim-safe splitting, case-folded keys (ADR 0003 D4, D5)
 --------------------------------------------------------------------------------------------
 
-suite("wire-safety", function()
+suite("wire-safety", "shared", function()
   lib.mkdirp(".out")
   local path = ".out/test-wire.toc"
 
@@ -3495,8 +3559,13 @@ suite("wire-safety", function()
     end
   end
 
+
+  os.remove(path)
+end)
+
+suite("artifact-wire", "artifact", function()
   -- Every artifact on disk honors the edge-whitespace invariant, exactly as verify.lua checks.
-  for _, flavor in ipairs(config.flavors) do
+  for _, flavor in ipairs(artifactFlavors) do
     local tocPath = config.tocPath(flavor)
     if lib.fileExists(tocPath) then
       local offending = 0
@@ -3517,14 +3586,13 @@ suite("wire-safety", function()
     end
   end
 
-  os.remove(path)
 end)
 
 --------------------------------------------------------------------------------------------
 -- Raw production coordinates (ADR 0006)
 --------------------------------------------------------------------------------------------
 
-suite("raw-coordinates", function()
+suite("raw-coordinates", "shared", function()
   local meta = {
     entity = "Test",
     fieldCount = 4,
@@ -3585,7 +3653,7 @@ end)
 -- Legacy compiler coordinate adapter
 --------------------------------------------------------------------------------------------
 
-suite("compiler-coordinates", function()
+suite("compiler-coordinates", "shared", function()
   local floor = math.floor
 
   ---Legacy compiler read value for one raw coordinate.
@@ -3656,7 +3724,7 @@ end)
 -- Differential coordinate-mode wiring
 --------------------------------------------------------------------------------------------
 
-suite("differential-coordinate-mode", function()
+suite("differential-coordinate-mode", "shared", function()
   local meta = {
     structures = { "spawnlist", "idarray" },
   }
@@ -3691,45 +3759,48 @@ end)
 -- Personas: branches the default Alliance-Human persona can never execute
 --------------------------------------------------------------------------------------------
 
-suite("personas", function()
+---@param path string
+---@param clientOpts table
+---@return table
+local function loadPersona(path, clientOpts)
+  client.reset()
+  client.install(clientOpts)
+  if path ~= config.addonName .. ".toc" then
+    emulator.install(config.addonName, emulator.parse(path))
+  end
+  return emulator.loadAddon(path, config.addonName)
+end
+
+suite("personas", "Vanilla", function()
   local tocPath = config.tocPath(config.flavorByName.Vanilla)
   if not lib.fileExists(tocPath) then
     io.write("  SKIP personas: ", tocPath, " not generated\n")
     return
   end
 
-  local function loadMode(path, clientOpts)
-    client.reset()
-    client.install(clientOpts)
-    if path ~= config.addonName .. ".toc" then
-      emulator.install(config.addonName, emulator.parse(path))
-    end
-    return emulator.loadAddon(path, config.addonName)
-  end
-
   -- Faction oracle: Soothing Spices (item 3713). `LoadFactionFixes` points its relatedQuests
   -- at the Alliance quest 555 or the Horde quest 7321 — src/corrections/Era/
   -- classicItemFixes.lua:1612 (Alliance) and :1632 (Horde). Literal expected values, so a
   -- persona plumbing regression cannot pass by comparing one wrong answer against itself.
-  local sourceAlliance = loadMode(config.addonName .. ".toc", { expansion = "Classic" })
+  local sourceAlliance = loadPersona(config.addonName .. ".toc", { expansion = "Classic" })
   equal(sourceAlliance.Item.Get(3713, "relatedQuests"), { 555, 1218 },
     "source Alliance: Soothing Spices relates to quest 555")
 
-  local sourceHorde = loadMode(config.addonName .. ".toc", { expansion = "Classic", faction = "Horde" })
+  local sourceHorde = loadPersona(config.addonName .. ".toc", { expansion = "Classic", faction = "Horde" })
   equal(sourceHorde.Item.Get(3713, "relatedQuests"), { 7321, 1218 },
     "source Horde: Soothing Spices relates to quest 7321 — the Horde branch actually ran")
 
-  local bakedHorde = loadMode(tocPath, { faction = "Horde" })
+  local bakedHorde = loadPersona(tocPath, { faction = "Horde" })
   equal(bakedHorde.Item.Get(3713, "relatedQuests"), { 7321, 1218 },
     "baked Horde: the faction branch composes identically over the artifact")
 
   -- Season persona: with Season of Discovery active the gated Sod/ sets register and the SoD
   -- base quests join the composed view. Counts are compared, not hardcoded — the data moves.
-  local plain = loadMode(config.addonName .. ".toc", { expansion = "Classic" })
+  local plain = loadPersona(config.addonName .. ".toc", { expansion = "Classic" })
   local plainIds = plain.Quest.GetAllIds(true)
   local plainCount = #plain.Quest.GetAllIds()
 
-  local sod = loadMode(config.addonName .. ".toc", { expansion = "Classic", season = "SoD" })
+  local sod = loadPersona(config.addonName .. ".toc", { expansion = "Classic", season = "SoD" })
   local sodList = sod.Quest.GetAllIds()
   check(#sodList > plainCount, "SoD persona: the composed quest list grows")
 
@@ -3750,6 +3821,10 @@ suite("personas", function()
   end
   check(sodSets > 0, "SoD persona: Sod/ correction sets registered")
 
+  client.reset()
+end)
+
+suite("personas-titan", "Wrath", function()
   -- Titan Reforged is a Dynamic variant over Wrath, selected by Wrath plus season 109.
   -- Probe: quest 6823 "Agent of Hydraxis" gains level 80.
   ---Counts the dedicated Titan providers.
@@ -3763,13 +3838,13 @@ suite("personas", function()
     return count
   end
 
-  local plainWrath = loadMode(config.addonName .. ".toc", { expansion = "Wotlk", faction = "Horde" })
+  local plainWrath = loadPersona(config.addonName .. ".toc", { expansion = "Wotlk", faction = "Horde" })
   equal(titanSets(plainWrath), 0, "plain Wrath: no Titan set registers")
   equal(plainWrath.Quest.Get(6823, "questLevel"), plainWrath.Quest.GetRaw(6823, "questLevel"),
     "plain Wrath: quest 6823 keeps its base questLevel")
   check(plainWrath.Quest.Get(6823, "questLevel") ~= 80, "plain Wrath: the Titan 80 never applies")
 
-  local titanWrath = loadMode(config.addonName .. ".toc",
+  local titanWrath = loadPersona(config.addonName .. ".toc",
     { expansion = "Wotlk", faction = "Horde", season = "TitanReforged" })
   equal(titanSets(titanWrath), 8, "Titan persona: every declared Titan provider registers")
   local titanOrder = {}
@@ -3864,9 +3939,9 @@ suite("personas", function()
   -- Baked mode composes the same gate: the Wrath artifact plus a Titan persona reads 80.
   local wrathToc = config.tocPath(config.flavorByName.Wrath)
   if lib.fileExists(wrathToc) then
-    local bakedTitan = loadMode(wrathToc, { expansion = "Wotlk", faction = "Horde", season = "TitanReforged" })
+    local bakedTitan = loadPersona(wrathToc, { expansion = "Wotlk", faction = "Horde", season = "TitanReforged" })
     equal(bakedTitan.Quest.Get(6823, "questLevel"), 80, "baked Titan: gate composes over the artifact")
-    local bakedPlain = loadMode(wrathToc, { expansion = "Wotlk", faction = "Horde" })
+    local bakedPlain = loadPersona(wrathToc, { expansion = "Wotlk", faction = "Horde" })
     check(bakedPlain.Quest.Get(6823, "questLevel") ~= 80, "baked plain Wrath: gate stays closed")
     checkTitanView(bakedPlain, bakedTitan, "baked Titan")
   end
@@ -3878,7 +3953,7 @@ end)
 -- Perf guard: the cached hot path must not allocate beyond the fresh value itself
 --------------------------------------------------------------------------------------------
 
-suite("perf-guard", function()
+suite("perf-guard", "Vanilla", function()
   local tocPath = config.tocPath(config.flavorByName.Vanilla)
   if not lib.fileExists(tocPath) then
     io.write("  SKIP perf-guard: ", tocPath, " not generated\n")
@@ -3937,7 +4012,7 @@ end)
 -- Reconstruction negative control: the byte gate must detect one corrupted Scalar row
 --------------------------------------------------------------------------------------------
 
-suite("reconstruct-control", function()
+suite("reconstruct-control", "Vanilla", function()
   local flavor = config.flavorByName.Vanilla
   local sourceToc = config.tocPath(flavor)
   if not lib.fileExists(sourceToc) then
@@ -3970,11 +4045,83 @@ end)
 -- Driver
 --------------------------------------------------------------------------------------------
 
-local requested
-if arg and #arg > 0 then
-  requested = {}
-  for _, name in ipairs(arg) do requested[name] = true end
+local requested, scope, listOnly
+for _, value in ipairs(arg or {}) do
+  if value == "--list" and not listOnly then
+    listOnly = true
+  elseif value == "--shared" or value:match("^%-%-flavor=") then
+    if scope or requested then
+      io.stderr:write("Choose one scope, or named suites, not both.\n")
+      os.exit(2)
+    end
+    scope = value
+    if value ~= "--shared" then
+      selectedFlavor = config.flavorByName[value:sub(10)]
+      if not selectedFlavor then
+        io.stderr:write("Unknown flavor: ", value:sub(10), "\n")
+        os.exit(2)
+      end
+    end
+  else
+    if scope or not suites[value] then
+      io.stderr:write("Unknown suite or incompatible selection: ", value, "\n")
+      os.exit(2)
+    end
+    requested = requested or {}
+    requested[value] = true
+  end
 end
+
+if scope then
+  requested = {}
+  for _, name in ipairs(order) do
+    requested[name] = scope == "--shared" and scopes[name] == "shared" or
+      selectedFlavor ~= nil and (scopes[name] == "artifact" or scopes[name] == selectedFlavor.name)
+  end
+  artifactFlavors = selectedFlavor and { selectedFlavor } or {}
+elseif requested then
+  -- Existing suite names still include the assertions split out for pipeline ownership.
+  local companions = {
+    ["objective-first"] = "objective-first-emitted",
+    ["support-fidelity"] = "support-fidelity-emitted",
+    chunking = "artifact-lines", ["wire-safety"] = "artifact-wire",
+    ["lua-types"] = "artifact-types", personas = "personas-titan",
+    ["sod-required-races"] = "sod-required-races-baked",
+    ["titan-translations"] = "titan-translations-baked",
+  }
+  for name, companion in pairs(companions) do
+    if requested[name] then requested[companion] = true end
+  end
+end
+
+if listOnly then
+  for _, name in ipairs(order) do
+    if not requested or requested[name] then print(name) end
+  end
+  os.exit(0)
+end
+
+if selectedFlavor then
+  -- Scoped runs are release gates: partial Generation must fail, never silently skip.
+  local path = config.tocPath(selectedFlavor)
+  local ok, message = pcall(function()
+    local map, headers = emulator.parse(path)
+    assert(headers["X-Flavor"] == selectedFlavor.name, path .. " has the wrong flavor")
+    assert(map[config.l10nHeaderKey] == tostring(config.l10nVersion), path .. " needs full localization")
+    for _, entity in ipairs(config.entityTypes) do
+      assert(map["X-" .. entity.metaPrefix .. "IDS"], path .. " lacks " .. entity.name .. " IDs")
+      for _, locale in ipairs(config.locales) do
+        local key = config.l10nBlockKey(entity.name, locale)
+        assert(emulator.getValue(map, key), path .. " lacks " .. key)
+      end
+    end
+  end)
+  if not ok then
+    io.stderr:write("Artifact preflight failed: ", tostring(message), "\n")
+    os.exit(1)
+  end
+end
+
 local totalFailed, totalChecks = 0, 0
 
 for _, name in ipairs(order) do

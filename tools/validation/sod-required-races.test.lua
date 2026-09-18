@@ -2,8 +2,9 @@
 -- differential remains the all-quest drift check; this fixture is not a baseline allowance.
 ---@param check fun(condition: boolean, message: string)
 ---@param equal fun(actual: any, expected: any, message: string)
+---@param modeScope? string Source or Baked; omitted preserves both modes.
 ---@return nil
-return function(check, equal)
+return function(check, equal, modeScope)
   local lib = dofile("generator/lib.lua")
   local config = dofile("src/config.lua")
   config.correctionManifest = dofile("src/corrections/manifest.lua")
@@ -35,16 +36,17 @@ return function(check, equal)
       flavor.name .. " ships only applicable authored SoD data")
   end
 
-  local modes = { { name = "Source", toc = "QuestieDB.toc" } }
-  if lib.fileExists("QuestieDB_Vanilla.toc") then
-    local toc = lib.readAll("QuestieDB_Vanilla.toc"):gsub("\\", "/")
-    local current = toc:find(path, 1, true) ~= nil
-    check(current, "Baked Vanilla TOC includes authored SoD data; regenerate stale artifacts in isolation")
-    if current then modes[#modes + 1] = { name = "Baked", toc = "QuestieDB_Vanilla.toc" } end
-  else
-    io.write("  SKIP sod-required-races Baked: Vanilla artifact not generated\n")
+  local modes = modeScope == "Baked" and {} or { { name = "Source", toc = "QuestieDB.toc" } }
+  if modeScope ~= "Source" then
+    if lib.fileExists("QuestieDB_Vanilla.toc") then
+      local toc = lib.readAll("QuestieDB_Vanilla.toc"):gsub("\\", "/")
+      local current = toc:find(path, 1, true) ~= nil
+      check(current, "Baked Vanilla TOC includes authored SoD data; regenerate stale artifacts in isolation")
+      if current then modes[#modes + 1] = { name = "Baked", toc = "QuestieDB_Vanilla.toc" } end
+    else
+      io.write("  SKIP sod-required-races Baked: Vanilla artifact not generated\n")
+    end
   end
-
   for _, mode in ipairs(modes) do
     for _, faction in ipairs({ "Alliance", "Horde" }) do
       client.reset()

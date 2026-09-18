@@ -14,6 +14,7 @@ Tasks:
 
 Flavors: Vanilla TBC Wrath Cata Mists; omitted means all applicable flavors.
 Freeze supports Vanilla and Mists only.
+Test runs shared suites once and artifact suites for each selected flavor; generate those TOCs first.
 
 Options:
   --flavors=Vanilla,Mists  Select flavors instead of positional names
@@ -345,9 +346,13 @@ def execute(options: Options, root: Path) -> int:
         if gate in ("generate", "determinism"):
             continue
         if gate == "test":
-            # The Lua database suite and Python orchestration suite are independent jobs.
-            jobs.append(Job("test", [lua, "test.lua"], 650, priority=100))
+            # Match CI's ownership: shared suites never discover generated artifacts, and
+            # each flavor suite requires only its explicitly selected TOC.
+            jobs.append(Job("test:shared", [lua, "test.lua", "--shared"], 650, priority=100))
+            for flavor in options.flavors:
+                jobs.append(Job("test:" + flavor, [lua, "test.lua", "--flavor=" + flavor], WEIGHTS[flavor]))
             jobs.append(Job("test:cli", [sys.executable, "tools/cli/questiedb.test.py"], 100))
+            jobs.append(Job("test:scopes", [sys.executable, "tools/validation/test-scopes.test.py"], 100))
             continue
         for flavor in options.flavors:
             weight = WEIGHTS[flavor]

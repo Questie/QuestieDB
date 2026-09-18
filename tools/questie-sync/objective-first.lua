@@ -176,37 +176,42 @@ fidelity.personas = {
 ---@param check fun(condition: boolean, message: string)
 ---@param questiePath string
 ---@param stagedRoot string? Also check emitted TOCs in a stripped staged addon.
+---@param selectedFlavor? table Check only this flavor's emitted TOC; omitted checks Source/configured lists.
 ---@return nil
-function fidelity.run(check, questiePath, stagedRoot)
+function fidelity.run(check, questiePath, stagedRoot, selectedFlavor)
   lib.assertQuestiePin(questiePath)
   local sourceFiles = fidelity.tocFiles("QuestieDB.toc")
   for _, persona in ipairs(fidelity.personas) do
-    local flavor = config.flavorByName[persona.flavor]
-    local expected, inputs = fidelity.loadOracle(questiePath, persona.flavor, persona.season)
-    local bakedFiles = config.bakedFileList(flavor)
-    local modes = {
-      { name = "Source", files = sourceFiles, mode = "source" },
-      { name = "Baked selection", files = bakedFiles, mode = "baked" },
-    }
-    local bakedToc = config.tocPath(flavor)
-    if lib.fileExists(bakedToc) then
-      modes[#modes + 1] = { name = "emitted Baked", files = fidelity.tocFiles(bakedToc), mode = "baked" }
-    end
-    if stagedRoot then
-      modes[#modes + 1] = { name = "stripped package", files = fidelity.tocFiles(stagedRoot .. "/" .. bakedToc),
-        mode = "baked", root = stagedRoot }
-    end
-    for _, mode in ipairs(modes) do
-      local actual = fidelity.loadProvider(mode.files, persona.flavor, persona.season, mode.mode, mode.root)
-      local differences = fidelity.differences(actual, expected)
-      check(#differences == 0, persona.name .. " " .. mode.name .. " pinned hints: " .. table.concat(differences, "; "))
-    end
+    if not selectedFlavor or persona.flavor == selectedFlavor.name then
+      local flavor = config.flavorByName[persona.flavor]
+      local expected, inputs = fidelity.loadOracle(questiePath, persona.flavor, persona.season)
+      local bakedFiles = config.bakedFileList(flavor)
+      local modes = {
+        { name = "Source", files = sourceFiles, mode = "source" },
+        { name = "Baked selection", files = bakedFiles, mode = "baked" },
+      }
+      local bakedToc = config.tocPath(flavor)
+      if selectedFlavor then
+        modes = { { name = "emitted Baked", files = fidelity.tocFiles(bakedToc), mode = "baked" } }
+      end
+      if stagedRoot then
+        modes[#modes + 1] = { name = "stripped package", files = fidelity.tocFiles(stagedRoot .. "/" .. bakedToc),
+          mode = "baked", root = stagedRoot }
+      end
+      for _, mode in ipairs(modes) do
+        local actual = fidelity.loadProvider(mode.files, persona.flavor, persona.season, mode.mode, mode.root)
+        local differences = fidelity.differences(actual, expected)
+        check(#differences == 0, persona.name .. " " .. mode.name .. " pinned hints: " .. table.concat(differences, "; "))
+      end
 
-    -- A new static-only hint source must not disappear just because Baked ships Dynamic files.
-    local shipped = {}
-    for _, file in ipairs(bakedFiles) do shipped[file:match("([^/]+)$")] = true end
-    for _, input in ipairs(inputs) do
-      check(shipped[input.path:match("([^/]+)$")] == true, persona.name .. " Baked retains " .. input.path)
+      -- A new static-only hint source must not disappear just because Baked ships Dynamic files.
+      if not selectedFlavor then
+        local shipped = {}
+        for _, file in ipairs(bakedFiles) do shipped[file:match("([^/]+)$")] = true end
+        for _, input in ipairs(inputs) do
+          check(shipped[input.path:match("([^/]+)$")] == true, persona.name .. " Baked retains " .. input.path)
+        end
+      end
     end
   end
 end

@@ -163,8 +163,9 @@ end
 
 ---@param check fun(condition: boolean, message: string)
 ---@param questiePath string
+---@param selectedFlavor? table Check only this flavor's emitted TOC; omitted checks Source/configured lists.
 ---@return nil
-function fidelity.run(check, questiePath)
+function fidelity.run(check, questiePath, selectedFlavor)
   lib.assertQuestiePin(questiePath)
   local byLocal, byQuestie = {}, {}
   for _, input in ipairs(inventory) do
@@ -182,7 +183,7 @@ function fidelity.run(check, questiePath)
   local sourceFiles = config.sourceFileList()
   local committedFiles = tocFiles("QuestieDB.toc")
 
-  for _, flavor in ipairs(config.flavors) do
+  for _, flavor in ipairs(selectedFlavor and { selectedFlavor } or config.flavors) do
     local configured, expectedPaths, expectedSet = {}, {}, {}
     for _, file in ipairs(config.supportData.shared) do configured[file] = true end
     for _, file in ipairs(config.supportData.perFlavor[flavor.name]) do configured[file] = true end
@@ -198,25 +199,28 @@ function fidelity.run(check, questiePath)
         expectedSet[input.file] = true
       end
     end
-    local selectionDifference = fidelity.difference(configured, expectedSet, flavor.name .. " file selection")
-    check(selectionDifference == nil, selectionDifference or (flavor.name .. " selects every pinned support input"))
-    for file in pairs(configured) do
-      assert(byLocal[file], "unmapped configured support input: " .. file)
-      visited[file] = true
+    if not selectedFlavor then
+      local selectionDifference = fidelity.difference(configured, expectedSet, flavor.name .. " file selection")
+      check(selectionDifference == nil, selectionDifference or (flavor.name .. " selects every pinned support input"))
+      for file in pairs(configured) do
+        assert(byLocal[file], "unmapped configured support input: " .. file)
+        visited[file] = true
+      end
     end
 
     for _, faction in ipairs({ "Alliance", "Horde" }) do
       local label = flavor.name .. " " .. faction
       local expected = fidelity.materialize(fidelity.loadInputs(expectedPaths, flavor, faction, dropKeys))
-      local source = fidelity.loadProvider(sourceFiles, flavor, faction)
-      local baked = fidelity.loadProvider(config.bakedFileList(flavor), flavor, faction)
-      local committed = fidelity.loadProvider(committedFiles, flavor, faction)
-      local modes = { { "Source", source }, { "Baked", baked }, { "committed Source TOC", committed } }
-      -- The configured blocks above always run. When Generation has emitted an artifact,
-      -- also check its actual support list; the full gate generates all five before testing.
-      local bakedToc = config.tocPath(flavor)
-      if lib.fileExists(bakedToc) then
-        modes[#modes + 1] = { "emitted Baked TOC", fidelity.loadProvider(tocFiles(bakedToc), flavor, faction) }
+      local source, baked
+      local modes
+      if selectedFlavor then
+        -- Read the requested artifact unconditionally: missing files are gate failures.
+        modes = { { "emitted Baked TOC", fidelity.loadProvider(tocFiles(config.tocPath(flavor)), flavor, faction) } }
+      else
+        source = fidelity.loadProvider(sourceFiles, flavor, faction)
+        baked = fidelity.loadProvider(config.bakedFileList(flavor), flavor, faction)
+        local committed = fidelity.loadProvider(committedFiles, flavor, faction)
+        modes = { { "Source", source }, { "Baked", baked }, { "committed Source TOC", committed } }
       end
       for _, mode in ipairs(modes) do
         local difference = fidelity.difference(fidelity.materialize(mode[2]), expected, label .. " " .. mode[1])
@@ -224,28 +228,32 @@ function fidelity.run(check, questiePath)
         local shapeError = fidelity.dungeonShape(mode[2].ZoneDB.private.dungeons)
         check(shapeError == nil, label .. " " .. mode[1] .. " dungeon shape: " .. tostring(shapeError))
       end
-      check(lib.deepEqual(source, baked), label .. " Source/Baked preserve identical public raw value shapes")
-      check(source.ZoneDB.zoneIDs.THE_RING_OF_TRIALS == 9999, label .. " includes THE_RING_OF_TRIALS")
-      check(source.ZoneDB.private.dungeons[2257][1] == "Deeprun Tram", label .. " names Deeprun Tram correctly")
+      if not selectedFlavor then
+        check(lib.deepEqual(source, baked), label .. " Source/Baked preserve identical public raw value shapes")
+        check(source.ZoneDB.zoneIDs.THE_RING_OF_TRIALS == 9999, label .. " includes THE_RING_OF_TRIALS")
+        check(source.ZoneDB.private.dungeons[2257][1] == "Deeprun Tram", label .. " names Deeprun Tram correctly")
 
-      -- Compare each copied source independently too. Final module equality alone could hide
-      -- a stale value that a subsequent file overwrites. Seed instance-map dependencies once.
-      for file in pairs(configured) do
-        local input = byLocal[file]
-        local seed = questiePath .. "/Database/Zones/data/zoneIds.lua"
-        local actual = fidelity.materialize(fidelity.loadInputs({ seed, file }, flavor, faction, dropKeys))
-        local upstream = fidelity.materialize(fidelity.loadInputs({ seed, questiePath .. "/" .. input.questie }, flavor, faction, dropKeys))
-        local difference = fidelity.difference(actual, upstream, label .. " " .. file)
-        check(difference == nil, difference or (label .. " " .. file .. " matches pinned values"))
-        for _, field in ipairs(input.fields) do
-          local value = actual
-          for key in field:gmatch("[^.]+") do value = type(value) == "table" and value[key] or nil end
-          check(value ~= nil, file .. " publishes " .. field)
+        -- Compare each copied source independently too. Final module equality alone could hide
+        -- a stale value that a subsequent file overwrites. Seed instance-map dependencies once.
+        for file in pairs(configured) do
+          local input = byLocal[file]
+          local seed = questiePath .. "/Database/Zones/data/zoneIds.lua"
+          local actual = fidelity.materialize(fidelity.loadInputs({ seed, file }, flavor, faction, dropKeys))
+          local upstream = fidelity.materialize(fidelity.loadInputs({ seed, questiePath .. "/" .. input.questie }, flavor, faction, dropKeys))
+          local difference = fidelity.difference(actual, upstream, label .. " " .. file)
+          check(difference == nil, difference or (label .. " " .. file .. " matches pinned values"))
+          for _, field in ipairs(input.fields) do
+            local value = actual
+            for key in field:gmatch("[^.]+") do value = type(value) == "table" and value[key] or nil end
+            check(value ~= nil, file .. " publishes " .. field)
+          end
         end
       end
     end
   end
-  for file in pairs(byLocal) do check(visited[file] == true, "inventory input is configured: " .. file) end
+  if not selectedFlavor then
+    for file in pairs(byLocal) do check(visited[file] == true, "inventory input is configured: " .. file) end
+  end
 end
 
 return fidelity

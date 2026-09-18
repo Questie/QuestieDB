@@ -28,10 +28,19 @@ end
 
 ---@param check fun(condition: boolean, message: string)
 ---@param questiePath string
+---@param selectedFlavor? table|string A flavor for artifact gates, or Source for shared checks.
 ---@return nil
-return function(check, questiePath)
+return function(check, questiePath, selectedFlavor)
+  local sourceOnly = selectedFlavor == "Source"
+  if sourceOnly then selectedFlavor = nil end
   local generated, available = {}, {}
-  for _, flavor in ipairs(config.flavors) do
+  local flavors = config.flavors
+  if sourceOnly then
+    flavors = {}
+  elseif selectedFlavor then
+    flavors = { selectedFlavor }
+  end
+  for _, flavor in ipairs(flavors) do
     if lib.fileExists(config.tocPath(flavor)) then
       generated[#generated + 1] = flavor
       available[flavor.name] = true
@@ -39,37 +48,46 @@ return function(check, questiePath)
       io.write("  SKIP objective-first-addon Baked/stripped ", flavor.name, ": artifact not generated\n")
     end
   end
-  if #generated == 0 then return end
+  if #generated == 0 and not sourceOnly then return end
   lib.assertQuestiePin(questiePath)
 
   -- Stage the union of the actual emitted file lists, like the combined release package.
   -- Use a unique directory and remove only this test's copies, including on assertion errors.
-  local stage = testFiles.temporaryDirectory()
+  local stage = not sourceOnly and testFiles.temporaryDirectory() or nil
   local ok, err = pcall(function()
-    local copied = {}
-    for _, flavor in ipairs(generated) do
-      local toc = config.tocPath(flavor)
-      lib.copyFile(toc, stage .. "/" .. toc)
-      for _, file in ipairs(fidelity.tocFiles(toc)) do
-        if not copied[file] then
-          lib.mkdirp(stage .. "/" .. assert(file:match("^(.+)/")))
-          lib.copyFile(file, stage .. "/" .. file)
-          copied[file] = true
+    if stage then
+      local copied = {}
+      for _, flavor in ipairs(generated) do
+        local toc = config.tocPath(flavor)
+        lib.copyFile(toc, stage .. "/" .. toc)
+        for _, file in ipairs(fidelity.tocFiles(toc)) do
+          if not copied[file] then
+            lib.mkdirp(stage .. "/" .. assert(file:match("^(.+)/")))
+            lib.copyFile(file, stage .. "/" .. file)
+            copied[file] = true
+          end
         end
       end
+      local lua = os.getenv("LUA") or "lua5.1"
+      assert(succeeds(quote(lua) .. " tools/distribution/strip-static.lua " .. quote(stage) .. " --quiet"),
+        "staged package failed Static Correction stripping and per-file behavior parity")
+      local stripped = lib.readAll(stage .. "/src/corrections/Era/classicQuestFixes.lua")
+      check(stripped:find("Static body stripped at package time", 1, true) ~= nil,
+        "the staged addon really contains stripped correction bodies")
     end
-    local lua = os.getenv("LUA") or "lua5.1"
-    assert(succeeds(quote(lua) .. " tools/distribution/strip-static.lua " .. quote(stage) .. " --quiet"),
-      "staged package failed Static Correction stripping and per-file behavior parity")
-    local stripped = lib.readAll(stage .. "/src/corrections/Era/classicQuestFixes.lua")
-    check(stripped:find("Static body stripped at package time", 1, true) ~= nil,
-      "the staged addon really contains stripped correction bodies")
 
     -- The first seven entries are the supported base/season personas. Repeat plain Vanilla
     -- last to make leakage after expansion and seasonal loads observable in one process.
     local personas = {}
-    for index = 1, 7 do personas[#personas + 1] = fidelity.personas[index] end
-    personas[#personas + 1] = fidelity.personas[1]
+    for index = 1, 7 do
+      local persona = fidelity.personas[index]
+      if not selectedFlavor or persona.flavor == selectedFlavor.name then
+        personas[#personas + 1] = persona
+      end
+    end
+    if not selectedFlavor or selectedFlavor.name == "Vanilla" then
+      personas[#personas + 1] = fidelity.personas[1]
+    end
     for _, persona in ipairs(personas) do
       local flavor = config.flavorByName[persona.flavor]
       local expected = fidelity.loadOracle(questiePath, persona.flavor, persona.season)
@@ -104,7 +122,9 @@ return function(check, questiePath)
     end
   end)
   client.reset()
-  local cleaned = pcall(testFiles.removeTree, stage)
-  check(cleaned, "removed only the temporary ObjectiveFirst addon stage")
+  if stage then
+    local cleaned = pcall(testFiles.removeTree, stage)
+    check(cleaned, "removed only the temporary ObjectiveFirst addon stage")
+  end
   assert(ok, err)
 end
