@@ -84,17 +84,36 @@ applies. A clone junctioned or symlinked into `Interface/AddOns` already runs yo
 Source mode; nothing needs generating for that. Generation is how you produce the Baked
 artifact Questie ships, and how you run the offline checks against your change.
 
-Install Lua 5.1. LuaJIT also works and reports itself as Lua 5.1:
+Windows x64 and Linux x64 include Lua 5.1.5 in
+[`tools/lua-binary/`](tools/lua-binary/README.md). From Bash:
 
-| | |
+```sh
+./generate.sh Vanilla
+```
+
+| Shell/platform | Interpreter selected by `generate.sh` |
 | --- | --- |
-| Windows | `scoop install luajit`, or a LuaBinaries 5.1 `lua.exe`, somewhere on `PATH` |
-| macOS | `brew install lua@5.1` or `brew install luajit` |
-| Linux | `apt install lua5.1`, or your distribution's Lua 5.1 package |
+| Git Bash on Windows | Bundled `tools/lua-binary/lua.exe` |
+| Linux/WSL x64 | Bundled static `tools/lua-binary/linux-x64/lua` |
+| macOS | Installed `lua5.1`, `lua`, or `luajit` reporting Lua 5.1; otherwise an error |
 
-Check with `lua -v`. It must print `Lua 5.1` or `LuaJIT`; the scripts refuse any other version
-with a message pointing back here. The executable is `lua5.1` on Debian-family Linux and usually
-`lua` or `luajit` elsewhere; substitute yours in the commands below.
+On macOS, install Lua 5.1 or LuaJIT, for example `brew install luajit`. Other architectures
+can use an installed Lua 5.1 interpreter by setting `LUA=/path/to/lua5.1`.
+
+From Windows Command Prompt or PowerShell, use `generate.cmd`:
+
+```powershell
+.\generate.cmd Vanilla
+.\tools\lua-binary\lua.exe verify.lua Vanilla
+```
+
+Omitting the flavor generates all five. Double-clicking `generate.cmd` also keeps the results
+visible afterward. Both Generation shortcuts honor an explicit `LUA` and forward options to
+`generate.lua`. Ordinary Generation needs no Python, LuaRocks or runtime installation on the
+bundled platforms.
+
+For direct Lua commands below, substitute the bundled path on Windows/Linux, or your installed
+Lua 5.1-compatible command on macOS. LuaJIT reports `_VERSION` as Lua 5.1 and is accepted.
 
 The loop, from the repository root:
 
@@ -136,9 +155,10 @@ forward arguments and exit codes. Command parsing, scheduling, timing, logging, 
 live in one Python standard-library implementation. No Bash installation, GNU utilities, or
 pip packages are needed.
 
-Run `./questiedb.sh --help` for every gate and option. The runner selects `lua5.1`, or a `lua`
-command that reports Lua 5.1. `LUA` and `--lua=` can select another Lua 5.1-compatible executable
-explicitly. The `freeze` gate supports Vanilla and Mists. `all` validates but does not package;
+Run `./questiedb.sh --help` for every gate and option. On Windows/Linux x64, the runner prefers
+the matching bundled interpreter. Otherwise it tries `lua5.1`, `lua`, then `luajit` on `PATH`,
+accepting only an interpreter that reports Lua 5.1.
+`LUA` and `--lua=` can select another Lua 5.1-compatible executable explicitly. The `freeze` gate supports Vanilla and Mists. `all` validates but does not package;
 packaging and bootstrap are separate commands, and bootstrap does not require Lua.
 The `test` task runs shared Lua suites once, artifact suites for each selected flavor, and
 Python CLI and scope-selection tests as separate jobs. Generate the selected artifacts first.
@@ -213,8 +233,10 @@ is not proof of compatibility.
 The Python standard library handles ZIP creation, archive inspection, file sizes, timestamps,
 and SHA-256. Python needs its standard `zlib` module, not any installed Python packages.
 No `zip`, `unzip`, GNU coreutils, or `jq` is required for packaging. Lua 5.1 is still needed
-for Static Correction stripping and its behavior-parity check. Packaging honors `LUA`, or
-finds `lua5.1`/a Lua 5.1 `lua`; Git supplies commit provenance when available.
+for Static Correction stripping and its behavior-parity check. Packaging honors `LUA`, then
+prefers the matching Windows/Linux x64 bundle before trying `lua5.1`/`lua`/`luajit` on `PATH`.
+Git supplies commit provenance when available. The bundled interpreter and other contributor
+tools are not included in addon ZIPs.
 
 On macOS, no shell upgrade is needed. For example, Homebrew provides Python and the
 Lua 5.1-compatible LuaJIT:
@@ -226,11 +248,9 @@ export LUA=luajit
 ./questiedb.sh package all
 ```
 
-On Windows, install Python 3.8+ and a Lua 5.1-compatible interpreter, then select Lua if
-it is not already available as `lua5.1` or `lua`:
+On Windows, the full toolchain needs Python 3.8+; Lua is already bundled:
 
 ```powershell
-$env:LUA = 'C:\Tools\Lua\lua.exe'
 .\questiedb.ps1 generate
 if ($LASTEXITCODE -eq 0) { .\questiedb.ps1 package all }
 ```
@@ -258,7 +278,8 @@ python3 tools/validation/localization-inputs.test.py
 python3 tools/questie-sync/questie-checkout.test.py
 ```
 
-Native macOS/Windows acceptance is still needed.
+The launchers and packaging tests run on Linux and Windows. Native macOS acceptance and
+end-to-end database Generation acceptance remain to be run.
 
 ### Local inputs and remaining Questie checks
 
@@ -301,8 +322,10 @@ Update `src/types/consumer.test.lua` when the changed contract needs a semantic 
 Run the `lua-types` suite and LuaLS command above before packaging. `AGENTS.md` maps each kind
 of public change to the declaration files that own it.
 
-`questiedb.sh` and `questiedb.ps1` are the public entry points. Both delegate to
+`questiedb.sh` and `questiedb.ps1` are the full-toolchain entry points. Both delegate to
 `tools/cli/questiedb.py`; no arguments prints help, and `check` selects the standard check bundle.
+`generate.sh` and Windows' `generate.cmd` are Lua-only Generation shortcuts, not separate
+orchestration runners.
 
 The sweep parallelises by memory budget rather than core count, because the jobs are wildly
 uneven — equivalence on Mists peaks at 1.66 GB and 57 s, on Vanilla at 0.42 GB and 19 s — so a
@@ -325,14 +348,16 @@ for. It runs Questie's real compile path offline — the one `cli/validate-era.l
 drives — and compares `QuestieDB.Query<Type>Single` against this database's composed reads,
 id by id and field by field. The golden snapshot can only catch drift from *this* tree;
 this gate is the only one that can say whether the database still matches the thing it
-replaces. It needs a Questie checkout (`--questie=../Questie`, the default) and `bit32` on
-the Lua path, which it picks up from luarocks automatically. Accepted divergences live in
+replaces. It needs a Questie checkout (`--questie=../Questie`, the default) and `bit32`.
+Both bundled interpreters include `bit32`; an installed interpreter can obtain it through
+LuaRocks, whose paths the differential discovers automatically. Accepted divergences live in
 `tools/differential/compiler-baseline/`; `--update-baseline` re-records them for review.
 
 Generation and runtime database logic use plain Lua 5.1 with no `lfs`, luarocks, or C dependency.
 Inputs are enumerated in `src/config.lua` rather than discovered by scanning directories.
 Python's standard library handles orchestration, packaging, and the pinned Questie fetch. The
-migration compiler differential additionally requires `bit32` for Questie's mocks.
+migration compiler differential additionally requires `bit32` for Questie's mocks, already
+included in both bundled interpreters.
 `./questiedb.sh check --questie=` selects the checkout for fidelity tests and the compiler
 differential; `QUESTIE_PATH` provides the same default for nested migration tools. Generation,
 Determinism, Reconstruction, Verification, and Equivalence need no external checkout.

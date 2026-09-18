@@ -4,6 +4,7 @@ Run: uv run tools/distribution/package.test.py
 No generated checkout artifacts, Questie inputs, network, or installed addons are used.
 """
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -13,19 +14,50 @@ import sys
 import tempfile
 import unittest
 import zipfile
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[2]
 FLAVORS = ("Vanilla", "TBC", "Wrath", "Cata", "Mists")
 PIN = "a" * 40
-LUA = None
-for name in ([os.environ["LUA"]] if os.environ.get("LUA") else ["lua5.1", "lua"]):
-    candidate = shutil.which(name)
-    if candidate:
-        result = subprocess.run([candidate, "-e", "io.write(_VERSION)"], capture_output=True, text=True)
-        if result.returncode == 0 and result.stdout == "Lua 5.1":
-            LUA = candidate
-            break
+SPEC = importlib.util.spec_from_file_location("questiedb_package", ROOT / "tools/distribution/package.py")
+packager = importlib.util.module_from_spec(SPEC)
+sys.modules[SPEC.name] = packager
+SPEC.loader.exec_module(packager)
+try:
+    LUA = packager.find_lua()
+except ValueError:
+    LUA = None
+
+
+class LuaSelectionTest(unittest.TestCase):
+    def test_bundle_matches_platform_and_explicit_override_wins(self):
+        with tempfile.TemporaryDirectory(prefix="package Lua ") as directory:
+            root = Path(directory)
+            cases = [("win32", "AMD64", "", root / "tools/lua-binary/lua.exe"),
+                     ("win32", "x86", "", root / "lua5.1"),
+                     ("win32", "ARM64", "", root / "lua5.1"),
+                     ("linux", "x86_64", "", root / "tools/lua-binary/linux-x64/lua"),
+                     ("linux", "aarch64", "", root / "lua5.1"),
+                     ("darwin", "arm64", "", root / "lua5.1"),
+                     ("win32", "AMD64", "custom", root / "custom"),
+                     ("linux", "x86_64", "custom", root / "custom")]
+            for platform, machine, override, expected in cases:
+                with self.subTest(platform=platform, machine=machine, override=override), \
+                        patch.object(packager, "ROOT", root), \
+                        patch.object(packager.sys, "platform", platform), \
+                        patch.object(packager.platform, "machine", return_value=machine), \
+                        patch.dict(os.environ, {"LUA": override}), \
+                        patch.object(packager.shutil, "which", side_effect=lambda name: str(root / name)), \
+                        patch.object(packager.subprocess, "run", return_value=subprocess.CompletedProcess(
+                            [], 0, stdout="Lua 5.1", stderr="")) as run:
+                    self.assertEqual(str(expected.resolve()), packager.find_lua())
+                    self.assertEqual(str(expected), run.call_args.args[0][0])
+            with patch.dict(os.environ, {"LUA": "missing-override"}), \
+                    patch.object(packager.sys, "platform", "win32"), \
+                    patch.object(packager.shutil, "which", return_value=None), \
+                    self.assertRaisesRegex(ValueError, "Lua 5.1 is required"):
+                packager.find_lua()
 
 
 class PackageTest(unittest.TestCase):
@@ -50,6 +82,9 @@ class PackageTest(unittest.TestCase):
         self.write("data/raw.lua", "-- source-only data\n")
         self.write("l10n/translation.lua", "-- source-only localization\n")
         self.write("QuestieDB.toc", "-- source-only TOC\n")
+        self.write("tools/lua-binary/lua.exe", "contributor-only executable\n")
+        self.write("tools/lua-binary/linux-x64/lua", "contributor-only executable\n")
+        self.write("generate.cmd", "contributor-only launcher\n")
         # Only the stripper is substituted: the packager still invokes real Lua on staged
         # files. Production stripping has its own behavior-parity checks.
         shutil.copyfile(ROOT / "tools/distribution/fixtures/strip-static.lua",

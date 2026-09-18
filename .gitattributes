@@ -1,0 +1,3 @@
+# Keep launchers usable when checked out with Windows Git's autocrlf setting.
+*.sh text eol=lf
+*.cmd text eol=crlf

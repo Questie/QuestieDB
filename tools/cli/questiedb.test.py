@@ -48,6 +48,128 @@ class ParsingTest(unittest.TestCase):
                 cli.parse_args(args)
 
 
+class LuaSelectionTest(unittest.TestCase):
+    def test_matching_bundles_and_explicit_overrides_take_precedence(self):
+        with tempfile.TemporaryDirectory(prefix="lua selection ") as directory:
+            root = Path(directory)
+            bundled = root / "tools/lua-binary/lua.exe"
+            bundled.parent.mkdir(parents=True)
+            bundled.touch()
+            linux_bundle = root / "tools/lua-binary/linux-x64/lua"
+            linux_bundle.parent.mkdir()
+            linux_bundle.touch()
+            process = Mock(returncode=0)
+            process.communicate.return_value = ("Lua 5.1", "")
+            cases = [("win32", "AMD64", None, bundled),
+                     ("win32", "x86", None, root / "lua5.1"),
+                     ("win32", "ARM64", None, root / "lua5.1"),
+                     ("linux", "x86_64", None, linux_bundle),
+                     ("linux", "aarch64", None, root / "lua5.1"),
+                     ("darwin", "arm64", None, root / "lua5.1"),
+                     ("win32", "AMD64", "custom", root / "custom"),
+                     ("linux", "x86_64", "custom", root / "custom")]
+            for platform, machine, explicit, expected in cases:
+                with self.subTest(platform=platform, machine=machine, explicit=explicit), \
+                        patch.object(cli.sys, "platform", platform), \
+                        patch.object(cli.platform, "machine", return_value=machine), \
+                        patch.object(cli.shutil, "which", side_effect=lambda name: str(root / name)), \
+                        patch.object(cli, "start_process", return_value=process) as start:
+                    self.assertEqual(str(expected.resolve()), cli.find_lua(explicit, root))
+                    self.assertEqual(str(expected), start.call_args.args[0][0])
+            with patch.object(cli.sys, "platform", "win32"), \
+                    patch.object(cli.shutil, "which", return_value=None), \
+                    self.assertRaisesRegex(ValueError, "Lua 5.1 is required"):
+                cli.find_lua("missing-override", root)
+
+
+@unittest.skipIf(os.name == "nt", "POSIX shell routing fixtures")
+class ShellGeneratorTest(unittest.TestCase):
+    def setUp(self):
+        self.bash = shutil.which("bash")
+        if not self.bash:
+            self.skipTest("Bash is required")
+        try:
+            self.lua = cli.find_lua(os.environ.get("LUA") or None, ROOT)
+        except ValueError:
+            self.skipTest("Lua 5.1 is required")
+        self.temp = tempfile.TemporaryDirectory(prefix="shell generation ")
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        self.bin = self.root / "bin"
+        self.bin.mkdir()
+        self.outside = self.root / "outside"
+        self.outside.mkdir()
+        shutil.copyfile(ROOT / "generate.sh", self.root / "generate.sh")
+        shutil.copyfile(FIXTURES / "batch-generate.lua", self.root / "generate.lua")
+        for path in ("tools/lua-binary/lua.exe", "tools/lua-binary/linux-x64/lua"):
+            target = self.root / path
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.symlink_to(self.lua)
+        (self.bin / "dirname").symlink_to(shutil.which("dirname"))
+        self.stub("uname", 'case "$1" in -s) echo "$TEST_OS";; -m) echo "$TEST_ARCH";; esac')
+        self.stub("cygpath", 'case "$1" in -u) printf "%s\\n" "$2";; -w) printf "WIN:%s\\n" "$2";; esac')
+        self.env = dict(os.environ, PATH=str(self.bin), TEST_OS="Linux", TEST_ARCH="x86_64",
+                        QUESTIEDB_TEST_EXIT="0")
+        self.env.pop("LUA", None)
+
+    def stub(self, name, body):
+        path = self.bin / name
+        path.write_text("#!/bin/sh\n" + body + "\n")
+        path.chmod(0o755)
+
+    def run_generator(self, *args):
+        return subprocess.run([self.bash, str(self.root / "generate.sh"), *args],
+                              cwd=self.outside, env=self.env, capture_output=True, text=True, timeout=10)
+
+    def test_linux_bundle_preserves_arguments_cwd_default_and_failure_status(self):
+        result = self.run_generator("argument with spaces", "", "--quiet")
+        self.assertEqual(0, result.returncode, result.stderr)
+        self.assertIn("argument with spaces||--quiet", result.stdout)
+        self.assertIn("LUA=" + str(self.root / "tools/lua-binary/linux-x64/lua"), result.stdout)
+        self.assertEqual("checkout", (self.root / "batch-result.txt").read_text())
+        self.assertFalse((self.outside / "batch-result.txt").exists())
+        self.env["QUESTIEDB_TEST_EXIT"] = "7"
+        failed = self.run_generator()
+        self.assertEqual(7, failed.returncode, failed.stderr)
+        self.assertIn("default: all", failed.stdout)
+
+    def test_git_bash_selects_windows_binary_and_exports_native_path(self):
+        for system in ("MINGW64_NT-10.0", "MSYS_NT-10.0"):
+            with self.subTest(system=system):
+                self.env["TEST_OS"] = system
+                result = self.run_generator("Vanilla")
+                self.assertEqual(0, result.returncode, result.stderr)
+                self.assertIn("LUA=WIN:" + str(self.root / "tools/lua-binary/lua.exe"), result.stdout)
+
+    def test_macos_uses_compatible_installed_lua_and_rejects_missing_or_wrong_version(self):
+        self.env["TEST_OS"] = "Darwin"
+        missing = self.run_generator()
+        self.assertEqual(2, missing.returncode)
+        self.assertIn("brew install luajit", missing.stderr)
+        self.stub("lua", 'printf "Lua 5.4"')
+        wrong = self.run_generator()
+        self.assertEqual(2, wrong.returncode)
+        (self.bin / "luajit").symlink_to(self.lua)
+        found = self.run_generator("Vanilla")
+        self.assertEqual(0, found.returncode, found.stderr)
+        self.assertIn("LUA=" + str(self.bin / "luajit"), found.stdout)
+
+    def test_override_wins_and_unsupported_architecture_never_runs_x64_bundle(self):
+        self.env["TEST_ARCH"] = "aarch64"
+        unsupported = self.run_generator()
+        self.assertEqual(2, unsupported.returncode)
+        self.assertIn("architecture", unsupported.stderr)
+        self.env["LUA"] = self.lua
+        overridden = self.run_generator("Vanilla")
+        self.assertEqual(0, overridden.returncode, overridden.stderr)
+        self.assertIn("LUA=" + self.lua, overridden.stdout)
+        self.env.update(TEST_ARCH="x86_64", LUA="missing-override")
+        self.assertEqual(2, self.run_generator().returncode)
+        self.stub("wrong-lua", 'printf "Lua 5.4"')
+        self.env["LUA"] = "wrong-lua"
+        self.assertEqual(2, self.run_generator().returncode)
+
+
 class SchedulerTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix="questiedb scheduler ")
@@ -123,15 +245,9 @@ class SchedulerTest(unittest.TestCase):
 
 class CommandFlowTest(unittest.TestCase):
     def setUp(self):
-        self.lua = None
-        for name in ([os.environ["LUA"]] if os.environ.get("LUA") else ["lua5.1", "lua"]):
-            candidate = shutil.which(name)
-            if candidate:
-                result = subprocess.run([candidate, "-e", "io.write(_VERSION)"], capture_output=True, text=True)
-                if result.returncode == 0 and result.stdout == "Lua 5.1":
-                    self.lua = candidate
-                    break
-        if not self.lua:
+        try:
+            self.lua = cli.find_lua(os.environ.get("LUA") or None, ROOT)
+        except ValueError:
             self.skipTest("Lua 5.1 is required for tiny command fixtures")
         self.temp = tempfile.TemporaryDirectory(prefix="questiedb commands ")
         self.addCleanup(self.temp.cleanup)
@@ -266,6 +382,71 @@ class CommandFlowTest(unittest.TestCase):
         self.assertEqual(0, result.returncode, result.stderr)
         self.assertEqual([argument], json.loads(result.stdout))
 
+    @unittest.skipUnless(os.name == "nt", "Native Git Bash launcher test")
+    def test_native_git_bash_uses_windows_bundle_and_preserves_override_and_status(self):
+        git = shutil.which("git")
+        git_root = Path(git).parent.parent if git else None
+        bash = git_root / "bin/bash.exe" if git_root else None
+        if not bash or not bash.is_file():
+            self.skipTest("Git for Windows with bin/bash.exe is required")
+        bundled = self.root / "tools/lua-binary/lua.exe"
+        bundled.parent.mkdir(parents=True)
+        shutil.copyfile(ROOT / "tools/lua-binary/lua.exe", bundled)
+        shutil.copyfile(ROOT / "generate.sh", self.root / "generate.sh")
+        shutil.copyfile(FIXTURES / "batch-generate.lua", self.root / "generate.lua")
+        outside = self.root / "outside"
+        outside.mkdir()
+        env = dict(self.env, MSYSTEM="MINGW64", PATH=str(git_root / "usr/bin"))
+        env.pop("LUA", None)
+        command = [str(bash), "--noprofile", "--norc", (self.root / "generate.sh").as_posix(),
+                   "argument with spaces", "", "--quiet"]
+        result = subprocess.run(command, cwd=outside, env=env,
+                                capture_output=True, text=True, timeout=30)
+        self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+        self.assertIn("argument with spaces||--quiet", result.stdout)
+        self.assertIn("LUA=" + str(bundled), result.stdout)
+        self.assertEqual("checkout", (self.root / "batch-result.txt").read_text())
+        env.update(LUA=str(bundled), QUESTIEDB_TEST_EXIT="7")
+        overridden = subprocess.run(command, cwd=outside, env=env,
+                                    capture_output=True, text=True, timeout=30)
+        self.assertEqual(7, overridden.returncode, overridden.stdout + overridden.stderr)
+
+    @unittest.skipUnless(os.name == "nt", "Windows batch launcher test")
+    def test_batch_generator_uses_bundle_without_python_and_preserves_exit_status(self):
+        bundled = self.root / "tools/lua-binary/lua.exe"
+        bundled.parent.mkdir(parents=True)
+        shutil.copyfile(ROOT / "tools/lua-binary/lua.exe", bundled)
+        shutil.copyfile(ROOT / "generate.cmd", self.root / "generate.cmd")
+        shutil.copyfile(FIXTURES / "batch-generate.lua", self.root / "generate.lua")
+        outside = self.root / "outside"
+        outside.mkdir()
+        env = dict(self.env, PATH=str(self.root / "no-tools"))
+        env.pop("LUA", None)
+        comspec = os.environ.get("COMSPEC", "cmd.exe")
+        batch = self.root / "generate.cmd"
+        # cmd /s /c strips an outer quote pair; CRT list quoting alone loses a spaced path.
+        command = '"{}" /d /s /c ""{}" "argument with spaces" --quiet"'.format(comspec, batch)
+        result = subprocess.run(command, cwd=outside, env=env,
+                                capture_output=True, text=True, timeout=30)
+        self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+        self.assertIn("argument with spaces|--quiet", result.stdout)
+        self.assertFalse((outside / "batch-result.txt").exists())
+        self.assertEqual("checkout", (self.root / "batch-result.txt").read_text())
+        env["QUESTIEDB_TEST_EXIT"] = "7"
+        failed = subprocess.run(command, cwd=outside, env=env,
+                                capture_output=True, text=True, timeout=30)
+        self.assertEqual(7, failed.returncode, failed.stdout + failed.stderr)
+        # No arguments models a double-click; a newline dismisses the final pause.
+        default_command = '"{}" /d /s /c ""{}""'.format(comspec, batch)
+        default = subprocess.run(default_command, cwd=outside, env=env, input="\n",
+                                 capture_output=True, text=True, timeout=30)
+        self.assertEqual(7, default.returncode, default.stdout + default.stderr)
+        self.assertIn("default: all", default.stdout)
+        env.update(LUA="missing-override", QUESTIEDB_TEST_EXIT="0")
+        overridden = subprocess.run(command, cwd=outside, env=env,
+                                    capture_output=True, text=True, timeout=30)
+        self.assertNotEqual(0, overridden.returncode, "an explicit override must not fall back to bundled Lua")
+
     def test_powershell_launcher_forwards_arguments(self):
         powershell = shutil.which("pwsh") or shutil.which("powershell")
         if not powershell:
@@ -275,7 +456,8 @@ class CommandFlowTest(unittest.TestCase):
         fixture = self.root / "invoke.ps1"
         fixture.write_text("& (Join-Path $PSScriptRoot 'questiedb.ps1') package '' 'argument \"with quotes\"' 'C:\\Addon Folder\\'\n"
                            "exit $LASTEXITCODE\n")
-        result = subprocess.run([powershell, "-NoProfile", "-File", str(fixture)],
+        # Allow only this trusted fixture process; leave the machine's execution policy unchanged.
+        result = subprocess.run([powershell, "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(fixture)],
                                 env=self.env, capture_output=True, text=True, timeout=30)
         self.assertEqual(7, result.returncode, result.stdout + result.stderr)
         self.assertEqual(["", 'argument "with quotes"', "C:\\Addon Folder\\"], json.loads(result.stdout))

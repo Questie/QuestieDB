@@ -8,5 +8,5 @@ for python in python3 python; do
     fi
 done
 echo 'QuestieDB requires Python 3.8+ (python3 or python) for this command.' >&2
-echo 'Generating TOCs needs only Lua: lua5.1 generate.lua Vanilla   (see README.md, Working on corrections)' >&2
+echo 'To generate without Python, run ./generate.sh Vanilla from the checkout (see README.md, Working on corrections).' >&2
 exit 2

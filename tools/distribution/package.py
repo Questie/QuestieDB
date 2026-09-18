@@ -14,6 +14,7 @@ from datetime import datetime, timezone
 import hashlib
 import json
 import os
+import platform
 from pathlib import Path, PurePosixPath
 import re
 import shutil
@@ -49,8 +50,15 @@ class Artifact(TypedDict):
 
 
 def find_lua() -> str:
-    """Honor LUA, otherwise find a Lua 5.1 interpreter before replacing old outputs."""
-    candidates = [os.environ["LUA"]] if os.environ.get("LUA") else ["lua5.1", "lua"]
+    """Honor LUA, then prefer a matching bundle before checking PATH."""
+    bundled = None
+    if sys.platform == "win32" and platform.machine().lower() in ("x86_64", "amd64"):
+        bundled = ROOT / "tools/lua-binary/lua.exe"
+    elif sys.platform.startswith("linux") and platform.machine().lower() in ("x86_64", "amd64"):
+        bundled = ROOT / "tools/lua-binary/linux-x64/lua"
+    candidates = [os.environ["LUA"]] if os.environ.get("LUA") else (
+        ([str(bundled)] if bundled else []) + ["lua5.1", "lua", "luajit"]
+    )
     for candidate in candidates:
         executable = shutil.which(candidate)
         if executable:

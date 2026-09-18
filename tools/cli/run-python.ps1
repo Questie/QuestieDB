@@ -39,5 +39,5 @@ foreach ($name in @('py', 'python3', 'python')) {
     exit $code
 }
 [Console]::Error.WriteLine('QuestieDB requires Python 3.8+ (py -3, python3, or python) for this command.')
-[Console]::Error.WriteLine('Generating TOCs needs only Lua: lua generate.lua Vanilla   (see README.md, Working on corrections)')
+[Console]::Error.WriteLine('To generate without Python, run .\generate.cmd Vanilla from the checkout (see README.md, Working on corrections).')
 exit 2

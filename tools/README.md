@@ -1,13 +1,14 @@
 # Tools
 
 Tools are grouped by purpose, not implementation language. Start with the contributor
-command at the repository root: `questiedb.sh` or `questiedb.ps1`. These are the only
-launchers; tools below are implementations and tests, not parallel command interfaces.
-See [the main README](../README.md#for-contributors).
+command at the repository root: `questiedb.sh` or `questiedb.ps1`. Use `generate.sh` (Bash) or
+`generate.cmd` (Windows) for Lua-only Generation without Python. Tools below are implementations,
+tests, and the bundled interpreters. See [the main README](../README.md#for-contributors).
 
 | Directory | Owns |
 | --- | --- |
 | `cli/` | Contributor command orchestration and launcher support |
+| `lua-binary/` | Prebuilt Windows/Linux x64 Lua 5.1 interpreters, checksums, and notices |
 | `distribution/` | Packaging, Static Correction stripping, and release downloads/installations |
 | `questie-sync/` | Imports and fidelity checks against the pinned legacy Questie checkout |
 | `validation/` | QuestieDB's own behavior checks and shared test-fixture helpers |

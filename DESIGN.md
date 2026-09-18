@@ -578,9 +578,10 @@ Historical measurements remain useful for comparison:
 | Mists, including l10n | 168 s |
 | All flavors in the memory-budgeted check runner | 168 s wall time |
 
-Generation is pure Lua with no C dependencies. **Later, nice-to-have:** commit a small
-`lua.exe` so contributors can generate and run tests locally without installing a toolchain.
-Not needed now — source mode covers the dev loop, and CI has Lua.
+Generation is pure Lua with no C dependencies. Windows and Linux x64 contributors can use
+the bundled interpreters through `generate.sh` or Windows' `generate.cmd` without installing a
+toolchain. macOS uses an installed Lua 5.1 interpreter. Source mode still covers the dev loop
+without Generation.
 
 ## Module layout
 

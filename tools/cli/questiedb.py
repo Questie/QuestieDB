@@ -20,7 +20,7 @@ Options:
   --flavors=Vanilla,Mists  Select flavors instead of positional names
   --budget-mb=4000        Scheduling budget, 1 to 2147483647 MB
   --questie=PATH          Legacy migration checkout, default ../Questie
-  --lua=COMMAND          Lua 5.1-compatible executable (also accepts LUA)
+  --lua=COMMAND          Override Lua (also accepts LUA); Windows/Linux x64 prefer bundled Lua
   --sequential           Run one job at a time
   -h, --help             Show this help
 """
@@ -29,6 +29,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import hashlib
 import os
+import platform
 from pathlib import Path
 import re
 import shutil
@@ -113,8 +114,15 @@ def parse_args(args: list[str]) -> Options:
 
 
 def find_lua(explicit: Optional[str], root: Path) -> str:
-    """Resolve an executable once; children use an absolute path, including paths with spaces."""
-    candidates = [explicit] if explicit is not None else ["lua5.1", "lua"]
+    """Honor overrides, then prefer a matching bundle; return an absolute path."""
+    bundled = None
+    if sys.platform == "win32" and platform.machine().lower() in ("x86_64", "amd64"):
+        bundled = root / "tools/lua-binary/lua.exe"
+    elif sys.platform.startswith("linux") and platform.machine().lower() in ("x86_64", "amd64"):
+        bundled = root / "tools/lua-binary/linux-x64/lua"
+    candidates = [explicit] if explicit is not None else (
+        ([str(bundled)] if bundled else []) + ["lua5.1", "lua", "luajit"]
+    )
     found = []
     for candidate in candidates:
         if not candidate:
