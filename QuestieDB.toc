@@ -7,7 +7,7 @@
 ## Interface: 11508, 11509, 20506, 38000, 38001, 40402, 50503, 50504
 ## Title: QuestieDB
 ## Notes: |cFFFFD100(source mode)|r The database Questie consumes. No generated artifact present.
-## Author: Code: Logonz Data: Muehe/TheCrux(BreakBB)/Drejjmit/Dyaxler/Cheeq/TechnoHunter/Everyone else
+## Author: Code: Logonz Data: Muehe/TheCrux(BreakBB)/Drejjmit/Dyaxler/Cheeq/TechnoHunter/Yttrium/Everyone else
 ## Version: 1.0.0
 ## Category: Quests
 ## Category-deDE: Quests
