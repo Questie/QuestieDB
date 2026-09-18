@@ -210,14 +210,78 @@ function lib.copyFile(src, dst)
   lib.writeAll(dst, lib.readAll(src))
 end
 
---- Create a directory, including parents. Uses os.execute rather than lfs, deliberately.
+lib.isWindows = package.config:sub(1, 1) == "\\"
+lib.nullDevice = lib.isWindows and "NUL" or "/dev/null"
+
+---Quote a shell argument for direct Lua tooling. Python orchestration uses argument lists.
+---@param value string
+---@param nativeArgument boolean? False for cmd builtins rather than native executable argv.
+---@return string quoted
+function lib.shellQuote(value, nativeArgument)
+  if lib.isWindows then
+    -- cmd expands these even inside quotes. Reject rather than reinterpret a caller's path.
+    assert(not value:find('[%%!"\r\n]'), "cmd.exe argument contains an unsupported quote, newline, % or !")
+    -- Native argument parsers consume backslash-quote pairs; preserve a trailing separator.
+    if nativeArgument ~= false then value = value:gsub("(\\+)$", "%1%1") end
+    return '"' .. value .. '"'
+  end
+  return "'" .. value:gsub("'", "'\\''") .. "'"
+end
+
+---cmd.exe needs outer quotes when the executable itself is quoted.
+---@param command string
+---@return string commandLine
+local function commandLine(command)
+  return lib.isWindows and command:sub(1, 1) == '"' and ('"' .. command .. '"') or command
+end
+
+---@param command string
+---@return number|boolean? status
+---@return string? kind
+---@return number? code
+function lib.execute(command)
+  return os.execute(commandLine(command))
+end
+
+---@param command string
+---@return file*? pipe
+function lib.popen(command)
+  return io.popen(commandLine(command), "r")
+end
+
+---Create directories with the platform's native command, without LuaFileSystem.
+---@param path string
+---@return nil
 function lib.mkdirp(path)
   if path == "" or path == "." then return end
-  -- `mkdir -p` on POSIX; `mkdir` on Windows creates intermediate dirs by default.
-  local ok = os.execute('mkdir -p "' .. path .. '" 2>/dev/null')
-  if ok ~= 0 and ok ~= true then
-    os.execute('mkdir "' .. path:gsub("/", "\\") .. '" 2>nul')
+  local quoted = lib.shellQuote(lib.isWindows and path:gsub("/", "\\") or path, false)
+  local command = lib.isWindows and ("if not exist " .. quoted .. " mkdir " .. quoted)
+    or ("mkdir -p " .. quoted)
+  local ok = lib.execute(command)
+  assert(ok == 0 or ok == true, "Cannot create directory: " .. path)
+end
+
+---Select Python for offline orchestration tests and migration tooling, never runtime reads.
+---@param arguments string[]
+---@return string command
+function lib.pythonCommand(arguments)
+  local selected = os.getenv("QUESTIEDB_PYTHON")
+  local prefix
+  if selected and selected ~= "" then
+    prefix = lib.shellQuote(selected)
+  else
+    for _, candidate in ipairs({ "python3", "python", "py -3" }) do
+      local pipe = lib.popen(candidate .. ' -c "import sys; print(int(sys.version_info >= (3, 8)))" 2>' .. lib.nullDevice)
+      if pipe then
+        local version = pipe:read("*l")
+        pipe:close()
+        if version == "1" then prefix = candidate; break end
+      end
+    end
   end
+  assert(prefix, "Python 3.8+ is required for offline tooling; use questiedb.sh or questiedb.ps1")
+  for _, argument in ipairs(arguments) do prefix = prefix .. " " .. lib.shellQuote(argument) end
+  return prefix
 end
 
 --------------------------------------------------------------------------------------------
@@ -230,22 +294,14 @@ local function trim(str)
   return (str:gsub("^%s+", ""):gsub("%s+$", ""))
 end
 
----Quotes one value for the POSIX shell used by the offline Git helper.
----@param value string
----@return string quoted
-local function shellQuote(value)
-  return "'" .. value:gsub("'", "'\\''") .. "'"
-end
-
 --- `git rev-parse HEAD`, or forty zeros when git is unavailable. With `dir`, the commit of
 --- that checkout instead — used to record the Questie input commit.
 --- See docs/storage-format.md, "Build metadata".
 ---@param dir string? Git checkout, defaulting to the current directory.
 ---@return string commit
 function lib.gitCommit(dir)
-  local cmd = dir and ("git -C " .. shellQuote(dir) .. " rev-parse HEAD 2>/dev/null")
-                   or "git rev-parse HEAD 2>/dev/null"
-  local pipe = io.popen(cmd, "r")
+  local cmd = dir and ("git -C " .. lib.shellQuote(dir) .. " rev-parse HEAD") or "git rev-parse HEAD"
+  local pipe = lib.popen(cmd .. " 2>" .. lib.nullDevice)
   if pipe then
     local output = trim(pipe:read("*a") or "")
     pipe:close()

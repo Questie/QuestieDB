@@ -25,7 +25,7 @@ Assume `C_EncodingUtil` exists on every supported client. Do not add a literal f
 - `../Questie/Libs/LibDeflate/LibDeflate.lua`: pure Lua zlib, runs under `lua5.1`; its
   `CompressZlib` output decodes with `C_EncodingUtil.DecompressString(bytes, 1)` (verified).
 - The offline harness: `emulator/`, `verify.lua`, `equivalence.lua`, `test.lua`,
-  `tools/differential/golden.py`, `tools/cli/check.sh`. All of it keeps working once the emulator
+  `tools/differential/golden.py`, `questiedb.sh`. All of it keeps working once the emulator
   can stand in for `C_EncodingUtil`.
 
 ## Storage format, precisely
@@ -85,7 +85,7 @@ order anyway; each later step has a check that depends on the earlier ones.
   `=` padding, pure Lua 5.1 arithmetic. The prototype has an encoder to start from.
 - Add deterministic map-key ordering to the way the generator calls the CBOR encoder: a
   wrapper in `generator/cbor.lua` that rebuilds maps with sorted keys before encoding, or an
-  option on the vendored encoder if that is cleaner. The determinism gate in `tools/cli/check.sh`
+  option on the vendored encoder if that is cleaner. The determinism gate in `questiedb.sh`
   is the check.
 - `test.lua`: suites for base64 round trip including all three padding cases, the vendored
   CBOR against its fixtures, LibDeflate zlib round trip, and deterministic encoding of a map
@@ -187,7 +187,7 @@ to its caller. Do not leave dead code with an "in case" comment.
 - `tools/differential/golden.py check Vanilla` must pass without a refresh. Composed reads
   did not change, only their storage. A golden diff here is a defect.
 - `tools/differential/compiler_diff.py`: the baseline counts must not move.
-- `tools/cli/check.sh all` green on every flavour, then `tools/cli/check.sh determinism` green.
+- `./questiedb.sh all` green on every flavour, then `./questiedb.sh determinism` green.
 - `lua5.1 test.lua` green, `lua5.1 test.lua lua-types` green, and
   `lua-language-server --check=src/types --checklevel=Warning` clean. No public type changes
   are expected.
@@ -244,8 +244,8 @@ deleted.
 2. `lua5.1 generate.lua Vanilla` then `lua5.1 verify.lua Vanilla` and
    `lua5.1 equivalence.lua Vanilla`.
 3. `python3 tools/differential/golden.py check Vanilla`.
-4. `tools/cli/check.sh --flavors=Vanilla` then `tools/cli/check.sh all` then
-   `tools/cli/check.sh determinism`.
+4. `./questiedb.sh check --flavors=Vanilla` then `./questiedb.sh all` then
+   `./questiedb.sh determinism`.
 5. Live acceptance.
 
 ## Out of scope

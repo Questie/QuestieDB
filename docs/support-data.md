@@ -77,5 +77,5 @@ compared, so an equivalent string-to-table change still fails as a public shape 
 Dungeon `alternativeAreaIds` receive a separate dense-list shape check.
 
 The suite runs with an unfiltered `lua5.1 test.lua`, including CI's unit job and the release
-quality job, and in the `test` job of `tools/cli/check.sh all`. Issue #19's aggregate side-channel
+quality job, and in the `test` job of `./questiedb.sh all`. Issue #19's aggregate side-channel
 gate can invoke the focused command above directly.

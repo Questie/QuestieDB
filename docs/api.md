@@ -580,15 +580,26 @@ if not ok then
 end
 ```
 
-`LibQuestieDB.contractVersion` is also readable directly. Contract 2 introduces CBOR scalar
+`LibQuestieDB.contractVersion` and `LibQuestieDB.minSupportedContract` expose the current
+contract and oldest supported consumer contract directly. Both are positive integers;
+the shared runtime/generator configuration rejects invalid or inverted ranges.
+Contract 2 introduces CBOR scalar
 rows, CBOR table values, compressed CBOR ID headers, and compressed locale-and-type
 localization columns. These storage changes ship together and do not change the public read
 API, so `minSupportedContract` remains 1.
 
 The check is a **range**: `RequireContract(v)` passes for any
 `minSupportedContract <= v <= contractVersion`, so a consumer built against an older
-contract keeps working across additive releases. The floor rises only when a breaking
-change genuinely abandons older consumers.
+contract keeps working across additive releases. Requirements must be positive integers;
+fractional numbers, numeric strings, missing values, NaN, and infinity are rejected.
+The floor rises only when a breaking change genuinely abandons older consumers.
+
+Published `release.json` manifests include `version`, `contractVersion`, and
+`minSupportedContract`. `version` is the actual packaged TOC version, including the
+`-dev.<commit>` suffix for previews. Packaging verifies that all selected flavors agree
+on their version and that their contract matches the shipped runtime configuration.
+Consumers selecting published releases must check the complete supported range, not
+just whether the provider's current contract is greater than their requirement.
 
 ---
 

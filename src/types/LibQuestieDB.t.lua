@@ -6,9 +6,10 @@
 ---@field Item ItemDB Item entity reads.
 ---@field Object ObjectDB Object entity reads.
 ---@field contractVersion integer Public API and storage contract version.
+---@field minSupportedContract integer Oldest supported consumer contract.
 ---@field addonName string Loaded addon name.
 ---@field readMode QuestieDBReadMode Active source or baked reader.
----@field RequireContract fun(required: number): boolean, string? Check whether this release supports a consumer contract.
+---@field RequireContract fun(required: integer): boolean, string? Check whether this release supports a positive integer consumer contract.
 ---@field InvalidateCache fun(datatype?: QuestieDBDatatype, id?: number) Drop one entity cache, one datatype cache, or every cache.
 ---@field ApplyRegisteredCorrections fun(owner?: string): integer Apply pending Corrections for one owner or all pending owners.
 ---@field RegisterCorrection fun(owner: string, datatype: QuestieDBDatatype, name: string, func: QuestieDBCorrectionProvider, loadOrder?: number): QuestieDBCorrectionEntry Register a Static Correction.

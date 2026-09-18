@@ -53,7 +53,7 @@ snapshot whether or not another synchronization is needed before cutover.
 
 ```sh
 # No Questie checkout needed. Exercises local Generation/Reconstruction and missing inputs.
-lua5.1 tools/localization-inputs.test.lua
+python3 tools/validation/localization-inputs.test.py
 
 # Requires an isolated Questie checkout at QUESTIE_COMMIT for the migration oracle.
 QUESTIE_PATH=/path/to/pinned/Questie lua5.1 test.lua localization-overrides translation-corrections titan-translations

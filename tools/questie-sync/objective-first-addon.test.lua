@@ -1,6 +1,7 @@
 -- Full-addon and stripped-package coverage. Run after Generation in an isolated checkout;
 -- the focused objective-first suite needs no entity payload generation.
 local lib = dofile("generator/lib.lua")
+local testFiles = dofile("tools/validation/test-files.lua")
 local config = dofile("src/config.lua")
 local fidelity = dofile("tools/questie-sync/objective-first.lua")
 -- Earlier suites may leave a LibStub mock that cannot register LibDeflate. Load the
@@ -15,13 +16,13 @@ local emulator = dofile("emulator/metadata.lua")
 ---@param value string
 ---@return string quoted
 local function quote(value)
-  return "'" .. value:gsub("'", "'\\''") .. "'"
+  return lib.shellQuote(value)
 end
 
 ---@param command string
 ---@return boolean succeeded
 local function succeeds(command)
-  local status = os.execute(command)
+  local status = lib.execute(command)
   return status == true or status == 0
 end
 
@@ -43,9 +44,7 @@ return function(check, questiePath)
 
   -- Stage the union of the actual emitted file lists, like the combined release package.
   -- Use a unique directory and remove only this test's copies, including on assertion errors.
-  local pipe = assert(io.popen("mktemp -d"))
-  local stage = assert(pipe:read("*l"))
-  pipe:close()
+  local stage = testFiles.temporaryDirectory()
   local ok, err = pcall(function()
     local copied = {}
     for _, flavor in ipairs(generated) do
@@ -105,7 +104,7 @@ return function(check, questiePath)
     end
   end)
   client.reset()
-  local cleaned = succeeds("rm -rf -- " .. quote(stage))
+  local cleaned = pcall(testFiles.removeTree, stage)
   check(cleaned, "removed only the temporary ObjectiveFirst addon stage")
   assert(ok, err)
 end

@@ -4,14 +4,15 @@
 -- Storage codecs, read semantics, workflow contracts, and the negative controls that prove
 -- the verification gates can fail.
 --
--- Deliberately dependency-free: plain Lua 5.1, no busted, no luarocks. The guard has to be
--- present in CI rather than conditional on a toolchain being installed.
+-- Plain Lua 5.1 for database tests; Python's standard library handles orchestration and
+-- filesystem fixtures. No busted, luarocks, or third-party Python packages are required.
 --
 -- Usage:
 --   lua test.lua                 every suite
 --   lua test.lua serialize cbor  one or more suites by name
 
 local lib = dofile("generator/lib.lua")
+local testFiles = dofile("tools/validation/test-files.lua")
 local serialize = dofile("generator/serialize.lua")
 local codec = dofile("src/meta/codec.lua")
 local encode = dofile("generator/encode.lua")
@@ -44,18 +45,18 @@ end
 
 local current
 
----Quotes one argument for the POSIX shell used by the offline test commands.
+---Quote an argument for the platform shell used by direct Lua test subprocesses.
 ---@param value string
 ---@return string quoted
 local function shellQuote(value)
-  return "'" .. value:gsub("'", "'\\''") .. "'"
+  return lib.shellQuote(value)
 end
 
----Runs one POSIX-shell command and normalizes Lua 5.1/5.2 exit-status shapes.
+---Run a platform-shell command and normalize Lua 5.1/5.2 exit-status shapes.
 ---@param command string
 ---@return boolean succeeded
 local function commandSucceeded(command)
-  local ok = os.execute(command)
+  local ok = lib.execute(command)
   if type(ok) == "number" then return ok == 0 end
   return ok == true
 end
@@ -376,361 +377,11 @@ suite("workflow-contracts", function()
 end)
 
 --------------------------------------------------------------------------------------------
--- Local full-flow ordering
+-- Offline tooling platform helpers
 --------------------------------------------------------------------------------------------
 
-suite("check-flow", function()
-  local root = ".out/test-check-flow"
-  commandSucceeded("rm -rf " .. shellQuote(root))
-  lib.mkdirp(root .. "/tools/cli")
-  lib.mkdirp(root .. "/fake-bin")
-  lib.copyFile("questiedb.sh", root .. "/questiedb.sh")
-  lib.copyFile("tools/cli/check.sh", root .. "/tools/cli/check.sh")
-
-  local fakeLua = root .. "/fake-lua"
-  lib.writeAll(fakeLua, [[#!/usr/bin/env bash
-set -eu
-if [ "${1:-}" = "-e" ] && [ "${2:-}" = "io.write(_VERSION)" ]; then
-  printf 'Lua 5.1'
-  exit 0
-fi
-printf 'lua\tquestie=%s\t%s\n' "${QUESTIE_PATH:-}" "$*" >> "$CHECK_FLOW_LOG"
-if [ "${CHECK_FLOW_FAIL_VERIFY:-0}" = "1" ] && [ "${1:-}" = "verify.lua" ]; then
-  exit 7
-fi
-if [ "${1:-}" = "generate.lua" ]; then
-  case "${2:-}" in
-    Vanilla|Mists) printf 'artifact\n' > "QuestieDB_${2}.toc" ;;
-  esac
-elif [ "${1:-}" = "verify.lua" ]; then
-  printf '[PASS] fixture summary %0100d summary-tail\n' 0
-fi
-]])
-  local wrongLua = root .. "/wrong-lua"
-  lib.writeAll(wrongLua, [[#!/usr/bin/env bash
-if [ "${1:-}" = "-e" ] && [ "${2:-}" = "io.write(_VERSION)" ]; then
-  printf 'Lua 5.4'
-  exit 0
-fi
-printf 'wrong-lua-job\t%s\n' "$*" >> "$CHECK_FLOW_LOG"
-exit 99
-]])
-  lib.copyFile(fakeLua, root .. "/fake-bin/lua5.1")
-  lib.writeAll(root .. "/fake-bin/python3", [[#!/usr/bin/env bash
-set -eu
-printf 'python\tquestie=%s\t%s\n' "${QUESTIE_PATH:-}" "$*" >> "$CHECK_FLOW_LOG"
-]])
-  check(commandSucceeded("chmod +x " .. shellQuote(root .. "/questiedb.sh") .. " " ..
-    shellQuote(root .. "/tools/cli/check.sh") .. " " .. shellQuote(fakeLua) .. " " ..
-    shellQuote(wrongLua) .. " " .. shellQuote(root .. "/fake-bin/lua5.1") .. " " ..
-    shellQuote(root .. "/fake-bin/python3")),
-    "full-flow fixture executables prepared")
-
-  local pwdPipe = assert(io.popen("pwd", "r"))
-  local repoRoot = (pwdPipe:read("*a") or ""):gsub("%s+$", "")
-  pwdPipe:close()
-  local rootAbs = repoRoot .. "/" .. root
-  local logPath = rootAbs .. "/commands.log"
-  local outputPath = rootAbs .. "/output.log"
-
-  ---Removes outputs that would let one CLI fixture affect the next.
-  ---@return nil
-  local function resetFlowFiles()
-    commandSucceeded("rm -f " .. shellQuote(logPath) .. " " ..
-      shellQuote(rootAbs .. "/QuestieDB_Vanilla.toc") .. " " ..
-      shellQuote(rootAbs .. "/QuestieDB_Mists.toc"))
-  end
-
-  ---@param arguments string
-  ---@param runInParallel boolean? Omit to preserve the fixture's sequential default.
-  ---@param failVerify boolean? Make the fake Verification command fail after logging.
-  ---@param discoverLua boolean? Clear inherited LUA and exercise automatic discovery.
-  ---@param luaPath string? Explicit interpreter override for prerequisite-order tests.
-  ---@return boolean succeeded
-  local function runFlow(arguments, runInParallel, failVerify, discoverLua, luaPath)
-    resetFlowFiles()
-    local schedulingOption = runInParallel and "" or " --sequential"
-    local failureEnvironment = failVerify and " CHECK_FLOW_FAIL_VERIFY=1" or ""
-    local luaEnvironment = discoverLua and " LUA=" or ""
-    local luaOption = discoverLua and "" or
-      " --lua=" .. shellQuote(luaPath or rootAbs .. "/fake-lua")
-    local command = "cd " .. shellQuote(rootAbs) .. " && PATH=" ..
-      shellQuote(rootAbs .. "/fake-bin") .. ":\"$PATH\" CHECK_FLOW_LOG=" ..
-      shellQuote(logPath) .. failureEnvironment .. luaEnvironment ..
-      " bash tools/cli/check.sh " .. arguments .. schedulingOption ..
-      " --questie=/tmp/fake-questie" .. luaOption ..
-      " > " .. shellQuote(outputPath) .. " 2>&1"
-    return commandSucceeded(command)
-  end
-
-  ---Runs the public CLI against fake tools, without touching real artifacts or Questie.
-  ---@param arguments string
-  ---@param luaPath string? Interpreter override for prerequisite failure cases.
-  ---@param includeFixtureOptions boolean? Pass false to test a truly argument-free invocation.
-  ---@return boolean succeeded
-  local function runPublicFlow(arguments, luaPath, includeFixtureOptions)
-    resetFlowFiles()
-    local fixtureOptions = ""
-    if includeFixtureOptions ~= false then
-      fixtureOptions = " --sequential --questie=/tmp/fake-questie --lua=" ..
-        shellQuote(luaPath or rootAbs .. "/fake-lua")
-    end
-    local command = "cd " .. shellQuote(rootAbs) .. " && PATH=" ..
-      shellQuote(rootAbs .. "/fake-bin") .. ":\"$PATH\" CHECK_FLOW_LOG=" ..
-      shellQuote(logPath) .. " ./questiedb.sh " .. arguments .. fixtureOptions ..
-      " > " .. shellQuote(outputPath) .. " 2>&1"
-    return commandSucceeded(command)
-  end
-
-  ---@param log string
-  ---@param needle string
-  ---@return integer[] positions
-  local function positionsOf(log, needle)
-    local positions, position = {}, 1
-    while true do
-      local startAt, endAt = log:find(needle, position, true)
-      if not startAt then return positions end
-      positions[#positions + 1] = startAt
-      position = endAt + 1
-    end
-  end
-
-  local readerNeedles = {
-    "verify.lua ", "equivalence.lua ", "reconstruct.lua ", "validators/run.lua ",
-    "compiler_diff.py ", "golden.py check ", "\ttest.lua",
-  }
-
-  check(runFlow("all --flavors=Vanilla,Mists"), "fake full flow passes")
-  local output = lib.readAll(outputPath)
-  check(output:find("generate:toc%s+%d+%.%ds") ~= nil,
-    "base TOC Generation reports its duration")
-  check(output:find("generate:Vanilla%s+%d+%.%ds") ~= nil,
-    "scheduled Generation reports each job duration")
-  check(output:find("Generation results %(%d+%.%ds%)") ~= nil,
-    "Generation reports its wall-clock duration")
-  check(output:find("all stages passed in %d+%.%ds") ~= nil,
-    "the full flow reports its wall-clock duration")
-  check(output:find("summary%-tail") ~= nil,
-    "job summaries longer than 96 characters remain intact")
-
-  local log = lib.readAll(logPath)
-  local vanillaGenerations = positionsOf(log, "generate.lua Vanilla")
-  local mistsGenerations = positionsOf(log, "generate.lua Mists")
-  equal(#vanillaGenerations, 1, "full flow generates Vanilla once")
-  equal(#mistsGenerations, 1, "full flow generates Mists once")
-  local generationBoundary = math.max(vanillaGenerations[1] or 0, mistsGenerations[1] or 0)
-  local readers = 0
-  for _, needle in ipairs(readerNeedles) do
-    for _, readerAt in ipairs(positionsOf(log, needle)) do
-      readers = readers + 1
-      check(readerAt > generationBoundary,
-        "artifact reader starts after every selected flavor finishes Generation: " .. needle)
-    end
-  end
-  check(readers >= 13, "full-flow fixture observed every reader family")
-  check(log:find("questie=/tmp/fake-questie\tgenerate.lua Vanilla", 1, true) ~= nil and
-        log:find("questie=/tmp/fake-questie\ttest.lua", 1, true) ~= nil,
-    "custom Questie path reaches Generation and unit tests through the environment")
-  check(log:find("reconstruct.lua Vanilla --questie=", 1, true) == nil,
-    "Reconstruction reads local localization rather than a Questie checkout")
-  check(log:find("compiler_diff.py Vanilla --questie=/tmp/fake-questie", 1, true) ~= nil,
-    "custom Questie path reaches the compiler differential")
-
-  check(runFlow("generate determinism reconstruct --flavors=Vanilla"),
-    "local artifact gates run without a Questie checkout")
-  local localGateLog = lib.readAll(logPath)
-  check(localGateLog:find("assertQuestiePin", 1, true) == nil,
-    "Generation, Determinism, and Reconstruction do not preflight Questie")
-
-  check(runFlow("test"), "the standalone unit-test gate needs no Questie checkout")
-  local testLog = lib.readAll(logPath)
-  check(testLog:find("\ttest.lua", 1, true) ~= nil and
-        testLog:find("assertQuestiePin", 1, true) == nil,
-    "standalone unit tests run without the Questie pin preflight")
-
-  check(runFlow("test verify validators --flavors=Vanilla,Mists --budget-mb=2000", true),
-    "parallel scheduler fixture passes")
-  local schedulerOutput = lib.readAll(outputPath)
-  local testStarted = schedulerOutput:find("  start test", 1, true)
-  local vanillaStarted = schedulerOutput:find("  start verify:Vanilla", 1, true)
-  local mistsStarted = schedulerOutput:find("  start verify:Mists", 1, true)
-  check(testStarted ~= nil and vanillaStarted ~= nil and testStarted < vanillaStarted,
-    "the long-running unit tests are dispatched first")
-  check(vanillaStarted ~= nil and mistsStarted ~= nil and vanillaStarted < mistsStarted,
-    "a smaller fitting job bypasses a blocked heavier job")
-  check(schedulerOutput:find("all 5 checks jobs passed", 1, true) ~= nil,
-    "every parallel scheduler fixture job completes")
-
-  -- Public CLI parsing stays separate from the scheduler fixture so selection errors prove
-  -- they fail before the engine starts any work.
-  check(runPublicFlow("", nil, false), "the argument-free public CLI prints help")
-  local publicOutput = lib.readAll(outputPath)
-  check(publicOutput:find("Usage: ./questiedb.sh", 1, true) ~= nil and
-        not lib.fileExists(logPath),
-    "public CLI help runs no tools")
-  check(runPublicFlow("--help"), "the explicit public CLI help passes")
-
-  check(runPublicFlow("generate"), "a task-only Generation selects every flavor")
-  local publicLog = lib.readAll(logPath)
-  for _, flavor in ipairs({ "Vanilla", "TBC", "Wrath", "Cata", "Mists" }) do
-    equal(#positionsOf(publicLog, "generate.lua " .. flavor), 1,
-      "task-only Generation includes " .. flavor)
-  end
-  publicOutput = lib.readAll(outputPath)
-  check(publicOutput:find("unbound variable", 1, true) == nil,
-    "task-only commands do not trip set -u")
-
-  check(runPublicFlow("generate Vanilla"), "a positional Vanilla Generation passes")
-  publicLog = lib.readAll(logPath)
-  equal(#positionsOf(publicLog, "generate.lua Vanilla"), 1,
-    "a positional flavor selects Vanilla once")
-  equal(#positionsOf(publicLog, "generate.lua Mists"), 0,
-    "a positional flavor excludes unselected flavors")
-
-  check(runPublicFlow("generate Vanilla Mists"), "multiple positional flavors pass")
-  publicLog = lib.readAll(logPath)
-  equal(#positionsOf(publicLog, "generate.lua Vanilla"), 1,
-    "multiple positional flavors include Vanilla")
-  equal(#positionsOf(publicLog, "generate.lua Mists"), 1,
-    "multiple positional flavors include Mists")
-
-  check(runPublicFlow("check Vanilla"), "the public check bundle passes")
-  publicLog = lib.readAll(logPath)
-  for _, needle in ipairs({
-    "verify.lua Vanilla", "equivalence.lua Vanilla", "reconstruct.lua Vanilla",
-    "validators/run.lua Vanilla", "compiler_diff.py Vanilla",
-  }) do
-    check(publicLog:find(needle, 1, true) ~= nil,
-      "the public check bundle includes " .. needle)
-  end
-  check(publicLog:find("generate.lua Vanilla", 1, true) == nil and
-        publicLog:find("golden.py", 1, true) == nil and
-        publicLog:find("\ttest.lua", 1, true) == nil,
-    "the public check bundle includes only the standard gates")
-
-  check(not runPublicFlow("Vanilla"), "a flavor without a task fails")
-  publicOutput = lib.readAll(outputPath)
-  check(publicOutput:find("no task selected", 1, true) ~= nil and
-        publicOutput:find("  start ", 1, true) == nil and not lib.fileExists(logPath),
-    "a flavor-only command cannot launch the engine's default checks")
-
-  check(not runPublicFlow("--sequential", nil, false), "an option without a task fails")
-  publicOutput = lib.readAll(outputPath)
-  check(publicOutput:find("no task selected", 1, true) ~= nil and
-        publicOutput:find("  start ", 1, true) == nil and not lib.fileExists(logPath),
-    "an option-only command cannot launch the engine's default checks")
-
-  check(not runPublicFlow("generate Unknown"), "an unknown public CLI token fails")
-  publicOutput = lib.readAll(outputPath)
-  check(publicOutput:find("unknown task or flavor: Unknown", 1, true) ~= nil,
-    "an unknown token reports the bad value")
-
-  check(not runPublicFlow("generate Vanilla --flavors=Mists"),
-    "positional and option flavor selection conflict")
-  publicOutput = lib.readAll(outputPath)
-  check(publicOutput:find("positional flavors cannot be combined", 1, true) ~= nil,
-    "the conflicting flavor selectors explain the correction")
-
-  for _, badBudget in ipairs({ "", "0", "abc" }) do
-    check(not runPublicFlow("generate --budget-mb=" .. badBudget, nil, false),
-      "the public CLI rejects invalid budget " .. lib.show(badBudget))
-    publicOutput = lib.readAll(outputPath)
-    check(publicOutput:find("positive decimal integer", 1, true) ~= nil and
-          publicOutput:find("  start ", 1, true) == nil and not lib.fileExists(logPath),
-      "an invalid public budget fails before tools run: " .. lib.show(badBudget))
-  end
-  local oversizedBudget = "18446744073709551617"
-  check(not runPublicFlow("generate --budget-mb=" .. oversizedBudget, nil, false),
-    "the public CLI rejects a budget larger than Bash arithmetic can represent")
-  publicOutput = lib.readAll(outputPath)
-  check(publicOutput:find("must not exceed 2147483647 MB", 1, true) ~= nil and
-        publicOutput:find("  start ", 1, true) == nil and not lib.fileExists(logPath),
-    "an oversized public budget fails without wrapping or starting tools")
-
-  check(runPublicFlow("validators Vanilla --budget-mb=02000"),
-    "a leading-zero budget is normalized safely")
-  publicOutput = lib.readAll(outputPath)
-  check(publicOutput:find("budget 2000 MB", 1, true) ~= nil,
-    "the normalized budget reaches the scheduler as decimal")
-
-  local missingLua = rootAbs .. "/missing-lua"
-  check(not runFlow("test --budget-mb=nope", nil, nil, nil, missingLua),
-    "the direct engine rejects an invalid budget")
-  output = lib.readAll(outputPath)
-  check(output:find("positive decimal integer", 1, true) ~= nil and
-        output:find("Lua interpreter not found", 1, true) == nil and
-        output:find("  start ", 1, true) == nil and not lib.fileExists(logPath),
-    "direct budget validation runs before interpreter probes and jobs")
-
-  check(not runFlow("test --budget-mb=" .. oversizedBudget, nil, nil, nil, missingLua),
-    "the direct engine rejects an oversized budget")
-  output = lib.readAll(outputPath)
-  check(output:find("must not exceed 2147483647 MB", 1, true) ~= nil and
-        output:find("Lua interpreter not found", 1, true) == nil and
-        output:find("  start ", 1, true) == nil and not lib.fileExists(logPath),
-    "direct oversized-budget validation runs before interpreter probes and jobs")
-
-  for _, mixedAll in ipairs({ "all verify", "verify all" }) do
-    check(not runFlow(mixedAll .. " --flavors=Vanilla"),
-      "the direct engine rejects mixed all ordering: " .. mixedAll)
-    output = lib.readAll(outputPath)
-    check(output:find("all cannot be combined", 1, true) ~= nil and
-          not lib.fileExists(logPath),
-      "mixed all fails before jobs regardless of order: " .. mixedAll)
-  end
-  check(not runPublicFlow("all verify Vanilla"), "the public CLI rejects all mixed with a task")
-
-  check(runFlow("freeze"), "default freeze selects its supported flavors")
-  log = lib.readAll(logPath)
-  equal(#positionsOf(log, "verify.lua Vanilla --freeze"), 1,
-    "default freeze includes Vanilla")
-  equal(#positionsOf(log, "verify.lua Mists --freeze"), 1,
-    "default freeze includes Mists")
-  check(not runFlow("freeze --flavors=TBC"), "direct freeze rejects an unsupported flavor")
-  output = lib.readAll(outputPath)
-  check(output:find("freeze supports only Vanilla and Mists", 1, true) ~= nil and
-        not lib.fileExists(logPath),
-    "direct unsupported freeze fails before jobs")
-  check(not runPublicFlow("freeze TBC"), "public freeze rejects an unsupported flavor")
-
-  check(not runFlow("verify verify --flavors=Vanilla,Vanilla", false, true),
-    "a duplicated failing direct job propagates failure")
-  log = lib.readAll(logPath)
-  output = lib.readAll(outputPath)
-  equal(#positionsOf(log, "verify.lua Vanilla"), 1,
-    "duplicate direct gates and flavors schedule one job")
-  check(output:find("1 of 1 failed", 1, true) ~= nil,
-    "the unique failing job cannot be overwritten by a duplicate success")
-
-  check(runFlow("test", false, false, true),
-    "an empty inherited LUA falls back to automatic discovery")
-  log = lib.readAll(logPath)
-  check(log:find("\ttest.lua", 1, true) ~= nil,
-    "automatic discovery runs the selected gate")
-
-  check(not runPublicFlow("test --lua=", nil, false),
-    "an explicitly empty --lua fails")
-  publicOutput = lib.readAll(outputPath)
-  check(publicOutput:find("Lua interpreter not found: <empty>", 1, true) ~= nil and
-        publicOutput:find("  start ", 1, true) == nil and not lib.fileExists(logPath),
-    "explicit empty Lua fails before jobs")
-
-  check(not runPublicFlow("test", rootAbs .. "/missing-lua"),
-    "a missing explicit Lua interpreter fails")
-  publicOutput = lib.readAll(outputPath)
-  check(publicOutput:find("Lua interpreter not found", 1, true) ~= nil and
-        publicOutput:find("  start ", 1, true) == nil and not lib.fileExists(logPath),
-    "missing Lua fails before a job starts")
-
-  check(not runPublicFlow("test", rootAbs .. "/wrong-lua"),
-    "a wrong explicit Lua version fails")
-  publicOutput = lib.readAll(outputPath)
-  check(publicOutput:find("requires Lua 5.1", 1, true) ~= nil and
-        publicOutput:find("Lua 5.4", 1, true) ~= nil and
-        publicOutput:find("  start ", 1, true) == nil and not lib.fileExists(logPath),
-    "wrong-version Lua fails before a job starts")
-
-  commandSucceeded("rm -rf " .. shellQuote(root))
+suite("tooling-platform", function()
+  dofile("tools/validation/platform.test.lua")(check, equal)
 end)
 
 --------------------------------------------------------------------------------------------
@@ -1234,8 +885,8 @@ suite("negative-controls", function()
   local function runVerify(content, label)
     lib.writeAll(".out/corrupt/" .. sourceToc, content)
     local command = shellQuote(LUA_BIN) ..
-      " verify.lua Vanilla --toc-dir=.out/corrupt --sample=200 --quiet >/dev/null 2>&1"
-    local ok, kind, code = os.execute(command)
+      " verify.lua Vanilla --toc-dir=.out/corrupt --sample=200 --quiet >" .. lib.nullDevice .. " 2>&1"
+    local ok, kind, code = lib.execute(command)
     -- Lua 5.1 returns the raw exit status; 5.2+ returns ok, "exit", code.
     local failed
     if type(ok) == "number" then failed = ok ~= 0 else failed = not ok end
@@ -1264,9 +915,9 @@ suite("negative-controls", function()
     "## X%-l10n%-Version: [^\n]*\n", "", 1)
   check(headerCount == 1, "corruption fixture did not apply (deleted l10n header)")
   runVerify(headerless, "localization blocks without a format header")
-  local equivalenceOk = os.execute(shellQuote(LUA_BIN) ..
+  local equivalenceOk = lib.execute(shellQuote(LUA_BIN) ..
     " equivalence.lua Vanilla --toc-dir=.out/corrupt --sample=1 --no-self-proof " ..
-    "--quiet >/dev/null 2>&1")
+    "--quiet >" .. lib.nullDevice .. " 2>&1")
   local equivalenceFailed
   if type(equivalenceOk) == "number" then
     equivalenceFailed = equivalenceOk ~= 0
@@ -1604,14 +1255,14 @@ suite("corrections", function()
   -- Cata's faction provider reads an icon constant, so this catches any packaging path that
   -- bypasses the same invocation scope used by the runtime registry.
   local stripStage = ".out/test-strip-static/QuestieDB"
-  commandSucceeded("rm -rf " .. shellQuote(stripStage))
+  testFiles.removeTree(stripStage)
   lib.mkdirp(stripStage .. "/src/corrections/Cata")
   lib.copyFile("src/corrections/Cata/cataQuestFixes.lua",
     stripStage .. "/src/corrections/Cata/cataQuestFixes.lua")
   check(commandSucceeded(shellQuote(LUA_BIN) .. " tools/distribution/strip-static.lua " ..
     shellQuote(stripStage) .. " --quiet"),
     "package stripping invokes copied providers through the scoped Questie shim")
-  commandSucceeded("rm -rf " .. shellQuote(stripStage))
+  testFiles.removeTree(stripStage)
 end)
 
 --------------------------------------------------------------------------------------------
@@ -2736,9 +2387,9 @@ suite("equivalence-control", function()
 
   local function runEquivalence(content, label)
     lib.writeAll(".out/corrupt/" .. sourceToc, content)
-    local ok = os.execute(shellQuote(LUA_BIN) ..
+    local ok = lib.execute(shellQuote(LUA_BIN) ..
       " equivalence.lua Vanilla --toc-dir=.out/corrupt --types=Quest --sample=200 " ..
-      "--no-self-proof --quiet >/dev/null 2>&1")
+      "--no-self-proof --quiet >" .. lib.nullDevice .. " 2>&1")
     local failed
     if type(ok) == "number" then failed = ok ~= 0 else failed = not ok end
     check(failed, "equivalence accepted a divergence: " .. label)
@@ -2757,9 +2408,9 @@ suite("equivalence-control", function()
   runEquivalence(emptied, "populated versus empty table")
 
   -- And the healthy case still passes, so the control is not just always-fails.
-  local runEquivalenceOk = os.execute(shellQuote(LUA_BIN) ..
+  local runEquivalenceOk = lib.execute(shellQuote(LUA_BIN) ..
     " equivalence.lua Vanilla --types=Quest --sample=200 --no-self-proof " ..
-    "--quiet >/dev/null 2>&1")
+    "--quiet >" .. lib.nullDevice .. " 2>&1")
   local passed
   if type(runEquivalenceOk) == "number" then passed = runEquivalenceOk == 0 else passed = runEquivalenceOk == true end
   check(passed, "equivalence failed on an uncorrupted artifact")
@@ -2783,11 +2434,7 @@ suite("lua-types", function()
     BuildNameIndex = true,
     IdsByName = true,
   }
-  local typeFiles = {}
-  local typeFilePipe = assert(io.popen(
-    "find src/types -maxdepth 1 -type f -name '*.t.lua' -print | sort", "r"))
-  for path in typeFilePipe:lines() do typeFiles[#typeFiles + 1] = path end
-  typeFilePipe:close()
+  local typeFiles = testFiles.list("src/types", false, { ".t.lua" })
 
   check(#typeFiles > 0, "packaging has at least one LuaLS declaration to ship")
   for _, path in ipairs(typeFiles) do
@@ -3071,9 +2718,7 @@ suite("no-prototype-inputs", function()
   -- from. What is forbidden is a *path* that resolves into one.
 
   local function scan(dir, found)
-    local pipe = io.popen('find "' .. dir .. '" -name "*.lua" -o -name "*.toc" -o -name "*.sh" -o -name "*.yml" 2>/dev/null')
-    if not pipe then return found end
-    for path in pipe:lines() do
+    for _, path in ipairs(testFiles.list(dir, true, { ".lua", ".toc", ".sh", ".ps1", ".py", ".yml" })) do
       local file = io.open(path, "rb")
       if file then
         local content = file:read("*a")
@@ -3091,7 +2736,6 @@ suite("no-prototype-inputs", function()
         end
       end
     end
-    pipe:close()
     return found
   end
 
@@ -3132,6 +2776,25 @@ end)
 --------------------------------------------------------------------------------------------
 -- Public API
 --------------------------------------------------------------------------------------------
+
+suite("contract-config", function()
+  local source = lib.readAll("src/config.lua")
+  for _, field in ipairs({ "contractVersion", "minSupportedContract" }) do
+    for _, value in ipairs({ "0", "-1", "1.5", '"2"', "nil", "0/0", "math.huge" }) do
+      local changed, count = source:gsub("config%." .. field .. " = %d+", "config." .. field .. " = " .. value, 1)
+      equal(count, 1, "test changes the declared " .. field)
+      local ok, message = pcall(assert(loadstring(changed)))
+      equal(ok, false, field .. " rejects " .. value)
+      check(tostring(message):find(field .. " must be a positive integer", 1, true) ~= nil,
+        "invalid configuration explains the offending field")
+    end
+  end
+  local changed = source:gsub("config%.minSupportedContract = %d+", "config.minSupportedContract = 3", 1)
+  local ok, message = pcall(assert(loadstring(changed)))
+  equal(ok, false, "inverted supported contract range fails")
+  check(tostring(message):find("minSupportedContract must not exceed contractVersion", 1, true) ~= nil,
+    "inverted range explains the invariant")
+end)
 
 suite("api", function()
   local tocPath = config.tocPath(config.flavorByName.Vanilla)
@@ -3217,6 +2880,8 @@ suite("api", function()
   -- A contract version is published, and the check is a range, not an equality (ADR D12):
   -- additive releases must not break consumers built against an older contract.
   equal(Lib.contractVersion, config.contractVersion, "contractVersion published")
+  equal(Lib.minSupportedContract, config.minSupportedContract, "minSupportedContract published")
+  equal(Lib.RequireContract(config.minSupportedContract), true, "oldest supported contract passes")
   equal(Lib.RequireContract(config.contractVersion), true, "matching contract passes")
   local ok, message = Lib.RequireContract(config.contractVersion + 98)
   equal(ok, false, "a newer-than-provided contract fails")
@@ -3224,6 +2889,11 @@ suite("api", function()
   equal(Lib.RequireContract(config.minSupportedContract - 1), false,
     "a contract below the supported floor fails")
   equal(Lib.RequireContract(nil), false, "a non-numeric required contract fails cleanly")
+  equal(Lib.RequireContract(1.5), false, "a fractional contract inside the range fails")
+  equal(Lib.RequireContract("2"), false, "a numeric string is not a contract integer")
+  equal(Lib.RequireContract(0 / 0), false, "NaN is not a contract integer")
+  equal(Lib.RequireContract(math.huge), false, "infinity is not a contract integer")
+  equal(Lib.RequireContract(false), false, "a boolean is not a contract integer")
 
   -- A third-party addon registers Corrections with no special treatment.
   local registrar = Lib.GetRegistrar("ThirdPartyAddon")
@@ -4281,9 +3951,9 @@ suite("reconstruct-control", function()
   lib.writeAll(".out/corrupt/" .. sourceToc, corrupted)
 
   local countFile = ".out/reconstruct-count.txt"
-  local ok = os.execute(shellQuote(LUA_BIN) ..
+  local ok = lib.execute(shellQuote(LUA_BIN) ..
     " reconstruct.lua Vanilla --toc-dir=.out/corrupt --count-only > " ..
-    shellQuote(countFile) .. " 2>/dev/null")
+    shellQuote(countFile) .. " 2>" .. lib.nullDevice)
   local failed
   if type(ok) == "number" then failed = ok ~= 0 else failed = not ok end
   check(failed, "reconstruct accepted a corrupted artifact")

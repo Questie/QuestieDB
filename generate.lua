@@ -401,7 +401,7 @@ if not opts.noL10n then
 end
 
 -- The base TOC is not flavour-scoped, so every invocation would rewrite the same file. That is
--- harmless sequentially and a race when flavours are generated in parallel (tools/cli/check.sh),
+-- harmless sequentially and a race when flavours are generated in parallel (tools/cli/questiedb.py),
 -- which writes it once up front and then passes --no-base-toc.
 if not opts.noBaseToc then
   generate.baseToc()

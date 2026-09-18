@@ -22,6 +22,17 @@ config.contractVersion = 2
 --- breaking change genuinely abandons older consumers (ADR 0003 D12).
 config.minSupportedContract = 1
 
+-- Generation and the loaded addon share this gate; invalid ranges must never be published.
+for _, field in ipairs({ "contractVersion", "minSupportedContract" }) do
+  local value = config[field]
+  if type(value) ~= "number" or value < 1 or value % 1 ~= 0 then
+    error("QuestieDB: " .. field .. " must be a positive integer", 0)
+  end
+end
+if config.minSupportedContract > config.contractVersion then
+  error("QuestieDB: minSupportedContract must not exceed contractVersion", 0)
+end
+
 --- Values longer than this many bytes are stored as a Chunked metadata value.
 --- See docs/storage-format.md.
 config.maxValueLength = 1000

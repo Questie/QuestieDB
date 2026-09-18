@@ -126,7 +126,7 @@ Only update `src/types/*.t.lua` and `src/types/consumer.test.lua` if the public 
 Before completion, regenerate and run the full gate against the pinned oracle:
 
 ```sh
-tools/cli/check.sh all --questie=../Questie
+./questiedb.sh all --questie=../Questie
 ```
 
 This command is heavy and writes generated artifacts. Run it only in an isolated QuestieDB checkout or output arrangement that cannot alter a symlinked daily-driver addon. Get confirmation first if the checkout's safety is unclear.

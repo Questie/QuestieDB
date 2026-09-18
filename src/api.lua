@@ -63,6 +63,7 @@ end
 --- covers *absence*; it does not cover *presence with the wrong version*. A consumer checks
 --- this at init and fails with a specific message.
 LibQuestieDB.contractVersion = config.contractVersion
+LibQuestieDB.minSupportedContract = config.minSupportedContract
 
 LibQuestieDB.addonName = ADDON_NAME
 
@@ -73,11 +74,11 @@ LibQuestieDB.addonName = ADDON_NAME
 --- older contract keeps working across additive releases, down to `minSupportedContract`.
 --- Equality would force lockstep updates — the exact thing two independent release streams
 --- exist to avoid.
----@param required number The contract version the consumer was written against
+---@param required integer The positive contract version the consumer was written against
 ---@return boolean ok
 ---@return string? message
 function LibQuestieDB.RequireContract(required)
-  if type(required) == "number" and
+  if type(required) == "number" and required >= 1 and required % 1 == 0 and
      required >= config.minSupportedContract and required <= config.contractVersion then
     return true
   end

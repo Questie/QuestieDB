@@ -80,11 +80,20 @@ Use the root command for generation and validation workflows:
 ./questiedb.sh check Vanilla               # standard validation bundle for one flavor
 ./questiedb.sh verify equivalence Vanilla Mists
 ./questiedb.sh all                         # Generation, standard gates, Golden, and unit tests
+./questiedb.sh package all                 # package already-generated artifacts
 ```
 
-Run `./questiedb.sh --help` for every gate and option. It requires Bash 5.1 or newer and selects
-`lua5.1`, or a `lua` command that reports Lua 5.1. `LUA` and `--lua=` can select another Lua
-5.1-compatible executable explicitly. The `freeze` gate supports Vanilla and Mists.
+On Windows, use the same arguments with `./questiedb.ps1`, or invoke
+`py -3 tools/cli/questiedb.py` directly if PowerShell script execution is restricted.
+The POSIX-shell and PowerShell launchers only locate Python 3.8+ and forward arguments and
+exit codes. Command parsing, scheduling, timing, logging, and checksums live in one Python
+standard-library implementation. No Bash installation, GNU utilities, or pip packages are needed.
+
+Run `./questiedb.sh --help` for every gate and option. The runner selects `lua5.1`, or a `lua`
+command that reports Lua 5.1. `LUA` and `--lua=` can select another Lua 5.1-compatible executable
+explicitly. The `freeze` gate supports Vanilla and Mists. `all` validates but does not package;
+packaging and bootstrap are separate commands, and bootstrap does not require Lua.
+The `test` task runs the Lua database suite and Python CLI suite as separate jobs.
 
 The individual entry points remain useful while developing a gate:
 
@@ -99,12 +108,79 @@ lua-language-server --check=src/types --checklevel=Warning --check_format=pretty
 
 python3 tools/differential/golden.py check Vanilla
 python3 tools/differential/compiler_diff.py Vanilla
-
-tools/cli/check.sh                    # verify, equivalence, reconstruct, validators, differential
-tools/cli/check.sh all                # Generation, standard gates, Golden, and unit tests
-tools/cli/check.sh verify --flavors=Vanilla,Mists
-tools/cli/check.sh determinism freeze --flavors=Vanilla
 ```
+
+### Local packages on Linux, macOS, and Windows
+
+Generation creates Baked TOCs; packaging creates installable ZIPs:
+
+```sh
+./questiedb.sh generate && ./questiedb.sh package all
+# Or one flavor (Vanilla also serves SoD):
+./questiedb.sh generate Vanilla && ./questiedb.sh package Vanilla
+```
+
+Packages go into `.out/dist/`: one ZIP per requested flavor, `release.json`, and release
+notes. Selecting all five also creates `QuestieDB-all.zip`. The ZIPs contain a `QuestieDB/`
+folder ready to extract into `Interface/AddOns/`. Packaging never installs or publishes.
+It checks prerequisites and requested inputs before replacing `.out/dist/` and `.out/stage/`;
+a later packaging failure can still leave incomplete output. Missing requested TOCs are errors,
+not silently skipped flavors. Run the validation gates separately before distributing a build.
+
+The manifest records the packaged addon `version`, `contractVersion`, and
+`minSupportedContract`, alongside commit provenance and ZIP checksums. The version comes
+from the Baked TOCs, not the current Source TOC or a moving release tag. Packaging rejects
+mixed flavor versions, malformed version/contract headers, and TOC contracts that differ
+from the runtime configuration it ships, before clearing previous output. Consumers require
+an integer contract within the inclusive supported range; a higher current contract alone
+is not proof of compatibility.
+
+The Python standard library handles ZIP creation, archive inspection, file sizes, timestamps,
+and SHA-256. Python needs its standard `zlib` module, not any installed Python packages.
+No `zip`, `unzip`, GNU coreutils, or `jq` is required for packaging. Lua 5.1 is still needed
+for Static Correction stripping and its behavior-parity check. Packaging honors `LUA`, or
+finds `lua5.1`/a Lua 5.1 `lua`; Git supplies commit provenance when available.
+
+On macOS, no shell upgrade is needed. For example, Homebrew provides Python and the
+Lua 5.1-compatible LuaJIT:
+
+```sh
+brew install python luajit
+export LUA=luajit
+./questiedb.sh generate
+./questiedb.sh package all
+```
+
+On Windows, install Python 3.8+ and a Lua 5.1-compatible interpreter, then select Lua if
+it is not already available as `lua5.1` or `lua`:
+
+```powershell
+$env:LUA = 'C:\Tools\Lua\lua.exe'
+.\questiedb.ps1 generate
+if ($LASTEXITCODE -eq 0) { .\questiedb.ps1 package all }
+```
+
+An existing Lua 5.1 installation can likewise be selected with `LUA=/path/to/lua5.1` on POSIX.
+To bypass Python orchestration, invoke Lua's `generate.lua` directly. The engine remains plain
+Lua. Python runs parallel jobs on every platform; `--sequential` opts out. Without Linux memory
+information the runner uses a fixed 4 GiB available-memory estimate; set `--budget-mb` explicitly
+if needed. Determinism checks use `hashlib`, not an external checksum command.
+
+The offline tooling tests use Python's standard library for temporary files and subprocesses,
+and real Lua for database behavior. Substantial Lua test code lives in `.lua` files, not escaped
+Python strings. The fixtures need no POSIX commands or symlink privileges.
+Run them with Python or `uv run`; all writes and installations use temporary fixtures:
+
+```sh
+python3 tools/cli/questiedb.test.py
+python3 tools/distribution/package.test.py
+python3 tools/distribution/bootstrap.test.py
+python3 tools/validation/version.test.py
+python3 tools/validation/localization-inputs.test.py
+python3 tools/questie-sync/questie-checkout.test.py
+```
+
+Native macOS/Windows acceptance is still needed.
 
 ### Local inputs and remaining Questie checks
 
@@ -116,8 +192,9 @@ See [`l10n/README.md`](l10n/README.md) for the translation layout and import pro
 
 Only schema materialization (`lua5.1 generate.lua meta`) automatically fetches the exact commit
 in `QUESTIE_COMMIT` into `.cache/questie/<sha>` on first use. The shallow, tag-free snapshot is
-gitignored and reused offline. Git and a POSIX shell with `mktemp` are required for that fetch.
-Changing the pin creates a separate checkout rather than resetting an existing one.
+gitignored and reused offline. Git and Python 3.8+ are required for that fetch; the Python
+helper owns temporary directories, argument-safe Git calls, and cleanup. Changing the pin
+creates a separate checkout rather than resetting an existing one.
 
 For `meta`, `--questie=<path>` overrides `QUESTIE_PATH` and opts out of automatic fetching.
 The generator validates an explicit checkout but never fetches, switches, or cleans it.
@@ -130,8 +207,8 @@ pinned Questie checkout, defaulting to `../Questie`. Point `QUESTIE_PATH` or the
 Focused offline checks:
 
 ```sh
-lua5.1 tools/validation/localization-inputs.test.lua
-lua5.1 tools/questie-sync/questie-checkout.test.lua
+python3 tools/validation/localization-inputs.test.py
+python3 tools/questie-sync/questie-checkout.test.py
 ```
 
 ### Keeping LuaLS declarations in sync
@@ -146,15 +223,16 @@ Update `src/types/consumer.test.lua` when the changed contract needs a semantic 
 Run the `lua-types` suite and LuaLS command above before packaging. `AGENTS.md` maps each kind
 of public change to the declaration files that own it.
 
-`tools/cli/check.sh` remains the direct orchestration engine for automation and existing scripts.
-It accepts the previous gate syntax and `--flavors=Vanilla,Mists`.
+`questiedb.sh` and `questiedb.ps1` are the public entry points. Both delegate to
+`tools/cli/questiedb.py`; no arguments prints help, and `check` selects the standard check bundle.
 
 The sweep parallelises by memory budget rather than core count, because the jobs are wildly
 uneven — equivalence on Mists peaks at 1.66 GB and 57 s, on Vanilla at 0.42 GB and 19 s — so a
 flat `-j N` either thrashes a laptop or leaves a workstation idle. `all` finishes Generation
 for every selected flavor before any artifact reader or unit test starts. Determinism and
 freeze checks remain available as explicit gates. The budget comes from `MemAvailable` at
-startup; `--budget-mb=N` overrides it with a value from 1 to 2147483647 MB, and `--sequential`
+startup on Linux, with the fallback described above on other platforms; `--budget-mb=N` overrides it
+with a value from 1 to 2147483647 MB, and `--sequential`
 turns fan-out off. Per-job logs land in `.out/checks/`.
 
 The golden gate is the successor to the cross-implementation differential (built to
@@ -173,19 +251,26 @@ replaces. It needs a Questie checkout (`--questie=../Questie`, the default) and 
 the Lua path, which it picks up from luarocks automatically. Accepted divergences live in
 `tools/differential/compiler-baseline/`; `--update-baseline` re-records them for review.
 
-Generation and the addon tooling use plain Lua 5.1 with no `lfs`, luarocks, or C dependency.
-Inputs are enumerated in `src/config.lua` rather than discovered by scanning directories. The
-compiler differential is the one exception because Questie's mocks require `bit32`.
-`tools/cli/check.sh --questie=` selects the checkout for fidelity tests and the compiler
+Generation and runtime database logic use plain Lua 5.1 with no `lfs`, luarocks, or C dependency.
+Inputs are enumerated in `src/config.lua` rather than discovered by scanning directories.
+Python's standard library handles orchestration and offline filesystem fixtures. The migration
+compiler differential additionally requires `bit32` for Questie's mocks.
+`./questiedb.sh check --questie=` selects the checkout for fidelity tests and the compiler
 differential; `QUESTIE_PATH` provides the same default for nested migration tools. Generation,
 Determinism, Reconstruction, Verification, and Equivalence need no external checkout.
 
 To refresh a local install instead of regenerating:
 
 ```sh
-tools/distribution/bootstrap.sh "/path/to/Interface/AddOns"           # latest stable release
-tools/distribution/bootstrap.sh "/path/to/Interface/AddOns" preview   # rolling development build
+./questiedb.sh bootstrap "/path/to/Interface/AddOns"           # latest stable release
+./questiedb.sh bootstrap "/path/to/Interface/AddOns" preview   # rolling development build
 ```
+
+Bootstrap uses the same Python implementation from either launcher. It installs `QuestieDB-all.zip`,
+verifies its checksum, and validates archive paths and extraction before changing the install.
+The final file merge is not transactional. Matching runtime files are replaced, while unrelated
+files are retained. Back up local edits before bootstrapping over a source clone; returning to Source
+mode then requires restoring its full runtime sources as well as removing the generated TOCs.
 
 ### Releases
 
@@ -237,7 +322,7 @@ see drafts, but only reads GitHub state. No live publication is covered by the o
 GitHub permissions and replacement behavior should first be exercised in a disposable repository,
 not against an installed development or production channel.
 
-Run the focused offline version checks with `lua5.1 tools/validation/version.test.lua`.
+Run the focused offline version checks with `python3 tools/validation/version.test.py`.
 
 ### Re-syncing with Questie
 
@@ -322,7 +407,7 @@ data/                     raw entity data
 l10n/                     owned entity translations and static lookup overrides
 support/                  zones, quest XP, drop tables, faction templates
 
-questiedb.sh             contributor command for generation and validation
+questiedb.sh / .ps1        thin contributor launchers for the shared Python command
 generate.lua              data + Static Corrections -> TOC
 verify.lua                round-trip verification
 equivalence.lua           source/baked equivalence, every read form, self-proving
@@ -331,7 +416,7 @@ test.lua                  unit tests and negative controls
 generator/                offline internals, deterministic CBOR and vendored codecs
 emulator/                 metadata and C_EncodingUtil stand-ins, client stubs, freeze substitute
 validators/               data-invariant checks
-tools/                    port, package, bootstrap, differential golden gate
+tools/                    Python orchestration, packaging, bootstrap, imports, differential gates
 docs/                     api.md, storage-format.md, adr/
 ```
 
@@ -345,6 +430,7 @@ lists; Baked mode also exposes scalar rows and table producers for its cache fas
 | | |
 | --- | --- |
 | [`docs/api.md`](docs/api.md) | the public surface, for consumers |
+| [`tools/README.md`](tools/README.md) | tooling categories and ownership |
 | [`docs/storage-format.md`](docs/storage-format.md) | the on-disk contract and the nil/empty rules |
 | [`docs/support-data.md`](docs/support-data.md) | support-data selection, shapes, inventory, and drift checks |
 | [`DESIGN.md`](DESIGN.md) | architecture, locked decisions, rejected alternatives |

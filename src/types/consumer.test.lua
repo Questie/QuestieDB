@@ -1,5 +1,16 @@
 ---@diagnostic disable: unused-local
 
+-- Consumers can inspect the complete supported range before checking a requirement.
+---@type integer
+local contractVersion = LibQuestieDB.contractVersion
+---@type integer
+local minimumContract = LibQuestieDB.minSupportedContract
+local supported, mismatch = LibQuestieDB.RequireContract(minimumContract)
+---@type boolean
+local contractSupported = supported
+---@type string?
+local contractMessage = mismatch
+
 -- Literal arguments must select one concrete GetAllIds result shape.
 ---@type QuestId
 local questId = QuestDB.GetAllIds()[1]

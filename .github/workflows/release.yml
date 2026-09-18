@@ -95,13 +95,19 @@ jobs:
       - name: Install Lua 5.1
         run: sudo apt-get update && sudo apt-get install -y lua5.1
 
-      - name: Version tests (offline)
+      - name: Generator tooling tests (offline)
         working-directory: QuestieDB
-        run: lua5.1 tools/validation/version.test.lua
+        run: |
+          python3 tools/validation/version.test.py
+          python3 tools/validation/localization-inputs.test.py
+          python3 tools/questie-sync/questie-checkout.test.py
 
-      - name: Local localization tests (offline)
+      - name: Tooling tests (offline)
         working-directory: QuestieDB
-        run: lua5.1 tools/validation/localization-inputs.test.lua
+        run: |
+          python3 tools/cli/questiedb.test.py
+          python3 tools/distribution/package.test.py
+          python3 tools/distribution/bootstrap.test.py
 
       - name: Materialize the schema
         working-directory: QuestieDB
@@ -174,7 +180,7 @@ jobs:
 
       - name: Package and write the manifest
         working-directory: QuestieDB
-        run: bash tools/distribution/package.sh all
+        run: ./questiedb.sh package all
 
       - name: Hand the packaged release to publish
         uses: actions/upload-artifact@v7

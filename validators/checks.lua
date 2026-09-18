@@ -12,10 +12,7 @@ local Validators = {}
 
 Validators.outputDir = ".out/validators"
 
-local function ensureOutputDir(path)
-  if os.execute('mkdir -p "' .. path .. '" 2>/dev/null') == 0 then return end
-  os.execute('mkdir "' .. path:gsub("/", "\\") .. '" 2>nul')
-end
+local ensureOutputDir = dofile("generator/lib.lua").mkdirp
 
 --- Where diagnostic output is written, retained as a CI artifact for triage.
 function Validators.SetOutputDir(path)

@@ -138,7 +138,7 @@ Run the repository's package-strip-focused correction checks if implementation a
 Before completion, run:
 
 ```sh
-tools/cli/check.sh all --questie=../Questie
+./questiedb.sh all --questie=../Questie
 ```
 
 The full gate is heavy, generates artifacts, and writes under the checkout. Run it only in an isolated QuestieDB checkout or output arrangement that cannot alter a symlinked daily-driver addon. Get confirmation first if the checkout's safety is unclear.
