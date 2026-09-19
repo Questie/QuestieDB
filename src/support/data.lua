@@ -11,8 +11,7 @@
 -- `dropDB.lua` — are `QuestieLoader` modules with runtime behaviour and stay with the
 -- consumer. They read what this file publishes.
 --
--- Baked TOCs list only applicable files. Source scope markers switch admission before
--- variant files load; rejected modules never enter the public module table.
+-- Both TOC modes select applicable files before their assignments execute.
 
 local _, LibQuestieDB = ...
 
@@ -23,8 +22,6 @@ local support = {}
 support.modules = {}
 
 local saved
-local admitted = true
-local discarded = {}
 
 local EXPANSION_ORDER = { Classic = 1, TBC = 2, Wotlk = 3, Cata = 4, MoP = 5 }
 
@@ -38,12 +35,11 @@ local EXPANSION_ORDER = { Classic = 1, TBC = 2, Wotlk = 3, Cata = 4, MoP = 5 }
 function support.Install(flavor)
   saved = rawget(_G, "QuestieLoader")
   support.modules = {}
-  admitted, discarded = true, {}
 
   ---@param name string
   ---@return table module
   local function moduleFor(name)
-    local modules = admitted and support.modules or discarded
+    local modules = support.modules
     local module = modules[name]
     if not module then
       module = { private = {} }
@@ -64,7 +60,7 @@ function support.Install(flavor)
   local expansions = moduleFor("Expansions")
   expansions.Era, expansions.Classic, expansions.Tbc = 1, 1, 2
   expansions.Wotlk, expansions.Cata, expansions.MoP = 3, 4, 5
-  expansions.Current = (flavor and EXPANSION_ORDER[flavor.expansion]) or 1
+  expansions.Current = (flavor and EXPANSION_ORDER[flavor.rules or flavor.expansion]) or 1
 
   _G.QuestieLoader = {
     ImportModule = function(_, name) return moduleFor(name) end,
@@ -72,18 +68,9 @@ function support.Install(flavor)
   }
 end
 
----Source markers admit only their applicable variant assignments. Keep rejected data
----out of GetAll as well as Get; switching scope releases the previous discarded payloads.
----@param applies boolean
----@return nil
-function support.SelectScope(applies)
-  admitted, discarded = applies, {}
-end
-
 function support.Remove()
   _G.QuestieLoader = saved
   saved = nil
-  admitted, discarded = true, {}
 end
 
 --- Whole-table access, which is the entire point of keeping this out of metadata.

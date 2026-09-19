@@ -114,6 +114,65 @@ local function writeHeader(out, flavor, fileList)
   out:write("\n")
 end
 
+---@class SourceTocHeading
+---@field category string? Start a top-level loading phase.
+---@field subcategory string
+---@field note string? Explain an ownership or ordering constraint.
+
+---Presentation only: headings attach to existing paths without changing selection or order.
+---@return table<string, SourceTocHeading>
+local function sourceTocHeadings()
+  local headings = {
+    ["src/config.lua"] = { category = "Runtime foundation", subcategory = "Configuration, schema and codecs" },
+    ["src/flavors/Vanilla.lua"] = { subcategory = "Native client selection",
+      note = "Exactly one initializer runs. Blizzard's current camelot token selects Forever." },
+    [config.runtimeFiles.sourceReader] = { category = "Entity data", subcategory = "Loader setup",
+      note = "Capture the selected flavor's deferred payloads; materialize them on first use." },
+    ["data/_end.lua"] = { subcategory = "Loader teardown" },
+    ["src/corrections/enum/constants.lua"] = { category = "Support data", subcategory = "Constants and loader setup" },
+    ["support/Zones/dungeons.lua"] = { subcategory = "Shared legacy reference data" },
+    ["support/Zones/areaIdToUiMapId.lua"] = { subcategory = "Zone maps: Vanilla through Cata" },
+    ["support/QuestXP/xpDB-classic.lua"] = { subcategory = "Vanilla: quest XP, factions and drops" },
+    ["support/QuestXP/xpDB-tbc.lua"] = { subcategory = "TBC: quest XP, factions and drops" },
+    ["support/QuestXP/xpDB-wotlk.lua"] = { subcategory = "Wrath: quest XP, factions and drops" },
+    ["support/Zones/MoP/areaIdToUiMapId.lua"] = { subcategory = "Mists: zone maps, quest XP, factions and drops" },
+    ["support/DropTables/cataItemDrops.lua"] = { subcategory = "Cata drops, also used by Mists",
+      note = "Mists loads its own drop table first, then the Cata table." },
+    ["support/QuestXP/xpDB-cata.lua"] = { subcategory = "Cata: quest XP and factions" },
+    ["support/Forever/Zones/dungeons.lua"] = { subcategory = "Forever: independently owned support inputs" },
+    ["src/support/_end.lua"] = { subcategory = "Loader teardown" },
+    ["src/read/shared.lua"] = { category = "Corrections", subcategory = "Shared readers and Correction registry" },
+    ["src/corrections/compat.lua"] = { subcategory = "Provider loader setup" },
+    ["src/corrections/Era/classicQuestFixes.lua"] = { subcategory = "Era providers",
+      note = "Base Corrections are cumulative across legacy flavors; reputation applies only to Vanilla." },
+    ["src/corrections/Tbc/tbcQuestFixes.lua"] = { subcategory = "TBC providers: TBC and later legacy flavors" },
+    ["src/corrections/Wotlk/wotlkQuestFixes.lua"] = { subcategory = "Wrath providers: Wrath and later legacy flavors" },
+    ["src/corrections/scopes/Titan.lua"] = { subcategory = "Titan Reforged: Wrath season 109",
+      note = "Scope markers retain the runtime season gate for load-time objective hints." },
+    ["src/corrections/Cata/cataQuestFixes.lua"] = { subcategory = "Cata providers: Cata and Mists" },
+    ["src/corrections/MoP/mopQuestFixes.lua"] = { subcategory = "Mists providers" },
+    ["src/corrections/scopes/Sod.lua"] = { subcategory = "Season of Discovery: Vanilla season 2",
+      note = "Never applied to Forever. The season gate remains in Lua." },
+    ["src/corrections/Shared/itemStartFixes.lua"] = { subcategory = "Shared legacy Item-start Corrections" },
+    ["src/corrections/Forever/classicQuestFixes.lua"] = { subcategory = "Forever: independently owned providers",
+      note = "Includes its own Item-start provider; no legacy Era or Shared providers are inherited." },
+    ["src/corrections/manifest.lua"] = { subcategory = "Provider registration and loader teardown" },
+    ["src/corrections/Sod/sodRequiredRaces.lua"] = { subcategory = "Season of Discovery: required-race overlay" },
+    ["src/derived/registry.lua"] = { category = "Derived passes", subcategory = "Registry and loader setup" },
+    ["src/derived/RamerDouglasPeucker.lua"] = { subcategory = "Shared algorithms",
+      note = "Run over corrected data, using the selected flavor's owned support inputs." },
+    ["src/derived/_end.lua"] = { subcategory = "Loader teardown" },
+    ["src/l10n/overlay.lua"] = { category = "Localization and public API", subcategory = "Localization overlay and Titan translations",
+      note = "Do not filter by client locale: SetLocale() can select another locale." },
+    ["src/ui/modeIndicator.lua"] = { subcategory = "Source-mode indicator" },
+    ["src/api.lua"] = { subcategory = "Public API" },
+  }
+  for _, flavor in ipairs(config.flavors) do
+    headings[config.dataPath(flavor, config.entityTypes[1])] = { subcategory = flavor.name }
+  end
+  return headings
+end
+
 --- Write the committed base TOC, which is what the client falls back to when no suffixed TOC
 --- matches — and therefore what selects Source mode, at no cost.
 ---@return nil
@@ -128,6 +187,9 @@ function generate.baseToc()
   out:write("# The client searches for flavour-suffixed TOCs first and uses this one only if\n")
   out:write("# none are found, so a generated artifact wins simply by existing. A fresh clone\n")
   out:write("# has no suffixed TOC, which is what makes it a working dev environment.\n")
+  out:write("\n# =============================================================================\n")
+  out:write("# Addon metadata\n")
+  out:write("# =============================================================================\n\n")
   out:write("## Interface: ", config.allInterfaceVersions(), "\n")
   out:write("## Title: QuestieDB\n")
   out:write("## Notes: |cFFFFD100(source mode)|r The database Questie consumes. No generated artifact present.\n")
@@ -148,12 +210,22 @@ function generate.baseToc()
   out:write("## IconTexture: Interface\\AddOns\\QuestieDB\\icons\\QuestieTDB_64x64.png\n")
   out:write("## X-Contract-Version: ", tostring(config.contractVersion), "\n")
   out:write("## X-Mode: source\n")
-  out:write("\n")
-  for _, file in ipairs(config.sourceFileList()) do
+  local files, entries, headings = config.sourceFileList(), config.sourceFileEntries(), sourceTocHeadings()
+  for index, file in ipairs(files) do
+    local heading = headings[entries[index].path]
+    if heading then
+      if heading.category then
+        out:write("\n# =============================================================================\n")
+        out:write("# ", heading.category, "\n")
+        out:write("# =============================================================================\n")
+      end
+      out:write("\n# --- ", heading.subcategory, " ---\n")
+      if heading.note then out:write("# ", heading.note, "\n") end
+    end
     out:write(file:gsub("/", "\\"), "\n")
   end
   out:close()
-  say(string.format("Generated %s (%d files, source mode)", path, #config.sourceFileList()))
+  say(string.format("Generated %s (%d files, source mode)", path, #files))
 end
 
 ---Emit every metadata line for one entity type.
@@ -297,6 +369,11 @@ function generate.flavor(flavor, opts)
     out:close()
   end
 
+  -- Compatibility names are byte copies of the finished artifact, including Localization.
+  for _, suffix in ipairs(flavor.aliases or {}) do
+    lib.writeAll(config.addonName .. suffix .. ".toc", lib.readAll(tocPath))
+  end
+
   local size = lib.fileSize(tocPath)
   say(string.format("Generated %s — %d entities, %d rows, %.1f MB entity data, %.1f MB total, %.1fs",
     tocPath, totals.entities, totals.rows, totals.entityBytes / 1048576,
@@ -329,7 +406,7 @@ else
   for _, name in ipairs(opts.flavors) do
     local flavor = config.flavorByName[name]
     if not flavor then
-      error("Unknown flavor: " .. name .. ". Known: Vanilla, TBC, Wrath, Cata, Mists", 0)
+      error("Unknown flavor: " .. name .. ". Known: Vanilla, TBC, Wrath, Cata, Mists, Forever", 0)
     end
     flavors[#flavors + 1] = flavor
   end

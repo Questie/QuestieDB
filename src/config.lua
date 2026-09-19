@@ -41,20 +41,24 @@ config.maxValueLength = 1000
 -- Client flavors
 --------------------------------------------------------------------------------------------
 --
--- `suffix` is the modern underscore TOC suffix. The client searches for flavour-suffixed TOCs
+-- `suffix` is the client TOC suffix, including its separator. The client searches for flavour-suffixed TOCs
 -- first and falls back to the base `QuestieDB.toc` only if none are found, which is what
 -- selects Baked mode over Source mode at no cost.
 --
 -- `expansion` is the directory under data/ holding this flavor's raw entity data.
 -- `dataPrefix` is the filename prefix inside that directory.
--- `interface` is the `## Interface:` value, taken from Questie's own per-flavor TOCs.
+-- `rules` selects shared schema/constants, not authored input ownership.
+-- `gameType` is the default native persona; `gameTypeAliases` adds names for the same flavor.
+-- `aliases` names byte-identical Baked TOCs, independently of native file-condition tokens.
+-- `interface` records the supported client Interface values.
 
 config.flavors = {
-  { name = "Vanilla", suffix = "_Vanilla", expansion = "Classic", dataPrefix = "classic", interface = "11508, 11509" },
-  { name = "TBC",     suffix = "_TBC",     expansion = "TBC",     dataPrefix = "tbc",     interface = "20506" },
-  { name = "Wrath",   suffix = "_Wrath",   expansion = "Wotlk",   dataPrefix = "wotlk",   interface = "38000, 38001" },
-  { name = "Cata",    suffix = "_Cata",    expansion = "Cata",    dataPrefix = "cata",    interface = "40402" },
-  { name = "Mists",   suffix = "_Mists",   expansion = "MoP",     dataPrefix = "mop",     interface = "50503, 50504" },
+  { name = "Vanilla", suffix = "_Vanilla", expansion = "Classic", dataPrefix = "classic", rules = "Classic", gameType = "vanilla", interface = "11508, 11509" },
+  { name = "TBC",     suffix = "_TBC",     expansion = "TBC",     dataPrefix = "tbc",     rules = "TBC", gameType = "tbc", interface = "20506" },
+  { name = "Wrath",   suffix = "_Wrath",   expansion = "Wotlk",   dataPrefix = "wotlk",   rules = "Wotlk", gameType = "wrath", interface = "30405, 38000, 38001, 38002" },
+  { name = "Cata",    suffix = "_Cata",    expansion = "Cata",    dataPrefix = "cata",    rules = "Cata", gameType = "cata", interface = "40402" },
+  { name = "Mists",   suffix = "_Mists",   expansion = "MoP",     dataPrefix = "mop",     rules = "MoP", gameType = "mists", interface = "50503, 50504" },
+  { name = "Forever", suffix = "_Forever", aliases = { "_Camelot" }, expansion = "Forever", dataPrefix = "forever", rules = "Classic", gameType = "camelot", gameTypeAliases = { "forever" }, interface = "16001" },
 }
 
 config.flavorByName = {}
@@ -134,67 +138,49 @@ config.runtimeFiles = {
   },
 }
 
---- The raw entity data block, only present in the base TOC. Each expansion's files are
---- preceded by a marker naming it, so the loader shim in src/read/source.lua can discard the
---- four expansions the running client does not need; `_end.lua` closes the block.
-function config.sourceDataFiles()
-  local files = {}
-  for _, flavor in ipairs(config.flavors) do
-    files[#files + 1] = config.paths.data .. "/" .. flavor.expansion .. "/_flavor.lua"
-    for _, entityType in ipairs(config.entityTypes) do
-      files[#files + 1] = config.dataPath(flavor, entityType)
-    end
-  end
-  files[#files + 1] = config.paths.data .. "/_end.lua"
-  return files
+-- Independently maintained providers are not import destinations.
+config.ownedCorrections = {
+  { owned = 'Forever', file = 'Forever/classicQuestFixes.lua', module = 'QuestieQuestFixes', datatype = 'Quest', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1 },
+  { owned = 'Forever', file = 'Forever/classicNPCFixes.lua', module = 'QuestieNPCFixes', datatype = 'Npc', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1 },
+  { owned = 'Forever', file = 'Forever/classicItemFixes.lua', module = 'QuestieItemFixes', datatype = 'Item', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1 },
+  { owned = 'Forever', file = 'Forever/classicObjectFixes.lua', module = 'QuestieObjectFixes', datatype = 'Object', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1 },
+  { owned = 'Forever', file = 'Forever/classicQuestReputationFixes.lua', module = 'QuestieClassicQuestReputationFixes', datatype = 'Quest', static = {'Load'}, expansions = {['Forever']=true}, generated = true },
+  { owned = 'Forever', file = 'Forever/itemStartFixes.lua', module = 'QuestieItemStartFixes', datatype = 'Item', static = {'LoadAutomaticQuestStarts'}, options = {['noNewEntries']=true,['noOverwrites']=true}, generated = true },
+}
+
+---Whether a provider belongs to a flavor. Forever owns providers rather than inheriting legacy ones.
+---@param spec table Correction manifest entry.
+---@param flavor table Configured flavor.
+---@return boolean
+function config.correctionApplies(spec, flavor)
+  if not flavor then return false end
+  if spec.owned then return spec.owned == flavor.name end
+  if flavor.name == "Forever" then return false end
+  local order = { Classic = 1, TBC = 2, Wotlk = 3, Cata = 4, MoP = 5 }
+  return (not spec.expansions or spec.expansions[flavor.expansion] == true) and
+    (not spec.minExpansionOrder or (order[flavor.expansion] or 0) >= spec.minExpansionOrder)
 end
 
---- The correction block, bracketed by the files that install and remove the compat shim.
----
---- `mode` selects what ships. Baked artifacts carry only files that provide a **Dynamic**
---- function, because Static Corrections are already folded into the metadata store and their
---- files are build-time input that never reaches a user. A file providing both — Questie's
---- `classicQuestFixes.lua` has `Load` (static) beside `LoadFactionFixes` (dynamic) — ships,
---- because the two live in one upstream file and splitting them would fork it.
----@param flavor table? Restrict to one flavor's expansions
----@param mode string "source" | "baked"
+---Resolved correction block for one flavor; native selection uses this same applicability.
+---@param flavor table
+---@param mode string
+---@return string[]
 function config.correctionFiles(flavor, mode)
-  local manifest = config.correctionManifest
-  if not manifest then return {} end
-
-  local expansionOrder = { Classic = 1, TBC = 2, Wotlk = 3, Cata = 4, MoP = 5 }
-  -- Scope markers use the existing season predicates. Loading register.lua here only
-  -- defines them; FromManifest still runs after every provider file, in _end.lua.
+  if not config.correctionManifest then return {} end
   local files = { "src/corrections/enum/constants.lua", "src/corrections/compat.lua",
-                  "src/corrections/register.lua", "src/corrections/_begin.lua" }
-  local body, scopes = {}, {}
-  local previousScope
-
-  for _, spec in ipairs(manifest) do
-    local include = true
-    if flavor then
-      if spec.expansions and not spec.expansions[flavor.expansion] then include = false end
-      if spec.minExpansionOrder and (expansionOrder[flavor.expansion] or 0) < spec.minExpansionOrder then
-        include = false
+    "src/corrections/register.lua", "src/corrections/_begin.lua" }
+  local seasonal
+  for _, spec in ipairs(config.correctionManifest) do
+    if config.correctionApplies(spec, flavor) and
+       (mode ~= "baked" or (spec.dynamic and #spec.dynamic > 0)) then
+      local scope = spec.file:match("^(Sod)/") or spec.file:match("^(Titan)/")
+      if seasonal ~= scope then
+        files[#files + 1] = "src/corrections/scopes/" .. (scope or (seasonal .. "End")) .. ".lua"
+        seasonal = scope
       end
-    end
-    if mode == "baked" and not (spec.dynamic and #spec.dynamic > 0) then include = false end
-    if include then
-      -- Module-load hints need admission before a file imports QuestieCorrections.
-      -- Keep the providers loaded: registration independently gates their invocation.
-      local scope = assert(spec.file:match("^([^/]+)/"))
-      if scope ~= previousScope then
-        -- TOC composition deduplicates paths, so a scope cannot be reopened later.
-        assert(not scopes[scope], "correction manifest must keep scope contiguous: " .. scope)
-        scopes[scope], previousScope = true, scope
-        body[#body + 1] = "src/corrections/scopes/" .. scope .. ".lua"
-      end
-      body[#body + 1] = "src/corrections/" .. spec.file
+      files[#files + 1] = "src/corrections/" .. spec.file
     end
   end
-
-  if #body == 0 then return {} end
-  for _, file in ipairs(body) do files[#files + 1] = file end
   files[#files + 1] = "src/corrections/manifest.lua"
   files[#files + 1] = "src/corrections/_end.lua"
   return files
@@ -219,7 +205,7 @@ config.derivedFiles = {
 --------------------------------------------------------------------------------------------
 --
 -- Baked TOCs select one flavor here. The base Source TOC lists each payload once,
--- bracketed by applicability markers so other flavors cannot overwrite its support modules.
+-- with native conditions so another flavor never executes its payload assignments.
 
 config.supportData = {
   shared = {
@@ -260,57 +246,36 @@ config.supportData = {
   },
 }
 
----Source groups keep shared payloads unique in the TOC. These are deliberately separate
----from perFlavor: Source needs load-time scopes, whereas Baked needs only applicable files.
----Cata's drop file comes last so Mists retains Questie's MoP-then-Cata load order.
-config.supportSourceGroups = {
-  { scope = "preMists", files = {
-    "support/Zones/areaIdToUiMapId.lua", "support/Zones/uiMapIdToAreaId.lua",
-  } },
-  { scope = "Vanilla", files = {
-    "support/QuestXP/xpDB-classic.lua", "support/FactionTemplates/factionTemplateClassic.lua",
-    "support/DropTables/classicItemDrops.lua",
-  } },
-  { scope = "TBC", files = {
-    "support/QuestXP/xpDB-tbc.lua", "support/FactionTemplates/factionTemplateTBC.lua",
-    "support/DropTables/tbcItemDrops.lua",
-  } },
-  { scope = "Wrath", files = {
-    "support/QuestXP/xpDB-wotlk.lua", "support/FactionTemplates/factionTemplateWotlk.lua",
-    "support/DropTables/wotlkItemDrops.lua",
-  } },
-  { scope = "Cata", files = {
-    "support/QuestXP/xpDB-cata.lua", "support/FactionTemplates/factionTemplateCata.lua",
-  } },
-  { scope = "Mists", files = {
-    "support/Zones/MoP/areaIdToUiMapId.lua", "support/Zones/MoP/uiMapIdToAreaId.lua",
-    "support/QuestXP/xpDB-mop.lua", "support/FactionTemplates/factionTemplateMoP.lua",
-    "support/DropTables/mopItemDrops.lua",
-  } },
-  { scope = "CataMists", files = { "support/DropTables/cataItemDrops.lua" } },
+-- These paths are explicit: future Era additions must not silently become Forever inputs.
+config.supportData.perFlavor.Forever = {
+  "support/Forever/Zones/dungeons.lua", "support/Forever/Zones/subZoneToParentZone.lua",
+  "support/Forever/Zones/zoneIds.lua", "support/Forever/Zones/instanceIdToAreaId.lua",
+  "support/Forever/DropTables/itemDropCorrections.lua",
+  "support/Forever/Zones/areaIdToUiMapId.lua", "support/Forever/Zones/uiMapIdToAreaId.lua",
+  "support/Forever/QuestXP/xpDB-classic.lua", "support/Forever/FactionTemplates/factionTemplateClassic.lua",
+  "support/Forever/DropTables/classicItemDrops.lua",
 }
 
----The support block selects a flavor in Baked mode or scopes every variant in Source mode.
----@param flavor table? Nil selects the base Source TOC.
----@return string[] files
+---@param flavor table
+---@return string[] Resolved support paths in load order.
 function config.supportFiles(flavor)
-  -- The extracted constants come first: the support shim seeds `DropDB.correctionKeys` from
-  -- them before `itemDropCorrections.lua` runs.
-  local files = { "src/corrections/enum/constants.lua", "src/support/data.lua",
-                  "src/support/_begin.lua" }
-  for _, file in ipairs(config.supportData.shared) do files[#files + 1] = file end
-  if flavor then
-    for _, file in ipairs(config.supportData.perFlavor[flavor.name] or {}) do
-      files[#files + 1] = file
-    end
-  else
-    for _, group in ipairs(config.supportSourceGroups) do
-      files[#files + 1] = "src/support/scopes/" .. group.scope .. ".lua"
-      for _, file in ipairs(group.files) do files[#files + 1] = file end
-    end
+  assert(flavor, "supportFiles requires a flavor")
+  local files = { "src/corrections/enum/constants.lua", "src/support/data.lua", "src/support/_begin.lua" }
+  if flavor.name ~= "Forever" then
+    for _, file in ipairs(config.supportData.shared) do files[#files + 1] = file end
   end
+  for _, file in ipairs(config.supportData.perFlavor[flavor.name]) do files[#files + 1] = file end
   files[#files + 1] = "src/support/_end.lua"
   return files
+end
+
+---@param flavor table
+---@return string
+function config.zoneIdsPath(flavor)
+  for _, path in ipairs(config.supportFiles(flavor)) do
+    if path:match("/Zones/zoneIds%.lua$") then return path end
+  end
+  error("No zoneIds input for " .. flavor.name)
 end
 
 --- Append `source` to `target`, skipping anything already listed.
@@ -349,21 +314,84 @@ function config.bakedFileList(flavor)
   return files
 end
 
---- Files the committed base TOC lists, in load order. The reader has to come before the data
---- so its shim is in place when the payload assignments happen.
-function config.sourceFileList()
-  local files, seen = {}, {}
-  append(files, config.runtimeFiles.head, seen)
-  append(files, { config.runtimeFiles.sourceReader }, seen)
-  append(files, config.sourceDataFiles(), seen)
-  append(files, config.supportFiles(nil), seen)
-  append(files, { "src/read/shared.lua", "src/corrections/registry.lua" }, seen)
-  append(files, config.correctionFiles(nil, "source"), seen)
-  if config.correctionManifest then
-    append(files, { "src/corrections/Sod/sodRequiredRaces.lua" }, seen)
+---Source entries keep paths separate from applicability and merge each path once.
+---The phase order matters: all payloads must finish before their shim is removed.
+---@return table[] entries Each entry has path and gameTypes (an ordered token list).
+function config.sourceFileEntries()
+  local entries, byPath = {}, {}
+  ---@param path string
+  ---@param flavor table? Nil means unconditional.
+  ---@return nil
+  local function add(path, flavor)
+    local entry = byPath[path]
+    if not entry then
+      entry = { path = path, gameTypes = {} }
+      entries[#entries + 1], byPath[path] = entry, entry
+    end
+    if flavor then
+      for _, token in ipairs(entry.gameTypes) do if token == flavor.gameType then return end end
+      entry.gameTypes[#entry.gameTypes + 1] = flavor.gameType
+      for _, alias in ipairs(flavor.gameTypeAliases or {}) do
+        entry.gameTypes[#entry.gameTypes + 1] = alias
+      end
+    end
   end
-  append(files, config.derivedFiles, seen)
-  append(files, config.runtimeFiles.tail, seen)
+  for _, path in ipairs(config.runtimeFiles.head) do add(path) end
+  for _, flavor in ipairs(config.flavors) do add("src/flavors/" .. flavor.name .. ".lua", flavor) end
+  add(config.runtimeFiles.sourceReader)
+  for _, flavor in ipairs(config.flavors) do
+    for _, entity in ipairs(config.entityTypes) do add(config.dataPath(flavor, entity), flavor) end
+  end
+  add("data/_end.lua")
+  -- Resolve support bodies separately so shared teardown cannot precede another flavor's data.
+  for _, path in ipairs({ "src/corrections/enum/constants.lua", "src/support/data.lua", "src/support/_begin.lua" }) do add(path) end
+  -- Mists precedes Cata so its cumulative drop tables keep the MoP-then-Cata ordering.
+  for _, name in ipairs({ "Vanilla", "TBC", "Wrath", "Mists", "Cata", "Forever" }) do
+    local flavor = config.flavorByName[name]
+    for _, path in ipairs(config.supportFiles(flavor)) do
+      if path:match("^support/") then add(path, flavor) end
+    end
+  end
+  add("src/support/_end.lua")
+  add("src/read/shared.lua")
+  add("src/corrections/registry.lua")
+  if config.correctionManifest then
+    for _, path in ipairs({ "src/corrections/compat.lua", "src/corrections/register.lua", "src/corrections/_begin.lua" }) do add(path) end
+    local seasonal
+    for _, spec in ipairs(config.correctionManifest) do
+      local scope = spec.file:match("^(Sod)/") or spec.file:match("^(Titan)/")
+      if scope ~= seasonal then
+        add("src/corrections/scopes/" .. (scope or (seasonal .. "End")) .. ".lua")
+        seasonal = scope
+      end
+      for _, flavor in ipairs(config.flavors) do
+        if config.correctionApplies(spec, flavor) then add("src/corrections/" .. spec.file, flavor) end
+      end
+    end
+    add("src/corrections/manifest.lua")
+    add("src/corrections/_end.lua")
+    add("src/corrections/Sod/sodRequiredRaces.lua", config.flavorByName.Vanilla)
+  end
+  for _, path in ipairs(config.derivedFiles) do add(path) end
+  for _, path in ipairs(config.runtimeFiles.tail) do add(path) end
+  return entries
+end
+
+---Rendered native file lines, or resolved paths for an explicit offline flavor.
+---@param flavor table? Nil emits conditions.
+---@return string[]
+function config.sourceFileList(flavor)
+  local files = {}
+  for _, entry in ipairs(config.sourceFileEntries()) do
+    local include = #entry.gameTypes == 0
+    for _, token in ipairs(entry.gameTypes) do
+      if flavor and token == flavor.gameType then include = true end
+    end
+    if not flavor then
+      files[#files + 1] = entry.path .. (#entry.gameTypes > 0 and
+        (" [AllowLoadGameType " .. table.concat(entry.gameTypes, ", ") .. "]") or "")
+    elseif include then files[#files + 1] = entry.path end
+  end
   return files
 end
 

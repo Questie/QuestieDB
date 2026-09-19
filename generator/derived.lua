@@ -12,14 +12,8 @@ local lib = dofile("generator/lib.lua")
 
 local derived = {}
 
---- Support files a pass needs, enumerated rather than discovered — the same rule the rest of
---- the generator follows. `zoneIds.lua` backs the waypoint pass's ZONE_SCALES, which is read
---- from the shipped data rather than hardcoded so the constants cannot drift from Questie's.
-local SUPPORT_FILES = {
-  "support/Zones/zoneIds.lua",
-}
-
-local supportModules
+local config = dofile("src/config.lua")
+local supportByFlavor = {}
 
 ---Returns the shared Derived Pass registry prepared for one flavor.
 ---@param flavor table An entry from config.flavors.
@@ -31,7 +25,8 @@ end
 
 --- Load support data under a scoped `QuestieLoader` mock and return a `name -> module`
 --- accessor with the same shape `LibQuestieDB.Support.Get` has at runtime.
-local function supportProvider()
+local function supportProvider(flavor)
+  local supportModules = supportByFlavor[flavor.name]
   if not supportModules then
     supportModules = {}
     local previous = rawget(_G, "QuestieLoader")
@@ -40,10 +35,10 @@ local function supportProvider()
       return supportModules[name]
     end
     _G.QuestieLoader = { ImportModule = moduleFor, CreateModule = moduleFor }
-    for _, path in ipairs(SUPPORT_FILES) do
-      if lib.fileExists(path) then runtime.execute(path, "QuestieDB", {}) end
-    end
+    local ok, err = pcall(runtime.execute, config.zoneIdsPath(flavor), "QuestieDB", {})
     _G.QuestieLoader = previous
+    if not ok then error(err, 0) end
+    supportByFlavor[flavor.name] = supportModules
   end
   return function(name) return supportModules[name] end
 end
@@ -70,7 +65,7 @@ function derived.run(loaded, flavor)
   local registry = registryFor(flavor)
   if not registry then return 0 end
 
-  local support = supportProvider()
+  local support = supportProvider(flavor)
 
   return registry.Run(nil, {
     flavor = flavor,

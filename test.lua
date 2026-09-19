@@ -2408,6 +2408,12 @@ end)
 -- TOC file lists
 --------------------------------------------------------------------------------------------
 
+suite("native-toc", "shared", function()
+  client.reset()
+  dofile("emulator/metadata.test.lua")
+  dofile("emulator/native-source.test.lua")
+end)
+
 suite("toc", "shared", function()
   -- The correction manifest drives which correction files a TOC lists, and `config` cannot
   -- load it itself — in a client it arrives as an addon file, so the generator assigns it
@@ -2434,7 +2440,9 @@ suite("toc", "shared", function()
   -- hold references to the first copy. Blocks declare their own prerequisites — the support
   -- block and the correction block both need `enum/constants.lua` — so the composer has to
   -- deduplicate, and this is what proves it does.
-  local lists = { { name = "base (source mode)", files = config.sourceFileList() } }
+  local sourcePaths = {}
+  for _, entry in ipairs(config.sourceFileEntries()) do sourcePaths[#sourcePaths + 1] = entry.path end
+  local lists = { { name = "base (source mode)", files = sourcePaths } }
   for _, flavor in ipairs(config.flavors) do
     lists[#lists + 1] = { name = flavor.name, files = config.bakedFileList(flavor) }
   end
@@ -2555,7 +2563,7 @@ suite("toc", "shared", function()
     for _, file in ipairs(files) do set[file] = true end
     return set
   end
-  local sourceSet = fileSet(config.sourceFileList())
+  local sourceSet = fileSet(sourcePaths)
   local wrathSet = fileSet(config.bakedFileList(config.flavorByName.Wrath))
   for _, file in ipairs(titanFiles) do
     check(sourceSet[file] == true, "Source mode lists Titan provider " .. file)
@@ -2572,11 +2580,11 @@ suite("toc", "shared", function()
 
   -- Source mode only: the reader installs the loader shim, so it has to precede the data it
   -- captures, and the data block has to close before anything else touches QuestieLoader.
-  local baseAt = positions(config.sourceFileList())
-  check(baseAt["src/read/source.lua"] < baseAt["data/Classic/_flavor.lua"],
+  local baseAt = positions(sourcePaths)
+  check(baseAt["src/read/source.lua"] < baseAt["data/Classic/classicQuestDB.lua"],
     "the source reader installs its shim before the data block opens")
-  check(baseAt["data/MoP/_flavor.lua"] < baseAt["data/_end.lua"],
-    "every expansion marker falls inside the data block")
+  check(baseAt["data/MoP/mopObjectDB.lua"] < baseAt["data/_end.lua"],
+    "every selected payload falls inside the data block")
   check(baseAt["data/_end.lua"] < baseAt["src/support/_begin.lua"],
     "the data block closes before the support block opens")
 end)

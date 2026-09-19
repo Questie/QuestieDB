@@ -116,10 +116,60 @@ function emulator.getValue(map, key)
 end
 
 --------------------------------------------------------------------------------------------
+-- Native file selection (only the subset emitted by QuestieDB)
+--------------------------------------------------------------------------------------------
+
+---@alias EmulatorGameType "vanilla"|"tbc"|"wrath"|"cata"|"mists"|"camelot"|"forever"
+
+---@type table<string, boolean>
+local gameTypes = { vanilla = true, tbc = true, wrath = true, cata = true, mists = true, camelot = true, forever = true }
+
+---Parse and evaluate a file line; return its normalized path only when selected.
+---Blank lines and comments (including metadata) return nil. XML remains ignored by this
+---Lua-only loader. Bracket syntax other than one trailing AllowLoadGameType list is rejected;
+---this is not a general native TOC interpreter or a claim about unknown-token client behavior.
+---@param line string
+---@param gameType EmulatorGameType? Required for conditional files; never inferred from paths.
+---@return string? path Selected Lua file path.
+function emulator.selectFile(line, gameType)
+  if gameType ~= nil and not gameTypes[gameType] then
+    error("Unknown TOC game-type persona: " .. tostring(gameType), 0)
+  end
+  line = line:match("^%s*(.-)%s*$")
+  if line == "" or line:sub(1, 1) == "#" then return nil end
+
+  local path = line
+  if line:find("[%[%]]") then
+    local tokens
+    path, tokens = line:match("^([^%[%]]-)%s+%[AllowLoadGameType%s+([^%[%]]+)%]$")
+    if not path or path == "" then
+      error("Unsupported or malformed TOC file condition: " .. line, 0)
+    end
+    local selected = false
+    -- Validate the entire list, even after a match, so unknown later tokens cannot hide.
+    for token in (tokens .. ","):gmatch("(.-),") do
+      token = token:match("^%s*(.-)%s*$")
+      if not gameTypes[token] then
+        error("Unknown or malformed AllowLoadGameType token: " .. token, 0)
+      end
+      if token == gameType then selected = true end
+    end
+    if gameType == nil then
+      error("Conditional TOC file requires an explicit game-type persona", 0)
+    end
+    if not selected then return nil end
+  end
+
+  path = path:gsub("\\", "/")
+  if path:find("%.xml$") then return nil end
+  return path
+end
+
+--------------------------------------------------------------------------------------------
 -- Addon bootstrap
 --------------------------------------------------------------------------------------------
 
---- Execute the Lua files a generated TOC lists, in order, inside a mocked addon environment.
+--- Execute the selected Lua files a Source or Baked TOC lists, in order.
 --- This is what makes the offline harness exercise the *shipped* reader rather than a copy of
 --- it: the same src/ files the client loads, loaded the same way.
 ---
@@ -129,19 +179,26 @@ end
 ---@param tocPath string
 ---@param addonName string?
 ---@param baseDir string? Root the TOC's file list resolves against; default the working dir
+---@param gameType EmulatorGameType? Explicit native persona; required for conditional files.
 ---@return table addonTable The addon namespace, i.e. LibQuestieDB
----@return table files The file list the TOC declared, as loaded
-function emulator.loadAddon(tocPath, addonName, baseDir)
+---@return table files Selected file paths, in execution order.
+function emulator.loadAddon(tocPath, addonName, baseDir, gameType)
+  gameType = gameType or rawget(_G, "QUESTIEDB_EMULATOR_GAME_TYPE")
   addonName = addonName or "QuestieDB"
   local addonTable = {}
 
   local file = assert(io.open(tocPath, "rb"), "Cannot open: " .. tostring(tocPath))
   local files = {}
+  local lineNumber = 0
+  -- Resolve the whole list before executing anything, and close the TOC on syntax errors.
   for line in file:lines() do
-    line = line:gsub("\r$", ""):gsub("^%s+", ""):gsub("%s+$", "")
-    if line ~= "" and line:sub(1, 1) ~= "#" and not line:find("%.xml$") then
-      files[#files + 1] = line:gsub("\\", "/")
+    lineNumber = lineNumber + 1
+    local ok, path = pcall(emulator.selectFile, line, gameType)
+    if not ok then
+      file:close()
+      error(("%s:%d: %s"):format(tocPath, lineNumber, path), 0)
     end
+    if path then files[#files + 1] = path end
   end
   file:close()
 

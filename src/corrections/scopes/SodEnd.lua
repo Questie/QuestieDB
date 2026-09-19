@@ -1,3 +1,3 @@
--- These correction sources apply to every supported flavor.
+-- Close the seasonal hint gate before the following providers load.
 local _, LibQuestieDB = ...
 LibQuestieDB.CorrectionCompat.SelectObjectiveFirstScope(true)

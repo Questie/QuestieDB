@@ -61,6 +61,7 @@ end
 --- Blizzard's project IDs, by the expansion directory name QuestieDB uses.
 client.projectIds = {
   Classic = 2,
+  Forever = 2,
   TBC = 5,
   Wotlk = 11,
   Cata = 14,
@@ -101,6 +102,12 @@ function client.install(opts)
   _G.WOW_PROJECT_MAINLINE = 1
 
   _G.WOW_PROJECT_ID = client.projectIds[opts.expansion or "Classic"]
+  local config = dofile("src/config.lua")
+  local selected
+  for _, flavor in ipairs(config.flavors) do
+    if flavor.expansion == (opts.expansion or "Classic") then selected = flavor end
+  end
+  _G.QUESTIEDB_EMULATOR_GAME_TYPE = opts.gameType or assert(selected, "Unknown emulator expansion").gameType
 
   -- Dynamic Corrections branch on these at apply time — faction fixes are the whole reason
   -- the category exists. Fixed values rather than random ones, so two loads in one process
@@ -159,6 +166,7 @@ end
 function client.reset()
   _G.QuestDB, _G.NpcDB, _G.ItemDB, _G.ObjectDB = nil, nil, nil, nil
   _G.LibQuestieDB = nil
+  _G.QUESTIEDB_EMULATOR_GAME_TYPE = nil
   _G.QuestieLoader = nil
   _G.Questie = nil
   _G.QuestieDBSourceModeIndicator = nil
