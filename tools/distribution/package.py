@@ -31,7 +31,7 @@ ZERO_COMMIT = "0" * 40
 
 @dataclass(frozen=True)
 class FlavorSource:
-    """A generated TOC and the runtime files it declares, relative to the checkout."""
+    """A generated TOC and its runtime files and assets, relative to the checkout."""
 
     flavor: str
     toc: Path
@@ -86,6 +86,13 @@ def read_source(root: Path, flavor: str) -> FlavorSource:
                     if key in headers:
                         raise ValueError("%s repeats metadata field: %s" % (toc, key))
                     headers[key] = value.strip()
+                if key == "icontexture":
+                    # Metadata assets are not TOC load entries. Ship only addon-owned textures,
+                    # not built-in game textures or the rest of the artwork directory.
+                    texture = value.strip().replace("\\", "/")
+                    prefix = "Interface/AddOns/QuestieDB/"
+                    if texture.startswith(prefix):
+                        line = texture[len(prefix):]
             if not line or line.startswith("#"):
                 continue
             relative = PurePosixPath(line.replace("\\", "/"))

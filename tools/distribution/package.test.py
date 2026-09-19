@@ -78,6 +78,9 @@ class PackageTest(unittest.TestCase):
         self.write("src/types/General.t.lua", "---@meta _\n")
         self.write("src/types/consumer.test.lua", "-- not shipped\n")
         self.write("src/runtime.lua", "return 'shared runtime'\n")
+        (self.root / "icons").mkdir()
+        shutil.copyfile(ROOT / "icons/QuestieTDB_64x64.png", self.root / "icons/QuestieTDB_64x64.png")
+        self.write("icons/QuestieTDB.pdn", "unshipped artwork\n")
         self.write("src/corrections/Era/fixes.lua", "return 'unstripped'\n")
         self.write("data/raw.lua", "-- source-only data\n")
         self.write("l10n/translation.lua", "-- source-only localization\n")
@@ -94,6 +97,7 @@ class PackageTest(unittest.TestCase):
             self.write("QuestieDB_%s.toc" % flavor,
                        "## X-QUESTIE-COMMIT: %s\n" % PIN +
                        "## Version: 1.2.3-dev.abcdef0\n## X-Contract-Version: 2\n" +
+                       "## IconTexture: Interface\\AddOns\\QuestieDB\\icons\\QuestieTDB_64x64.png\n" +
                        "src\\config.lua\nsrc\\runtime.lua\nsrc\\corrections\\Era\\fixes.lua\n" +
                        "support\\%s.lua\n" % flavor + "## X-Quest-1-S: fixture\n")
         self.env = dict(os.environ, PATH=str(self.bin), LUA=LUA, SOURCE_DATE_EPOCH="1700000000",
@@ -143,11 +147,14 @@ class PackageTest(unittest.TestCase):
                 self.assertIsNone(archive.testzip())
                 names = {info.filename for info in archive.infolist() if not info.is_dir()}
                 expected = {"QuestieDB/src/config.lua", "QuestieDB/src/runtime.lua", "QuestieDB/src/corrections/Era/fixes.lua",
-                            "QuestieDB/Types/Quest.t.lua", "QuestieDB/Types/General.t.lua"}
+                            "QuestieDB/Types/Quest.t.lua", "QuestieDB/Types/General.t.lua",
+                            "QuestieDB/icons/QuestieTDB_64x64.png"}
                 expected.update("QuestieDB/QuestieDB_%s.toc" % f for f in flavors)
                 expected.update("QuestieDB/support/%s.lua" % f for f in flavors)
                 self.assertEqual(expected, names)
                 self.assertEqual((self.root / "src/config.lua").read_bytes(), archive.read("QuestieDB/src/config.lua"))
+                self.assertEqual((self.root / "icons/QuestieTDB_64x64.png").read_bytes(),
+                                 archive.read("QuestieDB/icons/QuestieTDB_64x64.png"))
                 self.assertEqual(b"return 'dynamic only'\n", archive.read("QuestieDB/src/corrections/Era/fixes.lua"))
                 for name in names:
                     self.assertEqual(zipfile.ZIP_DEFLATED, archive.getinfo(name).compress_type)
@@ -196,6 +203,23 @@ class PackageTest(unittest.TestCase):
         result = self.run_package("Vanilla")
         self.assertNotEqual(0, result.returncode)
         self.assertIn("missing runtime file", result.stderr)
+        self.assert_previous_output()
+
+    def test_missing_icon_preserves_previous_output(self):
+        self.preserve_previous_output()
+        (self.root / "icons/QuestieTDB_64x64.png").unlink()
+        result = self.run_package("Vanilla")
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn("QuestieTDB_64x64.png", result.stderr)
+        self.assert_previous_output()
+
+    def test_icon_path_cannot_escape_addon(self):
+        self.preserve_previous_output()
+        toc = self.root / "QuestieDB_Vanilla.toc"
+        toc.write_text(toc.read_text().replace("icons\\QuestieTDB_64x64.png", "..\\outside.png"))
+        result = self.run_package("Vanilla")
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn("unsafe runtime path", result.stderr)
         self.assert_previous_output()
 
     def test_full_release_uses_baked_version_not_source_version(self):
