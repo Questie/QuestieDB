@@ -100,7 +100,7 @@ class ReleaseTest(unittest.TestCase):
         (self.dist / "RELEASE_NOTES.md").write_text("# Release notes\n", encoding="utf-8")
         self.archives = []
         artifacts = []
-        for flavor in ("Vanilla", "TBC", "Wrath", "Cata", "Mists", "all"):
+        for flavor in ("Vanilla", "TBC", "Wrath", "Cata", "Mists", "Forever", "all"):
             path = self.dist / f"QuestieDB-{flavor}.zip"
             with zipfile.ZipFile(path, "w") as archive:
                 archive.writestr("QuestieDB/CHANGELOG.md", "# Changes\n")

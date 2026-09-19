@@ -152,7 +152,7 @@ client.install({})
 --- The flavor a correction file's own expansion window belongs to, so the compat shim serves
 --- the constants the file was written against (Era masks differ from TBC+ masks).
 local PREFIX_EXPANSION = {
-  Era = "Classic", Sod = "Classic", Shared = "Classic",
+  Forever = "Forever", Era = "Classic", Sod = "Classic", Shared = "Classic",
   Tbc = "TBC", Wotlk = "Wotlk", Cata = "Cata", MoP = "MoP",
 }
 

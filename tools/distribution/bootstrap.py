@@ -22,9 +22,11 @@ from urllib.request import urlopen
 import zipfile
 
 
-FLAVORS = ("Vanilla", "TBC", "Wrath", "Cata", "Mists")
+FLAVORS = ("Vanilla", "TBC", "Wrath", "Cata", "Mists", "Forever")
 ARCHIVE = "QuestieDB-all.zip"
-TOCS = {"QuestieDB_%s.toc" % flavor for flavor in FLAVORS}
+LEGACY_TOCS = {"QuestieDB_%s.toc" % flavor for flavor in FLAVORS if flavor != "Forever"}
+FOREVER_TOCS = {"QuestieDB_Forever.toc", "QuestieDB_Camelot.toc"}
+TOCS = LEGACY_TOCS | FOREVER_TOCS
 
 
 def download(url: str, destination: Path) -> None:
@@ -86,6 +88,8 @@ def stage_archive(archive_path: Path, stage: Path) -> None:
                 and str(relative) != "CHANGELOG.md"
             ):
                 raise ValueError("archive contains non-generated payload: %s" % name)
+            if str(relative) in TOCS and (entry.is_dir() or mode == stat.S_IFDIR):
+                raise ValueError("generated TOC must be a file: %s" % name)
 
             # Entries must be distinct even on case-insensitive filesystems.
             if name in seen:
@@ -106,6 +110,15 @@ def stage_archive(archive_path: Path, stage: Path) -> None:
             target.parent.mkdir(parents=True, exist_ok=True)
             with archive.open(entry) as source, target.open("wb") as output:
                 shutil.copyfileobj(source, output)
+
+    # Older combined releases omit both names. Transitional releases must ship an exact pair.
+    present = {name for name in FOREVER_TOCS if (stage / name).exists()}
+    if present and present != FOREVER_TOCS:
+        raise ValueError("release must contain both Forever and Camelot TOCs")
+    if present and sha256(stage / "QuestieDB_Forever.toc") != sha256(
+        stage / "QuestieDB_Camelot.toc"
+    ):
+        raise ValueError("Forever and Camelot TOCs must be identical")
 
 
 def install(addons: Path, tag: str = "latest", repo: str = "Questie/QuestieDB") -> Path:
@@ -177,7 +190,7 @@ def install(addons: Path, tag: str = "latest", repo: str = "Questie/QuestieDB") 
         stage = work / "extracted"
         stage.mkdir()
         stage_archive(archive, stage)
-        if {path.name for path in stage.glob("QuestieDB_*.toc") if path.is_file()} != TOCS:
+        if any(not (stage / name).is_file() for name in LEGACY_TOCS):
             raise ValueError("release does not contain all five generated flavor TOCs")
 
         # Preflight destination paths as well as ZIP entries. A working clone can contain
@@ -190,7 +203,14 @@ def install(addons: Path, tag: str = "latest", repo: str = "Questie/QuestieDB") 
             if destination.exists() and destination.is_dir() != source.is_dir():
                 raise ValueError("install path has the wrong file type: %s" % destination)
 
+        # Reject case aliases even when an older release omits the optional Forever pair.
         old_tocs = list(target.glob("QuestieDB_*.toc"))
+        for path in target.iterdir() if target.exists() else ():
+            if path.name.casefold() in {name.casefold() for name in FOREVER_TOCS}:
+                if path.name not in FOREVER_TOCS:
+                    raise ValueError("generated TOC has noncanonical case: %s" % path)
+        if any(path.is_symlink() for path in old_tocs):
+            raise ValueError("a generated TOC path is a link; refusing to remove it")
         if any(path.is_dir() for path in old_tocs):
             raise ValueError("a generated TOC path is a directory; refusing to remove it")
 
@@ -207,7 +227,11 @@ def install(addons: Path, tag: str = "latest", repo: str = "Questie/QuestieDB") 
             else:
                 shutil.copyfile(source, destination)
 
-    print("bootstrap: installed all five flavors in Baked mode", flush=True)
+    print(
+        "bootstrap: installed %s flavors in Baked mode"
+        % ("six" if (target / "QuestieDB_Forever.toc").is_file() else "five"),
+        flush=True,
+    )
     print(
         "bootstrap: Source mode needs the clone's original runtime files as well as removal of generated TOCs",
         flush=True,

@@ -358,6 +358,8 @@ def execute(options: Options, root: Path) -> int:
                 jobs.append(Job("test:" + flavor, [lua, "test.lua", "--flavor=" + flavor], WEIGHTS[flavor]))
             jobs.append(Job("test:cli", [sys.executable, "tools/cli/questiedb.test.py"], 100))
             jobs.append(Job("test:scopes", [sys.executable, "tools/validation/test-scopes.test.py"], 100))
+            jobs.append(Job("test:distribution:forever",
+                            [sys.executable, "tools/distribution/forever.test.py"], 450))
             for tool in ("coordinates", "download", "rewrite", "convert"):
                 jobs.append(Job("test:dbc:" + tool, [sys.executable, "tools/dbc/" + tool + ".test.py"], 100))
             continue

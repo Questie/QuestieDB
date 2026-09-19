@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Package generated TOCs using only Python's standard library.
 
-Usage: questiedb.sh package [Vanilla|TBC|Wrath|Cata|Mists|all]
-       questiedb.ps1 package [Vanilla|TBC|Wrath|Cata|Mists|all]
+Usage: questiedb.sh package [Vanilla|TBC|Wrath|Cata|Mists|Forever|all]
+       questiedb.ps1 package [Vanilla|TBC|Wrath|Cata|Mists|Forever|all]
 Run from any directory. Outputs replace this checkout's .out/dist and .out/stage.
 Generation remains dependency-free Lua; packaging also needs Lua 5.1 for the existing
 Static Correction stripping and behavior-parity check.
@@ -28,13 +28,14 @@ import release_notes
 
 
 ROOT = Path(__file__).resolve().parents[2]
-FLAVORS = ("Vanilla", "TBC", "Wrath", "Cata", "Mists")
+FLAVORS = ("Vanilla", "TBC", "Wrath", "Cata", "Mists", "Forever")
 ADDON_MANAGER_FLAVORS = {
     "Vanilla": "classic",
     "TBC": "bcc",
     "Wrath": "wrath",
     "Cata": "cata",
     "Mists": "mists",
+    "Forever": "forever",
 }
 ZERO_COMMIT = "0" * 40
 
@@ -204,6 +205,13 @@ def build_zip(
 
     subprocess.run([lua, "tools/distribution/strip-static.lua", str(addon)], cwd=root, check=True)
 
+    # Never ship a workspace alias: it may predate Generation or staged transformations.
+    tocs = [addon / source.toc for source in sources]
+    if any(source.flavor == "Forever" for source in sources):
+        alias = addon / "QuestieDB_Camelot.toc"
+        shutil.copyfile(addon / "QuestieDB_Forever.toc", alias)
+        tocs.append(alias)
+
     filename = "QuestieDB-%s.zip" % flavor
     archive_path = root / ".out/dist" / filename
 
@@ -228,7 +236,7 @@ def build_zip(
                 raise ValueError("%s is missing %s" % (filename, expected))
 
     size = archive_path.stat().st_size
-    raw = sum((root / source.toc).stat().st_size for source in sources)
+    raw = sum(toc.stat().st_size for toc in tocs)
     print(
         "packaged %s (%d MB zipped, %d MB raw)"
         % (archive_path.relative_to(root), size // 1048576, raw // 1048576),
@@ -273,7 +281,7 @@ def package(root: Path, flavors: list[str]) -> None:
         or len(set(flavors)) != len(flavors)
         or any(flavor not in FLAVORS for flavor in flavors)
     ):
-        raise ValueError("choose distinct flavors: Vanilla TBC Wrath Cata Mists, or all")
+        raise ValueError("choose distinct flavors: Vanilla TBC Wrath Cata Mists Forever, or all")
 
     try:
         import zlib  # Packaging needs Python's standard compression module before clearing outputs.

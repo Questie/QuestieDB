@@ -29,6 +29,8 @@ def archive_bytes(flavors, extra=None):
     with zipfile.ZipFile(output, "w", zipfile.ZIP_DEFLATED) as archive:
         for flavor in flavors:
             archive.writestr("QuestieDB/QuestieDB_%s.toc" % flavor, "## X-Mode: baked\n")
+            if flavor == "Forever":
+                archive.writestr("QuestieDB/QuestieDB_Camelot.toc", "## X-Mode: baked\n")
         archive.writestr("QuestieDB/src/runtime.lua", "return 'shared'\n")
         archive.writestr("QuestieDB/Types/Quest.t.lua", "---@meta _\n")
         for name, value in (extra or {}).items():
@@ -99,12 +101,70 @@ class BootstrapTest(unittest.TestCase):
             self.requests,
         )
         self.assertEqual(
-            bootstrap.TOCS, {path.name for path in self.target.glob("QuestieDB_*.toc")}
+            bootstrap.TOCS,
+            {path.name for path in self.target.glob("*.toc") if path.name != "QuestieDB.toc"},
         )
         self.assertEqual("developer clone", (self.target / ".git/config").read_text())
         self.assertEqual("unrelated file", (self.target / "custom.lua").read_text())
         self.assertEqual("source mode", (self.target / "QuestieDB.toc").read_text())
         self.assertEqual("return 'shared'\n", (self.target / "src/runtime.lua").read_text())
+
+    def test_older_release_removes_stale_forever_pair(self):
+        for name in bootstrap.FOREVER_TOCS:
+            (self.target / name).write_text("stale artifact")
+        self.assets[bootstrap.ARCHIVE] = archive_bytes(bootstrap.FLAVORS[:-1])
+        self.refresh_manifest()
+        self.install()
+        self.assertTrue(all(not (self.target / name).exists() for name in bootstrap.FOREVER_TOCS))
+        self.assertTrue(all((self.target / name).is_file() for name in bootstrap.LEGACY_TOCS))
+
+    def test_forever_pair_must_be_complete_identical_and_regular_files(self):
+        cases = [
+            {"QuestieDB/QuestieDB_Forever.toc": "primary"},
+            {"QuestieDB/QuestieDB_Camelot.toc": "alias"},
+            {
+                "QuestieDB/QuestieDB_Forever.toc": "primary",
+                "QuestieDB/QuestieDB_Camelot.toc": "stale",
+            },
+            {"QuestieDB/QuestieDB_Forever.toc/": ""},
+            {"QuestieDB/QuestieDB_Camelot.toc/": ""},
+            {"QuestieDB/questiedb_Forever.toc": "wrong case"},
+            {"QuestieDB/QuestieDB_CAMELOT.toc": "wrong case"},
+        ]
+        for extra in cases:
+            with self.subTest(extra=extra):
+                self.assets[bootstrap.ARCHIVE] = archive_bytes(bootstrap.FLAVORS[:-1], extra)
+                self.refresh_manifest()
+                with self.assertRaises(ValueError):
+                    self.install()
+                self.assertEqual(self.original, self.snapshot())
+
+    def test_directory_mode_toc_without_trailing_slash_is_rejected(self):
+        data = io.BytesIO(archive_bytes(bootstrap.FLAVORS[:-1]))
+        with zipfile.ZipFile(data, "a") as archive:
+            directory = zipfile.ZipInfo("QuestieDB/QuestieDB_Forever.toc")
+            directory.create_system = 3
+            directory.external_attr = (stat.S_IFDIR | 0o755) << 16
+            archive.writestr(directory, "")
+        self.assets[bootstrap.ARCHIVE] = data.getvalue()
+        self.refresh_manifest()
+        with self.assertRaisesRegex(ValueError, "TOC must be a file"):
+            self.install()
+        self.assertEqual(self.original, self.snapshot())
+
+    def test_older_release_rejects_directory_or_wrong_case_optional_destination(self):
+        self.assets[bootstrap.ARCHIVE] = archive_bytes(bootstrap.FLAVORS[:-1])
+        self.refresh_manifest()
+        for name in (*bootstrap.FOREVER_TOCS, "questiedb_Forever.toc", "QuestieDB_CAMELOT.toc"):
+            with self.subTest(name=name):
+                path = self.target / name
+                path.mkdir()
+                try:
+                    with self.assertRaises(ValueError):
+                        self.install()
+                    self.assertEqual(self.original, self.snapshot())
+                finally:
+                    path.rmdir()
 
     def test_hash_mismatch_leaves_install_unchanged(self):
         self.assets["QuestieDB-all.zip"] += b"corruption"
@@ -172,6 +232,7 @@ class BootstrapTest(unittest.TestCase):
             "QuestieDB/src/NUL.lua",
             "QuestieDB/src/file.lua.",
             "QuestieDB/SRC/other.lua",
+            "QuestieDB/src/Runtime.lua",
             "QuestieDB/icons/../outside.png",
             "QuestieDB/CHANGELOG.md/extra.lua",
             "QuestieDB/CHANGELOG.md.bak",
@@ -227,6 +288,23 @@ class BootstrapTest(unittest.TestCase):
             self.install()
         self.assertEqual("do not overwrite", sentinel.read_text())
         self.assertEqual(self.original, self.snapshot())
+
+    def test_older_release_rejects_stale_optional_symlink_before_cleanup(self):
+        self.assets[bootstrap.ARCHIVE] = archive_bytes(bootstrap.FLAVORS[:-1])
+        self.refresh_manifest()
+        outside = Path(self.temp.name) / "outside.toc"
+        outside.write_text("do not modify")
+        link = self.target / "QuestieDB_Camelot.toc"
+        try:
+            link.symlink_to(outside)
+        except OSError as error:
+            self.skipTest("symlink creation unavailable: %s" % error)
+        before = self.snapshot()
+        with self.assertRaisesRegex(ValueError, "TOC path is a link"):
+            self.install()
+        self.assertEqual(before, self.snapshot())
+        self.assertTrue(link.is_symlink())
+        self.assertEqual("do not modify", outside.read_text())
 
     def test_tags_are_quoted_and_repo_cannot_select_another_host(self):
         self.install("feature/test #1", "Owner/Repository")

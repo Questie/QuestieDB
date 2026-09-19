@@ -268,6 +268,7 @@ class CommandFlowTest(unittest.TestCase):
         for script in ("verify.lua", "equivalence.lua", "reconstruct.lua", "validators/run.lua", "test.lua"):
             shutil.copyfile(FIXTURES / "read.lua", self.root / script)
         for script in ("tools/cli/questiedb.test.py", "tools/validation/test-scopes.test.py",
+                       "tools/distribution/forever.test.py",
                        "tools/dbc/coordinates.test.py", "tools/dbc/download.test.py",
                        "tools/dbc/rewrite.test.py", "tools/dbc/convert.test.py"):
             shutil.copyfile(FIXTURES / "read.py", self.root / script)
@@ -284,7 +285,8 @@ class CommandFlowTest(unittest.TestCase):
         self.assertEqual(1, events.count("generate:Mists"))
         last_generation = max(events.index("generate:Vanilla"), events.index("generate:Mists"))
         reads = [index for index, event in enumerate(events) if event.startswith("read:")]
-        self.assertEqual(17, len(reads))
+        self.assertEqual(18, len(reads))
+        self.assertEqual(1, sum(event.endswith("tools/distribution/forever.test.py") for event in events))
         self.assertTrue(all(index > last_generation for index in reads))
         self.assertFalse((self.root / ".out/dist").exists())
 
@@ -302,6 +304,7 @@ class CommandFlowTest(unittest.TestCase):
             [self.lua, "test.lua", "--flavor=TBC"],
             [self.lua, "test.lua", "--flavor=Forever"],
         ], lua_tests)
+        self.assertTrue({"test:distribution:forever", "test:scopes"} <= {job.label for job in jobs})
         self.assertEqual(len(jobs), len({job.label for job in jobs}))
 
     def test_default_check_includes_six_flavors(self):
