@@ -80,10 +80,15 @@ jobs:
         run: |
           python3 tools/cli/questiedb.test.py
           python3 tools/validation/test-scopes.test.py
+          python3 tools/dbc/coordinates.test.py
+          python3 tools/dbc/download.test.py
+          python3 tools/dbc/rewrite.test.py
+          python3 tools/dbc/convert.test.py
           python3 tools/distribution/package.test.py
           python3 tools/distribution/bootstrap.test.py
           python3 tools/distribution/release_artifacts.test.py
           python3 tools/distribution/release.test.py
+          python3 tools/distribution/forever.test.py
 
       - name: Fail on Source TOC drift
         working-directory: QuestieDB
@@ -102,7 +107,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        flavor: [Vanilla, TBC, Wrath, Cata, Mists]
+        flavor: [Vanilla, TBC, Wrath, Cata, Mists, Forever]
     steps:
       - uses: actions/checkout@v7
         with: { path: QuestieDB }
@@ -119,7 +124,13 @@ jobs:
         # Every read gate approves the second-generation bytes whose hash matched the first.
         # Keep a distinct checksum file per flavor for the packaging handoff.
         run: |
-          sha256sum QuestieDB_${{ matrix.flavor }}.toc > QuestieDB_${{ matrix.flavor }}.sha256
+          tocs=(QuestieDB_${{ matrix.flavor }}.toc)
+          # Forever ships a byte-identical Camelot alias, not a separate flavor.
+          if [[ "${{ matrix.flavor }}" == Forever ]]; then
+            cmp QuestieDB_Forever.toc QuestieDB_Camelot.toc
+            tocs+=(QuestieDB_Camelot.toc)
+          fi
+          sha256sum "${tocs[@]}" > QuestieDB_${{ matrix.flavor }}.sha256
           lua5.1 generate.lua ${{ matrix.flavor }} --quiet
           sha256sum -c QuestieDB_${{ matrix.flavor }}.sha256
 
@@ -158,7 +169,7 @@ jobs:
         with:
           name: release-toc-${{ matrix.flavor }}
           path: |
-            QuestieDB/QuestieDB_${{ matrix.flavor }}.toc
+            QuestieDB/QuestieDB_*.toc
             QuestieDB/QuestieDB_${{ matrix.flavor }}.sha256
           retention-days: 7
           if-no-files-found: error
@@ -190,7 +201,7 @@ jobs:
       - name: Check every flavor handoff
         working-directory: QuestieDB
         run: |
-          for flavor in Vanilla TBC Wrath Cata Mists; do
+          for flavor in Vanilla TBC Wrath Cata Mists Forever; do
             sha256sum --strict -c "QuestieDB_${flavor}.sha256"
           done
 
