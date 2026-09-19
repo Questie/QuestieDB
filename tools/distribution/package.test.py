@@ -60,6 +60,106 @@ class LuaSelectionTest(unittest.TestCase):
                 packager.find_lua()
 
 
+@unittest.skipUnless(shutil.which("git"), "Git is required for changelog fixtures")
+class ChangelogTest(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(prefix="questiedb changelog ")
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        self.git("init", "--quiet")
+        self.git("config", "user.name", "Release test")
+        self.git("config", "user.email", "release@example.invalid")
+        self.git("config", "commit.gpgsign", "false")
+        self.git("config", "tag.gpgsign", "false")
+        self.url = "https://github.com/Questie/QuestieDB"
+
+    def git(self, *args):
+        return subprocess.run(["git", "-C", str(self.root), *args], check=True,
+                              capture_output=True, text=True, encoding="utf-8").stdout.strip()
+
+    def commit(self, subject):
+        self.git("-c", "core.hooksPath=", "commit", "--quiet", "--allow-empty", "-m", subject)
+        return self.git("rev-parse", "HEAD")
+
+    def notes(self, version="1.2.3-dev.abcdef0"):
+        return packager.release_notes.changelog(self.root, version, self.git("rev-parse", "HEAD"), self.url)
+
+    def test_questie_prefixes_group_sort_and_preserve_authored_text(self):
+        for subject in ("[fix] Zed", "[FEATURE] Added a feature", "[Fix] Alpha [fix] stays",
+                        "[quest] Quest change", "[db] Database change", "[locale]Translation change",
+                        "[fix]   ", "[other] Not included", "fix: Not included",
+                        "Some [fix] Not included", "Internal change\n\n[fix] Body is not a subject"):
+            self.commit(subject)
+        notes = self.notes()
+        headings = ["New features", "General fixes", "Quest fixes", "Database fixes", "Localization fixes"]
+        self.assertEqual(sorted(notes.index("### " + heading) for heading in headings),
+                         [notes.index("### " + heading) for heading in headings])
+        self.assertIn("- Alpha [fix] stays\n- Zed", notes)
+        self.assertIn("- Translation change", notes)
+        self.assertIn("- Added a feature", notes)
+        self.assertNotIn("Not included", notes)
+        self.assertNotIn("Body is not", notes)
+        self.assertEqual(6, notes.count("\n- "))
+
+    def test_stable_boundary_preview_and_override_with_mixed_tags(self):
+        old = self.commit("[fix] Old fix")
+        self.git("tag", "v1.9.0")
+        self.commit("[fix] Already released")
+        self.git("tag", "-a", "v1.10.0", "-m", "Stable release")
+        self.commit("[db] New data")
+        for tag in ("preview", "build-123", "v2.0.0-beta", "v01.20.0"):
+            self.git("tag", tag)
+        self.commit("[fix] New fix")
+        self.git("tag", "v1.11.0")
+        head = self.commit("[locale] New translation")
+        # An unreachable higher version must not hide changes from this release line.
+        self.git("checkout", "--detach", old)
+        self.commit("[fix] Unrelated branch")
+        self.git("tag", "v99.0.0")
+        self.git("checkout", "--detach", head)
+
+        stable = self.notes("1.11.0")
+        self.assertIn("- New data", stable)
+        self.assertIn("- New fix", stable)
+        self.assertIn("- New translation", stable)
+        self.assertIn(f"/compare/v1.10.0..{head}", stable)
+        self.assertNotIn("Already released", stable)
+        self.assertNotIn("Old fix", stable)
+        self.assertNotIn("Unrelated branch", stable)
+
+        preview = self.notes("1.11.0-dev.abcdef0")
+        self.assertIn("- New translation", preview)
+        self.assertIn(f"/compare/v1.11.0..{head}", preview)
+        self.assertNotIn("- New fix", preview)
+        self.assertNotIn("- New data", preview)
+
+    def test_first_release_and_empty_selection_are_not_no_changes_claims(self):
+        first = self.commit("[feature] First feature")
+        self.git("tag", "preview")
+        self.git("tag", "build-123")
+        self.assertIn("- First feature", self.notes())
+        self.assertIn(f"/commits/{first}", self.notes())
+        self.git("tag", "v1.0.0")
+        self.commit("Internal change")
+        notes = self.notes()
+        self.assertIn("No changelog entries were marked", notes)
+        self.assertIn("/compare/v1.0.0..", notes)
+        self.assertNotIn("###", notes)
+
+    def test_shallow_checkout_does_not_present_partial_history_as_complete(self):
+        self.commit("[fix] Older change")
+        self.git("tag", "v1.0.0")
+        head = self.commit("[fix] New change")
+        with tempfile.TemporaryDirectory(prefix="questiedb shallow ") as directory:
+            clone = Path(directory) / "clone"
+            subprocess.run(["git", "clone", "--quiet", "--depth=1", self.root.as_uri(), str(clone)],
+                           check=True, capture_output=True)
+            notes = packager.release_notes.changelog(clone, "1.1.0", head, self.url)
+        self.assertIn("shallow Git history", notes)
+        self.assertIn(f"/commits/{head}", notes)
+        self.assertNotIn("- New change", notes)
+
+
 class PackageTest(unittest.TestCase):
     def setUp(self):
         if not LUA:
@@ -71,7 +171,8 @@ class PackageTest(unittest.TestCase):
         self.bin.mkdir()
         # Python and Lua are explicit: no external ZIP, checksum, Git, or shell tools.
         (self.root / "tools/distribution").mkdir(parents=True)
-        shutil.copy(ROOT / "tools/distribution/package.py", self.root / "tools/distribution/package.py")
+        for filename in ("package.py", "release_notes.py"):
+            shutil.copy(ROOT / "tools/distribution" / filename, self.root / "tools/distribution" / filename)
         (self.root / "src").mkdir()
         shutil.copy(ROOT / "src/config.lua", self.root / "src" / "config.lua")
         self.write("src/types/Quest.t.lua", "---@meta _\n")
@@ -164,13 +265,28 @@ class PackageTest(unittest.TestCase):
                     union.update(names)
         self.assertEqual("return 'unstripped'\n", (self.root / "src/corrections/Era/fixes.lua").read_text())
         self.assertFalse((self.root / ".out/stage").exists())
-        self.assertTrue((dist / "RELEASE_NOTES.md").is_file())
+        notes = (dist / "RELEASE_NOTES.md").read_text()
+        self.assertTrue(notes.startswith("# Unstable Pre-Release Build\n\n> [!WARNING]"))
+        self.assertEqual(2, notes.count("> [!WARNING]"))
+        self.assertIn("**Recommended: [QuestieDB-all.zip]", notes)
+        self.assertIn("/releases/download/preview/QuestieDB-all.zip", notes)
+        self.assertIn("Interface/AddOns/QuestieDB/QuestieDB_<Flavor>.toc", notes)
+        self.assertIn("GitHub's **Source code** archives are not the packaged addon", notes)
+        self.assertIn("<summary>Build details and checksums</summary>", notes)
+        self.assertIn("Supported API contracts: `1` to `2`", notes)
+        self.assertIn("without Git history", notes)
+        self.assertLess(notes.index("</details>"), notes.rindex("> [!WARNING]"))
+        self.assertTrue(notes.rstrip().endswith("/releases/latest)."))
 
     def test_single_flavor_package(self):
         result = self.run_package("Vanilla")
         self.assertEqual(0, result.returncode, result.stderr)
         self.assertEqual(["QuestieDB-Vanilla.zip"],
                          [p.name for p in (self.root / ".out/dist").glob("*.zip")])
+        notes = (self.root / ".out/dist/RELEASE_NOTES.md").read_text()
+        self.assertIn("[QuestieDB-Vanilla.zip]", notes)
+        self.assertNotIn("QuestieDB-all.zip", notes)
+        self.assertNotIn("QuestieDB-Mists.zip", notes)
 
     def test_missing_lua_preserves_previous_output(self):
         self.preserve_previous_output()
@@ -230,6 +346,12 @@ class PackageTest(unittest.TestCase):
         self.assertEqual(0, result.returncode, result.stderr)
         manifest = json.loads((self.root / ".out/dist/release.json").read_text())
         self.assertEqual("1.2.3", manifest["version"])
+        notes = (self.root / ".out/dist/RELEASE_NOTES.md").read_text()
+        self.assertTrue(notes.startswith("# QuestieDB 1.2.3\n"))
+        self.assertIn("/releases/download/v1.2.3/QuestieDB-Vanilla.zip", notes)
+        self.assertNotIn("[!WARNING]", notes)
+        self.assertNotIn("Unstable", notes)
+        self.assertNotIn("9.9.9", notes)
 
     def test_manifest_tracks_supported_floor_from_runtime_configuration(self):
         path = self.root / "src/config.lua"

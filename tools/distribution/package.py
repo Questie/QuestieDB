@@ -23,6 +23,8 @@ import sys
 from typing import TypedDict
 import zipfile
 
+import release_notes
+
 
 ROOT = Path(__file__).resolve().parents[2]
 FLAVORS = ("Vanilla", "TBC", "Wrath", "Cata", "Mists")
@@ -218,6 +220,8 @@ def package(root: Path, flavors: list[str]) -> None:
     epoch = os.environ.get("SOURCE_DATE_EPOCH")
     built = datetime.fromtimestamp(int(epoch), timezone.utc) if epoch is not None else datetime.now(timezone.utc)
     commit = producer_commit(root)
+    repository_url = "https://github.com/" + os.environ.get("GITHUB_REPOSITORY", "Questie/QuestieDB")
+    changes = release_notes.changelog(root, version, commit, repository_url)
 
     dist = root / ".out/dist"
     if dist.exists():
@@ -234,14 +238,9 @@ def package(root: Path, flavors: list[str]) -> None:
                 "nolib": False, "artifacts": artifacts}
     (dist / "release.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     (dist / "RELEASE_NOTES.md").write_text(
-        "# QuestieDB\n\n"
-        "Version: `%s`\nProducing commit: `%s`\nLegacy Questie baseline: `%s`\nSupported contracts: `%s` to `%s`\n\n"
-        "`QuestieDB-all.zip` contains every flavor; the client loads the matching TOC.\n"
-        "Per-flavor ZIPs provide the same content for one flavor as smaller downloads.\n\n"
-        "Compare a download's SHA-256 with its entry in `release.json` before installing:\n\n"
-        "```sh\nsha256sum QuestieDB-*.zip       # Linux\n"
-        "shasum -a 256 QuestieDB-*.zip   # macOS\n```\n"
-        % (version, commit, questie_commit, minimum_contract, contract), encoding="utf-8")
+        release_notes.render(version, commit, questie_commit, minimum_contract, contract,
+                             [artifact["file"] for artifact in artifacts], changes, repository_url),
+        encoding="utf-8")
     print("wrote .out/dist/release.json", flush=True)
 
 

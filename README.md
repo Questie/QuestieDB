@@ -255,8 +255,9 @@ and SHA-256. Python needs its standard `zlib` module, not any installed Python p
 No `zip`, `unzip`, GNU coreutils, or `jq` is required for packaging. Lua 5.1 is still needed
 for Static Correction stripping and its behavior-parity check. Packaging honors `LUA`, then
 prefers the matching Windows/Linux x64 bundle before trying `lua5.1`/`lua`/`luajit` on `PATH`.
-Git supplies commit provenance when available. The bundled interpreter and other contributor
-tools are not included in addon ZIPs.
+Git supplies commit provenance and the release changelog when available. Packages built without
+Git or from shallow checkouts explicitly report that a complete changelog is unavailable. The
+bundled interpreter and other contributor tools are not included in addon ZIPs.
 
 On macOS, no shell upgrade is needed. For example, Homebrew provides Python and the
 Lua 5.1-compatible LuaJIT:
@@ -398,9 +399,46 @@ mode then requires restoring its full runtime sources as well as removing the ge
 
 ### Releases
 
-Successful default-branch builds update one **Development preview** pre-release at tag
-`preview`. Its tag identifies the commit used to build its assets; older runs cannot roll it
-back. Preview never becomes GitHub's latest stable release. CI still provides per-run artifacts.
+Successful default-branch builds update one **Unstable Pre-Release Build** at tag `preview`.
+Its tag identifies the commit used to build its assets; older runs cannot roll it back. Preview
+never becomes GitHub's latest stable release, but remains publicly visible in the releases list.
+Direct normal users to the [latest stable release](https://github.com/Questie/QuestieDB/releases/latest).
+Preview notes warn at the top and directly above the download assets that the build is for testing
+only. CI still provides per-run artifacts.
+
+Release notes recommend `QuestieDB-all.zip`, list the smaller per-flavor downloads, and explain
+installation. Commit provenance, API contracts, and checksum instructions live in a collapsed
+build-details section.
+
+#### Changelog entries
+
+Use Questie's bracketed commit-subject prefixes for user-facing changes you want included in the changelog:
+
+| Prefix | Release section |
+| --- | --- |
+| `[feature]` | New features |
+| `[fix]` | General fixes |
+| `[quest]` | Quest fixes |
+| `[db]` | Database fixes |
+| `[locale]` | Localization fixes |
+
+For example: `[db] Corrected spawn locations for …`. Prefixes are case-insensitive and must
+start the subject. Entries retain their authored wording and sort alphabetically within each
+section. Untagged subjects, commit bodies, and conventional subjects such as `fix: …` are omitted.
+When squash-merging, put the prefix in the final squash commit's subject.
+
+*Do not always use it, but when you want to illustrate a change to our users*
+*Treat these prefixes as opt a commit into the user-facing changelog. Use them only for changes users should know about. Leave internal refactoring, tests, CI, release tooling, and documentation maintenance untagged*
+
+Both stable and preview changelogs start after the highest reachable stable `vX.Y.Z` tag.
+Full releases exclude their own version tag so an override still includes that release's changes.
+The first release uses all history. Preview, beta, and legacy `build-*` tags never form a boundary.
+An empty selection says that no entries were marked, not that nothing changed; the notes also link
+to the full comparison or commit history. Release packaging fetches complete history and tags.
+The generator lives in `tools/distribution/release_notes.py`, with coverage in
+`tools/distribution/package.test.py`.
+
+#### Publishing
 
 To publish a real release:
 
