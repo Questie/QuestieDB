@@ -1,0 +1,2015 @@
+{
+  "tool": "QuestieDB convert-forever",
+  "format": 1,
+  "geometry": {
+    "transforms": [
+      {
+        "ui_map_id": 1411,
+        "source_name": "Durotar",
+        "target_name": "Durotar",
+        "area_id": 14,
+        "map_id": 1,
+        "source_assignment_id": 46721,
+        "target_assignment_id": 46721,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -1962.4998779297,
+          "right": -7249.9995117188,
+          "top": 1808.3332519531,
+          "bottom": -1716.6666259766
+        },
+        "target_bounds": {
+          "left": -1962.4998779297,
+          "right": -7249.9995117188,
+          "top": 1808.3332519531,
+          "bottom": -1716.6666259766
+        }
+      },
+      {
+        "ui_map_id": 1412,
+        "source_name": "Mulgore",
+        "target_name": "Mulgore",
+        "area_id": 215,
+        "map_id": 1,
+        "source_assignment_id": 46722,
+        "target_assignment_id": 46722,
+        "changed": true,
+        "coefficients": {
+          "scale_x": 0.8348002068275978,
+          "offset_x": 7.007453108736848,
+          "scale_y": 0.8349418225477033,
+          "offset_y": 13.15387327724201
+        },
+        "source_bounds": {
+          "left": 2047.9166259766,
+          "right": -3089.5832519531,
+          "top": -272.91665649414,
+          "bottom": -3697.9165039062
+        },
+        "target_bounds": {
+          "left": 2479.1669921875,
+          "right": -3675.0,
+          "top": 266.666015625,
+          "bottom": -3835.416015625
+        }
+      },
+      {
+        "ui_map_id": 1413,
+        "source_name": "The Barrens",
+        "target_name": "The Barrens",
+        "area_id": 17,
+        "map_id": 1,
+        "source_assignment_id": 46723,
+        "target_assignment_id": 46723,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 2622.9165039062,
+          "right": -7510.4165039062,
+          "top": 1612.4998779297,
+          "bottom": -5143.75
+        },
+        "target_bounds": {
+          "left": 2622.9165039062,
+          "right": -7510.4165039062,
+          "top": 1612.4998779297,
+          "bottom": -5143.75
+        }
+      },
+      {
+        "ui_map_id": 1416,
+        "source_name": "Alterac Mountains",
+        "target_name": "Alterac Mountains",
+        "area_id": 36,
+        "map_id": 0,
+        "source_assignment_id": 46726,
+        "target_assignment_id": 46726,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 783.33331298828,
+          "right": -2016.6666259766,
+          "top": 1500.0,
+          "bottom": -366.66665649414
+        },
+        "target_bounds": {
+          "left": 783.33331298828,
+          "right": -2016.6666259766,
+          "top": 1500.0,
+          "bottom": -366.66665649414
+        }
+      },
+      {
+        "ui_map_id": 1417,
+        "source_name": "Arathi Highlands",
+        "target_name": "Arathi Highlands",
+        "area_id": 45,
+        "map_id": 0,
+        "source_assignment_id": 46727,
+        "target_assignment_id": 46727,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -866.66662597656,
+          "right": -4466.6665039062,
+          "top": -133.33332824707,
+          "bottom": -2533.3332519531
+        },
+        "target_bounds": {
+          "left": -866.66662597656,
+          "right": -4466.6665039062,
+          "top": -133.33332824707,
+          "bottom": -2533.3332519531
+        }
+      },
+      {
+        "ui_map_id": 1418,
+        "source_name": "Badlands",
+        "target_name": "Badlands",
+        "area_id": 3,
+        "map_id": 0,
+        "source_assignment_id": 46728,
+        "target_assignment_id": 46728,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -2079.1665039062,
+          "right": -4566.6665039062,
+          "top": -5889.5830078125,
+          "bottom": -7547.9165039062
+        },
+        "target_bounds": {
+          "left": -2079.1665039062,
+          "right": -4566.6665039062,
+          "top": -5889.5830078125,
+          "bottom": -7547.9165039062
+        }
+      },
+      {
+        "ui_map_id": 1419,
+        "source_name": "Blasted Lands",
+        "target_name": "Blasted Lands",
+        "area_id": 4,
+        "map_id": 0,
+        "source_assignment_id": 46729,
+        "target_assignment_id": 46729,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -1241.6666259766,
+          "right": -4591.6665039062,
+          "top": -10566.666015625,
+          "bottom": -12800.0
+        },
+        "target_bounds": {
+          "left": -1241.6666259766,
+          "right": -4591.6665039062,
+          "top": -10566.666015625,
+          "bottom": -12800.0
+        }
+      },
+      {
+        "ui_map_id": 1420,
+        "source_name": "Tirisfal Glades",
+        "target_name": "Tirisfal Glades",
+        "area_id": 85,
+        "map_id": 0,
+        "source_assignment_id": 46730,
+        "target_assignment_id": 46730,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 3033.3332519531,
+          "right": -1485.4166259766,
+          "top": 3837.4997558594,
+          "bottom": 824.99993896484
+        },
+        "target_bounds": {
+          "left": 3033.3332519531,
+          "right": -1485.4166259766,
+          "top": 3837.4997558594,
+          "bottom": 824.99993896484
+        }
+      },
+      {
+        "ui_map_id": 1421,
+        "source_name": "Silverpine Forest",
+        "target_name": "Silverpine Forest",
+        "area_id": 130,
+        "map_id": 0,
+        "source_assignment_id": 46731,
+        "target_assignment_id": 46731,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 3449.9997558594,
+          "right": -750.0,
+          "top": 1666.6666259766,
+          "bottom": -1133.3332519531
+        },
+        "target_bounds": {
+          "left": 3449.9997558594,
+          "right": -750.0,
+          "top": 1666.6666259766,
+          "bottom": -1133.3332519531
+        }
+      },
+      {
+        "ui_map_id": 1422,
+        "source_name": "Western Plaguelands",
+        "target_name": "Western Plaguelands",
+        "area_id": 28,
+        "map_id": 0,
+        "source_assignment_id": 46732,
+        "target_assignment_id": 46732,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 416.66665649414,
+          "right": -3883.3332519531,
+          "top": 3366.6665039062,
+          "bottom": 499.99996948242
+        },
+        "target_bounds": {
+          "left": 416.66665649414,
+          "right": -3883.3332519531,
+          "top": 3366.6665039062,
+          "bottom": 499.99996948242
+        }
+      },
+      {
+        "ui_map_id": 1423,
+        "source_name": "Eastern Plaguelands",
+        "target_name": "Eastern Plaguelands",
+        "area_id": 139,
+        "map_id": 0,
+        "source_assignment_id": 46733,
+        "target_assignment_id": 46733,
+        "changed": true,
+        "coefficients": {
+          "scale_x": 0.8997577709204458,
+          "offset_x": -1.6464926382438023,
+          "scale_y": 0.9004358590984077,
+          "offset_y": -3.7790494664060477
+        },
+        "source_bounds": {
+          "left": -2185.4165039062,
+          "right": -6056.25,
+          "top": 3799.9997558594,
+          "bottom": 1218.75
+        },
+        "target_bounds": {
+          "left": -2256.25,
+          "right": -6558.333984375,
+          "top": 3691.6669921875,
+          "bottom": 825.0
+        }
+      },
+      {
+        "ui_map_id": 1424,
+        "source_name": "Hillsbrad Foothills",
+        "target_name": "Hillsbrad Foothills",
+        "area_id": 267,
+        "map_id": 0,
+        "source_assignment_id": 46734,
+        "target_assignment_id": 46734,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 1066.6666259766,
+          "right": -2133.3332519531,
+          "top": 400.0,
+          "bottom": -1733.3332519531
+        },
+        "target_bounds": {
+          "left": 1066.6666259766,
+          "right": -2133.3332519531,
+          "top": 400.0,
+          "bottom": -1733.3332519531
+        }
+      },
+      {
+        "ui_map_id": 1425,
+        "source_name": "The Hinterlands",
+        "target_name": "The Hinterlands",
+        "area_id": 47,
+        "map_id": 0,
+        "source_assignment_id": 46735,
+        "target_assignment_id": 46735,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -1575.0,
+          "right": -5425.0,
+          "top": 1466.6666259766,
+          "bottom": -1100.0
+        },
+        "target_bounds": {
+          "left": -1575.0,
+          "right": -5425.0,
+          "top": 1466.6666259766,
+          "bottom": -1100.0
+        }
+      },
+      {
+        "ui_map_id": 1426,
+        "source_name": "Dun Morogh",
+        "target_name": "Dun Morogh",
+        "area_id": 1,
+        "map_id": 0,
+        "source_assignment_id": 46736,
+        "target_assignment_id": 46736,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 1802.0832519531,
+          "right": -3122.9165039062,
+          "top": -3877.0832519531,
+          "bottom": -7160.4165039062
+        },
+        "target_bounds": {
+          "left": 1802.0832519531,
+          "right": -3122.9165039062,
+          "top": -3877.0832519531,
+          "bottom": -7160.4165039062
+        }
+      },
+      {
+        "ui_map_id": 1427,
+        "source_name": "Searing Gorge",
+        "target_name": "Searing Gorge",
+        "area_id": 51,
+        "map_id": 0,
+        "source_assignment_id": 46737,
+        "target_assignment_id": 46737,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -322.91665649414,
+          "right": -2554.1665039062,
+          "top": -6100.0,
+          "bottom": -7587.4995117188
+        },
+        "target_bounds": {
+          "left": -322.91665649414,
+          "right": -2554.1665039062,
+          "top": -6100.0,
+          "bottom": -7587.4995117188
+        }
+      },
+      {
+        "ui_map_id": 1428,
+        "source_name": "Burning Steppes",
+        "target_name": "Burning Steppes",
+        "area_id": 46,
+        "map_id": 0,
+        "source_assignment_id": 46738,
+        "target_assignment_id": 46738,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -266.66665649414,
+          "right": -3195.8332519531,
+          "top": -7031.2495117188,
+          "bottom": -8983.3330078125
+        },
+        "target_bounds": {
+          "left": -266.66665649414,
+          "right": -3195.8332519531,
+          "top": -7031.2495117188,
+          "bottom": -8983.3330078125
+        }
+      },
+      {
+        "ui_map_id": 1429,
+        "source_name": "Elwynn Forest",
+        "target_name": "Elwynn Forest",
+        "area_id": 12,
+        "map_id": 0,
+        "source_assignment_id": 46739,
+        "target_assignment_id": 46739,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 1535.4166259766,
+          "right": -1935.4166259766,
+          "top": -7939.5830078125,
+          "bottom": -10254.166015625
+        },
+        "target_bounds": {
+          "left": 1535.4166259766,
+          "right": -1935.4166259766,
+          "top": -7939.5830078125,
+          "bottom": -10254.166015625
+        }
+      },
+      {
+        "ui_map_id": 1430,
+        "source_name": "Deadwind Pass",
+        "target_name": "Deadwind Pass",
+        "area_id": 41,
+        "map_id": 0,
+        "source_assignment_id": 46740,
+        "target_assignment_id": 46740,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -833.33331298828,
+          "right": -3333.3332519531,
+          "top": -9866.666015625,
+          "bottom": -11533.333007812
+        },
+        "target_bounds": {
+          "left": -833.33331298828,
+          "right": -3333.3332519531,
+          "top": -9866.666015625,
+          "bottom": -11533.333007812
+        }
+      },
+      {
+        "ui_map_id": 1431,
+        "source_name": "Duskwood",
+        "target_name": "Duskwood",
+        "area_id": 10,
+        "map_id": 0,
+        "source_assignment_id": 46741,
+        "target_assignment_id": 46741,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 833.33331298828,
+          "right": -1866.6666259766,
+          "top": -9716.666015625,
+          "bottom": -11516.666015625
+        },
+        "target_bounds": {
+          "left": 833.33331298828,
+          "right": -1866.6666259766,
+          "top": -9716.666015625,
+          "bottom": -11516.666015625
+        }
+      },
+      {
+        "ui_map_id": 1432,
+        "source_name": "Loch Modan",
+        "target_name": "Loch Modan",
+        "area_id": 38,
+        "map_id": 0,
+        "source_assignment_id": 46742,
+        "target_assignment_id": 46742,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -1993.7498779297,
+          "right": -4752.0830078125,
+          "top": -4487.5,
+          "bottom": -6327.0830078125
+        },
+        "target_bounds": {
+          "left": -1993.7498779297,
+          "right": -4752.0830078125,
+          "top": -4487.5,
+          "bottom": -6327.0830078125
+        }
+      },
+      {
+        "ui_map_id": 1433,
+        "source_name": "Redridge Mountains",
+        "target_name": "Redridge Mountains",
+        "area_id": 44,
+        "map_id": 0,
+        "source_assignment_id": 46743,
+        "target_assignment_id": 46743,
+        "changed": true,
+        "coefficients": {
+          "scale_x": 0.9999996626080551,
+          "offset_x": -5.086374584221827,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -1570.8332519531,
+          "right": -3741.6665039062,
+          "top": -8575.0,
+          "bottom": -10022.916015625
+        },
+        "target_bounds": {
+          "left": -1681.25,
+          "right": -3852.083984375,
+          "top": -8575.0,
+          "bottom": -10022.916015625
+        }
+      },
+      {
+        "ui_map_id": 1434,
+        "source_name": "Stranglethorn Vale",
+        "target_name": "Stranglethorn Vale",
+        "area_id": 33,
+        "map_id": 0,
+        "source_assignment_id": 46744,
+        "target_assignment_id": 46744,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 2220.8332519531,
+          "right": -4160.4165039062,
+          "top": -11168.75,
+          "bottom": -15422.916015625
+        },
+        "target_bounds": {
+          "left": 2220.8332519531,
+          "right": -4160.4165039062,
+          "top": -11168.75,
+          "bottom": -15422.916015625
+        }
+      },
+      {
+        "ui_map_id": 1435,
+        "source_name": "Swamp of Sorrows",
+        "target_name": "Swamp of Sorrows",
+        "area_id": 8,
+        "map_id": 0,
+        "source_assignment_id": 46745,
+        "target_assignment_id": 46745,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -2222.9165039062,
+          "right": -4516.6665039062,
+          "top": -9620.8330078125,
+          "bottom": -11150.0
+        },
+        "target_bounds": {
+          "left": -2222.9165039062,
+          "right": -4516.6665039062,
+          "top": -9620.8330078125,
+          "bottom": -11150.0
+        }
+      },
+      {
+        "ui_map_id": 1436,
+        "source_name": "Westfall",
+        "target_name": "Westfall",
+        "area_id": 40,
+        "map_id": 0,
+        "source_assignment_id": 46746,
+        "target_assignment_id": 46746,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 3016.6665039062,
+          "right": -483.33331298828,
+          "top": -9400.0,
+          "bottom": -11733.333007812
+        },
+        "target_bounds": {
+          "left": 3016.6665039062,
+          "right": -483.33331298828,
+          "top": -9400.0,
+          "bottom": -11733.333007812
+        }
+      },
+      {
+        "ui_map_id": 1437,
+        "source_name": "Wetlands",
+        "target_name": "Wetlands",
+        "area_id": 11,
+        "map_id": 0,
+        "source_assignment_id": 46747,
+        "target_assignment_id": 46747,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -389.58331298828,
+          "right": -4525.0,
+          "top": -2147.9165039062,
+          "bottom": -4904.1665039062
+        },
+        "target_bounds": {
+          "left": -389.58331298828,
+          "right": -4525.0,
+          "top": -2147.9165039062,
+          "bottom": -4904.1665039062
+        }
+      },
+      {
+        "ui_map_id": 1438,
+        "source_name": "Teldrassil",
+        "target_name": "Teldrassil",
+        "area_id": 141,
+        "map_id": 1,
+        "source_assignment_id": 46748,
+        "target_assignment_id": 46748,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 3814.5832519531,
+          "right": -1277.0832519531,
+          "top": 11831.25,
+          "bottom": 8437.5
+        },
+        "target_bounds": {
+          "left": 3814.5832519531,
+          "right": -1277.0832519531,
+          "top": 11831.25,
+          "bottom": 8437.5
+        }
+      },
+      {
+        "ui_map_id": 1439,
+        "source_name": "Darkshore",
+        "target_name": "Darkshore",
+        "area_id": 148,
+        "map_id": 1,
+        "source_assignment_id": 46749,
+        "target_assignment_id": 46749,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 2941.6665039062,
+          "right": -3608.3332519531,
+          "top": 8333.3330078125,
+          "bottom": 3966.6665039062
+        },
+        "target_bounds": {
+          "left": 2941.6665039062,
+          "right": -3608.3332519531,
+          "top": 8333.3330078125,
+          "bottom": 3966.6665039062
+        }
+      },
+      {
+        "ui_map_id": 1440,
+        "source_name": "Ashenvale",
+        "target_name": "Ashenvale",
+        "area_id": 331,
+        "map_id": 1,
+        "source_assignment_id": 46750,
+        "target_assignment_id": 46750,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 1699.9998779297,
+          "right": -4066.6665039062,
+          "top": 4672.9165039062,
+          "bottom": 829.16662597656
+        },
+        "target_bounds": {
+          "left": 1699.9998779297,
+          "right": -4066.6665039062,
+          "top": 4672.9165039062,
+          "bottom": 829.16662597656
+        }
+      },
+      {
+        "ui_map_id": 1441,
+        "source_name": "Thousand Needles",
+        "target_name": "Thousand Needles",
+        "area_id": 400,
+        "map_id": 1,
+        "source_assignment_id": 46751,
+        "target_assignment_id": 46751,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -433.33331298828,
+          "right": -4833.3330078125,
+          "top": -3966.6665039062,
+          "bottom": -6899.9995117188
+        },
+        "target_bounds": {
+          "left": -433.33331298828,
+          "right": -4833.3330078125,
+          "top": -3966.6665039062,
+          "bottom": -6899.9995117188
+        }
+      },
+      {
+        "ui_map_id": 1442,
+        "source_name": "Stonetalon Mountains",
+        "target_name": "Stonetalon Mountains",
+        "area_id": 406,
+        "map_id": 1,
+        "source_assignment_id": 46752,
+        "target_assignment_id": 46752,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 3245.8332519531,
+          "right": -1637.4998779297,
+          "top": 2916.6665039062,
+          "bottom": -339.58331298828
+        },
+        "target_bounds": {
+          "left": 3245.8332519531,
+          "right": -1637.4998779297,
+          "top": 2916.6665039062,
+          "bottom": -339.58331298828
+        }
+      },
+      {
+        "ui_map_id": 1443,
+        "source_name": "Desolace",
+        "target_name": "Desolace",
+        "area_id": 405,
+        "map_id": 1,
+        "source_assignment_id": 46753,
+        "target_assignment_id": 46753,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 4233.3330078125,
+          "right": -262.5,
+          "top": 452.08331298828,
+          "bottom": -2545.8332519531
+        },
+        "target_bounds": {
+          "left": 4233.3330078125,
+          "right": -262.5,
+          "top": 452.08331298828,
+          "bottom": -2545.8332519531
+        }
+      },
+      {
+        "ui_map_id": 1444,
+        "source_name": "Feralas",
+        "target_name": "Feralas",
+        "area_id": 357,
+        "map_id": 1,
+        "source_assignment_id": 46754,
+        "target_assignment_id": 46754,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 5441.6665039062,
+          "right": -1508.3332519531,
+          "top": -2366.6665039062,
+          "bottom": -6999.9995117188
+        },
+        "target_bounds": {
+          "left": 5441.6665039062,
+          "right": -1508.3332519531,
+          "top": -2366.6665039062,
+          "bottom": -6999.9995117188
+        }
+      },
+      {
+        "ui_map_id": 1445,
+        "source_name": "Dustwallow Marsh",
+        "target_name": "Dustwallow Marsh",
+        "area_id": 15,
+        "map_id": 1,
+        "source_assignment_id": 46755,
+        "target_assignment_id": 46755,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -974.99993896484,
+          "right": -6225.0,
+          "top": -2033.3332519531,
+          "bottom": -5533.3330078125
+        },
+        "target_bounds": {
+          "left": -974.99993896484,
+          "right": -6225.0,
+          "top": -2033.3332519531,
+          "bottom": -5533.3330078125
+        }
+      },
+      {
+        "ui_map_id": 1446,
+        "source_name": "Tanaris",
+        "target_name": "Tanaris",
+        "area_id": 440,
+        "map_id": 1,
+        "source_assignment_id": 46756,
+        "target_assignment_id": 46756,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -218.74998474121,
+          "right": -7118.7495117188,
+          "top": -5875.0,
+          "bottom": -10475.0
+        },
+        "target_bounds": {
+          "left": -218.74998474121,
+          "right": -7118.7495117188,
+          "top": -5875.0,
+          "bottom": -10475.0
+        }
+      },
+      {
+        "ui_map_id": 1447,
+        "source_name": "Azshara",
+        "target_name": "Azshara",
+        "area_id": 16,
+        "map_id": 1,
+        "source_assignment_id": 46757,
+        "target_assignment_id": 46757,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -3277.0832519531,
+          "right": -8347.916015625,
+          "top": 5341.6665039062,
+          "bottom": 1960.4166259766
+        },
+        "target_bounds": {
+          "left": -3277.0832519531,
+          "right": -8347.916015625,
+          "top": 5341.6665039062,
+          "bottom": 1960.4166259766
+        }
+      },
+      {
+        "ui_map_id": 1448,
+        "source_name": "Felwood",
+        "target_name": "Felwood",
+        "area_id": 361,
+        "map_id": 1,
+        "source_assignment_id": 46758,
+        "target_assignment_id": 46758,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 1641.6666259766,
+          "right": -4108.3330078125,
+          "top": 7133.3330078125,
+          "bottom": 3299.9997558594
+        },
+        "target_bounds": {
+          "left": 1641.6666259766,
+          "right": -4108.3330078125,
+          "top": 7133.3330078125,
+          "bottom": 3299.9997558594
+        }
+      },
+      {
+        "ui_map_id": 1449,
+        "source_name": "Un'Goro Crater",
+        "target_name": "Un'Goro Crater",
+        "area_id": 490,
+        "map_id": 1,
+        "source_assignment_id": 46759,
+        "target_assignment_id": 46759,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 533.33331298828,
+          "right": -3166.6665039062,
+          "top": -5966.6665039062,
+          "bottom": -8433.3330078125
+        },
+        "target_bounds": {
+          "left": 533.33331298828,
+          "right": -3166.6665039062,
+          "top": -5966.6665039062,
+          "bottom": -8433.3330078125
+        }
+      },
+      {
+        "ui_map_id": 1450,
+        "source_name": "Moonglade",
+        "target_name": "Moonglade",
+        "area_id": 493,
+        "map_id": 1,
+        "source_assignment_id": 46760,
+        "target_assignment_id": 46760,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -1381.25,
+          "right": -3689.5832519531,
+          "top": 8491.666015625,
+          "bottom": 6952.0830078125
+        },
+        "target_bounds": {
+          "left": -1381.25,
+          "right": -3689.5832519531,
+          "top": 8491.666015625,
+          "bottom": 6952.0830078125
+        }
+      },
+      {
+        "ui_map_id": 1451,
+        "source_name": "Silithus",
+        "target_name": "Silithus",
+        "area_id": 1377,
+        "map_id": 1,
+        "source_assignment_id": 46761,
+        "target_assignment_id": 46761,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 2537.5,
+          "right": -945.833984375,
+          "top": -5958.333984375,
+          "bottom": -8281.25
+        },
+        "target_bounds": {
+          "left": 2537.5,
+          "right": -945.833984375,
+          "top": -5958.333984375,
+          "bottom": -8281.25
+        }
+      },
+      {
+        "ui_map_id": 1452,
+        "source_name": "Winterspring",
+        "target_name": "Winterspring",
+        "area_id": 618,
+        "map_id": 1,
+        "source_assignment_id": 46762,
+        "target_assignment_id": 46762,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -316.66665649414,
+          "right": -7416.6665039062,
+          "top": 8533.3330078125,
+          "bottom": 3799.9997558594
+        },
+        "target_bounds": {
+          "left": -316.66665649414,
+          "right": -7416.6665039062,
+          "top": 8533.3330078125,
+          "bottom": 3799.9997558594
+        }
+      },
+      {
+        "ui_map_id": 1453,
+        "source_name": "Stormwind City",
+        "target_name": "Stormwind City",
+        "area_id": 1519,
+        "map_id": 0,
+        "source_assignment_id": 46763,
+        "target_assignment_id": 46763,
+        "changed": true,
+        "coefficients": {
+          "scale_x": 0.7736792385183993,
+          "offset_x": 19.680449646264936,
+          "scale_y": 0.773826866980289,
+          "offset_y": 24.433287807510073
+        },
+        "source_bounds": {
+          "left": 1380.9714355469,
+          "right": 36.70063018799,
+          "top": -8278.8505859375,
+          "bottom": -9175.205078125
+        },
+        "target_bounds": {
+          "left": 1722.9200439453,
+          "right": -14.58399963379,
+          "top": -7995.830078125,
+          "bottom": -9154.169921875
+        }
+      },
+      {
+        "ui_map_id": 1454,
+        "source_name": "Orgrimmar",
+        "target_name": "Orgrimmar",
+        "area_id": 1637,
+        "map_id": 1,
+        "source_assignment_id": 46764,
+        "target_assignment_id": 46764,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -3680.6010742188,
+          "right": -5083.2055664062,
+          "top": 2273.8771972656,
+          "bottom": 1338.4605712891
+        },
+        "target_bounds": {
+          "left": -3680.6010742188,
+          "right": -5083.2055664062,
+          "top": 2273.8771972656,
+          "bottom": 1338.4605712891
+        }
+      },
+      {
+        "ui_map_id": 1455,
+        "source_name": "Ironforge",
+        "target_name": "Ironforge",
+        "area_id": 1537,
+        "map_id": 0,
+        "source_assignment_id": 46765,
+        "target_assignment_id": 46765,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": -713.59136962891,
+          "right": -1504.2164306641,
+          "top": -4569.2412109375,
+          "bottom": -5096.845703125
+        },
+        "target_bounds": {
+          "left": -713.59136962891,
+          "right": -1504.2164306641,
+          "top": -4569.2412109375,
+          "bottom": -5096.845703125
+        }
+      },
+      {
+        "ui_map_id": 1456,
+        "source_name": "Thunder Bluff",
+        "target_name": "Thunder Bluff",
+        "area_id": 1638,
+        "map_id": 1,
+        "source_assignment_id": 46766,
+        "target_assignment_id": 46766,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 516.66662597656,
+          "right": -527.08331298828,
+          "top": -849.99993896484,
+          "bottom": -1545.8332519531
+        },
+        "target_bounds": {
+          "left": 516.66662597656,
+          "right": -527.08331298828,
+          "top": -849.99993896484,
+          "bottom": -1545.8332519531
+        }
+      },
+      {
+        "ui_map_id": 1457,
+        "source_name": "Darnassus",
+        "target_name": "Darnassus",
+        "area_id": 1657,
+        "map_id": 1,
+        "source_assignment_id": 46767,
+        "target_assignment_id": 46767,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 2938.3627929688,
+          "right": 1880.0295410156,
+          "top": 10238.31640625,
+          "bottom": 9532.5869140625
+        },
+        "target_bounds": {
+          "left": 2938.3627929688,
+          "right": 1880.0295410156,
+          "top": 10238.31640625,
+          "bottom": 9532.5869140625
+        }
+      },
+      {
+        "ui_map_id": 1458,
+        "source_name": "Undercity",
+        "target_name": "Undercity",
+        "area_id": 1497,
+        "map_id": 0,
+        "source_assignment_id": 46768,
+        "target_assignment_id": 46768,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 873.19262695313,
+          "right": -86.18240356445,
+          "top": 1877.9453125,
+          "bottom": 1237.8411865234
+        },
+        "target_bounds": {
+          "left": 873.19262695313,
+          "right": -86.18240356445,
+          "top": 1877.9453125,
+          "bottom": 1237.8411865234
+        }
+      },
+      {
+        "ui_map_id": 1459,
+        "source_name": "Alterac Valley",
+        "target_name": "Alterac Valley",
+        "area_id": 2597,
+        "map_id": 30,
+        "source_assignment_id": 46769,
+        "target_assignment_id": 46769,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 1781.2498779297,
+          "right": -2456.25,
+          "top": 1085.4166259766,
+          "bottom": -1739.5832519531
+        },
+        "target_bounds": {
+          "left": 1781.2498779297,
+          "right": -2456.25,
+          "top": 1085.4166259766,
+          "bottom": -1739.5832519531
+        }
+      },
+      {
+        "ui_map_id": 1460,
+        "source_name": "Warsong Gulch",
+        "target_name": "Warsong Gulch",
+        "area_id": 3277,
+        "map_id": 489,
+        "source_assignment_id": 46770,
+        "target_assignment_id": 46770,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 2041.6666259766,
+          "right": 895.83331298828,
+          "top": 1627.0832519531,
+          "bottom": 862.49993896484
+        },
+        "target_bounds": {
+          "left": 2041.6666259766,
+          "right": 895.83331298828,
+          "top": 1627.0832519531,
+          "bottom": 862.49993896484
+        }
+      },
+      {
+        "ui_map_id": 1461,
+        "source_name": "Arathi Basin",
+        "target_name": "Arathi Basin",
+        "area_id": 3358,
+        "map_id": 529,
+        "source_assignment_id": 46771,
+        "target_assignment_id": 46771,
+        "changed": false,
+        "coefficients": {
+          "scale_x": 1.0,
+          "offset_x": 0.0,
+          "scale_y": 1.0,
+          "offset_y": 0.0
+        },
+        "source_bounds": {
+          "left": 1858.3332519531,
+          "right": 102.08332824707,
+          "top": 1508.3332519531,
+          "bottom": 337.5
+        },
+        "target_bounds": {
+          "left": 1858.3332519531,
+          "right": 102.08332824707,
+          "top": 1508.3332519531,
+          "bottom": 337.5
+        }
+      }
+    ],
+    "unsupported": [
+      {
+        "ui_map_id": 947,
+        "source_name": "Azeroth",
+        "target_name": "Azeroth",
+        "reason": "multiple assignments: 2 source, 2 target"
+      },
+      {
+        "ui_map_id": 1414,
+        "source_name": "Kalimdor",
+        "target_name": "Kalimdor",
+        "reason": "no explicit zone/world identity"
+      },
+      {
+        "ui_map_id": 1415,
+        "source_name": "Eastern Kingdoms",
+        "target_name": "Eastern Kingdoms",
+        "reason": "no explicit zone/world identity"
+      },
+      {
+        "ui_map_id": 1463,
+        "source_name": "Eastern Kingdoms",
+        "target_name": "Eastern Kingdoms",
+        "reason": "no explicit zone/world identity"
+      },
+      {
+        "ui_map_id": 1464,
+        "source_name": "Kalimdor",
+        "target_name": "Kalimdor",
+        "reason": "no explicit zone/world identity"
+      }
+    ],
+    "added_maps": [
+      {
+        "ui_map_id": 2482,
+        "source_name": null,
+        "target_name": "Mount Hyjal"
+      },
+      {
+        "ui_map_id": 2521,
+        "source_name": null,
+        "target_name": "Zephras Isle"
+      },
+      {
+        "ui_map_id": 2524,
+        "source_name": null,
+        "target_name": "Darkspear Islands"
+      },
+      {
+        "ui_map_id": 2548,
+        "source_name": null,
+        "target_name": "Riverglades"
+      },
+      {
+        "ui_map_id": 2652,
+        "source_name": null,
+        "target_name": "Shen'dralas"
+      },
+      {
+        "ui_map_id": 2665,
+        "source_name": null,
+        "target_name": "Zephras Isle"
+      }
+    ],
+    "removed_maps": [],
+    "summary": {
+      "source_assignments": 55,
+      "target_assignments": 61,
+      "changed_maps": 4,
+      "unchanged_maps": 45,
+      "unsupported_maps": 5,
+      "added_maps": 6,
+      "removed_maps": 0
+    },
+    "source_build": "1.15.9.69722",
+    "target_build": "1.60.1.69893",
+    "source_tables": {
+      "ui_map_assignment": {
+        "coverage": "untracked",
+        "rows": 55,
+        "snapshot_sha256": "3a2af9a01c28859ad642d51a11e85bfa9b07c2e750b56cc1e45197d81e97d5c4"
+      },
+      "ui_map": {
+        "coverage": "untracked",
+        "rows": 54,
+        "snapshot_sha256": "317e328c5f8262ef39a609f7d9645d5b111a5bb269026918e290bea6b7136b07"
+      }
+    },
+    "target_tables": {
+      "ui_map_assignment": {
+        "coverage": "ok",
+        "rows": 61,
+        "snapshot_sha256": "850760df9b7dc0286314dafc46388311f9c48befd310aedab7142ab7b7841156"
+      },
+      "ui_map": {
+        "coverage": "ok",
+        "rows": 60,
+        "snapshot_sha256": "e265fc2189a7e46df0f0a2e9ecef23da35be96a66b556536164a834665753747"
+      }
+    },
+    "area_coefficients": {
+      "1": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "3": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "4": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "8": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "10": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "11": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "12": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "14": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "15": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "16": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "17": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "28": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "33": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "36": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "38": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "40": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "41": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "44": {
+        "scale_x": 0.9999996626080551,
+        "offset_x": -5.086374584221827,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "45": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "46": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "47": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "51": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "85": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "130": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "139": {
+        "scale_x": 0.8997577709204458,
+        "offset_x": -1.6464926382438023,
+        "scale_y": 0.9004358590984077,
+        "offset_y": -3.7790494664060477
+      },
+      "141": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "148": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "215": {
+        "scale_x": 0.8348002068275978,
+        "offset_x": 7.007453108736848,
+        "scale_y": 0.8349418225477033,
+        "offset_y": 13.15387327724201
+      },
+      "267": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "331": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "357": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "361": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "400": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "405": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "406": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "440": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "490": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "493": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "618": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "1377": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "1497": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "1519": {
+        "scale_x": 0.7736792385183993,
+        "offset_x": 19.680449646264936,
+        "scale_y": 0.773826866980289,
+        "offset_y": 24.433287807510073
+      },
+      "1537": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "1637": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "1638": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "1657": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "2597": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "3277": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      },
+      "3358": {
+        "scale_x": 1.0,
+        "offset_x": 0.0,
+        "scale_y": 1.0,
+        "offset_y": 0.0
+      }
+    }
+  },
+  "keep_unmapped": true,
+  "coordinate_rounding": {
+    "decimal_places": 2,
+    "halfway": "away from zero",
+    "scope": "transformed pairs only; calculations retain full precision"
+  },
+  "assumption": "NPC/terrain world positions remain unchanged; this is a converted Era baseline, not complete Forever content.",
+  "zone_symbols_sha256": "55d56138c2a6aeab0d76dd43003c894aae09b899ab0e998649a94796153c9a80",
+  "files": {
+    "data/Forever/foreverItemDB.lua": {
+      "source": "data/Classic/classicItemDB.lua",
+      "source_sha256": "987d037b6df94d5b0b1dc326a1670581e3abb952736a4ae055fd9f161328b71c",
+      "output_sha256": "987d037b6df94d5b0b1dc326a1670581e3abb952736a4ae055fd9f161328b71c",
+      "coordinate_pairs": 0,
+      "counts": {},
+      "converted_by_area": {},
+      "unmapped": {},
+      "out_of_bounds_samples": []
+    },
+    "data/Forever/foreverNpcDB.lua": {
+      "source": "data/Classic/classicNpcDB.lua",
+      "source_sha256": "ee4a241db3ff89e5f0883b688b58920c1121f5617202ecba81d90b17271ccd54",
+      "output_sha256": "a8c4169690726323dac3c6441f74f7a4d9cafcc08ec42231d72ff28c9471f0ee",
+      "coordinate_pairs": 80388,
+      "counts": {
+        "converted": 8472,
+        "instance_sentinels": 2125,
+        "unchanged": 69791
+      },
+      "converted_by_area": {
+        "139": 2309,
+        "1519": 2054,
+        "215": 2652,
+        "44": 1457
+      },
+      "unmapped": {},
+      "out_of_bounds_samples": []
+    },
+    "data/Forever/foreverObjectDB.lua": {
+      "source": "data/Classic/classicObjectDB.lua",
+      "source_sha256": "d08fbd8216757918330d9ff02bfc1b13f837f198e0aa62aa76260bb1bd9cd042",
+      "output_sha256": "af4536c12c5b1da5fd32cb33be5c9c01d2436f97a5b9f60e2cdd238273b2cc09",
+      "coordinate_pairs": 48618,
+      "counts": {
+        "converted": 4144,
+        "instance_sentinels": 718,
+        "unchanged": 43756
+      },
+      "converted_by_area": {
+        "139": 1374,
+        "1519": 885,
+        "215": 1065,
+        "44": 820
+      },
+      "unmapped": {},
+      "out_of_bounds_samples": []
+    },
+    "data/Forever/foreverQuestDB.lua": {
+      "source": "data/Classic/classicQuestDB.lua",
+      "source_sha256": "210e9ac3f98baf2c624be0c8677e7e9adec3f2b9e426f30fd649c4018678afab",
+      "output_sha256": "41cddaaf32b174eb2b80e216a0f070d3dfd16f7a717b83877a3b39f3514b8748",
+      "coordinate_pairs": 41,
+      "counts": {
+        "converted": 3,
+        "unchanged": 38
+      },
+      "converted_by_area": {
+        "139": 1,
+        "215": 1,
+        "44": 1
+      },
+      "unmapped": {},
+      "out_of_bounds_samples": []
+    },
+    "src/corrections/Forever/classicItemFixes.lua": {
+      "source": "src/corrections/Era/classicItemFixes.lua",
+      "source_sha256": "688286a44e5d95045ff943d55ba3a9fccffce7ca4a982fa55a67499b39509b87",
+      "output_sha256": "688286a44e5d95045ff943d55ba3a9fccffce7ca4a982fa55a67499b39509b87",
+      "coordinate_pairs": 0,
+      "counts": {},
+      "converted_by_area": {},
+      "unmapped": {},
+      "out_of_bounds_samples": []
+    },
+    "src/corrections/Forever/classicNPCFixes.lua": {
+      "source": "src/corrections/Era/classicNPCFixes.lua",
+      "source_sha256": "38e5217bfd4f23ba03393d6050c589aba88593d4c96510d9a0edfbb70f1b2cdb",
+      "output_sha256": "1de19d17db00581a35d397c7440124aa3f14150d5456c771d2deb3cfba79f031",
+      "coordinate_pairs": 8501,
+      "counts": {
+        "converted": 890,
+        "instance_sentinels": 253,
+        "unchanged": 7354,
+        "unmapped": 4
+      },
+      "converted_by_area": {
+        "139": 766,
+        "1519": 48,
+        "215": 76
+      },
+      "unmapped": {
+        "10074": {
+          "count": 3,
+          "samples": [
+            {
+              "area_id": 10074,
+              "x": 46.818,
+              "y": 67.705,
+              "line": 1531,
+              "field": "spawns",
+              "entity_id": null
+            },
+            {
+              "area_id": 10074,
+              "x": 49.119,
+              "y": 64.098,
+              "line": 1559,
+              "field": "spawns",
+              "entity_id": null
+            },
+            {
+              "area_id": 10074,
+              "x": 48.896,
+              "y": 63.93,
+              "line": 3365,
+              "field": "spawns",
+              "entity_id": null
+            }
+          ]
+        },
+        "10073": {
+          "count": 1,
+          "samples": [
+            {
+              "area_id": 10073,
+              "x": 44.399,
+              "y": 86.11,
+              "line": 3011,
+              "field": "spawns",
+              "entity_id": null
+            }
+          ]
+        }
+      },
+      "out_of_bounds_samples": []
+    },
+    "src/corrections/Forever/classicObjectFixes.lua": {
+      "source": "src/corrections/Era/classicObjectFixes.lua",
+      "source_sha256": "78d80e6244ba7b1bfc49a8ba65b0207031cd921bdb15ac41ea3a7a545f7f4540",
+      "output_sha256": "181bea5a5db73f8af1bebe1d8aa835d28e2d4c11adf9ff786c4f54edb3cdc76a",
+      "coordinate_pairs": 2969,
+      "counts": {
+        "converted": 172,
+        "instance_sentinels": 43,
+        "unchanged": 2752,
+        "unmapped": 2
+      },
+      "converted_by_area": {
+        "139": 118,
+        "1519": 42,
+        "44": 12
+      },
+      "unmapped": {
+        "10073": {
+          "count": 1,
+          "samples": [
+            {
+              "area_id": 10073,
+              "x": 44.404,
+              "y": 86.1,
+              "line": 436,
+              "field": "spawns",
+              "entity_id": null
+            }
+          ]
+        },
+        "10089": {
+          "count": 1,
+          "samples": [
+            {
+              "area_id": 10089,
+              "x": 29.99,
+              "y": 89.15,
+              "line": 440,
+              "field": "spawns",
+              "entity_id": null
+            }
+          ]
+        }
+      },
+      "out_of_bounds_samples": []
+    },
+    "src/corrections/Forever/classicQuestFixes.lua": {
+      "source": "src/corrections/Era/classicQuestFixes.lua",
+      "source_sha256": "fd28ff9f01e1b613aae2aeeafc192c8e2677b3850a9ab5937b7a1a52cc692b28",
+      "output_sha256": "76cd6a05f035826cabc6180a0ff2a1a37c5e7946c891eb0a06412fab5a4caf2e",
+      "coordinate_pairs": 143,
+      "counts": {
+        "converted": 10,
+        "instance_sentinels": 5,
+        "unchanged": 128
+      },
+      "converted_by_area": {
+        "139": 2,
+        "1519": 3,
+        "215": 4,
+        "44": 1
+      },
+      "unmapped": {},
+      "out_of_bounds_samples": []
+    },
+    "src/corrections/Forever/classicQuestReputationFixes.lua": {
+      "source": "src/corrections/Era/classicQuestReputationFixes.lua",
+      "source_sha256": "155b2502990304339833f65c5d5f46d6f1ad84527b9e476a976f4f9157a14322",
+      "output_sha256": "155b2502990304339833f65c5d5f46d6f1ad84527b9e476a976f4f9157a14322",
+      "coordinate_pairs": 0,
+      "counts": {},
+      "converted_by_area": {},
+      "unmapped": {},
+      "out_of_bounds_samples": []
+    },
+    "src/corrections/Forever/itemStartFixes.lua": {
+      "source": "src/corrections/Shared/itemStartFixes.lua",
+      "source_sha256": "c5f379867c82a401432e0ba2ef58c4e44ffe878a806f4901e070f9f090523bc6",
+      "output_sha256": "c5f379867c82a401432e0ba2ef58c4e44ffe878a806f4901e070f9f090523bc6",
+      "coordinate_pairs": 0,
+      "counts": {},
+      "converted_by_area": {},
+      "unmapped": {},
+      "out_of_bounds_samples": []
+    }
+  },
+  "not_converted": [
+    "Questie-owned runtime corrections",
+    "support/Zones/dungeons.lua entrances",
+    "Forever race/class restrictions and new content",
+    "subzone or synthetic map routing"
+  ],
+  "validation": "Lua semantic comparison passed for raw data and all correction personas"
+}
