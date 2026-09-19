@@ -2,7 +2,8 @@
 
 Create a separate Forever baseline from QuestieDB's Era data and corrections.
 The converter changes coordinate literals, not game content or runtime flavor
-selection. Era inputs remain untouched.
+selection. Era inputs remain untouched. Forever already has an adopted baseline; these commands
+are for deliberate migrations in an isolated workspace, not a prerequisite for normal Generation.
 
 Use the repository-root `questiedb.sh` or `questiedb.ps1` launcher. The tools need
 Python 3.8+ with its standard library. Conversion also needs Lua 5.1 for semantic
@@ -59,7 +60,9 @@ It leaves those points unchanged and records their source lines for review.
 `--dry-run` may download the missing DBC cache and creates temporary validation
 files. It does not install Forever outputs or write their conversion manifest.
 `--lua PATH` or `LUA` selects the Lua 5.1 executable. Neither command generates TOCs,
-registers a Forever flavor, nor modifies runtime correction selection.
+registers a flavor, nor modifies runtime Correction selection. Existing Forever registrations
+read the installed outputs on subsequent Source loads or Generation; existing Baked TOCs
+are not rebuilt.
 
 ### Output files
 
@@ -157,18 +160,22 @@ was edited after publication, rollback preserves that edit and retains the
 Follow the reported recovery path; do not delete it before resolving the files.
 This is not a transaction across an abrupt process kill or power failure.
 
-## Remaining integration work
+## Integration and remaining data gaps
 
-These files are a coordinate-adjusted Era baseline, not complete Forever support.
-They are not selected by TOCs, flavor configuration or the correction manifest.
-New content, race/class restrictions, localization, reviewed map overrides and
-runtime routing need separate work. Questie-owned runtime corrections can still
-supply Era coordinates, and `support/Zones/dungeons.lua` entrance coordinates are
-not converted by this tool.
+These files are a coordinate-adjusted Era baseline, not complete Forever content.
+Flavor configuration, TOC selection and Correction applicability are owned by the
+provider integration, not this converter. See [Forever input adoption](../../docs/forever-data.md)
+for the adopted-byte validation, independent locale/support inputs, reviewed DBC
+support imports and deferred gaps. The completed support-map handoff and its consumer
+compatibility links are maintained separately from coordinate conversion; consult the
+[current map limitations](../../docs/forever-data.md#current-support-map-limitations) before
+importing another export. New content and race/class restrictions need separate work.
+Questie-owned runtime Corrections can still supply Era coordinates, and
+`support/Forever/Zones/dungeons.lua` entrance coordinates are not converted by this tool.
 
 The tooling is self-contained in QuestieDB. It does not require the sibling `dbc/`
 or `QuestieDB-DBC/` checkout. The separate support-data generator in `QuestieDB-DBC/`
-remains an investigation workspace, not an input to this converter.
+produces support exports, not inputs to this coordinate converter.
 
 ## Focused tests
 

@@ -14,6 +14,15 @@ tests, and the bundled interpreters. See [the main README](../README.md#for-cont
 | `validation/` | QuestieDB's own behavior checks and shared test-fixture helpers |
 | `probe-addon/` | Live-client storage and API probes |
 
+The root commands `dbc-coordinates` and `convert-forever` reuse the owned
+[DBC tools](dbc/README.md); neither runs during normal Generation. Use an explicit existing
+`--database` path to avoid a missing-cache download. Conversion writes ten files plus its
+manifest and protects edited outputs. See [Forever](../docs/forever.md) before rerunning it.
+
+Generation and packaging cover six flavors. The `test` command includes shared behavior
+checks, selected artifact scopes, Forever distribution integration, and four DBC fixture suites.
+No flavor requires a Questie checkout or a full-data snapshot refresh.
+
 Tests for a tool stay beside its implementation. Python owns process orchestration and the
 integration checks that drive Lua as a subprocess; substantial Lua assertions stay in Lua files.
 The Lua unit suite stays Python-free: `validation/test-files.lua` covers the few filesystem

@@ -278,7 +278,7 @@ def main() -> int:
         outputs[MANIFEST] = (json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False) + "\n").encode("utf-8")
         changed = install_outputs(ROOT, outputs)
         print("Installed %d changed files. Provenance/review: %s" % (len(changed), MANIFEST))
-        print("Era unchanged. Forever files are not registered in runtime TOCs or correction manifests.")
+        print("Era unchanged. Existing Forever source registrations now read these outputs; generated TOCs were not rebuilt.")
         return 0
     except KeyboardInterrupt:
         print("Conversion cancelled", file=sys.stderr)

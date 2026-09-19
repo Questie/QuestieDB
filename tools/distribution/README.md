@@ -31,8 +31,9 @@ composition rules. The details below describe QuestieDB's packaging.
   fixed subset.
 
 Addon-manager flavor identifiers follow Questie's release conventions: `Vanilla` → `classic`,
-`TBC` → `bcc`, `Wrath` → `wrath`, `Cata` → `cata`, and `Mists` → `mists`. Internal labels in
-`questiedb.artifacts` stay unchanged. Each artifact still includes its `file`, `flavor`,
+`TBC` → `bcc`, `Wrath` → `wrath`, `Cata` → `cata`, `Mists` → `mists`, and `Forever` → `forever`.
+Forever currently declares interface `16001`; Camelot is only its temporary TOC compatibility
+name, not another addon-manager flavor or download. Internal labels in `questiedb.artifacts` stay unchanged. Each artifact still includes its `file`, `flavor`,
 `sha256`, `bytes`, and `rawBytes`; the manager-facing entries do not replace that information.
 
 `questiedb.repository` is the HTTPS source repository URL without a trailing slash. It comes
@@ -205,13 +206,14 @@ GitHub Actions environment. Both commands check that the GitHub CLI (`gh`) is av
 collision check; publication repeats it under the workflow's lock. Source-version parsing remains in `generator/version.lua`.
 Use the workflow to publish, rather than invoking the publisher outside its gates and lock.
 
-After choosing the tag, shared checks and the five
+After choosing the tag, shared checks and the six
 [flavor pipelines](../../README.md#independent-test-scopes) run independently. Each flavor runs
 Generation, Determinism, scoped tests, Reconstruction, Verification, Equivalence, and validators.
-Release reconstructs every flavor; CI reconstructs Vanilla and Mists.
-Both verify ownership under freezing on Vanilla and Mists.
+Both CI and Release reconstruct all six flavors and verify ownership under freezing on
+Vanilla and Mists.
 
-Release checks each TOC's checksum before uploading it and again after collecting all five.
+Release checks each TOC's checksum before uploading it and again after collecting all six.
+Forever's handoff includes its byte-identical Camelot alias; both filenames are checksummed.
 Packaging waits for the shared and flavor checks, creates per-flavor and combined ZIPs from
 those exact verified TOCs, and never regenerates them. Publication requires successful shared
 and flavor checks followed by successful packaging. Only GitHub publication is configured.
@@ -268,6 +270,7 @@ Run from the repository root:
 ```sh
 uv run tools/distribution/package.test.py
 uv run tools/distribution/bootstrap.test.py
+uv run tools/distribution/forever.test.py
 uv run tools/distribution/release_artifacts.test.py
 uv run tools/distribution/release.test.py
 uv run tools/validation/version.test.py

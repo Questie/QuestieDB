@@ -242,8 +242,9 @@ Each table has the shape `{ [questId] = true }`. These are consumer-must-not-mut
 QuestieDB publishes the underlying mutable values directly.
 
 Base-expansion hints are cumulative: TBC includes Era hints, Wrath includes Era and TBC hints,
-and so on through Mists. Seasonal hints require both their base flavor and active season. SoD
-hints appear only on Vanilla with season 2 active. Titan Reforged hints appear only on Wrath
+and so on through Mists. Forever publishes hints from its owned providers, not the cumulative
+legacy providers. Seasonal hints require both their base flavor and active season. SoD hints
+appear only on Vanilla with season 2 active. Titan Reforged hints appear only on Wrath
 with season 109 active. Source, Baked, and static-stripped packaged addons publish the same five
 tables for a given flavor and season.
 
@@ -523,13 +524,17 @@ The modules that wrap this data, including zone lookup, XP calculation, and drop
 stay with the consumer. Only the data ships from here.
 
 `Support.Get` and `Support.GetAll` expose the module set selected by the active flavor in both
-Source and Baked mode. Source mode uses the running flavor to admit applicable assignments from
-the shared base TOC. Baked TOCs list only applicable files. Loading another flavor in the
-emulator replaces the published modules rather than retaining modules from inapplicable variant
-files.
+Source and Baked mode. Source mode uses native per-file game-type conditions to select applicable
+files from the shared base TOC before Lua executes. Baked TOCs list only applicable files.
+Loading another flavor in the emulator replaces the published modules rather than retaining
+modules from inapplicable variant files.
 
 Mists uses its own area/UI map tables. Its drop data intentionally combines the MoP table and
 then the Cata table, in the same effective order as Questie.
+
+Forever owns its support inputs. Some map entries are retained solely for consumer instance
+routing compatibility, not as evidence that their UiMaps exist in the Forever client. See the
+[map audit](forever-map-override-audit.md) before using the mappings as an active-map allowlist.
 
 Some zone maps and drop tables remain Lua source strings because the consumer's existing logic
 calls `loadstring` on them. Their public type is part of the contract. Other fields, including
@@ -558,9 +563,14 @@ LibQuestieDB.ModeIndicator.GetStatus()  --> { mode =, expansion =, contractVersi
 ```
 
 **Source mode** reads from raw entity data with Static Corrections applied live — a working
-development environment from a clone alone, no download and no Lua toolchain. **Baked mode**
+development environment from a clone on clients supporting native per-file game-type
+selection, with no download and no Lua toolchain. **Baked mode**
 reads from a generated TOC metadata store. The client picks by TOC suffix precedence, so a
 generated artifact wins simply by existing.
+
+Forever uses the same public API and LuaLS declarations. Its independent inputs and pending
+client acceptance are described in [Forever](forever.md). Interface metadata alone does not
+prove native Source selection support; there is no Lua fallback for older clients.
 
 A consumer should surface source mode somewhere permanent. QuestieDB draws its own small
 indicator as a fallback, but a consumer's own settings panel or map is the better home.

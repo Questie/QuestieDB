@@ -252,10 +252,10 @@ unchanged. Neither path performs the Era-to-Forever coordinate conversion again.
 load legacy Era/Shared providers alongside the equivalent Forever providers.
 
 Edit Forever inputs directly as its data evolves. Intentional differences from Era are
-expected. Validate them with Forever's own validators and Golden snapshot, Source/Baked
-equivalence, and checks appropriate to the changed dataset. Legacy Questie fidelity is
-not a Forever oracle. See [the integration guide](forever.md) for normal commands and
-client-acceptance requirements.
+expected. Validate them with Forever's validators, Verification, Reconstruction, Source/Baked
+equivalence, and focused behavior tests. No compiler comparison or full-data golden refresh
+is required. See [the integration guide](forever.md) for normal commands and client-acceptance
+requirements.
 
 ### Deliberate conversion or DBC refresh
 
