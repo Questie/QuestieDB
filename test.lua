@@ -44,7 +44,7 @@ local selectedFlavor
 local artifactFlavors = config.flavors
 
 ---@param name string
----@param scope string shared, artifact, or an owning flavor.
+---@param scope string|table<string, boolean> shared, artifact, an owning flavor, or explicit flavor set.
 ---@param fn function
 ---@return nil
 local function suite(name, scope, fn)
@@ -1794,6 +1794,16 @@ suite("set-corrections", "Vanilla", function()
 end)
 
 --------------------------------------------------------------------------------------------
+-- Independently owned Forever dataset
+--------------------------------------------------------------------------------------------
+
+suite("forever-data", "shared", function()
+  -- Dataset checks install generator globals; isolate them from the runtime suites.
+  check(commandSucceeded(shellQuote(LUA_BIN) .. " tools/dbc/forever-data.test.lua"),
+    "Forever reviewed DBC data and faction-reference self-proof pass")
+end)
+
+--------------------------------------------------------------------------------------------
 -- Frozen values
 --------------------------------------------------------------------------------------------
 
@@ -3086,7 +3096,7 @@ suite("objective-first-source", "shared", function()
   dofile("tools/validation/objective-first-addon.test.lua")(check, equal, "Source")
 end)
 
-suite("objective-first-addon", "artifact", function()
+suite("objective-first-addon", { Vanilla = true, TBC = true, Wrath = true, Cata = true, Mists = true }, function()
   dofile("tools/validation/objective-first-addon.test.lua")(check, equal, selectedFlavor)
 end)
 
@@ -3096,13 +3106,13 @@ end)
 
 suite("support", "shared", function()
   -- Loading the largest flavor before the smallest exposes leaked modules and map variants.
-  local sourceFiles = config.sourceFileList()
+  local sourceFiles = config.sourceFileList(config.flavorByName.Mists)
   local positions = {}
   for index, file in ipairs(sourceFiles) do positions[file] = index end
   check(positions["support/DropTables/mopItemDrops.lua"] < positions["support/DropTables/cataItemDrops.lua"],
     "Source preserves the cumulative MoP-then-Cata drop load order")
   -- Reuse both the environment and Support singleton across complete load blocks. A fresh
-  -- library per flavor would hide stale state in Install/Remove and the scope markers.
+  -- library per flavor would hide stale state in Install/Remove.
   local previousLoader = {}
   local env = setmetatable({ QuestieLoader = previousLoader }, { __index = _G })
   env._G = env
@@ -3117,7 +3127,7 @@ suite("support", "shared", function()
   local function loadSupportBlock(flavor, faction)
     namespace.flavor = flavor
     env.UnitFactionGroup = function() return faction end
-    for _, file in ipairs(config.supportFiles(nil)) do
+    for _, file in ipairs(config.supportFiles(flavor)) do
       if file ~= "src/corrections/enum/constants.lua" and file ~= "src/support/data.lua" then
         setfenv(assert(loadfile(file)), env)("QuestieDB", namespace)
       end
@@ -3137,20 +3147,9 @@ suite("support", "shared", function()
   check(type(vanilla.ZoneDB.private.areaIdToUiMapId) == "string",
     "support publication preserves authored Lua source strings")
 
-  -- Weak references prove discarded payloads are released at scope changes and removal.
   env.QuestieLoader = nil
   support.Install(config.flavorByName.Vanilla)
-  support.SelectScope(false)
-  local rejected = setmetatable({ env.QuestieLoader:ImportModule("RejectedAtScope") }, { __mode = "v" })
-  check(support.Get("RejectedAtScope") == nil, "rejected scope modules are never published")
-  support.SelectScope(true)
-  collectgarbage("collect")
-  equal(rejected[1], nil, "switching scope releases rejected modules")
-  support.SelectScope(false)
-  rejected[1] = env.QuestieLoader:ImportModule("RejectedAtRemove")
   support.Remove()
-  collectgarbage("collect")
-  equal(rejected[1], nil, "removing the shim releases rejected modules")
   equal(rawget(env, "QuestieLoader"), nil, "removal restores an originally absent QuestieLoader")
 
   -- Known missing blocks: five Era items and four TBC items, with all 37 NPC pairs.
@@ -3729,14 +3728,13 @@ if scope then
   requested = {}
   for _, name in ipairs(order) do
     requested[name] = scope == "--shared" and scopes[name] == "shared" or
-      selectedFlavor ~= nil and (scopes[name] == "artifact" or scopes[name] == selectedFlavor.name)
+      selectedFlavor ~= nil and (scopes[name] == "artifact" or scopes[name] == selectedFlavor.name or
+        (type(scopes[name]) == "table" and scopes[name][selectedFlavor.name] == true))
   end
   artifactFlavors = selectedFlavor and { selectedFlavor } or {}
 elseif requested then
   -- Existing suite names still include the assertions split out for pipeline ownership.
   local companions = {
-    ["objective-first"] = "objective-first-emitted",
-    ["support-fidelity"] = "support-fidelity-emitted",
     chunking = "artifact-lines", ["wire-safety"] = "artifact-wire",
     ["lua-types"] = "artifact-types", personas = "personas-titan",
     ["sod-required-races"] = "sod-required-races-baked",

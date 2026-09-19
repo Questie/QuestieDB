@@ -10,6 +10,11 @@ if previous then previous:close() end
 local output = assert(io.open(path, "w"))
 output:write(value)
 output:close()
+if flavor == "Forever" then
+  local alias = assert(io.open("QuestieDB_Camelot.toc", "w"))
+  alias:write(os.getenv("CHANGE_ALIAS") == "1" and "changed alias" or value)
+  alias:close()
+end
 
 local log = assert(io.open("events.log", "a"))
 log:write("generate:" .. flavor .. "\n")

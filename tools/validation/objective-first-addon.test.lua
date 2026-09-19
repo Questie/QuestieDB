@@ -40,12 +40,16 @@ return function(check, equal, selectedFlavor)
   elseif selectedFlavor then
     flavors = { selectedFlavor }
   end
+  -- The explicit hint witnesses below cover these five flavors. Forever has no witness
+  -- here yet; its generic artifact and independent data tests still run.
   for _, flavor in ipairs(flavors) do
-    if lib.fileExists(config.tocPath(flavor)) then
-      generated[#generated + 1] = flavor
-      available[flavor.name] = true
-    else
-      io.write("  SKIP objective-first-addon Baked/stripped ", flavor.name, ": artifact not generated\n")
+    if flavor.name ~= "Forever" then
+      if lib.fileExists(config.tocPath(flavor)) then
+        generated[#generated + 1] = flavor
+        available[flavor.name] = true
+      else
+        io.write("  SKIP objective-first-addon Baked/stripped ", flavor.name, ": artifact not generated\n")
+      end
     end
   end
   if #generated == 0 and not sourceOnly then return end

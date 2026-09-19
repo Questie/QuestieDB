@@ -42,6 +42,7 @@ class ParsingTest(unittest.TestCase):
                  (["generate", "--flavors=Vanilla,"], "empty values"),
                  (["freeze", "TBC"], "only Vanilla and Mists"),
                  (["generate", "--flavors=Vanilla", "--flavors=TBC"], "only once"),
+                 (["generate", "Camelot"], "unknown"),
                  (["unknown"], "unknown")]
         for args, message in cases:
             with self.subTest(args=args), self.assertRaisesRegex(ValueError, message):
@@ -261,6 +262,7 @@ class CommandFlowTest(unittest.TestCase):
         self.env = dict(os.environ, LUA=self.lua, QUESTIEDB_TEST_EXIT="0")
         self.env.pop("FAIL_GENERATE", None)
         self.env.pop("CHANGE_ARTIFACT", None)
+        self.env.pop("CHANGE_ALIAS", None)
         self.env.pop("FAIL_READ", None)
         shutil.copyfile(FIXTURES / "generate.lua", self.root / "generate.lua")
         for script in ("verify.lua", "equivalence.lua", "reconstruct.lua", "validators/run.lua", "test.lua"):
@@ -287,7 +289,7 @@ class CommandFlowTest(unittest.TestCase):
         self.assertFalse((self.root / ".out/dist").exists())
 
     def test_test_task_selects_shared_and_only_requested_artifact_suites(self):
-        options = cli.parse_args(["test", "Wrath", "TBC"])
+        options = cli.parse_args(["test", "Wrath", "TBC", "Forever"])
         with patch.object(cli, "find_lua", return_value=self.lua), \
                 patch.object(cli, "run_jobs", return_value=True) as run_jobs, \
                 contextlib.redirect_stdout(io.StringIO()):
@@ -298,8 +300,27 @@ class CommandFlowTest(unittest.TestCase):
             [self.lua, "test.lua", "--shared"],
             [self.lua, "test.lua", "--flavor=Wrath"],
             [self.lua, "test.lua", "--flavor=TBC"],
+            [self.lua, "test.lua", "--flavor=Forever"],
         ], lua_tests)
         self.assertEqual(len(jobs), len({job.label for job in jobs}))
+
+    def test_default_check_includes_six_flavors(self):
+        result = self.run_cli("check")
+        self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+        events = (self.root / "events.log").read_text().splitlines()
+        self.assertEqual(24, sum(event.startswith("read:") for event in events))
+        self.assertIn("all 24 checks jobs passed", result.stdout)
+
+    def test_forever_determinism_checks_both_tocs_and_pair_equality(self):
+        result = self.run_cli("generate", "determinism", "Forever")
+        self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+        self.env["CHANGE_ALIAS"] = "1"
+        changed = self.run_cli("determinism", "Forever")
+        self.assertNotEqual(0, changed.returncode)
+        self.assertIn("checksum differs", (self.root / ".out/checks/determinism_Forever.log").read_text())
+        mismatched = self.run_cli("determinism", "Forever")
+        self.assertNotEqual(0, mismatched.returncode)
+        self.assertIn("TOCs differ before regeneration", mismatched.stderr)
 
     def test_generation_failure_blocks_later_phases(self):
         self.env["FAIL_GENERATE"] = "Vanilla"
@@ -363,10 +384,13 @@ class CommandFlowTest(unittest.TestCase):
         self.assertEqual(0, help_result.returncode)
         self.assertIn("questiedb.sh", help_result.stdout)
         for task, code, args in (("package", "7", ["Vanilla", "argument with spaces"]),
-                                 ("bootstrap", "3", ["AddOns path with spaces", "preview"])):
+                                 ("bootstrap", "3", ["AddOns path with spaces", "preview"]),
+                                 ("dbc-coordinates", "4", ["--database", "path with spaces"]),
+                                 ("convert-forever", "5", ["--dry-run"])):
             with self.subTest(task=task):
                 self.env["QUESTIEDB_TEST_EXIT"] = code
-                shutil.copyfile(FIXTURES / "arguments.py", self.root / "tools/distribution" / (task + ".py"))
+                shutil.copyfile(FIXTURES / "arguments.py", self.root / ({"dbc-coordinates": "tools/dbc/maps.py",
+                                   "convert-forever": "tools/dbc/convert.py"}.get(task, "tools/distribution/" + task + ".py")))
                 result = self.run_cli(task, *args)
                 self.assertEqual(int(code), result.returncode)
                 self.assertEqual(args, json.loads(result.stdout))
