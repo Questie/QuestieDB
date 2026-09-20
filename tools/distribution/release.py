@@ -159,9 +159,15 @@ def publish() -> None:
     latest = "true" if full_release else "false"
     notes = str(dist / "RELEASE_NOTES.md")
 
+    if tag == "preview" and release_id is not None:
+        # A new release record gives each preview a fresh publication date. Keep the tag
+        # for ancestry checks and move it only after the replacement assets are uploaded.
+        gh("release", "delete", tag, "--yes")
+        release_id = None
+
     if release_id is None:
-        # First publication stays a draft until every asset has uploaded. Let GitHub create
-        # a missing tag at the target commit rather than racing separate ref creation.
+        # New releases, including recreated previews, stay drafts until all assets upload.
+        # Let GitHub create a missing tag rather than racing separate ref creation.
         gh(
             "release",
             "create",
@@ -175,8 +181,8 @@ def publish() -> None:
             notes,
         )
 
-    # Replacement is deliberately non-atomic. Keep the old manifest until ZIP uploads and
-    # any tag move finish; bootstrap rejects mixed downloads if an update is interrupted.
+    # Stable overrides stay public, so retain their old manifest until ZIP uploads and any
+    # tag move finish. Recreated previews remain unpublished drafts through these steps.
     gh(
         "release",
         "upload",

@@ -72,6 +72,9 @@ tests, CI, release tooling, and documentation maintenance untagged.
 ### Selecting the release history
 
 Both stable and preview changelogs start after the highest reachable stable `vX.Y.Z` tag.
+Previews include the upcoming release's cumulative changes, not just changes since the previous
+preview. For an upcoming version without its own stable tag, the same commit produces identical
+stable and preview changelog entries.
 Full releases exclude their own version tag so an override still includes that release's changes.
 The first release uses all history. Preview, beta, and legacy `build-*` tags never form a boundary.
 An empty selection says that no entries were marked, not that nothing changed; the notes also link
@@ -222,12 +225,22 @@ after every check passes; `release.py` uploads that list rather than maintaining
 The verifier's standalone CLI also exposes those paths for other tooling. `preview.py` formats
 the verified result and adds no release validation rules.
 
-**Replacement is not atomic.** Existing releases stay public while ZIPs are replaced by name.
-The tag moves after the ZIP uploads; `release.json` uploads last. Downloads during an update
-may fail, and interruption can leave mixed assets or a tag ahead of the manifest. Bootstrap
-rejects checksum mismatches before installing; direct ZIP downloads do not have that protection.
-First publication uses a draft until every asset is uploaded. Build/check failures never touch
-an existing release.
+**Preview publication recreates the GitHub release record.** After artifact, immutability, and
+ancestry checks pass, the publisher deletes the existing `preview` release without deleting
+its tag, then creates a new draft. ZIPs and notes upload first, the tag moves to the verified
+commit, and `release.json` uploads last before the draft becomes public. This gives each preview
+a fresh GitHub publication date while retaining the moving `preview` tag and its download URLs.
+
+Recreation removes the old release's reactions, asset IDs, and manually attached assets. Preview
+downloads are unavailable between deletion and publication; a failed replacement can leave no
+public preview until the same workflow is rerun successfully.
+
+**Stable overrides remain non-atomic in-place updates.** The existing stable release stays
+public while ZIPs are replaced by name. Its tag moves after the ZIP uploads; `release.json`
+uploads last. Downloads during an update may fail, and interruption can leave mixed assets or
+a tag ahead of the manifest. Bootstrap rejects checksum mismatches before installing; direct
+ZIP downloads do not have that protection. First publication uses a draft until every asset
+is uploaded. Build/check failures never touch an existing release.
 
 ### Failure recovery and permissions
 
@@ -238,8 +251,9 @@ cannot enable override or turn a dry run into publication.
 Review the current default-branch commit and TOC version first; a new dispatch builds that
 commit, not necessarily the failed run's commit. Resolve tag-rule or permission errors before
 retrying. Divergent preview history (for example after a force-push) requires deliberate tag
-repair; the workflow will not guess which history to keep. Existing `build-*` releases and
-unrelated manually attached assets are left alone.
+repair; the workflow will not guess which history to keep. Existing `build-*` releases are
+left alone. Stable overrides also retain unrelated manually attached assets; preview recreation
+does not.
 
 Repository tag rules must allow the workflow token to create release tags and move `preview`
 (and version tags only when overriding). The preflight job needs Contents write permission to

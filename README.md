@@ -400,8 +400,9 @@ mode then requires restoring its full runtime sources as well as removing the ge
 
 ### Releases
 
-Successful default-branch builds update one **Unstable Pre-Release Build** at tag `preview`.
-Its tag identifies the commit used to build its assets; older runs cannot roll it back. Preview
+Successful default-branch builds recreate the **Unstable Pre-Release Build** at tag `preview`
+so each build has a fresh publication date. The moving tag identifies the commit used to build
+its assets; older runs cannot roll it back. Preview downloads are briefly unavailable during replacement. Preview
 never becomes GitHub's latest stable release, but remains publicly visible in the releases list.
 Direct normal users to the [latest stable release](https://github.com/Questie/QuestieDB/releases/latest).
 Preview notes warn at the top and directly above the download assets that the build is for testing

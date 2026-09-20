@@ -343,12 +343,14 @@ class ReleaseTest(unittest.TestCase):
         self.assertEqual([], self.writes)
 
     def test_immutable_release_cannot_be_overridden(self):
-        self.env["RELEASE_OVERRIDE"] = "true"
         self.state["release"] = {"databaseId": 42}
         self.immutable = "true"
-        self.assertEqual(1, self.run_action("publish"))
-        self.assertIn("immutable", self.stderr)
-        self.assertEqual([], self.writes)
+        for full, tag, override in (("true", "v1.2.3", "true"), ("false", "preview", "false")):
+            with self.subTest(tag=tag):
+                self.env.update(QUESTIEDB_RELEASE=full, TAG=tag, RELEASE_OVERRIDE=override)
+                self.assertEqual(1, self.run_action("publish"))
+                self.assertIn("immutable", self.stderr)
+                self.assertEqual([], self.writes)
 
     def test_preview_ancestry_controls_replacement(self):
         self.env.update(QUESTIEDB_RELEASE="false", TAG="preview")
@@ -366,8 +368,31 @@ class ReleaseTest(unittest.TestCase):
                 self.assertEqual(status, self.run_action("publish"), self.stderr)
                 self.assertEqual(publishes, bool(self.writes))
                 if publishes:
-                    self.assertEqual(("release", "upload", "preview"), self.writes[0][:3])
-                    self.assertEqual(("--prerelease=true", "--latest=false"), self.writes[-1][-2:])
+                    self.assertEqual(("release", "delete", "preview", "--yes"), self.writes[0])
+                    self.assertEqual(("release", "create", "preview"), self.writes[1][:3])
+                    self.assertIn("--draft", self.writes[1])
+                    self.assertEqual(("release", "upload", "preview"), self.writes[2][:3])
+                    self.assertEqual(
+                        (
+                            "api",
+                            "repos/Owner/Database/git/refs/tags/preview",
+                            "--method",
+                            "PATCH",
+                            "-f",
+                            f"sha={self.commit}",
+                            "-F",
+                            "force=true",
+                        ),
+                        self.writes[3],
+                    )
+                    self.assertEqual(
+                        ("release", "upload", "preview", ".out/dist/release.json", "--clobber"),
+                        self.writes[4],
+                    )
+                    self.assertEqual(("release", "edit", "preview"), self.writes[5][:3])
+                    self.assertIn("--draft=false", self.writes[5])
+                    self.assertEqual(("--prerelease=true", "--latest=false"), self.writes[5][-2:])
+                    self.assertEqual(6, len(self.writes))
 
     def test_dry_run_wrong_checkout_and_wrong_branch_never_contact_github(self):
         for changed in (
@@ -383,10 +408,14 @@ class ReleaseTest(unittest.TestCase):
     def test_bad_handoff_aborts_before_any_github_call(self):
         with Path(self.archives[-1]).open("ab") as archive:
             archive.write(b"corruption")
-        self.assertEqual(1, self.run_action("publish"))
-        self.assertIn("checksum mismatch", self.stderr)
-        self.assertEqual([], self.reads)
-        self.assertEqual([], self.writes)
+        for full, tag in (("true", "v1.2.3"), ("false", "preview")):
+            with self.subTest(tag=tag):
+                self.env.update(QUESTIEDB_RELEASE=full, TAG=tag)
+                self.state = {"release": {"databaseId": 42}, "ref": {"name": tag}}
+                self.assertEqual(1, self.run_action("publish"))
+                self.assertIn("checksum mismatch", self.stderr)
+                self.assertEqual([], self.reads)
+                self.assertEqual([], self.writes)
 
     def test_api_failures_and_unavailable_state_never_become_absence(self):
         for failure in (
@@ -400,6 +429,16 @@ class ReleaseTest(unittest.TestCase):
                 self.assertEqual(1, self.run_action("preflight"))
                 self.assertEqual(1, self.run_action("publish"))
                 self.assertEqual([], self.writes)
+
+    def test_failed_preview_recreation_stops_before_later_mutations(self):
+        self.env.update(QUESTIEDB_RELEASE="false", TAG="preview")
+        self.state = {"release": {"databaseId": 42}, "ref": {"name": "preview"}}
+        for failure in range(1, 7):
+            with self.subTest(failed_write=failure):
+                self.writes.clear()
+                self.fail_write = failure
+                self.assertEqual(1, self.run_action("publish"))
+                self.assertEqual(failure, len(self.writes))
 
     def test_failed_publication_stops_before_later_mutations(self):
         self.env["RELEASE_OVERRIDE"] = "true"

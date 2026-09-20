@@ -384,6 +384,11 @@ class ChangelogTest(unittest.TestCase):
         for tag in ("preview", "build-123", "v2.0.0-beta", "v01.20.0"):
             self.git("tag", tag)
         self.commit("[fix] New fix")
+        # The moving preview tag does not cut the upcoming release's changelog short.
+        upcoming = self.notes("1.11.0")
+        self.assertEqual(upcoming, self.notes("1.11.0-dev.abcdef0"))
+        self.assertIn("- New data", upcoming)
+        self.assertIn("- New fix", upcoming)
         self.git("tag", "v1.11.0")
         head = self.commit("[locale] New translation")
         # An unreachable higher version must not hide changes from this release line.
