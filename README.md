@@ -374,8 +374,8 @@ To refresh a local install instead of regenerating:
 
 Bootstrap uses the same Python implementation from either launcher. It installs `QuestieDB-all.zip`
 only, so a release from before the combined archive existed cannot be bootstrapped. Five-flavor
-combined releases using the nested `questiedb` manifest remain accepted; if either Forever TOC is present, both must
-be present and byte-identical. Bootstrap verifies the checksum and validates archive paths
+combined releases using the nested `questiedb` manifest remain accepted; if either Forever TOC
+is present, both must be present and byte-identical. Bootstrap verifies the checksum and validates archive paths
 and extraction before changing the install. Installing an older five-flavor release removes
 stale Forever/Camelot TOCs. [Issue #23](https://github.com/Questie/QuestieDB/issues/23) tracks
 retiring the Camelot name without breaking older-release handling.

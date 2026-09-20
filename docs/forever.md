@@ -42,8 +42,9 @@ trust an old workspace alias. Legacy underscore filenames are unchanged. Baked f
 remain resolved plain paths, without native file conditions or conditional entity metadata.
 
 All six flavors produce six flavor ZIPs plus `QuestieDB-all.zip`. Bootstrap still accepts
-older five-flavor combined releases. A combined release containing either Forever TOC must
-contain both, byte-identically. Camelot is not a selectable database flavor or a separate ZIP.
+five-flavor combined releases using the nested `questiedb` manifest; the old flat manifest
+format is not accepted. A combined release containing either Forever TOC must contain both,
+byte-identically. Camelot is not a selectable database flavor or a separate ZIP.
 [Issue #23](https://github.com/Questie/QuestieDB/issues/23) tracks removal of the temporary token
 and filename handling, including workflow handoffs and older-release bootstrap compatibility.
 

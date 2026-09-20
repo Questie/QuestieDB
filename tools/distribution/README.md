@@ -33,7 +33,8 @@ composition rules. The details below describe QuestieDB's packaging.
 Addon-manager flavor identifiers follow Questie's release conventions: `Vanilla` → `classic`,
 `TBC` → `bcc`, `Wrath` → `wrath`, `Cata` → `cata`, `Mists` → `mists`, and `Forever` → `forever`.
 Forever currently declares interface `16001`; Camelot is only its temporary TOC compatibility
-name, not another addon-manager flavor or download. Internal labels in `questiedb.artifacts` stay unchanged. Each artifact still includes its `file`, `flavor`,
+name, not another addon-manager flavor or download. Internal labels in `questiedb.artifacts`
+stay unchanged. Each artifact still includes its `file`, `flavor`,
 `sha256`, `bytes`, and `rawBytes`; the manager-facing entries do not replace that information.
 
 `questiedb.repository` is the HTTPS source repository URL without a trailing slash. It comes
