@@ -9,7 +9,7 @@ tests, and the bundled interpreters. See [the main README](../README.md#for-cont
 | --- | --- |
 | `cli/` | Contributor command orchestration and launcher support |
 | `lua-binary/` | Prebuilt Windows/Linux x64 Lua 5.1 interpreters, checksums, and notices |
-| `distribution/` | Packaging, Static Correction stripping, and release downloads/installations |
+| [`distribution/`](distribution/README.md) | Packaging, changelogs, publishing, Static Correction stripping, and release downloads/installations |
 | [`dbc/`](dbc/README.md) | DBC source downloads, map-coordinate comparison, and separate Era-to-Forever source conversion |
 | `questie-sync/` | Imports and fidelity checks against the pinned legacy Questie checkout |
 | `validation/` | QuestieDB's own behavior checks and shared test-fixture helpers |

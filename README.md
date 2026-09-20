@@ -237,7 +237,8 @@ Generation creates Baked TOCs; packaging creates installable ZIPs:
 
 Packages go into `.out/dist/`: one ZIP per requested flavor, `release.json`, and release
 notes. Selecting all five also creates `QuestieDB-all.zip`. The ZIPs contain a `QuestieDB/`
-folder ready to extract into `Interface/AddOns/`. Packaging never installs or publishes.
+folder ready to extract into `Interface/AddOns/`, including `QuestieDB/CHANGELOG.md` for
+that release. Packaging never installs or publishes.
 It checks prerequisites and requested inputs before replacing `.out/dist/` and `.out/stage/`;
 a later packaging failure can still leave incomplete output. Missing requested TOCs are errors,
 not silently skipped flavors. Run the validation gates separately before distributing a build.
@@ -410,89 +411,14 @@ Release notes recommend `QuestieDB-all.zip`, list the smaller per-flavor downloa
 installation. Commit provenance, API contracts, and checksum instructions live in a collapsed
 build-details section.
 
-#### Changelog entries
+Every release ZIP includes `QuestieDB/CHANGELOG.md`. The separate `release.json` asset contains
+build metadata, ZIP checksums, and structured changelog entries for consuming tools.
 
-Use Questie's bracketed commit-subject prefixes for user-facing changes you want included in the changelog:
+For contributors and release maintainers, see the distribution guide:
 
-| Prefix | Release section |
-| --- | --- |
-| `[feature]` | New features |
-| `[fix]` | General fixes |
-| `[quest]` | Quest fixes |
-| `[db]` | Database fixes |
-| `[locale]` | Localization fixes |
-
-For example: `[db] Corrected spawn locations for …`. Prefixes are case-insensitive and must
-start the subject. Entries retain their authored wording and sort alphabetically within each
-section. Untagged subjects, commit bodies, and conventional subjects such as `fix: …` are omitted.
-When squash-merging, put the prefix in the final squash commit's subject.
-
-*Do not always use it, but when you want to illustrate a change to our users*
-*Treat these prefixes as opt a commit into the user-facing changelog. Use them only for changes users should know about. Leave internal refactoring, tests, CI, release tooling, and documentation maintenance untagged*
-
-Both stable and preview changelogs start after the highest reachable stable `vX.Y.Z` tag.
-Full releases exclude their own version tag so an override still includes that release's changes.
-The first release uses all history. Preview, beta, and legacy `build-*` tags never form a boundary.
-An empty selection says that no entries were marked, not that nothing changed; the notes also link
-to the full comparison or commit history. Release packaging fetches complete history and tags.
-The generator lives in `tools/distribution/release_notes.py`, with coverage in
-`tools/distribution/package.test.py`.
-
-#### Publishing
-
-To publish a real release:
-
-1. Set `## Version: X.X.X` in `QuestieDB.toc` and commit it to the default branch. Use three
-   numeric components without leading zeros. TOC regeneration preserves this maintained value.
-2. Open **Actions → Release → Run workflow**, select the default branch, and check `release`.
-3. Leave `override` unchecked. An existing `vX.X.X` tag or release fails before building, and
-   publication checks again after all quality gates pass.
-
-`override` explicitly replaces that version's assets and moves its tag to the selected commit.
-Use it only to repair a release; normally bump the version instead. GitHub-immutable releases
-cannot be overridden. Repository-wide release immutability is incompatible with rolling preview.
-
-Baked addon versions are `X.X.X` for full releases and `X.X.X-dev.<short SHA>` otherwise.
-Local Generation follows the same rule; `QUESTIEDB_RELEASE=true` selects the full-release form.
-The manifest and TOCs retain the exact producing commit and legacy Questie import/schema
-baseline. The producing commit identifies the owned localization sources.
-
-The release flow lives in [`.github/workflows/release.yml`](.github/workflows/release.yml).
-After choosing the tag, shared checks and the five [flavor pipelines](#independent-test-scopes)
-run independently. Each flavor runs Generation, Determinism, scoped tests, Reconstruction,
-Verification, Equivalence, validators, and Golden checks. Release reconstructs every flavor;
-CI reconstructs Vanilla and Mists. Both verify ownership under freezing on Vanilla and Mists.
-
-Release checks each TOC's checksum before uploading it and again after collecting all five.
-Packaging waits for the shared and flavor checks, creates per-flavor and combined ZIPs from
-those exact verified TOCs, and never regenerates them. Publication requires successful packaging
-and every compiler differential. Only GitHub publication is configured.
-Publication jobs queue without cancelling active or pending releases. The publisher checks the
-handoff's commit and ZIP checksums before any mutation, then rejects stale preview builds.
-
-**Replacement is not atomic.** Existing releases stay public while ZIPs are replaced by name.
-The tag moves after the ZIP uploads; `release.json` uploads last. Downloads during an update
-may fail, and interruption can leave mixed assets or a tag ahead of the manifest. Bootstrap
-rejects checksum mismatches before installing; direct ZIP downloads do not have that protection.
-First publication uses a draft until every asset is uploaded. Build/check failures never touch
-an existing release.
-
-After a preview publication failure, rerun the failed workflow at the same commit. Do not rerun
-an older preview to repair a newer one. For a full release, dispatch again with `release` and
-`override` checked: GitHub reruns retain the original inputs, so they cannot enable override.
-Review the current default-branch commit and TOC version first; a new dispatch builds that
-commit, not necessarily the failed run's commit. Resolve tag-rule or permission errors before
-retrying. Divergent preview history (for example after a force-push) requires deliberate tag
-repair; the workflow will not guess which history to keep. Existing `build-*` releases and
-unrelated manually attached assets are left alone.
-
-Repository tag rules must allow the workflow token to create release tags and move `preview`
-(and version tags only when overriding). The preflight job needs Contents write permission to
-see drafts, but only reads GitHub state. No live publication is covered by the offline tests;
-GitHub permissions and replacement behavior should first be exercised in a disposable repository,
-not against an installed development or production channel.
-
-Run the focused offline version checks with `python3 tools/validation/version.test.py`.
+- [Writing changelog entries](tools/distribution/README.md#changelog-entries)
+- [Changelog format and author credits](tools/distribution/README.md#packaged-and-structured-changelogs)
+- [Publishing and failure recovery](tools/distribution/README.md#publishing)
 
 ### Re-syncing with Questie
 

@@ -2,6 +2,7 @@
 
 Run: uv run tools/distribution/bootstrap.test.py
 """
+
 import contextlib
 import hashlib
 import importlib.util
@@ -41,27 +42,40 @@ class BootstrapTest(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.addons = Path(self.temp.name) / "Interface" / "AddOns"
         self.target = self.addons / "QuestieDB"
+
+        # Model an existing clone: replace release files without losing unrelated work.
         (self.target / ".git").mkdir(parents=True)
         (self.target / ".git/config").write_text("developer clone")
         (self.target / "QuestieDB_Vanilla.toc").write_text("old artifact")
         (self.target / "QuestieDB_Obsolete.toc").write_text("old flavor")
         (self.target / "QuestieDB.toc").write_text("source mode")
         (self.target / "custom.lua").write_text("unrelated file")
+
         self.assets = {"QuestieDB-all.zip": archive_bytes(bootstrap.FLAVORS)}
         self.refresh_manifest()
         self.requests = []
         self.original = self.snapshot()
+
         self.addCleanup(patch.stopall)
         patch.object(bootstrap, "download", side_effect=self.download).start()
 
     def snapshot(self):
-        return {str(path.relative_to(self.target)): path.read_bytes()
-                for path in self.target.rglob("*") if path.is_file()}
+        return {
+            str(path.relative_to(self.target)): path.read_bytes()
+            for path in self.target.rglob("*")
+            if path.is_file()
+        }
 
     def refresh_manifest(self):
-        manifest = {"producerCommit": "a" * 40, "contractVersion": 2,
-                    "artifacts": [{"file": name, "sha256": hashlib.sha256(data).hexdigest()}
-                                  for name, data in self.assets.items() if name.endswith(".zip")]}
+        manifest = {
+            "producerCommit": "a" * 40,
+            "contractVersion": 2,
+            "artifacts": [
+                {"file": name, "sha256": hashlib.sha256(data).hexdigest()}
+                for name, data in self.assets.items()
+                if name.endswith(".zip")
+            ],
+        }
         self.assets["release.json"] = json.dumps(manifest).encode()
 
     def download(self, url, destination):
@@ -77,11 +91,16 @@ class BootstrapTest(unittest.TestCase):
 
     def test_combined_archive_only_preserves_clone_and_removes_obsolete_tocs(self):
         self.assertEqual(self.target.resolve(), self.install())
-        self.assertEqual([
-            "https://github.com/Questie/QuestieDB/releases/latest/download/release.json",
-            "https://github.com/Questie/QuestieDB/releases/latest/download/QuestieDB-all.zip",
-        ], self.requests)
-        self.assertEqual(bootstrap.TOCS, {path.name for path in self.target.glob("QuestieDB_*.toc")})
+        self.assertEqual(
+            [
+                "https://github.com/Questie/QuestieDB/releases/latest/download/release.json",
+                "https://github.com/Questie/QuestieDB/releases/latest/download/QuestieDB-all.zip",
+            ],
+            self.requests,
+        )
+        self.assertEqual(
+            bootstrap.TOCS, {path.name for path in self.target.glob("QuestieDB_*.toc")}
+        )
         self.assertEqual("developer clone", (self.target / ".git/config").read_text())
         self.assertEqual("unrelated file", (self.target / "custom.lua").read_text())
         self.assertEqual("source mode", (self.target / "QuestieDB.toc").read_text())
@@ -115,7 +134,10 @@ class BootstrapTest(unittest.TestCase):
 
     def test_malformed_manifests_are_rejected_before_zip_download(self):
         cases = [
-            [], {}, {"artifacts": []}, {"artifacts": [None]},
+            [],
+            {},
+            {"artifacts": []},
+            {"artifacts": [None]},
             {"artifacts": [{"file": "../payload.zip", "sha256": "a" * 64}]},
             {"artifacts": [{"file": "https://elsewhere/payload.zip", "sha256": "a" * 64}]},
             {"artifacts": [{"file": "QuestieDB-all.zip", "sha256": "bad"}]},
@@ -132,11 +154,24 @@ class BootstrapTest(unittest.TestCase):
                 self.assertEqual(self.original, self.snapshot())
 
     def test_archive_paths_cannot_escape_or_overwrite_clone_metadata(self):
-        for name in ("QuestieDB/../outside.lua", "/QuestieDB/src/file.lua", "QuestieDB/.git/config",
-                     "QuestieDB/src/.git/config", "QuestieDB/src\\outside.lua", "QuestieDB/src/file.lua:stream", "QuestieDB/src/NUL.lua",
-                     "QuestieDB/src/file.lua.", "QuestieDB/SRC/other.lua"):
+        for name in (
+            "QuestieDB/../outside.lua",
+            "/QuestieDB/src/file.lua",
+            "QuestieDB/.git/config",
+            "QuestieDB/src/.git/config",
+            "QuestieDB/src\\outside.lua",
+            "QuestieDB/src/file.lua:stream",
+            "QuestieDB/src/NUL.lua",
+            "QuestieDB/src/file.lua.",
+            "QuestieDB/SRC/other.lua",
+            "QuestieDB/icons/../outside.png",
+            "QuestieDB/CHANGELOG.md/extra.lua",
+            "QuestieDB/CHANGELOG.md.bak",
+        ):
             with self.subTest(name=name):
-                self.assets["QuestieDB-all.zip"] = archive_bytes(bootstrap.FLAVORS, {name: "unsafe"})
+                self.assets["QuestieDB-all.zip"] = archive_bytes(
+                    bootstrap.FLAVORS, {name: "unsafe"}
+                )
                 self.refresh_manifest()
                 with self.assertRaises(ValueError):
                     self.install()
@@ -144,11 +179,13 @@ class BootstrapTest(unittest.TestCase):
 
     def test_symlink_archive_entry_is_rejected(self):
         data = io.BytesIO(archive_bytes(bootstrap.FLAVORS))
+
         with zipfile.ZipFile(data, "a") as archive:
             link = zipfile.ZipInfo("QuestieDB/src/link.lua")
             link.create_system = 3
             link.external_attr = (stat.S_IFLNK | 0o777) << 16
             archive.writestr(link, "../../outside")
+
         self.assets["QuestieDB-all.zip"] = data.getvalue()
         self.refresh_manifest()
         with self.assertRaisesRegex(ValueError, "link or special file"):
@@ -172,10 +209,12 @@ class BootstrapTest(unittest.TestCase):
         outside.mkdir()
         sentinel = outside / "runtime.lua"
         sentinel.write_text("do not overwrite")
+
         try:
             (self.target / "src").symlink_to(outside, target_is_directory=True)
         except OSError as error:
             self.skipTest("symlink creation unavailable: %s" % error)
+
         with self.assertRaisesRegex(ValueError, "traverses a link"):
             self.install()
         self.assertEqual("do not overwrite", sentinel.read_text())
@@ -183,16 +222,23 @@ class BootstrapTest(unittest.TestCase):
 
     def test_tags_are_quoted_and_repo_cannot_select_another_host(self):
         self.install("feature/test #1", "Owner/Repository")
-        self.assertTrue(all(url.startswith("https://github.com/Owner/Repository/releases/download/feature%2Ftest%20%231/")
-                            for url in self.requests))
+        self.assertTrue(
+            all(
+                url.startswith(
+                    "https://github.com/Owner/Repository/releases/download/feature%2Ftest%20%231/"
+                )
+                for url in self.requests
+            )
+        )
         self.requests.clear()
         with self.assertRaisesRegex(ValueError, "owner/name"):
             self.install(repo="https://example.com/repo")
         self.assertEqual([], self.requests)
 
     def test_main_honors_repo_environment_and_returns_failure_status(self):
-        with patch.dict(os.environ, {"QUESTIEDB_REPO": "Owner/Repository"}), \
-                contextlib.redirect_stdout(io.StringIO()):
+        with patch.dict(
+            os.environ, {"QUESTIEDB_REPO": "Owner/Repository"}
+        ), contextlib.redirect_stdout(io.StringIO()):
             self.assertEqual(0, bootstrap.main([str(self.addons), "preview"]))
         self.assertTrue(all("github.com/Owner/Repository/" in url for url in self.requests))
         with contextlib.redirect_stderr(io.StringIO()):
