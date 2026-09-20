@@ -33,6 +33,29 @@ Legacy Corrections remain cumulative from Era through Mists. Forever loads only 
 providers, including its own Item-start provider. SoD applies only to Vanilla season 2;
 Titan Reforged applies only to Wrath season 109, not Forever.
 
+## Correction authoring
+
+Add new corrections in `src/corrections/Forever/`:
+
+- `foreverQuestFixes.lua`
+- `foreverNPCFixes.lua`
+- `foreverItemFixes.lua`
+- `foreverObjectFixes.lua`
+
+Each file is already registered with two entry points:
+
+- `Load()` returns Static Corrections, applied in Source mode and folded into Generation.
+- `LoadDynamic()` returns Dynamic Corrections selected from generic character/game facts,
+  such as faction, race or class. Consumer settings and policy stay with the consumer.
+
+Both return `[entityId] = { [fieldKey] = correctedValue }` tables. The six files in `legacy/`
+remain the inherited baseline; leave them unchanged for ordinary correction work. New Static
+Corrections apply after legacy Static Corrections. New Dynamic Corrections apply after legacy
+Dynamic Corrections. Dynamic Corrections still outrank all static data, so a replacement for
+an inherited Dynamic Correction belongs in `LoadDynamic()`, even if its new value is unconditional.
+
+Conversion only targets the inherited baseline and raw data, never `forever*Fixes.lua`.
+
 ## Baked artifacts
 
 `generate.lua Forever` writes `QuestieDB_Forever.toc` and a byte-identical temporary

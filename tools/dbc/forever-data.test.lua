@@ -87,7 +87,7 @@ local lib = runtime.build()
 local compat = lib.CorrectionCompat
 local remove = compat.Install(config.flavorByName.Vanilla)
 compat.BeginCapture()
-runtime.execute("src/corrections/Forever/classicNPCFixes.lua", "QuestieDB", lib)
+runtime.execute("src/corrections/Forever/legacy/classicNPCFixes.lua", "QuestieDB", lib)
 remove()
 checkFactionReferences(compat.captured.Npc or {})
 for _, method in ipairs({"Load", "LoadFactionFixes"}) do
@@ -162,7 +162,7 @@ for _, entity in ipairs(config.entityTypes) do
         local undo = providerCompat.Install(config.flavorByName.Forever)
         providerCompat.BeginCapture()
         local filename = entity.name == "Npc" and "classicNPCFixes" or "classicObjectFixes"
-        runtime.execute("src/corrections/Forever/" .. filename .. ".lua", "QuestieDB", providerLib)
+        runtime.execute("src/corrections/Forever/legacy/" .. filename .. ".lua", "QuestieDB", providerLib)
         local provider = providerCompat.modules[entity.name == "Npc" and "QuestieNPCFixes" or "QuestieObjectFixes"]
         local corrections = providerCompat.Invoke(provider.Load, provider)
         undo()

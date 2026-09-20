@@ -229,13 +229,16 @@ data/Forever/foreverNpcDB.lua
 data/Forever/foreverObjectDB.lua
 data/Forever/foreverQuestDB.lua
 
-src/corrections/Forever/classicItemFixes.lua
-src/corrections/Forever/classicNPCFixes.lua
-src/corrections/Forever/classicObjectFixes.lua
-src/corrections/Forever/classicQuestFixes.lua
-src/corrections/Forever/classicQuestReputationFixes.lua
-src/corrections/Forever/itemStartFixes.lua
+src/corrections/Forever/legacy/classicItemFixes.lua
+src/corrections/Forever/legacy/classicNPCFixes.lua
+src/corrections/Forever/legacy/classicObjectFixes.lua
+src/corrections/Forever/legacy/classicQuestFixes.lua
+src/corrections/Forever/legacy/classicQuestReputationFixes.lua
+src/corrections/Forever/legacy/itemStartFixes.lua
 ```
+
+The four authored `src/corrections/Forever/forever*Fixes.lua` files are not conversion
+outputs. Add new Forever corrections there rather than editing the inherited baseline.
 
 `data/Forever/conversion.json` records source/output hashes, source and target builds,
 DBC snapshot hashes and coverage, coefficients, per-file counts, converted AreaIDs,

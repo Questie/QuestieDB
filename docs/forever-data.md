@@ -251,11 +251,14 @@ applicable entity providers and transforms; its existing Base translation limita
 unchanged. Neither path performs the Era-to-Forever coordinate conversion again. Do not
 load legacy Era/Shared providers alongside the equivalent Forever providers.
 
-Edit Forever inputs directly as its data evolves. Intentional differences from Era are
-expected. Validate them with Forever's validators, Verification, Reconstruction, Source/Baked
-equivalence, and focused behavior tests. No compiler comparison or full-data golden refresh
-is required. See [the integration guide](forever.md) for normal commands and client-acceptance
-requirements.
+Add new entity Corrections to `src/corrections/Forever/forever*Fixes.lua`. The six inherited
+providers live in `src/corrections/Forever/legacy/` and remain the baseline, not the normal
+editing surface. See [Correction authoring](forever.md#correction-authoring) for entry points
+and precedence. Other Forever inputs remain directly maintained. Intentional differences
+from Era are expected. Validate them with Forever's validators, Verification, Reconstruction,
+Source/Baked equivalence, and focused behavior tests. No compiler comparison or full-data
+golden refresh is required. See [the integration guide](forever.md) for normal commands and
+client-acceptance requirements.
 
 ### Candidate-only support export
 
@@ -299,8 +302,9 @@ For a deliberate new migration:
    and retain previous migration records in Git. Update current guidance when behavior changes;
    do not turn the historical adoption section into a description of the latest files.
 
-`conversion.json` describes converter outputs and protects reruns. The support provenance
-records seed and import evidence. A later authored edit can legitimately differ from an
+`conversion.json` describes converter outputs and protects reruns. Its six Correction paths
+now point into `legacy/`; the move preserved all provider bytes and recorded output hashes.
+The support provenance records seed and import evidence, including the historical manifest hash. A later authored edit can legitimately differ from an
 adoption hash, but that difference must not be presented as an unchanged converter output.
 Initial deferred gaps remain unresolved until a subsequent reviewed change records their
 resolution; the historical tables above are not a live completion tracker.

@@ -102,10 +102,10 @@ mappings have no entity-field references in this audit.
 
 Examples in the owned providers:
 
-- `src/corrections/Forever/classicNPCFixes.lua:1972`: Gordok Brute 11441 uses area 10022.
+- `src/corrections/Forever/legacy/classicNPCFixes.lua:1972`: Gordok Brute 11441 uses area 10022.
 - The same file, lines 2065–2066: Prince Tortheldrin 11486 uses 10022 and 10025.
   Quest 7461, "The Madness Within", targets him and Immol'thar.
-- `src/corrections/Forever/classicObjectFixes.lua:164–165`: Thermaplugg's Safe 142477
+- `src/corrections/Forever/legacy/classicObjectFixes.lua:164–165`: Thermaplugg's Safe 142477
   uses synthetic area 10032 alongside ordinary Gnomeregan.
 - The same file, lines 371–374: Incantation of Celebras 178965 uses synthetic area
   10000 alongside ordinary Maraudon.

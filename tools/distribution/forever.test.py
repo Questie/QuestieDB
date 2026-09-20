@@ -54,7 +54,7 @@ class ForeverDistributionTest(LuaFixture):
             providers = [name for name in packaged.namelist()
                          if name.startswith("QuestieDB/src/corrections/Forever/") and name.endswith(".lua")]
             # Static-only providers are folded into Generation and omitted from Baked lists.
-            self.assertEqual(4, len(providers))
+            self.assertEqual(8, len(providers))
             self.assertTrue(any("QuestieDB/support/Forever/" in name for name in packaged.namelist()))
             for name in providers:
                 self.assertIn(b"Static body stripped at package time", packaged.read(name))

@@ -57,6 +57,7 @@ registry.loadOrder = {
   TitanStatic = 800,  TitanDynamic = 900,
   CataStatic = 1000,  CataDynamic = 1100,
   MoPStatic = 1200,   MoPDynamic = 1300,
+  ForeverStatic = 1400, ForeverDynamic = 1500,
 }
 
 registry.OWNER = "QuestieDB"

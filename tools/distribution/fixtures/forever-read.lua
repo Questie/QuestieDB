@@ -13,4 +13,4 @@ for _, path in ipairs(files) do
   assert(not path:find("src/corrections/Era/", 1, true), "Era provider leaked into Forever")
   if path:find("src/corrections/Forever/", 1, true) then ownedProviders = ownedProviders + 1 end
 end
-assert(ownedProviders == 4, "Forever must load its four Dynamic providers")
+assert(ownedProviders == 8, "Forever must load four legacy and four authored Dynamic providers")

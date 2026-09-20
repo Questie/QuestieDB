@@ -18,17 +18,18 @@ local representativePaths = {
   "src/corrections/Wotlk/wotlkQuestFixes.lua",
   "src/corrections/Cata/cataQuestFixes.lua",
   "src/corrections/MoP/mopQuestFixes.lua",
-  "src/corrections/Forever/classicQuestFixes.lua",
+  "src/corrections/Forever/legacy/classicQuestFixes.lua",
+  "src/corrections/Forever/foreverQuestFixes.lua",
   "src/corrections/Shared/itemStartFixes.lua",
   "src/corrections/Era/classicQuestReputationFixes.lua",
 }
 local expectedProviders = {
-  Vanilla = { true, false, false, false, false, false, true, true },
-  TBC     = { true, true,  false, false, false, false, true, false },
-  Wrath   = { true, true,  true,  false, false, false, true, false },
-  Cata    = { true, true,  true,  true,  false, false, true, false },
-  Mists   = { true, true,  true,  true,  true,  false, true, false },
-  Forever = { false, false, false, false, false, true, false, false },
+  Vanilla = { true, false, false, false, false, false, false, true, true },
+  TBC     = { true, true,  false, false, false, false, false, true, false },
+  Wrath   = { true, true,  true,  false, false, false, false, true, false },
+  Cata    = { true, true,  true,  true,  false, false, false, true, false },
+  Mists   = { true, true,  true,  true,  true,  false, false, true, false },
+  Forever = { false, false, false, false, false, true, true, false, false },
 }
 
 for _, flavor in ipairs(config.flavors) do
@@ -127,7 +128,7 @@ for _, changed in ipairs({ "Vanilla", "Forever" }) do
           QuestieLoader:ImportModule("QuestieDB").npcData = { [id] = { "owned raw " .. changed } }
         elseif path == config.zoneIdsPath(changedFlavor) then
           QuestieLoader:ImportModule("ZoneDB").nativeIsolation = changed
-        elseif path == "src/corrections/" .. (changed == "Forever" and "Forever" or "Era") .. "/classicQuestFixes.lua" then
+        elseif path == "src/corrections/" .. (changed == "Forever" and "Forever/legacy" or "Era") .. "/classicQuestFixes.lua" then
           local module = QuestieLoader:ImportModule("QuestieQuestFixes")
           local original = module.Load
           module.Load = function(self)
@@ -231,7 +232,7 @@ for _, fault in ipairs({ "execute", "missing" }) do
     local originalLoadfile = loadfile
     local reachedProvider = false
     _G.loadfile = function(path)
-      if path == "src/corrections/Forever/classicQuestFixes.lua" then
+      if path == "src/corrections/Forever/legacy/classicQuestFixes.lua" then
         reachedProvider = true
         assert(_G.QuestieLoader ~= previousLoader, "offline shim was not installed")
         if fault == "missing" then return nil, "injected missing provider" end
@@ -252,3 +253,46 @@ for _, fault in ipairs({ "execute", "missing" }) do
   end
 end
 print("PASS Source initializer rejection and offline provider-error shim cleanup")
+
+-- Use the real manifest and loader, with conflicting rows, to prove both authoring
+-- entry points work and the legacy baseline remains beneath the new corrections.
+client.install({ expansion = "Forever" })
+local offline = runtime.build()
+local flavor = config.flavorByName.Forever
+offline.flavor = flavor
+runtime.loadCorrections(offline, flavor)
+local providers = offline.CorrectionCompat.modules
+for _, case in ipairs({
+  { "Quest", "QuestieQuestFixes", "ForeverQuestFixes" },
+  { "Npc", "QuestieNPCFixes", "ForeverNpcFixes" },
+  { "Item", "QuestieItemFixes", "ForeverItemFixes" },
+  { "Object", "QuestieObjectFixes", "ForeverObjectFixes" },
+}) do
+  local datatype, legacy, authored = case[1], providers[case[2]], providers[case[3]]
+  assert(type(authored.Load) == "function" and type(authored.LoadDynamic) == "function")
+  legacy.Load = function()
+    return { [id] = { [1] = "legacy static" }, [id + 1] = { [1] = "legacy-only static" } }
+  end
+  authored.Load = function()
+    return { [id] = { [1] = "Forever static" } }
+  end
+  legacy.LoadFactionFixes = function()
+    return { [id] = { [1] = "legacy dynamic" }, [id + 1] = { [1] = "legacy-only dynamic" } }
+  end
+  authored.LoadDynamic = function()
+    return { [id] = { [1] = "Forever dynamic" } }
+  end
+
+  local rows = {}
+  offline.Corrections.ApplyStaticToEntities(datatype, rows, flavor, "QuestieDB")
+  assert(rows[id][1] == "Forever static", datatype .. " authored Static Correction did not win")
+  assert(rows[id + 1][1] == "legacy-only static", datatype .. " lost its legacy baseline")
+end
+offline.Corrections.ApplyRegisteredCorrections("QuestieDB")
+for _, datatype in ipairs({ "Quest", "Npc", "Item", "Object" }) do
+  local rows = offline.Corrections.composed[datatype]
+  assert(rows[id][1] == "Forever dynamic", datatype .. " authored Dynamic Correction did not win")
+  assert(rows[id + 1][1] == "legacy-only dynamic", datatype .. " lost its legacy Dynamic Correction")
+end
+client.reset()
+print("PASS Forever authored Static/Dynamic precedence and legacy fall-through")

@@ -233,14 +233,21 @@ src\corrections\scopes\SodEnd.lua
 # --- Shared legacy Item-start Corrections ---
 src\corrections\Shared\itemStartFixes.lua [AllowLoadGameType vanilla, tbc, wrath, cata, mists]
 
-# --- Forever: independently owned providers ---
-# Includes its own Item-start provider; no legacy Era or Shared providers are inherited.
-src\corrections\Forever\classicQuestFixes.lua [AllowLoadGameType camelot, forever]
-src\corrections\Forever\classicNPCFixes.lua [AllowLoadGameType camelot, forever]
-src\corrections\Forever\classicItemFixes.lua [AllowLoadGameType camelot, forever]
-src\corrections\Forever\classicObjectFixes.lua [AllowLoadGameType camelot, forever]
-src\corrections\Forever\classicQuestReputationFixes.lua [AllowLoadGameType camelot, forever]
-src\corrections\Forever\itemStartFixes.lua [AllowLoadGameType camelot, forever]
+# --- Forever: inherited baseline ---
+# Owned copies, not live Era or Shared providers. Add new work in forever*Fixes.lua.
+src\corrections\Forever\legacy\classicQuestFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\legacy\classicNPCFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\legacy\classicItemFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\legacy\classicObjectFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\legacy\classicQuestReputationFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\legacy\itemStartFixes.lua [AllowLoadGameType camelot, forever]
+
+# --- Forever: authored corrections ---
+# Apply after the baseline within each Static/Dynamic category.
+src\corrections\Forever\foreverQuestFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\foreverNPCFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\foreverItemFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\foreverObjectFixes.lua [AllowLoadGameType camelot, forever]
 
 # --- Provider registration and loader teardown ---
 src\corrections\manifest.lua

@@ -1847,7 +1847,7 @@
       "unmapped": {},
       "out_of_bounds_samples": []
     },
-    "src/corrections/Forever/classicItemFixes.lua": {
+    "src/corrections/Forever/legacy/classicItemFixes.lua": {
       "source": "src/corrections/Era/classicItemFixes.lua",
       "source_sha256": "688286a44e5d95045ff943d55ba3a9fccffce7ca4a982fa55a67499b39509b87",
       "output_sha256": "688286a44e5d95045ff943d55ba3a9fccffce7ca4a982fa55a67499b39509b87",
@@ -1857,7 +1857,7 @@
       "unmapped": {},
       "out_of_bounds_samples": []
     },
-    "src/corrections/Forever/classicNPCFixes.lua": {
+    "src/corrections/Forever/legacy/classicNPCFixes.lua": {
       "source": "src/corrections/Era/classicNPCFixes.lua",
       "source_sha256": "38e5217bfd4f23ba03393d6050c589aba88593d4c96510d9a0edfbb70f1b2cdb",
       "output_sha256": "1de19d17db00581a35d397c7440124aa3f14150d5456c771d2deb3cfba79f031",
@@ -1919,7 +1919,7 @@
       },
       "out_of_bounds_samples": []
     },
-    "src/corrections/Forever/classicObjectFixes.lua": {
+    "src/corrections/Forever/legacy/classicObjectFixes.lua": {
       "source": "src/corrections/Era/classicObjectFixes.lua",
       "source_sha256": "78d80e6244ba7b1bfc49a8ba65b0207031cd921bdb15ac41ea3a7a545f7f4540",
       "output_sha256": "181bea5a5db73f8af1bebe1d8aa835d28e2d4c11adf9ff786c4f54edb3cdc76a",
@@ -1965,7 +1965,7 @@
       },
       "out_of_bounds_samples": []
     },
-    "src/corrections/Forever/classicQuestFixes.lua": {
+    "src/corrections/Forever/legacy/classicQuestFixes.lua": {
       "source": "src/corrections/Era/classicQuestFixes.lua",
       "source_sha256": "fd28ff9f01e1b613aae2aeeafc192c8e2677b3850a9ab5937b7a1a52cc692b28",
       "output_sha256": "76cd6a05f035826cabc6180a0ff2a1a37c5e7946c891eb0a06412fab5a4caf2e",
@@ -1984,7 +1984,7 @@
       "unmapped": {},
       "out_of_bounds_samples": []
     },
-    "src/corrections/Forever/classicQuestReputationFixes.lua": {
+    "src/corrections/Forever/legacy/classicQuestReputationFixes.lua": {
       "source": "src/corrections/Era/classicQuestReputationFixes.lua",
       "source_sha256": "155b2502990304339833f65c5d5f46d6f1ad84527b9e476a976f4f9157a14322",
       "output_sha256": "155b2502990304339833f65c5d5f46d6f1ad84527b9e476a976f4f9157a14322",
@@ -1994,7 +1994,7 @@
       "unmapped": {},
       "out_of_bounds_samples": []
     },
-    "src/corrections/Forever/itemStartFixes.lua": {
+    "src/corrections/Forever/legacy/itemStartFixes.lua": {
       "source": "src/corrections/Shared/itemStartFixes.lua",
       "source_sha256": "c5f379867c82a401432e0ba2ef58c4e44ffe878a806f4901e070f9f090523bc6",
       "output_sha256": "c5f379867c82a401432e0ba2ef58c4e44ffe878a806f4901e070f9f090523bc6",

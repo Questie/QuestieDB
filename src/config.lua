@@ -140,12 +140,18 @@ config.runtimeFiles = {
 
 -- Independently maintained providers are not import destinations.
 config.ownedCorrections = {
-  { owned = 'Forever', file = 'Forever/classicQuestFixes.lua', module = 'QuestieQuestFixes', datatype = 'Quest', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1 },
-  { owned = 'Forever', file = 'Forever/classicNPCFixes.lua', module = 'QuestieNPCFixes', datatype = 'Npc', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1 },
-  { owned = 'Forever', file = 'Forever/classicItemFixes.lua', module = 'QuestieItemFixes', datatype = 'Item', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1 },
-  { owned = 'Forever', file = 'Forever/classicObjectFixes.lua', module = 'QuestieObjectFixes', datatype = 'Object', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1 },
-  { owned = 'Forever', file = 'Forever/classicQuestReputationFixes.lua', module = 'QuestieClassicQuestReputationFixes', datatype = 'Quest', static = {'Load'}, expansions = {['Forever']=true}, generated = true },
-  { owned = 'Forever', file = 'Forever/itemStartFixes.lua', module = 'QuestieItemStartFixes', datatype = 'Item', static = {'LoadAutomaticQuestStarts'}, options = {['noNewEntries']=true,['noOverwrites']=true}, generated = true },
+  -- Inherited baseline: preserve its ordering; add new work in forever*Fixes.lua below.
+  { owned = 'Forever', file = 'Forever/legacy/classicQuestFixes.lua', module = 'QuestieQuestFixes', datatype = 'Quest', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1, window = 'Era' },
+  { owned = 'Forever', file = 'Forever/legacy/classicNPCFixes.lua', module = 'QuestieNPCFixes', datatype = 'Npc', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1, window = 'Era' },
+  { owned = 'Forever', file = 'Forever/legacy/classicItemFixes.lua', module = 'QuestieItemFixes', datatype = 'Item', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1, window = 'Era' },
+  { owned = 'Forever', file = 'Forever/legacy/classicObjectFixes.lua', module = 'QuestieObjectFixes', datatype = 'Object', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1, window = 'Era' },
+  { owned = 'Forever', file = 'Forever/legacy/classicQuestReputationFixes.lua', module = 'QuestieClassicQuestReputationFixes', datatype = 'Quest', static = {'Load'}, expansions = {['Forever']=true}, generated = true, window = 'Era' },
+  { owned = 'Forever', file = 'Forever/legacy/itemStartFixes.lua', module = 'QuestieItemStartFixes', datatype = 'Item', static = {'LoadAutomaticQuestStarts'}, options = {['noNewEntries']=true,['noOverwrites']=true}, generated = true, window = 'Era' },
+  -- Authored Forever corrections follow the baseline within each Static/Dynamic category.
+  { owned = 'Forever', file = 'Forever/foreverQuestFixes.lua', module = 'ForeverQuestFixes', datatype = 'Quest', static = {'Load'}, dynamic = {'LoadDynamic'}, window = 'Forever' },
+  { owned = 'Forever', file = 'Forever/foreverNPCFixes.lua', module = 'ForeverNpcFixes', datatype = 'Npc', static = {'Load'}, dynamic = {'LoadDynamic'}, window = 'Forever' },
+  { owned = 'Forever', file = 'Forever/foreverItemFixes.lua', module = 'ForeverItemFixes', datatype = 'Item', static = {'Load'}, dynamic = {'LoadDynamic'}, window = 'Forever' },
+  { owned = 'Forever', file = 'Forever/foreverObjectFixes.lua', module = 'ForeverObjectFixes', datatype = 'Object', static = {'Load'}, dynamic = {'LoadDynamic'}, window = 'Forever' },
 }
 
 ---Whether a provider belongs to a flavor. Forever owns providers rather than inheriting legacy ones.
