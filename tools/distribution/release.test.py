@@ -111,9 +111,12 @@ class ReleaseTest(unittest.TestCase):
         (self.dist / "release.json").write_text(
             json.dumps(
                 {
-                    "version": "1.2.3",
-                    "producerCommit": self.commit,
-                    "artifacts": artifacts,
+                    "releases": [],
+                    "questiedb": {
+                        "version": "1.2.3",
+                        "producerCommit": self.commit,
+                        "artifacts": artifacts,
+                    },
                 }
             ),
             encoding="utf-8",

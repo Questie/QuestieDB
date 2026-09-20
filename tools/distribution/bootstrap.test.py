@@ -76,7 +76,7 @@ class BootstrapTest(unittest.TestCase):
                 if name.endswith(".zip")
             ],
         }
-        self.assets["release.json"] = json.dumps(manifest).encode()
+        self.assets["release.json"] = json.dumps({"releases": [], "questiedb": manifest}).encode()
 
     def download(self, url, destination):
         self.requests.append(url)
@@ -136,13 +136,21 @@ class BootstrapTest(unittest.TestCase):
         cases = [
             [],
             {},
-            {"artifacts": []},
-            {"artifacts": [None]},
-            {"artifacts": [{"file": "../payload.zip", "sha256": "a" * 64}]},
-            {"artifacts": [{"file": "https://elsewhere/payload.zip", "sha256": "a" * 64}]},
-            {"artifacts": [{"file": "QuestieDB-all.zip", "sha256": "bad"}]},
-            {"artifacts": [{"file": "QuestieDB-Vanilla.zip", "sha256": "a" * 64}]},
-            {"artifacts": [{"file": "QuestieDB-all.zip", "sha256": "a" * 64}] * 2},
+            {"questiedb": None},
+            json.loads(self.assets["release.json"])["questiedb"],
+            *(
+                {"releases": [], "questiedb": metadata}
+                for metadata in (
+                    {},
+                    {"artifacts": []},
+                    {"artifacts": [None]},
+                    {"artifacts": [{"file": "../payload.zip", "sha256": "a" * 64}]},
+                    {"artifacts": [{"file": "https://elsewhere/payload.zip", "sha256": "a" * 64}]},
+                    {"artifacts": [{"file": "QuestieDB-all.zip", "sha256": "bad"}]},
+                    {"artifacts": [{"file": "QuestieDB-Vanilla.zip", "sha256": "a" * 64}]},
+                    {"artifacts": [{"file": "QuestieDB-all.zip", "sha256": "a" * 64}] * 2},
+                )
+            ),
         ]
         for manifest in cases:
             with self.subTest(manifest=manifest):

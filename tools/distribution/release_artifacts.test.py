@@ -45,7 +45,9 @@ class ReleaseFixture(unittest.TestCase):
         self.write_manifest()
 
     def write_manifest(self):
-        (self.dist / "release.json").write_text(json.dumps(self.manifest), encoding="utf-8")
+        (self.dist / "release.json").write_text(
+            json.dumps({"releases": [], "questiedb": self.manifest}), encoding="utf-8"
+        )
 
     def run_verifier(self, commit=None):
         return subprocess.run(
@@ -120,6 +122,11 @@ class VerificationTest(ReleaseFixture):
 
     def test_malformed_manifest_fields_are_rejected(self):
         valid = self.manifest
+        for document in ([], {}, {"questiedb": None}, valid):
+            with self.subTest(document=document):
+                (self.dist / "release.json").write_text(json.dumps(document), encoding="utf-8")
+                self.assert_rejected_by_both()
+
         for manifest in (
             [],
             {},

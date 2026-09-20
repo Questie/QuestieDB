@@ -48,6 +48,9 @@ def verify(dist: Path, expected_commit: str | None = None) -> VerifiedRelease:
 
     if not isinstance(manifest, dict):
         raise ValueError("release manifest must be an object")
+    if not isinstance(manifest.get("questiedb"), dict):
+        raise ValueError("release manifest must contain a questiedb object")
+    manifest = manifest["questiedb"]
 
     version = manifest.get("version")
     commit = manifest.get("producerCommit")

@@ -594,12 +594,15 @@ contract keeps working across additive releases. Requirements must be positive i
 fractional numbers, numeric strings, missing values, NaN, and infinity are rejected.
 The floor rises only when a breaking change genuinely abandons older consumers.
 
-Published `release.json` manifests include `version`, `contractVersion`, and
-`minSupportedContract`. `version` is the actual packaged TOC version, including the
+Published `release.json` manifests include `questiedb.version`, `questiedb.contractVersion`, and
+`questiedb.minSupportedContract`. `version` is the actual packaged TOC version, including the
 `-dev.<commit>` suffix for previews. Packaging verifies that all selected flavors agree
 on their version and that their contract matches the shipped runtime configuration.
 Consumers selecting published releases must check the complete supported range, not
-just whether the provider's current contract is greater than their requirement.
+just whether the provider's current contract is greater than their requirement. Root `releases`
+entries describe addon-manager downloads; `questiedb.artifacts` retains provider ZIP checksums
+and sizes. See the [release manifest format](../tools/distribution/README.md#release-manifest)
+for provenance, changelog, and combined-release consumption.
 
 ---
 

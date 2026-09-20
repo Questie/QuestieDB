@@ -243,7 +243,7 @@ It checks prerequisites and requested inputs before replacing `.out/dist/` and `
 a later packaging failure can still leave incomplete output. Missing requested TOCs are errors,
 not silently skipped flavors. Run the validation gates separately before distributing a build.
 
-The manifest records the packaged addon `version`, `contractVersion`, and
+The manifest's `questiedb` object records the packaged addon `version`, `contractVersion`, and
 `minSupportedContract`, alongside commit provenance and ZIP checksums. The version comes
 from the Baked TOCs, not the current Source TOC or a moving release tag. Packaging rejects
 mixed flavor versions, malformed version/contract headers, and TOC contracts that differ
@@ -411,8 +411,9 @@ Release notes recommend `QuestieDB-all.zip`, list the smaller per-flavor downloa
 installation. Commit provenance, API contracts, and checksum instructions live in a collapsed
 build-details section.
 
-Every release ZIP includes `QuestieDB/CHANGELOG.md`. The separate `release.json` asset contains
-build metadata, ZIP checksums, and structured changelog entries for consuming tools.
+Every release ZIP includes `QuestieDB/CHANGELOG.md`. The separate `release.json` asset lists
+addon-manager downloads under `releases` and keeps build metadata, ZIP checksums, and structured
+changelog entries under `questiedb`. See the [manifest format](tools/distribution/README.md#release-manifest).
 
 For contributors and release maintainers, see the distribution guide:
 
@@ -529,6 +530,7 @@ lists; Baked mode also exposes scalar rows and table producers for its cache fas
 | | |
 | --- | --- |
 | [`docs/api.md`](docs/api.md) | the public surface, for consumers |
+| [`docs/release-format.md`](docs/release-format.md) | shared release metadata and addon composition rules |
 | [`tools/README.md`](tools/README.md) | tooling categories and ownership |
 | [`docs/storage-format.md`](docs/storage-format.md) | the on-disk contract and the nil/empty rules |
 | [`docs/support-data.md`](docs/support-data.md) | support-data selection, shapes, inventory, and drift checks |

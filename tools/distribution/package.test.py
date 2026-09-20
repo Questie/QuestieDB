@@ -25,6 +25,20 @@ import release_artifacts
 
 ROOT = Path(__file__).resolve().parents[2]
 FLAVORS = ("Vanilla", "TBC", "Wrath", "Cata", "Mists")
+MANAGER_FLAVORS = {
+    "Vanilla": "classic",
+    "TBC": "bcc",
+    "Wrath": "wrath",
+    "Cata": "cata",
+    "Mists": "mists",
+}
+TOC_INTERFACES = {
+    "Vanilla": "11508, 11509",
+    "TBC": "20506",
+    "Wrath": "30405, 38000, 38001, 38002",
+    "Cata": "40402",
+    "Mists": "50503, 50504",
+}
 PIN = "a" * 40
 CREDIT_FIXTURES = json.loads(
     (ROOT / "tools/distribution/fixtures/author-credits.json").read_text(encoding="utf-8")
@@ -476,6 +490,7 @@ class PackageTest(unittest.TestCase):
                 "QuestieDB_%s.toc" % flavor,
                 "## X-QUESTIE-COMMIT: %s\n" % PIN
                 + "## Version: 1.2.3-dev.abcdef0\n## X-Contract-Version: 2\n"
+                + "## Interface: %s\n" % TOC_INTERFACES[flavor]
                 + "## IconTexture: Interface\\AddOns\\QuestieDB\\icons\\QuestieTDB_64x64.png\n"
                 + "src\\config.lua\nsrc\\runtime.lua\nsrc\\corrections\\Era\\fixes.lua\n"
                 + "support\\%s.lua\n" % flavor
@@ -490,6 +505,7 @@ class PackageTest(unittest.TestCase):
             QUESTIEDB_TEST_FAIL_STRIP="0",
         )
         self.env.pop("QUESTIE_COMMIT", None)
+        self.env.pop("GITHUB_REPOSITORY", None)
 
     def write(self, relative, content):
         path = self.root / relative
@@ -514,7 +530,15 @@ class PackageTest(unittest.TestCase):
         result = self.run_package("all")
         self.assertEqual(0, result.returncode, result.stdout + result.stderr)
         dist = self.root / ".out/dist"
-        manifest = json.loads((dist / "release.json").read_text())
+        document = json.loads((dist / "release.json").read_text())
+        self.assertEqual({"releases", "questiedb"}, set(document))
+        manifest = document["questiedb"]
+        self.assertEqual(
+            [entry["file"] for entry in manifest["artifacts"]],
+            [entry["filename"] for entry in document["releases"]],
+        )
+        releases = {entry["filename"]: entry for entry in document["releases"]}
+        self.assertEqual("https://github.com/Questie/QuestieDB", manifest["repository"])
         self.assertEqual("0" * 40, manifest["producerCommit"])
         self.assertEqual(PIN, manifest["questieCommit"])
         self.assertEqual(2, manifest["contractVersion"])
@@ -553,6 +577,24 @@ class PackageTest(unittest.TestCase):
                 expected.update("QuestieDB/QuestieDB_%s.toc" % f for f in flavors)
                 expected.update("QuestieDB/support/%s.lua" % f for f in flavors)
                 self.assertEqual(expected, names)
+
+                # Manager metadata must describe the TOCs actually inside this ZIP.
+                metadata = []
+                for flavor in flavors:
+                    toc = archive.read(f"QuestieDB/QuestieDB_{flavor}.toc").decode("utf-8")
+                    interfaces = next(
+                        line.split(":", 1)[1]
+                        for line in toc.splitlines()
+                        if line.startswith("## Interface:")
+                    )
+                    metadata.extend(
+                        {"flavor": MANAGER_FLAVORS[flavor], "interface": int(value)}
+                        for value in interfaces.split(",")
+                    )
+                self.assertEqual(
+                    {"filename": entry["file"], "nolib": False, "metadata": metadata},
+                    releases[entry["file"]],
+                )
                 self.assertEqual(
                     (self.root / "src/config.lua").read_bytes(),
                     archive.read("QuestieDB/src/config.lua"),
@@ -640,10 +682,14 @@ class PackageTest(unittest.TestCase):
                 git("tag", "v1.2.2")
 
         self.env["PATH"] = os.environ["PATH"]
+        self.env["GITHUB_REPOSITORY"] = "Example/Database/"
         result = self.run_package("all")
         self.assertEqual(0, result.returncode, result.stdout + result.stderr)
         dist = self.root / ".out/dist"
-        manifest = json.loads((dist / "release.json").read_text(encoding="utf-8"))
+        manifest = json.loads((dist / "release.json").read_text(encoding="utf-8"))["questiedb"]
+        self.assertEqual("https://github.com/Example/Database", manifest["repository"])
+        self.assertEqual(commits[-1], manifest["producerCommit"])
+        self.assertEqual(PIN, manifest["questieCommit"])
         verified = release_artifacts.verify(dist, git("rev-parse", "HEAD"))
         self.assertEqual(
             [dist / artifact["file"] for artifact in manifest["artifacts"]],
@@ -685,7 +731,7 @@ class PackageTest(unittest.TestCase):
             self.assertIn("- " + entry["text"], changelog)
             for name in [entry["author"], *entry["coAuthors"]]:
                 self.assertIn(
-                    f"[{name}](https://github.com/Questie/QuestieDB/commit/{entry['commit']})",
+                    f"[{name}]({manifest['repository']}/commit/{entry['commit']})",
                     changelog,
                 )
         self.assertNotIn("example.invalid", changelog + notes + json.dumps(manifest))
@@ -710,11 +756,60 @@ class PackageTest(unittest.TestCase):
         )
         self.assertEqual(bootstrap.TOCS, {path.name for path in installed.glob("QuestieDB_*.toc")})
 
+    def test_manifest_wrapper_preserves_additional_metadata_and_changelog_order(self):
+        metadata = {
+            "repository": "https://github.com/Example/Database",
+            "producerCommit": "b" * 40,
+            "questieCommit": PIN,
+            "version": "1.2.3",
+            "contractVersion": 2,
+            "minSupportedContract": 1,
+            "builtAt": "2023-11-14T22:13:20Z",
+            "nolib": False,
+            "artifacts": [
+                {
+                    "flavor": "Vanilla",
+                    "file": "custom-download.zip",
+                    "sha256": "c" * 64,
+                    "bytes": 123,
+                    "rawBytes": 456,
+                    "additionalArtifactField": [1, None],
+                }
+            ],
+            "additionalProviderField": {"nested": [True, "retained", None]},
+            "changelog": [
+                {"category": "db", "text": "Preserve this entry", "customCredit": "kept"}
+            ],
+        }
+        original = json.loads(json.dumps(metadata))
+        source = packager.read_source(self.root, "Vanilla")
+        document = packager.release_manifest(metadata, [source])
+        self.assertEqual(original, metadata)
+        self.assertEqual(original, document["questiedb"])
+        self.assertEqual("changelog", list(document["questiedb"])[-1])
+        self.assertEqual("custom-download.zip", document["releases"][0]["filename"])
+
     def test_single_flavor_package(self):
+        toc = self.root / "QuestieDB_Vanilla.toc"
+        toc.write_text(toc.read_text().replace(TOC_INTERFACES["Vanilla"], "11599, 11600"))
         result = self.run_package("Vanilla")
         self.assertEqual(0, result.returncode, result.stderr)
         self.assertEqual(
             ["QuestieDB-Vanilla.zip"], [p.name for p in (self.root / ".out/dist").glob("*.zip")]
+        )
+        document = json.loads((self.root / ".out/dist/release.json").read_text())
+        self.assertEqual(
+            [
+                {
+                    "filename": "QuestieDB-Vanilla.zip",
+                    "nolib": False,
+                    "metadata": [
+                        {"flavor": "classic", "interface": 11599},
+                        {"flavor": "classic", "interface": 11600},
+                    ],
+                },
+            ],
+            document["releases"],
         )
         notes = (self.root / ".out/dist/RELEASE_NOTES.md").read_text()
         self.assertIn("[QuestieDB-Vanilla.zip]", notes)
@@ -777,8 +872,11 @@ class PackageTest(unittest.TestCase):
         self.write("QuestieDB.toc", "## Version: 9.9.9\n")
         result = self.run_package("Vanilla")
         self.assertEqual(0, result.returncode, result.stderr)
-        manifest = json.loads((self.root / ".out/dist/release.json").read_text())
+        manifest = json.loads((self.root / ".out/dist/release.json").read_text())["questiedb"]
         self.assertEqual("1.2.3", manifest["version"])
+        self.assertEqual("https://github.com/Questie/QuestieDB", manifest["repository"])
+        self.assertEqual("0" * 40, manifest["producerCommit"])
+        self.assertEqual(PIN, manifest["questieCommit"])
         notes = (self.root / ".out/dist/RELEASE_NOTES.md").read_text()
         self.assertTrue(notes.startswith("# QuestieDB 1.2.3\n"))
         self.assertIn("/releases/download/v1.2.3/QuestieDB-Vanilla.zip", notes)
@@ -795,7 +893,7 @@ class PackageTest(unittest.TestCase):
         )
         result = self.run_package("Vanilla")
         self.assertEqual(0, result.returncode, result.stderr)
-        manifest = json.loads((self.root / ".out/dist/release.json").read_text())
+        manifest = json.loads((self.root / ".out/dist/release.json").read_text())["questiedb"]
         self.assertEqual(2, manifest["minSupportedContract"])
         self.assertEqual(2, manifest["contractVersion"])
 
@@ -837,6 +935,11 @@ class PackageTest(unittest.TestCase):
             "## X-Contract-Version: 0",
             "## X-Contract-Version: 1.5",
             "## X-Contract-Version: 2\n## x-contract-version: 2",
+            "## Interface:",
+            "## Interface: 0",
+            "## Interface: 11508, bad",
+            "## Interface: 11508,",
+            "## Interface: 11508\n## interface: 11509",
         ):
             with self.subTest(header=header):
                 self.preserve_previous_output()

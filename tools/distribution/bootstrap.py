@@ -141,11 +141,10 @@ def install(addons: Path, tag: str = "latest", repo: str = "Questie/QuestieDB") 
         download(base + "/release.json", manifest_path)
 
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-        if (
-            not isinstance(manifest, dict)
-            or not isinstance(manifest.get("artifacts"), list)
-            or not manifest["artifacts"]
-        ):
+        if not isinstance(manifest, dict) or not isinstance(manifest.get("questiedb"), dict):
+            raise ValueError("release manifest must contain a questiedb object")
+        manifest = manifest["questiedb"]
+        if not isinstance(manifest.get("artifacts"), list) or not manifest["artifacts"]:
             raise ValueError("manifest listed no artifacts")
 
         combined = [

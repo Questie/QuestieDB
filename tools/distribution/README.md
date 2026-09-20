@@ -14,6 +14,41 @@ Run commands from the repository root. For setup and platform requirements, see
 | [`strip-static.lua`](strip-static.lua) | Strip Static Correction bodies from staged copies and verify behavior parity |
 | [`bootstrap.py`](bootstrap.py) | Download, verify, and install the combined release archive |
 
+## Release manifest
+
+See the [shared release metadata format](../../docs/release-format.md) for project-neutral
+composition rules. The details below describe QuestieDB's packaging.
+
+`release.json` separates addon-manager downloads from provider metadata:
+
+- Root `releases` lists the ZIPs actually packaged. Each entry has `filename`, `nolib`, and
+  `metadata`, with one `{ "flavor": "classic", "interface": 11508 }` pair per declared
+  interface version in its packaged TOCs. Per-flavor ZIPs list only their own declarations;
+  the combined ZIP lists all included flavors. Interface values are integers, not strings.
+- `questiedb` contains the entire provider manifest: `repository`, `producerCommit`, `questieCommit`,
+  `version`, `contractVersion`, `minSupportedContract`, `builtAt`, `nolib`, `artifacts`, and
+  `changelog`. All fields are wrapped unchanged, including additional fields rather than a
+  fixed subset.
+
+Addon-manager flavor identifiers follow Questie's release conventions: `Vanilla` → `classic`,
+`TBC` → `bcc`, `Wrath` → `wrath`, `Cata` → `cata`, and `Mists` → `mists`. Internal labels in
+`questiedb.artifacts` stay unchanged. Each artifact still includes its `file`, `flavor`,
+`sha256`, `bytes`, and `rawBytes`; the manager-facing entries do not replace that information.
+
+`questiedb.repository` is the HTTPS source repository URL without a trailing slash. It comes
+from `GITHUB_REPOSITORY` (default `Questie/QuestieDB`) and is also used for release-note links.
+
+`questiedb.producerCommit` identifies this QuestieDB build. `questiedb.questieCommit` remains
+the legacy Questie import/schema baseline, not the producing commit of Questie's current release.
+A combined Questie release can supply its own root `releases` and `questie` metadata while
+copying the selected provider's complete `questiedb` object unchanged, including unknown fields.
+It can then use `questiedb.artifacts` to verify the provider ZIP and `questiedb.changelog` to
+render its changes without reconstructing provider metadata.
+
+Bootstrap and the shared release verifier read the nested `questiedb` object only. The former
+flat manifest format is not accepted; update consumers alongside this format change before
+publishing. ZIP names, contents, and release-selection policies are unchanged.
+
 ## Changelog entries
 
 Use Questie's bracketed commit-subject prefixes to opt user-facing changes into the changelog:
@@ -46,9 +81,9 @@ Local packages without Git or with shallow history explicitly report an unavaila
 ### Packaged and structured changelogs
 
 The same collected entries produce the GitHub release notes, `QuestieDB/CHANGELOG.md` inside
-every ZIP, and the `changelog` array in `release.json`. This is the current release's changelog,
-not a cumulative history or a flavor-specific subset. The array is the manifest's last field
-so build metadata and ZIP checksums remain visible first:
+every ZIP, and the `questiedb.changelog` array in `release.json`. This is the current release's
+changelog, not a cumulative history or a flavor-specific subset. Within `questiedb`, the array
+is the last field so build metadata and ZIP checksums remain visible first:
 
 ```json
 "changelog": [
@@ -141,8 +176,8 @@ cannot be overridden. Repository-wide release immutability is incompatible with 
 
 Baked addon versions are `X.X.X` for stable releases and `X.X.X-dev.<short SHA>` otherwise.
 Local Generation follows the same rule; `QUESTIEDB_RELEASE=true` selects the stable-release form.
-The manifest and TOCs retain the exact producing commit and legacy Questie import/schema
-baseline. The producing commit identifies the owned localization sources.
+The manifest's `questiedb` object and TOCs retain the exact producing commit and legacy Questie
+import/schema baseline. The producing commit identifies the owned localization sources.
 
 ### Validation and publication order
 
@@ -167,9 +202,9 @@ and every compiler differential. Only GitHub publication is configured.
 Publication jobs queue without cancelling active or pending releases. The publisher checks the
 handoff's commit and ZIP checksums before any mutation, then rejects stale preview builds.
 
-Dry-run reporting and publication both use `release_artifacts.verify` for the artifact checks:
-producing commit, complete unique ZIP inventory, SHA-256 checksums, ZIP readability, and release-note
-availability. Supported flavors come from the packager. The verifier returns approved ZIPs only
+Dry-run reporting and publication both use `release_artifacts.verify` to check the nested
+`questiedb` metadata: producing commit, complete unique ZIP inventory, SHA-256 checksums, ZIP
+readability, and release-note availability. Supported flavors come from the packager. The verifier returns approved ZIPs only
 after every check passes; `release.py` uploads that list rather than maintaining a second one.
 The verifier's standalone CLI also exposes those paths for other tooling. `preview.py` formats
 the verified result and adds no release validation rules.

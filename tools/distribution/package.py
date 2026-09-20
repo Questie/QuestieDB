@@ -29,6 +29,13 @@ import release_notes
 
 ROOT = Path(__file__).resolve().parents[2]
 FLAVORS = ("Vanilla", "TBC", "Wrath", "Cata", "Mists")
+ADDON_MANAGER_FLAVORS = {
+    "Vanilla": "classic",
+    "TBC": "bcc",
+    "Wrath": "wrath",
+    "Cata": "cata",
+    "Mists": "mists",
+}
 ZERO_COMMIT = "0" * 40
 
 
@@ -42,6 +49,7 @@ class FlavorSource:
     questie_commit: str
     version: str
     contract_version: int
+    interfaces: tuple[int, ...]
 
 
 class Artifact(TypedDict):
@@ -92,7 +100,7 @@ def read_source(root: Path, flavor: str) -> FlavorSource:
                 key, value = line[2:].split(":", 1)
                 key = key.strip().lower()
 
-                if key in ("version", "x-contract-version", "x-questie-commit"):
+                if key in ("version", "x-contract-version", "x-questie-commit", "interface"):
                     if key in headers:
                         raise ValueError("%s repeats metadata field: %s" % (toc, key))
                     headers[key] = value.strip()
@@ -133,7 +141,19 @@ def read_source(root: Path, flavor: str) -> FlavorSource:
     if Path("src/config.lua") not in files:
         raise ValueError("%s must load src/config.lua for its runtime contract" % toc)
 
-    return FlavorSource(flavor, toc, tuple(files), questie_commit, version, int(contract))
+    interfaces = [value.strip() for value in headers.get("interface", "").split(",")]
+    if any(not re.fullmatch(r"[1-9][0-9]*", value) for value in interfaces):
+        raise ValueError("%s needs comma-separated positive integer Interface versions" % toc)
+
+    return FlavorSource(
+        flavor,
+        toc,
+        tuple(files),
+        questie_commit,
+        version,
+        int(contract),
+        tuple(int(value) for value in interfaces),
+    )
 
 
 def producer_commit(root: Path) -> str:
@@ -229,6 +249,28 @@ def build_zip(
     }
 
 
+def release_manifest(metadata: dict, sources: list[FlavorSource]) -> dict:
+    """Describe packaged downloads for addon managers without rebuilding provider metadata."""
+    by_flavor = {source.flavor: source for source in sources}
+    releases = []
+    for artifact in metadata["artifacts"]:
+        included = sources if artifact["flavor"] == "All" else [by_flavor[artifact["flavor"]]]
+        releases.append(
+            {
+                "filename": artifact["file"],
+                "nolib": metadata["nolib"],
+                "metadata": [
+                    {"flavor": ADDON_MANAGER_FLAVORS[source.flavor], "interface": interface}
+                    for source in included
+                    for interface in source.interfaces
+                ],
+            }
+        )
+
+    # Keep the whole object, including additional fields and its changelog-last ordering.
+    return {"releases": releases, "questiedb": metadata}
+
+
 def package(root: Path, flavors: list[str]) -> None:
     """Preflight inputs before clearing output, then publish a local manifest last."""
     # Complete input and tool checks before replacing any previous local output.
@@ -296,9 +338,9 @@ def package(root: Path, flavors: list[str]) -> None:
         else datetime.now(timezone.utc)
     )
     commit = producer_commit(root)
-    repository_url = "https://github.com/" + os.environ.get(
-        "GITHUB_REPOSITORY", "Questie/QuestieDB"
-    )
+    repository_url = (
+        "https://github.com/" + os.environ.get("GITHUB_REPOSITORY", "Questie/QuestieDB")
+    ).rstrip("/")
     changes = release_notes.changelog(root, version, commit, repository_url)
     changelog = f"# QuestieDB {version}\n\n" + changes.markdown
 
@@ -318,6 +360,7 @@ def package(root: Path, flavors: list[str]) -> None:
 
     # Keep the potentially long changelog last so metadata stays easy to inspect.
     manifest = {
+        "repository": repository_url,
         "producerCommit": commit,
         "questieCommit": questie_commit,
         "version": version,
@@ -328,6 +371,7 @@ def package(root: Path, flavors: list[str]) -> None:
         "artifacts": artifacts,
         "changelog": changes.entries,
     }
+    manifest = release_manifest(manifest, sources)
     (dist / "release.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     (dist / "RELEASE_NOTES.md").write_text(
         release_notes.render(
