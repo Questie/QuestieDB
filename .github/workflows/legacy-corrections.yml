@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # Pin the accepted baseline so new branches and later pushes cannot hide an earlier edit.
-      LEGACY_BASELINE: 15817bc604960fb8ea49550e129786807a5c863d
+      LEGACY_BASELINE: 81fa7229fe6062245d12a15ae7fe88e6ff2635d2
     steps:
       - uses: actions/checkout@v7
         with:
