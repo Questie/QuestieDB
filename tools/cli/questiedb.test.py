@@ -270,7 +270,7 @@ class CommandFlowTest(unittest.TestCase):
         for script in ("tools/cli/questiedb.test.py", "tools/validation/test-scopes.test.py",
                        "tools/distribution/forever.test.py",
                        "tools/dbc/coordinates.test.py", "tools/dbc/download.test.py",
-                       "tools/dbc/rewrite.test.py", "tools/dbc/convert.test.py"):
+                       "tools/dbc/rewrite.test.py", "tools/dbc/convert.test.py", "tools/dbc/support.test.py"):
             shutil.copyfile(FIXTURES / "read.py", self.root / script)
 
     def run_cli(self, *args):
@@ -285,7 +285,7 @@ class CommandFlowTest(unittest.TestCase):
         self.assertEqual(1, events.count("generate:Mists"))
         last_generation = max(events.index("generate:Vanilla"), events.index("generate:Mists"))
         reads = [index for index, event in enumerate(events) if event.startswith("read:")]
-        self.assertEqual(18, len(reads))
+        self.assertEqual(19, len(reads))
         self.assertEqual(1, sum(event.endswith("tools/distribution/forever.test.py") for event in events))
         self.assertTrue(all(index > last_generation for index in reads))
         self.assertFalse((self.root / ".out/dist").exists())
@@ -389,11 +389,13 @@ class CommandFlowTest(unittest.TestCase):
         for task, code, args in (("package", "7", ["Vanilla", "argument with spaces"]),
                                  ("bootstrap", "3", ["AddOns path with spaces", "preview"]),
                                  ("dbc-coordinates", "4", ["--database", "path with spaces"]),
-                                 ("convert-forever", "5", ["--dry-run"])):
+                                 ("convert-forever", "5", ["--dry-run"]),
+                                 ("dbc-support", "6", ["--database", "local path.db", "--build", "1.60.1.69893"])):
             with self.subTest(task=task):
                 self.env["QUESTIEDB_TEST_EXIT"] = code
                 shutil.copyfile(FIXTURES / "arguments.py", self.root / ({"dbc-coordinates": "tools/dbc/maps.py",
-                                   "convert-forever": "tools/dbc/convert.py"}.get(task, "tools/distribution/" + task + ".py")))
+                                   "convert-forever": "tools/dbc/convert.py",
+                                   "dbc-support": "tools/dbc/support.py"}.get(task, "tools/distribution/" + task + ".py")))
                 result = self.run_cli(task, *args)
                 self.assertEqual(int(code), result.returncode)
                 self.assertEqual(args, json.loads(result.stdout))

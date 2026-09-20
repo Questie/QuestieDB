@@ -12,6 +12,7 @@ Tasks:
   bootstrap      Download an install: bootstrap <AddOns-path> [tag] [--repo=OWNER/REPO]
   dbc-coordinates  Inspect Era/Forever map transforms (--help for build/point options)
   convert-forever  Convert Era data/corrections into separate Forever files (--help)
+  dbc-support     Generate candidate-only Forever map support from local DBC (--help)
   verify equivalence reconstruct validators test determinism freeze
 
 Flavors: Vanilla TBC Wrath Cata Mists Forever; omitted means all applicable flavors.
@@ -360,7 +361,7 @@ def execute(options: Options, root: Path) -> int:
             jobs.append(Job("test:scopes", [sys.executable, "tools/validation/test-scopes.test.py"], 100))
             jobs.append(Job("test:distribution:forever",
                             [sys.executable, "tools/distribution/forever.test.py"], 450))
-            for tool in ("coordinates", "download", "rewrite", "convert"):
+            for tool in ("coordinates", "download", "rewrite", "convert", "support"):
                 jobs.append(Job("test:dbc:" + tool, [sys.executable, "tools/dbc/" + tool + ".test.py"], 100))
             continue
         for flavor in options.flavors:
@@ -389,6 +390,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     standalone = {
         "package": "tools/distribution/package.py", "bootstrap": "tools/distribution/bootstrap.py",
         "dbc-coordinates": "tools/dbc/maps.py", "convert-forever": "tools/dbc/convert.py",
+        "dbc-support": "tools/dbc/support.py",
     }
     if args and args[0] in standalone:
         task = args.pop(0)

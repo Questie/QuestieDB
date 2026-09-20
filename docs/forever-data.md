@@ -257,6 +257,19 @@ equivalence, and focused behavior tests. No compiler comparison or full-data gol
 is required. See [the integration guide](forever.md) for normal commands and client-acceptance
 requirements.
 
+### Candidate-only support export
+
+`questiedb.sh dbc-support` (or `questiedb.ps1`) now reproduces the completed map handoff
+and the current 40 compatibility pairs from an explicit existing DBC snapshot plus reviewed
+exceptions. It writes two mapping candidates and an evidence report under
+`.out/forever-support/`, never active support. See the
+[candidate workflow](../tools/dbc/README.md#generate-forever-map-support-candidates).
+
+The historical external generator above remains unchanged and unsafe to run over its manual
+handoff. Active Forever Lua still owns the shipped maps. Candidate adoption and any transfer
+to generated support ownership require separate review; the consumer sentinel fix and
+version-skew safeguards are still prerequisites to retiring compatibility links.
+
 ### Deliberate conversion or DBC refresh
 
 The converter now lives in this repository under `tools/dbc/`; using it does not require

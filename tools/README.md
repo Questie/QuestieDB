@@ -10,17 +10,19 @@ tests, and the bundled interpreters. See [the main README](../README.md#for-cont
 | `cli/` | Contributor command orchestration and launcher support |
 | `lua-binary/` | Prebuilt Windows/Linux x64 Lua 5.1 interpreters, checksums, and notices |
 | [`distribution/`](distribution/README.md) | Packaging, changelogs, publishing, Static Correction stripping, and release downloads/installations |
-| [`dbc/`](dbc/README.md) | DBC source downloads, map-coordinate comparison, and separate Era-to-Forever source conversion |
+| [`dbc/`](dbc/README.md) | DBC source downloads, map-coordinate comparison, candidate Forever map support, and separate Era-to-Forever source conversion |
 | `validation/` | QuestieDB's own behavior checks and shared test-fixture helpers |
 | `probe-addon/` | Live-client storage and API probes |
 
-The root commands `dbc-coordinates` and `convert-forever` reuse the owned
-[DBC tools](dbc/README.md); neither runs during normal Generation. Use an explicit existing
+The root commands `dbc-coordinates`, `convert-forever` and `dbc-support` reuse the owned
+[DBC tools](dbc/README.md); none runs during normal Generation. Use an explicit existing
 `--database` path to avoid a missing-cache download. Conversion writes ten files plus its
 manifest and protects edited outputs. See [Forever](../docs/forever.md) before rerunning it.
+`dbc-support` never downloads; it writes only review candidates under `.out/forever-support/`,
+retaining current reviewed compatibility separately from native map facts.
 
 Generation and packaging cover six flavors. The `test` command includes shared behavior
-checks, selected artifact scopes, Forever distribution integration, and four DBC fixture suites.
+checks, selected artifact scopes, Forever distribution integration, and five DBC fixture suites.
 No flavor requires a Questie checkout or a full-data snapshot refresh.
 
 Tests for a tool stay beside its implementation. Python owns process orchestration and the

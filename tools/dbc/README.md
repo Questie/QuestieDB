@@ -1,4 +1,97 @@
-# DBC coordinate tools
+# DBC spatial tools
+
+Inspect coordinate transforms, perform deliberate baseline migrations, or generate
+candidate-only Forever map support. None of these commands runs during normal Generation
+or runtime reads.
+
+## Generate Forever map support candidates
+
+From the QuestieDB root, using an **existing** local database:
+
+```sh
+./questiedb.sh dbc-support \
+  --database .cache/dbc/dbc-source.db --build 1.60.1.69893 \
+  --output .out/forever-support/review
+```
+
+Use the same arguments with `questiedb.ps1`. This command never downloads a database.
+It writes only under this checkout's `.out/forever-support/`:
+
+- `Zones/areaIdToUiMapId.lua`: direct and parent-resolved routes, with separate overrides.
+- `Zones/uiMapIdToAreaId.lua`: canonical direct reverse mappings, with separate overrides.
+- `report.json`: exact source projections/coverage, full assignment evidence, native map
+  inventory, parent chains, exceptions, unresolved cases and candidate file hashes.
+
+These are **review candidates, not a complete runtime ZoneDB bundle**. Do not copy them
+into active support without reviewing current authored changes. Entrances, subzone and
+instance tables, symbols and entity coordinates remain untouched. Retired-map compatibility
+must not be used as a native-map allowlist.
+
+### Inputs and ownership
+
+`spatial.py` distinguishes areas, world MapIDs, UI maps, assignment-derived routes, authored
+points with undeclared/declared frames, and instance presence. It preserves direct routes;
+otherwise it selects the highest directly mapped ancestor. A selected map does not establish
+an existing point's frame. Unsupported/ambiguous primary assignments block inferred routing
+through their parent chain. Canonical reverse mappings are never built by inverting the
+many-to-one descendant table.
+
+`forever-spatial-exceptions.json` records reviewed policy with stable IDs, exact build and
+source projection applicability, evidence and retirement conditions. Native aliases,
+suppression and retired-map compatibility are distinct. Synthetic keys must not collide with
+real areas. The legacy Blackrock Spire key 1585 is absent from this AreaTable snapshot; it is
+retained as a legacy key, not relabeled as a real area or invented synthetic area.
+
+The exception input is authoritative for candidate policy. Candidate Lua is generated.
+**Active Forever Lua remains authoritative until separately reviewed adoption.** At adoption,
+transfer ownership of these two mapping fields to the source facts and exceptions rather than
+maintaining both input and output by hand. See [ADR 0014](../../docs/adr/0014-offline-spatial-support-candidates.md).
+No entity authoring database, Lua provider evaluator or second coordinate converter is added.
+
+### Reviewed build and remaining gaps
+
+For `1.60.1.69893`, candidates reproduce the reviewed 54 direct, 1,010 inherited and 54 canonical
+reverse mappings, plus seven forward policy entries and three reverse aliases. They also
+preserve the current branch's **40 retired-map compatibility pairs** in both override tables.
+These counts describe this reviewed build, not generic resolver invariants.
+
+The report retains all 308 unresolved real areas, even when suppression or consumer
+compatibility supplies a legacy lookup. UiMaps 1463, 1464 and 2665 remain unresolved. The 24
+AreaTable records referencing absent world MapIDs are reported rather than fabricated. Current
+DBC parent routing for 2657 and 3217 agrees with the already-reviewed owned support fixes.
+
+All four required DBC tables need recorded `ok` coverage. Missing databases, fields, broken
+assignment references, parent cycles, exception collisions and mismatched source projections
+fail before candidate installation. Restricted or ambiguous assignments remain explicit
+unresolved evidence rather than guessed geometry. The report fingerprints full assignment
+rows, including unknown selectors, separately from the historical selected-field projections.
+
+Repeated runs with identical inputs produce identical bytes. The existing protected installer
+uses separate candidate ownership and installs the report last. Hand-edited/unowned files and
+symlinked destinations are rejected; rollback retains recovery data if restoration is unsafe.
+There is no runtime installation or compatibility-removal flag.
+
+### Candidate validation
+
+```sh
+uv run --no-project python tools/dbc/support.test.py
+FOREVER_DBC_DATABASE="$PWD/.cache/dbc/dbc-source.db" \
+  uv run --no-project python tools/dbc/support.test.py
+```
+
+The first command uses small SQLite fixtures. The second adds pinned-build acceptance:
+actual Lua loading compares all four candidate base/override tables against current owned
+support, checks every ancestor annotation and the unresolved inventory, and verifies that a
+wrong target with unchanged counts fails. Set `LUA` to a Lua 5.1 executable if `lua5.1` is not
+on PATH. On PowerShell, set `$env:FOREVER_DBC_DATABASE` before running the second command.
+The real-data check is intentionally opt-in; ordinary fixture tests need no DBC cache.
+
+Existing coordinate/conversion tests cover Hawkwind's precise projection and two-decimal
+export, phases and source-preserving rewriting. The new position fixtures cover parent-frame
+separation, real zero points, partial-sentinel rejection, and Prince Tortheldrin/object instance
+presence. They do **not** claim to validate consumer entrance rendering or live placement.
+
+## Historical coordinate migration
 
 Create a separate Forever baseline from QuestieDB's Era data and corrections.
 The converter changes coordinate literals, not game content or runtime flavor
@@ -186,6 +279,7 @@ uv run --no-project python tools/dbc/coordinates.test.py
 uv run --no-project python tools/dbc/download.test.py
 uv run --no-project python tools/dbc/rewrite.test.py
 uv run --no-project python tools/dbc/convert.test.py
+uv run --no-project python tools/dbc/support.test.py
 uv run --no-project python tools/cli/questiedb.test.py
 ```
 
