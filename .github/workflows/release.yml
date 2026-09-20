@@ -15,26 +15,15 @@ on:
   workflow_dispatch:
     inputs:
       release:
-        description: |-
-          --release-build
-          Unchecked (default): development build with a commit SHA in its version.
-          Checked: stable release build vX.X.X, using the version in QuestieDB.toc.
-          This selects the build type only; publishing requires --publish checked.
+        description: "--release-build: Build a stable version instead of a development build. Does not publish by itself."
         type: boolean
         default: false
       publish:
-        description: |-
-          --publish
-          Unchecked (default): build, validate, and preview only; no tags or GitHub releases are modified.
-          Checked: publish the selected build to GitHub. Development builds update the rolling preview; release builds publish a stable version.
+        description: "--publish: Publish the selected build to GitHub. Leave unchecked to preview without changing tags or releases."
         type: boolean
         default: false
       override:
-        description: |-
-          --replace
-          Unchecked (default): existing stable versions block publication.
-          Checked: replace the existing stable release's assets and move its tag to this commit.
-          Requires --release-build checked; only modifies anything when --publish is checked.
+        description: "--replace: Overwrite an existing stable release and move its tag. Requires --release-build and --publish."
         type: boolean
         default: false
 
