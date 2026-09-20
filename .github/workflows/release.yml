@@ -1,7 +1,7 @@
 name: Release
 
 # Default-branch builds replace one rolling preview. Manual full releases use vX.X.X from
-# the committed Source TOC and default to a dry run. Pushes still publish preview automatically.
+# the committed Source TOC. Manual publication is opt-in; pushes publish preview automatically.
 # The manifest identifies the exact producing and Questie commits.
 #
 # Publication is impossible on red. `publish` needs both the artifact quality bar and the
@@ -14,16 +14,27 @@ on:
     branches: [main, master]
   workflow_dispatch:
     inputs:
-      dry_run:
-        description: "Build and preview the release without changing tags or GitHub releases"
-        type: boolean
-        default: true
       release:
-        description: "Build vX.X.X from QuestieDB.toc instead of a development preview"
+        description: |-
+          --release-build
+          Unchecked (default): development build with a commit SHA in its version.
+          Checked: stable release build vX.X.X, using the version in QuestieDB.toc.
+          This selects the build type only; publishing requires --publish checked.
+        type: boolean
+        default: false
+      publish:
+        description: |-
+          --publish
+          Unchecked (default): build, validate, and preview only; no tags or GitHub releases are modified.
+          Checked: publish the selected build to GitHub. Development builds update the rolling preview; release builds publish a stable version.
         type: boolean
         default: false
       override:
-        description: "Replace an existing full release's assets and move its tag to this commit"
+        description: |-
+          --replace
+          Unchecked (default): existing stable versions block publication.
+          Checked: replace the existing stable release's assets and move its tag to this commit.
+          Requires --release-build checked; only modifies anything when --publish is checked.
         type: boolean
         default: false
 
@@ -34,7 +45,7 @@ env:
   SOURCE_DATE_EPOCH: 1700000000
   QUESTIEDB_RELEASE: ${{ inputs.release && 'true' || 'false' }}
   RELEASE_OVERRIDE: ${{ inputs.override && 'true' || 'false' }}
-  DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'true' || 'false' }}
+  DRY_RUN: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.publish)) && 'false' || 'true' }}
   DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
 
 jobs:
@@ -265,7 +276,7 @@ jobs:
 
   dry_run:
     name: Preview dry-run release
-    if: github.event_name == 'workflow_dispatch' && inputs.dry_run
+    if: github.event_name == 'workflow_dispatch' && !inputs.publish
     runs-on: ubuntu-latest
     needs: [quality, differential]
     permissions:
@@ -296,7 +307,7 @@ jobs:
   publish:
     name: Publish
     # Manual publication is opt-in; push-triggered previews keep their existing behavior.
-    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false)
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.publish)
     runs-on: ubuntu-latest
     needs: [quality, differential]
     # Serialize mutations, not builds. Never cancel an upload midway through replacement.

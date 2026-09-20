@@ -195,7 +195,7 @@ def render(
         "Its downloads are replaced as development continues.\n"
         f"> For normal use, download the [latest stable release]({repository_url}/releases/latest).\n"
     )
-    title = "Unstable Pre-Release Build" if preview else f"QuestieDB {version}"
+    title = f"Unstable Pre-Release Build (v{version})" if preview else f"QuestieDB {version}"
     sections = [f"# {title}"]
     if preview:
         sections.append(warning.rstrip())

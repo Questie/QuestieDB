@@ -622,7 +622,9 @@ class PackageTest(unittest.TestCase):
 
         # Preview warnings and download links describe the artifacts actually built.
         notes = (dist / "RELEASE_NOTES.md").read_text()
-        self.assertTrue(notes.startswith("# Unstable Pre-Release Build\n\n> [!WARNING]"))
+        self.assertTrue(
+            notes.startswith("# Unstable Pre-Release Build (v1.2.3-dev.abcdef0)\n\n> [!WARNING]")
+        )
         self.assertEqual(2, notes.count("> [!WARNING]"))
         self.assertIn(
             "**Looking for the Questie quest helper? "
