@@ -28,6 +28,35 @@ except ValueError:
     LUA = None
 
 
+class PrerequisiteTest(unittest.TestCase):
+    def test_missing_github_cli_blocks_both_commands_before_work_starts(self):
+        for command in ("preflight", "publish"):
+            with self.subTest(command=command), contextlib.ExitStack() as stack:
+                which = stack.enter_context(
+                    patch.object(release.shutil, "which", return_value=None)
+                )
+                preflight = stack.enter_context(patch.object(release, "preflight"))
+                publish = stack.enter_context(patch.object(release, "publish"))
+                stderr = stack.enter_context(contextlib.redirect_stderr(io.StringIO()))
+
+                self.assertEqual(1, release.main([command]))
+                which.assert_called_once_with("gh")
+                preflight.assert_not_called()
+                publish.assert_not_called()
+                self.assertIn("GitHub CLI (gh) is required", stderr.getvalue())
+                self.assertIn("https://cli.github.com/", stderr.getvalue())
+                self.assertIn("PATH", stderr.getvalue())
+
+    def test_help_does_not_require_github_cli(self):
+        with patch.object(release.shutil, "which") as which, contextlib.redirect_stdout(
+            io.StringIO()
+        ):
+            with self.assertRaises(SystemExit) as result:
+                release.main(["--help"])
+            self.assertEqual(0, result.exception.code)
+            which.assert_not_called()
+
+
 @unittest.skipUnless(
     LUA and shutil.which("git"), "Lua 5.1 and Git are required for release fixtures"
 )
@@ -158,6 +187,7 @@ class ReleaseTest(unittest.TestCase):
         stdout, stderr = io.StringIO(), io.StringIO()
         with contextlib.ExitStack() as stack:
             stack.enter_context(patch.dict(os.environ, self.env))
+            stack.enter_context(patch.object(release.shutil, "which", return_value="fake-gh"))
             stack.enter_context(
                 patch.object(release.subprocess, "check_output", side_effect=local_output)
             )

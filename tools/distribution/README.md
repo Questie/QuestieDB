@@ -149,8 +149,9 @@ baseline. The producing commit identifies the owned localization sources.
 The release flow lives in [`.github/workflows/release.yml`](../../.github/workflows/release.yml).
 The workflow owns triggers, inputs, permissions, concurrency, quality gates, and artifact transfers.
 It invokes `release.py preflight` and `release.py publish` from the checkout root with the
-GitHub Actions environment. Both commands use the same draft-aware collision check; publication
-repeats it under the workflow's lock. Source-version parsing remains in `generator/version.lua`.
+GitHub Actions environment. Both commands check that the GitHub CLI (`gh`) is available on
+`PATH` before starting work, including preflight dry runs. They use the same draft-aware
+collision check; publication repeats it under the workflow's lock. Source-version parsing remains in `generator/version.lua`.
 Use the workflow to publish, rather than invoking the publisher outside its gates and lock.
 
 After choosing the tag, shared checks and the five

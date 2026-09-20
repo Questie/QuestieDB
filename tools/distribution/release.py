@@ -12,6 +12,7 @@ import argparse
 import json
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import zipfile
@@ -219,6 +220,11 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     try:
+        if shutil.which("gh") is None:
+            raise ValueError(
+                "GitHub CLI (gh) is required; install it from https://cli.github.com/ and add it to PATH."
+            )
+
         if args.command == "preflight":
             preflight()
         else:
