@@ -20,6 +20,7 @@ import zipfile
 from unittest.mock import patch
 
 import bootstrap
+import release_artifacts
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -643,6 +644,11 @@ class PackageTest(unittest.TestCase):
         self.assertEqual(0, result.returncode, result.stdout + result.stderr)
         dist = self.root / ".out/dist"
         manifest = json.loads((dist / "release.json").read_text(encoding="utf-8"))
+        verified = release_artifacts.verify(dist, git("rev-parse", "HEAD"))
+        self.assertEqual(
+            [dist / artifact["file"] for artifact in manifest["artifacts"]],
+            [archive.path for archive in verified.archives],
+        )
         self.assertEqual(
             [
                 {

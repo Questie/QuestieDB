@@ -416,6 +416,7 @@ build metadata, ZIP checksums, and structured changelog entries for consuming to
 
 For contributors and release maintainers, see the distribution guide:
 
+- [Dry-run release previews](tools/distribution/README.md#dry-runs), enabled by default for manual runs
 - [Writing changelog entries](tools/distribution/README.md#changelog-entries)
 - [Changelog format and author credits](tools/distribution/README.md#packaged-and-structured-changelogs)
 - [Publishing and failure recovery](tools/distribution/README.md#publishing)

@@ -8,6 +8,8 @@ Run commands from the repository root. For setup and platform requirements, see
 | --- | --- |
 | [`package.py`](package.py) | Validate generated inputs, stage and hash ZIPs, write `release.json` and `RELEASE_NOTES.md` |
 | [`release_notes.py`](release_notes.py) | Collect changelog entries and render release notes |
+| [`release_artifacts.py`](release_artifacts.py) | Verify the release handoff and return the approved archives for reporting or publication |
+| [`preview.py`](preview.py) | Render verified archive contents and the packaged release description |
 | [`strip-static.lua`](strip-static.lua) | Strip Static Correction bodies from staged copies and verify behavior parity |
 | [`bootstrap.py`](bootstrap.py) | Download, verify, and install the combined release archive |
 
@@ -89,6 +91,38 @@ can include `coAuthors`.
 Git signature diagnostics are explicitly disabled when collecting entries because they can
 contain signer emails. Parsed record boundaries and commit SHAs are validated before export.
 
+## Dry runs
+
+Manual **Actions → Release → Run workflow** runs default to `dry_run` checked. Select the
+default branch, check `release` to rehearse a stable `vX.X.X` release, or leave it unchecked
+to rehearse the development preview. Automatic default-branch pushes still publish preview.
+
+A dry run executes the same generation, validation, compiler differential, and packaging
+pipeline. It then verifies the downloaded release handoff and displays ZIP paths, file sizes,
+checksums, and the packaged release description in the **Preview dry-run release** job summary.
+No tags or GitHub releases are created or changed. Existing version tags/releases are allowed,
+so inspecting an already-published version does not require `override` or a version bump.
+
+Download these Actions artifacts from the run page (retained for seven days):
+
+- **release-dist**: the actual per-flavor and combined ZIPs, `release.json`, and `RELEASE_NOTES.md`.
+- **release-dry-run-preview**: `DRY_RUN.md`, including ZIP listings and the rendered description.
+
+The description's release download links are not links to the dry-run artifacts. They may not
+exist yet or may point to an older published release. If the report exceeds GitHub's 1 MiB
+summary limit, the summary points to the complete downloadable report instead of truncating it.
+
+You can inspect existing local packages without generation, installation, or network access:
+
+```sh
+uv run tools/distribution/preview.py .out/dist
+```
+
+Dry runs do not test GitHub publication permissions, tag rules, or release replacement. To
+publish, start a new manual run with `dry_run` unchecked. This rebuilds from the current
+default-branch commit; it does not promote the previous run's artifacts. Rerunning a dry run
+retains its original inputs and will not publish.
+
 ## Publishing
 
 To publish a stable release:
@@ -96,8 +130,9 @@ To publish a stable release:
 1. Set `## Version: X.X.X` in `QuestieDB.toc` and commit it to the default branch. Use three
    numeric components without leading zeros. TOC regeneration preserves this maintained value.
 2. Open **Actions → Release → Run workflow**, select the default branch, and check `release`.
-3. Leave `override` unchecked. An existing `vX.X.X` tag or release fails before building, and
-   publication checks again after all quality gates pass.
+3. Uncheck `dry_run` to enable publication. Leave it checked if you only want to inspect the build.
+4. Leave `override` unchecked. For publication, an existing `vX.X.X` tag or release fails before
+   building, and publication checks again after all quality gates pass.
 
 `override` explicitly replaces that version's assets and moves its tag to the selected commit.
 Use it only to repair a release; normally bump the version instead. GitHub-immutable releases
@@ -124,6 +159,12 @@ and every compiler differential. Only GitHub publication is configured.
 Publication jobs queue without cancelling active or pending releases. The publisher checks the
 handoff's commit and ZIP checksums before any mutation, then rejects stale preview builds.
 
+Dry-run reporting and publication both use `release_artifacts.verify` for the artifact checks:
+producing commit, complete unique ZIP inventory, SHA-256 checksums, ZIP readability, and release-note
+availability. Supported flavors come from the packager. The publication CLI prints approved ZIP
+paths only after every check passes; the workflow uploads that list rather than maintaining a
+second one in shell. `preview.py` formats the verified result and adds no release validation rules.
+
 **Replacement is not atomic.** Existing releases stay public while ZIPs are replaced by name.
 The tag moves after the ZIP uploads; `release.json` uploads last. Downloads during an update
 may fail, and interruption can leave mixed assets or a tag ahead of the manifest. Bootstrap
@@ -135,7 +176,8 @@ an existing release.
 
 After a preview publication failure, rerun the failed workflow at the same commit. Do not rerun
 an older preview to repair a newer one. For a stable release, dispatch again with `release` and
-`override` checked: GitHub reruns retain the original inputs, so they cannot enable override.
+`override` checked and `dry_run` unchecked: GitHub reruns retain the original inputs, so they
+cannot enable override or turn a dry run into publication.
 Review the current default-branch commit and TOC version first; a new dispatch builds that
 commit, not necessarily the failed run's commit. Resolve tag-rule or permission errors before
 retrying. Divergent preview history (for example after a force-push) requires deliberate tag
@@ -155,6 +197,7 @@ Run from the repository root:
 ```sh
 uv run tools/distribution/package.test.py
 uv run tools/distribution/bootstrap.test.py
+uv run tools/distribution/release_artifacts.test.py
 uv run tools/validation/version.test.py
 ```
 
