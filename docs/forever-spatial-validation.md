@@ -1,13 +1,16 @@
 # Forever support candidate validation
 
-This records the uncommitted candidate implementation based on local branch `forever`,
-provider HEAD `f1567bd384ff4c0d4dba2f3c8cc5a8756d05b4da`. It is not a release or client
-acceptance record. The branch already contains the completed handoff, 40 compatibility pairs
+The initial validation below records the candidate implementation based on local branch
+`forever`, provider HEAD `f1567bd384ff4c0d4dba2f3c8cc5a8756d05b4da`, subsequently committed
+as `fd2a301`. Later sections record the parent-support extension and ownership simplification.
+These are historical checkpoints; the latest workflow is in `tools/dbc/README.md`.
+This is not a release or client acceptance record. The branch already contains the completed handoff, 40 compatibility pairs
 and the two reviewed parent fixes; none was recreated or installed by this work.
 
-## Generated files
+## Initial generated files
 
-Under `.out/forever-support/review/` (Git-ignored review artifacts):
+Recorded initial hashes under `.out/forever-support/review/` (Git-ignored review artifacts).
+The later parent-support extension replaces the report and adds a third Lua candidate:
 
 | File | SHA-256 |
 | --- | --- |
@@ -74,3 +77,71 @@ coverage and the other release gates in the migration plan remain unresolved.
 Active support hashes remain unchanged, and `git diff -- data src support l10n` is empty.
 The protected handoff/recovery snapshot, Era inputs, excluded worktree and Questie's unrelated
 staged work were untouched. No branch switch, commit, publication or live-client action occurred.
+
+## Parent-support extension
+
+Based on provider commit `fd2a301`, the exporter now proposes the explicit parent links that
+were in Questie's old zone overlay. Selecting direct AreaTable children of areas 616, 16591,
+16593, 16606 and 16651 reproduces that overlay's complete set of 65 parent relationships.
+The five-zone selection is reviewed policy; the individual links come from DBC, not a copied
+production list. An independent test fixture retains the exact old overlay from Questie
+commit `8f590aa47`.
+
+The current owned parent table already contains one of the relationships. Generation adds
+64 and preserves every existing base/override value and all original source bytes. Effective
+parent conflicts fail rather than overwrite authored decisions. Running against an
+already-adopted candidate adds no duplicates. Other deferred parent additions stay out of scope.
+
+The new file is `.out/forever-support/review/Zones/subZoneToParentZone.lua`, SHA-256
+`c0c59f1f291ebb91be1c076fc1030ca0090b4ed700b5a20f611f88dc673c833b`.
+The updated `report.json` is SHA-256
+`2a5b6bd97bbf3a5a9cac4fc99f581b87ea97818cf79de4fedd3b50389933def9`.
+Forward/reverse candidate bytes are unchanged from the initial record.
+
+Validation actually run after the extension:
+
+- Support suite with the explicit local DBC snapshot: 21 passed. This includes actual Lua
+  comparison against all 65 independent fixture links and every existing authored row,
+  plus a negative control removing a required parent link.
+- Rewriter suite: 9 passed.
+- Contributor `dbc-support` command: added the parent candidate and updated the report;
+  the next identical run changed zero files.
+- Actual installed candidates: all four forward/reverse tables still match current support;
+  parent base/override preservation and reviewed relationships pass the Lua comparison.
+- Fresh read-only review found no blocking issues. Added its suggested overlapping
+  base/override precedence cases, then reran the checks above.
+- `git diff --check` passed; `git diff -- data src support l10n` is empty.
+
+This extension is uncommitted. Active provider support and the Questie checkout were not
+changed by it. These remain review candidates, not installed runtime data.
+
+## Single-source override ownership
+
+The parallel exception JSON has been removed from the working tree. Production now reads the
+three current owned Lua support files, fingerprints them in the report, and preserves the
+forward/reverse override payloads byte-for-byte, including comments. The five-zone parent scope
+remains explicit and temporary in `parents.py`. Historical source hashes moved to a test-only
+reference fixture; accepting another covered snapshot no longer requires editing configuration
+hashes. This changes maintenance ownership, not the accepted mapping values.
+
+Checks actually run after simplification and review:
+
+- Support suite with the explicit local DBC snapshot: 26 passed. Fixtures prove that a new
+  covered build and authored Lua override edits need no parallel policy update. Missing/failed
+  coverage, malformed inputs, conflicting DBC facts and inconsistent compatibility pairs fail.
+- Rewriter suite: 9 passed. Conversion/installer suite: 18 passed.
+- CLI suite: 25 passed, 3 platform-specific skips.
+- Fresh review found an overly strict reciprocal check for redundant descendant overrides.
+  Fixed it and added direct/descendant coverage preserving the canonical ancestor reverse;
+  the test results above include that fix.
+- Generation updated forward/reverse comments to the owned payloads and refreshed the report.
+  Parent candidate bytes remain unchanged. An identical rerun changed zero files.
+- Actual Lua loading: all four map tables match owned support; all 65 reviewed parent
+  relationships match the independent fixture, with 64 proposed additions and all existing
+  base/override entries preserved.
+- `git diff --check` passed. No active data, Corrections, support or localization changed.
+
+The staged file/object listing and complete staged binary diff retained their starting hashes.
+Only working-tree/untracked improvements were made; no staging or unstaging occurred.
+Generated artifacts remain under `.out/forever-support/review/`, with current hashes in
+`report.json`. Full Generation and live-client acceptance were not run.

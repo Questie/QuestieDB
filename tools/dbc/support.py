@@ -14,14 +14,18 @@ import sys
 
 from files import destination, digest, install_outputs
 from maps import read_snapshot, interrupt
+from parents import REVIEWED_PARENT_SCOPE, extend_parents
 from source import read_table
 from spatial import SpatialLookup, resolve_areas, route_records
+from support_lua import SupportTable, read_support_tables
 
 ROOT = Path(__file__).resolve().parents[2]
-EXCEPTIONS = Path(__file__).with_name("forever-spatial-exceptions.json")
 CANDIDATES = ROOT / ".out/forever-support"
 TOOL = "QuestieDB dbc-support"
 MANIFEST = "report.json"
+FORWARD_SOURCE = "support/Forever/Zones/areaIdToUiMapId.lua"
+REVERSE_SOURCE = "support/Forever/Zones/uiMapIdToAreaId.lua"
+PARENT_SOURCE = "support/Forever/Zones/subZoneToParentZone.lua"
 AREA_FIELDS = {"ID": int, "AreaName_lang": str, "ContinentID": int,
                "ParentAreaID": int, "Flags_0": int}
 WORLD_MAP_FIELDS = {"ID": int, "MapName_lang": str, "AreaTableID": int}
@@ -51,18 +55,15 @@ class SupportCandidate:
     report: dict
 
 
-def build_candidate(database: Path, build: str, exceptions: Path = EXCEPTIONS) -> SupportCandidate:
-    """Read one strict Forever snapshot, resolve maps, then apply reviewed policy.
+def build_candidate(database: Path, build: str) -> SupportCandidate:
+    """Derive DBC candidates while preserving policy from current owned Lua overrides.
 
-    No cache acquisition, Lua entity loading, conversion or runtime writes occur.
-    Exception applicability is pinned to exact build and reviewed source projections.
+    Every selected table requires recorded coverage. Hashes identify the actual
+    inputs in the report, not a second configuration to update for each snapshot.
+    No cache acquisition, Lua execution, conversion or runtime writes occur.
     """
     if not re.fullmatch(r"1\.60\.\d+\.\d+", build):
         raise ValueError("An explicit Forever 1.60.x build is required")
-    policy_bytes = exceptions.read_bytes()
-    policy = json.loads(policy_bytes)
-    if not isinstance(policy, dict) or policy.get("format") != 1 or policy.get("flavor") != "Forever" or policy.get("build") != build:
-        raise ValueError("Exception input does not apply to this Forever build")
     conn = sqlite3.connect(database.resolve().as_uri() + "?mode=ro", uri=True)
     conn.row_factory = sqlite3.Row
     try:
@@ -83,89 +84,88 @@ def build_candidate(database: Path, build: str, exceptions: Path = EXCEPTIONS) -
         if table not in metadata:
             metadata[table] = {"coverage": "ok", "rows": len(rows),
                                "snapshot_sha256": projection_hash(rows)}
-    expected = policy.get("source_projections")
-    actual = {name: row["projection_sha256"] for name, row in projections.items()}
-    if expected != actual:
-        raise ValueError("Exception source projections differ from the reviewed snapshot; review applicability")
 
     lookup = resolve_areas(area_rows, map_rows, assignments, ui_maps)
-    overrides, reverse_overrides, records = _policy_overrides(policy, lookup)
+    owned = {path: (ROOT / path).read_bytes() for path in (FORWARD_SOURCE, REVERSE_SOURCE, PARENT_SOURCE)}
+    overrides, reverse_overrides, records = _owned_overrides(owned, lookup)
+    parent_output, parent_report = extend_parents(owned[PARENT_SOURCE], lookup, REVIEWED_PARENT_SCOPE)
     report = {
         "format": 1, "tool": TOOL, "flavor": "Forever", "build": build,
         "candidate_only": True,
         "ownership": "Owned Forever Lua remains authoritative. Candidates are generated proposals, not runtime inputs.",
-        "source_tables": metadata, "reviewed_projections": projections,
-        "exception_input_sha256": digest(policy_bytes), "exceptions": records,
+        "source_tables": metadata, "source_projections": projections,
+        "owned_overrides": {"area_to_ui_map": records, "ui_map_to_area": reverse_overrides.values},
+        "owned_inputs": {path: {"sha256": digest(data)} for path, data in owned.items()},
+        "parent_support": parent_report,
         "native_ui_maps": [{"id": i, "name": name} for i, name in sorted(ui_maps.items())],
         "areas": area_rows, "world_maps": map_rows, "assignments": assignments,
         "routes": route_records(lookup), "canonical_reverse": lookup.reverse,
         "unresolved_real_areas": lookup.unresolved,
-        "unresolved_ui_maps": sorted(set(ui_maps) - set(lookup.reverse) - set(reverse_overrides)),
+        "unresolved_ui_maps": sorted(set(ui_maps) - set(lookup.reverse) - set(reverse_overrides.values)),
         "diagnostics": lookup.diagnostics,
         "parent_routing_differences": lookup.parent_routing_differences,
         "limitations": [
             "Map selection does not establish an authored point's coordinate frame.",
-            "Retired compatibility targets are not native map geometry; resolve instances before UiMap operations.",
-            "No entrances, entity positions, subzone tables or instance tables are generated or changed.",
+            "Owned overrides are policy, not DBC-derived relationships or proof of supported geometry.",
+            "Legacy compatibility targets absent from the snapshot are not native maps; resolve instances before UiMap operations.",
+            "Only reviewed zone-child parent additions are proposed; other authored navigation relationships are preserved.",
+            "No entrances, entity positions or instance tables are generated or changed.",
             "Consumer sentinel ordering, version-skew protection and client placement remain release gates.",
         ],
         "summary": {"direct": len(lookup.direct), "inherited": len(lookup.resolved) - len(lookup.direct),
                     "resolved": len(lookup.resolved), "canonical_reverse": len(lookup.reverse),
                     "unresolved_real_areas": len(lookup.unresolved),
-                    "compatibility_pairs": sum(r["kind"] == "retired_map_compatibility" for r in records)},
+                    "compatibility_pairs": sum(r["kind"] == "legacy_map_compatibility" for r in records),
+                    "parent_additions": parent_report["added"]},
     }
     outputs = {
         "Zones/areaIdToUiMapId.lua": _render_forward(lookup, overrides, build),
         "Zones/uiMapIdToAreaId.lua": _render_reverse(lookup, reverse_overrides, build),
+        "Zones/subZoneToParentZone.lua": parent_output,
     }
     report["files"] = {name: {"output_sha256": digest(data)} for name, data in outputs.items()}
     outputs[MANIFEST] = json_bytes(report)
     return SupportCandidate(outputs, report)
 
 
-def _policy_overrides(policy: dict, lookup: SpatialLookup) -> tuple[dict, dict, list[dict]]:
-    """Keep suppression, native aliases and retired consumer lookup keys distinct."""
-    records = policy.get("entries")
-    if not isinstance(records, list):
-        raise ValueError("Exception entries must be a list")
-    forward, reverse = {}, {}
-    ids = set()
-    fields = {"id", "kind", "area_id", "ui_map_id", "area_kind", "reason", "evidence", "retire_when"}
-    for row in records:
-        if not isinstance(row, dict) or set(row) != fields:
-            raise ValueError("Malformed spatial exception record")
-        if any(not isinstance(row[k], str) or not row[k].strip()
-               for k in ("id", "kind", "area_kind", "reason", "evidence", "retire_when")):
-            raise ValueError("Exception identity, reason, evidence and retirement condition are required")
-        if row["id"] in ids:
-            raise ValueError("Duplicate exception ID: " + row["id"])
-        ids.add(row["id"])
-        area, ui, kind = row["area_id"], row["ui_map_id"], row["kind"]
-        if type(area) is not int or type(ui) is not int or area < 0 or ui < 0:
-            raise ValueError("Exception IDs must be nonnegative integers")
-        actual_kind = "zero" if area == 0 else "real" if area in lookup.areas else "absent"
-        expected_kinds = ("synthetic", "legacy") if actual_kind == "absent" else (actual_kind,)
-        if row["area_kind"] not in expected_kinds:
-            raise ValueError(f"Exception {row['id']}: area identity changed or collides with a real area")
-        if area in forward or area in lookup.resolved:
-            raise ValueError(f"Exception {row['id']}: conflicts with an existing area route")
-        if kind == "suppression":
-            if ui != 0 or actual_kind == "absent":
-                raise ValueError("Suppression requires a real area or zero and UiMap 0")
-        elif kind == "native_alias":
-            if row["area_kind"] != "synthetic" or ui not in lookup.ui_maps:
-                raise ValueError("Native aliases require a synthetic area and an actual UiMap")
-        elif kind == "retired_map_compatibility":
-            if area == 0 or ui == 0 or ui in lookup.ui_maps:
-                raise ValueError("Retired compatibility must not claim native map geometry")
-        else:
-            raise ValueError("Unknown exception kind: " + kind)
-        forward[area] = (ui, row["id"])
-        if kind != "suppression":
-            if ui in reverse or ui in lookup.reverse:
-                raise ValueError(f"Exception {row['id']}: conflicts with a canonical reverse mapping")
-            reverse[ui] = (area, row["id"])
-    return forward, reverse, sorted(records, key=lambda r: r["id"])
+def _owned_overrides(owned: dict[str, bytes], lookup: SpatialLookup) -> tuple[SupportTable, SupportTable, list[dict]]:
+    """Validate authored overrides against DBC and each other without inventing policy.
+
+    Zero is explicit display suppression, not a competing DBC relationship. Other
+    overrides may repeat a DBC fact but must not replace it with a different target.
+    Absence from AreaTable alone does not prove a key is synthetic rather than legacy.
+    """
+    _, forward = read_support_tables(owned[FORWARD_SOURCE].decode("utf-8"), "areaIdToUiMapId")
+    _, reverse = read_support_tables(owned[REVERSE_SOURCE].decode("utf-8"), "uiMapIdToAreaId")
+    records = []
+    for area, ui in sorted(forward.values.items()):
+        if ui < 0 or (area == 0 and ui != 0):
+            raise ValueError(f"Invalid owned forward override: {area} -> {ui}")
+        route = lookup.resolved.get(area)
+        if ui and route and route.ui_map_id != ui:
+            raise ValueError(f"Owned forward override {area} -> {ui} conflicts with DBC {route.ui_map_id}")
+        kind = "suppression" if ui == 0 else "native_map_override" if ui in lookup.ui_maps else "legacy_map_compatibility"
+        records.append({"area_id": area, "ui_map_id": ui, "kind": kind,
+                        "area_in_snapshot": area in lookup.areas, "ui_map_in_snapshot": ui in lookup.ui_maps})
+    for ui, area in sorted(reverse.values.items()):
+        if ui <= 0 or area <= 0:
+            raise ValueError(f"Invalid owned reverse override: {ui} -> {area}")
+        canonical = lookup.reverse.get(ui)
+        if canonical is not None and canonical != area:
+            raise ValueError(f"Owned reverse override {ui} -> {area} conflicts with canonical DBC {canonical}")
+
+    # Additional compatibility pairs must agree in both directions. A redundant
+    # descendant override keeps DBC's canonical ancestor in the reverse table;
+    # never invert the many-to-one map to manufacture a reverse link for it.
+    composed_forward = {**{area: route.ui_map_id for area, route in lookup.resolved.items()}, **forward.values}
+    composed_reverse = {**lookup.reverse, **reverse.values}
+    for area, ui in forward.values.items():
+        if ui and area not in lookup.resolved and composed_reverse.get(ui) != area:
+            raise ValueError(f"Owned forward/reverse overrides disagree for area {area}, UiMap {ui}")
+    for ui, area in reverse.values.items():
+        if composed_forward.get(area) != ui:
+            raise ValueError(f"Owned reverse/forward overrides disagree for UiMap {ui}, area {area}")
+    return forward, reverse, records
 
 
 def _comment(text: str) -> str:
@@ -179,11 +179,9 @@ def _header(build: str) -> list[str]:
             'local ZoneDB = QuestieLoader:ImportModule("ZoneDB")', ""]
 
 
-def _render_forward(lookup: SpatialLookup, overrides: dict, build: str) -> bytes:
-    lines = _header(build) + ["ZoneDB.private.areaIdToUiMapIdOverride = [[return {"]
-    for area, (ui, exception) in sorted(overrides.items()):
-        lines.append(f"    [{area}] = {ui}, -- {_comment(exception)}")
-    lines += ["}]]", "", "ZoneDB.private.areaIdToUiMapId = [[return {"]
+def _render_forward(lookup: SpatialLookup, overrides: SupportTable, build: str) -> bytes:
+    lines = _header(build) + ["ZoneDB.private.areaIdToUiMapIdOverride = " + overrides.literal,
+                              "", "ZoneDB.private.areaIdToUiMapId = [[return {"]
     for area, route in sorted(lookup.resolved.items()):
         name = _comment(lookup.areas[area].name)
         evidence = f"assignment {route.assignment_id}"
@@ -193,12 +191,10 @@ def _render_forward(lookup: SpatialLookup, overrides: dict, build: str) -> bytes
     return ("\n".join(lines + ["}]]", ""])).encode()
 
 
-def _render_reverse(lookup: SpatialLookup, overrides: dict, build: str) -> bytes:
-    lines = _header(build) + ["ZoneDB.private.uiMapIdToAreaIdOverride = [[return {"]
-    for ui, (area, exception) in sorted(overrides.items()):
-        lines.append(f"    [{ui}] = {area}, -- {_comment(exception)}")
-    lines += ["}]]", "", "-- Canonical direct assignments, not the inverse of descendant routes.",
-              "ZoneDB.private.uiMapIdToAreaId = [[return {"]
+def _render_reverse(lookup: SpatialLookup, overrides: SupportTable, build: str) -> bytes:
+    lines = _header(build) + ["ZoneDB.private.uiMapIdToAreaIdOverride = " + overrides.literal,
+                              "", "-- Canonical direct assignments, not the inverse of descendant routes.",
+                              "ZoneDB.private.uiMapIdToAreaId = [[return {"]
     for ui, area in sorted(lookup.reverse.items()):
         lines.append(f"    [{ui}] = {area}, -- {_comment(lookup.ui_maps[ui])}")
     return ("\n".join(lines + ["}]]", ""])).encode()

@@ -19,12 +19,15 @@ It writes only under this checkout's `.out/forever-support/`:
 
 - `Zones/areaIdToUiMapId.lua`: direct and parent-resolved routes, with separate overrides.
 - `Zones/uiMapIdToAreaId.lua`: canonical direct reverse mappings, with separate overrides.
+- `Zones/subZoneToParentZone.lua`: current authored navigation data plus missing DBC child
+  relationships for the five reviewed Forever zones.
 - `report.json`: exact source projections/coverage, full assignment evidence, native map
-  inventory, parent chains, exceptions, unresolved cases and candidate file hashes.
+  inventory, parent chains, owned override classifications, unresolved cases and file hashes.
 
 These are **review candidates, not a complete runtime ZoneDB bundle**. Do not copy them
-into active support without reviewing current authored changes. Entrances, subzone and
-instance tables, symbols and entity coordinates remain untouched. Retired-map compatibility
+into active support without reviewing current authored changes. Entrances, instance tables,
+symbols and entity coordinates remain untouched. Existing parent relationships are preserved;
+only the reviewed additions below are proposed. Retired-map compatibility
 must not be used as a native-map allowlist.
 
 ### Inputs and ownership
@@ -36,17 +39,70 @@ an existing point's frame. Unsupported/ambiguous primary assignments block infer
 through their parent chain. Canonical reverse mappings are never built by inverting the
 many-to-one descendant table.
 
-`forever-spatial-exceptions.json` records reviewed policy with stable IDs, exact build and
-source projection applicability, evidence and retirement conditions. Native aliases,
-suppression and retired-map compatibility are distinct. Synthetic keys must not collide with
-real areas. The legacy Blackrock Spire key 1585 is absent from this AreaTable snapshot; it is
-retained as a legacy key, not relabeled as a real area or invented synthetic area.
+Current owned Lua is the only authored override source:
 
-The exception input is authoritative for candidate policy. Candidate Lua is generated.
-**Active Forever Lua remains authoritative until separately reviewed adoption.** At adoption,
-transfer ownership of these two mapping fields to the source facts and exceptions rather than
-maintaining both input and output by hand. See [ADR 0014](../../docs/adr/0014-offline-spatial-support-candidates.md).
+- `support/Forever/Zones/areaIdToUiMapId.lua`
+- `support/Forever/Zones/uiMapIdToAreaId.lua`
+
+The exporter derives base mappings from DBC and preserves each owned override payload,
+including comments and Lua long-string delimiters. It does not execute the files or silently
+flatten provider logic. Computed values, duplicate keys and unexpected module-side writes fail.
+There is no parallel exception file to maintain.
+
+Nonzero overrides must not contradict a DBC route or its canonical reverse. Additional
+compatibility pairs must agree in both directions. Redundant descendant overrides retain the
+canonical ancestor reverse mapping, rather than inverting the many-to-one lookup. UiMap 0
+remains explicit authored suppression even if DBC supplies geometry for that area.
+
+The report distinguishes suppression, overrides targeting native UiMaps, and legacy lookups
+whose UiMaps are absent from the snapshot. These labels describe the inputs; they do not verify
+placement or automatically retire compatibility. Absence from AreaTable is reported without
+claiming that a key must be synthetic rather than a removed real area. Key 1585 is one such
+legacy identity in the reviewed snapshot.
+
+### Parent relationships
+
+An area-to-map lookup and a subzone-to-parent lookup answer different questions. The exporter
+already uses AreaTable parents to select maps; it also proposes the corresponding explicit
+parent entries for Mount Hyjal, Riverglades, Zephras Isle, Darkspear Islands and Shen'dralas.
+Their five AreaIDs are an explicit temporary scope in `parents.py`, not a hardcoded list of
+individual children. New snapshots do not automatically broaden this scope; wider parent
+adoption still requires review. For the reference build, their direct DBC children exactly reproduce all 65 relationships in
+Questie's former `zoneData.lua` overlay. With the current owned support input, one already
+exists and 64 are added.
+
+`parents.py` reads `support/Forever/Zones/subZoneToParentZone.lua` from this checkout and
+preserves its base rows, overrides and comments. The report records its input hash and every
+selected relationship as existing or added. An authored override takes precedence over its
+base row; if the effective parent disagrees with DBC in the reviewed scope, generation stops
+for review. It does not overwrite the authored decision. Missing trailing separators are
+inserted when needed. Computed tables, duplicate keys and extra executable module code fail
+rather than being flattened or executed.
+
+This is a source-preserving proposal, not wholesale regeneration of legacy navigation from
+DBC. It does not add the other deferred subzones, replace dungeon identities or add every
+ancestor recursively. Running against an already-adopted candidate adds no duplicates.
+The independent fixture is captured from Questie commit `8f590aa47`; production never reads
+that fixture or requires a Questie checkout.
+
+**Active Forever Lua remains authoritative until separately reviewed adoption.** Edit override
+policy and its explanatory comments in the owned Lua, not in candidate output. At adoption,
+only the forward/reverse base tables become generated; their override strings remain authored
+inputs and survive subsequent exports unchanged. Parent support remains an authored input with
+bounded DBC additions proposed. See [ADR 0014](../../docs/adr/0014-offline-spatial-support-candidates.md).
 No entity authoring database, Lua provider evaluator or second coordinate converter is added.
+
+### Accepting another snapshot
+
+Select an existing database and an explicit Forever build. No configuration hashes need updating:
+source hashes and coverage are recorded in the generated report. Exact historical hashes live
+only in the pinned-build acceptance fixture; production does not read it.
+
+A QuestieDB maintainer reviews the new candidates and report before adopting them. Changes to
+aliases or suppression belong in the owned Lua overrides. Conflicting facts fail for review;
+the tool does not overwrite or delete policy to make a new snapshot pass. Removing dungeon
+compatibility remains dependent on the consumer fix and version-skew safeguards. Passing
+structural checks does not establish that a new client/build is supported.
 
 ### Reviewed build and remaining gaps
 
@@ -60,11 +116,13 @@ compatibility supplies a legacy lookup. UiMaps 1463, 1464 and 2665 remain unreso
 AreaTable records referencing absent world MapIDs are reported rather than fabricated. Current
 DBC parent routing for 2657 and 3217 agrees with the already-reviewed owned support fixes.
 
-All four required DBC tables need recorded `ok` coverage. Missing databases, fields, broken
-assignment references, parent cycles, exception collisions and mismatched source projections
-fail before candidate installation. Restricted or ambiguous assignments remain explicit
-unresolved evidence rather than guessed geometry. The report fingerprints full assignment
-rows, including unknown selectors, separately from the historical selected-field projections.
+All four required DBC tables need recorded `ok` coverage for the registered explicit build.
+Missing databases or required fields, broken assignment references, parent cycles, malformed
+owned input and conflicting overrides fail before candidate installation. Restricted or
+ambiguous assignments remain explicit unresolved evidence rather than guessed geometry.
+The report fingerprints all three owned Lua inputs and full assignment rows, including unknown
+selectors, separately from the selected-field projections. Hashes identify what was read; they
+are not approval of new content.
 
 Repeated runs with identical inputs produce identical bytes. The existing protected installer
 uses separate candidate ownership and installs the report last. Hand-edited/unowned files and
@@ -79,11 +137,14 @@ FOREVER_DBC_DATABASE="$PWD/.cache/dbc/dbc-source.db" \
   uv run --no-project python tools/dbc/support.test.py
 ```
 
-The first command uses small SQLite fixtures. The second adds pinned-build acceptance:
-actual Lua loading compares all four candidate base/override tables against current owned
+The first command uses small SQLite/Lua fixtures, including a new covered build and authored
+override edits without a second policy update. The second adds pinned-build acceptance:
+source hashes match the test-only historical reference, and actual Lua loading compares all four candidate base/override tables against current owned
 support, checks every ancestor annotation and the unresolved inventory, and verifies that a
-wrong target with unchanged counts fails. Set `LUA` to a Lua 5.1 executable if `lua5.1` is not
-on PATH. On PowerShell, set `$env:FOREVER_DBC_DATABASE` before running the second command.
+wrong target with unchanged counts fails. It also loads the parent candidate in Lua, verifies
+all 65 independently captured overlay relationships, and checks that every authored base and
+override entry survives with no unreviewed additions. Removing a required parent link fails.
+Set `LUA` to a Lua 5.1 executable if `lua5.1` is not on PATH. On PowerShell, set `$env:FOREVER_DBC_DATABASE` before running the second command.
 The real-data check is intentionally opt-in; ordinary fixture tests need no DBC cache.
 
 Existing coordinate/conversion tests cover Hawkwind's precise projection and two-decimal
