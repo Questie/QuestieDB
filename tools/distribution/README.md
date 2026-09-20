@@ -9,6 +9,7 @@ Run commands from the repository root. For setup and platform requirements, see
 | [`package.py`](package.py) | Validate generated inputs, stage and hash ZIPs, write `release.json` and `RELEASE_NOTES.md` |
 | [`release_notes.py`](release_notes.py) | Collect changelog entries and render release notes |
 | [`release_artifacts.py`](release_artifacts.py) | Verify the release handoff and return the approved archives for reporting or publication |
+| [`release.py`](release.py) | Select tags, check GitHub release state, and publish verified artifacts |
 | [`preview.py`](preview.py) | Render verified archive contents and the packaged release description |
 | [`strip-static.lua`](strip-static.lua) | Strip Static Correction bodies from staged copies and verify behavior parity |
 | [`bootstrap.py`](bootstrap.py) | Download, verify, and install the combined release archive |
@@ -146,6 +147,12 @@ baseline. The producing commit identifies the owned localization sources.
 ### Validation and publication order
 
 The release flow lives in [`.github/workflows/release.yml`](../../.github/workflows/release.yml).
+The workflow owns triggers, inputs, permissions, concurrency, quality gates, and artifact transfers.
+It invokes `release.py preflight` and `release.py publish` from the checkout root with the
+GitHub Actions environment. Both commands use the same draft-aware collision check; publication
+repeats it under the workflow's lock. Source-version parsing remains in `generator/version.lua`.
+Use the workflow to publish, rather than invoking the publisher outside its gates and lock.
+
 After choosing the tag, shared checks and the five
 [flavor pipelines](../../README.md#independent-test-scopes) run independently. Each flavor runs
 Generation, Determinism, scoped tests, Reconstruction, Verification, Equivalence, validators,
@@ -161,9 +168,10 @@ handoff's commit and ZIP checksums before any mutation, then rejects stale previ
 
 Dry-run reporting and publication both use `release_artifacts.verify` for the artifact checks:
 producing commit, complete unique ZIP inventory, SHA-256 checksums, ZIP readability, and release-note
-availability. Supported flavors come from the packager. The publication CLI prints approved ZIP
-paths only after every check passes; the workflow uploads that list rather than maintaining a
-second one in shell. `preview.py` formats the verified result and adds no release validation rules.
+availability. Supported flavors come from the packager. The verifier returns approved ZIPs only
+after every check passes; `release.py` uploads that list rather than maintaining a second one.
+The verifier's standalone CLI also exposes those paths for other tooling. `preview.py` formats
+the verified result and adds no release validation rules.
 
 **Replacement is not atomic.** Existing releases stay public while ZIPs are replaced by name.
 The tag moves after the ZIP uploads; `release.json` uploads last. Downloads during an update
@@ -198,10 +206,13 @@ Run from the repository root:
 uv run tools/distribution/package.test.py
 uv run tools/distribution/bootstrap.test.py
 uv run tools/distribution/release_artifacts.test.py
+uv run tools/distribution/release.test.py
 uv run tools/validation/version.test.py
 ```
 
-Tests use disposable fixtures, not live releases or installed addons. The packaging suite
+Tests use disposable fixtures, not live releases or installed addons. `release.test.py` tests
+preflight, collision races, preview ordering, immutable releases, and interrupted publication
+with a fake GitHub CLI; it never invokes the real `gh` command. The packaging suite
 requires Lua 5.1; Git-history tests need Git. The signed-commit fixture additionally needs
 `ssh-keygen` and Git with SSH signing support; it creates a temporary key, not a personal one.
 

@@ -56,42 +56,7 @@ jobs:
         working-directory: QuestieDB
         env:
           GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          if [[ "$GITHUB_REF" != "refs/heads/$DEFAULT_BRANCH" ]]; then
-            echo "::error::Releases must run from the default branch."
-            exit 1
-          fi
-          if [[ "$RELEASE_OVERRIDE" == true && "$QUESTIEDB_RELEASE" != true ]]; then
-            echo "::error::override applies only to full releases."
-            exit 1
-          fi
-          VERSION=$(lua5.1 -e 'print(dofile("generator/version.lua").read("QuestieDB.toc"))')
-          TAG=preview
-          if [[ "$QUESTIEDB_RELEASE" == true ]]; then TAG="v$VERSION"; fi
-          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
-
-          # Rehearsals may inspect an existing version; no publication state is needed.
-          if [[ "$DRY_RUN" == true ]]; then
-            echo "Dry run: building $TAG without changing tags or releases."
-            exit 0
-          fi
-
-          # GraphQL includes drafts and distinguishes absence (null) from API/auth failures.
-          # Its $variables must reach the API unexpanded.
-          # shellcheck disable=SC2016
-          STATE=$(gh api graphql -f owner="${GITHUB_REPOSITORY%/*}" -f repo="${GITHUB_REPOSITORY#*/}" \
-            -f tag="$TAG" -f ref="refs/tags/$TAG" -f query='
-            query($owner:String!, $repo:String!, $tag:String!, $ref:String!) {
-              repository(owner:$owner, name:$repo) { release(tagName:$tag) { databaseId } ref(qualifiedName:$ref) { name } }
-            }' --jq '.data.repository')
-          jq -e 'type == "object"' <<< "$STATE" > /dev/null
-          if [[ "$QUESTIEDB_RELEASE" == true && "$RELEASE_OVERRIDE" != true ]] && \
-             jq -e '.release != null or .ref != null' <<< "$STATE" > /dev/null; then
-            echo "::error::$TAG already exists. Bump ## Version or explicitly enable override."
-            exit 1
-          fi
+        run: python3 tools/distribution/release.py preflight
 
   shared:
     name: Shared checks
@@ -120,6 +85,7 @@ jobs:
           python3 tools/distribution/package.test.py
           python3 tools/distribution/bootstrap.test.py
           python3 tools/distribution/release_artifacts.test.py
+          python3 tools/distribution/release.test.py
 
       - name: Materialize the schema
         working-directory: QuestieDB
@@ -358,67 +324,4 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
           TAG: ${{ needs.quality.outputs.tag }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          [[ "$(git rev-parse HEAD)" == "$GITHUB_SHA" ]]
-          [[ "$GITHUB_REF" == "refs/heads/$DEFAULT_BRANCH" ]]
-
-          # Use the dry-run verifier and its approved ZIP list before any GitHub mutation.
-          # Capture first: process substitution would hide a verifier failure from set -e.
-          ZIP_PATHS=$(python3 tools/distribution/release_artifacts.py .out/dist --commit "$GITHUB_SHA")
-          mapfile -t ZIP_FILES <<< "$ZIP_PATHS"
-
-          # Repeat the collision check under the publication lock: preflight can go stale.
-          # shellcheck disable=SC2016
-          STATE=$(gh api graphql -f owner="${GITHUB_REPOSITORY%/*}" -f repo="${GITHUB_REPOSITORY#*/}" \
-            -f tag="$TAG" -f ref="refs/tags/$TAG" -f query='
-            query($owner:String!, $repo:String!, $tag:String!, $ref:String!) {
-              repository(owner:$owner, name:$repo) { release(tagName:$tag) { databaseId } ref(qualifiedName:$ref) { name } }
-            }' --jq '.data.repository')
-          jq -e 'type == "object"' <<< "$STATE" > /dev/null
-          if [[ "$QUESTIEDB_RELEASE" == true && "$RELEASE_OVERRIDE" != true ]] && \
-             jq -e '.release != null or .ref != null' <<< "$STATE" > /dev/null; then
-            echo "::error::$TAG already exists. Bump ## Version or explicitly enable override."
-            exit 1
-          fi
-          RELEASE_ID=$(jq -r '.release.databaseId // empty' <<< "$STATE")
-          HAS_TAG=$(jq -r '.ref != null' <<< "$STATE")
-          if [[ -n "$RELEASE_ID" ]]; then
-            IMMUTABLE=$(gh api "repos/$GITHUB_REPOSITORY/releases/$RELEASE_ID" --jq '.immutable // false')
-            if [[ "$IMMUTABLE" == true ]]; then
-              echo "::error::$TAG is immutable on GitHub; override cannot replace it."
-              exit 1
-            fi
-          fi
-          if [[ "$TAG" == preview && "$HAS_TAG" == true ]]; then
-            CURRENT=$(gh api "repos/$GITHUB_REPOSITORY/commits/refs%2Ftags%2F$TAG" --jq '.sha')
-            STATUS=$(gh api "repos/$GITHUB_REPOSITORY/compare/$CURRENT...$GITHUB_SHA" --jq '.status')
-            case "$STATUS" in
-              behind) echo "A newer preview is already published; skipping this build."; exit 0 ;;
-              ahead|identical) ;;
-              *) echo "::error::Preview history diverged. Resolve its tag before publishing."; exit 1 ;;
-            esac
-          fi
-
-          TITLE="Unstable Pre-Release Development Build (master-branch)"
-          PRERELEASE=true
-          if [[ "$QUESTIEDB_RELEASE" == true ]]; then TITLE="QuestieDB ${TAG#v}"; PRERELEASE=false; fi
-          if [[ -z "$RELEASE_ID" ]]; then
-            # Let GitHub create a missing tag at the target commit when publishing the draft.
-            # A separate ref creation followed by --verify-tag can race tag visibility.
-            # Only first publication uses a draft, so a failed first upload stays unpublished.
-            gh release create "$TAG" --target "$GITHUB_SHA" --draft \
-              --title "$TITLE" --notes-file .out/dist/RELEASE_NOTES.md
-          fi
-
-          # Updates are intentionally non-atomic. Keep the old manifest until all ZIPs upload;
-          # bootstrap rejects mixed downloads. Rerun after failure (full releases need override).
-          gh release upload "$TAG" "${ZIP_FILES[@]}" \
-            .out/dist/RELEASE_NOTES.md --clobber
-          if [[ "$HAS_TAG" == true ]]; then
-            gh api "repos/$GITHUB_REPOSITORY/git/refs/tags/$TAG" --method PATCH -f sha="$GITHUB_SHA" -F force=true
-          fi
-          gh release upload "$TAG" .out/dist/release.json --clobber
-          gh release edit "$TAG" --draft=false --target "$GITHUB_SHA" --title "$TITLE" \
-            --notes-file .out/dist/RELEASE_NOTES.md --prerelease="$PRERELEASE" --latest="$QUESTIEDB_RELEASE"
+        run: python3 tools/distribution/release.py publish

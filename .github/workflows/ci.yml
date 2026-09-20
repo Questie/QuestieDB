@@ -44,6 +44,7 @@ jobs:
           python3 tools/distribution/package.test.py
           python3 tools/distribution/bootstrap.test.py
           python3 tools/distribution/release_artifacts.test.py
+          python3 tools/distribution/release.test.py
 
       - name: Materialize the schema
         working-directory: QuestieDB
