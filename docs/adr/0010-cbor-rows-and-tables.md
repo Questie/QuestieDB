@@ -1,5 +1,8 @@
 # 10. CBOR scalar rows and CBOR tables
 
+Migration comparison and snapshot requirements in this record are superseded by
+[ADR 0014](0014-owned-data-after-migration.md). Other later amendments remain as documented.
+
 Date: 2026-09-03. Status: accepted 2026-09-03.
 
 ## Context

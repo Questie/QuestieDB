@@ -183,24 +183,4 @@ function loader.loadEntityData(path, entityType)
   return entities, keys
 end
 
---- Load Questie's standalone schema file for one entity type, which is the only source of
---- `*CompilerTypes`. Unlike the data files these reference `Questie.IsClassic` and the
---- `Expansions` module, so the environment must be stood up with a flavor.
----@param path string Path to Questie's Database/<entity>DB.lua
----@param entityType table An entry from config.entityTypes
----@param opts table? Flavor flags forwarded to installEnvironment
----@return table keys
----@return table compilerTypes
-function loader.loadSchemaFile(path, entityType, opts)
-  local QuestieDB = loader.installEnvironment(opts)
-  -- `Expansions` is imported by npcDB.lua for its npcFlags table; give it plausible values so
-  -- the comparisons inside that table do not error.
-  local Expansions = QuestieLoader:ImportModule("Expansions")
-  Expansions.Classic, Expansions.Tbc, Expansions.Wotlk, Expansions.Cata, Expansions.MoP = 1, 2, 3, 4, 5
-  Expansions.Current = (opts and opts.expansion) or 1
-
-  loader.executeFile(path)
-  return QuestieDB[entityType.keysField], QuestieDB[entityType.typesField]
-end
-
 return loader

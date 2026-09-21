@@ -175,7 +175,6 @@ def changelog(root: Path, version: str, commit: str, repository_url: str) -> Cha
 def render(
     version: str,
     commit: str,
-    questie_commit: str,
     minimum_contract: int,
     contract: int,
     files: list[str],
@@ -253,16 +252,10 @@ def render(
         if commit != "0" * 40
         else "Unavailable"
     )
-    baseline = (
-        f"[`{questie_commit[:7]}`](https://github.com/Questie/Questie/commit/{questie_commit})"
-        if questie_commit != "0" * 40
-        else "Unavailable"
-    )
     sections.append(
         "<details>\n<summary>Build details and checksums</summary>\n\n"
         f"- Addon version: `{version}`\n"
         f"- Producing commit: {producer}\n"
-        f"- Legacy Questie baseline: {baseline}\n"
         f"- Supported API contracts: `{minimum_contract}` to `{contract}`\n\n"
         "The attached `release.json` records full commit hashes and each ZIP's SHA-256 checksum. "
         "Compare your download's hash with its entry before installing:\n\n"

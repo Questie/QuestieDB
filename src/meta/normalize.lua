@@ -5,9 +5,9 @@
 -- follows from shared code rather than from a test.
 --
 -- Nil, empty, and tuple-shape rules retain Questie's caller-visible semantics. Coordinates
--- are the deliberate exception: the TOC store preserves authored and Derived Pass precision,
--- while the migration-only compiler differential adapts raw values to the legacy grid. See
--- docs/storage-format.md, "Nil and empty semantics".
+-- are the deliberate exception: the TOC store preserves authored and Derived Pass precision.
+-- Literal expectations in tools/validation/storage-cases.lua protect these rules independently
+-- of the shared implementation. See docs/storage-format.md, "Nil and empty semantics".
 --
 --   | Source value      | Read back as                                        |
 --   | constant field    | schema placeholder, regardless of source value      |
@@ -43,9 +43,9 @@ local type, next = type, next
 -- remains canonical for existing callers: explicit instance sentinels have two elements,
 -- phase 0 is omitted from spawns, and waypoint rows never carry a third element.
 --
--- `{0,0}` and sub-grid coordinates are real values here. Only the compiler differential
--- converts them to the legacy zero-pair sentinel. Rows without numeric x and y pass through;
--- validators, not normalization, own malformed-data diagnostics.
+-- `{0,0}` and sub-grid coordinates are real values here, not the legacy compiler's
+-- zero-pair sentinel. Rows without numeric x and y pass through; validators, not normalization,
+-- own malformed-data diagnostics.
 
 ---Normalize one coordinate tuple without changing its x/y values.
 ---@param row any Coordinate tuple or malformed value.
@@ -146,7 +146,7 @@ local normalizeCoordinatesByStructure = {
 }
 
 --------------------------------------------------------------------------------------------
--- Element-level nil semantics (ADR 0004)
+-- Element-level nil semantics (ADR 0005)
 --------------------------------------------------------------------------------------------
 --
 -- Questie's `nil number -> 0` rule is NOT field-level. Its tuple readers read every slot they

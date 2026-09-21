@@ -249,10 +249,9 @@ tables for a given flavor and season.
 
 A seasonal provider file may ship in a base-flavor addon because its Dynamic Corrections must be
 available when that season is active. Loading the file does not publish its objective-ordering
-hints when the season gate is closed. In the pinned Questie source, the Classic TOC lists SoD
-correction files unconditionally, but QuestieDB deliberately excludes their load-time hints from
-plain Vanilla. [ADR 0012](./adr/0012-objective-first-applicability.md) records this applicability
-boundary and its relationship to pinned-source fidelity.
+hints when the season gate is closed. Plain Vanilla excludes SoD load-time hints even though
+the files are present. [ADR 0012](./adr/0012-objective-first-applicability.md) records the
+applicability boundary and its original migration rationale.
 
 ---
 

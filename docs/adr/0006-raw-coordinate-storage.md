@@ -1,5 +1,8 @@
 # 6. Raw coordinate storage
 
+Migration tooling and pinned-reference requirements in this record are superseded by
+[ADR 0014](0014-owned-data-after-migration.md). The runtime contracts remain in effect.
+
 Date: 2026-08-25. Status: accepted.
 
 ## Context

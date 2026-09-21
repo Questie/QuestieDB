@@ -4,12 +4,10 @@
 -- Turns raw entity data plus Static Corrections into a TOC metadata store.
 --
 -- Usage:
---   lua generate.lua meta                 materialize src/meta/*Meta.lua from Questie's schema
 --   lua generate.lua all                  every flavor
 --   lua generate.lua Vanilla [TBC ...]    named flavors
 --
 -- Options:
---   --questie=<path>       existing pinned checkout for schema materialization (meta only)
 --   --types=Quest,Npc      restrict entity types
 --   --fields=name,zoneOrSort   restrict fields (tracer-bullet slices only)
 --   --no-l10n              explicitly generate without localization
@@ -25,14 +23,10 @@
 
 local config = dofile("src/config.lua")
 local lib = dofile("generator/lib.lua")
-local loader = dofile("generator/loader.lua")
-local schema = dofile("generator/schema.lua")
 local encode = dofile("generator/encode.lua")
 local rows = dofile("generator/rows.lua")
-local corrections = dofile("generator/corrections.lua")
 local flavorLoader = dofile("generator/flavor.lua")
 local l10nGen = dofile("generator/l10n.lua")
-local questie = dofile("generator/questie.lua")
 local version = dofile("generator/version.lua")
 
 -- The correction manifest drives which files each TOC lists. It is optional: a bare data
@@ -59,8 +53,6 @@ local function parseArgs(argv)
     elseif key == "fields" then
       opts.fields = {}
       for name in val:gmatch("[^,]+") do opts.fields[name] = true end
-    elseif key == "questie" then
-      opts.questie = val
     elseif value == "--no-l10n" then
       opts.noL10n = true
     elseif value == "--no-base-toc" then
@@ -69,7 +61,7 @@ local function parseArgs(argv)
       opts.quiet = true
     elseif value:sub(1, 2) == "--" then
       error("Unknown option: " .. value, 0)
-    elseif value == "meta" or value == "all" or value == "toc" then
+    elseif value == "all" or value == "toc" then
       opts.target = value
     else
       opts.flavors[#opts.flavors + 1] = value
@@ -81,48 +73,6 @@ end
 local QUIET = false
 local function say(...)
   if not QUIET then print(...) end
-end
-
---------------------------------------------------------------------------------------------
--- Schema materialization
---------------------------------------------------------------------------------------------
-
---- Derive the schema from Questie's `*Keys` and `*CompilerTypes` and write src/meta/*Meta.lua.
----
---- Questie's schema files are the only source of `*CompilerTypes`, and they die with the
---- compiler. Materializing captures the type map before it disappears; the key enum keeps
---- deriving afterwards because every data file carries its own copy.
-function generate.materializeMeta(questiePath)
-  questiePath = questiePath or questie.resolve()
-  lib.mkdirp("src/meta")
-
-  for _, entityType in ipairs(config.entityTypes) do
-    local schemaFile = questiePath .. "/Database/" .. entityType.name:lower() .. "DB.lua"
-    if not lib.fileExists(schemaFile) then
-      error("Cannot derive schema: " .. schemaFile .. " not found. Pass the path to a Questie " ..
-            "checkout as the second argument.", 0)
-    end
-    local keys, compilerTypes = loader.loadSchemaFile(schemaFile, entityType, { isClassic = true, expansion = 1 })
-    local meta = schema.derive(entityType, keys, compilerTypes)
-
-    -- Cross-check against every flavor's data file, since the key enum travels with the data.
-    for _, flavor in ipairs(config.flavors) do
-      local dataPath = config.dataPath(flavor, entityType)
-      if lib.fileExists(dataPath) then
-        local entities, dataKeys = loader.loadEntityData(dataPath, entityType)
-        local omitted = schema.checkKeys(meta, dataKeys, dataPath)
-        schema.assertNoDataBeyondKeys(meta, entities, dataKeys, dataPath)
-        for name, index in pairs(omitted) do
-          say(string.format("  note: %s omits '%s' (field %d) — no row in that file uses it",
-            dataPath, name, index))
-        end
-      end
-    end
-
-    local path = schema.metaPath(entityType)
-    lib.writeAll(path, schema.render(meta))
-    say(string.format("Materialized %s (%d fields)", path, meta.fieldCount))
-  end
 end
 
 --------------------------------------------------------------------------------------------
@@ -157,9 +107,6 @@ local function writeHeader(out, flavor, fileList)
   out:write("## X-Mode: baked\n")
   out:write("## X-BUILD-COMMIT: ", BUILD.commit, "\n")
   out:write("## X-BUILD-TIME: ", BUILD.time, "\n")
-  -- Retain the legacy import/schema baseline while migration checks still use Questie.
-  -- Localization is owned here; BUILD.commit identifies the sources actually generated.
-  out:write("## X-QUESTIE-COMMIT: ", BUILD.questieCommit, "\n")
   out:write("\n")
   for _, file in ipairs(fileList) do
     out:write(file:gsub("/", "\\"), "\n")
@@ -366,16 +313,9 @@ QUIET = opts.quiet
 BUILD = {
   commit = lib.gitCommit(),
   time = lib.buildTime(),
-  questieCommit = string.rep("0", 40),
 }
 BUILD.version = version.baked(version.read(config.addonName .. ".toc"),
   BUILD.commit, os.getenv("QUESTIEDB_RELEASE"))
-
-if opts.target == "meta" then
-  local questiePath = questie.resolve(opts.questie or opts.flavors[1])
-  generate.materializeMeta(questiePath)
-  os.exit(0)
-end
 
 if opts.target == "toc" then
   generate.baseToc()
@@ -396,10 +336,9 @@ else
 end
 
 -- Missing localization input must fail before either TOC is opened. `--no-l10n` is the only
--- supported way to request a partial artifact. No Questie checkout is read or fetched here.
+-- supported way to request a partial artifact.
 if not opts.noL10n then
   l10nGen.assertInputs(config.paths.l10n, flavors, opts.types)
-  BUILD.questieCommit = lib.readQuestiePin()
 end
 
 -- The base TOC is not flavour-scoped, so every invocation would rewrite the same file. That is

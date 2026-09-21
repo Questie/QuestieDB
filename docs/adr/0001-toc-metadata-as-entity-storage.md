@@ -12,6 +12,12 @@ with its per-login cost and its SavedVariables footprint.
   the locale-change recompile, and a 1367-line format nobody else can read.
 - **Plain Lua data files.** Rejected: the client parses and materialises the whole table into
   the Lua heap regardless of how little of it is used.
+- **An in-band schema manifest for every type and field.** Not adopted from the parallel
+  prototype: supported releases package the reader, schema, and generated TOCs together.
+  Repeating the schema would add metadata and startup parsing without replacing the need for
+  contract-version discipline. Revisit if data is distributed independently of its reader,
+  third-party readers consume the TOC directly, or reader/artifact skew becomes a demonstrated
+  problem. This does not imply that an arbitrary artifact is safe with an older checkout.
 
 ## Consequences
 

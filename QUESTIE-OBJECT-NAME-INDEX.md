@@ -195,7 +195,7 @@ after Questie's own `Apply()` calls — not before.
   all, and nothing in production reads raw Object tables for this.
 
 `l10n:Initialize()`'s entity writes are a separate checklist item in
-`docs/questie-handover.md` and are not part of this change.
+the completed migration recorded in `docs/adr/0014-owned-data-after-migration.md` and are not part of this change.
 
 ## Tests
 

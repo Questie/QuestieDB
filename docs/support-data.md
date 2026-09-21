@@ -1,6 +1,6 @@
 # Support data
 
-QuestieDB publishes Questie's zone mappings, quest XP, faction templates, drop tables, and
+QuestieDB owns and publishes zone mappings, quest XP, faction templates, drop tables, and
 drop-table Corrections as plain Lua values through `LibQuestieDB.Support`. These datasets are
 consumed as whole tables, so they do not use the TOC metadata store. The public access points
 and value examples are documented in [`api.md`](./api.md#support-data).
@@ -12,7 +12,7 @@ Source TOC must work on every supported client, so it lists each variant once. S
 admit assignments for the active flavor and direct all other assignments to temporary,
 unpublished modules. Rejected values never appear through `Support.Get` or `Support.GetAll`.
 
-The selected data follows Questie's flavor TOCs:
+The selected data preserves the imported flavor boundaries:
 
 - Vanilla, TBC, Wrath, and Cata use the shared area/UI map tables plus their own quest XP,
   faction-template, and drop-table variant.
@@ -25,7 +25,7 @@ loaded later in the emulator from retaining modules or values selected for an ea
 
 ## Value shapes
 
-Copied values keep the shape authored by Questie. In particular, zone maps and item-drop
+Owned values retain their public shapes. In particular, zone maps and item-drop
 sources that Questie's wrappers pass to `loadstring` remain strings. Quest XP, faction
 templates, zone IDs, dungeon records, and item-drop Corrections remain tables.
 
@@ -42,46 +42,19 @@ A dungeon's optional second slot is a dense `alternativeAreaIds` list, not a sca
 Consumers should preserve these raw types when binding the values to their existing wrapper
 modules.
 
-## Copied-data inventory
+## Maintaining inputs
 
-[`tools/questie-sync/support-inventory.lua`](../tools/questie-sync/support-inventory.lua) is the authoritative inventory
-of all 24 copied support files. Each entry records:
-
-- `file`: the local QuestieDB path;
-- `questie`: the source path in the checkout pinned by `QUESTIE_COMMIT`;
-- `fields`: every public module field the file assigns;
-- `luaFields`: fields intentionally published as Lua source strings.
-
-Update the inventory together with `config.supportData` whenever Questie adds, removes, or
-moves a support input. Source-mode grouping in `config.supportSourceGroups` must continue to
-produce the same effective selection as `config.supportData.perFlavor`. The fidelity gate
-fails for unmapped configured inputs, unmapped applicable inputs in Questie's TOCs, and unused
-inventory entries.
-
-## Fidelity gate
-
-Run the focused check against the pinned sibling checkout:
+[`src/config.lua`](../src/config.lua), under `config.supportData`, owns the shared and
+per-flavor file selection. Update it when adding, removing, or moving a support input.
+Source-mode grouping in `config.supportSourceGroups` must produce the same effective selection
+as `config.supportData.perFlavor`. Regenerate the committed Source TOC after file-list changes:
 
 ```sh
-lua5.1 test.lua support support-fidelity
+lua5.1 generate.lua toc
+lua5.1 test.lua support
 ```
 
-`support-fidelity` executes Questie's applicable support inputs and compares their effective
-module values with QuestieDB for every flavor and both factions. It checks configured Source
-and Baked loading, the committed Source TOC, and generated Baked TOCs when present. It also
-compares each copied input independently so a later assignment cannot hide stale data.
-
-Comparison is semantic rather than byte-based. Formatting-only changes do not fail. Fields
-listed in `luaFields` retain their published source type while their decoded table values are
-compared, so an equivalent string-to-table change still fails as a public shape change.
-Dungeon `alternativeAreaIds` receive a separate dense-list shape check.
-
-CI and Release run source/configuration fidelity once in `test.lua --shared`. Each
-`test.lua --flavor=<Flavor>` scope checks that flavor's emitted TOC against the pinned inputs
-for both factions. It requires the selected artifact and never discovers another flavor's TOC.
-The local `test` task uses the same scopes; see
-[Independent test scopes](../README.md#independent-test-scopes).
-
-The named command above and unfiltered `test.lua` retain emitted checks for available artifacts.
-Issue #19's aggregate side-channel gate can invoke the focused command directly, but should use
-explicit flavor scopes when missing generated artifacts must fail.
+The support fixtures check loading, flavor isolation, and public shapes without comparing to
+an external Questie checkout. Generated artifacts also receive file-list and loading checks in
+[flavor test scopes](../README.md#independent-test-scopes). The retired whole-table fidelity
+inventory is preserved at the [migration checkpoint](adr/0014-owned-data-after-migration.md).

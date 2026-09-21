@@ -3,19 +3,16 @@
 --
 -- Strips Static Correction function bodies from a staged package (issue #5).
 --
--- Baked artifacts ship whole correction files because the shipping unit is the file and
--- upstream keeps a small Dynamic function beside a large Static one in the same file —
--- splitting the file would fork it and weaken the ownership-filtered re-sync. But the static
--- halves are already folded into the TOC metadata store, so 94-96% of every shipped
--- correction file is data the client parses at login and can never use.
+-- Baked artifacts ship correction files that can contain both Static and Dynamic functions.
+-- Static bodies are already folded into the TOC metadata store and need not be parsed again
+-- at login. Dynamic functions and module-level hints must remain intact.
 --
--- This tool rewrites the STAGED COPIES only. `src/corrections/` in the repository preserves
--- every upstream byte outside declared ownership exclusions, so `tools/questie-sync/port-corrections.lua`
--- and the CI drift gate keep working — they compare the source tree, never the artifact.
+-- This tool rewrites STAGED COPIES only. Repository files retain their full bodies for
+-- Generation, Source mode, and the package behavior comparison.
 --
 -- Safety is layered, and every failure aborts packaging:
 --   * a static function must be found exactly once, as a column-0 `function Module:Name(`
---     with a column-0 closing `end` — the upstream style every ported file follows;
+--     with a column-0 closing `end` — the correction file layout this tool requires;
 --   * the stripped file must still compile (`loadstring`);
 --   * every Dynamic function must still be defined after the strip;
 --   * the stripped file must behave identically to the original for everything Baked mode
@@ -70,7 +67,7 @@ end
 -- Stripping
 --------------------------------------------------------------------------------------------
 
---- Pattern for a top-level definition of one named function, upstream style: column 0,
+--- Pattern for a top-level definition of one named function, column 0,
 --- `function <Module>:<Name>(` or `function <Module>.<Name>(`.
 local function headerPattern(functionName)
   return "^function%s+[%w_]+%s*[:.]%s*" .. functionName .. "%s*%("
@@ -83,8 +80,7 @@ end
 
 local STUB_BODY = {
   "  -- Static body stripped at package time (tools/distribution/strip-static.lua): this correction is",
-  "  -- already folded into the TOC metadata store. The repository copy keeps the full",
-  "  -- upstream-identical body.",
+  "  -- already folded into the TOC metadata store. The repository copy keeps the full body.",
   "  return {}",
 }
 

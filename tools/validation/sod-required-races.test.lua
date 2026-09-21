@@ -1,5 +1,5 @@
--- Check the explicit data against independent, pinned audit evidence. The strict compiler
--- differential remains the all-quest drift check; this fixture is not a baseline allowance.
+-- Representative SoD masks exercise seasonal admission, correction order, and withdrawal.
+-- These are explicit behavior witnesses, not a snapshot of every correction row.
 ---@param check fun(condition: boolean, message: string)
 ---@param equal fun(actual: any, expected: any, message: string)
 ---@param modeScope? string Source or Baked; omitted preserves both modes.
@@ -18,17 +18,10 @@ return function(check, equal, modeScope)
 
   local path = "src/corrections/Sod/sodRequiredRaces.lua"
   local name = "Sod:sodRequiredRaces"
-  local expected, count = {}, 0
-  for line in io.lines("tools/differential/evidence/sod-required-races-before.tsv") do
-    local fields = {}
-    for field in line:gmatch("[^\t]+") do fields[#fields + 1] = field end
-    local id = tonumber(fields[1])
-    if id then
-      expected[id] = assert(tonumber(fields[6]), "audit lacks oracle mask")
-      count = count + 1
-    end
-  end
-  equal(count, 25, "the pinned audit covers 25 distinct corrections")
+  local expected = {
+    [78612] = 77, -- Shipment retains its Alliance mask on both player factions.
+    [90114] = 178, -- Endless Rage retains its Horde mask on both player factions.
+  }
 
   for _, flavor in ipairs(config.flavors) do
     local files = table.concat(config.bakedFileList(flavor), "\n")
@@ -60,7 +53,7 @@ return function(check, equal, modeScope)
       end
       local observed = {}
       for id in pairs(expected) do observed[id] = db.Quest.Get(id, "requiredRaces") end
-      equal(observed, expected, label .. " returns every audited mask")
+      equal(observed, expected, label .. " returns faction-independent authored masks")
 
       local registry = db.Corrections
       local entries = registry.Select({ owner = registry.OWNER, datatype = "Quest", dynamic = true })
@@ -73,8 +66,8 @@ return function(check, equal, modeScope)
         label .. " authored values follow copied SoD providers")
       local rows = assert(correction).func()
       local masks = {}
-      for id, row in pairs(rows) do masks[id] = row[db.Meta.Quest.keys.requiredRaces] end
-      equal(masks, expected, label .. " owns exactly the audited rows")
+      for id in pairs(expected) do masks[id] = rows[id][db.Meta.Quest.keys.requiredRaces] end
+      equal(masks, expected, label .. " registers the representative masks")
 
       registry.Set("TestConsumer", "Quest", "race", { [78612] = { [db.Meta.Quest.keys.requiredRaces] = 1 } })
       registry.ApplyRegisteredCorrections(registry.OWNER)

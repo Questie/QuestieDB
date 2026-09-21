@@ -9,7 +9,8 @@ architecture as designed; where it and the code disagree, read the ADRs in `docs
 `0003-merged-storage-and-read-contract.md` remains the broad contract statement. ADR 0006
 supersedes its coordinate decision, ADR 0010 defines Baked entity storage, ADR 0011 defines
 compressed Localization blocks, and ADR 0013 defines locale-first reads and Translation
-Corrections.
+Corrections. ADR 0014 retires migration tooling and establishes the owned schema and data workflow.
+No external Questie checkout, compiler comparison, or full-data golden refresh is required.
 
 ## Read first
 
@@ -18,15 +19,15 @@ Corrections.
 - `docs/storage-format.md` — the on-disk TOC contract and nil/empty rules
 - `docs/adr/` — decision records; `0003` is the broad contract, `0006` supersedes its
   coordinate decision, `0010` defines CBOR entity storage, `0011` defines compressed
-  Localization blocks, and `0013` defines locale-first reads and Translation Corrections
-- `docs/merge-program.md` — how the two parallel implementations became one: defects
-  fixed, standing guarantees, ready-to-file future work, retirement checklist
+  Localization blocks, `0013` defines locale-first reads and Translation Corrections, and
+  `0014` records post-migration ownership and verification
+- `PROVENANCE.md` — Questie source reference, source origins, and prototype lineage
+- `docs/behavior-fixtures.md` — fixed examples and the boundaries each validation suite covers
 - `docs/client-metadata-probes.md` — measured live-client behavior (trimming, key
   case-folding, the 1,023-byte line limit, freeze ownership, read-path costs)
 - `docs/read-performance.md` — what a read costs and why, measured against the `Getters`
   prototype and Questie's compiler; the cost model behind the caching design
 - `docs/table.freeze.md` — live-client research on `table.freeze` / `table.isfrozen`
-- `docs/pi/` — the retired `-pi` sibling: unadopted design ideas and its defect ledger
 
 ## LuaLS declaration maintenance
 

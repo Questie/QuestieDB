@@ -468,9 +468,8 @@ QuestieDB's `Get` accepts either. Every measurement in this document was taken t
 `LibQuestieDB.<Type>` and `_G.QuestDB` explicitly, with the identity asserted in the same
 call.
 
-The prototype is being retired (see
-[`retiring-the-prototypes.md`](./retiring-the-prototypes.md)), so this is a hazard for
-comparison work rather than a shipping conflict.
+The prototype is not part of the shipped addon. This remains a hazard when installing old
+prototypes for comparison; their lineage is recorded in [PROVENANCE.md](../PROVENANCE.md).
 
 ---
 

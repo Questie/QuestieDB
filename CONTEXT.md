@@ -56,9 +56,8 @@ _Avoid_: Compilation, build, cooking
 **Derived Pass**:
 A deterministic transform over corrected entity data, run before storage, in both Generation
 and Source mode. Distinct from a Correction, which is data (`id` to field index to value) — a
-Derived Pass is code, and may read one entity type while writing another. Reproduces a
-transform Questie applies between corrections and compilation, so that reads match the
-database a player actually receives (ADR 0004).
+Derived Pass is code, and may read one entity type while writing another. It computes values
+from corrected inputs rather than storing an authored replacement for each affected field.
 _Avoid_: Preprocess, precompile, postprocess, pipeline stage
 
 **Support data**:
@@ -198,22 +197,6 @@ _Avoid_: Sanity check, canary
 The check that an artifact's data directives match the exact bytes re-derived from
 QuestieDB-owned sources, including entity localization.
 _Avoid_: Round-trip verification (which compares decoded values)
-
-**Golden snapshot**:
-A recorded set of accepted composed entity reads. It detects changes to those accepted
-results even when Generation and Source mode agree with each other.
-_Avoid_: Compiler snapshot, upstream oracle
-
-**Migration fidelity check**:
-A comparison of QuestieDB data or behavior against an independent reference from pinned
-legacy Questie. The reference may advance as synchronization continues before cutover.
-_Avoid_: Generation, Golden snapshot
-
-**Compiler comparison adapter**:
-The migration-only projection that converts QuestieDB base coordinates to Questie's legacy
-12-bit read values immediately before the compiler differential. It never runs in Generation
-or runtime reads and retires with the compiler oracle (ADR 0006).
-_Avoid_: Production quantizer, compatibility mode
 
 **Persona**:
 The emulator's mocked client identity — faction, race, class, season — letting gated and

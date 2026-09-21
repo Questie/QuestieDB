@@ -289,31 +289,6 @@ function lib.printUsage(scriptPath)
   os.exit(0)
 end
 
----Select Python for schema materialization (`generate.lua meta`) only. Generation,
----verification, validators, and the unit tests never need it.
----@param arguments string[]
----@return string command
-function lib.pythonCommand(arguments)
-  local selected = os.getenv("QUESTIEDB_PYTHON")
-  local prefix
-  if selected and selected ~= "" then
-    prefix = lib.shellQuote(selected)
-  else
-    for _, candidate in ipairs({ "python3", "python", "py -3" }) do
-      local pipe = lib.popen(candidate .. ' -c "import sys; print(int(sys.version_info >= (3, 8)))" 2>' .. lib.nullDevice)
-      if pipe then
-        local version = pipe:read("*l")
-        pipe:close()
-        if version == "1" then prefix = candidate; break end
-      end
-    end
-  end
-  assert(prefix, "Python 3.8+ is required to fetch the pinned Questie checkout for `generate.lua meta`; " ..
-    "install it, set QUESTIEDB_PYTHON, or pass --questie=<checkout>")
-  for _, argument in ipairs(arguments) do prefix = prefix .. " " .. lib.shellQuote(argument) end
-  return prefix
-end
-
 --------------------------------------------------------------------------------------------
 -- Build provenance
 --------------------------------------------------------------------------------------------
@@ -325,7 +300,7 @@ local function trim(str)
 end
 
 --- `git rev-parse HEAD`, or forty zeros when git is unavailable. With `dir`, the commit of
---- that checkout instead — used to record the Questie input commit.
+--- that checkout instead.
 --- See docs/storage-format.md, "Build metadata".
 ---@param dir string? Git checkout, defaulting to the current directory.
 ---@return string commit
@@ -338,38 +313,6 @@ function lib.gitCommit(dir)
     if output:match("^[0-9a-fA-F]+$") and #output == 40 then return output end
   end
   return rep("0", 40)
-end
-
----Read and validate the reviewed Questie input commit before invoking Git.
----@param pinPath string? Pin file, defaulting to `QUESTIE_COMMIT`.
----@return string commit
-function lib.readQuestiePin(pinPath)
-  pinPath = pinPath or "QUESTIE_COMMIT"
-  if not lib.fileExists(pinPath) then
-    error("Questie pin file not found: " .. pinPath, 0)
-  end
-
-  local expected = trim(lib.readAll(pinPath))
-  if #expected ~= 40 or not expected:match("^[0-9a-f]+$") then
-    error(pinPath .. " must contain one lowercase 40-character Git SHA", 0)
-  end
-
-  return expected
-end
-
----Fails unless a Questie checkout is at the reviewed input commit.
----@param questiePath string Questie checkout to validate.
----@param pinPath string? Pin file, defaulting to `QUESTIE_COMMIT`.
----@return string commit The validated Questie commit.
-function lib.assertQuestiePin(questiePath, pinPath)
-  local expected = lib.readQuestiePin(pinPath)
-  local actual = lib.gitCommit(questiePath)
-  if actual ~= expected then
-    error(("Questie checkout %s is at %s, expected pinned commit %s. Check out the pin or " ..
-      "update QUESTIE_COMMIT and review the resulting schema, Correction, differential, and " ..
-      "Golden changes."):format(questiePath, actual, expected), 0)
-  end
-  return actual
 end
 
 --- SOURCE_DATE_EPOCH is honoured so a release build can be byte-reproducible.

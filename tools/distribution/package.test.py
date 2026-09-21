@@ -39,7 +39,6 @@ TOC_INTERFACES = {
     "Cata": "40402",
     "Mists": "50503, 50504",
 }
-PIN = "a" * 40
 CREDIT_FIXTURES = json.loads(
     (ROOT / "tools/distribution/fixtures/author-credits.json").read_text(encoding="utf-8")
 )
@@ -493,8 +492,7 @@ class PackageTest(unittest.TestCase):
             self.write("support/%s.lua" % flavor, "return '%s'\n" % flavor)
             self.write(
                 "QuestieDB_%s.toc" % flavor,
-                "## X-QUESTIE-COMMIT: %s\n" % PIN
-                + "## Version: 1.2.3-dev.abcdef0\n## X-Contract-Version: 2\n"
+                "## Version: 1.2.3-dev.abcdef0\n## X-Contract-Version: 2\n"
                 + "## Interface: %s\n" % TOC_INTERFACES[flavor]
                 + "## IconTexture: Interface\\AddOns\\QuestieDB\\icons\\QuestieTDB_64x64.png\n"
                 + "src\\config.lua\nsrc\\runtime.lua\nsrc\\corrections\\Era\\fixes.lua\n"
@@ -509,7 +507,6 @@ class PackageTest(unittest.TestCase):
             SOURCE_DATE_EPOCH="1700000000",
             QUESTIEDB_TEST_FAIL_STRIP="0",
         )
-        self.env.pop("QUESTIE_COMMIT", None)
         self.env.pop("GITHUB_REPOSITORY", None)
 
     def write(self, relative, content):
@@ -545,7 +542,6 @@ class PackageTest(unittest.TestCase):
         releases = {entry["filename"]: entry for entry in document["releases"]}
         self.assertEqual("https://github.com/Questie/QuestieDB", manifest["repository"])
         self.assertEqual("0" * 40, manifest["producerCommit"])
-        self.assertEqual(PIN, manifest["questieCommit"])
         self.assertEqual(2, manifest["contractVersion"])
         self.assertEqual(1, manifest["minSupportedContract"])
         self.assertEqual("1.2.3-dev.abcdef0", manifest["version"])
@@ -654,6 +650,7 @@ class PackageTest(unittest.TestCase):
         self.assertIn("Interface/AddOns/QuestieDB/QuestieDB_<Flavor>.toc", notes)
         self.assertIn("GitHub's **Source code** archives are not the packaged addon", notes)
         self.assertIn("<summary>Build details and checksums</summary>", notes)
+        self.assertIn("Producing commit: Unavailable", notes)
         self.assertIn("Supported API contracts: `1` to `2`", notes)
         self.assertIn("without Git history", notes)
         self.assertLess(notes.index("</details>"), notes.rindex("> [!WARNING]"))
@@ -696,7 +693,6 @@ class PackageTest(unittest.TestCase):
         manifest = json.loads((dist / "release.json").read_text(encoding="utf-8"))["questiedb"]
         self.assertEqual("https://github.com/Example/Database", manifest["repository"])
         self.assertEqual(commits[-1], manifest["producerCommit"])
-        self.assertEqual(PIN, manifest["questieCommit"])
         verified = release_artifacts.verify(dist, git("rev-parse", "HEAD"))
         self.assertEqual(
             [dist / artifact["file"] for artifact in manifest["artifacts"]],
@@ -723,6 +719,11 @@ class PackageTest(unittest.TestCase):
         )
         self.assertEqual("changelog", list(manifest)[-1])
         notes = (dist / "RELEASE_NOTES.md").read_text(encoding="utf-8")
+
+        self.assertIn(
+            f"Producing commit: [`{commits[-1][:7]}`]({manifest['repository']}/commit/{commits[-1]})",
+            notes,
+        )
 
         # Every ZIP, the manifest, and the release page must carry the same changes.
         changelogs = []
@@ -767,7 +768,6 @@ class PackageTest(unittest.TestCase):
         metadata = {
             "repository": "https://github.com/Example/Database",
             "producerCommit": "b" * 40,
-            "questieCommit": PIN,
             "version": "1.2.3",
             "contractVersion": 2,
             "minSupportedContract": 1,
@@ -839,15 +839,6 @@ class PackageTest(unittest.TestCase):
         self.assertIn("QuestieDB_Mists.toc is not generated", result.stderr)
         self.assert_previous_output()
 
-    def test_mixed_baselines_preserve_previous_output(self):
-        self.preserve_previous_output()
-        toc = self.root / "QuestieDB_Mists.toc"
-        toc.write_text(toc.read_text().replace(PIN, "b" * 40))
-        result = self.run_package("all")
-        self.assertNotEqual(0, result.returncode)
-        self.assertIn("different legacy Questie baselines", result.stderr)
-        self.assert_previous_output()
-
     def test_missing_runtime_file_preserves_previous_output(self):
         self.preserve_previous_output()
         (self.root / "src/runtime.lua").unlink()
@@ -883,7 +874,6 @@ class PackageTest(unittest.TestCase):
         self.assertEqual("1.2.3", manifest["version"])
         self.assertEqual("https://github.com/Questie/QuestieDB", manifest["repository"])
         self.assertEqual("0" * 40, manifest["producerCommit"])
-        self.assertEqual(PIN, manifest["questieCommit"])
         notes = (self.root / ".out/dist/RELEASE_NOTES.md").read_text()
         self.assertTrue(notes.startswith("# QuestieDB 1.2.3\n"))
         self.assertIn("/releases/download/v1.2.3/QuestieDB-Vanilla.zip", notes)

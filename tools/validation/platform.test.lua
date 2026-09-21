@@ -26,7 +26,6 @@ return function(check, equal)
     package = { config = "\\\n;\n?\n!\n-\n" },
     os = {
       getenv = function(name)
-        if name == "QUESTIEDB_PYTHON" then return "C:\\Python Tools\\python.exe" end
         if name == "TEMP" then return "C:\\Users\\dev\\AppData\\Local\\Temp" end
       end,
       execute = function(command) commands[#commands + 1] = command; return 0 end,
@@ -54,9 +53,9 @@ return function(check, equal)
     "Windows directory creation does not attempt mkdir -p")
   equal(windows.gitCommit("C:/Data Files/Questie"), string.rep("a", 40), "Windows Git provenance is retained")
   equal(commands[#commands], 'git -C "C:/Data Files/Questie" rev-parse HEAD 2>NUL', "Windows Git uses native quoting and redirection")
-  windows.execute(windows.pythonCommand({ "tools/cli/questiedb.test.py" }))
-  equal(commands[#commands], '""C:\\Python Tools\\python.exe" "tools/cli/questiedb.test.py""',
-    "cmd receives outer quotes for a quoted Python executable")
+  windows.execute(windows.shellQuote("C:\\Lua Tools\\lua.exe") .. ' "test.lua"')
+  equal(commands[#commands], '""C:\\Lua Tools\\lua.exe" "test.lua""',
+    "cmd receives outer quotes for a quoted executable")
 
   -- The test filesystem helper must resolve to the same Windows lib, not the real one.
   env.dofile = function(path)

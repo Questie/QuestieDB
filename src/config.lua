@@ -68,15 +68,15 @@ end
 --
 -- `name` is the Entity global's base name — `Quest` becomes `LibQuestieDB.Quest` and the
 -- `QuestDB` global alias.
--- `keysField` / `dataField` / `typesField` are the names Questie's data and schema files use.
+-- `keysField` / `dataField` are the names the owned entity data files use.
 -- `metaPrefix` is the per-type key prefix inside the combined TOC metadata store; see
 -- docs/storage-format.md, "Combined-addon prefix".
 
 config.entityTypes = {
-  { name = "Quest",  keysField = "questKeys",  dataField = "questData",  typesField = "questCompilerTypes",  metaPrefix = "Quest-",  fileSuffix = "QuestDB" },
-  { name = "Npc",    keysField = "npcKeys",    dataField = "npcData",    typesField = "npcCompilerTypes",    metaPrefix = "Npc-",    fileSuffix = "NpcDB" },
-  { name = "Item",   keysField = "itemKeys",   dataField = "itemData",   typesField = "itemCompilerTypes",   metaPrefix = "Item-",   fileSuffix = "ItemDB" },
-  { name = "Object", keysField = "objectKeys", dataField = "objectData", typesField = "objectCompilerTypes", metaPrefix = "Object-", fileSuffix = "ObjectDB" },
+  { name = "Quest",  keysField = "questKeys",  dataField = "questData",  metaPrefix = "Quest-",  fileSuffix = "QuestDB" },
+  { name = "Npc",    keysField = "npcKeys",    dataField = "npcData",    metaPrefix = "Npc-",    fileSuffix = "NpcDB" },
+  { name = "Item",   keysField = "itemKeys",   dataField = "itemData",   metaPrefix = "Item-",   fileSuffix = "ItemDB" },
+  { name = "Object", keysField = "objectKeys", dataField = "objectData", metaPrefix = "Object-", fileSuffix = "ObjectDB" },
 }
 
 config.entityTypeByName = {}

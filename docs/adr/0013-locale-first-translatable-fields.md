@@ -1,5 +1,8 @@
 # 13. Locale-first reads for translatable fields
 
+Migration tooling and pinned-reference requirements in this record are superseded by
+[ADR 0014](0014-owned-data-after-migration.md). The runtime contracts remain in effect.
+
 Date: 2026-09-05. Status: accepted and implemented.
 
 Entity Corrections are authored in English. Letting a Dynamic Correction outrank localization

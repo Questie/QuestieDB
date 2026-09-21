@@ -1,5 +1,8 @@
 # 12. Objective-ordering hint applicability
 
+Migration tooling and pinned-reference requirements in this record are superseded by
+[ADR 0014](0014-owned-data-after-migration.md). The runtime contracts remain in effect.
+
 Date: 2026-09-05. Status: accepted.
 
 ## Context

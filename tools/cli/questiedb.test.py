@@ -30,7 +30,7 @@ class ParsingTest(unittest.TestCase):
         self.assertEqual(list(cli.CHECKS), options.tasks)
         self.assertEqual(["Vanilla", "TBC"], options.flavors)
         self.assertEqual(2000, options.budget)
-        self.assertEqual(["generate", *cli.CHECKS, "golden", "test"], cli.parse_args(["all"]).tasks)
+        self.assertEqual(["generate", *cli.CHECKS, "test"], cli.parse_args(["all"]).tasks)
 
     def test_invalid_selections_fail_before_tool_discovery(self):
         cases = [([], "no task"), (["Vanilla"], "no task"),
@@ -252,7 +252,7 @@ class CommandFlowTest(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory(prefix="questiedb commands ")
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
-        for directory in ("tools/cli", "tools/distribution", "tools/differential", "tools/validation", "tools/dbc", "generator", "validators"):
+        for directory in ("tools/cli", "tools/distribution", "tools/validation", "tools/dbc", "validators"):
             (self.root / directory).mkdir(parents=True)
         shutil.copy(ROOT / "tools/cli/questiedb.py", self.root / "tools/cli/questiedb.py")
         shutil.copy(ROOT / "questiedb.sh", self.root / "questiedb.sh")
@@ -263,11 +263,9 @@ class CommandFlowTest(unittest.TestCase):
         self.env.pop("CHANGE_ARTIFACT", None)
         self.env.pop("FAIL_READ", None)
         shutil.copyfile(FIXTURES / "generate.lua", self.root / "generate.lua")
-        shutil.copyfile(FIXTURES / "questie-pin.lua", self.root / "generator/lib.lua")
         for script in ("verify.lua", "equivalence.lua", "reconstruct.lua", "validators/run.lua", "test.lua"):
             shutil.copyfile(FIXTURES / "read.lua", self.root / script)
-        for script in ("tools/differential/compiler_diff.py", "tools/differential/golden.py",
-                       "tools/cli/questiedb.test.py", "tools/validation/test-scopes.test.py",
+        for script in ("tools/cli/questiedb.test.py", "tools/validation/test-scopes.test.py",
                        "tools/dbc/coordinates.test.py", "tools/dbc/download.test.py",
                        "tools/dbc/rewrite.test.py", "tools/dbc/convert.test.py"):
             shutil.copyfile(FIXTURES / "read.py", self.root / script)
@@ -277,15 +275,14 @@ class CommandFlowTest(unittest.TestCase):
                               cwd=self.root.parent, env=self.env, capture_output=True, text=True, timeout=30)
 
     def test_all_finishes_every_generation_before_readers(self):
-        result = self.run_cli("all", "Vanilla", "Mists", "--budget-mb=2000", "--questie=path with spaces; literal")
+        result = self.run_cli("all", "Vanilla", "Mists", "--budget-mb=2000")
         self.assertEqual(0, result.returncode, result.stdout + result.stderr)
         events = (self.root / "events.log").read_text().splitlines()
-        self.assertEqual("pin:path with spaces; literal", events[0])
         self.assertEqual(1, events.count("generate:Vanilla"))
         self.assertEqual(1, events.count("generate:Mists"))
         last_generation = max(events.index("generate:Vanilla"), events.index("generate:Mists"))
         reads = [index for index, event in enumerate(events) if event.startswith("read:")]
-        self.assertEqual(21, len(reads))
+        self.assertEqual(17, len(reads))
         self.assertTrue(all(index > last_generation for index in reads))
         self.assertFalse((self.root / ".out/dist").exists())
 

@@ -204,31 +204,20 @@ Every generated `.toc` carries provenance:
 ```toc
 ## X-BUILD-COMMIT: <sha or 40 zeros>
 ## X-BUILD-TIME: <ISO 8601 UTC>
-## X-QUESTIE-COMMIT: <sha or 40 zeros>
 ```
 
 `X-BUILD-COMMIT` is `git rev-parse HEAD`, or forty zeros when git is unavailable.
 
-`X-QUESTIE-COMMIT` retains the legacy import/schema baseline from `QUESTIE_COMMIT` during
-migration. Localized Generation reads that pin file but does not inspect or fetch a Questie
-checkout. Intentional `--no-l10n` artifacts use forty zeros for this header. The manifest keeps
-the corresponding `questieCommit` field; `tools/distribution/package.py` rejects artifacts with different
-baseline stamps in one release.
-
-Localization sources are owned in `l10n/`, so `X-BUILD-COMMIT` identifies their revision along
-with the generator and other local inputs. `X-QUESTIE-COMMIT` is no longer a claim that the
-translations came from an external checkout during Generation. Reconstruction also uses local
-sources and requires no Questie checkout or pin validation.
-
-Schema materialization, the compiler differential, Correction imports, and migration fidelity
-tests still validate the reviewed Questie pin. Both workflows retain the shared checkout action
-for those checks. See `l10n/README.md` for the localization import's historical provenance.
+The producer commit identifies the generator and all owned entity, correction, localization,
+and support inputs. Generation and Reconstruction require no external Questie checkout.
+The former `X-QUESTIE-COMMIT` header and release-manifest `questieCommit` field were migration
+stamps, not current inputs; new builds omit both. See
+[ADR 0014](adr/0014-owned-data-after-migration.md).
 
 ## Nil and empty semantics
 
-**The rule: match Questie's current compiler exactly.** Consumers have been written against
-these semantics for years, and any deviation is a silent behaviour change across ~290 call
-sites.
+These read semantics preserve the consumer contract established during migration. They are
+QuestieDB's maintained contract, not a requirement to compare against the retired compiler.
 
 | Source value | Read back as | Note |
 | --- | --- | --- |
@@ -263,7 +252,7 @@ genuine string with that value. QuestieDB needs no inference or sentinel on the 
 
 **This section previously claimed the table above governs a *field's* value, and that nested
 content is preserved verbatim with coordinates as the sole exception. That was wrong**, and
-the reference differential (`tools/differential/compiler_diff.py`) proved it: coordinates were
+the migration reference differential proved it: coordinates were
 not the exception, they were the one nested case anyone had checked. Questie's `nil number ->
 0` rule applies **element-wise inside structured values too** — its tuple writers emit
 `value or 0` and its readers read back every slot they wrote:
@@ -278,16 +267,13 @@ not the exception, they were the one nested case anyone had checked. Questie's `
 String slots are **not** padded: they are written `value or ""` and read back as nil for `""`.
 
 Coordinate tuple shape remains a deliberate nested normalization, but `x` and `y` retain raw
-precision (ADR 0006). The compiler's remaining nested behaviours — turning a nil objective text
-into `""` and the like — stay unreproduced and are measured rather than assumed harmless. The
-migration differential accounts for every remaining divergence; current counts live in
-[`questie-handover.md`](./questie-handover.md). The tool-only Compiler comparison adapter
-reproduces the old 40.90 grid where the compiler oracle requires it without imposing that loss
-on production storage or reads.
+precision (ADR 0006). Some legacy nested behaviors, such as converting absent objective text
+to an empty string,
+were deliberately not reproduced. The [migration checkpoint](adr/0014-owned-data-after-migration.md)
+preserves the measured divergences; new data changes do not update that evidence.
 
 ## Round-trip requirement
 
 For every entity, every field: decoding the stored value must reproduce the source value under
 the semantics above. Coordinate-bearing structures reproduce raw authored or Derived Pass
-values exactly; legacy grid projection belongs only to the compiler differential. This is
-verification layer 2 in `DESIGN.md` and is a required CI gate, not a smoke test.
+values exactly. Round-trip Verification is a required CI gate, not a smoke test.

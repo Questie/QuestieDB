@@ -259,7 +259,7 @@ local function verifyFlavor(flavor, opts)
   if not opts.types and not opts.sample and not opts.fields then
     local headerKeys = {
       ["X-Contract-Version"] = true, ["X-Flavor"] = true, ["X-Mode"] = true,
-      ["X-BUILD-COMMIT"] = true, ["X-BUILD-TIME"] = true, ["X-QUESTIE-COMMIT"] = true,
+      ["X-BUILD-COMMIT"] = true, ["X-BUILD-TIME"] = true,
     }
     local orphans = 0
     for key in pairs(map) do

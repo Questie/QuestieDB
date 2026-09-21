@@ -2,14 +2,9 @@
 --
 -- The module surface Questie's correction files expect.
 --
--- The correction files under `src/corrections/<Expansion>/` preserve Questie's bytes exactly
--- outside the provider/consumer ownership exclusions explicitly declared by
--- `tools/questie-sync/port-corrections.lua`.
--- That fidelity avoids transcription errors across ~10 MB of hand-curated data and keeps
--- upstream re-syncs mechanical: copy each file, then apply only the declared exclusions.
---
--- The price is this file: scoped stand-ins for `QuestieLoader`, the handful of Questie
--- modules those files import, and the icon constants their providers read later. The loader is
+-- Owned correction files retain the module-based authoring format imported from Questie.
+-- Scoped stand-ins provide `QuestieLoader`, the handful of modules those files import,
+-- and the icon constants their providers read later. The loader is
 -- installed only while correction files load. The `Questie` stand-in exists in the global
 -- namespace only while a registered provider runs, and both globals are restored afterwards.
 
@@ -189,7 +184,7 @@ function compat.Install(flavor)
     error("correction compat: constants are missing expansion data for " .. expansionName, 2)
   end
 
-  -- Build before changing globals so malformed generated constants fail without side effects.
+  -- Build before changing globals so malformed constants fail without side effects.
   local modules = buildModules(expansionName)
   modules.Expansions.Current = order
 
