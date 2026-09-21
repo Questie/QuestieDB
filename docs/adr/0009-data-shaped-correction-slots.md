@@ -96,8 +96,16 @@ Additive surface; nothing has shipped, so ADR 0007 D4's reasoning applies unchan
   cross-owner withdrawal fall-through, rank fixing, per-datatype publish identity for both Set
   and Apply, memoization run counts, side-effect-free registration, the pending rule, and the
   function/Static name refusals — 35 checks against the baked Vanilla artifact.
-- `-pi`'s transactional machinery (docs/pi/transactional-corrections.md) remains unported; the
-  dirty set is scope bookkeeping, not a transaction log.
+- The dirty set is scope bookkeeping, not a transaction log. A failed provider can leave
+  published reads and provenance inconsistent; [issue #35](https://github.com/Questie/QuestieDB/issues/35)
+  tracks candidate composition and consistent publication. Invalid rows and Static registration
+  boundaries are tracked separately in [#36](https://github.com/Questie/QuestieDB/issues/36)
+  and [#37](https://github.com/Questie/QuestieDB/issues/37).
+- The parallel prototype also offered candidate-view callbacks and explicit entity-add
+  declarations. Those APIs were not adopted without a concrete consumer requirement. Fixing
+  failure handling and input validation does not require importing that broader framework.
+  Owner reranking likewise remains deliberately unsupported: rank stability is a contract,
+  not missing transaction machinery.
 - ADR 0008's Name index now survives non-Object correction traffic: only an Object-datatype
   write or a locale change drops it, so a consumer's init-time warm-up is no longer undone by
   Item-repair writes.

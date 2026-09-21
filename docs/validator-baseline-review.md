@@ -32,9 +32,10 @@ Of the 78 new fingerprints:
   - NPC 7406 is missing quest 25476 from `questEnds`.
   - NPC 7944 is missing quest 29477 from `questEnds`.
 
-Those three defects also exist in the pinned Questie Correction sources. They remain in the
-baseline to preserve exact upstream fidelity outside explicitly declared provider/consumer
-ownership exclusions. They should be fixed upstream and then removed here by re-porting.
+Those three inconsistencies were inherited from Questie and still occur in corrected Cata
+and Mists data. [Issue #41](https://github.com/Questie/QuestieDB/issues/41) tracks the game-evidence
+review and corrections to the owned data. The baseline records accepted findings, not proof
+that either side of a relationship is correct; no upstream re-import is required.
 
 The inherited-Correction application bug was fixed after this first classification. Older
 expansion Corrections may now update a surviving entity but cannot create an absent one unless
@@ -60,7 +61,7 @@ The original 232 removed fingerprints were also mixed:
 
 ## Refreshed baseline
 
-After owner-aware fingerprinting, the accepted finding counts are:
+The historical owner-aware fingerprint refresh recorded these counts (not the current totals):
 
 | Flavor | Findings |
 | --- | ---: |

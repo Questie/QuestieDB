@@ -151,6 +151,18 @@ consumers built against an older contract.
 `InvalidateCache` accepts the same case-insensitive datatype names the corrections API
 accepts.
 
+## Offline validation rationale
+
+The metadata emulator returns raw chunk parts rather than conveniently joining them. Tests
+must exercise the shipped reader's reassembly; a transparent emulator could hide reader bugs.
+Measured client constraints, including byte-length limits and edge trimming, are checked
+separately against emitted metadata.
+
+The merge exposed incorrect expansion admission, expansion-dependent constants, and seasonal
+gating that both read modes shared. Source/Baked agreement alone cannot prove those policies
+correct. Independent literal expectations now cover these behaviors alongside equivalence
+sweeps; see [the fixture inventory](../behavior-fixtures.md) and [ADR 0014](0014-owned-data-after-migration.md).
+
 ## Consequences
 
 - All five artifacts regenerate; sizes shift (smaller from serializer reuse, larger from

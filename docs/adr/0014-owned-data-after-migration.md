@@ -31,8 +31,11 @@ The annotated `migration-parity-complete` tag selects QuestieDB
 [`547d790b6`](https://github.com/Questie/Questie/commit/547d790b64c0c78944e0c27c3301422e9134fc71).
 That QuestieDB commit passed [CI](https://github.com/Questie/QuestieDB/actions/runs/35381158013)
 and [Release](https://github.com/Questie/QuestieDB/actions/runs/35381158048), including the
-migration gates. The tag preserves the tools, baselines, evidence, and migration work packages;
-there is no legacy-tool archive in the active tree.
+migration gates. The tag preserves the tools, baselines, evidence, and completed review/buildout
+documents; there is no legacy-tool archive in the active tree. Current findings recovered from
+those documents were rechecked against code and transferred to GitHub issues
+[#31](https://github.com/Questie/QuestieDB/issues/31) through
+[#43](https://github.com/Questie/QuestieDB/issues/43), rather than kept in a parallel review ledger.
 
 To inspect the old evidence without changing the working tree:
 
