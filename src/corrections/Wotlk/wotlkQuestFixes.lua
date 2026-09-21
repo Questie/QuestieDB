@@ -755,10 +755,6 @@ function QuestieWotlkQuestFixes:Load()
             [questKeys.startedBy] = {{24657}},
             [questKeys.finishedBy] = {{24657}},
         },
-        [11122] = { -- There and Back Again
-            [questKeys.objectives] = {{{24468,nil,Questie.ICON_TYPE_EVENT}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Grab a keg"), 0, {{"monster", 24364}}}},
-        },
         [11137] = { -- Defias in Dustwallow?
             [questKeys.preQuestSingle] = {},
         },
@@ -909,10 +905,6 @@ function QuestieWotlkQuestFixes:Load()
         },
         [11317] = { -- The Cleansing
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Meditate"), 0, {{"object", 186649}}}},
-        },
-        [11318] = { -- Now This is Ram Racing... Almost.
-            [questKeys.preQuestSingle] = {},
-            [questKeys.objectives] = {{{80001,nil,Questie.ICON_TYPE_EVENT},{80002,nil,Questie.ICON_TYPE_EVENT},{80003,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [11319] = { -- Seeds of the Blacksouled Keepers
             [questKeys.objectives] = {{{23876,nil,Questie.ICON_TYPE_INTERACT}}},
@@ -1112,17 +1104,9 @@ function QuestieWotlkQuestFixes:Load()
         [11399] = { -- Bring Down Those Shields
             [questKeys.requiredSourceItems] = {},
         },
-        [11409] = { -- Now This is Ram Racing... Almost.
-            [questKeys.preQuestSingle] = {},
-            [questKeys.objectives] = {{{80004,nil,Questie.ICON_TYPE_EVENT},{80005,nil,Questie.ICON_TYPE_EVENT},{80006,nil,Questie.ICON_TYPE_EVENT}}},
-        },
         [11410] = { -- The One That Got Away
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use Fresh Barbfish Bait"), 0, {{"object", 186770},}}},
             [questKeys.requiredSourceItems] = {},
-        },
-        [11412] = { -- There and Back Again
-            [questKeys.objectives] = {{{24510,nil,Questie.ICON_TYPE_EVENT}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Grab a keg"), 0, {{"monster", 24527}}}},
         },
         [11414] = { -- Brother Betrayers
             [questKeys.sourceItemId] = 33618,
@@ -1681,10 +1665,6 @@ function QuestieWotlkQuestFixes:Load()
         [12020] = { -- This One Time, When I Was Drunk...
             [questKeys.preQuestSingle] = {},
         },
-        [12022] = { -- Chug and Chuck!
-            [questKeys.preQuestSingle] = {},
-            [questKeys.requiredSourceItems] = {33096},
-        },
         [12027] = { -- Mr. Floppy's Perilous Adventure
             [questKeys.triggerEnd] = {"Help Emily and Mr. Floppy return to the camp",{[zoneIDs.GRIZZLY_HILLS] = {{53.81,33.33}}}},
         },
@@ -1969,10 +1949,6 @@ function QuestieWotlkQuestFixes:Load()
         },
         [12188] = { -- The Forsaken Blight and You: How Not to Die
             [questKeys.preQuestSingle] = {},
-        },
-        [12191] = { -- Chug and Chuck!
-            [questKeys.preQuestSingle] = {},
-            [questKeys.requiredSourceItems] = {33096},
         },
         [12198] = { -- ... Or Maybe We Don't
             [questKeys.objectives] = {nil,nil,nil,nil,{{{26407,27017},26407}}},

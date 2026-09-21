@@ -486,6 +486,10 @@ function QuestieTBCItemFixes:Load()
         [33087] = { -- Black Dragonkin Essence
             [itemKeys.npcDrops] = {4328,4329,4331},
         },
+        [33096] = { -- Complimentary Brewfest Sampler
+            [itemKeys.class] = itemClasses.QUEST,
+            [itemKeys.objectDrops] = {186189},
+        },
         [33112] = { -- Witchbane
             [itemKeys.npcDrops] = {},
         },
