@@ -89,7 +89,7 @@ that fixture or requires a Questie checkout.
 policy and its explanatory comments in the owned Lua, not in candidate output. At adoption,
 only the forward/reverse base tables become generated; their override strings remain authored
 inputs and survive subsequent exports unchanged. Parent support remains an authored input with
-bounded DBC additions proposed. See [ADR 0014](../../docs/adr/0014-offline-spatial-support-candidates.md).
+bounded DBC additions proposed. See [ADR 0015](../../docs/adr/0015-offline-spatial-support-candidates.md).
 No entity authoring database, Lua provider evaluator or second coordinate converter is added.
 
 ### Accepting another snapshot

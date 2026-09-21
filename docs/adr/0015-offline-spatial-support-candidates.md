@@ -1,4 +1,4 @@
-# 14. Offline spatial interpretation and support candidates
+# 15. Offline spatial interpretation and support candidates
 
 Forever needs build-specific map relationships without treating inherited dungeon lookup
 keys as native maps. Interpret explicit DBC snapshots offline and export candidates in

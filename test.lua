@@ -957,9 +957,11 @@ suite("corrections", "shared", function()
     elseif entry.file == "Wotlk/wotlkNPCFixes.lua" then
       wotlkNpcSpec = entry
     end
-    if entry.static and not entry.generated then
+    -- Inherited providers need a source expansion for missing-entity protection. Providers
+    -- owned by one exact flavor never participate in cumulative expansion inheritance.
+    if entry.static and not entry.generated and not entry.owned then
       check(type(entry.sourceExpansionOrder or entry.minExpansionOrder) == "number",
-        "a flavor-owned Static Correction records or implies its source expansion: " .. entry.file)
+        "an inherited Static Correction records or implies its source expansion: " .. entry.file)
     end
   end
   check(wotlkNpcSpec ~= nil, "WotLK NPC Correction manifest entry exists")

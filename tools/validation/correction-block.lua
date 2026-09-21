@@ -1,6 +1,7 @@
 -- Isolated correction-block loading for ObjectiveFirst lifecycle tests.
 local lib = dofile("generator/lib.lua")
 local config = dofile("src/config.lua")
+local emulator = dofile("emulator/metadata.lua")
 config.correctionManifest = dofile("src/corrections/manifest.lua")
 local fixture = {}
 
@@ -10,7 +11,7 @@ function fixture.tocFiles(path)
   local files = {}
   for line in lib.readAll(path):gmatch("[^\r\n]+") do
     line = line:gsub("\\", "/"):gsub("^%s+", ""):gsub("%s+$", "")
-    if line:match("%.lua$") and not line:match("^#") then files[#files + 1] = line end
+    if line:match("%.lua") and not line:match("^#") then files[#files + 1] = line end
   end
   return files
 end
@@ -37,6 +38,12 @@ end
 ---@return table namespace
 ---@return table environment Isolated client globals, for load-boundary controls.
 function fixture.loadProvider(files, flavorName, seasonId, mode, root)
+  local selected = {}
+  for _, line in ipairs(files) do
+    local path = emulator.selectFile(line, assert(config.flavorByName[flavorName]).gameType)
+    if path then selected[#selected + 1] = path end
+  end
+  files = selected
   local previousLoader = {}
   local env = setmetatable({ QuestieLoader = previousLoader }, { __index = _G })
   env._G = env
