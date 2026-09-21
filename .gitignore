@@ -18,6 +18,7 @@ QuestieDB_Mists.toc
 
 # Editor and OS noise
 .DS_Store
+.idea/
 *.swp
 
 # Python bytecode from the differential tooling
