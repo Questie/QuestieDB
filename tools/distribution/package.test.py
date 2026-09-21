@@ -228,6 +228,36 @@ class ChangelogTest(unittest.TestCase):
             ],
         )
 
+    def test_identical_entries_keep_newest_commit_and_combine_credits(self):
+        self.commit("[fix] Correct quest\n\nCo-authored-by: Dana <dana@example.invalid>", author="Alice")
+        self.commit(
+            "[fix] Correct quest\n\nCo-authored-by: Carol <carol@example.invalid>\n"
+            "Co-authored-by: Dana <dana@example.invalid>", author="Bob",
+        )
+        newest = self.commit(
+            "[fix] Correct quest\n\nCo-authored-by: alice <alice@example.invalid>", author="Carol",
+        )
+        changes = self.changes()
+        self.assertEqual([{
+            "category": "fix", "text": "Correct quest", "commit": newest,
+            "author": "Carol", "coAuthors": ["alice", "Bob", "Dana"],
+        }], changes.entries)
+        self.assertEqual(1, changes.markdown.count("- Correct quest ("))
+        for name in ("Carol", "alice", "Bob", "Dana"):
+            self.assertIn(f"[{name}]({self.url}/commit/{newest})", changes.markdown)
+        self.assertNotIn("example.invalid", changes.markdown + json.dumps(changes.entries))
+
+    def test_deduplication_uses_exact_text_within_each_category(self):
+        for subject in (
+            "[fix] Correct quest", "[FIX]   Correct quest   ", "[db] Correct quest",
+            "[fix] correct quest", "[fix] Correct  quest", "[fix] Correct quest.",
+        ):
+            self.commit(subject)
+        self.assertEqual([
+            ("fix", "Correct  quest"), ("fix", "Correct quest"),
+            ("fix", "Correct quest."), ("fix", "correct quest"), ("db", "Correct quest"),
+        ], [(entry["category"], entry["text"]) for entry in self.changes().entries])
+
     def test_author_and_coauthor_credits_use_trailers_not_committer_or_body(self):
         self.git("config", "user.name", "Committer")
         self.git(
@@ -677,6 +707,7 @@ class PackageTest(unittest.TestCase):
         for subject in (
             "[fix] Previously released",
             "[db] Correct prerequisites",
+            "[db] Correct prerequisites",
             "[locale] Corrigé\n\nCo-authored-by: Translator <translator@example.invalid>\n"
             "Co-authored-by: private&#64;example.invalid <hidden@example.invalid>",
         ):
@@ -703,14 +734,14 @@ class PackageTest(unittest.TestCase):
                 {
                     "category": "db",
                     "text": "Correct prerequisites",
-                    "commit": commits[1],
+                    "commit": commits[2],
                     "author": "Contributor",
                     "coAuthors": [],
                 },
                 {
                     "category": "locale",
                     "text": "Corrigé",
-                    "commit": commits[2],
+                    "commit": commits[3],
                     "author": "Contributor",
                     "coAuthors": ["Translator"],
                 },
@@ -736,7 +767,7 @@ class PackageTest(unittest.TestCase):
         self.assertTrue(changelog.startswith("# QuestieDB 1.2.3-dev.abcdef0\n\n"))
         self.assertIn(changelog.split("\n\n", 1)[1].rstrip(), notes)
         for entry in manifest["changelog"]:
-            self.assertIn("- " + entry["text"], changelog)
+            self.assertEqual(1, changelog.count("- " + entry["text"] + " ("))
             for name in [entry["author"], *entry["coAuthors"]]:
                 self.assertIn(
                     f"[{name}]({manifest['repository']}/commit/{entry['commit']})",

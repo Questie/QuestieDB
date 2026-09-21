@@ -66,6 +66,11 @@ start the subject. Entries retain their authored wording and sort alphabetically
 section. Untagged subjects, commit bodies, and conventional subjects such as `fix: …` are omitted.
 When squash-merging, put the prefix in the final squash commit's subject.
 
+Within each category, identical text produces one entry after the usual prefix removal and
+outer-whitespace trimming. Text comparison is case-sensitive; internal whitespace and
+punctuation remain significant. The newest matching commit supplies the link and primary
+author, and contributor credits from older duplicates are combined into that entry.
+
 Use these prefixes only for changes users should know about. Leave internal refactoring,
 tests, CI, release tooling, and documentation maintenance untagged.
 
@@ -110,10 +115,11 @@ Markdown. JSON readers should use field names, not rely on key order.
 
 ### Author credits and privacy
 
-Each entry's `commit` is its full commit SHA. `author` is the primary Git author, not the
-committer. `coAuthors` contains names from valid `Co-authored-by: Name <email>` trailers,
-in trailer order, or `[]` when absent. Repeated names and the primary author's name are
-omitted from that list, ignoring case. Identity email fields are never exported.
+Each entry's `commit` is the full SHA of its newest matching commit. `author` is that commit's
+primary Git author, not the committer. `coAuthors` starts with valid
+`Co-authored-by: Name <email>` trailers in trailer order, then adds credits from older exact
+duplicates in Git traversal order. It is `[]` when no additional credits exist. Repeated names
+and the primary author's name are omitted, ignoring case. Identity email fields are never exported.
 
 Display names are untrusted too. Credits accept Unicode letters, marks, numbers, ASCII spaces,
 and limited name punctuation (periods, underscores, hyphens, apostrophes, commas, brackets,

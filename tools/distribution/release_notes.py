@@ -111,7 +111,7 @@ def changelog(root: Path, version: str, commit: str, repository_url: str) -> Cha
         raise ValueError("Unexpected Git changelog record format")
 
     # Select marked subjects and filter credits before either output can see them.
-    groups: dict[str, list[ChangelogEntry]] = {key: [] for key in CATEGORIES}
+    groups: dict[str, dict[str, ChangelogEntry]] = {key: {} for key in CATEGORIES}
     for offset in range(0, len(fields) - 1, 4):
         sha, author, subject, trailers = fields[offset : offset + 4]
         if not re.fullmatch(r"[0-9a-f]{40}", sha):
@@ -133,23 +133,31 @@ def changelog(root: Path, version: str, commit: str, repository_url: str) -> Cha
                     co_authors.append(name)
                     seen.add(name.casefold())
 
-        category = match[1].lower()
-        groups[category].append(
-            {
+        category, text = match[1].lower(), match[2].strip()
+        entry = groups[category].get(text)
+        if entry is None:
+            groups[category][text] = {
                 "category": category,
-                "text": match[2].strip(),
+                "text": text,
                 "commit": sha,
                 "author": author,
                 "coAuthors": co_authors,
             }
-        )
+        else:
+            # Git visits newest first. Keep that commit link, but credit every contributor
+            # to the exact same category/text without merging merely similar wording.
+            credited = {name.casefold() for name in [entry["author"], *entry["coAuthors"]]}
+            for name in [author, *co_authors]:
+                if name.casefold() not in credited:
+                    entry["coAuthors"].append(name)
+                    credited.add(name.casefold())
 
     # Both the manifest and Markdown use the same category and entry order.
     entries: list[ChangelogEntry] = []
     sections = []
     for category, heading in CATEGORIES.items():
         if groups[category]:
-            group = sorted(groups[category], key=lambda entry: entry["text"])
+            group = sorted(groups[category].values(), key=lambda entry: entry["text"])
             entries.extend(group)
 
             bullets = []
