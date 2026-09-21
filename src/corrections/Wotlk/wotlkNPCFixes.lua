@@ -3097,36 +3097,6 @@ function QuestieWotlkNpcFixes:Load()
             [npcKeys.name] = "Lorehammer attuned",
             [npcKeys.zoneID] = zoneIDs.STORM_PEAKS,
         },
-        [80001] = { -- Maintain a Trot for 8 seconds
-            [npcKeys.name] = "Maintain a Trot for 8 seconds",
-            [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
-            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{47,43.9}}},
-        },
-        [80002] = { -- Maintain a Canter for 8 seconds
-            [npcKeys.name] = "Maintain a Canter for 8 seconds",
-            [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
-            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{47,43.9}}},
-        },
-        [80003] = { -- Maintain a Gallop for 8 seconds
-            [npcKeys.name] = "Maintain a Gallop for 8 seconds",
-            [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
-            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{47,43.9}}},
-        },
-        [80004] = { -- Maintain a Trot for 8 seconds
-            [npcKeys.name] = "Maintain a Trot for 8 seconds",
-            [npcKeys.zoneID] = zoneIDs.DUROTAR,
-            [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{46.34,17.13}}},
-        },
-        [80005] = { -- Maintain a Canter for 8 seconds
-            [npcKeys.name] = "Maintain a Canter for 8 seconds",
-            [npcKeys.zoneID] = zoneIDs.DUROTAR,
-            [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{46.34,17.13}}},
-        },
-        [80006] = { -- Maintain a Gallop for 8 seconds
-            [npcKeys.name] = "Maintain a Gallop for 8 seconds",
-            [npcKeys.zoneID] = zoneIDs.DUROTAR,
-            [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{46.34,17.13}}},
-        },
     }
 end
 
@@ -3661,9 +3631,6 @@ function QuestieWotlkNpcFixes:LoadFactionFixes()
                 [zoneIDs.DALARAN] = {{47.93,43.32}},
             },
         },
-        [24108] = { -- Self-Turning and Oscillating Utility Target
-            [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{45.26,17.79}}},
-        },
         [26221] = { -- Earthen Ring Elder
             [npcKeys.spawns] = {[zoneIDs.UNDERCITY] = {{66.9,13.53}},[zoneIDs.ORGRIMMAR] = {{46.44,38.69}},[zoneIDs.THUNDER_BLUFF] = {{22.16,23.98}},[zoneIDs.SHATTRATH_CITY] = {{60.68,30.62}},[zoneIDs.SILVERMOON_CITY] = {{68.67,42.94}}},
         },
@@ -3774,9 +3741,6 @@ function QuestieWotlkNpcFixes:LoadFactionFixes()
                 [zoneIDs.THE_EXODAR] = {{74.02,58.23}},
                 [zoneIDs.DALARAN] = {{47.93,43.32}},
             },
-        },
-        [24108] = { -- Self-Turning and Oscillating Utility Target
-            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{47.64,39.3}}},
         },
         [26221] = { -- Earthen Ring Elder
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{56.1,92.16}},[zoneIDs.SHATTRATH_CITY] = {{60.68,30.62}},[zoneIDs.IRONFORGE] = {{65.14,27.71}},[zoneIDs.STORMWIND_CITY] = {{49.32,72.3}},[zoneIDs.THE_EXODAR] = {{43.27,26.26}}},

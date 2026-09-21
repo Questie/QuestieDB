@@ -5500,6 +5500,10 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.preQuestSingle] = {11102,11010},
             [questKeys.requiredLevel] = 70,
         },
+        [11122] = { -- There and Back Again
+            [questKeys.objectives] = {{{24468,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Grab a keg"), 0, {{"monster", 24364}}}},
+        },
         [11123] = { -- Inspecting the Ruins
             [questKeys.preQuestSingle] = {},
             [questKeys.breadcrumbs] = {1282},
@@ -5666,8 +5670,17 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.preQuestSingle] = {11135},
         },
+        [11293] = { -- Bark for the Barleybrews!
+            [questKeys.objectives] = {{{24202,nil,Questie.ICON_TYPE_EVENT},{24203,nil,Questie.ICON_TYPE_EVENT},{24204,nil,Questie.ICON_TYPE_EVENT},{24205,nil,Questie.ICON_TYPE_EVENT}}},
+        },
+        [11294] = { -- Bark for the Thunderbrews!
+            [questKeys.questLevel] = -1,
+            [questKeys.objectives] = {{{24202,nil,Questie.ICON_TYPE_EVENT},{24203,nil,Questie.ICON_TYPE_EVENT},{24204,nil,Questie.ICON_TYPE_EVENT},{24205,nil,Questie.ICON_TYPE_EVENT}}},
+        },
         [11318] = { -- Now This is Ram Racing... Almost.
             [questKeys.requiredLevel] = 1,
+            [questKeys.preQuestSingle] = {},
+            [questKeys.objectives] = {{{80001,nil,Questie.ICON_TYPE_EVENT},{80002,nil,Questie.ICON_TYPE_EVENT},{80003,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [11335] = { -- Call to Arms: Arathi Basin
             [questKeys.objectives] = {nil,nil,nil,nil,{{{857,907,15008,19855,20120,20273},857,nil,Questie.ICON_TYPE_TALK}}},
@@ -5748,6 +5761,21 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredLevel] = 65,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.preQuestSingle] = {11220},
+        },
+        [11407] = { -- Bark for Drohn's Distillery!
+            [questKeys.questLevel] = -1,
+            [questKeys.objectives] = {{{24202,nil,Questie.ICON_TYPE_EVENT},{24203,nil,Questie.ICON_TYPE_EVENT},{24204,nil,Questie.ICON_TYPE_EVENT},{24205,nil,Questie.ICON_TYPE_EVENT}}},
+        },
+        [11408] = { -- Bark for T'chali's Voodoo Brewery!
+            [questKeys.objectives] = {{{24202,nil,Questie.ICON_TYPE_EVENT},{24203,nil,Questie.ICON_TYPE_EVENT},{24204,nil,Questie.ICON_TYPE_EVENT},{24205,nil,Questie.ICON_TYPE_EVENT}}},
+        },
+        [11409] = { -- Now This is Ram Racing... Almost.
+            [questKeys.preQuestSingle] = {},
+            [questKeys.objectives] = {{{80004,nil,Questie.ICON_TYPE_EVENT},{80005,nil,Questie.ICON_TYPE_EVENT},{80006,nil,Questie.ICON_TYPE_EVENT}}},
+        },
+        [11412] = { -- There and Back Again
+            [questKeys.objectives] = {{{24510,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Grab a keg"), 0, {{"monster", 24527}}}},
         },
         [11439] = { -- Fire Brigade Practice
             [questKeys.startedBy] = {},
@@ -6998,8 +7026,14 @@ function QuestieTBCQuestFixes:Load()
         [12020] = { -- This One Time, When I Was Drunk...
             [questKeys.preQuestSingle] = {},
         },
+        [12022] = { -- Chug and Chuck!
+            [questKeys.preQuestSingle] = {},
+            [questKeys.requiredSourceItems] = {33096},
+            [questKeys.objectives] = {{{24108,nil,Questie.ICON_TYPE_INTERACT}}},
+        },
         [12062] = { -- Insult Coren Direbrew
             [questKeys.preQuestSingle] = {},
+            [questKeys.breadcrumbs] = {12318},
         },
         [12133] = { -- Smash the Pumpkin
             [questKeys.name] = "Smash the Pumpkin",
@@ -7059,6 +7093,11 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
             [questKeys.questFlags] = 4224,
         },
+        [12191] = { -- Chug and Chuck!
+            [questKeys.preQuestSingle] = {},
+            [questKeys.requiredSourceItems] = {33096},
+            [questKeys.objectives] = {{{24108,nil,Questie.ICON_TYPE_INTERACT}}},
+        },
         [12192] = { -- This One Time, When I Was Drunk...
             [questKeys.name] = "This One Time, When I Was Drunk...",
             [questKeys.startedBy] = {nil,{189990}},
@@ -7086,7 +7125,8 @@ function QuestieTBCQuestFixes:Load()
         [12318] = { -- Save Brewfest!
             [questKeys.startedBy] = {{27584,28329}},
             [questKeys.requiredRaces] = raceIDs.NONE,
-            [questKeys.preQuestSingle] = {},
+            [questKeys.preQuestSingle] = {11442,11447},
+            [questKeys.breadcrumbForQuestId] = 12062,
         },
         [12331] = { -- Candy Bucket
             [questKeys.name] = "Candy Bucket",

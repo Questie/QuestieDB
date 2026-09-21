@@ -162,10 +162,6 @@ function QuestieWotlkItemFixes:Load()
         [33084] = { -- Darkclaw Guano
             [itemKeys.npcDrops] = {},
         },
-        [33096] = { -- Complimentary Brewfest Sampler
-            [itemKeys.class] = itemClasses.QUEST,
-            [itemKeys.objectDrops] = {186189},
-        },
         [33109] = { -- Steel Gate Artifact
             [itemKeys.npcDrops] = {},
         },

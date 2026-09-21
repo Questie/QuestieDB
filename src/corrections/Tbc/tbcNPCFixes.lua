@@ -1770,18 +1770,6 @@ function QuestieTBCNpcFixes:Load()
             [npcKeys.questStarts] = {11219,11220,11361,12139},
             [npcKeys.questEnds] = {11219,11357,11361,11403,11449,11450,12139,12155},
         },
-        [24202] = { -- [DND] Brewfest Barker Bunny 1
-            [npcKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{52,66.6}},[zoneIDs.IRONFORGE] = {{30.2,66.5}}},
-        },
-        [24203] = { -- [DND] Brewfest Barker Bunny 2
-            [npcKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{70.2,36.3}},[zoneIDs.IRONFORGE] = {{64,78.2}}},
-        },
-        [24204] = { -- [DND] Brewfest Barker Bunny 3
-            [npcKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{43.9,36.8}},[zoneIDs.IRONFORGE] = {{64.3,24.3}}},
-        },
-        [24205] = { -- [DND] Brewfest Barker Bunny 4
-            [npcKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{37.3,74.3}},[zoneIDs.IRONFORGE] = {{32.2,21}}},
-        },
         [24519] = { -- Costumed Orphan Matron
             [npcKeys.questStarts] = {11131,11135,11360,12135},
             [npcKeys.questEnds] = {11131,11242,11356,11360,11439,11440,12133,12135},
@@ -2048,6 +2036,36 @@ function QuestieTBCNpcFixes:Load()
             [npcKeys.questStarts] = {12513,12515},
             [npcKeys.questEnds] = {12513,12515},
         },
+        [80001] = { -- Maintain a Trot for 8 seconds
+            [npcKeys.name] = "Maintain a Trot for 8 seconds",
+            [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
+            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{47,43.9}}},
+        },
+        [80002] = { -- Maintain a Canter for 8 seconds
+            [npcKeys.name] = "Maintain a Canter for 8 seconds",
+            [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
+            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{47,43.9}}},
+        },
+        [80003] = { -- Maintain a Gallop for 8 seconds
+            [npcKeys.name] = "Maintain a Gallop for 8 seconds",
+            [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
+            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{47,43.9}}},
+        },
+        [80004] = { -- Maintain a Trot for 8 seconds
+            [npcKeys.name] = "Maintain a Trot for 8 seconds",
+            [npcKeys.zoneID] = zoneIDs.DUROTAR,
+            [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{46.34,17.13}}},
+        },
+        [80005] = { -- Maintain a Canter for 8 seconds
+            [npcKeys.name] = "Maintain a Canter for 8 seconds",
+            [npcKeys.zoneID] = zoneIDs.DUROTAR,
+            [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{46.34,17.13}}},
+        },
+        [80006] = { -- Maintain a Gallop for 8 seconds
+            [npcKeys.name] = "Maintain a Gallop for 8 seconds",
+            [npcKeys.zoneID] = zoneIDs.DUROTAR,
+            [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{46.34,17.13}}},
+        },
         [178420] = { -- Magister Astalor Bloodsworn
             [npcKeys.name] = "Magister Astalor Bloodsworn",
             [npcKeys.minLevel] = 60,
@@ -2067,6 +2085,21 @@ function QuestieTBCNpcFixes:LoadFactionFixes()
     local zoneIDs = ZoneDB.zoneIDs
 
     local npcFixesHorde = {
+        [24108] = { -- Self-Turning and Oscillating Utility Target
+            [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{45.26,17.79}}},
+        },
+        [24202] = { -- [DND] Brewfest Barker Bunny 1
+            [npcKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{52,66.6}}},
+        },
+        [24203] = { -- [DND] Brewfest Barker Bunny 2
+            [npcKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{70.2,36.3}}},
+        },
+        [24204] = { -- [DND] Brewfest Barker Bunny 3
+            [npcKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{43.9,36.8}}},
+        },
+        [24205] = { -- [DND] Brewfest Barker Bunny 4
+            [npcKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{37.3,74.3}}},
+        },
         [23537] = { -- Headless Horseman - Fire (DND)
             [npcKeys.spawns] = {
                 [zoneIDs.TIRISFAL_GLADES] = {{60.45,53.41},{61.89,52.98},{60.4,52.95},{61.8,52.95},{61.66,52.94},{60.51,53.22},{56.97,53.03},{61.53,52.91},{61.19,52.55},{61.39,52.85},{60.31,52.93},{61.52,52.95},{59.84,52.3},{60.2,52.83},{59.93,52.44},{61.59,53.05},{60.14,52.7},{60.06,52.3},{60.11,52.44},{61.09,52.39},{59.71,52.17},{60.95,51.55},{61.01,52.25},{60.95,51.72},{60.99,51.6},{60.77,51.68},{60.85,51.51},{60.75,51.8},{61.07,51.68},{60.68,51.55},{61.13,51.38},{61.3,51.36},{61.39,51.38},{60.73,51.24},{61.56,51.42},{61.57,51.27},{60.52,51.08},{60.35,50.98},{60.26,50.92},{56.33,53.05},{56.65,53.38}},
@@ -2086,6 +2119,21 @@ function QuestieTBCNpcFixes:LoadFactionFixes()
     }
 
     local npcFixesAlliance = {
+        [24108] = { -- Self-Turning and Oscillating Utility Target
+            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{47.64,39.3}}},
+        },
+        [24202] = { -- [DND] Brewfest Barker Bunny 1
+            [npcKeys.spawns] = {[zoneIDs.IRONFORGE] = {{30.2,66.5}}},
+        },
+        [24203] = { -- [DND] Brewfest Barker Bunny 2
+            [npcKeys.spawns] = {[zoneIDs.IRONFORGE] = {{64,78.2}}},
+        },
+        [24204] = { -- [DND] Brewfest Barker Bunny 3
+            [npcKeys.spawns] = {[zoneIDs.IRONFORGE] = {{64.3,24.3}}},
+        },
+        [24205] = { -- [DND] Brewfest Barker Bunny 4
+            [npcKeys.spawns] = {[zoneIDs.IRONFORGE] = {{32.2,21}}},
+        },
         [23537] = { -- Headless Horseman - Fire (DND)
             [npcKeys.spawns] = {
                 [zoneIDs.AZUREMYST_ISLE] = {{48.77,49.92},{48.67,48.99},{43.8,51.94},{43.5,51.93},{43.43,51.53},{43.64,52.09},{43.34,51.76},{49.4,52.55},{49.34,52.74},{49.4,52.67},{49.34,52.49},{49.32,52.6},{49.43,52.34},{49.51,52.28},{49.4,52.4},{49.61,52.29},{49.84,52.56},{49.89,52.66},{49.55,52.33},{49.72,52.42},{49.84,52.68},{49.46,52.36},{49.8,52.42},{49.71,52.33},{48.87,49.73},{48.67,49.99},{48.87,49.53},{48.84,49.79},{48.77,49.48},{48.46,49.98},{48.81,49.57},{48.55,50.01},{48.9,49.65},{48.7,49.95},{48.47,49.86},{48.54,49.93},{48.76,49.23},{48.75,49.31},{48.83,49.4},{48.74,49.08}},
