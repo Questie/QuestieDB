@@ -17,21 +17,9 @@
 --
 -- It also normalizes shape: a bare `{{x,y}, ...}` zone entry becomes `{{{x,y}, ...}}`.
 --
--- ## Why this is a transcription rather than a byte-copy
---
--- `RamerDouglasPeucker.lua` IS byte-copied (src/derived/RamerDouglasPeucker.lua, diffed by
--- tools/questie-sync/port-corrections.lua). `OptimizeWaypoints` cannot be: it is a method on
--- `QuestieCorrections`, the orchestrator QuestieDB deliberately replaced, and copying that
--- file would drag in the correction-loading this project owns. So this is hand-carried code,
--- and the guard against upstream drift is the reference differential — if upstream changes the
--- algorithm, `Npc.waypoints` leaves zero and compiler_diff reports it. That is the only gate
--- watching this file; see docs/questie-handover.md.
---
--- ## Ordering
---
--- Runs on corrected raw coordinates, which production preserves through storage and reads.
--- Upstream simplified before compilation; the migration-only compiler adapter applies its
--- legacy grid after this pass as well, so the differential compares the same ordering.
+-- Runs after Static Corrections in both Generation and Source mode. Storage and reads
+-- preserve the resulting coordinates without quantization. The derived-pass fixtures in
+-- test.lua check simplification, subdivision, and ordering against literal expected values.
 
 local _, LibQuestieDB = ...
 

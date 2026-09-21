@@ -1,13 +1,11 @@
--- QuestieDB-authored SoD corrections. This file is not copied by tools/questie-sync/port-corrections.lua
--- and is registered separately from its copied-source manifest. It lives beside the other
--- SoD data while upstream synchronization leaves these owned rows untouched.
+-- Explicit SoD race masks, registered after the other SoD providers.
 --
 -- Why these rows exist
 -- --------------------
 -- Questie's Initialize applies SoD Quest/Npc corrections, infers requiredRaces from creature
 -- starters, then calls MinimalInit for faction-specific corrections. QuestieDB's base Derived
 -- Pass runs before SoD's Dynamic Corrections, so it cannot infer these SoD-added quests.
--- Against QUESTIE_COMMIT 92ab8206f8fa24fdbf772a0d2330abddbc78396a, all 25 rows below returned
+-- Against legacy Questie 92ab8206f8fa24fdbf772a0d2330abddbc78396a, all 25 rows below returned
 -- zero here but a faction mask from Questie's compiled public reads. Alliance and Horde
 -- personas agreed on the same 20 Alliance and five Horde masks; plain Vanilla had no gaps.
 --
@@ -21,19 +19,15 @@
 -- ----------------------------
 -- Explicit data uses the normal Dynamic Correction lifecycle in both Source and Baked modes:
 -- no extra inference pass, eager entity decoding, generated sidecar, or cross-entity cache.
--- These rows belong to QuestieDB and remain here when Questie retires its database. They
--- run after copied SoD providers; consumers still override them through normal owner ranking.
+-- These rows run after the other SoD providers; consumers still override them through
+-- normal owner ranking.
 -- Correcting gameplay meaning is a separate, evidence-backed data change, not this parity fix.
 --
 -- Updating this file
 -- ------------------
--- The full pre-fix inventory, quest names and inference-stage NPC evidence live in
--- tools/differential/evidence/sod-required-races-before.tsv. On a pin/data update, rerun the
--- strict comparison for ALL quests, not just this list, on both factions:
---   uv run tools/differential/compiler_diff.py Vanilla --season=SoD --only=Quest.requiredRaces --self-check
--- Repeat with --faction=Horde. Pass --questie=<pinned checkout> when it is not ../Questie.
--- Review changed values against Questie's actual initialization order before updating rows.
--- The oracle is temporary migration evidence; the correction data is owned here.
+-- The migration-parity-complete tag preserves the original inference-stage audit under
+-- tools/differential/evidence/sod-required-races-before.tsv. New corrections should use game
+-- evidence rather than treating that old compiler output as permanent truth.
 
 local _, LibQuestieDB = ...
 local flavor = LibQuestieDB.flavor
@@ -47,7 +41,7 @@ local registry = LibQuestieDB.Corrections
 local questKeys = LibQuestieDB.Meta.Quest.keys
 local raceKeys = LibQuestieDB.Enum.byExpansion[flavor.expansion].raceKeys
 
----@return table<integer, table<integer, integer>> rows Explicit pinned requiredRaces values.
+---@return table<integer, table<integer, integer>> rows Explicit requiredRaces values.
 local function corrections()
   return {
     -- Shipment masks stay Alliance even on Horde: these reproduce pre-MinimalInit inference.

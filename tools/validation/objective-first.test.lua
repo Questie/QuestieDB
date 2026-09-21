@@ -1,39 +1,19 @@
--- Focused controls for the ObjectiveFirst oracle and load-boundary lifecycle.
+-- Objective ordering scope markers and compatibility-shim lifecycle.
 local lib = dofile("generator/lib.lua")
 local config = dofile("src/config.lua")
 config.correctionManifest = dofile("src/corrections/manifest.lua")
-local fidelity = dofile("tools/questie-sync/objective-first.lua")
+local fixture = dofile("tools/validation/correction-block.lua")
+local fields = {
+  "killCreditObjectiveFirst", "objectObjectiveFirst", "itemObjectiveFirst",
+  "eventObjectiveFirst", "spellObjectiveFirst",
+}
 
----@param check fun(condition: boolean, message: string)
----@param questiePath string
----@return nil
-return function(check, questiePath)
-  fidelity.run(check, questiePath)
-
-  -- A mutation of executable pinned input must produce exactly one localized difference.
-  local path = "Database/Corrections/classicQuestFixes.lua"
-  local original = lib.readAll(questiePath .. "/" .. path)
-  local expected = fidelity.capture({ { path = path, content = original } })
-  local controls = {
-    { name = "addition", value = "QuestieCorrections.itemObjectiveFirst[503] = true\nQuestieCorrections.itemObjectiveFirst[2147483647] = true", differences = 1 },
-    { name = "removal", value = "", differences = 1 },
-    { name = "change", value = "QuestieCorrections.itemObjectiveFirst[503] = false", differences = 1 },
-    { name = "shape", value = "QuestieCorrections.itemObjectiveFirst[503] = {}", differences = 1 },
-    { name = "formatting", value = "QuestieCorrections.itemObjectiveFirst[503] = true -- same hint", differences = 0 },
-  }
-  for _, control in ipairs(controls) do
-    local changed, replacements = original:gsub("QuestieCorrections%.itemObjectiveFirst%[503%] = true", control.value)
-    check(replacements == 1, control.name .. " finds exactly one pinned mutation target")
-    local actual = fidelity.capture({ { path = path, content = changed } })
-    local differences = fidelity.differences(actual, expected)
-    check(#differences == control.differences, control.name .. " self-proof: " .. table.concat(differences, "; "))
-  end
-
-  local sourceFiles = fidelity.tocFiles("QuestieDB.toc")
-  local vanilla, scopedNamespace, env = fidelity.loadProvider(sourceFiles, "Vanilla", 0, "source")
+return function(check, equal)
+  local sourceFiles = fixture.tocFiles("QuestieDB.toc")
+  local vanilla, scopedNamespace, env = fixture.loadProvider(sourceFiles, "Vanilla", 0, "source")
   check(vanilla.killCreditObjectiveFirst[52] == nil, "Vanilla excludes Cata quest 52")
   check(vanilla.itemObjectiveFirst[503] == true, "Vanilla retains its own quest 503")
-  local sod, sodNamespace = fidelity.loadProvider(sourceFiles, "Vanilla", 2, "source")
+  local sod, sodNamespace = fixture.loadProvider(sourceFiles, "Vanilla", 2, "source")
   check(lib.deepEqual(sodNamespace.Meta.Quest, dofile("src/meta/questMeta.lua")),
     "lightweight correction loading uses the real Quest schema")
   local requiredRacesProvider
@@ -47,7 +27,7 @@ return function(check, questiePath)
     check(sod.eventObjectiveFirst[id] == true, "SoD includes event " .. id)
   end
   for _, flavor in ipairs({ "TBC", "Wrath", "Cata" }) do
-    local hints = fidelity.loadProvider(sourceFiles, flavor, 0, "source")
+    local hints = fixture.loadProvider(sourceFiles, flavor, 0, "source")
     for _, id in ipairs({ 10068, 10069, 10070, 10071, 10072, 10073 }) do
       check(hints.spellObjectiveFirst[id] == nil, flavor .. " excludes MoP spell " .. id)
     end
@@ -89,7 +69,7 @@ return function(check, questiePath)
   local compat = namespace.CorrectionCompat
   local published = compat.objectiveFirst
   local identities = {}
-  for _, field in ipairs(fidelity.fields) do identities[field] = published[field] end
+  for _, field in ipairs(fields) do identities[field] = published[field] end
   local previousLoader = rawget(_G, "QuestieLoader")
   local remove = compat.Install(config.flavorByName.Mists)
   local accepted = QuestieLoader:ImportModule("QuestieCorrections")
@@ -112,7 +92,7 @@ return function(check, questiePath)
 
   remove = compat.Install(config.flavorByName.Vanilla)
   check(compat.objectiveFirst == published, "reinstall preserves the published outer table")
-  for _, field in ipairs(fidelity.fields) do
+  for _, field in ipairs(fields) do
     check(published[field] == identities[field], "reinstall preserves " .. field .. " identity")
     check(next(published[field]) == nil, "reinstall clears prior " .. field .. " contents")
   end

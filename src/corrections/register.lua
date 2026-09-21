@@ -2,9 +2,7 @@
 --
 -- Turns loaded correction files into registry entries.
 --
--- The correction files preserve Questie's source exactly outside the provider/consumer
--- ownership exclusions explicitly declared by `tools/questie-sync/port-corrections.lua`;
--- `src/corrections/manifest.lua` says which functions each one provides and whether each is
+-- `src/corrections/manifest.lua` says which functions each owned file provides and whether each is
 -- Static or Dynamic. That classification is **declared, never inferred** —
 -- folder names are not a reliable signal, as the prototype's `Sod/static/…` file registering
 -- dynamic demonstrates.

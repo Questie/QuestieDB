@@ -29,14 +29,11 @@ local cborCases = dofile("generator/vendor/BlizzardCBORCompatibilityCases.lua")
 local cborFixtures = dofile("generator/vendor/BlizzardCBORCompatibilityFixtures.lua")
 local LibDeflate = dofile("generator/vendor/LibDeflate.lua")
 local normalize = dofile("src/meta/normalize.lua")
-local compilerCoordinates = dofile("tools/differential/compiler_coordinates.lua")
-local dumpValue = dofile("tools/differential/dump_value.lua")
 local emulator = dofile("emulator/metadata.lua")
 local client = dofile("emulator/client.lua")
 local config = dofile("src/config.lua")
 
 local LUA_BIN = os.getenv("LUA") or "lua5.1"
-local QUESTIE_PATH = os.getenv("QUESTIE_PATH") or "../Questie"
 
 --------------------------------------------------------------------------------------------
 -- Harness
@@ -313,7 +310,7 @@ suite("generation-inputs", "shared", function()
   local l10nGen = dofile("generator/l10n.lua")
   local flavor = config.flavorByName.Vanilla
   local typeFilter = { Quest = true }
-  local root = ".out/test-questie-input"
+  local root = ".out/test-localization-input"
   local paths = {}
   for _, locale in ipairs(config.locales) do
     local path = l10nGen.lookupPath(root, flavor, l10nGen.types.Quest, locale)
@@ -338,55 +335,18 @@ suite("generation-inputs", "shared", function()
 end)
 
 --------------------------------------------------------------------------------------------
--- Questie input integrity
---------------------------------------------------------------------------------------------
-
-suite("questie-input-integrity", "shared", function()
-  local root = ".out/test-questie-pin"
-  local pinPath = root .. "/PIN"
-  lib.mkdirp(root)
-
-  local commit = lib.gitCommit(".")
-  check(commit ~= string.rep("0", 40), "test repository commit is available")
-
-  lib.writeAll(pinPath, commit .. "\n")
-  local pinned, pinnedErr = pcall(lib.assertQuestiePin, ".", pinPath)
-  check(pinned, "a checkout at the pinned commit passes: " .. tostring(pinnedErr))
-
-  lib.writeAll(pinPath, string.rep("0", 40) .. "\n")
-  local wrong, wrongErr = pcall(lib.assertQuestiePin, ".", pinPath)
-  check(not wrong and tostring(wrongErr):find(commit, 1, true) ~= nil,
-    "a checkout at the wrong commit is rejected with its actual commit")
-
-  lib.writeAll(pinPath, "not-a-commit\n")
-  local malformed, malformedErr = pcall(lib.assertQuestiePin, ".", pinPath)
-  check(not malformed and tostring(malformedErr):find("40%-character"),
-    "a malformed pin is rejected")
-
-  os.remove(pinPath)
-end)
-
---------------------------------------------------------------------------------------------
 -- Workflow contracts
 --------------------------------------------------------------------------------------------
 
 suite("workflow-contracts", "shared", function()
   local release = lib.readAll(".github/workflows/release.yml")
-  check(release:find("needs: [quality, differential]", 1, true) ~= nil,
-    "release publication depends on the quality and compiler differential jobs")
-  check(release:find("--questie=../Questie --lua=lua --self-check", 1, true) ~= nil,
-    "release compiler differential runs its sensitivity self-check")
-  check(release:find(
-    "git diff --exit-code src/corrections/ src/derived/RamerDouglasPeucker.lua", 1, true) ~= nil,
-    "release drift gate covers Corrections and the copied waypoint library")
-
-  local checkout = lib.readAll(".github/actions/checkout-questie/action.yml")
-  check(checkout:find("ref: ${{ steps.pin.outputs.commit }}", 1, true) ~= nil,
-    "automation checks out the commit read from QUESTIE_COMMIT")
-
-  local pin = lib.readAll("QUESTIE_COMMIT"):gsub("%s+$", "")
-  check(#pin == 40 and pin:match("^[0-9a-f]+$") ~= nil,
-    "Questie pin is one lowercase commit SHA")
+  local publish = assert(release:match("\n  publish:\n(.*)"), "release has a publication job")
+  check(publish:find("needs: quality", 1, true) ~= nil,
+    "release publication depends on the artifact quality job")
+  check(release:find("needs: [preflight, shared, database]", 1, true) ~= nil,
+    "release quality waits for preflight, shared tests, and every flavor")
+  check(release:find("cancel-in-progress: false", 1, true) ~= nil,
+    "publication cannot be cancelled midway through replacement")
 end)
 
 --------------------------------------------------------------------------------------------
@@ -732,7 +692,6 @@ end)
 --------------------------------------------------------------------------------------------
 
 suite("constant-fields", "shared", function()
-  local schema = dofile("generator/schema.lua")
   local npcMeta = dofile("src/meta/npcMeta.lua")
   local minHealth = npcMeta.keys.minLevelHealth
   local maxHealth = npcMeta.keys.maxLevelHealth
@@ -741,26 +700,6 @@ suite("constant-fields", "shared", function()
   equal(maxHealth, 3, "maxLevelHealth keeps its positional index")
   equal(npcMeta.constantValues[minHealth], 0, "minLevelHealth materializes placeholder 0")
   equal(npcMeta.constantValues[maxHealth], 1, "maxLevelHealth materializes placeholder 1")
-
-  local compilerTypes = {}
-  for fieldIndex = 1, npcMeta.fieldCount do
-    compilerTypes[npcMeta.names[fieldIndex]] = npcMeta.compilerTypes[fieldIndex]
-  end
-  local derived = schema.derive({
-    name = "Npc", metaPrefix = "Npc-", keysField = "npcKeys", typesField = "npcCompilerTypes",
-  }, npcMeta.keys, compilerTypes)
-  equal(derived.constantValues, { [2] = 0, [3] = 1 },
-    "schema derivation resolves constant field names to stable indices")
-  check(schema.render(derived):find("[2]=0, [3]=1", 1, true) ~= nil,
-    "materialized schema renders both constant placeholders")
-
-  schema.constantFields.Npc.unknownHealthField = 0
-  local invalidConstant, invalidConstantError = pcall(schema.derive, {
-    name = "Npc", metaPrefix = "Npc-", keysField = "npcKeys", typesField = "npcCompilerTypes",
-  }, npcMeta.keys, compilerTypes)
-  schema.constantFields.Npc.unknownHealthField = nil
-  check(not invalidConstant and tostring(invalidConstantError):find("is not in the key enum", 1, true),
-    "schema derivation rejects a constant whose canonical field name disappeared")
 
   equal(normalize.field(npcMeta, minHealth, 12345), 0,
     "minLevelHealth ignores an obsolete source value")
@@ -985,6 +924,10 @@ end)
 
 suite("derived-waypoints", "shared", function()
   dofile("tools/validation/derived-waypoints.test.lua")(check, equal)
+end)
+
+suite("localization-overrides", "shared", function()
+  dofile("tools/validation/localization-overrides.test.lua")(check, equal)
 end)
 
 suite("corrections", "shared", function()
@@ -1848,114 +1791,6 @@ suite("set-corrections", "Vanilla", function()
   check(Lib.SetCorrection == Lib.Corrections.Set, "LibQuestieDB.SetCorrection aliases Corrections.Set")
 
   client.reset()
-end)
-
---------------------------------------------------------------------------------------------
--- Ported correction files match Questie's
---------------------------------------------------------------------------------------------
-
-suite("correction-fidelity", "shared", function()
-  local questie = QUESTIE_PATH
-  if not lib.fileExists(questie .. "/Database/Corrections/classicQuestFixes.lua") then
-    io.write("  SKIP correction-fidelity: no Questie checkout at ", questie, "\n")
-    return
-  end
-
-  -- Every non-excluded byte must match Questie. Ownership exclusions remove complete,
-  -- documented top-level functions while keeping drift detection exact everywhere else.
-  local manifest = dofile("src/corrections/manifest.lua")
-  local ownershipExclusions = {
-    ["Era/classicNPCFixes.lua"] = {
-      module = "QuestieNPCFixes", functionName = "LoadDarkmoonFixes",
-    },
-    ["Tbc/tbcQuestFixes.lua"] = {
-      module = "QuestieTBCQuestFixes", functionName = "LoadContentPhaseFixes",
-    },
-    ["Tbc/tbcNPCFixes.lua"] = {
-      module = "QuestieTBCNpcFixes", functionName = "LoadDarkmoonFixes",
-    },
-    ["MoP/mopQuestFixes.lua"] = {
-      module = "MopQuestFixes", functionName = "LoadContentPhaseFixes",
-    },
-    ["MoP/mopNPCFixes.lua"] = {
-      module = "MopNpcFixes", functionName = "LoadContentPhaseFixes",
-    },
-    ["MoP/mopObjectFixes.lua"] = {
-      module = "MopObjectFixes", functionName = "LoadContentPhaseFixes",
-    },
-  }
-
-  ---Reproduce the port's strict whole-function ownership exclusion for fidelity comparison.
-  ---@param source string
-  ---@param exclusion table { module: string, functionName: string }
-  ---@param label string
-  ---@return string
-  local function withoutOwnershipExclusion(source, exclusion, label)
-    local lines = {}
-    for line in (source .. "\n"):gmatch("([^\n]*)\n") do lines[#lines + 1] = line end
-    if lines[#lines] == "" and source:sub(-1) == "\n" then lines[#lines] = nil end
-
-    local pattern = "^function%s+" .. exclusion.module .. "%s*:%s*" ..
-      exclusion.functionName .. "%s*%("
-    local headerIndex
-    for index, line in ipairs(lines) do
-      if line:find(pattern) then
-        check(headerIndex == nil, label .. " has only one excluded function definition")
-        headerIndex = index
-      end
-    end
-    check(headerIndex ~= nil, label .. " still provides the declared ownership exclusion")
-    if not headerIndex then return source end
-
-    local docStart = headerIndex
-    while docStart > 1 and lines[docStart - 1]:find("^%-%-") do docStart = docStart - 1 end
-    check(docStart < headerIndex, label .. " excluded function retains an attached comment upstream")
-
-    local endIndex
-    for index = headerIndex + 1, #lines do
-      if lines[index]:find("^end%s*$") then endIndex = index; break end
-      check(not lines[index]:find("^function%s"),
-        label .. " excluded function closes before another top-level function")
-    end
-    check(endIndex ~= nil, label .. " excluded function has a column-0 closing end")
-    if not endIndex then return source end
-
-    for index = endIndex, docStart, -1 do table.remove(lines, index) end
-    while lines[#lines] == "" do lines[#lines] = nil end
-    return table.concat(lines, "\n") .. (source:sub(-1) == "\n" and "\n" or "")
-  end
-  local sourceFor = {
-    ["Era/classicQuestReputationFixes.lua"] = "Automatic/classicQuestReputationFixes.lua",
-    ["Shared/itemStartFixes.lua"] = "Automatic/itemStartFixes.lua",
-    ["Sod/sodBaseQuests.lua"] = "Automatic/sodBaseQuests.lua",
-    ["Sod/sodBaseNPCs.lua"] = "Automatic/sodBaseNPCs.lua",
-    ["Sod/sodBaseItems.lua"] = "Automatic/sodBaseItems.lua",
-    ["Sod/sodBaseObjects.lua"] = "Automatic/sodBaseObjects.lua",
-  }
-
-  local compared = 0
-  for _, spec in ipairs(manifest) do
-    local ours = "src/corrections/" .. spec.file
-    local theirs = questie .. "/Database/Corrections/" ..
-      (sourceFor[spec.file] or spec.file:match("[^/]+$"))
-    local oursExists, theirsExists = lib.fileExists(ours), lib.fileExists(theirs)
-    check(oursExists, "manifest copy exists: " .. spec.file)
-    check(theirsExists, "declared Questie source exists: " .. spec.file)
-    if oursExists and theirsExists then
-      compared = compared + 1
-      local expected = lib.readAll(theirs)
-      if ownershipExclusions[spec.file] then
-        expected = withoutOwnershipExclusion(expected, ownershipExclusions[spec.file], spec.file)
-      end
-      check(lib.readAll(ours) == expected,
-        "ported copy diverges from Questie's ownership-filtered source: " .. spec.file)
-    end
-  end
-  equal(compared, #manifest, "every manifest Correction was compared byte-for-byte")
-
-  equal(lib.readAll("src/derived/RamerDouglasPeucker.lua"),
-    lib.readAll(questie .. "/Modules/Libs/RamerDouglasPeucker.lua"),
-    "copied waypoint library remains byte-identical to Questie's")
 end)
 
 --------------------------------------------------------------------------------------------
@@ -3215,16 +3050,12 @@ end)
 -- Translation corrections
 --------------------------------------------------------------------------------------------
 
-suite("localization-overrides", "shared", function()
-  dofile("tools/validation/localization-overrides.test.lua")(check, equal)
-end)
-
 suite("translation-corrections", "shared", function()
   dofile("tools/validation/translation-corrections.test.lua")(check, equal)
 end)
 
 suite("titan-translations", "shared", function()
-  dofile("tools/questie-sync/titan-translations.test.lua")(check, equal, QUESTIE_PATH, "Source")
+  dofile("tools/validation/titan-translations.test.lua")(check, equal, "Source")
 end)
 
 suite("sod-required-races-baked", "Vanilla", function()
@@ -3232,7 +3063,7 @@ suite("sod-required-races-baked", "Vanilla", function()
 end)
 
 suite("titan-translations-baked", "Wrath", function()
-  dofile("tools/questie-sync/titan-translations.test.lua")(check, equal, QUESTIE_PATH, "Baked")
+  dofile("tools/validation/titan-translations.test.lua")(check, equal, "Baked")
 end)
 
 --------------------------------------------------------------------------------------------
@@ -3240,101 +3071,22 @@ end)
 --------------------------------------------------------------------------------------------
 
 suite("objective-first", "shared", function()
-  dofile("tools/questie-sync/objective-first.test.lua")(check, QUESTIE_PATH)
+  dofile("tools/validation/objective-first.test.lua")(check, equal)
 end)
 
--- Cross-expansion reload checks need Source mode, not another pipeline's artifact.
 suite("objective-first-source", "shared", function()
-  dofile("tools/questie-sync/objective-first-addon.test.lua")(check, QUESTIE_PATH, "Source")
-end)
-
-suite("objective-first-emitted", "artifact", function()
-  local fidelity = dofile("tools/questie-sync/objective-first.lua")
-  for _, flavor in ipairs(artifactFlavors) do
-    if selectedFlavor or lib.fileExists(config.tocPath(flavor)) then
-      fidelity.run(check, QUESTIE_PATH, nil, flavor)
-    end
-  end
+  dofile("tools/validation/objective-first-addon.test.lua")(check, equal, "Source")
 end)
 
 suite("objective-first-addon", "artifact", function()
-  dofile("tools/questie-sync/objective-first-addon.test.lua")(check, QUESTIE_PATH, selectedFlavor)
+  dofile("tools/validation/objective-first-addon.test.lua")(check, equal, selectedFlavor)
 end)
 
 --------------------------------------------------------------------------------------------
 -- Support data
 --------------------------------------------------------------------------------------------
 
-suite("support-fidelity", "shared", function()
-  local fidelity = dofile("tools/questie-sync/support-fidelity.lua")
-  fidelity.run(check, QUESTIE_PATH)
-
-  -- Mutate a temporary copy of real pinned input, never the oracle checkout. This proves
-  -- source loading plus semantic comparison sees additions, removals, changes, and reshaping.
-  local sourcePath = QUESTIE_PATH .. "/Database/QuestXP/DB/xpDB-classic.lua"
-  local source = lib.readAll(sourcePath)
-  local flavor = config.flavorByName.Vanilla
-  local expected = fidelity.materialize(fidelity.loadInputs({ sourcePath }, flavor, "Alliance", {}))
-  local cases = {
-    { name = "addition", replacement = "[2] = {30, 2450}, [2147483647] = {1, 10}", differs = true },
-    { name = "removal", replacement = "[2] = nil", differs = true },
-    { name = "change", replacement = "[2] = {30, 9999}", differs = true },
-    { name = "shape", replacement = "[2] = 2450", differs = true },
-    { name = "formatting", replacement = "[2] = { 30, 2450, }", differs = false },
-  }
-  lib.mkdirp(".out/support-fidelity")
-  local controlPath = ".out/support-fidelity/xp-control.lua"
-  for _, case in ipairs(cases) do
-    local changed, count = source:gsub("%[2%]%s*=%s*%b{}", case.replacement)
-    equal(count, 1, case.name .. " control changes exactly one pinned XP row")
-    lib.writeAll(controlPath, changed)
-    local actual = fidelity.materialize(fidelity.loadInputs({ controlPath }, flavor, "Alliance", {}))
-    equal(fidelity.difference(actual, expected) ~= nil, case.differs,
-      case.name .. " control has the expected drift result")
-  end
-  os.remove(controlPath)
-end)
-
-suite("support-fidelity-emitted", "artifact", function()
-  local fidelity = dofile("tools/questie-sync/support-fidelity.lua")
-  for _, flavor in ipairs(artifactFlavors) do
-    if selectedFlavor or lib.fileExists(config.tocPath(flavor)) then
-      fidelity.run(check, QUESTIE_PATH, flavor)
-    end
-  end
-end)
-
 suite("support", "shared", function()
-  local fidelity = dofile("tools/questie-sync/support-fidelity.lua")
-
-  -- The semantic comparator ignores formatting inside embedded Lua source, but rejects
-  -- every kind of data drift. These controls exercise the same comparison used by the oracle.
-  local reference = { ZoneDB = { private = { dungeons = { [209] = { "Shadowfang Keep", { 236 } } } } } }
-  equal(fidelity.difference(reference, reference), nil, "identical support values match")
-  check(fidelity.difference({ added = true }, {}) ~= nil, "added values fail drift comparison")
-  check(fidelity.difference({}, { removed = true }) ~= nil, "removed values fail drift comparison")
-  check(fidelity.difference({ rate = 10 }, { rate = 20 }) ~= nil, "changed values fail drift comparison")
-  check(fidelity.difference({ alternatives = 236 }, { alternatives = { 236 } }) ~= nil,
-    "reshaped values fail drift comparison")
-  local luaField = "ZoneDB.private.areaIdToUiMapId"
-  local embedded = fidelity.materialize("return { [1] = 2 }", luaField)
-  equal(embedded, fidelity.materialize("-- leading comment\nreturn { [1] = 2 }", luaField),
-    "leading comments in embedded Lua do not cause drift")
-  equal(embedded, fidelity.materialize("return -- interstitial comment\n{ [1]=2, }", luaField),
-    "comments between return and the table do not cause drift")
-  check(fidelity.difference(embedded, fidelity.materialize({ [1] = 2 }, luaField)) ~= nil,
-    "replacing a published Lua string with an equivalent table causes drift")
-  equal(fidelity.materialize({ name = "return { [1] = 2 }" }), { name = "return { [1] = 2 }" },
-    "ordinary strings that resemble Lua are not decoded")
-  equal(fidelity.dungeonShape({ [209] = { "Shadowfang Keep", { 236 } } }), nil,
-    "dungeon alternative areas accept integer lists")
-  check(fidelity.dungeonShape({ [209] = { "Shadowfang Keep", 236 } }) ~= nil,
-    "dungeon alternative areas reject the old scalar shape")
-  check(fidelity.dungeonShape({ [209] = { "Shadowfang Keep", { "236" } } }) ~= nil,
-    "dungeon alternative areas reject nonnumeric entries")
-  check(fidelity.dungeonShape({ [209] = { "Shadowfang Keep", { [2] = 236 } } }) ~= nil,
-    "dungeon alternative areas reject sparse lists")
-
   -- Loading the largest flavor before the smallest exposes leaked modules and map variants.
   local sourceFiles = config.sourceFileList()
   local positions = {}
@@ -3393,40 +3145,31 @@ suite("support", "shared", function()
   equal(rejected[1], nil, "removing the shim releases rejected modules")
   equal(rawget(env, "QuestieLoader"), nil, "removal restores an originally absent QuestieLoader")
 
-  ---@param actual table
-  ---@param expected table
-  ---@param message string
-  ---@return nil
-  local function supportEqual(actual, expected, message)
-    local difference = fidelity.difference(actual, expected)
-    check(difference == nil, message .. ": " .. (difference or "matches"))
-  end
-
   -- Known missing blocks: five Era items and four TBC items, with all 37 NPC pairs.
   local drops = vanilla.QuestieItemDropCorrections
   local wowhead = vanilla.DropDB.correctionKeys.WOWHEAD
-  supportEqual(drops.Era[5030], {
+  equal(drops.Era[5030], {
     [3272] = wowhead, [3273] = wowhead, [3274] = wowhead, [3275] = wowhead,
     [3394] = wowhead, [3395] = wowhead, [3396] = wowhead, [3397] = wowhead,
     [5837] = wowhead, [5838] = wowhead, [5841] = wowhead, [9456] = wowhead,
     [9523] = wowhead, [9524] = wowhead,
   }, "Centaur Bracers use Wowhead rates for all fourteen NPCs")
-  supportEqual(drops.Era[5062], { [3254] = wowhead, [3255] = wowhead, [3256] = wowhead,
+  equal(drops.Era[5062], { [3254] = wowhead, [3255] = wowhead, [3256] = wowhead,
     [3257] = wowhead, [5842] = wowhead }, "Raptor Heads use Wowhead rates")
-  supportEqual(drops.Era[5086], { [3242] = wowhead, [3426] = wowhead, [3466] = wowhead,
+  equal(drops.Era[5086], { [3242] = wowhead, [3426] = wowhead, [3466] = wowhead,
     [5831] = wowhead }, "Zhevra Hooves use Wowhead rates")
-  supportEqual(drops.Era[10551], { [5839] = 50, [5840] = 50, [5843] = 50, [5844] = 50,
+  equal(drops.Era[10551], { [5839] = 50, [5840] = 50, [5843] = 50, [5844] = 50,
     [5846] = 50, [8337] = 50, [8504] = 50, [8566] = 50, [8637] = 50 },
     "Thorium Plated Daggers have fifty-percent rates")
-  supportEqual(drops.Era[11725], { [5856] = wowhead }, "Solid Crystal Leg Shaft uses Wowhead rates")
-  supportEqual(drops.Tbc[25767], { [18585] = 100 }, "Raliq's Debt is guaranteed")
-  supportEqual(drops.Tbc[25768], { [18586] = 100 }, "Coosh'coosh's Debt is guaranteed")
-  supportEqual(drops.Tbc[25769], { [18588] = 100 }, "Floon's Debt is guaranteed")
-  supportEqual(drops.Tbc[31957], { [20520] = 100 }, "Ethereum Prisoner I.D. Tag is guaranteed")
-  supportEqual(vanilla.ZoneDB.private.dungeons[209][2], {10014,10015,10016,10017,10018,10019},
+  equal(drops.Era[11725], { [5856] = wowhead }, "Solid Crystal Leg Shaft uses Wowhead rates")
+  equal(drops.Tbc[25767], { [18585] = 100 }, "Raliq's Debt is guaranteed")
+  equal(drops.Tbc[25768], { [18586] = 100 }, "Coosh'coosh's Debt is guaranteed")
+  equal(drops.Tbc[25769], { [18588] = 100 }, "Floon's Debt is guaranteed")
+  equal(drops.Tbc[31957], { [20520] = 100 }, "Ethereum Prisoner I.D. Tag is guaranteed")
+  equal(vanilla.ZoneDB.private.dungeons[209][2], {10014,10015,10016,10017,10018,10019},
     "Shadowfang Keep publishes all alternative areas as a list")
-  supportEqual(vanilla.ZoneDB.private.dungeons[3959][4], {{3520, 71, 46.4}},
-    "Black Temple preserves the pinned entrance coordinates")
+  equal(vanilla.ZoneDB.private.dungeons[3959][4], {{3520, 71, 46.4}},
+    "Black Temple preserves authored entrance coordinates")
 end)
 
 --------------------------------------------------------------------------------------------
@@ -3655,112 +3398,6 @@ suite("raw-coordinates", "shared", function()
   local computedEncoded = encode.field(meta, 1, { [1440] = { { computed, computed * 2 } } })
   equal(cbor.decode(base64.decode(computedEncoded)), { [1440] = { { computed, computed * 2 } } },
     "computed coordinates retain every significant digit needed to round-trip")
-end)
-
---------------------------------------------------------------------------------------------
--- Legacy compiler coordinate adapter
---------------------------------------------------------------------------------------------
-
-suite("compiler-coordinates", "shared", function()
-  local floor = math.floor
-
-  ---Legacy compiler read value for one raw coordinate.
-  ---@param coordinate number
-  ---@return number quantized
-  local function grid(coordinate)
-    return floor(coordinate * 40.90) / 40.90
-  end
-
-  local meta = {
-    entity = "Test",
-    fieldCount = 5,
-    names = { "spawns", "waypoints", "triggerEnd", "extraObjectives", "related" },
-    types = { "table", "table", "table", "table", "table" },
-    structures = { "spawnlist", "waypointlist", "trigger", "extraobjectives", "idarray" },
-    emptyIsNil = { [1] = true, [2] = true, [3] = true, [4] = true, [5] = true },
-    zeroPairIsNil = {},
-    normalize = {},
-    keys = { spawns = 1, waypoints = 2, triggerEnd = 3, extraObjectives = 4, related = 5 },
-  }
-
-  equal(compilerCoordinates.adaptField(meta, 1,
-      { [1440] = { { 36.43, 55.89 } } }, false),
-    { [1440] = { { grid(36.43), grid(55.89) } } },
-    "base spawn coordinates project onto the legacy grid")
-  equal(compilerCoordinates.adaptField(meta, 1,
-      { [1440] = { { -1, -1 } } }, false),
-    { [1440] = { { -1, -1 } } }, "legacy explicit sentinel survives")
-  equal(compilerCoordinates.adaptField(meta, 1,
-      { [1440] = { { 0, 0 }, { 0.001, 0.002, 7 } } }, false),
-    { [1440] = { { -1, -1 }, { -1, -1 } } },
-    "legacy zero and sub-grid pairs collapse to sentinels and lose phase")
-  equal(compilerCoordinates.adaptField(meta, 1,
-      { [1440] = { { 10, 20, 3 }, { 10, 20, 0 } } }, false),
-    { [1440] = { { grid(10), grid(20), 3 }, { grid(10), grid(20) } } },
-    "legacy spawn phase shape is reproduced")
-
-  equal(compilerCoordinates.adaptField(meta, 2,
-      { [85] = { { { 52.5, 47.25, 9 }, { -1, -1 } } } }, false),
-    { [85] = { { { grid(52.5), grid(47.25) }, { -1, -1 } } } },
-    "legacy waypoints quantize and omit their third element")
-  equal(compilerCoordinates.adaptField(meta, 3,
-      { "Scout the tower", { [85] = { { 52.5, 47.25 } } } }, false),
-    { "Scout the tower", { [85] = { { grid(52.5), grid(47.25) } } } },
-    "legacy trigger adapts only its nested spawnlist")
-  equal(compilerCoordinates.adaptField(meta, 4, {
-      { { [85] = { { 52.5, 47.25 } } }, 42, "Use the thing", 1, { { "monster", 5 } } },
-    }, false), {
-      { { [85] = { { grid(52.5), grid(47.25) } } }, 42, "Use the thing", 1, { { "monster", 5 } } },
-    }, "legacy extraObjectives adapts only nested spawnlists")
-
-  local overlayValue = { [1440] = { { 36.43, 55.89, 2 } } }
-  equal(compilerCoordinates.adaptField(meta, 1, overlayValue, true), overlayValue,
-    "Dynamic Correction coordinates bypass legacy compilation")
-  equal(compilerCoordinates.adaptField(meta, 5, { 2, 5, 7 }, false), { 2, 5, 7 },
-    "non-coordinate structures pass through unchanged")
-
-  local input = { [1440] = { { 8.2, 8.4 } } }
-  local once = compilerCoordinates.adaptField(meta, 1, input, false)
-  equal(input, { [1440] = { { 8.2, 8.4 } } }, "legacy adaptation does not mutate raw input")
-  equal(once, { [1440] = { { grid(8.2), grid(8.4) } } },
-    "the differential applies one legacy quantization")
-  check(not lib.deepEqual(compilerCoordinates.adaptField(meta, 1, once, false), once),
-    "the non-idempotent adapter exposes accidental double quantization")
-end)
-
---------------------------------------------------------------------------------------------
--- Differential coordinate-mode wiring
---------------------------------------------------------------------------------------------
-
-suite("differential-coordinate-mode", "shared", function()
-  local meta = {
-    structures = { "spawnlist", "idarray" },
-  }
-  local baseCoordinates = { [1440] = { { 8.2, 8.4 } } }
-  local expectedCompilerCoordinates = {
-    [1440] = { { math.floor(8.2 * 40.90) / 40.90, math.floor(8.4 * 40.90) / 40.90 } },
-  }
-
-  local rawDumpValue = dumpValue.forMode(nil)
-  equal(rawDumpValue(meta, 1, baseCoordinates, nil), baseCoordinates,
-    "default and Golden dumps preserve raw base coordinates")
-
-  local compilerDumpValue = dumpValue.forMode("--compiler-coordinates")
-  local adapted = compilerDumpValue(meta, 1, baseCoordinates, nil)
-  equal(adapted, expectedCompilerCoordinates,
-    "compiler comparison applies one legacy adaptation to base coordinates")
-  check(not lib.deepEqual(
-      compilerCoordinates.adaptField(meta, 1, adapted, false), adapted),
-    "compiler comparison does not accidentally apply the non-idempotent adapter twice")
-
-  local overlayRow = { [1] = baseCoordinates }
-  equal(compilerDumpValue(meta, 1, baseCoordinates, overlayRow), baseCoordinates,
-    "Dynamic Correction coordinates remain raw in compiler comparison")
-  equal(compilerDumpValue(meta, 2, { 2, 5, 7 }, nil), { 2, 5, 7 },
-    "compiler comparison leaves non-coordinate fields unchanged")
-
-  local ok = pcall(dumpValue.forMode, "--unknown-mode")
-  check(not ok, "unknown dump comparison modes fail before reading entities")
 end)
 
 --------------------------------------------------------------------------------------------

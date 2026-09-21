@@ -1,5 +1,8 @@
 # 3. Merged storage and read contract
 
+Migration comparison and snapshot requirements in this record are superseded by
+[ADR 0014](0014-owned-data-after-migration.md). Other later amendments remain as documented.
+
 Date: 2026-08-18. Status: accepted.
 
 ## Context

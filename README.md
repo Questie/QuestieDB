@@ -144,7 +144,7 @@ logs under `.out/checks/`:
 ./questiedb.sh check Vanilla               # standard validation bundle for one flavor
 ./questiedb.sh test Wrath                  # shared tests and tests of the existing Wrath artifact
 ./questiedb.sh verify equivalence Vanilla Mists
-./questiedb.sh all                         # Generation, standard gates, Golden, and unit tests
+./questiedb.sh all                         # Generation, standard gates, and unit tests
 ./questiedb.sh package all                 # package already-generated artifacts
 ```
 
@@ -173,19 +173,14 @@ lua5.1 reconstruct.lua Vanilla
 lua5.1 validators/run.lua
 lua5.1 test.lua
 lua-language-server --check=src/types --checklevel=Warning --check_format=pretty
-
-python3 tools/differential/golden.py check Vanilla
-python3 tools/differential/compiler_diff.py Vanilla
 ```
 
-The one Lua command that reaches for Python is `generate.lua meta`, which fetches the pinned
-Questie checkout to re-derive the schema; pass `--questie=<checkout>` to avoid that too.
+Generation and the Lua validation commands use only this repository's owned inputs.
 
 ### Independent test scopes
 
 CI and Release run shared checks alongside five independent flavor pipelines. A flavor pipeline
-never requires another flavor's generated output. Shared sources, configuration, and the pinned
-Questie checkout remain inputs.
+never requires another flavor's generated output. Shared sources and configuration remain inputs.
 
 The Lua harness exposes the same test scopes locally:
 
@@ -197,8 +192,7 @@ lua5.1 test.lua --flavor=Wrath --list     # list selected suites without running
 
 Each flavor scope runs generic artifact checks and its own behavior tests. Vanilla owns the
 Vanilla/SoD cases; Wrath owns Titan. Missing or incomplete selected artifacts fail rather than
-skip. Both shared and flavor scopes include migration fidelity checks that need the
-[pinned Questie checkout](#local-inputs-and-remaining-questie-checks).
+skip. Shared and flavor tests use owned inputs and require no external Questie checkout.
 
 For fast checks of structured data through both real readers, run
 `lua5.1 test.lua storage-contract`. Its [fixed behavior fixtures](docs/behavior-fixtures.md)
@@ -301,40 +295,22 @@ python3 tools/distribution/bootstrap.test.py
 python3 tools/validation/version.test.py
 python3 tools/validation/test-scopes.test.py
 python3 tools/validation/localization-inputs.test.py
-python3 tools/questie-sync/questie-checkout.test.py
 ```
 
 The launchers and packaging tests run on Linux and Windows. Native macOS acceptance and
 end-to-end database Generation acceptance remain to be run.
 
-### Local inputs and remaining Questie checks
+### Owned inputs
 
-`lua5.1 generate.lua all` reads entity data, Corrections, support data, and localization from
-this repository. Reconstruction also reads local sources. Neither command checks out Questie;
-`QUESTIE_PATH` does not select their translations. Localized Generation still reads the committed
-`QUESTIE_COMMIT` to stamp the legacy import/schema baseline, not to fetch localization.
-See [`l10n/README.md`](l10n/README.md) for the translation layout and import provenance.
+Generation, Reconstruction, and all validation gates read this repository's inputs. No Questie
+checkout or migration pin is required. Edit the canonical schema in `src/meta/`, Corrections
+in `src/corrections/`, translations in `l10n/`, and support data under `support/`.
+See [localization inputs](l10n/README.md) and [support data](docs/support-data.md).
 
-Only schema materialization (`lua5.1 generate.lua meta`) automatically fetches the exact commit
-in `QUESTIE_COMMIT` into `.cache/questie/<sha>` on first use. The shallow, tag-free snapshot is
-gitignored and reused offline. Git and Python 3.8+ are required for that fetch; the Python
-helper owns temporary directories, argument-safe Git calls, and cleanup. Changing the pin
-creates a separate checkout rather than resetting an existing one.
-
-For `meta`, `--questie=<path>` overrides `QUESTIE_PATH` and opts out of automatic fetching.
-The generator validates an explicit checkout but never fetches, switches, or cleans it.
-The option has no effect on flavor Generation. Reconstruction no longer accepts `--questie`.
-
-Correction imports, migration fidelity tests, and the compiler differential still need the
-pinned Questie checkout, defaulting to `../Questie`. Point `QUESTIE_PATH` or the check runner's
-`--questie` option at `.cache/questie/<sha>` to reuse the schema checkout.
-
-Focused offline checks:
-
-```sh
-python3 tools/validation/localization-inputs.test.py
-python3 tools/questie-sync/questie-checkout.test.py
-```
+Generation validates the data files' field-key enums against the owned schema. When changing a
+field, update its schema, affected data keys and correction constants, and public declarations
+in the same change. Public `compilerTypes` metadata remains for compatibility; it does not
+select a compiler or derive the schema.
 
 ### Keeping LuaLS declarations in sync
 
@@ -362,31 +338,15 @@ startup on Linux, with the fallback described above on other platforms; `--budge
 with a value from 1 to 2147483647 MB, and `--sequential`
 turns fan-out off. Per-job logs land in `.out/checks/`.
 
-The golden gate is the successor to the cross-implementation differential (built to
-compare this tree against the independent `-pi` sibling, where it caught the Era-gating,
-constants, and Titan Reforged defect chain). It guards the one class the other gates
-cannot: generator and source mode being consistently wrong *together*. After an
-intentional data change, `golden.py refresh <Flavor>` regenerates the snapshot for
-review and commit.
+Small, explicit behavior fixtures protect against shared Source/Baked mistakes, including
+correction ordering, expansion and season admission, localization, and storage semantics.
+Ordinary data edits need no golden refresh or compiler-divergence allowance. The full-database
+checks still protect data invariants and generated reads. See
+[ADR 0014](docs/adr/0014-owned-data-after-migration.md) for the retired migration checks and checkpoint.
 
-`compiler_diff.py` is the reference-implementation differential DESIGN.md phase 6 called
-for. It runs Questie's real compile path offline — the one `cli/validate-era.lua` already
-drives — and compares `QuestieDB.Query<Type>Single` against this database's composed reads,
-id by id and field by field. The golden snapshot can only catch drift from *this* tree;
-this gate is the only one that can say whether the database still matches the thing it
-replaces. It needs a Questie checkout (`--questie=../Questie`, the default) and `bit32`.
-Both bundled interpreters include `bit32`; an installed interpreter can obtain it through
-LuaRocks, whose paths the differential discovers automatically. Accepted divergences live in
-`tools/differential/compiler-baseline/`; `--update-baseline` re-records them for review.
-
-Generation and runtime database logic use plain Lua 5.1 with no `lfs`, luarocks, or C dependency.
+Generation and runtime database logic use plain Lua 5.1 with no `lfs`, LuaRocks, or C dependency.
 Inputs are enumerated in `src/config.lua` rather than discovered by scanning directories.
-Python's standard library handles orchestration, packaging, and the pinned Questie fetch. The
-migration compiler differential additionally requires `bit32` for Questie's mocks, already
-included in both bundled interpreters.
-`./questiedb.sh check --questie=` selects the checkout for fidelity tests and the compiler
-differential; `QUESTIE_PATH` provides the same default for nested migration tools. Generation,
-Determinism, Reconstruction, Verification, and Equivalence need no external checkout.
+Python's standard library handles orchestration and distribution.
 
 To refresh a local install instead of regenerating:
 
@@ -427,68 +387,27 @@ For contributors and release maintainers, see the distribution guide:
 - [Changelog format and author credits](tools/distribution/README.md#packaged-and-structured-changelogs)
 - [Publishing and failure recovery](tools/distribution/README.md#publishing)
 
-### Re-syncing with Questie
+### Maintaining owned data
 
-Entity schema, Corrections, and support data derive from Questie and are committed here, so
-drift is a build failure rather than a discovery months later. Entity translations are now
-stored locally in `l10n/` and synchronized with the Questie revision recorded in
-[`QUESTIE_COMMIT`](QUESTIE_COMMIT). The input adapter preserves their executable lookup format
-and whole-row override semantics without changing
-runtime localization or storage.
+Edit the sources here rather than re-importing Questie's retired database. The Correction
+manifest declares each provider's Static/Dynamic classification and expansion applicability;
+the compatibility shim supports the existing module-based authoring format.
 
-The migration fidelity gate still compares the local translations against independent inputs
-from pinned Questie. This deliberately rejects unexplained translation changes until the
-migration checks are retired. The current snapshot is not declared final: future
-`QUESTIE_COMMIT` bumps may require another reviewed localization sync. Bumping the pin does not
-update `l10n/` automatically; review and import translation differences rather than assuming
-Generation fetches them.
+After changing file lists, regenerate the committed Source TOC:
 
 ```sh
-git -C ../Questie checkout "$(cat QUESTIE_COMMIT)"
-lua5.1 generate.lua meta --questie=../Questie # schema -> src/meta/*Meta.lua
-lua5.1 tools/questie-sync/port-corrections.lua ../Questie  # corrections + constants
-lua5.1 generate.lua toc                      # refresh the committed Source-mode file list
-lua5.1 test.lua support support-fidelity     # check all copied support data and flavor selection
-lua5.1 test.lua objective-first              # check pinned hint contents and scope boundaries
-lua5.1 test.lua objective-first-addon        # check generated and static-stripped addons
-lua5.1 test.lua localization-overrides translation-corrections titan-translations
+lua5.1 generate.lua toc
+lua5.1 test.lua --shared
 ```
 
-`objective-first` runs without generated entity artifacts. It compares all five published hint
-tables with the pinned correction sources across base flavors, SoD, Titan Reforged, and negative
-season cases. It also checks emitted TOCs when present. `objective-first-addon` compares Source,
-Baked, and a staged package after Static Correction stripping for available artifacts.
-The explicit [flavor scopes](#independent-test-scopes) require these artifact checks for their
-selected flavor; the shared scope retains the cross-expansion Source checks. Issue #19 can
-reuse these checks rather than duplicate their persona matrix.
+Generate and validate affected flavors using the [correction loop](#working-on-corrections).
+For runtime or storage changes, exercise the relevant [flavor test scopes](#independent-test-scopes)
+as well. Check inherited Corrections on later expansions when their applicability changes.
 
-The localization suites compare every effective entity translation against pinned Questie across
-all five flavors and nine locales, exercise Dynamic Translation Correction lifecycle and
-precedence, and check Titan's Wrath season 109 zhCN set. Issue #19 can invoke these three suites as
-its focused localization gate.
-
-During import, Questie's `lookupOverrides.lua` whole-row replacements become named Static
-Translation Correction fields. The internal value `false` explicitly clears an omitted field
-before the result is filtered to existing entities and encoded. This sentinel belongs only to
-the Generation adapter; it is not part of `LibQuestieDB.l10n.SetCorrection`.
-
-The 24 support inputs, their pinned Questie paths, published fields, and Lua-source-string
-fields are listed in [`tools/questie-sync/support-inventory.lua`](tools/questie-sync/support-inventory.lua). See
-[`docs/support-data.md`](docs/support-data.md) before changing that inventory or support-file
-selection.
-
-The ported correction files preserve Questie's bytes except for explicit whole-function
-ownership exclusions in `tools/questie-sync/port-corrections.lua`; a compat shim supplies the module surface
-they import. The fidelity test compares every non-excluded byte and the port fails if an
-excluded block is absent or duplicated. To advance Questie, change `QUESTIE_COMMIT` first,
-check out that commit, then review schema drift, the Correction re-port, validators, compiler
-differential, and Golden snapshots in the same working tree. Automation reads the same pin
-through `.github/actions/checkout-questie`.
-
-The port requires Questie's four Titan entity files under `Database/Corrections/`. QuestieDB
-ports them under `src/corrections/Titan/` and applies every provider dynamically over the Wrath
-base, gated by Wrath plus active season 109. Titan quest tags and availability blacklists remain
-in Questie because they are consumer policy.
+Titan Corrections remain Dynamic over Wrath and require active season 109. Consumer policy,
+such as quest availability blacklists and content-phase selection, stays in Questie.
+[Localization inputs](l10n/README.md) documents whole-row translation overrides and
+[support data](docs/support-data.md) documents flavor selection.
 
 ---
 
@@ -503,7 +422,7 @@ src/
   meta/                   schema, nil/empty semantics, chunk markers
   types/                  distributable LuaLS declarations, never loaded by a TOC
   read/                   shared getters + the two backends that differ
-  corrections/            registry, compat shim, ported correction sets
+  corrections/            registry, compat shim, owned correction sets
   l10n/                   active-locale blocks and Dynamic Translation Corrections
   support/                whole-table game reference data
   ui/                     the source-mode indicator
@@ -521,7 +440,7 @@ test.lua                  unit tests and negative controls
 generator/                offline internals, deterministic CBOR and vendored codecs
 emulator/                 metadata and C_EncodingUtil stand-ins, client stubs, freeze substitute
 validators/               data-invariant checks
-tools/                    Python orchestration, packaging, bootstrap, imports, differential gates
+tools/                    Python orchestration, distribution, DBC tools, behavior fixtures
 docs/                     api.md, storage-format.md, adr/
 ```
 
@@ -538,13 +457,14 @@ lists; Baked mode also exposes scalar rows and table producers for its cache fas
 | [`docs/release-format.md`](docs/release-format.md) | shared release metadata and addon composition rules |
 | [`tools/README.md`](tools/README.md) | tooling categories and ownership |
 | [`docs/storage-format.md`](docs/storage-format.md) | the on-disk contract and the nil/empty rules |
-| [`docs/support-data.md`](docs/support-data.md) | support-data selection, shapes, inventory, and drift checks |
+| [`docs/support-data.md`](docs/support-data.md) | support-data selection, shapes, and validation |
 | [`DESIGN.md`](DESIGN.md) | architecture, locked decisions, rejected alternatives |
 | [`CONTEXT.md`](CONTEXT.md) | vocabulary |
 | [`docs/adr/`](docs/adr/) | decision records |
 | [`docs/adr/0005-element-level-nil-semantics.md`](docs/adr/0005-element-level-nil-semantics.md) | never-nil structures and element-level nil→0, which amend the storage contract |
-| [`docs/questie-handover.md`](docs/questie-handover.md) | every known divergence from Questie's compiler, its disposition, and the switch-over checklist |
+| [`docs/adr/0014-owned-data-after-migration.md`](docs/adr/0014-owned-data-after-migration.md) | migration checkpoint and owned-data workflow |
+| [`PROVENANCE.md`](PROVENANCE.md) | source references and prototype lineage |
+| [`docs/behavior-fixtures.md`](docs/behavior-fixtures.md) | fixed examples and validation coverage |
 | [`docs/read-performance.md`](docs/read-performance.md) | what a read costs and why, measured in a live client against the prototype and Questie's compiler |
 | [`docs/client-metadata-probes.md`](docs/client-metadata-probes.md) | how the client's metadata store actually behaves |
 | [`docs/table.freeze.md`](docs/table.freeze.md) | live-client freeze research |
-| [`docs/retiring-the-prototypes.md`](docs/retiring-the-prototypes.md) | what was mined from `Getters` and `toc-database` |

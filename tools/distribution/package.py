@@ -46,7 +46,6 @@ class FlavorSource:
     flavor: str
     toc: Path
     files: tuple[Path, ...]
-    questie_commit: str
     version: str
     contract_version: int
     interfaces: tuple[int, ...]
@@ -100,7 +99,7 @@ def read_source(root: Path, flavor: str) -> FlavorSource:
                 key, value = line[2:].split(":", 1)
                 key = key.strip().lower()
 
-                if key in ("version", "x-contract-version", "x-questie-commit", "interface"):
+                if key in ("version", "x-contract-version", "interface"):
                     if key in headers:
                         raise ValueError("%s repeats metadata field: %s" % (toc, key))
                     headers[key] = value.strip()
@@ -125,10 +124,6 @@ def read_source(root: Path, flavor: str) -> FlavorSource:
             files.append(path)
 
     # Release identity comes from the Baked TOC, not the current Source TOC.
-    questie_commit = headers.get("x-questie-commit", ZERO_COMMIT)
-    if not re.fullmatch(r"[0-9a-f]{40}", questie_commit):
-        raise ValueError("%s has an invalid X-QUESTIE-COMMIT" % toc)
-
     version = headers.get("version", "")
     if not re.fullmatch(
         r"(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)(?:-dev\.[0-9a-f]{7})?", version
@@ -149,7 +144,6 @@ def read_source(root: Path, flavor: str) -> FlavorSource:
         flavor,
         toc,
         tuple(files),
-        questie_commit,
         version,
         int(contract),
         tuple(int(value) for value in interfaces),
@@ -289,10 +283,6 @@ def package(root: Path, flavors: list[str]) -> None:
     lua = find_lua()
     sources = [read_source(root, flavor) for flavor in flavors]
 
-    questie_commit = os.environ.get("QUESTIE_COMMIT") or sources[0].questie_commit
-    if any(source.questie_commit != questie_commit for source in sources):
-        raise ValueError("TOCs have different legacy Questie baselines; regenerate them together")
-
     types = sorted((root / "src/types").glob("*.t.lua"))
     if not types:
         raise ValueError("src/types has no LuaLS declarations to package")
@@ -362,7 +352,6 @@ def package(root: Path, flavors: list[str]) -> None:
     manifest = {
         "repository": repository_url,
         "producerCommit": commit,
-        "questieCommit": questie_commit,
         "version": version,
         "contractVersion": contract,
         "minSupportedContract": minimum_contract,
@@ -377,7 +366,6 @@ def package(root: Path, flavors: list[str]) -> None:
         release_notes.render(
             version,
             commit,
-            questie_commit,
             minimum_contract,
             contract,
             [artifact["file"] for artifact in artifacts],

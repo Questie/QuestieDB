@@ -6,13 +6,13 @@ Usage: questiedb.sh <task> [task ...] [flavor ...] [options]
 
 Tasks:
   generate       Generate Baked TOCs
-  check          Verify, equivalence, reconstruct, validators, compiler differential
-  all            Generate, check, golden snapshots, and unit tests (not packaging)
+  check          Verify, equivalence, reconstruct, validators
+  all            Generate, check, and unit tests (not packaging)
   package        Package existing TOCs: package [all|Vanilla TBC Wrath Cata Mists]
   bootstrap      Download an install: bootstrap <AddOns-path> [tag] [--repo=OWNER/REPO]
   dbc-coordinates  Inspect Era/Forever map transforms (--help for build/point options)
   convert-forever  Convert Era data/corrections into separate Forever files (--help)
-  verify equivalence reconstruct validators differential golden test determinism freeze
+  verify equivalence reconstruct validators test determinism freeze
 
 Flavors: Vanilla TBC Wrath Cata Mists; omitted means all applicable flavors.
 Freeze supports Vanilla and Mists only.
@@ -21,7 +21,6 @@ Test runs shared suites once and artifact suites for each selected flavor; gener
 Options:
   --flavors=Vanilla,Mists  Select flavors instead of positional names
   --budget-mb=4000        Scheduling budget, 1 to 2147483647 MB
-  --questie=PATH          Legacy migration checkout, default ../Questie
   --lua=COMMAND          Override Lua (also accepts LUA); Windows/Linux x64 prefer bundled Lua
   --sequential           Run one job at a time
   -h, --help             Show this help
@@ -43,8 +42,8 @@ from typing import Any, BinaryIO, Optional
 
 ROOT = Path(__file__).resolve().parents[2]
 FLAVORS = ("Vanilla", "TBC", "Wrath", "Cata", "Mists")
-CHECKS = ("verify", "equivalence", "reconstruct", "validators", "differential")
-GATES = ("generate", *CHECKS, "golden", "test", "determinism", "freeze")
+CHECKS = ("verify", "equivalence", "reconstruct", "validators")
+GATES = ("generate", *CHECKS, "test", "determinism", "freeze")
 WEIGHTS = dict(zip(FLAVORS, (450, 700, 1000, 1400, 1750)))
 MAX_BUDGET_MB = 2147483647
 
@@ -55,7 +54,6 @@ class Options:
     flavors: list[str]
     budget: Optional[int] = None
     lua: Optional[str] = None
-    questie: str = "../Questie"
     sequential: bool = False
 
 
@@ -63,8 +61,7 @@ def parse_args(args: list[str]) -> Options:
     """Validate the complete selection before probing executables or touching outputs."""
     tasks, positional = [], []
     explicit = None
-    options = Options(tasks, [], lua=os.environ.get("LUA") or None,
-                      questie=os.environ.get("QUESTIE_PATH") or "../Questie")
+    options = Options(tasks, [], lua=os.environ.get("LUA") or None)
     for arg in args:
         if arg.startswith("--flavors="):
             if explicit is not None:
@@ -86,8 +83,6 @@ def parse_args(args: list[str]) -> Options:
             options.budget = int(value)
         elif arg.startswith("--lua="):
             options.lua = arg.split("=", 1)[1]
-        elif arg.startswith("--questie="):
-            options.questie = arg.split("=", 1)[1]
         elif arg == "--sequential":
             options.sequential = True
         elif arg in FLAVORS:
@@ -104,7 +99,7 @@ def parse_args(args: list[str]) -> Options:
     if "all" in tasks:
         if len(tasks) != 1:
             raise ValueError("all cannot be combined with other tasks")
-        tasks = ["generate", *CHECKS, "golden", "test"]
+        tasks = ["generate", *CHECKS, "test"]
     if explicit is not None and positional:
         raise ValueError("positional flavors cannot be combined with --flavors")
     selected = explicit if explicit is not None else positional
@@ -305,7 +300,7 @@ def run_jobs(jobs: list[Job], phase: str, root: Path, env: dict[str, str],
         summary = ""
         with (logdir / (job.label.replace(":", "_") + ".log")).open(encoding="utf-8", errors="replace") as log:
             for line in log:
-                if re.search(r"^\[(PASS|FAIL)\]|^[0-9]+ checks|^OK(?: |$)|^FAILED|no regressions|divergences:", line):
+                if re.search(r"^\[(PASS|FAIL)\]|^[0-9]+ checks|^OK(?: |$)|^FAILED|no regressions", line):
                     summary = line.rstrip()
         print("  %-4s %-22s %7.1fs  %s" % ("PASS" if code == 0 else "FAIL", job.label, duration, summary))
     if failed:
@@ -318,13 +313,8 @@ def run_jobs(jobs: list[Job], phase: str, root: Path, env: dict[str, str],
 def execute(options: Options, root: Path) -> int:
     """Resolve prerequisites, then execute Generation, Determinism, and checks in order."""
     lua = find_lua(options.lua, root)
-    env = dict(os.environ, LUA=lua, QUESTIE_PATH=options.questie, QUESTIEDB_PYTHON=sys.executable)
+    env = dict(os.environ, LUA=lua)
     env["SOURCE_DATE_EPOCH"] = env.get("SOURCE_DATE_EPOCH") or "1700000000"
-    if "differential" in options.tasks:
-        pin = run_command([lua, "-e", "dofile('generator/lib.lua').assertQuestiePin(os.getenv('QUESTIE_PATH'))"],
-                          root, env)
-        if pin:
-            return 1
     logdir = root / ".out/checks"
     logdir.mkdir(parents=True, exist_ok=True)
     for path in logdir.glob("*.log"):
@@ -377,14 +367,6 @@ def execute(options: Options, root: Path) -> int:
             elif gate == "validators":
                 command = [lua, "validators/run.lua", flavor]
                 weight = weight * 25 // 100
-            elif gate == "differential":
-                command = [sys.executable, "tools/differential/compiler_diff.py", flavor,
-                           "--questie=" + options.questie, "--lua=" + lua, "--self-check"]
-                weight = weight * 75 // 100
-            elif gate == "golden":
-                command = [sys.executable, "tools/differential/golden.py", "check", flavor,
-                           "--lua=" + lua, "--self-check"]
-                weight = weight * 50 // 100
             else:
                 command = [lua, gate + ".lua", flavor]
             jobs.append(Job(label, command, weight))

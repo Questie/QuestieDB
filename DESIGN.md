@@ -4,6 +4,10 @@ The design document this implementation was built from. Contracts decided after 
 buildout live in `docs/adr/`. ADR 0003 supersedes the broad read contract, ADR 0006 owns
 coordinate storage, and ADR 0010 owns Baked entity storage.
 
+Questie's migration completed on September 18, 2026. [ADR 0014](docs/adr/0014-owned-data-after-migration.md)
+supersedes the migration checks, import workflow, and derived-schema requirements below.
+Prototype comparisons and the phasing section are historical, not contributor instructions.
+
 Vocabulary is defined in [`CONTEXT.md`](./CONTEXT.md) and used precisely here.
 
 ## Mission
@@ -16,7 +20,7 @@ its owner, while retaining the ability to register Corrections.
 
 | Decision | Value |
 | --- | --- |
-| Data source | **Questie's existing data.** No VibeQuest data, schema, or coordinates. |
+| Data source | **QuestieDB-owned data**, originally imported from Questie. No VibeQuest data, schema, or coordinates. |
 | Schema | Questie's existing `questKeys` / `npcKeys` / `itemKeys` / `objectKeys`, unchanged. |
 | Domain | QuestieDB's domain is *Questie's data model*, including Questie-specific fields. |
 | Ownership | QuestieDB owns the database. Questie owns what to do with it. |
@@ -29,8 +33,8 @@ its owner, while retaining the ability to register Corrections.
 | Engine base | `toc-database`'s generator, retargeted at Questie's schema. |
 | Schema reference | `Getters` — already encodes Questie's field layout, though **stale** (32 fields vs Questie's current 36). |
 
-`toc-database` and `Getters` are prototypes to mine, then delete. **Questie is the source of
-truth for the data model.**
+`toc-database` and `Getters` were prototypes used during migration. **QuestieDB owns the
+current schema and data.**
 
 ## Ownership
 
@@ -74,7 +78,7 @@ truth for the data model.**
 
 QuestieDB reads its owned entity, correction, support, and localization sources directly.
 These were imported from Questie's tracked files without an intermediate export format.
-Schema materialization and migration fidelity checks still read the pinned Questie checkout.
+Generation and validation require no external Questie checkout.
 
 | Input | Shape | Loading |
 | --- | --- | --- |
@@ -87,8 +91,8 @@ Every input is already Lua, so this is a **mocked-environment loader, not a pars
 `cli/apiMocks.lua` and `cli/loadTOC.lua` (172 lines together) already do exactly this — it is
 how `validate-era.lua` loads the database today — and they move here with the validators.
 
-`questKeys` is defined *inside* each data file, so schema and data arrive together. This is
-the mechanical reason Questie is the schema source of truth.
+`questKeys` is defined *inside* each data file. Generation checks those keys against the
+canonical schema in `src/meta/` and rejects disagreements or undeclared row fields.
 
 **Do not build on the prototypes' intermediate format.** `Getters/data/*.lua-table` is
 `GetterDB`'s output, with corrections **already applied** by a pipeline QuestieDB replaces.
@@ -134,57 +138,17 @@ caches, and asynchronous Item repair follow the same ownership rule.
 
 ## Schema
 
-**The schema is still derived from Questie, not hand-written here.** Schema materialization
-(`generate.lua meta`) reads Questie's `*Keys` and `*CompilerTypes` and builds the field table.
-Flavor Generation uses that committed field table without reading Questie's checkout.
+`src/meta/*Meta.lua` owns each entity's positional keys, storage types, structures, defaults,
+and constant placeholders. Edit these committed tables directly; compiler-type derivation
+and `generate.lua meta` retired with the migration tooling (ADR 0014).
 
-A hand-maintained copy is a second version of someone else's schema, and it drifts. That is
-observed, not theoretical: `Getters`' schema sits at 32 fields against Questie's 36, having
-gone stale during exactly this kind of development gap. Deriving turns drift into a build
-failure instead of a discovery months later.
+Generation validates data-file key enums against the owned schema. A missing trailing field
+is allowed only while the data file carries no values beyond its declared fields. Update
+affected data keys, correction constants, and public LuaLS declarations alongside schema changes.
 
-### Compiler types collapse, but not entirely
-
-Questie's compiler type names describe a byte stream. Most of that means nothing in a text
-store:
-
-- **Width is dead.** `u8`, `u16`, `u24`, `u32`, `s8`, `s16`, `s24` all become Lua numbers
-  encoded directly by CBOR. Seven types, one behaviour.
-- **Array width is dead.** `u8u16array`, `u16u16array`, `u8u24array`, `u8s24array`,
-  `u16u24array` all become one ID array. Five types, one behaviour.
-- **Signedness is dead**, and notably so: the stream offsets (`value - 32767`) exist only
-  inside the encoder. Generation reads Questie's **raw data, pre-compile**, so no offset is
-  ever present.
-
-Three things do not collapse and must be preserved:
-
-- **Structure.** `spawnlist`, `waypointlist`, `questgivers`, `objectives`,
-  `extraobjectives`, and `trigger` each need distinct normalization before the generic CBOR
-  encoder receives them.
-- **Nil semantics.** Pair types return `nil` when both components are zero, numeric slots
-  default to zero, empty strings remain distinct from nil, and zero-count arrays return nil.
-  These rules are load-bearing because the result must match Questie exactly.
-- **`faction`**, which has its own normalizer.
-
-So the mapping is compiler type → `{ storage, normalize }`, and **an unrecognised compiler
-type must fail the build** rather than defaulting. A new Questie type is a decision, not a
-fallback.
-
-### The type map has an expiry date
-
-The two halves of Questie's schema meet different fates at phase 13:
-
-| | Lives in | After phase 13 |
-| --- | --- | --- |
-| `*Keys` | `Database/<entity>DB.lua` **and** duplicated inside each data file | **Survives** — travels with the data into QuestieDB |
-| `*CompilerTypes` | `Database/<entity>DB.lua` only | **Dies** with the compiler |
-
-Field names and ordering can therefore keep deriving indefinitely, because the data files
-carry their own copy of the keys. Only the **type map** loses its source.
-
-**Materialize the type map before phase 13** — generate it once, commit it, and retire the
-derivation. Same shape as the golden snapshot for the differential test: a mechanism whose
-job is to capture something before it disappears.
+Legacy width and signedness do not define storage: CBOR encodes Lua values directly. Structured
+fields still need explicit normalization, including coordinate tuple shape and nested numeric
+nil defaults. Public `compilerTypes` metadata remains for compatibility, not derivation.
 
 ## The seam
 
@@ -205,8 +169,8 @@ entity type. Nothing above the seam changes.
 
 ### Nil and empty semantics — match Questie exactly
 
-**Decided: reproduce Questie's current compiler semantics precisely.** ~290 call sites have
-been written against them, so any deviation is a silent behaviour change.
+**Preserve the established consumer read contract.** It originated from Questie's compiler
+semantics, with the explicit exceptions recorded in the storage format and later ADRs.
 
 | Source value | Read back as |
 | --- | --- |
@@ -235,8 +199,7 @@ field-level**: absent numeric slots inside `objective`, `spellobjective`, killcr
 `extraobjective` tuples read back as `0` too. Between them these accounted for 94% of every
 divergence from Questie's compiler.
 
-This remains the highest-risk class of bug, so the rule is enforced by exhaustive differential
-testing rather than trusted to review. Full detail in
+Literal behavior fixtures and whole-database verification protect these rules. Full detail in
 [`docs/storage-format.md`](./docs/storage-format.md).
 
 ## Two runtime modes
@@ -531,8 +494,8 @@ this case: a `-nolib` variant lets standalone installers avoid a folder collisio
 Baked TOCs are **never committed**. Successful default-branch builds update one rolling
 `preview` pre-release. A manual full release uses `vX.X.X` from the maintained `## Version:`
 in `QuestieDB.toc`, rejecting an existing tag or release unless the maintainer explicitly
-selects `override`. The manifest carries the producer commit and legacy Questie import/schema
-baseline, per-artifact SHA-256, and the contract version. Owned localization is identified by
+selects `override`. The manifest carries the producer commit, per-artifact SHA-256, and the
+contract version. Owned localization is identified by
 the producer commit. See [release operations](./README.md#releases) for publication
 ordering, failure recovery, and local version selection.
 
@@ -625,31 +588,22 @@ Baked mode adds scalar-row and table-producer fast paths to the two-function bas
 
 ## Testing
 
-Build on Questie's existing harness: `cli/loadTOC.lua`, `cli/apiMocks.lua`, busted,
-`.types/busted`.
+Current provider checks have two purposes:
 
-1. **Metadata emulator (shared library).** Parses a generated `.toc` into a key→value map and
-   installs `C_AddOns.GetAddOnMetadata`, handling `~N~` chunk markers. Written once here,
-   consumed from Questie.
-2. **Round-trip verification.** Source table == decoded metadata, per field per id. Port
-   `toc-database/verify.lua`.
-3. **Data validators.** `cli/validators.lua` moves here wholesale — 16 cross-entity invariant
-   checks over `(entities, keys)`. The expansion matrix moves with it, taking the heaviest job
-   out of Questie's CI.
-4. **Source/baked equivalence.** The two modes must read identically for every id × key. This
-   is the **load-bearing test in the system** — it is what makes the dev loop trustworthy, and
-   with two permanent backends it never retires.
-5. **Compiled/TOC differential.** Migration-only, and it has a **deadline**: the compiler is
-   the reference implementation, so before removing it, freeze its output as a committable
-   golden snapshot (per-id hashes, not full values). A tool-only adapter projects raw base
-   coordinates onto the compiler grid for this comparison while leaving Dynamic Corrections
-   raw, matching Questie's runtime override path (ADR 0006).
-6. **Fake backend + fixture.** An in-memory implementation of the 12-function seam, seeded
-   from a few hundred entities checked into Questie. Default for Questie's 15 DB-touching unit
-   tests: hermetic, fast, no network. Affordable only because the seam is 12 functions wide.
-7. **Pinned integration job.** One Questie CI job against a pinned QuestieDB release, proving
-   the real artifact loads and the contract matches. Pinned, not latest, so a QuestieDB
-   release can never spontaneously break Questie's CI.
+- Small fixtures with literal expected values protect storage semantics, correction ordering,
+  expansion inheritance, seasonal admission, localization, and Derived Pass behavior. Expected
+  results are reviewed, not regenerated from the implementation.
+- Whole-database checks validate current inputs and artifacts: round-trip Verification,
+  Source/Baked equivalence, byte-exact Reconstruction, data invariants, determinism, and
+  ownership checks. Packaging also verifies that stripping Static Corrections preserves behavior.
+
+Compiler comparisons, imported-data fidelity checks, and full-data golden snapshots served the
+migration and are removed. They are available at the migration checkpoint, not as optional gates.
+Ordinary data changes do not require snapshot refreshes. These checks protect contracts but do
+not prove that every gameplay fact is correct.
+
+See [the contributor commands](README.md#the-full-toolchain) and
+[independent test scopes](README.md#independent-test-scopes).
 
 ## Open risks and gates
 
@@ -664,7 +618,7 @@ live-validated end-to-end on build 69109
 ADR 0011 reduces the Mists artifact to 57,111,494 bytes, below the historically cleared
 85 MB range. Its active non-enUS locale retains 14.2 to 18.4 MiB in the Era-client prototype
 and takes 71 to 128 ms to decode. A Mists-client acceptance session for full load and
-client-wide memory remains open; see `docs/merge-program.md` future work.
+client-wide memory remains open in [issue #6](https://github.com/Questie/QuestieDB/issues/6).
 
 This settles the l10n-in-TOC decision. Keeping all nine compressed locales in the store costs
 less artifact and metadata memory than the earlier joined format, while enUS decodes none.
@@ -684,15 +638,11 @@ preserved before the folder around it is removed. See phase 11.
 The ~22 `*Pointers` sites need checking to confirm they only test existence and iterate ids.
 `GetAllIds(true)` returns a real hashmap and is a drop-in *if* that holds.
 
-### 3. Schema drift — mitigated by derivation
+### 3. Schema consistency
 
-`Getters`' schema is stale by four fields — `availableUntilCompleted`,
-`availableStartingWith`, `requiredRanks`, `disabledByQuest` — having gone out of date while
-sitting still. Questie will keep moving during this build.
-
-Deriving the schema (see Schema) converts this from a silent divergence into a build failure.
-The residual risk is narrower: an unrecognised **compiler type** halts generation and needs a
-storage decision, and the type map must be materialized before phase 13 removes its source.
+Generation checks the owned schema against data-file key enums and rejects undeclared fields.
+Schema changes also require corresponding public declaration changes. External compiler-type
+derivation is no longer a validation source; see ADR 0014.
 
 ### 4. Mutation audit — MOOT
 
@@ -741,11 +691,10 @@ little runtime benefit. It remains the first lever to pull if artifact size grow
 build, and support-data validators such as
 `checkNpcSpawnAreaIds(npcs, npcKeys, getUiMapIdByAreaId)` could not run without it.
 
-**A hand-written schema in QuestieDB.** Reads more cleanly than derived compiler-type names,
-and carries no dead width information. Rejected because it is a second copy of Questie's
-schema and would drift — which is precisely how `Getters` fell four fields behind. Derivation
-makes drift a build failure instead of a discovery. The translation map is needed either way,
-so hand-writing buys readability at the cost of the only mechanism that catches drift.
+**A hand-written schema during migration.** Originally rejected while Questie still owned and
+changed the schema. Derivation caught import drift then. After cutover, `src/meta/` is the
+canonical owned schema; keeping derivation would make the retired compiler an authority over
+the new database. ADR 0014 supersedes the original rejection.
 
 ## Verified findings
 
@@ -763,7 +712,10 @@ result rather than a copy. That is what lets `creatureObjective[3] = nil` reach 
 When auditing under freezing, this assignment pattern — not the `= nil` write — is what to
 search for.
 
-## Phasing
+## Historical migration phasing
+
+The plan below records the original sequencing. The cutover is complete; ADR 0014 retires its
+comparison and snapshot requirements. It is not a current release checklist.
 
 The ordering constraint that matters: **the compiler is the reference implementation, so it is
 removed last** — after the differential test runs clean and its golden snapshot is committed.

@@ -3,7 +3,6 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
-import sys
 import tempfile
 import unittest
 
@@ -33,9 +32,8 @@ class LuaFixture(unittest.TestCase):
         config.write_bytes(b"")
         # Ignore the caller's repositories/configuration and prohibit network Git protocols.
         self.env = {key: value for key, value in os.environ.items() if not key.startswith("GIT_")}
-        self.env.pop("QUESTIE_PATH", None)
         self.env.update(GIT_CONFIG_GLOBAL=str(config), GIT_CONFIG_NOSYSTEM="1", GIT_CONFIG_COUNT="0",
-                        GIT_ALLOW_PROTOCOL="file", QUESTIEDB_PYTHON=sys.executable, LUA=self.lua,
+                        GIT_ALLOW_PROTOCOL="file", LUA=self.lua,
                         QUESTIEDB_RELEASE="false", SOURCE_DATE_EPOCH="1700000000")
 
     def copy_inputs(self, expansion):
@@ -45,9 +43,6 @@ class LuaFixture(unittest.TestCase):
         shutil.copytree(ROOT / "data" / expansion, self.root / "data" / expansion)
         for filename in ("generate.lua", "reconstruct.lua"):
             shutil.copyfile(ROOT / filename, self.root / filename)
-        target = self.root / "tools/questie-sync"
-        target.mkdir(parents=True)
-        shutil.copyfile(ROOT / "tools/questie-sync/checkout.py", target / "checkout.py")
 
     def write(self, relative, content):
         path = self.root / relative

@@ -23,38 +23,25 @@ a name-only quest override clears any old translated objectives. The input adapt
 
 The files retain their executable Questie format, including locale guards and loader calls.
 The adapter executes them in a private environment; they are not runtime-loaded through a TOC.
-The original Titan function in `lookupOverrides.lua` is retained as part of the byte-identical
-import, but is not invoked by Generation. Titan Dynamic Translation Corrections already live
+The original Titan function in `lookupOverrides.lua` is not invoked by Generation. Titan Dynamic Translation Corrections already live
 in `src/l10n/Titan/zhCN.lua` and remain selected by the runtime flavor/season gate.
 
-## Import provenance
+## Ownership
 
-The current snapshot contains 181 Lua files copied byte-for-byte from the `Questie/Questie`
-revision recorded in [`QUESTIE_COMMIT`](../QUESTIE_COMMIT):
+These files were originally imported from Questie's entity lookups. Their current revision is
+identified by the producing QuestieDB commit. Edit them directly; no external checkout, pin,
+or upstream fidelity baseline is required. [PROVENANCE.md](../PROVENANCE.md) records the historical
+Questie source reference and paths. The [migration checkpoint](../docs/adr/0014-owned-data-after-migration.md)
+preserves the original import evidence.
 
-- 180 files from `Localization/lookups/<Expansion>/lookup<Type>/<locale>.lua`.
-- `Localization/lookups/lookupOverrides.lua`.
-
-Only the directory prefix changed. No UI translations, zone/category names, or upstream test
-files were imported. Future local revisions are identified by the producing QuestieDB commit.
-The retained `QUESTIE_COMMIT` and artifact `questieCommit` stamp identify the remaining legacy
-import/schema baseline, not an external localization checkout used during Generation.
-
-## Validation during migration
-
-The migration fidelity test still compares these local inputs with independent pinned Questie
-lookups, across all five flavors, four entity types, and nine locales. It will reject semantic
-translation changes until the migration checks are deliberately updated or retired.
-
-This snapshot is not declared final. Questie remains the synchronization source during migration;
-future `QUESTIE_COMMIT` bumps may require reviewed updates to these files. Advancing the pin does
-not overwrite or refresh this directory automatically. Generation continues to read the local
-snapshot whether or not another synchronization is needed before cutover.
+## Validation
 
 ```sh
-# No Questie checkout needed. Exercises local Generation/Reconstruction and missing inputs.
-python3 tools/validation/localization-inputs.test.py
-
-# Requires an isolated Questie checkout at QUESTIE_COMMIT for the migration oracle.
-QUESTIE_PATH=/path/to/pinned/Questie lua5.1 test.lua localization-overrides translation-corrections titan-translations
+# Local Generation/Reconstruction and missing-input protection.
+uv run --no-project python tools/validation/localization-inputs.test.py
+lua5.1 test.lua localization-overrides translation-corrections titan-translations
 ```
+
+Shared behavior fixtures cover locale precedence, replacement, and withdrawal. Generate the
+affected flavor and run its [artifact tests](../README.md#independent-test-scopes) to exercise
+Baked reads. Source mode does not load ordinary Base translations.

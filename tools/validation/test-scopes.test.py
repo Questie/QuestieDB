@@ -30,20 +30,13 @@ class TestScopes(unittest.TestCase):
         self.assertEqual(self.selected(), shared.union(*flavors.values()))
         for suites in flavors.values():
             self.assertFalse(shared & suites)
-            self.assertTrue({"artifact-lines", "artifact-wire", "artifact-types",
-                             "objective-first-addon", "objective-first-emitted",
-                             "support-fidelity-emitted"} <= suites)
+            self.assertTrue({"artifact-lines", "artifact-wire", "artifact-types"} <= suites)
         self.assertIn("personas", flavors["Vanilla"])
         self.assertNotIn("personas-titan", flavors["Vanilla"])
         self.assertIn("personas-titan", flavors["Wrath"])
         self.assertNotIn("personas", flavors["Wrath"])
         self.assertIn("sod-required-races-baked", flavors["Vanilla"])
         self.assertIn("titan-translations-baked", flavors["Wrath"])
-
-    def test_fidelity_helpers_do_not_discover_unrelated_artifacts(self):
-        result = subprocess.run([LUA, "tools/validation/fidelity-scopes.test.lua"],
-                                cwd=ROOT, capture_output=True, text=True, timeout=15)
-        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
     def test_invalid_arguments_fail_instead_of_passing_zero_checks(self):
         for args in (("typo",), ("--flavor=Unknown",), ("--flavor=",),
@@ -66,9 +59,7 @@ class TestScopes(unittest.TestCase):
             root = Path(directory)
             for path in ("generator", "src", "emulator"):
                 shutil.copytree(ROOT / path, root / path)
-            for path in ("test.lua", "tools/validation/test-files.lua",
-                         "tools/differential/compiler_coordinates.lua",
-                         "tools/differential/dump_value.lua"):
+            for path in ("test.lua", "tools/validation/test-files.lua"):
                 target = root / path
                 target.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(ROOT / path, target)

@@ -6,9 +6,6 @@ QuestieDB_Wrath.toc
 QuestieDB_Cata.toc
 QuestieDB_Mists.toc
 
-# Pinned Questie checkouts fetched by generate.lua.
-/.cache/questie/
-
 # DBC source artifacts downloaded by the Forever conversion tools.
 /.cache/dbc/
 
@@ -21,7 +18,7 @@ QuestieDB_Mists.toc
 .idea/
 *.swp
 
-# Python bytecode from the differential tooling
+# Python bytecode from offline tooling
 __pycache__/
 
 .scratch/

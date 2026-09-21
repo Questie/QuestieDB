@@ -1,5 +1,8 @@
 # 4. Derived passes, and what "match Questie" includes
 
+Migration tooling and pinned-reference requirements in this record are superseded by
+[ADR 0014](0014-owned-data-after-migration.md). The runtime contracts remain in effect.
+
 Date: 2026-08-19. Status: accepted.
 
 ## Context

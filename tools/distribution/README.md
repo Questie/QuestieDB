@@ -25,7 +25,7 @@ composition rules. The details below describe QuestieDB's packaging.
   `metadata`, with one `{ "flavor": "classic", "interface": 11508 }` pair per declared
   interface version in its packaged TOCs. Per-flavor ZIPs list only their own declarations;
   the combined ZIP lists all included flavors. Interface values are integers, not strings.
-- `questiedb` contains the entire provider manifest: `repository`, `producerCommit`, `questieCommit`,
+- `questiedb` contains the entire provider manifest: `repository`, `producerCommit`,
   `version`, `contractVersion`, `minSupportedContract`, `builtAt`, `nolib`, `artifacts`, and
   `changelog`. All fields are wrapped unchanged, including additional fields rather than a
   fixed subset.
@@ -38,8 +38,8 @@ Addon-manager flavor identifiers follow Questie's release conventions: `Vanilla`
 `questiedb.repository` is the HTTPS source repository URL without a trailing slash. It comes
 from `GITHUB_REPOSITORY` (default `Questie/QuestieDB`) and is also used for release-note links.
 
-`questiedb.producerCommit` identifies this QuestieDB build. `questiedb.questieCommit` remains
-the legacy Questie import/schema baseline, not the producing commit of Questie's current release.
+`questiedb.producerCommit` identifies this QuestieDB build and its owned inputs. New manifests
+do not contain the retired `questieCommit` migration stamp.
 A combined Questie release can supply its own root `releases` and `questie` metadata while
 copying the selected provider's complete `questiedb` object unchanged, including unknown fields.
 It can then use `questiedb.artifacts` to verify the provider ZIP and `questiedb.changelog` to
@@ -149,7 +149,7 @@ The checkbox labels are `--release-build`, `--publish`, and `--replace`; their w
 are `release`, `publish`, and `override`, respectively. These labels are not CLI options.
 The former `dry_run` input is removed.
 
-A dry run executes the same generation, validation, compiler differential, and packaging
+A dry run executes the same generation, validation, and packaging
 pipeline. It then verifies the downloaded release handoff and displays ZIP paths, file sizes,
 checksums, and the packaged release description in the **Preview dry-run release** job summary.
 No tags or GitHub releases are created or changed. Existing version tags/releases are allowed,
@@ -192,8 +192,8 @@ cannot be overridden. Repository-wide release immutability is incompatible with 
 
 Baked addon versions are `X.X.X` for stable releases and `X.X.X-dev.<short SHA>` otherwise.
 Local Generation follows the same rule; `QUESTIEDB_RELEASE=true` selects the stable-release form.
-The manifest's `questiedb` object and TOCs retain the exact producing commit and legacy Questie
-import/schema baseline. The producing commit identifies the owned localization sources.
+The manifest's `questiedb` object and TOCs record the producing QuestieDB commit. It identifies
+the owned data, localization, and implementation sources.
 
 ### Validation and publication order
 
@@ -207,14 +207,14 @@ Use the workflow to publish, rather than invoking the publisher outside its gate
 
 After choosing the tag, shared checks and the five
 [flavor pipelines](../../README.md#independent-test-scopes) run independently. Each flavor runs
-Generation, Determinism, scoped tests, Reconstruction, Verification, Equivalence, validators,
-and Golden checks. Release reconstructs every flavor; CI reconstructs Vanilla and Mists.
+Generation, Determinism, scoped tests, Reconstruction, Verification, Equivalence, and validators.
+Release reconstructs every flavor; CI reconstructs Vanilla and Mists.
 Both verify ownership under freezing on Vanilla and Mists.
 
 Release checks each TOC's checksum before uploading it and again after collecting all five.
 Packaging waits for the shared and flavor checks, creates per-flavor and combined ZIPs from
-those exact verified TOCs, and never regenerates them. Publication requires successful packaging
-and every compiler differential. Only GitHub publication is configured.
+those exact verified TOCs, and never regenerates them. Publication requires successful shared
+and flavor checks followed by successful packaging. Only GitHub publication is configured.
 Publication jobs queue without cancelling active or pending releases. The publisher checks the
 handoff's commit and ZIP checksums before any mutation, then rejects stale preview builds.
 
