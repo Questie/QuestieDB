@@ -4,11 +4,16 @@
 # The client searches for flavour-suffixed TOCs first and uses this one only if
 # none are found, so a generated artifact wins simply by existing. A fresh clone
 # has no suffixed TOC, which is what makes it a working dev environment.
-## Interface: 11508, 11509, 20506, 38000, 38001, 40402, 50503, 50504
+
+# =============================================================================
+# Addon metadata
+# =============================================================================
+
+## Interface: 11508, 11509, 20506, 30405, 38000, 38001, 38002, 40402, 50503, 50504, 16001
 ## Title: QuestieDB
 ## Notes: |cFFFFD100(source mode)|r The database Questie consumes. No generated artifact present.
 ## Author: Code: Logonz Data: Muehe/TheCrux(BreakBB)/Drejjmit/Dyaxler/Cheeq/TechnoHunter/Yttrium/Everyone else
-## Version: 1.0.1
+## Version: 1.0.2
 ## Category: Quests
 ## Category-deDE: Quests
 ## Category-esES: Misiones
@@ -24,6 +29,11 @@
 ## X-Contract-Version: 2
 ## X-Mode: source
 
+# =============================================================================
+# Runtime foundation
+# =============================================================================
+
+# --- Configuration, schema and codecs ---
 src\config.lua
 src\meta\normalize.lua
 src\meta\codec.lua
@@ -31,125 +41,249 @@ src\meta\questMeta.lua
 src\meta\npcMeta.lua
 src\meta\itemMeta.lua
 src\meta\objectMeta.lua
+
+# --- Native client selection ---
+# Exactly one initializer runs. Blizzard's current camelot token selects Forever.
+src\flavors\Vanilla.lua [AllowLoadGameType vanilla]
+src\flavors\TBC.lua [AllowLoadGameType tbc]
+src\flavors\Wrath.lua [AllowLoadGameType wrath]
+src\flavors\Cata.lua [AllowLoadGameType cata]
+src\flavors\Mists.lua [AllowLoadGameType mists]
+src\flavors\Forever.lua [AllowLoadGameType camelot, forever]
+
+# =============================================================================
+# Entity data
+# =============================================================================
+
+# --- Loader setup ---
+# Capture the selected flavor's deferred payloads; materialize them on first use.
 src\read\source.lua
-data\Classic\_flavor.lua
-data\Classic\classicQuestDB.lua
-data\Classic\classicNpcDB.lua
-data\Classic\classicItemDB.lua
-data\Classic\classicObjectDB.lua
-data\TBC\_flavor.lua
-data\TBC\tbcQuestDB.lua
-data\TBC\tbcNpcDB.lua
-data\TBC\tbcItemDB.lua
-data\TBC\tbcObjectDB.lua
-data\Wotlk\_flavor.lua
-data\Wotlk\wotlkQuestDB.lua
-data\Wotlk\wotlkNpcDB.lua
-data\Wotlk\wotlkItemDB.lua
-data\Wotlk\wotlkObjectDB.lua
-data\Cata\_flavor.lua
-data\Cata\cataQuestDB.lua
-data\Cata\cataNpcDB.lua
-data\Cata\cataItemDB.lua
-data\Cata\cataObjectDB.lua
-data\MoP\_flavor.lua
-data\MoP\mopQuestDB.lua
-data\MoP\mopNpcDB.lua
-data\MoP\mopItemDB.lua
-data\MoP\mopObjectDB.lua
+
+# --- Vanilla ---
+data\Classic\classicQuestDB.lua [AllowLoadGameType vanilla]
+data\Classic\classicNpcDB.lua [AllowLoadGameType vanilla]
+data\Classic\classicItemDB.lua [AllowLoadGameType vanilla]
+data\Classic\classicObjectDB.lua [AllowLoadGameType vanilla]
+
+# --- TBC ---
+data\TBC\tbcQuestDB.lua [AllowLoadGameType tbc]
+data\TBC\tbcNpcDB.lua [AllowLoadGameType tbc]
+data\TBC\tbcItemDB.lua [AllowLoadGameType tbc]
+data\TBC\tbcObjectDB.lua [AllowLoadGameType tbc]
+
+# --- Wrath ---
+data\Wotlk\wotlkQuestDB.lua [AllowLoadGameType wrath]
+data\Wotlk\wotlkNpcDB.lua [AllowLoadGameType wrath]
+data\Wotlk\wotlkItemDB.lua [AllowLoadGameType wrath]
+data\Wotlk\wotlkObjectDB.lua [AllowLoadGameType wrath]
+
+# --- Cata ---
+data\Cata\cataQuestDB.lua [AllowLoadGameType cata]
+data\Cata\cataNpcDB.lua [AllowLoadGameType cata]
+data\Cata\cataItemDB.lua [AllowLoadGameType cata]
+data\Cata\cataObjectDB.lua [AllowLoadGameType cata]
+
+# --- Mists ---
+data\MoP\mopQuestDB.lua [AllowLoadGameType mists]
+data\MoP\mopNpcDB.lua [AllowLoadGameType mists]
+data\MoP\mopItemDB.lua [AllowLoadGameType mists]
+data\MoP\mopObjectDB.lua [AllowLoadGameType mists]
+
+# --- Forever ---
+data\Forever\foreverQuestDB.lua [AllowLoadGameType camelot, forever]
+data\Forever\foreverNpcDB.lua [AllowLoadGameType camelot, forever]
+data\Forever\foreverItemDB.lua [AllowLoadGameType camelot, forever]
+data\Forever\foreverObjectDB.lua [AllowLoadGameType camelot, forever]
+
+# --- Loader teardown ---
 data\_end.lua
+
+# =============================================================================
+# Support data
+# =============================================================================
+
+# --- Constants and loader setup ---
 src\corrections\enum\constants.lua
 src\support\data.lua
 src\support\_begin.lua
-support\Zones\dungeons.lua
-support\Zones\subZoneToParentZone.lua
-support\Zones\zoneIds.lua
-support\Zones\instanceIdToAreaId.lua
-support\DropTables\itemDropCorrections.lua
-src\support\scopes\preMists.lua
-support\Zones\areaIdToUiMapId.lua
-support\Zones\uiMapIdToAreaId.lua
-src\support\scopes\Vanilla.lua
-support\QuestXP\xpDB-classic.lua
-support\FactionTemplates\factionTemplateClassic.lua
-support\DropTables\classicItemDrops.lua
-src\support\scopes\TBC.lua
-support\QuestXP\xpDB-tbc.lua
-support\FactionTemplates\factionTemplateTBC.lua
-support\DropTables\tbcItemDrops.lua
-src\support\scopes\Wrath.lua
-support\QuestXP\xpDB-wotlk.lua
-support\FactionTemplates\factionTemplateWotlk.lua
-support\DropTables\wotlkItemDrops.lua
-src\support\scopes\Cata.lua
-support\QuestXP\xpDB-cata.lua
-support\FactionTemplates\factionTemplateCata.lua
-src\support\scopes\Mists.lua
-support\Zones\MoP\areaIdToUiMapId.lua
-support\Zones\MoP\uiMapIdToAreaId.lua
-support\QuestXP\xpDB-mop.lua
-support\FactionTemplates\factionTemplateMoP.lua
-support\DropTables\mopItemDrops.lua
-src\support\scopes\CataMists.lua
-support\DropTables\cataItemDrops.lua
+
+# --- Shared legacy reference data ---
+support\Zones\dungeons.lua [AllowLoadGameType vanilla, tbc, wrath, mists, cata]
+support\Zones\subZoneToParentZone.lua [AllowLoadGameType vanilla, tbc, wrath, mists, cata]
+support\Zones\zoneIds.lua [AllowLoadGameType vanilla, tbc, wrath, mists, cata]
+support\Zones\instanceIdToAreaId.lua [AllowLoadGameType vanilla, tbc, wrath, mists, cata]
+support\DropTables\itemDropCorrections.lua [AllowLoadGameType vanilla, tbc, wrath, mists, cata]
+
+# --- Zone maps: Vanilla through Cata ---
+support\Zones\areaIdToUiMapId.lua [AllowLoadGameType vanilla, tbc, wrath, cata]
+support\Zones\uiMapIdToAreaId.lua [AllowLoadGameType vanilla, tbc, wrath, cata]
+
+# --- Vanilla: quest XP, factions and drops ---
+support\QuestXP\xpDB-classic.lua [AllowLoadGameType vanilla]
+support\FactionTemplates\factionTemplateClassic.lua [AllowLoadGameType vanilla]
+support\DropTables\classicItemDrops.lua [AllowLoadGameType vanilla]
+
+# --- TBC: quest XP, factions and drops ---
+support\QuestXP\xpDB-tbc.lua [AllowLoadGameType tbc]
+support\FactionTemplates\factionTemplateTBC.lua [AllowLoadGameType tbc]
+support\DropTables\tbcItemDrops.lua [AllowLoadGameType tbc]
+
+# --- Wrath: quest XP, factions and drops ---
+support\QuestXP\xpDB-wotlk.lua [AllowLoadGameType wrath]
+support\FactionTemplates\factionTemplateWotlk.lua [AllowLoadGameType wrath]
+support\DropTables\wotlkItemDrops.lua [AllowLoadGameType wrath]
+
+# --- Mists: zone maps, quest XP, factions and drops ---
+support\Zones\MoP\areaIdToUiMapId.lua [AllowLoadGameType mists]
+support\Zones\MoP\uiMapIdToAreaId.lua [AllowLoadGameType mists]
+support\QuestXP\xpDB-mop.lua [AllowLoadGameType mists]
+support\FactionTemplates\factionTemplateMoP.lua [AllowLoadGameType mists]
+support\DropTables\mopItemDrops.lua [AllowLoadGameType mists]
+
+# --- Cata drops, also used by Mists ---
+# Mists loads its own drop table first, then the Cata table.
+support\DropTables\cataItemDrops.lua [AllowLoadGameType mists, cata]
+
+# --- Cata: quest XP and factions ---
+support\QuestXP\xpDB-cata.lua [AllowLoadGameType cata]
+support\FactionTemplates\factionTemplateCata.lua [AllowLoadGameType cata]
+
+# --- Forever: independently owned support inputs ---
+support\Forever\Zones\dungeons.lua [AllowLoadGameType camelot, forever]
+support\Forever\Zones\subZoneToParentZone.lua [AllowLoadGameType camelot, forever]
+support\Forever\Zones\zoneIds.lua [AllowLoadGameType camelot, forever]
+support\Forever\Zones\instanceIdToAreaId.lua [AllowLoadGameType camelot, forever]
+support\Forever\DropTables\itemDropCorrections.lua [AllowLoadGameType camelot, forever]
+support\Forever\Zones\areaIdToUiMapId.lua [AllowLoadGameType camelot, forever]
+support\Forever\Zones\uiMapIdToAreaId.lua [AllowLoadGameType camelot, forever]
+support\Forever\QuestXP\xpDB-classic.lua [AllowLoadGameType camelot, forever]
+support\Forever\FactionTemplates\factionTemplateClassic.lua [AllowLoadGameType camelot, forever]
+support\Forever\DropTables\classicItemDrops.lua [AllowLoadGameType camelot, forever]
+
+# --- Loader teardown ---
 src\support\_end.lua
+
+# =============================================================================
+# Corrections
+# =============================================================================
+
+# --- Shared readers and Correction registry ---
 src\read\shared.lua
 src\corrections\registry.lua
+
+# --- Provider loader setup ---
 src\corrections\compat.lua
 src\corrections\register.lua
 src\corrections\_begin.lua
-src\corrections\scopes\Era.lua
-src\corrections\Era\classicQuestFixes.lua
-src\corrections\Era\classicNPCFixes.lua
-src\corrections\Era\classicItemFixes.lua
-src\corrections\Era\classicObjectFixes.lua
-src\corrections\Era\classicQuestReputationFixes.lua
-src\corrections\scopes\Tbc.lua
-src\corrections\Tbc\tbcQuestFixes.lua
-src\corrections\Tbc\tbcNPCFixes.lua
-src\corrections\Tbc\tbcItemFixes.lua
-src\corrections\Tbc\tbcObjectFixes.lua
-src\corrections\scopes\Wotlk.lua
-src\corrections\Wotlk\wotlkQuestFixes.lua
-src\corrections\Wotlk\wotlkNPCFixes.lua
-src\corrections\Wotlk\wotlkItemFixes.lua
-src\corrections\Wotlk\wotlkObjectFixes.lua
+
+# --- Era providers ---
+# Base Corrections are cumulative across legacy flavors; reputation applies only to Vanilla.
+src\corrections\Era\classicQuestFixes.lua [AllowLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Era\classicNPCFixes.lua [AllowLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Era\classicItemFixes.lua [AllowLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Era\classicObjectFixes.lua [AllowLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Era\classicQuestReputationFixes.lua [AllowLoadGameType vanilla]
+
+# --- TBC providers: TBC and later legacy flavors ---
+src\corrections\Tbc\tbcQuestFixes.lua [AllowLoadGameType tbc, wrath, cata, mists]
+src\corrections\Tbc\tbcNPCFixes.lua [AllowLoadGameType tbc, wrath, cata, mists]
+src\corrections\Tbc\tbcItemFixes.lua [AllowLoadGameType tbc, wrath, cata, mists]
+src\corrections\Tbc\tbcObjectFixes.lua [AllowLoadGameType tbc, wrath, cata, mists]
+
+# --- Wrath providers: Wrath and later legacy flavors ---
+src\corrections\Wotlk\wotlkQuestFixes.lua [AllowLoadGameType wrath, cata, mists]
+src\corrections\Wotlk\wotlkNPCFixes.lua [AllowLoadGameType wrath, cata, mists]
+src\corrections\Wotlk\wotlkItemFixes.lua [AllowLoadGameType wrath, cata, mists]
+src\corrections\Wotlk\wotlkObjectFixes.lua [AllowLoadGameType wrath, cata, mists]
+
+# --- Titan Reforged: Wrath season 109 ---
+# Scope markers retain the runtime season gate for load-time objective hints.
 src\corrections\scopes\Titan.lua
-src\corrections\Titan\titanReforgedQuestFixes.lua
-src\corrections\Titan\titanReforgedNPCFixes.lua
-src\corrections\Titan\titanReforgedItemFixes.lua
-src\corrections\Titan\titanReforgedObjectFixes.lua
-src\corrections\scopes\Cata.lua
-src\corrections\Cata\cataQuestFixes.lua
-src\corrections\Cata\cataNPCFixes.lua
-src\corrections\Cata\cataItemFixes.lua
-src\corrections\Cata\cataObjectFixes.lua
-src\corrections\scopes\MoP.lua
-src\corrections\MoP\mopQuestFixes.lua
-src\corrections\MoP\mopNPCFixes.lua
-src\corrections\MoP\mopItemFixes.lua
-src\corrections\MoP\mopObjectFixes.lua
+src\corrections\Titan\titanReforgedQuestFixes.lua [AllowLoadGameType wrath]
+src\corrections\Titan\titanReforgedNPCFixes.lua [AllowLoadGameType wrath]
+src\corrections\Titan\titanReforgedItemFixes.lua [AllowLoadGameType wrath]
+src\corrections\Titan\titanReforgedObjectFixes.lua [AllowLoadGameType wrath]
+src\corrections\scopes\TitanEnd.lua
+
+# --- Cata providers: Cata and Mists ---
+src\corrections\Cata\cataQuestFixes.lua [AllowLoadGameType cata, mists]
+src\corrections\Cata\cataNPCFixes.lua [AllowLoadGameType cata, mists]
+src\corrections\Cata\cataItemFixes.lua [AllowLoadGameType cata, mists]
+src\corrections\Cata\cataObjectFixes.lua [AllowLoadGameType cata, mists]
+
+# --- Mists providers ---
+src\corrections\MoP\mopQuestFixes.lua [AllowLoadGameType mists]
+src\corrections\MoP\mopNPCFixes.lua [AllowLoadGameType mists]
+src\corrections\MoP\mopItemFixes.lua [AllowLoadGameType mists]
+src\corrections\MoP\mopObjectFixes.lua [AllowLoadGameType mists]
+
+# --- Season of Discovery: Vanilla season 2 ---
+# Never applied to Forever. The season gate remains in Lua.
 src\corrections\scopes\Sod.lua
-src\corrections\Sod\sodQuestFixes.lua
-src\corrections\Sod\sodNPCFixes.lua
-src\corrections\Sod\sodItemFixes.lua
-src\corrections\Sod\sodObjectFixes.lua
-src\corrections\Sod\sodBaseQuests.lua
-src\corrections\Sod\sodBaseNPCs.lua
-src\corrections\Sod\sodBaseItems.lua
-src\corrections\Sod\sodBaseObjects.lua
-src\corrections\scopes\Shared.lua
-src\corrections\Shared\itemStartFixes.lua
+src\corrections\Sod\sodQuestFixes.lua [AllowLoadGameType vanilla]
+src\corrections\Sod\sodNPCFixes.lua [AllowLoadGameType vanilla]
+src\corrections\Sod\sodItemFixes.lua [AllowLoadGameType vanilla]
+src\corrections\Sod\sodObjectFixes.lua [AllowLoadGameType vanilla]
+src\corrections\Sod\sodBaseQuests.lua [AllowLoadGameType vanilla]
+src\corrections\Sod\sodBaseNPCs.lua [AllowLoadGameType vanilla]
+src\corrections\Sod\sodBaseItems.lua [AllowLoadGameType vanilla]
+src\corrections\Sod\sodBaseObjects.lua [AllowLoadGameType vanilla]
+src\corrections\scopes\SodEnd.lua
+
+# --- Shared legacy Item-start Corrections ---
+src\corrections\Shared\itemStartFixes.lua [AllowLoadGameType vanilla, tbc, wrath, cata, mists]
+
+# --- Forever: inherited baseline ---
+# Owned copies, not live Era or Shared providers. Add new work in forever*Fixes.lua.
+src\corrections\Forever\legacy\classicQuestFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\legacy\classicNPCFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\legacy\classicItemFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\legacy\classicObjectFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\legacy\classicQuestReputationFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\legacy\itemStartFixes.lua [AllowLoadGameType camelot, forever]
+
+# --- Forever: authored corrections ---
+# Apply after the baseline within each Static/Dynamic category.
+src\corrections\Forever\foreverQuestFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\foreverNPCFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\foreverItemFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\foreverObjectFixes.lua [AllowLoadGameType camelot, forever]
+
+# --- Provider registration and loader teardown ---
 src\corrections\manifest.lua
 src\corrections\_end.lua
-src\corrections\Sod\sodRequiredRaces.lua
+
+# --- Season of Discovery: required-race overlay ---
+src\corrections\Sod\sodRequiredRaces.lua [AllowLoadGameType vanilla]
+
+# =============================================================================
+# Derived passes
+# =============================================================================
+
+# --- Registry and loader setup ---
 src\derived\registry.lua
 src\derived\_begin.lua
+
+# --- Shared algorithms ---
+# Run over corrected data, using the selected flavor's owned support inputs.
 src\derived\RamerDouglasPeucker.lua
 src\derived\requiredRaces.lua
 src\derived\waypoints.lua
+
+# --- Loader teardown ---
 src\derived\_end.lua
+
+# =============================================================================
+# Localization and public API
+# =============================================================================
+
+# --- Localization overlay and Titan translations ---
+# Do not filter by client locale: SetLocale() can select another locale.
 src\l10n\overlay.lua
 src\l10n\Titan\zhCN.lua
+
+# --- Source-mode indicator ---
 src\ui\modeIndicator.lua
+
+# --- Public API ---
 src\api.lua

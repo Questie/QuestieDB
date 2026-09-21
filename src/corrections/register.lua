@@ -67,8 +67,11 @@ end
 --- ordinary non-seasonal Era — expansion gating alone let 10,640 SoD ids leak onto plain
 --- Vanilla. Offline and in the emulator, `C_Seasons.GetActiveSeason()` returns 0, so the
 --- default everywhere without a live seasonal client is "not active".
+---@param flavor table? Active provider flavor.
 ---@return boolean active
-function register.IsSodActive()
+function register.IsSodActive(flavor)
+  flavor = flavor or LibQuestieDB.flavor
+  if not flavor or flavor.name ~= "Vanilla" then return false end
   local seasons = rawget(_G, "C_Seasons")
   if not seasons or type(seasons.GetActiveSeason) ~= "function" then return false end
   local enum = rawget(_G, "Enum")
@@ -104,7 +107,6 @@ function register.FromManifest(flavor, moduleFor)
   if not manifest then return 0, 0 end
 
   local order = registry.loadOrder
-  local expansionOrder = registry.expansionOrder
   local registered, skipped = 0, 0
 
   -- Baked mode never applies Static Corrections: Generation already folded them into the
@@ -116,14 +118,8 @@ function register.FromManifest(flavor, moduleFor)
   local registerStatics = LibQuestieDB.mode ~= "baked"
 
   for index, spec in ipairs(manifest) do
-    local applies = true
-    if flavor then
-      if spec.expansions and not spec.expansions[flavor.expansion] then applies = false end
-      if spec.minExpansionOrder and (expansionOrder[flavor.expansion] or 0) < spec.minExpansionOrder then
-        applies = false
-      end
-    end
-    if applies and register.IsSod(spec) and not register.IsSodActive() then
+    local applies = LibQuestieDB.config.correctionApplies(spec, flavor)
+    if applies and register.IsSod(spec) and not register.IsSodActive(flavor) then
       applies = false
     end
     if applies and register.IsTitanReforged(spec) and

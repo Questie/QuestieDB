@@ -43,17 +43,17 @@ INPUTS = (
     Input("data/Classic/classicNpcDB.lua", "data/Forever/foreverNpcDB.lua", "Npc", True),
     Input("data/Classic/classicObjectDB.lua", "data/Forever/foreverObjectDB.lua", "Object", True),
     Input("data/Classic/classicQuestDB.lua", "data/Forever/foreverQuestDB.lua", "Quest", True),
-    Input("src/corrections/Era/classicItemFixes.lua", "src/corrections/Forever/classicItemFixes.lua",
+    Input("src/corrections/Era/classicItemFixes.lua", "src/corrections/Forever/legacy/classicItemFixes.lua",
           "Item", False, "QuestieItemFixes", ("Load", "LoadFactionFixes")),
-    Input("src/corrections/Era/classicNPCFixes.lua", "src/corrections/Forever/classicNPCFixes.lua",
+    Input("src/corrections/Era/classicNPCFixes.lua", "src/corrections/Forever/legacy/classicNPCFixes.lua",
           "Npc", False, "QuestieNPCFixes", ("Load", "LoadFactionFixes")),
-    Input("src/corrections/Era/classicObjectFixes.lua", "src/corrections/Forever/classicObjectFixes.lua",
+    Input("src/corrections/Era/classicObjectFixes.lua", "src/corrections/Forever/legacy/classicObjectFixes.lua",
           "Object", False, "QuestieObjectFixes", ("Load", "LoadFactionFixes")),
-    Input("src/corrections/Era/classicQuestFixes.lua", "src/corrections/Forever/classicQuestFixes.lua",
+    Input("src/corrections/Era/classicQuestFixes.lua", "src/corrections/Forever/legacy/classicQuestFixes.lua",
           "Quest", False, "QuestieQuestFixes", ("Load", "LoadFactionFixes")),
-    Input("src/corrections/Era/classicQuestReputationFixes.lua", "src/corrections/Forever/classicQuestReputationFixes.lua",
+    Input("src/corrections/Era/classicQuestReputationFixes.lua", "src/corrections/Forever/legacy/classicQuestReputationFixes.lua",
           "Quest", False, "QuestieClassicQuestReputationFixes", ("Load",)),
-    Input("src/corrections/Shared/itemStartFixes.lua", "src/corrections/Forever/itemStartFixes.lua",
+    Input("src/corrections/Shared/itemStartFixes.lua", "src/corrections/Forever/legacy/itemStartFixes.lua",
           "Item", False, "QuestieItemStartFixes", ("LoadAutomaticQuestStarts",)),
 )
 
@@ -278,7 +278,7 @@ def main() -> int:
         outputs[MANIFEST] = (json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False) + "\n").encode("utf-8")
         changed = install_outputs(ROOT, outputs)
         print("Installed %d changed files. Provenance/review: %s" % (len(changed), MANIFEST))
-        print("Era unchanged. Forever files are not registered in runtime TOCs or correction manifests.")
+        print("Era unchanged. Existing Forever source registrations now read these outputs; generated TOCs were not rebuilt.")
         return 0
     except KeyboardInterrupt:
         print("Conversion cancelled", file=sys.stderr)

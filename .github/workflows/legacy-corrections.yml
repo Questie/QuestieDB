@@ -1,0 +1,34 @@
+name: Legacy corrections
+
+# Called by CI and Release so their aggregate gates own the result.
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  legacy-corrections:
+    name: Legacy corrections unchanged
+    runs-on: ubuntu-latest
+    env:
+      # Pin the accepted baseline so new branches and later pushes cannot hide an earlier edit.
+      LEGACY_BASELINE: 88c83eae43824e39dc4ba94919cd519ccd2c529d
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          sparse-checkout: src/corrections/Forever/legacy
+
+      - name: Fetch the baseline tree
+        run: git fetch --no-tags --depth=1 --filter=blob:none origin "$LEGACY_BASELINE"
+
+      - name: Reject legacy Lua changes
+        shell: bash
+        run: |
+          if git diff --exit-code --name-status --no-renames "$LEGACY_BASELINE" HEAD -- \
+            ':(glob)src/corrections/Forever/legacy/**/*.lua'; then
+            echo "Legacy correction files are unchanged."
+          else
+            echo "::error::Do not change legacy correction files. Add corrections in src/corrections/Forever/forever*Fixes.lua instead."
+            exit 1
+          fi

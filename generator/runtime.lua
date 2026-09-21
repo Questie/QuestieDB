@@ -68,36 +68,34 @@ function runtime.loadCorrections(LibQuestieDB, flavor)
   local manifest = LibQuestieDB.CorrectionManifest
   if not manifest then return 0, 0 end
 
-  local registry = LibQuestieDB.Corrections
   local compat = LibQuestieDB.CorrectionCompat
-  local expansionOrder = registry.expansionOrder
 
   local remove = compat.Install(flavor)
   local loadedFiles = 0
 
-  for _, spec in ipairs(manifest) do
-    local applies = true
-    if flavor then
-      if spec.expansions and not spec.expansions[flavor.expansion] then applies = false end
-      if spec.minExpansionOrder and (expansionOrder[flavor.expansion] or 0) < spec.minExpansionOrder then
-        applies = false
-      end
-    end
-    if applies then
-      local path = "src/corrections/" .. spec.file
-      if lib.fileExists(path) then
+  local registered
+  local ok, err = pcall(function()
+    for _, spec in ipairs(manifest) do
+      local applies = LibQuestieDB.config.correctionApplies(spec, flavor)
+      if applies then
+        local path = "src/corrections/" .. spec.file
+        local register = LibQuestieDB.CorrectionRegister
+        local active = (not register.IsSod(spec) or register.IsSodActive(flavor)) and
+          (not register.IsTitanReforged(spec) or register.IsTitanReforgedActive(flavor))
+        compat.SelectObjectiveFirstScope(active)
         execute(path, "QuestieDB", LibQuestieDB)
         loadedFiles = loadedFiles + 1
       end
     end
-  end
 
-  local modules = compat.modules
-  local registered = LibQuestieDB.CorrectionRegister.FromManifest(flavor, function(name)
-    return modules[name]
+    local modules = compat.modules
+    registered = LibQuestieDB.CorrectionRegister.FromManifest(flavor, function(name)
+      return modules[name]
+    end)
   end)
 
   remove()
+  if not ok then error(err, 0) end
   return registered, loadedFiles
 end
 

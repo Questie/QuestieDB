@@ -87,7 +87,7 @@ class OutputInstallationTests(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         self.npc = "data/Forever/foreverNpcDB.lua"
-        self.fixes = "src/corrections/Forever/classicNPCFixes.lua"
+        self.fixes = "src/corrections/Forever/legacy/classicNPCFixes.lua"
 
     def test_repeat_generation_is_noop_and_updates_only_owned_files(self):
         first = outputs_with_manifest({self.npc: "old NPC", self.fixes: "old fixes"})

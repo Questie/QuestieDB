@@ -63,6 +63,7 @@ function fixture.load(mode, entities, metadata)
   assert(loadfile("src/read/shared.lua"))("QuestieDB", db)
   assert(loadfile("src/corrections/registry.lua"))("QuestieDB", db)
   if mode == "source" then
+    assert(loadfile("src/flavors/Vanilla.lua"))("QuestieDB", db)
     assert(loadfile(config.runtimeFiles.sourceReader))("QuestieDB", db)
     db.read.source.payloads = copy(entities)
     db.read.source.RemoveLoaderShim()

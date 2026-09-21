@@ -24,13 +24,14 @@ import release_artifacts
 
 
 ROOT = Path(__file__).resolve().parents[2]
-FLAVORS = ("Vanilla", "TBC", "Wrath", "Cata", "Mists")
+FLAVORS = ("Vanilla", "TBC", "Wrath", "Cata", "Mists", "Forever")
 MANAGER_FLAVORS = {
     "Vanilla": "classic",
     "TBC": "bcc",
     "Wrath": "wrath",
     "Cata": "cata",
     "Mists": "mists",
+    "Forever": "forever",
 }
 TOC_INTERFACES = {
     "Vanilla": "11508, 11509",
@@ -38,6 +39,7 @@ TOC_INTERFACES = {
     "Wrath": "30405, 38000, 38001, 38002",
     "Cata": "40402",
     "Mists": "50503, 50504",
+    "Forever": "16001",
 }
 CREDIT_FIXTURES = json.loads(
     (ROOT / "tools/distribution/fixtures/author-credits.json").read_text(encoding="utf-8")
@@ -530,6 +532,7 @@ class PackageTest(unittest.TestCase):
                 + "## X-Quest-1-S: fixture\n",
             )
 
+        self.write("QuestieDB_Camelot.toc", "stale workspace alias")
         self.env = dict(
             os.environ,
             PATH=str(self.bin),
@@ -589,10 +592,6 @@ class PackageTest(unittest.TestCase):
             self.assertEqual(hashlib.sha256(archive_path.read_bytes()).hexdigest(), entry["sha256"])
             self.assertEqual(archive_path.stat().st_size, entry["bytes"])
             flavors = FLAVORS if entry["flavor"] == "All" else (entry["flavor"],)
-            self.assertEqual(
-                sum((self.root / ("QuestieDB_%s.toc" % f)).stat().st_size for f in flavors),
-                entry["rawBytes"],
-            )
             with zipfile.ZipFile(archive_path) as archive:
                 self.assertIsNone(archive.testzip())
                 names = {info.filename for info in archive.infolist() if not info.is_dir()}
@@ -606,6 +605,19 @@ class PackageTest(unittest.TestCase):
                     "QuestieDB/CHANGELOG.md",
                 }
                 expected.update("QuestieDB/QuestieDB_%s.toc" % f for f in flavors)
+                if "Forever" in flavors:
+                    expected.add("QuestieDB/QuestieDB_Camelot.toc")
+                    primary = archive.read("QuestieDB/QuestieDB_Forever.toc")
+                    self.assertEqual(primary, archive.read("QuestieDB/QuestieDB_Camelot.toc"))
+                    self.assertTrue(primary.endswith(b"# staged transformation\n"))
+                self.assertEqual(
+                    sum(
+                        info.file_size
+                        for info in archive.infolist()
+                        if info.filename.endswith(".toc")
+                    ),
+                    entry["rawBytes"],
+                )
                 expected.update("QuestieDB/support/%s.lua" % f for f in flavors)
                 self.assertEqual(expected, names)
 
@@ -761,8 +773,8 @@ class PackageTest(unittest.TestCase):
         for artifact in manifest["artifacts"]:
             with zipfile.ZipFile(dist / artifact["file"]) as archive:
                 changelogs.append(archive.read("QuestieDB/CHANGELOG.md").decode("utf-8"))
-        self.assertEqual(6, len(changelogs))
-        self.assertEqual([changelogs[0]] * 6, changelogs)
+        self.assertEqual(7, len(changelogs))
+        self.assertEqual([changelogs[0]] * 7, changelogs)
         changelog = changelogs[0]
         self.assertTrue(changelog.startswith("# QuestieDB 1.2.3-dev.abcdef0\n\n"))
         self.assertIn(changelog.split("\n\n", 1)[1].rstrip(), notes)
@@ -853,6 +865,46 @@ class PackageTest(unittest.TestCase):
         self.assertIn("[QuestieDB-Vanilla.zip]", notes)
         self.assertNotIn("QuestieDB-all.zip", notes)
         self.assertNotIn("QuestieDB-Mists.zip", notes)
+
+    def test_forever_packages_without_workspace_alias(self):
+        (self.root / "QuestieDB_Camelot.toc").unlink()
+        result = self.run_package("Forever")
+        self.assertEqual(0, result.returncode, result.stderr)
+        self.assertEqual(
+            ["QuestieDB-Forever.zip"], [p.name for p in (self.root / ".out/dist").glob("*.zip")]
+        )
+        with zipfile.ZipFile(self.root / ".out/dist/QuestieDB-Forever.zip") as archive:
+            self.assertEqual(
+                archive.read("QuestieDB/QuestieDB_Forever.toc"),
+                archive.read("QuestieDB/QuestieDB_Camelot.toc"),
+            )
+        document = json.loads((self.root / ".out/dist/release.json").read_text())
+        self.assertEqual(
+            [
+                {
+                    "filename": "QuestieDB-Forever.zip",
+                    "nolib": False,
+                    "metadata": [{"flavor": "forever", "interface": 16001}],
+                },
+            ],
+            document["releases"],
+        )
+        notes = (self.root / ".out/dist/RELEASE_NOTES.md").read_text()
+        self.assertIn("[QuestieDB-Forever.zip]", notes)
+        self.assertNotIn("Camelot", notes)
+
+    def test_camelot_is_not_a_flavor(self):
+        self.preserve_previous_output()
+        result = self.run_package("Camelot")
+        self.assertNotEqual(0, result.returncode)
+        self.assert_previous_output()
+
+    def test_missing_forever_preserves_previous_output(self):
+        self.preserve_previous_output()
+        (self.root / "QuestieDB_Forever.toc").unlink()
+        result = self.run_package("all")
+        self.assertNotEqual(0, result.returncode)
+        self.assert_previous_output()
 
     def test_missing_lua_preserves_previous_output(self):
         self.preserve_previous_output()

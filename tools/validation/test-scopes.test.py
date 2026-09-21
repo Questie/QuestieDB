@@ -27,7 +27,11 @@ class TestScopes(unittest.TestCase):
         shared = self.selected("--shared")
         flavors = {flavor: self.selected("--flavor=" + flavor)
                    for flavor in ("Vanilla", "TBC", "Wrath", "Cata", "Mists")}
-        self.assertEqual(self.selected(), shared.union(*flavors.values()))
+        forever = self.selected("--flavor=Forever")
+        self.assertEqual(forever, {"artifact-lines", "artifact-wire", "artifact-types"})
+        self.assertIn("forever-data", shared)
+        self.assertIn("native-toc", shared)
+        self.assertEqual(self.selected(), shared.union(forever, *flavors.values()))
         for suites in flavors.values():
             self.assertFalse(shared & suites)
             self.assertTrue({"artifact-lines", "artifact-wire", "artifact-types"} <= suites)
@@ -52,17 +56,39 @@ class TestScopes(unittest.TestCase):
         self.assertEqual(self.selected("chunking"), {"chunking", "artifact-lines"})
         self.assertEqual(self.selected("lua-types"), {"lua-types", "artifact-types"})
 
+    def copy_harness(self, root):
+        """Copy startup dependencies, without owned entity data or generated artifacts."""
+        for path in ("generator", "src", "emulator"):
+            shutil.copytree(ROOT / path, root / path)
+        for path in ("test.lua", "tools/validation/test-files.lua"):
+            target = root / path
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(ROOT / path, target)
+
+    def test_forever_artifact_scope_runs_without_entity_payloads(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.copy_harness(root)
+            # These suites inspect storage lines and file lists, not decoded entity content.
+            lines = ["## X-Flavor: Forever", "## X-l10n-Version: 1"]
+            for entity in ("Quest", "Npc", "Item", "Object"):
+                lines.append("## X-" + entity + "-IDS: fixture")
+                for locale in ("deDE", "esES", "esMX", "frFR", "koKR", "ptBR", "ruRU", "zhCN", "zhTW"):
+                    lines.append("## X-l10n-" + locale + "-" + entity + ": fixture")
+            content = "\n".join(lines) + "\n"
+            (root / "QuestieDB_Forever.toc").write_text(content)
+            (root / "QuestieDB_Camelot.toc").write_text(content)
+            result = self.run_test("--flavor=Forever", root=root)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertIn("3 checks, 0 failed", result.stdout)
+            self.assertNotIn("SKIP", result.stdout)
+
     def test_missing_and_partial_artifacts_fail_before_running_suites(self):
         # Only the harness's startup dependencies are copied. No owned data or real TOCs
         # are needed, and the caller's generated artifacts are never renamed or removed.
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            for path in ("generator", "src", "emulator"):
-                shutil.copytree(ROOT / path, root / path)
-            for path in ("test.lua", "tools/validation/test-files.lua"):
-                target = root / path
-                target.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copyfile(ROOT / path, target)
+            self.copy_harness(root)
             toc = root / "QuestieDB_TBC.toc"
             for content in (None, "## X-Flavor: Wrath\n",
                             "## X-Flavor: TBC\n",

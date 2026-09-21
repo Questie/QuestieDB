@@ -13,12 +13,8 @@
 --
 -- ## Why this file loads before the data
 --
--- The base TOC has to serve every client, so it lists all five expansions' data files — 78 MB
--- of Lua. Loading all of it would be absurd. Instead this file installs a `QuestieLoader`
--- shim ahead of them: each expansion's block is preceded by a marker file naming it, and the
--- shim discards a payload assignment whose expansion is not the running client's. The
--- discarded chunk's string constant becomes collectable as soon as that file returns, so peak
--- cost is one file rather than twenty.
+-- Native file conditions select the payloads before Lua runs. This shim captures their
+-- deferred strings without materializing tables until a consumer reads them.
 
 local _, LibQuestieDB = ...
 
@@ -31,32 +27,8 @@ local source = {}
 -- Flavor detection
 --------------------------------------------------------------------------------------------
 
--- Blizzard's project IDs, the same mapping Questie's Expansions module uses. Defaulting to
--- Classic Era matches Questie's behaviour on an unrecognised client.
-local PROJECT_TO_EXPANSION = {
-  [2] = "Classic",  -- WOW_PROJECT_CLASSIC
-  [5] = "TBC",      -- WOW_PROJECT_BURNING_CRUSADE_CLASSIC
-  [11] = "Wotlk",   -- WOW_PROJECT_WRATH_CLASSIC
-  [14] = "Cata",    -- WOW_PROJECT_CATACLYSM_CLASSIC
-  [19] = "MoP",     -- WOW_PROJECT_MISTS_CLASSIC
-}
-
---- Which expansion's raw data this client should keep.
-function source.DetectExpansion()
-  local override = LibQuestieDB.__forceExpansion
-  if override then return override end
-  return PROJECT_TO_EXPANSION[rawget(_G, "WOW_PROJECT_ID") or 2] or "Classic"
-end
-
-source.expansion = source.DetectExpansion()
-
-for _, flavor in ipairs(config.flavors) do
-  if flavor.expansion == source.expansion then source.flavor = flavor end
-end
-
--- Published for the correction block, which loads after this file and needs to know which
--- expansion's corrections apply.
-LibQuestieDB.flavor = source.flavor
+source.flavor = assert(LibQuestieDB.flavor, "QuestieDB: no native Source flavor selected")
+source.expansion = source.flavor.expansion
 
 --------------------------------------------------------------------------------------------
 -- Payload capture
@@ -65,15 +37,12 @@ LibQuestieDB.flavor = source.flavor
 --- entityTypeName -> the `[[return {...}]]` payload string for the running client
 source.payloads = {}
 
---- The data files assign both their key enum and their payload. Only the payload for the
---- running client's expansion is retained; everything else is dropped on assignment.
+---Native-selected data files assign both their key enum and their deferred payload.
 local capture = setmetatable({}, {
   __newindex = function(tbl, key, value)
     for _, entityType in ipairs(config.entityTypes) do
       if key == entityType.dataField then
-        if LibQuestieDB.__loadingExpansion == source.expansion then
-          source.payloads[entityType.name] = value
-        end
+        source.payloads[entityType.name] = value
         return
       end
     end

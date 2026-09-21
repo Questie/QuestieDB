@@ -43,7 +43,7 @@ function zones.BuildAreaLookup(flavor)
   local support = LibQuestieDB.Support
   support.Install(flavor)
   for _, file in ipairs(config.supportFiles(flavor)) do
-    if file:match("^support/Zones/") then
+    if file:match("/Zones/") then
       runtime.execute(file, "QuestieDB", LibQuestieDB)
     end
   end

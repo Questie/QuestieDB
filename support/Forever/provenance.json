@@ -1,0 +1,1697 @@
+{
+  "coordinate_manifest": "data/Forever/conversion.json",
+  "coordinate_manifest_sha256": "7866f9ebfe5510336465a5cb526f0388e17d456b776dddc9f506fd5475cc855d",
+  "coordinate_source_checkout_commit": "d94542ac92423f05c6fbde6574ada29b15c0d4e8",
+  "coordinate_validation": "All ten source/output SHA-256 values match supplied checkout and current Era sources; zone symbols match. Complete geometry and build snapshot provenance match a read-only read of the supplied existing DBC cache. Actual adopted output bytes passed tools/dbc/validate.lua for ten files and 30 correction personas.",
+  "dbc_report": {
+    "build": "1.60.1.69893",
+    "diagnostic_counts": {
+      "assignment_without_area": 6,
+      "map_without_explicit_area": 46,
+      "nonprimary_assignment": 1,
+      "parent_without_subzone_flag": 1
+    },
+    "diagnostics": [
+      {
+        "assignment_id": 46724,
+        "kind": "assignment_without_area",
+        "map_id": 1,
+        "ui_map_id": 1414
+      },
+      {
+        "assignment_id": 46725,
+        "kind": "assignment_without_area",
+        "map_id": 0,
+        "ui_map_id": 1415
+      },
+      {
+        "assignment_id": 46774,
+        "kind": "assignment_without_area",
+        "map_id": 0,
+        "ui_map_id": 1463
+      },
+      {
+        "assignment_id": 46775,
+        "kind": "assignment_without_area",
+        "map_id": 1,
+        "ui_map_id": 1464
+      },
+      {
+        "area_id": 0,
+        "assignment_id": 46784,
+        "kind": "nonprimary_assignment",
+        "order_index": 1,
+        "ui_map_id": 947
+      },
+      {
+        "assignment_id": 46785,
+        "kind": "assignment_without_area",
+        "map_id": 1,
+        "ui_map_id": 947
+      },
+      {
+        "assignment_id": 69852,
+        "kind": "assignment_without_area",
+        "map_id": 2991,
+        "ui_map_id": 2665
+      },
+      {
+        "area_id": 279,
+        "kind": "parent_without_subzone_flag",
+        "parent_area_id": 36
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 0,
+        "root_area_candidates": []
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 1,
+        "root_area_candidates": []
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 25,
+        "root_area_candidates": []
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 29,
+        "root_area_candidates": []
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 30,
+        "root_area_candidates": [
+          2597,
+          2817
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 33,
+        "root_area_candidates": [
+          209
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 36,
+        "root_area_candidates": [
+          206,
+          207,
+          208,
+          210,
+          1581
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 37,
+        "root_area_candidates": [
+          268
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 42,
+        "root_area_candidates": []
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 44,
+        "root_area_candidates": []
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 47,
+        "root_area_candidates": [
+          491
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 129,
+        "root_area_candidates": [
+          722
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 169,
+        "root_area_candidates": [
+          956,
+          1397
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 189,
+        "root_area_candidates": [
+          796
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 209,
+        "root_area_candidates": [
+          1176
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 269,
+        "root_area_candidates": [
+          2366,
+          2367,
+          15793
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 289,
+        "root_area_candidates": [
+          2057
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 329,
+        "root_area_candidates": [
+          2017
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 451,
+        "root_area_candidates": [
+          22,
+          151
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2720,
+        "root_area_candidates": []
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2784,
+        "root_area_candidates": [
+          15475
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2789,
+        "root_area_candidates": [
+          15531
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2791,
+        "root_area_candidates": [
+          15532
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2804,
+        "root_area_candidates": [
+          15825
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2806,
+        "root_area_candidates": [
+          15809,
+          16362
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2807,
+        "root_area_candidates": [
+          15828
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2817,
+        "root_area_candidates": [
+          15938
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2832,
+        "root_area_candidates": [
+          16003,
+          16004,
+          16017,
+          16018,
+          16028,
+          16029,
+          16147,
+          16148,
+          16149,
+          16169
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2853,
+        "root_area_candidates": [
+          16113,
+          16114,
+          16115,
+          16116,
+          16117,
+          16118,
+          16119
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2856,
+        "root_area_candidates": [
+          16236
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2868,
+        "root_area_candidates": []
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2902,
+        "root_area_candidates": [
+          16295
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2921,
+        "root_area_candidates": [
+          16394
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2980,
+        "root_area_candidates": []
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2991,
+        "root_area_candidates": [
+          16593
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2995,
+        "root_area_candidates": []
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2996,
+        "root_area_candidates": [
+          16603
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2997,
+        "root_area_candidates": [
+          16606
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2998,
+        "root_area_candidates": [
+          16732
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 2999,
+        "root_area_candidates": [
+          16611
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 3002,
+        "root_area_candidates": [
+          16632
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 3005,
+        "root_area_candidates": [
+          16653
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 3021,
+        "root_area_candidates": []
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 3065,
+        "root_area_candidates": [
+          16919
+        ]
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 3104,
+        "root_area_candidates": []
+      },
+      {
+        "kind": "map_without_explicit_area",
+        "map_id": 3109,
+        "root_area_candidates": [
+          17191
+        ]
+      }
+    ],
+    "inputs": {
+      "area_table": {
+        "columns": [
+          "ID",
+          "AreaName_lang",
+          "ContinentID",
+          "ParentAreaID",
+          "Flags_0"
+        ],
+        "projection_sha256": "b6f3cd7aed062716f414e7cd497615faabbe45880bcf7992c78427d9e04f2e3d",
+        "rows": 1372
+      },
+      "chr_races": {
+        "columns": [
+          "ID",
+          "Name_lang",
+          "PlayableRaceBit",
+          "FactionID",
+          "Alliance"
+        ],
+        "projection_sha256": "9d12029b13cbda771fd1dc44b16c1cae0490e130f224fba19b1f7d31bb9d3b3b",
+        "rows": 58
+      },
+      "faction_template": {
+        "columns": [
+          "ID",
+          "EnemyGroup"
+        ],
+        "projection_sha256": "24c1289e1c4e0de00eafd0f7136ce7ab14bd9efa8d39f8d7243e53882cdd0989",
+        "rows": 453
+      },
+      "map": {
+        "columns": [
+          "ID",
+          "MapName_lang",
+          "AreaTableID"
+        ],
+        "projection_sha256": "e83244a2ae7c59ceca6e90f9767d4a1bda44b716e2795602fc3d8af1a8f89a13",
+        "rows": 73
+      },
+      "quest_sort": {
+        "columns": [
+          "ID",
+          "SortName_lang",
+          "UiOrderIndex"
+        ],
+        "projection_sha256": "3e57bc0758641a012545742b42949b16f28ad08a11b964a4c1042dd06e42cc2b",
+        "rows": 39
+      },
+      "skill_line": {
+        "columns": [
+          "ID",
+          "DisplayName_lang",
+          "CategoryID",
+          "ParentSkillLineID",
+          "Flags"
+        ],
+        "projection_sha256": "5001a33a719a45914b6081121b96b8342a8870b7328aee72fc4d7a342ecdad05",
+        "rows": 154
+      },
+      "ui_map": {
+        "columns": [
+          "ID",
+          "Name_lang"
+        ],
+        "projection_sha256": "e265fc2189a7e46df0f0a2e9ecef23da35be96a66b556536164a834665753747",
+        "rows": 60
+      },
+      "ui_map_assignment": {
+        "columns": [
+          "ID",
+          "UiMapID",
+          "AreaID",
+          "MapID",
+          "OrderIndex"
+        ],
+        "projection_sha256": "c06c0c3f2e7fa1db0d019c8b6408601b8d2c018b0e801b461303bd40408e397e",
+        "rows": 61
+      }
+    },
+    "not_generated": {
+      "DropTables_and_entities": "Quest relationships, spawns and drops require non-DBC sources.",
+      "Faction_ChrClasses_and_other_missing_tables": "Not in this pass; see ../dbc/FOREVER-DATA-TODO.md.",
+      "Item": "No item projection in this pass; investigate the failed Item snapshot separately.",
+      "QuestXP": "QuestXP rows alone lack per-quest level/reward-index inputs.",
+      "localization": "This pass emits English reference names only.",
+      "map_overrides_and_dungeons": "Synthetic IDs, entrances and navigation policy need manual review.",
+      "race_faction_aggregates": "Client playability and restriction semantics need verification.",
+      "zoneIds.lua": "Authored symbols/aliases cannot be regenerated from duplicate area names."
+    },
+    "outputs": {
+      "support/FactionTemplates/factionTemplateForever.lua": {
+        "rows": 453,
+        "sha256": "026489ae872c6e9025073ec54d2718bc1b8ef56007b7b6b564062fbdc807aa60"
+      },
+      "support/QuestSort/questSort.lua": {
+        "rows": 39,
+        "sha256": "c91419f75183317427cb6c236c029f3fb6f8be0d040a92ec45c0fc1e1c2411eb"
+      },
+      "support/Races/races.lua": {
+        "rows": 58,
+        "sha256": "c76566717040e062f1fb38ff70deae534322521ec5d0b36b8637bc1c506ffbc8"
+      },
+      "support/Skills/skillLines.lua": {
+        "rows": 154,
+        "sha256": "769b7f856cb3045a605040d38cef646d91de5a149ed106e8c7106e4cbfd2b618"
+      },
+      "support/Zones/areaIdToUiMapId.lua": {
+        "rows": 54,
+        "sha256": "e7f055befab91f9c779f985504fa00668ab23750d3c3ec7f0ec4cafc94e8378c"
+      },
+      "support/Zones/areaNames.lua": {
+        "rows": 1372,
+        "sha256": "4f955fc9989e1b7e51264dc20051ab481d0f65ab95936287ac38c7a70dbdf8a1"
+      },
+      "support/Zones/instanceIdToAreaId.lua": {
+        "rows": 27,
+        "sha256": "fec5f63e0c434b2d0c616ca13de592db944483378bb404ddf865afc2dd0205f4"
+      },
+      "support/Zones/subZoneToParentZone.lua": {
+        "rows": 1188,
+        "sha256": "59c11cb106ceab33f9b3edd3440470c62803be20e707327b839c5772de777fa1"
+      },
+      "support/Zones/uiMapIdToAreaId.lua": {
+        "rows": 54,
+        "sha256": "4b417a140dfcc9a8fd6a35f73f3649603c106c89948b7c42e12af0e6edcd18f2"
+      }
+    },
+    "purpose": "Forever DBC-only staging; not installed in QuestieDB"
+  },
+  "dbc_report_sha256": "59ca7ddd974e99684e88975e1a3856dde660cf7f92f091e8dfba3adb77297896",
+  "deferred_reference_tables": [
+    "Zones/areaNames.lua",
+    "Races/races.lua",
+    "Skills/skillLines.lua",
+    "QuestSort/questSort.lua"
+  ],
+  "purpose": "One-time Forever input adoption evidence; not an automatic synchronization contract.",
+  "seeds": {
+    "l10n/Forever/lookupItems/deDE.lua": {
+      "adopted_sha256": "bde240521939a825153ed150f17f634a284b60ac03e31589fc3fb6451eae13ee",
+      "source": "l10n/Classic/lookupItems/deDE.lua",
+      "source_sha256": "bde240521939a825153ed150f17f634a284b60ac03e31589fc3fb6451eae13ee"
+    },
+    "l10n/Forever/lookupItems/esES.lua": {
+      "adopted_sha256": "c75b3986f4dc78114c53b47219cfc967132af0dc6981581288a01762b097cd7a",
+      "source": "l10n/Classic/lookupItems/esES.lua",
+      "source_sha256": "c75b3986f4dc78114c53b47219cfc967132af0dc6981581288a01762b097cd7a"
+    },
+    "l10n/Forever/lookupItems/esMX.lua": {
+      "adopted_sha256": "9cd6d98c5b8a563e1788fd1e74661b2dbd555afcc8eee793157618647bd84efa",
+      "source": "l10n/Classic/lookupItems/esMX.lua",
+      "source_sha256": "9cd6d98c5b8a563e1788fd1e74661b2dbd555afcc8eee793157618647bd84efa"
+    },
+    "l10n/Forever/lookupItems/frFR.lua": {
+      "adopted_sha256": "5c5f8fbdbd9ae5f9c7f999b05073bb00f73fb4e7584684a931b74710a61927e8",
+      "source": "l10n/Classic/lookupItems/frFR.lua",
+      "source_sha256": "5c5f8fbdbd9ae5f9c7f999b05073bb00f73fb4e7584684a931b74710a61927e8"
+    },
+    "l10n/Forever/lookupItems/koKR.lua": {
+      "adopted_sha256": "9d964fc1a27cfc3495be5fd78797cf6aa3840e847efa6402499ff5ca687e3cec",
+      "source": "l10n/Classic/lookupItems/koKR.lua",
+      "source_sha256": "9d964fc1a27cfc3495be5fd78797cf6aa3840e847efa6402499ff5ca687e3cec"
+    },
+    "l10n/Forever/lookupItems/ptBR.lua": {
+      "adopted_sha256": "72fafea0ac656b9d837e7c9f807c22734260282eef59b0602892fda2de60d79a",
+      "source": "l10n/Classic/lookupItems/ptBR.lua",
+      "source_sha256": "72fafea0ac656b9d837e7c9f807c22734260282eef59b0602892fda2de60d79a"
+    },
+    "l10n/Forever/lookupItems/ruRU.lua": {
+      "adopted_sha256": "a6531b8e6b16850b06955f57c37efe9051cdde33fedc3c67bcfe4caa7f4763ab",
+      "source": "l10n/Classic/lookupItems/ruRU.lua",
+      "source_sha256": "a6531b8e6b16850b06955f57c37efe9051cdde33fedc3c67bcfe4caa7f4763ab"
+    },
+    "l10n/Forever/lookupItems/zhCN.lua": {
+      "adopted_sha256": "a832cec0e32fefc273f6e9f725f27011b8674da5fdc610d81af59f4878a347c2",
+      "source": "l10n/Classic/lookupItems/zhCN.lua",
+      "source_sha256": "a832cec0e32fefc273f6e9f725f27011b8674da5fdc610d81af59f4878a347c2"
+    },
+    "l10n/Forever/lookupItems/zhTW.lua": {
+      "adopted_sha256": "aad41105512e3329f4d20ddc2b84d876c51bbb6dc6429d0e33e29b54515e2f24",
+      "source": "l10n/Classic/lookupItems/zhTW.lua",
+      "source_sha256": "aad41105512e3329f4d20ddc2b84d876c51bbb6dc6429d0e33e29b54515e2f24"
+    },
+    "l10n/Forever/lookupNpcs/deDE.lua": {
+      "adopted_sha256": "40d2e3d0b840cd415bed0ef95559ce5b28855df268d143d6792e58a5e5fbd2e2",
+      "source": "l10n/Classic/lookupNpcs/deDE.lua",
+      "source_sha256": "40d2e3d0b840cd415bed0ef95559ce5b28855df268d143d6792e58a5e5fbd2e2"
+    },
+    "l10n/Forever/lookupNpcs/esES.lua": {
+      "adopted_sha256": "d83f33c379df70c2e83772cfb9cc48f121ce404b4afa0d5fdf434cd9dcb9c0e2",
+      "source": "l10n/Classic/lookupNpcs/esES.lua",
+      "source_sha256": "d83f33c379df70c2e83772cfb9cc48f121ce404b4afa0d5fdf434cd9dcb9c0e2"
+    },
+    "l10n/Forever/lookupNpcs/esMX.lua": {
+      "adopted_sha256": "777374d9adaf3e1f4915014d35524578614563009c6861be0071fb2e268ff283",
+      "source": "l10n/Classic/lookupNpcs/esMX.lua",
+      "source_sha256": "777374d9adaf3e1f4915014d35524578614563009c6861be0071fb2e268ff283"
+    },
+    "l10n/Forever/lookupNpcs/frFR.lua": {
+      "adopted_sha256": "b0f11d36f5479c305fd49bce1be4b8770dc3a88d34ab868c0886251bb0bd1f41",
+      "source": "l10n/Classic/lookupNpcs/frFR.lua",
+      "source_sha256": "b0f11d36f5479c305fd49bce1be4b8770dc3a88d34ab868c0886251bb0bd1f41"
+    },
+    "l10n/Forever/lookupNpcs/koKR.lua": {
+      "adopted_sha256": "66ba5815f69d0005d3bf031e8f1a827c3d5398c9aa85d72df3d043b39919ce69",
+      "source": "l10n/Classic/lookupNpcs/koKR.lua",
+      "source_sha256": "66ba5815f69d0005d3bf031e8f1a827c3d5398c9aa85d72df3d043b39919ce69"
+    },
+    "l10n/Forever/lookupNpcs/ptBR.lua": {
+      "adopted_sha256": "07f072cb50af8a0f2010d3e40f5e55b441b276e16916c97dbb8ee78eaf3ed843",
+      "source": "l10n/Classic/lookupNpcs/ptBR.lua",
+      "source_sha256": "07f072cb50af8a0f2010d3e40f5e55b441b276e16916c97dbb8ee78eaf3ed843"
+    },
+    "l10n/Forever/lookupNpcs/ruRU.lua": {
+      "adopted_sha256": "f7bab2b149e619cfe2893792a79493b620f8d4411c518c4e0b2159e327a1e2ae",
+      "source": "l10n/Classic/lookupNpcs/ruRU.lua",
+      "source_sha256": "f7bab2b149e619cfe2893792a79493b620f8d4411c518c4e0b2159e327a1e2ae"
+    },
+    "l10n/Forever/lookupNpcs/zhCN.lua": {
+      "adopted_sha256": "361b9e7c7cbf436ede17c39cf260503e8e4bae5c6dda5da87340e7a10145c9ba",
+      "source": "l10n/Classic/lookupNpcs/zhCN.lua",
+      "source_sha256": "361b9e7c7cbf436ede17c39cf260503e8e4bae5c6dda5da87340e7a10145c9ba"
+    },
+    "l10n/Forever/lookupNpcs/zhTW.lua": {
+      "adopted_sha256": "abb13760a94c280486e3050cfd7713a5bcd44c5304907283f1eb43faafe97037",
+      "source": "l10n/Classic/lookupNpcs/zhTW.lua",
+      "source_sha256": "abb13760a94c280486e3050cfd7713a5bcd44c5304907283f1eb43faafe97037"
+    },
+    "l10n/Forever/lookupObjects/deDE.lua": {
+      "adopted_sha256": "d1103421e8f0c9d72631d675d77550d660f6005489d58db5777428502c997fbb",
+      "source": "l10n/Classic/lookupObjects/deDE.lua",
+      "source_sha256": "d1103421e8f0c9d72631d675d77550d660f6005489d58db5777428502c997fbb"
+    },
+    "l10n/Forever/lookupObjects/esES.lua": {
+      "adopted_sha256": "7cf36f71fca8804290ed0808d54412f5e8fb1ebd85b47679a904e2775a10bfab",
+      "source": "l10n/Classic/lookupObjects/esES.lua",
+      "source_sha256": "7cf36f71fca8804290ed0808d54412f5e8fb1ebd85b47679a904e2775a10bfab"
+    },
+    "l10n/Forever/lookupObjects/esMX.lua": {
+      "adopted_sha256": "e470b0941733c6570d3036bd00d2802ddf6f5892a7998c4ba900f114efb85883",
+      "source": "l10n/Classic/lookupObjects/esMX.lua",
+      "source_sha256": "e470b0941733c6570d3036bd00d2802ddf6f5892a7998c4ba900f114efb85883"
+    },
+    "l10n/Forever/lookupObjects/frFR.lua": {
+      "adopted_sha256": "939f60087044c80a9fe4d037279e80d1e8a389c13ae8140710be8fcee2e6fe2b",
+      "source": "l10n/Classic/lookupObjects/frFR.lua",
+      "source_sha256": "939f60087044c80a9fe4d037279e80d1e8a389c13ae8140710be8fcee2e6fe2b"
+    },
+    "l10n/Forever/lookupObjects/koKR.lua": {
+      "adopted_sha256": "ebcc02149e3b640a150145f48305ab1ecd994ffe3960b54a6befd57ded830894",
+      "source": "l10n/Classic/lookupObjects/koKR.lua",
+      "source_sha256": "ebcc02149e3b640a150145f48305ab1ecd994ffe3960b54a6befd57ded830894"
+    },
+    "l10n/Forever/lookupObjects/ptBR.lua": {
+      "adopted_sha256": "52ad43f50880ce4aaef9a84aae43d079de93de428d2e171414143ae6134d2613",
+      "source": "l10n/Classic/lookupObjects/ptBR.lua",
+      "source_sha256": "52ad43f50880ce4aaef9a84aae43d079de93de428d2e171414143ae6134d2613"
+    },
+    "l10n/Forever/lookupObjects/ruRU.lua": {
+      "adopted_sha256": "0954dd60c4c70b7cc83e1a4be21bcd8b7687204dd52a3ff8f568b8872a6539e6",
+      "source": "l10n/Classic/lookupObjects/ruRU.lua",
+      "source_sha256": "0954dd60c4c70b7cc83e1a4be21bcd8b7687204dd52a3ff8f568b8872a6539e6"
+    },
+    "l10n/Forever/lookupObjects/zhCN.lua": {
+      "adopted_sha256": "be396a67be580a9f8585060cbe83750d14a3ee90633fc5ce009ad98d1a4946b0",
+      "source": "l10n/Classic/lookupObjects/zhCN.lua",
+      "source_sha256": "be396a67be580a9f8585060cbe83750d14a3ee90633fc5ce009ad98d1a4946b0"
+    },
+    "l10n/Forever/lookupObjects/zhTW.lua": {
+      "adopted_sha256": "2970769953923c0f20c54f17482863af8e88177231a974514f89e7be0b2497f5",
+      "source": "l10n/Classic/lookupObjects/zhTW.lua",
+      "source_sha256": "2970769953923c0f20c54f17482863af8e88177231a974514f89e7be0b2497f5"
+    },
+    "l10n/Forever/lookupQuests/deDE.lua": {
+      "adopted_sha256": "442b9cde93e9d3d5f19e10cf05cb0ebac090deba33cea1d8ef1516497f894c30",
+      "source": "l10n/Classic/lookupQuests/deDE.lua",
+      "source_sha256": "442b9cde93e9d3d5f19e10cf05cb0ebac090deba33cea1d8ef1516497f894c30"
+    },
+    "l10n/Forever/lookupQuests/esES.lua": {
+      "adopted_sha256": "aa73cd9be0da92d0b5af501b92c896dd0c58a6881d28d8c907ee242f283e2fcd",
+      "source": "l10n/Classic/lookupQuests/esES.lua",
+      "source_sha256": "aa73cd9be0da92d0b5af501b92c896dd0c58a6881d28d8c907ee242f283e2fcd"
+    },
+    "l10n/Forever/lookupQuests/esMX.lua": {
+      "adopted_sha256": "ef92623bcc540f2db4469888288c4e5cbfa908e813183831dff050df77e60cf9",
+      "source": "l10n/Classic/lookupQuests/esMX.lua",
+      "source_sha256": "ef92623bcc540f2db4469888288c4e5cbfa908e813183831dff050df77e60cf9"
+    },
+    "l10n/Forever/lookupQuests/frFR.lua": {
+      "adopted_sha256": "6fe551071f34624032ce6489178b24b9180243aa2506d891955b510c3022a6b2",
+      "source": "l10n/Classic/lookupQuests/frFR.lua",
+      "source_sha256": "6fe551071f34624032ce6489178b24b9180243aa2506d891955b510c3022a6b2"
+    },
+    "l10n/Forever/lookupQuests/koKR.lua": {
+      "adopted_sha256": "c35252a1cfc8a4eb1f736b2d01a66cf81f98450ea1382e3ccbc31eb1253a7408",
+      "source": "l10n/Classic/lookupQuests/koKR.lua",
+      "source_sha256": "c35252a1cfc8a4eb1f736b2d01a66cf81f98450ea1382e3ccbc31eb1253a7408"
+    },
+    "l10n/Forever/lookupQuests/ptBR.lua": {
+      "adopted_sha256": "45b9ac77c38e4e394723f3fe025dcfb352d11240957ad319acf2e14207550544",
+      "source": "l10n/Classic/lookupQuests/ptBR.lua",
+      "source_sha256": "45b9ac77c38e4e394723f3fe025dcfb352d11240957ad319acf2e14207550544"
+    },
+    "l10n/Forever/lookupQuests/ruRU.lua": {
+      "adopted_sha256": "63386807c62fcb0078ae84cef1e4daa0d98064f4757e77560370800ff4279a41",
+      "source": "l10n/Classic/lookupQuests/ruRU.lua",
+      "source_sha256": "63386807c62fcb0078ae84cef1e4daa0d98064f4757e77560370800ff4279a41"
+    },
+    "l10n/Forever/lookupQuests/zhCN.lua": {
+      "adopted_sha256": "97691d81c5fd42233a2e311d301bfe01b323255a4e4df1d0a453c720a71ede48",
+      "source": "l10n/Classic/lookupQuests/zhCN.lua",
+      "source_sha256": "97691d81c5fd42233a2e311d301bfe01b323255a4e4df1d0a453c720a71ede48"
+    },
+    "l10n/Forever/lookupQuests/zhTW.lua": {
+      "adopted_sha256": "a80a8e500194b410bbdbe75f1f5ca325e8580e6db6763327684a1eae79ad4dd7",
+      "source": "l10n/Classic/lookupQuests/zhTW.lua",
+      "source_sha256": "a80a8e500194b410bbdbe75f1f5ca325e8580e6db6763327684a1eae79ad4dd7"
+    },
+    "support/Forever/DropTables/classicItemDrops.lua": {
+      "adopted_sha256": "12888b91d87943b2e448dd60c6f33a21418dffc837ec7662fbd6892d91a6657f",
+      "source": "support/DropTables/classicItemDrops.lua",
+      "source_sha256": "12888b91d87943b2e448dd60c6f33a21418dffc837ec7662fbd6892d91a6657f"
+    },
+    "support/Forever/DropTables/itemDropCorrections.lua": {
+      "adopted_sha256": "d23528afa6c89614e372d8ec96cc95768194978a034f161407529aaf12f7a6b2",
+      "source": "support/DropTables/itemDropCorrections.lua",
+      "source_sha256": "d23528afa6c89614e372d8ec96cc95768194978a034f161407529aaf12f7a6b2"
+    },
+    "support/Forever/FactionTemplates/factionTemplateClassic.lua": {
+      "adopted_sha256": "026489ae872c6e9025073ec54d2718bc1b8ef56007b7b6b564062fbdc807aa60",
+      "source": "support/FactionTemplates/factionTemplateClassic.lua",
+      "source_sha256": "7f158ffbe251e03c5c8d633cfbfc8d8df0a9c23b8d73c14ee232f168860df995"
+    },
+    "support/Forever/QuestXP/xpDB-classic.lua": {
+      "adopted_sha256": "9f5ca777904f6f62693cbe6f8b8ce91d0e0430e3ed5f7621df6e8691d4269149",
+      "source": "support/QuestXP/xpDB-classic.lua",
+      "source_sha256": "9f5ca777904f6f62693cbe6f8b8ce91d0e0430e3ed5f7621df6e8691d4269149"
+    },
+    "support/Forever/Zones/areaIdToUiMapId.lua": {
+      "adopted_sha256": "3ec8920afd422816980cb5ac12a6c7084f3298bd7689abe08e70599c260ac4b9",
+      "source": "support/Zones/areaIdToUiMapId.lua",
+      "source_sha256": "fd74115c3bab5b7662c0b22e05d0d37aedb5d08b634cbea1b102b3f52af38a2b"
+    },
+    "support/Forever/Zones/dungeons.lua": {
+      "adopted_sha256": "f36a9ef784322ed7da9916670b46bf76698f1f9a3cfede0895a49c6cbec64f60",
+      "source": "support/Zones/dungeons.lua",
+      "source_sha256": "f36a9ef784322ed7da9916670b46bf76698f1f9a3cfede0895a49c6cbec64f60"
+    },
+    "support/Forever/Zones/instanceIdToAreaId.lua": {
+      "adopted_sha256": "ae38cc4913237f16a69db5e6b4308124d9601cb85e1330d345b0ce9e599cd39c",
+      "source": "support/Zones/instanceIdToAreaId.lua",
+      "source_sha256": "b10a80e89df46683fde3d5d27cbd715d409f8e4218b1311c0081d2a180b05963"
+    },
+    "support/Forever/Zones/subZoneToParentZone.lua": {
+      "adopted_sha256": "d9e654ae88e8996c99f28f72e9f2a3e13f5e64a8a9263c61139fb5a294dc0f33",
+      "source": "support/Zones/subZoneToParentZone.lua",
+      "source_sha256": "d9e654ae88e8996c99f28f72e9f2a3e13f5e64a8a9263c61139fb5a294dc0f33"
+    },
+    "support/Forever/Zones/uiMapIdToAreaId.lua": {
+      "adopted_sha256": "d7ab9673cecc2affe77c9bb90c365e797dd8df1c77f2e4db4beb7521832bfd2e",
+      "source": "support/Zones/uiMapIdToAreaId.lua",
+      "source_sha256": "c8bc03bd5d9b1f0d93171670ed568226999e9b02a857758a4995ecdf60a61625"
+    },
+    "support/Forever/Zones/zoneIds.lua": {
+      "adopted_sha256": "55d56138c2a6aeab0d76dd43003c894aae09b899ab0e998649a94796153c9a80",
+      "source": "support/Zones/zoneIds.lua",
+      "source_sha256": "55d56138c2a6aeab0d76dd43003c894aae09b899ab0e998649a94796153c9a80"
+    }
+  },
+  "support_review": {
+    "areaIdToUiMapId": {
+      "added": {
+        "16591": 2548,
+        "16593": 2521,
+        "16606": 2524,
+        "16651": 2652
+      },
+      "changed": {
+        "616": [
+          198,
+          2482
+        ]
+      },
+      "dbc_count": 54,
+      "disposition": "Import the five changed/added explicit relationships. Preserve authored overrides; all other inherited rows are an unverified seed, not asserted Forever DBC facts.",
+      "not_in_export_count": 167,
+      "old_count": 217,
+      "same_count": 49
+    },
+    "factionTemplate": {
+      "added": {
+        "1665": 8,
+        "3531": 0,
+        "3545": 1,
+        "3547": 1,
+        "3560": 8,
+        "3561": 9,
+        "3562": 4,
+        "3565": 0,
+        "3567": 1,
+        "3568": 8,
+        "3569": 0,
+        "3570": 1,
+        "3572": 0,
+        "3573": 8,
+        "3576": 4,
+        "3577": 8,
+        "3578": 9,
+        "3579": 1,
+        "3580": 0,
+        "3581": 10,
+        "3583": 8,
+        "3584": 8,
+        "3585": 0,
+        "3587": 0,
+        "3588": 0,
+        "3591": 0,
+        "3592": 1,
+        "3594": 4,
+        "3595": 8,
+        "3596": 1,
+        "3597": 1,
+        "3598": 0,
+        "3599": 10,
+        "3600": 12,
+        "3607": 2,
+        "3608": 10,
+        "3609": 2,
+        "3611": 2,
+        "3612": 0,
+        "3614": 8,
+        "3615": 10,
+        "3616": 10,
+        "3617": 4,
+        "3618": 2,
+        "3619": 1,
+        "3620": 0,
+        "3621": 1,
+        "3622": 0,
+        "3623": 0,
+        "3624": 4,
+        "3625": 2,
+        "3626": 0,
+        "3627": 0,
+        "3628": 10,
+        "3629": 12,
+        "3630": 0,
+        "3632": 8,
+        "3633": 8,
+        "3634": 4,
+        "3635": 2,
+        "3636": 2,
+        "3637": 0,
+        "3651": 0,
+        "3653": 0,
+        "3654": 1,
+        "3655": 8,
+        "3656": 12,
+        "3657": 12,
+        "3658": 4,
+        "3659": 4,
+        "3660": 4,
+        "3662": 8,
+        "3663": 0,
+        "3664": 8,
+        "3665": 1,
+        "3666": 4,
+        "3667": 2,
+        "3668": 1,
+        "3669": 0,
+        "3670": 1,
+        "3672": 10,
+        "3673": 12,
+        "3674": 1,
+        "3676": 12,
+        "3677": 8,
+        "3681": 12,
+        "3682": 8
+      },
+      "changed": {},
+      "dbc_count": 453,
+      "disposition": "Adopt all 453 rows. Removed 3546 (EnemyGroup 0) has no raw or Correction NPC references; all 10119 raw NPCs and both NPC Correction factions checked.",
+      "not_in_export": {
+        "3546": 0
+      },
+      "not_in_export_count": 1,
+      "old_count": 367,
+      "same_count": 366
+    },
+    "instanceIdToAreaId": {
+      "added": {
+        "13": 13649,
+        "2959": 16544,
+        "35": 717,
+        "369": 2257,
+        "449": 2918,
+        "450": 2917,
+        "489": 3277,
+        "529": 3358
+      },
+      "changed": {},
+      "dbc_count": 27,
+      "disposition": "Import explicit links 369,449,450,489,529,2959. Defer test 13 and unused 35. Retain existing authored dungeon identities; absent Map.AreaTableID is not proof of removal.",
+      "not_in_export_count": 88,
+      "old_count": 107,
+      "same_count": 19
+    },
+    "subZoneToParentZone": {
+      "added": {
+        "15159": 51,
+        "15540": 15475,
+        "15810": 15809,
+        "15811": 15809,
+        "15812": 15809,
+        "15813": 15809,
+        "15814": 15809,
+        "15815": 15809,
+        "15816": 16362,
+        "15817": 16362,
+        "15818": 16362,
+        "15819": 16362,
+        "15820": 16362,
+        "15821": 16362,
+        "15822": 16362,
+        "16005": 618,
+        "16006": 16169,
+        "16007": 16169,
+        "16008": 16169,
+        "16009": 16169,
+        "16010": 16169,
+        "16011": 16169,
+        "16012": 16169,
+        "16013": 16169,
+        "16014": 16003,
+        "16015": 16169,
+        "16016": 16169,
+        "16019": 16018,
+        "16020": 16018,
+        "16021": 16018,
+        "16022": 16018,
+        "16023": 16018,
+        "16024": 16018,
+        "16025": 16018,
+        "16026": 16018,
+        "16027": 16018,
+        "16030": 16029,
+        "16031": 16029,
+        "16032": 16029,
+        "16033": 16029,
+        "16034": 16029,
+        "16035": 16029,
+        "16036": 16029,
+        "16037": 16029,
+        "16038": 16029,
+        "16039": 16029,
+        "16040": 16029,
+        "16041": 16029,
+        "16120": 16113,
+        "16121": 16113,
+        "16122": 16114,
+        "16123": 16114,
+        "16124": 16114,
+        "16125": 16114,
+        "16126": 16114,
+        "16127": 16114,
+        "16128": 16114,
+        "16129": 16117,
+        "16130": 16118,
+        "16131": 16118,
+        "16132": 16119,
+        "16133": 16119,
+        "16134": 16119,
+        "16135": 16119,
+        "16136": 16119,
+        "16137": 16119,
+        "16138": 16116,
+        "16139": 16116,
+        "16140": 16116,
+        "16141": 16115,
+        "16142": 16115,
+        "16143": 16115,
+        "16150": 16148,
+        "16151": 16148,
+        "16152": 16148,
+        "16153": 16148,
+        "16154": 16148,
+        "16155": 16148,
+        "16156": 16148,
+        "16157": 16148,
+        "16158": 16148,
+        "16159": 16148,
+        "16160": 16148,
+        "16161": 16148,
+        "16162": 16148,
+        "16163": 16148,
+        "16164": 16148,
+        "16165": 16148,
+        "16166": 16148,
+        "16167": 16148,
+        "16168": 16148,
+        "16234": 16,
+        "16335": 139,
+        "16361": 139,
+        "16369": 16236,
+        "16370": 16236,
+        "16371": 16236,
+        "16372": 16236,
+        "16373": 16236,
+        "16374": 16236,
+        "16511": 16509,
+        "16512": 16508,
+        "16513": 16508,
+        "16514": 16510,
+        "16515": 16510,
+        "16516": 16510,
+        "16517": 16510,
+        "16518": 16510,
+        "16519": 16510,
+        "16520": 16510,
+        "16521": 16510,
+        "16522": 16510,
+        "16523": 16510,
+        "16524": 16510,
+        "16537": 16510,
+        "16558": 16544,
+        "16559": 16544,
+        "16577": 16,
+        "16602": 85,
+        "16604": 16603,
+        "16605": 16603,
+        "16607": 16606,
+        "16608": 16606,
+        "16609": 16606,
+        "16610": 16606,
+        "16612": 16611,
+        "16614": 16611,
+        "16615": 16611,
+        "16616": 85,
+        "16617": 16611,
+        "16622": 16593,
+        "16623": 16593,
+        "16624": 16593,
+        "16625": 16593,
+        "16626": 16593,
+        "16628": 16593,
+        "16629": 16593,
+        "16630": 16593,
+        "16631": 16593,
+        "16635": 16593,
+        "16636": 16593,
+        "16637": 490,
+        "16638": 16593,
+        "16650": 16532,
+        "16654": 16653,
+        "16655": 16653,
+        "16656": 16653,
+        "16657": 16653,
+        "16658": 16653,
+        "16659": 16653,
+        "16660": 16653,
+        "16661": 16653,
+        "16663": 16593,
+        "16672": 16593,
+        "16673": 16593,
+        "16674": 16593,
+        "16675": 16651,
+        "16676": 16651,
+        "16677": 16651,
+        "16678": 16651,
+        "16679": 16593,
+        "16685": 16591,
+        "16720": 16593,
+        "16723": 16591,
+        "16724": 16591,
+        "16725": 16591,
+        "16726": 16591,
+        "16727": 16591,
+        "16728": 16591,
+        "16729": 16591,
+        "16731": 16591,
+        "16734": 16591,
+        "16735": 16591,
+        "16736": 16591,
+        "16737": 16591,
+        "16739": 46,
+        "16740": 47,
+        "16741": 1,
+        "16742": 16651,
+        "16743": 16591,
+        "16744": 16591,
+        "16757": 16756,
+        "16758": 16756,
+        "16759": 16756,
+        "16760": 16756,
+        "16761": 16756,
+        "16762": 16756,
+        "16763": 16756,
+        "16764": 16756,
+        "16765": 16756,
+        "16820": 16591,
+        "16833": 16593,
+        "16848": 616,
+        "16849": 616,
+        "16853": 616,
+        "16866": 616,
+        "16867": 616,
+        "16868": 616,
+        "16877": 16732,
+        "16878": 16732,
+        "16879": 16732,
+        "16880": 16732,
+        "16881": 85,
+        "16916": 493,
+        "16985": 490,
+        "16986": 490,
+        "16988": 16593,
+        "17044": 215,
+        "17045": 215,
+        "17050": 616,
+        "17052": 400,
+        "17144": 616,
+        "17145": 616,
+        "17203": 1519,
+        "17221": 16593,
+        "17223": 215,
+        "17674": 16593,
+        "17675": 16593,
+        "17676": 16593,
+        "17677": 16593,
+        "17678": 16593,
+        "17684": 16593,
+        "17707": 36,
+        "17716": 11,
+        "17732": 11,
+        "17738": 11,
+        "17780": 16591,
+        "17808": 16591,
+        "17809": 16591,
+        "17824": 279
+      },
+      "changed": {
+        "2657": [
+          405,
+          16651
+        ],
+        "3217": [
+          2557,
+          357
+        ]
+      },
+      "dbc_count": 1188,
+      "disposition": "Retain authored seed. Defer all 230 additions and both parent changes pending navigation and coordinate-frame review; no blind union of new subzones.",
+      "not_in_export_count": 1191,
+      "old_count": 2149,
+      "same_count": 956
+    },
+    "uiMapIdToAreaId": {
+      "added": {
+        "2482": 616,
+        "2521": 16593,
+        "2524": 16606,
+        "2548": 16591,
+        "2652": 16651
+      },
+      "changed": {},
+      "dbc_count": 54,
+      "disposition": "Import the five added reverse links; remove inherited Cata Hyjal 198 -> 616 because Forever explicitly uses 2482. Preserve authored overrides. No inference for 2665.",
+      "not_in_export_count": 195,
+      "old_count": 244,
+      "same_count": 49
+    }
+  },
+  "tool_source_hashes": {
+    "tools/dbc/README.md": "e44e8335a0d15e6f83855bbed1825babd1a561a7ecd73ce3bb313dee8fc01927",
+    "tools/dbc/convert.py": "76a2d6365fa2e313be36474a6a60573b72fe9eaf8f27e600d0ec8744c25f0ac1",
+    "tools/dbc/convert.test.py": "305eebbd17ea198338b4aa6734418b4a82f6599bc5fb2ca6d94dc64d8e38df78",
+    "tools/dbc/coordinates.py": "fc9bbc771062935cdc5bcc6748ca8fe1be3faa2c92b4972700ff908a9b05c079",
+    "tools/dbc/coordinates.test.py": "90498d4ca6e26f99cf58830c5d441415f6eed98409609f135d481f47e7350574",
+    "tools/dbc/download.py": "dd3f7d5bbc2494b7ea5b4f8655d6ba1d29cd419e1cf6c8865715d8ad7132f910",
+    "tools/dbc/download.test.py": "5988be3b5f54eaff14ebc0b684edaf7bb17aacad3e8e3cc7268c49b0a7f4c948",
+    "tools/dbc/files.py": "9d2dfa3f2b6e75661b1cc1899b8e6c771d4567f3bc721ca63c24354ec0c626e5",
+    "tools/dbc/fixtures/cancel.py": "b4698f542ff6727fc9729032d4dc741b9a3eb49c4924bf4dca96c2c306ebc505",
+    "tools/dbc/fixtures/validation-child.py": "ca59c6e0eda78928b4de2e1dee19052a6931a91378a38ab10cf3f09eaba5ff57",
+    "tools/dbc/fixtures/validation-npc.lua": "8c30da2433a757d507efcd53d06a1924be73993ca3a2d1559cf684e5599cf77c",
+    "tools/dbc/maps.py": "1a808060a340ea45b6d0743a65c2c59432b77bd57b099d60712a11dcc45afc8a",
+    "tools/dbc/rewrite.py": "0f4de550849003fc7920604776739f3aec954642438d25db8a5cab1af9f199b7",
+    "tools/dbc/rewrite.test.py": "1dc7dc55ea7d216c7cb837150e4ebba0ddc5d6f57fae3201f7c4f26e7215ee68",
+    "tools/dbc/source.py": "69f22eedd70f5f74b31c096c1dea6661822f133736e3409d3bf43fecaeed1f13",
+    "tools/dbc/validate.lua": "af060c81ba4ff0246de1207f2fc56733fd6e475c765605795480e555b4babe54"
+  },
+  "upstream_seed_commit": "0529e8d82075316242b0796e2128afb40d300130",
+  "local_map_refresh": {
+    "build": "1.60.1.69893",
+    "source_checkout": "/home/logon/projects/Questie-clones/Questie-db/QuestieDB-DBC",
+    "source_sha256": {
+      "support/Zones/HANDOFF.md": "f2e610d802ffeb26c92418381d32e911159fb35efbea17fe708f863ba608ba20",
+      "support/Zones/areaIdToUiMapId.lua": "2ede8bbcf50773a1950628de954ac0ae22bb80f010fdc0a662bf916b8956edff",
+      "support/Zones/uiMapIdToAreaId.lua": "9bc0dab19f7a9de64a07c902a8a5e3bac3f3352f608b913805377807f5cbedf1",
+      "reports/forever.json": "a3ac4c470588fb9779f7682d65b5c9774ce37c050cfcf1e7a33191e4dcc4929e"
+    },
+    "manual_completion": {
+      "build": "1.60.1.69893",
+      "generator_updated": false,
+      "warning": "generate.py overwrites manual additions; --check intentionally reports differences",
+      "area_resolution": "Highest ancestor with a direct primary nonzero AreaID assignment; matches VibeQuest resolution for this snapshot",
+      "direct_area_mappings": 54,
+      "parent_resolved_additions": 1010,
+      "unresolved_real_areas": [
+        21,
+        22,
+        25,
+        30,
+        49,
+        65,
+        66,
+        67,
+        81,
+        82,
+        83,
+        84,
+        151,
+        170,
+        206,
+        207,
+        208,
+        209,
+        210,
+        214,
+        268,
+        269,
+        276,
+        293,
+        296,
+        308,
+        330,
+        332,
+        377,
+        394,
+        395,
+        408,
+        409,
+        457,
+        491,
+        495,
+        676,
+        717,
+        718,
+        719,
+        721,
+        722,
+        796,
+        876,
+        956,
+        1176,
+        1196,
+        1337,
+        1397,
+        1417,
+        1477,
+        1579,
+        1580,
+        1581,
+        1582,
+        1583,
+        1584,
+        1941,
+        1977,
+        2017,
+        2037,
+        2057,
+        2100,
+        2159,
+        2257,
+        2280,
+        2366,
+        2367,
+        2368,
+        2369,
+        2370,
+        2371,
+        2372,
+        2373,
+        2374,
+        2375,
+        2376,
+        2377,
+        2378,
+        2379,
+        2437,
+        2557,
+        2677,
+        2717,
+        2817,
+        2877,
+        2917,
+        2918,
+        3237,
+        3377,
+        3378,
+        3379,
+        3380,
+        3381,
+        3382,
+        3383,
+        3384,
+        3397,
+        3398,
+        3419,
+        3428,
+        3429,
+        3448,
+        3449,
+        3450,
+        3451,
+        3452,
+        3453,
+        3456,
+        3459,
+        3478,
+        13649,
+        15475,
+        15531,
+        15532,
+        15540,
+        15793,
+        15809,
+        15810,
+        15811,
+        15812,
+        15813,
+        15814,
+        15815,
+        15816,
+        15817,
+        15818,
+        15819,
+        15820,
+        15821,
+        15822,
+        15825,
+        15828,
+        15938,
+        16003,
+        16004,
+        16006,
+        16007,
+        16008,
+        16009,
+        16010,
+        16011,
+        16012,
+        16013,
+        16014,
+        16015,
+        16016,
+        16017,
+        16018,
+        16019,
+        16020,
+        16021,
+        16022,
+        16023,
+        16024,
+        16025,
+        16026,
+        16027,
+        16028,
+        16029,
+        16030,
+        16031,
+        16032,
+        16033,
+        16034,
+        16035,
+        16036,
+        16037,
+        16038,
+        16039,
+        16040,
+        16041,
+        16074,
+        16076,
+        16113,
+        16114,
+        16115,
+        16116,
+        16117,
+        16118,
+        16119,
+        16120,
+        16121,
+        16122,
+        16123,
+        16124,
+        16125,
+        16126,
+        16127,
+        16128,
+        16129,
+        16130,
+        16131,
+        16132,
+        16133,
+        16134,
+        16135,
+        16136,
+        16137,
+        16138,
+        16139,
+        16140,
+        16141,
+        16142,
+        16143,
+        16144,
+        16147,
+        16148,
+        16149,
+        16150,
+        16151,
+        16152,
+        16153,
+        16154,
+        16155,
+        16156,
+        16157,
+        16158,
+        16159,
+        16160,
+        16161,
+        16162,
+        16163,
+        16164,
+        16165,
+        16166,
+        16167,
+        16168,
+        16169,
+        16236,
+        16295,
+        16362,
+        16369,
+        16370,
+        16371,
+        16372,
+        16373,
+        16374,
+        16394,
+        16508,
+        16509,
+        16510,
+        16511,
+        16512,
+        16513,
+        16514,
+        16515,
+        16516,
+        16517,
+        16518,
+        16519,
+        16520,
+        16521,
+        16522,
+        16523,
+        16524,
+        16532,
+        16537,
+        16544,
+        16558,
+        16559,
+        16560,
+        16562,
+        16603,
+        16604,
+        16605,
+        16611,
+        16612,
+        16614,
+        16615,
+        16617,
+        16632,
+        16650,
+        16653,
+        16654,
+        16655,
+        16656,
+        16657,
+        16658,
+        16659,
+        16660,
+        16661,
+        16662,
+        16732,
+        16756,
+        16757,
+        16758,
+        16759,
+        16760,
+        16761,
+        16762,
+        16763,
+        16764,
+        16765,
+        16772,
+        16870,
+        16876,
+        16877,
+        16878,
+        16879,
+        16880,
+        16919,
+        16941,
+        17065,
+        17066,
+        17191,
+        17803,
+        17804
+      ],
+      "forward_overrides": {
+        "0": 0,
+        "2257": 0,
+        "2917": 0,
+        "2918": 0,
+        "10073": 1414,
+        "10074": 1415,
+        "10089": 947
+      },
+      "reverse_overrides": {
+        "1414": 10073,
+        "1415": 10074,
+        "947": 10089
+      },
+      "override_source": "QuestieDB/support/Zones/{areaIdToUiMapId,uiMapIdToAreaId}.lua",
+      "remaining_unresolved_ui_maps": [
+        1463,
+        1464,
+        2665
+      ],
+      "diagnostics_note": "Existing diagnostics describe DBC facts; 947/1414/1415 now have explicit synthetic-area overrides."
+    },
+    "source_report_metadata": {
+      "build": "1.60.1.69893",
+      "purpose": "Forever support handoff with manually completed area lookups; not a complete runtime bundle",
+      "inputs": {
+        "faction_template": {
+          "rows": 453,
+          "columns": [
+            "ID",
+            "EnemyGroup"
+          ],
+          "projection_sha256": "24c1289e1c4e0de00eafd0f7136ce7ab14bd9efa8d39f8d7243e53882cdd0989"
+        },
+        "area_table": {
+          "rows": 1372,
+          "columns": [
+            "ID",
+            "AreaName_lang",
+            "ContinentID",
+            "ParentAreaID",
+            "Flags_0"
+          ],
+          "projection_sha256": "b6f3cd7aed062716f414e7cd497615faabbe45880bcf7992c78427d9e04f2e3d"
+        },
+        "ui_map": {
+          "rows": 60,
+          "columns": [
+            "ID",
+            "Name_lang"
+          ],
+          "projection_sha256": "e265fc2189a7e46df0f0a2e9ecef23da35be96a66b556536164a834665753747"
+        },
+        "ui_map_assignment": {
+          "rows": 61,
+          "columns": [
+            "ID",
+            "UiMapID",
+            "AreaID",
+            "MapID",
+            "OrderIndex"
+          ],
+          "projection_sha256": "c06c0c3f2e7fa1db0d019c8b6408601b8d2c018b0e801b461303bd40408e397e"
+        },
+        "map": {
+          "rows": 73,
+          "columns": [
+            "ID",
+            "MapName_lang",
+            "AreaTableID"
+          ],
+          "projection_sha256": "e83244a2ae7c59ceca6e90f9767d4a1bda44b716e2795602fc3d8af1a8f89a13"
+        },
+        "chr_races": {
+          "rows": 58,
+          "columns": [
+            "ID",
+            "Name_lang",
+            "PlayableRaceBit",
+            "FactionID",
+            "Alliance"
+          ],
+          "projection_sha256": "9d12029b13cbda771fd1dc44b16c1cae0490e130f224fba19b1f7d31bb9d3b3b"
+        },
+        "skill_line": {
+          "rows": 154,
+          "columns": [
+            "ID",
+            "DisplayName_lang",
+            "CategoryID",
+            "ParentSkillLineID",
+            "Flags"
+          ],
+          "projection_sha256": "5001a33a719a45914b6081121b96b8342a8870b7328aee72fc4d7a342ecdad05"
+        },
+        "quest_sort": {
+          "rows": 39,
+          "columns": [
+            "ID",
+            "SortName_lang",
+            "UiOrderIndex"
+          ],
+          "projection_sha256": "3e57bc0758641a012545742b42949b16f28ad08a11b964a4c1042dd06e42cc2b"
+        }
+      },
+      "diagnostic_counts": {
+        "assignment_without_area": 6,
+        "map_without_explicit_area": 46,
+        "nonprimary_assignment": 1,
+        "parent_without_subzone_flag": 1
+      },
+      "not_generated": {
+        "zoneIds.lua": "Authored symbols/aliases cannot be regenerated from duplicate area names.",
+        "map_overrides_and_dungeons": "Continent/world aliases and three existing suppression entries retained; dungeon/floor/SoD navigation overrides and entrances still need review.",
+        "QuestXP": "QuestXP rows alone lack per-quest level/reward-index inputs.",
+        "DropTables_and_entities": "Quest relationships, spawns and drops require non-DBC sources.",
+        "Item": "No item projection in this pass; investigate the failed Item snapshot separately.",
+        "Faction_ChrClasses_and_other_missing_tables": "Not in this pass; see ../dbc/FOREVER-DATA-TODO.md.",
+        "localization": "This pass emits English reference names only.",
+        "race_faction_aggregates": "Client playability and restriction semantics need verification."
+      }
+    },
+    "dbc_counts": {
+      "forward": 1064,
+      "reverse": 54,
+      "forward_policy_overrides": 7,
+      "reverse_policy_overrides": 3
+    },
+    "compatibility_policy": "Keep only field-referenced dungeon areas and synthetic aliases absent from completed DBC mappings. Retired UiMaps serve legacy pre-entrance lookup, not native floor placement. Keep exact reverse links for these forward targets; current DBC facts win. Retire after consumer resolves instances before UiMap indexing. No coordinate conversion or exporter generation.",
+    "compatibility_area_to_map": {
+      "209": 310,
+      "491": 301,
+      "717": 225,
+      "718": 279,
+      "719": 221,
+      "721": 226,
+      "722": 300,
+      "796": 302,
+      "1176": 219,
+      "1337": 230,
+      "1477": 220,
+      "1581": 291,
+      "1583": 253,
+      "1584": 242,
+      "1585": 243,
+      "1977": 233,
+      "2017": 317,
+      "2057": 306,
+      "2100": 280,
+      "2159": 248,
+      "2437": 213,
+      "2557": 234,
+      "2677": 287,
+      "2717": 232,
+      "3428": 320,
+      "3429": 247,
+      "3456": 166,
+      "10000": 281,
+      "10007": 255,
+      "10011": 307,
+      "10012": 308,
+      "10020": 222,
+      "10022": 235,
+      "10023": 236,
+      "10024": 237,
+      "10025": 238,
+      "10026": 239,
+      "10027": 240,
+      "10030": 227,
+      "10032": 229
+    },
+    "compatibility_counts": {
+      "ordinary_dungeon_areas": 27,
+      "synthetic_aliases": 13
+    },
+    "usage_evidence": "Raw entity locations, all six Correction providers across 180 method/persona invocations, and Source materialization with composed corrections across both factions and nine classes; see docs/forever-map-override-audit.md. All 40 retained areas have actual spawn references and authored outdoor entrance routing.",
+    "parent_changes": {
+      "2657": {
+        "previous": 405,
+        "current": 16651
+      },
+      "3217": {
+        "previous": 2557,
+        "current": 357
+      }
+    },
+    "current_output_sha256": {
+      "support/Forever/Zones/areaIdToUiMapId.lua": "cf9ae6f896e3e2fb1e43352b11596641312d9e61365ca7f281e5af1092185d07",
+      "support/Forever/Zones/uiMapIdToAreaId.lua": "4964def0918a8cddef6c5f8292526a076b2afe73ea58f178f68a78e35bec39e3",
+      "support/Forever/Zones/subZoneToParentZone.lua": "c3f55a1b64f7bb35fcd6dd1f5157d0ea98b288b77262dec20c1bbac6eb809af0"
+    }
+  }
+}

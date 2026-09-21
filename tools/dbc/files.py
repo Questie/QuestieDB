@@ -36,19 +36,21 @@ def destination(root: Path, relative: str) -> Path:
     return path
 
 
-def install_outputs(root: Path, outputs: dict[str, bytes]) -> list[str]:
+def install_outputs(root: Path, outputs: dict[str, bytes], *,
+                    manifest_name: str = MANIFEST, tool: str = TOOL) -> list[str]:
     """Replace only unchanged prior generated files, rolling back installation errors.
 
+    The caller supplies a separate manifest and tool identity for support candidates.
     The manifest is installed last. A failed rollback retains the transaction
     directory with backups and reports its path rather than deleting recovery data.
     """
     root = root.absolute()
     paths = {name: destination(root, name) for name in outputs}
-    manifest_path = destination(root, MANIFEST)
+    manifest_path = destination(root, manifest_name)
     previous = {}
     if manifest_path.exists():
         previous = json.loads(manifest_path.read_bytes())
-        if previous.get("tool") != TOOL or previous.get("format") != 1:
+        if previous.get("tool") != tool or previous.get("format") != 1:
             raise ValueError("Unrecognized conversion manifest; refusing to overwrite it")
     changed = []
     originals = {}
@@ -57,7 +59,7 @@ def install_outputs(root: Path, outputs: dict[str, bytes]) -> list[str]:
         old = path.read_bytes() if path.exists() else None
         if old == payload:
             continue
-        if old is not None and name != MANIFEST:
+        if old is not None and name != manifest_name:
             known_hash = previous.get("files", {}).get(name, {}).get("output_sha256")
             if digest(old) != known_hash:
                 raise ValueError("Refusing to overwrite hand-edited or unowned output: " + name
@@ -80,7 +82,7 @@ def install_outputs(root: Path, outputs: dict[str, bytes]) -> list[str]:
             str(index): {"destination": name, "previously_existed": originals[name] is not None}
             for index, name in enumerate(changed)
         }, indent=2) + "\n", encoding="utf-8")
-        order = [name for name in changed if name != MANIFEST] + ([MANIFEST] if MANIFEST in changed else [])
+        order = [name for name in changed if name != manifest_name] + ([manifest_name] if manifest_name in changed else [])
         indices = {name: index for index, name in enumerate(changed)}
         for name in order:
             path = destination(root, name)

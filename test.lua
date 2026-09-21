@@ -44,7 +44,7 @@ local selectedFlavor
 local artifactFlavors = config.flavors
 
 ---@param name string
----@param scope string shared, artifact, or an owning flavor.
+---@param scope string|table<string, boolean> shared, artifact, an owning flavor, or explicit flavor set.
 ---@param fn function
 ---@return nil
 local function suite(name, scope, fn)
@@ -343,10 +343,19 @@ suite("workflow-contracts", "shared", function()
   local publish = assert(release:match("\n  publish:\n(.*)"), "release has a publication job")
   check(publish:find("needs: quality", 1, true) ~= nil,
     "release publication depends on the artifact quality job")
-  check(release:find("needs: [preflight, shared, database]", 1, true) ~= nil,
-    "release quality waits for preflight, shared tests, and every flavor")
+  check(release:find("needs: [preflight, shared, database, legacy]", 1, true) ~= nil,
+    "release quality waits for preflight, shared tests, every flavor, and legacy corrections")
   check(release:find("cancel-in-progress: false", 1, true) ~= nil,
     "publication cannot be cancelled midway through replacement")
+
+  local ci = lib.readAll(".github/workflows/ci.yml")
+  local gates = assert(ci:match("\n  gates:\n(.*)"), "CI has an aggregate gate")
+  check(gates:find("if: always()", 1, true) ~= nil,
+    "All gates still runs when a prerequisite fails or is cancelled")
+  check(gates:find("needs: [test, database, legacy]", 1, true) ~= nil,
+    "All gates waits for legacy corrections as well as tests and artifacts")
+  check(gates:find('[ "${{ needs.legacy.result }}" = "success" ] ||', 1, true) ~= nil,
+    "All gates rejects failed, skipped, or cancelled legacy checks")
 end)
 
 --------------------------------------------------------------------------------------------
@@ -957,9 +966,11 @@ suite("corrections", "shared", function()
     elseif entry.file == "Wotlk/wotlkNPCFixes.lua" then
       wotlkNpcSpec = entry
     end
-    if entry.static and not entry.generated then
+    -- Inherited providers need a source expansion for missing-entity protection. Providers
+    -- owned by one exact flavor never participate in cumulative expansion inheritance.
+    if entry.static and not entry.generated and not entry.owned then
       check(type(entry.sourceExpansionOrder or entry.minExpansionOrder) == "number",
-        "a flavor-owned Static Correction records or implies its source expansion: " .. entry.file)
+        "an inherited Static Correction records or implies its source expansion: " .. entry.file)
     end
   end
   check(wotlkNpcSpec ~= nil, "WotLK NPC Correction manifest entry exists")
@@ -1794,6 +1805,16 @@ suite("set-corrections", "Vanilla", function()
 end)
 
 --------------------------------------------------------------------------------------------
+-- Independently owned Forever dataset
+--------------------------------------------------------------------------------------------
+
+suite("forever-data", "shared", function()
+  -- Dataset checks install generator globals; isolate them from the runtime suites.
+  check(commandSucceeded(shellQuote(LUA_BIN) .. " tools/dbc/forever-data.test.lua"),
+    "Forever reviewed DBC data and faction-reference self-proof pass")
+end)
+
+--------------------------------------------------------------------------------------------
 -- Frozen values
 --------------------------------------------------------------------------------------------
 
@@ -2408,6 +2429,12 @@ end)
 -- TOC file lists
 --------------------------------------------------------------------------------------------
 
+suite("native-toc", "shared", function()
+  client.reset()
+  dofile("emulator/metadata.test.lua")
+  dofile("emulator/native-source.test.lua")
+end)
+
 suite("toc", "shared", function()
   -- The correction manifest drives which correction files a TOC lists, and `config` cannot
   -- load it itself — in a client it arrives as an addon file, so the generator assigns it
@@ -2434,7 +2461,9 @@ suite("toc", "shared", function()
   -- hold references to the first copy. Blocks declare their own prerequisites — the support
   -- block and the correction block both need `enum/constants.lua` — so the composer has to
   -- deduplicate, and this is what proves it does.
-  local lists = { { name = "base (source mode)", files = config.sourceFileList() } }
+  local sourcePaths = {}
+  for _, entry in ipairs(config.sourceFileEntries()) do sourcePaths[#sourcePaths + 1] = entry.path end
+  local lists = { { name = "base (source mode)", files = sourcePaths } }
   for _, flavor in ipairs(config.flavors) do
     lists[#lists + 1] = { name = flavor.name, files = config.bakedFileList(flavor) }
   end
@@ -2555,7 +2584,7 @@ suite("toc", "shared", function()
     for _, file in ipairs(files) do set[file] = true end
     return set
   end
-  local sourceSet = fileSet(config.sourceFileList())
+  local sourceSet = fileSet(sourcePaths)
   local wrathSet = fileSet(config.bakedFileList(config.flavorByName.Wrath))
   for _, file in ipairs(titanFiles) do
     check(sourceSet[file] == true, "Source mode lists Titan provider " .. file)
@@ -2572,11 +2601,11 @@ suite("toc", "shared", function()
 
   -- Source mode only: the reader installs the loader shim, so it has to precede the data it
   -- captures, and the data block has to close before anything else touches QuestieLoader.
-  local baseAt = positions(config.sourceFileList())
-  check(baseAt["src/read/source.lua"] < baseAt["data/Classic/_flavor.lua"],
+  local baseAt = positions(sourcePaths)
+  check(baseAt["src/read/source.lua"] < baseAt["data/Classic/classicQuestDB.lua"],
     "the source reader installs its shim before the data block opens")
-  check(baseAt["data/MoP/_flavor.lua"] < baseAt["data/_end.lua"],
-    "every expansion marker falls inside the data block")
+  check(baseAt["data/MoP/mopObjectDB.lua"] < baseAt["data/_end.lua"],
+    "every selected payload falls inside the data block")
   check(baseAt["data/_end.lua"] < baseAt["src/support/_begin.lua"],
     "the data block closes before the support block opens")
 end)
@@ -3078,7 +3107,7 @@ suite("objective-first-source", "shared", function()
   dofile("tools/validation/objective-first-addon.test.lua")(check, equal, "Source")
 end)
 
-suite("objective-first-addon", "artifact", function()
+suite("objective-first-addon", { Vanilla = true, TBC = true, Wrath = true, Cata = true, Mists = true }, function()
   dofile("tools/validation/objective-first-addon.test.lua")(check, equal, selectedFlavor)
 end)
 
@@ -3088,13 +3117,13 @@ end)
 
 suite("support", "shared", function()
   -- Loading the largest flavor before the smallest exposes leaked modules and map variants.
-  local sourceFiles = config.sourceFileList()
+  local sourceFiles = config.sourceFileList(config.flavorByName.Mists)
   local positions = {}
   for index, file in ipairs(sourceFiles) do positions[file] = index end
   check(positions["support/DropTables/mopItemDrops.lua"] < positions["support/DropTables/cataItemDrops.lua"],
     "Source preserves the cumulative MoP-then-Cata drop load order")
   -- Reuse both the environment and Support singleton across complete load blocks. A fresh
-  -- library per flavor would hide stale state in Install/Remove and the scope markers.
+  -- library per flavor would hide stale state in Install/Remove.
   local previousLoader = {}
   local env = setmetatable({ QuestieLoader = previousLoader }, { __index = _G })
   env._G = env
@@ -3109,7 +3138,7 @@ suite("support", "shared", function()
   local function loadSupportBlock(flavor, faction)
     namespace.flavor = flavor
     env.UnitFactionGroup = function() return faction end
-    for _, file in ipairs(config.supportFiles(nil)) do
+    for _, file in ipairs(config.supportFiles(flavor)) do
       if file ~= "src/corrections/enum/constants.lua" and file ~= "src/support/data.lua" then
         setfenv(assert(loadfile(file)), env)("QuestieDB", namespace)
       end
@@ -3129,20 +3158,9 @@ suite("support", "shared", function()
   check(type(vanilla.ZoneDB.private.areaIdToUiMapId) == "string",
     "support publication preserves authored Lua source strings")
 
-  -- Weak references prove discarded payloads are released at scope changes and removal.
   env.QuestieLoader = nil
   support.Install(config.flavorByName.Vanilla)
-  support.SelectScope(false)
-  local rejected = setmetatable({ env.QuestieLoader:ImportModule("RejectedAtScope") }, { __mode = "v" })
-  check(support.Get("RejectedAtScope") == nil, "rejected scope modules are never published")
-  support.SelectScope(true)
-  collectgarbage("collect")
-  equal(rejected[1], nil, "switching scope releases rejected modules")
-  support.SelectScope(false)
-  rejected[1] = env.QuestieLoader:ImportModule("RejectedAtRemove")
   support.Remove()
-  collectgarbage("collect")
-  equal(rejected[1], nil, "removing the shim releases rejected modules")
   equal(rawget(env, "QuestieLoader"), nil, "removal restores an originally absent QuestieLoader")
 
   -- Known missing blocks: five Era items and four TBC items, with all 37 NPC pairs.
@@ -3721,14 +3739,13 @@ if scope then
   requested = {}
   for _, name in ipairs(order) do
     requested[name] = scope == "--shared" and scopes[name] == "shared" or
-      selectedFlavor ~= nil and (scopes[name] == "artifact" or scopes[name] == selectedFlavor.name)
+      selectedFlavor ~= nil and (scopes[name] == "artifact" or scopes[name] == selectedFlavor.name or
+        (type(scopes[name]) == "table" and scopes[name][selectedFlavor.name] == true))
   end
   artifactFlavors = selectedFlavor and { selectedFlavor } or {}
 elseif requested then
   -- Existing suite names still include the assertions split out for pipeline ownership.
   local companions = {
-    ["objective-first"] = "objective-first-emitted",
-    ["support-fidelity"] = "support-fidelity-emitted",
     chunking = "artifact-lines", ["wire-safety"] = "artifact-wire",
     ["lua-types"] = "artifact-types", personas = "personas-titan",
     ["sod-required-races"] = "sod-required-races-baked",

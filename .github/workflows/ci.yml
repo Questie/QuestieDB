@@ -15,6 +15,12 @@ env:
   SOURCE_DATE_EPOCH: 1700000000
 
 jobs:
+  legacy:
+    name: Legacy corrections
+    permissions:
+      contents: read
+    uses: ./.github/workflows/legacy-corrections.yml
+
   test:
     name: Shared checks
     runs-on: ubuntu-latest
@@ -36,10 +42,16 @@ jobs:
         run: |
           python3 tools/cli/questiedb.test.py
           python3 tools/validation/test-scopes.test.py
+          python3 tools/dbc/coordinates.test.py
+          python3 tools/dbc/download.test.py
+          python3 tools/dbc/rewrite.test.py
+          python3 tools/dbc/convert.test.py
+          python3 tools/dbc/support.test.py
           python3 tools/distribution/package.test.py
           python3 tools/distribution/bootstrap.test.py
           python3 tools/distribution/release_artifacts.test.py
           python3 tools/distribution/release.test.py
+          python3 tools/distribution/forever.test.py
 
       - name: Fail on Source TOC drift
         working-directory: QuestieDB
@@ -59,7 +71,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        flavor: [Vanilla, TBC, Wrath, Cata, Mists]
+        flavor: [Vanilla, TBC, Wrath, Cata, Mists, Forever]
     steps:
       - uses: actions/checkout@v7
         with: { path: QuestieDB }
@@ -75,21 +87,11 @@ jobs:
         working-directory: QuestieDB
         # Run this before any reader. Every later gate therefore approves the exact
         # second-generation bytes whose hash matched the first Generation.
-        run: |
-          sha256sum QuestieDB_${{ matrix.flavor }}.toc > first.sha
-          lua5.1 generate.lua ${{ matrix.flavor }} --quiet
-          sha256sum -c first.sha
+        run: ./questiedb.sh determinism ${{ matrix.flavor }}
 
       - name: Flavor unit tests
         working-directory: QuestieDB
         run: lua5.1 test.lua --flavor=${{ matrix.flavor }}
-
-      - name: Reconstruct artifact
-        working-directory: QuestieDB
-        # Preserve the smallest/largest byte-exact coverage without generating them again
-        # in the shared job. Release reconstructs all five flavors.
-        if: matrix.flavor == 'Vanilla' || matrix.flavor == 'Mists'
-        run: lua5.1 reconstruct.lua ${{ matrix.flavor }}
 
       - name: Round-trip verification
         working-directory: QuestieDB
@@ -107,6 +109,10 @@ jobs:
         working-directory: QuestieDB
         # The load-bearing test in the system. Two permanent read modes mean it never retires.
         run: lua5.1 equivalence.lua ${{ matrix.flavor }}
+
+      - name: Reconstruction
+        working-directory: QuestieDB
+        run: lua5.1 reconstruct.lua ${{ matrix.flavor }}
 
       - name: Data validators
         working-directory: QuestieDB
@@ -137,7 +143,7 @@ jobs:
     # Terminal aggregate: branch protection requires exactly this one status. `always()` keeps
     # it running when a dependency fails or is cancelled; the explicit checks then fail it, so
     # a skipped or cancelled gate can never read as green.
-    needs: [test, database]
+    needs: [test, database, legacy]
     if: always()
     steps:
       - name: Fail unless every gate succeeded
@@ -145,4 +151,5 @@ jobs:
           ok=1
           [ "${{ needs.test.result }}" = "success" ] || { echo "::error::Shared checks: ${{ needs.test.result }}"; ok=0; }
           [ "${{ needs.database.result }}" = "success" ] || { echo "::error::Database matrix: ${{ needs.database.result }}"; ok=0; }
+          [ "${{ needs.legacy.result }}" = "success" ] || { echo "::error::Legacy corrections: ${{ needs.legacy.result }}"; ok=0; }
           [ "$ok" = "1" ]

@@ -315,7 +315,7 @@ local function validateFlavor(flavor)
   local started = os.clock()
   local loaded = flavorLoader.load(flavor, nil, not opts.raw)
   local constants = dofile("src/corrections/enum/constants.lua")
-  local expansionConstants = constants.byExpansion and constants.byExpansion[flavor.expansion]
+  local expansionConstants = constants.byExpansion and constants.byExpansion[flavor.rules or flavor.expansion]
   if not expansionConstants or not expansionConstants.raceKeys then
     error("validators: missing generated race constants for expansion " ..
       tostring(flavor.expansion), 0)

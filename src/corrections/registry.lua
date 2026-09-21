@@ -57,6 +57,7 @@ registry.loadOrder = {
   TitanStatic = 800,  TitanDynamic = 900,
   CataStatic = 1000,  CataDynamic = 1100,
   MoPStatic = 1200,   MoPDynamic = 1300,
+  ForeverStatic = 1400, ForeverDynamic = 1500,
 }
 
 registry.OWNER = "QuestieDB"
@@ -313,7 +314,7 @@ end
 local function staticMergeOptions(entry, flavor)
   if not flavor or not entry.sourceExpansionOrder then return entry.options end
 
-  local targetOrder = registry.expansionOrder[flavor.expansion]
+  local targetOrder = registry.expansionOrder[flavor.rules or flavor.expansion]
   if not targetOrder or targetOrder <= entry.sourceExpansionOrder then return entry.options end
 
   local options = {}
@@ -353,7 +354,7 @@ function registry.EntryApplies(entry, flavor)
   if not flavor then return true end
   if entry.expansions and not entry.expansions[flavor.expansion] then return false end
   if entry.minExpansionOrder then
-    local order = registry.expansionOrder[flavor.expansion]
+    local order = registry.expansionOrder[flavor.rules or flavor.expansion]
     if not order or order < entry.minExpansionOrder then return false end
   end
   return true

@@ -75,6 +75,23 @@ The runtime state where entity reads resolve from a generated TOC metadata store
 Static Corrections already folded in.
 _Avoid_: Release mode, compiled mode, production
 
+### Spatial interpretation
+
+**Area route**:
+A selected UI map for an area, justified by a direct assignment or a mapped ancestor.
+It does not establish the coordinate frame of an authored point.
+_Avoid_: Coordinate conversion, inferred position
+
+**Instance presence**:
+An entity's presence in an instance without a known point inside it. A legacy `{-1,-1}`
+spawn denotes presence, not a drawable coordinate.
+_Avoid_: Dungeon coordinate, unknown point at center
+
+**Native map inventory**:
+The UI maps present in an explicit client-build snapshot. Compatibility lookup keys do
+not establish native map availability or supported projection geometry.
+_Avoid_: Active-map allowlist, supported content inventory
+
 ### Corrections
 
 **Correction**:

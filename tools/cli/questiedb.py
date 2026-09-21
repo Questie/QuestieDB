@@ -8,13 +8,14 @@ Tasks:
   generate       Generate Baked TOCs
   check          Verify, equivalence, reconstruct, validators
   all            Generate, check, and unit tests (not packaging)
-  package        Package existing TOCs: package [all|Vanilla TBC Wrath Cata Mists]
+  package        Package existing TOCs: package [all|Vanilla TBC Wrath Cata Mists Forever]
   bootstrap      Download an install: bootstrap <AddOns-path> [tag] [--repo=OWNER/REPO]
   dbc-coordinates  Inspect Era/Forever map transforms (--help for build/point options)
   convert-forever  Convert Era data/corrections into separate Forever files (--help)
+  dbc-support     Generate candidate-only Forever map support from local DBC (--help)
   verify equivalence reconstruct validators test determinism freeze
 
-Flavors: Vanilla TBC Wrath Cata Mists; omitted means all applicable flavors.
+Flavors: Vanilla TBC Wrath Cata Mists Forever; omitted means all applicable flavors.
 Freeze supports Vanilla and Mists only.
 Test runs shared suites once and artifact suites for each selected flavor; generate those TOCs first.
 
@@ -41,10 +42,10 @@ import time
 from typing import Any, BinaryIO, Optional
 
 ROOT = Path(__file__).resolve().parents[2]
-FLAVORS = ("Vanilla", "TBC", "Wrath", "Cata", "Mists")
+FLAVORS = ("Vanilla", "TBC", "Wrath", "Cata", "Mists", "Forever")
 CHECKS = ("verify", "equivalence", "reconstruct", "validators")
 GATES = ("generate", *CHECKS, "test", "determinism", "freeze")
-WEIGHTS = dict(zip(FLAVORS, (450, 700, 1000, 1400, 1750)))
+WEIGHTS = dict(zip(FLAVORS, (450, 700, 1000, 1400, 1750, 450)))
 MAX_BUDGET_MB = 2147483647
 
 
@@ -220,7 +221,7 @@ class Job:
     command: list[str]
     weight: int
     priority: int = 0
-    artifact: Optional[Path] = None
+    artifacts: tuple[Path, ...] = ()
 
 
 @dataclass
@@ -229,7 +230,7 @@ class Running:
     process: subprocess.Popen
     log: BinaryIO
     started: float
-    before: Optional[str]
+    before: tuple[str, ...]
 
 
 def run_jobs(jobs: list[Job], phase: str, root: Path, env: dict[str, str],
@@ -254,7 +255,9 @@ def run_jobs(jobs: list[Job], phase: str, root: Path, env: dict[str, str],
                 if index is None:
                     break
                 job = pending.pop(index)
-                before = file_hash(root / job.artifact) if job.artifact else None
+                before = tuple(file_hash(root / path) for path in job.artifacts)
+                if len(before) == 2 and before[0] != before[1]:
+                    raise ValueError("Forever/Camelot TOCs differ before regeneration")
                 log = (logdir / (job.label.replace(":", "_") + ".log")).open("wb")
                 print("  start %-22s (%4d MB, %d in flight)" %
                       (job.label, job.weight, len(running) + 1), flush=True)
@@ -272,9 +275,10 @@ def run_jobs(jobs: list[Job], phase: str, root: Path, env: dict[str, str],
                 continue
             for active in finished:
                 code = active.process.wait()
-                if code == 0 and active.job.artifact:
+                if code == 0 and active.job.artifacts:
                     try:
-                        if file_hash(root / active.job.artifact) != active.before:
+                        after = tuple(file_hash(root / path) for path in active.job.artifacts)
+                        if after != active.before:
                             raise ValueError("regenerated TOC checksum differs")
                         active.log.write(b"Determinism: identical bytes\n")
                     except (OSError, ValueError) as error:
@@ -337,7 +341,9 @@ def execute(options: Options, root: Path) -> int:
 
     if "determinism" in options.tasks:
         jobs = [Job("determinism:" + flavor, [lua, "generate.lua", flavor, "--no-base-toc", "--quiet"],
-                    WEIGHTS[flavor], artifact=Path("QuestieDB_%s.toc" % flavor)) for flavor in options.flavors]
+                    WEIGHTS[flavor], artifacts=(Path("QuestieDB_Forever.toc"), Path("QuestieDB_Camelot.toc"))
+                    if flavor == "Forever" else (Path("QuestieDB_%s.toc" % flavor),))
+                for flavor in options.flavors]
         if not run_jobs(jobs, "determinism", root, env, budget, options.sequential):
             return 1
 
@@ -353,7 +359,9 @@ def execute(options: Options, root: Path) -> int:
                 jobs.append(Job("test:" + flavor, [lua, "test.lua", "--flavor=" + flavor], WEIGHTS[flavor]))
             jobs.append(Job("test:cli", [sys.executable, "tools/cli/questiedb.test.py"], 100))
             jobs.append(Job("test:scopes", [sys.executable, "tools/validation/test-scopes.test.py"], 100))
-            for tool in ("coordinates", "download", "rewrite", "convert"):
+            jobs.append(Job("test:distribution:forever",
+                            [sys.executable, "tools/distribution/forever.test.py"], 450))
+            for tool in ("coordinates", "download", "rewrite", "convert", "support"):
                 jobs.append(Job("test:dbc:" + tool, [sys.executable, "tools/dbc/" + tool + ".test.py"], 100))
             continue
         for flavor in options.flavors:
@@ -382,6 +390,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     standalone = {
         "package": "tools/distribution/package.py", "bootstrap": "tools/distribution/bootstrap.py",
         "dbc-coordinates": "tools/dbc/maps.py", "convert-forever": "tools/dbc/convert.py",
+        "dbc-support": "tools/dbc/support.py",
     }
     if args and args[0] in standalone:
         task = args.pop(0)

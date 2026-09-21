@@ -29,7 +29,7 @@ compat.objectiveFirst = {
   spellObjectiveFirst = {},
 }
 
--- Inapplicable files still define providers, but their hint writes must not enter the
+-- Inactive seasonal files still define providers, but their hint writes must not enter the
 -- published tables. Keep both collections stable for modules that capture local references.
 local discardedObjectiveFirst = {}
 for field in pairs(compat.objectiveFirst) do discardedObjectiveFirst[field] = {} end
@@ -171,11 +171,12 @@ function compat.Install(flavor)
     error("correction compat: Install requires an explicit flavor table", 2)
   end
 
-  local expansionName = flavor.expansion
+  local expansionName = flavor.rules or flavor.expansion
   local configuredFlavor = LibQuestieDB.config.flavorByName[flavor.name]
   local expansionOrder = LibQuestieDB.Corrections.expansionOrder
   local order = expansionOrder[expansionName]
-  if not configuredFlavor or configuredFlavor.expansion ~= expansionName or not order then
+  if not configuredFlavor or configuredFlavor.expansion ~= flavor.expansion or
+     (configuredFlavor.rules or configuredFlavor.expansion) ~= expansionName or not order then
     error(("correction compat: unsupported flavor `%s` / expansion `%s`")
       :format(tostring(flavor.name), tostring(expansionName)), 2)
   end

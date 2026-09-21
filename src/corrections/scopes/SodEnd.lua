@@ -1,0 +1,3 @@
+-- Close the seasonal hint gate before the following providers load.
+local _, LibQuestieDB = ...
+LibQuestieDB.CorrectionCompat.SelectObjectiveFirstScope(true)

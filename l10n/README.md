@@ -6,7 +6,7 @@ not these raw files. Source mode still omits Base translations.
 
 ## Layout
 
-Each of `Classic`, `TBC`, `Wotlk`, `Cata`, and `MoP` contains:
+Each of `Classic`, `TBC`, `Wotlk`, `Cata`, `MoP`, and `Forever` contains:
 
 - `lookupQuests/`: quest names and objective text.
 - `lookupNpcs/`: NPC names and subnames.
@@ -17,8 +17,8 @@ Each entity directory has nine locale files: `deDE`, `esES`, `esMX`, `frFR`, `ko
 `ruRU`, `zhCN`, and `zhTW`. English comes from the base entity data.
 
 `lookupOverrides.lua` supplies Static Translation Corrections for Quest and Item lookups on
-TBC, Wrath, Cata, and Mists. It does not apply on Vanilla. Its rows replace whole lookup rows:
-a name-only quest override clears any old translated objectives. The input adapter in
+TBC, Wrath, Cata, and Mists. It does not apply on Vanilla or Forever. Its rows replace whole
+lookup rows: a name-only quest override clears any old translated objectives. The input adapter in
 `generator/l10n-inputs.lua` preserves that behavior with explicit field clearing.
 
 The files retain their executable Questie format, including locale guards and loader calls.
@@ -33,6 +33,10 @@ identified by the producing QuestieDB commit. Edit them directly; no external ch
 or upstream fidelity baseline is required. [PROVENANCE.md](../PROVENANCE.md) records the historical
 Questie source reference and paths. The [migration checkpoint](../docs/adr/0014-owned-data-after-migration.md)
 preserves the original import evidence.
+
+Forever's 36 locale files were seeded from clean `l10n/Classic`. They are independent owned
+files, not aliases: future Classic translation changes do not automatically update Forever.
+[Forever data provenance](../docs/forever-data.md) records the seed revision and adoption limits.
 
 ## Validation
 

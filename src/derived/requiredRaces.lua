@@ -39,7 +39,7 @@ function requiredRaces.ApplyQuestieCompatibility(ctx)
   local npcMeta = ctx.meta("Npc")
   local questKeys = questMeta and questMeta.keys
   local npcKeys = npcMeta and npcMeta.keys
-  local expansion = ctx.flavor and ctx.flavor.expansion
+  local expansion = ctx.flavor and (ctx.flavor.rules or ctx.flavor.expansion)
   local enum = LibQuestieDB and LibQuestieDB.Enum
   local expansionEnums = enum and enum.byExpansion and enum.byExpansion[expansion]
   if not questKeys or not npcKeys or not expansionEnums or not expansionEnums.raceKeys then
@@ -104,7 +104,7 @@ function requiredRaces.ApplyCorrectedInference(ctx)
   local npcMeta = ctx.meta("Npc")
   local questKeys = questMeta and questMeta.keys
   local npcKeys = npcMeta and npcMeta.keys
-  local expansion = ctx.flavor and ctx.flavor.expansion
+  local expansion = ctx.flavor and (ctx.flavor.rules or ctx.flavor.expansion)
   local enum = LibQuestieDB and LibQuestieDB.Enum
   local expansionEnums = enum and enum.byExpansion and enum.byExpansion[expansion]
   if not questKeys or not npcKeys or not expansionEnums or not expansionEnums.raceKeys then

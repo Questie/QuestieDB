@@ -3,7 +3,7 @@
 The database Questie consumes. Stores entity data as WoW addon TOC metadata, readable at
 runtime with no file I/O, and owns the offline generator that produces it.
 
-Quests, NPCs, items and objects for Classic Era, TBC, Wrath, Cataclysm and Mists. Baked
+Quests, NPCs, items and objects for Classic Era, TBC, Wrath, Cataclysm, Mists and Forever. Baked
 artifacts include nine generated Base locales as compressed CBOR column blocks. Dynamic
 Translation Corrections can also supply any custom non-English locale. Source and Baked modes
 return the same base entity values.
@@ -23,12 +23,14 @@ existing.**
 | Static Corrections | applied live | already folded in |
 | Base translations | unavailable | generated Localization blocks |
 | Dynamic Translation Corrections | any active non-English locale | any active non-English locale |
-| Requires | nothing but a clone | one bootstrap command, or local Generation |
+| Requires | a clone and native per-file game-type selection | one bootstrap command, or local Generation |
 
-A fresh clone junctioned into `AddOns` is a working development environment — no download, no
-Lua toolchain. Generating an artifact switches the same folder to baked mode with no code
-change. Generation reads the owned localization sources in `l10n/` and needs no Questie
-checkout or network access. It fails before writing output if required lookup files are missing.
+On clients with native per-file game-type selection, a fresh clone needs no download or
+Lua toolchain. Historical Interface metadata alone does not establish that support; older-client
+Source acceptance and exact Camelot TOC recognition remain pending. See
+[Forever and client acceptance](docs/forever.md#client-support-and-acceptance) for the limited
+mixed-token live-probe result and outstanding checks. Generation reads the owned localization
+sources in `l10n/` and needs no Questie checkout or network access. It fails before writing output if required lookup files are missing.
 Use `--no-l10n` only for an intentional partial artifact.
 
 ---
@@ -77,12 +79,12 @@ operating system. The full validation and release toolchain adds Python.
 
 ### Working on corrections
 
-Corrections are the same files as Questie's `Database/Corrections`, under
-`src/corrections/<expansion>/`, and the
+Corrections are maintained under `src/corrections/<expansion>/`. Their original format came
+from Questie's `Database/Corrections`, and the
 [Questie wiki page on corrections](https://github.com/Questie/Questie/wiki/Corrections) still
-applies. A clone junctioned or symlinked into `Interface/AddOns` already runs your edits live in
-Source mode; nothing needs generating for that. Generation is how you produce the Baked
-artifact Questie ships, and how you run the offline checks against your change.
+applies. On clients supporting native file selection, a clone junctioned or symlinked into
+`Interface/AddOns` runs your edits live in Source mode; nothing needs generating for that.
+Generation produces the Baked artifact and lets you run offline checks against your change.
 
 Windows x64 and Linux x64 include Lua 5.1.5 in
 [`tools/lua-binary/`](tools/lua-binary/README.md). From Bash:
@@ -107,7 +109,7 @@ From Windows Command Prompt or PowerShell, use `generate.cmd`:
 .\tools\lua-binary\lua.exe verify.lua Vanilla
 ```
 
-Omitting the flavor generates all five. Double-clicking `generate.cmd` also keeps the results
+Omitting the flavor generates all six. Double-clicking `generate.cmd` also keeps the results
 visible afterward. Both Generation shortcuts honor an explicit `LUA` and forward options to
 `generate.lua`. Ordinary Generation needs no Python, LuaRocks or runtime installation on the
 bundled platforms.
@@ -123,15 +125,17 @@ lua5.1 verify.lua Vanilla            # every read of the artifact matches the co
 lua5.1 validators/run.lua Vanilla    # cross-entity invariants; fails only on findings not in the baseline
 ```
 
-Flavors are `Vanilla TBC Wrath Cata Mists`; `generate.lua all` does all five, which takes
+Flavors are `Vanilla TBC Wrath Cata Mists Forever`; `generate.lua all` does all six, which takes
 several minutes and up to a couple of gigabytes of memory for Mists, so generate only the
 flavor you are testing. Every script prints its options with `--help`. Nothing here needs
 Python, Git, Bash, or network access; Git only adds the commit hash to the artifact's version
 when it is present.
 
-Generation writes `QuestieDB_<Flavor>.toc` next to `QuestieDB.toc`. Those files are gitignored,
-and a clone in `AddOns` switches to Baked mode on the next `/reload` simply because they exist.
-Delete them to return to Source mode.
+Generation writes `QuestieDB_<Flavor>.toc` for all six flavors. Forever additionally produces
+its byte-identical `QuestieDB_Camelot.toc` compatibility alias. These files are gitignored;
+a client that recognizes its suffixed TOC selects Baked mode. Remove the matching generated
+TOCs, including both Forever names, to return to Source mode. Forever filename recognition
+still needs the live acceptance checks linked above.
 
 ### The full toolchain
 
@@ -141,8 +145,9 @@ logs under `.out/checks/`:
 ```sh
 ./questiedb.sh generate                    # generate every flavor
 ./questiedb.sh generate Vanilla            # generate one flavor
-./questiedb.sh check Vanilla               # standard validation bundle for one flavor
-./questiedb.sh test Wrath                  # shared tests and tests of the existing Wrath artifact
+./questiedb.sh check Forever               # standard validation bundle for one flavor
+./questiedb.sh check Vanilla
+./questiedb.sh test Wrath                  # shared tests and existing Wrath artifact tests
 ./questiedb.sh verify equivalence Vanilla Mists
 ./questiedb.sh all                         # Generation, standard gates, and unit tests
 ./questiedb.sh package all                 # package already-generated artifacts
@@ -158,10 +163,12 @@ pip packages are needed.
 Run `./questiedb.sh --help` for every gate and option. On Windows/Linux x64, the runner prefers
 the matching bundled interpreter. Otherwise it tries `lua5.1`, `lua`, then `luajit` on `PATH`,
 accepting only an interpreter that reports Lua 5.1.
-`LUA` and `--lua=` can select another Lua 5.1-compatible executable explicitly. The `freeze` gate supports Vanilla and Mists. `all` validates but does not package;
+`LUA` and `--lua=` can select another Lua 5.1-compatible executable explicitly. The `freeze`
+gate supports Vanilla and Mists. `all` validates but does not package;
 packaging and bootstrap are separate commands, and bootstrap does not require Lua.
 The `test` task runs shared Lua suites once, artifact suites for each selected flavor, and
-Python CLI, scope-selection, and DBC tests as separate jobs. Generate the selected artifacts first.
+Python CLI, scope-selection, DBC and Forever distribution tests as separate jobs.
+Generate the selected artifacts first. No test scope requires a Questie checkout.
 
 The individual entry points remain useful while developing a gate. The Lua ones need only Lua:
 
@@ -179,7 +186,7 @@ Generation and the Lua validation commands use only this repository's owned inpu
 
 ### Independent test scopes
 
-CI and Release run shared checks alongside five independent flavor pipelines. A flavor pipeline
+CI and Release run shared checks alongside six independent flavor pipelines. A flavor pipeline
 never requires another flavor's generated output. Shared sources and configuration remain inputs.
 
 The Lua harness exposes the same test scopes locally:
@@ -187,12 +194,15 @@ The Lua harness exposes the same test scopes locally:
 ```sh
 lua5.1 test.lua --shared                 # no generated TOCs required or discovered
 lua5.1 test.lua --flavor=Wrath           # requires a complete, localized Wrath TOC
+lua5.1 test.lua --flavor=Forever         # requires a complete, localized Forever TOC
 lua5.1 test.lua --flavor=Wrath --list     # list selected suites without running them
 ```
 
 Each flavor scope runs generic artifact checks and its own behavior tests. Vanilla owns the
 Vanilla/SoD cases; Wrath owns Titan. Missing or incomplete selected artifacts fail rather than
-skip. Shared and flavor tests use owned inputs and require no external Questie checkout.
+skip. Forever's dataset and native TOC selection checks run in the shared scope; its flavor
+scope runs the generic artifact checks. Shared and flavor tests use owned inputs and require
+no external Questie checkout.
 
 For fast checks of structured data through both real readers, run
 `lua5.1 test.lua storage-contract`. Its [fixed behavior fixtures](docs/behavior-fixtures.md)
@@ -205,8 +215,10 @@ It does not advance each flavor through those phases independently.
 
 ### Era-to-Forever coordinate conversion
 
-The DBC tools compare explicit builds and create separate Forever entity/correction files
-without changing Era inputs or activating a runtime flavor. Run from this repository:
+Forever's coordinate-adjusted inputs are already adopted and selected by the runtime.
+The DBC tools are for a deliberate new migration, not normal Generation or routine validation.
+They compare explicit builds and create separate entity/Correction files without changing
+Era inputs or runtime registration. Run a new migration only in an isolated workspace:
 
 ```sh
 ./questiedb.sh dbc-coordinates --from-build 1.15.9.69722 --to-build 1.60.1.69893 --allow-untracked-source --ui-map 1412 --point 44.18 76.06
@@ -221,7 +233,9 @@ installing outputs, though it may populate that cache.
 Review unmapped points before removing `--dry-run`. `--keep-unmapped` explicitly leaves those
 coordinates unchanged; omitting it makes unresolved points block conversion. See
 [DBC coordinate tools](tools/dbc/README.md) for all ten output paths, coverage flags,
-provenance, overwrite protection and remaining Forever integration work.
+provenance and overwrite protection. Existing authored Forever changes must be preserved.
+The [current support-map workflow](docs/forever-data.md#how-it-works-now) is separate from
+coordinate conversion and documents consumer compatibility links that later imports must review.
 
 ### Local packages on Linux, macOS, and Windows
 
@@ -234,9 +248,11 @@ Generation creates Baked TOCs; packaging creates installable ZIPs:
 ```
 
 Packages go into `.out/dist/`: one ZIP per requested flavor, `release.json`, and release
-notes. Selecting all five also creates `QuestieDB-all.zip`. The ZIPs contain a `QuestieDB/`
-folder ready to extract into `Interface/AddOns/`, including `QuestieDB/CHANGELOG.md` for
-that release. Packaging never installs or publishes.
+notes. Selecting all six also creates `QuestieDB-all.zip`, for seven ZIPs in total. Both the
+Forever ZIP and combined ZIP contain `QuestieDB_Forever.toc` and `QuestieDB_Camelot.toc`.
+Packaging copies the alias from the completed staged primary, not an existing workspace alias.
+ZIPs contain a `QuestieDB/` folder ready to extract into `Interface/AddOns/`, including
+`QuestieDB/CHANGELOG.md` for that release. Packaging never installs or publishes.
 It checks prerequisites and requested inputs before replacing `.out/dist/` and `.out/stage/`;
 a later packaging failure can still leave incomplete output. Missing requested TOCs are errors,
 not silently skipped flavors. Run the validation gates separately before distributing a build.
@@ -297,8 +313,9 @@ python3 tools/validation/test-scopes.test.py
 python3 tools/validation/localization-inputs.test.py
 ```
 
-The launchers and packaging tests run on Linux and Windows. Native macOS acceptance and
-end-to-end database Generation acceptance remain to be run.
+The launcher and packaging fixtures cover Linux and Windows behavior. This Forever branch's
+recorded checks do not establish native Windows/macOS or live-client acceptance. See the
+[acceptance checklist](docs/forever.md#client-support-and-acceptance).
 
 ### Owned inputs
 
@@ -356,8 +373,12 @@ To refresh a local install instead of regenerating:
 ```
 
 Bootstrap uses the same Python implementation from either launcher. It installs `QuestieDB-all.zip`
-only, so a release from before the combined archive existed cannot be bootstrapped. It
-verifies the checksum and validates archive paths and extraction before changing the install.
+only, so a release from before the combined archive existed cannot be bootstrapped. Five-flavor
+combined releases using the nested `questiedb` manifest remain accepted; if either Forever TOC
+is present, both must be present and byte-identical. Bootstrap verifies the checksum and validates archive paths
+and extraction before changing the install. Installing an older five-flavor release removes
+stale Forever/Camelot TOCs. [Issue #23](https://github.com/Questie/QuestieDB/issues/23) tracks
+retiring the Camelot name without breaking older-release handling.
 The final file merge is not transactional. Matching runtime files are replaced, while unrelated
 files are retained. Back up local edits before bootstrapping over a source clone; returning to Source
 mode then requires restoring its full runtime sources as well as removing the generated TOCs.
@@ -415,10 +436,12 @@ such as quest availability blacklists and content-phase selection, stays in Ques
 
 ```text
 QuestieDB.toc            base TOC — source mode (committed)
-QuestieDB_<Flavor>.toc   generated, baked mode (gitignored)
+QuestieDB_<Flavor>.toc   generated Baked TOCs for all six flavors (gitignored)
+QuestieDB_Camelot.toc    exact temporary Forever alias (gitignored)
 
 src/
   config.lua              flavors, entity types, file lists, l10n block contract
+  flavors/                native-selected Source flavor initializers
   meta/                   schema, nil/empty semantics, chunk markers
   types/                  distributable LuaLS declarations, never loaded by a TOC
   read/                   shared getters + the two backends that differ
@@ -453,6 +476,7 @@ lists; Baked mode also exposes scalar rows and table producers for its cache fas
 
 | | |
 | --- | --- |
+| [`docs/forever.md`](docs/forever.md) | Forever inputs, selection, tooling and client acceptance |
 | [`docs/api.md`](docs/api.md) | the public surface, for consumers |
 | [`docs/release-format.md`](docs/release-format.md) | shared release metadata and addon composition rules |
 | [`tools/README.md`](tools/README.md) | tooling categories and ownership |

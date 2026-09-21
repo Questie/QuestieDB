@@ -49,6 +49,9 @@ local manifest = {
   { file = 'Shared/itemStartFixes.lua', module = 'QuestieItemStartFixes', datatype = 'Item', static = {'LoadAutomaticQuestStarts'}, options = {['noNewEntries']=true,['noOverwrites']=true}, generated = true },
 }
 
+local config = LibQuestieDB and LibQuestieDB.config or dofile("src/config.lua")
+for _, spec in ipairs(config.ownedCorrections) do manifest[#manifest + 1] = spec end
+
 if LibQuestieDB then
   LibQuestieDB.CorrectionManifest = manifest
 end

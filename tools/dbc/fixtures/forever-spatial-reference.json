@@ -1,0 +1,10 @@
+{
+  "build": "1.60.1.69893",
+  "evidence": "Reviewed Forever handoff selected-field projections, recorded in support/Forever/provenance.json. Test reference only; production never reads this file.",
+  "source_projections": {
+    "area_table": "b6f3cd7aed062716f414e7cd497615faabbe45880bcf7992c78427d9e04f2e3d",
+    "map": "e83244a2ae7c59ceca6e90f9767d4a1bda44b716e2795602fc3d8af1a8f89a13",
+    "ui_map": "e265fc2189a7e46df0f0a2e9ecef23da35be96a66b556536164a834665753747",
+    "ui_map_assignment": "c06c0c3f2e7fa1db0d019c8b6408601b8d2c018b0e801b461303bd40408e397e"
+  }
+}

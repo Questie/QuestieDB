@@ -30,7 +30,7 @@ class ReleaseFixture(unittest.TestCase):
         (self.dist / "RELEASE_NOTES.md").write_text(self.notes, encoding="utf-8")
 
         artifacts = []
-        for flavor in ("Vanilla", "TBC", "Wrath", "Cata", "Mists", "all"):
+        for flavor in ("Vanilla", "TBC", "Wrath", "Cata", "Mists", "Forever", "all"):
             filename = f"QuestieDB-{flavor}.zip"
             path = self.dist / filename
             with zipfile.ZipFile(path, "w") as archive:
@@ -171,7 +171,7 @@ class PreviewTest(ReleaseFixture):
         self.assertIn("No tags or GitHub releases were created or changed.", report)
         self.assertIn("may point to an older published release", report)
         self.assertEqual(self.notes, report.split("## GitHub release description\n\n---\n\n", 1)[1])
-        self.assertEqual(6, report.count("<details>"))
+        self.assertEqual(7, report.count("<details>"))
         for artifact in self.manifest["artifacts"]:
             self.assertIn(f"<summary>{artifact['file']}</summary>", report)
             self.assertIn(artifact["sha256"], report)

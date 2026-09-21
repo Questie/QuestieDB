@@ -1,3 +1,0 @@
--- These correction sources apply to every supported flavor.
-local _, LibQuestieDB = ...
-LibQuestieDB.CorrectionCompat.SelectObjectiveFirstScope(true)

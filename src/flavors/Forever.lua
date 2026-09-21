@@ -1,0 +1,3 @@
+local _, LibQuestieDB = ...
+assert(not LibQuestieDB.flavor, "QuestieDB: multiple Source flavors selected")
+LibQuestieDB.flavor = assert(LibQuestieDB.config.flavorByName.Forever)

@@ -9,3 +9,12 @@ input:close()
 local output = assert(io.open(path, "wb"))
 output:write("return 'dynamic only'\n")
 output:close()
+
+-- Make alias ordering observable: only staged bytes may supply the compatibility TOC.
+local toc = io.open(arg[1] .. "/QuestieDB_Forever.toc", "rb")
+if toc then
+  toc:close()
+  local staged = assert(io.open(arg[1] .. "/QuestieDB_Forever.toc", "ab"))
+  staged:write("# staged transformation\n")
+  staged:close()
+end
