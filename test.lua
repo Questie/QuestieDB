@@ -557,6 +557,10 @@ suite("semantics", "shared", function()
   check(encode.hasStoredValue(meta, 3, { 1 }), "normalized populated table needs a stored value")
 end)
 
+suite("storage-contract", "shared", function()
+  dofile("tools/validation/storage-contract.test.lua")(check, equal)
+end)
+
 suite("rows", "shared", function()
   local meta = {
     entity = "Fixture",
@@ -978,6 +982,10 @@ end)
 --------------------------------------------------------------------------------------------
 -- Corrections
 --------------------------------------------------------------------------------------------
+
+suite("derived-waypoints", "shared", function()
+  dofile("tools/validation/derived-waypoints.test.lua")(check, equal)
+end)
 
 suite("corrections", "shared", function()
   local runtime = dofile("generator/runtime.lua")
@@ -3208,7 +3216,7 @@ end)
 --------------------------------------------------------------------------------------------
 
 suite("localization-overrides", "shared", function()
-  dofile("tools/questie-sync/localization-overrides.test.lua")(check, QUESTIE_PATH)
+  dofile("tools/validation/localization-overrides.test.lua")(check, equal)
 end)
 
 suite("translation-corrections", "shared", function()

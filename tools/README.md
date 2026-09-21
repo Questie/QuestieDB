@@ -24,5 +24,7 @@ directories hold the small child programs used by orchestration tests, rather th
 those programs inside escaped strings. Tiny interpreter probes can remain inline.
 
 `validation/` holds checks without a corresponding tool here, plus shared test mechanics.
+The [behavior fixture inventory](../docs/behavior-fixtures.md) maps fixed data-shape examples
+to the real Source/Baked reader checks and the existing behavior suites.
 `questie-sync/` makes the remaining upstream dependency explicit; those checks are not all
 permanent provider requirements.

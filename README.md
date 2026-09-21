@@ -200,6 +200,10 @@ Vanilla/SoD cases; Wrath owns Titan. Missing or incomplete selected artifacts fa
 skip. Both shared and flavor scopes include migration fidelity checks that need the
 [pinned Questie checkout](#local-inputs-and-remaining-questie-checks).
 
+For fast checks of structured data through both real readers, run
+`lua5.1 test.lua storage-contract`. Its [fixed behavior fixtures](docs/behavior-fixtures.md)
+cover observed data shapes without loading production data or refreshing snapshots.
+
 Named-suite and unfiltered `test.lua` runs retain opportunistic checks of available artifacts.
 Use explicit scopes for required artifact coverage. The local command runner still uses phase
 barriers: selected Generation jobs finish before Determinism, and both finish before checks.
