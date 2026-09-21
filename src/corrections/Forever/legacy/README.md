@@ -1,9 +1,10 @@
 # Inherited Forever corrections
 
 These six providers are the converted Classic baseline. They remain active; this is not
-an archive. Leave them unchanged for ordinary correction work. The separate
-`Legacy corrections unchanged` CI check rejects added, modified, deleted or renamed Lua
-files here on every push and PR. README edits are allowed. An intentional baseline refresh
+an archive. Leave them unchanged for ordinary correction work. The reusable
+`Legacy corrections unchanged` check rejects added, modified, deleted or renamed Lua
+files here. CI's `All gates` and Release packaging both require it to pass, including on
+manual release runs. README edits are allowed. An intentional baseline refresh
 requires maintainer review and an update to the pinned commit in
 `.github/workflows/legacy-corrections.yml`.
 

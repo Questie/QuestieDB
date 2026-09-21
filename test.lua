@@ -343,10 +343,19 @@ suite("workflow-contracts", "shared", function()
   local publish = assert(release:match("\n  publish:\n(.*)"), "release has a publication job")
   check(publish:find("needs: quality", 1, true) ~= nil,
     "release publication depends on the artifact quality job")
-  check(release:find("needs: [preflight, shared, database]", 1, true) ~= nil,
-    "release quality waits for preflight, shared tests, and every flavor")
+  check(release:find("needs: [preflight, shared, database, legacy]", 1, true) ~= nil,
+    "release quality waits for preflight, shared tests, every flavor, and legacy corrections")
   check(release:find("cancel-in-progress: false", 1, true) ~= nil,
     "publication cannot be cancelled midway through replacement")
+
+  local ci = lib.readAll(".github/workflows/ci.yml")
+  local gates = assert(ci:match("\n  gates:\n(.*)"), "CI has an aggregate gate")
+  check(gates:find("if: always()", 1, true) ~= nil,
+    "All gates still runs when a prerequisite fails or is cancelled")
+  check(gates:find("needs: [test, database, legacy]", 1, true) ~= nil,
+    "All gates waits for legacy corrections as well as tests and artifacts")
+  check(gates:find('[ "${{ needs.legacy.result }}" = "success" ] ||', 1, true) ~= nil,
+    "All gates rejects failed, skipped, or cancelled legacy checks")
 end)
 
 --------------------------------------------------------------------------------------------

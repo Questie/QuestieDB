@@ -1,8 +1,8 @@
 name: Legacy corrections
 
+# Called by CI and Release so their aggregate gates own the result.
 on:
-  push:
-  pull_request:
+  workflow_call:
 
 permissions:
   contents: read
