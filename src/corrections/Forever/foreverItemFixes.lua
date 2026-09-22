@@ -10,17 +10,6 @@ function ForeverItemFixes:Load()
     local itemClasses = QuestieDB.itemClasses
 
     return {
-        -- [itemId] = { [itemKeys.name] = "Corrected name" },
-    }
-end
-
--- Dynamic Corrections: selected from character/game facts such as faction, race or class.
--- These override legacy Dynamic Corrections and all Static Corrections at query time.
-function ForeverItemFixes:LoadDynamic()
-    local itemKeys = QuestieDB.itemKeys
-    local itemClasses = QuestieDB.itemClasses
-
-    return {
         [270302] = {
             [itemKeys.name] = "Chakuyak's Pelt",
             [itemKeys.npcDrops] = {268558},
@@ -45,5 +34,16 @@ function ForeverItemFixes:LoadDynamic()
             [itemKeys.vendors] = nil,
             [itemKeys.startQuest] = nil,
         },
+    }
+end
+
+-- Dynamic Corrections: selected from character/game facts such as faction, race or class.
+-- These override legacy Dynamic Corrections and all Static Corrections at query time.
+function ForeverItemFixes:LoadDynamic()
+    local itemKeys = QuestieDB.itemKeys
+    local itemClasses = QuestieDB.itemClasses
+
+    return {
+        -- [itemId] = { [itemKeys.name] = "Corrected name" },
     }
 end

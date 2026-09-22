@@ -26,26 +26,6 @@ function ForeverQuestFixes:Load()
     local rankKeys = QuestieProfessions.rankNames
 
     return {
-        -- [questId] = { [questKeys.name] = "Corrected name" },
-    }
-end
-
--- Dynamic Corrections: selected from character/game facts such as faction, race or class.
--- These override legacy Dynamic Corrections and all Static Corrections at query time.
-function ForeverQuestFixes:LoadDynamic()
-    local questKeys = QuestieDB.questKeys
-    local zoneIDs = ZoneDB.zoneIDs
-    local raceIDs = QuestieDB.raceKeys
-    local classIDs = QuestieDB.classKeys
-    local sortKeys = QuestieDB.sortKeys
-    local specialFlags = QuestieDB.specialFlags
-    local profKeys = QuestieProfessions.professionKeys
-    local specKeys = QuestieProfessions.specializationKeys
-    local factionIDs = QuestieDB.factionIDs
-    local rankKeys = QuestieProfessions.rankNames
-    local playerClass = UnitClassBase("player")
-
-    return {
         [95805] = { -- Grace of An'she and Mu'sha
             [questKeys.name] = "Grace of An'she and Mu'sha",
             [questKeys.startedBy] = {{2982}},
@@ -81,5 +61,25 @@ function ForeverQuestFixes:LoadDynamic()
             [questKeys.requiredSourceItems] = {275019},
             [questKeys.objectives] = nil,
         },
+    }
+end
+
+-- Dynamic Corrections: selected from character/game facts such as faction, race or class.
+-- These override legacy Dynamic Corrections and all Static Corrections at query time.
+function ForeverQuestFixes:LoadDynamic()
+    local questKeys = QuestieDB.questKeys
+    local zoneIDs = ZoneDB.zoneIDs
+    local raceIDs = QuestieDB.raceKeys
+    local classIDs = QuestieDB.classKeys
+    local sortKeys = QuestieDB.sortKeys
+    local specialFlags = QuestieDB.specialFlags
+    local profKeys = QuestieProfessions.professionKeys
+    local specKeys = QuestieProfessions.specializationKeys
+    local factionIDs = QuestieDB.factionIDs
+    local rankKeys = QuestieProfessions.rankNames
+    local playerClass = UnitClassBase("player")
+
+    return {
+        -- [questId] = { [questKeys.name] = "Corrected name" },
     }
 end
