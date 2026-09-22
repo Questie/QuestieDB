@@ -138,6 +138,21 @@ config.runtimeFiles = {
   },
 }
 
+-- The initializer must precede the subject files in both TOCs and offline loaders.
+config.enumFiles = {
+  "src/corrections/enum/constants.lua",
+  "src/corrections/enum/fieldKeys.lua",
+  "src/corrections/enum/items.lua",
+  "src/corrections/enum/quests.lua",
+  "src/corrections/enum/professions.lua",
+  "src/corrections/enum/factions.lua",
+  "src/corrections/enum/zones.lua",
+  "src/corrections/enum/phases.lua",
+  "src/corrections/enum/icons.lua",
+  "src/corrections/enum/waypoints.lua",
+  "src/corrections/enum/expansions.lua",
+}
+
 -- Independently maintained providers are not import destinations.
 config.ownedCorrections = {
   -- Inherited baseline: preserve its ordering; add new work in forever*Fixes.lua below.
@@ -173,8 +188,11 @@ end
 ---@return string[]
 function config.correctionFiles(flavor, mode)
   if not config.correctionManifest then return {} end
-  local files = { "src/corrections/enum/constants.lua", "src/corrections/compat.lua",
-    "src/corrections/register.lua", "src/corrections/_begin.lua" }
+  local files = {}
+  for _, file in ipairs(config.enumFiles) do files[#files + 1] = file end
+  for _, file in ipairs({ "src/corrections/compat.lua", "src/corrections/register.lua", "src/corrections/_begin.lua" }) do
+    files[#files + 1] = file
+  end
   local seasonal
   for _, spec in ipairs(config.correctionManifest) do
     if config.correctionApplies(spec, flavor) and
@@ -266,7 +284,10 @@ config.supportData.perFlavor.Forever = {
 ---@return string[] Resolved support paths in load order.
 function config.supportFiles(flavor)
   assert(flavor, "supportFiles requires a flavor")
-  local files = { "src/corrections/enum/constants.lua", "src/support/data.lua", "src/support/_begin.lua" }
+  local files = {}
+  for _, file in ipairs(config.enumFiles) do files[#files + 1] = file end
+  files[#files + 1] = "src/support/data.lua"
+  files[#files + 1] = "src/support/_begin.lua"
   if flavor.name ~= "Forever" then
     for _, file in ipairs(config.supportData.shared) do files[#files + 1] = file end
   end
@@ -287,10 +308,10 @@ end
 --- Append `source` to `target`, skipping anything already listed.
 ---
 --- Each block declares its own prerequisites — the support block and the correction block both
---- need `enum/constants.lua`, and neither can assume the other ran. Composing here is what
+--- need `config.enumFiles`, and neither can assume the other ran. Composing here is what
 --- makes that safe: the client rejects a file listed twice with
---- `Duplicate File Load Detected`, and loading a 39 KB constant table twice would be waste
---- even if it did not.
+--- `Duplicate File Load Detected`, and rebuilding the constants would invalidate references
+--- captured by earlier files even if the client allowed it.
 ---
 --- First occurrence wins, because a block's prerequisites are listed ahead of it and the
 --- earliest position is the one that satisfies every later block.
@@ -350,7 +371,8 @@ function config.sourceFileEntries()
   end
   add("data/_end.lua")
   -- Resolve support bodies separately so shared teardown cannot precede another flavor's data.
-  for _, path in ipairs({ "src/corrections/enum/constants.lua", "src/support/data.lua", "src/support/_begin.lua" }) do add(path) end
+  for _, path in ipairs(config.enumFiles) do add(path) end
+  for _, path in ipairs({ "src/support/data.lua", "src/support/_begin.lua" }) do add(path) end
   -- Mists precedes Cata so its cumulative drop tables keep the MoP-then-Cata ordering.
   for _, name in ipairs({ "Vanilla", "TBC", "Wrath", "Mists", "Cata", "Forever" }) do
     local flavor = config.flavorByName[name]

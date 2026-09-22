@@ -82,6 +82,12 @@ local setChanged = registrar.Set("Npc", "darkmoon-location", { [14828] = { [1] =
 ---@type boolean
 local setRemoved = LibQuestieDB.SetCorrection("ConsumerAddon", "Npc", "darkmoon-location", nil)
 
+-- Phase constants include Blizzard IDs and Questie-defined fake visibility IDs.
+---@type integer
+local blizzardPhase = LibQuestieDB.Enum.phases.HYJAL_CHAPTER_1
+---@type integer
+local questiePhase = LibQuestieDB.Enum.phases.HYJAL_IAN_AND_TARIK_NOT_IN_CAGE
+
 -- Schema and objective-hint reads stay typed, and localization controls stay dot-called.
 ---@type integer
 local npcNameField = LibQuestieDB.Meta.NpcMeta.npcKeys.name

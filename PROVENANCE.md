@@ -23,7 +23,7 @@ Paths in the right column refer to the Questie repository at the reference above
 | `data/<Expansion>/` | Raw entity tables in `Database/<Expansion>/` |
 | `src/corrections/<Expansion>/` | Providers in `Database/Corrections/`, with consumer-owned behavior excluded |
 | `src/corrections/manifest.lua` | Provider inventory and Static/Dynamic classifications declared in the retired correction import tool |
-| `src/corrections/enum/constants.lua` | Constants extracted from entity schema modules, `Database/QuestieDB.lua`, `Database/Constants.lua`, zone IDs, professions, phasing, and drop-table modules |
+| `src/corrections/enum/` | Constants extracted from entity schema modules, `Database/QuestieDB.lua`, `Database/Constants.lua`, zone IDs, professions, phasing, and drop-table modules |
 | `l10n/` | Entity lookups and overrides in `Localization/lookups/` |
 | `support/` | Zone data, quest XP, drop tables, and faction templates from `Database/` |
 | `src/derived/RamerDouglasPeucker.lua` | `Modules/Libs/RamerDouglasPeucker.lua` |

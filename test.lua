@@ -939,6 +939,25 @@ suite("localization-overrides", "shared", function()
   dofile("tools/validation/localization-overrides.test.lua")(check, equal)
 end)
 
+suite("correction-enums", "shared", function()
+  local standalone = dofile("src/corrections/enum/constants.lua")
+  local namespace = {}
+  local env = setmetatable({
+    dofile = function() error("addon constants must not call dofile") end,
+    loadfile = function() error("addon constants must not call loadfile") end,
+  }, { __index = _G })
+  for _, path in ipairs(config.enumFiles) do
+    setfenv(assert(loadfile(path)), env)("QuestieDB", namespace)
+  end
+  equal(namespace.Enum, standalone, "TOC and standalone loading expose the same constants")
+  equal(standalone.dropCorrectionKeys, { PSERVER = -2, WOWHEAD = -1 },
+    "standalone loading includes the support drop sentinels")
+  equal(standalone.byExpansion.Forever.raceKeys.ALL_ALLIANCE, 4294967373,
+    "Forever race masks retain values beyond 32 bits")
+  equal(standalone.waypointPresets.ALLIANCE_GUNSHIP[5042][1][1], { 61.79, 46.28 },
+    "waypoint presets retain area, path, and coordinate nesting")
+end)
+
 suite("corrections", "shared", function()
   local runtime = dofile("generator/runtime.lua")
   local flavor = config.flavorByName.Vanilla
@@ -2459,7 +2478,7 @@ suite("toc", "shared", function()
   -- The client rejects a file listed twice with `Duplicate File Load Detected`, and it is
   -- right to: the file re-executes, rebuilding whatever it defines while earlier files still
   -- hold references to the first copy. Blocks declare their own prerequisites — the support
-  -- block and the correction block both need `enum/constants.lua` — so the composer has to
+  -- block and the correction block both need `config.enumFiles` — so the composer has to
   -- deduplicate, and this is what proves it does.
   local sourcePaths = {}
   for _, entry in ipairs(config.sourceFileEntries()) do sourcePaths[#sourcePaths + 1] = entry.path end
@@ -2522,10 +2541,14 @@ suite("toc", "shared", function()
       end
     end
     before("src/config.lua", "src/meta/normalize.lua", "everything reads config")
-    before("src/corrections/enum/constants.lua", "src/support/_begin.lua",
-      "the support shim seeds DropDB.correctionKeys from the constants")
-    before("src/corrections/enum/constants.lua", "src/corrections/compat.lua",
-      "compat captures LibQuestieDB.Enum at file scope")
+    for index, path in ipairs(config.enumFiles) do
+      check(at[path] ~= nil, list.name .. " includes enum file " .. path)
+      if index > 1 then
+        before(config.enumFiles[index - 1], path, "enum files retain their declared load order")
+      end
+      before(path, "src/support/_begin.lua", "support seeds DropDB.correctionKeys from the constants")
+      before(path, "src/corrections/compat.lua", "compat captures constants at file scope")
+    end
     before("src/corrections/registry.lua", "src/corrections/_end.lua",
       "registration needs the registry")
     before("src/read/shared.lua", "src/api.lua", "api builds entities with shared.CreateEntity")
@@ -3128,7 +3151,11 @@ suite("support", "shared", function()
   local env = setmetatable({ QuestieLoader = previousLoader }, { __index = _G })
   env._G = env
   local namespace = { config = config }
-  setfenv(assert(loadfile("src/corrections/enum/constants.lua")), env)("QuestieDB", namespace)
+  local enumFiles = {}
+  for _, path in ipairs(config.enumFiles) do
+    enumFiles[path] = true
+    setfenv(assert(loadfile(path)), env)("QuestieDB", namespace)
+  end
   setfenv(assert(loadfile("src/support/data.lua")), env)("QuestieDB", namespace)
   local support = namespace.Support
 
@@ -3139,7 +3166,7 @@ suite("support", "shared", function()
     namespace.flavor = flavor
     env.UnitFactionGroup = function() return faction end
     for _, file in ipairs(config.supportFiles(flavor)) do
-      if file ~= "src/corrections/enum/constants.lua" and file ~= "src/support/data.lua" then
+      if not enumFiles[file] and file ~= "src/support/data.lua" then
         setfenv(assert(loadfile(file)), env)("QuestieDB", namespace)
       end
     end

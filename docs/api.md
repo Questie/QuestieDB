@@ -225,6 +225,22 @@ LibQuestieDB.Meta.Quest.fieldCount           --> 36
 Derived from Questie's own key enums, so a field added upstream appears here rather than
 drifting.
 
+### Phase constants
+
+```lua
+local phases = LibQuestieDB.Enum.phases
+phases.HYJAL_CHAPTER_1                    --> 194  (Blizzard phase ID)
+phases.HYJAL_IAN_AND_TARIK_NOT_IN_CAGE      --> 1000 (Questie-defined fake phase ID)
+```
+
+`Enum.phases` maps names to the integer IDs used in spawn data. It is available at addon load
+in both Source and Baked modes, with the same constants across flavors. Treat this shared table
+as read-only; do not add, replace, or renumber entries from a consumer.
+
+QuestieDB owns the IDs, including the fake IDs used to distinguish visibility conditions that
+Blizzard's reused phase IDs cannot express. Questie owns the quest-state checks that decide
+whether a spawn is visible. Other properties of `Enum` remain internal.
+
 ### Objective ordering hints
 
 Some Quest Corrections carry consumer hints about which objective type should be rendered first.
