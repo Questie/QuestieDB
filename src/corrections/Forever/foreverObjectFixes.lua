@@ -23,6 +23,11 @@ function ForeverObjectFixes:LoadDynamic()
     local zoneIDs = ZoneDB.zoneIDs
 
     return {
-        -- [objectId] = { [objectKeys.name] = "Character-specific name" },
+        [660739] = { -- Ritual Fire
+            [objectKeys.name] = "Ritual Fire",
+            [objectKeys.spawns] = {[zoneIDs.MULGORE] = {{56.6,88.7}}},
+            [objectKeys.zoneID] = zoneIDs.MULGORE,
+            [objectKeys.questEnds] = {95805},
+        },
     }
 end
