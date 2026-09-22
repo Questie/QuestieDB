@@ -33,7 +33,9 @@ function zones.BuildAreaLookup(flavor)
   local config = dofile("src/config.lua")
   local LibQuestieDB = { config = config, flavor = flavor }
 
-  runtime.execute("src/corrections/enum/constants.lua", "QuestieDB", LibQuestieDB)
+  for _, path in ipairs(config.enumFiles) do
+    runtime.execute(path, "QuestieDB", LibQuestieDB)
+  end
   runtime.execute("src/support/data.lua", "QuestieDB", LibQuestieDB)
 
   -- `dungeons.lua` reads `UnitFactionGroup` at load time to pick faction-specific entry

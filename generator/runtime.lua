@@ -45,7 +45,9 @@ function runtime.build()
   -- Correction support is optional: the tracer bullet and a bare data round-trip work without
   -- any corrections ported, and saying so beats failing on a missing file.
   if lib.fileExists("src/corrections/enum/constants.lua") then
-    execute("src/corrections/enum/constants.lua", "QuestieDB", LibQuestieDB)
+    for _, path in ipairs(config.enumFiles) do
+      execute(path, "QuestieDB", LibQuestieDB)
+    end
     execute("src/corrections/compat.lua", "QuestieDB", LibQuestieDB)
     execute("src/corrections/manifest.lua", "QuestieDB", LibQuestieDB)
     execute("src/corrections/register.lua", "QuestieDB", LibQuestieDB)

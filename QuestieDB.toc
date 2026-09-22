@@ -104,6 +104,16 @@ data\_end.lua
 
 # --- Constants and loader setup ---
 src\corrections\enum\constants.lua
+src\corrections\enum\fieldKeys.lua
+src\corrections\enum\items.lua
+src\corrections\enum\quests.lua
+src\corrections\enum\professions.lua
+src\corrections\enum\factions.lua
+src\corrections\enum\zones.lua
+src\corrections\enum\phases.lua
+src\corrections\enum\icons.lua
+src\corrections\enum\waypoints.lua
+src\corrections\enum\expansions.lua
 src\support\data.lua
 src\support\_begin.lua
 
