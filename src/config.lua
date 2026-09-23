@@ -135,6 +135,7 @@ config.runtimeFiles = {
     "src/l10n/Titan/zhCN.lua",
     "src/ui/modeIndicator.lua",
     "src/api.lua",
+    "src/support/eraToForever.lua",
   },
 }
 

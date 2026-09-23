@@ -1,4 +1,5 @@
 -- Dataset review checks, not an assertion that Forever must keep matching Era.
+dofile("src/support/eraToForever.test.lua")
 local loader = dofile("generator/loader.lua")
 local config = dofile("src/config.lua")
 local npcType
@@ -112,6 +113,28 @@ QuestieLoader = {
 }
 dofile(root .. "Zones/dungeons.lua")
 local dungeons = private.dungeons
+-- Reviewed Era-to-Forever entrance projections, stored at the baseline's two-decimal precision.
+-- Use each entrance's AreaID: Naxxramas still has legacy parent 65, but its entrance is in EPL.
+local expectedEntrances = {
+    [717] = {{1519, 52.41, 70.01}},
+    [2017] = {{139, 26.52, 10.36}, {139, 41.45, 17.74}},
+    [2257] = {{1519, 71.98, 27.61}, {1537, 84.1, 53.1}},
+    [2918] = {{1519, 75.93, 66.22}},
+    [3456] = {{139, 34.25, 19.45}},
+    [16236] = {{139, 60.14, 75.32}},
+    -- These are later-expansion frames, not eligible for the Era transform.
+    [5861] = {{12, 41.79, 69.52}, {215, 36.85, 35.86}},
+    [6618] = {{1519, 69.49, 31.2}, {1537, 84.1, 53.1}},
+    [10001] = {{139, 43.5, 19.4}},
+}
+for area, expected in pairs(expectedEntrances) do
+    local actual = dungeons[area][4]
+    assert(#actual == #expected, "Entrance count differs for " .. area)
+    for index, point in ipairs(expected) do
+        assert(actual[index][1] == point[1] and actual[index][2] == point[2] and actual[index][3] == point[3],
+            "Reviewed entrance differs for " .. area .. " point " .. index)
+    end
+end
 local entrances = {}
 for area, dungeon in pairs(dungeons) do
     entrances[area] = dungeon[4]

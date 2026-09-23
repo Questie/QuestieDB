@@ -12,8 +12,10 @@ are also adopted. Current maps contain 1,064 forward and 54 canonical reverse DB
 plus 40 compatibility pairs for consumer instance-entrance handling. Those retired floor UiMaps
 are not native Forever maps. See [current maintenance guidance](forever-data.md#how-it-works-now)
 and the [map audit](forever-map-override-audit.md) for provenance, dispositions and gaps.
-This is not complete new Forever content: dungeon entrances, consumer-supplied coordinates,
-new entities and race/class policy still need separate review.
+The [coordinate audit](forever-coordinate-audit.md) also covers the converted Era-framed
+entrances and Questie's Mulgore Darkmoon replacements. This is not complete new Forever
+content: later-expansion entrance frames, synthetic coordinates, live placement, new entities
+and race/class policy still need separate review.
 
 ## Source selection
 
@@ -133,7 +135,7 @@ these checks in a disposable client/addon setup:
   token by itself when Blizzard completes the rename. Do not generalize to arbitrary unknown tokens.
 - Check several separated static landmarks on Mulgore, Eastern Plaguelands, Redridge Mountains
   and Stormwind City. Record map identity and measured placement, not just one NPC. Review
-  retained synthetic-area points and unconverted dungeon entrances separately.
+  retained synthetic-area points and deferred Cata/MoP entrance frames separately.
 
 The adopted DBC target is **1.60.1.69893**; the researched Forever UI source is
 **1.60.1.69913**. They are not the same build, and neither establishes the running client's

@@ -21,6 +21,7 @@ from download import DEFAULT_DATABASE, ensure_database
 from files import MANIFEST, TOOL, digest, install_outputs
 from maps import read_snapshot
 from rewrite import Coordinate, read_zone_ids, rewrite
+from runtime_helper import HELPER, require_matching_helper
 
 ROOT = Path(__file__).resolve().parents[2]
 # Reuse the contributor launcher's Lua discovery and cancellation ownership.
@@ -75,18 +76,8 @@ def geometry(database: Path, source_build: str, target_build: str,
     finally:
         conn.close()
     report = compare_maps(old, new, old_names, new_names)
-    candidates = []
-    for rows in (old, new):
-        areas = {}
-        for row in rows:
-            if row["AreaID"] > 0 and row["OrderIndex"] == 0:
-                areas.setdefault(row["AreaID"], set()).add(row["UiMapID"])
-        candidates.append(areas)
-    transforms = {}
-    for row in report["transforms"]:
-        area, ui_map = row["area_id"], row["ui_map_id"]
-        if candidates[0].get(area) == {ui_map} and candidates[1].get(area) == {ui_map}:
-            transforms[area] = Transform(**row["coefficients"])
+    transforms = {row["area_id"]: Transform(**row["coefficients"])
+                  for row in report["transforms"] if row["area_transform_supported"]}
     report.update(source_build=source_build, target_build=target_build,
                   source_tables=old_meta, target_tables=new_meta,
                   area_coefficients={str(area): asdict(value) for area, value in sorted(transforms.items())})
@@ -255,6 +246,8 @@ def main() -> int:
         provenance = ensure_database(args.database, args.from_build, args.to_build, tag=args.dbc_tag)
         print("DBC:", provenance["origin"], provenance["path"], flush=True)
         transforms, map_report = geometry(args.database, args.from_build, args.to_build, args.allow_untracked_source)
+        helper_check = require_matching_helper(map_report, ROOT / HELPER, lua)
+        print(helper_check["details"], flush=True)
         outputs, report = prepare(ROOT, transforms, map_report, args.keep_unmapped)
         unresolved = 0
         for path, info in report["files"].items():

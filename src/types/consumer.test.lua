@@ -82,6 +82,12 @@ local setChanged = registrar.Set("Npc", "darkmoon-location", { [14828] = { [1] =
 ---@type boolean
 local setRemoved = LibQuestieDB.SetCorrection("ConsumerAddon", "Npc", "darkmoon-location", nil)
 
+-- Coordinate helpers are dot-called and return two percentage numbers, not a tuple table.
+local areaX, areaY = LibQuestieDB.EraToForever(215, 44.18, 76.06)
+local mapX, mapY = LibQuestieDB.EraToForeverByUiMapId(1412, 44.18, 76.06)
+---@type number[]
+local foreverCoordinates = { areaX, areaY, mapX, mapY }
+
 -- Phase constants include Blizzard IDs and Questie-defined fake visibility IDs.
 ---@type integer
 local blizzardPhase = LibQuestieDB.Enum.phases.HYJAL_CHAPTER_1

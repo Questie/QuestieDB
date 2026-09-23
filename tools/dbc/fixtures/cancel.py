@@ -19,6 +19,7 @@ if phase == "validation":
     convert.find_lua = lambda *_: sys.executable
     convert.ensure_database = lambda *_args, **_kwargs: {"origin": "fixture", "path": "fixture"}
     convert.geometry = lambda *_: ({}, {})
+    convert.require_matching_helper = lambda *_: {"details": "fixture helper matched"}
     convert.prepare = lambda *_: ({}, {"files": {}})
     os.environ["DBC_CANCEL_READY"] = str(ready)
     sys.argv = ["convert.py", "--from-build", "1.15.9.69722", "--to-build", "1.60.1.69893", "--dry-run"]

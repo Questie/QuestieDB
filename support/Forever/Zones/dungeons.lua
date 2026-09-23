@@ -10,12 +10,14 @@ local isHorde = UnitFactionGroup("Player") == "Horde"
 ---@field [3] AreaId parentZone
 ---@field [4] table<AreaId, AreaCoordinate> dungeonLocations
 
+-- Era-framed entrances in changed zones are stored in Forever percentages, not converted at load.
+-- DBC 1.15.9.69722 -> 1.60.1.69893; see docs/forever-coordinate-audit.md for source points and exclusions.
 ---@type table<AreaId, DungeonZoneEntry>
 local dungeons = {
     [206] = {"Utgarde Keep",{10057,10058},495,{{495, 58.8, 48.3}}},
     [209] = {"Shadowfang Keep",{10014,10015,10016,10017,10018,10019},130,{{130, 44.8, 67.8}}}, -- removed 236, not used by anything
     [491] = {"Razorfen Kraul",{1717},17,{{17, 42.9, 90.2}}}, -- quests are 1717
-    [717] = {"The Stockade",nil,1519,{{1519, 42.3, 58.9}}},
+    [717] = {"The Stockade",nil,1519,{{1519, 52.41, 70.01}}},
     [718] = {"Wailing Caverns",nil,17,{{17, 46, 36.5}}},
     [719] = {"Blackfathom Deeps",{10020,10021},331,{{331, 14.5, 14.2}}}, -- removed 2797, not used by anything
     [721] = {"Gnomeregan",{133,10030,10031,10032},1,{{1, 24.3, 39.8}}}, -- quests are 133
@@ -29,11 +31,11 @@ local dungeons = {
     [1583] = {"Blackrock Spire",{10003,10004,10005,10006,10007},51,{{51, 34.8, 85.3}, {46, 29.4, 38.3}}},
     [1584] = {"Blackrock Depths",{1585},51,{{51, 34.8, 85.3},{46, 29.4, 38.3}}},
     [1977] = {"Zul'Gurub",nil,33,{{33, 53.89, 17.6}}},
-    [2017] = {"Stratholme",nil,139,{{139, 31.3, 15.7}, {139, 47.9, 23.9}}}, -- removed 2279, not used by anything
+    [2017] = {"Stratholme",nil,139,{{139, 26.52, 10.36}, {139, 41.45, 17.74}}}, -- removed 2279, not used by anything
     [2057] = {"Scholomance",{10011,10012,10013},28,{{28, 69.7, 73.2}}},
     [2100] = {"Maraudon",{10000},405,{{405, 29.1, 62.5}}},
     [2159] = {"Onyxia's Lair",nil,15,{{15, 52.6, 76.8}}},
-    [2257] = {"Deeprun Tram",nil,1519,{{1519, 67.6, 4.1}, {1537, 84.1, 53.1}}},
+    [2257] = {"Deeprun Tram",nil,1519,{{1519, 71.98, 27.61}, {1537, 84.1, 53.1}}},
     [2366] = {"The Black Morass",nil,440,{{440, 65.7, 49.8}}},
     [2367] = {"Old Hillsbrad Foothills",nil,440,{{440, 65.7, 49.8}}},
     [2437] = {"Ragefire Chasm",nil,1637,{{1637, 52.6, 49}}},
@@ -42,12 +44,12 @@ local dungeons = {
     [2677] = {"Blackwing Lair",nil,46,{{51, 34.8, 85.3}, {46, 29.4, 38.3}}}, -- this one needs the map IDs added
     [2717] = {"Molten Core",nil,46,{{51, 34.8, 85.3}, {46, 29.4, 38.3}}},
     [2917] = {"Hall of Legends",nil,1637,{{1637, 40.4, 68.3}}},
-    [2918] = {"Champions' Hall",nil,1519,{{1519, 72.7, 54}}},
+    [2918] = {"Champions' Hall",nil,1519,{{1519, 75.93, 66.22}}},
     [3277] = {"Warsong Gulch",nil,17,{(isHorde and {17, 46.52,8.56}) or {331, 61.66,84.52}}},
     [3358] = {"Arathi Basin",nil,36,{(isHorde and {45, 73.5, 29.0}) or {45, 45.4, 44.4}}},
     [3428] = {"Temple of Ahn'Qiraj",{10040,10041},1377,{{1377, 28.6, 92.3}}},
     [3429] = {"Ruins of Ahn'Qiraj",nil,1377,{{1377, 28.6, 92.3}}},
-    [3456] = {"Naxxramas",{10062,10063,10064,10065,10066},65,{{139, 39.9, 25.8}}},
+    [3456] = {"Naxxramas",{10062,10063,10064,10065,10066},65,{{139, 34.25, 19.45}}},
     [3457] = {"Karazhan",{10103,10104,10105,10106,10107,10108,10109,10110,10111,10112,10113,10114,10115,10116,10117,10118},41,{{41, 46.7, 70.2},{41, 46.9, 74.7}}},
     [3562] = {"Hellfire Ramparts",nil,3483,{{3483, 47.7, 53.6}}},
     [3606] = {"Hyjal Summit",nil,440,{{440, 65.7, 49.8}}},
@@ -108,7 +110,7 @@ local dungeons = {
     [5788] = {"Well of Eternity",nil,440,{{440, 64.8, 50}}},
     [5789] = {"End Time",{5790,5792,5793,5794,5795},440,{{440, 64.8, 50}}},
     [5844] = {"Hour of Twilight",{10039},440,{{440, 64.8, 50}}},
-    [5861] = {"Darkmoon Faire Island",nil,440,{{12, 41.79, 69.52},{215, 36.85, 35.86}}},
+    [5861] = {"Darkmoon Faire Island",nil,440,{{12, 41.79, 69.52},{215, 36.85, 35.86}}}, -- Cata portal frame; not Era-converted, Forever placement unverified
     [5892] = {"Dragon Soul",nil,440,{{440, 64.8, 50}}}, -- this one needs the map IDs added
     [5918] = {"Shado-Pan Monastery",{6173},5841,{{5841, 36.7, 47.4}}}, -- this one needs the map IDs added
     [5956] = {"Temple of the Jade Serpent",nil,5785,{{5785, 56.2, 57.9}}}, -- this one needs the map IDs added
@@ -122,11 +124,11 @@ local dungeons = {
     [6214] = {"Siege of Niuzao Temple",nil,5842,{{5842, 34.7, 81.5}}}, -- this one needs the map IDs added
     [6297] = {"Heart of Fear",nil,6138,{{6138, 38.8, 35}}}, -- this one needs the map IDs added
     [6298] = {"Brawl'gar Arena",nil,1637,{{1637, 70.7, 30.6}}},
-    [6618] = {"Bizmo's Brawlpub",nil,1519,{{1519, 69.49, 31.2},{1537, 84.1, 53.1}}},
+    [6618] = {"Bizmo's Brawlpub",nil,1519,{{1519, 69.49, 31.2},{1537, 84.1, 53.1}}}, -- MoP frame; not Era-converted, Forever placement unverified
     [6622] = {"Throne of Thunder",{10093,10094,10095,10096,10097,10098,10099},6507,{{6507, 63.6, 32.2}}},
     [6738] = {"Siege of Orgrimmar",nil,5840,{{5840, 72.4, 44.18}}}, -- this one needs the map IDs added
     -- [7307] = {"Upper Blackrock Spire",nil,51,{{51, 34.8, 85.3}, {46, 29.4, 38.3}}}, -- only added in WoD
-    [10001] = {"Stratholme",nil,139,{{139, 43.5, 19.4}}}, -- The Gauntlet
+    [10001] = {"Stratholme",nil,139,{{139, 43.5, 19.4}}}, -- The Gauntlet: Cata frame, not Era-converted; Forever placement unverified
     [10022] = {"Dire Maul",nil,357,{{357, 62.5,24.9}}}, -- North
     [10023] = {"Dire Maul",nil,357,{{357, 60.3,30.2}}}, -- West
     [10024] = {"Dire Maul",nil,357,{{357, 60.3,30.2}}}, -- West
@@ -137,7 +139,7 @@ local dungeons = {
     [15531] = {"The Tainted Scar",nil,4,{{4, 45.3,55.0}}},
     [15828] = {"The Burning of Andorhal",nil,28,{{28, 69.6,79.6}}},
     [16074] = {"Karazhan Crypts",nil,41,{{41, 39.99, 74.16}}},
-    [16236] = {"Scarlet Enclave",nil,139,{{139, 68.67, 87.84}}},
+    [16236] = {"Scarlet Enclave",nil,139,{{139, 60.14, 75.32}}}, -- SoD/Era point projected; Forever content availability unverified
 }
 
 if Expansions.Current >= Expansions.Wotlk then

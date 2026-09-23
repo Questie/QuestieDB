@@ -222,6 +222,19 @@ current output hashes. The exporter itself was not changed or run. **Exporter ge
 will overwrite its manual additions**, and a future import must review these local
 compatibility additions instead of replacing them blindly.
 
+## Subsequent coordinate audit: entrances and consumer DMF
+
+Seven Era-framed entrance points in the owned Forever dungeon table are now stored as
+Forever percentages. Questie's six Mulgore Darkmoon NPC replacements now project their fresh
+Era rows only on Forever. Entity baseline files and their conversion manifest remain unchanged.
+The [coordinate audit](forever-coordinate-audit.md) records every changed point, the broader
+runtime-source inventory, local Git provenance and validation.
+
+Three inherited entrance entries use Cata/MoP frames and were not Era-converted: DMF Island
+5861, Bizmo's Brawlpub 6618 and Stratholme Gauntlet 10001. Their placement remains unverified,
+as do the six synthetic continent/world points above. Scarlet Enclave's retained SoD/Era
+point was projected without claiming that the raid is available in Forever.
+
 ## How it works now
 
 ### Current support-map limitations
@@ -233,10 +246,10 @@ continent maps 1463/1464 and second Zephras map 2665 remain unresolved; keeping 
 dungeon lookup for the consumer does not resolve its missing native map.
 
 The consumer must eventually resolve instances before indexing by UiMapID. Only then can
-the compatibility links retire after checking NPC and object objectives. The existing
-entrance coordinates, inherited symbolic/instance data and live placement limitations
-from the adoption record still require their own review. This refresh supplies no new
-coordinate conversion and no live-client validation.
+the compatibility links retire after checking NPC and object objectives. The map refresh itself supplied no coordinate conversion or live-client validation.
+The later [coordinate audit](forever-coordinate-audit.md) converts reviewed Era-framed
+entrances and records the remaining later-expansion and synthetic-frame gaps. Inherited
+symbolic/instance data and live placement still need review.
 
 ### Ownership and normal generation
 
@@ -324,8 +337,8 @@ lua5.1 tools/dbc/forever-data.test.lua
 The converter fixture suites exercise geometry, download validation with mocked transport,
 token rewriting, rounding, sentinels, semantic validation, output ownership, reruns,
 rollback and cancellation.
-The dataset check covers actual support shapes, reviewed links, preserved routing
-and faction references, including a missing-reference Self-proof. It does not
+The dataset check covers actual support shapes, reviewed links, converted entrance literals,
+preserved routing and faction references, including a missing-reference Self-proof. It does not
 require future Forever inputs to equal Era.
 
 To revalidate adopted conversion bytes without regenerating them, call

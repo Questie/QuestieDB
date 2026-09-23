@@ -570,6 +570,47 @@ See [`support-data.md`](./support-data.md) for flavor selection and copied-data 
 
 ---
 
+## Era-to-Forever coordinates
+
+For consumer-owned Era points, such as Darkmoon Faire spawns or dungeon entrances:
+
+```lua
+local x, y = LibQuestieDB.EraToForever(215, 44.18, 76.06)             -- AreaID: Mulgore
+local x, y = LibQuestieDB.EraToForeverByUiMapId(1412, 44.18, 76.06)   -- UiMapID: Mulgore
+-- Both return approximately 43.888926, 76.659548.
+```
+
+Both functions take and return **0-100 percentages**, not normalized 0-1 coordinates.
+They retain full precision without rounding or clamping. `-1, -1` instance-presence sentinels
+pass through; a partial sentinel such as `-1, 20` raises an error. `0, 0` is a real point.
+
+Only these four zone frames transform; every other ID passes through unchanged:
+
+| Zone | AreaID | UiMapID |
+| --- | ---: | ---: |
+| Mulgore | 215 | 1412 |
+| Eastern Plaguelands | 139 | 1423 |
+| Redridge Mountains | 44 | 1433 |
+| Stormwind City | 1519 | 1453 |
+
+Pass the ID of the map on which the **input point is expressed**. For a dungeon entrance,
+use its outdoor zone, not the dungeon's ID. The helpers do not infer parent frames from
+subzone IDs. Unknown IDs also pass through; this does not verify their compatibility.
+
+The helper is generated from DBC bounds, currently Era `1.15.9.69722` to Forever
+`1.60.1.69893`. Its header records the builds. The offline DBC commands always check its
+behavior; maintainers can [regenerate it explicitly](../tools/dbc/README.md#generated-runtime-helper-and-mandatory-check).
+The projection assumes the landmark's world position did not move. No DBC access or WoW map
+APIs are needed at runtime.
+
+These are explicit, dot-called helpers available in both Source and Baked modes on every
+flavor. The caller decides when Forever output is wanted. They do not modify data or run
+automatically during reads. **Do not apply them to already-converted Forever coordinates.**
+Older QuestieDB releases may lack these additive helpers; check for the function before use
+when supporting those releases.
+
+---
+
 ## Read mode
 
 ```lua

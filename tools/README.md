@@ -15,7 +15,9 @@ tests, and the bundled interpreters. See [the main README](../README.md#for-cont
 | `probe-addon/` | Live-client storage and API probes |
 
 The root commands `dbc-coordinates`, `convert-forever` and `dbc-support` reuse the owned
-[DBC tools](dbc/README.md); none runs during normal Generation. Use an explicit existing
+[DBC tools](dbc/README.md); none runs during normal Generation. Coordinate comparison and
+conversion always check the shipped Lua helper against DBC. `dbc-coordinates --write-runtime-helper`
+explicitly regenerates that helper; it does not migrate existing Forever data. Use an explicit existing
 `--database` path to avoid a missing-cache download. Conversion writes ten files plus its
 manifest and protects edited outputs. See [Forever](../docs/forever.md) before rerunning it.
 `dbc-support` never downloads; it writes only review candidates under `.out/forever-support/`,

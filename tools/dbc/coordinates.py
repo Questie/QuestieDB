@@ -99,6 +99,15 @@ def compare_maps(source: list[dict], target: list[dict],
         old_maps.setdefault(row["UiMapID"], []).append(row)
     for row in target:
         new_maps.setdefault(row["UiMapID"], []).append(row)
+    # The AreaID API cannot choose between multiple primary UiMaps, even when one
+    # of them has usable geometry. Use the same eligibility for offline and runtime conversion.
+    area_maps = []
+    for rows in (source, target):
+        areas = {}
+        for row in rows:
+            if row["AreaID"] > 0 and row["OrderIndex"] == 0:
+                areas.setdefault(row["AreaID"], set()).add(row["UiMapID"])
+        area_maps.append(areas)
     report = {"transforms": [], "unsupported": [], "added_maps": [], "removed_maps": []}
     for ui_map in sorted(old_maps.keys() | new_maps.keys()):
         old_rows, new_rows = old_maps.get(ui_map, []), new_maps.get(ui_map, [])
@@ -120,6 +129,7 @@ def compare_maps(source: list[dict], target: list[dict],
             **identity, "area_id": old_rows[0]["AreaID"], "map_id": old_rows[0]["MapID"],
             "source_assignment_id": old_rows[0]["ID"], "target_assignment_id": new_rows[0]["ID"],
             "changed": old != new, "coefficients": asdict(transform),
+            "area_transform_supported": all(areas.get(old_rows[0]["AreaID"]) == {ui_map} for areas in area_maps),
             "source_bounds": asdict(old), "target_bounds": asdict(new),
         })
     report["summary"] = {

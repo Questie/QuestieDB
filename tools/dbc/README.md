@@ -160,8 +160,11 @@ selection. Era inputs remain untouched. Forever already has an adopted baseline;
 are for deliberate migrations in an isolated workspace, not a prerequisite for normal Generation.
 
 Use the repository-root `questiedb.sh` or `questiedb.ps1` launcher. The tools need
-Python 3.8+ with its standard library. Conversion also needs Lua 5.1 for semantic
-validation. Downloading from the private `Questie/dbc` repository requires an
+Python 3.8+ with its standard library. Coordinate comparison and conversion both need
+Lua 5.1 to validate the actual runtime helper. They reuse the contributor launcher's interpreter
+discovery: `--lua` or `LUA` overrides, then the matching Windows/Linux x64 bundle, then PATH.
+No system Lua installation is needed on bundled platforms. Conversion also uses Lua for entity
+semantic validation. Downloading from the private `Questie/dbc` repository requires an
 installed, authenticated `gh` CLI with repository access.
 
 ## Inspect a coordinate
@@ -186,6 +189,52 @@ the full-precision prediction and the rounded Lua output. The transform preserve
 world position through a per-map scale and offset. It assumes the NPC and world coordinate frame did not move. Check
 several separated landmarks per changed map before treating the result as verified
 Forever placement.
+
+## Generated runtime helper and mandatory check
+
+Every `dbc-coordinates` run executes `src/support/eraToForever.lua` against the selected DBC
+geometry. `convert-forever` performs the same check before preparing entity output, including
+on `--dry-run`. There is no opt-in flag and no skip flag. `--json` includes the result under
+`runtime_helper` and still exits nonzero if the helper is stale or broken.
+
+The check exercises both public functions on every supported direct AreaID/UiMapID pair,
+including identity maps. Three corner probes detect scale and offset differences; a fractional
+point checks precision. It also checks sentinel behavior, exact unknown-ID passthrough and the
+helper's generated inventory, so an old entry whose map disappeared or became unsupported
+cannot silently escape validation. Numerical comparison uses an absolute `1e-10` tolerance.
+
+To deliberately regenerate the addon helper from DBC, use the same comparison command with
+`--write-runtime-helper`:
+
+```sh
+./questiedb.sh dbc-coordinates \
+  --database .cache/dbc/dbc-source.db \
+  --from-build 1.15.9.69722 --to-build 1.60.1.69893 \
+  --allow-untracked-source --write-runtime-helper
+```
+
+This generates the whole small module from `runtime-helper.template.lua`, stores only
+non-identity transforms, validates the candidate through Lua, then replaces the helper
+atomically. Repeating identical generation does not rewrite it. Symlinked destinations and
+edits made during validation are rejected. The explicit flag replaces existing helper edits;
+change the template rather than hand-editing generated Lua. Review the generated diff before
+adopting new geometry.
+
+Keep the source Era build fixed to the frame of the authored inputs. The output header records
+both selected builds. A newer target build with identical supported geometry passes the check
+without requiring a header-only update. Generation requires only this checkout and the DBC
+snapshot, not another repository or hand-maintained coefficient file.
+
+Added, removed, unsupported and AreaID-ambiguous maps remain separate review evidence. The
+helper does not invent transforms for them; IDs without supported transforms pass through.
+A matching helper certifies only the comparable geometry, not that every map is supported.
+`dbc-support` remains a target-only support-map candidate exporter, not an Era coordinate
+comparison, and does not generate or check this helper.
+
+**Updating the helper does not migrate existing Forever data.** Entity coordinates and the
+reviewed entrance literals have already been converted; a changed target frame needs its own
+data review. The helper is used for consumer-owned Era points such as DMF. Normal Generation,
+addon reads and client startup neither read DBC nor regenerate it.
 
 ## Convert data and corrections
 
@@ -329,6 +378,9 @@ compatibility links are maintained separately from coordinate conversion; consul
 importing another export. New content and race/class restrictions need separate work.
 Questie-owned runtime Corrections can still supply Era coordinates, and
 `support/Forever/Zones/dungeons.lua` entrance coordinates are not converted by this tool.
+Reviewed Era-framed entrances are now maintained as Forever literals; see the
+[coordinate audit](../../docs/forever-coordinate-audit.md) for those edits, the consumer DMF
+conversion and the remaining non-Era/synthetic-frame gaps.
 
 The tooling is self-contained in QuestieDB. It does not require the sibling `dbc/`
 or `QuestieDB-DBC/` checkout. The separate support-data generator in `QuestieDB-DBC/`

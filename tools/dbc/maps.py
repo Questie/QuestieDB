@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import signal
@@ -15,6 +16,7 @@ import sys
 from coordinates import Transform, compare_maps
 from source import read_table
 from download import DEFAULT_DATABASE, ensure_database
+from runtime_helper import ROOT, HELPER, check_helper, find_lua, write_helper
 
 ASSIGNMENT_FIELDS = {
     "ID": int, "UiMapID": int, "MapID": int, "AreaID": int, "OrderIndex": int,
@@ -111,7 +113,7 @@ def interrupt(_signal: int, _frame: object) -> None:
 
 
 def main() -> int:
-    """Print coefficients or points, downloading the source cache only when missing."""
+    """Always check the addon helper; regenerate it only on explicit request."""
     signal.signal(signal.SIGTERM, interrupt)
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--from-build", required=True, help="Explicit Era build, e.g. 1.15.9.69722")
@@ -123,7 +125,10 @@ def main() -> int:
     parser.add_argument("--point", type=float, nargs=2, action="append", metavar=("X", "Y"),
                         help="Era percentages; repeat for multiple points on the same map")
     parser.add_argument("--dbc-tag", help="Release tag used only when the DBC cache is missing")
-    parser.add_argument("--json", action="store_true", help="Print the complete coefficient report as JSON")
+    parser.add_argument("--json", action="store_true", help="Print the complete coefficient and runtime-helper report as JSON")
+    parser.add_argument("--lua", default=os.environ.get("LUA"), help="Lua 5.1 override; otherwise use bundled Lua or PATH")
+    parser.add_argument("--write-runtime-helper", action="store_true",
+                        help="Generate and validate src/support/eraToForever.lua from these DBC builds; does not migrate data")
     args = parser.parse_args()
     if not re.fullmatch(r"1\.15\.\d+\.\d+", args.from_build):
         parser.error("--from-build must be an explicit Era 1.15.x build")
@@ -132,10 +137,13 @@ def main() -> int:
     if (args.ui_map is None) != (args.point is None):
         parser.error("--ui-map and --point must be supplied together")
     try:
+        lua = find_lua(args.lua, ROOT)
         database_provenance = ensure_database(args.database, args.from_build, args.to_build, tag=args.dbc_tag)
         report = build_report(args.database, args.from_build, args.to_build, args.allow_untracked_source)
         report["database"] = database_provenance
         points = convert_points(report, args.ui_map, args.point) if args.point else []
+        report["runtime_helper"] = (write_helper(report, ROOT, lua) if args.write_runtime_helper
+                                    else check_helper(report, ROOT / HELPER, lua))
     except KeyboardInterrupt:
         print("Coordinate comparison cancelled", file=sys.stderr)
         return 130
@@ -144,7 +152,7 @@ def main() -> int:
 
     if args.json:
         print(json.dumps({**report, "points": points}, ensure_ascii=False, indent=2, allow_nan=False))
-        return 0
+        return 0 if report["runtime_helper"]["status"] == "matched" else 1
 
     print(f"{args.from_build} -> {args.to_build}; percentages, not normalized coordinates")
     if any(row["coverage"] == "untracked" for row in report["source_tables"].values()):
@@ -157,10 +165,23 @@ def main() -> int:
                   f"X {coeff['scale_x']:.12f}, {coeff['offset_x']:+.12f}; "
                   f"Y {coeff['scale_y']:.12f}, {coeff['offset_y']:+.12f}")
     print("Summary:", json.dumps(report["summary"], sort_keys=True))
+    for category in ("added_maps", "removed_maps", "unsupported"):
+        for row in report[category]:
+            print(f"REVIEW {category}: UiMap {row['ui_map_id']} "
+                  f"({row['target_name'] or row['source_name']}): {row.get('reason', 'no shared frame')}")
+    for row in report["transforms"]:
+        if not row["area_transform_supported"]:
+            print(f"REVIEW AreaID {row['area_id']}: ambiguous primary map; excluded from runtime helper")
+    print(report["runtime_helper"]["details"])
+    if report["runtime_helper"].get("written"):
+        print("Generated", HELPER, "(review the diff; existing Forever data was not migrated)")
+    if report["runtime_helper"]["status"] != "matched":
+        print("Runtime helper is stale. Rerun with --write-runtime-helper to generate it, then review the diff. "
+              "Updating the helper does not migrate existing Forever data.", file=sys.stderr)
     for point in points:
         print(json.dumps(point, allow_nan=False))
     print("No entity data rewritten. Assumes unchanged world positions; validate landmarks before bulk conversion.")
-    return 0
+    return 0 if report["runtime_helper"]["status"] == "matched" else 1
 
 
 if __name__ == "__main__":

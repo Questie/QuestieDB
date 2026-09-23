@@ -27,5 +27,7 @@
 ---@field ObjectiveFirst QuestieDBObjectiveFirst Shared objective-ordering hints; read-only for consumers.
 ---@field l10n QuestieDBL10n Localization controls and state.
 ---@field Support table Whole-table support data.
+---@field EraToForever fun(areaId: AreaId, x: number, y: number): number, number Explicit Era-to-Forever zone percentages (0-100), unrounded; other AreaIDs pass through. Preserves (-1,-1), rejects partial sentinels. Never apply to already-Forever points.
+---@field EraToForeverByUiMapId fun(uiMapId: integer, x: number, y: number): number, number Same projection using the point's Era UiMapID; other UiMapIDs pass through. No automatic flavor selection.
 ---@field ModeIndicator table Source-mode indicator API.
 LibQuestieDB = {}
