@@ -278,11 +278,11 @@ constants.byExpansion = {
       TAUREN = 32,
       GNOME = 64,
       TROLL = 128,
-      GOBLIN = 256,
       HIGHORDER_SKYBORNE = 4294967296,
       ALL_ALLIANCE = 4294967373,
       WINDSHAPER_SKYBORNE = 8589934592,
       ALL_HORDE = 8589934770,
+      SKYBORNE = 12884901888,
     },
   },
 }
