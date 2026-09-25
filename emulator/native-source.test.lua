@@ -326,3 +326,51 @@ for _, datatype in ipairs({ "Quest", "Npc", "Item", "Object" }) do
 end
 client.reset()
 print("PASS Forever authored Static/Dynamic precedence and legacy fall-through")
+
+-- Use the real manifest and loader, with conflicting rows, to prove the trace layer sits
+-- strictly between the legacy baseline and authored corrections: legacy-only and
+-- trace-only ids survive untouched, traces win over legacy, and authored wins over traces.
+client.install({ expansion = "Forever" })
+local traceOffline = runtime.build()
+local traceFlavor = config.flavorByName.Forever
+traceOffline.flavor = traceFlavor
+runtime.loadCorrections(traceOffline, traceFlavor)
+local traceProviders = traceOffline.CorrectionCompat.modules
+local traceId = 900000101
+for _, case in ipairs({
+  { "Quest", "QuestieQuestFixes", "ForeverTraceQuestFixes", "ForeverQuestFixes" },
+  { "Npc", "QuestieNPCFixes", "ForeverTraceNpcFixes", "ForeverNpcFixes" },
+  { "Item", "QuestieItemFixes", "ForeverTraceItemFixes", "ForeverItemFixes" },
+  { "Object", "QuestieObjectFixes", "ForeverTraceObjectFixes", "ForeverObjectFixes" },
+}) do
+  local datatype, legacy, trace, authored =
+    case[1], traceProviders[case[2]], traceProviders[case[3]], traceProviders[case[4]]
+  assert(type(trace.Load) == "function" and trace.LoadDynamic == nil,
+    datatype .. " trace provider must be Static-only")
+  legacy.Load = function()
+    return {
+      [traceId] = { [1] = "legacy static" },
+      [traceId + 1] = { [1] = "legacy-only static" },
+      [traceId + 2] = { [1] = "legacy static (traced over)" },
+    }
+  end
+  trace.Load = function()
+    return {
+      [traceId] = { [1] = "trace static" },
+      [traceId + 2] = { [1] = "trace static" },
+      [traceId + 3] = { [1] = "trace-only static" },
+    }
+  end
+  authored.Load = function()
+    return { [traceId] = { [1] = "Forever static" } }
+  end
+
+  local rows = {}
+  traceOffline.Corrections.ApplyStaticToEntities(datatype, rows, traceFlavor, "QuestieDB")
+  assert(rows[traceId][1] == "Forever static", datatype .. " authored Static Correction did not win over trace")
+  assert(rows[traceId + 1][1] == "legacy-only static", datatype .. " lost its legacy baseline")
+  assert(rows[traceId + 2][1] == "trace static", datatype .. " trace layer did not win over legacy")
+  assert(rows[traceId + 3][1] == "trace-only static", datatype .. " lost its trace-only baseline")
+end
+client.reset()
+print("PASS Forever trace layer precedence between legacy and authored")

@@ -168,12 +168,18 @@ config.ownedCorrections = {
   { owned = 'Forever', file = 'Forever/legacy/classicObjectFixes.lua', module = 'QuestieObjectFixes', datatype = 'Object', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1, window = 'Era' },
   { owned = 'Forever', file = 'Forever/legacy/classicQuestReputationFixes.lua', module = 'QuestieClassicQuestReputationFixes', datatype = 'Quest', static = {'Load'}, expansions = {['Forever']=true}, generated = true, window = 'Era' },
   { owned = 'Forever', file = 'Forever/legacy/itemStartFixes.lua', module = 'QuestieItemStartFixes', datatype = 'Item', static = {'LoadAutomaticQuestStarts'}, options = {['noNewEntries']=true,['noOverwrites']=true}, generated = true, window = 'Era' },
-  -- Generated delta-base follows all inherited Static Corrections, before authored fixes.
+  -- Generated delta-base follows all inherited Static Corrections, before traces and authored fixes.
   { owned = 'Forever', file = 'Forever/generated/foreverBaseNpc.lua', module = 'ForeverBaseNpc', datatype = 'Npc', static = {'Load'}, generated = true, window = 'ForeverDeltaBase' },
   { owned = 'Forever', file = 'Forever/generated/foreverBaseObject.lua', module = 'ForeverBaseObject', datatype = 'Object', static = {'Load'}, generated = true, window = 'ForeverDeltaBase' },
   { owned = 'Forever', file = 'Forever/generated/foreverBaseQuest.lua', module = 'ForeverBaseQuest', datatype = 'Quest', static = {'Load'}, generated = true, window = 'ForeverDeltaBase' },
   { owned = 'Forever', file = 'Forever/generated/foreverBaseItem.lua', module = 'ForeverBaseItem', datatype = 'Item', static = {'Load'}, generated = true, window = 'ForeverDeltaBase' },
-  -- Authored Forever corrections follow legacy and generated Static data; Dynamic precedence is unchanged.
+  -- Machine-generated from player traces (tools/trace-analyzer); never hand-edited. Applies
+  -- after the generated delta-base and before authored forever*Fixes.lua, which may override it.
+  { owned = 'Forever', file = 'Forever/traces/foreverTraceQuestFixes.lua', module = 'ForeverTraceQuestFixes', datatype = 'Quest', static = {'Load'}, generated = true, window = 'Forever' },
+  { owned = 'Forever', file = 'Forever/traces/foreverTraceNpcFixes.lua', module = 'ForeverTraceNpcFixes', datatype = 'Npc', static = {'Load'}, generated = true, window = 'Forever' },
+  { owned = 'Forever', file = 'Forever/traces/foreverTraceItemFixes.lua', module = 'ForeverTraceItemFixes', datatype = 'Item', static = {'Load'}, generated = true, window = 'Forever' },
+  { owned = 'Forever', file = 'Forever/traces/foreverTraceObjectFixes.lua', module = 'ForeverTraceObjectFixes', datatype = 'Object', static = {'Load'}, generated = true, window = 'Forever' },
+  -- Authored Forever corrections follow legacy, generated base and trace data; Dynamic precedence is unchanged.
   { owned = 'Forever', file = 'Forever/foreverQuestFixes.lua', module = 'ForeverQuestFixes', datatype = 'Quest', static = {'Load'}, dynamic = {'LoadDynamic'}, window = 'Forever' },
   { owned = 'Forever', file = 'Forever/foreverNPCFixes.lua', module = 'ForeverNpcFixes', datatype = 'Npc', static = {'Load'}, dynamic = {'LoadDynamic'}, window = 'Forever' },
   { owned = 'Forever', file = 'Forever/foreverItemFixes.lua', module = 'ForeverItemFixes', datatype = 'Item', static = {'Load'}, dynamic = {'LoadDynamic'}, window = 'Forever' },

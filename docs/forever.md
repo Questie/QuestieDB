@@ -86,6 +86,19 @@ The required-races Derived Pass also uses Forever's faction masks in Source mode
 
 Conversion only targets the inherited baseline and raw data, never `forever*Fixes.lua`.
 
+### Trace corrections
+
+`src/corrections/Forever/traces/` holds a fourth, machine-generated layer:
+`foreverTraceQuestFixes.lua`, `foreverTraceNpcFixes.lua`, `foreverTraceItemFixes.lua`,
+`foreverTraceObjectFixes.lua`. `tools/trace-analyzer` regenerates these from aggregated
+player traces; never hand-edit them — hand-authored work belongs in the `forever*Fixes.lua`
+files above. Each exposes only `Load()` (Static; no Dynamic entry point).
+
+Static Corrections apply in the order legacy baseline → traces → authored `forever*Fixes.lua`,
+so an authored fix always overrides a trace-derived value for the same field, and a trace
+value always overrides the legacy baseline. Ids the trace layer does not touch fall through
+to whichever layer beneath it last set them.
+
 ## Baked artifacts
 
 `generate.lua Forever` writes `QuestieDB_Forever.toc` and a byte-identical temporary
