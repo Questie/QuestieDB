@@ -1010,6 +1010,7 @@ l10n.objectLookup["ptBR"] = loadstring([[return {
 [179669] = "Símbolo da Missão de Montaria de Bruxo 1",
 [179670] = "Símbolo da Missão de Montaria de Bruxo 2",
 [179671] = "Símbolo da Missão de Montaria de Bruxo 3",
+[179697] = "Baú do Tesouro da Arena",
 [179703] = "Baú do Senhor do Fogo",
 [179782] = "Kit de Alquimia",
 [179826] = "Instruções Secretas: Fluxo Ígneo",

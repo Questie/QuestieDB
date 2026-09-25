@@ -960,6 +960,7 @@ l10n.objectLookup["zhCN"] = loadstring([[return {
 [179669] = "Warlock Mount Quest Symbol 1",
 [179670] = "Warlock Mount Quest Symbol 2",
 [179671] = "Warlock Mount Quest Symbol 3",
+[179697] = "竞技场财宝箱",
 [179703] = "火焰之王的宝箱",
 [179782] = "炼金设备",
 [179826] = "秘密设计图：炽热助熔剂",
