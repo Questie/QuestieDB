@@ -19,12 +19,21 @@ and race/class policy still need separate review.
 
 ## Source selection
 
-The committed `QuestieDB.toc` uses native per-file `AllowLoadGameType` conditions.
-`src/flavors/Forever.lua` selects Forever through `[AllowLoadGameType camelot, forever]`
-before its Source reader and payloads load. Configuration maps both names to the same owned
-files, and the emulator tests both personas. This does not establish independent live recognition
-of each token; `camelot` remains the default emulator persona. Owned folder names need not match native
-game-type names.
+The committed `QuestieDB.toc` uses native per-file game-type conditions. Legacy files use
+`AllowLoadGameType`. The Forever initializer and all owned payloads use:
+
+```toc
+[ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+```
+
+An `AllowLoadGameType` list passes when the client recognizes none of its tokens. On Anniversary
+2.5.6 (69795), the former `camelot, forever` list loaded the Forever initializer and overwrote
+TBC entity and support payloads. Excluding known legacy types avoids that failure without
+requiring older clients to recognize Forever. `mainline` is deliberately not excluded; this does
+not add Mainline as a supported database flavor.
+
+The emulator tests both `camelot` and `forever` personas against the same owned files;
+`camelot` remains its default Forever persona. Owned folder names need not match native names.
 
 Native selection replaces cross-flavor Lua discard selectors and their marker files.
 The loader shim still captures deferred entity strings, materializes them lazily and
@@ -110,16 +119,26 @@ handoff, so review new exports rather than copying them wholesale.
 
 ## Client support and acceptance
 
-Source mode now requires native per-file game-type selection. Historical Interface metadata
-alone does not prove this feature is supported. There is no untested Lua fallback. Older
-supported-client Source acceptance and exact Camelot suffixed-TOC recognition remain pending.
-[TOC selection research](toc-flavor-selection.md) records source evidence and parser questions;
-its proposed implementation and tooling sections predate this integration. A subsequent user-run
-probe reported `camelot, forever selected`. The probe only prints success when that mixed list
-loads its file and a Vanilla-only control is excluded. The reported result did not include the
-client build. It establishes that the mixed list works on that client, not that `forever` is
-recognized separately or that all supported clients behave the same way. Full integration
-acceptance remains pending; offline emulator and distribution tests cannot establish it.
+Source mode requires native per-file allow and exclude conditions. Historical Interface metadata
+alone does not prove support. There is no Lua fallback. The exclusion-based selection passed a
+live Anniversary 2.5.6 (69795), Interface 20506 startup check. Forever and other supported-client
+Source acceptance, plus exact Camelot suffixed-TOC recognition, remain pending. Offline emulator
+and distribution tests cannot establish native parser behavior.
+
+[TOC selection research](toc-flavor-selection.md) records earlier source evidence and parser
+questions. The former mixed-token probe reported success without a client build; it did not
+establish safety on older clients. A read-only Anniversary 2.5.6 (69795) investigation subsequently
+found `multiple Source flavors selected` from `src/flavors/Forever.lua`, all four deferred entity
+payload sizes matching Forever rather than TBC, and Forever's 54-entry reverse zone map. Questie
+stopped initialization because `uiMapIdToAreaIdOverride[113]` and the effective reverse map lacked
+the expected TBC value `0`. These observations motivated the exclusion-based selection above.
+
+After the change and a user-performed reload without the Baked TBC TOC, the bridge confirmed
+both public and metadata mode as `source`, flavor `TBC`, no recorded Lua or Blizzard startup
+errors, and normal Questie world-event startup messages. The reverse zone map contained 244
+entries, its override and effective value at `[113]` were both `0`, and TBC quest 10058 returned
+`An Old Gift`. This verifies the reported startup failure is resolved on that build, not every
+entity value or the full loaded-file inventory.
 
 Before release or installation into a daily-driver client, obtain authorization and complete
 these checks in a disposable client/addon setup:
@@ -131,8 +150,8 @@ these checks in a disposable client/addon setup:
 - Check suffixed-TOC recognition and Baked precedence over the base TOC on each supported
   client build. Confirm both Forever filenames carry identical complete metadata and plain
   file lists. Before removing Camelot, verify `QuestieDB_Forever.toc` works without that alias.
-- Retain the mixed-token probe result with the exact client build, and check the `forever`
-  token by itself when Blizzard completes the rename. Do not generalize to arbitrary unknown tokens.
+- Verify that Forever-only files are excluded on legacy clients and included on Forever, without
+  depending on recognition of `camelot` or `forever`. Record the exact builds and conditions tested.
 - Check several separated static landmarks on Mulgore, Eastern Plaguelands, Redridge Mountains
   and Stormwind City. Record map identity and measured placement, not just one NPC. Review
   retained synthetic-area points and deferred Cata/MoP entrance frames separately.

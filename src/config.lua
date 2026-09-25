@@ -417,8 +417,19 @@ function config.sourceFileList(flavor)
       if flavor and token == flavor.gameType then include = true end
     end
     if not flavor then
-      files[#files + 1] = entry.path .. (#entry.gameTypes > 0 and
-        (" [AllowLoadGameType " .. table.concat(entry.gameTypes, ", ") .. "]") or "")
+      local condition = ""
+      if #entry.gameTypes > 0 then
+        local directive, tokens = "AllowLoadGameType", entry.gameTypes
+        local forever = config.flavorByName.Forever
+        if tokens[1] == forever.gameType and #tokens == 1 + #(forever.gameTypeAliases or {}) then
+          -- An all-unknown allow list passes on older clients, loading Forever over TBC.
+          -- Exclude known legacy types instead. Deliberately do not exclude mainline.
+          directive = "ExcludeLoadGameType"
+          tokens = { "vanilla", "tbc", "wrath", "cata", "mists" }
+        end
+        condition = " [" .. directive .. " " .. table.concat(tokens, ", ") .. "]"
+      end
+      files[#files + 1] = entry.path .. condition
     elseif include then files[#files + 1] = entry.path end
   end
   return files

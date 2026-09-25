@@ -9,7 +9,7 @@ and value examples are documented in [`api.md`](./api.md#support-data).
 
 Baked TOCs list only applicable inputs. Legacy flavors share some authored inputs; Forever
 owns its entire support bundle. The committed Source TOC uses native per-file
-`AllowLoadGameType` conditions to select applicable inputs
+`AllowLoadGameType` and `ExcludeLoadGameType` conditions to select applicable inputs
 before Lua executes. Lua discard scopes are not a fallback. See
 [client support and acceptance](forever.md#client-support-and-acceptance).
 
@@ -19,8 +19,9 @@ The selected data preserves the imported flavor boundaries:
   faction-template, and drop-table variant.
 - Mists uses the MoP area/UI map tables, quest XP, and faction templates.
 - Forever uses ten independent files under `support/Forever`, selected by
-  `[AllowLoadGameType camelot, forever]`. Shared Classic rules do not make these inputs
-  inherit future Era changes.
+  `[ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]`. An allow list of unknown
+  Forever tokens would also pass on older clients. Shared Classic rules do not make these
+  inputs inherit future Era changes.
 - Mists loads the MoP drop table followed by the Cata drop table. The cumulative order is
   intentional and matches Questie.
 

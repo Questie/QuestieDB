@@ -10,6 +10,16 @@ local emulator = dofile("emulator/metadata.lua")
 local runtime = dofile("generator/runtime.lua")
 local id = 900000001
 
+-- The emulator knows Forever's tokens, but older clients may know neither and accept an
+-- all-unknown allow list. Require known legacy exclusions for every Forever-only file.
+local sourceLines = config.sourceFileList()
+for index, entry in ipairs(config.sourceFileEntries()) do
+  if entry.path == "src/flavors/Forever.lua" or entry.path:find("/Forever/", 1, true) then
+    assert(sourceLines[index] == entry.path .. " [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]",
+      "Forever file must exclude legacy clients without excluding mainline: " .. entry.path)
+  end
+end
+
 -- Independent expectations: a shared applicability bug must not validate itself through
 -- sourceFileList/correctionApplies. Columns are Era, TBC, Wrath, Cata, Mists and owned Forever.
 local representativePaths = {
@@ -96,7 +106,7 @@ for _, flavor in ipairs(config.flavors) do
   collectgarbage("collect")
 end
 
--- Both native names must select the same complete input set, not separate data flavors.
+-- Neither Forever persona is excluded; both select the same complete owned input set.
 do
   local expected = config.sourceFileList(config.flavorByName.Forever)
   for _, gameType in ipairs({ "camelot", "forever" }) do

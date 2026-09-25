@@ -1,8 +1,8 @@
 # Native TOC flavor selection
 
 Historical research snapshot. The recommendations and parser questions below predate the
-implementation. See [Forever](forever.md) for the current dual-token selection, underscore
-filenames, subsequent mixed-token live-probe result and remaining acceptance checks.
+implementation. See [Forever](forever.md) for the current legacy-exclusion selection, underscore
+filenames, Anniversary's all-unknown allow-list failure and remaining acceptance checks.
 
 Research date: 2026-09-18. Recommendation: use explicit file-line game-type conditions in the
 Source TOC, after a small client acceptance check. Keep Baked TOCs flavor-specific and their

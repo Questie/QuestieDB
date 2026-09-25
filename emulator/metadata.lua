@@ -126,8 +126,8 @@ local gameTypes = { vanilla = true, tbc = true, wrath = true, cata = true, mists
 
 ---Parse and evaluate a file line; return its normalized path only when selected.
 ---Blank lines and comments (including metadata) return nil. XML remains ignored by this
----Lua-only loader. Bracket syntax other than one trailing AllowLoadGameType list is rejected;
----this is not a general native TOC interpreter or a claim about unknown-token client behavior.
+---Lua-only loader. Only one trailing AllowLoadGameType or ExcludeLoadGameType list is supported.
+---Unknown tokens are rejected, not modeled as a particular client's recognition set.
 ---@param line string
 ---@param gameType EmulatorGameType? Required for conditional files; never inferred from paths.
 ---@return string? path Selected Lua file path.
@@ -140,9 +140,10 @@ function emulator.selectFile(line, gameType)
 
   local path = line
   if line:find("[%[%]]") then
-    local tokens
-    path, tokens = line:match("^([^%[%]]-)%s+%[AllowLoadGameType%s+([^%[%]]+)%]$")
-    if not path or path == "" then
+    local directive, tokens
+    path, directive, tokens = line:match("^([^%[%]]-)%s+%[(%a+)%s+([^%[%]]+)%]$")
+    if not path or path == "" or
+       (directive ~= "AllowLoadGameType" and directive ~= "ExcludeLoadGameType") then
       error("Unsupported or malformed TOC file condition: " .. line, 0)
     end
     local selected = false
@@ -150,13 +151,14 @@ function emulator.selectFile(line, gameType)
     for token in (tokens .. ","):gmatch("(.-),") do
       token = token:match("^%s*(.-)%s*$")
       if not gameTypes[token] then
-        error("Unknown or malformed AllowLoadGameType token: " .. token, 0)
+        error("Unknown or malformed " .. directive .. " token: " .. token, 0)
       end
       if token == gameType then selected = true end
     end
     if gameType == nil then
       error("Conditional TOC file requires an explicit game-type persona", 0)
     end
+    if directive == "ExcludeLoadGameType" then selected = not selected end
     if not selected then return nil end
   end
 

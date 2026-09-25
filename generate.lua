@@ -125,7 +125,7 @@ local function sourceTocHeadings()
   local headings = {
     ["src/config.lua"] = { category = "Runtime foundation", subcategory = "Configuration, schema and codecs" },
     ["src/flavors/Vanilla.lua"] = { subcategory = "Native client selection",
-      note = "Exactly one initializer runs. Blizzard's current camelot token selects Forever." },
+      note = "Forever excludes legacy game types: an all-unknown allow list would also load on older clients." },
     [config.runtimeFiles.sourceReader] = { category = "Entity data", subcategory = "Loader setup",
       note = "Capture the selected flavor's deferred payloads; materialize them on first use." },
     ["data/_end.lua"] = { subcategory = "Loader teardown" },

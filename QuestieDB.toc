@@ -43,13 +43,13 @@ src\meta\itemMeta.lua
 src\meta\objectMeta.lua
 
 # --- Native client selection ---
-# Exactly one initializer runs. Blizzard's current camelot token selects Forever.
+# Forever excludes legacy game types: an all-unknown allow list would also load on older clients.
 src\flavors\Vanilla.lua [AllowLoadGameType vanilla]
 src\flavors\TBC.lua [AllowLoadGameType tbc]
 src\flavors\Wrath.lua [AllowLoadGameType wrath]
 src\flavors\Cata.lua [AllowLoadGameType cata]
 src\flavors\Mists.lua [AllowLoadGameType mists]
-src\flavors\Forever.lua [AllowLoadGameType camelot, forever]
+src\flavors\Forever.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
 # =============================================================================
 # Entity data
@@ -90,10 +90,10 @@ data\MoP\mopItemDB.lua [AllowLoadGameType mists]
 data\MoP\mopObjectDB.lua [AllowLoadGameType mists]
 
 # --- Forever ---
-data\Forever\foreverQuestDB.lua [AllowLoadGameType camelot, forever]
-data\Forever\foreverNpcDB.lua [AllowLoadGameType camelot, forever]
-data\Forever\foreverItemDB.lua [AllowLoadGameType camelot, forever]
-data\Forever\foreverObjectDB.lua [AllowLoadGameType camelot, forever]
+data\Forever\foreverQuestDB.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+data\Forever\foreverNpcDB.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+data\Forever\foreverItemDB.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+data\Forever\foreverObjectDB.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
 # --- Loader teardown ---
 data\_end.lua
@@ -159,16 +159,16 @@ support\QuestXP\xpDB-cata.lua [AllowLoadGameType cata]
 support\FactionTemplates\factionTemplateCata.lua [AllowLoadGameType cata]
 
 # --- Forever: independently owned support inputs ---
-support\Forever\Zones\dungeons.lua [AllowLoadGameType camelot, forever]
-support\Forever\Zones\subZoneToParentZone.lua [AllowLoadGameType camelot, forever]
-support\Forever\Zones\zoneIds.lua [AllowLoadGameType camelot, forever]
-support\Forever\Zones\instanceIdToAreaId.lua [AllowLoadGameType camelot, forever]
-support\Forever\DropTables\itemDropCorrections.lua [AllowLoadGameType camelot, forever]
-support\Forever\Zones\areaIdToUiMapId.lua [AllowLoadGameType camelot, forever]
-support\Forever\Zones\uiMapIdToAreaId.lua [AllowLoadGameType camelot, forever]
-support\Forever\QuestXP\xpDB-classic.lua [AllowLoadGameType camelot, forever]
-support\Forever\FactionTemplates\factionTemplateClassic.lua [AllowLoadGameType camelot, forever]
-support\Forever\DropTables\classicItemDrops.lua [AllowLoadGameType camelot, forever]
+support\Forever\Zones\dungeons.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+support\Forever\Zones\subZoneToParentZone.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+support\Forever\Zones\zoneIds.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+support\Forever\Zones\instanceIdToAreaId.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+support\Forever\DropTables\itemDropCorrections.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+support\Forever\Zones\areaIdToUiMapId.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+support\Forever\Zones\uiMapIdToAreaId.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+support\Forever\QuestXP\xpDB-classic.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+support\Forever\FactionTemplates\factionTemplateClassic.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+support\Forever\DropTables\classicItemDrops.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
 # --- Loader teardown ---
 src\support\_end.lua
@@ -245,19 +245,19 @@ src\corrections\Shared\itemStartFixes.lua [AllowLoadGameType vanilla, tbc, wrath
 
 # --- Forever: inherited baseline ---
 # Owned copies, not live Era or Shared providers. Add new work in forever*Fixes.lua.
-src\corrections\Forever\legacy\classicQuestFixes.lua [AllowLoadGameType camelot, forever]
-src\corrections\Forever\legacy\classicNPCFixes.lua [AllowLoadGameType camelot, forever]
-src\corrections\Forever\legacy\classicItemFixes.lua [AllowLoadGameType camelot, forever]
-src\corrections\Forever\legacy\classicObjectFixes.lua [AllowLoadGameType camelot, forever]
-src\corrections\Forever\legacy\classicQuestReputationFixes.lua [AllowLoadGameType camelot, forever]
-src\corrections\Forever\legacy\itemStartFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\legacy\classicQuestFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Forever\legacy\classicNPCFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Forever\legacy\classicItemFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Forever\legacy\classicObjectFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Forever\legacy\classicQuestReputationFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Forever\legacy\itemStartFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
 # --- Forever: authored corrections ---
 # Apply after the baseline within each Static/Dynamic category.
-src\corrections\Forever\foreverQuestFixes.lua [AllowLoadGameType camelot, forever]
-src\corrections\Forever\foreverNPCFixes.lua [AllowLoadGameType camelot, forever]
-src\corrections\Forever\foreverItemFixes.lua [AllowLoadGameType camelot, forever]
-src\corrections\Forever\foreverObjectFixes.lua [AllowLoadGameType camelot, forever]
+src\corrections\Forever\foreverQuestFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Forever\foreverNPCFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Forever\foreverItemFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Forever\foreverObjectFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
 # --- Provider registration and loader teardown ---
 src\corrections\manifest.lua

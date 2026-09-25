@@ -62,7 +62,7 @@ error("rejected file executed")
     "## Interface: 11509", "# ordinary comment", "",
     "  " .. first .. "  ",
     legacy .. " [AllowLoadGameType vanilla, tbc, wrath, cata, mists]",
-    forever .. " [AllowLoadGameType camelot, forever]",
+    forever .. " [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]",
     last,
   }, "\r\n"))
   for _, gameType in ipairs({ "vanilla", "tbc", "wrath", "cata", "mists", "camelot", "forever" }) do
@@ -73,8 +73,8 @@ error("rejected file executed")
   end
 
   -- A rejected file neither executes nor needs to exist or contain valid Lua.
-  write(toc, rejected .. " [AllowLoadGameType camelot]\n" ..
-    "missing.lua [AllowLoadGameType camelot]\n" .. first .. "\n" .. last)
+  write(toc, rejected .. " [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]\n" ..
+    "missing.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]\n" .. first .. "\n" .. last)
   local ns = emulator.loadAddon(toc, "FixtureAddon", baseDir, "vanilla")
   assert(table.concat(ns.order, ",") == "first,last")
   assert(_G.NativeTocRejectedSideEffect == nil)
@@ -87,13 +87,20 @@ error("rejected file executed")
   ns = emulator.loadAddon(toc, "FixtureAddon", baseDir)
   assert(table.concat(ns.order, ",") == "first,last", "three-argument API remains valid")
   assert(emulator.selectFile(" src\\file.lua [AllowLoadGameType vanilla, wrath] \r", "wrath") == "src/file.lua")
+  assert(emulator.selectFile("src/file.lua [AllowLoadGameType vanilla]", "tbc") == nil)
+  assert(emulator.selectFile(" src\\file.lua [ExcludeLoadGameType vanilla, wrath] \r", "tbc") == "src/file.lua")
+  assert(emulator.selectFile("src/file.lua [ExcludeLoadGameType vanilla, wrath]", "wrath") == nil)
 
   local malformed = {
     "[AllowLoadGameType]", "[AllowLoadGameType ]", "[AllowLoadGameType vanilla,]",
     "[AllowLoadGameType ,vanilla]", "[AllowLoadGameType vanilla,,wrath]",
     "[AllowLoadGameType vanilla wrath]", "[AllowLoadGameType vanilla, unknown]",
     "[AllowLoadGameType camelot, unknown]", "[AllowLoadGameType Vanilla]",
-    "[ExcludeLoadGameType vanilla]", "[AllowLoadTextLocale enUS]",
+    "[ExcludeLoadGameType]", "[ExcludeLoadGameType ]", "[ExcludeLoadGameType vanilla,]",
+    "[ExcludeLoadGameType ,vanilla]", "[ExcludeLoadGameType vanilla,,wrath]",
+    "[ExcludeLoadGameType vanilla wrath]", "[ExcludeLoadGameType vanilla, unknown]",
+    "[ExcludeLoadGameType vanilla] trailing", "[AllowLoadGameType vanilla] [ExcludeLoadGameType wrath]",
+    "[AllowLoadTextLocale enUS]",
     "[AllowLoadGameType vanilla", "AllowLoadGameType vanilla]",
     "[AllowLoadGameType vanilla] trailing", "[AllowLoadGameType vanilla] [AllowLoadGameType wrath]",
   }
@@ -107,8 +114,10 @@ error("rejected file executed")
     write(toc, line)
     rejects(function() emulator.loadAddon(toc, "FixtureAddon", baseDir, "vanilla") end, "malformed TOC file condition")
   end
-  write(toc, first .. " [AllowLoadGameType vanilla]")
-  rejects(function() emulator.loadAddon(toc, "FixtureAddon", baseDir) end, "explicit game-type persona")
+  for _, directive in ipairs({ "AllowLoadGameType", "ExcludeLoadGameType" }) do
+    write(toc, first .. " [" .. directive .. " vanilla]")
+    rejects(function() emulator.loadAddon(toc, "FixtureAddon", baseDir) end, "explicit game-type persona")
+  end
   rejects(function() emulator.loadAddon(toc, "FixtureAddon", baseDir, "unknown") end, "Unknown TOC game-type persona")
 end
 
