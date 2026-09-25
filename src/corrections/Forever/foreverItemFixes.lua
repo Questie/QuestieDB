@@ -10,7 +10,30 @@ function ForeverItemFixes:Load()
     local itemClasses = QuestieDB.itemClasses
 
     return {
-        -- [itemId] = { [itemKeys.name] = "Corrected name" },
+        [270302] = {
+            [itemKeys.name] = "Chakuyak's Pelt",
+            [itemKeys.npcDrops] = {268558},
+            [itemKeys.objectDrops] = nil,
+            [itemKeys.itemDrops] = nil,
+            [itemKeys.vendors] = nil,
+            [itemKeys.startQuest] = nil,
+        },
+        [275019] = {
+            [itemKeys.name] = "Supply Bundle",
+            [itemKeys.npcDrops] = nil,
+            [itemKeys.objectDrops] = nil,
+            [itemKeys.itemDrops] = nil,
+            [itemKeys.vendors] = nil,
+            [itemKeys.startQuest] = nil,
+        },
+        [277199] = {
+            [itemKeys.name] = "Pouch of Smoldering Incense",
+            [itemKeys.npcDrops] = nil,
+            [itemKeys.objectDrops] = nil,
+            [itemKeys.itemDrops] = nil,
+            [itemKeys.vendors] = nil,
+            [itemKeys.startQuest] = nil,
+        },
     }
 end
 
@@ -21,6 +44,6 @@ function ForeverItemFixes:LoadDynamic()
     local itemClasses = QuestieDB.itemClasses
 
     return {
-        -- [itemId] = { [itemKeys.name] = "Character-specific name" },
+        -- [itemId] = { [itemKeys.name] = "Corrected name" },
     }
 end
