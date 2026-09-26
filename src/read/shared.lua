@@ -84,8 +84,8 @@ function shared.Freeze(value)
   return value
 end
 
---- Install a freeze implementation. Used by the offline harness to make the guard present in
---- CI rather than silently absent — see emulator/freeze.lua.
+--- Install a freeze implementation. Used by the offline harness's focused freeze tests and
+--- `equivalence.lua --freeze` — see emulator/freeze.lua.
 function shared.SetFreezeImplementation(implementation)
   freeze = implementation
   shared.canFreeze = implementation ~= nil

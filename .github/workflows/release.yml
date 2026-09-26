@@ -155,12 +155,6 @@ jobs:
         working-directory: QuestieDB
         run: lua5.1 verify.lua ${{ matrix.flavor }}
 
-      - name: Verify ownership under freezing
-        working-directory: QuestieDB
-        # Match CI's smallest/largest coverage without doubling every flavor's runtime.
-        if: matrix.flavor == 'Vanilla' || matrix.flavor == 'Mists'
-        run: lua5.1 verify.lua ${{ matrix.flavor }} --freeze
-
       - name: Source/baked equivalence
         working-directory: QuestieDB
         run: lua5.1 equivalence.lua ${{ matrix.flavor }}

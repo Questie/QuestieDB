@@ -216,8 +216,7 @@ Use the workflow to publish, rather than invoking the publisher outside its gate
 After choosing the tag, shared checks and the six
 [flavor pipelines](../../README.md#independent-test-scopes) run independently. Each flavor runs
 Generation, Determinism, scoped tests, Reconstruction, Verification, Equivalence, and validators.
-Both CI and Release reconstruct all six flavors and verify ownership under freezing on
-Vanilla and Mists.
+Both CI and Release reconstruct all six flavors.
 
 Release checks each TOC's checksum before uploading it and again after collecting all six.
 Forever's handoff includes its byte-identical Camelot alias; both filenames are checksummed.
