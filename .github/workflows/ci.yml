@@ -97,14 +97,6 @@ jobs:
         working-directory: QuestieDB
         run: lua5.1 verify.lua ${{ matrix.flavor }}
 
-      - name: Round-trip verification under freezing
-        working-directory: QuestieDB
-        # Opt-in because the pure-Lua freeze substitute costs about 2x wall clock. The smallest
-        # and largest flavors keep the ownership guard present in CI without paying 2x on every
-        # matrix leg.
-        if: matrix.flavor == 'Vanilla' || matrix.flavor == 'Mists'
-        run: lua5.1 verify.lua ${{ matrix.flavor }} --freeze
-
       - name: Source/baked equivalence
         working-directory: QuestieDB
         # The load-bearing test in the system. Two permanent read modes mean it never retires.

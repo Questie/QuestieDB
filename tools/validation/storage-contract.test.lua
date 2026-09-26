@@ -73,6 +73,10 @@ return function(check, equal)
       local nested = quest.objectives(9005)
       nested[1][1][1] = -1
       equal(quest.objectives(9005), {{{6,nil,0}}}, label .. "nested objective copies are independent")
+      local raw = quest.GetRaw(9005, "objectives")
+      raw[1][1][1] = -1
+      equal(quest.GetRaw(9005, "objectives"), {{{6,nil,0}}}, label .. "raw nested reads remain caller-owned")
+      equal(quest.objectives(9005), {{{6,nil,0}}}, label .. "raw mutation leaves cached reads unchanged")
 
       -- Warm caches before changing a slot; withdrawal must reveal the untouched base.
       db.SetCorrection("Fixture", "Quest", "change", {
@@ -84,6 +88,10 @@ return function(check, equal)
       equal(quest.objectives(9005), {}, label .. "clearing populated objectives invalidates the cached structure")
       equal(quest.name(9100), "Added", label .. "correction adds a readable entity")
       equal(quest.GetAllIds(true)[9100], true, label .. "added entity is enumerable")
+      local corrected = quest.inGroupWith(9100)
+      corrected[1] = -1
+      corrected[2] = 10
+      equal(quest.inGroupWith(9100), {9}, label .. "correction-return mutations never reach the overlay")
       db.SetCorrection("Fixture", "Quest", "change", nil)
       equal(quest.name(9002), "Scalar only", label .. "withdrawal invalidates scalar cache")
       equal(quest.objectives(9005), {{{6,nil,0}}}, label .. "withdrawal restores the populated base structure")

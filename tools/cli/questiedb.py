@@ -13,10 +13,9 @@ Tasks:
   dbc-coordinates  Inspect Era/Forever map transforms (--help for build/point options)
   convert-forever  Convert Era data/corrections into separate Forever files (--help)
   dbc-support     Generate candidate-only Forever map support from local DBC (--help)
-  verify equivalence reconstruct validators test determinism freeze
+  verify equivalence reconstruct validators test determinism
 
 Flavors: Vanilla TBC Wrath Cata Mists Forever; omitted means all applicable flavors.
-Freeze supports Vanilla and Mists only.
 Test runs shared suites once and artifact suites for each selected flavor; generate those TOCs first.
 
 Options:
@@ -44,7 +43,7 @@ from typing import Any, BinaryIO, Optional
 ROOT = Path(__file__).resolve().parents[2]
 FLAVORS = ("Vanilla", "TBC", "Wrath", "Cata", "Mists", "Forever")
 CHECKS = ("verify", "equivalence", "reconstruct", "validators")
-GATES = ("generate", *CHECKS, "test", "determinism", "freeze")
+GATES = ("generate", *CHECKS, "test", "determinism")
 WEIGHTS = dict(zip(FLAVORS, (450, 700, 1000, 1400, 1750, 450)))
 MAX_BUDGET_MB = 2147483647
 
@@ -104,8 +103,6 @@ def parse_args(args: list[str]) -> Options:
     if explicit is not None and positional:
         raise ValueError("positional flavors cannot be combined with --flavors")
     selected = explicit if explicit is not None else positional
-    if "freeze" in tasks and any(flavor not in ("Vanilla", "Mists") for flavor in selected):
-        raise ValueError("freeze supports only Vanilla and Mists")
     options.tasks = tasks
     options.flavors = list(dict.fromkeys(selected or FLAVORS))
     return options
@@ -367,12 +364,7 @@ def execute(options: Options, root: Path) -> int:
         for flavor in options.flavors:
             weight = WEIGHTS[flavor]
             label = gate + ":" + flavor
-            if gate == "freeze":
-                if flavor not in ("Vanilla", "Mists"):
-                    continue
-                command = [lua, "verify.lua", flavor, "--freeze"]
-                label = "verify-freeze:" + flavor
-            elif gate == "validators":
+            if gate == "validators":
                 command = [lua, "validators/run.lua", flavor]
                 weight = weight * 25 // 100
             else:
