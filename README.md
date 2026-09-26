@@ -163,8 +163,8 @@ pip packages are needed.
 Run `./questiedb.sh --help` for every gate and option. On Windows/Linux x64, the runner prefers
 the matching bundled interpreter. Otherwise it tries `lua5.1`, `lua`, then `luajit` on `PATH`,
 accepting only an interpreter that reports Lua 5.1.
-`LUA` and `--lua=` can select another Lua 5.1-compatible executable explicitly. The `freeze`
-gate supports Vanilla and Mists. `all` validates but does not package;
+`LUA` and `--lua=` can select another Lua 5.1-compatible executable explicitly.
+`all` validates but does not package;
 packaging and bootstrap are separate commands, and bootstrap does not require Lua.
 The `test` task runs shared Lua suites once, artifact suites for each selected flavor, and
 Python CLI, scope-selection, DBC and Forever distribution tests as separate jobs.
@@ -349,14 +349,19 @@ orchestration runners.
 The sweep parallelises by memory budget rather than core count, because the jobs are wildly
 uneven — equivalence on Mists peaks at 1.66 GB and 57 s, on Vanilla at 0.42 GB and 19 s — so a
 flat `-j N` either thrashes a laptop or leaves a workstation idle. `all` finishes Generation
-for every selected flavor before any artifact reader or unit test starts. Determinism and
-freeze checks remain available as explicit gates. The budget comes from `MemAvailable` at
+for every selected flavor before any artifact reader or unit test starts. Determinism
+remains available as an explicit gate. The budget comes from `MemAvailable` at
 startup on Linux, with the fallback described above on other platforms; `--budget-mb=N` overrides it
 with a value from 1 to 2147483647 MB, and `--sequential`
 turns fan-out off. Per-job logs land in `.out/checks/`.
 
 Small, explicit behavior fixtures protect against shared Source/Baked mistakes, including
 correction ordering, expansion and season admission, localization, and storage semantics.
+Caller-owned return values are checked by mutating normal, raw, corrected, and translated
+reads and confirming later reads are unchanged. These checks do not depend on freezing.
+The former `freeze` task and `verify.lua --freeze` pass are removed: Baked verification froze
+no tables. `lua5.1 equivalence.lua Vanilla --freeze` remains an optional diagnostic for
+Source's internal base-table guard, not a second CI verification pass.
 Ordinary data edits need no golden refresh or compiler-divergence allowance. The full-database
 checks still protect data invariants and generated reads. See
 [ADR 0014](docs/adr/0014-owned-data-after-migration.md) for the retired migration checks and checkpoint.

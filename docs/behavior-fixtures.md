@@ -51,8 +51,10 @@ and readers. Localization goes through the real column builder, compression, and
 Expectations never come from those components.
 
 [`storage-contract.test.lua`](../tools/validation/storage-contract.test.lua) checks public
-reads, nested caller-owned copies, actual chunk reassembly, clearing a cached populated field,
-correction-added entities, enumeration, and withdrawal. Translation IDs deliberately differ
+reads, nested caller-owned copies (including raw reads), actual chunk reassembly, clearing a
+cached populated field, correction-added entities, enumeration, and withdrawal. It mutates
+returned base, raw, corrected, and translated tables and checks that later reads remain unchanged;
+these ownership checks do not install a freeze substitute. Translation IDs deliberately differ
 from their stored positions. It checks translated scalar/list values, missing-translation
 fallback, and locale switching. Source mode correctly has no ordinary Base translations.
 
