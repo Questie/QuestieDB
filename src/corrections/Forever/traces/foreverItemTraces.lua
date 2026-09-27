@@ -1,5 +1,5 @@
----@class ForeverTraceItemFixes
-local ForeverTraceItemFixes = QuestieLoader:CreateModule("ForeverTraceItemFixes")
+---@class ForeverItemTraces
+local ForeverItemTraces = QuestieLoader:CreateModule("ForeverItemTraces")
 
 ---@type QuestieDB
 local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
@@ -8,7 +8,7 @@ local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
 -- Source trace files: 1549
 -- Sessions aggregated: 3484
 -- Generated at: 2026-09-26T22:39:35.405Z
-function ForeverTraceItemFixes:Load()
+function ForeverItemTraces:Load()
     local itemKeys = QuestieDB.itemKeys
 
     return {
