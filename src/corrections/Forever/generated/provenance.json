@@ -1,0 +1,401 @@
+{
+  "coordinate_frames": {
+    "path": "/home/logon/projects/Questie-clones/QuestieDB/data/Forever/conversion.json",
+    "sha256": "f4477d6c575575152225f2a9d40858029bf9d2d5fdf6b083c06557fce8b5984b",
+    "withheld_area_ids": [
+      44,
+      139,
+      215,
+      1519
+    ]
+  },
+  "counts": {
+    "new_ids": 3679,
+    "records": 4222,
+    "skips": 9219
+  },
+  "extractor": {
+    "path": "/home/logon/projects/scraper-questie/wh_parser/js_extract.py",
+    "sha256": "e23b467c16ae9a16e55128a576c2c65ffe08ce15f05579fc0a46fce1f7e4480d"
+  },
+  "generator": {
+    "raw_reader_sha256": "281f57f494c917412c782fb12bdc1f56d606a432846e0a88ddcff9772a2190b3",
+    "sha256": "adff3ec2cd2d9c2273354868e6c552377cea331ebe86db374f1c33fafc1423e1"
+  },
+  "imported_artifacts_sha256": {
+    "foreverBaseNpc.lua": "151ab61bd39668c23fb4f4f1eea9e27f75d426ae9d9dbe3ac5ea451a2c758c2b",
+    "foreverBaseObject.lua": "583ba7caa6ba6d8b5accf5c6dc0e0c79178531496b3c12160544f62003d07a02",
+    "foreverBaseQuest.lua": "90197532e83db9e7973937f153efd5f32ab885b23e6777683a182a130b8b3aca"
+  },
+  "inputs": {
+    "era": {
+      "english_pages": [
+        {
+          "count": 23567,
+          "entity_type": "item"
+        },
+        {
+          "count": 12061,
+          "entity_type": "npc"
+        },
+        {
+          "count": 2020,
+          "entity_type": "object"
+        },
+        {
+          "count": 5416,
+          "entity_type": "quest"
+        }
+      ],
+      "path": "/home/logon/projects/scraper-questie/data/raw/classic.db",
+      "registry_counts": [
+        {
+          "count": 206,
+          "entity_type": "faction",
+          "excluded": 0
+        },
+        {
+          "count": 3,
+          "entity_type": "faction",
+          "excluded": 1
+        },
+        {
+          "count": 23567,
+          "entity_type": "item",
+          "excluded": 0
+        },
+        {
+          "count": 974,
+          "entity_type": "item",
+          "excluded": 1
+        },
+        {
+          "count": 12061,
+          "entity_type": "npc",
+          "excluded": 0
+        },
+        {
+          "count": 535,
+          "entity_type": "npc",
+          "excluded": 1
+        },
+        {
+          "count": 1981,
+          "entity_type": "object",
+          "excluded": 0
+        },
+        {
+          "count": 46,
+          "entity_type": "object",
+          "excluded": 1
+        },
+        {
+          "count": 5415,
+          "entity_type": "quest",
+          "excluded": 0
+        },
+        {
+          "count": 145,
+          "entity_type": "quest",
+          "excluded": 1
+        },
+        {
+          "count": 128,
+          "entity_type": "skill",
+          "excluded": 0
+        },
+        {
+          "count": 1,
+          "entity_type": "skill",
+          "excluded": 1
+        },
+        {
+          "count": 30732,
+          "entity_type": "spell",
+          "excluded": 0
+        },
+        {
+          "count": 516,
+          "entity_type": "spell",
+          "excluded": 1
+        },
+        {
+          "count": 136,
+          "entity_type": "zone",
+          "excluded": 0
+        },
+        {
+          "count": 1,
+          "entity_type": "zone",
+          "excluded": 1
+        }
+      ],
+      "resolved_path": "/home/logon/projects/scraper-questie/data/raw/classic.db",
+      "sitemap_meta": [
+        {
+          "entity_type": "faction",
+          "entry_count": 209,
+          "fetched_at": "2026-03-14T17:07:09.732360+00:00"
+        },
+        {
+          "entity_type": "item",
+          "entry_count": 24541,
+          "fetched_at": "2026-04-02T11:56:59.969415+00:00"
+        },
+        {
+          "entity_type": "npc",
+          "entry_count": 12596,
+          "fetched_at": "2026-04-02T11:56:56.380267+00:00"
+        },
+        {
+          "entity_type": "object",
+          "entry_count": 2027,
+          "fetched_at": "2026-04-02T11:56:59.115047+00:00"
+        },
+        {
+          "entity_type": "quest",
+          "entry_count": 5560,
+          "fetched_at": "2026-04-02T11:57:08.554949+00:00"
+        },
+        {
+          "entity_type": "skill",
+          "entry_count": 129,
+          "fetched_at": "2026-03-13T21:40:35.661005+00:00"
+        },
+        {
+          "entity_type": "spell",
+          "entry_count": 31248,
+          "fetched_at": "2026-03-13T21:40:36.520991+00:00"
+        },
+        {
+          "entity_type": "zone",
+          "entry_count": 137,
+          "fetched_at": "2026-03-13T21:40:36.530246+00:00"
+        }
+      ],
+      "size_bytes": 5503512576
+    },
+    "forever": {
+      "english_pages": [
+        {
+          "count": 250,
+          "entity_type": "faction"
+        },
+        {
+          "count": 23567,
+          "entity_type": "item"
+        },
+        {
+          "count": 15002,
+          "entity_type": "npc"
+        },
+        {
+          "count": 2095,
+          "entity_type": "object"
+        },
+        {
+          "count": 6151,
+          "entity_type": "quest"
+        }
+      ],
+      "path": "data/raw/forever.db",
+      "registry_counts": [
+        {
+          "count": 250,
+          "entity_type": "faction",
+          "excluded": 0
+        },
+        {
+          "count": 3,
+          "entity_type": "faction",
+          "excluded": 1
+        },
+        {
+          "count": 29195,
+          "entity_type": "item",
+          "excluded": 0
+        },
+        {
+          "count": 985,
+          "entity_type": "item",
+          "excluded": 1
+        },
+        {
+          "count": 15003,
+          "entity_type": "npc",
+          "excluded": 0
+        },
+        {
+          "count": 549,
+          "entity_type": "npc",
+          "excluded": 1
+        },
+        {
+          "count": 2056,
+          "entity_type": "object",
+          "excluded": 0
+        },
+        {
+          "count": 46,
+          "entity_type": "object",
+          "excluded": 1
+        },
+        {
+          "count": 6150,
+          "entity_type": "quest",
+          "excluded": 0
+        },
+        {
+          "count": 146,
+          "entity_type": "quest",
+          "excluded": 1
+        },
+        {
+          "count": 151,
+          "entity_type": "skill",
+          "excluded": 0
+        },
+        {
+          "count": 3,
+          "entity_type": "skill",
+          "excluded": 1
+        },
+        {
+          "count": 36115,
+          "entity_type": "spell",
+          "excluded": 0
+        },
+        {
+          "count": 542,
+          "entity_type": "spell",
+          "excluded": 1
+        },
+        {
+          "count": 164,
+          "entity_type": "zone",
+          "excluded": 0
+        },
+        {
+          "count": 2,
+          "entity_type": "zone",
+          "excluded": 1
+        }
+      ],
+      "resolved_path": "/home/logon/projects/forever-base-db/data/raw/forever.db",
+      "sitemap_meta": [
+        {
+          "entity_type": "faction",
+          "entry_count": 253,
+          "fetched_at": "2026-09-27T12:47:03.155262+00:00"
+        },
+        {
+          "entity_type": "item",
+          "entry_count": 24016,
+          "fetched_at": "2026-09-27T15:08:13.822787+00:00"
+        },
+        {
+          "entity_type": "npc",
+          "entry_count": 15546,
+          "fetched_at": "2026-09-27T12:52:11.781696+00:00"
+        },
+        {
+          "entity_type": "object",
+          "entry_count": 1767,
+          "fetched_at": "2026-09-27T13:43:44.010241+00:00"
+        },
+        {
+          "entity_type": "quest",
+          "entry_count": 5200,
+          "fetched_at": "2026-09-27T14:50:01.916533+00:00"
+        },
+        {
+          "entity_type": "skill",
+          "entry_count": 154,
+          "fetched_at": "2026-09-27T12:20:57.974778+00:00"
+        },
+        {
+          "entity_type": "spell",
+          "entry_count": 31795,
+          "fetched_at": "2026-09-27T12:21:01.504310+00:00"
+        },
+        {
+          "entity_type": "zone",
+          "entry_count": 166,
+          "fetched_at": "2026-09-27T12:21:04.193697+00:00"
+        }
+      ],
+      "size_bytes": 5608599552
+    }
+  },
+  "integration_order": [
+    "raw base",
+    "inherited legacy Static Corrections (including generated reputation and Item-start sets)",
+    "generated Forever delta-base",
+    "authored Forever Static Corrections",
+    "Dynamic Corrections"
+  ],
+  "missing_refs": [
+    {
+      "field": "startedBy",
+      "id": 14242,
+      "kind": "npc",
+      "quest": 98093
+    },
+    {
+      "field": "finishedBy",
+      "id": 14242,
+      "kind": "npc",
+      "quest": 98093
+    }
+  ],
+  "policy": {
+    "deletions": "never generated",
+    "names": "fill missing names only; preserve all existing raw-base names",
+    "new": "absent Era registry/pages/raw base AND explicit envChange.status=new",
+    "objectives": "not generated",
+    "relationships": "explicit quest infobox links; whole fields with raw-base reverse reconciliation",
+    "spawns": "missing target records only, withholding changed map frames; existing converted spawns retained"
+  },
+  "raw_base": {
+    "files": {
+      "/home/logon/projects/Questie-clones/QuestieDB/data/Classic/classicItemDB.lua": "987d037b6df94d5b0b1dc326a1670581e3abb952736a4ae055fd9f161328b71c",
+      "/home/logon/projects/Questie-clones/QuestieDB/data/Classic/classicNpcDB.lua": "ee4a241db3ff89e5f0883b688b58920c1121f5617202ecba81d90b17271ccd54",
+      "/home/logon/projects/Questie-clones/QuestieDB/data/Classic/classicObjectDB.lua": "d08fbd8216757918330d9ff02bfc1b13f837f198e0aa62aa76260bb1bd9cd042",
+      "/home/logon/projects/Questie-clones/QuestieDB/data/Classic/classicQuestDB.lua": "210e9ac3f98baf2c624be0c8677e7e9adec3f2b9e426f30fd649c4018678afab",
+      "/home/logon/projects/Questie-clones/QuestieDB/data/Forever/foreverItemDB.lua": "987d037b6df94d5b0b1dc326a1670581e3abb952736a4ae055fd9f161328b71c",
+      "/home/logon/projects/Questie-clones/QuestieDB/data/Forever/foreverNpcDB.lua": "a8c4169690726323dac3c6441f74f7a4d9cafcc08ec42231d72ff28c9471f0ee",
+      "/home/logon/projects/Questie-clones/QuestieDB/data/Forever/foreverObjectDB.lua": "af4536c12c5b1da5fd32cb33be5c9c01d2436f97a5b9f60e2cdd238273b2cc09",
+      "/home/logon/projects/Questie-clones/QuestieDB/data/Forever/foreverQuestDB.lua": "41cddaaf32b174eb2b80e216a0f070d3dfd16f7a717b83877a3b39f3514b8748"
+    },
+    "path": "/home/logon/projects/Questie-clones/QuestieDB"
+  },
+  "sample_limit_per_kind": null,
+  "schema_version": 1,
+  "summary": {
+    "npc": {
+      "new": 2927,
+      "records": 3398,
+      "relationship_support": 3,
+      "updated": 468
+    },
+    "object": {
+      "new": 20,
+      "records": 52,
+      "relationship_support": 8,
+      "updated": 24
+    },
+    "quest": {
+      "new": 732,
+      "records": 772,
+      "relationship_support": 0,
+      "updated": 40
+    }
+  },
+  "upstream_artifacts_sha256": {
+    "npc.lua": "644659014c06573fd68eb9e1c6d269a039820d7e5c83e51b5dea06f7604401d5",
+    "object.lua": "ef7e8fce87b6f72afaf1ae54f62af6e0098cec796bd13701cd5f1205085a95b3",
+    "quest.lua": "af1439d2b6bf6fbefac92d54d197ec82084c28e1c4e0ffd3a78e29cbaa733e39",
+    "report.json": "0fbf19cc985a0c335906d10197b76b09519a0f2496efd41d1207dfe9b74c698e",
+    "report.md": "3f81bf0ce9f3a74091ba304d7ecf49f631ada880b6e472498efc2def1ea55b59"
+  }
+}

@@ -57,6 +57,9 @@ registry.loadOrder = {
   TitanStatic = 800,  TitanDynamic = 900,
   CataStatic = 1000,  CataDynamic = 1100,
   MoPStatic = 1200,   MoPDynamic = 1300,
+  -- Forever-only Static window: after inherited Era sets, before authored Forever fixes.
+  -- MoP Dynamic shares this number but never registers for the owned Forever flavor.
+  ForeverDeltaBaseStatic = 1300,
   ForeverStatic = 1400, ForeverDynamic = 1500,
 }
 

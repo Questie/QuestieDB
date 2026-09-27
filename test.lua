@@ -1875,6 +1875,16 @@ end)
 -- Independently owned Forever dataset
 --------------------------------------------------------------------------------------------
 
+suite("forever-delta-base", "shared", function()
+  check(commandSucceeded(shellQuote(LUA_BIN) .. " tools/validation/forever-delta-base.test.lua"),
+    "Forever delta-base witnesses, isolation and precedence pass")
+end)
+
+suite("forever-delta-base-baked", "Forever", function()
+  check(commandSucceeded(shellQuote(LUA_BIN) .. " tools/validation/forever-delta-base.test.lua Baked"),
+    "Forever delta-base witnesses are folded into Baked data without static providers")
+end)
+
 suite("forever-data", "shared", function()
   -- Dataset checks install generator globals; isolate them from the runtime suites.
   check(commandSucceeded(shellQuote(LUA_BIN) .. " tools/dbc/forever-data.test.lua"),
