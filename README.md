@@ -186,8 +186,17 @@ Generation and the Lua validation commands use only this repository's owned inpu
 
 ### Independent test scopes
 
-CI and Release run shared checks alongside six independent flavor pipelines. A flavor pipeline
-never requires another flavor's generated output. Shared sources and configuration remain inputs.
+CI and Release run shared checks alongside six independent flavor pipelines, using
+`.github/workflows/database-checks.yml`. Each flavor generates twice and verifies determinism,
+then uploads its TOC and checksums once. Verification, Source/Baked equivalence, and reconstruction
+run on separate runners against that same artifact. Flavor unit tests and data validators run
+with verification. Every reader checks the artifact hashes before and after its checks.
+
+A flavor can start validation as soon as its own build finishes; it never requires another
+flavor's generated output. Packaging waits for every flavor's checks and verifies the downloaded
+hashes again. CI's `All gates` also requires packaging; Release publication still requires shared,
+legacy, and all database checks plus packaging. Shared sources and configuration remain inputs.
+CI and Release remain separate runs and still each build their own artifacts.
 
 The Lua harness exposes the same test scopes locally:
 

@@ -112,70 +112,14 @@ jobs:
   database:
     name: Quality bar (${{ matrix.flavor }})
     needs: preflight
-    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         flavor: [Vanilla, TBC, Wrath, Cata, Mists, Forever]
-    steps:
-      - uses: actions/checkout@v7
-        with: { path: QuestieDB }
-
-      - name: Install Lua 5.1
-        run: sudo apt-get update && sudo apt-get install -y lua5.1
-
-      - name: Generate
-        working-directory: QuestieDB
-        run: lua5.1 generate.lua ${{ matrix.flavor }}
-
-      - name: Determinism
-        working-directory: QuestieDB
-        # Every read gate approves the second-generation bytes whose hash matched the first.
-        # Keep a distinct checksum file per flavor for the packaging handoff.
-        run: |
-          tocs=(QuestieDB_${{ matrix.flavor }}.toc)
-          # Forever ships a byte-identical Camelot alias, not a separate flavor.
-          if [[ "${{ matrix.flavor }}" == Forever ]]; then
-            cmp QuestieDB_Forever.toc QuestieDB_Camelot.toc
-            tocs+=(QuestieDB_Camelot.toc)
-          fi
-          sha256sum "${tocs[@]}" > QuestieDB_${{ matrix.flavor }}.sha256
-          lua5.1 generate.lua ${{ matrix.flavor }} --quiet
-          sha256sum -c QuestieDB_${{ matrix.flavor }}.sha256
-
-      - name: Flavor unit tests
-        working-directory: QuestieDB
-        run: lua5.1 test.lua --flavor=${{ matrix.flavor }}
-
-      - name: Reconstruct artifact
-        working-directory: QuestieDB
-        run: lua5.1 reconstruct.lua ${{ matrix.flavor }}
-
-      - name: Verify artifact
-        working-directory: QuestieDB
-        run: lua5.1 verify.lua ${{ matrix.flavor }}
-
-      - name: Source/baked equivalence
-        working-directory: QuestieDB
-        run: lua5.1 equivalence.lua ${{ matrix.flavor }}
-
-      - name: Data validators
-        working-directory: QuestieDB
-        run: lua5.1 validators/run.lua ${{ matrix.flavor }}
-
-      - name: Confirm checked bytes are unchanged
-        working-directory: QuestieDB
-        run: sha256sum -c QuestieDB_${{ matrix.flavor }}.sha256
-
-      - name: Hand verified TOC to packaging
-        uses: actions/upload-artifact@v7
-        with:
-          name: release-toc-${{ matrix.flavor }}
-          path: |
-            QuestieDB/QuestieDB_*.toc
-            QuestieDB/QuestieDB_${{ matrix.flavor }}.sha256
-          retention-days: 7
-          if-no-files-found: error
+    uses: ./.github/workflows/database-checks.yml
+    with:
+      flavor: ${{ matrix.flavor }}
+      release: ${{ inputs.release == true }}
 
   quality:
     name: Package verified artifacts
@@ -193,11 +137,11 @@ jobs:
       - name: Install Lua 5.1
         run: sudo apt-get update && sudo apt-get install -y lua5.1
 
-      # These artifacts come only from this run's successful flavor pipelines. Packaging
-      # never regenerates them, so the combined ZIP contains the exact checked TOCs.
+      # Build artifacts are uploaded before validation; needs.database requires every
+      # parallel check to pass before packaging downloads those same immutable artifacts.
       - uses: actions/download-artifact@v8
         with:
-          pattern: release-toc-*
+          pattern: database-toc-*
           merge-multiple: true
           path: QuestieDB
 
