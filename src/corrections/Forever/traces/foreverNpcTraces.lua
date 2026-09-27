@@ -1,5 +1,5 @@
----@class ForeverTraceNpcFixes
-local ForeverTraceNpcFixes = QuestieLoader:CreateModule("ForeverTraceNpcFixes")
+---@class ForeverNpcTraces
+local ForeverNpcTraces = QuestieLoader:CreateModule("ForeverNpcTraces")
 
 ---@type QuestieDB
 local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
@@ -8,7 +8,7 @@ local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
 -- Source trace files: 1549
 -- Sessions aggregated: 3484
 -- Generated at: 2026-09-26T22:39:32.319Z
-function ForeverTraceNpcFixes:Load()
+function ForeverNpcTraces:Load()
     local npcKeys = QuestieDB.npcKeys
 
     return {

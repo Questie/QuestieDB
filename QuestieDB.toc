@@ -260,10 +260,10 @@ src\corrections\Forever\generated\foreverBaseItem.lua [ExcludeLoadGameType vanil
 # --- Forever: trace corrections ---
 # Machine-generated (tools/trace-analyzer); never hand-edited. Applies after the generated
 # delta-base and before authored forever*Fixes.lua below.
-src\corrections\Forever\traces\foreverTraceQuestFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
-src\corrections\Forever\traces\foreverTraceNpcFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
-src\corrections\Forever\traces\foreverTraceItemFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
-src\corrections\Forever\traces\foreverTraceObjectFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Forever\traces\foreverQuestTraces.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Forever\traces\foreverNpcTraces.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Forever\traces\foreverItemTraces.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Forever\traces\foreverObjectTraces.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
 # --- Forever: authored corrections ---
 # Static follows legacy and generated data; Dynamic follows legacy Dynamic Corrections.

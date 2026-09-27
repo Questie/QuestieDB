@@ -338,10 +338,10 @@ runtime.loadCorrections(traceOffline, traceFlavor)
 local traceProviders = traceOffline.CorrectionCompat.modules
 local traceId = 900000101
 for _, case in ipairs({
-  { "Quest", "QuestieQuestFixes", "ForeverTraceQuestFixes", "ForeverQuestFixes" },
-  { "Npc", "QuestieNPCFixes", "ForeverTraceNpcFixes", "ForeverNpcFixes" },
-  { "Item", "QuestieItemFixes", "ForeverTraceItemFixes", "ForeverItemFixes" },
-  { "Object", "QuestieObjectFixes", "ForeverTraceObjectFixes", "ForeverObjectFixes" },
+  { "Quest", "QuestieQuestFixes", "ForeverQuestTraces", "ForeverQuestFixes" },
+  { "Npc", "QuestieNPCFixes", "ForeverNpcTraces", "ForeverNpcFixes" },
+  { "Item", "QuestieItemFixes", "ForeverItemTraces", "ForeverItemFixes" },
+  { "Object", "QuestieObjectFixes", "ForeverObjectTraces", "ForeverObjectFixes" },
 }) do
   local datatype, legacy, trace, authored =
     case[1], traceProviders[case[2]], traceProviders[case[3]], traceProviders[case[4]]
