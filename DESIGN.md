@@ -281,8 +281,11 @@ No correction loader shim is involved.
 Registrations retain stable identities, per-expansion load-order windows, merge options and
 source-expansion metadata. Source mode still applies Static Corrections before Derived Passes.
 Seasonal files consult central applicability before exports and objective-hint writes.
-Forever owns independent files and race constants. `flavor.rules` supplies Classic ordering
-and fallback constant tables; it does not replace Forever's own race table.
+Forever owns independent files and complete `raceKeys`, `classKeys` and `npcFlags` tables.
+Class/NPC values initially match the previously selected Classic values; the race masks
+remain unchanged. Selection retains the actual flavor's table identities, with no aliases,
+fallback to another flavor, or key merging. Missing tables fail before providers execute.
+`flavor.rules` supplies Classic ordering only. Shared invariant enums remain shared.
 
 ### Read semantics — one shared view
 

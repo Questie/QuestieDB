@@ -76,13 +76,15 @@ follow legacy Static Corrections; authored Dynamic Corrections follow legacy Dyn
 Corrections. Dynamic values outrank all static data, so replacing an inherited Dynamic value
 belongs in `LoadDynamic` even when its new value is unconditional.
 
-`src/corrections/prepare.lua` selects constants before providers load. Corrections use
-Forever's `raceKeys` from `src/corrections/enum/expansions.lua`, including
-`SKYBORNE_ALLIANCE`, `SKYBORNE_HORDE` and the faction masks containing them.
-Other expansion-dependent tables, such as `classKeys` and `npcFlags`, fall back to Classic
-unless Forever defines its own table. A defined table replaces the fallback entirely;
-missing race keys are not filled from Classic. Providers read these tables through
-`LibQuestieDB.Enum.corrections`. Correction ordering still uses Classic rules.
+`src/corrections/prepare.lua` selects constants before providers load. Forever declares
+complete, independent `raceKeys`, `classKeys` and `npcFlags` tables in
+`src/corrections/enum/expansions.lua`. Its races retain `SKYBORNE_ALLIANCE`, `SKYBORNE_HORDE`
+and the faction masks containing them. Class/NPC values initially match the previously
+selected Classic values, not a new live DBC validation. The literal duplication is intentional:
+future Classic edits must not change Forever. There are no aliases or fallback to Classic.
+Missing tables fail during preparation; defined tables, even empty ones, retain their identity
+without merging keys. Providers read them through `LibQuestieDB.Enum.corrections`.
+Shared invariant enums remain shared. `flavor.rules` selects Classic correction ordering only.
 The required-races Derived Pass also uses Forever's faction masks in Source mode and Generation.
 
 Conversion targets only the inherited baseline and raw data, never `forever*Fixes.lua`.

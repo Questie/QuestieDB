@@ -83,9 +83,11 @@ Corrections are native addon files under `src/corrections/<expansion>/`. Each fi
 `local _, LibQuestieDB = ...` and exports lazy zero-argument functions returning Correction
 tables through `LibQuestieDB.CorrectionProviders`. Field keys come directly from
 `LibQuestieDB.Meta.<Entity>.keys`; shared constants come from `LibQuestieDB.Enum`, and varying
-constants from `LibQuestieDB.Enum.corrections`, selected before providers load. Flavor-owned
-tables replace the rules fallback as whole tables. Forever uses its own race masks and
-Classic class/NPC tables, while keeping Classic correction ordering.
+constants from `LibQuestieDB.Enum.corrections`, selected before providers load. Each flavor
+must declare its own `raceKeys`, `classKeys` and `npcFlags`; no aliases, fallback to another
+flavor, or key merging apply. Forever owns all three tables. Its initial class/NPC values
+match the previously selected Classic values, while its race masks remain unchanged.
+`flavor.rules` supplies correction ordering only.
 
 Keep Static and Dynamic functions together under the original correction filename. The
 explicit inventory in `src/corrections/manifest.lua` classifies each function and owns file

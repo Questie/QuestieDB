@@ -292,8 +292,43 @@ constants.byExpansion = {
     },
   },
 
-  -- Forever [race masks]
+  -- Forever [classes, NPC flags, race masks]
+  -- Class and NPC values start at the previous Classic values, intentionally declared
+  -- independently so future flavor changes cannot alter Forever's constants implicitly.
   Forever = {
+    classKeys = {
+      NONE = 0,
+      WARRIOR = 1,
+      PALADIN = 2,
+      HUNTER = 4,
+      ROGUE = 8,
+      PRIEST = 16,
+      DEATH_KNIGHT = 32,
+      SHAMAN = 64,
+      MAGE = 128,
+      WARLOCK = 256,
+      MONK = 512,
+      DRUID = 1024,
+      ALL_CLASSES = 1503,
+    },
+    npcFlags = {
+      NONE = 0,
+      GOSSIP = 1,
+      QUEST_GIVER = 2,
+      VENDOR = 4,
+      FLIGHT_MASTER = 8,
+      TRAINER = 16,
+      SPIRIT_HEALER = 32,
+      SPIRIT_GUIDE = 64,
+      INNKEEPER = 128,
+      BANKER = 256,
+      PETITIONER = 512,
+      TABARD_DESIGNER = 1024,
+      BATTLEMASTER = 2048,
+      AUCTIONEER = 4096,
+      STABLEMASTER = 8192,
+      REPAIR = 16384,
+    },
     raceKeys = {
       NONE = 0,
       HUMAN = 1,

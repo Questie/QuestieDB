@@ -957,6 +957,16 @@ suite("correction-enums", "shared", function()
     "Forever race masks retain values beyond 32 bits")
   equal(standalone.waypointPresets.ALLIANCE_GUNSHIP[5042][1][1], { 61.79, 46.28 },
     "waypoint presets retain area, path, and coordinate nesting")
+
+  -- Equal starting values must not couple future Classic edits to Forever.
+  local classic, forever = standalone.byExpansion.Classic, standalone.byExpansion.Forever
+  for _, name in ipairs({ "raceKeys", "classKeys", "npcFlags" }) do
+    check(forever[name] ~= classic[name], "Forever independently owns " .. name)
+  end
+  classic.classKeys.ALL_CLASSES = 0
+  classic.npcFlags.REPAIR = 0
+  equal(forever.classKeys.ALL_CLASSES, 1503, "Classic edits cannot change Forever ALL_CLASSES")
+  equal(forever.npcFlags.REPAIR, 16384, "Classic edits cannot change Forever REPAIR")
 end)
 
 suite("correction-authoring", "shared", function()
@@ -1186,8 +1196,10 @@ suite("corrections", "shared", function()
       "native corrections receive " .. case.flavor.name .. " npc flags")
     check(selected.zoneIDs == db.Enum.zoneIDs,
       "native selection retains shared constant identity for " .. case.flavor.name)
-    check(selected.raceKeys == db.Enum.byExpansion[case.flavor.expansion].raceKeys,
-      "native selection retains the flavor race table identity for " .. case.flavor.name)
+    for _, name in ipairs({ "raceKeys", "classKeys", "npcFlags" }) do
+      check(selected[name] == db.Enum.byExpansion[case.flavor.expansion][name],
+        "native selection retains the flavor " .. name .. " identity for " .. case.flavor.name)
+    end
     if case.flavor.name == "Forever" then
       equal(selected.raceKeys.SKYBORNE_ALLIANCE, 4294967296,
         "Forever corrections receive the Alliance Skyborne mask")
@@ -1199,10 +1211,6 @@ suite("corrections", "shared", function()
         "Forever replaces the race table rather than importing absent Classic keys")
       equal(selected.raceKeys.HIGHORDER_SKYBORNE, nil, "retired Highorder Skyborne key stays absent")
       equal(selected.raceKeys.WINDSHAPER_SKYBORNE, nil, "retired Windshaper Skyborne key stays absent")
-      check(selected.classKeys == db.Enum.byExpansion.Classic.classKeys,
-        "Forever keeps the Classic class table identity")
-      check(selected.npcFlags == db.Enum.byExpansion.Classic.npcFlags,
-        "Forever keeps the Classic NPC flag table identity")
       local rows = db.CorrectionProviders.classicQuestFixes.Load()
       equal(rows[558][db.Meta.Quest.keys.requiredRaces], 4294967373,
         "the real Forever provider emits the Alliance mask including Skyborne")
@@ -1224,12 +1232,12 @@ suite("corrections", "shared", function()
   replacement.Enum.byExpansion.Classic.raceKeys.FALLBACK_ONLY = 456
   runtime.loadCorrections(replacement, config.flavorByName.Forever)
   check(replacement.Enum.corrections.classKeys == foreverEnums.classKeys,
-    "a defined empty flavor table replaces the rules fallback by identity")
+    "native selection retains a defined empty flavor table by identity")
   equal(replacement.Enum.corrections.classKeys.ALL_CLASSES, nil, "empty replacements stay empty")
   check(replacement.Enum.corrections.npcFlags == foreverEnums.npcFlags,
-    "a flavor NPC flag table replaces the rules fallback by identity")
+    "native selection retains the declared flavor NPC flag table by identity")
   equal(replacement.Enum.corrections.npcFlags.QUEST_GIVER, nil, "replacement NPC flags do not merge keys")
-  equal(replacement.Enum.corrections.raceKeys.FALLBACK_ONLY, nil, "race keys do not merge from rules")
+  equal(replacement.Enum.corrections.raceKeys.FALLBACK_ONLY, nil, "race keys do not merge from Classic")
 
   local shared = runtime.build()
   shared.Enum.raceKeys = { ALL_ALLIANCE = 321 }
@@ -1238,23 +1246,35 @@ suite("corrections", "shared", function()
     "shared enum tables take precedence over flavor replacements by identity")
 
   -- Eager preparation fails before exports or hints, without touching any host global.
-  local broken = runtime.build()
-  broken.Enum.byExpansion.Forever = nil
-  local globals = {}
-  for key, value in pairs(_G) do globals[key] = value end
-  local missingEnumsOk, missingError = pcall(runtime.loadCorrections, broken, config.flavorByName.Forever)
-  check(not missingEnumsOk and tostring(missingError):find("missing expansion data for Forever", 1, true) ~= nil,
-    "native preparation rejects a missing Forever enum set instead of silently selecting Classic")
-  equal(next(broken.CorrectionProviders), nil, "enum failure precedes all provider exports")
-  equal(#broken.Corrections.Select({}), 0, "enum failure precedes registration")
-  for _, hints in pairs(broken.ObjectiveFirst) do
-    equal(next(hints), nil, "enum failure precedes provider hint writes")
-  end
-  for key, value in pairs(globals) do
-    check(rawget(_G, key) == value, "failed enum selection preserves host global " .. tostring(key))
-  end
-  for key, value in pairs(_G) do
-    check(globals[key] == value, "failed enum selection adds no host global " .. tostring(key))
+  for _, missing in ipairs({ "Forever", "raceKeys", "classKeys", "npcFlags" }) do
+    local broken = runtime.build()
+    local expectedError
+    if missing == "Forever" then
+      broken.Enum.byExpansion.Forever = nil
+      expectedError = "missing expansion data for Forever"
+    else
+      broken.Enum.byExpansion.Forever[missing] = nil
+      check(type(broken.Enum.byExpansion.Classic[missing]) == "table",
+        "Classic still declares " .. missing .. " when Forever lacks it")
+      expectedError = "unknown constant `" .. missing .. "` for expansion `Forever`"
+    end
+    local globals = {}
+    for key, value in pairs(_G) do globals[key] = value end
+    local missingEnumsOk, missingError = pcall(runtime.loadCorrections, broken, config.flavorByName.Forever)
+    check(not missingEnumsOk and tostring(missingError):find(expectedError, 1, true) ~= nil,
+      "native preparation rejects missing " .. missing .. " instead of selecting Classic")
+    equal(broken.Enum.corrections, nil, "missing " .. missing .. " prevents partial enum publication")
+    equal(next(broken.CorrectionProviders), nil, "missing " .. missing .. " fails before provider exports")
+    equal(#broken.Corrections.Select({}), 0, "missing " .. missing .. " fails before registration")
+    for _, hints in pairs(broken.ObjectiveFirst) do
+      equal(next(hints), nil, "missing " .. missing .. " fails before provider hint writes")
+    end
+    for key, value in pairs(globals) do
+      check(rawget(_G, key) == value, "failed enum selection preserves host global " .. tostring(key))
+    end
+    for key, value in pairs(_G) do
+      check(globals[key] == value, "failed enum selection adds no host global " .. tostring(key))
+    end
   end
 
   local corrections = dofile("generator/corrections.lua")
@@ -1553,10 +1573,14 @@ suite("derived-required-races", "shared", function()
     "Source-loaded corrections can combine Alliance Skyborne with Human")
   equal(races.SKYBORNE_HORDE + races.ORC, 8589934594,
     "Source-loaded corrections can combine Horde Skyborne with Orc")
+  equal(foreverSource.Quest.Get(1581, "requiredRaces"), 4294967373,
+    "Forever Source corrections include Skyborne in the Alliance faction mask")
   equal(foreverSource.Quest.Get(7162, "requiredRaces"), 4294967373,
     "Forever Source inference includes Skyborne in the Alliance faction mask")
   client.reset()
   local foreverLoaded = flavorLoader.load(config.flavorByName.Forever, { Quest = true })
+  equal(foreverLoaded.Quest.entities[1581][questKeys.requiredRaces], 4294967373,
+    "Forever Generation corrections include Skyborne in the Alliance faction mask")
   equal(foreverLoaded.Quest.entities[7162][questKeys.requiredRaces], 4294967373,
     "Forever Generation inference includes Skyborne in the Alliance faction mask")
 

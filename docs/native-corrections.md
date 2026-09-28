@@ -7,14 +7,18 @@ declarations live in `src/corrections/manifest.lua`.
 Each provider receives the addon namespace and publishes a plain export table near its top.
 Functions return Correction tables lazily. They use canonical `Meta.<Entity>.keys`, shared
 `Enum` constants and the selected `Enum.corrections` tables. Before any provider loads,
-`src/corrections/prepare.lua` selects shared constants first, then the flavor's table, then
-its `rules` fallback. Selection retains original table identities and never fills individual
-keys; even an empty flavor table replaces the fallback. A missing flavor enum set fails
-before providers can export functions or write hints. Standalone enum/support loading does
-not run this flavor-dependent preparation.
+`src/corrections/prepare.lua` selects shared invariant constants first, otherwise requiring
+the actual flavor's declared table. Selection retains original table identities and never
+fills individual keys; an empty declared table stays empty. A missing flavor enum set or
+required table fails before providers export functions, register corrections or write hints.
+Standalone enum/support loading does not run this flavor-dependent preparation.
 
-Forever owns independent files and race masks, with Classic class/NPC tables as fallbacks
-and Classic correction ordering. It does not load live Era or Shared providers.
+Forever owns independent files and complete literal `raceKeys`, `classKeys` and `npcFlags`
+tables. Its initial class/NPC values match the previously selected Classic values; races and
+Skyborne masks remain unchanged. This intentional duplication allows independent future edits,
+not a claim of live DBC validation. There are no enum aliases or fallback to Classic.
+`flavor.rules` supplies Classic correction ordering only. Forever does not load live Era or
+Shared providers.
 
 The manifest keeps each file's Static and Dynamic declarations together. It owns file
 applicability, datatype, stable registration identity, category, sequence, load-order window,
@@ -120,6 +124,10 @@ Pass loader shims are separate mechanisms and are unchanged. Splitting Static an
 files is a possible future improvement, not part of this transition.
 
 ## Verification after rebasing onto master
+
+This records the rebase checkpoint before the explicit enum-ownership follow-up. It retained
+master's temporary Classic class/NPC fallback, so its identity checks do not prove the final
+independent ownership policy above. See [final follow-up evidence](../BRANCH_REVIEW.md#final-forever-enum-ownership-follow-up).
 
 The current equivalence target is fetched master
 `0a8472d52f7e4ff5ae9d2de33d4886be6d1d5364`. Its independent archive and observations are at

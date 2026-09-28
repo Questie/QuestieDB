@@ -8,8 +8,8 @@ local configured = config.flavorByName[flavor.name]
 assert(configured and configured.expansion == flavor.expansion and configured.rules == flavor.rules,
   "corrections: unsupported flavor")
 
----Shared tables win; otherwise select the flavor's whole table, then its rules fallback.
----An empty flavor table is still a replacement. Never copy or fill individual keys.
+---Shared invariants win; otherwise require the actual flavor's declared table.
+---An empty flavor table is still valid. Never copy, alias another flavor, or fill keys.
 ---@param name string
 ---@return table
 local function pick(name)
@@ -19,10 +19,6 @@ local function pick(name)
   assert(type(selected) == "table",
     "corrections: constants are missing expansion data for " .. flavor.expansion)
   local value = selected[name]
-  if value == nil and flavor.rules then
-    local fallback = expansions[flavor.rules]
-    value = fallback and fallback[name]
-  end
   assert(type(value) == "table",
     ("corrections: unknown constant `%s` for expansion `%s`"):format(name, flavor.expansion))
   return value

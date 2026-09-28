@@ -57,9 +57,10 @@ dependency on Questie's module conventions.
 - Consumer registration APIs, owner precedence, and override behavior remain unchanged.
 - Registration identities, sequence, application order, filters, and merge options are preserved.
 - Seasonal providers and ObjectiveFirst hints remain restricted to applicable flavors and seasons.
-- Forever owns its inputs and does not inherit live Era providers. Following PR #62 on master,
-  it uses its own race table. Classic supplies ordering and fallback tables such as classes
-  and NPC flags, not a replacement for Forever's defined race constants.
+- Forever owns its inputs and does not inherit live Era providers. Its race masks retain
+  PR #62's values. The explicit ownership follow-up gives it complete independent race,
+  class and NPC-flag tables, with class/NPC values initially matching the previous Classic
+  values. Classic supplies ordering only, never enum aliases or fallback.
 - Correction tables remain lazy. Loading a provider defines functions rather than materializing
   its large data tables.
 - The public schema and support value shapes are unchanged. No contract-version or LuaLS public
@@ -85,7 +86,7 @@ Copied provider imports Questie-shaped modules
 
 ```text
 Central manifest selects native provider files
-    -> native preparation selects flavor-owned constants with explicit rules fallback
+    -> native preparation selects shared invariants or the actual flavor's declared tables
     -> providers export ordinary lazy functions through the addon namespace
     -> central registrar validates and registers those functions directly
     -> existing registry applies the declared policy
@@ -151,23 +152,27 @@ selection is mutually exclusive. Cumulative expansion providers use distinct key
 Master's PR #62 corrected an important assumption: `flavor.rules = "Classic"` does not mean
 Forever must use Classic races. The old compatibility layer contained this new selection
 behavior, so deleting that layer during rebase required retaining the policy in native loading.
+The rebase temporarily kept absent-table fallback to match master before the separately
+approved ownership follow-up. This paragraph records that checkpoint, not final policy.
 
-`src/corrections/prepare.lua` now resolves the required tables before providers execute:
+At that checkpoint, `src/corrections/prepare.lua` resolved tables before providers executed:
 
 1. Shared `Enum[name]` wins when present.
 2. Otherwise, the configured flavor's enum set must exist.
 3. Its named table wins if defined, including an explicitly empty table.
 4. Only an absent table falls back to `flavor.rules`.
 
-Preparation publishes original references through `Enum.corrections` after all required tables
-resolve. It does not copy tables or fill missing individual keys. Forever therefore receives
+Preparation published original references through `Enum.corrections` after all required tables
+resolved. It did not copy tables or fill missing individual keys. Forever therefore received
 `SKYBORNE_ALLIANCE`, `SKYBORNE_HORDE`, and its larger faction masks without inheriting absent
-race keys such as `BLOOD_ELF`. Class and NPC flag tables still fall back to Classic. A missing
-Forever enum set fails during loading, before provider exports or hint writes.
+race keys such as `BLOOD_ELF`. Class and NPC flag tables still fell back to Classic. A missing
+Forever enum set failed during loading, before provider exports or hint writes.
 
 This is a native preparation phase, not a restored module loader. Standalone enum and support
 loading remain independent of it. Required-races inference and validation retain master's
-separate use of the actual flavor's race constants.
+separate use of the actual flavor's race constants. The
+[final ownership follow-up](#final-forever-enum-ownership-follow-up) removes the temporary
+class/NPC fallback without changing produced values.
 
 ### Hints and seasonal selection
 
@@ -421,6 +426,55 @@ source manifests, commands, checksums, and comparison results for the rebase.
 
 The earlier counts and Quest 117 mutation above describe the original migration validation.
 They are retained as history, not substituted for this new-master proof.
+
+### Final Forever enum ownership follow-up
+
+After validating the master-compatible rebase, the approved follow-up makes Forever's enum
+ownership explicit. `Forever` now declares complete literal `raceKeys`, `classKeys` and
+`npcFlags` tables. Class/NPC values initially match the previously selected Classic values;
+races, Skyborne names and masks are unchanged. Static duplication is intentional so future
+flavor edits are independent. It is not a claim of live DBC validation.
+
+Preparation retains shared invariant precedence, otherwise requiring the actual flavor's
+declared table. Missing sets or tables fail before publication, provider exports, registration
+or hints. Defined empty tables remain empty; there are no aliases, fallback to another flavor,
+or key merges. `flavor.rules` selects ordering only. Table identities intentionally change;
+produced values do not. The prior fallback identity evidence above remains historical.
+
+Fresh follow-up evidence is in `/tmp/qdb-forever-enum-ownership.Gvz9O5`:
+
+- Focused `correction-enums corrections derived-required-races native-toc support toc` suites:
+  2,082 checks passed. Full `--shared`: 3,768 checks passed.
+- Tests mutate Classic class/NPC values without changing Forever's literal `1503`/`16384`;
+  all three missing-table cases fail even with Classic tables present. Restoring the old
+  fallback in a disposable copy fails all three rejection tests. Aliasing class/NPC tables
+  back to Classic fails four ownership/mutation checks.
+- All six no-localization generations before and after match across 1,235,624 directives,
+  including original order, and match every portable checksum above. Forever remains
+  `24365086d899599251ffd59a1493b410651c1ad5ad00a79d95fb770971625d1e`.
+- Complete selected-enum values match before/after for all six flavors. Source and Generation
+  tests retain masks for quests 1581 and 7162; both generated Forever/Camelot TOCs also return
+  `4294967373` and select independent Forever table identities.
+- Lua syntax and `git diff --check` pass. Legacy provider bytes and the CI pin are unchanged.
+
+The historical matrix scripts are absent on this machine, so independent validation built a
+fresh observer rather than claiming to rerun that exact harness. Its evidence is at
+`/tmp/qdb-fresh-provider-validator.cMZzFx`. The observer uses the real native runtime and registry,
+with the before-state serializer, and compares this follow-up against commit `0f0f1fa`:
+
+- All 18 scenarios, 362 personas and 9,056 invocations match: 4,494 Static and 4,562 Dynamic.
+- Complete returns, registry metadata except executable function identity, and hints before
+  and after invocation are byte-identical. Nil/empty values, sparse fields, options, filters,
+  ordering and sequence are retained.
+- Matching output SHA-256: `b7dec722b0e0ece3afae932e7ab66ae3bca207049c34f214937554c53c578036`.
+- Matching metadata SHA-256: `98bf2cbe5044ded62b612a46cf5cd99ebc423a6a19affd042d8d18423cf2ee98`.
+- Matching hints SHA-256: `464a589082e60421c32444ab8f84447c9756c192088c7e940155a7ba379dfc60`.
+- Independent targeted checks passed 2,082 Lua assertions, 21 converter tests and 38 packaging
+  tests. Fresh focused review found no issues.
+
+This is a new before/after observation, not a reconstruction of unavailable historical logs.
+All fresh Generation and mutation checks used disposable copies; no root Baked TOCs or live
+data were touched.
 
 ### Limits
 
