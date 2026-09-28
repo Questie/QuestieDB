@@ -3,17 +3,12 @@
 -- Runs Derived Passes offline, over the same tables Generation is about to encode.
 --
 -- Mirrors generator/corrections.lua: the passes themselves live in src/derived/ and are shared
--- with Source mode, so this file only supplies the context they need — entity tables, schema,
--- flavor, and the sliver of support data a pass reads.
+-- with Source mode, so this file only supplies entity tables, schema and flavor.
+-- Shared constants already live in the prepared correction namespace.
 
 local corrections = dofile("generator/corrections.lua")
-local runtime = dofile("generator/runtime.lua")
-local lib = dofile("generator/lib.lua")
 
 local derived = {}
-
-local config = dofile("src/config.lua")
-local supportByFlavor = {}
 
 ---Returns the shared Derived Pass registry prepared for one flavor.
 ---@param flavor table An entry from config.flavors.
@@ -21,26 +16,6 @@ local supportByFlavor = {}
 local function registryFor(flavor)
   local LibQuestieDB = corrections.prepare(flavor).lib
   return LibQuestieDB and LibQuestieDB.Derived
-end
-
---- Load support data under a scoped `QuestieLoader` mock and return a `name -> module`
---- accessor with the same shape `LibQuestieDB.Support.Get` has at runtime.
-local function supportProvider(flavor)
-  local supportModules = supportByFlavor[flavor.name]
-  if not supportModules then
-    supportModules = {}
-    local previous = rawget(_G, "QuestieLoader")
-    local function moduleFor(_, name)
-      supportModules[name] = supportModules[name] or {}
-      return supportModules[name]
-    end
-    _G.QuestieLoader = { ImportModule = moduleFor, CreateModule = moduleFor }
-    local ok, err = pcall(runtime.execute, config.zoneIdsPath(flavor), "QuestieDB", {})
-    _G.QuestieLoader = previous
-    if not ok then error(err, 0) end
-    supportByFlavor[flavor.name] = supportModules
-  end
-  return function(name) return supportModules[name] end
 end
 
 ---Expands requested output types with the inputs their active Derived Passes need.
@@ -65,11 +40,8 @@ function derived.run(loaded, flavor)
   local registry = registryFor(flavor)
   if not registry then return 0 end
 
-  local support = supportProvider(flavor)
-
   return registry.Run(nil, {
     flavor = flavor,
-    support = support,
     entities = function(name)
       local entry = loaded[name]
       return entry and entry.entities or nil

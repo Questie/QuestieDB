@@ -39,7 +39,7 @@ return function(check, equal)
   db.CorrectionRegister.FromManifest(config.flavorByName.TBC, function(name) return modules[name] end)
 
   -- Replace only input loading and registry construction. The real flavor pipeline,
-  -- correction engine, schema checks, support loader, and Derived Pass registry still run.
+  -- correction engine, schema checks, canonical enums and Derived Pass registry still run.
   local function loadWith(path, dependencies)
     local env = setmetatable({ dofile = function(file)
       if dependencies[file] then return dependencies[file] end

@@ -1,4 +1,5 @@
--- Correction constants. Source origins and extraction history: PROVENANCE.md.
+-- Shared zone symbols for Corrections, Derived Passes, support data and offline conversion.
+-- Source origins and extraction history: PROVENANCE.md.
 -- Geographic groups include later starting-area IDs; instance floors stay beside their parent.
 
 local _, LibQuestieDB = ...

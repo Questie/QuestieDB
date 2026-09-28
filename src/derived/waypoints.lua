@@ -32,15 +32,10 @@ local waypoints = {}
 local WAYPOINT_MIN_DISTANCE = 1.5
 
 --- Capital cities are drawn at half scale, so their waypoints subdivide twice as finely.
---- Resolved from the shipped zone support data rather than hardcoded, so the constants stay
---- derived from one source the way the schema and the correction files do.
-local function zoneScales(support)
-  local zoneDB = support and support("ZoneDB")
-  local zoneIDs = zoneDB and zoneDB.zoneIDs
-  if not zoneIDs then
-    error("waypoints pass: ZoneDB.zoneIDs unavailable - support data must load before " ..
-          "derived passes run", 0)
-  end
+--- Use the same zone symbols as Corrections and the support API.
+---@return table<number, number> scales Zone ID to subdivision scale.
+local function zoneScales()
+  local zoneIDs = LibQuestieDB.Enum.zoneIDs
   return {
     [zoneIDs.STORMWIND_CITY] = 0.5,
     [zoneIDs.IRONFORGE] = 0.5,
@@ -126,7 +121,7 @@ function waypoints.Spec(entityType, order)
 
       local rdp = LibQuestieDB.RamerDouglasPeucker
       if not rdp then error("waypoints pass: RamerDouglasPeucker not loaded", 0) end
-      local scales = zoneScales(ctx.support)
+      local scales = zoneScales()
 
       for _, row in pairs(entities) do
         local value = row[index]

@@ -91,10 +91,10 @@ QuestieDB.npcData = [=[return {
                 self.convert(source)
 
     def test_symbol_reader_ignores_comments_and_rejects_duplicate_names(self):
-        source = 'ZoneDB.zoneIDs = {MULGORE=215, -- MISTAKE=99\n TEST=10000}'
+        source = 'constants.zoneIDs = {MULGORE=215, -- MISTAKE=99\n TEST=10000}'
         self.assertEqual(read_zone_ids(source), {'MULGORE': 215, 'TEST': 10000})
         with self.assertRaisesRegex(ValueError, 'duplicate'):
-            read_zone_ids('ZoneDB.zoneIDs={MULGORE=215,MULGORE=216}')
+            read_zone_ids('constants.zoneIDs={MULGORE=215,MULGORE=216}')
 
     def test_item_inputs_are_untouched(self):
         source = 'return {[itemKeys.vendors]={1,2}} -- no coordinates'

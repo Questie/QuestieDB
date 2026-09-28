@@ -8,8 +8,10 @@ for _, entity in ipairs(config.entityTypes) do
 end
 local npcs = loader.loadEntityData("data/Forever/foreverNpcDB.lua", assert(npcType))
 
+local namespace = { Enum = {} }
+assert(loadfile("src/corrections/enum/zones.lua"))("QuestieDB", namespace)
 ---@type table<string, table>
-local modules = { ZoneDB = { private = {} }, QuestieDB = {} }
+local modules = { ZoneDB = { private = {}, zoneIDs = namespace.Enum.zoneIDs }, QuestieDB = {} }
 QuestieLoader = {
     ---@param _ table
     ---@param name string
@@ -17,7 +19,6 @@ QuestieLoader = {
     ImportModule = function(_, name) return assert(modules[name]) end,
 }
 local root = "support/Forever/"
-dofile(root .. "Zones/zoneIds.lua")
 for _, name in ipairs({"areaIdToUiMapId", "uiMapIdToAreaId", "subZoneToParentZone"}) do
     dofile(root .. "Zones/" .. name .. ".lua")
     local private = modules.ZoneDB.private

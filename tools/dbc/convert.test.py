@@ -11,7 +11,7 @@ import time
 import unittest
 from unittest.mock import patch
 
-from convert import ConvertPoints, lua_value, round_coordinate
+from convert import ConvertPoints, Input, ZONE_SYMBOLS_PATH, lua_value, prepare, round_coordinate
 from coordinates import Transform
 from files import MANIFEST, TOOL, digest, install_outputs
 import files
@@ -30,6 +30,22 @@ def outputs_with_manifest(values):
 
 
 class CoordinatePolicyTests(unittest.TestCase):
+    def test_prepare_resolves_symbols_from_the_canonical_enum(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            enum = (ROOT / ZONE_SYMBOLS_PATH).read_bytes()
+            (root / ZONE_SYMBOLS_PATH).parent.mkdir(parents=True)
+            (root / ZONE_SYMBOLS_PATH).write_bytes(enum)
+            (root / "npc.lua").write_text(
+                'return {[npcKeys.spawns]={[zoneIDs.MULGORE]={{10,20}}}}', encoding="utf-8")
+            inputs = (Input("npc.lua", "converted.lua", "Npc", False),)
+            with patch("convert.INPUTS", inputs):
+                outputs, report = prepare(root, {215: Transform(1, 1, 1, 2)}, {}, False)
+            self.assertEqual(outputs["converted.lua"],
+                             b'return {[npcKeys.spawns]={[zoneIDs.MULGORE]={{11.0,22.0}}}}')
+            self.assertEqual(report["zone_symbols_sha256"], digest(enum))
+            self.assertEqual(report["files"]["converted.lua"]["counts"], {"converted": 1})
+
     def test_chief_hawkwind_is_written_at_43_89_76_66(self):
         # Mulgore bounds, Era 1.15.9.69722 -> Forever 1.60.1.69893.
         convert = ConvertPoints({215: Transform(

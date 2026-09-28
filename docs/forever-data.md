@@ -258,6 +258,12 @@ Forever owns ordinary files in `data/Forever`, `src/corrections/Forever`,
 fallbacks. Shared schemas, algorithms and initial Classic rules do not imply shared
 authored data. Era synchronization must not rewrite Forever inputs.
 
+Zone symbols are shared constants, maintained only in `src/corrections/enum/zones.lua`.
+The identical legacy and Forever `zoneIds.lua` support copies have been removed;
+`Support.Get("ZoneDB").zoneIDs`, Corrections, waypoint Derived Passes and the converter
+all use the canonical enum. The nine remaining Forever support files keep their independent
+ownership. The ten-file seed inventory and hashes above remain historical adoption evidence.
+
 Normal Generation reads those owned files, applies Static Corrections and Derived Passes,
 and encodes the Baked artifact with its owned localization. Source mode uses the same
 applicable entity providers and transforms; its existing Base translation limitation is

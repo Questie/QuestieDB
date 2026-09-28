@@ -50,6 +50,10 @@ for _, flavor in ipairs(config.flavors) do
   _G.QuestieLoader = previousLoader
   local db, files = emulator.loadAddon("QuestieDB.toc", config.addonName)
   assert(db.flavor.name == flavor.name)
+  assert(db.Support.Get("ZoneDB").zoneIDs == db.Enum.zoneIDs,
+    "support must publish the canonical zone enum")
+  assert(db.CorrectionCompat.modules.ZoneDB.zoneIDs == db.Enum.zoneIDs,
+    "corrections must use the same zone symbols as support")
   assert(_G.QuestieLoader == previousLoader, "Source loader was not restored")
   local selected, initializers = {}, 0
   for _, path in ipairs(files) do
@@ -136,7 +140,7 @@ for _, changed in ipairs({ "Vanilla", "Forever" }) do
         chunk(...)
         if path == config.dataPath(changedFlavor, config.entityTypeByName.Npc) then
           QuestieLoader:ImportModule("QuestieDB").npcData = { [id] = { "owned raw " .. changed } }
-        elseif path == config.zoneIdsPath(changedFlavor) then
+        elseif path == (changed == "Forever" and "support/Forever/" or "support/") .. "Zones/areaIdToUiMapId.lua" then
           QuestieLoader:ImportModule("ZoneDB").nativeIsolation = changed
         elseif path == "src/corrections/" .. (changed == "Forever" and "Forever/legacy" or "Era") .. "/classicQuestFixes.lua" then
           local module = QuestieLoader:ImportModule("QuestieQuestFixes")
