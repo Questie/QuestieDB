@@ -336,6 +336,27 @@ apply, and constants the body reads are resolved at apply time.
   quantization runs in production, so a coordinate read from the database may safely be reused.
   Ordinary tuple rules still apply: spawn phase `0` and waypoint third elements are omitted.
 
+### Offline provider audit
+
+Run `lua5.1 test.lua correction-audit` before submitting Correction changes. CI and Release
+also run it through `lua5.1 test.lua --shared`, without raw entity data or generated TOCs.
+The audit invokes every authored and generated manifest provider, including Forever-owned
+providers and direct-write captures, and rejects missing declared functions. It checks unknown
+field enum names (including `_add`/`_remove`), numeric keys, row/ID validity, replacement outer
+types, and TablePatch's operation operands and conflicts. Empty-table deletion remains valid;
+legacy replacement tuples are not subjected to new deep-shape rules.
+
+Each of the six flavors runs without a season; Vanilla also runs with SoD and Wrath with Titan
+Reforged. Every applicable Static and Dynamic provider runs under 44 personas: both factions,
+all eleven classes through Mists, and Human/non-Human (Orc) race outcomes. Some combinations
+are deliberately not playable: these are branch inputs, not gameplay simulations. Correction
+files load once per flavor/season; current providers read character facts at invocation time.
+Update this matrix or reload boundary if providers gain other race branches or capture character
+facts at file load. In-memory invalid providers prove the audit rejects bad authoring.
+
+This is an enum/type/call-contract audit, not gameplay correctness or proof that an atomic
+operation succeeds against an existing entity's baseline value.
+
 ### Table add/remove operations
 
 Use the Correction aliases in `LibQuestieDB.Enum.questKeys`, `npcKeys`, `itemKeys`, or

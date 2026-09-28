@@ -939,6 +939,10 @@ suite("localization-overrides", "shared", function()
   dofile("tools/validation/localization-overrides.test.lua")(check, equal)
 end)
 
+suite("correction-audit", "shared", function()
+  dofile("tools/validation/correction-audit.test.lua")(check, equal)
+end)
+
 suite("table-corrections", "shared", function()
   dofile("tools/validation/table-corrections.test.lua")(check, equal)
 end)
