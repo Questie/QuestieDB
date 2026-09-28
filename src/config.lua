@@ -47,7 +47,8 @@ config.maxValueLength = 1000
 --
 -- `expansion` is the directory under data/ holding this flavor's raw entity data.
 -- `dataPrefix` is the filename prefix inside that directory.
--- `rules` selects shared schema/constants, not authored input ownership.
+-- `rules` selects legacy ordering and fallback constants, not authored input ownership.
+-- Flavor-specific constant tables take precedence over that fallback.
 -- `gameType` is the default native persona; `gameTypeAliases` adds names for the same flavor.
 -- `aliases` names byte-identical Baked TOCs, independently of native file-condition tokens.
 -- `interface` records the supported client Interface values.

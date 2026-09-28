@@ -69,6 +69,13 @@ Corrections apply after legacy Static Corrections. New Dynamic Corrections apply
 Dynamic Corrections. Dynamic Corrections still outrank all static data, so a replacement for
 an inherited Dynamic Correction belongs in `LoadDynamic()`, even if its new value is unconditional.
 
+Corrections use Forever's `raceKeys` from `src/corrections/enum/expansions.lua`, including
+`SKYBORNE_ALLIANCE`, `SKYBORNE_HORDE` and the faction masks containing them.
+Other expansion-dependent tables, such as `classKeys` and `npcFlags`, fall back to Classic
+unless Forever defines its own table. A defined table replaces the fallback entirely;
+missing race keys are not filled from Classic. Correction ordering still uses Classic rules.
+The required-races Derived Pass also uses Forever's faction masks in Source mode and Generation.
+
 Conversion only targets the inherited baseline and raw data, never `forever*Fixes.lua`.
 
 ## Baked artifacts
