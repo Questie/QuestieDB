@@ -359,6 +359,9 @@ operation succeeds against an existing entity's baseline value.
 
 ### Table add/remove operations
 
+[ADR 0016](adr/0016-table-correction-operations.md) records the rationale and rejected
+alternatives behind this contract.
+
 Use the Correction aliases in `LibQuestieDB.Enum.questKeys`, `npcKeys`, `itemKeys`, or
 `objectKeys`. Canonical `Meta.*.keys`, field counts and entity getters do not gain aliases.
 Older Baked copies whose generated TOC omits `src/corrections/tablePatch.lua` still support

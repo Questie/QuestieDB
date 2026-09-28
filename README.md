@@ -517,6 +517,7 @@ lists; Baked mode also exposes scalar rows and table producers for its cache fas
 | [`DESIGN.md`](DESIGN.md) | architecture, locked decisions, rejected alternatives |
 | [`CONTEXT.md`](CONTEXT.md) | vocabulary |
 | [`docs/adr/`](docs/adr/) | decision records |
+| [`ADR 0016`](docs/adr/0016-table-correction-operations.md) | why table Corrections use shape-aware add/remove operations |
 | [`docs/adr/0005-element-level-nil-semantics.md`](docs/adr/0005-element-level-nil-semantics.md) | never-nil structures and element-level nil→0, which amend the storage contract |
 | [`docs/adr/0014-owned-data-after-migration.md`](docs/adr/0014-owned-data-after-migration.md) | migration checkpoint and owned-data workflow |
 | [`PROVENANCE.md`](PROVENANCE.md) | source references and prototype lineage |
