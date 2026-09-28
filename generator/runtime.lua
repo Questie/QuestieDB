@@ -8,11 +8,13 @@
 -- implementations against each other and every divergence would be a coin flip about which one
 -- was right.
 
-local lib = dofile("generator/lib.lua")
-
 local runtime = {}
 
 --- Load one `src/` file with WoW's addon varargs.
+---@param path string
+---@param addonName string
+---@param addonTable table
+---@return nil
 local function execute(path, addonName, addonTable)
   local chunk, err = loadfile(path)
   if not chunk then error("Cannot load " .. path .. ": " .. tostring(err), 0) end
@@ -22,12 +24,16 @@ end
 
 runtime.execute = execute
 
---- Build a `LibQuestieDB` namespace with everything Generation needs: config, the materialized
---- schema, nil/empty semantics, the extracted constants, the corrections registry, and the
---- compat shim. No read backend — the generator reads raw tables directly.
+--- Build a fresh `LibQuestieDB` namespace with everything Generation needs: config, the
+--- materialized schema, nil/empty semantics, constants, and the corrections registry. No read
+--- backend: the generator reads raw tables directly. A fresh namespace is also the recovery
+--- boundary when provider loading or central registration fails.
+---@return table
 function runtime.build()
   local config = dofile("src/config.lua")
   local LibQuestieDB = {}
+
+  -- Runtime foundation shared with the shipped addon.
   local files = {
     "src/config.lua",
     "src/meta/normalize.lua",
@@ -42,16 +48,13 @@ function runtime.build()
     execute(path, "QuestieDB", LibQuestieDB)
   end
 
-  -- Correction support is optional: the tracer bullet and a bare data round-trip work without
-  -- any corrections ported, and saying so beats failing on a missing file.
-  if lib.fileExists("src/corrections/enum/constants.lua") then
-    for _, path in ipairs(config.enumFiles) do
-      execute(path, "QuestieDB", LibQuestieDB)
-    end
-    execute("src/corrections/compat.lua", "QuestieDB", LibQuestieDB)
-    execute("src/corrections/manifest.lua", "QuestieDB", LibQuestieDB)
-    execute("src/corrections/register.lua", "QuestieDB", LibQuestieDB)
+  -- Correction authoring environment and central inventory. Provider files load later, once
+  -- loadCorrections has an explicit flavor for file and season applicability.
+  for _, path in ipairs(config.enumFiles) do
+    execute(path, "QuestieDB", LibQuestieDB)
   end
+  execute("src/corrections/objectiveFirst.lua", "QuestieDB", LibQuestieDB)
+  execute("src/corrections/manifest.lua", "QuestieDB", LibQuestieDB)
 
   -- Derived Passes share this namespace with the correction registry on purpose: Generation
   -- and Source mode must run the same pass code over the same corrected tables, exactly as
@@ -63,42 +66,34 @@ function runtime.build()
   return LibQuestieDB
 end
 
---- Load every correction file the manifest lists for a flavor, and register what it provides.
+--- Load the same native files selected by the addon, with explicit flavor rules.
+--- Files publish exports and hints before central registration. Neither loading nor
+--- registration is transactional: discard a failed namespace and rebuild before retrying.
+---@param LibQuestieDB table
+---@param flavor table
 ---@return number registered
 ---@return number loadedFiles
 function runtime.loadCorrections(LibQuestieDB, flavor)
-  local manifest = LibQuestieDB.CorrectionManifest
-  if not manifest then return 0, 0 end
+  local config = LibQuestieDB.config
 
-  local compat = LibQuestieDB.CorrectionCompat
-
-  local remove = compat.Install(flavor)
+  LibQuestieDB.flavor = flavor
+  execute("src/corrections/prepare.lua", "QuestieDB", LibQuestieDB)
+  local before = #LibQuestieDB.Corrections.Select({})
   local loadedFiles = 0
 
-  local registered
-  local ok, err = pcall(function()
-    for _, spec in ipairs(manifest) do
-      local applies = LibQuestieDB.config.correctionApplies(spec, flavor)
-      if applies then
-        local path = "src/corrections/" .. spec.file
-        local register = LibQuestieDB.CorrectionRegister
-        local active = (not register.IsSod(spec) or register.IsSodActive(flavor)) and
-          (not register.IsTitanReforged(spec) or register.IsTitanReforgedActive(flavor))
-        compat.SelectObjectiveFirstScope(active)
-        execute(path, "QuestieDB", LibQuestieDB)
-        loadedFiles = loadedFiles + 1
-      end
+  -- Native provider chunks publish lazy exports and ObjectiveFirst hints. They do not register
+  -- themselves, so every selected export is available before central composition starts.
+  for _, spec in ipairs(LibQuestieDB.CorrectionManifest) do
+    if config.correctionApplies(spec, flavor) and
+       (LibQuestieDB.mode ~= "baked" or config.hasDynamicCorrections(spec)) then
+      execute("src/corrections/" .. spec.file, "QuestieDB", LibQuestieDB)
+      loadedFiles = loadedFiles + 1
     end
+  end
 
-    local modules = compat.modules
-    registered = LibQuestieDB.CorrectionRegister.FromManifest(flavor, function(name)
-      return modules[name]
-    end)
-  end)
-
-  remove()
-  if not ok then error(err, 0) end
-  return registered, loadedFiles
+  -- Validate the complete export inventory and publish registry entries in manifest order.
+  execute("src/corrections/register.lua", "QuestieDB", LibQuestieDB)
+  return #LibQuestieDB.Corrections.Select({}) - before, loadedFiles
 end
 
 return runtime

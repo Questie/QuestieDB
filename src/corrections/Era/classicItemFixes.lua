@@ -1,17 +1,17 @@
----@class QuestieItemFixes
-local QuestieItemFixes = QuestieLoader:CreateModule("QuestieItemFixes")
--------------------------
---Import modules.
--------------------------
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB");
+local _, LibQuestieDB = ...
 
--- Further information on how to use this can be found at the wiki
--- https://github.com/Questie/Questie/wiki/Corrections
+-- Native Classic Era item correction provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Source keeps authored Static rows and character-dependent Dynamic rows together in this provider.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.classicItemFixes, "duplicate correction provider: classicItemFixes")
+LibQuestieDB.CorrectionProviders.classicItemFixes = providers
 
-function QuestieItemFixes:Load()
-    local itemKeys = QuestieDB.itemKeys
-    local itemClasses = QuestieDB.itemClasses
+---@return table<integer, table> fixes Character-independent item corrections.
+function providers.Load()
+    -- Authored Classic Era Static item corrections do not inspect current character state.
+    local itemKeys = LibQuestieDB.Meta.Item.keys
+    local itemClasses = LibQuestieDB.Enum.itemClasses
 
     return {
         [730] = { -- Murloc Eye
@@ -1604,9 +1604,10 @@ function QuestieItemFixes:Load()
     }
 end
 
--- some quest items are shared across factions but require different sources for each faction
-function QuestieItemFixes:LoadFactionFixes()
-    local itemKeys = QuestieDB.itemKeys
+---Returns authored Dynamic item corrections selected for the current faction.
+---@return table<integer, table> fixes Character-dependent item corrections.
+function providers.LoadFactionFixes()
+    local itemKeys = LibQuestieDB.Meta.Item.keys
 
     local itemFixesHorde = {
         [3713] = { -- Soothing Spices

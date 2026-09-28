@@ -32,31 +32,46 @@ from questiedb import find_lua, interrupt
 
 @dataclass(frozen=True)
 class Input:
+    """One explicitly reviewed source-to-Forever migration.
+
+    Provider categories and registrations are parallel lists. They describe the
+    expected central-manifest functions, not declarations discovered from source.
+    """
+
     source: str
     output: str
     entity: str
     raw: bool
-    module: str = ""
-    methods: tuple[str, ...] = ()
+    categories: tuple[str, ...] = ()
+    registrations: tuple[str, ...] = ()
 
 
+# Deliberate migration inventory, not the normal runtime correction manifest. Adding an
+# input opts its destination into conversion and protected installation; no source tree or
+# manifest change is discovered automatically. Keep the existing source/output order.
 INPUTS = (
+    # Raw entity baselines. Their schema identifies every coordinate-bearing field.
     Input("data/Classic/classicItemDB.lua", "data/Forever/foreverItemDB.lua", "Item", True),
     Input("data/Classic/classicNpcDB.lua", "data/Forever/foreverNpcDB.lua", "Npc", True),
     Input("data/Classic/classicObjectDB.lua", "data/Forever/foreverObjectDB.lua", "Object", True),
     Input("data/Classic/classicQuestDB.lua", "data/Forever/foreverQuestDB.lua", "Quest", True),
+
+    # Inherited native providers. List every central registration in registry application
+    # order (load order, then registration sequence), matching the Lua validator's selection.
     Input("src/corrections/Era/classicItemFixes.lua", "src/corrections/Forever/legacy/classicItemFixes.lua",
-          "Item", False, "QuestieItemFixes", ("Load", "LoadFactionFixes")),
+          "Item", False, ("static", "dynamic"), ("Era/classicItemFixes.lua:Load", "Era/classicItemFixes.lua:LoadFactionFixes")),
     Input("src/corrections/Era/classicNPCFixes.lua", "src/corrections/Forever/legacy/classicNPCFixes.lua",
-          "Npc", False, "QuestieNPCFixes", ("Load", "LoadFactionFixes")),
+          "Npc", False, ("static", "dynamic"), ("Era/classicNPCFixes.lua:Load", "Era/classicNPCFixes.lua:LoadFactionFixes")),
     Input("src/corrections/Era/classicObjectFixes.lua", "src/corrections/Forever/legacy/classicObjectFixes.lua",
-          "Object", False, "QuestieObjectFixes", ("Load", "LoadFactionFixes")),
+          "Object", False, ("static", "dynamic"), ("Era/classicObjectFixes.lua:Load", "Era/classicObjectFixes.lua:LoadFactionFixes")),
     Input("src/corrections/Era/classicQuestFixes.lua", "src/corrections/Forever/legacy/classicQuestFixes.lua",
-          "Quest", False, "QuestieQuestFixes", ("Load", "LoadFactionFixes")),
+          "Quest", False, ("static", "dynamic"), ("Era/classicQuestFixes.lua:Load", "Era/classicQuestFixes.lua:LoadFactionFixes")),
     Input("src/corrections/Era/classicQuestReputationFixes.lua", "src/corrections/Forever/legacy/classicQuestReputationFixes.lua",
-          "Quest", False, "QuestieClassicQuestReputationFixes", ("Load",)),
+          "Quest", False, ("static",), ("Era/classicQuestReputationFixes.lua:Load",)),
+
+    # Shared at runtime, but copied into the isolated Forever legacy baseline by this migration.
     Input("src/corrections/Shared/itemStartFixes.lua", "src/corrections/Forever/legacy/itemStartFixes.lua",
-          "Item", False, "QuestieItemStartFixes", ("LoadAutomaticQuestStarts",)),
+          "Item", False, ("static",), ("Shared/itemStartFixes.lua:LoadAutomaticQuestStarts",)),
 )
 
 
@@ -137,7 +152,8 @@ class ConvertPoints:
 
 def prepare(root: Path, transforms: dict[int, Transform], map_report: dict,
             keep_unmapped: bool) -> tuple[dict[str, bytes], dict]:
-    """Always read Era originals; preserve all bytes outside converted number tokens."""
+    """Read Era originals and rewrite coordinate tokens only; policy stays in the manifest."""
+    # Snapshot shared symbols and report policy before reading any migratable input.
     zones_bytes = (root / ZONE_SYMBOLS_PATH).read_bytes()
     zones = read_zone_ids(zones_bytes.decode("utf-8"))
     outputs = {}
@@ -151,6 +167,8 @@ def prepare(root: Path, transforms: dict[int, Transform], map_report: dict,
         "not_converted": ["Questie-owned runtime corrections", "support/Zones/dungeons.lua entrances",
                           "Forever race/class restrictions and new content", "subzone or synthetic map routing"],
     }
+
+    # Rewrite only the explicit inventory and retain per-destination evidence for review.
     for spec in INPUTS:
         original = (root / spec.source).read_bytes()
         if b"QuestieDB convert-forever" in original[:300]:
@@ -200,13 +218,17 @@ def validate(root: Path, outputs: dict[str, bytes], transforms: dict[int, Transf
     with tempfile.TemporaryDirectory(prefix="questiedb-forever-validate-") as temporary:
         directory = Path(temporary)
         plan = {"files": [], "transforms": {area: asdict(value) for area, value in transforms.items()}}
+
+        # Stage the complete candidate set and its expected manifest registrations.
         for spec in INPUTS:
             staged = directory / spec.output
             staged.parent.mkdir(parents=True, exist_ok=True)
             staged.write_bytes(outputs[spec.output])
-            plan["files"].append({**asdict(spec), "output": str(staged)})
+            plan["files"].append({**asdict(spec), "output": str(staged), "target": spec.output})
         plan_path = directory / "plan.lua"
         plan_path.write_text("return " + lua_value(plan) + "\n", encoding="utf-8")
+
+        # Prove raw values and native provider behavior before the installer sees any bytes.
         # Inherit this tool's process group: launcher cancellation must reach Lua
         # even if the converter cannot finish cleanup. The validator spawns no children.
         child = subprocess.Popen([lua, str(root / "tools/dbc/validate.lua"), str(plan_path)], cwd=root)
@@ -242,12 +264,15 @@ def main() -> int:
     if not re.fullmatch(r"1\.15\.\d+\.\d+", args.from_build) or not re.fullmatch(r"1\.60\.\d+\.\d+", args.to_build):
         parser.error("Use explicit Era 1.15.x and Forever 1.60.x build numbers")
     try:
+        # Preflight tools and immutable geometry inputs.
         lua = find_lua(args.lua, ROOT)
         provenance = ensure_database(args.database, args.from_build, args.to_build, tag=args.dbc_tag)
         print("DBC:", provenance["origin"], provenance["path"], flush=True)
         transforms, map_report = geometry(args.database, args.from_build, args.to_build, args.allow_untracked_source)
         helper_check = require_matching_helper(map_report, ROOT / HELPER, lua)
         print(helper_check["details"], flush=True)
+
+        # Prepare and report every candidate without touching owned destinations.
         outputs, report = prepare(ROOT, transforms, map_report, args.keep_unmapped)
         unresolved = 0
         for path, info in report["files"].items():
@@ -257,11 +282,16 @@ def main() -> int:
             unresolved += info["counts"].get("unmapped", 0)
         if unresolved and not args.keep_unmapped:
             raise ValueError("%d coordinates need map review. No outputs installed; use --keep-unmapped only to retain them explicitly." % unresolved)
+
+        # Validate the complete staged set before dry-run success or publication.
         validate(ROOT, outputs, transforms, lua)
         report["validation"] = "Lua semantic comparison passed for raw data and all correction personas"
         if args.dry_run:
             print("Dry run passed. No Forever files installed.")
             return 0
+
+        # Publication boundary: reject stale inputs, then let the protected installer
+        # authorize destinations against their historical provenance.
         # Detect edits during the read/validate phase rather than publishing stale inputs.
         for info in report["files"].values():
             if digest((ROOT / info["source"]).read_bytes()) != info["source_sha256"]:

@@ -42,10 +42,10 @@ local expectedProviders = {
   Forever = { false, false, false, false, false, true, true, false, false },
 }
 
--- Literal expectations protect provider aliases and Forever's Classic rules independently
+-- Literal expectations protect support aliases and Forever's Classic ordering independently
 -- of the config used by both loaders.
 local expectedCurrent = { Vanilla = 1, TBC = 2, Wrath = 3, Cata = 4, Mists = 5, Forever = 1 }
----@param expansions table Provider-facing expansion module.
+---@param expansions table Support expansion table.
 ---@param flavorName string
 ---@return nil
 local function checkExpansions(expansions, flavorName)
@@ -64,11 +64,10 @@ for _, flavor in ipairs(config.flavors) do
   local db, files = emulator.loadAddon("QuestieDB.toc", config.addonName)
   assert(db.flavor.name == flavor.name)
   checkExpansions(db.Support.Get("Expansions"), flavor.name)
-  checkExpansions(db.CorrectionCompat.modules.Expansions, flavor.name)
+  assert(db.config.expansionOrder[db.flavor.rules] == expectedCurrent[flavor.name],
+    "native providers use the configured rules ordering")
   assert(db.Support.Get("ZoneDB").zoneIDs == db.Enum.zoneIDs,
     "support must publish the canonical zone enum")
-  assert(db.CorrectionCompat.modules.ZoneDB.zoneIDs == db.Enum.zoneIDs,
-    "corrections must use the same zone symbols as support")
   assert(_G.QuestieLoader == previousLoader, "Source loader was not restored")
   local selected, initializers = {}, 0
   for _, path in ipairs(files) do
@@ -112,14 +111,15 @@ for _, flavor in ipairs(config.flavors) do
   local loaded, loadError = pcall(runtime.loadCorrections, offline, flavor)
   _G.loadfile = originalLoadfile
   assert(loaded, loadError)
-  checkExpansions(offline.CorrectionCompat.modules.Expansions, flavor.name)
+  assert(offline.config.expansionOrder[offline.flavor.rules] == expectedCurrent[flavor.name],
+    "offline providers use the configured rules ordering")
   for index, path in ipairs(representativePaths) do
     assert((offlineSelected[path] == true) == expectedProviders[flavor.name][index],
       "offline " .. flavor.name .. ": " .. path)
   end
   for field, values in pairs(db.ObjectiveFirst) do
-    for key, value in pairs(values) do assert(offline.CorrectionCompat.objectiveFirst[field][key] == value) end
-    for key, value in pairs(offline.CorrectionCompat.objectiveFirst[field]) do assert(values[key] == value) end
+    for key, value in pairs(values) do assert(offline.ObjectiveFirst[field][key] == value) end
+    for key, value in pairs(offline.ObjectiveFirst[field]) do assert(values[key] == value) end
   end
   db, offline = nil, nil
   client.reset()
@@ -159,14 +159,15 @@ for _, changed in ipairs({ "Vanilla", "Forever" }) do
         elseif path == (changed == "Forever" and "support/Forever/" or "support/") .. "Zones/areaIdToUiMapId.lua" then
           QuestieLoader:ImportModule("ZoneDB").nativeIsolation = changed
         elseif path == "src/corrections/" .. (changed == "Forever" and "Forever/legacy" or "Era") .. "/classicQuestFixes.lua" then
-          local module = QuestieLoader:ImportModule("QuestieQuestFixes")
-          local original = module.Load
-          module.Load = function(self)
-            local result = original(self)
+          local _, namespace = ...
+          local providers = namespace.CorrectionProviders.classicQuestFixes
+          local original = providers.Load
+          providers.Load = function()
+            local result = original()
             result[id] = { [1] = "owned correction " .. changed }
             return result
           end
-          QuestieLoader:ImportModule("QuestieCorrections").itemObjectiveFirst[id] = true
+          namespace.ObjectiveFirst.itemObjectiveFirst[id] = true
         end
       end
     end
@@ -251,38 +252,80 @@ for _, fault in ipairs({ "missing", "duplicate" }) do
   client.reset()
 end
 
--- Provider execution and missing-file failures must both release the offline shim,
--- restoring either an existing consumer loader or the original absence of one.
-for _, fault in ipairs({ "execute", "missing" }) do
+-- Provider failures leave host globals untouched but invalidate the partial namespace.
+-- Recovery requires a fresh namespace, with or without an existing consumer loader.
+for _, fault in ipairs({ "execute", "missing", "export" }) do
   for _, hasPreviousLoader in ipairs({ false, true }) do
     client.install({ expansion = "Forever" })
     local previousLoader = hasPreviousLoader and {} or nil
     _G.QuestieLoader = previousLoader
+    local hostGlobals = {}
+    for key, value in pairs(_G) do hostGlobals[key] = value end
+    ---@return nil
+    local function assertHostGlobalsUnchanged()
+      for key, value in pairs(hostGlobals) do
+        assert(rawget(_G, key) == value, "offline loading changed host global: " .. tostring(key))
+      end
+      for key, value in pairs(_G) do
+        assert(hostGlobals[key] == value, "offline loading added host global: " .. tostring(key))
+      end
+    end
+
+    local clean = runtime.build()
+    local expectedRegistered, expectedFiles = runtime.loadCorrections(clean, config.flavorByName.Forever)
+    local expectedEntries = clean.Corrections.Select({})
+    assertHostGlobalsUnchanged()
+
     local offline = runtime.build()
     local originalLoadfile = loadfile
     local reachedProvider = false
     _G.loadfile = function(path)
-      if path == "src/corrections/Forever/legacy/classicQuestFixes.lua" then
+      if path == "src/corrections/Forever/legacy/classicNPCFixes.lua" then
         reachedProvider = true
-        assert(_G.QuestieLoader ~= previousLoader, "offline shim was not installed")
+        assert(_G.QuestieLoader == previousLoader, "native provider replaced consumer loader")
         if fault == "missing" then return nil, "injected missing provider" end
+        if fault == "export" then return function() end end
         return function() error("injected provider execution failure", 0) end
       end
       return originalLoadfile(path)
     end
     local ok, err = pcall(runtime.loadCorrections, offline, config.flavorByName.Forever)
     _G.loadfile = originalLoadfile
-    local expectedError = fault == "missing" and "injected missing provider" or "injected provider execution failure"
+    local expectedError = fault == "missing" and "injected missing provider"
+      or fault == "export" and "missing correction provider: Forever/legacy/classicNPCFixes.lua"
+      or "injected provider execution failure"
     assert(reachedProvider and not ok and tostring(err):find(expectedError, 1, true), tostring(err))
-    assert(_G.QuestieLoader == previousLoader, "offline provider failure leaked its shim")
-    assert(offline.CorrectionCompat.modules.QuestieCorrections == offline.CorrectionCompat.objectiveFirst)
-    -- The same namespace can load successfully after cleanup, not just disappear on failure.
-    runtime.loadCorrections(offline, config.flavorByName.Forever)
-    assert(_G.QuestieLoader == previousLoader, "offline retry leaked its shim")
+    local partialEntries = offline.Corrections.Select({})
+    if fault == "export" then
+      assert(#partialEntries == 2 and partialEntries[1].name == "Forever/legacy/classicQuestFixes.lua:Load",
+        "missing export must fail after the preceding combined provider registrations")
+    else
+      assert(#partialEntries == 0, "registration must wait for all selected files")
+    end
+    assert(type(offline.CorrectionProviders.classicQuestFixes.Load) == "function",
+      "fault must follow the first successful export")
+    assertHostGlobalsUnchanged()
+
+    -- Discard the partial namespace rather than overwriting its first provider export.
+    offline = runtime.build()
+    local registered, files = runtime.loadCorrections(offline, config.flavorByName.Forever)
+    local entries = offline.Corrections.Select({})
+    assert(registered == expectedRegistered and files == expectedFiles, "recovery changed load counts")
+    assert(#entries == #expectedEntries and #entries == registered, "recovery changed registry size")
+    local seen = {}
+    for index, entry in ipairs(entries) do
+      assert(not seen[entry.name], "duplicate recovered provider: " .. entry.name)
+      seen[entry.name] = true
+      local expected = expectedEntries[index]
+      assert(entry.name == expected.name and entry.datatype == expected.datatype
+        and entry.dynamic == expected.dynamic and entry.owner == expected.owner
+        and entry.sequence == expected.sequence, "recovery changed provider inventory: " .. entry.name)
+    end
+    assertHostGlobalsUnchanged()
     client.reset()
   end
 end
-print("PASS Source initializer rejection and offline provider-error shim cleanup")
+print("PASS Source initializer rejection and offline provider-error isolation")
 
 -- Use the real manifest and loader, with conflicting rows, to prove both authoring
 -- entry points work and the legacy baseline remains beneath the new corrections.
@@ -291,27 +334,25 @@ local offline = runtime.build()
 local flavor = config.flavorByName.Forever
 offline.flavor = flavor
 runtime.loadCorrections(offline, flavor)
-local providers = offline.CorrectionCompat.modules
 for _, case in ipairs({
-  { "Quest", "QuestieQuestFixes", "ForeverQuestFixes" },
-  { "Npc", "QuestieNPCFixes", "ForeverNpcFixes" },
-  { "Item", "QuestieItemFixes", "ForeverItemFixes" },
-  { "Object", "QuestieObjectFixes", "ForeverObjectFixes" },
+  { "Quest", "classicQuestFixes", "foreverQuestFixes" },
+  { "Npc", "classicNPCFixes", "foreverNPCFixes" },
+  { "Item", "classicItemFixes", "foreverItemFixes" },
+  { "Object", "classicObjectFixes", "foreverObjectFixes" },
 }) do
-  local datatype, legacy, authored = case[1], providers[case[2]], providers[case[3]]
-  assert(type(authored.Load) == "function" and type(authored.LoadDynamic) == "function")
-  legacy.Load = function()
-    return { [id] = { [1] = "legacy static" }, [id + 1] = { [1] = "legacy-only static" } }
+  local datatype = case[1]
+  local replacements = {
+    ["Forever/legacy/" .. case[2] .. ".lua:Load"] = { [id] = { "legacy static" }, [id+1] = { "legacy-only static" } },
+    ["Forever/" .. case[3] .. ".lua:Load"] = { [id] = { "Forever static" } },
+    ["Forever/legacy/" .. case[2] .. ".lua:LoadFactionFixes"] = { [id] = { "legacy dynamic" }, [id+1] = { "legacy-only dynamic" } },
+    ["Forever/" .. case[3] .. ".lua:LoadDynamic"] = { [id] = { "Forever dynamic" } },
+  }
+  local replaced = 0
+  for _, entry in ipairs(offline.Corrections.Select({ datatype = datatype })) do
+    local rows = replacements[entry.name]
+    if rows then entry.func = function() return rows end; replaced = replaced + 1 end
   end
-  authored.Load = function()
-    return { [id] = { [1] = "Forever static" } }
-  end
-  legacy.LoadFactionFixes = function()
-    return { [id] = { [1] = "legacy dynamic" }, [id + 1] = { [1] = "legacy-only dynamic" } }
-  end
-  authored.LoadDynamic = function()
-    return { [id] = { [1] = "Forever dynamic" } }
-  end
+  assert(replaced == 4, "missing native provider: " .. datatype)
 
   local rows = {}
   offline.Corrections.ApplyStaticToEntities(datatype, rows, flavor, "QuestieDB")

@@ -263,9 +263,8 @@ end
 ---     docs/storage-format.md, so writing `{}` into base data removes the field for every
 ---     reader — the generator omits the line, Source mode normalizes it away.
 ---
---- An id absent from the base data is normally created, which is how `LoadMissingQuests`
---- and the `InsertMissing*Ids` helpers make the database emit a row at all. `noNewEntries`
---- forbids creation outright. Inherited Static Corrections additionally set
+--- An id absent from the base data is normally created from the returned Correction row.
+--- `noNewEntries` forbids creation outright. Inherited Static Corrections additionally set
 --- `allowNamedInheritedEntry`, matching Questie's exception for a Correction whose field 1 names
 --- a complete entity rather than adding fields to an entity a later expansion removed.
 ---@param entities table id -> field array

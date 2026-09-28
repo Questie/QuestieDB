@@ -2,6 +2,12 @@
 local db = {}
 assert(loadfile("src/support/eraToForever.lua"))("QuestieDB", db)
 
+---@param x number
+---@param y number
+---@param expectedX number
+---@param expectedY number
+---@param label string
+---@return nil
 local function nearPoint(x, y, expectedX, expectedY, label)
   assert(math.abs(x - expectedX) < 1e-10, label .. ": X differs")
   assert(math.abs(y - expectedY) < 1e-10, label .. ": Y differs")
@@ -19,6 +25,7 @@ local cases = {
   { "Stormwind", 1519, 1453, 80, 20, 81.57478872773687, 39.90982514711585 },
   { "Hawkwind", 215, 1412, 44.18, 76.06, 43.888926246380116, 76.65954830022032 },
 }
+-- Verify both public ID namespaces against fixed external projections.
 for _, case in ipairs(cases) do
   local x, y = db.EraToForever(case[2], case[4], case[5])
   nearPoint(x, y, case[6], case[7], case[1] .. " AreaID")
@@ -26,10 +33,16 @@ for _, case in ipairs(cases) do
   nearPoint(x, y, case[6], case[7], case[1] .. " UiMapID")
 end
 
+---@param convert fun(id: number, x: number, y: number): number, number
+---@param id number
+---@param x number
+---@param y number
+---@return nil
 local function unchanged(convert, id, x, y)
   local actualX, actualY = convert(id, x, y)
   assert(actualX == x and actualY == y, "Expected exact passthrough for " .. id)
 end
+-- Identity, unknown, cross-namespace, and sentinel inputs must pass through exactly.
 unchanged(db.EraToForever, 12, 12.3456789, 98.7654321) -- Elwynn
 unchanged(db.EraToForeverByUiMapId, 1429, 12.3456789, 98.7654321)
 unchanged(db.EraToForever, 999999, 12.3456789, 98.7654321)
@@ -41,6 +54,7 @@ unchanged(db.EraToForever, 215, -1, -1)
 unchanged(db.EraToForeverByUiMapId, 1412, -1, -1)
 unchanged(db.EraToForever, 1581, -1, -1) -- Instance presence outside the changed maps.
 
+-- Boundary policy: zero is real, output is unclamped, and partial sentinels fail.
 local x, y = db.EraToForever(44, 0, 0)
 nearPoint(x, y, -5.086374584221827, 0, "Real zero point is transformed without clamping")
 assert(not pcall(db.EraToForever, 215, -1, 20), "Partial X sentinel must fail")
@@ -49,6 +63,7 @@ assert(not pcall(db.EraToForever, 12, -1, 20), "Unchanged maps still reject part
 
 -- The helper must ship in both modes, regardless of the active client flavor.
 local config = dofile("src/config.lua")
+config.correctionManifest = dofile("src/corrections/manifest.lua")
 local function includesHelper(files)
   local count = 0
   for _, path in ipairs(files) do

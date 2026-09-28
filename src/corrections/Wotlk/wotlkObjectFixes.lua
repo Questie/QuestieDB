@@ -1,14 +1,17 @@
----@class QuestieWotlkObjectFixes
-local QuestieWotlkObjectFixes = QuestieLoader:CreateModule("QuestieWotlkObjectFixes")
+local _, LibQuestieDB = ...
 
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
----@type ZoneDB
-local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
+-- Native Wrath of the Lich King object correction provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Source keeps authored Static rows and character-dependent Dynamic rows together in this provider.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.wotlkObjectFixes, "duplicate correction provider: wotlkObjectFixes")
+LibQuestieDB.CorrectionProviders.wotlkObjectFixes = providers
 
-function QuestieWotlkObjectFixes:Load()
-    local objectKeys = QuestieDB.objectKeys
-    local zoneIDs = ZoneDB.zoneIDs
+---@return table<integer, table> fixes Character-independent object corrections.
+function providers.Load()
+    -- Authored Wrath of the Lich King Static object corrections do not inspect current character state.
+    local objectKeys = LibQuestieDB.Meta.Object.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
 
     return {
         [269] = { -- Guarded Thunder Ale Barrel
@@ -862,10 +865,11 @@ function QuestieWotlkObjectFixes:Load()
     }
 end
 
--- This should allow manual fix for object availability
-function QuestieWotlkObjectFixes:LoadFactionFixes()
-    local objectKeys = QuestieDB.objectKeys
-    local zoneIDs = ZoneDB.zoneIDs
+---Returns authored Dynamic object corrections selected for the current faction.
+---@return table<integer, table> fixes Character-dependent object corrections.
+function providers.LoadFactionFixes()
+    local objectKeys = LibQuestieDB.Meta.Object.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
 
     local objectFixesHorde = {
         [201873] = { -- Gunship Armory

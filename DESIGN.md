@@ -269,14 +269,23 @@ nothing that can misfire.
   expansion, and season facts QuestieDB determines itself. Consumer-owned state and policy
   stay in that consumer's owner-scoped layer.
 
-`GetterDB/Corrections/Corrections.lua` is the starting point and most of it survives: the
-registry, per-expansion load-order namespaces, collision handling, corrections held behind
-functions so data materialises only on apply, and `wipe()` after deferred registration.
+Native files receive the addon namespace and export lazy zero-argument table-returning
+functions. The central manifest owns file applicability, each function's Static/Dynamic category, datatype,
+stable identity, function sequence, load order and merge metadata. After selected files load,
+a small registrar composes their exports through the existing owner-scoped registry.
+Static and Dynamic functions retain their original combined filenames. Baked TOCs omit
+pure-Static files; packaging removes centrally declared Static exports from staged mixed
+files after checking native Dynamic behavior. Pure-Dynamic files stay byte-identical.
+No correction loader shim is involved.
 
-Fix while porting: `Sod/base/*.lua` passes a literal `70` rather than `SoDBaseDynamicOrder`
-(300), so despite the comment "Sod will always load last" it applies *before* Era's faction
-fixes at 120. Also `Sod/static/sodItemQuestStartFixes.lua` sits in a folder named `static`
-but registers dynamic — folder names are not a reliable category signal.
+Registrations retain stable identities, per-expansion load-order windows, merge options and
+source-expansion metadata. Source mode still applies Static Corrections before Derived Passes.
+Seasonal files consult central applicability before exports and objective-hint writes.
+Forever owns independent files and complete `raceKeys`, `classKeys` and `npcFlags` tables.
+Class/NPC values initially match the previously selected Classic values; the race masks
+remain unchanged. Selection retains the actual flavor's table identities, with no aliases,
+fallback to another flavor, or key merging. Missing tables fail before providers execute.
+`flavor.rules` supplies Classic ordering only. Shared invariant enums remain shared.
 
 ### Read semantics — one shared view
 
@@ -351,7 +360,8 @@ the generator can enforce this rather than trusting convention.
 ### `extraObjectives` and translated text
 
 `l10n(...)` appears ~100 times in `classicQuestFixes.lua` and ~207 times in
-`tbcQuestFixes.lua`, always inside `extraObjectives`, alongside `Questie.ICON_TYPE_*`.
+`tbcQuestFixes.lua`, always inside `extraObjectives`, alongside icon constants. Owned
+providers read those constants from `LibQuestieDB.Enum.iconTypes`, not a `Questie` global.
 
 **Store the enUS string, translate at render time.** Questie's `l10n()` is keyed by the
 English string, so output is identical. `GetterDB` already anticipated this — its correction
@@ -596,7 +606,8 @@ Current provider checks have two purposes:
   results are reviewed, not regenerated from the implementation.
 - Whole-database checks validate current inputs and artifacts: round-trip Verification,
   Source/Baked equivalence, byte-exact Reconstruction, data invariants, determinism, and
-  ownership checks. Packaging also verifies that stripping Static Corrections preserves behavior.
+  ownership checks. Package fixtures verify exact Dynamic source bytes, Static-file exclusion,
+  and extracted-addon reads.
 
 Compiler comparisons, imported-data fidelity checks, and full-data golden snapshots served the
 migration and are removed. They are available at the migration checkpoint, not as optional gates.

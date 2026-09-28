@@ -1,4 +1,4 @@
-"""Real Forever Generation, stripping, and archive reads in a disposable fixture."""
+"""Real Forever Generation, packaging, and archive reads in a disposable fixture."""
 import contextlib
 import importlib.util
 import io
@@ -21,7 +21,8 @@ SPEC.loader.exec_module(bootstrap)
 
 
 class ForeverDistributionTest(LuaFixture):
-    def test_generated_forever_alias_loads_stripped_owned_providers(self):
+    def test_generated_forever_alias_loads_native_owned_providers(self):
+        # Build real Forever inputs in a disposable checkout, including every inherited base.
         self.copy_inputs("Forever")
         (self.root / "icons").mkdir()
         shutil.copyfile(ROOT / "icons/QuestieTDB_64x64.png", self.root / "icons/QuestieTDB_64x64.png")
@@ -41,15 +42,17 @@ class ForeverDistributionTest(LuaFixture):
                                          "--types=Quest", "--fields=name", "--quiet"))
         self.assertEqual(generated, primary.read_bytes())
         self.assertEqual(generated, alias.read_bytes())
+        # Package from generated truth. A stale workspace alias must not enter the archive.
         alias.write_bytes(b"stale workspace alias")
         result = subprocess.run([sys.executable, "tools/distribution/package.py", "all"],
-                                cwd=self.root, env=self.env, capture_output=True, text=True, timeout=120)
+                                cwd=self.root, env=self.env, capture_output=True, text=True, timeout=300)
         self.assert_success(result)
         stage = self.temp / "staged addon"
         stage.mkdir()
         archive = self.root / ".out/dist/QuestieDB-Forever.zip"
         bootstrap.stage_archive(archive, stage)
         self.assertEqual((stage / primary.name).read_bytes(), (stage / alias.name).read_bytes())
+        # Inspect the actual archive inventory and mixed-provider transformation.
         with zipfile.ZipFile(archive) as packaged:
             providers = [name for name in packaged.namelist()
                          if name.startswith("QuestieDB/src/corrections/Forever/") and name.endswith(".lua")]
@@ -57,8 +60,12 @@ class ForeverDistributionTest(LuaFixture):
             self.assertEqual(8, len(providers))
             self.assertTrue(any("QuestieDB/support/Forever/" in name for name in packaged.namelist()))
             for name in providers:
-                self.assertIn(b"Static body stripped at package time", packaged.read(name))
-        # Exercise the real checksum/preflight/install path using only local release assets.
+                content = packaged.read(name)
+                self.assertNotIn(b"function providers.Load()", content)
+                self.assertTrue(b"function providers.LoadFactionFixes()" in content
+                                or b"function providers.LoadDynamic()" in content)
+        # Prove the publish handoff through the real checksum/preflight/install path, using
+        # only local release assets.
         addons = self.temp / "Interface" / "AddOns"
         addons.mkdir(parents=True)
 
@@ -73,15 +80,6 @@ class ForeverDistributionTest(LuaFixture):
             self.assertEqual((stage / toc).read_bytes(), (installed / toc).read_bytes())
             self.assert_success(self.run_lua("tools/distribution/fixtures/forever-read.lua", str(installed), toc))
 
-        # A combined stage can contain mutually exclusive providers sharing module names.
-        # Each parity observation must still load a fresh sandbox for that file's flavor.
-        both = self.temp / "combined corrections"
-        for folder in ("Era", "Forever"):
-            shutil.copytree(self.root / "src/corrections" / folder, both / "src/corrections" / folder)
-        self.assert_success(self.run_lua("tools/distribution/strip-static.lua", str(both), "--quiet"))
-        for folder in ("Era", "Forever"):
-            self.assertTrue(any(b"Static body stripped at package time" in path.read_bytes()
-                                for path in (both / "src/corrections" / folder).glob("*.lua")))
 
 
 if __name__ == "__main__":

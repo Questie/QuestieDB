@@ -1,15 +1,20 @@
----@type SeasonOfDiscovery
-local SeasonOfDiscovery = QuestieLoader:ImportModule("SeasonOfDiscovery")
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
----@type ZoneDB
-local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
+local _, LibQuestieDB = ...
+if not LibQuestieDB.IsCorrectionProviderActive("sodNPCFixes") then return end
 
-function SeasonOfDiscovery:LoadNPCs()
-    local npcKeys = QuestieDB.npcKeys
-    local zoneIDs = ZoneDB.zoneIDs
-    local npcFlags = QuestieDB.npcFlags
-    local waypointPresets = QuestieDB.waypointPresets
+-- Native Season of Discovery NPC provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Manifest Dynamic data can correct inherited rows or add entities without inspecting character state.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.sodNPCFixes, "duplicate correction provider: sodNPCFixes")
+LibQuestieDB.CorrectionProviders.sodNPCFixes = providers
+
+---Returns authored Season of Discovery NPC corrections and additions.
+---@return table<integer, table> fixes Seasonal NPC corrections.
+function providers.LoadNPCs()
+    local npcKeys = LibQuestieDB.Meta.Npc.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
+    local npcFlags = LibQuestieDB.Enum.corrections.npcFlags
+    local waypointPresets = LibQuestieDB.Enum.waypointPresets
 
     return {
         [40] = { -- Kobold Miner

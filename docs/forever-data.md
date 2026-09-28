@@ -141,8 +141,8 @@ value changes, and **3546 -> 0 is removed**. All 10,119 raw NPC rows and both
 factions of NPC Correction results were checked: no NPC faction reference is
 missing from the export, including no reference to removed template 3546.
 Occurrences of 3546 as an NPC vendor ID are unrelated to faction-template IDs.
-The focused dataset check also examines captured Correction writes and injects
-an invalid reference to prove missing references fail.
+The focused dataset check examines returned Corrections and injects an invalid reference
+to prove missing references fail.
 
 #### Zone-map dispositions
 
@@ -270,11 +270,12 @@ applicable entity providers and transforms; its existing Base translation limita
 unchanged. Neither path performs the Era-to-Forever coordinate conversion again. Do not
 load legacy Era/Shared providers alongside the equivalent Forever providers.
 
-Add new entity Corrections to `src/corrections/Forever/forever*Fixes.lua`. The six inherited
+Add new entity Corrections to `src/corrections/Forever/forever*Fixes.lua`. The inherited
 providers live in `src/corrections/Forever/legacy/` and remain the baseline, not the normal
-editing surface. See [Correction authoring](forever.md#correction-authoring) for entry points
-and precedence. Other Forever inputs remain directly maintained. Intentional differences
-from Era are expected. Validate them with Forever's validators, Verification, Reconstruction,
+editing surface. See [Correction authoring](forever.md#correction-authoring) for entry points,
+manifest placement, and precedence. Other Forever inputs remain directly maintained.
+Intentional differences from Era are expected. Validate them with Forever's validators,
+Verification, Reconstruction,
 Source/Baked equivalence, and focused behavior tests. No compiler comparison or full-data
 golden refresh is required. See [the integration guide](forever.md) for normal commands and
 client-acceptance requirements.
@@ -323,6 +324,9 @@ For a deliberate new migration:
 
 `conversion.json` describes converter outputs and protects reruns. Its six Correction paths
 now point into `legacy/`; the move preserved all provider bytes and recorded output hashes.
+The native-provider migration retains combined filenames and replaces module imports with
+addon namespace references. Values, paths and stable registration identities are preserved,
+but current source bytes intentionally differ from the historical conversion output hashes.
 The support provenance records seed and import evidence, including the historical manifest hash. A later authored edit can legitimately differ from an
 adoption hash, but that difference must not be presented as an unchanged converter output.
 Initial deferred gaps remain unresolved until a subsequent reviewed change records their
@@ -347,11 +351,14 @@ The dataset check covers actual support shapes, reviewed links, converted entran
 preserved routing and faction references, including a missing-reference Self-proof. It does not
 require future Forever inputs to equal Era.
 
-To revalidate adopted conversion bytes without regenerating them, call
-`convert.geometry` with an existing explicit database path, then pass
-`{path: Path(path).read_bytes() for path in manifest['files']}` to
-`convert.validate`. Check manifest source/output hashes and geometry first. A dry
-run validates fresh candidates and is not a substitute for this adopted-byte check.
+The original adopted-byte check requires the historical module-format sources and matching
+manifest. Current native conversion candidates retain the same ten-file inventory in
+`convert.py`: four raw inputs and six combined providers. `convert.validate` loads native
+exports against the real source and target central policy and compares complete outputs,
+metadata and hints. Coordinate tokens are the only rewritten source content. Existing native
+provider bytes differ from historical hashes, so the installer refuses to overwrite them as
+hand-edited outputs. No hash refresh or bypass is part of this change. The native migration's
+separate before/after evidence is recorded in [the review guide](native-corrections.md).
 
 Tooling remains opt-in. A missing database can trigger a download even on a dry
 run; inspect the path first. Never run an installing conversion merely to test

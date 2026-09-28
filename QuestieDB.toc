@@ -177,11 +177,11 @@ src\support\_end.lua
 # --- Shared readers and Correction registry ---
 src\read\shared.lua
 src\corrections\registry.lua
+src\corrections\prepare.lua
 
-# --- Provider loader setup ---
-src\corrections\compat.lua
-src\corrections\register.lua
-src\corrections\_begin.lua
+# --- Objective-ordering hints ---
+src\corrections\objectiveFirst.lua
+src\corrections\manifest.lua
 
 # --- Era providers ---
 # Base Corrections are cumulative across legacy flavors; reputation applies only to Vanilla.
@@ -204,13 +204,11 @@ src\corrections\Wotlk\wotlkItemFixes.lua [AllowLoadGameType wrath, cata, mists]
 src\corrections\Wotlk\wotlkObjectFixes.lua [AllowLoadGameType wrath, cata, mists]
 
 # --- Titan Reforged: Wrath season 109 ---
-# Scope markers retain the runtime season gate for load-time objective hints.
-src\corrections\scopes\Titan.lua
+# Native files gate both registration and hints before any seasonal writes.
 src\corrections\Titan\titanReforgedQuestFixes.lua [AllowLoadGameType wrath]
 src\corrections\Titan\titanReforgedNPCFixes.lua [AllowLoadGameType wrath]
 src\corrections\Titan\titanReforgedItemFixes.lua [AllowLoadGameType wrath]
 src\corrections\Titan\titanReforgedObjectFixes.lua [AllowLoadGameType wrath]
-src\corrections\scopes\TitanEnd.lua
 
 # --- Cata providers: Cata and Mists ---
 src\corrections\Cata\cataQuestFixes.lua [AllowLoadGameType cata, mists]
@@ -226,7 +224,6 @@ src\corrections\MoP\mopObjectFixes.lua [AllowLoadGameType mists]
 
 # --- Season of Discovery: Vanilla season 2 ---
 # Never applied to Forever. The season gate remains in Lua.
-src\corrections\scopes\Sod.lua
 src\corrections\Sod\sodQuestFixes.lua [AllowLoadGameType vanilla]
 src\corrections\Sod\sodNPCFixes.lua [AllowLoadGameType vanilla]
 src\corrections\Sod\sodItemFixes.lua [AllowLoadGameType vanilla]
@@ -235,7 +232,6 @@ src\corrections\Sod\sodBaseQuests.lua [AllowLoadGameType vanilla]
 src\corrections\Sod\sodBaseNPCs.lua [AllowLoadGameType vanilla]
 src\corrections\Sod\sodBaseItems.lua [AllowLoadGameType vanilla]
 src\corrections\Sod\sodBaseObjects.lua [AllowLoadGameType vanilla]
-src\corrections\scopes\SodEnd.lua
 
 # --- Shared legacy Item-start Corrections ---
 src\corrections\Shared\itemStartFixes.lua [AllowLoadGameType vanilla, tbc, wrath, cata, mists]
@@ -256,12 +252,9 @@ src\corrections\Forever\foreverNPCFixes.lua [ExcludeLoadGameType vanilla, tbc, w
 src\corrections\Forever\foreverItemFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\foreverObjectFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
-# --- Provider registration and loader teardown ---
-src\corrections\manifest.lua
-src\corrections\_end.lua
-
 # --- Season of Discovery: required-race overlay ---
 src\corrections\Sod\sodRequiredRaces.lua [AllowLoadGameType vanilla]
+src\corrections\register.lua
 
 # =============================================================================
 # Derived passes

@@ -1,12 +1,17 @@
----@class CataItemFixes
-local CataItemFixes = QuestieLoader:CreateModule("CataItemFixes")
+local _, LibQuestieDB = ...
 
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
+-- Native Cataclysm item correction provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Source keeps authored Static rows and character-dependent Dynamic rows together in this provider.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.cataItemFixes, "duplicate correction provider: cataItemFixes")
+LibQuestieDB.CorrectionProviders.cataItemFixes = providers
 
-function CataItemFixes.Load()
-    local itemKeys = QuestieDB.itemKeys
-    local itemClasses = QuestieDB.itemClasses
+---@return table<integer, table> fixes Character-independent item corrections.
+function providers.Load()
+    -- Authored Cataclysm Static item corrections do not inspect current character state.
+    local itemKeys = LibQuestieDB.Meta.Item.keys
+    local itemClasses = LibQuestieDB.Enum.itemClasses
 
     return {
         [1349] = { -- Abercrombie's Crate
@@ -1264,9 +1269,10 @@ function CataItemFixes.Load()
     }
 end
 
--- This should allow manual fix for item availability
-function CataItemFixes:LoadFactionFixes()
-    local itemKeys = QuestieDB.itemKeys
+---Returns authored Dynamic item corrections selected for the current faction.
+---@return table<integer, table> fixes Character-dependent item corrections.
+function providers.LoadFactionFixes()
+    local itemKeys = LibQuestieDB.Meta.Item.keys
 
     local itemFixesHorde = {
         [17662] = { -- Stolen Treats

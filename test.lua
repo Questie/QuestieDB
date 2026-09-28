@@ -32,6 +32,7 @@ local normalize = dofile("src/meta/normalize.lua")
 local emulator = dofile("emulator/metadata.lua")
 local client = dofile("emulator/client.lua")
 local config = dofile("src/config.lua")
+config.correctionManifest = dofile("src/corrections/manifest.lua")
 
 local LUA_BIN = os.getenv("LUA") or "lua5.1"
 
@@ -956,6 +957,20 @@ suite("correction-enums", "shared", function()
     "Forever race masks retain values beyond 32 bits")
   equal(standalone.waypointPresets.ALLIANCE_GUNSHIP[5042][1][1], { 61.79, 46.28 },
     "waypoint presets retain area, path, and coordinate nesting")
+
+  -- Equal starting values must not couple future Classic edits to Forever.
+  local classic, forever = standalone.byExpansion.Classic, standalone.byExpansion.Forever
+  for _, name in ipairs({ "raceKeys", "classKeys", "npcFlags" }) do
+    check(forever[name] ~= classic[name], "Forever independently owns " .. name)
+  end
+  classic.classKeys.ALL_CLASSES = 0
+  classic.npcFlags.REPAIR = 0
+  equal(forever.classKeys.ALL_CLASSES, 1503, "Classic edits cannot change Forever ALL_CLASSES")
+  equal(forever.npcFlags.REPAIR, 16384, "Classic edits cannot change Forever REPAIR")
+end)
+
+suite("correction-authoring", "shared", function()
+  dofile("tools/validation/correction-authoring.test.lua")(check, equal)
 end)
 
 suite("corrections", "shared", function()
@@ -966,11 +981,10 @@ suite("corrections", "shared", function()
   check(Lib.CorrectionManifest ~= nil, "the correction manifest loaded")
   if not Lib.CorrectionManifest then return end
 
-  -- Expansion gating mirrors QuestieCorrections:Initialize: the four Era fix files apply
-  -- unconditionally on every expansion (upstream runs their Load()s ungated and layers
-  -- TBC+ fixes on top by floor); ONLY the reputation fixes sit behind `if Questie.IsClassic`.
-  -- Classic-gating the four stripped every Era-inherited static out of the TBC+ artifacts —
-  -- caught by the cross-implementation differential, invisible to verify/equivalence.
+  -- Legacy expansion gating mirrors QuestieCorrections:Initialize: the four Era fix files
+  -- have no expansion allowlist, so Vanilla through Mists inherit them before layering later
+  -- fixes by floor. Forever is excluded by config and loads its owned legacy copies instead.
+  -- Only the Era reputation fixes sit behind `if Questie.IsClassic` upstream.
   local ungatedEraFiles = {
     ["Era/classicQuestFixes.lua"] = true, ["Era/classicNPCFixes.lua"] = true,
     ["Era/classicItemFixes.lua"] = true, ["Era/classicObjectFixes.lua"] = true,
@@ -985,18 +999,9 @@ suite("corrections", "shared", function()
     elseif entry.file == "Wotlk/wotlkNPCFixes.lua" then
       wotlkNpcSpec = entry
     end
-    -- Inherited providers need a source expansion for missing-entity protection. Providers
-    -- owned by one exact flavor never participate in cumulative expansion inheritance.
-    if entry.static and not entry.generated and not entry.owned then
-      check(type(entry.sourceExpansionOrder or entry.minExpansionOrder) == "number",
-        "an inherited Static Correction records or implies its source expansion: " .. entry.file)
-    end
+
   end
   check(wotlkNpcSpec ~= nil, "WotLK NPC Correction manifest entry exists")
-  if wotlkNpcSpec then
-    equal(wotlkNpcSpec.static, { "LoadAutomatics", "Load" },
-      "WotLK NPC statics preserve Questie's automatic-then-hand-authored order")
-  end
 
   local registry = Lib.Corrections
   local previousQuestie = rawget(_G, "Questie")
@@ -1005,41 +1010,23 @@ suite("corrections", "shared", function()
   equal(rawget(_G, "Questie"), nil,
     "loading correction files leaves Questie's global unclaimed")
 
-  -- Copied providers borrow a private Questie table and restore the consumer's exact value.
-  local consumerQuestie = { marker = "consumer-owned" }
+  -- Deferred providers use addon-owned icons, whether Questie is absent or already loaded.
+  local questProvider
+  for _, entry in ipairs(Lib.Corrections.Select({})) do
+    if entry.name == "Era/classicQuestFixes.lua:Load" then questProvider = entry.func end
+  end
+  local withoutQuestie = questProvider()
+  equal(withoutQuestie[28][10][2][1][3], 3,
+    "a provider resolves its event icon without a Questie global")
+  local consumerQuestie = { ICON_TYPE_EVENT = -999, marker = "consumer-owned" }
   rawset(_G, "Questie", consumerQuestie)
-  local invokedQuestie
-  local returned = Lib.CorrectionCompat.Invoke(function()
-    invokedQuestie = rawget(_G, "Questie")
-    return { icon = Questie.ICON_TYPE_EVENT }
-  end)
-  equal(returned.icon, 3, "the invocation-scoped shim supplies Questie's icon constants")
-  check(invokedQuestie ~= consumerQuestie,
-    "a provider sees the private stand-in rather than the consumer's table")
+  local withQuestie = questProvider()
+  equal(withQuestie, withoutQuestie, "consumer icon constants cannot change provider results")
   check(rawget(_G, "Questie") == consumerQuestie,
-    "successful invocation restores a pre-existing Questie table by identity")
-  equal(consumerQuestie, { marker = "consumer-owned" },
-    "the invocation shim does not augment the consumer's Questie table")
-
-  local invokeOk, invokeErr = pcall(Lib.CorrectionCompat.Invoke, function()
-    error("correction provider failed", 0)
-  end)
-  check(not invokeOk and tostring(invokeErr):find("correction provider failed", 1, true) ~= nil,
-    "provider errors are rethrown after cleanup")
-  check(rawget(_G, "Questie") == consumerQuestie,
-    "failed invocation restores a pre-existing Questie table by identity")
+    "provider execution leaves the consumer's Questie table in place")
+  equal(consumerQuestie, { ICON_TYPE_EVENT = -999, marker = "consumer-owned" },
+    "provider execution does not modify the consumer's Questie table")
   rawset(_G, "Questie", previousQuestie)
-
-  local questieFields = {}
-  for _, spec in ipairs(Lib.CorrectionManifest) do
-    local content = lib.readAll("src/corrections/" .. spec.file)
-    for field in content:gmatch("Questie%.([%a_][%w_]*)") do questieFields[field] = true end
-  end
-  check(next(questieFields) ~= nil, "copied correction files contain direct Questie references")
-  for field in pairs(questieFields) do
-    check(Lib.Enum.iconTypes[field] ~= nil,
-      "the invocation shim declares directly referenced Questie field " .. field)
-  end
 
   local entries = registry.Select({})
   check(#entries > 0, "corrections registered")
@@ -1135,13 +1122,14 @@ suite("corrections", "shared", function()
   equal(Lib.Meta.normalize.field(meta, meta.keys.preQuestSingle, {}), nil,
     "a correction setting a table field to {} clears it")
 
-  -- Static-only correction files are excluded from the shipped artifact.
+  -- File inventory and function classification are separate: Baked omits Static-only files,
+  -- while packaging strips Static functions from mixed files later.
   local baked = config.bakedFileList(flavor)
   local bakedSet = {}
   for _, file in ipairs(baked) do bakedSet[file] = true end
   local staticOnly, shipped = 0, 0
   for _, spec in ipairs(Lib.CorrectionManifest) do
-    if not (spec.dynamic and #spec.dynamic > 0) then
+    if not config.hasDynamicCorrections(spec) then
       staticOnly = staticOnly + 1
       if bakedSet["src/corrections/" .. spec.file] then shipped = shipped + 1 end
     end
@@ -1187,9 +1175,8 @@ suite("corrections", "shared", function()
   equal(enum.byExpansion.Cata.classKeys.ALL_CLASSES, 1535, "Cata ALL_CLASSES remains 1535")
   equal(enum.byExpansion.MoP.classKeys.ALL_CLASSES, 2047, "MoP ALL_CLASSES remains 2047")
 
-  -- Exercise compat directly for every supported flavor. Literal expectations keep expansion
-  -- selection independent from the generated table being tested.
-  local compatCases = {
+  -- Literal expectations keep native selection independent from the enum tables under test.
+  local enumCases = {
     { flavor = config.flavorByName.Vanilla, allClasses = 1503, alliance = 77, repair = 16384 },
     { flavor = config.flavorByName.TBC, allClasses = 1503, alliance = 1101, repair = 4096 },
     { flavor = config.flavorByName.Wrath, allClasses = 1535, alliance = 1101, repair = 4096 },
@@ -1197,21 +1184,21 @@ suite("corrections", "shared", function()
     { flavor = config.flavorByName.Mists, allClasses = 2047, alliance = 18875469, repair = 4096 },
     { flavor = config.flavorByName.Forever, allClasses = 1503, alliance = 4294967373, repair = 16384 },
   }
-  local questieLoaderBeforeCompat = rawget(_G, "QuestieLoader")
-  for _, case in ipairs(compatCases) do
-    local remove = Lib.CorrectionCompat.Install(case.flavor)
-    local selected = Lib.CorrectionCompat.modules.QuestieDB
+  for _, case in ipairs(enumCases) do
+    local db = runtime.build()
+    runtime.loadCorrections(db, case.flavor)
+    local selected = db.Enum.corrections
     equal(selected.classKeys.ALL_CLASSES, case.allClasses,
-      "compat serves " .. case.flavor.name .. " ALL_CLASSES")
+      "native corrections receive " .. case.flavor.name .. " ALL_CLASSES")
     equal(selected.raceKeys.ALL_ALLIANCE, case.alliance,
-      "compat serves " .. case.flavor.name .. " race masks")
+      "native corrections receive " .. case.flavor.name .. " race masks")
     equal(selected.npcFlags.REPAIR, case.repair,
-      "compat serves " .. case.flavor.name .. " npc flags")
-    check(Lib.CorrectionCompat.modules.ZoneDB.zoneIDs == enum.zoneIDs,
-      "compat serves shared invariant constants from the top level for " .. case.flavor.name)
-    for _, entityType in ipairs(config.entityTypes) do
-      check(selected[entityType.keysField] == Lib.Meta[entityType.name].keys,
-        "compat serves canonical " .. entityType.name .. " keys for " .. case.flavor.name)
+      "native corrections receive " .. case.flavor.name .. " npc flags")
+    check(selected.zoneIDs == db.Enum.zoneIDs,
+      "native selection retains shared constant identity for " .. case.flavor.name)
+    for _, name in ipairs({ "raceKeys", "classKeys", "npcFlags" }) do
+      check(selected[name] == db.Enum.byExpansion[case.flavor.expansion][name],
+        "native selection retains the flavor " .. name .. " identity for " .. case.flavor.name)
     end
     if case.flavor.name == "Forever" then
       equal(selected.raceKeys.SKYBORNE_ALLIANCE, 4294967296,
@@ -1222,31 +1209,73 @@ suite("corrections", "shared", function()
         "Forever corrections receive the Horde mask including Skyborne")
       equal(selected.raceKeys.BLOOD_ELF, nil,
         "Forever replaces the race table rather than importing absent Classic keys")
-      equal(Lib.CorrectionCompat.modules.Expansions.Current, 1,
-        "Forever keeps Classic correction ordering independently of its enums")
+      equal(selected.raceKeys.HIGHORDER_SKYBORNE, nil, "retired Highorder Skyborne key stays absent")
+      equal(selected.raceKeys.WINDSHAPER_SKYBORNE, nil, "retired Windshaper Skyborne key stays absent")
+      local rows = db.CorrectionProviders.classicQuestFixes.Load()
+      equal(rows[558][db.Meta.Quest.keys.requiredRaces], 4294967373,
+        "the real Forever provider emits the Alliance mask including Skyborne")
+      equal(rows[367][db.Meta.Quest.keys.requiredRaces], 8589934770,
+        "the real Forever provider emits the Horde mask including Skyborne")
     end
-    remove()
   end
-  check(rawget(_G, "QuestieLoader") == questieLoaderBeforeCompat,
-    "direct compat selection restores the previous loader")
 
-  -- Installation requires an explicit supported flavor rather than silently inheriting Classic.
-  local nilFlavorOk, nilFlavorError = pcall(Lib.CorrectionCompat.Install, nil)
-  check(not nilFlavorOk and tostring(nilFlavorError):find("explicit flavor", 1, true) ~= nil,
-    "compat refuses a missing flavor rather than defaulting to Classic")
-  local unsupportedOk, unsupportedError = pcall(
-    Lib.CorrectionCompat.Install, { name = "Future", expansion = "Future" })
-  check(not unsupportedOk and tostring(unsupportedError):find("unsupported flavor", 1, true) ~= nil,
-    "compat refuses an unsupported flavor rather than defaulting to Classic")
+  -- Native loading rejects ambiguous flavor selection before executing any provider.
+  local missingOk = pcall(runtime.loadCorrections, runtime.build(), nil)
+  check(not missingOk, "native loading requires an explicit flavor")
+  local unknownOk = pcall(runtime.loadCorrections, runtime.build(), { name = "Future", expansion = "Future" })
+  check(not unknownOk, "native loading rejects unknown flavors")
 
-  local foreverEnums = enum.byExpansion.Forever
-  enum.byExpansion.Forever = nil
-  local missingOk, missingError = pcall(Lib.CorrectionCompat.Install, config.flavorByName.Forever)
-  enum.byExpansion.Forever = foreverEnums
-  check(not missingOk and tostring(missingError):find("missing expansion data for Forever", 1, true) ~= nil,
-    "compat rejects a missing Forever enum set instead of silently selecting Classic")
-  check(rawget(_G, "QuestieLoader") == questieLoaderBeforeCompat,
-    "failed enum selection leaves the existing loader untouched")
+  -- Defined replacement tables, including empty ones, never inherit individual keys.
+  local replacement = runtime.build()
+  local foreverEnums = replacement.Enum.byExpansion.Forever
+  foreverEnums.classKeys, foreverEnums.npcFlags = {}, { REPAIR = 123 }
+  replacement.Enum.byExpansion.Classic.raceKeys.FALLBACK_ONLY = 456
+  runtime.loadCorrections(replacement, config.flavorByName.Forever)
+  check(replacement.Enum.corrections.classKeys == foreverEnums.classKeys,
+    "native selection retains a defined empty flavor table by identity")
+  equal(replacement.Enum.corrections.classKeys.ALL_CLASSES, nil, "empty replacements stay empty")
+  check(replacement.Enum.corrections.npcFlags == foreverEnums.npcFlags,
+    "native selection retains the declared flavor NPC flag table by identity")
+  equal(replacement.Enum.corrections.npcFlags.QUEST_GIVER, nil, "replacement NPC flags do not merge keys")
+  equal(replacement.Enum.corrections.raceKeys.FALLBACK_ONLY, nil, "race keys do not merge from Classic")
+
+  local shared = runtime.build()
+  shared.Enum.raceKeys = { ALL_ALLIANCE = 321 }
+  runtime.loadCorrections(shared, config.flavorByName.Forever)
+  check(shared.Enum.corrections.raceKeys == shared.Enum.raceKeys,
+    "shared enum tables take precedence over flavor replacements by identity")
+
+  -- Eager preparation fails before exports or hints, without touching any host global.
+  for _, missing in ipairs({ "Forever", "raceKeys", "classKeys", "npcFlags" }) do
+    local broken = runtime.build()
+    local expectedError
+    if missing == "Forever" then
+      broken.Enum.byExpansion.Forever = nil
+      expectedError = "missing expansion data for Forever"
+    else
+      broken.Enum.byExpansion.Forever[missing] = nil
+      check(type(broken.Enum.byExpansion.Classic[missing]) == "table",
+        "Classic still declares " .. missing .. " when Forever lacks it")
+      expectedError = "unknown constant `" .. missing .. "` for expansion `Forever`"
+    end
+    local globals = {}
+    for key, value in pairs(_G) do globals[key] = value end
+    local missingEnumsOk, missingError = pcall(runtime.loadCorrections, broken, config.flavorByName.Forever)
+    check(not missingEnumsOk and tostring(missingError):find(expectedError, 1, true) ~= nil,
+      "native preparation rejects missing " .. missing .. " instead of selecting Classic")
+    equal(broken.Enum.corrections, nil, "missing " .. missing .. " prevents partial enum publication")
+    equal(next(broken.CorrectionProviders), nil, "missing " .. missing .. " fails before provider exports")
+    equal(#broken.Corrections.Select({}), 0, "missing " .. missing .. " fails before registration")
+    for _, hints in pairs(broken.ObjectiveFirst) do
+      equal(next(hints), nil, "missing " .. missing .. " fails before provider hint writes")
+    end
+    for key, value in pairs(globals) do
+      check(rawget(_G, key) == value, "failed enum selection preserves host global " .. tostring(key))
+    end
+    for key, value in pairs(_G) do
+      check(globals[key] == value, "failed enum selection adds no host global " .. tostring(key))
+    end
+  end
 
   local corrections = dofile("generator/corrections.lua")
 
@@ -1255,6 +1284,15 @@ suite("corrections", "shared", function()
   -- This real overlap catches a manifest that lists both valid functions in the wrong order.
   local wrath = config.flavorByName.Wrath
   local wrathContext = corrections.prepare(wrath)
+  local automatic, authored
+  for _, entry in ipairs(wrathContext.lib.Corrections.Select({ datatype = "Npc", dynamic = false })) do
+    if entry.name == "Wotlk/wotlkNPCFixes.lua:LoadAutomatics" then automatic = entry end
+    if entry.name == "Wotlk/wotlkNPCFixes.lua:Load" then authored = entry end
+  end
+  equal(automatic.loadOrder, registry.loadOrder.WotlkStatic + 11, "Wrath automatics keep offset 11")
+  equal(authored.loadOrder, registry.loadOrder.WotlkStatic + 12, "Wrath authored rows keep offset 12")
+  check(automatic.sequence < authored.sequence, "Wrath automatics register before authored rows")
+  equal(authored.sourceExpansionOrder, 3, "Wrath records its source expansion for inheritance")
   local wrathNpcs = { [30208] = { [1] = "Stormforged Ambusher" } }
   wrathContext.lib.Corrections.ApplyStaticToEntities(
     "Npc", wrathNpcs, wrath, wrathContext.lib.Corrections.OWNER)
@@ -1262,9 +1300,25 @@ suite("corrections", "shared", function()
   check(type(finalSpawns) == "table" and next(finalSpawns) == nil,
     "WotLK hand-authored NPC spawn deletion wins over LoadAutomatics")
 
-  -- Exercise the shipped source-mode load order, including _begin.lua, _end.lua, and the
-  -- initial correction application in api.lua. Questie must be free to claim its own global
-  -- immediately afterwards, while deferred providers must still resolve their icon constants.
+  local wrathItems = {}
+  wrathContext.lib.Corrections.ApplyStaticToEntities(
+    "Item", wrathItems, wrath, wrathContext.lib.Corrections.OWNER)
+  for id, name in pairs({
+    [199335] = "Teleport Scroll: Menethil Harbor",
+    [199336] = "Teleport Scroll: Stormwind Harbor",
+    [199777] = "Teleport Scroll: Orgrimmar Zeppelin Tower",
+    [199778] = "Teleport Scroll: Undercity Zeppelin Tower",
+    [200068] = "Teleport Scroll: Shattrath City",
+    [211206] = "Defiler's Medallion",
+    [211207] = "Mysterious Artifact",
+  }) do
+    equal(wrathItems[id] and wrathItems[id][1], name,
+      "a returned Wrath Item Correction creates missing item " .. id)
+  end
+
+  -- Exercise native Source selection and the initial correction application in api.lua.
+  -- Questie must remain free to claim its own global immediately afterwards, while deferred
+  -- providers still resolve addon-owned icon constants.
   client.reset()
   client.install({ expansion = "Classic" })
   local sourceLib = emulator.loadAddon(config.addonName .. ".toc", config.addonName)
@@ -1275,18 +1329,7 @@ suite("corrections", "shared", function()
     "loading the QuestieDB addon leaves no Questie compatibility global")
   client.reset()
 
-  -- Packaging invokes surviving Dynamic providers to compare staged and original behavior.
-  -- Cata's faction provider reads an icon constant, so this catches any packaging path that
-  -- bypasses the same invocation scope used by the runtime registry.
-  local stripStage = ".out/test-strip-static/QuestieDB"
-  testFiles.removeTree(stripStage)
-  lib.mkdirp(stripStage .. "/src/corrections/Cata")
-  lib.copyFile("src/corrections/Cata/cataQuestFixes.lua",
-    stripStage .. "/src/corrections/Cata/cataQuestFixes.lua")
-  check(commandSucceeded(shellQuote(LUA_BIN) .. " tools/distribution/strip-static.lua " ..
-    shellQuote(stripStage) .. " --quiet"),
-    "package stripping invokes copied providers through the scoped Questie shim")
-  testFiles.removeTree(stripStage)
+
 end)
 
 --------------------------------------------------------------------------------------------
@@ -1525,15 +1568,19 @@ suite("derived-required-races", "shared", function()
   -- The actual Source TOC and Generation must both use Forever masks, not just direct calls.
   client.install({ expansion = "Forever" })
   local foreverSource = emulator.loadAddon(config.addonName .. ".toc", config.addonName)
-  local races = foreverSource.CorrectionCompat.modules.QuestieDB.raceKeys
+  local races = foreverSource.Enum.corrections.raceKeys
   equal(races.SKYBORNE_ALLIANCE + races.HUMAN, 4294967297,
     "Source-loaded corrections can combine Alliance Skyborne with Human")
   equal(races.SKYBORNE_HORDE + races.ORC, 8589934594,
     "Source-loaded corrections can combine Horde Skyborne with Orc")
+  equal(foreverSource.Quest.Get(1581, "requiredRaces"), 4294967373,
+    "Forever Source corrections include Skyborne in the Alliance faction mask")
   equal(foreverSource.Quest.Get(7162, "requiredRaces"), 4294967373,
     "Forever Source inference includes Skyborne in the Alliance faction mask")
   client.reset()
   local foreverLoaded = flavorLoader.load(config.flavorByName.Forever, { Quest = true })
+  equal(foreverLoaded.Quest.entities[1581][questKeys.requiredRaces], 4294967373,
+    "Forever Generation corrections include Skyborne in the Alliance faction mask")
   equal(foreverLoaded.Quest.entities[7162][questKeys.requiredRaces], 4294967373,
     "Forever Generation inference includes Skyborne in the Alliance faction mask")
 
@@ -1876,7 +1923,8 @@ end)
 --------------------------------------------------------------------------------------------
 
 suite("forever-data", "shared", function()
-  -- Dataset checks install generator globals; isolate them from the runtime suites.
+  -- Backward behavior proof for the adopted native Forever baseline. Dataset checks install
+  -- generator globals, so isolate them from the runtime suites.
   check(commandSucceeded(shellQuote(LUA_BIN) .. " tools/dbc/forever-data.test.lua"),
     "Forever reviewed DBC data and faction-reference self-proof pass")
 end)
@@ -2112,31 +2160,12 @@ suite("read-contract", "Vanilla", function()
   local runtime = dofile("generator/runtime.lua")
   local savedSeasons, savedEnum = rawget(_G, "C_Seasons"), rawget(_G, "Enum")
 
-  local syntheticManifest = {
-    { file = "Era/fake.lua", module = "FakeEra", datatype = "Quest",
-      dynamic = { "LoadDynamic" }, expansions = { Classic = true } },
-    { file = "Sod/fake.lua", module = "FakeSod", datatype = "Quest",
-      dynamic = { "LoadSod" }, expansions = { Classic = true } },
-    { file = "Titan/fake.lua", module = "FakeTitan", datatype = "Quest",
-      dynamic = { "LoadTitan" }, expansions = { Wotlk = true } },
-  }
-  local fakeModules = {
-    FakeEra = { LoadDynamic = function() return { [2] = { [4] = 42 } } end },
-    FakeSod = { LoadSod = function() return { [2] = { [4] = 60 } } end },
-    FakeTitan = { LoadTitan = function() return { [2] = { [4] = 80 } } end },
-  }
-  ---Registers the synthetic manifest for one client flavor.
-  ---@param flavorName string Key in `config.flavorByName`.
-  ---@return table Lib
-  ---@return number registered
-  ---@return number sodEntries
-  ---@return number titanEntries
-  ---@return number eraEntries
-  local function registerSynthetic(flavorName)
+  ---Load real seasonal registrations, without invoking their data providers.
+  ---@param flavorName string
+  ---@return table, number, number, number, number
+  local function registerSeasonal(flavorName)
     local Lib = runtime.build()
-    Lib.CorrectionManifest = syntheticManifest
-    local registered = Lib.CorrectionRegister.FromManifest(
-      Lib.config.flavorByName[flavorName], function(name) return fakeModules[name] end)
+    local registered = runtime.loadCorrections(Lib, Lib.config.flavorByName[flavorName])
     local sodEntries, titanEntries, eraEntries = 0, 0, 0
     for _, entry in ipairs(Lib.Corrections.Select({ dynamic = true })) do
       if entry.name:find("^Sod/") then sodEntries = sodEntries + 1 end
@@ -2148,31 +2177,31 @@ suite("read-contract", "Vanilla", function()
 
   _G.C_Seasons = { GetActiveSeason = function() return 0 end }
   _G.Enum = { SeasonID = { SeasonOfDiscovery = 2 } }
-  local _, _, sodInactive, _, eraInactive = registerSynthetic("Vanilla")
+  local _, _, sodInactive, _, eraInactive = registerSeasonal("Vanilla")
   equal(sodInactive, 0, "no season active: SoD sets do not register")
-  equal(eraInactive, 1, "no season active: Era sets register normally")
+  equal(eraInactive, 4, "no season active: Era sets register normally")
 
   _G.C_Seasons = { GetActiveSeason = function() return 2 end }
-  local _, _, sodActive = registerSynthetic("Vanilla")
-  equal(sodActive, 1, "SoD active: SoD sets register")
-  local _, _, _, titanWrongSeason = registerSynthetic("Wrath")
+  local _, _, sodActive = registerSeasonal("Vanilla")
+  equal(sodActive, 9, "SoD active: SoD sets register")
+  local _, _, _, titanWrongSeason = registerSeasonal("Wrath")
   equal(titanWrongSeason, 0, "SoD season on Wrath: Titan sets do not register")
 
   _G.C_Seasons = { GetActiveSeason = function() return 109 end }
-  local _, _, _, titanWrath = registerSynthetic("Wrath")
-  equal(titanWrath, 1, "Titan active on Wrath: Titan sets register")
-  local _, _, _, titanVanilla = registerSynthetic("Vanilla")
+  local _, _, _, titanWrath = registerSeasonal("Wrath")
+  equal(titanWrath, 8, "Titan active on Wrath: Titan sets register")
+  local _, _, _, titanVanilla = registerSeasonal("Vanilla")
   equal(titanVanilla, 0, "season 109 on Vanilla: Titan sets do not register")
-  local _, _, _, titanTbc = registerSynthetic("TBC")
+  local _, _, _, titanTbc = registerSeasonal("TBC")
   equal(titanTbc, 0, "season 109 on TBC: Titan sets do not register")
-  local _, _, _, titanCata = registerSynthetic("Cata")
+  local _, _, _, titanCata = registerSeasonal("Cata")
   equal(titanCata, 0, "season 109 on Cata: Titan sets do not register")
-  local _, _, _, titanMists = registerSynthetic("Mists")
+  local _, _, _, titanMists = registerSeasonal("Mists")
   equal(titanMists, 0, "season 109 on Mists: Titan sets do not register")
 
   _G.C_Seasons = nil
-  local _, _, sodAbsent = registerSynthetic("Vanilla")
-  local _, _, _, titanAbsent = registerSynthetic("Wrath")
+  local _, _, sodAbsent = registerSeasonal("Vanilla")
+  local _, _, _, titanAbsent = registerSeasonal("Wrath")
   equal(sodAbsent, 0, "no C_Seasons API at all: SoD sets do not register")
   equal(titanAbsent, 0, "no C_Seasons API at all: Titan sets do not register")
 
@@ -2591,7 +2620,7 @@ suite("toc", "shared", function()
     before("src/config.lua", "src/meta/normalize.lua", "everything reads config")
     for _, entityType in ipairs(config.entityTypes) do
       before("src/meta/" .. entityType.name:lower() .. "Meta.lua",
-        "src/corrections/compat.lua", "correction providers use the canonical schema keys")
+        "src/corrections/prepare.lua", "schema precedes correction loading")
     end
     for index, path in ipairs(config.enumFiles) do
       check(at[path] ~= nil, list.name .. " includes enum file " .. path)
@@ -2599,15 +2628,24 @@ suite("toc", "shared", function()
         before(config.enumFiles[index - 1], path, "enum files retain their declared load order")
       end
       before(path, "src/support/_begin.lua", "support seeds DropDB.correctionKeys from the constants")
-      before(path, "src/corrections/compat.lua", "compat captures constants at file scope")
+      before(path, "src/corrections/prepare.lua", "all enums precede flavor selection")
     end
-    before("src/corrections/registry.lua", "src/corrections/_end.lua",
-      "registration needs the registry")
+    for _, spec in ipairs(config.correctionManifest) do
+      local path = "src/corrections/" .. spec.file
+      before("src/corrections/prepare.lua", path, "enum selection precedes provider loading")
+      for _, entityType in ipairs(config.entityTypes) do
+        before("src/meta/" .. entityType.name:lower() .. "Meta.lua", path,
+          "native providers use canonical schema keys")
+      end
+      before("src/corrections/manifest.lua", path, "central policy precedes seasonal selection")
+      before("src/corrections/objectiveFirst.lua", path, "hint tables precede writes")
+      before(path, "src/corrections/register.lua", "all exports precede central registration")
+    end
+    before("src/corrections/registry.lua", "src/corrections/register.lua", "composition uses the existing registry")
+    before("src/corrections/register.lua", "src/derived/registry.lua", "Static registration precedes Derived Passes")
+    before("src/corrections/register.lua", "src/api.lua", "registration precedes initial application")
     before("src/read/shared.lua", "src/api.lua", "api builds entities with shared.CreateEntity")
-    before("src/corrections/_end.lua", "src/api.lua",
-      "api applies QuestieDB's own corrections, so they must be registered first")
     before("src/support/_begin.lua", "src/support/_end.lua", "brackets are ordered")
-    before("src/corrections/_begin.lua", "src/corrections/_end.lua", "brackets are ordered")
   end
 
   -- Titan's four provider files ship in Source mode and the Wrath artifact, never in another
@@ -2631,27 +2669,41 @@ suite("toc", "shared", function()
       dynamic = { "LoadObjects" }, expansions = { Wotlk = true },
     },
   }
-  local titanFiles, titanSpecs, titanProviders = {}, {}, 0
+  local titanFiles, titanSpecs = {}, {}
+  local runtime = dofile("generator/runtime.lua")
+  client.install({ expansion = "Wotlk", season = "TitanReforged" })
+  local namespace = runtime.build()
+  runtime.loadCorrections(namespace, config.flavorByName.Wrath)
+  local titanProviders = 0
   for _, spec in ipairs(config.correctionManifest) do
-    check(spec.gatedDynamic == nil, spec.file .. " has no retired per-function variant gate")
     if spec.file:find("^Titan/") then
       titanFiles[#titanFiles + 1] = "src/corrections/" .. spec.file
-      titanSpecs[#titanSpecs + 1] = {
-        file = spec.file,
-        datatype = spec.datatype,
-        dynamic = spec.dynamic,
-        expansions = spec.expansions,
-      }
-      titanProviders = titanProviders + #(spec.dynamic or {})
-    end
-    if spec.file:find("^Wotlk/") then
-      equal(spec.dynamic, { "LoadFactionFixes" },
-        spec.file .. " declares only its ordinary faction provider")
+      local observed = { file = spec.file, expansions = spec.expansions, dynamic = {} }
+      local entries = namespace.Corrections.Select({ dynamic = true })
+      table.sort(entries, function(a, b) return a.sequence < b.sequence end)
+      for _, entry in ipairs(entries) do
+        if entry.name:sub(1, #spec.file + 1) == spec.file .. ":" then
+          observed.datatype = entry.datatype
+          observed.dynamic[#observed.dynamic + 1] = entry.name:sub(#spec.file + 2)
+          equal(entry.expansions, { Wotlk = true }, "Titan registration retains exact expansion")
+          titanProviders = titanProviders + 1
+        end
+      end
+      titanSpecs[#titanSpecs + 1] = observed
     end
   end
   equal(titanSpecs, expectedTitanSpecs,
-    "manifest fixes Titan file names, datatypes, provider order, and exact expansion gate")
-  equal(titanProviders, 8, "manifest declares all eight Titan providers")
+    "central registration retains Titan identities, datatypes, provider order and exact expansion gate")
+  equal(titanProviders, 8, "the manifest registers all eight native Titan providers")
+  local ordinary = {}
+  for _, entry in ipairs(namespace.Corrections.Select({ dynamic = true })) do
+    if entry.name:find("^Wotlk/") then ordinary[#ordinary + 1] = entry.name end
+  end
+  table.sort(ordinary)
+  equal(ordinary, { "Wotlk/wotlkItemFixes.lua:LoadFactionFixes", "Wotlk/wotlkNPCFixes.lua:LoadFactionFixes",
+    "Wotlk/wotlkObjectFixes.lua:LoadFactionFixes", "Wotlk/wotlkQuestFixes.lua:LoadFactionFixes" },
+    "Wrath registers only its four ordinary faction providers")
+  client.reset()
   ---@param files string[]
   ---@return table<string, boolean> set
   local function fileSet(files)

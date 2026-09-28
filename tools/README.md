@@ -9,7 +9,7 @@ tests, and the bundled interpreters. See [the main README](../README.md#for-cont
 | --- | --- |
 | `cli/` | Contributor command orchestration and launcher support |
 | `lua-binary/` | Prebuilt Windows/Linux x64 Lua 5.1 interpreters, checksums, and notices |
-| [`distribution/`](distribution/README.md) | Packaging, changelogs, publishing, Static Correction stripping, and release downloads/installations |
+| [`distribution/`](distribution/README.md) | Packaging, changelogs, publishing, and release downloads/installations |
 | [`dbc/`](dbc/README.md) | DBC source downloads, map-coordinate comparison, candidate Forever map support, and separate Era-to-Forever source conversion |
 | `validation/` | QuestieDB's own behavior checks and shared test-fixture helpers |
 | `probe-addon/` | Live-client storage and API probes |
@@ -18,8 +18,11 @@ The root commands `dbc-coordinates`, `convert-forever` and `dbc-support` reuse t
 [DBC tools](dbc/README.md); none runs during normal Generation. Coordinate comparison and
 conversion always check the shipped Lua helper against DBC. `dbc-coordinates --write-runtime-helper`
 explicitly regenerates that helper; it does not migrate existing Forever data. Use an explicit existing
-`--database` path to avoid a missing-cache download. Conversion writes ten files plus its
-manifest and protects edited outputs. See [Forever](../docs/forever.md) before rerunning it.
+`--database` path to avoid a missing-cache download. Conversion prepares ten files plus
+its manifest from an explicit migration-only source/destination map; it does not follow runtime
+manifest additions automatically. The protected installer rejects edited outputs. Native provider
+bytes differ from the historical manifest hashes and remain protected as hand edits. See
+[Forever](../docs/forever.md) before rerunning it.
 `dbc-support` never downloads; it writes only review candidates under `.out/forever-support/`,
 retaining current reviewed compatibility separately from native map facts.
 

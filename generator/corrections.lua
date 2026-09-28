@@ -11,16 +11,15 @@ local corrections = {}
 --- Per-flavor cache: loading 10 MB of correction files once per flavor is enough.
 local prepared = {}
 
---- Stand up the shipped registry and load every correction file this flavor uses.
+---Stand up the shipped registry and load every correction file this flavor uses.
+---@param flavor table An entry from config.flavors.
+---@return table context Freshly prepared or cached `{ lib, registered, files }` context.
 function corrections.prepare(flavor)
   local key = flavor and flavor.name or "*"
   if prepared[key] then return prepared[key] end
 
   local LibQuestieDB = runtime.build()
-  local registered, files = 0, 0
-  if LibQuestieDB.CorrectionManifest then
-    registered, files = runtime.loadCorrections(LibQuestieDB, flavor)
-  end
+  local registered, files = runtime.loadCorrections(LibQuestieDB, flavor)
 
   prepared[key] = { lib = LibQuestieDB, registered = registered, files = files }
   return prepared[key]
@@ -38,7 +37,6 @@ end
 function corrections.applyStatic(loaded, flavor)
   local context = corrections.prepare(flavor)
   local registry = context.lib.Corrections
-  if not registry then return 0, {} end
 
   local applied = 0
   local stats = { registered = context.registered, files = context.files, byType = {} }
@@ -52,7 +50,9 @@ function corrections.applyStatic(loaded, flavor)
   return applied, stats
 end
 
---- The prepared registry, so verify.lua and the equivalence test can ask what was registered.
+---The prepared registry, so verification can inspect the exact entries Generation used.
+---@param flavor table An entry from config.flavors.
+---@return table registry
 function corrections.registryFor(flavor)
   return corrections.prepare(flavor).lib.Corrections
 end

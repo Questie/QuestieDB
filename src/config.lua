@@ -47,8 +47,7 @@ config.maxValueLength = 1000
 --
 -- `expansion` is the directory under data/ holding this flavor's raw entity data.
 -- `dataPrefix` is the filename prefix inside that directory.
--- `rules` selects legacy ordering and fallback constants, not authored input ownership.
--- Flavor-specific constant tables take precedence over that fallback.
+-- `rules` selects legacy ordering only, not constants or authored input ownership.
 -- `gameType` is the default native persona; `gameTypeAliases` adds names for the same flavor.
 -- `aliases` names byte-identical Baked TOCs, independently of native file-condition tokens.
 -- `interface` records the supported client Interface values.
@@ -158,22 +157,6 @@ config.enumFiles = {
   "src/corrections/enum/expansions.lua",
 }
 
--- Independently maintained providers are not import destinations.
-config.ownedCorrections = {
-  -- Inherited baseline: preserve its ordering; add new work in forever*Fixes.lua below.
-  { owned = 'Forever', file = 'Forever/legacy/classicQuestFixes.lua', module = 'QuestieQuestFixes', datatype = 'Quest', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1, window = 'Era' },
-  { owned = 'Forever', file = 'Forever/legacy/classicNPCFixes.lua', module = 'QuestieNPCFixes', datatype = 'Npc', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1, window = 'Era' },
-  { owned = 'Forever', file = 'Forever/legacy/classicItemFixes.lua', module = 'QuestieItemFixes', datatype = 'Item', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1, window = 'Era' },
-  { owned = 'Forever', file = 'Forever/legacy/classicObjectFixes.lua', module = 'QuestieObjectFixes', datatype = 'Object', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1, window = 'Era' },
-  { owned = 'Forever', file = 'Forever/legacy/classicQuestReputationFixes.lua', module = 'QuestieClassicQuestReputationFixes', datatype = 'Quest', static = {'Load'}, expansions = {['Forever']=true}, generated = true, window = 'Era' },
-  { owned = 'Forever', file = 'Forever/legacy/itemStartFixes.lua', module = 'QuestieItemStartFixes', datatype = 'Item', static = {'LoadAutomaticQuestStarts'}, options = {['noNewEntries']=true,['noOverwrites']=true}, generated = true, window = 'Era' },
-  -- Authored Forever corrections follow the baseline within each Static/Dynamic category.
-  { owned = 'Forever', file = 'Forever/foreverQuestFixes.lua', module = 'ForeverQuestFixes', datatype = 'Quest', static = {'Load'}, dynamic = {'LoadDynamic'}, window = 'Forever' },
-  { owned = 'Forever', file = 'Forever/foreverNPCFixes.lua', module = 'ForeverNpcFixes', datatype = 'Npc', static = {'Load'}, dynamic = {'LoadDynamic'}, window = 'Forever' },
-  { owned = 'Forever', file = 'Forever/foreverItemFixes.lua', module = 'ForeverItemFixes', datatype = 'Item', static = {'Load'}, dynamic = {'LoadDynamic'}, window = 'Forever' },
-  { owned = 'Forever', file = 'Forever/foreverObjectFixes.lua', module = 'ForeverObjectFixes', datatype = 'Object', static = {'Load'}, dynamic = {'LoadDynamic'}, window = 'Forever' },
-}
-
 ---Whether a provider belongs to a flavor. Forever owns providers rather than inheriting legacy ones.
 ---@param spec table Correction manifest entry.
 ---@param flavor table Configured flavor.
@@ -186,31 +169,72 @@ function config.correctionApplies(spec, flavor)
     (not spec.minExpansionOrder or (config.expansionOrder[flavor.expansion] or 0) >= spec.minExpansionOrder)
 end
 
----Resolved correction block for one flavor; native selection uses this same applicability.
+--- Whether the running client actually has Season of Discovery active (ADR 0003 D9).
+--- SoD is a Dynamic Correction set over the Era database, but it must never apply on
+--- ordinary non-seasonal Era — expansion gating alone let 10,640 SoD ids leak onto plain
+--- Vanilla. Offline and in the emulator, `C_Seasons.GetActiveSeason()` returns 0, so the
+--- default everywhere without a live seasonal client is "not active".
+---@param flavor table? Active provider flavor.
+---@return boolean active
+function config.isSodActive(flavor)
+  if not flavor or flavor.name ~= "Vanilla" then return false end
+  local seasons = rawget(_G, "C_Seasons")
+  if not seasons or type(seasons.GetActiveSeason) ~= "function" then return false end
+  local enum = rawget(_G, "Enum")
+  local sodId = enum and enum.SeasonID and enum.SeasonID.SeasonOfDiscovery or 2
+  return seasons.GetActiveSeason() == sodId
+end
+
+--- Whether the running client is Titan Reforged: Wrath plus active season 109.
+---
+--- Checking the season alone is insufficient. Emulator personas proved Cata and Mists would
+--- otherwise accept the Titan set when reporting the same season id. `flavor` is explicit so
+--- offline registration follows the same rule without depending on a global runtime backend.
+---@param flavor table? Active database flavor; nil keeps the variant closed.
+---@return boolean active
+function config.isTitanReforgedActive(flavor)
+  if not flavor or flavor.expansion ~= "Wotlk" then return false end
+  local seasons = rawget(_G, "C_Seasons")
+  if not seasons or type(seasons.GetActiveSeason) ~= "function" then return false end
+  return seasons.GetActiveSeason() == 109
+end
+
+---Baked files must contain at least one Dynamic declaration; Static exports may be stripped.
+---@param spec CorrectionFileSpec
+---@return boolean
+function config.hasDynamicCorrections(spec)
+  for _, declaration in ipairs(spec.functions) do
+    if declaration.category == "dynamic" then return true end
+  end
+  return false
+end
+
+---Resolve the complete correction load phase for one flavor.
+---Shared constants and central policy load first, providers retain manifest order, and the
+---registrar runs last so it sees the complete native export inventory.
 ---@param flavor table
 ---@param mode string
 ---@return string[]
 function config.correctionFiles(flavor, mode)
-  if not config.correctionManifest then return {} end
+  assert(config.correctionManifest, "correction manifest is required")
   local files = {}
+
+  -- Authoring environment and central policy.
   for _, file in ipairs(config.enumFiles) do files[#files + 1] = file end
-  for _, file in ipairs({ "src/corrections/compat.lua", "src/corrections/register.lua", "src/corrections/_begin.lua" }) do
-    files[#files + 1] = file
-  end
-  local seasonal
+  files[#files + 1] = "src/corrections/prepare.lua"
+  files[#files + 1] = "src/corrections/objectiveFirst.lua"
+  files[#files + 1] = "src/corrections/manifest.lua"
+
+  -- Applicable native providers. Baked mode omits files with only Static exports.
   for _, spec in ipairs(config.correctionManifest) do
     if config.correctionApplies(spec, flavor) and
-       (mode ~= "baked" or (spec.dynamic and #spec.dynamic > 0)) then
-      local scope = spec.file:match("^(Sod)/") or spec.file:match("^(Titan)/")
-      if seasonal ~= scope then
-        files[#files + 1] = "src/corrections/scopes/" .. (scope or (seasonal .. "End")) .. ".lua"
-        seasonal = scope
-      end
+       (mode ~= "baked" or config.hasDynamicCorrections(spec)) then
       files[#files + 1] = "src/corrections/" .. spec.file
     end
   end
-  files[#files + 1] = "src/corrections/manifest.lua"
-  files[#files + 1] = "src/corrections/_end.lua"
+
+  -- Validate and publish all provider exports only after every selected file has loaded.
+  files[#files + 1] = "src/corrections/register.lua"
   return files
 end
 
@@ -327,16 +351,12 @@ function config.bakedFileList(flavor)
   append(files, config.supportFiles(flavor), seen)
   append(files, { "src/read/shared.lua", "src/corrections/registry.lua" }, seen)
   append(files, config.correctionFiles(flavor, "baked"), seen)
-  -- Authored SoD data is owned here, outside the copied-provider manifest.
-  if config.correctionManifest and flavor.expansion == "Classic" then
-    append(files, { "src/corrections/Sod/sodRequiredRaces.lua" }, seen)
-  end
   append(files, config.runtimeFiles.tail, seen)
   return files
 end
 
 ---Source entries keep paths separate from applicability and merge each path once.
----The phase order matters: all payloads must finish before their shim is removed.
+---Raw and support payloads finish before their shim closes; native Corrections register next.
 ---@return table[] entries Each entry has path and gameTypes (an ordered token list).
 function config.sourceFileEntries()
   local entries, byPath = {}, {}
@@ -357,6 +377,8 @@ function config.sourceFileEntries()
       end
     end
   end
+
+  -- Runtime foundation, native flavor selection, and deferred raw entity payloads.
   for _, path in ipairs(config.runtimeFiles.head) do add(path) end
   for _, flavor in ipairs(config.flavors) do add("src/flavors/" .. flavor.name .. ".lua", flavor) end
   add(config.runtimeFiles.sourceReader)
@@ -375,25 +397,20 @@ function config.sourceFileEntries()
     end
   end
   add("src/support/_end.lua")
+
+  -- Correction registry, central policy, native providers, then one registrar publication pass.
   add("src/read/shared.lua")
   add("src/corrections/registry.lua")
-  if config.correctionManifest then
-    for _, path in ipairs({ "src/corrections/compat.lua", "src/corrections/register.lua", "src/corrections/_begin.lua" }) do add(path) end
-    local seasonal
-    for _, spec in ipairs(config.correctionManifest) do
-      local scope = spec.file:match("^(Sod)/") or spec.file:match("^(Titan)/")
-      if scope ~= seasonal then
-        add("src/corrections/scopes/" .. (scope or (seasonal .. "End")) .. ".lua")
-        seasonal = scope
-      end
-      for _, flavor in ipairs(config.flavors) do
-        if config.correctionApplies(spec, flavor) then add("src/corrections/" .. spec.file, flavor) end
-      end
+  assert(config.correctionManifest, "correction manifest is required")
+  add("src/corrections/prepare.lua")
+  add("src/corrections/objectiveFirst.lua")
+  add("src/corrections/manifest.lua")
+  for _, spec in ipairs(config.correctionManifest) do
+    for _, flavor in ipairs(config.flavors) do
+      if config.correctionApplies(spec, flavor) then add("src/corrections/" .. spec.file, flavor) end
     end
-    add("src/corrections/manifest.lua")
-    add("src/corrections/_end.lua")
-    add("src/corrections/Sod/sodRequiredRaces.lua", config.flavorByName.Vanilla)
   end
+  add("src/corrections/register.lua")
   for _, path in ipairs(config.derivedFiles) do add(path) end
   for _, path in ipairs(config.runtimeFiles.tail) do add(path) end
   return entries

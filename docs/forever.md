@@ -5,7 +5,7 @@ Forever is an independent flavor with owned inputs in `data/Forever`,
 algorithms and initial Classic rules, not live Era data or future Era imports.
 The public entity, Correction, localization and support APIs and LuaLS types are unchanged.
 
-The adopted set includes four raw entity files and six Correction files plus
+The original adopted set included four raw entity files and six Correction files plus
 `data/Forever/conversion.json`. Coordinate conversion changed 13,691 pairs and explicitly
 retained six unresolved points. The reviewed faction-template export and completed map handoff
 are also adopted. Current maps contain 1,064 forward and 54 canonical reverse DBC relationships,
@@ -37,8 +37,8 @@ The emulator tests both `camelot` and `forever` personas against the same owned 
 
 Native selection replaces cross-flavor Lua discard selectors and their marker files.
 The loader shim still captures deferred entity strings, materializes them lazily and
-restores the previous loader after each input phase. Support and Correction setup/teardown
-remain ordered around their payloads. Lua still handles faction and season gates.
+restores the previous loader after each raw/support input phase. Corrections use the addon
+namespace directly, without a loader shim. Lua still handles faction and season gates.
 
 Legacy Corrections remain cumulative from Era through Mists. Forever loads only its owned
 providers, including its own Item-start provider. SoD applies only to Vanilla season 2;
@@ -53,36 +53,51 @@ Add new corrections in `src/corrections/Forever/`:
 - `foreverItemFixes.lua`
 - `foreverObjectFixes.lua`
 
-Each file is already registered with two entry points:
+Each file exports lazy `Load` (Static) and `LoadDynamic` functions returning
+`[entityId] = { [fieldKey] = correctedValue }`. The central
+`src/corrections/manifest.lua` owns its registration identity, category, ordering and merge
+metadata. Edit the provider for data changes and the manifest for policy changes. If Forever
+needs another provider file, add it in the manifest's Forever-authored section after the
+inherited baseline; the [native provider guide](native-corrections.md#where-to-make-a-change)
+lists the required header, metadata, regeneration, and checks.
 
-- `Load()` returns Static Corrections, applied in Source mode and folded into Generation.
-- `LoadDynamic()` returns Dynamic Corrections selected from generic character/game facts,
-  such as faction, race or class. Consumer settings and policy stay with the consumer.
+Static functions run in Source mode and Generation. Dynamic functions may select generic
+character/game facts such as faction,
+race or class; consumer settings and policy stay with the consumer. Use the addon namespace
+and `Meta.<Entity>.keys`, not `QuestieLoader`.
 
-Both return `[entityId] = { [fieldKey] = correctedValue }` tables. For available field names
-and meanings, use the [schema references in the correction guide](../README.md#working-on-corrections).
-The usual `QuestieDB.questKeys`, `npcKeys`, `itemKeys` and `objectKeys` tables come from those
-schemas; correction files do not load them themselves.
+For available field names and meanings, use the
+[schema references in the correction guide](../README.md#working-on-corrections).
+Providers use the canonical `LibQuestieDB.Meta.<Entity>.keys` tables directly.
 
-The six files in `legacy/` remain the inherited baseline; leave them unchanged for ordinary correction work. New Static
-Corrections apply after legacy Static Corrections. New Dynamic Corrections apply after legacy
-Dynamic Corrections. Dynamic Corrections still outrank all static data, so a replacement for
-an inherited Dynamic Correction belongs in `LoadDynamic()`, even if its new value is unconditional.
+The six native files in `legacy/` retain the inherited baseline's registration identities and
+ordering. Leave them unchanged for ordinary correction work. Authored Static Corrections
+follow legacy Static Corrections; authored Dynamic Corrections follow legacy Dynamic
+Corrections. Dynamic values outrank all static data, so replacing an inherited Dynamic value
+belongs in `LoadDynamic` even when its new value is unconditional.
 
-Corrections use Forever's `raceKeys` from `src/corrections/enum/expansions.lua`, including
-`SKYBORNE_ALLIANCE`, `SKYBORNE_HORDE` and the faction masks containing them.
-Other expansion-dependent tables, such as `classKeys` and `npcFlags`, fall back to Classic
-unless Forever defines its own table. A defined table replaces the fallback entirely;
-missing race keys are not filled from Classic. Correction ordering still uses Classic rules.
+`src/corrections/prepare.lua` selects constants before providers load. Forever declares
+complete, independent `raceKeys`, `classKeys` and `npcFlags` tables in
+`src/corrections/enum/expansions.lua`. Its races retain `SKYBORNE_ALLIANCE`, `SKYBORNE_HORDE`
+and the faction masks containing them. Class/NPC values initially match the previously
+selected Classic values, not a new live DBC validation. The literal duplication is intentional:
+future Classic edits must not change Forever. There are no aliases or fallback to Classic.
+Missing tables fail during preparation; defined tables, even empty ones, retain their identity
+without merging keys. Providers read them through `LibQuestieDB.Enum.corrections`.
+Shared invariant enums remain shared. `flavor.rules` selects Classic correction ordering only.
 The required-races Derived Pass also uses Forever's faction masks in Source mode and Generation.
 
-Conversion only targets the inherited baseline and raw data, never `forever*Fixes.lua`.
+Conversion targets only the inherited baseline and raw data, never `forever*Fixes.lua`.
+The historical conversion manifest is unchanged. Its paths still match, but native source
+bytes differ from its recorded hashes. The installer protects these changes as hand edits;
+restoring filenames does not authorize overwriting them.
+
 
 ## Baked artifacts
 
 `generate.lua Forever` writes `QuestieDB_Forever.toc` and a byte-identical temporary
 `QuestieDB_Camelot.toc` alias after Localization blocks are complete. Packaging creates the
-alias again from the staged canonical TOC after Static Correction stripping; it does not
+alias again from the staged canonical TOC; it does not
 trust an old workspace alias. Legacy underscore filenames are unchanged. Baked file lists
 remain resolved plain paths, without native file conditions or conditional entity metadata.
 

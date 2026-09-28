@@ -5,7 +5,7 @@ Usage: questiedb.sh package [Vanilla|TBC|Wrath|Cata|Mists|Forever|all]
        questiedb.ps1 package [Vanilla|TBC|Wrath|Cata|Mists|Forever|all]
 Run from any directory. Outputs replace this checkout's .out/dist and .out/stage.
 Generation remains dependency-free Lua; packaging also needs Lua 5.1 for the existing
-Static Correction stripping and behavior-parity check.
+Static Correction stripping and native behavior validation.
 """
 
 from __future__ import annotations
@@ -182,7 +182,9 @@ def build_zip(
     flavor: str,
     changelog: str,
 ) -> Artifact:
-    """Stage the selected TOCs' union, strip only staged copies, and check the ZIP."""
+    """Stage the selected TOCs' union and strip Static exports only in staged copies."""
+    # Build a disposable addon tree. Repository sources remain the comparison baseline for
+    # Static stripping, and no archive is opened until staged behavior has been proven.
     stage = root / ".out/stage"
     if stage.exists():
         shutil.rmtree(stage)
@@ -203,9 +205,10 @@ def build_zip(
         shutil.copy(path, addon / "Types" / path.name)
     (addon / "CHANGELOG.md").write_text(changelog, encoding="utf-8")
 
+    # Validate all native provider transformations before the stripper writes staged files.
     subprocess.run([lua, "tools/distribution/strip-static.lua", str(addon)], cwd=root, check=True)
 
-    # Never ship a workspace alias: it may predate Generation or staged transformations.
+    # Never ship a workspace alias: it may predate Generation.
     tocs = [addon / source.toc for source in sources]
     if any(source.flavor == "Forever" for source in sources):
         alias = addon / "QuestieDB_Camelot.toc"
@@ -215,6 +218,7 @@ def build_zip(
     filename = "QuestieDB-%s.zip" % flavor
     archive_path = root / ".out/dist" / filename
 
+    # Archive publication begins only after the complete staged tree is ready.
     # Sorted paths stabilize entry ordering. ZIP timestamps are not a cross-build byte contract;
     # determinism gates cover generated TOCs, and the manifest hashes the finished archives.
     with zipfile.ZipFile(
@@ -275,7 +279,8 @@ def release_manifest(metadata: dict, sources: list[FlavorSource]) -> dict:
 
 def package(root: Path, flavors: list[str]) -> None:
     """Preflight inputs before clearing output, then publish a local manifest last."""
-    # Complete input and tool checks before replacing any previous local output.
+    # Input preflight. Complete tool, TOC, type, contract, version, and changelog checks
+    # before replacing any previous local output.
     if (
         not flavors
         or len(set(flavors)) != len(flavors)
@@ -342,7 +347,7 @@ def package(root: Path, flavors: list[str]) -> None:
     changes = release_notes.changelog(root, version, commit, repository_url)
     changelog = f"# QuestieDB {version}\n\n" + changes.markdown
 
-    # Output replacement begins here. Later failures can leave partial packages.
+    # Publish boundary. From here onward, a failure can leave partial local packages.
     dist = root / ".out/dist"
     if dist.exists():
         shutil.rmtree(dist)
@@ -356,7 +361,8 @@ def package(root: Path, flavors: list[str]) -> None:
 
     shutil.rmtree(root / ".out/stage")
 
-    # Keep the potentially long changelog last so metadata stays easy to inspect.
+    # Write release metadata only after every requested archive succeeds. Keep the potentially
+    # long changelog last so metadata stays easy to inspect.
     manifest = {
         "repository": repository_url,
         "producerCommit": commit,
@@ -386,7 +392,7 @@ def package(root: Path, flavors: list[str]) -> None:
 
 
 def main() -> int:
-    """Keep failures actionable without hiding the stripper's own diagnostics."""
+    """Keep packaging failures actionable."""
     args = sys.argv[1:]
     if args in (["--help"], ["-h"]):
         print(__doc__)

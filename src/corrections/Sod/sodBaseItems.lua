@@ -1,13 +1,17 @@
----@type SeasonOfDiscovery
-local SeasonOfDiscovery = QuestieLoader:ImportModule("SeasonOfDiscovery")
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
+local _, LibQuestieDB = ...
+if not LibQuestieDB.IsCorrectionProviderActive("sodBaseItems") then return end
 
---- Load the base quests for Season of Discovery
---- These are generated, do NOT EDIT the data entries here.
---- If you want to edit an item, do so in sodItemFixes.lua
-function SeasonOfDiscovery:LoadBaseItems()
-    local itemKeys = QuestieDB.itemKeys
+-- Native Season of Discovery base item provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Manifest Dynamic data can add seasonal entities; these loaders do not inspect character state.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.sodBaseItems, "duplicate correction provider: sodBaseItems")
+LibQuestieDB.CorrectionProviders.sodBaseItems = providers
+
+---Returns Season of Discovery item rows added on top of inherited Classic data.
+---@return table<integer, table> rows Seasonal item rows.
+function providers.LoadBaseItems()
+    local itemKeys = LibQuestieDB.Meta.Item.keys
 
     return {
         [202251] = {

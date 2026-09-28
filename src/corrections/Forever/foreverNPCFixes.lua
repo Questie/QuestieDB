@@ -1,34 +1,35 @@
----@class ForeverNpcFixes
-local ForeverNpcFixes = QuestieLoader:CreateModule("ForeverNpcFixes")
+local _, LibQuestieDB = ...
 
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
----@type ZoneDB
-local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
----@type Phasing
-local Phasing = QuestieLoader:ImportModule("Phasing")
+-- Source separates authored Forever-only NPC corrections into Static and Dynamic tables.
+-- Inherited Classic content lives under legacy/ and normally stays unchanged.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.foreverNPCFixes, "duplicate correction provider: foreverNPCFixes")
+LibQuestieDB.CorrectionProviders.foreverNPCFixes = providers
 
--- Static Corrections: shared by all characters and folded in during Generation.
-function ForeverNpcFixes:Load()
-    local npcKeys = QuestieDB.npcKeys
-    local zoneIDs = ZoneDB.zoneIDs
-    local npcFlags = QuestieDB.npcFlags
-    local waypointPresets = QuestieDB.waypointPresets
-    local phases = Phasing.phases
+---@return table<integer, table> fixes Character-independent NPC corrections.
+function providers.Load()
+    -- Add character-independent Forever NPC corrections or new entities to this Static table.
+    local npcKeys = LibQuestieDB.Meta.Npc.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
+    local npcFlags = LibQuestieDB.Enum.corrections.npcFlags
+    local waypointPresets = LibQuestieDB.Enum.waypointPresets
+    local phases = LibQuestieDB.Enum.phases
 
     return {
         -- [npcId] = { [npcKeys.name] = "Corrected name" },
     }
 end
 
--- Dynamic Corrections: selected from character/game facts such as faction, race or class.
--- These override legacy Dynamic Corrections and all Static Corrections at query time.
-function ForeverNpcFixes:LoadDynamic()
-    local npcKeys = QuestieDB.npcKeys
-    local zoneIDs = ZoneDB.zoneIDs
-    local npcFlags = QuestieDB.npcFlags
-    local waypointPresets = QuestieDB.waypointPresets
-    local phases = Phasing.phases
+---Returns authored Forever Dynamic NPC corrections that depend on faction, class, race, or other character state.
+---Add character-dependent rows to this table.
+---@return table<integer, table> fixes Character-dependent NPC corrections.
+function providers.LoadDynamic()
+    local npcKeys = LibQuestieDB.Meta.Npc.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
+    local npcFlags = LibQuestieDB.Enum.corrections.npcFlags
+    local waypointPresets = LibQuestieDB.Enum.waypointPresets
+    local phases = LibQuestieDB.Enum.phases
 
     return {
         -- [npcId] = { [npcKeys.name] = "Character-specific name" },

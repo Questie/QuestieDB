@@ -1,12 +1,16 @@
--- AUTO GENERATED FILE! DO NOT EDIT!
----@class QuestieClassicQuestReputationFixes
-local QuestieClassicQuestReputationFixes = QuestieLoader:CreateModule("QuestieClassicQuestReputationFixes")
+local _, LibQuestieDB = ...
 
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
+-- Native Classic Era quest reputation correction provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- These authored Static rows do not inspect current character state.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.classicQuestReputationFixes, "duplicate correction provider: classicQuestReputationFixes")
+LibQuestieDB.CorrectionProviders.classicQuestReputationFixes = providers
 
-function QuestieClassicQuestReputationFixes:Load()
-    local questKeys = QuestieDB.questKeys
+---@return table<integer, table> fixes Character-independent quest reputation corrections.
+function providers.Load()
+    -- Authored Classic Era Static quest reputation corrections do not inspect current character state.
+    local questKeys = LibQuestieDB.Meta.Quest.keys
 
     return {
         [2] = {

@@ -176,8 +176,8 @@ end
 --- it: the same src/ files the client loads, loaded the same way.
 ---
 --- `baseDir` resolves the listed files against another root — pointing it at an unpacked
---- release zip loads the runtime a user actually installs (with its static correction bodies
---- stripped by tools/distribution/strip-static.lua) instead of the working tree's copies.
+--- release zip loads the runtime a user actually installs: mixed providers have Static exports
+--- stripped, pure-Dynamic files are unchanged, and pure-Static files are omitted.
 ---@param tocPath string
 ---@param addonName string?
 ---@param baseDir string? Root the TOC's file list resolves against; default the working dir

@@ -1,13 +1,18 @@
----@type SeasonOfDiscovery
-local SeasonOfDiscovery = QuestieLoader:ImportModule("SeasonOfDiscovery")
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
----@type ZoneDB
-local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
+local _, LibQuestieDB = ...
+if not LibQuestieDB.IsCorrectionProviderActive("sodObjectFixes") then return end
 
-function SeasonOfDiscovery:LoadObjects()
-    local objectKeys = QuestieDB.objectKeys
-    local zoneIDs = ZoneDB.zoneIDs
+-- Native Season of Discovery object provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Manifest Dynamic data can correct inherited rows or add entities without inspecting character state.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.sodObjectFixes, "duplicate correction provider: sodObjectFixes")
+LibQuestieDB.CorrectionProviders.sodObjectFixes = providers
+
+---Returns authored Season of Discovery object corrections and additions.
+---@return table<integer, table> fixes Seasonal object corrections.
+function providers.LoadObjects()
+    local objectKeys = LibQuestieDB.Meta.Object.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
 
     return {
         [3642] = { -- Kolkars' Booty

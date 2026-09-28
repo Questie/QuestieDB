@@ -29,11 +29,8 @@ local flavorLoader = dofile("generator/flavor.lua")
 local l10nGen = dofile("generator/l10n.lua")
 local version = dofile("generator/version.lua")
 
--- The correction manifest drives which files each TOC lists. It is optional: a bare data
--- round-trip works before any corrections are ported.
-if lib.fileExists("src/corrections/manifest.lua") then
-  config.correctionManifest = dofile("src/corrections/manifest.lua")
-end
+-- The native inventory is required for both Source and Baked file selection.
+config.correctionManifest = dofile("src/corrections/manifest.lua")
 
 local generate = {}
 
@@ -143,23 +140,22 @@ local function sourceTocHeadings()
     ["support/Forever/Zones/dungeons.lua"] = { subcategory = "Forever: independently owned support inputs" },
     ["src/support/_end.lua"] = { subcategory = "Loader teardown" },
     ["src/read/shared.lua"] = { category = "Corrections", subcategory = "Shared readers and Correction registry" },
-    ["src/corrections/compat.lua"] = { subcategory = "Provider loader setup" },
+    ["src/corrections/objectiveFirst.lua"] = { subcategory = "Objective-ordering hints" },
     ["src/corrections/Era/classicQuestFixes.lua"] = { subcategory = "Era providers",
       note = "Base Corrections are cumulative across legacy flavors; reputation applies only to Vanilla." },
     ["src/corrections/Tbc/tbcQuestFixes.lua"] = { subcategory = "TBC providers: TBC and later legacy flavors" },
     ["src/corrections/Wotlk/wotlkQuestFixes.lua"] = { subcategory = "Wrath providers: Wrath and later legacy flavors" },
-    ["src/corrections/scopes/Titan.lua"] = { subcategory = "Titan Reforged: Wrath season 109",
-      note = "Scope markers retain the runtime season gate for load-time objective hints." },
+    ["src/corrections/Titan/titanReforgedQuestFixes.lua"] = { subcategory = "Titan Reforged: Wrath season 109",
+      note = "Native files gate both registration and hints before any seasonal writes." },
     ["src/corrections/Cata/cataQuestFixes.lua"] = { subcategory = "Cata providers: Cata and Mists" },
     ["src/corrections/MoP/mopQuestFixes.lua"] = { subcategory = "Mists providers" },
-    ["src/corrections/scopes/Sod.lua"] = { subcategory = "Season of Discovery: Vanilla season 2",
+    ["src/corrections/Sod/sodQuestFixes.lua"] = { subcategory = "Season of Discovery: Vanilla season 2",
       note = "Never applied to Forever. The season gate remains in Lua." },
     ["src/corrections/Shared/itemStartFixes.lua"] = { subcategory = "Shared legacy Item-start Corrections" },
     ["src/corrections/Forever/legacy/classicQuestFixes.lua"] = { subcategory = "Forever: inherited baseline",
       note = "Owned copies, not live Era or Shared providers. Add new work in forever*Fixes.lua." },
     ["src/corrections/Forever/foreverQuestFixes.lua"] = { subcategory = "Forever: authored corrections",
       note = "Apply after the baseline within each Static/Dynamic category." },
-    ["src/corrections/manifest.lua"] = { subcategory = "Provider registration and loader teardown" },
     ["src/corrections/Sod/sodRequiredRaces.lua"] = { subcategory = "Season of Discovery: required-race overlay" },
     ["src/derived/registry.lua"] = { category = "Derived passes", subcategory = "Registry and loader setup" },
     ["src/derived/RamerDouglasPeucker.lua"] = { subcategory = "Shared algorithms",

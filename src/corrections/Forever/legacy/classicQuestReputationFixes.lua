@@ -1,12 +1,16 @@
--- AUTO GENERATED FILE! DO NOT EDIT!
----@class QuestieClassicQuestReputationFixes
-local QuestieClassicQuestReputationFixes = QuestieLoader:CreateModule("QuestieClassicQuestReputationFixes")
+local _, LibQuestieDB = ...
 
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
+-- Legacy Classic quest reputation data retained for the Forever flavor.
+-- Add new Forever corrections to ../forever*Fixes.lua; inherited rows normally stay unchanged.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.classicQuestReputationFixes, "duplicate correction provider: classicQuestReputationFixes")
+LibQuestieDB.CorrectionProviders.classicQuestReputationFixes = providers
 
-function QuestieClassicQuestReputationFixes:Load()
-    local questKeys = QuestieDB.questKeys
+---@return table<integer, table> fixes Legacy quest reputation corrections.
+function providers.Load()
+    -- Inherited Classic Static quest reputation corrections used by Forever.
+    local questKeys = LibQuestieDB.Meta.Quest.keys
 
     return {
         [2] = {

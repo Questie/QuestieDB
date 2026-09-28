@@ -45,6 +45,8 @@ def install_outputs(root: Path, outputs: dict[str, bytes], *,
     directory with backups and reports its path rather than deleting recovery data.
     """
     root = root.absolute()
+
+    # Preflight every destination and establish the prior ownership record before writes.
     paths = {name: destination(root, name) for name in outputs}
     manifest_path = destination(root, manifest_name)
     previous = {}
@@ -52,6 +54,17 @@ def install_outputs(root: Path, outputs: dict[str, bytes], *,
         previous = json.loads(manifest_path.read_bytes())
         if previous.get("tool") != tool or previous.get("format") != 1:
             raise ValueError("Unrecognized conversion manifest; refusing to overwrite it")
+
+    # The historical converter has a fixed destination inventory. Changing that inventory
+    # requires a reviewed provenance migration; an old manifest cannot opt in new files.
+    if previous and tool == TOOL:
+        prior_paths = set(previous.get("files", {}))
+        current_paths = set(outputs) - {manifest_name}
+        if prior_paths != current_paths:
+            raise ValueError("Conversion output inventory changed; explicit provenance migration required. "
+                             "The historical manifest cannot authorize a different output inventory.")
+
+    # Collect every proposed change and reject unowned bytes before creating a transaction.
     changed = []
     originals = {}
     for name, payload in outputs.items():
@@ -82,6 +95,8 @@ def install_outputs(root: Path, outputs: dict[str, bytes], *,
             str(index): {"destination": name, "previously_existed": originals[name] is not None}
             for index, name in enumerate(changed)
         }, indent=2) + "\n", encoding="utf-8")
+        # Publish data first and the ownership manifest last. Recheck each destination at its
+        # write boundary so an edit made during staging is preserved rather than overwritten.
         order = [name for name in changed if name != manifest_name] + ([manifest_name] if manifest_name in changed else [])
         indices = {name: index for index, name in enumerate(changed)}
         for name in order:

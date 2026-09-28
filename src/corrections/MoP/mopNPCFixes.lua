@@ -1,18 +1,19 @@
----@class MopNpcFixes
-local MopNpcFixes = QuestieLoader:CreateModule("MopNpcFixes")
+local _, LibQuestieDB = ...
 
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
----@type ZoneDB
-local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
----@type Phasing
-local Phasing = QuestieLoader:ImportModule("Phasing")
+-- Native Mists of Pandaria NPC correction provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Source keeps authored Static rows and character-dependent Dynamic rows together in this provider.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.mopNPCFixes, "duplicate correction provider: mopNPCFixes")
+LibQuestieDB.CorrectionProviders.mopNPCFixes = providers
 
-function MopNpcFixes.Load()
-    local npcKeys = QuestieDB.npcKeys
-    local zoneIDs = ZoneDB.zoneIDs
-    local phases = Phasing.phases
-    local npcFlags = QuestieDB.npcFlags
+---@return table<integer, table> fixes Character-independent NPC corrections.
+function providers.Load()
+    -- Authored Mists of Pandaria Static NPC corrections do not inspect current character state.
+    local npcKeys = LibQuestieDB.Meta.Npc.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
+    local phases = LibQuestieDB.Enum.phases
+    local npcFlags = LibQuestieDB.Enum.corrections.npcFlags
 
     ---@format disable
     return {
@@ -7307,9 +7308,11 @@ function MopNpcFixes.Load()
     }
 end
 
-function MopNpcFixes:LoadFactionFixes()
-    local npcKeys = QuestieDB.npcKeys
-    local zoneIDs = ZoneDB.zoneIDs
+---Returns authored Dynamic NPC corrections selected for the current faction.
+---@return table<integer, table> fixes Character-dependent NPC corrections.
+function providers.LoadFactionFixes()
+    local npcKeys = LibQuestieDB.Meta.Npc.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
 
     local npcFixesHorde = {
         [15898] = { -- Lunar Festival Vendor

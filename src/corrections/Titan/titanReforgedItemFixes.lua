@@ -1,13 +1,18 @@
----@class TitanReforgedItemFixes
-local TitanReforgedItemFixes = QuestieLoader:CreateModule("TitanReforgedItemFixes")
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
+local _, LibQuestieDB = ...
+if not LibQuestieDB.IsCorrectionProviderActive("titanReforgedItemFixes") then return end
 
----Returns Titan-only item corrections applied before database compilation.
----@return table<ItemId, table>
-function TitanReforgedItemFixes.LoadItems()
-    local itemKeys = QuestieDB.itemKeys
-    local itemClasses = QuestieDB.itemClasses
+-- Native Titan Reforged item provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Dynamic additions and inherited-data overrides stay separate; these loaders do not inspect character state.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.titanReforgedItemFixes, "duplicate correction provider: titanReforgedItemFixes")
+LibQuestieDB.CorrectionProviders.titanReforgedItemFixes = providers
+
+---Returns Titan Reforged item additions and relationship corrections.
+---@return table<integer, table> rows Seasonal item rows.
+function providers.LoadItems()
+    local itemKeys = LibQuestieDB.Meta.Item.keys
+    local itemClasses = LibQuestieDB.Enum.itemClasses
 
     return {
         [264272] = { -- Celestial Missive
@@ -41,10 +46,10 @@ function TitanReforgedItemFixes.LoadItems()
     }
 end
 
----Returns runtime overrides for items inherited from the WotLK database.
----@return table<ItemId, table>
-function TitanReforgedItemFixes.LoadItemOverrides()
-    local itemKeys = QuestieDB.itemKeys
+---Returns Titan Reforged overrides for inherited WotLK items.
+---@return table<integer, table> overrides Inherited-item overrides.
+function providers.LoadItemOverrides()
+    local itemKeys = LibQuestieDB.Meta.Item.keys
 
     return {
         [22734] = { -- Base of Atiesh

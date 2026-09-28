@@ -1,17 +1,19 @@
----@type SeasonOfDiscovery
-local SeasonOfDiscovery = QuestieLoader:ImportModule("SeasonOfDiscovery")
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
----@type ZoneDB
-local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
+local _, LibQuestieDB = ...
+if not LibQuestieDB.IsCorrectionProviderActive("sodBaseNPCs") then return end
 
---- Load the base NPCs for Season of Discovery
---- These are generated, do NOT EDIT the data entries here.
---- If you want to edit an NPC, do so in sodNPCFixes.lua
-function SeasonOfDiscovery:LoadBaseNPCs()
-    local npcKeys = QuestieDB.npcKeys
-    local zoneIDs = ZoneDB.zoneIDs
-    local sortKeys = QuestieDB.sortKeys
+-- Native Season of Discovery base NPC provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Manifest Dynamic data can add seasonal entities; these loaders do not inspect character state.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.sodBaseNPCs, "duplicate correction provider: sodBaseNPCs")
+LibQuestieDB.CorrectionProviders.sodBaseNPCs = providers
+
+---Returns Season of Discovery NPC rows added on top of inherited Classic data.
+---@return table<integer, table> rows Seasonal NPC rows.
+function providers.LoadBaseNPCs()
+    local npcKeys = LibQuestieDB.Meta.Npc.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
+    local sortKeys = LibQuestieDB.Enum.sortKeys
 
     return {
         [162539] = {

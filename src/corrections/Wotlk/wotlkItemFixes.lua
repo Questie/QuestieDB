@@ -1,18 +1,17 @@
----@class QuestieWotlkItemFixes
-local QuestieWotlkItemFixes = QuestieLoader:CreateModule("QuestieWotlkItemFixes")
-local _QuestieWotlkItemFixes = {}
+local _, LibQuestieDB = ...
 
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
+-- Native Wrath of the Lich King item correction provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Source keeps authored Static rows and character-dependent Dynamic rows together in this provider.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.wotlkItemFixes, "duplicate correction provider: wotlkItemFixes")
+LibQuestieDB.CorrectionProviders.wotlkItemFixes = providers
 
--- Further information on how to use this can be found at the wiki
--- https://github.com/Questie/Questie/wiki/Corrections
-
-function QuestieWotlkItemFixes:Load()
-    _QuestieWotlkItemFixes:InsertMissingItemIds()
-
-    local itemKeys = QuestieDB.itemKeys
-    local itemClasses = QuestieDB.itemClasses
+---@return table<integer, table> fixes Character-independent item corrections.
+function providers.Load()
+    -- Authored Wrath of the Lich King Static item corrections do not inspect current character state.
+    local itemKeys = LibQuestieDB.Meta.Item.keys
+    local itemClasses = LibQuestieDB.Enum.itemClasses
 
     return {
         [5085] = { -- Bristleback Quilboar Tusk
@@ -751,20 +750,10 @@ function QuestieWotlkItemFixes:Load()
     }
 end
 
-function _QuestieWotlkItemFixes:InsertMissingItemIds()
-    -- Boost quest items
-    QuestieDB.itemData[199335] = {} -- Teleport Scroll: Menethil Harbor
-    QuestieDB.itemData[199336] = {} -- Teleport Scroll: Stormwind Harbor
-    QuestieDB.itemData[199777] = {} -- Teleport Scroll: Orgrimmar Zeppelin Tower
-    QuestieDB.itemData[199778] = {} -- Teleport Scroll: Undercity Zeppelin Tower
-    QuestieDB.itemData[200068] = {} -- Teleport Scroll: Shattrath City
-    QuestieDB.itemData[211206] = {} -- Defiler's Medallion
-    QuestieDB.itemData[211207] = {} -- Mysterious Artifact
-end
-
--- This should allow manual fix for item availability
-function QuestieWotlkItemFixes:LoadFactionFixes()
-    local itemKeys = QuestieDB.itemKeys
+---Returns authored Dynamic item corrections selected for the current faction.
+---@return table<integer, table> fixes Character-dependent item corrections.
+function providers.LoadFactionFixes()
+    local itemKeys = LibQuestieDB.Meta.Item.keys
 
     local itemFixesHorde = {
         [49698] = { -- Ancient Dragonforged Blades

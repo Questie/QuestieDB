@@ -15,7 +15,7 @@ These checks do not establish that every authored gameplay fact is correct.
 `src/meta/` is the canonical schema. Generation checks data-file field keys against it. Public
 `compilerTypes` metadata remains for API compatibility, not as a dependency on the compiler.
 Schema changes must update the owned data keys and LuaLS declarations where affected.
-The correction compatibility shim supplies field keys directly from the canonical schema tables.
+Native Correction providers read field keys directly from the canonical schema tables.
 Corrections and translations are edited here, without re-importing Questie.
 
 Build provenance identifies the producing QuestieDB commit. New TOCs omit
@@ -44,3 +44,17 @@ To inspect the old evidence without changing the working tree:
 git show migration-parity-complete:docs/questie-handover.md
 git show migration-parity-complete:tools/differential/compiler-baseline/Vanilla.tsv
 ```
+
+## Native Correction providers
+
+Owned Corrections use the addon namespace and canonical `Meta` keys directly. The central
+manifest classifies functions within the original combined filenames and owns applicability
+and registration policy. Native files export lazy functions, composed afterward through the
+existing registry. Packaging omits pure-Static files and strips centrally declared Static
+exports from staged mixed files, verifying native Dynamic behavior. Pure-Dynamic files remain
+byte-identical. Consumer registrars, owner precedence, merge policy and the
+Static-before-Derived Pass lifecycle remain
+unchanged. The raw-data, support, localization and Derived Pass shims are separate mechanisms.
+
+The implementation migration used one-time pre/post provider and generated-entity comparisons,
+not a permanent full-data golden gate. See the [review record](../native-corrections.md).
