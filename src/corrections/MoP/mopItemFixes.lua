@@ -1,12 +1,17 @@
----@class MopItemFixes
-local MopItemFixes = QuestieLoader:CreateModule("MopItemFixes")
+local _, LibQuestieDB = ...
 
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
+-- Native Mists of Pandaria item correction provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- These authored Static rows do not inspect current character state.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.mopItemFixes, "duplicate correction provider: mopItemFixes")
+LibQuestieDB.CorrectionProviders.mopItemFixes = providers
 
-function MopItemFixes.Load()
-    local itemKeys = QuestieDB.itemKeys
-    local itemClasses = QuestieDB.itemClasses
+---@return table<integer, table> fixes Character-independent item corrections.
+function providers.Load()
+    -- Authored Mists of Pandaria Static item corrections do not inspect current character state.
+    local itemKeys = LibQuestieDB.Meta.Item.keys
+    local itemClasses = LibQuestieDB.Enum.itemClasses
 
     ---@format disable
     return {

@@ -1,4 +1,4 @@
--- Explicit SoD race masks, registered after the other SoD providers.
+-- Explicit SoD race masks, scheduled after the other SoD providers by the central manifest.
 --
 -- Why these rows exist
 -- --------------------
@@ -33,16 +33,20 @@ local _, LibQuestieDB = ...
 local flavor = LibQuestieDB.flavor
 
 -- Vanilla's Baked artifact serves both Era and SoD. File presence is not seasonal admission.
-if not flavor or flavor.expansion ~= "Classic" or not LibQuestieDB.CorrectionRegister.IsSodActive() then
-  return
-end
+if not LibQuestieDB.IsCorrectionProviderActive("sodRequiredRaces") then return end
 
-local registry = LibQuestieDB.Corrections
+-- Native Season of Discovery required-race correction provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.sodRequiredRaces, "duplicate correction provider: sodRequiredRaces")
+LibQuestieDB.CorrectionProviders.sodRequiredRaces = providers
+
 local questKeys = LibQuestieDB.Meta.Quest.keys
 local raceKeys = LibQuestieDB.Enum.byExpansion[flavor.expansion].raceKeys
 
+---Returns explicit requiredRaces values that preserve the migrated inference result.
 ---@return table<integer, table<integer, integer>> rows Explicit requiredRaces values.
-local function corrections()
+function providers.Load()
   return {
     -- Shipment masks stay Alliance even on Horde: these reproduce pre-MinimalInit inference.
     [78611] = { [questKeys.requiredRaces] = raceKeys.ALL_ALLIANCE }, -- A Waylaid Shipment
@@ -78,8 +82,3 @@ local function corrections()
     [90243] = { [questKeys.requiredRaces] = raceKeys.ALL_HORDE }, -- Fire Nova: Step 5
   }
 end
-
--- Copied SoD providers occupy offsets 2 and 11/12. Keep our final field values after them
--- within the same owner, without changing registry phases or consumer precedence.
-registry.RegisterRuntimeCorrection(registry.OWNER, "Quest", "Sod:sodRequiredRaces",
-  corrections, registry.loadOrder.SoDDynamic + 20)

@@ -1,19 +1,20 @@
----@class CataNpcFixes
-local CataNpcFixes = QuestieLoader:CreateModule("CataNpcFixes")
+local _, LibQuestieDB = ...
 
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
----@type ZoneDB
-local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
----@type Phasing
-local Phasing = QuestieLoader:ImportModule("Phasing")
+-- Native Cataclysm NPC correction provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Source keeps authored Static rows and character-dependent Dynamic rows together in this provider.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.cataNPCFixes, "duplicate correction provider: cataNPCFixes")
+LibQuestieDB.CorrectionProviders.cataNPCFixes = providers
 
-function CataNpcFixes.Load()
-    local npcKeys = QuestieDB.npcKeys
-    local zoneIDs = ZoneDB.zoneIDs
-    local waypointPresets = QuestieDB.waypointPresets
-    local phases = Phasing.phases
-    local npcFlags = QuestieDB.npcFlags
+---@return table<integer, table> fixes Character-independent NPC corrections.
+function providers.Load()
+    -- Authored Cataclysm Static NPC corrections do not inspect current character state.
+    local npcKeys = LibQuestieDB.Meta.Npc.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
+    local waypointPresets = LibQuestieDB.Enum.waypointPresets
+    local phases = LibQuestieDB.Enum.phases
+    local npcFlags = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].npcFlags
 
     return {
         [19] = { -- Benny Questgiver
@@ -8705,11 +8706,12 @@ function CataNpcFixes.Load()
     }
 end
 
--- This should allow manual fix for NPC availability
-function CataNpcFixes:LoadFactionFixes()
-    local npcKeys = QuestieDB.npcKeys
-    local zoneIDs = ZoneDB.zoneIDs
-    local phases = Phasing.phases
+---Returns authored Dynamic NPC corrections selected for the current faction.
+---@return table<integer, table> fixes Character-dependent NPC corrections.
+function providers.LoadFactionFixes()
+    local npcKeys = LibQuestieDB.Meta.Npc.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
+    local phases = LibQuestieDB.Enum.phases
 
     local npcFixesHorde = {
         [5676] = { -- Summoned Voidwalker

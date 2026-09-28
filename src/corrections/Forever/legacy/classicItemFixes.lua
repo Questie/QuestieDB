@@ -1,17 +1,17 @@
----@class QuestieItemFixes
-local QuestieItemFixes = QuestieLoader:CreateModule("QuestieItemFixes")
--------------------------
---Import modules.
--------------------------
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB");
+local _, LibQuestieDB = ...
 
--- Further information on how to use this can be found at the wiki
--- https://github.com/Questie/Questie/wiki/Corrections
+-- Legacy Classic item data retained for the Forever flavor.
+-- Add new Forever corrections to ../forever*Fixes.lua; inherited rows normally stay unchanged.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.classicItemFixes, "duplicate correction provider: classicItemFixes")
+LibQuestieDB.CorrectionProviders.classicItemFixes = providers
 
-function QuestieItemFixes:Load()
-    local itemKeys = QuestieDB.itemKeys
-    local itemClasses = QuestieDB.itemClasses
+---@return table<integer, table> fixes Legacy item corrections.
+function providers.Load()
+    -- Inherited Classic Static item corrections used by Forever.
+    local itemKeys = LibQuestieDB.Meta.Item.keys
+    local itemClasses = LibQuestieDB.Enum.itemClasses
 
     return {
         [730] = { -- Murloc Eye
@@ -1604,9 +1604,10 @@ function QuestieItemFixes:Load()
     }
 end
 
--- some quest items are shared across factions but require different sources for each faction
-function QuestieItemFixes:LoadFactionFixes()
-    local itemKeys = QuestieDB.itemKeys
+---Returns inherited Classic Dynamic item corrections selected for the current faction.
+---@return table<integer, table> fixes Character-dependent legacy item corrections.
+function providers.LoadFactionFixes()
+    local itemKeys = LibQuestieDB.Meta.Item.keys
 
     local itemFixesHorde = {
         [3713] = { -- Soothing Spices

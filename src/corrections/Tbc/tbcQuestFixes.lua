@@ -1,37 +1,26 @@
----@class QuestieTBCQuestFixes
-local QuestieTBCQuestFixes = QuestieLoader:CreateModule("QuestieTBCQuestFixes")
-local _QuestieTBCQuestFixes = {}
+local _, LibQuestieDB = ...
 
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
----@type ContentPhases
-local ContentPhases = QuestieLoader:ImportModule("ContentPhases")
----@type Expansions
-local Expansions = QuestieLoader:ImportModule("Expansions")
----@type ZoneDB
-local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
----@type QuestieProfessions
-local QuestieProfessions = QuestieLoader:ImportModule("QuestieProfessions")
----@type QuestieCorrections
-local QuestieCorrections = QuestieLoader:ImportModule("QuestieCorrections")
----@type l10n
-local l10n = QuestieLoader:ImportModule("l10n")
+-- Native Burning Crusade quest correction provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Source keeps authored Static rows and character-dependent Dynamic rows together in this provider.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.tbcQuestFixes, "duplicate correction provider: tbcQuestFixes")
+LibQuestieDB.CorrectionProviders.tbcQuestFixes = providers
+local iconTypes = LibQuestieDB.Enum.iconTypes
 
-
-QuestieCorrections.killCreditObjectiveFirst[10503] = true -- The Bladespire Threat
-
-
-function QuestieTBCQuestFixes:Load()
-    local questKeys = QuestieDB.questKeys
-    local raceIDs = QuestieDB.raceKeys
-    local classIDs = QuestieDB.classKeys
-    local factionIDs = QuestieDB.factionIDs
-    local zoneIDs = ZoneDB.zoneIDs
-    local sortKeys = QuestieDB.sortKeys
-    local questFlags = QuestieDB.questFlags
-    local specialFlags = QuestieDB.specialFlags
-    local profKeys = QuestieProfessions.professionKeys
-    local rankKeys = QuestieProfessions.rankNames
+---@return table<integer, table> fixes Character-independent quest corrections.
+function providers.Load()
+    -- Authored Burning Crusade Static quest corrections do not inspect current character state.
+    local questKeys = LibQuestieDB.Meta.Quest.keys
+    local raceIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].raceKeys
+    local classIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].classKeys
+    local factionIDs = LibQuestieDB.Enum.factionIDs
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
+    local sortKeys = LibQuestieDB.Enum.sortKeys
+    local questFlags = LibQuestieDB.Enum.questFlags
+    local specialFlags = LibQuestieDB.Enum.specialFlags
+    local profKeys = LibQuestieDB.Enum.professionKeys
+    local rankKeys = LibQuestieDB.Enum.rankNames
 
     return {
         [32] = { -- Rise of the Silithid
@@ -773,7 +762,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.reputationReward] = {{factionIDs.HORDE,500}},
         },
         [4021] = { -- Counterattack!
-            [questKeys.extraObjectives] = {{{[zoneIDs.THE_BARRENS] = {{44.7,28.1}}}, Questie.ICON_TYPE_EVENT, l10n("Defeat Centaur to summon Warlord Krom'zar"), 0}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.THE_BARRENS] = {{44.7,28.1}}}, iconTypes.ICON_TYPE_EVENT, "Defeat Centaur to summon Warlord Krom'zar", 0}},
         },
         [4134] = { -- Lost Thunderbrew Recipe
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
@@ -1473,7 +1462,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.BLOOD_ELF,
         },
         [8346] = { -- Thirst Unending
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{15294,15274},15274,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{15294,15274},15274,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [8347] = { -- Aiding the Outrunners
             [questKeys.breadcrumbForQuestId] = 9704,
@@ -1591,8 +1580,8 @@ function QuestieTBCQuestFixes:Load()
         },
         [8490] = { -- Powering our Defenses
             [questKeys.preQuestSingle] = {},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Place the Infused Crystal and protect it from the Scourge for 1 minute"), 0, {{"object", 181164}}}},
-            [questKeys.objectives] = {{{16364,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Place the Infused Crystal and protect it from the Scourge for 1 minute", 0, {{"object", 181164}}}},
+            [questKeys.objectives] = {{{16364,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.requiredSourceItems] = {},
             [questKeys.breadcrumbs] = {9253},
         },
@@ -2132,7 +2121,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.startedBy] = {{3033,4217,5505,12042,16655,16721}},
         },
         [9066] = { -- Swift Discipline
-            [questKeys.objectives] = {{{15945,nil,Questie.ICON_TYPE_INTERACT},{15941,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{15945,nil,iconTypes.ICON_TYPE_INTERACT},{15941,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9067] = { -- The Party Never Ends
             [questKeys.breadcrumbs] = {9395},
@@ -2181,13 +2170,13 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.breadcrumbs] = {9282},
         },
         [9164] = { -- Captives at Deatholme
-            [questKeys.objectives] = {{{16208,nil,Questie.ICON_TYPE_TALK},{16206,nil,Questie.ICON_TYPE_TALK},{16209,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{16208,nil,iconTypes.ICON_TYPE_TALK},{16206,nil,iconTypes.ICON_TYPE_TALK},{16209,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [9166] = { -- Deliver the Plans to An'telas
             [questKeys.nextQuestInChain] = 9169,
         },
         [9174] = { -- Vanquishing Aquantion
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Use the Bundle of Medallions"), 0, {{"object", 181157}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Use the Bundle of Medallions", 0, {{"object", 181157}}}},
         },
         [9177] = { -- Journey to Undercity
             [questKeys.startedBy] = {{16252}},
@@ -2270,7 +2259,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.breadcrumbForQuestId] = 9161,
         },
         [9283] = { -- Rescue the Survivors!
-            [questKeys.objectives] = {{{16483,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{16483,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9287] = { -- Paladin Training
             [questKeys.preQuestSingle] = {9280},
@@ -2300,7 +2289,7 @@ function QuestieTBCQuestFixes:Load()
         },
         [9303] = { -- Inoculation
             [questKeys.breadcrumbs] = {10304},
-            [questKeys.objectives] = {{{16518,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{16518,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9312] = { -- The Emitter
             [questKeys.preQuestSingle] = {},
@@ -2350,7 +2339,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.startedBy] = {nil,nil,{23249}},
         },
         [9370] = { -- The Cleansing Must Be Stopped
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Place the Signaling Gem"), 0, {{"object", 181449}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Place the Signaling Gem", 0, {{"object", 181449}}}},
         },
         [9371] = { -- Botanist Taerix
             [questKeys.breadcrumbForQuestId] = 10302,
@@ -2365,7 +2354,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.triggerEnd] = {"Escort Wounded Blood Elf Pilgrim to Falcon Watch", {[zoneIDs.HELLFIRE_PENINSULA] = {{27.09,61.92}}}},
         },
         [9383] = { -- An Ambitious Plan
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_LOOT, l10n("Use the Sanctified Crystal against a wounded Uncontrolled Voidwalker"), 0, {{"monster", 16975}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_LOOT, "Use the Sanctified Crystal against a wounded Uncontrolled Voidwalker", 0, {{"monster", 16975}}}},
         },
         [9392] = { -- Rogue Training
             [questKeys.requiredRaces] = raceIDs.BLOOD_ELF,
@@ -2382,12 +2371,12 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.breadcrumbForQuestId] = 9067,
         },
         [9397] = { -- Birds of a Feather
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Disturb the nest"), 0, {{"object", 181582}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Disturb the nest", 0, {{"object", 181582}}}},
         },
         [9400] = { -- The Assassin
             [questKeys.preQuestSingle] = {10124,10449},
             [questKeys.triggerEnd] = nil,
-            [questKeys.objectives] = {{{17062,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{17062,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [9402] = { -- Fetch!
             [questKeys.exclusiveTo] = {1882,1884},
@@ -2399,7 +2388,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.breadcrumbForQuestId] = 10120,
         },
         [9410] = { -- A Spirit Guide
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use the Wolf Totem at the location where you found Krun Spinebreaker's body and follow the Ancestral Spirit Wolf."), 0, {{"monster", 17062}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use the Wolf Totem at the location where you found Krun Spinebreaker's body and follow the Ancestral Spirit Wolf.", 0, {{"monster", 17062}}}},
         },
         [9415] = { -- Report to Marshal Bluewall
             [questKeys.availableUntilCompleted] = 9419,
@@ -2415,7 +2404,7 @@ function QuestieTBCQuestFixes:Load()
         },
         [9418] = { -- Avruu's Orb
             [questKeys.startedBy] = {nil,nil,{23580}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Take Avruu's Orb to the Haal'eshi Altar"), 0, {{"object", 181606}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Take Avruu's Orb to the Haal'eshi Altar", 0, {{"object", 181606}}}},
         },
         [9419] = { -- Scouring the Desert
             [questKeys.requiredLevel] = 55,
@@ -2442,10 +2431,10 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.DRAENEI,
         },
         [9433] = { -- A Dip in the Moonwell
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use the Robotron Control near the Concealed Command Console hidden in a small cluster of bushes"), 0, {{"object", 181825}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use the Robotron Control near the Concealed Command Console hidden in a small cluster of bushes", 0, {{"object", 181825}}}},
         },
         [9437] = { -- Twilight of the Dawn Runner
-            [questKeys.objectives] = {{{17119,nil,Questie.ICON_TYPE_TALK}},nil,{{23657}}},
+            [questKeys.objectives] = {{{17119,nil,iconTypes.ICON_TYPE_TALK}},nil,{{23657}}},
         },
         [9438] = { -- Messenger to Thrall
             [questKeys.nextQuestInChain] = 9441,
@@ -2457,7 +2446,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.triggerEnd] = {"Escort Anchorite Truuen to Uther's Tomb", {[zoneIDs.WESTERN_PLAGUELANDS] = {{52.06,83.26}}}},
         },
         [9447] = { -- Administering the Salve
-            [questKeys.objectives] = {{{16847,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{16847,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9454] = { -- The Great Moongraze Hunt
             [questKeys.preQuestSingle] = {},
@@ -2467,10 +2456,10 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.startedBy] = {nil,nil,{23678}},
         },
         [9457] = { -- An Unusual Patron
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use the Gift of Naias near the Altar of Naias"), 0, {{"object", 181636}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use the Gift of Naias near the Altar of Naias", 0, {{"object", 181636}}}},
         },
         [9460] = { -- Combining Forces
-            [questKeys.objectives] = {nil,nil,{{23686,nil,Questie.ICON_TYPE_INTERACT}}}, -- has to be pickpocketed, using interact icon
+            [questKeys.objectives] = {nil,nil,{{23686,nil,iconTypes.ICON_TYPE_INTERACT}}}, -- has to be pickpocketed, using interact icon
         },
         [9462] = { -- Call of Fire
             [questKeys.startedBy] = {{17219,23127}},
@@ -2489,7 +2478,7 @@ function QuestieTBCQuestFixes:Load()
         },
         [9467] = { -- Call of Fire
             [questKeys.requiredSourceItems] = {24335},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Summon Hauteur using the Ritual Torch"), 0, {{"object", 181672}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Summon Hauteur using the Ritual Torch", 0, {{"object", 181672}}}},
             [questKeys.requiredRaces] = raceIDs.DRAENEI,
             [questKeys.nextQuestInChain] = 9468,
         },
@@ -2498,20 +2487,20 @@ function QuestieTBCQuestFixes:Load()
         },
         [9472] = { -- Arelion's Mistress
             [questKeys.requiredSourceItems] = {29112},
-            [questKeys.objectives] = {{{17226,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{17226,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9473] = { -- An Alternative Alternative
             [questKeys.nextQuestInChain] = 9505,
         },
         [9484] = { -- Taming the Beast
             [questKeys.breadcrumbs] = {9617,10530},
-            [questKeys.objectives] = {{{15650,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{15650,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9485] = { -- Taming the Beast
-            [questKeys.objectives] = {{{16353,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{16353,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9486] = { -- Taming the Beast
-            [questKeys.objectives] = {{{15652,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{15652,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9487] = { -- Arcane Reavers
             [questKeys.requiredRaces] = raceIDs.BLOOD_ELF,
@@ -2521,7 +2510,7 @@ function QuestieTBCQuestFixes:Load()
         },
         [9489] = { -- Cleansing the Scar
             [questKeys.requiredRaces] = raceIDs.BLOOD_ELF,
-            [questKeys.objectives] = {{{15938,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{15938,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9491] = { -- Greed
             [questKeys.preQuestSingle] = {},
@@ -2536,7 +2525,7 @@ function QuestieTBCQuestFixes:Load()
         },
         [9494] = { -- Fel Embers
             [questKeys.zoneOrSort] = zoneIDs.HELLFIRE_CITADEL,
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Gather a Fel Ember using Grand Warlock's Amulet"), 0, {{"object", 181679}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Gather a Fel Ember using Grand Warlock's Amulet", 0, {{"object", 181679}}}},
         },
         [9495] = { -- The Will of the Warchief
             [questKeys.zoneOrSort] = zoneIDs.HELLFIRE_CITADEL,
@@ -2583,7 +2572,7 @@ function QuestieTBCQuestFixes:Load()
         },
         [9508] = { -- Call of Water
             [questKeys.questLevel] = -1,
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Destroy the barrel using the Skin of Purest Water"), 0, {{"object", 181699}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Destroy the barrel using the Skin of Purest Water", 0, {{"object", 181699}}}},
         },
         [9509] = { -- Call of Water
             [questKeys.questLevel] = -1,
@@ -2598,11 +2587,11 @@ function QuestieTBCQuestFixes:Load()
         },
         [9524] = { -- Imprisoned in the Citadel
             [questKeys.zoneOrSort] = zoneIDs.HELLFIRE_CITADEL,
-            [questKeys.objectives] = {{{17290,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{17290,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [9525] = { -- Imprisoned in the Citadel
             [questKeys.zoneOrSort] = zoneIDs.HELLFIRE_CITADEL,
-            [questKeys.objectives] = {{{17296,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{17296,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.reputationReward] = {{factionIDs.THRALLMAR,500}},
         },
         [9527] = { -- All That Remains
@@ -2626,11 +2615,11 @@ function QuestieTBCQuestFixes:Load()
         },
         [9544] = { -- The Prophecy of Akida
             [questKeys.requiredSourceItems] = {23801},
-            [questKeys.objectives] = {{{17375,nil,Questie.ICON_TYPE_EVENT}}},
-            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Open the cage"),0,{{"object",410019}}}},
+            [questKeys.objectives] = {{{17375,nil,iconTypes.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil,iconTypes.ICON_TYPE_OBJECT,"Open the cage",0,{{"object",410019}}}},
         },
         [9545] = { -- The Seer's Relic
-            [questKeys.objectives] = {{{16852,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{16852,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9547] = { -- Call of Air
             [questKeys.startedBy] = {{17212}},
@@ -2695,10 +2684,10 @@ function QuestieTBCQuestFixes:Load()
         [9582] = { -- Strength of One
             [questKeys.requiredSourceItems] = {},
             [questKeys.exclusiveTo] = {1678,1683,1639},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Open the cage"), 0, {{"object", 181849}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Open the cage", 0, {{"object", 181849}}}},
         },
         [9586] = { -- Help Tavara
-            [questKeys.objectives] = {{{17551,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{17551,nil,iconTypes.ICON_TYPE_INTERACT}}},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [9587] = { -- Dark Tidings
@@ -2715,13 +2704,13 @@ function QuestieTBCQuestFixes:Load()
         },
         [9591] = { -- Taming the Beast
             [questKeys.breadcrumbs] = {9757},
-            [questKeys.objectives] = {{{17217,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{17217,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9592] = { -- Taming the Beast
-            [questKeys.objectives] = {{{17374,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{17374,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9593] = { -- Taming the Beast
-            [questKeys.objectives] = {{{17203,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{17203,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9594] = { -- Signs of the Legion
             [questKeys.startedBy] = {nil,nil,{23900}},
@@ -2729,13 +2718,13 @@ function QuestieTBCQuestFixes:Load()
         [9595] = { -- Control
             [questKeys.exclusiveTo] = {1861,1880},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Kill Siltfin Murlocs to summon a Quel'dorei Magewrath"), 0, {{"monster", 17190},{"monster", 17191},{"monster", 17192}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Kill Siltfin Murlocs to summon a Quel'dorei Magewrath", 0, {{"monster", 17190},{"monster", 17191},{"monster", 17192}}}},
         },
         [9598] = { -- Redemption
             [questKeys.breadcrumbs] = {10366},
         },
         [9600] = { -- Redemption
-            [questKeys.objectives] = {{{17542,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{17542,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9601] = { -- To The Bulwark
             [questKeys.requiredLevel] = 50,
@@ -2765,7 +2754,7 @@ function QuestieTBCQuestFixes:Load()
         },
         [9619] = { -- The Rune of Summoning
             [questKeys.requiredSourceItems] = {},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Summon the Voidwalker"), 0, {{"object", 181670}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Summon the Voidwalker", 0, {{"object", 181670}}}},
         },
         [9622] = { -- Warn Your People
             [questKeys.preQuestSingle] = {},
@@ -2775,7 +2764,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.nextQuestInChain] = 0,
         },
         [9629] = { -- Catch and Release
-            [questKeys.objectives] = {{{17326,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{17326,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9630] = { -- Medivh's Journal
             [questKeys.zoneOrSort] = zoneIDs.KARAZHAN,
@@ -2824,24 +2813,24 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectivesText] = {"Maatparm at Blood Watch wants 2 Ysera's Tears."},
         },
         [9663] = { -- The Kessel Run
-            [questKeys.objectives] = {{{17440,nil,Questie.ICON_TYPE_TALK},{17116,nil,Questie.ICON_TYPE_TALK},{17240,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{17440,nil,iconTypes.ICON_TYPE_TALK},{17116,nil,iconTypes.ICON_TYPE_TALK},{17240,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [9666] = { -- Declaration of Power
-            [questKeys.objectives] = {{{17701},{17701,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{17701},{17701,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9667] = { -- Saving Princess Stillpine
             [questKeys.preQuestSingle] = {9559},
             [questKeys.extraObjectives] = {
-                {nil,Questie.ICON_TYPE_SLAY, l10n("Kill Bristlelimb Furbolgs to lure High Chief Bristlelimb"), 0, {{"monster", 17320}, {"monster", 17321}}},
-                {nil,Questie.ICON_TYPE_OBJECT,l10n("Open the cage"),0,{{"object",181928}}},
+                {nil,iconTypes.ICON_TYPE_SLAY, "Kill Bristlelimb Furbolgs to lure High Chief Bristlelimb", 0, {{"monster", 17320}, {"monster", 17321}}},
+                {nil,iconTypes.ICON_TYPE_OBJECT,"Open the cage",0,{{"object",181928}}},
             },
-            [questKeys.objectives] = {{{17682,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{17682,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [9669] = { -- The Missing Expedition
             [questKeys.requiredLevel] = 16,
         },
         [9670] = { -- They're Alive! Maybe...
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{17681,17680},17681,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{17681,17680},17681,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [9671] = { -- Urgent Delivery
             [questKeys.requiredLevel] = 15,
@@ -2853,29 +2842,29 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.breadcrumbForQuestId] = 9678,
         },
         [9678] = { -- The First Trial
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Light the brazier"), 0, {{"object", 181956}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Light the brazier", 0, {{"object", 181956}}}},
             [questKeys.breadcrumbs] = {9677},
         },
         [9683] = { -- Ending the Bloodcurse
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Defile the Statue of Queen Azshara"), 0, {{"object", 181964}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Defile the Statue of Queen Azshara", 0, {{"object", 181964}}}},
         },
         [9685] = { -- Redeeming the Dead
             [questKeys.startedBy] = {{17717,178420}}, -- TO DO phase-based quest corrections (178420 won't be present in SWP patch)
             [questKeys.preQuestSingle] = {9684,63866},
-            [questKeys.objectives] = {{{17768,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{17768,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9686] = { -- The Second Trial
             [questKeys.objectives] = {nil,nil,nil,nil,{{{17809,17810,17811,17812},17809}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Start the event"), 0, {{"object", 182052}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Start the event", 0, {{"object", 182052}}}},
         },
         [9688] = { -- Into the Dream
             [questKeys.nextQuestInChain] = 9689,
         },
         [9689] = { -- Razormaw
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Place the Bundle of Dragon Bones at the Ever-burning Pyre"), 0, {{"object", 181988}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Place the Bundle of Dragon Bones at the Ever-burning Pyre", 0, {{"object", 181988}}}},
         },
         [9692] = { -- The Path of the Adept
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Open it"), 3, {{"object", 182024}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Open it", 3, {{"object", 182024}}}},
         },
         [9693] = { -- What Argus Means to Me
             [questKeys.disabledByQuest] = 9668,
@@ -2908,8 +2897,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.preQuestSingle] = {},
         },
         [9711] = { -- Matis the Cruel
-            [questKeys.objectives] = {{{17664,nil,Questie.ICON_TYPE_INTERACT}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Call for help from Trackers of the Hand"), 0, {{"monster", 17664}}}},
+            [questKeys.objectives] = {{{17664,nil,iconTypes.ICON_TYPE_INTERACT}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Call for help from Trackers of the Hand", 0, {{"monster", 17664}}}},
         },
         [9715] = { -- Bring Me A Shrubbery!
             [questKeys.nextQuestInChain] = 9714,
@@ -2921,7 +2910,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.triggerEnd] = {"Use the Stormcrow Amulet and explore the lakes of Zangarmarsh", {[zoneIDs.ZANGARMARSH] = {{78.4,62.02}}}},
         },
         [9720] = { -- Balance Must Be Preserved
-            [questKeys.objectives] = {{{17998,nil,Questie.ICON_TYPE_EVENT},{18002,nil,Questie.ICON_TYPE_EVENT},{18000,nil,Questie.ICON_TYPE_EVENT},{17999,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{17998,nil,iconTypes.ICON_TYPE_EVENT},{18002,nil,iconTypes.ICON_TYPE_EVENT},{18000,nil,iconTypes.ICON_TYPE_EVENT},{17999,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [9721] = { -- A Summons from Lord Solanar
             [questKeys.exclusiveTo] = {64139},
@@ -2957,13 +2946,13 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.startedBy] = {{17076,25223}}, -- p1/p2 offered by 17076
             [questKeys.finishedBy] = {{17076,25223}}, -- p1/p2 finished by 17076
             [questKeys.objectives] = {nil,nil,nil,nil,{{{17910,17911,17912,17913,17914},17910}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Use the Extinguishing Mixture near the eternal flame"), 0, {{"object", 182068}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Use the Extinguishing Mixture near the eternal flame", 0, {{"object", 182068}}}},
             [questKeys.exclusiveTo] = {64145}, -- not sure when this one gets introduced in classic
             [questKeys.preQuestSingle] = {9736,64144},
         },
         [9738] = { -- Lost in Action
             [questKeys.preQuestSingle] = {},
-            [questKeys.objectives] = {{{17885,nil,Questie.ICON_TYPE_INTERACT},{17893,nil,Questie.ICON_TYPE_INTERACT},{17890,nil,Questie.ICON_TYPE_INTERACT},{17827,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{17885,nil,iconTypes.ICON_TYPE_INTERACT},{17893,nil,iconTypes.ICON_TYPE_INTERACT},{17890,nil,iconTypes.ICON_TYPE_INTERACT},{17827,nil,iconTypes.ICON_TYPE_INTERACT}}},
             [questKeys.zoneOrSort] = zoneIDs.COILFANG_RESERVOIR,
             [questKeys.breadcrumbs] = {9876},
         },
@@ -2973,7 +2962,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.nextQuestInChain] = 9742,
         },
         [9740] = { -- The Sun Gate
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Destroy all 4 Sunhawk Portal Controller"), 0, {{"object", 184850}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Destroy all 4 Sunhawk Portal Controller", 0, {{"object", 184850}}}},
         },
         [9743] = { -- Natural Enemies
             [questKeys.requiredMinRep] = {},
@@ -2987,7 +2976,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.preQuestSingle] = {},
         },
         [9756] = { -- What We Don't Know...
-            [questKeys.objectives] = {{{17824,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{17824,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [9757] = { -- Seek Huntress Kella Nightbow
             [questKeys.requiredRaces] = raceIDs.DRAENEI,
@@ -3008,7 +2997,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.breadcrumbForQuestId] = 9728,
         },
         [9785] = { -- Blessings of the Ancients
-            [questKeys.objectives] = {{{17900,nil,Questie.ICON_TYPE_TALK},{17901,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{17900,nil,iconTypes.ICON_TYPE_TALK},{17901,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [9786] = { -- The Boha'mu Ruins
             [questKeys.triggerEnd] = {"Explore the Boha'mu Ruins", {[zoneIDs.ZANGARMARSH] = {{44.13,68.97}}}},
@@ -3029,7 +3018,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.nextQuestInChain] = 9784,
         },
         [9805] = { -- Blessing of Incineratus
-            [questKeys.objectives] = {{{18110,nil,Questie.ICON_TYPE_EVENT},{18142,nil,Questie.ICON_TYPE_EVENT},{18143,nil,Questie.ICON_TYPE_EVENT},{18144,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{18110,nil,iconTypes.ICON_TYPE_EVENT},{18142,nil,iconTypes.ICON_TYPE_EVENT},{18143,nil,iconTypes.ICON_TYPE_EVENT},{18144,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [9806] = { -- Fertile Spores
             [questKeys.nextQuestInChain] = 9807,
@@ -3039,10 +3028,10 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.nextQuestInChain] = 9809,
         },
         [9816] = { -- Have You Ever Seen One of These?
-            [questKeys.objectives] = {nil,{{182164,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {nil,{{182164,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [9824] = { -- Arcane Disturbances
-            [questKeys.objectives] = {{{18161,nil,Questie.ICON_TYPE_EVENT},{18162,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{18161,nil,iconTypes.ICON_TYPE_EVENT},{18162,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.zoneOrSort] = zoneIDs.KARAZHAN,
         },
         [9825] = { -- Restless Activity
@@ -3053,12 +3042,12 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredMinRep] = {978,0},
         },
         [9831] = { -- Entry Into Karazhan
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Open the container"), 0, {{"object", 182196}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Open the container", 0, {{"object", 182196}}}},
         },
         [9832] = { -- The Second and Third Fragments
             [questKeys.extraObjectives] = {
-                {nil, Questie.ICON_TYPE_OBJECT, l10n("Open the container"), 1, {{"object", 182197}}},
-                {nil, Questie.ICON_TYPE_OBJECT, l10n("Open the container"), 2, {{"object", 182198}}},
+                {nil, iconTypes.ICON_TYPE_OBJECT, "Open the container", 1, {{"object", 182197}}},
+                {nil, iconTypes.ICON_TYPE_OBJECT, "Open the container", 2, {{"object", 182198}}},
             },
             [questKeys.nextQuestInChain] = 9836,
         },
@@ -3069,7 +3058,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredMinRep] = {978,0},
         },
         [9836] = { -- The Master's Touch
-            [questKeys.objectives] = {{{15608,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{15608,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [9838] = { -- The Violet Eye
             [questKeys.zoneOrSort] = zoneIDs.KARAZHAN,
@@ -3084,13 +3073,13 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = zoneIDs.KARAZHAN,
         },
         [9847] = { -- A Spirit Ally?
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Plant the Feralfen Totem on the ground"), 0, {{"object", 182176}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Plant the Feralfen Totem on the ground", 0, {{"object", 182176}}}},
         },
         [9849] = { -- Shattering the Veil
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use Gordawg's Boulder to shatter Shattered Rumblers into Minions of Gurok"), 0, {{"monster", 17157}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use Gordawg's Boulder to shatter Shattered Rumblers into Minions of Gurok", 0, {{"monster", 17157}}}},
         },
         [9853] = { -- Gurok the Usurper
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use 7 Warmaul Skulls to summon Gurok the Usurper"), 0, {{"object", 182182}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use 7 Warmaul Skulls to summon Gurok the Usurper", 0, {{"object", 182182}}}},
         },
         [9854] = { -- Windroc Mastery
             [questKeys.breadcrumbs] = {10114},
@@ -3122,7 +3111,7 @@ function QuestieTBCQuestFixes:Load()
         },
         [9874] = { -- Stopping the Spread
             [questKeys.requiredMinRep] = {978,0},
-            [questKeys.objectives] = {{{18240,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{18240,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [9876] = { -- Failed Incursion
             [questKeys.breadcrumbForQuestId] = 9738,
@@ -3180,33 +3169,33 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.nextQuestInChain] = 9915,
         },
         [9918] = { -- Not On My Watch!
-            [questKeys.objectives] = {{{18351,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{18351,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [9923] = { -- HELP!
             [questKeys.requiredMinRep] = {978,0},
             [questKeys.requiredSourceItems] = {25490},
-            [questKeys.objectives] = {{{18369,nil,Questie.ICON_TYPE_EVENT}}},
-            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Open the cage"),0,{{"object",182349}}}},
+            [questKeys.objectives] = {{{18369,nil,iconTypes.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil,iconTypes.ICON_TYPE_OBJECT,"Open the cage",0,{{"object",182349}}}},
         },
         [9924] = { -- Corki's Gone Missing Again!
             [questKeys.requiredSourceItems] = {25509},
-            [questKeys.objectives] = {{{20812,nil,Questie.ICON_TYPE_EVENT}}},
-            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Open the cage"),0,{{"object",182350}}}},
+            [questKeys.objectives] = {{{20812,nil,iconTypes.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil,iconTypes.ICON_TYPE_OBJECT,"Open the cage",0,{{"object",182350}}}},
         },
         [9927] = { -- Ruthless Cunning
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{17146,17147,17148},17147,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{17146,17147,17148},17147,nil,iconTypes.ICON_TYPE_INTERACT}}},
             [questKeys.preQuestSingle] = {10107,10108},
         },
         [9928] = { -- Armaments for Deception
             [questKeys.preQuestSingle] = {10107,10108},
         },
         [9931] = { -- Returning the Favor
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{17138,18064},17138,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{17138,18064},17138,nil,iconTypes.ICON_TYPE_INTERACT}}},
             [questKeys.preQuestGroup] = {9927,9928},
         },
         [9932] = { -- Body of Evidence
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Make smoke signals"), 0, {{"object", 182369}}}},
-            [questKeys.objectives] = {{{18395,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Make smoke signals", 0, {{"object", 182369}}}},
+            [questKeys.objectives] = {{{18395,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.preQuestGroup] = {9927,9928},
         },
         [9933] = { -- Message to Telaar
@@ -3241,13 +3230,13 @@ function QuestieTBCQuestFixes:Load()
         },
         [9948] = { -- Finding the Survivors
             [questKeys.requiredMinRep] = {941,0},
-            [questKeys.objectives] = {{{18428,nil,Questie.ICON_TYPE_EVENT}}},
-            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Open the cage"),0,{{"object",182484}}}},
+            [questKeys.objectives] = {{{18428,nil,iconTypes.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil,iconTypes.ICON_TYPE_OBJECT,"Open the cage",0,{{"object",182484}}}},
         },
         [9955] = { -- Cho'war the Pillager
             [questKeys.requiredSourceItems] = {25648},
-            [questKeys.objectives] = {{{18445,nil,Questie.ICON_TYPE_EVENT}}},
-            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Open the cage"),0,{{"object",182521}}}},
+            [questKeys.objectives] = {{{18445,nil,iconTypes.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil,iconTypes.ICON_TYPE_OBJECT,"Open the cage",0,{{"object",182521}}}},
         },
         [9956] = { -- The Ravaged Caravan
             [questKeys.requiredMinRep] = {978,0},
@@ -3342,24 +3331,24 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredMaxRep] = {934,0},
         },
         [10035] = { -- Torgos!
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Place the carcass"), 0, {{"object", 184842}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Place the carcass", 0, {{"object", 184842}}}},
         },
         [10036] = { -- Torgos!
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Place the carcass"), 0, {{"object", 184842}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Place the carcass", 0, {{"object", 184842}}}},
         },
         [10039] = { -- Speak with Scout Neftis
             [questKeys.requiredLevel] = 62,
         },
         [10040] = { -- Who Are They?
-            [questKeys.objectives] = {{{18716,nil,Questie.ICON_TYPE_TALK},{18717,nil,Questie.ICON_TYPE_TALK},{18719,nil,Questie.ICON_TYPE_TALK}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_TALK, l10n("Get a disguise"), 0, {{"monster", 18715}}}},
+            [questKeys.objectives] = {{{18716,nil,iconTypes.ICON_TYPE_TALK},{18717,nil,iconTypes.ICON_TYPE_TALK},{18719,nil,iconTypes.ICON_TYPE_TALK}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_TALK, "Get a disguise", 0, {{"monster", 18715}}}},
         },
         [10041] = { -- Who Are They?
-            [questKeys.objectives] = {{{18716,nil,Questie.ICON_TYPE_TALK},{18717,nil,Questie.ICON_TYPE_TALK},{18719,nil,Questie.ICON_TYPE_TALK}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_TALK, l10n("Get a disguise"), 0, {{"monster", 18714}}}},
+            [questKeys.objectives] = {{{18716,nil,iconTypes.ICON_TYPE_TALK},{18717,nil,iconTypes.ICON_TYPE_TALK},{18719,nil,iconTypes.ICON_TYPE_TALK}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_TALK, "Get a disguise", 0, {{"monster", 18714}}}},
         },
         [10044] = { -- A Visit With the Greatmother
-            [questKeys.objectives] = {{{18141,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{18141,nil,iconTypes.ICON_TYPE_TALK}}},
             [questKeys.preQuestGroup] = {9934,9868,10011},
             [questKeys.preQuestSingle] = {},
         },
@@ -3441,16 +3430,16 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [10078] = { -- Laying Waste to the Unwanted
-            [questKeys.objectives] = {{{18818,nil,Questie.ICON_TYPE_EVENT},{21237,nil,Questie.ICON_TYPE_EVENT},{19009,nil,Questie.ICON_TYPE_EVENT},{21236,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{18818,nil,iconTypes.ICON_TYPE_EVENT},{21237,nil,iconTypes.ICON_TYPE_EVENT},{19009,nil,iconTypes.ICON_TYPE_EVENT},{21236,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10079] = { -- When This Mine's a-Rockin'
             [questKeys.preQuestSingle] = {10143,10483},
         },
         [10085] = { -- A Visit With The Ancestors
-            [questKeys.objectives] = {{{18840,nil,Questie.ICON_TYPE_EVENT},{18841,nil,Questie.ICON_TYPE_EVENT},{18842,nil,Questie.ICON_TYPE_EVENT},{18843,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{18840,nil,iconTypes.ICON_TYPE_EVENT},{18841,nil,iconTypes.ICON_TYPE_EVENT},{18842,nil,iconTypes.ICON_TYPE_EVENT},{18843,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10087] = { -- Burn It Up... For the Horde!
-            [questKeys.objectives] = {{{18849,nil,Questie.ICON_TYPE_EVENT},{19008,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{18849,nil,iconTypes.ICON_TYPE_EVENT},{19008,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10091] = { -- The Soul Devices
             [questKeys.preQuestSingle] = {10178},
@@ -3478,22 +3467,22 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.questLevel] = -1,
             [questKeys.preQuestSingle] = {10143,10483},
             [questKeys.requiredMaxRep] = {},
-            [questKeys.objectives] = {{{19028,nil,Questie.ICON_TYPE_EVENT},{19029,nil,Questie.ICON_TYPE_EVENT},{19032,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{19028,nil,iconTypes.ICON_TYPE_EVENT},{19029,nil,iconTypes.ICON_TYPE_EVENT},{19032,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10107] = { -- Diplomatic Measures
-            [questKeys.objectives] = {{{18261,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{18261,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [10108] = { -- Diplomatic Measures
-            [questKeys.objectives] = {{{18261,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{18261,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [10110] = { -- Hellfire Fortifications H
             [questKeys.questLevel] = -1,
             [questKeys.preQuestSingle] = {10124,10449},
             [questKeys.requiredMaxRep] = {},
-            [questKeys.objectives] = {{{19028,nil,Questie.ICON_TYPE_EVENT},{19029,nil,Questie.ICON_TYPE_EVENT},{19032,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{19028,nil,iconTypes.ICON_TYPE_EVENT},{19029,nil,iconTypes.ICON_TYPE_EVENT},{19032,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10111] = { -- Bring Me The Egg!
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Jump!"), 0, {{"object", 183146}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Jump!", 0, {{"object", 183146}}}},
         },
         [10113] = { -- The Nesingwary Safari
             [questKeys.breadcrumbForQuestId] = 9789,
@@ -3517,7 +3506,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.preQuestSingle] = {},
         },
         [10129] = { -- Mission: Gateways Murketh and Shaadraz
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_TALK, l10n("Speak with Wing Commander Brack"), 0, {{"monster", 19401}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_TALK, "Speak with Wing Commander Brack", 0, {{"monster", 19401}}}},
             [questKeys.objectives] = {nil,{{183350},{183351}}},
         },
         [10144] = { -- Disrupt Their Reinforcements
@@ -3525,27 +3514,27 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {nil,{{184414},{184415}}},
         },
         [10146] = { -- Mission: The Murketh and Shaadraz Gateways
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_TALK, l10n("Speak with Wing Commander Dabir'ee"), 0, {{"monster", 19409}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_TALK, "Speak with Wing Commander Dabir'ee", 0, {{"monster", 19409}}}},
             [questKeys.objectives] = {nil,{{183350},{183351}}},
         },
         [10160] = { -- Know your Enemy
             [questKeys.breadcrumbForQuestId] = 10482,
         },
         [10162] = { -- Mission: The Abyssal Shelf
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_TALK, l10n("Speak with Wing Commander Brack"), 0, {{"monster", 19401}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_TALK, "Speak with Wing Commander Brack", 0, {{"monster", 19401}}}},
             [questKeys.nextQuestInChain] = 10347,
         },
         [10163] = { -- Mission: The Abyssal Shelf
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_TALK, l10n("Speak with Gryphoneer Windbellow"), 0, {{"monster", 20235}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_TALK, "Speak with Gryphoneer Windbellow", 0, {{"monster", 20235}}}},
             [questKeys.preQuestSingle] = {10146},
             [questKeys.breadcrumbs] = {10344},
             [questKeys.nextQuestInChain] = 10382,
         },
         [10168] = { -- What the Soul Sees
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use the Soul Mirror near Ancient Orc Ancestors to summon Darkened Spirits."), 0, {{"monster", 18688}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use the Soul Mirror near Ancient Orc Ancestors to summon Darkened Spirits.", 0, {{"monster", 18688}}}},
         },
         [10172] = { -- There Is No Hope
-            [questKeys.objectives] = {{{18141,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{18141,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [10176] = { -- Ar'kelos the Guardian
             [questKeys.nextQuestInChain] = 10256,
@@ -3579,7 +3568,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.breadcrumbs] = {11039},
         },
         [10190] = { -- Recharging the Batteries
-            [questKeys.objectives] = {{{18879,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{18879,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10191] = { -- Mark V is Alive!
             [questKeys.triggerEnd] = {"Escort the Maxx A. Million Mk. V safely through the Ruins of Enkaat", {[zoneIDs.NETHERSTORM] = {{31.54,56.47}}}},
@@ -3591,7 +3580,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredMinRep] = {934,3000},
         },
         [10201] = { -- And Now, the Moment of Truth
-            [questKeys.objectives] = {{{19606,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{19606,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [10203] = { -- Invaluable Asset Zapping
             [questKeys.nextQuestInChain] = 10221,
@@ -3616,7 +3605,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.preQuestSingle] = {10188},
         },
         [10226] = { -- Elemental Power Extraction
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Use the Elemental Power Extractor before killing it"), 0, {{"monster", 18865},{"monster", 18881}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Use the Elemental Power Extractor before killing it", 0, {{"monster", 18865},{"monster", 18881}}}},
         },
         [10231] = { -- What Book? I Don't See Any Book.
             [questKeys.objectives] = {{{19720}}},
@@ -3626,14 +3615,14 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.preQuestSingle] = {10206},
         },
         [10240] = { -- Building a Perimeter
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Activate the rune"), 0, {{"object", 183947}}}},
-            [questKeys.objectives] = {{{19866,nil, Questie.ICON_TYPE_EVENT},{19867,nil, Questie.ICON_TYPE_EVENT},{19868,nil, Questie.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Activate the rune", 0, {{"object", 183947}}}},
+            [questKeys.objectives] = {{{19866,nil, iconTypes.ICON_TYPE_EVENT},{19867,nil, iconTypes.ICON_TYPE_EVENT},{19868,nil, iconTypes.ICON_TYPE_EVENT}}},
         },
         [10241] = { -- Distraction at Manaforge B'naar
             [questKeys.breadcrumbs] = {11038},
         },
         [10242] = { -- Spinebreaker Post
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_TALK, l10n("Take a ride to Spinebreaker Post"), 0, {{"monster", 19401}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_TALK, "Take a ride to Spinebreaker Post", 0, {{"monster", 19401}}}},
             [questKeys.nextQuestInChain] = 10538,
         },
         [10243] = { -- Naaru Technology
@@ -3643,20 +3632,20 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.preQuestSingle] = {10299},
         },
         [10248] = { -- You, Robot
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Take control of the Scrap Reaver X6000."), 0, {{"monster", 19849}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Take control of the Scrap Reaver X6000.", 0, {{"monster", 19849}}}},
         },
         [10250] = { -- Bloody Vengeance
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Blow the Unyielding Battle Horn near the Alliance Banner"), 0, {{"object", 184005}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Blow the Unyielding Battle Horn near the Alliance Banner", 0, {{"object", 184005}}}},
         },
         [10253] = { -- Levixus the Soul Caller
             [questKeys.nextQuestInChain] = 10164,
         },
         [10255] = { -- Testing the Antidote
-            [questKeys.objectives] = {{{16880,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{16880,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10256] = { -- Finding the Keymaster
-            [questKeys.objectives] = {{{19938,nil,Questie.ICON_TYPE_EVENT}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Use Apex's Crystal Focus near Archmage Vargoth's Orb"), 0, {{"object", 183507}}}},
+            [questKeys.objectives] = {{{19938,nil,iconTypes.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Use Apex's Crystal Focus near Archmage Vargoth's Orb", 0, {{"object", 183507}}}},
         },
         [10262] = { -- A Heap of Ethereals
             [questKeys.nextQuestInChain] = 10205,
@@ -3679,10 +3668,10 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.triggerEnd] = {"First triangulation point discovered", {[zoneIDs.NETHERSTORM] = {{66.67,33.85}}}},
         },
         [10270] = { -- A Not-So-Modest Proposal
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Communicate with Wind Trader Marid"), 0, {{"object", 184073}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Communicate with Wind Trader Marid", 0, {{"object", 184073}}}},
         },
         [10274] = { -- Securing the Celestial Ridge
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use the Challenge of the Blue Fight to challenge Veraku"), 0, {{"object", 184108}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use the Challenge of the Blue Fight to challenge Veraku", 0, {{"object", 184108}}}},
         },
         [10275] = { -- Triangulation Point Two
             [questKeys.triggerEnd] = {"Second triangulation point discovered", {[zoneIDs.NETHERSTORM] = {{28.92,41.25}}}},
@@ -3718,7 +3707,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.startedBy] = {{20130}},
         },
         [10297] = { -- The Opening of the Dark Portal
-            [questKeys.objectives] = {{{15608,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{15608,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10299] = { -- Shutting Down Manaforge B'naar
             [questKeys.objectives] = {nil,{{183770}},{{29366}}},
@@ -3751,7 +3740,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.breadcrumbForQuestId] = 10310,
         },
         [10313] = { -- Measuring Warp Energies
-            [questKeys.objectives] = {{{20333,nil,Questie.ICON_TYPE_EVENT},{20336,nil,Questie.ICON_TYPE_EVENT},{20337,nil,Questie.ICON_TYPE_EVENT},{20338,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{20333,nil,iconTypes.ICON_TYPE_EVENT},{20336,nil,iconTypes.ICON_TYPE_EVENT},{20337,nil,iconTypes.ICON_TYPE_EVENT},{20338,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10321] = { -- Shutting Down Manaforge Coruu
             [questKeys.objectives] = {nil,{{183956}},{{29396}}},
@@ -3789,7 +3778,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.nextQuestInChain] = 10337,
         },
         [10335] = { -- Surveying the Ruins
-            [questKeys.objectives] = {{{20473,nil,Questie.ICON_TYPE_EVENT},{20475,nil,Questie.ICON_TYPE_EVENT},{20476,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{20473,nil,iconTypes.ICON_TYPE_EVENT},{20475,nil,iconTypes.ICON_TYPE_EVENT},{20476,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10337] = { -- When the Cows Come Home
             [questKeys.triggerEnd] = {"Escort Bessy on her way home.", {[zoneIDs.NETHERSTORM] = {{57.71,84.97}}}},
@@ -3798,17 +3787,17 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {nil,{{184311}},{{29397}}},
         },
         [10339] = { -- The Ethereum
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Communicate with Commander Ameer"), 0, {{"object", 410018}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Communicate with Commander Ameer", 0, {{"object", 410018}}}},
         },
         [10340] = { -- Shatter Point
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_TALK, l10n("Speak with Wing Commander Dabir'ee"), 0, {{"monster", 19409}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_TALK, "Speak with Wing Commander Dabir'ee", 0, {{"monster", 19409}}}},
         },
         [10344] = { -- Wing Commander Gryphongar
             [questKeys.breadcrumbForQuestId] = 10163,
             [questKeys.nextQuestInChain] = 10163,
         },
         [10345] = { -- The Flesh Lies...
-            [questKeys.objectives] = {{{20561,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{20561,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10349] = { -- The Earthbinder
             [questKeys.nextQuestInChain] = 10351,
@@ -3846,7 +3835,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.breadcrumbs] = {10403},
         },
         [10368] = { -- The Dreghood Elders
-            [questKeys.objectives] = {{{20677,nil,Questie.ICON_TYPE_TALK},{20678,nil,Questie.ICON_TYPE_TALK},{20679,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{20677,nil,iconTypes.ICON_TYPE_TALK},{20678,nil,iconTypes.ICON_TYPE_TALK},{20679,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [10369] = { -- Arzeth's Demise
             [questKeys.objectives] = {{{19354}}},
@@ -3872,13 +3861,13 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.nextQuestInChain] = 10407,
         },
         [10382] = { -- Go to the Front
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Speak with Gryphoneer Windbellow"), 0, {{"monster", 20235}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Speak with Gryphoneer Windbellow", 0, {{"monster", 20235}}}},
         },
         [10384] = { -- Ethereum Data
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Communicate with Commander Ameer"), 0, {{"object", 410018}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Communicate with Commander Ameer", 0, {{"object", 410018}}}},
         },
         [10385] = { -- Potential for Brain Damage = High
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Communicate with Commander Ameer"), 0, {{"object", 410018}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Communicate with Commander Ameer", 0, {{"object", 410018}}}},
         },
         [10388] = { -- Return to Thrallmar
             [questKeys.startedBy] = {{16576,19273}},
@@ -3895,27 +3884,27 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.breadcrumbForQuestId] = 10367,
         },
         [10405] = { -- S-A-B-O-T-A-G-E
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Communicate with Commander Ameer"), 0, {{"object", 410018}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Communicate with Commander Ameer", 0, {{"object", 410018}}}},
         },
         [10406] = { -- Delivering the Message
             [questKeys.triggerEnd] = {"Ethereum Conduit Sabotaged", {[zoneIDs.NETHERSTORM] = {{56.42,42.66}}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Communicate with Commander Ameer"), 0, {{"object", 410018}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Communicate with Commander Ameer", 0, {{"object", 410018}}}},
         },
         [10408] = { -- Nexus-King Salhadaar
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Communicate with Commander Ameer"), 0, {{"object", 410018}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Communicate with Commander Ameer", 0, {{"object", 410018}}}},
         },
         [10409] = { -- Deathblow to the Legion
             [questKeys.objectives] = {{{20132}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Take the portal to Socrethar's Seat"), 0, {{"object", 410016}}},
-                                           {nil, Questie.ICON_TYPE_OBJECT, l10n("Take the portal back to Invasion Point: Overlord"), 0, {{"object", 410017}}},
-                                           {nil, Questie.ICON_TYPE_TALK, l10n("When at Socrethar's Seat, ask for his help against Socrethar"), 0, {{"monster", 18537}}},
-                                           {{[zoneIDs.NETHERSTORM] = {{36.44,18.35}}}, Questie.ICON_TYPE_EVENT, l10n("Open a portal to Socrethar's Seat with Socrethar's Teleporting Stone")},
-                                           {{[zoneIDs.NETHERSTORM] = {{30.56,17.69}}}, Questie.ICON_TYPE_EVENT, l10n("After defeating Socrethar, you can open a portal back")},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Take the portal to Socrethar's Seat", 0, {{"object", 410016}}},
+                                           {nil, iconTypes.ICON_TYPE_OBJECT, "Take the portal back to Invasion Point: Overlord", 0, {{"object", 410017}}},
+                                           {nil, iconTypes.ICON_TYPE_TALK, "When at Socrethar's Seat, ask for his help against Socrethar", 0, {{"monster", 18537}}},
+                                           {{[zoneIDs.NETHERSTORM] = {{36.44,18.35}}}, iconTypes.ICON_TYPE_EVENT, "Open a portal to Socrethar's Seat with Socrethar's Teleporting Stone"},
+                                           {{[zoneIDs.NETHERSTORM] = {{30.56,17.69}}}, iconTypes.ICON_TYPE_EVENT, "After defeating Socrethar, you can open a portal back"},
             },
         },
         [10411] = { -- Electro-Shock Goodness!
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Use Navuud's Concoction before attacking Seeping Sludges"), 1, {{"monster", 20501}}},
-                                           {nil, Questie.ICON_TYPE_SLAY, l10n("Use Navuud's Concoction before attacking Void Wastes"), 2, {{"monster", 20778}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Use Navuud's Concoction before attacking Seeping Sludges", 1, {{"monster", 20501}}},
+                                           {nil, iconTypes.ICON_TYPE_SLAY, "Use Navuud's Concoction before attacking Void Wastes", 2, {{"monster", 20778}}},
             },
         },
         [10412] = { -- Firewing Signets
@@ -3940,17 +3929,17 @@ function QuestieTBCQuestFixes:Load()
         },
         [10422] = { -- Captain Tyralius
             [questKeys.requiredSourceItems] = {29742},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Open the prison"), 0, {{"object", 184588}}}},
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{20787,20825},20787,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Open the prison", 0, {{"object", 184588}}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{20787,20825},20787,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10425] = { -- Escape from the Staging Grounds
             [questKeys.triggerEnd] = {"Captured Protectorate Vanguard Escorted", {[zoneIDs.NETHERSTORM] = {{58.9,32.43}}}},
         },
         [10426] = { -- Flora of the Eco-Domes
-            [questKeys.objectives] = {{{20774,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{20774,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10427] = { -- Creatures of the Eco-Domes
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{20610,20777},20777,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{20610,20777},20777,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10428] = { -- The Missing Fisherman
             [questKeys.breadcrumbForQuestId] = 9527,
@@ -3959,10 +3948,10 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.nextQuestInChain] = 10440,
         },
         [10438] = { -- On Nethery Wings
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_TALK, l10n("Mount up"), 0, {{"monster", 20903}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_TALK, "Mount up", 0, {{"monster", 20903}}}},
         },
         [10439] = { -- Dimensius the All-Devouring
-            [questKeys.objectives] = {{{19554},{20985,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{19554},{20985,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [10442] = { -- Helping the Cenarion Post
             [questKeys.breadcrumbForQuestId] = 9372,
@@ -3974,11 +3963,11 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.startedBy] = {{19935,19936}},
         },
         [10446] = { -- The Final Code
-            [questKeys.objectives] = {nil,{{184725,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {nil,{{184725,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.nextQuestInChain] = 10005,
         },
         [10447] = { -- The Final Code
-            [questKeys.objectives] = {nil,{{184725,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {nil,{{184725,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.nextQuestInChain] = 10006,
         },
         [10449] = { -- Apothecary Zelana
@@ -3992,8 +3981,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.breadcrumbs] = {10680,10681},
             [questKeys.objectives] = {{{21050},{21061}}},
             [questKeys.extraObjectives] = {
-                {nil, Questie.ICON_TYPE_EVENT, l10n("Use the Totem of Spirits on Enraged Earth and Fiery Spirits"), 1, {{"monster", 21050}}},
-                {nil, Questie.ICON_TYPE_EVENT, l10n("Use the Totem of Spirits on Enraged Earth and Fiery Spirits"), 2, {{"monster", 21061}}},
+                {nil, iconTypes.ICON_TYPE_EVENT, "Use the Totem of Spirits on Enraged Earth and Fiery Spirits", 1, {{"monster", 21050}}},
+                {nil, iconTypes.ICON_TYPE_EVENT, "Use the Totem of Spirits on Enraged Earth and Fiery Spirits", 2, {{"monster", 21061}}},
             },
         },
         [10460] = { -- Defender's Pledge
@@ -4084,11 +4073,11 @@ function QuestieTBCQuestFixes:Load()
         },
         [10480] = { -- Enraged Spirits of Water
             [questKeys.objectives] = {{{21059}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use the Totem of Spirits on Enraged Water Spirits"), 0, {{"monster", 21059}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use the Totem of Spirits on Enraged Water Spirits", 0, {{"monster", 21059}}}},
         },
         [10481] = { -- Enraged Spirits of Air
             [questKeys.objectives] = {{{21060}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use the Totem of Spirits on Enraged Air Spirits"), 0, {{"monster", 21060}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use the Totem of Spirits on Enraged Air Spirits", 0, {{"monster", 21060}}}},
         },
         [10482] = { -- Fel Orc Scavengers
             [questKeys.breadcrumbs] = {10160},
@@ -4097,7 +4086,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.nextQuestInChain] = 10484,
         },
         [10488] = { -- Protecting Our Own
-            [questKeys.objectives] = {{{20748,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{20748,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10490] = { -- Call of Water
             [questKeys.exclusiveTo] = {9500,9502},
@@ -4113,30 +4102,30 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.nextQuestInChain] = 8923,
         },
         [10506] = { -- A Dire Situation
-            [questKeys.objectives] = {{{20058,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{20058,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10507] = { -- Turning Point
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Take the portal to Socrethar's Seat"), 0, {{"object", 410016}}},
-                                           {nil, Questie.ICON_TYPE_OBJECT, l10n("Take the portal back to Invasion Point: Overlord"), 0, {{"object", 410017}}},
-                                           {{[zoneIDs.NETHERSTORM] = {{36.44,18.35}}}, Questie.ICON_TYPE_EVENT, l10n("Open a portal to Socrethar's Seat with Socrethar's Teleporting Stone")},
-                                           {{[zoneIDs.NETHERSTORM] = {{30.56,17.69}}}, Questie.ICON_TYPE_EVENT, l10n("After defeating Socrethar, you can open a portal back")},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Take the portal to Socrethar's Seat", 0, {{"object", 410016}}},
+                                           {nil, iconTypes.ICON_TYPE_OBJECT, "Take the portal back to Invasion Point: Overlord", 0, {{"object", 410017}}},
+                                           {{[zoneIDs.NETHERSTORM] = {{36.44,18.35}}}, iconTypes.ICON_TYPE_EVENT, "Open a portal to Socrethar's Seat with Socrethar's Teleporting Stone"},
+                                           {{[zoneIDs.NETHERSTORM] = {{30.56,17.69}}}, iconTypes.ICON_TYPE_EVENT, "After defeating Socrethar, you can open a portal back"},
             },
         },
         [10511] = { -- Strange Brew
             [questKeys.nextQuestInChain] = 10512,
         },
         [10512] = { -- Getting the Bladespire Tanked
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{19998,20334,20723,20726,20730,20731,20732,21296,21975,19995},19995,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{19998,20334,20723,20726,20730,20731,20732,21296,21975,19995},19995,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10514] = { -- I Was A Lot Of Things...
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use Oronok's Boar Whistle to dig up a Shadowmoon Tuber"), 0, {{"object", 184701}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use Oronok's Boar Whistle to dig up a Shadowmoon Tuber", 0, {{"object", 184701}}}},
         },
         [10518] = { -- Planting the Banner
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Place the Bladespire Banner atop the Northmaul Tower"), 0, {{"object", 184704}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Place the Bladespire Banner atop the Northmaul Tower", 0, {{"object", 184704}}}},
             [questKeys.nextQuestInChain] = 10580,
         },
         [10519] = { -- The Cipher of Damnation - Truth and History
-            [questKeys.objectives] = {{{21183,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{21183,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [10520] = { -- Assisting Arch Druid Staghelm
             [questKeys.requiredLevel] = 47,
@@ -4150,7 +4139,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.triggerEnd] = {"Final Thunderlord artifact discovered", {[zoneIDs.BLADES_EDGE_MOUNTAINS] = {{52.76,58.89}}}},
         },
         [10526] = { -- The Thunderspike
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Attempt to loot The Thunderspike"), 0, {{"object", 184729}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Attempt to loot The Thunderspike", 0, {{"object", 184729}}}},
             [questKeys.nextQuestInChain] = 10718,
         },
         [10528] = { -- Demonic Crystal Prisons
@@ -4161,10 +4150,10 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredLevel] = 10,
         },
         [10540] = { -- The Cipher of Damnation - Ar'tor's Charge
-            [questKeys.extraObjectives] = {{{[zoneIDs.SHADOWMOON_VALLEY] = {{30,57}}}, Questie.ICON_TYPE_EVENT, l10n("Walk with your Spirit Hunter")}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.SHADOWMOON_VALLEY] = {{30,57}}}, iconTypes.ICON_TYPE_EVENT, "Walk with your Spirit Hunter"}},
         },
         [10545] = { -- Bladespire Kegger
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{19998,20334,20723,20726,20730,20731,20732,21296,21975,19995},19995,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{19998,20334,20723,20726,20730,20731,20732,21296,21975,19995},19995,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10548] = { -- The Sad Truth
             [questKeys.preQuestSingle] = {2379,9491},
@@ -4184,11 +4173,11 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredMinRep] = {932,0},
         },
         [10556] = { -- Scratches
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use the Fistful of Feathers on the Lashh'an Spell Circle and get back to Daranelle"), 0, {{"object", 184826}, {"monster", 21469}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use the Fistful of Feathers on the Lashh'an Spell Circle and get back to Daranelle", 0, {{"object", 184826}, {"monster", 21469}}}},
         },
         [10557] = { -- Test Flight: The Zephyrium Capacitorium
             [questKeys.triggerEnd] = {"Test Tally's Experiment", {[zoneIDs.BLADES_EDGE_MOUNTAINS] = {{60.17,68.8}}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Speak with Rally Zapnabber and use the Zephyrium Capacitorium"), 0, {{"monster", 21461}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Speak with Rally Zapnabber and use the Zephyrium Capacitorium", 0, {{"monster", 21461}}}},
         },
         [10562] = { -- Besieged!
             [questKeys.breadcrumbs] = {11044},
@@ -4197,22 +4186,22 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {nil,{{184833}}},
         },
         [10564] = { -- Blast the Infernals!
-            [questKeys.objectives] = {{{21512,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{21512,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10565] = { -- The Stones of Vekh'nir
-            [questKeys.extraObjectives] = {{{[zoneIDs.BLADES_EDGE_MOUNTAINS] = {{77.81,74.67}}}, Questie.ICON_TYPE_EVENT, l10n("Charge the Vekh'nir Crystal")}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.BLADES_EDGE_MOUNTAINS] = {{77.81,74.67}}}, iconTypes.ICON_TYPE_EVENT, "Charge the Vekh'nir Crystal"}},
             [questKeys.nextQuestInChain] = 10566,
         },
         [10566] = { -- Trial and Error
-            [questKeys.objectives] = {{{21254,nil,Questie.ICON_TYPE_INTERACT},{21254,nil,Questie.ICON_TYPE_INTERACT},{21254,nil,Questie.ICON_TYPE_INTERACT},{21254,nil,Questie.ICON_TYPE_INTERACT}}}, -- Yes, this is correct. The quest requires you to use four wands on the same NPC.
+            [questKeys.objectives] = {{{21254,nil,iconTypes.ICON_TYPE_INTERACT},{21254,nil,iconTypes.ICON_TYPE_INTERACT},{21254,nil,iconTypes.ICON_TYPE_INTERACT},{21254,nil,iconTypes.ICON_TYPE_INTERACT}}}, -- Yes, this is correct. The quest requires you to use four wands on the same NPC.
             [questKeys.requiredSourceItems] = {30651,30652,30653,30654,30655},
         },
         [10567] = { -- Creating the Pendant
             [questKeys.disabledByQuest] = 10615,
-            [questKeys.extraObjectives] = {{{[zoneIDs.BLADES_EDGE_MOUNTAINS] = {{64.48,33.11}}}, Questie.ICON_TYPE_EVENT, l10n("Use 6 Ruuan'ok Claws to summon a Harbinger of the Raven")}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.BLADES_EDGE_MOUNTAINS] = {{64.48,33.11}}}, iconTypes.ICON_TYPE_EVENT, "Use 6 Ruuan'ok Claws to summon a Harbinger of the Raven"}},
         },
         [10570] = { -- To Catch A Thistlehead
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Place the Bundle of Bloodthistle at the end of the bridge"), 0, {{"object", 184841}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Place the Bundle of Bloodthistle at the end of the bridge", 0, {{"object", 184841}}}},
         },
         [10571] = { -- Oronu the Elder
             [questKeys.exclusiveTo] = {10684},
@@ -4224,26 +4213,26 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.exclusiveTo] = {10686},
         },
         [10577] = { -- What Illidan Wants, Illidan Gets...
-            [questKeys.objectives] = {{{20563,nil,Questie.ICON_TYPE_TALK}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use the Blood Elf Disguise before talking to him"), 0, {{"monster", 20563}}}},
+            [questKeys.objectives] = {{{20563,nil,iconTypes.ICON_TYPE_TALK}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use the Blood Elf Disguise before talking to him", 0, {{"monster", 20563}}}},
         },
         [10580] = { -- Where Did Those Darn Gnomes Go?
             [questKeys.exclusiveTo] = {10584},
         },
         [10583] = { -- The Fate of Flanis
-            [questKeys.objectives] = {nil,nil,{{30658,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {nil,nil,{{30658,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [10584] = { -- Picking Up Some Power Converters
-            [questKeys.objectives] = {{{21729,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{21729,nil,iconTypes.ICON_TYPE_INTERACT}}},
             [questKeys.preQuestSingle] = {},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Open the Power Converters and encase what is inside with the Protovoltaic Magneto Collector"), 0, {{"object", 184906}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Open the Power Converters and encase what is inside with the Protovoltaic Magneto Collector", 0, {{"object", 184906}}}},
         },
         [10585] = { -- The Summoning Chamber
-            [questKeys.extraObjectives] = {{{[zoneIDs.SHADOWMOON_VALLEY] = {{37,38}}}, Questie.ICON_TYPE_EVENT, l10n("Use the Elemental Displacer to disrupt the ritual in the summoning chamber"), 0}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.SHADOWMOON_VALLEY] = {{37,38}}}, iconTypes.ICON_TYPE_EVENT, "Use the Elemental Displacer to disrupt the ritual in the summoning chamber", 0}},
         },
         [10588] = { -- The Cipher of Damnation
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use The Cipher of Damnation at Altar of Damnation"), 0, {{"object", 184907}}},
-                                           {nil, Questie.ICON_TYPE_TALK, l10n("Let him know when you are ready for Cyrukh"), 0, {{"monster", 21685}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use The Cipher of Damnation at Altar of Damnation", 0, {{"object", 184907}}},
+                                           {nil, iconTypes.ICON_TYPE_TALK, "Let him know when you are ready for Cyrukh", 0, {{"monster", 21685}}},
             },
             [questKeys.nextQuestInChain] = 10883,
         },
@@ -4261,10 +4250,10 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {nil,{{184833}}},
         },
         [10598] = { -- Blast the Infernals!
-            [questKeys.objectives] = {{{21512,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{21512,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10601] = { -- The Fate of Kagrosh
-            [questKeys.objectives] = {nil,nil,{{30659,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {nil,nil,{{30659,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [10605] = { -- Carendin Summons
             [questKeys.nextQuestInChain] = 0,
@@ -4277,8 +4266,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {nil,{{184950},{184967},{184968},{184969}}},
         },
         [10609] = { -- What Came First, the Drake or the Egg?
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Open Nether Drake Eggs and use the Temporal Phase Modulator on whatever hatches"), 0, {{"object", 184867}}},
-                                           {nil, Questie.ICON_TYPE_SLAY, l10n("Use the Temporal Phase Modulator"), 0, {{"monster", 20021}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Open Nether Drake Eggs and use the Temporal Phase Modulator on whatever hatches", 0, {{"object", 184867}}},
+                                           {nil, iconTypes.ICON_TYPE_SLAY, "Use the Temporal Phase Modulator", 0, {{"monster", 20021}}},
             },
         },
         [10611] = { -- The Art of Fel Reaver Maintenance
@@ -4286,11 +4275,11 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredSourceItems] = {},
         },
         [10612] = { -- The Fel and the Furious
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use a Fel Reaver Control Console to take control of a Fel Reaver Sentinel"), 0, {{"object", 185057}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use a Fel Reaver Control Console to take control of a Fel Reaver Sentinel", 0, {{"object", 185057}}}},
             [questKeys.objectives] = {nil,{{184979}}},
         },
         [10613] = { -- The Fel and the Furious
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use a Fel Reaver Control Console to take control of a Fel Reaver Sentinel"), 0, {{"object", 185059}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use a Fel Reaver Control Console to take control of a Fel Reaver Sentinel", 0, {{"object", 185059}}}},
             [questKeys.objectives] = {nil,{{184979}}},
         },
         [10620] = { -- Ridgespine Menace
@@ -4303,8 +4292,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.nextQuestInChain] = 10663,
         },
         [10629] = { -- Shizz Work
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Kill some Deranged Helboars"), 0, {{"monster", 16863}}},
-                                           {nil, Questie.ICON_TYPE_EVENT, l10n("Use the Felhound Whistle"), 0, {{"monster", 16915}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Kill some Deranged Helboars", 0, {{"monster", 16863}}},
+                                           {nil, iconTypes.ICON_TYPE_EVENT, "Use the Felhound Whistle", 0, {{"monster", 16915}}},
             },
         },
         [10634] = { -- Divination: Gorefiend's Armor
@@ -4317,7 +4306,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.preQuestSingle] = {10633,10644},
         },
         [10637] = { -- A Necessary Distraction
-            [questKeys.objectives] = {{{21506,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{21506,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10639] = { -- Teron Gorefiend, I am...
             [questKeys.preQuestGroup] = {10634,10635,10636},
@@ -4332,14 +4321,14 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.preQuestGroup] = {10634,10635,10636},
         },
         [10646] = { -- Illidan's Pupil
-            [questKeys.objectives] = {{{18417,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{18417,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [10649] = { -- The Book of Fel Names
             [questKeys.zoneOrSort] = zoneIDs.AUCHINDOUN_DUNGEONS,
             [questKeys.nextQuestInChain] = 10650,
         },
         [10652] = { -- Behind Enemy Lines
-            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_TALK,l10n("Take a ride"),0,{{"monster",20162}}}},
+            [questKeys.extraObjectives] = {{nil,iconTypes.ICON_TYPE_TALK,"Take a ride",0,{{"monster",20162}}}},
         },
         [10653] = { -- Marks of Sargeras
             [questKeys.requiredMaxRep] = {},
@@ -4362,7 +4351,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.exclusiveTo] = {10824},
         },
         [10657] = { -- Ride the Lightning
-            [questKeys.objectives] = {{{20749,nil,Questie.ICON_TYPE_INTERACT}},nil,{{30849}}},
+            [questKeys.objectives] = {{{20749,nil,iconTypes.ICON_TYPE_INTERACT}},nil,{{30849}}},
         },
         [10658] = { -- More Sunfury Signets
             [questKeys.requiredMaxRep] = {},
@@ -4379,18 +4368,18 @@ function QuestieTBCQuestFixes:Load()
         },
         [10669] = { -- Against All Odds
             [questKeys.preQuestSingle] = {10640,10689},
-            [questKeys.extraObjectives] = {{{[zoneIDs.ZANGARMARSH] = {{15.9,40.5}}}, Questie.ICON_TYPE_EVENT, l10n("Use the Imbued Silver Spear at Portal Clearing near Marshlight Lake to awake Xeleth")}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.ZANGARMARSH] = {{15.9,40.5}}}, iconTypes.ICON_TYPE_EVENT, "Use the Imbued Silver Spear at Portal Clearing near Marshlight Lake to awake Xeleth"}},
         },
         [10672] = { -- Frankly, It Makes No Sense...
-            [questKeys.objectives] = {{{21462,nil,Questie.ICON_TYPE_INTERACT}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use a Arcano Control Unit and then swim in the lava to tag the Greater Felfire Diemetradon"), 0, {{"object", 185008},{"object", 185009},{"object", 185010}}}},
+            [questKeys.objectives] = {{{21462,nil,iconTypes.ICON_TYPE_INTERACT}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use a Arcano Control Unit and then swim in the lava to tag the Greater Felfire Diemetradon", 0, {{"object", 185008},{"object", 185009},{"object", 185010}}}},
         },
         [10674] = { -- Trapping the Light Fantastic
-            [questKeys.objectives] = {{{20635,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{20635,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10675] = { -- Show Them Gnome Mercy!
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Kill Razaani ethereals to lure Nexus-Prince Razaan out"), 0, {{"monster", 20601}, {"monster", 20609}, {"monster", 20614}}},
-                                           {nil, Questie.ICON_TYPE_SLAY, l10n("Kill Nexus-Prince Razaan to spawn the Collection of Souls"), 0, {{"monster", 21057}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Kill Razaani ethereals to lure Nexus-Prince Razaan out", 0, {{"monster", 20601}, {"monster", 20609}, {"monster", 20614}}},
+                                           {nil, iconTypes.ICON_TYPE_SLAY, "Kill Nexus-Prince Razaan to spawn the Collection of Souls", 0, {{"monster", 21057}}},
             },
         },
         [10680] = { -- The Hand of Gul'dan
@@ -4400,7 +4389,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.breadcrumbForQuestId] = 10458,
         },
         [10682] = { -- A Time for Negotiation...
-            [questKeys.objectives] = {{{21981,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{21981,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [10683] = { -- Tablets of Baa'ri
             [questKeys.preQuestSingle] = {10552},
@@ -4418,11 +4407,11 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.preQuestSingle] = {10552},
         },
         [10688] = { -- A Necessary Distraction
-            [questKeys.objectives] = {{{21506,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{21506,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10707] = { -- The Ata'mal Terrace
             [questKeys.objectivesText] = {"Go to the top of the Ata'mal Terrace in Shadowmoon Valley and obtain the Heart of Fury. Return to Akama at the Warden's Cage in Shadowmoon Valley when you've completed this task."},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Kill the 3 Shadowmoon Soulstealers to force Shadowlord Deathwail to land"), 0, {{"object", 185125}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Kill the 3 Shadowmoon Soulstealers to force Shadowlord Deathwail to land", 0, {{"object", 185125}}}},
             [questKeys.nextQuestInChain] = 11052,
         },
         [10708] = { -- Akama's Promise
@@ -4432,23 +4421,23 @@ function QuestieTBCQuestFixes:Load()
         },
         [10710] = { -- Test Flight: The Singing Ridge
             [questKeys.triggerEnd] = {"Test Tally's Experiment", {[zoneIDs.BLADES_EDGE_MOUNTAINS] = {{60.17,68.8}}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Sign Tally's Waiver, then speak with Rally Zapnabber to use the Zephyrium Capacitorium"), 0, {{"monster", 21461}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Sign Tally's Waiver, then speak with Rally Zapnabber to use the Zephyrium Capacitorium", 0, {{"monster", 21461}}}},
             [questKeys.requiredSourceItems] = {30539},
         },
         [10711] = { -- Test Flight: Razaan's Landing
             [questKeys.triggerEnd] = {"Test Tally's Experiment", {[zoneIDs.BLADES_EDGE_MOUNTAINS] = {{60.17,68.8}}}},
             [questKeys.preQuestSingle] = {},
             [questKeys.preQuestGroup] = {10710, 10657},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Speak with Rally Zapnabber to use the Zephyrium Capacitorium"), 0, {{"monster", 21461}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Speak with Rally Zapnabber to use the Zephyrium Capacitorium", 0, {{"monster", 21461}}}},
         },
         [10712] = { -- Test Flight: Ruuan Weald
             [questKeys.triggerEnd] = {"Test Tally's Experiment", {[zoneIDs.BLADES_EDGE_MOUNTAINS] = {{60.17,68.8}}}},
             [questKeys.preQuestSingle] = {},
             [questKeys.preQuestGroup] = {10711, 10675},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Speak with Rally Zapnabber to use the Zephyrium Capacitorium and spin the Nether-weather Vane while flying"), 0, {{"monster", 21461}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Speak with Rally Zapnabber to use the Zephyrium Capacitorium and spin the Nether-weather Vane while flying", 0, {{"monster", 21461}}}},
         },
         [10714] = { -- On Spirit's Wings
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{22160,22384},22160,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{22160,22384},22160,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10715] = { -- Into the Churning Gulch
             [questKeys.nextQuestInChain] = 10749,
@@ -4458,22 +4447,22 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.nextQuestInChain] = 10894,
         },
         [10720] = { -- The Smallest Creatures
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_INTERACT, l10n("Control the Marmot"), 0, {{"monster", 22480}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_INTERACT, "Control the Marmot", 0, {{"monster", 22480}}}},
             [questKeys.objectives] = {nil,{{185206},{185213},{185214}}},
         },
         [10721] = { -- A Boaring Time for Grulloc
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Blow the whistle and have Grulloc run after the boar"), 0, {{"monster", 20216}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Blow the whistle and have Grulloc run after the boar", 0, {{"monster", 20216}}}},
         },
         [10722] = { -- Meeting at the Blackwing Coven
-            [questKeys.objectives] = {{{22019,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{22019,nil,iconTypes.ICON_TYPE_TALK}}},
             [questKeys.requiredSourceItems] = {31121,31122},
         },
         [10723] = { -- Gorgrom the Dragon-Eater
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use Sablemane's Trap at Gorgrom's Altar"), 0, {{"object", 185234}}}},
-            [questKeys.objectives] = {{{21514,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use Sablemane's Trap at Gorgrom's Altar", 0, {{"object", 185234}}}},
+            [questKeys.objectives] = {{{21514,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10724] = { -- Prisoner of the Bladespire
-            [questKeys.objectives] = {{{22268,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{22268,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10725] = { -- Eminence Among the Violet Eye
             [questKeys.exclusiveTo] = {10726,10727,10728},
@@ -4540,10 +4529,10 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = zoneIDs.KARAZHAN,
         },
         [10742] = { -- Showdown
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use Rexxar's Battle Horn at the Altar of Goc"), 0, {{"object", 185309}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use Rexxar's Battle Horn at the Altar of Goc", 0, {{"object", 185309}}}},
         },
         [10747] = { -- Whelps of the Wyrmcult
-            [questKeys.objectives] = {nil,nil,{{31130,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {nil,nil,{{31130,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10750] = { -- The Path of Conquest
             [questKeys.triggerEnd] = {"The Path of Conquest Discovered", {[zoneIDs.SHADOWMOON_VALLEY] = {{51.23,62.75},{52.45,59.19}}}},
@@ -4562,10 +4551,10 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.startedBy] = {{22037}},
         },
         [10758] = { -- Hotter than Hell
-            [questKeys.objectives] = {nil,nil,{{31252,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {nil,nil,{{31252,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10764] = { -- Hotter than Hell
-            [questKeys.objectives] = {nil,nil,{{31252,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {nil,nil,{{31252,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10765] = { -- When Worlds Collide...
             [questKeys.sourceItemId] = 31108,
@@ -4589,7 +4578,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.triggerEnd] = {"Crimson Sigil Forces Annihilated", {[zoneIDs.SHADOWMOON_VALLEY] = {{51.75,72.79}}}},
         },
         [10782] = { -- Imbuing the Headpiece
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Equip the Unfinished Headpiece, travel to the Altar of Damnation, and use it while standing near Gul'dan."), 0, {{"monster", 17008}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Equip the Unfinished Headpiece, travel to the Altar of Damnation, and use it while standing near Gul'dan.", 0, {{"monster", 17008}}}},
         },
         [10788] = { -- Return to Talionia
             [questKeys.startedBy] = {{5675,5875}},
@@ -4604,12 +4593,12 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.breadcrumbForQuestId] = 1501,
         },
         [10791] = { -- Welcoming the Wolf Spirit
-            [questKeys.objectives] = {{{18384,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{18384,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10792] = { -- Zeth'Gor Must Burn!
             [questKeys.requiredSourceItems] = {31347,31346},
-            [questKeys.objectives] = {{{20813,nil, Questie.ICON_TYPE_EVENT},{20815,nil, Questie.ICON_TYPE_EVENT},{20816,nil, Questie.ICON_TYPE_EVENT},{20814,nil, Questie.ICON_TYPE_EVENT}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Light the torches"), 0, {{"object", 185144}}}},
+            [questKeys.objectives] = {{{20813,nil, iconTypes.ICON_TYPE_EVENT},{20815,nil, iconTypes.ICON_TYPE_EVENT},{20816,nil, iconTypes.ICON_TYPE_EVENT},{20814,nil, iconTypes.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Light the torches", 0, {{"object", 185144}}}},
         },
         [10793] = { -- The Journal of Val'zareq: Portends of War
             [questKeys.startedBy] = {nil,nil,{31345}},
@@ -4622,39 +4611,39 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.preQuestSingle] = {},
         },
         [10800] = { -- Goodnight, Gronn
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Put Grulloc to sleep using Sablemane's Sleeping Powder"), 0, {{"monster", 20216}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Put Grulloc to sleep using Sablemane's Sleeping Powder", 0, {{"monster", 20216}}}},
         },
         [10802] = { -- Gorgrom the Dragon-Eater
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use Sablemane's Trap at Gorgrom's Altar"), 0, {{"object", 185234}}}},
-            [questKeys.objectives] = {{{21514,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use Sablemane's Trap at Gorgrom's Altar", 0, {{"object", 185234}}}},
+            [questKeys.objectives] = {{{21514,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10804] = { -- Kindness
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_LOOT, l10n("Kill flayers and take their carcasses. Place a carcass in the field"), 0, {{"monster", 21477}, {"monster", 21478}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_LOOT, "Kill flayers and take their carcasses. Place a carcass in the field", 0, {{"monster", 21477}, {"monster", 21478}}}},
             [questKeys.requiredSourceItems] = {31372,31373},
-            [questKeys.objectives] = {{{21648,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{21648,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10806] = { -- Showdown
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use Sablemane's Signet at the Altar of Goc"), 0, {{"object", 185309}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use Sablemane's Signet at the Altar of Goc", 0, {{"object", 185309}}}},
         },
         [10807] = { -- The Ashtongue Broken
             [questKeys.preQuestSingle] = {10552},
         },
         [10808] = { -- Thwart the Dark Conclave
-            [questKeys.objectives] = {{{22137,nil,Questie.ICON_TYPE_EVENT}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Kill the Ritualists"), 0, {{"monster", 22138}}}},
+            [questKeys.objectives] = {{{22137,nil,iconTypes.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Kill the Ritualists", 0, {{"monster", 22138}}}},
         },
         [10809] = { -- Wanted: Worg Master Kruush
             [questKeys.nextQuestInChain] = 10792,
         },
         [10813] = { -- The Eyes of Grillok
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{19440,22177},22177,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{19440,22177},22177,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [10814] = { -- Neltharaku's Tale
-            [questKeys.objectives] = {{{21657,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{21657,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [10821] = { -- You're Fired!
             [questKeys.requiredSourceItems] = {31536},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Retrieve five Camp Anger Keys and activate the five Legion obelisks. The obelisks have a short duration, so make sure they are all activated at the same time."), 0, {{"object", 185193},{"object", 185195},{"object", 185196},{"object", 185197},{"object", 185198}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Retrieve five Camp Anger Keys and activate the five Legion obelisks. The obelisks have a short duration, so make sure they are all activated at the same time.", 0, {{"object", 185193},{"object", 185195},{"object", 185196},{"object", 185197},{"object", 185198}}}},
         },
         [10822] = { -- Single Sunfury Signet
             [questKeys.requiredMaxRep] = {},
@@ -4692,7 +4681,7 @@ function QuestieTBCQuestFixes:Load()
         },
         [10830] = { -- Exorcising the Trees
             [questKeys.requiredSourceItems] = {31517,31495,31518},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_INTERACT, l10n("Use Exorcism Feathers to summon Koi-Koi Spirits"), 0, {{"monster", 21326}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_INTERACT, "Use Exorcism Feathers to summon Koi-Koi Spirits", 0, {{"monster", 21326}}}},
         },
         [10831] = { -- Becoming a Mooncloth Tailor
             [questKeys.requiredSkill] = {197,350},
@@ -4704,8 +4693,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredSkill] = {197,350},
         },
         [10838] = { -- The Demoniac Scryer
-            [questKeys.objectives] = {nil,nil,{{31607,nil,Questie.ICON_TYPE_TALK}}},
-            [questKeys.extraObjectives] = {{{[3483] = {{44,51}}}, Questie.ICON_TYPE_EVENT, l10n("Use the Demoniac Scryer")}},
+            [questKeys.objectives] = {nil,nil,{{31607,nil,iconTypes.ICON_TYPE_TALK}}},
+            [questKeys.extraObjectives] = {{{[3483] = {{44,51}}}, iconTypes.ICON_TYPE_EVENT, "Use the Demoniac Scryer"}},
         },
         [10839] = { -- Veil Skith: Darkstone of Terokk
             [questKeys.objectives] = {nil,{{185191}}},
@@ -4722,27 +4711,27 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.breadcrumbs] = {10862,10863,10908},
         },
         [10852] = { -- Missing Friends
-            [questKeys.objectives] = {{{22314,nil,Questie.ICON_TYPE_EVENT}}},
-            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Open the cage"),0,{{"object",185202}}}},
+            [questKeys.objectives] = {{{22314,nil,iconTypes.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil,iconTypes.ICON_TYPE_OBJECT,"Open the cage",0,{{"object",185202}}}},
             [questKeys.requiredSourceItems] = {31655},
         },
         [10854] = { -- The Force of Neltharaku
-            [questKeys.objectives] = {{{21722,nil,Questie.ICON_TYPE_INTERACT}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_INTERACT, l10n("Use Enchanted Nethervine Crystal on Enslaved Netherwing Drake"), 0, {{"monster", 21722}}}},
+            [questKeys.objectives] = {{{21722,nil,iconTypes.ICON_TYPE_INTERACT}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_INTERACT, "Use Enchanted Nethervine Crystal on Enslaved Netherwing Drake", 0, {{"monster", 21722}}}},
         },
         [10855] = { -- Fel Reavers, No Thanks!
-            [questKeys.objectives] = {{{22293,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{22293,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10857] = { -- Teleport This!
-            [questKeys.objectives] = {{{22348,nil,Questie.ICON_TYPE_EVENT},{22350,nil,Questie.ICON_TYPE_EVENT},{22351,nil,Questie.ICON_TYPE_EVENT}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_INTERACT, l10n("Use the Mental Interference Rod on the Mo'arg and use their Detonate Teleporter ability"), 0, {{"monster", 16943},{"monster", 20928}}}},
+            [questKeys.objectives] = {{{22348,nil,iconTypes.ICON_TYPE_EVENT},{22350,nil,iconTypes.ICON_TYPE_EVENT},{22351,nil,iconTypes.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_INTERACT, "Use the Mental Interference Rod on the Mo'arg and use their Detonate Teleporter ability", 0, {{"monster", 16943},{"monster", 20928}}}},
         },
         [10859] = { -- Gather the Orbs
-            [questKeys.objectives] = {{{20635,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{20635,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10861] = { -- Veil Lithic: Preemptive Strike
             [questKeys.objectives] = {nil,{{185210}},nil,nil,{{{22337},22337}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Collect Cursed Eggs to spawn a Hatchling"), 0, {{"object", 185210}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Collect Cursed Eggs to spawn a Hatchling", 0, {{"object", 185210}}}},
         },
         [10862] = { -- Surrender to the Horde
             [questKeys.exclusiveTo] = {10863},
@@ -4760,8 +4749,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE + raceIDs.ALL_ALLIANCE - raceIDs.HUMAN,
         },
         [10867] = { -- There Can Be Only One Response
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Kill Razaani ethereals to lure Nexus-Prince Razaan out"), 0, {{"monster", 20601}, {"monster", 20609}, {"monster", 20614}}},
-                                           {nil, Questie.ICON_TYPE_SLAY, l10n("Kill Nexus-Prince Razaan to spawn the Collection of Souls"), 0, {{"monster", 21057}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Kill Razaani ethereals to lure Nexus-Prince Razaan out", 0, {{"monster", 20601}, {"monster", 20609}, {"monster", 20614}}},
+                                           {nil, iconTypes.ICON_TYPE_SLAY, "Kill Nexus-Prince Razaan to spawn the Collection of Souls", 0, {{"monster", 21057}}},
             },
         },
         [10870] = { -- Ally of the Netherwing
@@ -4787,10 +4776,10 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredSourceItems] = {31664},
         },
         [10873] = { -- Taken in the Night
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{22459,22355},22459,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{22459,22355},22459,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10876] = { -- The Foot of the Citadel
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Kill Force Commander Gorax and place the Challenge From the Horde upon his corpse"), 0, {{"monster", 19264}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Kill Force Commander Gorax and place the Challenge From the Horde upon his corpse", 0, {{"monster", 19264}}}},
         },
         [10879] = { -- The Skettis Offensive
             [questKeys.triggerEnd] = {"Attack thwarted", {[zoneIDs.SHATTRATH_CITY] = {{51.62,20.69}}}},
@@ -4800,7 +4789,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.reputationReward] = {{factionIDs.THE_SHATAR,500}},
         },
         [10887] = { -- Escaping the Tomb
-            [questKeys.extraObjectives] = {{{[zoneIDs.TEROKKAR_FOREST] = {{33.77,51.61}}}, Questie.ICON_TYPE_EVENT, l10n("Help Akuno find his way to the Refugee Caravan in Terokkar Forest.")}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.TEROKKAR_FOREST] = {{33.77,51.61}}}, iconTypes.ICON_TYPE_EVENT, "Help Akuno find his way to the Refugee Caravan in Terokkar Forest."}},
         },
         [10889] = { -- Return to Shattrath
             [questKeys.nextQuestInChain] = 10879,
@@ -4814,7 +4803,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.exclusiveTo] = {7652},
         },
         [10896] = { -- The Infested Protectors
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Kill Rotting Forest-Ragers and Infested Root-Walkers to spawn Wood Mites"), 0, {{"monster", 22307}, {"monster", 22095}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Kill Rotting Forest-Ragers and Infested Root-Walkers to spawn Wood Mites", 0, {{"monster", 22307}, {"monster", 22095}}}},
         },
         [10897] = { -- Master of Potions
             [questKeys.preQuestSingle] = {},
@@ -4846,20 +4835,20 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.breadcrumbForQuestId] = 10847,
         },
         [10909] = { -- Fel Spirits
-            [questKeys.extraObjectives] = {{{[zoneIDs.HELLFIRE_PENINSULA] = {{45,74.4}}}, Questie.ICON_TYPE_EVENT, l10n("Place the Achorite Relic")},
-                                           {nil, Questie.ICON_TYPE_OBJECT, l10n("Slay Shattered Hand Berserkers near it"), 0, {{"object", 185298}}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.HELLFIRE_PENINSULA] = {{45,74.4}}}, iconTypes.ICON_TYPE_EVENT, "Place the Achorite Relic"},
+                                           {nil, iconTypes.ICON_TYPE_OBJECT, "Slay Shattered Hand Berserkers near it", 0, {{"object", 185298}}},
             },
             [questKeys.nextQuestInChain] = 10935,
         },
         [10911] = { -- Fire At Will!
-            [questKeys.objectives] = {{{22472,nil,Questie.ICON_TYPE_EVENT},{22471,nil,Questie.ICON_TYPE_EVENT}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use the Naturalized Ammunition to take control of the Death's Door Fel Cannon"), 0, {{"object", 185306}}}},
+            [questKeys.objectives] = {{{22472,nil,iconTypes.ICON_TYPE_EVENT},{22471,nil,iconTypes.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use the Naturalized Ammunition to take control of the Death's Door Fel Cannon", 0, {{"object", 185306}}}},
         },
         [10913] = { -- An Improper Burial
-            [questKeys.objectives] = {{{21859,nil,Questie.ICON_TYPE_EVENT},{21846,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{21859,nil,iconTypes.ICON_TYPE_EVENT},{21846,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [10915] = { -- The Fallen Exarch
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Open the coffin and kill its contents"), 0, {{"object", 184999}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Open the coffin and kill its contents", 0, {{"object", 184999}}}},
         },
         [10917] = { -- The Outcast's Plight
             [questKeys.requiredMaxRep] = {},
@@ -4869,17 +4858,17 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.triggerEnd] = {"Protect the Explorers", {[zoneIDs.TEROKKAR_FOREST] = {{30.12,70.9}}}},
         },
         [10923] = { -- Evil Draws Near
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use Dread Relic with 20 Doom Skulls near the Writhing Mound Summoning Circle to call Teribus the Cursed"), 0, {{"object", 185311}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use Dread Relic with 20 Doom Skulls near the Writhing Mound Summoning Circle to call Teribus the Cursed", 0, {{"object", 185311}}}},
         },
         [10929] = { -- Fumping
-            [questKeys.extraObjectives] = {{{[zoneIDs.TEROKKAR_FOREST] = {{31.9,76.3}}}, Questie.ICON_TYPE_EVENT, l10n("Use the Fumper to lure Mature Bone Sifter"), 0}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.TEROKKAR_FOREST] = {{31.9,76.3}}}, iconTypes.ICON_TYPE_EVENT, "Use the Fumper to lure Mature Bone Sifter", 0}},
         },
         [10930] = { -- The Big Bone Worm
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Kill Decrepit Clefthoofs and use the Fumper on their corpses"), 0, {{"monster", 22105}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Kill Decrepit Clefthoofs and use the Fumper on their corpses", 0, {{"monster", 22105}}}},
         },
         [10935] = { -- The Exorcism of Colonel Jules
-            [questKeys.objectives] = {{{22432,nil,Questie.ICON_TYPE_EVENT}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Perform the exorcism"), 0, {{"monster", 22431}}}},
+            [questKeys.objectives] = {{{22432,nil,iconTypes.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Perform the exorcism", 0, {{"monster", 22431}}}},
             [questKeys.nextQuestInChain] = 10936,
         },
         [10938] = { -- Darkmoon Blessings Deck
@@ -5008,7 +4997,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.finishedBy] = {{17204}},
             [questKeys.requiredLevel] = 60,
             [questKeys.questLevel] = -1,
-            [questKeys.objectives] = {{{17204,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{17204,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.zoneOrSort] = sortKeys.SPECIAL,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.preQuestGroup] = {},
@@ -5024,20 +5013,20 @@ function QuestieTBCQuestFixes:Load()
         },
         [10971] = { -- Ethereum Secrets
             [questKeys.requiredSourceItems] = {29460},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Open the prison"), 0, {{"object", 184418},{"object", 184419},{"object", 184420},{"object", 184421},{"object", 184422},{"object", 184423},{"object", 184424},{"object", 184425},{"object", 184426},{"object", 184427},{"object", 184428},{"object", 184429},{"object", 184430},{"object", 184431}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Open the prison", 0, {{"object", 184418},{"object", 184419},{"object", 184420},{"object", 184421},{"object", 184422},{"object", 184423},{"object", 184424},{"object", 184425},{"object", 184426},{"object", 184427},{"object", 184428},{"object", 184429},{"object", 184430},{"object", 184431}}}},
             [questKeys.nextQuestInChain] = 10973,
         },
         [10974] = { -- Stasis Chambers of Bash'ir
             [questKeys.requiredMinRep] = {933,21000},
             [questKeys.nextQuestInChain] = 10976,
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Open the prison"), 0, {{"object", 185512}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Open the prison", 0, {{"object", 185512}}}},
         },
         [10975] = { -- Purging the Chambers of Bash'ir
             [questKeys.requiredMinRep] = {933,21000},
         },
         [10976] = { -- The Mark of the Nexus-King
             [questKeys.requiredMinRep] = {933,21000},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Open the prison"), 0, {{"object", 184595},{"object", 185461},{"object", 185462},{"object", 185463},{"object", 185464},{"object", 185465},{"object", 185466},{"object", 185467}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Open the prison", 0, {{"object", 184595},{"object", 185461},{"object", 185462},{"object", 185463},{"object", 185464},{"object", 185465},{"object", 185466},{"object", 185467}}}},
             [questKeys.nextQuestInChain] = 10977,
         },
         [10977] = { -- Stasis Chambers of the Mana-Tombs
@@ -5058,43 +5047,43 @@ function QuestieTBCQuestFixes:Load()
         },
         [10985] = { -- A Distraction for Akama
             [questKeys.triggerEnd] = {"Help Akama and Maiev enter the Black Temple.", {[zoneIDs.SHADOWMOON_VALLEY] = {{71.05,46.11}}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_TALK, l10n("Let Xi'ri know you're ready to battle"), 1, {{"monster", 18528}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_TALK, "Let Xi'ri know you're ready to battle", 1, {{"monster", 18528}}}},
         },
         [10987] = { -- To Catch A Sparrowhawk
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_LOOT, l10n("Use the Sparrowhawk Net to capture a Wild Sparrowhawk"), 0, {{"monster", 22979}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_LOOT, "Use the Sparrowhawk Net to capture a Wild Sparrowhawk", 0, {{"monster", 22979}}}},
             [questKeys.nextQuestInChain] = 10988,
         },
         [10988] = { -- The Raven Stones
             [questKeys.nextQuestInChain] = 10990,
         },
         [10990] = { -- The Eagle's Essence
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Defeat the Guardian of the Eagle and obtain the Essence of the Eagle"), 0, {{"object", 185547}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Defeat the Guardian of the Eagle and obtain the Essence of the Eagle", 0, {{"object", 185547}}}},
         },
         [10991] = { -- The Falcon's Essence
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Defeat the Guardian of the Falcon and obtain the Essence of the Falcon"), 0, {{"object", 185553}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Defeat the Guardian of the Falcon and obtain the Essence of the Falcon", 0, {{"object", 185553}}}},
         },
         [10992] = { -- The Hawk's Essence
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Defeat the Guardian of the Hawk and obtain the Essence of the Hawk"), 0, {{"object", 185551}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Defeat the Guardian of the Hawk and obtain the Essence of the Hawk", 0, {{"object", 185551}}}},
         },
         [10995] = { -- Grulloc Has Two Skulls
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Defeat him so he spawns Grulloc's Dragon Skull"), 0, {{"monster", 20216}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Defeat him so he spawns Grulloc's Dragon Skull", 0, {{"monster", 20216}}}},
         },
         [10996] = { -- Maggoc's Treasure Chest
             [questKeys.preQuestSingle] = {10983,10989,11057},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Defeat him so he spawns Maggoc's Treasure Chest"), 0, {{"monster", 20600}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Defeat him so he spawns Maggoc's Treasure Chest", 0, {{"monster", 20600}}}},
         },
         [10997] = { -- Even Gronn Have Standards
             [questKeys.preQuestSingle] = {10983,10989,11057},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Defeat him so he spawns Slaag's Standard"), 0, {{"monster", 22199}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Defeat him so he spawns Slaag's Standard", 0, {{"monster", 22199}}}},
         },
         [10998] = { -- Grim(oire) Business
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Step into fire rings to summon Vim'gol"), 0, {{"monster", 22911}}},
-                                           {nil, Questie.ICON_TYPE_SLAY, l10n("Defeat him so he spawns Vim'gol's Vile Grimoire"), 0, {{"monster", 22911}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Step into fire rings to summon Vim'gol", 0, {{"monster", 22911}}},
+                                           {nil, iconTypes.ICON_TYPE_SLAY, "Defeat him so he spawns Vim'gol's Vile Grimoire", 0, {{"monster", 22911}}},
             },
         },
         [11000] = { -- Into the Soulgrinder
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use Vim'gol's Grimoire at Soulgrinder's Altar"), 0, {{"object", 185880}}},
-                                           {nil, Questie.ICON_TYPE_SLAY, l10n("Defeat him so he spawns Skulloc's Soul"), 0, {{"monster", 22910}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use Vim'gol's Grimoire at Soulgrinder's Altar", 0, {{"object", 185880}}},
+                                           {nil, iconTypes.ICON_TYPE_SLAY, "Defeat him so he spawns Skulloc's Soul", 0, {{"monster", 22910}}},
             },
         },
         [11001] = { -- Vanquish the Raven God
@@ -5150,7 +5139,7 @@ function QuestieTBCQuestFixes:Load()
         [11020] = { -- A Slow Death
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.requiredSourceItems] = {32502},
-            [questKeys.objectives] = {{{22252,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{22252,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [11021] = { -- Ishaal's Almanac
             [questKeys.preQuestSingle] = {11004},
@@ -5169,7 +5158,7 @@ function QuestieTBCQuestFixes:Load()
         },
         [11026] = { -- Banish the Demons
             [questKeys.preQuestSingle] = {11025},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Use the Banishing Crystal and slay demons near the summoned portal"), 0, {{"monster", 20557},{"monster", 22195},{"monster", 22291},{"monster", 19973},{"monster", 22204},{"monster", 22304},{"monster", 23174}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Use the Banishing Crystal and slay demons near the summoned portal", 0, {{"monster", 20557},{"monster", 22195},{"monster", 22291},{"monster", 19973},{"monster", 22204},{"monster", 22304},{"monster", 23174}}}},
             [questKeys.objectives] = {nil,nil,nil,nil,{{{20557,22195,22291,19973,22204,22304,23174},20557}}},
             [questKeys.nextQuestInChain] = 11051,
             [questKeys.requiredLevel] = 70,
@@ -5279,7 +5268,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [11051] = { -- Banish More Demons
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Use the Banishing Crystal and slay demons near the summoned portal"), 0, {{"monster", 20557},{"monster", 22195},{"monster", 22291},{"monster", 19973},{"monster", 22204},{"monster", 22304},{"monster", 23174}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Use the Banishing Crystal and slay demons near the summoned portal", 0, {{"monster", 20557},{"monster", 22195},{"monster", 22291},{"monster", 19973},{"monster", 22204},{"monster", 22304},{"monster", 23174}}}},
             [questKeys.objectives] = {nil,nil,nil,nil,{{{20557,22195,22291,19973,22204,22304,23174},20557}}},
             [questKeys.requiredLevel] = 70,
         },
@@ -5293,7 +5282,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.nextQuestInChain] = 10944,
         },
         [11055] = { -- The Booterang: A Cure For The Common Worthless Peon
-            [questKeys.objectives] = {{{23311,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{23311,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [11056] = { -- Hazzik's Bargain
             [questKeys.requiredLevel] = 70,
@@ -5305,7 +5294,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {nil,{{185890}}},
         },
         [11059] = { -- Guardian of the Monument
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use 35 Apexis Shards to activate Apexis Monument. Apexis Guardian will spawn after six rounds"), 0, {{"object", 185944}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use 35 Apexis Shards to activate Apexis Monument. Apexis Guardian will spawn after six rounds", 0, {{"object", 185944}}}},
             [questKeys.requiredLevel] = 70,
         },
         [11060] = { -- A Crystalforged Darkrune
@@ -5326,62 +5315,62 @@ function QuestieTBCQuestFixes:Load()
         },
         [11064] = { -- Dragonmaw Race: The Ballad of Oldie McOld
             [questKeys.requiredRaces] = raceIDs.NONE,
-            [questKeys.objectives] = {{{23340,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{23340,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.nextQuestInChain] = 11067,
         },
         [11065] = { -- Wrangle Some Aether Rays!
             [questKeys.requiredLevel] = 70,
             [questKeys.preQuestSingle] = {11010, 11102},
-            [questKeys.objectives] = {{{22181,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{22181,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [11066] = { -- Wrangle More Aether Rays!
             [questKeys.requiredLevel] = 70,
-            [questKeys.objectives] = {{{22181,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{22181,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [11067] = { -- Dragonmaw Race: Trope the Filth-Belcher
             [questKeys.requiredRaces] = raceIDs.NONE,
-            [questKeys.objectives] = {{{23342,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{23342,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.nextQuestInChain] = 11068,
         },
         [11068] = { -- Dragonmaw Race: Corlok the Vet
             [questKeys.requiredRaces] = raceIDs.NONE,
-            [questKeys.objectives] = {{{23344,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{23344,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.nextQuestInChain] = 11069,
         },
         [11069] = { -- Dragonmaw Race: Wing Commander Ichman
             [questKeys.startedBy] = {{23345}},
-            [questKeys.objectives] = {{{23345,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{23345,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.nextQuestInChain] = 11070,
         },
         [11070] = { -- Dragonmaw Race: Wing Commander Mulverick
             [questKeys.requiredRaces] = raceIDs.NONE,
-            [questKeys.objectives] = {{{23346,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{23346,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.nextQuestInChain] = 11071,
         },
         [11071] = { -- Dragonmaw Race: Captain Skyshatter
             [questKeys.requiredRaces] = raceIDs.NONE,
-            [questKeys.objectives] = {{{23348,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{23348,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [11072] = { -- Adversarial Blood
             [questKeys.name] = "Adversarial Blood",
             [questKeys.requiredLevel] = 70,
         },
         [11073] = { -- Terokk's Downfall
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use a Time-Lost offering to summon Terokk"), 0, {{"object", 185928}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use a Time-Lost offering to summon Terokk", 0, {{"object", 185928}}}},
         },
         [11077] = { -- Dragons are the Least of Our Problems
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [11078] = { -- To Rule The Skies
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use 35 Apexis Shards to open Furywing's Egg"), 0, {{"object", 185937}}},
-                                           {nil, Questie.ICON_TYPE_EVENT, l10n("Use 35 Apexis Shards to open Insidion's Egg"), 0, {{"object", 185938}}},
-                                           {nil, Questie.ICON_TYPE_EVENT, l10n("Use 35 Apexis Shards to open Rivendark's Egg"), 0, {{"object", 185936}}},
-                                           {nil, Questie.ICON_TYPE_EVENT, l10n("Use 35 Apexis Shards to open Obsidia's Egg"), 0, {{"object", 185932}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use 35 Apexis Shards to open Furywing's Egg", 0, {{"object", 185937}}},
+                                           {nil, iconTypes.ICON_TYPE_EVENT, "Use 35 Apexis Shards to open Insidion's Egg", 0, {{"object", 185938}}},
+                                           {nil, iconTypes.ICON_TYPE_EVENT, "Use 35 Apexis Shards to open Rivendark's Egg", 0, {{"object", 185936}}},
+                                           {nil, iconTypes.ICON_TYPE_EVENT, "Use 35 Apexis Shards to open Obsidia's Egg", 0, {{"object", 185932}}},
             },
             [questKeys.requiredLevel] = 70,
         },
         [11079] = { -- A Fel Whip For Gahk
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Use 35 Apexis Shards to activate Fel Crystal Prism"), 0, {{"object", 185927}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Use 35 Apexis Shards to activate Fel Crystal Prism", 0, {{"object", 185927}}}},
             [questKeys.requiredLevel] = 70,
         },
         [11080] = { -- The Relic's Emanation
@@ -5392,7 +5381,7 @@ function QuestieTBCQuestFixes:Load()
         },
         [11082] = { -- Seeker of Truth
             [questKeys.requiredRaces] = raceIDs.NONE,
-            [questKeys.objectives] = {nil,nil,{{32734,nil,Questie.ICON_TYPE_TALK}},nil,{{{23309},23309,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {nil,nil,{{32734,nil,iconTypes.ICON_TYPE_TALK}},nil,{{{23309},23309,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [11083] = { -- Crazed and Confused
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -5407,18 +5396,18 @@ function QuestieTBCQuestFixes:Load()
         },
         [11089] = { -- The Soul Cannon of Reth'hedron
             [questKeys.requiredRaces] = raceIDs.NONE,
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_TALK, l10n("Speak with Sar'this for his help hunting a Flawless Arcane Elemental"), 4, {{"monster", 23093}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_TALK, "Speak with Sar'this for his help hunting a Flawless Arcane Elemental", 4, {{"monster", 23093}}}},
             [questKeys.requiredMinRep] = {factionIDs.NETHERWING, 9000},
         },
         [11090] = { -- Subdue the Subduer
             [questKeys.requiredRaces] = raceIDs.NONE,
-            [questKeys.objectives] = {{{22357,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{22357,nil,iconTypes.ICON_TYPE_INTERACT}}},
             [questKeys.requiredMinRep] = {factionIDs.NETHERWING, 9000},
         },
         [11093] = { -- Hungry Nether Rays
             [questKeys.objectives] = {{{23219}}},
             [questKeys.preQuestSingle] = {},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Use the Nether Ray Cage and slay Blackwind Warp Chasers near the Hungry Nether Ray"), 0, {{"monster", 23219}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Use the Nether Ray Cage and slay Blackwind Warp Chasers near the Hungry Nether Ray", 0, {{"monster", 23219}}}},
             [questKeys.requiredLevel] = 70,
         },
         [11094] = { -- Kill Them All!
@@ -5501,21 +5490,21 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredLevel] = 70,
         },
         [11122] = { -- There and Back Again
-            [questKeys.objectives] = {{{24468,nil,Questie.ICON_TYPE_EVENT}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Grab a keg"), 0, {{"monster", 24364}}}},
+            [questKeys.objectives] = {{{24468,nil,iconTypes.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Grab a keg", 0, {{"monster", 24364}}}},
         },
         [11123] = { -- Inspecting the Ruins
             [questKeys.preQuestSingle] = {},
             [questKeys.breadcrumbs] = {1282},
         },
         [11126] = { -- Traitors Among Us
-            [questKeys.objectives] = {{{23602,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{23602,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [11128] = { -- Propaganda War
             [questKeys.nextQuestInChain] = 11133,
         },
         [11129] = { -- Kyle's Gone Missing!
-            [questKeys.objectives] = {{{23616,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{23616,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [11131] = { -- Stop the Fires!
             [questKeys.triggerEnd] = {"Put Out the Fires", {[zoneIDs.DUN_MOROGH] = {{44.8,52.1},{47.5,51.6}},[zoneIDs.ELWYNN_FOREST] = {{41.3,65.2},{43.6,65.8}},[zoneIDs.AZUREMYST_ISLE] = {{49.8,52.3},{48.8,50}}}},
@@ -5525,7 +5514,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [11133] = { -- Discrediting the Deserters
-            [questKeys.objectives] = {{{4979,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{4979,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [11134] = { -- The End of the Deserters
             [questKeys.nextQuestInChain] = 11136,
@@ -5545,7 +5534,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.nextQuestInChain] = 11141,
         },
         [11142] = { -- Survey Alcaz Island
-            [questKeys.objectives] = {{{23704,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{23704,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [11143] = { -- A Grim Connection
             [questKeys.preQuestSingle] = {},
@@ -5553,34 +5542,34 @@ function QuestieTBCQuestFixes:Load()
         },
         [11145] = { -- Prisoners of the Grimtotems
             [questKeys.requiredSourceItems] = {33061},
-            [questKeys.objectives] = {{{23720,nil,Questie.ICON_TYPE_EVENT}}},
-            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Open the cage"),0,{{"object",410020}}}},
+            [questKeys.objectives] = {{{23720,nil,iconTypes.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil,iconTypes.ICON_TYPE_OBJECT,"Open the cage",0,{{"object",410020}}}},
         },
         [11146] = { -- Raptor Captor
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{4351,4352},4351,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{4351,4352},4351,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [11147] = { -- Unleash the Raptors
-            [questKeys.objectives] = {{{23727,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{23727,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [11149] = { -- Tabetha's Assistance
             [questKeys.preQuestSingle] = {},
             [questKeys.preQuestGroup] = {11144,11148},
         },
         [11150] = { -- Raze Direhorn Post!
-            [questKeys.objectives] = {{{23751,nil,Questie.ICON_TYPE_EVENT},{23752,nil,Questie.ICON_TYPE_EVENT},{23753,nil,Questie.ICON_TYPE_EVENT}}}
+            [questKeys.objectives] = {{{23751,nil,iconTypes.ICON_TYPE_EVENT},{23752,nil,iconTypes.ICON_TYPE_EVENT},{23753,nil,iconTypes.ICON_TYPE_EVENT}}}
         },
         [11152] = { -- Peace at Last
-            [questKeys.objectives] = {nil,{{186322,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {nil,{{186322,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [11159] = { -- Spirits of Stonemaul Hold
             [questKeys.preQuestSingle] = {11161},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Redeem Remains"), 0, {{"object", 186332}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Redeem Remains", 0, {{"object", 186332}}}},
         },
         [11161] = { -- The Essence of Enmity
             [questKeys.nextQuestInChain] = 11159,
         },
         [11162] = { -- Challenge to the Black Flight
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Plant the Stonemaul Banner"), 0, {{"object", 186336}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Plant the Stonemaul Banner", 0, {{"object", 186336}}}},
         },
         [11164] = { -- Tuskin' Raiders
             [questKeys.preQuestSingle] = {11132},
@@ -5595,7 +5584,7 @@ function QuestieTBCQuestFixes:Load()
         [11174] = { -- Corrosion Prevention
             [questKeys.preQuestSingle] = {},
             [questKeys.breadcrumbs] = {11172},
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{4392,4393,4394},4392,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{4392,4393,4394},4392,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [11177] = { -- The Hermit of Swamplight Manor
             [questKeys.nextQuestInChain] = 1218,
@@ -5609,7 +5598,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {nil,nil,nil,nil,{{{23554,23555,23861},23861}}},
         },
         [11183] = { -- Cleansing Witch Hill
-            [questKeys.extraObjectives] = {{{[zoneIDs.DUSTWALLOW_MARSH] = {{55.2,26.6}}}, Questie.ICON_TYPE_EVENT, l10n("Plant the torch at the end of the dock")}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.DUSTWALLOW_MARSH] = {{55.2,26.6}}}, iconTypes.ICON_TYPE_EVENT, "Plant the torch at the end of the dock"}},
         },
         [11185] = { -- The Apothecary's Letter
             [questKeys.startedBy] = {{23881}},
@@ -5619,14 +5608,14 @@ function QuestieTBCQuestFixes:Load()
         },
         [11198] = { -- Take Down Tethyr!
             [questKeys.objectives] = {{{23899}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Use the cannon"), 0, {{"object",186432}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Use the cannon", 0, {{"object",186432}}}},
         },
         [11203] = { -- Seek Out Tabetha
             [questKeys.preQuestSingle] = {},
             [questKeys.preQuestGroup] = {11200,11201},
         },
         [11209] = { -- Nat's Bargain
-            [questKeys.extraObjectives] = {{{[zoneIDs.DUSTWALLOW_MARSH] = {{56.38,62.42}}}, Questie.ICON_TYPE_EVENT, l10n("Smear the Fish Paste on yourself and swim to the ship wreck")}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.DUSTWALLOW_MARSH] = {{56.38,62.42}}}, iconTypes.ICON_TYPE_EVENT, "Smear the Fish Paste on yourself and swim to the ship wreck"}},
         },
         [11211] = { -- Help for Mudsprocket
             [questKeys.exclusiveTo] = {11158,11214,11215},
@@ -5658,7 +5647,7 @@ function QuestieTBCQuestFixes:Load()
         },
         [11222] = { -- Warn Bolvar!
             [questKeys.nextQuestInChain] = 11223,
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_TALK, l10n("Talk to Jaina"), 0, {{"monster",4968}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_TALK, "Talk to Jaina", 0, {{"monster",4968}}}},
         },
         [11225] = { -- The Hermit of Witch Hill
             [questKeys.requiredLevel] = 32,
@@ -5671,45 +5660,45 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.preQuestSingle] = {11135},
         },
         [11293] = { -- Bark for the Barleybrews!
-            [questKeys.objectives] = {{{24202,nil,Questie.ICON_TYPE_EVENT},{24203,nil,Questie.ICON_TYPE_EVENT},{24204,nil,Questie.ICON_TYPE_EVENT},{24205,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{24202,nil,iconTypes.ICON_TYPE_EVENT},{24203,nil,iconTypes.ICON_TYPE_EVENT},{24204,nil,iconTypes.ICON_TYPE_EVENT},{24205,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [11294] = { -- Bark for the Thunderbrews!
             [questKeys.questLevel] = -1,
-            [questKeys.objectives] = {{{24202,nil,Questie.ICON_TYPE_EVENT},{24203,nil,Questie.ICON_TYPE_EVENT},{24204,nil,Questie.ICON_TYPE_EVENT},{24205,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{24202,nil,iconTypes.ICON_TYPE_EVENT},{24203,nil,iconTypes.ICON_TYPE_EVENT},{24204,nil,iconTypes.ICON_TYPE_EVENT},{24205,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [11318] = { -- Now This is Ram Racing... Almost.
             [questKeys.requiredLevel] = 1,
             [questKeys.preQuestSingle] = {},
-            [questKeys.objectives] = {{{80001,nil,Questie.ICON_TYPE_EVENT},{80002,nil,Questie.ICON_TYPE_EVENT},{80003,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{80001,nil,iconTypes.ICON_TYPE_EVENT},{80002,nil,iconTypes.ICON_TYPE_EVENT},{80003,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [11335] = { -- Call to Arms: Arathi Basin
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{857,907,15008,19855,20120,20273},857,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{857,907,15008,19855,20120,20273},857,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [11336] = { -- Call to Arms: Alterac Valley
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{5118,7410,12197,19907,20119,20271},5118,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{5118,7410,12197,19907,20119,20271},5118,nil,iconTypes.ICON_TYPE_TALK}}},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [11337] = { -- Call to Arms: Eye of the Storm
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{20362,20374,20381,20382,20383},20362,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{20362,20374,20381,20382,20383},20362,nil,iconTypes.ICON_TYPE_TALK}}},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [11338] = { -- Call to Arms: Warsong Gulch
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{2302,14981,14982,19908,20118,20272},2302,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{2302,14981,14982,19908,20118,20272},2302,nil,iconTypes.ICON_TYPE_TALK}}},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [11339] = { -- Call to Arms: Arathi Basin
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{12198,15006,15007,16694,19905,20274},12198,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{12198,15006,15007,16694,19905,20274},12198,nil,iconTypes.ICON_TYPE_TALK}}},
         },
         [11340] = { -- Call to Arms: Alterac Valley
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{347,7427,14942,16695,19906,20276},347,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{347,7427,14942,16695,19906,20276},347,nil,iconTypes.ICON_TYPE_TALK}}},
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [11341] = { -- Call to Arms: Eye of the Storm
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{20384,20385,20386,20388,20390},20384,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{20384,20385,20386,20388,20390},20384,nil,iconTypes.ICON_TYPE_TALK}}},
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [11342] = { -- Call to Arms: Warsong Gulch
-            [questKeys.objectives] = {nil,nil,nil,nil,{{{2804,3890,10360,16696,19910,20269},2804,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{2804,3890,10360,16696,19910,20269},2804,nil,iconTypes.ICON_TYPE_TALK}}},
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [11356] = { -- Costumed Orphan Matron
@@ -5725,7 +5714,7 @@ function QuestieTBCQuestFixes:Load()
         [11360] = { -- Fire Brigade Practice
             [questKeys.exclusiveTo] = {11439,11440},
             [questKeys.requiredSourceItems] = {32971},
-            [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{23537,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
@@ -5733,14 +5722,14 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.questLevel] = -1,
             [questKeys.exclusiveTo] = {11449,11450},
             [questKeys.requiredSourceItems] = {32971},
-            [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{23537,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [11379] = { -- Super Hot Stew
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Cook Demon Broiled Surprise in the remains of a Abyssal Flamebringer in Blade's Edge Mountains"), 0, {{"monster", 19973}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Cook Demon Broiled Surprise in the remains of a Abyssal Flamebringer in Blade's Edge Mountains", 0, {{"monster", 19973}}}},
         },
         [11381] = { -- Soup for the Soul
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Cook Spiritual Soup at the Ancestral Grounds in Nagrand"), 0, {{"object", 184317}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Cook Spiritual Soup at the Ancestral Grounds in Nagrand", 0, {{"object", 184317}}}},
         },
         [11383] = { -- Wanted: Rift Lords
             [questKeys.objectives] = {nil,nil,nil,nil,{{{17839,21140},17839}}},
@@ -5764,24 +5753,24 @@ function QuestieTBCQuestFixes:Load()
         },
         [11407] = { -- Bark for Drohn's Distillery!
             [questKeys.questLevel] = -1,
-            [questKeys.objectives] = {{{24202,nil,Questie.ICON_TYPE_EVENT},{24203,nil,Questie.ICON_TYPE_EVENT},{24204,nil,Questie.ICON_TYPE_EVENT},{24205,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{24202,nil,iconTypes.ICON_TYPE_EVENT},{24203,nil,iconTypes.ICON_TYPE_EVENT},{24204,nil,iconTypes.ICON_TYPE_EVENT},{24205,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [11408] = { -- Bark for T'chali's Voodoo Brewery!
-            [questKeys.objectives] = {{{24202,nil,Questie.ICON_TYPE_EVENT},{24203,nil,Questie.ICON_TYPE_EVENT},{24204,nil,Questie.ICON_TYPE_EVENT},{24205,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{24202,nil,iconTypes.ICON_TYPE_EVENT},{24203,nil,iconTypes.ICON_TYPE_EVENT},{24204,nil,iconTypes.ICON_TYPE_EVENT},{24205,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [11409] = { -- Now This is Ram Racing... Almost.
             [questKeys.preQuestSingle] = {},
-            [questKeys.objectives] = {{{80004,nil,Questie.ICON_TYPE_EVENT},{80005,nil,Questie.ICON_TYPE_EVENT},{80006,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{80004,nil,iconTypes.ICON_TYPE_EVENT},{80005,nil,iconTypes.ICON_TYPE_EVENT},{80006,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [11412] = { -- There and Back Again
-            [questKeys.objectives] = {{{24510,nil,Questie.ICON_TYPE_EVENT}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Grab a keg"), 0, {{"monster", 24527}}}},
+            [questKeys.objectives] = {{{24510,nil,iconTypes.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Grab a keg", 0, {{"monster", 24527}}}},
         },
         [11439] = { -- Fire Brigade Practice
             [questKeys.startedBy] = {},
             [questKeys.exclusiveTo] = {11360,11440},
             [questKeys.requiredSourceItems] = {32971},
-            [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{23537,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
@@ -5789,7 +5778,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.startedBy] = {},
             [questKeys.exclusiveTo] = {11360,11439},
             [questKeys.requiredSourceItems] = {32971},
-            [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{23537,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
@@ -5817,7 +5806,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.startedBy] = {},
             [questKeys.exclusiveTo] = {11361,11450},
             [questKeys.requiredSourceItems] = {32971},
-            [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{23537,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
@@ -5825,7 +5814,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.startedBy] = {},
             [questKeys.exclusiveTo] = {11361,11449},
             [questKeys.requiredSourceItems] = {32971},
-            [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{23537,nil,iconTypes.ICON_TYPE_EVENT}}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
@@ -5854,11 +5843,11 @@ function QuestieTBCQuestFixes:Load()
         },
         [11502] = { -- In Defense of Halaa
             [questKeys.requiredMinRep] = {978,0},
-            [questKeys.extraObjectives] = {{{[zoneIDs.NAGRAND] = {{42.3,45.5}}}, Questie.ICON_TYPE_EVENT, l10n("Defeat enemy players")}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.NAGRAND] = {{42.3,45.5}}}, iconTypes.ICON_TYPE_EVENT, "Defeat enemy players"}},
         },
         [11503] = { -- Enemies, Old and New
             [questKeys.requiredMinRep] = {941,0},
-            [questKeys.extraObjectives] = {{{[zoneIDs.NAGRAND] = {{42.3,45.5}}}, Questie.ICON_TYPE_EVENT, l10n("Defeat enemy players")}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.NAGRAND] = {{42.3,45.5}}}, iconTypes.ICON_TYPE_EVENT, "Defeat enemy players"}},
         },
         [11505] = { -- Spirits of Auchindoun
             [questKeys.triggerEnd] = {"Secure a Spirit Tower", {[zoneIDs.TEROKKAR_FOREST] = {{42.49,54},{32.47,57.86},{48.98,60.29},{47.2,72.29},{40.48,77.99}}}},
@@ -5875,35 +5864,35 @@ function QuestieTBCQuestFixes:Load()
         [11515] = { -- Blood for Blood
             [questKeys.objectives] = {{{24918}}},
             [questKeys.requiredSourceItems] = {34259},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Use Fel Siphon and then kill the weakened Felblood Initiate"), 0, {{"monster", 24918}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Use Fel Siphon and then kill the weakened Felblood Initiate", 0, {{"monster", 24918}}}},
         },
         [11516] = { -- Blast the Gateway
             [questKeys.triggerEnd] = {"Legion Gateway Destroyed", {[zoneIDs.HELLFIRE_PENINSULA] = {{58.51,18.5}}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Kill Incandescent Fel Sparks after summoning your Living Flare"), 0, {{"monster", 22323}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_SLAY, "Kill Incandescent Fel Sparks after summoning your Living Flare", 0, {{"monster", 22323}}}},
         },
         [11517] = { -- Report to Nasuun
             [questKeys.exclusiveTo] = {11513,11514},
         },
         [11520] = { -- Discovering Your Roots
             [questKeys.extraObjectives] = {
-                {nil, Questie.ICON_TYPE_EVENT, l10n("Use Razorthorn Flayer Gland on Razorthorn Ravager to tame it"), 0, {{"monster", 24922}}},
-                {nil, Questie.ICON_TYPE_OBJECT, l10n("Use Expose Razorthorn Root of your tamed Razorthorn Ravager to expose Razorthorn Root"), 0, {{"object", 187073}}},
+                {nil, iconTypes.ICON_TYPE_EVENT, "Use Razorthorn Flayer Gland on Razorthorn Ravager to tame it", 0, {{"monster", 24922}}},
+                {nil, iconTypes.ICON_TYPE_OBJECT, "Use Expose Razorthorn Root of your tamed Razorthorn Ravager to expose Razorthorn Root", 0, {{"object", 187073}}},
             },
         },
         [11521] = { -- Rediscovering Your Roots
             [questKeys.extraObjectives] = {
-                {nil, Questie.ICON_TYPE_EVENT, l10n("Use Razorthorn Flayer Gland on Razorthorn Ravager to tame it"), 0, {{"monster", 24922}}},
-                {nil, Questie.ICON_TYPE_OBJECT, l10n("Use Expose Razorthorn Root of your tamed Razorthorn Ravager to expose Razorthorn Root"), 0, {{"object", 187073}}},
+                {nil, iconTypes.ICON_TYPE_EVENT, "Use Razorthorn Flayer Gland on Razorthorn Ravager to tame it", 0, {{"monster", 24922}}},
+                {nil, iconTypes.ICON_TYPE_OBJECT, "Use Expose Razorthorn Root of your tamed Razorthorn Ravager to expose Razorthorn Root", 0, {{"object", 187073}}},
             },
         },
         [11523] = { -- Arm the Wards!
             [questKeys.objectives] = {nil,{{187078}}},
         },
         [11524] = { -- Erratic Behavior
-            [questKeys.objectives] = {{{24972,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{24972,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [11525] = { -- Further Conversions
-            [questKeys.objectives] = {{{24972,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.objectives] = {{{24972,nil,iconTypes.ICON_TYPE_EVENT}}},
         },
         [11526] = { -- The Missing Magistrix
             [questKeys.preQuestSingle] = {},
@@ -5913,36 +5902,36 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [11532] = { -- Distraction at the Dead Scar
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_TALK, l10n("Speak to Ayren Cloudbreaker"), 0, {{"monster", 25059}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_TALK, "Speak to Ayren Cloudbreaker", 0, {{"monster", 25059}}}},
         },
         [11533] = { -- The Air Strikes Must Continue
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_TALK, l10n("Speak to Ayren Cloudbreaker"), 0, {{"monster", 25059}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_TALK, "Speak to Ayren Cloudbreaker", 0, {{"monster", 25059}}}},
         },
         [11534] = { -- Report to Nasuun
             [questKeys.exclusiveTo] = {11513,11514},
         },
         [11537] = { -- The Battle Must Go On
-            [questKeys.objectives] = {{{25003,nil,Questie.ICON_TYPE_INTERACT}},nil,nil,nil,{{{24999,25001,25002,25008,25068},25068}}},
+            [questKeys.objectives] = {{{25003,nil,iconTypes.ICON_TYPE_INTERACT}},nil,nil,nil,{{{24999,25001,25002,25008,25068},25068}}},
         },
         [11538] = { -- The Battle for the Sun's Reach Armory
-            [questKeys.objectives] = {{{25003,nil,Questie.ICON_TYPE_INTERACT}},nil,nil,nil,{{{24999,25001,25002,25008,25068},25068}}},
+            [questKeys.objectives] = {{{25003,nil,iconTypes.ICON_TYPE_INTERACT}},nil,nil,nil,{{{24999,25001,25002,25008,25068},25068}}},
         },
         [11541] = { -- Disrupt the Greengill Coast
-            [questKeys.objectives] = {{{25084,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{25084,nil,iconTypes.ICON_TYPE_INTERACT}}},
             [questKeys.requiredSourceItems] = {34483},
         },
         [11542] = { -- Intercept the Reinforcements
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_TALK, l10n("Speak to Ayren Cloudbreaker"), 0, {{"monster", 25059}}},
-                                           {nil, Questie.ICON_TYPE_TALK, l10n("Take a ride back to the isle"), 0, {{"monster", 25236}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_TALK, "Speak to Ayren Cloudbreaker", 0, {{"monster", 25059}}},
+                                           {nil, iconTypes.ICON_TYPE_TALK, "Take a ride back to the isle", 0, {{"monster", 25236}}},
             },
         },
         [11543] = { -- Keeping the Enemy at Bay
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_TALK, l10n("Speak to Ayren Cloudbreaker"), 0, {{"monster", 25059}}},
-                                           {nil, Questie.ICON_TYPE_TALK, l10n("Take a ride back to the isle"), 0, {{"monster", 25236}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_TALK, "Speak to Ayren Cloudbreaker", 0, {{"monster", 25059}}},
+                                           {nil, iconTypes.ICON_TYPE_TALK, "Take a ride back to the isle", 0, {{"monster", 25236}}},
             },
         },
         [11544] = { -- Ata'mal Armaments
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Break down Ata'mal Metal on the anvil to cleanse it"), 0, {{"object", 187111}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Break down Ata'mal Metal on the anvil to cleanse it", 0, {{"object", 187111}}}},
         },
         [11545] = { -- A Charitable Donation
             [questKeys.requiredMaxRep] = {1077,42000},
@@ -5995,21 +5984,21 @@ function QuestieTBCQuestFixes:Load()
         },
         [11665] = { -- Crocolisks in the City
             [questKeys.extraObjectives] = {
-                {{[zoneIDs.ORGRIMMAR] = {{70.4,28.3},{67.8,33.7},{64.8,26},{35.2,78.6},{37.6,81.7},{33.3,84.4},{36.3,86}}}, Questie.ICON_TYPE_NODE_FISH, l10n("Fish for Baby Crocolisk")},
-                {{[zoneIDs.STORMWIND_CITY] = {{48.5,67.9},{45.7,60.5},{45.4,53.3},{35.7,45.6},{34.3,59},{51.8,47.1},{60.2,46.6},{65.2,53.7},{61.1,37},{65.6,32},{55.9,33.5},{50.9,23.8}}}, Questie.ICON_TYPE_NODE_FISH, l10n("Fish for Baby Crocolisk")},
+                {{[zoneIDs.ORGRIMMAR] = {{70.4,28.3},{67.8,33.7},{64.8,26},{35.2,78.6},{37.6,81.7},{33.3,84.4},{36.3,86}}}, iconTypes.ICON_TYPE_NODE_FISH, "Fish for Baby Crocolisk"},
+                {{[zoneIDs.STORMWIND_CITY] = {{48.5,67.9},{45.7,60.5},{45.4,53.3},{35.7,45.6},{34.3,59},{51.8,47.1},{60.2,46.6},{65.2,53.7},{61.1,37},{65.6,32},{55.9,33.5},{50.9,23.8}}}, iconTypes.ICON_TYPE_NODE_FISH, "Fish for Baby Crocolisk"},
             },
         },
         [11666] = { -- Bait Bandits
-            [questKeys.extraObjectives] = {{{[zoneIDs.TEROKKAR_FOREST] = {{51.9,34.7},{55.3,44.1},{60.2,53.9}}}, Questie.ICON_TYPE_NODE_FISH, l10n("Fish here for Blackfin Darter")}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.TEROKKAR_FOREST] = {{51.9,34.7},{55.3,44.1},{60.2,53.9}}}, iconTypes.ICON_TYPE_NODE_FISH, "Fish here for Blackfin Darter"}},
         },
         [11667] = { -- The One That Got Away
-            [questKeys.extraObjectives] = {{{[zoneIDs.NAGRAND] = {{62,35}}}, Questie.ICON_TYPE_NODE_FISH, l10n("Fish here for World's Largest Mudfish")}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.NAGRAND] = {{62,35}}}, iconTypes.ICON_TYPE_NODE_FISH, "Fish here for World's Largest Mudfish"}},
         },
         [11668] = { -- Shrimpin' Ain't Easy
-            [questKeys.extraObjectives] = {{{[zoneIDs.ZANGARMARSH] = {{75.6,82.9}}}, Questie.ICON_TYPE_NODE_FISH, l10n("Fish here for Bloated Barbed Gill Trout")}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.ZANGARMARSH] = {{75.6,82.9}}}, iconTypes.ICON_TYPE_NODE_FISH, "Fish here for Bloated Barbed Gill Trout"}},
         },
         [11669] = { -- Felblood Fillet
-            [questKeys.extraObjectives] = {{{[zoneIDs.HELLFIRE_PENINSULA] = {{39.4,43}},[zoneIDs.SHADOWMOON_VALLEY] = {{24,32.5},{31.9,29.9},{40.1,60.1}}}, Questie.ICON_TYPE_NODE_FISH, l10n("Fish here for Monstrous Felblood Snapper")}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.HELLFIRE_PENINSULA] = {{39.4,43}},[zoneIDs.SHADOWMOON_VALLEY] = {{24,32.5},{31.9,29.9},{40.1,60.1}}}, iconTypes.ICON_TYPE_NODE_FISH, "Fish here for Monstrous Felblood Snapper"}},
         },
         [11691] = { -- Summon Ahune
             [questKeys.requiredLevel] = 65,
@@ -6828,7 +6817,7 @@ function QuestieTBCQuestFixes:Load()
         [11885] = { -- Adversarial Blood
             [questKeys.objectives] = {{{23161},{23165},{23163},{23162}}},
             [questKeys.requiredSourceItems] = {32620},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Summon and defeat each of the descendants by using 10 Time-Lost Scrolls"), 0, {{"object", 185913}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_EVENT, "Summon and defeat each of the descendants by using 10 Time-Lost Scrolls", 0, {{"object", 185913}}}},
             [questKeys.nextQuestInChain] = 11073,
         },
         [11886] = { -- Unusual Activity
@@ -6856,7 +6845,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.specialFlags] = specialFlags.NONE,
             [questKeys.requiredLevel] = 16,
             [questKeys.requiredMaxLevel] = 28,
-            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Summon one of Ahune's lieutenants"),0,{{"object",188049},{"object",188137},{"object",188138}}}},
+            [questKeys.extraObjectives] = {{nil,iconTypes.ICON_TYPE_OBJECT,"Summon one of Ahune's lieutenants",0,{{"object",188049},{"object",188137},{"object",188138}}}},
         },
         [11921] = { -- More Torch Tossing
             [questKeys.startedBy] = {{25975}},
@@ -6951,7 +6940,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.specialFlags] = specialFlags.NONE,
             [questKeys.requiredLevel] = 29,
             [questKeys.requiredMaxLevel] = 38,
-            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Summon one of Ahune's lieutenants"),0,{{"object",188130},{"object",188134},{"object",188135}}}},
+            [questKeys.extraObjectives] = {{nil,iconTypes.ICON_TYPE_OBJECT,"Summon one of Ahune's lieutenants",0,{{"object",188130},{"object",188134},{"object",188135}}}},
         },
         [11948] = { -- Striking Back
             [questKeys.startedBy] = {{26221}},
@@ -6960,7 +6949,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.specialFlags] = specialFlags.NONE,
             [questKeys.requiredLevel] = 39,
             [questKeys.requiredMaxLevel] = 48,
-            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Summon one of Ahune's lieutenants"),0,{{"object",188139},{"object",188143},{"object",188144}}}},
+            [questKeys.extraObjectives] = {{nil,iconTypes.ICON_TYPE_OBJECT,"Summon one of Ahune's lieutenants",0,{{"object",188139},{"object",188143},{"object",188144}}}},
         },
         [11952] = { -- Striking Back
             [questKeys.startedBy] = {{26221}},
@@ -6969,7 +6958,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.specialFlags] = specialFlags.NONE,
             [questKeys.requiredLevel] = 49,
             [questKeys.requiredMaxLevel] = 55,
-            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Summon one of Ahune's lieutenants"),0,{{"object",188145},{"object",188146},{"object",188147}}}},
+            [questKeys.extraObjectives] = {{nil,iconTypes.ICON_TYPE_OBJECT,"Summon one of Ahune's lieutenants",0,{{"object",188145},{"object",188146},{"object",188147}}}},
         },
         [11953] = { -- Striking Back
             [questKeys.startedBy] = {{26221}},
@@ -6978,7 +6967,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.specialFlags] = specialFlags.NONE,
             [questKeys.requiredLevel] = 56,
             [questKeys.requiredMaxLevel] = 63,
-            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Summon one of Ahune's lieutenants"),0,{{"object",188148},{"object",188149},{"object",188150}}}},
+            [questKeys.extraObjectives] = {{nil,iconTypes.ICON_TYPE_OBJECT,"Summon one of Ahune's lieutenants",0,{{"object",188148},{"object",188149},{"object",188150}}}},
         },
         [11954] = { -- Striking Back
             [questKeys.startedBy] = {{26221}},
@@ -6986,7 +6975,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.preQuestSingle] = {12012},
             [questKeys.requiredLevel] = 64,
             [questKeys.specialFlags] = specialFlags.NONE,
-            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Summon one of Ahune's templars"),0,{{"object",188151},{"object",188152},{"object",188153},{"object",188154}}}},
+            [questKeys.extraObjectives] = {{nil,iconTypes.ICON_TYPE_OBJECT,"Summon one of Ahune's templars",0,{{"object",188151},{"object",188152},{"object",188153},{"object",188154}}}},
         },
         [11955] = { -- Ahune, the Frost Lord
             [questKeys.startedBy] = {{26221}},
@@ -7029,7 +7018,7 @@ function QuestieTBCQuestFixes:Load()
         [12022] = { -- Chug and Chuck!
             [questKeys.preQuestSingle] = {},
             [questKeys.requiredSourceItems] = {33096},
-            [questKeys.objectives] = {{{24108,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{24108,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [12062] = { -- Insult Coren Direbrew
             [questKeys.preQuestSingle] = {},
@@ -7096,7 +7085,7 @@ function QuestieTBCQuestFixes:Load()
         [12191] = { -- Chug and Chuck!
             [questKeys.preQuestSingle] = {},
             [questKeys.requiredSourceItems] = {33096},
-            [questKeys.objectives] = {{{24108,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{24108,nil,iconTypes.ICON_TYPE_INTERACT}}},
         },
         [12192] = { -- This One Time, When I Was Drunk...
             [questKeys.name] = "This One Time, When I Was Drunk...",
@@ -8147,7 +8136,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.objectivesText] = {"Use the Extinguishing Mixture near the eternal flame in the Alonsus Chapel to remove the Light's protection. Be prepared to fight anyone who may attempt to defend the chapel."},
             [questKeys.objectives] = {nil,nil,nil,nil,{{{17910,17911,17912,17913,17914},17910}}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Use the Extinguishing Mixture near the eternal flame"), 0, {{"object", 182068}}}},
+            [questKeys.extraObjectives] = {{nil, iconTypes.ICON_TYPE_OBJECT, "Use the Extinguishing Mixture near the eternal flame", 0, {{"object", 182068}}}},
             [questKeys.sourceItemId] = 24287,
             [questKeys.preQuestSingle] = {64144},
             [questKeys.zoneOrSort] = sortKeys.PALADIN,
@@ -8226,7 +8215,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.questLevel] = 58,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Travel to the Eastern Plaguelands and find Leonid Barthalomew. He awaits your arrival at Light's Hope Chapel. "},
-            [questKeys.objectives] = {{{352,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{352,nil,iconTypes.ICON_TYPE_TALK}}},
             [questKeys.preQuestSingle] = {64035},
             [questKeys.exclusiveTo] = {64038},
             [questKeys.zoneOrSort] = zoneIDs.EASTERN_PLAGUELANDS,
@@ -8239,7 +8228,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.questLevel] = 58,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Find Watch Commander Relthorn Netherwane at the Blasted Lands. He awaits your arrival before the Dark Portal."},
-            [questKeys.objectives] = {{{352,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{352,nil,iconTypes.ICON_TYPE_TALK}}},
             [questKeys.preQuestSingle] = {64035},
             [questKeys.zoneOrSort] = zoneIDs.BLASTED_LANDS,
         },
@@ -8347,7 +8336,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.questLevel] = 58,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Find Watch Warlord Dar'toon at the Blasted Lands. He awaits your arrival before the Dark Portal."},
-            [questKeys.objectives] = {{{12136,nil,Questie.ICON_TYPE_INTERACT},{1387,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{12136,nil,iconTypes.ICON_TYPE_INTERACT},{1387,nil,iconTypes.ICON_TYPE_TALK}}},
             [questKeys.preQuestSingle] = {64052},
             [questKeys.exclusiveTo] = {64217},
             [questKeys.zoneOrSort] = zoneIDs.BLASTED_LANDS,
@@ -8360,7 +8349,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.questLevel] = 58,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Travel to the Eastern Plaguelands and find Leonid Barthalomew. He awaits your arrival at Light's Hope Chapel. "},
-            [questKeys.objectives] = {{{9564,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{9564,nil,iconTypes.ICON_TYPE_INTERACT}}},
             [questKeys.preQuestSingle] = {64052},
             [questKeys.exclusiveTo] = {64063,64217,64128},
             [questKeys.zoneOrSort] = zoneIDs.EASTERN_PLAGUELANDS,
@@ -8374,7 +8363,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.TAUREN,
             [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.objectivesText] = {"Travel to the Eastern Plaguelands and find Leonid Barthalomew. He awaits your arrival at Light's Hope Chapel. "},
-            [questKeys.objectives] = {{{9564,nil,Questie.ICON_TYPE_TALK},{9564,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{9564,nil,iconTypes.ICON_TYPE_TALK},{9564,nil,iconTypes.ICON_TYPE_INTERACT}}},
             [questKeys.preQuestSingle] = {64053},
             [questKeys.exclusiveTo] = {64063,64064,64217},
             [questKeys.zoneOrSort] = zoneIDs.EASTERN_PLAGUELANDS,
@@ -8387,7 +8376,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.questLevel] = 58,
             [questKeys.requiredRaces] = raceIDs.TAUREN,
             [questKeys.objectivesText] = {"Find Watch Warlord Dar'toon at the Blasted Lands. He awaits your arrival before the Dark Portal."},
-            [questKeys.objectives] = {{{12136,nil,Questie.ICON_TYPE_INTERACT},{1387,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.objectives] = {{{12136,nil,iconTypes.ICON_TYPE_INTERACT},{1387,nil,iconTypes.ICON_TYPE_TALK}}},
             [questKeys.preQuestSingle] = {64053},
             [questKeys.exclusiveTo] = {64063,64064,64128},
             [questKeys.zoneOrSort] = zoneIDs.BLASTED_LANDS,
@@ -8482,12 +8471,17 @@ function QuestieTBCQuestFixes:Load()
     }
 end
 
-function QuestieTBCQuestFixes:LoadFactionFixes()
-    local questKeys = QuestieDB.questKeys
-    local raceIDs = QuestieDB.raceKeys
+-- These load-time ObjectiveFirst hints are metadata, not rows returned by a loader.
+LibQuestieDB.ObjectiveFirst.killCreditObjectiveFirst[10503] = true -- The Bladespire Threat
+
+---Returns authored Dynamic quest corrections selected for the current faction, class, and race.
+---@return table<integer, table> fixes Character-dependent quest corrections.
+function providers.LoadFactionFixes()
+    local questKeys = LibQuestieDB.Meta.Quest.keys
+    local raceIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].raceKeys
     local playerClass = UnitClassBase("player")
     local playerRace = select(2, UnitRace("player"))
-    local factionIDs = QuestieDB.factionIDs
+    local factionIDs = LibQuestieDB.Enum.factionIDs
 
     local questFixesHorde = {
         [1393] = { -- Galen's Escape

@@ -1,14 +1,17 @@
----@class MopObjectFixes
-local MopObjectFixes = QuestieLoader:CreateModule("MopObjectFixes")
+local _, LibQuestieDB = ...
 
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
----@type ZoneDB
-local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
+-- Native Mists of Pandaria object correction provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Source keeps authored Static rows and character-dependent Dynamic rows together in this provider.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.mopObjectFixes, "duplicate correction provider: mopObjectFixes")
+LibQuestieDB.CorrectionProviders.mopObjectFixes = providers
 
-function MopObjectFixes.Load()
-    local objectKeys = QuestieDB.objectKeys
-    local zoneIDs = ZoneDB.zoneIDs
+---@return table<integer, table> fixes Character-independent object corrections.
+function providers.Load()
+    -- Authored Mists of Pandaria Static object corrections do not inspect current character state.
+    local objectKeys = LibQuestieDB.Meta.Object.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
 
     ---@format disable
     return {
@@ -1362,9 +1365,11 @@ function MopObjectFixes.Load()
     }
 end
 
-function MopObjectFixes:LoadFactionFixes()
-    local objectKeys = QuestieDB.objectKeys
-    local zoneIDs = ZoneDB.zoneIDs
+---Returns authored Dynamic object corrections selected for the current faction.
+---@return table<integer, table> fixes Character-dependent object corrections.
+function providers.LoadFactionFixes()
+    local objectKeys = LibQuestieDB.Meta.Object.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
 
     local objectFixesHorde = {
         [209621] = { -- Sniper Rifle

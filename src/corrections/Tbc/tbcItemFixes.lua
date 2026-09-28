@@ -1,12 +1,17 @@
----@class QuestieTBCItemFixes
-local QuestieTBCItemFixes = QuestieLoader:CreateModule("QuestieTBCItemFixes")
+local _, LibQuestieDB = ...
 
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
+-- Native Burning Crusade item correction provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Source keeps authored Static rows and character-dependent Dynamic rows together in this provider.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.tbcItemFixes, "duplicate correction provider: tbcItemFixes")
+LibQuestieDB.CorrectionProviders.tbcItemFixes = providers
 
-function QuestieTBCItemFixes:Load()
-    local itemKeys = QuestieDB.itemKeys
-    local itemClasses = QuestieDB.itemClasses
+---@return table<integer, table> fixes Character-independent item corrections.
+function providers.Load()
+    -- Authored Burning Crusade Static item corrections do not inspect current character state.
+    local itemKeys = LibQuestieDB.Meta.Item.keys
+    local itemClasses = LibQuestieDB.Enum.itemClasses
 
     return {
         [2633] = { -- Jungle Remedy
@@ -601,9 +606,10 @@ function QuestieTBCItemFixes:Load()
     }
 end
 
--- This should allow manual fix for item availability
-function QuestieTBCItemFixes:LoadFactionFixes()
-    local itemKeys = QuestieDB.itemKeys
+---Returns authored Dynamic item corrections selected for the current faction.
+---@return table<integer, table> fixes Character-dependent item corrections.
+function providers.LoadFactionFixes()
+    local itemKeys = LibQuestieDB.Meta.Item.keys
 
     local itemFixesHorde = {
         [17126] = { -- Elegant Letter

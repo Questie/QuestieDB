@@ -1,16 +1,18 @@
----@class CataObjectFixes
-local CataObjectFixes = QuestieLoader:CreateModule("CataObjectFixes")
+local _, LibQuestieDB = ...
 
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
----@type ZoneDB
-local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
+-- Native Cataclysm object correction provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Source keeps authored Static rows and character-dependent Dynamic rows together in this provider.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.cataObjectFixes, "duplicate correction provider: cataObjectFixes")
+LibQuestieDB.CorrectionProviders.cataObjectFixes = providers
 
-
-function CataObjectFixes.Load()
-    local objectKeys = QuestieDB.objectKeys
-    local zoneIDs = ZoneDB.zoneIDs
-    local waypointPresets = QuestieDB.waypointPresets
+---@return table<integer, table> fixes Character-independent object corrections.
+function providers.Load()
+    -- Authored Cataclysm Static object corrections do not inspect current character state.
+    local objectKeys = LibQuestieDB.Meta.Object.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
+    local waypointPresets = LibQuestieDB.Enum.waypointPresets
 
     return {
         [31] = { -- Old Lion Statue
@@ -1681,9 +1683,11 @@ function CataObjectFixes.Load()
     }
 end
 
-function CataObjectFixes:LoadFactionFixes()
-    local objectKeys = QuestieDB.objectKeys
-    local zoneIDs = ZoneDB.zoneIDs
+---Returns authored Dynamic object corrections selected for the current faction.
+---@return table<integer, table> fixes Character-dependent object corrections.
+function providers.LoadFactionFixes()
+    local objectKeys = LibQuestieDB.Meta.Object.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
 
     local objectFixesHorde = {
         [180449] = { -- Forsaken Stink Bomb

@@ -1,15 +1,18 @@
----@class TitanReforgedNpcFixes
-local TitanReforgedNpcFixes = QuestieLoader:CreateModule("TitanReforgedNpcFixes")
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
----@type ZoneDB
-local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
+local _, LibQuestieDB = ...
+if not LibQuestieDB.IsCorrectionProviderActive("titanReforgedNPCFixes") then return end
 
----Returns Titan-only NPC corrections applied before database compilation.
----@return table<NpcId, table>
-function TitanReforgedNpcFixes.LoadNPCs()
-    local npcKeys = QuestieDB.npcKeys
-    local zoneIDs = ZoneDB.zoneIDs
+-- Native Titan Reforged NPC provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Dynamic additions and inherited-data overrides stay separate; only the faction loader inspects character state.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.titanReforgedNPCFixes, "duplicate correction provider: titanReforgedNPCFixes")
+LibQuestieDB.CorrectionProviders.titanReforgedNPCFixes = providers
+
+---Returns Titan Reforged NPC additions and relationship corrections.
+---@return table<integer, table> rows Seasonal NPC rows.
+function providers.LoadNPCs()
+    local npcKeys = LibQuestieDB.Meta.Npc.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
 
     return {
         -- Relationship corrections replace whole fields, so these lists intentionally repeat inherited WotLK quest IDs.
@@ -112,10 +115,10 @@ function TitanReforgedNpcFixes.LoadNPCs()
     }
 end
 
----Returns runtime overrides for NPCs inherited from the WotLK database.
----@return table<NpcId, table>
-function TitanReforgedNpcFixes.LoadNPCOverrides()
-    local npcKeys = QuestieDB.npcKeys
+---Returns Titan Reforged overrides for inherited WotLK NPCs.
+---@return table<integer, table> overrides Inherited-NPC overrides.
+function providers.LoadNPCOverrides()
+    local npcKeys = LibQuestieDB.Meta.Npc.keys
 
     return {
         [14834] = { -- Hakkar
@@ -133,11 +136,11 @@ function TitanReforgedNpcFixes.LoadNPCOverrides()
     }
 end
 
----Selects the capital used for Titan NPCs that serve both factions.
----@return table<NpcId, table>
-function TitanReforgedNpcFixes.LoadFactionNPCOverrides()
-    local npcKeys = QuestieDB.npcKeys
-    local zoneIDs = ZoneDB.zoneIDs
+---Returns Titan Reforged NPC overrides selected for the current faction.
+---@return table<integer, table> overrides Faction-dependent NPC overrides.
+function providers.LoadFactionNPCOverrides()
+    local npcKeys = LibQuestieDB.Meta.Npc.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
 
     if UnitFactionGroup("Player") == "Horde" then
         return {

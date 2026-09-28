@@ -1,24 +1,20 @@
----@class QuestieNPCFixes
-local QuestieNPCFixes = QuestieLoader:CreateModule("QuestieNPCFixes")
--------------------------
---Import modules.
--------------------------
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
----@type ZoneDB
-local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
----@type Phasing
-local Phasing = QuestieLoader:ImportModule("Phasing")
+local _, LibQuestieDB = ...
 
--- Further information on how to use this can be found at the wiki
--- https://github.com/Questie/Questie/wiki/Corrections
+-- Native Classic Era NPC correction provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Source keeps authored Static rows and character-dependent Dynamic rows together in this provider.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.classicNPCFixes, "duplicate correction provider: classicNPCFixes")
+LibQuestieDB.CorrectionProviders.classicNPCFixes = providers
 
-function QuestieNPCFixes:Load()
-    local npcKeys = QuestieDB.npcKeys
-    local zoneIDs = ZoneDB.zoneIDs
-    local npcFlags = QuestieDB.npcFlags
-    local waypointPresets = QuestieDB.waypointPresets
-    local phases = Phasing.phases
+---@return table<integer, table> fixes Character-independent NPC corrections.
+function providers.Load()
+    -- Authored Classic Era Static NPC corrections do not inspect current character state.
+    local npcKeys = LibQuestieDB.Meta.Npc.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
+    local npcFlags = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].npcFlags
+    local waypointPresets = LibQuestieDB.Enum.waypointPresets
+    local phases = LibQuestieDB.Enum.phases
 
     return {
         [272] = { -- Chef Grual
@@ -3600,10 +3596,11 @@ function QuestieNPCFixes:Load()
     }
 end
 
--- some quest items are shared across factions but require different sources for each faction (not sure if there is a better way to implement this)
-function QuestieNPCFixes:LoadFactionFixes()
-    local npcKeys = QuestieDB.npcKeys
-    local zoneIDs = ZoneDB.zoneIDs
+---Returns authored Dynamic NPC corrections selected for the current faction.
+---@return table<integer, table> fixes Character-dependent NPC corrections.
+function providers.LoadFactionFixes()
+    local npcKeys = LibQuestieDB.Meta.Npc.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
 
     local npcFixesHorde = {
         [5676] = { -- Summoned Voidwalker

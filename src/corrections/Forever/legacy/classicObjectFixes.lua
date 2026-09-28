@@ -1,19 +1,17 @@
----@class QuestieObjectFixes
-local QuestieObjectFixes = QuestieLoader:CreateModule("QuestieObjectFixes")
--------------------------
---Import modules.
--------------------------
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
----@type ZoneDB
-local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
+local _, LibQuestieDB = ...
 
--- Further information on how to use this can be found at the wiki
--- https://github.com/Questie/Questie/wiki/Corrections
+-- Legacy Classic object data retained for the Forever flavor.
+-- Add new Forever corrections to ../forever*Fixes.lua; inherited rows normally stay unchanged.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.classicObjectFixes, "duplicate correction provider: classicObjectFixes")
+LibQuestieDB.CorrectionProviders.classicObjectFixes = providers
 
-function QuestieObjectFixes:Load()
-    local objectKeys = QuestieDB.objectKeys
-    local zoneIDs = ZoneDB.zoneIDs
+---@return table<integer, table> fixes Legacy object corrections.
+function providers.Load()
+    -- Inherited Classic Static object corrections used by Forever.
+    local objectKeys = LibQuestieDB.Meta.Object.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
 
     return {
         [167] = { -- Abercrombie's Crate
@@ -577,10 +575,11 @@ function QuestieObjectFixes:Load()
     }
 end
 
--- some objects are shared across factions but require different sources for each faction
-function QuestieObjectFixes:LoadFactionFixes()
-    local objectKeys = QuestieDB.objectKeys
-    local zoneIDs = ZoneDB.zoneIDs
+---Returns inherited Classic Dynamic object corrections selected for the current faction.
+---@return table<integer, table> fixes Character-dependent legacy object corrections.
+function providers.LoadFactionFixes()
+    local objectKeys = LibQuestieDB.Meta.Object.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
 
     local objectFixesHorde = {
         [103574] = { -- Filled Containment Coffer

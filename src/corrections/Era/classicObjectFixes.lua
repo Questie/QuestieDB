@@ -1,19 +1,17 @@
----@class QuestieObjectFixes
-local QuestieObjectFixes = QuestieLoader:CreateModule("QuestieObjectFixes")
--------------------------
---Import modules.
--------------------------
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
----@type ZoneDB
-local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
+local _, LibQuestieDB = ...
 
--- Further information on how to use this can be found at the wiki
--- https://github.com/Questie/Questie/wiki/Corrections
+-- Native Classic Era object correction provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Source keeps authored Static rows and character-dependent Dynamic rows together in this provider.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.classicObjectFixes, "duplicate correction provider: classicObjectFixes")
+LibQuestieDB.CorrectionProviders.classicObjectFixes = providers
 
-function QuestieObjectFixes:Load()
-    local objectKeys = QuestieDB.objectKeys
-    local zoneIDs = ZoneDB.zoneIDs
+---@return table<integer, table> fixes Character-independent object corrections.
+function providers.Load()
+    -- Authored Classic Era Static object corrections do not inspect current character state.
+    local objectKeys = LibQuestieDB.Meta.Object.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
 
     return {
         [167] = { -- Abercrombie's Crate
@@ -577,10 +575,11 @@ function QuestieObjectFixes:Load()
     }
 end
 
--- some objects are shared across factions but require different sources for each faction
-function QuestieObjectFixes:LoadFactionFixes()
-    local objectKeys = QuestieDB.objectKeys
-    local zoneIDs = ZoneDB.zoneIDs
+---Returns authored Dynamic object corrections selected for the current faction.
+---@return table<integer, table> fixes Character-dependent object corrections.
+function providers.LoadFactionFixes()
+    local objectKeys = LibQuestieDB.Meta.Object.keys
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
 
     local objectFixesHorde = {
         [103574] = { -- Filled Containment Coffer

@@ -1,11 +1,18 @@
----@type SeasonOfDiscovery
-local SeasonOfDiscovery = QuestieLoader:ImportModule("SeasonOfDiscovery")
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
+local _, LibQuestieDB = ...
+if not LibQuestieDB.IsCorrectionProviderActive("sodItemFixes") then return end
 
-function SeasonOfDiscovery:LoadItems()
-    local itemKeys = QuestieDB.itemKeys
-    local itemClasses = QuestieDB.itemClasses
+-- Native Season of Discovery item provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Manifest Dynamic data can correct inherited rows or add entities without inspecting character state.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.sodItemFixes, "duplicate correction provider: sodItemFixes")
+LibQuestieDB.CorrectionProviders.sodItemFixes = providers
+
+---Returns authored Season of Discovery item corrections and additions.
+---@return table<integer, table> fixes Seasonal item corrections.
+function providers.LoadItems()
+    local itemKeys = LibQuestieDB.Meta.Item.keys
+    local itemClasses = LibQuestieDB.Enum.itemClasses
 
     return {
         [2287] = { -- Haunch of Meat (modified to add new SoD vendors to food vendor townsfolk)

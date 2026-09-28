@@ -1,24 +1,25 @@
----@class TitanReforgedQuestFixes
-local TitanReforgedQuestFixes = QuestieLoader:CreateModule("TitanReforgedQuestFixes")
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
----@type ZoneDB
-local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
----@type QuestieProfessions
-local QuestieProfessions = QuestieLoader:ImportModule("QuestieProfessions")
+local _, LibQuestieDB = ...
+if not LibQuestieDB.IsCorrectionProviderActive("titanReforgedQuestFixes") then return end
 
----Returns Titan-only quest templates applied before database compilation.
----@return table<QuestId, table>
-function TitanReforgedQuestFixes.LoadQuests()
-    local questKeys = QuestieDB.questKeys
-    local raceIDs = QuestieDB.raceKeys
-    local classIDs = QuestieDB.classKeys
-    local factionIDs = QuestieDB.factionIDs
-    local zoneIDs = ZoneDB.zoneIDs
-    local sortKeys = QuestieDB.sortKeys
-    local profKeys = QuestieProfessions.professionKeys
-    local specialFlags = QuestieDB.specialFlags
-    local questFlags = QuestieDB.questFlags
+-- Native Titan Reforged quest provider.
+-- The central manifest owns classification and execution order; this module publishes the native provider table.
+-- Dynamic additions and inherited-data overrides stay separate; these loaders do not inspect character state.
+local providers = {}
+assert(not LibQuestieDB.CorrectionProviders.titanReforgedQuestFixes, "duplicate correction provider: titanReforgedQuestFixes")
+LibQuestieDB.CorrectionProviders.titanReforgedQuestFixes = providers
+
+---Returns Titan Reforged quest additions and corrections.
+---@return table<integer, table> rows Seasonal quest rows.
+function providers.LoadQuests()
+    local questKeys = LibQuestieDB.Meta.Quest.keys
+    local raceIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].raceKeys
+    local classIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].classKeys
+    local factionIDs = LibQuestieDB.Enum.factionIDs
+    local zoneIDs = LibQuestieDB.Enum.zoneIDs
+    local sortKeys = LibQuestieDB.Enum.sortKeys
+    local profKeys = LibQuestieDB.Enum.professionKeys
+    local specialFlags = LibQuestieDB.Enum.specialFlags
+    local questFlags = LibQuestieDB.Enum.questFlags
 
     return {
         [93950] = { -- A Message From The Stars
@@ -694,11 +695,11 @@ function TitanReforgedQuestFixes.LoadQuests()
     }
 end
 
----Returns runtime overrides for quests inherited from the WotLK database.
----@return table<QuestId, table>
-function TitanReforgedQuestFixes.LoadQuestOverrides()
-    local questKeys = QuestieDB.questKeys
-    local classIDs = QuestieDB.classKeys
+---Returns Titan Reforged overrides for inherited WotLK quests.
+---@return table<integer, table> overrides Inherited-quest overrides.
+function providers.LoadQuestOverrides()
+    local questKeys = LibQuestieDB.Meta.Quest.keys
+    local classIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].classKeys
 
     return {
         [6805] = { -- Greater Stormers and Rumblers
