@@ -336,6 +336,73 @@ apply, and constants the body reads are resolved at apply time.
   quantization runs in production, so a coordinate read from the database may safely be reused.
   Ordinary tuple rules still apply: spawn phase `0` and waypoint third elements are omitted.
 
+### Table add/remove operations
+
+Use the Correction aliases in `LibQuestieDB.Enum.questKeys`, `npcKeys`, `itemKeys`, or
+`objectKeys`. Canonical `Meta.*.keys`, field counts and entity getters do not gain aliases.
+Older Baked copies whose generated TOC omits `src/corrections/tablePatch.lua` still support
+ordinary replacements, but operations raise an actionable error. Install an updated Baked
+artifact or regenerate its TOC before using operations; updating Lua files alone is not enough.
+The numeric encoding is private; author with names:
+
+```lua
+local questKeys = LibQuestieDB.Enum.questKeys
+local itemKeys = LibQuestieDB.Enum.itemKeys
+registrar.Set("Quest", "finishers", {
+    [123] = { [questKeys.finishedBy_add] = { [2] = {424005} } },
+})
+registrar.Set("Item", "relations", {
+    [456] = { [itemKeys.relatedQuests_remove] = {7786} },
+})
+```
+
+Operands have the field's canonical shape, including its grouping:
+
+| Shape | Example operand | Unit added or removed |
+| --- | --- | --- |
+| `idarray` | `{7786, -7787}` | Complete integer; signed values are allowed |
+| `stringarray` | `{"First objective", "Second objective"}` | Complete string |
+| `pair` | `{164, 75}` | Whole atomic record |
+| `pairs` | `{{72, 100}, {73, 200}}` | Complete pair, not faction/skill ID alone |
+| `questgivers` | `{[2] = {424005}}` | IDs within supplied groups: `[1]` NPC, `[2]` object, `[3]` item |
+| `objectives` | `{[1] = {{123}}, [4] = {72, 3000}}` | Complete rows within groups 1, 2, 3, 5, 6; group 4 is an atomic reputation pair |
+| `spawnlist` | `{[12] = {{45, 60, 2}}}` | Complete coordinate tuple within a supplied zone |
+| `waypointlist` | `{[12] = {{{45, 60}, {46, 61}, {45, 60}}}}` | Complete ordered path within a supplied zone; repeated points survive |
+| `trigger` | `{"Complete the event", {[12] = {{45, 60}}}}` | Whole atomic text/spawn record |
+| `extraobjectives` | `{{nil, 3, "Use the item", 0, {{"item", 123}}}}` | Complete row, including coordinates and references |
+
+List additions append absent values in operand order after surviving existing values.
+Removals delete all exact matches and preserve the order of everything else. Equality is deep
+and structural, never a numeric list position or an ID-only match. Groups not supplied are
+preserved. Fixed tuples may have optional holes; lists must be dense. Shape validation runs
+before normalization, so unknown slots and malformed values cannot disappear silently.
+Equality uses read-normalized tuples: an omitted objective icon equals `0`, spawn phase `0`
+equals no phase, and instance sentinels retain their two-element shape.
+
+Atomic additions accept an absent or equal record; a different existing record raises an
+error. Atomic removals require an exact whole-record match. Use ordinary replacement to change
+an atomic value. Top-level `pair` and `trigger` cannot have both nonempty operations in one row.
+For objectives group 4, disjoint remove-old/add-new is permitted, with removal first.
+
+* Operations require a table-valued target, table operands and a structurally valid existing
+  table (or no existing value). Scalar aliases exist so misuse produces a contextual error.
+* `{}` as an operation operand does nothing and does not read or validate the existing value.
+  Ordinary `[key] = {}` still deletes the field.
+* Replacement and operations on the same field in one Correction row are rejected.
+  Requesting the same value for both add and remove is rejected, even if absent from the base.
+  Disjoint list/group operations coexist, independently of Lua table iteration order.
+* Static and Dynamic operations share these rules. Dynamic operations use the earlier composed
+  layer, including explicit deletion, or the backend's raw field, never a localized/public read.
+  Reapply and withdrawal rebuild from that base, without cumulative mutation or changes to
+  operands, earlier replacement literals, or shared data. Existing entity-creation policies apply.
+* Invalid operations raise with provider/owner, entity ID, field and operation context. Failed
+  Dynamic composition leaves the previous reads, provenance and caches published. A failed
+  `Set` restores an independent snapshot of the last successful slot data, including when the
+  caller mutated and resubmitted the same table. Function providers stay pending after failure;
+  correct their captured state and retry with no-arg or owner-specific Apply, or unregister them.
+* Operations do not create reverse links. Adding a quest finisher does not automatically add
+  that quest to the object's `questEnds`; author both facts when needed.
+
 ### Precedence
 
 Within the corrected entity layer, the later-ranked writer wins at two levels:
@@ -406,11 +473,14 @@ The long form is `LibQuestieDB.Corrections.Set(owner, datatype, name, rows)`, al
 * Function-shaped registration remains the right form for large tables: held behind a
   function, a multi-megabyte literal materialises only on apply. Function results are
   memoized per entry and re-run only by their own owner's apply, so another owner's `Set`
-  never re-materialises them.
+  does not re-materialise successful results. Failed composition discards affected provider
+  results so a retry can recover.
 * The provider keeps `rows` **by reference** until the slot is rewritten or removed. Hand over
   a table you only ever mutate through another `Set`: the accumulate-and-rewrite pattern
   (mutate your table, `Set` it again) is exactly right, while mutating it without a `Set`
   leaves the published view stale until some other write to the same datatype flushes.
+  Each successful composition snapshots data slots for rollback. A failed `Set` detaches the
+  slot from the rejected caller table without changing it; correct and resubmit that table.
 
 ### Locale-first translatable fields
 

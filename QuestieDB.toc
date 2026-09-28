@@ -41,6 +41,7 @@ src\meta\questMeta.lua
 src\meta\npcMeta.lua
 src\meta\itemMeta.lua
 src\meta\objectMeta.lua
+src\corrections\tablePatch.lua
 
 # --- Native client selection ---
 # Forever excludes legacy game types: an all-unknown allow list would also load on older clients.

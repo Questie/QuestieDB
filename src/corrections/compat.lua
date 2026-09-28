@@ -14,6 +14,21 @@ local compat = {}
 
 local constants = LibQuestieDB.Enum
 
+-- Derive authoring views once per namespace, after schemas and constants have loaded.
+-- Keep operations out of canonical keys/getters and retain identities across Install calls.
+for _, entityType in ipairs(LibQuestieDB.config.entityTypes) do
+  local keys = {}
+  for name, index in pairs(LibQuestieDB.Meta[entityType.name].keys) do
+    assert(index > 0 and index < 1000 and index % 1 == 0,
+      "Correction aliases require canonical indices below the reserved operation range")
+    keys[name] = index
+    -- Scalar aliases let misuse report the field and operation instead of a nil table key.
+    keys[name .. "_add"] = index + 1000
+    keys[name .. "_remove"] = index - 1000
+  end
+  constants[entityType.keysField] = keys
+end
+
 --------------------------------------------------------------------------------------------
 -- Module stand-ins
 --------------------------------------------------------------------------------------------
@@ -90,11 +105,11 @@ end
 ---@return table QuestieDB
 local function buildQuestieDB(flavor)
   local QuestieDB = {
-    -- Field names and meanings are maintained in src/meta/, not the enum tables.
-    questKeys = LibQuestieDB.Meta.Quest.keys,
-    npcKeys = LibQuestieDB.Meta.Npc.keys,
-    itemKeys = LibQuestieDB.Meta.Item.keys,
-    objectKeys = LibQuestieDB.Meta.Object.keys,
+    -- Share the schema-derived authoring views with public correction consumers.
+    questKeys = constants.questKeys,
+    npcKeys = constants.npcKeys,
+    itemKeys = constants.itemKeys,
+    objectKeys = constants.objectKeys,
     raceKeys = pick("raceKeys", flavor),
     classKeys = pick("classKeys", flavor),
     sortKeys = pick("sortKeys", flavor),

@@ -1,6 +1,10 @@
 ---@meta _
 
 ---@class QuestieDBEnums
+---@field questKeys QuestieDBQuestCorrectionKeys Canonical indices and Correction-only add/remove aliases.
+---@field npcKeys QuestieDBNpcCorrectionKeys Canonical indices and Correction-only add/remove aliases.
+---@field itemKeys QuestieDBItemCorrectionKeys Canonical indices and Correction-only add/remove aliases.
+---@field objectKeys QuestieDBObjectCorrectionKeys Canonical indices and Correction-only add/remove aliases.
 ---@field phases table<string, integer> Shared phase names to Blizzard or Questie-defined fake IDs; read-only by contract for consumers.
 
 ---@class LibQuestieDB

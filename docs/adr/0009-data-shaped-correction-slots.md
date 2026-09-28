@@ -58,7 +58,9 @@ that touch the entity's own datatype; locale changes and explicit invalidation s
 ### 3. Function materialization is memoized per entry
 
 A provider function runs once and its result is cached on the entry; only the owner's own
-`ApplyRegisteredCorrections` clears that owner's memos. This is safe because a provider
+`ApplyRegisteredCorrections` clears that owner's memos during successful operation. Failed
+composition clears affected Dynamic provider memos and leaves their owners pending so a
+no-argument retry can rerun corrected providers. This is safe because a provider
 function's output may depend only on facts fixed for the session (ADR 0007 D1) or on captured
 state whose documented refresh is exactly that owner's re-apply. Offline effect on SoD: a
 consumer write against the same datatype drops from 67.6 ms / 3.4 MB to 14.8 ms / 2.0 MB (the
@@ -78,7 +80,10 @@ The provider stores `rows` as handed over until the slot is rewritten or removed
 accumulate-and-rewrite pattern — mutate your own table, `Set` it again — is supported and is
 how Questie's Item-name repair works; mutating without a `Set` leaves the published view stale
 until some other write flushes that datatype. Reads still hand out fresh copies (ADR 0003
-D10 revised), so no caller can reach the retained table through the read path.
+D10 revised), so no caller can reach the retained table through the read path. Successful
+composition also retains an independent snapshot of each composed data slot for rollback. A
+failed `Set` restores a copy of that snapshot, not the possibly mutated caller reference. The
+caller table is left untouched and can be corrected and resubmitted.
 
 ### 6. Contract version stays 1
 
@@ -95,10 +100,12 @@ Additive surface; nothing has shipped, so ADR 0007 D4's reasoning applies unchan
 - The `set-corrections` suite pins write-through visibility, replace/withdraw, `{}` semantics,
   cross-owner withdrawal fall-through, rank fixing, per-datatype publish identity for both Set
   and Apply, memoization run counts, side-effect-free registration, the pending rule, and the
-  function/Static name refusals — 35 checks against the baked Vanilla artifact.
-- The dirty set is scope bookkeeping, not a transaction log. A failed provider can leave
-  published reads and provenance inconsistent; [issue #35](https://github.com/Questie/QuestieDB/issues/35)
-  tracks candidate composition and consistent publication. Invalid rows and Static registration
+  function/Static name refusals. These 35 checks now use a tiny Source fixture; the shared
+  `table-corrections` suite additionally exercises slots through both real reader backends.
+- The dirty set is scope bookkeeping, not a transaction log. Table-operation support now stages
+  composition before publishing and rolls back failed `Set` slot edits, so validation errors
+  leave reads, provenance and caches on the previous view. Broader failure handling remains
+  tracked in [issue #35](https://github.com/Questie/QuestieDB/issues/35). Invalid rows and Static registration
   boundaries are tracked separately in [#36](https://github.com/Questie/QuestieDB/issues/36)
   and [#37](https://github.com/Questie/QuestieDB/issues/37).
 - The parallel prototype also offered candidate-view callbacks and explicit entity-add

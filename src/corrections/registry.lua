@@ -25,7 +25,7 @@
 --     sequence), so a collision is reported and resolved without moving anyone.
 --   * Consumers get a data-shaped write-through form, `Set(owner, datatype, name, rows)`: no
 --     provider function, no explicit apply, no loadOrder. Function entries memoize their
---     materialization (re-run only on their own owner's apply), and recomposition is scoped
+--     successful materialization (refreshed on their own owner's apply), and recomposition is scoped
 --     to the written datatype — which is what makes write-through affordable (ADR 0009).
 
 local _, LibQuestieDB = ...
@@ -255,6 +255,24 @@ end
 -- Applying Static Corrections to base data
 --------------------------------------------------------------------------------------------
 
+-- Older Baked manifests can load updated Lua files without loading the operation engine.
+-- Keep replacements working, but never let encoded operations leak into canonical rows.
+local function resolveFields(fields, meta, context, id, base, fallback, noOverwrites, nilSentinel)
+  if LibQuestieDB.TablePatch then
+    return LibQuestieDB.TablePatch.Resolve(fields, meta, context, id, base, fallback, noOverwrites, nilSentinel)
+  end
+  for key in pairs(fields) do
+    if type(key) == "number" and (key <= 0 or key >= 1000) then
+      local field = key >= 1000 and key - 1000 or key + 1000
+      error(format("Correction %s/%s %s %s field %s %s: table operations require an updated TOC; regenerate the Baked artifact",
+        tostring(context and context.owner or "?"), tostring(context and context.name or "?"),
+        tostring(meta and meta.entity or context and context.datatype or "?"), tostring(id),
+        tostring(meta and meta.names[field] or field), key >= 1000 and "add" or "remove"), 0)
+    end
+  end
+  return fields
+end
+
 --- Merge one correction table into a set of entity rows.
 ---
 --- Shape is `id -> fieldIndex -> value`, matching Questie's. Two of Questie's idioms carry
@@ -274,15 +292,20 @@ end
 ---@param entities table id -> field array
 ---@param corrections table id -> fieldIndex -> value
 ---@param options table? { noOverwrites = boolean, noNewEntries = boolean, allowNamedInheritedEntry = boolean }
+---@param context table? { datatype, owner?, name? }; required for table operations.
 ---@return number applied
-function registry.MergeInto(entities, corrections, options)
+function registry.MergeInto(entities, corrections, options, context)
   options = options or {}
   local applied = 0
+  local meta = context and LibQuestieDB.Meta[canonicalDatatype(context.datatype)]
   for id, fields in pairs(corrections) do
     local row = entities[id]
+    local resolved = resolveFields(fields, meta, context, id, row, nil, options.noOverwrites)
+    local replacementOnly = resolved == fields
+    fields = resolved
     local mayCreate = not options.noNewEntries
       or (options.allowNamedInheritedEntry and fields[1] ~= nil)
-    if not row and mayCreate then
+    if not row and mayCreate and (replacementOnly or next(fields) ~= nil) then
       row = {}
       entities[id] = row
     end
@@ -342,7 +365,7 @@ function registry.ApplyStaticToEntities(datatype, entities, flavor, owner)
       local corrections = entry.func()
       if type(corrections) == "table" then
         applied = applied + registry.MergeInto(
-          entities, corrections, staticMergeOptions(entry, flavor))
+          entities, corrections, staticMergeOptions(entry, flavor), entry)
       end
     end
   end
@@ -365,6 +388,15 @@ end
 -- Composing the Correction Overlay
 --------------------------------------------------------------------------------------------
 
+-- Snapshot caller/provider-owned rows, never backend data. Function results are copied
+-- only when refreshed, so unrelated writes reuse their independent materialization.
+local function copyRows(value)
+  if type(value) ~= "table" then return value end
+  local result = {}
+  for key, child in pairs(value) do result[key] = copyRows(child) end
+  return result
+end
+
 --- Rebuild the composed view for the given datatypes.
 ---
 --- Recomposition is **idempotent by construction** — it rebuilds from the registry instead of
@@ -385,35 +417,40 @@ end
 local function recompose(flavor, datatypes)
   local normalize = LibQuestieDB.Meta.normalize
 
-  for datatype in pairs(datatypes) do
-    registry.composed[datatype] = nil
-    registry.provenance[datatype] = nil
-  end
+  -- A rejected operation must leave reads, provenance and caches on the previous view.
+  local composed, provenance = {}, {}
+  local dataSnapshots = {}
 
   for _, owner in ipairs(registry.appliedOrder) do
     for _, entry in ipairs(registry.Select({ owner = owner, dynamic = true })) do
       if datatypes[entry.datatype] and registry.EntryApplies(entry, flavor) then
-        local corrections = entry.data
+        if entry.data then dataSnapshots[entry] = copyRows(entry.data) end
+        -- Publish from the snapshot too: retained caller tables may change before
+        -- their next Set, including while a replacement and an invalid patch coexist.
+        local corrections = dataSnapshots[entry]
         if corrections == nil then
           corrections = entry.materialized
           if corrections == nil then
-            corrections = entry.func()
+            corrections = copyRows(entry.func())
             entry.materialized = corrections
           end
         end
         if type(corrections) == "table" then
           local datatype = entry.datatype
           local meta = LibQuestieDB.Meta[datatype]
-          local byType = registry.composed[datatype]
-          if not byType then byType = {}; registry.composed[datatype] = byType end
-          local provByType = registry.provenance[datatype]
-          if not provByType then provByType = {}; registry.provenance[datatype] = provByType end
+          local byType = composed[datatype]
+          if not byType then byType = {}; composed[datatype] = byType end
+          local provByType = provenance[datatype]
+          if not provByType then provByType = {}; provenance[datatype] = provByType end
 
           for id, fields in pairs(corrections) do
             -- Rows are created only when a write survives validation. In particular, a
             -- Correction containing only ignored constant fields must not invent an entity.
             local row = byType[id]
             local provRow = provByType[id]
+            local entity = LibQuestieDB[datatype]
+            fields = resolveFields(fields, meta, entry, id, row,
+              entity and entity.GetRaw, entry.options and entry.options.noOverwrites, registry.NIL)
 
             for fieldIndex, value in pairs(fields) do
               if type(fieldIndex) == "number" and meta and fieldIndex <= meta.fieldCount then
@@ -467,6 +504,11 @@ local function recompose(flavor, datatypes)
     end
   end
 
+  for entry, snapshot in pairs(dataSnapshots) do entry.lastSuccessfulData = snapshot end
+  for datatype in pairs(datatypes) do
+    registry.composed[datatype] = composed[datatype]
+    registry.provenance[datatype] = provenance[datatype]
+  end
 end
 
 --- Sentinel for "the overlay sets this field to nil", which a plain nil cannot express.
@@ -501,11 +543,24 @@ end
 local function flushDirty()
   if next(registry.dirty) == nil then return end
   local datatypes = registry.dirty
-  registry.dirty = {}
   -- Both read modes publish their flavor as LibQuestieDB.flavor (source.lua, baked.lua), so
   -- entry-level expansion filters compose identically in both — reading only the Source
   -- backend here left them inert in Baked mode.
-  recompose(LibQuestieDB.flavor, datatypes)
+  local ok, err = pcall(recompose, LibQuestieDB.flavor, datatypes)
+  if not ok then
+    -- Retrying must call providers again, not reuse a rejected materialization. Keep dirty
+    -- datatypes and pending owners until composition succeeds; the published view is intact.
+    for _, owner in ipairs(registry.appliedOrder) do
+      for _, entry in ipairs(registry.owners[owner].entries) do
+        if entry.dynamic and entry.func and datatypes[entry.datatype] then
+          entry.materialized = nil
+          registry.owners[owner].pending = true
+        end
+      end
+    end
+    error(err, 0)
+  end
+  registry.dirty = {}
   publish(datatypes)
 end
 
@@ -517,7 +572,8 @@ end
 --- registers after Questie has already applied.
 ---
 --- Refreshing an owner re-runs that owner's provider functions; every other owner's layer
---- reuses its memoized materialization.
+--- reuses its successful materialization. Failed composition leaves affected providers pending
+--- and discards their memos, so a no-argument retry can use corrected captured state.
 ---@param owner string? One owner, or every pending owner when omitted
 function registry.ApplyRegisteredCorrections(owner)
   local owners
@@ -533,7 +589,7 @@ function registry.ApplyRegisteredCorrections(owner)
 
   for _, name in ipairs(owners) do
     rankOwner(name)
-    registry.owners[name].pending = false
+    registry.owners[name].pending = true
     -- This owner is the layer being refreshed: forget its materializations so its providers
     -- run again, and mark its datatypes for recomposition.
     for _, entry in ipairs(registry.owners[name].entries) do
@@ -545,6 +601,7 @@ function registry.ApplyRegisteredCorrections(owner)
   end
 
   flushDirty()
+  for _, name in ipairs(owners) do registry.owners[name].pending = false end
   return #owners
 end
 
@@ -601,10 +658,18 @@ function registry.Set(owner, datatype, name, rows)
       "captured state and re-apply instead of mixing in a data write"):format(name, canonical, owner), 2)
   end
 
+  -- Stage the slot edit as well as the view: a rejected patch must not poison later writes.
+  local previousData = entry and entry.lastSuccessfulData
+  local previousDirty = registry.dirty[canonical]
+  local newOwner = record == nil
+  local previousIndex
+  local wasRanked = false
+  for _, applied in ipairs(registry.appliedOrder) do if applied == owner then wasRanked = true end end
   if rows == nil then
     if not entry then return false end
     for index, existing in ipairs(record.entries) do
       if existing == entry then
+        previousIndex = index
         table.remove(record.entries, index)
         break
       end
@@ -629,7 +694,24 @@ function registry.Set(owner, datatype, name, rows)
   end
 
   rankOwner(owner)
-  flushDirty()
+  local ok, err = pcall(flushDirty)
+  if not ok then
+    if entry then
+      -- The caller may have mutated the retained rows in place. Restore an independent
+      -- copy so subsequent mutations cannot corrupt the last successful snapshot.
+      entry.data = copyRows(previousData)
+      if previousIndex then table.insert(record.entries, previousIndex, entry) end
+    else
+      table.remove(record.entries)
+    end
+    if not wasRanked then table.remove(registry.appliedOrder) end
+    if newOwner then
+      registry.owners[owner] = nil
+      table.remove(registry.ownerOrder)
+    end
+    registry.dirty[canonical] = previousDirty
+    error(err, 0)
+  end
   -- Everything this owner holds — data slots and any function entries — is composed now, so a
   -- Set-only owner must not linger "pending" and be re-flushed by a no-arg apply.
   record.pending = false

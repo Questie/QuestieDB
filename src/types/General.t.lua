@@ -104,6 +104,9 @@
 -- Corrections
 --------------------------------------------------------------------------------
 
+---Canonical indices replace; Enum field_add/field_remove keys accept tables in the field's shape.
+---List entries compare as complete values; groups preserve unsupplied slots. Empty operands do nothing.
+---Invalid operations raise without publishing a partial Dynamic view.
 ---@alias QuestieDBCorrectionFields table<integer, any>
 ---@alias QuestieDBCorrections table<number, QuestieDBCorrectionFields>
 ---@alias QuestieDBCorrectionProvider fun(): QuestieDBCorrections

@@ -132,6 +132,7 @@ config.runtimeFiles = {
     "src/meta/npcMeta.lua",
     "src/meta/itemMeta.lua",
     "src/meta/objectMeta.lua",
+    "src/corrections/tablePatch.lua",
   },
   bakedReader = "src/read/baked.lua",
   sourceReader = "src/read/source.lua",

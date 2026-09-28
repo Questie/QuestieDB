@@ -939,6 +939,10 @@ suite("localization-overrides", "shared", function()
   dofile("tools/validation/localization-overrides.test.lua")(check, equal)
 end)
 
+suite("table-corrections", "shared", function()
+  dofile("tools/validation/table-corrections.test.lua")(check, equal)
+end)
+
 suite("correction-enums", "shared", function()
   local standalone = dofile("src/corrections/enum/constants.lua")
   local namespace = {}
@@ -1198,6 +1202,10 @@ suite("corrections", "shared", function()
     { flavor = config.flavorByName.Forever, allClasses = 1503, alliance = 4294967373, repair = 16384 },
   }
   local questieLoaderBeforeCompat = rawget(_G, "QuestieLoader")
+  local authoringKeys = {}
+  for _, entityType in ipairs(config.entityTypes) do
+    authoringKeys[entityType.keysField] = enum[entityType.keysField]
+  end
   for _, case in ipairs(compatCases) do
     local remove = Lib.CorrectionCompat.Install(case.flavor)
     local selected = Lib.CorrectionCompat.modules.QuestieDB
@@ -1210,8 +1218,21 @@ suite("corrections", "shared", function()
     check(Lib.CorrectionCompat.modules.ZoneDB.zoneIDs == enum.zoneIDs,
       "compat serves shared invariant constants from the top level for " .. case.flavor.name)
     for _, entityType in ipairs(config.entityTypes) do
-      check(selected[entityType.keysField] == Lib.Meta[entityType.name].keys,
-        "compat serves canonical " .. entityType.name .. " keys for " .. case.flavor.name)
+      local keys = selected[entityType.keysField]
+      local meta = Lib.Meta[entityType.name]
+      check(keys == authoringKeys[entityType.keysField] and keys == enum[entityType.keysField],
+        "compat shares stable " .. entityType.name .. " authoring keys for " .. case.flavor.name)
+      check(keys ~= meta.keys, "authoring operations do not mutate canonical " .. entityType.name .. " keys")
+      local canonicalCount = 0
+      for name, index in pairs(meta.keys) do
+        canonicalCount = canonicalCount + 1
+        equal(keys[name], index, "compat preserves canonical " .. entityType.name .. "." .. name)
+        equal(keys[name .. "_add"], index + 1000, "compat derives add alias " .. name)
+        equal(keys[name .. "_remove"], index - 1000, "compat derives remove alias " .. name)
+        equal(meta.keys[name .. "_add"], nil, "canonical keys exclude add aliases")
+        equal(meta.keys[name .. "_remove"], nil, "canonical keys exclude remove aliases")
+      end
+      equal(canonicalCount, meta.fieldCount, "canonical key count excludes authoring operations")
     end
     if case.flavor.name == "Forever" then
       equal(selected.raceKeys.SKYBORNE_ALLIANCE, 4294967296,

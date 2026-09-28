@@ -93,9 +93,27 @@ For available field names and their meanings, read the commented `keys` tables i
 - [`src/meta/itemMeta.lua`](src/meta/itemMeta.lua): `QuestieDB.itemKeys`
 - [`src/meta/objectMeta.lua`](src/meta/objectMeta.lua): `QuestieDB.objectKeys`
 
-Correction providers receive these tables through `QuestieLoader:ImportModule("QuestieDB")`.
-Keep using names such as `questKeys.requiredLevel`; there is no separate field-key enum to
-maintain or schema file to load inside a correction.
+Correction providers receive authoring views derived from these schema keys through
+`QuestieLoader:ImportModule("QuestieDB")`. Keep using names such as `questKeys.requiredLevel`;
+there is no separate field-key definition to maintain or schema file to load inside a correction.
+
+For table edits, use the provider's `QuestieDB.*Keys` aliases (or `LibQuestieDB.Enum.*Keys`):
+
+```lua
+[questKeys.finishedBy_add] = { [2] = {424005} },
+[itemKeys.relatedQuests_remove] = {7786},
+```
+
+These work in Static and Dynamic Corrections. Add/remove preserves unsupplied groups and
+compares complete rows, not list positions or just IDs. See the
+[shape rule matrix](docs/api.md#table-addremove-operations) for all ten canonical shapes,
+atomic records, validation and conflicts. Ordinary replacement and `{}` deletion are unchanged.
+Older Baked copies need an updated generated TOC before using operations; ordinary replacements
+continue working with stale manifests. No reverse links are added automatically. Run the small shared behavior suite without Generation:
+
+```sh
+lua5.1 test.lua table-corrections correction-enums corrections set-corrections lua-types
+```
 
 Windows x64 and Linux x64 include Lua 5.1.5 in
 [`tools/lua-binary/`](tools/lua-binary/README.md). From Bash:
@@ -337,8 +355,9 @@ See [localization inputs](l10n/README.md) and [support data](docs/support-data.m
 
 Generation validates the data files' field-key enums against the owned schema. When changing a
 field, update its schema, affected data keys, and public declarations in the same change.
-Correction providers receive the canonical schema key tables through the compatibility shim;
-there are no separate correction field-key definitions to maintain.
+Correction providers receive schema-derived authoring views through the compatibility shim,
+including add/remove aliases. Canonical schema keys remain unchanged; there are no separate
+correction field-key definitions to maintain.
 Public `compilerTypes` metadata remains for compatibility; it does not select a compiler or
 derive the schema.
 

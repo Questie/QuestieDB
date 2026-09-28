@@ -95,6 +95,163 @@
 ---@field factionID integer Faction restriction mask used by spawn data.
 ---@field waypoints integer Movement paths for objects attached to transports.
 
+-- Correction enums extend authoring keys only. Schema keys and getters remain canonical.
+---@class QuestieDBQuestCorrectionKeys: QuestieDBQuestKeys
+---@field name_add integer Correction-only add; table-valued fields only.
+---@field name_remove integer Correction-only remove; table-valued fields only.
+---@field startedBy_add integer Correction-only add; table-valued fields only.
+---@field startedBy_remove integer Correction-only remove; table-valued fields only.
+---@field finishedBy_add integer Correction-only add; table-valued fields only.
+---@field finishedBy_remove integer Correction-only remove; table-valued fields only.
+---@field requiredLevel_add integer Correction-only add; table-valued fields only.
+---@field requiredLevel_remove integer Correction-only remove; table-valued fields only.
+---@field questLevel_add integer Correction-only add; table-valued fields only.
+---@field questLevel_remove integer Correction-only remove; table-valued fields only.
+---@field requiredRaces_add integer Correction-only add; table-valued fields only.
+---@field requiredRaces_remove integer Correction-only remove; table-valued fields only.
+---@field requiredClasses_add integer Correction-only add; table-valued fields only.
+---@field requiredClasses_remove integer Correction-only remove; table-valued fields only.
+---@field objectivesText_add integer Correction-only add; table-valued fields only.
+---@field objectivesText_remove integer Correction-only remove; table-valued fields only.
+---@field triggerEnd_add integer Correction-only add; table-valued fields only.
+---@field triggerEnd_remove integer Correction-only remove; table-valued fields only.
+---@field objectives_add integer Correction-only add; table-valued fields only.
+---@field objectives_remove integer Correction-only remove; table-valued fields only.
+---@field sourceItemId_add integer Correction-only add; table-valued fields only.
+---@field sourceItemId_remove integer Correction-only remove; table-valued fields only.
+---@field preQuestGroup_add integer Correction-only add; table-valued fields only.
+---@field preQuestGroup_remove integer Correction-only remove; table-valued fields only.
+---@field preQuestSingle_add integer Correction-only add; table-valued fields only.
+---@field preQuestSingle_remove integer Correction-only remove; table-valued fields only.
+---@field childQuests_add integer Correction-only add; table-valued fields only.
+---@field childQuests_remove integer Correction-only remove; table-valued fields only.
+---@field inGroupWith_add integer Correction-only add; table-valued fields only.
+---@field inGroupWith_remove integer Correction-only remove; table-valued fields only.
+---@field exclusiveTo_add integer Correction-only add; table-valued fields only.
+---@field exclusiveTo_remove integer Correction-only remove; table-valued fields only.
+---@field zoneOrSort_add integer Correction-only add; table-valued fields only.
+---@field zoneOrSort_remove integer Correction-only remove; table-valued fields only.
+---@field requiredSkill_add integer Correction-only add; table-valued fields only.
+---@field requiredSkill_remove integer Correction-only remove; table-valued fields only.
+---@field requiredMinRep_add integer Correction-only add; table-valued fields only.
+---@field requiredMinRep_remove integer Correction-only remove; table-valued fields only.
+---@field requiredMaxRep_add integer Correction-only add; table-valued fields only.
+---@field requiredMaxRep_remove integer Correction-only remove; table-valued fields only.
+---@field requiredSourceItems_add integer Correction-only add; table-valued fields only.
+---@field requiredSourceItems_remove integer Correction-only remove; table-valued fields only.
+---@field nextQuestInChain_add integer Correction-only add; table-valued fields only.
+---@field nextQuestInChain_remove integer Correction-only remove; table-valued fields only.
+---@field questFlags_add integer Correction-only add; table-valued fields only.
+---@field questFlags_remove integer Correction-only remove; table-valued fields only.
+---@field specialFlags_add integer Correction-only add; table-valued fields only.
+---@field specialFlags_remove integer Correction-only remove; table-valued fields only.
+---@field parentQuest_add integer Correction-only add; table-valued fields only.
+---@field parentQuest_remove integer Correction-only remove; table-valued fields only.
+---@field reputationReward_add integer Correction-only add; table-valued fields only.
+---@field reputationReward_remove integer Correction-only remove; table-valued fields only.
+---@field breadcrumbForQuestId_add integer Correction-only add; table-valued fields only.
+---@field breadcrumbForQuestId_remove integer Correction-only remove; table-valued fields only.
+---@field breadcrumbs_add integer Correction-only add; table-valued fields only.
+---@field breadcrumbs_remove integer Correction-only remove; table-valued fields only.
+---@field extraObjectives_add integer Correction-only add; table-valued fields only.
+---@field extraObjectives_remove integer Correction-only remove; table-valued fields only.
+---@field requiredSpell_add integer Correction-only add; table-valued fields only.
+---@field requiredSpell_remove integer Correction-only remove; table-valued fields only.
+---@field requiredSpecialization_add integer Correction-only add; table-valued fields only.
+---@field requiredSpecialization_remove integer Correction-only remove; table-valued fields only.
+---@field requiredMaxLevel_add integer Correction-only add; table-valued fields only.
+---@field requiredMaxLevel_remove integer Correction-only remove; table-valued fields only.
+---@field availableUntilCompleted_add integer Correction-only add; table-valued fields only.
+---@field availableUntilCompleted_remove integer Correction-only remove; table-valued fields only.
+---@field availableStartingWith_add integer Correction-only add; table-valued fields only.
+---@field availableStartingWith_remove integer Correction-only remove; table-valued fields only.
+---@field requiredRanks_add integer Correction-only add; table-valued fields only.
+---@field requiredRanks_remove integer Correction-only remove; table-valued fields only.
+---@field disabledByQuest_add integer Correction-only add; table-valued fields only.
+---@field disabledByQuest_remove integer Correction-only remove; table-valued fields only.
+
+---@class QuestieDBNpcCorrectionKeys: QuestieDBNpcKeys
+---@field name_add integer Correction-only add; table-valued fields only.
+---@field name_remove integer Correction-only remove; table-valued fields only.
+---@field minLevelHealth_add integer Correction-only add; table-valued fields only.
+---@field minLevelHealth_remove integer Correction-only remove; table-valued fields only.
+---@field maxLevelHealth_add integer Correction-only add; table-valued fields only.
+---@field maxLevelHealth_remove integer Correction-only remove; table-valued fields only.
+---@field minLevel_add integer Correction-only add; table-valued fields only.
+---@field minLevel_remove integer Correction-only remove; table-valued fields only.
+---@field maxLevel_add integer Correction-only add; table-valued fields only.
+---@field maxLevel_remove integer Correction-only remove; table-valued fields only.
+---@field rank_add integer Correction-only add; table-valued fields only.
+---@field rank_remove integer Correction-only remove; table-valued fields only.
+---@field spawns_add integer Correction-only add; table-valued fields only.
+---@field spawns_remove integer Correction-only remove; table-valued fields only.
+---@field waypoints_add integer Correction-only add; table-valued fields only.
+---@field waypoints_remove integer Correction-only remove; table-valued fields only.
+---@field zoneID_add integer Correction-only add; table-valued fields only.
+---@field zoneID_remove integer Correction-only remove; table-valued fields only.
+---@field questStarts_add integer Correction-only add; table-valued fields only.
+---@field questStarts_remove integer Correction-only remove; table-valued fields only.
+---@field questEnds_add integer Correction-only add; table-valued fields only.
+---@field questEnds_remove integer Correction-only remove; table-valued fields only.
+---@field factionID_add integer Correction-only add; table-valued fields only.
+---@field factionID_remove integer Correction-only remove; table-valued fields only.
+---@field friendlyToFaction_add integer Correction-only add; table-valued fields only.
+---@field friendlyToFaction_remove integer Correction-only remove; table-valued fields only.
+---@field subName_add integer Correction-only add; table-valued fields only.
+---@field subName_remove integer Correction-only remove; table-valued fields only.
+---@field npcFlags_add integer Correction-only add; table-valued fields only.
+---@field npcFlags_remove integer Correction-only remove; table-valued fields only.
+
+---@class QuestieDBItemCorrectionKeys: QuestieDBItemKeys
+---@field name_add integer Correction-only add; table-valued fields only.
+---@field name_remove integer Correction-only remove; table-valued fields only.
+---@field npcDrops_add integer Correction-only add; table-valued fields only.
+---@field npcDrops_remove integer Correction-only remove; table-valued fields only.
+---@field objectDrops_add integer Correction-only add; table-valued fields only.
+---@field objectDrops_remove integer Correction-only remove; table-valued fields only.
+---@field itemDrops_add integer Correction-only add; table-valued fields only.
+---@field itemDrops_remove integer Correction-only remove; table-valued fields only.
+---@field startQuest_add integer Correction-only add; table-valued fields only.
+---@field startQuest_remove integer Correction-only remove; table-valued fields only.
+---@field questRewards_add integer Correction-only add; table-valued fields only.
+---@field questRewards_remove integer Correction-only remove; table-valued fields only.
+---@field flags_add integer Correction-only add; table-valued fields only.
+---@field flags_remove integer Correction-only remove; table-valued fields only.
+---@field foodType_add integer Correction-only add; table-valued fields only.
+---@field foodType_remove integer Correction-only remove; table-valued fields only.
+---@field itemLevel_add integer Correction-only add; table-valued fields only.
+---@field itemLevel_remove integer Correction-only remove; table-valued fields only.
+---@field requiredLevel_add integer Correction-only add; table-valued fields only.
+---@field requiredLevel_remove integer Correction-only remove; table-valued fields only.
+---@field ammoType_add integer Correction-only add; table-valued fields only.
+---@field ammoType_remove integer Correction-only remove; table-valued fields only.
+---@field class_add integer Correction-only add; table-valued fields only.
+---@field class_remove integer Correction-only remove; table-valued fields only.
+---@field subClass_add integer Correction-only add; table-valued fields only.
+---@field subClass_remove integer Correction-only remove; table-valued fields only.
+---@field vendors_add integer Correction-only add; table-valued fields only.
+---@field vendors_remove integer Correction-only remove; table-valued fields only.
+---@field relatedQuests_add integer Correction-only add; table-valued fields only.
+---@field relatedQuests_remove integer Correction-only remove; table-valued fields only.
+---@field teachesSpell_add integer Correction-only add; table-valued fields only.
+---@field teachesSpell_remove integer Correction-only remove; table-valued fields only.
+
+---@class QuestieDBObjectCorrectionKeys: QuestieDBObjectKeys
+---@field name_add integer Correction-only add; table-valued fields only.
+---@field name_remove integer Correction-only remove; table-valued fields only.
+---@field questStarts_add integer Correction-only add; table-valued fields only.
+---@field questStarts_remove integer Correction-only remove; table-valued fields only.
+---@field questEnds_add integer Correction-only add; table-valued fields only.
+---@field questEnds_remove integer Correction-only remove; table-valued fields only.
+---@field spawns_add integer Correction-only add; table-valued fields only.
+---@field spawns_remove integer Correction-only remove; table-valued fields only.
+---@field zoneID_add integer Correction-only add; table-valued fields only.
+---@field zoneID_remove integer Correction-only remove; table-valued fields only.
+---@field factionID_add integer Correction-only add; table-valued fields only.
+---@field factionID_remove integer Correction-only remove; table-valued fields only.
+---@field waypoints_add integer Correction-only add; table-valued fields only.
+---@field waypoints_remove integer Correction-only remove; table-valued fields only.
+
 --------------------------------------------------------------------------------
 -- Complete generated schemas
 --------------------------------------------------------------------------------

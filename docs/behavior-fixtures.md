@@ -66,6 +66,7 @@ not invoke the full `generate.lua` orchestration. Existing tests cover those bou
 | Required-race inference and SoD masks | `derived-required-races`, `sod-required-races` |
 | Flavor/season admission and correction-file loading | `objective-first`, `objective-first-source`, `objective-first-addon`, `personas`, `personas-titan` |
 | Owner precedence, refresh, clearing, cache invalidation | `overlay`, `set-corrections` |
+| Table operations across all ten shapes, normalization-aware equality, conflicts, failure recovery and Static/Source/Baked composition | `table-corrections` |
 | Locale precedence, custom locales, withdrawal and invalid inputs | `translation-corrections`, `titan-translations` |
 | Whole-row localization overrides versus native field corrections | `localization-overrides` |
 | CBOR holes, presence-mask limits, chunk boundaries, malformed/unsafe metadata, constant fields | `cbor`, `rows`, `chunking`, `wire-safety`, `constant-fields` |
@@ -73,6 +74,22 @@ not invoke the full `generate.lua` orchestration. Existing tests cover those bou
 Some existing integration suites require their flavor's generated artifact. Full Generation,
 verification, equivalence, reconstruction, and validators continue to run on actual data in CI.
 They complement these independent fixtures rather than supplying their expected results.
+
+## Table correction matrix
+
+`lua5.1 test.lua table-corrections` also runs the table-driven cases in
+[`table-correction-cases.lua`](../tools/validation/table-correction-cases.lua).
+The matrix covers all ten table shapes, each giver slot, and all six objective groups.
+Every variant tests add/remove/replacement against missing and existing fields, duplicate
+additions, absent removals, removal of the final member, and empty operands. List variants
+also remove one member while retaining another. A differing atomic addition must error;
+ordinary replacement changes that record.
+
+The same cases run through Static merging and Dynamic corrections over the real Source and
+Baked readers. Expected unions and empty-field results are literals, not computed by the
+merger or normalizer. Successful applications are repeated to check idempotence. The suite
+fails if a schema table shape has no matrix fixture. Existing specialized cases retain
+coverage of normalization, untouched groups, conflicts, ownership, and failure recovery.
 
 ## Maintaining coverage
 
