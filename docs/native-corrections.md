@@ -166,6 +166,7 @@ full localization, live-client measurements, every race token and legal-characte
 The provider matrix observes outputs rather than composing every Dynamic result through all
 public getters; focused runtime tests cover those interfaces separately.
 
-`.github/workflows/legacy-corrections.yml` intentionally retains its old content pin. After
-approval and commit of the native source changes, update that pin in a separate follow-up.
-Restoring filenames alone does not make native provider content match the old pin.
+`.github/workflows/legacy-corrections.yml` pins the completed native migration at
+`2fc6d1c9e45f90d55d94f6ce37c310fae7a4282a`. The separate CI follow-up accepts these reviewed
+source changes without weakening the guard: subsequent legacy Lua edits still fail. Add new
+Forever corrections in the authored `src/corrections/Forever/forever*Fixes.lua` files instead.
