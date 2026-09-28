@@ -1208,6 +1208,10 @@ suite("corrections", "shared", function()
       "compat serves " .. case.flavor.name .. " npc flags")
     check(Lib.CorrectionCompat.modules.ZoneDB.zoneIDs == enum.zoneIDs,
       "compat serves shared invariant constants from the top level for " .. case.flavor.name)
+    for _, entityType in ipairs(config.entityTypes) do
+      check(selected[entityType.keysField] == Lib.Meta[entityType.name].keys,
+        "compat serves canonical " .. entityType.name .. " keys for " .. case.flavor.name)
+    end
     remove()
   end
   check(rawget(_G, "QuestieLoader") == questieLoaderBeforeCompat,
@@ -2541,6 +2545,10 @@ suite("toc", "shared", function()
       end
     end
     before("src/config.lua", "src/meta/normalize.lua", "everything reads config")
+    for _, entityType in ipairs(config.entityTypes) do
+      before("src/meta/" .. entityType.name:lower() .. "Meta.lua",
+        "src/corrections/compat.lua", "correction providers use the canonical schema keys")
+    end
     for index, path in ipairs(config.enumFiles) do
       check(at[path] ~= nil, list.name .. " includes enum file " .. path)
       if index > 1 then
@@ -3215,6 +3223,7 @@ suite("support", "shared", function()
     "Shadowfang Keep publishes all alternative areas as a list")
   equal(vanilla.ZoneDB.private.dungeons[3959][4], {{3520, 71, 46.4}},
     "Black Temple preserves authored entrance coordinates")
+
 end)
 
 --------------------------------------------------------------------------------------------

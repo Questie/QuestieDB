@@ -86,6 +86,17 @@ applies. On clients supporting native file selection, a clone junctioned or syml
 `Interface/AddOns` runs your edits live in Source mode; nothing needs generating for that.
 Generation produces the Baked artifact and lets you run offline checks against your change.
 
+For available field names and their meanings, read the commented `keys` tables in:
+
+- [`src/meta/questMeta.lua`](src/meta/questMeta.lua): `QuestieDB.questKeys`
+- [`src/meta/npcMeta.lua`](src/meta/npcMeta.lua): `QuestieDB.npcKeys`
+- [`src/meta/itemMeta.lua`](src/meta/itemMeta.lua): `QuestieDB.itemKeys`
+- [`src/meta/objectMeta.lua`](src/meta/objectMeta.lua): `QuestieDB.objectKeys`
+
+Correction providers receive these tables through `QuestieLoader:ImportModule("QuestieDB")`.
+Keep using names such as `questKeys.requiredLevel`; there is no separate field-key enum to
+maintain or schema file to load inside a correction.
+
 Windows x64 and Linux x64 include Lua 5.1.5 in
 [`tools/lua-binary/`](tools/lua-binary/README.md). From Bash:
 
@@ -325,9 +336,11 @@ in `src/corrections/`, translations in `l10n/`, and support data under `support/
 See [localization inputs](l10n/README.md) and [support data](docs/support-data.md).
 
 Generation validates the data files' field-key enums against the owned schema. When changing a
-field, update its schema, affected data keys and correction constants, and public declarations
-in the same change. Public `compilerTypes` metadata remains for compatibility; it does not
-select a compiler or derive the schema.
+field, update its schema, affected data keys, and public declarations in the same change.
+Correction providers receive the canonical schema key tables through the compatibility shim;
+there are no separate correction field-key definitions to maintain.
+Public `compilerTypes` metadata remains for compatibility; it does not select a compiler or
+derive the schema.
 
 ### Keeping LuaLS declarations in sync
 

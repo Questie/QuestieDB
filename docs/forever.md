@@ -59,8 +59,12 @@ Each file is already registered with two entry points:
 - `LoadDynamic()` returns Dynamic Corrections selected from generic character/game facts,
   such as faction, race or class. Consumer settings and policy stay with the consumer.
 
-Both return `[entityId] = { [fieldKey] = correctedValue }` tables. The six files in `legacy/`
-remain the inherited baseline; leave them unchanged for ordinary correction work. New Static
+Both return `[entityId] = { [fieldKey] = correctedValue }` tables. For available field names
+and meanings, use the [schema references in the correction guide](../README.md#working-on-corrections).
+The usual `QuestieDB.questKeys`, `npcKeys`, `itemKeys` and `objectKeys` tables come from those
+schemas; correction files do not load them themselves.
+
+The six files in `legacy/` remain the inherited baseline; leave them unchanged for ordinary correction work. New Static
 Corrections apply after legacy Static Corrections. New Dynamic Corrections apply after legacy
 Dynamic Corrections. Dynamic Corrections still outrank all static data, so a replacement for
 an inherited Dynamic Correction belongs in `LoadDynamic()`, even if its new value is unconditional.
