@@ -119,9 +119,37 @@ scope files or provider policy footers remain. Raw-data, support, localization a
 Pass loader shims are separate mechanisms and are unchanged. Splitting Static and Dynamic
 files is a possible future improvement, not part of this transition.
 
-## Verification evidence
+## Verification after rebasing onto master
 
-The immutable baseline is `d983a8025eca2e55ca1f61886307745f9db15a2c`, archived at
+The current equivalence target is fetched master
+`0a8472d52f7e4ff5ae9d2de33d4886be6d1d5364`. Its independent archive and observations are at
+`/tmp/qdb-rebase-master-proof.FPHLqC`; rebased-native validation is at
+`/tmp/qdb-validator-rebased.djK46O/README.md`.
+
+All six generated datasets match that master exactly: 1,235,624 entity directives, including
+original order. All 362 personas and 9,056 provider invocations match complete outputs,
+registration metadata, options, sequence, applicability and hints. Forever's current entity
+hash is `24365086d899599251ffd59a1493b410651c1ad5ad00a79d95fb770971625d1e`.
+
+Master intentionally changes 137 Forever Quest `requiredRaces` fields versus the original
+migration baseline: 136 come from providers and quest 7162 from the Derived Pass. The new
+masks are `4294967373` for Alliance and `8589934770` for Horde. Nothing else in the generated
+entities changes. The rebased branch preserves these changes rather than forcing old hashes.
+
+A fresh mutation replaced one Forever provider's selected race table with Classic. The same
+comparison detected exactly 136 incorrect provider and generated fields; inferred quest 7162
+remained correct. Restoration returned to exact master bytes. Source, Baked and extracted
+Forever/Camelot reads independently confirmed the new masks and Classic class/NPC fallback.
+
+Validation passed 3,294 shared checks, 503 runtime/Baked/persona checks, 38 packaging tests,
+21 converter tests and the real Forever distribution fixture. Six-flavor area lookups and
+race validation passed. Independent review found no integration defects. Raw-data loading,
+the Source reader and raw data remain byte-identical to master; that separate refactor was
+not included. Full localization and live-client validation remain outside this evidence.
+
+### Earlier migration evidence
+
+The original immutable baseline is `d983a8025eca2e55ca1f61886307745f9db15a2c`, archived at
 `/tmp/questiedb-native-corrections-proof.9AOqlG`. The final combined-layout candidate and
 comparison evidence are at `/tmp/questiedb-combined-native.6O9KVl`. Its source-byte manifest,
 commands and logs identify the disposable candidate. No Baked artifacts were generated in

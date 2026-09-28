@@ -4,10 +4,12 @@ This document records the scope, decisions, alternatives, and validation for
 `simplify-correction-execution`. It describes the final combined-file implementation,
 not the intermediate Static/Dynamic file split.
 
-The branch starts at `d983a8025eca2e55ca1f61886307745f9db15a2c`. Earlier zone-ID
-consolidation was already in that baseline. Field-key consolidation, expansion-order
-consolidation, raw-data loader simplification, and structured validator findings were
-separate workstreams, not changes to bundle into this branch.
+The branch originally started at `d983a8025eca2e55ca1f61886307745f9db15a2c`, which already
+contained zone-ID consolidation. It is now rebased onto master
+`0a8472d52f7e4ff5ae9d2de33d4886be6d1d5364`, including PR #59 field-key consolidation,
+PR #60 expansion ordering, and PR #62 Forever race-mask selection and validation.
+Raw-data loader simplification and structured validator findings remain separate workstreams.
+The rebase preserves master's changes rather than restoring the original branch's assumptions.
 
 ## Summary
 
@@ -55,8 +57,9 @@ dependency on Questie's module conventions.
 - Consumer registration APIs, owner precedence, and override behavior remain unchanged.
 - Registration identities, sequence, application order, filters, and merge options are preserved.
 - Seasonal providers and ObjectiveFirst hints remain restricted to applicable flavors and seasons.
-- Forever owns its inputs and uses Classic rules where configured. It does not inherit live Era
-  providers, and this migration does not switch it to the separate Forever race-mask table.
+- Forever owns its inputs and does not inherit live Era providers. Following PR #62 on master,
+  it uses its own race table. Classic supplies ordering and fallback tables such as classes
+  and NPC flags, not a replacement for Forever's defined race constants.
 - Correction tables remain lazy. Loading a provider defines functions rather than materializing
   its large data tables.
 - The public schema and support value shapes are unchanged. No contract-version or LuaLS public
@@ -82,6 +85,7 @@ Copied provider imports Questie-shaped modules
 
 ```text
 Central manifest selects native provider files
+    -> native preparation selects flavor-owned constants with explicit rules fallback
     -> providers export ordinary lazy functions through the addon namespace
     -> central registrar validates and registers those functions directly
     -> existing registry applies the declared policy
@@ -141,6 +145,29 @@ not merely that the manifest contains the expected strings.
 Applicable missing functions, duplicate exports, and unlisted exports fail clearly.
 Era and inherited Forever providers may share an export key only because their file
 selection is mutually exclusive. Cumulative expansion providers use distinct keys.
+
+### Flavor constants after rebasing
+
+Master's PR #62 corrected an important assumption: `flavor.rules = "Classic"` does not mean
+Forever must use Classic races. The old compatibility layer contained this new selection
+behavior, so deleting that layer during rebase required retaining the policy in native loading.
+
+`src/corrections/prepare.lua` now resolves the required tables before providers execute:
+
+1. Shared `Enum[name]` wins when present.
+2. Otherwise, the configured flavor's enum set must exist.
+3. Its named table wins if defined, including an explicitly empty table.
+4. Only an absent table falls back to `flavor.rules`.
+
+Preparation publishes original references through `Enum.corrections` after all required tables
+resolve. It does not copy tables or fill missing individual keys. Forever therefore receives
+`SKYBORNE_ALLIANCE`, `SKYBORNE_HORDE`, and its larger faction masks without inheriting absent
+race keys such as `BLOOD_ELF`. Class and NPC flag tables still fall back to Classic. A missing
+Forever enum set fails during loading, before provider exports or hint writes.
+
+This is a native preparation phase, not a restored module loader. Standalone enum and support
+loading remain independent of it. Required-races inference and validation retain master's
+separate use of the actual flavor's race constants.
 
 ### Hints and seasonal selection
 
@@ -209,6 +236,11 @@ target manifest policy. It checks complete inventories, categories, metadata, hi
 and returned values, including coordinate-only changes. It no longer reconstructs fake
 Questie modules or rewrites registration footers.
 
+After PR #62, both compared provider bodies are evaluated with the destination's Forever
+constants. Their separate source/target manifest policies are still checked. This distinguishes
+coordinate rewriting from an intentional change in symbolic race masks; a destination body
+that incorrectly hardcodes the Classic mask still fails validation.
+
 Registration names and categories are still repeated in the converter as validation
 expectations. Consolidating that overlap is a possible follow-up, not required to
 complete this migration. The source/destination mapping itself is separate information.
@@ -265,9 +297,11 @@ streams and six Python executable ASTs remained unchanged, excluding Python docs
 
 ## Proof that the results stayed the same
 
-The comparison baseline was the original branch base, not one of the intermediate
-implementations. Generation and mutation experiments ran in disposable directories,
-not over development Baked artifacts or live data.
+The initial comparison used the original branch base, not an intermediate implementation.
+After rebase, a fresh comparison used fetched master `0a8472d`, including its intentional
+Forever mask changes. The rebased implementation matches that target, not the older Forever
+results. Generation and mutation experiments ran in disposable directories, not over
+development Baked artifacts or live data.
 
 ### Provider behavior
 
@@ -295,9 +329,10 @@ lists are not entity equality requirements. Full Localization Generation was exc
 
 ### Portable entity checksums
 
-These SHA-256 values matched both the original baseline and the final combined-layout
-candidate. They cover sorted entity directives only, with the exact normalization shown
-below. They are migration evidence, not permanent expectations for future data edits.
+These SHA-256 values match fetched master `0a8472d` and the rebased combined-layout candidate.
+They cover sorted entity directives only, with the exact normalization shown below. They
+are migration evidence, not permanent expectations for future data edits. The five legacy
+flavors are also unchanged from the original `d983a80` comparison; Forever intentionally differs.
 
 | Flavor | SHA-256 |
 | --- | --- |
@@ -306,7 +341,7 @@ below. They are migration evidence, not permanent expectations for future data e
 | Wrath | `35de1a6b1b1b8efb82dd6116ec7cea1e9d9db5cdf7957abee5a966be10c87c8f` |
 | Cata | `945d6fafdd3ba635699dfd600d9da42b3f62dbf3fa603f9d18e675ef48b5993b` |
 | Mists | `3a8dc917a494d936297e41f19bed70fbf2c739b88a6b354ec9b7d01ce6cdefa7` |
-| Forever | `590d53135b216188874e8b1df718726979d756b91fff6c4b115f71d5ce8f0041` |
+| Forever | `24365086d899599251ffd59a1493b410651c1ad5ad00a79d95fb770971625d1e` |
 
 To reproduce the entity comparison, run from a disposable checkout of the recorded source,
 not a daily-driver addon directory. These commands write Baked TOCs into that checkout:
@@ -359,6 +394,34 @@ scripts are at `/tmp/questiedb-native-corrections-proof.9AOqlG`. These are sessi
 review artifacts, not committed dependencies or guaranteed permanent storage. The branch
 documents their scope and results; future CI does not require those directories.
 
+### Fresh rebase validation
+
+The new-master reference is `/tmp/qdb-rebase-master-proof.FPHLqC`. Independent native
+validation is `/tmp/qdb-validator-rebased.djK46O/README.md`. These preserve complete snapshots,
+source manifests, commands, checksums, and comparison results for the rebase.
+
+- All six datasets and all 1,235,624 directives match master `0a8472d` exactly, including order.
+- All 362 personas and 9,056 provider invocations match outputs, metadata, options, sequence,
+  applicability and hints.
+- Master intentionally changes 137 generated Forever Quest `requiredRaces` values versus
+  `d983a80`: 136 come from provider output, and quest 7162 comes from the Derived Pass.
+  The transitions are `77 -> 4294967373` and `178 -> 8589934770`. No other entity fields differ.
+- A fresh mutation reverted one Forever provider binding to Classic race constants. Comparison
+  detected exactly 136 incorrect provider/generated masks. Quest 7162 stayed correct because
+  its mask comes from the unchanged Derived Pass. Restoring the binding returned both
+  comparisons to exact target-master bytes.
+- Source, Baked and extracted Forever/Camelot reads returned `4294967373` for quests 1581 and
+  7162. Class and NPC-flag tables retained their Classic fallback identities.
+- Validation passed 3,294 shared checks, 503 targeted runtime/Baked/persona checks, 38 packaging
+  tests, 21 converter tests, and the real Forever distribution fixture. Direct and extracted
+  public-read checks each passed 38 assertions. Six-flavor area lookup and race validation
+  also passed.
+- Fresh review found no integration defects. The raw loader, Source reader and raw entity data
+  remain byte-identical to fetched master; the raw-data-loading work was not included.
+
+The earlier counts and Quest 117 mutation above describe the original migration validation.
+They are retained as history, not substituted for this new-master proof.
+
 ### Limits
 
 This work did not repeat full localized Generation or live-client validation. It did not
@@ -379,24 +442,25 @@ migration rather than disabling it or bypassing its path coverage.
 
 | Commit | Scope |
 | --- | --- |
-| `0ca2226` | All 45 correction provider files. Intentionally incomplete by itself so reviewers can inspect the large data-file adaptation separately. |
-| `7c64230` | Central loading, manifest, tooling, tests, comments, and documentation. Completes the migration. |
-| `ee51ff0` | Pins the legacy-content guard to `7c6423077d8d26b639a1a6269bf35e85feee473b` and records that acceptance. |
+| `b05ab74` | All 45 correction provider files. Intentionally incomplete by itself so reviewers can inspect the large data-file adaptation separately. |
+| `2fc6d1c` | Central loading, manifest, tooling, tests, comments, and documentation, including master-compatible flavor constant selection. Completes the migration. |
+| `628066f` | Pins the legacy-content guard to `2fc6d1c9e45f90d55d94f6ce37c310fae7a4282a` and records that acceptance. |
 
 The first commit is deliberately not a buildable checkpoint. The final branch is the
 validated unit. The new pin accepts the reviewed provider bytes; subsequent legacy Lua
 edits still fail. New Forever corrections belong in authored `forever*Fixes.lua` files.
 
 If a rebase changes the migration commit's identity, update the pin to the corresponding
-rebased commit before opening or updating the PR. The recorded before/after baseline is
-still the original comparison baseline, not silently replaced by the latest `master`.
+rebased commit before opening or updating the PR. Historical comparisons retain their original
+baseline; the separate fresh rebase comparison explicitly targets master `0a8472d`.
 
 ## Work deliberately left outside this branch
 
 - Static/Dynamic file separation and eventual removal of the stripper.
 - Converter registration-expectation deduplication.
 - General flavor-inventory and Lua executable-discovery consolidation.
-- The separate field-key and expansion-order consolidation PRs.
+- Further field-key or expansion-order redesign. The already-merged PRs #59 and #60 are
+  preserved by the rebase, not reimplemented or rolled back.
 - Raw entity loader environment simplification.
 - Structured validator findings in place of print parsing.
 - Unrelated support, localization, or Derived Pass loader rewrites.
@@ -418,44 +482,43 @@ need to solve every remaining migration-era duplication to be useful or reviewab
 - The original machine's worktree was
   `/home/david/private/QDB-New.worktrees/correction-execution`. That absolute path is not a
   build dependency; use the new checkout's root.
-- No PR was opened for this native correction branch during this work. Its commits must be
-  pushed before another computer can fetch them. No push was performed as part of this handoff.
+- The branch tracks `origin/simplify-correction-execution`. David pushed the rebased history
+  through `dff8960`; subsequent documentation and enum-ownership follow-ups can be normal
+  commits. No further force-push is needed unless history is rewritten again.
 - `/tmp` directories in this document do not transfer with Git. They contain detailed local
   proof, not files required by the implementation or normal tests. Preserve them separately
   if the complete original observation logs/scripts are needed on the new machine.
 
-### Next step: integrate current master
+### Rebase complete
 
-At handoff, the locally known `origin/master` is
-`434ac22aa03705e4ed9c29c7311efc32da42faeb`. It includes both:
+The fetched master used for this rebase is `0a8472d52f7e4ff5ae9d2de33d4886be6d1d5364`:
 
 - PR #59, field-key consolidation (`6510062`, merged as `434ac22`).
 - PR #60, expansion-order consolidation (`7a6a158`, merged as `fe91e36`).
+- PR #62, Forever enum selection, race-key names and validation (`cf56da5`, `af6a824`,
+  `bd64bc5`, merged as `0a8472d`).
 
-This branch still starts from `d983a80`; it has not been rebased onto those merges. Fetch
-current remote state before proceeding. During rebase:
+All are integrated and validated. The branch retains the native compatibility-layer deletion,
+canonical schema keys, config-owned ordering and support aliases. PR #62's flavor-first
+constant selection has a native home in `prepare.lua`, and its inference/validator changes
+are preserved. Conflict resolution did not choose either side wholesale.
 
-- Keep this branch's removal of correction compatibility loading. Do not restore
-  `compat.lua` merely to resolve its overlap with PR #59.
-- Keep PR #59's removal of `enum/fieldKeys.lua` and its file-list entries. Native providers
-  already use canonical schema keys. Do not add schema loading to standalone enum consumers.
-- Keep PR #60's `config.expansionOrder` ownership rather than restoring duplicate ordering
-  tables. Preserve provider-facing aliases used by unrelated support loading.
-- Reconcile manifest/TOC composition and tests by behavior, not by choosing one entire side
-  of a conflict. Regenerate the Source TOC from the resolved config/generator.
-- Preserve the requested reviewable commit split: provider files first, machinery second,
-  accepted legacy-content pin afterward. The first commit is intentionally incomplete.
-- Update the legacy workflow pin and documentation to the rebased completed-migration commit
-  if its hash changes. A normal subsequent documentation commit does not require a new pin.
+The local backup `backup/simplify-correction-execution-pre-rebase-91b1011` preserves the old
+branch tip. It is a local recovery reference, not a build input or a guaranteed remote branch.
+The provider-first commit split remains intentional. The CI pin now references the rebased
+completed-migration commit. A later documentation-only commit does not require another pin.
 
-Do not silently discard either merged cleanup or broaden this branch to unrelated work.
+David has pushed the rebased history. Commit and push the explicit Forever enum-ownership
+follow-up, open the PR, and run normal CI before merging. If master advances again, fetch and
+assess that delta separately. Do not silently discard merged behavior or broaden the branch.
 
 ### Review entry points
 
 1. `src/corrections/manifest.lua`: central policy and grouped authoring locations.
 2. `src/corrections/Wotlk/wotlkObjectFixes.lua`: representative combined native provider.
 3. `src/corrections/register.lua`: native export composition into the existing registry.
-4. `src/config.lua` and `generator/runtime.lua`: shared Source/Baked/offline selection.
+4. `src/config.lua`, `src/corrections/prepare.lua`, and `generator/runtime.lua`: shared
+   Source/Baked/offline selection and flavor-owned constant preparation.
 5. `tools/distribution/strip-static.lua`: intentionally retained package-only rewriting.
 6. `tools/dbc/convert.py` and `tools/dbc/validate.lua`: opt-in migration mapping and validation.
 7. `tools/validation/correction-authoring.test.lua`: central ordering and error controls.

@@ -281,7 +281,8 @@ No correction loader shim is involved.
 Registrations retain stable identities, per-expansion load-order windows, merge options and
 source-expansion metadata. Source mode still applies Static Corrections before Derived Passes.
 Seasonal files consult central applicability before exports and objective-hint writes.
-Forever owns independent files and uses Classic rules via `flavor.rules`.
+Forever owns independent files and race constants. `flavor.rules` supplies Classic ordering
+and fallback constant tables; it does not replace Forever's own race table.
 
 ### Read semantics — one shared view
 
