@@ -155,8 +155,9 @@ presence. They do **not** claim to validate consumer entrance rendering or live 
 ## Historical coordinate migration
 
 Create a separate Forever baseline from QuestieDB's Era data and corrections.
-The converter changes coordinate literals, not game content or runtime flavor
-selection. Era inputs remain untouched. Forever already has an adopted baseline; these commands
+The converter changes coordinate literals and expands raw quest faction-wide race masks
+to include Skyborne. It does not change runtime flavor selection. Era inputs remain untouched.
+Forever already has an adopted baseline; these commands
 are for deliberate migrations in an isolated workspace, not a prerequisite for normal Generation.
 
 Use the repository-root `questiedb.sh` or `questiedb.ps1` launcher. The tools need
@@ -291,7 +292,8 @@ outputs. Add new Forever corrections there rather than editing the inherited bas
 
 `data/Forever/conversion.json` records source/output hashes, source and target builds,
 DBC snapshot hashes and coverage, coefficients, per-file counts, converted AreaIDs,
-and samples of unmapped or out-of-bounds coordinates. Keep it with the generated
+and samples of unmapped or out-of-bounds coordinates. `quest_race_masks` records the exact
+mask mapping; each file's `race_mask_counts` records how many old masks were replaced. Keep it with the generated
 files: it also identifies outputs the tool may safely update on a later run.
 
 The tested `1.15.9.69722` → `1.60.1.69893` conversion recognized **140,660 pairs** and
@@ -322,18 +324,29 @@ bypasses recorded failures. Target snapshots must have recorded `ok` coverage.
 
 ## What conversion preserves
 
-The [rewriter](rewrite.py) changes only X/Y numeric tokens in recognized fields:
+The [rewriter](rewrite.py) changes X/Y numeric tokens in recognized fields:
 NPC/Object spawns and waypoints, Quest `triggerEnd` spawn lists, and Quest
 `extraObjectives` spawn lists. It processes both faction branches without executing
-or flattening them. Comments, module names, functions, class conditions, symbolic
-keys, localization calls, phases, nil holes and unrelated values remain intact.
-There are no runtime conversion wrappers in the output.
+or flattening them.
+
+For raw Quest data only, it also replaces exact `requiredRaces` values `77` with
+`4294967373` and `178` with `8589934770`, adding the matching faction's Skyborne bit.
+Neutral, absent, single-race, mixed-race subset and already-expanded masks stay unchanged.
+The parser checks the field schema and changes only those number tokens, not matching IDs,
+class masks, text or other fields. Correction expressions remain untouched; their symbolic
+faction masks resolve through the flavor's enum when loaded.
+
+Comments, module names, functions, class conditions, symbolic keys, localization calls,
+phases, nil holes and unrelated values remain intact. There are no runtime conversion wrappers
+in the output. This rule applies on the next deliberate conversion; it does not migrate
+already-adopted Forever data or run during normal Generation.
 
 Item data, Item corrections, reputation corrections and item-start corrections
 contain no coordinate fields and are copied byte-for-byte. Unsupported coordinate
-expressions or malformed shapes fail explicitly. Lua validation compares loaded
-original and transformed data, including non-coordinate values, module-load effects
-and the existing faction/class correction cases, before installation.
+expressions or malformed shapes fail explicitly. Lua validation independently applies the
+expected coordinate and raw quest mask transformations, then compares all loaded values,
+module-load effects and the existing faction/class correction cases before installation.
+A missing or incorrect race-mask replacement fails validation, as does an unrelated edit.
 
 Complete `{-1,-1}` instance sentinels remain unchanged; partial sentinels fail.
 `{0,0}` is a real point. Transform calculations retain full precision; converted
@@ -375,7 +388,8 @@ for the adopted-byte validation, independent locale/support inputs, reviewed DBC
 support imports and deferred gaps. The completed support-map handoff and its consumer
 compatibility links are maintained separately from coordinate conversion; consult the
 [current map limitations](../../docs/forever-data.md#current-support-map-limitations) before
-importing another export. New content and race/class restrictions need separate work.
+importing another export. New content, race-specific restrictions and class eligibility need
+separate work; the mask conversion only broadens the two inherited faction-wide restrictions.
 Questie-owned runtime Corrections can still supply Era coordinates, and
 `support/Forever/Zones/dungeons.lua` entrance coordinates are not converted by this tool.
 Reviewed Era-framed entrances are now maintained as Forever literals; see the

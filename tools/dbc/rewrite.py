@@ -1,4 +1,4 @@
-"""Rewrite coordinate number tokens without executing or reformatting Lua sources."""
+"""Rewrite coordinate and raw quest race-mask tokens without executing or reformatting Lua."""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -209,6 +209,42 @@ def read_zone_ids(source: str) -> Dict[str, int]:
             parsed.fail(field.value[0], 'Invalid or duplicate zone symbol ' + name)
         result[name] = parsed.integer(field.value)
     return result
+
+
+def rewrite_quest_races(source: str, replacements: Dict[int, int]) -> Tuple[str, Dict[int, int]]:
+    """Replace exact requiredRaces literals in raw Quest rows; preserve every other byte."""
+    parsed = Tables(source, _lex(source))
+    keys = {parsed.text(field.key).strip('\'"'): parsed.integer(field.value)
+            for field in parsed.fields(parsed.assigned('QuestieDB.questKeys'))}
+    if keys.get('requiredRaces') != 6:
+        raise ValueError('Race-mask schema differs from supported Quest keys')
+    payload_span = parsed.assigned('QuestieDB.questData')
+    payload = parsed.tokens[payload_span[0]]
+    if payload.kind != 'long':
+        parsed.fail(payload_span[0], 'Entity data must be a Lua long-string payload')
+    tokens = _lex(source[payload.content_start:payload.content_end], payload.content_start)
+    parsed = Tables(source, tokens)
+    if not tokens or tokens[0].text != 'return' or tokens[-1].text != '}':
+        raise ValueError('Entity payload must return one literal table')
+
+    edits, counts = [], {}
+    for row in parsed.fields((1, len(tokens))):
+        span = parsed.positional(row.value).get(keys['requiredRaces'])
+        if span is None or parsed.text(span) == 'nil':
+            continue
+        mask = parsed.integer(span)
+        if mask not in replacements:
+            continue
+        start, stop = span
+        edits.append((tokens[start].start, tokens[stop - 1].end, str(replacements[mask])))
+        counts[mask] = counts.get(mask, 0) + 1
+
+    parts, end = [], 0
+    for start, stop, replacement in sorted(edits):
+        parts.extend((source[end:start], replacement))
+        end = stop
+    parts.append(source[end:])
+    return ''.join(parts), counts
 
 
 def rewrite(source: str, *, entity: str, raw: bool, zone_ids: Dict[str, int],

@@ -1,7 +1,7 @@
 """Coordinate rewriting tests, with source text serving as the preservation oracle."""
 import unittest
 
-from rewrite import read_zone_ids, rewrite
+from rewrite import read_zone_ids, rewrite, rewrite_quest_races
 
 
 class RewriteTest(unittest.TestCase):
@@ -99,6 +99,35 @@ QuestieDB.npcData = [=[return {
     def test_item_inputs_are_untouched(self):
         source = 'return {[itemKeys.vendors]={1,2}} -- no coordinates'
         self.assertEqual(self.convert(source, entity='Item'), (source, 0))
+
+
+class QuestRaceRewriteTests(unittest.TestCase):
+    def test_only_required_races_tokens_change_including_explicit_slots(self):
+        source = '''-- requiredRaces=77 is documentation, not data
+QuestieDB.questKeys = {['requiredRaces']=6}
+QuestieDB.questData = [=[return {
+[77] = {"Horde 178",{{77}},nil,77,178, -- race mask follows
+  77,178},
+[178] = {[1]="Alliance 77",[6]=178,[7]=77},
+[3] = {"Neutral",nil,nil,nil,nil,0},
+[4] = {"Human",nil,nil,nil,nil,1},
+[5] = {"Subset",nil,nil,nil,nil,5},
+[6] = {"Absent",nil,nil,nil,nil,nil,77},
+[7] = {"Already converted",nil,nil,nil,nil,4294967373},
+[8] = {"Orc and Troll",nil,nil,nil,nil,130}
+}]=]
+'''
+        expected = source.replace('  77,178}', '  4294967373,178}').replace('[6]=178', '[6]=8589934770')
+        masks = {77: 4294967373, 178: 8589934770}
+        self.assertEqual(rewrite_quest_races(source, masks), (expected, {77: 1, 178: 1}))
+        self.assertEqual(rewrite_quest_races(expected, masks), (expected, {}))
+
+    def test_wrong_schema_and_computed_masks_are_rejected(self):
+        source = "QuestieDB.questKeys={requiredRaces=6}\nQuestieDB.questData=[[return {[1]={[6]=77}}]]"
+        with self.assertRaisesRegex(ValueError, 'schema differs'):
+            rewrite_quest_races(source.replace('requiredRaces=6', 'requiredRaces=5'), {77: 4294967373})
+        with self.assertRaisesRegex(ValueError, 'numeric'):
+            rewrite_quest_races(source.replace('[6]=77', '[6]=1+76'), {77: 4294967373})
 
 
 if __name__ == '__main__':
