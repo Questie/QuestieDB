@@ -28,7 +28,9 @@ class TestScopes(unittest.TestCase):
         flavors = {flavor: self.selected("--flavor=" + flavor)
                    for flavor in ("Vanilla", "TBC", "Wrath", "Cata", "Mists")}
         forever = self.selected("--flavor=Forever")
-        self.assertEqual(forever, {"artifact-lines", "artifact-wire", "artifact-types"})
+        self.assertEqual(forever, {"artifact-lines", "artifact-wire", "artifact-types",
+                                   "forever-delta-base-baked"})
+        self.assertFalse(shared & forever)
         self.assertIn("forever-data", shared)
         self.assertIn("native-toc", shared)
         self.assertEqual(self.selected(), shared.union(forever, *flavors.values()))
@@ -60,7 +62,10 @@ class TestScopes(unittest.TestCase):
         """Copy startup dependencies, without owned entity data or generated artifacts."""
         for path in ("generator", "src", "emulator"):
             shutil.copytree(ROOT / path, root / path)
-        for path in ("test.lua", "tools/validation/test-files.lua"):
+        for path in ("test.lua", "tools/validation/test-files.lua",
+                     "tools/validation/storage-fixture.lua",
+                     "tools/validation/test-scopes-fixture.lua",
+                     "tools/validation/forever-delta-base.test.lua"):
             target = root / path
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ROOT / path, target)
@@ -69,18 +74,16 @@ class TestScopes(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             self.copy_harness(root)
-            # These suites inspect storage lines and file lists, not decoded entity content.
-            lines = ["## X-Flavor: Forever", "## X-l10n-Version: 1"]
-            for entity in ("Quest", "Npc", "Item", "Object"):
-                lines.append("## X-" + entity + "-IDS: fixture")
-                for locale in ("deDE", "esES", "esMX", "frFR", "koKR", "ptBR", "ruRU", "zhCN", "zhTW"):
-                    lines.append("## X-l10n-" + locale + "-" + entity + ": fixture")
-            content = "\n".join(lines) + "\n"
-            (root / "QuestieDB_Forever.toc").write_text(content)
-            (root / "QuestieDB_Camelot.toc").write_text(content)
+            # The flavor scope now includes readable entity witnesses, not just headers.
+            fixture = subprocess.run(
+                [LUA, "tools/validation/test-scopes-fixture.lua", str(root)], cwd=root,
+                capture_output=True, text=True, timeout=15)
+            self.assertEqual(fixture.returncode, 0, fixture.stdout + fixture.stderr)
+            self.assertFalse((root / "data").exists())
             result = self.run_test("--flavor=Forever", root=root)
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-            self.assertIn("3 checks, 0 failed", result.stdout)
+            self.assertIn("[PASS] forever-delta-base-baked", result.stdout)
+            self.assertIn("4 checks, 0 failed", result.stdout)
             self.assertNotIn("SKIP", result.stdout)
 
     def test_missing_and_partial_artifacts_fail_before_running_suites(self):

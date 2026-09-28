@@ -1737,17 +1737,20 @@ end)
 -- Data-shaped corrections: Set
 --------------------------------------------------------------------------------------------
 
-suite("set-corrections", "Vanilla", function()
-  local tocPath = config.tocPath(config.flavorByName.Vanilla)
-  if not lib.fileExists(tocPath) then
-    io.write("  SKIP set-corrections: ", tocPath, " not generated\n")
-    return
-  end
-
+suite("set-corrections", "shared", function()
   client.reset()
   client.install({ expansion = "Classic" })
-  emulator.install(config.antiCollision or config.addonName, emulator.parse(tocPath))
-  local Lib = emulator.loadAddon(tocPath, config.addonName)
+  -- Earlier suites can leave a LibStub mock that cannot register LibDeflate.
+  -- Isolate the fixture import, including its nested codec loads, and restore on failure.
+  local savedLibStub = rawget(_G, "LibStub")
+  _G.LibStub = nil
+  local loaded, fixture = pcall(dofile, "tools/validation/storage-fixture.lua")
+  _G.LibStub = savedLibStub
+  assert(loaded, fixture)
+  local Lib = fixture.load("source", {
+    Quest = { [2] = { "Fixture quest" } }, Npc = {},
+    Item = { [6948] = { "Hearthstone" } }, Object = {},
+  })
   local registry = Lib.Corrections
   local Quest = Lib.Quest
   local Item = Lib.Item
