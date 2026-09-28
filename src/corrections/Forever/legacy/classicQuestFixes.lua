@@ -13,8 +13,8 @@ function providers.Load()
     -- Inherited Classic Static quest corrections used by Forever.
     local questKeys = LibQuestieDB.Meta.Quest.keys
     local zoneIDs = LibQuestieDB.Enum.zoneIDs
-    local raceIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].raceKeys
-    local classIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].classKeys
+    local raceIDs = LibQuestieDB.Enum.corrections.raceKeys
+    local classIDs = LibQuestieDB.Enum.corrections.classKeys
     local sortKeys = LibQuestieDB.Enum.sortKeys
     local specialFlags = LibQuestieDB.Enum.specialFlags
     local profKeys = LibQuestieDB.Enum.professionKeys
@@ -6834,7 +6834,7 @@ LibQuestieDB.ObjectiveFirst.itemObjectiveFirst[5088] = true
 ---@return table<integer, table> fixes Character-dependent legacy quest corrections.
 function providers.LoadFactionFixes()
     local questKeys = LibQuestieDB.Meta.Quest.keys
-    local raceIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].raceKeys
+    local raceIDs = LibQuestieDB.Enum.corrections.raceKeys
     local playerClass = UnitClassBase("player")
     local factionIDs = LibQuestieDB.Enum.factionIDs
 

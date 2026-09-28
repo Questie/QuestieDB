@@ -13,7 +13,7 @@ function providers.Load()
     local npcKeys = LibQuestieDB.Meta.Npc.keys
     local zoneIDs = LibQuestieDB.Enum.zoneIDs
     local phases = LibQuestieDB.Enum.phases
-    local npcFlags = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].npcFlags
+    local npcFlags = LibQuestieDB.Enum.corrections.npcFlags
 
     ---@format disable
     return {

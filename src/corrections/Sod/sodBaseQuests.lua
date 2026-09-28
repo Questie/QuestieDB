@@ -12,8 +12,8 @@ LibQuestieDB.CorrectionProviders.sodBaseQuests = providers
 ---@return table<integer, table> rows Seasonal quest rows.
 function providers.LoadBaseQuests()
     local questKeys = LibQuestieDB.Meta.Quest.keys
-    local raceIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].raceKeys
-    local classIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].classKeys
+    local raceIDs = LibQuestieDB.Enum.corrections.raceKeys
+    local classIDs = LibQuestieDB.Enum.corrections.classKeys
 
     return {
         [76156] = {

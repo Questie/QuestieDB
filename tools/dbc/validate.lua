@@ -1,5 +1,7 @@
 -- Semantic verification for the offline Forever converter. Run from the repository root.
 -- The plan and Lua inputs are trusted local files; this is not an execution sandbox.
+-- Providers load through QuestieDB's native runtime and central registrar, not a Questie
+-- compatibility loader.
 
 local loader = dofile("generator/loader.lua")
 local runtime = dofile("generator/runtime.lua")
@@ -14,10 +16,12 @@ local config = dofile("src/config.lua")
 ---@class ConversionFile
 ---@field source string
 ---@field output string
+---@field target string? Manifest path for the staged output.
 ---@field entity string
 ---@field raw boolean
----@field module string?
----@field methods string[]?
+---@field categories string[]?
+---@field registrations string[]?
+---@field sourceSpec string? Manifest path when source is a fixture.
 
 ---@class ConversionPlan
 ---@field files ConversionFile[]
@@ -27,11 +31,13 @@ local config = dofile("src/config.lua")
 local plan = assert(loadfile(assert(arg[1], "Expected validation-plan.lua path")))()
 assert(type(plan.files) == "table" and type(plan.transforms) == "table", "Invalid conversion plan")
 
+-- Resolve schema once. Raw files use it for semantic loading; provider files use their
+-- explicit plan entity to verify central registration datatypes.
 ---@type table<string, table>
 local entityTypes = {}
 for _, entity in ipairs(config.entityTypes) do entityTypes[entity.name] = entity end
 
----Copy results before another provider invocation clears captured buffers.
+---Copy registration metadata without retaining provider-owned tables.
 ---@param value any
 ---@return any
 local function copy(value)
@@ -145,102 +151,107 @@ local function transformRows(rows, entity)
     return coordinates
 end
 
----Load an isolated copy of a correction module through the actual provider shim.
+---Validate native exports against the real central policy, then compose that one file.
+---`manifestPath` identifies the file declaration; its `functions` list owns categories,
+---ordering, options, and stable registration names.
 ---@param path string
----@param moduleName string
----@return table context
-local function loadCorrection(path, moduleName)
+---@param manifestPath string
+---@param flavorName string
+---@return table
+local function loadCorrection(path, manifestPath, flavorName)
     local lib = runtime.build()
-    local compat = lib.CorrectionCompat
-    local remove = compat.Install(config.flavorByName.Vanilla)
-    compat.BeginCapture()
-    local ok, message = pcall(runtime.execute, path, "QuestieDB", lib)
-    remove()
-    if not ok then error(message, 0) end
-    local module = assert(compat.modules[moduleName], "Missing correction module " .. moduleName)
-    return {
-        compat = compat,
-        module = module,
-        hints = copy(compat.objectiveFirst),
-        captured = copy(compat.captured),
-    }
-end
-
----Compare all capture types, including direct writes outside the declared provider type.
----@param expected table
----@param actual table
----@param path string
----@return nil
-local function compareCaptures(expected, actual, path)
-    for _, entity in ipairs(config.entityTypes) do
-        local coordinates = transformRows(expected[entity.name], entity.name)
-        compare(expected[entity.name], actual[entity.name], path .. "." .. entity.name, coordinates)
+    -- Compare code under the destination's constants: conversion changes coordinates, not
+    -- symbolic race references. Era and Forever intentionally have different faction masks.
+    lib.flavor = config.flavorByName.Forever
+    runtime.execute("src/corrections/prepare.lua", "QuestieDB", lib)
+    -- Still validate each file against its own applicability and registration metadata.
+    lib.flavor = config.flavorByName[flavorName]
+    local selected
+    for _, spec in ipairs(lib.CorrectionManifest) do
+        if "src/corrections/" .. spec.file == manifestPath then selected = spec end
     end
+    assert(selected, "Missing correction manifest entry: " .. manifestPath)
+    assert(config.correctionApplies(selected, lib.flavor), "Inapplicable conversion provider: " .. manifestPath)
+    lib.CorrectionManifest = { selected }
+    runtime.execute(path, "QuestieDB", lib)
+    assert(#lib.Corrections.Select({}) == 0, "Provider must not register corrections directly")
+    for provider in pairs(lib.CorrectionProviders) do
+        assert(provider == selected.provider, "Unexpected correction export: " .. provider)
+    end
+    runtime.execute("src/corrections/register.lua", "QuestieDB", lib)
+    return lib
 end
 
----@type string[]
-local classes = { "WARRIOR", "PALADIN", "HUNTER", "ROGUE", "PRIEST", "SHAMAN", "MAGE", "WARLOCK", "DRUID" }
+local client = dofile("emulator/client.lua")
+local classes = { "WARRIOR", "PALADIN", "HUNTER", "ROGUE", "PRIEST", "DEATHKNIGHT",
+    "SHAMAN", "MAGE", "WARLOCK", "MONK", "DRUID" }
+
+---Compare complete registration metadata, permitting only the explicit ownership retarget.
+---@param entry table
+---@param target boolean
+---@return table
+local function metadata(entry, target)
+    local result = {}
+    for key, value in pairs(entry) do
+        if key ~= "func" then result[key] = copy(value) end
+    end
+    if not target then
+        result.name = "Forever/legacy/" .. assert(result.name:match("^[^/]+/(.+)$"))
+        if entry.name == "Era/classicQuestReputationFixes.lua:Load" then
+            result.expansions = { Forever = true }
+        end
+    end
+    return result
+end
+
 local providerChecks = 0
 for _, file in ipairs(plan.files) do
     assert(entityTypes[file.entity], "Invalid entity type in plan")
     if file.raw then
+        -- Raw baseline: only schema-designated coordinates may differ.
         local expected, sourceKeys = loader.loadEntityData(file.source, entityTypes[file.entity])
         local actual, outputKeys = loader.loadEntityData(file.output, entityTypes[file.entity])
         compare(sourceKeys, outputKeys, file.output .. ": keys")
         local coordinates = transformRows(expected, file.entity)
         compare(expected, actual, file.output, coordinates)
     else
-        local source = loadCorrection(file.source, assert(file.module))
-        local target = loadCorrection(file.output, file.module)
-        compare(source.hints, target.hints, file.output .. ": load-time objective hints")
-        compareCaptures(source.captured, target.captured, file.output .. ": load-time captures")
+        -- Native provider baseline: exercise all faction/class/race branches against the
+        -- source and destination manifest declarations. This proves behavior, not byte shape.
+        for _, faction in ipairs({ "Alliance", "Horde" }) do
+            for classId, class in ipairs(classes) do
+                for _, race in ipairs({ "Human", "Orc" }) do
+                    client.reset()
+                    client.install({ expansion = "Classic", faction = faction, classFile = class, classId = classId,
+                        raceName = race, raceFile = race, raceId = race == "Human" and 1 or 2 })
+                    local source = loadCorrection(file.source, file.sourceSpec or file.source, "Vanilla")
+                    local target = loadCorrection(file.output, assert(file.target, "Missing target manifest path"), "Forever")
 
-        local methods = {}
-        for _, method in ipairs(assert(file.methods)) do methods[method] = true end
-        -- A forgotten provider must not disappear from validation merely because the plan omitted it.
-        for name, value in pairs(source.module) do
-            if type(value) == "function" then
-                assert(methods[name], "Unlisted correction method " .. file.module .. "." .. name)
-                assert(type(target.module[name]) == "function", "Missing output correction method " .. name)
-            else
-                compare(value, target.module[name], file.output .. ": module field " .. name)
-            end
-        end
-        for name in pairs(target.module) do
-            assert(source.module[name] ~= nil, "Unexpected output module field " .. name)
-        end
+                    -- Registration inventory and metadata must match before invoking providers.
+                    local expectedEntries = source.Corrections.Select({})
+                    local actualEntries = target.Corrections.Select({})
+                    assert(#expectedEntries == #file.registrations, "Unlisted source registration")
+                    assert(#actualEntries == #expectedEntries, "Output registration inventory differs")
+                    compare(source.ObjectiveFirst, target.ObjectiveFirst, file.output .. ": load-time hints")
+                    for index, identity in ipairs(file.registrations) do
+                        local expected, actual = expectedEntries[index], actualEntries[index]
+                        assert(expected.name == identity, "Unexpected source registration: " .. expected.name)
+                        assert(expected.datatype == file.entity, "Unexpected source datatype")
+                        assert(expected.dynamic == (file.categories[index] == "dynamic"), "Unexpected source category")
+                        local path = file.output .. ": " .. identity .. "/" .. faction .. "/" .. class .. "/" .. race
+                        compare(metadata(expected, false), metadata(actual, true), path .. ": registration")
 
-        for _, method in ipairs(file.methods) do
-            local personas = { { faction = "Alliance", class = "WARRIOR" } }
-            if method == "LoadFactionFixes" then
-                personas = {}
-                for _, faction in ipairs({ "Alliance", "Horde" }) do
-                    local selectedClasses = file.entity == "Quest" and classes or { "WARRIOR" }
-                    for _, class in ipairs(selectedClasses) do
-                        personas[#personas + 1] = { faction = faction, class = class }
+                        -- Provider rows may differ only at transformed coordinate slots; hints
+                        -- must remain stable both before and after provider invocation.
+                        local expectedRows, actualRows = expected.func(), actual.func()
+                        local coordinates = transformRows(expectedRows, file.entity)
+                        compare(expectedRows, actualRows, path, coordinates)
+                        compare(source.ObjectiveFirst, target.ObjectiveFirst, path .. ": hints")
+                        providerChecks = providerChecks + 1
                     end
                 end
             end
-            for _, persona in ipairs(personas) do
-                ---@param _ string
-                ---@return string
-                UnitFactionGroup = function(_) return persona.faction end
-                ---@param _ string
-                ---@return string
-                UnitClassBase = function(_) return persona.class end
-                source.compat.BeginCapture()
-                target.compat.BeginCapture()
-                local expected = source.compat.Invoke(assert(source.module[method]), source.module)
-                local actual = target.compat.Invoke(assert(target.module[method]), target.module)
-                local sourceCaptured = copy(source.compat.captured)
-                local path = file.output .. ": " .. method .. "/" .. persona.faction .. "/" .. persona.class
-                local coordinates = transformRows(expected, file.entity)
-                compare(expected, actual, path, coordinates)
-                compareCaptures(sourceCaptured, target.compat.captured, path .. ": captures")
-                compare(source.compat.objectiveFirst, target.compat.objectiveFirst, path .. ": hints")
-                providerChecks = providerChecks + 1
-            end
         end
+        client.reset()
     end
 end
 print("Validated " .. #plan.files .. " converted files and " .. providerChecks .. " correction personas")

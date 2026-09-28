@@ -19,6 +19,8 @@ QuestieLoader = {
     ImportModule = function(_, name) return assert(modules[name]) end,
 }
 local root = "support/Forever/"
+
+-- Load the real deferred support payloads exactly as the consumer does.
 for _, name in ipairs({"areaIdToUiMapId", "uiMapIdToAreaId", "subZoneToParentZone"}) do
     dofile(root .. "Zones/" .. name .. ".lua")
     local private = modules.ZoneDB.private
@@ -30,6 +32,8 @@ dofile(root .. "FactionTemplates/factionTemplateClassic.lua")
 local private = modules.ZoneDB.private
 local areas = assert(loadstring(private.areaIdToUiMapId))()
 local maps = assert(loadstring(private.uiMapIdToAreaId))()
+
+-- Canonical DBC links and authored compatibility remain separate review surfaces.
 for area, map in pairs({[616]=2482, [16591]=2548, [16593]=2521, [16606]=2524, [16651]=2652}) do
     assert(areas[area] == map and maps[map] == area, "Reviewed Forever map link differs")
 end
@@ -86,22 +90,14 @@ assert(not ok, "Faction-reference self-proof failed")
 
 local runtime = dofile("generator/runtime.lua")
 local lib = runtime.build()
-local compat = lib.CorrectionCompat
-local remove = compat.Install(config.flavorByName.Vanilla)
-compat.BeginCapture()
-runtime.execute("src/corrections/Forever/legacy/classicNPCFixes.lua", "QuestieDB", lib)
-remove()
-checkFactionReferences(compat.captured.Npc or {})
-for _, method in ipairs({"Load", "LoadFactionFixes"}) do
+runtime.loadCorrections(lib, config.flavorByName.Forever)
+local npcProviders = lib.Corrections.Select({ datatype = "Npc" })
+assert(#npcProviders == 4, "Expected inherited and authored Static/Dynamic NPC providers")
+for _, entry in ipairs(npcProviders) do
     for _, faction in ipairs({"Alliance", "Horde"}) do
-        ---@return string
         UnitFactionGroup = function() return faction end
-        ---@return string
         UnitClassBase = function() return "WARRIOR" end
-        compat.BeginCapture()
-        local provider = compat.modules.QuestieNPCFixes
-        checkFactionReferences(compat.Invoke(provider[method], provider) or {})
-        checkFactionReferences(compat.captured.Npc or {})
+        checkFactionReferences(entry.func())
     end
 end
 -- Exercise owned corrected spawn fields and authored entrance triples, not ID text matches.
@@ -177,19 +173,17 @@ local function checkSpawnEntrances(rows, spawnField)
     end
 end
 
+-- Compose inherited Static spawn corrections before deriving required dungeon routing.
 local correctedEntities = {}
 for _, entity in ipairs(config.entityTypes) do
     if entity.name == "Npc" or entity.name == "Object" then
         local rows = loader.loadEntityData("data/Forever/forever" .. entity.fileSuffix .. ".lua", entity)
-        local providerLib = runtime.build()
-        local providerCompat = providerLib.CorrectionCompat
-        local undo = providerCompat.Install(config.flavorByName.Forever)
-        providerCompat.BeginCapture()
         local filename = entity.name == "Npc" and "classicNPCFixes" or "classicObjectFixes"
-        runtime.execute("src/corrections/Forever/legacy/" .. filename .. ".lua", "QuestieDB", providerLib)
-        local provider = providerCompat.modules[entity.name == "Npc" and "QuestieNPCFixes" or "QuestieObjectFixes"]
-        local corrections = providerCompat.Invoke(provider.Load, provider)
-        undo()
+        local corrections
+        for _, entry in ipairs(lib.Corrections.Select({ datatype = entity.name, dynamic = false })) do
+            if entry.name == "Forever/legacy/" .. filename .. ".lua:Load" then corrections = entry.func() end
+        end
+        assert(corrections, "Missing inherited Static provider: " .. filename)
         for id, fields in pairs(corrections) do
             rows[id] = rows[id] or {}
             for field, value in pairs(fields) do rows[id][field] = value end
@@ -203,7 +197,8 @@ for area, map in pairs(forwardOverrides) do
         assert(referenced[area], "Compatibility has no current spawn reference: " .. area)
     end
 end
--- Follow real NPC and object objectives to their corrected spawn maps.
+-- Backward proof baseline: follow real NPC and object objectives to their corrected spawn maps.
+-- This protects consumer routing behavior without requiring Forever to keep matching Era data.
 local quests
 for _, entity in ipairs(config.entityTypes) do
     if entity.name == "Quest" then

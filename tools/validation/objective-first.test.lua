@@ -1,4 +1,4 @@
--- Objective ordering scope markers and compatibility-shim lifecycle.
+-- Native objective hints: flavor selection, early seasonal gates, and stable identities.
 local lib = dofile("generator/lib.lua")
 local config = dofile("src/config.lua")
 config.correctionManifest = dofile("src/corrections/manifest.lua")
@@ -10,6 +10,8 @@ local fields = {
 
 return function(check, equal)
   local sourceFiles = fixture.tocFiles("QuestieDB.toc")
+
+  -- Real authored witnesses prove expansion inheritance and SoD admission.
   local vanilla, scopedNamespace, env = fixture.loadProvider(sourceFiles, "Vanilla", 0, "source")
   check(vanilla.killCreditObjectiveFirst[52] == nil, "Vanilla excludes Cata quest 52")
   check(vanilla.itemObjectiveFirst[503] == true, "Vanilla retains its own quest 503")
@@ -33,69 +35,42 @@ return function(check, equal)
     end
   end
 
-  -- Titan has no authored hints today. Synthetic writes prove the season marker itself is
-  -- closed, rather than letting an empty upstream table make every negative case vacuous.
-  local scopeCases = {
-    { flavor = "Vanilla", season = 0, marker = "Sod", admitted = false },
-    { flavor = "Vanilla", season = 2, marker = "Sod", admitted = true },
-    { flavor = "Vanilla", season = 99, marker = "Sod", admitted = false },
-    { flavor = "Wrath", season = 2, marker = "Sod", admitted = false },
-    { flavor = "Wrath", season = 109, marker = "Titan", admitted = true },
-    { flavor = "Wrath", season = 0, marker = "Titan", admitted = false },
-    { flavor = "Wrath", season = 99, marker = "Titan", admitted = false },
-    { flavor = "Vanilla", season = 109, marker = "Titan", admitted = false },
-    { flavor = "TBC", season = 109, marker = "Titan", admitted = false },
-    { flavor = "Cata", season = 109, marker = "Titan", admitted = false },
-    { flavor = "Mists", season = 109, marker = "Titan", admitted = false },
+  -- Titan currently has no hints. Insert a witness immediately after the real file's
+  -- early guard so the negative cases cannot pass just because its table is empty.
+  local cases = {
+    { "Vanilla", 0, "Sod/sodQuestFixes.lua", false },
+    { "Vanilla", 2, "Sod/sodQuestFixes.lua", true },
+    { "Wrath", 2, "Sod/sodQuestFixes.lua", false },
+    { "Forever", 2, "Sod/sodQuestFixes.lua", false },
+    { "Wrath", 109, "Titan/titanReforgedQuestFixes.lua", true },
+    { "Wrath", 0, "Titan/titanReforgedQuestFixes.lua", false },
+    { "Vanilla", 109, "Titan/titanReforgedQuestFixes.lua", false },
+    { "TBC", 109, "Titan/titanReforgedQuestFixes.lua", false },
+    { "Cata", 109, "Titan/titanReforgedQuestFixes.lua", false },
+    { "Mists", 109, "Titan/titanReforgedQuestFixes.lua", false },
+    { "Forever", 109, "Titan/titanReforgedQuestFixes.lua", false },
   }
-  for _, case in ipairs(scopeCases) do
-    scopedNamespace.flavor = config.flavorByName[case.flavor]
-    env.C_Seasons.GetActiveSeason = function() return case.season end
-    local compat = scopedNamespace.CorrectionCompat
-    local remove = compat.Install(scopedNamespace.flavor)
-    local marker = assert(loadfile("src/corrections/scopes/" .. case.marker .. ".lua"))
-    setfenv(marker, env)
-    marker("QuestieDB", scopedNamespace)
-    env.QuestieLoader:ImportModule("QuestieCorrections").eventObjectiveFirst[2147483647] = true
-    check((compat.objectiveFirst.eventObjectiveFirst[2147483647] == true) == case.admitted,
-      case.flavor .. " season " .. case.season .. " admits " .. case.marker .. " hints correctly")
-    remove()
-  end
-
-  -- Reuse the same shim, not just fresh emulator namespaces. Discarding a later file must
-  -- neither erase an earlier hint nor suppress the module's provider definitions.
-  local runtime = dofile("generator/runtime.lua")
-  local namespace = runtime.build()
-  local compat = namespace.CorrectionCompat
-  local published = compat.objectiveFirst
+  -- Inject one synthetic write after each real early guard. This isolates gate behavior from
+  -- the current hint inventory while retaining the provider's native environment.
+  local published = scopedNamespace.ObjectiveFirst
   local identities = {}
   for _, field in ipairs(fields) do identities[field] = published[field] end
-  local previousLoader = rawget(_G, "QuestieLoader")
-  local remove = compat.Install(config.flavorByName.Mists)
-  local accepted = QuestieLoader:ImportModule("QuestieCorrections")
-  accepted.itemObjectiveFirst[503] = true
-  compat.SelectObjectiveFirstScope(false)
-  local discarded = QuestieLoader:ImportModule("QuestieCorrections")
-  discarded.itemObjectiveFirst[503] = false
-  discarded.spellObjectiveFirst[10068] = true
-  local provider = QuestieLoader:CreateModule("InapplicableHintProvider")
-  provider.Load = function() return {} end
-  check(published.itemObjectiveFirst[503] == true, "discarded overwrite preserves an earlier applicable hint")
-  check(published.spellObjectiveFirst[10068] == nil, "discarded hints never enter the public tables")
-  check(compat.modules.InapplicableHintProvider == provider and type(provider.Load) == "function",
-    "hint scope does not suppress correction provider definitions")
-  compat.SelectObjectiveFirstScope(true)
-  check(QuestieLoader:ImportModule("QuestieCorrections") == published, "scope reentry restores the exact hint destination")
-  remove()
-  check(rawget(_G, "QuestieLoader") == previousLoader, "Remove restores the original loader by identity")
-  for _, ids in pairs(discarded) do check(next(ids) == nil, "Remove releases discarded hint contents") end
-
-  remove = compat.Install(config.flavorByName.Vanilla)
-  check(compat.objectiveFirst == published, "reinstall preserves the published outer table")
-  for _, field in ipairs(fields) do
-    check(published[field] == identities[field], "reinstall preserves " .. field .. " identity")
-    check(next(published[field]) == nil, "reinstall clears prior " .. field .. " contents")
+  for _, case in ipairs(cases) do
+    scopedNamespace.flavor = config.flavorByName[case[1]]
+    env.C_Seasons.GetActiveSeason = function() return case[2] end
+    published.eventObjectiveFirst[2147483647] = nil
+    local source = lib.readAll("src/corrections/" .. case[3])
+    local replaced
+    source, replaced = source:gsub("(then return end\n)",
+      "%1LibQuestieDB.ObjectiveFirst.eventObjectiveFirst[2147483647] = true\n", 1)
+    assert(replaced == 1, "seasonal file lost its early guard")
+    local chunk = assert(loadstring(source, "@" .. case[3]))
+    setfenv(chunk, env)("QuestieDB", scopedNamespace)
+    equal(published.eventObjectiveFirst[2147483647] == true, case[4],
+      case[1] .. " season " .. case[2] .. " gates hints before writes")
+    check(published.itemObjectiveFirst[503] == true, "seasonal loading preserves earlier hints")
+    for _, field in ipairs(fields) do
+      check(published[field] == identities[field], "loading preserves " .. field .. " identity")
+    end
   end
-  remove()
-  check(rawget(_G, "QuestieLoader") == previousLoader, "reinstall restores the original loader")
 end

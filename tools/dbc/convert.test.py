@@ -29,6 +29,7 @@ def outputs_with_manifest(values):
     return outputs
 
 
+# Coordinate rewriting policy, including sentinels, precision, and plan serialization.
 class CoordinatePolicyTests(unittest.TestCase):
     def test_prepare_resolves_symbols_from_the_canonical_enum(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -36,13 +37,16 @@ class CoordinatePolicyTests(unittest.TestCase):
             enum = (ROOT / ZONE_SYMBOLS_PATH).read_bytes()
             (root / ZONE_SYMBOLS_PATH).parent.mkdir(parents=True)
             (root / ZONE_SYMBOLS_PATH).write_bytes(enum)
-            (root / "npc.lua").write_text(
-                'return {[npcKeys.spawns]={[zoneIDs.MULGORE]={{10,20}}}}', encoding="utf-8")
-            inputs = (Input("npc.lua", "converted.lua", "Npc", False),)
+            source = ('local _, LibQuestieDB = ...\n'
+                      'LibQuestieDB.CorrectionProviders.fixture = {}\n'
+                      'function LibQuestieDB.CorrectionProviders.fixture.Load()\n'
+                      '  return {[npcKeys.spawns]={[zoneIDs.MULGORE]={{10,20}}}}\nend\n')
+            (root / "npc.lua").write_text(source, encoding="utf-8")
+            inputs = (Input("npc.lua", "converted.lua", "Npc", False, "static", ("Era/fixture.lua:Load",)),)
             with patch("convert.INPUTS", inputs):
                 outputs, report = prepare(root, {215: Transform(1, 1, 1, 2)}, {}, False)
-            self.assertEqual(outputs["converted.lua"],
-                             b'return {[npcKeys.spawns]={[zoneIDs.MULGORE]={{11.0,22.0}}}}')
+            expected = source.replace("{{10,20}}", "{{11.0,22.0}}")
+            self.assertEqual(outputs["converted.lua"], expected.encode())
             self.assertEqual(report["zone_symbols_sha256"], digest(enum))
             self.assertEqual(report["files"]["converted.lua"]["counts"], {"converted": 1})
 
@@ -97,6 +101,7 @@ class CoordinatePolicyTests(unittest.TestCase):
         self.assertEqual(lua_value({215: {"scale_x": 0.5}}), '{[215]={["scale_x"]=0.5}}')
 
 
+# Destination ownership, all-or-nothing publication, and interruption recovery.
 class OutputInstallationTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
@@ -112,6 +117,16 @@ class OutputInstallationTests(unittest.TestCase):
         second = outputs_with_manifest({self.npc: "new NPC", self.fixes: "old fixes"})
         self.assertEqual(install_outputs(self.root, second), [self.npc, MANIFEST])
         self.assertEqual((self.root / self.fixes).read_text(), "old fixes")
+
+    def test_manifest_cannot_authorize_changed_output_inventory(self):
+        old_path = "src/corrections/Forever/legacy/retiredNPCFixes.lua"
+        first = outputs_with_manifest({self.npc: "old NPC", old_path: "historical provider"})
+        install_outputs(self.root, first)
+        second = outputs_with_manifest({self.npc: "new NPC", self.fixes: "native provider"})
+        with self.assertRaisesRegex(ValueError, "explicit provenance migration required"):
+            install_outputs(self.root, second)
+        self.assertFalse((self.root / self.fixes).exists())
+        self.assertEqual((self.root / MANIFEST).read_bytes(), first[MANIFEST])
 
     def test_hand_edited_output_blocks_the_entire_install(self):
         first = outputs_with_manifest({self.npc: "old NPC", self.fixes: "old fixes"})
@@ -237,7 +252,57 @@ class OutputInstallationTests(unittest.TestCase):
         self.assertEqual((recovery / "0.old").read_text(), "old NPC")
 
 
+# Lua behavior proof for raw entities and centrally registered native providers.
 class SemanticValidationTests(unittest.TestCase):
+    @unittest.skipUnless(shutil.which("lua5.1"), "Lua 5.1 required for semantic validation")
+    def test_validator_checks_provider_returns_icons_personas_and_hints(self):
+        source = FIXTURES / "validation-quest-fixes.lua"
+        converter = ConvertPoints({215: Transform(1, 5, 1, 10)})
+        converted, _ = rewrite(source.read_text(), entity="Quest", raw=False,
+                               zone_ids={}, transform=converter)
+        self.assertIn("{{15.0,30.0}}", converted)
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = Path(temporary)
+            output = directory / "quest-fixes.lua"
+            plan = {"files": [{"source": str(source), "output": str(output), "entity": "Quest",
+                               "raw": False, "categories": ["static", "dynamic"],
+                               "sourceSpec": "src/corrections/Era/classicQuestFixes.lua",
+                               "target": "src/corrections/Forever/legacy/classicQuestFixes.lua",
+                               "registrations": ["Era/classicQuestFixes.lua:Load", "Era/classicQuestFixes.lua:LoadFactionFixes"]}],
+                    "transforms": {215: {"scale_x": 1, "offset_x": 5, "scale_y": 1, "offset_y": 10}}}
+            plan_path = directory / "plan.lua"
+            plan_path.write_text("return " + lua_value(plan))
+            command = [shutil.which("lua5.1"), "tools/dbc/validate.lua", str(plan_path)]
+            output.write_text(converted)
+            good = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
+            self.assertEqual(good.returncode, 0, good.stdout + good.stderr)
+            self.assertIn("88 correction personas", good.stdout)
+
+            # Registration corruptions catch manifest/export drift before row comparison.
+            for suffix in (
+                '\nproviders.Unlisted = function() return {} end\n',
+                '\nproviders.LoadFactionFixes = nil\n',
+                '\nLibQuestieDB.CorrectionProviders.unexpected = {}\n',
+                '\nlocal r = LibQuestieDB.Corrections; r.RegisterRuntimeCorrection(r.OWNER, "Quest", "unexpected", function() return {} end, 999)\n',
+                '\nLibQuestieDB.CorrectionManifest[1].functions[1].offset = 12\n',
+                '\nLibQuestieDB.CorrectionManifest[1].functions[1].options = { noNewEntries = true }\n',
+                '\nLibQuestieDB.CorrectionManifest[1].functions[1].name = "changed"\n',
+                '\nLibQuestieDB.CorrectionManifest[1].functions[2].category = "static"\n',
+            ):
+                output.write_text(converted + suffix)
+                bad = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
+                self.assertNotEqual(bad.returncode, 0, "validator accepted changed registration inventory")
+
+            # Output corruptions catch transformed rows, constants, text, and load-time hints.
+            for before, after in (("15.0", "15.01"), ("ICON_TYPE_EVENT", "ICON_TYPE_TALK"),
+                                  ("Horde mage objective", "Wrong objective"),
+                                  ("itemObjectiveFirst[123] = true", "itemObjectiveFirst[123] = false")):
+                with self.subTest(corruption=before):
+                    self.assertIn(before, converted)
+                    output.write_text(converted.replace(before, after))
+                    bad = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
+                    self.assertNotEqual(bad.returncode, 0, "validator accepted corrupted " + before)
+
     @unittest.skipUnless(shutil.which("lua5.1"), "Lua 5.1 required for semantic validation")
     def test_validator_accepts_transformed_copy_and_rejects_coordinate_phase_and_name_corruption(self):
         source = FIXTURES / "validation-npc.lua"
@@ -263,6 +328,7 @@ class SemanticValidationTests(unittest.TestCase):
                     self.assertNotEqual(bad.returncode, 0, "validator accepted corrupted " + before)
 
 
+# Process cancellation must reap validation children and remove only temporary state.
 @unittest.skipIf(os.name == "nt", "POSIX SIGTERM cleanup test")
 class CancellationTests(unittest.TestCase):
     def run_cancelled(self, phase, root):

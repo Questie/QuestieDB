@@ -12,8 +12,8 @@ local iconTypes = LibQuestieDB.Enum.iconTypes
 function providers.Load()
     -- Authored Mists of Pandaria Static quest corrections do not inspect current character state.
     local questKeys = LibQuestieDB.Meta.Quest.keys
-    local raceIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].raceKeys
-    local classIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].classKeys
+    local raceIDs = LibQuestieDB.Enum.corrections.raceKeys
+    local classIDs = LibQuestieDB.Enum.corrections.classKeys
     local profKeys = LibQuestieDB.Enum.professionKeys
     local factionIDs = LibQuestieDB.Enum.factionIDs
     local zoneIDs = LibQuestieDB.Enum.zoneIDs

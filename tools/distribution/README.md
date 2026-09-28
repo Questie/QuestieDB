@@ -6,13 +6,34 @@ Run commands from the repository root. For setup and platform requirements, see
 
 | File | Responsibility |
 | --- | --- |
+| [`strip-static.lua`](strip-static.lua) | Remove centrally declared Static exports from staged mixed providers and verify native Dynamic behavior |
 | [`package.py`](package.py) | Validate generated inputs, stage and hash ZIPs, write `release.json` and `RELEASE_NOTES.md` |
 | [`release_notes.py`](release_notes.py) | Collect changelog entries and render release notes |
 | [`release_artifacts.py`](release_artifacts.py) | Verify the release handoff and return the approved archives for reporting or publication |
 | [`release.py`](release.py) | Select tags, check GitHub release state, and publish verified artifacts |
 | [`preview.py`](preview.py) | Render verified archive contents and the packaged release description |
-| [`strip-static.lua`](strip-static.lua) | Strip Static Correction bodies from staged copies and verify behavior parity |
 | [`bootstrap.py`](bootstrap.py) | Download, verify, and install the combined release archive |
+
+Correction files are selected by generated Baked TOCs. Pure-Static files are omitted. This file
+inventory is separate from the central manifest's per-function Static/Dynamic classification.
+`strip-static.lua` removes the manifest's Static function definitions from staged mixed files,
+without stubs or edits to repository sources. Pure-Dynamic files remain byte-identical.
+The narrow source-format contract requires column-zero `function providers.Name()` and
+closing `end` lines, with nested blocks indented. Missing/duplicate definitions, compilation
+errors and changed Dynamic behavior abort packaging.
+
+Packaging has three boundaries. Input preflight validates tools, every requested TOC and runtime
+file, declarations, contracts, versions, and changelog data before clearing prior output. Each ZIP
+then uses a disposable stage where the stripper collects and validates every native-provider
+transformation before writing any staged provider. Archive and release-metadata writes begin only
+after those checks; failures after output replacement can leave partial local packages.
+
+The stripper compares native registration metadata, Dynamic results and ObjectiveFirst hints
+before and after stripping. It exercises all applicable expansion constant shapes, both
+factions, all eleven class tokens and Human/Orc race branches. Shared code and hints outside
+Static definitions are retained. Lua 5.1 is required for this check and runtime contract
+validation. Extracted-package fixtures exercise native file selection and reads, including
+Forever's canonical and alias TOCs.
 
 ## Release manifest
 

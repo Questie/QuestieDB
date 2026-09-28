@@ -79,21 +79,43 @@ operating system. The full validation and release toolchain adds Python.
 
 ### Working on corrections
 
-Corrections are maintained under `src/corrections/<expansion>/`. Their original format came
-from Questie's `Database/Corrections`, and the
-[Questie wiki page on corrections](https://github.com/Questie/Questie/wiki/Corrections) still
-applies. On clients supporting native file selection, a clone junctioned or symlinked into
-`Interface/AddOns` runs your edits live in Source mode; nothing needs generating for that.
-Generation produces the Baked artifact and lets you run offline checks against your change.
+Corrections are native addon files under `src/corrections/<expansion>/`. Each file receives
+`local _, LibQuestieDB = ...` and exports lazy zero-argument functions returning Correction
+tables through `LibQuestieDB.CorrectionProviders`. Field keys come directly from
+`LibQuestieDB.Meta.<Entity>.keys`; shared constants come from `LibQuestieDB.Enum`, and varying
+constants from `LibQuestieDB.Enum.corrections`, selected before providers load. Flavor-owned
+tables replace the rules fallback as whole tables. Forever uses its own race masks and
+Classic class/NPC tables, while keeping Classic correction ordering.
+
+Keep Static and Dynamic functions together under the original correction filename. The
+explicit inventory in `src/corrections/manifest.lua` classifies each function and owns file
+applicability, datatype, stable registration identity, function sequence, load-order window,
+expansion metadata and merge options.
+`register.lua` composes the selected exports through the existing registry after all files
+load. Provider headers expose functions, not registration policy. Seasonal files consult
+central policy before exporting functions or writing hints. Keep registration names stable
+when moving files. The [native provider guide](docs/native-corrections.md#where-to-make-a-change)
+shows where to add a file, which metadata belongs in the manifest, and the focused checks.
+
+See [`src/meta/`](src/meta/) for canonical field definitions and [the storage contract](docs/storage-format.md)
+for nil/empty semantics. The [Questie field guide](https://github.com/Questie/Questie/wiki/Corrections)
+remains useful for data shapes, not its retired module-loader authoring examples.
+[Forever authoring](docs/forever.md#correction-authoring) identifies its separate editing surface.
+
+On clients supporting native file selection, a clone junctioned or symlinked into
+`Interface/AddOns` runs edits live in Source mode; nothing needs generating for that.
+Generation produces the Baked artifact. Baked TOCs omit pure-Static files. Packaging removes
+centrally declared Static functions from staged mixed files and verifies Dynamic behavior
+through native registration. Pure-Dynamic files stay byte-identical; source files are unchanged.
 
 For available field names and their meanings, read the commented `keys` tables in:
 
-- [`src/meta/questMeta.lua`](src/meta/questMeta.lua): `QuestieDB.questKeys`
-- [`src/meta/npcMeta.lua`](src/meta/npcMeta.lua): `QuestieDB.npcKeys`
-- [`src/meta/itemMeta.lua`](src/meta/itemMeta.lua): `QuestieDB.itemKeys`
-- [`src/meta/objectMeta.lua`](src/meta/objectMeta.lua): `QuestieDB.objectKeys`
+- [`src/meta/questMeta.lua`](src/meta/questMeta.lua): `LibQuestieDB.Meta.Quest.keys`
+- [`src/meta/npcMeta.lua`](src/meta/npcMeta.lua): `LibQuestieDB.Meta.Npc.keys`
+- [`src/meta/itemMeta.lua`](src/meta/itemMeta.lua): `LibQuestieDB.Meta.Item.keys`
+- [`src/meta/objectMeta.lua`](src/meta/objectMeta.lua): `LibQuestieDB.Meta.Object.keys`
 
-Correction providers receive these tables through `QuestieLoader:ImportModule("QuestieDB")`.
+Correction providers read these canonical tables directly from the addon namespace.
 Keep using names such as `questKeys.requiredLevel`; there is no separate field-key enum to
 maintain or schema file to load inside a correction.
 
@@ -279,7 +301,7 @@ is not proof of compatibility.
 The Python standard library handles ZIP creation, archive inspection, file sizes, timestamps,
 and SHA-256. Python needs its standard `zlib` module, not any installed Python packages.
 No `zip`, `unzip`, GNU coreutils, or `jq` is required for packaging. Lua 5.1 is still needed
-for Static Correction stripping and its behavior-parity check. Packaging honors `LUA`, then
+to validate the shipped runtime contract. Packaging honors `LUA`, then
 prefers the matching Windows/Linux x64 bundle before trying `lua5.1`/`lua`/`luajit` on `PATH`.
 Git supplies commit provenance and the release changelog when available. Packages built without
 Git or from shallow checkouts explicitly report that a complete changelog is unavailable. The
@@ -337,7 +359,7 @@ See [localization inputs](l10n/README.md) and [support data](docs/support-data.m
 
 Generation validates the data files' field-key enums against the owned schema. When changing a
 field, update its schema, affected data keys, and public declarations in the same change.
-Correction providers receive the canonical schema key tables through the compatibility shim;
+Correction providers read the canonical schema key tables directly from `LibQuestieDB.Meta`;
 there are no separate correction field-key definitions to maintain.
 Public `compilerTypes` metadata remains for compatibility; it does not select a compiler or
 derive the schema.
@@ -424,8 +446,8 @@ For contributors and release maintainers, see the distribution guide:
 ### Maintaining owned data
 
 Edit the sources here rather than re-importing Questie's retired database. The Correction
-manifest declares each provider's Static/Dynamic classification and expansion applicability;
-the compatibility shim supports the existing module-based authoring format.
+manifest owns selection and registration policy; native files only export lazy providers and
+Correction data. The central registrar composes them through the existing registry.
 
 After changing file lists, regenerate the committed Source TOC:
 
@@ -458,7 +480,7 @@ src/
   meta/                   schema, nil/empty semantics, chunk markers
   types/                  distributable LuaLS declarations, never loaded by a TOC
   read/                   shared getters + the two backends that differ
-  corrections/            registry, compat shim, owned correction sets
+  corrections/            registry, enums, native correction sets
   l10n/                   active-locale blocks and Dynamic Translation Corrections
   support/                whole-table game reference data
   ui/                     the source-mode indicator
@@ -490,6 +512,7 @@ lists; Baked mode also exposes scalar rows and table producers for its cache fas
 | | |
 | --- | --- |
 | [`docs/forever.md`](docs/forever.md) | Forever inputs, selection, tooling and client acceptance |
+| [`docs/native-corrections.md`](docs/native-corrections.md) | native provider authoring, loading and migration evidence |
 | [`docs/api.md`](docs/api.md) | the public surface, for consumers |
 | [`docs/release-format.md`](docs/release-format.md) | shared release metadata and addon composition rules |
 | [`tools/README.md`](tools/README.md) | tooling categories and ownership |

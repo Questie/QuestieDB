@@ -12,8 +12,8 @@ function providers.Load()
     -- Add character-independent Forever quest corrections or new entities to this Static table.
     local questKeys = LibQuestieDB.Meta.Quest.keys
     local zoneIDs = LibQuestieDB.Enum.zoneIDs
-    local raceIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].raceKeys
-    local classIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].classKeys
+    local raceIDs = LibQuestieDB.Enum.corrections.raceKeys
+    local classIDs = LibQuestieDB.Enum.corrections.classKeys
     local sortKeys = LibQuestieDB.Enum.sortKeys
     local specialFlags = LibQuestieDB.Enum.specialFlags
     local profKeys = LibQuestieDB.Enum.professionKeys
@@ -32,8 +32,8 @@ end
 function providers.LoadDynamic()
     local questKeys = LibQuestieDB.Meta.Quest.keys
     local zoneIDs = LibQuestieDB.Enum.zoneIDs
-    local raceIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].raceKeys
-    local classIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].classKeys
+    local raceIDs = LibQuestieDB.Enum.corrections.raceKeys
+    local classIDs = LibQuestieDB.Enum.corrections.classKeys
     local sortKeys = LibQuestieDB.Enum.sortKeys
     local specialFlags = LibQuestieDB.Enum.specialFlags
     local profKeys = LibQuestieDB.Enum.professionKeys

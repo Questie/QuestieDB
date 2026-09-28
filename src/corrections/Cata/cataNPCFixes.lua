@@ -14,7 +14,7 @@ function providers.Load()
     local zoneIDs = LibQuestieDB.Enum.zoneIDs
     local waypointPresets = LibQuestieDB.Enum.waypointPresets
     local phases = LibQuestieDB.Enum.phases
-    local npcFlags = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].npcFlags
+    local npcFlags = LibQuestieDB.Enum.corrections.npcFlags
 
     return {
         [19] = { -- Benny Questgiver

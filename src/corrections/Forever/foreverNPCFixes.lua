@@ -12,7 +12,7 @@ function providers.Load()
     -- Add character-independent Forever NPC corrections or new entities to this Static table.
     local npcKeys = LibQuestieDB.Meta.Npc.keys
     local zoneIDs = LibQuestieDB.Enum.zoneIDs
-    local npcFlags = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].npcFlags
+    local npcFlags = LibQuestieDB.Enum.corrections.npcFlags
     local waypointPresets = LibQuestieDB.Enum.waypointPresets
     local phases = LibQuestieDB.Enum.phases
 
@@ -27,7 +27,7 @@ end
 function providers.LoadDynamic()
     local npcKeys = LibQuestieDB.Meta.Npc.keys
     local zoneIDs = LibQuestieDB.Enum.zoneIDs
-    local npcFlags = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].npcFlags
+    local npcFlags = LibQuestieDB.Enum.corrections.npcFlags
     local waypointPresets = LibQuestieDB.Enum.waypointPresets
     local phases = LibQuestieDB.Enum.phases
 

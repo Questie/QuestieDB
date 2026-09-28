@@ -12,7 +12,7 @@ function providers.Load()
     -- Inherited Classic Static NPC corrections used by Forever.
     local npcKeys = LibQuestieDB.Meta.Npc.keys
     local zoneIDs = LibQuestieDB.Enum.zoneIDs
-    local npcFlags = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].npcFlags
+    local npcFlags = LibQuestieDB.Enum.corrections.npcFlags
     local waypointPresets = LibQuestieDB.Enum.waypointPresets
     local phases = LibQuestieDB.Enum.phases
 

@@ -246,8 +246,9 @@ First convert and validate temporary copies:
   --allow-untracked-source --keep-unmapped --dry-run
 ```
 
-Inspect the reported counts and unmapped AreaIDs. Then remove `--dry-run` to install
-the ten output files:
+Inspect the reported counts and unmapped AreaIDs. On a new output tree, remove `--dry-run`
+to install the ten output files. Existing native providers differ from the historical
+hashes; the installer refuses to overwrite those hand-edited bytes:
 
 ```sh
 ./questiedb.sh convert-forever \
@@ -269,22 +270,45 @@ are not rebuilt.
 
 ### Output files
 
-Raw inputs come from `data/Classic/`. The first five correction inputs come from
-`src/corrections/Era/`; **item-start corrections come from `src/corrections/Shared/`**.
+`convert.py` carries this explicit source-to-destination inventory. It is a deliberate migration
+map, not the runtime correction manifest, and it does not discover or synchronize new files.
+Adding an entry opts a destination into protected installation and requires matching semantic
+validation coverage.
+
+Raw entity baselines come from `data/Classic/`:
 
 ```text
-data/Forever/foreverItemDB.lua
-data/Forever/foreverNpcDB.lua
-data/Forever/foreverObjectDB.lua
-data/Forever/foreverQuestDB.lua
-
-src/corrections/Forever/legacy/classicItemFixes.lua
-src/corrections/Forever/legacy/classicNPCFixes.lua
-src/corrections/Forever/legacy/classicObjectFixes.lua
-src/corrections/Forever/legacy/classicQuestFixes.lua
-src/corrections/Forever/legacy/classicQuestReputationFixes.lua
-src/corrections/Forever/legacy/itemStartFixes.lua
+data/Classic/classicItemDB.lua   -> data/Forever/foreverItemDB.lua
+data/Classic/classicNpcDB.lua    -> data/Forever/foreverNpcDB.lua
+data/Classic/classicObjectDB.lua -> data/Forever/foreverObjectDB.lua
+data/Classic/classicQuestDB.lua  -> data/Forever/foreverQuestDB.lua
 ```
+
+The first five inherited providers come from `src/corrections/Era/`. Item-start corrections are
+shared during ordinary runtime loading, but this migration copies them from
+`src/corrections/Shared/` into Forever's isolated legacy baseline:
+
+```text
+src/corrections/Era/classicItemFixes.lua
+  -> src/corrections/Forever/legacy/classicItemFixes.lua
+src/corrections/Era/classicNPCFixes.lua
+  -> src/corrections/Forever/legacy/classicNPCFixes.lua
+src/corrections/Era/classicObjectFixes.lua
+  -> src/corrections/Forever/legacy/classicObjectFixes.lua
+src/corrections/Era/classicQuestFixes.lua
+  -> src/corrections/Forever/legacy/classicQuestFixes.lua
+src/corrections/Era/classicQuestReputationFixes.lua
+  -> src/corrections/Forever/legacy/classicQuestReputationFixes.lua
+src/corrections/Shared/itemStartFixes.lua
+  -> src/corrections/Forever/legacy/itemStartFixes.lua
+```
+
+For provider inputs, each inventory entry also lists every expected central-manifest registration
+identity and its Static/Dynamic category. Lua validation checks every returned result under
+Forever's destination constants on both sides, including its race masks. Each file still uses
+its own central registration policy. For coordinate-bearing providers, only schema-designated
+coordinate values may differ. These expectations are validation inputs, not a second runtime
+registration mechanism.
 
 The four authored `src/corrections/Forever/forever*Fixes.lua` files are not conversion
 outputs. Add new Forever corrections there rather than editing the inherited baseline.
@@ -294,7 +318,7 @@ DBC snapshot hashes and coverage, coefficients, per-file counts, converted AreaI
 and samples of unmapped or out-of-bounds coordinates. Keep it with the generated
 files: it also identifies outputs the tool may safely update on a later run.
 
-The tested `1.15.9.69722` → `1.60.1.69893` conversion recognized **140,660 pairs** and
+The historical pre-native `1.15.9.69722` → `1.60.1.69893` conversion recognized **140,660 pairs** and
 changed **13,691**. Six points on synthetic AreaIDs `10073`, `10074` and `10089`
 remained unresolved. The dry run validated all ten files and 30 correction personas.
 Counts depend on the source revision as well as the DBC builds.
@@ -325,14 +349,15 @@ bypasses recorded failures. Target snapshots must have recorded `ok` coverage.
 The [rewriter](rewrite.py) changes only X/Y numeric tokens in recognized fields:
 NPC/Object spawns and waypoints, Quest `triggerEnd` spawn lists, and Quest
 `extraObjectives` spawn lists. It processes both faction branches without executing
-or flattening them. Comments, module names, functions, class conditions, symbolic
-keys, localization calls, phases, nil holes and unrelated values remain intact.
+or flattening them. Comments, provider functions, class conditions, symbolic
+keys, English text, phases, nil holes and unrelated values remain intact.
 There are no runtime conversion wrappers in the output.
 
 Item data, Item corrections, reputation corrections and item-start corrections
-contain no coordinate fields and are copied byte-for-byte. Unsupported coordinate
+contain no coordinate fields, so their bytes are unchanged. Registration policy lives in the
+central manifest and needs no source rewriting. Unsupported coordinate
 expressions or malformed shapes fail explicitly. Lua validation compares loaded
-original and transformed data, including non-coordinate values, module-load effects
+original and transformed data, including non-coordinate values, load-time objective hints and complete registration metadata
 and the existing faction/class correction cases, before installation.
 
 Complete `{-1,-1}` instance sentinels remain unchanged; partial sentinels fail.
@@ -349,6 +374,23 @@ sentinel is rejected. The manifest records the output rounding policy.
 Only direct, unambiguous AreaID/UiMapID relationships shared by the two builds are
 converted. Partial map rectangles, conditional assignments, changed identities,
 subzone-parent guesses and synthetic map routing are not silently inferred.
+
+Validation loads native exports in isolated addon namespaces and composes them against the
+source and target entries in `src/corrections/manifest.lua`. The converter changes only
+coordinate number tokens. It does not rename exports, data strings or registration metadata;
+Era and the mutually exclusive inherited Forever files use the same export names. Provider
+files own those exports, while the central manifest classifies each function as Static or Dynamic
+and owns its stable identity, order, options, and applicability. No Questie compatibility loader
+participates in conversion or validation.
+Both factions, all 11 class tokens and Human/Orc race branches run: 440 provider invocations
+across six correction files, plus four raw entity comparisons. Unexpected registrations,
+missing entries, changed categories/options/order and changed objective hints fail validation.
+
+The committed `data/Forever/conversion.json` remains historical evidence. Its paths match
+the combined inventory, but native provider bytes no longer match its recorded output hashes.
+The installer therefore protects them as hand edits. It also refuses unexpected inventory
+changes before writing anything. There is no force flag or automatic acceptance of edited
+files. Dry runs do not grant overwrite permission or replace checks of the adopted data.
 
 ## Reruns and recovery
 

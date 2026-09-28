@@ -1,301 +1,164 @@
-#!/usr/bin/env lua
--- tools/distribution/strip-static.lua
---
--- Strips Static Correction function bodies from a staged package (issue #5).
---
--- Baked artifacts ship correction files that can contain both Static and Dynamic functions.
--- Static bodies are already folded into the TOC metadata store and need not be parsed again
--- at login. Dynamic functions and module-level hints must remain intact.
---
--- This tool rewrites STAGED COPIES only. Repository files retain their full bodies for
--- Generation, Source mode, and the package behavior comparison.
---
--- Safety is layered, and every failure aborts packaging:
---   * a static function must be found exactly once, as a column-0 `function Module:Name(`
---     with a column-0 closing `end` — the correction file layout this tool requires;
---   * the stripped file must still compile (`loadstring`);
---   * every Dynamic function must still be defined after the strip;
---   * the stripped file must behave identically to the original for everything Baked mode
---     uses: the module-level objectiveFirst hints, the set of functions on the module, and
---     the full output (returned table + captured direct writes) of every Dynamic function,
---     executed under the same compat shim and client persona.
---
--- That last check is the mechanical form of issue #5's verification item 1: if a needed
--- module-level side effect ever moves inside a static body, the parity check fails loudly
--- instead of the hint silently disappearing from shipped packages.
---
--- Usage: lua5.1 tools/distribution/strip-static.lua <stagedAddonDir> [--quiet]
---   e.g. lua5.1 tools/distribution/strip-static.lua .out/stage/QuestieDB
---
--- Run from the repository root: originals are read from src/corrections/ for the
--- pre-strip identity check and the behavior parity check.
-
+-- Remove centrally declared Static exports from staged Baked providers only.
+-- Source formatting contract: `function providers.Name()` and its closing `end`
+-- start at column zero; nested blocks are indented. Ambiguity aborts packaging.
+-- Dynamic exports, shared helpers and load-time hints remain byte-identical.
+-- Behavior is checked through the native registrar, never a replacement loader.
 local lib = dofile("generator/lib.lua")
-local manifest = dofile("src/corrections/manifest.lua")
-
---------------------------------------------------------------------------------------------
--- Arguments
---------------------------------------------------------------------------------------------
-
-local stagedDir, quiet
-for _, value in ipairs(arg or {}) do
-  if value == "--quiet" then
-    quiet = true
-  elseif value:sub(1, 2) == "--" then
-    error("Unknown option: " .. value, 0)
-  elseif stagedDir then
-    error("strip-static: exactly one staged addon directory expected", 0)
-  else
-    stagedDir = value
-  end
-end
-if not stagedDir then
-  io.stderr:write("usage: lua5.1 tools/distribution/strip-static.lua <stagedAddonDir> [--quiet]\n")
-  os.exit(2)
-end
-
-local function say(...)
-  if not quiet then print(...) end
-end
-
-local function fail(message, ...)
-  io.stderr:write("strip-static: " .. message:format(...) .. "\n")
-  os.exit(1)
-end
-
---------------------------------------------------------------------------------------------
--- Stripping
---------------------------------------------------------------------------------------------
-
---- Pattern for a top-level definition of one named function, column 0,
---- `function <Module>:<Name>(` or `function <Module>.<Name>(`.
-local function headerPattern(functionName)
-  return "^function%s+[%w_]+%s*[:.]%s*" .. functionName .. "%s*%("
-end
-
---- Whether `lines[index]` opens a top-level definition of `functionName`.
-local function isHeader(line, functionName)
-  return line:find(headerPattern(functionName)) ~= nil
-end
-
-local STUB_BODY = {
-  "  -- Static body stripped at package time (tools/distribution/strip-static.lua): this correction is",
-  "  -- already folded into the TOC metadata store. The repository copy keeps the full body.",
-  "  return {}",
-}
-
---- Replace the body of one top-level static function with the stub, in place.
----@param lines table The file as an array of lines
----@param functionName string
----@param filePath string For error messages
-local function stripFunction(lines, functionName, filePath)
-  local headerIndex
-  for index, line in ipairs(lines) do
-    if isHeader(line, functionName) then
-      if headerIndex then
-        fail("%s defines %s more than once (lines %d and %d) — refusing to guess",
-          filePath, functionName, headerIndex, index)
-      end
-      headerIndex = index
-    end
-  end
-  if not headerIndex then
-    fail("%s: static function %s not found as a top-level definition", filePath, functionName)
-  end
-
-  local endIndex
-  for index = headerIndex + 1, #lines do
-    if lines[index]:find("^end%s*$") then endIndex = index break end
-    -- A second top-level function before `end` means the closing line was missed.
-    if lines[index]:find("^function%s") then
-      fail("%s: %s runs into the next function without a column-0 end", filePath, functionName)
-    end
-  end
-  if not endIndex then
-    fail("%s: no closing end found for %s", filePath, functionName)
-  end
-
-  -- Keep the header and the closing end byte-identical; replace only the body between them.
-  local tail = {}
-  for index = endIndex, #lines do tail[#tail + 1] = lines[index] end
-  for index = #lines, headerIndex + 1, -1 do lines[index] = nil end
-  for _, line in ipairs(STUB_BODY) do lines[#lines + 1] = line end
-  for _, line in ipairs(tail) do lines[#lines + 1] = line end
-end
-
---- Split file content into lines, asserting the split is lossless so everything outside a
---- stripped body stays byte-identical by construction.
-local function toLines(content, filePath)
-  local lines = {}
-  for line in (content .. "\n"):gmatch("([^\n]*)\n") do lines[#lines + 1] = line end
-  -- The artificial trailing element appears when content already ended in a newline.
-  if lines[#lines] == "" and content:sub(-1) == "\n" then lines[#lines] = nil end
-  local rejoined = table.concat(lines, "\n") .. (content:sub(-1) == "\n" and "\n" or "")
-  if rejoined ~= content then
-    fail("%s: lossless line split failed (unexpected line endings?)", filePath)
-  end
-  return lines
-end
-
---------------------------------------------------------------------------------------------
--- Behavior parity: original versus stripped
---------------------------------------------------------------------------------------------
-
 local runtime = dofile("generator/runtime.lua")
 local client = dofile("emulator/client.lua")
 local config = dofile("src/config.lua")
+local manifest = dofile("src/corrections/manifest.lua")
 
--- One fixed persona for both sides of every comparison. The absolute outputs do not matter,
--- only that original and stripped agree under identical inputs.
-client.install({})
+local stagedDir = assert(arg[1], "usage: strip-static.lua <stagedAddonDir> [--quiet]")
+assert(arg[2] == nil or arg[2] == "--quiet", "unknown strip-static option")
+assert(arg[3] == nil, "unexpected strip-static argument")
 
---- The flavor a correction file's own expansion window belongs to, so the compat shim serves
---- the constants the file was written against (Era masks differ from TBC+ masks).
-local PREFIX_EXPANSION = {
-  Forever = "Forever", Era = "Classic", Sod = "Classic", Shared = "Classic",
-  Tbc = "TBC", Wotlk = "Wotlk", Cata = "Cata", MoP = "MoP",
-}
-
-local function flavorFor(spec)
-  local prefix = spec.file:match("^(%w+)/")
-  local expansion = PREFIX_EXPANSION[prefix] or "Classic"
-  for _, flavor in ipairs(config.flavors) do
-    if flavor.expansion == expansion then return flavor end
+---Remove a complete export, not a callable Static stub.
+---@param content string
+---@param method string
+---@param path string
+---@return string
+local function stripFunction(content, method, path)
+  local lines = {}
+  for line in (content .. "\n"):gmatch("([^\n]*)\n") do lines[#lines + 1] = line end
+  assert(table.concat(lines, "\n") == content, path .. ": lossless line split failed")
+  local first, last
+  for index, line in ipairs(lines) do
+    if line:match("^function providers%." .. method .. "%(%)[ \r]*$") then
+      assert(not first, path .. ": duplicate Static definition " .. method)
+      first = index
+    end
   end
-  fail("%s: no flavor found for expansion %s", spec.file, expansion)
+  assert(first, path .. ": Static function not found at column zero: " .. method)
+  for index = first + 1, #lines do
+    local line = lines[index]
+    assert(not line:match("^function "), path .. ": missing column-zero end for " .. method)
+    if line:match("^end[ \r]*$") then last = index; break end
+  end
+  assert(last, path .. ": missing closing end for " .. method)
+  -- The source annotation belongs to the removed declaration, not the next shared helper.
+  while first > 1 and lines[first - 1]:match("^%-%-%-@") do first = first - 1 end
+  for _ = first, last do table.remove(lines, first) end
+  return table.concat(lines, "\n")
 end
 
-local function deepCopy(value)
+---@param value any
+---@return any
+local function copy(value)
   if type(value) ~= "table" then return value end
-  local out = {}
-  for k, v in pairs(value) do out[k] = deepCopy(v) end
-  return out
+  local result = {}
+  for key, child in pairs(value) do result[key] = copy(child) end
+  return result
 end
 
---- Load one correction file variant in a fresh compat sandbox and observe everything Baked
---- mode consumes from it.
----@return table { hints, functionNames, outputs }
-local function observe(spec, content, label)
-  local Lib = runtime.build()
-  local compat = Lib.CorrectionCompat
-  local remove = compat.Install(flavorFor(spec))
-
-  local chunk, err = loadstring(content, "@" .. label)
-  if not chunk then
-    remove()
-    fail("%s (%s) does not compile: %s", spec.file, label, tostring(err))
+---Observe exactly what Baked consumes, including central registration metadata and hints.
+---The manifest classifies each exported function; the staged file inventory only decides
+---whether this provider is present in the package.
+---@param spec CorrectionFileSpec
+---@param content string
+---@param flavor table
+---@param stripped boolean
+---@return table
+local function observe(spec, content, flavor, stripped)
+  local db = runtime.build()
+  db.flavor, db.mode = flavor, "baked"
+  runtime.execute("src/corrections/prepare.lua", "QuestieDB", db)
+  db.CorrectionManifest = { spec }
+  assert(loadstring(content, "@" .. spec.file))("QuestieDB", db)
+  assert(#db.Corrections.Select({}) == 0, spec.file .. ": provider registered outside central policy")
+  for provider in pairs(db.CorrectionProviders) do
+    assert(provider == spec.provider, spec.file .. ": unexpected export table " .. provider)
   end
-  local ok, execErr = pcall(chunk, "QuestieDB", Lib)
-  if not ok then
-    remove()
-    fail("%s (%s) failed to execute: %s", spec.file, label, tostring(execErr))
-  end
-
-  local module = compat.modules[spec.module]
-  if type(module) ~= "table" then
-    remove()
-    fail("%s (%s): module %s was not created", spec.file, label, spec.module)
-  end
-
-  local observed = {
-    hints = deepCopy(compat.objectiveFirst),
-    functionNames = {},
-    outputs = {},
-  }
-  for name, value in pairs(module) do
-    if type(value) == "function" then observed.functionNames[name] = true end
-  end
-
-  for _, name in ipairs(spec.dynamic or {}) do
-    local fn = module[name]
-    if type(fn) ~= "function" then
-      remove()
-      fail("%s (%s): %s is not a function after load", spec.file, label, name)
+  if stripped then
+    local exports = db.CorrectionProviders[spec.provider]
+    for _, declaration in ipairs(spec.functions) do
+      if declaration.category == "static" and exports then
+        assert(exports[declaration.method] == nil, spec.file .. ": Static export survived stripping")
+      end
     end
-    compat.BeginCapture()
-    local callOk, returned = pcall(compat.Invoke, fn, module)
-    if not callOk then
-      remove()
-      fail("%s (%s): %s raised: %s", spec.file, label, name, tostring(returned))
-    end
-    observed.outputs[name] = {
-      returned = deepCopy(returned),
-      captured = deepCopy(compat.EndCapture(spec.datatype)),
-    }
   end
+  runtime.execute("src/corrections/register.lua", "QuestieDB", db)
 
-  remove()
+  -- Capture true native Dynamic registrations and outputs, not a packaging-only persona.
+  local observed = { before = copy(db.ObjectiveFirst), entries = {}, outputs = {} }
+  for _, entry in ipairs(db.Corrections.Select({})) do
+    assert(entry.dynamic, spec.file .. ": Baked registered a Static function")
+    local metadata = {}
+    for key, value in pairs(entry) do
+      if key ~= "func" then metadata[key] = copy(value) end
+    end
+    observed.entries[#observed.entries + 1] = metadata
+    observed.outputs[entry.name] = copy(entry.func())
+  end
+  observed.after = copy(db.ObjectiveFirst)
   return observed
 end
 
+local classes = { "WARRIOR", "PALADIN", "HUNTER", "ROGUE", "PRIEST", "DEATHKNIGHT",
+  "SHAMAN", "MAGE", "WARLOCK", "MONK", "DRUID" }
+
+---Cover every applicable constant shape and the providers' faction/class/race branches.
+---@param spec CorrectionFileSpec
+---@param original string
+---@param stripped string
+---@return nil
 local function assertParity(spec, original, stripped)
-  if not lib.deepEqual(original.hints, stripped.hints) then
-    fail("%s: objectiveFirst hints differ after strip — a hint moved inside a static body",
-      spec.file)
+  local checks = 0
+  for _, flavor in ipairs(config.flavors) do
+    if config.correctionApplies(spec, flavor) then
+      local seasons = spec.season and { "None", spec.season } or { "None" }
+      for _, season in ipairs(seasons) do
+        for _, faction in ipairs({ "Alliance", "Horde" }) do
+          for classId, class in ipairs(classes) do
+            for _, race in ipairs({ "Human", "Orc" }) do
+              client.reset()
+              client.install({ expansion = flavor.expansion, season = season, faction = faction,
+                classFile = class, classId = classId, raceName = race, raceFile = race,
+                raceId = race == "Human" and 1 or 2 })
+              local before = observe(spec, original, flavor, false)
+              local after = observe(spec, stripped, flavor, true)
+              assert(lib.deepEqual(before, after), spec.file .. ": Baked behavior changed after stripping: "
+                .. flavor.name .. "/" .. season .. "/" .. faction .. "/" .. class .. "/" .. race)
+              checks = checks + 1
+            end
+          end
+        end
+      end
+    end
   end
-  if not lib.deepEqual(original.functionNames, stripped.functionNames) then
-    fail("%s: the module's function set changed after strip", spec.file)
-  end
-  if not lib.deepEqual(original.outputs, stripped.outputs) then
-    fail("%s: a Dynamic function's output changed after strip", spec.file)
-  end
+  client.reset()
+  assert(checks > 0, spec.file .. ": no applicable strip personas")
 end
 
---------------------------------------------------------------------------------------------
--- Driver
---------------------------------------------------------------------------------------------
-
-local totalBefore, totalAfter, strippedFiles = 0, 0, 0
-
+-- Phase 1: collect and validate every transformation before writing any staged file.
+-- Repository originals remain the behavior baseline and are never modified.
+local pending, beforeBytes, afterBytes = {}, 0, 0
 for _, spec in ipairs(manifest) do
-  if spec.static and #spec.static > 0 then
-    local stagedPath = stagedDir .. "/src/corrections/" .. spec.file
-    if lib.fileExists(stagedPath) then
+  local path = stagedDir .. "/src/corrections/" .. spec.file
+  if lib.fileExists(path) then
+    local methods = {}
+    for _, declaration in ipairs(spec.functions) do
+      assert(declaration.category == "static" or declaration.category == "dynamic", "invalid category: " .. spec.file)
+      if declaration.category == "static" then methods[#methods + 1] = declaration.method end
+    end
+    if #methods > 0 then
+      assert(config.hasDynamicCorrections(spec), "Static-only provider in Baked package: " .. spec.file)
       local sourcePath = "src/corrections/" .. spec.file
       local original = lib.readAll(sourcePath)
-      local staged = lib.readAll(stagedPath)
-      if staged ~= original then
-        fail("%s differs from %s before stripping — already stripped, or a stale stage?",
-          stagedPath, sourcePath)
-      end
-
-      local lines = toLines(original, spec.file)
-      for _, functionName in ipairs(spec.static) do
-        stripFunction(lines, functionName, spec.file)
-      end
-      local stripped = table.concat(lines, "\n") .. (original:sub(-1) == "\n" and "\n" or "")
-
-      local chunk, err = loadstring(stripped, "@" .. spec.file)
-      if not chunk then
-        fail("%s does not compile after strip: %s", spec.file, tostring(err))
-      end
-      local function stillDefined(name)
-        for _, line in ipairs(lines) do
-          if isHeader(line, name) then return true end
-        end
-        return false
-      end
-      for _, name in ipairs(spec.dynamic or {}) do
-        if not stillDefined(name) then
-          fail("%s: dynamic function %s lost by the strip", spec.file, name)
-        end
-      end
-      assertParity(spec, observe(spec, original, spec.file .. " original"),
-        observe(spec, stripped, spec.file .. " stripped"))
-
-      lib.writeAll(stagedPath, stripped)
-      totalBefore = totalBefore + #original
-      totalAfter = totalAfter + #stripped
-      strippedFiles = strippedFiles + 1
-      say(("  stripped %-32s %7.1f KB -> %5.1f KB")
-        :format(spec.file, #original / 1024, #stripped / 1024))
+      assert(lib.readAll(path) == original, path .. ": staged bytes differ before stripping")
+      assert(loadstring(original, "@" .. sourcePath))
+      local stripped = original
+      for _, method in ipairs(methods) do stripped = stripFunction(stripped, method, spec.file) end
+      assert(loadstring(stripped, "@" .. path))
+      assertParity(spec, original, stripped)
+      pending[#pending + 1] = { path = path, content = stripped }
+      beforeBytes, afterBytes = beforeBytes + #original, afterBytes + #stripped
     end
   end
 end
 
-if strippedFiles == 0 then
-  say("strip-static: nothing to strip (no staged files carry static functions)")
-else
-  say(("strip-static: %d files, %.2f MB -> %.0f KB (parity checked)")
-    :format(strippedFiles, totalBefore / 1048576, totalAfter / 1024))
+-- Phase 2: publish only after every transformed provider passes syntax and native parity.
+for _, file in ipairs(pending) do lib.writeAll(file.path, file.content) end
+if arg[2] ~= "--quiet" then
+  print(("strip-static: %d files, %d -> %d bytes (native behavior checked)"):format(#pending, beforeBytes, afterBytes))
 end

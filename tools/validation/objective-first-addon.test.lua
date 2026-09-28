@@ -1,4 +1,4 @@
--- Full-addon and stripped-package coverage. Run after Generation in an isolated checkout;
+-- Full-addon and packaged-addon coverage. Run after Generation in an isolated checkout;
 -- the focused objective-first suite needs no entity payload generation.
 local lib = dofile("generator/lib.lua")
 local testFiles = dofile("tools/validation/test-files.lua")
@@ -13,19 +13,6 @@ _G.LibStub = savedLibStub
 assert(clientLoaded, client)
 local emulator = dofile("emulator/metadata.lua")
 
----@param value string
----@return string quoted
-local function quote(value)
-  return lib.shellQuote(value)
-end
-
----@param command string
----@return boolean succeeded
-local function succeeds(command)
-  local status = lib.execute(command)
-  return status == true or status == 0
-end
-
 ---@param check fun(condition: boolean, message: string)
 ---@param equal fun(actual: any, expected: any, message: string)
 ---@param selectedFlavor? table|string A flavor for artifact gates, or Source for shared checks.
@@ -33,6 +20,8 @@ end
 return function(check, equal, selectedFlavor)
   local sourceOnly = selectedFlavor == "Source"
   if sourceOnly then selectedFlavor = nil end
+
+  -- Discover only complete generated artifacts; Source-only runs need no payload generation.
   local generated, available = {}, {}
   local flavors = config.flavors
   if sourceOnly then
@@ -48,7 +37,7 @@ return function(check, equal, selectedFlavor)
         generated[#generated + 1] = flavor
         available[flavor.name] = true
       else
-        io.write("  SKIP objective-first-addon Baked/stripped ", flavor.name, ": artifact not generated\n")
+        io.write("  SKIP objective-first-addon Baked/packaged ", flavor.name, ": artifact not generated\n")
       end
     end
   end
@@ -71,16 +60,21 @@ return function(check, equal, selectedFlavor)
           end
         end
       end
-      local lua = os.getenv("LUA") or "lua5.1"
-      assert(succeeds(quote(lua) .. " tools/distribution/strip-static.lua " .. quote(stage) .. " --quiet"),
-        "staged package failed Static Correction stripping and per-file behavior parity")
-      local stripped = lib.readAll(stage .. "/src/corrections/Era/classicQuestFixes.lua")
-      check(stripped:find("Static body stripped at package time", 1, true) ~= nil,
-        "the staged addon really contains stripped correction bodies")
+      local status = lib.execute(lib.shellQuote(os.getenv("LUA") or "lua5.1")
+        .. " tools/distribution/strip-static.lua " .. lib.shellQuote(stage) .. " --quiet")
+      check(status == 0 or status == true, "package stripping verifies native Dynamic behavior")
+      local path = "src/corrections/Era/classicQuestFixes.lua"
+      local content = lib.readAll(stage .. "/" .. path)
+      check(not content:find("function providers.Load()", 1, true),
+        "the staged mixed provider has no Static export")
+      check(content:find("function providers.LoadFactionFixes()", 1, true),
+        "the staged mixed provider keeps its Dynamic export")
+      check(not lib.fileExists(stage .. "/src/corrections/Era/classicQuestReputationFixes.lua"),
+        "the staged addon excludes pure-Static providers")
     end
 
     -- These few authored hints witness expansion inheritance and season boundaries.
-    -- The synthetic scope tests cover Titan even though it currently declares no hints.
+    -- The injected early-guard tests cover Titan even though it currently declares no hints.
     local cases = {
       { name = "Vanilla", flavor = "Vanilla", season = 0, expected = { item = true } },
       { name = "SoD", flavor = "Vanilla", season = 2, expected = { item = true, event = true } },
@@ -98,12 +92,13 @@ return function(check, equal, selectedFlavor)
         personas[#personas + 1] = persona
       end
     end
+    -- Compare Source, generated Baked, and package-shaped Baked reads for each witness persona.
     for _, persona in ipairs(personas) do
       local flavor = config.flavorByName[persona.flavor]
       local modes = { { name = "Source", mode = "source", toc = "QuestieDB.toc" } }
       if available[flavor.name] then
         modes[#modes + 1] = { name = "Baked", mode = "baked", toc = config.tocPath(flavor) }
-        modes[#modes + 1] = { name = "stripped package", mode = "baked",
+        modes[#modes + 1] = { name = "packaged addon", mode = "baked",
           toc = stage .. "/" .. config.tocPath(flavor), root = stage }
       end
       for _, mode in ipairs(modes) do
@@ -119,8 +114,6 @@ return function(check, equal, selectedFlavor)
         equal({ item = hints.itemObjectiveFirst[503], event = hints.eventObjectiveFirst[85304],
           killCredit = hints.killCreditObjectiveFirst[52], spell = hints.spellObjectiveFirst[10068] },
           persona.expected, label .. " admits only this expansion's and season's hints")
-        check(namespace.ObjectiveFirst == namespace.CorrectionCompat.objectiveFirst,
-          label .. " publishes the original hint table")
         check(rawget(_G, "QuestieLoader") == nil, label .. " restores QuestieLoader")
         -- Retain only the small hint tables, not multi-expansion entity payloads.
         namespace = nil

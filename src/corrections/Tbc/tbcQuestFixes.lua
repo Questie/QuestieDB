@@ -12,8 +12,8 @@ local iconTypes = LibQuestieDB.Enum.iconTypes
 function providers.Load()
     -- Authored Burning Crusade Static quest corrections do not inspect current character state.
     local questKeys = LibQuestieDB.Meta.Quest.keys
-    local raceIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].raceKeys
-    local classIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].classKeys
+    local raceIDs = LibQuestieDB.Enum.corrections.raceKeys
+    local classIDs = LibQuestieDB.Enum.corrections.classKeys
     local factionIDs = LibQuestieDB.Enum.factionIDs
     local zoneIDs = LibQuestieDB.Enum.zoneIDs
     local sortKeys = LibQuestieDB.Enum.sortKeys
@@ -8478,7 +8478,7 @@ LibQuestieDB.ObjectiveFirst.killCreditObjectiveFirst[10503] = true -- The Blades
 ---@return table<integer, table> fixes Character-dependent quest corrections.
 function providers.LoadFactionFixes()
     local questKeys = LibQuestieDB.Meta.Quest.keys
-    local raceIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].raceKeys
+    local raceIDs = LibQuestieDB.Enum.corrections.raceKeys
     local playerClass = UnitClassBase("player")
     local playerRace = select(2, UnitRace("player"))
     local factionIDs = LibQuestieDB.Enum.factionIDs

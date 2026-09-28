@@ -261,12 +261,14 @@ Base-expansion hints are cumulative: TBC includes Era hints, Wrath includes Era 
 and so on through Mists. Forever publishes hints from its owned providers, not the cumulative
 legacy providers. Seasonal hints require both their base flavor and active season. SoD hints
 appear only on Vanilla with season 2 active. Titan Reforged hints appear only on Wrath
-with season 109 active. Source, Baked, and static-stripped packaged addons publish the same five
+with season 109 active. Source, Baked, and packaged addons publish the same five
 tables for a given flavor and season.
 
 A seasonal provider file may ship in a base-flavor addon because its Dynamic Corrections must be
 available when that season is active. Loading the file does not publish its objective-ordering
-hints when the season gate is closed. Plain Vanilla excludes SoD load-time hints even though
+hints when the season gate is closed: the native file returns before any hint writes or
+export publication, so the central registrar has nothing seasonal to register. Plain Vanilla
+excludes SoD load-time hints even though
 the files are present. [ADR 0012](./adr/0012-objective-first-applicability.md) records the
 applicability boundary and its original migration rationale.
 

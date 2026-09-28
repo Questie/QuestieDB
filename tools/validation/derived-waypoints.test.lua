@@ -5,6 +5,7 @@ return function(check, equal)
   local db = runtime.build()
   local keys = db.Meta.Npc.keys
 
+  -- Transform-level regressions: simplification precedes subdivision and paths stay isolated.
   equal(db.DerivedWaypoints.Optimize({ [12] = { {0, 0}, {0.1, 0.05}, {3, 0} } },
     db.RamerDouglasPeucker, {}), { [12] = { { {0, 0}, {1.5, 0}, {3, 0} } } },
     "RDP removes the small bend before subdivision inserts evenly spaced points")
@@ -15,28 +16,21 @@ return function(check, equal)
 
   -- Use the actual expansion declarations with synthetic providers. A change to Era/TBC
   -- admission must fail even if Generation and Source mode make the same mistake.
-  local manifest = {}
-  for _, spec in ipairs(db.CorrectionManifest) do
-    if spec.file == "Era/classicNPCFixes.lua" or spec.file == "Tbc/tbcNPCFixes.lua" or
-       spec.file == "Wotlk/wotlkNPCFixes.lua" then
-      manifest[#manifest + 1] = spec
-    end
-  end
-  local modules = {
-    QuestieNPCFixes = { Load = function() return {
+  runtime.loadCorrections(db, config.flavorByName.TBC)
+  local replacements = {
+    ["Era/classicNPCFixes.lua:Load"] = function() return {
       [990001] = { [keys.name] = "Inherited", [keys.minLevel] = 10,
         [keys.waypoints] = { [1519] = { {0, 0}, {0.1, 0.05}, {3, 0} } } },
       [990002] = { [keys.waypoints] = { [12] = { {0, 0}, {0.1, 0.05}, {3, 0} } } },
-    } end },
-    QuestieTBCNpcFixes = { Load = function() return {
+    } end,
+    ["Tbc/tbcNPCFixes.lua:Load"] = function() return {
       [990001] = { [keys.minLevel] = 20, [keys.maxLevel] = 25 },
-    } end },
-    QuestieWotlkNpcFixes = { LoadAutomatics = function() return {} end, Load = function() return {
-      [990001] = { [keys.name] = "Future", [keys.minLevel] = 30 },
-    } end },
+    } end,
   }
-  db.CorrectionManifest = manifest
-  db.CorrectionRegister.FromManifest(config.flavorByName.TBC, function(name) return modules[name] end)
+  for _, entry in ipairs(db.Corrections.Select({})) do
+    entry.func = replacements[entry.name] or function() return {} end
+    check(not entry.name:find("^Wotlk/"), "TBC excludes future Wrath registrations")
+  end
 
   -- Replace only input loading and registry construction. The real flavor pipeline,
   -- correction engine, schema checks, canonical enums and Derived Pass registry still run.
@@ -61,6 +55,7 @@ return function(check, equal)
       }, keys
     end },
   })
+  -- Full pipeline regression: inherited and TBC corrections precede the real Derived pass.
   local loaded = flavorLoader.load(config.flavorByName.TBC, { Npc = true })
   local npc = loaded.Npc.entities[990001]
   equal(npc[keys.name], "Inherited", "TBC inherits Era's field and excludes the future Wrath correction")

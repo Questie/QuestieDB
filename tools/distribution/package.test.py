@@ -58,6 +58,7 @@ except ValueError:
     LUA = None
 
 
+# Interpreter discovery must be portable and honor the explicit override.
 class LuaSelectionTest(unittest.TestCase):
     def test_bundle_matches_platform_and_explicit_override_wins(self):
         with tempfile.TemporaryDirectory(prefix="package Lua ") as directory:
@@ -94,6 +95,7 @@ class LuaSelectionTest(unittest.TestCase):
             # fmt: on
 
 
+# Privacy boundary for malformed Git output and public credit names.
 class CreditNameTest(unittest.TestCase):
     def test_corrupt_git_output_fails_without_echoing_private_data(self):
         sha = "a" * 40
@@ -138,6 +140,7 @@ class CreditNameTest(unittest.TestCase):
                 self.assertIsNone(packager.release_notes.public_credit_name(name))
 
 
+# Real Git history establishes changelog selection, ordering, deduplication, and credits.
 @unittest.skipUnless(shutil.which("git"), "Git is required for changelog fixtures")
 class ChangelogTest(unittest.TestCase):
     def setUp(self):
@@ -476,6 +479,69 @@ class ChangelogTest(unittest.TestCase):
         self.assertNotIn("- New change", notes)
 
 
+# Static stripping must preserve true native Dynamic behavior and fail before staged writes.
+@unittest.skipUnless(LUA, "Lua 5.1 is required")
+class StaticStripTest(unittest.TestCase):
+    PROVIDER = Path("src/corrections/Wotlk/wotlkObjectFixes.lua")
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(prefix="questiedb native strip ")
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        for directory in ("src", "generator", "emulator"):
+            shutil.copytree(ROOT / directory, self.root / directory)
+        self.stage = self.root / "stage"
+        (self.stage / self.PROVIDER).parent.mkdir(parents=True)
+        self.fixture = (ROOT / "tools/distribution/fixtures/strip-static.lua").read_text()
+
+    def run_strip(self, source):
+        (self.root / self.PROVIDER).write_text(source)
+        (self.stage / self.PROVIDER).write_text(source)
+        return subprocess.run(
+            [LUA, str(ROOT / "tools/distribution/strip-static.lua"), str(self.stage)],
+            cwd=self.root, capture_output=True, text=True, timeout=30,
+        )
+
+    def test_removes_only_static_exports_and_preserves_dynamic_shared_code_and_hints(self):
+        dynamic = Path("src/corrections/Titan/titanReforgedObjectFixes.lua")
+        (self.stage / dynamic).parent.mkdir(parents=True)
+        shutil.copyfile(ROOT / dynamic, self.stage / dynamic)
+        result = self.run_strip(self.fixture)
+        self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+        stripped = (self.stage / self.PROVIDER).read_text()
+        self.assertNotIn("STATIC_BODY_SENTINEL", stripped)
+        self.assertNotIn("function providers.Load()", stripped)
+        self.assertIn("function providers.LoadFactionFixes()", stripped)
+        self.assertIn("local function sharedName()", stripped)
+        self.assertIn("objectObjectiveFirst[123] = true", stripped)
+        self.assertEqual(self.fixture, (self.root / self.PROVIDER).read_text())
+        self.assertEqual((ROOT / dynamic).read_bytes(), (self.stage / dynamic).read_bytes())
+
+    def test_rejects_static_dependency_in_later_expansion_horde_mage_race_branch(self):
+        source = self.fixture.replace("-- STRIP_NEGATIVE_CONTROL", '''if LibQuestieDB.flavor.rules == "MoP" and UnitFactionGroup("player") == "Horde"
+      and UnitClassBase("player") == "MAGE" and select(2, UnitRace("player")) == "Orc" then
+    name = providers.Load()[123][objectKeys.name]
+  end''')
+        result = self.run_strip(source)
+        self.assertNotEqual(0, result.returncode, result.stdout)
+        self.assertIn("Load", result.stderr)
+        self.assertEqual(source, (self.stage / self.PROVIDER).read_text())
+
+    def test_rejects_ambiguous_definition_and_compile_errors_without_writes(self):
+        for source in (
+            self.fixture.replace("function providers.Load()", " function providers.Load()"),
+            self.fixture + "\nfunction providers.Load()\n  return {}\nend\n",
+            self.fixture + "\ninvalid syntax !\n",
+            self.fixture.replace("  return { [123] = { [objectKeys.name] = \"STATIC_BODY_SENTINEL\" } }\nend",
+                                 "  return {}\n  end"),
+        ):
+            with self.subTest(source=source):
+                result = self.run_strip(source)
+                self.assertNotEqual(0, result.returncode, result.stdout)
+                self.assertEqual(source, (self.stage / self.PROVIDER).read_text())
+
+
+# End-to-end local packaging: input preflight, staged transformation, archive proof, and metadata.
 class PackageTest(unittest.TestCase):
     def setUp(self):
         if not LUA:
@@ -488,7 +554,7 @@ class PackageTest(unittest.TestCase):
 
         # Python and Lua are explicit: no external ZIP, checksum, Git, or shell tools.
         (self.root / "tools/distribution").mkdir(parents=True)
-        for filename in ("package.py", "release_notes.py"):
+        for filename in ("package.py", "release_notes.py", "strip-static.lua"):
             shutil.copy(
                 ROOT / "tools/distribution" / filename, self.root / "tools/distribution" / filename
             )
@@ -505,20 +571,19 @@ class PackageTest(unittest.TestCase):
             ROOT / "icons/QuestieTDB_64x64.png", self.root / "icons/QuestieTDB_64x64.png"
         )
         self.write("icons/QuestieTDB.pdn", "unshipped artwork\n")
-        self.write("src/corrections/Era/fixes.lua", "return 'unstripped'\n")
+        # Use the production stripper and registrar with a small native mixed provider.
+        for directory in ("generator", "emulator"):
+            shutil.copytree(ROOT / directory, self.root / directory)
+        for directory in ("corrections", "meta", "derived"):
+            shutil.copytree(ROOT / "src" / directory, self.root / "src" / directory)
+        self.provider_source = (ROOT / "tools/distribution/fixtures/strip-static.lua").read_text()
+        self.write("src/corrections/Wotlk/wotlkObjectFixes.lua", self.provider_source)
         self.write("data/raw.lua", "-- source-only data\n")
         self.write("l10n/translation.lua", "-- source-only localization\n")
         self.write("QuestieDB.toc", "-- source-only TOC\n")
         self.write("tools/lua-binary/lua.exe", "contributor-only executable\n")
         self.write("tools/lua-binary/linux-x64/lua", "contributor-only executable\n")
         self.write("generate.cmd", "contributor-only launcher\n")
-
-        # Only the stripper is substituted: the packager still invokes real Lua on staged
-        # files. Production stripping has its own behavior-parity checks.
-        shutil.copyfile(
-            ROOT / "tools/distribution/fixtures/strip-static.lua",
-            self.root / "tools/distribution/strip-static.lua",
-        )
 
         for flavor in FLAVORS:
             self.write("support/%s.lua" % flavor, "return '%s'\n" % flavor)
@@ -527,7 +592,7 @@ class PackageTest(unittest.TestCase):
                 "## Version: 1.2.3-dev.abcdef0\n## X-Contract-Version: 2\n"
                 + "## Interface: %s\n" % TOC_INTERFACES[flavor]
                 + "## IconTexture: Interface\\AddOns\\QuestieDB\\icons\\QuestieTDB_64x64.png\n"
-                + "src\\config.lua\nsrc\\runtime.lua\nsrc\\corrections\\Era\\fixes.lua\n"
+                + "src\\config.lua\nsrc\\runtime.lua\nsrc\\corrections\\Wotlk\\wotlkObjectFixes.lua\n"
                 + "support\\%s.lua\n" % flavor
                 + "## X-Quest-1-S: fixture\n",
             )
@@ -538,7 +603,6 @@ class PackageTest(unittest.TestCase):
             PATH=str(self.bin),
             LUA=LUA,
             SOURCE_DATE_EPOCH="1700000000",
-            QUESTIEDB_TEST_FAIL_STRIP="0",
         )
         self.env.pop("GITHUB_REPOSITORY", None)
 
@@ -561,7 +625,7 @@ class PackageTest(unittest.TestCase):
         self.assertEqual("previous package", (self.root / ".out/dist/previous.zip").read_text())
         self.assertEqual("previous stage", (self.root / ".out/stage/previous.txt").read_text())
 
-    def test_all_archives_preserve_union_types_stripping_and_manifest(self):
+    def test_all_archives_preserve_union_types_source_bytes_and_manifest(self):
         result = self.run_package("all")
         self.assertEqual(0, result.returncode, result.stdout + result.stderr)
         dist = self.root / ".out/dist"
@@ -585,7 +649,7 @@ class PackageTest(unittest.TestCase):
         changelog = "# QuestieDB 1.2.3-dev.abcdef0\n\nChangelog unavailable: this package was built without Git history.\n"
         self.assertEqual([*FLAVORS, "All"], [entry["flavor"] for entry in manifest["artifacts"]])
 
-        # Each flavor stands alone; the combined ZIP is exactly their union.
+        # Archive behavior proof: each flavor stands alone and the combined ZIP is their union.
         union = set()
         for entry in manifest["artifacts"]:
             archive_path = dist / entry["file"]
@@ -598,7 +662,7 @@ class PackageTest(unittest.TestCase):
                 expected = {
                     "QuestieDB/src/config.lua",
                     "QuestieDB/src/runtime.lua",
-                    "QuestieDB/src/corrections/Era/fixes.lua",
+                    "QuestieDB/src/corrections/Wotlk/wotlkObjectFixes.lua",
                     "QuestieDB/Types/Quest.t.lua",
                     "QuestieDB/Types/General.t.lua",
                     "QuestieDB/icons/QuestieTDB_64x64.png",
@@ -609,7 +673,7 @@ class PackageTest(unittest.TestCase):
                     expected.add("QuestieDB/QuestieDB_Camelot.toc")
                     primary = archive.read("QuestieDB/QuestieDB_Forever.toc")
                     self.assertEqual(primary, archive.read("QuestieDB/QuestieDB_Camelot.toc"))
-                    self.assertTrue(primary.endswith(b"# staged transformation\n"))
+                    self.assertEqual((self.root / "QuestieDB_Forever.toc").read_bytes(), primary)
                 self.assertEqual(
                     sum(
                         info.file_size
@@ -646,10 +710,10 @@ class PackageTest(unittest.TestCase):
                     (self.root / "icons/QuestieTDB_64x64.png").read_bytes(),
                     archive.read("QuestieDB/icons/QuestieTDB_64x64.png"),
                 )
-                self.assertEqual(
-                    b"return 'dynamic only'\n",
-                    archive.read("QuestieDB/src/corrections/Era/fixes.lua"),
-                )
+                provider = archive.read("QuestieDB/src/corrections/Wotlk/wotlkObjectFixes.lua")
+                self.assertNotIn(b"STATIC_BODY_SENTINEL", provider)
+                self.assertNotIn(b"function providers.Load()", provider)
+                self.assertIn(b"function providers.LoadFactionFixes()", provider)
                 self.assertEqual(changelog, archive.read("QuestieDB/CHANGELOG.md").decode("utf-8"))
                 for name in names:
                     self.assertEqual(zipfile.ZIP_DEFLATED, archive.getinfo(name).compress_type)
@@ -659,11 +723,11 @@ class PackageTest(unittest.TestCase):
                     union.update(names)
 
         self.assertEqual(
-            "return 'unstripped'\n", (self.root / "src/corrections/Era/fixes.lua").read_text()
+            self.provider_source, (self.root / "src/corrections/Wotlk/wotlkObjectFixes.lua").read_text()
         )
         self.assertFalse((self.root / ".out/stage").exists())
 
-        # Preview warnings and download links describe the artifacts actually built.
+        # Release metadata proof: notes and manager declarations describe those exact archives.
         notes = (dist / "RELEASE_NOTES.md").read_text()
         self.assertTrue(
             notes.startswith("# Unstable Pre-Release Build (v1.2.3-dev.abcdef0)\n\n> [!WARNING]")
@@ -838,6 +902,15 @@ class PackageTest(unittest.TestCase):
         self.assertEqual(original, document["questiedb"])
         self.assertEqual("changelog", list(document["questiedb"])[-1])
         self.assertEqual("custom-download.zip", document["releases"][0]["filename"])
+
+    def test_stripper_failure_aborts_publication(self):
+        path = self.root / "src/corrections/Wotlk/wotlkObjectFixes.lua"
+        path.write_text(self.provider_source.replace("function providers.Load()", " function providers.Load()"))
+        result = self.run_package("Vanilla")
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn("Static function not found", result.stderr)
+        self.assertFalse((self.root / ".out/dist/QuestieDB-Vanilla.zip").exists())
+        self.assertFalse((self.root / ".out/dist/release.json").exists())
 
     def test_single_flavor_package(self):
         toc = self.root / "QuestieDB_Vanilla.toc"
@@ -1048,11 +1121,6 @@ class PackageTest(unittest.TestCase):
         self.assertIn("minSupportedContract", result.stderr)
         self.assert_previous_output()
 
-    def test_stripping_failure_cannot_produce_a_manifest(self):
-        self.env["QUESTIEDB_TEST_FAIL_STRIP"] = "1"
-        result = self.run_package("Vanilla")
-        self.assertNotEqual(0, result.returncode)
-        self.assertFalse((self.root / ".out/dist/release.json").exists())
 
 
 if __name__ == "__main__":

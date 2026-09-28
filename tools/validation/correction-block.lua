@@ -38,19 +38,23 @@ end
 ---@return table namespace
 ---@return table environment Isolated client globals, for load-boundary controls.
 function fixture.loadProvider(files, flavorName, seasonId, mode, root)
+  -- Select the persona's native TOC paths before creating any addon state.
   local selected = {}
   for _, line in ipairs(files) do
     local path = emulator.selectFile(line, assert(config.flavorByName[flavorName]).gameType)
     if path then selected[#selected + 1] = path end
   end
   files = selected
+
+  -- Build an isolated client environment so sequential personas cannot share globals.
   local previousLoader = {}
   local env = setmetatable({ QuestieLoader = previousLoader }, { __index = _G })
   env._G = env
   env.C_Seasons = { GetActiveSeason = function() return seasonId end }
   env.Enum = { SeasonID = { SeasonOfDiscovery = 2 } }
   local namespace = { config = config, flavor = assert(config.flavorByName[flavorName]), mode = mode }
-  -- Authored corrections can resolve field keys at registration time. Load the real schema
+  execute(lib.readAll((root or ".") .. "/src/config.lua"), "config.lua", env, namespace)
+  -- Native providers can resolve field keys while exporting functions. Load the real schema
   -- before the registry, as both addon TOCs do, without loading any entity payloads.
   for _, file in ipairs(files) do
     if file:match("^src/meta/") then
@@ -58,6 +62,8 @@ function fixture.loadProvider(files, flavorName, seasonId, mode, root)
     end
   end
   execute(lib.readAll((root or ".") .. "/src/corrections/registry.lua"), "registry.lua", env, namespace)
+
+  -- Execute the emitted correction block in TOC order, including central registration.
   for _, file in ipairs(files) do
     if file:match("^src/corrections/") and file ~= "src/corrections/registry.lua" then
       execute(lib.readAll((root or ".") .. "/" .. file), file, env, namespace)

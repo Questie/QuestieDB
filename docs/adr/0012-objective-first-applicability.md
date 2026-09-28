@@ -23,7 +23,7 @@ Applicability controls only the five `ObjectiveFirst` hint tables. Seasonal file
 Correction providers may still ship and load so they are available when their season becomes
 active. QuestieDB does not split the seasonal artifact or edit the copied correction sources.
 
-Source, Baked, and Static-Correction-stripped packages publish identical applicable hint contents.
+Source, Baked, and packaged addons publish identical applicable hint contents.
 The existing public shape remains five consumer-must-not-mutate `{ [questId] = true }` tables.
 
 ## Consequences
@@ -32,3 +32,13 @@ Objective-ordering hints follow the same expansion and season facts as the data 
 without changing Correction registration or copied source ownership. Fidelity checks compare all
 five tables with pinned source contents under this explicit applicability policy rather than with
 Questie's incidental unconditional SoD load effect.
+
+## Native implementation note
+
+Correction providers are now owned native addon files. `objectiveFirst.lua` initializes the
+same five stable tables. Applicable provider files write hints directly; seasonal files return
+before hints and exports when the central manifest's applicability gate is closed.
+Central registration runs after selected files load and uses that same policy. No discarded hint
+table, module shim or scope marker remains. Package-time stripping removes Static exports from
+staged mixed files and verifies that Dynamic behavior and hints are unchanged. This supersedes
+the copied-source mechanism above, not the public shape or applicability policy.

@@ -12,7 +12,7 @@ function providers.Load()
     -- Authored Classic Era Static NPC corrections do not inspect current character state.
     local npcKeys = LibQuestieDB.Meta.Npc.keys
     local zoneIDs = LibQuestieDB.Enum.zoneIDs
-    local npcFlags = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].npcFlags
+    local npcFlags = LibQuestieDB.Enum.corrections.npcFlags
     local waypointPresets = LibQuestieDB.Enum.waypointPresets
     local phases = LibQuestieDB.Enum.phases
 

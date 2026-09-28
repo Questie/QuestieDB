@@ -13,7 +13,7 @@ LibQuestieDB.CorrectionProviders.sodNPCFixes = providers
 function providers.LoadNPCs()
     local npcKeys = LibQuestieDB.Meta.Npc.keys
     local zoneIDs = LibQuestieDB.Enum.zoneIDs
-    local npcFlags = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].npcFlags
+    local npcFlags = LibQuestieDB.Enum.corrections.npcFlags
     local waypointPresets = LibQuestieDB.Enum.waypointPresets
 
     return {

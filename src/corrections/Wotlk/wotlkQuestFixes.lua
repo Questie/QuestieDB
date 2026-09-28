@@ -12,8 +12,8 @@ local iconTypes = LibQuestieDB.Enum.iconTypes
 function providers.Load()
     -- Authored Wrath of the Lich King Static quest corrections do not inspect current character state.
     local questKeys = LibQuestieDB.Meta.Quest.keys
-    local raceIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].raceKeys
-    local classIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].classKeys
+    local raceIDs = LibQuestieDB.Enum.corrections.raceKeys
+    local classIDs = LibQuestieDB.Enum.corrections.classKeys
     local factionIDs = LibQuestieDB.Enum.factionIDs
     local zoneIDs = LibQuestieDB.Enum.zoneIDs
     local sortKeys = LibQuestieDB.Enum.sortKeys

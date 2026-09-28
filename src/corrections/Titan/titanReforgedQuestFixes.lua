@@ -12,8 +12,8 @@ LibQuestieDB.CorrectionProviders.titanReforgedQuestFixes = providers
 ---@return table<integer, table> rows Seasonal quest rows.
 function providers.LoadQuests()
     local questKeys = LibQuestieDB.Meta.Quest.keys
-    local raceIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].raceKeys
-    local classIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].classKeys
+    local raceIDs = LibQuestieDB.Enum.corrections.raceKeys
+    local classIDs = LibQuestieDB.Enum.corrections.classKeys
     local factionIDs = LibQuestieDB.Enum.factionIDs
     local zoneIDs = LibQuestieDB.Enum.zoneIDs
     local sortKeys = LibQuestieDB.Enum.sortKeys
@@ -699,7 +699,7 @@ end
 ---@return table<integer, table> overrides Inherited-quest overrides.
 function providers.LoadQuestOverrides()
     local questKeys = LibQuestieDB.Meta.Quest.keys
-    local classIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].classKeys
+    local classIDs = LibQuestieDB.Enum.corrections.classKeys
 
     return {
         [6805] = { -- Greater Stormers and Rumblers

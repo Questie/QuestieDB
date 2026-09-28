@@ -19,8 +19,8 @@ LibQuestieDB.ObjectiveFirst.eventObjectiveFirst[89567] = true
 function providers.LoadQuests()
     local questKeys = LibQuestieDB.Meta.Quest.keys
     local zoneIDs = LibQuestieDB.Enum.zoneIDs
-    local raceIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].raceKeys
-    local classIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].classKeys
+    local raceIDs = LibQuestieDB.Enum.corrections.raceKeys
+    local classIDs = LibQuestieDB.Enum.corrections.classKeys
     local sortKeys = LibQuestieDB.Enum.sortKeys
     local questFlags = LibQuestieDB.Enum.questFlags
     local specialFlags = LibQuestieDB.Enum.specialFlags
@@ -9252,7 +9252,7 @@ end
 ---@return table<integer, table> fixes Faction-dependent quest corrections.
 function providers.LoadFactionQuestFixes()
     local questKeys = LibQuestieDB.Meta.Quest.keys
-    local raceIDs = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.rules].raceKeys
+    local raceIDs = LibQuestieDB.Enum.corrections.raceKeys
 
     local questFixesHorde = {
         [78124] = { -- Nar'thalas Almanac

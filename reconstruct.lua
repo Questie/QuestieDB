@@ -31,9 +31,8 @@ local rows = dofile("generator/rows.lua")
 local flavorLoader = dofile("generator/flavor.lua")
 local l10nGen = dofile("generator/l10n.lua")
 
-if lib.fileExists("src/corrections/manifest.lua") then
-  config.correctionManifest = dofile("src/corrections/manifest.lua")
-end
+-- Reconstruction must use the same explicit native inventory as Generation.
+config.correctionManifest = dofile("src/corrections/manifest.lua")
 
 local MAX_REPORTED = 10
 
