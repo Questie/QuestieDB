@@ -451,5 +451,12 @@ constants.zoneIDs = {
   KARAZHAN_CRYPTS = 16074,
   SCARLET_ENCLAVE = 16236,
 
-  -- Forever [add areas and instances here]
+  -- Forever: outdoor zones
+  RIVERGLADES = 16591,
+  ZEPHRAS_ISLE = 16593,
+  DARKSPEAR_ISLANDS = 16606,
+  SHEN_DRALAS = 16651,
+
+  -- Forever: instance areas
+  CITY_OF_DALARAN = 16544,
 }
