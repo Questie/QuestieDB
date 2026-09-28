@@ -23,8 +23,6 @@ support.modules = {}
 
 local saved
 
-local EXPANSION_ORDER = { Classic = 1, TBC = 2, Wotlk = 3, Cata = 4, MoP = 5 }
-
 --- Install a `QuestieLoader` shim that routes support-data assignments here instead of into
 --- the consumer's modules. Scoped exactly like the entity-data and correction shims.
 ---
@@ -60,10 +58,11 @@ function support.Install(flavor)
     moduleFor("DropDB").correctionKeys = constants.dropCorrectionKeys
   end
 
+  local order = LibQuestieDB.config.expansionOrder
   local expansions = moduleFor("Expansions")
-  expansions.Era, expansions.Classic, expansions.Tbc = 1, 1, 2
-  expansions.Wotlk, expansions.Cata, expansions.MoP = 3, 4, 5
-  expansions.Current = (flavor and EXPANSION_ORDER[flavor.rules or flavor.expansion]) or 1
+  expansions.Era, expansions.Classic, expansions.Tbc = order.Classic, order.Classic, order.TBC
+  expansions.Wotlk, expansions.Cata, expansions.MoP = order.Wotlk, order.Cata, order.MoP
+  expansions.Current = (flavor and order[flavor.rules or flavor.expansion]) or order.Classic
 
   _G.QuestieLoader = {
     ImportModule = function(_, name) return moduleFor(name) end,

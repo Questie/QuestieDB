@@ -52,6 +52,10 @@ config.maxValueLength = 1000
 -- `aliases` names byte-identical Baked TOCs, independently of native file-condition tokens.
 -- `interface` records the supported client Interface values.
 
+---Legacy rules ordering, not flavor ownership. Forever selects Classic through `rules`.
+---@type table<string, integer>
+config.expansionOrder = { Classic = 1, TBC = 2, Wotlk = 3, Cata = 4, MoP = 5 }
+
 config.flavors = {
   { name = "Vanilla", suffix = "_Vanilla", expansion = "Classic", dataPrefix = "classic", rules = "Classic", gameType = "vanilla", interface = "11508, 11509" },
   { name = "TBC",     suffix = "_TBC",     expansion = "TBC",     dataPrefix = "tbc",     rules = "TBC", gameType = "tbc", interface = "20506" },
@@ -178,9 +182,8 @@ function config.correctionApplies(spec, flavor)
   if not flavor then return false end
   if spec.owned then return spec.owned == flavor.name end
   if flavor.name == "Forever" then return false end
-  local order = { Classic = 1, TBC = 2, Wotlk = 3, Cata = 4, MoP = 5 }
   return (not spec.expansions or spec.expansions[flavor.expansion] == true) and
-    (not spec.minExpansionOrder or (order[flavor.expansion] or 0) >= spec.minExpansionOrder)
+    (not spec.minExpansionOrder or (config.expansionOrder[flavor.expansion] or 0) >= spec.minExpansionOrder)
 end
 
 ---Resolved correction block for one flavor; native selection uses this same applicability.

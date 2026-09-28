@@ -144,8 +144,12 @@ local function buildModules(expansionName)
   -- stays locale-free. The prototype's correction files stubbed it exactly this way.
   modules.l10n = setmetatable({}, { __call = function(_, text) return text end })
 
+  -- Preserve the provider-facing spellings; numeric ordering belongs to config.
+  local order = LibQuestieDB.config.expansionOrder
   modules.Expansions = {
-    Era = 1, Classic = 1, Tbc = 2, Wotlk = 3, Cata = 4, MoP = 5, Current = 1,
+    Era = order.Classic, Classic = order.Classic, Tbc = order.TBC,
+    Wotlk = order.Wotlk, Cata = order.Cata, MoP = order.MoP,
+    Current = order[expansionName],
   }
 
   return modules
@@ -173,7 +177,7 @@ function compat.Install(flavor)
 
   local expansionName = flavor.rules or flavor.expansion
   local configuredFlavor = LibQuestieDB.config.flavorByName[flavor.name]
-  local expansionOrder = LibQuestieDB.Corrections.expansionOrder
+  local expansionOrder = LibQuestieDB.config.expansionOrder
   local order = expansionOrder[expansionName]
   if not configuredFlavor or configuredFlavor.expansion ~= flavor.expansion or
      (configuredFlavor.rules or configuredFlavor.expansion) ~= expansionName or not order then
@@ -187,7 +191,6 @@ function compat.Install(flavor)
 
   -- Build before changing globals so malformed constants fail without side effects.
   local modules = buildModules(expansionName)
-  modules.Expansions.Current = order
 
   -- A reinstall starts a new load without replacing the published table identities.
   clearHints(compat.objectiveFirst)
