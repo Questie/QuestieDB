@@ -91,8 +91,6 @@ local registrationSequence = 0
 
 local VALID_DATATYPES = { Quest = true, Npc = true, Item = true, Object = true }
 
-registry.expansionOrder = { Classic = 1, TBC = 2, Wotlk = 3, Cata = 4, MoP = 5 }
-
 --- Accept `"quest"` as well as `"Quest"`: the prototype and Questie's own correction files use
 --- lowercase, and refusing it would make porting them a rename exercise for no gain.
 local function canonicalDatatype(datatype)
@@ -314,7 +312,7 @@ end
 local function staticMergeOptions(entry, flavor)
   if not flavor or not entry.sourceExpansionOrder then return entry.options end
 
-  local targetOrder = registry.expansionOrder[flavor.rules or flavor.expansion]
+  local targetOrder = LibQuestieDB.config.expansionOrder[flavor.rules or flavor.expansion]
   if not targetOrder or targetOrder <= entry.sourceExpansionOrder then return entry.options end
 
   local options = {}
@@ -354,7 +352,7 @@ function registry.EntryApplies(entry, flavor)
   if not flavor then return true end
   if entry.expansions and not entry.expansions[flavor.expansion] then return false end
   if entry.minExpansionOrder then
-    local order = registry.expansionOrder[flavor.rules or flavor.expansion]
+    local order = LibQuestieDB.config.expansionOrder[flavor.rules or flavor.expansion]
     if not order or order < entry.minExpansionOrder then return false end
   end
   return true
