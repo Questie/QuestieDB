@@ -1214,10 +1214,10 @@ suite("corrections", "shared", function()
         "compat serves canonical " .. entityType.name .. " keys for " .. case.flavor.name)
     end
     if case.flavor.name == "Forever" then
-      equal(selected.raceKeys.HIGHORDER_SKYBORNE, 4294967296,
-        "Forever corrections receive the Highorder Skyborne mask")
-      equal(selected.raceKeys.WINDSHAPER_SKYBORNE, 8589934592,
-        "Forever corrections receive the Windshaper Skyborne mask")
+      equal(selected.raceKeys.SKYBORNE_ALLIANCE, 4294967296,
+        "Forever corrections receive the Alliance Skyborne mask")
+      equal(selected.raceKeys.SKYBORNE_HORDE, 8589934592,
+        "Forever corrections receive the Horde Skyborne mask")
       equal(selected.raceKeys.ALL_HORDE, 8589934770,
         "Forever corrections receive the Horde mask including Skyborne")
       equal(selected.raceKeys.BLOOD_ELF, nil,
@@ -1526,10 +1526,10 @@ suite("derived-required-races", "shared", function()
   client.install({ expansion = "Forever" })
   local foreverSource = emulator.loadAddon(config.addonName .. ".toc", config.addonName)
   local races = foreverSource.CorrectionCompat.modules.QuestieDB.raceKeys
-  equal(races.HIGHORDER_SKYBORNE + races.HUMAN, 4294967297,
-    "Source-loaded corrections can combine Highorder Skyborne with Human")
-  equal(races.WINDSHAPER_SKYBORNE + races.ORC, 8589934594,
-    "Source-loaded corrections can combine Windshaper Skyborne with Orc")
+  equal(races.SKYBORNE_ALLIANCE + races.HUMAN, 4294967297,
+    "Source-loaded corrections can combine Alliance Skyborne with Human")
+  equal(races.SKYBORNE_HORDE + races.ORC, 8589934594,
+    "Source-loaded corrections can combine Horde Skyborne with Orc")
   equal(foreverSource.Quest.Get(7162, "requiredRaces"), 4294967373,
     "Forever Source inference includes Skyborne in the Alliance faction mask")
   client.reset()
