@@ -451,4 +451,5 @@ constants.zoneIDs = {
   SCARLET_ENCLAVE = 16236,
 
   -- Forever [add areas and instances here]
+  ZEPHRAS_ISLE = 16593,
 }
