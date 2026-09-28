@@ -200,10 +200,10 @@ class Tables:
 
 
 def read_zone_ids(source: str) -> Dict[str, int]:
-    """Read owned symbolic AreaID constants; duplicate symbols and expressions fail."""
+    """Read the canonical zone enum; duplicate symbols and expressions fail."""
     parsed = Tables(source, _lex(source))
     result = {}
-    for field in parsed.fields(parsed.assigned('ZoneDB.zoneIDs')):
+    for field in parsed.fields(parsed.assigned('constants.zoneIDs')):
         name = parsed.text(field.key)
         if not _NAME.fullmatch(name) or name in result:
             parsed.fail(field.value[0], 'Invalid or duplicate zone symbol ' + name)

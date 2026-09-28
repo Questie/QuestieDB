@@ -48,12 +48,15 @@ function support.Install(flavor)
     return module
   end
 
+  local constants = LibQuestieDB.Enum
+  -- Publish the shared symbols through the existing support API, not a second data table.
+  moduleFor("ZoneDB").zoneIDs = constants.zoneIDs
+
   -- `itemDropCorrections.lua` reads `DropDB.correctionKeys` — negative sentinels that mark a
   -- correction's provenance (Wowhead, private server, manual). They live in `dropDB.lua`, the
   -- logic module staying with the consumer, so they are extracted alongside the entity
   -- constants and seeded here.
-  local constants = LibQuestieDB.Enum
-  if constants and constants.dropCorrectionKeys then
+  if constants.dropCorrectionKeys then
     moduleFor("DropDB").correctionKeys = constants.dropCorrectionKeys
   end
 

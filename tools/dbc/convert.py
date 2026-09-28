@@ -24,6 +24,7 @@ from rewrite import Coordinate, read_zone_ids, rewrite
 from runtime_helper import HELPER, require_matching_helper
 
 ROOT = Path(__file__).resolve().parents[2]
+ZONE_SYMBOLS_PATH = "src/corrections/enum/zones.lua"
 # Reuse the contributor launcher's Lua discovery and cancellation ownership.
 sys.path.insert(0, str(ROOT / "tools/cli"))
 from questiedb import find_lua, interrupt
@@ -137,8 +138,7 @@ class ConvertPoints:
 def prepare(root: Path, transforms: dict[int, Transform], map_report: dict,
             keep_unmapped: bool) -> tuple[dict[str, bytes], dict]:
     """Always read Era originals; preserve all bytes outside converted number tokens."""
-    zones_path = "support/Zones/zoneIds.lua"
-    zones_bytes = (root / zones_path).read_bytes()
+    zones_bytes = (root / ZONE_SYMBOLS_PATH).read_bytes()
     zones = read_zone_ids(zones_bytes.decode("utf-8"))
     outputs = {}
     report = {
@@ -266,7 +266,7 @@ def main() -> int:
         for info in report["files"].values():
             if digest((ROOT / info["source"]).read_bytes()) != info["source_sha256"]:
                 raise ValueError("Era input changed during conversion: " + info["source"])
-        if digest((ROOT / "support/Zones/zoneIds.lua").read_bytes()) != report["zone_symbols_sha256"]:
+        if digest((ROOT / ZONE_SYMBOLS_PATH).read_bytes()) != report["zone_symbols_sha256"]:
             raise ValueError("Zone symbols changed during conversion")
         outputs[MANIFEST] = (json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False) + "\n").encode("utf-8")
         changed = install_outputs(ROOT, outputs)

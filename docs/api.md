@@ -548,7 +548,10 @@ modules from inapplicable variant files.
 Mists uses its own area/UI map tables. Its drop data intentionally combines the MoP table and
 then the Cata table, in the same effective order as Questie.
 
-Forever owns its support inputs. Some map entries are retained solely for consumer instance
+Zone symbols are shared constants: `Support.Get("ZoneDB").zoneIDs` exposes
+`LibQuestieDB.Enum.zoneIDs`, maintained in `src/corrections/enum/zones.lua`.
+
+Forever owns its flavor-specific support inputs. Some map entries are retained solely for consumer instance
 routing compatibility, not as evidence that their UiMaps exist in the Forever client. See the
 [map audit](forever-map-override-audit.md) before using the mappings as an active-map allowlist.
 

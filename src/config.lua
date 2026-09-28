@@ -236,7 +236,6 @@ config.supportData = {
   shared = {
     "support/Zones/dungeons.lua",
     "support/Zones/subZoneToParentZone.lua",
-    "support/Zones/zoneIds.lua",
     "support/Zones/instanceIdToAreaId.lua",
     "support/DropTables/itemDropCorrections.lua",
   },
@@ -274,7 +273,7 @@ config.supportData = {
 -- These paths are explicit: future Era additions must not silently become Forever inputs.
 config.supportData.perFlavor.Forever = {
   "support/Forever/Zones/dungeons.lua", "support/Forever/Zones/subZoneToParentZone.lua",
-  "support/Forever/Zones/zoneIds.lua", "support/Forever/Zones/instanceIdToAreaId.lua",
+  "support/Forever/Zones/instanceIdToAreaId.lua",
   "support/Forever/DropTables/itemDropCorrections.lua",
   "support/Forever/Zones/areaIdToUiMapId.lua", "support/Forever/Zones/uiMapIdToAreaId.lua",
   "support/Forever/QuestXP/xpDB-classic.lua", "support/Forever/FactionTemplates/factionTemplateClassic.lua",
@@ -295,15 +294,6 @@ function config.supportFiles(flavor)
   for _, file in ipairs(config.supportData.perFlavor[flavor.name]) do files[#files + 1] = file end
   files[#files + 1] = "src/support/_end.lua"
   return files
-end
-
----@param flavor table
----@return string
-function config.zoneIdsPath(flavor)
-  for _, path in ipairs(config.supportFiles(flavor)) do
-    if path:match("/Zones/zoneIds%.lua$") then return path end
-  end
-  error("No zoneIds input for " .. flavor.name)
 end
 
 --- Append `source` to `target`, skipping anything already listed.
