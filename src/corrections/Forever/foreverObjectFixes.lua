@@ -12,7 +12,17 @@ function ForeverObjectFixes:Load()
     local zoneIDs = ZoneDB.zoneIDs
 
     return {
-        -- [objectId] = { [objectKeys.name] = "Corrected name" },
+        -- For MoP fixes 450001-459999
+        [450001] = { -- Elemental Convergence
+            [objectKeys.name] = "Elemental Convergence",
+            [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{48.28,20.62}}},
+            [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+        },
+        [450002] = { -- Ley Line
+            [objectKeys.name] = "Ley Line",
+            [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{48.28,20.62}}},
+            [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+        },
     }
 end
 
