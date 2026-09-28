@@ -87,6 +87,7 @@ function ForeverNpcTraces:Load()
             [npcKeys.name] = "Boarton Shadetotem",
             [npcKeys.spawns] = {[1638]={{39.53,65.82},{39.53,66.03},{39.54,65.58},{39.58,66.08},{39.6,65.85},{39.75,65.69}}},
             [npcKeys.zoneID] = 1638,
+            [npcKeys.questStarts] = {76156,76160,76240},
             [npcKeys.questEnds] = {76156,76160},
         },
         [209797] = {
@@ -798,7 +799,7 @@ function ForeverNpcTraces:Load()
             [npcKeys.spawns] = {[16593]={{44.83,44.25}}},
             [npcKeys.zoneID] = 16593,
             [npcKeys.questStarts] = {93951},
-            [npcKeys.questEnds] = {93951,97973},
+            [npcKeys.questEnds] = {93951,97972,97973},
         },
         [251992] = {
             [npcKeys.name] = "Fenn Fairweather",
@@ -1309,7 +1310,7 @@ function ForeverNpcTraces:Load()
             [npcKeys.name] = "Vayn Moongaze",
             [npcKeys.spawns] = {[16593]={{63.77,35.87},{63.77,36.04}}},
             [npcKeys.zoneID] = 16593,
-            [npcKeys.questStarts] = {93165},
+            [npcKeys.questStarts] = {93165,93459},
             [npcKeys.questEnds] = {93165,93459},
         },
         [254287] = {
@@ -1549,6 +1550,7 @@ function ForeverNpcTraces:Load()
             [npcKeys.name] = "Dokimi",
             [npcKeys.spawns] = {[17]={{50.15,29.35}}},
             [npcKeys.zoneID] = 17,
+            [npcKeys.questStarts] = {91899,91904},
             [npcKeys.questEnds] = {91899,91904,98248},
         },
         [256388] = {
@@ -1565,6 +1567,7 @@ function ForeverNpcTraces:Load()
             [npcKeys.name] = "Marcy Baker",
             [npcKeys.spawns] = {[44]={{9.75,71.02}}},
             [npcKeys.zoneID] = 44,
+            [npcKeys.questStarts] = {91899},
             [npcKeys.questEnds] = {91899,98247},
         },
         [256391] = {
@@ -1852,7 +1855,7 @@ function ForeverNpcTraces:Load()
             [npcKeys.name] = "Teo Hammerstorm",
             [npcKeys.spawns] = {[1]={{28.84,66.23}}},
             [npcKeys.zoneID] = 1,
-            [npcKeys.questStarts] = {94373,94374},
+            [npcKeys.questStarts] = {94373,94374,94472},
             [npcKeys.questEnds] = {94373,94375,94472,98581},
         },
         [257521] = {
@@ -2809,7 +2812,7 @@ function ForeverNpcTraces:Load()
             [npcKeys.name] = "Kaga Wildhoof",
             [npcKeys.spawns] = {[215]={{46.19,67.21}}},
             [npcKeys.zoneID] = 215,
-            [npcKeys.questStarts] = {96661},
+            [npcKeys.questStarts] = {96605,96661,97927,97931,97933},
             [npcKeys.questEnds] = {96605,96659},
         },
         [265811] = {
@@ -2823,14 +2826,14 @@ function ForeverNpcTraces:Load()
             [npcKeys.name] = "Eleanor Shackleton",
             [npcKeys.spawns] = {[85]={{57.23,55.47}}},
             [npcKeys.zoneID] = 85,
-            [npcKeys.questStarts] = {96607,96658,97951,97955,97956,97957,97958,97959,97960,97961},
+            [npcKeys.questStarts] = {96607,96658,97951,97953,97955,97956,97957,97958,97959,97960,97961},
             [npcKeys.questEnds] = {86784,96607,96656},
         },
         [265813] = {
             [npcKeys.name] = "Eric Brighthammer",
             [npcKeys.spawns] = {[1]={{46.69,53.92},{46.72,53.82}}},
             [npcKeys.zoneID] = 1,
-            [npcKeys.questStarts] = {96031,96046,96050,96055,96056,96058,96608,96629},
+            [npcKeys.questStarts] = {96031,96046,96050,96055,96056,96057,96058,96608,96629},
             [npcKeys.questEnds] = {96608,96628},
         },
         [265944] = {
@@ -2895,6 +2898,8 @@ function ForeverNpcTraces:Load()
             [npcKeys.name] = "Pa'zula",
             [npcKeys.spawns] = {[14]={{56.67,73.75}}},
             [npcKeys.zoneID] = 14,
+            [npcKeys.questStarts] = {96873},
+            [npcKeys.questEnds] = {96873},
         },
         [266940] = {
             [npcKeys.name] = "Turroc",
@@ -3887,11 +3892,13 @@ function ForeverNpcTraces:Load()
             [npcKeys.name] = "Belanaa Windveil",
             [npcKeys.spawns] = {[36]={{11.57,57.8},{11.58,57.86},{11.68,57.75}}},
             [npcKeys.zoneID] = 36,
+            [npcKeys.questStarts] = {99191},
         },
         [276171] = {
             [npcKeys.name] = "Oura Stormspinner",
             [npcKeys.spawns] = {[215]={{34.17,22.51},{34.18,22.39},{34.25,22.49}}},
             [npcKeys.zoneID] = 215,
+            [npcKeys.questStarts] = {99196},
         },
         [276189] = {
             [npcKeys.name] = "Matriarch Bristlefur",
