@@ -4,6 +4,9 @@
 `/home/logon/projects/forever-base-db/generated/`. Only the policy header and module wrapper changed:
 `QuestieLoader:CreateModule`, the QuestieDB key import, and a colon `Load()` method.
 The correction values and inline entity names and Forever Wowhead URLs are retained.
+Starter/finisher groups use positional tables, such as `{{211022, 211033}}` or
+`{nil, {424005}}`, including add/remove operands. Spawn maps keep explicit zone keys.
+This formatting refresh preserves every decoded correction value from the previous import.
 The four upstream files retain their names: `foreverBaseNpc.lua`,
 `foreverBaseObject.lua`, `foreverBaseQuest.lua` and `foreverBaseItem.lua`, with matching
 `ForeverBaseNpc`, `ForeverBaseObject`, `ForeverBaseQuest` and `ForeverBaseItem` modules.
@@ -69,11 +72,15 @@ interpretation still depend on the supplied snapshots and need gameplay review.
 
 ## Validation status
 
-This refresh checks imported provider values against their upstream tables, Source witnesses
-for all four entity types, native selection, Static precedence and the correction-provider
-audit. No Baked artifacts are regenerated in the working checkout. Full Forever Generation,
-Verification, Equivalence, Reconstruction and gameplay validation still need a disposable
-run before release. The unresolved source references above remain review work.
+This refresh checks imported provider values against their upstream tables and the previous
+import, Source witnesses for all four entity types, native selection, Static precedence and
+the correction-provider audit. No Baked artifacts are regenerated in the working checkout.
+
+After the master rebase, a disposable run passed Forever Generation, Verification,
+Source/Baked Equivalence, Reconstruction and artifact tests. Gameplay validation failed on
+625 quests missing `requiredRaces`; the other 14 checks were clean. This formatting-only
+refresh does not resolve those findings. They are not accepted into the validation baseline.
+The unresolved source references above also remain review work.
 
 ### Previous three-provider import
 
@@ -89,9 +96,9 @@ and reverse relationships disagreed after all Corrections. NPC 376's reverse lis
 5631, 5634, 5645 and 5676 and finishers 5640 and 5678; its starter list includes 5641 and
 8254 although those quests did not name it as starter. The previous generated-first order
 had 640 findings. These findings were not accepted into the validation baseline; their
-counts have not been recomputed for the additive refresh. Restrictions and relationship
-reconciliation require separate authored review, not invented defaults or a different
-precedence rule.
+counts describe the earlier import, not the current validation result above. Restrictions
+and relationship reconciliation require separate authored review, not invented defaults or
+a different precedence rule.
 
 ## Refresh
 
