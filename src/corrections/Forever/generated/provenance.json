@@ -1,4 +1,134 @@
 {
+  "baseline": {
+    "Classic": {
+      "baseline": "raw",
+      "files": {
+        "/home/logon/projects/Questie-clones/QuestieDB/data/Classic/classicItemDB.lua": "987d037b6df94d5b0b1dc326a1670581e3abb952736a4ae055fd9f161328b71c",
+        "/home/logon/projects/Questie-clones/QuestieDB/data/Classic/classicNpcDB.lua": "ee4a241db3ff89e5f0883b688b58920c1121f5617202ecba81d90b17271ccd54",
+        "/home/logon/projects/Questie-clones/QuestieDB/data/Classic/classicObjectDB.lua": "d08fbd8216757918330d9ff02bfc1b13f837f198e0aa62aa76260bb1bd9cd042",
+        "/home/logon/projects/Questie-clones/QuestieDB/data/Classic/classicQuestDB.lua": "210e9ac3f98baf2c624be0c8677e7e9adec3f2b9e426f30fd649c4018678afab",
+        "/home/logon/projects/Questie-clones/QuestieDB/generator/lib.lua": "8baada3a3db4777201dc3402ee84935f3390f4c79c5baf0db40c0e0dec2b1427",
+        "/home/logon/projects/Questie-clones/QuestieDB/generator/loader.lua": "312b06ee3f09755a4f1331fdfd443425236b9dc5ce8b398a2454bcd49f034a10",
+        "/home/logon/projects/Questie-clones/QuestieDB/generator/runtime.lua": "e1b53a88d6c1efacc1dd6a5c114f3d143c2dbfd26fcd67a5fbf16bb7345284c1",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/config.lua": "29ba8094f7aa2afea90a5d7aba3f9a338297e0ebb709eabd18b69092ca838c8c",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/compat.lua": "a08c1f79033a6fe0696ee068580fb0f84521c68fe88c48b6789eb9052b122539",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/constants.lua": "82ad0121925ccbd76c58b15c421f70f868f81a98626367ac44a0965e1ea8262a",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/expansions.lua": "68a4405bc9551a3efae61f4f2e20e12d8b9c4fd6cf99d59980e3e00daf1f52ac",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/factions.lua": "c6c8c6dc12d5fa0e7a7aa22a21491706aaeba8d55fb68ba3a469c87e2687cbfc",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/fieldKeys.lua": "010e9d16b39db84629f6a317ddd7ce416a3d698634d2293da15e8dec40c793c8",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/icons.lua": "ea4390aadd96d99ad9feab6cf564ecad50350353a526e3695fe39e40c144011b",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/items.lua": "c4b861584fe54ad3edb8a46338064e6ffa9759032dcbaa79756ba4172fa579a2",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/phases.lua": "1736eb5fccfeb3788a07eb94e2c871e84b4cff805ccbb6aa9040e337fb687622",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/professions.lua": "3ae501a3b0d288159c566c88622c2f870fc4fd937a919a0f640a8ead8b3fc138",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/quests.lua": "eb15f94f58be894772786706bb9c3db56756df1985d7ab93fc180d7567103ede",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/waypoints.lua": "10f2b234c70d87ba42163782b6022f522affa4d16230eddde55b0a30f7c3861b",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/zones.lua": "a39418b66c8f1c93fa435cbef6e30ba5a79b4a1af459fdd7af3af7729b1a975b",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/manifest.lua": "60fcc8b79a9bb3b8494ff42270a0067f6c842bbced77c334789659e0b2027d80",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/register.lua": "1abd208277be869221b08fd623cc78e1cef6fd1a80a8fca7e99a507a4a4bf7c0",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/registry.lua": "332b71fde7fd35cf3c1c80312d8c79feff3821c278bcd3d6e0d8fc0e92d3732c",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/tablePatch.lua": "a170406dcf8f1b5480e1263b43e2338dfce5b2716574c7c5971c6a0e755f6553",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/derived/RamerDouglasPeucker.lua": "c3f602b845b0e1f8444853ba9b652055a64cc0e918b192dd19d506f46037ab76",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/derived/_begin.lua": "f5aa271ee3c1e136d3e5979901867fb8e05f4b26240d94f0e3c488b6f71c66f6",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/derived/_end.lua": "60578bb0634acabc770c786a459baed2f1c0efab06b5adba68b012b51922195a",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/derived/registry.lua": "8d4c4df9b20afc7dec2439f72c2536192754d16cf0cdc84bfcc7af0db1ac0c2e",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/derived/requiredRaces.lua": "19cab68a2ffc46dc2115f1387b8ac1dec526c67fcc57c4cc09dea57e4612299d",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/derived/waypoints.lua": "e76bb2daaee94772e9fb641ca1821679da0964ef033c89a22d108c8352969057",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/meta/codec.lua": "59293c6d71ffa7653d7fb52789452360bb97aead2c6a077040767fc02c1ba13a",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/meta/itemMeta.lua": "a11209ef102e9cc0d1d199de4e7d662a515964a36f3013aafce9b6a14bae509f",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/meta/normalize.lua": "9047cb03c21dd5f26e007d07ee0f700dab0b20149484e5ee5ba4504e266b131b",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/meta/npcMeta.lua": "01d9f0047f4d8396be6dfaa7a6e286bd07f158c3c111245097f26e479319234e",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/meta/objectMeta.lua": "d53c228d4749eb125bd9fd513997b82d4e494a282af5db86fcde1dbab4929a1a",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/meta/questMeta.lua": "2cf91fe3dc43ac06b06fadf31c9dc05c48c545005ef49d70d3d413a3437e2bb2"
+      },
+      "providers": []
+    },
+    "Forever": {
+      "baseline": "raw + inherited legacy Static",
+      "files": {
+        "/home/logon/projects/Questie-clones/QuestieDB/data/Forever/foreverItemDB.lua": "987d037b6df94d5b0b1dc326a1670581e3abb952736a4ae055fd9f161328b71c",
+        "/home/logon/projects/Questie-clones/QuestieDB/data/Forever/foreverNpcDB.lua": "a8c4169690726323dac3c6441f74f7a4d9cafcc08ec42231d72ff28c9471f0ee",
+        "/home/logon/projects/Questie-clones/QuestieDB/data/Forever/foreverObjectDB.lua": "af4536c12c5b1da5fd32cb33be5c9c01d2436f97a5b9f60e2cdd238273b2cc09",
+        "/home/logon/projects/Questie-clones/QuestieDB/data/Forever/foreverQuestDB.lua": "41cddaaf32b174eb2b80e216a0f070d3dfd16f7a717b83877a3b39f3514b8748",
+        "/home/logon/projects/Questie-clones/QuestieDB/generator/lib.lua": "8baada3a3db4777201dc3402ee84935f3390f4c79c5baf0db40c0e0dec2b1427",
+        "/home/logon/projects/Questie-clones/QuestieDB/generator/loader.lua": "312b06ee3f09755a4f1331fdfd443425236b9dc5ce8b398a2454bcd49f034a10",
+        "/home/logon/projects/Questie-clones/QuestieDB/generator/runtime.lua": "e1b53a88d6c1efacc1dd6a5c114f3d143c2dbfd26fcd67a5fbf16bb7345284c1",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/config.lua": "29ba8094f7aa2afea90a5d7aba3f9a338297e0ebb709eabd18b69092ca838c8c",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/Forever/legacy/classicItemFixes.lua": "688286a44e5d95045ff943d55ba3a9fccffce7ca4a982fa55a67499b39509b87",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/Forever/legacy/classicNPCFixes.lua": "1de19d17db00581a35d397c7440124aa3f14150d5456c771d2deb3cfba79f031",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/Forever/legacy/classicObjectFixes.lua": "181bea5a5db73f8af1bebe1d8aa835d28e2d4c11adf9ff786c4f54edb3cdc76a",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/Forever/legacy/classicQuestFixes.lua": "76cd6a05f035826cabc6180a0ff2a1a37c5e7946c891eb0a06412fab5a4caf2e",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/Forever/legacy/classicQuestReputationFixes.lua": "155b2502990304339833f65c5d5f46d6f1ad84527b9e476a976f4f9157a14322",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/Forever/legacy/itemStartFixes.lua": "c5f379867c82a401432e0ba2ef58c4e44ffe878a806f4901e070f9f090523bc6",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/compat.lua": "a08c1f79033a6fe0696ee068580fb0f84521c68fe88c48b6789eb9052b122539",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/constants.lua": "82ad0121925ccbd76c58b15c421f70f868f81a98626367ac44a0965e1ea8262a",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/expansions.lua": "68a4405bc9551a3efae61f4f2e20e12d8b9c4fd6cf99d59980e3e00daf1f52ac",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/factions.lua": "c6c8c6dc12d5fa0e7a7aa22a21491706aaeba8d55fb68ba3a469c87e2687cbfc",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/fieldKeys.lua": "010e9d16b39db84629f6a317ddd7ce416a3d698634d2293da15e8dec40c793c8",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/icons.lua": "ea4390aadd96d99ad9feab6cf564ecad50350353a526e3695fe39e40c144011b",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/items.lua": "c4b861584fe54ad3edb8a46338064e6ffa9759032dcbaa79756ba4172fa579a2",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/phases.lua": "1736eb5fccfeb3788a07eb94e2c871e84b4cff805ccbb6aa9040e337fb687622",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/professions.lua": "3ae501a3b0d288159c566c88622c2f870fc4fd937a919a0f640a8ead8b3fc138",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/quests.lua": "eb15f94f58be894772786706bb9c3db56756df1985d7ab93fc180d7567103ede",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/waypoints.lua": "10f2b234c70d87ba42163782b6022f522affa4d16230eddde55b0a30f7c3861b",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/zones.lua": "a39418b66c8f1c93fa435cbef6e30ba5a79b4a1af459fdd7af3af7729b1a975b",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/manifest.lua": "60fcc8b79a9bb3b8494ff42270a0067f6c842bbced77c334789659e0b2027d80",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/register.lua": "1abd208277be869221b08fd623cc78e1cef6fd1a80a8fca7e99a507a4a4bf7c0",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/registry.lua": "332b71fde7fd35cf3c1c80312d8c79feff3821c278bcd3d6e0d8fc0e92d3732c",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/tablePatch.lua": "a170406dcf8f1b5480e1263b43e2338dfce5b2716574c7c5971c6a0e755f6553",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/derived/RamerDouglasPeucker.lua": "c3f602b845b0e1f8444853ba9b652055a64cc0e918b192dd19d506f46037ab76",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/derived/_begin.lua": "f5aa271ee3c1e136d3e5979901867fb8e05f4b26240d94f0e3c488b6f71c66f6",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/derived/_end.lua": "60578bb0634acabc770c786a459baed2f1c0efab06b5adba68b012b51922195a",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/derived/registry.lua": "8d4c4df9b20afc7dec2439f72c2536192754d16cf0cdc84bfcc7af0db1ac0c2e",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/derived/requiredRaces.lua": "19cab68a2ffc46dc2115f1387b8ac1dec526c67fcc57c4cc09dea57e4612299d",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/derived/waypoints.lua": "e76bb2daaee94772e9fb641ca1821679da0964ef033c89a22d108c8352969057",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/meta/codec.lua": "59293c6d71ffa7653d7fb52789452360bb97aead2c6a077040767fc02c1ba13a",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/meta/itemMeta.lua": "a11209ef102e9cc0d1d199de4e7d662a515964a36f3013aafce9b6a14bae509f",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/meta/normalize.lua": "9047cb03c21dd5f26e007d07ee0f700dab0b20149484e5ee5ba4504e266b131b",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/meta/npcMeta.lua": "01d9f0047f4d8396be6dfaa7a6e286bd07f158c3c111245097f26e479319234e",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/meta/objectMeta.lua": "d53c228d4749eb125bd9fd513997b82d4e494a282af5db86fcde1dbab4929a1a",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/meta/questMeta.lua": "2cf91fe3dc43ac06b06fadf31c9dc05c48c545005ef49d70d3d413a3437e2bb2"
+      },
+      "providers": [
+        {
+          "file": "Forever/legacy/classicQuestFixes.lua",
+          "functions": [
+            "Load"
+          ]
+        },
+        {
+          "file": "Forever/legacy/classicNPCFixes.lua",
+          "functions": [
+            "Load"
+          ]
+        },
+        {
+          "file": "Forever/legacy/classicItemFixes.lua",
+          "functions": [
+            "Load"
+          ]
+        },
+        {
+          "file": "Forever/legacy/classicObjectFixes.lua",
+          "functions": [
+            "Load"
+          ]
+        },
+        {
+          "file": "Forever/legacy/classicQuestReputationFixes.lua",
+          "functions": [
+            "Load"
+          ]
+        },
+        {
+          "file": "Forever/legacy/itemStartFixes.lua",
+          "functions": [
+            "LoadAutomaticQuestStarts"
+          ]
+        }
+      ]
+    }
+  },
+  "baseline_input_differences_at_import": {},
   "coordinate_frames": {
     "path": "/home/logon/projects/Questie-clones/QuestieDB/data/Forever/conversion.json",
     "sha256": "f4477d6c575575152225f2a9d40858029bf9d2d5fdf6b083c06557fce8b5984b",
@@ -10,22 +140,24 @@
     ]
   },
   "counts": {
-    "new_ids": 3679,
-    "records": 4222,
-    "skips": 9219
+    "missing_refs": 478,
+    "new_ids": 9312,
+    "records": 12361,
+    "skips": 17610
   },
   "extractor": {
     "path": "/home/logon/projects/scraper-questie/wh_parser/js_extract.py",
     "sha256": "e23b467c16ae9a16e55128a576c2c65ffe08ce15f05579fc0a46fce1f7e4480d"
   },
   "generator": {
-    "raw_reader_sha256": "281f57f494c917412c782fb12bdc1f56d606a432846e0a88ddcff9772a2190b3",
-    "sha256": "adff3ec2cd2d9c2273354868e6c552377cea331ebe86db374f1c33fafc1423e1"
+    "raw_reader_sha256": "474d116a8453d3903a203355ab95b99323220af74d3d549ab190e788e19f0c0d",
+    "sha256": "8437f16c452a2c7d5ccf6702bd4043fe0508d958259b8297e85f40a9b8ed9d09"
   },
   "imported_artifacts_sha256": {
-    "foreverBaseNpc.lua": "151ab61bd39668c23fb4f4f1eea9e27f75d426ae9d9dbe3ac5ea451a2c758c2b",
-    "foreverBaseObject.lua": "583ba7caa6ba6d8b5accf5c6dc0e0c79178531496b3c12160544f62003d07a02",
-    "foreverBaseQuest.lua": "90197532e83db9e7973937f153efd5f32ab885b23e6777683a182a130b8b3aca"
+    "foreverBaseItem.lua": "b4311a3c9910df3282f540893db15c96512c6eb714275536ff9834e5fc654b3f",
+    "foreverBaseNpc.lua": "48b3ad86582a5a456ad60d9f647ec7711ec35812a33e2e440523719ef88e7026",
+    "foreverBaseObject.lua": "ee18ba2f57be559d6426267ca2e985af182add4958e211e2439ec604a64f669b",
+    "foreverBaseQuest.lua": "7ee8a8c53ea2a0a4d7635e66bb3e2c30ee65d94598d2051ce04badbcda9e12e2"
   },
   "inputs": {
     "era": {
@@ -182,11 +314,11 @@
           "entity_type": "faction"
         },
         {
-          "count": 23567,
+          "count": 29201,
           "entity_type": "item"
         },
         {
-          "count": 15002,
+          "count": 15003,
           "entity_type": "npc"
         },
         {
@@ -291,22 +423,22 @@
         {
           "entity_type": "item",
           "entry_count": 24016,
-          "fetched_at": "2026-09-27T15:08:13.822787+00:00"
+          "fetched_at": "2026-09-27T17:24:54.470633+00:00"
         },
         {
           "entity_type": "npc",
           "entry_count": 15546,
-          "fetched_at": "2026-09-27T12:52:11.781696+00:00"
+          "fetched_at": "2026-09-27T17:25:25.270986+00:00"
         },
         {
           "entity_type": "object",
           "entry_count": 1767,
-          "fetched_at": "2026-09-27T13:43:44.010241+00:00"
+          "fetched_at": "2026-09-27T17:25:35.133974+00:00"
         },
         {
           "entity_type": "quest",
           "entry_count": 5200,
-          "fetched_at": "2026-09-27T14:50:01.916533+00:00"
+          "fetched_at": "2026-09-27T17:25:35.631351+00:00"
         },
         {
           "entity_type": "skill",
@@ -324,36 +456,29 @@
           "fetched_at": "2026-09-27T12:21:04.193697+00:00"
         }
       ],
-      "size_bytes": 5608599552
+      "size_bytes": 5954842624
     }
   },
   "integration_order": [
     "raw base",
-    "inherited legacy Static Corrections (including generated reputation and Item-start sets)",
-    "generated Forever delta-base",
+    "inherited legacy Static Corrections",
+    "generated delta_base",
     "authored Forever Static Corrections",
     "Dynamic Corrections"
   ],
-  "missing_refs": [
-    {
-      "field": "startedBy",
-      "id": 14242,
-      "kind": "npc",
-      "quest": 98093
-    },
-    {
-      "field": "finishedBy",
-      "id": 14242,
-      "kind": "npc",
-      "quest": 98093
-    }
-  ],
+  "missing_reference_counts": {
+    "item": 2,
+    "npc": 397,
+    "object": 36,
+    "quest": 43
+  },
   "policy": {
     "deletions": "never generated",
-    "names": "fill missing names only; preserve all existing raw-base names",
+    "item_relationships": "source-only additions from nonempty tabs below 200 rows; removals report-only; singleton starts; target/objective overlap suppressed",
+    "names": "fill missing names only; preserve all existing effective pre-delta names",
     "new": "absent Era registry/pages/raw base AND explicit envChange.status=new",
     "objectives": "not generated",
-    "relationships": "explicit quest infobox links; whole fields with raw-base reverse reconciliation",
+    "relationships": "positive quest giver additions; removals only with a proven move; accepted inverse edge operations",
     "spawns": "missing target records only, withholding changed map frames; existing converted spawns retained"
   },
   "raw_base": {
@@ -370,13 +495,56 @@
     "path": "/home/logon/projects/Questie-clones/QuestieDB"
   },
   "sample_limit_per_kind": null,
-  "schema_version": 1,
+  "schema_version": 2,
+  "snapshot": {
+    "coverage": [
+      {
+        "cached": 29195,
+        "expected": 29195,
+        "kind": "item",
+        "missing": [],
+        "stale": []
+      },
+      {
+        "cached": 15003,
+        "expected": 15003,
+        "kind": "npc",
+        "missing": [],
+        "stale": []
+      },
+      {
+        "cached": 2056,
+        "expected": 2056,
+        "kind": "object",
+        "missing": [],
+        "stale": []
+      },
+      {
+        "cached": 6150,
+        "expected": 6150,
+        "kind": "quest",
+        "missing": [],
+        "stale": []
+      }
+    ],
+    "method": "sqlite3.Connection.backup; read-only pinned source transaction",
+    "previous_snapshot": "data/snapshots/forever-before-20260927T173519Z",
+    "quick_check": "ok",
+    "snapshot_at": "2026-09-27T17:35:19.390300+00:00",
+    "source": "/home/logon/projects/scraper-questie/data/raw/forever.db"
+  },
   "summary": {
+    "item": {
+      "new": 5632,
+      "records": 8157,
+      "relationship_support": 0,
+      "updated": 2525
+    },
     "npc": {
-      "new": 2927,
-      "records": 3398,
+      "new": 2928,
+      "records": 3394,
       "relationship_support": 3,
-      "updated": 468
+      "updated": 463
     },
     "object": {
       "new": 20,
@@ -386,16 +554,21 @@
     },
     "quest": {
       "new": 732,
-      "records": 772,
+      "records": 758,
       "relationship_support": 0,
-      "updated": 40
+      "updated": 26
     }
   },
+  "table_field_counts": {
+    "add": 765,
+    "initialize": 5416
+  },
   "upstream_artifacts_sha256": {
-    "npc.lua": "644659014c06573fd68eb9e1c6d269a039820d7e5c83e51b5dea06f7604401d5",
-    "object.lua": "ef7e8fce87b6f72afaf1ae54f62af6e0098cec796bd13701cd5f1205085a95b3",
-    "quest.lua": "af1439d2b6bf6fbefac92d54d197ec82084c28e1c4e0ffd3a78e29cbaa733e39",
-    "report.json": "0fbf19cc985a0c335906d10197b76b09519a0f2496efd41d1207dfe9b74c698e",
-    "report.md": "3f81bf0ce9f3a74091ba304d7ecf49f631ada880b6e472498efc2def1ea55b59"
+    "foreverBaseItem.lua": "8ae0be6c6c92aede22925084afc6f50fcbdbf26d0550d8d499ae3414d2ae4b89",
+    "foreverBaseNpc.lua": "cb2970582a1531bd777c1de1ab9bd9b5daf6e4995b729ac45d803715c3b3cd70",
+    "foreverBaseObject.lua": "83f267363045c778d7e9a14da96f70b9e91f1c0af59d5c34350dc324420a4f39",
+    "foreverBaseQuest.lua": "d66b5a269cc6d9ec04d758f7fe94a9462e22e239378c5e3bc0dd1dd4532dd0ba",
+    "report.json": "3a9e0c1b58fa7e48e77c40eed5469be107bab55a573e931d09f07696ab296f9d",
+    "report.md": "65c7365c2cd1dcefea65c42ace547c84751190527b6c2646c8d5c60d2087eb4d"
   }
 }

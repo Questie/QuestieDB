@@ -172,6 +172,7 @@ config.ownedCorrections = {
   { owned = 'Forever', file = 'Forever/generated/foreverBaseNpc.lua', module = 'ForeverBaseNpc', datatype = 'Npc', static = {'Load'}, generated = true, window = 'ForeverDeltaBase' },
   { owned = 'Forever', file = 'Forever/generated/foreverBaseObject.lua', module = 'ForeverBaseObject', datatype = 'Object', static = {'Load'}, generated = true, window = 'ForeverDeltaBase' },
   { owned = 'Forever', file = 'Forever/generated/foreverBaseQuest.lua', module = 'ForeverBaseQuest', datatype = 'Quest', static = {'Load'}, generated = true, window = 'ForeverDeltaBase' },
+  { owned = 'Forever', file = 'Forever/generated/foreverBaseItem.lua', module = 'ForeverBaseItem', datatype = 'Item', static = {'Load'}, generated = true, window = 'ForeverDeltaBase' },
   -- Authored Forever corrections follow legacy and generated Static data; Dynamic precedence is unchanged.
   { owned = 'Forever', file = 'Forever/foreverQuestFixes.lua', module = 'ForeverQuestFixes', datatype = 'Quest', static = {'Load'}, dynamic = {'LoadDynamic'}, window = 'Forever' },
   { owned = 'Forever', file = 'Forever/foreverNPCFixes.lua', module = 'ForeverNpcFixes', datatype = 'Npc', static = {'Load'}, dynamic = {'LoadDynamic'}, window = 'Forever' },

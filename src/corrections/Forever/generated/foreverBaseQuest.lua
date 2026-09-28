@@ -21,56 +21,13 @@ function ForeverBaseQuest:Load()
         [952] = { -- Grove of the Ancients : https://wowhead.com/forever/quest=952/grove-of-the-ancients
             [questKeys.questLevel] = 17,
         },
-        [960] = { -- Onu is Meditating : https://wowhead.com/forever/quest=960/onu-is-meditating
-            [questKeys.finishedBy] = {[1] = {3616}},
-            [questKeys.name] = "Onu is Meditating",
-            [questKeys.questLevel] = 1,
-            [questKeys.requiredLevel] = 1,
-            [questKeys.startedBy] = {[1] = {3616}},
-        },
-        [1152] = { -- Test of Lore : https://wowhead.com/forever/quest=1152/test-of-lore
-            [questKeys.requiredLevel] = 25,
-        },
-        [1154] = { -- Test of Lore : https://wowhead.com/forever/quest=1154/test-of-lore
-            [questKeys.requiredLevel] = 25,
-        },
-        [1159] = { -- Test of Lore : https://wowhead.com/forever/quest=1159/test-of-lore
-            [questKeys.requiredLevel] = 25,
-        },
-        [1160] = { -- Test of Lore : https://wowhead.com/forever/quest=1160/test-of-lore
-            [questKeys.requiredLevel] = 25,
-        },
-        [1394] = { -- Final Passage : https://wowhead.com/forever/quest=1394/final-passage
-            [questKeys.requiredLevel] = 25,
-        },
-        [1488] = { -- The Corrupter : https://wowhead.com/forever/quest=1488/the-corrupter
-            [questKeys.requiredLevel] = 25,
-        },
         [3911] = { -- The Last Element : https://wowhead.com/forever/quest=3911/the-last-element
             [questKeys.name] = "The Last Element",
             [questKeys.questLevel] = 54,
             [questKeys.requiredLevel] = 48,
         },
         [6121] = { -- Lessons Anew : https://wowhead.com/forever/quest=6121/lessons-anew
-            [questKeys.startedBy] = {[1] = {4217, 270459}},
-        },
-        [6627] = { -- Test of Lore : https://wowhead.com/forever/quest=6627/test-of-lore
-            [questKeys.requiredLevel] = 25,
-        },
-        [6628] = { -- Test of Lore : https://wowhead.com/forever/quest=6628/test-of-lore
-            [questKeys.requiredLevel] = 25,
-        },
-        [8114] = { -- Control Four Bases : https://wowhead.com/forever/quest=8114/control-four-bases
-            [questKeys.requiredLevel] = 60,
-        },
-        [8115] = { -- Control Five Bases : https://wowhead.com/forever/quest=8115/control-five-bases
-            [questKeys.requiredLevel] = 60,
-        },
-        [8121] = { -- Take Four Bases : https://wowhead.com/forever/quest=8121/take-four-bases
-            [questKeys.requiredLevel] = 60,
-        },
-        [8122] = { -- Take Five Bases : https://wowhead.com/forever/quest=8122/take-five-bases
-            [questKeys.requiredLevel] = 60,
+            [questKeys.startedBy_add] = {[1] = {270459}},
         },
         [76156] = { -- Stalk With The Earthmother : https://wowhead.com/forever/quest=76156/stalk-with-the-earthmother
             [questKeys.finishedBy] = {[1] = {205729}},
@@ -138,13 +95,6 @@ function ForeverBaseQuest:Load()
         [79092] = { -- Archmage Theocritus' Research Journal : https://wowhead.com/forever/quest=79092/archmage-theocritus-research-journal
             [questKeys.finishedBy] = {[1] = {211022, 211033}},
             [questKeys.name] = "Archmage Theocritus' Research Journal",
-            [questKeys.questLevel] = 20,
-            [questKeys.requiredLevel] = 1,
-            [questKeys.startedBy] = {[1] = {211033}},
-        },
-        [79093] = { -- Rumi of Gnomeregan: The Collected Works : https://wowhead.com/forever/quest=79093/rumi-of-gnomeregan-the-collected-works
-            [questKeys.finishedBy] = {[1] = {211033}},
-            [questKeys.name] = "Rumi of Gnomeregan: The Collected Works",
             [questKeys.questLevel] = 20,
             [questKeys.requiredLevel] = 1,
             [questKeys.startedBy] = {[1] = {211033}},

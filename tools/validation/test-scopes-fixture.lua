@@ -4,7 +4,7 @@ local output = assert(arg[1], "provide a disposable fixture directory")
 local lib = dofile("generator/lib.lua")
 local fixture = dofile("tools/validation/storage-fixture.lua")
 local db = fixture.namespace()
-local quest, npc, object = db.Meta.Quest.keys, db.Meta.Npc.keys, db.Meta.Object.keys
+local quest, npc, object, item = db.Meta.Quest.keys, db.Meta.Npc.keys, db.Meta.Object.keys, db.Meta.Item.keys
 local path = output .. "/QuestieDB_Forever.toc"
 local alias = output .. "/QuestieDB_Camelot.toc"
 assert(not lib.fileExists(path) and not lib.fileExists(alias), "refusing to overwrite an artifact")
@@ -34,7 +34,16 @@ fixture.write(path, {
       [object.spawns] = {[11] = {{9.9, 20}}},
     },
   },
-  Item = {},
+  Item = {
+    [286647] = {
+      [item.name] = "Depleted Crystal Heart",
+      [item.itemLevel] = 1,
+      [item.requiredLevel] = 1,
+      [item.class] = 12,
+      [item.subClass] = 0,
+      [item.npcDrops] = {252711},
+    },
+  },
 }, {})
 
 local content, replaced = lib.readAll(path):gsub("## X%-Flavor: Vanilla", "## X-Flavor: Forever", 1)

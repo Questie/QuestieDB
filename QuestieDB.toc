@@ -255,6 +255,7 @@ src\corrections\Forever\legacy\itemStartFixes.lua [ExcludeLoadGameType vanilla, 
 src\corrections\Forever\generated\foreverBaseNpc.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\generated\foreverBaseObject.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\generated\foreverBaseQuest.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Forever\generated\foreverBaseItem.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
 # --- Forever: authored corrections ---
 # Static follows legacy and generated data; Dynamic follows legacy Dynamic Corrections.

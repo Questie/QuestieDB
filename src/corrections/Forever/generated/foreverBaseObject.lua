@@ -6,17 +6,17 @@ function ForeverBaseObject:Load()
     local objectKeys = QuestieDB.objectKeys
     return {
         [3972] = { -- WANTED : https://wowhead.com/forever/object=3972/wanted
-            [objectKeys.questStarts] = {895, 92706},
+            [objectKeys.questStarts_add] = {92706},
         },
         [12666] = { -- Twilight Tome : https://wowhead.com/forever/object=12666/twilight-tome
-            [objectKeys.questStarts] = {950, 98042},
+            [objectKeys.questStarts_add] = {98042},
         },
         [61934] = { -- Brazier of the Dormant Flame : https://wowhead.com/forever/object=61934/brazier-of-the-dormant-flame
-            [objectKeys.questEnds] = {1526, 94467},
-            [objectKeys.questStarts] = {1527, 94468},
+            [objectKeys.questEnds_add] = {94467},
+            [objectKeys.questStarts_add] = {94468},
         },
         [175320] = { -- WANTED: Murkdeep! : https://wowhead.com/forever/object=175320/wanted-murkdeep
-            [objectKeys.questStarts] = {4740, 98025},
+            [objectKeys.questStarts_add] = {98025},
         },
         [175725] = { -- The Old Gods and the Ordering of Azeroth : https://wowhead.com/forever/object=175725/the-old-gods-and-the-ordering-of-azeroth
             [objectKeys.name] = "The Old Gods and the Ordering of Azeroth",

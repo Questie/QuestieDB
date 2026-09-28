@@ -31,6 +31,11 @@ local function witness(db)
   assert(next(db.Quest.objectives(86585)) == nil, "incomplete quest does not invent objectives")
   assert(db.Object.name(175725) == "The Old Gods and the Ordering of Azeroth", "imported object")
   assert(db.Object.spawns(175725)[11][1][1] == 9.9, "imported object spawn")
+  assert(db.Item.Exists(286647) and db.Item.GetAllIds(true)[286647], "new item is enumerable")
+  assert(db.Item.name(286647) == "Depleted Crystal Heart", "imported item name")
+  assert(db.Item.itemLevel(286647) == 1 and db.Item.requiredLevel(286647) == 1, "imported item levels")
+  assert(db.Item.class(286647) == 12 and db.Item.subClass(286647) == 0, "imported item category")
+  assert(db.Item.npcDrops(286647)[1] == 252711, "additive item drop source")
 end
 
 for _, token in ipairs(baked and { "camelot" } or { "camelot", "forever" }) do
@@ -43,7 +48,7 @@ for _, token in ipairs(baked and { "camelot" } or { "camelot", "forever" }) do
       assert(not entry.dynamic, "delta-base must never become Dynamic")
     end
   end
-  assert(generated == (baked and 0 or 3), "only Source registers delta-base providers")
+  assert(generated == (baked and 0 or 4), "only Source registers all four delta-base providers")
   if baked then
     for _, path in ipairs(files) do
       assert(not path:find("Forever/generated/", 1, true), "static-only payload leaked into Baked file list")
@@ -54,7 +59,8 @@ end
 if not baked then
   for _, flavor in ipairs({ "Classic", "TBC" }) do
     local db = load(flavor)
-    assert(not db.Quest.Exists(86585) and not db.Npc.Exists(269153), "Forever content leaked into " .. flavor)
+    assert(not db.Quest.Exists(86585) and not db.Npc.Exists(269153) and not db.Item.Exists(286647),
+      "Forever content leaked into " .. flavor)
     for _, entry in ipairs(db.Corrections.Select()) do
       assert(not entry.name:find("^Forever/generated/"), "Forever provider leaked into " .. flavor)
     end
@@ -79,7 +85,7 @@ if not baked then
       authoredEntries[#authoredEntries + 1] = entry
     end
   end
-  assert(#legacyEntries == 6 and #deltaEntries == 3 and #authoredEntries == 4,
+  assert(#legacyEntries == 6 and #deltaEntries == 4 and #authoredEntries == 4,
     "precedence fixture must cover every applicable Static provider")
   for _, delta in ipairs(deltaEntries) do
     for _, legacy in ipairs(legacyEntries) do
@@ -97,9 +103,10 @@ if not baked then
   assert(quests[86585][questKeys.startedBy][1][1] == 269153, "offline static quest giver")
   assert(npcs[269153][npcKeys.questStarts][1] == 86585, "offline static reverse link")
   for _, case in ipairs({
-    { "Quest", "ForeverBaseQuest", "QuestieQuestFixes", "ForeverQuestFixes", 86585, 772 },
-    { "Npc", "ForeverBaseNpc", "QuestieNPCFixes", "ForeverNpcFixes", 269153, 3398 },
+    { "Quest", "ForeverBaseQuest", "QuestieQuestFixes", "ForeverQuestFixes", 86585, 758 },
+    { "Npc", "ForeverBaseNpc", "QuestieNPCFixes", "ForeverNpcFixes", 269153, 3394 },
     { "Object", "ForeverBaseObject", "QuestieObjectFixes", "ForeverObjectFixes", 900000001, 52 },
+    { "Item", "ForeverBaseItem", "QuestieItemFixes", "ForeverItemFixes", 286647, 8157 },
   }) do
     local datatype, delta, legacy, manual, id = case[1], providers[case[2]], providers[case[3]], providers[case[4]], case[5]
     local count = 0
