@@ -88,10 +88,11 @@ end
 ---@return table QuestieDB
 local function buildQuestieDB(expansionName)
   local QuestieDB = {
-    questKeys = pick("questKeys", expansionName),
-    npcKeys = pick("npcKeys", expansionName),
-    itemKeys = pick("itemKeys", expansionName),
-    objectKeys = pick("objectKeys", expansionName),
+    -- Field names and meanings are maintained in src/meta/, not the enum tables.
+    questKeys = LibQuestieDB.Meta.Quest.keys,
+    npcKeys = LibQuestieDB.Meta.Npc.keys,
+    itemKeys = LibQuestieDB.Meta.Item.keys,
+    objectKeys = LibQuestieDB.Meta.Object.keys,
     raceKeys = pick("raceKeys", expansionName),
     classKeys = pick("classKeys", expansionName),
     sortKeys = pick("sortKeys", expansionName),

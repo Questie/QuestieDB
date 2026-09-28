@@ -14,8 +14,9 @@ These checks do not establish that every authored gameplay fact is correct.
 
 `src/meta/` is the canonical schema. Generation checks data-file field keys against it. Public
 `compilerTypes` metadata remains for API compatibility, not as a dependency on the compiler.
-Schema changes must update the owned data keys, correction constants, and LuaLS declarations
-where affected. Corrections and translations are edited here, without re-importing Questie.
+Schema changes must update the owned data keys and LuaLS declarations where affected.
+The correction compatibility shim supplies field keys directly from the canonical schema tables.
+Corrections and translations are edited here, without re-importing Questie.
 
 Build provenance identifies the producing QuestieDB commit. New TOCs omit
 `X-QUESTIE-COMMIT`, and release manifests omit `questieCommit`; neither field describes a

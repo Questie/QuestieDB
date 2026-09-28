@@ -146,7 +146,6 @@ config.runtimeFiles = {
 -- The initializer must precede the subject files in both TOCs and offline loaders.
 config.enumFiles = {
   "src/corrections/enum/constants.lua",
-  "src/corrections/enum/fieldKeys.lua",
   "src/corrections/enum/items.lua",
   "src/corrections/enum/quests.lua",
   "src/corrections/enum/professions.lua",

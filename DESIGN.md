@@ -144,7 +144,8 @@ and `generate.lua meta` retired with the migration tooling (ADR 0014).
 
 Generation validates data-file key enums against the owned schema. A missing trailing field
 is allowed only while the data file carries no values beyond its declared fields. Update
-affected data keys, correction constants, and public LuaLS declarations alongside schema changes.
+affected data keys and public LuaLS declarations alongside schema changes. The correction
+compatibility shim supplies field keys directly from the canonical schema tables.
 
 Legacy width and signedness do not define storage: CBOR encodes Lua values directly. Structured
 fields still need explicit normalization, including coordinate tuple shape and nested numeric
