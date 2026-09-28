@@ -188,6 +188,18 @@ for _, file in ipairs(plan.files) do
         local actual, outputKeys = loader.loadEntityData(file.output, entityTypes[file.entity])
         compare(sourceKeys, outputKeys, file.output .. ": keys")
         local coordinates = transformRows(expected, file.entity)
+        -- Raw Era faction-wide masks gain Skyborne. Provider expressions stay unchanged
+        -- and are compared under the same enum context below, separately from this policy.
+        if file.entity == "Quest" then
+            for _, row in pairs(expected) do
+                local mask = row[sourceKeys.requiredRaces]
+                if mask == 77 then
+                    row[sourceKeys.requiredRaces] = 4294967373
+                elseif mask == 178 then
+                    row[sourceKeys.requiredRaces] = 8589934770
+                end
+            end
+        end
         compare(expected, actual, file.output, coordinates)
     else
         local source = loadCorrection(file.source, assert(file.module))

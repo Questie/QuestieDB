@@ -347,11 +347,17 @@ The dataset check covers actual support shapes, reviewed links, converted entran
 preserved routing and faction references, including a missing-reference Self-proof. It does not
 require future Forever inputs to equal Era.
 
-To revalidate adopted conversion bytes without regenerating them, call
-`convert.geometry` with an existing explicit database path, then pass
-`{path: Path(path).read_bytes() for path in manifest['files']}` to
-`convert.validate`. Check manifest source/output hashes and geometry first. A dry
-run validates fresh candidates and is not a substitute for this adopted-byte check.
+The current `convert-forever` contract includes raw quest faction-mask expansion as well as
+coordinates: exact `requiredRaces` values `77` and `178` gain the matching Skyborne bit.
+It preserves neutral and race-specific restrictions. The current validator requires these
+replacements, so historical coordinate-only adoption bytes do not satisfy that newer contract.
+This tooling change does not migrate the already-adopted files or rewrite their manifest.
+
+To validate bytes produced under the current contract without installing them, call
+`convert.geometry` with an existing explicit database path, then pass the output bytes to
+`convert.validate`. Check source/output hashes and geometry first. Use the corresponding
+historical converter revision when checking the original coordinate-only adoption. A dry run
+validates fresh candidates, not the already-adopted files.
 
 Tooling remains opt-in. A missing database can trigger a download even on a dry
 run; inspect the path first. Never run an installing conversion merely to test
