@@ -12,8 +12,8 @@ function ForeverBaseObject:Load()
             [objectKeys.questStarts_add] = {98042},
         },
         [61934] = { -- Brazier of the Dormant Flame : https://wowhead.com/forever/object=61934/brazier-of-the-dormant-flame
-            [objectKeys.questEnds_add] = {94467},
             [objectKeys.questStarts_add] = {94468},
+            [objectKeys.questEnds_add] = {94467},
         },
         [175320] = { -- WANTED: Murkdeep! : https://wowhead.com/forever/object=175320/wanted-murkdeep
             [objectKeys.questStarts_add] = {98025},
@@ -62,8 +62,8 @@ function ForeverBaseObject:Load()
         },
         [406918] = { -- Messenger Bag : https://wowhead.com/forever/object=406918/messenger-bag
             [objectKeys.name] = "Messenger Bag",
-            [objectKeys.questEnds] = {79975},
             [objectKeys.questStarts] = {79976},
+            [objectKeys.questEnds] = {79975},
             [objectKeys.spawns] = {[45] = {{22.4, 24.2}, {22.5, 24.2}}},
         },
         [410345] = { -- Dream Portal : https://wowhead.com/forever/object=410345/dream-portal
@@ -82,14 +82,14 @@ function ForeverBaseObject:Load()
         },
         [415106] = { -- Burned-Out Remains : https://wowhead.com/forever/object=415106/burned-out-remains
             [objectKeys.name] = "Burned-Out Remains",
-            [objectKeys.questEnds] = {79008},
             [objectKeys.questStarts] = {79007, 79192},
+            [objectKeys.questEnds] = {79008},
             [objectKeys.spawns] = {[17] = {{46.4, 73.9}}, [40] = {{37.4, 50.6}, {37.5, 50.7}}},
         },
         [415107] = { -- Burned-Out Remains : https://wowhead.com/forever/object=415107/burned-out-remains
             [objectKeys.name] = "Burned-Out Remains",
-            [objectKeys.questEnds] = {79007},
             [objectKeys.questStarts] = {79008, 79192},
+            [objectKeys.questEnds] = {79007},
             [objectKeys.spawns] = {[40] = {{37.4, 50.6}, {37.5, 50.7}}},
         },
         [415612] = { -- Portal To Zoram Strand : https://wowhead.com/forever/object=415612/portal-to-zoram-strand
@@ -97,8 +97,8 @@ function ForeverBaseObject:Load()
         },
         [417072] = { -- Nailed Plank : https://wowhead.com/forever/object=417072/nailed-plank
             [objectKeys.name] = "Nailed Plank",
-            [objectKeys.questEnds] = {79008},
             [objectKeys.questStarts] = {79192},
+            [objectKeys.questEnds] = {79008},
             [objectKeys.spawns] = {[17] = {{46.4, 73.8}}},
         },
         [420064] = { -- Reconstructed Staff of Des'Altek : https://wowhead.com/forever/object=420064/reconstructed-staff-of-desaltek
@@ -117,8 +117,8 @@ function ForeverBaseObject:Load()
         },
         [424005] = { -- Pocket Litter : https://wowhead.com/forever/object=424005/pocket-litter
             [objectKeys.name] = "Pocket Litter",
-            [objectKeys.questEnds] = {79192},
             [objectKeys.questStarts] = {79980},
+            [objectKeys.questEnds] = {79192},
             [objectKeys.spawns] = {[406] = {{40.7, 52.4}, {40.8, 52.5}}},
         },
         [424006] = { -- Hastily Rolled-Up Satchel : https://wowhead.com/forever/object=424006/hastily-rolled-up-satchel
@@ -128,20 +128,20 @@ function ForeverBaseObject:Load()
         },
         [424007] = { -- Carved Figurine : https://wowhead.com/forever/object=424007/carved-figurine
             [objectKeys.name] = "Carved Figurine",
-            [objectKeys.questEnds] = {79974},
             [objectKeys.questStarts] = {79975},
+            [objectKeys.questEnds] = {79974},
             [objectKeys.spawns] = {[38] = {{49.4, 12.9}, {49.5, 12.8}}},
         },
         [424010] = { -- Nailed Plank : https://wowhead.com/forever/object=424010/nailed-plank
             [objectKeys.name] = "Nailed Plank",
-            [objectKeys.questEnds] = {79007},
             [objectKeys.questStarts] = {79192},
+            [objectKeys.questEnds] = {79007},
             [objectKeys.spawns] = {[40] = {{37.4, 50.9}, {37.5, 50.8}}},
         },
         [424012] = { -- Mound of Dirt : https://wowhead.com/forever/object=424012/mound-of-dirt
             [objectKeys.name] = "Mound of Dirt",
-            [objectKeys.questEnds] = {79980},
             [objectKeys.questStarts] = {79974},
+            [objectKeys.questEnds] = {79980},
             [objectKeys.spawns] = {[406] = {{39.6, 49.9}}},
         },
         [428349] = { -- Mailbox : https://wowhead.com/forever/object=428349/mailbox

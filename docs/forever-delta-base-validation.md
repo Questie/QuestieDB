@@ -274,3 +274,38 @@ under changed NPC evidence. The runtime-zero policy remains deferred.
 All other provider and input hashes are retained in `provenance.json`. The exact four-file
 copy set and its final SHA-256 values are in disposable `.out/ready-sha256.txt`. Copy only
 those reviewed files, not `.out/`, TOCs or any other disposable files.
+
+## Numeric field-order refresh
+
+Upstream: `/home/logon/projects/forever-base-db/generated/index-order/`.
+Disposable copy: `/tmp/questiedb-index-order.w3fyw9rv`.
+
+All four providers now list fields by their consumer authoring index: removes,
+ordinary sets, then adds; each group follows schema order. The baseline reader
+returns the actual authoring keys, including operation aliases. No index map is
+hard-coded in the generator. Standalone and imported provider APIs are unchanged.
+
+A full upstream extraction produced the same 12,347 rows. Old/new reports differ
+only in generator/reader hashes and `lua_rendering` metadata. Every provider is
+exactly a permutation of existing field lines within the same rows, preserving
+wrappers, values, symbolic expressions, URLs, assumption comments and nil holes.
+
+Disposable validation passed:
+
+- Complete four-way Lua equality: previous/new standalone and previous/new imports.
+  All 12,347 rows and 45,027 fields match. Every emitted row's field indices increase
+  strictly in both new forms, checked against real runtime keys.
+- All 245 authored race zeroes survive current Source Derived Passes; Mage 128 remains.
+  All 20 held quests remain absent. The 19 deferred questions remain open.
+- `lua5.1 test.lua correction-audit`: 24 checks passed.
+- `lua5.1 test.lua corrections forever-delta-base native-toc`: 2,464 checks passed.
+- `lua5.1 validators/run.lua Forever --self-check`: 15/15 clean, zero findings.
+- All 101 reported input hashes match, including 76 baseline entries. Imported and
+  upstream artifact hashes match provenance. Generator tests: 249 passed; Ruff clean.
+
+The prepared copy set is the four generated providers, provenance, the import guide
+and this report. Source state and index hashes are recorded in `.out/source-before.json`;
+commands, logs and results are in `.out/`. Existing enum/test-scope edits and protected
+untracked files are outside that copy set. No TOCs, runtime code, consumer tests or
+validation baselines change. Full artifact gates were not rerun for this order-only
+refresh; complete value equality supports reusing the prior full-gate evidence.

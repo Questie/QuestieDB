@@ -1,7 +1,7 @@
 # Forever generated delta-base
 
 `src/corrections/Forever/generated/` imports reviewed offline candidates from
-`/home/logon/projects/forever-base-db/generated/symbolic-masks/`. The four providers retain
+`/home/logon/projects/forever-base-db/generated/index-order/`. The four providers retain
 upstream filenames and module identities: `foreverBaseNpc.lua` / `ForeverBaseNpc`,
 `foreverBaseObject.lua` / `ForeverBaseObject`, `foreverBaseQuest.lua` / `ForeverBaseQuest`
 and `foreverBaseItem.lua` / `ForeverBaseItem`.
@@ -16,7 +16,10 @@ Quest race/class masks use exact named aggregates or sums of named individual bi
 remains literal `0`, never a `NONE` alias. Maps and other fields remain numeric. Preserve every
 row value, inline entity name, Forever Wowhead URL and assumption comment. Starter/finisher
 groups retain positional nil holes, including operation operands such as `{nil, {424005}}`;
-spawn maps retain zone keys. This symbolic refresh changes spelling only. The reviewed
+spawn maps retain zone keys. Fields follow ascending numeric authoring-key indices:
+`_remove`, ordinary sets, then `_add`, with canonical schema order inside each group
+(`name` first when present). Indices come from the consumer, not a duplicate ordering list.
+This is source formatting, not a guarantee about Lua table iteration order. The reviewed
 restriction and relationship data and consumer `:Load()` contract remain unchanged.
 
 ## Policy and limitations

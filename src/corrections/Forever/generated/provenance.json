@@ -190,8 +190,8 @@
   "generator": {
     "quest_holdbacks_sha256": "e806fe283f5172525523306be09921b75df32d7b62fc07552439117507a513ac",
     "race_assumptions_sha256": "49cb9c583b2481e3b28240bfc90fd352b72a83b248e5d8e75372cdd70f83426b",
-    "raw_reader_sha256": "b74139308d82abba2c3efa50abbab0894c22d34c712d3ddaf372579b58bffec3",
-    "sha256": "0aba37a4985b787e6e5abda4c69b2c7410eae030d7070821ced7d2420477f0be"
+    "raw_reader_sha256": "93f7327c8459ff044af3bdfdc639f597f8af023d1bae6b13baf3428d828bcf77",
+    "sha256": "d1592418cc8cd5f0fac7ec5203445105fd23dfac35c56ff0c19e2829a27a5a71"
   },
   "held_quests": [
     {
@@ -356,10 +356,10 @@
     }
   ],
   "imported_artifacts_sha256": {
-    "foreverBaseItem.lua": "11b942136ab40361cc172b49e8699b2e2b89007a1c3256df5a6f40ad402db0ee",
-    "foreverBaseNpc.lua": "48b3ad86582a5a456ad60d9f647ec7711ec35812a33e2e440523719ef88e7026",
-    "foreverBaseObject.lua": "ee18ba2f57be559d6426267ca2e985af182add4958e211e2439ec604a64f669b",
-    "foreverBaseQuest.lua": "7d126ccd90519322f2b2ae416839aaab82fc9a66d380828f32b73d21378f0202"
+    "foreverBaseItem.lua": "e7712eec044cd3e126294673d648c0da8ea419f608fa7a90aca4cb4efbde13eb",
+    "foreverBaseNpc.lua": "1a438d90347f30a11e2e942177adf413256814e4d93bad3b6eafdeb48a6ffef1",
+    "foreverBaseObject.lua": "ce071b7255d0d86bf54b1a5306ba9e2d612954f49ea6457cd2afbee4d0fe8b6c",
+    "foreverBaseQuest.lua": "566b1da33c7556d64831fa9ae384cab743eb3a569e79bc6717e4d153cf3620a5"
   },
   "inputs": {
     "era": {
@@ -669,6 +669,7 @@
     "Dynamic Corrections"
   ],
   "lua_rendering": {
+    "field_order": "ascending consumer authoring index: remove, set, add; schema order within each group",
     "other_providers": "Load(keys)",
     "quest_masks": "exact named aggregates or sums of named individual bits; zero remains numeric",
     "quest_provider": "Load(QuestieDB): questKeys, raceKeys and classKeys from Forever"
@@ -1318,13 +1319,13 @@
     "initialize": 5577
   },
   "upstream_artifacts_sha256": {
-    "foreverBaseItem.lua": "fb9af5a98a5f76d3035b322f6b63cc4856bd710b3c3aca9b78489c2fe32bb292",
-    "foreverBaseNpc.lua": "cb2970582a1531bd777c1de1ab9bd9b5daf6e4995b729ac45d803715c3b3cd70",
-    "foreverBaseObject.lua": "83f267363045c778d7e9a14da96f70b9e91f1c0af59d5c34350dc324420a4f39",
-    "foreverBaseQuest.lua": "276dbead21fb3e3317627655394fdb5ba167222f2a008aff63ed44acf22642cc",
-    "report.json": "b063b57a6d6f1080be20ff3671be4f66d1e8aefb6b4017153ec91b1e75222c2a",
+    "foreverBaseItem.lua": "c6e7ef472fa931fa97fd1ab71b19ee42e0e73ec38d07489b1f672f3454ddd148",
+    "foreverBaseNpc.lua": "18f4ee896613f1c399471e88c565dcb460e00ddfd72e78f6fa70da88b0a3aaee",
+    "foreverBaseObject.lua": "25fafa10761cc3bb3130c9816c5d67ec436ae381e07c0fc714463e63da5a545b",
+    "foreverBaseQuest.lua": "98ddeb6acc7281573ce6f1695d6cdb037f26a17c23d33be9d79146884143644b",
+    "report.json": "47cd020f8a1e5dd77f989830ee1f98d779f6928929c0aca90d4325a41eba7e65",
     "report.md": "b24c23bcc459d6f90c195c3187aa0627876c09f70243646a3ff3b91f04113ac4"
   },
-  "upstream_directory": "/home/logon/projects/forever-base-db/generated/symbolic-masks",
+  "upstream_directory": "/home/logon/projects/forever-base-db/generated/index-order",
   "upstream_report_schema_version": 6
 }
