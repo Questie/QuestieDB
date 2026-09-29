@@ -13,7 +13,7 @@
         "/home/logon/projects/Questie-clones/QuestieDB/src/config.lua": "e0f2654f4f0c015a8fe6a34d8f853b5a071800758149201357450f3791231787",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/compat.lua": "e8dfc1ca198af71ed1c764ed9fce85fca8c8dfcb3c3ad01e9003c39d1a9f4977",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/constants.lua": "82ad0121925ccbd76c58b15c421f70f868f81a98626367ac44a0965e1ea8262a",
-        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/expansions.lua": "a33fdc7cb2e29824a42d1abe92d1db09dcb54c309fa0f4bf7a66ef990bbe94e4",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/expansions.lua": "7b74fc283359cf734943be3ed5f88488d898f43ebadd094e62131745515cf526",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/factions.lua": "c6c8c6dc12d5fa0e7a7aa22a21491706aaeba8d55fb68ba3a469c87e2687cbfc",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/icons.lua": "ea4390aadd96d99ad9feab6cf564ecad50350353a526e3695fe39e40c144011b",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/items.lua": "c4b861584fe54ad3edb8a46338064e6ffa9759032dcbaa79756ba4172fa579a2",
@@ -60,7 +60,7 @@
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/Forever/legacy/itemStartFixes.lua": "c5f379867c82a401432e0ba2ef58c4e44ffe878a806f4901e070f9f090523bc6",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/compat.lua": "e8dfc1ca198af71ed1c764ed9fce85fca8c8dfcb3c3ad01e9003c39d1a9f4977",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/constants.lua": "82ad0121925ccbd76c58b15c421f70f868f81a98626367ac44a0965e1ea8262a",
-        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/expansions.lua": "a33fdc7cb2e29824a42d1abe92d1db09dcb54c309fa0f4bf7a66ef990bbe94e4",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/expansions.lua": "7b74fc283359cf734943be3ed5f88488d898f43ebadd094e62131745515cf526",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/factions.lua": "c6c8c6dc12d5fa0e7a7aa22a21491706aaeba8d55fb68ba3a469c87e2687cbfc",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/icons.lua": "ea4390aadd96d99ad9feab6cf564ecad50350353a526e3695fe39e40c144011b",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/items.lua": "c4b861584fe54ad3edb8a46338064e6ffa9759032dcbaa79756ba4172fa579a2",
@@ -127,6 +127,44 @@
     }
   },
   "baseline_input_differences_at_import": {},
+  "class_mapping": {
+    "DRUID": {
+      "source_bit": 1024,
+      "target_bit": 1024
+    },
+    "HUNTER": {
+      "source_bit": 4,
+      "target_bit": 4
+    },
+    "MAGE": {
+      "source_bit": 128,
+      "target_bit": 128
+    },
+    "PALADIN": {
+      "source_bit": 2,
+      "target_bit": 2
+    },
+    "PRIEST": {
+      "source_bit": 16,
+      "target_bit": 16
+    },
+    "ROGUE": {
+      "source_bit": 8,
+      "target_bit": 8
+    },
+    "SHAMAN": {
+      "source_bit": 64,
+      "target_bit": 64
+    },
+    "WARLOCK": {
+      "source_bit": 256,
+      "target_bit": 256
+    },
+    "WARRIOR": {
+      "source_bit": 1,
+      "target_bit": 1
+    }
+  },
   "coordinate_frames": {
     "path": "/home/logon/projects/Questie-clones/QuestieDB/data/Forever/conversion.json",
     "sha256": "0229566017126c2577e77d2bcc7c9f995648fb27ed32a7918fa44ace0664fb22",
@@ -138,24 +176,190 @@
     ]
   },
   "counts": {
+    "emitted_race_assumptions": 245,
+    "held_quests": 20,
     "missing_refs": 478,
-    "new_ids": 9312,
-    "records": 12361,
-    "skips": 17610
+    "new_ids": 9293,
+    "records": 12347,
+    "skips": 18932
   },
   "extractor": {
     "path": "/home/logon/projects/scraper-questie/wh_parser/js_extract.py",
     "sha256": "e23b467c16ae9a16e55128a576c2c65ffe08ce15f05579fc0a46fce1f7e4480d"
   },
   "generator": {
-    "raw_reader_sha256": "474d116a8453d3903a203355ab95b99323220af74d3d549ab190e788e19f0c0d",
-    "sha256": "589cbdc4705347034743bf2f492ed06d375c7ddd3e251ae940401ba1cf1bb9d8"
+    "quest_holdbacks_sha256": "e806fe283f5172525523306be09921b75df32d7b62fc07552439117507a513ac",
+    "race_assumptions_sha256": "49cb9c583b2481e3b28240bfc90fd352b72a83b248e5d8e75372cdd70f83426b",
+    "raw_reader_sha256": "b74139308d82abba2c3efa50abbab0894c22d34c712d3ddaf372579b58bffec3",
+    "sha256": "0aba37a4985b787e6e5abda4c69b2c7410eae030d7070821ced7d2420477f0be"
   },
+  "held_quests": [
+    {
+      "baseline_present": false,
+      "id": 3911,
+      "name": "The Last Element",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Strong historical Horde hints, but the exact Forever ID lacks current giver/faction evidence and may be an old duplicate.",
+      "revisit": "Confirm whether 3911 is the active Horde quest or a duplicate of 7201; verify the actual giver/acceptance for this ID."
+    },
+    {
+      "baseline_present": false,
+      "id": 91901,
+      "name": "A Sealed Crate",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Expert crate variant lacks the faction-paired giver and completion evidence available for the reviewed lower-tier turn-ins.",
+      "revisit": "Check whether the expert exchange is implemented and accepted by the same NPCs for both factions."
+    },
+    {
+      "baseline_present": false,
+      "id": 92454,
+      "name": "Welcome!",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Collector's Edition voucher redemption has an item starter but no race/faction evidence; account entitlement may determine access.",
+      "revisit": "Establish who receives and can redeem Thendal Grove Gift Voucher 251900 with Dalia Windbreeze; distinguish racial access from entitlement."
+    },
+    {
+      "baseline_present": false,
+      "id": 92534,
+      "name": "jktestquest1a",
+      "policy": "assumptions/not-in-game.toml",
+      "reason": "Explicitly test-named, name-only cached record with no gameplay description or giver evidence.",
+      "revisit": "If this ID gains a real quest description, giver or client acceptance evidence, review the exclusion before the next adoption."
+    },
+    {
+      "baseline_present": false,
+      "id": 94898,
+      "name": "Violent Winds (Temp Disabled)",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Cached title explicitly says Temp Disabled; an island kill objective exists but no giver is recorded.",
+      "revisit": "Check whether it has been enabled, renamed or assigned an obtainable start/end path. Do not infer availability from its objective alone."
+    },
+    {
+      "baseline_present": false,
+      "id": 94901,
+      "name": "Hopping Helpers",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Cached description is [PH] Collect frogs, with no giver or faction evidence.",
+      "revisit": "Check for a completed description and a verified giver or client acceptance path. Placeholder text alone does not prove permanent removal."
+    },
+    {
+      "baseline_present": false,
+      "id": 94902,
+      "name": "Valanaar Vintages",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Cached description is [PH] Collect grapes from the vineyard, with no giver or faction evidence.",
+      "revisit": "Check for a completed description and a verified giver or client acceptance path. Placeholder text alone does not prove permanent removal."
+    },
+    {
+      "baseline_present": false,
+      "id": 95771,
+      "name": "A Taste of Darkness",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Fargodeep Mine objective and Unholy Icon reward are recorded, but giver, faction and class eligibility are unclear.",
+      "revisit": "Trace the giver and quest chain or a client acceptance witness. Do not derive eligibility from the reward's class mechanics alone."
+    },
+    {
+      "baseline_present": false,
+      "id": 95816,
+      "name": "Sign Me Up!",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Text points to Azeroth Commerce Authority in Redridge, but it is unclear whether this is faction-exclusive or regional routing.",
+      "revisit": "Check access to starter item 270888 and the Elaine Compton turn-in; confirm whether Horde can use this version."
+    },
+    {
+      "baseline_present": false,
+      "id": 95819,
+      "name": "Sign Me Up!",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Text points to Durotar Supply and Logistics in the Barrens, but it is unclear whether this is faction-exclusive or regional routing.",
+      "revisit": "Check access to starter item 270887 and the Jornah turn-in; confirm whether Alliance can use this version."
+    },
+    {
+      "baseline_present": false,
+      "id": 96395,
+      "name": "An Ancient Grudge",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Hall of Thanes dungeon objective is known; a player comment places start/end inside the dungeon without identifying eligibility.",
+      "revisit": "Identify the in-dungeon giver and verify both-faction acceptance for this exact quest."
+    },
+    {
+      "baseline_present": false,
+      "id": 96735,
+      "name": "Toast!?",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Name-only cached record. It may be internal or unfinished, but the name does not establish that.",
+      "revisit": "Look for a quest description, related mechanic, starter or actual client occurrence before classifying it as playable or not in game."
+    },
+    {
+      "baseline_present": false,
+      "id": 97065,
+      "name": "Tip the Scales - Keefer's Angelfish",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Fish-for-Speckled-Tastyfish conversion has no cached giver, faction or acceptance evidence.",
+      "revisit": "Identify the exchange NPC/interaction and confirm that both factions can use this conversion."
+    },
+    {
+      "baseline_present": false,
+      "id": 97066,
+      "name": "Tip the Scales - Brownell's Blue Striped Racer",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Fish-for-Speckled-Tastyfish conversion has no cached giver, faction or acceptance evidence.",
+      "revisit": "Identify the exchange NPC/interaction and confirm that both factions can use this conversion."
+    },
+    {
+      "baseline_present": false,
+      "id": 97067,
+      "name": "Tip the Scales - Dezian Queenfish",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Fish-for-Speckled-Tastyfish conversion has no cached giver, faction or acceptance evidence.",
+      "revisit": "Identify the exchange NPC/interaction and confirm that both factions can use this conversion."
+    },
+    {
+      "baseline_present": false,
+      "id": 98072,
+      "name": "Crocs of the Sky",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "James Halloran and Stormwind reputation suggest Alliance access, but structured giver/faction evidence is absent.",
+      "revisit": "Verify James Halloran's quest relationship and acceptance restrictions, not just the location or reputation reward."
+    },
+    {
+      "baseline_present": false,
+      "id": 98208,
+      "name": "Bloom of the Heavens",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Sylessa Duskwhisper and Darnassus reputation suggest Alliance access, but Alliance-wide versus narrower race eligibility is unknown.",
+      "revisit": "Verify the named giver and whether access is Alliance-wide, Night Elf-specific or broader."
+    },
+    {
+      "baseline_present": false,
+      "id": 98372,
+      "name": "An Unfortunate End",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Almost empty page with a torch reward and same-name quest 99267; the active variant and acceptance path are unclear.",
+      "revisit": "Determine which variant is active and its real starter/finisher; do not merge same-name IDs automatically."
+    },
+    {
+      "baseline_present": false,
+      "id": 98447,
+      "name": "The Valor Family",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Darkshire text and Alliance quest 96139 suggest a faction-specific chain, but the relationship and eligibility for this ID are not verified.",
+      "revisit": "Verify the Sirra Von'Indi relationship, chain membership and faction eligibility for quest 98447 specifically."
+    },
+    {
+      "baseline_present": false,
+      "id": 99145,
+      "name": "A Winter Veil Gift",
+      "policy": "assumptions/investigate-in-future.toml",
+      "reason": "Gift reward is recorded without a giver, faction or explanatory text; shared redemption versus faction/entitlement gating is unclear.",
+      "revisit": "Identify the starter object/NPC and eligibility for gift item 286210; check whether this is a playable or internal record."
+    }
+  ],
   "imported_artifacts_sha256": {
-    "foreverBaseItem.lua": "b4311a3c9910df3282f540893db15c96512c6eb714275536ff9834e5fc654b3f",
+    "foreverBaseItem.lua": "11b942136ab40361cc172b49e8699b2e2b89007a1c3256df5a6f40ad402db0ee",
     "foreverBaseNpc.lua": "48b3ad86582a5a456ad60d9f647ec7711ec35812a33e2e440523719ef88e7026",
     "foreverBaseObject.lua": "ee18ba2f57be559d6426267ca2e985af182add4958e211e2439ec604a64f669b",
-    "foreverBaseQuest.lua": "9226a35bacf32dceedbaa33d513c1374aa2f42237e409d2a9df5dca465b706cc"
+    "foreverBaseQuest.lua": "7d126ccd90519322f2b2ae416839aaab82fc9a66d380828f32b73d21378f0202"
   },
   "inputs": {
     "era": {
@@ -464,6 +668,11 @@
     "authored Forever Static Corrections",
     "Dynamic Corrections"
   ],
+  "lua_rendering": {
+    "other_providers": "Load(keys)",
+    "quest_masks": "exact named aggregates or sums of named individual bits; zero remains numeric",
+    "quest_provider": "Load(QuestieDB): questKeys, raceKeys and classKeys from Forever"
+  },
   "missing_reference_counts": {
     "item": 2,
     "npc": 397,
@@ -472,12 +681,555 @@
   },
   "policy": {
     "deletions": "never generated",
-    "item_relationships": "source-only additions from nonempty tabs below 200 rows; removals report-only; singleton starts; target/objective overlap suppressed",
+    "item_relationships": "source-only additions from nonempty tabs below 200 rows; removals report-only; selected singleton starts coordinated with quest item starters, withholding missing endpoints or scalar conflicts; target/objective overlap suppressed",
     "names": "fill missing names only; preserve all existing effective pre-delta names",
     "new": "absent Era registry/pages/raw base AND explicit envChange.status=new",
     "objectives": "not generated",
+    "quest_holdbacks": "explicit not-in-game/deferred IDs excluded before quest selection; held quest references filtered from item export projections; no baseline deletions or inferred unavailability",
+    "quest_restrictions": "confirmed race/class mappings rebuilt with Forever constants; incomplete explicit masks withheld whole; narrow full-faction fallback for independently materialized quests; no existing-record backfill; last-resort race zero only for separately documented reviewed family IDs passing current evidence guards, attributed as assumptions; no general Both/None defaults or class inference",
     "relationships": "positive quest giver additions; removals only with a proven move; accepted inverse edge operations",
     "spawns": "missing target records only, withholding changed map frames; existing converted spawns retained"
+  },
+  "quest_holdbacks": [
+    {
+      "file": "assumptions/not-in-game.toml",
+      "purpose": "Omit reviewed test/not-in-game quests from generated candidates; revisit if evidence changes.",
+      "quests": [
+        {
+          "id": 92534,
+          "name": "jktestquest1a",
+          "policy": "assumptions/not-in-game.toml",
+          "reason": "Explicitly test-named, name-only cached record with no gameplay description or giver evidence.",
+          "revisit": "If this ID gains a real quest description, giver or client acceptance evidence, review the exclusion before the next adoption."
+        }
+      ],
+      "sha256": "e08ae005056859e513c665143fc3472431f6de638b7225dd2d12da43e872dfdd"
+    },
+    {
+      "file": "assumptions/investigate-in-future.toml",
+      "purpose": "Defer uncertain or unfinished quests from generated candidates while keeping them visible for investigation.",
+      "quests": [
+        {
+          "id": 94898,
+          "name": "Violent Winds (Temp Disabled)",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Cached title explicitly says Temp Disabled; an island kill objective exists but no giver is recorded.",
+          "revisit": "Check whether it has been enabled, renamed or assigned an obtainable start/end path. Do not infer availability from its objective alone."
+        },
+        {
+          "id": 94901,
+          "name": "Hopping Helpers",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Cached description is [PH] Collect frogs, with no giver or faction evidence.",
+          "revisit": "Check for a completed description and a verified giver or client acceptance path. Placeholder text alone does not prove permanent removal."
+        },
+        {
+          "id": 94902,
+          "name": "Valanaar Vintages",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Cached description is [PH] Collect grapes from the vineyard, with no giver or faction evidence.",
+          "revisit": "Check for a completed description and a verified giver or client acceptance path. Placeholder text alone does not prove permanent removal."
+        },
+        {
+          "id": 96735,
+          "name": "Toast!?",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Name-only cached record. It may be internal or unfinished, but the name does not establish that.",
+          "revisit": "Look for a quest description, related mechanic, starter or actual client occurrence before classifying it as playable or not in game."
+        },
+        {
+          "id": 3911,
+          "name": "The Last Element",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Strong historical Horde hints, but the exact Forever ID lacks current giver/faction evidence and may be an old duplicate.",
+          "revisit": "Confirm whether 3911 is the active Horde quest or a duplicate of 7201; verify the actual giver/acceptance for this ID."
+        },
+        {
+          "id": 91901,
+          "name": "A Sealed Crate",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Expert crate variant lacks the faction-paired giver and completion evidence available for the reviewed lower-tier turn-ins.",
+          "revisit": "Check whether the expert exchange is implemented and accepted by the same NPCs for both factions."
+        },
+        {
+          "id": 92454,
+          "name": "Welcome!",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Collector's Edition voucher redemption has an item starter but no race/faction evidence; account entitlement may determine access.",
+          "revisit": "Establish who receives and can redeem Thendal Grove Gift Voucher 251900 with Dalia Windbreeze; distinguish racial access from entitlement."
+        },
+        {
+          "id": 95771,
+          "name": "A Taste of Darkness",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Fargodeep Mine objective and Unholy Icon reward are recorded, but giver, faction and class eligibility are unclear.",
+          "revisit": "Trace the giver and quest chain or a client acceptance witness. Do not derive eligibility from the reward's class mechanics alone."
+        },
+        {
+          "id": 95816,
+          "name": "Sign Me Up!",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Text points to Azeroth Commerce Authority in Redridge, but it is unclear whether this is faction-exclusive or regional routing.",
+          "revisit": "Check access to starter item 270888 and the Elaine Compton turn-in; confirm whether Horde can use this version."
+        },
+        {
+          "id": 95819,
+          "name": "Sign Me Up!",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Text points to Durotar Supply and Logistics in the Barrens, but it is unclear whether this is faction-exclusive or regional routing.",
+          "revisit": "Check access to starter item 270887 and the Jornah turn-in; confirm whether Alliance can use this version."
+        },
+        {
+          "id": 96395,
+          "name": "An Ancient Grudge",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Hall of Thanes dungeon objective is known; a player comment places start/end inside the dungeon without identifying eligibility.",
+          "revisit": "Identify the in-dungeon giver and verify both-faction acceptance for this exact quest."
+        },
+        {
+          "id": 97065,
+          "name": "Tip the Scales - Keefer's Angelfish",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Fish-for-Speckled-Tastyfish conversion has no cached giver, faction or acceptance evidence.",
+          "revisit": "Identify the exchange NPC/interaction and confirm that both factions can use this conversion."
+        },
+        {
+          "id": 97066,
+          "name": "Tip the Scales - Brownell's Blue Striped Racer",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Fish-for-Speckled-Tastyfish conversion has no cached giver, faction or acceptance evidence.",
+          "revisit": "Identify the exchange NPC/interaction and confirm that both factions can use this conversion."
+        },
+        {
+          "id": 97067,
+          "name": "Tip the Scales - Dezian Queenfish",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Fish-for-Speckled-Tastyfish conversion has no cached giver, faction or acceptance evidence.",
+          "revisit": "Identify the exchange NPC/interaction and confirm that both factions can use this conversion."
+        },
+        {
+          "id": 98072,
+          "name": "Crocs of the Sky",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "James Halloran and Stormwind reputation suggest Alliance access, but structured giver/faction evidence is absent.",
+          "revisit": "Verify James Halloran's quest relationship and acceptance restrictions, not just the location or reputation reward."
+        },
+        {
+          "id": 98208,
+          "name": "Bloom of the Heavens",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Sylessa Duskwhisper and Darnassus reputation suggest Alliance access, but Alliance-wide versus narrower race eligibility is unknown.",
+          "revisit": "Verify the named giver and whether access is Alliance-wide, Night Elf-specific or broader."
+        },
+        {
+          "id": 98372,
+          "name": "An Unfortunate End",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Almost empty page with a torch reward and same-name quest 99267; the active variant and acceptance path are unclear.",
+          "revisit": "Determine which variant is active and its real starter/finisher; do not merge same-name IDs automatically."
+        },
+        {
+          "id": 98447,
+          "name": "The Valor Family",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Darkshire text and Alliance quest 96139 suggest a faction-specific chain, but the relationship and eligibility for this ID are not verified.",
+          "revisit": "Verify the Sirra Von'Indi relationship, chain membership and faction eligibility for quest 98447 specifically."
+        },
+        {
+          "id": 99145,
+          "name": "A Winter Veil Gift",
+          "policy": "assumptions/investigate-in-future.toml",
+          "reason": "Gift reward is recorded without a giver, faction or explanatory text; shared redemption versus faction/entitlement gating is unclear.",
+          "revisit": "Identify the starter object/NPC and eligibility for gift item 286210; check whether this is a playable or internal record."
+        }
+      ],
+      "sha256": "4c18240818e1b636c4c210d4d83079be2fce5627844db56ea3ec96a97a322cfe"
+    }
+  ],
+  "race_assumptions": [
+    {
+      "allow_absent_side": true,
+      "file": "assumptions/craftsmans_writs.toml",
+      "name_prefix": "Craftsman's Writ: ",
+      "quest_ids": [
+        94004,
+        94214,
+        94217,
+        94218,
+        94219,
+        94220,
+        94221,
+        94222,
+        94223,
+        94224,
+        94225,
+        94226,
+        94227,
+        94228,
+        94229,
+        94230,
+        94231,
+        94232,
+        94234,
+        94235,
+        94236,
+        94237,
+        94238,
+        94239,
+        94240,
+        94242,
+        94243,
+        94244,
+        94245,
+        94246,
+        94247,
+        94249,
+        94250,
+        94251,
+        94252,
+        94253,
+        94254,
+        94255,
+        94256,
+        94257,
+        94258,
+        94259,
+        94260,
+        94261,
+        94262,
+        94263,
+        94264,
+        94265,
+        94266,
+        94267,
+        94268,
+        94269,
+        94270,
+        94271,
+        94272,
+        94273,
+        94274,
+        94275,
+        94276,
+        94277,
+        94278,
+        94279,
+        94280,
+        94281,
+        94282,
+        94283,
+        94284,
+        94285,
+        94286,
+        94287,
+        94288,
+        94289,
+        94290,
+        94291,
+        94292,
+        94293,
+        94294,
+        94295,
+        94296,
+        94297,
+        94298,
+        94299,
+        94300,
+        94301,
+        94302,
+        94303,
+        94304,
+        94305,
+        94306,
+        94307,
+        94308,
+        94309,
+        94310,
+        94311,
+        94312,
+        94313,
+        94314,
+        94315,
+        94316,
+        94317,
+        94318,
+        94319,
+        94320,
+        94321,
+        94322,
+        94323,
+        94324,
+        94325,
+        94326,
+        94327,
+        94328,
+        94329,
+        94330,
+        94331,
+        94332,
+        94333,
+        94334,
+        94335,
+        94336,
+        94337,
+        94338,
+        94339,
+        94340,
+        94341,
+        94342,
+        94343,
+        94344,
+        94345,
+        94346,
+        94347,
+        94348,
+        94349,
+        94350,
+        94351,
+        94352,
+        94353,
+        94354,
+        94355,
+        94356,
+        94357,
+        94358,
+        94359,
+        94360
+      ],
+      "reason": "Reviewed transferable writ system: assume all races when no stronger race evidence exists.",
+      "required_races": 0,
+      "requires_item_starter": true,
+      "review": "reports/quest-family-review.md#phase-4c-craftsmans-writs",
+      "sha256": "fdcbd9f6150692cd15433632e64af733a4680e7ac26c79cc10c3c6e5712d7831"
+    },
+    {
+      "allow_absent_side": false,
+      "file": "assumptions/zephras_isle.toml",
+      "name_prefix": "",
+      "quest_ids": [
+        92460,
+        92461,
+        92462,
+        92463,
+        92464,
+        92465,
+        92469,
+        92470,
+        92471,
+        92472,
+        92473,
+        92482,
+        92483,
+        92485,
+        92515,
+        92516,
+        92517,
+        92528,
+        92529,
+        92532,
+        92544,
+        92550,
+        92551,
+        92553,
+        92640,
+        92642,
+        92643,
+        92644,
+        92645,
+        92679,
+        92682,
+        92683,
+        92684,
+        92685,
+        92693,
+        92698,
+        92703,
+        92880,
+        92881,
+        92947,
+        93036,
+        93065,
+        93159,
+        93160,
+        93165,
+        93172,
+        93317,
+        93318,
+        93319,
+        93320,
+        93459,
+        93552,
+        93926,
+        93927,
+        93948,
+        93949,
+        93951,
+        93958,
+        94414,
+        94484,
+        94485,
+        94486,
+        94487,
+        94488,
+        94489,
+        94490,
+        94491,
+        94568,
+        94896,
+        94897,
+        96101,
+        96638,
+        96646,
+        97963,
+        97964,
+        97965,
+        97967,
+        97968,
+        97969,
+        97970,
+        97971,
+        98285,
+        98512
+      ],
+      "reason": "Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.",
+      "required_races": 0,
+      "requires_item_starter": false,
+      "review": "reports/quest-family-review.md#phase-4a-zephras-isle",
+      "sha256": "a8ab188b37d10b5f5614a97b8b8243d7baf735dee0047aaa845c2609fae30fba"
+    },
+    {
+      "allow_absent_side": false,
+      "file": "assumptions/sleeping_bag.toml",
+      "name_prefix": "",
+      "quest_ids": [
+        79192,
+        79974,
+        79975,
+        79976,
+        79980
+      ],
+      "reason": "Reviewed sleeping-bag chain: Both faction labels and player reports support shared race access.",
+      "required_races": 0,
+      "requires_item_starter": false,
+      "review": "reports/remaining-race-assumptions.md#sleeping-bag-chain",
+      "sha256": "016c371724b293afbc0d6dfb90657337ee4d3d8b76c44df6f20b97b4889f6c33"
+    },
+    {
+      "allow_absent_side": false,
+      "file": "assumptions/library_races.toml",
+      "name_prefix": "",
+      "quest_ids": [
+        78148,
+        79092,
+        79536,
+        97286
+      ],
+      "reason": "Reviewed library quests: Both labels and faction-specific turn-ins support all-race access; class restrictions are independent.",
+      "required_races": 0,
+      "requires_item_starter": false,
+      "review": "reports/remaining-race-assumptions.md#library-races",
+      "sha256": "75c250123855f7c8844f8f871af2fda8a7f9e1abe9c2a51c618521111a70cfae"
+    },
+    {
+      "allow_absent_side": false,
+      "file": "assumptions/dragonslayer_collection.toml",
+      "name_prefix": "Dragonslayer's ",
+      "quest_ids": [
+        78132,
+        78133,
+        78134
+      ],
+      "reason": "Reviewed Dragonslayer collection: Both labels and the same faction-neutral giver support all-race access.",
+      "required_races": 0,
+      "requires_item_starter": false,
+      "review": "reports/remaining-race-assumptions.md#dragonslayer-collection",
+      "sha256": "8e375cb181e5d4bdbe21430514cd1135fe762b0d744af3ecc6c96ab88db463d9"
+    },
+    {
+      "allow_absent_side": false,
+      "file": "assumptions/commerce_crates.toml",
+      "name_prefix": "A Sealed Crate",
+      "quest_ids": [
+        91899,
+        91900,
+        91904,
+        91905
+      ],
+      "reason": "Reviewed crate deliveries: Both labels and paired faction turn-ins support all-race access.",
+      "required_races": 0,
+      "requires_item_starter": false,
+      "review": "reports/remaining-race-assumptions.md#commerce-crates-and-return",
+      "sha256": "fbda8a45c69d9836ae72b9b310ccf99085bb20ddb621ea1266fc972f456c6519"
+    },
+    {
+      "allow_absent_side": true,
+      "file": "assumptions/commerce_return.toml",
+      "name_prefix": "Crate Return",
+      "quest_ids": [
+        93862
+      ],
+      "reason": "Reviewed commerce return: the shipping-container objective and both commerce reputation rewards support a shared service.",
+      "required_races": 0,
+      "requires_item_starter": false,
+      "review": "reports/remaining-race-assumptions.md#commerce-crates-and-return",
+      "sha256": "f1ee637294accccc14558def5b824c6d620bcb89c3c6c78620fbf4ee5391079e"
+    },
+    {
+      "allow_absent_side": true,
+      "file": "assumptions/lunar_festival_elders.toml",
+      "name_prefix": "",
+      "quest_ids": [
+        98977,
+        98983
+      ],
+      "reason": "Reviewed Lunar Festival Elders: Coin of Ancestry and both faction reputation rewards support shared race access.",
+      "required_races": 0,
+      "requires_item_starter": false,
+      "review": "reports/remaining-race-assumptions.md#lunar-festival-elders",
+      "sha256": "78dbb495129f0dcaee15b2e0b7846239476c54fdb494b1f0873bd892b92aebfe"
+    }
+  ],
+  "race_mapping": {
+    "DWARF": {
+      "source_bit": 4,
+      "target_bit": 4
+    },
+    "GNOME": {
+      "source_bit": 64,
+      "target_bit": 64
+    },
+    "HUMAN": {
+      "source_bit": 1,
+      "target_bit": 1
+    },
+    "NIGHT_ELF": {
+      "source_bit": 8,
+      "target_bit": 8
+    },
+    "ORC": {
+      "source_bit": 2,
+      "target_bit": 2
+    },
+    "SKYBORNE_ALLIANCE": {
+      "source_bit": 4294967296,
+      "target_bit": 4294967296
+    },
+    "SKYBORNE_HORDE": {
+      "source_bit": 8589934592,
+      "target_bit": 8589934592
+    },
+    "TAUREN": {
+      "source_bit": 32,
+      "target_bit": 32
+    },
+    "TROLL": {
+      "source_bit": 128,
+      "target_bit": 128
+    },
+    "UNDEAD": {
+      "source_bit": 16,
+      "target_bit": 16
+    }
   },
   "raw_base": {
     "files": {
@@ -493,7 +1245,7 @@
     "path": "/home/logon/projects/Questie-clones/QuestieDB"
   },
   "sample_limit_per_kind": null,
-  "schema_version": 2,
+  "schema_version": 3,
   "snapshot": {
     "coverage": [
       {
@@ -531,12 +1283,16 @@
     "snapshot_at": "2026-09-27T17:35:19.390300+00:00",
     "source": "/home/logon/projects/scraper-questie/data/raw/forever.db"
   },
+  "snapshot_manifest": {
+    "path": "/home/logon/projects/forever-base-db/data/raw/snapshot.json",
+    "sha256": "8dbf58e66d2e9021f4d6db990bc7e94b1861d9e449def51de60c579ef4297d81"
+  },
   "summary": {
     "item": {
       "new": 5632,
-      "records": 8157,
+      "records": 8151,
       "relationship_support": 0,
-      "updated": 2525
+      "updated": 2519
     },
     "npc": {
       "new": 2928,
@@ -551,22 +1307,24 @@
       "updated": 24
     },
     "quest": {
-      "new": 732,
-      "records": 758,
+      "new": 713,
+      "records": 750,
       "relationship_support": 0,
-      "updated": 26
+      "updated": 37
     }
   },
   "table_field_counts": {
-    "add": 765,
-    "initialize": 5416
+    "add": 763,
+    "initialize": 5577
   },
   "upstream_artifacts_sha256": {
-    "foreverBaseItem.lua": "8ae0be6c6c92aede22925084afc6f50fcbdbf26d0550d8d499ae3414d2ae4b89",
+    "foreverBaseItem.lua": "fb9af5a98a5f76d3035b322f6b63cc4856bd710b3c3aca9b78489c2fe32bb292",
     "foreverBaseNpc.lua": "cb2970582a1531bd777c1de1ab9bd9b5daf6e4995b729ac45d803715c3b3cd70",
     "foreverBaseObject.lua": "83f267363045c778d7e9a14da96f70b9e91f1c0af59d5c34350dc324420a4f39",
-    "foreverBaseQuest.lua": "092a1e7eb2fcb8f0598d3fc0fcaa5d78274bf4981d2f90798c41414dba4c9b06",
-    "report.json": "51008a0908ee67cf5d9662ca3ede85a7c3c6be96c7b17343e14e534dbb47db89",
-    "report.md": "65c7365c2cd1dcefea65c42ace547c84751190527b6c2646c8d5c60d2087eb4d"
-  }
+    "foreverBaseQuest.lua": "276dbead21fb3e3317627655394fdb5ba167222f2a008aff63ed44acf22642cc",
+    "report.json": "b063b57a6d6f1080be20ff3671be4f66d1e8aefb6b4017153ec91b1e75222c2a",
+    "report.md": "b24c23bcc459d6f90c195c3187aa0627876c09f70243646a3ff3b91f04113ac4"
+  },
+  "upstream_directory": "/home/logon/projects/forever-base-db/generated/symbolic-masks",
+  "upstream_report_schema_version": 6
 }

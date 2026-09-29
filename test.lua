@@ -1186,9 +1186,10 @@ suite("corrections", "shared", function()
     "Classic ALL_CLASSES includes Paladin")
   check(math.floor(classicAllClasses / classicClassKeys.SHAMAN) % 2 == 1,
     "Classic ALL_CLASSES includes Shaman")
-  check(math.floor(classicAllClasses / classicClassKeys.DEATH_KNIGHT) % 2 == 0,
+  -- Unsupported classes need not have constants in Classic; test their known source bits.
+  check(math.floor(classicAllClasses / 32) % 2 == 0,
     "Classic ALL_CLASSES excludes Death Knight")
-  check(math.floor(classicAllClasses / classicClassKeys.MONK) % 2 == 0,
+  check(math.floor(classicAllClasses / 512) % 2 == 0,
     "Classic ALL_CLASSES excludes Monk")
   equal(enum.byExpansion.TBC.classKeys.ALL_CLASSES, 1503, "TBC ALL_CLASSES remains 1503")
   equal(enum.byExpansion.Wotlk.classKeys.ALL_CLASSES, 1535, "WotLK ALL_CLASSES remains 1535")

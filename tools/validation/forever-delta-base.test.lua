@@ -18,6 +18,21 @@ local function load(flavor, gameType)
 end
 
 local function witness(db)
+  -- Literal restrictions distinguish explicit masks, faction inference and reviewed zeroes.
+  assert(db.Quest.requiredRaces(90902) == 16 and db.Quest.requiredClasses(90902) == 2,
+    "explicit Undead Paladin restriction")
+  assert(db.Quest.requiredRaces(94006) == 12884901888, "both Skyborne races, not all races")
+  assert(db.Quest.requiredRaces(86585) == 4294967373, "Alliance fallback includes Alliance Skyborne")
+  assert(db.Quest.requiredRaces(94004) == 0, "reviewed all-race writ assumption")
+  local writStarters = db.Quest.startedBy(94004)
+  assert(writStarters[1] == nil and writStarters[2] == nil and writStarters[3][1] == 264011,
+    "writ starter preserves the item group and nil holes")
+  assert(db.Item.startQuest(264011) == 94004, "writ item links back to its quest")
+  assert(db.Quest.requiredRaces(97286) == 0 and db.Quest.requiredClasses(97286) == 128,
+    "Research Access assumes all races without removing Mage eligibility")
+  for _, id in ipairs({ 92534, 94901, 3911 }) do
+    assert(not db.Quest.Exists(id) and not db.Quest.GetAllIds(true)[id], "held quest leaked: " .. id)
+  end
   assert(db.Quest.Exists(86585) and db.Quest.GetAllIds(true)[86585], "new quest is enumerable")
   assert(db.Quest.name(86585) == "Banner of the Fallen")
   assert(db.Quest.questLevel(86585) == 17 and db.Quest.requiredLevel(86585) == 10)
@@ -100,13 +115,21 @@ if not baked then
   registry.ApplyStaticToEntities("Quest", quests, flavor, "QuestieDB")
   registry.ApplyStaticToEntities("Npc", npcs, flavor, "QuestieDB")
   local questKeys, npcKeys = offline.Enum.questKeys, offline.Enum.npcKeys
+  -- Getters normalize absent numbers to zero; inspect authored presence independently.
+  local generatedQuests = providers.ForeverBaseQuest:Load()
+  assert(generatedQuests[94004][questKeys.requiredRaces] == 0, "writ zero is explicitly present")
+  assert(generatedQuests[97286][questKeys.requiredRaces] == 0, "library zero is explicitly present")
+  assert(generatedQuests[97286][questKeys.requiredClasses] == 128, "library Mage mask remains authored")
+  assert(generatedQuests[94004][questKeys.requiredClasses] == nil, "writ does not invent a class mask")
+  assert(quests[94004][questKeys.requiredRaces] == 0 and quests[97286][questKeys.requiredRaces] == 0,
+    "Static composition preserves reviewed zero presence")
   assert(quests[86585][questKeys.startedBy][1][1] == 269153, "offline static quest giver")
   assert(npcs[269153][npcKeys.questStarts][1] == 86585, "offline static reverse link")
   for _, case in ipairs({
-    { "Quest", "ForeverBaseQuest", "QuestieQuestFixes", "ForeverQuestFixes", 86585, 758 },
+    { "Quest", "ForeverBaseQuest", "QuestieQuestFixes", "ForeverQuestFixes", 86585, 750 },
     { "Npc", "ForeverBaseNpc", "QuestieNPCFixes", "ForeverNpcFixes", 269153, 3394 },
     { "Object", "ForeverBaseObject", "QuestieObjectFixes", "ForeverObjectFixes", 900000001, 52 },
-    { "Item", "ForeverBaseItem", "QuestieItemFixes", "ForeverItemFixes", 286647, 8157 },
+    { "Item", "ForeverBaseItem", "QuestieItemFixes", "ForeverItemFixes", 286647, 8151 },
   }) do
     local datatype, delta, legacy, manual, id = case[1], providers[case[2]], providers[case[3]], providers[case[4]], case[5]
     local count = 0

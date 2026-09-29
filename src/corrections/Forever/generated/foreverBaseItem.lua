@@ -4723,15 +4723,6 @@ function ForeverBaseItem:Load()
         [13562] = { -- Remains of Trey Lightforge : https://wowhead.com/forever/item=13562/remains-of-trey-lightforge
             [itemKeys.subClass] = 8,
         },
-        [13582] = { -- Zergling Leash : https://wowhead.com/forever/item=13582/zergling-leash
-            [itemKeys.questRewards_add] = {92454},
-        },
-        [13583] = { -- Panda Collar : https://wowhead.com/forever/item=13583/panda-collar
-            [itemKeys.questRewards_add] = {92454},
-        },
-        [13584] = { -- Diablo Stone : https://wowhead.com/forever/item=13584/diablo-stone
-            [itemKeys.questRewards_add] = {92454},
-        },
         [13703] = { -- Kodo Bone : https://wowhead.com/forever/item=13703/kodo-bone
             [itemKeys.subClass] = 8,
         },
@@ -5877,15 +5868,6 @@ function ForeverBaseItem:Load()
         },
         [19775] = { -- Sealed Azure Bag : https://wowhead.com/forever/item=19775/sealed-azure-bag
             [itemKeys.npcDrops_add] = {237736},
-        },
-        [19803] = { -- Brownell's Blue Striped Racer : https://wowhead.com/forever/item=19803/brownells-blue-striped-racer
-            [itemKeys.relatedQuests] = {97066},
-        },
-        [19805] = { -- Keefer's Angelfish : https://wowhead.com/forever/item=19805/keefers-angelfish
-            [itemKeys.relatedQuests] = {97065},
-        },
-        [19806] = { -- Dezian Queenfish : https://wowhead.com/forever/item=19806/dezian-queenfish
-            [itemKeys.relatedQuests] = {97067},
         },
         [19807] = { -- Speckled Tastyfish : https://wowhead.com/forever/item=19807/speckled-tastyfish
             [itemKeys.class] = 15,
@@ -9318,7 +9300,6 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 40,
             [itemKeys.name] = "Deciphered Troll Scroll",
             [itemKeys.requiredLevel] = 1,
-            [itemKeys.startQuest] = 79731,
             [itemKeys.subClass] = 8,
         },
         [216956] = { -- Torn Letter : https://wowhead.com/forever/item=216956/torn-letter
@@ -11859,7 +11840,6 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 12,
             [itemKeys.itemLevel] = 1,
             [itemKeys.name] = "Sealed Expert Crate",
-            [itemKeys.relatedQuests] = {91901},
             [itemKeys.requiredLevel] = 1,
             [itemKeys.subClass] = 0,
         },
@@ -16069,9 +16049,7 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 12,
             [itemKeys.itemLevel] = 1,
             [itemKeys.name] = "Thendal Grove Gift Voucher",
-            [itemKeys.relatedQuests] = {92454},
             [itemKeys.requiredLevel] = 1,
-            [itemKeys.startQuest] = 92454,
             [itemKeys.subClass] = 0,
         },
         [251917] = { -- Falorne's Homemade Tart : https://wowhead.com/forever/item=251917/falornes-homemade-tart
@@ -27204,7 +27182,6 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 12,
             [itemKeys.itemLevel] = 10,
             [itemKeys.name] = "Unholy Icon",
-            [itemKeys.questRewards] = {95771},
             [itemKeys.requiredLevel] = 6,
             [itemKeys.subClass] = 0,
         },
@@ -27425,9 +27402,7 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 15,
             [itemKeys.itemLevel] = 1,
             [itemKeys.name] = "Advertising License Application",
-            [itemKeys.relatedQuests] = {95819},
             [itemKeys.requiredLevel] = 1,
-            [itemKeys.startQuest] = 95819,
             [itemKeys.subClass] = 4,
             [itemKeys.vendors] = {256384},
         },
@@ -27435,9 +27410,7 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 15,
             [itemKeys.itemLevel] = 1,
             [itemKeys.name] = "Advertising License Application",
-            [itemKeys.relatedQuests] = {95816},
             [itemKeys.requiredLevel] = 1,
-            [itemKeys.startQuest] = 95816,
             [itemKeys.subClass] = 4,
             [itemKeys.vendors] = {256389},
         },
@@ -27452,7 +27425,6 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 12,
             [itemKeys.itemLevel] = 1,
             [itemKeys.name] = "Massive Pile of Completed Forms",
-            [itemKeys.relatedQuests] = {95816, 95819},
             [itemKeys.requiredLevel] = 1,
             [itemKeys.subClass] = 0,
         },
@@ -43972,7 +43944,6 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 1,
             [itemKeys.name] = "Pristine Crimson Scale",
             [itemKeys.npcDrops] = {1042, 1043, 1044, 1069},
-            [itemKeys.relatedQuests] = {98072},
             [itemKeys.subClass] = 0,
         },
         [279386] = { -- Sealed Company Request : https://wowhead.com/forever/item=279386/sealed-company-request
@@ -44397,14 +44368,12 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 4,
             [itemKeys.itemLevel] = 17,
             [itemKeys.name] = "Catacomb Cloak",
-            [itemKeys.questRewards] = {96395},
             [itemKeys.requiredLevel] = 10,
         },
         [279900] = { -- Deepgrave Trousers : https://wowhead.com/forever/item=279900/deepgrave-trousers
             [itemKeys.class] = 4,
             [itemKeys.itemLevel] = 17,
             [itemKeys.name] = "Deepgrave Trousers",
-            [itemKeys.questRewards] = {96395},
             [itemKeys.requiredLevel] = 10,
             [itemKeys.subClass] = 2,
         },
@@ -44419,7 +44388,6 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 12,
             [itemKeys.itemLevel] = 1,
             [itemKeys.name] = "Nord'el",
-            [itemKeys.relatedQuests] = {98208},
             [itemKeys.requiredLevel] = 1,
             [itemKeys.subClass] = 0,
         },
@@ -45280,7 +45248,7 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 15,
             [itemKeys.itemLevel] = 1,
             [itemKeys.name] = "Night Watchman's Torch",
-            [itemKeys.questRewards] = {98372, 99267},
+            [itemKeys.questRewards] = {99267},
             [itemKeys.requiredLevel] = 1,
             [itemKeys.subClass] = 0,
         },
@@ -46815,7 +46783,6 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 4,
             [itemKeys.itemLevel] = 29,
             [itemKeys.name] = "Bouquet of Auberdine Flowers",
-            [itemKeys.questRewards] = {98208},
             [itemKeys.requiredLevel] = 22,
         },
         [281319] = { -- Golem War Cloak : https://wowhead.com/forever/item=281319/golem-war-cloak
@@ -49038,7 +49005,6 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 15,
             [itemKeys.itemLevel] = 1,
             [itemKeys.name] = "A Winter Veil Gift",
-            [itemKeys.questRewards] = {99145},
             [itemKeys.requiredLevel] = 1,
             [itemKeys.subClass] = 0,
         },

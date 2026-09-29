@@ -4,6 +4,8 @@ local ForeverBaseQuest = QuestieLoader:CreateModule("ForeverBaseQuest")
 local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
 function ForeverBaseQuest:Load()
     local questKeys = QuestieDB.questKeys
+    local raceIDs = QuestieDB.raceKeys
+    local classIDs = QuestieDB.classKeys
     return {
         [299] = { -- Uncovering the Past : https://wowhead.com/forever/quest=299/uncovering-the-past
             [questKeys.questLevel] = 27,
@@ -21,33 +23,71 @@ function ForeverBaseQuest:Load()
         [952] = { -- Grove of the Ancients : https://wowhead.com/forever/quest=952/grove-of-the-ancients
             [questKeys.questLevel] = 17,
         },
-        [3911] = { -- The Last Element : https://wowhead.com/forever/quest=3911/the-last-element
-            [questKeys.name] = "The Last Element",
-            [questKeys.questLevel] = 54,
-            [questKeys.requiredLevel] = 48,
+        [1499] = { -- Vile Familiars : https://wowhead.com/forever/quest=1499/vile-familiars
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD + raceIDs.TROLL,
+        },
+        [1501] = { -- Creature of the Void : https://wowhead.com/forever/quest=1501/creature-of-the-void
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD + raceIDs.TROLL,
+        },
+        [1504] = { -- The Binding : https://wowhead.com/forever/quest=1504/the-binding
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD + raceIDs.TROLL,
+        },
+        [1861] = { -- Mirror Lake : https://wowhead.com/forever/quest=1861/mirror-lake
+            [questKeys.requiredRaces] = raceIDs.HUMAN + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
+        },
+        [1884] = { -- Ju-Ju Heaps : https://wowhead.com/forever/quest=1884/ju-ju-heaps
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD + raceIDs.TROLL,
+        },
+        [1961] = { -- Gathering Materials : https://wowhead.com/forever/quest=1961/gathering-materials
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD + raceIDs.TROLL,
+        },
+        [5625] = { -- Garments of the Light : https://wowhead.com/forever/quest=5625/garments-of-the-light
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.GNOME,
+        },
+        [5626] = { -- In Favor of the Light : https://wowhead.com/forever/quest=5626/in-favor-of-the-light
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.GNOME,
+        },
+        [5634] = { -- Desperate Prayer : https://wowhead.com/forever/quest=5634/desperate-prayer
+            [questKeys.requiredRaces] = raceIDs.DWARF,
+        },
+        [5636] = { -- Desperate Prayer : https://wowhead.com/forever/quest=5636/desperate-prayer
+            [questKeys.requiredRaces] = raceIDs.DWARF,
         },
         [6121] = { -- Lessons Anew : https://wowhead.com/forever/quest=6121/lessons-anew
+            [questKeys.requiredRaces] = raceIDs.NIGHT_ELF + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.startedBy_add] = {{270459}},
+        },
+        [6122] = { -- The Principal Source : https://wowhead.com/forever/quest=6122/the-principal-source
+            [questKeys.requiredRaces] = raceIDs.NIGHT_ELF + raceIDs.SKYBORNE_ALLIANCE,
+        },
+        [8308] = { -- Brann Bronzebeard's Lost Letter : https://wowhead.com/forever/quest=8308/brann-bronzebeards-lost-letter
+            [questKeys.startedBy_add] = {nil, nil, {20460}},
         },
         [76156] = { -- Stalk With The Earthmother : https://wowhead.com/forever/quest=76156/stalk-with-the-earthmother
             [questKeys.finishedBy] = {{205729}},
             [questKeys.name] = "Stalk With The Earthmother",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.WARRIOR + classIDs.SHAMAN + classIDs.DRUID,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.TAUREN + raceIDs.TROLL,
             [questKeys.startedBy] = {{205729}},
         },
         [76160] = { -- Stalk With The Earthmother : https://wowhead.com/forever/quest=76160/stalk-with-the-earthmother
             [questKeys.finishedBy] = {{205729}},
             [questKeys.name] = "Stalk With The Earthmother",
             [questKeys.questLevel] = 11,
+            [questKeys.requiredClasses] = classIDs.WARRIOR + classIDs.SHAMAN + classIDs.DRUID,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.TAUREN + raceIDs.TROLL,
             [questKeys.startedBy] = {{205729}},
         },
         [76240] = { -- Stalk With The Earthmother : https://wowhead.com/forever/quest=76240/stalk-with-the-earthmother
             [questKeys.finishedBy] = {{205729}},
             [questKeys.name] = "Stalk With The Earthmother",
             [questKeys.questLevel] = 11,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{205729}},
         },
         [78132] = { -- Dragonslayer's Helm : https://wowhead.com/forever/quest=78132/dragonslayers-helm
@@ -55,6 +95,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Dragonslayer's Helm",
             [questKeys.questLevel] = 25,
             [questKeys.requiredLevel] = 15,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/dragonslayer_collection.toml; 0 = all races
             [questKeys.startedBy] = {{210995}},
         },
         [78133] = { -- Dragonslayer's Shield : https://wowhead.com/forever/quest=78133/dragonslayers-shield
@@ -62,6 +103,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Dragonslayer's Shield",
             [questKeys.questLevel] = 25,
             [questKeys.requiredLevel] = 15,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/dragonslayer_collection.toml; 0 = all races
             [questKeys.startedBy] = {{210995}},
         },
         [78134] = { -- Dragonslayer's Lance : https://wowhead.com/forever/quest=78134/dragonslayers-lance
@@ -69,6 +111,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Dragonslayer's Lance",
             [questKeys.questLevel] = 25,
             [questKeys.requiredLevel] = 15,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/dragonslayer_collection.toml; 0 = all races
             [questKeys.startedBy] = {{210995}},
         },
         [78148] = { -- Runes of the Sorcerer-Kings : https://wowhead.com/forever/quest=78148/runes-of-the-sorcerer-kings
@@ -76,6 +119,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Runes of the Sorcerer-Kings",
             [questKeys.questLevel] = 20,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/library_races.toml; 0 = all races
             [questKeys.startedBy] = {{211033}},
         },
         [79007] = { -- ... and that note you found : https://wowhead.com/forever/quest=79007/and-that-note-you-found
@@ -83,6 +127,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "... and that note you found",
             [questKeys.questLevel] = 22,
             [questKeys.requiredLevel] = 14,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {nil, {415106}},
         },
         [79008] = { -- ... and that note you found : https://wowhead.com/forever/quest=79008/and-that-note-you-found
@@ -90,6 +135,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "... and that note you found",
             [questKeys.questLevel] = 22,
             [questKeys.requiredLevel] = 14,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {nil, {415107}},
         },
         [79092] = { -- Archmage Theocritus' Research Journal : https://wowhead.com/forever/quest=79092/archmage-theocritus-research-journal
@@ -97,6 +143,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Archmage Theocritus' Research Journal",
             [questKeys.questLevel] = 20,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/library_races.toml; 0 = all races
             [questKeys.startedBy] = {{211033}},
         },
         [79095] = { -- The Apothecary's Metaphysical Primer : https://wowhead.com/forever/quest=79095/the-apothecarys-metaphysical-primer
@@ -104,6 +151,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Apothecary's Metaphysical Primer",
             [questKeys.questLevel] = 20,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{211022}},
         },
         [79192] = { -- Stepping Stones : https://wowhead.com/forever/quest=79192/stepping-stones
@@ -111,27 +159,33 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Stepping Stones",
             [questKeys.questLevel] = 24,
             [questKeys.requiredLevel] = 14,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/sleeping_bag.toml; 0 = all races
             [questKeys.startedBy] = {nil, {415106, 415107, 417072, 424010}},
         },
         [79362] = { -- Grant's Shield : https://wowhead.com/forever/quest=79362/grants-shield
             [questKeys.finishedBy] = {{6176}},
             [questKeys.name] = "Grant's Shield",
             [questKeys.questLevel] = 25,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 18,
-            [questKeys.startedBy] = {{6176}},
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.TAUREN + raceIDs.TROLL,
+            [questKeys.startedBy] = {{6176}, nil, {281147}},
         },
         [79363] = { -- Silvia's Sword : https://wowhead.com/forever/quest=79363/silvias-sword
             [questKeys.finishedBy] = {{6176}},
             [questKeys.name] = "Silvia's Sword",
             [questKeys.questLevel] = 26,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 18,
-            [questKeys.startedBy] = {{6176}},
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.TAUREN + raceIDs.TROLL,
+            [questKeys.startedBy] = {{6176}, nil, {281145}},
         },
         [79536] = { -- Greater Friend of the Library : https://wowhead.com/forever/quest=79536/greater-friend-of-the-library
             [questKeys.finishedBy] = {{211022, 211033}},
             [questKeys.name] = "Greater Friend of the Library",
             [questKeys.questLevel] = 35,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/library_races.toml; 0 = all races
             [questKeys.startedBy] = {{211033}},
         },
         [79974] = { -- Wet Job : https://wowhead.com/forever/quest=79974/wet-job
@@ -139,6 +193,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Wet Job",
             [questKeys.questLevel] = 32,
             [questKeys.requiredLevel] = 14,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/sleeping_bag.toml; 0 = all races
             [questKeys.startedBy] = {nil, {424012}},
         },
         [79975] = { -- Eagle's Fist : https://wowhead.com/forever/quest=79975/eagles-fist
@@ -146,6 +201,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Eagle's Fist",
             [questKeys.questLevel] = 32,
             [questKeys.requiredLevel] = 14,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/sleeping_bag.toml; 0 = all races
             [questKeys.startedBy] = {nil, {424007}},
         },
         [79976] = { -- This Must Be The Place : https://wowhead.com/forever/quest=79976/this-must-be-the-place
@@ -153,6 +209,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "This Must Be The Place",
             [questKeys.questLevel] = 32,
             [questKeys.requiredLevel] = 14,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/sleeping_bag.toml; 0 = all races
             [questKeys.startedBy] = {nil, {406918}},
         },
         [79980] = { -- Scramble : https://wowhead.com/forever/quest=79980/scramble
@@ -160,17 +217,20 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Scramble",
             [questKeys.questLevel] = 24,
             [questKeys.requiredLevel] = 14,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/sleeping_bag.toml; 0 = all races
             [questKeys.startedBy] = {nil, {424005}},
         },
         [86574] = { -- Stonetalon Supply Run : https://wowhead.com/forever/quest=86574/stonetalon-supply-run
             [questKeys.name] = "Stonetalon Supply Run",
             [questKeys.questLevel] = 24,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [86576] = { -- Bloodfury Trinkets : https://wowhead.com/forever/quest=86576/bloodfury-trinkets
             [questKeys.name] = "Bloodfury Trinkets",
             [questKeys.questLevel] = 26,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{11860}},
         },
         [86585] = { -- Banner of the Fallen : https://wowhead.com/forever/quest=86585/banner-of-the-fallen
@@ -178,6 +238,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Banner of the Fallen",
             [questKeys.questLevel] = 17,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{269153}},
         },
         [86613] = { -- Excavation Tools : https://wowhead.com/forever/quest=86613/excavation-tools
@@ -185,18 +246,22 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Excavation Tools",
             [questKeys.questLevel] = 18,
             [questKeys.requiredLevel] = 13,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {278049}},
         },
         [86614] = { -- Silver of the Waves : https://wowhead.com/forever/quest=86614/silver-of-the-waves
             [questKeys.finishedBy] = {{1684}},
             [questKeys.name] = "Silver of the Waves",
             [questKeys.questLevel] = 20,
             [questKeys.requiredLevel] = 13,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [86667] = { -- Snowbound : https://wowhead.com/forever/quest=86667/snowbound
             [questKeys.finishedBy] = {{258043}},
             [questKeys.name] = "Snowbound",
             [questKeys.questLevel] = 20,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{49808}},
         },
         [86758] = { -- Twisting the Knife : https://wowhead.com/forever/quest=86758/twisting-the-knife
@@ -204,6 +269,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Twisting the Knife",
             [questKeys.questLevel] = 16,
             [questKeys.requiredLevel] = 12,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1154}},
         },
         [86776] = { -- Ingredients for the Forge : https://wowhead.com/forever/quest=86776/ingredients-for-the-forge
@@ -211,6 +277,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Ingredients for the Forge",
             [questKeys.questLevel] = 30,
             [questKeys.requiredLevel] = 15,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{167}},
         },
         [86784] = { -- Sticks and Bones : https://wowhead.com/forever/quest=86784/sticks-and-bones
@@ -218,6 +285,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Sticks and Bones",
             [questKeys.questLevel] = 7,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{1742}},
         },
         [87288] = { -- Soft Saber Pelts : https://wowhead.com/forever/quest=87288/soft-saber-pelts
@@ -225,6 +293,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Soft Saber Pelts",
             [questKeys.questLevel] = 7,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{3608}},
         },
         [87760] = { -- Holy Diver : https://wowhead.com/forever/quest=87760/holy-diver
@@ -232,62 +301,79 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Holy Diver",
             [questKeys.questLevel] = 20,
             [questKeys.requiredLevel] = 15,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{10219}},
         },
         [90902] = { -- Rediscovering the Light : https://wowhead.com/forever/quest=90902/rediscovering-the-light
             [questKeys.finishedBy] = {{244808}},
             [questKeys.name] = "Rediscovering the Light",
             [questKeys.questLevel] = 2,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{244808}},
         },
         [91208] = { -- Coming to Terms : https://wowhead.com/forever/quest=91208/coming-to-terms
             [questKeys.finishedBy] = {{244808}},
             [questKeys.name] = "Coming to Terms",
             [questKeys.questLevel] = 4,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{244808}},
         },
         [91209] = { -- Continue Your Training : https://wowhead.com/forever/quest=91209/continue-your-training
             [questKeys.finishedBy] = {{246152}},
             [questKeys.name] = "Continue Your Training",
             [questKeys.questLevel] = 4,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{244808}},
         },
         [91282] = { -- A Second Home : https://wowhead.com/forever/quest=91282/a-second-home
             [questKeys.finishedBy] = {{246349}},
             [questKeys.name] = "A Second Home",
             [questKeys.questLevel] = 11,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{246152}},
         },
         [91285] = { -- Murlocs at the Gates : https://wowhead.com/forever/quest=91285/murlocs-at-the-gates
             [questKeys.finishedBy] = {{246349}},
             [questKeys.name] = "Murlocs at the Gates",
             [questKeys.questLevel] = 11,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{246349}},
         },
         [91294] = { -- Touring the Grounds : https://wowhead.com/forever/quest=91294/touring-the-grounds
             [questKeys.finishedBy] = {{246378}},
             [questKeys.name] = "Touring the Grounds",
             [questKeys.questLevel] = 11,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{246349}},
         },
         [91316] = { -- Making Repairs : https://wowhead.com/forever/quest=91316/making-repairs
             [questKeys.finishedBy] = {{246393}},
             [questKeys.name] = "Making Repairs",
             [questKeys.questLevel] = 11,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{246393}},
         },
         [91317] = { -- The Tarnished : https://wowhead.com/forever/quest=91317/the-tarnished
             [questKeys.finishedBy] = {{246378}},
             [questKeys.name] = "The Tarnished",
             [questKeys.questLevel] = 12,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{246378}},
         },
         [91723] = { -- Delicate Instruments : https://wowhead.com/forever/quest=91723/delicate-instruments
@@ -295,6 +381,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Delicate Instruments",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{248242}},
         },
         [91724] = { -- Delicate Instruments : https://wowhead.com/forever/quest=91724/delicate-instruments
@@ -302,6 +389,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Delicate Instruments",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{248242}},
         },
         [91725] = { -- Stolen Enchanting Supplies : https://wowhead.com/forever/quest=91725/stolen-enchanting-supplies
@@ -309,6 +397,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Stolen Enchanting Supplies",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{248248}},
         },
         [91732] = { -- Good Steel : https://wowhead.com/forever/quest=91732/good-steel
@@ -316,6 +405,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Good Steel",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{248266}},
         },
         [91733] = { -- Downstream : https://wowhead.com/forever/quest=91733/downstream
@@ -323,16 +413,19 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Downstream",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{248265}},
         },
         [91736] = { -- Applejack Still : https://wowhead.com/forever/quest=91736/applejack-still
             [questKeys.name] = "Applejack Still",
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [91738] = { -- An Apple Treat : https://wowhead.com/forever/quest=91738/an-apple-treat
             [questKeys.finishedBy] = {{955}},
             [questKeys.name] = "An Apple Treat",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{955}},
         },
         [91740] = { -- Croaky's Head : https://wowhead.com/forever/quest=91740/croakys-head
@@ -340,18 +433,23 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Croaky's Head",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {247826}},
         },
         [91741] = { -- Nibbled-On Book : https://wowhead.com/forever/quest=91741/nibbled-on-book
             [questKeys.finishedBy] = {{951}},
             [questKeys.name] = "Nibbled-On Book",
             [questKeys.questLevel] = 2,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {247834}},
         },
         [91743] = { -- Rascally Rodents : https://wowhead.com/forever/quest=91743/rascally-rodents
             [questKeys.finishedBy] = {{951}},
             [questKeys.name] = "Rascally Rodents",
             [questKeys.questLevel] = 2,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{951}},
         },
         [91745] = { -- Mining Consultant : https://wowhead.com/forever/quest=91745/mining-consultant
@@ -359,6 +457,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Mining Consultant",
             [questKeys.questLevel] = 3,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{951}},
         },
         [91746] = { -- Elmpaw's Head : https://wowhead.com/forever/quest=91746/elmpaws-head
@@ -366,12 +465,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Elmpaw's Head",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {247862}},
         },
         [91751] = { -- Rough Wolf Pelts : https://wowhead.com/forever/quest=91751/rough-wolf-pelts
             [questKeys.finishedBy] = {{6306}},
             [questKeys.name] = "Rough Wolf Pelts",
             [questKeys.questLevel] = 7,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{6306}},
         },
         [91752] = { -- The Big Picture : https://wowhead.com/forever/quest=91752/the-big-picture
@@ -379,6 +481,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Big Picture",
             [questKeys.questLevel] = 3,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{247226}},
         },
         [91753] = { -- An Enchanting Lesson : https://wowhead.com/forever/quest=91753/an-enchanting-lesson
@@ -386,6 +489,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "An Enchanting Lesson",
             [questKeys.questLevel] = 7,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{11072}},
         },
         [91758] = { -- Follow That Kobold! : https://wowhead.com/forever/quest=91758/follow-that-kobold
@@ -393,6 +497,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Follow That Kobold!",
             [questKeys.questLevel] = 4,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{197}},
         },
         [91772] = { -- Shhh! We're Hunting Kobolds : https://wowhead.com/forever/quest=91772/shhh-were-hunting-kobolds
@@ -400,6 +505,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Shhh! We're Hunting Kobolds",
             [questKeys.questLevel] = 4,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{248415}},
         },
         [91775] = { -- Book Return : https://wowhead.com/forever/quest=91775/book-return
@@ -407,6 +513,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Book Return",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{240}},
         },
         [91777] = { -- Rare Books : https://wowhead.com/forever/quest=91777/rare-books
@@ -414,39 +521,50 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Rare Books",
             [questKeys.questLevel] = 7,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{240}},
         },
         [91858] = { -- Diplomatic Incident : https://wowhead.com/forever/quest=91858/diplomatic-incident
             [questKeys.finishedBy] = {{248840}},
             [questKeys.name] = "Diplomatic Incident",
             [questKeys.questLevel] = 22,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{246378}},
         },
         [91859] = { -- A Curious Pair : https://wowhead.com/forever/quest=91859/a-curious-pair
             [questKeys.finishedBy] = {{259611}},
             [questKeys.name] = "A Curious Pair",
             [questKeys.questLevel] = 22,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{248840}},
         },
         [91860] = { -- A Grim Fate : https://wowhead.com/forever/quest=91860/a-grim-fate
             [questKeys.name] = "A Grim Fate",
             [questKeys.questLevel] = 22,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{259611}},
         },
         [91861] = { -- Into Fenris Keep : https://wowhead.com/forever/quest=91861/into-fenris-keep
             [questKeys.finishedBy] = {{248755}},
             [questKeys.name] = "Into Fenris Keep",
             [questKeys.questLevel] = 22,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
         },
         [91862] = { -- Lumina Windsinger : https://wowhead.com/forever/quest=91862/lumina-windsinger
             [questKeys.finishedBy] = {{248755}},
             [questKeys.name] = "Lumina Windsinger",
             [questKeys.questLevel] = 22,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{248755}},
         },
         [91899] = { -- A Sealed Crate : https://wowhead.com/forever/quest=91899/a-sealed-crate
@@ -454,6 +572,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Sealed Crate",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_crates.toml; 0 = all races
             [questKeys.startedBy] = {{256390}},
         },
         [91900] = { -- A Sealed Crate : https://wowhead.com/forever/quest=91900/a-sealed-crate
@@ -461,23 +580,21 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Sealed Crate",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_crates.toml; 0 = all races
             [questKeys.startedBy] = {{256390}},
-        },
-        [91901] = { -- A Sealed Crate : https://wowhead.com/forever/quest=91901/a-sealed-crate
-            [questKeys.name] = "A Sealed Crate",
-            [questKeys.questLevel] = 60,
-            [questKeys.requiredLevel] = 1,
         },
         [91904] = { -- A Sealed Crate : https://wowhead.com/forever/quest=91904/a-sealed-crate
             [questKeys.finishedBy] = {{256386, 256390}},
             [questKeys.name] = "A Sealed Crate",
             [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_crates.toml; 0 = all races
             [questKeys.startedBy] = {{256390}},
         },
         [91905] = { -- A Sealed Crate : https://wowhead.com/forever/quest=91905/a-sealed-crate
             [questKeys.finishedBy] = {{256386, 256390}},
             [questKeys.name] = "A Sealed Crate",
             [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_crates.toml; 0 = all races
             [questKeys.startedBy] = {{256390}},
         },
         [91920] = { -- Wild Eyes : https://wowhead.com/forever/quest=91920/wild-eyes
@@ -485,6 +602,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Wild Eyes",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{1951}},
         },
         [91921] = { -- Return to Quinn (Again) : https://wowhead.com/forever/quest=91921/return-to-quinn-again
@@ -492,6 +610,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Return to Quinn (Again)",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{1937}},
         },
         [92109] = { -- My First Alchemy Set : https://wowhead.com/forever/quest=92109/my-first-alchemy-set
@@ -499,6 +618,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "My First Alchemy Set",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{249713}},
         },
         [92110] = { -- My First Real Potion : https://wowhead.com/forever/quest=92110/my-first-real-potion
@@ -506,6 +626,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "My First Real Potion",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{249713}},
         },
         [92124] = { -- Book Inventory : https://wowhead.com/forever/quest=92124/book-inventory
@@ -513,6 +634,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Book Inventory",
             [questKeys.questLevel] = 2,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{951}},
         },
         [92401] = { -- A Frightened Request : https://wowhead.com/forever/quest=92401/a-frightened-request
@@ -520,6 +642,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Frightened Request",
             [questKeys.questLevel] = 22,
             [questKeys.requiredLevel] = 15,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{250686}},
         },
         [92415] = { -- Remember That I Love You : https://wowhead.com/forever/quest=92415/remember-that-i-love-you
@@ -527,12 +650,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Remember That I Love You",
             [questKeys.questLevel] = 22,
             [questKeys.requiredLevel] = 15,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {251270, 251520}},
         },
         [92421] = { -- Light's Justice : https://wowhead.com/forever/quest=92421/lights-justice
             [questKeys.finishedBy] = {{266484}},
             [questKeys.name] = "Light's Justice",
             [questKeys.questLevel] = 22,
             [questKeys.requiredLevel] = 15,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{266484}},
         },
         [92422] = { -- The Wrath of Rath'mael : https://wowhead.com/forever/quest=92422/the-wrath-of-rathmael
@@ -540,18 +666,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Wrath of Rath'mael",
             [questKeys.questLevel] = 22,
             [questKeys.requiredLevel] = 15,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{251001}},
-        },
-        [92454] = { -- Welcome! : https://wowhead.com/forever/quest=92454/welcome
-            [questKeys.name] = "Welcome!",
-            [questKeys.questLevel] = 1,
-            [questKeys.requiredLevel] = 1,
         },
         [92460] = { -- Coming of Age : https://wowhead.com/forever/quest=92460/coming-of-age
             [questKeys.finishedBy] = {{251361}},
             [questKeys.name] = "Coming of Age",
             [questKeys.questLevel] = 1,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251362}},
         },
         [92461] = { -- Harmony in Balance : https://wowhead.com/forever/quest=92461/harmony-in-balance
@@ -559,6 +682,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Harmony in Balance",
             [questKeys.questLevel] = 1,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251361}},
         },
         [92462] = { -- Infestation Investigation : https://wowhead.com/forever/quest=92462/infestation-investigation
@@ -566,6 +690,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Infestation Investigation",
             [questKeys.questLevel] = 2,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251368}},
         },
         [92463] = { -- The Cirrusfly Queen : https://wowhead.com/forever/quest=92463/the-cirrusfly-queen
@@ -573,6 +698,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Cirrusfly Queen",
             [questKeys.questLevel] = 3,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251368}},
         },
         [92464] = { -- Elemental Unrest : https://wowhead.com/forever/quest=92464/elemental-unrest
@@ -580,6 +706,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Elemental Unrest",
             [questKeys.questLevel] = 3,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251361}},
         },
         [92465] = { -- Agitators : https://wowhead.com/forever/quest=92465/agitators
@@ -587,6 +714,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Agitators",
             [questKeys.questLevel] = 3,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{249363}},
         },
         [92466] = { -- Call of Earth : https://wowhead.com/forever/quest=92466/call-of-earth
@@ -594,6 +722,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Call of Earth",
             [questKeys.questLevel] = 4,
             [questKeys.requiredLevel] = 3,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{251374}},
         },
         [92467] = { -- Call of Earth : https://wowhead.com/forever/quest=92467/call-of-earth
@@ -601,6 +730,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Call of Earth",
             [questKeys.questLevel] = 4,
             [questKeys.requiredLevel] = 3,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{251374}},
         },
         [92468] = { -- Call of Earth : https://wowhead.com/forever/quest=92468/call-of-earth
@@ -608,6 +738,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Call of Earth",
             [questKeys.questLevel] = 4,
             [questKeys.requiredLevel] = 3,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{251166}},
         },
         [92469] = { -- Return to Rorian : https://wowhead.com/forever/quest=92469/return-to-rorian
@@ -615,6 +746,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Return to Rorian",
             [questKeys.questLevel] = 4,
             [questKeys.requiredLevel] = 3,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{249363}},
         },
         [92470] = { -- Foul Matriarch : https://wowhead.com/forever/quest=92470/foul-matriarch
@@ -622,6 +754,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Foul Matriarch",
             [questKeys.questLevel] = 5,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251366}},
         },
         [92471] = { -- Aetheen of the Gales : https://wowhead.com/forever/quest=92471/aetheen-of-the-gales
@@ -629,6 +762,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Aetheen of the Gales",
             [questKeys.questLevel] = 4,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251361}},
         },
         [92472] = { -- The Next Step : https://wowhead.com/forever/quest=92472/the-next-step
@@ -636,6 +770,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Next Step",
             [questKeys.questLevel] = 5,
             [questKeys.requiredLevel] = 3,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251366}},
         },
         [92473] = { -- Aggressive Encroachment : https://wowhead.com/forever/quest=92473/aggressive-encroachment
@@ -643,6 +778,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Aggressive Encroachment",
             [questKeys.questLevel] = 4,
             [questKeys.requiredLevel] = 3,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{257551}},
         },
         [92474] = { -- Falling With Style : https://wowhead.com/forever/quest=92474/falling-with-style
@@ -650,48 +786,61 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Falling With Style",
             [questKeys.questLevel] = 2,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{263113}},
         },
         [92479] = { -- A Scribbled Letter : https://wowhead.com/forever/quest=92479/a-scribbled-letter
             [questKeys.finishedBy] = {{248415}},
             [questKeys.name] = "A Scribbled Letter",
             [questKeys.questLevel] = 1,
+            [questKeys.requiredClasses] = classIDs.WARRIOR,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.HUMAN,
             [questKeys.startedBy] = {{197}},
         },
         [92481] = { -- A Student of the Arcane : https://wowhead.com/forever/quest=92481/a-student-of-the-arcane
             [questKeys.finishedBy] = {{251379}},
             [questKeys.name] = "A Student of the Arcane",
             [questKeys.questLevel] = 2,
+            [questKeys.requiredClasses] = classIDs.MAGE,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{251361}},
         },
         [92482] = { -- The Way of the Hunter : https://wowhead.com/forever/quest=92482/the-way-of-the-hunter
             [questKeys.finishedBy] = {{251376}},
             [questKeys.name] = "The Way of the Hunter",
             [questKeys.questLevel] = 2,
+            [questKeys.requiredClasses] = classIDs.HUNTER,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251361}},
         },
         [92483] = { -- At Home in the Shadows : https://wowhead.com/forever/quest=92483/at-home-in-the-shadows
             [questKeys.finishedBy] = {{251389}},
             [questKeys.name] = "At Home in the Shadows",
             [questKeys.questLevel] = 2,
+            [questKeys.requiredClasses] = classIDs.ROGUE,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251361}},
         },
         [92484] = { -- Embracing the Elements : https://wowhead.com/forever/quest=92484/embracing-the-elements
             [questKeys.finishedBy] = {{251374}},
             [questKeys.name] = "Embracing the Elements",
             [questKeys.questLevel] = 2,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{251361}},
         },
         [92485] = { -- A Student of Nature : https://wowhead.com/forever/quest=92485/a-student-of-nature
             [questKeys.finishedBy] = {{251373}},
             [questKeys.name] = "A Student of Nature",
             [questKeys.questLevel] = 2,
+            [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251361}},
         },
         [92514] = { -- Welcome to Shen'dar Village : https://wowhead.com/forever/quest=92514/welcome-to-shendar-village
@@ -699,6 +848,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Welcome to Shen'dar Village",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{251523}},
         },
         [92515] = { -- The Problem With Prideclaws : https://wowhead.com/forever/quest=92515/the-problem-with-prideclaws
@@ -706,6 +856,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Problem With Prideclaws",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251993}},
         },
         [92516] = { -- Hippogryph Harrassment : https://wowhead.com/forever/quest=92516/hippogryph-harrassment
@@ -713,6 +864,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Hippogryph Harrassment",
             [questKeys.questLevel] = 7,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251906}},
         },
         [92517] = { -- The Criminal Element : https://wowhead.com/forever/quest=92517/the-criminal-element
@@ -720,6 +872,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Criminal Element",
             [questKeys.questLevel] = 7,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251523}},
         },
         [92528] = { -- Among the Faithful : https://wowhead.com/forever/quest=92528/among-the-faithful
@@ -727,6 +880,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Among the Faithful",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{257065}},
         },
         [92529] = { -- Falaath Village : https://wowhead.com/forever/quest=92529/falaath-village
@@ -734,23 +888,24 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Falaath Village",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251904}},
         },
         [92532] = { -- The Warrior's Path : https://wowhead.com/forever/quest=92532/the-warriors-path
             [questKeys.finishedBy] = {{251964}},
             [questKeys.name] = "The Warrior's Path",
             [questKeys.questLevel] = 2,
+            [questKeys.requiredClasses] = classIDs.WARRIOR,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251361}},
-        },
-        [92534] = { -- jktestquest1a : https://wowhead.com/forever/quest=92534/jktestquest1a
-            [questKeys.name] = "jktestquest1a",
         },
         [92544] = { -- Al'Aketh Thugs : https://wowhead.com/forever/quest=92544/alaketh-thugs
             [questKeys.finishedBy] = {{252095}},
             [questKeys.name] = "Al'Aketh Thugs",
             [questKeys.questLevel] = 5,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252095}},
         },
         [92550] = { -- Havoc in the Highlands : https://wowhead.com/forever/quest=92550/havoc-in-the-highlands
@@ -758,6 +913,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Havoc in the Highlands",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251523}},
         },
         [92551] = { -- Stolen Supplies : https://wowhead.com/forever/quest=92551/stolen-supplies
@@ -765,6 +921,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Stolen Supplies",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252172}},
         },
         [92553] = { -- Restocking the Larders : https://wowhead.com/forever/quest=92553/restocking-the-larders
@@ -772,6 +929,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Restocking the Larders",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251905}},
         },
         [92579] = { -- To Valanaar : https://wowhead.com/forever/quest=92579/to-valanaar
@@ -779,6 +937,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "To Valanaar",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{251523}},
         },
         [92595] = { -- The Windshapers : https://wowhead.com/forever/quest=92595/the-windshapers
@@ -786,6 +945,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Windshapers",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{251902}},
         },
         [92596] = { -- The High Order : https://wowhead.com/forever/quest=92596/the-high-order
@@ -793,6 +953,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The High Order",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{251903}},
         },
         [92597] = { -- Reading the Ley Lines : https://wowhead.com/forever/quest=92597/reading-the-ley-lines
@@ -800,6 +961,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Reading the Ley Lines",
             [questKeys.questLevel] = 4,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.startedBy] = {{251371}},
         },
         [92598] = { -- The Gift of Skysight : https://wowhead.com/forever/quest=92598/the-gift-of-skysight
@@ -807,6 +969,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Gift of Skysight",
             [questKeys.questLevel] = 4,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{251487}},
         },
         [92640] = { -- Desperate Times : https://wowhead.com/forever/quest=92640/desperate-times
@@ -814,6 +977,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Desperate Times",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252476}},
         },
         [92642] = { -- Disrupting Logistics : https://wowhead.com/forever/quest=92642/disrupting-logistics
@@ -821,6 +985,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Disrupting Logistics",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252378}},
         },
         [92643] = { -- The Turncoat : https://wowhead.com/forever/quest=92643/the-turncoat
@@ -828,6 +993,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Turncoat",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252476}},
         },
         [92644] = { -- Unfortunate News : https://wowhead.com/forever/quest=92644/unfortunate-news
@@ -835,6 +1001,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Unfortunate News",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{253372}},
         },
         [92645] = { -- Breaking the Breaker : https://wowhead.com/forever/quest=92645/breaking-the-breaker
@@ -842,6 +1009,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Breaking the Breaker",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252378}},
         },
         [92646] = { -- Confront Lorthuna : https://wowhead.com/forever/quest=92646/confront-lorthuna
@@ -849,6 +1017,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Confront Lorthuna",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{253590}},
         },
         [92679] = { -- Blood Tithe : https://wowhead.com/forever/quest=92679/blood-tithe
@@ -856,6 +1025,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Blood Tithe",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252448}},
         },
         [92682] = { -- Make Yourself Useful : https://wowhead.com/forever/quest=92682/make-yourself-useful
@@ -863,6 +1033,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Make Yourself Useful",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252800}},
         },
         [92683] = { -- Flutterfly Dust : https://wowhead.com/forever/quest=92683/flutterfly-dust
@@ -870,6 +1041,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Flutterfly Dust",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252800}},
         },
         [92684] = { -- Ornery Ornery Galestriders : https://wowhead.com/forever/quest=92684/ornery-ornery-galestriders
@@ -877,6 +1049,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Ornery Ornery Galestriders",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252800}},
         },
         [92685] = { -- The Hills Have Eyes : https://wowhead.com/forever/quest=92685/the-hills-have-eyes
@@ -884,6 +1057,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Hills Have Eyes",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252800}},
         },
         [92693] = { -- Standing Our Ground : https://wowhead.com/forever/quest=92693/standing-our-ground
@@ -891,6 +1065,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Standing Our Ground",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252800}},
         },
         [92698] = { -- What Is My Purpose? : https://wowhead.com/forever/quest=92698/what-is-my-purpose
@@ -898,6 +1073,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "What Is My Purpose?",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{250929}},
         },
         [92699] = { -- The Supreme Magister : https://wowhead.com/forever/quest=92699/the-supreme-magister
@@ -905,6 +1081,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Supreme Magister",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{252383}},
         },
         [92700] = { -- The Grand Skyseer : https://wowhead.com/forever/quest=92700/the-grand-skyseer
@@ -912,6 +1089,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Grand Skyseer",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{252383}},
         },
         [92701] = { -- To Valanaar : https://wowhead.com/forever/quest=92701/to-valanaar
@@ -919,6 +1097,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "To Valanaar",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{251523}},
         },
         [92703] = { -- Deliver the News : https://wowhead.com/forever/quest=92703/deliver-the-news
@@ -926,6 +1105,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Deliver the News",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252800}},
         },
         [92706] = { -- WANTED: Bruuz : https://wowhead.com/forever/quest=92706/wanted-bruuz
@@ -933,6 +1113,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "WANTED: Bruuz",
             [questKeys.questLevel] = 20,
             [questKeys.requiredLevel] = 15,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {nil, {3972}},
         },
         [92708] = { -- A Grand Adventure : https://wowhead.com/forever/quest=92708/a-grand-adventure
@@ -940,6 +1121,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Grand Adventure",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{251968}},
         },
         [92709] = { -- A Grand Adventure : https://wowhead.com/forever/quest=92709/a-grand-adventure
@@ -947,12 +1129,14 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Grand Adventure",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{252475}},
         },
         [92727] = { -- The Missing Scholar : https://wowhead.com/forever/quest=92727/the-missing-scholar
             [questKeys.name] = "The Missing Scholar",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{253204}},
         },
         [92741] = { -- Unwelcome Visitors : https://wowhead.com/forever/quest=92741/unwelcome-visitors
@@ -960,6 +1144,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Unwelcome Visitors",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{253004}},
         },
         [92742] = { -- Testing the Wells : https://wowhead.com/forever/quest=92742/testing-the-wells
@@ -967,6 +1152,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Testing the Wells",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{253092}},
         },
         [92744] = { -- Murloc Gills : https://wowhead.com/forever/quest=92744/murloc-gills
@@ -974,6 +1160,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Murloc Gills",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{253092}},
         },
         [92745] = { -- The State of the Mines : https://wowhead.com/forever/quest=92745/the-state-of-the-mines
@@ -981,6 +1168,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The State of the Mines",
             [questKeys.questLevel] = 14,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{253092}},
         },
         [92747] = { -- Moonbrook Espionage : https://wowhead.com/forever/quest=92747/moonbrook-espionage
@@ -988,6 +1176,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Moonbrook Espionage",
             [questKeys.questLevel] = 16,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{253092}},
         },
         [92748] = { -- Explosive Consultation : https://wowhead.com/forever/quest=92748/explosive-consultation
@@ -995,6 +1184,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Explosive Consultation",
             [questKeys.questLevel] = 16,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{253092}},
         },
         [92749] = { -- A Dynamite Plan : https://wowhead.com/forever/quest=92749/a-dynamite-plan
@@ -1002,6 +1192,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Dynamite Plan",
             [questKeys.questLevel] = 16,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{11026}},
         },
         [92750] = { -- Detonation at a Distance : https://wowhead.com/forever/quest=92750/detonation-at-a-distance
@@ -1009,6 +1200,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Detonation at a Distance",
             [questKeys.questLevel] = 16,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{11026}},
         },
         [92751] = { -- Detonation at a Distance : https://wowhead.com/forever/quest=92751/detonation-at-a-distance
@@ -1016,6 +1208,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Detonation at a Distance",
             [questKeys.questLevel] = 16,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1325}},
         },
         [92752] = { -- Explosive Consultation : https://wowhead.com/forever/quest=92752/explosive-consultation
@@ -1023,6 +1216,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Explosive Consultation",
             [questKeys.questLevel] = 16,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{11026}},
         },
         [92753] = { -- Destruction in Deadmines : https://wowhead.com/forever/quest=92753/destruction-in-deadmines
@@ -1030,6 +1224,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Destruction in Deadmines",
             [questKeys.questLevel] = 18,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{253092}},
         },
         [92819] = { -- Destruction in Deadmines : https://wowhead.com/forever/quest=92819/destruction-in-deadmines
@@ -1037,6 +1232,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Destruction in Deadmines",
             [questKeys.questLevel] = 18,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{253279}},
         },
         [92834] = { -- Avenged Tenfold : https://wowhead.com/forever/quest=92834/avenged-tenfold
@@ -1044,6 +1240,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Avenged Tenfold",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{252475}},
         },
         [92840] = { -- Catching Wind : https://wowhead.com/forever/quest=92840/catching-wind
@@ -1051,6 +1248,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Catching Wind",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{252475}},
         },
         [92849] = { -- The Missing Scholar : https://wowhead.com/forever/quest=92849/the-missing-scholar
@@ -1058,12 +1256,14 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Missing Scholar",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [92850] = { -- The Missing Scholar : https://wowhead.com/forever/quest=92850/the-missing-scholar
             [questKeys.finishedBy] = {{253204}},
             [questKeys.name] = "The Missing Scholar",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{253284}},
         },
         [92860] = { -- In Service of Zephras : https://wowhead.com/forever/quest=92860/in-service-of-zephras
@@ -1071,6 +1271,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "In Service of Zephras",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{252475}},
         },
         [92871] = { -- In Service of Zephras : https://wowhead.com/forever/quest=92871/in-service-of-zephras
@@ -1078,6 +1279,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "In Service of Zephras",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{251968}},
         },
         [92880] = { -- Return to Valanaar : https://wowhead.com/forever/quest=92880/return-to-valanaar
@@ -1085,6 +1287,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Return to Valanaar",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252378}},
         },
         [92881] = { -- The High Elder's Request : https://wowhead.com/forever/quest=92881/the-high-elders-request
@@ -1092,6 +1295,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The High Elder's Request",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252383}},
         },
         [92909] = { -- Harvesting the Harvesters : https://wowhead.com/forever/quest=92909/harvesting-the-harvesters
@@ -1099,6 +1303,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Harvesting the Harvesters",
             [questKeys.questLevel] = 15,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{253395}},
         },
         [92910] = { -- Harvesting the Harvesters : https://wowhead.com/forever/quest=92910/harvesting-the-harvesters
@@ -1106,12 +1311,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Harvesting the Harvesters",
             [questKeys.questLevel] = 15,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {255155}},
         },
         [92911] = { -- Harvesting the Harvesters : https://wowhead.com/forever/quest=92911/harvesting-the-harvesters
             [questKeys.finishedBy] = {{253395}},
             [questKeys.name] = "Harvesting the Harvesters",
             [questKeys.questLevel] = 15,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{253395}},
         },
         [92947] = { -- Making Our Move : https://wowhead.com/forever/quest=92947/making-our-move
@@ -1119,6 +1327,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Making Our Move",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{253844}},
         },
         [93036] = { -- Infiltrating the Cult : https://wowhead.com/forever/quest=93036/infiltrating-the-cult
@@ -1126,6 +1335,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Infiltrating the Cult",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251523}},
         },
         [93065] = { -- Prepare for Battle : https://wowhead.com/forever/quest=93065/prepare-for-battle
@@ -1133,6 +1343,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Prepare for Battle",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252383}},
         },
         [93089] = { -- What Comes Next : https://wowhead.com/forever/quest=93089/what-comes-next
@@ -1140,6 +1351,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "What Comes Next",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{252476}},
         },
         [93090] = { -- What Comes Next : https://wowhead.com/forever/quest=93090/what-comes-next
@@ -1147,6 +1359,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "What Comes Next",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{252476}},
         },
         [93159] = { -- The Strange Hermit : https://wowhead.com/forever/quest=93159/the-strange-hermit
@@ -1154,6 +1367,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Strange Hermit",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251684}},
         },
         [93160] = { -- The Forest's Bounty : https://wowhead.com/forever/quest=93160/the-forests-bounty
@@ -1161,6 +1375,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Forest's Bounty",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251684}},
         },
         [93165] = { -- Mercy Falls on Deaf Ears : https://wowhead.com/forever/quest=93165/mercy-falls-on-deaf-ears
@@ -1168,6 +1383,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Mercy Falls on Deaf Ears",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{254151}},
         },
         [93172] = { -- Free the Hollows : https://wowhead.com/forever/quest=93172/free-the-hollows
@@ -1175,6 +1391,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Free the Hollows",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251684}},
         },
         [93317] = { -- Crab Season : https://wowhead.com/forever/quest=93317/crab-season
@@ -1182,6 +1399,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Crab Season",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{257006}},
         },
         [93318] = { -- WANTED: Vulgara the Insatiable : https://wowhead.com/forever/quest=93318/wanted-vulgara-the-insatiable
@@ -1189,12 +1407,14 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "WANTED: Vulgara the Insatiable",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
         },
         [93319] = { -- Pilfered Windstones : https://wowhead.com/forever/quest=93319/pilfered-windstones
             [questKeys.finishedBy] = {{251906}},
             [questKeys.name] = "Pilfered Windstones",
             [questKeys.questLevel] = 7,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251906}},
         },
         [93320] = { -- Tower Defense : https://wowhead.com/forever/quest=93320/tower-defense
@@ -1202,6 +1422,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Tower Defense",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252383}},
         },
         [93459] = { -- More Al'Aketh Ears : https://wowhead.com/forever/quest=93459/more-alaketh-ears
@@ -1209,12 +1430,14 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "More Al'Aketh Ears",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
         },
         [93461] = { -- Welcome to Shen'dar Village : https://wowhead.com/forever/quest=93461/welcome-to-shendar-village
             [questKeys.finishedBy] = {{251523}},
             [questKeys.name] = "Welcome to Shen'dar Village",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{251523}},
         },
         [93552] = { -- Harvesting Windstones : https://wowhead.com/forever/quest=93552/harvesting-windstones
@@ -1222,6 +1445,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Harvesting Windstones",
             [questKeys.questLevel] = 4,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251363}},
         },
         [93735] = { -- The Broken Construct : https://wowhead.com/forever/quest=93735/the-broken-construct
@@ -1229,6 +1453,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Broken Construct",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{251968}},
         },
         [93736] = { -- Unwelcome Spirits : https://wowhead.com/forever/quest=93736/unwelcome-spirits
@@ -1236,6 +1461,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Unwelcome Spirits",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{254344}},
         },
         [93737] = { -- The Broken Construct : https://wowhead.com/forever/quest=93737/the-broken-construct
@@ -1243,6 +1469,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Broken Construct",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{256083}},
         },
         [93738] = { -- The Broken Construct : https://wowhead.com/forever/quest=93738/the-broken-construct
@@ -1250,12 +1477,14 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Broken Construct",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{256083}},
         },
         [93739] = { -- Exploring the Horde : https://wowhead.com/forever/quest=93739/exploring-the-horde
             [questKeys.name] = "Exploring the Horde",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{4949}},
         },
         [93740] = { -- Blood for Blood : https://wowhead.com/forever/quest=93740/blood-for-blood
@@ -1263,6 +1492,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Blood for Blood",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{251968}},
         },
         [93746] = { -- A Firm Response : https://wowhead.com/forever/quest=93746/a-firm-response
@@ -1270,20 +1500,25 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Firm Response",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{251968}},
         },
         [93791] = { -- Speak with Belann : https://wowhead.com/forever/quest=93791/speak-with-belann
             [questKeys.finishedBy] = {{256507}},
             [questKeys.name] = "Speak with Belann",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.MAGE,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{252373, 256507}},
         },
         [93797] = { -- Boughs in the Wind : https://wowhead.com/forever/quest=93797/boughs-in-the-wind
             [questKeys.finishedBy] = {{256507}},
             [questKeys.name] = "Boughs in the Wind",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.MAGE,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{256507}},
         },
         [93835] = { -- Confront Lorthuna : https://wowhead.com/forever/quest=93835/confront-lorthuna
@@ -1291,6 +1526,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Confront Lorthuna",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{253590}},
         },
         [93836] = { -- The Fate of Zephras : https://wowhead.com/forever/quest=93836/the-fate-of-zephras
@@ -1298,18 +1534,21 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Fate of Zephras",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{251968}},
         },
         [93862] = { -- Crate Return : https://wowhead.com/forever/quest=93862/crate-return
             [questKeys.name] = "Crate Return",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_return.toml; 0 = all races
         },
         [93926] = { -- The Western Watch : https://wowhead.com/forever/quest=93926/the-western-watch
             [questKeys.finishedBy] = {{252155}},
             [questKeys.name] = "The Western Watch",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251523}},
         },
         [93927] = { -- A Last Request : https://wowhead.com/forever/quest=93927/a-last-request
@@ -1317,6 +1556,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Last Request",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252155}},
         },
         [93928] = { -- Of Mice and Milk : https://wowhead.com/forever/quest=93928/of-mice-and-milk
@@ -1324,6 +1564,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Of Mice and Milk",
             [questKeys.questLevel] = 15,
             [questKeys.requiredLevel] = 15,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{6271}},
         },
         [93948] = { -- Deliver the Signet : https://wowhead.com/forever/quest=93948/deliver-the-signet
@@ -1331,6 +1572,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Deliver the Signet",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251523}},
         },
         [93949] = { -- Bugged : https://wowhead.com/forever/quest=93949/bugged
@@ -1338,6 +1580,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Bugged",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252383}},
         },
         [93951] = { -- A Little Beauty : https://wowhead.com/forever/quest=93951/a-little-beauty
@@ -1345,6 +1588,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Little Beauty",
             [questKeys.questLevel] = 7,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251991}},
         },
         [93958] = { -- The Inner Sanctum : https://wowhead.com/forever/quest=93958/the-inner-sanctum
@@ -1352,6 +1596,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Inner Sanctum",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{253576}},
         },
         [93963] = { -- Exploring the Alliance : https://wowhead.com/forever/quest=93963/exploring-the-alliance
@@ -1359,6 +1604,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Exploring the Alliance",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.startedBy] = {{1748}},
         },
         [94003] = { -- The Skybreaker Bulwark : https://wowhead.com/forever/quest=94003/the-skybreaker-bulwark
@@ -1366,6 +1612,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Skybreaker Bulwark",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{252377}},
         },
         [94004] = { -- Craftsman's Writ: Elixir of Ogre's Strength : https://wowhead.com/forever/quest=94004/craftsmans-writ-elixir-of-ogres-strength
@@ -1373,12 +1620,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Craftsman's Writ: Elixir of Ogre's Strength",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264011}},
         },
         [94006] = { -- The Great Ursera Spirit : https://wowhead.com/forever/quest=94006/the-great-ursera-spirit
             [questKeys.finishedBy] = {{255853}},
             [questKeys.name] = "The Great Ursera Spirit",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{252359}},
         },
         [94007] = { -- Taming the Beast : https://wowhead.com/forever/quest=94007/taming-the-beast
@@ -1386,6 +1636,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Taming the Beast",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{254084}},
         },
         [94013] = { -- Taming the Beast : https://wowhead.com/forever/quest=94013/taming-the-beast
@@ -1393,6 +1644,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Taming the Beast",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{252389}},
         },
         [94050] = { -- Training the Beast : https://wowhead.com/forever/quest=94050/training-the-beast
@@ -1400,6 +1652,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Training the Beast",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{252389}},
         },
         [94212] = { -- Craftsman's Writ: Elixir of Wisdom : https://wowhead.com/forever/quest=94212/craftsmans-writ-elixir-of-wisdom
@@ -1407,785 +1660,1090 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Craftsman's Writ: Elixir of Wisdom",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.startedBy] = {nil, nil, {264012}},
         },
         [94213] = { -- Craftsman's Writ: Lesser Mana Potion : https://wowhead.com/forever/quest=94213/craftsmans-writ-lesser-mana-potion
             [questKeys.finishedBy] = {{257315}},
             [questKeys.name] = "Craftsman's Writ: Lesser Mana Potion",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.startedBy] = {nil, nil, {264013}},
         },
         [94214] = { -- Craftsman's Writ: Shadow Protection Potion : https://wowhead.com/forever/quest=94214/craftsmans-writ-shadow-protection-potion
             [questKeys.name] = "Craftsman's Writ: Shadow Protection Potion",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264014}},
         },
         [94215] = { -- Craftsman's Writ: Free Action Potion : https://wowhead.com/forever/quest=94215/craftsmans-writ-free-action-potion
             [questKeys.finishedBy] = {{261928}},
             [questKeys.name] = "Craftsman's Writ: Free Action Potion",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {264015}},
         },
         [94216] = { -- Craftsman's Writ: Elixir of Lesser Agility : https://wowhead.com/forever/quest=94216/craftsmans-writ-elixir-of-lesser-agility
             [questKeys.finishedBy] = {{4201}},
             [questKeys.name] = "Craftsman's Writ: Elixir of Lesser Agility",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.startedBy] = {nil, nil, {264016}},
         },
         [94217] = { -- Craftsman's Writ: Lesser Troll's Blood Elixir : https://wowhead.com/forever/quest=94217/craftsmans-writ-lesser-trolls-blood-elixir
             [questKeys.finishedBy] = {{14508}},
             [questKeys.name] = "Craftsman's Writ: Lesser Troll's Blood Elixir",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264017}},
         },
         [94218] = { -- Craftsman's Writ: Elixir of Defense : https://wowhead.com/forever/quest=94218/craftsmans-writ-elixir-of-defense
             [questKeys.name] = "Craftsman's Writ: Elixir of Defense",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264018}},
         },
         [94219] = { -- Craftsman's Writ: Draught of Water Breathing : https://wowhead.com/forever/quest=94219/craftsmans-writ-draught-of-water-breathing
             [questKeys.name] = "Craftsman's Writ: Draught of Water Breathing",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264019}},
         },
         [94220] = { -- Craftsman's Writ: Pearl-Handled Dagger : https://wowhead.com/forever/quest=94220/craftsmans-writ-pearl-handled-dagger
             [questKeys.name] = "Craftsman's Writ: Pearl-Handled Dagger",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264020}},
         },
         [94221] = { -- Craftsman's Writ: Golden Rod : https://wowhead.com/forever/quest=94221/craftsmans-writ-golden-rod
             [questKeys.finishedBy] = {{257296}},
             [questKeys.name] = "Craftsman's Writ: Golden Rod",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264021}},
         },
         [94222] = { -- Craftsman's Writ: Iridescent Hammer : https://wowhead.com/forever/quest=94222/craftsmans-writ-iridescent-hammer
             [questKeys.name] = "Craftsman's Writ: Iridescent Hammer",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264022}},
         },
         [94223] = { -- Craftsman's Writ: Silver Skeleton Key : https://wowhead.com/forever/quest=94223/craftsmans-writ-silver-skeleton-key
             [questKeys.name] = "Craftsman's Writ: Silver Skeleton Key",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264023}},
         },
         [94224] = { -- Craftsman's Writ: Heavy Bronze Mace : https://wowhead.com/forever/quest=94224/craftsmans-writ-heavy-bronze-mace
             [questKeys.name] = "Craftsman's Writ: Heavy Bronze Mace",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264024}},
         },
         [94225] = { -- Craftsman's Writ: Rough Bronze Leggings : https://wowhead.com/forever/quest=94225/craftsmans-writ-rough-bronze-leggings
             [questKeys.name] = "Craftsman's Writ: Rough Bronze Leggings",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264025}},
         },
         [94226] = { -- Craftsman's Writ: Green Iron Gauntlets : https://wowhead.com/forever/quest=94226/craftsmans-writ-green-iron-gauntlets
             [questKeys.name] = "Craftsman's Writ: Green Iron Gauntlets",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264026}},
         },
         [94227] = { -- Craftsman's Writ: Big Bronze Knife : https://wowhead.com/forever/quest=94227/craftsmans-writ-big-bronze-knife
             [questKeys.finishedBy] = {{6626}},
             [questKeys.name] = "Craftsman's Writ: Big Bronze Knife",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264027}},
         },
         [94228] = { -- Craftsman's Writ: Green Iron Boots : https://wowhead.com/forever/quest=94228/craftsmans-writ-green-iron-boots
             [questKeys.name] = "Craftsman's Writ: Green Iron Boots",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264028}},
         },
         [94229] = { -- Craftsman's Writ: Ornate Spyglass : https://wowhead.com/forever/quest=94229/craftsmans-writ-ornate-spyglass
             [questKeys.finishedBy] = {{257282}},
             [questKeys.name] = "Craftsman's Writ: Ornate Spyglass",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264029}},
         },
         [94230] = { -- Craftsman's Writ: Explosive Sheep : https://wowhead.com/forever/quest=94230/craftsmans-writ-explosive-sheep
             [questKeys.name] = "Craftsman's Writ: Explosive Sheep",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264030}},
         },
         [94231] = { -- Craftsman's Writ: Moonsight Rifle : https://wowhead.com/forever/quest=94231/craftsmans-writ-moonsight-rifle
             [questKeys.name] = "Craftsman's Writ: Moonsight Rifle",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264031}},
         },
         [94232] = { -- Craftsman's Writ: Minor Recombobulator : https://wowhead.com/forever/quest=94232/craftsmans-writ-minor-recombobulator
             [questKeys.name] = "Craftsman's Writ: Minor Recombobulator",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264032}},
         },
         [94233] = { -- Craftsman's Writ: Practice Lock : https://wowhead.com/forever/quest=94233/craftsmans-writ-practice-lock
             [questKeys.finishedBy] = {{261932}},
             [questKeys.name] = "Craftsman's Writ: Practice Lock",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {264033}},
         },
         [94234] = { -- Craftsman's Writ: Shadow Goggles : https://wowhead.com/forever/quest=94234/craftsmans-writ-shadow-goggles
             [questKeys.name] = "Craftsman's Writ: Shadow Goggles",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264034}},
         },
         [94235] = { -- Craftsman's Writ: Gnomish Universal Remote : https://wowhead.com/forever/quest=94235/craftsmans-writ-gnomish-universal-remote
             [questKeys.finishedBy] = {{7853}},
             [questKeys.name] = "Craftsman's Writ: Gnomish Universal Remote",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264035}},
         },
         [94236] = { -- Craftsman's Writ: Big Bronze Bomb : https://wowhead.com/forever/quest=94236/craftsmans-writ-big-bronze-bomb
             [questKeys.name] = "Craftsman's Writ: Big Bronze Bomb",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264036}},
         },
         [94237] = { -- Craftsman's Writ: Crafted Solid Shot : https://wowhead.com/forever/quest=94237/craftsmans-writ-crafted-solid-shot
             [questKeys.name] = "Craftsman's Writ: Crafted Solid Shot",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264037}},
         },
         [94238] = { -- Craftsman's Writ: Heavy Leather Ball : https://wowhead.com/forever/quest=94238/craftsmans-writ-heavy-leather-ball
             [questKeys.name] = "Craftsman's Writ: Heavy Leather Ball",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264038}},
         },
         [94239] = { -- Craftsman's Writ: Fine Leather Pants : https://wowhead.com/forever/quest=94239/craftsmans-writ-fine-leather-pants
             [questKeys.name] = "Craftsman's Writ: Fine Leather Pants",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264039}},
         },
         [94240] = { -- Craftsman's Writ: Herbalist's Gloves : https://wowhead.com/forever/quest=94240/craftsmans-writ-herbalists-gloves
             [questKeys.name] = "Craftsman's Writ: Herbalist's Gloves",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264040}},
         },
         [94241] = { -- Craftsman's Writ: Dark Leather Tunic : https://wowhead.com/forever/quest=94241/craftsmans-writ-dark-leather-tunic
             [questKeys.finishedBy] = {{3134}},
             [questKeys.name] = "Craftsman's Writ: Dark Leather Tunic",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.startedBy] = {nil, nil, {264041}},
         },
         [94242] = { -- Craftsman's Writ: Pilferer's Gloves : https://wowhead.com/forever/quest=94242/craftsmans-writ-pilferers-gloves
             [questKeys.name] = "Craftsman's Writ: Pilferer's Gloves",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264042}},
         },
         [94243] = { -- Craftsman's Writ: Heavy Quiver : https://wowhead.com/forever/quest=94243/craftsmans-writ-heavy-quiver
             [questKeys.name] = "Craftsman's Writ: Heavy Quiver",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264043}},
         },
         [94244] = { -- Craftsman's Writ: Dark Leather Shoulders : https://wowhead.com/forever/quest=94244/craftsmans-writ-dark-leather-shoulders
             [questKeys.name] = "Craftsman's Writ: Dark Leather Shoulders",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264044}},
         },
         [94245] = { -- Craftsman's Writ: Barbaric Gloves : https://wowhead.com/forever/quest=94245/craftsmans-writ-barbaric-gloves
             [questKeys.name] = "Craftsman's Writ: Barbaric Gloves",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264045}},
         },
         [94246] = { -- Craftsman's Writ: Red Whelp Gloves : https://wowhead.com/forever/quest=94246/craftsmans-writ-red-whelp-gloves
             [questKeys.name] = "Craftsman's Writ: Red Whelp Gloves",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264046}},
         },
         [94247] = { -- Craftsman's Writ: Lesser Wizard's Robe : https://wowhead.com/forever/quest=94247/craftsmans-writ-lesser-wizards-robe
             [questKeys.name] = "Craftsman's Writ: Lesser Wizard's Robe",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264047}},
         },
         [94248] = { -- Craftsman's Writ: Blue Overalls : https://wowhead.com/forever/quest=94248/craftsmans-writ-blue-overalls
             [questKeys.finishedBy] = {{257304}},
             [questKeys.name] = "Craftsman's Writ: Blue Overalls",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {264048}},
         },
         [94249] = { -- Craftsman's Writ: Azure Silk Hood : https://wowhead.com/forever/quest=94249/craftsmans-writ-azure-silk-hood
             [questKeys.finishedBy] = {{257316}},
             [questKeys.name] = "Craftsman's Writ: Azure Silk Hood",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264049}},
         },
         [94250] = { -- Craftsman's Writ: Small Silk Pack : https://wowhead.com/forever/quest=94250/craftsmans-writ-small-silk-pack
             [questKeys.name] = "Craftsman's Writ: Small Silk Pack",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264050}},
         },
         [94251] = { -- Craftsman's Writ: Phoenix Pants : https://wowhead.com/forever/quest=94251/craftsmans-writ-phoenix-pants
             [questKeys.name] = "Craftsman's Writ: Phoenix Pants",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264051}},
         },
         [94252] = { -- Craftsman's Writ: Red Woolen Boots : https://wowhead.com/forever/quest=94252/craftsmans-writ-red-woolen-boots
             [questKeys.name] = "Craftsman's Writ: Red Woolen Boots",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264052}},
         },
         [94253] = { -- Craftsman's Writ: Colorful Kilt : https://wowhead.com/forever/quest=94253/craftsmans-writ-colorful-kilt
             [questKeys.name] = "Craftsman's Writ: Colorful Kilt",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264053}},
         },
         [94254] = { -- Craftsman's Writ: Greater Adept's Robe : https://wowhead.com/forever/quest=94254/craftsmans-writ-greater-adepts-robe
             [questKeys.name] = "Craftsman's Writ: Greater Adept's Robe",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264054}},
         },
         [94255] = { -- Craftsman's Writ: Spider Silk Slippers : https://wowhead.com/forever/quest=94255/craftsmans-writ-spider-silk-slippers
             [questKeys.name] = "Craftsman's Writ: Spider Silk Slippers",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264055}},
         },
         [94256] = { -- Craftsman's Writ: Frost Protection Potion : https://wowhead.com/forever/quest=94256/craftsmans-writ-frost-protection-potion
             [questKeys.name] = "Craftsman's Writ: Frost Protection Potion",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264056}},
         },
         [94257] = { -- Craftsman's Writ: Lesser Invisibility Potion : https://wowhead.com/forever/quest=94257/craftsmans-writ-lesser-invisibility-potion
             [questKeys.name] = "Craftsman's Writ: Lesser Invisibility Potion",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264057}},
         },
         [94258] = { -- Craftsman's Writ: Lesser Stoneshield Potion : https://wowhead.com/forever/quest=94258/craftsmans-writ-lesser-stoneshield-potion
             [questKeys.name] = "Craftsman's Writ: Lesser Stoneshield Potion",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264058}},
         },
         [94259] = { -- Craftsman's Writ: Nature Protection Potion : https://wowhead.com/forever/quest=94259/craftsmans-writ-nature-protection-potion
             [questKeys.name] = "Craftsman's Writ: Nature Protection Potion",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264059}},
         },
         [94260] = { -- Craftsman's Writ: Catseye Draught : https://wowhead.com/forever/quest=94260/craftsmans-writ-catseye-draught
             [questKeys.name] = "Craftsman's Writ: Catseye Draught",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264060}},
         },
         [94261] = { -- Craftsman's Writ: Great Rage Potion : https://wowhead.com/forever/quest=94261/craftsmans-writ-great-rage-potion
             [questKeys.name] = "Craftsman's Writ: Great Rage Potion",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264061}},
         },
         [94262] = { -- Craftsman's Writ: Mana Potion : https://wowhead.com/forever/quest=94262/craftsmans-writ-mana-potion
             [questKeys.name] = "Craftsman's Writ: Mana Potion",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264062}},
         },
         [94263] = { -- Craftsman's Writ: Fire Protection Potion : https://wowhead.com/forever/quest=94263/craftsmans-writ-fire-protection-potion
             [questKeys.name] = "Craftsman's Writ: Fire Protection Potion",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264063}},
         },
         [94264] = { -- Craftsman's Writ: Shadow Oil : https://wowhead.com/forever/quest=94264/craftsmans-writ-shadow-oil
             [questKeys.name] = "Craftsman's Writ: Shadow Oil",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264064}},
         },
         [94265] = { -- Craftsman's Writ: Goblin Rocket Fuel : https://wowhead.com/forever/quest=94265/craftsmans-writ-goblin-rocket-fuel
             [questKeys.name] = "Craftsman's Writ: Goblin Rocket Fuel",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264065}},
         },
         [94266] = { -- Craftsman's Writ: Elixir of Agility : https://wowhead.com/forever/quest=94266/craftsmans-writ-elixir-of-agility
             [questKeys.name] = "Craftsman's Writ: Elixir of Agility",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264066}},
         },
         [94267] = { -- Craftsman's Writ: Wildvine Potion : https://wowhead.com/forever/quest=94267/craftsmans-writ-wildvine-potion
             [questKeys.name] = "Craftsman's Writ: Wildvine Potion",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264067}},
         },
         [94268] = { -- Craftsman's Writ: Steel Plate Helm : https://wowhead.com/forever/quest=94268/craftsmans-writ-steel-plate-helm
             [questKeys.name] = "Craftsman's Writ: Steel Plate Helm",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264068}},
         },
         [94269] = { -- Craftsman's Writ: Inlaid Mithril Cylinder : https://wowhead.com/forever/quest=94269/craftsmans-writ-inlaid-mithril-cylinder
             [questKeys.name] = "Craftsman's Writ: Inlaid Mithril Cylinder",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264069}},
         },
         [94270] = { -- Craftsman's Writ: Steel Weapon Chain : https://wowhead.com/forever/quest=94270/craftsmans-writ-steel-weapon-chain
             [questKeys.name] = "Craftsman's Writ: Steel Weapon Chain",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264070}},
         },
         [94271] = { -- Craftsman's Writ: Ornate Mithril Shoulders : https://wowhead.com/forever/quest=94271/craftsmans-writ-ornate-mithril-shoulders
             [questKeys.name] = "Craftsman's Writ: Ornate Mithril Shoulders",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264071}},
         },
         [94272] = { -- Craftsman's Writ: Blue Glittering Axe : https://wowhead.com/forever/quest=94272/craftsmans-writ-blue-glittering-axe
             [questKeys.name] = "Craftsman's Writ: Blue Glittering Axe",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264072}},
         },
         [94273] = { -- Craftsman's Writ: Moonsteel Broadsword : https://wowhead.com/forever/quest=94273/craftsmans-writ-moonsteel-broadsword
             [questKeys.name] = "Craftsman's Writ: Moonsteel Broadsword",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264073}},
         },
         [94274] = { -- Craftsman's Writ: Golden Scale Coif : https://wowhead.com/forever/quest=94274/craftsmans-writ-golden-scale-coif
             [questKeys.name] = "Craftsman's Writ: Golden Scale Coif",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264074}},
         },
         [94275] = { -- Craftsman's Writ: Solid Sharpening Stone : https://wowhead.com/forever/quest=94275/craftsmans-writ-solid-sharpening-stone
             [questKeys.name] = "Craftsman's Writ: Solid Sharpening Stone",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264075}},
         },
         [94276] = { -- Craftsman's Writ: Wicked Mithril Blade : https://wowhead.com/forever/quest=94276/craftsmans-writ-wicked-mithril-blade
             [questKeys.name] = "Craftsman's Writ: Wicked Mithril Blade",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264076}},
         },
         [94277] = { -- Craftsman's Writ: Truesilver Rod : https://wowhead.com/forever/quest=94277/craftsmans-writ-truesilver-rod
             [questKeys.name] = "Craftsman's Writ: Truesilver Rod",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264077}},
         },
         [94278] = { -- Craftsman's Writ: Golden Scale Gauntlets : https://wowhead.com/forever/quest=94278/craftsmans-writ-golden-scale-gauntlets
             [questKeys.name] = "Craftsman's Writ: Golden Scale Gauntlets",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264078}},
         },
         [94279] = { -- Craftsman's Writ: Heavy Mithril Axe : https://wowhead.com/forever/quest=94279/craftsmans-writ-heavy-mithril-axe
             [questKeys.name] = "Craftsman's Writ: Heavy Mithril Axe",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264079}},
         },
         [94280] = { -- Craftsman's Writ: Mechanical Dragonling : https://wowhead.com/forever/quest=94280/craftsmans-writ-mechanical-dragonling
             [questKeys.name] = "Craftsman's Writ: Mechanical Dragonling",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264080}},
         },
         [94281] = { -- Craftsman's Writ: Advanced Target Dummy : https://wowhead.com/forever/quest=94281/craftsmans-writ-advanced-target-dummy
             [questKeys.name] = "Craftsman's Writ: Advanced Target Dummy",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264081}},
         },
         [94282] = { -- Craftsman's Writ: Craftsman's Monocle : https://wowhead.com/forever/quest=94282/craftsmans-writ-craftsmans-monocle
             [questKeys.name] = "Craftsman's Writ: Craftsman's Monocle",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264082}},
         },
         [94283] = { -- Craftsman's Writ: Goblin Land Mine : https://wowhead.com/forever/quest=94283/craftsmans-writ-goblin-land-mine
             [questKeys.name] = "Craftsman's Writ: Goblin Land Mine",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264083}},
         },
         [94284] = { -- Craftsman's Writ: Catseye Ultra Goggles : https://wowhead.com/forever/quest=94284/craftsmans-writ-catseye-ultra-goggles
             [questKeys.name] = "Craftsman's Writ: Catseye Ultra Goggles",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264084}},
         },
         [94285] = { -- Craftsman's Writ: Unstable Trigger : https://wowhead.com/forever/quest=94285/craftsmans-writ-unstable-trigger
             [questKeys.name] = "Craftsman's Writ: Unstable Trigger",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264085}},
         },
         [94286] = { -- Craftsman's Writ: Flash Bomb : https://wowhead.com/forever/quest=94286/craftsmans-writ-flash-bomb
             [questKeys.name] = "Craftsman's Writ: Flash Bomb",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264086}},
         },
         [94287] = { -- Craftsman's Writ: Fire Goggles : https://wowhead.com/forever/quest=94287/craftsmans-writ-fire-goggles
             [questKeys.name] = "Craftsman's Writ: Fire Goggles",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264087}},
         },
         [94288] = { -- Craftsman's Writ: Mithril Frag Bomb : https://wowhead.com/forever/quest=94288/craftsmans-writ-mithril-frag-bomb
             [questKeys.name] = "Craftsman's Writ: Mithril Frag Bomb",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264088}},
         },
         [94289] = { -- Craftsman's Writ: Gyromatic Micro-Adjuster : https://wowhead.com/forever/quest=94289/craftsmans-writ-gyromatic-micro-adjuster
             [questKeys.name] = "Craftsman's Writ: Gyromatic Micro-Adjuster",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264089}},
         },
         [94290] = { -- Craftsman's Writ: Mechanical Repair Kit : https://wowhead.com/forever/quest=94290/craftsmans-writ-mechanical-repair-kit
             [questKeys.name] = "Craftsman's Writ: Mechanical Repair Kit",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264090}},
         },
         [94291] = { -- Craftsman's Writ: Dark Iron Bomb : https://wowhead.com/forever/quest=94291/craftsmans-writ-dark-iron-bomb
             [questKeys.name] = "Craftsman's Writ: Dark Iron Bomb",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264091}},
         },
         [94292] = { -- Craftsman's Writ: Comfortable Leather Hat : https://wowhead.com/forever/quest=94292/craftsmans-writ-comfortable-leather-hat
             [questKeys.name] = "Craftsman's Writ: Comfortable Leather Hat",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264092}},
         },
         [94293] = { -- Craftsman's Writ: Guardian Cloak : https://wowhead.com/forever/quest=94293/craftsmans-writ-guardian-cloak
             [questKeys.name] = "Craftsman's Writ: Guardian Cloak",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264093}},
         },
         [94294] = { -- Craftsman's Writ: Dusky Bracers : https://wowhead.com/forever/quest=94294/craftsmans-writ-dusky-bracers
             [questKeys.name] = "Craftsman's Writ: Dusky Bracers",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264094}},
         },
         [94295] = { -- Craftsman's Writ: Wild Leather Helmet : https://wowhead.com/forever/quest=94295/craftsmans-writ-wild-leather-helmet
             [questKeys.name] = "Craftsman's Writ: Wild Leather Helmet",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264095}},
         },
         [94296] = { -- Craftsman's Writ: Wild Leather Shoulders : https://wowhead.com/forever/quest=94296/craftsmans-writ-wild-leather-shoulders
             [questKeys.name] = "Craftsman's Writ: Wild Leather Shoulders",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264096}},
         },
         [94297] = { -- Craftsman's Writ: Quickdraw Quiver : https://wowhead.com/forever/quest=94297/craftsmans-writ-quickdraw-quiver
             [questKeys.name] = "Craftsman's Writ: Quickdraw Quiver",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264097}},
         },
         [94298] = { -- Craftsman's Writ: Swift Boots : https://wowhead.com/forever/quest=94298/craftsmans-writ-swift-boots
             [questKeys.name] = "Craftsman's Writ: Swift Boots",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264098}},
         },
         [94299] = { -- Craftsman's Writ: Nightscape Shoulders : https://wowhead.com/forever/quest=94299/craftsmans-writ-nightscape-shoulders
             [questKeys.name] = "Craftsman's Writ: Nightscape Shoulders",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264099}},
         },
         [94300] = { -- Craftsman's Writ: Big Voodoo Mask : https://wowhead.com/forever/quest=94300/craftsmans-writ-big-voodoo-mask
             [questKeys.name] = "Craftsman's Writ: Big Voodoo Mask",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264100}},
         },
         [94301] = { -- Craftsman's Writ: Big Voodoo Robe : https://wowhead.com/forever/quest=94301/craftsmans-writ-big-voodoo-robe
             [questKeys.name] = "Craftsman's Writ: Big Voodoo Robe",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264101}},
         },
         [94302] = { -- Craftsman's Writ: Turtle Scale Breastplate : https://wowhead.com/forever/quest=94302/craftsmans-writ-turtle-scale-breastplate
             [questKeys.name] = "Craftsman's Writ: Turtle Scale Breastplate",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264102}},
         },
         [94303] = { -- Craftsman's Writ: Thick Leather Ammo Pouch : https://wowhead.com/forever/quest=94303/craftsmans-writ-thick-leather-ammo-pouch
             [questKeys.name] = "Craftsman's Writ: Thick Leather Ammo Pouch",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264103}},
         },
         [94304] = { -- Craftsman's Writ: Mageweave Bag : https://wowhead.com/forever/quest=94304/craftsmans-writ-mageweave-bag
             [questKeys.name] = "Craftsman's Writ: Mageweave Bag",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264104}},
         },
         [94305] = { -- Craftsman's Writ: Shadoweave Gloves : https://wowhead.com/forever/quest=94305/craftsmans-writ-shadoweave-gloves
             [questKeys.name] = "Craftsman's Writ: Shadoweave Gloves",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264105}},
         },
         [94306] = { -- Craftsman's Writ: Crimson Silk Robe : https://wowhead.com/forever/quest=94306/craftsmans-writ-crimson-silk-robe
             [questKeys.name] = "Craftsman's Writ: Crimson Silk Robe",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264106}},
         },
         [94307] = { -- Craftsman's Writ: Shadoweave Robe : https://wowhead.com/forever/quest=94307/craftsmans-writ-shadoweave-robe
             [questKeys.name] = "Craftsman's Writ: Shadoweave Robe",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264107}},
         },
         [94308] = { -- Craftsman's Writ: Enchanted Mageweave Pouch : https://wowhead.com/forever/quest=94308/craftsmans-writ-enchanted-mageweave-pouch
             [questKeys.name] = "Craftsman's Writ: Enchanted Mageweave Pouch",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264108}},
         },
         [94309] = { -- Craftsman's Writ: Star Belt : https://wowhead.com/forever/quest=94309/craftsmans-writ-star-belt
             [questKeys.name] = "Craftsman's Writ: Star Belt",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264109}},
         },
         [94310] = { -- Craftsman's Writ: Black Mageweave Vest : https://wowhead.com/forever/quest=94310/craftsmans-writ-black-mageweave-vest
             [questKeys.name] = "Craftsman's Writ: Black Mageweave Vest",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264110}},
         },
         [94311] = { -- Craftsman's Writ: Red Mageweave Pants : https://wowhead.com/forever/quest=94311/craftsmans-writ-red-mageweave-pants
             [questKeys.name] = "Craftsman's Writ: Red Mageweave Pants",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264111}},
         },
         [94312] = { -- Craftsman's Writ: Orange Martial Shirt : https://wowhead.com/forever/quest=94312/craftsmans-writ-orange-martial-shirt
             [questKeys.name] = "Craftsman's Writ: Orange Martial Shirt",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264112}},
         },
         [94313] = { -- Craftsman's Writ: White Bandit Mask : https://wowhead.com/forever/quest=94313/craftsmans-writ-white-bandit-mask
             [questKeys.name] = "Craftsman's Writ: White Bandit Mask",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264113}},
         },
         [94314] = { -- Craftsman's Writ: Cindercloth Robe : https://wowhead.com/forever/quest=94314/craftsmans-writ-cindercloth-robe
             [questKeys.name] = "Craftsman's Writ: Cindercloth Robe",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264114}},
         },
         [94315] = { -- Craftsman's Writ: Earthen Silk Belt : https://wowhead.com/forever/quest=94315/craftsmans-writ-earthen-silk-belt
             [questKeys.name] = "Craftsman's Writ: Earthen Silk Belt",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264115}},
         },
         [94316] = { -- Craftsman's Writ: Potion of Demonslaying : https://wowhead.com/forever/quest=94316/craftsmans-writ-potion-of-demonslaying
             [questKeys.name] = "Craftsman's Writ: Potion of Demonslaying",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264116}},
         },
         [94317] = { -- Craftsman's Writ: Dreamless Sleep Potion : https://wowhead.com/forever/quest=94317/craftsmans-writ-dreamless-sleep-potion
             [questKeys.name] = "Craftsman's Writ: Dreamless Sleep Potion",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264117}},
         },
         [94318] = { -- Craftsman's Writ: Greater Fire Protection Potion : https://wowhead.com/forever/quest=94318/craftsmans-writ-greater-fire-protection-potion
             [questKeys.name] = "Craftsman's Writ: Greater Fire Protection Potion",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264118}},
         },
         [94319] = { -- Craftsman's Writ: Draught of Detect Demon : https://wowhead.com/forever/quest=94319/craftsmans-writ-draught-of-detect-demon
             [questKeys.name] = "Craftsman's Writ: Draught of Detect Demon",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264119}},
         },
         [94320] = { -- Craftsman's Writ: Gift of Arthas : https://wowhead.com/forever/quest=94320/craftsmans-writ-gift-of-arthas
             [questKeys.name] = "Craftsman's Writ: Gift of Arthas",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264120}},
         },
         [94321] = { -- Craftsman's Writ: Flask of Chromatic Resistance : https://wowhead.com/forever/quest=94321/craftsmans-writ-flask-of-chromatic-resistance
             [questKeys.name] = "Craftsman's Writ: Flask of Chromatic Resistance",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264121}},
         },
         [94322] = { -- Craftsman's Writ: Limited Invulnerability Potion : https://wowhead.com/forever/quest=94322/craftsmans-writ-limited-invulnerability-potion
             [questKeys.name] = "Craftsman's Writ: Limited Invulnerability Potion",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264122}},
         },
         [94323] = { -- Craftsman's Writ: Major Rejuvenation Potion : https://wowhead.com/forever/quest=94323/craftsmans-writ-major-rejuvenation-potion
             [questKeys.name] = "Craftsman's Writ: Major Rejuvenation Potion",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264123}},
         },
         [94324] = { -- Craftsman's Writ: Distilled Firewater : https://wowhead.com/forever/quest=94324/craftsmans-writ-distilled-firewater
             [questKeys.name] = "Craftsman's Writ: Distilled Firewater",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264124}},
         },
         [94325] = { -- Craftsman's Writ: Radiant Circlet : https://wowhead.com/forever/quest=94325/craftsmans-writ-radiant-circlet
             [questKeys.name] = "Craftsman's Writ: Radiant Circlet",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264125}},
         },
         [94326] = { -- Craftsman's Writ: Radiant Belt : https://wowhead.com/forever/quest=94326/craftsmans-writ-radiant-belt
             [questKeys.name] = "Craftsman's Writ: Radiant Belt",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264126}},
         },
         [94327] = { -- Craftsman's Writ: Orcish War Leggings : https://wowhead.com/forever/quest=94327/craftsmans-writ-orcish-war-leggings
             [questKeys.name] = "Craftsman's Writ: Orcish War Leggings",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264127}},
         },
         [94328] = { -- Craftsman's Writ: Mithril Spurs : https://wowhead.com/forever/quest=94328/craftsmans-writ-mithril-spurs
             [questKeys.name] = "Craftsman's Writ: Mithril Spurs",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264128}},
         },
         [94329] = { -- Craftsman's Writ: Imperial Plate Chest : https://wowhead.com/forever/quest=94329/craftsmans-writ-imperial-plate-chest
             [questKeys.name] = "Craftsman's Writ: Imperial Plate Chest",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264129}},
         },
         [94330] = { -- Craftsman's Writ: Darkrune Gauntlets : https://wowhead.com/forever/quest=94330/craftsmans-writ-darkrune-gauntlets
             [questKeys.name] = "Craftsman's Writ: Darkrune Gauntlets",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264130}},
         },
         [94331] = { -- Craftsman's Writ: Huge Thorium Battleaxe : https://wowhead.com/forever/quest=94331/craftsmans-writ-huge-thorium-battleaxe
             [questKeys.name] = "Craftsman's Writ: Huge Thorium Battleaxe",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264131}},
         },
         [94332] = { -- Craftsman's Writ: Arcanite Skeleton Key : https://wowhead.com/forever/quest=94332/craftsmans-writ-arcanite-skeleton-key
             [questKeys.name] = "Craftsman's Writ: Arcanite Skeleton Key",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264132}},
         },
         [94333] = { -- Craftsman's Writ: Ebon Shiv : https://wowhead.com/forever/quest=94333/craftsmans-writ-ebon-shiv
             [questKeys.name] = "Craftsman's Writ: Ebon Shiv",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264133}},
         },
         [94334] = { -- Craftsman's Writ: Masterwork Target Dummy : https://wowhead.com/forever/quest=94334/craftsmans-writ-masterwork-target-dummy
             [questKeys.name] = "Craftsman's Writ: Masterwork Target Dummy",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264134}},
         },
         [94335] = { -- Craftsman's Writ: Green Lens : https://wowhead.com/forever/quest=94335/craftsmans-writ-green-lens
             [questKeys.name] = "Craftsman's Writ: Green Lens",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264135}},
         },
         [94336] = { -- Craftsman's Writ: Lifelike Mechanical Toad : https://wowhead.com/forever/quest=94336/craftsmans-writ-lifelike-mechanical-toad
             [questKeys.name] = "Craftsman's Writ: Lifelike Mechanical Toad",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264136}},
         },
         [94337] = { -- Craftsman's Writ: Gnomish Alarm-O-Bot : https://wowhead.com/forever/quest=94337/craftsmans-writ-gnomish-alarm-o-bot
             [questKeys.name] = "Craftsman's Writ: Gnomish Alarm-O-Bot",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264137}},
         },
         [94338] = { -- Craftsman's Writ: Goblin Jumper Cables XL : https://wowhead.com/forever/quest=94338/craftsmans-writ-goblin-jumper-cables-xl
             [questKeys.name] = "Craftsman's Writ: Goblin Jumper Cables XL",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264138}},
         },
         [94339] = { -- Craftsman's Writ: Field Repair Bot 74A : https://wowhead.com/forever/quest=94339/craftsmans-writ-field-repair-bot-74a
             [questKeys.name] = "Craftsman's Writ: Field Repair Bot 74A",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264139}},
         },
         [94340] = { -- Craftsman's Writ: Truesilver Transformer : https://wowhead.com/forever/quest=94340/craftsmans-writ-truesilver-transformer
             [questKeys.name] = "Craftsman's Writ: Truesilver Transformer",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264140}},
         },
         [94341] = { -- Craftsman's Writ: Sniper Scope : https://wowhead.com/forever/quest=94341/craftsmans-writ-sniper-scope
             [questKeys.name] = "Craftsman's Writ: Sniper Scope",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264141}},
         },
         [94342] = { -- Craftsman's Writ: Tranquil Mechanical Yeti : https://wowhead.com/forever/quest=94342/craftsmans-writ-tranquil-mechanical-yeti
             [questKeys.name] = "Craftsman's Writ: Tranquil Mechanical Yeti",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264142}},
         },
         [94343] = { -- Craftsman's Writ: Wicked Leather Pants : https://wowhead.com/forever/quest=94343/craftsmans-writ-wicked-leather-pants
             [questKeys.name] = "Craftsman's Writ: Wicked Leather Pants",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264143}},
         },
         [94344] = { -- Craftsman's Writ: Gordok Ogre Suit : https://wowhead.com/forever/quest=94344/craftsmans-writ-gordok-ogre-suit
             [questKeys.name] = "Craftsman's Writ: Gordok Ogre Suit",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264144}},
         },
         [94345] = { -- Craftsman's Writ: Volcanic Breastplate : https://wowhead.com/forever/quest=94345/craftsmans-writ-volcanic-breastplate
             [questKeys.name] = "Craftsman's Writ: Volcanic Breastplate",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264145}},
         },
         [94346] = { -- Craftsman's Writ: Runic Leather Headband : https://wowhead.com/forever/quest=94346/craftsmans-writ-runic-leather-headband
             [questKeys.name] = "Craftsman's Writ: Runic Leather Headband",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264146}},
         },
         [94347] = { -- Craftsman's Writ: Wicked Leather Bracers : https://wowhead.com/forever/quest=94347/craftsmans-writ-wicked-leather-bracers
             [questKeys.name] = "Craftsman's Writ: Wicked Leather Bracers",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264147}},
         },
         [94348] = { -- Craftsman's Writ: Chimeric Vest : https://wowhead.com/forever/quest=94348/craftsmans-writ-chimeric-vest
             [questKeys.name] = "Craftsman's Writ: Chimeric Vest",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264148}},
         },
         [94349] = { -- Craftsman's Writ: Heavy Scorpid Helm : https://wowhead.com/forever/quest=94349/craftsmans-writ-heavy-scorpid-helm
             [questKeys.name] = "Craftsman's Writ: Heavy Scorpid Helm",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264149}},
         },
         [94350] = { -- Craftsman's Writ: Runic Leather Bracers : https://wowhead.com/forever/quest=94350/craftsmans-writ-runic-leather-bracers
             [questKeys.name] = "Craftsman's Writ: Runic Leather Bracers",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264150}},
         },
         [94351] = { -- Craftsman's Writ: Frostsaber Boots : https://wowhead.com/forever/quest=94351/craftsmans-writ-frostsaber-boots
             [questKeys.name] = "Craftsman's Writ: Frostsaber Boots",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264151}},
         },
         [94352] = { -- Craftsman's Writ: Wizardweave Turban : https://wowhead.com/forever/quest=94352/craftsmans-writ-wizardweave-turban
             [questKeys.name] = "Craftsman's Writ: Wizardweave Turban",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264152}},
         },
         [94353] = { -- Craftsman's Writ: Runecloth Bag : https://wowhead.com/forever/quest=94353/craftsmans-writ-runecloth-bag
             [questKeys.name] = "Craftsman's Writ: Runecloth Bag",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264153}},
         },
         [94354] = { -- Craftsman's Writ: Runecloth Boots : https://wowhead.com/forever/quest=94354/craftsmans-writ-runecloth-boots
             [questKeys.name] = "Craftsman's Writ: Runecloth Boots",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264154}},
         },
         [94355] = { -- Craftsman's Writ: Tuxedo Jacket : https://wowhead.com/forever/quest=94355/craftsmans-writ-tuxedo-jacket
             [questKeys.name] = "Craftsman's Writ: Tuxedo Jacket",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264155}},
         },
         [94356] = { -- Craftsman's Writ: Felcloth Boots : https://wowhead.com/forever/quest=94356/craftsmans-writ-felcloth-boots
             [questKeys.name] = "Craftsman's Writ: Felcloth Boots",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264156}},
         },
         [94357] = { -- Craftsman's Writ: Cenarion Herb Bag : https://wowhead.com/forever/quest=94357/craftsmans-writ-cenarion-herb-bag
             [questKeys.name] = "Craftsman's Writ: Cenarion Herb Bag",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264157}},
         },
         [94358] = { -- Craftsman's Writ: Shadoweave Mask : https://wowhead.com/forever/quest=94358/craftsmans-writ-shadoweave-mask
             [questKeys.name] = "Craftsman's Writ: Shadoweave Mask",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264158}},
         },
         [94359] = { -- Craftsman's Writ: Ghostweave Vest : https://wowhead.com/forever/quest=94359/craftsmans-writ-ghostweave-vest
             [questKeys.name] = "Craftsman's Writ: Ghostweave Vest",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264159}},
         },
         [94360] = { -- Craftsman's Writ: Soul Pouch : https://wowhead.com/forever/quest=94360/craftsmans-writ-soul-pouch
             [questKeys.name] = "Craftsman's Writ: Soul Pouch",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {264160}},
         },
         [94369] = { -- The Fate of Zephras : https://wowhead.com/forever/quest=94369/the-fate-of-zephras
             [questKeys.finishedBy] = {{252476}},
             [questKeys.name] = "The Fate of Zephras",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{252475}},
         },
         [94373] = { -- Call of Earth : https://wowhead.com/forever/quest=94373/call-of-earth
             [questKeys.finishedBy] = {{257446}},
             [questKeys.name] = "Call of Earth",
             [questKeys.questLevel] = 4,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{257446}},
         },
         [94374] = { -- Call of Earth : https://wowhead.com/forever/quest=94374/call-of-earth
             [questKeys.finishedBy] = {{5891}},
             [questKeys.name] = "Call of Earth",
             [questKeys.questLevel] = 4,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{257446}},
         },
         [94375] = { -- Call of Earth : https://wowhead.com/forever/quest=94375/call-of-earth
             [questKeys.finishedBy] = {{257446}},
             [questKeys.name] = "Call of Earth",
             [questKeys.questLevel] = 4,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{5891}},
         },
         [94411] = { -- Meddlesome Mages : https://wowhead.com/forever/quest=94411/meddlesome-mages
@@ -2193,6 +2751,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Meddlesome Mages",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{251902}},
         },
         [94413] = { -- A Magical Affront : https://wowhead.com/forever/quest=94413/a-magical-affront
@@ -2200,6 +2759,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Magical Affront",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{251903}},
         },
         [94414] = { -- The Anchors of Zephras : https://wowhead.com/forever/quest=94414/the-anchors-of-zephras
@@ -2207,104 +2767,133 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Anchors of Zephras",
             [questKeys.questLevel] = 2,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{257554}},
         },
         [94427] = { -- A Lesson in Divinity : https://wowhead.com/forever/quest=94427/a-lesson-in-divinity
             [questKeys.finishedBy] = {{257648}},
             [questKeys.name] = "A Lesson in Divinity",
             [questKeys.questLevel] = 12,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 12,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{246378}},
         },
         [94434] = { -- A Lesson in Divinity : https://wowhead.com/forever/quest=94434/a-lesson-in-divinity
             [questKeys.finishedBy] = {{257648}},
             [questKeys.name] = "A Lesson in Divinity",
             [questKeys.questLevel] = 12,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 12,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{257648}},
         },
         [94435] = { -- A Lesson in Divinity : https://wowhead.com/forever/quest=94435/a-lesson-in-divinity
             [questKeys.finishedBy] = {{246378}},
             [questKeys.name] = "A Lesson in Divinity",
             [questKeys.questLevel] = 12,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 12,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{257648}},
         },
         [94436] = { -- A Lesson in Divinity : https://wowhead.com/forever/quest=94436/a-lesson-in-divinity
             [questKeys.finishedBy] = {{257655}},
             [questKeys.name] = "A Lesson in Divinity",
             [questKeys.questLevel] = 12,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 12,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{246378}},
         },
         [94438] = { -- A Lesson in Divinity : https://wowhead.com/forever/quest=94438/a-lesson-in-divinity
             [questKeys.finishedBy] = {{257663}},
             [questKeys.name] = "A Lesson in Divinity",
             [questKeys.questLevel] = 12,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 12,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{257655}},
         },
         [94440] = { -- A Lesson in Divinity : https://wowhead.com/forever/quest=94440/a-lesson-in-divinity
             [questKeys.finishedBy] = {{257655}},
             [questKeys.name] = "A Lesson in Divinity",
             [questKeys.questLevel] = 12,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 12,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{257663}},
         },
         [94441] = { -- A Lesson in Divinity : https://wowhead.com/forever/quest=94441/a-lesson-in-divinity
             [questKeys.finishedBy] = {{246378}},
             [questKeys.name] = "A Lesson in Divinity",
             [questKeys.questLevel] = 12,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 12,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{257655}},
         },
         [94449] = { -- Call of Fire : https://wowhead.com/forever/quest=94449/call-of-fire
             [questKeys.finishedBy] = {{257597}},
             [questKeys.name] = "Call of Fire",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{258098, 258113}},
         },
         [94465] = { -- Call of Fire : https://wowhead.com/forever/quest=94465/call-of-fire
             [questKeys.finishedBy] = {{257808}},
             [questKeys.name] = "Call of Fire",
             [questKeys.questLevel] = 11,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{257597}},
         },
         [94466] = { -- Call of Fire : https://wowhead.com/forever/quest=94466/call-of-fire
             [questKeys.finishedBy] = {{257808}},
             [questKeys.name] = "Call of Fire",
             [questKeys.questLevel] = 14,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{257808}},
         },
         [94467] = { -- Call of Fire : https://wowhead.com/forever/quest=94467/call-of-fire
             [questKeys.finishedBy] = {nil, {61934}},
             [questKeys.name] = "Call of Fire",
             [questKeys.questLevel] = 14,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{257808}},
         },
         [94468] = { -- Call of Fire : https://wowhead.com/forever/quest=94468/call-of-fire
             [questKeys.finishedBy] = {{257597}},
             [questKeys.name] = "Call of Fire",
             [questKeys.questLevel] = 14,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {nil, {61934}},
         },
         [94472] = { -- Earth Sapta : https://wowhead.com/forever/quest=94472/earth-sapta
             [questKeys.finishedBy] = {{257446}},
             [questKeys.name] = "Earth Sapta",
             [questKeys.questLevel] = 4,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{257446}},
         },
         [94473] = { -- Fire Sapta : https://wowhead.com/forever/quest=94473/fire-sapta
             [questKeys.finishedBy] = {{257808}},
             [questKeys.name] = "Fire Sapta",
             [questKeys.questLevel] = 13,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{257808}},
         },
         [94484] = { -- Unnerving Silence : https://wowhead.com/forever/quest=94484/unnerving-silence
@@ -2312,6 +2901,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Unnerving Silence",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252359}},
         },
         [94485] = { -- Tears of the Lady : https://wowhead.com/forever/quest=94485/tears-of-the-lady
@@ -2319,6 +2909,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Tears of the Lady",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{257944}},
         },
         [94486] = { -- Feathers for Binding : https://wowhead.com/forever/quest=94486/feathers-for-binding
@@ -2326,6 +2917,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Feathers for Binding",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{257944}},
         },
         [94487] = { -- Unwanted and Unworthy : https://wowhead.com/forever/quest=94487/unwanted-and-unworthy
@@ -2333,6 +2925,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Unwanted and Unworthy",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{257944}},
         },
         [94488] = { -- The Ties That Bind : https://wowhead.com/forever/quest=94488/the-ties-that-bind
@@ -2340,6 +2933,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Ties That Bind",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{257944}},
         },
         [94489] = { -- The Wounds of Betrayal : https://wowhead.com/forever/quest=94489/the-wounds-of-betrayal
@@ -2347,6 +2941,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Wounds of Betrayal",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{257944}},
         },
         [94490] = { -- Ripped Missive : https://wowhead.com/forever/quest=94490/ripped-missive
@@ -2354,12 +2949,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Ripped Missive",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.startedBy] = {nil, nil, {265476}},
         },
         [94491] = { -- The Fate of the Den : https://wowhead.com/forever/quest=94491/the-fate-of-the-den
             [questKeys.finishedBy] = {{252359}},
             [questKeys.name] = "The Fate of the Den",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{257944}},
         },
         [94493] = { -- A Sacrifice in Vain : https://wowhead.com/forever/quest=94493/a-sacrifice-in-vain
@@ -2367,67 +2965,86 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Sacrifice in Vain",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{257944}},
         },
         [94494] = { -- Call of Water : https://wowhead.com/forever/quest=94494/call-of-water
             [questKeys.finishedBy] = {{258043}},
             [questKeys.name] = "Call of Water",
             [questKeys.questLevel] = 20,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{258098}},
         },
         [94495] = { -- Call of Water : https://wowhead.com/forever/quest=94495/call-of-water
             [questKeys.finishedBy] = {{258203}},
             [questKeys.name] = "Call of Water",
             [questKeys.questLevel] = 22,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{258043}},
         },
         [94497] = { -- Call of Water : https://wowhead.com/forever/quest=94497/call-of-water
             [questKeys.finishedBy] = {{258203}},
             [questKeys.name] = "Call of Water",
             [questKeys.questLevel] = 22,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{258203}},
         },
         [94499] = { -- Call of Water : https://wowhead.com/forever/quest=94499/call-of-water
             [questKeys.finishedBy] = {{258203}},
             [questKeys.name] = "Call of Water",
             [questKeys.questLevel] = 22,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{258203}},
         },
         [94500] = { -- Call of Water : https://wowhead.com/forever/quest=94500/call-of-water
             [questKeys.finishedBy] = {{258203}},
             [questKeys.name] = "Call of Water",
             [questKeys.questLevel] = 23,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{258203}},
         },
         [94501] = { -- Call of Water : https://wowhead.com/forever/quest=94501/call-of-water
             [questKeys.finishedBy] = {{258043}},
             [questKeys.name] = "Call of Water",
             [questKeys.questLevel] = 23,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{258203}},
         },
         [94502] = { -- Call of Water : https://wowhead.com/forever/quest=94502/call-of-water
             [questKeys.name] = "Call of Water",
             [questKeys.questLevel] = 23,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{258043}},
         },
         [94503] = { -- Call of Water : https://wowhead.com/forever/quest=94503/call-of-water
             [questKeys.finishedBy] = {{5895}},
             [questKeys.name] = "Call of Water",
             [questKeys.questLevel] = 23,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [94505] = { -- Call of Water : https://wowhead.com/forever/quest=94505/call-of-water
             [questKeys.finishedBy] = {{258043}},
             [questKeys.name] = "Call of Water",
             [questKeys.questLevel] = 23,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{5895}},
         },
         [94568] = { -- The Cult's True Plans : https://wowhead.com/forever/quest=94568/the-cults-true-plans
@@ -2435,13 +3052,16 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Cult's True Plans",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{252476}},
         },
         [94616] = { -- Water Sapta : https://wowhead.com/forever/quest=94616/water-sapta
             [questKeys.finishedBy] = {{258043}},
             [questKeys.name] = "Water Sapta",
             [questKeys.questLevel] = 20,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{258043}},
         },
         [94638] = { -- Strength and Mercy : https://wowhead.com/forever/quest=94638/strength-and-mercy
@@ -2449,129 +3069,172 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Strength and Mercy",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{255853}},
         },
         [94773] = { -- Divine Grace : https://wowhead.com/forever/quest=94773/divine-grace
             [questKeys.finishedBy] = {{376}},
             [questKeys.name] = "Divine Grace",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.HUMAN,
             [questKeys.startedBy] = {{376}},
         },
         [94774] = { -- Divine Grace : https://wowhead.com/forever/quest=94774/divine-grace
             [questKeys.finishedBy] = {{376}},
             [questKeys.name] = "Divine Grace",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.HUMAN,
             [questKeys.startedBy] = {{377}},
         },
         [94775] = { -- Divine Grace : https://wowhead.com/forever/quest=94775/divine-grace
             [questKeys.name] = "Divine Grace",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.HUMAN,
         },
         [94776] = { -- Divine Grace : https://wowhead.com/forever/quest=94776/divine-grace
             [questKeys.name] = "Divine Grace",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.HUMAN,
         },
         [94777] = { -- Divine Grace : https://wowhead.com/forever/quest=94777/divine-grace
             [questKeys.name] = "Divine Grace",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.HUMAN,
         },
         [94778] = { -- Divine Grace : https://wowhead.com/forever/quest=94778/divine-grace
             [questKeys.name] = "Divine Grace",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.HUMAN,
         },
         [94779] = { -- Divine Grace : https://wowhead.com/forever/quest=94779/divine-grace
             [questKeys.name] = "Divine Grace",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.HUMAN,
         },
         [94792] = { -- Taming the Beast : https://wowhead.com/forever/quest=94792/taming-the-beast
             [questKeys.finishedBy] = {{251507}},
             [questKeys.name] = "Taming the Beast",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.HUNTER,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{251507}},
         },
         [94793] = { -- Training the Beast : https://wowhead.com/forever/quest=94793/training-the-beast
             [questKeys.finishedBy] = {{258930}},
             [questKeys.name] = "Training the Beast",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.HUNTER,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{251507}},
         },
         [94817] = { -- Confounding Flash : https://wowhead.com/forever/quest=94817/confounding-flash
             [questKeys.finishedBy] = {{258785}},
             [questKeys.name] = "Confounding Flash",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.GNOME,
             [questKeys.startedBy] = {{258785}},
         },
         [94818] = { -- Contingency Plan : https://wowhead.com/forever/quest=94818/contingency-plan
             [questKeys.name] = "Contingency Plan",
             [questKeys.questLevel] = 20,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.GNOME,
         },
         [94819] = { -- Contingency Plan : https://wowhead.com/forever/quest=94819/contingency-plan
             [questKeys.finishedBy] = {{258785}},
             [questKeys.name] = "Contingency Plan",
             [questKeys.questLevel] = 20,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.GNOME,
         },
         [94820] = { -- Contingency Plan : https://wowhead.com/forever/quest=94820/contingency-plan
             [questKeys.name] = "Contingency Plan",
             [questKeys.questLevel] = 20,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.GNOME,
         },
         [94821] = { -- Confounding Flash : https://wowhead.com/forever/quest=94821/confounding-flash
             [questKeys.name] = "Confounding Flash",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.GNOME,
         },
         [94822] = { -- Confounding Flash : https://wowhead.com/forever/quest=94822/confounding-flash
             [questKeys.finishedBy] = {{258785}},
             [questKeys.name] = "Confounding Flash",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.GNOME,
         },
         [94823] = { -- Confounding Flash : https://wowhead.com/forever/quest=94823/confounding-flash
             [questKeys.name] = "Confounding Flash",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.GNOME,
         },
         [94824] = { -- Confounding Flash : https://wowhead.com/forever/quest=94824/confounding-flash
             [questKeys.finishedBy] = {{258785}},
             [questKeys.name] = "Confounding Flash",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.GNOME,
             [questKeys.startedBy] = {{1226}},
         },
         [94825] = { -- Confounding Flash : https://wowhead.com/forever/quest=94825/confounding-flash
             [questKeys.name] = "Confounding Flash",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.GNOME,
         },
         [94826] = { -- Confounding Flash : https://wowhead.com/forever/quest=94826/confounding-flash
             [questKeys.name] = "Confounding Flash",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.GNOME,
         },
         [94863] = { -- Taming the Beast : https://wowhead.com/forever/quest=94863/taming-the-beast
             [questKeys.finishedBy] = {{251507}},
             [questKeys.name] = "Taming the Beast",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.HUNTER,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{251507}},
         },
         [94864] = { -- Taming the Beast : https://wowhead.com/forever/quest=94864/taming-the-beast
             [questKeys.finishedBy] = {{251507}},
             [questKeys.name] = "Taming the Beast",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.HUNTER,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{251507}},
         },
         [94896] = { -- Aid For The Refugees : https://wowhead.com/forever/quest=94896/aid-for-the-refugees
@@ -2579,6 +3242,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Aid For The Refugees",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{259012}},
         },
         [94897] = { -- The Fate of a Loved One : https://wowhead.com/forever/quest=94897/the-fate-of-a-loved-one
@@ -2586,28 +3250,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Fate of a Loved One",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{259012}},
-        },
-        [94898] = { -- Violent Winds (Temp Disabled) : https://wowhead.com/forever/quest=94898/violent-winds-temp-disabled
-            [questKeys.name] = "Violent Winds (Temp Disabled)",
-            [questKeys.questLevel] = 11,
-            [questKeys.requiredLevel] = 8,
-        },
-        [94901] = { -- Hopping Helpers : https://wowhead.com/forever/quest=94901/hopping-helpers
-            [questKeys.name] = "Hopping Helpers",
-            [questKeys.questLevel] = 11,
-            [questKeys.requiredLevel] = 8,
-        },
-        [94902] = { -- Valanaar Vintages : https://wowhead.com/forever/quest=94902/valanaar-vintages
-            [questKeys.name] = "Valanaar Vintages",
-            [questKeys.questLevel] = 11,
-            [questKeys.requiredLevel] = 8,
         },
         [94911] = { -- Child of Nature : https://wowhead.com/forever/quest=94911/child-of-nature
             [questKeys.finishedBy] = {{3033}},
             [questKeys.name] = "Child of Nature",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{259118}},
         },
         [94912] = { -- Child of Nature : https://wowhead.com/forever/quest=94912/child-of-nature
@@ -2615,6 +3266,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Child of Nature",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.startedBy] = {{2543}},
         },
         [94913] = { -- Moonglade : https://wowhead.com/forever/quest=94913/moonglade
@@ -2622,6 +3274,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Moonglade",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{3033}},
         },
         [94914] = { -- Moonglade : https://wowhead.com/forever/quest=94914/moonglade
@@ -2629,6 +3282,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Moonglade",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.startedBy] = {{5504}},
         },
         [94946] = { -- The Magical City of Dalaran : https://wowhead.com/forever/quest=94946/the-magical-city-of-dalaran
@@ -2636,6 +3290,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Magical City of Dalaran",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{252475}},
         },
         [94947] = { -- Welcome to Azeroth : https://wowhead.com/forever/quest=94947/welcome-to-azeroth
@@ -2643,6 +3298,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Welcome to Azeroth",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.startedBy] = {{259084}},
         },
         [94978] = { -- Taming the Beast : https://wowhead.com/forever/quest=94978/taming-the-beast
@@ -2650,6 +3306,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Taming the Beast",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{252389}},
         },
         [94979] = { -- Taming the Beast : https://wowhead.com/forever/quest=94979/taming-the-beast
@@ -2657,20 +3314,25 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Taming the Beast",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{252389}},
         },
         [95034] = { -- The Debt : https://wowhead.com/forever/quest=95034/the-debt
             [questKeys.finishedBy] = {{259620}},
             [questKeys.name] = "The Debt",
             [questKeys.questLevel] = 24,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{259620}},
         },
         [95036] = { -- A Moon-Kissed Blade : https://wowhead.com/forever/quest=95036/a-moon-kissed-blade
             [questKeys.finishedBy] = {{248840}},
             [questKeys.name] = "A Moon-Kissed Blade",
             [questKeys.questLevel] = 25,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{259620}},
         },
         [95041] = { -- Data Hoarders : https://wowhead.com/forever/quest=95041/data-hoarders
@@ -2678,13 +3340,16 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Data Hoarders",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{11028}},
         },
         [95042] = { -- Seeking the Kor Gem : https://wowhead.com/forever/quest=95042/seeking-the-kor-gem
             [questKeys.finishedBy] = {{259649}},
             [questKeys.name] = "Seeking the Kor Gem",
             [questKeys.questLevel] = 25,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{259649}},
         },
         [95065] = { -- Fishin' Time : https://wowhead.com/forever/quest=95065/fishin-time
@@ -2692,34 +3357,43 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Fishin' Time",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{267118}},
         },
         [95111] = { -- An Underrated Talent : https://wowhead.com/forever/quest=95111/an-underrated-talent
             [questKeys.finishedBy] = {{3539}},
             [questKeys.name] = "An Underrated Talent",
             [questKeys.questLevel] = 25,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{248840}},
         },
         [95125] = { -- Ott's Masterwork : https://wowhead.com/forever/quest=95125/otts-masterwork
             [questKeys.finishedBy] = {{3539}},
             [questKeys.name] = "Ott's Masterwork",
             [questKeys.questLevel] = 25,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{3539}},
         },
         [95126] = { -- The Moonsilver Blade : https://wowhead.com/forever/quest=95126/the-moonsilver-blade
             [questKeys.finishedBy] = {{248840}},
             [questKeys.name] = "The Moonsilver Blade",
             [questKeys.questLevel] = 25,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{3539}},
         },
         [95140] = { -- Old Fire-Eye : https://wowhead.com/forever/quest=95140/old-fire-eye
             [questKeys.finishedBy] = {{259620}},
             [questKeys.name] = "Old Fire-Eye",
             [questKeys.questLevel] = 26,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{259620}},
         },
         [95161] = { -- Remember That I Love You : https://wowhead.com/forever/quest=95161/remember-that-i-love-you
@@ -2727,6 +3401,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Remember That I Love You",
             [questKeys.questLevel] = 22,
             [questKeys.requiredLevel] = 15,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{14450}},
         },
         [95189] = { -- Crest of Lordaeron : https://wowhead.com/forever/quest=95189/crest-of-lordaeron
@@ -2734,24 +3409,31 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Crest of Lordaeron",
             [questKeys.questLevel] = 22,
             [questKeys.requiredLevel] = 16,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {268579}},
         },
         [95195] = { -- Bloodied Insignia : https://wowhead.com/forever/quest=95195/bloodied-insignia
             [questKeys.finishedBy] = {{466}},
             [questKeys.name] = "Bloodied Insignia",
             [questKeys.questLevel] = 22,
             [questKeys.requiredLevel] = 16,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {268535}},
         },
         [95204] = { -- Crest of Lordaeron : https://wowhead.com/forever/quest=95204/crest-of-lordaeron
             [questKeys.finishedBy] = {{7825}},
             [questKeys.name] = "Crest of Lordaeron",
             [questKeys.questLevel] = 22,
             [questKeys.requiredLevel] = 16,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.startedBy] = {nil, nil, {275521}},
         },
         [95212] = { -- Never Saddle on Quality : https://wowhead.com/forever/quest=95212/never-saddle-on-quality
             [questKeys.finishedBy] = {{1265}},
             [questKeys.name] = "Never Saddle on Quality",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1265}},
         },
         [95213] = { -- Stolen Blasting Powder : https://wowhead.com/forever/quest=95213/stolen-blasting-powder
@@ -2759,12 +3441,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Stolen Blasting Powder",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {268548}},
         },
         [95214] = { -- Stolen Blasting Powder : https://wowhead.com/forever/quest=95214/stolen-blasting-powder
             [questKeys.finishedBy] = {{1256}},
             [questKeys.name] = "Stolen Blasting Powder",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1256}},
         },
         [95216] = { -- The New Plague : https://wowhead.com/forever/quest=95216/the-new-plague
@@ -2772,6 +3457,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The New Plague",
             [questKeys.questLevel] = 22,
             [questKeys.requiredLevel] = 16,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{11835}},
         },
         [95217] = { -- The Quarry's Smith : https://wowhead.com/forever/quest=95217/the-quarrys-smith
@@ -2779,18 +3465,21 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Quarry's Smith",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1698}},
         },
         [95250] = { -- Abominable Creatures : https://wowhead.com/forever/quest=95250/abominable-creatures
             [questKeys.name] = "Abominable Creatures",
             [questKeys.questLevel] = 21,
             [questKeys.requiredLevel] = 16,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [95314] = { -- That Shadowvale Green Elixir : https://wowhead.com/forever/quest=95314/that-shadowvale-green-elixir
             [questKeys.finishedBy] = {{2132}},
             [questKeys.name] = "That Shadowvale Green Elixir",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{2132}},
         },
         [95328] = { -- Whispering Horror Residue : https://wowhead.com/forever/quest=95328/whispering-horror-residue
@@ -2798,12 +3487,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Whispering Horror Residue",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.startedBy] = {nil, nil, {268812}},
         },
         [95349] = { -- The Earthen Ring : https://wowhead.com/forever/quest=95349/the-earthen-ring
             [questKeys.finishedBy] = {{259119}},
             [questKeys.name] = "The Earthen Ring",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{251968}},
         },
         [95350] = { -- Welcome to Azeroth : https://wowhead.com/forever/quest=95350/welcome-to-azeroth
@@ -2811,6 +3503,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Welcome to Azeroth",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{259119}},
         },
         [95494] = { -- Bruised Pride and Lion Hides : https://wowhead.com/forever/quest=95494/bruised-pride-and-lion-hides
@@ -2818,6 +3511,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Bruised Pride and Lion Hides",
             [questKeys.questLevel] = 18,
             [questKeys.requiredLevel] = 14,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3682}},
         },
         [95495] = { -- The Hermit Tanner : https://wowhead.com/forever/quest=95495/the-hermit-tanner
@@ -2825,6 +3519,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Hermit Tanner",
             [questKeys.questLevel] = 18,
             [questKeys.requiredLevel] = 14,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3682}},
         },
         [95507] = { -- Vrang's Game : https://wowhead.com/forever/quest=95507/vrangs-game
@@ -2832,6 +3527,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Vrang's Game",
             [questKeys.questLevel] = 18,
             [questKeys.requiredLevel] = 14,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3682}},
         },
         [95508] = { -- Unwelcome Guests : https://wowhead.com/forever/quest=95508/unwelcome-guests
@@ -2839,6 +3535,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Unwelcome Guests",
             [questKeys.questLevel] = 18,
             [questKeys.requiredLevel] = 14,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{261366}},
         },
         [95621] = { -- Trouble in the Valley : https://wowhead.com/forever/quest=95621/trouble-in-the-valley
@@ -2846,63 +3543,58 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Trouble in the Valley",
             [questKeys.questLevel] = 18,
             [questKeys.requiredLevel] = 14,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{261366}},
-        },
-        [95771] = { -- A Taste of Darkness : https://wowhead.com/forever/quest=95771/a-taste-of-darkness
-            [questKeys.name] = "A Taste of Darkness",
-            [questKeys.questLevel] = 10,
-            [questKeys.requiredLevel] = 6,
         },
         [95774] = { -- Her Name Is Olgra : https://wowhead.com/forever/quest=95774/her-name-is-olgra
             [questKeys.finishedBy] = {{3432}},
             [questKeys.name] = "Her Name Is Olgra",
             [questKeys.questLevel] = 20,
             [questKeys.requiredLevel] = 14,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3432}},
         },
         [95803] = { -- A Token of Good Faith : https://wowhead.com/forever/quest=95803/a-token-of-good-faith
             [questKeys.finishedBy] = {{10181}},
             [questKeys.name] = "A Token of Good Faith",
             [questKeys.questLevel] = 12,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{246378}},
         },
         [95805] = { -- Grace of An'she and Mu'sha : https://wowhead.com/forever/quest=95805/grace-of-anshe-and-musha
             [questKeys.name] = "Grace of An'she and Mu'sha",
             [questKeys.questLevel] = 4,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{2982}},
-        },
-        [95816] = { -- Sign Me Up! : https://wowhead.com/forever/quest=95816/sign-me-up
-            [questKeys.name] = "Sign Me Up!",
-            [questKeys.questLevel] = 60,
-            [questKeys.requiredLevel] = 1,
-        },
-        [95819] = { -- Sign Me Up! : https://wowhead.com/forever/quest=95819/sign-me-up
-            [questKeys.name] = "Sign Me Up!",
-            [questKeys.questLevel] = 60,
-            [questKeys.requiredLevel] = 1,
         },
         [95883] = { -- The Tortured Soul : https://wowhead.com/forever/quest=95883/the-tortured-soul
             [questKeys.name] = "The Tortured Soul",
             [questKeys.questLevel] = 23,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [95884] = { -- The Offering Stone : https://wowhead.com/forever/quest=95884/the-offering-stone
             [questKeys.name] = "The Offering Stone",
             [questKeys.questLevel] = 23,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.startedBy] = {nil, nil, {271343}},
         },
         [95885] = { -- The Offering of Blood : https://wowhead.com/forever/quest=95885/the-offering-of-blood
             [questKeys.name] = "The Offering of Blood",
             [questKeys.questLevel] = 23,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [95981] = { -- Watching the Roads : https://wowhead.com/forever/quest=95981/watching-the-roads
             [questKeys.finishedBy] = {{2121}},
             [questKeys.name] = "Watching the Roads",
             [questKeys.questLevel] = 20,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{2121}},
         },
         [95998] = { -- The Great Outdoors : https://wowhead.com/forever/quest=95998/the-great-outdoors
@@ -2910,6 +3602,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Great Outdoors",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{263399}},
         },
         [95999] = { -- WANTED: Incinerator Gar'im : https://wowhead.com/forever/quest=95999/wanted-incinerator-garim
@@ -2917,12 +3610,14 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "WANTED: Incinerator Gar'im",
             [questKeys.questLevel] = 25,
             [questKeys.requiredLevel] = 16,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [96031] = { -- Camping 101: Leatherworking : https://wowhead.com/forever/quest=96031/camping-101-leatherworking
             [questKeys.finishedBy] = {{1466}},
             [questKeys.name] = "Camping 101: Leatherworking",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265813}},
         },
         [96044] = { -- Camping 101: Blacksmithing : https://wowhead.com/forever/quest=96044/camping-101-blacksmithing
@@ -2930,6 +3625,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Blacksmithing",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265813}},
         },
         [96045] = { -- Camping 101: Alchemy : https://wowhead.com/forever/quest=96045/camping-101-alchemy
@@ -2937,6 +3633,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Alchemy",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1246}},
         },
         [96046] = { -- Camping 101: Mining : https://wowhead.com/forever/quest=96046/camping-101-mining
@@ -2944,6 +3641,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Mining",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265813}},
         },
         [96047] = { -- Camping 101: First Aid : https://wowhead.com/forever/quest=96047/camping-101-first-aid
@@ -2951,6 +3649,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: First Aid",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265813}},
         },
         [96050] = { -- Camping 101: Fishing : https://wowhead.com/forever/quest=96050/camping-101-fishing
@@ -2958,6 +3657,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Fishing",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265813}},
         },
         [96055] = { -- Camping 101: Herbalism : https://wowhead.com/forever/quest=96055/camping-101-herbalism
@@ -2965,6 +3665,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Herbalism",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265813}},
         },
         [96056] = { -- Camping 101: Skinning : https://wowhead.com/forever/quest=96056/camping-101-skinning
@@ -2972,6 +3673,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Skinning",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265813}},
         },
         [96057] = { -- Camping 101: Tailoring : https://wowhead.com/forever/quest=96057/camping-101-tailoring
@@ -2979,6 +3681,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Tailoring",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265813}},
         },
         [96058] = { -- Camping 101: Engineering : https://wowhead.com/forever/quest=96058/camping-101-engineering
@@ -2986,6 +3689,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Engineering",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265813}},
         },
         [96059] = { -- Camping 101: Enchanting : https://wowhead.com/forever/quest=96059/camping-101-enchanting
@@ -2993,6 +3697,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Enchanting",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{11065}},
         },
         [96101] = { -- The Great Outdoors : https://wowhead.com/forever/quest=96101/the-great-outdoors
@@ -3000,6 +3705,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Great Outdoors",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{263664}},
         },
         [96102] = { -- Camping 101: Tailoring : https://wowhead.com/forever/quest=96102/camping-101-tailoring
@@ -3007,6 +3713,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Tailoring",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265809}},
         },
         [96130] = { -- Chakuyak : https://wowhead.com/forever/quest=96130/chakuyak
@@ -3014,42 +3721,53 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Chakuyak",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3065}},
         },
         [96137] = { -- Ira's Dagger : https://wowhead.com/forever/quest=96137/iras-dagger
             [questKeys.name] = "Ira's Dagger",
             [questKeys.questLevel] = 24,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {281143}},
         },
         [96138] = { -- Merrick's Bow : https://wowhead.com/forever/quest=96138/merricks-bow
             [questKeys.name] = "Merrick's Bow",
             [questKeys.questLevel] = 28,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {281142}},
         },
         [96139] = { -- The Valor Family : https://wowhead.com/forever/quest=96139/the-valor-family
             [questKeys.finishedBy] = {{268}},
             [questKeys.name] = "The Valor Family",
             [questKeys.questLevel] = 22,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{268}},
         },
         [96204] = { -- The Windshaper's Wrath : https://wowhead.com/forever/quest=96204/the-windshapers-wrath
             [questKeys.finishedBy] = {{259620}},
             [questKeys.name] = "The Windshaper's Wrath",
             [questKeys.questLevel] = 22,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{248755}},
         },
         [96243] = { -- Call of Earth : https://wowhead.com/forever/quest=96243/call-of-earth
             [questKeys.name] = "Call of Earth",
             [questKeys.questLevel] = 10,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [96390] = { -- Nip 'Em in the Bud : https://wowhead.com/forever/quest=96390/nip-em-in-the-bud
             [questKeys.finishedBy] = {{264936}},
             [questKeys.name] = "Nip 'Em in the Bud",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{264936}},
         },
         [96391] = { -- Underground Map : https://wowhead.com/forever/quest=96391/underground-map
@@ -3057,12 +3775,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Underground Map",
             [questKeys.questLevel] = 15,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {274268}},
         },
         [96392] = { -- Farsen's Watch : https://wowhead.com/forever/quest=96392/farsens-watch
             [questKeys.finishedBy] = {{264936}},
             [questKeys.name] = "Farsen's Watch",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{264936}},
         },
         [96393] = { -- Old Ironforge Incursion : https://wowhead.com/forever/quest=96393/old-ironforge-incursion
@@ -3070,6 +3791,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Old Ironforge Incursion",
             [questKeys.questLevel] = 16,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{264936}},
         },
         [96394] = { -- The Restless Dead : https://wowhead.com/forever/quest=96394/the-restless-dead
@@ -3077,18 +3799,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Restless Dead",
             [questKeys.questLevel] = 15,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{264943}},
-        },
-        [96395] = { -- An Ancient Grudge : https://wowhead.com/forever/quest=96395/an-ancient-grudge
-            [questKeys.name] = "An Ancient Grudge",
-            [questKeys.questLevel] = 15,
-            [questKeys.requiredLevel] = 10,
         },
         [96403] = { -- Important Heirlooms : https://wowhead.com/forever/quest=96403/important-heirlooms
             [questKeys.finishedBy] = {{265003}},
             [questKeys.name] = "Important Heirlooms",
             [questKeys.questLevel] = 15,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265003}},
         },
         [96408] = { -- A Visitor to Dun Morogh : https://wowhead.com/forever/quest=96408/a-visitor-to-dun-morogh
@@ -3096,6 +3815,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Visitor to Dun Morogh",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1376}},
         },
         [96604] = { -- The Great Outdoors : https://wowhead.com/forever/quest=96604/the-great-outdoors
@@ -3103,6 +3823,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Great Outdoors",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265809}},
         },
         [96605] = { -- The Great Outdoors : https://wowhead.com/forever/quest=96605/the-great-outdoors
@@ -3110,6 +3831,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Great Outdoors",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265810}},
         },
         [96606] = { -- The Great Outdoors : https://wowhead.com/forever/quest=96606/the-great-outdoors
@@ -3117,6 +3839,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Great Outdoors",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265811}},
         },
         [96607] = { -- The Great Outdoors : https://wowhead.com/forever/quest=96607/the-great-outdoors
@@ -3124,6 +3847,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Great Outdoors",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265812}},
         },
         [96608] = { -- The Great Outdoors : https://wowhead.com/forever/quest=96608/the-great-outdoors
@@ -3131,6 +3855,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Great Outdoors",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265813}},
         },
         [96626] = { -- Camping 101: Cooking : https://wowhead.com/forever/quest=96626/camping-101-cooking
@@ -3138,6 +3863,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Cooking",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{263399}},
         },
         [96627] = { -- The Adventurer : https://wowhead.com/forever/quest=96627/the-adventurer
@@ -3145,6 +3871,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Adventurer",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{197}},
         },
         [96628] = { -- The Adventurer : https://wowhead.com/forever/quest=96628/the-adventurer
@@ -3152,6 +3879,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Adventurer",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1965}},
         },
         [96629] = { -- Camping 101: Cooking : https://wowhead.com/forever/quest=96629/camping-101-cooking
@@ -3159,6 +3887,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Cooking",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265813}},
         },
         [96630] = { -- The Adventurer : https://wowhead.com/forever/quest=96630/the-adventurer
@@ -3166,12 +3895,14 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Adventurer",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [96634] = { -- Camping 101: Cooking : https://wowhead.com/forever/quest=96634/camping-101-cooking
             [questKeys.finishedBy] = {{6286}},
             [questKeys.name] = "Camping 101: Cooking",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265811}},
         },
         [96638] = { -- The Adventurer : https://wowhead.com/forever/quest=96638/the-adventurer
@@ -3179,6 +3910,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Adventurer",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251366}},
         },
         [96646] = { -- Camping 101: Cooking : https://wowhead.com/forever/quest=96646/camping-101-cooking
@@ -3186,6 +3918,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Cooking",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{263664}},
         },
         [96652] = { -- The Adventurer : https://wowhead.com/forever/quest=96652/the-adventurer
@@ -3193,12 +3926,14 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Adventurer",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [96655] = { -- Camping 101: Cooking : https://wowhead.com/forever/quest=96655/camping-101-cooking
             [questKeys.finishedBy] = {{3191}},
             [questKeys.name] = "Camping 101: Cooking",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265809}},
         },
         [96656] = { -- The Adventurer : https://wowhead.com/forever/quest=96656/the-adventurer
@@ -3206,6 +3941,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Adventurer",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{1570}},
         },
         [96658] = { -- Camping 101: Cooking : https://wowhead.com/forever/quest=96658/camping-101-cooking
@@ -3213,6 +3949,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Cooking",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265812}},
         },
         [96659] = { -- The Adventurer : https://wowhead.com/forever/quest=96659/the-adventurer
@@ -3220,6 +3957,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Adventurer",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{2981}},
         },
         [96661] = { -- Camping 101: Cooking : https://wowhead.com/forever/quest=96661/camping-101-cooking
@@ -3227,16 +3965,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Cooking",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265810}},
-        },
-        [96735] = { -- Toast!? : https://wowhead.com/forever/quest=96735/toast
-            [questKeys.name] = "Toast!?",
         },
         [96821] = { -- Legging It : https://wowhead.com/forever/quest=96821/legging-it
             [questKeys.finishedBy] = {{3139}},
             [questKeys.name] = "Legging It",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3194}},
         },
         [96822] = { -- For Honor : https://wowhead.com/forever/quest=96822/for-honor
@@ -3244,6 +3981,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "For Honor",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 3,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{266940}},
         },
         [96825] = { -- This Fruit Could Bite Back : https://wowhead.com/forever/quest=96825/this-fruit-could-bite-back
@@ -3251,6 +3989,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "This Fruit Could Bite Back",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 3,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3191}},
         },
         [96873] = { -- A Pain in the Neck : https://wowhead.com/forever/quest=96873/a-pain-in-the-neck
@@ -3258,6 +3997,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Pain in the Neck",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{266881}},
         },
         [96874] = { -- This Is Spinal Axe : https://wowhead.com/forever/quest=96874/this-is-spinal-axe
@@ -3265,6 +4005,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "This Is Spinal Axe",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{10266}},
         },
         [96875] = { -- Beasts of Thunder Ridge : https://wowhead.com/forever/quest=96875/beasts-of-thunder-ridge
@@ -3272,6 +4013,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Beasts of Thunder Ridge",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{5811}},
         },
         [96876] = { -- Ukor's Lost Pack : https://wowhead.com/forever/quest=96876/ukors-lost-pack
@@ -3279,18 +4021,23 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Ukor's Lost Pack",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.startedBy] = {nil, nil, {275722}},
         },
         [96877] = { -- Halikor's Hoof : https://wowhead.com/forever/quest=96877/halikors-hoof
             [questKeys.finishedBy] = {{5811}},
             [questKeys.name] = "Halikor's Hoof",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.startedBy] = {nil, nil, {275723}},
         },
         [96895] = { -- The Argent Emissary : https://wowhead.com/forever/quest=96895/the-argent-emissary
             [questKeys.finishedBy] = {{267009}},
             [questKeys.name] = "The Argent Emissary",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{1738}},
         },
         [96896] = { -- A Righteous Cause : https://wowhead.com/forever/quest=96896/a-righteous-cause
@@ -3298,6 +4045,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Righteous Cause",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{267008}},
         },
         [96897] = { -- The Cult of the Damned : https://wowhead.com/forever/quest=96897/the-cult-of-the-damned
@@ -3305,6 +4053,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Cult of the Damned",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{267009}},
         },
         [96898] = { -- Remnants of War : https://wowhead.com/forever/quest=96898/remnants-of-war
@@ -3312,6 +4061,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Remnants of War",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{267009}},
         },
         [96899] = { -- Bandarion Keep : https://wowhead.com/forever/quest=96899/bandarion-keep
@@ -3319,6 +4069,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Bandarion Keep",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{267009}},
         },
         [97003] = { -- Chol'aruk the Ravener : https://wowhead.com/forever/quest=97003/cholaruk-the-ravener
@@ -3326,6 +4077,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Chol'aruk the Ravener",
             [questKeys.questLevel] = 21,
             [questKeys.requiredLevel] = 15,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{267310}},
         },
         [97005] = { -- Chol'aruk the Ravener : https://wowhead.com/forever/quest=97005/cholaruk-the-ravener
@@ -3333,28 +4085,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Chol'aruk the Ravener",
             [questKeys.questLevel] = 21,
             [questKeys.requiredLevel] = 15,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{267309}},
-        },
-        [97065] = { -- Tip the Scales - Keefer's Angelfish : https://wowhead.com/forever/quest=97065/tip-the-scales-keefers-angelfish
-            [questKeys.name] = "Tip the Scales - Keefer's Angelfish",
-            [questKeys.questLevel] = 60,
-            [questKeys.requiredLevel] = 1,
-        },
-        [97066] = { -- Tip the Scales - Brownell's Blue Striped Racer : https://wowhead.com/forever/quest=97066/tip-the-scales-brownells-blue-striped-racer
-            [questKeys.name] = "Tip the Scales - Brownell's Blue Striped Racer",
-            [questKeys.questLevel] = 60,
-            [questKeys.requiredLevel] = 1,
-        },
-        [97067] = { -- Tip the Scales - Dezian Queenfish : https://wowhead.com/forever/quest=97067/tip-the-scales-dezian-queenfish
-            [questKeys.name] = "Tip the Scales - Dezian Queenfish",
-            [questKeys.questLevel] = 60,
-            [questKeys.requiredLevel] = 1,
         },
         [97220] = { -- Philmor's Favor : https://wowhead.com/forever/quest=97220/philmors-favor
             [questKeys.finishedBy] = {{483}},
             [questKeys.name] = "Philmor's Favor",
             [questKeys.questLevel] = 15,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{268511}},
         },
         [97222] = { -- Gatehouse Goods : https://wowhead.com/forever/quest=97222/gatehouse-goods
@@ -3362,6 +4101,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Gatehouse Goods",
             [questKeys.questLevel] = 15,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{483}},
         },
         [97223] = { -- Bloodtalon Matriarch : https://wowhead.com/forever/quest=97223/bloodtalon-matriarch
@@ -3369,6 +4109,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Bloodtalon Matriarch",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{7953}},
         },
         [97225] = { -- Forgotten Loa Idols : https://wowhead.com/forever/quest=97225/forgotten-loa-idols
@@ -3376,6 +4117,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Forgotten Loa Idols",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3304}},
         },
         [97234] = { -- Reading Room : https://wowhead.com/forever/quest=97234/reading-room
@@ -3383,6 +4125,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Reading Room",
             [questKeys.questLevel] = 18,
             [questKeys.requiredLevel] = 13,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{268568}},
         },
         [97236] = { -- Fang of Githyiss : https://wowhead.com/forever/quest=97236/fang-of-githyiss
@@ -3390,12 +4133,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Fang of Githyiss",
             [questKeys.questLevel] = 5,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {277190}},
         },
         [97237] = { -- Shelf Picked : https://wowhead.com/forever/quest=97237/shelf-picked
             [questKeys.finishedBy] = {{268568}},
             [questKeys.name] = "Shelf Picked",
             [questKeys.questLevel] = 18,
             [questKeys.requiredLevel] = 13,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{2504}},
         },
         [97242] = { -- Yelmak's Medley : https://wowhead.com/forever/quest=97242/yelmaks-medley
@@ -3403,6 +4149,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Yelmak's Medley",
             [questKeys.questLevel] = 15,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3348}},
         },
         [97243] = { -- Call of Fire : https://wowhead.com/forever/quest=97243/call-of-fire
@@ -3410,6 +4157,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Call of Fire",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{252382, 254082}},
         },
         [97244] = { -- Call of Fire : https://wowhead.com/forever/quest=97244/call-of-fire
@@ -3417,6 +4165,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Call of Fire",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{268592}},
         },
         [97245] = { -- Call of Fire : https://wowhead.com/forever/quest=97245/call-of-fire
@@ -3424,6 +4173,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Call of Fire",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{268592}},
         },
         [97246] = { -- Meal Appeal : https://wowhead.com/forever/quest=97246/meal-appeal
@@ -3431,6 +4181,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Meal Appeal",
             [questKeys.questLevel] = 15,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{268701}},
         },
         [97249] = { -- Favorite Food : https://wowhead.com/forever/quest=97249/favorite-food
@@ -3438,6 +4189,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Favorite Food",
             [questKeys.questLevel] = 15,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3368}},
         },
         [97250] = { -- Wrongly Blamed, Justly Corrected : https://wowhead.com/forever/quest=97250/wrongly-blamed-justly-corrected
@@ -3445,6 +4197,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Wrongly Blamed, Justly Corrected",
             [questKeys.questLevel] = 23,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{5911}},
         },
         [97253] = { -- Parts and Pieces : https://wowhead.com/forever/quest=97253/parts-and-pieces
@@ -3452,6 +4205,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Parts and Pieces",
             [questKeys.questLevel] = 14,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{7161}},
         },
         [97257] = { -- Call of Fire : https://wowhead.com/forever/quest=97257/call-of-fire
@@ -3459,6 +4213,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Call of Fire",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{268592}},
         },
         [97263] = { -- Your Package Has Arrived : https://wowhead.com/forever/quest=97263/your-package-has-arrived
@@ -3466,12 +4221,14 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Your Package Has Arrived",
             [questKeys.questLevel] = 2,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [97275] = { -- Whuut's the Rush : https://wowhead.com/forever/quest=97275/whuuts-the-rush
             [questKeys.finishedBy] = {{11046}},
             [questKeys.name] = "Whuut's the Rush",
             [questKeys.questLevel] = 15,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3347}},
         },
         [97277] = { -- Grund and Gozwin : https://wowhead.com/forever/quest=97277/grund-and-gozwin
@@ -3479,6 +4236,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Grund and Gozwin",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{2756}},
         },
         [97279] = { -- Wayward Weapons : https://wowhead.com/forever/quest=97279/wayward-weapons
@@ -3486,6 +4244,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Wayward Weapons",
             [questKeys.questLevel] = 2,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3143}},
         },
         [97281] = { -- A Simmering Storm : https://wowhead.com/forever/quest=97281/a-simmering-storm
@@ -3493,19 +4252,24 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Simmering Storm",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.startedBy] = {nil, nil, {277661}},
         },
         [97282] = { -- Stormy Potential : https://wowhead.com/forever/quest=97282/stormy-potential
             [questKeys.finishedBy] = {{3293}},
             [questKeys.name] = "Stormy Potential",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3293}},
         },
         [97286] = { -- Research Access : https://wowhead.com/forever/quest=97286/research-access
             [questKeys.finishedBy] = {{211022, 211033}},
             [questKeys.name] = "Research Access",
             [questKeys.questLevel] = 20,
+            [questKeys.requiredClasses] = classIDs.MAGE,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/library_races.toml; 0 = all races
             [questKeys.startedBy] = {{211033}},
         },
         [97288] = { -- Unending Torment : https://wowhead.com/forever/quest=97288/unending-torment
@@ -3513,12 +4277,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Unending Torment",
             [questKeys.questLevel] = 21,
             [questKeys.requiredLevel] = 16,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.startedBy] = {nil, nil, {280438}},
         },
         [97289] = { -- Unending Torment : https://wowhead.com/forever/quest=97289/unending-torment
             [questKeys.finishedBy] = {{271613}},
             [questKeys.name] = "Unending Torment",
             [questKeys.questLevel] = 21,
             [questKeys.requiredLevel] = 16,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{2055}},
         },
         [97290] = { -- Unending Torment : https://wowhead.com/forever/quest=97290/unending-torment
@@ -3526,6 +4293,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Unending Torment",
             [questKeys.questLevel] = 21,
             [questKeys.requiredLevel] = 16,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{271613}},
         },
         [97291] = { -- Unending Torment : https://wowhead.com/forever/quest=97291/unending-torment
@@ -3533,6 +4301,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Unending Torment",
             [questKeys.questLevel] = 21,
             [questKeys.requiredLevel] = 16,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{2055}},
         },
         [97292] = { -- Unending Torment : https://wowhead.com/forever/quest=97292/unending-torment
@@ -3540,6 +4309,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Unending Torment",
             [questKeys.questLevel] = 21,
             [questKeys.requiredLevel] = 16,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{2055}},
         },
         [97326] = { -- Rocks to Rests : https://wowhead.com/forever/quest=97326/rocks-to-rests
@@ -3547,6 +4317,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Rocks to Rests",
             [questKeys.questLevel] = 15,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{268684}},
         },
         [97485] = { -- Traditions of the Bluff : https://wowhead.com/forever/quest=97485/traditions-of-the-bluff
@@ -3554,12 +4325,14 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Traditions of the Bluff",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 3,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{269068}},
         },
         [97538] = { -- Pigments for Paints : https://wowhead.com/forever/quest=97538/pigments-for-paints
             [questKeys.name] = "Pigments for Paints",
             [questKeys.questLevel] = 26,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3024}},
         },
         [97558] = { -- Hides for the Forsaken : https://wowhead.com/forever/quest=97558/hides-for-the-forsaken
@@ -3567,6 +4340,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Hides for the Forsaken",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3549}},
         },
         [97583] = { -- WRIGGLE. : https://wowhead.com/forever/quest=97583/wriggle
@@ -3574,12 +4348,14 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "WRIGGLE.",
             [questKeys.questLevel] = 1,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [97891] = { -- Prompt Potion Runner : https://wowhead.com/forever/quest=97891/prompt-potion-runner
             [questKeys.finishedBy] = {{11044}},
             [questKeys.name] = "Prompt Potion Runner",
             [questKeys.questLevel] = 16,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{7683}},
         },
         [97894] = { -- Business in Auberdine : https://wowhead.com/forever/quest=97894/business-in-auberdine
@@ -3587,6 +4363,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Business in Auberdine",
             [questKeys.questLevel] = 17,
             [questKeys.requiredLevel] = 13,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{7232}},
         },
         [97899] = { -- Camping 101: Alchemy : https://wowhead.com/forever/quest=97899/camping-101-alchemy
@@ -3594,6 +4371,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Alchemy",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265809}},
         },
         [97900] = { -- Camping 101: Blacksmithing : https://wowhead.com/forever/quest=97900/camping-101-blacksmithing
@@ -3601,6 +4379,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Blacksmithing",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265809}},
         },
         [97901] = { -- Camping 101: Enchanting : https://wowhead.com/forever/quest=97901/camping-101-enchanting
@@ -3608,6 +4387,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Enchanting",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265809}},
         },
         [97902] = { -- Camping 101: Engineering : https://wowhead.com/forever/quest=97902/camping-101-engineering
@@ -3615,6 +4395,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Engineering",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265809}},
         },
         [97903] = { -- Camping 101: First Aid : https://wowhead.com/forever/quest=97903/camping-101-first-aid
@@ -3622,6 +4403,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: First Aid",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265809}},
         },
         [97904] = { -- Camping 101: Fishing : https://wowhead.com/forever/quest=97904/camping-101-fishing
@@ -3629,6 +4411,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Fishing",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265809}},
         },
         [97905] = { -- Camping 101: Herbalism : https://wowhead.com/forever/quest=97905/camping-101-herbalism
@@ -3636,6 +4419,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Herbalism",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265809}},
         },
         [97906] = { -- Camping 101: Leatherworking : https://wowhead.com/forever/quest=97906/camping-101-leatherworking
@@ -3643,6 +4427,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Leatherworking",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265809}},
         },
         [97907] = { -- Camping 101: Mining : https://wowhead.com/forever/quest=97907/camping-101-mining
@@ -3650,6 +4435,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Mining",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265809}},
         },
         [97908] = { -- Camping 101: Skinning : https://wowhead.com/forever/quest=97908/camping-101-skinning
@@ -3657,6 +4443,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Skinning",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265809}},
         },
         [97914] = { -- Expanding Horizons : https://wowhead.com/forever/quest=97914/expanding-horizons
@@ -3664,6 +4451,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Expanding Horizons",
             [questKeys.questLevel] = 17,
             [questKeys.requiredLevel] = 13,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{3649}},
         },
         [97915] = { -- Camping 101: Alchemy : https://wowhead.com/forever/quest=97915/camping-101-alchemy
@@ -3671,6 +4459,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Alchemy",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{263399}},
         },
         [97916] = { -- Camping 101: Blacksmithing : https://wowhead.com/forever/quest=97916/camping-101-blacksmithing
@@ -3678,6 +4467,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Blacksmithing",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{263399}},
         },
         [97917] = { -- Camping 101: Enchanting : https://wowhead.com/forever/quest=97917/camping-101-enchanting
@@ -3685,6 +4475,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Enchanting",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{263399}},
         },
         [97918] = { -- Camping 101: Engineering : https://wowhead.com/forever/quest=97918/camping-101-engineering
@@ -3692,6 +4483,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Engineering",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{263399}},
         },
         [97919] = { -- Camping 101: First Aid : https://wowhead.com/forever/quest=97919/camping-101-first-aid
@@ -3699,6 +4491,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: First Aid",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{263399}},
         },
         [97920] = { -- Camping 101: Fishing : https://wowhead.com/forever/quest=97920/camping-101-fishing
@@ -3706,6 +4499,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Fishing",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{263399}},
         },
         [97921] = { -- Camping 101: Herbalism : https://wowhead.com/forever/quest=97921/camping-101-herbalism
@@ -3713,6 +4507,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Herbalism",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{263399}},
         },
         [97922] = { -- Camping 101: Leatherworking : https://wowhead.com/forever/quest=97922/camping-101-leatherworking
@@ -3720,6 +4515,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Leatherworking",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{263399}},
         },
         [97923] = { -- Camping 101: Mining : https://wowhead.com/forever/quest=97923/camping-101-mining
@@ -3727,6 +4523,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Mining",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{263399}},
         },
         [97924] = { -- Camping 101: Skinning : https://wowhead.com/forever/quest=97924/camping-101-skinning
@@ -3734,6 +4531,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Skinning",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{263399}},
         },
         [97925] = { -- Camping 101: Tailoring : https://wowhead.com/forever/quest=97925/camping-101-tailoring
@@ -3741,6 +4539,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Tailoring",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{263399}},
         },
         [97926] = { -- Making Do : https://wowhead.com/forever/quest=97926/making-do
@@ -3748,6 +4547,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Making Do",
             [questKeys.questLevel] = 17,
             [questKeys.requiredLevel] = 13,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1646}},
         },
         [97927] = { -- Camping 101: Alchemy : https://wowhead.com/forever/quest=97927/camping-101-alchemy
@@ -3755,6 +4555,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Alchemy",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265810}},
         },
         [97928] = { -- Camping 101: Blacksmithing : https://wowhead.com/forever/quest=97928/camping-101-blacksmithing
@@ -3762,24 +4563,28 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Blacksmithing",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265810}},
         },
         [97929] = { -- Camping 101: Enchanting : https://wowhead.com/forever/quest=97929/camping-101-enchanting
             [questKeys.name] = "Camping 101: Enchanting",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265810}},
         },
         [97930] = { -- Camping 101: Engineering : https://wowhead.com/forever/quest=97930/camping-101-engineering
             [questKeys.name] = "Camping 101: Engineering",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [97931] = { -- Camping 101: First Aid : https://wowhead.com/forever/quest=97931/camping-101-first-aid
             [questKeys.finishedBy] = {{5939}},
             [questKeys.name] = "Camping 101: First Aid",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265810}},
         },
         [97932] = { -- Camping 101: Fishing : https://wowhead.com/forever/quest=97932/camping-101-fishing
@@ -3787,6 +4592,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Fishing",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265810}},
         },
         [97933] = { -- Camping 101: Herbalism : https://wowhead.com/forever/quest=97933/camping-101-herbalism
@@ -3794,6 +4600,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Herbalism",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265810}},
         },
         [97934] = { -- Camping 101: Leatherworking : https://wowhead.com/forever/quest=97934/camping-101-leatherworking
@@ -3801,6 +4608,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Leatherworking",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265810}},
         },
         [97935] = { -- Camping 101: Mining : https://wowhead.com/forever/quest=97935/camping-101-mining
@@ -3808,6 +4616,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Mining",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265810}},
         },
         [97936] = { -- Camping 101: Skinning : https://wowhead.com/forever/quest=97936/camping-101-skinning
@@ -3815,12 +4624,14 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Skinning",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265810}},
         },
         [97937] = { -- Camping 101: Tailoring : https://wowhead.com/forever/quest=97937/camping-101-tailoring
             [questKeys.name] = "Camping 101: Tailoring",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265810}},
         },
         [97938] = { -- Camping 101: Alchemy : https://wowhead.com/forever/quest=97938/camping-101-alchemy
@@ -3828,12 +4639,14 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Alchemy",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265811}},
         },
         [97939] = { -- Camping 101: Blacksmithing : https://wowhead.com/forever/quest=97939/camping-101-blacksmithing
             [questKeys.name] = "Camping 101: Blacksmithing",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265811}},
         },
         [97940] = { -- Camping 101: Enchanting : https://wowhead.com/forever/quest=97940/camping-101-enchanting
@@ -3841,6 +4654,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Enchanting",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265811}},
         },
         [97941] = { -- Camping 101: Engineering : https://wowhead.com/forever/quest=97941/camping-101-engineering
@@ -3848,6 +4662,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Engineering",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265811}},
         },
         [97942] = { -- Camping 101: First Aid : https://wowhead.com/forever/quest=97942/camping-101-first-aid
@@ -3855,6 +4670,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: First Aid",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265811}},
         },
         [97943] = { -- Camping 101: Fishing : https://wowhead.com/forever/quest=97943/camping-101-fishing
@@ -3862,6 +4678,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Fishing",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265811}},
         },
         [97944] = { -- Camping 101: Herbalism : https://wowhead.com/forever/quest=97944/camping-101-herbalism
@@ -3869,6 +4686,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Herbalism",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265811}},
         },
         [97946] = { -- Camping 101: Leatherworking : https://wowhead.com/forever/quest=97946/camping-101-leatherworking
@@ -3876,6 +4694,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Leatherworking",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265811}},
         },
         [97948] = { -- Camping 101: Mining : https://wowhead.com/forever/quest=97948/camping-101-mining
@@ -3883,6 +4702,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Mining",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265811}},
         },
         [97949] = { -- Camping 101: Skinning : https://wowhead.com/forever/quest=97949/camping-101-skinning
@@ -3890,6 +4710,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Skinning",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265811}},
         },
         [97950] = { -- Camping 101: Tailoring : https://wowhead.com/forever/quest=97950/camping-101-tailoring
@@ -3897,6 +4718,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Tailoring",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{265811}},
         },
         [97951] = { -- Camping 101: Alchemy : https://wowhead.com/forever/quest=97951/camping-101-alchemy
@@ -3904,6 +4726,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Alchemy",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265812}},
         },
         [97952] = { -- Camping 101: Blacksmithing : https://wowhead.com/forever/quest=97952/camping-101-blacksmithing
@@ -3911,6 +4734,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Blacksmithing",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265812}},
         },
         [97953] = { -- Camping 101: Enchanting : https://wowhead.com/forever/quest=97953/camping-101-enchanting
@@ -3918,6 +4742,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Enchanting",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265812}},
         },
         [97954] = { -- Camping 101: Engineering : https://wowhead.com/forever/quest=97954/camping-101-engineering
@@ -3925,6 +4750,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Engineering",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265812}},
         },
         [97955] = { -- Camping 101: First Aid : https://wowhead.com/forever/quest=97955/camping-101-first-aid
@@ -3932,6 +4758,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: First Aid",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265812}},
         },
         [97956] = { -- Camping 101: Fishing : https://wowhead.com/forever/quest=97956/camping-101-fishing
@@ -3939,6 +4766,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Fishing",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265812}},
         },
         [97957] = { -- Camping 101: Herbalism : https://wowhead.com/forever/quest=97957/camping-101-herbalism
@@ -3946,6 +4774,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Herbalism",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265812}},
         },
         [97958] = { -- Camping 101: Leatherworking : https://wowhead.com/forever/quest=97958/camping-101-leatherworking
@@ -3953,6 +4782,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Leatherworking",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265812}},
         },
         [97959] = { -- Camping 101: Mining : https://wowhead.com/forever/quest=97959/camping-101-mining
@@ -3960,6 +4790,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Mining",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265812}},
         },
         [97960] = { -- Camping 101: Skinning : https://wowhead.com/forever/quest=97960/camping-101-skinning
@@ -3967,6 +4798,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Skinning",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265812}},
         },
         [97961] = { -- Camping 101: Tailoring : https://wowhead.com/forever/quest=97961/camping-101-tailoring
@@ -3974,6 +4806,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Tailoring",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{265812}},
         },
         [97963] = { -- Camping 101: Alchemy : https://wowhead.com/forever/quest=97963/camping-101-alchemy
@@ -3981,6 +4814,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Alchemy",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{263664}},
         },
         [97964] = { -- Camping 101: Blacksmithing : https://wowhead.com/forever/quest=97964/camping-101-blacksmithing
@@ -3988,6 +4822,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Blacksmithing",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{263664}},
         },
         [97965] = { -- Camping 101: First Aid : https://wowhead.com/forever/quest=97965/camping-101-first-aid
@@ -3995,6 +4830,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: First Aid",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{263664}},
         },
         [97967] = { -- Camping 101: Fishing : https://wowhead.com/forever/quest=97967/camping-101-fishing
@@ -4002,6 +4838,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Fishing",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{263664}},
         },
         [97968] = { -- Camping 101: Herbalism : https://wowhead.com/forever/quest=97968/camping-101-herbalism
@@ -4009,6 +4846,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Herbalism",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{263664}},
         },
         [97969] = { -- Camping 101: Leatherworking : https://wowhead.com/forever/quest=97969/camping-101-leatherworking
@@ -4016,6 +4854,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Leatherworking",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{263664}},
         },
         [97970] = { -- Camping 101: Mining : https://wowhead.com/forever/quest=97970/camping-101-mining
@@ -4023,6 +4862,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Mining",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{263664}},
         },
         [97971] = { -- Camping 101: Skinning : https://wowhead.com/forever/quest=97971/camping-101-skinning
@@ -4030,6 +4870,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Skinning",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{263664}},
         },
         [97972] = { -- Camping 101: Tailoring : https://wowhead.com/forever/quest=97972/camping-101-tailoring
@@ -4037,6 +4878,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Tailoring",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{263664}},
         },
         [97973] = { -- Camping 101: Tailoring : https://wowhead.com/forever/quest=97973/camping-101-tailoring
@@ -4044,6 +4886,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Tailoring",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{263664}},
         },
         [97977] = { -- Nature's Call : https://wowhead.com/forever/quest=97977/natures-call
@@ -4051,6 +4894,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Nature's Call",
             [questKeys.questLevel] = 3,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1992}},
         },
         [97979] = { -- The Goddess Provides : https://wowhead.com/forever/quest=97979/the-goddess-provides
@@ -4058,6 +4902,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Goddess Provides",
             [questKeys.questLevel] = 1,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.NIGHT_ELF,
             [questKeys.startedBy] = {{3595}},
         },
         [98013] = { -- Swelling Forces : https://wowhead.com/forever/quest=98013/swelling-forces
@@ -4065,6 +4910,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Swelling Forces",
             [questKeys.questLevel] = 20,
             [questKeys.requiredLevel] = 12,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{270269}},
         },
         [98021] = { -- Journey to Sentinel Hill : https://wowhead.com/forever/quest=98021/journey-to-sentinel-hill
@@ -4072,6 +4918,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Journey to Sentinel Hill",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.startedBy] = {{1748}},
         },
         [98024] = { -- Journey to the Crossroads : https://wowhead.com/forever/quest=98024/journey-to-the-crossroads
@@ -4079,6 +4926,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Journey to the Crossroads",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{4949}},
         },
         [98025] = { -- WANTED: Jai'vhanel : https://wowhead.com/forever/quest=98025/wanted-jaivhanel
@@ -4086,6 +4934,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "WANTED: Jai'vhanel",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {nil, {175320}},
         },
         [98028] = { -- Baron Marinous : https://wowhead.com/forever/quest=98028/baron-marinous
@@ -4093,12 +4942,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Baron Marinous",
             [questKeys.questLevel] = 21,
             [questKeys.requiredLevel] = 17,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {279275}},
         },
         [98042] = { -- It's All Fun and Games Until... : https://wowhead.com/forever/quest=98042/its-all-fun-and-games-until
             [questKeys.finishedBy] = {{3649}},
             [questKeys.name] = "It's All Fun and Games Until...",
             [questKeys.questLevel] = 17,
             [questKeys.requiredLevel] = 12,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {nil, {12666}},
         },
         [98046] = { -- Crown of the Earth : https://wowhead.com/forever/quest=98046/crown-of-the-earth
@@ -4106,6 +4958,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Crown of the Earth",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{3516}},
         },
         [98065] = { -- Crown of the Earth : https://wowhead.com/forever/quest=98065/crown-of-the-earth
@@ -4113,6 +4966,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Crown of the Earth",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{4092}},
         },
         [98067] = { -- Eyes of the Sentinels : https://wowhead.com/forever/quest=98067/eyes-of-the-sentinels
@@ -4120,107 +4974,117 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Eyes of the Sentinels",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{8396}},
-        },
-        [98072] = { -- Crocs of the Sky : https://wowhead.com/forever/quest=98072/crocs-of-the-sky
-            [questKeys.name] = "Crocs of the Sky",
-            [questKeys.questLevel] = 27,
-            [questKeys.requiredLevel] = 19,
         },
         [98093] = { -- Field to Clear : https://wowhead.com/forever/quest=98093/field-to-clear
             [questKeys.name] = "Field to Clear",
             [questKeys.questLevel] = 23,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [98094] = { -- Scout Support : https://wowhead.com/forever/quest=98094/scout-support
             [questKeys.name] = "Scout Support",
             [questKeys.questLevel] = 25,
             [questKeys.requiredLevel] = 19,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [98095] = { -- Valuable Vantages : https://wowhead.com/forever/quest=98095/valuable-vantages
             [questKeys.name] = "Valuable Vantages",
             [questKeys.questLevel] = 25,
             [questKeys.requiredLevel] = 19,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [98189] = { -- Return the Statuette : https://wowhead.com/forever/quest=98189/return-the-statuette
             [questKeys.name] = "Return the Statuette",
             [questKeys.questLevel] = 25,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98190] = { -- A Friend of the Family : https://wowhead.com/forever/quest=98190/a-friend-of-the-family
             [questKeys.name] = "A Friend of the Family",
             [questKeys.questLevel] = 25,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98191] = { -- A Friend of the Family : https://wowhead.com/forever/quest=98191/a-friend-of-the-family
             [questKeys.name] = "A Friend of the Family",
             [questKeys.questLevel] = 25,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98197] = { -- Spoils of War : https://wowhead.com/forever/quest=98197/spoils-of-war
             [questKeys.finishedBy] = {{2086}},
             [questKeys.name] = "Spoils of War",
             [questKeys.questLevel] = 22,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{2086}},
-        },
-        [98208] = { -- Bloom of the Heavens : https://wowhead.com/forever/quest=98208/bloom-of-the-heavens
-            [questKeys.name] = "Bloom of the Heavens",
-            [questKeys.questLevel] = 29,
-            [questKeys.requiredLevel] = 22,
         },
         [98219] = { -- The Shamed Lieutenant : https://wowhead.com/forever/quest=98219/the-shamed-lieutenant
             [questKeys.name] = "The Shamed Lieutenant",
             [questKeys.questLevel] = 30,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98240] = { -- Crimson Crate Delivery : https://wowhead.com/forever/quest=98240/crimson-crate-delivery
             [questKeys.name] = "Crimson Crate Delivery",
             [questKeys.questLevel] = 29,
             [questKeys.requiredLevel] = 19,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98245] = { -- Razormaw Needling : https://wowhead.com/forever/quest=98245/razormaw-needling
             [questKeys.name] = "Razormaw Needling",
             [questKeys.questLevel] = 29,
             [questKeys.requiredLevel] = 21,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98246] = { -- Trying Times : https://wowhead.com/forever/quest=98246/trying-times
             [questKeys.name] = "Trying Times",
             [questKeys.questLevel] = 29,
             [questKeys.requiredLevel] = 21,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98247] = { -- Shipping Label : https://wowhead.com/forever/quest=98247/shipping-label
             [questKeys.finishedBy] = {{256390}},
             [questKeys.name] = "Shipping Label",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {280179}},
         },
         [98248] = { -- Shipping Label : https://wowhead.com/forever/quest=98248/shipping-label
             [questKeys.finishedBy] = {{256386}},
             [questKeys.name] = "Shipping Label",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.startedBy] = {nil, nil, {280180}},
         },
         [98251] = { -- Never Coming Back : https://wowhead.com/forever/quest=98251/never-coming-back
             [questKeys.name] = "Never Coming Back",
             [questKeys.questLevel] = 22,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [98252] = { -- A Void Path : https://wowhead.com/forever/quest=98252/a-void-path
             [questKeys.name] = "A Void Path",
             [questKeys.questLevel] = 22,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [98282] = { -- Alchemical Hazards : https://wowhead.com/forever/quest=98282/alchemical-hazards
             [questKeys.name] = "Alchemical Hazards",
             [questKeys.questLevel] = 22,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98284] = { -- Camping 101: Enchanting : https://wowhead.com/forever/quest=98284/camping-101-enchanting
             [questKeys.finishedBy] = {{257020}},
             [questKeys.name] = "Camping 101: Enchanting",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{263664}},
         },
         [98285] = { -- Camping 101: Engineering : https://wowhead.com/forever/quest=98285/camping-101-engineering
@@ -4228,6 +5092,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Engineering",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{251684}},
         },
         [98286] = { -- Camping 101: Enchanting : https://wowhead.com/forever/quest=98286/camping-101-enchanting
@@ -4235,23 +5100,27 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Camping 101: Enchanting",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{263664}},
         },
         [98287] = { -- Camping 101: Engineering : https://wowhead.com/forever/quest=98287/camping-101-engineering
             [questKeys.name] = "Camping 101: Engineering",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98293] = { -- Forced Disarmament : https://wowhead.com/forever/quest=98293/forced-disarmament
             [questKeys.name] = "Forced Disarmament",
             [questKeys.questLevel] = 30,
             [questKeys.requiredLevel] = 22,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98298] = { -- Arugal's Folly : https://wowhead.com/forever/quest=98298/arugals-folly
             [questKeys.finishedBy] = {{1938}},
             [questKeys.name] = "Arugal's Folly",
             [questKeys.questLevel] = 16,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{1938}},
         },
         [98299] = { -- Stop the Spread : https://wowhead.com/forever/quest=98299/stop-the-spread
@@ -4259,6 +5128,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Stop the Spread",
             [questKeys.questLevel] = 20,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{1938}},
         },
         [98319] = { -- Secure the Mountain : https://wowhead.com/forever/quest=98319/secure-the-mountain
@@ -4266,6 +5136,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Secure the Mountain",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{271546}},
         },
         [98321] = { -- Flintfire's Shipment : https://wowhead.com/forever/quest=98321/flintfires-shipment
@@ -4273,6 +5144,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Flintfire's Shipment",
             [questKeys.questLevel] = 7,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1241}},
         },
         [98322] = { -- Secure the Mountain : https://wowhead.com/forever/quest=98322/secure-the-mountain
@@ -4280,6 +5152,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Secure the Mountain",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1252}},
         },
         [98323] = { -- Secure the Mountain : https://wowhead.com/forever/quest=98323/secure-the-mountain
@@ -4287,6 +5160,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Secure the Mountain",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{271546}},
         },
         [98326] = { -- Frosthowl : https://wowhead.com/forever/quest=98326/frosthowl
@@ -4294,13 +5168,16 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Frosthowl",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{8508}},
         },
         [98340] = { -- The Great Cat Spirit : https://wowhead.com/forever/quest=98340/the-great-cat-spirit
             [questKeys.finishedBy] = {{11802}},
             [questKeys.name] = "The Great Cat Spirit",
             [questKeys.questLevel] = 20,
+            [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.TAUREN + raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{3033}},
         },
         [98341] = { -- The Great Windborne Cat Spirit : https://wowhead.com/forever/quest=98341/the-great-windborne-cat-spirit
@@ -4308,32 +5185,33 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Great Windborne Cat Spirit",
             [questKeys.questLevel] = 20,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{11802}},
         },
         [98342] = { -- The Great Cat Spirit : https://wowhead.com/forever/quest=98342/the-great-cat-spirit
             [questKeys.finishedBy] = {{11957}},
             [questKeys.name] = "The Great Cat Spirit",
             [questKeys.questLevel] = 20,
+            [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.TAUREN,
             [questKeys.startedBy] = {{11957}},
         },
         [98362] = { -- To Thunder Bluff : https://wowhead.com/forever/quest=98362/to-thunder-bluff
             [questKeys.finishedBy] = {{3033}},
             [questKeys.name] = "To Thunder Bluff",
             [questKeys.questLevel] = 20,
+            [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.TAUREN + raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{11802}},
-        },
-        [98372] = { -- An Unfortunate End : https://wowhead.com/forever/quest=98372/an-unfortunate-end
-            [questKeys.name] = "An Unfortunate End",
-            [questKeys.questLevel] = 60,
-            [questKeys.requiredLevel] = 1,
         },
         [98386] = { -- Alther's Mill : https://wowhead.com/forever/quest=98386/althers-mill
             [questKeys.finishedBy] = {{341}},
             [questKeys.name] = "Alther's Mill",
             [questKeys.questLevel] = 21,
             [questKeys.requiredLevel] = 15,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{341}},
         },
         [98387] = { -- Blackrock Blockade : https://wowhead.com/forever/quest=98387/blackrock-blockade
@@ -4341,6 +5219,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Blackrock Blockade",
             [questKeys.questLevel] = 21,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{382}},
         },
         [98389] = { -- A Light in the Darkness : https://wowhead.com/forever/quest=98389/a-light-in-the-darkness
@@ -4348,6 +5227,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Light in the Darkness",
             [questKeys.questLevel] = 4,
             [questKeys.requiredLevel] = 2,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{244808}},
         },
         [98391] = { -- The Sisterhood of Elune : https://wowhead.com/forever/quest=98391/the-sisterhood-of-elune
@@ -4355,6 +5235,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Sisterhood of Elune",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{3600}},
         },
         [98392] = { -- Darkness in the Glade : https://wowhead.com/forever/quest=98392/darkness-in-the-glade
@@ -4362,40 +5243,50 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Darkness in the Glade",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{3519}},
         },
         [98393] = { -- The Great Cat Spirit : https://wowhead.com/forever/quest=98393/the-great-cat-spirit
             [questKeys.finishedBy] = {{11802}},
             [questKeys.name] = "The Great Cat Spirit",
             [questKeys.questLevel] = 20,
+            [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.NIGHT_ELF + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.startedBy] = {{4217}},
         },
         [98394] = { -- The Great Cat Spirit : https://wowhead.com/forever/quest=98394/the-great-cat-spirit
             [questKeys.finishedBy] = {{11957}},
             [questKeys.name] = "The Great Cat Spirit",
             [questKeys.questLevel] = 20,
+            [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.NIGHT_ELF,
             [questKeys.startedBy] = {{11802}},
         },
         [98396] = { -- The Great Cat Spirit : https://wowhead.com/forever/quest=98396/the-great-cat-spirit
             [questKeys.finishedBy] = {{11957}},
             [questKeys.name] = "The Great Cat Spirit",
             [questKeys.questLevel] = 20,
+            [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.NIGHT_ELF,
             [questKeys.startedBy] = {{11957}},
         },
         [98397] = { -- To Darnassus : https://wowhead.com/forever/quest=98397/to-darnassus
             [questKeys.finishedBy] = {{4217}},
             [questKeys.name] = "To Darnassus",
             [questKeys.questLevel] = 20,
+            [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.NIGHT_ELF + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.startedBy] = {{11802}},
         },
         [98398] = { -- The Oracle Tree : https://wowhead.com/forever/quest=98398/the-oracle-tree
             [questKeys.name] = "The Oracle Tree",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{3519}},
         },
         [98403] = { -- Twisted Hatred : https://wowhead.com/forever/quest=98403/twisted-hatred
@@ -4403,6 +5294,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Twisted Hatred",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{3567}},
         },
         [98404] = { -- The Great Windborne Cat Spirit : https://wowhead.com/forever/quest=98404/the-great-windborne-cat-spirit
@@ -4410,13 +5302,16 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Great Windborne Cat Spirit",
             [questKeys.questLevel] = 20,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{272054}},
         },
         [98405] = { -- The Great Cat Spirit : https://wowhead.com/forever/quest=98405/the-great-cat-spirit
             [questKeys.finishedBy] = {{11957}},
             [questKeys.name] = "The Great Cat Spirit",
             [questKeys.questLevel] = 20,
+            [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.TAUREN,
             [questKeys.startedBy] = {{11802}},
         },
         [98407] = { -- Show of Force : https://wowhead.com/forever/quest=98407/show-of-force
@@ -4424,6 +5319,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Show of Force",
             [questKeys.questLevel] = 17,
             [questKeys.requiredLevel] = 11,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1070}},
         },
         [98423] = { -- The Treaty of Understanding : https://wowhead.com/forever/quest=98423/the-treaty-of-understanding
@@ -4431,18 +5327,23 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Treaty of Understanding",
             [questKeys.questLevel] = 16,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.startedBy] = {nil, nil, {281030}},
         },
         [98424] = { -- Fizsprocket's Notes : https://wowhead.com/forever/quest=98424/fizsprockets-notes
             [questKeys.finishedBy] = {{2988}},
             [questKeys.name] = "Fizsprocket's Notes",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.startedBy] = {nil, nil, {281031}},
         },
         [98427] = { -- Ceasing Operations : https://wowhead.com/forever/quest=98427/ceasing-operations
             [questKeys.finishedBy] = {{2988}},
             [questKeys.name] = "Ceasing Operations",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{2988}},
         },
         [98430] = { -- The Longwalkers : https://wowhead.com/forever/quest=98430/the-longwalkers
@@ -4450,6 +5351,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Longwalkers",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{272203}},
         },
         [98435] = { -- Thunderhorn's Report : https://wowhead.com/forever/quest=98435/thunderhorns-report
@@ -4457,18 +5359,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Thunderhorn's Report",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{2948}},
-        },
-        [98447] = { -- The Valor Family : https://wowhead.com/forever/quest=98447/the-valor-family
-            [questKeys.name] = "The Valor Family",
-            [questKeys.questLevel] = 27,
-            [questKeys.requiredLevel] = 18,
         },
         [98459] = { -- A Lack of Virtue : https://wowhead.com/forever/quest=98459/a-lack-of-virtue
             [questKeys.finishedBy] = {{1481}},
             [questKeys.name] = "A Lack of Virtue",
             [questKeys.questLevel] = 21,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{254078}},
         },
         [98461] = { -- Unrequited Love : https://wowhead.com/forever/quest=98461/unrequited-love
@@ -4476,6 +5375,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Unrequited Love",
             [questKeys.questLevel] = 21,
             [questKeys.requiredLevel] = 18,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{2913}},
         },
         [98512] = { -- Al'Aketh Assassins : https://wowhead.com/forever/quest=98512/alaketh-assassins
@@ -4483,60 +5383,75 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Al'Aketh Assassins",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.startedBy] = {{273017}},
         },
         [98517] = { -- Call of Fire : https://wowhead.com/forever/quest=98517/call-of-fire
             [questKeys.name] = "Call of Fire",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
         },
         [98545] = { -- Leonid's Letter : https://wowhead.com/forever/quest=98545/leonids-letter
             [questKeys.finishedBy] = {{272526}},
             [questKeys.name] = "Leonid's Letter",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{267008}},
         },
         [98574] = { -- Hallowed Memorandum : https://wowhead.com/forever/quest=98574/hallowed-memorandum
             [questKeys.finishedBy] = {{837}},
             [questKeys.name] = "Hallowed Memorandum",
             [questKeys.questLevel] = 1,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.GNOME,
             [questKeys.startedBy] = {{658}},
         },
         [98575] = { -- Tainted Tablet : https://wowhead.com/forever/quest=98575/tainted-tablet
             [questKeys.finishedBy] = {{3156}},
             [questKeys.name] = "Tainted Tablet",
             [questKeys.questLevel] = 1,
+            [questKeys.requiredClasses] = classIDs.WARLOCK,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.TROLL,
             [questKeys.startedBy] = {{3143}},
         },
         [98576] = { -- Glyphic Parchment : https://wowhead.com/forever/quest=98576/glyphic-parchment
             [questKeys.finishedBy] = {{5884}},
             [questKeys.name] = "Glyphic Parchment",
             [questKeys.questLevel] = 1,
+            [questKeys.requiredClasses] = classIDs.MAGE,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ORC,
             [questKeys.startedBy] = {{3143}},
         },
         [98581] = { -- Archaic Rune : https://wowhead.com/forever/quest=98581/archaic-rune
             [questKeys.finishedBy] = {{257446}},
             [questKeys.name] = "Archaic Rune",
             [questKeys.questLevel] = 1,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.DWARF,
             [questKeys.startedBy] = {{658}},
         },
         [98601] = { -- A Difficult Path : https://wowhead.com/forever/quest=98601/a-difficult-path
             [questKeys.finishedBy] = {{244808}},
             [questKeys.name] = "A Difficult Path",
             [questKeys.questLevel] = 1,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.startedBy] = {{1569}},
         },
         [98731] = { -- Blessings of the Great Cat Spirit : https://wowhead.com/forever/quest=98731/blessings-of-the-great-cat-spirit
             [questKeys.finishedBy] = {{11802}},
             [questKeys.name] = "Blessings of the Great Cat Spirit",
             [questKeys.questLevel] = 20,
+            [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.NIGHT_ELF,
             [questKeys.startedBy] = {{11957}},
         },
         [98738] = { -- Blessings of the Great Windborne Cat Spirit : https://wowhead.com/forever/quest=98738/blessings-of-the-great-windborne-cat-spirit
@@ -4544,30 +5459,36 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Blessings of the Great Windborne Cat Spirit",
             [questKeys.questLevel] = 20,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.startedBy] = {{272054}},
         },
         [98739] = { -- Blessings of the Great Cat Spirit : https://wowhead.com/forever/quest=98739/blessings-of-the-great-cat-spirit
             [questKeys.finishedBy] = {{11802}},
             [questKeys.name] = "Blessings of the Great Cat Spirit",
             [questKeys.questLevel] = 20,
+            [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.requiredLevel] = 20,
+            [questKeys.requiredRaces] = raceIDs.TAUREN,
             [questKeys.startedBy] = {{11957}},
         },
         [98977] = { -- Mossheart the Elder : https://wowhead.com/forever/quest=98977/mossheart-the-elder
             [questKeys.name] = "Mossheart the Elder",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/lunar_festival_elders.toml; 0 = all races
         },
         [98983] = { -- Frostleaf the Elder : https://wowhead.com/forever/quest=98983/frostleaf-the-elder
             [questKeys.name] = "Frostleaf the Elder",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/lunar_festival_elders.toml; 0 = all races
         },
         [99046] = { -- The Lost Runner : https://wowhead.com/forever/quest=99046/the-lost-runner
             [questKeys.finishedBy] = {{275683}},
             [questKeys.name] = "The Lost Runner",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{2081}},
         },
         [99047] = { -- Not Dead Yet : https://wowhead.com/forever/quest=99047/not-dead-yet
@@ -4575,6 +5496,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Not Dead Yet",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{275683}},
         },
         [99048] = { -- A Missing Hand : https://wowhead.com/forever/quest=99048/a-missing-hand
@@ -4582,6 +5504,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Missing Hand",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3142}},
         },
         [99049] = { -- Threat from Below : https://wowhead.com/forever/quest=99049/threat-from-below
@@ -4589,6 +5512,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Threat from Below",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{275657}},
         },
         [99050] = { -- The Great Tree Provides : https://wowhead.com/forever/quest=99050/the-great-tree-provides
@@ -4596,6 +5520,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The Great Tree Provides",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{6094}},
         },
         [99051] = { -- Threat from Below : https://wowhead.com/forever/quest=99051/threat-from-below
@@ -4603,6 +5528,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Threat from Below",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 9,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3142}},
         },
         [99052] = { -- Threat from Below : https://wowhead.com/forever/quest=99052/threat-from-below
@@ -4610,6 +5536,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Threat from Below",
             [questKeys.questLevel] = 12,
             [questKeys.requiredLevel] = 10,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3142}},
         },
         [99053] = { -- Escaping Ban'ethil : https://wowhead.com/forever/quest=99053/escaping-banethil
@@ -4617,6 +5544,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Escaping Ban'ethil",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{275744}},
         },
         [99073] = { -- Easing Suffering : https://wowhead.com/forever/quest=99073/easing-suffering
@@ -4624,6 +5552,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Easing Suffering",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{6094}},
         },
         [99079] = { -- Longwalker Malah : https://wowhead.com/forever/quest=99079/longwalker-malah
@@ -4631,6 +5560,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Longwalker Malah",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3222}},
         },
         [99080] = { -- Drive Them Out : https://wowhead.com/forever/quest=99080/drive-them-out
@@ -4638,6 +5568,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Drive Them Out",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{2993}},
         },
         [99081] = { -- Grim Tidings : https://wowhead.com/forever/quest=99081/grim-tidings
@@ -4645,6 +5576,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Grim Tidings",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{275789}},
         },
         [99082] = { -- The High Chieftain : https://wowhead.com/forever/quest=99082/the-high-chieftain
@@ -4652,6 +5584,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The High Chieftain",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{2993}},
         },
         [99101] = { -- Our Ancient Enemy : https://wowhead.com/forever/quest=99101/our-ancient-enemy
@@ -4659,6 +5592,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Our Ancient Enemy",
             [questKeys.questLevel] = 9,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3222}},
         },
         [99108] = { -- Sparring Match : https://wowhead.com/forever/quest=99108/sparring-match
@@ -4666,6 +5600,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Sparring Match",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{3063}},
         },
         [99123] = { -- Lost in the Shadows : https://wowhead.com/forever/quest=99123/lost-in-the-shadows
@@ -4673,6 +5608,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Lost in the Shadows",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{275811}},
         },
         [99127] = { -- A Net Disaster : https://wowhead.com/forever/quest=99127/a-net-disaster
@@ -4680,6 +5616,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Net Disaster",
             [questKeys.questLevel] = 7,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{383}},
         },
         [99128] = { -- Slimy Menace : https://wowhead.com/forever/quest=99128/slimy-menace
@@ -4687,6 +5624,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Slimy Menace",
             [questKeys.questLevel] = 7,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{383}},
         },
         [99129] = { -- A Man About a Murloc : https://wowhead.com/forever/quest=99129/a-man-about-a-murloc
@@ -4694,6 +5632,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Man About a Murloc",
             [questKeys.questLevel] = 7,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{383}},
         },
         [99130] = { -- An Enticing Offer : https://wowhead.com/forever/quest=99130/an-enticing-offer
@@ -4701,6 +5640,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "An Enticing Offer",
             [questKeys.questLevel] = 7,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{241}},
         },
         [99131] = { -- Baited for Success : https://wowhead.com/forever/quest=99131/baited-for-success
@@ -4708,6 +5648,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Baited for Success",
             [questKeys.questLevel] = 7,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{241}},
         },
         [99134] = { -- Discipline : https://wowhead.com/forever/quest=99134/discipline
@@ -4715,6 +5656,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Discipline",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{1515}},
         },
         [99141] = { -- Patience : https://wowhead.com/forever/quest=99141/patience
@@ -4722,6 +5664,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Patience",
             [questKeys.questLevel] = 6,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{1515}},
         },
         [99142] = { -- Tomb Weed : https://wowhead.com/forever/quest=99142/tomb-weed
@@ -4729,6 +5672,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Tomb Weed",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{10665}},
         },
         [99143] = { -- Bottles and Baubles : https://wowhead.com/forever/quest=99143/bottles-and-baubles
@@ -4736,6 +5680,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Bottles and Baubles",
             [questKeys.questLevel] = 7,
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1651}},
         },
         [99144] = { -- Seeking Refuge : https://wowhead.com/forever/quest=99144/seeking-refuge
@@ -4743,18 +5688,15 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Seeking Refuge",
             [questKeys.questLevel] = 7,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{275954}},
-        },
-        [99145] = { -- A Winter Veil Gift : https://wowhead.com/forever/quest=99145/a-winter-veil-gift
-            [questKeys.name] = "A Winter Veil Gift",
-            [questKeys.questLevel] = 1,
-            [questKeys.requiredLevel] = 1,
         },
         [99152] = { -- As Above, So Below : https://wowhead.com/forever/quest=99152/as-above-so-below
             [questKeys.finishedBy] = {{246389}},
             [questKeys.name] = "As Above, So Below",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{246389}},
         },
         [99153] = { -- The One That Got Away : https://wowhead.com/forever/quest=99153/the-one-that-got-away
@@ -4762,6 +5704,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "The One That Got Away",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{259190}},
         },
         [99156] = { -- Rear Guard Patrol : https://wowhead.com/forever/quest=99156/rear-guard-patrol
@@ -4769,6 +5712,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Rear Guard Patrol",
             [questKeys.questLevel] = 13,
             [questKeys.requiredLevel] = 6,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{1495}},
         },
         [99158] = { -- Dawn in the Mountains : https://wowhead.com/forever/quest=99158/dawn-in-the-mountains
@@ -4776,6 +5720,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Dawn in the Mountains",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1226}},
         },
         [99159] = { -- Finding Warmth : https://wowhead.com/forever/quest=99159/finding-warmth
@@ -4783,6 +5728,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Finding Warmth",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1253}},
         },
         [99160] = { -- Rime's Wrath : https://wowhead.com/forever/quest=99160/rimes-wrath
@@ -4790,6 +5736,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Rime's Wrath",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1253}},
         },
         [99161] = { -- Rime's Wrath : https://wowhead.com/forever/quest=99161/rimes-wrath
@@ -4797,6 +5744,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Rime's Wrath",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1253}},
         },
         [99162] = { -- Treacherous Cold : https://wowhead.com/forever/quest=99162/treacherous-cold
@@ -4804,24 +5752,28 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Treacherous Cold",
             [questKeys.questLevel] = 8,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.startedBy] = {{1253}},
         },
         [99191] = { -- A Donation of Wool : https://wowhead.com/forever/quest=99191/a-donation-of-wool
             [questKeys.name] = "A Donation of Wool",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 12,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [99196] = { -- A Donation of Wool : https://wowhead.com/forever/quest=99196/a-donation-of-wool
             [questKeys.finishedBy] = {{276171}},
             [questKeys.name] = "A Donation of Wool",
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 12,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.startedBy] = {{276171}},
         },
         [99260] = { -- Fillion's Mission : https://wowhead.com/forever/quest=99260/fillions-mission
             [questKeys.name] = "Fillion's Mission",
             [questKeys.questLevel] = 10,
             [questKeys.requiredLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
     }
 end
