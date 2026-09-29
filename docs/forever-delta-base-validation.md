@@ -780,3 +780,28 @@ No TOC or `.out/` file belongs to it. Parent review and guarded copy remain sepa
 | `foreverBaseQuest.lua` | `0f4dfd18ecb2b4ef123134967741739e7ce50814dd6b836e25f37f1b0939be41` |
 | `report.json` | `68b820dbd811f78c3accc43fd1606bf7f9e1cd4462e79476de2116c73abf8d96` |
 | `report.md` | `690e86ff8156f5e642953cbec600ee59ee558692c23588db50bdc579331e6d1a` |
+
+
+## Objective summaries: focused authorized import
+
+Regenerated from generator `f96c1c7` into
+`/home/logon/projects/forever-base-db/generated/objectives-text-import/`, using the
+same read-only entity snapshots and optional Forever zone cache as the prior import.
+Report schema 11; consumer provenance schema 3.
+
+Exactly **707 objective summaries** were added. All 12,368 correction IDs and every
+non-text field match the prior import. NPC, Object and Item providers remain
+byte-identical, preserving all 1,501 NPC and 22 Object zone assignments.
+
+At the user's explicit request, this import used focused checks, not full artifact
+gates. Actual Source getters return all 707 report strings exactly; quest 25's
+paragraphs, quest 349's explicit clear and quest 97286's absent summary also pass.
+Correction/import/native-TOC suites: **2,464 checks passed**. Gameplay validators:
+**15/15 clean, zero findings**, Self-check passed. Fresh wrapper/provenance review
+found no issues. Generation of consumer artifacts, Baked verification, Equivalence,
+Reconstruction and the full correction audit were **not rerun**.
+
+Only the Quest provider, provenance, guide and this report changed. Working TOCs,
+index, existing enum edit and protected untracked files were preserved. No commit
+or push. Backups and focused logs: `/tmp/questiedb-text-import-guard.y9phc8h5/`.
+The 19 deferred quests remain open; all 20 export holdbacks remain unchanged.
