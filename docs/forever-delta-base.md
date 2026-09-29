@@ -45,12 +45,13 @@ non-category values, nonzero category values and the consumer `:Load()` contract
 
 ## Policy and limitations
 
-The Static order remains **raw base -> inherited legacy Corrections -> generated delta-base
--> authored Forever Corrections**. All six legacy providers, including generated reputation
-and Item-start sets, precede `ForeverDeltaBaseStatic` (1300). Authored `forever*Fixes.lua`
-providers follow in `ForeverStatic` (1400). Dynamic Corrections still override static data.
-The effective upstream comparison baseline excludes generated, authored Forever and Dynamic
-providers. Later authored corrections remain authoritative, not inputs to extraction.
+The Static order is **raw base -> inherited legacy Corrections -> generated delta-base
+-> generated traces -> authored Forever Corrections**. All six legacy providers, including
+generated reputation and Item-start sets, precede `ForeverDeltaBaseStatic` (1300).
+Within `ForeverStatic` (1400), generated trace providers run before authored `forever*Fixes.lua`
+providers. Dynamic Corrections still override static data. The effective upstream comparison
+baseline excludes generated base, trace, authored Forever and Dynamic providers. Later trace
+and authored corrections remain authoritative, not inputs to extraction.
 
 Ordinary table fields initialize missing records or absent/empty effective-baseline fields.
 Partial changes to populated fields use `_add`/`_remove`, including a new group alongside an existing group.

@@ -49,10 +49,11 @@ Titan Reforged applies only to Wrath season 109, not Forever.
 ## Correction authoring
 
 The Static layering is **raw base -> inherited legacy Corrections -> generated delta-base ->
-authored Forever Corrections**. `generated/` follows all inherited Static providers, including
-generated reputation and Item-start sets, and precedes authored `forever*Fixes.lua` providers. They apply in Source
+generated traces -> authored Forever Corrections**. `generated/` follows all inherited Static
+providers, including generated reputation and Item-start sets. `traces/` follows the generated
+base and precedes authored `forever*Fixes.lua` providers. Both generated layers apply in Source
 mode and are folded into Generation, never loaded as Baked runtime providers. Keep manual
-changes out of that folder; see [provenance, limitations and refresh](forever-delta-base.md).
+changes out of those folders; see [base provenance, limitations and refresh](forever-delta-base.md).
 
 Add new manual corrections in `src/corrections/Forever/`:
 
@@ -73,7 +74,7 @@ The usual `QuestieDB.questKeys`, `npcKeys`, `itemKeys` and `objectKeys` tables c
 schemas; correction files do not load them themselves.
 
 The six files in `legacy/` remain the inherited baseline; leave them unchanged for ordinary correction work. New Static
-Corrections apply after legacy and generated delta-base Static Corrections. New Dynamic Corrections apply after legacy
+Corrections apply after legacy, generated delta-base and trace Static Corrections. New Dynamic Corrections apply after legacy
 Dynamic Corrections. Dynamic Corrections still outrank all static data, so a replacement for
 an inherited Dynamic Correction belongs in `LoadDynamic()`, even if its new value is unconditional.
 
@@ -88,16 +89,16 @@ Conversion only targets the inherited baseline and raw data, never `forever*Fixe
 
 ### Trace corrections
 
-`src/corrections/Forever/traces/` holds a fourth, machine-generated layer:
-`foreverTraceQuestFixes.lua`, `foreverTraceNpcFixes.lua`, `foreverTraceItemFixes.lua`,
-`foreverTraceObjectFixes.lua`. `tools/trace-analyzer` regenerates these from aggregated
-player traces; never hand-edit them — hand-authored work belongs in the `forever*Fixes.lua`
+`src/corrections/Forever/traces/` holds the machine-generated trace layer:
+`foreverQuestTraces.lua`, `foreverNpcTraces.lua`, `foreverItemTraces.lua`,
+`foreverObjectTraces.lua`. `tools/trace-analyzer` regenerates these from aggregated
+player traces; never hand-edit them. Hand-authored work belongs in the `forever*Fixes.lua`
 files above. Each exposes only `Load()` (Static; no Dynamic entry point).
 
-Static Corrections apply in the order legacy baseline → traces → authored `forever*Fixes.lua`,
-so an authored fix always overrides a trace-derived value for the same field, and a trace
-value always overrides the legacy baseline. Ids the trace layer does not touch fall through
-to whichever layer beneath it last set them.
+A trace-derived value overrides the generated delta-base value for the same field;
+an authored fix overrides both. Fields the trace layer does not touch retain the value
+from the generated delta-base or inherited baseline. Registry priorities enforce this
+order independently of file order: generated base 1302, traces 1402, authored Static 1411.
 
 ## Baked artifacts
 

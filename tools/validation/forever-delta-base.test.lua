@@ -58,15 +58,17 @@ local function witness(db)
   end
   assert(db.Quest.Exists(86585) and db.Quest.GetAllIds(true)[86585], "new quest is enumerable")
   assert(db.Quest.name(86585) == "Banner of the Fallen")
-  assert(db.Quest.questLevel(86585) == 17 and db.Quest.requiredLevel(86585) == 10)
+  assert(db.Quest.questLevel(86585) == 17 and db.Quest.requiredLevel(86585) == 17,
+    "trace required level overrides the generated base")
   assert(db.Quest.startedBy(86585)[1][1] == 269153, "explicit new quest giver")
   assert(db.Quest.finishedBy(86585)[1][1] == 1092, "explicit existing finisher")
   assert(db.Npc.Exists(269153) and db.Npc.GetAllIds(true)[269153], "new giver is enumerable")
   assert(db.Npc.name(269153) == "Mountaineer Ylva")
   assert(db.Npc.questStarts(269153)[1] == 86585, "reverse giver link")
   local spawns = db.Npc.spawns(269153)
-  assert(spawns[38][1][1] == 31.8 and spawns[38][1][2] == 86.2, "unchanged-frame new spawn")
-  assert(next(db.Quest.objectives(86585)) == nil, "incomplete quest does not invent objectives")
+  assert(spawns[38][1][1] == 31.76 and spawns[38][1][2] == 86.21, "trace spawn overrides the generated base")
+  local objectives = db.Quest.objectives(86585)
+  assert(objectives[1][1][1] == 269185, "trace supplies the missing Headsplitter objective")
   assert(db.Object.name(175725) == "The Old Gods and the Ordering of Azeroth", "imported object")
   assert(db.Object.spawns(175725)[11][1][1] == 9.9, "imported object spawn")
   assert(db.Item.Exists(286647) and db.Item.GetAllIds(true)[286647], "new item is enumerable")
@@ -79,17 +81,22 @@ end
 for _, token in ipairs(baked and { "camelot" } or { "camelot", "forever" }) do
   local db, files = load("Forever", token)
   witness(db)
-  local generated = 0
+  local generated, traces = 0, 0
   for _, entry in ipairs(db.Corrections.Select()) do
     if entry.name:find("^Forever/generated/") then
       generated = generated + 1
       assert(not entry.dynamic, "delta-base must never become Dynamic")
+    elseif entry.name:find("^Forever/traces/") then
+      traces = traces + 1
+      assert(not entry.dynamic, "traces must remain Static-only")
     end
   end
   assert(generated == (baked and 0 or 4), "only Source registers all four delta-base providers")
+  assert(traces == (baked and 0 or 4), "only Source registers all four trace providers")
   if baked then
     for _, path in ipairs(files) do
-      assert(not path:find("Forever/generated/", 1, true), "static-only payload leaked into Baked file list")
+      assert(not path:find("Forever/generated/", 1, true) and not path:find("Forever/traces/", 1, true),
+        "static-only payload leaked into Baked file list")
     end
   end
 end
@@ -100,7 +107,8 @@ if not baked then
     assert(not db.Quest.Exists(86585) and not db.Npc.Exists(269153) and not db.Item.Exists(286647),
       "Forever content leaked into " .. flavor)
     for _, entry in ipairs(db.Corrections.Select()) do
-      assert(not entry.name:find("^Forever/generated/"), "Forever provider leaked into " .. flavor)
+      assert(not entry.name:find("^Forever/generated/") and not entry.name:find("^Forever/traces/"),
+        "Forever provider leaked into " .. flavor)
     end
   end
 
@@ -113,24 +121,31 @@ if not baked then
   local registry, providers = offline.Corrections, offline.CorrectionCompat.modules
   -- Assert real priorities across all six legacy providers, including generated Item starts
   -- and reputation, independently of manifest/file ordering or entity type.
-  local legacyEntries, deltaEntries, authoredEntries = {}, {}, {}
+  local legacyEntries, deltaEntries, traceEntries, authoredEntries = {}, {}, {}, {}
   for _, entry in ipairs(registry.Select({ dynamic = false })) do
     if entry.name:find("^Forever/legacy/") then
       legacyEntries[#legacyEntries + 1] = entry
     elseif entry.name:find("^Forever/generated/") then
       deltaEntries[#deltaEntries + 1] = entry
+    elseif entry.name:find("^Forever/traces/") then
+      traceEntries[#traceEntries + 1] = entry
     elseif entry.name:find("^Forever/forever") then
       authoredEntries[#authoredEntries + 1] = entry
     end
   end
-  assert(#legacyEntries == 6 and #deltaEntries == 4 and #authoredEntries == 4,
+  assert(#legacyEntries == 6 and #deltaEntries == 4 and #traceEntries == 4 and #authoredEntries == 4,
     "precedence fixture must cover every applicable Static provider")
   for _, delta in ipairs(deltaEntries) do
     for _, legacy in ipairs(legacyEntries) do
       assert(legacy.loadOrder < delta.loadOrder, legacy.name .. " must precede " .. delta.name)
     end
+    for _, trace in ipairs(traceEntries) do
+      assert(delta.loadOrder < trace.loadOrder, delta.name .. " must precede " .. trace.name)
+    end
+  end
+  for _, trace in ipairs(traceEntries) do
     for _, authored in ipairs(authoredEntries) do
-      assert(delta.loadOrder < authored.loadOrder, delta.name .. " must precede " .. authored.name)
+      assert(trace.loadOrder < authored.loadOrder, trace.name .. " must precede " .. authored.name)
     end
   end
 
@@ -140,6 +155,10 @@ if not baked then
   local questKeys, npcKeys = offline.Enum.questKeys, offline.Enum.npcKeys
   -- Getters normalize absent numbers to zero; inspect authored presence independently.
   local generatedQuests = providers.ForeverBaseQuest:Load()
+  assert(generatedQuests[86585][questKeys.requiredLevel] == 10,
+    "generated base retains its own required level beneath traces")
+  assert(generatedQuests[86585][questKeys.objectives] == nil,
+    "generated base does not invent objectives supplied by traces")
   assert(generatedQuests[94004][questKeys.requiredRaces] == 0, "writ zero is explicitly present")
   assert(generatedQuests[97286][questKeys.requiredRaces] == 0, "library zero is explicitly present")
   assert(generatedQuests[97286][questKeys.requiredClasses] == 128, "library Mage mask remains authored")
@@ -154,18 +173,20 @@ if not baked then
   local source = offline.read.source
   source.RemoveLoaderShim()
   for _, case in ipairs({
-    { "Quest", "ForeverBaseQuest", "QuestieQuestFixes", "ForeverQuestFixes", 86585, 771 },
-    { "Npc", "ForeverBaseNpc", "QuestieNPCFixes", "ForeverNpcFixes", 269153, 3394 },
-    { "Object", "ForeverBaseObject", "QuestieObjectFixes", "ForeverObjectFixes", 900000001, 52 },
-    { "Item", "ForeverBaseItem", "QuestieItemFixes", "ForeverItemFixes", 286647, 8151 },
+    { "Quest", "ForeverBaseQuest", "QuestieQuestFixes", "ForeverQuestFixes", 86585, 771, "ForeverQuestTraces" },
+    { "Npc", "ForeverBaseNpc", "QuestieNPCFixes", "ForeverNpcFixes", 269153, 3394, "ForeverNpcTraces" },
+    { "Object", "ForeverBaseObject", "QuestieObjectFixes", "ForeverObjectFixes", 900000001, 52, "ForeverObjectTraces" },
+    { "Item", "ForeverBaseItem", "QuestieItemFixes", "ForeverItemFixes", 286647, 8151, "ForeverItemTraces" },
   }) do
     local datatype, delta, legacy, manual, id = case[1], providers[case[2]], providers[case[3]], providers[case[4]], case[5]
+    local trace = providers[case[7]]
     local count = 0
     for _ in pairs(delta:Load()) do count = count + 1 end
     assert(count == case[6], "imported row count differs: " .. datatype)
 
     -- Controlled collisions through the real registered providers, not a second merge model.
     delta.Load = function() return {} end
+    trace.Load = function() return {} end
     legacy.Load = function() return { [id] = { [1] = "legacy" } } end
     manual.Load = function() return {} end
     local rows = { [id] = { "raw" } }
@@ -174,9 +195,12 @@ if not baked then
     delta.Load = function() return { [id] = { [1] = "delta" } } end
     registry.ApplyStaticToEntities(datatype, rows, flavor, "QuestieDB")
     assert(rows[id][1] == "delta", "generated delta-base must override legacy")
+    trace.Load = function() return { [id] = { [1] = "trace" } } end
+    registry.ApplyStaticToEntities(datatype, rows, flavor, "QuestieDB")
+    assert(rows[id][1] == "trace", "generated traces must override generated delta-base")
     manual.Load = function() return { [id] = { [1] = "manual" } } end
     registry.ApplyStaticToEntities(datatype, rows, flavor, "QuestieDB")
-    assert(rows[id][1] == "manual", "authored manual must override generated delta-base")
+    assert(rows[id][1] == "manual", "authored manual must override generated traces")
     source.entities[datatype] = rows
     local entity = offline.shared.CreateEntity(offline.Meta[datatype], source.CreateBackend(offline.Meta[datatype]))
     offline[datatype] = entity
