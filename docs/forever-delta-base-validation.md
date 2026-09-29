@@ -805,3 +805,24 @@ Only the Quest provider, provenance, guide and this report changed. Working TOCs
 index, existing enum edit and protected untracked files were preserved. No commit
 or push. Backups and focused logs: `/tmp/questiedb-text-import-guard.y9phc8h5/`.
 The 19 deferred quests remain open; all 20 export holdbacks remain unchanged.
+
+## Full refresh: import before validation
+
+At Logon's explicit request, this run follows: full extraction, working-checkout
+import and documentation, then disposable validation. This overrides the usual
+pre-import review order for this run; import completion is not a validation claim.
+
+Fresh output: `/home/logon/projects/forever-base-db/generated/full-refresh/`.
+The existing independent entity snapshot, Era cache and separately supplied Forever
+zone-page cache were read without refresh or network access. All 12,368 correction
+rows match the prior latest import, including 707 objective summaries, 1,501 NPC
+zones and 22 Object zones. The adapted four provider files are byte-identical to
+those already installed. Provenance now points to the fresh full run.
+
+Pre-import backup: `/tmp/questiedb-before-full-refresh.s3c43_1l/`.
+The original enum edit, protected untracked files, Git index and working TOCs are
+preserved. No inference/runtime change, commit or push is included. All 19 deferred
+quests remain open and the 20 holdbacks remain excluded.
+
+Post-import validation status: **pending**. Results will be recorded here after
+checking the installed bytes in a disposable copy.

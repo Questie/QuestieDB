@@ -2823,7 +2823,7 @@
     "missing_refs": 478,
     "new_ids": 9293,
     "records": 12368,
-    "skips": 19685
+    "skips": 32741
   },
   "entity_zone_evidence_summary": {
     "npc": {
@@ -2871,8 +2871,8 @@
     "quest_holdbacks_sha256": "e806fe283f5172525523306be09921b75df32d7b62fc07552439117507a513ac",
     "quest_text_sha256": "ab51227572c431305c0f7e50db5de21ca8c1b142ff25399df04d9526b55ba3cd",
     "race_assumptions_sha256": "49cb9c583b2481e3b28240bfc90fd352b72a83b248e5d8e75372cdd70f83426b",
-    "raw_reader_sha256": "d11d75e3b79da185e3ad421a276f8ef82362e888b3f93fda25b70e9997665eee",
-    "sha256": "e0ecdc4324b0dca9775c3bcc181dc2cb75e11459bc9a4b4e3c08defd7d0061bf"
+    "raw_reader_sha256": "4b8b0df273985dc4f0d142e54371459566c5a8417ea14a75af84d47c1fbc8262",
+    "sha256": "50252f7ef4404b54bc10c5bc4b46bc9166753b7158fda571aa2959f3146c7f55"
   },
   "held_quests": [
     {
@@ -3038,7 +3038,7 @@
   ],
   "imported_artifacts_sha256": {
     "foreverBaseItem.lua": "e7712eec044cd3e126294673d648c0da8ea419f608fa7a90aca4cb4efbde13eb",
-    "foreverBaseNpc.lua": "9cc1e08abc2941a3e0df4f2a30f8986adeec6b00fa39f22afe3ab200cd2b4f5f",
+    "foreverBaseNpc.lua": "21a14d4388d03e6a398be3e8ef80de651c85b00a295826ede1973c3db5f1a8e2",
     "foreverBaseObject.lua": "4c86dc258af398dc3922c3f2e2dd6a4059496791dbeadfaa0453f1d95fb9c76a",
     "foreverBaseQuest.lua": "db7845684eac678edb47d8c530fcc0c321b835e257e35795e516aaf6bb674643"
   },
@@ -3522,12 +3522,18 @@
     "object": 36,
     "quest": 43
   },
+  "npc_friendliness_counts": {
+    "A": 289,
+    "AH": 267,
+    "H": 197
+  },
   "policy": {
     "deletions": "never generated",
     "entity_zones": "enrichment only for independently emitted source-validated NPCs/objects; preserve nonzero baseline and earlier values; single known positive core location, or explicit consistent zone-row location only when core absent/empty; mapper and optional fresh zone-page contradictions withhold; never select entities or change spawns",
     "item_relationships": "source-only additions from nonempty tabs below 200 rows; removals report-only; selected singleton starts coordinated with quest item starters, withholding missing endpoints or scalar conflicts; target/objective overlap suppressed",
     "names": "fill missing names only; preserve all existing effective pre-delta names",
     "new": "absent Era registry/pages/raw base AND explicit envChange.status=new",
+    "npc_reactions": "enrichment only for independently emitted NPCs; own-core react [Alliance,Horde] exact integers 0/1 contribute A/H, -1 and explicit null contribute nothing; preserve every present baseline value including empty string; omit empty/unknown reactions instead of emitting empty strings or clearing fields; no faction-ID or quest inference",
     "objectives": "structured objectives and triggerEnd not generated",
     "objectives_text": "heading-adjacent objective summary only, with ordered lines and paragraph breaks; enrich existing or independently selected quests, never select missing quests; preserve existing text and explicit clears; absent existing fields require source-new or explicit Era change; no narrative fallback or unchanged backfill",
     "quest_category": "known signed core category only; enrichment of existing or independently selected quests, never category-only selection of missing records; explicit zero retained as comparison evidence but omitted from corrections; unknown identities withheld; existing nonzero effective categories preserved; no unchanged existing-record backfill or category2/geography substitution",
@@ -4176,14 +4182,14 @@
   },
   "upstream_artifacts_sha256": {
     "foreverBaseItem.lua": "c6e7ef472fa931fa97fd1ab71b19ee42e0e73ec38d07489b1f672f3454ddd148",
-    "foreverBaseNpc.lua": "ad738fbb4ffae654657a9c111ead0f1af44f93cc3ede62e313e8ed06e511758f",
+    "foreverBaseNpc.lua": "e365b4bc3e6239eafa4f8d1abcfdb9817b0a38359844cc054a7c59e6f8bbdd66",
     "foreverBaseObject.lua": "b3c2790785ec01bfbc7424d62c62356ccde3581a40be70f8072984db807d4776",
     "foreverBaseQuest.lua": "fc7b020781088ef19d2e4c7e52f4301f018817143dc3a5e8855bd7808c3e1931",
-    "report.json": "1516b8190152f2e5febce6e99a16b2e3806ca7739e83c4416200d10619aecd06",
-    "report.md": "bac49f34bbcf1ffe39d326385934f9a060574ee1151f49b104cdedefa43f78b9"
+    "report.json": "e245a3173f92cf9f247fd77bd63fd165fb691f57aabd2ae04da8c081f3dc1529",
+    "report.md": "e55cea997a26ac420c40d5bbe2efeb2a8bd5b03d3de71569fa4926537542ce3c"
   },
-  "upstream_directory": "/home/logon/projects/forever-base-db/generated/objectives-text-import",
-  "upstream_report_schema_version": 11,
+  "upstream_directory": "/home/logon/projects/forever-base-db/generated/npc-friendliness-no-empty",
+  "upstream_report_schema_version": 12,
   "zone_cache": {
     "completeness": "partial/unknown",
     "skipped_pages": [

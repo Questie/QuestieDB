@@ -1,7 +1,7 @@
 # Forever generated delta-base
 
 `src/corrections/Forever/generated/` imports reviewed offline candidates from
-`/home/logon/projects/forever-base-db/generated/objectives-text-import/`. The four providers retain
+`/home/logon/projects/forever-base-db/generated/full-refresh/`. The four providers retain
 upstream filenames and module identities: `foreverBaseNpc.lua` / `ForeverBaseNpc`,
 `foreverBaseObject.lua` / `ForeverBaseObject`, `foreverBaseQuest.lua` / `ForeverBaseQuest`
 and `foreverBaseItem.lua` / `ForeverBaseItem`.
