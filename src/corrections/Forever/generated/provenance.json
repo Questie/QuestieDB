@@ -21,7 +21,7 @@
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/professions.lua": "3ae501a3b0d288159c566c88622c2f870fc4fd937a919a0f640a8ead8b3fc138",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/quests.lua": "eb15f94f58be894772786706bb9c3db56756df1985d7ab93fc180d7567103ede",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/waypoints.lua": "10f2b234c70d87ba42163782b6022f522affa4d16230eddde55b0a30f7c3861b",
-        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/zones.lua": "205957995e6713a4bd72412bd868e290f361fd52c9d66d1d4b29693ed7479750",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/zones.lua": "dd738ec0c1a9785946c5574a5f7cb8d2a64745b099dffccebd00ee8864fbb88a",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/manifest.lua": "60fcc8b79a9bb3b8494ff42270a0067f6c842bbced77c334789659e0b2027d80",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/register.lua": "1abd208277be869221b08fd623cc78e1cef6fd1a80a8fca7e99a507a4a4bf7c0",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/registry.lua": "4ce0221370169b9c512013455d0dbe36a809448608161cd8d94b35f7191e1cab",
@@ -68,7 +68,7 @@
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/professions.lua": "3ae501a3b0d288159c566c88622c2f870fc4fd937a919a0f640a8ead8b3fc138",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/quests.lua": "eb15f94f58be894772786706bb9c3db56756df1985d7ab93fc180d7567103ede",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/waypoints.lua": "10f2b234c70d87ba42163782b6022f522affa4d16230eddde55b0a30f7c3861b",
-        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/zones.lua": "205957995e6713a4bd72412bd868e290f361fd52c9d66d1d4b29693ed7479750",
+        "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/enum/zones.lua": "dd738ec0c1a9785946c5574a5f7cb8d2a64745b099dffccebd00ee8864fbb88a",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/manifest.lua": "60fcc8b79a9bb3b8494ff42270a0067f6c842bbced77c334789659e0b2027d80",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/register.lua": "1abd208277be869221b08fd623cc78e1cef6fd1a80a8fca7e99a507a4a4bf7c0",
         "/home/logon/projects/Questie-clones/QuestieDB/src/corrections/registry.lua": "4ce0221370169b9c512013455d0dbe36a809448608161cd8d94b35f7191e1cab",
@@ -127,6 +127,2648 @@
     }
   },
   "baseline_input_differences_at_import": {},
+  "category_catalog": {
+    "-1": {
+      "kind": "sort",
+      "name": "EPIC",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-101": {
+      "kind": "sort",
+      "name": "FISHING",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-121": {
+      "kind": "sort",
+      "name": "BLACKSMITHING",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-141": {
+      "kind": "sort",
+      "name": "PALADIN",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-161": {
+      "kind": "sort",
+      "name": "MAGE",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-162": {
+      "kind": "sort",
+      "name": "ROGUE",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-181": {
+      "kind": "sort",
+      "name": "ALCHEMY",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-182": {
+      "kind": "sort",
+      "name": "LEATHERWORKING",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-201": {
+      "kind": "sort",
+      "name": "ENGINEERING",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-22": {
+      "kind": "sort",
+      "name": "SEASONAL",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-221": {
+      "kind": "sort",
+      "name": "TREASURE_MAP",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-24": {
+      "kind": "sort",
+      "name": "HERBALISM",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-25": {
+      "kind": "sort",
+      "name": "BATTLEGROUNDS",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-261": {
+      "kind": "sort",
+      "name": "HUNTER",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-262": {
+      "kind": "sort",
+      "name": "PRIEST",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-263": {
+      "kind": "sort",
+      "name": "DRUID",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-264": {
+      "kind": "sort",
+      "name": "TAILORING",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-284": {
+      "kind": "sort",
+      "name": "SPECIAL",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-304": {
+      "kind": "sort",
+      "name": "COOKING",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-324": {
+      "kind": "sort",
+      "name": "FIRST_AID",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-344": {
+      "kind": "sort",
+      "name": "LEGENDARY",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-364": {
+      "kind": "sort",
+      "name": "DARKMOON_FAIRE",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-365": {
+      "kind": "sort",
+      "name": "AHN_QIRAJ_WAR",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-366": {
+      "kind": "sort",
+      "name": "LUNAR_FESTIVAL",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-367": {
+      "kind": "sort",
+      "name": "REPUTATION",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-368": {
+      "kind": "sort",
+      "name": "INVASION",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-369": {
+      "kind": "sort",
+      "name": "MIDSUMMER",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-61": {
+      "kind": "sort",
+      "name": "WARLOCK",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-641": {
+      "kind": "sort",
+      "name": "NIGHTMARE_INCURSIONS",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-644": {
+      "kind": "sort",
+      "name": "BLACKROCK_ERUPTION",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-666": {
+      "kind": "sort",
+      "name": "CAMPING",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-676": {
+      "kind": "sort",
+      "name": "NIGHT_ELF",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-81": {
+      "kind": "sort",
+      "name": "WARRIOR",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "-82": {
+      "kind": "sort",
+      "name": "SHAMAN",
+      "source": "confirmed source and consumer sortKeys"
+    },
+    "0": {
+      "kind": "uncategorized",
+      "name": "Uncategorized",
+      "source": "explicit zero"
+    },
+    "1": {
+      "kind": "area",
+      "name": "DUN_MOROGH",
+      "source": "consumer zoneIDs"
+    },
+    "10": {
+      "kind": "area",
+      "name": "DUSKWOOD",
+      "source": "consumer zoneIDs"
+    },
+    "10000": {
+      "kind": "area",
+      "name": "MARAUDON_ZAETARS_GRAVE",
+      "source": "consumer zoneIDs"
+    },
+    "10001": {
+      "kind": "area",
+      "name": "STRATHOLME_THE_GAUNTLET",
+      "source": "consumer zoneIDs"
+    },
+    "10003": {
+      "kind": "area",
+      "name": "BLACKROCK_SPIRE_TAZZ_ALOR",
+      "source": "consumer zoneIDs"
+    },
+    "10004": {
+      "kind": "area",
+      "name": "BLACKROCK_SPIRE_SKITTERWEB_TUNNELS",
+      "source": "consumer zoneIDs"
+    },
+    "10005": {
+      "kind": "area",
+      "name": "BLACKROCK_SPIRE_HORDEMAR_CITY",
+      "source": "consumer zoneIDs"
+    },
+    "10006": {
+      "kind": "area",
+      "name": "BLACKROCK_SPIRE_HALYCONS_LAIR",
+      "source": "consumer zoneIDs"
+    },
+    "10007": {
+      "kind": "area",
+      "name": "BLACKROCK_SPIRE_CHAMBER_OF_BATTLE",
+      "source": "consumer zoneIDs"
+    },
+    "10008": {
+      "kind": "area",
+      "name": "SCARLET_MONASTERY_LIBRARY",
+      "source": "consumer zoneIDs"
+    },
+    "10009": {
+      "kind": "area",
+      "name": "SCARLET_MONASTERY_ARMORY",
+      "source": "consumer zoneIDs"
+    },
+    "10010": {
+      "kind": "area",
+      "name": "SCARLET_MONASTERY_CATHEDRAL",
+      "source": "consumer zoneIDs"
+    },
+    "10011": {
+      "kind": "area",
+      "name": "SCHOLOMANCE_CHAMBER_OF_SUMMONING",
+      "source": "consumer zoneIDs"
+    },
+    "10012": {
+      "kind": "area",
+      "name": "SCHOLOMANCE_THE_UPPER_STUDY",
+      "source": "consumer zoneIDs"
+    },
+    "10013": {
+      "kind": "area",
+      "name": "SCHOLOMANCE_HEADMASTERS_STUDY",
+      "source": "consumer zoneIDs"
+    },
+    "10014": {
+      "kind": "area",
+      "name": "SHADOWFANG_KEEP_DINING_HALL",
+      "source": "consumer zoneIDs"
+    },
+    "10015": {
+      "kind": "area",
+      "name": "SHADOWFANG_KEEP_THE_VACANT_DEN",
+      "source": "consumer zoneIDs"
+    },
+    "10016": {
+      "kind": "area",
+      "name": "SHADOWFANG_KEEP_LOWER_OBSERVATORY",
+      "source": "consumer zoneIDs"
+    },
+    "10017": {
+      "kind": "area",
+      "name": "SHADOWFANG_KEEP_UPPER_OBSERVATORY",
+      "source": "consumer zoneIDs"
+    },
+    "10018": {
+      "kind": "area",
+      "name": "SHADOWFANG_KEEP_LORD_GOFREYS_CHAMBER",
+      "source": "consumer zoneIDs"
+    },
+    "10019": {
+      "kind": "area",
+      "name": "SHADOWFANG_KEEP_THE_WALL_WALK",
+      "source": "consumer zoneIDs"
+    },
+    "10020": {
+      "kind": "area",
+      "name": "BLACKFATHOM_DEEPS_MOONSHRINE_SANCTUM",
+      "source": "consumer zoneIDs"
+    },
+    "10021": {
+      "kind": "area",
+      "name": "BLACKFATHOM_DEEPS_THE_FORGOTTEN_POOL",
+      "source": "consumer zoneIDs"
+    },
+    "10022": {
+      "kind": "area",
+      "name": "DIRE_MAUL_GORDOK_COMMONS",
+      "source": "consumer zoneIDs"
+    },
+    "10023": {
+      "kind": "area",
+      "name": "DIRE_MAUL_CAPITAL_GARDENS",
+      "source": "consumer zoneIDs"
+    },
+    "10024": {
+      "kind": "area",
+      "name": "DIRE_MAUL_COURT_OF_THE_HIGHBORNE",
+      "source": "consumer zoneIDs"
+    },
+    "10025": {
+      "kind": "area",
+      "name": "DIRE_MAUL_PRISON_OF_IMMOLTHAR",
+      "source": "consumer zoneIDs"
+    },
+    "10026": {
+      "kind": "area",
+      "name": "DIRE_MAUL_WARPWOOD_QUARTER",
+      "source": "consumer zoneIDs"
+    },
+    "10027": {
+      "kind": "area",
+      "name": "DIRE_MAUL_THE_SHRINE_OF_ELDRETHARR",
+      "source": "consumer zoneIDs"
+    },
+    "10028": {
+      "kind": "area",
+      "name": "MAGISTERS_TERRACE_GRAND_MAGISTERS_ASYLUM",
+      "source": "consumer zoneIDs"
+    },
+    "10029": {
+      "kind": "area",
+      "name": "THE_DEADMINES_IRONCLAD_COVE",
+      "source": "consumer zoneIDs"
+    },
+    "10030": {
+      "kind": "area",
+      "name": "GNOMEREGAN_THE_DORMITORY",
+      "source": "consumer zoneIDs"
+    },
+    "10031": {
+      "kind": "area",
+      "name": "GNOMEREGAN_LAUNCH_BAY",
+      "source": "consumer zoneIDs"
+    },
+    "10032": {
+      "kind": "area",
+      "name": "GNOMEREGAN_TINKERS_COURT",
+      "source": "consumer zoneIDs"
+    },
+    "10033": {
+      "kind": "area",
+      "name": "ULDAMAN_KHAZ_GOROTHS_SEAT",
+      "source": "consumer zoneIDs"
+    },
+    "10039": {
+      "kind": "area",
+      "name": "HOUR_OF_TWILIGHT_WYRMREST_TEMPLE",
+      "source": "consumer zoneIDs"
+    },
+    "10040": {
+      "kind": "area",
+      "name": "AQ40_THE_HIVE_UNDERGROUNDS",
+      "source": "consumer zoneIDs"
+    },
+    "10041": {
+      "kind": "area",
+      "name": "AQ40_VAULT_OF_CTHUN",
+      "source": "consumer zoneIDs"
+    },
+    "10042": {
+      "kind": "area",
+      "name": "SETHEKK_HALLS_HALLS_OF_MOURNING",
+      "source": "consumer zoneIDs"
+    },
+    "10043": {
+      "kind": "area",
+      "name": "AUCHENAI_CRYPTS_BRIDGE_OF_SOULS",
+      "source": "consumer zoneIDs"
+    },
+    "10044": {
+      "kind": "area",
+      "name": "THE_MECHANAR_CALCULATION_CHAMBER",
+      "source": "consumer zoneIDs"
+    },
+    "10045": {
+      "kind": "area",
+      "name": "THE_ARCATRAZ_STASIS_BLOCK_MAXIMUS",
+      "source": "consumer zoneIDs"
+    },
+    "10046": {
+      "kind": "area",
+      "name": "THE_ARCATRAZ_CONTAINMENT_CORE",
+      "source": "consumer zoneIDs"
+    },
+    "10047": {
+      "kind": "area",
+      "name": "BAND_OF_ACCELERATION",
+      "source": "consumer zoneIDs"
+    },
+    "10048": {
+      "kind": "area",
+      "name": "BAND_OF_TRANSMUTATION",
+      "source": "consumer zoneIDs"
+    },
+    "10049": {
+      "kind": "area",
+      "name": "BAND_OF_ALIGNMENT",
+      "source": "consumer zoneIDs"
+    },
+    "10050": {
+      "kind": "area",
+      "name": "THE_DESCENT_OF_MADNESS",
+      "source": "consumer zoneIDs"
+    },
+    "10051": {
+      "kind": "area",
+      "name": "THE_SPARK_OF_IMAGINATION",
+      "source": "consumer zoneIDs"
+    },
+    "10052": {
+      "kind": "area",
+      "name": "THE_INNER_SANCTUM_OF_ULDUAR",
+      "source": "consumer zoneIDs"
+    },
+    "10053": {
+      "kind": "area",
+      "name": "UTGARDE_PINNACLE_LOWER_LEVEL",
+      "source": "consumer zoneIDs"
+    },
+    "10054": {
+      "kind": "area",
+      "name": "THE_TERRESTRIAL_WATCHTOWER",
+      "source": "consumer zoneIDs"
+    },
+    "10055": {
+      "kind": "area",
+      "name": "THE_BROOD_PIT",
+      "source": "consumer zoneIDs"
+    },
+    "10056": {
+      "kind": "area",
+      "name": "HADRONOXS_LAIR",
+      "source": "consumer zoneIDs"
+    },
+    "10057": {
+      "kind": "area",
+      "name": "UTGARDE_KEEP_MIDDLE_LEVEL",
+      "source": "consumer zoneIDs"
+    },
+    "10058": {
+      "kind": "area",
+      "name": "UTGARDE_KEEP_UPPER_LEVEL",
+      "source": "consumer zoneIDs"
+    },
+    "10059": {
+      "kind": "area",
+      "name": "THE_CULLING_OF_STRATHOLME_CITY",
+      "source": "consumer zoneIDs"
+    },
+    "10060": {
+      "kind": "area",
+      "name": "DRAKTHARON_KEEP_UPPER_LEVEL",
+      "source": "consumer zoneIDs"
+    },
+    "10061": {
+      "kind": "area",
+      "name": "GUNDRAK_LOWER_LEVEL",
+      "source": "consumer zoneIDs"
+    },
+    "10062": {
+      "kind": "area",
+      "name": "NAXXRAMAS_CONSTRUCT_QUARTER",
+      "source": "consumer zoneIDs"
+    },
+    "10063": {
+      "kind": "area",
+      "name": "NAXXRAMAS_ARACHNID_QUARTER",
+      "source": "consumer zoneIDs"
+    },
+    "10064": {
+      "kind": "area",
+      "name": "NAXXRAMAS_MILITARY_QUARTER",
+      "source": "consumer zoneIDs"
+    },
+    "10065": {
+      "kind": "area",
+      "name": "NAXXRAMAS_PLAGUE_QUARTER",
+      "source": "consumer zoneIDs"
+    },
+    "10066": {
+      "kind": "area",
+      "name": "NAXXRAMAS_FROSTWYRM_LAIR",
+      "source": "consumer zoneIDs"
+    },
+    "10067": {
+      "kind": "area",
+      "name": "ICECROWN_CITADEL_UPPER_SPIRE",
+      "source": "consumer zoneIDs"
+    },
+    "10068": {
+      "kind": "area",
+      "name": "ICECROWN_CITADEL_QUEEN_LANA_THEL",
+      "source": "consumer zoneIDs"
+    },
+    "10069": {
+      "kind": "area",
+      "name": "ICECROWN_CITADEL_SINDRAGOSA",
+      "source": "consumer zoneIDs"
+    },
+    "10070": {
+      "kind": "area",
+      "name": "ICECROWN_CITADEL_RAMPART_OF_SKULLS",
+      "source": "consumer zoneIDs"
+    },
+    "10071": {
+      "kind": "area",
+      "name": "ICECROWN_CITADEL_DEATHBRINGERS_RISE",
+      "source": "consumer zoneIDs"
+    },
+    "10072": {
+      "kind": "area",
+      "name": "ICECROWN_CITADEL_THE_FROZEN_THRONE",
+      "source": "consumer zoneIDs"
+    },
+    "10073": {
+      "kind": "area",
+      "name": "KALIMDOR",
+      "source": "consumer zoneIDs"
+    },
+    "10074": {
+      "kind": "area",
+      "name": "EASTERN_KINGDOMS",
+      "source": "consumer zoneIDs"
+    },
+    "10075": {
+      "kind": "area",
+      "name": "PANDARIA",
+      "source": "consumer zoneIDs"
+    },
+    "10076": {
+      "kind": "area",
+      "name": "SCARLET_HALLS_ATHENAEUM",
+      "source": "consumer zoneIDs"
+    },
+    "10077": {
+      "kind": "area",
+      "name": "SCHOLOMANCE_MOP_CHAMBER_OF_SUMMONING",
+      "source": "consumer zoneIDs"
+    },
+    "10078": {
+      "kind": "area",
+      "name": "SCHOLOMANCE_MOP_THE_UPPER_STUDY",
+      "source": "consumer zoneIDs"
+    },
+    "10079": {
+      "kind": "area",
+      "name": "SCHOLOMANCE_MOP_HEADMASTERS_STUDY",
+      "source": "consumer zoneIDs"
+    },
+    "10080": {
+      "kind": "area",
+      "name": "GUO_LAI_HALLS_THE_HALL_OF_THE_SERPENT",
+      "source": "consumer zoneIDs"
+    },
+    "10081": {
+      "kind": "area",
+      "name": "GREENSTONE_QUARRY_LOWER",
+      "source": "consumer zoneIDs"
+    },
+    "10082": {
+      "kind": "area",
+      "name": "SHRINE_OF_TWO_MOONS_TOP_FLOOR",
+      "source": "consumer zoneIDs"
+    },
+    "10083": {
+      "kind": "area",
+      "name": "SHRINE_OF_SEVEN_STARS_TOP_FLOOR",
+      "source": "consumer zoneIDs"
+    },
+    "10084": {
+      "kind": "area",
+      "name": "THE_DEEPER_LOWER_LEVEL",
+      "source": "consumer zoneIDs"
+    },
+    "10085": {
+      "kind": "area",
+      "name": "RUINS_OF_OGUDEI",
+      "source": "consumer zoneIDs"
+    },
+    "10086": {
+      "kind": "area",
+      "name": "RUINS_OF_OGUDEI_RELIQUARY_INCURSION",
+      "source": "consumer zoneIDs"
+    },
+    "10087": {
+      "kind": "area",
+      "name": "CRYPT_OF_KORUNE",
+      "source": "consumer zoneIDs"
+    },
+    "10088": {
+      "kind": "area",
+      "name": "DALARAN_LANDFALL_UNDERBELLY",
+      "source": "consumer zoneIDs"
+    },
+    "10089": {
+      "kind": "area",
+      "name": "AZEROTH",
+      "source": "consumer zoneIDs"
+    },
+    "10090": {
+      "kind": "area",
+      "name": "KAJA_MINE_SE",
+      "source": "consumer zoneIDs"
+    },
+    "10091": {
+      "kind": "area",
+      "name": "KAJA_MINE_SW",
+      "source": "consumer zoneIDs"
+    },
+    "10092": {
+      "kind": "area",
+      "name": "CAVERNS_OF_TIME_TIMELESS_TUNNEL",
+      "source": "consumer zoneIDs"
+    },
+    "10093": {
+      "kind": "area",
+      "name": "THRONE_OF_THUNDER_ROYAL_AMPHITHEATER",
+      "source": "consumer zoneIDs"
+    },
+    "10094": {
+      "kind": "area",
+      "name": "THRONE_OF_THUNDER_FORGOTTEN_DEPTHS",
+      "source": "consumer zoneIDs"
+    },
+    "10095": {
+      "kind": "area",
+      "name": "THRONE_OF_THUNDER_ROOST_OF_JI_KUN",
+      "source": "consumer zoneIDs"
+    },
+    "10096": {
+      "kind": "area",
+      "name": "THRONE_OF_THUNDER_HALLS_OF_FLESH_SHAPING",
+      "source": "consumer zoneIDs"
+    },
+    "10097": {
+      "kind": "area",
+      "name": "THRONE_OF_THUNDER_HALL_OF_KINGS",
+      "source": "consumer zoneIDs"
+    },
+    "10098": {
+      "kind": "area",
+      "name": "THRONE_OF_THUNDER_PINNACLE_OF_STORMS",
+      "source": "consumer zoneIDs"
+    },
+    "10099": {
+      "kind": "area",
+      "name": "THRONE_OF_THUNDER_HIDDEN_CELL",
+      "source": "consumer zoneIDs"
+    },
+    "10100": {
+      "kind": "area",
+      "name": "ISLE_OF_THUNDER_LIGHTNING_VEIN_MINE",
+      "source": "consumer zoneIDs"
+    },
+    "10101": {
+      "kind": "area",
+      "name": "ISLE_OF_THUNDER_SWOLLEN_VAULT",
+      "source": "consumer zoneIDs"
+    },
+    "10103": {
+      "kind": "area",
+      "name": "KARAZHAN_UPPER_LIVERY_STABLES",
+      "source": "consumer zoneIDs"
+    },
+    "10104": {
+      "kind": "area",
+      "name": "KARAZHAN_THE_BANQUET_HALL",
+      "source": "consumer zoneIDs"
+    },
+    "10105": {
+      "kind": "area",
+      "name": "KARAZHAN_THE_GUEST_CHAMBERS",
+      "source": "consumer zoneIDs"
+    },
+    "10106": {
+      "kind": "area",
+      "name": "KARAZHAN_OPERA_HALL_BALCONY",
+      "source": "consumer zoneIDs"
+    },
+    "10107": {
+      "kind": "area",
+      "name": "KARAZHAN_MASTERS_TERRACE",
+      "source": "consumer zoneIDs"
+    },
+    "10108": {
+      "kind": "area",
+      "name": "KARAZHAN_LOWER_BROKEN_STAIR",
+      "source": "consumer zoneIDs"
+    },
+    "10109": {
+      "kind": "area",
+      "name": "KARAZHAN_UPPER_BROKEN_STAIR",
+      "source": "consumer zoneIDs"
+    },
+    "10110": {
+      "kind": "area",
+      "name": "KARAZHAN_THE_MENAGERIE",
+      "source": "consumer zoneIDs"
+    },
+    "10111": {
+      "kind": "area",
+      "name": "KARAZHAN_GUARDIANS_LIBRARY",
+      "source": "consumer zoneIDs"
+    },
+    "10112": {
+      "kind": "area",
+      "name": "KARAZHAN_THE_REPOSITORY",
+      "source": "consumer zoneIDs"
+    },
+    "10113": {
+      "kind": "area",
+      "name": "KARAZHAN_UPPER_LIBRARY",
+      "source": "consumer zoneIDs"
+    },
+    "10114": {
+      "kind": "area",
+      "name": "KARAZHAN_THE_CELESTIAL_WATCH",
+      "source": "consumer zoneIDs"
+    },
+    "10115": {
+      "kind": "area",
+      "name": "KARAZHAN_GAMESMANS_HALL",
+      "source": "consumer zoneIDs"
+    },
+    "10116": {
+      "kind": "area",
+      "name": "KARAZHAN_MEDIVHS_CHAMBERS",
+      "source": "consumer zoneIDs"
+    },
+    "10117": {
+      "kind": "area",
+      "name": "KARAZHAN_THE_POWER_STATION",
+      "source": "consumer zoneIDs"
+    },
+    "10118": {
+      "kind": "area",
+      "name": "KARAZHAN_NETHERSPACE",
+      "source": "consumer zoneIDs"
+    },
+    "11": {
+      "kind": "area",
+      "name": "WETLANDS",
+      "source": "consumer zoneIDs"
+    },
+    "111": {
+      "kind": "area",
+      "name": "jangolode-mine",
+      "source": "Forever zone registry"
+    },
+    "113": {
+      "kind": "area",
+      "name": "gold-coast-quarry",
+      "source": "Forever zone registry"
+    },
+    "1176": {
+      "kind": "area",
+      "name": "ZUL_FARRAK",
+      "source": "consumer zoneIDs"
+    },
+    "1196": {
+      "kind": "area",
+      "name": "UTGARDE_PINNACLE",
+      "source": "consumer zoneIDs"
+    },
+    "12": {
+      "kind": "area",
+      "name": "ELWYNN_FOREST",
+      "source": "consumer zoneIDs"
+    },
+    "130": {
+      "kind": "area",
+      "name": "SILVERPINE_FOREST",
+      "source": "consumer zoneIDs"
+    },
+    "131": {
+      "kind": "area",
+      "name": "KHARANOS",
+      "source": "consumer zoneIDs"
+    },
+    "133": {
+      "kind": "area",
+      "name": "NEW_TINKERTOWN_OLD",
+      "source": "consumer zoneIDs"
+    },
+    "1337": {
+      "kind": "area",
+      "name": "ULDAMAN",
+      "source": "consumer zoneIDs"
+    },
+    "134": {
+      "kind": "area",
+      "name": "golbolar-quarry",
+      "source": "Forever zone registry"
+    },
+    "135": {
+      "kind": "area",
+      "name": "FROSTMANE_HOLD",
+      "source": "consumer zoneIDs"
+    },
+    "136": {
+      "kind": "area",
+      "name": "the-grizzled-den",
+      "source": "Forever zone registry"
+    },
+    "1377": {
+      "kind": "area",
+      "name": "SILITHUS",
+      "source": "consumer zoneIDs"
+    },
+    "139": {
+      "kind": "area",
+      "name": "EASTERN_PLAGUELANDS",
+      "source": "consumer zoneIDs"
+    },
+    "1397": {
+      "kind": "area",
+      "name": "emerald-forest",
+      "source": "Forever zone registry"
+    },
+    "14": {
+      "kind": "area",
+      "name": "DUROTAR",
+      "source": "consumer zoneIDs"
+    },
+    "141": {
+      "kind": "area",
+      "name": "TELDRASSIL",
+      "source": "consumer zoneIDs"
+    },
+    "1417": {
+      "kind": "area",
+      "name": "SUNKEN_TEMPLE",
+      "source": "consumer zoneIDs"
+    },
+    "146": {
+      "kind": "area",
+      "name": "STONEWROUGHT_DAM",
+      "source": "consumer zoneIDs"
+    },
+    "1477": {
+      "kind": "area",
+      "name": "THE_TEMPLE_OF_ATAL_HAKKAR",
+      "source": "consumer zoneIDs"
+    },
+    "148": {
+      "kind": "area",
+      "name": "DARKSHORE",
+      "source": "consumer zoneIDs"
+    },
+    "1497": {
+      "kind": "area",
+      "name": "UNDERCITY",
+      "source": "consumer zoneIDs"
+    },
+    "15": {
+      "kind": "area",
+      "name": "DUSTWALLOW_MARSH",
+      "source": "consumer zoneIDs"
+    },
+    "1517": {
+      "kind": "area",
+      "name": "uldaman",
+      "source": "Forever zone registry"
+    },
+    "1519": {
+      "kind": "area",
+      "name": "STORMWIND_CITY",
+      "source": "consumer zoneIDs"
+    },
+    "1537": {
+      "kind": "area",
+      "name": "IRONFORGE",
+      "source": "consumer zoneIDs"
+    },
+    "15475": {
+      "kind": "area",
+      "name": "DEMON_FALL_CANYON",
+      "source": "consumer zoneIDs"
+    },
+    "155": {
+      "kind": "area",
+      "name": "NIGHTS_WEB_HOLLOW",
+      "source": "consumer zoneIDs"
+    },
+    "15531": {
+      "kind": "area",
+      "name": "THE_TAINTED_SCAR",
+      "source": "consumer zoneIDs"
+    },
+    "15532": {
+      "kind": "area",
+      "name": "storm-cliffs",
+      "source": "Forever zone registry"
+    },
+    "15793": {
+      "kind": "area",
+      "name": "elsewhen",
+      "source": "Forever zone registry"
+    },
+    "15809": {
+      "kind": "area",
+      "name": "felwood",
+      "source": "Forever zone registry"
+    },
+    "1581": {
+      "kind": "area",
+      "name": "THE_DEADMINES",
+      "source": "consumer zoneIDs"
+    },
+    "15825": {
+      "kind": "area",
+      "name": "the-crystal-vale",
+      "source": "Forever zone registry"
+    },
+    "15828": {
+      "kind": "area",
+      "name": "THE_BURNING_OF_ANDORHAL",
+      "source": "consumer zoneIDs"
+    },
+    "1583": {
+      "kind": "area",
+      "name": "BLACKROCK_SPIRE",
+      "source": "consumer zoneIDs"
+    },
+    "1584": {
+      "kind": "area",
+      "name": "BLACKROCK_DEPTHS",
+      "source": "consumer zoneIDs"
+    },
+    "1585": {
+      "kind": "area",
+      "name": "BLACKROCK_DEPTHS_SHADOWFORGE_CITY",
+      "source": "consumer zoneIDs"
+    },
+    "15938": {
+      "kind": "area",
+      "name": "starfall-village",
+      "source": "Forever zone registry"
+    },
+    "16": {
+      "kind": "area",
+      "name": "AZSHARA",
+      "source": "consumer zoneIDs"
+    },
+    "16003": {
+      "kind": "area",
+      "name": "azshara",
+      "source": "Forever zone registry"
+    },
+    "16004": {
+      "kind": "area",
+      "name": "mount-hyjal",
+      "source": "Forever zone registry"
+    },
+    "16017": {
+      "kind": "area",
+      "name": "desolace",
+      "source": "Forever zone registry"
+    },
+    "16018": {
+      "kind": "area",
+      "name": "feralas",
+      "source": "Forever zone registry"
+    },
+    "16028": {
+      "kind": "area",
+      "name": "eastern-plaguelands",
+      "source": "Forever zone registry"
+    },
+    "16029": {
+      "kind": "area",
+      "name": "the-hinterlands",
+      "source": "Forever zone registry"
+    },
+    "16074": {
+      "kind": "area",
+      "name": "KARAZHAN_CRYPTS",
+      "source": "consumer zoneIDs"
+    },
+    "16076": {
+      "kind": "area",
+      "name": "temple-of-ahnqiraj",
+      "source": "Forever zone registry"
+    },
+    "16113": {
+      "kind": "area",
+      "name": "redridge-mountains",
+      "source": "Forever zone registry"
+    },
+    "16114": {
+      "kind": "area",
+      "name": "deadwind-pass",
+      "source": "Forever zone registry"
+    },
+    "16115": {
+      "kind": "area",
+      "name": "blasted-lands",
+      "source": "Forever zone registry"
+    },
+    "16116": {
+      "kind": "area",
+      "name": "swamp-of-sorrows",
+      "source": "Forever zone registry"
+    },
+    "16117": {
+      "kind": "area",
+      "name": "stranglethorn-vale",
+      "source": "Forever zone registry"
+    },
+    "16118": {
+      "kind": "area",
+      "name": "elwynn-forest",
+      "source": "Forever zone registry"
+    },
+    "16119": {
+      "kind": "area",
+      "name": "duskwood",
+      "source": "Forever zone registry"
+    },
+    "16144": {
+      "kind": "area",
+      "name": "elwynn-forest-blue-whelpling-inn-prototype",
+      "source": "Forever zone registry"
+    },
+    "16147": {
+      "kind": "area",
+      "name": "elwynn-forest",
+      "source": "Forever zone registry"
+    },
+    "16148": {
+      "kind": "area",
+      "name": "duskwood",
+      "source": "Forever zone registry"
+    },
+    "16149": {
+      "kind": "area",
+      "name": "westfall",
+      "source": "Forever zone registry"
+    },
+    "16169": {
+      "kind": "area",
+      "name": "ashenvale",
+      "source": "Forever zone registry"
+    },
+    "16236": {
+      "kind": "area",
+      "name": "SCARLET_ENCLAVE",
+      "source": "consumer zoneIDs"
+    },
+    "16295": {
+      "kind": "area",
+      "name": "the-scarab-dais",
+      "source": "Forever zone registry"
+    },
+    "16335": {
+      "kind": "area",
+      "name": "New Avalon",
+      "source": "reviewed area identity"
+    },
+    "16362": {
+      "kind": "area",
+      "name": "shadow-hold",
+      "source": "Forever zone registry"
+    },
+    "1637": {
+      "kind": "area",
+      "name": "ORGRIMMAR",
+      "source": "consumer zoneIDs"
+    },
+    "1638": {
+      "kind": "area",
+      "name": "THUNDER_BLUFF",
+      "source": "consumer zoneIDs"
+    },
+    "16394": {
+      "kind": "area",
+      "name": "naxxramas",
+      "source": "Forever zone registry"
+    },
+    "16508": {
+      "kind": "area",
+      "name": "burning-steppes",
+      "source": "Forever zone registry"
+    },
+    "16509": {
+      "kind": "area",
+      "name": "stormwind-city",
+      "source": "Forever zone registry"
+    },
+    "16510": {
+      "kind": "area",
+      "name": "elwynn-forest",
+      "source": "Forever zone registry"
+    },
+    "16532": {
+      "kind": "area",
+      "name": "tylers-test-map-desolace",
+      "source": "Forever zone registry"
+    },
+    "16544": {
+      "kind": "area",
+      "name": "CITY_OF_DALARAN",
+      "source": "consumer zoneIDs"
+    },
+    "16560": {
+      "kind": "area",
+      "name": "city-of-dalaran",
+      "source": "Forever zone registry"
+    },
+    "16562": {
+      "kind": "area",
+      "name": "hillsbrad-foothills",
+      "source": "Forever zone registry"
+    },
+    "1657": {
+      "kind": "area",
+      "name": "DARNASSUS",
+      "source": "consumer zoneIDs"
+    },
+    "16591": {
+      "kind": "area",
+      "name": "RIVERGLADES",
+      "source": "consumer zoneIDs"
+    },
+    "16593": {
+      "kind": "area",
+      "name": "ZEPHRAS_ISLE",
+      "source": "consumer zoneIDs"
+    },
+    "16603": {
+      "kind": "area",
+      "name": "warsong-gulch",
+      "source": "Forever zone registry"
+    },
+    "16606": {
+      "kind": "area",
+      "name": "DARKSPEAR_ISLANDS",
+      "source": "consumer zoneIDs"
+    },
+    "16611": {
+      "kind": "area",
+      "name": "RUINS_OF_LORDAERON",
+      "source": "consumer zoneIDs"
+    },
+    "16632": {
+      "kind": "area",
+      "name": "half-pint-tavern",
+      "source": "Forever zone registry"
+    },
+    "16651": {
+      "kind": "area",
+      "name": "SHEN_DRALAS",
+      "source": "consumer zoneIDs"
+    },
+    "16653": {
+      "kind": "area",
+      "name": "battle-for-gilneas",
+      "source": "Forever zone registry"
+    },
+    "16662": {
+      "kind": "area",
+      "name": "stormrs-test-map",
+      "source": "Forever zone registry"
+    },
+    "16732": {
+      "kind": "area",
+      "name": "excavation-site-wetlands",
+      "source": "Forever zone registry"
+    },
+    "16756": {
+      "kind": "area",
+      "name": "ruins-of-gilneas",
+      "source": "Forever zone registry"
+    },
+    "16876": {
+      "kind": "area",
+      "name": "whelgars-excavation-site",
+      "source": "Forever zone registry"
+    },
+    "16919": {
+      "kind": "area",
+      "name": "THE_HALL_OF_THANES",
+      "source": "consumer zoneIDs"
+    },
+    "16941": {
+      "kind": "area",
+      "name": "Crafting",
+      "source": "reviewed area identity"
+    },
+    "17": {
+      "kind": "area",
+      "name": "THE_BARRENS",
+      "source": "consumer zoneIDs"
+    },
+    "17065": {
+      "kind": "area",
+      "name": "gilneas",
+      "source": "Forever zone registry"
+    },
+    "17066": {
+      "kind": "area",
+      "name": "shark-infested-waters",
+      "source": "Forever zone registry"
+    },
+    "17191": {
+      "kind": "area",
+      "name": "manor-mistmantle",
+      "source": "Forever zone registry"
+    },
+    "17803": {
+      "kind": "area",
+      "name": "blackrock-depths",
+      "source": "Forever zone registry"
+    },
+    "17804": {
+      "kind": "area",
+      "name": "blackrock-spire",
+      "source": "Forever zone registry"
+    },
+    "1941": {
+      "kind": "area",
+      "name": "CAVERNS_OF_TIME",
+      "source": "consumer zoneIDs"
+    },
+    "1977": {
+      "kind": "area",
+      "name": "ZUL_GURUB",
+      "source": "consumer zoneIDs"
+    },
+    "2017": {
+      "kind": "area",
+      "name": "STRATHOLME",
+      "source": "consumer zoneIDs"
+    },
+    "2057": {
+      "kind": "area",
+      "name": "SCHOLOMANCE",
+      "source": "consumer zoneIDs"
+    },
+    "206": {
+      "kind": "area",
+      "name": "UTGARDE_KEEP",
+      "source": "consumer zoneIDs"
+    },
+    "207": {
+      "kind": "area",
+      "name": "the-great-sea",
+      "source": "Forever zone registry"
+    },
+    "2079": {
+      "kind": "area",
+      "name": "ALCAZ_ISLAND",
+      "source": "consumer zoneIDs"
+    },
+    "209": {
+      "kind": "area",
+      "name": "SHADOWFANG_KEEP",
+      "source": "consumer zoneIDs"
+    },
+    "210": {
+      "kind": "area",
+      "name": "ICECROWN",
+      "source": "consumer zoneIDs"
+    },
+    "2100": {
+      "kind": "area",
+      "name": "MARAUDON",
+      "source": "consumer zoneIDs"
+    },
+    "215": {
+      "kind": "area",
+      "name": "MULGORE",
+      "source": "consumer zoneIDs"
+    },
+    "2159": {
+      "kind": "area",
+      "name": "ONYXIAS_LAIR",
+      "source": "consumer zoneIDs"
+    },
+    "2257": {
+      "kind": "area",
+      "name": "DEEPRUN_TRAM",
+      "source": "consumer zoneIDs"
+    },
+    "2300": {
+      "kind": "area",
+      "name": "caverns-of-time",
+      "source": "Forever zone registry"
+    },
+    "2366": {
+      "kind": "area",
+      "name": "THE_BLACK_MORASS",
+      "source": "consumer zoneIDs"
+    },
+    "2367": {
+      "kind": "area",
+      "name": "OLD_HILLSBRAD_FOOTHILLS",
+      "source": "consumer zoneIDs"
+    },
+    "2437": {
+      "kind": "area",
+      "name": "RAGEFIRE_CHASM",
+      "source": "consumer zoneIDs"
+    },
+    "25": {
+      "kind": "area",
+      "name": "blackrock-mountain",
+      "source": "Forever zone registry"
+    },
+    "2557": {
+      "kind": "area",
+      "name": "DIRE_MAUL",
+      "source": "consumer zoneIDs"
+    },
+    "257": {
+      "kind": "area",
+      "name": "SHADOWTHREAD_CAVE",
+      "source": "consumer zoneIDs"
+    },
+    "258": {
+      "kind": "area",
+      "name": "fel-rock",
+      "source": "Forever zone registry"
+    },
+    "2597": {
+      "kind": "area",
+      "name": "ALTERAC_VALLEY",
+      "source": "consumer zoneIDs"
+    },
+    "262": {
+      "kind": "area",
+      "name": "banethil-barrow-den",
+      "source": "Forever zone registry"
+    },
+    "267": {
+      "kind": "area",
+      "name": "HILLSBRAD_FOOTHILLS",
+      "source": "consumer zoneIDs"
+    },
+    "2677": {
+      "kind": "area",
+      "name": "BLACKWING_LAIR",
+      "source": "consumer zoneIDs"
+    },
+    "2717": {
+      "kind": "area",
+      "name": "MOLTEN_CORE",
+      "source": "consumer zoneIDs"
+    },
+    "28": {
+      "kind": "area",
+      "name": "WESTERN_PLAGUELANDS",
+      "source": "consumer zoneIDs"
+    },
+    "2817": {
+      "kind": "area",
+      "name": "CRYSTALSONG_FOREST",
+      "source": "consumer zoneIDs"
+    },
+    "2917": {
+      "kind": "area",
+      "name": "HALL_OF_LEGENDS",
+      "source": "consumer zoneIDs"
+    },
+    "2918": {
+      "kind": "area",
+      "name": "CHAMPIONS_HALL",
+      "source": "consumer zoneIDs"
+    },
+    "3": {
+      "kind": "area",
+      "name": "BADLANDS",
+      "source": "consumer zoneIDs"
+    },
+    "3277": {
+      "kind": "area",
+      "name": "WARSONG_GULCH",
+      "source": "consumer zoneIDs"
+    },
+    "33": {
+      "kind": "area",
+      "name": "STRANGLETHORN_VALE",
+      "source": "consumer zoneIDs"
+    },
+    "331": {
+      "kind": "area",
+      "name": "ASHENVALE",
+      "source": "consumer zoneIDs"
+    },
+    "3358": {
+      "kind": "area",
+      "name": "ARATHI_BASIN",
+      "source": "consumer zoneIDs"
+    },
+    "34": {
+      "kind": "area",
+      "name": "echo-ridge-mine",
+      "source": "Forever zone registry"
+    },
+    "3428": {
+      "kind": "area",
+      "name": "AHN_QIRAJ",
+      "source": "consumer zoneIDs"
+    },
+    "3429": {
+      "kind": "area",
+      "name": "RUINS_OF_AHN_QIRAJ",
+      "source": "consumer zoneIDs"
+    },
+    "3430": {
+      "kind": "area",
+      "name": "EVERSONG_WOODS",
+      "source": "consumer zoneIDs"
+    },
+    "3433": {
+      "kind": "area",
+      "name": "GHOSTLANDS",
+      "source": "consumer zoneIDs"
+    },
+    "3446": {
+      "kind": "area",
+      "name": "twilights-run",
+      "source": "Forever zone registry"
+    },
+    "3456": {
+      "kind": "area",
+      "name": "NAXXRAMAS",
+      "source": "consumer zoneIDs"
+    },
+    "3457": {
+      "kind": "area",
+      "name": "KARAZHAN",
+      "source": "consumer zoneIDs"
+    },
+    "3483": {
+      "kind": "area",
+      "name": "HELLFIRE_PENINSULA",
+      "source": "consumer zoneIDs"
+    },
+    "3487": {
+      "kind": "area",
+      "name": "SILVERMOON_CITY",
+      "source": "consumer zoneIDs"
+    },
+    "3518": {
+      "kind": "area",
+      "name": "NAGRAND",
+      "source": "consumer zoneIDs"
+    },
+    "3519": {
+      "kind": "area",
+      "name": "TEROKKAR_FOREST",
+      "source": "consumer zoneIDs"
+    },
+    "3520": {
+      "kind": "area",
+      "name": "SHADOWMOON_VALLEY",
+      "source": "consumer zoneIDs"
+    },
+    "3521": {
+      "kind": "area",
+      "name": "ZANGARMARSH",
+      "source": "consumer zoneIDs"
+    },
+    "3522": {
+      "kind": "area",
+      "name": "BLADES_EDGE_MOUNTAINS",
+      "source": "consumer zoneIDs"
+    },
+    "3523": {
+      "kind": "area",
+      "name": "NETHERSTORM",
+      "source": "consumer zoneIDs"
+    },
+    "3524": {
+      "kind": "area",
+      "name": "AZUREMYST_ISLE",
+      "source": "consumer zoneIDs"
+    },
+    "3525": {
+      "kind": "area",
+      "name": "BLOODMYST_ISLE",
+      "source": "consumer zoneIDs"
+    },
+    "3537": {
+      "kind": "area",
+      "name": "BOREAN_TUNDRA",
+      "source": "consumer zoneIDs"
+    },
+    "3557": {
+      "kind": "area",
+      "name": "THE_EXODAR",
+      "source": "consumer zoneIDs"
+    },
+    "3562": {
+      "kind": "area",
+      "name": "HELLFIRE_RAMPARTS",
+      "source": "consumer zoneIDs"
+    },
+    "3563": {
+      "kind": "area",
+      "name": "HELLFIRE_CITADEL",
+      "source": "consumer zoneIDs"
+    },
+    "357": {
+      "kind": "area",
+      "name": "FERALAS",
+      "source": "consumer zoneIDs"
+    },
+    "36": {
+      "kind": "area",
+      "name": "ALTERAC_MOUNTAINS",
+      "source": "consumer zoneIDs"
+    },
+    "360": {
+      "kind": "area",
+      "name": "the-venture-co-mine",
+      "source": "Forever zone registry"
+    },
+    "3606": {
+      "kind": "area",
+      "name": "HYJAL_SUMMIT",
+      "source": "consumer zoneIDs"
+    },
+    "3607": {
+      "kind": "area",
+      "name": "SERPENTSHRINE_CAVERN",
+      "source": "consumer zoneIDs"
+    },
+    "361": {
+      "kind": "area",
+      "name": "FELWOOD",
+      "source": "consumer zoneIDs"
+    },
+    "365": {
+      "kind": "area",
+      "name": "BURNING_BLADE_COVEN",
+      "source": "consumer zoneIDs"
+    },
+    "3679": {
+      "kind": "area",
+      "name": "SKETTIS",
+      "source": "consumer zoneIDs"
+    },
+    "3688": {
+      "kind": "area",
+      "name": "AUCHINDOUN",
+      "source": "consumer zoneIDs"
+    },
+    "3703": {
+      "kind": "area",
+      "name": "SHATTRATH_CITY",
+      "source": "consumer zoneIDs"
+    },
+    "371": {
+      "kind": "area",
+      "name": "dustwind-cave",
+      "source": "Forever zone registry"
+    },
+    "3711": {
+      "kind": "area",
+      "name": "SHOLAZAR_BASIN",
+      "source": "consumer zoneIDs"
+    },
+    "3713": {
+      "kind": "area",
+      "name": "THE_BLOOD_FURNACE",
+      "source": "consumer zoneIDs"
+    },
+    "3714": {
+      "kind": "area",
+      "name": "THE_SHATTERED_HALLS",
+      "source": "consumer zoneIDs"
+    },
+    "3715": {
+      "kind": "area",
+      "name": "THE_STEAMVAULT",
+      "source": "consumer zoneIDs"
+    },
+    "3716": {
+      "kind": "area",
+      "name": "THE_UNDERBOG",
+      "source": "consumer zoneIDs"
+    },
+    "3717": {
+      "kind": "area",
+      "name": "THE_SLAVE_PENS",
+      "source": "consumer zoneIDs"
+    },
+    "3789": {
+      "kind": "area",
+      "name": "SHADOW_LABYRINTH",
+      "source": "consumer zoneIDs"
+    },
+    "3790": {
+      "kind": "area",
+      "name": "AUCHENAI_CRYPTS",
+      "source": "consumer zoneIDs"
+    },
+    "3791": {
+      "kind": "area",
+      "name": "SETHEKK_HALLS",
+      "source": "consumer zoneIDs"
+    },
+    "3792": {
+      "kind": "area",
+      "name": "MANA_TOMBS",
+      "source": "consumer zoneIDs"
+    },
+    "38": {
+      "kind": "area",
+      "name": "LOCH_MODAN",
+      "source": "consumer zoneIDs"
+    },
+    "3805": {
+      "kind": "area",
+      "name": "ZUL_AMAN",
+      "source": "consumer zoneIDs"
+    },
+    "3836": {
+      "kind": "area",
+      "name": "MAGTHERIDONS_LAIR",
+      "source": "consumer zoneIDs"
+    },
+    "3845": {
+      "kind": "area",
+      "name": "TEMPEST_KEEP",
+      "source": "consumer zoneIDs"
+    },
+    "3847": {
+      "kind": "area",
+      "name": "THE_BOTANICA",
+      "source": "consumer zoneIDs"
+    },
+    "3848": {
+      "kind": "area",
+      "name": "THE_ARCATRAZ",
+      "source": "consumer zoneIDs"
+    },
+    "3849": {
+      "kind": "area",
+      "name": "THE_MECHANAR",
+      "source": "consumer zoneIDs"
+    },
+    "3905": {
+      "kind": "area",
+      "name": "COILFANG_RESERVOIR",
+      "source": "consumer zoneIDs"
+    },
+    "3917": {
+      "kind": "area",
+      "name": "AUCHINDOUN_DUNGEONS",
+      "source": "consumer zoneIDs"
+    },
+    "392": {
+      "kind": "area",
+      "name": "RATCHET",
+      "source": "consumer zoneIDs"
+    },
+    "3923": {
+      "kind": "area",
+      "name": "GRUULS_LAIR",
+      "source": "consumer zoneIDs"
+    },
+    "394": {
+      "kind": "area",
+      "name": "GRIZZLY_HILLS",
+      "source": "consumer zoneIDs"
+    },
+    "3959": {
+      "kind": "area",
+      "name": "BLACK_TEMPLE",
+      "source": "consumer zoneIDs"
+    },
+    "3979": {
+      "kind": "area",
+      "name": "THE_FROZEN_SEA",
+      "source": "consumer zoneIDs"
+    },
+    "4": {
+      "kind": "area",
+      "name": "BLASTED_LANDS",
+      "source": "consumer zoneIDs"
+    },
+    "40": {
+      "kind": "area",
+      "name": "WESTFALL",
+      "source": "consumer zoneIDs"
+    },
+    "400": {
+      "kind": "area",
+      "name": "THOUSAND_NEEDLES",
+      "source": "consumer zoneIDs"
+    },
+    "405": {
+      "kind": "area",
+      "name": "DESOLACE",
+      "source": "consumer zoneIDs"
+    },
+    "406": {
+      "kind": "area",
+      "name": "STONETALON_MOUNTAINS",
+      "source": "consumer zoneIDs"
+    },
+    "4075": {
+      "kind": "area",
+      "name": "SUNWELL_PLATEAU",
+      "source": "consumer zoneIDs"
+    },
+    "4080": {
+      "kind": "area",
+      "name": "ISLE_OF_QUEL_DANAS",
+      "source": "consumer zoneIDs"
+    },
+    "41": {
+      "kind": "area",
+      "name": "DEADWIND_PASS",
+      "source": "consumer zoneIDs"
+    },
+    "4100": {
+      "kind": "area",
+      "name": "THE_CULLING_OF_STRATHOLME",
+      "source": "consumer zoneIDs"
+    },
+    "4131": {
+      "kind": "area",
+      "name": "MAGISTERS_TERRACE",
+      "source": "consumer zoneIDs"
+    },
+    "4196": {
+      "kind": "area",
+      "name": "DRAKTHARON_KEEP",
+      "source": "consumer zoneIDs"
+    },
+    "4197": {
+      "kind": "area",
+      "name": "WINTERGRASP",
+      "source": "consumer zoneIDs"
+    },
+    "4228": {
+      "kind": "area",
+      "name": "THE_OCULUS",
+      "source": "consumer zoneIDs"
+    },
+    "4264": {
+      "kind": "area",
+      "name": "HALLS_OF_STONE",
+      "source": "consumer zoneIDs"
+    },
+    "4265": {
+      "kind": "area",
+      "name": "THE_NEXUS",
+      "source": "consumer zoneIDs"
+    },
+    "4272": {
+      "kind": "area",
+      "name": "HALLS_OF_LIGHTNING",
+      "source": "consumer zoneIDs"
+    },
+    "4273": {
+      "kind": "area",
+      "name": "ULDUAR",
+      "source": "consumer zoneIDs"
+    },
+    "4277": {
+      "kind": "area",
+      "name": "AZJOL_NERUB",
+      "source": "consumer zoneIDs"
+    },
+    "4298": {
+      "kind": "area",
+      "name": "PLAGUELANDS_THE_SCARLET_ENCLAVE",
+      "source": "consumer zoneIDs"
+    },
+    "4343": {
+      "kind": "area",
+      "name": "NEW_AVALON",
+      "source": "consumer zoneIDs"
+    },
+    "4395": {
+      "kind": "area",
+      "name": "DALARAN",
+      "source": "consumer zoneIDs"
+    },
+    "44": {
+      "kind": "area",
+      "name": "REDRIDGE_MOUNTAINS",
+      "source": "consumer zoneIDs"
+    },
+    "440": {
+      "kind": "area",
+      "name": "TANARIS",
+      "source": "consumer zoneIDs"
+    },
+    "4415": {
+      "kind": "area",
+      "name": "VIOLET_HOLD",
+      "source": "consumer zoneIDs"
+    },
+    "4416": {
+      "kind": "area",
+      "name": "GUNDRAK",
+      "source": "consumer zoneIDs"
+    },
+    "442": {
+      "kind": "area",
+      "name": "AUBERDINE",
+      "source": "consumer zoneIDs"
+    },
+    "4493": {
+      "kind": "area",
+      "name": "THE_OBSIDIAN_SANCTUM",
+      "source": "consumer zoneIDs"
+    },
+    "4494": {
+      "kind": "area",
+      "name": "AHNKAHET_THE_OLD_KINGDOM",
+      "source": "consumer zoneIDs"
+    },
+    "45": {
+      "kind": "area",
+      "name": "ARATHI_HIGHLANDS",
+      "source": "consumer zoneIDs"
+    },
+    "4500": {
+      "kind": "area",
+      "name": "THE_EYE_OF_ETERNITY",
+      "source": "consumer zoneIDs"
+    },
+    "4560": {
+      "kind": "area",
+      "name": "THE_UNDERBELLY",
+      "source": "consumer zoneIDs"
+    },
+    "457": {
+      "kind": "area",
+      "name": "the-veiled-sea",
+      "source": "Forever zone registry"
+    },
+    "46": {
+      "kind": "area",
+      "name": "BURNING_STEPPES",
+      "source": "consumer zoneIDs"
+    },
+    "4657": {
+      "kind": "area",
+      "name": "THE_ARCHIVUM",
+      "source": "consumer zoneIDs"
+    },
+    "47": {
+      "kind": "area",
+      "name": "THE_HINTERLANDS",
+      "source": "consumer zoneIDs"
+    },
+    "4706": {
+      "kind": "area",
+      "name": "RUINS_OF_GILNEAS",
+      "source": "consumer zoneIDs"
+    },
+    "4709": {
+      "kind": "area",
+      "name": "SOUTHERN_BARRENS",
+      "source": "consumer zoneIDs"
+    },
+    "4714": {
+      "kind": "area",
+      "name": "GILNEAS",
+      "source": "consumer zoneIDs"
+    },
+    "4720": {
+      "kind": "area",
+      "name": "THE_LOST_ISLES",
+      "source": "consumer zoneIDs"
+    },
+    "4722": {
+      "kind": "area",
+      "name": "TRIAL_OF_THE_CRUSADER",
+      "source": "consumer zoneIDs"
+    },
+    "4723": {
+      "kind": "area",
+      "name": "TRIAL_OF_THE_CHAMPION",
+      "source": "consumer zoneIDs"
+    },
+    "4732": {
+      "kind": "area",
+      "name": "EMBERSTONE_MINE",
+      "source": "consumer zoneIDs"
+    },
+    "4737": {
+      "kind": "area",
+      "name": "KEZAN",
+      "source": "consumer zoneIDs"
+    },
+    "4740": {
+      "kind": "area",
+      "name": "THE_SILVER_ENCLAVE",
+      "source": "consumer zoneIDs"
+    },
+    "4742": {
+      "kind": "area",
+      "name": "HROTHGARS_LANDING",
+      "source": "consumer zoneIDs"
+    },
+    "4755": {
+      "kind": "area",
+      "name": "GILNEAS_CITY",
+      "source": "consumer zoneIDs"
+    },
+    "4766": {
+      "kind": "area",
+      "name": "KAJA_MINE",
+      "source": "consumer zoneIDs"
+    },
+    "4778": {
+      "kind": "area",
+      "name": "KAJA_MITE_CAVERN",
+      "source": "consumer zoneIDs"
+    },
+    "4809": {
+      "kind": "area",
+      "name": "FORGE_OF_SOULS",
+      "source": "consumer zoneIDs"
+    },
+    "4812": {
+      "kind": "area",
+      "name": "ICECROWN_CITADEL",
+      "source": "consumer zoneIDs"
+    },
+    "4813": {
+      "kind": "area",
+      "name": "PIT_OF_SARON",
+      "source": "consumer zoneIDs"
+    },
+    "4815": {
+      "kind": "area",
+      "name": "KELP_THAR_FOREST",
+      "source": "consumer zoneIDs"
+    },
+    "4817": {
+      "kind": "area",
+      "name": "GREYMANE_MANOR_MAIN_FLOOR",
+      "source": "consumer zoneIDs"
+    },
+    "4820": {
+      "kind": "area",
+      "name": "HALLS_OF_REFLECTION",
+      "source": "consumer zoneIDs"
+    },
+    "490": {
+      "kind": "area",
+      "name": "UN_GORO_CRATER",
+      "source": "consumer zoneIDs"
+    },
+    "491": {
+      "kind": "area",
+      "name": "RAZORFEN_KRAUL",
+      "source": "consumer zoneIDs"
+    },
+    "4911": {
+      "kind": "area",
+      "name": "VOLCANOTHS_LAIR",
+      "source": "consumer zoneIDs"
+    },
+    "4913": {
+      "kind": "area",
+      "name": "SPITESCALE_CAVERN",
+      "source": "consumer zoneIDs"
+    },
+    "4922": {
+      "kind": "area",
+      "name": "TWILIGHT_HIGHLANDS",
+      "source": "consumer zoneIDs"
+    },
+    "4926": {
+      "kind": "area",
+      "name": "BLACKROCK_CAVERNS",
+      "source": "consumer zoneIDs"
+    },
+    "493": {
+      "kind": "area",
+      "name": "MOONGLADE",
+      "source": "consumer zoneIDs"
+    },
+    "4945": {
+      "kind": "area",
+      "name": "HALLS_OF_ORIGINATION",
+      "source": "consumer zoneIDs"
+    },
+    "495": {
+      "kind": "area",
+      "name": "HOWLING_FJORD",
+      "source": "consumer zoneIDs"
+    },
+    "4950": {
+      "kind": "area",
+      "name": "GRIM_BATOL",
+      "source": "consumer zoneIDs"
+    },
+    "4987": {
+      "kind": "area",
+      "name": "THE_RUBY_SANCTUM",
+      "source": "consumer zoneIDs"
+    },
+    "5004": {
+      "kind": "area",
+      "name": "THRONE_OF_THE_TIDES",
+      "source": "consumer zoneIDs"
+    },
+    "5034": {
+      "kind": "area",
+      "name": "ULDUM",
+      "source": "consumer zoneIDs"
+    },
+    "5035": {
+      "kind": "area",
+      "name": "THE_VORTEX_PINNACLE",
+      "source": "consumer zoneIDs"
+    },
+    "5042": {
+      "kind": "area",
+      "name": "DEEPHOLM",
+      "source": "consumer zoneIDs"
+    },
+    "5088": {
+      "kind": "area",
+      "name": "THE_STONECORE",
+      "source": "consumer zoneIDs"
+    },
+    "5094": {
+      "kind": "area",
+      "name": "BLACKWING_DESCENT",
+      "source": "consumer zoneIDs"
+    },
+    "5095": {
+      "kind": "area",
+      "name": "TOL_BARAD",
+      "source": "consumer zoneIDs"
+    },
+    "51": {
+      "kind": "area",
+      "name": "SEARING_GORGE",
+      "source": "consumer zoneIDs"
+    },
+    "5144": {
+      "kind": "area",
+      "name": "SHIMMERING_EXPANSE",
+      "source": "consumer zoneIDs"
+    },
+    "5145": {
+      "kind": "area",
+      "name": "ABYSSAL_DEPTHS",
+      "source": "consumer zoneIDs"
+    },
+    "5146": {
+      "kind": "area",
+      "name": "VASHJ_IR",
+      "source": "consumer zoneIDs"
+    },
+    "5287": {
+      "kind": "area",
+      "name": "THE_CAPE_OF_STRANGLETHORN",
+      "source": "consumer zoneIDs"
+    },
+    "5334": {
+      "kind": "area",
+      "name": "THE_BASTION_OF_TWILIGHT",
+      "source": "consumer zoneIDs"
+    },
+    "5339": {
+      "kind": "area",
+      "name": "STRANGLETHORN_COMPOSITE_MAP",
+      "source": "consumer zoneIDs"
+    },
+    "5389": {
+      "kind": "area",
+      "name": "TOL_BARAD_PENINSULA",
+      "source": "consumer zoneIDs"
+    },
+    "5396": {
+      "kind": "area",
+      "name": "LOST_CITY_OF_THE_TOLVIR",
+      "source": "consumer zoneIDs"
+    },
+    "54": {
+      "kind": "area",
+      "name": "jasperlode-mine",
+      "source": "Forever zone registry"
+    },
+    "540": {
+      "kind": "area",
+      "name": "the-slithering-scar",
+      "source": "Forever zone registry"
+    },
+    "5416": {
+      "kind": "area",
+      "name": "THE_MAELSTROM",
+      "source": "consumer zoneIDs"
+    },
+    "5638": {
+      "kind": "area",
+      "name": "THRONE_OF_THE_FOUR_WINDS",
+      "source": "consumer zoneIDs"
+    },
+    "57": {
+      "kind": "area",
+      "name": "fargodeep-mine",
+      "source": "Forever zone registry"
+    },
+    "5723": {
+      "kind": "area",
+      "name": "FIRELANDS",
+      "source": "consumer zoneIDs"
+    },
+    "5733": {
+      "kind": "area",
+      "name": "MOLTEN_FRONT",
+      "source": "consumer zoneIDs"
+    },
+    "5736": {
+      "kind": "area",
+      "name": "THE_WANDERING_ISLE",
+      "source": "consumer zoneIDs"
+    },
+    "5785": {
+      "kind": "area",
+      "name": "THE_JADE_FOREST",
+      "source": "consumer zoneIDs"
+    },
+    "5786": {
+      "kind": "area",
+      "name": "THE_NEXUS_LEGENDARY",
+      "source": "consumer zoneIDs"
+    },
+    "5788": {
+      "kind": "area",
+      "name": "WELL_OF_ETERNITY",
+      "source": "consumer zoneIDs"
+    },
+    "5789": {
+      "kind": "area",
+      "name": "END_TIME",
+      "source": "consumer zoneIDs"
+    },
+    "5790": {
+      "kind": "area",
+      "name": "END_TIME_RUBY_DRAGONSHRINE",
+      "source": "consumer zoneIDs"
+    },
+    "5792": {
+      "kind": "area",
+      "name": "END_TIME_OBSIDIAN_DRAGONSHRINE",
+      "source": "consumer zoneIDs"
+    },
+    "5793": {
+      "kind": "area",
+      "name": "END_TIME_AZURE_DRAGONSHRINE",
+      "source": "consumer zoneIDs"
+    },
+    "5794": {
+      "kind": "area",
+      "name": "END_TIME_EMERALD_DRAGONSHRINE",
+      "source": "consumer zoneIDs"
+    },
+    "5795": {
+      "kind": "area",
+      "name": "END_TIME_BRONZE_DRAGONSHRINE",
+      "source": "consumer zoneIDs"
+    },
+    "5805": {
+      "kind": "area",
+      "name": "VALLEY_OF_THE_FOUR_WINDS",
+      "source": "consumer zoneIDs"
+    },
+    "5840": {
+      "kind": "area",
+      "name": "VALE_OF_ETERNAL_BLOSSOMS",
+      "source": "consumer zoneIDs"
+    },
+    "5841": {
+      "kind": "area",
+      "name": "KUN_LAI_SUMMIT",
+      "source": "consumer zoneIDs"
+    },
+    "5842": {
+      "kind": "area",
+      "name": "TOWNLONG_STEPPES",
+      "source": "consumer zoneIDs"
+    },
+    "5844": {
+      "kind": "area",
+      "name": "HOUR_OF_TWILIGHT",
+      "source": "consumer zoneIDs"
+    },
+    "5861": {
+      "kind": "area",
+      "name": "DARKMOON_FAIRE_ISLAND",
+      "source": "consumer zoneIDs"
+    },
+    "5892": {
+      "kind": "area",
+      "name": "DRAGON_SOUL",
+      "source": "consumer zoneIDs"
+    },
+    "5918": {
+      "kind": "area",
+      "name": "SHADO_PAN_MONASTERY",
+      "source": "consumer zoneIDs"
+    },
+    "5955": {
+      "kind": "area",
+      "name": "GREENSTONE_QUARRY",
+      "source": "consumer zoneIDs"
+    },
+    "5956": {
+      "kind": "area",
+      "name": "TEMPLE_OF_THE_JADE_SERPENT",
+      "source": "consumer zoneIDs"
+    },
+    "5963": {
+      "kind": "area",
+      "name": "STORMSTOUT_BREWERY",
+      "source": "consumer zoneIDs"
+    },
+    "5976": {
+      "kind": "area",
+      "name": "GATE_OF_THE_SETTING_SUN",
+      "source": "consumer zoneIDs"
+    },
+    "5981": {
+      "kind": "area",
+      "name": "THE_HALFHILL_MARKET",
+      "source": "consumer zoneIDs"
+    },
+    "6006": {
+      "kind": "area",
+      "name": "THE_VEILED_STAIR",
+      "source": "consumer zoneIDs"
+    },
+    "6052": {
+      "kind": "area",
+      "name": "SCARLET_HALLS",
+      "source": "consumer zoneIDs"
+    },
+    "6066": {
+      "kind": "area",
+      "name": "SCHOLOMANCE_MOP",
+      "source": "consumer zoneIDs"
+    },
+    "6067": {
+      "kind": "area",
+      "name": "TERRACE_OF_ENDLESS_SPRING",
+      "source": "consumer zoneIDs"
+    },
+    "6074": {
+      "kind": "area",
+      "name": "GUO_LAI_HALLS",
+      "source": "consumer zoneIDs"
+    },
+    "6081": {
+      "kind": "area",
+      "name": "PEAK_OF_SERENITY",
+      "source": "consumer zoneIDs"
+    },
+    "6084": {
+      "kind": "area",
+      "name": "THE_DEEPER",
+      "source": "consumer zoneIDs"
+    },
+    "6088": {
+      "kind": "area",
+      "name": "KNUCKLETHUMP_HOLE",
+      "source": "consumer zoneIDs"
+    },
+    "6099": {
+      "kind": "area",
+      "name": "PRANKSTERS_HOLLOW",
+      "source": "consumer zoneIDs"
+    },
+    "6101": {
+      "kind": "area",
+      "name": "A_BREWING_STORM",
+      "source": "consumer zoneIDs"
+    },
+    "6109": {
+      "kind": "area",
+      "name": "SCARLET_MONASTERY_MOP",
+      "source": "consumer zoneIDs"
+    },
+    "6125": {
+      "kind": "area",
+      "name": "MOGUSHAN_VAULTS",
+      "source": "consumer zoneIDs"
+    },
+    "6134": {
+      "kind": "area",
+      "name": "KRASARANG_WILDS",
+      "source": "consumer zoneIDs"
+    },
+    "6137": {
+      "kind": "area",
+      "name": "FROSTMANE_HOVEL",
+      "source": "consumer zoneIDs"
+    },
+    "6138": {
+      "kind": "area",
+      "name": "DREAD_WASTES",
+      "source": "consumer zoneIDs"
+    },
+    "6141": {
+      "kind": "area",
+      "name": "SHRINE_OF_TWO_MOONS",
+      "source": "consumer zoneIDs"
+    },
+    "6142": {
+      "kind": "area",
+      "name": "SHRINE_OF_SEVEN_STARS",
+      "source": "consumer zoneIDs"
+    },
+    "616": {
+      "kind": "area",
+      "name": "MOUNT_HYJAL",
+      "source": "consumer zoneIDs"
+    },
+    "6170": {
+      "kind": "area",
+      "name": "NORTHSHIRE",
+      "source": "consumer zoneIDs"
+    },
+    "6176": {
+      "kind": "area",
+      "name": "COLDSHIRE_VALLEY",
+      "source": "consumer zoneIDs"
+    },
+    "618": {
+      "kind": "area",
+      "name": "WINTERSPRING",
+      "source": "consumer zoneIDs"
+    },
+    "6182": {
+      "kind": "area",
+      "name": "MOGUSHAN_PALACE",
+      "source": "consumer zoneIDs"
+    },
+    "6201": {
+      "kind": "area",
+      "name": "TOMB_OF_CONQUERORS",
+      "source": "consumer zoneIDs"
+    },
+    "6209": {
+      "kind": "area",
+      "name": "GREENSTONE_VILLAGE",
+      "source": "consumer zoneIDs"
+    },
+    "6213": {
+      "kind": "area",
+      "name": "NIUZAO_CATACOMBS",
+      "source": "consumer zoneIDs"
+    },
+    "6214": {
+      "kind": "area",
+      "name": "SIEGE_OF_NIUZAO_TEMPLE",
+      "source": "consumer zoneIDs"
+    },
+    "6219": {
+      "kind": "area",
+      "name": "ARENA_OF_ANNIHILATION",
+      "source": "consumer zoneIDs"
+    },
+    "6297": {
+      "kind": "area",
+      "name": "HEART_OF_FEAR",
+      "source": "consumer zoneIDs"
+    },
+    "6298": {
+      "kind": "area",
+      "name": "BRAWLGAR_ARENA",
+      "source": "consumer zoneIDs"
+    },
+    "6309": {
+      "kind": "area",
+      "name": "UNGA_INGOO",
+      "source": "consumer zoneIDs"
+    },
+    "6386": {
+      "kind": "area",
+      "name": "SCARLET_MONASTERY_MOP_CRUSADERS_CHAPEL",
+      "source": "consumer zoneIDs"
+    },
+    "6389": {
+      "kind": "area",
+      "name": "HOWLINGWIND_CAVERN",
+      "source": "consumer zoneIDs"
+    },
+    "6426": {
+      "kind": "area",
+      "name": "BREWMOON_FESTIVAL",
+      "source": "consumer zoneIDs"
+    },
+    "6450": {
+      "kind": "area",
+      "name": "SHADOWGLEN",
+      "source": "consumer zoneIDs"
+    },
+    "6451": {
+      "kind": "area",
+      "name": "VALLEY_OF_TRIALS",
+      "source": "consumer zoneIDs"
+    },
+    "6452": {
+      "kind": "area",
+      "name": "CAMP_NARACHE",
+      "source": "consumer zoneIDs"
+    },
+    "6453": {
+      "kind": "area",
+      "name": "ECHO_ISLES",
+      "source": "consumer zoneIDs"
+    },
+    "6454": {
+      "kind": "area",
+      "name": "DEATHKNELL",
+      "source": "consumer zoneIDs"
+    },
+    "6455": {
+      "kind": "area",
+      "name": "SUNSTRIDER_ISLE",
+      "source": "consumer zoneIDs"
+    },
+    "6456": {
+      "kind": "area",
+      "name": "AMMEN_VALE",
+      "source": "consumer zoneIDs"
+    },
+    "6457": {
+      "kind": "area",
+      "name": "NEW_TINKERTOWN",
+      "source": "consumer zoneIDs"
+    },
+    "6466": {
+      "kind": "area",
+      "name": "CAVERN_OF_ENDLESS_ECHOES",
+      "source": "consumer zoneIDs"
+    },
+    "6471": {
+      "kind": "area",
+      "name": "MOGUSHAN_PALACE_THE_CRIMSON_ASSEMBLY_HALL",
+      "source": "consumer zoneIDs"
+    },
+    "6473": {
+      "kind": "area",
+      "name": "MOGUSHAN_PALACE_VAULTS_OF_KINGS_PAST",
+      "source": "consumer zoneIDs"
+    },
+    "6474": {
+      "kind": "area",
+      "name": "MOGUSHAN_PALACE_THRONE_OF_ANCIENT_CONQUERORS",
+      "source": "consumer zoneIDs"
+    },
+    "65": {
+      "kind": "area",
+      "name": "DRAGONBLIGHT",
+      "source": "consumer zoneIDs"
+    },
+    "6507": {
+      "kind": "area",
+      "name": "ISLE_OF_THUNDER",
+      "source": "consumer zoneIDs"
+    },
+    "6511": {
+      "kind": "area",
+      "name": "WAILING_CAVERNS_ENTRANCE",
+      "source": "consumer zoneIDs"
+    },
+    "6512": {
+      "kind": "area",
+      "name": "THE_WIDOWS_WAIL",
+      "source": "consumer zoneIDs"
+    },
+    "6513": {
+      "kind": "area",
+      "name": "OONA_KAGU",
+      "source": "consumer zoneIDs"
+    },
+    "6545": {
+      "kind": "area",
+      "name": "GREYMANE_MANOR_UPPER_FLOOR",
+      "source": "consumer zoneIDs"
+    },
+    "66": {
+      "kind": "area",
+      "name": "ZUL_DRAK",
+      "source": "consumer zoneIDs"
+    },
+    "6609": {
+      "kind": "area",
+      "name": "RUINS_OF_OGUDEI_ALLIANCE_EXCAVATION",
+      "source": "consumer zoneIDs"
+    },
+    "6611": {
+      "kind": "area",
+      "name": "DALARAN_LANDFALL",
+      "source": "consumer zoneIDs"
+    },
+    "6616": {
+      "kind": "area",
+      "name": "A_LITTLE_PATIENCE",
+      "source": "consumer zoneIDs"
+    },
+    "6618": {
+      "kind": "area",
+      "name": "BIZMOS_BRAWLPUB",
+      "source": "consumer zoneIDs"
+    },
+    "6622": {
+      "kind": "area",
+      "name": "THRONE_OF_THUNDER",
+      "source": "consumer zoneIDs"
+    },
+    "6661": {
+      "kind": "area",
+      "name": "ISLE_OF_GIANTS",
+      "source": "consumer zoneIDs"
+    },
+    "6677": {
+      "kind": "area",
+      "name": "ISLE_OF_THUNDER_SCENARIO",
+      "source": "consumer zoneIDs"
+    },
+    "6678": {
+      "kind": "area",
+      "name": "BLOOD_IN_THE_SNOW_SCENARIO",
+      "source": "consumer zoneIDs"
+    },
+    "67": {
+      "kind": "area",
+      "name": "STORM_PEAKS",
+      "source": "consumer zoneIDs"
+    },
+    "6716": {
+      "kind": "area",
+      "name": "THUNDER_KINGS_CITADEL",
+      "source": "consumer zoneIDs"
+    },
+    "6738": {
+      "kind": "area",
+      "name": "SIEGE_OF_ORGRIMMAR",
+      "source": "consumer zoneIDs"
+    },
+    "6757": {
+      "kind": "area",
+      "name": "TIMELESS_ISLE",
+      "source": "consumer zoneIDs"
+    },
+    "6852": {
+      "kind": "area",
+      "name": "PROVING_GROUNDS_SCENARIO",
+      "source": "consumer zoneIDs"
+    },
+    "717": {
+      "kind": "area",
+      "name": "THE_STOCKADE",
+      "source": "consumer zoneIDs"
+    },
+    "718": {
+      "kind": "area",
+      "name": "WAILING_CAVERNS",
+      "source": "consumer zoneIDs"
+    },
+    "719": {
+      "kind": "area",
+      "name": "BLACKFATHOM_DEEPS",
+      "source": "consumer zoneIDs"
+    },
+    "721": {
+      "kind": "area",
+      "name": "GNOMEREGAN",
+      "source": "consumer zoneIDs"
+    },
+    "722": {
+      "kind": "area",
+      "name": "RAZORFEN_DOWNS",
+      "source": "consumer zoneIDs"
+    },
+    "796": {
+      "kind": "area",
+      "name": "SCARLET_MONASTERY",
+      "source": "consumer zoneIDs"
+    },
+    "8": {
+      "kind": "area",
+      "name": "SWAMP_OF_SORROWS",
+      "source": "consumer zoneIDs"
+    },
+    "800": {
+      "kind": "area",
+      "name": "coldridge-pass",
+      "source": "Forever zone registry"
+    },
+    "801": {
+      "kind": "area",
+      "name": "CHILL_BREEZE_VALLEY",
+      "source": "consumer zoneIDs"
+    },
+    "817": {
+      "kind": "area",
+      "name": "skull-rock",
+      "source": "Forever zone registry"
+    },
+    "818": {
+      "kind": "area",
+      "name": "palemane-rock",
+      "source": "Forever zone registry"
+    },
+    "85": {
+      "kind": "area",
+      "name": "TIRISFAL_GLADES",
+      "source": "consumer zoneIDs"
+    },
+    "981": {
+      "kind": "area",
+      "name": "the-gaping-chasm",
+      "source": "Forever zone registry"
+    },
+    "982": {
+      "kind": "area",
+      "name": "the-noxious-lair",
+      "source": "Forever zone registry"
+    },
+    "9999": {
+      "kind": "area",
+      "name": "THE_RING_OF_TRIALS",
+      "source": "consumer zoneIDs"
+    }
+  },
   "class_mapping": {
     "DRUID": {
       "source_bit": 1024,
@@ -181,17 +2823,18 @@
     "missing_refs": 478,
     "new_ids": 9293,
     "records": 12368,
-    "skips": 19003
+    "skips": 19445
   },
   "extractor": {
     "path": "/home/logon/projects/scraper-questie/wh_parser/js_extract.py",
     "sha256": "e23b467c16ae9a16e55128a576c2c65ffe08ce15f05579fc0a46fce1f7e4480d"
   },
   "generator": {
+    "quest_categories_sha256": "1614d83c29e95c3ef64fc70870f15226cfca7dc96c87c52ab62d82d6e0cf98a7",
     "quest_holdbacks_sha256": "e806fe283f5172525523306be09921b75df32d7b62fc07552439117507a513ac",
     "race_assumptions_sha256": "49cb9c583b2481e3b28240bfc90fd352b72a83b248e5d8e75372cdd70f83426b",
-    "raw_reader_sha256": "e75dd74ea7a2a9f8243b705503c32eaa5ef4bab3af063efb4e723d03661c491d",
-    "sha256": "c5295364b0992af94f64a723278ba383042053eedce33b3a09c53c5265ce1409"
+    "raw_reader_sha256": "1735fa3dbd2c293a26946aea26e306072f4eb438354be45f1204ed8186dff4b6",
+    "sha256": "563a39831b7de4d4b4ac4580b925e0ac8880d1527b4d7a169dc7bd465dc15934"
   },
   "held_quests": [
     {
@@ -359,7 +3002,7 @@
     "foreverBaseItem.lua": "e7712eec044cd3e126294673d648c0da8ea419f608fa7a90aca4cb4efbde13eb",
     "foreverBaseNpc.lua": "1a438d90347f30a11e2e942177adf413256814e4d93bad3b6eafdeb48a6ffef1",
     "foreverBaseObject.lua": "ce071b7255d0d86bf54b1a5306ba9e2d612954f49ea6457cd2afbee4d0fe8b6c",
-    "foreverBaseQuest.lua": "6688db795c6b99b822e27ecd0bc4247ad5623e2f4ab5e72a38ca52874a7eb897"
+    "foreverBaseQuest.lua": "1382bb6d827c7df59bc630dbd0cc20e59e7a5f4cc0470be4ba2260407b467d78"
   },
   "inputs": {
     "era": {
@@ -671,8 +3314,9 @@
   "lua_rendering": {
     "field_order": "ascending consumer authoring index: remove, set, add; schema order within each group",
     "other_providers": "Load(keys)",
+    "quest_categories": "exact zoneIDs.NAME for positive areas or confirmed sortKeys.NAME for negative sorts; zero omitted; no numeric fallback",
     "quest_masks": "exact named aggregates or sums of named individual bits; zero remains numeric",
-    "quest_provider": "Load(QuestieDB): questKeys, raceKeys and classKeys from Forever"
+    "quest_provider": "Load(QuestieDB, ZoneDB): questKeys, raceKeys, classKeys and sortKeys from QuestieDB; zoneIDs from ZoneDB"
   },
   "missing_reference_counts": {
     "item": 2,
@@ -686,6 +3330,7 @@
     "names": "fill missing names only; preserve all existing effective pre-delta names",
     "new": "absent Era registry/pages/raw base AND explicit envChange.status=new",
     "objectives": "not generated",
+    "quest_category": "known signed core category only; enrichment of existing or independently selected quests, never category-only selection of missing records; explicit zero retained as comparison evidence but omitted from corrections; unknown identities withheld; existing nonzero effective categories preserved; no unchanged existing-record backfill or category2/geography substitution",
     "quest_holdbacks": "explicit not-in-game/deferred IDs excluded before quest selection; held quest references filtered from item export projections; no baseline deletions or inferred unavailability",
     "quest_reputation": "explicit nonempty unique-faction reprewards pairs; signed amounts preserved; source-new or explicit Era changes only for existing records; changed amounts replace exact Era-matching target pairs; complete target-list replacements use plain fields, partial changes use operations; conflicting/target-only rewards preserved; missing factions never removed",
     "quest_restrictions": "confirmed race/class mappings rebuilt with Forever constants; incomplete explicit masks withheld whole; narrow full-faction fallback for independently materialized quests; no existing-record backfill; last-resort race zero only for separately documented reviewed family IDs passing current evidence guards, attributed as assumptions; no general Both/None defaults or class inference",
@@ -1246,6 +3891,15 @@
     },
     "path": "/home/logon/projects/Questie-clones/QuestieDB"
   },
+  "required_enum_input": {
+    "path": "src/corrections/enum/zones.lua",
+    "required_constants": {
+      "CRAFTING": 16941,
+      "RUINS_OF_LORDAERON": 16611,
+      "THE_HALL_OF_THANES": 16919
+    },
+    "sha256": "dd738ec0c1a9785946c5574a5f7cb8d2a64745b099dffccebd00ee8864fbb88a"
+  },
   "sample_limit_per_kind": null,
   "schema_version": 3,
   "snapshot": {
@@ -1324,10 +3978,10 @@
     "foreverBaseItem.lua": "c6e7ef472fa931fa97fd1ab71b19ee42e0e73ec38d07489b1f672f3454ddd148",
     "foreverBaseNpc.lua": "18f4ee896613f1c399471e88c565dcb460e00ddfd72e78f6fa70da88b0a3aaee",
     "foreverBaseObject.lua": "25fafa10761cc3bb3130c9816c5d67ec436ae381e07c0fc714463e63da5a545b",
-    "foreverBaseQuest.lua": "256bd418109a65955f8fb89c131c9f5d22132501209585636c13e09231d21b46",
-    "report.json": "764ec48cde6383f641d3a8675fdede9d4ce41abbbe80849ac79d41c22bafb273",
-    "report.md": "05c6783619ddf10f8db6ca189fcb0ff798252aec89399c675548a094a41917c8"
+    "foreverBaseQuest.lua": "0f4dfd18ecb2b4ef123134967741739e7ce50814dd6b836e25f37f1b0939be41",
+    "report.json": "7e49be47e7faee3165938ca651d3f62d2b40cc52d32e98afdb754d7c65fd893e",
+    "report.md": "768d889f82c4f18b65d6da05bd9938a4851990ec9f7c866dc4e49e2f32193efc"
   },
-  "upstream_directory": "/home/logon/projects/forever-base-db/generated/reputation-sets",
-  "upstream_report_schema_version": 7
+  "upstream_directory": "/home/logon/projects/forever-base-db/generated/symbolic-categories",
+  "upstream_report_schema_version": 9
 }

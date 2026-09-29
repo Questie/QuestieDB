@@ -1,27 +1,46 @@
 # Forever generated delta-base
 
 `src/corrections/Forever/generated/` imports reviewed offline candidates from
-`/home/logon/projects/forever-base-db/generated/reputation-sets/`. The four providers retain
+`/home/logon/projects/forever-base-db/generated/symbolic-categories/`. The four providers retain
 upstream filenames and module identities: `foreverBaseNpc.lua` / `ForeverBaseNpc`,
 `foreverBaseObject.lua` / `ForeverBaseObject`, `foreverBaseQuest.lua` / `ForeverBaseQuest`
 and `foreverBaseItem.lua` / `ForeverBaseItem`.
 
-Only the module boundary is adapted: `QuestieLoader:CreateModule`, the QuestieDB import
-and colon `Load()` replace the standalone entry points. Upstream Quest uses `Load(QuestieDB)`
-with a Forever context supplying `questKeys`, `raceKeys` and `classKeys`; NPC, Object and Item
-still use `Load(keys)`. Keep upstream body locals, including `questKeys` and the used `raceIDs`
-and `classIDs` aliases, without duplicating them. Unused aliases are omitted.
+Only the module boundary is adapted: `QuestieLoader:CreateModule`, module imports
+and colon `:Load()` replace the standalone entry points. Upstream Quest uses
+`Load(QuestieDB, ZoneDB)`: the first context supplies `questKeys`, Forever `raceKeys`,
+Forever `classKeys` and `sortKeys`; the second supplies `zoneIDs`. NPC, Object and Item
+still use `Load(keys)`. The imported Quest provider retains its QuestieDB import and
+imports the real `ZoneDB` module when used. Do not attach zone constants to the shared
+QuestieDB module or change compatibility/runtime code.
+
+A standalone call uses the owning contexts:
+
+```lua
+local provider = dofile("generated/foreverBaseQuest.lua")
+local foreverEnums = LibQuestieDB.Enum.byExpansion.Forever
+local corrections = provider.Load({
+    questKeys = LibQuestieDB.Enum.questKeys,
+    raceKeys = foreverEnums.raceKeys,
+    classKeys = foreverEnums.classKeys,
+    sortKeys = LibQuestieDB.Enum.sortKeys,
+}, {zoneIDs = LibQuestieDB.Enum.zoneIDs})
+```
+
+Preserve the complete upstream function body, including `questKeys` and used `raceIDs`,
+`classIDs`, `zoneIDs` and `sortKeys` aliases. Declare only aliases used by the body.
 
 Quest race/class masks use exact named aggregates or sums of named individual bits. Zero
-remains literal `0`, never a `NONE` alias. Maps and other fields remain numeric. Preserve every
+remains literal `0`, never a `NONE` alias. Nonzero quest categories use exact named
+`zoneIDs.NAME` or `sortKeys.NAME` constants, with no numeric fallback or extra minus sign.
+Other fields and spawn map keys remain numeric. Preserve every
 row value, inline entity name, Forever Wowhead URL and assumption comment. Starter/finisher
 groups retain positional nil holes, including operation operands such as `{nil, {424005}}`;
 spawn maps retain zone keys. Fields follow ascending numeric authoring-key indices:
 `_remove`, ordinary sets, then `_add`, with canonical schema order inside each group
 (`name` first when present). Indices come from the consumer, not a duplicate ordering list.
-This is source formatting, not a guarantee about Lua table iteration order. The latest
-import adds explicit reputation rewards; existing restriction and relationship values
-and the consumer `:Load()` contract remain unchanged.
+This is source formatting, not a guarantee about Lua table iteration order. The symbolic category refresh omits only explicit category-zero assignments; all IDs,
+non-category values, nonzero category values and the consumer `:Load()` contract remain unchanged.
 
 ## Policy and limitations
 
@@ -38,8 +57,8 @@ Scalars remain replacements. Uncertain removals are report-only. Operation seman
 to the [public API](api.md#table-addremove-operations) and [ADR 0016](adr/0016-table-correction-operations.md).
 
 The import covers missing-record names, levels, explicit quest starter/finisher relationships,
-accepted inverse NPC/object links, explicit reputation rewards, eligible new-record spawns,
-and item categories and source
+accepted inverse NPC/object links, explicit reputation rewards, known quest categories,
+eligible new-record spawns, and item categories and source
 relationships. Selected singleton item starts coordinate item `startQuest` with quest starter
 slot 3. Existing names and converted spawns remain unchanged. New spawns in changed map frames
 (areas 44, 139, 215 and 1519) are withheld. Item source tabs with at least 200 rows are withheld
@@ -68,6 +87,30 @@ operations. Plain sets depend on the reviewed baseline; regenerate if upstream
 inputs change. Target-only factions and conflicting amounts are preserved.
 Missing source factions never authorize deletion. No bonuses, spillover, caps,
 conditional applicability or reputation requirements are inferred.
+
+Quest `zoneOrSort` uses the known signed core category: positive area IDs, negative
+QuestSort IDs. Explicit source zero remains comparison evidence but is omitted from
+Corrections: an existing quest with an unset numeric category reads as zero. This rule
+does not omit race/class masks, levels or reputation amounts whose value is zero.
+Categories enrich existing or independently
+selected quests; they never select a missing quest by themselves. Unknown identities are
+withheld. Existing nonzero effective categories remain authoritative, and unchanged existing
+records are not backfilled. `category2`, giver locations, objectives and map membership do
+not substitute for category evidence. A category is organizational, not proof of physical
+geography or a drawable map. The upstream `quest_categories.py` helper and report
+`category_catalog` record the reviewed identities, including Crafting 16941 and Camping -666.
+
+Positive categories use `ZoneDB.zoneIDs`; negative sorts use `QuestieDB.sortKeys`:
+
+```lua
+[questKeys.zoneOrSort] = zoneIDs.CRAFTING,
+[questKeys.zoneOrSort] = sortKeys.CAMPING,
+```
+
+The consumer enum supplies `RUINS_OF_LORDAERON = 16611`, `THE_HALL_OF_THANES = 16919`
+and `CRAFTING = 16941` in addition to its existing symbols. These are category identities,
+not display names or map routes. Missing exact named constants must fail upstream rendering
+rather than produce opaque numeric assignments.
 
 Explicit not-in-game and deferred quest-ID policies withhold generated rows before selection
 and filter held quest references from item export projections. They do not delete raw data,
@@ -105,7 +148,7 @@ Passing those gates does not establish complete gameplay behavior or client pars
 3. In that copy only, replace the four providers and adapt their wrappers. Preserve row bodies,
    nil holes and comments. Never copy candidates into `legacy/`, authored providers or raw data.
    Compare every decoded upstream table with imported `:Load()` using the real Forever runtime
-   context: Quest takes `Load(QuestieDB)`; the other providers take their matching `Load(keys)`.
+   context: Quest takes `Load(QuestieDB, ZoneDB)`; the other providers take their matching `Load(keys)`.
 4. Update provenance and literal import witnesses. Inspect generated/Static numeric presence
    separately from public getters, which normalize absent numbers to zero. Record all reviewed
    zeroes through current Derived Passes and both read modes.

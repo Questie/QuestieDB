@@ -389,3 +389,284 @@ fields initializations. All 101 input hashes and artifact hashes match provenanc
 Only the quest provider, provenance, guide and this report change. Consumer tests,
 runtime, raw data, other providers and working TOCs are outside the copy set.
 The 19 deferred quests remain open and no eligibility evidence was added.
+
+
+## Quest category enrichment
+
+Upstream: `/home/logon/projects/forever-base-db/generated/quest-category-enrichment/`.
+Report schema **8**, consumer provenance schema **3**. Prepared and tested entirely in
+`/tmp/questiedb-category-import.jbwjgN`, from consumer HEAD
+`79756f305442f957e2f2067ca94789d5af24c2b0`.
+
+### Scope and input identity
+
+The new values are exactly **729 numeric `zoneOrSort` fields**. Category evidence enriches
+existing or independently selected quests, never selects missing quests by itself, and does
+not establish physical geography. Existing nonzero categories remain authoritative.
+`quest_categories.py`, its hash, the complete `category_catalog` and category policy are
+recorded in provenance. No runtime, enum, maintained test, raw data, other provider or gameplay
+baseline changes accompany this import.
+
+All **579 tracked working files** were copied, not a HEAD archive. This retains the existing
+`src/corrections/enum/expansions.lua` edit. No `.git`, prior `.out`, or untracked source files
+were copied. The original HEAD, status, index, tracked working bytes, TOCs and protected
+`PLAN-forever-native-toc.md` / `hello.txt` hashes match the parent's guard before and after.
+All four old working provider hashes matched the old provenance before adaptation.
+Only the Quest provider's module boundary differs from upstream: its entire body, alias
+locals, comments, nil holes and numeric field order are retained byte-for-byte. NPC, Object
+and Item imports remain byte-identical to the previous working import.
+
+All **102 reported input hashes**, including **76 baseline entries**, match before and after:
+generator, reader, three helpers, assumption/holdback policies, extractor, raw inputs,
+coordinate manifest and snapshot manifest. Candidate and captured generator-file hashes are
+retained in `.out/upstream-before.json`, `upstream-after.json`, `generator-before.json` and
+`generator-after.json`. SQLite caches were not opened, hashed or refreshed. No network,
+working TOC writes, staging, commit, publication or installation occurred. The disposable
+TOCs use a forty-zero build-commit header because the copy has no `.git`; the source guard
+identifies the actual input commit and working bytes.
+
+Inventory remains **12,368 rows**: Quest **771**, NPC **3,394**, Object **52**, Item **8,151**;
+**9,293 new IDs**, **19,445 skips**, and **478 unresolved references** (397 NPC, 36 Object,
+43 Quest, two Item). Skips may describe withheld fields, not omitted entities. Table-field
+counts are unchanged: 6,036 initializations, 17 complete replacements, 767 adds, no removes.
+
+### Complete import checks
+
+Disposable `.out/import-check.lua` compares every decoded field recursively across numeric
+report values, standalone providers and registered imported providers, using the actual
+Forever context. Quest standalone loading takes `QuestieDB`; the other three take their keys.
+All **12,368 rows** match. Comparison with the previous working import confirms identical
+IDs and **45,507 unchanged non-category fields**. Exactly 729 category fields are additions.
+
+Every added category is checked in the generated provider, after Static composition, after
+Derived Passes, in materialized Source rows, and through Source/Baked named, generic-name,
+generic-index and raw getters. Current authored Forever Static and Dynamic providers contain
+**zero category overrides**; no precedence exception was hidden. Literal witnesses pass:
+
+| Quest | Category |
+| --- | ---: |
+| 86585 | 38 |
+| 94004 | 16941 |
+| 96031 | -666 |
+| 92482 | -261 |
+| 94947 | 1519 |
+| 95350 | 1637 |
+
+Inherited quest **6 = 9** and **384 = -304** remain unchanged. Category-only quest **78124**
+is absent from generated, composed and public inventories. All **245** reviewed assumptions
+remain explicitly present as numeric zero in generated, post-Static and post-Derived rows;
+Source and Baked reads return zero. Research Access **97286** retains Mage **128**, and
+quest **94006** retains race high bits **12,884,901,888**. All **20 holdbacks** remain absent.
+Baked storage intentionally omits scalar zero slots, so numeric presence is checked in the
+Generation inputs and Source rows, not inferred from Baked storage.
+
+All **19 deferred quests remain open**. Their revisit questions were read; this category-only
+candidate adds no giver, eligibility or client acceptance evidence to resolve them. None was
+reclassified or newly investigated. Phase 5's runtime-zero policy remains deferred, and current
+zero-preservation does not guarantee preservation after future NPC evidence changes.
+
+### Fresh sequential validation
+
+All twelve commands exited zero. Full localization and default Self-proofs were enabled;
+no sampling or baseline updates were used. `.out/<name>.command`, `.log` and `.time` record
+command, output, exit, wall time and peak RSS; `.out/results.tsv` is the execution ledger.
+
+| Log | Command | Exit | Seconds | Peak RSS (KiB) |
+| --- | --- | ---: | ---: | ---: |
+| `00-import-source` | `lua5.1 .out/import-check.lua` | 0 | 3.03 | 176668 |
+| `01-audit` | `lua5.1 test.lua correction-audit` | 0 | 43.19 | 44132 |
+| `02-source` | `lua5.1 test.lua corrections forever-delta-base native-toc` | 0 | 5.25 | 123020 |
+| `03-generate` | `lua5.1 generate.lua Forever --no-base-toc` | 0 | 34.04 | 256936 |
+| `04-alias` | `cmp QuestieDB_Forever.toc QuestieDB_Camelot.toc` | 0 | 0.01 | 1536 |
+| `05-verify` | `lua5.1 verify.lua Forever` | 0 | 37.30 | 446672 |
+| `06-equivalence` | `lua5.1 equivalence.lua Forever` | 0 | 35.98 | 294716 |
+| `07-reconstruct` | `lua5.1 reconstruct.lua Forever` | 0 | 37.10 | 370156 |
+| `08-artifact` | `lua5.1 test.lua --flavor=Forever` | 0 | 2.06 | 152036 |
+| `09-baked` | `lua5.1 tools/validation/forever-delta-base.test.lua Baked` | 0 | 1.03 | 68420 |
+| `10-validators` | `lua5.1 validators/run.lua Forever --self-check` | 0 | 0.65 | 103220 |
+| `11-import-baked` | `lua5.1 .out/import-check.lua Baked` | 0 | 3.66 | 188300 |
+
+- Correction audit: **24 checks**, 81 providers, eight scenarios times 44 personas,
+  8,932 calls and 5,088,182 rows; zero failures.
+- Correction/import/native-TOC suites: **2,464 checks**, zero failures.
+- Generation: **46,115 entities and rows**, all nine locales and 36 Localization blocks.
+  Forever and Camelot artifacts are byte-identical.
+- Verification: **763,890 fields**, 937 chunked values, 326,837 localized reads; zero errors.
+- Equivalence: **763,890 fields**, 579,672 localized reads (1,486 locale-shaped),
+  39,307 name buckets; zero divergences and Self-proof passed.
+- Reconstruction: **110,366 expected and actual data lines**, zero mismatches.
+- Forever artifact tests: **four checks** passed; separate Baked import witnesses passed.
+- Gameplay validators: **15/15 clean**, zero findings, zero baselined, zero new, zero fixed;
+  fingerprint ownership/count/duplicate Self-check passed.
+
+The upstream handoff reports **334 generator tests passed**, Ruff and focused review clean.
+Those generator checks were not rerun here; this run freshly executed the consumer gates above.
+
+### Ready-file identity
+
+Only these four files are prepared for fresh parent review and an explicit allowlisted copy:
+`src/corrections/Forever/generated/foreverBaseQuest.lua`, its sibling `provenance.json`,
+`docs/forever-delta-base.md`, and this appended validation report. Historical report bytes are
+preserved. The exact allowlist and final hashes are in `.out/copy-files.json` and
+`.out/ready-sha256.json`. No disposable TOC or `.out/` file belongs to the copy set.
+
+Disposable TOCs: **14,228,741 bytes** each, SHA-256
+`edcc5c175ec21b4eaad25e8b8bb1092c09492ec188b1119134f5b77c46e61381`.
+
+| Upstream artifact | SHA-256 |
+| --- | --- |
+| `foreverBaseItem.lua` | `c6e7ef472fa931fa97fd1ab71b19ee42e0e73ec38d07489b1f672f3454ddd148` |
+| `foreverBaseNpc.lua` | `18f4ee896613f1c399471e88c565dcb460e00ddfd72e78f6fa70da88b0a3aaee` |
+| `foreverBaseObject.lua` | `25fafa10761cc3bb3130c9816c5d67ec436ae381e07c0fc714463e63da5a545b` |
+| `foreverBaseQuest.lua` | `55796df34ab095f3cda2c9a0bc9b61f66073729f4cb99ef53462b88f75705eb2` |
+| `report.json` | `3bfc637ae639283f80feb137f56b5c6f62e3969ec36a3d4d5ebe0aaa2fc895ae` |
+| `report.md` | `4b46362b2641e6ceb258410321e5a4f9e199be1708fbf19e993c7730e94fdd0a` |
+
+All imported-provider and reported-input hashes are retained in `provenance.json`.
+These offline gates do not establish complete gameplay data or live-client acceptance.
+
+
+## Symbolic categories and category-zero omission refresh
+
+Prepared in `/tmp/questiedb-symbolic-categories.uVs2Ik` from tracked **working bytes** at
+HEAD `79756f305442f957e2f2067ca94789d5af24c2b0`. The source checkout, staged index,
+TOCs and protected untracked files were not written. No `.git`, existing `.out/` or
+unrelated untracked files entered the disposable snapshot. Tracked symlinks were refused.
+The four pre-existing import edits and the existing expansion-enum edit were preserved as
+inputs, not replaced with HEAD versions.
+
+The initial parent guard is `/tmp/questiedb-symbolic-category-guard.hpmqzlm9`.
+Its only permitted difference at preparation was the parent's three zone constants:
+`RUINS_OF_LORDAERON = 16611`, `THE_HALL_OF_THANES = 16919`, `CRAFTING = 16941`.
+All old constants and all other guarded bytes matched. Required `zones.lua` SHA-256:
+`dd738ec0c1a9785946c5574a5f7cb8d2a64745b099dffccebd00ee8864fbb88a`.
+That enum is an input already edited by the parent, not part of this four-file copy set.
+Final guards compare against both the initial guard and the current-input snapshot.
+
+### Input identity and exact change boundary
+
+Upstream: `/home/logon/projects/forever-base-db/generated/symbolic-categories/`, report
+schema **9**. All **102** reported input hashes were verified before and after validation,
+including **76** baseline entries, plus all six candidate files and 180 generator/report/policy
+files. SQLite files were neither opened nor hashed. Provenance retains existing metadata and
+records the new rendering contract, policies, category catalog, generator/helper hashes,
+all upstream/imported hashes and required enum input. Any drift in these inputs invalidates
+this validation; rerun before adopting a changed candidate.
+
+Inventory remains **12,368 rows**: Quest **771**, NPC **3,394**, Object **52**, Item **8,151**;
+**9,293 new IDs**, **19,445 skips**, **478 unresolved references** (397 NPC, 36 Object,
+43 Quest, two Item). No maintained tests or expected counts changed. Table fields remain
+6,036 initializations, 17 complete replacements and 767 adds, with no removes.
+
+There are **721 nonzero category assignments**, all exact `zoneIDs.NAME` or `sortKeys.NAME`,
+with no numeric fallback, extra negation or unused aliases. Only these eight raw category
+assignments change from explicit `0` to absent: **78132, 78133, 78134, 91899, 91900, 91904,
+91905, 93862**. The other **45,507 non-category fields**, all IDs and every nonzero category
+value are unchanged. Race/class, level and reputation zeroes are unaffected.
+
+Standalone Quest now takes `Load(QuestieDB, ZoneDB)`; other providers still take `Load(keys)`.
+The imported Quest retains `:Load()` and its QuestieDB import, adding a real ZoneDB module
+import before the function. The complete upstream function body is byte-identical, including
+aliases, comments, nil holes and field order. NPC, Object and Item upstream and imported
+files are byte-identical to the prior import. Compatibility and runtime code are unchanged.
+
+### Complete decoded and runtime checks
+
+Run-specific `.out/import-check.lua` compares all rows and fields recursively among the
+old numeric standalone providers, new standalone providers, previous working imports,
+new registered imports and independently serialized numeric report values. Only the eight
+listed zero-to-absent changes are accepted. Actual consumer module contexts are used; zone
+constants are not attached to QuestieDB or supplied through fake global enums.
+
+Every nonzero category agrees in generated tables, post-Static rows, post-Derived rows,
+materialized Source rows and Source/Baked getters. The eight omitted fields are explicitly
+**absent** after Static and Derived and in materialized Source rows, while getters return
+zero. This was not inferred from normalized getter values. Authored Forever Static/Dynamic
+category overrides remain **zero**.
+
+All **4,989 existing quests** match the previous full-validated numeric import in Source and
+Baked modes across eight category read forms: named, generic-name, generic-index,
+`GetByIndex`, raw-name, raw-index, batch-name and batch-index. Inventories match in both
+directions. The full Equivalence sweep independently checks current Source/Baked equality.
+
+Literal witnesses: **94004 = CRAFTING 16941**, **96031 = CAMPING -666**, **86585 = 38**,
+**92482 = -261**, **94947 = 1519**, **95350 = 1637**. Baseline quests **6 = 9** and
+**384 = -304** remain unchanged. Category-only **78124** stays absent. All **245** reviewed
+race assumptions remain explicitly present as `0` after Static/Derived and in Source rows;
+Source/Baked reads remain zero. Quest **94006** retains Skyborne **12,884,901,888**,
+**79008** retains Alliance **4,294,967,373**, and **97286** retains Mage **128**.
+All **20 holdbacks** remain absent. Baked scalar storage intentionally omits zero slots;
+raw numeric presence was checked before storage rather than asserted from getters.
+
+The 19 deferred quest revisit questions were read and remain open. This rendering refresh
+provides no new giver, eligibility or client-acceptance evidence; none was reclassified.
+Phase 5's runtime-zero policy remains deferred. Current zero preservation does not guarantee
+preservation if future NPC evidence changes the existing Derived Pass.
+
+### Fresh sequential validation
+
+All twelve commands exited zero. No localization skipping, sampling, baseline updates or
+Self-proof bypasses were used. Full commands, output, exit codes, wall times and peak RSS
+are in `.out/<name>.command`, `.log`, `.time` and `.out/results.tsv`.
+
+| Log | Command | Exit | Seconds | Peak RSS (KiB) |
+| --- | --- | ---: | ---: | ---: |
+| `00-import-source` | `lua5.1 .out/import-check.lua` | 0 | 4.65 | 233788 |
+| `01-audit` | `lua5.1 test.lua correction-audit` | 0 | 44.79 | 48332 |
+| `02-source` | `lua5.1 test.lua corrections forever-delta-base native-toc` | 0 | 5.48 | 126756 |
+| `03-generate` | `lua5.1 generate.lua Forever --no-base-toc` | 0 | 34.23 | 252988 |
+| `04-alias` | `cmp QuestieDB_Forever.toc QuestieDB_Camelot.toc` | 0 | 0.01 | 1536 |
+| `05-verify` | `lua5.1 verify.lua Forever` | 0 | 38.59 | 446516 |
+| `06-equivalence` | `lua5.1 equivalence.lua Forever` | 0 | 36.41 | 299148 |
+| `07-reconstruct` | `lua5.1 reconstruct.lua Forever` | 0 | 36.64 | 369780 |
+| `08-artifact` | `lua5.1 test.lua --flavor=Forever` | 0 | 2.12 | 152292 |
+| `09-baked` | `lua5.1 tools/validation/forever-delta-base.test.lua Baked` | 0 | 1.09 | 68704 |
+| `10-validators` | `lua5.1 validators/run.lua Forever --self-check` | 0 | 0.68 | 103092 |
+| `11-import-baked` | `lua5.1 .out/import-check.lua Baked` | 0 | 6.87 | 227724 |
+
+- Correction audit: 24 checks, 81 providers, eight scenarios times 44 personas,
+  8,932 calls and 5,088,182 rows; zero failures.
+- Correction/import/native-TOC suites: 2,464 checks; zero failures.
+- Generation: 46,115 entities/rows, all nine locales and 36 Localization blocks.
+  Forever and Camelot artifacts are byte-identical.
+- Verification: 763,890 fields, 937 chunked values, 326,837 localized reads; zero errors.
+- Equivalence: 763,890 fields, 579,672 localized reads (1,486 locale-shaped),
+  39,307 name buckets; zero divergences, Self-proof passed.
+- Reconstruction: 110,366 expected/actual data lines; zero mismatches.
+- Artifact tests: four checks passed; separate Baked import witnesses passed.
+- Gameplay validators: 15/15 clean; zero findings, baselined, new or fixed;
+  fingerprint ownership/count/duplicate Self-check passed.
+
+Upstream reports 394 generator tests, Ruff and fresh focused review passing; those Python
+gates were not rerun here. Small hash, report and formatting checks were run with `uv`.
+
+### Prior artifact comparison and copy boundary
+
+The new Forever TOC has 14228741 bytes and 110,443 lines. Compared with
+`/tmp/questiedb-category-import.jbwjgN/QuestieDB_Forever.toc`, **only line 24's
+`## X-BUILD-TIME` differs**. Every other byte matches, including all entity and Localization
+data, metadata and file-list directives. This is not a claim of whole-file byte equality.
+The first comparison helper used incorrect capitalization for that metadata key; its assertion
+was corrected to the actual `X-BUILD-TIME` spelling and the complete comparison passed.
+Exact comparison evidence is in `.out/prior-artifact-comparison.json`.
+
+Current TOC SHA-256: `0f841407f1b9babce00e88103ad180679d27f6585e398fbc4bdb29931cc1726a`.
+Previous TOC SHA-256: `edcc5c175ec21b4eaad25e8b8bb1092c09492ec188b1119134f5b77c46e61381`.
+
+Only four files are prepared for parent review and guarded copy:
+`src/corrections/Forever/generated/foreverBaseQuest.lua`, its sibling `provenance.json`,
+`docs/forever-delta-base.md`, and this appended validation report. All previous report bytes
+are preserved. `.out/copy-files.json` and `.out/ready-sha256.json` identify the copy set;
+`.out/required-enum-input.json` records the separate zone-enum prerequisite. No TOC, test,
+compatibility/runtime file or disposable evidence file belongs to the copy set.
+
+| Upstream artifact | SHA-256 |
+| --- | --- |
+| `foreverBaseItem.lua` | `c6e7ef472fa931fa97fd1ab71b19ee42e0e73ec38d07489b1f672f3454ddd148` |
+| `foreverBaseNpc.lua` | `18f4ee896613f1c399471e88c565dcb460e00ddfd72e78f6fa70da88b0a3aaee` |
+| `foreverBaseObject.lua` | `25fafa10761cc3bb3130c9816c5d67ec436ae381e07c0fc714463e63da5a545b` |
+| `foreverBaseQuest.lua` | `0f4dfd18ecb2b4ef123134967741739e7ce50814dd6b836e25f37f1b0939be41` |
+| `report.json` | `7e49be47e7faee3165938ca651d3f62d2b40cc52d32e98afdb754d7c65fd893e` |
+| `report.md` | `768d889f82c4f18b65d6da05bd9938a4851990ec9f7c866dc4e49e2f32193efc` |
+
+Offline validation does not establish complete gameplay data or live-client acceptance.
