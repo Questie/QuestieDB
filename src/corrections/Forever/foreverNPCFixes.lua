@@ -17,7 +17,9 @@ function ForeverNpcFixes:Load()
     local phases = Phasing.phases
 
     return {
-        -- [npcId] = { [npcKeys.name] = "Corrected name" },
+        [256935] = { -- Malduko Cloudcrush
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{36.05,33.53}}},
+        },
     }
 end
 

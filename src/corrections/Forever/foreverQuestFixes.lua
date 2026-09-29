@@ -43,6 +43,7 @@ function ForeverQuestFixes:Load()
         },
         [92464] = { -- Elemental Unrest
             [questKeys.requiredLevel] = 2,
+            [questKeys.availableUntilCompleted] = 92465,
         },
         [92465] = { -- Agitators
             [questKeys.requiredLevel] = 2,
@@ -111,6 +112,7 @@ function ForeverQuestFixes:Load()
         },
         [92514] = { -- Welcome to Shen'dar Village
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [92515] = { -- The Problem With Prideclaws
             [questKeys.requiredLevel] = 4,
@@ -140,6 +142,7 @@ function ForeverQuestFixes:Load()
         },
         [92544] = { -- Al'Aketh Thugs
             [questKeys.requiredLevel] = 2,
+            [questKeys.objectives] = {{{251145},{251448},{256935}}},
         },
         [92550] = { -- Havoc in the Highlands
             [questKeys.requiredLevel] = 5,
@@ -161,13 +164,13 @@ function ForeverQuestFixes:Load()
         },
         [92595] = { -- The Windshapers
             [questKeys.requiredLevel] = 4,
-            [questKeys.preQuestSingle] = {92514}, -- probably a pseudo childQuest
             [questKeys.nextQuestInChain] = 94411,
+            [questKeys.availableStartingWith] = 92514, -- available even after abandoning 92514, but this is next best thing
         },
         [92596] = { -- The High Order
             [questKeys.requiredLevel] = 4,
-            [questKeys.preQuestSingle] = {93461}, -- probably a pseudo childQuest
             [questKeys.nextQuestInChain] = 94413,
+            [questKeys.availableStartingWith] = 93461, -- available even after abandoning 93461, but this is next best thing
         },
         [92597] = { -- Reading the Ley Lines
             [questKeys.requiredLevel] = 2,
@@ -389,6 +392,7 @@ function ForeverQuestFixes:Load()
         },
         [93461] = { -- Welcome to Shen'dar Village
             [questKeys.requiredLevel] = 4,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [93552] = { -- Harvesting Windstones
             [questKeys.requiredLevel] = 2,
@@ -593,6 +597,7 @@ function ForeverQuestFixes:Load()
         },
         [96646] = { -- Camping 101: Cooking
             [questKeys.requiredLevel] = 4,
+            [questKeys.preQuestSingle] = {96101},
         },
         [97243] = { -- Call of Fire
             [questKeys.requiredClasses] = classIDs.SHAMAN,
