@@ -1,7 +1,7 @@
 # Forever generated delta-base
 
 `src/corrections/Forever/generated/` imports reviewed offline candidates from
-`/home/logon/projects/forever-base-db/generated/entity-zones/`. The four providers retain
+`/home/logon/projects/forever-base-db/generated/objectives-text-import/`. The four providers retain
 upstream filenames and module identities: `foreverBaseNpc.lua` / `ForeverBaseNpc`,
 `foreverBaseObject.lua` / `ForeverBaseObject`, `foreverBaseQuest.lua` / `ForeverBaseQuest`
 and `foreverBaseItem.lua` / `ForeverBaseItem`.
@@ -135,7 +135,13 @@ existing consumer records or baseline relationships. Assumptions and holdbacks a
 policy inputs, not extra runtime providers. Deferred entries retain reasons and revisit
 questions and must be reviewed on future data work; export omission does not resolve them.
 
-This is not a complete gameplay database. Objectives, objective text, chains,
+Quest `objectivesText` stores the heading-adjacent objective summary as ordered lines,
+including paragraph breaks. It never substitutes Description, Progress or Completion
+dialogue. Existing effective text and explicit clears are preserved; text cannot select
+a missing quest. The `quest_text.py` helper hash and extraction policy are recorded in
+provenance. Lines are never sorted, deduplicated or patched individually.
+
+This is not a complete gameplay database. Structured objectives, narrative dialogue, chains,
 item/currency/XP/money quest rewards,
 drop rates, detailed item stats, localization and restrictions beyond the supported policies
 remain gaps. Cached evidence and reviewed assumptions do not prove client acceptance.

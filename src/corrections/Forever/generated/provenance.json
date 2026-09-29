@@ -2823,7 +2823,7 @@
     "missing_refs": 478,
     "new_ids": 9293,
     "records": 12368,
-    "skips": 19445
+    "skips": 19685
   },
   "entity_zone_evidence_summary": {
     "npc": {
@@ -2869,9 +2869,10 @@
     "entity_zones_sha256": "e0c939e3055d1b80e8a91b9d6e3693dfd8dd88870e60af289050fd1fb07ab417",
     "quest_categories_sha256": "1614d83c29e95c3ef64fc70870f15226cfca7dc96c87c52ab62d82d6e0cf98a7",
     "quest_holdbacks_sha256": "e806fe283f5172525523306be09921b75df32d7b62fc07552439117507a513ac",
+    "quest_text_sha256": "ab51227572c431305c0f7e50db5de21ca8c1b142ff25399df04d9526b55ba3cd",
     "race_assumptions_sha256": "49cb9c583b2481e3b28240bfc90fd352b72a83b248e5d8e75372cdd70f83426b",
-    "raw_reader_sha256": "ec0ae7f896f7337a915cf5593bbf6a744f543816ebcffa1de922905cc30bac2a",
-    "sha256": "fd951620c59548b7231b551b111f89b7d681f21e9f761f8081252632f6ef0186"
+    "raw_reader_sha256": "d11d75e3b79da185e3ad421a276f8ef82362e888b3f93fda25b70e9997665eee",
+    "sha256": "e0ecdc4324b0dca9775c3bcc181dc2cb75e11459bc9a4b4e3c08defd7d0061bf"
   },
   "held_quests": [
     {
@@ -3039,7 +3040,7 @@
     "foreverBaseItem.lua": "e7712eec044cd3e126294673d648c0da8ea419f608fa7a90aca4cb4efbde13eb",
     "foreverBaseNpc.lua": "9cc1e08abc2941a3e0df4f2a30f8986adeec6b00fa39f22afe3ab200cd2b4f5f",
     "foreverBaseObject.lua": "4c86dc258af398dc3922c3f2e2dd6a4059496791dbeadfaa0453f1d95fb9c76a",
-    "foreverBaseQuest.lua": "1382bb6d827c7df59bc630dbd0cc20e59e7a5f4cc0470be4ba2260407b467d78"
+    "foreverBaseQuest.lua": "db7845684eac678edb47d8c530fcc0c321b835e257e35795e516aaf6bb674643"
   },
   "inputs": {
     "era": {
@@ -3527,7 +3528,8 @@
     "item_relationships": "source-only additions from nonempty tabs below 200 rows; removals report-only; selected singleton starts coordinated with quest item starters, withholding missing endpoints or scalar conflicts; target/objective overlap suppressed",
     "names": "fill missing names only; preserve all existing effective pre-delta names",
     "new": "absent Era registry/pages/raw base AND explicit envChange.status=new",
-    "objectives": "not generated",
+    "objectives": "structured objectives and triggerEnd not generated",
+    "objectives_text": "heading-adjacent objective summary only, with ordered lines and paragraph breaks; enrich existing or independently selected quests, never select missing quests; preserve existing text and explicit clears; absent existing fields require source-new or explicit Era change; no narrative fallback or unchanged backfill",
     "quest_category": "known signed core category only; enrichment of existing or independently selected quests, never category-only selection of missing records; explicit zero retained as comparison evidence but omitted from corrections; unknown identities withheld; existing nonzero effective categories preserved; no unchanged existing-record backfill or category2/geography substitution",
     "quest_holdbacks": "explicit not-in-game/deferred IDs excluded before quest selection; held quest references filtered from item export projections; no baseline deletions or inferred unavailability",
     "quest_reputation": "explicit nonempty unique-faction reprewards pairs; signed amounts preserved; source-new or explicit Era changes only for existing records; changed amounts replace exact Era-matching target pairs; complete target-list replacements use plain fields, partial changes use operations; conflicting/target-only rewards preserved; missing factions never removed",
@@ -4169,19 +4171,19 @@
   },
   "table_field_counts": {
     "add": 767,
-    "initialize": 6036,
+    "initialize": 6743,
     "replace": 17
   },
   "upstream_artifacts_sha256": {
     "foreverBaseItem.lua": "c6e7ef472fa931fa97fd1ab71b19ee42e0e73ec38d07489b1f672f3454ddd148",
     "foreverBaseNpc.lua": "ad738fbb4ffae654657a9c111ead0f1af44f93cc3ede62e313e8ed06e511758f",
     "foreverBaseObject.lua": "b3c2790785ec01bfbc7424d62c62356ccde3581a40be70f8072984db807d4776",
-    "foreverBaseQuest.lua": "0f4dfd18ecb2b4ef123134967741739e7ce50814dd6b836e25f37f1b0939be41",
-    "report.json": "68b820dbd811f78c3accc43fd1606bf7f9e1cd4462e79476de2116c73abf8d96",
-    "report.md": "690e86ff8156f5e642953cbec600ee59ee558692c23588db50bdc579331e6d1a"
+    "foreverBaseQuest.lua": "fc7b020781088ef19d2e4c7e52f4301f018817143dc3a5e8855bd7808c3e1931",
+    "report.json": "1516b8190152f2e5febce6e99a16b2e3806ca7739e83c4416200d10619aecd06",
+    "report.md": "bac49f34bbcf1ffe39d326385934f9a060574ee1151f49b104cdedefa43f78b9"
   },
-  "upstream_directory": "/home/logon/projects/forever-base-db/generated/entity-zones",
-  "upstream_report_schema_version": 10,
+  "upstream_directory": "/home/logon/projects/forever-base-db/generated/objectives-text-import",
+  "upstream_report_schema_version": 11,
   "zone_cache": {
     "completeness": "partial/unknown",
     "skipped_pages": [
