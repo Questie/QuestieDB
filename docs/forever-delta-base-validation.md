@@ -670,3 +670,113 @@ compatibility/runtime file or disposable evidence file belongs to the copy set.
 | `report.md` | `768d889f82c4f18b65d6da05bd9938a4851990ec9f7c866dc4e49e2f32193efc` |
 
 Offline validation does not establish complete gameplay data or live-client acceptance.
+
+
+## NPC/Object primary-zone enrichment
+
+Prepared in `/tmp/questiedb-entity-zone-import.irJ2Ci` from tracked **working bytes** at consumer
+HEAD `7f2dac077b75cbb8f50ba3d304f9d7bf9b95bac2`, including the existing expansion-enum edit. Upstream:
+`/home/logon/projects/forever-base-db/generated/entity-zones/`, generator HEAD `e00ee64`,
+report schema **10**, consumer provenance schema **3**. This is a focused Source validation,
+not a new full Baked validation. Earlier full-artifact results above remain historical.
+
+### Identity and isolation
+
+All 579 tracked working files were copied. Tracked symlinks were refused; `.git`, prior
+`.out/` and untracked files were excluded. The original HEAD, status, index, all tracked
+working bytes, working TOCs and protected `PLAN-forever-native-toc.md` / `hello.txt` hashes
+are guarded in `.out/source-before.json` and `source-after.json`; the original index backup
+is `.out/source-index-before`. Existing provider hashes strictly matched old provenance.
+All **103 reported input hash entries**, including **76 baseline entries**, match before
+and after, including the new `entity_zones.py`, generator, reader, other helpers, policies,
+raw inputs, extractor, coordinate and snapshot manifests. Six candidate hashes and the
+upstream narrative report hash also match. Evidence is retained in `.out/reported-inputs-*`
+and `.out/upstream-*`. No original checkout, generator, scraper, cache, index or TOC was
+written. No network, staging, commit, push, installation or gameplay baseline update ran.
+SQLite files were neither opened nor hashed; separate zone-cache snapshot provenance is
+copied from the report, not claimed freshly verified against a live database.
+
+Only NPC/Object wrappers change: imported `:Load()` uses QuestieLoader's real QuestieDB
+and ZoneDB modules. The complete upstream body remains byte-identical, including aliases,
+comments, nil holes and field order. Quest/Item candidate bytes match symbolic-categories;
+their imported files remain untouched. Runtime, schema, enums and counters are unchanged.
+
+### Complete comparison and Source results
+
+`.out/import-check.lua` executes all four standalone providers and registered imported
+providers in the real Forever compatibility context, comparing all nested keys/values with
+independently serialized numeric report values. It also executes the previous imported
+wrappers against the same owning modules. All **12,368 rows** match report/upstream/import:
+NPC **3,394**, Object **52**, Quest **771**, Item **8,151**. Compared with the prior import,
+all IDs and **46,228 existing fields** are unchanged, including every spawn field.
+The only additions are **1,501 NPC `zoneID`** and **22 Object `zoneID`** fields.
+Counts remain 9,293 new IDs, 19,445 skips and 478 unresolved references. Table fields retain
+6,036 initializations, 17 replacements and 767 adds, with no removes.
+
+All **1,523** zones match after the real registered Static pipeline and after Derived
+Passes in materialized Source rows, then through public named, generic-name and generic-index
+getters. Source loads via `emulator/client.lua` and `emulator/metadata.lua`, as the maintained
+witness suite does, independently of the offline comparison runtime. Preserved witnesses:
+Copper Vein **1731 = 14**, Defias Watchman **1725 = 40**. Unselected Object **409731** is
+absent from both generated imports, Static composition and Source inventory. All **20 held
+quests** remain absent from old/new generated rows, Static composition and Source inventory.
+Four maintained literal witnesses were added without changing expected counters:
+
+| Entity | Zone | Evidence |
+| --- | ---: | --- |
+| NPC 269153 | 38 | Own-page location |
+| NPC 251428 | 16593 | Explicit zone-row fallback |
+| Object 424005 | 406 | Own-page location |
+| Object 375548 | 331 | Explicit zone-row fallback |
+
+The report records 1,394 direct NPC zones plus 107 fallback zones, and 21 direct Object
+zones plus one fallback. It preserves 207 existing NPC zones and four existing Object
+zones. The optional cache used 164 pages and skipped registry exclusions 13649 and 16772.
+Four conflicting corroboration cases remain withheld. Full evidence stays in the
+hash-identified upstream report; provenance retains the outcome/source/reason summary and
+used/skipped page timestamps. Multi-zone selection remains deferred.
+
+All **19 deferred quest questions remain open**. Their per-quest revisit questions were
+read; this enrichment provides no new giver, eligibility or client-acceptance evidence
+resolving them. No quest was reclassified. Phase 5's runtime-zero policy remains deferred.
+
+### Focused commands
+
+All commands ran sequentially only in the disposable root. `.out/<name>.command`, `.log`
+and `.time` record commands, output, exit status, elapsed time and peak RSS;
+`.out/results.tsv` is the compact ledger.
+
+| Log | Command | Exit | Seconds | Peak RSS (KiB) |
+| --- | --- | ---: | ---: | ---: |
+| `00-import-source` | `lua5.1 .out/import-check.lua` | 0 | 2.59 | 219740 |
+| `01-audit` | `lua5.1 test.lua correction-audit` | 0 | 41.90 | 46048 |
+| `02-source` | `lua5.1 test.lua corrections forever-delta-base native-toc` | 0 | 5.18 | 189820 |
+| `03-validators` | `lua5.1 validators/run.lua Forever --self-check` | 0 | 0.59 | 103064 |
+
+- Correction audit: **24 checks**, 81 providers, eight scenarios times 44 personas,
+  8,932 calls and 5,088,182 rows; zero failures.
+- Correction/import/native-TOC suites: **2,464 checks**, zero failures.
+- Gameplay validators: **15/15 clean**, zero findings, baselined, new or fixed;
+  fingerprint ownership/count/duplicate Self-check passed. No baseline changed.
+
+Generation, Verification, full Source/Baked Equivalence, Reconstruction, artifact tests
+and Baked witnesses were **not rerun**, as authorized for this bounded enrichment. No
+artifact was generated. These checks do not establish complete gameplay data or live-client
+acceptance. Upstream reports 441 generator tests and Ruff passing; those Python suites
+were not rerun for consumer adoption.
+
+### Prepared copy boundary
+
+Only six files differ from the working-byte snapshot: NPC/Object providers, provenance,
+the import guide, this appended validation history and the maintained witness test.
+`.out/copy-files.json` and `.out/ready-sha256.json` identify the exact reviewed copy set.
+No TOC or `.out/` file belongs to it. Parent review and guarded copy remain separate.
+
+| Upstream artifact | SHA-256 |
+| --- | --- |
+| `foreverBaseItem.lua` | `c6e7ef472fa931fa97fd1ab71b19ee42e0e73ec38d07489b1f672f3454ddd148` |
+| `foreverBaseNpc.lua` | `ad738fbb4ffae654657a9c111ead0f1af44f93cc3ede62e313e8ed06e511758f` |
+| `foreverBaseObject.lua` | `b3c2790785ec01bfbc7424d62c62356ccde3581a40be70f8072984db807d4776` |
+| `foreverBaseQuest.lua` | `0f4dfd18ecb2b4ef123134967741739e7ce50814dd6b836e25f37f1b0939be41` |
+| `report.json` | `68b820dbd811f78c3accc43fd1606bf7f9e1cd4462e79476de2116c73abf8d96` |
+| `report.md` | `690e86ff8156f5e642953cbec600ee59ee558692c23588db50bdc579331e6d1a` |

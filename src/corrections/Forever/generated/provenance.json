@@ -2825,16 +2825,53 @@
     "records": 12368,
     "skips": 19445
   },
+  "entity_zone_evidence_summary": {
+    "npc": {
+      "emitted_sources": {
+        "core location": 1394,
+        "zone page explicit row location": 107
+      },
+      "outcomes": {
+        "emitted": 1501,
+        "withheld": 1893
+      },
+      "reasons": {
+        "conflicting or invalid zone page observation": 4,
+        "consistent single known area": 1501,
+        "existing effective zoneID preserved": 207,
+        "invalid or multiple core locations": 38,
+        "no explicit singleton location": 1643,
+        "no validated source projection": 1
+      }
+    },
+    "object": {
+      "emitted_sources": {
+        "core location": 21,
+        "zone page explicit row location": 1
+      },
+      "outcomes": {
+        "emitted": 22,
+        "withheld": 30
+      },
+      "reasons": {
+        "consistent single known area": 22,
+        "existing effective zoneID preserved": 4,
+        "invalid or multiple core locations": 7,
+        "no explicit singleton location": 19
+      }
+    }
+  },
   "extractor": {
     "path": "/home/logon/projects/scraper-questie/wh_parser/js_extract.py",
     "sha256": "e23b467c16ae9a16e55128a576c2c65ffe08ce15f05579fc0a46fce1f7e4480d"
   },
   "generator": {
+    "entity_zones_sha256": "e0c939e3055d1b80e8a91b9d6e3693dfd8dd88870e60af289050fd1fb07ab417",
     "quest_categories_sha256": "1614d83c29e95c3ef64fc70870f15226cfca7dc96c87c52ab62d82d6e0cf98a7",
     "quest_holdbacks_sha256": "e806fe283f5172525523306be09921b75df32d7b62fc07552439117507a513ac",
     "race_assumptions_sha256": "49cb9c583b2481e3b28240bfc90fd352b72a83b248e5d8e75372cdd70f83426b",
-    "raw_reader_sha256": "1735fa3dbd2c293a26946aea26e306072f4eb438354be45f1204ed8186dff4b6",
-    "sha256": "563a39831b7de4d4b4ac4580b925e0ac8880d1527b4d7a169dc7bd465dc15934"
+    "raw_reader_sha256": "ec0ae7f896f7337a915cf5593bbf6a744f543816ebcffa1de922905cc30bac2a",
+    "sha256": "fd951620c59548b7231b551b111f89b7d681f21e9f761f8081252632f6ef0186"
   },
   "held_quests": [
     {
@@ -3000,8 +3037,8 @@
   ],
   "imported_artifacts_sha256": {
     "foreverBaseItem.lua": "e7712eec044cd3e126294673d648c0da8ea419f608fa7a90aca4cb4efbde13eb",
-    "foreverBaseNpc.lua": "1a438d90347f30a11e2e942177adf413256814e4d93bad3b6eafdeb48a6ffef1",
-    "foreverBaseObject.lua": "ce071b7255d0d86bf54b1a5306ba9e2d612954f49ea6457cd2afbee4d0fe8b6c",
+    "foreverBaseNpc.lua": "9cc1e08abc2941a3e0df4f2a30f8986adeec6b00fa39f22afe3ab200cd2b4f5f",
+    "foreverBaseObject.lua": "4c86dc258af398dc3922c3f2e2dd6a4059496791dbeadfaa0453f1d95fb9c76a",
     "foreverBaseQuest.lua": "1382bb6d827c7df59bc630dbd0cc20e59e7a5f4cc0470be4ba2260407b467d78"
   },
   "inputs": {
@@ -3302,6 +3339,165 @@
         }
       ],
       "size_bytes": 5954842624
+    },
+    "zone_cache": {
+      "english_pages": [
+        {
+          "count": 250,
+          "entity_type": "faction"
+        },
+        {
+          "count": 29208,
+          "entity_type": "item"
+        },
+        {
+          "count": 15002,
+          "entity_type": "npc"
+        },
+        {
+          "count": 2095,
+          "entity_type": "object"
+        },
+        {
+          "count": 6148,
+          "entity_type": "quest"
+        },
+        {
+          "count": 151,
+          "entity_type": "skill"
+        },
+        {
+          "count": 164,
+          "entity_type": "zone"
+        }
+      ],
+      "path": "/home/logon/projects/scraper-questie/data/raw/forever.db",
+      "registry_counts": [
+        {
+          "count": 250,
+          "entity_type": "faction",
+          "excluded": 0
+        },
+        {
+          "count": 3,
+          "entity_type": "faction",
+          "excluded": 1
+        },
+        {
+          "count": 29210,
+          "entity_type": "item",
+          "excluded": 0
+        },
+        {
+          "count": 985,
+          "entity_type": "item",
+          "excluded": 1
+        },
+        {
+          "count": 15003,
+          "entity_type": "npc",
+          "excluded": 0
+        },
+        {
+          "count": 549,
+          "entity_type": "npc",
+          "excluded": 1
+        },
+        {
+          "count": 2056,
+          "entity_type": "object",
+          "excluded": 0
+        },
+        {
+          "count": 46,
+          "entity_type": "object",
+          "excluded": 1
+        },
+        {
+          "count": 6150,
+          "entity_type": "quest",
+          "excluded": 0
+        },
+        {
+          "count": 146,
+          "entity_type": "quest",
+          "excluded": 1
+        },
+        {
+          "count": 151,
+          "entity_type": "skill",
+          "excluded": 0
+        },
+        {
+          "count": 3,
+          "entity_type": "skill",
+          "excluded": 1
+        },
+        {
+          "count": 36115,
+          "entity_type": "spell",
+          "excluded": 0
+        },
+        {
+          "count": 542,
+          "entity_type": "spell",
+          "excluded": 1
+        },
+        {
+          "count": 164,
+          "entity_type": "zone",
+          "excluded": 0
+        },
+        {
+          "count": 2,
+          "entity_type": "zone",
+          "excluded": 1
+        }
+      ],
+      "resolved_path": "/home/logon/projects/scraper-questie/data/raw/forever.db",
+      "sitemap_meta": [
+        {
+          "entity_type": "faction",
+          "entry_count": 253,
+          "fetched_at": "2026-09-29T11:09:51.601645+00:00"
+        },
+        {
+          "entity_type": "item",
+          "entry_count": 24038,
+          "fetched_at": "2026-09-28T20:15:27.948993+00:00"
+        },
+        {
+          "entity_type": "npc",
+          "entry_count": 15546,
+          "fetched_at": "2026-09-28T20:16:11.410264+00:00"
+        },
+        {
+          "entity_type": "object",
+          "entry_count": 1767,
+          "fetched_at": "2026-09-28T20:16:23.735353+00:00"
+        },
+        {
+          "entity_type": "quest",
+          "entry_count": 5201,
+          "fetched_at": "2026-09-28T20:16:24.503989+00:00"
+        },
+        {
+          "entity_type": "skill",
+          "entry_count": 154,
+          "fetched_at": "2026-09-29T11:10:47.817026+00:00"
+        },
+        {
+          "entity_type": "spell",
+          "entry_count": 31795,
+          "fetched_at": "2026-09-27T12:21:01.504310+00:00"
+        },
+        {
+          "entity_type": "zone",
+          "entry_count": 166,
+          "fetched_at": "2026-09-29T11:19:28.061077+00:00"
+        }
+      ],
+      "size_bytes": 6153326592
     }
   },
   "integration_order": [
@@ -3312,8 +3508,9 @@
     "Dynamic Corrections"
   ],
   "lua_rendering": {
+    "entity_zones": "positive zoneID as exact zoneIDs.NAME from ZoneDB; no zero, sort or numeric fallback",
     "field_order": "ascending consumer authoring index: remove, set, add; schema order within each group",
-    "other_providers": "Load(keys)",
+    "other_providers": "NPC/object Load(keys, ZoneDB) when zoneID is used, otherwise Load(keys); item Load(keys)",
     "quest_categories": "exact zoneIDs.NAME for positive areas or confirmed sortKeys.NAME for negative sorts; zero omitted; no numeric fallback",
     "quest_masks": "exact named aggregates or sums of named individual bits; zero remains numeric",
     "quest_provider": "Load(QuestieDB, ZoneDB): questKeys, raceKeys, classKeys and sortKeys from QuestieDB; zoneIDs from ZoneDB"
@@ -3326,6 +3523,7 @@
   },
   "policy": {
     "deletions": "never generated",
+    "entity_zones": "enrichment only for independently emitted source-validated NPCs/objects; preserve nonzero baseline and earlier values; single known positive core location, or explicit consistent zone-row location only when core absent/empty; mapper and optional fresh zone-page contradictions withhold; never select entities or change spawns",
     "item_relationships": "source-only additions from nonempty tabs below 200 rows; removals report-only; selected singleton starts coordinated with quest item starters, withholding missing endpoints or scalar conflicts; target/objective overlap suppressed",
     "names": "fill missing names only; preserve all existing effective pre-delta names",
     "new": "absent Era registry/pages/raw base AND explicit envChange.status=new",
@@ -3976,12 +4174,684 @@
   },
   "upstream_artifacts_sha256": {
     "foreverBaseItem.lua": "c6e7ef472fa931fa97fd1ab71b19ee42e0e73ec38d07489b1f672f3454ddd148",
-    "foreverBaseNpc.lua": "18f4ee896613f1c399471e88c565dcb460e00ddfd72e78f6fa70da88b0a3aaee",
-    "foreverBaseObject.lua": "25fafa10761cc3bb3130c9816c5d67ec436ae381e07c0fc714463e63da5a545b",
+    "foreverBaseNpc.lua": "ad738fbb4ffae654657a9c111ead0f1af44f93cc3ede62e313e8ed06e511758f",
+    "foreverBaseObject.lua": "b3c2790785ec01bfbc7424d62c62356ccde3581a40be70f8072984db807d4776",
     "foreverBaseQuest.lua": "0f4dfd18ecb2b4ef123134967741739e7ce50814dd6b836e25f37f1b0939be41",
-    "report.json": "7e49be47e7faee3165938ca651d3f62d2b40cc52d32e98afdb754d7c65fd893e",
-    "report.md": "768d889f82c4f18b65d6da05bd9938a4851990ec9f7c866dc4e49e2f32193efc"
+    "report.json": "68b820dbd811f78c3accc43fd1606bf7f9e1cd4462e79476de2116c73abf8d96",
+    "report.md": "690e86ff8156f5e642953cbec600ee59ee558692c23588db50bdc579331e6d1a"
   },
-  "upstream_directory": "/home/logon/projects/forever-base-db/generated/symbolic-categories",
-  "upstream_report_schema_version": 9
+  "upstream_directory": "/home/logon/projects/forever-base-db/generated/entity-zones",
+  "upstream_report_schema_version": 10,
+  "zone_cache": {
+    "completeness": "partial/unknown",
+    "skipped_pages": [
+      {
+        "id": 13649,
+        "reason": "excluded registry entry"
+      },
+      {
+        "id": 16772,
+        "reason": "excluded registry entry"
+      }
+    ],
+    "supplied": true,
+    "used_pages": [
+      {
+        "fetched_at": "2026-09-29T10:10:26.744934+00:00",
+        "id": 1
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:26.081112+00:00",
+        "id": 3
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:28.419749+00:00",
+        "id": 4
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:28.136887+00:00",
+        "id": 8
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:10.955964+00:00",
+        "id": 10
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:26.103483+00:00",
+        "id": 11
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:10.604397+00:00",
+        "id": 12
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:28.155458+00:00",
+        "id": 14
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:29.056113+00:00",
+        "id": 15
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:28.726351+00:00",
+        "id": 16
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:29.520376+00:00",
+        "id": 17
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:31.408578+00:00",
+        "id": 25
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:31.234751+00:00",
+        "id": 28
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:11.495328+00:00",
+        "id": 33
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:28.369550+00:00",
+        "id": 34
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:10.924506+00:00",
+        "id": 36
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:30.878821+00:00",
+        "id": 38
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:32.216343+00:00",
+        "id": 40
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:31.309603+00:00",
+        "id": 41
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:32.199398+00:00",
+        "id": 44
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:34.648176+00:00",
+        "id": 45
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:34.437288+00:00",
+        "id": 46
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:11.656584+00:00",
+        "id": 47
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:32.639913+00:00",
+        "id": 51
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:12.503489+00:00",
+        "id": 54
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:34.446238+00:00",
+        "id": 57
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:35.146351+00:00",
+        "id": 85
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:34.394962+00:00",
+        "id": 111
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:35.130948+00:00",
+        "id": 113
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:37.191088+00:00",
+        "id": 130
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:37.046763+00:00",
+        "id": 134
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:10.591640+00:00",
+        "id": 135
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:35.013551+00:00",
+        "id": 136
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:13.957163+00:00",
+        "id": 139
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:37.175974+00:00",
+        "id": 141
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:38.928856+00:00",
+        "id": 148
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:37.719694+00:00",
+        "id": 155
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:38.092134+00:00",
+        "id": 207
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:39.713446+00:00",
+        "id": 209
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:40.872905+00:00",
+        "id": 215
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:13.517489+00:00",
+        "id": 257
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:38.638901+00:00",
+        "id": 258
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:13.597109+00:00",
+        "id": 262
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:40.200232+00:00",
+        "id": 267
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:41.771881+00:00",
+        "id": 331
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:40.996127+00:00",
+        "id": 357
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:41.898927+00:00",
+        "id": 360
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:42.743549+00:00",
+        "id": 361
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:43.410057+00:00",
+        "id": 365
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:14.372099+00:00",
+        "id": 371
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:42.659377+00:00",
+        "id": 400
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:15.079040+00:00",
+        "id": 405
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:42.885434+00:00",
+        "id": 406
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:46.349180+00:00",
+        "id": 440
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:42.627736+00:00",
+        "id": 457
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:45.887793+00:00",
+        "id": 490
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:46.276632+00:00",
+        "id": 491
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:47.307199+00:00",
+        "id": 493
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:13.374833+00:00",
+        "id": 540
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:46.329716+00:00",
+        "id": 616
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:14.740879+00:00",
+        "id": 618
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:45.128963+00:00",
+        "id": 717
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:47.471080+00:00",
+        "id": 718
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:45.788300+00:00",
+        "id": 719
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:48.380432+00:00",
+        "id": 721
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:48.177977+00:00",
+        "id": 722
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:50.066718+00:00",
+        "id": 796
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:15.262449+00:00",
+        "id": 800
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:50.150870+00:00",
+        "id": 817
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:13.302068+00:00",
+        "id": 818
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:48.410162+00:00",
+        "id": 981
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:49.836452+00:00",
+        "id": 982
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:49.447071+00:00",
+        "id": 1176
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:51.020952+00:00",
+        "id": 1337
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:52.149185+00:00",
+        "id": 1377
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:52.129024+00:00",
+        "id": 1397
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:16.546088+00:00",
+        "id": 1477
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:52.983941+00:00",
+        "id": 1497
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:16.103102+00:00",
+        "id": 1517
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:52.876796+00:00",
+        "id": 1519
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:53.862506+00:00",
+        "id": 1537
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:52.892302+00:00",
+        "id": 1581
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:54.186034+00:00",
+        "id": 1583
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:54.705141+00:00",
+        "id": 1584
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:55.315159+00:00",
+        "id": 1637
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:16.149190+00:00",
+        "id": 1638
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:56.528155+00:00",
+        "id": 1657
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:17.339206+00:00",
+        "id": 1941
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:54.321039+00:00",
+        "id": 1977
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:57.011303+00:00",
+        "id": 2017
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:56.051463+00:00",
+        "id": 2057
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:56.419947+00:00",
+        "id": 2100
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:57.710926+00:00",
+        "id": 2159
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:57.806751+00:00",
+        "id": 2257
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:17.624623+00:00",
+        "id": 2300
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:59.491350+00:00",
+        "id": 2437
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:16.975627+00:00",
+        "id": 2557
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:00.831922+00:00",
+        "id": 2597
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:00.322917+00:00",
+        "id": 2677
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:00.390160+00:00",
+        "id": 2717
+      },
+      {
+        "fetched_at": "2026-09-29T10:10:59.728581+00:00",
+        "id": 3277
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:01.216325+00:00",
+        "id": 3358
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:01.872296+00:00",
+        "id": 3428
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:17.405757+00:00",
+        "id": 3429
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:02.209103+00:00",
+        "id": 3446
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:19.854290+00:00",
+        "id": 3456
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:00.329405+00:00",
+        "id": 15475
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:02.729748+00:00",
+        "id": 15531
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:03.370636+00:00",
+        "id": 15532
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:01.951230+00:00",
+        "id": 15793
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:04.161789+00:00",
+        "id": 15809
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:04.719054+00:00",
+        "id": 15825
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:15.821092+00:00",
+        "id": 15828
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:04.287615+00:00",
+        "id": 15938
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:18.630978+00:00",
+        "id": 16003
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:03.796985+00:00",
+        "id": 16004
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:05.597300+00:00",
+        "id": 16017
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:07.541107+00:00",
+        "id": 16018
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:05.746290+00:00",
+        "id": 16028
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:07.234750+00:00",
+        "id": 16029
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:08.546076+00:00",
+        "id": 16074
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:19.793957+00:00",
+        "id": 16076
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:07.902910+00:00",
+        "id": 16113
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:18.665076+00:00",
+        "id": 16114
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:07.185162+00:00",
+        "id": 16115
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:09.378641+00:00",
+        "id": 16116
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:08.981369+00:00",
+        "id": 16117
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:07.772515+00:00",
+        "id": 16118
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:10.437199+00:00",
+        "id": 16119
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:11.214581+00:00",
+        "id": 16144
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:20.326797+00:00",
+        "id": 16147
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:10.312777+00:00",
+        "id": 16148
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:21.122076+00:00",
+        "id": 16149
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:10.658447+00:00",
+        "id": 16169
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:13.102603+00:00",
+        "id": 16236
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:11.669388+00:00",
+        "id": 16295
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:10.706736+00:00",
+        "id": 16362
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:13.922532+00:00",
+        "id": 16394
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:13.549956+00:00",
+        "id": 16508
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:19.270265+00:00",
+        "id": 16509
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:13.370056+00:00",
+        "id": 16510
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:21.132277+00:00",
+        "id": 16532
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:13.136173+00:00",
+        "id": 16544
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:15.264641+00:00",
+        "id": 16560
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:14.907533+00:00",
+        "id": 16562
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:13.641981+00:00",
+        "id": 16591
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:17.591986+00:00",
+        "id": 16593
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:15.774463+00:00",
+        "id": 16603
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:21.202349+00:00",
+        "id": 16606
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:15.973814+00:00",
+        "id": 16611
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:18.394245+00:00",
+        "id": 16632
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:16.808977+00:00",
+        "id": 16651
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:18.591377+00:00",
+        "id": 16653
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:18.479417+00:00",
+        "id": 16662
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:17.363081+00:00",
+        "id": 16732
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:20.773378+00:00",
+        "id": 16756
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:18.790720+00:00",
+        "id": 16876
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:21.649242+00:00",
+        "id": 16919
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:18.911747+00:00",
+        "id": 16941
+      },
+      {
+        "fetched_at": "2026-09-29T11:03:23.066664+00:00",
+        "id": 17065
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:19.379118+00:00",
+        "id": 17066
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:22.029482+00:00",
+        "id": 17191
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:20.992165+00:00",
+        "id": 17803
+      },
+      {
+        "fetched_at": "2026-09-29T10:11:20.651899+00:00",
+        "id": 17804
+      }
+    ]
+  }
 }

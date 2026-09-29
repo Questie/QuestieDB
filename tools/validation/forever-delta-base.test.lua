@@ -18,6 +18,11 @@ local function load(flavor, gameType)
 end
 
 local function witness(db)
+  -- Primary areas cover own-page evidence and explicit zone-row fallback, not spawn inference.
+  assert(db.Npc.zoneID(269153) == 38, "Ylva own-page zone")
+  assert(db.Npc.zoneID(251428) == 16593, "Hoarder zone-row fallback")
+  assert(db.Object.zoneID(424005) == 406, "Pocket Litter own-page zone")
+  assert(db.Object.zoneID(375548) == 331, "Unlit Torch zone-row fallback")
   -- Literal restrictions distinguish explicit masks, faction inference and reviewed zeroes.
   assert(db.Quest.requiredRaces(90902) == 16 and db.Quest.requiredClasses(90902) == 2,
     "explicit Undead Paladin restriction")

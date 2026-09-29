@@ -1,7 +1,7 @@
 # Forever generated delta-base
 
 `src/corrections/Forever/generated/` imports reviewed offline candidates from
-`/home/logon/projects/forever-base-db/generated/symbolic-categories/`. The four providers retain
+`/home/logon/projects/forever-base-db/generated/entity-zones/`. The four providers retain
 upstream filenames and module identities: `foreverBaseNpc.lua` / `ForeverBaseNpc`,
 `foreverBaseObject.lua` / `ForeverBaseObject`, `foreverBaseQuest.lua` / `ForeverBaseQuest`
 and `foreverBaseItem.lua` / `ForeverBaseItem`.
@@ -9,10 +9,11 @@ and `foreverBaseItem.lua` / `ForeverBaseItem`.
 Only the module boundary is adapted: `QuestieLoader:CreateModule`, module imports
 and colon `:Load()` replace the standalone entry points. Upstream Quest uses
 `Load(QuestieDB, ZoneDB)`: the first context supplies `questKeys`, Forever `raceKeys`,
-Forever `classKeys` and `sortKeys`; the second supplies `zoneIDs`. NPC, Object and Item
-still use `Load(keys)`. The imported Quest provider retains its QuestieDB import and
-imports the real `ZoneDB` module when used. Do not attach zone constants to the shared
-QuestieDB module or change compatibility/runtime code.
+Forever `classKeys` and `sortKeys`; the second supplies `zoneIDs`. NPC and Object use
+`Load(keys, ZoneDB)` when emitting `zoneID`; Item retains `Load(keys)`. Imported Quest,
+NPC and Object providers import the real `QuestieDB` and `ZoneDB` modules. NPC/Object
+`:Load()` binds its matching keys from QuestieDB before the unchanged upstream body.
+Do not attach zone constants to the shared QuestieDB module or change compatibility/runtime code.
 
 A standalone call uses the owning contexts:
 
@@ -33,8 +34,8 @@ Preserve the complete upstream function body, including `questKeys` and used `ra
 Quest race/class masks use exact named aggregates or sums of named individual bits. Zero
 remains literal `0`, never a `NONE` alias. Nonzero quest categories use exact named
 `zoneIDs.NAME` or `sortKeys.NAME` constants, with no numeric fallback or extra minus sign.
-Other fields and spawn map keys remain numeric. Preserve every
-row value, inline entity name, Forever Wowhead URL and assumption comment. Starter/finisher
+NPC/Object `zoneID` also uses exact `zoneIDs.NAME` constants. Other fields and spawn map keys
+remain numeric. Preserve every row value, inline entity name, Forever Wowhead URL and assumption comment. Starter/finisher
 groups retain positional nil holes, including operation operands such as `{nil, {424005}}`;
 spawn maps retain zone keys. Fields follow ascending numeric authoring-key indices:
 `_remove`, ordinary sets, then `_add`, with canonical schema order inside each group
@@ -57,9 +58,8 @@ Scalars remain replacements. Uncertain removals are report-only. Operation seman
 to the [public API](api.md#table-addremove-operations) and [ADR 0016](adr/0016-table-correction-operations.md).
 
 The import covers missing-record names, levels, explicit quest starter/finisher relationships,
-accepted inverse NPC/object links, explicit reputation rewards, known quest categories,
-eligible new-record spawns, and item categories and source
-relationships. Selected singleton item starts coordinate item `startQuest` with quest starter
+accepted inverse NPC/object links, single-area NPC/object zones, explicit reputation rewards,
+known quest categories, eligible new-record spawns, and item categories and source relationships. Selected singleton item starts coordinate item `startQuest` with quest starter
 slot 3. Existing names and converted spawns remain unchanged. New spawns in changed map frames
 (areas 44, 139, 215 and 1519) are withheld. Item source tabs with at least 200 rows are withheld
 because Wowhead can cap lists. Missing references remain reported; unresolved quest giver
@@ -112,6 +112,23 @@ and `CRAFTING = 16941` in addition to its existing symbols. These are category i
 not display names or map routes. Missing exact named constants must fail upstream rendering
 rather than produce opaque numeric assignments.
 
+NPC/Object `zoneID` is a best estimate of the primary AreaID, not quest `zoneOrSort`
+or a drawable point. Zone evidence enriches independently selected, source-validated rows;
+it never selects an entity, changes spawns or overwrites an existing nonzero effective zone.
+Zero is omitted. Own-page `location` must identify one distinct positive known area, with
+no conflicting numeric mapper areas. Exact `ZoneDB.zoneIDs` symbols are required.
+
+The optional, explicitly supplied zone cache can corroborate direct evidence or supply
+fallback only when own location is absent/empty. Fallback needs an explicit singleton
+NPC/object Listview row location agreeing with available container/row evidence; membership
+alone is insufficient. Invalid, negative, multi-zone or conflicting evidence is withheld,
+not bypassed. No item-tab 200-row cap applies. Missing pages/rows do not establish absence
+or completeness: the cache is partial/unknown, independently pinned from the entity snapshot.
+Recorded cache provenance is retained without opening, hashing or refreshing SQLite files
+at import. Multi-zone selection, travel/instance heuristics and coarse-map interpretation
+remain deferred to a separately reviewed policy. `entity_zones.py` and the report's
+`evidence.entity_zones` identify the extraction and preservation decisions.
+
 Explicit not-in-game and deferred quest-ID policies withhold generated rows before selection
 and filter held quest references from item export projections. They do not delete raw data,
 existing consumer records or baseline relationships. Assumptions and holdbacks are upstream
@@ -131,7 +148,8 @@ NPC evidence changes. The separate runtime-zero policy decision (phase 5) remain
 reports and providers, imported providers, generator/reader/helper hashes, assumption and
 holdback metadata, extractor, raw consumer inputs, coordinate manifest and effective-baseline
 hashes. It retains source-cache paths and registry metadata, selection and field policies,
-summary counts and missing-reference counts. SQLite databases are not hashed. Full field-level
+summary counts, missing-reference counts, separate `inputs.zone_cache` provenance and
+zone evidence summaries. SQLite databases are not hashed. Full field-level
 evidence remains in the hash-identified upstream reports rather than duplicated here.
 
 [The validation report](forever-delta-base-validation.md) records this run's inventory,
@@ -145,10 +163,11 @@ Passing those gates does not establish complete gameplay behavior or client pars
 2. Snapshot tracked **working bytes**, including intended dirty inputs, into a disposable
    consumer copy. Record HEAD, status and full file hashes. Verify report baseline and
    generator/helper/policy hashes before and after validation; stop if any input drifts.
-3. In that copy only, replace the four providers and adapt their wrappers. Preserve row bodies,
-   nil holes and comments. Never copy candidates into `legacy/`, authored providers or raw data.
+3. In that copy only, replace changed providers and adapt their wrappers. Leave unchanged
+   providers byte-identical. Preserve row bodies, nil holes and comments. Never copy candidates into `legacy/`, authored providers or raw data.
    Compare every decoded upstream table with imported `:Load()` using the real Forever runtime
-   context: Quest takes `Load(QuestieDB, ZoneDB)`; the other providers take their matching `Load(keys)`.
+   context: Quest takes `Load(QuestieDB, ZoneDB)`; NPC/Object with zones take
+   `Load(keys, ZoneDB)`; Item takes `Load(keys)`.
 4. Update provenance and literal import witnesses. Inspect generated/Static numeric presence
    separately from public getters, which normalize absent numbers to zero. Record all reviewed
    zeroes through current Derived Passes and both read modes.
@@ -162,6 +181,12 @@ Passing those gates does not establish complete gameplay behavior or client pars
    providers and prior working import, unchanged report data/policy, correction audit, Source
    suites and gameplay Self-checks may reuse the prior full artifact gates. Record that scope
    explicitly; do not claim Generation or artifact gates ran again.
+   The authorized entity-zone import uses a focused scope instead: compare every decoded
+   report/upstream/imported row and prove that the prior import differs only by the 1,523
+   new zone fields. Check every new zone after Static/Derived and through actual Source
+   named/generic getters, preservation witnesses, holdbacks, correction audit, Source suites
+   and gameplay Self-checks. This is not a new Baked validation or a general waiver of
+   artifact gates for future data imports.
 6. Obtain fresh review before copying only approved providers, provenance, tests and documentation
    into the working checkout. Do not copy disposable TOCs or validation output.
 
