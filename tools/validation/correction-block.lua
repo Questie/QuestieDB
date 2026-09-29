@@ -57,9 +57,11 @@ function fixture.loadProvider(files, flavorName, seasonId, mode, root)
       execute(lib.readAll((root or ".") .. "/" .. file), file, env, namespace)
     end
   end
+  execute(lib.readAll((root or ".") .. "/src/corrections/tablePatch.lua"), "tablePatch.lua", env, namespace)
   execute(lib.readAll((root or ".") .. "/src/corrections/registry.lua"), "registry.lua", env, namespace)
   for _, file in ipairs(files) do
-    if file:match("^src/corrections/") and file ~= "src/corrections/registry.lua" then
+    if file:match("^src/corrections/") and file ~= "src/corrections/registry.lua" and
+       file ~= "src/corrections/tablePatch.lua" then
       execute(lib.readAll((root or ".") .. "/" .. file), file, env, namespace)
     end
   end

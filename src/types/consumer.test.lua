@@ -123,3 +123,17 @@ LibQuestieDB.l10n.SetCorrection("Consumer", customLocale, "Quest", "names", {
 })
 LibQuestieDB.l10n.SetLocale(customLocale)
 LibQuestieDB.l10n.SetCorrection("Consumer", customLocale, "Quest", "names", nil)
+
+-- Operation aliases are authoring keys, not additional entity getter fields.
+local questKeys = LibQuestieDB.Enum.questKeys
+local itemKeys = LibQuestieDB.Enum.itemKeys
+registrar.Set("Quest", "finishers", {
+  [2] = { [questKeys.finishedBy_add] = { [2] = {424005} } },
+})
+registrar.Set("Item", "relations", {
+  [6948] = { [itemKeys.relatedQuests_remove] = {7786} },
+})
+---@type integer
+local spawnOperation = LibQuestieDB.Enum.npcKeys.spawns_add
+---@type integer
+local pathOperation = LibQuestieDB.Enum.objectKeys.waypoints_remove

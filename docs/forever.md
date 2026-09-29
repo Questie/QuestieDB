@@ -14,8 +14,10 @@ are not native Forever maps. See [current maintenance guidance](forever-data.md#
 and the [map audit](forever-map-override-audit.md) for provenance, dispositions and gaps.
 The [coordinate audit](forever-coordinate-audit.md) also covers the converted Era-framed
 entrances and Questie's Mulgore Darkmoon replacements. This is not complete new Forever
-content: later-expansion entrance frames, synthetic coordinates, live placement, new entities
-and race/class policy still need separate review.
+content: later-expansion entrance frames, synthetic coordinates, live placement and
+race/class policy still need separate review. The separate [generated delta-base](forever-delta-base.md)
+adds snapshot-derived entities and gameplay deltas, but does not supply complete objectives,
+restrictions or other gameplay behavior.
 
 ## Source selection
 
@@ -46,7 +48,13 @@ Titan Reforged applies only to Wrath season 109, not Forever.
 
 ## Correction authoring
 
-Add new corrections in `src/corrections/Forever/`:
+The Static layering is **raw base -> inherited legacy Corrections -> generated delta-base ->
+authored Forever Corrections**. `generated/` follows all inherited Static providers, including
+generated reputation and Item-start sets, and precedes authored `forever*Fixes.lua` providers. They apply in Source
+mode and are folded into Generation, never loaded as Baked runtime providers. Keep manual
+changes out of that folder; see [provenance, limitations and refresh](forever-delta-base.md).
+
+Add new manual corrections in `src/corrections/Forever/`:
 
 - `foreverQuestFixes.lua`
 - `foreverNPCFixes.lua`
@@ -65,7 +73,7 @@ The usual `QuestieDB.questKeys`, `npcKeys`, `itemKeys` and `objectKeys` tables c
 schemas; correction files do not load them themselves.
 
 The six files in `legacy/` remain the inherited baseline; leave them unchanged for ordinary correction work. New Static
-Corrections apply after legacy Static Corrections. New Dynamic Corrections apply after legacy
+Corrections apply after legacy and generated delta-base Static Corrections. New Dynamic Corrections apply after legacy
 Dynamic Corrections. Dynamic Corrections still outrank all static data, so a replacement for
 an inherited Dynamic Correction belongs in `LoadDynamic()`, even if its new value is unconditional.
 

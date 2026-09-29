@@ -939,6 +939,14 @@ suite("localization-overrides", "shared", function()
   dofile("tools/validation/localization-overrides.test.lua")(check, equal)
 end)
 
+suite("correction-audit", "shared", function()
+  dofile("tools/validation/correction-audit.test.lua")(check, equal)
+end)
+
+suite("table-corrections", "shared", function()
+  dofile("tools/validation/table-corrections.test.lua")(check, equal)
+end)
+
 suite("correction-enums", "shared", function()
   local standalone = dofile("src/corrections/enum/constants.lua")
   local namespace = {}
@@ -1178,9 +1186,10 @@ suite("corrections", "shared", function()
     "Classic ALL_CLASSES includes Paladin")
   check(math.floor(classicAllClasses / classicClassKeys.SHAMAN) % 2 == 1,
     "Classic ALL_CLASSES includes Shaman")
-  check(math.floor(classicAllClasses / classicClassKeys.DEATH_KNIGHT) % 2 == 0,
+  -- Unsupported classes need not have constants in Classic; test their known source bits.
+  check(math.floor(classicAllClasses / 32) % 2 == 0,
     "Classic ALL_CLASSES excludes Death Knight")
-  check(math.floor(classicAllClasses / classicClassKeys.MONK) % 2 == 0,
+  check(math.floor(classicAllClasses / 512) % 2 == 0,
     "Classic ALL_CLASSES excludes Monk")
   equal(enum.byExpansion.TBC.classKeys.ALL_CLASSES, 1503, "TBC ALL_CLASSES remains 1503")
   equal(enum.byExpansion.Wotlk.classKeys.ALL_CLASSES, 1535, "WotLK ALL_CLASSES remains 1535")
@@ -1198,6 +1207,10 @@ suite("corrections", "shared", function()
     { flavor = config.flavorByName.Forever, allClasses = 1503, alliance = 4294967373, repair = 16384 },
   }
   local questieLoaderBeforeCompat = rawget(_G, "QuestieLoader")
+  local authoringKeys = {}
+  for _, entityType in ipairs(config.entityTypes) do
+    authoringKeys[entityType.keysField] = enum[entityType.keysField]
+  end
   for _, case in ipairs(compatCases) do
     local remove = Lib.CorrectionCompat.Install(case.flavor)
     local selected = Lib.CorrectionCompat.modules.QuestieDB
@@ -1210,8 +1223,21 @@ suite("corrections", "shared", function()
     check(Lib.CorrectionCompat.modules.ZoneDB.zoneIDs == enum.zoneIDs,
       "compat serves shared invariant constants from the top level for " .. case.flavor.name)
     for _, entityType in ipairs(config.entityTypes) do
-      check(selected[entityType.keysField] == Lib.Meta[entityType.name].keys,
-        "compat serves canonical " .. entityType.name .. " keys for " .. case.flavor.name)
+      local keys = selected[entityType.keysField]
+      local meta = Lib.Meta[entityType.name]
+      check(keys == authoringKeys[entityType.keysField] and keys == enum[entityType.keysField],
+        "compat shares stable " .. entityType.name .. " authoring keys for " .. case.flavor.name)
+      check(keys ~= meta.keys, "authoring operations do not mutate canonical " .. entityType.name .. " keys")
+      local canonicalCount = 0
+      for name, index in pairs(meta.keys) do
+        canonicalCount = canonicalCount + 1
+        equal(keys[name], index, "compat preserves canonical " .. entityType.name .. "." .. name)
+        equal(keys[name .. "_add"], index + 1000, "compat derives add alias " .. name)
+        equal(keys[name .. "_remove"], index - 1000, "compat derives remove alias " .. name)
+        equal(meta.keys[name .. "_add"], nil, "canonical keys exclude add aliases")
+        equal(meta.keys[name .. "_remove"], nil, "canonical keys exclude remove aliases")
+      end
+      equal(canonicalCount, meta.fieldCount, "canonical key count excludes authoring operations")
     end
     if case.flavor.name == "Forever" then
       equal(selected.raceKeys.SKYBORNE_ALLIANCE, 4294967296,
@@ -1737,17 +1763,20 @@ end)
 -- Data-shaped corrections: Set
 --------------------------------------------------------------------------------------------
 
-suite("set-corrections", "Vanilla", function()
-  local tocPath = config.tocPath(config.flavorByName.Vanilla)
-  if not lib.fileExists(tocPath) then
-    io.write("  SKIP set-corrections: ", tocPath, " not generated\n")
-    return
-  end
-
+suite("set-corrections", "shared", function()
   client.reset()
   client.install({ expansion = "Classic" })
-  emulator.install(config.antiCollision or config.addonName, emulator.parse(tocPath))
-  local Lib = emulator.loadAddon(tocPath, config.addonName)
+  -- Earlier suites can leave a LibStub mock that cannot register LibDeflate.
+  -- Isolate the fixture import, including its nested codec loads, and restore on failure.
+  local savedLibStub = rawget(_G, "LibStub")
+  _G.LibStub = nil
+  local loaded, fixture = pcall(dofile, "tools/validation/storage-fixture.lua")
+  _G.LibStub = savedLibStub
+  assert(loaded, fixture)
+  local Lib = fixture.load("source", {
+    Quest = { [2] = { "Fixture quest" } }, Npc = {},
+    Item = { [6948] = { "Hearthstone" } }, Object = {},
+  })
   local registry = Lib.Corrections
   local Quest = Lib.Quest
   local Item = Lib.Item
@@ -1874,6 +1903,16 @@ end)
 --------------------------------------------------------------------------------------------
 -- Independently owned Forever dataset
 --------------------------------------------------------------------------------------------
+
+suite("forever-delta-base", "shared", function()
+  check(commandSucceeded(shellQuote(LUA_BIN) .. " tools/validation/forever-delta-base.test.lua"),
+    "Forever delta-base witnesses, isolation and precedence pass")
+end)
+
+suite("forever-delta-base-baked", "Forever", function()
+  check(commandSucceeded(shellQuote(LUA_BIN) .. " tools/validation/forever-delta-base.test.lua Baked"),
+    "Forever delta-base witnesses are folded into Baked data without static providers")
+end)
 
 suite("forever-data", "shared", function()
   -- Dataset checks install generator globals; isolate them from the runtime suites.

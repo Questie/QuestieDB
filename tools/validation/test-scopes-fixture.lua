@@ -1,0 +1,119 @@
+-- Tiny Baked witnesses for the scope-selection test, not a flavor Generation.
+-- Require an explicit disposable directory and refuse existing artifacts.
+local output = assert(arg[1], "provide a disposable fixture directory")
+local lib = dofile("generator/lib.lua")
+local fixture = dofile("tools/validation/storage-fixture.lua")
+local db = fixture.namespace()
+local quest, npc, object, item = db.Meta.Quest.keys, db.Meta.Npc.keys, db.Meta.Object.keys, db.Meta.Item.keys
+local path = output .. "/QuestieDB_Forever.toc"
+local alias = output .. "/QuestieDB_Camelot.toc"
+assert(not lib.fileExists(path) and not lib.fileExists(alias), "refusing to overwrite an artifact")
+
+-- These literals satisfy forever-delta-base.test.lua's public Baked witnesses.
+-- No raw entity payloads, correction providers, or production Generation are needed.
+fixture.write(path, {
+  Quest = {
+    [86585] = {
+      [quest.name] = "Banner of the Fallen",
+      [quest.questLevel] = 17,
+      [quest.requiredLevel] = 10,
+      [quest.requiredRaces] = 4294967373,
+      [quest.startedBy] = {{269153}},
+      [quest.finishedBy] = {{1092}},
+      [quest.reputationReward] = {{47, 100}},
+    },
+    [8368] = {
+      [quest.reputationReward] = {{889, 100}},
+    },
+    [6562] = {
+      [quest.reputationReward] = {{530, 25}, {2787, 100}},
+    },
+    [90902] = {
+      [quest.name] = "Rediscovering the Light",
+      [quest.requiredRaces] = 16,
+      [quest.requiredClasses] = 2,
+    },
+    [94004] = {
+      [quest.name] = "Craftsman's Writ: Elixir of Ogre's Strength",
+      [quest.requiredRaces] = 0,
+      [quest.startedBy] = {nil, nil, {264011}},
+      [quest.reputationReward] = {{2586, 75}, {2587, 75}},
+    },
+    [94006] = {
+      [quest.name] = "The Great Ursera Spirit",
+      [quest.requiredRaces] = 12884901888,
+    },
+    [97286] = {
+      [quest.name] = "Research Access",
+      [quest.requiredRaces] = 4294967373,
+      [quest.requiredClasses] = 128,
+    },
+  },
+  Npc = {
+    [211033] = {
+      [npc.name] = "Garion Wendell",
+      [npc.friendlyToFaction] = "A",
+    },
+    [205729] = {
+      [npc.name] = "Boarton Shadetotem",
+      [npc.friendlyToFaction] = "H",
+    },
+    [202093] = {
+      [npc.name] = "Polymorphed Apprentice",
+      [npc.friendlyToFaction] = "AH",
+    },
+    [251428] = {
+      [npc.zoneID] = 16593,
+    },
+    [269153] = {
+      [npc.name] = "Mountaineer Ylva",
+      [npc.zoneID] = 38,
+      [npc.questStarts] = {86585},
+      [npc.spawns] = {[38] = {{31.8, 86.2}}},
+    },
+  },
+  Object = {
+    [424005] = {
+      [object.zoneID] = 406,
+    },
+    [375548] = {
+      [object.zoneID] = 331,
+    },
+    [175725] = {
+      [object.name] = "The Old Gods and the Ordering of Azeroth",
+      [object.spawns] = {[11] = {{9.9, 20}}},
+    },
+  },
+  Item = {
+    [264011] = {
+      [item.name] = "Craftsman's Writ: Elixir of Ogre's Strength",
+      [item.startQuest] = 94004,
+    },
+    [286647] = {
+      [item.name] = "Depleted Crystal Heart",
+      [item.itemLevel] = 1,
+      [item.requiredLevel] = 1,
+      [item.class] = 12,
+      [item.subClass] = 0,
+      [item.npcDrops] = {252711},
+    },
+  },
+}, {})
+
+local content, replaced = lib.readAll(path):gsub("## X%-Flavor: Vanilla", "## X-Flavor: Forever", 1)
+assert(replaced == 1, "fixture must declare exactly one flavor")
+local files = {}
+for _, file in ipairs(db.config.runtimeFiles.head) do files[#files + 1] = file end
+for _, file in ipairs({
+  db.config.runtimeFiles.bakedReader,
+  "src/read/shared.lua",
+  "src/corrections/registry.lua",
+  "src/l10n/overlay.lua",
+  "src/api.lua",
+}) do files[#files + 1] = file end
+content = table.concat(files, "\n") .. "\n" .. content
+for _, destination in ipairs({path, alias}) do
+  local out = assert(io.open(destination, "wb"))
+  assert(out:write(content))
+  assert(out:close())
+end
