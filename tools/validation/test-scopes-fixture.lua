@@ -17,8 +17,28 @@ fixture.write(path, {
       [quest.name] = "Banner of the Fallen",
       [quest.questLevel] = 17,
       [quest.requiredLevel] = 10,
+      [quest.requiredRaces] = 4294967373,
       [quest.startedBy] = {{269153}},
       [quest.finishedBy] = {{1092}},
+    },
+    [90902] = {
+      [quest.name] = "Rediscovering the Light",
+      [quest.requiredRaces] = 16,
+      [quest.requiredClasses] = 2,
+    },
+    [94004] = {
+      [quest.name] = "Craftsman's Writ: Elixir of Ogre's Strength",
+      [quest.requiredRaces] = 0,
+      [quest.startedBy] = {nil, nil, {264011}},
+    },
+    [94006] = {
+      [quest.name] = "The Great Ursera Spirit",
+      [quest.requiredRaces] = 12884901888,
+    },
+    [97286] = {
+      [quest.name] = "Research Access",
+      [quest.requiredRaces] = 0,
+      [quest.requiredClasses] = 128,
     },
   },
   Npc = {
@@ -35,6 +55,10 @@ fixture.write(path, {
     },
   },
   Item = {
+    [264011] = {
+      [item.name] = "Craftsman's Writ: Elixir of Ogre's Strength",
+      [item.startQuest] = 94004,
+    },
     [286647] = {
       [item.name] = "Depleted Crystal Heart",
       [item.itemLevel] = 1,
