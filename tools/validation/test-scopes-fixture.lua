@@ -20,6 +20,13 @@ fixture.write(path, {
       [quest.requiredRaces] = 4294967373,
       [quest.startedBy] = {{269153}},
       [quest.finishedBy] = {{1092}},
+      [quest.reputationReward] = {{47, 100}},
+    },
+    [8368] = {
+      [quest.reputationReward] = {{889, 100}},
+    },
+    [6562] = {
+      [quest.reputationReward] = {{530, 25}, {2787, 100}},
     },
     [90902] = {
       [quest.name] = "Rediscovering the Light",
@@ -30,6 +37,7 @@ fixture.write(path, {
       [quest.name] = "Craftsman's Writ: Elixir of Ogre's Strength",
       [quest.requiredRaces] = 0,
       [quest.startedBy] = {nil, nil, {264011}},
+      [quest.reputationReward] = {{2586, 75}, {2587, 75}},
     },
     [94006] = {
       [quest.name] = "The Great Ursera Spirit",
@@ -37,18 +45,40 @@ fixture.write(path, {
     },
     [97286] = {
       [quest.name] = "Research Access",
-      [quest.requiredRaces] = 0,
+      [quest.requiredRaces] = 4294967373,
       [quest.requiredClasses] = 128,
     },
   },
   Npc = {
+    [211033] = {
+      [npc.name] = "Garion Wendell",
+      [npc.friendlyToFaction] = "A",
+    },
+    [205729] = {
+      [npc.name] = "Boarton Shadetotem",
+      [npc.friendlyToFaction] = "H",
+    },
+    [202093] = {
+      [npc.name] = "Polymorphed Apprentice",
+      [npc.friendlyToFaction] = "AH",
+    },
+    [251428] = {
+      [npc.zoneID] = 16593,
+    },
     [269153] = {
       [npc.name] = "Mountaineer Ylva",
+      [npc.zoneID] = 38,
       [npc.questStarts] = {86585},
       [npc.spawns] = {[38] = {{31.8, 86.2}}},
     },
   },
   Object = {
+    [424005] = {
+      [object.zoneID] = 406,
+    },
+    [375548] = {
+      [object.zoneID] = 331,
+    },
     [175725] = {
       [object.name] = "The Old Gods and the Ordering of Azeroth",
       [object.spawns] = {[11] = {{9.9, 20}}},
