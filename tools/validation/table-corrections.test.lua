@@ -148,6 +148,7 @@ return function(check, equal)
         { [add] = 1 }, { [add] = {"bad"} }, { [add] = { [2] = 4 } },
         { [add] = {9}, [key] = {8} }, { [add] = {9}, [remove] = {9} },
         { [constants.questKeys.requiredLevel_add] = {} }, { [2001] = {} }, { [-1000] = {} }, { [1001.5] = {} },
+        { [live.Meta.Quest.fieldCount + 1] = "unknown" }, { [1.5] = "fractional" },
         { [constants.questKeys.finishedBy_add] = {[4] = {1}} },
         { [constants.questKeys.objectives_add] = {[7] = {{1}}} },
         { [constants.questKeys.objectives_add] = {{{11}}}, [constants.questKeys.objectives_remove] = {{{11,nil,0}}} },
@@ -221,7 +222,11 @@ return function(check, equal)
       equal(live.Quest.Exists(999), false, mode .. " withdrawal removes added entity")
 
       local providerRows = {[1] = {[add] = {70}}}
-      registry.RegisterRuntimeCorrection("Provider", "Quest", "function-patch", function() return providerRows end)
+      local providerCalls = 0
+      registry.RegisterRuntimeCorrection("Provider", "Quest", "function-patch", function()
+        providerCalls = providerCalls + 1
+        return providerRows
+      end)
       registry.ApplyRegisteredCorrections("Provider")
       equal(live.Quest.preQuestGroup(1), {-1,2,3,70}, mode .. " function operations use backend fallback")
       local providerView, providerProvenance = registry.composed.Quest, registry.provenance.Quest
@@ -232,6 +237,20 @@ return function(check, equal)
         and live.Quest.GetAllIds(true) == providerIds, mode .. " failed provider preserves view, provenance and cache identities")
       equal(live.Quest.preQuestGroup(1), {-1,2,3,70}, mode .. " invalid provider retains published view")
       equal(registry.GetProvenance("Quest", 1, key), "Provider", mode .. " invalid provider retains provenance")
+
+      -- Failed Quest work must not block Item writes, even from the same owner.
+      local callsAfterFailure = providerCalls
+      live.SetCorrection("Unrelated", "Item", "name", {[999] = {[1] = "Other owner's item"}})
+      equal(live.Item.name(999), "Other owner's item", mode .. " unrelated Item Set succeeds during Quest failure")
+      live.SetCorrection("Provider", "Item", "name", {[998] = {[1] = "Provider's item"}})
+      equal(live.Item.name(998), "Provider's item", mode .. " same owner's Item Set succeeds during Quest failure")
+      live.SetCorrection("Unrelated", "Item", "name", nil)
+      equal(live.Item.Exists(999), false, mode .. " unrelated Item withdrawal succeeds during Quest failure")
+      equal(providerCalls, callsAfterFailure, mode .. " Item writes do not retry the broken Quest provider")
+      check(registry.composed.Quest == providerView and registry.provenance.Quest == providerProvenance
+        and live.Quest.GetAllIds(true) == providerIds, mode .. " unrelated writes preserve failed Quest publication")
+      check(registry.dirty.Quest and not registry.dirty.Item and registry.owners.Provider.pending,
+        mode .. " only failed Quest work remains pending after Item writes")
       providerRows = {[1] = {[add] = {71}}}
       registry.ApplyRegisteredCorrections()
       equal(live.Quest.preQuestGroup(1), {-1,2,3,71}, mode .. " no-arg Apply retries corrected provider")

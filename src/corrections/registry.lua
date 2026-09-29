@@ -538,11 +538,12 @@ local function rankOwner(owner)
   registry.appliedOrder[#registry.appliedOrder + 1] = owner
 end
 
---- Recompose and publish every datatype marked dirty since the last flush. A no-op when
---- nothing is dirty, so an apply that changed nothing drops no caches.
-local function flushDirty()
+--- Recompose dirty datatypes. Set scopes the flush so unrelated failed providers cannot
+--- block its write; Apply retries all dirty work as one staged publication.
+---@param datatype string? Restrict the flush to a Set's written datatype.
+local function flushDirty(datatype)
   if next(registry.dirty) == nil then return end
-  local datatypes = registry.dirty
+  local datatypes = datatype and { [datatype] = true } or registry.dirty
   -- Both read modes publish their flavor as LibQuestieDB.flavor (source.lua, baked.lua), so
   -- entry-level expansion filters compose identically in both — reading only the Source
   -- backend here left them inert in Baked mode.
@@ -560,8 +561,8 @@ local function flushDirty()
     end
     error(err, 0)
   end
-  registry.dirty = {}
   publish(datatypes)
+  for changed in pairs(datatypes) do registry.dirty[changed] = nil end
 end
 
 --- Apply pending Corrections.
@@ -694,7 +695,7 @@ function registry.Set(owner, datatype, name, rows)
   end
 
   rankOwner(owner)
-  local ok, err = pcall(flushDirty)
+  local ok, err = pcall(flushDirty, canonical)
   if not ok then
     if entry then
       -- The caller may have mutated the retained rows in place. Restore an independent
@@ -712,9 +713,15 @@ function registry.Set(owner, datatype, name, rows)
     registry.dirty[canonical] = previousDirty
     error(err, 0)
   end
-  -- Everything this owner holds — data slots and any function entries — is composed now, so a
-  -- Set-only owner must not linger "pending" and be re-flushed by a no-arg apply.
+  -- A successful Set must not consume this owner's retry for a different failed datatype.
+  -- Set-only owners with no remaining dirty work still need no explicit Apply.
   record.pending = false
+  for _, existing in ipairs(record.entries) do
+    if existing.dynamic and registry.dirty[existing.datatype] then
+      record.pending = true
+      break
+    end
+  end
   return true
 end
 

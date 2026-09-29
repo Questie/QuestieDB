@@ -327,6 +327,11 @@ apply, and constants the body reads are resolved at apply time.
 
 `id -> fieldIndex -> value`.
 
+Numeric keys must be canonical field indices or recognized `_add`/`_remove` aliases.
+Unknown or fractional indices raise during Static application and Dynamic composition,
+even in replacement-only rows. Older versions silently ignored out-of-range Dynamic
+replacement indices; rejection is intentional so invalid corrections cannot go unnoticed.
+
 * `[key] = {}` **clears** the field — an empty table reads back as nil.
 * `[key] = nil` is a **no-op**: Lua's table constructor drops it. It is documentation, not code.
 * An id absent from the database is **created**, which is how a correction adds an entity.
@@ -491,7 +496,8 @@ The long form is `LibQuestieDB.Corrections.Set(owner, datatype, name, rows)`, al
 * There is no `loadOrder`: within an owner, slots take effect in creation order. Owner
   precedence is unchanged — the owner's rank is fixed by its first write or apply.
 * Recomposition is scoped to the written datatype: an Item write does not drop Quest, Npc, or
-  Object read caches, shared ID maps, or Name indexes.
+  Object read caches, shared ID maps, or Name indexes. A failed provider in another datatype
+  does not block the write; its previous view stays published and its retry remains pending.
 * A name already registered as a function-shaped correction is refused — update that
   correction's captured state and re-apply instead.
 * Function-shaped registration remains the right form for large tables: held behind a

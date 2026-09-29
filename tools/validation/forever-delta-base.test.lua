@@ -148,6 +148,11 @@ if not baked then
     "Static composition preserves reviewed zero presence")
   assert(quests[86585][questKeys.startedBy][1][1] == 269153, "offline static quest giver")
   assert(npcs[269153][npcKeys.questStarts][1] == 86585, "offline static reverse link")
+  -- Read the Static collision rows through the real Source backend and shared getters.
+  runtime.execute("src/read/shared.lua", "QuestieDB", offline)
+  runtime.execute(offline.config.runtimeFiles.sourceReader, "QuestieDB", offline)
+  local source = offline.read.source
+  source.RemoveLoaderShim()
   for _, case in ipairs({
     { "Quest", "ForeverBaseQuest", "QuestieQuestFixes", "ForeverQuestFixes", 86585, 771 },
     { "Npc", "ForeverBaseNpc", "QuestieNPCFixes", "ForeverNpcFixes", 269153, 3394 },
@@ -172,9 +177,17 @@ if not baked then
     manual.Load = function() return { [id] = { [1] = "manual" } } end
     registry.ApplyStaticToEntities(datatype, rows, flavor, "QuestieDB")
     assert(rows[id][1] == "manual", "authored manual must override generated delta-base")
+    source.entities[datatype] = rows
+    local entity = offline.shared.CreateEntity(offline.Meta[datatype], source.CreateBackend(offline.Meta[datatype]))
+    offline[datatype] = entity
+    assert(entity.name(id) == "manual", "public read starts with the Static result")
     manual.LoadDynamic = function() return { [id] = { [1] = "dynamic" } } end
     registry.ApplyRegisteredCorrections("QuestieDB")
-    assert(registry.composed[datatype][id][1] == "dynamic", "Dynamic remains the last layer")
+    assert(entity.name(id) == "dynamic", "Dynamic overrides the cached Static value through public reads")
+    assert(entity.GetRaw(id, "name") == "manual", "Dynamic leaves the Static backend unchanged")
+    manual.LoadDynamic = function() return {} end
+    registry.ApplyRegisteredCorrections("QuestieDB")
+    assert(entity.name(id) == "manual", "withdrawing Dynamic restores the Static value")
   end
 end
 client.reset()
