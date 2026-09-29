@@ -180,8 +180,8 @@
     "held_quests": 20,
     "missing_refs": 478,
     "new_ids": 9293,
-    "records": 12347,
-    "skips": 18932
+    "records": 12368,
+    "skips": 19003
   },
   "extractor": {
     "path": "/home/logon/projects/scraper-questie/wh_parser/js_extract.py",
@@ -190,8 +190,8 @@
   "generator": {
     "quest_holdbacks_sha256": "e806fe283f5172525523306be09921b75df32d7b62fc07552439117507a513ac",
     "race_assumptions_sha256": "49cb9c583b2481e3b28240bfc90fd352b72a83b248e5d8e75372cdd70f83426b",
-    "raw_reader_sha256": "93f7327c8459ff044af3bdfdc639f597f8af023d1bae6b13baf3428d828bcf77",
-    "sha256": "d1592418cc8cd5f0fac7ec5203445105fd23dfac35c56ff0c19e2829a27a5a71"
+    "raw_reader_sha256": "e75dd74ea7a2a9f8243b705503c32eaa5ef4bab3af063efb4e723d03661c491d",
+    "sha256": "c5295364b0992af94f64a723278ba383042053eedce33b3a09c53c5265ce1409"
   },
   "held_quests": [
     {
@@ -359,7 +359,7 @@
     "foreverBaseItem.lua": "e7712eec044cd3e126294673d648c0da8ea419f608fa7a90aca4cb4efbde13eb",
     "foreverBaseNpc.lua": "1a438d90347f30a11e2e942177adf413256814e4d93bad3b6eafdeb48a6ffef1",
     "foreverBaseObject.lua": "ce071b7255d0d86bf54b1a5306ba9e2d612954f49ea6457cd2afbee4d0fe8b6c",
-    "foreverBaseQuest.lua": "566b1da33c7556d64831fa9ae384cab743eb3a569e79bc6717e4d153cf3620a5"
+    "foreverBaseQuest.lua": "6688db795c6b99b822e27ecd0bc4247ad5623e2f4ab5e72a38ca52874a7eb897"
   },
   "inputs": {
     "era": {
@@ -687,6 +687,7 @@
     "new": "absent Era registry/pages/raw base AND explicit envChange.status=new",
     "objectives": "not generated",
     "quest_holdbacks": "explicit not-in-game/deferred IDs excluded before quest selection; held quest references filtered from item export projections; no baseline deletions or inferred unavailability",
+    "quest_reputation": "explicit nonempty unique-faction reprewards pairs; signed amounts preserved; source-new or explicit Era changes only for existing records; changed amounts replace exact Era-matching target pairs; complete target-list replacements use plain fields, partial changes use operations; conflicting/target-only rewards preserved; missing factions never removed",
     "quest_restrictions": "confirmed race/class mappings rebuilt with Forever constants; incomplete explicit masks withheld whole; narrow full-faction fallback for independently materialized quests; no existing-record backfill; last-resort race zero only for separately documented reviewed family IDs passing current evidence guards, attributed as assumptions; no general Both/None defaults or class inference",
     "relationships": "positive quest giver additions; removals only with a proven move; accepted inverse edge operations",
     "spawns": "missing target records only, withholding changed map frames; existing converted spawns retained"
@@ -1309,23 +1310,24 @@
     },
     "quest": {
       "new": 713,
-      "records": 750,
+      "records": 771,
       "relationship_support": 0,
-      "updated": 37
+      "updated": 58
     }
   },
   "table_field_counts": {
-    "add": 763,
-    "initialize": 5577
+    "add": 767,
+    "initialize": 6036,
+    "replace": 17
   },
   "upstream_artifacts_sha256": {
     "foreverBaseItem.lua": "c6e7ef472fa931fa97fd1ab71b19ee42e0e73ec38d07489b1f672f3454ddd148",
     "foreverBaseNpc.lua": "18f4ee896613f1c399471e88c565dcb460e00ddfd72e78f6fa70da88b0a3aaee",
     "foreverBaseObject.lua": "25fafa10761cc3bb3130c9816c5d67ec436ae381e07c0fc714463e63da5a545b",
-    "foreverBaseQuest.lua": "98ddeb6acc7281573ce6f1695d6cdb037f26a17c23d33be9d79146884143644b",
-    "report.json": "47cd020f8a1e5dd77f989830ee1f98d779f6928929c0aca90d4325a41eba7e65",
-    "report.md": "b24c23bcc459d6f90c195c3187aa0627876c09f70243646a3ff3b91f04113ac4"
+    "foreverBaseQuest.lua": "256bd418109a65955f8fb89c131c9f5d22132501209585636c13e09231d21b46",
+    "report.json": "764ec48cde6383f641d3a8675fdede9d4ce41abbbe80849ac79d41c22bafb273",
+    "report.md": "05c6783619ddf10f8db6ca189fcb0ff798252aec89399c675548a094a41917c8"
   },
-  "upstream_directory": "/home/logon/projects/forever-base-db/generated/index-order",
-  "upstream_report_schema_version": 6
+  "upstream_directory": "/home/logon/projects/forever-base-db/generated/reputation-sets",
+  "upstream_report_schema_version": 7
 }

@@ -28,6 +28,19 @@ local function witness(db)
   assert(writStarters[1] == nil and writStarters[2] == nil and writStarters[3][1] == 264011,
     "writ starter preserves the item group and nil holes")
   assert(db.Item.startQuest(264011) == 94004, "writ item links back to its quest")
+  -- Rewards cover initialization, amount replacement and preservation of other factions.
+  local bannerRep = db.Quest.reputationReward(86585)
+  assert(bannerRep and #bannerRep == 1 and bannerRep[1][1] == 47 and bannerRep[1][2] == 100,
+    "new quest supplies its explicit reputation reward")
+  local writRep = db.Quest.reputationReward(94004)
+  assert(writRep and #writRep == 2 and writRep[1][1] == 2586 and writRep[1][2] == 75
+    and writRep[2][1] == 2587 and writRep[2][2] == 75, "both reported writ rewards survive")
+  local pvpRep = db.Quest.reputationReward(8368)
+  assert(pvpRep and #pvpRep == 1 and pvpRep[1][1] == 889 and pvpRep[1][2] == 100,
+    "changed reward replaces the old amount without leaving a duplicate")
+  local tribalRep = db.Quest.reputationReward(6562)
+  assert(tribalRep and #tribalRep == 2 and tribalRep[1][1] == 530 and tribalRep[1][2] == 25
+    and tribalRep[2][1] == 2787 and tribalRep[2][2] == 100, "new faction keeps the inherited reward")
   assert(db.Quest.requiredRaces(97286) == 0 and db.Quest.requiredClasses(97286) == 128,
     "Research Access assumes all races without removing Mage eligibility")
   for _, id in ipairs({ 92534, 94901, 3911 }) do
@@ -126,7 +139,7 @@ if not baked then
   assert(quests[86585][questKeys.startedBy][1][1] == 269153, "offline static quest giver")
   assert(npcs[269153][npcKeys.questStarts][1] == 86585, "offline static reverse link")
   for _, case in ipairs({
-    { "Quest", "ForeverBaseQuest", "QuestieQuestFixes", "ForeverQuestFixes", 86585, 750 },
+    { "Quest", "ForeverBaseQuest", "QuestieQuestFixes", "ForeverQuestFixes", 86585, 771 },
     { "Npc", "ForeverBaseNpc", "QuestieNPCFixes", "ForeverNpcFixes", 269153, 3394 },
     { "Object", "ForeverBaseObject", "QuestieObjectFixes", "ForeverObjectFixes", 900000001, 52 },
     { "Item", "ForeverBaseItem", "QuestieItemFixes", "ForeverItemFixes", 286647, 8151 },

@@ -1,7 +1,7 @@
 # Forever generated delta-base
 
 `src/corrections/Forever/generated/` imports reviewed offline candidates from
-`/home/logon/projects/forever-base-db/generated/index-order/`. The four providers retain
+`/home/logon/projects/forever-base-db/generated/reputation-sets/`. The four providers retain
 upstream filenames and module identities: `foreverBaseNpc.lua` / `ForeverBaseNpc`,
 `foreverBaseObject.lua` / `ForeverBaseObject`, `foreverBaseQuest.lua` / `ForeverBaseQuest`
 and `foreverBaseItem.lua` / `ForeverBaseItem`.
@@ -19,8 +19,9 @@ groups retain positional nil holes, including operation operands such as `{nil, 
 spawn maps retain zone keys. Fields follow ascending numeric authoring-key indices:
 `_remove`, ordinary sets, then `_add`, with canonical schema order inside each group
 (`name` first when present). Indices come from the consumer, not a duplicate ordering list.
-This is source formatting, not a guarantee about Lua table iteration order. The reviewed
-restriction and relationship data and consumer `:Load()` contract remain unchanged.
+This is source formatting, not a guarantee about Lua table iteration order. The latest
+import adds explicit reputation rewards; existing restriction and relationship values
+and the consumer `:Load()` contract remain unchanged.
 
 ## Policy and limitations
 
@@ -32,12 +33,13 @@ The effective upstream comparison baseline excludes generated, authored Forever 
 providers. Later authored corrections remain authoritative, not inputs to extraction.
 
 Ordinary table fields initialize missing records or absent/empty effective-baseline fields.
-Populated fields use `_add`/`_remove`, including a new group alongside an existing group.
+Partial changes to populated fields use `_add`/`_remove`, including a new group alongside an existing group.
 Scalars remain replacements. Uncertain removals are report-only. Operation semantics belong
 to the [public API](api.md#table-addremove-operations) and [ADR 0016](adr/0016-table-correction-operations.md).
 
 The import covers missing-record names, levels, explicit quest starter/finisher relationships,
-accepted inverse NPC/object links, eligible new-record spawns, and item categories and source
+accepted inverse NPC/object links, explicit reputation rewards, eligible new-record spawns,
+and item categories and source
 relationships. Selected singleton item starts coordinate item `startQuest` with quest starter
 slot 3. Existing names and converted spawns remain unchanged. New spawns in changed map frames
 (areas 44, 139, 215 and 1519) are withheld. Item source tabs with at least 200 rows are withheld
@@ -55,13 +57,26 @@ resort after evidence guards pass. Zero means all races, not no eligible races. 
 names or geography alone do not authorize it. Inline comments identify each policy. Race
 assumptions do not remove class restrictions; Research Access retains its Mage mask.
 
+Quest `reprewards` supplies signed `{factionId, amount}` pairs in `reputationReward`.
+Missing, empty, malformed or duplicate-faction source lists are withheld whole.
+Selected missing records receive valid rewards. Existing records require source-new
+or explicit Era changes per faction: matching values are suppressed, missing selected
+factions are added, and changed amounts replace exact Era-matching target pairs using
+remove/add operations. When those removals cover the entire target reward list,
+the accepted additions are emitted as one plain set instead. Partial changes keep
+operations. Plain sets depend on the reviewed baseline; regenerate if upstream
+inputs change. Target-only factions and conflicting amounts are preserved.
+Missing source factions never authorize deletion. No bonuses, spillover, caps,
+conditional applicability or reputation requirements are inferred.
+
 Explicit not-in-game and deferred quest-ID policies withhold generated rows before selection
 and filter held quest references from item export projections. They do not delete raw data,
 existing consumer records or baseline relationships. Assumptions and holdbacks are upstream
 policy inputs, not extra runtime providers. Deferred entries retain reasons and revisit
 questions and must be reviewed on future data work; export omission does not resolve them.
 
-This is not a complete gameplay database. Objectives, objective text, chains, quest rewards,
+This is not a complete gameplay database. Objectives, objective text, chains,
+item/currency/XP/money quest rewards,
 drop rates, detailed item stats, localization and restrictions beyond the supported policies
 remain gaps. Cached evidence and reviewed assumptions do not prove client acceptance.
 The existing required-races Derived Pass is unchanged and can infer over explicit zero when

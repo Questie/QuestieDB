@@ -309,3 +309,83 @@ commands, logs and results are in `.out/`. Existing enum/test-scope edits and pr
 untracked files are outside that copy set. No TOCs, runtime code, consumer tests or
 validation baselines change. Full artifact gates were not rerun for this order-only
 refresh; complete value equality supports reusing the prior full-gate evidence.
+
+## Reputation reward import
+
+Upstream: `/home/logon/projects/forever-base-db/generated/reputation-rewards/`.
+Report schema **7**, consumer provenance schema **3**. Disposable checkout:
+`/tmp/questiedb-reputation.lnqfoevw`, copied from consumer working bytes at HEAD
+`cc8869c569ac4e34ec9956047216c8255f3c1202`, including the existing enum edit.
+
+The import supplies 696 faction/amount pairs on 459 new quests. Four existing quests
+receive another faction reward; 17 existing quests change an amount with an exact
+old-pair removal plus new-pair addition. Source and target agree on every removed
+Era amount. No source-only faction removal is applied. Ambiguous duplicate source
+factions are withheld whole. Signed amounts and explicit zero are supported without
+inventing bonuses, spillover, caps or requirements.
+
+Inventory: NPC 3,394, Object 52, Quest **771**, Item 8,151; **12,368** correction rows,
+9,293 new IDs, 19,003 skips and 478 unresolved references. Table-field counts:
+6,036 initializations, 784 adds, 17 removes. Compared with the index-order import,
+all old correction rows and non-reputation fields are unchanged; the 21 additional
+rows modify reputation only. NPC, Object and Item provider bytes are identical.
+
+### Fresh full validation
+
+All 12 commands recorded in `.out/results.tsv` exited zero, with command text,
+output, exit status, elapsed time and peak RSS retained alongside it. Unlike the
+formatting refreshes, this run repeated the full artifact gates with localization
+and Self-proofs enabled. No gameplay baseline was updated.
+
+- Numeric-report, standalone and imported tables match for all **12,368 rows**.
+- All **480** affected quests match their expected reward lists through both
+  composed Source and freshly generated Baked getters, including replacements
+  without duplicate factions and additions preserving inherited rewards.
+- All 245 authored race zeroes survive current Source Derived Passes and Baked
+  reads. Research Access remains Mage-restricted; all 20 held quests remain absent.
+- Correction audit: 24 checks, 81 providers, 8,932 calls; zero failures.
+- Correction/delta-base/native-TOC suites: 2,464 checks passed. Maintained literal
+  Source/Baked witnesses cover quests 86585, 94004, 8368 and 6562.
+- Generation: 46,115 entities and rows, all nine locales; Forever/Camelot TOCs match.
+- Verification: 763,890 fields, 937 chunked values, 326,837 localized reads; zero errors.
+- Equivalence: 763,890 fields, 579,672 localized reads, 39,307 name buckets;
+  zero divergences and Self-proof passed.
+- Reconstruction: 110,366 expected/actual data lines; zero mismatches.
+- Forever artifact tests: four checks passed; separate Baked witnesses passed.
+- Gameplay validators: **15/15 clean, zero findings**, Self-check passed.
+- Generator: **290 tests passed**, Ruff lint/format clean. Independent code review
+  found no actionable implementation issue.
+- All 101 reported input hashes, including 76 baseline entries, and every candidate
+  and imported-provider hash match provenance. `.out/source-before.json` records
+  original working-tree/index/TOC hashes for the final copy guard.
+
+Only generated providers/provenance, the focused import witness test, this report
+and the guide belong to the copy set. Do not copy disposable TOCs or `.out/` files.
+No runtime, schema, raw-data, legacy/manual provider, enum or unrelated user edit
+is part of this change. The 19 deferred quests remain open; reward evidence does
+not resolve their acceptance or availability questions.
+
+## Complete reputation replacements
+
+`generated/reputation-sets/` collapses the 17 complete target-list replacements to
+plain `reputationReward` fields. No partial change is collapsed; all four faction
+additions remain `_add`. It emits only accepted additions, not unchanged source
+rewards missing from the target. Future baseline changes require regeneration:
+a plain set does not preserve newly added upstream entries like partial operations do.
+
+Disposable validation: `/tmp/questiedb-reputation-sets.h1an6_rc`. All 14 commands in
+`.out/results.tsv` passed, including a fresh full Generation, Verification,
+Equivalence with Self-proof, Reconstruction, artifact tests, Baked witnesses and
+15/15 clean gameplay validators. Generator tests: **292 passed**, Ruff clean.
+
+Old/new complete Static composition matches for all 4,989 quests. The new artifact
+is byte-identical to the previous fully validated reputation artifact except for
+`X-BUILD-TIME`. All 480 reward results, 245 zeroes, Mage restriction and holdbacks
+still pass Source/Baked checks. Counts remain 12,368 correction rows; table fields
+now comprise 6,036 initializations, 17 complete replacements, 767 adds and no removes.
+Provenance distinguishes `replace` from `initialize` rather than calling all plain
+fields initializations. All 101 input hashes and artifact hashes match provenance.
+
+Only the quest provider, provenance, guide and this report change. Consumer tests,
+runtime, raw data, other providers and working TOCs are outside the copy set.
+The 19 deferred quests remain open and no eligibility evidence was added.
