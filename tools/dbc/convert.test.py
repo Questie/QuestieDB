@@ -11,7 +11,7 @@ import time
 import unittest
 from unittest.mock import patch
 
-from convert import ConvertPoints, lua_value, round_coordinate
+from convert import ConvertPoints, Input, ZONE_SYMBOLS_PATH, lua_value, prepare, round_coordinate
 from coordinates import Transform
 from files import MANIFEST, TOOL, digest, install_outputs
 import files
@@ -29,7 +29,49 @@ def outputs_with_manifest(values):
     return outputs
 
 
+class QuestRacePolicyTests(unittest.TestCase):
+    def test_prepare_expands_raw_masks_but_preserves_symbolic_corrections(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / ZONE_SYMBOLS_PATH).parent.mkdir(parents=True)
+            shutil.copyfile(ROOT / ZONE_SYMBOLS_PATH, root / ZONE_SYMBOLS_PATH)
+            source = (FIXTURES / 'validation-quest.lua').read_bytes()
+            (root / 'quest.lua').write_bytes(source)
+            correction = b'return {[questKeys.requiredRaces]=raceIDs.ALL_ALLIANCE}'
+            (root / 'fixes.lua').write_bytes(correction)
+            inputs = (Input('quest.lua', 'out.lua', 'Quest', True),
+                      Input('fixes.lua', 'fixes-out.lua', 'Quest', False))
+            with patch('convert.INPUTS', inputs):
+                outputs, report = prepare(root, {215: Transform(1, 1, 1, 2)}, {}, False)
+            expected = source.replace(b',77,77,178', b',77,4294967373,178')
+            expected = expected.replace(b',178,178,77', b',178,8589934770,77')
+            expected = expected.replace(b'{{10,20}}', b'{{11.0,22.0}}')
+            self.assertEqual(outputs['out.lua'], expected)
+            self.assertEqual(outputs['fixes-out.lua'], correction)
+            self.assertEqual(report['quest_race_masks'], {'77': 4294967373, '178': 8589934770})
+            self.assertEqual(report['files']['out.lua']['race_mask_counts'], {'77': 1, '178': 1})
+            self.assertEqual(report['files']['out.lua']['counts'], {'converted': 1})
+            self.assertEqual(report['files']['out.lua']['output_sha256'], digest(expected))
+            self.assertEqual((root / 'quest.lua').read_bytes(), source)
+
+
 class CoordinatePolicyTests(unittest.TestCase):
+    def test_prepare_resolves_symbols_from_the_canonical_enum(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            enum = (ROOT / ZONE_SYMBOLS_PATH).read_bytes()
+            (root / ZONE_SYMBOLS_PATH).parent.mkdir(parents=True)
+            (root / ZONE_SYMBOLS_PATH).write_bytes(enum)
+            (root / "npc.lua").write_text(
+                'return {[npcKeys.spawns]={[zoneIDs.MULGORE]={{10,20}}}}', encoding="utf-8")
+            inputs = (Input("npc.lua", "converted.lua", "Npc", False),)
+            with patch("convert.INPUTS", inputs):
+                outputs, report = prepare(root, {215: Transform(1, 1, 1, 2)}, {}, False)
+            self.assertEqual(outputs["converted.lua"],
+                             b'return {[npcKeys.spawns]={[zoneIDs.MULGORE]={{11.0,22.0}}}}')
+            self.assertEqual(report["zone_symbols_sha256"], digest(enum))
+            self.assertEqual(report["files"]["converted.lua"]["counts"], {"converted": 1})
+
     def test_chief_hawkwind_is_written_at_43_89_76_66(self):
         # Mulgore bounds, Era 1.15.9.69722 -> Forever 1.60.1.69893.
         convert = ConvertPoints({215: Transform(
@@ -222,6 +264,42 @@ class OutputInstallationTests(unittest.TestCase):
 
 
 class SemanticValidationTests(unittest.TestCase):
+    @unittest.skipUnless(shutil.which("lua5.1"), "Lua 5.1 required for semantic validation")
+    def test_validator_requires_raw_faction_conversion_and_rejects_unrelated_changes(self):
+        source = FIXTURES / 'validation-quest.lua'
+        inputs = (Input(str(source), 'quest.lua', 'Quest', True),)
+        with patch('convert.INPUTS', inputs):
+            outputs, _ = prepare(ROOT, {215: Transform(1, 1, 1, 2)}, {}, False)
+        converted = outputs['quest.lua'].decode()
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = Path(temporary)
+            output = directory / 'quest.lua'
+            plan = {'files': [{'source': str(source), 'output': str(output), 'entity': 'Quest', 'raw': True}],
+                    'transforms': {215: {'scale_x': 1, 'offset_x': 1, 'scale_y': 1, 'offset_y': 2}}}
+            plan_path = directory / 'plan.lua'
+            plan_path.write_text('return ' + lua_value(plan))
+            command = [shutil.which('lua5.1'), 'tools/dbc/validate.lua', str(plan_path)]
+            output.write_text(converted)
+            good = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
+            self.assertEqual(good.returncode, 0, good.stdout + good.stderr)
+            for before, after in (
+                (',77,4294967373,178', ',77,77,178'),
+                (',178,8589934770,77', ',178,178,77'),
+                (',77,4294967373,178', ',77,8589934770,178'),
+                (',1,1,0}', ',1,1,4294967373}'),
+                (',1,1,1}', ',1,1,4294967297}'),
+                (',1,1,5}', ',1,1,4294967301}'),
+                (',1,1,nil,77}', ',1,1,4294967373,77}'),
+                (',4294967373,178,', ',4294967373,8589934770,'),
+                ('{{11.0,22.0}}', '{{11.0,23.0}}'),
+            ):
+                with self.subTest(corruption=before):
+                    self.assertIn(before, converted)
+                    output.write_text(converted.replace(before, after, 1))
+                    bad = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
+                    self.assertNotEqual(bad.returncode, 0, 'validator accepted corrupted ' + before)
+
+
     @unittest.skipUnless(shutil.which("lua5.1"), "Lua 5.1 required for semantic validation")
     def test_validator_accepts_transformed_copy_and_rejects_coordinate_phase_and_name_corruption(self):
         source = FIXTURES / "validation-npc.lua"

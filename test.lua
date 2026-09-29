@@ -1195,6 +1195,7 @@ suite("corrections", "shared", function()
     { flavor = config.flavorByName.Wrath, allClasses = 1535, alliance = 1101, repair = 4096 },
     { flavor = config.flavorByName.Cata, allClasses = 1535, alliance = 2098253, repair = 4096 },
     { flavor = config.flavorByName.Mists, allClasses = 2047, alliance = 18875469, repair = 4096 },
+    { flavor = config.flavorByName.Forever, allClasses = 1503, alliance = 4294967373, repair = 16384 },
   }
   local questieLoaderBeforeCompat = rawget(_G, "QuestieLoader")
   for _, case in ipairs(compatCases) do
@@ -1208,6 +1209,22 @@ suite("corrections", "shared", function()
       "compat serves " .. case.flavor.name .. " npc flags")
     check(Lib.CorrectionCompat.modules.ZoneDB.zoneIDs == enum.zoneIDs,
       "compat serves shared invariant constants from the top level for " .. case.flavor.name)
+    for _, entityType in ipairs(config.entityTypes) do
+      check(selected[entityType.keysField] == Lib.Meta[entityType.name].keys,
+        "compat serves canonical " .. entityType.name .. " keys for " .. case.flavor.name)
+    end
+    if case.flavor.name == "Forever" then
+      equal(selected.raceKeys.SKYBORNE_ALLIANCE, 4294967296,
+        "Forever corrections receive the Alliance Skyborne mask")
+      equal(selected.raceKeys.SKYBORNE_HORDE, 8589934592,
+        "Forever corrections receive the Horde Skyborne mask")
+      equal(selected.raceKeys.ALL_HORDE, 8589934770,
+        "Forever corrections receive the Horde mask including Skyborne")
+      equal(selected.raceKeys.BLOOD_ELF, nil,
+        "Forever replaces the race table rather than importing absent Classic keys")
+      equal(Lib.CorrectionCompat.modules.Expansions.Current, 1,
+        "Forever keeps Classic correction ordering independently of its enums")
+    end
     remove()
   end
   check(rawget(_G, "QuestieLoader") == questieLoaderBeforeCompat,
@@ -1221,6 +1238,15 @@ suite("corrections", "shared", function()
     Lib.CorrectionCompat.Install, { name = "Future", expansion = "Future" })
   check(not unsupportedOk and tostring(unsupportedError):find("unsupported flavor", 1, true) ~= nil,
     "compat refuses an unsupported flavor rather than defaulting to Classic")
+
+  local foreverEnums = enum.byExpansion.Forever
+  enum.byExpansion.Forever = nil
+  local missingOk, missingError = pcall(Lib.CorrectionCompat.Install, config.flavorByName.Forever)
+  enum.byExpansion.Forever = foreverEnums
+  check(not missingOk and tostring(missingError):find("missing expansion data for Forever", 1, true) ~= nil,
+    "compat rejects a missing Forever enum set instead of silently selecting Classic")
+  check(rawget(_G, "QuestieLoader") == questieLoaderBeforeCompat,
+    "failed enum selection leaves the existing loader untouched")
 
   local corrections = dofile("generator/corrections.lua")
 
@@ -1377,6 +1403,7 @@ suite("derived-required-races", "shared", function()
     { flavor = config.flavorByName.Wrath, alliance = 1101, horde = 690 },
     { flavor = config.flavorByName.Cata, alliance = 2098253, horde = 946 },
     { flavor = config.flavorByName.Mists, alliance = 18875469, horde = 33555378 },
+    { flavor = config.flavorByName.Forever, alliance = 4294967373, horde = 8589934770 },
   }
   for _, case in ipairs(maskCases) do
     local quests = {
@@ -1388,6 +1415,12 @@ suite("derived-required-races", "shared", function()
       case.flavor.name .. " uses its literal ALL_HORDE mask")
     equal(quests[2002][questKeys.requiredRaces], case.alliance,
       case.flavor.name .. " uses its literal ALL_ALLIANCE mask")
+    quests[2001][questKeys.requiredRaces], quests[2002][questKeys.requiredRaces] = nil, nil
+    inference.ApplyCorrectedInference(inferenceContext(quests, npcs, case.flavor))
+    equal(quests[2001][questKeys.requiredRaces], case.horde,
+      case.flavor.name .. " conservative inference uses its literal ALL_HORDE mask")
+    equal(quests[2002][questKeys.requiredRaces], case.alliance,
+      case.flavor.name .. " conservative inference uses its literal ALL_ALLIANCE mask")
   end
 
   -- The parked policy requires complete, faction-exclusive evidence and preserves explicit
@@ -1488,6 +1521,21 @@ suite("derived-required-races", "shared", function()
   check(sourceLib.read.source.entities.Npc ~= nil,
     "Source mode materializes the declared Npc dependency before inference")
   client.reset()
+
+  -- The actual Source TOC and Generation must both use Forever masks, not just direct calls.
+  client.install({ expansion = "Forever" })
+  local foreverSource = emulator.loadAddon(config.addonName .. ".toc", config.addonName)
+  local races = foreverSource.CorrectionCompat.modules.QuestieDB.raceKeys
+  equal(races.SKYBORNE_ALLIANCE + races.HUMAN, 4294967297,
+    "Source-loaded corrections can combine Alliance Skyborne with Human")
+  equal(races.SKYBORNE_HORDE + races.ORC, 8589934594,
+    "Source-loaded corrections can combine Horde Skyborne with Orc")
+  equal(foreverSource.Quest.Get(7162, "requiredRaces"), 4294967373,
+    "Forever Source inference includes Skyborne in the Alliance faction mask")
+  client.reset()
+  local foreverLoaded = flavorLoader.load(config.flavorByName.Forever, { Quest = true })
+  equal(foreverLoaded.Quest.entities[7162][questKeys.requiredRaces], 4294967373,
+    "Forever Generation inference includes Skyborne in the Alliance faction mask")
 
   local shipsRequiredRaces = false
   for _, path in ipairs(config.bakedFileList(config.flavorByName.Vanilla)) do
@@ -2541,6 +2589,10 @@ suite("toc", "shared", function()
       end
     end
     before("src/config.lua", "src/meta/normalize.lua", "everything reads config")
+    for _, entityType in ipairs(config.entityTypes) do
+      before("src/meta/" .. entityType.name:lower() .. "Meta.lua",
+        "src/corrections/compat.lua", "correction providers use the canonical schema keys")
+    end
     for index, path in ipairs(config.enumFiles) do
       check(at[path] ~= nil, list.name .. " includes enum file " .. path)
       if index > 1 then
@@ -3215,6 +3267,7 @@ suite("support", "shared", function()
     "Shadowfang Keep publishes all alternative areas as a list")
   equal(vanilla.ZoneDB.private.dungeons[3959][4], {{3520, 71, 46.4}},
     "Black Temple preserves authored entrance coordinates")
+
 end)
 
 --------------------------------------------------------------------------------------------

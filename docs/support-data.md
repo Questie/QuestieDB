@@ -8,7 +8,7 @@ and value examples are documented in [`api.md`](./api.md#support-data).
 ## Flavor selection
 
 Baked TOCs list only applicable inputs. Legacy flavors share some authored inputs; Forever
-owns its entire support bundle. The committed Source TOC uses native per-file
+owns its flavor-specific support bundle. The committed Source TOC uses native per-file
 `AllowLoadGameType` and `ExcludeLoadGameType` conditions to select applicable inputs
 before Lua executes. Lua discard scopes are not a fallback. See
 [client support and acceptance](forever.md#client-support-and-acceptance).
@@ -18,7 +18,7 @@ The selected data preserves the imported flavor boundaries:
 - Vanilla, TBC, Wrath, and Cata use the shared area/UI map tables plus their own quest XP,
   faction-template, and drop-table variant.
 - Mists uses the MoP area/UI map tables, quest XP, and faction templates.
-- Forever uses ten independent files under `support/Forever`, selected by
+- Forever uses nine independent files under `support/Forever`, selected by
   `[ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]`. An allow list of unknown
   Forever tokens would also pass on older clients. Shared Classic rules do not make these
   inputs inherit future Era changes.
@@ -33,8 +33,13 @@ See [current map limitations](forever-data.md#current-support-map-limitations) a
 The external exporter can overwrite its manual additions, so its next output is not a safe
 wholesale replacement.
 
-Installing the support shim starts with an empty published module set. This prevents a flavor
-loaded later in the emulator from retaining modules or values selected for an earlier flavor.
+Installing the support shim replaces the published module set and seeds shared constants.
+This prevents a flavor loaded later in the emulator from retaining flavor-specific data.
+
+Zone symbols are shared across all flavors. `src/corrections/enum/zones.lua` is their sole
+source; `Support.Get("ZoneDB").zoneIDs` exposes the same table as `LibQuestieDB.Enum.zoneIDs`.
+Corrections, waypoint Derived Passes, and offline coordinate conversion use those symbols too.
+Edit that enum to add or correct a symbol. Flavor-specific map routing stays in `support/`.
 
 ## Value shapes
 

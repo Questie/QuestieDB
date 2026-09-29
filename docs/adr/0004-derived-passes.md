@@ -3,6 +3,11 @@
 Migration tooling and pinned-reference requirements in this record are superseded by
 [ADR 0014](0014-owned-data-after-migration.md). The runtime contracts remain in effect.
 
+Implementation update: zone symbols now have one source, `src/corrections/enum/zones.lua`.
+The waypoint pass reads `LibQuestieDB.Enum.zoneIDs` directly, so the `support(module)` context
+and separate zone-file loader described below have been removed. The support API publishes
+the same enum table. Waypoint spacing and pass ordering are unchanged.
+
 Date: 2026-08-19. Status: accepted.
 
 ## Context

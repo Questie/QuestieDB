@@ -125,10 +125,6 @@ local function materialize(entityTypeName)
       flavor = source.flavor,
       entities = materialize,
       meta = function(name) return LibQuestieDB.Meta and LibQuestieDB.Meta[name] end,
-      support = function(name)
-        local support = LibQuestieDB.Support
-        return support and support.Get and support.Get(name) or nil
-      end,
     })
   end
 

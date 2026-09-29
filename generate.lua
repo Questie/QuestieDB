@@ -163,7 +163,7 @@ local function sourceTocHeadings()
     ["src/corrections/Sod/sodRequiredRaces.lua"] = { subcategory = "Season of Discovery: required-race overlay" },
     ["src/derived/registry.lua"] = { category = "Derived passes", subcategory = "Registry and loader setup" },
     ["src/derived/RamerDouglasPeucker.lua"] = { subcategory = "Shared algorithms",
-      note = "Run over corrected data, using the selected flavor's owned support inputs." },
+      note = "Run over corrected data, using shared constants from the enum tables." },
     ["src/derived/_end.lua"] = { subcategory = "Loader teardown" },
     ["src/l10n/overlay.lua"] = { category = "Localization and public API", subcategory = "Localization overlay and Titan translations",
       note = "Do not filter by client locale: SetLocale() can select another locale." },

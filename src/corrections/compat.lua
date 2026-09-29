@@ -59,48 +59,51 @@ local DATA_FIELD_TO_TYPE = {
   questData = "Quest", npcData = "Npc", itemData = "Item", objectData = "Object",
 }
 
----Selects a shared invariant or an explicitly expansion-scoped constant table.
----Expansion-varying tables have no flat Classic copy: a missing expansion or name is a
----contract error rather than permission to bake an Era value into another flavor.
+---Selects shared constants, then flavor tables, then the flavor's explicit rules fallback.
+---Fallback replaces whole tables, never missing keys within a flavor-owned table.
 ---@param name string Constant table name.
----@param expansionName string Explicit supported expansion name.
+---@param flavor table Validated supported flavor.
 ---@return table value
-local function pick(name, expansionName)
+local function pick(name, flavor)
   local shared = constants[name]
   if shared ~= nil then return shared end
 
   local byExpansion = constants.byExpansion
-  local expansionConstants = byExpansion and byExpansion[expansionName]
+  local expansionConstants = byExpansion and byExpansion[flavor.expansion]
   if type(expansionConstants) ~= "table" then
-    error("correction compat: constants are missing expansion data for " .. expansionName, 0)
+    error("correction compat: constants are missing expansion data for " .. flavor.expansion, 0)
   end
 
   local value = expansionConstants[name]
+  if value == nil and flavor.rules then
+    value = byExpansion[flavor.rules][name]
+  end
   if value == nil then
     error(("correction compat: unknown constant `%s` for expansion `%s`")
-      :format(name, expansionName), 0)
+      :format(name, flavor.expansion), 0)
   end
   return value
 end
 
----Builds the QuestieDB stand-in with constants selected for one explicit expansion.
----@param expansionName string Supported expansion name.
+---Builds the QuestieDB stand-in with constants selected for one explicit flavor.
+---@param flavor table Validated supported flavor.
 ---@return table QuestieDB
-local function buildQuestieDB(expansionName)
+local function buildQuestieDB(flavor)
   local QuestieDB = {
-    questKeys = pick("questKeys", expansionName),
-    npcKeys = pick("npcKeys", expansionName),
-    itemKeys = pick("itemKeys", expansionName),
-    objectKeys = pick("objectKeys", expansionName),
-    raceKeys = pick("raceKeys", expansionName),
-    classKeys = pick("classKeys", expansionName),
-    sortKeys = pick("sortKeys", expansionName),
-    specialFlags = pick("specialFlags", expansionName),
-    factionIDs = pick("factionIDs", expansionName),
-    questFlags = pick("questFlags", expansionName),
-    npcFlags = pick("npcFlags", expansionName),
-    itemClasses = pick("itemClasses", expansionName),
-    waypointPresets = pick("waypointPresets", expansionName),
+    -- Field names and meanings are maintained in src/meta/, not the enum tables.
+    questKeys = LibQuestieDB.Meta.Quest.keys,
+    npcKeys = LibQuestieDB.Meta.Npc.keys,
+    itemKeys = LibQuestieDB.Meta.Item.keys,
+    objectKeys = LibQuestieDB.Meta.Object.keys,
+    raceKeys = pick("raceKeys", flavor),
+    classKeys = pick("classKeys", flavor),
+    sortKeys = pick("sortKeys", flavor),
+    specialFlags = pick("specialFlags", flavor),
+    factionIDs = pick("factionIDs", flavor),
+    questFlags = pick("questFlags", flavor),
+    npcFlags = pick("npcFlags", flavor),
+    itemClasses = pick("itemClasses", flavor),
+    waypointPresets = pick("waypointPresets", flavor),
   }
 
   for name, datatype in pairs(DATA_FIELD_TO_TYPE) do
@@ -122,21 +125,21 @@ local function buildQuestieDB(expansionName)
   return QuestieDB
 end
 
----Builds all copied-provider module stand-ins for one explicit expansion.
----@param expansionName string Supported expansion name.
+---Builds all copied-provider module stand-ins for one explicit flavor.
+---@param flavor table Validated supported flavor.
 ---@return table modules
-local function buildModules(expansionName)
+local function buildModules(flavor)
   local modules = {}
 
-  modules.QuestieDB = buildQuestieDB(expansionName)
-  modules.ZoneDB = { zoneIDs = pick("zoneIDs", expansionName) }
+  modules.QuestieDB = buildQuestieDB(flavor)
+  modules.ZoneDB = { zoneIDs = pick("zoneIDs", flavor) }
   modules.QuestieProfessions = {
-    professionKeys = pick("professionKeys", expansionName),
-    specializationKeys = pick("specializationKeys", expansionName),
-    rankNames = pick("rankNames", expansionName),
+    professionKeys = pick("professionKeys", flavor),
+    specializationKeys = pick("specializationKeys", flavor),
+    rankNames = pick("rankNames", flavor),
   }
   modules.QuestieCorrections = compat.objectiveFirst
-  modules.Phasing = { phases = pick("phases", expansionName) }
+  modules.Phasing = { phases = pick("phases", flavor) }
 
   -- `l10n(...)` appears ~100 times in classicQuestFixes and ~207 times in tbcQuestFixes,
   -- always inside `extraObjectives`. **Store the enUS string, translate at render time** —
@@ -144,8 +147,12 @@ local function buildModules(expansionName)
   -- stays locale-free. The prototype's correction files stubbed it exactly this way.
   modules.l10n = setmetatable({}, { __call = function(_, text) return text end })
 
+  -- Preserve the provider-facing spellings; numeric ordering belongs to config.
+  local order = LibQuestieDB.config.expansionOrder
   modules.Expansions = {
-    Era = 1, Classic = 1, Tbc = 2, Wotlk = 3, Cata = 4, MoP = 5, Current = 1,
+    Era = order.Classic, Classic = order.Classic, Tbc = order.TBC,
+    Wotlk = order.Wotlk, Cata = order.Cata, MoP = order.MoP,
+    Current = order[flavor.rules or flavor.expansion],
   }
 
   return modules
@@ -173,7 +180,7 @@ function compat.Install(flavor)
 
   local expansionName = flavor.rules or flavor.expansion
   local configuredFlavor = LibQuestieDB.config.flavorByName[flavor.name]
-  local expansionOrder = LibQuestieDB.Corrections.expansionOrder
+  local expansionOrder = LibQuestieDB.config.expansionOrder
   local order = expansionOrder[expansionName]
   if not configuredFlavor or configuredFlavor.expansion ~= flavor.expansion or
      (configuredFlavor.rules or configuredFlavor.expansion) ~= expansionName or not order then
@@ -186,8 +193,7 @@ function compat.Install(flavor)
   end
 
   -- Build before changing globals so malformed constants fail without side effects.
-  local modules = buildModules(expansionName)
-  modules.Expansions.Current = order
+  local modules = buildModules(flavor)
 
   -- A reinstall starts a new load without replacing the published table identities.
   clearHints(compat.objectiveFirst)

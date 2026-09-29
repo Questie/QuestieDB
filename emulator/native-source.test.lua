@@ -42,6 +42,19 @@ local expectedProviders = {
   Forever = { false, false, false, false, false, true, true, false, false },
 }
 
+-- Literal expectations protect provider aliases and Forever's Classic rules independently
+-- of the config used by both loaders.
+local expectedCurrent = { Vanilla = 1, TBC = 2, Wrath = 3, Cata = 4, Mists = 5, Forever = 1 }
+---@param expansions table Provider-facing expansion module.
+---@param flavorName string
+---@return nil
+local function checkExpansions(expansions, flavorName)
+  for name, value in pairs({ Era = 1, Classic = 1, Tbc = 2, Wotlk = 3, Cata = 4, MoP = 5 }) do
+    assert(expansions[name] == value, flavorName .. ": expansion alias " .. name)
+  end
+  assert(expansions.Current == expectedCurrent[flavorName], flavorName .. ": wrong current rules")
+end
+
 for _, flavor in ipairs(config.flavors) do
   client.reset()
   client.install({ expansion = flavor.expansion, season = "SoD" })
@@ -50,6 +63,12 @@ for _, flavor in ipairs(config.flavors) do
   _G.QuestieLoader = previousLoader
   local db, files = emulator.loadAddon("QuestieDB.toc", config.addonName)
   assert(db.flavor.name == flavor.name)
+  checkExpansions(db.Support.Get("Expansions"), flavor.name)
+  checkExpansions(db.CorrectionCompat.modules.Expansions, flavor.name)
+  assert(db.Support.Get("ZoneDB").zoneIDs == db.Enum.zoneIDs,
+    "support must publish the canonical zone enum")
+  assert(db.CorrectionCompat.modules.ZoneDB.zoneIDs == db.Enum.zoneIDs,
+    "corrections must use the same zone symbols as support")
   assert(_G.QuestieLoader == previousLoader, "Source loader was not restored")
   local selected, initializers = {}, 0
   for _, path in ipairs(files) do
@@ -93,6 +112,7 @@ for _, flavor in ipairs(config.flavors) do
   local loaded, loadError = pcall(runtime.loadCorrections, offline, flavor)
   _G.loadfile = originalLoadfile
   assert(loaded, loadError)
+  checkExpansions(offline.CorrectionCompat.modules.Expansions, flavor.name)
   for index, path in ipairs(representativePaths) do
     assert((offlineSelected[path] == true) == expectedProviders[flavor.name][index],
       "offline " .. flavor.name .. ": " .. path)
@@ -136,7 +156,7 @@ for _, changed in ipairs({ "Vanilla", "Forever" }) do
         chunk(...)
         if path == config.dataPath(changedFlavor, config.entityTypeByName.Npc) then
           QuestieLoader:ImportModule("QuestieDB").npcData = { [id] = { "owned raw " .. changed } }
-        elseif path == config.zoneIdsPath(changedFlavor) then
+        elseif path == (changed == "Forever" and "support/Forever/" or "support/") .. "Zones/areaIdToUiMapId.lua" then
           QuestieLoader:ImportModule("ZoneDB").nativeIsolation = changed
         elseif path == "src/corrections/" .. (changed == "Forever" and "Forever/legacy" or "Era") .. "/classicQuestFixes.lua" then
           local module = QuestieLoader:ImportModule("QuestieQuestFixes")

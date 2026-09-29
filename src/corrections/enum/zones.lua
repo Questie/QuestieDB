@@ -1,4 +1,5 @@
--- Correction constants. Source origins and extraction history: PROVENANCE.md.
+-- Shared zone symbols for Corrections, Derived Passes, support data and offline conversion.
+-- Source origins and extraction history: PROVENANCE.md.
 -- Geographic groups include later starting-area IDs; instance floors stay beside their parent.
 
 local _, LibQuestieDB = ...
@@ -450,5 +451,12 @@ constants.zoneIDs = {
   KARAZHAN_CRYPTS = 16074,
   SCARLET_ENCLAVE = 16236,
 
-  -- Forever [add areas and instances here]
+  -- Forever: outdoor zones
+  RIVERGLADES = 16591,
+  ZEPHRAS_ISLE = 16593,
+  DARKSPEAR_ISLANDS = 16606,
+  SHEN_DRALAS = 16651,
+
+  -- Forever: instance areas
+  CITY_OF_DALARAN = 16544,
 }

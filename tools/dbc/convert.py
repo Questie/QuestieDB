@@ -20,10 +20,13 @@ from coordinates import Transform, compare_maps
 from download import DEFAULT_DATABASE, ensure_database
 from files import MANIFEST, TOOL, digest, install_outputs
 from maps import read_snapshot
-from rewrite import Coordinate, read_zone_ids, rewrite
+from rewrite import Coordinate, read_zone_ids, rewrite, rewrite_quest_races
 from runtime_helper import HELPER, require_matching_helper
 
 ROOT = Path(__file__).resolve().parents[2]
+ZONE_SYMBOLS_PATH = "src/corrections/enum/zones.lua"
+# Only Era faction-wide masks gain the matching Skyborne bit; race subsets stay authored.
+QUEST_RACE_MASKS = {77: 4294967373, 178: 8589934770}
 # Reuse the contributor launcher's Lua discovery and cancellation ownership.
 sys.path.insert(0, str(ROOT / "tools/cli"))
 from questiedb import find_lua, interrupt
@@ -137,8 +140,7 @@ class ConvertPoints:
 def prepare(root: Path, transforms: dict[int, Transform], map_report: dict,
             keep_unmapped: bool) -> tuple[dict[str, bytes], dict]:
     """Always read Era originals; preserve all bytes outside converted number tokens."""
-    zones_path = "support/Zones/zoneIds.lua"
-    zones_bytes = (root / zones_path).read_bytes()
+    zones_bytes = (root / ZONE_SYMBOLS_PATH).read_bytes()
     zones = read_zone_ids(zones_bytes.decode("utf-8"))
     outputs = {}
     report = {
@@ -148,8 +150,9 @@ def prepare(root: Path, transforms: dict[int, Transform], map_report: dict,
                                 "scope": "transformed pairs only; calculations retain full precision"},
         "assumption": "NPC/terrain world positions remain unchanged; this is a converted Era baseline, not complete Forever content.",
         "zone_symbols_sha256": digest(zones_bytes), "files": {},
+        "quest_race_masks": {str(old): new for old, new in QUEST_RACE_MASKS.items()},
         "not_converted": ["Questie-owned runtime corrections", "support/Zones/dungeons.lua entrances",
-                          "Forever race/class restrictions and new content", "subzone or synthetic map routing"],
+                          "race-specific restrictions, class restrictions and new content", "subzone or synthetic map routing"],
     }
     for spec in INPUTS:
         original = (root / spec.source).read_bytes()
@@ -159,12 +162,16 @@ def prepare(root: Path, transforms: dict[int, Transform], map_report: dict,
         try:
             text, count = rewrite(original.decode("utf-8"), entity=spec.entity, raw=spec.raw,
                                   zone_ids=zones, transform=converter)
+            race_counts = {}
+            if spec.raw and spec.entity == "Quest":
+                text, race_counts = rewrite_quest_races(text, QUEST_RACE_MASKS)
         except ValueError as error:
             raise ValueError(spec.source + ": " + str(error)) from error
         outputs[spec.output] = text.encode("utf-8")
         report["files"][spec.output] = {
             "source": spec.source, "source_sha256": digest(original),
             "output_sha256": digest(outputs[spec.output]), "coordinate_pairs": count,
+            "race_mask_counts": {str(mask): total for mask, total in sorted(race_counts.items())},
             "counts": dict(sorted(converter.counts.items())),
             "converted_by_area": dict(sorted(converter.by_area.items())),
             "unmapped": converter.unmapped, "out_of_bounds_samples": converter.out_of_bounds,
@@ -252,6 +259,8 @@ def main() -> int:
         unresolved = 0
         for path, info in report["files"].items():
             print(path + ": " + json.dumps(info["counts"], sort_keys=True), flush=True)
+            if info["race_mask_counts"]:
+                print("  Expanded quest race masks: " + json.dumps(info["race_mask_counts"], sort_keys=True), flush=True)
             for area, entry in info["unmapped"].items():
                 print("  Unmapped AreaID %s: %d points, first at line %d" % (area, entry["count"], entry["samples"][0]["line"]), flush=True)
             unresolved += info["counts"].get("unmapped", 0)
@@ -266,7 +275,7 @@ def main() -> int:
         for info in report["files"].values():
             if digest((ROOT / info["source"]).read_bytes()) != info["source_sha256"]:
                 raise ValueError("Era input changed during conversion: " + info["source"])
-        if digest((ROOT / "support/Zones/zoneIds.lua").read_bytes()) != report["zone_symbols_sha256"]:
+        if digest((ROOT / ZONE_SYMBOLS_PATH).read_bytes()) != report["zone_symbols_sha256"]:
             raise ValueError("Zone symbols changed during conversion")
         outputs[MANIFEST] = (json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False) + "\n").encode("utf-8")
         changed = install_outputs(ROOT, outputs)
