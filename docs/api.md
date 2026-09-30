@@ -134,6 +134,24 @@ invisible, its own init or a settings toggle, rather than on a hover path. After
 invalidation the next `IdsByName` call pays it again, and a per-entity
 `InvalidateCache(datatype, id)` counts: it drops the whole index, because it can change a name.
 
+For a yielding initialization coroutine, use `Entity.BuildNameIndexAsync(iterationsPerCycle)` instead:
+
+```lua
+-- Inside a caller-owned coroutine, resumed by the caller's scheduler.
+ObjectDB.BuildNameIndexAsync()       -- Default: 250 IDs per cycle.
+-- The complete index is ready here.
+NpcDB.BuildNameIndexAsync(100)       -- Optional smaller batches.
+```
+
+The optional batch size must be a positive integer and defaults to 250. The builder calls
+`coroutine.yield()` between batches, never after the final batch. QuestieDB creates no coroutine,
+timer, or background job. Both builders are no-ops when the index exists. A locale change or
+cache invalidation during a yield restarts the pass with the current composed IDs and names.
+Unfinished buckets remain private; if another builder or `IdsByName` completes the index while
+this call is suspended, it reuses that complete index on resume. Call this API inside a coroutine;
+a failed yield never publishes a partial index. `BuildNameIndex()` and cold `IdsByName()` remain
+synchronous.
+
 Like `GetAllIds`, the returned list is shared and read-only.
 
 This exists for the case where the client hands you a name and no id — a hovered world object.

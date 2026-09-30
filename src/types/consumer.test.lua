@@ -76,6 +76,14 @@ local objectIdsByName = ObjectDB.IdsByName("Old Lion Statue")
 local questIdsByName = QuestDB.IdsByName("Sharptalon's Claw")
 ObjectDB.BuildNameIndex()
 
+-- Async builders stay sequential inside a caller-owned coroutine; no scheduling is created.
+local indexThread = coroutine.create(function()
+  ObjectDB.BuildNameIndexAsync()
+  QuestDB.BuildNameIndexAsync(100)
+  NpcDB.BuildNameIndexAsync()
+  ItemDB.BuildNameIndexAsync(500)
+end)
+
 -- Data-shaped write-through corrections publish immediately; nil removes the slot.
 ---@type boolean
 local setChanged = registrar.Set("Npc", "darkmoon-location", { [14828] = { [1] = "Gelvas Grimegate" } })

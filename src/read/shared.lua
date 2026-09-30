@@ -460,37 +460,66 @@ function shared.CreateEntity(meta, backend)
   -- same `get` every read goes through, so it answers exactly what `Entity.name(id)` would —
   -- the active locale, the English fallback, and any overlay-added entity.
   --
-  -- Built lazily on the first lookup, or explicitly through `BuildNameIndex` so a consumer
-  -- chooses when to pay for the full pass. Never patched: any invalidation drops it and the
-  -- next lookup rebuilds from scratch, which is what makes a withdrawn Correction or an old
-  -- locale unable to leave a stale name or a duplicate id behind. Only a type with a `name`
-  -- field carries one — today all four do.
+  -- Built lazily on the first lookup, or explicitly through `BuildNameIndex` or
+  -- `BuildNameIndexAsync` so a consumer chooses when to pay for the full pass. Never patched:
+  -- any invalidation drops it and the next lookup rebuilds from scratch, so neither a withdrawn
+  -- Correction nor an old locale can leave stale names or duplicate IDs behind. Only a type
+  -- with a `name` field carries one, which today includes all four.
 
   local nameFieldIndex = keys.name
   local nameIndex
+  local nameIndexRevision = 0
 
   if nameFieldIndex then
-    --- Build the index now, or do nothing if it already exists. A full pass over every
-    --- entity's name: one cold read per id — 23 ms for Vanilla's 6,666 objects in a live
-    --- client (docs/client-metadata-probes.md §9) — and it warms the name field cache for
-    --- every id. Call it where a stall is invisible, never on a hover path.
-    function entity.BuildNameIndex()
-      if nameIndex then return end
-      local index = {}
-      local ids = entity.GetAllIds()
-      for i = 1, #ids do
-        local id = ids[i]
-        local name = get(id, nameFieldIndex)
-        if type(name) == "string" then
-          local bucket = index[name]
-          if bucket then
-            bucket[#bucket + 1] = id
-          else
-            index[name] = { id }
+    ---Keep unfinished buckets private; invalidation during a yield restarts the full pass.
+    ---@param iterationsPerCycle integer? IDs between coroutine yields; nil stays synchronous.
+    ---@return nil
+    local function buildNameIndex(iterationsPerCycle)
+      while not nameIndex do
+        local revision = nameIndexRevision
+        local index = {}
+        local ids = entity.GetAllIds()
+        for i = 1, #ids do
+          local id = ids[i]
+          local name = get(id, nameFieldIndex)
+          if type(name) == "string" then
+            local bucket = index[name]
+            if bucket then
+              bucket[#bucket + 1] = id
+            else
+              index[name] = { id }
+            end
+          end
+          if iterationsPerCycle and i % iterationsPerCycle == 0 and i < #ids then
+            coroutine.yield()
+            -- A lookup or another builder may have completed the current index while suspended.
+            if nameIndex then return end
+            if revision ~= nameIndexRevision then break end
           end
         end
+        if revision == nameIndexRevision then nameIndex = index end
       end
-      nameIndex = index
+    end
+
+    ---Build synchronously, or do nothing if the index already exists. Warms every name read.
+    ---Use BuildNameIndexAsync in a coroutine to split the full pass across frames.
+    ---@return nil
+    function entity.BuildNameIndex()
+      buildNameIndex(nil)
+    end
+
+    ---Yield between batches, returning only when the complete index is ready.
+    ---Must run inside a caller-owned coroutine; creates no timers or background work.
+    ---@async
+    ---@param iterationsPerCycle integer? Positive IDs per batch; defaults to 250.
+    ---@return nil
+    function entity.BuildNameIndexAsync(iterationsPerCycle)
+      if iterationsPerCycle == nil then iterationsPerCycle = 250 end
+      if type(iterationsPerCycle) ~= "number" or iterationsPerCycle < 1 or
+          iterationsPerCycle == math.huge or iterationsPerCycle % 1 ~= 0 then
+        error("BuildNameIndexAsync: iterationsPerCycle must be a positive integer", 2)
+      end
+      buildNameIndex(iterationsPerCycle)
     end
 
     --- Every composed id whose current name equals `name` exactly, ascending, or nil when
@@ -510,6 +539,7 @@ function shared.CreateEntity(meta, backend)
   --- goes with it either way: a single entity's invalidation can change a name too, and the
   --- index is rebuilt rather than patched.
   function entity.InvalidateCache(id)
+    nameIndexRevision = nameIndexRevision + 1
     nameIndex = nil
     if id == nil then
       for key in pairs(cache) do cache[key] = nil end

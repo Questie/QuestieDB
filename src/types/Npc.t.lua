@@ -23,6 +23,7 @@
 ---@field Exists fun(id: NpcId): boolean Test the composed view.
 ---@field InvalidateCache fun(id?: NpcId) Drop cached fields for one NPC or every NPC.
 ---@field BuildNameIndex fun() Build the Name index now (a no-op when it exists) instead of on the first IdsByName call; a full pass over every NPC name.
+---@field BuildNameIndexAsync fun(iterationsPerCycle?: integer) Build the complete Name index inside a caller-owned coroutine; yield between positive-sized ID batches (default 250), restart after invalidation, return when ready.
 ---@field IdsByName fun(name: string): NpcId[]? Every composed NPC ID whose current name equals `name` exactly, ascending, or nil; shared and read-only.
 NpcDB = {}
 

@@ -44,6 +44,7 @@
 ---@field Exists fun(id: QuestId): boolean Test the composed view.
 ---@field InvalidateCache fun(id?: QuestId) Drop cached fields for one quest or every quest.
 ---@field BuildNameIndex fun() Build the Name index now (a no-op when it exists) instead of on the first IdsByName call; a full pass over every quest name.
+---@field BuildNameIndexAsync fun(iterationsPerCycle?: integer) Build the complete Name index inside a caller-owned coroutine; yield between positive-sized ID batches (default 250), restart after invalidation, return when ready.
 ---@field IdsByName fun(name: string): QuestId[]? Every composed quest ID whose current name equals `name` exactly, ascending, or nil; shared and read-only.
 QuestDB = {}
 

@@ -75,6 +75,16 @@ invalidation the next `IdsByName` call pays the pass again; a consumer that find
 unacceptable re-warms on `l10n.onLocaleChanged` and after its own apply. Nothing more is built
 until someone needs it.
 
+`BuildNameIndexAsync(iterationsPerCycle)` yields internally between ID batches, defaulting to
+250 IDs per cycle. The optional batch size must be a positive integer. It must run in a
+caller-owned coroutine and returns only after a complete index is ready; QuestieDB does not
+create a scheduler. Both entry points
+share the same builder. Invalidation while suspended restarts the pass over the current composed
+view, and partial buckets are never published. A competing complete build is reused on resume.
+The synchronous `BuildNameIndex` and `IdsByName` behavior remains unchanged. Questie's login
+coroutine uses the yielding entry point because a full uninterrupted Object scan can exhaust
+the client's script budget, including on a deDE Hardcore login.
+
 ### 5. Not stored in the artifact
 
 The baked per-name directive (alternative 3) is deferred, not rejected. `IdsByName` is the same
