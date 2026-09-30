@@ -12,6 +12,8 @@ local QuestieCorrections = QuestieLoader:ImportModule("QuestieCorrections")
 ---@type l10n
 local l10n = QuestieLoader:ImportModule("l10n")
 
+QuestieCorrections.itemObjectiveFirst[92682] = true
+
 -- Static Corrections: shared by all characters and folded in during Generation.
 function ForeverQuestFixes:Load()
     local questKeys = QuestieDB.questKeys
@@ -60,6 +62,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.preQuestSingle] = {92466},
             [questKeys.nextQuestInChain] = 92468,
+            [questKeys.sourceItemId] = 6635,
         },
         [92468] = { -- Call of Earth
             [questKeys.requiredLevel] = 3,
@@ -113,6 +116,7 @@ function ForeverQuestFixes:Load()
         [92514] = { -- Welcome to Shen'dar Village
             [questKeys.requiredLevel] = 4,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectives] = {{{251902,nil,Questie.ICON_TYPE_TALK},{254089,nil,Questie.ICON_TYPE_TALK}}},
         },
         [92515] = { -- The Problem With Prideclaws
             [questKeys.requiredLevel] = 4,
@@ -121,15 +125,18 @@ function ForeverQuestFixes:Load()
         [92516] = { -- Hippogryph Harrassment
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {92514,93461},
+            [questKeys.objectives] = {{{251291},{251284},{251261}}},
         },
         [92517] = { -- The Criminal Element
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {92514,93461},
             [questKeys.nextQuestInChain] = 93036,
+            [questKeys.objectives] = {{{251918},{255534}}},
         },
         [92528] = { -- Among the Faithful
             [questKeys.requiredLevel] = 5,
             [questKeys.preQuestSingle] = {92529},
+            [questKeys.objectives] = {{{254128,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [92529] = { -- Falaath Village
             [questKeys.requiredLevel] = 5,
@@ -147,6 +154,7 @@ function ForeverQuestFixes:Load()
         [92550] = { -- Havoc in the Highlands
             [questKeys.requiredLevel] = 5,
             [questKeys.preQuestSingle] = {92528},
+            [questKeys.objectives] = {{{252068},{251662}},nil,{{252661}}},
         },
         [92551] = { -- Stolen Supplies
             [questKeys.requiredLevel] = 5,
@@ -155,6 +163,7 @@ function ForeverQuestFixes:Load()
         [92553] = { -- Restocking the Larders
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {92514,93461},
+            [questKeys.objectives] = {nil,nil,{{6889},{5469}}},
         },
         [92579] = { -- To Valanaar
             [questKeys.requiredLevel] = 6,
@@ -166,11 +175,13 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredLevel] = 4,
             [questKeys.nextQuestInChain] = 94411,
             [questKeys.availableStartingWith] = 92514, -- available even after abandoning 92514, but this is next best thing
+            [questKeys.objectives] = {{{251902,nil,Questie.ICON_TYPE_TALK}}},
         },
         [92596] = { -- The High Order
             [questKeys.requiredLevel] = 4,
             [questKeys.nextQuestInChain] = 94413,
             [questKeys.availableStartingWith] = 93461, -- available even after abandoning 93461, but this is next best thing
+            [questKeys.objectives] = {{{251903,nil,Questie.ICON_TYPE_TALK}}},
         },
         [92597] = { -- Reading the Ley Lines
             [questKeys.requiredLevel] = 2,
@@ -186,15 +197,18 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredLevel] = 6,
             [questKeys.preQuestSingle] = {94568},
             [questKeys.nextQuestInChain] = 93065,
+            [questKeys.objectives] = {{{252383,nil,Questie.ICON_TYPE_TALK},{251968,nil,Questie.ICON_TYPE_TALK},{252475,nil,Questie.ICON_TYPE_TALK}}},
         },
         [92642] = { -- Disrupting Logistics
             [questKeys.requiredLevel] = 6,
             [questKeys.preQuestSingle] = {93320},
+            [questKeys.objectives] = {{{254596},{270201}}},
         },
         [92643] = { -- The Turncoat
             [questKeys.requiredLevel] = 6,
             [questKeys.preQuestSingle] = {92881},
             [questKeys.nextQuestInChain] = 92644,
+            [questKeys.objectives] = {{{255013,nil,Questie.ICON_TYPE_EVENT},{253372,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [92644] = { -- Unfortunate News
             [questKeys.requiredLevel] = 6,
@@ -210,9 +224,16 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.preQuestSingle] = {93958},
             [questKeys.nextQuestInChain] = 93836,
+            [questKeys.objectives] = {},
+            [questKeys.triggerEnd] = {"Confront Lorthuna", {[zoneIDs.ZEPHRAS_ISLE] = {{74.87,53.02}}}},
+            [questKeys.extraObjectives] = {
+                {nil, Questie.ICON_TYPE_OBJECT, l10n("Take the portal"), 0, {{"object", 586726}}},
+                {nil, Questie.ICON_TYPE_TALK, l10n("Start the fight"), 0, {{"monster", 253849}}},
+            },
         },
         [92679] = { -- Blood Tithe
             [questKeys.requiredLevel] = 5,
+            [questKeys.objectives] = {{{252800,nil,Questie.ICON_TYPE_INTERACT},{252448,nil,Questie.ICON_TYPE_EVENT}}}, -- 2nd objective is Optional
         },
         [92682] = { -- Make Yourself Useful
             [questKeys.requiredLevel] = 5,
@@ -221,6 +242,8 @@ function ForeverQuestFixes:Load()
         [92683] = { -- Flutterfly Dust
             [questKeys.requiredLevel] = 5,
             [questKeys.preQuestSingle] = {92679},
+            [questKeys.sourceItemId] = 253666,
+            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_INTERACT,l10n("Use the Flutterfly Swatter"),0,{{"monster",251622}}}},
         },
         [92684] = { -- Ornery Ornery Galestriders
             [questKeys.requiredLevel] = 5,
@@ -228,13 +251,14 @@ function ForeverQuestFixes:Load()
         },
         [92685] = { -- The Hills Have Eyes
             [questKeys.requiredLevel] = 5,
-            [questKeys.preQuestGroup] = {92683,92684}, -- most likely also 92682
+            [questKeys.preQuestGroup] = {92682,92683,92684},
             [questKeys.nextQuestInChain] = 92693,
         },
         [92693] = { -- Standing Our Ground
             [questKeys.requiredLevel] = 5,
             [questKeys.preQuestSingle] = {92685},
             [questKeys.nextQuestInChain] = 92703,
+            [questKeys.objectives] = {{{252800,nil,Questie.ICON_TYPE_TALK},{252863,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [92698] = { -- What Is My Purpose?
             [questKeys.requiredLevel] = 5,
@@ -264,6 +288,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredLevel] = 7,
             [questKeys.preQuestSingle] = {92700},
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectives] = {{{251968,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [92709] = { -- A Grand Adventure
             [questKeys.requiredLevel] = 7,
@@ -329,6 +354,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredLevel] = 7,
             [questKeys.preQuestSingle] = {93065},
             [questKeys.nextQuestInChain] = 93958,
+            [questKeys.objectives] = {{{252762},{252763},{252765},{253576,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [93036] = { -- Infiltrating the Cult
             [questKeys.requiredLevel] = 5,
@@ -339,6 +365,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredLevel] = 7,
             [questKeys.preQuestSingle] = {92640},
             [questKeys.nextQuestInChain] = 92947,
+            [questKeys.objectives] = {{{253844,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [93089] = { -- What Comes Next
             [questKeys.requiredLevel] = 7,
@@ -414,6 +441,7 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {93735},
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.nextQuestInChain] = 93738,
+            [questKeys.objectives] = {{{256083,nil,Questie.ICON_TYPE_EVENT}},nil,{{260881},{260883},{260880}}},
         },
         [93738] = { -- The Broken Construct
             [questKeys.requiredLevel] = 4,
@@ -430,6 +458,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {93738},
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectives] = {{{256247,nil,Questie.ICON_TYPE_TALK}}},
         },
         [93791] = { -- Speak with Belann
             --[questKeys.requiredLevel] = 10,
@@ -450,15 +479,18 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.preQuestSingle] = {92646},
             [questKeys.nextQuestInChain] = 93090,
+            [questKeys.objectives] = {{{252476,nil,Questie.ICON_TYPE_TALK}}},
         },
         [93926] = { -- The Western Watch
             [questKeys.requiredLevel] = 5,
             [questKeys.preQuestSingle] = {92528},
             [questKeys.nextQuestInChain] = 93927,
+            [questKeys.objectives] = {{{252155,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [93927] = { -- A Last Request
             [questKeys.requiredLevel] = 5,
             [questKeys.preQuestSingle] = {93926},
+            [questKeys.objectives] = {{{256966}},nil,{{254871},{263415},{263418}}}, -- double whammy
         },
         [93948] = { -- Deliver the Signet
             [questKeys.requiredLevel] = 6,
@@ -468,6 +500,7 @@ function ForeverQuestFixes:Load()
         [93949] = { -- Bugged
             [questKeys.requiredLevel] = 6,
             [questKeys.preQuestSingle] = {93948},
+            [questKeys.objectives] = {{{251727}}},
         },
         [93951] = { -- A Little Beauty
             [questKeys.requiredLevel] = 4,
@@ -507,10 +540,12 @@ function ForeverQuestFixes:Load()
         [94411] = { -- Meddlesome Mages
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {92595},
+            [questKeys.objectives] = {{{257521}}},
         },
         [94413] = { -- A Magical Affront
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {92596},
+            [questKeys.objectives] = {{{257532}}},
         },
         [94414] = { -- The Anchors of Zephras
             [questKeys.objectives] = {{{257554,nil,Questie.ICON_TYPE_TALK}}},
@@ -556,6 +591,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredLevel] = 6,
             [questKeys.preQuestSingle] = {92644},
             [questKeys.nextQuestInChain] = 92640,
+            [questKeys.objectives] = {{{252476,nil,Questie.ICON_TYPE_TALK}}},
         },
         [94638] = { -- Strength and Mercy
             [questKeys.requiredClasses] = classIDs.DRUID,
@@ -566,6 +602,7 @@ function ForeverQuestFixes:Load()
         },
         [94897] = { -- The Fate of a Loved One
             [questKeys.requiredLevel] = 8,
+            [questKeys.objectives] = {nil,nil,{{266434}}},
         },
         [94946] = { -- The Magical City of Dalaran
             [questKeys.requiredLevel] = 7,
@@ -588,6 +625,7 @@ function ForeverQuestFixes:Load()
         [96101] = { -- The Great Outdoors
             [questKeys.requiredLevel] = 4,
             [questKeys.breadcrumbs] = {96638},
+            [questKeys.objectives] = {nil,{{450003},{450003}}},
         },
         [96638] = { -- The Adventurer
             [questKeys.requiredLevel] = 4,
@@ -598,74 +636,112 @@ function ForeverQuestFixes:Load()
         [96646] = { -- Camping 101: Cooking
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
+            [questKeys.objectives] = {{{251905,nil,Questie.ICON_TYPE_TALK}}},
         },
         [97243] = { -- Call of Fire
+            [questKeys.startedBy_add] = {{254082}},
             [questKeys.requiredClasses] = classIDs.SHAMAN,
+            [questKeys.sourceItemId] = 6653,
+            [questKeys.nextQuestInChain] = 97244,
         },
         [97244] = { -- Call of Fire
             [questKeys.requiredClasses] = classIDs.SHAMAN,
+            [questKeys.preQuestSingle] = {97243},
+            [questKeys.nextQuestInChain] = 97245,
         },
         [97245] = { -- Call of Fire
             [questKeys.requiredClasses] = classIDs.SHAMAN,
+            [questKeys.preQuestSingle] = {97244},
+            [questKeys.nextQuestInChain] = 97257,
+            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Knock on Kuramaa's Stump"),0,{{"object",660848}}}},
         },
         [97257] = { -- Call of Fire
             [questKeys.requiredClasses] = classIDs.SHAMAN,
+            [questKeys.preQuestSingle] = {97245},
+            [questKeys.sourceItemId] = 277329,
+            [questKeys.objectives] = {{{268762,nil,Questie.ICON_TYPE_EVENT},{268679,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [97963] = { -- Camping 101: Alchemy
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
+            [questKeys.requiredSkill] = {profKeys.ALCHEMY, 1},
+            [questKeys.requiredSpell] = -1230564, -- Mana Well
         },
         [97964] = { -- Camping 101: Blacksmithing
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
+            [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 1},
+            [questKeys.requiredSpell] = -1230171, -- Sharpening Wheel
         },
         [97965] = { -- Camping 101: First Aid
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
+            [questKeys.requiredSkill] = {profKeys.FIRST_AID, 1},
+            [questKeys.requiredSpell] = -1230117, -- First Aid Kit
         },
         [97967] = { -- Camping 101: Fishing
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
+            [questKeys.requiredSkill] = {profKeys.FISHING, 1},
+            [questKeys.requiredSpell] = -1229745, -- Fish Bowl
         },
         [97968] = { -- Camping 101: Herbalism
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
+            [questKeys.requiredSkill] = {profKeys.HERBALISM, 1},
+            [questKeys.requiredSpell] = -1229705, -- Incense Candle
         },
         [97969] = { -- Camping 101: Leatherworking
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
+            [questKeys.requiredSkill] = {profKeys.LEATHERWORKING, 1},
+            [questKeys.requiredSpell] = -1229432, -- Camp Tent
         },
         [97970] = { -- Camping 101: Mining
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
+            [questKeys.requiredSkill] = {profKeys.MINING, 1},
+            [questKeys.requiredSpell] = -1230161, -- Lodestone
         },
         [97971] = { -- Camping 101: Skinning
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
+            [questKeys.requiredSkill] = {profKeys.SKINNING, 1},
+            [questKeys.requiredSpell] = -1229517, -- Camp Chair
         },
         [97972] = { -- Camping 101: Tailoring
             [questKeys.requiredLevel] = 4,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.preQuestSingle] = {96101},
+            [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
+            [questKeys.requiredSpell] = -1229504, -- Faction Banner
         },
         [97973] = { -- Camping 101: Tailoring
             [questKeys.requiredLevel] = 4,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.preQuestSingle] = {96101},
+            [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
+            [questKeys.requiredSpell] = -1263425, -- Faction Banner
         },
         [98284] = { -- Camping 101: Enchanting
             [questKeys.requiredLevel] = 4,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.preQuestSingle] = {96101},
+            [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
+            [questKeys.requiredSpell] = -1230643, -- Enchanted Lute
         },
         [98285] = { -- Camping 101: Engineering
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
+            [questKeys.requiredSkill] = {profKeys.ENGINEERING, 1},
+            [questKeys.requiredSpell] = -1230656, -- Reagent Bot
         },
         [98286] = { -- Camping 101: Enchanting
             [questKeys.requiredLevel] = 4,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.preQuestSingle] = {96101},
+            [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
+            [questKeys.requiredSpell] = -1230643, -- Enchanted Lute
         },
         [98512] = { -- Al'Aketh Assassins
             [questKeys.requiredLevel] = 6,
