@@ -32,6 +32,14 @@ return function(check, equal)
       local label = mode .. ": "
       local db = fixture.load(mode, entities, metadata)
       local object = db.Object
+      local spawnsKey = db.Meta.Object.keys.spawns
+      local spawns = { [12] = {{10,20}} }
+      if mode == "source" then
+        check(db.read.source.entities.Object == nil, "source: Object data starts lazy")
+        db.SetCorrection("Fixture", "Object", "initial-spawns", { [4] = { [spawnsKey] = spawns } })
+        db.SetCorrection("Fixture", "Object", "initial-spawns", nil)
+        check(db.read.source.entities.Object == nil, "source: overlay comparison does not materialize base data")
+      end
       -- Source has no stored translations; a Dynamic slot exercises the same locale lifecycle.
       db.l10n.SetCorrection("Fixture", "deDE", "Object", "names", {
         [2] = { [1] = "Gemeinsam" }, [1002] = { [1] = "Letzter" },
@@ -71,6 +79,66 @@ return function(check, equal)
       object.BuildNameIndexAsync()
       object.BuildNameIndex()
       check(object.IdsByName("Letzter") == built, label .. "both builders reuse an existing index")
+
+      -- Publishing/withdrawing a spawn row for an existing base ID must refresh fields, but
+      -- must not drop any bucket or trigger a full scan on the next tooltip name lookup.
+      equal(object.spawns(4), nil, label .. "base spawns are initially absent")
+      db.SetCorrection("Fixture", "Object", "spawns", { [4] = { [spawnsKey] = spawns } })
+      equal(object.spawns(4), spawns, label .. "spawn correction clears the field cache")
+      check(object.IdsByName("Letzter") == built, label .. "new base-ID spawn row retains name buckets")
+      local replacementSpawns = { [12] = {{30,40}} }
+      db.SetCorrection("Fixture", "Object", "spawns", { [4] = { [spawnsKey] = replacementSpawns } })
+      equal(object.spawns(4), replacementSpawns, label .. "replacement spawn fields are fresh")
+      check(object.IdsByName("Letzter") == built, label .. "replacement spawn row retains name buckets")
+      db.SetCorrection("Fixture", "Object", "spawns", nil)
+      equal(object.spawns(4), nil, label .. "spawn withdrawal restores the base field")
+      check(object.IdsByName("Letzter") == built, label .. "withdrawn base-ID spawn row retains name buckets")
+
+      local functionSpawns = spawns
+      db.Corrections.RegisterRuntimeCorrection("FunctionFixture", "Object", "spawns", function()
+        return { [4] = { [spawnsKey] = functionSpawns } }
+      end, 10)
+      db.Corrections.ApplyRegisteredCorrections("FunctionFixture")
+      equal(object.spawns(4), spawns, label .. "function apply refreshes fields")
+      check(object.IdsByName("Letzter") == built, label .. "function apply retains unchanged name buckets")
+      functionSpawns = replacementSpawns
+      db.Corrections.ApplyRegisteredCorrections("FunctionFixture")
+      equal(object.spawns(4), replacementSpawns, label .. "function refresh publishes the replacement fields")
+      check(object.IdsByName("Letzter") == built, label .. "function refresh retains unchanged name buckets")
+      db.Corrections.UnregisterCorrection("FunctionFixture", "Object", "spawns")
+      db.Corrections.ApplyRegisteredCorrections("FunctionFixture")
+      equal(object.spawns(4), nil, label .. "function withdrawal restores the base field")
+      check(object.IdsByName("Letzter") == built, label .. "function withdrawal retains unchanged name buckets")
+
+      db.SetCorrection("Fixture", "Object", "name-and-spawns", {
+        [4] = { [1] = "Corrected", [spawnsKey] = spawns },
+      })
+      built = object.IdsByName("Corrected")
+      equal(built, {4}, label .. "a changed name drops the previous index")
+      db.SetCorrection("Fixture", "Object", "name-and-spawns", {
+        [4] = { [1] = "Corrected", [spawnsKey] = replacementSpawns },
+      })
+      equal(object.spawns(4), replacementSpawns, label .. "fields refresh alongside an unchanged corrected name")
+      check(object.IdsByName("Corrected") == built, label .. "unchanged name slot retains the index")
+      db.SetCorrection("Fixture", "Object", "name-and-spawns", { [4] = { [1] = {} } })
+      equal(object.IdsByName("Corrected"), nil, label .. "name deletion drops the old bucket")
+      equal(object.name(4), nil, label .. "deleted name remains nil")
+      db.SetCorrection("Fixture", "Object", "name-and-spawns", nil)
+      equal(object.IdsByName("Shared"), {4}, label .. "name withdrawal restores the fallback bucket")
+
+      -- Added/withdrawn correction-only IDs matter even when their row has no name field.
+      built = object.IdsByName("Letzter")
+      db.SetCorrection("Fixture", "Object", "nameless", { [2000] = { [spawnsKey] = spawns } })
+      check(object.Exists(2000), label .. "nameless correction-only entity exists")
+      local afterAddition = object.IdsByName("Letzter")
+      check(afterAddition ~= built, label .. "nameless addition invalidates membership-dependent index")
+      db.SetCorrection("Fixture", "Object", "nameless", { [2000] = { [spawnsKey] = replacementSpawns } })
+      equal(object.spawns(2000), replacementSpawns, label .. "existing correction-only entity fields refresh")
+      check(object.IdsByName("Letzter") == afterAddition, label .. "unchanged correction-only membership retains index")
+      db.SetCorrection("Fixture", "Object", "nameless", nil)
+      check(not object.Exists(2000), label .. "nameless withdrawal updates membership")
+      check(object.IdsByName("Letzter") ~= afterAddition, label .. "nameless withdrawal invalidates the index")
+
       for _, invalid in ipairs({0, -1, 1.5, false, "100", {}, math.huge, -math.huge, 0/0}) do
         check(not pcall(object.BuildNameIndexAsync, invalid), label .. "rejects an invalid batch size")
       end
@@ -86,6 +154,21 @@ return function(check, equal)
         equal(resumes, math.ceil(501 / batchSize), label .. "uses the requested batch size " .. batchSize)
         equal(object.IdsByName("Letzter"), {1002}, label .. "custom batches publish the final ID")
       end
+
+      -- A spawn-only publication must not restart a pass whose first batch is already private.
+      object.InvalidateCache()
+      thread = coroutine.create(function() object.BuildNameIndexAsync() end)
+      resume(thread)
+      db.SetCorrection("Fixture", "Object", "spawns", { [4] = { [spawnsKey] = spawns } })
+      local remainingResumes = 0
+      repeat
+        resume(thread)
+        remainingResumes = remainingResumes + 1
+      until coroutine.status(thread) == "dead"
+      equal(remainingResumes, 2, label .. "spawn-only publication does not restart an async build")
+      equal(object.spawns(4), spawns, label .. "async continuation still sees fresh corrected fields")
+      equal(object.IdsByName("Gemeinsam"), {2}, label .. "async continuation retains earlier name buckets")
+      db.SetCorrection("Fixture", "Object", "spawns", nil)
 
       -- A suspended pass has already indexed the translated first row. Changing locale must
       -- restart it, not append English rows to those private German buckets.

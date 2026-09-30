@@ -120,9 +120,13 @@ ObjectDB.IdsByName("Battered Chest")     --> { 2843, 2844, 2849, ... }   ascendi
 ObjectDB.IdsByName("No Such Name")       --> nil
 ```
 
-The index is built on the first call and dropped whenever the cache is — a Correction apply, a
-locale change, `InvalidateCache` — then rebuilt from scratch on the next call, never patched.
-That is what makes a withdrawn Correction or an old locale unable to leave a stale name behind.
+The index is built on the first call and rebuilt from scratch when invalidated, never patched.
+Correction publication clears decoded fields but preserves the index unless a corrected `name`
+slot changes or an entity is added/withdrawn. Spawn-only changes to existing entities therefore
+do not make the next name lookup scan the database again. The comparison inspects Correction
+rows, not every base name; a changed name slot conservatively invalidates even if a translation
+or an equal base name would keep its effective value unchanged. Locale changes, active translation
+writes, and explicit `InvalidateCache` still drop the index.
 
 Building is a full pass over every entity's name: **23 ms for Vanilla's 6,666 objects** from a
 cold cache in a live client, 3.5 µs per id, and it warms the name field cache for every id —
@@ -145,8 +149,9 @@ NpcDB.BuildNameIndexAsync(100)       -- Optional smaller batches.
 
 The optional batch size must be a positive integer and defaults to 250. The builder calls
 `coroutine.yield()` between batches, never after the final batch. QuestieDB creates no coroutine,
-timer, or background job. Both builders are no-ops when the index exists. A locale change or
-cache invalidation during a yield restarts the pass with the current composed IDs and names.
+timer, or background job. Both builders are no-ops when the index exists. Name-index invalidation
+during a yield restarts the pass with the current composed IDs and names.
+Unrelated Correction fields leave a suspended pass running from its existing position.
 Unfinished buckets remain private; if another builder or `IdsByName` completes the index while
 this call is suspended, it reuses that complete index on resume. Call this API inside a coroutine;
 a failed yield never publishes a partial index. `BuildNameIndex()` and cold `IdsByName()` remain
@@ -801,8 +806,9 @@ LibQuestieDB.InvalidateCache("Quest")      -- one type ("quest" works too)
 LibQuestieDB.InvalidateCache()             -- everything
 ```
 
-Applying corrections and changing locale already invalidate what they need to, the Name index
-included. Correction writes are scoped to their datatypes; a locale change covers all four.
+Applying corrections clears the affected datatype's fields and ID maps, retaining its Name index
+unless corrected names or composed membership may have changed. A locale change covers all four
+entity types and drops their fields and Name indexes.
 This API is for a consumer that mutates state QuestieDB cannot see. Every form drops the Name
 index, including per-entity invalidation, because one entity's name can change.
 

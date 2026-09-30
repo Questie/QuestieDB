@@ -52,8 +52,16 @@ Item write no longer drops Quest, Npc, or Object read caches, shared ID maps, or
 Registration alone marks nothing — an unapplied entry must not make another owner's write
 republish its datatype.
 
-This narrows ADR 0008 D3's "dropped by every apply" for the Name index to applies and writes
-that touch the entity's own datatype; locale changes and explicit invalidation still drop it.
+Name-index invalidation is narrower still: as recorded in ADR 0008 D3, a publication within
+the same datatype retains its index unless corrected names or composed membership may change.
+Locale changes, active translation writes, and explicit invalidation still drop it.
+
+This refinement accompanies the yielding-build fix for the reported deDE Hardcore login
+"script ran too long" error ([ADR 0008 context](0008-name-index.md#hardcore-login-timeout)).
+Yielding the initial scan is not enough if an unrelated Object write discards the result:
+the next `IdsByName` call would rebuild synchronously. Preserving the index for spawn-only
+changes avoids that unnecessary rebuild without weakening invalidation for changed names or
+membership. It reduces a remaining runtime risk; live-client confirmation remains pending.
 
 ### 3. Function materialization is memoized per entry
 
@@ -113,6 +121,7 @@ Additive surface; nothing has shipped, so ADR 0007 D4's reasoning applies unchan
   failure handling and input validation does not require importing that broader framework.
   Owner reranking likewise remains deliberately unsupported: rank stability is a contract,
   not missing transaction machinery.
-- ADR 0008's Name index now survives non-Object correction traffic: only an Object-datatype
-  write or a locale change drops it, so a consumer's init-time warm-up is no longer undone by
-  Item-repair writes.
+- ADR 0008's Object Name index survives both non-Object correction traffic and Object writes
+  that change neither corrected names nor membership. Item repair and spawn-only updates no
+  longer undo a consumer's init-time warm-up. Locale changes and explicit invalidation still
+  force rebuilding.
