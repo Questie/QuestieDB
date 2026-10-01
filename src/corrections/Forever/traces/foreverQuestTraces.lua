@@ -49,38 +49,9 @@ function ForeverQuestTraces:Load()
             [questKeys.objectivesText] = {"Buy or catch a Raw Brilliant Smallfish, then use the Knife Set to fillet it in front of Boarton Shadetotem in Thunder Bluff."},
             [questKeys.startedBy_add] = {{205729}},
         },
-        [78124] = {
-            [questKeys.name] = "Nar'thalas Almanac",
-            [questKeys.finishedBy_add] = {{211022}},
-        },
-        [78127] = {
-            [questKeys.name] = "The Dalaran Digest",
-            [questKeys.finishedBy_add] = {{211022}},
-        },
-        [78142] = {
-            [questKeys.name] = "Bewitchments and Glamours",
-            [questKeys.finishedBy_add] = {{211022}},
-        },
-        [78143] = {
-            [questKeys.name] = "Secrets of the Dreamers",
-            [questKeys.finishedBy_add] = {{211022}},
-        },
-        [78145] = {
-            [questKeys.name] = "Arcanic Systems Manual",
-            [questKeys.finishedBy_add] = {{211022}},
-        },
         [78148] = {
             [questKeys.name] = "Runes of the Sorcerer-Kings",
             [questKeys.finishedBy_add] = {{211033}},
-        },
-        [78149] = {
-            [questKeys.name] = "Fury of the Land",
-            [questKeys.finishedBy_add] = {{211022}},
-        },
-        [78261] = {
-            [questKeys.name] = "The Horn of Xelthos",
-            [questKeys.questLevel] = 23,
-            [questKeys.objectivesText] = {"Find The Horn of Xelthos inside of Shadowfang Keep. Then, return it to C's dead drop near Pyrewood Village. You must complete the job alone."},
         },
         [79007] = {
             [questKeys.name] = "... and that note you found",
@@ -96,28 +67,12 @@ function ForeverQuestTraces:Load()
             [questKeys.startedBy_add] = {nil,{415107}},
             [questKeys.finishedBy_add] = {nil,{415106}},
         },
-        [79091] = {
-            [questKeys.name] = "Archmage Antonidas: The Unabridged Autobiography",
-            [questKeys.finishedBy_add] = {{211033}},
-        },
         [79092] = {
             [questKeys.name] = "Archmage Theocritus' Research Journal",
             [questKeys.finishedBy_add] = {{211033}},
         },
-        [79093] = {
-            [questKeys.name] = "Rumi of Gnomeregan: The Collected Works",
-            [questKeys.finishedBy_add] = {{211033}},
-        },
-        [79094] = {
-            [questKeys.name] = "The Lessons of Ta'zo",
-            [questKeys.finishedBy_add] = {{211022}},
-        },
         [79095] = {
             [questKeys.name] = "The Apothecary's Metaphysical Primer",
-            [questKeys.finishedBy_add] = {{211022}},
-        },
-        [79097] = {
-            [questKeys.name] = "Baxtan: On Destructive Magics",
             [questKeys.finishedBy_add] = {{211022}},
         },
         [79192] = {
@@ -126,10 +81,6 @@ function ForeverQuestTraces:Load()
             [questKeys.objectivesText] = {"You tear the note from the plank and read the scrawled writing."},
             [questKeys.startedBy_add] = {nil,{415106,415107,424010}},
             [questKeys.finishedBy_add] = {nil,{424005}},
-        },
-        [79948] = {
-            [questKeys.name] = "Defensive Magics 101",
-            [questKeys.finishedBy_add] = {{211033}},
         },
         [79974] = {
             [questKeys.name] = "Wet Job",
@@ -158,23 +109,6 @@ function ForeverQuestTraces:Load()
             [questKeys.objectivesText] = {"Find what awaits you."},
             [questKeys.startedBy_add] = {nil,{424005}},
             [questKeys.finishedBy_add] = {nil,{424012}},
-        },
-        [81953] = {
-            [questKeys.name] = "Stonewrought Design",
-            [questKeys.finishedBy_add] = {{211033}},
-        },
-        [81954] = {
-            [questKeys.name] = "Venomous Journeys",
-            [questKeys.finishedBy_add] = {{211033}},
-        },
-        [81955] = {
-            [questKeys.name] = "A Mind of Metal",
-            [questKeys.finishedBy_add] = {{211033}},
-        },
-        [84396] = {
-            [questKeys.name] = "Magma or Lava?",
-            [questKeys.startedBy_add] = {{5497}},
-            [questKeys.finishedBy_add] = {{5497}},
         },
         [86574] = {
             [questKeys.questLevel] = 24,
@@ -1164,13 +1098,6 @@ function ForeverQuestTraces:Load()
             [questKeys.startedBy_add] = {{256083}},
             [questKeys.finishedBy_add] = {{251968}},
         },
-        [93739] = {
-            [questKeys.name] = "Exploring the Horde",
-            [questKeys.questLevel] = 13,
-            [questKeys.objectivesText] = {"Speak with Nazgrel in Grommash Hold to receive further instructions. Use the instructions received to locate and speak with Vol'jin, Cairne Bloodhoof, and Lady Sylvanas Windrunner."},
-            [questKeys.startedBy_add] = {{4949}},
-            [questKeys.finishedBy_add] = {{4949}},
-        },
         [93740] = {
             [questKeys.name] = "Blood for Blood",
             [questKeys.questLevel] = 11,
@@ -1804,13 +1731,6 @@ function ForeverQuestTraces:Load()
             [questKeys.startedBy_add] = {{246378}},
             [questKeys.finishedBy_add] = {{10181}},
         },
-        [95805] = {
-            [questKeys.name] = "Grace of An'she and Mu'sha",
-            [questKeys.questLevel] = 4,
-            [questKeys.objectivesText] = {"Carry the Smoldering Incense to the shrine of An'she and Mu'sha in the southeastern hills before the incense burns to ash in ten minutes!"},
-            [questKeys.startedBy_add] = {{2982}},
-            [questKeys.finishedBy_add] = {nil,{660739}},
-        },
         [95884] = {
             [questKeys.name] = "The Offering Stone",
             [questKeys.questLevel] = 23,
@@ -1971,11 +1891,6 @@ function ForeverQuestTraces:Load()
             [questKeys.startedBy_add] = {{264943}},
             [questKeys.finishedBy_add] = {{264943}},
         },
-        [96395] = {
-            [questKeys.name] = "An Ancient Grudge",
-            [questKeys.questLevel] = 15,
-            [questKeys.objectivesText] = {"Put the spirit of Faldrim Anvilmar to rest and then return to the Ghostly Attendant in the Hall of Thanes."},
-        },
         [96403] = {
             [questKeys.name] = "Important Heirlooms",
             [questKeys.questLevel] = 15,
@@ -2087,13 +2002,6 @@ function ForeverQuestTraces:Load()
             [questKeys.objectivesText] = {"Bring the journal to Brakk near Razor Hill."},
             [questKeys.startedBy_add] = {nil,{654925}},
             [questKeys.finishedBy_add] = {{265809}},
-        },
-        [96655] = {
-            [questKeys.name] = "Camping 101: Cooking",
-            [questKeys.questLevel] = 6,
-            [questKeys.objectivesText] = {"Speak with Cook Torka in Razor Hill to learn to become a cook."},
-            [questKeys.startedBy_add] = {{3191,265809}},
-            [questKeys.finishedBy_add] = {{3191}},
         },
         [96656] = {
             [questKeys.name] = "The Adventurer",
@@ -2850,13 +2758,6 @@ function ForeverQuestTraces:Load()
             [questKeys.startedBy_add] = {{8396}},
             [questKeys.finishedBy_add] = {{8396}},
         },
-        [98093] = {
-            [questKeys.name] = "Field to Clear",
-            [questKeys.questLevel] = 23,
-            [questKeys.objectivesText] = {"Sulhasa in southern Barrens wants you to clear out 7 Stormhide lizards and 7 Hecklefang Stalkers in the area so she can leave the tree safely."},
-            [questKeys.startedBy_add] = {{14242}},
-            [questKeys.finishedBy_add] = {{14242}},
-        },
         [98197] = {
             [questKeys.name] = "Spoils of War",
             [questKeys.questLevel] = 22,
@@ -2874,12 +2775,6 @@ function ForeverQuestTraces:Load()
             [questKeys.questLevel] = 60,
             [questKeys.objectivesText] = {"Deliver the Shipping Label to someone at the Durotar Supply and Logistics trade hub near the Crossroads in the Barrens."},
             [questKeys.finishedBy_add] = {{256386}},
-        },
-        [98282] = {
-            [questKeys.name] = "Alchemical Hazards",
-            [questKeys.questLevel] = 22,
-            [questKeys.objectivesText] = {"Collect an Unruptured Stalker Gland from Thelgen Rock for Caitlin Grassman in Menethil Harbor."},
-            [questKeys.startedBy_add] = {{1480}},
         },
         [98284] = {
             [questKeys.name] = "Camping 101: Enchanting",
@@ -2949,10 +2844,6 @@ function ForeverQuestTraces:Load()
             [questKeys.startedBy_add] = {{8508}},
             [questKeys.finishedBy_add] = {{8508}},
         },
-        [98372] = {
-            [questKeys.name] = "An Unfortunate End",
-            [questKeys.finishedBy_add] = {{271866}},
-        },
         [98386] = {
             [questKeys.name] = "Alther's Mill",
             [questKeys.questLevel] = 21,
@@ -2984,13 +2875,6 @@ function ForeverQuestTraces:Load()
             [questKeys.objectivesText] = {"Collect Hatescreech's Amulet, Windmistress Gaedress' Amulet, and Witchmother Arysa's Amulet for Sentinel Arynia Cloudsbreak in the Oracle Glade."},
             [questKeys.startedBy_add] = {{3519}},
             [questKeys.finishedBy_add] = {{3519}},
-        },
-        [98398] = {
-            [questKeys.name] = "The Oracle Tree",
-            [questKeys.questLevel] = 12,
-            [questKeys.objectivesText] = {"Find the Oracle Tree Bark nearby to receive its message."},
-            [questKeys.startedBy_add] = {{3519}},
-            [questKeys.finishedBy_add] = {nil,{673378}},
         },
         [98403] = {
             [questKeys.name] = "Twisted Hatred",

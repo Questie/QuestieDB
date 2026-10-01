@@ -254,13 +254,6 @@ function ForeverObjectTraces:Load()
             [objectKeys.spawns] = {[16593]={{56,58.71}}},
             [objectKeys.zoneID] = 16593,
         },
-        [673378] = {
-            [objectKeys.name] = "Oracle Tree Bark",
-            [objectKeys.spawns] = {[141]={{36.99,33.97},{37.03,34.1}}},
-            [objectKeys.zoneID] = 141,
-            [objectKeys.questStarts_add] = {940},
-            [objectKeys.questEnds_add] = {98398},
-        },
         [678602] = {
             [objectKeys.spawns] = {[1497]={{22.95,36.21}}},
             [objectKeys.zoneID] = 1497,
