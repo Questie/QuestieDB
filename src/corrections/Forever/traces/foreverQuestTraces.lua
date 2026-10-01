@@ -182,13 +182,11 @@ function ForeverQuestTraces:Load()
         [86576] = {
             [questKeys.name] = "Bloodfury Trinkets",
             [questKeys.questLevel] = 26,
-            [questKeys.objectives] = {nil,nil,{{277936}}},
             [questKeys.objectivesText] = {"Bring 15 Glittering Sunstones to Mor'rogal."},
         },
         [86585] = {
             [questKeys.name] = "Banner of the Fallen",
             [questKeys.questLevel] = 17,
-            [questKeys.objectives] = {{{269185}}},
             [questKeys.objectivesText] = {"Raise the standard of Ironforge, call out the trogg Headsplitter and kill it, then report to Captain Rugelfuss."},
             [questKeys.startedBy_add] = {{269153}},
             [questKeys.finishedBy_add] = {{1092}},
@@ -210,7 +208,6 @@ function ForeverQuestTraces:Load()
         [86758] = {
             [questKeys.name] = "Twisting the Knife",
             [questKeys.questLevel] = 16,
-            [questKeys.objectives] = {nil,nil,{{279591}}},
             [questKeys.objectivesText] = {"Find and defeat the crocolisk Daggerfang and bring back Marek's knife."},
             [questKeys.startedBy_add] = {{1154}},
             [questKeys.finishedBy_add] = {{1154}},
@@ -225,7 +222,6 @@ function ForeverQuestTraces:Load()
         [86784] = {
             [questKeys.name] = "Sticks and Bones",
             [questKeys.questLevel] = 7,
-            [questKeys.objectives] = {nil,nil,{{279991}}},
             [questKeys.objectivesText] = {"Collect 6 Dry Branches and bring them to Eleanor Shackleton."},
             [questKeys.startedBy_add] = {{1742}},
             [questKeys.finishedBy_add] = {{265812}},
@@ -233,7 +229,6 @@ function ForeverQuestTraces:Load()
         [87288] = {
             [questKeys.name] = "Soft Saber Pelts",
             [questKeys.questLevel] = 7,
-            [questKeys.objectives] = {nil,nil,{{280087}}},
             [questKeys.objectivesText] = {"Bring 6 Soft Nightsaber Pelts to Aldria."},
             [questKeys.startedBy_add] = {{3608}},
             [questKeys.finishedBy_add] = {{3608}},
@@ -275,7 +270,6 @@ function ForeverQuestTraces:Load()
         [91285] = {
             [questKeys.name] = "Murlocs at the Gates",
             [questKeys.questLevel] = 11,
-            [questKeys.objectives] = {{{250282,250283}}},
             [questKeys.objectivesText] = {"Slay 8 Vile Fin Attackers and 8 Vile Fin Seers and report back to Breton Samuels when it is done."},
             [questKeys.startedBy_add] = {{246349}},
             [questKeys.finishedBy_add] = {{246349}},
@@ -290,7 +284,6 @@ function ForeverQuestTraces:Load()
         [91316] = {
             [questKeys.name] = "Making Repairs",
             [questKeys.questLevel] = 11,
-            [questKeys.objectives] = {nil,nil,{{246213}}},
             [questKeys.objectivesText] = {"Collect 12 pieces of Sturdy Lumber from Shadowvale in Tirisfal Glades."},
             [questKeys.startedBy_add] = {{246393}},
             [questKeys.finishedBy_add] = {{246393}},
@@ -298,7 +291,6 @@ function ForeverQuestTraces:Load()
         [91317] = {
             [questKeys.name] = "The Tarnished",
             [questKeys.questLevel] = 12,
-            [questKeys.objectives] = {{{259433,259434}},nil,{{270435}}},
             [questKeys.objectivesText] = {"Slay 8 Tarnished Drudges, 6 Tarnished Zealots, and collect the head of Commander Rudolph Gelhardt in Tirisfal Glades."},
             [questKeys.startedBy_add] = {{246378}},
             [questKeys.finishedBy_add] = {{246378}},
@@ -306,7 +298,6 @@ function ForeverQuestTraces:Load()
         [91723] = {
             [questKeys.name] = "Delicate Instruments",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {{{476}}},
             [questKeys.objectivesText] = {"Kill 8 Kobold Geomancers in Jasperlode Mine, then return to Hamish Bergwort in the Tower of Azora."},
             [questKeys.startedBy_add] = {{248242}},
             [questKeys.finishedBy_add] = {{248242}},
@@ -314,7 +305,6 @@ function ForeverQuestTraces:Load()
         [91724] = {
             [questKeys.name] = "Delicate Instruments",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {{{474}}},
             [questKeys.objectivesText] = {"Kill 6 Defias Rogue Wizards at Stone Cairn Lake, then return to Hamish Bergwort in the Tower of Azora."},
             [questKeys.startedBy_add] = {{248242}},
             [questKeys.finishedBy_add] = {{248242}},
@@ -322,7 +312,6 @@ function ForeverQuestTraces:Load()
         [91725] = {
             [questKeys.name] = "Stolen Enchanting Supplies",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{247805}}},
             [questKeys.objectivesText] = {"Collect 5 Stolen Enchanting Supplies from gnoll camps around Stone Cairn Lake, then return to Blixie Fitzwink near the Tower of Azora."},
             [questKeys.startedBy_add] = {{248248}},
             [questKeys.finishedBy_add] = {{248248}},
@@ -330,7 +319,6 @@ function ForeverQuestTraces:Load()
         [91732] = {
             [questKeys.name] = "Good Steel",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{247816}}},
             [questKeys.objectivesText] = {"Collect 4 Mining Tools from Jasperlode Mine, then return to Hagar Lowe in Eastvale Logging Camp."},
             [questKeys.startedBy_add] = {{248266}},
             [questKeys.finishedBy_add] = {{248266}},
@@ -338,7 +326,6 @@ function ForeverQuestTraces:Load()
         [91733] = {
             [questKeys.name] = "Downstream",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{247813,247817,247818}}},
             [questKeys.objectivesText] = {"Collect the Waterlogged Axe, Waterlogged Saw, and Waterlogged Toolbox that have washed downstream from Eastvale Logging Camp, then return to Ormin Pelford."},
             [questKeys.startedBy_add] = {{248265}},
             [questKeys.finishedBy_add] = {{248265}},
@@ -361,7 +348,6 @@ function ForeverQuestTraces:Load()
         [91743] = {
             [questKeys.name] = "Rascally Rodents",
             [questKeys.questLevel] = 2,
-            [questKeys.objectives] = {nil,nil,{{247839}}},
             [questKeys.objectivesText] = {"Retrieve 8 Stolen Books from kobolds in Northshire Valley and return them to Brother Paxton."},
             [questKeys.startedBy_add] = {{951}},
             [questKeys.finishedBy_add] = {{951}},
@@ -382,7 +368,6 @@ function ForeverQuestTraces:Load()
         [91751] = {
             [questKeys.name] = "Rough Wolf Pelts",
             [questKeys.questLevel] = 7,
-            [questKeys.objectives] = {nil,nil,{{247877}}},
             [questKeys.objectivesText] = {"Skin wolves around Elwynn Forest to obtain 7 Rough Wolf Pelts, then deliver them to Helene Peltskinner near Goldshire."},
             [questKeys.startedBy_add] = {{6306}},
             [questKeys.finishedBy_add] = {{6306}},
@@ -390,7 +375,6 @@ function ForeverQuestTraces:Load()
         [91752] = {
             [questKeys.name] = "The Big Picture",
             [questKeys.questLevel] = 3,
-            [questKeys.objectives] = {nil,nil,{{247886}}},
             [questKeys.objectivesText] = {"Retrieve a Sack of \"Picture\" Books from Shinyfinder Narf. Bring the sack to Marshal McBride just inside Northshire's Abbey."},
             [questKeys.startedBy_add] = {{247226}},
             [questKeys.finishedBy_add] = {{197}},
@@ -398,7 +382,6 @@ function ForeverQuestTraces:Load()
         [91753] = {
             [questKeys.name] = "An Enchanting Lesson",
             [questKeys.questLevel] = 7,
-            [questKeys.objectives] = {nil,nil,{{247884}}},
             [questKeys.objectivesText] = {"Kitta Firewind in the Tower of Azora wants you to collect 3 Luminous Residue.","","Luminous Residue can be obtained by disenchanting Crude Wax Effigies dropped by Kobold Geomancers."},
             [questKeys.startedBy_add] = {{11072}},
             [questKeys.finishedBy_add] = {{11072}},
@@ -420,7 +403,6 @@ function ForeverQuestTraces:Load()
         [91775] = {
             [questKeys.name] = "Book Return",
             [questKeys.questLevel] = 6,
-            [questKeys.objectives] = {nil,nil,{{248001,248002}}},
             [questKeys.objectivesText] = {"Find 6 Lost Books and \"Fun with Elementals\" and return them to Marshal Dughan."},
             [questKeys.startedBy_add] = {{240}},
             [questKeys.finishedBy_add] = {{240}},
@@ -428,7 +410,6 @@ function ForeverQuestTraces:Load()
         [91777] = {
             [questKeys.name] = "Rare Books",
             [questKeys.questLevel] = 7,
-            [questKeys.objectives] = {nil,nil,{{248003,248004}}},
             [questKeys.objectivesText] = {"Recover \"Geomancy for Curious Young Wizards\" and \"Arcane Explainer: Magical Stuff in Simple Words\" and return them to Brother Paxton inside Northshire's Abbey."},
             [questKeys.startedBy_add] = {{240}},
             [questKeys.finishedBy_add] = {{951}},
@@ -446,7 +427,6 @@ function ForeverQuestTraces:Load()
         [91920] = {
             [questKeys.name] = "Wild Eyes",
             [questKeys.questLevel] = 11,
-            [questKeys.objectives] = {nil,nil,{{730}}},
             [questKeys.objectivesText] = {"Gather 3 murloc eyes and bring them to Apothecary Renferrel at the Sepulcher."},
             [questKeys.startedBy_add] = {{1951}},
             [questKeys.finishedBy_add] = {{1937}},
@@ -482,7 +462,6 @@ function ForeverQuestTraces:Load()
         [92421] = {
             [questKeys.name] = "Light's Justice",
             [questKeys.questLevel] = 22,
-            [questKeys.objectives] = {nil,nil,{{268580}}},
             [questKeys.objectivesText] = {"Collect 25 Intact Limbs within The Ruins of Lordaeron for Morbin Lightbane in the Undercity."},
             [questKeys.startedBy_add] = {{266484}},
             [questKeys.finishedBy_add] = {{266484}},
@@ -504,7 +483,6 @@ function ForeverQuestTraces:Load()
         [92461] = {
             [questKeys.name] = "Harmony in Balance",
             [questKeys.questLevel] = 1,
-            [questKeys.objectives] = {{{250873}}},
             [questKeys.objectivesText] = {"Slay 8 Vuldren Juveniles in Thendal Grove."},
             [questKeys.startedBy_add] = {{251361}},
             [questKeys.finishedBy_add] = {{251361}},
@@ -512,7 +490,6 @@ function ForeverQuestTraces:Load()
         [92462] = {
             [questKeys.name] = "Infestation Investigation",
             [questKeys.questLevel] = 2,
-            [questKeys.objectives] = {{{251169}}},
             [questKeys.objectivesText] = {"Slay 8 Pesky Cirrusflies in Thendal Grove."},
             [questKeys.startedBy_add] = {{251368}},
             [questKeys.finishedBy_add] = {{251368}},
@@ -520,7 +497,6 @@ function ForeverQuestTraces:Load()
         [92463] = {
             [questKeys.name] = "The Cirrusfly Queen",
             [questKeys.questLevel] = 3,
-            [questKeys.objectives] = {{{251404}}},
             [questKeys.objectivesText] = {"Destroy the Cirrusfly Queen in Thendal Grove."},
             [questKeys.startedBy_add] = {{251368}},
             [questKeys.finishedBy_add] = {{251368}},
@@ -535,7 +511,6 @@ function ForeverQuestTraces:Load()
         [92465] = {
             [questKeys.name] = "Agitators",
             [questKeys.questLevel] = 3,
-            [questKeys.objectives] = {{{251160}}},
             [questKeys.objectivesText] = {"Slay 6 Roiling Winds and 7 Al'Aketh Converts in Thendal Grove."},
             [questKeys.startedBy_add] = {{249363}},
             [questKeys.finishedBy_add] = {{249363}},
@@ -543,7 +518,6 @@ function ForeverQuestTraces:Load()
         [92466] = {
             [questKeys.name] = "Call of Earth",
             [questKeys.questLevel] = 4,
-            [questKeys.objectives] = {nil,nil,{{251924}}},
             [questKeys.objectivesText] = {"Bring a Signet of Akir to Windshaper Boro."},
             [questKeys.startedBy_add] = {{251374}},
             [questKeys.finishedBy_add] = {{251374}},
@@ -572,7 +546,6 @@ function ForeverQuestTraces:Load()
         [92470] = {
             [questKeys.name] = "Foul Matriarch",
             [questKeys.questLevel] = 5,
-            [questKeys.objectives] = {{{250937}},nil,{{252665}}},
             [questKeys.objectivesText] = {"Slay 8 Ursera Scavengers and collect the head of the den mother, Urs'anah in Thendal Grove."},
             [questKeys.startedBy_add] = {{251366}},
             [questKeys.finishedBy_add] = {{251366}},
@@ -594,7 +567,6 @@ function ForeverQuestTraces:Load()
         [92473] = {
             [questKeys.name] = "Aggressive Encroachment",
             [questKeys.questLevel] = 4,
-            [questKeys.objectives] = {nil,nil,{{251918}}},
             [questKeys.objectivesText] = {"Collect 6 Scrawny Ursera Claws from Scrawny Ursera in Thendal Grove."},
             [questKeys.startedBy_add] = {{257551}},
             [questKeys.finishedBy_add] = {{257551}},
@@ -658,7 +630,6 @@ function ForeverQuestTraces:Load()
         [92515] = {
             [questKeys.name] = "The Problem With Prideclaws",
             [questKeys.questLevel] = 6,
-            [questKeys.objectives] = {nil,nil,{{252670}}},
             [questKeys.objectivesText] = {"Collect 10 Prideclaw Pelts from the Prideclaws in Shen'dar Highlands."},
             [questKeys.startedBy_add] = {{251993}},
             [questKeys.finishedBy_add] = {{251993}},
@@ -666,7 +637,6 @@ function ForeverQuestTraces:Load()
         [92516] = {
             [questKeys.name] = "Hippogryph Harrassment",
             [questKeys.questLevel] = 7,
-            [questKeys.objectives] = {{{251261,251284,251291}}},
             [questKeys.objectivesText] = {"Slay 8 Hippogryph Youths, 6 Hippogryph Protectors and a Hippogryph Matriarch in the Shen'dar Highlands."},
             [questKeys.startedBy_add] = {{251906}},
             [questKeys.finishedBy_add] = {{251906}},
@@ -674,7 +644,6 @@ function ForeverQuestTraces:Load()
         [92517] = {
             [questKeys.name] = "The Criminal Element",
             [questKeys.questLevel] = 7,
-            [questKeys.objectives] = {{{251918,255534}}},
             [questKeys.objectivesText] = {"Kill 10 Highlands Bandits and their leader, \"Badwind\" Bennic in the Shen'dar Highlands."},
             [questKeys.startedBy_add] = {{251523}},
             [questKeys.finishedBy_add] = {{251523}},
@@ -703,7 +672,6 @@ function ForeverQuestTraces:Load()
         [92544] = {
             [questKeys.name] = "Al'Aketh Thugs",
             [questKeys.questLevel] = 5,
-            [questKeys.objectives] = {{{251145,251448,256935}}},
             [questKeys.objectivesText] = {"Slay 6 Al'Aketh Brutes, 4 Al'Aketh Neophytes, and Malduko Cloudcrush in Thendal Grove."},
             [questKeys.startedBy_add] = {{252095}},
             [questKeys.finishedBy_add] = {{252095}},
@@ -711,7 +679,6 @@ function ForeverQuestTraces:Load()
         [92550] = {
             [questKeys.name] = "Havoc in the Highlands",
             [questKeys.questLevel] = 8,
-            [questKeys.objectives] = {{{251662,252068}},nil,{{252661}}},
             [questKeys.objectivesText] = {"Travel to the ruins of Falaath Village and slay 6 Al'Aketh Stormcallers, 4 Living Lightning and take the head of Commander Cyclas."},
             [questKeys.startedBy_add] = {{251523}},
             [questKeys.finishedBy_add] = {{251523}},
@@ -719,7 +686,6 @@ function ForeverQuestTraces:Load()
         [92551] = {
             [questKeys.name] = "Stolen Supplies",
             [questKeys.questLevel] = 8,
-            [questKeys.objectives] = {nil,nil,{{252760}}},
             [questKeys.objectivesText] = {"Collect 10 packs of Stolen Shen'dar Supplies from Falaath Village in the Shen'dar Highlands."},
             [questKeys.startedBy_add] = {{252172}},
             [questKeys.finishedBy_add] = {{252172}},
@@ -727,7 +693,6 @@ function ForeverQuestTraces:Load()
         [92553] = {
             [questKeys.name] = "Restocking the Larders",
             [questKeys.questLevel] = 6,
-            [questKeys.objectives] = {nil,nil,{{5469,6889}}},
             [questKeys.objectivesText] = {"Collect 3 Small Eggs and 8 Strider Meat from creatures found throughout the Shen'dar Highlands."},
             [questKeys.startedBy_add] = {{251905}},
             [questKeys.finishedBy_add] = {{251905}},
@@ -777,7 +742,6 @@ function ForeverQuestTraces:Load()
         [92642] = {
             [questKeys.name] = "Disrupting Logistics",
             [questKeys.questLevel] = 11,
-            [questKeys.objectives] = {{{254596,270201}}},
             [questKeys.objectivesText] = {"Slay 4 Al'Aketh Healers and 8 Al'Aketh Brawlers in the Gustberry Lowlands."},
             [questKeys.startedBy_add] = {{252378}},
             [questKeys.finishedBy_add] = {{252378}},
@@ -799,7 +763,6 @@ function ForeverQuestTraces:Load()
         [92645] = {
             [questKeys.name] = "Breaking the Breaker",
             [questKeys.questLevel] = 11,
-            [questKeys.objectives] = {{{252666}}},
             [questKeys.objectivesText] = {"Slay Commander Belguilos in the Gustberry Lowlands."},
             [questKeys.startedBy_add] = {{252378}},
             [questKeys.finishedBy_add] = {{252378}},
@@ -821,7 +784,6 @@ function ForeverQuestTraces:Load()
         [92682] = {
             [questKeys.name] = "Make Yourself Useful",
             [questKeys.questLevel] = 9,
-            [questKeys.objectives] = {{{252802}},nil,{{253591}}},
             [questKeys.objectivesText] = {"Gather 10 Ripe Stormapples and slay 5 Hungry Bandits at the Windfield Orchard."},
             [questKeys.startedBy_add] = {{252800}},
             [questKeys.finishedBy_add] = {{252800}},
@@ -829,7 +791,6 @@ function ForeverQuestTraces:Load()
         [92683] = {
             [questKeys.name] = "Flutterfly Dust",
             [questKeys.questLevel] = 9,
-            [questKeys.objectives] = {nil,nil,{{253595}}},
             [questKeys.objectivesText] = {"Gather 5 Flutterfly Dust from the Flutterflies around the Gustberry Lowlands."},
             [questKeys.startedBy_add] = {{252800}},
             [questKeys.finishedBy_add] = {{252800}},
@@ -837,7 +798,6 @@ function ForeverQuestTraces:Load()
         [92684] = {
             [questKeys.name] = "Ornery Ornery Galestriders",
             [questKeys.questLevel] = 9,
-            [questKeys.objectives] = {nil,nil,{{253597}}},
             [questKeys.objectivesText] = {"Gather 7 Lowlands Galestrider Tenderloins from the Ornery Galestriders found throughout the Gustberry Lowlands."},
             [questKeys.startedBy_add] = {{252800}},
             [questKeys.finishedBy_add] = {{252800}},
@@ -845,7 +805,6 @@ function ForeverQuestTraces:Load()
         [92685] = {
             [questKeys.name] = "The Hills Have Eyes",
             [questKeys.questLevel] = 9,
-            [questKeys.objectives] = {nil,nil,{{253596}}},
             [questKeys.objectivesText] = {"Loot 7 Blood-Stained Bandit Masks from Highwayman Bandits in the Gustberry Lowlands."},
             [questKeys.startedBy_add] = {{252800}},
             [questKeys.finishedBy_add] = {{252800}},
@@ -922,7 +881,6 @@ function ForeverQuestTraces:Load()
         [92741] = {
             [questKeys.name] = "Unwelcome Visitors",
             [questKeys.questLevel] = 13,
-            [questKeys.objectives] = {nil,nil,{{254378}}},
             [questKeys.objectivesText] = {"Travel to Shadowgale Forest and collect 8 Shriekling Talons for Iaadaria Bitterwind in Valanaar."},
             [questKeys.startedBy_add] = {{253004}},
             [questKeys.finishedBy_add] = {{253004}},
@@ -937,7 +895,6 @@ function ForeverQuestTraces:Load()
         [92744] = {
             [questKeys.name] = "Murloc Gills",
             [questKeys.questLevel] = 12,
-            [questKeys.objectives] = {nil,nil,{{254548}}},
             [questKeys.objectivesText] = {"Alba Fairmoon wants you to collect 7 Longshore Murloc Gills along the shoreline of Westfall."},
             [questKeys.startedBy_add] = {{253092}},
             [questKeys.finishedBy_add] = {{253092}},
@@ -945,7 +902,6 @@ function ForeverQuestTraces:Load()
         [92745] = {
             [questKeys.name] = "The State of the Mines",
             [questKeys.questLevel] = 14,
-            [questKeys.objectives] = {{{1236,1426}}},
             [questKeys.objectivesText] = {"Slay 4 Kobold Diggers in the Jangolode Mine and 6 Riverpaw Miners in the Gold Coast Quarry."},
             [questKeys.startedBy_add] = {{253092}},
             [questKeys.finishedBy_add] = {{253092}},
@@ -953,7 +909,6 @@ function ForeverQuestTraces:Load()
         [92747] = {
             [questKeys.name] = "Moonbrook Espionage",
             [questKeys.questLevel] = 16,
-            [questKeys.objectives] = {nil,nil,{{254676}}},
             [questKeys.objectivesText] = {"Collect 8 Suspicious Industrial Supplies from Moonbrook."},
             [questKeys.startedBy_add] = {{253092}},
             [questKeys.finishedBy_add] = {{253092}},
@@ -999,7 +954,6 @@ function ForeverQuestTraces:Load()
         [92834] = {
             [questKeys.name] = "Avenged Tenfold",
             [questKeys.questLevel] = 11,
-            [questKeys.objectives] = {nil,nil,{{255658}}},
             [questKeys.objectivesText] = {"Collect 10 Al'Aketh Windstone Charms from Al'Aketh cultists found north of Valanaar at the Gustberry Fields or Shrine of Akir."},
             [questKeys.startedBy_add] = {{252475}},
             [questKeys.finishedBy_add] = {{252475}},
@@ -1021,7 +975,6 @@ function ForeverQuestTraces:Load()
         [92850] = {
             [questKeys.name] = "The Missing Scholar",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{257107}}},
             [questKeys.objectivesText] = {"Slay the Shriekling Matriarch in the Shriekling Den then return its head to Dondallion Whisperwind in Valanaar."},
             [questKeys.startedBy_add] = {{253284}},
             [questKeys.finishedBy_add] = {{253204,253285}},
@@ -1057,7 +1010,6 @@ function ForeverQuestTraces:Load()
         [92909] = {
             [questKeys.name] = "Harvesting the Harvesters",
             [questKeys.questLevel] = 15,
-            [questKeys.objectives] = {nil,nil,{{255007,255010}}},
             [questKeys.objectivesText] = {"Ozwin Ironsprocket at Saldean's Farm wants you to bring him 14 Golem Isosprings and 5 Harvester Gyrostabilizers."},
             [questKeys.startedBy_add] = {{253395}},
             [questKeys.finishedBy_add] = {{253395}},
@@ -1071,14 +1023,12 @@ function ForeverQuestTraces:Load()
         [92911] = {
             [questKeys.name] = "Harvesting the Harvesters",
             [questKeys.questLevel] = 15,
-            [questKeys.objectives] = {nil,nil,{{255007}}},
             [questKeys.objectivesText] = {"Ozwin Ironsprocket at Saldean's Farm wants you to bring him 8 Golem Isosprings, 4 Copper Modulators, and a Crude Scope."},
             [questKeys.finishedBy_add] = {{253395}},
         },
         [92947] = {
             [questKeys.name] = "Making Our Move",
             [questKeys.questLevel] = 12,
-            [questKeys.objectives] = {{{252762,252763,252765}}},
             [questKeys.objectivesText] = {"Slay 8 Al'Aketh Guardians, 6 Al'Aketh Spiritcallers, and 6 Al'Aketh Blademasters, then report to Hyusaa Quickbreeze at the Shrine of Akir."},
             [questKeys.startedBy_add] = {{253844}},
             [questKeys.finishedBy_add] = {{253576}},
@@ -1121,7 +1071,6 @@ function ForeverQuestTraces:Load()
         [93160] = {
             [questKeys.name] = "The Forest's Bounty",
             [questKeys.questLevel] = 13,
-            [questKeys.objectives] = {nil,nil,{{257128}}},
             [questKeys.objectivesText] = {"Gather 8 Shadowgale Acorns in Shadowgale Forest."},
             [questKeys.startedBy_add] = {{251684}},
             [questKeys.finishedBy_add] = {{251684}},
@@ -1129,7 +1078,6 @@ function ForeverQuestTraces:Load()
         [93165] = {
             [questKeys.name] = "Mercy Falls on Deaf Ears",
             [questKeys.questLevel] = 13,
-            [questKeys.objectives] = {nil,nil,{{258771}}},
             [questKeys.objectivesText] = {"Collect 10 Al'Aketh Cultist's Ears from the Al'Aketh cultists in Shadowgale Forest, the Shine of Akir, or Gustberry Lowlands."},
             [questKeys.startedBy_add] = {{254151}},
             [questKeys.finishedBy_add] = {{254151}},
@@ -1144,7 +1092,6 @@ function ForeverQuestTraces:Load()
         [93317] = {
             [questKeys.name] = "Crab Season",
             [questKeys.questLevel] = 9,
-            [questKeys.objectives] = {nil,nil,{{257941}}},
             [questKeys.objectivesText] = {"Collect 6 pieces of Windsong Crawler Meat."},
             [questKeys.startedBy_add] = {{257006}},
             [questKeys.finishedBy_add] = {{257006}},
@@ -1152,7 +1099,6 @@ function ForeverQuestTraces:Load()
         [93318] = {
             [questKeys.name] = "WANTED: Vulgara the Insatiable",
             [questKeys.questLevel] = 9,
-            [questKeys.objectives] = {nil,nil,{{257942}}},
             [questKeys.objectivesText] = {"Kill Vulgara the Insatiable in the Shen'dar Highlands and bring her head to Danarii Bellowveil."},
             [questKeys.startedBy_add] = {nil,{610954}},
             [questKeys.finishedBy_add] = {{252172}},
@@ -1160,7 +1106,6 @@ function ForeverQuestTraces:Load()
         [93319] = {
             [questKeys.name] = "Pilfered Windstones",
             [questKeys.questLevel] = 7,
-            [questKeys.objectives] = {nil,nil,{{257945}}},
             [questKeys.objectivesText] = {"Collect 10 Pilfered Windstones from the Highlands Bandits in the Shen'dar Highlands."},
             [questKeys.startedBy_add] = {{251906}},
             [questKeys.finishedBy_add] = {{251906}},
@@ -1187,7 +1132,6 @@ function ForeverQuestTraces:Load()
         [93552] = {
             [questKeys.name] = "Harvesting Windstones",
             [questKeys.questLevel] = 4,
-            [questKeys.objectives] = {nil,nil,{{258772}}},
             [questKeys.objectivesText] = {"Collect 15 Windstone Clusters from Raw Windstones in Thendal Grove."},
             [questKeys.startedBy_add] = {{251363}},
             [questKeys.finishedBy_add] = {{251363}},
@@ -1202,7 +1146,6 @@ function ForeverQuestTraces:Load()
         [93736] = {
             [questKeys.name] = "Unwelcome Spirits",
             [questKeys.questLevel] = 9,
-            [questKeys.objectives] = {nil,nil,{{262357}}},
             [questKeys.objectivesText] = {"Gather 10 Wind Hollow Essences from Wind Hollows in the Shadowgale Forest."},
             [questKeys.startedBy_add] = {{254344}},
             [questKeys.finishedBy_add] = {{254344}},
@@ -1231,7 +1174,6 @@ function ForeverQuestTraces:Load()
         [93740] = {
             [questKeys.name] = "Blood for Blood",
             [questKeys.questLevel] = 11,
-            [questKeys.objectives] = {nil,nil,{{255658}}},
             [questKeys.objectivesText] = {"Collect 10 Al'Aketh Windstone Charms from the corpses of Al'Aketh cultists in the Gustberry Lowlands."},
             [questKeys.startedBy_add] = {{251968}},
             [questKeys.finishedBy_add] = {{251968}},
@@ -1253,7 +1195,6 @@ function ForeverQuestTraces:Load()
         [93797] = {
             [questKeys.name] = "Boughs in the Wind",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{262668}}},
             [questKeys.objectivesText] = {"Bring a Wind-Infused Bough to Belann Windwood in Valanaar."},
             [questKeys.startedBy_add] = {{256507}},
             [questKeys.finishedBy_add] = {{256507}},
@@ -1282,7 +1223,6 @@ function ForeverQuestTraces:Load()
         [93927] = {
             [questKeys.name] = "A Last Request",
             [questKeys.questLevel] = 8,
-            [questKeys.objectives] = {{{252077,256966}},nil,{{263418}}},
             [questKeys.objectivesText] = {"Collect the note you found near the dead peacekeeper and read it to determine your next steps."},
             [questKeys.startedBy_add] = {{252155}},
             [questKeys.finishedBy_add] = {{251523}},
@@ -1311,7 +1251,6 @@ function ForeverQuestTraces:Load()
         [93951] = {
             [questKeys.name] = "A Little Beauty",
             [questKeys.questLevel] = 7,
-            [questKeys.objectives] = {nil,nil,{{263493}}},
             [questKeys.objectivesText] = {"Collect 8 Hippogryph Down feathers in the Shen'dar Highlands."},
             [questKeys.startedBy_add] = {{251991}},
             [questKeys.finishedBy_add] = {{251991}},
@@ -1333,7 +1272,6 @@ function ForeverQuestTraces:Load()
         [94003] = {
             [questKeys.name] = "The Skybreaker Bulwark",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{263993}}},
             [questKeys.objectivesText] = {"Reclaim the Skybreaker Bulwark from Zaal Stormshield at the Shrine of Akir."},
             [questKeys.startedBy_add] = {{252377}},
             [questKeys.finishedBy_add] = {{252377}},
@@ -1388,7 +1326,6 @@ function ForeverQuestTraces:Load()
         [94373] = {
             [questKeys.name] = "Call of Earth",
             [questKeys.questLevel] = 4,
-            [questKeys.objectives] = {nil,nil,{{264356}}},
             [questKeys.objectivesText] = {"Bring 2 Frostmane Bear Pendants to Teo Hammerstorm in Anvilmar."},
             [questKeys.startedBy_add] = {{257446}},
             [questKeys.finishedBy_add] = {{257446}},
@@ -1438,7 +1375,6 @@ function ForeverQuestTraces:Load()
         [94434] = {
             [questKeys.name] = "A Lesson in Divinity",
             [questKeys.questLevel] = 12,
-            [questKeys.objectives] = {nil,nil,{{2589}}},
             [questKeys.objectivesText] = {"Bring 10 Linen Cloth to Tanis Alderwood in the Undercity."},
             [questKeys.startedBy_add] = {{257648}},
             [questKeys.finishedBy_add] = {{257648}},
@@ -1467,7 +1403,6 @@ function ForeverQuestTraces:Load()
         [94440] = {
             [questKeys.name] = "A Lesson in Divinity",
             [questKeys.questLevel] = 12,
-            [questKeys.objectives] = {nil,nil,{{264693}}},
             [questKeys.objectivesText] = {"Retrieve the Scarlet Crusade Attack Plans from the Scarlet Crusaders at Venomweb Vale, and return to Deathguard Billmuth at Tyr's Watch."},
             [questKeys.startedBy_add] = {{257663}},
             [questKeys.finishedBy_add] = {{257655}},
@@ -1496,7 +1431,6 @@ function ForeverQuestTraces:Load()
         [94466] = {
             [questKeys.name] = "Call of Fire",
             [questKeys.questLevel] = 14,
-            [questKeys.objectives] = {nil,nil,{{5026,6652}}},
             [questKeys.objectivesText] = {"Bring 1 Fire Tar and 1 Reagent Pouch to Braldir Ashmantle in Loch Modan."},
             [questKeys.startedBy_add] = {{257808}},
             [questKeys.finishedBy_add] = {{257808}},
@@ -1504,7 +1438,6 @@ function ForeverQuestTraces:Load()
         [94467] = {
             [questKeys.name] = "Call of Fire",
             [questKeys.questLevel] = 14,
-            [questKeys.objectives] = {nil,nil,{{6655}}},
             [questKeys.objectivesText] = {"Defeat the Minor Manifestation of Fire, and place the Glowing Ember in the brazier atop the Shrine of Eternal Flame."},
             [questKeys.startedBy_add] = {{257808}},
             [questKeys.finishedBy_add] = {nil,{61934}},
@@ -1531,7 +1464,6 @@ function ForeverQuestTraces:Load()
         [94485] = {
             [questKeys.name] = "Tears of the Lady",
             [questKeys.questLevel] = 12,
-            [questKeys.objectives] = {nil,nil,{{265105}}},
             [questKeys.objectivesText] = {"Collect 8 Lady's Tear Moss."},
             [questKeys.startedBy_add] = {{257944}},
             [questKeys.finishedBy_add] = {{257944}},
@@ -1546,7 +1478,6 @@ function ForeverQuestTraces:Load()
         [94487] = {
             [questKeys.name] = "Unwanted and Unworthy",
             [questKeys.questLevel] = 11,
-            [questKeys.objectives] = {nil,nil,{{265141}}},
             [questKeys.objectivesText] = {"Collect 10 Bloodied Heirlooms from Al'Aketh Footsoldiers and Al'Aketh Stormchasers in the Shadowgale Forest."},
             [questKeys.startedBy_add] = {{257944}},
             [questKeys.finishedBy_add] = {{257944}},
@@ -1554,7 +1485,6 @@ function ForeverQuestTraces:Load()
         [94488] = {
             [questKeys.name] = "The Ties That Bind",
             [questKeys.questLevel] = 11,
-            [questKeys.objectives] = {nil,nil,{{265475}}},
             [questKeys.objectivesText] = {"Kill Commander Haalien and bring his head to Elegael Thornpaw in the Shadowgale Forest."},
             [questKeys.startedBy_add] = {{257944}},
             [questKeys.finishedBy_add] = {{257944}},
@@ -1616,7 +1546,6 @@ function ForeverQuestTraces:Load()
         [94638] = {
             [questKeys.name] = "Strength and Mercy",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {{{258443}}},
             [questKeys.objectivesText] = {"Find and kill Ur'endra in the Shen'dar Highlands."},
             [questKeys.startedBy_add] = {{255853}},
             [questKeys.finishedBy_add] = {{255853}},
@@ -1662,7 +1591,6 @@ function ForeverQuestTraces:Load()
         [94896] = {
             [questKeys.name] = "Aid For The Refugees",
             [questKeys.questLevel] = 11,
-            [questKeys.objectives] = {nil,nil,{{266433}}},
             [questKeys.objectivesText] = {"Collect 8 Abandoned Belongings from the ruins of Ban'aethal."},
             [questKeys.startedBy_add] = {{259012}},
             [questKeys.finishedBy_add] = {{259012}},
@@ -1726,7 +1654,6 @@ function ForeverQuestTraces:Load()
         [95041] = {
             [questKeys.name] = "Data Hoarders",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{267413}}},
             [questKeys.objectivesText] = {"Collect 7 Gnomeregan Archival Data cards from around Gnomeregan, then deliver them to Jemma Quikswitch in Ironforge."},
             [questKeys.startedBy_add] = {{11028}},
             [questKeys.finishedBy_add] = {{11028}},
@@ -1754,7 +1681,6 @@ function ForeverQuestTraces:Load()
         [95195] = {
             [questKeys.name] = "Bloodied Insignia",
             [questKeys.questLevel] = 22,
-            [questKeys.objectives] = {nil,nil,{{268535}}},
             [questKeys.objectivesText] = {"Collect 10 Bloodied Insignias and take them to General Marcus Jonathan in Stormwind City."},
             [questKeys.finishedBy_add] = {{466}},
         },
@@ -1766,7 +1692,6 @@ function ForeverQuestTraces:Load()
         [95212] = {
             [questKeys.name] = "Never Saddle on Quality",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{267414}}},
             [questKeys.objectivesText] = {"Collect 6 Pristine Leopard Pelts and deliver them to Amberstill Ranch."},
             [questKeys.startedBy_add] = {{1265}},
             [questKeys.finishedBy_add] = {{1265}},
@@ -1774,14 +1699,12 @@ function ForeverQuestTraces:Load()
         [95213] = {
             [questKeys.name] = "Stolen Blasting Powder",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{268548}}},
             [questKeys.objectivesText] = {"Bring the Empty Powder Keg to Quarrymaster Thesten at Gol'Bolar Quarry."},
             [questKeys.finishedBy_add] = {{1256}},
         },
         [95214] = {
             [questKeys.name] = "Stolen Blasting Powder",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{267415}}},
             [questKeys.objectivesText] = {"Recover 16 Stolen Blasting Powder from the troggs east of Gol'Bolar Quarry, then return to Quarrymaster Thesten."},
             [questKeys.startedBy_add] = {{1256}},
             [questKeys.finishedBy_add] = {{1256}},
@@ -1789,7 +1712,6 @@ function ForeverQuestTraces:Load()
         [95216] = {
             [questKeys.name] = "The New Plague",
             [questKeys.questLevel] = 22,
-            [questKeys.objectives] = {nil,nil,{{275443}}},
             [questKeys.objectivesText] = {"Collect the Highly Toxic Strain from Witherfang in Ruins of Lordaeron for Theodore Griffs in Undercity."},
             [questKeys.startedBy_add] = {{11835}},
             [questKeys.finishedBy_add] = {{11835}},
@@ -1804,13 +1726,11 @@ function ForeverQuestTraces:Load()
         [95250] = {
             [questKeys.name] = "Abominable Creatures",
             [questKeys.questLevel] = 21,
-            [questKeys.objectives] = {nil,nil,{{268518}}},
             [questKeys.objectivesText] = {"Collect the Head of the Baron in the Ruins of Lordaeron and bring it back to Captain Truman."},
         },
         [95314] = {
             [questKeys.name] = "That Shadowvale Green Elixir",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{268801}}},
             [questKeys.objectivesText] = {"Collect 8 Bottles of Whispering Elixir from Shadowvale, then return to Carolai Anise in Brill."},
             [questKeys.startedBy_add] = {{2132}},
             [questKeys.finishedBy_add] = {{2132}},
@@ -1818,7 +1738,6 @@ function ForeverQuestTraces:Load()
         [95328] = {
             [questKeys.name] = "Whispering Horror Residue",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{268812}}},
             [questKeys.objectivesText] = {"Deliver Whispering Horror Residue to Father Lankester in the War Quarter of Undercity."},
             [questKeys.finishedBy_add] = {{4607}},
         },
@@ -1839,7 +1758,6 @@ function ForeverQuestTraces:Load()
         [95494] = {
             [questKeys.name] = "Bruised Pride and Lion Hides",
             [questKeys.questLevel] = 18,
-            [questKeys.objectives] = {nil,nil,{{269715}}},
             [questKeys.objectivesText] = {"Collect 6 Savannah Lion Hides from the Savannah Matriarchs and Savannah Patriarchs in the Barrens."},
             [questKeys.startedBy_add] = {{3682}},
             [questKeys.finishedBy_add] = {{3682}},
@@ -1854,7 +1772,6 @@ function ForeverQuestTraces:Load()
         [95507] = {
             [questKeys.name] = "Vrang's Game",
             [questKeys.questLevel] = 18,
-            [questKeys.objectives] = {nil,nil,{{269719}}},
             [questKeys.objectivesText] = {"Collect 8 Trapped Game from traps found in Sprung Traps in the Barrens."},
             [questKeys.startedBy_add] = {{3682}},
             [questKeys.finishedBy_add] = {{3682}},
@@ -1902,7 +1819,6 @@ function ForeverQuestTraces:Load()
         [95981] = {
             [questKeys.name] = "Watching the Roads",
             [questKeys.questLevel] = 20,
-            [questKeys.objectives] = {{{1888,1889}}},
             [questKeys.objectivesText] = {"Slay 8 Dalaran Wizards and 8 Dalaran Watchers for Shadow Priest Allister in the Sepulcher."},
             [questKeys.startedBy_add] = {{2121}},
             [questKeys.finishedBy_add] = {{2121}},
@@ -1917,7 +1833,6 @@ function ForeverQuestTraces:Load()
         [95999] = {
             [questKeys.name] = "WANTED: Incinerator Gar'im",
             [questKeys.questLevel] = 25,
-            [questKeys.objectives] = {nil,nil,{{271872}}},
             [questKeys.objectivesText] = {"Deliver the Broken Staff of Incinerator Gar'im to Magistrate Solomon in Lakeshire."},
         },
         [96031] = {
@@ -2007,7 +1922,6 @@ function ForeverQuestTraces:Load()
         [96130] = {
             [questKeys.name] = "Chakuyak",
             [questKeys.questLevel] = 5,
-            [questKeys.objectives] = {nil,nil,{{270302}}},
             [questKeys.objectivesText] = {"Defeat Chakuyak and bring back her pelt."},
             [questKeys.startedBy_add] = {{3065}},
             [questKeys.finishedBy_add] = {{3065}},
@@ -2020,14 +1934,12 @@ function ForeverQuestTraces:Load()
         [96139] = {
             [questKeys.name] = "The Valor Family",
             [questKeys.questLevel] = 22,
-            [questKeys.objectives] = {nil,nil,{{281046}}},
             [questKeys.objectivesText] = {"Search Raven Hill for anything of interest and return to Sirra Von'Indi in Darkshire."},
             [questKeys.startedBy_add] = {{268}},
         },
         [96390] = {
             [questKeys.name] = "Nip 'Em in the Bud",
             [questKeys.questLevel] = 13,
-            [questKeys.objectives] = {{{6123}}},
             [questKeys.objectivesText] = {"Slay 10 Dark Iron Spies in Dun Morogh."},
             [questKeys.startedBy_add] = {{264936}},
             [questKeys.finishedBy_add] = {{264936}},
@@ -2048,7 +1960,6 @@ function ForeverQuestTraces:Load()
         [96393] = {
             [questKeys.name] = "Old Ironforge Incursion",
             [questKeys.questLevel] = 16,
-            [questKeys.objectives] = {nil,nil,{{274286}}},
             [questKeys.objectivesText] = {"Enter the Hall of Thanes beneath Old Ironforge and claim the Head of Durgen Dirgehammer."},
             [questKeys.startedBy_add] = {{264936}},
             [questKeys.finishedBy_add] = {{2784}},
@@ -2068,7 +1979,6 @@ function ForeverQuestTraces:Load()
         [96403] = {
             [questKeys.name] = "Important Heirlooms",
             [questKeys.questLevel] = 15,
-            [questKeys.objectives] = {nil,nil,{{274289}}},
             [questKeys.objectivesText] = {"Collect 8 Dwarven Heirlooms from the Hall of Thanes."},
             [questKeys.startedBy_add] = {{265003}},
             [questKeys.finishedBy_add] = {{265003}},
@@ -2215,7 +2125,6 @@ function ForeverQuestTraces:Load()
         [96821] = {
             [questKeys.name] = "Legging It",
             [questKeys.questLevel] = 6,
-            [questKeys.objectives] = {{{266849,266850}}},
             [questKeys.objectivesText] = {"Kill 6 Ridgeshade Creepers and 6 Ridgeshade Lurkers in southern Durotar, then report to Gar'thok in Razor Hill."},
             [questKeys.startedBy_add] = {{3194}},
             [questKeys.finishedBy_add] = {{3139}},
@@ -2223,7 +2132,6 @@ function ForeverQuestTraces:Load()
         [96822] = {
             [questKeys.name] = "For Honor",
             [questKeys.questLevel] = 6,
-            [questKeys.objectives] = {nil,nil,{{275713,275716,275717}}},
             [questKeys.objectivesText] = {"Collect the Raider's Battleaxe, Raider's Bow, and Raider's Shield from the Tiragarde Keep outskirts, then return them to Turroc in Razor Hill."},
             [questKeys.startedBy_add] = {{266940}},
             [questKeys.finishedBy_add] = {{266940}},
@@ -2231,7 +2139,6 @@ function ForeverQuestTraces:Load()
         [96825] = {
             [questKeys.name] = "This Fruit Could Bite Back",
             [questKeys.questLevel] = 6,
-            [questKeys.objectives] = {nil,nil,{{275718}}},
             [questKeys.objectivesText] = {"Cook Torka in Razor Hill wants you to collect 8 Prickly Pear Fruit from the Razormane Grounds west of town."},
             [questKeys.startedBy_add] = {{3191}},
             [questKeys.finishedBy_add] = {{3191}},
@@ -2239,7 +2146,6 @@ function ForeverQuestTraces:Load()
         [96873] = {
             [questKeys.name] = "A Pain in the Neck",
             [questKeys.questLevel] = 8,
-            [questKeys.objectives] = {nil,nil,{{247884}}},
             [questKeys.objectivesText] = {"Pa'zula in Sen'jin Village wants you to collect 3 Luminous Residue. Luminous Residue can be obtained by disenchanting Hexed Pendants dropped by trolls in the Echo Isles."},
             [questKeys.startedBy_add] = {{266881}},
             [questKeys.finishedBy_add] = {{266881}},
@@ -2253,7 +2159,6 @@ function ForeverQuestTraces:Load()
         [96875] = {
             [questKeys.name] = "Beasts of Thunder Ridge",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{275720}}},
             [questKeys.objectivesText] = {"Kamari in Orgrimmar wants you to collect 5 Rough Lizard Hide from beasts in Thunder Ridge, along with 2 Cured Light Hides."},
             [questKeys.startedBy_add] = {{5811}},
             [questKeys.finishedBy_add] = {{5811}},
@@ -2287,7 +2192,6 @@ function ForeverQuestTraces:Load()
         [96897] = {
             [questKeys.name] = "The Cult of the Damned",
             [questKeys.questLevel] = 13,
-            [questKeys.objectives] = {{{1547,267006,275437}}},
             [questKeys.objectivesText] = {"Kill 8 Dark Neophytes and 8 Dark Enforcers in Tirisfal Glades."},
             [questKeys.startedBy_add] = {{267009}},
             [questKeys.finishedBy_add] = {{267009}},
@@ -2295,7 +2199,6 @@ function ForeverQuestTraces:Load()
         [96898] = {
             [questKeys.name] = "Remnants of War",
             [questKeys.questLevel] = 13,
-            [questKeys.objectives] = {nil,nil,{{275851}}},
             [questKeys.objectivesText] = {"Gather 12 Necrotic Crystal Fragments in Tirisfal Glades."},
             [questKeys.startedBy_add] = {{267009}},
             [questKeys.finishedBy_add] = {{267009}},
@@ -2310,7 +2213,6 @@ function ForeverQuestTraces:Load()
         [97003] = {
             [questKeys.name] = "Chol'aruk the Ravener",
             [questKeys.questLevel] = 21,
-            [questKeys.objectives] = {nil,nil,{{276070}}},
             [questKeys.objectivesText] = {"Bring the head of Chol'aruk to Gur'ak in the Barrens."},
             [questKeys.startedBy_add] = {{267310}},
             [questKeys.finishedBy_add] = {{267310}},
@@ -2337,7 +2239,6 @@ function ForeverQuestTraces:Load()
         [97223] = {
             [questKeys.name] = "Bloodtalon Matriarch",
             [questKeys.questLevel] = 8,
-            [questKeys.objectives] = {nil,nil,{{277128}}},
             [questKeys.objectivesText] = {"Bring Eggs of the Bloodtalon Matriarch to Xar'Ti in Sen'jin Village."},
             [questKeys.startedBy_add] = {{7953}},
             [questKeys.finishedBy_add] = {{7953}},
@@ -2345,7 +2246,6 @@ function ForeverQuestTraces:Load()
         [97225] = {
             [questKeys.name] = "Forgotten Loa Idols",
             [questKeys.questLevel] = 9,
-            [questKeys.objectives] = {nil,nil,{{277135}}},
             [questKeys.objectivesText] = {"Collect 8 Forgotten Loa Idols from the Echo Isles. Bring them to Master Gadrin in Sen'jin Village."},
             [questKeys.startedBy_add] = {{3304}},
             [questKeys.finishedBy_add] = {{3188}},
@@ -2366,7 +2266,6 @@ function ForeverQuestTraces:Load()
         [97237] = {
             [questKeys.name] = "Shelf Picked",
             [questKeys.questLevel] = 18,
-            [questKeys.objectives] = {nil,nil,{{277194,277195,277196,277197}}},
             [questKeys.objectivesText] = {"Find each of the reading materials located somewhere in the library and then return to Roy Lewells in Stormwind's Park."},
             [questKeys.startedBy_add] = {{2504}},
             [questKeys.finishedBy_add] = {{268568}},
@@ -2374,7 +2273,6 @@ function ForeverQuestTraces:Load()
         [97242] = {
             [questKeys.name] = "Yelmak's Medley",
             [questKeys.questLevel] = 15,
-            [questKeys.objectives] = {nil,nil,{{277278,277279}}},
             [questKeys.objectivesText] = {"Take some cuttings from the Cattails and Speargrass growing around the water flows in the Valley of Honor and return to Kor'geld in Yelmak's Alchemy and Potions"},
             [questKeys.startedBy_add] = {{3348}},
             [questKeys.finishedBy_add] = {{3348}},
@@ -2389,7 +2287,6 @@ function ForeverQuestTraces:Load()
         [97244] = {
             [questKeys.name] = "Call of Fire",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{277267}}},
             [questKeys.objectivesText] = {"Slay Skypriest Faladiel in the Gustberry Lowlands and collect Faladiel's Heart."},
             [questKeys.startedBy_add] = {{268592}},
             [questKeys.finishedBy_add] = {{268592}},
@@ -2397,7 +2294,6 @@ function ForeverQuestTraces:Load()
         [97245] = {
             [questKeys.name] = "Call of Fire",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{277269}}},
             [questKeys.objectivesText] = {"Find the home of Kuramaa in the Shen'dar Highlands, and defeat the spirit in combat. Bring Kuramaa's Mask to Olariaan Swiftburn in the Gustberry Lowlands when you are victorious."},
             [questKeys.startedBy_add] = {{268592}},
             [questKeys.finishedBy_add] = {{268592}},
@@ -2419,14 +2315,12 @@ function ForeverQuestTraces:Load()
         [97250] = {
             [questKeys.name] = "Wrongly Blamed, Justly Corrected",
             [questKeys.questLevel] = 23,
-            [questKeys.objectives] = {{{268622,268623}}},
             [questKeys.objectivesText] = {"Slay Alliance soldiers encroaching into the Barrens at the border to Dustwallow Marsh, then return to Grunt Logmar at Camp Taurajo."},
             [questKeys.startedBy_add] = {{5911}},
         },
         [97253] = {
             [questKeys.name] = "Parts and Pieces",
             [questKeys.questLevel] = 14,
-            [questKeys.objectives] = {nil,nil,{{277331}}},
             [questKeys.objectivesText] = {"Collect 5 Handfuls of Complicated Parts from the upper pirate camp south of Ratchet, then return to Wrenix the Wretched in Ratchet."},
             [questKeys.startedBy_add] = {{7161}},
             [questKeys.finishedBy_add] = {{7161}},
@@ -2455,7 +2349,6 @@ function ForeverQuestTraces:Load()
         [97277] = {
             [questKeys.name] = "Grund and Gozwin",
             [questKeys.questLevel] = 6,
-            [questKeys.objectives] = {{{269075}},nil,{{277976}}},
             [questKeys.objectivesText] = {"Find Grund and Gozwin's camp in the hills to the northwest. Recover Gozwin's Mechanic's Log and kill the Snow Leopard Prowler."},
             [questKeys.startedBy_add] = {{2756}},
             [questKeys.finishedBy_add] = {{2756}},
@@ -2463,7 +2356,6 @@ function ForeverQuestTraces:Load()
         [97279] = {
             [questKeys.name] = "Wayward Weapons",
             [questKeys.questLevel] = 2,
-            [questKeys.objectives] = {nil,nil,{{277653}}},
             [questKeys.objectivesText] = {"Collect 6 Abandoned Training Weapons, then return to Kzan Thornslash in the Den."},
             [questKeys.startedBy_add] = {{3143}},
             [questKeys.finishedBy_add] = {{3159}},
@@ -2477,7 +2369,6 @@ function ForeverQuestTraces:Load()
         [97282] = {
             [questKeys.name] = "Stormy Potential",
             [questKeys.questLevel] = 11,
-            [questKeys.objectives] = {nil,nil,{{277665}}},
             [questKeys.objectivesText] = {"Bring 5 Charged Thunder Lizard Organs to Rezlak near Drygulch Ravine."},
             [questKeys.startedBy_add] = {{3293}},
             [questKeys.finishedBy_add] = {{3293}},
@@ -2505,7 +2396,6 @@ function ForeverQuestTraces:Load()
         [97326] = {
             [questKeys.name] = "Rocks to Rests",
             [questKeys.questLevel] = 15,
-            [questKeys.objectives] = {nil,nil,{{277952}}},
             [questKeys.objectivesText] = {"Return 8 Smooth Boulders to Thra behind Grommash Hold."},
             [questKeys.startedBy_add] = {{268684}},
             [questKeys.finishedBy_add] = {{268684}},
@@ -2525,7 +2415,6 @@ function ForeverQuestTraces:Load()
         [97558] = {
             [questKeys.name] = "Hides for the Forsaken",
             [questKeys.questLevel] = 11,
-            [questKeys.objectives] = {nil,nil,{{278242,278243,278244}}},
             [questKeys.objectivesText] = {"Bring Shelene Rhobart 8 Duskbat Wing Membranes, 6 Darkhound Hides and 3 Vile Fin Murloc Skin."},
             [questKeys.startedBy_add] = {{3549}},
             [questKeys.finishedBy_add] = {{3549}},
@@ -2889,7 +2778,6 @@ function ForeverQuestTraces:Load()
         [97977] = {
             [questKeys.name] = "Nature's Call",
             [questKeys.questLevel] = 3,
-            [questKeys.objectives] = {nil,nil,{{279082}}},
             [questKeys.objectivesText] = {"Collect 4  Gnarlpine Totems and bring them to Tarindrella."},
             [questKeys.startedBy_add] = {{1992}},
             [questKeys.finishedBy_add] = {{1992}},
@@ -2904,7 +2792,6 @@ function ForeverQuestTraces:Load()
         [98013] = {
             [questKeys.name] = "Swelling Forces",
             [questKeys.questLevel] = 20,
-            [questKeys.objectives] = {{{2181,2182,2183}}},
             [questKeys.objectivesText] = {"Eliminate 12 Stormscale Myrmidons, 8 Stormscale Sorceresses, and 6 Stormscale Warriors for Arbal at the Grove of the Ancients."},
             [questKeys.startedBy_add] = {{270269}},
             [questKeys.finishedBy_add] = {{270269}},
@@ -2926,7 +2813,6 @@ function ForeverQuestTraces:Load()
         [98025] = {
             [questKeys.name] = "WANTED: Jai'vhanel",
             [questKeys.questLevel] = 13,
-            [questKeys.objectives] = {nil,nil,{{281038}}},
             [questKeys.objectivesText] = {"Find and slay the owl known as Jai'vhanel and take one of her feathers. The black owl was last seen north of the Ameth'Aran ruins near the mountain base. Report the death of Jai'vhanel to Sentinel Glynda Nal'Shea in Auberdine."},
             [questKeys.startedBy_add] = {nil,{175320}},
             [questKeys.finishedBy_add] = {{2930}},
@@ -2940,7 +2826,6 @@ function ForeverQuestTraces:Load()
         [98042] = {
             [questKeys.name] = "It's All Fun and Games Until...",
             [questKeys.questLevel] = 17,
-            [questKeys.objectives] = {nil,nil,{{279279}}},
             [questKeys.objectivesText] = {"Obtain a Peerless Eye from a Twilight Disciple or Thug at the Master's Glaive in Darkshore and find someone in Auberdine who is willing to take it."},
             [questKeys.finishedBy_add] = {{3649}},
         },
@@ -2968,7 +2853,6 @@ function ForeverQuestTraces:Load()
         [98093] = {
             [questKeys.name] = "Field to Clear",
             [questKeys.questLevel] = 23,
-            [questKeys.objectives] = {{{3238,4128}}},
             [questKeys.objectivesText] = {"Sulhasa in southern Barrens wants you to clear out 7 Stormhide lizards and 7 Hecklefang Stalkers in the area so she can leave the tree safely."},
             [questKeys.startedBy_add] = {{14242}},
             [questKeys.finishedBy_add] = {{14242}},
@@ -2976,7 +2860,6 @@ function ForeverQuestTraces:Load()
         [98197] = {
             [questKeys.name] = "Spoils of War",
             [questKeys.questLevel] = 22,
-            [questKeys.objectives] = {nil,nil,{{279821,279822}}},
             [questKeys.objectivesText] = {"Recover 6 Khaz Modan Timber and 30 Khaz Modan Iron from Menethil Harbor for Valstag Ironjaw."},
             [questKeys.startedBy_add] = {{2086}},
         },
@@ -3041,7 +2924,6 @@ function ForeverQuestTraces:Load()
         [98321] = {
             [questKeys.name] = "Flintfire's Shipment",
             [questKeys.questLevel] = 7,
-            [questKeys.objectives] = {nil,nil,{{280413}}},
             [questKeys.objectivesText] = {"Collect 8 Flintfire Shipments from the Grizzled Den for Tongus Flintfire in Kharanos."},
             [questKeys.startedBy_add] = {{1241}},
             [questKeys.finishedBy_add] = {{1241}},
@@ -3063,7 +2945,6 @@ function ForeverQuestTraces:Load()
         [98326] = {
             [questKeys.name] = "Frosthowl",
             [questKeys.questLevel] = 9,
-            [questKeys.objectives] = {nil,nil,{{280426}}},
             [questKeys.objectivesText] = {"Slay Frosthowl and collect the Sack of Fish for Gretta Ganter in Brewnall Village"},
             [questKeys.startedBy_add] = {{8508}},
             [questKeys.finishedBy_add] = {{8508}},
@@ -3075,14 +2956,12 @@ function ForeverQuestTraces:Load()
         [98386] = {
             [questKeys.name] = "Alther's Mill",
             [questKeys.questLevel] = 21,
-            [questKeys.objectives] = {{{505}}},
             [questKeys.objectivesText] = {"Slay 12 Greater Tarantulas and destroy 6 Tarantula Eggs in Alther's Mill for Foreman Oslow in Redridge."},
             [questKeys.startedBy_add] = {{341}},
         },
         [98387] = {
             [questKeys.name] = "Blackrock Blockade",
             [questKeys.questLevel] = 21,
-            [questKeys.objectives] = {nil,nil,{{280839,280841}}},
             [questKeys.objectivesText] = {"Bring 10 Battleworn Axes to Marshal Marris in Lakeshire."},
         },
         [98389] = {
@@ -3102,7 +2981,6 @@ function ForeverQuestTraces:Load()
         [98392] = {
             [questKeys.name] = "Darkness in the Glade",
             [questKeys.questLevel] = 12,
-            [questKeys.objectives] = {nil,nil,{{280831,280832,280834}}},
             [questKeys.objectivesText] = {"Collect Hatescreech's Amulet, Windmistress Gaedress' Amulet, and Witchmother Arysa's Amulet for Sentinel Arynia Cloudsbreak in the Oracle Glade."},
             [questKeys.startedBy_add] = {{3519}},
             [questKeys.finishedBy_add] = {{3519}},
@@ -3117,7 +2995,6 @@ function ForeverQuestTraces:Load()
         [98403] = {
             [questKeys.name] = "Twisted Hatred",
             [questKeys.questLevel] = 12,
-            [questKeys.objectives] = {{{272096}},nil,{{281023}}},
             [questKeys.objectivesText] = {"Kill 8 Befouled Webwoods and bring Xethorr the Wicked's Mature Fel Moss to Tallonkai Swiftroot in Dolanaar."},
             [questKeys.startedBy_add] = {{3567}},
             [questKeys.finishedBy_add] = {{3567}},
@@ -3125,7 +3002,6 @@ function ForeverQuestTraces:Load()
         [98407] = {
             [questKeys.name] = "Show of Force",
             [questKeys.questLevel] = 17,
-            [questKeys.objectives] = {nil,nil,{{280911}}},
             [questKeys.objectivesText] = {"Collect 5 Spiked Collars from Gnoll Thrashers for Deputy Feldon near Lakeshire."},
             [questKeys.startedBy_add] = {{1070}},
             [questKeys.finishedBy_add] = {{1070}},
@@ -3139,14 +3015,12 @@ function ForeverQuestTraces:Load()
         [98424] = {
             [questKeys.name] = "Fizsprocket's Notes",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{281035,281036,281037}}},
             [questKeys.objectivesText] = {"Collect the rest of Supervisor Fizsprocket's pages inside The Venture Co. Mine and bring them to Morin Cloudstalker near Bloodhoof Village."},
             [questKeys.finishedBy_add] = {{2988}},
         },
         [98427] = {
             [questKeys.name] = "Ceasing Operations",
             [questKeys.questLevel] = 12,
-            [questKeys.objectives] = {nil,nil,{{281048}}},
             [questKeys.objectivesText] = {"Bring the Clearcutter Key to Morin Cloudstalker outside Bloodhoof Village."},
             [questKeys.startedBy_add] = {{2988}},
             [questKeys.finishedBy_add] = {{2988}},
@@ -3176,7 +3050,6 @@ function ForeverQuestTraces:Load()
         [98512] = {
             [questKeys.name] = "Al'Aketh Assassins",
             [questKeys.questLevel] = 11,
-            [questKeys.objectives] = {{{254626}}},
             [questKeys.objectivesText] = {"Kill 10 Al'Aketh Assassins in the Shen'dar Highlands."},
             [questKeys.startedBy_add] = {{273017}},
             [questKeys.finishedBy_add] = {{273017}},
@@ -3237,7 +3110,6 @@ function ForeverQuestTraces:Load()
         [99049] = {
             [questKeys.name] = "Threat from Below",
             [questKeys.questLevel] = 11,
-            [questKeys.objectives] = {nil,nil,{{286010,286011,286012}}},
             [questKeys.objectivesText] = {"Find signs of what attacked Heglan Shadeeye."},
             [questKeys.startedBy_add] = {{275657}},
             [questKeys.finishedBy_add] = {{3142}},
@@ -3245,7 +3117,6 @@ function ForeverQuestTraces:Load()
         [99050] = {
             [questKeys.name] = "The Great Tree Provides",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{159,286017}}},
             [questKeys.objectivesText] = {"Collect 6 Dewy Lasher Fronds, an Empty Vial, and a Refreshing Spring Water for Byancie in Dolanaar."},
             [questKeys.startedBy_add] = {{6094}},
             [questKeys.finishedBy_add] = {{6094}},
@@ -3253,7 +3124,6 @@ function ForeverQuestTraces:Load()
         [99051] = {
             [questKeys.name] = "Threat from Below",
             [questKeys.questLevel] = 11,
-            [questKeys.objectives] = {nil,nil,{{286008}}},
             [questKeys.objectivesText] = {"Collect 9 Naga Spinefins."},
             [questKeys.startedBy_add] = {{3142}},
             [questKeys.finishedBy_add] = {{3142}},
@@ -3261,7 +3131,6 @@ function ForeverQuestTraces:Load()
         [99052] = {
             [questKeys.name] = "Threat from Below",
             [questKeys.questLevel] = 12,
-            [questKeys.objectives] = {nil,nil,{{286009}}},
             [questKeys.objectivesText] = {"Kill the sea giant along Durotar's north coast and bring back proof of your accomplishment."},
             [questKeys.startedBy_add] = {{3142}},
             [questKeys.finishedBy_add] = {{3142}},
@@ -3290,7 +3159,6 @@ function ForeverQuestTraces:Load()
         [99080] = {
             [questKeys.name] = "Drive Them Out",
             [questKeys.questLevel] = 9,
-            [questKeys.objectives] = {{{2967,2968}},nil,{{286075}}},
             [questKeys.objectivesText] = {"Kill 6 Galak Centaurs, 4 Galak Outrunners, and bring the head of Herak the Pillager to Baine Bloodhoof."},
             [questKeys.startedBy_add] = {{2993}},
             [questKeys.finishedBy_add] = {{2993}},
@@ -3333,7 +3201,6 @@ function ForeverQuestTraces:Load()
         [99127] = {
             [questKeys.name] = "A Net Disaster",
             [questKeys.questLevel] = 7,
-            [questKeys.objectives] = {nil,nil,{{286205}}},
             [questKeys.objectivesText] = {"Check the fishing traps in Crystal Lake."},
             [questKeys.startedBy_add] = {{383}},
             [questKeys.finishedBy_add] = {{383}},
@@ -3341,7 +3208,6 @@ function ForeverQuestTraces:Load()
         [99128] = {
             [questKeys.name] = "Slimy Menace",
             [questKeys.questLevel] = 7,
-            [questKeys.objectives] = {{{285,735}}},
             [questKeys.objectivesText] = {"Kill the murlocs at Crystal Lake."},
             [questKeys.startedBy_add] = {{383}},
             [questKeys.finishedBy_add] = {{383}},
@@ -3356,7 +3222,6 @@ function ForeverQuestTraces:Load()
         [99130] = {
             [questKeys.name] = "An Enticing Offer",
             [questKeys.questLevel] = 7,
-            [questKeys.objectives] = {nil,nil,{{286214,286215}}},
             [questKeys.objectivesText] = {"Collect ingredients for murloc bait."},
             [questKeys.startedBy_add] = {{241}},
             [questKeys.finishedBy_add] = {{241}},
@@ -3385,7 +3250,6 @@ function ForeverQuestTraces:Load()
         [99142] = {
             [questKeys.name] = "Tomb Weed",
             [questKeys.questLevel] = 11,
-            [questKeys.objectives] = {nil,nil,{{286204}}},
             [questKeys.objectivesText] = {"Collect 5 Tomb Weed and deliver them back to Junior Apothecary Holland."},
             [questKeys.startedBy_add] = {{10665}},
             [questKeys.finishedBy_add] = {{10665}},
@@ -3393,7 +3257,6 @@ function ForeverQuestTraces:Load()
         [99143] = {
             [questKeys.name] = "Bottles and Baubles",
             [questKeys.questLevel] = 7,
-            [questKeys.objectives] = {nil,nil,{{286209}}},
             [questKeys.objectivesText] = {"Collect 6 pieces of shiny junk from the nearby Murloc camp."},
             [questKeys.startedBy_add] = {{1651}},
             [questKeys.finishedBy_add] = {{1651}},
@@ -3408,7 +3271,6 @@ function ForeverQuestTraces:Load()
         [99152] = {
             [questKeys.name] = "As Above, So Below",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{286259}}},
             [questKeys.objectivesText] = {"Collect 6 Faintly Glowing Bones for Hilda the Breaker."},
             [questKeys.startedBy_add] = {{246389}},
             [questKeys.finishedBy_add] = {{246389}},
@@ -3416,7 +3278,6 @@ function ForeverQuestTraces:Load()
         [99153] = {
             [questKeys.name] = "The One That Got Away",
             [questKeys.questLevel] = 10,
-            [questKeys.objectives] = {nil,nil,{{286269}}},
             [questKeys.objectivesText] = {"Find the Hidden Crystal Fragment beneath Shadowvale for Ephram Barbaro."},
             [questKeys.startedBy_add] = {{259190}},
             [questKeys.finishedBy_add] = {{259190}},
@@ -3424,7 +3285,6 @@ function ForeverQuestTraces:Load()
         [99156] = {
             [questKeys.name] = "Rear Guard Patrol",
             [questKeys.questLevel] = 13,
-            [questKeys.objectives] = {nil,nil,{{286326}}},
             [questKeys.objectivesText] = {"Bring Riptear's Heart to Deathguard Linnea."},
             [questKeys.startedBy_add] = {{1495}},
             [questKeys.finishedBy_add] = {{1495}},
@@ -3439,7 +3299,6 @@ function ForeverQuestTraces:Load()
         [99159] = {
             [questKeys.name] = "Finding Warmth",
             [questKeys.questLevel] = 8,
-            [questKeys.objectives] = {nil,nil,{{286339}}},
             [questKeys.objectivesText] = {"Collect 14 pieces of firewood."},
             [questKeys.startedBy_add] = {{1253}},
             [questKeys.finishedBy_add] = {{1253}},
@@ -3447,7 +3306,6 @@ function ForeverQuestTraces:Load()
         [99160] = {
             [questKeys.name] = "Rime's Wrath",
             [questKeys.questLevel] = 8,
-            [questKeys.objectives] = {{{276003}}},
             [questKeys.objectivesText] = {"Destroy 10 minor ice elementals."},
             [questKeys.startedBy_add] = {{1253}},
             [questKeys.finishedBy_add] = {{1253}},
@@ -3455,7 +3313,6 @@ function ForeverQuestTraces:Load()
         [99161] = {
             [questKeys.name] = "Rime's Wrath",
             [questKeys.questLevel] = 8,
-            [questKeys.objectives] = {nil,nil,{{286325}}},
             [questKeys.objectivesText] = {"Kill Avala and retrieve its core."},
             [questKeys.startedBy_add] = {{1253}},
             [questKeys.finishedBy_add] = {{1253}},
@@ -3463,7 +3320,6 @@ function ForeverQuestTraces:Load()
         [99162] = {
             [questKeys.name] = "Treacherous Cold",
             [questKeys.questLevel] = 8,
-            [questKeys.objectives] = {nil,nil,{{286358,286359,286360}}},
             [questKeys.objectivesText] = {"Collect the rifles of fallen mountaineers."},
             [questKeys.startedBy_add] = {{1253}},
             [questKeys.finishedBy_add] = {{1253}},
