@@ -16,8 +16,9 @@ fixture.write(path, {
     [86585] = {
       [quest.name] = "Banner of the Fallen",
       [quest.questLevel] = 17,
-      [quest.requiredLevel] = 10,
+      [quest.requiredLevel] = 17,
       [quest.requiredRaces] = 4294967373,
+      [quest.objectives] = {{{269185}}},
       [quest.startedBy] = {{269153}},
       [quest.finishedBy] = {{1092}},
       [quest.reputationReward] = {{47, 100}},
@@ -69,7 +70,7 @@ fixture.write(path, {
       [npc.name] = "Mountaineer Ylva",
       [npc.zoneID] = 38,
       [npc.questStarts] = {86585},
-      [npc.spawns] = {[38] = {{31.8, 86.2}}},
+      [npc.spawns] = {[38] = {{31.76, 86.21}}},
     },
   },
   Object = {

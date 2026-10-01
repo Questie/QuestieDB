@@ -251,14 +251,21 @@ src\corrections\Forever\legacy\classicQuestReputationFixes.lua [ExcludeLoadGameT
 src\corrections\Forever\legacy\itemStartFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
 # --- Forever: generated delta-base ---
-# Applied after inherited Static Corrections, before authored Forever Static Corrections.
+# Applied after inherited Static Corrections, before traces and authored Forever Static Corrections.
 src\corrections\Forever\generated\foreverBaseNpc.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\generated\foreverBaseObject.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\generated\foreverBaseQuest.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\generated\foreverBaseItem.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
+# --- Forever: trace corrections ---
+# Machine-generated; applies after the generated delta-base, before authored Forever Static Corrections.
+src\corrections\Forever\traces\foreverQuestTraces.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Forever\traces\foreverNpcTraces.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Forever\traces\foreverItemTraces.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Forever\traces\foreverObjectTraces.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+
 # --- Forever: authored corrections ---
-# Static follows legacy and generated data; Dynamic follows legacy Dynamic Corrections.
+# Static follows legacy, generated base and trace data; Dynamic follows legacy Dynamic Corrections.
 src\corrections\Forever\foreverQuestFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\foreverNPCFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\foreverItemFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]

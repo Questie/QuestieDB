@@ -45,12 +45,13 @@ non-category values, nonzero category values and the consumer `:Load()` contract
 
 ## Policy and limitations
 
-The Static order remains **raw base -> inherited legacy Corrections -> generated delta-base
--> authored Forever Corrections**. All six legacy providers, including generated reputation
-and Item-start sets, precede `ForeverDeltaBaseStatic` (1300). Authored `forever*Fixes.lua`
-providers follow in `ForeverStatic` (1400). Dynamic Corrections still override static data.
-The effective upstream comparison baseline excludes generated, authored Forever and Dynamic
-providers. Later authored corrections remain authoritative, not inputs to extraction.
+The Static order is **raw base -> inherited legacy Corrections -> generated delta-base
+-> generated traces -> authored Forever Corrections**. All six legacy providers, including
+generated reputation and Item-start sets, precede `ForeverDeltaBaseStatic` (1300).
+Within `ForeverStatic` (1400), generated trace providers run before authored `forever*Fixes.lua`
+providers. Dynamic Corrections still override static data. The effective upstream comparison
+baseline excludes generated base, trace, authored Forever and Dynamic providers. Later trace
+and authored corrections remain authoritative, not inputs to extraction.
 
 Ordinary table fields initialize missing records or absent/empty effective-baseline fields.
 Partial changes to populated fields use `_add`/`_remove`, including a new group alongside an existing group.
@@ -161,6 +162,15 @@ evidence remains in the hash-identified upstream reports rather than duplicated 
 [The validation report](forever-delta-base-validation.md) records this run's inventory,
 input identity, complete command results, zero-preservation checks and historical findings.
 Passing those gates does not establish complete gameplay behavior or client parser support.
+
+The maintained `forever-delta-base` tests separate selected gameplay examples from correction
+behavior. Exact examples cover restrictions, rewards, relationships and imported identities;
+update them when those specific facts intentionally change. Provider order, scalar fallback,
+objective initialization/addition/replacement and Dynamic restoration use controlled rows
+through the registered providers. Do not pin live levels, missing objectives, trace coordinates
+or exact provider row counts to test those behaviors. Adding data should not require changing
+an infrastructure expectation. Source/Baked equivalence and gameplay validators still check
+the current composed data.
 
 ## Refresh
 
