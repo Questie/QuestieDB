@@ -1,5 +1,3 @@
----@type QuestieDB
-local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
 ---@type l10n
 local l10n = QuestieLoader:ImportModule("l10n")
 
@@ -108,46 +106,5 @@ elseif GetLocale() == "zhTW" then
     }]])
 end
 
--- Some existing quests have been changed for the Titan Reforged servers
----@return table<QuestId, table<string,table<string>>>
-function Questie.LoadTitanQuestLookupOverrides()
-    local questKeys = QuestieDB.questKeys
-
-    return {
-        [6805] = { -- Greater Stormers and Rumblers
-            [questKeys.name] = "大雷暴和巨磐石",
-            [questKeys.objectivesText] = {"消灭15个大型灰尘风暴和15个大型沙漠奔行者，然后回到艾萨拉的海达克西斯公爵那儿。"},
-        },
-        [7787] = { -- Legend of the Past
-            [questKeys.name] = "昔日的传奇",
-            [questKeys.objectivesText] = {"寻找对休眠之刃有所了解的人。"},
-        },
-        [8184] = { -- Prophecy of Wrath
-            [questKeys.name] = "愤怒预言", -- warrior
-        },
-        [8185] = { -- Syncretist's Prophecy
-            [questKeys.name] = "调和预言", -- paladin
-        },
-        [8186] = { -- Death's Prophecy
-            [questKeys.name] = "死亡预言", -- rogue
-        },
-        [8187] = { -- Falcon's Embodiment
-            [questKeys.name] = "猎鹰化身", -- hunter
-        },
-        [8188] = { -- Vodouisant's Prophecy
-            [questKeys.name] = "巫毒预言", -- shaman
-        },
-        [8189] = { -- Arcanist's Prophecy
-            [questKeys.name] = "奥术师预言", -- mage
-        },
-        [8190] = { -- Hoodoo Prophecy
-            [questKeys.name] = "妖术预言", -- warlock
-        },
-        [8191] = { -- Auratic Prophecy
-            [questKeys.name] = "光晕预言", -- priest
-        },
-        [8192] = { -- Animist's Prophecy
-            [questKeys.name] = "万灵预言", -- druid
-        },
-    }
-end
+-- The former Questie.LoadTitanQuestLookupOverrides lived here. Its 11 authored zhCN rows are
+-- owned by src/l10n/Titan/zhCN.lua, which is the runtime source for Titan translations.
