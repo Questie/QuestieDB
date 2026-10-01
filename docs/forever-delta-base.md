@@ -163,6 +163,15 @@ evidence remains in the hash-identified upstream reports rather than duplicated 
 input identity, complete command results, zero-preservation checks and historical findings.
 Passing those gates does not establish complete gameplay behavior or client parser support.
 
+The maintained `forever-delta-base` tests separate selected gameplay examples from correction
+behavior. Exact examples cover restrictions, rewards, relationships and imported identities;
+update them when those specific facts intentionally change. Provider order, scalar fallback,
+objective initialization/addition/replacement and Dynamic restoration use controlled rows
+through the registered providers. Do not pin live levels, missing objectives, trace coordinates
+or exact provider row counts to test those behaviors. Adding data should not require changing
+an infrastructure expectation. Source/Baked equivalence and gameplay validators still check
+the current composed data.
+
 ## Refresh
 
 1. Review a complete upstream run, never a sample. Read the assumption and holdback policies,

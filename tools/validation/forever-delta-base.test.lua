@@ -1,4 +1,6 @@
--- Literal imported witnesses and precedence checks, independent of Source/Baked agreement.
+-- Maintained data examples are independent of Source/Baked agreement; update them when
+-- those specific gameplay facts change. Correction behavior uses controlled rows below,
+-- not live levels, coordinates, missing objectives or import row counts.
 -- Run Baked checks only against a freshly generated disposable artifact.
 local client = dofile("emulator/client.lua")
 local emulator = dofile("emulator/metadata.lua")
@@ -58,17 +60,11 @@ local function witness(db)
   end
   assert(db.Quest.Exists(86585) and db.Quest.GetAllIds(true)[86585], "new quest is enumerable")
   assert(db.Quest.name(86585) == "Banner of the Fallen")
-  assert(db.Quest.questLevel(86585) == 17 and db.Quest.requiredLevel(86585) == 17,
-    "trace required level overrides the generated base")
   assert(db.Quest.startedBy(86585)[1][1] == 269153, "explicit new quest giver")
   assert(db.Quest.finishedBy(86585)[1][1] == 1092, "explicit existing finisher")
   assert(db.Npc.Exists(269153) and db.Npc.GetAllIds(true)[269153], "new giver is enumerable")
   assert(db.Npc.name(269153) == "Mountaineer Ylva")
   assert(db.Npc.questStarts(269153)[1] == 86585, "reverse giver link")
-  local spawns = db.Npc.spawns(269153)
-  assert(spawns[38][1][1] == 31.76 and spawns[38][1][2] == 86.21, "trace spawn overrides the generated base")
-  local objectives = db.Quest.objectives(86585)
-  assert(objectives[1][1][1] == 269185, "trace supplies the missing Headsplitter objective")
   assert(db.Object.name(175725) == "The Old Gods and the Ordering of Azeroth", "imported object")
   assert(db.Object.spawns(175725)[11][1][1] == 9.9, "imported object spawn")
   assert(db.Item.Exists(286647) and db.Item.GetAllIds(true)[286647], "new item is enumerable")
@@ -155,10 +151,6 @@ if not baked then
   local questKeys, npcKeys = offline.Enum.questKeys, offline.Enum.npcKeys
   -- Getters normalize absent numbers to zero; inspect authored presence independently.
   local generatedQuests = providers.ForeverBaseQuest:Load()
-  assert(generatedQuests[86585][questKeys.requiredLevel] == 10,
-    "generated base retains its own required level beneath traces")
-  assert(generatedQuests[86585][questKeys.objectives] == nil,
-    "generated base does not invent objectives supplied by traces")
   assert(generatedQuests[94004][questKeys.requiredRaces] == 0, "writ zero is explicitly present")
   assert(generatedQuests[97286][questKeys.requiredRaces] == 0, "library zero is explicitly present")
   assert(generatedQuests[97286][questKeys.requiredClasses] == 128, "library Mage mask remains authored")
@@ -173,16 +165,14 @@ if not baked then
   local source = offline.read.source
   source.RemoveLoaderShim()
   for _, case in ipairs({
-    { "Quest", "ForeverBaseQuest", "QuestieQuestFixes", "ForeverQuestFixes", 86585, 771, "ForeverQuestTraces" },
-    { "Npc", "ForeverBaseNpc", "QuestieNPCFixes", "ForeverNpcFixes", 269153, 3394, "ForeverNpcTraces" },
-    { "Object", "ForeverBaseObject", "QuestieObjectFixes", "ForeverObjectFixes", 900000001, 52, "ForeverObjectTraces" },
-    { "Item", "ForeverBaseItem", "QuestieItemFixes", "ForeverItemFixes", 286647, 8151, "ForeverItemTraces" },
+    { "Quest", "ForeverBaseQuest", "QuestieQuestFixes", "ForeverQuestFixes", 86585, "ForeverQuestTraces" },
+    { "Npc", "ForeverBaseNpc", "QuestieNPCFixes", "ForeverNpcFixes", 269153, "ForeverNpcTraces" },
+    { "Object", "ForeverBaseObject", "QuestieObjectFixes", "ForeverObjectFixes", 900000001, "ForeverObjectTraces" },
+    { "Item", "ForeverBaseItem", "QuestieItemFixes", "ForeverItemFixes", 286647, "ForeverItemTraces" },
   }) do
     local datatype, delta, legacy, manual, id = case[1], providers[case[2]], providers[case[3]], providers[case[4]], case[5]
-    local trace = providers[case[7]]
-    local count = 0
-    for _ in pairs(delta:Load()) do count = count + 1 end
-    assert(count == case[6], "imported row count differs: " .. datatype)
+    local trace = providers[case[6]]
+    assert(next(delta:Load()) ~= nil, "generated provider must supply data: " .. datatype)
 
     -- Controlled collisions through the real registered providers, not a second merge model.
     delta.Load = function() return {} end
@@ -213,6 +203,44 @@ if not baked then
     registry.ApplyRegisteredCorrections("QuestieDB")
     assert(entity.name(id) == "manual", "withdrawing Dynamic restores the Static value")
   end
+
+  -- Controlled field composition: missing later fields preserve the base, while
+  -- objectives may be supplied by the base, traces or authored corrections.
+  local id = 900000002
+  local baseRow = { [questKeys.requiredLevel] = 10 }
+  local traceRow, manualRow = {}, {}
+  providers.ForeverBaseQuest.Load = function() return { [id] = baseRow } end
+  providers.ForeverQuestTraces.Load = function() return { [id] = traceRow } end
+  providers.ForeverQuestFixes.Load = function() return { [id] = manualRow } end
+  local function composeQuest()
+    local rows = {}
+    registry.ApplyStaticToEntities("Quest", rows, flavor, "QuestieDB")
+    return rows[id]
+  end
+
+  traceRow[questKeys.objectives] = {{{101}}}
+  local row = composeQuest()
+  assert(row[questKeys.requiredLevel] == 10, "omitted trace level preserves the base level")
+  assert(row[questKeys.objectives][1][1][1] == 101, "trace initializes missing objectives")
+
+  baseRow[questKeys.objectives] = {{{102}}}
+  traceRow[questKeys.objectives] = nil
+  row = composeQuest()
+  assert(row[questKeys.objectives][1][1][1] == 102, "omitted trace objectives preserve base objectives")
+
+  traceRow[questKeys.requiredLevel] = 20
+  traceRow[questKeys.objectives_add] = {{{103}}}
+  row = composeQuest()
+  assert(row[questKeys.requiredLevel] == 20, "trace level overrides the base level")
+  assert(#row[questKeys.objectives][1] == 2 and row[questKeys.objectives][1][1][1] == 102
+    and row[questKeys.objectives][1][2][1] == 103, "trace adds objectives without losing base objectives")
+
+  manualRow[questKeys.requiredLevel] = 30
+  manualRow[questKeys.objectives] = {{{104}}}
+  row = composeQuest()
+  assert(row[questKeys.requiredLevel] == 30, "authored level overrides the trace level")
+  assert(#row[questKeys.objectives][1] == 1 and row[questKeys.objectives][1][1][1] == 104,
+    "authored objectives replace the composed base and trace objectives")
 end
 client.reset()
 print("PASS Forever delta-base " .. (baked and "Baked" or "Source, isolation and precedence"))
