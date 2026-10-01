@@ -717,9 +717,6 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {98342, 98396, 98731, 98739},
             [npcKeys.questEnds] = {98342, 98394, 98396, 98405},
         },
-        [12260] = { -- Onyxian Drake : https://wowhead.com/forever/npc=12260/onyxian-drake
-            [npcKeys.minLevel] = 62,
-        },
         [14450] = { -- Orphan Matron Nightingale : https://wowhead.com/forever/npc=14450/orphan-matron-nightingale
             [npcKeys.questStarts_add] = {95161},
             [npcKeys.questEnds_add] = {92415},
