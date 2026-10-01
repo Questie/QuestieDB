@@ -128,6 +128,10 @@ function ForeverBaseObject:Load()
         [423186] = { -- Shadow Ritual of Sacrifice : https://wowhead.com/forever/object=423186/shadow-ritual-of-sacrifice
             [objectKeys.name] = "Shadow Ritual of Sacrifice",
         },
+        [423901] = { -- Book : https://wowhead.com/forever/object=423901/book
+            [objectKeys.name] = "Book",
+            [objectKeys.spawns] = {[8] = {{61.4, 22.4}, {61.4, 22.5}, {61.5, 22.6}, {61.6, 22.4}}, [618] = {{60.7, 37.7}}},
+        },
         [424005] = { -- Pocket Litter : https://wowhead.com/forever/object=424005/pocket-litter
             [objectKeys.name] = "Pocket Litter",
             [objectKeys.questStarts] = {79980},

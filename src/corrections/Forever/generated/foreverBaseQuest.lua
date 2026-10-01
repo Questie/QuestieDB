@@ -162,6 +162,16 @@ function ForeverBaseQuest:Load()
             [questKeys.objectivesText] = {"Buy or catch a Raw Brilliant Smallfish, then use the Knife Set to fillet it in front of Boarton Shadetotem in Thunder Bluff."},
             [questKeys.zoneOrSort] = zoneIDs.MULGORE,
         },
+        [78088] = { -- A Strange Artifact : https://wowhead.com/forever/quest=78088/a-strange-artifact
+            [questKeys.name] = "A Strange Artifact",
+            [questKeys.finishedBy] = {{3663}},
+            [questKeys.requiredLevel] = 22,
+            [questKeys.questLevel] = 30,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
+            [questKeys.objectivesText] = {"Bring the Althalaxx Orb to Delgren the Purifier at Maestra's Post in Ashenvale."},
+            [questKeys.zoneOrSort] = sortKeys.PALADIN,
+        },
         [78132] = { -- Dragonslayer's Helm : https://wowhead.com/forever/quest=78132/dragonslayers-helm
             [questKeys.name] = "Dragonslayer's Helm",
             [questKeys.startedBy] = {{210995}},
@@ -221,6 +231,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 20,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/library_races.toml; 0 = all races
+            [questKeys.objectives] = {nil, nil, {{203755}}},
             [questKeys.zoneOrSort] = sortKeys.SPECIAL,
         },
         [79095] = { -- The Apothecary's Metaphysical Primer : https://wowhead.com/forever/quest=79095/the-apothecarys-metaphysical-primer
@@ -251,6 +262,8 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.TAUREN + raceIDs.TROLL,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Find Grant's Mace on one of the skeletons in Raven Hill Cemetery then return to Sirra Von'Indie in Darkshire for more information."},
+            [questKeys.objectives] = {nil, nil, {{281146}}},
+            [questKeys.sourceItemId] = 281147,
             [questKeys.zoneOrSort] = zoneIDs.DUSKWOOD,
         },
         [79363] = { -- Silvia's Sword : https://wowhead.com/forever/quest=79363/silvias-sword
@@ -262,6 +275,8 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.TAUREN + raceIDs.TROLL,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Defeat 7 Defias Night Blades and 7 Defias Enchanters in Addle's Stead then return to Sirra Von'Indi in Darkshire for more information."},
+            [questKeys.objectives] = {{{909}, {910}}},
+            [questKeys.sourceItemId] = 281145,
             [questKeys.zoneOrSort] = zoneIDs.DUSKWOOD,
         },
         [79536] = { -- Greater Friend of the Library : https://wowhead.com/forever/quest=79536/greater-friend-of-the-library
@@ -318,6 +333,8 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 24,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 6 Stonetalon Supplies from Pridewing Wyverns and deliver them to Innkeeper Faralia."},
+            [questKeys.objectives] = {nil, nil, {{277917}}},
+            [questKeys.sourceItemId] = 277915,
             [questKeys.zoneOrSort] = zoneIDs.STONETALON_MOUNTAINS,
         },
         [86576] = { -- Bloodfury Trinkets : https://wowhead.com/forever/quest=86576/bloodfury-trinkets
@@ -327,6 +344,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 26,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring 15 Glittering Sunstones to Mor'rogal."},
+            [questKeys.objectives] = {nil, nil, {{277936}}},
             [questKeys.zoneOrSort] = zoneIDs.STONETALON_MOUNTAINS,
         },
         [86585] = { -- Banner of the Fallen : https://wowhead.com/forever/quest=86585/banner-of-the-fallen
@@ -337,6 +355,8 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 17,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Raise the standard of Ironforge, call out the trogg Headsplitter and kill it, then report to Captain Rugelfuss."},
+            [questKeys.objectives] = {{{269185}}},
+            [questKeys.sourceItemId] = 253247,
             [questKeys.zoneOrSort] = zoneIDs.LOCH_MODAN,
             [questKeys.reputationReward] = {{47, 100}},
         },
@@ -348,6 +368,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 18,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Return 6 Excavation Tools to Magmar Fellhew."},
+            [questKeys.sourceItemId] = 278398,
             [questKeys.zoneOrSort] = zoneIDs.LOCH_MODAN,
             [questKeys.reputationReward] = {{47, 100}},
         },
@@ -358,6 +379,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 20,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Return the monogrammed silver hair clip to its owner."},
+            [questKeys.sourceItemId] = 278051,
             [questKeys.zoneOrSort] = zoneIDs.LOCH_MODAN,
             [questKeys.reputationReward] = {{47, 100}},
         },
@@ -369,6 +391,8 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 20,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Deliver a Jar of Snow to Norric Lochthane."},
+            [questKeys.objectives] = {nil, nil, {{279379}}},
+            [questKeys.sourceItemId] = 279380,
             [questKeys.zoneOrSort] = zoneIDs.LOCH_MODAN,
             [questKeys.reputationReward] = {{47, 100}},
         },
@@ -380,6 +404,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 16,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Find and defeat the crocolisk Daggerfang and bring back Marek's knife."},
+            [questKeys.objectives] = {nil, nil, {{279591}}},
             [questKeys.zoneOrSort] = zoneIDs.LOCH_MODAN,
             [questKeys.reputationReward] = {{47, 100}},
         },
@@ -391,6 +416,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 30,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring 10 Bronze Bars to Morhan Coppertongue."},
+            [questKeys.objectives] = {nil, nil, {{2841}}},
             [questKeys.zoneOrSort] = zoneIDs.LOCH_MODAN,
             [questKeys.reputationReward] = {{47, 100}},
         },
@@ -402,6 +428,8 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 7,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Collect 6 Dry Branches and bring them to Eleanor Shackleton."},
+            [questKeys.objectives] = {nil, nil, {{279991}}},
+            [questKeys.sourceItemId] = 279937,
             [questKeys.zoneOrSort] = zoneIDs.TIRISFAL_GLADES,
             [questKeys.reputationReward] = {{68, 100}},
         },
@@ -413,6 +441,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 7,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring 6 Soft Nightsaber Pelts to Aldria."},
+            [questKeys.objectives] = {nil, nil, {{280087}}},
             [questKeys.zoneOrSort] = zoneIDs.TELDRASSIL,
             [questKeys.reputationReward] = {{69, 100}},
         },
@@ -424,6 +453,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 20,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Find a Stormscale Beastmistress, slay her, and bring back her Rod of Deep Dominion."},
+            [questKeys.objectives] = {nil, nil, {{280686}}},
             [questKeys.zoneOrSort] = zoneIDs.DARKSHORE,
             [questKeys.reputationReward] = {{69, 100}},
         },
@@ -482,6 +512,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.objectivesText] = {"Slay 8 Vile Fin Attackers and 8 Vile Fin Seers and report back to Breton Samuels when it is done."},
+            [questKeys.objectives] = {{{250283}, {250282}}},
             [questKeys.zoneOrSort] = sortKeys.PALADIN,
             [questKeys.reputationReward] = {{68, 50}},
         },
@@ -506,6 +537,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.objectivesText] = {"Collect 12 pieces of Sturdy Lumber from Shadowvale in Tirisfal Glades."},
+            [questKeys.objectives] = {nil, nil, {{246213}}},
             [questKeys.zoneOrSort] = sortKeys.PALADIN,
             [questKeys.reputationReward] = {{68, 50}},
         },
@@ -529,6 +561,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Kill 8 Kobold Geomancers in Jasperlode Mine, then return to Hamish Bergwort in the Tower of Azora."},
+            [questKeys.objectives] = {{{476}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
             [questKeys.reputationReward] = {{72, 75}},
         },
@@ -540,6 +573,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Kill 6 Defias Rogue Wizards at Stone Cairn Lake, then return to Hamish Bergwort in the Tower of Azora."},
+            [questKeys.objectives] = {{{474}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
             [questKeys.reputationReward] = {{72, 100}},
         },
@@ -551,6 +585,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 5 Stolen Enchanting Supplies from gnoll camps around Stone Cairn Lake, then return to Blixie Fitzwink near the Tower of Azora."},
+            [questKeys.objectives] = {nil, nil, {{247805}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
             [questKeys.reputationReward] = {{72, 75}},
         },
@@ -562,6 +597,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 4 Mining Tools from Jasperlode Mine, then return to Hagar Lowe in Eastvale Logging Camp."},
+            [questKeys.objectives] = {nil, nil, {{247816}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
             [questKeys.reputationReward] = {{72, 75}},
         },
@@ -573,12 +609,14 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect the Waterlogged Axe, Waterlogged Saw, and Waterlogged Toolbox that have washed downstream from Eastvale Logging Camp, then return to Ormin Pelford."},
+            [questKeys.objectives] = {nil, nil, {{247817}, {247813}, {247818}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
             [questKeys.reputationReward] = {{72, 75}},
         },
         [91736] = { -- Applejack Still : https://wowhead.com/forever/quest=91736/applejack-still
             [questKeys.name] = "Applejack Still",
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectives] = {nil, nil, {{4536}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
         },
         [91738] = { -- An Apple Treat : https://wowhead.com/forever/quest=91738/an-apple-treat
@@ -588,6 +626,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredLevel] = 7,
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectives] = {nil, nil, {{247824}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
         },
         [91740] = { -- Croaky's Head : https://wowhead.com/forever/quest=91740/croakys-head
@@ -598,6 +637,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Deliver Croaky's Head to Merell Ross at Ridgepoint Tower."},
+            [questKeys.sourceItemId] = 247826,
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
             [questKeys.reputationReward] = {{72, 100}},
         },
@@ -609,6 +649,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 2,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Return the book to Brother Paxton."},
+            [questKeys.sourceItemId] = 247857,
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
         },
         [91743] = { -- Rascally Rodents : https://wowhead.com/forever/quest=91743/rascally-rodents
@@ -619,6 +660,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 2,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Retrieve 8 Stolen Books from kobolds in Northshire Valley and return them to Brother Paxton."},
+            [questKeys.objectives] = {nil, nil, {{247839}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
             [questKeys.reputationReward] = {{72, 100}},
         },
@@ -641,6 +683,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Deliver Elmpaw's Head to Helene Peltskinner near Goldshire."},
+            [questKeys.sourceItemId] = 247862,
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
             [questKeys.reputationReward] = {{72, 100}},
         },
@@ -652,6 +695,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 7,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Skin wolves around Elwynn Forest to obtain 7 Rough Wolf Pelts, then deliver them to Helene Peltskinner near Goldshire."},
+            [questKeys.objectives] = {nil, nil, {{247877}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
             [questKeys.reputationReward] = {{72, 75}},
         },
@@ -663,6 +707,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 3,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Retrieve a Sack of \"Picture\" Books from Shinyfinder Narf. Bring the sack to Marshal McBride just inside Northshire's Abbey."},
+            [questKeys.objectives] = {nil, nil, {{247886}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
             [questKeys.reputationReward] = {{72, 100}},
         },
@@ -674,6 +719,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 7,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Kitta Firewind in the Tower of Azora wants you to collect 3 Luminous Residue. Luminous Residue can be obtained by disenchanting Crude Wax Effigies dropped by Kobold Geomancers."},
+            [questKeys.objectives] = {nil, nil, {{247884}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
             [questKeys.reputationReward] = {{72, 75}},
         },
@@ -696,6 +742,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 4,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Follow the kobold tracks and report to Marshal Dughan in Goldshire with your findings and the Kobold Tracking Kit."},
+            [questKeys.sourceItemId] = 247970,
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
             [questKeys.reputationReward] = {{72, 100}},
         },
@@ -707,6 +754,8 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 6,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Find 6 Lost Books and \"Fun with Elementals\" and return them to Marshal Dughan."},
+            [questKeys.objectives] = {nil, nil, {{248002}, {248001}}},
+            [questKeys.sourceItemId] = 279935,
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
             [questKeys.reputationReward] = {{72, 100}},
         },
@@ -718,6 +767,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 7,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Recover \"Geomancy for Curious Young Wizards\" and \"Arcane Explainer: Magical Stuff in Simple Words\" and return them to Brother Paxton inside Northshire's Abbey."},
+            [questKeys.objectives] = {nil, nil, {{248003}, {248004}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
             [questKeys.reputationReward] = {{72, 100}},
         },
@@ -774,6 +824,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.objectivesText] = {"Retrieve the Fenris Isle Key from the Rot Hide Gnolls and use it to free Lumina Windsinger."},
+            [questKeys.objectives] = {nil, nil, {{267412}}},
             [questKeys.zoneOrSort] = sortKeys.PALADIN,
             [questKeys.reputationReward] = {{68, 50}, {2787, 100}},
         },
@@ -784,6 +835,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_crates.toml; 0 = all races
+            [questKeys.objectives] = {nil, nil, {{248765}}},
         },
         [91900] = { -- A Sealed Crate : https://wowhead.com/forever/quest=91900/a-sealed-crate
             [questKeys.name] = "A Sealed Crate",
@@ -792,6 +844,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_crates.toml; 0 = all races
+            [questKeys.objectives] = {nil, nil, {{248766}}},
         },
         [91904] = { -- A Sealed Crate : https://wowhead.com/forever/quest=91904/a-sealed-crate
             [questKeys.name] = "A Sealed Crate",
@@ -799,6 +852,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{256386, 256390}},
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_crates.toml; 0 = all races
+            [questKeys.objectives] = {nil, nil, {{248770}}},
         },
         [91905] = { -- A Sealed Crate : https://wowhead.com/forever/quest=91905/a-sealed-crate
             [questKeys.name] = "A Sealed Crate",
@@ -806,6 +860,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{256386, 256390}},
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_crates.toml; 0 = all races
+            [questKeys.objectives] = {nil, nil, {{248771}}},
         },
         [91920] = { -- Wild Eyes : https://wowhead.com/forever/quest=91920/wild-eyes
             [questKeys.name] = "Wild Eyes",
@@ -815,6 +870,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Gather 3 murloc eyes and bring them to Apothecary Renferrel at the Sepulcher."},
+            [questKeys.objectives] = {nil, nil, {{730}}},
             [questKeys.zoneOrSort] = zoneIDs.SILVERPINE_FOREST,
             [questKeys.reputationReward] = {{68, 50}},
         },
@@ -826,6 +882,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring Quinn's potion to Quinn Yorick at the Ivar Patch, north of the Sepulcher."},
+            [questKeys.sourceItemId] = 248930,
             [questKeys.zoneOrSort] = zoneIDs.SILVERPINE_FOREST,
             [questKeys.reputationReward] = {{68, 75}},
         },
@@ -837,6 +894,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Gather 5 Empty Vials, 5 Silverleaf, and 5 Peacebloom to the young, aspiring alchemist inside the barn of Moonbrook in Westfall."},
+            [questKeys.objectives] = {nil, nil, {{3371}, {2447}, {765}}},
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
         },
         [92110] = { -- My First Real Potion : https://wowhead.com/forever/quest=92110/my-first-real-potion
@@ -847,6 +905,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Gather 3 Murloc Eyes for the young, aspiring alchemist inside the barn of Moonbrook in Westfall."},
+            [questKeys.objectives] = {nil, nil, {{730}}},
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
         },
         [92124] = { -- Book Inventory : https://wowhead.com/forever/quest=92124/book-inventory
@@ -879,6 +938,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 22,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring the Blood-Stained Letter to Orphan Matron Nightingale in Stormwind City."},
+            [questKeys.sourceItemId] = 251522,
             [questKeys.zoneOrSort] = zoneIDs.RUINS_OF_LORDAERON,
             [questKeys.reputationReward] = {{68, 150}},
         },
@@ -890,6 +950,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 22,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Collect 25 Intact Limbs within The Ruins of Lordaeron for Morbin Lightbane in the Undercity."},
+            [questKeys.objectives] = {nil, nil, {{268580}}},
             [questKeys.zoneOrSort] = zoneIDs.RUINS_OF_LORDAERON,
             [questKeys.reputationReward] = {{68, 150}},
         },
@@ -901,6 +962,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 22,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Kill Rath'mael in the Ruins of Lordaeron for Deathguard Kristof in Brill."},
+            [questKeys.objectives] = {{{250657}}},
             [questKeys.zoneOrSort] = zoneIDs.RUINS_OF_LORDAERON,
             [questKeys.reputationReward] = {{68, 150}},
         },
@@ -923,6 +985,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 1,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Slay 8 Vuldren Juveniles in Thendal Grove."},
+            [questKeys.objectives] = {{{250873}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -934,6 +997,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 2,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Slay 8 Pesky Cirrusflies in Thendal Grove."},
+            [questKeys.objectives] = {{{251169}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -945,6 +1009,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 3,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Destroy the Cirrusfly Queen in Thendal Grove."},
+            [questKeys.objectives] = {{{251404}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -978,6 +1043,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 4,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring a Signet of Akir to Windshaper Boro."},
+            [questKeys.objectives] = {nil, nil, {{251924}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}},
         },
@@ -989,6 +1055,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 4,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Find the Rise of Spirits and drink the Earth Sapta."},
+            [questKeys.sourceItemId] = 6635,
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}},
         },
@@ -1000,6 +1067,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 4,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring the Rough Quartz to Windshaper Boros in Thendal Grove."},
+            [questKeys.sourceItemId] = 6656,
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}},
         },
@@ -1053,6 +1121,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 4,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Collect 6 Scrawny Ursera Claws from Scrawny Ursera in Thendal Grove."},
+            [questKeys.objectives] = {nil, nil, {{251918}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -1076,6 +1145,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.HUMAN,
             [questKeys.requiredClasses] = classIDs.WARRIOR,
             [questKeys.objectivesText] = {"Read the Scribbled Letter and speak to Tordrin Stemblade in Northshire Abbey."},
+            [questKeys.sourceItemId] = 251941,
             [questKeys.zoneOrSort] = sortKeys.WARRIOR,
             [questKeys.reputationReward] = {{72, 50}},
         },
@@ -1088,6 +1158,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.MAGE,
             [questKeys.objectivesText] = {"Examine the Glowing Recall Crystal, then speak with Dorii Brightwhisper in Thendal Grove."},
+            [questKeys.sourceItemId] = 282416,
             [questKeys.zoneOrSort] = sortKeys.MAGE,
             [questKeys.reputationReward] = {{2779, 50}},
         },
@@ -1100,6 +1171,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.requiredClasses] = classIDs.HUNTER,
             [questKeys.objectivesText] = {"Read the Scribbled Note and then speak with Tai'ree Farsight in Thendal Grove."},
+            [questKeys.sourceItemId] = 282421,
             [questKeys.zoneOrSort] = sortKeys.HUNTER,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -1112,6 +1184,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.requiredClasses] = classIDs.ROGUE,
             [questKeys.objectivesText] = {"Read the Simple Note then speak with Akeri Duskblade within the watchtower in Thendal Grove."},
+            [questKeys.sourceItemId] = 282422,
             [questKeys.zoneOrSort] = sortKeys.ROGUE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -1124,6 +1197,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Examine the Humming Recall Crystal then speak with Windshaper Boro in Thendal Grove."},
+            [questKeys.sourceItemId] = 282418,
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
             [questKeys.reputationReward] = {{2778, 50}},
         },
@@ -1136,6 +1210,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.objectivesText] = {"Read the Folded Parchment then speak with Xyton Silverwind in Thendal Grove."},
+            [questKeys.sourceItemId] = 282420,
             [questKeys.zoneOrSort] = sortKeys.DRUID,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -1158,6 +1233,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 6,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Collect 10 Prideclaw Pelts from the Prideclaws in Shen'dar Highlands."},
+            [questKeys.objectives] = {nil, nil, {{252670}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -1169,6 +1245,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 7,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Slay 8 Hippogryph Youths, 6 Hippogryph Protectors and a Hippogryph Matriarch in the Shen'dar Highlands."},
+            [questKeys.objectives] = {{{251291}, {251284}, {251261}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -1180,6 +1257,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 7,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Kill 10 Highlands Bandits and their leader, \"Badwind\" Bennic in the Shen'dar Highlands."},
+            [questKeys.objectives] = {{{251918}, {255534}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -1212,6 +1290,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.requiredClasses] = classIDs.WARRIOR,
             [questKeys.objectivesText] = {"Read the Crumpled Note you've been given, then seek out Blademaster Ren inside the Thendal Village watchtower."},
+            [questKeys.sourceItemId] = 282419,
             [questKeys.zoneOrSort] = sortKeys.WARRIOR,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -1223,6 +1302,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 5,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Slay 6 Al'Aketh Brutes, 4 Al'Aketh Neophytes, and Malduko Cloudcrush in Thendal Grove."},
+            [questKeys.objectives] = {{{251145}, {251448}, {256935}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -1245,6 +1325,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 8,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Collect 10 packs of Stolen Shen'dar Supplies from Falaath Village in the Shen'dar Highlands."},
+            [questKeys.objectives] = {nil, nil, {{252760}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -1256,6 +1337,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 6,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Collect 3 Small Eggs and 8 Strider Meat from creatures found throughout the Shen'dar Highlands."},
+            [questKeys.objectives] = {nil, nil, {{6889}, {5469}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -1267,6 +1349,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 8,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Deliver Aonda's Written Report to Valennia Stormfist in Valanaar."},
+            [questKeys.sourceItemId] = 253152,
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 10}, {2779, 10}},
         },
@@ -1333,6 +1416,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Slay 4 Al'Aketh Healers and 8 Al'Aketh Brawlers in the Gustberry Lowlands."},
+            [questKeys.objectives] = {{{254596}, {270201}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -1355,6 +1439,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Deliver the glowing crystal to Talanaanis Shadowsong in Valanaar."},
+            [questKeys.sourceItemId] = 273852,
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 10}, {2779, 10}},
         },
@@ -1366,6 +1451,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Slay Commander Belguilos in the Gustberry Lowlands."},
+            [questKeys.objectives] = {{{252666}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -1408,6 +1494,8 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 9,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Gather 5 Flutterfly Dust from the Flutterflies around the Gustberry Lowlands."},
+            [questKeys.objectives] = {nil, nil, {{253595}}},
+            [questKeys.sourceItemId] = 253666,
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
         [92684] = { -- Ornery Ornery Galestriders : https://wowhead.com/forever/quest=92684/ornery-ornery-galestriders
@@ -1418,6 +1506,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 9,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Gather 7 Lowlands Galestrider Tenderloins from the Ornery Galestriders found throughout the Gustberry Lowlands."},
+            [questKeys.objectives] = {nil, nil, {{253597}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
         [92685] = { -- The Hills Have Eyes : https://wowhead.com/forever/quest=92685/the-hills-have-eyes
@@ -1428,6 +1517,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 9,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Loot 7 Blood-Stained Bandit Masks from Highwayman Bandits in the Gustberry Lowlands."},
+            [questKeys.objectives] = {nil, nil, {{253596}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
         [92693] = { -- Standing Our Ground : https://wowhead.com/forever/quest=92693/standing-our-ground
@@ -1480,6 +1570,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 9,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Deliver Aonda's Written Report to Valennia Stormfist in Valanaar."},
+            [questKeys.sourceItemId] = 253152,
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
         [92703] = { -- Deliver the News : https://wowhead.com/forever/quest=92703/deliver-the-news
@@ -1501,6 +1592,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 20,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring Bruuz's Dorsal Fin to Gazlowe in Ratchet."},
+            [questKeys.objectives] = {nil, nil, {{253710}}},
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.reputationReward] = {{470, 100}},
         },
@@ -1544,6 +1636,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 13,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Travel to Shadowgale Forest and collect 8 Shriekling Talons for Iaadaria Bitterwind in Valanaar."},
+            [questKeys.objectives] = {nil, nil, {{254378}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2779, 50}},
         },
@@ -1555,6 +1648,8 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 12,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Use the Well Water Sample Kit to collect samples from the wells at the Jansen Stead and the Molsen Farm."},
+            [questKeys.objectives] = {nil, nil, {{254546}, {254547}}},
+            [questKeys.sourceItemId] = 254545,
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
             [questKeys.reputationReward] = {{72, 50}},
         },
@@ -1566,6 +1661,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 12,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Alba Fairmoon wants you to collect 7 Longshore Murloc Gills along the shoreline of Westfall."},
+            [questKeys.objectives] = {nil, nil, {{254548}}},
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
             [questKeys.reputationReward] = {{72, 50}},
         },
@@ -1577,6 +1673,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 14,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Slay 4 Kobold Diggers in the Jangolode Mine and 6 Riverpaw Miners in the Gold Coast Quarry."},
+            [questKeys.objectives] = {{{1236}, {1426}}},
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
             [questKeys.reputationReward] = {{72, 50}},
         },
@@ -1588,6 +1685,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 16,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 8 Suspicious Industrial Supplies from Moonbrook."},
+            [questKeys.objectives] = {nil, nil, {{254676}}},
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
             [questKeys.reputationReward] = {{72, 50}},
         },
@@ -1610,6 +1708,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 16,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Obtain 10 Coarse Dynamite from crafting, trading, or the auction house, then return to Sprite Jumpsprocket in the Dwarven District of Stormwind."},
+            [questKeys.objectives] = {nil, nil, {{4365}}},
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
             [questKeys.reputationReward] = {{72, 50}},
         },
@@ -1632,6 +1731,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 16,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring the Remote Detonator Kit to Sprite Jumpsprocket in the Dwarven District of Stormwind."},
+            [questKeys.sourceItemId] = 254552,
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
             [questKeys.reputationReward] = {{72, 50}},
         },
@@ -1643,6 +1743,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 16,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Return to Alba Fairmoon in Westfall."},
+            [questKeys.sourceItemId] = 254553,
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
             [questKeys.reputationReward] = {{72, 50}},
         },
@@ -1654,6 +1755,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 18,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Find the forge hidden in the Deadmines, and plant the Extra-Destructive Explosives nearby. Then, meet up with Alba Fairmoon at the Deadmines exit."},
+            [questKeys.sourceItemId] = 254553,
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
             [questKeys.reputationReward] = {{72, 50}},
         },
@@ -1676,6 +1778,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 10 Al'Aketh Windstone Charms from Al'Aketh cultists found north of Valanaar at the Gustberry Fields or Shrine of Akir."},
+            [questKeys.objectives] = {nil, nil, {{255658}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2779, 50}},
         },
@@ -1687,6 +1790,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Take the Index Esoteria to the Overlook Standing Stones in Shen'dar Highlands and use it once there. Protect the Index from harm as it gathers data."},
+            [questKeys.sourceItemId] = 254584,
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2779, 100}},
         },
@@ -1708,6 +1812,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Slay the Shriekling Matriarch in the Shriekling Den then return its head to Dondallion Whisperwind in Valanaar."},
+            [questKeys.objectives] = {nil, nil, {{257107}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2779, 100}},
         },
@@ -1763,6 +1868,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 15,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Ozwin Ironsprocket at Saldean's Farm wants you to bring him 14 Golem Isosprings and 5 Harvester Gyrostabilizers."},
+            [questKeys.objectives] = {nil, nil, {{255007}, {255010}}},
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
             [questKeys.reputationReward] = {{54, 50}},
         },
@@ -1774,6 +1880,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 15,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring the Precessive Autocognition Assembly to Ozwin Ironsprocket at Saldean's Farm."},
+            [questKeys.sourceItemId] = 255155,
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
             [questKeys.reputationReward] = {{54, 50}},
         },
@@ -1785,6 +1892,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 15,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Ozwin Ironsprocket at Saldean's Farm wants you to bring him 8 Golem Isosprings, 4 Copper Modulators, and a Crude Scope."},
+            [questKeys.objectives] = {nil, nil, {{255007}, {4363}, {4405}}},
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
             [questKeys.reputationReward] = {{54, 50}},
         },
@@ -1860,6 +1968,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 13,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Gather 8 Shadowgale Acorns in Shadowgale Forest."},
+            [questKeys.objectives] = {nil, nil, {{257128}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
         [93165] = { -- Mercy Falls on Deaf Ears : https://wowhead.com/forever/quest=93165/mercy-falls-on-deaf-ears
@@ -1870,6 +1979,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 13,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Collect 10 Al'Aketh Cultist's Ears from the Al'Aketh cultists in Shadowgale Forest, the Shine of Akir, or Gustberry Lowlands."},
+            [questKeys.objectives] = {nil, nil, {{258771}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2758, 1000}},
         },
@@ -1891,6 +2001,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 9,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Collect 6 pieces of Windsong Crawler Meat."},
+            [questKeys.objectives] = {nil, nil, {{257941}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
         [93318] = { -- WANTED: Vulgara the Insatiable : https://wowhead.com/forever/quest=93318/wanted-vulgara-the-insatiable
@@ -1900,6 +2011,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 9,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Kill Vulgara the Insatiable in the Shen'dar Highlands and bring her head to Danarii Bellowveil."},
+            [questKeys.objectives] = {nil, nil, {{257942}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -1911,6 +2023,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 7,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Collect 10 Pilfered Windstones from the Highlands Bandits in the Shen'dar Highlands."},
+            [questKeys.objectives] = {nil, nil, {{257945}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -1932,6 +2045,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 13,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Collect 10 Al'Aketh Cultist's Ears from the Al'Aketh in Shadowgale Forest, the Shine of Akir, or Gustberry Lowlands and return them to Vayn Moonclaw in Shadowgale Forest."},
+            [questKeys.objectives] = {nil, nil, {{258771}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2758, 1000}},
         },
@@ -1953,6 +2067,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 4,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Collect 15 Windstone Clusters from Raw Windstones in Thendal Grove."},
+            [questKeys.objectives] = {nil, nil, {{258772}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -1975,6 +2090,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 9,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Gather 10 Wind Hollow Essences from Wind Hollows in the Shadowgale Forest."},
+            [questKeys.objectives] = {nil, nil, {{262357}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}},
         },
@@ -2018,6 +2134,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Collect 10 Al'Aketh Windstone Charms from the corpses of Al'Aketh cultists in the Gustberry Lowlands."},
+            [questKeys.objectives] = {nil, nil, {{255658}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}},
         },
@@ -2053,6 +2170,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.MAGE,
             [questKeys.objectivesText] = {"Bring a Wind-Infused Bough to Belann Windwood in Valanaar."},
+            [questKeys.objectives] = {nil, nil, {{262668}}},
             [questKeys.zoneOrSort] = sortKeys.MAGE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -2083,6 +2201,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_return.toml; 0 = all races
+            [questKeys.objectives] = {nil, nil, {{262917}}},
             [questKeys.reputationReward] = {{2586, 50}, {2587, 50}},
         },
         [93926] = { -- The Western Watch : https://wowhead.com/forever/quest=93926/the-western-watch
@@ -2125,6 +2244,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 9,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Deliver the Shadowsong Family Signet to Talaanis Shadowsong in Valanaar."},
+            [questKeys.sourceItemId] = 263491,
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -2146,6 +2266,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 7,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Collect 8 Hippogryph Down feathers in the Shen'dar Highlands."},
+            [questKeys.objectives] = {nil, nil, {{263493}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -2179,6 +2300,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.objectivesText] = {"Reclaim the Skybreaker Bulwark from Zaal Stormshield at the Shrine of Akir."},
+            [questKeys.objectives] = {nil, nil, {{263993}}},
             [questKeys.zoneOrSort] = sortKeys.WARRIOR,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -2190,6 +2312,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264011}, {3391}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2222,6 +2345,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.objectivesText] = {"Use the Taming Rod to tame a Vuldren Alpha in the Gustberry Lowlands. Practice your skills, then return the Taming Rod to Quel'ana Quickgale in Valanaar."},
+            [questKeys.sourceItemId] = 264163,
             [questKeys.zoneOrSort] = sortKeys.HUNTER,
         },
         [94050] = { -- Training the Beast : https://wowhead.com/forever/quest=94050/training-the-beast
@@ -2242,6 +2366,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264012}, {3383}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2253,6 +2378,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264013}, {3385}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2263,6 +2389,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264014}, {6048}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2274,6 +2401,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264015}, {5634}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2285,6 +2413,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264016}, {3390}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2296,6 +2425,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264017}, {3388}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2306,6 +2436,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264018}, {8951}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2316,6 +2447,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264019}, {5996}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2326,6 +2458,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264020}, {5540}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2337,6 +2470,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264021}, {11128}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2347,6 +2481,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264022}, {5541}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2357,6 +2492,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264023}, {15869}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2367,6 +2503,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264024}, {3491}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2377,6 +2514,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264025}, {2865}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2387,6 +2525,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264026}, {3485}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2398,6 +2537,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264027}, {3848}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2408,6 +2548,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264028}, {3484}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2419,6 +2560,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264029}, {5507}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2429,6 +2571,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264030}, {4384}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2439,6 +2582,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264031}, {4383}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2449,6 +2593,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264032}, {4381}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2460,6 +2605,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264033}, {6712}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2470,6 +2616,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264034}, {4373}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2481,6 +2628,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264035}, {7506}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2491,6 +2639,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264036}, {4380}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2501,6 +2650,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264037}, {8069}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2511,6 +2661,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264038}, {18662}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2521,6 +2672,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264039}, {5958}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2531,6 +2683,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264040}, {7349}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2542,6 +2695,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264041}, {2317}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2552,6 +2706,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264042}, {7358}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2562,6 +2717,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264043}, {7371}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2572,6 +2728,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264044}, {4252}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2582,6 +2739,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264045}, {4254}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2592,6 +2750,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264046}, {7284}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2602,6 +2761,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264047}, {5766}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2613,6 +2773,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264048}, {6263}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2624,6 +2785,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264049}, {7048}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2634,6 +2796,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264050}, {4245}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2644,6 +2807,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264051}, {4317}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2654,6 +2818,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264052}, {4313}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2664,6 +2829,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264053}, {10048}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2674,6 +2840,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264054}, {6264}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2684,6 +2851,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264055}, {4321}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 75}, {2587, 75}},
         },
@@ -2694,6 +2862,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264056}, {6050}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2704,6 +2873,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264057}, {3823}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2714,6 +2884,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264058}, {4623}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2724,6 +2895,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264059}, {6052}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2734,6 +2906,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264060}, {10592}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2744,6 +2917,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264061}, {5633}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2754,6 +2928,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264062}, {3827}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2764,6 +2939,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264063}, {6049}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2774,6 +2950,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264064}, {3824}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2784,6 +2961,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264065}, {9061}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2794,6 +2972,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264066}, {8949}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2804,6 +2983,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264067}, {9144}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2814,6 +2994,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264068}, {7922}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2824,6 +3005,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264069}, {9060}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2834,6 +3016,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264070}, {6041}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2844,6 +3027,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264071}, {7928}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2854,6 +3038,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264072}, {7942}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2864,6 +3049,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264073}, {3853}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2874,6 +3060,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264074}, {3837}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2884,6 +3071,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264075}, {7964}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2894,6 +3082,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264076}, {7943}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2904,6 +3093,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264077}, {11144}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2914,6 +3104,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264078}, {9366}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2924,6 +3115,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264079}, {7941}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2934,6 +3126,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264080}, {4396}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2944,6 +3137,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264081}, {4392}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2954,6 +3148,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264082}, {4393}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2964,6 +3159,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264083}, {4395}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2974,6 +3170,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264084}, {10501}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2984,6 +3181,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264085}, {10560}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -2994,6 +3192,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264086}, {4852}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3004,6 +3203,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264087}, {10500}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3014,6 +3214,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264088}, {10514}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3024,6 +3225,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264089}, {10498}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3034,6 +3236,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264090}, {11590}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3044,6 +3247,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264091}, {16005}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3054,6 +3258,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264092}, {8174}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3064,6 +3269,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264093}, {5965}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3074,6 +3280,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264094}, {7378}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3084,6 +3291,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264095}, {8214}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3094,6 +3302,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264096}, {8210}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3104,6 +3313,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264097}, {8217}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3114,6 +3324,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264098}, {7391}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3124,6 +3335,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264099}, {8192}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3134,6 +3346,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264100}, {8201}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3144,6 +3357,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264101}, {8200}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3154,6 +3368,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264102}, {8189}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3164,6 +3379,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264103}, {8218}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3174,6 +3390,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264104}, {10050}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3184,6 +3401,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264105}, {10023}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3194,6 +3412,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264106}, {7063}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3204,6 +3423,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264107}, {10004}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3214,6 +3434,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264108}, {22246}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3224,6 +3445,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264109}, {4329}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3234,6 +3456,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264110}, {9998}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3244,6 +3467,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264111}, {10009}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3254,6 +3478,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264112}, {10052}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3264,6 +3489,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264113}, {10008}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3274,6 +3500,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264114}, {10042}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3284,6 +3511,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264115}, {7061}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 125}, {2587, 125}},
         },
@@ -3294,6 +3522,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264116}, {9224}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3304,6 +3533,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264117}, {12190}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3314,6 +3544,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264118}, {13457}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3324,6 +3555,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264119}, {9233}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3334,6 +3566,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264120}, {9088}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3344,6 +3577,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264121}, {13513}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3354,6 +3588,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264122}, {3387}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3364,6 +3599,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264123}, {18253}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3374,6 +3610,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264124}, {246948}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3384,6 +3621,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264125}, {12417}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3394,6 +3632,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264126}, {12416}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3404,6 +3643,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264127}, {7929}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3414,6 +3654,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264128}, {7969}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3424,6 +3665,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264129}, {12422}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3434,6 +3676,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264130}, {20549}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3444,6 +3687,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264131}, {12775}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3454,6 +3698,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264132}, {15872}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3464,6 +3709,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264133}, {7947}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3474,6 +3720,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264134}, {16023}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3484,6 +3731,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264135}, {10504}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3494,6 +3742,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264136}, {15996}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3504,6 +3753,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264137}, {18645}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3514,6 +3764,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264138}, {18587}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3524,6 +3775,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264139}, {18232}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3534,6 +3786,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264140}, {18631}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3544,6 +3797,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264141}, {10548}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3554,6 +3808,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264142}, {21277}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3564,6 +3819,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264143}, {15087}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3574,6 +3830,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264144}, {18258}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3584,6 +3841,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264145}, {15053}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3594,6 +3852,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264146}, {15094}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3604,6 +3863,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264147}, {15084}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3614,6 +3874,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264148}, {15075}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3624,6 +3885,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264149}, {15080}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3634,6 +3896,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264150}, {15092}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3644,6 +3907,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264151}, {15071}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3654,6 +3918,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264152}, {14130}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3664,6 +3929,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264153}, {14046}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3674,6 +3940,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264154}, {13864}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3684,6 +3951,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264155}, {10036}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3694,6 +3962,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264156}, {14108}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3704,6 +3973,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264157}, {22251}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3714,6 +3984,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264158}, {10025}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3724,6 +3995,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264159}, {14141}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3734,6 +4006,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
+            [questKeys.objectives] = {nil, nil, {{264160}, {21340}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
             [questKeys.reputationReward] = {{2586, 200}, {2587, 200}},
         },
@@ -3757,6 +4030,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Bring 2 Frostmane Bear Pendants to Teo Hammerstorm in Anvilmar."},
+            [questKeys.objectives] = {nil, nil, {{264356}}},
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [94374] = { -- Call of Earth : https://wowhead.com/forever/quest=94374/call-of-earth
@@ -3768,6 +4042,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Find the Spirit Stone and drink the Earth Sapta."},
+            [questKeys.sourceItemId] = 6635,
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [94375] = { -- Call of Earth : https://wowhead.com/forever/quest=94375/call-of-earth
@@ -3779,6 +4054,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Bring the Rough Quartz to Teo Hammerstorm in Anvilmar."},
+            [questKeys.sourceItemId] = 6656,
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [94411] = { -- Meddlesome Mages : https://wowhead.com/forever/quest=94411/meddlesome-mages
@@ -3834,6 +4110,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.objectivesText] = {"Bring 10 Linen Cloth to Tanis Alderwood in the Undercity."},
+            [questKeys.objectives] = {nil, nil, {{2589}}},
             [questKeys.zoneOrSort] = sortKeys.PALADIN,
             [questKeys.reputationReward] = {{68, 50}},
         },
@@ -3880,6 +4157,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.objectivesText] = {"Retrieve the Scarlet Crusade Attack Plans from the Scarlet Crusaders at Venomweb Vale, and return to Deathguard Billmuth at Tyr's Watch."},
+            [questKeys.objectives] = {nil, nil, {{264693}}},
             [questKeys.zoneOrSort] = sortKeys.PALADIN,
         },
         [94441] = { -- A Lesson in Divinity : https://wowhead.com/forever/quest=94441/a-lesson-in-divinity
@@ -3914,6 +4192,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Bring the Torch of the Dormant Flame to Braldir Ashmantle in Loch Modan."},
+            [questKeys.sourceItemId] = 6653,
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [94466] = { -- Call of Fire : https://wowhead.com/forever/quest=94466/call-of-fire
@@ -3925,6 +4204,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Bring 1 Fire Tar and 1 Reagent Pouch to Braldir Ashmantle in Loch Modan."},
+            [questKeys.objectives] = {nil, nil, {{5026}, {6652}}},
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [94467] = { -- Call of Fire : https://wowhead.com/forever/quest=94467/call-of-fire
@@ -3936,6 +4216,8 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Defeat the Minor Manifestation of Fire, and place the Glowing Ember in the brazier atop the Shrine of Eternal Flame."},
+            [questKeys.objectives] = {nil, nil, {{6655}}},
+            [questKeys.sourceItemId] = 6653,
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [94468] = { -- Call of Fire : https://wowhead.com/forever/quest=94468/call-of-fire
@@ -3947,6 +4229,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Bring the Torch of Eternal Flame to Bruegs Kindleborn in Dun Morogh."},
+            [questKeys.sourceItemId] = 6654,
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [94472] = { -- Earth Sapta : https://wowhead.com/forever/quest=94472/earth-sapta
@@ -3990,6 +4273,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 12,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Collect 8 Lady's Tear Moss."},
+            [questKeys.objectives] = {nil, nil, {{265105}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2758, 500}},
         },
@@ -4001,6 +4285,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Collect 20 feathers from the Shadowgale Shrieklings in Shadowgale Forest."},
+            [questKeys.objectives] = {nil, nil, {{265140}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2758, 500}},
         },
@@ -4012,6 +4297,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Collect 10 Bloodied Heirlooms from Al'Aketh Footsoldiers and Al'Aketh Stormchasers in the Shadowgale Forest."},
+            [questKeys.objectives] = {nil, nil, {{265141}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2758, 500}},
         },
@@ -4023,6 +4309,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Kill Commander Haalien and bring his head to Elegael Thornpaw in the Shadowgale Forest."},
+            [questKeys.objectives] = {nil, nil, {{265475}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2758, 1000}},
         },
@@ -4045,6 +4332,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 12,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Bring the Ripped Missive to Elegael Thornpaw in the Shadowgale Forest."},
+            [questKeys.sourceItemId] = 265476,
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2758, 500}},
         },
@@ -4056,6 +4344,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 12,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Give the missive to Lotheluum in Valannar and tell him what has transpired."},
+            [questKeys.sourceItemId] = 265782,
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2758, 500}},
         },
@@ -4101,6 +4390,8 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Fill the Empty Brown Waterskin at the bottom of the waterfalls below Hervdana's cave and return it to her in the Wetlands."},
+            [questKeys.objectives] = {nil, nil, {{265734}}},
+            [questKeys.sourceItemId] = 265732,
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [94499] = { -- Call of Water : https://wowhead.com/forever/quest=94499/call-of-water
@@ -4112,6 +4403,8 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Fill the Empty Red Waterskin at Stonewatch Falls near the Nightcrawler Murlocs and return to Hervdana Saegrund in the Wetlands."},
+            [questKeys.objectives] = {nil, nil, {{265748}}},
+            [questKeys.sourceItemId] = 265747,
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [94500] = { -- Call of Water : https://wowhead.com/forever/quest=94500/call-of-water
@@ -4123,6 +4416,8 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Fill the Unfilled Blue Waterskin at the waters of Astranaar in Ashenvale and return to Hervdana Saegrund in the Wetlands."},
+            [questKeys.objectives] = {nil, nil, {{265773}}},
+            [questKeys.sourceItemId] = 265772,
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [94501] = { -- Call of Water : https://wowhead.com/forever/quest=94501/call-of-water
@@ -4134,6 +4429,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Bring the Vial of Purest Water to Norric Lochthane in Loch Modan."},
+            [questKeys.sourceItemId] = 7810,
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [94502] = { -- Call of Water : https://wowhead.com/forever/quest=94502/call-of-water
@@ -4144,6 +4440,8 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Cleanse the corruption at Stendel's Pond in Westfall. Return to Norric in Loch Modan when finished."},
+            [questKeys.objectives] = {nil, nil, {{7812}}},
+            [questKeys.sourceItemId] = 7811,
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [94503] = { -- Call of Water : https://wowhead.com/forever/quest=94503/call-of-water
@@ -4165,6 +4463,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Bring the Shard of Water to Norric Lochthane in Loch Modan."},
+            [questKeys.sourceItemId] = 7813,
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [94568] = { -- The Cult's True Plans : https://wowhead.com/forever/quest=94568/the-cults-true-plans
@@ -4196,6 +4495,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.objectivesText] = {"Find and kill Ur'endra in the Shen'dar Highlands."},
+            [questKeys.objectives] = {{{258443}}},
             [questKeys.zoneOrSort] = sortKeys.DRUID,
             [questKeys.reputationReward] = {{2758, 100}},
         },
@@ -4274,6 +4574,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.HUNTER,
             [questKeys.objectivesText] = {"Use the Taming Rod to tame a Rockhide Boar. Practice your skills, then return the Taming Rod to Josephine Carson."},
+            [questKeys.sourceItemId] = 266158,
             [questKeys.zoneOrSort] = sortKeys.HUNTER,
         },
         [94793] = { -- Training the Beast : https://wowhead.com/forever/quest=94793/training-the-beast
@@ -4390,6 +4691,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.HUNTER,
             [questKeys.objectivesText] = {"Use the Taming Rod to tame a Gray Forest Wolf. Practice your skills, then return the Taming Rod to Josephine Carson."},
+            [questKeys.sourceItemId] = 266253,
             [questKeys.zoneOrSort] = sortKeys.HUNTER,
         },
         [94864] = { -- Taming the Beast : https://wowhead.com/forever/quest=94864/taming-the-beast
@@ -4401,6 +4703,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.HUNTER,
             [questKeys.objectivesText] = {"Use the Taming Rod to tame a Young Forest Bear. Practice your skills, then return the Taming Rod to Josephine Carson."},
+            [questKeys.sourceItemId] = 266254,
             [questKeys.zoneOrSort] = sortKeys.HUNTER,
         },
         [94896] = { -- Aid For The Refugees : https://wowhead.com/forever/quest=94896/aid-for-the-refugees
@@ -4411,6 +4714,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Collect 8 Abandoned Belongings from the ruins of Ban'aethal."},
+            [questKeys.objectives] = {nil, nil, {{266433}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
         [94897] = { -- The Fate of a Loved One : https://wowhead.com/forever/quest=94897/the-fate-of-a-loved-one
@@ -4421,6 +4725,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Find Resaan in the Ruins of Ban'aethal."},
+            [questKeys.objectives] = {nil, nil, {{266434}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
         [94911] = { -- Child of Nature : https://wowhead.com/forever/quest=94911/child-of-nature
@@ -4497,6 +4802,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.objectivesText] = {"Use the Taming Rod to tame a Windsong Crawler found near bodies of water. Practice your skills, then return the Taming Rod to Quel'ana Quickgale in Valanaar."},
+            [questKeys.sourceItemId] = 267272,
             [questKeys.zoneOrSort] = sortKeys.HUNTER,
         },
         [94979] = { -- Taming the Beast : https://wowhead.com/forever/quest=94979/taming-the-beast
@@ -4507,6 +4813,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.objectivesText] = {"Use the Taming Rod to tame an Ornery Galestrider in the Gustberry Lowlands. Practice your skills, then return the Taming Rod to Quel'ana Quickgale in Valanaar."},
+            [questKeys.sourceItemId] = 267298,
             [questKeys.zoneOrSort] = sortKeys.HUNTER,
         },
         [95034] = { -- The Debt : https://wowhead.com/forever/quest=95034/the-debt
@@ -4529,6 +4836,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.objectivesText] = {"Speak with Trevan Rol in the Sepulcher and bring him the materials he requires."},
+            [questKeys.objectives] = {nil, nil, {{267454}, {6994}, {267361}, {272448}}},
             [questKeys.zoneOrSort] = sortKeys.PALADIN,
             [questKeys.reputationReward] = {{68, 100}, {2787, 100}},
         },
@@ -4540,6 +4848,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 7 Gnomeregan Archival Data cards from around Gnomeregan, then deliver them to Jemma Quikswitch in Ironforge."},
+            [questKeys.objectives] = {nil, nil, {{267413}}},
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
             [questKeys.reputationReward] = {{54, 75}},
         },
@@ -4552,6 +4861,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.objectivesText] = {"Bring a Kor Gem to Ulric Frostveil in Ashenvale."},
+            [questKeys.objectives] = {nil, nil, {{6995}}},
             [questKeys.zoneOrSort] = sortKeys.PALADIN,
             [questKeys.reputationReward] = {{68, 75}},
         },
@@ -4563,6 +4873,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 12,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring 1 Shiny Bauble and 3 Nightcrawlers to Gilbert Gray at the harbor in Stormwind."},
+            [questKeys.objectives] = {nil, nil, {{6529}, {6530}}},
             [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
         },
         [95111] = { -- An Underrated Talent : https://wowhead.com/forever/quest=95111/an-underrated-talent
@@ -4574,6 +4885,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.objectivesText] = {"Speak with Ott and ask him to forge your blade."},
+            [questKeys.sourceItemId] = 268192,
             [questKeys.zoneOrSort] = sortKeys.PALADIN,
         },
         [95125] = { -- Ott's Masterwork : https://wowhead.com/forever/quest=95125/otts-masterwork
@@ -4597,6 +4909,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.objectivesText] = {"Bring Ott's Masterwork to Trevan Rol in Silverpine Forest."},
+            [questKeys.sourceItemId] = 268359,
             [questKeys.zoneOrSort] = sortKeys.PALADIN,
         },
         [95140] = { -- Old Fire-Eye : https://wowhead.com/forever/quest=95140/old-fire-eye
@@ -4619,6 +4932,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 22,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Deliver the Blood-Stained Letter to Avette Fellwood in Duskwood."},
+            [questKeys.sourceItemId] = 251522,
             [questKeys.zoneOrSort] = zoneIDs.RIVERGLADES,
         },
         [95189] = { -- Crest of Lordaeron : https://wowhead.com/forever/quest=95189/crest-of-lordaeron
@@ -4629,6 +4943,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 22,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Return the Crest of Lordaeron to Lady Dena Kennedy in Stormwind City."},
+            [questKeys.sourceItemId] = 268579,
             [questKeys.zoneOrSort] = zoneIDs.RUINS_OF_LORDAERON,
         },
         [95195] = { -- Bloodied Insignia : https://wowhead.com/forever/quest=95195/bloodied-insignia
@@ -4639,6 +4954,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 22,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 10 Bloodied Insignias and take them to General Marcus Jonathan in Stormwind City."},
+            [questKeys.sourceItemId] = 268540,
             [questKeys.zoneOrSort] = zoneIDs.RUINS_OF_LORDAERON,
         },
         [95204] = { -- Crest of Lordaeron : https://wowhead.com/forever/quest=95204/crest-of-lordaeron
@@ -4649,6 +4965,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 22,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring the Crest of Lordaeron to Oran Snakewrithe in Undercity."},
+            [questKeys.sourceItemId] = 275521,
             [questKeys.zoneOrSort] = zoneIDs.RUINS_OF_LORDAERON,
         },
         [95212] = { -- Never Saddle on Quality : https://wowhead.com/forever/quest=95212/never-saddle-on-quality
@@ -4659,6 +4976,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 6 Pristine Leopard Pelts and deliver them to Amberstill Ranch."},
+            [questKeys.objectives] = {nil, nil, {{267414}}},
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
             [questKeys.reputationReward] = {{47, 75}},
         },
@@ -4670,6 +4988,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring the Empty Powder Keg to Quarrymaster Thesten at Gol'Bolar Quarry."},
+            [questKeys.objectives] = {nil, nil, {{268548}}},
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
         },
         [95214] = { -- Stolen Blasting Powder : https://wowhead.com/forever/quest=95214/stolen-blasting-powder
@@ -4680,6 +4999,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Recover 16 Stolen Blasting Powder from the troggs east of Gol'Bolar Quarry, then return to Quarrymaster Thesten."},
+            [questKeys.objectives] = {nil, nil, {{267415}}},
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
             [questKeys.reputationReward] = {{47, 75}},
         },
@@ -4691,6 +5011,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 22,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Collect the Highly Toxic Strain from Witherfang in Ruins of Lordaeron for Theodore Griffs in Undercity."},
+            [questKeys.objectives] = {nil, nil, {{275443}}},
             [questKeys.zoneOrSort] = zoneIDs.RUINS_OF_LORDAERON,
         },
         [95217] = { -- The Quarry's Smith : https://wowhead.com/forever/quest=95217/the-quarrys-smith
@@ -4701,6 +5022,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 12 Copper Bars and 4 Toughened Boar Hides and deliver them to Frast Dokner."},
+            [questKeys.objectives] = {nil, nil, {{2840}, {267416}}},
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
             [questKeys.reputationReward] = {{47, 75}},
         },
@@ -4710,6 +5032,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 21,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect the Head of the Baron in the Ruins of Lordaeron and bring it back to Captain Truman."},
+            [questKeys.objectives] = {nil, nil, {{268518}}},
             [questKeys.zoneOrSort] = zoneIDs.RUINS_OF_LORDAERON,
         },
         [95314] = { -- That Shadowvale Green Elixir : https://wowhead.com/forever/quest=95314/that-shadowvale-green-elixir
@@ -4720,6 +5043,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Collect 8 Bottles of Whispering Elixir from Shadowvale, then return to Carolai Anise in Brill."},
+            [questKeys.objectives] = {nil, nil, {{268801}}},
             [questKeys.zoneOrSort] = zoneIDs.TIRISFAL_GLADES,
             [questKeys.reputationReward] = {{68, 100}},
         },
@@ -4731,6 +5055,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Deliver Whispering Horror Residue to Father Lankester in the War Quarter of Undercity."},
+            [questKeys.objectives] = {nil, nil, {{268812}}},
             [questKeys.zoneOrSort] = zoneIDs.TIRISFAL_GLADES,
             [questKeys.reputationReward] = {{68, 100}},
         },
@@ -4764,6 +5089,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 18,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Collect 6 Savannah Lion Hides from the Savannah Matriarchs and Savannah Patriarchs in the Barrens."},
+            [questKeys.objectives] = {nil, nil, {{269715}}},
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.reputationReward] = {{76, 50}},
         },
@@ -4775,6 +5101,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 18,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring the Bundle of Hides to the hermit on the ridge overlooking the Dry Hills in the Barrens."},
+            [questKeys.sourceItemId] = 269718,
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.reputationReward] = {{76, 50}},
         },
@@ -4786,6 +5113,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 18,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Collect 8 Trapped Game from traps found in Sprung Traps in the Barrens."},
+            [questKeys.objectives] = {nil, nil, {{269719}}},
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.reputationReward] = {{76, 50}},
         },
@@ -4808,6 +5136,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 18,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Travel to the wrecked caravan and learn more about why the Kul Tirans are here."},
+            [questKeys.objectives] = {nil, nil, {{270151}}},
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.reputationReward] = {{76, 50}},
         },
@@ -4819,6 +5148,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 20,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Slay quilboars and collect 4 of Olgra's Adornments for Mankrik's memorial."},
+            [questKeys.objectives] = {nil, nil, {{277277}}},
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
         },
         [95803] = { -- A Token of Good Faith : https://wowhead.com/forever/quest=95803/a-token-of-good-faith
@@ -4830,6 +5160,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.objectivesText] = {"Bring the head of Rudolph Gelhardt to Sylvanas Windrunner in the Undercity."},
+            [questKeys.sourceItemId] = 270436,
             [questKeys.zoneOrSort] = sortKeys.PALADIN,
             [questKeys.reputationReward] = {{68, 50}},
         },
@@ -4840,6 +5171,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 4,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Carry the Smoldering Incense to the shrine of An'she and Mu'sha in the southeastern hills before the incense burns to ash in ten minutes!"},
+            [questKeys.sourceItemId] = 277199,
             [questKeys.zoneOrSort] = zoneIDs.MULGORE,
             [questKeys.reputationReward] = {{81, 50}},
         },
@@ -4849,6 +5181,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 23,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Collect a Tortured Soul from the nearby undead in Beren's Peril in Silverpine Forest."},
+            [questKeys.objectives] = {nil, nil, {{271350}}},
             [questKeys.zoneOrSort] = zoneIDs.SILVERPINE_FOREST,
         },
         [95884] = { -- The Offering Stone : https://wowhead.com/forever/quest=95884/the-offering-stone
@@ -4858,6 +5191,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 23,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Find the Offering Stone in Beren's Peril in Silverpine Forest."},
+            [questKeys.objectives] = {nil, nil, {{271343}}},
             [questKeys.zoneOrSort] = zoneIDs.SILVERPINE_FOREST,
         },
         [95885] = { -- The Offering of Blood : https://wowhead.com/forever/quest=95885/the-offering-of-blood
@@ -4866,6 +5200,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 23,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Use the Tortured Soul to give an offering of blood at the Offering Stone in Beren's Peril."},
+            [questKeys.sourceItemId] = 210713,
             [questKeys.zoneOrSort] = zoneIDs.SILVERPINE_FOREST,
         },
         [95981] = { -- Watching the Roads : https://wowhead.com/forever/quest=95981/watching-the-roads
@@ -4876,6 +5211,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 20,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Slay 8 Dalaran Wizards and 8 Dalaran Watchers for Shadow Priest Allister in the Sepulcher."},
+            [questKeys.objectives] = {{{1888}, {1889}}},
             [questKeys.zoneOrSort] = zoneIDs.SILVERPINE_FOREST,
             [questKeys.reputationReward] = {{68, 100}},
         },
@@ -4896,6 +5232,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 25,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Deliver the Broken Staff of Incinerator Gar'im to Magistrate Solomon in Lakeshire."},
+            [questKeys.objectives] = {nil, nil, {{271872}}},
             [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
             [questKeys.reputationReward] = {{72, 150}},
         },
@@ -5037,6 +5374,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 8,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Defeat Chakuyak and bring back her pelt."},
+            [questKeys.objectives] = {nil, nil, {{270302}}},
             [questKeys.zoneOrSort] = zoneIDs.MULGORE,
             [questKeys.reputationReward] = {{81, 50}},
         },
@@ -5047,6 +5385,8 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 24,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Defeat 10 Young Black Ravagers and 7 Black Ravagers then return to Sirra Von'Indi in Darkshire for more information."},
+            [questKeys.objectives] = {{{923}, {628}}},
+            [questKeys.sourceItemId] = 281143,
             [questKeys.zoneOrSort] = zoneIDs.DUSKWOOD,
         },
         [96138] = { -- Merrick's Bow : https://wowhead.com/forever/quest=96138/merricks-bow
@@ -5056,6 +5396,8 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 28,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Defeat 8 Splint Fist Warriors and 4 Splint Fist Taskmasters then return to Sirra Von'Indi in Darkshire for more information."},
+            [questKeys.objectives] = {{{212}, {892}}},
+            [questKeys.sourceItemId] = 281142,
             [questKeys.zoneOrSort] = zoneIDs.DUSKWOOD,
         },
         [96139] = { -- The Valor Family : https://wowhead.com/forever/quest=96139/the-valor-family
@@ -5066,6 +5408,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 22,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Search Raven Hill for anything of interest and return to Sirra Von'Indi in Darkshire."},
+            [questKeys.objectives] = {nil, nil, {{281046}}},
             [questKeys.zoneOrSort] = zoneIDs.DUSKWOOD,
         },
         [96204] = { -- The Windshaper's Wrath : https://wowhead.com/forever/quest=96204/the-windshapers-wrath
@@ -5097,6 +5440,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 13,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Slay 10 Dark Iron Spies in Dun Morogh."},
+            [questKeys.objectives] = {{{6123}}},
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
             [questKeys.reputationReward] = {{47, 100}, {54, 100}},
         },
@@ -5108,6 +5452,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 15,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Deliver the Dark Iron Map to Earthseer Farsen in Dun Morogh."},
+            [questKeys.sourceItemId] = 274268,
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
             [questKeys.reputationReward] = {{47, 100}, {54, 100}},
         },
@@ -5130,6 +5475,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 16,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Enter the Hall of Thanes beneath Old Ironforge and claim the Head of Durgen Dirgehammer."},
+            [questKeys.objectives] = {nil, nil, {{274286}}},
             [questKeys.zoneOrSort] = zoneIDs.THE_HALL_OF_THANES,
             [questKeys.reputationReward] = {{47, 100}, {54, 100}},
         },
@@ -5141,6 +5487,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 15,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Kill 15 Enraged Apparitions, 10 Tormented Souls and put the spirit of Anvilmar to rest."},
+            [questKeys.objectives] = {{{263389}, {263390}}},
             [questKeys.zoneOrSort] = zoneIDs.THE_HALL_OF_THANES,
             [questKeys.reputationReward] = {{47, 100}},
         },
@@ -5152,6 +5499,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 15,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 8 Dwarven Heirlooms from the Hall of Thanes."},
+            [questKeys.objectives] = {nil, nil, {{274289}}},
             [questKeys.zoneOrSort] = zoneIDs.THE_HALL_OF_THANES,
             [questKeys.reputationReward] = {{369, 100}},
         },
@@ -5244,6 +5592,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 6,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Deliver the Supply Bundle to Eric Brighthammer near Kharanos."},
+            [questKeys.sourceItemId] = 275019,
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
         [96629] = { -- Camping 101: Cooking : https://wowhead.com/forever/quest=96629/camping-101-cooking
@@ -5263,6 +5612,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 6,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring the journal to Lyreena Duskblade near Dolanaar."},
+            [questKeys.sourceItemId] = 275022,
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
         [96634] = { -- Camping 101: Cooking : https://wowhead.com/forever/quest=96634/camping-101-cooking
@@ -5302,6 +5652,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 6,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring the journal to Brakk near Razor Hill."},
+            [questKeys.sourceItemId] = 275022,
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
         [96655] = { -- Camping 101: Cooking : https://wowhead.com/forever/quest=96655/camping-101-cooking
@@ -5342,6 +5693,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 6,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Deliver the Supply Bundle to Kaga Wildhoof near Bloodhoof Village."},
+            [questKeys.sourceItemId] = 275019,
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
         [96661] = { -- Camping 101: Cooking : https://wowhead.com/forever/quest=96661/camping-101-cooking
@@ -5362,6 +5714,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 6,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Kill 6 Ridgeshade Creepers and 6 Ridgeshade Lurkers in southern Durotar, then report to Gar'thok in Razor Hill."},
+            [questKeys.objectives] = {{{266850}, {266849}}},
             [questKeys.zoneOrSort] = zoneIDs.DUROTAR,
             [questKeys.reputationReward] = {{76, 75}},
         },
@@ -5373,6 +5726,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 6,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Collect the Raider's Battleaxe, Raider's Bow, and Raider's Shield from the Tiragarde Keep outskirts, then return them to Turroc in Razor Hill."},
+            [questKeys.objectives] = {nil, nil, {{275713}, {275716}, {275717}}},
             [questKeys.zoneOrSort] = zoneIDs.DUROTAR,
             [questKeys.reputationReward] = {{76, 75}},
         },
@@ -5384,6 +5738,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 6,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Cook Torka in Razor Hill wants you to collect 8 Prickly Pear Fruit from the Razormane Grounds west of town."},
+            [questKeys.objectives] = {nil, nil, {{275718}}},
             [questKeys.zoneOrSort] = zoneIDs.DUROTAR,
             [questKeys.reputationReward] = {{76, 75}},
         },
@@ -5395,6 +5750,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 8,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Pa'zula in Sen'jin Village wants you to collect 3 Luminous Residue. Luminous Residue can be obtained by disenchanting Hexed Pendants dropped by trolls in the Echo Isles."},
+            [questKeys.objectives] = {nil, nil, {{247884}}},
             [questKeys.zoneOrSort] = zoneIDs.DUROTAR,
             [questKeys.reputationReward] = {{76, 75}},
         },
@@ -5406,6 +5762,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Ug'thok in Orgrimmar wants you to collect 5 Weathered Spines from beasts in Thunder Ridge, along with 5 Rough Grinding Stones."},
+            [questKeys.objectives] = {nil, nil, {{275719}, {3470}}},
             [questKeys.zoneOrSort] = zoneIDs.DUROTAR,
             [questKeys.reputationReward] = {{76, 75}},
         },
@@ -5417,6 +5774,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Kamari in Orgrimmar wants you to collect 5 Rough Lizard Hide from beasts in Thunder Ridge, along with 2 Cured Light Hides."},
+            [questKeys.objectives] = {nil, nil, {{275720}, {4231}}},
             [questKeys.zoneOrSort] = zoneIDs.DUROTAR,
             [questKeys.reputationReward] = {{76, 75}},
         },
@@ -5428,6 +5786,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 8,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Return the pack to Ukor in southern Durotar."},
+            [questKeys.sourceItemId] = 275722,
             [questKeys.zoneOrSort] = zoneIDs.DUROTAR,
             [questKeys.reputationReward] = {{76, 75}},
         },
@@ -5439,6 +5798,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 12,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Deliver Halikor's Hoof to Orgrimmar."},
+            [questKeys.sourceItemId] = 275723,
             [questKeys.zoneOrSort] = zoneIDs.DUROTAR,
             [questKeys.reputationReward] = {{76, 75}},
         },
@@ -5472,6 +5832,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 13,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Kill 8 Dark Neophytes and 8 Dark Enforcers in Tirisfal Glades."},
+            [questKeys.objectives] = {{{267006}, {275437}}},
             [questKeys.zoneOrSort] = zoneIDs.TIRISFAL_GLADES,
             [questKeys.reputationReward] = {{529, 150}},
         },
@@ -5483,6 +5844,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 13,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Gather 12 Necrotic Crystal Fragments in Tirisfal Glades."},
+            [questKeys.objectives] = {nil, nil, {{275851}}},
             [questKeys.zoneOrSort] = zoneIDs.TIRISFAL_GLADES,
             [questKeys.reputationReward] = {{529, 150}},
         },
@@ -5505,6 +5867,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 21,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring the head of Chol'aruk to Gur'ak in the Barrens."},
+            [questKeys.objectives] = {nil, nil, {{276070}}},
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.reputationReward] = {{76, 150}},
         },
@@ -5516,6 +5879,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 21,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring Chol'aruk's Head to Bainham in the Barrens."},
+            [questKeys.objectives] = {nil, nil, {{276070}}},
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.reputationReward] = {{72, 150}},
         },
@@ -5527,6 +5891,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 15,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring the Gatehouse Shipment to the stockroom entrance located in Trias' Cheese shop in the Trade District"},
+            [questKeys.sourceItemId] = 277119,
             [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
         },
         [97222] = { -- Gatehouse Goods : https://wowhead.com/forever/quest=97222/gatehouse-goods
@@ -5537,6 +5902,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 15,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Carry the Gatehouse Shipment up the stairs in Trias' shop and leave it outside the door."},
+            [questKeys.sourceItemId] = 277198,
             [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
         },
         [97223] = { -- Bloodtalon Matriarch : https://wowhead.com/forever/quest=97223/bloodtalon-matriarch
@@ -5547,6 +5913,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 8,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring Eggs of the Bloodtalon Matriarch to Xar'Ti in Sen'jin Village."},
+            [questKeys.objectives] = {nil, nil, {{277128}}},
             [questKeys.zoneOrSort] = zoneIDs.DUROTAR,
             [questKeys.reputationReward] = {{76, 100}, {530, 100}},
         },
@@ -5558,6 +5925,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 9,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Collect 8 Forgotten Loa Idols from the Echo Isles. Bring them to Master Gadrin in Sen'jin Village."},
+            [questKeys.objectives] = {nil, nil, {{277135}}},
             [questKeys.zoneOrSort] = zoneIDs.DUROTAR,
             [questKeys.reputationReward] = {{76, 100}, {530, 100}},
         },
@@ -5569,6 +5937,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 18,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring the wrapped reading material to the Stormwind library."},
+            [questKeys.sourceItemId] = 277158,
             [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
         },
         [97236] = { -- Fang of Githyiss : https://wowhead.com/forever/quest=97236/fang-of-githyiss
@@ -5590,6 +5959,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 18,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Find each of the reading materials located somewhere in the library and then return to Roy Lewells in Stormwind's Park."},
+            [questKeys.objectives] = {nil, nil, {{277196}, {277194}, {277195}, {277197}}},
             [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
         },
         [97242] = { -- Yelmak's Medley : https://wowhead.com/forever/quest=97242/yelmaks-medley
@@ -5600,6 +5970,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 15,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Take some cuttings from the Cattails and Speargrass growing around the water flows in the Valley of Honor and return to Kor'geld in Yelmak's Alchemy and Potions"},
+            [questKeys.objectives] = {nil, nil, {{277278}, {277279}}},
             [questKeys.zoneOrSort] = zoneIDs.ORGRIMMAR,
         },
         [97243] = { -- Call of Fire : https://wowhead.com/forever/quest=97243/call-of-fire
@@ -5610,6 +5981,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
             [questKeys.objectivesText] = {"Bring the Torch of Dormant Flame to Olariaan Swiftburn at the Shrine of Flames in the Gustberry Lowlands."},
+            [questKeys.sourceItemId] = 6653,
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
             [questKeys.reputationReward] = {{2778, 25}},
         },
@@ -5621,6 +5993,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
             [questKeys.objectivesText] = {"Slay Skypriest Faladiel in the Gustberry Lowlands and collect Faladiel's Heart."},
+            [questKeys.objectives] = {nil, nil, {{277267}}},
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
             [questKeys.reputationReward] = {{2778, 25}},
         },
@@ -5632,6 +6005,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
             [questKeys.objectivesText] = {"Find the home of Kuramaa in the Shen'dar Highlands, and defeat the spirit in combat. Bring Kuramaa's Mask to Olariaan Swiftburn in the Gustberry Lowlands when you are victorious."},
+            [questKeys.objectives] = {nil, nil, {{277269}}},
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
             [questKeys.reputationReward] = {{2778, 25}},
         },
@@ -5653,6 +6027,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 15,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring Migi's Lunch to him behind Grommash Hold"},
+            [questKeys.sourceItemId] = 277284,
             [questKeys.zoneOrSort] = zoneIDs.ORGRIMMAR,
         },
         [97250] = { -- Wrongly Blamed, Justly Corrected : https://wowhead.com/forever/quest=97250/wrongly-blamed-justly-corrected
@@ -5663,6 +6038,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 23,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Slay Alliance soldiers encroaching into the Barrens at the border to Dustwallow Marsh, then return to Grunt Logmar at Camp Taurajo."},
+            [questKeys.objectives] = {{{268622}, {268623}}},
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
         },
         [97253] = { -- Parts and Pieces : https://wowhead.com/forever/quest=97253/parts-and-pieces
@@ -5673,6 +6049,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 14,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Collect 5 Handfuls of Complicated Parts from the upper pirate camp south of Ratchet, then return to Wrenix the Wretched in Ratchet."},
+            [questKeys.objectives] = {nil, nil, {{277331}}},
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
         },
         [97257] = { -- Call of Fire : https://wowhead.com/forever/quest=97257/call-of-fire
@@ -5683,6 +6060,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
             [questKeys.objectivesText] = {"Wait for Olariaan to begin the ritual at the Brazier of Offering and follow his instructions. You must deliver the Eternal Flame to Valanaar before the timer runs out."},
+            [questKeys.sourceItemId] = 277329,
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
             [questKeys.reputationReward] = {{2778, 25}},
         },
@@ -5693,6 +6071,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 2,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Deliver Eldrun's misplaced package."},
+            [questKeys.sourceItemId] = 277505,
             [questKeys.zoneOrSort] = zoneIDs.IRONFORGE,
         },
         [97275] = { -- Whuut's the Rush : https://wowhead.com/forever/quest=97275/whuuts-the-rush
@@ -5703,6 +6082,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 15,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Give Yelmak's Potion to Whuut."},
+            [questKeys.sourceItemId] = 277566,
             [questKeys.zoneOrSort] = zoneIDs.ORGRIMMAR,
         },
         [97277] = { -- Grund and Gozwin : https://wowhead.com/forever/quest=97277/grund-and-gozwin
@@ -5723,6 +6103,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 2,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Collect 6 Abandoned Training Weapons, then return to Kzan Thornslash in the Den."},
+            [questKeys.objectives] = {nil, nil, {{277653}}},
             [questKeys.zoneOrSort] = zoneIDs.DUROTAR,
             [questKeys.reputationReward] = {{76, 100}, {530, 100}},
         },
@@ -5745,6 +6126,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring 5 Charged Thunder Lizard Organs to Rezlak near Drygulch Ravine."},
+            [questKeys.objectives] = {nil, nil, {{277665}}},
             [questKeys.zoneOrSort] = zoneIDs.DUROTAR,
             [questKeys.reputationReward] = {{76, 100}, {470, 100}, {530, 100}},
         },
@@ -5766,6 +6148,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 21,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Deliver the Abominable Head to someone within the Undercity."},
+            [questKeys.sourceItemId] = 280438,
             [questKeys.zoneOrSort] = zoneIDs.RUINS_OF_LORDAERON,
         },
         [97289] = { -- Unending Torment : https://wowhead.com/forever/quest=97289/unending-torment
@@ -5776,6 +6159,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 21,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring the Head of the Baron to the body of Othmar in the Undercity."},
+            [questKeys.sourceItemId] = 268518,
             [questKeys.zoneOrSort] = zoneIDs.RUINS_OF_LORDAERON,
         },
         [97290] = { -- Unending Torment : https://wowhead.com/forever/quest=97290/unending-torment
@@ -5796,6 +6180,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 21,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Collect a Toxic Skullcap from Tawny Grisette in the Trade Quarter, Blisterweed near the Herbalism Trainer, and Essence of Agony from the poison vendor in the Rogues' Quarter for Master Apothecary Faranell in Undercity."},
+            [questKeys.objectives] = {nil, nil, {{281246}, {281300}, {8923}}},
             [questKeys.zoneOrSort] = zoneIDs.RUINS_OF_LORDAERON,
         },
         [97292] = { -- Unending Torment : https://wowhead.com/forever/quest=97292/unending-torment
@@ -5806,6 +6191,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 21,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Inject the Hissing Serum into the system above Othmar's body for Master Apothecary Faranell."},
+            [questKeys.sourceItemId] = 281327,
             [questKeys.zoneOrSort] = zoneIDs.RUINS_OF_LORDAERON,
         },
         [97326] = { -- Rocks to Rests : https://wowhead.com/forever/quest=97326/rocks-to-rests
@@ -5816,6 +6202,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 15,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Return 8 Smooth Boulders to Thra behind Grommash Hold."},
+            [questKeys.objectives] = {nil, nil, {{277952}}},
             [questKeys.zoneOrSort] = zoneIDs.ORGRIMMAR,
             [questKeys.reputationReward] = {{76, 50}},
         },
@@ -5837,6 +6224,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 26,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Tah Winterhoof in Thunder Bluff wants 30 Mirkweed Pods from Mirkfallon Lake."},
+            [questKeys.objectives] = {nil, nil, {{278201}}},
             [questKeys.zoneOrSort] = zoneIDs.STONETALON_MOUNTAINS,
             [questKeys.reputationReward] = {{81, 100}},
         },
@@ -5848,6 +6236,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring Shelene Rhobart 8 Duskbat Wing Membranes, 6 Darkhound Hides and 3 Vile Fin Murloc Skin."},
+            [questKeys.objectives] = {nil, nil, {{278242}, {278243}, {278244}}},
             [questKeys.zoneOrSort] = zoneIDs.TIRISFAL_GLADES,
             [questKeys.reputationReward] = {{68, 75}},
         },
@@ -5858,6 +6247,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Purchase Nutritious Slime Sludge and return to your befriended excitable slime. If it seems tired, try dancing with it again to catch its attention."},
+            [questKeys.objectives] = {nil, nil, {{278265}}},
             [questKeys.zoneOrSort] = sortKeys.SPECIAL,
         },
         [97891] = { -- Prompt Potion Runner : https://wowhead.com/forever/quest=97891/prompt-potion-runner
@@ -5868,6 +6258,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 16,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring the Unstable Potion to Doctor Martin Felben in the Apothecarium within the time limit."},
+            [questKeys.sourceItemId] = 279020,
             [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
             [questKeys.reputationReward] = {{68, 150}},
         },
@@ -5989,6 +6380,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 17,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring Thundris' Letter to Baros Alexston in Stormwind. Thundris mentioned a boat in Auberdine that can take you there."},
+            [questKeys.sourceItemId] = 279045,
             [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
         },
         [97915] = { -- Camping 101: Alchemy : https://wowhead.com/forever/quest=97915/camping-101-alchemy
@@ -6109,6 +6501,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 17,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring Alexston's Reply to Thundris Windweaver in Auberdine in Darkshore."},
+            [questKeys.sourceItemId] = 279048,
             [questKeys.zoneOrSort] = zoneIDs.DARKSHORE,
         },
         [97927] = { -- Camping 101: Alchemy : https://wowhead.com/forever/quest=97927/camping-101-alchemy
@@ -6544,6 +6937,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 3,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 4 Gnarlpine Totems and bring them to Tarindrella."},
+            [questKeys.objectives] = {nil, nil, {{279082}}},
             [questKeys.zoneOrSort] = zoneIDs.TELDRASSIL,
             [questKeys.reputationReward] = {{69, 100}},
         },
@@ -6566,6 +6960,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 20,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Eliminate 12 Stormscale Myrmidons, 8 Stormscale Sorceresses, and 6 Stormscale Warriors for Arbal at the Grove of the Ancients."},
+            [questKeys.objectives] = {{{2181}, {2182}, {2183}}},
             [questKeys.zoneOrSort] = zoneIDs.DARKSHORE,
             [questKeys.reputationReward] = {{69, 150}},
         },
@@ -6599,6 +6994,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 13,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Find and slay the owl known as Jai'vhanel and take one of her feathers. The black owl was last seen north of the Ameth'Aran ruins near the mountain base. Report the death of Jai'vhanel to Sentinel Glynda Nal'Shea in Auberdine."},
+            [questKeys.objectives] = {nil, nil, {{281038}}},
             [questKeys.zoneOrSort] = zoneIDs.DARKSHORE,
             [questKeys.reputationReward] = {{69, 150}},
         },
@@ -6610,6 +7006,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 21,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring the Clouded Water Globe to Onu at the Grove of the Ancients in Darkshore."},
+            [questKeys.sourceItemId] = 279275,
             [questKeys.zoneOrSort] = zoneIDs.DARKSHORE,
             [questKeys.reputationReward] = {{69, 150}},
         },
@@ -6621,6 +7018,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 17,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Obtain a Peerless Eye from a Twilight Disciple or Thug at the Master's Glaive in Darkshore and find someone in Auberdine who is willing to take it."},
+            [questKeys.objectives] = {nil, nil, {{279279}}},
             [questKeys.zoneOrSort] = zoneIDs.DARKSHORE,
             [questKeys.reputationReward] = {{69, 100}},
         },
@@ -6632,6 +7030,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring the Drained Vessel to Lariia in the Temple of the Moon in Darnassus."},
+            [questKeys.sourceItemId] = 279291,
             [questKeys.zoneOrSort] = zoneIDs.TELDRASSIL,
             [questKeys.reputationReward] = {{69, 150}},
         },
@@ -6643,6 +7042,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring the Moonwell Remnants to Tyrande Whisperwind in the Temple of the Moon in Darnassus."},
+            [questKeys.sourceItemId] = 279331,
             [questKeys.zoneOrSort] = zoneIDs.TELDRASSIL,
             [questKeys.reputationReward] = {{69, 150}},
         },
@@ -6654,6 +7054,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Place Sentinel Owls at the entrance to the Cenarion Hold depths, the Darnassus Bank, the Craftsman's Terrace Inn, and the City Gate for Sentinel Dalia Sunblade in the Temple of the Moon in Darnassus."},
+            [questKeys.sourceItemId] = 279378,
             [questKeys.zoneOrSort] = zoneIDs.DARNASSUS,
             [questKeys.reputationReward] = {{69, 75}},
         },
@@ -6663,6 +7064,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 23,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Sulhasa in southern Barrens wants you to clear out 7 Stormhide lizards and 7 Hecklefang Stalkers in the area so she can leave the tree safely."},
+            [questKeys.objectives] = {{{4128}, {3238}}},
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.reputationReward] = {{81, 150}},
         },
@@ -6672,6 +7074,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 25,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"High Executor Darthalia wants you to deliver updated orders to Deathstalker Masoj, south of Tarren Mill, outside of Dun Garok"},
+            [questKeys.sourceItemId] = 279394,
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.reputationReward] = {{81, 150}},
         },
@@ -6681,6 +7084,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 25,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Deathstalker Masoj needs you to place the three Apothecary Vials on peaks around Hillsbrad Foothills and return to him."},
+            [questKeys.sourceItemId] = 279395,
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.reputationReward] = {{81, 150}},
         },
@@ -6690,6 +7094,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 25,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring the Menethil Statuette to Captain Stoutfist in Menethil Keep."},
+            [questKeys.sourceItemId] = 279589,
             [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
         },
         [98190] = { -- A Friend of the Family : https://wowhead.com/forever/quest=98190/a-friend-of-the-family
@@ -6698,6 +7103,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 25,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring the Menethil Statuette to Highlord Bolvar Fordragon in Stormwind Keep."},
+            [questKeys.sourceItemId] = 279595,
             [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
         },
         [98191] = { -- A Friend of the Family : https://wowhead.com/forever/quest=98191/a-friend-of-the-family
@@ -6706,6 +7112,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 25,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring the Menethil Statuette to Lord Grayson Shadowbreaker in the Cathedral of Light."},
+            [questKeys.sourceItemId] = 279598,
             [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
         },
         [98197] = { -- Spoils of War : https://wowhead.com/forever/quest=98197/spoils-of-war
@@ -6716,6 +7123,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 22,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Recover 6 Khaz Modan Timber and 30 Khaz Modan Iron from Menethil Harbor for Valstag Ironjaw."},
+            [questKeys.objectives] = {nil, nil, {{279821}, {279822}}},
             [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
             [questKeys.reputationReward] = {{47, 100}},
         },
@@ -6733,6 +7141,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 29,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring the Crimson Crate to Howin Kindfeather off the road to the east of Menethil Harbor."},
+            [questKeys.sourceItemId] = 280099,
             [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
             [questKeys.reputationReward] = {{72, 50}},
         },
@@ -6742,6 +7151,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 29,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 10 Razormaw Incisors for Howin Kindfeather."},
+            [questKeys.objectives] = {nil, nil, {{280103}}},
             [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
             [questKeys.reputationReward] = {{471, 100}},
         },
@@ -6751,6 +7161,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 29,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Gather 12 Perfect Razormaw Eggs for Howin Kindfeather."},
+            [questKeys.objectives] = {nil, nil, {{280132}}},
             [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
             [questKeys.reputationReward] = {{471, 100}},
         },
@@ -6762,6 +7173,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Deliver the Shipping Label to someone at the Azeroth Commerce Authority trade hub in Redridge Mountains."},
+            [questKeys.objectives] = {nil, nil, {{280179}}},
             [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
             [questKeys.reputationReward] = {{2586, 2000}},
         },
@@ -6773,6 +7185,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Deliver the Shipping Label to someone at the Durotar Supply and Logistics trade hub near the Crossroads in the Barrens."},
+            [questKeys.objectives] = {nil, nil, {{280180}}},
             [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
             [questKeys.reputationReward] = {{2587, 2000}},
         },
@@ -6782,6 +7195,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 22,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Kill 6 Shadowhorn Stag and 6 Ashenvale Bear and return to Va'xug Firefure northwest of Fallen Sky Lake."},
+            [questKeys.objectives] = {{{3817}, {3809}}},
             [questKeys.zoneOrSort] = zoneIDs.THUNDER_BLUFF,
             [questKeys.reputationReward] = {{81, 10}},
         },
@@ -6800,6 +7214,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 22,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect an Unruptured Stalker Gland from Thelgen Rock for Caitlin Grassman in Menethil Harbor."},
+            [questKeys.objectives] = {nil, nil, {{280319}}},
             [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
         },
         [98284] = { -- Camping 101: Enchanting : https://wowhead.com/forever/quest=98284/camping-101-enchanting
@@ -6846,6 +7261,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 30,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 30 Dragonmaw Armaments in Dragonmaw Retreat, then bring them to Captain Stoutfist in Menethil Keep."},
+            [questKeys.objectives] = {nil, nil, {{280369}}},
             [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
             [questKeys.reputationReward] = {{471, 100}},
         },
@@ -6857,6 +7273,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 16,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring 6 Worgen Bits to Dalar Dawnweaver in The Sepulcher."},
+            [questKeys.objectives] = {nil, nil, {{280375}}},
             [questKeys.zoneOrSort] = zoneIDs.SILVERPINE_FOREST,
             [questKeys.reputationReward] = {{68, 100}},
         },
@@ -6868,6 +7285,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 20,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Slay 5 Sickly Refugees and 5 Haggard Refugees for Dalar Dawnweaver in The Sepulcher."},
+            [questKeys.objectives] = {{{2053}, {2054}}},
             [questKeys.zoneOrSort] = zoneIDs.SILVERPINE_FOREST,
             [questKeys.reputationReward] = {{68, 100}},
         },
@@ -6890,6 +7308,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 7,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 8 Flintfire Shipments from the Grizzled Den for Tongus Flintfire in Kharanos."},
+            [questKeys.objectives] = {nil, nil, {{280413}}},
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
             [questKeys.reputationReward] = {{47, 100}, {54, 100}},
         },
@@ -6912,6 +7331,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 8,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Deliver Mountaineer Gretchen's Report back to Senir Whitebeard in Kharanos."},
+            [questKeys.sourceItemId] = 280430,
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
             [questKeys.reputationReward] = {{47, 100}, {54, 100}},
         },
@@ -6923,6 +7343,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 9,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Slay Frosthowl and collect the Sack of Fish for Gretta Ganter in Brewnall Village"},
+            [questKeys.objectives] = {nil, nil, {{280426}}},
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
             [questKeys.reputationReward] = {{47, 100}, {54, 100}},
         },
@@ -6958,6 +7379,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.TAUREN,
             [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.objectivesText] = {"Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Great Cat Spirit."},
+            [questKeys.objectives] = {nil, nil, {{280502}, {280679}, {280680}}},
             [questKeys.zoneOrSort] = sortKeys.DRUID,
             [questKeys.reputationReward] = {{609, 50}},
         },
@@ -6991,6 +7413,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 21,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring 10 Battleworn Axes to Marshal Marris in Lakeshire."},
+            [questKeys.objectives] = {nil, nil, {{280839}, {280841}}},
             [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
             [questKeys.reputationReward] = {{72, 100}},
         },
@@ -7024,6 +7447,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 12,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect Hatescreech's Amulet, Windmistress Gaedress' Amulet, and Witchmother Arysa's Amulet for Sentinel Arynia Cloudsbreak in the Oracle Glade."},
+            [questKeys.objectives] = {nil, nil, {{280831}, {280832}, {280834}}},
             [questKeys.zoneOrSort] = zoneIDs.TELDRASSIL,
         },
         [98393] = { -- The Great Cat Spirit : https://wowhead.com/forever/quest=98393/the-great-cat-spirit
@@ -7059,6 +7483,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.NIGHT_ELF,
             [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.objectivesText] = {"Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Great Cat Spirit."},
+            [questKeys.objectives] = {nil, nil, {{280502}, {280679}, {280680}}},
             [questKeys.zoneOrSort] = sortKeys.DRUID,
             [questKeys.reputationReward] = {{609, 50}},
         },
@@ -7101,6 +7526,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 20,
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
             [questKeys.objectivesText] = {"Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Avatar of Saeyleenan."},
+            [questKeys.objectives] = {nil, nil, {{280502}, {280679}, {280680}}},
             [questKeys.zoneOrSort] = sortKeys.DRUID,
             [questKeys.reputationReward] = {{609, 50}},
         },
@@ -7124,6 +7550,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 17,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 5 Spiked Collars from Gnoll Thrashers for Deputy Feldon near Lakeshire."},
+            [questKeys.objectives] = {nil, nil, {{280911}}},
             [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
             [questKeys.reputationReward] = {{72, 100}},
         },
@@ -7135,6 +7562,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 16,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Deliver the Treaty of Understanding to Magni Bronzebeard in Ironforge."},
+            [questKeys.sourceItemId] = 281030,
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
             [questKeys.reputationReward] = {{47, 100}, {54, 100}},
         },
@@ -7146,6 +7574,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Collect the rest of Supervisor Fizsprocket's pages inside The Venture Co. Mine and bring them to Morin Cloudstalker near Bloodhoof Village."},
+            [questKeys.objectives] = {nil, nil, {{281035}, {281036}, {281037}, {281031}}},
             [questKeys.zoneOrSort] = zoneIDs.MULGORE,
             [questKeys.reputationReward] = {{81, 100}},
         },
@@ -7157,6 +7586,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 12,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring the Clearcutter Key to Morin Cloudstalker outside Bloodhoof Village."},
+            [questKeys.objectives] = {nil, nil, {{281048}}},
             [questKeys.zoneOrSort] = zoneIDs.MULGORE,
             [questKeys.reputationReward] = {{81, 150}},
         },
@@ -7179,6 +7609,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring Thunderhorn's Report to Arch Druid Hamuul Runetotem in Thunder Bluff."},
+            [questKeys.sourceItemId] = 281139,
             [questKeys.zoneOrSort] = zoneIDs.MULGORE,
             [questKeys.reputationReward] = {{81, 10}},
         },
@@ -7190,6 +7621,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 21,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Deliver Tom's Gift to Bart Tidewater in Menethil Harbor in the Wetlands."},
+            [questKeys.sourceItemId] = 281240,
             [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
             [questKeys.reputationReward] = {{72, 10}},
         },
@@ -7201,6 +7633,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 21,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Deliver Hollee's Note to Tarrel Rockweaver near Menethil Harbor in the Wetlands."},
+            [questKeys.sourceItemId] = 281243,
             [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
         },
         [98512] = { -- Al'Aketh Assassins : https://wowhead.com/forever/quest=98512/alaketh-assassins
@@ -7211,6 +7644,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
             [questKeys.objectivesText] = {"Kill 10 Al'Aketh Assassins in the Shen'dar Highlands."},
+            [questKeys.objectives] = {{{254626}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
@@ -7220,6 +7654,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
             [questKeys.objectivesText] = {"Report to Sessaria Skystride or Aarnor Galestrike on Zephras Isle to continue your training as a Shaman. You can return to Zephras via the skycutter transport that docks in Mulgore at Skywatcher Plateau, northwest of Thunder Bluff."},
+            [questKeys.objectives] = {nil, nil, {{6653}}},
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [98545] = { -- Leonid's Letter : https://wowhead.com/forever/quest=98545/leonids-letter
@@ -7230,6 +7665,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 13,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Deliver the Sealed Letter to Glix Xizzix in the Undercity."},
+            [questKeys.sourceItemId] = 282065,
             [questKeys.zoneOrSort] = zoneIDs.TIRISFAL_GLADES,
             [questKeys.reputationReward] = {{529, 100}},
         },
@@ -7242,6 +7678,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.GNOME,
             [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.objectivesText] = {"Read the Hallowed Memorandum and speak to Branstock Khalder in Anvilmar."},
+            [questKeys.sourceItemId] = 282338,
             [questKeys.zoneOrSort] = sortKeys.PRIEST,
             [questKeys.reputationReward] = {{54, 50}},
         },
@@ -7254,6 +7691,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.TROLL,
             [questKeys.requiredClasses] = classIDs.WARLOCK,
             [questKeys.objectivesText] = {"Read the Tainted Tablet and speak to Nartok inside the Den in the Valley of Trials."},
+            [questKeys.sourceItemId] = 282346,
             [questKeys.zoneOrSort] = sortKeys.WARLOCK,
             [questKeys.reputationReward] = {{530, 50}},
         },
@@ -7266,6 +7704,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ORC,
             [questKeys.requiredClasses] = classIDs.MAGE,
             [questKeys.objectivesText] = {"Read the Glyphic Parchment and speak with Mai'ah near the entrance to the Den in the Valley of Trials."},
+            [questKeys.sourceItemId] = 282380,
             [questKeys.zoneOrSort] = sortKeys.MAGE,
             [questKeys.reputationReward] = {{76, 50}},
         },
@@ -7278,6 +7717,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.DWARF,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Read the Archaic Rune and speak to Teo Hammerstorm in Anvilmar."},
+            [questKeys.sourceItemId] = 282400,
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
             [questKeys.reputationReward] = {{47, 50}},
         },
@@ -7290,6 +7730,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.objectivesText] = {"Read the Consecrated Scroll and speak to Aramis Hammerhand in the church in Deathknell."},
+            [questKeys.sourceItemId] = 282423,
             [questKeys.zoneOrSort] = sortKeys.PALADIN,
             [questKeys.reputationReward] = {{68, 50}},
         },
@@ -7383,6 +7824,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Find signs of what attacked Heglan Shadeeye."},
+            [questKeys.objectives] = {nil, nil, {{286012}, {286011}, {286010}}},
             [questKeys.zoneOrSort] = zoneIDs.DUROTAR,
             [questKeys.reputationReward] = {{76, 25}, {530, 25}},
         },
@@ -7394,6 +7836,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 6 Dewy Lasher Fronds, an Empty Vial, and a Refreshing Spring Water for Byancie in Dolanaar."},
+            [questKeys.objectives] = {nil, nil, {{286017}, {3371}, {159}}},
             [questKeys.zoneOrSort] = zoneIDs.TELDRASSIL,
             [questKeys.reputationReward] = {{69, 100}},
         },
@@ -7405,6 +7848,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Collect 9 Naga Spinefins."},
+            [questKeys.objectives] = {nil, nil, {{286008}}},
             [questKeys.zoneOrSort] = zoneIDs.DUROTAR,
             [questKeys.reputationReward] = {{76, 25}, {530, 25}},
         },
@@ -7416,6 +7860,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 12,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Kill the sea giant along Durotar's north coast and bring back proof of your accomplishment."},
+            [questKeys.objectives] = {nil, nil, {{286009}}},
             [questKeys.zoneOrSort] = zoneIDs.DUROTAR,
             [questKeys.reputationReward] = {{76, 100}, {530, 50}},
         },
@@ -7437,6 +7882,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Take the Lashwater Salve to Sentinel Eralya Leafshadow on the road to the Oracle Tree."},
+            [questKeys.sourceItemId] = 286069,
             [questKeys.zoneOrSort] = zoneIDs.TELDRASSIL,
         },
         [99079] = { -- Longwalker Malah : https://wowhead.com/forever/quest=99079/longwalker-malah
@@ -7469,6 +7915,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 9,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring Longwalker Malah's Report to Brave Wildrunner in Bloodhoof Village."},
+            [questKeys.sourceItemId] = 286104,
             [questKeys.zoneOrSort] = zoneIDs.MULGORE,
             [questKeys.reputationReward] = {{81, 10}},
         },
@@ -7491,6 +7938,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 9,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring Longwalker Malah's Report to Baine Bloodhoof."},
+            [questKeys.sourceItemId] = 286104,
             [questKeys.zoneOrSort] = zoneIDs.MULGORE,
             [questKeys.reputationReward] = {{81, 10}},
         },
@@ -7523,6 +7971,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 7,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Check the fishing nets in Crystal Lake."},
+            [questKeys.objectives] = {nil, nil, {{286205}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
         },
         [99128] = { -- Slimy Menace : https://wowhead.com/forever/quest=99128/slimy-menace
@@ -7533,6 +7982,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 7,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Kill the murlocs at Crystal Lake."},
+            [questKeys.objectives] = {{{735}, {285}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
         },
         [99129] = { -- A Man About a Murloc : https://wowhead.com/forever/quest=99129/a-man-about-a-murloc
@@ -7553,6 +8003,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 7,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect ingredients for murloc bait."},
+            [questKeys.objectives] = {nil, nil, {{286214}, {286215}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
         },
         [99131] = { -- Baited for Success : https://wowhead.com/forever/quest=99131/baited-for-success
@@ -7573,6 +8024,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 6,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Punish 5 Deathguards for Executor Zygand."},
+            [questKeys.sourceItemId] = 286176,
             [questKeys.zoneOrSort] = zoneIDs.TIRISFAL_GLADES,
             [questKeys.reputationReward] = {{68, 100}},
         },
@@ -7584,6 +8036,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 6,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Obtain reports from Deathguard Dillinger, Deathguard Kristof, and Gordo for Executor Zygand."},
+            [questKeys.objectives] = {nil, nil, {{286200}, {286201}, {286202}}},
             [questKeys.zoneOrSort] = zoneIDs.TIRISFAL_GLADES,
             [questKeys.reputationReward] = {{68, 100}},
         },
@@ -7595,6 +8048,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Collect 5 Tomb Weed and deliver them back to Junior Apothecary Holland."},
+            [questKeys.objectives] = {nil, nil, {{286204}}},
             [questKeys.zoneOrSort] = zoneIDs.TIRISFAL_GLADES,
             [questKeys.reputationReward] = {{68, 100}},
         },
@@ -7606,6 +8060,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 7,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 6 pieces of shiny junk from the nearby Murloc camp."},
+            [questKeys.objectives] = {nil, nil, {{286209}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
         },
         [99144] = { -- Seeking Refuge : https://wowhead.com/forever/quest=99144/seeking-refuge
@@ -7627,6 +8082,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Collect 6 Faintly Glowing Bones for Hilda the Breaker."},
+            [questKeys.objectives] = {nil, nil, {{286259}}},
             [questKeys.zoneOrSort] = zoneIDs.TIRISFAL_GLADES,
             [questKeys.reputationReward] = {{68, 100}},
         },
@@ -7638,6 +8094,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Find the Hidden Crystal Fragment beneath Shadowvale for Ephram Barbaro."},
+            [questKeys.objectives] = {nil, nil, {{286269}}},
             [questKeys.zoneOrSort] = zoneIDs.TIRISFAL_GLADES,
             [questKeys.reputationReward] = {{68, 100}},
         },
@@ -7649,6 +8106,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 13,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring Riptear's Heart to Deathguard Linnea."},
+            [questKeys.objectives] = {nil, nil, {{286326}}},
             [questKeys.zoneOrSort] = zoneIDs.TIRISFAL_GLADES,
         },
         [99158] = { -- Dawn in the Mountains : https://wowhead.com/forever/quest=99158/dawn-in-the-mountains
@@ -7659,6 +8117,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 8,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Bring the crate of candles to Father Gavin."},
+            [questKeys.sourceItemId] = 286355,
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
         },
         [99159] = { -- Finding Warmth : https://wowhead.com/forever/quest=99159/finding-warmth
@@ -7669,6 +8128,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 8,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 14 pieces of firewood."},
+            [questKeys.objectives] = {nil, nil, {{286339}}},
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
         },
         [99160] = { -- Rime's Wrath : https://wowhead.com/forever/quest=99160/rimes-wrath
@@ -7679,6 +8139,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 8,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Destroy 10 minor ice elementals."},
+            [questKeys.objectives] = {{{276003}}},
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
         },
         [99161] = { -- Rime's Wrath : https://wowhead.com/forever/quest=99161/rimes-wrath
@@ -7689,6 +8150,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 8,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Kill Avala and retrieve its core."},
+            [questKeys.objectives] = {nil, nil, {{286325}}},
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
         },
         [99162] = { -- Treacherous Cold : https://wowhead.com/forever/quest=99162/treacherous-cold
@@ -7699,6 +8161,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 8,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Collect the rifles of fallen mountaineers."},
+            [questKeys.objectives] = {nil, nil, {{286360}, {286359}, {286358}}},
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
         },
         [99191] = { -- A Donation of Wool : https://wowhead.com/forever/quest=99191/a-donation-of-wool
@@ -7706,6 +8169,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredLevel] = 12,
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectives] = {nil, nil, {{2592}}},
             [questKeys.zoneOrSort] = zoneIDs.ALTERAC_MOUNTAINS,
             [questKeys.reputationReward] = {{2779, 150}},
         },
@@ -7716,6 +8180,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredLevel] = 12,
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectives] = {nil, nil, {{2592}}},
             [questKeys.zoneOrSort] = zoneIDs.MULGORE,
             [questKeys.reputationReward] = {{2778, 150}},
         },
@@ -7727,6 +8192,13 @@ function ForeverBaseQuest:Load()
             [questKeys.objectivesText] = {"Speak with Elaadrin Evengale in Valanaar."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2779, 10}},
+        },
+        [99267] = { -- An Unfortunate End : https://wowhead.com/forever/quest=99267/an-unfortunate-end
+            [questKeys.name] = "An Unfortunate End",
+            [questKeys.startedBy] = {{271866}},
+            [questKeys.finishedBy] = {{271866}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = 60,
         },
     }
 end

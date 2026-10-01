@@ -318,6 +318,9 @@ function ForeverBaseItem:Load()
         [1438] = { -- Warrior's Shield : https://wowhead.com/forever/item=1438/warriors-shield
             [itemKeys.npcDrops] = {259434, 260157, 260428},
         },
+        [1447] = { -- Ring of Saviors : https://wowhead.com/forever/item=1447/ring-of-saviors
+            [itemKeys.npcDrops] = {7795},
+        },
         [1454] = { -- Axe of the Enforcer : https://wowhead.com/forever/item=1454/axe-of-the-enforcer
             [itemKeys.itemLevel] = 29,
             [itemKeys.requiredLevel] = 24,
@@ -2160,6 +2163,10 @@ function ForeverBaseItem:Load()
         [4804] = { -- Prairie Wolf Heart : https://wowhead.com/forever/item=4804/prairie-wolf-heart
             [itemKeys.npcDrops_add] = {268558},
         },
+        [4810] = { -- Boulder Pads : https://wowhead.com/forever/item=4810/boulder-pads
+            [itemKeys.itemLevel] = 41,
+            [itemKeys.requiredLevel] = 36,
+        },
         [4813] = { -- Small Leather Collar : https://wowhead.com/forever/item=4813/small-leather-collar
             [itemKeys.npcDrops_add] = {260157, 269075, 276111, 276198},
         },
@@ -2590,6 +2597,10 @@ function ForeverBaseItem:Load()
         },
         [5565] = { -- Infernal Stone : https://wowhead.com/forever/item=5565/infernal-stone
             [itemKeys.vendors_add] = {29537, 242498, 252040, 254695, 272437},
+        },
+        [5608] = { -- Living Cowl : https://wowhead.com/forever/item=5608/living-cowl
+            [itemKeys.itemLevel] = 44,
+            [itemKeys.requiredLevel] = 39,
         },
         [5635] = { -- Sharp Claw : https://wowhead.com/forever/item=5635/sharp-claw
             [itemKeys.npcDrops_add] = {217669, 217711, 253282, 256092},
@@ -3271,7 +3282,15 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 34,
             [itemKeys.requiredLevel] = 29,
         },
+        [6689] = { -- Wind Spirit Staff : https://wowhead.com/forever/item=6689/wind-spirit-staff
+            [itemKeys.itemLevel] = 34,
+            [itemKeys.requiredLevel] = 29,
+        },
         [6692] = { -- Pronged Reaver : https://wowhead.com/forever/item=6692/pronged-reaver
+            [itemKeys.itemLevel] = 35,
+            [itemKeys.requiredLevel] = 30,
+        },
+        [6693] = { -- Agamaggan's Clutch : https://wowhead.com/forever/item=6693/agamaggans-clutch
             [itemKeys.itemLevel] = 35,
             [itemKeys.requiredLevel] = 30,
         },
@@ -11598,7 +11617,7 @@ function ForeverBaseItem:Load()
         },
         [248682] = { -- Waylaid Crate: Apprentice Herbs : https://wowhead.com/forever/item=248682/waylaid-crate-apprentice-herbs
             [itemKeys.name] = "Waylaid Crate: Apprentice Herbs",
-            [itemKeys.npcDrops] = {95, 97, 114, 116, 118, 121, 157, 199, 454, 474, 478, 480, 500, 504, 590, 732, 822, 834, 1115, 1116, 1117, 1122, 1172, 1173, 1184, 1197, 1211, 1397, 1523, 1529, 1530, 1544, 1545, 1549, 1555, 1664, 1753, 1766, 1778, 1782, 1866, 1912, 1914, 1924, 1971, 1981, 2011, 2015, 2021, 2033, 2163, 2179, 2960, 2963, 2964, 2965, 2970, 2978, 2979, 2990, 3114, 3117, 3130, 3197, 3226, 3244, 3246, 3256, 3258, 3267, 3271, 3276, 3397, 4127, 6123, 9524, 259434, 260157, 260428, 267006, 271587, 272046, 275437, 275708},
+            [itemKeys.npcDrops] = {95, 97, 98, 114, 116, 118, 121, 124, 154, 157, 199, 213, 422, 424, 441, 442, 449, 452, 453, 454, 458, 474, 478, 480, 485, 500, 502, 504, 517, 547, 565, 580, 589, 590, 712, 732, 822, 834, 1024, 1025, 1115, 1116, 1117, 1122, 1172, 1173, 1184, 1189, 1191, 1192, 1197, 1211, 1397, 1523, 1529, 1530, 1544, 1545, 1549, 1555, 1664, 1693, 1753, 1766, 1778, 1782, 1866, 1908, 1909, 1912, 1914, 1924, 1940, 1942, 1955, 1958, 1971, 1981, 2011, 2015, 2021, 2033, 2163, 2164, 2168, 2179, 2181, 2183, 2235, 2322, 2323, 2336, 2476, 2960, 2963, 2964, 2965, 2970, 2978, 2979, 2990, 3114, 3117, 3130, 3197, 3226, 3234, 3239, 3240, 3242, 3244, 3245, 3246, 3250, 3255, 3256, 3258, 3261, 3267, 3271, 3273, 3275, 3276, 3277, 3278, 3280, 3284, 3285, 3286, 3374, 3382, 3385, 3397, 3416, 3425, 3426, 3457, 3461, 3475, 3717, 3733, 3745, 3812, 3819, 4018, 4127, 4129, 6123, 9523, 9524, 10323, 11910, 11911, 259434, 260157, 260428, 267006, 267308, 267314, 271587, 272046, 275437, 275708},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 10,
             [itemKeys.class] = 0,
@@ -11606,7 +11625,7 @@ function ForeverBaseItem:Load()
         },
         [248683] = { -- Waylaid Crate: Apprentice Ore : https://wowhead.com/forever/item=248683/waylaid-crate-apprentice-ore
             [itemKeys.name] = "Waylaid Crate: Apprentice Ore",
-            [itemKeys.npcDrops] = {36, 46, 95, 114, 116, 117, 118, 126, 171, 199, 454, 474, 478, 501, 504, 513, 550, 590, 822, 1116, 1123, 1162, 1190, 1195, 1211, 1397, 1426, 1523, 1530, 1532, 1534, 1537, 1540, 1544, 1555, 1658, 1662, 1689, 1769, 1797, 1924, 1939, 1953, 1981, 2001, 2013, 2019, 2029, 2165, 2203, 2960, 2965, 2979, 3117, 3118, 3130, 3131, 3197, 3241, 3244, 3246, 3256, 3260, 3266, 3267, 3268, 3269, 3272, 3273, 3380, 3381, 3385, 3395, 3566, 9524, 250282, 259433, 260157, 260428, 272034, 272096, 275437},
+            [itemKeys.npcDrops] = {36, 46, 95, 114, 115, 116, 117, 118, 122, 123, 124, 126, 127, 157, 171, 199, 424, 428, 437, 441, 446, 449, 453, 454, 474, 478, 501, 504, 513, 517, 547, 550, 580, 589, 590, 822, 830, 1008, 1109, 1116, 1123, 1162, 1165, 1188, 1190, 1195, 1211, 1397, 1417, 1426, 1523, 1530, 1532, 1534, 1537, 1540, 1544, 1555, 1658, 1662, 1689, 1693, 1769, 1797, 1888, 1908, 1909, 1912, 1914, 1924, 1939, 1953, 1955, 1974, 1981, 2001, 2013, 2019, 2029, 2069, 2157, 2164, 2165, 2179, 2180, 2181, 2203, 2235, 2237, 2960, 2965, 2979, 3117, 3118, 3130, 3131, 3197, 3240, 3241, 3242, 3244, 3245, 3246, 3255, 3256, 3258, 3260, 3261, 3263, 3266, 3267, 3268, 3269, 3272, 3273, 3274, 3275, 3276, 3277, 3278, 3283, 3284, 3286, 3380, 3381, 3384, 3385, 3386, 3394, 3395, 3396, 3425, 3438, 3566, 3713, 3728, 3809, 4007, 4127, 4263, 9523, 9524, 11917, 250282, 259433, 260157, 260428, 267314, 272034, 272096, 275437},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 10,
             [itemKeys.class] = 0,
@@ -11614,7 +11633,7 @@ function ForeverBaseItem:Load()
         },
         [248684] = { -- Waylaid Crate: Apprentice Textiles : https://wowhead.com/forever/item=248684/waylaid-crate-apprentice-textiles
             [itemKeys.name] = "Waylaid Crate: Apprentice Textiles",
-            [itemKeys.npcDrops] = {95, 114, 116, 117, 118, 122, 199, 423, 456, 458, 474, 478, 480, 500, 515, 590, 732, 822, 834, 1109, 1116, 1117, 1172, 1190, 1211, 1528, 1530, 1532, 1534, 1544, 1545, 1554, 1555, 1766, 1767, 1778, 1779, 2001, 2013, 2021, 2027, 2064, 2069, 2149, 2177, 2231, 2321, 2324, 2960, 2963, 2965, 2968, 2970, 2978, 2979, 3113, 3114, 3130, 3197, 3242, 3244, 3254, 3255, 3266, 3267, 3268, 3273, 3280, 3284, 3380, 3381, 3382, 3461, 3566, 4127, 5288, 6123, 250282, 259434, 260157, 260428, 272044, 272173, 275437},
+            [itemKeys.npcDrops] = {95, 98, 114, 115, 116, 117, 118, 122, 123, 124, 127, 171, 199, 213, 423, 426, 428, 440, 441, 446, 449, 452, 456, 458, 474, 478, 480, 500, 501, 505, 515, 517, 539, 547, 565, 578, 589, 590, 732, 822, 832, 834, 1109, 1116, 1117, 1165, 1172, 1177, 1190, 1191, 1197, 1211, 1426, 1528, 1530, 1532, 1534, 1544, 1545, 1554, 1555, 1693, 1766, 1767, 1778, 1779, 1781, 1782, 1869, 1909, 1939, 1942, 1943, 1953, 1983, 2001, 2013, 2021, 2027, 2064, 2069, 2149, 2164, 2165, 2177, 2181, 2231, 2235, 2321, 2324, 2336, 2338, 2339, 2960, 2963, 2965, 2968, 2970, 2978, 2979, 3113, 3114, 3130, 3197, 3240, 3241, 3242, 3244, 3245, 3254, 3255, 3256, 3258, 3260, 3261, 3266, 3267, 3268, 3273, 3274, 3276, 3277, 3278, 3279, 3280, 3283, 3284, 3285, 3286, 3380, 3381, 3382, 3383, 3385, 3397, 3424, 3425, 3438, 3445, 3457, 3461, 3566, 3713, 3783, 3809, 4127, 5288, 6123, 6180, 9336, 250282, 259434, 260157, 260428, 261368, 272044, 272173, 275437},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 10,
             [itemKeys.class] = 0,
@@ -11646,7 +11665,7 @@ function ForeverBaseItem:Load()
         },
         [248688] = { -- Waylaid Crate: Journeyman Textiles : https://wowhead.com/forever/item=248688/waylaid-crate-journeyman-textiles
             [itemKeys.name] = "Waylaid Crate: Journeyman Textiles",
-            [itemKeys.npcDrops] = {114, 122, 126, 213, 454, 504, 515, 589, 590, 1166, 1194, 1236, 1426, 1767, 1780, 1782, 1866, 1888, 1913, 1914, 1939, 1956, 2163, 2235, 2321, 2350, 3239, 3242, 3244, 3245, 3246, 3255, 3258, 3266, 3276, 3278, 3374, 3383, 3425, 3461, 3717, 3819, 3989, 4127, 267314, 268624, 275437},
+            [itemKeys.npcDrops] = {114, 122, 126, 213, 431, 433, 454, 504, 515, 568, 589, 590, 1164, 1166, 1194, 1236, 1270, 1417, 1426, 1767, 1780, 1782, 1866, 1888, 1913, 1914, 1939, 1956, 2163, 2235, 2321, 2350, 3239, 3242, 3244, 3245, 3246, 3252, 3255, 3258, 3266, 3276, 3278, 3374, 3383, 3425, 3461, 3717, 3819, 3824, 3989, 4127, 4248, 267314, 268624, 275437},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 10,
             [itemKeys.class] = 0,
@@ -11732,7 +11751,7 @@ function ForeverBaseItem:Load()
         },
         [248702] = { -- Waylaid Crate: Apprentice Fabrics : https://wowhead.com/forever/item=248702/waylaid-crate-apprentice-fabrics
             [itemKeys.name] = "Waylaid Crate: Apprentice Fabrics",
-            [itemKeys.npcDrops] = {46, 114, 118, 157, 474, 478, 539, 590, 732, 1115, 1117, 1190, 1538, 1544, 1549, 1689, 1769, 1778, 2012, 2965, 2979, 2990, 3114, 3130, 3244, 3245, 3268, 3273, 3283, 3386, 3397, 3415, 3425, 3566, 6123, 6124, 260157, 267006},
+            [itemKeys.npcDrops] = {46, 114, 118, 124, 157, 474, 478, 505, 539, 569, 589, 590, 732, 824, 1030, 1115, 1117, 1163, 1190, 1197, 1538, 1544, 1549, 1689, 1768, 1769, 1778, 1867, 1940, 1942, 1943, 1958, 2012, 2164, 2208, 2324, 2965, 2979, 2990, 3114, 3130, 3238, 3244, 3245, 3252, 3255, 3256, 3260, 3268, 3273, 3278, 3279, 3283, 3285, 3385, 3386, 3395, 3397, 3415, 3425, 3461, 3566, 4127, 6123, 6124, 209797, 260157, 267006, 267308, 268624},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 10,
             [itemKeys.class] = 0,
@@ -11740,7 +11759,7 @@ function ForeverBaseItem:Load()
         },
         [248703] = { -- Waylaid Crate: Apprentice Ingots : https://wowhead.com/forever/item=248703/waylaid-crate-apprentice-ingots
             [itemKeys.name] = "Waylaid Crate: Apprentice Ingots",
-            [itemKeys.npcDrops] = {46, 114, 199, 539, 822, 834, 1123, 1173, 1184, 1397, 1426, 1528, 1534, 1537, 1544, 1554, 1654, 1658, 1689, 1753, 1766, 1866, 2030, 2231, 2960, 2967, 2978, 3110, 3127, 3198, 3206, 3241, 3242, 3258, 3381, 3382, 3461, 4127, 4316, 6123, 250282, 259433, 260428, 272096, 275767},
+            [itemKeys.npcDrops] = {46, 98, 114, 121, 124, 157, 171, 199, 440, 485, 505, 513, 539, 547, 589, 590, 822, 830, 834, 1008, 1011, 1109, 1123, 1163, 1165, 1173, 1184, 1397, 1426, 1528, 1534, 1537, 1544, 1554, 1654, 1658, 1689, 1693, 1753, 1766, 1866, 1889, 1909, 1912, 1940, 1974, 2030, 2164, 2181, 2185, 2204, 2206, 2231, 2336, 2960, 2967, 2978, 3110, 3127, 3198, 3206, 3234, 3240, 3241, 3242, 3251, 3255, 3256, 3258, 3276, 3277, 3278, 3283, 3381, 3382, 3385, 3386, 3397, 3438, 3445, 3461, 3467, 3715, 3823, 4127, 4129, 4316, 6123, 9524, 250282, 259433, 260428, 267308, 272096, 275767},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 10,
             [itemKeys.class] = 0,
@@ -11748,7 +11767,7 @@ function ForeverBaseItem:Load()
         },
         [248704] = { -- Waylaid Crate: Apprentice Parts : https://wowhead.com/forever/item=248704/waylaid-crate-apprentice-parts
             [itemKeys.name] = "Waylaid Crate: Apprentice Parts",
-            [itemKeys.npcDrops] = {122, 199, 474, 500, 1116, 1122, 1162, 1164, 1380, 1523, 1530, 1554, 1689, 1753, 1781, 1939, 2011, 2164, 2189, 2960, 2964, 2968, 2979, 3130, 3131, 3197, 3227, 3234, 3242, 3246, 3255, 3256, 3258, 3276, 3461, 260430, 268624},
+            [itemKeys.npcDrops] = {114, 122, 157, 199, 422, 423, 430, 440, 441, 452, 474, 500, 513, 545, 578, 589, 1010, 1032, 1116, 1122, 1162, 1164, 1166, 1167, 1380, 1426, 1523, 1530, 1554, 1689, 1693, 1727, 1753, 1781, 1782, 1913, 1914, 1939, 1942, 2011, 2053, 2069, 2164, 2189, 2205, 2338, 2960, 2964, 2968, 2979, 3130, 3131, 3197, 3227, 3234, 3242, 3246, 3255, 3256, 3258, 3263, 3275, 3276, 3277, 3278, 3280, 3283, 3286, 3386, 3397, 3416, 3426, 3445, 3461, 3809, 3991, 3999, 4009, 4127, 4129, 9523, 260430, 267308, 268624},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 10,
             [itemKeys.class] = 0,
@@ -11756,7 +11775,7 @@ function ForeverBaseItem:Load()
         },
         [248705] = { -- Waylaid Crate: Journeyman Fabrics : https://wowhead.com/forever/item=248705/waylaid-crate-journeyman-fabrics
             [itemKeys.name] = "Waylaid Crate: Journeyman Fabrics",
-            [itemKeys.npcDrops] = {121, 122, 157, 434, 504, 589, 1167, 1175, 1202, 1797, 1924, 1939, 2062, 2164, 2321, 2322, 3239, 3242, 3273, 3276, 3277, 3278, 3283, 3988, 4040, 4093, 4127, 4316, 261368, 267308, 267314},
+            [itemKeys.npcDrops] = {121, 122, 157, 434, 435, 504, 589, 1018, 1167, 1175, 1202, 1797, 1924, 1939, 2062, 2164, 2261, 2269, 2321, 2322, 3239, 3242, 3273, 3276, 3277, 3278, 3283, 3988, 4040, 4093, 4127, 4316, 261368, 267308, 267314},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 10,
             [itemKeys.class] = 0,
@@ -40126,6 +40145,7 @@ function ForeverBaseItem:Load()
         },
         [276561] = { -- Black Tome : https://wowhead.com/forever/item=276561/black-tome
             [itemKeys.name] = "Black Tome",
+            [itemKeys.objectDrops] = {659376},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
@@ -47748,6 +47768,13 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 27,
             [itemKeys.class] = 4,
         },
+        [282703] = { -- Needletooth's Needletooth : https://wowhead.com/forever/item=282703/needletooths-needletooth
+            [itemKeys.name] = "Needletooth's Needletooth",
+            [itemKeys.itemLevel] = 37,
+            [itemKeys.requiredLevel] = 32,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 15,
+        },
         [282711] = { -- Naga Maiden's Gown : https://wowhead.com/forever/item=282711/naga-maidens-gown
             [itemKeys.name] = "Naga Maiden's Gown",
             [itemKeys.itemLevel] = 35,
@@ -47787,6 +47814,12 @@ function ForeverBaseItem:Load()
             [itemKeys.name] = "Mark of the Red Flight",
             [itemKeys.itemLevel] = 46,
             [itemKeys.requiredLevel] = 41,
+            [itemKeys.class] = 4,
+        },
+        [283253] = { -- Denmother's Hide : https://wowhead.com/forever/item=283253/denmothers-hide
+            [itemKeys.name] = "Denmother's Hide",
+            [itemKeys.itemLevel] = 37,
+            [itemKeys.requiredLevel] = 32,
             [itemKeys.class] = 4,
         },
         [283255] = { -- Syndicate Executioner's Slicer : https://wowhead.com/forever/item=283255/syndicate-executioners-slicer
@@ -48176,6 +48209,13 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 2,
             [itemKeys.subClass] = 16,
         },
+        [284697] = { -- Arcane Charged Robes : https://wowhead.com/forever/item=284697/arcane-charged-robes
+            [itemKeys.name] = "Arcane Charged Robes",
+            [itemKeys.itemLevel] = 34,
+            [itemKeys.requiredLevel] = 29,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
         [284700] = { -- Den Guardian's Crusher : https://wowhead.com/forever/item=284700/den-guardians-crusher
             [itemKeys.name] = "Den Guardian's Crusher",
             [itemKeys.itemLevel] = 27,
@@ -48303,6 +48343,12 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 0,
             [itemKeys.subClass] = 8,
+        },
+        [285190] = { -- Wyvern Heart Band : https://wowhead.com/forever/item=285190/wyvern-heart-band
+            [itemKeys.name] = "Wyvern Heart Band",
+            [itemKeys.itemLevel] = 34,
+            [itemKeys.requiredLevel] = 29,
+            [itemKeys.class] = 4,
         },
         [285191] = { -- Banished Centaur's Pauldrons : https://wowhead.com/forever/item=285191/banished-centaurs-pauldrons
             [itemKeys.name] = "Banished Centaur's Pauldrons",
@@ -49598,6 +49644,7 @@ function ForeverBaseItem:Load()
         },
         [286746] = { -- Shal'ma's Shawl : https://wowhead.com/forever/item=286746/shalmas-shawl
             [itemKeys.name] = "Shal'ma's Shawl",
+            [itemKeys.npcDrops] = {276198},
             [itemKeys.itemLevel] = 9,
             [itemKeys.requiredLevel] = 4,
             [itemKeys.class] = 4,
@@ -49618,6 +49665,7 @@ function ForeverBaseItem:Load()
         },
         [286750] = { -- Wisesight Wand : https://wowhead.com/forever/item=286750/wisesight-wand
             [itemKeys.name] = "Wisesight Wand",
+            [itemKeys.npcDrops] = {276101},
             [itemKeys.itemLevel] = 10,
             [itemKeys.requiredLevel] = 5,
             [itemKeys.class] = 2,
