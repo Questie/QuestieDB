@@ -26,15 +26,6 @@ function ForeverBaseQuest:Load()
         [952] = { -- Grove of the Ancients : https://wowhead.com/forever/quest=952/grove-of-the-ancients
             [questKeys.questLevel] = 17,
         },
-        [1499] = { -- Vile Familiars : https://wowhead.com/forever/quest=1499/vile-familiars
-            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD + raceIDs.TROLL,
-        },
-        [1501] = { -- Creature of the Void : https://wowhead.com/forever/quest=1501/creature-of-the-void
-            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD + raceIDs.TROLL,
-        },
-        [1504] = { -- The Binding : https://wowhead.com/forever/quest=1504/the-binding
-            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD + raceIDs.TROLL,
-        },
         [1861] = { -- Mirror Lake : https://wowhead.com/forever/quest=1861/mirror-lake
             [questKeys.requiredRaces] = raceIDs.HUMAN + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
         },
@@ -4446,6 +4437,7 @@ function ForeverBaseQuest:Load()
         },
         [94503] = { -- Call of Water : https://wowhead.com/forever/quest=94503/call-of-water
             [questKeys.name] = "Call of Water",
+            [questKeys.startedBy] = {nil, {619896}},
             [questKeys.finishedBy] = {{5895}},
             [questKeys.requiredLevel] = 20,
             [questKeys.questLevel] = 23,
