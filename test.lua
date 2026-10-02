@@ -307,6 +307,7 @@ end)
 --------------------------------------------------------------------------------------------
 
 suite("generation-inputs", "shared", function()
+  dofile("tools/validation/raw-entity-loading.test.lua")(check, equal)
   local l10nGen = dofile("generator/l10n.lua")
   local flavor = config.flavorByName.Vanilla
   local typeFilter = { Quest = true }
@@ -1915,7 +1916,7 @@ suite("forever-delta-base-baked", "Forever", function()
 end)
 
 suite("forever-data", "shared", function()
-  -- Dataset checks install generator globals; isolate them from the runtime suites.
+  -- Dataset checks install support/provider globals; isolate them from the runtime suites.
   check(commandSucceeded(shellQuote(LUA_BIN) .. " tools/dbc/forever-data.test.lua"),
     "Forever reviewed DBC data and faction-reference self-proof pass")
 end)
