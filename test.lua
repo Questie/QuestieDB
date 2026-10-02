@@ -352,10 +352,27 @@ suite("workflow-contracts", "shared", function()
   local gates = assert(ci:match("\n  gates:\n(.*)"), "CI has an aggregate gate")
   check(gates:find("if: always()", 1, true) ~= nil,
     "All gates still runs when a prerequisite fails or is cancelled")
-  check(gates:find("needs: [test, database, legacy]", 1, true) ~= nil,
-    "All gates waits for legacy corrections as well as tests and artifacts")
-  check(gates:find('[ "${{ needs.legacy.result }}" = "success" ] ||', 1, true) ~= nil,
-    "All gates rejects failed, skipped, or cancelled legacy checks")
+  check(gates:find("needs: [test, database, package, legacy]", 1, true) ~= nil,
+    "All gates waits for packaging as well as tests, database checks, and legacy corrections")
+  for _, job in ipairs({ "test", "database", "package", "legacy" }) do
+    check(gates:find('[ "${{ needs.' .. job .. '.result }}" = "success" ] ||', 1, true) ~= nil,
+      "All gates rejects failed, skipped, or cancelled " .. job .. " checks")
+  end
+
+  local database = lib.readAll(".github/workflows/database-checks.yml")
+  local checks = assert(database:match("\n  check:\n(.*)"), "database has parallel check jobs")
+  check(checks:find("needs: generate", 1, true) ~= nil,
+    "parallel readers wait for generation and determinism")
+  check(checks:find("check: [verify, equivalence, reconstruct]", 1, true) ~= nil,
+    "every heavy read gate has a parallel matrix leg")
+  for name, workflow in pairs({ CI = ci, Release = release }) do
+    local pipeline = assert(workflow:match("\n  database:\n(.-)\n  %w"), "caller has a database pipeline")
+    check(pipeline:find("uses: ./.github/workflows/database-checks.yml", 1, true) ~= nil,
+      name .. " requires the reusable database pipeline")
+  end
+  local package = assert(ci:match("\n  package:\n(.-)\n  gates:"), "CI has a packaging job")
+  check(package:find("needs: database", 1, true) ~= nil,
+    "CI packaging waits for all parallel database checks")
 end)
 
 --------------------------------------------------------------------------------------------

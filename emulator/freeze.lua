@@ -1,7 +1,7 @@
 -- emulator/freeze.lua
 --
--- A pure-Lua stand-in for `table.freeze`, so the ownership guard is present in CI rather than
--- silently absent.
+-- A pure-Lua stand-in for `table.freeze`, used by focused internal-guard tests and the
+-- optional Source audit in `equivalence.lua --freeze`. Consumer returns remain mutable.
 --
 -- ## What the client does, and what Lua 5.1 can manage
 --
@@ -15,9 +15,8 @@
 --   frozen[newKey] = v      -> raises          (appending, aliasing a query result onto an object)
 --   frozen[existing] = v    -> NOT intercepted (overwriting, and `= nil` deletion)
 --
--- The missed case is the important one: `QuestieDB.GetQuest` writes `creatureObjective[3] = nil`
--- into its query results, and that is a write to an existing key. A prevention-only substitute
--- would report a clean run over exactly the mutation `DESIGN.md` expects freezing to surface.
+-- The audit below detects existing-key changes to Source's internal base tables. It does
+-- not police consumer writes: query results are caller-owned copies and may be modified.
 --
 -- A proxy table would intercept everything, but `pairs`, `next` and `#` do not route through
 -- `__index` in Lua 5.1, so a proxy would present every frozen table as empty to any consumer
@@ -33,8 +32,7 @@
 --
 -- In the client, prevention covers both cases and the audit is unnecessary. Offline, the two
 -- together cover what the client covers, with the overwrite case reported at the end of the
--- run rather than at the moment it happens. `verify.lua --freeze` and
--- `equivalence.lua --freeze` run the audit.
+-- run rather than at the moment it happens. `equivalence.lua --freeze` runs the audit.
 --
 -- Cost: one metatable and one fingerprint per frozen table, against the client's measured
 -- 0 KiB. That is why this is opt-in rather than always on.
@@ -52,7 +50,7 @@ local nextSerial = 0
 
 local function refuse(_, key)
   error(("attempted to perform indexed assignment on a frozen table (key %s). " ..
-         "QuestieDB owns the values it returns; take an explicit copy to modify one.")
+         "QuestieDB internal base tables must not be modified.")
     :format(tostring(key)), 2)
 end
 

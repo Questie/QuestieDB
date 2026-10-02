@@ -1,0 +1,114 @@
+name: Database checks
+
+# One flavor owns its build and fan-out, so faster flavors do not wait for Mists.
+# CI and Release each call this workflow; artifacts are scoped to the calling run.
+on:
+  workflow_call:
+    inputs:
+      flavor:
+        required: true
+        type: string
+      release:
+        description: Generate a stable version instead of a development version.
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+env:
+  # Caller workflow env is not inherited by reusable workflows.
+  SOURCE_DATE_EPOCH: 1700000000
+  QUESTIEDB_RELEASE: ${{ inputs.release && 'true' || 'false' }}
+  FLAVOR: ${{ inputs.flavor }}
+
+jobs:
+  generate:
+    name: Generate and check determinism
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with: { path: QuestieDB }
+
+      - name: Install Lua 5.1
+        run: sudo apt-get update && sudo apt-get install -y lua5.1
+
+      - name: Generate
+        working-directory: QuestieDB
+        run: lua5.1 generate.lua "$FLAVOR" --no-base-toc
+
+      - name: Determinism
+        working-directory: QuestieDB
+        # Readers receive only the second-generation bytes whose hashes matched the first.
+        run: |
+          tocs=("QuestieDB_${FLAVOR}.toc")
+          if [[ "$FLAVOR" == Forever ]]; then
+            cmp QuestieDB_Forever.toc QuestieDB_Camelot.toc
+            tocs+=(QuestieDB_Camelot.toc)
+          fi
+          sha256sum "${tocs[@]}" > "QuestieDB_${FLAVOR}.sha256"
+          lua5.1 generate.lua "$FLAVOR" --no-base-toc --quiet
+          sha256sum --strict -c "QuestieDB_${FLAVOR}.sha256"
+
+      - name: Hand deterministic TOC to parallel checks
+        uses: actions/upload-artifact@v7
+        with:
+          name: database-toc-${{ inputs.flavor }}
+          path: |
+            QuestieDB/QuestieDB_*.toc
+            QuestieDB/QuestieDB_${{ inputs.flavor }}.sha256
+          retention-days: 7
+          if-no-files-found: error
+
+  check:
+    name: ${{ matrix.check }}
+    needs: generate
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        check: [verify, equivalence, reconstruct]
+    env:
+      CHECK: ${{ matrix.check }}
+    steps:
+      - uses: actions/checkout@v7
+        with: { path: QuestieDB }
+
+      - name: Install Lua 5.1
+        run: sudo apt-get update && sudo apt-get install -y lua5.1
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: database-toc-${{ inputs.flavor }}
+          path: QuestieDB
+
+      - name: Check artifact handoff
+        working-directory: QuestieDB
+        run: sha256sum --strict -c "QuestieDB_${FLAVOR}.sha256"
+
+      # Keep the short checks with verification instead of provisioning more runners.
+      - name: Flavor unit tests
+        if: matrix.check == 'verify'
+        working-directory: QuestieDB
+        run: lua5.1 test.lua --flavor="$FLAVOR"
+
+      - name: Run artifact check
+        working-directory: QuestieDB
+        run: lua5.1 "$CHECK.lua" "$FLAVOR"
+
+      - name: Data validators
+        if: matrix.check == 'verify'
+        working-directory: QuestieDB
+        run: lua5.1 validators/run.lua "$FLAVOR"
+
+      - name: Confirm checked bytes are unchanged
+        working-directory: QuestieDB
+        run: sha256sum --strict -c "QuestieDB_${FLAVOR}.sha256"
+
+      - name: Upload validator diagnostics
+        if: always() && matrix.check == 'verify'
+        uses: actions/upload-artifact@v7
+        with:
+          name: validator-diagnostics-${{ inputs.flavor }}
+          path: QuestieDB/.out/validators/
+          if-no-files-found: ignore
