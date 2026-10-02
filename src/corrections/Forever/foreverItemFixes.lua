@@ -13,21 +13,17 @@ function ForeverItemFixes:Load()
         [6889] = { -- Small Egg
             [itemKeys.npcDrops_add] = {251261,251284,251291},
         },
-        [253666] = { -- Flutterfly Swatter
-            [itemKeys.name] = "Flutterfly Swatter",
-            [itemKeys.class] = itemClasses.QUEST,
+        [14395] = { -- Spells of Shadow
+            [itemKeys.npcDrops_remove] = {238461},
+        },
+        [14396] = { -- Incantations from the Nether
+            [itemKeys.npcDrops_remove] = {238461},
         },
         [254871] = { -- Bloody Note
-            [itemKeys.name] = "Bloody Note",
             [itemKeys.objectDrops] = {617704},
         },
-        [266434] = { -- Resaan's Heirloom
-            [itemKeys.name] = "Resaan's Heirloom",
-            [itemKeys.npcDrops] = {259013},
-        },
-        [277329] = { -- Torch of Eternal Flame
-            [itemKeys.name] = "Torch of Eternal Flame",
-            [itemKeys.class] = itemClasses.QUEST,
+        [285357] = { -- Advisor Nazgrel's Instructions
+            [itemKeys.npcDrops] = {3230},
         },
     }
 end

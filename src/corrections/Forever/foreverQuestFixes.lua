@@ -13,6 +13,8 @@ local QuestieCorrections = QuestieLoader:ImportModule("QuestieCorrections")
 local l10n = QuestieLoader:ImportModule("l10n")
 
 QuestieCorrections.itemObjectiveFirst[92682] = true
+QuestieCorrections.itemObjectiveFirst[93739] = true
+QuestieCorrections.killCreditObjectiveFirst[94489] = true
 
 -- Static Corrections: shared by all characters and folded in during Generation.
 function ForeverQuestFixes:Load()
@@ -381,6 +383,7 @@ function ForeverQuestFixes:Load()
         },
         [93159] = { -- The Strange Hermit
             [questKeys.requiredLevel] = 8,
+            [questKeys.objectives] = {{{251684,nil,Questie.ICON_TYPE_TALK}}},
         },
         [93160] = { -- The Forest's Bounty
             [questKeys.requiredLevel] = 8,
@@ -388,12 +391,13 @@ function ForeverQuestFixes:Load()
         },
         [93165] = { -- Mercy Falls on Deaf Ears
             [questKeys.requiredLevel] = 8,
-            [questKeys.preQuestSingle] = {94484},
+            [questKeys.preQuestSingle] = {94484,94493},
             [questKeys.nextQuestInChain] = 93459,
         },
         [93172] = { -- Free the Hollows
             [questKeys.requiredLevel] = 8,
             [questKeys.preQuestSingle] = {93159},
+            [questKeys.objectives] = {{{251676}}},
         },
         [93317] = { -- Crab Season
             [questKeys.requiredLevel] = 4,
@@ -448,6 +452,11 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {93737},
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.nextQuestInChain] = 93746,
+        },
+        [93739] = { -- Exploring the Horde
+            [questKeys.finishedBy] = {{4949}},
+            [questKeys.preQuestSingle] = {95350},
+            [questKeys.objectives] = {{{10540,nil,Questie.ICON_TYPE_TALK},{3057,nil,Questie.ICON_TYPE_TALK},{10181,nil,Questie.ICON_TYPE_TALK}},nil,{{285357,nil,Questie.ICON_TYPE_TALK}}},
         },
         [93740] = { -- Blood for Blood
             [questKeys.requiredLevel] = 6,
@@ -552,30 +561,33 @@ function ForeverQuestFixes:Load()
         },
         [94484] = { -- Unnerving Silence
             [questKeys.requiredLevel] = 8,
+            [questKeys.exclusiveTo] = {94493},
         },
         [94485] = { -- Tears of the Lady
             [questKeys.requiredLevel] = 8,
-            [questKeys.preQuestSingle] = {94484},
+            [questKeys.preQuestSingle] = {94484,94493},
         },
         [94486] = { -- Feathers for Binding
             [questKeys.requiredLevel] = 8,
-            [questKeys.preQuestSingle] = {94484},
+            [questKeys.preQuestSingle] = {94484,94493},
+            [questKeys.objectives] = {nil,nil,{{265140}}},
         },
         [94487] = { -- Unwanted and Unworthy
             [questKeys.requiredLevel] = 8,
-            [questKeys.preQuestSingle] = {94484},
+            [questKeys.preQuestSingle] = {94484,94493},
         },
         [94488] = { -- The Ties That Bind
             [questKeys.requiredLevel] = 8,
-            [questKeys.preQuestGroup] = {94486,94487}, -- check if also needed 94485
+            [questKeys.preQuestGroup] = {94485,94486,94487},
         },
         [94489] = { -- The Wounds of Betrayal
             [questKeys.requiredLevel] = 8,
-            [questKeys.preQuestGroup] = {94486,94487}, -- check if also needed 94485
+            [questKeys.preQuestGroup] = {94485,94486,94487},
+            [questKeys.objectives] = {{{258130,nil,Questie.ICON_TYPE_TALK}},nil,nil,nil,{{{258134,258137,258138,258275,258277,258288,258289},258134,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [94490] = { -- Ripped Missive
             [questKeys.requiredLevel] = 9,
-            [questKeys.preQuestGroup] = {94486,94487}, -- check if also needed 94485
+            [questKeys.preQuestGroup] = {94485,94486,94487},
             [questKeys.nextQuestInChain] = 94491,
         },
         [94491] = { -- The Fate of the Den
@@ -586,6 +598,8 @@ function ForeverQuestFixes:Load()
             [questKeys.name] = "A Sacrifice in Vain",
             [questKeys.questLevel] = 11,
             [questKeys.requiredLevel] = 8,
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.exclusiveTo] = {94484},
         },
         [94568] = { -- The Cult's True Plans
             [questKeys.requiredLevel] = 6,
@@ -604,6 +618,12 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredLevel] = 8,
             [questKeys.objectives] = {nil,nil,{{266434}}},
         },
+        [94911] = { -- Child of Nature
+            [questKeys.requiredClasses] = classIDs.DRUID,
+        },
+        [94912] = { -- Child of Nature
+            [questKeys.requiredClasses] = classIDs.DRUID,
+        },
         [94946] = { -- The Magical City of Dalaran
             [questKeys.requiredLevel] = 7,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
@@ -621,6 +641,11 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredLevel] = 7,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.preQuestSingle] = {93090},
+            [questKeys.nextQuestInChain] = 95350,
+        },
+        [95350] = { -- The Earthen Ring
+            [questKeys.preQuestSingle] = {95349},
+            [questKeys.nextQuestInChain] = 93739,
         },
         [96101] = { -- The Great Outdoors
             [questKeys.requiredLevel] = 4,
@@ -666,48 +691,56 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {96101},
             [questKeys.requiredSkill] = {profKeys.ALCHEMY, 1},
             [questKeys.requiredSpell] = -1230564, -- Mana Well
+            [questKeys.objectives] = {{{257019,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [97964] = { -- Camping 101: Blacksmithing
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
             [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 1},
             [questKeys.requiredSpell] = -1230171, -- Sharpening Wheel
+            [questKeys.objectives] = {{{251913,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [97965] = { -- Camping 101: First Aid
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
             [questKeys.requiredSkill] = {profKeys.FIRST_AID, 1},
             [questKeys.requiredSpell] = -1230117, -- First Aid Kit
+            [questKeys.objectives] = {{{257018,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [97967] = { -- Camping 101: Fishing
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
             [questKeys.requiredSkill] = {profKeys.FISHING, 1},
             [questKeys.requiredSpell] = -1229745, -- Fish Bowl
+            [questKeys.objectives] = {{{251992,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [97968] = { -- Camping 101: Herbalism
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
             [questKeys.requiredSkill] = {profKeys.HERBALISM, 1},
             [questKeys.requiredSpell] = -1229705, -- Incense Candle
+            [questKeys.objectives] = {{{254345,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [97969] = { -- Camping 101: Leatherworking
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
             [questKeys.requiredSkill] = {profKeys.LEATHERWORKING, 1},
             [questKeys.requiredSpell] = -1229432, -- Camp Tent
+            [questKeys.objectives] = {{{251993,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [97970] = { -- Camping 101: Mining
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
             [questKeys.requiredSkill] = {profKeys.MINING, 1},
             [questKeys.requiredSpell] = -1230161, -- Lodestone
+            [questKeys.objectives] = {{{257022,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [97971] = { -- Camping 101: Skinning
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
             [questKeys.requiredSkill] = {profKeys.SKINNING, 1},
             [questKeys.requiredSpell] = -1229517, -- Camp Chair
+            [questKeys.objectives] = {{{257024,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [97972] = { -- Camping 101: Tailoring
             [questKeys.requiredLevel] = 4,
@@ -715,6 +748,7 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {96101},
             [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
             [questKeys.requiredSpell] = -1229504, -- Faction Banner
+            [questKeys.objectives] = {{{251991,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [97973] = { -- Camping 101: Tailoring
             [questKeys.requiredLevel] = 4,
@@ -722,6 +756,10 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {96101},
             [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
             [questKeys.requiredSpell] = -1263425, -- Faction Banner
+            [questKeys.objectives] = {{{251991,nil,Questie.ICON_TYPE_EVENT}}},
+        },
+        [98024] = { -- Journey to the Crossroads
+            [questKeys.preQuestSingle] = {95350},
         },
         [98284] = { -- Camping 101: Enchanting
             [questKeys.requiredLevel] = 4,
@@ -729,12 +767,14 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {96101},
             [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
             [questKeys.requiredSpell] = -1230643, -- Enchanted Lute
+            [questKeys.objectives] = {{{257020,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [98285] = { -- Camping 101: Engineering
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {96101},
             [questKeys.requiredSkill] = {profKeys.ENGINEERING, 1},
             [questKeys.requiredSpell] = -1230656, -- Reagent Bot
+            [questKeys.objectives] = {{{251684,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [98286] = { -- Camping 101: Enchanting
             [questKeys.requiredLevel] = 4,
@@ -742,6 +782,7 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {96101},
             [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
             [questKeys.requiredSpell] = -1230643, -- Enchanted Lute
+            [questKeys.objectives] = {{{257020,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [98512] = { -- Al'Aketh Assassins
             [questKeys.requiredLevel] = 6,
