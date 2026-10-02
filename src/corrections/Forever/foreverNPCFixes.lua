@@ -55,6 +55,9 @@ function ForeverNpcFixes:Load()
         [256935] = { -- Malduko Cloudcrush
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{36.05,33.53}}},
         },
+        [259013] = { -- Resaan Nimbuswalker
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{57.05,29.35}}},
+        },
         [268602] = { -- Skypriest Faladiel
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.43,63.71}}},
         },
