@@ -764,6 +764,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 128, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.
         },
         [28694] = { -- Alard Schmied : https://wowhead.com/forever/npc=28694/alard-schmied
             [npcKeys.name] = "Alard Schmied",
@@ -773,6 +774,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Blacksmith",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2018 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [28774] = { -- Andrew Matthews : https://wowhead.com/forever/npc=28774/andrew-matthews
             [npcKeys.name] = "Andrew Matthews",
@@ -791,6 +793,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Tabard Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 285327; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [28989] = { -- Aemara : https://wowhead.com/forever/npc=28989/aemara
             [npcKeys.name] = "Aemara",
@@ -800,6 +803,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Bowyer",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2504; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [28990] = { -- Anthony Durain : https://wowhead.com/forever/npc=28990/anthony-durain
             [npcKeys.name] = "Anthony Durain",
@@ -809,6 +813,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Shields",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2445; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [29049] = { -- Arille Azuregaze : https://wowhead.com/forever/npc=29049/arille-azuregaze
             [npcKeys.name] = "Arille Azuregaze",
@@ -818,6 +823,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Bartender",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [29491] = { -- Karandonna : https://wowhead.com/forever/npc=29491/karandonna
             [npcKeys.name] = "Karandonna",
@@ -827,6 +833,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Clothier",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 3426; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [29512] = { -- Ainderu Summerleaf : https://wowhead.com/forever/npc=29512/ainderu-summerleaf
             [npcKeys.name] = "Ainderu Summerleaf",
@@ -844,6 +851,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Reagents & Magical Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 3385; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [29538] = { -- Hexil Garrot : https://wowhead.com/forever/npc=29538/hexil-garrot
             [npcKeys.name] = "Hexil Garrot",
@@ -858,6 +866,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Fruit Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 4536; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [29568] = { -- "Techs" Rickard Rustbolt : https://wowhead.com/forever/npc=29568/techs-rickard-rustbolt
             [npcKeys.name] = "\"Techs\" Rickard Rustbolt",
@@ -918,6 +927,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Quartermaster",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 276984; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [32330] = { -- Minzi the Minx : https://wowhead.com/forever/npc=32330/minzi-the-minx
             [npcKeys.name] = "Minzi the Minx",
@@ -949,6 +959,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{19.8, 67.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.subName] = "Wine Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 4595; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [32403] = { -- Sandra Bartan : https://wowhead.com/forever/npc=32403/sandra-bartan
             [npcKeys.name] = "Sandra Bartan",
@@ -958,6 +969,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Barmaid",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 1707; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [32411] = { -- Afsaneh Asrar : https://wowhead.com/forever/npc=32411/afsaneh-asrar
             [npcKeys.name] = "Afsaneh Asrar",
@@ -973,6 +985,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [32424] = { -- Laire Brewgold : https://wowhead.com/forever/npc=32424/laire-brewgold
             [npcKeys.name] = "Laire Brewgold",
@@ -982,6 +995,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Brewmaiden",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2593; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [32425] = { -- Galkara the Assassin : https://wowhead.com/forever/npc=32425/galkara-the-assassin
             [npcKeys.name] = "Galkara the Assassin",
@@ -991,6 +1005,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{10.2, 65.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.subName] = "Brewmaiden",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2593; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [32451] = { -- Dalaran Citizen : https://wowhead.com/forever/npc=32451/dalaran-citizen
             [npcKeys.name] = "Dalaran Citizen",
@@ -1030,6 +1045,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Butler",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [32668] = { -- Emi : https://wowhead.com/forever/npc=32668/emi
             [npcKeys.name] = "Emi",
@@ -1198,6 +1214,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "General Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [49808] = { -- Grenhild Darktalon : https://wowhead.com/forever/npc=49808/grenhild-darktalon
             [npcKeys.name] = "Grenhild Darktalon",
@@ -1263,6 +1280,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Bartender",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [203478] = { -- Stuart : https://wowhead.com/forever/npc=203478/stuart
             [npcKeys.name] = "Stuart",
@@ -1307,6 +1325,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {76156, 76160, 76240},
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Rogue Trainer?",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 53 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [208023] = { -- Gru'ark : https://wowhead.com/forever/npc=208023/gruark
             [npcKeys.name] = "Gru'ark",
@@ -1704,6 +1723,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Supply Officer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 205950; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [213795] = { -- Gharrik : https://wowhead.com/forever/npc=213795/gharrik
             [npcKeys.name] = "Gharrik",
@@ -1720,6 +1740,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Supply Officer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 205950; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [214098] = { -- Gishah : https://wowhead.com/forever/npc=214098/gishah
             [npcKeys.name] = "Gishah",
@@ -1729,6 +1750,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.UNDERCITY,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Supply Officer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 205950; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [214101] = { -- Marcy Baker : https://wowhead.com/forever/npc=214101/marcy-baker
             [npcKeys.name] = "Marcy Baker",
@@ -1738,6 +1760,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.DARNASSUS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Supply Officer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 205950; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [214129] = { -- Venture Co. Light Shredder : https://wowhead.com/forever/npc=214129/venture-co-light-shredder
             [npcKeys.name] = "Venture Co. Light Shredder",
@@ -1812,6 +1835,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Smokywood Pastures",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 17194; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [217049] = { -- Mirror Image : https://wowhead.com/forever/npc=217049/mirror-image
             [npcKeys.name] = "Mirror Image",
@@ -1850,6 +1874,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[8] = {{25, 53.4}, {25, 54.2}, {25.2, 54.6}}},
             [npcKeys.zoneID] = zoneIDs.SWAMP_OF_SORROWS,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 213565; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [217418] = { -- Zai'enki : https://wowhead.com/forever/npc=217418/zaienki
             [npcKeys.name] = "Zai'enki",
@@ -1941,6 +1966,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Gurubashi Bloodchanger",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 216491; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [218236] = { -- Red Bag : https://wowhead.com/forever/npc=218236/red-bag
             [npcKeys.name] = "Red Bag",
@@ -2569,6 +2595,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[331] = {{89.4, 40.4}, {89.4, 40.6}, {89.6, 40.4}, {89.6, 40.6}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 1645; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [222698] = { -- Fel Scar : https://wowhead.com/forever/npc=222698/fel-scar
             [npcKeys.name] = "Fel Scar",
@@ -2864,6 +2891,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1637] = {{34.4, 37.4}, {34.4, 37.6}, {34.8, 38.6}, {35, 38}, {35.2, 37.4}}},
             [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 226772; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [230319] = { -- Deliana : https://wowhead.com/forever/npc=230319/deliana
             [npcKeys.name] = "Deliana",
@@ -2872,6 +2900,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1537] = {{42.4, 52.2}, {42.4, 52.6}, {43.2, 52.6}, {43.4, 51}, {43.4, 52.2}, {43.6, 50.8}, {43.6, 52}}},
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 226772; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [230565] = { -- Ironforge Guard : https://wowhead.com/forever/npc=230565/ironforge-guard
             [npcKeys.name] = "Ironforge Guard",
@@ -2880,6 +2909,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1537] = {{42.4, 53.8}, {43.2, 52.4}, {43.2, 52.6}, {43.4, 51.2}, {43.6, 51.2}, {43.6, 52.2}}},
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 226772; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [231499] = { -- Ada Darkhardt : https://wowhead.com/forever/npc=231499/ada-darkhardt
             [npcKeys.name] = "Ada Darkhardt",
@@ -2947,6 +2977,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[1] = {{29.4, 72}, {29.6, 72}}, [12] = {{48, 41.4}, {48.2, 41.6}}, [141] = {{58.8, 43.8}}, [1537] = {{53, 13.2}, {53.6, 12.2}, {53.8, 13.2}, {53.8, 13.6}}, [1657] = {{28.4, 39}, {28.6, 39}, {29, 38.4}}},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 203745; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [233428] = { -- Rune Broker : https://wowhead.com/forever/npc=233428/rune-broker
             [npcKeys.name] = "Rune Broker",
@@ -2954,6 +2985,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[14] = {{42.8, 68}}, [85] = {{31.4, 66.4}, {31.4, 66.6}}, [1497] = {{79.2, 19.4}, {79.4, 19.8}, {79.6, 19.4}, {79.6, 20}, {79.8, 20.6}}, [1637] = {{49.2, 46.8}, {49.4, 46.2}, {49.6, 46.2}}, [1638] = {{22.6, 12.8}, {22.8, 13.8}}},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 203745; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [235812] = { -- Horde Rogue : https://wowhead.com/forever/npc=235812/horde-rogue
             [npcKeys.name] = "Horde Rogue",
@@ -3155,6 +3187,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Soul Seer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 12844; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [238377] = { -- Dream Icon 3 : https://wowhead.com/forever/npc=238377/dream-icon-3
             [npcKeys.name] = "Dream Icon 3",
@@ -3280,6 +3313,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16] = {{12.4, 77.2}}},
             [npcKeys.zoneID] = zoneIDs.AZSHARA,
             [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 128, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.
         },
         [240527] = { -- Enraged Tempest : https://wowhead.com/forever/npc=240527/enraged-tempest
             [npcKeys.name] = "Enraged Tempest",
@@ -3291,6 +3325,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Head Chef",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [240607] = { -- Devon Woods : https://wowhead.com/forever/npc=240607/devon-woods
             [npcKeys.name] = "Devon Woods",
@@ -3299,6 +3334,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Security",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 237037; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [240964] = { -- Corrupted Grell : https://wowhead.com/forever/npc=240964/corrupted-grell
             [npcKeys.name] = "Corrupted Grell",
@@ -3373,6 +3409,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 25,
             [npcKeys.spawns] = {[1] = {{46.6, 53.8}}, [12] = {{26.4, 83.8}, {32, 49.2}, {32.4, 50.2}, {32.6, 52.2}, {33.2, 50.6}, {34.2, 50.8}, {34.2, 53}, {42.4, 65.4}, {42.4, 66}, {42.6, 65.6}, {44.8, 63.2}, {47, 69.4}, {60.8, 55.8}}, [14] = {{45.4, 12.6}, {45.6, 12.4}, {45.6, 12.8}, {45.8, 13.6}, {52, 32.6}, {52, 47.4}, {52.2, 42.6}, {52.4, 42.4}, {52.6, 43}, {54.4, 10.6}}, [17] = {{43.8, 14.4}, {46, 36.4}, {46, 36.6}, {46.8, 35.8}, {51, 29.2}, {51.8, 30.4}, {52, 30.6}, {53.4, 52.2}, {54.4, 22.8}, {61.2, 45.2}, {62, 39}, {63, 38.2}}, [38] = {{26, 17.2}, {26.2, 18.8}, {27.8, 51}, {28.2, 65.2}, {28.8, 66.6}, {29, 60.6}, {30, 58.8}, {31.2, 70.4}, {31.6, 55.2}, {32.4, 50}, {32.4, 50.6}, {32.8, 51.2}, {32.8, 51.6}, {33, 49.2}, {34, 50}, {34.4, 47.2}, {35.2, 46.8}, {35.6, 46.6}, {36.4, 46.2}, {40.8, 38.8}, {44, 12.8}, {49.6, 12.6}, {59, 15.4}, {63.6, 48.6}, {65.2, 65.2}}, [40] = {{33.2, 56}, {37.4, 77.6}, {37.4, 85.8}, {38.4, 82.8}, {40, 33.8}, {41.4, 72}, {42.4, 71.2}, {42.6, 71}, {43, 70.2}, {44.2, 28.4}, {44.4, 69.6}, {45, 69}, {51.4, 52.2}, {53.4, 52.6}, {53.6, 52.4}, {54.6, 51.6}, {55.4, 30.8}, {55.4, 48.2}, {55.6, 47.4}, {55.6, 47.6}, {56, 31.4}, {56, 52}, {56.2, 66.4}, {56.4, 53.2}, {57, 23.2}, {59.2, 19.6}}, [85] = {{59, 51.4}, {60.4, 52.2}, {60.8, 53}, {61.2, 53.6}, {61.8, 64.6}, {62, 63.8}}, [130] = {{43.6, 41.4}, {44.2, 41.6}, {45, 21}, {45, 67.8}, {45.2, 41.6}, {45.8, 39.4}, {45.8, 68.2}, {46.8, 40.8}, {47, 40.4}, {47.6, 39.6}}, [148] = {{32.4, 43.6}, {36, 47.6}, {36.8, 46.4}, {37.4, 43.6}, {37.6, 43.8}, {38.8, 43.6}, {41, 45.2}, {41, 50}, {42.2, 37.2}}, [16593] = {{41.8, 44.8}, {44.2, 45}, {51.8, 70}, {55.8, 61}, {58.8, 41}, {59.2, 79.8}, {61.8, 39}, {62.4, 73.8}}},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [242551] = { -- Leyara : https://wowhead.com/forever/npc=242551/leyara
             [npcKeys.name] = "Leyara",
@@ -3424,6 +3461,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [243855] = { -- Toron Rockhoof : https://wowhead.com/forever/npc=243855/toron-rockhoof
             [npcKeys.name] = "Toron Rockhoof",
@@ -3433,6 +3471,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Blacksmithing Supplies",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2880; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [243923] = { -- Kel'rah the Shadowhunter : https://wowhead.com/forever/npc=243923/kelrah-the-shadowhunter
             [npcKeys.name] = "Kel'rah the Shadowhunter",
@@ -3469,6 +3508,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[616] = {{12.8, 52.4}, {13, 52.8}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [244517] = { -- Sefira Everbright : https://wowhead.com/forever/npc=244517/sefira-everbright
             [npcKeys.name] = "Sefira Everbright",
@@ -3500,6 +3540,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {90902, 91208, 98389, 98601},
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Paladin Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 465 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [244949] = { -- Chicken : https://wowhead.com/forever/npc=244949/chicken
             [npcKeys.name] = "Chicken",
@@ -3553,6 +3594,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {91209, 99144},
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Paladin Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 465 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [246249] = { -- Kobold Laborer : https://wowhead.com/forever/npc=246249/kobold-laborer
             [npcKeys.name] = "Kobold Laborer",
@@ -3583,6 +3625,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.THUNDER_BLUFF,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Paladin Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 465 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [246349] = { -- Breton Samuels : https://wowhead.com/forever/npc=246349/breton-samuels
             [npcKeys.name] = "Breton Samuels",
@@ -3614,6 +3657,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {99152},
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Paladin Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 465 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [246393] = { -- Jorin Croge : https://wowhead.com/forever/npc=246393/jorin-croge
             [npcKeys.name] = "Jorin Croge",
@@ -3647,6 +3691,7 @@ function ForeverBaseNpc:Load()
         [246611] = { -- Sevren Callahan : https://wowhead.com/forever/npc=246611/sevren-callahan
             [npcKeys.name] = "Sevren Callahan",
             [npcKeys.subName] = "Paladin Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; class_trainer_title -> TRAINER: own tag='Paladin Trainer'; The NPC's exact class-trainer title identifies its stated role, so we assume TRAINER service without relying on paid-training evidence.
         },
         [246664] = { -- Fragmented Sentry : https://wowhead.com/forever/npc=246664/fragmented-sentry
             [npcKeys.name] = "Fragmented Sentry",
@@ -3785,6 +3830,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Alchemist",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2259 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [246797] = { -- Jessa Weaver : https://wowhead.com/forever/npc=246797/jessa-weaver
             [npcKeys.name] = "Jessa Weaver",
@@ -3794,6 +3840,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Mage Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 10 trainingcost=2000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [246799] = { -- Arcane Sentry : https://wowhead.com/forever/npc=246799/arcane-sentry
             [npcKeys.name] = "Arcane Sentry",
@@ -3911,6 +3958,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Junior Herbalism Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [247224] = { -- Hannah Peltskinner : https://wowhead.com/forever/npc=247224/hannah-peltskinner
             [npcKeys.name] = "Hannah Peltskinner",
@@ -3926,6 +3974,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {91745},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Junior Mining Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2901; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [247227] = { -- Riley Peltskinner : https://wowhead.com/forever/npc=247227/riley-peltskinner
             [npcKeys.name] = "Riley Peltskinner",
@@ -3935,6 +3984,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Junior Skinning Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8613 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [247228] = { -- Rebecca Thimble : https://wowhead.com/forever/npc=247228/rebecca-thimble
             [npcKeys.name] = "Rebecca Thimble",
@@ -4030,6 +4080,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Alchemist",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 250364; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [248197] = { -- Gor'mak : https://wowhead.com/forever/npc=248197/gormak
             [npcKeys.name] = "Gor'mak",
@@ -4039,6 +4090,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Blacksmith",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 251355; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [248198] = { -- Aza'bek : https://wowhead.com/forever/npc=248198/azabek
             [npcKeys.name] = "Aza'bek",
@@ -4048,6 +4100,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Chef",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [248199] = { -- Beneris : https://wowhead.com/forever/npc=248199/beneris
             [npcKeys.name] = "Beneris",
@@ -4057,6 +4110,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Enchanting",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 249476; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [248200] = { -- Fizzlefuse : https://wowhead.com/forever/npc=248200/fizzlefuse
             [npcKeys.name] = "Fizzlefuse",
@@ -4066,6 +4120,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Opportunist Engineer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 264201; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [248201] = { -- Pawani : https://wowhead.com/forever/npc=248201/pawani
             [npcKeys.name] = "Pawani",
@@ -4075,6 +4130,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Leatherworker",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 252765; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [248202] = { -- Jim'bek : https://wowhead.com/forever/npc=248202/jimbek
             [npcKeys.name] = "Jim'bek",
@@ -4084,6 +4140,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Tailor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 253890; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [248242] = { -- Hamish Bergwort : https://wowhead.com/forever/npc=248242/hamish-bergwort
             [npcKeys.name] = "Hamish Bergwort",
@@ -4192,6 +4249,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {91758, 92479},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Hunter Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 1130 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [248419] = { -- Mirt : https://wowhead.com/forever/npc=248419/mirt
             [npcKeys.name] = "Mirt",
@@ -4257,6 +4315,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[33] = {{27.8, 77.2}}},
             [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
             [npcKeys.subName] = "Mustard Queen",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 248613; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [248813] = { -- Biggs Gearwedge : https://wowhead.com/forever/npc=248813/biggs-gearwedge
             [npcKeys.name] = "Biggs Gearwedge",
@@ -4551,6 +4610,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92109, 92110},
             [npcKeys.questEnds] = {92109, 92110},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 4508 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [249719] = { -- Stalker : https://wowhead.com/forever/npc=249719/stalker
             [npcKeys.name] = "Stalker",
@@ -4582,6 +4642,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 58,
             [npcKeys.spawns] = {[616] = {{15.4, 50}, {15.6, 50.2}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2539 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [249974] = { -- Battlescarred Steelbeak : https://wowhead.com/forever/npc=249974/battlescarred-steelbeak
             [npcKeys.name] = "Battlescarred Steelbeak",
@@ -5083,6 +5144,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Weapon Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 1194; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [251365] = { -- Jolee Brightmeadows : https://wowhead.com/forever/npc=251365/jolee-brightmeadows
             [npcKeys.name] = "Jolee Brightmeadows",
@@ -5092,6 +5154,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Cloth & Leather Armor",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [251366] = { -- Aetheen of the Gales : https://wowhead.com/forever/npc=251366/aetheen-of-the-gales
             [npcKeys.name] = "Aetheen of the Gales",
@@ -5135,6 +5198,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {92485},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Druid Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 467 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251374] = { -- Windshaper Boro : https://wowhead.com/forever/npc=251374/windshaper-boro
             [npcKeys.name] = "Windshaper Boro",
@@ -5146,6 +5210,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {92466, 92468, 92484},
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Shaman Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 332 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251376] = { -- Tai'ree Farsight : https://wowhead.com/forever/npc=251376/tairee-farsight
             [npcKeys.name] = "Tai'ree Farsight",
@@ -5156,6 +5221,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {92482},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Hunter Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 1130 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251379] = { -- Dorii Brightwhisper : https://wowhead.com/forever/npc=251379/dorii-brightwhisper
             [npcKeys.name] = "Dorii Brightwhisper",
@@ -5166,6 +5232,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {92481},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Mage Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 116 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251389] = { -- Akeri Duskblade : https://wowhead.com/forever/npc=251389/akeri-duskblade
             [npcKeys.name] = "Akeri Duskblade",
@@ -5176,6 +5243,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {92483},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Rogue Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 53 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251402] = { -- Cirrusfly Soldier : https://wowhead.com/forever/npc=251402/cirrusfly-soldier
             [npcKeys.name] = "Cirrusfly Soldier",
@@ -5306,6 +5374,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {94792, 94863, 94864},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Hunter Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 136 trainingcost=600; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251523] = { -- Constable Aonda : https://wowhead.com/forever/npc=251523/constable-aonda
             [npcKeys.name] = "Constable Aonda",
@@ -5326,6 +5395,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "General Goods",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [251553] = { -- Ghansurok : https://wowhead.com/forever/npc=251553/ghansurok
             [npcKeys.name] = "Ghansurok",
@@ -5419,6 +5489,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {93159, 93160, 93172, 98285},
             [npcKeys.questEnds] = {93159, 93160, 93172, 98285},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 3922 trainingcost=115; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251707] = { -- Ornery Galestrider : https://wowhead.com/forever/npc=251707/ornery-galestrider
             [npcKeys.name] = "Ornery Galestrider",
@@ -5541,6 +5612,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {92553, 96646},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Cook",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2539 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251906] = { -- Teeri Wellwind : https://wowhead.com/forever/npc=251906/teeri-wellwind
             [npcKeys.name] = "Teeri Wellwind",
@@ -5564,6 +5636,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {97964},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Blacksmith",
+            [npcKeys.npcFlags] = 16404, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2018 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2880; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [251918] = { -- Highlands Bandit : https://wowhead.com/forever/npc=251918/highlands-bandit
             [npcKeys.name] = "Highlands Bandit",
@@ -5598,6 +5671,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{20.2, 67.4}, {20.2, 67.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.subName] = "Bread & Cheese Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 414; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251956] = { -- Lizi Silverstone : https://wowhead.com/forever/npc=251956/lizi-silverstone
             [npcKeys.name] = "Lizi Silverstone",
@@ -5622,6 +5696,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {92532},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Warrior Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 100 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251965] = { -- Fevrath Skyhammer : https://wowhead.com/forever/npc=251965/fevrath-skyhammer
             [npcKeys.name] = "Fevrath Skyhammer",
@@ -5631,6 +5706,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Armorer & Shieldcrafter",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2129; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [251966] = { -- Commander Cyclas : https://wowhead.com/forever/npc=251966/commander-cyclas
             [npcKeys.name] = "Commander Cyclas",
@@ -5668,6 +5744,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Expert Tailor",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2385 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251973] = { -- Dominique Stefano : https://wowhead.com/forever/npc=251973/dominique-stefano
             [npcKeys.name] = "Dominique Stefano",
@@ -5677,6 +5754,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Tailoring Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251974] = { -- Linna Bruder : https://wowhead.com/forever/npc=251974/linna-bruder
             [npcKeys.name] = "Linna Bruder",
@@ -5691,6 +5769,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Jewelry Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 7337; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251976] = { -- Tiffany Cartier : https://wowhead.com/forever/npc=251976/tiffany-cartier
             [npcKeys.name] = "Tiffany Cartier",
@@ -5700,6 +5779,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Jewelry Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 7337; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251977] = { -- Angelique Butler : https://wowhead.com/forever/npc=251977/angelique-butler
             [npcKeys.name] = "Angelique Butler",
@@ -5709,6 +5789,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "First Aid Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 3273 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251978] = { -- Vanessa Sellers : https://wowhead.com/forever/npc=251978/vanessa-sellers
             [npcKeys.name] = "Vanessa Sellers",
@@ -5718,6 +5799,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Enchanting Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 7411 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251979] = { -- Jepetto Joybuzz : https://wowhead.com/forever/npc=251979/jepetto-joybuzz
             [npcKeys.name] = "Jepetto Joybuzz",
@@ -5734,6 +5816,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Cloth Armor Merchant",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2429; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251981] = { -- Sheddle Glossgleam : https://wowhead.com/forever/npc=251981/sheddle-glossgleam
             [npcKeys.name] = "Sheddle Glossgleam",
@@ -5741,6 +5824,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Cobbler",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 202; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251991] = { -- Taleen Shimmerthread : https://wowhead.com/forever/npc=251991/taleen-shimmerthread
             [npcKeys.name] = "Taleen Shimmerthread",
@@ -5752,6 +5836,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {93951, 97972, 97973},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Tailor",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2385 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251992] = { -- Fenn Fairweather : https://wowhead.com/forever/npc=251992/fenn-fairweather
             [npcKeys.name] = "Fenn Fairweather",
@@ -5762,6 +5847,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {97967},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Fisherman",
+            [npcKeys.npcFlags] = 16404, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 7620 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 6256; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [251993] = { -- Indari Sunseam : https://wowhead.com/forever/npc=251993/indari-sunseam
             [npcKeys.name] = "Indari Sunseam",
@@ -5773,6 +5859,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {92515, 97969},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Leatherworker",
+            [npcKeys.npcFlags] = 16404, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2108 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [251996] = { -- Tenn Fairweather : https://wowhead.com/forever/npc=251996/tenn-fairweather
             [npcKeys.name] = "Tenn Fairweather",
@@ -5783,6 +5870,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{16, 65.4}, {16, 65.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.subName] = "Cloaks",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 4662; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251999] = { -- Debbi Moore : https://wowhead.com/forever/npc=251999/debbi-moore
             [npcKeys.name] = "Debbi Moore",
@@ -5790,12 +5878,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Trinkets & Charms",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 7337; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252000] = { -- Brammold Deepmine : https://wowhead.com/forever/npc=252000/brammold-deepmine
             [npcKeys.name] = "Brammold Deepmine",
             [npcKeys.spawns] = {[36] = {{15.8, 68.8}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.subName] = "Antiques",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 25; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252001] = { -- Orton Bennet : https://wowhead.com/forever/npc=252001/orton-bennet
             [npcKeys.name] = "Orton Bennet",
@@ -5817,6 +5907,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Wands",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 5208; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [252020] = { -- Jack Findle : https://wowhead.com/forever/npc=252020/jack-findle
             [npcKeys.name] = "Jack Findle",
@@ -5826,6 +5917,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Trade Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252022] = { -- Susana Averoy : https://wowhead.com/forever/npc=252022/susana-averoy
             [npcKeys.name] = "Susana Averoy",
@@ -5840,6 +5932,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Reagent Merchant",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 5565; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252063] = { -- Deadwood Den Guardian : https://wowhead.com/forever/npc=252063/deadwood-den-guardian
             [npcKeys.name] = "Deadwood Den Guardian",
@@ -5882,6 +5975,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Bartender",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252081] = { -- Sebastian Bower : https://wowhead.com/forever/npc=252081/sebastian-bower
             [npcKeys.name] = "Sebastian Bower",
@@ -5901,6 +5995,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Cooking Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252084] = { -- Katherine Lee : https://wowhead.com/forever/npc=252084/katherine-lee
             [npcKeys.name] = "Katherine Lee",
@@ -5910,6 +6005,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Cooking Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2539 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [252085] = { -- Archmage Celindra : https://wowhead.com/forever/npc=252085/archmage-celindra
             [npcKeys.name] = "Archmage Celindra",
@@ -6071,6 +6167,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {94491},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Druid Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 99 trainingcost=300; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [252360] = { -- Alley : https://wowhead.com/forever/npc=252360/alley
             [npcKeys.name] = "Alley",
@@ -6097,6 +6194,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {93791},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Mage Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 10 trainingcost=2000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [252374] = { -- Lalaa Lunarbreeze : https://wowhead.com/forever/npc=252374/lalaa-lunarbreeze
             [npcKeys.name] = "Lalaa Lunarbreeze",
@@ -6114,6 +6212,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Leatherworker",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2108 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252377] = { -- Seena Skybreaker : https://wowhead.com/forever/npc=252377/seena-skybreaker
             [npcKeys.name] = "Seena Skybreaker",
@@ -6125,6 +6224,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {94003},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Warrior Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 72 trainingcost=1000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [252378] = { -- Yorana Windyreed : https://wowhead.com/forever/npc=252378/yorana-windyreed
             [npcKeys.name] = "Yorana Windyreed",
@@ -6145,6 +6245,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Rogue Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 53 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [252380] = { -- Othesia Evengale : https://wowhead.com/forever/npc=252380/othesia-evengale
             [npcKeys.name] = "Othesia Evengale",
@@ -6154,6 +6255,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Tailor",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2385 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252381] = { -- Orelnaa Evengale : https://wowhead.com/forever/npc=252381/orelnaa-evengale
             [npcKeys.name] = "Orelnaa Evengale",
@@ -6169,6 +6271,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {97257},
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Shaman Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 131 trainingcost=3000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [252383] = { -- Valennia Stormfist : https://wowhead.com/forever/npc=252383/valennia-stormfist
             [npcKeys.name] = "Valennia Stormfist",
@@ -6199,6 +6302,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Mining Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2901; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252389] = { -- Quel'ana Quickgale : https://wowhead.com/forever/npc=252389/quelana-quickgale
             [npcKeys.name] = "Quel'ana Quickgale",
@@ -6210,6 +6314,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {94007, 94013, 94978, 94979},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Hunter Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 136 trainingcost=600; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [252390] = { -- Antelariaa Cloudgaze : https://wowhead.com/forever/npc=252390/antelariaa-cloudgaze
             [npcKeys.name] = "Antelariaa Cloudgaze",
@@ -6219,6 +6324,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "General Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252391] = { -- Haalee Windstalker : https://wowhead.com/forever/npc=252391/haalee-windstalker
             [npcKeys.name] = "Haalee Windstalker",
@@ -6306,6 +6412,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Trade Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252457] = { -- Mazzogore : https://wowhead.com/forever/npc=252457/mazzogore
             [npcKeys.name] = "Mazzogore",
@@ -6381,6 +6488,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Blacksmith",
+            [npcKeys.npcFlags] = 16404, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2018 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2880; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [252481] = { -- Wind Sprite : https://wowhead.com/forever/npc=252481/wind-sprite
             [npcKeys.name] = "Wind Sprite",
@@ -6509,6 +6617,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16651] = {{42.6, 70}}},
             [npcKeys.zoneID] = zoneIDs.SHEN_DRALAS,
             [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 128, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.
         },
         [252695] = { -- Pylon Protector : https://wowhead.com/forever/npc=252695/pylon-protector
             [npcKeys.name] = "Pylon Protector",
@@ -6660,6 +6769,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {92741},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Alchemist",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2259 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 3371; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [253066] = { -- Umarak : https://wowhead.com/forever/npc=253066/umarak
             [npcKeys.name] = "Umarak",
@@ -6693,6 +6803,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[405] = {{66.2, 79.4}}},
             [npcKeys.zoneID] = zoneIDs.DESOLACE,
             [npcKeys.subName] = "Magram Clan Quartermaster",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 249486; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [253140] = { -- Molkar : https://wowhead.com/forever/npc=253140/molkar
             [npcKeys.name] = "Molkar",
@@ -7116,6 +7227,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Druid Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 99 trainingcost=300; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [254082] = { -- Aarnor Galestrike : https://wowhead.com/forever/npc=254082/aarnor-galestrike
             [npcKeys.name] = "Aarnor Galestrike",
@@ -7126,6 +7238,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {97243},
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Shaman Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 131 trainingcost=3000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [254083] = { -- Cow : https://wowhead.com/forever/npc=254083/cow
             [npcKeys.name] = "Cow",
@@ -7139,6 +7252,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {94007},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Hunter Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 136 trainingcost=600; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [254085] = { -- Deckard : https://wowhead.com/forever/npc=254085/deckard
             [npcKeys.name] = "Deckard",
@@ -7151,6 +7265,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Mage Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 10 trainingcost=2000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [254087] = { -- Miriaan Mistblade : https://wowhead.com/forever/npc=254087/miriaan-mistblade
             [npcKeys.name] = "Miriaan Mistblade",
@@ -7160,6 +7275,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Rogue Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 53 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [254088] = { -- Corsan Earthrazer : https://wowhead.com/forever/npc=254088/corsan-earthrazer
             [npcKeys.name] = "Corsan Earthrazer",
@@ -7169,6 +7285,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Warrior Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 72 trainingcost=1000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [254089] = { -- Coriella Calmbreeze : https://wowhead.com/forever/npc=254089/coriella-calmbreeze
             [npcKeys.name] = "Coriella Calmbreeze",
@@ -7178,6 +7295,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [254100] = { -- Zephras Citizen : https://wowhead.com/forever/npc=254100/zephras-citizen
             [npcKeys.name] = "Zephras Citizen",
@@ -7275,6 +7393,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {97968},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Herbalist",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [254349] = { -- Vailee Highwind : https://wowhead.com/forever/npc=254349/vailee-highwind
             [npcKeys.name] = "Vailee Highwind",
@@ -7290,6 +7409,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "General Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [254360] = { -- Belandiel Farflight : https://wowhead.com/forever/npc=254360/belandiel-farflight
             [npcKeys.name] = "Belandiel Farflight",
@@ -7299,6 +7419,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Trade Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [254362] = { -- [DNT] Kill Credit: Khan Jehn Resurrected : https://wowhead.com/forever/npc=254362/dnt-kill-credit-khan-jehn-resurrected
             [npcKeys.name] = "[DNT] Kill Credit: Khan Jehn Resurrected",
@@ -7413,6 +7534,7 @@ function ForeverBaseNpc:Load()
         [254695] = { -- Repair Bot : https://wowhead.com/forever/npc=254695/repair-bot
             [npcKeys.name] = "Repair Bot",
             [npcKeys.spawns] = {[12] = {{33.2, 50.4}}, [14] = {{45.6, 12.8}}},
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [254717] = { -- Vindael : https://wowhead.com/forever/npc=254717/vindael
             [npcKeys.name] = "Vindael",
@@ -7519,6 +7641,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[616] = {{70.6, 51.2}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 274025; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [255159] = { -- Stalker : https://wowhead.com/forever/npc=255159/stalker
             [npcKeys.name] = "Stalker",
@@ -7910,6 +8033,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[267] = {{54, 80.4}}},
             [npcKeys.zoneID] = zoneIDs.HILLSBRAD_FOOTHILLS,
             [npcKeys.subName] = "Fisherman",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 7620 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [255887] = { -- Slydris : https://wowhead.com/forever/npc=255887/slydris
             [npcKeys.name] = "Slydris",
@@ -7932,6 +8056,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Miner",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [255892] = { -- Bonegnaw : https://wowhead.com/forever/npc=255892/bonegnaw
             [npcKeys.name] = "Bonegnaw",
@@ -7944,6 +8069,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{78.8, 54}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [255895] = { -- Grizzek : https://wowhead.com/forever/npc=255895/grizzek
             [npcKeys.name] = "Grizzek",
@@ -7953,6 +8079,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "General Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [255897] = { -- Friz Frazzlespark : https://wowhead.com/forever/npc=255897/friz-frazzlespark
             [npcKeys.name] = "Friz Frazzlespark",
@@ -7962,6 +8089,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Specialty Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [255898] = { -- Murloc Oracle : https://wowhead.com/forever/npc=255898/murloc-oracle
             [npcKeys.name] = "Murloc Oracle",
@@ -7997,6 +8125,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [255951] = { -- Gnome Engineer : https://wowhead.com/forever/npc=255951/gnome-engineer
             [npcKeys.name] = "Gnome Engineer",
@@ -8212,6 +8341,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{14.2, 66.6}, {14.4, 66.4}, {14.6, 66.4}, {14.6, 66.8}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 285104; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256383] = { -- Meadowsbrook Farmhand : https://wowhead.com/forever/npc=256383/meadowsbrook-farmhand
             [npcKeys.name] = "Meadowsbrook Farmhand",
@@ -8226,6 +8356,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Supply Officer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 262764; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256386] = { -- Dokimi : https://wowhead.com/forever/npc=256386/dokimi
             [npcKeys.name] = "Dokimi",
@@ -8253,6 +8384,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Supply Officer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 262765; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256390] = { -- Marcy Baker : https://wowhead.com/forever/npc=256390/marcy-baker
             [npcKeys.name] = "Marcy Baker",
@@ -8310,6 +8442,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Kodo Handler",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 262766; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256410] = { -- Reginald Holmsby : https://wowhead.com/forever/npc=256410/reginald-holmsby
             [npcKeys.name] = "Reginald Holmsby",
@@ -8416,6 +8549,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {93791, 93797},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Staff Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 854; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [256514] = { -- Contemplative Bandit : https://wowhead.com/forever/npc=256514/contemplative-bandit
             [npcKeys.name] = "Contemplative Bandit",
@@ -8532,6 +8666,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Cook",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2539 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [256657] = { -- Kreza Darkthorn : https://wowhead.com/forever/npc=256657/kreza-darkthorn
             [npcKeys.name] = "Kreza Darkthorn",
@@ -8541,12 +8676,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Weaponsmith & Armorcrafter",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2417; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [256658] = { -- Gur'dok : https://wowhead.com/forever/npc=256658/gurdok
             [npcKeys.name] = "Gur'dok",
             [npcKeys.spawns] = {[16591] = {{60, 46.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.subName] = "Journeyman Blacksmith",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2018 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [256660] = { -- Thobon Sapclaw : https://wowhead.com/forever/npc=256660/thobon-sapclaw
             [npcKeys.name] = "Thobon Sapclaw",
@@ -8571,6 +8708,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{58, 45}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256678] = { -- Tainted Vilethorn : https://wowhead.com/forever/npc=256678/tainted-vilethorn
             [npcKeys.name] = "Tainted Vilethorn",
@@ -8595,6 +8733,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Alchemist",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 250364; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256730] = { -- Stondry Darkhammer : https://wowhead.com/forever/npc=256730/stondry-darkhammer
             [npcKeys.name] = "Stondry Darkhammer",
@@ -8603,6 +8742,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Blacksmith",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 251355; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [256731] = { -- Kalsey Sanden : https://wowhead.com/forever/npc=256731/kalsey-sanden
             [npcKeys.name] = "Kalsey Sanden",
@@ -8611,6 +8751,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Chef",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256732] = { -- Alynsia : https://wowhead.com/forever/npc=256732/alynsia
             [npcKeys.name] = "Alynsia",
@@ -8619,6 +8760,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Enchanter",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 249476; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256733] = { -- Fritz Fizzle : https://wowhead.com/forever/npc=256733/fritz-fizzle
             [npcKeys.name] = "Fritz Fizzle",
@@ -8627,6 +8769,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Engineer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 264201; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256734] = { -- Daniel Stitchsong : https://wowhead.com/forever/npc=256734/daniel-stitchsong
             [npcKeys.name] = "Daniel Stitchsong",
@@ -8635,6 +8778,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Leatherworker",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 252765; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256735] = { -- Mivin Shadowweave : https://wowhead.com/forever/npc=256735/mivin-shadowweave
             [npcKeys.name] = "Mivin Shadowweave",
@@ -8643,6 +8787,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Tailor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 253890; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256736] = { -- Huey Sunnydale : https://wowhead.com/forever/npc=256736/huey-sunnydale
             [npcKeys.name] = "Huey Sunnydale",
@@ -8651,6 +8796,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Mule Handler",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 262766; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256738] = { -- Basket of Alchemy Goods : https://wowhead.com/forever/npc=256738/basket-of-alchemy-goods
             [npcKeys.name] = "Basket of Alchemy Goods",
@@ -8794,6 +8940,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Skinner",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8613 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257004] = { -- Eaysaa Brightgust : https://wowhead.com/forever/npc=257004/eaysaa-brightgust
             [npcKeys.name] = "Eaysaa Brightgust",
@@ -8803,6 +8950,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Enchanter",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 7411 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 4470; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257005] = { -- Valiena Swiftgale : https://wowhead.com/forever/npc=257005/valiena-swiftgale
             [npcKeys.name] = "Valiena Swiftgale",
@@ -8812,6 +8960,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Alchemist",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2259 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 3371; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257006] = { -- Nyalah Brightfire : https://wowhead.com/forever/npc=257006/nyalah-brightfire
             [npcKeys.name] = "Nyalah Brightfire",
@@ -8823,6 +8972,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {93317},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Cook",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2539 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257007] = { -- Melasa Fairmend : https://wowhead.com/forever/npc=257007/melasa-fairmend
             [npcKeys.name] = "Melasa Fairmend",
@@ -8832,6 +8982,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Medic",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 3273 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [257008] = { -- Baelann Swiftcurrent : https://wowhead.com/forever/npc=257008/baelann-swiftcurrent
             [npcKeys.name] = "Baelann Swiftcurrent",
@@ -8841,6 +8992,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Fisher",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 7620 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 6256; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257017] = { -- Twilight Worg : https://wowhead.com/forever/npc=257017/twilight-worg
             [npcKeys.name] = "Twilight Worg",
@@ -8854,6 +9006,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {97965},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Medic",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 3273 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [257019] = { -- Nyassa Swiftdraught : https://wowhead.com/forever/npc=257019/nyassa-swiftdraught
             [npcKeys.name] = "Nyassa Swiftdraught",
@@ -8864,6 +9017,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {97963},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Alchemist",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2259 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 3371; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257020] = { -- Nasalanna Windsinger : https://wowhead.com/forever/npc=257020/nasalanna-windsinger
             [npcKeys.name] = "Nasalanna Windsinger",
@@ -8874,6 +9028,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {98284, 98286},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Enchanter",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 7411 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 4470; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257021] = { -- Halassa Fernbreeze : https://wowhead.com/forever/npc=257021/halassa-fernbreeze
             [npcKeys.name] = "Halassa Fernbreeze",
@@ -8883,6 +9038,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Herbalist",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [257022] = { -- Messana Crestwind : https://wowhead.com/forever/npc=257022/messana-crestwind
             [npcKeys.name] = "Messana Crestwind",
@@ -8893,6 +9049,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {97970},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Miner",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2880; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257024] = { -- Mendalass Tattermend : https://wowhead.com/forever/npc=257024/mendalass-tattermend
             [npcKeys.name] = "Mendalass Tattermend",
@@ -8903,6 +9060,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {97971},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Skinner",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8613 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257034] = { -- Mad Marrius : https://wowhead.com/forever/npc=257034/mad-marrius
             [npcKeys.name] = "Mad Marrius",
@@ -8915,6 +9073,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [257037] = { -- Zelena Favorbreeze : https://wowhead.com/forever/npc=257037/zelena-favorbreeze
             [npcKeys.name] = "Zelena Favorbreeze",
@@ -8937,6 +9096,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Glop",
             [npcKeys.spawns] = {[16591] = {{67.2, 19.4}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257058] = { -- Gobam : https://wowhead.com/forever/npc=257058/gobam
             [npcKeys.name] = "Gobam",
@@ -9047,6 +9207,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{76.6, 54.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [257294] = { -- Lizi Pinchwhistle : https://wowhead.com/forever/npc=257294/lizi-pinchwhistle
             [npcKeys.name] = "Lizi Pinchwhistle",
@@ -9055,6 +9216,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{76.8, 54.4}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [257296] = { -- Muggol Breezebeard : https://wowhead.com/forever/npc=257296/muggol-breezebeard
             [npcKeys.name] = "Muggol Breezebeard",
@@ -9112,6 +9274,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Weapon Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 1194; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [257422] = { -- Railee Thriceforged : https://wowhead.com/forever/npc=257422/railee-thriceforged
             [npcKeys.name] = "Railee Thriceforged",
@@ -9121,6 +9284,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Weapon Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2488; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [257425] = { -- Ziv'al : https://wowhead.com/forever/npc=257425/zival
             [npcKeys.name] = "Ziv'al",
@@ -9143,6 +9307,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {94373, 94375, 94472, 98581},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Shaman Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 332 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [257450] = { -- Rog'mar Scout : https://wowhead.com/forever/npc=257450/rogmar-scout
             [npcKeys.name] = "Rog'mar Scout",
@@ -9221,6 +9386,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{64.6, 84.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257597] = { -- Bruegs Kindleborn : https://wowhead.com/forever/npc=257597/bruegs-kindleborn
             [npcKeys.name] = "Bruegs Kindleborn",
@@ -9416,6 +9582,7 @@ function ForeverBaseNpc:Load()
         [258088] = { -- Irna Kindlevein : https://wowhead.com/forever/npc=258088/irna-kindlevein
             [npcKeys.name] = "Irna Kindlevein",
             [npcKeys.subName] = "Shaman Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; class_trainer_title -> TRAINER: own tag='Shaman Trainer'; The NPC's exact class-trainer title identifies its stated role, so we assume TRAINER service without relying on paid-training evidence.
         },
         [258098] = { -- Eldrun Stormbreaker : https://wowhead.com/forever/npc=258098/eldrun-stormbreaker
             [npcKeys.name] = "Eldrun Stormbreaker",
@@ -9427,6 +9594,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {97263},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Shaman Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 131 trainingcost=3000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [258113] = { -- Ingrid Dunwald : https://wowhead.com/forever/npc=258113/ingrid-dunwald
             [npcKeys.name] = "Ingrid Dunwald",
@@ -9437,6 +9605,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {94449},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Shaman Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 131 trainingcost=3000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [258130] = { -- Jorel Windsinger : https://wowhead.com/forever/npc=258130/jorel-windsinger
             [npcKeys.name] = "Jorel Windsinger",
@@ -9643,6 +9812,7 @@ function ForeverBaseNpc:Load()
         [258303] = { -- Kyridel Truline : https://wowhead.com/forever/npc=258303/kyridel-truline
             [npcKeys.name] = "Kyridel Truline",
             [npcKeys.subName] = "Hunter Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; class_trainer_title -> TRAINER: own tag='Hunter Trainer'; The NPC's exact class-trainer title identifies its stated role, so we assume TRAINER service without relying on paid-training evidence.
         },
         [258306] = { -- Granny Finespindle : https://wowhead.com/forever/npc=258306/granny-finespindle
             [npcKeys.name] = "Granny Finespindle",
@@ -9652,6 +9822,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Leatherworking Recipes",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 252761; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [258316] = { -- Farholde Scout : https://wowhead.com/forever/npc=258316/farholde-scout
             [npcKeys.name] = "Farholde Scout",
@@ -9698,6 +9869,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [258403] = { -- Jasmine Van Brunt : https://wowhead.com/forever/npc=258403/jasmine-van-brunt
             [npcKeys.name] = "Jasmine Van Brunt",
@@ -9711,6 +9883,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.UNDERCITY,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Tailoring Recipes",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 253665; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [258443] = { -- Ur'endra : https://wowhead.com/forever/npc=258443/urendra
             [npcKeys.name] = "Ur'endra",
@@ -9784,6 +9957,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Recipe Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 253665; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [258464] = { -- Bettana : https://wowhead.com/forever/npc=258464/bettana
             [npcKeys.name] = "Bettana",
@@ -9801,6 +9975,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.THUNDER_BLUFF,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Tailoring Recipes",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 253665; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [258491] = { -- Kronk : https://wowhead.com/forever/npc=258491/kronk
             [npcKeys.name] = "Kronk",
@@ -9821,6 +9996,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Tailoring Recipes",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 253665; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [258553] = { -- Peacebloom : https://wowhead.com/forever/npc=258553/peacebloom
             [npcKeys.name] = "Peacebloom",
@@ -9832,6 +10008,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Tailoring Recipes",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 253665; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [258570] = { -- Da'grosh : https://wowhead.com/forever/npc=258570/dagrosh
             [npcKeys.name] = "Da'grosh",
@@ -9848,6 +10025,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.DARNASSUS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Tailoring Recipes",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 253665; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [258573] = { -- Mudfin Oracle : https://wowhead.com/forever/npc=258573/mudfin-oracle
             [npcKeys.name] = "Mudfin Oracle",
@@ -9909,6 +10087,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {94817, 94819, 94822, 94824},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Priest Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 17 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [258873] = { -- Vendor : https://wowhead.com/forever/npc=258873/vendor
             [npcKeys.name] = "Vendor",
@@ -10253,6 +10432,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Journeyman Blacksmith",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2018 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [259251] = { -- Emerald Dreamer : https://wowhead.com/forever/npc=259251/emerald-dreamer
             [npcKeys.name] = "Emerald Dreamer",
@@ -10385,6 +10565,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[361] = {{51.4, 82}}},
             [npcKeys.zoneID] = zoneIDs.FELWOOD,
             [npcKeys.subName] = "Emerald Circle",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2259 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [259595] = { -- Hacktooth : https://wowhead.com/forever/npc=259595/hacktooth
             [npcKeys.name] = "Hacktooth",
@@ -10442,6 +10623,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Blacksmithing Supplies",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2880; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [259776] = { -- Emerald Dreamer : https://wowhead.com/forever/npc=259776/emerald-dreamer
             [npcKeys.name] = "Emerald Dreamer",
@@ -10492,6 +10674,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "General Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [259861] = { -- Paige Armstrong : https://wowhead.com/forever/npc=259861/paige-armstrong
             [npcKeys.name] = "Paige Armstrong",
@@ -10501,6 +10684,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Weaponsmith & Armorcrafter",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2417; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [259863] = { -- Cassandra Wheeler : https://wowhead.com/forever/npc=259863/cassandra-wheeler
             [npcKeys.name] = "Cassandra Wheeler",
@@ -10510,6 +10694,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Food & Drink",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [259868] = { -- Shurome's Specimen : https://wowhead.com/forever/npc=259868/shuromes-specimen
             [npcKeys.name] = "Shurome's Specimen",
@@ -10576,6 +10761,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 40,
             [npcKeys.spawns] = {[16591] = {{79, 54}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [259966] = { -- Ott : https://wowhead.com/forever/npc=259966/ott
             [npcKeys.name] = "Ott",
@@ -10753,6 +10939,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.UNDERCITY,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Paladin Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 465 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [260101] = { -- Paladin Trainee : https://wowhead.com/forever/npc=260101/paladin-trainee
             [npcKeys.name] = "Paladin Trainee",
@@ -10902,6 +11089,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{58.2, 45.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.subName] = "General Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [260359] = { -- Sadi : https://wowhead.com/forever/npc=260359/sadi
             [npcKeys.name] = "Sadi",
@@ -11040,6 +11228,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Fisherman",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 4603; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [260494] = { -- Farholde Sentry : https://wowhead.com/forever/npc=260494/farholde-sentry
             [npcKeys.name] = "Farholde Sentry",
@@ -11062,6 +11251,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{76.6, 54.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [260558] = { -- Krix : https://wowhead.com/forever/npc=260558/krix
             [npcKeys.name] = "Krix",
@@ -11071,6 +11261,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Superior Fisherman",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 7620 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [260559] = { -- Gilliwigs : https://wowhead.com/forever/npc=260559/gilliwigs
             [npcKeys.name] = "Gilliwigs",
@@ -11080,6 +11271,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Trade Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [260560] = { -- Krikshank : https://wowhead.com/forever/npc=260560/krikshank
             [npcKeys.name] = "Krikshank",
@@ -11089,6 +11281,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Poison Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2928; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [260561] = { -- Dina Mite : https://wowhead.com/forever/npc=260561/dina-mite
             [npcKeys.name] = "Dina Mite",
@@ -11106,6 +11299,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Master Goblin Engineer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8895 trainingcost=2200; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [260563] = { -- Mia Tanglewrench : https://wowhead.com/forever/npc=260563/mia-tanglewrench
             [npcKeys.name] = "Mia Tanglewrench",
@@ -11127,6 +11321,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Engineering Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2880; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [260566] = { -- Fizzix Boomshot : https://wowhead.com/forever/npc=260566/fizzix-boomshot
             [npcKeys.name] = "Fizzix Boomshot",
@@ -11136,10 +11331,12 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Gunsmith",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2516; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [260567] = { -- Tuppins Coppercheck : https://wowhead.com/forever/npc=260567/tuppins-coppercheck
             [npcKeys.name] = "Tuppins Coppercheck",
             [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [260568] = { -- Jazzle Cheapshot : https://wowhead.com/forever/npc=260568/jazzle-cheapshot
             [npcKeys.name] = "Jazzle Cheapshot",
@@ -11165,6 +11362,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Tailoring Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [260580] = { -- Mini Uber Diablo : https://wowhead.com/forever/npc=260580/mini-uber-diablo
             [npcKeys.name] = "Mini Uber Diablo",
@@ -11395,6 +11593,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{58, 45.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.subName] = "Butcher",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [261316] = { -- Magmatus : https://wowhead.com/forever/npc=261316/magmatus
             [npcKeys.name] = "Magmatus",
@@ -11673,6 +11872,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 20,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Magnificent Mystic",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 3371; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [262471] = { -- Xaphod Bizznox : https://wowhead.com/forever/npc=262471/xaphod-bizznox
             [npcKeys.name] = "Xaphod Bizznox",
@@ -11681,6 +11881,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[406] = {{71.4, 99.4}}},
             [npcKeys.zoneID] = zoneIDs.STONETALON_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2901; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [262472] = { -- Cinderscale Flamecaller : https://wowhead.com/forever/npc=262472/cinderscale-flamecaller
             [npcKeys.name] = "Cinderscale Flamecaller",
@@ -11734,6 +11935,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Shaman Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 131 trainingcost=3000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [262560] = { -- Hana Lighthoof : https://wowhead.com/forever/npc=262560/hana-lighthoof
             [npcKeys.name] = "Hana Lighthoof",
@@ -11742,6 +11944,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Druid Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 99 trainingcost=300; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [262585] = { -- Enraged Ghost : https://wowhead.com/forever/npc=262585/enraged-ghost
             [npcKeys.name] = "Enraged Ghost",
@@ -11859,6 +12062,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{63.8, 17.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.subName] = "Rare Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 271646; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [263277] = { -- [DNT] Kill Credit: Drained Crystal : https://wowhead.com/forever/npc=263277/dnt-kill-credit-drained-crystal
             [npcKeys.name] = "[DNT] Kill Credit: Drained Crystal",
@@ -11930,6 +12134,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Agent of the Black Market",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 271871; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [263389] = { -- Enraged Apparition : https://wowhead.com/forever/npc=263389/enraged-apparition
             [npcKeys.name] = "Enraged Apparition",
@@ -12040,6 +12245,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[17] = {{63.4, 58.8}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.subName] = "Theramore Expeditionary Force Quartermaster",
+            [npcKeys.npcFlags] = 16384, -- Assumption: assumptions/npc_services.toml; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [263570] = { -- Creeg Bothunk : https://wowhead.com/forever/npc=263570/creeg-bothunk
             [npcKeys.name] = "Creeg Bothunk",
@@ -12049,6 +12255,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Darkspear Raiders Quartermaster",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 17348; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [263611] = { -- Diseased Soldier : https://wowhead.com/forever/npc=263611/diseased-soldier
             [npcKeys.name] = "Diseased Soldier",
@@ -12217,6 +12424,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Quartermaster",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 276976; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [264079] = { -- Gloomrise Hatchling : https://wowhead.com/forever/npc=264079/gloomrise-hatchling
             [npcKeys.name] = "Gloomrise Hatchling",
@@ -12397,6 +12605,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Keeper of Knowledge",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 273952; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [264839] = { -- [DNT] Kill Credit: Armor slot selected for study : https://wowhead.com/forever/npc=264839/dnt-kill-credit-armor-slot-selected-for-study
             [npcKeys.name] = "[DNT] Kill Credit: Armor slot selected for study",
@@ -12489,12 +12698,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[11] = {{52.6, 80.2}}},
             [npcKeys.zoneID] = zoneIDs.WETLANDS,
             [npcKeys.subName] = "Bartender",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [265347] = { -- Bhalir Firebrew : https://wowhead.com/forever/npc=265347/bhalir-firebrew
             [npcKeys.name] = "Bhalir Firebrew",
             [npcKeys.spawns] = {[11] = {{52.8, 80}}},
             [npcKeys.zoneID] = zoneIDs.WETLANDS,
             [npcKeys.subName] = "Chef",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [265348] = { -- Agriel Firebrew : https://wowhead.com/forever/npc=265348/agriel-firebrew
             [npcKeys.name] = "Agriel Firebrew",
@@ -12520,6 +12731,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Ratchet Quartermaster",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 274021; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [265575] = { -- Gezzy Gunkgear : https://wowhead.com/forever/npc=265575/gezzy-gunkgear
             [npcKeys.name] = "Gezzy Gunkgear",
@@ -12529,6 +12741,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Booty Bay Quartermaster",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 274022; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [265576] = { -- Rettrick : https://wowhead.com/forever/npc=265576/rettrick
             [npcKeys.name] = "Rettrick",
@@ -12538,6 +12751,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.TANARIS,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Gadgetzan Quartermaster",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 274023; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [265577] = { -- Zippie Fizzbolt : https://wowhead.com/forever/npc=265577/zippie-fizzbolt
             [npcKeys.name] = "Zippie Fizzbolt",
@@ -12546,6 +12760,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[618] = {{61.4, 38.6}}},
             [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
             [npcKeys.subName] = "Everlook Quartermaster",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 274024; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [265586] = { -- Thylaen : https://wowhead.com/forever/npc=265586/thylaen
             [npcKeys.name] = "Thylaen",
@@ -12601,6 +12816,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Bartender",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [265747] = { -- Parachute-Priest : https://wowhead.com/forever/npc=265747/parachute-priest
             [npcKeys.name] = "Parachute-Priest",
@@ -12614,6 +12830,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Stablemaster and Riding Trainer",
+            [npcKeys.npcFlags] = 16404, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 33388 trainingcost=1000000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 269671; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [265757] = { -- Stormy Galestrider : https://wowhead.com/forever/npc=265757/stormy-galestrider
             [npcKeys.name] = "Stormy Galestrider",
@@ -12730,12 +12947,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Repairs",
+            [npcKeys.npcFlags] = 16384, -- Assumption: assumptions/npc_services.toml; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [265883] = { -- Chagrak Hammerstrike : https://wowhead.com/forever/npc=265883/chagrak-hammerstrike
             [npcKeys.name] = "Chagrak Hammerstrike",
             [npcKeys.spawns] = {[616] = {{13.4, 52.4}, {13.6, 52.4}, {13.6, 52.6}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.subName] = "Repairs",
+            [npcKeys.npcFlags] = 16384, -- Assumption: assumptions/npc_services.toml; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [265892] = { -- Shok'tara : https://wowhead.com/forever/npc=265892/shoktara
             [npcKeys.name] = "Shok'tara",
@@ -12770,6 +12989,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {96658},
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Cooking Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2539 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [265962] = { -- Escaped Sheep : https://wowhead.com/forever/npc=265962/escaped-sheep
             [npcKeys.name] = "Escaped Sheep",
@@ -12918,6 +13138,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {96873},
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Journeyman Enchanter",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 7411 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [266883] = { -- [DNT] Kill Credit Young Paletusk : https://wowhead.com/forever/npc=266883/dnt-kill-credit-young-paletusk
             [npcKeys.name] = "[DNT] Kill Credit Young Paletusk",
@@ -12942,6 +13163,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[616] = {{58.8, 41.8}, {59.6, 49.2}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.subName] = "Someone's Minion",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 251468; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [266940] = { -- Turroc : https://wowhead.com/forever/npc=266940/turroc
             [npcKeys.name] = "Turroc",
@@ -12969,6 +13191,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Chef",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267001] = { -- Cody : https://wowhead.com/forever/npc=267001/cody
             [npcKeys.name] = "Cody",
@@ -12978,6 +13201,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Baker",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 4540; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267002] = { -- Luna : https://wowhead.com/forever/npc=267002/luna
             [npcKeys.name] = "Luna",
@@ -13273,6 +13497,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Junior Skinning Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8613 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267325] = { -- Walter Mason : https://wowhead.com/forever/npc=267325/walter-mason
             [npcKeys.name] = "Walter Mason",
@@ -13282,6 +13507,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Junior Mining Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2901; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267326] = { -- Florence Nightshade : https://wowhead.com/forever/npc=267326/florence-nightshade
             [npcKeys.name] = "Florence Nightshade",
@@ -13291,6 +13517,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Junior Herbalism Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [267327] = { -- Kagil : https://wowhead.com/forever/npc=267327/kagil
             [npcKeys.name] = "Kagil",
@@ -13300,6 +13527,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.DUROTAR,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Junior Skinning Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8613 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267328] = { -- Norzsh : https://wowhead.com/forever/npc=267328/norzsh
             [npcKeys.name] = "Norzsh",
@@ -13309,6 +13537,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.DUROTAR,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Junior Mining Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2901; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267329] = { -- Zor'la : https://wowhead.com/forever/npc=267329/zorla
             [npcKeys.name] = "Zor'la",
@@ -13318,6 +13547,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.DUROTAR,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Junior Herbalism Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [267330] = { -- Nawka Wildsong : https://wowhead.com/forever/npc=267330/nawka-wildsong
             [npcKeys.name] = "Nawka Wildsong",
@@ -13326,6 +13556,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Junior Skinning Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8613 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267331] = { -- Vartha Rockmane : https://wowhead.com/forever/npc=267331/vartha-rockmane
             [npcKeys.name] = "Vartha Rockmane",
@@ -13334,6 +13565,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Junior Mining Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2901; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267332] = { -- Garan Sunstrider : https://wowhead.com/forever/npc=267332/garan-sunstrider
             [npcKeys.name] = "Garan Sunstrider",
@@ -13342,6 +13574,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Junior Herbalism Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [267333] = { -- Terunne Bearshaper : https://wowhead.com/forever/npc=267333/terunne-bearshaper
             [npcKeys.name] = "Terunne Bearshaper",
@@ -13351,6 +13584,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.TELDRASSIL,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Junior Skinning Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8613 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267334] = { -- Fanorran Stilloak : https://wowhead.com/forever/npc=267334/fanorran-stilloak
             [npcKeys.name] = "Fanorran Stilloak",
@@ -13360,6 +13594,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.TELDRASSIL,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Junior Mining Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2901; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267335] = { -- Eleyna Duskbreeze : https://wowhead.com/forever/npc=267335/eleyna-duskbreeze
             [npcKeys.name] = "Eleyna Duskbreeze",
@@ -13369,6 +13604,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.TELDRASSIL,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Junior Herbalism Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [267336] = { -- Brighid Stormflayer : https://wowhead.com/forever/npc=267336/brighid-stormflayer
             [npcKeys.name] = "Brighid Stormflayer",
@@ -13378,6 +13614,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Junior Skinning Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8613 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267337] = { -- Sally Swiftwrench : https://wowhead.com/forever/npc=267337/sally-swiftwrench
             [npcKeys.name] = "Sally Swiftwrench",
@@ -13387,6 +13624,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Junior Mining Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2901; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267338] = { -- Emrys Flintbeard : https://wowhead.com/forever/npc=267338/emrys-flintbeard
             [npcKeys.name] = "Emrys Flintbeard",
@@ -13396,6 +13634,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Junior Herbalism Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [267354] = { -- Black Skeletal Horse : https://wowhead.com/forever/npc=267354/black-skeletal-horse
             [npcKeys.name] = "Black Skeletal Horse",
@@ -13586,6 +13825,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Traveling Ranged Weapon Salesman",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2504; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [268257] = { -- Dummy Mechanical : https://wowhead.com/forever/npc=268257/dummy-mechanical
             [npcKeys.name] = "Dummy Mechanical",
@@ -13740,6 +13980,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Fruit Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 4536; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [268677] = { -- Skeleton : https://wowhead.com/forever/npc=268677/skeleton
             [npcKeys.name] = "Skeleton",
@@ -13832,6 +14073,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Girl with Puppies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 277508; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [268761] = { -- Randal : https://wowhead.com/forever/npc=268761/randal
             [npcKeys.name] = "Randal",
@@ -13997,6 +14239,7 @@ function ForeverBaseNpc:Load()
         [269230] = { -- Kur'gok : https://wowhead.com/forever/npc=269230/kurgok
             [npcKeys.name] = "Kur'gok",
             [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 128, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.
         },
         [269232] = { -- Spread Incense : https://wowhead.com/forever/npc=269232/spread-incense
             [npcKeys.name] = "Spread Incense",
@@ -14004,6 +14247,7 @@ function ForeverBaseNpc:Load()
         [269234] = { -- Ettina Humblerange : https://wowhead.com/forever/npc=269234/ettina-humblerange
             [npcKeys.name] = "Ettina Humblerange",
             [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 128, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.
         },
         [269254] = { -- Famished Blackworg : https://wowhead.com/forever/npc=269254/famished-blackworg
             [npcKeys.name] = "Famished Blackworg",
@@ -14258,6 +14502,7 @@ function ForeverBaseNpc:Load()
         [270263] = { -- Farseer Maret Firetend : https://wowhead.com/forever/npc=270263/farseer-maret-firetend
             [npcKeys.name] = "Farseer Maret Firetend",
             [npcKeys.subName] = "Shaman Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; class_trainer_title -> TRAINER: own tag='Shaman Trainer'; The NPC's exact class-trainer title identifies its stated role, so we assume TRAINER service without relying on paid-training evidence.
         },
         [270269] = { -- Arbal : https://wowhead.com/forever/npc=270269/arbal
             [npcKeys.name] = "Arbal",
@@ -14273,10 +14518,12 @@ function ForeverBaseNpc:Load()
         [270278] = { -- Bordolf Axegrim : https://wowhead.com/forever/npc=270278/bordolf-axegrim
             [npcKeys.name] = "Bordolf Axegrim",
             [npcKeys.subName] = "Warrior Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; class_trainer_title -> TRAINER: own tag='Warrior Trainer'; The NPC's exact class-trainer title identifies its stated role, so we assume TRAINER service without relying on paid-training evidence.
         },
         [270280] = { -- Torin Treehame : https://wowhead.com/forever/npc=270280/torin-treehame
             [npcKeys.name] = "Torin Treehame",
             [npcKeys.subName] = "Hunter Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; class_trainer_title -> TRAINER: own tag='Hunter Trainer'; The NPC's exact class-trainer title identifies its stated role, so we assume TRAINER service without relying on paid-training evidence.
         },
         [270294] = { -- Baron Marinous : https://wowhead.com/forever/npc=270294/baron-marinous
             [npcKeys.name] = "Baron Marinous",
@@ -14360,6 +14607,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {6121},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Druid Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 99 trainingcost=300; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [270513] = { -- Spellweaver Thaldris : https://wowhead.com/forever/npc=270513/spellweaver-thaldris
             [npcKeys.name] = "Spellweaver Thaldris",
@@ -14387,6 +14635,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{65.4, 89.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 4603; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [270570] = { -- Justine Kai : https://wowhead.com/forever/npc=270570/justine-kai
             [npcKeys.name] = "Justine Kai",
@@ -14478,6 +14727,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Qujo",
             [npcKeys.spawns] = {[47] = {{77.8, 78}}},
             [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [270807] = { -- Hexed Larva : https://wowhead.com/forever/npc=270807/hexed-larva
             [npcKeys.name] = "Hexed Larva",
@@ -14559,6 +14809,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Bartender",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [271006] = { -- Christina Von Stavern : https://wowhead.com/forever/npc=271006/christina-von-stavern
             [npcKeys.name] = "Christina Von Stavern",
@@ -14568,6 +14819,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Waitress",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [271007] = { -- Interrogator Ravenwing : https://wowhead.com/forever/npc=271007/interrogator-ravenwing
             [npcKeys.name] = "Interrogator Ravenwing",
@@ -14704,6 +14956,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Artisan Weapon Crafter",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 277104; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [271478] = { -- Elaria Anvilwind : https://wowhead.com/forever/npc=271478/elaria-anvilwind
             [npcKeys.name] = "Elaria Anvilwind",
@@ -14713,6 +14966,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Artisan Armorsmith",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 277080; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [271480] = { -- Taliaa Brightsky : https://wowhead.com/forever/npc=271480/taliaa-brightsky
             [npcKeys.name] = "Taliaa Brightsky",
@@ -14722,6 +14976,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Artisan Clothier",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 273812; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [271481] = { -- Captive Fire Elemental : https://wowhead.com/forever/npc=271481/captive-fire-elemental
             [npcKeys.name] = "Captive Fire Elemental",
@@ -14736,6 +14991,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Artisan Leather Goods",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 277086; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [271486] = { -- Wendigo Shaman : https://wowhead.com/forever/npc=271486/wendigo-shaman
             [npcKeys.name] = "Wendigo Shaman",
@@ -15079,6 +15335,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{57.8, 52}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 277056; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [272046] = { -- Witchmother Arysa : https://wowhead.com/forever/npc=272046/witchmother-arysa
             [npcKeys.name] = "Witchmother Arysa",
@@ -15332,6 +15589,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Reagent Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 5565; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [272450] = { -- Ol' Sandy : https://wowhead.com/forever/npc=272450/ol-sandy
             [npcKeys.name] = "Ol' Sandy",
@@ -15444,6 +15702,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Cooking Supplier",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [272690] = { -- Tavern Regular : https://wowhead.com/forever/npc=272690/tavern-regular
             [npcKeys.name] = "Tavern Regular",
@@ -16330,6 +16589,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275212] = { -- Teller Hanners : https://wowhead.com/forever/npc=275212/teller-hanners
             [npcKeys.name] = "Teller Hanners",
@@ -16339,22 +16599,26 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275214] = { -- Teller Althiellis : https://wowhead.com/forever/npc=275214/teller-althiellis
             [npcKeys.name] = "Teller Althiellis",
             [npcKeys.spawns] = {[36] = {{22.2, 65.4}, {22.4, 65.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275216] = { -- Paymaster Alstein : https://wowhead.com/forever/npc=275216/paymaster-alstein
             [npcKeys.name] = "Paymaster Alstein",
             [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275240] = { -- Teller Almeida : https://wowhead.com/forever/npc=275240/teller-almeida
             [npcKeys.name] = "Teller Almeida",
             [npcKeys.spawns] = {[36] = {{11, 68.8}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275243] = { -- Teller Gee : https://wowhead.com/forever/npc=275243/teller-gee
             [npcKeys.name] = "Teller Gee",
@@ -16364,23 +16628,27 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275251] = { -- Paymaster Chang : https://wowhead.com/forever/npc=275251/paymaster-chang
             [npcKeys.name] = "Paymaster Chang",
             [npcKeys.spawns] = {[36] = {{10.8, 68}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275252] = { -- Paymaster Amadi : https://wowhead.com/forever/npc=275252/paymaster-amadi
             [npcKeys.name] = "Paymaster Amadi",
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275253] = { -- Teller Plushner : https://wowhead.com/forever/npc=275253/teller-plushner
             [npcKeys.name] = "Teller Plushner",
             [npcKeys.spawns] = {[36] = {{10.4, 69}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275258] = { -- KC Creature : https://wowhead.com/forever/npc=275258/kc-creature
             [npcKeys.name] = "KC Creature",
@@ -16430,6 +16698,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Herbalist",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [275322] = { -- Patricia Egan : https://wowhead.com/forever/npc=275322/patricia-egan
             [npcKeys.name] = "Patricia Egan",
@@ -16439,6 +16708,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Alchemist",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2259 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [275350] = { -- Timothy Jones : https://wowhead.com/forever/npc=275350/timothy-jones
             [npcKeys.name] = "Timothy Jones",
@@ -16531,6 +16801,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{12.6, 71}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.subName] = "Leather Armor Merchant",
+            [npcKeys.npcFlags] = 16384, -- Assumption: assumptions/npc_services.toml; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [275598] = { -- Valerie Langrom : https://wowhead.com/forever/npc=275598/valerie-langrom
             [npcKeys.name] = "Valerie Langrom",
@@ -16538,12 +16809,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Leather Armor Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 236; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [275603] = { -- Bragund Brightlink : https://wowhead.com/forever/npc=275603/bragund-brightlink
             [npcKeys.name] = "Bragund Brightlink",
             [npcKeys.spawns] = {[36] = {{12.4, 71}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.subName] = "Mail Armor Merchant",
+            [npcKeys.npcFlags] = 16384, -- Assumption: assumptions/npc_services.toml; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [275609] = { -- Elder Mossheart : https://wowhead.com/forever/npc=275609/elder-mossheart
             [npcKeys.name] = "Elder Mossheart",
@@ -16556,24 +16829,28 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{14.6, 70.8}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.subName] = "Axe & Polearm Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 853; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [275623] = { -- Valaden Silverblade : https://wowhead.com/forever/npc=275623/valaden-silverblade
             [npcKeys.name] = "Valaden Silverblade",
             [npcKeys.spawns] = {[36] = {{14.6, 71.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.subName] = "Sword Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 851; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [275625] = { -- Bartram Haller : https://wowhead.com/forever/npc=275625/bartram-haller
             [npcKeys.name] = "Bartram Haller",
             [npcKeys.spawns] = {[36] = {{14.6, 71.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.subName] = "Dagger & Fist Weapon Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2207; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [275626] = { -- Walther Whiteford : https://wowhead.com/forever/npc=275626/walther-whiteford
             [npcKeys.name] = "Walther Whiteford",
             [npcKeys.spawns] = {[36] = {{14.4, 71.4}, {14.4, 71.6}, {14.6, 71.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.subName] = "Mace Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 852; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [275657] = { -- Heglan Shadeeye : https://wowhead.com/forever/npc=275657/heglan-shadeeye
             [npcKeys.name] = "Heglan Shadeeye",
@@ -16726,6 +17003,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Blacksmith",
+            [npcKeys.npcFlags] = 16404, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2018 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 851; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [276078] = { -- Twilight Laborer : https://wowhead.com/forever/npc=276078/twilight-laborer
             [npcKeys.name] = "Twilight Laborer",
