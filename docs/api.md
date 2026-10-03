@@ -262,7 +262,30 @@ as read-only; do not add, replace, or renumber entries from a consumer.
 
 QuestieDB owns the IDs, including the fake IDs used to distinguish visibility conditions that
 Blizzard's reused phase IDs cannot express. Questie owns the quest-state checks that decide
-whether a spawn is visible. Other properties of `Enum` remain internal.
+whether a spawn is visible. Only the `Enum` properties documented here are public.
+
+### Race mask encoding
+
+`LibQuestieDB.Enum.raceMaskById` maps actual race IDs to `requiredRaces` masks in both
+Source and Baked modes, across all flavors. Treat the shared table as read-only.
+
+```lua
+local masks = LibQuestieDB.Enum.raceMaskById
+masks[1]    --> 1 (Human)
+masks[95]   --> 4294967296 (Alliance Skyborne, bit 32)
+masks[96]   --> 8589934592 (Horde Skyborne, bit 33)
+masks[999]  --> nil
+```
+
+The explicit inventory is IDs 1–11, 22, 24–26, 95 and 96. This describes encoding, not
+which races are playable in a flavor or which faction a consumer should select. Unknown
+IDs have no fallback; do not infer a mask from `raceID - 1`. Avoid 32-bit bit operations
+on the Skyborne masks. Existing entries retain the legacy Questie encoding; IDs 95/96
+use the bit positions from Forever `ChrRaces` build `1.60.1.69893`.
+
+Contract 3 guarantees this mapping. Consumers requiring it must call `RequireContract(3)`;
+older providers are rejected rather than falling back to a guessed bit position.
+`Enum.byExpansion` remains internal.
 
 ### Objective ordering hints
 
@@ -779,6 +802,10 @@ Contract 2 introduces CBOR scalar
 rows, CBOR table values, compressed CBOR ID headers, and compressed locale-and-type
 localization columns. These storage changes ship together and do not change the public read
 API, so `minSupportedContract` remains 1.
+
+Contract 3 adds the shared `Enum.raceMaskById` encoding table. It does not change storage or
+remove older interfaces: contracts 1 and 2 remain supported. A consumer requiring the table
+must request contract 3 so an older provider fails the version check before the lookup.
 
 The check is a **range**: `RequireContract(v)` passes for any
 `minSupportedContract <= v <= contractVersion`, so a consumer built against an older

@@ -958,12 +958,82 @@ suite("correction-enums", "shared", function()
     setfenv(assert(loadfile(path)), env)("QuestieDB", namespace)
   end
   equal(namespace.Enum, standalone, "TOC and standalone loading expose the same constants")
+  local expectedMasks = {
+    [1] = 1, [2] = 2, [3] = 4, [4] = 8, [5] = 16, [6] = 32,
+    [7] = 64, [8] = 128, [9] = 256, [10] = 512, [11] = 1024,
+    [22] = 2097152, [24] = 8388608, [25] = 16777216, [26] = 33554432,
+    [95] = 4294967296, [96] = 8589934592,
+  }
+  equal(standalone.raceMaskById, expectedMasks, "actual race IDs use explicit legacy and Forever encoding")
+  for _, id in ipairs({ 0, 12, 23, 27, 94, 97, 999 }) do
+    equal(standalone.raceMaskById[id], nil, "unknown race ID has no arithmetic fallback: " .. id)
+  end
+  local namedIds = {
+    HUMAN = 1, ORC = 2, DWARF = 3, NIGHT_ELF = 4, UNDEAD = 5, TAUREN = 6,
+    GNOME = 7, TROLL = 8, GOBLIN = 9, BLOOD_ELF = 10, DRAENEI = 11,
+    WORGEN = 22, PANDAREN = 24, PANDAREN_ALLIANCE = 25, PANDAREN_HORDE = 26,
+    SKYBORNE_ALLIANCE = 95, SKYBORNE_HORDE = 96,
+  }
+  for expansion, enums in pairs(standalone.byExpansion) do
+    for name, mask in pairs(enums.raceKeys) do
+      if namedIds[name] then
+        equal(mask, expectedMasks[namedIds[name]], expansion .. " preserves " .. name .. " encoding")
+      end
+    end
+  end
   equal(standalone.dropCorrectionKeys, { PSERVER = -2, WOWHEAD = -1 },
     "standalone loading includes the support drop sentinels")
   equal(standalone.byExpansion.Forever.raceKeys.ALL_ALLIANCE, 4294967373,
     "Forever race masks retain values beyond 32 bits")
   equal(standalone.waypointPresets.ALLIANCE_GUNSHIP[5042][1][1], { 61.79, 46.28 },
     "waypoint presets retain area, path, and coordinate nesting")
+
+  client.reset()
+  client.install({ expansion = "Forever" })
+  local source = emulator.loadAddon(config.addonName .. ".toc", config.addonName)
+  equal(source.Enum.raceMaskById, expectedMasks, "actual Source TOC exposes race encoding")
+  equal(source.contractVersion, 3, "race encoding is available under contract 3")
+  equal(source.RequireContract(3), true, "race encoding consumers are supported")
+  equal(source.RequireContract(1), true, "contract 1 consumers remain supported")
+  equal(source.RequireContract(2), true, "contract 2 consumers remain supported")
+  equal(source.RequireContract(4), false, "future consumer contracts are rejected")
+
+  -- Controlled rows exercise both real backends; no generated artifact or authored eligibility changes.
+  local fixture = dofile("tools/validation/storage-fixture.lua")
+  local field = source.Meta.Quest.keys.requiredRaces
+  local entities = { Quest = {}, Npc = {}, Object = {}, Item = {} }
+  local metadata = {
+    ["X-Flavor"] = "Forever",
+    ["X-Quest-IDS"] = encode.idList({ 1, 2, 3 }),
+    ["X-Npc-IDS"] = encode.idList({}),
+    ["X-Object-IDS"] = encode.idList({}),
+    ["X-Item-IDS"] = encode.idList({}),
+  }
+  local masks = source.Enum.raceMaskById
+  local values = { masks[95], masks[96], masks[95] + masks[96] }
+  local expected = { 4294967296, 8589934592, 12884901888 }
+  for id, value in ipairs(values) do
+    local row = { [field] = value }
+    entities.Quest[id] = row
+    metadata["X-Quest-" .. id .. "-S"] = encode.row(rowBuilder.build(source.Meta.Quest, row))
+  end
+  local sourceFixture = fixture.load("source", entities)
+  for id, value in ipairs(expected) do
+    equal(sourceFixture.Quest.requiredRaces(id), value, "Source retains high-bit race mask " .. id)
+  end
+
+  client.reset()
+  client.install({ expansion = "Forever" })
+  emulator.install(config.addonName, metadata)
+  local baked = {}
+  for _, path in ipairs(config.bakedFileList(config.flavorByName.Forever)) do
+    assert(loadfile(path))(config.addonName, baked)
+  end
+  equal(baked.Enum.raceMaskById, expectedMasks, "Baked load path exposes race encoding")
+  for id, value in ipairs(expected) do
+    equal(baked.Quest.requiredRaces(id), value, "in-memory Baked retains high-bit race mask " .. id)
+  end
+  client.reset()
 end)
 
 suite("corrections", "shared", function()
@@ -2815,7 +2885,8 @@ suite("contract-config", "shared", function()
         "invalid configuration explains the offending field")
     end
   end
-  local changed = source:gsub("config%.minSupportedContract = %d+", "config.minSupportedContract = 3", 1)
+  local changed = source:gsub("config%.minSupportedContract = %d+",
+    "config.minSupportedContract = " .. (config.contractVersion + 1), 1)
   local ok, message = pcall(assert(loadstring(changed)))
   equal(ok, false, "inverted supported contract range fails")
   check(tostring(message):find("minSupportedContract must not exceed contractVersion", 1, true) ~= nil,

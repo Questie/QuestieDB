@@ -4,8 +4,8 @@
 -- Last migration reference: Questie/Questie@454b9d072965ee8f1a881429260fcf1fac8d60f7.
 -- Source modules and extraction history are recorded in PROVENANCE.md.
 --
--- Shared tables are expansion-invariant; race/class masks and NPC flags live under
--- constants.byExpansion. Shared IDs may name categories that only occur in certain flavors.
+-- Shared tables are expansion-invariant, including raceMaskById encoding. Named race/class
+-- sets and NPC flags live under constants.byExpansion. IDs need not be playable in every flavor.
 
 local _, LibQuestieDB = ...
 

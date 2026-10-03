@@ -145,3 +145,13 @@ registrar.Set("Item", "relations", {
 local spawnOperation = LibQuestieDB.Enum.npcKeys.spawns_add
 ---@type integer
 local pathOperation = LibQuestieDB.Enum.objectKeys.waypoints_remove
+
+-- Race IDs are not bit indices, and an unknown ID has no encoding fallback.
+---@type integer?
+local skyborneMask = LibQuestieDB.Enum.raceMaskById[95]
+---@type integer?
+local unknownRaceMask = LibQuestieDB.Enum.raceMaskById[999]
+if skyborneMask then
+  ---@type integer
+  local combinedMask = skyborneMask + 1
+end

@@ -11,11 +11,11 @@ import time
 import unittest
 from unittest.mock import patch
 
-from convert import ConvertPoints, Input, ZONE_SYMBOLS_PATH, lua_value, prepare, round_coordinate
+from convert import ConvertPoints, Input, QUEST_RACE_MASKS, ZONE_SYMBOLS_PATH, lua_value, prepare, round_coordinate
 from coordinates import Transform
 from files import MANIFEST, TOOL, digest, install_outputs
 import files
-from rewrite import Coordinate, rewrite
+from rewrite import Coordinate, Tables, _lex, rewrite
 
 ROOT = Path(__file__).resolve().parents[2]
 FIXTURES = Path(__file__).with_name("fixtures")
@@ -30,6 +30,16 @@ def outputs_with_manifest(values):
 
 
 class QuestRacePolicyTests(unittest.TestCase):
+    def test_faction_expansion_matches_provider_race_encoding(self):
+        source = (ROOT / "src/corrections/enum/expansions.lua").read_text(encoding="utf-8")
+        parsed = Tables(source, _lex(source))
+        fields = parsed.fields(parsed.assigned("constants.raceMaskById"))
+        masks = {parsed.integer(field.key): parsed.integer(field.value) for field in fields}
+        self.assertEqual(masks[95], 4294967296)
+        self.assertEqual(masks[96], 8589934592)
+        # Conversion widens only the two complete Era faction masks, not race subsets.
+        self.assertEqual(QUEST_RACE_MASKS, {77: 77 + masks[95], 178: 178 + masks[96]})
+
     def test_prepare_expands_raw_masks_but_preserves_symbolic_corrections(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
