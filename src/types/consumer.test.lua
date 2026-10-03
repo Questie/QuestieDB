@@ -145,3 +145,15 @@ registrar.Set("Item", "relations", {
 local spawnOperation = LibQuestieDB.Enum.npcKeys.spawns_add
 ---@type integer
 local pathOperation = LibQuestieDB.Enum.objectKeys.waypoints_remove
+
+-- Race-map reads are typed as nullable integers.
+---@type integer?
+local skyborneMask = LibQuestieDB.Enum.raceMaskById[95]
+
+-- Consumers use the provider's active faction membership rather than selecting a flavor.
+---@type QuestieDBFactionRaceMasks
+local factionRaceMasks = LibQuestieDB.Enum.factionRaceMasks
+---@type integer
+local allianceRaceMask = factionRaceMasks.Alliance
+---@type integer
+local hordeRaceMask = factionRaceMasks.Horde

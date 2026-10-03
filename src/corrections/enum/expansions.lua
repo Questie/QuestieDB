@@ -1,8 +1,43 @@
 -- Correction constants. Source origins and extraction history: PROVENANCE.md.
--- Expansion-dependent values have no top-level fallback; callers must select an expansion.
+-- Named sets live under byExpansion; src/api.lua publishes faction masks for the active flavor.
 
 local _, LibQuestieDB = ...
 local constants = LibQuestieDB.Enum
+
+-- Actual race IDs to single-bit requiredRaces mask values, not bit indices or a per-flavor playability list.
+-- Legacy entries retain Questie's encoding. Forever ChrRaces build 1.60.1.69893
+-- assigns IDs 95/96 to bits 32/33, not raceID - 1. Unknown IDs stay absent.
+-- Shared with consumers; read-only by contract.
+constants.raceMaskById = {
+  [1] = 1, -- HUMAN
+  [2] = 2, -- ORC
+  [3] = 4, -- DWARF
+  [4] = 8, -- NIGHT_ELF
+  [5] = 16, -- UNDEAD
+  [6] = 32, -- TAUREN
+  [7] = 64, -- GNOME
+  [8] = 128, -- TROLL
+  [9] = 256, -- GOBLIN
+  [10] = 512, -- BLOOD_ELF
+  [11] = 1024, -- DRAENEI
+  [22] = 2097152, -- WORGEN
+  [24] = 8388608, -- PANDAREN
+  [25] = 16777216, -- PANDAREN_ALLIANCE
+  [26] = 33554432, -- PANDAREN_HORDE
+  [95] = 4294967296, -- SKYBORNE_ALLIANCE
+  [96] = 8589934592, -- SKYBORNE_HORDE
+}
+local raceMaskById = constants.raceMaskById
+
+-- Build faction masks once from explicit membership, not every named race in a flavor's raceKeys.
+-- Adding distinct bits avoids truncating Forever's bits 32/33 through the client's 32-bit bit library.
+-- Neutral Pandaren are excluded.
+local classicAlliance = raceMaskById[1] + raceMaskById[3] + raceMaskById[4] + raceMaskById[7]
+local classicHorde = raceMaskById[2] + raceMaskById[5] + raceMaskById[6] + raceMaskById[8]
+local tbcAlliance = classicAlliance + raceMaskById[11]
+local tbcHorde = classicHorde + raceMaskById[10]
+local cataAlliance = tbcAlliance + raceMaskById[22]
+local cataHorde = tbcHorde + raceMaskById[9]
 
 constants.byExpansion = {
   Classic = {
@@ -41,23 +76,23 @@ constants.byExpansion = {
     },
     raceKeys = {
       NONE = 0,
-      HUMAN = 1,
-      ORC = 2,
-      DWARF = 4,
-      NIGHT_ELF = 8,
-      UNDEAD = 16,
-      TAUREN = 32,
-      GNOME = 64,
-      ALL_ALLIANCE = 77,
-      TROLL = 128,
-      ALL_HORDE = 178,
-      GOBLIN = 256,
-      BLOOD_ELF = 512,
-      DRAENEI = 1024,
-      WORGEN = 2097152,
-      PANDAREN = 8388608,
-      PANDAREN_ALLIANCE = 16777216,
-      PANDAREN_HORDE = 33554432,
+      HUMAN = raceMaskById[1],
+      ORC = raceMaskById[2],
+      DWARF = raceMaskById[3],
+      NIGHT_ELF = raceMaskById[4],
+      UNDEAD = raceMaskById[5],
+      TAUREN = raceMaskById[6],
+      GNOME = raceMaskById[7],
+      ALL_ALLIANCE = classicAlliance,
+      TROLL = raceMaskById[8],
+      ALL_HORDE = classicHorde,
+      GOBLIN = raceMaskById[9],
+      BLOOD_ELF = raceMaskById[10],
+      DRAENEI = raceMaskById[11],
+      WORGEN = raceMaskById[22],
+      PANDAREN = raceMaskById[24],
+      PANDAREN_ALLIANCE = raceMaskById[25],
+      PANDAREN_HORDE = raceMaskById[26],
     },
   },
 
@@ -97,23 +132,23 @@ constants.byExpansion = {
     },
     raceKeys = {
       NONE = 0,
-      HUMAN = 1,
-      ORC = 2,
-      DWARF = 4,
-      NIGHT_ELF = 8,
-      UNDEAD = 16,
-      TAUREN = 32,
-      GNOME = 64,
-      TROLL = 128,
-      GOBLIN = 256,
-      BLOOD_ELF = 512,
-      ALL_HORDE = 690,
-      DRAENEI = 1024,
-      ALL_ALLIANCE = 1101,
-      WORGEN = 2097152,
-      PANDAREN = 8388608,
-      PANDAREN_ALLIANCE = 16777216,
-      PANDAREN_HORDE = 33554432,
+      HUMAN = raceMaskById[1],
+      ORC = raceMaskById[2],
+      DWARF = raceMaskById[3],
+      NIGHT_ELF = raceMaskById[4],
+      UNDEAD = raceMaskById[5],
+      TAUREN = raceMaskById[6],
+      GNOME = raceMaskById[7],
+      TROLL = raceMaskById[8],
+      GOBLIN = raceMaskById[9],
+      BLOOD_ELF = raceMaskById[10],
+      ALL_HORDE = tbcHorde,
+      DRAENEI = raceMaskById[11],
+      ALL_ALLIANCE = tbcAlliance,
+      WORGEN = raceMaskById[22],
+      PANDAREN = raceMaskById[24],
+      PANDAREN_ALLIANCE = raceMaskById[25],
+      PANDAREN_HORDE = raceMaskById[26],
     },
   },
 
@@ -154,23 +189,23 @@ constants.byExpansion = {
     },
     raceKeys = {
       NONE = 0,
-      HUMAN = 1,
-      ORC = 2,
-      DWARF = 4,
-      NIGHT_ELF = 8,
-      UNDEAD = 16,
-      TAUREN = 32,
-      GNOME = 64,
-      TROLL = 128,
-      GOBLIN = 256,
-      BLOOD_ELF = 512,
-      ALL_HORDE = 690,
-      DRAENEI = 1024,
-      ALL_ALLIANCE = 1101,
-      WORGEN = 2097152,
-      PANDAREN = 8388608,
-      PANDAREN_ALLIANCE = 16777216,
-      PANDAREN_HORDE = 33554432,
+      HUMAN = raceMaskById[1],
+      ORC = raceMaskById[2],
+      DWARF = raceMaskById[3],
+      NIGHT_ELF = raceMaskById[4],
+      UNDEAD = raceMaskById[5],
+      TAUREN = raceMaskById[6],
+      GNOME = raceMaskById[7],
+      TROLL = raceMaskById[8],
+      GOBLIN = raceMaskById[9],
+      BLOOD_ELF = raceMaskById[10],
+      ALL_HORDE = tbcHorde,
+      DRAENEI = raceMaskById[11],
+      ALL_ALLIANCE = tbcAlliance,
+      WORGEN = raceMaskById[22],
+      PANDAREN = raceMaskById[24],
+      PANDAREN_ALLIANCE = raceMaskById[25],
+      PANDAREN_HORDE = raceMaskById[26],
     },
   },
 
@@ -213,23 +248,23 @@ constants.byExpansion = {
     },
     raceKeys = {
       NONE = 0,
-      HUMAN = 1,
-      ORC = 2,
-      DWARF = 4,
-      NIGHT_ELF = 8,
-      UNDEAD = 16,
-      TAUREN = 32,
-      GNOME = 64,
-      TROLL = 128,
-      GOBLIN = 256,
-      BLOOD_ELF = 512,
-      ALL_HORDE = 946,
-      DRAENEI = 1024,
-      WORGEN = 2097152,
-      ALL_ALLIANCE = 2098253,
-      PANDAREN = 8388608,
-      PANDAREN_ALLIANCE = 16777216,
-      PANDAREN_HORDE = 33554432,
+      HUMAN = raceMaskById[1],
+      ORC = raceMaskById[2],
+      DWARF = raceMaskById[3],
+      NIGHT_ELF = raceMaskById[4],
+      UNDEAD = raceMaskById[5],
+      TAUREN = raceMaskById[6],
+      GNOME = raceMaskById[7],
+      TROLL = raceMaskById[8],
+      GOBLIN = raceMaskById[9],
+      BLOOD_ELF = raceMaskById[10],
+      ALL_HORDE = cataHorde,
+      DRAENEI = raceMaskById[11],
+      WORGEN = raceMaskById[22],
+      ALL_ALLIANCE = cataAlliance,
+      PANDAREN = raceMaskById[24],
+      PANDAREN_ALLIANCE = raceMaskById[25],
+      PANDAREN_HORDE = raceMaskById[26],
     },
   },
 
@@ -272,23 +307,23 @@ constants.byExpansion = {
     },
     raceKeys = {
       NONE = 0,
-      HUMAN = 1,
-      ORC = 2,
-      DWARF = 4,
-      NIGHT_ELF = 8,
-      UNDEAD = 16,
-      TAUREN = 32,
-      GNOME = 64,
-      TROLL = 128,
-      GOBLIN = 256,
-      BLOOD_ELF = 512,
-      DRAENEI = 1024,
-      WORGEN = 2097152,
-      PANDAREN = 8388608,
-      PANDAREN_ALLIANCE = 16777216,
-      ALL_ALLIANCE = 18875469,
-      PANDAREN_HORDE = 33554432,
-      ALL_HORDE = 33555378,
+      HUMAN = raceMaskById[1],
+      ORC = raceMaskById[2],
+      DWARF = raceMaskById[3],
+      NIGHT_ELF = raceMaskById[4],
+      UNDEAD = raceMaskById[5],
+      TAUREN = raceMaskById[6],
+      GNOME = raceMaskById[7],
+      TROLL = raceMaskById[8],
+      GOBLIN = raceMaskById[9],
+      BLOOD_ELF = raceMaskById[10],
+      DRAENEI = raceMaskById[11],
+      WORGEN = raceMaskById[22],
+      PANDAREN = raceMaskById[24],
+      PANDAREN_ALLIANCE = raceMaskById[25],
+      ALL_ALLIANCE = cataAlliance + raceMaskById[25],
+      PANDAREN_HORDE = raceMaskById[26],
+      ALL_HORDE = cataHorde + raceMaskById[26],
     },
   },
 
@@ -296,19 +331,19 @@ constants.byExpansion = {
   Forever = {
     raceKeys = {
       NONE = 0,
-      HUMAN = 1,
-      ORC = 2,
-      DWARF = 4,
-      NIGHT_ELF = 8,
-      UNDEAD = 16,
-      TAUREN = 32,
-      GNOME = 64,
-      TROLL = 128,
-      GOBLIN = 256,
-      SKYBORNE_ALLIANCE = 4294967296,
-      ALL_ALLIANCE = 4294967373,
-      SKYBORNE_HORDE = 8589934592,
-      ALL_HORDE = 8589934770,
+      HUMAN = raceMaskById[1],
+      ORC = raceMaskById[2],
+      DWARF = raceMaskById[3],
+      NIGHT_ELF = raceMaskById[4],
+      UNDEAD = raceMaskById[5],
+      TAUREN = raceMaskById[6],
+      GNOME = raceMaskById[7],
+      TROLL = raceMaskById[8],
+      GOBLIN = raceMaskById[9],
+      SKYBORNE_ALLIANCE = raceMaskById[95],
+      ALL_ALLIANCE = classicAlliance + raceMaskById[95],
+      SKYBORNE_HORDE = raceMaskById[96],
+      ALL_HORDE = classicHorde + raceMaskById[96],
     },
   },
 }

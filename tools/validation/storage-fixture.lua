@@ -15,9 +15,11 @@ local function copy(value)
   return result
 end
 
+---Loads schema and enums only; fixture.load selects the flavor before src/api.lua publishes faction masks.
 function fixture.namespace()
   local db = { Meta = {} }
   for _, path in ipairs(config.runtimeFiles.head) do assert(loadfile(path))("QuestieDB", db) end
+  for _, path in ipairs(config.enumFiles) do assert(loadfile(path))("QuestieDB", db) end
   return db
 end
 

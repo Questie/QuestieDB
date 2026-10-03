@@ -26,7 +26,7 @@
 ## Category-zhCN: 任务
 ## Category-zhTW: 任務
 ## IconTexture: Interface\AddOns\QuestieDB\icons\QuestieTDB_64x64.png
-## X-Contract-Version: 2
+## X-Contract-Version: 3
 ## X-Mode: source
 
 # =============================================================================
