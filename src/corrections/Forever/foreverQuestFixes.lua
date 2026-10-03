@@ -30,6 +30,9 @@ function ForeverQuestFixes:Load()
     local rankKeys = QuestieProfessions.rankNames
 
     return {
+        [940] = { -- Teldrassil
+            [questKeys.startedBy_add] = {nil,{673378}},
+        },
         [1516] = { -- Call of Earth
             [questKeys.preQuestSingle] = {1516,1519,92466},
             [questKeys.exclusiveTo] = {1519,92466},
