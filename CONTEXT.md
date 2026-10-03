@@ -194,7 +194,7 @@ _Avoid_: Localization DB, translation patch
 
 **Name index**:
 The per-type reverse of the `name` getter — current composed name to ascending entity ids —
-built lazily from reads, dropped with the Decoded field cache and rebuilt rather than patched
+built lazily from reads and rebuilt rather than patched when names or membership may change
 (ADR 0008). Exists for a consumer handed a name and no id, such as a hovered world object.
 _Avoid_: Reverse lookup, name map, objectNameLookup
 

@@ -86,8 +86,8 @@ registry.debug = false
 
 --- datatype -> true while a Dynamic Correction change awaits recomposition. An owner's apply,
 --- a withdrawal, and `Set` mark it; the next flush consumes it — so only the touched datatypes
---- rebuild, and only their read caches and Name indexes drop. Registration alone marks
---- nothing: an unapplied entry must not make another owner's write republish its datatype.
+--- rebuild and drop their read caches. Their Name indexes survive unrelated field changes.
+--- Registration alone marks nothing: an unapplied entry must not republish its datatype.
 registry.dirty = {}
 
 local registrationSequence = 0
@@ -514,8 +514,10 @@ end
 --- Sentinel for "the overlay sets this field to nil", which a plain nil cannot express.
 registry.NIL = setmetatable({}, { __tostring = function() return "<overlay nil>" end })
 
---- Install the freshly composed datatypes onto their Entity globals, dropping exactly those
---- entities' caches, ID maps, and Name indexes. Untouched datatypes keep theirs.
+---Publish only the changed datatypes, clearing their fields and ID maps. Entity globals
+---preserve their Name indexes unless corrected names or composed membership may have changed.
+---@param datatypes table<string, true> Datatypes to publish.
+---@return nil
 local function publish(datatypes)
   local config = LibQuestieDB.config
   for _, entityType in ipairs(config.entityTypes) do

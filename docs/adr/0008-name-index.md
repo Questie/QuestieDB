@@ -19,7 +19,24 @@ also cannot be kept correct from the consumer side alone: `ApplyRegisteredCorrec
 third-party owner swaps the composed view after the consumer has built its map, and nothing
 tells it.
 
-Alternatives weighed:
+### Hardcore login timeout
+
+A subsequent user report from a deDE Hardcore client hit "script ran too long" during login.
+The reported stack led from `QuestieInit.lua:191` into `Object.BuildNameIndex`, then through
+`src/read/shared.lua` scalar resolution to `src/l10n/overlay.lua:324` and its position lookup
+at line 300. These line numbers identify the reported version, not a stable code location.
+Questie's initialization already ran in a coroutine, but the full Object Name-index build
+never yielded. The localization lookup was where execution was interrupted, not evidence of
+an infinite loop or a Hardcore-specific code path.
+
+The yielding builder in Decision 4 splits that login scan across coroutine resumes. The narrower
+invalidation in Decision 3 keeps unrelated Object field changes, such as spawn-only updates,
+from discarding the warmed index and making the next tooltip lookup perform another full
+synchronous scan. That follow-up addresses a remaining timeout risk; the report itself was
+from initialization, not a demonstrated post-login invalidation. Both changes apply to every
+entity type and client flavor, not just Hardcore.
+
+### Original alternatives
 
 1. A consumer-owned rebuild after init plus a new `Corrections.onApplied` hook. Correct only
    while every consumer remembers every event, and it keeps entity truth on the wrong side of
@@ -59,10 +76,16 @@ absent — because the index is built from those reads and from nothing else.
 
 ### 3. Rebuilt, never patched
 
-The index is built lazily on the first lookup and dropped by `InvalidateCache` — every apply,
-every locale change, every explicit invalidation — then rebuilt from scratch on the next lookup.
-This mirrors recomposition's idempotent-by-construction rule and makes a stale name or a
-duplicate id impossible rather than merely tested for. No incremental maintenance, no hook.
+The index is built lazily on the first lookup and rebuilt from scratch when invalidated.
+Correction publication drops the index only when a corrected name slot changes or composed
+membership may have changed. Unrelated fields still clear the decoded read cache but retain the
+index, including a suspended build's progress. Locale changes, active translation writes, and
+explicit `InvalidateCache` still drop it. No incremental maintenance or consumer hook is needed.
+
+The comparison visits old/new Correction rows rather than scanning base names. Changed name
+slots conservatively invalidate even if localization or an equal base name masks the change.
+Base-ID membership uses the backend map retained from enumeration; before the first enumeration,
+added/removed overlay rows conservatively invalidate without materializing Source data.
 
 ### 4. The consumer owns the timing
 
@@ -74,6 +97,16 @@ a debug setting warms in its own init and on toggle, where a stall is invisible.
 invalidation the next `IdsByName` call pays the pass again; a consumer that finds that hitch
 unacceptable re-warms on `l10n.onLocaleChanged` and after its own apply. Nothing more is built
 until someone needs it.
+
+`BuildNameIndexAsync(iterationsPerCycle)` yields internally between ID batches, defaulting to
+250 IDs per cycle. The optional batch size must be a positive integer. It must run in a
+caller-owned coroutine and returns only after a complete index is ready; QuestieDB does not
+create a scheduler. Both entry points share the same builder. Name-index invalidation while
+suspended restarts the pass over the current name view, and partial buckets are never published.
+A competing complete build is reused on resume.
+The synchronous `BuildNameIndex` and `IdsByName` behavior remains unchanged. Questie's login
+coroutine uses the yielding entry point because a full uninterrupted Object scan can exhaust
+the client's script budget, including on a deDE Hardcore login.
 
 ### 5. Not stored in the artifact
 
@@ -90,7 +123,12 @@ version stays at 1 (ADR 0007 D4: nothing has shipped).
 
 ## Consequences
 
-- Questie's boot no longer scans objects; the debug setting pays for its own index.
+- Questie warms the Object Name index during its yielding login coroutine. Normal Object
+  tooltips need database-wide name uniqueness even when the Object ID setting is disabled.
+- Yielding login builds and preserving indexes across unrelated field changes address the
+  reported deDE Hardcore "script ran too long" problem. Offline Source/Baked tests cover batch
+  limits, preserved buckets, field refresh, invalidation, and suspended-build continuation or
+  restart. Confirmation of the timeout fix in the live Hardcore client remains pending.
 - `IdsByName` is a public read form: the equivalence sweep compares every bucket between
   Source and Baked modes, and the unit suite proves the index equals the reads, follows
   Corrections and locale, and drops on invalidation.

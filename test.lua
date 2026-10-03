@@ -2223,6 +2223,10 @@ end)
 -- Name index (ADR 0008)
 --------------------------------------------------------------------------------------------
 
+suite("name-index-async", "shared", function()
+  dofile("tools/validation/name-index-async.test.lua")(check, equal)
+end)
+
 suite("name-index", "Vanilla", function()
   local tocPath = config.tocPath(config.flavorByName.Vanilla)
   if not lib.fileExists(tocPath) then
@@ -2246,6 +2250,7 @@ suite("name-index", "Vanilla", function()
     local entity = Lib[entityType.name]
     check(type(entity.IdsByName) == "function", entityType.name .. ".IdsByName")
     check(type(entity.BuildNameIndex) == "function", entityType.name .. ".BuildNameIndex")
+    check(type(entity.BuildNameIndexAsync) == "function", entityType.name .. ".BuildNameIndexAsync")
   end
 
   -- A lookup is exact, over the composed view, and never raises.
@@ -2420,6 +2425,7 @@ suite("lua-types", "shared", function()
     Exists = true,
     InvalidateCache = true,
     BuildNameIndex = true,
+    BuildNameIndexAsync = true,
     IdsByName = true,
   }
   local typeFiles = testFiles.list("src/types", false, { ".t.lua" })
@@ -2468,7 +2474,7 @@ suite("lua-types", "shared", function()
     equal(#duplicateFields, 0, entity.name .. " type has no duplicate getter declarations")
     for _, method in ipairs({
       "GetByIndex", "Get", "GetAll", "GetRaw", "GetAllIds", "Exists", "InvalidateCache",
-      "BuildNameIndex", "IdsByName",
+      "BuildNameIndex", "BuildNameIndexAsync", "IdsByName",
     }) do
       check(declared[method] == true,
         entity.name .. " type declares the common method " .. method)

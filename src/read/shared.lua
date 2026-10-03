@@ -171,10 +171,11 @@ function shared.CreateEntity(meta, backend)
   -- Composed ids: the union of backend ids and overlay-added ids (ADR 0003 D7). An entity a
   -- Dynamic Correction adds is readable, enumerable, and exists — all three or none. Built
   -- lazily, dropped whenever the overlay is replaced.
-  local unionList, unionMap
+  local unionList, unionMap, baseIdMap
 
   local function buildUnion()
     local list, map = backend.getAllIds()
+    baseIdMap = map
     local extra = false
     for id in pairs(overlay) do
       if map[id] ~= true then extra = true break end
@@ -194,16 +195,6 @@ function shared.CreateEntity(meta, backend)
       end
     end
     table.sort(unionList)
-  end
-
-  --- Swap in a freshly composed overlay and drop every cached value, because any of them could
-  --- have been decided by the layer being replaced. The composed id union is rebuilt too,
-  --- since the new overlay may add or withdraw entities.
-  function entity.SetOverlay(composed)
-    overlay = composed or {}
-    entity.overlay = overlay
-    unionList, unionMap = nil, nil
-    entity.InvalidateCache(nil)
   end
 
   --- Deep copy of a plain normalized value tree. Correction and Source values carry no
@@ -460,37 +451,66 @@ function shared.CreateEntity(meta, backend)
   -- same `get` every read goes through, so it answers exactly what `Entity.name(id)` would —
   -- the active locale, the English fallback, and any overlay-added entity.
   --
-  -- Built lazily on the first lookup, or explicitly through `BuildNameIndex` so a consumer
-  -- chooses when to pay for the full pass. Never patched: any invalidation drops it and the
-  -- next lookup rebuilds from scratch, which is what makes a withdrawn Correction or an old
-  -- locale unable to leave a stale name or a duplicate id behind. Only a type with a `name`
-  -- field carries one — today all four do.
+  -- Built lazily on the first lookup, or explicitly through `BuildNameIndex` or
+  -- `BuildNameIndexAsync` so a consumer chooses when to pay for the full pass. Never patched:
+  -- name or membership changes drop it, while unrelated Correction fields leave it intact.
+  -- Locale changes and explicit invalidation still force a rebuild. Only a type with a `name`
+  -- field carries one, which today includes all four.
 
   local nameFieldIndex = keys.name
   local nameIndex
+  local nameIndexRevision = 0
 
   if nameFieldIndex then
-    --- Build the index now, or do nothing if it already exists. A full pass over every
-    --- entity's name: one cold read per id — 23 ms for Vanilla's 6,666 objects in a live
-    --- client (docs/client-metadata-probes.md §9) — and it warms the name field cache for
-    --- every id. Call it where a stall is invisible, never on a hover path.
-    function entity.BuildNameIndex()
-      if nameIndex then return end
-      local index = {}
-      local ids = entity.GetAllIds()
-      for i = 1, #ids do
-        local id = ids[i]
-        local name = get(id, nameFieldIndex)
-        if type(name) == "string" then
-          local bucket = index[name]
-          if bucket then
-            bucket[#bucket + 1] = id
-          else
-            index[name] = { id }
+    ---Keep unfinished buckets private; invalidation during a yield restarts the full pass.
+    ---@param iterationsPerCycle integer? IDs between coroutine yields; nil stays synchronous.
+    ---@return nil
+    local function buildNameIndex(iterationsPerCycle)
+      while not nameIndex do
+        local revision = nameIndexRevision
+        local index = {}
+        local ids = entity.GetAllIds()
+        for i = 1, #ids do
+          local id = ids[i]
+          local name = get(id, nameFieldIndex)
+          if type(name) == "string" then
+            local bucket = index[name]
+            if bucket then
+              bucket[#bucket + 1] = id
+            else
+              index[name] = { id }
+            end
+          end
+          if iterationsPerCycle and i % iterationsPerCycle == 0 and i < #ids then
+            coroutine.yield()
+            -- A lookup or another builder may have completed the current index while suspended.
+            if nameIndex then return end
+            if revision ~= nameIndexRevision then break end
           end
         end
+        if revision == nameIndexRevision then nameIndex = index end
       end
-      nameIndex = index
+    end
+
+    ---Build synchronously, or do nothing if the index already exists. Warms every name read.
+    ---Use BuildNameIndexAsync in a coroutine to split the full pass across frames.
+    ---@return nil
+    function entity.BuildNameIndex()
+      buildNameIndex(nil)
+    end
+
+    ---Yield between batches, returning only when the complete index is ready.
+    ---Must run inside a caller-owned coroutine; creates no timers or background work.
+    ---@async
+    ---@param iterationsPerCycle integer? Positive IDs per batch; defaults to 250.
+    ---@return nil
+    function entity.BuildNameIndexAsync(iterationsPerCycle)
+      if iterationsPerCycle == nil then iterationsPerCycle = 250 end
+      if type(iterationsPerCycle) ~= "number" or iterationsPerCycle < 1 or
+          iterationsPerCycle == math.huge or iterationsPerCycle % 1 ~= 0 then
+        error("BuildNameIndexAsync: iterationsPerCycle must be a positive integer", 2)
+      end
+      buildNameIndex(iterationsPerCycle)
     end
 
     --- Every composed id whose current name equals `name` exactly, ascending, or nil when
@@ -503,19 +523,64 @@ function shared.CreateEntity(meta, backend)
     end
   end
 
-  --- Drop cached values so the next read recomposes. Called when the overlay changes, and
-  --- available to a consumer that registers Corrections late.
-  ---
-  --- `get` closes over `cache`, so it is cleared in place rather than rebound. The Name index
-  --- goes with it either way: a single entity's invalidation can change a name too, and the
-  --- index is rebuilt rather than patched.
-  function entity.InvalidateCache(id)
-    nameIndex = nil
+  ---Compare only Correction rows, without reading or decoding every base entity name.
+  ---Before the first enumeration, conservatively treat added/removed rows as membership changes
+  ---instead of materializing Source data just to check whether those IDs exist in the backend.
+  ---@param composed table Replacement Correction Overlay.
+  ---@return boolean changed Whether names or composed membership may have changed.
+  local function overlayChangesNames(composed)
+    if not nameFieldIndex then return false end
+    for id, previous in pairs(overlay) do
+      local replacement = composed[id]
+      if previous[nameFieldIndex] ~= (replacement and replacement[nameFieldIndex]) then return true end
+      if not replacement and (not baseIdMap or baseIdMap[id] ~= true) then return true end
+    end
+    for id, replacement in pairs(composed) do
+      if not overlay[id] and (replacement[nameFieldIndex] ~= nil or not baseIdMap or baseIdMap[id] ~= true) then
+        return true
+      end
+    end
+    return false
+  end
+
+  ---Clear decoded fields independently of the Name index; `get` retains this cache table.
+  ---@param id number? Nil clears every entity's fields.
+  ---@return nil
+  local function clearFieldCache(id)
     if id == nil then
       for key in pairs(cache) do cache[key] = nil end
-      return
+    else
+      cache[id] = nil
     end
-    cache[id] = nil
+  end
+
+  ---Drop complete and suspended Name indexes so the next build uses the current name view.
+  ---@return nil
+  local function invalidateNameIndex()
+    nameIndexRevision = nameIndexRevision + 1
+    nameIndex = nil
+  end
+
+  ---Replace Correction fields and enumeration; retain the Name index for unrelated field changes.
+  ---An unchanged name view also lets a suspended async pass continue without restarting.
+  ---@param composed table? Replacement Correction Overlay; nil withdraws it.
+  ---@return nil
+  function entity.SetOverlay(composed)
+    composed = composed or {}
+    if overlayChangesNames(composed) then invalidateNameIndex() end
+    overlay = composed
+    entity.overlay = overlay
+    unionList, unionMap = nil, nil
+    clearFieldCache(nil)
+  end
+
+  ---Force cached fields and the Name index to rebuild, even for a single entity.
+  ---Locale/provider changes and explicit invalidation cannot guarantee an unchanged name view.
+  ---@param id number? Nil clears every entity's fields.
+  ---@return nil
+  function entity.InvalidateCache(id)
+    invalidateNameIndex()
+    clearFieldCache(id)
   end
 
   -- Named getters, generated from the schema. `QuestDB.name(2)` reads field 1 of quest 2.
