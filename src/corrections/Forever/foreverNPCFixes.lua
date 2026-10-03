@@ -17,6 +17,12 @@ function ForeverNpcFixes:Load()
     local phases = Phasing.phases
 
     return {
+        [4949] = { -- Thrall
+            [npcKeys.questEnds_add] = {93739},
+        },
+        [14242] = { -- Sulhasa
+            [npcKeys.name] = "Sulhasa",
+        },
         [251115] = { -- Urs'anah
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{35.65,26.07}}},
         },

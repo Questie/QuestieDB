@@ -77,10 +77,16 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{56.9,29.4},{56.9,33.6},{57.0,33.4},{57.6,31.0},{57.6,32.1},{57.9,26.9},{58.4,32.7},{58.8,31.1},{59.1,32.3},{59.1,34.7},{59.2,33.8}}}, -- WIP
             [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
+        [660739] = { -- Ritual Fire
+            [objectKeys.questEnds_add] = {95805},
+        },
         [660848] = { -- Kuramaa's Stump
             [objectKeys.name] = "Kuramaa's Stump",
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.35,68.82}}},
             [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+        },
+        [673378] = { -- Oracle Tree Bark
+            [objectKeys.questStarts_add] = {940},
         },
         -- For Forever fixes 450001-459999
         [450001] = { -- Elemental Convergence
