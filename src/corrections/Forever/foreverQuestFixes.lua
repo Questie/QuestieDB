@@ -30,9 +30,41 @@ function ForeverQuestFixes:Load()
     local rankKeys = QuestieProfessions.rankNames
 
     return {
-        [92460] = { -- Coming of Age
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
-            --[questKeys.reputationReward] = {{factionIDs.WINDSHAPERS,25}}, for factionFixes
+        [6126] = { -- Lessons Anew
+            [questKeys.startedBy_add] = {{262560}},
+        },
+        [78124] = { -- Nar'thalas Almanac
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [78127] = { -- The Dalaran Digest
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [78142] = { -- Bewitchments and Glamours
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [78143] = { -- Secrets of the Dreamers
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [78145] = { -- Arcanic Systems Manual
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [78149] = { -- Fury of the Land
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [78261] = { -- The Horn of Xelthos
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [79091] = { -- Archmage Antonidas: The Unabridged Autobiography
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [79093] = { -- Rumi of Gnomeregan: The Collected Works
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [79094] = { -- The Lessons of Ta'zo
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [79097] = { -- Baxtan: On Destructive Magics
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92461] = { -- Harmony in Balance
             [questKeys.preQuestSingle] = {92460},
@@ -792,6 +824,9 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {92850},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.nextQuestInChain] = 92840,
+        },
+        [99267] = { -- An Unfortunate End
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
     }
 end
