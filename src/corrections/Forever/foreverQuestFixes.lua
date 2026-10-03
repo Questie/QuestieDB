@@ -74,6 +74,18 @@ function ForeverQuestFixes:Load()
         [79097] = { -- Baxtan: On Destructive Magics
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
+        [79948] = { -- Defensive Magics 101
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [81953] = { -- Stonewrought Design
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [81954] = { -- Venomous Journeys
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [81955] = { -- A Mind of Metal
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
         [92461] = { -- Harmony in Balance
             [questKeys.preQuestSingle] = {92460},
         },
@@ -693,6 +705,9 @@ function ForeverQuestFixes:Load()
             [questKeys.breadcrumbs] = {96638},
             [questKeys.objectives] = {nil,{{450003},{450003}}},
         },
+        [96395] = { -- An Ancient Grudge
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- not sure if horde can get this quest
+        },
         [96638] = { -- The Adventurer
             [questKeys.requiredLevel] = 4,
             [questKeys.preQuestSingle] = {92470},
@@ -824,6 +839,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
             [questKeys.requiredSpell] = -1230643, -- Enchanted Lute
             [questKeys.objectives] = {{{257020,nil,Questie.ICON_TYPE_EVENT}}},
+        },
+        [98372] = { -- An Unfortunate End
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98430] = { -- The Longwalkers
             [questKeys.triggerEnd] = {"Escort Perith Stormhoof out of Palemane Rock", {[zoneIDs.MULGORE] = {{37.19,64.62}}}},
