@@ -29,11 +29,17 @@ function ForeverNpcFixes:Load()
         [251166] = { -- Minor Manifestation of Earth
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{49.67,23.8}}},
         },
+        [251966] = { -- Commander Cyclas
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{50.39,56.96}}},
+        },
         [252476] = { -- Talaanis Shadowsong
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{66.17,76.51}}},
         },
         [252800] = { -- Aamelia Windfield
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{46.7,81.95}}},
+        },
+        [253622] = { -- Commander Haalien
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.53,36.32}}},
         },
         [253849] = { -- Ayessa Dawnsinger
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{74.05,52.63}}},
@@ -47,11 +53,22 @@ function ForeverNpcFixes:Load()
         [251404] = { -- Cirrusfly Queen
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{48.41,28.53}}},
         },
+        [251684] = { -- Strange Hermit
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{53.96,38.9}}},
+        },
+        [252666] = { -- Commander Belguilos
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.58,65.62}}},
+        },
+        [253847] = { -- Elaadrin Evengale
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{74.17,52.57}}},
+        },
         [254082] = { -- Aarnor Galestrike
             [npcKeys.questStarts] = {97243},
         },
+        [254589] = { -- Vulgara the Insatiable
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.66,52.8}}},
+        },
         [255013] = { -- DNT KILL CREDIT
-            [npcKeys.name] = "DNT KILL CREDIT",
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{56.16,60.59}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
@@ -60,6 +77,30 @@ function ForeverNpcFixes:Load()
         },
         [256935] = { -- Malduko Cloudcrush
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{36.05,33.53}}},
+        },
+        [258130] = { -- Jorel Windsinger
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.48,34.74}}},
+        },
+        [258134] = { -- Jorel Windsinger
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.96,34.95}}},
+        },
+        [258137] = { -- Telenos Leafwhisper
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.69,35.02}}},
+        },
+        [258138] = { -- Nayeela Snarlfang
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.52,34.89}}},
+        },
+        [258275] = { -- Neyasteel Mossmender
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.01,31.96}}},
+        },
+        [258277] = { -- Bryaes Galechaser
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.43,31.9}}},
+        },
+        [258288] = { -- Mithraless Sterngale
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.8,32.96}}},
+        },
+        [258289] = { -- Baeo Sharpstrike
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.92,33.55}}},
         },
         [259013] = { -- Resaan Nimbuswalker
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{57.05,29.35}}},

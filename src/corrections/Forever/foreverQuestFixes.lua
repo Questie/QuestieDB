@@ -30,6 +30,14 @@ function ForeverQuestFixes:Load()
     local rankKeys = QuestieProfessions.rankNames
 
     return {
+        [1516] = { -- Call of Earth
+            [questKeys.preQuestSingle] = {1516,1519,92466},
+            [questKeys.exclusiveTo] = {1519,92466},
+        },
+        [1519] = { -- Call of Earth
+            [questKeys.preQuestSingle] = {1516,1519,92466},
+            [questKeys.exclusiveTo] = {1516,92466},
+        },
         [6126] = { -- Lessons Anew
             [questKeys.startedBy_add] = {{262560}},
         },
@@ -90,11 +98,12 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredLevel] = 3,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.nextQuestInChain] = 92467,
+            [questKeys.exclusiveTo] = {1516,1519},
         },
         [92467] = { -- Call of Earth
             [questKeys.requiredLevel] = 3,
             [questKeys.requiredClasses] = classIDs.SHAMAN,
-            [questKeys.preQuestSingle] = {92466},
+            [questKeys.preQuestSingle] = {1516,1519,92466},
             [questKeys.nextQuestInChain] = 92468,
             [questKeys.sourceItemId] = 6635,
         },
@@ -201,7 +210,7 @@ function ForeverQuestFixes:Load()
         },
         [92579] = { -- To Valanaar
             [questKeys.requiredLevel] = 6,
-            [questKeys.preQuestSingle] = {92550},
+            [questKeys.preQuestGroup] = {92550,93927}, -- check if also 92551
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.nextQuestInChain] = 92700,
         },
@@ -310,7 +319,7 @@ function ForeverQuestFixes:Load()
         },
         [92701] = { -- To Valanaar
             [questKeys.requiredLevel] = 6,
-            [questKeys.preQuestSingle] = {92550},
+            [questKeys.preQuestGroup] = {92550,93927}, -- check if also 92551
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.nextQuestInChain] = 92699,
         },
@@ -535,7 +544,7 @@ function ForeverQuestFixes:Load()
         },
         [93948] = { -- Deliver the Signet
             [questKeys.requiredLevel] = 6,
-            [questKeys.preQuestSingle] = {92550},
+            [questKeys.preQuestGroup] = {92550,93927}, -- check if also 92551
             [questKeys.nextQuestInChain] = 93949,
         },
         [93949] = { -- Bugged
@@ -675,7 +684,7 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {93090},
             [questKeys.nextQuestInChain] = 95350,
         },
-        [95350] = { -- The Earthen Ring
+        [95350] = { -- Welcome to Azeroth
             [questKeys.preQuestSingle] = {95349},
             [questKeys.nextQuestInChain] = 93739,
         },
@@ -815,6 +824,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
             [questKeys.requiredSpell] = -1230643, -- Enchanted Lute
             [questKeys.objectives] = {{{257020,nil,Questie.ICON_TYPE_EVENT}}},
+        },
+        [98430] = { -- The Longwalkers
+            [questKeys.triggerEnd] = {"Escort Perith Stormhoof out of Palemane Rock", {[zoneIDs.MULGORE] = {{37.19,64.62}}}},
         },
         [98512] = { -- Al'Aketh Assassins
             [questKeys.requiredLevel] = 6,

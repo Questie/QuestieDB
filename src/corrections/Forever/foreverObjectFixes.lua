@@ -72,10 +72,8 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{36.63,59.11},{33.19,54.37},{33.99,55.29},{35.11,54.07},{35.79,55.33},{36.02,54.29},{36.75,54.67},{36.84,53.31},{36.82,52.45},{36.03,52},{36.5,50.88},{37.19,51.2},{37.84,51.04}}}, -- WIP
             [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
-        [623295] = { -- Abandonded Belongings
-            [objectKeys.name] = "Abandonded Belongings",
-            [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{56.9,29.4},{56.9,33.6},{57.0,33.4},{57.6,31.0},{57.6,32.1},{57.9,26.9},{58.4,32.7},{58.8,31.1},{59.1,32.3},{59.1,34.7},{59.2,33.8}}}, -- WIP
-            [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+        [623295] = { -- Abandoned Belongings
+            [objectKeys.name] = "Abandoned Belongings",
         },
         [660739] = { -- Ritual Fire
             [objectKeys.questEnds_add] = {95805},
