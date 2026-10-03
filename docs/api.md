@@ -636,9 +636,12 @@ invalidates only that entity type. Writes for inactive locales leave current cac
 Translation rows cannot create entities. They apply only while the entity exists in the
 composed entity database, including an entity added by a normal Dynamic Correction.
 
-QuestieDB uses this interface for Titan Reforged's 14 zhCN Quest rows. That set registers only
-when the addon loads for Wrath season 109. Other flavors and seasons do not register it; changing
-locale selects or hides it without changing the English Titan entity Corrections.
+QuestieDB uses this interface for Titan Reforged's zhCN rows across all four entity types — Quest,
+Npc, Item, and Object. The set covers entities the Baked Localization blocks cannot address (their
+IDs are absent from the base backend) and base entities Titan re-authors in place; its rows come
+from `l10n/wotlk/lookup*/zhCN.lua`. It registers only when the addon loads for Wrath season 109.
+Other flavors and seasons do not register it; changing locale selects or hides it without changing
+the English Titan entity Corrections.
 
 `extraObjectives` descriptions are different. Correction files author row slot `[3]` as an enUS
 localization key, and QuestieDB preserves that English string. The entity localization overlay
