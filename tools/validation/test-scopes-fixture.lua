@@ -105,6 +105,7 @@ local content, replaced = lib.readAll(path):gsub("## X%-Flavor: Vanilla", "## X-
 assert(replaced == 1, "fixture must declare exactly one flavor")
 local files = {}
 for _, file in ipairs(db.config.runtimeFiles.head) do files[#files + 1] = file end
+for _, file in ipairs(db.config.enumFiles) do files[#files + 1] = file end
 for _, file in ipairs({
   db.config.runtimeFiles.bakedReader,
   "src/read/shared.lua",

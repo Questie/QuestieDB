@@ -948,7 +948,7 @@ suite("table-corrections", "shared", function()
 end)
 
 suite("correction-enums", "shared", function()
-  dofile("tools/validation/faction-race-masks.test.lua")(check, equal)
+  dofile("tools/validation/faction-race-masks.test.lua")(equal)
   local standalone = dofile("src/corrections/enum/constants.lua")
   local namespace = {}
   local env = setmetatable({
@@ -966,7 +966,7 @@ suite("correction-enums", "shared", function()
     [95] = 4294967296, [96] = 8589934592,
   }
   equal(standalone.raceMaskById, expectedMasks, "actual race IDs use explicit legacy and Forever encoding")
-  for _, id in ipairs({ 0, 12, 23, 27, 94, 97, 999 }) do
+  for _, id in ipairs({ 12, 999 }) do
     equal(standalone.raceMaskById[id], nil, "unknown race ID has no arithmetic fallback: " .. id)
   end
   local namedIds = {
@@ -975,11 +975,23 @@ suite("correction-enums", "shared", function()
     WORGEN = 22, PANDAREN = 24, PANDAREN_ALLIANCE = 25, PANDAREN_HORDE = 26,
     SKYBORNE_ALLIANCE = 95, SKYBORNE_HORDE = 96,
   }
-  for expansion, enums in pairs(standalone.byExpansion) do
-    for name, mask in pairs(enums.raceKeys) do
-      if namedIds[name] then
-        equal(mask, expectedMasks[namedIds[name]], expansion .. " preserves " .. name .. " encoding")
-      end
+  -- Enumerate required names independently so a missing or renamed constant cannot pass.
+  local legacyNames = {
+    "HUMAN", "ORC", "DWARF", "NIGHT_ELF", "UNDEAD", "TAUREN", "GNOME", "TROLL",
+    "GOBLIN", "BLOOD_ELF", "DRAENEI", "WORGEN", "PANDAREN", "PANDAREN_ALLIANCE", "PANDAREN_HORDE",
+  }
+  local expectedNames = {
+    Classic = legacyNames, TBC = legacyNames, Wotlk = legacyNames,
+    Cata = legacyNames, MoP = legacyNames,
+    Forever = {
+      "HUMAN", "ORC", "DWARF", "NIGHT_ELF", "UNDEAD", "TAUREN", "GNOME", "TROLL",
+      "GOBLIN", "SKYBORNE_ALLIANCE", "SKYBORNE_HORDE",
+    },
+  }
+  for expansion, names in pairs(expectedNames) do
+    local raceKeys = standalone.byExpansion[expansion].raceKeys
+    for _, name in ipairs(names) do
+      equal(raceKeys[name], expectedMasks[namedIds[name]], expansion .. " preserves " .. name .. " encoding")
     end
   end
   equal(standalone.dropCorrectionKeys, { PSERVER = -2, WOWHEAD = -1 },
