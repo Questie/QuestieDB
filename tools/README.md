@@ -11,6 +11,7 @@ tests, and the bundled interpreters. See [the main README](../README.md#for-cont
 | `lua-binary/` | Prebuilt Windows/Linux x64 Lua 5.1 interpreters, checksums, and notices |
 | [`distribution/`](distribution/README.md) | Packaging, changelogs, publishing, Static Correction stripping, and release downloads/installations |
 | [`dbc/`](dbc/README.md) | DBC source downloads, map-coordinate comparison, candidate Forever map support, and separate Era-to-Forever source conversion |
+| [`export/`](export/README.md) | Four inline Forever entity exports in one run; entry point `export-forever.lua` |
 | `validation/` | QuestieDB's own behavior checks and shared test-fixture helpers |
 | `probe-addon/` | Live-client storage and API probes |
 
