@@ -1,10 +1,10 @@
 -- Correction constants. Source origins and extraction history: PROVENANCE.md.
--- Expansion-dependent values have no top-level fallback; callers must select an expansion.
+-- Named sets live under byExpansion; src/api.lua publishes faction masks for the active flavor.
 
 local _, LibQuestieDB = ...
 local constants = LibQuestieDB.Enum
 
--- Actual race IDs to requiredRaces encoding, not a per-flavor playability list.
+-- Actual race IDs to single-bit requiredRaces mask values, not bit indices or a per-flavor playability list.
 -- Legacy entries retain Questie's encoding. Forever ChrRaces build 1.60.1.69893
 -- assigns IDs 95/96 to bits 32/33, not raceID - 1. Unknown IDs stay absent.
 -- Shared with consumers; read-only by contract.
@@ -29,8 +29,9 @@ constants.raceMaskById = {
 }
 local raceMaskById = constants.raceMaskById
 
--- Faction membership by flavor. Distinct bits can be added without truncating
--- Forever's bits 32/33 through the client's 32-bit bit library. Neutral Pandaren are excluded.
+-- Build faction masks once from explicit membership, not every named race in a flavor's raceKeys.
+-- Adding distinct bits avoids truncating Forever's bits 32/33 through the client's 32-bit bit library.
+-- Neutral Pandaren are excluded.
 local classicAlliance = raceMaskById[1] + raceMaskById[3] + raceMaskById[4] + raceMaskById[7]
 local classicHorde = raceMaskById[2] + raceMaskById[5] + raceMaskById[6] + raceMaskById[8]
 local tbcAlliance = classicAlliance + raceMaskById[11]

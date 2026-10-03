@@ -4,8 +4,9 @@
 -- Last migration reference: Questie/Questie@454b9d072965ee8f1a881429260fcf1fac8d60f7.
 -- Source modules and extraction history are recorded in PROVENANCE.md.
 --
--- Shared tables are expansion-invariant, including raceMaskById encoding. Named race/class
--- sets and NPC flags live under constants.byExpansion. IDs need not be playable in every flavor.
+-- raceMaskById encoding is expansion-invariant; IDs need not be playable in every flavor.
+-- Named race/class sets and NPC flags live under constants.byExpansion. The runtime API
+-- additionally publishes factionRaceMasks for the active flavor; standalone enum loading does not.
 
 local _, LibQuestieDB = ...
 
