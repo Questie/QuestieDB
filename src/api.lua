@@ -55,6 +55,14 @@ for _, entityType in ipairs(config.entityTypes) do
   end
 end
 
+-- The provider flavor is already selected by native Source files or Baked metadata.
+-- Consumers share these active faction masks; read-only by contract.
+local raceKeys = LibQuestieDB.Enum.byExpansion[LibQuestieDB.flavor.expansion].raceKeys
+LibQuestieDB.Enum.factionRaceMasks = {
+  Alliance = raceKeys.ALL_ALLIANCE,
+  Horde = raceKeys.ALL_HORDE,
+}
+
 --------------------------------------------------------------------------------------------
 -- Contract
 --------------------------------------------------------------------------------------------

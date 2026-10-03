@@ -29,6 +29,15 @@ constants.raceMaskById = {
 }
 local raceMaskById = constants.raceMaskById
 
+-- Faction membership by flavor. Distinct bits can be added without truncating
+-- Forever's bits 32/33 through the client's 32-bit bit library. Neutral Pandaren are excluded.
+local classicAlliance = raceMaskById[1] + raceMaskById[3] + raceMaskById[4] + raceMaskById[7]
+local classicHorde = raceMaskById[2] + raceMaskById[5] + raceMaskById[6] + raceMaskById[8]
+local tbcAlliance = classicAlliance + raceMaskById[11]
+local tbcHorde = classicHorde + raceMaskById[10]
+local cataAlliance = tbcAlliance + raceMaskById[22]
+local cataHorde = tbcHorde + raceMaskById[9]
+
 constants.byExpansion = {
   Classic = {
     classKeys = {
@@ -73,9 +82,9 @@ constants.byExpansion = {
       UNDEAD = raceMaskById[5],
       TAUREN = raceMaskById[6],
       GNOME = raceMaskById[7],
-      ALL_ALLIANCE = 77,
+      ALL_ALLIANCE = classicAlliance,
       TROLL = raceMaskById[8],
-      ALL_HORDE = 178,
+      ALL_HORDE = classicHorde,
       GOBLIN = raceMaskById[9],
       BLOOD_ELF = raceMaskById[10],
       DRAENEI = raceMaskById[11],
@@ -132,9 +141,9 @@ constants.byExpansion = {
       TROLL = raceMaskById[8],
       GOBLIN = raceMaskById[9],
       BLOOD_ELF = raceMaskById[10],
-      ALL_HORDE = 690,
+      ALL_HORDE = tbcHorde,
       DRAENEI = raceMaskById[11],
-      ALL_ALLIANCE = 1101,
+      ALL_ALLIANCE = tbcAlliance,
       WORGEN = raceMaskById[22],
       PANDAREN = raceMaskById[24],
       PANDAREN_ALLIANCE = raceMaskById[25],
@@ -189,9 +198,9 @@ constants.byExpansion = {
       TROLL = raceMaskById[8],
       GOBLIN = raceMaskById[9],
       BLOOD_ELF = raceMaskById[10],
-      ALL_HORDE = 690,
+      ALL_HORDE = tbcHorde,
       DRAENEI = raceMaskById[11],
-      ALL_ALLIANCE = 1101,
+      ALL_ALLIANCE = tbcAlliance,
       WORGEN = raceMaskById[22],
       PANDAREN = raceMaskById[24],
       PANDAREN_ALLIANCE = raceMaskById[25],
@@ -248,10 +257,10 @@ constants.byExpansion = {
       TROLL = raceMaskById[8],
       GOBLIN = raceMaskById[9],
       BLOOD_ELF = raceMaskById[10],
-      ALL_HORDE = 946,
+      ALL_HORDE = cataHorde,
       DRAENEI = raceMaskById[11],
       WORGEN = raceMaskById[22],
-      ALL_ALLIANCE = 2098253,
+      ALL_ALLIANCE = cataAlliance,
       PANDAREN = raceMaskById[24],
       PANDAREN_ALLIANCE = raceMaskById[25],
       PANDAREN_HORDE = raceMaskById[26],
@@ -311,9 +320,9 @@ constants.byExpansion = {
       WORGEN = raceMaskById[22],
       PANDAREN = raceMaskById[24],
       PANDAREN_ALLIANCE = raceMaskById[25],
-      ALL_ALLIANCE = 18875469,
+      ALL_ALLIANCE = cataAlliance + raceMaskById[25],
       PANDAREN_HORDE = raceMaskById[26],
-      ALL_HORDE = 33555378,
+      ALL_HORDE = cataHorde + raceMaskById[26],
     },
   },
 
@@ -331,9 +340,9 @@ constants.byExpansion = {
       TROLL = raceMaskById[8],
       GOBLIN = raceMaskById[9],
       SKYBORNE_ALLIANCE = raceMaskById[95],
-      ALL_ALLIANCE = 4294967373,
+      ALL_ALLIANCE = classicAlliance + raceMaskById[95],
       SKYBORNE_HORDE = raceMaskById[96],
-      ALL_HORDE = 8589934770,
+      ALL_HORDE = classicHorde + raceMaskById[96],
     },
   },
 }

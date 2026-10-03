@@ -287,6 +287,29 @@ Contract 3 guarantees this mapping. Consumers requiring it must call `RequireCon
 older providers are rejected rather than falling back to a guessed bit position.
 `Enum.byExpansion` remains internal.
 
+### Active faction race masks
+
+`LibQuestieDB.Enum.factionRaceMasks` exposes `{ Alliance = integer, Horde = integer }`
+for the provider's active flavor in both Source and Baked modes. It is available at addon
+load and read-only by contract. Consumers must not rebuild it from project IDs or their
+own flavor flags.
+
+```lua
+local factionMasks = LibQuestieDB.Enum.factionRaceMasks
+local allianceMask = factionMasks.Alliance
+local hordeMask = factionMasks.Horde
+```
+
+Membership uses Classic races (Alliance IDs 1, 3, 4, 7; Horde IDs 2, 5, 6, 8).
+TBC and Wrath add Draenei (11) and Blood Elf (10). Cata additionally adds Worgen (22)
+and Goblin (9); Mists additionally adds faction Pandaren (25/26), never neutral Pandaren
+(24). Forever uses Classic membership plus Alliance/Horde Skyborne (95/96).
+SoD inherits Classic membership; Titan Reforged inherits Wrath membership.
+
+Contract 3 guarantees this table. Call `RequireContract(3)` before using it. Masks can
+exceed 32 bits, so do not pass them through 32-bit bit operations. `Enum.byExpansion`
+remains internal.
+
 ### Objective ordering hints
 
 Some Quest Corrections carry consumer hints about which objective type should be rendered first.
@@ -803,8 +826,9 @@ rows, CBOR table values, compressed CBOR ID headers, and compressed locale-and-t
 localization columns. These storage changes ship together and do not change the public read
 API, so `minSupportedContract` remains 1.
 
-Contract 3 adds the shared `Enum.raceMaskById` encoding table. It does not change storage or
-remove older interfaces: contracts 1 and 2 remain supported. A consumer requiring the table
+Contract 3 adds the shared `Enum.raceMaskById` encoding table and active-flavor
+`Enum.factionRaceMasks`. It does not change storage or remove older interfaces: contracts
+1 and 2 remain supported. A consumer requiring either table
 must request contract 3 so an older provider fails the version check before the lookup.
 
 The check is a **range**: `RequireContract(v)` passes for any

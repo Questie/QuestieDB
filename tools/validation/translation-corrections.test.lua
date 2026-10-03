@@ -22,6 +22,7 @@ return function(check, equal)
       for _, file in ipairs(config.runtimeFiles.head) do
         if file ~= "src/config.lua" then assert(loadfile(file))("QuestieDB", db) end
       end
+      for _, file in ipairs(config.enumFiles) do assert(loadfile(file))("QuestieDB", db) end
       local shared = assert(loadfile("src/read/shared.lua"))("QuestieDB", db)
       assert(loadfile("src/corrections/registry.lua"))("QuestieDB", db)
       local keys = db.Meta.Quest.keys

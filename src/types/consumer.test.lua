@@ -155,3 +155,11 @@ if skyborneMask then
   ---@type integer
   local combinedMask = skyborneMask + 1
 end
+
+-- Consumers use the provider's active faction membership rather than selecting a flavor.
+---@type QuestieDBFactionRaceMasks
+local factionRaceMasks = LibQuestieDB.Enum.factionRaceMasks
+---@type integer
+local allianceRaceMask = factionRaceMasks.Alliance
+---@type integer
+local hordeRaceMask = factionRaceMasks.Horde

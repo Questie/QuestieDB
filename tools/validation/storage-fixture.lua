@@ -18,6 +18,7 @@ end
 function fixture.namespace()
   local db = { Meta = {} }
   for _, path in ipairs(config.runtimeFiles.head) do assert(loadfile(path))("QuestieDB", db) end
+  for _, path in ipairs(config.enumFiles) do assert(loadfile(path))("QuestieDB", db) end
   return db
 end
 
