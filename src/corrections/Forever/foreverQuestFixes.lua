@@ -771,6 +771,24 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{3067,nil,Questie.ICON_TYPE_TALK}}},
             [questKeys.exclusiveTo] = {96626,96629,96634,96646,96655,96658},
         },
+        [96652] = { -- The Adventurer
+            [questKeys.preQuestSingle] = {794},
+            [questKeys.breadcrumbForQuestId] = 96604,
+            [questKeys.nextQuestInChain] = 96604,
+            [questKeys.exclusiveTo] = {96627,96628,96630,96638,96656,96659},
+        },
+        [96656] = { -- The Adventurer
+            -- [questKeys.preQuestSingle] = {92470}, -- TBD
+            [questKeys.breadcrumbForQuestId] = 96607,
+            [questKeys.nextQuestInChain] = 96607,
+            [questKeys.exclusiveTo] = {96627,96628,96630,96638,96652,96659},
+        },
+        [96659] = { -- The Adventurer
+            -- [questKeys.preQuestSingle] = {92470}, -- TBD
+            [questKeys.breadcrumbForQuestId] = 96605,
+            [questKeys.nextQuestInChain] = 96605,
+            [questKeys.exclusiveTo] = {96627,96628,96630,96638,96652,96656},
+        },
         [97243] = { -- Call of Fire
             [questKeys.startedBy_add] = {{254082}},
             [questKeys.requiredClasses] = classIDs.SHAMAN,
