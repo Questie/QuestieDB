@@ -32,21 +32,6 @@ function ForeverNpcFixes:Load()
         [251966] = { -- Commander Cyclas
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{50.39,56.96}}},
         },
-        [252476] = { -- Talaanis Shadowsong
-            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{66.17,76.51}}},
-        },
-        [252800] = { -- Aamelia Windfield
-            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{46.7,81.95}}},
-        },
-        [253622] = { -- Commander Haalien
-            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.53,36.32}}},
-        },
-        [253849] = { -- Ayessa Dawnsinger
-            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{74.05,52.63}}},
-        },
-        [254128] = { -- Wardrobe
-            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{48.84,53.93}}},
-        },
         [251261] = { -- Hippogryph Matriarch
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{33.04,54.63},{35.23,54.08}}},
         },
@@ -56,14 +41,29 @@ function ForeverNpcFixes:Load()
         [251684] = { -- Strange Hermit
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{53.96,38.9}}},
         },
+        [252476] = { -- Talaanis Shadowsong
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{66.17,76.51}}},
+        },
         [252666] = { -- Commander Belguilos
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.58,65.62}}},
+        },
+        [252800] = { -- Aamelia Windfield
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{46.7,81.95}}},
+        },
+        [253622] = { -- Commander Haalien
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.53,36.32}}},
         },
         [253847] = { -- Elaadrin Evengale
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{74.17,52.57}}},
         },
+        [253849] = { -- Ayessa Dawnsinger
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{74.05,52.63}}},
+        },
         [254082] = { -- Aarnor Galestrike
             [npcKeys.questStarts] = {97243},
+        },
+        [254128] = { -- Wardrobe
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{48.84,53.93}}},
         },
         [254589] = { -- Vulgara the Insatiable
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.66,52.8}}},
@@ -76,6 +76,9 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{50.62,34.27}}},
         },
         [256935] = { -- Malduko Cloudcrush
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{36.05,33.53}}},
+        },
+        [257196] = { -- Zaal Stormshield
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{36.05,33.53}}},
         },
         [258130] = { -- Jorel Windsinger

@@ -19,8 +19,14 @@ function ForeverItemFixes:Load()
         [14396] = { -- Incantations from the Nether
             [itemKeys.npcDrops_remove] = {238461},
         },
+        [252760] = { -- Stolen Shen'dar Supplies
+            [itemKeys.npcDrops] = {252068,254596,259385,259398},
+        },
         [254871] = { -- Bloody Note
             [itemKeys.objectDrops] = {617704},
+        },
+        [257945] = { -- Pilfered Windstone
+            [itemKeys.npcDrops] = {251918,255534},
         },
         [285357] = { -- Advisor Nazgrel's Instructions
             [itemKeys.npcDrops] = {3230},
