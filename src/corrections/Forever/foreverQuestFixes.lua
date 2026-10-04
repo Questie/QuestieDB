@@ -545,12 +545,12 @@ function ForeverQuestFixes:Load()
         },
         [95998] = { -- The Great Outdoors
             [questKeys.breadcrumbs] = {96627},
-            [questKeys.objectives] = {nil,{{450003},{450003}}},
+            [questKeys.objectives] = {nil,{{450004},{450004}}},
             [questKeys.exclusiveTo] = {96101,96604,96605,96606,96607,96608},
         },
         [96101] = { -- The Great Outdoors
             [questKeys.breadcrumbs] = {96638},
-            [questKeys.objectives] = {nil,{{450004},{450004}}},
+            [questKeys.objectives] = {nil,{{450003},{450003}}},
             [questKeys.exclusiveTo] = {95998,96604,96605,96606,96607,96608},
         },
         [96395] = { -- An Ancient Grudge
