@@ -202,6 +202,7 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{251903,nil,Questie.ICON_TYPE_TALK}}},
         },
         [92597] = { -- Reading the Ley Lines
+            [questKeys.preQuestSingle] = {92461},
             [questKeys.objectives] = {nil,{{450002}}},
         },
         [92598] = { -- The Gift of Skysight
@@ -579,7 +580,7 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{268762,nil,Questie.ICON_TYPE_EVENT},{268679,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [97894] = { -- Business in Auberdine
-            [questKeys.breadcrumbForQuestId] = {982},
+            [questKeys.breadcrumbForQuestId] = 982,
             [questKeys.nextQuestInChain] = 982,
         },
         [97963] = { -- Camping 101: Alchemy

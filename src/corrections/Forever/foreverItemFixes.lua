@@ -28,7 +28,12 @@ function ForeverItemFixes:Load()
         [257945] = { -- Pilfered Windstone
             [itemKeys.npcDrops] = {251918,255534},
         },
+        [285356] = { -- Advisor Emerson's Instructions
+            [itemKeys.name] = "Advisor Emerson's Instructions",
+            [itemKeys.npcDrops] = {275491},
+        },
         [285357] = { -- Advisor Nazgrel's Instructions
+            [itemKeys.name] = "Advisor Nazgrel's Instructions",
             [itemKeys.npcDrops] = {3230},
         },
     }
