@@ -443,6 +443,7 @@ function ForeverQuestFixes:Load()
         [93963] = { -- Exploring the Alliance
             [questKeys.preQuestSingle] = {94947},
             [questKeys.objectives] = {{{7937,nil,Questie.ICON_TYPE_TALK},{2784,nil,Questie.ICON_TYPE_TALK},{7999,nil,Questie.ICON_TYPE_TALK}},nil,{{285356,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.reputationReward] = {{factionIDs.ALLIANCE, 100}, {factionIDs.GNOMEREGAN_EXILES, 175}, {factionIDs.STORMWIND, 175}, {factionIDs.DARNASSUS, 175}, {factionIDs.IRONFORGE, 175}, {factionIDs.KIRIN_TOR_FOREVER, 100}},
         },
         [94003] = { -- The Skybreaker Bulwark
             [questKeys.requiredClasses] = classIDs.WARRIOR,
@@ -542,21 +543,89 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {95349},
             [questKeys.nextQuestInChain] = 93739,
         },
+        [95998] = { -- The Great Outdoors
+            [questKeys.breadcrumbs] = {96627},
+            [questKeys.objectives] = {nil,{{450003},{450003}}},
+            [questKeys.exclusiveTo] = {96101,96604,96605,96606,96607,96608},
+        },
         [96101] = { -- The Great Outdoors
             [questKeys.breadcrumbs] = {96638},
-            [questKeys.objectives] = {nil,{{450003},{450003}}},
+            [questKeys.objectives] = {nil,{{450004},{450004}}},
+            [questKeys.exclusiveTo] = {95998,96604,96605,96606,96607,96608},
         },
         [96395] = { -- An Ancient Grudge
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- not sure if horde can get this quest
+        },
+        [96604] = { -- The Great Outdoors
+            [questKeys.breadcrumbs] = {96652},
+            [questKeys.objectives] = {nil,{{450005},{450005}}},
+            [questKeys.exclusiveTo] = {95998,96101,96605,96606,96607,96608},
+        },
+        [96605] = { -- The Great Outdoors
+            [questKeys.breadcrumbs] = {96659},
+            [questKeys.objectives] = {nil,{{450006},{450006}}},
+            [questKeys.exclusiveTo] = {95998,96101,96604,96606,96607,96608},
+        },
+        [96606] = { -- The Great Outdoors
+            [questKeys.breadcrumbs] = {96630},
+            [questKeys.objectives] = {nil,{{450007},{450007}}},
+            [questKeys.exclusiveTo] = {95998,96101,96604,96605,96607,96608},
+        },
+        [96607] = { -- The Great Outdoors
+            [questKeys.breadcrumbs] = {96656},
+            [questKeys.objectives] = {nil,{{450008},{450008}}},
+            [questKeys.exclusiveTo] = {95998,96101,96604,96605,96606,96608},
+        },
+        [96608] = { -- The Great Outdoors
+            [questKeys.breadcrumbs] = {96628},
+            [questKeys.objectives] = {nil,{{450009},{450009}}},
+            [questKeys.exclusiveTo] = {95998,96101,96604,96605,96606,96607},
+        },
+        [96627] = { -- The Adventurer
+            -- [questKeys.preQuestSingle] = {92470}, -- TBD
+            [questKeys.breadcrumbForQuestId] = 95998,
+            [questKeys.nextQuestInChain] = 95998,
+            [questKeys.exclusiveTo] = {96628,96630,96638,96652,96656,96659},
+        },
+        [96628] = { -- The Adventurer
+            -- [questKeys.preQuestSingle] = {92470}, -- TBD
+            [questKeys.breadcrumbForQuestId] = 96608,
+            [questKeys.nextQuestInChain] = 96608,
+            [questKeys.exclusiveTo] = {96627,96630,96638,96652,96656,96659},
+        },
+        [96630] = { -- The Adventurer
+            [questKeys.preQuestSingle] = {921},
+            [questKeys.breadcrumbForQuestId] = 96606,
+            [questKeys.nextQuestInChain] = 96606,
+            [questKeys.exclusiveTo] = {96627,96628,96638,96652,96656,96659},
         },
         [96638] = { -- The Adventurer
             [questKeys.preQuestSingle] = {92470},
             [questKeys.breadcrumbForQuestId] = 96101,
             [questKeys.nextQuestInChain] = 96101,
+            [questKeys.exclusiveTo] = {96627,96628,96630,96652,96656,96659},
         },
         [96646] = { -- Camping 101: Cooking
             [questKeys.preQuestSingle] = {96101},
             [questKeys.objectives] = {{{251905,nil,Questie.ICON_TYPE_TALK}}},
+        },
+        [96652] = { -- The Adventurer
+            [questKeys.preQuestSingle] = {794},
+            [questKeys.breadcrumbForQuestId] = 96604,
+            [questKeys.nextQuestInChain] = 96604,
+            [questKeys.exclusiveTo] = {96627,96628,96630,96638,96656,96659},
+        },
+        [96656] = { -- The Adventurer
+            -- [questKeys.preQuestSingle] = {92470}, -- TBD
+            [questKeys.breadcrumbForQuestId] = 96607,
+            [questKeys.nextQuestInChain] = 96607,
+            [questKeys.exclusiveTo] = {96627,96628,96630,96638,96652,96659},
+        },
+        [96659] = { -- The Adventurer
+            -- [questKeys.preQuestSingle] = {92470}, -- TBD
+            [questKeys.breadcrumbForQuestId] = 96605,
+            [questKeys.nextQuestInChain] = 96605,
+            [questKeys.exclusiveTo] = {96627,96628,96630,96638,96652,96656},
         },
         [97243] = { -- Call of Fire
             [questKeys.startedBy_add] = {{254082}},
@@ -676,6 +745,21 @@ function ForeverQuestFixes:Load()
         },
         [99267] = { -- An Unfortunate End
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [99411] = { -- Kyle's Gone Missing!
+            [questKeys.name] = "Kyle's Gone Missing!",
+            [questKeys.startedBy] = {{277182}},
+            [questKeys.finishedBy] = {{277182}},
+            [questKeys.requiredLevel] = 7,
+            [questKeys.questLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.requiredClasses] = raceIDs.NONE,
+            [questKeys.objectivesText] = {"Ahab Wheathoof at Bloodhoof Village in Mulgore wants you to feed his prized puppy, Kyle the Frenzied.","","Feed Kyle Tender Strider Meat and return to Ahab Wheathoof."},
+            [questKeys.objectives] = {{{277154,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.zoneOrSort] = zoneIDs.MULGORE,
+            [questKeys.requiredSourceItems] = {287505},
+            [questKeys.questFlags] = 8,
+            [questKeys.reputationReward] = {{factionIDs.THUNDER_BLUFF, 100}},
         },
     }
 end

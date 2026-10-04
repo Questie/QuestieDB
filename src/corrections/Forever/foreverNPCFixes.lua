@@ -120,6 +120,38 @@ function ForeverNpcFixes:Load()
         [268762] = { -- Brazier of Offering
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{51.2,85.9}}},
         },
+        [277154] = { -- Kyle the Frenzied
+            [npcKeys.name] = "Kyle the Frenzied",
+            [npcKeys.minLevelHealth] = 272,
+            [npcKeys.maxLevelHealth] = 272,
+            [npcKeys.minLevel] = 12,
+            [npcKeys.maxLevel] = 12,
+            [npcKeys.rank] = 0,
+            [npcKeys.spawns] = {[zoneIDs.MULGORE] = {{46.82,63.84}}}, -- TBD
+            [npcKeys.waypoints] = nil, -- TBD
+            [npcKeys.zoneID] = zoneIDs.MULGORE,
+            [npcKeys.questStarts] = nil,
+            [npcKeys.questEnds] = nil,
+            [npcKeys.factionID] = 35,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [277182] = { -- Ahab Wheathoof
+            [npcKeys.name] = "Ahab Wheathoof",
+            [npcKeys.minLevelHealth] = 4208,
+            [npcKeys.maxLevelHealth] = 4208,
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.rank] = 0,
+            [npcKeys.spawns] = {[zoneIDs.MULGORE] = {{47.28,57.63}}},
+            [npcKeys.waypoints] = {},
+            [npcKeys.zoneID] = zoneIDs.MULGORE,
+            [npcKeys.questStarts] = {99411},
+            [npcKeys.questEnds] = {99411},
+            [npcKeys.factionID] = 105,
+            [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "The Old Rancher",
+            [npcKeys.npcFlags] = 3,
+        },
     }
 end
 

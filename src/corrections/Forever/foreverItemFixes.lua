@@ -36,6 +36,11 @@ function ForeverItemFixes:Load()
             [itemKeys.name] = "Advisor Nazgrel's Instructions",
             [itemKeys.npcDrops] = {3230},
         },
+        [287505] = { -- Tender Strider Meat
+            [itemKeys.name] = "Tender Strider Meat",
+            [itemKeys.npcDrops] = {2956,2957,3068},
+            [itemKeys.class] = itemClasses.QUEST,
+        },
     }
 end
 

@@ -94,13 +94,43 @@ function ForeverObjectFixes:Load()
         },
         [450002] = { -- Ley Line
             [objectKeys.name] = "Ley Line",
-            [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{48.28,20.62}}},
+            [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{46.29,17.87}}},
             [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
         [450003] = { -- Basic Campfire
             [objectKeys.name] = "Basic Campfire",
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{41.73,44.78}}},
             [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+        },
+        [450004] = { -- Basic Campfire
+            [objectKeys.name] = "Basic Campfire",
+            [objectKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{44.94,63.2}}},
+            [objectKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
+        },
+        [450005] = { -- Basic Campfire
+            [objectKeys.name] = "Basic Campfire",
+            [objectKeys.spawns] = {[zoneIDs.DUROTAR] = {{52.09,47.39}}},
+            [objectKeys.zoneID] = zoneIDs.DUROTAR,
+        },
+        [450006] = { -- Basic Campfire
+            [objectKeys.name] = "Basic Campfire",
+            [objectKeys.spawns] = {[zoneIDs.MULGORE] = {{46.21,67.31}}},
+            [objectKeys.zoneID] = zoneIDs.MULGORE,
+        },
+        [450007] = { -- Basic Campfire
+            [objectKeys.name] = "Basic Campfire",
+            [objectKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{57.66,56.74}}},
+            [objectKeys.zoneID] = zoneIDs.TELDRASSIL,
+        },
+        [450008] = { -- Basic Campfire
+            [objectKeys.name] = "Basic Campfire",
+            [objectKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{57.17,55.55}}},
+            [objectKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
+        },
+        [450009] = { -- Basic Campfire
+            [objectKeys.name] = "Basic Campfire",
+            [objectKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{46.68,53.84}}},
+            [objectKeys.zoneID] = zoneIDs.DUN_MOROGH,
         },
     }
 end
