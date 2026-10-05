@@ -20,6 +20,13 @@ function ForeverNpcFixes:Load()
         [4949] = { -- Thrall
             [npcKeys.questEnds_add] = {93739},
         },
+        [10993] = { -- Twizwick Sprocketgrind
+            [npcKeys.questEnds_add] = {97930},
+            [npcKeys.questStarts_add] = {97930},
+        },
+        [11051] = { -- Vhan
+            [npcKeys.questEnds_add] = {97937},
+        },
         [14242] = { -- Sulhasa
             [npcKeys.name] = "Sulhasa",
         },
