@@ -548,10 +548,94 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {nil,{{450004},{450004}}},
             [questKeys.exclusiveTo] = {96101,96604,96605,96606,96607,96608},
         },
+        [96031] = { -- Camping 101: Leatherworking
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.LEATHERWORKING, 1},
+            [questKeys.requiredSpell] = -1229432, -- Camp Tent
+            [questKeys.objectives] = {{{1466,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {97906,97922,97934,97946,97958,97969},
+        },
+        [96044] = { -- Camping 101: Blacksmithing
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 1},
+            [questKeys.requiredSpell] = -1230171, -- Sharpening Wheel
+            [questKeys.objectives] = {{{1241,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {97900,97916,97928,97939,97952,97964},
+        },
+        [96045] = { -- Camping 101: Alchemy
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ALCHEMY, 1},
+            [questKeys.requiredSpell] = -1230564, -- Mana Well
+            [questKeys.objectives] = {{{1246,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {97899,97915,97927,97938,97951,97963},
+        },
+        [96046] = { -- Camping 101: Mining
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.MINING, 1},
+            [questKeys.requiredSpell] = -1230161, -- Lodestone
+            [questKeys.objectives] = {{{5392,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {97907,97923,97935,97948,97959,97970},
+        },
+        [96047] = { -- Camping 101: First Aid
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.FIRST_AID, 1},
+            [questKeys.requiredSpell] = -1230117, -- First Aid Kit
+            [questKeys.objectives] = {{{2326,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {97903,97919,97931,97942,97955,97965},
+        },
+        [96050] = { -- Camping 101: Fishing
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.FISHING, 1},
+            [questKeys.requiredSpell] = -1229745, -- Fish Bowl
+            [questKeys.objectives] = {{{1700,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {97904,97920,97932,97943,97956,97967},
+        },
+        [96055] = { -- Camping 101: Herbalism
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.HERBALISM, 1},
+            [questKeys.requiredSpell] = -1229705, -- Incense Candle
+            [questKeys.objectives] = {{{5137,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {97905,97921,97933,97944,97957,97968},
+        },
+        [96056] = { -- Camping 101: Skinning
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.SKINNING, 1},
+            [questKeys.requiredSpell] = -1229517, -- Camp Chair
+            [questKeys.objectives] = {{{6291,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {97908,97924,97936,97949,97960,97971},
+        },
+        [96057] = { -- Camping 101: Tailoring
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
+            [questKeys.requiredSpell] = -1229504, -- Faction Banner
+            [questKeys.objectives] = {{{1703,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96102,97925,97937,97950,97961,97972,97973},
+        },
+        [96058] = { -- Camping 101: Engineering
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ENGINEERING, 1},
+            [questKeys.requiredSpell] = -1230656, -- Reagent Bot
+            [questKeys.objectives] = {{{1702,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {97902,97918,97930,97941,97954,98285,98287},
+        },
+        [96059] = { -- Camping 101: Enchanting
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
+            [questKeys.requiredSpell] = -1230643, -- Enchanted Lute
+            [questKeys.objectives] = {{{11065,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {97901,97917,97929,97940,97953,98284,98286},
+        },
         [96101] = { -- The Great Outdoors
             [questKeys.breadcrumbs] = {96638},
             [questKeys.objectives] = {nil,{{450003},{450003}}},
             [questKeys.exclusiveTo] = {95998,96604,96605,96606,96607,96608},
+        },
+        [96102] = { -- Camping 101: Tailoring
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
+            [questKeys.requiredSpell] = -1229504, -- Faction Banner
+            [questKeys.objectives] = {{{2855,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96057,97925,97937,97950,97961,97972,97973},
         },
         [96395] = { -- An Ancient Grudge
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- not sure if horde can get this quest
@@ -581,6 +665,11 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {nil,{{450009},{450009}}},
             [questKeys.exclusiveTo] = {95998,96101,96604,96605,96606,96607},
         },
+        [96626] = { -- Camping 101: Cooking
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.objectives] = {{{1430,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.exclusiveTo] = {96629,96634,96646,96655,96658,96661},
+        },
         [96627] = { -- The Adventurer
             -- [questKeys.preQuestSingle] = {92470}, -- TBD
             [questKeys.breadcrumbForQuestId] = 95998,
@@ -593,11 +682,21 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 96608,
             [questKeys.exclusiveTo] = {96627,96630,96638,96652,96656,96659},
         },
+        [96629] = { -- Camping 101: Cooking
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.objectives] = {{{1699,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.exclusiveTo] = {96626,96634,96646,96655,96658,96661},
+        },
         [96630] = { -- The Adventurer
             [questKeys.preQuestSingle] = {921},
             [questKeys.breadcrumbForQuestId] = 96606,
             [questKeys.nextQuestInChain] = 96606,
             [questKeys.exclusiveTo] = {96627,96628,96638,96652,96656,96659},
+        },
+        [96634] = { -- Camping 101: Cooking
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.objectives] = {{{6286,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.exclusiveTo] = {96626,96629,96646,96655,96658,96661},
         },
         [96638] = { -- The Adventurer
             [questKeys.preQuestSingle] = {92470},
@@ -606,8 +705,9 @@ function ForeverQuestFixes:Load()
             [questKeys.exclusiveTo] = {96627,96628,96630,96652,96656,96659},
         },
         [96646] = { -- Camping 101: Cooking
-            [questKeys.preQuestSingle] = {96101},
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.objectives] = {{{251905,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.exclusiveTo] = {96626,96629,96634,96655,96658,96661},
         },
         [96652] = { -- The Adventurer
             [questKeys.preQuestSingle] = {794},
@@ -615,17 +715,32 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 96604,
             [questKeys.exclusiveTo] = {96627,96628,96630,96638,96656,96659},
         },
+        [96655] = { -- Camping 101: Cooking
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.objectives] = {{{3191,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.exclusiveTo] = {96626,96629,96634,96646,96658,96661},
+        },
         [96656] = { -- The Adventurer
             -- [questKeys.preQuestSingle] = {92470}, -- TBD
             [questKeys.breadcrumbForQuestId] = 96607,
             [questKeys.nextQuestInChain] = 96607,
             [questKeys.exclusiveTo] = {96627,96628,96630,96638,96652,96659},
         },
+        [96658] = { -- Camping 101: Cooking
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.objectives] = {{{265944,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.exclusiveTo] = {96626,96629,96634,96646,96655,96661},
+        },
         [96659] = { -- The Adventurer
             -- [questKeys.preQuestSingle] = {92470}, -- TBD
             [questKeys.breadcrumbForQuestId] = 96605,
             [questKeys.nextQuestInChain] = 96605,
             [questKeys.exclusiveTo] = {96627,96628,96630,96638,96652,96656},
+        },
+        [96661] = { -- Camping 101: Cooking
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.objectives] = {{{3067,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.exclusiveTo] = {96626,96629,96634,96646,96655,96658},
         },
         [97243] = { -- Call of Fire
             [questKeys.startedBy_add] = {{254082}},
@@ -652,86 +767,487 @@ function ForeverQuestFixes:Load()
             [questKeys.breadcrumbForQuestId] = 982,
             [questKeys.nextQuestInChain] = 982,
         },
+        [97899] = { -- Camping 101: Alchemy
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ALCHEMY, 1},
+            [questKeys.requiredSpell] = -1230564, -- Mana Well
+            [questKeys.objectives] = {{{11046,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96045,97915,97927,97938,97951,97963},
+        },
+        [97900] = { -- Camping 101: Blacksmithing
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 1},
+            [questKeys.requiredSpell] = -1230171, -- Sharpening Wheel
+            [questKeys.objectives] = {{{3174,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96044,97916,97928,97939,97952,97964},
+        },
+        [97901] = { -- Camping 101: Enchanting
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
+            [questKeys.requiredSpell] = -1230643, -- Enchanted Lute
+            [questKeys.objectives] = {{{11066,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96059,97917,97929,97940,97953,98284,98286},
+        },
+        [97902] = { -- Camping 101: Engineering
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ENGINEERING, 1},
+            [questKeys.requiredSpell] = -1230656, -- Reagent Bot
+            [questKeys.objectives] = {{{11025,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96058,97918,97930,97941,97954,98285,98287},
+        },
+        [97903] = { -- Camping 101: First Aid
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.FIRST_AID, 1},
+            [questKeys.requiredSpell] = -1230117, -- First Aid Kit
+            [questKeys.objectives] = {{{5943,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96047,97919,97931,97942,97955,97965},
+        },
+        [97904] = { -- Camping 101: Fishing
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.FISHING, 1},
+            [questKeys.requiredSpell] = -1229745, -- Fish Bowl
+            [questKeys.objectives] = {{{5941,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96050,97920,97932,97943,97956,97967},
+        },
+        [97905] = { -- Camping 101: Herbalism
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.HERBALISM, 1},
+            [questKeys.requiredSpell] = -1229705, -- Incense Candle
+            [questKeys.objectives] = {{{3404,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96055,97921,97933,97944,97957,97968},
+        },
+        [97906] = { -- Camping 101: Leatherworking
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.LEATHERWORKING, 1},
+            [questKeys.requiredSpell] = -1229432, -- Camp Tent
+            [questKeys.objectives] = {{{3365,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96031,97922,97934,97946,97958,97969},
+        },
+        [97907] = { -- Camping 101: Mining
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.MINING, 1},
+            [questKeys.requiredSpell] = -1230161, -- Lodestone
+            [questKeys.objectives] = {{{3175,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96046,97923,97935,97948,97959,97970},
+        },
+        [97908] = { -- Camping 101: Skinning
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.SKINNING, 1},
+            [questKeys.requiredSpell] = -1229517, -- Camp Chair
+            [questKeys.objectives] = {{{7088,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96056,97924,97936,97949,97960,97971},
+        },
+        [97915] = { -- Camping 101: Alchemy
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ALCHEMY, 1},
+            [questKeys.requiredSpell] = -1230564, -- Mana Well
+            [questKeys.objectives] = {{{1215,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96045,97899,97927,97938,97951,97963},
+        },
+        [97916] = { -- Camping 101: Blacksmithing
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 1},
+            [questKeys.requiredSpell] = -1230171, -- Sharpening Wheel
+            [questKeys.objectives] = {{{514,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96044,97900,97928,97939,97952,97964},
+        },
+        [97917] = { -- Camping 101: Enchanting
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
+            [questKeys.requiredSpell] = -1230643, -- Enchanted Lute
+            [questKeys.objectives] = {{{11068,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96059,97901,97929,97940,97953,98284,98286},
+        },
+        [97918] = { -- Camping 101: Engineering
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ENGINEERING, 1},
+            [questKeys.requiredSpell] = -1230656, -- Reagent Bot
+            [questKeys.objectives] = {{{11026,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96058,97902,97930,97941,97954,98285,98287},
+        },
+        [97919] = { -- Camping 101: First Aid
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.FIRST_AID, 1},
+            [questKeys.requiredSpell] = -1230117, -- First Aid Kit
+            [questKeys.objectives] = {{{2329,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96047,97903,97931,97942,97955,97965},
+        },
+        [97920] = { -- Camping 101: Fishing
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.FISHING, 1},
+            [questKeys.requiredSpell] = -1229745, -- Fish Bowl
+            [questKeys.objectives] = {{{1651,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96050,97904,97932,97943,97956,97967},
+        },
+        [97921] = { -- Camping 101: Herbalism
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.HERBALISM, 1},
+            [questKeys.requiredSpell] = -1229705, -- Incense Candle
+            [questKeys.objectives] = {{{1218,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96055,97905,97933,97944,97957,97968},
+        },
+        [97922] = { -- Camping 101: Leatherworking
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.LEATHERWORKING, 1},
+            [questKeys.requiredSpell] = -1229432, -- Camp Tent
+            [questKeys.objectives] = {{{1632,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96031,97906,97934,97946,97958,97969},
+        },
+        [97923] = { -- Camping 101: Mining
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.MINING, 1},
+            [questKeys.requiredSpell] = -1230161, -- Lodestone
+            [questKeys.objectives] = {{{5513,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96046,97907,97935,97948,97959,97970},
+        },
+        [97924] = { -- Camping 101: Skinning
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.SKINNING, 1},
+            [questKeys.requiredSpell] = -1229517, -- Camp Chair
+            [questKeys.objectives] = {{{6306,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96056,97908,97936,97949,97960,97971},
+        },
+        [97925] = { -- Camping 101: Tailoring
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
+            [questKeys.requiredSpell] = -1229504, -- Faction Banner
+            [questKeys.objectives] = {{{1103,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96057,96102,97937,97950,97961,97972,97973},
+        },
+        [97927] = { -- Camping 101: Alchemy
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ALCHEMY, 1},
+            [questKeys.requiredSpell] = -1230564, -- Mana Well
+            [questKeys.objectives] = {{{11047,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96045,97899,97915,97938,97951,97963},
+        },
+        [97928] = { -- Camping 101: Blacksmithing
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 1},
+            [questKeys.requiredSpell] = -1230171, -- Sharpening Wheel
+            [questKeys.objectives] = {{{10278,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96044,97900,97916,97939,97952,97964},
+        },
+        [97929] = { -- Camping 101: Enchanting
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
+            [questKeys.requiredSpell] = -1230643, -- Enchanted Lute
+            [questKeys.objectives] = {{{11071,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96059,97901,97917,97940,97953,98284,98286},
+        },
+        [97930] = { -- Camping 101: Engineering
+            [questKeys.startedBy] = {{10993}}, -- ??
+            [questKeys.finishedBy] = {{10993}},
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ENGINEERING, 1},
+            [questKeys.requiredSpell] = -1230656, -- Reagent Bot
+            [questKeys.objectives] = {{{10993,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96058,97902,97918,97941,97954,98285,98287},
+        },
+        [97931] = { -- Camping 101: First Aid
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.FIRST_AID, 1},
+            [questKeys.requiredSpell] = -1230117, -- First Aid Kit
+            [questKeys.objectives] = {{{5939,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96047,97903,97919,97942,97955,97965},
+        },
+        [97932] = { -- Camping 101: Fishing
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.FISHING, 1},
+            [questKeys.requiredSpell] = -1229745, -- Fish Bowl
+            [questKeys.objectives] = {{{5938,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96050,97904,97920,97943,97956,97967},
+        },
+        [97933] = { -- Camping 101: Herbalism
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.HERBALISM, 1},
+            [questKeys.requiredSpell] = -1229705, -- Incense Candle
+            [questKeys.objectives] = {{{3013,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96055,97905,97921,97944,97957,97968},
+        },
+        [97934] = { -- Camping 101: Leatherworking
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.LEATHERWORKING, 1},
+            [questKeys.requiredSpell] = -1229432, -- Camp Tent
+            [questKeys.objectives] = {{{3069,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96031,97906,97922,97946,97958,97969},
+        },
+        [97935] = { -- Camping 101: Mining
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.MINING, 1},
+            [questKeys.requiredSpell] = -1230161, -- Lodestone
+            [questKeys.objectives] = {{{3001,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96046,97907,97923,97948,97959,97970},
+        },
+        [97936] = { -- Camping 101: Skinning
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.SKINNING, 1},
+            [questKeys.requiredSpell] = -1229517, -- Camp Chair
+            [questKeys.objectives] = {{{6290,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96056,97908,97924,97949,97960,97971},
+        },
+        [97937] = { -- Camping 101: Tailoring
+            [questKeys.finishedBy] = {{11051}},
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
+            [questKeys.requiredSpell] = -1229504, -- Faction Banner
+            [questKeys.objectives] = {{{11051,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96057,96102,97925,97950,97961,97972,97973},
+        },
+        [97938] = { -- Camping 101: Alchemy
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ALCHEMY, 1},
+            [questKeys.requiredSpell] = -1230564, -- Mana Well
+            [questKeys.objectives] = {{{3603,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96045,97899,97915,97927,97951,97963},
+        },
+        [97939] = { -- Camping 101: Blacksmithing
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 1},
+            [questKeys.requiredSpell] = -1230171, -- Sharpening Wheel
+            [questKeys.objectives] = {{{6300,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96044,97900,97916,97928,97952,97964},
+        },
+        [97940] = { -- Camping 101: Enchanting
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
+            [questKeys.requiredSpell] = -1230643, -- Enchanted Lute
+            [questKeys.objectives] = {{{3606,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96059,97901,97917,97929,97953,98284,98286},
+        },
+        [97941] = { -- Camping 101: Engineering
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ENGINEERING, 1},
+            [questKeys.requiredSpell] = -1230656, -- Reagent Bot
+            [questKeys.objectives] = {{{11037,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96058,97902,97918,97930,97954,98285,98287},
+        },
+        [97942] = { -- Camping 101: First Aid
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.FIRST_AID, 1},
+            [questKeys.requiredSpell] = -1230117, -- First Aid Kit
+            [questKeys.objectives] = {{{6094,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96047,97903,97919,97931,97955,97965},
+        },
+        [97943] = { -- Camping 101: Fishing
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.FISHING, 1},
+            [questKeys.requiredSpell] = -1229745, -- Fish Bowl
+            [questKeys.objectives] = {{{4156,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96050,97904,97920,97932,97956,97967},
+        },
+        [97944] = { -- Camping 101: Herbalism
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.HERBALISM, 1},
+            [questKeys.requiredSpell] = -1229705, -- Incense Candle
+            [questKeys.objectives] = {{{3604,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96055,97905,97921,97933,97957,97968},
+        },
+        [97946] = { -- Camping 101: Leatherworking
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.LEATHERWORKING, 1},
+            [questKeys.requiredSpell] = -1229432, -- Camp Tent
+            [questKeys.objectives] = {{{3605,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96031,97906,97922,97934,97958,97969},
+        },
+        [97948] = { -- Camping 101: Mining
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.MINING, 1},
+            [questKeys.requiredSpell] = -1230161, -- Lodestone
+            [questKeys.objectives] = {{{6297,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96046,97907,97923,97935,97959,97970},
+        },
+        [97949] = { -- Camping 101: Skinning
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.SKINNING, 1},
+            [questKeys.requiredSpell] = -1229517, -- Camp Chair
+            [questKeys.objectives] = {{{6287,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96056,97908,97924,97936,97960,97971},
+        },
+        [97950] = { -- Camping 101: Tailoring
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
+            [questKeys.requiredSpell] = -1229504, -- Faction Banner
+            [questKeys.objectives] = {{{11050,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96057,96102,97925,97937,97961,97972,97973},
+        },
+        [97951] = { -- Camping 101: Alchemy
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ALCHEMY, 1},
+            [questKeys.requiredSpell] = -1230564, -- Mana Well
+            [questKeys.objectives] = {{{2132,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96045,97899,97915,97927,97938,97963},
+        },
+        [97952] = { -- Camping 101: Blacksmithing
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 1},
+            [questKeys.requiredSpell] = -1230171, -- Sharpening Wheel
+            [questKeys.objectives] = {{{4605,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96044,97900,97916,97928,97939,97964},
+        },
+        [97953] = { -- Camping 101: Enchanting
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
+            [questKeys.requiredSpell] = -1230643, -- Enchanted Lute
+            [questKeys.objectives] = {{{5695,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96059,97901,97917,97929,97940,98284,98286},
+        },
+        [97954] = { -- Camping 101: Engineering
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ENGINEERING, 1},
+            [questKeys.requiredSpell] = -1230656, -- Reagent Bot
+            [questKeys.objectives] = {{{4586,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96058,97902,97918,97930,97941,98285,98287},
+        },
+        [97955] = { -- Camping 101: First Aid
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.FIRST_AID, 1},
+            [questKeys.requiredSpell] = -1230117, -- First Aid Kit
+            [questKeys.objectives] = {{{5759,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96047,97903,97919,97931,97942,97965},
+        },
+        [97956] = { -- Camping 101: Fishing
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.FISHING, 1},
+            [questKeys.requiredSpell] = -1229745, -- Fish Bowl
+            [questKeys.objectives] = {{{5690,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96050,97904,97920,97932,97943,97967},
+        },
+        [97957] = { -- Camping 101: Herbalism
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.HERBALISM, 1},
+            [questKeys.requiredSpell] = -1229705, -- Incense Candle
+            [questKeys.objectives] = {{{2114,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96055,97905,97921,97933,97944,97968},
+        },
+        [97958] = { -- Camping 101: Leatherworking
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.LEATHERWORKING, 1},
+            [questKeys.requiredSpell] = -1229432, -- Camp Tent
+            [questKeys.objectives] = {{{3549,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96031,97906,97922,97934,97946,97969},
+        },
+        [97959] = { -- Camping 101: Mining
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.MINING, 1},
+            [questKeys.requiredSpell] = -1230161, -- Lodestone
+            [questKeys.objectives] = {{{4598,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96046,97907,97923,97935,97948,97970},
+        },
+        [97960] = { -- Camping 101: Skinning
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.SKINNING, 1},
+            [questKeys.requiredSpell] = -1229517, -- Camp Chair
+            [questKeys.objectives] = {{{6289,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96056,97908,97924,97936,97949,97971},
+        },
+        [97961] = { -- Camping 101: Tailoring
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
+            [questKeys.requiredSpell] = -1229504, -- Faction Banner
+            [questKeys.objectives] = {{{3523,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96057,96102,97925,97937,97950,97972,97973},
+        },
         [97963] = { -- Camping 101: Alchemy
-            [questKeys.preQuestSingle] = {96101},
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.ALCHEMY, 1},
             [questKeys.requiredSpell] = -1230564, -- Mana Well
             [questKeys.objectives] = {{{257019,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96045,97899,97915,97927,97938,97951},
         },
         [97964] = { -- Camping 101: Blacksmithing
-            [questKeys.preQuestSingle] = {96101},
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 1},
             [questKeys.requiredSpell] = -1230171, -- Sharpening Wheel
             [questKeys.objectives] = {{{251913,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96044,97900,97916,97928,97939,97952},
         },
         [97965] = { -- Camping 101: First Aid
-            [questKeys.preQuestSingle] = {96101},
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.FIRST_AID, 1},
             [questKeys.requiredSpell] = -1230117, -- First Aid Kit
             [questKeys.objectives] = {{{257018,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96047,97903,97919,97931,97942,97955},
         },
         [97967] = { -- Camping 101: Fishing
-            [questKeys.preQuestSingle] = {96101},
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.FISHING, 1},
             [questKeys.requiredSpell] = -1229745, -- Fish Bowl
             [questKeys.objectives] = {{{251992,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96050,97904,97920,97932,97943,97956},
         },
         [97968] = { -- Camping 101: Herbalism
-            [questKeys.preQuestSingle] = {96101},
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.HERBALISM, 1},
             [questKeys.requiredSpell] = -1229705, -- Incense Candle
             [questKeys.objectives] = {{{254345,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96055,97905,97921,97933,97944,97957},
         },
         [97969] = { -- Camping 101: Leatherworking
-            [questKeys.preQuestSingle] = {96101},
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.LEATHERWORKING, 1},
             [questKeys.requiredSpell] = -1229432, -- Camp Tent
             [questKeys.objectives] = {{{251993,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96031,97906,97922,97934,97946,97958},
         },
         [97970] = { -- Camping 101: Mining
-            [questKeys.preQuestSingle] = {96101},
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.MINING, 1},
             [questKeys.requiredSpell] = -1230161, -- Lodestone
             [questKeys.objectives] = {{{257022,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96046,97907,97923,97935,97948,97959},
         },
         [97971] = { -- Camping 101: Skinning
-            [questKeys.preQuestSingle] = {96101},
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.SKINNING, 1},
             [questKeys.requiredSpell] = -1229517, -- Camp Chair
             [questKeys.objectives] = {{{257024,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96056,97908,97924,97936,97949,97960},
         },
         [97972] = { -- Camping 101: Tailoring
-            [questKeys.preQuestSingle] = {96101},
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
             [questKeys.requiredSpell] = -1229504, -- Faction Banner
             [questKeys.objectives] = {{{251991,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96057,96102,97925,97937,97950,97961,97973},
         },
         [97973] = { -- Camping 101: Tailoring
-            [questKeys.preQuestSingle] = {96101},
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
             [questKeys.requiredSpell] = -1263425, -- Faction Banner
             [questKeys.objectives] = {{{251991,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96057,96102,97925,97937,97950,97961,97972},
         },
         [98024] = { -- Journey to the Crossroads
             [questKeys.preQuestSingle] = {95350},
         },
         [98284] = { -- Camping 101: Enchanting
-            [questKeys.preQuestSingle] = {96101},
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
             [questKeys.requiredSpell] = -1230643, -- Enchanted Lute
             [questKeys.objectives] = {{{257020,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96059,97901,97917,97929,97940,97953,98286},
         },
         [98285] = { -- Camping 101: Engineering
-            [questKeys.preQuestSingle] = {96101},
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.ENGINEERING, 1},
             [questKeys.requiredSpell] = -1230656, -- Reagent Bot
             [questKeys.objectives] = {{{251684,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96058,97902,97918,97930,97941,97954,98287},
         },
         [98286] = { -- Camping 101: Enchanting
-            [questKeys.preQuestSingle] = {96101},
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
             [questKeys.requiredSpell] = -1230643, -- Enchanted Lute
             [questKeys.objectives] = {{{257020,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96059,97901,97917,97929,97940,97953,98284},
+        },
+        [98287] = { -- Camping 101: Engineering -- ??
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredSkill] = {profKeys.ENGINEERING, 1},
+            [questKeys.requiredSpell] = -1230656, -- Reagent Bot
+            [questKeys.objectives] = {{{11026,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.exclusiveTo] = {96058,97902,97918,97930,97941,97954,98285},
         },
         [98372] = { -- An Unfortunate End
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
