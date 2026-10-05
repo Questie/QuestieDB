@@ -777,17 +777,32 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 96604,
             [questKeys.exclusiveTo] = {96627,96628,96630,96638,96656,96659},
         },
+        [96655] = { -- Camping 101: Cooking
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.objectives] = {{{3191,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.exclusiveTo] = {96626,96629,96634,96646,96658,96661},
+        },
         [96656] = { -- The Adventurer
             -- [questKeys.preQuestSingle] = {92470}, -- TBD
             [questKeys.breadcrumbForQuestId] = 96607,
             [questKeys.nextQuestInChain] = 96607,
             [questKeys.exclusiveTo] = {96627,96628,96630,96638,96652,96659},
         },
+        [96658] = { -- Camping 101: Cooking
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.objectives] = {{{265944,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.exclusiveTo] = {96626,96629,96634,96646,96655,96661},
+        },
         [96659] = { -- The Adventurer
             -- [questKeys.preQuestSingle] = {92470}, -- TBD
             [questKeys.breadcrumbForQuestId] = 96605,
             [questKeys.nextQuestInChain] = 96605,
             [questKeys.exclusiveTo] = {96627,96628,96630,96638,96652,96656},
+        },
+        [96661] = { -- Camping 101: Cooking
+            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            [questKeys.objectives] = {{{3067,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.exclusiveTo] = {96626,96629,96634,96646,96655,96658},
         },
         [97243] = { -- Call of Fire
             [questKeys.startedBy_add] = {{254082}},
