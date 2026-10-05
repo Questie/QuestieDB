@@ -27,6 +27,11 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{46.9,76.9},{47.8,76.4},{47.8,76.5},{48.0,79.5},{48.2,78.4},{48.2,78.5},{48.4,73.7},{48.7,75.5},{48.7,79.1},{48.8,75.4},{48.9,82.0},{49.3,74.1},{49.6,77.3},{50.0,75.2},{50.0,81.1},{50.3,72.5},{50.3,73.5},{50.3,79.7},{50.4,77.6},{50.4,82.4},{50.4,82.5},{50.5,77.5},{50.5,79.6},{50.5,82.6},{50.8,80.9},{51.1,83.5},{51.2,81.8},{51.4,76.0},{51.4,77.0},{51.5,75.9},{51.5,77.1},{51.8,83.4},{51.8,83.5},{51.9,82.1},{52.7,79.4},{52.8,79.7},{53.6,81.8},{54.5,80.0}}}, -- WIP
             [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
+        [581820] = { -- Dusty Bedroll
+            [objectKeys.name] = "Dusty Bedroll",
+            [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{52.08,69.4}}},
+            [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+        },
         [586726] = { -- Portal To Rohashi Spires
             [objectKeys.name] = "Portal To Rohashi Spires",
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.55,50.33}}},
@@ -75,6 +80,11 @@ function ForeverObjectFixes:Load()
         [623295] = { -- Abandoned Belongings
             [objectKeys.name] = "Abandoned Belongings",
         },
+        [631299] = { -- Skyborne Portal to Stormwind
+            [objectKeys.name] = "Skyborne Portal to Stormwind",
+            [objectKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{12.04,56.21}}},
+            [objectKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+        },
         [660739] = { -- Ritual Fire
             [objectKeys.questEnds_add] = {95805},
         },
@@ -85,6 +95,11 @@ function ForeverObjectFixes:Load()
         },
         [673378] = { -- Oracle Tree Bark
             [objectKeys.questStarts_add] = {940},
+        },
+        [697118] = { -- Windstone Formation
+            [objectKeys.name] = "Windstone Formation",
+            [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{47.0,69.0},{47.3,69.7},{47.4,68.3},{47.5,68.6},{47.7,70.0},{47.8,67.5},{48.6,68.5}}},
+            [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
         -- For Forever fixes 450001-459999
         [450001] = { -- Elemental Convergence
