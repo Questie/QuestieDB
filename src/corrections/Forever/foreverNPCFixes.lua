@@ -48,6 +48,9 @@ function ForeverNpcFixes:Load()
         [251684] = { -- Strange Hermit
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{53.96,38.9}}},
         },
+        [252172] = { -- Danarii Bellowveil
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{45.24,45.18}}},
+        },
         [252476] = { -- Talaanis Shadowsong
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{66.17,76.51}}},
         },
@@ -56,6 +59,9 @@ function ForeverNpcFixes:Load()
         },
         [252800] = { -- Aamelia Windfield
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{46.7,81.95}}},
+        },
+        [253204] = { -- Dondallion Whisperwind
+            [npcKeys.questEnds_remove] = {92850},
         },
         [253622] = { -- Commander Haalien
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.53,36.32}}},
@@ -68,6 +74,9 @@ function ForeverNpcFixes:Load()
         },
         [254082] = { -- Aarnor Galestrike
             [npcKeys.questStarts] = {97243},
+        },
+        [254084] = { -- Elayaa Easewind
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{45.26,44.24}}},
         },
         [254128] = { -- Wardrobe
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{48.84,53.93}}},
