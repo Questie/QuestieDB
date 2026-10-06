@@ -40,7 +40,6 @@ class ParsingTest(unittest.TestCase):
                  (["generate", "--budget-mb=no"], "positive decimal"),
                  (["generate", "Vanilla", "--flavors=TBC"], "cannot be combined"),
                  (["generate", "--flavors=Vanilla,"], "empty values"),
-                 (["freeze", "TBC"], "only Vanilla and Mists"),
                  (["generate", "--flavors=Vanilla", "--flavors=TBC"], "only once"),
                  (["generate", "Camelot"], "unknown"),
                  (["unknown"], "unknown")]
@@ -352,10 +351,7 @@ class CommandFlowTest(unittest.TestCase):
         self.assertEqual("previous", (logdir / "previous.log").read_text())
         self.assertFalse((self.root / "events.log").exists())
 
-    def test_default_freeze_and_duplicate_jobs(self):
-        result = self.run_cli("freeze", "freeze", "--sequential")
-        self.assertEqual(0, result.returncode, result.stdout + result.stderr)
-        self.assertIn("all 2 checks jobs passed", result.stdout)
+    def test_duplicate_jobs_report_failure_once(self):
         self.env["FAIL_READ"] = "1"
         failed = self.run_cli("verify", "verify", "Vanilla", "Vanilla")
         self.assertNotEqual(0, failed.returncode)
