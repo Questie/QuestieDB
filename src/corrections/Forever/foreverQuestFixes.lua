@@ -307,6 +307,7 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{253002,nil,Questie.ICON_TYPE_INTERACT}},{{581820}}},
         },
         [92850] = { -- The Missing Scholar
+            [questKeys.finishedBy] = {{253285}},
             [questKeys.preQuestSingle] = {92849},
             [questKeys.nextQuestInChain] = 99260,
         },
@@ -469,13 +470,12 @@ function ForeverQuestFixes:Load()
         },
         [94007] = { -- Taming the Beast
             [questKeys.requiredClasses] = classIDs.HUNTER,
-            [questKeys.nextQuestInChain] = 94978,
         },
         [94013] = { -- Taming the Beast
             [questKeys.requiredClasses] = classIDs.HUNTER,
             [questKeys.preQuestSingle] = {94979},
             [questKeys.nextQuestInChain] = 94050,
-            [questKeys.objectives] = {{{251707,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{250874,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [94050] = { -- Training the Beast
             [questKeys.requiredClasses] = classIDs.HUNTER,
@@ -564,7 +564,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredClasses] = classIDs.HUNTER,
             [questKeys.preQuestSingle] = {94978},
             [questKeys.nextQuestInChain] = 94013,
-            [questKeys.objectives] = {{{250874,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.objectives] = {{{251707,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [95349] = { -- The Earthen Ring
             [questKeys.preQuestSingle] = {93090},
