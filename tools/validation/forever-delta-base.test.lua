@@ -115,8 +115,8 @@ if not baked then
   offline.flavor = flavor
   runtime.loadCorrections(offline, flavor)
   local registry, providers = offline.Corrections, offline.CorrectionCompat.modules
-  -- Assert real priorities across all seven legacy providers, including generated Item starts,
-  -- reputation and Quest Conditions, independently of manifest/file ordering or entity type.
+  -- Assert real priorities across all six legacy providers, including generated Item starts
+  -- and reputation, independently of manifest/file ordering or entity type.
   local legacyEntries, deltaEntries, traceEntries, authoredEntries = {}, {}, {}, {}
   for _, entry in ipairs(registry.Select({ dynamic = false })) do
     if entry.name:find("^Forever/legacy/") then
@@ -129,7 +129,7 @@ if not baked then
       authoredEntries[#authoredEntries + 1] = entry
     end
   end
-  assert(#legacyEntries == 7 and #deltaEntries == 4 and #traceEntries == 4 and #authoredEntries == 4,
+  assert(#legacyEntries == 6 and #deltaEntries == 4 and #traceEntries == 4 and #authoredEntries == 4,
     "precedence fixture must cover every applicable Static provider")
   for _, delta in ipairs(deltaEntries) do
     for _, legacy in ipairs(legacyEntries) do

@@ -144,8 +144,6 @@ local function sourceTocHeadings()
     ["src/support/_end.lua"] = { subcategory = "Loader teardown" },
     ["src/read/shared.lua"] = { category = "Corrections", subcategory = "Shared readers and Correction registry" },
     ["src/corrections/compat.lua"] = { subcategory = "Provider loader setup" },
-    ["src/corrections/Era/classicQuestConditions.lua"] = { subcategory = "Generated quest conditions",
-      note = "One expansion each, never inherited; authored providers below may override them." },
     ["src/corrections/Era/classicQuestFixes.lua"] = { subcategory = "Era providers",
       note = "Base Corrections are cumulative across legacy flavors; reputation applies only to Vanilla." },
     ["src/corrections/Tbc/tbcQuestFixes.lua"] = { subcategory = "TBC providers: TBC and later legacy flavors" },

@@ -13,12 +13,6 @@
 local _, LibQuestieDB = ...
 
 local manifest = {
-  -- Generated condition expressions. Each table was converted for one expansion's server data,
-  -- so none is inherited by later flavors. loadOffset places them after other generated data
-  -- in their window and before authored fixes, which may override them.
-  { file = 'Era/classicQuestConditions.lua', module = 'QuestieClassicQuestConditions', datatype = 'Quest', static = {'Load'}, expansions = {['Classic']=true}, generated = true, loadOffset = 5 },
-  { file = 'Tbc/tbcQuestConditions.lua', module = 'QuestieTBCQuestConditions', datatype = 'Quest', static = {'Load'}, expansions = {['TBC']=true}, generated = true, loadOffset = 5 },
-  { file = 'Wotlk/wotlkQuestConditions.lua', module = 'QuestieWotlkQuestConditions', datatype = 'Quest', static = {'Load'}, expansions = {['Wotlk']=true}, generated = true, loadOffset = 5 },
   { file = 'Era/classicQuestFixes.lua', module = 'QuestieQuestFixes', datatype = 'Quest', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1 },
   { file = 'Era/classicNPCFixes.lua', module = 'QuestieNPCFixes', datatype = 'Npc', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1 },
   { file = 'Era/classicItemFixes.lua', module = 'QuestieItemFixes', datatype = 'Item', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1 },

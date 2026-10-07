@@ -185,12 +185,6 @@ src\corrections\compat.lua
 src\corrections\register.lua
 src\corrections\_begin.lua
 
-# --- Generated quest conditions ---
-# One expansion each, never inherited; authored providers below may override them.
-src\corrections\Era\classicQuestConditions.lua [AllowLoadGameType vanilla]
-src\corrections\Tbc\tbcQuestConditions.lua [AllowLoadGameType tbc]
-src\corrections\Wotlk\wotlkQuestConditions.lua [AllowLoadGameType wrath]
-
 # --- Era providers ---
 # Base Corrections are cumulative across legacy flavors; reputation applies only to Vanilla.
 src\corrections\Era\classicQuestFixes.lua [AllowLoadGameType vanilla, tbc, wrath, cata, mists]
@@ -255,7 +249,6 @@ src\corrections\Forever\legacy\classicNPCFixes.lua [ExcludeLoadGameType vanilla,
 src\corrections\Forever\legacy\classicItemFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\legacy\classicObjectFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\legacy\classicQuestReputationFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
-src\corrections\Forever\legacy\classicQuestConditions.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\legacy\itemStartFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
 # --- Forever: generated delta-base ---
