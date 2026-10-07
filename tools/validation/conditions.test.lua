@@ -296,42 +296,26 @@ return function(check, equal)
     return mask ~= 0
   end
   local eraFactionMasks = { [77] = true, [178] = true }
-  local keywords = { ["and"] = true, ["or"] = true, ["not"] = true }
 
-  -- Every function answers true, so Explain only fails for expressions outside the grammar.
-  local answerAll = {}
-  for name in pairs(vocabulary) do answerAll[name] = function() return true end end
-  Conditions.SetFunctions("Questie", answerAll)
-  local loaded = {}
-  for _, flavor in ipairs(config.flavors) do
-    client.reset()
-    client.install({ expansion = flavor.expansion })
-    _G.WOW_PROJECT_ID = -1
-    local source = emulator.loadAddon(config.addonName .. ".toc", config.addonName)
-    loaded[flavor.name] = source
-    local raceKeys = enum.byExpansion[flavor.expansion].raceKeys
-    local count, problems, availableEdges = 0, {}, {}
-    for _, questId in ipairs(source.Quest.GetAllIds()) do
-      local expression = source.Quest.conditions(questId)
-      if expression ~= nil then
-        count = count + 1
-        if type(expression) ~= "string" or not Explain(expression) then
-          problems[#problems + 1] = questId
-        else
-          for name in expression:gmatch("([%a_][%w_]*)%s*%(") do
-            if not keywords[name] and not vocabulary[name] then problems[#problems + 1] = questId .. ":" .. name end
+  ---Problems in one flavor's expressions, keyed by quest ID: expressions outside the grammar,
+  ---race bits the flavor lacks, Era faction masks on Forever, and QuestAvailable cycles.
+  ---@return string[] problems Sorted.
+  local function gateProblems(expressions, flavorName, raceKeys)
+    local problems, availableEdges = {}, {}
+    for questId, expression in pairs(expressions) do
+      if type(expression) ~= "string" or not Explain(expression) then
+        problems[#problems + 1] = tostring(questId)
+      else
+        for mask in expression:gmatch("IsRace%a*%(%s*(%d+)") do
+          mask = tonumber(mask)
+          local eraMaskOnForever = flavorName == "Forever" and eraFactionMasks[mask]
+          if eraMaskOnForever or unknownBits(mask, raceKeys.ALL_ALLIANCE + raceKeys.ALL_HORDE) then
+            problems[#problems + 1] = questId .. ":IsRace(" .. mask .. ")"
           end
-          for mask in expression:gmatch("IsRace%a*%(%s*(%d+)") do
-            mask = tonumber(mask)
-            local eraMaskOnForever = flavor.name == "Forever" and eraFactionMasks[mask]
-            if eraMaskOnForever or unknownBits(mask, raceKeys.ALL_ALLIANCE + raceKeys.ALL_HORDE) then
-              problems[#problems + 1] = questId .. ":IsRace(" .. mask .. ")"
-            end
-          end
-          for target in expression:gmatch("QuestAvailable%((%d+)%)") do
-            availableEdges[questId] = availableEdges[questId] or {}
-            table.insert(availableEdges[questId], tonumber(target))
-          end
+        end
+        for target in expression:gmatch("QuestAvailable%((%d+)%)") do
+          availableEdges[questId] = availableEdges[questId] or {}
+          table.insert(availableEdges[questId], tonumber(target))
         end
       end
     end
@@ -348,7 +332,45 @@ return function(check, equal)
     for questId in pairs(availableEdges) do
       if reachesItself(questId, questId, {}) then problems[#problems + 1] = questId .. ":cycle" end
     end
-    equal(problems, {}, flavor.name .. " conditions (" .. count .. ") compile, use the vocabulary, and valid race masks")
+    table.sort(problems)
+    return problems
+  end
+
+  -- Every function answers true, so Explain only fails for expressions outside the grammar.
+  local answerAll = {}
+  for name in pairs(vocabulary) do answerAll[name] = function() return true end end
+  Conditions.SetFunctions("Questie", answerAll)
+
+  -- The gate itself: each kind of problem is found, and a valid chain passes.
+  local classicRaces, foreverRaces = enum.byExpansion.Classic.raceKeys, enum.byExpansion.Forever.raceKeys
+  equal(gateProblems({ [1] = "QuestAvailable(2)", [2] = "QuestAvailable(3)", [3] = "QuestAvailable(1)", [4] = "QuestAvailable(1)" },
+    "Vanilla", classicRaces), { "1:cycle", "2:cycle", "3:cycle" }, "the gate finds QuestAvailable cycles")
+  equal(gateProblems({ [1] = "QuestAvailable(2)", [2] = "QuestRewarded(1)" }, "Vanilla", classicRaces), {},
+    "the gate accepts a QuestAvailable chain without a cycle")
+  equal(gateProblems({ [1] = C.IsRace(foreverRaces.ALL_ALLIANCE) }, "Vanilla", classicRaces),
+    { "1:IsRace(" .. ("%.0f"):format(foreverRaces.ALL_ALLIANCE) .. ")" }, "the gate rejects race bits the flavor lacks")
+  equal(gateProblems({ [1] = "IsRace(77)", [2] = C.IsRace(foreverRaces.ALL_ALLIANCE) }, "Forever", foreverRaces),
+    { "1:IsRace(77)" }, "the gate rejects Era's literal faction masks on Forever")
+  equal(gateProblems({ [1] = "QuestRewarded(1,)", [2] = 5 }, "Vanilla", classicRaces), { "1", "2" },
+    "the gate rejects expressions outside the grammar")
+
+  local loaded = {}
+  for _, flavor in ipairs(config.flavors) do
+    client.reset()
+    client.install({ expansion = flavor.expansion })
+    _G.WOW_PROJECT_ID = -1
+    local source = emulator.loadAddon(config.addonName .. ".toc", config.addonName)
+    loaded[flavor.name] = source
+    local expressions, count = {}, 0
+    for _, questId in ipairs(source.Quest.GetAllIds()) do
+      local expression = source.Quest.conditions(questId)
+      if expression ~= nil then
+        expressions[questId] = expression
+        count = count + 1
+      end
+    end
+    equal(gateProblems(expressions, flavor.name, enum.byExpansion[flavor.expansion].raceKeys), {},
+      flavor.name .. " conditions (" .. count .. ") parse, use valid race masks, and form no QuestAvailable cycle")
   end
 
   Conditions.SetFunctions("Questie", nil)
