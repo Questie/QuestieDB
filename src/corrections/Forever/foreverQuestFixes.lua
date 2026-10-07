@@ -11,6 +11,8 @@ local QuestieProfessions = QuestieLoader:ImportModule("QuestieProfessions")
 local QuestieCorrections = QuestieLoader:ImportModule("QuestieCorrections")
 ---@type l10n
 local l10n = QuestieLoader:ImportModule("l10n")
+-- Builds Quest Condition expressions; see src/corrections/conditionBuilder.lua.
+local C = QuestieLoader:ImportModule("ConditionBuilder")
 
 QuestieCorrections.itemObjectiveFirst[92682] = true
 QuestieCorrections.killCreditObjectiveFirst[94489] = true
@@ -35,6 +37,9 @@ function ForeverQuestFixes:Load()
         [982] = { -- Deep Ocean, Vast Sea
             [questKeys.breadcrumbs_add] = {97894},
         },
+        [1318] = { -- Unfinished Gordok Business
+            [questKeys.conditions] = C.HasAura(22799), -- King of the Gordok
+        },
         [1516] = { -- Call of Earth
             [questKeys.preQuestSingle] = {1516,1519,92466},
             [questKeys.exclusiveTo] = {1519,92466},
@@ -45,6 +50,9 @@ function ForeverQuestFixes:Load()
         },
         [6126] = { -- Lessons Anew
             [questKeys.startedBy_add] = {{262560}},
+        },
+        [7703] = { -- Unfinished Gordok Business
+            [questKeys.conditions] = C.HasAura(22799), -- King of the Gordok
         },
         [78124] = { -- Nar'thalas Almanac
             [questKeys.requiredRaces] = raceIDs.NONE,
