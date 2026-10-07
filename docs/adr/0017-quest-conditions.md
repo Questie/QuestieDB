@@ -49,14 +49,17 @@ display. Both combine operands with the same function, so they always agree.
 ### 3. One trusted owner publishes shared functions
 
 Questie has better answers for some functions: its own quest-state caches, its availability
-rules, and its profession mapping. `SetFunctions(owner, functions)` publishes overrides and new
-names into the single environment every consumer evaluates against. A write copies the table
+rules, and its profession mapping. `SetFunctions(owner, functions)` publishes replacements for
+base functions into the single environment every consumer evaluates against. Names outside the
+vocabulary are rejected: the grammar only accepts vocabulary names, so no expression could call
+them, and a misspelled override would otherwise be ignored silently. A write copies the table
 and replaces the previous set; `nil` withdraws it.
 
 Only Questie may publish. Other consumers benefit from Questie's versions, but their variants
 must not change what Questie shows, and two consumers overriding the same name would make
-results depend on load order. A consumer that needs private variants can be given a derived
-environment when one exists; none does yet.
+results depend on load order. The owner name is a convention between cooperating addons, not
+authentication: any addon can pass `"Questie"`. A consumer that needs private variants can be
+given a derived environment when one exists; none does yet.
 
 ### 4. Unreadable state is unknown, not false
 

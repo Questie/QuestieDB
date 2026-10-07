@@ -776,7 +776,8 @@ client's standing IDs.
 
 ### Publishing condition functions
 
-A trusted owner can replace base functions or add new names for every consumer:
+A trusted owner can replace base functions for every consumer. Names outside the vocabulary
+raise an error:
 
 ```lua
 LibQuestieDB.Conditions.SetFunctions("Questie", {
