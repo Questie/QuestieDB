@@ -185,7 +185,8 @@ return function(check, equal)
   equal(Explain(C.QuestRewarded(1518)).result, false, "Explain uses published functions")
   Conditions.SetFunctions("Questie", nil)
   for _, expression in ipairs({ "QuestRewarded(", "NotAFunction(1)", "QuestRewarded(1) ; x", "QuestRewarded(1.5)",
-    'IsTeam("Alli\\"ance")', "(QuestRewarded(1)", "" }) do
+    'IsTeam("Alli\\"ance")', "(QuestRewarded(1)", "QuestRewarded(1,)", "QuestRewarded(,1)",
+    "HasItem(1 2)", "" }) do
     equal(Explain(expression), nil, "Explain rejects input outside the grammar: " .. expression)
   end
 

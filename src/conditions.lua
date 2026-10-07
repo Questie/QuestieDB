@@ -351,14 +351,19 @@ local function parse(tokens)
     index = index + 1
     expect("(")
     local args = {}
-    while not peek(")") do
-      local argument = tokens[index]
-      if not argument or (argument.kind ~= "number" and argument.kind ~= "string") then
-        error("expected an argument", 0)
-      end
-      args[#args + 1] = argument.value
+    local function argument()
+      local token = tokens[index]
+      if not token or (token.kind ~= "number" and token.kind ~= "string") then error("expected an argument", 0) end
+      args[#args + 1] = token.value
       index = index + 1
-      if peek(",") then index = index + 1 elseif not peek(")") then error("expected , or )", 0) end
+    end
+    if not peek(")") then
+      argument()
+      -- Every comma needs an argument after it, as in Lua.
+      while peek(",") do
+        index = index + 1
+        argument()
+      end
     end
     expect(")")
     return { call = name.value, args = args }
