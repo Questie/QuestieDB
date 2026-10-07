@@ -155,6 +155,8 @@ local function buildModules(flavor)
   }
   modules.QuestieCorrections = compat.objectiveFirst
   modules.Phasing = { phases = pick("phases", flavor) }
+  -- Quest Condition expressions are written with the builder so they are checked at load.
+  modules.ConditionBuilder = LibQuestieDB.ConditionBuilder
 
   -- `l10n(...)` appears ~100 times in classicQuestFixes and ~207 times in tbcQuestFixes,
   -- always inside `extraObjectives`. **Store the enUS string, translate at render time** —

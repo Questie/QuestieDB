@@ -693,6 +693,108 @@ at render time with their own string-keyed localization function.
 
 ---
 
+## Quest Conditions
+
+Some quests carry an availability expression in the `conditions` field. Contract 4 adds the
+field and `LibQuestieDB.Conditions`. The design is recorded in
+[ADR 0017](adr/0017-quest-conditions.md).
+
+```lua
+-- On Forever: "Unfinished Gordok Business" needs the King of the Gordok aura.
+LibQuestieDB.Conditions.Get(1318)                        --> "HasAura(22799)"
+LibQuestieDB.Conditions.EvaluateQuest(1318)              --> true, false, or nil
+LibQuestieDB.Conditions.Evaluate("IsLevel(10) and not HasAura(15007)")
+```
+
+`Evaluate` returns true for a nil or empty expression and nil when the answer is unknown. A
+condition function returns nil when it cannot read its state, for example auras hidden by secret
+values in combat. `and`, `or`, and `not` combine results with three-valued logic, so a nil only
+makes the result unknown when no other operand decides it. Keep the previous answer and evaluate
+again later. Expressions outside the builder's grammar, including unknown function names, and
+expressions that raise an error are true and are reported once through `geterrorhandler()`.
+
+| Function | Meaning | Base implementation |
+| --- | --- | --- |
+| `QuestRewarded(questId)` | Quest turned in | Client completion flag |
+| `QuestInLog(questId)` | Quest in the log | Client quest log |
+| `QuestComplete(questId)` | In the log with objectives complete | Client quest log |
+| `QuestNone(questId)` | Neither in the log nor turned in | Composes the two above |
+| `QuestAvailable(questId)` | Quest can be accepted | Stub: true |
+| `HasAura(spellId)` | Player has the aura | Client auras; unknown when restricted |
+| `HasItem(itemId[, count])` | Count in bags, default 1 | Client item count |
+| `HasItemOrBank(itemId[, count])` | Count in bags and bank | Client item count |
+| `HasItemEquipped(itemId)` | Item equipped | Client |
+| `HasSkill(skillId[, level])` | Profession at level, default 1 | Stub: true |
+| `KnowsSpell(spellId)` | Spell known | Client |
+| `HasRep(factionId, rank)` | Reputation rank at least `rank` | Client; ranks 0 (Hated) to 7 (Exalted), `C.standing.HONORED` etc. |
+| `RepBelow(factionId, rank)` | Reputation rank at most `rank` | Client; same ranks |
+| `IsTeam(factionTag)` | `"Alliance"`, `"Horde"`, or `"Neutral"` | `UnitFactionGroup("player")` |
+| `IsRace(raceMask)` / `IsClass(classMask)` | Bitmask membership; 0 matches all | Client with `Enum.raceMaskById` |
+| `IsRaceClass(raceMask, classMask)` | Both | Composes the two above |
+| `IsLevel(level)` / `IsLevelExact(level)` / `IsLevelBelow(level)` | Level `>=`, `==`, `<=` | Client |
+| `HasAchievement(achievementId)` | Achievement completed | Client; true without achievements |
+
+Server events, holidays, and world states are not part of the vocabulary yet; ADR 0017 lists
+them as a future improvement. A stub is true, so a negated stub
+is false: `not QuestAvailable(1)` hides its quest without Questie. The data is written for Questie, which publishes real `QuestAvailable` and
+`HasSkill`. The shipped data never forms a `QuestAvailable` cycle.
+
+### Explaining a condition
+
+`Explain(expression)` and `ExplainQuest(questId)` parse the builder's grammar back into a tree,
+so a UI can show which part of a condition fails:
+
+```lua
+LibQuestieDB.Conditions.Explain('IsTeam("Alliance") and not QuestRewarded(1518)')
+--> { op = "and", result = false, children = {
+--      { call = "IsTeam", args = { "Alliance" }, result = true },
+--      { op = "not", result = false, children = {
+--          { call = "QuestRewarded", args = { 1518 }, result = true } } } } }
+```
+
+Every leaf is evaluated, and `and`/`or`/`not` combine true, false, and nil (unknown) with the
+same three-valued logic as `Evaluate`, so the root's result is `Evaluate`'s answer. Expressions
+outside the builder's grammar, or that raise an error, return nil; show the raw string instead.
+
+### Writing conditions in Corrections
+
+Correction files build expressions with `ConditionBuilder` rather than writing strings. A wrong
+function name or argument raises an error when the file loads:
+
+```lua
+local C = QuestieLoader:ImportModule("ConditionBuilder")
+-- In Load():
+[questKeys.conditions] = C.Any(C.QuestRewarded(1517), C.All(C.IsTeam("Horde"), C.IsLevel(30))),
+-- stores "QuestRewarded(1517) or (IsTeam(\"Horde\") and IsLevel(30))"
+```
+
+`All`, `Any`, and `Not` combine conditions; every function above has a builder call of the same
+name. Write races and classes with `raceKeys` and `classKeys`, never as numbers. Write ranks with
+`C.standing` (`HATED` = 0 through `EXALTED` = 7), for example
+`C.HasRep(factionIDs.THE_ORACLES, C.standing.HONORED)`. These are condition ranks, one below the
+client's standing IDs.
+
+### Publishing condition functions
+
+A trusted owner can replace base functions for every consumer. Names outside the vocabulary
+raise an error:
+
+```lua
+-- Questie only. Another addon passing "Questie" replaces Questie's whole set for everyone.
+LibQuestieDB.Conditions.SetFunctions("Questie", {
+  QuestRewarded = function(questId) return Questie.db.char.complete[questId] == true end,
+})
+LibQuestieDB.Conditions.SetFunctions("Questie", nil) -- withdraw
+```
+
+A write copies the table and replaces the previous set. Functions return true, false, or nil
+for unknown.
+Only Questie is trusted; other owners raise an error. Other consumers must not publish under
+Questie's name: the owner is a convention, not authentication. Re-entering an expression that is
+already being evaluated returns true, so a published `QuestAvailable` may evaluate conditions.
+
+---
+
 ## Support data
 
 Game reference data consumed as whole tables rather than through the metadata store.
@@ -830,6 +932,9 @@ Contract 3 adds the shared `Enum.raceMaskById` encoding table and active-flavor
 `Enum.factionRaceMasks`. It does not change storage or remove older interfaces: contracts
 1 and 2 remain supported. A consumer requiring either table
 must request contract 3 so an older provider fails the version check before the lookup.
+
+Contract 4 adds the Quest `conditions` field and `LibQuestieDB.Conditions`. Contracts 1
+through 3 remain supported.
 
 The check is a **range**: `RequireContract(v)` passes for any
 `minSupportedContract <= v <= contractVersion`, so a consumer built against an older

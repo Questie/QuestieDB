@@ -943,6 +943,10 @@ suite("correction-audit", "shared", function()
   dofile("tools/validation/correction-audit.test.lua")(check, equal)
 end)
 
+suite("conditions", "shared", function()
+  dofile("tools/validation/conditions.test.lua")(check, equal)
+end)
+
 suite("table-corrections", "shared", function()
   dofile("tools/validation/table-corrections.test.lua")(check, equal)
 end)
@@ -1005,11 +1009,12 @@ suite("correction-enums", "shared", function()
   client.install({ expansion = "Forever" })
   local source = emulator.loadAddon(config.addonName .. ".toc", config.addonName)
   equal(source.Enum.raceMaskById, expectedMasks, "actual Source TOC exposes race encoding")
-  equal(source.contractVersion, 3, "race encoding is available under contract 3")
+  equal(source.contractVersion, 4, "the provider publishes contract 4")
   equal(source.RequireContract(3), true, "race encoding consumers are supported")
   equal(source.RequireContract(1), true, "contract 1 consumers remain supported")
   equal(source.RequireContract(2), true, "contract 2 consumers remain supported")
-  equal(source.RequireContract(4), false, "future consumer contracts are rejected")
+  equal(source.RequireContract(4), true, "Quest Conditions consumers are supported")
+  equal(source.RequireContract(5), false, "future consumer contracts are rejected")
 
   -- Controlled rows exercise both real backends; no generated artifact or authored eligibility changes.
   local fixture = dofile("tools/validation/storage-fixture.lua")
@@ -2729,6 +2734,8 @@ suite("toc", "shared", function()
       before(path, "src/support/_begin.lua", "support seeds DropDB.correctionKeys from the constants")
       before(path, "src/corrections/compat.lua", "compat captures constants at file scope")
     end
+    before("src/corrections/conditionBuilder.lua", "src/corrections/compat.lua",
+      "compat hands correction files the condition builder")
     before("src/corrections/registry.lua", "src/corrections/_end.lua",
       "registration needs the registry")
     before("src/read/shared.lua", "src/api.lua", "api builds entities with shared.CreateEntity")
@@ -2958,7 +2965,7 @@ suite("api", "Vanilla", function()
   equal(Lib.Meta.ObjectMeta.objectKeys.name, 1, "Meta.ObjectMeta.objectKeys")
   equal(Lib.Meta.Quest.names[1], "name", "Meta.Quest.names")
   equal(Lib.Meta.Quest.types[1], "string", "Meta.Quest.types")
-  equal(Lib.Meta.Quest.fieldCount, 36, "Meta.Quest.fieldCount")
+  equal(Lib.Meta.Quest.fieldCount, 37, "Meta.Quest.fieldCount")
 
   -- Keep LuaLS key-class fields in runtime positional order so declaration drift fails here.
   local metaTypeSource = lib.readAll("src/types/Meta.t.lua")

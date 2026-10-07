@@ -26,7 +26,7 @@
 ## Category-zhCN: 任务
 ## Category-zhTW: 任務
 ## IconTexture: Interface\AddOns\QuestieDB\icons\QuestieTDB_64x64.png
-## X-Contract-Version: 3
+## X-Contract-Version: 4
 ## X-Mode: source
 
 # =============================================================================
@@ -42,6 +42,7 @@ src\meta\npcMeta.lua
 src\meta\itemMeta.lua
 src\meta\objectMeta.lua
 src\corrections\tablePatch.lua
+src\corrections\conditionBuilder.lua
 
 # --- Native client selection ---
 # Forever excludes legacy game types: an all-unknown allow list would also load on older clients.
@@ -309,4 +310,5 @@ src\ui\modeIndicator.lua
 
 # --- Public API ---
 src\api.lua
+src\conditions.lua
 src\support\eraToForever.lua

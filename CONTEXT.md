@@ -220,6 +220,28 @@ The emulator's mocked client identity — faction, race, class, season — letti
 faction-differentiated correction branches execute offline.
 _Avoid_: Test profile, mock player
 
+### Conditions
+
+**Quest Condition**:
+A boolean expression in the Quest `conditions` field that decides availability, written
+with the Condition vocabulary. See ADR 0017.
+_Avoid_: Condition script, requirement string
+
+**Condition function**:
+One name in the Condition vocabulary, such as `QuestRewarded` or `HasAura`. It returns true,
+false, or nil when it cannot read its state right now.
+_Avoid_: Predicate, resolver
+
+**Condition builder**:
+The `ConditionBuilder` module correction files use to write Quest Conditions. It validates each
+call and returns the expression string.
+_Avoid_: Condition DSL, expression parser
+
+**Unknown result**:
+The nil an evaluation returns when a Condition function returned nil and no other operand
+decides the result. The caller keeps its previous answer.
+_Avoid_: Failed condition, false
+
 ## Boundary with Questie
 
 **QuestieDB owns what is true about game entities. Questie owns what to do with that truth.**
@@ -232,6 +254,9 @@ constructed from consumer-owned runtime state or policy belongs to that consumer
 Display suppression, consumer phase/settings state, projections and caches, and asynchronous
 repair of consumer data therefore remain consumer-owned. A quest that is duplicate or
 unobtainable still exists, and another consumer may legitimately want it.
+
+QuestieDB evaluates Quest Conditions from client APIs alone. Questie publishes Condition
+functions that need its own state, such as quest availability, as a trusted owner (ADR 0017).
 
 Questie is a consumer. Storage vocabulary stops here — Questie has no terms for Metadata
 fields, Chunked metadata values, or Generation.
