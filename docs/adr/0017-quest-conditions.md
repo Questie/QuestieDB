@@ -27,6 +27,8 @@ Conditions are ordinary correction values, written in the existing correction fi
 quest's other fixes. There are no condition-specific files. Generated per-expansion tables
 converted from server condition data were tried and removed: most of their rules duplicated
 existing quest fields, and a separate file split a quest's availability rules across two places.
+The first examples are authored Forever corrections, such as "Unfinished Gordok Business"
+requiring the King of the Gordok aura.
 
 ### 2. QuestieDB owns the vocabulary and the evaluator
 

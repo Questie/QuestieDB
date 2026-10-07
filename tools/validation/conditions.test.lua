@@ -259,5 +259,8 @@ return function(check, equal)
     equal(problems, {}, flavor.name .. " conditions (" .. count .. ") compile, use the vocabulary, valid race masks, and stable stubs")
   end
 
+  -- Conditions are ordinary correction values: Forever's authored fixes carry them, Era's do not.
+  equal(loaded.Forever.Conditions.Get(1318), "HasAura(22799)", "Forever reads Unfinished Gordok Business's condition")
+  equal(loaded.Vanilla.Conditions.Get(1318), nil, "Vanilla does not inherit Forever's condition")
   client.reset()
 end

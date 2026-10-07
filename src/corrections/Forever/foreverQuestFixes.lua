@@ -11,6 +11,8 @@ local QuestieProfessions = QuestieLoader:ImportModule("QuestieProfessions")
 local QuestieCorrections = QuestieLoader:ImportModule("QuestieCorrections")
 ---@type l10n
 local l10n = QuestieLoader:ImportModule("l10n")
+-- Builds Quest Condition expressions; see src/corrections/conditionBuilder.lua.
+local C = QuestieLoader:ImportModule("ConditionBuilder")
 
 QuestieCorrections.itemObjectiveFirst[92682] = true
 QuestieCorrections.killCreditObjectiveFirst[94489] = true
@@ -282,6 +284,9 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {},
             [questKeys.preQuestGroup] = {1273,1323},
         },
+        [1318] = { -- Unfinished Gordok Business
+            [questKeys.conditions] = C.HasAura(22799), -- King of the Gordok
+        },
         [1369] = { -- Broken Tears
             [questKeys.nextQuestInChain] = 92743,
         },
@@ -495,6 +500,9 @@ function ForeverQuestFixes:Load()
         },
         [7582] = { -- The Prison's Casing
             [questKeys.nextQuestInChain] = 0,
+        },
+        [7703] = { -- Unfinished Gordok Business
+            [questKeys.conditions] = C.HasAura(22799), -- King of the Gordok
         },
         [7790] = { -- River Ends
             [questKeys.name] = "River Ends",
