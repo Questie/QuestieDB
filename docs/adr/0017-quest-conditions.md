@@ -35,9 +35,11 @@ requiring the King of the Gordok aura.
 `src/conditions.lua` defines every condition function using client APIs only, so any addon can
 evaluate conditions without Questie. Functions that need state the client cannot provide
 (`QuestAvailable`, `HasSkill`, `EventActive`, `HolidayActive`, `WorldState`) are permissive
-stubs that return true. Unknown function names are also permissive. A negated stub
-(`not EventActive(12)`) is therefore false and would hide its quest for every consumer, so the
-data validation rejects negated stubs.
+stubs that return true. Unknown function names are also permissive.
+
+The data is written for Questie, which publishes real `QuestAvailable` and `HasSkill`, so
+corrections may negate any function. A consumer without Questie gets the stubs, where a negated
+stub is false; supplying better answers is that consumer's concern.
 
 Expressions compile once per distinct string. `Evaluate(expression)` is the primitive;
 `EvaluateQuest(questId)` reads the field and evaluates it.
@@ -90,11 +92,12 @@ unchanged. The builder raises an error when a file loads with an unknown functio
 argument, or a string it did not produce, instead of the evaluator treating it as true at
 runtime. Flavor enums such as `raceKeys` resolve when the file loads, as for other fields.
 
-Faction-wide checks use `IsTeam` with the tag `UnitFactionGroup` returns (`"Alliance"`,
-`"Horde"`, or `"Neutral"`). A race mask is a literal in the stored string, so it cannot follow
-Forever adding Skyborne to Era's factions: an `IsRace(77)` copied from Era would exclude
-Skyborne Alliance players. The data validation therefore rejects faction-wide `IsRace` masks and race
-bits a flavor does not have. `IsRace` is for real race subsets.
+`IsTeam` takes the tag `UnitFactionGroup` returns (`"Alliance"`, `"Horde"`, or `"Neutral"`).
+Race masks are written with `raceKeys`, which resolve per flavor when the file loads, so
+`IsRace(raceKeys.ALL_ALLIANCE)` includes Skyborne on Forever. A literal number does not
+adapt: an `IsRace(77)` written for Era would exclude Skyborne Alliance players on Forever. The
+data validation rejects race bits a flavor does not have, and Era's literal faction masks 77
+and 178 on Forever.
 
 Storing an expression tree instead was rejected. It needs a new field type and evaluator, and
 the string already carries everything the evaluator needs. When a UI needs the structure, for

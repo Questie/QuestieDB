@@ -734,8 +734,9 @@ Expressions that fail to compile or raise an error are true and are reported onc
 | `HasAchievement(achievementId)` | Achievement completed | Client; true without achievements |
 | `EventActive(eventId)` / `HolidayActive(holidayId)` / `WorldState(id, value)` | Server state | Stub: true |
 
-Unknown function names are true. Stubs are true only when not negated: `not EventActive(12)`
-is false. The shipped data never negates a stub or forms a `QuestAvailable` cycle.
+Unknown function names are true. A stub is true, so a negated stub is false: `not EventActive(12)`
+hides its quest. The data is written for Questie, which publishes real `QuestAvailable` and
+`HasSkill`. The shipped data never forms a `QuestAvailable` cycle.
 
 ### Explaining a condition
 
@@ -768,7 +769,7 @@ local C = QuestieLoader:ImportModule("ConditionBuilder")
 ```
 
 `All`, `Any`, and `Not` combine conditions; every function above has a builder call of the same
-name. Use `IsTeam` for faction-wide checks and `IsRace` only for race subsets. Write ranks with
+name. Write races and classes with `raceKeys` and `classKeys`, never as numbers. Write ranks with
 `C.standing` (`HATED` = 0 through `EXALTED` = 7), for example
 `C.HasRep(factionIDs.THE_ORACLES, C.standing.HONORED)`. These are condition ranks, one below the
 client's standing IDs.
