@@ -43,7 +43,8 @@ stub is false; supplying better answers is that consumer's concern.
 
 Expressions parse once per distinct string into a tree. `Evaluate(expression)` walks it and
 stops at the operand that decides the result; `Explain(expression)` evaluates every leaf for
-display. Both combine operands with the same function, so they always agree.
+display. Both combine operands with the same function, so they agree unless a condition
+function raises an error, which Explain reports as nil.
 `EvaluateQuest(questId)` reads the field and evaluates it.
 
 ### 3. One trusted owner publishes shared functions
@@ -70,8 +71,8 @@ negated check should hide.
 
 A condition function returns nil when it cannot read its state. `and`, `or`, and `not`
 combine true, false, and nil with three-valued logic: a false operand decides `and`, a true
-operand decides `or`, and otherwise any nil makes the result nil. The answer does not depend on
-operand order. The caller keeps its previous answer for nil and evaluates again later.
+operand decides `or`, and otherwise any nil makes the result nil. Apart from errors (see 5),
+the answer does not depend on operand order. The caller keeps its previous answer for nil and evaluates again later.
 
 An earlier version compiled expressions with `loadstring` and returned nil whenever any nil was
 reached. Its answer depended on operand order (`HasAura(1) and QuestRewarded(2)` was nil where
@@ -84,7 +85,7 @@ An expression outside the grammar, including one that names an unknown function,
 to true and is reported once. A condition function that raises an error makes the expression
 true; each distinct error message is reported once through the client's error handler, so one
 broken function used by many expressions produces one report. `Explain` returns nil for both. Re-entering an expression that is already being evaluated
-returns true. The same string always makes the same calls, so re-entry could never finish;
+returns true, and `Explain` returns nil. The same string always makes the same calls, so re-entry could never finish;
 it happens when a published `QuestAvailable` evaluates the quest that asked about it. With a
 cycle between quests, the answer would depend on which quest was evaluated first, so the data
 validation rejects `QuestAvailable` cycles.
