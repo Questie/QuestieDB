@@ -20,7 +20,7 @@
 -- these with three-valued logic: nil ("unknown") stays unknown unless another operand decides
 -- the result. The caller should keep its previous answer for unknown and evaluate again later.
 -- Evaluate and Explain parse the same tree and combine it with the same function, so they
--- always agree.
+-- agree unless a condition function raises an error; Explain then returns nil.
 
 local _, LibQuestieDB = ...
 
