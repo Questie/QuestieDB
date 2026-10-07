@@ -129,6 +129,8 @@ return function(check, equal)
   check(not pcall(Conditions.SetFunctions, "SomeAddon", {}), "untrusted owners cannot publish")
   check(not pcall(Conditions.SetFunctions, "Questie", { QuestRewarded = true }),
     "published values must be functions")
+  check(not pcall(Conditions.SetFunctions, "Questie", { QuestRewared = function() return true end }),
+    "published names must be condition functions")
   equal(Evaluate("QuestNone(5)"), true, "base QuestNone reads the client")
   local functions = { QuestRewarded = function(questId) return questId == 5 end }
   Conditions.SetFunctions("Questie", functions)

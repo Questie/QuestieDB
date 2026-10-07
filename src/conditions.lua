@@ -12,8 +12,8 @@
 -- QuestieDB supplies a base implementation of every function, built only on client APIs, so
 -- any addon can evaluate conditions. Functions that need state the client cannot provide are
 -- permissive stubs that return true; negating one (`not QuestAvailable(1)`) is therefore false.
--- TRUSTED_OWNER can publish better versions through `SetFunctions`; everyone then evaluates
--- against them.
+-- TRUSTED_OWNER can publish better versions of these functions through `SetFunctions`;
+-- everyone then evaluates against them.
 --
 -- A condition function returns true or false, or nil when it cannot read its state right now
 -- (for example, auras hidden behind secret values in combat). `and`, `or`, and `not` combine
@@ -519,7 +519,8 @@ function Conditions.ExplainQuest(questId)
 end
 
 ---Publish condition functions for every consumer, replacing this owner's previous set.
----Functions may override base functions or add new names. Passing nil withdraws the set.
+---Functions replace base functions of the same name; other names are rejected, since no
+---expression could call them. Passing nil withdraws the set.
 ---@param owner string Must be the trusted owner.
 ---@param functions table<string, fun(...): boolean?>?
 function Conditions.SetFunctions(owner, functions)
@@ -531,6 +532,9 @@ function Conditions.SetFunctions(owner, functions)
   for name, fn in pairs(functions or {}) do
     if type(name) ~= "string" or type(fn) ~= "function" then
       error("QuestieDB: condition functions must map names to functions", 2)
+    end
+    if not base[name] then
+      error("QuestieDB: '" .. name .. "' is not a condition function", 2)
     end
     copy[name] = fn
   end
