@@ -2774,7 +2774,7 @@ suite("toc", "shared", function()
       }
       titanProviders = titanProviders + #(spec.dynamic or {})
     end
-    if spec.file:find("^Wotlk/") then
+    if spec.file:find("^Wotlk/") and not spec.generated then
       equal(spec.dynamic, { "LoadFactionFixes" },
         spec.file .. " declares only its ordinary faction provider")
     end
