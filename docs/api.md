@@ -707,10 +707,11 @@ LibQuestieDB.Conditions.Evaluate("IsLevel(10) and not HasAura(15007)")
 ```
 
 `Evaluate` returns true for a nil or empty expression and nil when the answer is unknown. A
-result is unknown when any condition function it reached could not read its state, for example
-auras hidden by secret values in combat. Keep the previous answer and evaluate again later.
-Expressions that fail to compile or raise an error are true and are reported once through
-`geterrorhandler()`.
+condition function returns nil when it cannot read its state, for example auras hidden by secret
+values in combat. `and`, `or`, and `not` combine results with three-valued logic, so a nil only
+makes the result unknown when no other operand decides it. Keep the previous answer and evaluate
+again later. Expressions outside the builder's grammar, including unknown function names, and
+expressions that raise an error are true and are reported once through `geterrorhandler()`.
 
 | Function | Meaning | Base implementation |
 | --- | --- | --- |
@@ -734,7 +735,7 @@ Expressions that fail to compile or raise an error are true and are reported onc
 | `HasAchievement(achievementId)` | Achievement completed | Client; true without achievements |
 
 Server events, holidays, and world states are not part of the vocabulary yet; ADR 0017 lists
-them as a future improvement. Unknown function names are true. A stub is true, so a negated stub
+them as a future improvement. A stub is true, so a negated stub
 is false: `not QuestAvailable(1)` hides its quest without Questie. The data is written for Questie, which publishes real `QuestAvailable` and
 `HasSkill`. The shipped data never forms a `QuestAvailable` cycle.
 
@@ -751,10 +752,9 @@ LibQuestieDB.Conditions.Explain('IsTeam("Alliance") and not QuestRewarded(1518)'
 --          { call = "QuestRewarded", args = { 1518 }, result = true } } } } }
 ```
 
-Every leaf is evaluated, and `and`/`or`/`not` combine true, false, and nil (unknown) with
-three-valued logic. `Evaluate` remains the availability answer: it reads leaves in order, so
-for an unknown leaf before a deciding one it returns nil where `Explain` reports a result.
-Expressions outside the builder's grammar return nil; show the raw string instead.
+Every leaf is evaluated, and `and`/`or`/`not` combine true, false, and nil (unknown) with the
+same three-valued logic as `Evaluate`, so the root's result is `Evaluate`'s answer. Expressions
+outside the builder's grammar, or that raise an error, return nil; show the raw string instead.
 
 ### Writing conditions in Corrections
 
