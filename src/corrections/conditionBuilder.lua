@@ -5,6 +5,7 @@
 --
 --   local C = QuestieLoader:ImportModule("ConditionBuilder")
 --   [questKeys.conditions] = C.All(C.IsTeam("Alliance"), C.Not(C.QuestRewarded(1518))),
+--   [questKeys.conditions] = C.HasRep(factionIDs.THE_ORACLES, C.standing.HONORED),
 --
 -- Each call returns the canonical expression string that src/conditions.lua evaluates, here
 -- `IsTeam("Alliance") and not QuestRewarded(1518)`. Unknown functions, wrong argument types,
@@ -43,6 +44,13 @@ builder.vocabulary = {
   IsLevel = { "level" }, IsLevelExact = { "level" }, IsLevelBelow = { "level" },
   HasAchievement = { "id" },
   EventActive = { "id" }, HolidayActive = { "id" }, WorldState = { "id", "integer" },
+}
+
+--- Reputation ranks for HasRep and RepBelow. These are condition ranks (Hated = 0); the client's
+--- standing IDs start at 1, so do not compare these with client values.
+builder.standing = {
+  HATED = 0, HOSTILE = 1, UNFRIENDLY = 2, NEUTRAL = 3,
+  FRIENDLY = 4, HONORED = 5, REVERED = 6, EXALTED = 7,
 }
 
 -- Expressions this builder produced, and whether each needs parentheses inside `and`/`or`.
