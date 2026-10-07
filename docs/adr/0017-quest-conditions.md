@@ -7,7 +7,7 @@ Date: 2026-10-07. Status: accepted.
 Server emulators gate quest availability with condition tables: "quest A is rewarded and quest
 B is not", "the player has aura X", "reputation with faction Y is at least Honored". Questie's
 quest fields cover the common cases (`preQuestSingle`, `exclusiveTo`, `requiredMinRep`, ...),
-but not arbitrary combinations. Converted condition tables exist for Classic, TBC, and WotLK.
+but not arbitrary combinations, and Forever needs such rules for its own content.
 
 The data is entity data, so it belongs to QuestieDB (Questie ADR 0001). The evaluator could
 live in either project. If it lives in Questie, other consumers can read expressions they
@@ -23,11 +23,10 @@ the data itself.
 has condition data. A trailing field can be added to another entity later without migrating
 existing rows.
 
-The converted tables ship as generated Static Corrections, one file per expansion. Each table
-was converted from that expansion's server data, so none is inherited by later legacy flavors.
-Forever inherits the Era table through its owned converted copy, like the other Era Corrections.
-The tables load after other generated data in their window and before authored fixes, which may
-override them.
+Conditions are ordinary correction values, written in the existing correction files next to a
+quest's other fixes. There are no condition-specific files. Generated per-expansion tables
+converted from server condition data were tried and removed: most of their rules duplicated
+existing quest fields, and a separate file split a quest's availability rules across two places.
 
 ### 2. QuestieDB owns the vocabulary and the evaluator
 
@@ -91,8 +90,8 @@ runtime. Flavor enums such as `raceKeys` resolve when the file loads, as for oth
 
 Faction-wide checks use `IsTeam` with the tag `UnitFactionGroup` returns (`"Alliance"`,
 `"Horde"`, or `"Neutral"`). A race mask is a literal in the stored string, so it cannot follow
-Forever adding Skyborne to Era's factions: an inherited `IsRace(77)` would exclude Skyborne
-Alliance players. The data validation therefore rejects faction-wide `IsRace` masks and race
+Forever adding Skyborne to Era's factions: an `IsRace(77)` copied from Era would exclude
+Skyborne Alliance players. The data validation therefore rejects faction-wide `IsRace` masks and race
 bits a flavor does not have. `IsRace` is for real race subsets.
 
 Storing an expression tree instead was rejected. It needs a new field type and evaluator, and

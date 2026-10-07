@@ -180,11 +180,12 @@ return function(check, equal)
 
   for _, name in ipairs(stubbed) do rawset(_G, name, saved[name]) end
 
-  -- Gates on the shipped expressions. Base stubs are true, so a negated stub would hide its
-  -- quest for every consumer without Questie, and QuestAvailable cycles have no stable answer.
-  -- Race masks may only use bits of races playable in every flavor the file applies to, and a
-  -- faction-wide mask must be IsTeam: a mask cannot follow Forever adding Skyborne to Era's
-  -- factions, so an inherited IsRace(77) would exclude Skyborne Alliance players.
+  -- Gates on the shipped expressions, read from each flavor's composed Source data so every
+  -- correction file that writes `conditions` is covered. Base stubs are true, so a negated stub
+  -- would hide its quest for every consumer without Questie, and QuestAvailable cycles have no
+  -- stable answer. Race masks may only use bits of races playable in the flavor, and a
+  -- faction-wide mask must be IsTeam: a literal mask cannot follow Forever adding Skyborne to
+  -- Era's factions, so IsRace(77) would exclude Skyborne Alliance players.
   local vocabulary = C.vocabulary
   local enum = dofile("src/corrections/enum/constants.lua")
   local raceBits = {}
@@ -204,24 +205,19 @@ return function(check, equal)
   local stubs = { QuestAvailable = true, HasSkill = true, EventActive = true, HolidayActive = true,
     WorldState = true }
   local keywords = { ["and"] = true, ["or"] = true, ["not"] = true }
-  for _, spec in ipairs(dofile("src/corrections/manifest.lua")) do
-    if spec.file:find("QuestConditions%.lua$") then
-      local questKeys = { conditions = 37 }
-      local module = {}
-      local loader = { CreateModule = function() return module end,
-        ImportModule = function(_, name)
-          return name == "ConditionBuilder" and C or { questKeys = questKeys, factionIDs = enum.factionIDs }
-        end }
-      local chunk = assert(loadfile("src/corrections/" .. spec.file))
-      setfenv(chunk, setmetatable({ QuestieLoader = loader }, { __index = _G }))
-      chunk()
-      local count, problems, availableEdges = 0, {}, {}
-      local flavors = {}
-      for _, flavor in ipairs(config.flavors) do
-        if config.correctionApplies(spec, flavor) then flavors[#flavors + 1] = flavor end
-      end
-      for questId, row in pairs(module:Load()) do
-        local expression = row[questKeys.conditions]
+
+  local loaded = {}
+  for _, flavor in ipairs(config.flavors) do
+    client.reset()
+    client.install({ expansion = flavor.expansion })
+    _G.WOW_PROJECT_ID = -1
+    local source = emulator.loadAddon(config.addonName .. ".toc", config.addonName)
+    loaded[flavor.name] = source
+    local raceKeys = enum.byExpansion[flavor.expansion].raceKeys
+    local count, problems, availableEdges = 0, {}, {}
+    for _, questId in ipairs(source.Quest.GetAllIds()) do
+      local expression = source.Quest.conditions(questId)
+      if expression ~= nil then
         count = count + 1
         if type(expression) ~= "string" or not loadstring("return " .. expression) or not Explain(expression) then
           problems[#problems + 1] = questId
@@ -234,13 +230,10 @@ return function(check, equal)
           end
           for mask in expression:gmatch("IsRace%a*%(%s*(%d+)") do
             mask = tonumber(mask)
-            for _, flavor in ipairs(flavors) do
-              local raceKeys = enum.byExpansion[flavor.expansion].raceKeys
-              local factionWide = mask == raceKeys.ALL_ALLIANCE or mask == raceKeys.ALL_HORDE or
-                (flavor.name == "Forever" and eraFactionMasks[mask])
-              if factionWide or unknownBits(mask, raceKeys.ALL_ALLIANCE + raceKeys.ALL_HORDE) then
-                problems[#problems + 1] = questId .. ":IsRace(" .. mask .. ") on " .. flavor.name
-              end
+            local factionWide = mask == raceKeys.ALL_ALLIANCE or mask == raceKeys.ALL_HORDE or
+              (flavor.name == "Forever" and eraFactionMasks[mask])
+            if factionWide or unknownBits(mask, raceKeys.ALL_ALLIANCE + raceKeys.ALL_HORDE) then
+              problems[#problems + 1] = questId .. ":IsRace(" .. mask .. ")"
             end
           end
           for target in expression:gmatch("QuestAvailable%((%d+)%)") do
@@ -249,38 +242,22 @@ return function(check, equal)
           end
         end
       end
-      local function reachesItself(origin, current, seen)
-        for _, target in ipairs(availableEdges[current] or {}) do
-          if target == origin then return true end
-          if not seen[target] then
-            seen[target] = true
-            if reachesItself(origin, target, seen) then return true end
-          end
-        end
-        return false
-      end
-      for questId in pairs(availableEdges) do
-        if reachesItself(questId, questId, {}) then problems[#problems + 1] = questId .. ":cycle" end
-      end
-      check(count > 0, spec.file .. " provides expressions")
-      check(#flavors > 0, spec.file .. " applies to a flavor")
-      equal(problems, {}, spec.file .. " expressions compile, use the vocabulary, valid race masks, and stable stubs")
     end
+    local function reachesItself(origin, current, seen)
+      for _, target in ipairs(availableEdges[current] or {}) do
+        if target == origin then return true end
+        if not seen[target] then
+          seen[target] = true
+          if reachesItself(origin, target, seen) then return true end
+        end
+      end
+      return false
+    end
+    for questId in pairs(availableEdges) do
+      if reachesItself(questId, questId, {}) then problems[#problems + 1] = questId .. ":cycle" end
+    end
+    equal(problems, {}, flavor.name .. " conditions (" .. count .. ") compile, use the vocabulary, valid race masks, and stable stubs")
   end
 
-  -- Each table applies to exactly one expansion. Quest 558 has a Classic expression but none
-  -- in the WotLK table, so Wrath must not inherit it. Forever reads its own converted copy.
-  local quest558 = "QuestRewarded(1687) and QuestRewarded(1558) and QuestRewarded(1479)"
-  for _, case in ipairs({
-    { flavor = "Vanilla", expected = quest558 },
-    { flavor = "Wrath", expected = nil },
-    { flavor = "Forever", expected = quest558 },
-  }) do
-    client.reset()
-    client.install({ expansion = config.flavorByName[case.flavor].expansion })
-    _G.WOW_PROJECT_ID = -1
-    local source = emulator.loadAddon(config.addonName .. ".toc", config.addonName)
-    equal(source.Conditions.Get(558), case.expected, case.flavor .. " reads its own quest 558 condition")
-  end
   client.reset()
 end
