@@ -725,7 +725,7 @@ Expressions that fail to compile or raise an error are true and are reported onc
 | `HasItemEquipped(itemId)` | Item equipped | Client |
 | `HasSkill(skillId, level)` | Profession at level | Stub: true |
 | `KnowsSpell(spellId)` | Spell known | Client |
-| `HasRep(factionId, rank)` | Reputation rank at least `rank` | Client; ranks 0 (Hated) to 7 (Exalted) |
+| `HasRep(factionId, rank)` | Reputation rank at least `rank` | Client; ranks 0 (Hated) to 7 (Exalted), `C.standing.HONORED` etc. |
 | `RepBelow(factionId, rank)` | Reputation rank at most `rank` | Client; same ranks |
 | `IsTeam(factionTag)` | `"Alliance"`, `"Horde"`, or `"Neutral"` | `UnitFactionGroup("player")` |
 | `IsRace(raceMask)` / `IsClass(classMask)` | Bitmask membership; 0 matches all | Client with `Enum.raceMaskById` |
@@ -768,7 +768,10 @@ local C = QuestieLoader:ImportModule("ConditionBuilder")
 ```
 
 `All`, `Any`, and `Not` combine conditions; every function above has a builder call of the same
-name. Use `IsTeam` for faction-wide checks and `IsRace` only for race subsets.
+name. Use `IsTeam` for faction-wide checks and `IsRace` only for race subsets. Write ranks with
+`C.standing` (`HATED` = 0 through `EXALTED` = 7), for example
+`C.HasRep(factionIDs.THE_ORACLES, C.standing.HONORED)`. These are condition ranks, one below the
+client's standing IDs.
 
 ### Publishing condition functions
 

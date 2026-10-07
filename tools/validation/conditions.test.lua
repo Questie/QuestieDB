@@ -32,6 +32,9 @@ return function(check, equal)
     "(QuestInLog(1) or QuestInLog(2)) and not HasItem(3, 2)", "All wraps Any; Not binds tighter than and")
   equal(C.IsRace(2 ^ 33 + 1), "IsRace(8589934593)", "race masks above 32 bits keep every digit")
   equal(C.HasItem(5), "HasItem(5)", "optional arguments can be omitted")
+  equal(C.HasRep(1105, C.standing.HONORED), "HasRep(1105, 5)", "standing names map to condition ranks")
+  equal({ C.standing.HATED, C.standing.NEUTRAL, C.standing.EXALTED }, { 0, 3, 7 },
+    "condition ranks start at Hated = 0, one below the client's standing IDs")
   for _, case in ipairs({
     { "IsTeam", function() return C.IsTeam(469) end },
     { "IsTeam", function() return C.IsTeam("alliance") end },
@@ -206,7 +209,9 @@ return function(check, equal)
       local questKeys = { conditions = 37 }
       local module = {}
       local loader = { CreateModule = function() return module end,
-        ImportModule = function(_, name) return name == "ConditionBuilder" and C or { questKeys = questKeys } end }
+        ImportModule = function(_, name)
+          return name == "ConditionBuilder" and C or { questKeys = questKeys, factionIDs = enum.factionIDs }
+        end }
       local chunk = assert(loadfile("src/corrections/" .. spec.file))
       setfenv(chunk, setmetatable({ QuestieLoader = loader }, { __index = _G }))
       chunk()

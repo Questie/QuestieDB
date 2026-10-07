@@ -10,6 +10,7 @@ local C = QuestieLoader:ImportModule("ConditionBuilder")
 
 function QuestieWotlkQuestConditions:Load()
     local questKeys = QuestieDB.questKeys
+    local factionIDs = QuestieDB.factionIDs
 
     return {
         -- Kurzen's Mystery
@@ -782,11 +783,11 @@ function QuestieWotlkQuestConditions:Load()
         },
         -- Return of the Lich Hunter
         [12692] = {
-            [questKeys.conditions] = C.HasRep(1104, 5),
+            [questKeys.conditions] = C.HasRep(factionIDs.FRENZYHEART_TRIBE, C.standing.HONORED),
         },
         -- Return of the Friendly Dryskin
         [12695] = {
-            [questKeys.conditions] = C.HasRep(1105, 5),
+            [questKeys.conditions] = C.HasRep(factionIDs.THE_ORACLES, C.standing.HONORED),
         },
         -- Behind Scarlet Lines
         [12723] = {
