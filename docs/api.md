@@ -693,6 +693,101 @@ at render time with their own string-keyed localization function.
 
 ---
 
+## Quest Conditions
+
+Some quests carry an availability expression in the `conditions` field. Contract 4 adds the
+field and `LibQuestieDB.Conditions`. The design is recorded in
+[ADR 0017](adr/0017-quest-conditions.md).
+
+```lua
+LibQuestieDB.Conditions.Get(558)
+--> "QuestRewarded(1687) and QuestRewarded(1558) and QuestRewarded(1479)"
+LibQuestieDB.Conditions.EvaluateQuest(558)               --> true, false, or nil
+LibQuestieDB.Conditions.Evaluate("IsLevel(10) and not HasAura(15007)")
+```
+
+`Evaluate` returns true for a nil or empty expression and nil when the answer is unknown. A
+result is unknown when any condition function it reached could not read its state, for example
+auras hidden by secret values in combat. Keep the previous answer and evaluate again later.
+Expressions that fail to compile or raise an error are true and are reported once through
+`geterrorhandler()`.
+
+| Function | Meaning | Base implementation |
+| --- | --- | --- |
+| `QuestRewarded(questId)` | Quest turned in | Client completion flag |
+| `QuestInLog(questId)` | Quest in the log | Client quest log |
+| `QuestComplete(questId)` | In the log with objectives complete | Client quest log |
+| `QuestNone(questId)` | Neither in the log nor turned in | Composes the two above |
+| `QuestAvailable(questId)` | Quest can be accepted | Stub: true |
+| `HasAura(spellId)` | Player has the aura | Client auras; unknown when restricted |
+| `HasItem(itemId[, count])` | Count in bags, default 1 | Client item count |
+| `HasItemOrBank(itemId[, count])` | Count in bags and bank | Client item count |
+| `HasItemEquipped(itemId)` | Item equipped | Client |
+| `HasSkill(skillId, level)` | Profession at level | Stub: true |
+| `KnowsSpell(spellId)` | Spell known | Client |
+| `HasRep(factionId, rank)` | Reputation rank at least `rank` | Client; ranks 0 (Hated) to 7 (Exalted) |
+| `RepBelow(factionId, rank)` | Reputation rank at most `rank` | Client; same ranks |
+| `IsTeam(factionTag)` | `"Alliance"`, `"Horde"`, or `"Neutral"` | `UnitFactionGroup("player")` |
+| `IsRace(raceMask)` / `IsClass(classMask)` | Bitmask membership; 0 matches all | Client with `Enum.raceMaskById` |
+| `IsRaceClass(raceMask, classMask)` | Both | Composes the two above |
+| `IsLevel(level)` / `IsLevelExact(level)` / `IsLevelBelow(level)` | Level `>=`, `==`, `<=` | Client |
+| `HasAchievement(achievementId)` | Achievement completed | Client; true without achievements |
+| `EventActive(eventId)` / `HolidayActive(holidayId)` / `WorldState(id, value)` | Server state | Stub: true |
+
+Unknown function names are true. Stubs are true only when not negated: `not EventActive(12)`
+is false. The shipped data never negates a stub or forms a `QuestAvailable` cycle.
+
+### Explaining a condition
+
+`Explain(expression)` and `ExplainQuest(questId)` parse the builder's grammar back into a tree,
+so a UI can show which part of a condition fails:
+
+```lua
+LibQuestieDB.Conditions.Explain('IsTeam("Alliance") and not QuestRewarded(1518)')
+--> { op = "and", result = false, children = {
+--      { call = "IsTeam", args = { "Alliance" }, result = true },
+--      { op = "not", result = false, children = {
+--          { call = "QuestRewarded", args = { 1518 }, result = true } } } } }
+```
+
+Every leaf is evaluated, and `and`/`or`/`not` combine true, false, and nil (unknown) with
+three-valued logic. `Evaluate` remains the availability answer: it reads leaves in order, so
+for an unknown leaf before a deciding one it returns nil where `Explain` reports a result.
+Expressions outside the builder's grammar return nil; show the raw string instead.
+
+### Writing conditions in Corrections
+
+Correction files build expressions with `ConditionBuilder` rather than writing strings. A wrong
+function name or argument raises an error when the file loads:
+
+```lua
+local C = QuestieLoader:ImportModule("ConditionBuilder")
+-- In Load():
+[questKeys.conditions] = C.Any(C.QuestRewarded(1517), C.All(C.IsTeam("Horde"), C.IsLevel(30))),
+-- stores "QuestRewarded(1517) or (IsTeam(\"Horde\") and IsLevel(30))"
+```
+
+`All`, `Any`, and `Not` combine conditions; every function above has a builder call of the same
+name. Use `IsTeam` for faction-wide checks and `IsRace` only for race subsets.
+
+### Publishing condition functions
+
+A trusted owner can replace base functions or add new names for every consumer:
+
+```lua
+LibQuestieDB.Conditions.SetFunctions("Questie", {
+  QuestAvailable = function(questId) return MyAddon.IsQuestAvailable(questId) end,
+})
+LibQuestieDB.Conditions.SetFunctions("Questie", nil) -- withdraw
+```
+
+A write copies the table and replaces the previous set. Functions return true, false, or nil
+for unknown.
+Only Questie is trusted; other owners raise an error. Re-entering an expression that is
+already being evaluated returns true, so a published `QuestAvailable` may evaluate conditions.
+
+---
+
 ## Support data
 
 Game reference data consumed as whole tables rather than through the metadata store.
@@ -830,6 +925,9 @@ Contract 3 adds the shared `Enum.raceMaskById` encoding table and active-flavor
 `Enum.factionRaceMasks`. It does not change storage or remove older interfaces: contracts
 1 and 2 remain supported. A consumer requiring either table
 must request contract 3 so an older provider fails the version check before the lookup.
+
+Contract 4 adds the Quest `conditions` field and `LibQuestieDB.Conditions`. Contracts 1
+through 3 remain supported.
 
 The check is a **range**: `RequireContract(v)` passes for any
 `minSupportedContract <= v <= contractVersion`, so a consumer built against an older
