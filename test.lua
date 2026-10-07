@@ -2958,7 +2958,7 @@ suite("api", "Vanilla", function()
   equal(Lib.Meta.ObjectMeta.objectKeys.name, 1, "Meta.ObjectMeta.objectKeys")
   equal(Lib.Meta.Quest.names[1], "name", "Meta.Quest.names")
   equal(Lib.Meta.Quest.types[1], "string", "Meta.Quest.types")
-  equal(Lib.Meta.Quest.fieldCount, 36, "Meta.Quest.fieldCount")
+  equal(Lib.Meta.Quest.fieldCount, 37, "Meta.Quest.fieldCount")
 
   -- Keep LuaLS key-class fields in runtime positional order so declaration drift fails here.
   local metaTypeSource = lib.readAll("src/types/Meta.t.lua")
