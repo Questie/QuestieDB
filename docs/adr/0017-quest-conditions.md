@@ -116,9 +116,11 @@ and caches the tree, which `Explain` also uses to show which part of a condition
 
 ### 7. Server state is a future improvement
 
-`EventActive`, `HolidayActive`, and `WorldState` are disabled in the builder and the evaluator,
-not offered as always-true stubs. Questie cannot answer them yet, and a stub that is always true
-is wrong whenever a condition negates it. `HolidayActive` is the likely first: Questie already
+`EventActive`, `HolidayActive`, and `WorldState` are not in the vocabulary, rather than offered
+as always-true stubs. Questie cannot answer them yet, and a stub that is always true is wrong
+whenever a condition negates it. The builder rejects them when a correction file loads. A raw
+expression that names one is outside the grammar, so the whole expression is permissive and
+reported once, as for any unknown name. `HolidayActive` is the likely first: Questie already
 tracks active holidays in `QuestieEvent` and would need a holiday ID mapping. `EventActive`
 uses server-emulator event IDs with no client equivalent, and the client only exposes world
 states shown in UI widgets.
