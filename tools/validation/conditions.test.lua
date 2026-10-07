@@ -43,6 +43,8 @@ return function(check, equal)
     { "QuestRewarded", function() return C.QuestRewarded(1, 2) end },
     { "All", function() return C.All("QuestRewarded(999999)", C.QuestInLog(2)) end },
     { "All", function() return C.All(C.QuestInLog(2)) end },
+    { "Not", function() return C.Not(C.QuestRewarded(1), C.QuestRewarded(2)) end },
+    { "Not", function() return C.Not(C.QuestRewarded(1), nil) end },
     { "unknown", function() return C.QuestRewardd(1) end },
   }) do
     check(not pcall(case[2]), "the builder rejects an invalid " .. case[1] .. " condition")

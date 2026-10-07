@@ -114,10 +114,12 @@ function builder.All(...) return join("All", "and", ...) end
 function builder.Any(...) return join("Any", "or", ...) end
 
 ---The condition does not hold.
----@param condition string A condition from this builder.
+---@param ... string Exactly one condition from this builder.
 ---@return string expression
-function builder.Not(condition)
-  local expression = "not " .. operand("Not", condition, 1)
+function builder.Not(...)
+  local count = select("#", ...)
+  if count ~= 1 then error(("Not takes exactly one condition, got %d"):format(count), 2) end
+  local expression = "not " .. operand("Not", (...), 1)
   compound[expression] = false
   return expression
 end
