@@ -2729,6 +2729,8 @@ suite("toc", "shared", function()
       before(path, "src/support/_begin.lua", "support seeds DropDB.correctionKeys from the constants")
       before(path, "src/corrections/compat.lua", "compat captures constants at file scope")
     end
+    before("src/corrections/conditionBuilder.lua", "src/corrections/compat.lua",
+      "compat hands correction files the condition builder")
     before("src/corrections/registry.lua", "src/corrections/_end.lua",
       "registration needs the registry")
     before("src/read/shared.lua", "src/api.lua", "api builds entities with shared.CreateEntity")

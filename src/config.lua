@@ -133,6 +133,7 @@ config.runtimeFiles = {
     "src/meta/itemMeta.lua",
     "src/meta/objectMeta.lua",
     "src/corrections/tablePatch.lua",
+    "src/corrections/conditionBuilder.lua",
   },
   bakedReader = "src/read/baked.lua",
   sourceReader = "src/read/source.lua",
