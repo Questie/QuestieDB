@@ -10,7 +10,9 @@ return function(check, equal)
   local stubbed = {
     "C_Secrets", "C_UnitAuras", "C_QuestLog", "C_Reputation", "UnitAura", "InCombatLockdown",
     "GetFactionInfoByID", "IsQuestFlaggedCompleted", "GetQuestLogIndexByID", "geterrorhandler",
-    "UnitLevel", "UnitRace", "UnitClass", "issecretvalue", "UnitFactionGroup",
+    "UnitLevel", "UnitRace", "UnitClass", "issecretvalue", "UnitFactionGroup", "GetQuestLogTitle",
+    "C_Item", "GetItemCount", "IsEquippedItem", "C_SpellBook", "IsPlayerSpell", "IsSpellKnown",
+    "GetAchievementInfo",
   }
   local saved = {}
   for _, name in ipairs(stubbed) do saved[name] = rawget(_G, name) end
@@ -106,6 +108,85 @@ return function(check, equal)
   equal(Evaluate("HasAura(7) and not HasAura(8)"), true, "legacy clients scan the player's auras")
   rawset(_G, "InCombatLockdown", nil)
 
+  -- Modern aura reads: the direct lookup when the client has it, else the indexed scan. The
+  -- legacy scan now reports aura 8, so using it by mistake changes the results.
+  rawset(_G, "UnitAura", function(_, index)
+    if index == 1 then return "Aura", nil, nil, nil, nil, nil, nil, nil, nil, 8 end
+  end)
+  local looked = {}
+  rawset(_G, "C_UnitAuras", { GetPlayerAuraBySpellID = function(spellId)
+    looked[#looked + 1] = spellId
+    if spellId == 7 then return { spellId = 7 } end
+  end })
+  equal(Evaluate("HasAura(7) and not HasAura(8)"), true, "the direct lookup finds the player's aura")
+  equal(looked, { 7, 8 }, "the direct lookup is asked for each spell")
+  local scanned = {}
+  rawset(_G, "C_UnitAuras", { GetAuraDataByIndex = function(unit, index, filter)
+    scanned[#scanned + 1] = unit .. ":" .. filter .. ":" .. index
+    if filter == "HARMFUL" and index == 1 then return { spellId = 7 } end
+  end })
+  equal(Evaluate("HasAura(7)"), true, "the indexed scan finds a harmful aura")
+  equal(scanned, { "player:HELPFUL:1", "player:HARMFUL:1" }, "the indexed scan reads the player's helpful, then harmful auras")
+  equal(Evaluate("HasAura(8)"), false, "the indexed scan ends at the first empty slot")
+  local secretId = {}
+  rawset(_G, "issecretvalue", function(value) return value == secretId end)
+  rawset(_G, "C_UnitAuras", { GetAuraDataByIndex = function(_, index)
+    if index == 1 then return { spellId = secretId } end
+  end })
+  equal(Evaluate("HasAura(7)"), nil, "a secret spell ID in the indexed scan is unknown")
+  rawset(_G, "issecretvalue", nil)
+  rawset(_G, "C_UnitAuras", nil)
+  rawset(_G, "UnitAura", nil)
+
+  -- Quest log: legacy reads use the log index and GetQuestLogTitle position 6 (1 = complete).
+  rawset(_G, "GetQuestLogIndexByID", function(questId) return questId == 3 and 4 or 0 end)
+  rawset(_G, "GetQuestLogTitle", function(index) if index == 4 then return "Title", 1, nil, nil, nil, 1 end end)
+  equal(Evaluate("QuestInLog(3) and QuestComplete(3) and not QuestInLog(5)"), true, "legacy log reads")
+  rawset(_G, "GetQuestLogTitle", function() return "Title", 1, nil, nil, nil, -1 end)
+  equal(Evaluate("QuestComplete(3)"), false, "a failed quest is not complete")
+  rawset(_G, "GetQuestLogIndexByID", nil)
+  rawset(_G, "GetQuestLogTitle", nil)
+  rawset(_G, "C_QuestLog", {
+    GetLogIndexForQuestID = function(questId) if questId == 3 then return 2 end end,
+    ReadyForTurnIn = function() return true end,
+  })
+  equal(Evaluate("QuestComplete(3) and not QuestComplete(5)"), true, "a quest must be in the log to be complete")
+  rawset(_G, "C_QuestLog", nil)
+
+  -- Items: counts are inclusive, and the bank count includes bags.
+  rawset(_G, "GetItemCount", function(_, includeBank) return includeBank and 3 or 2 end)
+  equal(Evaluate("HasItem(1, 2) and not HasItem(1, 3) and HasItemOrBank(1, 3) and not HasItemOrBank(1, 4)"), true,
+    "legacy item counts")
+  rawset(_G, "C_Item", {
+    GetItemCount = function(_, includeBank) return includeBank and 1 or 0 end,
+    IsEquippedItem = function(itemId) return itemId == 9 end,
+  })
+  equal(Evaluate("not HasItem(1) and HasItemOrBank(1) and HasItemEquipped(9) and not HasItemEquipped(8)"), true,
+    "modern item reads")
+  rawset(_G, "C_Item", nil)
+  rawset(_G, "GetItemCount", nil)
+
+  -- Spells: C_SpellBook first, then IsPlayerSpell, which also finds profession spells.
+  rawset(_G, "IsPlayerSpell", function(spellId) return spellId == 10 end)
+  rawset(_G, "IsSpellKnown", function() return false end)
+  equal(Evaluate("KnowsSpell(10) and not KnowsSpell(11)"), true, "IsPlayerSpell answers before IsSpellKnown")
+  rawset(_G, "C_SpellBook", { IsSpellKnown = function(spellId) return spellId == 11 end })
+  equal(Evaluate("KnowsSpell(11) and not KnowsSpell(10)"), true, "C_SpellBook answers first")
+  rawset(_G, "C_SpellBook", nil)
+
+  -- Achievements: completion is GetAchievementInfo position 4; clients without them are permissive.
+  rawset(_G, "GetAchievementInfo", function(achievementId) return achievementId, "Name", 10, achievementId == 5 end)
+  equal(Evaluate("HasAchievement(5) and not HasAchievement(6)"), true, "achievement completion")
+  rawset(_G, "GetAchievementInfo", nil)
+  equal(Evaluate("HasAchievement(6)"), true, "clients without achievements are permissive")
+
+  -- Level bounds are inclusive; IsRaceClass needs both masks to match.
+  rawset(_G, "UnitLevel", function() return 60 end)
+  equal(Evaluate("IsLevel(60) and IsLevelBelow(60) and IsLevelExact(60) and not IsLevel(61) and not IsLevelBelow(59)"),
+    true, "level bounds")
+  equal(Evaluate("IsRaceClass(4294967296, 2) and not IsRaceClass(4294967296, 1) and not IsRaceClass(1, 2)"), true,
+    "IsRaceClass needs both race and class")
+
   -- Defined permissive results for expressions outside the grammar and runtime errors.
   local reports = {}
   rawset(_G, "geterrorhandler", function() return function(message) reports[#reports + 1] = message end end)
@@ -150,11 +231,11 @@ return function(check, equal)
   Conditions.SetFunctions("Questie", {
     QuestAvailable = function()
       depth = depth + 1
-      return Evaluate("QuestAvailable(9) and HasRep(1105, 5)")
+      return Evaluate("QuestAvailable(9) and HasRep(1105, 4)")
     end,
   })
-  equal(Evaluate("QuestAvailable(9) and HasRep(1105, 5)"), false,
-    "re-entering an expression returns instead of recursing")
+  equal(Evaluate("QuestAvailable(9) and HasRep(1105, 4)"), true,
+    "re-entering an expression returns true instead of recursing")
   equal(depth, 1, "the re-entered expression ran once")
   rawset(_G, "C_Secrets", { ShouldAurasBeSecret = function() return true end })
   Conditions.SetFunctions("Questie", { QuestAvailable = function() return Evaluate("HasAura(1)") end })
