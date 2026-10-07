@@ -18,8 +18,9 @@ the data itself.
 
 ### 1. Expressions are a Quest field
 
-`conditions` (field 37) holds a Lua boolean expression over a fixed vocabulary, such as
-`"QuestRewarded(1517) and not QuestRewarded(1518)"`. Only Quest has the field; no other entity
+`conditions` (field 37) holds a boolean expression over a fixed vocabulary, such as
+`"QuestRewarded(1517) and not QuestRewarded(1518)"`. The grammar is what the builder emits:
+calls with number or string arguments, `and`, `or`, `not`, and parentheses. Only Quest has the field; no other entity
 has condition data. A trailing field can be added to another entity later without migrating
 existing rows.
 
@@ -34,13 +35,15 @@ requiring the King of the Gordok aura.
 
 `src/conditions.lua` defines every condition function using client APIs only, so any addon can
 evaluate conditions without Questie. Functions that need state the client cannot provide
-(`QuestAvailable`, `HasSkill`) are permissive stubs that return true. Unknown function names are also permissive.
+(`QuestAvailable`, `HasSkill`) are permissive stubs that return true.
 
 The data is written for Questie, which publishes real `QuestAvailable` and `HasSkill`, so
 corrections may negate any function. A consumer without Questie gets the stubs, where a negated
 stub is false; supplying better answers is that consumer's concern.
 
-Expressions compile once per distinct string. `Evaluate(expression)` is the primitive;
+Expressions parse once per distinct string into a tree. `Evaluate(expression)` walks it and
+stops at the operand that decides the result; `Explain(expression)` evaluates every leaf for
+display. Both combine operands with the same function, so they always agree.
 `EvaluateQuest(questId)` reads the field and evaluates it.
 
 ### 3. One trusted owner publishes shared functions
@@ -62,16 +65,22 @@ reports; without that query, QuestieDB assumes auras are hidden in combat. Treat
 as "no aura" would hide quests during combat and show them again afterwards, or show quests a
 negated check should hide.
 
-A condition function returns nil when it cannot read its state. Any nil reached during an
-evaluation makes the result nil, regardless of `and`, `or`, and `not`. The caller keeps its
-previous answer and evaluates again later. Lua's three-valued logic is not reproduced: one
-flag per evaluation is simpler, and an over-cautious nil only delays an answer.
+A condition function returns nil when it cannot read its state. `and`, `or`, and `not`
+combine true, false, and nil with three-valued logic: a false operand decides `and`, a true
+operand decides `or`, and otherwise any nil makes the result nil. The answer does not depend on
+operand order. The caller keeps its previous answer for nil and evaluates again later.
+
+An earlier version compiled expressions with `loadstring` and returned nil whenever any nil was
+reached. Its answer depended on operand order (`HasAura(1) and QuestRewarded(2)` was nil where
+the reverse was false), and it disagreed with `Explain`. One tree and one combine function
+removed both problems.
 
 ### 5. Failures are permissive and reported once
 
-An expression that does not compile or raises an error evaluates to true. Each distinct error
-message is reported once through the client's error handler, so one broken function used by many
-expressions produces one report. Re-entering an expression that is already being evaluated
+An expression outside the grammar, including one that names an unknown function, evaluates
+to true and is reported once. A condition function that raises an error makes the expression
+true; each distinct error message is reported once through the client's error handler, so one
+broken function used by many expressions produces one report. `Explain` returns nil for both. Re-entering an expression that is already being evaluated
 returns true. The same string always makes the same calls, so re-entry could never finish;
 it happens when a published `QuestAvailable` evaluates the quest that asked about it. With a
 cycle between quests, the answer would depend on which quest was evaluated first, so the data
@@ -98,10 +107,9 @@ adapt: an `IsRace(77)` written for Era would exclude Skyborne Alliance players o
 data validation rejects race bits a flavor does not have, and Era's literal faction masks 77
 and 178 on Forever.
 
-Storing an expression tree instead was rejected. It needs a new field type and evaluator, and
-the string already carries everything the evaluator needs. When a UI needs the structure, for
-example to show which part of a condition fails, `Explain` parses the builder's grammar back into
-a tree on demand.
+Storing an expression tree instead was rejected. It needs a new field type, and the string
+already carries everything the evaluator needs. The evaluator parses each distinct string once
+and caches the tree, which `Explain` also uses to show which part of a condition fails.
 
 ### 7. Server state is a future improvement
 

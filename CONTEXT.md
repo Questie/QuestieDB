@@ -223,7 +223,7 @@ _Avoid_: Test profile, mock player
 ### Conditions
 
 **Quest Condition**:
-A Lua boolean expression in the Quest `conditions` field that decides availability, written
+A boolean expression in the Quest `conditions` field that decides availability, written
 with the Condition vocabulary. See ADR 0017.
 _Avoid_: Condition script, requirement string
 
@@ -238,8 +238,8 @@ call and returns the expression string.
 _Avoid_: Condition DSL, expression parser
 
 **Unknown result**:
-The nil an evaluation returns when any Condition function it reached returned nil. The caller
-keeps its previous answer.
+The nil an evaluation returns when a Condition function returned nil and no other operand
+decides the result. The caller keeps its previous answer.
 _Avoid_: Failed condition, false
 
 ## Boundary with Questie

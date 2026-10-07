@@ -3,19 +3,24 @@
 -- Quest Conditions: availability expressions stored in the Quest `conditions` field, and the
 -- evaluator that answers them. See docs/adr/0017-quest-conditions.md.
 --
--- An expression is a Lua boolean expression over a fixed vocabulary of condition functions:
+-- An expression is a boolean expression over a fixed vocabulary of condition functions, in the
+-- grammar `ConditionBuilder` emits: calls with number or string arguments, `and`, `or`, `not`,
+-- and parentheses.
 --
 --   "QuestRewarded(1517) and not QuestRewarded(1518)"
 --
 -- QuestieDB supplies a base implementation of every function, built only on client APIs, so
 -- any addon can evaluate conditions. Functions that need state the client cannot provide are
 -- permissive stubs that return true; negating one (`not QuestAvailable(1)`) is therefore false.
--- TRUSTED_OWNER can publish better versions, and new functions, through `SetFunctions`;
--- everyone then evaluates against them.
+-- TRUSTED_OWNER can publish better versions through `SetFunctions`; everyone then evaluates
+-- against them.
 --
 -- A condition function returns true or false, or nil when it cannot read its state right now
--- (for example, auras hidden behind secret values in combat). Any nil makes the whole result
--- nil ("unknown"); the caller should keep its previous answer and evaluate again later.
+-- (for example, auras hidden behind secret values in combat). `and`, `or`, and `not` combine
+-- these with three-valued logic: nil ("unknown") stays unknown unless another operand decides
+-- the result. The caller should keep its previous answer for unknown and evaluate again later.
+-- Evaluate and Explain parse the same tree and combine it with the same function, so they
+-- always agree.
 
 local _, LibQuestieDB = ...
 
@@ -145,7 +150,7 @@ end
 -- Base condition functions
 --------------------------------------------------------------------------------------------
 
-local env -- Forward-declared: composite functions call through the active environment.
+local call -- Forward-declared: composite functions call through the published functions.
 
 local base = {
   -- Quest state
@@ -160,7 +165,12 @@ local base = {
   end,
   -- Composite: follows whichever QuestInLog and QuestRewarded are active.
   QuestNone = function(questId)
-    return not env.QuestInLog(questId) and not env.QuestRewarded(questId)
+    local inLog = call("QuestInLog", questId)
+    if inLog then return false end
+    local rewarded = call("QuestRewarded", questId)
+    if rewarded then return false end
+    if inLog == nil or rewarded == nil then return nil end
+    return true
   end,
   -- Needs the consumer's own availability rules; permissive without them.
   QuestAvailable = function()
@@ -213,7 +223,12 @@ local base = {
     return classMask == 0 or hasFlag(classMask, 2 ^ (select(3, UnitClass("player")) - 1))
   end,
   IsRaceClass = function(raceMask, classMask)
-    return env.IsRace(raceMask or 0) and env.IsClass(classMask or 0)
+    local race = call("IsRace", raceMask or 0)
+    if race == false then return false end
+    local class = call("IsClass", classMask or 0)
+    if class == false then return false end
+    if race == nil or class == nil then return nil end
+    return true
   end,
   IsLevel = function(level)
     return UnitLevel("player") >= level
@@ -247,118 +262,37 @@ for name in pairs(base) do
     error("QuestieDB: condition function " .. name .. " is missing from the builder", 0)
   end
 end
-
 --------------------------------------------------------------------------------------------
--- Environment
+-- Calls and reports
 --------------------------------------------------------------------------------------------
 
 local published = {} -- name -> function, replaced as a whole by SetFunctions.
-local unknown = false -- Set when a function returns nil during the current evaluation.
 
-local function permissive() return true end
-
-local function resolve(name)
-  return published[name] or base[name]
+---Call a condition function by name, published version first.
+---@return boolean? result Nil when the function could not read its state.
+call = function(name, ...)
+  local result = (published[name] or base[name])(...)
+  if result == nil then return nil end
+  return result and true or false
 end
 
--- Expressions see only condition functions. Each name resolves at call time, so publishing or
--- withdrawing functions never invalidates a compiled expression. Unknown names are permissive.
-env = setmetatable({}, {
-  __index = function(self, name)
-    local function call(...)
-      local fn = resolve(name) or permissive
-      local result = fn(...)
-      if result == nil then
-        unknown = true
-        return false
-      end
-      return result and true or false
-    end
-    rawset(self, name, call)
-    return call
-  end,
-  __newindex = function() error("Condition expressions cannot assign variables", 2) end,
-})
+local reported = {} -- report key -> true once it has been reported.
 
-local compiled = {} -- expression -> chunk, or false when it does not compile.
-local reported = {} -- error message -> true once it has been reported.
-local active = {} -- expression -> true while it is being evaluated.
-
--- Keyed by message, so one broken function used by many expressions is reported once.
-local function report(expression, message)
+-- Runtime errors are keyed by message, so one broken function used by many expressions is
+-- reported once. Parse failures are keyed by expression, since their messages repeat.
+local function report(expression, message, key)
   message = tostring(message)
-  if reported[message] then return end
-  reported[message] = true
+  key = key or message
+  if reported[key] then return end
+  reported[key] = true
   local handler = geterrorhandler and geterrorhandler()
   -- A failing handler must not break the caller's availability loop.
   if handler then pcall(handler, "QuestieDB condition '" .. expression .. "': " .. message) end
 end
 
 --------------------------------------------------------------------------------------------
--- Public API
+-- Parsing
 --------------------------------------------------------------------------------------------
-
----Return a quest's condition expression.
----@param questId QuestId
----@return string? expression Nil when the quest has no condition.
-function Conditions.Get(questId)
-  return LibQuestieDB.Quest.conditions(questId)
-end
-
----Evaluate a condition expression.
----An empty or nil expression is true. Expressions that fail to compile or raise an error are
----permissive (true) and are reported once through the client's error handler.
----@param expression string?
----@return boolean? result Nil when a condition function could not read its state.
-function Conditions.Evaluate(expression)
-  if expression == nil or expression == "" then return true end
-
-  local chunk = compiled[expression]
-  if chunk == nil then
-    local err
-    chunk, err = loadstring("return " .. expression, "condition")
-    if chunk then setfenv(chunk, env) else report(expression, err) end
-    compiled[expression] = chunk or false
-  end
-  if not chunk then return true end
-
-  -- The same expression always makes the same calls, so re-entering it would never finish.
-  -- This happens when a published QuestAvailable evaluates the quest that asked about it.
-  -- The answer then depends on which quest was evaluated first, so the shipped data must not
-  -- contain QuestAvailable cycles; tools/validation/conditions.test.lua rejects them.
-  if active[expression] then return true end
-  active[expression] = true
-  local outerUnknown = unknown
-  unknown = false
-  local ok, result = pcall(chunk)
-  local isUnknown = unknown
-  unknown = outerUnknown
-  active[expression] = nil
-
-  if not ok then
-    report(expression, result)
-    return true
-  end
-  if isUnknown then return nil end
-  return result and true or false
-end
-
----Evaluate a quest's condition expression.
----@param questId QuestId
----@return boolean? result True when the quest has no condition; nil when unknown.
-function Conditions.EvaluateQuest(questId)
-  return Conditions.Evaluate(Conditions.Get(questId))
-end
-
---------------------------------------------------------------------------------------------
--- Explanation
---------------------------------------------------------------------------------------------
---
--- Explain parses the canonical grammar the builder emits back into a tree, so a UI can show
--- which part of a condition fails. Evaluate stays the authority on availability: it compiles
--- the string and short-circuits, while Explain evaluates every leaf for display.
-
-local parsed = {} -- expression -> tree, or false when it is outside the builder's grammar.
 
 ---@return table[]? tokens Nil when the expression contains anything the builder never emits.
 local function tokenize(expression)
@@ -447,54 +381,129 @@ local function parse(tokens)
   return tree
 end
 
+local parsed = {} -- expression -> tree, or false when it is outside the builder's grammar.
+
+---@return table? tree Nil, reported once, when the expression is outside the builder's grammar.
+local function parsedTree(expression)
+  local tree = parsed[expression]
+  if tree == nil then
+    local tokens = tokenize(expression)
+    local ok, result = false, "unexpected character"
+    if tokens then ok, result = pcall(parse, tokens) end
+    if not ok then report(expression, "does not parse: " .. tostring(result), expression) end
+    tree = ok and result or false
+    parsed[expression] = tree
+  end
+  return tree or nil
+end
+
+--------------------------------------------------------------------------------------------
+-- Evaluation
+--------------------------------------------------------------------------------------------
+
+---Combine operand results with three-valued logic. `resultOf(index)` is called in order and
+---only until the result is decided, so Evaluate can skip the remaining operands.
+---@param op "and"|"or"|"not"
+---@param count integer
+---@param resultOf fun(index: integer): boolean?
+---@return boolean?
+local function combine(op, count, resultOf)
+  if op == "not" then
+    local result = resultOf(1)
+    if result == nil then return nil end
+    return not result
+  end
+  local decisive = op == "or" -- The operand value that decides the result on its own.
+  local anyUnknown = false
+  for index = 1, count do
+    local result = resultOf(index)
+    if result == decisive then return decisive end
+    if result == nil then anyUnknown = true end
+  end
+  if anyUnknown then return nil end
+  return not decisive
+end
+
+local function evaluateNode(node)
+  if node.call then return call(node.call, unpack(node.args)) end
+  return combine(node.op, #node.children, function(index) return evaluateNode(node.children[index]) end)
+end
+
 local function explainNode(node)
   if node.call then
     local args = {}
     for index, value in ipairs(node.args) do args[index] = value end
-    local ok, result = pcall(resolve(node.call), unpack(args))
-    if not ok then
-      result = true -- Permissive, as in Evaluate.
-    elseif result ~= nil then
-      result = result and true or false
-    end
-    return { call = node.call, args = args, result = result }
+    return { call = node.call, args = args, result = call(node.call, unpack(args)) }
   end
-  local children, anyFalse, anyTrue, anyUnknown = {}, false, false, false
-  for index, child in ipairs(node.children) do
-    children[index] = explainNode(child)
-    local result = children[index].result
-    if result == nil then anyUnknown = true elseif result then anyTrue = true else anyFalse = true end
-  end
-  local result
-  if node.op == "not" then
-    if not anyUnknown then result = not anyTrue end
-  elseif node.op == "and" then
-    if anyFalse then result = false elseif not anyUnknown then result = true end
-  elseif anyTrue then
-    result = true
-  elseif not anyUnknown then
-    result = false
-  end
+  local children = {}
+  for index, child in ipairs(node.children) do children[index] = explainNode(child) end
+  local result = combine(node.op, #children, function(index) return children[index].result end)
   return { op = node.op, children = children, result = result }
+end
+
+local active = {} -- expression -> true while it is being evaluated or explained.
+
+---Run a walker over an expression's tree with the shared re-entry guard and error handling.
+---@return boolean ok False when the expression did not parse, re-entered, or raised.
+---@return any result
+local function run(expression, walk)
+  local tree = parsedTree(expression)
+  if not tree then return false end
+  -- The same expression always makes the same calls, so re-entering it would never finish.
+  -- This happens when a published QuestAvailable evaluates the quest that asked about it.
+  -- The answer then depends on which quest was evaluated first, so the shipped data must not
+  -- contain QuestAvailable cycles; tools/validation/conditions.test.lua rejects them.
+  if active[expression] then return false end
+  active[expression] = true
+  local ok, result = pcall(walk, tree)
+  active[expression] = nil
+  if not ok then report(expression, result) end
+  return ok, result
+end
+
+--------------------------------------------------------------------------------------------
+-- Public API
+--------------------------------------------------------------------------------------------
+
+---Return a quest's condition expression.
+---@param questId QuestId
+---@return string? expression Nil when the quest has no condition.
+function Conditions.Get(questId)
+  return LibQuestieDB.Quest.conditions(questId)
+end
+
+---Evaluate a condition expression.
+---An empty or nil expression is true. Expressions outside the builder's grammar, or that raise
+---an error, are permissive (true) and are reported once through the client's error handler.
+---Re-entering an expression that is already being evaluated is also true.
+---@param expression string?
+---@return boolean? result Nil when unknown: a condition function could not read its state and
+---no other operand decides the result.
+function Conditions.Evaluate(expression)
+  if expression == nil or expression == "" then return true end
+  local ok, result = run(expression, evaluateNode)
+  if not ok then return true end
+  return result
+end
+
+---Evaluate a quest's condition expression.
+---@param questId QuestId
+---@return boolean? result True when the quest has no condition; nil when unknown.
+function Conditions.EvaluateQuest(questId)
+  return Conditions.Evaluate(Conditions.Get(questId))
 end
 
 ---Explain an expression as a tree with every leaf evaluated, for display.
 ---Nodes are `{ call, args, result }` or `{ op = "and"|"or"|"not", children, result }`, where
----result is true, false, or nil when unknown. `and`/`or`/`not` follow three-valued logic, so the
----root can be determinate where Evaluate, which reads leaves in order, returns nil.
+---result is true, false, or nil when unknown. When Explain returns a tree, its root result equals
+---Evaluate's: both combine operands with the same three-valued logic.
 ---@param expression string?
----@return table? tree Nil without an expression, or for one outside the builder's grammar.
+---@return table? tree Nil without an expression, for one outside the builder's grammar, or
+---when a condition function raised an error (Evaluate is then permissive).
 function Conditions.Explain(expression)
   if expression == nil or expression == "" then return nil end
-  local tree = parsed[expression]
-  if tree == nil then
-    local tokens = tokenize(expression)
-    local ok, result = false, nil
-    if tokens then ok, result = pcall(parse, tokens) end
-    tree = ok and result or false
-    parsed[expression] = tree
-  end
-  return tree and explainNode(tree) or nil
+  local ok, tree = run(expression, explainNode)
+  return ok and tree or nil
 end
 
 ---Explain a quest's condition expression.
