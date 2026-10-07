@@ -732,10 +732,10 @@ Expressions that fail to compile or raise an error are true and are reported onc
 | `IsRaceClass(raceMask, classMask)` | Both | Composes the two above |
 | `IsLevel(level)` / `IsLevelExact(level)` / `IsLevelBelow(level)` | Level `>=`, `==`, `<=` | Client |
 | `HasAchievement(achievementId)` | Achievement completed | Client; true without achievements |
-| `EventActive(eventId)` / `HolidayActive(holidayId)` / `WorldState(id, value)` | Server state | Stub: true |
 
-Unknown function names are true. A stub is true, so a negated stub is false: `not EventActive(12)`
-hides its quest. The data is written for Questie, which publishes real `QuestAvailable` and
+Server events, holidays, and world states are not part of the vocabulary yet; ADR 0017 lists
+them as a future improvement. Unknown function names are true. A stub is true, so a negated stub
+is false: `not QuestAvailable(1)` hides its quest without Questie. The data is written for Questie, which publishes real `QuestAvailable` and
 `HasSkill`. The shipped data never forms a `QuestAvailable` cycle.
 
 ### Explaining a condition

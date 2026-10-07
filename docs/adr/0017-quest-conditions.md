@@ -34,8 +34,7 @@ requiring the King of the Gordok aura.
 
 `src/conditions.lua` defines every condition function using client APIs only, so any addon can
 evaluate conditions without Questie. Functions that need state the client cannot provide
-(`QuestAvailable`, `HasSkill`, `EventActive`, `HolidayActive`, `WorldState`) are permissive
-stubs that return true. Unknown function names are also permissive.
+(`QuestAvailable`, `HasSkill`) are permissive stubs that return true. Unknown function names are also permissive.
 
 The data is written for Questie, which publishes real `QuestAvailable` and `HasSkill`, so
 corrections may negate any function. A consumer without Questie gets the stubs, where a negated
@@ -103,6 +102,15 @@ Storing an expression tree instead was rejected. It needs a new field type and e
 the string already carries everything the evaluator needs. When a UI needs the structure, for
 example to show which part of a condition fails, `Explain` parses the builder's grammar back into
 a tree on demand.
+
+### 7. Server state is a future improvement
+
+`EventActive`, `HolidayActive`, and `WorldState` are disabled in the builder and the evaluator,
+not offered as always-true stubs. Questie cannot answer them yet, and a stub that is always true
+is wrong whenever a condition negates it. `HolidayActive` is the likely first: Questie already
+tracks active holidays in `QuestieEvent` and would need a holiday ID mapping. `EventActive`
+uses server-emulator event IDs with no client equivalent, and the client only exposes world
+states shown in UI widgets.
 
 ## Consequences
 

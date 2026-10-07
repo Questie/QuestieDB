@@ -9,7 +9,7 @@
 --
 -- QuestieDB supplies a base implementation of every function, built only on client APIs, so
 -- any addon can evaluate conditions. Functions that need state the client cannot provide are
--- permissive stubs that return true; negating one (`not EventActive(1)`) is therefore false.
+-- permissive stubs that return true; negating one (`not QuestAvailable(1)`) is therefore false.
 -- TRUSTED_OWNER can publish better versions, and new functions, through `SetFunctions`;
 -- everyone then evaluates against them.
 --
@@ -229,10 +229,13 @@ local base = {
     return select(4, GetAchievementInfo(achievementId)) == true
   end,
 
-  -- Server-side state the client cannot see: permissive stubs.
-  EventActive = function() return true end,
-  HolidayActive = function() return true end,
-  WorldState = function() return true end,
+  -- Future improvement: server state the client cannot see. Disabled in the builder until
+  -- Questie can answer them. HolidayActive could map holiday IDs onto QuestieEvent's active
+  -- events; EventActive uses emulator event IDs with no client equivalent; WorldState is only
+  -- visible for UI widgets.
+  -- EventActive = function() return true end,
+  -- HolidayActive = function() return true end,
+  -- WorldState = function() return true end,
 }
 
 -- The builder validates authored expressions against the same vocabulary.

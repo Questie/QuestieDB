@@ -43,7 +43,8 @@ builder.vocabulary = {
   IsTeam = { "tag" }, IsRace = { "mask" }, IsClass = { "mask" }, IsRaceClass = { "mask", "mask" },
   IsLevel = { "level" }, IsLevelExact = { "level" }, IsLevelBelow = { "level" },
   HasAchievement = { "id" },
-  EventActive = { "id" }, HolidayActive = { "id" }, WorldState = { "id", "integer" },
+  -- Future improvement: server state. Disabled until Questie can answer them; see ADR 0017.
+  -- EventActive = { "id" }, HolidayActive = { "id" }, WorldState = { "id", "integer" },
 }
 
 --- Reputation ranks for HasRep and RepBelow. These are condition ranks (Hated = 0); the client's
