@@ -181,11 +181,10 @@ return function(check, equal)
   for _, name in ipairs(stubbed) do rawset(_G, name, saved[name]) end
 
   -- Gates on the shipped expressions, read from each flavor's composed Source data so every
-  -- correction file that writes `conditions` is covered. Base stubs are true, so a negated stub
-  -- would hide its quest for every consumer without Questie, and QuestAvailable cycles have no
-  -- stable answer. Race masks may only use bits of races playable in the flavor, and a
-  -- faction-wide mask must be IsTeam: a literal mask cannot follow Forever adding Skyborne to
-  -- Era's factions, so IsRace(77) would exclude Skyborne Alliance players.
+  -- correction file that writes `conditions` is covered. QuestAvailable cycles have no stable
+  -- answer. Race masks may only use bits of races playable in the flavor. On Forever,
+  -- Era's literal faction masks 77 and 178 are rejected: they miss Skyborne. Written with
+  -- `raceIDs.ALL_ALLIANCE`, the mask resolves per flavor and includes Skyborne.
   local vocabulary = C.vocabulary
   local enum = dofile("src/corrections/enum/constants.lua")
   local raceBits = {}
@@ -202,8 +201,6 @@ return function(check, equal)
     return mask ~= 0
   end
   local eraFactionMasks = { [77] = true, [178] = true }
-  local stubs = { QuestAvailable = true, HasSkill = true, EventActive = true, HolidayActive = true,
-    WorldState = true }
   local keywords = { ["and"] = true, ["or"] = true, ["not"] = true }
 
   local loaded = {}
@@ -225,14 +222,10 @@ return function(check, equal)
           for name in expression:gmatch("([%a_][%w_]*)%s*%(") do
             if not keywords[name] and not vocabulary[name] then problems[#problems + 1] = questId .. ":" .. name end
           end
-          for name in expression:gmatch("not%s+([%a_][%w_]*)%s*%(") do
-            if stubs[name] then problems[#problems + 1] = questId .. ":not " .. name end
-          end
           for mask in expression:gmatch("IsRace%a*%(%s*(%d+)") do
             mask = tonumber(mask)
-            local factionWide = mask == raceKeys.ALL_ALLIANCE or mask == raceKeys.ALL_HORDE or
-              (flavor.name == "Forever" and eraFactionMasks[mask])
-            if factionWide or unknownBits(mask, raceKeys.ALL_ALLIANCE + raceKeys.ALL_HORDE) then
+            local eraMaskOnForever = flavor.name == "Forever" and eraFactionMasks[mask]
+            if eraMaskOnForever or unknownBits(mask, raceKeys.ALL_ALLIANCE + raceKeys.ALL_HORDE) then
               problems[#problems + 1] = questId .. ":IsRace(" .. mask .. ")"
             end
           end
@@ -256,7 +249,7 @@ return function(check, equal)
     for questId in pairs(availableEdges) do
       if reachesItself(questId, questId, {}) then problems[#problems + 1] = questId .. ":cycle" end
     end
-    equal(problems, {}, flavor.name .. " conditions (" .. count .. ") compile, use the vocabulary, valid race masks, and stable stubs")
+    equal(problems, {}, flavor.name .. " conditions (" .. count .. ") compile, use the vocabulary, and valid race masks")
   end
 
   -- Conditions are ordinary correction values: Forever's authored fixes carry them, Era's do not.
