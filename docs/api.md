@@ -700,9 +700,9 @@ field and `LibQuestieDB.Conditions`. The design is recorded in
 [ADR 0017](adr/0017-quest-conditions.md).
 
 ```lua
-LibQuestieDB.Conditions.Get(558)
---> "QuestRewarded(1687) and QuestRewarded(1558) and QuestRewarded(1479)"
-LibQuestieDB.Conditions.EvaluateQuest(558)               --> true, false, or nil
+-- On Forever: "Unfinished Gordok Business" needs the King of the Gordok aura.
+LibQuestieDB.Conditions.Get(1318)                        --> "HasAura(22799)"
+LibQuestieDB.Conditions.EvaluateQuest(1318)              --> true, false, or nil
 LibQuestieDB.Conditions.Evaluate("IsLevel(10) and not HasAura(15007)")
 ```
 
@@ -724,7 +724,7 @@ expressions that raise an error are true and are reported once through `geterror
 | `HasItem(itemId[, count])` | Count in bags, default 1 | Client item count |
 | `HasItemOrBank(itemId[, count])` | Count in bags and bank | Client item count |
 | `HasItemEquipped(itemId)` | Item equipped | Client |
-| `HasSkill(skillId, level)` | Profession at level | Stub: true |
+| `HasSkill(skillId[, level])` | Profession at level, default 1 | Stub: true |
 | `KnowsSpell(spellId)` | Spell known | Client |
 | `HasRep(factionId, rank)` | Reputation rank at least `rank` | Client; ranks 0 (Hated) to 7 (Exalted), `C.standing.HONORED` etc. |
 | `RepBelow(factionId, rank)` | Reputation rank at most `rank` | Client; same ranks |
@@ -780,15 +780,17 @@ A trusted owner can replace base functions for every consumer. Names outside the
 raise an error:
 
 ```lua
+-- Questie only. Another addon passing "Questie" replaces Questie's whole set for everyone.
 LibQuestieDB.Conditions.SetFunctions("Questie", {
-  QuestAvailable = function(questId) return MyAddon.IsQuestAvailable(questId) end,
+  QuestRewarded = function(questId) return Questie.db.char.complete[questId] == true end,
 })
 LibQuestieDB.Conditions.SetFunctions("Questie", nil) -- withdraw
 ```
 
 A write copies the table and replaces the previous set. Functions return true, false, or nil
 for unknown.
-Only Questie is trusted; other owners raise an error. Re-entering an expression that is
+Only Questie is trusted; other owners raise an error. Other consumers must not publish under
+Questie's name: the owner is a convention, not authentication. Re-entering an expression that is
 already being evaluated returns true, so a published `QuestAvailable` may evaluate conditions.
 
 ---
