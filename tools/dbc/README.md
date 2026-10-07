@@ -248,7 +248,7 @@ First convert and validate temporary copies:
 ```
 
 Inspect the reported counts and unmapped AreaIDs. Then remove `--dry-run` to install
-the ten output files:
+the eleven output files:
 
 ```sh
 ./questiedb.sh convert-forever \
@@ -270,7 +270,7 @@ are not rebuilt.
 
 ### Output files
 
-Raw inputs come from `data/Classic/`. The first five correction inputs come from
+Raw inputs come from `data/Classic/`. The first six correction inputs come from
 `src/corrections/Era/`; **item-start corrections come from `src/corrections/Shared/`**.
 
 ```text
@@ -284,6 +284,7 @@ src/corrections/Forever/legacy/classicNPCFixes.lua
 src/corrections/Forever/legacy/classicObjectFixes.lua
 src/corrections/Forever/legacy/classicQuestFixes.lua
 src/corrections/Forever/legacy/classicQuestReputationFixes.lua
+src/corrections/Forever/legacy/classicQuestConditions.lua
 src/corrections/Forever/legacy/itemStartFixes.lua
 ```
 
@@ -298,7 +299,7 @@ files: it also identifies outputs the tool may safely update on a later run.
 
 The tested `1.15.9.69722` → `1.60.1.69893` conversion recognized **140,660 pairs** and
 changed **13,691**. Six points on synthetic AreaIDs `10073`, `10074` and `10089`
-remained unresolved. The dry run validated all ten files and 30 correction personas.
+remained unresolved. The dry run validated all eleven files and 31 correction personas.
 Counts depend on the source revision as well as the DBC builds.
 
 ## DBC download and coverage

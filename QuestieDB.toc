@@ -255,6 +255,7 @@ src\corrections\Forever\legacy\classicNPCFixes.lua [ExcludeLoadGameType vanilla,
 src\corrections\Forever\legacy\classicItemFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\legacy\classicObjectFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\legacy\classicQuestReputationFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+src\corrections\Forever\legacy\classicQuestConditions.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\legacy\itemStartFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
 # --- Forever: generated delta-base ---

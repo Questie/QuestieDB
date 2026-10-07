@@ -169,6 +169,7 @@ config.ownedCorrections = {
   { owned = 'Forever', file = 'Forever/legacy/classicItemFixes.lua', module = 'QuestieItemFixes', datatype = 'Item', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1, window = 'Era' },
   { owned = 'Forever', file = 'Forever/legacy/classicObjectFixes.lua', module = 'QuestieObjectFixes', datatype = 'Object', static = {'Load'}, dynamic = {'LoadFactionFixes'}, sourceExpansionOrder = 1, window = 'Era' },
   { owned = 'Forever', file = 'Forever/legacy/classicQuestReputationFixes.lua', module = 'QuestieClassicQuestReputationFixes', datatype = 'Quest', static = {'Load'}, expansions = {['Forever']=true}, generated = true, window = 'Era' },
+  { owned = 'Forever', file = 'Forever/legacy/classicQuestConditions.lua', module = 'QuestieClassicQuestConditions', datatype = 'Quest', static = {'Load'}, expansions = {['Forever']=true}, generated = true, loadOffset = 5, window = 'Era' },
   { owned = 'Forever', file = 'Forever/legacy/itemStartFixes.lua', module = 'QuestieItemStartFixes', datatype = 'Item', static = {'LoadAutomaticQuestStarts'}, options = {['noNewEntries']=true,['noOverwrites']=true}, generated = true, window = 'Era' },
   -- Generated delta-base follows all inherited Static Corrections, before traces and authored fixes.
   { owned = 'Forever', file = 'Forever/generated/foreverBaseNpc.lua', module = 'ForeverBaseNpc', datatype = 'Npc', static = {'Load'}, generated = true, window = 'ForeverDeltaBase' },

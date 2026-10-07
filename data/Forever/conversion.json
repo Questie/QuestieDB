@@ -1829,7 +1829,7 @@
     "scope": "transformed pairs only; calculations retain full precision"
   },
   "assumption": "NPC/terrain world positions remain unchanged; this is a converted Era baseline, not complete Forever content.",
-  "zone_symbols_sha256": "205957995e6713a4bd72412bd868e290f361fd52c9d66d1d4b29693ed7479750",
+  "zone_symbols_sha256": "dd738ec0c1a9785946c5574a5f7cb8d2a64745b099dffccebd00ee8864fbb88a",
   "files": {
     "data/Forever/foreverItemDB.lua": {
       "source": "data/Classic/classicItemDB.lua",
@@ -2048,6 +2048,17 @@
       "source": "src/corrections/Era/classicQuestReputationFixes.lua",
       "source_sha256": "155b2502990304339833f65c5d5f46d6f1ad84527b9e476a976f4f9157a14322",
       "output_sha256": "155b2502990304339833f65c5d5f46d6f1ad84527b9e476a976f4f9157a14322",
+      "coordinate_pairs": 0,
+      "race_mask_counts": {},
+      "counts": {},
+      "converted_by_area": {},
+      "unmapped": {},
+      "out_of_bounds_samples": []
+    },
+    "src/corrections/Forever/legacy/classicQuestConditions.lua": {
+      "source": "src/corrections/Era/classicQuestConditions.lua",
+      "source_sha256": "3d06b919448cf382b71e751cba85821bb9fbe4ebac28180a6c49a9a0d62d373a",
+      "output_sha256": "3d06b919448cf382b71e751cba85821bb9fbe4ebac28180a6c49a9a0d62d373a",
       "coordinate_pairs": 0,
       "race_mask_counts": {},
       "counts": {},
