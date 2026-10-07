@@ -264,11 +264,12 @@ return function(check, equal)
   end
 
   -- Each table applies to exactly one expansion. Quest 558 has a Classic expression but none
-  -- in the WotLK table, so Wrath must not inherit it.
+  -- in the WotLK table, so Wrath must not inherit it. Forever reads its own converted copy.
   local quest558 = "QuestRewarded(1687) and QuestRewarded(1558) and QuestRewarded(1479)"
   for _, case in ipairs({
     { flavor = "Vanilla", expected = quest558 },
     { flavor = "Wrath", expected = nil },
+    { flavor = "Forever", expected = quest558 },
   }) do
     client.reset()
     client.install({ expansion = config.flavorByName[case.flavor].expansion })

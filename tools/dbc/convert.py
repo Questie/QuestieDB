@@ -26,6 +26,8 @@ from runtime_helper import HELPER, require_matching_helper
 ROOT = Path(__file__).resolve().parents[2]
 ZONE_SYMBOLS_PATH = "src/corrections/enum/zones.lua"
 # Only Era faction-wide masks gain the matching Skyborne bit; race subsets stay authored.
+# Quest Conditions need no rewrite: faction-wide checks use IsTeam, and builder calls in
+# correction files resolve raceKeys for the active flavor.
 QUEST_RACE_MASKS = {77: 4294967373, 178: 8589934770}
 # Reuse the contributor launcher's Lua discovery and cancellation ownership.
 sys.path.insert(0, str(ROOT / "tools/cli"))
@@ -57,6 +59,8 @@ INPUTS = (
           "Quest", False, "QuestieQuestFixes", ("Load", "LoadFactionFixes")),
     Input("src/corrections/Era/classicQuestReputationFixes.lua", "src/corrections/Forever/legacy/classicQuestReputationFixes.lua",
           "Quest", False, "QuestieClassicQuestReputationFixes", ("Load",)),
+    Input("src/corrections/Era/classicQuestConditions.lua", "src/corrections/Forever/legacy/classicQuestConditions.lua",
+          "Quest", False, "QuestieClassicQuestConditions", ("Load",)),
     Input("src/corrections/Shared/itemStartFixes.lua", "src/corrections/Forever/legacy/itemStartFixes.lua",
           "Item", False, "QuestieItemStartFixes", ("LoadAutomaticQuestStarts",)),
 )
