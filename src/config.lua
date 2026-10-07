@@ -15,7 +15,7 @@ config.addonName = "QuestieDB"
 
 --- Bumped when the shape of the public API or the storage format changes in a way a consumer
 --- can observe. Questie checks this at init and fails with a specific message on mismatch.
-config.contractVersion = 4
+config.contractVersion = 5
 
 --- The oldest consumer contract this release still honors. `RequireContract` passes any
 --- required version in [minSupportedContract, contractVersion]; raise this floor only when a
@@ -148,6 +148,7 @@ config.runtimeFiles = {
   finalTail = {
     "src/ui/modeIndicator.lua",
     "src/api.lua",
+    "src/conditions.lua",
     "src/support/eraToForever.lua",
   },
 }

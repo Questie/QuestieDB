@@ -118,5 +118,11 @@ add(3, "table", {
 })
 add(3, "number", { "LibQuestieDB.Enum.factionRaceMasks.Alliance", "LibQuestieDB.Enum.factionRaceMasks.Horde" })
 add(4, "table", { "LibQuestieDB.Enum.classKeys", "LibQuestieDB.Enum.npcFlags" })
+add(5, "table", { "LibQuestieDB.Conditions" })
+add(5, "function", {
+  "LibQuestieDB.Quest.conditions", "LibQuestieDB.Conditions.Get", "LibQuestieDB.Conditions.Evaluate",
+  "LibQuestieDB.Conditions.EvaluateQuest", "LibQuestieDB.Conditions.Explain",
+  "LibQuestieDB.Conditions.ExplainQuest", "LibQuestieDB.Conditions.SetFunctions",
+})
 
 return entries
