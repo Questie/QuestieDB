@@ -28,6 +28,31 @@ quest's other fields as well.
 A mistake, such as a misspelled function or a wrong argument, stops the file from loading with an
 error that names the problem. Run `lua5.1 test.lua conditions` to check every condition.
 
+## Example: disabled by more than one quest
+
+`disabledByQuest` takes a single quest: the quest is hidden while that quest is in the quest log.
+To hide it while either of two quests is in the log, write a condition instead:
+
+```lua
+[1234] = {
+    -- Hidden while quest 1111 or 2222 is in the quest log
+    [questKeys.conditions] = C.Not(
+      C.Any(
+        C.QuestInLog(1111),
+        C.QuestInLog(2222)
+      )
+    ),
+},
+```
+
+Read it as "not if any of these is in the quest log". Add more `C.QuestInLog(...)` inside the
+`C.Any(...)` for more quests. Don't use `C.Not(C.All(...))` here: that hides the quest only
+while *all* of them are in the log at the same time.
+
+If the quest already has a `disabledByQuest`, either keep it and list only the other quests here,
+or remove it and list all of them here. A quest has one condition, so if it already has one, put
+both inside one `C.All(...)`.
+
 ## Combining conditions
 
 | Write | Meaning |
