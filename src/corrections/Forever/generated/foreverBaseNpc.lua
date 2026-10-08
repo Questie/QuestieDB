@@ -3691,7 +3691,6 @@ function ForeverBaseNpc:Load()
         [246611] = { -- Sevren Callahan : https://wowhead.com/forever/npc=246611/sevren-callahan
             [npcKeys.name] = "Sevren Callahan",
             [npcKeys.subName] = "Paladin Trainer",
-            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; class_trainer_title -> TRAINER: own tag='Paladin Trainer'; The NPC's exact class-trainer title identifies its stated role, so we assume TRAINER service without relying on paid-training evidence.
         },
         [246664] = { -- Fragmented Sentry : https://wowhead.com/forever/npc=246664/fragmented-sentry
             [npcKeys.name] = "Fragmented Sentry",
@@ -9582,7 +9581,6 @@ function ForeverBaseNpc:Load()
         [258088] = { -- Irna Kindlevein : https://wowhead.com/forever/npc=258088/irna-kindlevein
             [npcKeys.name] = "Irna Kindlevein",
             [npcKeys.subName] = "Shaman Trainer",
-            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; class_trainer_title -> TRAINER: own tag='Shaman Trainer'; The NPC's exact class-trainer title identifies its stated role, so we assume TRAINER service without relying on paid-training evidence.
         },
         [258098] = { -- Eldrun Stormbreaker : https://wowhead.com/forever/npc=258098/eldrun-stormbreaker
             [npcKeys.name] = "Eldrun Stormbreaker",
@@ -9812,7 +9810,6 @@ function ForeverBaseNpc:Load()
         [258303] = { -- Kyridel Truline : https://wowhead.com/forever/npc=258303/kyridel-truline
             [npcKeys.name] = "Kyridel Truline",
             [npcKeys.subName] = "Hunter Trainer",
-            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; class_trainer_title -> TRAINER: own tag='Hunter Trainer'; The NPC's exact class-trainer title identifies its stated role, so we assume TRAINER service without relying on paid-training evidence.
         },
         [258306] = { -- Granny Finespindle : https://wowhead.com/forever/npc=258306/granny-finespindle
             [npcKeys.name] = "Granny Finespindle",
@@ -14502,7 +14499,6 @@ function ForeverBaseNpc:Load()
         [270263] = { -- Farseer Maret Firetend : https://wowhead.com/forever/npc=270263/farseer-maret-firetend
             [npcKeys.name] = "Farseer Maret Firetend",
             [npcKeys.subName] = "Shaman Trainer",
-            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; class_trainer_title -> TRAINER: own tag='Shaman Trainer'; The NPC's exact class-trainer title identifies its stated role, so we assume TRAINER service without relying on paid-training evidence.
         },
         [270269] = { -- Arbal : https://wowhead.com/forever/npc=270269/arbal
             [npcKeys.name] = "Arbal",
@@ -14518,12 +14514,10 @@ function ForeverBaseNpc:Load()
         [270278] = { -- Bordolf Axegrim : https://wowhead.com/forever/npc=270278/bordolf-axegrim
             [npcKeys.name] = "Bordolf Axegrim",
             [npcKeys.subName] = "Warrior Trainer",
-            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; class_trainer_title -> TRAINER: own tag='Warrior Trainer'; The NPC's exact class-trainer title identifies its stated role, so we assume TRAINER service without relying on paid-training evidence.
         },
         [270280] = { -- Torin Treehame : https://wowhead.com/forever/npc=270280/torin-treehame
             [npcKeys.name] = "Torin Treehame",
             [npcKeys.subName] = "Hunter Trainer",
-            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; class_trainer_title -> TRAINER: own tag='Hunter Trainer'; The NPC's exact class-trainer title identifies its stated role, so we assume TRAINER service without relying on paid-training evidence.
         },
         [270294] = { -- Baron Marinous : https://wowhead.com/forever/npc=270294/baron-marinous
             [npcKeys.name] = "Baron Marinous",
