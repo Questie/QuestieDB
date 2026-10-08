@@ -96,6 +96,30 @@ function ForeverQuestFixes:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredClasses] = classIDs.MAGE,
         },
+        [91743] = { -- Rascally Rodents
+            [questKeys.preQuestSingle] = {91741},
+        },
+        [91745] = { -- Mining Consultant
+            [questKeys.preQuestSingle] = {91743},
+        },
+        [91752] = { -- The Big Picture
+            [questKeys.preQuestSingle] = {91745},
+        },
+        [91758] = { -- Follow That Kobold!
+            [questKeys.preQuestSingle] = {91752},
+        },
+        [91772] = { -- Shhh! We're Hunting Kobolds
+            [questKeys.preQuestSingle] = {91758},
+        },
+        [91775] = { -- Book Return
+            [questKeys.preQuestSingle] = {91772},
+        },
+        [91777] = { -- Rare Books
+            [questKeys.preQuestSingle] = {91775},
+        },
+		[92124] = { -- Book Inventory
+			[questKeys.preQuestSingle] = {91741}
+		},
         [92461] = { -- Harmony in Balance
             [questKeys.preQuestSingle] = {92460},
         },
