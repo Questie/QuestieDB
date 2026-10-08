@@ -17,6 +17,10 @@ function ForeverNpcFixes:Load()
     local phases = Phasing.phases
 
     return {
+        [2155] = { -- Sentinel Shayla Nightbreeze
+            [npcKeys.questEnds_add] = {490},
+            [npcKeys.questStarts_add] = {490},
+        },
         [4949] = { -- Thrall
             [npcKeys.questEnds_add] = {93739},
         },
