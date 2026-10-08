@@ -12,6 +12,11 @@ function ForeverObjectFixes:Load()
     local zoneIDs = ZoneDB.zoneIDs
 
     return {
+        [562131] = { -- Applejack Still
+            [objectKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{24.55,58.04}}},
+            [objectKeys.questStarts] = {91736},
+            [objectKeys.questEnds] = {91736},
+        },
         [563442] = { -- Kobold Tracks
             [objectKeys.name] = "Kobold Tracks",
             [objectKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{47.73,45.86},{47.94,52.07},{48.38,53.48},{41.96,62.32},{42.74,61.82},{43.43,61.01},{44.11,60.61},{44.81,59.61},{45.15,58.06},{45.76,56.45},{46.53,54.69},{45.95,52.61},{45.4,51.01}}},

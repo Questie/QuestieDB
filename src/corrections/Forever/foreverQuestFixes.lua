@@ -29,6 +29,23 @@ function ForeverQuestFixes:Load()
     local rankKeys = QuestieProfessions.rankNames
 
     return {
+        [76] = { -- The Jasperlode Mine
+            [questKeys.triggerEnd] = {"Scout through the Jasperlode Mine", {[zoneIDs.ELWYNN_FOREST] = {{61.93,53.16}}}},
+        },
+        [490] = { -- Bounty: Gnarlpine Furbolg
+            [questKeys.name] = "Bounty: Gnarlpine Furbolg",
+            [questKeys.startedBy] = {{2155}},
+            [questKeys.finishedBy] = {{2155}},
+            [questKeys.requiredLevel] = 5,
+            [questKeys.questLevel] = 8,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredClasses] = raceIDs.NONE,
+            [questKeys.objectivesText] = {"Shayla Nightbreeze on the road outside of Darnassus wants you to bring her 15 Gnarlpine Fangs."},
+            [questKeys.objectives] = {nil,nil,{{5220}}},
+            [questKeys.zoneOrSort] = zoneIDs.TELDRASSIL,
+            [questKeys.questFlags] = 8,
+            [questKeys.reputationReward] = {{factionIDs.DARNASSUS, 100}},
+        },
         [940] = { -- Teldrassil
             [questKeys.startedBy_add] = {nil,{673378}},
         },
@@ -95,6 +112,13 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
             [questKeys.requiredClasses] = classIDs.MAGE,
+        },
+        [91736] = { -- Applejack Still
+            [questKeys.startedBy] = {nil,{562131}},
+            [questKeys.finishedBy] = {nil,{562131}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = 1,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [91741] = { -- Nibbled-On Book
             [questKeys.nextQuestInChain] = 92124,
@@ -581,6 +605,23 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.preQuestSingle] = {94006},
         },
+        [94792] = { -- Taming the Beast
+            [questKeys.objectives] = {{{524,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.nextQuestInChain] = 94863,
+        },
+        [94793] = { -- Training the Beast
+            [questKeys.preQuestSingle] = {94864},
+        },
+        [94863] = { -- Taming the Beast
+            [questKeys.preQuestSingle] = {94792},
+            [questKeys.objectives] = {{{1922,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.nextQuestInChain] = 94864,
+        },
+        [94864] = { -- Taming the Beast
+            [questKeys.preQuestSingle] = {94863},
+            [questKeys.objectives] = {{{822,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.nextQuestInChain] = 94793,
+        },
         [94911] = { -- Child of Nature
             [questKeys.requiredClasses] = classIDs.DRUID,
         },
@@ -751,7 +792,7 @@ function ForeverQuestFixes:Load()
             [questKeys.exclusiveTo] = {96628,96630,96638,96652,96656,96659},
         },
         [96628] = { -- The Adventurer
-            -- [questKeys.preQuestSingle] = {92470}, -- TBD
+            [questKeys.preQuestSingle] = {282},
             [questKeys.breadcrumbForQuestId] = 96608,
             [questKeys.nextQuestInChain] = 96608,
             [questKeys.exclusiveTo] = {96627,96630,96638,96652,96656,96659},

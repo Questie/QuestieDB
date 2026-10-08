@@ -36,6 +36,21 @@ function ForeverNpcFixes:Load()
         [247229] = { -- Daniel
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{49.48,40.67}}},
         },
+        [248242] = { -- Hamish Bergwort
+            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{65.1,69.84}}},
+        },
+        [248248] = { -- Blixie Fitzwink
+            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{63.2,72.6}}},
+        },
+        [248265] = { -- Ormin Pelford
+            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{76.54,71.92}}},
+        },
+        [248266] = { -- Hagar Lowe
+            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{82.47,63.83}}},
+        },
+        [248277] = { -- Merell Ross
+            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{84.75,79.3}}},
+        },
         [248362] = { -- Shinyfinder Narf
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{49.22,28.01}}},
         },
@@ -43,7 +58,10 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{51.21,40.8}}},
         },
         [248464] = { -- Nimsy
-            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{41.62,79.9}}},
+            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{39.31,80.59}}},
+        },
+        [248474] = { -- Geosculptor Yip
+            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{61.38,48.93}}},
         },
         [251115] = { -- Urs'anah
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{35.65,26.07}}},
