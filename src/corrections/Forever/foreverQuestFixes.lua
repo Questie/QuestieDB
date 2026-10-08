@@ -96,6 +96,47 @@ function ForeverQuestFixes:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredClasses] = classIDs.MAGE,
         },
+        [91741] = { -- Nibbled-On Book
+            [questKeys.nextQuestInChain] = 92124,
+        },
+        [91743] = { -- Rascally Rodents
+            [questKeys.preQuestSingle] = {92124},
+            [questKeys.nextQuestInChain] = 91745,
+        },
+        [91745] = { -- Mining Consultant
+            [questKeys.preQuestSingle] = {91743},
+            [questKeys.nextQuestInChain] = 91752,
+        },
+        [91751] = { -- Rough Wolf Pelts
+            [questKeys.requiredSkill] = {profKeys.SKINNING, 1},
+        },
+        [91752] = { -- The Big Picture
+            [questKeys.preQuestSingle] = {91745},
+            [questKeys.nextQuestInChain] = 91758,
+        },
+        [91753] = { -- An Enchanting Lesson
+            [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
+        },
+        [91758] = { -- Follow That Kobold!
+            [questKeys.preQuestSingle] = {91752},
+            [questKeys.nextQuestInChain] = 91772,
+        },
+        [91772] = { -- Shhh! We're Hunting Kobolds
+            [questKeys.preQuestSingle] = {91758},
+            [questKeys.objectives] = {nil,{{563442}}},
+            [questKeys.nextQuestInChain] = 91775,
+        },
+        [91775] = { -- Book Return
+            [questKeys.preQuestSingle] = {91772},
+            [questKeys.nextQuestInChain] = 91777,
+        },
+        [91777] = { -- Rare Books
+            [questKeys.preQuestSingle] = {91775},
+        },
+        [92124] = { -- Book Inventory
+            [questKeys.preQuestSingle] = {91741},
+            [questKeys.nextQuestInChain] = 91743,
+        },
         [92461] = { -- Harmony in Balance
             [questKeys.preQuestSingle] = {92460},
         },
@@ -141,6 +182,10 @@ function ForeverQuestFixes:Load()
         [92474] = { -- Falling With Style
             [questKeys.objectives] = {},
             [questKeys.triggerEnd] = {"Use Walk on Air", {[zoneIDs.ZEPHRAS_ISLE] = {{43.67,24.14}}}},
+        },
+        [92479] = { -- A Scribbled Letter
+            [questKeys.requiredClasses] = classIDs.HUNTER,
+            [questKeys.preQuestSingle] = {7},
         },
         [92481] = { -- A Student of the Arcane
             [questKeys.preQuestSingle] = {92461},
@@ -206,10 +251,10 @@ function ForeverQuestFixes:Load()
         },
         [92597] = { -- Reading the Ley Lines
             [questKeys.preQuestSingle] = {92461},
-            [questKeys.objectives] = {nil,{{450002}}},
+            [questKeys.objectives] = {nil,{{460002}}},
         },
         [92598] = { -- The Gift of Skysight
-            [questKeys.objectives] = {nil,{{450001}}},
+            [questKeys.objectives] = {nil,{{460001}}},
         },
         [92640] = { -- Desperate Times
             [questKeys.preQuestSingle] = {94568},
@@ -574,7 +619,7 @@ function ForeverQuestFixes:Load()
         },
         [95998] = { -- The Great Outdoors
             [questKeys.breadcrumbs] = {96627},
-            [questKeys.objectives] = {nil,{{450004},{450004}}},
+            [questKeys.objectives] = {nil,{{460003},{460003}}},
             [questKeys.exclusiveTo] = {96101,96604,96605,96606,96607,96608},
         },
         [96031] = { -- Camping 101: Leatherworking
@@ -656,7 +701,7 @@ function ForeverQuestFixes:Load()
         },
         [96101] = { -- The Great Outdoors
             [questKeys.breadcrumbs] = {96638},
-            [questKeys.objectives] = {nil,{{450003},{450003}}},
+            [questKeys.objectives] = {nil,{{460003},{460003}}},
             [questKeys.exclusiveTo] = {95998,96604,96605,96606,96607,96608},
         },
         [96102] = { -- Camping 101: Tailoring
@@ -671,27 +716,27 @@ function ForeverQuestFixes:Load()
         },
         [96604] = { -- The Great Outdoors
             [questKeys.breadcrumbs] = {96652},
-            [questKeys.objectives] = {nil,{{450005},{450005}}},
+            [questKeys.objectives] = {nil,{{460003},{460003}}},
             [questKeys.exclusiveTo] = {95998,96101,96605,96606,96607,96608},
         },
         [96605] = { -- The Great Outdoors
             [questKeys.breadcrumbs] = {96659},
-            [questKeys.objectives] = {nil,{{450006},{450006}}},
+            [questKeys.objectives] = {nil,{{460003},{460003}}},
             [questKeys.exclusiveTo] = {95998,96101,96604,96606,96607,96608},
         },
         [96606] = { -- The Great Outdoors
             [questKeys.breadcrumbs] = {96630},
-            [questKeys.objectives] = {nil,{{450007},{450007}}},
+            [questKeys.objectives] = {nil,{{460003},{460003}}},
             [questKeys.exclusiveTo] = {95998,96101,96604,96605,96607,96608},
         },
         [96607] = { -- The Great Outdoors
             [questKeys.breadcrumbs] = {96656},
-            [questKeys.objectives] = {nil,{{450008},{450008}}},
+            [questKeys.objectives] = {nil,{{460003},{460003}}},
             [questKeys.exclusiveTo] = {95998,96101,96604,96605,96606,96608},
         },
         [96608] = { -- The Great Outdoors
             [questKeys.breadcrumbs] = {96628},
-            [questKeys.objectives] = {nil,{{450009},{450009}}},
+            [questKeys.objectives] = {nil,{{460003},{460003}}},
             [questKeys.exclusiveTo] = {95998,96101,96604,96605,96606,96607},
         },
         [96626] = { -- Camping 101: Cooking
@@ -700,7 +745,7 @@ function ForeverQuestFixes:Load()
             [questKeys.exclusiveTo] = {96629,96634,96646,96655,96658,96661},
         },
         [96627] = { -- The Adventurer
-            -- [questKeys.preQuestSingle] = {92470}, -- TBD
+            [questKeys.preQuestSingle] = {21},
             [questKeys.breadcrumbForQuestId] = 95998,
             [questKeys.nextQuestInChain] = 95998,
             [questKeys.exclusiveTo] = {96628,96630,96638,96652,96656,96659},
@@ -737,39 +782,6 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.objectives] = {{{251905,nil,Questie.ICON_TYPE_TALK}}},
             [questKeys.exclusiveTo] = {96626,96629,96634,96655,96658,96661},
-        },
-        [96652] = { -- The Adventurer
-            [questKeys.preQuestSingle] = {794},
-            [questKeys.breadcrumbForQuestId] = 96604,
-            [questKeys.nextQuestInChain] = 96604,
-            [questKeys.exclusiveTo] = {96627,96628,96630,96638,96656,96659},
-        },
-        [96655] = { -- Camping 101: Cooking
-            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
-            [questKeys.objectives] = {{{3191,nil,Questie.ICON_TYPE_TALK}}},
-            [questKeys.exclusiveTo] = {96626,96629,96634,96646,96658,96661},
-        },
-        [96656] = { -- The Adventurer
-            -- [questKeys.preQuestSingle] = {92470}, -- TBD
-            [questKeys.breadcrumbForQuestId] = 96607,
-            [questKeys.nextQuestInChain] = 96607,
-            [questKeys.exclusiveTo] = {96627,96628,96630,96638,96652,96659},
-        },
-        [96658] = { -- Camping 101: Cooking
-            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
-            [questKeys.objectives] = {{{265944,nil,Questie.ICON_TYPE_TALK}}},
-            [questKeys.exclusiveTo] = {96626,96629,96634,96646,96655,96661},
-        },
-        [96659] = { -- The Adventurer
-            -- [questKeys.preQuestSingle] = {92470}, -- TBD
-            [questKeys.breadcrumbForQuestId] = 96605,
-            [questKeys.nextQuestInChain] = 96605,
-            [questKeys.exclusiveTo] = {96627,96628,96630,96638,96652,96656},
-        },
-        [96661] = { -- Camping 101: Cooking
-            [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
-            [questKeys.objectives] = {{{3067,nil,Questie.ICON_TYPE_TALK}}},
-            [questKeys.exclusiveTo] = {96626,96629,96634,96646,96655,96658},
         },
         [96652] = { -- The Adventurer
             [questKeys.preQuestSingle] = {794},
@@ -1319,6 +1331,24 @@ function ForeverQuestFixes:Load()
         },
         [98430] = { -- The Longwalkers
             [questKeys.triggerEnd] = {"Escort Perith Stormhoof out of Palemane Rock", {[zoneIDs.MULGORE] = {{37.19,64.62}}}},
+        },
+        [99127] = { -- A Net Disaster
+            [questKeys.nextQuestInChain] = 99128,
+        },
+        [99128] = { -- Slimy Menace
+            [questKeys.preQuestSingle] = {99127},
+            [questKeys.nextQuestInChain] = 99129,
+        },
+        [99129] = { -- A Man About a Murloc
+            [questKeys.preQuestSingle] = {99128},
+            [questKeys.nextQuestInChain] = 99130,
+        },
+        [99130] = { -- An Enticing Offer
+            [questKeys.preQuestSingle] = {99129},
+            [questKeys.nextQuestInChain] = 99131,
+        },
+        [99131] = { -- Baited for Success
+            [questKeys.preQuestSingle] = {99130},
         },
         [99260] = { -- Fillion's Mission
             [questKeys.preQuestSingle] = {92850},

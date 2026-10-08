@@ -30,6 +30,21 @@ function ForeverNpcFixes:Load()
         [14242] = { -- Sulhasa
             [npcKeys.name] = "Sulhasa",
         },
+        [247226] = { -- Kelsey Fargo
+            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{47.18,32.16}}},
+        },
+        [247229] = { -- Daniel
+            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{49.48,40.67}}},
+        },
+        [248362] = { -- Shinyfinder Narf
+            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{49.22,28.01}}},
+        },
+        [248415] = { -- Tordrin Sternblade
+            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{51.21,40.8}}},
+        },
+        [248464] = { -- Nimsy
+            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{41.62,79.9}}},
+        },
         [251115] = { -- Urs'anah
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{35.65,26.07}}},
         },
@@ -123,6 +138,9 @@ function ForeverNpcFixes:Load()
         },
         [259013] = { -- Resaan Nimbuswalker
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{57.05,29.35}}},
+        },
+        [263399] = { -- Sam Sarsaparilla
+            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{44.9,63.36}}},
         },
         [268602] = { -- Skypriest Faladiel
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.43,63.71}}},

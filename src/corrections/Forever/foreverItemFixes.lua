@@ -10,6 +10,9 @@ function ForeverItemFixes:Load()
     local itemClasses = QuestieDB.itemClasses
 
     return {
+        [750] = { -- Tough Wolf Meat
+            [itemKeys.npcDrops_remove] = {238425,238426,238427,247809},
+        },
         [6889] = { -- Small Egg
             [itemKeys.npcDrops_add] = {251261,251284,251291},
         },
