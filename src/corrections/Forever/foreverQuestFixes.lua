@@ -14,6 +14,7 @@ local l10n = QuestieLoader:ImportModule("l10n")
 
 QuestieCorrections.itemObjectiveFirst[92682] = true
 QuestieCorrections.killCreditObjectiveFirst[94489] = true
+QuestieCorrections.itemObjectiveFirst[97277] = true
 
 -- Static Corrections: shared by all characters and folded in during Generation.
 function ForeverQuestFixes:Load()
@@ -555,6 +556,17 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 93089,
             [questKeys.objectives] = {{{252476,nil,Questie.ICON_TYPE_TALK}}},
         },
+        [94373] = { -- Call of Earth
+            [questKeys.nextQuestInChain] = 94374,
+        },
+        [94374] = { -- Call of Earth
+            [questKeys.preQuestSingle] = {94373},
+            [questKeys.nextQuestInChain] = 94375,
+        },
+        [94375] = { -- Call of Earth
+            [questKeys.startedBy_add] = {{257446}},
+            [questKeys.preQuestSingle] = {94374},
+        },
         [94411] = { -- Meddlesome Mages
             [questKeys.preQuestSingle] = {92595},
             [questKeys.objectives] = {{{257521}}},
@@ -565,6 +577,11 @@ function ForeverQuestFixes:Load()
         },
         [94414] = { -- The Anchors of Zephras
             [questKeys.objectives] = {{{257554,nil,Questie.ICON_TYPE_TALK}}},
+        },
+        [94472] = { -- Earth Sapta
+            [questKeys.preQuestSingle] = {94373},
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.availableUntilCompleted] = 94374,
         },
         [94484] = { -- Unnerving Silence
             [questKeys.exclusiveTo] = {94493},
@@ -877,6 +894,10 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.preQuestSingle] = {97245},
             [questKeys.objectives] = {{{268762,nil,Questie.ICON_TYPE_EVENT},{268679,nil,Questie.ICON_TYPE_EVENT}}},
+        },
+        [97277] = { -- Grund and Gozwin
+            [questKeys.objectives] = {{{269075}},nil,{{277976}}},
+            [questKeys.zoneOrSort] = 77,
         },
         [97894] = { -- Business in Auberdine
             [questKeys.breadcrumbForQuestId] = 982,
@@ -1367,11 +1388,29 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{11026,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96058,97902,97918,97930,97941,97954,98285},
         },
+        [98319] = { -- Secure the Mountain
+            [questKeys.preQuestSingle] = {98322},
+            [questKeys.nextQuestInChain] = 98323,
+            [questKeys.objectives] = {nil,{{460004}}},
+            [questKeys.triggerEnd] = {},
+        },
+        [98322] = { -- Secure the Mountain
+            [questKeys.nextQuestInChain] = 98319,
+        },
+        [98323] = { -- Secure the Mountain
+            [questKeys.preQuestSingle] = {98319},
+        },
         [98372] = { -- An Unfortunate End
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98430] = { -- The Longwalkers
             [questKeys.triggerEnd] = {"Escort Perith Stormhoof out of Palemane Rock", {[zoneIDs.MULGORE] = {{37.19,64.62}}}},
+        },
+        [98574] = { -- Hallowed Memorandum
+            [questKeys.preQuestSingle] = {179},
+        },
+        [98581] = { -- Archaic Rune
+            [questKeys.preQuestSingle] = {179},
         },
         [99127] = { -- A Net Disaster
             [questKeys.nextQuestInChain] = 99128,
@@ -1390,6 +1429,13 @@ function ForeverQuestFixes:Load()
         },
         [99131] = { -- Baited for Success
             [questKeys.preQuestSingle] = {99130},
+        },
+        [99158] = { -- Dawn in the Mountains
+            [questKeys.breadcrumbForQuestId] = 99159,
+            [questKeys.nextQuestInChain] = 99159,
+        },
+        [99159] = { -- Finding Warmth
+            [questKeys.breadcrumbs] = {99158},
         },
         [99260] = { -- Fillion's Mission
             [questKeys.preQuestSingle] = {92850},
