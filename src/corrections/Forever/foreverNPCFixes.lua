@@ -146,6 +146,15 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{28.79,66.18}}},
             [npcKeys.questStarts_add] = {94375},
         },
+        [257597] = { -- Bruegs Kindleborn
+            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{87.94,44.8}}},
+        },
+        [257808] = { -- Braldir Ashmantle
+            [npcKeys.spawns] = {[zoneIDs.LOCH_MODAN] = {{32.17,65.97}}},
+        },
+        [258113] = { -- Ingrid Dunwald
+            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{47.58,51.95}}},
+        },
         [258130] = { -- Jorel Windsinger
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.48,34.74}}},
         },
@@ -176,6 +185,9 @@ function ForeverNpcFixes:Load()
         [263399] = { -- Sam Sarsaparilla
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{44.9,63.36}}},
         },
+        [264936] = { -- Earthseer Farsen
+            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{64.87,58.47}}},
+        },
         [268602] = { -- Skypriest Faladiel
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.43,63.71}}},
         },
@@ -196,6 +208,9 @@ function ForeverNpcFixes:Load()
         },
         [271587] = { -- Frosthowl
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{39.33,48.79}}},
+        },
+        [276009] = { -- Avala
+            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{58.34,42.06}}},
         },
         [277154] = { -- Kyle the Frenzied
             [npcKeys.name] = "Kyle the Frenzied",

@@ -109,6 +109,12 @@ function ForeverObjectFixes:Load()
         [673378] = { -- Oracle Tree Bark
             [objectKeys.questStarts_add] = {940},
         },
+        [695222] = { -- Coalbeard's Rifle
+            [objectKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{52.1,44.04}}},
+        },
+        [695277] = { -- Stoneanvil's Rifle
+            [objectKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{53.16,58.78}}},
+        },
         [697118] = { -- Windstone Formation
             [objectKeys.name] = "Windstone Formation",
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{47.0,69.0},{47.3,69.7},{47.4,68.3},{47.5,68.6},{47.7,70.0},{47.8,67.5},{48.6,68.5}}},
