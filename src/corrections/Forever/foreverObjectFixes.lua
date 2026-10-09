@@ -109,6 +109,11 @@ function ForeverObjectFixes:Load()
         [673378] = { -- Oracle Tree Bark
             [objectKeys.questStarts_add] = {940},
         },
+        [673474] = { -- Treaty of Understanding
+            [objectKeys.name] = "Treaty of Understanding",
+            [objectKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
+            [objectKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
+        },
         [695222] = { -- Coalbeard's Rifle
             [objectKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{52.1,44.04}}},
         },
