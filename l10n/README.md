@@ -23,8 +23,9 @@ lookup rows: a name-only quest override clears any old translated objectives. Th
 
 The files retain their executable Questie format, including locale guards and loader calls.
 The adapter executes them in a private environment; they are not runtime-loaded through a TOC.
-The original Titan function in `lookupOverrides.lua` is not invoked by Generation. Titan Dynamic Translation Corrections already live
-in `src/l10n/Titan/zhCN.lua` and remain selected by the runtime flavor/season gate.
+Titan is not an input here: the upstream `Questie.LoadTitanQuestLookupOverrides` declaration has
+been removed, and those Titan Dynamic Translation Corrections are owned by
+`src/l10n/Titan/zhCN.lua`, still selected by the runtime flavor/season gate.
 
 ## Ownership
 

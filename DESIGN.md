@@ -84,7 +84,7 @@ Generation and validation require no external Questie checkout.
 | --- | --- | --- |
 | `Database/<Exp>/<x>{Quest,Npc,Item,Object}DB.lua` | `QuestieDB.questData = [[return {...}]]` | mock `QuestieLoader`, execute, `loadstring` the inner string |
 | `l10n/<Exp>/lookup*/<locale>.lua` | owned copies of locale-guarded Questie lookup files | stub `GetLocale()` once per locale in a private environment |
-| `l10n/lookupOverrides.lua` | locale-gated whole-row entity translation replacements | fold applicable Quest/Item rows into Base translations; Titan Dynamic translations already live in `src/l10n/Titan/zhCN.lua` |
+| `l10n/lookupOverrides.lua` | locale-gated whole-row entity translation replacements | fold applicable Quest/Item rows into Base translations; Titan Dynamic translations live in `src/l10n/Titan/zhCN.lua`, not here |
 | `Database/Zones/data/`, `QuestXP/DB/`, `DropTables/data/`, `FactionTemplates/` | `QuestieLoader:ImportModule(...)` then table assignment | same mock |
 
 Every input is already Lua, so this is a **mocked-environment loader, not a parser**. Questie's
