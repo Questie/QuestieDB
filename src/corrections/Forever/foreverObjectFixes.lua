@@ -103,6 +103,9 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.35,68.82}}},
             [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
+        [664122] = { -- Gozwin's Mechanic's Log
+            [objectKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{27.27,62.86}}},
+        },
         [673378] = { -- Oracle Tree Bark
             [objectKeys.questStarts_add] = {940},
         },
@@ -126,6 +129,11 @@ function ForeverObjectFixes:Load()
             [objectKeys.name] = "Basic Campfire",
             [objectKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{46.68,53.84}},[zoneIDs.TIRISFAL_GLADES] = {{57.17,55.55}},[zoneIDs.TELDRASSIL] = {{57.66,56.74}},[zoneIDs.MULGORE] = {{46.21,67.31}},[zoneIDs.DUROTAR] = {{52.09,47.39}},[zoneIDs.ELWYNN_FOREST] = {{44.94,63.2}},[zoneIDs.ZEPHRAS_ISLE] = {{41.73,44.78}}},
             [objectKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
+        },
+        [460004] = { -- Mountaineer Cornelius
+            [objectKeys.name] = "Mountaineer Cornelius",
+            [objectKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{43.03,49.62}}},
+            [objectKeys.zoneID] = zoneIDs.DUN_MOROGH,
         },
     }
 end

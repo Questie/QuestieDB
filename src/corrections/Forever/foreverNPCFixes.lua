@@ -21,8 +21,16 @@ function ForeverNpcFixes:Load()
             [npcKeys.questEnds_add] = {490},
             [npcKeys.questStarts_add] = {490},
         },
+        [2756] = { -- Grund Drokda
+            [npcKeys.name] = "Grund Drokda",
+            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{28.67,67.52}}},
+            [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
+        },
         [4949] = { -- Thrall
             [npcKeys.questEnds_add] = {93739},
+        },
+        [5891] = { -- Minor Manifestation of Earth
+            [npcKeys.spawns_add] = {[zoneIDs.DUN_MOROGH] = {{24.84,61.86}}},
         },
         [10993] = { -- Twizwick Sprocketgrind
             [npcKeys.questEnds_add] = {97930},
@@ -62,7 +70,7 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{51.21,40.8}}},
         },
         [248464] = { -- Nimsy
-            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{39.31,80.59}}},
+            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{41.62,79.9}}},
         },
         [248474] = { -- Geosculptor Yip
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{61.38,48.93}}},
@@ -134,6 +142,10 @@ function ForeverNpcFixes:Load()
         [257196] = { -- Zaal Stormshield
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{36.05,33.53}}},
         },
+        [257446] = { -- Teo Hammerstorm
+            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{28.79,66.18}}},
+            [npcKeys.questStarts_add] = {94375},
+        },
         [258130] = { -- Jorel Windsinger
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.48,34.74}}},
         },
@@ -175,6 +187,15 @@ function ForeverNpcFixes:Load()
         },
         [268762] = { -- Brazier of Offering
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{51.2,85.9}}},
+        },
+        [269075] = { -- Snow Leopard Prowler
+            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{27.37,62.86}}},
+        },
+        [271546] = { -- Mountaineer Gretchen
+            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{44.1,57.07}}},
+        },
+        [271587] = { -- Frosthowl
+            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{39.33,48.79}}},
         },
         [277154] = { -- Kyle the Frenzied
             [npcKeys.name] = "Kyle the Frenzied",
