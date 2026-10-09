@@ -34,6 +34,13 @@ LibQuestieDB.l10n.SetCorrection("QuestieDB", "zhCN", "Quest", "Titan:zhCN", {
   [8190] = { [questKeys.name] = "妖术预言" },
   [8191] = { [questKeys.name] = "光晕预言" },
   [8192] = { [questKeys.name] = "万灵预言" },
+  [13816] = { [questKeys.name] = "天文台"},
+  [13817] = { [questKeys.name] = "档案馆数据圆盘"},
+  [13818] = { [questKeys.name] = "奥尔加隆" },
+  [13821] = { [questKeys.name] = "弗蕾亚的徽记"},
+  [13822] = { [questKeys.name] = "霍迪尔的徽记" },
+  [13823] = { [questKeys.name] = "托里姆的徽记" },
+  [13824] = { [questKeys.name] = "米米尔隆的徽记"},
   -- Derived from l10n/wotlk/lookupQuests/zhCN.lua: quests Titan adds.
   [93950] = { [questKeys.name] = "来自群星的消息", [questKeys.objectivesText] = { "接受奥尔加隆的礼物。" } },
   [93975] = { [questKeys.name] = "拉格纳罗斯必须死！", [questKeys.objectivesText] = { "团队消灭拉格纳罗斯。" } },
