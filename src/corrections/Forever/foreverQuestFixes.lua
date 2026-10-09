@@ -578,6 +578,16 @@ function ForeverQuestFixes:Load()
         [94414] = { -- The Anchors of Zephras
             [questKeys.objectives] = {{{257554,nil,Questie.ICON_TYPE_TALK}}},
         },
+        [94464] = { -- Call of Fire
+            [questKeys.nextQuestInChain] = 94465,
+        },
+        [94465] = { -- Call of Fire
+            [questKeys.preQuestSingle] = {94464},
+            [questKeys.nextQuestInChain] = 94466,
+        },
+        [94466] = { -- Call of Fire
+            [questKeys.preQuestSingle] = {94465},
+        },
         [94472] = { -- Earth Sapta
             [questKeys.preQuestSingle] = {94373},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
@@ -769,8 +779,23 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{2855,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96057,97925,97937,97950,97961,97972,97973},
         },
+        [96390] = { -- Nip 'Em in the Bud
+            [questKeys.preQuestSingle] = {96392},
+        },
+        [96392] = { -- Farsen's Watch
+            [questKeys.breadcrumbs] = {96408},
+            [questKeys.objectives] = {{{264936,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.nextQuestInChain] = 96390,
+        },
+        [96393] = { -- Old Ironforge Incursion
+            [questKeys.preQuestSingle] = {96391}, -- check if it also needs 96390. check if 96391 drops without preq
+        },
         [96395] = { -- An Ancient Grudge
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- not sure if horde can get this quest
+        },
+        [96408] = { -- A Visitor to Dun Morogh
+            [questKeys.breadcrumbForQuestId] = 96392,
+            [questKeys.nextQuestInChain] = 96392,
         },
         [96604] = { -- The Great Outdoors
             [questKeys.breadcrumbs] = {96652},
@@ -1436,6 +1461,17 @@ function ForeverQuestFixes:Load()
         },
         [99159] = { -- Finding Warmth
             [questKeys.breadcrumbs] = {99158},
+        },
+        [99160] = { -- Rime's Wrath
+            [questKeys.preQuestSingle] = {99159},
+            [questKeys.nextQuestInChain] = 99161,
+        },
+        [99161] = { -- Rime's Wrath
+            [questKeys.preQuestSingle] = {99160},
+        },
+        [99162] = { -- Treacherous Cold
+            [questKeys.preQuestSingle] = {99159},
+            [questKeys.objectives] = {nil,nil,{{286360},{286359},{286358}}},
         },
         [99260] = { -- Fillion's Mission
             [questKeys.preQuestSingle] = {92850},
