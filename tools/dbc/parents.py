@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from spatial import SpatialLookup
-from support_lua import read_support_tables
+from support_lua import append_support_rows, read_support_tables
 
 # Temporary migration scope, not the full set of valid Forever parent relationships.
 # Widen it only through a parent-routing review, not merely a new snapshot's availability.
@@ -14,8 +14,10 @@ REVIEWED_PARENT_SCOPE = {
 }
 
 
-def extend_parents(source: bytes, lookup: SpatialLookup, scope: dict) -> tuple[bytes, dict]:
-    """Add missing direct children of reviewed zones; preserve all other source bytes.
+def extend_parents(source: bytes, lookup: SpatialLookup, scope: dict, *,
+                   instance_maps: frozenset[int] = frozenset(),
+                   unresolved_instance_maps: frozenset[int] = frozenset()) -> tuple[bytes, dict]:
+    """Add reviewed zone children and resolved instance-map edges; preserve authored bytes.
 
     Existing effective relationships must agree, or the whole candidate fails.
     Source mode supports only the two literal deferred parent tables, not executable
@@ -39,31 +41,39 @@ def extend_parents(source: bytes, lookup: SpatialLookup, scope: dict) -> tuple[b
     effective = {**base.values, **overrides.values}
     selected = []
     additions = []
+    unresolved = []
     for area_id, area in sorted(lookup.areas.items()):
-        if area.parent_id not in roots:
+        reviewed_child = area.parent_id in roots
+        # SpatialLookup has already validated same-map parent references and cycles.
+        # Select every depth within a resolved instance map, without requiring a UiMap.
+        instance_child = area.parent_id != 0 and area.map_id in instance_maps
+        if area.parent_id and area.map_id in unresolved_instance_maps:
+            unresolved.append({"area_id": area_id, "parent_id": area.parent_id,
+                               "map_id": area.map_id, "reason": "unresolved_instance_identity"})
+        if not reviewed_child and not instance_child:
             continue
-        route = lookup.resolved.get(area_id)
-        if route is None or route.ui_map_id != lookup.direct[area.parent_id].ui_map_id:
-            raise ValueError(f"Area {area_id}: reviewed parent and selected map disagree")
+        if reviewed_child:
+            route = lookup.resolved.get(area_id)
+            if route is None or route.ui_map_id != lookup.direct[area.parent_id].ui_map_id:
+                raise ValueError(f"Area {area_id}: reviewed parent and selected map disagree")
         if area_id in effective and effective[area_id] != area.parent_id:
             raise ValueError(f"Area {area_id}: authored parent {effective[area_id]} conflicts with DBC {area.parent_id}")
         record = {"area_id": area_id, "parent_id": area.parent_id,
                   "disposition": "existing" if area_id in effective else "addition"}
+        if instance_child:
+            record.update({"map_id": area.map_id, "scope": "resolved_instance_map"})
         selected.append(record)
         if area_id not in effective:
             additions.append(record)
 
     # Keep all overrides, comments and unrelated legacy rows exactly as authored.
     # These are additions, not a broad regeneration from the incomplete DBC view.
-    if additions:
-        lines = ["", "    -- DBC direct children of reviewed Forever zones; see candidate report.json."]
-        lines += [f"    [{row['area_id']}] = {row['parent_id']}," for row in additions]
-        block = "\n".join(lines) + "\n"
-        text = text[:base.closing] + block + text[base.closing:]
-        if base.missing_comma_at is not None:
-            offset = base.missing_comma_at
-            text = text[:offset] + "," + text[offset:]
-    report = {"scope": scope, "relationships": selected,
+    comment = ("DBC reviewed zone children and resolved instance-map parents; see candidate report.json."
+               if instance_maps else "DBC direct children of reviewed Forever zones; see candidate report.json.")
+    output = append_support_rows(text, base,
+                                 [{"key": row["area_id"], "value": row["parent_id"]} for row in additions], comment)
+    report = {"scope": scope, "instance_map_ids": sorted(instance_maps),
+              "relationships": selected, "unresolved": unresolved,
               "added": len(additions), "already_present": len(selected) - len(additions),
               "preserved_base_rows": len(base.values), "preserved_override_rows": len(overrides.values)}
-    return text.encode("utf-8"), report
+    return output, report

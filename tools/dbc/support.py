@@ -14,6 +14,8 @@ import sys
 
 from files import destination, digest, install_outputs
 from maps import read_snapshot, interrupt
+from instances import INSTANCE_TYPES, extend_instances
+from rewrite import read_zone_ids
 from parents import REVIEWED_PARENT_SCOPE, extend_parents
 from source import read_table
 from spatial import SpatialLookup, resolve_areas, route_records
@@ -26,11 +28,15 @@ MANIFEST = "report.json"
 FORWARD_SOURCE = "support/Forever/Zones/areaIdToUiMapId.lua"
 REVERSE_SOURCE = "support/Forever/Zones/uiMapIdToAreaId.lua"
 PARENT_SOURCE = "support/Forever/Zones/subZoneToParentZone.lua"
+INSTANCE_SOURCE = "support/Forever/Zones/instanceIdToAreaId.lua"
+ZONE_ENUM_SOURCE = "src/corrections/enum/zones.lua"
 AREA_FIELDS = {"ID": int, "AreaName_lang": str, "ContinentID": int,
                "ParentAreaID": int, "Flags_0": int}
-WORLD_MAP_FIELDS = {"ID": int, "MapName_lang": str, "AreaTableID": int}
+WORLD_MAP_FIELDS = {"ID": int, "MapName_lang": str, "AreaTableID": int, "InstanceType": int}
 PROJECTION_FIELDS = {
-    "area_table": tuple(AREA_FIELDS), "map": tuple(WORLD_MAP_FIELDS),
+    # Keep historical selected-field comparisons stable; the full read fingerprint
+    # below also covers InstanceType used by the independent instance resolver.
+    "area_table": tuple(AREA_FIELDS), "map": ("ID", "MapName_lang", "AreaTableID"),
     "ui_map": ("ID", "Name_lang"),
     "ui_map_assignment": ("ID", "UiMapID", "AreaID", "MapID", "OrderIndex"),
 }
@@ -83,12 +89,20 @@ def build_candidate(database: Path, build: str) -> SupportCandidate:
                               "projection_sha256": projection_hash(rows)}
         if table not in metadata:
             metadata[table] = {"coverage": "ok", "rows": len(rows),
-                               "snapshot_sha256": projection_hash(rows)}
+                               "snapshot_sha256": projection_hash(tables[table])}
 
     lookup = resolve_areas(area_rows, map_rows, assignments, ui_maps)
-    owned = {path: (ROOT / path).read_bytes() for path in (FORWARD_SOURCE, REVERSE_SOURCE, PARENT_SOURCE)}
+    owned = {path: (ROOT / path).read_bytes() for path in
+             (FORWARD_SOURCE, REVERSE_SOURCE, PARENT_SOURCE, INSTANCE_SOURCE, ZONE_ENUM_SOURCE)}
     overrides, reverse_overrides, records = _owned_overrides(owned, lookup)
-    parent_output, parent_report = extend_parents(owned[PARENT_SOURCE], lookup, REVIEWED_PARENT_SCOPE)
+    zone_ids = read_zone_ids(owned[ZONE_ENUM_SOURCE].decode("utf-8"))
+    instance_output, instance_links, instance_report = extend_instances(
+        owned[INSTANCE_SOURCE], zone_ids, lookup, map_rows)
+    instance_maps = frozenset(row["ID"] for row in map_rows if row["InstanceType"] in INSTANCE_TYPES)
+    parent_output, parent_report = extend_parents(
+        owned[PARENT_SOURCE], lookup, REVIEWED_PARENT_SCOPE,
+        instance_maps=instance_maps.intersection(instance_links),
+        unresolved_instance_maps=instance_maps.difference(instance_links))
     report = {
         "format": 1, "tool": TOOL, "flavor": "Forever", "build": build,
         "candidate_only": True,
@@ -96,7 +110,7 @@ def build_candidate(database: Path, build: str) -> SupportCandidate:
         "source_tables": metadata, "source_projections": projections,
         "owned_overrides": {"area_to_ui_map": records, "ui_map_to_area": reverse_overrides.values},
         "owned_inputs": {path: {"sha256": digest(data)} for path, data in owned.items()},
-        "parent_support": parent_report,
+        "parent_support": parent_report, "instance_support": instance_report,
         "native_ui_maps": [{"id": i, "name": name} for i, name in sorted(ui_maps.items())],
         "areas": area_rows, "world_maps": map_rows, "assignments": assignments,
         "routes": route_records(lookup), "canonical_reverse": lookup.reverse,
@@ -108,20 +122,24 @@ def build_candidate(database: Path, build: str) -> SupportCandidate:
             "Map selection does not establish an authored point's coordinate frame.",
             "Owned overrides are policy, not DBC-derived relationships or proof of supported geometry.",
             "Legacy compatibility targets absent from the snapshot are not native maps; resolve instances before UiMap operations.",
-            "Only reviewed zone-child parent additions are proposed; other authored navigation relationships are preserved.",
-            "No entrances, entity positions or instance tables are generated or changed.",
+            "Parent additions are limited to reviewed zone children and same-map edges in resolved instance world maps.",
+            "World Map-to-area identities include test/unused maps; they are not an active-content allowlist or UiMap geometry.",
+            "No entrances, dungeon metadata, coordinates or entity data are generated or changed.",
             "Consumer sentinel ordering, version-skew protection and client placement remain release gates.",
         ],
         "summary": {"direct": len(lookup.direct), "inherited": len(lookup.resolved) - len(lookup.direct),
                     "resolved": len(lookup.resolved), "canonical_reverse": len(lookup.reverse),
                     "unresolved_real_areas": len(lookup.unresolved),
                     "compatibility_pairs": sum(r["kind"] == "legacy_map_compatibility" for r in records),
-                    "parent_additions": parent_report["added"]},
+                    "parent_additions": parent_report["added"],
+                    "instance_additions": instance_report["added"],
+                    "unresolved_instance_maps": instance_report["unresolved"]},
     }
     outputs = {
         "Zones/areaIdToUiMapId.lua": _render_forward(lookup, overrides, build),
         "Zones/uiMapIdToAreaId.lua": _render_reverse(lookup, reverse_overrides, build),
         "Zones/subZoneToParentZone.lua": parent_output,
+        "Zones/instanceIdToAreaId.lua": instance_output,
     }
     report["files"] = {name: {"output_sha256": digest(data)} for name, data in outputs.items()}
     outputs[MANIFEST] = json_bytes(report)

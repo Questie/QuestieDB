@@ -121,4 +121,19 @@ ZoneDB.instanceIdToAreaId = {
     [489] = 3277, -- Warsong Gulch
     [529] = 3358, -- Arathi Basin
     [2959] = 16544, -- City of Dalaran; navigation data remains deferred
+
+    -- Reviewed unique AreaTable roots on instance maps, Forever DBC 1.60.1.70291.
+    -- These identities need no UiMap or entrance; test/unused maps 13 and 35 remain deferred.
+    [2791] = 15532, -- Storm Cliffs
+    [2804] = 15825, -- The Crystal Vale
+    [2807] = 15828, -- Burning of Andorhal
+    [2817] = 15938, -- Starfall Barrow Den (area: Starfall Village)
+    [2902] = 16295, -- The Scarab Dais
+    [2921] = 16394, -- Naxxramas
+    [2997] = 16606, -- Darkspear Islands
+    [2998] = 16732, -- Excavation Site: Wetlands
+    [2999] = 16611, -- Ruins of Lordaeron
+    [3005] = 16653, -- Battle for Gilneas
+    [3065] = 16919, -- The Hall of Thanes
+    [3109] = 17191, -- Manor Mistmantle
 }

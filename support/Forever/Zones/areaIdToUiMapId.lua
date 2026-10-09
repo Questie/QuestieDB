@@ -1,5 +1,5 @@
--- Manually completed Forever handoff for build 1.60.1.69893.
--- Regenerating with generate.py will overwrite these additions.
+-- Reviewed Forever DBC relationships through build 1.60.1.70291.
+-- Refresh candidates with tools/dbc/support.py; preserve authored compatibility.
 -- See docs/forever-data.md and docs/forever-map-override-audit.md.
 -- Local consumer compatibility additions must survive any future exporter refresh.
 
@@ -1129,4 +1129,5 @@ ZoneDB.private.areaIdToUiMapId = [[return {
     [17808] = 2548, -- Ashwood's Fall -> Riverglades
     [17809] = 2548, -- Forlorn Pit -> Riverglades
     [17824] = 1416, -- The Eventide -> Alterac Mountains
+    [17847] = 2548, -- Twilight Hollow -> Riverglades
 }]]

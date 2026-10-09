@@ -30,12 +30,19 @@ end
 
 local candidate = loadMappings(assert(arg[1]))
 local expected = loadMappings(assert(arg[2]))
+local historicalSubset = arg[3] == "--historical-subset"
+assert(arg[3] == nil or historicalSubset, "Unknown comparison mode")
 for name, values in pairs(expected) do
+    -- Historical snapshots need not contain later base additions. Authored policy
+    -- still matches exactly; ordinary candidate adoption requires exact tables.
+    local allowLaterRows = historicalSubset and not name:find("Override$")
     for key, value in pairs(values) do
-        assert(candidate[name][key] == value, name .. " differs at " .. key)
+        if not allowLaterRows or candidate[name][key] ~= nil then
+            assert(candidate[name][key] == value, name .. " differs at " .. key)
+        end
     end
-    for key in pairs(candidate[name]) do
-        assert(values[key] ~= nil, name .. " unexpected key " .. key)
+    for key, value in pairs(candidate[name]) do
+        assert(values[key] == value, name .. " unexpected or differing key " .. key)
     end
 end
-print("All four mapping tables match")
+print("All four mapping tables match" .. (historicalSubset and " (historical base subset)" or ""))

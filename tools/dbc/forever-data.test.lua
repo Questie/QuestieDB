@@ -61,12 +61,31 @@ for _, area in ipairs({15475,15531,15828,16074,16236}) do
     assert(forwardOverrides[area] == nil, "Unused SoD routing restored")
 end
 assert(areas[10001] == nil and maps[318] == nil, "Unused floor compatibility restored")
+local zones = namespace.Enum.zoneIDs
+for symbol, area in pairs({EXCAVATION_SITE_WETLANDS=16732, EXCAVATION_SITE_WETLANDS_EXTERIOR=17732,
+                          RUINS_OF_LORDAERON_KINGS_ALLEY=16612, TWILIGHT_HOLLOW=17847,
+                          GILNEAS=4714, GILNEAS_FOREVER=17065,
+                          BLACKROCK_DEPTHS=1584, BLACKROCK_DEPTHS_FOREVER=17803,
+                          NAXXRAMAS=3456, NAXXRAMAS_SOD=16394}) do
+    assert(zones[symbol] == area, "Area enum lost or conflated an identity: " .. symbol)
+end
 local instances = modules.ZoneDB.instanceIdToAreaId
 for instance, area in pairs({[369]=2257, [449]=2918, [450]=2917, [489]=3277, [529]=3358, [2959]=16544}) do
     assert(instances[instance] == area, "Reviewed explicit instance link differs")
 end
 assert(instances[33] == 209 and instances[36] == 1581, "Partial export erased authored dungeon links")
 assert(instances[13] == nil and instances[35] == nil, "Deferred test/unused maps introduced")
+
+-- No-map dungeons still have instance and area identities, including their subareas.
+for instance, area in pairs({[2998]=16732, [2999]=16611}) do
+    assert(instances[instance] == area, "Forever no-map dungeon identity missing: " .. instance)
+    assert(areas[area] == nil, "No-map dungeon acquired an invented UiMap: " .. area)
+end
+for child, parent in pairs({[16612]=16611, [16614]=16611, [16615]=16611, [16617]=16611,
+                           [16877]=16732, [16878]=16732, [16879]=16732, [16880]=16732}) do
+    assert(parents[child] == parent, "Forever dungeon subarea parent differs: " .. child)
+end
+assert(areas[17847] == 2548 and parents[17847] == 16591, "Twilight Hollow routing missing")
 
 -- Check actual references, not just whether two faction-table files have similar sizes.
 local factions = modules.QuestieDB.factionTemplate

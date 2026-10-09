@@ -25,12 +25,15 @@ The selected data preserves the imported flavor boundaries:
 - Mists loads the MoP drop table followed by the Cata drop table. The cumulative order is
   intentional and matches Questie.
 
-Forever's current map tables adopt 1,064 forward and 54 canonical reverse relationships from
-the completed DBC handoff. Forty additional compatibility pairs support the consumer's lookup
+Forever's current map tables contain 1,065 forward and 54 canonical reverse DBC relationships
+through build `1.60.1.70291`. The October 9 refresh also adds twelve instance identities and
+26 parent links. A dungeon can have a MapID and AreaID without a UiMapID; these identity and
+parent tables do not fabricate map geometry or entrances. Forty additional compatibility pairs support the consumer's lookup
 before instance-entrance resolution; their retired floor UiMaps are not native Forever maps.
 See [current map limitations](forever-data.md#current-support-map-limitations) and the
 [compatibility audit](forever-map-override-audit.md) before refreshing exports or removing links.
-The external exporter can overwrite its manual additions, so its next output is not a safe
+Use the owned [DBC candidate exporter](../tools/dbc/README.md), then review additions before
+adoption. The historical external exporter can overwrite manual additions and is not a safe
 wholesale replacement.
 
 Installing the support shim replaces the published module set and seeds shared constants.
@@ -39,7 +42,10 @@ This prevents a flavor loaded later in the emulator from retaining flavor-specif
 Zone symbols are shared across all flavors. `src/corrections/enum/zones.lua` is their sole
 source; `Support.Get("ZoneDB").zoneIDs` exposes the same table as `LibQuestieDB.Enum.zoneIDs`.
 Corrections, waypoint Derived Passes, and offline coordinate conversion use those symbols too.
-Edit that enum to add or correct a symbol. Flavor-specific map routing stays in `support/`.
+Edit that enum to add or correct a symbol. The Forever section includes all AreaIDs newly
+present in `1.60.1.70291` compared with Era `1.15.9.70003`, with prototype/unresolved records
+labeled separately. Same-name areas keep distinct qualified symbols; existing cross-flavor
+values do not change. Flavor-specific map routing stays in `support/`.
 
 ## Value shapes
 

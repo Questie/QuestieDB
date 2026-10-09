@@ -13,9 +13,11 @@ from unittest.mock import patch
 
 from spatial import InstancePresence, LegacyPoint, legacy_position, resolve_areas
 from parents import extend_parents
+from instances import extend_instances
+from rewrite import read_zone_ids
 import support
 from support import build_candidate, write_candidate
-from support_lua import read_support_tables
+from support_lua import read_instance_table, read_support_tables
 
 BUILD = "1.60.1.69893"
 ROOT = Path(__file__).resolve().parents[2]
@@ -38,7 +40,12 @@ def assignment(area_id=215, ui=1412, assignment_id=46722, **changes):
             "Region_3": 100.0, "Region_4": 100.0, "Region_5": 1000000.0, **changes}
 
 
-WORLD_MAPS = [{"ID": 0, "MapName_lang": "Eastern Kingdoms", "AreaTableID": 0}]
+WORLD_MAPS = [{"ID": 0, "MapName_lang": "Eastern Kingdoms", "AreaTableID": 0, "InstanceType": 0}]
+
+
+def world_map(map_id, explicit=0, instance_type=1):
+    return {"ID": map_id, "MapName_lang": "Fixture map", "AreaTableID": explicit,
+            "InstanceType": instance_type}
 
 
 class SpatialMeaningTests(unittest.TestCase):
@@ -112,6 +119,20 @@ class SpatialMeaningTests(unittest.TestCase):
         self.assertEqual([999], lookup.unresolved)
         self.assertEqual([{"kind": "area_without_world_map", "area_id": 999, "map_id": 17}], lookup.diagnostics)
 
+    def test_incomplete_parent_chains_on_absent_world_maps_stay_unresolved(self):
+        areas = [area(215), area(17845, 16597, 2981), area(17846, 17845, 2981)]
+        lookup = resolve_areas(areas, WORLD_MAPS, [assignment()], {1412: "Mulgore"})
+        self.assertEqual([17845, 17846], lookup.unresolved)
+        self.assertEqual({215}, set(lookup.resolved))
+        self.assertEqual([
+            {"kind": "missing_parent_without_world_map", "area_id": i,
+             "parent_id": 16597, "map_id": 2981} for i in (17845, 17846)
+        ], [row for row in lookup.diagnostics if row["kind"] == "missing_parent_without_world_map"])
+        with self.assertRaisesRegex(ValueError, "missing parent 16597"):
+            resolve_areas(areas, WORLD_MAPS + [world_map(2981)], [assignment()], {1412: "Mulgore"})
+        with self.assertRaisesRegex(ValueError, "missing Map 2981"):
+            resolve_areas(areas, WORLD_MAPS, [assignment(17845, MapID=2981)], {1412: "Mulgore"})
+
 
 class ParentCandidateTests(unittest.TestCase):
     def setUp(self):
@@ -177,6 +198,123 @@ class ParentCandidateTests(unittest.TestCase):
             self.assertEqual(0, result.returncode, result.stdout + result.stderr)
 
 
+class InstanceCandidateTests(unittest.TestCase):
+    def setUp(self):
+        self.source = (FIXTURES / "instance-support.lua").read_bytes()
+        self.zones = read_zone_ids((FIXTURES / "zone-enum.lua").read_text())
+
+    def test_no_ui_map_roots_explicit_priority_and_full_instance_parent_edges(self):
+        maps = WORLD_MAPS + [world_map(33, 209), world_map(2998), world_map(2999),
+                             world_map(44, 215), world_map(55, 700, 0)]
+        areas = [area(215), area(220, 215), area(221, 220), area(209, map_id=33),
+                 area(210, map_id=33), area(16732, map_id=2998), area(16877, 16732, 2998),
+                 area(16878, 16877, 2998), area(16611, map_id=2999), area(16612, 16611, 2999),
+                 area(600, map_id=44), area(601, 600, 44), area(700, map_id=55), area(701, 700, 55)]
+        lookup = resolve_areas(areas, maps, [assignment()], {1412: "Mulgore"})
+        output, links, report = extend_instances(self.source, self.zones, lookup, maps)
+        self.assertEqual({33: 209, 2998: 16732, 2999: 16611, 44: 215, 55: 700}, links)
+        self.assertNotIn(16732, lookup.resolved)
+        records = {r["map_id"]: r for r in report["relationships"]}
+        self.assertEqual("existing", records[33]["disposition"])
+        self.assertEqual([209, 210], records[33]["root_area_ids"])
+        self.assertEqual("explicit_area_table_id", records[33]["method"])
+        self.assertEqual("unique_instance_root", records[2998]["method"])
+        self.assertEqual(215, records[44]["area_id"])
+        self.assertEqual("addition", records[55]["disposition"])
+        self.assertEqual([{"map_id": 999, "area_id": 9000,
+                           "disposition": "preserved_absent_map"}], report["preserved_absent_maps"])
+        self.assertIn(b"[33] = ZoneDB.zoneIDs.SHADOWFANG_KEEP, -- Authored symbolic identity.", output)
+        self.assertIn(b"[999] = 9000, -- Absent legacy Map and Area, preserved verbatim.", output)
+        repeated, _, next_report = extend_instances(output, self.zones, lookup, maps)
+        self.assertEqual(output, repeated)
+        self.assertEqual(0, next_report["added"])
+
+        parents, parent_report = extend_parents((FIXTURES / "parent-support.lua").read_bytes(),
+                                                lookup, PARENT_SCOPE,
+                                                instance_maps=frozenset({33, 44, 2998, 2999}))
+        base, _ = read_support_tables(parents.decode(), "subZoneToParentZone")
+        self.assertEqual({220: 215, 601: 600, 16612: 16611, 16877: 16732, 16878: 16877},
+                         {r["area_id"]: r["parent_id"] for r in parent_report["relationships"]})
+        self.assertEqual(16877, base.values[16878])
+        self.assertNotIn(221, base.values)  # Outdoor grandchildren are still outside scope.
+        self.assertNotIn(701, base.values)  # Explicit non-instance maps do not broaden parents.
+        conflicting = parents.replace(b"[16878] = 16877", b"[16878] = 16732")
+        with self.assertRaisesRegex(ValueError, "Area 16878: authored parent 16732 conflicts with DBC 16877"):
+            extend_parents(conflicting, lookup, PARENT_SCOPE, instance_maps=frozenset({2998}))
+
+    def test_ambiguous_missing_and_outdoor_roots_remain_evidence_not_guesses(self):
+        maps = WORLD_MAPS + [world_map(33), world_map(101), world_map(102), world_map(103, 9999),
+                             world_map(104, instance_type=0)]
+        areas = [area(215), area(209, map_id=33), area(210, map_id=33),
+                 area(1001, map_id=101), area(1002, map_id=101), area(1003, 1001, 101),
+                 area(1004, map_id=104)]
+        lookup = resolve_areas(areas, maps, [assignment()], {1412: "Mulgore"})
+        output, links, report = extend_instances(self.source, self.zones, lookup, maps)
+        self.assertEqual(self.source, output)
+        self.assertEqual({33: 209}, links)  # Authored identity resolves ambiguous roots.
+        records = {r["map_id"]: r for r in report["relationships"]}
+        self.assertEqual("authored_resolution", records[33]["disposition"])
+        self.assertEqual("multiple_instance_roots", records[101]["reason"])
+        self.assertEqual([1001, 1002], records[101]["root_area_ids"])
+        self.assertEqual("no_instance_root", records[102]["reason"])
+        self.assertEqual("explicit_area_absent_from_snapshot", records[103]["reason"])
+        self.assertEqual("excluded", records[104]["disposition"])
+        self.assertEqual(3, report["unresolved"])
+        _, parents = extend_parents((FIXTURES / "parent-support.lua").read_bytes(), lookup,
+                                   PARENT_SCOPE, unresolved_instance_maps=frozenset({101, 102, 103}))
+        self.assertEqual([{"area_id": 1003, "parent_id": 1001, "map_id": 101,
+                           "reason": "unresolved_instance_identity"}], parents["unresolved"])
+
+    def test_all_instance_fallback_types_and_explicit_link_conflicts(self):
+        for instance_type in (1, 2, 3, 4):
+            with self.subTest(instance_type=instance_type):
+                maps = [world_map(33, instance_type=instance_type)]
+                lookup = resolve_areas([area(209, map_id=33)], maps, [], {})
+                _, links, _ = extend_instances(self.source, self.zones, lookup, maps)
+                self.assertEqual({33: 209}, links)
+        maps = [world_map(33, 210)]
+        lookup = resolve_areas([area(209, map_id=33), area(210, map_id=33)], maps, [], {})
+        with self.assertRaisesRegex(ValueError, "Map 33: authored instance area 209 conflicts with DBC area 210"):
+            extend_instances(self.source, self.zones, lookup, maps)
+
+    @unittest.skipUnless(LUA, "Lua 5.1 required to load rendered candidates")
+    def test_source_preserving_insertions_and_missing_separator_load_with_symbolic_values(self):
+        maps = WORLD_MAPS + [world_map(2998)]
+        lookup = resolve_areas([area(215), area(16732, map_id=2998)], maps,
+                               [assignment()], {1412: "Mulgore"})
+        source = self.source.replace(b"[999] = 9000,", b"[999] = 9000")
+        output, _, _ = extend_instances(source, self.zones, lookup, maps)
+        block = (b"\n    -- DBC world Map identities; not an active-instance allowlist. See candidate report.json.\n"
+                 b"    [2998] = 16732,\n")
+        self.assertEqual(source, output.replace(block, b"").replace(b"[999] = 9000,", b"[999] = 9000"))
+        self.assertIn(b"[999] = 9000, -- Absent legacy", output)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "instances.lua"
+            path.write_bytes(output)
+            expected = Path(directory) / "expected.lua"
+            expected.write_text("return {[2998]=16732}\n")
+            command = [LUA, str(FIXTURES / "instances-compare.lua"), str(path),
+                       str(FIXTURES / "instance-support.lua"), str(FIXTURES / "zone-enum.lua"), str(expected)]
+            result = subprocess.run(command, capture_output=True, text=True, timeout=10)
+            self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+            path.write_bytes(output.replace(b"[2998] = 16732", b"[2998] = 9999"))
+            failed = subprocess.run(command, capture_output=True, text=True, timeout=10)
+            self.assertNotEqual(0, failed.returncode)
+            self.assertIn("2998", failed.stderr)
+
+    def test_instance_parser_rejects_executable_computed_duplicate_and_unknown_values(self):
+        cases = [self.source + b"\nZoneDB.instanceIdToAreaId = {}\n",
+                 self.source.replace(b"ZoneDB.zoneIDs.SHADOWFANG_KEEP", b"ZoneDB.zoneIDs.UNKNOWN"),
+                 self.source.replace(b"ZoneDB.zoneIDs.SHADOWFANG_KEEP", b"chooseArea()"),
+                 self.source.replace(b"ZoneDB.zoneIDs.SHADOWFANG_KEEP", b"ZoneDB.zoneIDs.SHADOWFANG_KEEP + 1"),
+                 self.source.replace(b"[999] = 9000,", b"[999] = 9000, [999] = 9001,"),
+                 self.source.replace(b"[999] = 9000,", b"[999] = 0,")]
+        lookup = resolve_areas([area(215)], WORLD_MAPS, [assignment()], {1412: "Mulgore"})
+        for source in cases:
+            with self.subTest(source=source), self.assertRaises(ValueError):
+                extend_instances(source, self.zones, lookup, WORLD_MAPS)
+
+
 class CandidateTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
@@ -187,6 +325,11 @@ class CandidateTests(unittest.TestCase):
         parent_source = self.root / support.PARENT_SOURCE
         parent_source.parent.mkdir(parents=True)
         parent_source.write_bytes((FIXTURES / "parent-support.lua").read_bytes())
+        self.instance_source = self.root / support.INSTANCE_SOURCE
+        self.instance_source.write_bytes((FIXTURES / "instance-support.lua").read_bytes())
+        enum_source = self.root / support.ZONE_ENUM_SOURCE
+        enum_source.parent.mkdir(parents=True)
+        enum_source.write_bytes((FIXTURES / "zone-enum.lua").read_bytes())
         self.forward_source = self.root / support.FORWARD_SOURCE
         self.reverse_source = self.root / support.REVERSE_SOURCE
         self.forward_source.write_bytes((FIXTURES / "forward-support.lua").read_bytes())
@@ -224,12 +367,45 @@ class CandidateTests(unittest.TestCase):
         self.assertEqual(before, self.database.read_bytes())
         self.assertEqual({"direct": 1, "inherited": 1, "resolved": 2, "canonical_reverse": 1,
                           "unresolved_real_areas": 1, "compatibility_pairs": 1,
-                          "parent_additions": 1}, candidate.report["summary"])
+                          "parent_additions": 1, "instance_additions": 0,
+                          "unresolved_instance_maps": 0}, candidate.report["summary"])
         self.assertEqual([2257], candidate.report["unresolved_real_areas"])
         self.assertNotIn(235, [r["id"] for r in candidate.report["native_ui_maps"]])
         self.assertIn(b"[10022] = 235", candidate.outputs["Zones/areaIdToUiMapId.lua"])
-        self.assertEqual(4, len(write_candidate(self.output, candidate)))
+        self.assertEqual(5, len(write_candidate(self.output, candidate)))
         self.assertEqual([], write_candidate(self.output, candidate))
+
+    def test_sqlite_no_ui_map_instances_are_fingerprinted_and_parented(self):
+        old = self.build()
+        for row in [world_map(2998), world_map(2999)]:
+            self.conn.execute("INSERT INTO map VALUES (?,?,?,?,?,?)", list(row.values()) + [BUILD, BUILD])
+        for row in [area(16732, map_id=2998), area(16877, 16732, 2998), area(16878, 16877, 2998),
+                    area(16611, map_id=2999), area(16612, 16611, 2999)]:
+            self.conn.execute("INSERT INTO area_table VALUES (?,?,?,?,?,?,?)", list(row.values()) + [BUILD, BUILD])
+        self.conn.commit()
+        candidate = self.build()
+        self.assertEqual(2, candidate.report["summary"]["instance_additions"])
+        self.assertEqual(4, candidate.report["summary"]["parent_additions"])
+        instances = read_instance_table(candidate.outputs["Zones/instanceIdToAreaId.lua"].decode(),
+                                        {"SHADOWFANG_KEEP": 209})
+        self.assertEqual(16732, instances.values[2998])
+        self.assertEqual(16611, instances.values[2999])
+        forward, _ = read_support_tables(candidate.outputs["Zones/areaIdToUiMapId.lua"].decode(), "areaIdToUiMapId")
+        self.assertNotIn(16732, forward.values)
+        self.assertNotIn(16611, forward.values)
+        for path in (support.INSTANCE_SOURCE, support.ZONE_ENUM_SOURCE):
+            self.assertEqual(support.digest((self.root / path).read_bytes()),
+                             candidate.report["owned_inputs"][path]["sha256"])
+        self.assertEqual(support.digest(candidate.outputs["Zones/instanceIdToAreaId.lua"]),
+                         candidate.report["files"]["Zones/instanceIdToAreaId.lua"]["output_sha256"])
+        self.conn.execute("UPDATE map SET InstanceType=0 WHERE ID=2998")
+        self.conn.commit()
+        changed = self.build()
+        self.assertEqual(candidate.report["source_projections"]["map"], changed.report["source_projections"]["map"])
+        self.assertNotEqual(candidate.report["source_tables"]["map"], changed.report["source_tables"]["map"])
+        self.assertEqual(1, changed.report["summary"]["instance_additions"])
+        self.assertEqual(2, changed.report["summary"]["parent_additions"])
+        self.assertEqual(old.report["owned_inputs"], changed.report["owned_inputs"])
 
     @unittest.skipUnless(LUA, "Lua 5.1 required to load rendered candidates")
     def test_source_names_cannot_close_the_deferred_lua_string(self):
@@ -394,23 +570,67 @@ class ReviewedSnapshotTests(unittest.TestCase):
     def test_parent_candidate_reproduces_the_old_overlay_and_preserves_owned_navigation(self):
         candidate = build_candidate(Path(os.environ["FOREVER_DBC_DATABASE"]), BUILD)
         parents = candidate.report["parent_support"]
-        self.assertEqual(65, len(parents["relationships"]))
+        reviewed = [row for row in parents["relationships"]
+                    if row["parent_id"] in support.REVIEWED_PARENT_SCOPE["parent_area_ids"]]
+        self.assertEqual(65, len(reviewed))
+        # Independently select expected instance edges from SQLite, not report rows.
+        conn = sqlite3.connect(Path(os.environ["FOREVER_DBC_DATABASE"]).resolve().as_uri() + "?mode=ro", uri=True)
+        try:
+            areas = {row[0]: (row[1], row[2]) for row in conn.execute(
+                "SELECT ID,ParentAreaID,ContinentID FROM area_table WHERE _first_seen<=? AND _last_seen>=?",
+                (BUILD, BUILD))}
+            maps = list(conn.execute(
+                "SELECT ID,AreaTableID,InstanceType FROM map WHERE _first_seen<=? AND _last_seen>=?",
+                (BUILD, BUILD)))
+        finally:
+            conn.close()
+        zones = read_zone_ids((ROOT / support.ZONE_ENUM_SOURCE).read_text())
+        authored = read_instance_table((ROOT / support.INSTANCE_SOURCE).read_text(), zones).values
+        instance_maps = set()
+        expected_instances = {}
+        for map_id, explicit, instance_type in maps:
+            roots = [area_id for area_id, (parent_id, world_id) in areas.items()
+                     if parent_id == 0 and world_id == map_id]
+            target = explicit if explicit in areas else None
+            if not explicit and instance_type in (1, 2, 3, 4) and len(roots) == 1:
+                target = roots[0]
+            target = target if target is not None else authored.get(map_id)
+            if target is not None:
+                expected_instances[map_id] = target
+                if instance_type in (1, 2, 3, 4):
+                    instance_maps.add(map_id)
+        expected_parents = {int(area_id): int(parent_id) for area_id, parent_id in re.findall(
+            r"\[(\d+)\] = (\d+)", (FIXTURES / "forever-reviewed-parents.lua").read_text())}
+        expected_parents.update({area_id: parent_id for area_id, (parent_id, map_id) in areas.items()
+                                 if parent_id and map_id in instance_maps and areas[parent_id][1] == map_id})
+        self.assertEqual(len(expected_parents), len(parents["relationships"]))
         self.assertIsNotNone(LUA, "Lua 5.1 is required for real snapshot acceptance")
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "subZoneToParentZone.lua"
             path.write_bytes(candidate.outputs["Zones/subZoneToParentZone.lua"])
+            expected = Path(directory) / "expected-parents.lua"
+            expected.write_text("return {" + ",".join(f"[{key}]={value}" for key, value in sorted(expected_parents.items())) + "}\n")
             command = [LUA, str(FIXTURES / "parents-compare.lua"), str(path),
-                       str(ROOT / support.PARENT_SOURCE), str(FIXTURES / "forever-reviewed-parents.lua")]
+                       str(ROOT / support.PARENT_SOURCE), str(expected)]
             result = subprocess.run(command, capture_output=True, text=True, timeout=10)
             self.assertEqual(0, result.returncode, result.stdout + result.stderr)
             self.assertIn("reviewed relationships match", result.stdout)
             # Dropping just one new relationship must fail despite preserving old data.
-            path.write_bytes(path.read_bytes().replace(b"    [16607] = 16606,\n", b""))
+            damaged, removed = re.subn(rb"(?m)^\s*\[16607\]\s*=\s*16606,[^\n]*\n", b"", path.read_bytes())
+            self.assertEqual(1, removed, "Self-proof must remove the reviewed relationship")
+            path.write_bytes(damaged)
             failed = subprocess.run(command, capture_output=True, text=True, timeout=10)
             self.assertNotEqual(0, failed.returncode)
             self.assertIn("16607", failed.stderr)
+            instance_path = Path(directory) / "instanceIdToAreaId.lua"
+            instance_path.write_bytes(candidate.outputs["Zones/instanceIdToAreaId.lua"])
+            expected.write_text("return {" + ",".join(f"[{key}]={value}" for key, value in sorted(expected_instances.items())) + "}\n")
+            result = subprocess.run([LUA, str(FIXTURES / "instances-compare.lua"), str(instance_path),
+                                     str(ROOT / support.INSTANCE_SOURCE), str(ROOT / support.ZONE_ENUM_SOURCE), str(expected)],
+                                    capture_output=True, text=True, timeout=10)
+            self.assertEqual(0, result.returncode, result.stdout + result.stderr)
 
-    def test_exact_current_lua_tables_derivations_and_unresolved_inventory(self):
+    def test_historical_lua_subset_derivations_and_unresolved_inventory(self):
         candidate = build_candidate(Path(os.environ["FOREVER_DBC_DATABASE"]), BUILD)
         provenance = json.loads((ROOT / "support/Forever/provenance.json").read_text())["local_map_refresh"]
         report = candidate.report
@@ -445,7 +665,7 @@ class ReviewedSnapshotTests(unittest.TestCase):
             self.assertIsNotNone(LUA, "Lua 5.1 is required for real snapshot acceptance")
             lua = LUA
             result = subprocess.run([lua, str(Path(__file__).with_name("fixtures") / "support-compare.lua"),
-                                     str(output / "Zones"), str(ROOT / "support/Forever/Zones")],
+                                     str(output / "Zones"), str(ROOT / "support/Forever/Zones"), "--historical-subset"],
                                     capture_output=True, text=True, timeout=10)
             self.assertEqual(0, result.returncode, result.stdout + result.stderr)
             self.assertIn("All four mapping tables match", result.stdout)
@@ -453,7 +673,7 @@ class ReviewedSnapshotTests(unittest.TestCase):
             path = output / "Zones/areaIdToUiMapId.lua"
             path.write_bytes(path.read_bytes().replace(b"[220] = 1412", b"[220] = 9999"))
             failed = subprocess.run([lua, str(Path(__file__).with_name("fixtures") / "support-compare.lua"),
-                                     str(output / "Zones"), str(ROOT / "support/Forever/Zones")],
+                                     str(output / "Zones"), str(ROOT / "support/Forever/Zones"), "--historical-subset"],
                                     capture_output=True, text=True, timeout=10)
             self.assertNotEqual(0, failed.returncode)
             self.assertIn("220", failed.stderr)

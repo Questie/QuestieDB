@@ -64,6 +64,21 @@ entrances, replaces instance tables or introduces a world-position authoring for
 Existing coordinate tooling remains responsible for explicit projection and export rounding.
 ADR 0006's raw-coordinate storage contract is unchanged.
 
+### October 9 scope extension
+
+The same candidate workflow now proposes instance identities and parent links without a
+UiMap requirement. Prefer explicit `Map.AreaTableID`; otherwise accept a unique root area
+on dungeon, raid, battleground or arena maps. Multiple roots stay unresolved unless an authored
+identity already resolves the map. Preserve authored numeric/symbolic identities, absent legacy
+rows and effective parent overrides; conflicts fail. Parent proposals include same-map edges
+at every depth in resolved instances, while outdoor scope remains limited to the five zones.
+These identity links are not an active-content allowlist and supply no entrances or geometry.
+
+Incomplete parent chains on absent world maps stay unresolved with diagnostics rather than
+blocking unrelated valid identities. Broken parents on present maps, cycles, cross-map parent
+links and broken assignment references still fail. This preserves the existing absent-world-map
+diagnostic boundary without inventing parents or permitting a route through missing data.
+
 This supersedes only DESIGN.md's original restriction to Questie-sourced data for these
 Forever spatial support candidates. It does not adopt VibeQuest data, output tuples or runtime
 interfaces. The existing authored data and Correction ownership rules remain in force.

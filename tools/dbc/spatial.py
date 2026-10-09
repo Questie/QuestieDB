@@ -94,10 +94,10 @@ def resolve_areas(area_rows: list[dict], map_rows: list[dict],
                   assignments: list[dict], ui_maps: dict[int, str]) -> SpatialLookup:
     """Preserve direct routes; otherwise choose the highest directly mapped ancestor.
 
-    Callers supply scalar-validated snapshot rows with unique IDs. Broken parents,
-    cycles and assignment references fail. Unsupported or ambiguous assignments
-    remain diagnostic evidence, not successful geometry. AreaTable can refer to
-    absent world maps; those references are reported, never fabricated.
+    Callers supply scalar-validated snapshot rows with unique IDs. Broken parents
+    on present world maps, cycles and assignment references fail. Areas on absent
+    world maps remain unresolved, including incomplete parent chains. Unsupported
+    or ambiguous assignments remain diagnostic evidence, not successful geometry.
     """
     areas = {r["ID"]: Area(r["ID"], r["AreaName_lang"], r["ParentAreaID"], r["ContinentID"])
              for r in area_rows}
@@ -116,7 +116,13 @@ def resolve_areas(area_rows: list[dict], map_rows: list[dict],
             if current in chain:
                 raise ValueError(f"AreaTable parent cycle from {area_id} through {current}")
             if current not in areas:
-                raise ValueError(f"AreaTable {area_id}: missing parent {current}")
+                if area.map_id in maps:
+                    raise ValueError(f"AreaTable {area_id}: missing parent {current}")
+                # No assignment can route an absent world map. Retain the orphan
+                # as unresolved evidence without inventing a parent or root.
+                diagnostics.append({"kind": "missing_parent_without_world_map", "area_id": area_id,
+                                    "parent_id": current, "map_id": area.map_id})
+                break
             chain.append(current)
             parent = areas[current].parent_id
             if parent in areas and areas[current].map_id != areas[parent].map_id:

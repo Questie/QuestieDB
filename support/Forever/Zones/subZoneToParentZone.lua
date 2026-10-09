@@ -2345,4 +2345,33 @@ ZoneDB.private.subZoneToParentZone = [[return {
   [17780] = 16591, -- Krol'dok Stronghold
   [17808] = 16591, -- Ashwood's Fall
   [17809] = 16591, -- Forlorn Pit
+
+  -- Reviewed instance subareas and zone additions, Forever DBC 1.60.1.70291.
+  -- Parent identity is independent of UiMap availability and entrance coordinates.
+  [15540] = 15475, -- Demon Fall Barrow -> Demon Fall Canyon
+  [16369] = 16236, -- Prison -> Scarlet Enclave
+  [16370] = 16236, -- Tyr's Hand -> Scarlet Enclave
+  [16371] = 16236, -- New Avalon -> Scarlet Enclave
+  [16372] = 16236, -- The Forbidding Expanse -> Scarlet Enclave
+  [16373] = 16236, -- Mine -> Scarlet Enclave
+  [16374] = 16236, -- Arcane Sanctum -> Scarlet Enclave
+  [16558] = 16544, -- Dalaran -> City of Dalaran
+  [16559] = 16544, -- Fel Grove -> City of Dalaran
+  [16612] = 16611, -- King's Alley -> Ruins of Lordaeron
+  [16614] = 16611, -- Lordaeron Graveyard -> Ruins of Lordaeron
+  [16615] = 16611, -- Lordamere Overlook -> Ruins of Lordaeron
+  [16617] = 16611, -- Market Street -> Ruins of Lordaeron
+  [16654] = 16653, -- Lighthouse -> Battle for Gilneas
+  [16655] = 16653, -- Waterworks -> Battle for Gilneas
+  [16656] = 16653, -- Mines -> Battle for Gilneas
+  [16657] = 16653, -- Horde Landing -> Battle for Gilneas
+  [16658] = 16653, -- Gilnean Stronghold -> Battle for Gilneas
+  [16659] = 16653, -- The Overlook -> Battle for Gilneas
+  [16660] = 16653, -- Gilnean Coast -> Battle for Gilneas
+  [16661] = 16653, -- Beneath the Double Rainbow -> Battle for Gilneas
+  [16877] = 16732, -- Lost Marsh -> Excavation Site: Wetlands
+  [16878] = 16732, -- Stalker's Thicket -> Excavation Site: Wetlands
+  [16879] = 16732, -- Site of the Guardian -> Excavation Site: Wetlands
+  [16880] = 16732, -- Lost Dig Site -> Excavation Site: Wetlands
+  [17847] = 16591, -- Twilight Hollow -> Riverglades
 }]]

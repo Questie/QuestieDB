@@ -5,6 +5,7 @@
 ---@field Horde integer Active provider flavor's Horde race mask.
 
 ---@class QuestieDBEnums
+---@field zoneIDs table<string, AreaId> Shared named area identities; not a map-availability or playable-content list. Read-only by contract.
 ---@field questKeys QuestieDBQuestCorrectionKeys Canonical indices and Correction-only add/remove aliases.
 ---@field npcKeys QuestieDBNpcCorrectionKeys Canonical indices and Correction-only add/remove aliases.
 ---@field itemKeys QuestieDBItemCorrectionKeys Canonical indices and Correction-only add/remove aliases.

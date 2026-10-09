@@ -10,7 +10,7 @@ From the QuestieDB root, using an **existing** local database:
 
 ```sh
 ./questiedb.sh dbc-support \
-  --database .cache/dbc/dbc-source.db --build 1.60.1.69893 \
+  --database .cache/dbc/v2026.10.09/dbc-source.db --build 1.60.1.70291 \
   --output .out/forever-support/review
 ```
 
@@ -19,15 +19,18 @@ It writes only under this checkout's `.out/forever-support/`:
 
 - `Zones/areaIdToUiMapId.lua`: direct and parent-resolved routes, with separate overrides.
 - `Zones/uiMapIdToAreaId.lua`: canonical direct reverse mappings, with separate overrides.
-- `Zones/subZoneToParentZone.lua`: current authored navigation data plus missing DBC child
-  relationships for the five reviewed Forever zones.
+- `Zones/subZoneToParentZone.lua`: authored navigation data plus missing DBC children of the
+  five reviewed zones and same-map parent links within resolved instances.
+- `Zones/instanceIdToAreaId.lua`: authored instance identities plus explicit DBC links and
+  unambiguous instance-map root areas, even when no UiMap exists.
 - `report.json`: exact source projections/coverage, full assignment evidence, native map
-  inventory, parent chains, owned override classifications, unresolved cases and file hashes.
+  inventory, instance identity derivations, parent chains, owned override classifications,
+  unresolved cases and file hashes.
 
 These are **review candidates, not a complete runtime ZoneDB bundle**. Do not copy them
-into active support without reviewing current authored changes. Entrances, instance tables,
-symbols and entity coordinates remain untouched. Existing parent relationships are preserved;
-only the reviewed additions below are proposed. Retired-map compatibility
+into active support without reviewing current authored changes. Entrances, dungeon metadata,
+symbols and entity coordinates remain untouched. Existing parent and instance relationships
+are preserved; only the bounded additions below are proposed. Retired-map compatibility
 must not be used as a native-map allowlist.
 
 ### Inputs and ownership
@@ -60,6 +63,24 @@ placement or automatically retire compatibility. Absence from AreaTable is repor
 claiming that a key must be synthetic rather than a removed real area. Key 1585 is one such
 legacy identity in the reviewed snapshot.
 
+### Instance identities
+
+A world MapID and AreaID do not require a UiMapID. `instances.py` first uses nonzero
+`Map.AreaTableID` when the area exists. Otherwise, dungeon, raid, battleground and arena maps
+(`InstanceType` 1, 2, 3, 4) can use a single root AreaTable row: `ParentAreaID = 0` and
+`ContinentID = Map.ID`. It never picks between multiple roots or matches names. Outdoor maps
+are excluded from this fallback. Explicit identity links may reference an outdoor area.
+
+The current owned `instanceIdToAreaId.lua` is parsed without executing Lua. Numeric values
+and references to the owned `src/corrections/enum/zones.lua` constants are accepted and kept
+as authored, including comments. Conflicts with derived identities fail. Existing links may
+resolve ambiguous maps and remain intact when absent from DBC. The report fingerprints both
+inputs and records all map dispositions, including absent legacy maps and unresolved roots.
+
+Candidates include explicit test/unused identities, not an active-content allowlist. The
+October 9 adoption retains the existing exclusions for map 13 (Test Dungeon) and map 35
+(unused Stormwind prison); those remain review candidates on later runs.
+
 ### Parent relationships
 
 An area-to-map lookup and a subzone-to-parent lookup answer different questions. The exporter
@@ -67,9 +88,9 @@ already uses AreaTable parents to select maps; it also proposes the correspondin
 parent entries for Mount Hyjal, Riverglades, Zephras Isle, Darkspear Islands and Shen'dralas.
 Their five AreaIDs are an explicit temporary scope in `parents.py`, not a hardcoded list of
 individual children. New snapshots do not automatically broaden this scope; wider parent
-adoption still requires review. For the reference build, their direct DBC children exactly reproduce all 65 relationships in
-Questie's former `zoneData.lua` overlay. With the current owned support input, one already
-exists and 64 are added.
+adoption still requires review. For the reference build, their direct DBC children exactly
+reproduce the 65 relationships in Questie's former `zoneData.lua` overlay. Those links are
+already present in the current owned support.
 
 `parents.py` reads `support/Forever/Zones/subZoneToParentZone.lua` from this checkout and
 preserves its base rows, overrides and comments. The report records its input hash and every
@@ -79,17 +100,21 @@ for review. It does not overwrite the authored decision. Missing trailing separa
 inserted when needed. Computed tables, duplicate keys and extra executable module code fail
 rather than being flattened or executed.
 
+For resolved instance maps, the exporter also proposes every direct parent edge at every
+depth within the same world map, independently of UiMap availability. Instances without a
+resolved identity remain in the report; their parent edges are not adopted automatically.
+Conflicting authored effective parents still fail.
+
 This is a source-preserving proposal, not wholesale regeneration of legacy navigation from
-DBC. It does not add the other deferred subzones, replace dungeon identities or add every
-ancestor recursively. Running against an already-adopted candidate adds no duplicates.
+DBC. Outdoor additions beyond the five-zone scope remain deferred. Running against an already-adopted candidate adds no duplicates.
 The independent fixture is captured from Questie commit `8f590aa47`; production never reads
 that fixture or requires a Questie checkout.
 
 **Active Forever Lua remains authoritative until separately reviewed adoption.** Edit override
 policy and its explanatory comments in the owned Lua, not in candidate output. At adoption,
-only the forward/reverse base tables become generated; their override strings remain authored
-inputs and survive subsequent exports unchanged. Parent support remains an authored input with
-bounded DBC additions proposed. See [ADR 0015](../../docs/adr/0015-offline-spatial-support-candidates.md).
+forward/reverse base mappings come from DBC; their override strings remain authored inputs
+and survive subsequent exports unchanged. Parent and instance support remain authored inputs
+with bounded DBC additions proposed. See [ADR 0015](../../docs/adr/0015-offline-spatial-support-candidates.md).
 No entity authoring database, Lua provider evaluator or second coordinate converter is added.
 
 ### Accepting another snapshot
@@ -118,9 +143,12 @@ DBC parent routing for 2657 and 3217 agrees with the already-reviewed owned supp
 
 All four required DBC tables need recorded `ok` coverage for the registered explicit build.
 Missing databases or required fields, broken assignment references, parent cycles, malformed
-owned input and conflicting overrides fail before candidate installation. Restricted or
+owned input and conflicting overrides fail before candidate installation. Missing parents on
+present world maps also fail. An incomplete parent chain on an absent world map remains
+unresolved with diagnostics; no route or parent is fabricated. Build `1.60.1.70291` includes
+this case for Dreambound Pinnacle (area 17845, absent parent 16597 and world map 2981). Restricted or
 ambiguous assignments remain explicit unresolved evidence rather than guessed geometry.
-The report fingerprints all three owned Lua inputs and full assignment rows, including unknown
+The report fingerprints all five owned Lua inputs and full assignment rows, including unknown
 selectors, separately from the selected-field projections. Hashes identify what was read; they
 are not approval of new content.
 
@@ -139,11 +167,14 @@ FOREVER_DBC_DATABASE="$PWD/.cache/dbc/dbc-source.db" \
 
 The first command uses small SQLite/Lua fixtures, including a new covered build and authored
 override edits without a second policy update. The second adds pinned-build acceptance:
-source hashes match the test-only historical reference, and actual Lua loading compares all four candidate base/override tables against current owned
-support, checks every ancestor annotation and the unresolved inventory, and verifies that a
-wrong target with unchanged counts fails. It also loads the parent candidate in Lua, verifies
+source hashes match the test-only historical reference, and actual Lua loading checks the
+historical base mappings as a subset of current owned support, with exact override equality.
+Ordinary candidate comparisons remain exact. It checks every ancestor annotation and the
+unresolved inventory, and verifies that a wrong target with unchanged counts fails. It also loads the parent candidate in Lua, verifies
 all 65 independently captured overlay relationships, and checks that every authored base and
-override entry survives with no unreviewed additions. Removing a required parent link fails.
+override entry survives with no unreviewed additions, including instance parent edges. Instance
+candidates are loaded through Lua with owned symbols and compared against authored identities
+and expected additions. Removing a required parent link fails.
 Set `LUA` to a Lua 5.1 executable if `lua5.1` is not on PATH. On PowerShell, set `$env:FOREVER_DBC_DATABASE` before running the second command.
 The real-data check is intentionally opt-in; ordinary fixture tests need no DBC cache.
 

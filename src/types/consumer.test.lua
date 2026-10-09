@@ -96,6 +96,12 @@ local mapX, mapY = LibQuestieDB.EraToForeverByUiMapId(1412, 44.18, 76.06)
 ---@type number[]
 local foreverCoordinates = { areaX, areaY, mapX, mapY }
 
+-- Zone symbols identify areas, including Forever dungeons with no UiMap.
+---@type AreaId
+local excavationSite = LibQuestieDB.Enum.zoneIDs.EXCAVATION_SITE_WETLANDS
+---@type AreaId
+local excavationExterior = LibQuestieDB.Enum.zoneIDs.EXCAVATION_SITE_WETLANDS_EXTERIOR
+
 -- Phase constants include Blizzard IDs and Questie-defined fake visibility IDs.
 ---@type integer
 local blizzardPhase = LibQuestieDB.Enum.phases.HYJAL_CHAPTER_1

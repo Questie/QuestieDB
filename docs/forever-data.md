@@ -235,12 +235,49 @@ Three inherited entrance entries use Cata/MoP frames and were not Era-converted:
 as do the six synthetic continent/world points above. Scarlet Enclave's retained SoD/Era
 point was projected without claiming that the raid is available in Forever.
 
+## October 9 map refresh
+
+Reviewed `Questie/dbc` release `v2026.10.09`, Forever build **1.60.1.70291**. The compressed
+source artifact SHA-256 is `bed96abce41e8f99c8fea9d3e528913c06920b279d40d102f9c53cafa7087bcf`.
+All four required tables have recorded `ok` coverage. The full pre-adoption candidate report
+is local at `.out/forever-support/v2026.10.09-1.60.1.70291/report.json`; its owned-input hashes
+identify the files before adoption, not their updated contents.
+
+Adopted additions, without replacing existing values or authored overrides:
+
+- Twelve instance identities: `2791 -> 15532`, `2804 -> 15825`, `2807 -> 15828`,
+  `2817 -> 15938`, `2902 -> 16295`, `2921 -> 16394`, `2997 -> 16606`, `2998 -> 16732`,
+  `2999 -> 16611`, `3005 -> 16653`, `3065 -> 16919`, and `3109 -> 17191`.
+- Twenty-five instance subarea parent links plus `17847 -> 16591` for Twilight Hollow.
+- The forward UiMap link `17847 -> 2548` for Twilight Hollow in Riverglades. Forward DBC
+  routes now total 1,065; canonical reverse mappings remain 54. All 40 compatibility pairs
+  remain unchanged.
+
+Excavation Site: Wetlands (Map 2998, Area 16732) and Ruins of Lordaeron (Map 2999, Area 16611)
+have no UiMap assignments. Their identities come from each instance's unique root AreaTable
+row, not map geometry. Their four subareas each now resolve to the respective dungeon area.
+No UiMap, entrance point, dungeon metadata or entity position was invented.
+
+The shared zone enum also gains 165 symbols: 153 missing AreaIDs present in Forever but not
+Era `1.15.9.70003`, plus twelve shared SoD area identities used by the support additions.
+All 161 Forever-specific AreaIDs in this comparison now have symbols, including the eight
+already represented. Existing symbols and values remain unchanged. Instance subareas are
+grouped with their dungeon; same-name identities use qualified names rather than replacing
+older expansions' constants. Prototype and unresolved records are labeled separately and do
+not imply active content or working navigation.
+
+The two additional candidate identities for test map 13 and unused prison 35 remain deferred.
+Nine instance maps lack an unambiguous unauthored identity and remain diagnostic evidence.
+Dreambound Pinnacle (area 17845) references absent world map 2981 and absent parent 16597;
+it stays unresolved. Missing parents on present world maps still fail export validation.
+The earlier adoption/provenance records above remain historical.
+
 ## How it works now
 
 ### Current support-map limitations
 
-Current map facts come from the completed DBC handoff, with narrowly retained pre-entrance
-consumer compatibility described above. Do not use all forward/reverse entries as proof
+Current map facts combine the completed DBC handoff and October 9 additions, with narrowly
+retained pre-entrance consumer compatibility described above. Do not use all forward/reverse entries as proof
 of native map availability. The 308 unresolved real areas in the handoff, alternative
 continent maps 1463/1464 and second Zephras map 2665 remain unresolved; keeping a legacy
 dungeon lookup for the consumer does not resolve its missing native map.
@@ -285,13 +322,13 @@ client-acceptance requirements.
 and the current 40 compatibility pairs from an explicit existing DBC snapshot plus current
 owned Lua overrides. Override policy and comments stay in those Lua inputs; there is no second
 exception file to maintain. Hashes identify inputs in the generated report, while pinned
-historical hashes live only in acceptance tests. It writes forward/reverse mapping candidates,
-a parent-support candidate and an
-evidence report under `.out/forever-support/`, never active support. The parent candidate
-preserves the owned base/overrides and proposes only missing direct children of the five
-reviewed Forever zones. For the pinned build these reproduce all 65 parent relationships
-from Questie's former zone overlay; 64 are missing from the current owned parent table.
-Other deferred parent additions remain outside this scope. See the
+historical hashes live only in acceptance tests. It writes forward/reverse mappings, parent
+and instance candidates, and an evidence report under `.out/forever-support/`, never active
+support. Parent candidates preserve owned base/overrides and propose missing direct children
+of the five reviewed zones plus same-map parent links at every depth in resolved instances.
+The 65 historical zone-overlay relationships are already adopted. Instance candidates preserve
+owned numeric/symbolic identities and propose explicit DBC links or unique instance roots,
+independently of UiMap availability. Other outdoor parent additions remain outside this scope. See the
 [candidate workflow](../tools/dbc/README.md#generate-forever-map-support-candidates).
 
 The historical external generator above remains unchanged and unsafe to run over its manual
