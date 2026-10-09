@@ -578,15 +578,15 @@ function ForeverQuestFixes:Load()
         [94414] = { -- The Anchors of Zephras
             [questKeys.objectives] = {{{257554,nil,Questie.ICON_TYPE_TALK}}},
         },
-        [94464] = { -- Call of Fire
-            [questKeys.nextQuestInChain] = 94465,
-        },
         [94465] = { -- Call of Fire
-            [questKeys.preQuestSingle] = {94464},
             [questKeys.nextQuestInChain] = 94466,
         },
         [94466] = { -- Call of Fire
             [questKeys.preQuestSingle] = {94465},
+            [questKeys.nextQuestInChain] = 94467,
+        },
+        [94467] = { -- Call of Fire
+            [questKeys.preQuestSingle] = {94466},
         },
         [94472] = { -- Earth Sapta
             [questKeys.preQuestSingle] = {94373},
