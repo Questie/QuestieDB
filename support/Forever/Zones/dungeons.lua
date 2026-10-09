@@ -140,6 +140,10 @@ local dungeons = {
     [15828] = {"The Burning of Andorhal",nil,28,{{28, 69.6,79.6}}},
     [16074] = {"Karazhan Crypts",nil,41,{{41, 39.99, 74.16}}},
     [16236] = {"Scarlet Enclave",nil,139,{{139, 60.14, 75.32}}}, -- SoD/Era point projected; Forever content availability unverified
+    [16544] = {"City of Dalaran",nil,36,{{36, 8.46, 59.21}}},
+    [16611] = {"Ruins of Lordaeron",nil,1497,{{1497, 72.48, 11.33}}},
+    [16732] = {"Excavation Site: Wetlands",nil,11,{{11, 47.79, 56.16}}},
+    [16919] = {"The Hall of Thanes",nil,1537,{{1537, 27.63, 47.83}}},
 }
 
 if Expansions.Current >= Expansions.Wotlk then
