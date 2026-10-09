@@ -679,6 +679,15 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 94013,
             [questKeys.objectives] = {{{251707,nil,Questie.ICON_TYPE_INTERACT}}},
         },
+        [95213] = { -- Stolen Blasting Powder
+            [questKeys.nextQuestInChain] = 95214,
+        },
+        [95214] = { -- Stolen Blasting Powder
+            [questKeys.preQuestSingle] = {95213},
+        },
+        [95217] = { -- The Quarry's Smith
+            [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 1},
+        },
         [95349] = { -- The Earthen Ring
             [questKeys.preQuestSingle] = {93090},
         },
