@@ -455,11 +455,12 @@ constants.zoneIDs = {
   RIVERGLADES = 16591,
   ZEPHRAS_ISLE = 16593,
   DARKSPEAR_ISLANDS = 16606,
-  RUINS_OF_LORDAERON = 16611,
   SHEN_DRALAS = 16651,
 
   -- Forever: instance areas
   CITY_OF_DALARAN = 16544,
+  RUINS_OF_LORDAERON = 16611,
+  EXCAVATION_SITE_WETLANDS = 16732,
   THE_HALL_OF_THANES = 16919,
 
   -- AreaTable grouping for writ quests; no physical map route is implied.
