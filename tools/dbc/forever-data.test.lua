@@ -1,4 +1,5 @@
 -- Dataset review checks, not an assertion that Forever must keep matching Era.
+local zoneValidation = dofile("validators/zones.lua")
 dofile("src/support/eraToForever.test.lua")
 local loader = dofile("generator/loader.lua")
 local config = dofile("src/config.lua")
@@ -29,6 +30,7 @@ dofile(root .. "Zones/instanceIdToAreaId.lua")
 dofile(root .. "FactionTemplates/factionTemplateClassic.lua")
 local private = modules.ZoneDB.private
 local areas = assert(loadstring(private.areaIdToUiMapId))()
+local nativeAreas = assert(loadstring(private.areaIdToUiMapId))()
 local maps = assert(loadstring(private.uiMapIdToAreaId))()
 for area, map in pairs({[616]=2482, [16591]=2548, [16593]=2521, [16606]=2524, [16651]=2652}) do
     assert(areas[area] == map and maps[map] == area, "Reviewed Forever map link differs")
@@ -39,7 +41,11 @@ assert(overrides[1414] == 10073 and overrides[1415] == 10074 and overrides[947] 
     "Authored continent routing was erased")
 assert(overrides[281] == 10000, "Referenced Maraudon entrance alias was erased")
 local forwardOverrides = assert(loadstring(private.areaIdToUiMapIdOverride))()
+-- Only the fail-safe and intentional display suppression may use 0.
+-- No-map dungeons resolve through entrances.
+local suppressedAreas = {[0]="fail-safe", [2257]="Deeprun Tram", [2917]="Hall of Legends", [2918]="Champions' Hall"}
 for area, map in pairs(forwardOverrides) do
+    assert(map ~= 0 or suppressedAreas[area], "areaIdToUiMapIdOverride: undocumented 0 for area " .. area)
     assert(map == 0 or areas[area] == nil, "Compatibility shadows a current DBC area")
     areas[area] = map
 end
@@ -77,9 +83,17 @@ assert(instances[33] == 209 and instances[36] == 1581, "Partial export erased au
 assert(instances[13] == nil and instances[35] == nil, "Deferred test/unused maps introduced")
 
 -- No-map dungeons still have instance and area identities, including their subareas.
-for instance, area in pairs({[2998]=16732, [2999]=16611}) do
-    assert(instances[instance] == area, "Forever no-map dungeon identity missing: " .. instance)
-    assert(areas[area] == nil, "No-map dungeon acquired an invented UiMap: " .. area)
+for _, dungeon in ipairs({
+    {2959, 16544, "City of Dalaran"},
+    {2998, 16732, "Excavation Site: Wetlands"},
+    {2999, 16611, "Ruins of Lordaeron"},
+    {3065, 16919, "The Hall of Thanes"},
+}) do
+    local instance, area, name = unpack(dungeon)
+    assert(instances[instance] == area, "instanceIdToAreaId: missing identity for " .. name .. " (" .. instance .. ")")
+    assert(nativeAreas[area] == nil, "areaIdToUiMapId: expected no native UiMap for " .. name .. " (" .. area .. ")")
+    assert(areas[area] == nil,
+        "areaIdToUiMapIdOverride: expected no map for " .. name .. " (" .. area .. "); got " .. tostring(areas[area]))
 end
 for child, parent in pairs({[16612]=16611, [16614]=16611, [16615]=16611, [16617]=16611,
                            [16877]=16732, [16878]=16732, [16879]=16732, [16880]=16732}) do
@@ -165,21 +179,16 @@ for _, dungeon in pairs(dungeons) do
     end
 end
 
--- Mirrors the consumer's pre-entrance map-key requirement. Missing compatibility
--- must fail before a perfectly usable outdoor entrance can hide the regression.
+-- Dungeon markers need usable outdoor entrances, not a dungeon UiMap.
 ---@param area number
 ---@return nil
 local function checkEntrance(area)
-    local indexedByMap = {}
-    indexedByMap[areas[area]] = true
-    assert(maps[areas[area]] == area, "Dungeon reverse lookup missing: " .. area)
     for _, entrance in ipairs(assert(entrances[area], "Dungeon entrance missing")) do
         assert(areas[entrance[1]] and areas[entrance[1]] > 0, "Entrance map missing")
         assert(entrance[2] >= 0 and entrance[3] >= 0, "Entrance is still a sentinel")
     end
 end
 local referenced = {}
-local suppressedAreas = {[0]=true, [2257]=true, [2917]=true, [2918]=true}
 
 -- Derive required routing from spawns, not the compatibility inventory under test.
 ---@param rows table<number, table>
@@ -246,15 +255,22 @@ for _, case in ipairs({{7461,"Npc",1,7,11486,10022}, {5382,"Object",2,4,176545,1
     end
     assert(found, "Representative quest objective changed")
 end
--- Both ordinary dungeon and synthetic-area omissions must fail the same spawn scanner.
+-- No-map markers pass both the dataset scanner and the data validator without compatibility.
+local validateSpawnArea = zoneValidation.BuildSpawnAreaValidator(function(area) return areas[area] end, dungeons)
 for _, area in ipairs({209, 10022}) do
     local saved = areas[area]
     areas[area] = nil
-    local entranceOk, entranceError = pcall(checkSpawnEntrances, correctedEntities.Npc, 7)
+    checkSpawnEntrances(correctedEntities.Npc, 7)
+    assert(validateSpawnArea(area, {{-1, -1}}), "Dungeon entrance routing missing: " .. area)
+    assert(not validateSpawnArea(area, {{10, 20}}), "Unmapped ordinary coordinates accepted: " .. area)
     areas[area] = saved
-    assert(not entranceOk and entranceError:find("table index is nil", 1, true),
-        "Missing-compatibility self-proof failed: " .. area)
 end
+local savedMap, savedCompatibility = areas[357], areas[10022]
+areas[357], areas[10022] = nil, nil
+assert(not validateSpawnArea(10022, {{-1, -1}}), "Missing entrance map was accepted: Feralas (357)")
+local entranceOk = pcall(checkEntrance, 10022)
+areas[357], areas[10022] = savedMap, savedCompatibility
+assert(not entranceOk, "Missing entrance map self-proof failed: Feralas (357)")
 checkEntrance(10022)
 checkEntrance(10032)
 print("Forever support shapes, DBC links, entrance compatibility and faction references passed (including self-proofs)")

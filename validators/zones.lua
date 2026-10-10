@@ -7,8 +7,8 @@
 -- with the consumer. Re-deriving the lookup here is what lets validation run with **no consumer
 -- checkout required**, which is the whole point of moving the job.
 --
--- Only the lookup is reimplemented, not the module: `zoneDB.lua` also does dungeon location
--- resolution, parent-zone walking and map-change handling, none of which a validator needs.
+-- No-map instance markers also need the owned dungeon entrance table. This is validation,
+-- not the consumer's coordinate projection, parent-zone walking or map-change handling.
 
 local runtime = dofile("generator/runtime.lua")
 local client = dofile("emulator/client.lua")
@@ -25,7 +25,37 @@ local function materialize(value)
   return chunk()
 end
 
---- Load one flavor's support data and return `getUiMapIdByAreaId(areaId) -> uiMapId | nil`.
+---Accept existing map handling, or pure instance markers with usable outdoor entrances.
+---@param lookup fun(areaId: number): number?
+---@param dungeons table
+---@return fun(areaId: number, points: table): boolean
+function zones.BuildSpawnAreaValidator(lookup, dungeons)
+  local entrances = {}
+  for area, dungeon in pairs(dungeons) do entrances[area] = dungeon[4] end
+  for _, dungeon in pairs(dungeons) do
+    for _, alias in ipairs(dungeon[2] or {}) do
+      entrances[alias] = entrances[alias] or dungeon[4]
+    end
+  end
+  return function(area, points)
+    if lookup(area) ~= nil then return true end -- Preserve existing map and 0-suppression policy.
+    if #points == 0 then return false end
+    for _, point in ipairs(points) do
+      if point[1] ~= -1 or point[2] ~= -1 then return false end
+    end
+    local locations = entrances[area]
+    if not locations or #locations == 0 then return false end
+    for _, entrance in ipairs(locations) do
+      local map = lookup(entrance[1])
+      local x, y = entrance[2], entrance[3]
+      if not map or map <= 0 or type(x) ~= "number" or type(y) ~= "number" or
+          not (x >= 0 and x <= 100 and y >= 0 and y <= 100) then return false end
+    end
+    return true
+  end
+end
+
+---Load one flavor's map lookup and spawn-area validation predicate.
 ---
 --- Override first, then the generated table — the order `ZoneDB` uses, and the reason the
 --- hand-authored override table exists at all.
@@ -59,11 +89,12 @@ function zones.BuildAreaLookup(flavor)
   for _ in pairs(override) do zones.lastCounts.override = zones.lastCounts.override + 1 end
   for _ in pairs(generated) do zones.lastCounts.generated = zones.lastCounts.generated + 1 end
 
-  return function(areaId)
+  local function lookup(areaId)
     local uiMapId = override[areaId]
     if uiMapId ~= nil then return uiMapId end
     return generated[areaId]
   end
+  return lookup, zones.BuildSpawnAreaValidator(lookup, ZoneDB.private.dungeons or {})
 end
 
 return zones
