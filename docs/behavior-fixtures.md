@@ -91,6 +91,25 @@ merger or normalizer. Successful applications are repeated to check idempotence.
 fails if a schema table shape has no matrix fixture. Existing specialized cases retain
 coverage of normalization, untouched groups, conflicts, ownership, and failure recovery.
 
+## Validation-message fixtures
+
+`lua5.1 test.lua validator-diagnostics forever-data` runs without generated artifacts.
+[`diagnostics.test.lua`](../validators/diagnostics.test.lua) uses named synthetic entities
+and real area/map identities to check reciprocal quest links, missing entities and names,
+prerequisite modes, race limits, and spawn-routing explanations. Expected message fragments
+are authored separately from the formatter. The sizeable fixture tables sit above the tests;
+comments distinguish synthetic entity IDs from real AreaIDs and UiMapIDs.
+
+The child-process [failure fixture](../validators/fixtures/diagnostic-failures.lua) injects
+bad rows in memory into the real validator CLI. It checks that all sixteen new findings reach
+the console and saved report, a missing starter identifies the missing row instead of only
+raising a nil-index error, and a failed correction-file write names its destination.
+Temporary reports are removed after the tests. Owned data and baselines are not changed.
+
+The Forever dataset suite keeps its reviewed expected-data tables near the top, with comments
+naming the IDs. Its failures identify the support table, actual and expected values, the
+reviewed rule, and input path. These reporting changes do not relax the validation rules.
+
 ## Maintaining coverage
 
 - Production corrections do not update these fixtures. Their extracted inputs are fixed test data.

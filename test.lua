@@ -32,6 +32,8 @@ local normalize = dofile("src/meta/normalize.lua")
 local emulator = dofile("emulator/metadata.lua")
 local client = dofile("emulator/client.lua")
 local config = dofile("src/config.lua")
+-- Load pure diagnostic fixtures before runtime suites install their private LibStub shims.
+local validatorDiagnosticsTests = dofile("validators/diagnostics.test.lua")
 
 local LUA_BIN = os.getenv("LUA") or "lua5.1"
 
@@ -66,9 +68,13 @@ end
 ---@param command string
 ---@return boolean succeeded
 local function commandSucceeded(command)
+  -- Keep child diagnostics next to the suite that ran them, including in redirected CI logs.
+  io.stdout:flush()
+  io.stderr:flush()
   local ok = lib.execute(command)
-  if type(ok) == "number" then return ok == 0 end
-  return ok == true
+  local succeeded = type(ok) == "number" and ok == 0 or ok == true
+  if not succeeded then io.write("  Command failed: ", command, "\n") end
+  return succeeded
 end
 
 local function check(condition, message)
@@ -1984,23 +1990,31 @@ suite("set-corrections", "shared", function()
 end)
 
 --------------------------------------------------------------------------------------------
+-- Contributor-facing validation diagnostics
+--------------------------------------------------------------------------------------------
+
+suite("validator-diagnostics", "shared", function()
+  validatorDiagnosticsTests(check, equal)
+end)
+
+--------------------------------------------------------------------------------------------
 -- Independently owned Forever dataset
 --------------------------------------------------------------------------------------------
 
 suite("forever-delta-base", "shared", function()
   check(commandSucceeded(shellQuote(LUA_BIN) .. " tools/validation/forever-delta-base.test.lua"),
-    "Forever delta-base witnesses, isolation and precedence pass")
+    "Forever entity correction validation failed; see the named entities, fields and expected values above")
 end)
 
 suite("forever-delta-base-baked", "Forever", function()
   check(commandSucceeded(shellQuote(LUA_BIN) .. " tools/validation/forever-delta-base.test.lua Baked"),
-    "Forever delta-base witnesses are folded into Baked data without static providers")
+    "Forever Baked correction validation failed; see the entity and field differences above")
 end)
 
 suite("forever-data", "shared", function()
   -- Dataset checks install generator globals; isolate them from the runtime suites.
   check(commandSucceeded(shellQuote(LUA_BIN) .. " tools/dbc/forever-data.test.lua"),
-    "Forever reviewed DBC data and faction-reference self-proof pass")
+    "Forever support-data validation failed; see the table, expected/actual values and input file above")
 end)
 
 --------------------------------------------------------------------------------------------
@@ -3998,7 +4012,7 @@ local totalFailed, totalChecks = 0, 0
 for _, name in ipairs(order) do
   if not requested or requested[name] then
     current = { name = name, total = 0, failed = 0 }
-    local ok, err = pcall(suites[name])
+    local ok, err = xpcall(suites[name], debug.traceback)
     if not ok then
       current.failed = current.failed + 1
       io.write("  ERROR ", name, ": ", tostring(err), "\n")

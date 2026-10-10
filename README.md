@@ -166,6 +166,31 @@ a client that recognizes its suffixed TOC selects Baked mode. Remove the matchin
 TOCs, including both Forever names, to return to Source mode. Forever filename recognition
 still needs the live acceptance checks linked above.
 
+### Understanding validation failures
+
+`validators/run.lua` prints every new finding with the entity's name and ID, affected fields,
+current values, the rule they break, and input files to inspect. Spawn errors distinguish
+ordinary coordinates without a map route from dungeon markers with missing or unusable entrances.
+The saved report includes the same explanations for all findings, including accepted ones:
+
+```sh
+lua5.1 validators/run.lua Forever
+# Full report: .out/validators/Forever/report.txt
+lua5.1 validators/run.lua Forever --raw  # compare with the uncorrected entity data
+lua5.1 test.lua validator-diagnostics forever-data  # output fixtures; no generated TOCs needed
+```
+
+Normal validation checks data after Static Corrections and Derived Passes. The value reported
+may therefore come from a Correction rather than the raw data file. `--raw` helps distinguish
+those cases; it can expose problems the existing Corrections already fix.
+
+`known findings` are recorded in `validators/baseline/<Flavor>.txt`; they do not fail the run.
+`new problems` and `validation errors` do. A validation error means a check could not finish
+or its findings could not be accounted for, not that the data was accepted. Review cleared
+findings before updating a baseline. Do not update it merely to silence a new problem.
+The `Finding key` remains the stable baseline identity; names and explanations do not change it.
+`--quiet` suppresses console messages, not the detailed report or failure exit code.
+
 ### The full toolchain
 
 The root command orchestrates generation and every validation gate, in parallel, with per-job
