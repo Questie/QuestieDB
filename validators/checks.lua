@@ -66,6 +66,13 @@ local function pairsByKeys(t, f)
     return iter
 end
 
+local function openCorrectionFile(filename)
+    local path = Validators.outputDir .. "/" .. filename
+    local file, message = io.open(path, "w")
+    assert(file, "Cannot write suggested corrections to " .. path .. ": " .. tostring(message))
+    return file
+end
+
 ---@param quests table<QuestId, Quest>
 ---@param questKeys DatabaseQuestKeys
 ---@return table<QuestId, string>
@@ -400,7 +407,9 @@ function Validators.checkNpcQuestStarts(npcs, npcKeys, quests, questKeys)
                 end
                 table.insert(targetQuestStarts[npcStarterId], questId)
 
-                local npcQuestStarters = npcs[npcStarterId][npcKeys.questStarts]
+                local npc = assert(npcs[npcStarterId], "Quest " .. questId .. " lists NPC " .. npcStarterId ..
+                    " in startedBy[1], but npcData[" .. npcStarterId .. "] is missing. Check the quest starter ID or the missing NPC entry.")
+                local npcQuestStarters = npc[npcKeys.questStarts]
 
                 local starterFound = false
                 for _, starterQuestId in pairs(npcQuestStarters or {}) do
@@ -469,7 +478,7 @@ function Validators.checkNpcQuestStarts(npcs, npcKeys, quests, questKeys)
     for _ in pairs(invalidQuestStarts) do count = count + 1 end
 
     if count > 0 then
-        local correctionFile = io.open(Validators.outputDir .. "/npcQuestStartsCorrections.lua", "w")
+        local correctionFile = openCorrectionFile("npcQuestStartsCorrections.lua")
         correctionFile:write("return {\n")
 
         print("\27[31mFound " .. count .. " NPCs with invalid questStarts:\27[0m")
@@ -586,7 +595,7 @@ function Validators.checkNpcQuestEnds(npcs, npcKeys, quests, questKeys)
     for _ in pairs(invalidQuestEnds) do count = count + 1 end
 
     if count > 0 then
-        local correctionFile = io.open(Validators.outputDir .. "/npcQuestEndsCorrections.lua", "w")
+        local correctionFile = openCorrectionFile("npcQuestEndsCorrections.lua")
         correctionFile:write("return {\n")
 
         print("\27[31mFound " .. count .. " NPCs with invalid questEnds:\27[0m")
@@ -631,7 +640,9 @@ function Validators.checkObjectQuestStarts(objects, objectKeys, quests, questKey
                 end
                 table.insert(targetQuestStarts[objectStarterId], questId)
 
-                local objectQuestStarters = objects[objectStarterId][objectKeys.questStarts]
+                local object = assert(objects[objectStarterId], "Quest " .. questId .. " lists Object " .. objectStarterId ..
+                    " in startedBy[2], but objectData[" .. objectStarterId .. "] is missing. Check the quest starter ID or the missing object entry.")
+                local objectQuestStarters = object[objectKeys.questStarts]
 
                 local starterFound = false
                 for _, starterQuestId in pairs(objectQuestStarters or {}) do
@@ -700,7 +711,7 @@ function Validators.checkObjectQuestStarts(objects, objectKeys, quests, questKey
     for _ in pairs(invalidQuestStarts) do count = count + 1 end
 
     if count > 0 then
-        local correctionFile = io.open(Validators.outputDir .. "/objectQuestStartsCorrections.lua", "w")
+        local correctionFile = openCorrectionFile("objectQuestStartsCorrections.lua")
         correctionFile:write("return {\n")
 
         print("\27[31mFound " .. count .. " objects with invalid questStarts:\27[0m")
@@ -817,7 +828,7 @@ function Validators.checkObjectQuestEnds(objects, objectKeys, quests, questKeys)
     for _ in pairs(invalidQuestEnds) do count = count + 1 end
 
     if count > 0 then
-        local correctionFile = io.open(Validators.outputDir .. "/objectQuestEndsCorrections.lua", "w")
+        local correctionFile = openCorrectionFile("objectQuestEndsCorrections.lua")
         correctionFile:write("return {\n")
 
         print("\27[31mFound " .. count .. " objects with invalid questEnds:\27[0m")

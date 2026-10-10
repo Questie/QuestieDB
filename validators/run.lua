@@ -36,6 +36,7 @@ local lib = dofile("generator/lib.lua")
 local flavorLoader = dofile("generator/flavor.lua")
 local Validators = dofile("validators/checks.lua")
 local zones = dofile("validators/zones.lua")
+local diagnostics = dofile("validators/diagnostics.lua")
 
 --------------------------------------------------------------------------------------------
 -- Arguments
@@ -209,11 +210,12 @@ local function fingerprintCountError(failed, structuredFindings, parsedCount)
 
   local expected = structuredFindingCount(structuredFindings)
   if expected == 0 then
-    return "check failed but returned no structured findings"
+    return "The check reported a data problem but returned no findings. " ..
+      "Baseline comparison cannot safely account for this failure."
   end
   if parsedCount ~= expected then
-    return ("check returned %d structured findings but output produced %d fingerprints")
-      :format(expected, parsedCount)
+    return ("The check returned %d findings, but only %d finding keys could be read from its output. " ..
+      "Fix the output format; a missing key must not be treated as fixed data."):format(expected, parsedCount)
   end
   return nil
 end
@@ -335,12 +337,16 @@ local function validateFlavor(flavor)
   }
 
   Validators.SetOutputDir(opts.out .. "/" .. flavor.name)
+  local diagnosticContext = {
+    loaded = loaded, flavor = flavor, zoneIDs = constants.zoneIDs,
+    raceKeys = expansionConstants.raceKeys, canResolveSpawnArea = canResolveSpawnArea, raw = opts.raw,
+  }
 
-  local results, failures, lines, fingerprints = {}, 0, {}, {}
+  local results, lines, fingerprints = {}, {}, {}
   for _, check in ipairs(CHECKS) do
     Validators.failed = false
     beginCapture()
-    local ok, result = pcall(check.run, db)
+    local ok, result = xpcall(function() return check.run(db) end, debug.traceback)
     local output = endCapture()
     local checkFailed = Validators.failed
 
@@ -355,7 +361,6 @@ local function validateFlavor(flavor)
 
     if not ok then
       results[#results + 1] = { name = check.name, error = tostring(result) }
-      failures = failures + 1
       lines[#lines + 1] = check.name .. ": ERROR " .. tostring(result)
     else
       -- Questie's checks signal failure by exiting; here that became a flag (see
@@ -365,23 +370,33 @@ local function validateFlavor(flavor)
       if countError then
         -- A changed print shape must not turn all or part of a failed check into "fixed" rows.
         results[#results + 1] = { name = check.name, error = countError }
+        lines[#lines + 1] = check.name .. ": VALIDATION ERROR " .. countError
       else
         results[#results + 1] = { name = check.name, failed = failed, findings = findings }
       end
-      if failed then failures = failures + 1 end
     end
   end
 
-  lib.mkdirp(opts.out .. "/" .. flavor.name)
-  lib.writeAll(opts.out .. "/" .. flavor.name .. "/report.txt", table.concat(lines, "\n") .. "\n")
-
   table.sort(fingerprints)
+  local reportPath = opts.out .. "/" .. flavor.name .. "/report.txt"
+  local report = {
+    flavor.name .. " database validation",
+    opts.raw and "Checked raw entity data (--raw)." or "Checked after Static Corrections and Derived Passes.",
+    "This report includes all findings. Only new findings or validation errors fail the command.",
+    "Accepted findings are recorded in validators/baseline/" .. flavor.name .. ".txt.",
+  }
+  for _, fingerprint in ipairs(fingerprints) do
+    report[#report + 1] = "\n" .. diagnostics.format(fingerprint, diagnosticContext, "FINDING")
+  end
+  report[#report + 1] = "\nFull check output (retained for baseline diagnostics):\n" .. table.concat(lines, "\n")
+  lib.mkdirp(opts.out .. "/" .. flavor.name)
+  lib.writeAll(reportPath, table.concat(report, "\n") .. "\n")
 
   local errored = countResultErrors(results)
   local baselinePath = "validators/baseline/" .. flavor.name .. ".txt"
   if opts.updateBaseline then
     if errored > 0 then
-      say(("[FAIL] %s: baseline not updated because %d checks produced invalid evidence")
+      say(("[FAIL] %s: baseline was not changed because %d checks could not finish or report all findings")
         :format(flavor.name, errored))
       for _, result in ipairs(results) do
         if result.error then say(("    ERROR %-30s %s"):format(result.name, result.error)) end
@@ -396,11 +411,9 @@ local function validateFlavor(flavor)
   end
 
   local baseline = {}
-  local baselineCount = 0
   if lib.fileExists(baselinePath) then
     for line in lib.readAll(baselinePath):gmatch("[^\n]+") do
       baseline[line] = (baseline[line] or 0) + 1
-      baselineCount = baselineCount + 1
     end
   end
 
@@ -420,25 +433,25 @@ local function validateFlavor(flavor)
   for _, remaining in pairs(baseline) do fixed = fixed + remaining end
 
   local status = (#regressions == 0 and errored == 0) and "PASS" or "FAIL"
-  say(("[%s] %s: %d/%d checks clean, %d findings (%d baselined, %d new, %d fixed), %.1fs  (%s)")
-    :format(status, flavor.name, #CHECKS - failures, #CHECKS, #fingerprints,
-            baselineCount, #regressions, fixed, os.clock() - started,
-            opts.out .. "/" .. flavor.name .. "/report.txt"))
+  say(("[%s] %s: %d new problems, %d known findings, %d cleared findings; " ..
+    "%d checks, %d validation errors, %.1fs")
+    :format(status, flavor.name, #regressions, #fingerprints - #regressions, fixed, #CHECKS, errored, os.clock() - started))
+  say("    Detailed report: " .. reportPath)
 
   if not opts.quiet then
-    for index, fingerprint in ipairs(regressions) do
-      if index <= 15 then
-        say("    NEW  " .. fingerprint)
-      elseif index == 16 then
-        say(("    ... and %d more new findings"):format(#regressions - 15))
-        break
-      end
+    for _, fingerprint in ipairs(regressions) do
+      say("\n" .. diagnostics.format(fingerprint, diagnosticContext, "NEW"))
     end
     for _, result in ipairs(results) do
-      if result.error then say(("    ERROR %-30s %s"):format(result.name, result.error)) end
+      if result.error then
+        say(("\nERROR: %s could not finish %s. This is a validation error, not an accepted data finding.")
+          :format(flavor.name, result.name))
+        say("  Actual error: " .. result.error)
+        say("  Inspect validators/checks.lua and the input rows named in the error. Full check output: " .. reportPath)
+      end
     end
     if fixed > 0 then
-      say(("    %d baselined findings no longer occur — run --update-baseline to record that")
+      say(("    %d findings in the baseline no longer occur. Review them before running --update-baseline.")
         :format(fixed))
     end
   end

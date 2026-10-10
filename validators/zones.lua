@@ -28,7 +28,7 @@ end
 ---Accept existing map handling, or pure instance markers with usable outdoor entrances.
 ---@param lookup fun(areaId: number): number?
 ---@param dungeons table
----@return fun(areaId: number, points: table): boolean
+---@return fun(areaId: number, points: table): boolean, string?
 function zones.BuildSpawnAreaValidator(lookup, dungeons)
   local entrances = {}
   for area, dungeon in pairs(dungeons) do entrances[area] = dungeon[4] end
@@ -39,17 +39,33 @@ function zones.BuildSpawnAreaValidator(lookup, dungeons)
   end
   return function(area, points)
     if lookup(area) ~= nil then return true end -- Preserve existing map and 0-suppression policy.
-    if #points == 0 then return false end
-    for _, point in ipairs(points) do
-      if point[1] ~= -1 or point[2] ~= -1 then return false end
+    if #points == 0 then
+      return false, "areaIdToUiMapId[" .. area .. "] is nil, and the spawn list has no coordinates or dungeon markers."
+    end
+    for index, point in ipairs(points) do
+      if point[1] ~= -1 or point[2] ~= -1 then
+        return false, "areaIdToUiMapId[" .. area .. "] is nil. Coordinate " .. index .. " is {" ..
+          tostring(point[1]) .. ", " .. tostring(point[2]) .. "}, not the dungeon marker {-1,-1}; " ..
+          "ordinary coordinates need a map route."
+      end
     end
     local locations = entrances[area]
-    if not locations or #locations == 0 then return false end
-    for _, entrance in ipairs(locations) do
+    if not locations or #locations == 0 then
+      return false, "The spawn uses {-1,-1}, but dungeons[" .. area ..
+        "][4] has no outdoor entrances (including alternative area IDs)."
+    end
+    for index, entrance in ipairs(locations) do
       local map = lookup(entrance[1])
       local x, y = entrance[2], entrance[3]
-      if not map or map <= 0 or type(x) ~= "number" or type(y) ~= "number" or
-          not (x >= 0 and x <= 100 and y >= 0 and y <= 100) then return false end
+      if not map or map <= 0 then
+        return false, "Dungeon entrance " .. index .. " uses area " .. tostring(entrance[1]) ..
+          ", but its areaIdToUiMapId lookup is " .. tostring(map) .. "; expected a positive outdoor UiMap."
+      end
+      if type(x) ~= "number" or type(y) ~= "number" or not (x >= 0 and x <= 100 and y >= 0 and y <= 100) then
+        return false, "Dungeon entrance " .. index .. " in area " .. tostring(entrance[1]) .. " has coordinates {" ..
+          tostring(x) .. ", " .. tostring(y) .. "}; expected numeric outdoor coordinates " ..
+          "between 0 and 100, not an instance marker."
+      end
     end
     return true
   end
