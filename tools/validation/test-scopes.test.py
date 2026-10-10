@@ -32,6 +32,7 @@ class TestScopes(unittest.TestCase):
                                    "forever-delta-base-baked"})
         self.assertFalse(shared & forever)
         self.assertIn("forever-data", shared)
+        self.assertIn("validator-diagnostics", shared)
         self.assertIn("native-toc", shared)
         self.assertEqual(self.selected(), shared.union(forever, *flavors.values()))
         for suites in flavors.values():
@@ -59,7 +60,7 @@ class TestScopes(unittest.TestCase):
         self.assertEqual(self.selected("lua-types"), {"lua-types", "artifact-types"})
 
     def copy_harness(self, root):
-        """Copy startup dependencies, without owned entity data or generated artifacts."""
+        """Copy artifact-scope dependencies, without shared-only validators or entity data."""
         for path in ("generator", "src", "emulator"):
             shutil.copytree(ROOT / path, root / path)
         for path in ("test.lua", "tools/validation/test-files.lua",
@@ -69,6 +70,22 @@ class TestScopes(unittest.TestCase):
             target = root / path
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ROOT / path, target)
+
+    def test_unselected_diagnostic_fixtures_are_not_startup_dependencies(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.copy_harness(root)
+            self.assertFalse((root / "validators").exists())
+            for args in (("--list",), ("--shared", "--list"),
+                         ("--flavor=Forever", "--list"), ("base64",)):
+                with self.subTest(args=args):
+                    result = self.run_test(*args, root=root)
+                    self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+            # Missing selected fixtures must fail, not silently remove diagnostics coverage.
+            selected = self.run_test("validator-diagnostics", root=root)
+            self.assertNotEqual(selected.returncode, 0)
+            self.assertIn("validators/diagnostics.test.lua", selected.stderr)
 
     def test_forever_artifact_scope_runs_without_entity_payloads(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -80,6 +97,7 @@ class TestScopes(unittest.TestCase):
                 capture_output=True, text=True, timeout=15)
             self.assertEqual(fixture.returncode, 0, fixture.stdout + fixture.stderr)
             self.assertFalse((root / "data").exists())
+            self.assertFalse((root / "validators").exists())
             result = self.run_test("--flavor=Forever", root=root)
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             self.assertIn("[PASS] forever-delta-base-baked", result.stdout)

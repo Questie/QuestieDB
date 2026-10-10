@@ -32,8 +32,7 @@ local normalize = dofile("src/meta/normalize.lua")
 local emulator = dofile("emulator/metadata.lua")
 local client = dofile("emulator/client.lua")
 local config = dofile("src/config.lua")
--- Load pure diagnostic fixtures before runtime suites install their private LibStub shims.
-local validatorDiagnosticsTests = dofile("validators/diagnostics.test.lua")
+local validatorDiagnosticsTests -- Initialized after scope selection, before runtime suites.
 
 local LUA_BIN = os.getenv("LUA") or "lua5.1"
 
@@ -4005,6 +4004,12 @@ if selectedFlavor then
     io.stderr:write("Artifact preflight failed: ", tostring(message), "\n")
     os.exit(1)
   end
+end
+
+-- Listing and artifact-only runs must not depend on shared diagnostic fixtures.
+-- Selected fixtures still load before runtime suites install their private LibStub shims.
+if not requested or requested["validator-diagnostics"] then
+  validatorDiagnosticsTests = dofile("validators/diagnostics.test.lua")
 end
 
 local totalFailed, totalChecks = 0, 0
