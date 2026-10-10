@@ -197,6 +197,10 @@ function ForeverBaseObject:Load()
             [objectKeys.spawns] = {[440] = {{72.6, 47.8}}},
             [objectKeys.zoneID] = zoneIDs.TANARIS,
         },
+        [457387] = { -- Dwarven Heirloom : https://wowhead.com/forever/object=457387/dwarven-heirloom
+            [objectKeys.name] = "Dwarven Heirloom",
+            [objectKeys.spawns] = {[28] = {{54.8, 81.2}}},
+        },
         [554626] = { -- Lumber Pile : https://wowhead.com/forever/object=554626/lumber-pile
             [objectKeys.name] = "Lumber Pile",
             [objectKeys.spawns] = {[85] = {{8.5, 67.1}, {8.8, 66}, {9.1, 67.7}, {9.3, 64.4}, {9.3, 64.6}, {9.6, 63.4}, {9.6, 63.5}, {10, 64.7}, {10, 66.4}, {10, 68.1}, {10.4, 67.1}, {10.5, 67}, {10.6, 65.3}, {11.2, 65.7}, {12.4, 66.2}}},
@@ -1227,8 +1231,8 @@ function ForeverBaseObject:Load()
             [objectKeys.name] = "Water Barrel",
             [objectKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
         },
-        [673385] = { -- Grain Sack : https://wowhead.com/forever/object=673385/blackrock-supplies
-            [objectKeys.name] = "Grain Sack",
+        [673385] = { -- Blackrock Supplies : https://wowhead.com/forever/object=673385/blackrock-supplies
+            [objectKeys.name] = "Blackrock Supplies",
             [objectKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
         },
         [673390] = { -- Weapon Rack : https://wowhead.com/forever/object=673390/weapon-rack

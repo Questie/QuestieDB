@@ -5,6 +5,24 @@ local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
 function ForeverBaseItem:Load()
     local itemKeys = QuestieDB.itemKeys
     return {
+        [40] = { -- Recruit's Boots : https://wowhead.com/forever/item=40/recruits-boots
+            [itemKeys.subClass] = 3,
+        },
+        [43] = { -- Squire's Boots : https://wowhead.com/forever/item=43/squires-boots
+            [itemKeys.subClass] = 3,
+        },
+        [47] = { -- Footpad's Shoes : https://wowhead.com/forever/item=47/footpads-shoes
+            [itemKeys.subClass] = 2,
+        },
+        [51] = { -- Neophyte's Boots : https://wowhead.com/forever/item=51/neophytes-boots
+            [itemKeys.subClass] = 1,
+        },
+        [55] = { -- Apprentice's Boots : https://wowhead.com/forever/item=55/apprentices-boots
+            [itemKeys.subClass] = 1,
+        },
+        [59] = { -- Acolyte's Shoes : https://wowhead.com/forever/item=59/acolytes-shoes
+            [itemKeys.subClass] = 1,
+        },
         [117] = { -- Tough Jerky : https://wowhead.com/forever/item=117/tough-jerky
             [itemKeys.vendors_add] = {254089, 255894, 255940, 257057, 259863, 261313, 265347, 271006},
         },
@@ -20777,8 +20795,8 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
         },
-        [254696] = { -- Reverance : https://wowhead.com/forever/item=254696/reverence
-            [itemKeys.name] = "Reverance",
+        [254696] = { -- Reverence : https://wowhead.com/forever/item=254696/reverence
+            [itemKeys.name] = "Reverence",
             [itemKeys.itemLevel] = 75,
             [itemKeys.requiredLevel] = 60,
             [itemKeys.class] = 2,
@@ -32771,8 +32789,8 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 4,
         },
-        [273115] = { -- Blueprint: Baker's Oven : https://wowhead.com/forever/item=273115/blueprint-iron-oven
-            [itemKeys.name] = "Blueprint: Baker's Oven",
+        [273115] = { -- Blueprint: Iron Oven : https://wowhead.com/forever/item=273115/blueprint-iron-oven
+            [itemKeys.name] = "Blueprint: Iron Oven",
             [itemKeys.itemLevel] = 60,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 5,
@@ -45755,8 +45773,8 @@ function ForeverBaseItem:Load()
             [itemKeys.subClass] = 0,
             [itemKeys.relatedQuests] = {98392},
         },
-        [280839] = { -- Stolen Supplies : https://wowhead.com/forever/item=280839/blackrock-supplies
-            [itemKeys.name] = "Stolen Supplies",
+        [280839] = { -- Blackrock Supplies : https://wowhead.com/forever/item=280839/blackrock-supplies
+            [itemKeys.name] = "Blackrock Supplies",
             [itemKeys.objectDrops] = {673376, 673384, 673385},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
@@ -48504,8 +48522,8 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 16,
             [itemKeys.class] = 4,
         },
-        [284192] = { -- Furblog Loincloth : https://wowhead.com/forever/item=284192/furbolg-loincloth
-            [itemKeys.name] = "Furblog Loincloth",
+        [284192] = { -- Furbolg Loincloth : https://wowhead.com/forever/item=284192/furbolg-loincloth
+            [itemKeys.name] = "Furbolg Loincloth",
             [itemKeys.itemLevel] = 18,
             [itemKeys.requiredLevel] = 13,
             [itemKeys.class] = 4,
@@ -50513,8 +50531,8 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 1,
         },
-        [287090] = { -- Sharpened Letter Opener : https://wowhead.com/forever/item=287090/letter-opener
-            [itemKeys.name] = "Sharpened Letter Opener",
+        [287090] = { -- Letter Opener : https://wowhead.com/forever/item=287090/letter-opener
+            [itemKeys.name] = "Letter Opener",
             [itemKeys.itemLevel] = 17,
             [itemKeys.requiredLevel] = 2,
             [itemKeys.class] = 4,

@@ -7,6 +7,9 @@ function ForeverBaseNpc:Load()
     local npcKeys = QuestieDB.npcKeys
     local zoneIDs = ZoneDB.zoneIDs
     return {
+        [43] = { -- Mine Spider : https://wowhead.com/forever/npc=43/mine-spider
+            [npcKeys.minLevel] = 7,
+        },
         [89] = { -- Infernal : https://wowhead.com/forever/npc=89/infernal
             [npcKeys.minLevel] = 51,
         },
@@ -97,6 +100,9 @@ function ForeverBaseNpc:Load()
         [956] = { -- Dorin Songblade : https://wowhead.com/forever/npc=956/dorin-songblade
             [npcKeys.questStarts] = {95772},
             [npcKeys.questEnds] = {95795},
+        },
+        [1039] = { -- Fen Dweller : https://wowhead.com/forever/npc=1039/fen-dweller
+            [npcKeys.maxLevel] = 26,
         },
         [1070] = { -- Deputy Feldon : https://wowhead.com/forever/npc=1070/deputy-feldon
             [npcKeys.questStarts_add] = {98407},
@@ -243,6 +249,10 @@ function ForeverBaseNpc:Load()
         [1776] = { -- Magtoor : https://wowhead.com/forever/npc=1776/magtoor
             [npcKeys.questEnds_add] = {93663},
         },
+        [1871] = { -- Eliza's Guard : https://wowhead.com/forever/npc=1871/elizas-guard
+            [npcKeys.maxLevel] = 31,
+            [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+        },
         [1937] = { -- Apothecary Renferrel : https://wowhead.com/forever/npc=1937/apothecary-renferrel
             [npcKeys.questStarts_add] = {91921},
             [npcKeys.questEnds_add] = {91920},
@@ -312,6 +322,12 @@ function ForeverBaseNpc:Load()
         [2329] = { -- Michelle Belle : https://wowhead.com/forever/npc=2329/michelle-belle
             [npcKeys.questEnds] = {97919},
         },
+        [2358] = { -- Dalaran Summoner : https://wowhead.com/forever/npc=2358/dalaran-summoner
+            [npcKeys.minLevel] = 32,
+        },
+        [2359] = { -- Elemental Slave : https://wowhead.com/forever/npc=2359/elemental-slave
+            [npcKeys.minLevel] = 32,
+        },
         [2366] = { -- Barkeep Kelly : https://wowhead.com/forever/npc=2366/barkeep-kelly
             [npcKeys.questStarts] = {98463},
         },
@@ -322,9 +338,22 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts_add] = {92434, 93680, 97287},
             [npcKeys.questEnds_add] = {93680, 96984},
         },
+        [2413] = { -- Dermot : https://wowhead.com/forever/npc=2413/dermot
+            [npcKeys.minLevel] = 33,
+        },
+        [2414] = { -- Kegan Darkmar : https://wowhead.com/forever/npc=2414/kegan-darkmar
+            [npcKeys.minLevel] = 33,
+        },
+        [2415] = { -- Warden Belamoore : https://wowhead.com/forever/npc=2415/warden-belamoore
+            [npcKeys.minLevel] = 33,
+        },
         [2504] = { -- Donyal Tovald : https://wowhead.com/forever/npc=2504/donyal-tovald
             [npcKeys.questStarts_add] = {97237},
             [npcKeys.questEnds_add] = {97234},
+        },
+        [2531] = { -- Minion of Morganth : https://wowhead.com/forever/npc=2531/minion-of-morganth
+            [npcKeys.minLevel] = 27,
+            [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
         },
         [2540] = { -- Dalaran Serpent : https://wowhead.com/forever/npc=2540/dalaran-serpent
             [npcKeys.maxLevel] = 17,
@@ -361,6 +390,13 @@ function ForeverBaseNpc:Load()
         },
         [2930] = { -- Sentinel Glynda Nal'Shea : https://wowhead.com/forever/npc=2930/sentinel-glynda-nalshea
             [npcKeys.questEnds_add] = {98025},
+        },
+        [2931] = { -- Zaricotl : https://wowhead.com/forever/npc=2931/zaricotl
+            [npcKeys.maxLevel] = 56,
+        },
+        [2946] = { -- Puppet of Helcular : https://wowhead.com/forever/npc=2946/puppet-of-helcular
+            [npcKeys.maxLevel] = 44,
+            [npcKeys.zoneID] = zoneIDs.HILLSBRAD_FOOTHILLS,
         },
         [2948] = { -- Mull Thunderhorn : https://wowhead.com/forever/npc=2948/mull-thunderhorn
             [npcKeys.questStarts_add] = {98435},
@@ -545,6 +581,10 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {95494, 95495, 95507},
             [npcKeys.questEnds] = {95494, 95507},
         },
+        [3950] = { -- Minor Water Guardian : https://wowhead.com/forever/npc=3950/minor-water-guardian
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
+        },
         [3955] = { -- Shandrina : https://wowhead.com/forever/npc=3955/shandrina
             [npcKeys.questStarts] = {86757},
             [npcKeys.questEnds] = {86757},
@@ -588,6 +628,10 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts_add] = {79360, 79364, 79366, 79442},
             [npcKeys.questEnds_add] = {79358, 79366},
         },
+        [4795] = { -- Force of Nature : https://wowhead.com/forever/npc=4795/force-of-nature
+            [npcKeys.maxLevel] = 27,
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+        },
         [4877] = { -- Jandia : https://wowhead.com/forever/npc=4877/jandia
             [npcKeys.questStarts] = {98069, 98070},
             [npcKeys.questEnds] = {98069, 98070},
@@ -598,6 +642,9 @@ function ForeverBaseNpc:Load()
         },
         [5137] = { -- Reyna Stonebranch : https://wowhead.com/forever/npc=5137/reyna-stonebranch
             [npcKeys.questEnds] = {96055},
+        },
+        [5288] = { -- Rabid Longtooth : https://wowhead.com/forever/npc=5288/rabid-forest-wolf
+            [npcKeys.minLevel] = 8,
         },
         [5387] = { -- High Explorer Magellas : https://wowhead.com/forever/npc=5387/high-explorer-magellas
             [npcKeys.questEnds_add] = {98824},
@@ -624,6 +671,7 @@ function ForeverBaseNpc:Load()
         [5492] = { -- Katherine the Pure : https://wowhead.com/forever/npc=5492/katherine-the-pure
             [npcKeys.questStarts] = {78090},
             [npcKeys.questEnds] = {78089},
+            [npcKeys.subName] = "Church of the Holy Light",
         },
         [5495] = { -- Ursula Deline : https://wowhead.com/forever/npc=5495/ursula-deline
             [npcKeys.questStarts] = {78091, 78092},
@@ -643,6 +691,9 @@ function ForeverBaseNpc:Load()
         [5591] = { -- Dar : https://wowhead.com/forever/npc=5591/dar
             [npcKeys.questStarts_add] = {93663},
         },
+        [5601] = { -- Khan Jehn : https://wowhead.com/forever/npc=5601/khan-jehn
+            [npcKeys.maxLevel] = 42,
+        },
         [5683] = { -- Corma Villard : https://wowhead.com/forever/npc=5683/corma-villard
             [npcKeys.questStarts] = {87318},
             [npcKeys.questEnds] = {88758},
@@ -660,8 +711,14 @@ function ForeverBaseNpc:Load()
         [5759] = { -- Nurse Neela : https://wowhead.com/forever/npc=5759/nurse-neela
             [npcKeys.questEnds] = {97955},
         },
+        [5766] = { -- Savannah Cub : https://wowhead.com/forever/npc=5766/savannah-cub
+            [npcKeys.maxLevel] = 13,
+        },
         [5769] = { -- Arch Druid Hamuul Runetotem : https://wowhead.com/forever/npc=5769/arch-druid-hamuul-runetotem
             [npcKeys.questEnds_add] = {98435},
+        },
+        [5806] = { -- Treant Ally : https://wowhead.com/forever/npc=5806/treant-ally
+            [npcKeys.maxLevel] = 25,
         },
         [5811] = { -- Kamari : https://wowhead.com/forever/npc=5811/kamari
             [npcKeys.questStarts] = {96875},
@@ -762,6 +819,9 @@ function ForeverBaseNpc:Load()
         },
         [7316] = { -- Sister Aquinne : https://wowhead.com/forever/npc=7316/sister-aquinne
             [npcKeys.questEnds] = {98391},
+        },
+        [7360] = { -- Dun Garok Soldier : https://wowhead.com/forever/npc=7360/dun-garok-soldier
+            [npcKeys.maxLevel] = 30,
         },
         [7683] = { -- Alessandro Luca : https://wowhead.com/forever/npc=7683/alessandro-luca
             [npcKeys.questStarts_add] = {97891},
@@ -9878,8 +9938,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Nightclaw Druid",
         },
-        [258137] = { -- Telenos <br />Leafwhisper : https://wowhead.com/forever/npc=258137/telenos-leafwhisper
-            [npcKeys.name] = "Telenos <br />Leafwhisper",
+        [258137] = { -- Telenos Leafwhisper : https://wowhead.com/forever/npc=258137/telenos-leafwhisper
+            [npcKeys.name] = "Telenos Leafwhisper",
             [npcKeys.minLevel] = 10,
             [npcKeys.maxLevel] = 10,
             [npcKeys.spawns] = {[16593] = {{64.6, 35}}},
@@ -9911,8 +9971,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {94495, 94497, 94499, 94500},
             [npcKeys.friendlyToFaction] = "A",
         },
-        [258239] = { -- Maelgwyn <br />Shadowtale : https://wowhead.com/forever/npc=258239/maelgwyn-shadowtale
-            [npcKeys.name] = "Maelgwyn <br />Shadowtale",
+        [258239] = { -- Maelgwyn Shadowtale : https://wowhead.com/forever/npc=258239/maelgwyn-shadowtale
+            [npcKeys.name] = "Maelgwyn Shadowtale",
             [npcKeys.minLevel] = 10,
             [npcKeys.maxLevel] = 10,
             [npcKeys.spawns] = {[16593] = {{63.6, 36}}},
@@ -17697,7 +17757,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Teuren Vineshade",
             [npcKeys.minLevel] = 35,
             [npcKeys.maxLevel] = 35,
-            [npcKeys.spawns] = {[1657] = {{58.4, 49}, {58.4, 49.6}, {58.6, 50.6}, {58.8, 50.4}}},
+            [npcKeys.spawns] = {[1657] = {{58.6, 50.4}}},
             [npcKeys.zoneID] = zoneIDs.DARNASSUS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Barber",
