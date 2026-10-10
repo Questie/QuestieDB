@@ -32,6 +32,9 @@ function ForeverNpcFixes:Load()
         [5891] = { -- Minor Manifestation of Earth
             [npcKeys.spawns_add] = {[zoneIDs.DUN_MOROGH] = {{24.84,61.86}}},
         },
+        [5893] = { -- Minor Manifestation of Earth
+            [npcKeys.spawns_add] = {[zoneIDs.LOCH_MODAN] = {{31.96,64.42}}},
+        },
         [10993] = { -- Twizwick Sprocketgrind
             [npcKeys.questEnds_add] = {97930},
             [npcKeys.questStarts_add] = {97930},
@@ -41,6 +44,10 @@ function ForeverNpcFixes:Load()
         },
         [14242] = { -- Sulhasa
             [npcKeys.name] = "Sulhasa",
+        },
+        [261319] = { -- Durgen Dirgehammer
+            [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
         },
         [247226] = { -- Kelsey Fargo
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{47.18,32.16}}},

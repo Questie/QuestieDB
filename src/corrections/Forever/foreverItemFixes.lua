@@ -37,6 +37,12 @@ function ForeverItemFixes:Load()
         [257945] = { -- Pilfered Windstone
             [itemKeys.npcDrops] = {251918,255534},
         },
+        [274286] = { -- Durgen Dirgehammer's Head
+            [itemKeys.npcDrops] = {261319},
+        },
+        [274289] = { -- Dwarven Heirloom
+            [itemKeys.objectDrops_remove] = {457387},
+        },
         [281030] = { -- Treaty of Understanding
             [itemKeys.objectDrops] = {673474},
         },
