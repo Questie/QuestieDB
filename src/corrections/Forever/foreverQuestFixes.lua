@@ -205,8 +205,7 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {92471},
         },
         [92474] = { -- Falling With Style
-            [questKeys.objectives] = {},
-            [questKeys.triggerEnd] = {"Use Walk on Air", {[zoneIDs.ZEPHRAS_ISLE] = {{43.67,24.14}}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,nil,{{1259416}}},
         },
         [92479] = { -- A Scribbled Letter
             [questKeys.requiredClasses] = classIDs.HUNTER,
@@ -1396,6 +1395,13 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSpell] = -1263425, -- Faction Banner
             [questKeys.objectives] = {{{251991,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96057,96102,97925,97937,97950,97961,97972},
+        },
+        [97977] = { -- Nature's Call
+            [questKeys.preQuestSingle] = {458},
+        },
+        [97979] = { -- The Goddess Provides
+            [questKeys.preQuestSingle] = {456},
+            [questKeys.objectives] = {nil,nil,nil,nil,nil,{{1259799},{20580}}},
         },
         [98021] = { -- Journey to Sentinel Hill
             [questKeys.preQuestSingle] = {94947},
