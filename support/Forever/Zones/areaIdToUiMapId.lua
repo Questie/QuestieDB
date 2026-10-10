@@ -15,6 +15,10 @@ ZoneDB.private.areaIdToUiMapIdOverride = [[return {
     [10073] = 1414, -- Synthetic AreaID: Kalimdor continent map
     [10074] = 1415, -- Synthetic AreaID: Eastern Kingdoms continent map
     [10089] = 947, -- Synthetic AreaID: Azeroth world map
+    [16544] = 0, -- City of Dalaran: retain existing display suppression
+    [16611] = 0, -- Ruins of Lordaeron: retain existing display suppression
+    [16732] = 0, -- Excavation Site: Wetlands: retain existing display suppression
+    [16919] = 0, -- The Hall of Thanes: retain existing display suppression
 
     -- Legacy consumer pre-entrance lookup only, NOT native Forever floor maps.
     -- These 27 dungeon areas and 13 synthetic aliases occur in entity location fields.
