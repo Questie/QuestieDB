@@ -115,12 +115,12 @@ ZoneDB.instanceIdToAreaId = {
     [2875] = ZoneDB.zoneIDs.KARAZHAN_CRYPTS,
     -- Reviewed explicit Map.AreaTableID links, Forever DBC 1.60.1.69893.
     -- These identify areas, not entrances or an active-instance allowlist.
+    [30] = 2597, -- Alterac Valley
     [369] = 2257, -- Deeprun Tram
     [449] = 2918, -- Alliance PVP Barracks
     [450] = 2917, -- Horde PVP Barracks
     [489] = 3277, -- Warsong Gulch
     [529] = 3358, -- Arathi Basin
-    [2959] = 16544, -- City of Dalaran; navigation data remains deferred
 
     -- Reviewed unique AreaTable roots on instance maps, Forever DBC 1.60.1.70291.
     -- These identities need no UiMap or entrance; test/unused maps 13 and 35 remain deferred.
@@ -130,6 +130,7 @@ ZoneDB.instanceIdToAreaId = {
     [2817] = 15938, -- Starfall Barrow Den (area: Starfall Village)
     [2902] = 16295, -- The Scarab Dais
     [2921] = 16394, -- Naxxramas
+    [2959] = 16544, -- City of Dalaran
     [2997] = 16606, -- Darkspear Islands
     [2998] = 16732, -- Excavation Site: Wetlands
     [2999] = 16611, -- Ruins of Lordaeron
