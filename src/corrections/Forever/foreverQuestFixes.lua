@@ -587,11 +587,20 @@ function ForeverQuestFixes:Load()
         },
         [94467] = { -- Call of Fire
             [questKeys.preQuestSingle] = {94466},
+            [questKeys.nextQuestInChain] = 94468,
+        },
+        [94468] = { -- Call of Fire
+            [questKeys.preQuestSingle] = {94467},
         },
         [94472] = { -- Earth Sapta
             [questKeys.preQuestSingle] = {94373},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
             [questKeys.availableUntilCompleted] = 94374,
+        },
+        [94473] = { -- Fire Sapta
+            [questKeys.preQuestSingle] = {94466},
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.availableUntilCompleted] = 94467,
         },
         [94484] = { -- Unnerving Silence
             [questKeys.exclusiveTo] = {94493},

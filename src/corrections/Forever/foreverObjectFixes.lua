@@ -12,6 +12,9 @@ function ForeverObjectFixes:Load()
     local zoneIDs = ZoneDB.zoneIDs
 
     return {
+        [61934] = { -- Brazier of the Dormant Flame
+            [objectKeys.spawns_add] = {[zoneIDs.LOCH_MODAN] = {{31.79,64.52}}},
+        },
         [562131] = { -- Applejack Still
             [objectKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{24.55,58.04}}},
             [objectKeys.questStarts] = {91736},
@@ -94,6 +97,16 @@ function ForeverObjectFixes:Load()
             [objectKeys.name] = "Skyborne Portal to Stormwind",
             [objectKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{12.04,56.21}}},
             [objectKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+        },
+        [652227] = { -- Dwarven Heirloom
+            [objectKeys.name] = "Dwarven Heirloom",
+            [objectKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
+            [objectKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
+        },
+        [652228] = { -- Dwarven Heirloom
+            [objectKeys.name] = "Dwarven Heirloom",
+            [objectKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
+            [objectKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
         },
         [660739] = { -- Ritual Fire
             [objectKeys.questEnds_add] = {95805},
