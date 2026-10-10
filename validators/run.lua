@@ -299,10 +299,10 @@ local CHECKS = {
   { name = "questStarters", run = function(db) return Validators.checkQuestStarters(db.quest, db.questKeys, db.npc, db.npcKeys, db.object, db.item) end },
   { name = "questFinishers", run = function(db) return Validators.checkQuestFinishers(db.quest, db.questKeys, db.npc, db.object) end },
   { name = "objectives", run = function(db) return Validators.checkObjectives(db.quest, db.questKeys, db.npc, db.object, db.item) end },
-  { name = "npcSpawnAreaIds", run = function(db) return Validators.checkNpcSpawnAreaIds(db.npc, db.npcKeys, db.getUiMapIdByAreaId) end },
-  { name = "objectSpawnAreaIds", run = function(db) return Validators.checkObjectSpawnAreaIds(db.object, db.objectKeys, db.getUiMapIdByAreaId) end },
-  { name = "questExtraObjectiveSpawnAreaIds", run = function(db) return Validators.checkQuestExtraObjectiveSpawnAreaIds(db.quest, db.questKeys, db.getUiMapIdByAreaId) end },
-  { name = "questTriggerEndSpawnAreaIds", run = function(db) return Validators.checkQuestTriggerEndSpawnAreaIds(db.quest, db.questKeys, db.getUiMapIdByAreaId) end },
+  { name = "npcSpawnAreaIds", run = function(db) return Validators.checkNpcSpawnAreaIds(db.npc, db.npcKeys, db.canResolveSpawnArea) end },
+  { name = "objectSpawnAreaIds", run = function(db) return Validators.checkObjectSpawnAreaIds(db.object, db.objectKeys, db.canResolveSpawnArea) end },
+  { name = "questExtraObjectiveSpawnAreaIds", run = function(db) return Validators.checkQuestExtraObjectiveSpawnAreaIds(db.quest, db.questKeys, db.canResolveSpawnArea) end },
+  { name = "questTriggerEndSpawnAreaIds", run = function(db) return Validators.checkQuestTriggerEndSpawnAreaIds(db.quest, db.questKeys, db.canResolveSpawnArea) end },
 }
 
 --------------------------------------------------------------------------------------------
@@ -323,7 +323,7 @@ local function validateFlavor(flavor)
 
   -- Checks needing zone lookups resolve them from support data owned here, not from a
   -- consumer's ZoneDB module.
-  local lookup = zones.BuildAreaLookup(flavor)
+  local _, canResolveSpawnArea = zones.BuildAreaLookup(flavor)
 
   local db = {
     quest = loaded.Quest.entities, questKeys = loaded.Quest.meta.keys,
@@ -331,7 +331,7 @@ local function validateFlavor(flavor)
     item = loaded.Item.entities, itemKeys = loaded.Item.meta.keys,
     object = loaded.Object.entities, objectKeys = loaded.Object.meta.keys,
     raceKeys = expansionConstants.raceKeys,
-    getUiMapIdByAreaId = lookup,
+    canResolveSpawnArea = canResolveSpawnArea,
   }
 
   Validators.SetOutputDir(opts.out .. "/" .. flavor.name)

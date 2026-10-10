@@ -2,7 +2,8 @@
 --
 -- Cross-entity invariant checks, moved wholesale from Questie's `cli/validators.lua`.
 --
--- The body below is Questie's, unchanged. Only the preamble differs: the original opened with
+-- The checks retain Questie's structure; spawn-area validation also accepts dungeon entrances.
+-- The original opened with
 -- `require("lfs")` to create its output directory, and `lfs` is a **C module**. Keeping the
 -- generator and its tests dependency-free preserves the option of shipping a bare `lua` binary
 -- for contributors, so the directory is created with `os.execute` instead and the output
@@ -884,9 +885,9 @@ end
 
 ---@param npcs table<NpcId, Npc>
 ---@param npcKeys DatabaseNpcKeys
----@param getUiMapIdByAreaId fun(areaId: AreaId): number|nil
+---@param canResolveSpawnArea fun(areaId: AreaId, points: table): boolean
 ---@return table<NpcId, AreaId[]>|nil
-function Validators.checkNpcSpawnAreaIds(npcs, npcKeys, getUiMapIdByAreaId)
+function Validators.checkNpcSpawnAreaIds(npcs, npcKeys, canResolveSpawnArea)
     print("\n\27[36mSearching for NPC spawns with areaIds not handled by GetUiMapIdByAreaId...\27[0m")
     local invalidNpcs = {}
 
@@ -894,8 +895,8 @@ function Validators.checkNpcSpawnAreaIds(npcs, npcKeys, getUiMapIdByAreaId)
         local spawns = npcData[npcKeys.spawns]
         if spawns then
             local unknownAreaIds = {}
-            for areaId in pairs(spawns) do
-                if (not getUiMapIdByAreaId(areaId)) then
+            for areaId, points in pairs(spawns) do
+                if (not canResolveSpawnArea(areaId, points)) then
                     table.insert(unknownAreaIds, areaId)
                 end
             end
@@ -926,9 +927,9 @@ end
 
 ---@param objects table<ObjectId, Object>
 ---@param objectKeys DatabaseObjectKeys
----@param getUiMapIdByAreaId fun(areaId: AreaId): number|nil
+---@param canResolveSpawnArea fun(areaId: AreaId, points: table): boolean
 ---@return table<ObjectId, AreaId[]>|nil
-function Validators.checkObjectSpawnAreaIds(objects, objectKeys, getUiMapIdByAreaId)
+function Validators.checkObjectSpawnAreaIds(objects, objectKeys, canResolveSpawnArea)
     print("\n\27[36mSearching for object spawns with areaIds not handled by GetUiMapIdByAreaId...\27[0m")
     local invalidObjects = {}
 
@@ -936,8 +937,8 @@ function Validators.checkObjectSpawnAreaIds(objects, objectKeys, getUiMapIdByAre
         local spawns = objectData[objectKeys.spawns]
         if spawns then
             local unknownAreaIds = {}
-            for areaId in pairs(spawns) do
-                if (not getUiMapIdByAreaId(areaId)) then
+            for areaId, points in pairs(spawns) do
+                if (not canResolveSpawnArea(areaId, points)) then
                     table.insert(unknownAreaIds, areaId)
                 end
             end
@@ -968,9 +969,9 @@ end
 
 ---@param quests table<QuestId, Quest>
 ---@param questKeys DatabaseQuestKeys
----@param getUiMapIdByAreaId fun(areaId: AreaId): number|nil
+---@param canResolveSpawnArea fun(areaId: AreaId, points: table): boolean
 ---@return table<QuestId, AreaId[]>|nil
-function Validators.checkQuestExtraObjectiveSpawnAreaIds(quests, questKeys, getUiMapIdByAreaId)
+function Validators.checkQuestExtraObjectiveSpawnAreaIds(quests, questKeys, canResolveSpawnArea)
     print("\n\27[36mSearching for quest extraObjective spawnlists with areaIds not handled by GetUiMapIdByAreaId...\27[0m")
     local invalidQuests = {}
 
@@ -981,8 +982,8 @@ function Validators.checkQuestExtraObjectiveSpawnAreaIds(quests, questKeys, getU
             for _, extraObjective in ipairs(extraObjectives) do
                 local spawnlist = extraObjective[1]
                 if spawnlist then
-                    for areaId in pairs(spawnlist) do
-                        if (not getUiMapIdByAreaId(areaId)) then
+                    for areaId, points in pairs(spawnlist) do
+                        if (not canResolveSpawnArea(areaId, points)) then
                             table.insert(unknownAreaIds, areaId)
                         end
                     end
@@ -1014,9 +1015,9 @@ end
 
 ---@param quests table<QuestId, Quest>
 ---@param questKeys DatabaseQuestKeys
----@param getUiMapIdByAreaId fun(areaId: AreaId): number|nil
+---@param canResolveSpawnArea fun(areaId: AreaId, points: table): boolean
 ---@return table<QuestId, AreaId[]>|nil
-function Validators.checkQuestTriggerEndSpawnAreaIds(quests, questKeys, getUiMapIdByAreaId)
+function Validators.checkQuestTriggerEndSpawnAreaIds(quests, questKeys, canResolveSpawnArea)
     print("\n\27[36mSearching for quest triggerEnd spawnlists with areaIds not handled by GetUiMapIdByAreaId...\27[0m")
     local invalidQuests = {}
 
@@ -1026,8 +1027,8 @@ function Validators.checkQuestTriggerEndSpawnAreaIds(quests, questKeys, getUiMap
             local spawnlist = triggerEnd[2]
             if spawnlist then
                 local unknownAreaIds = {}
-                for areaId in pairs(spawnlist) do
-                    if (not getUiMapIdByAreaId(areaId)) then
+                for areaId, points in pairs(spawnlist) do
+                    if (not canResolveSpawnArea(areaId, points)) then
                         table.insert(unknownAreaIds, areaId)
                     end
                 end
