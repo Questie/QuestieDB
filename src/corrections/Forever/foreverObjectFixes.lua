@@ -111,6 +111,15 @@ function ForeverObjectFixes:Load()
         [654846] = { -- Lost Journal
             [objectKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{59.07,39.55}}},
         },
+        [656180] = { -- Raider's Bow
+            [objectKeys.spawns] = {[zoneIDs.DUROTAR] = {{59.39,56.41}}},
+        },
+        [656181] = { -- Raider's Battleaxe
+            [objectKeys.spawns] = {[zoneIDs.DUROTAR] = {{57.37,56.43}}},
+        },
+        [656182] = { -- Raider's Shield
+            [objectKeys.spawns] = {[zoneIDs.DUROTAR] = {{56.54,53}}},
+        },
         [660739] = { -- Ritual Fire
             [objectKeys.questEnds_add] = {95805},
         },
@@ -134,6 +143,15 @@ function ForeverObjectFixes:Load()
             [objectKeys.name] = "Treaty of Understanding",
             [objectKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
             [objectKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
+        },
+        [693669] = { -- Weapon Piece
+            [objectKeys.spawns] = {[zoneIDs.DUROTAR] = {{60.11,44.8}}},
+        },
+        [693670] = { -- Strange Debris
+            [objectKeys.spawns] = {[zoneIDs.DUROTAR] = {{60.08,42.45}}},
+        },
+        [693674] = { -- Abandoned Dagger
+            [objectKeys.spawns] = {[zoneIDs.DUROTAR] = {{58.85,44.35}}},
         },
         [695222] = { -- Coalbeard's Rifle
             [objectKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{52.1,44.04}}},

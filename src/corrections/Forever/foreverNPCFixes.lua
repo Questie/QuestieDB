@@ -201,6 +201,14 @@ function ForeverNpcFixes:Load()
         [259013] = { -- Resaan Nimbuswalker
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{57.05,29.35}}},
         },
+        [263389] = { -- Enraged Apparition
+            [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
+        },
+        [263390] = { -- Tormented Soul
+            [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
+        },
         [263399] = { -- Sam Sarsaparilla
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{44.9,63.36}}},
         },
@@ -209,6 +217,12 @@ function ForeverNpcFixes:Load()
         },
         [265811] = { -- Lyreena Duskblade
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{57.58,56.64}}},
+        },
+        [266940] = { -- Turroc
+            [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{53.95,42.59}}},
+        },
+        [268530] = { -- Bloodtalon Matriarch
+            [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{68.81,71.78}}},
         },
         [268602] = { -- Skypriest Faladiel
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.43,63.71}}},
@@ -270,6 +284,12 @@ function ForeverNpcFixes:Load()
         },
         [272046] = { -- Witchmother Arysa
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{34.22,27.94}}},
+        },
+        [275657] = { -- Heglan Shadeeye
+            [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{58.6,45.6}}},
+        },
+        [275666] = { -- Aggor the Young
+            [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{59.22,17.6}}},
         },
         [275683] = { -- Sentinel Eralya Leafshadow
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{37.54,36.81}}},

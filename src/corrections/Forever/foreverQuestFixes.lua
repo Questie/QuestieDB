@@ -81,6 +81,9 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {1516,1519,92466},
             [questKeys.exclusiveTo] = {1516,92466},
         },
+        [1883] = { -- Speak with Un'thuwa
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
         [2519] = { -- The Temple of the Moon
             [questKeys.breadcrumbs] = {98391},
         },
@@ -1567,10 +1570,24 @@ function ForeverQuestFixes:Load()
             [questKeys.breadcrumbs] = {99046},
             [questKeys.nextQuestInChain] = 99050,
         },
+        [99048] = { -- A Missing Hand
+            [questKeys.nextQuestInChain] = 99049,
+        },
+        [99049] = { -- Threat from Below
+            [questKeys.preQuestSingle] = {99048},
+            [questKeys.nextQuestInChain] = 99051,
+        },
         [99050] = { -- The Great Tree Provides
             [questKeys.preQuestSingle] = {99047},
             [questKeys.objectives] = {nil,nil,{{286017},{3371},{159}}},
             [questKeys.nextQuestInChain] = 99073,
+        },
+        [99051] = { -- Threat from Below
+            [questKeys.preQuestSingle] = {99049},
+            [questKeys.nextQuestInChain] = 99052,
+        },
+        [99052] = { -- Threat from Below
+            [questKeys.preQuestSingle] = {99051},
         },
         [99053] = { -- Escaping Ban'ethil
             [questKeys.triggerEnd] = {"Escort Lynessa Duskblossom out of Ban'ethil", {[zoneIDs.TELDRASSIL] = {{43.08,51.65}}}},
