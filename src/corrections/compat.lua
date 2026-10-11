@@ -80,7 +80,8 @@ local DATA_FIELD_TO_TYPE = {
 ---@param flavor table Validated supported flavor.
 ---@return table value
 local function pick(name, flavor)
-  local shared = constants[name]
+  -- `Enum.classKeys` is the active flavor's table published by api.lua, not a shared constant.
+  local shared = (name ~= "classKeys") and constants[name] or nil
   if shared ~= nil then return shared end
 
   local byExpansion = constants.byExpansion

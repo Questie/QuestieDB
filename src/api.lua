@@ -63,6 +63,11 @@ LibQuestieDB.Enum.factionRaceMasks = {
   Horde = raceKeys.ALL_HORDE,
 }
 
+-- Same selection as correction compat: the flavor's own table, else its rules flavor's table.
+local flavor = LibQuestieDB.flavor
+local byExpansion = LibQuestieDB.Enum.byExpansion
+LibQuestieDB.Enum.classKeys = (byExpansion[flavor.expansion].classKeys or byExpansion[flavor.rules].classKeys)
+
 --------------------------------------------------------------------------------------------
 -- Contract
 --------------------------------------------------------------------------------------------

@@ -317,6 +317,14 @@ faction IDs, maintained in `src/corrections/enum/factions.lua`. It is shared acr
 and read-only by contract. Contract 3 guarantees this table; call `RequireContract(3)` before
 using it.
 
+### Active class keys
+
+`LibQuestieDB.Enum.classKeys` exposes the class bitmasks (`WARRIOR`, `MAGE`, ..., `ALL_CLASSES`)
+for the provider's active flavor, available at addon load and read-only by contract.
+Flavors without their own table (Forever) use their rules flavor's table, Classic.
+Contract 4 guarantees this table; call `RequireContract(4)` before using it.
+`Enum.byExpansion` remains internal.
+
 ### Objective ordering hints
 
 Some Quest Corrections carry consumer hints about which objective type should be rendered first.
@@ -838,6 +846,10 @@ Contract 3 adds the shared `Enum.raceMaskById` encoding table and active-flavor
 change storage or remove older interfaces: contracts 1 and 2 remain supported. A consumer
 requiring any of these tables must request contract 3 so an older provider fails the version
 check before the lookup.
+
+Contract 4 adds the active-flavor `Enum.classKeys` and `Enum.npcFlags` tables. Contracts 1 to
+3 remain supported. A consumer requiring either table must request contract 4 so an older
+provider fails the version check before the lookup.
 
 The check is a **range**: `RequireContract(v)` passes for any
 `minSupportedContract <= v <= contractVersion`, so a consumer built against an older
