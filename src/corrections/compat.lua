@@ -74,14 +74,16 @@ local DATA_FIELD_TO_TYPE = {
   questData = "Quest", npcData = "Npc", itemData = "Item", objectData = "Object",
 }
 
+local ACTIVE_FLAVOR_CONSTANTS = { classKeys = true, npcFlags = true }
+
 ---Selects shared constants, then flavor tables, then the flavor's explicit rules fallback.
 ---Fallback replaces whole tables, never missing keys within a flavor-owned table.
 ---@param name string Constant table name.
 ---@param flavor table Validated supported flavor.
 ---@return table value
 local function pick(name, flavor)
-  -- `Enum.classKeys` is the active flavor's table published by api.lua, not a shared constant.
-  local shared = (name ~= "classKeys") and constants[name] or nil
+  -- These `Enum` entries are the active flavor's tables published by api.lua, not shared constants.
+  local shared = (not ACTIVE_FLAVOR_CONSTANTS[name]) and constants[name] or nil
   if shared ~= nil then return shared end
 
   local byExpansion = constants.byExpansion

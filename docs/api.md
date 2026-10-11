@@ -317,12 +317,15 @@ faction IDs, maintained in `src/corrections/enum/factions.lua`. It is shared acr
 and read-only by contract. Contract 3 guarantees this table; call `RequireContract(3)` before
 using it.
 
-### Active class keys
+### Active class keys and NPC flags
 
 `LibQuestieDB.Enum.classKeys` exposes the class bitmasks (`WARRIOR`, `MAGE`, ..., `ALL_CLASSES`)
-for the provider's active flavor, available at addon load and read-only by contract.
-Flavors without their own table (Forever) use their rules flavor's table, Classic.
-Contract 4 guarantees this table; call `RequireContract(4)` before using it.
+and `LibQuestieDB.Enum.npcFlags` the NPC flag bitmasks (`VENDOR`, `TRAINER`, ...) for the
+provider's active flavor, available at addon load and read-only by contract. NPC flag values
+differ between Classic and later flavors, and a flavor lacks the flags it does not have
+(`BARBER` before Wrath, `ARCANE_REFORGER` and `TRANSMOGRIFIER` before Cata); those keys are
+absent rather than zero. Flavors without their own tables (Forever) use their rules flavor's
+tables, Classic. Contract 4 guarantees both tables; call `RequireContract(4)` before using them.
 `Enum.byExpansion` remains internal.
 
 ### Objective ordering hints
