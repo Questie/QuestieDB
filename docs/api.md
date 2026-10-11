@@ -310,6 +310,13 @@ Contract 3 guarantees this table. Call `RequireContract(3)` before using it. Mas
 exceed 32 bits, so do not pass them through 32-bit bit operations. `Enum.byExpansion`
 remains internal.
 
+### Faction IDs
+
+`LibQuestieDB.Enum.factionIDs` maps faction names (`THE_ALDOR`, `DARKMOON_FAIRE`, ...) to
+faction IDs, maintained in `src/corrections/enum/factions.lua`. It is shared across flavors
+and read-only by contract. Contract 3 guarantees this table; call `RequireContract(3)` before
+using it.
+
 ### Objective ordering hints
 
 Some Quest Corrections carry consumer hints about which objective type should be rendered first.
@@ -827,9 +834,10 @@ localization columns. These storage changes ship together and do not change the 
 API, so `minSupportedContract` remains 1.
 
 Contract 3 adds the shared `Enum.raceMaskById` encoding table and active-flavor
-`Enum.factionRaceMasks`. It does not change storage or remove older interfaces: contracts
-1 and 2 remain supported. A consumer requiring either table
-must request contract 3 so an older provider fails the version check before the lookup.
+`Enum.factionRaceMasks`, and guarantees the shared `Enum.factionIDs` table. It does not
+change storage or remove older interfaces: contracts 1 and 2 remain supported. A consumer
+requiring any of these tables must request contract 3 so an older provider fails the version
+check before the lookup.
 
 The check is a **range**: `RequireContract(v)` passes for any
 `minSupportedContract <= v <= contractVersion`, so a consumer built against an older
