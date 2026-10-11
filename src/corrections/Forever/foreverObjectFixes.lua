@@ -122,6 +122,11 @@ function ForeverObjectFixes:Load()
         [664122] = { -- Gozwin's Mechanic's Log
             [objectKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{27.27,62.86}}},
         },
+        [665373] = { -- Incense Burner
+            [objectKeys.name] = "Incense Burner",
+            [objectKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{53.02,87.84}}},
+            [objectKeys.zoneID] = zoneIDs.THUNDER_BLUFF,
+        },
         [673378] = { -- Oracle Tree Bark
             [objectKeys.questStarts_add] = {940},
         },

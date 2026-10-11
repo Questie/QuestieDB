@@ -15,6 +15,7 @@ local l10n = QuestieLoader:ImportModule("l10n")
 QuestieCorrections.itemObjectiveFirst[92682] = true
 QuestieCorrections.killCreditObjectiveFirst[94489] = true
 QuestieCorrections.itemObjectiveFirst[97277] = true
+QuestieCorrections.itemObjectiveFirst[97485] = true
 
 -- Static Corrections: shared by all characters and folded in during Generation.
 function ForeverQuestFixes:Load()
@@ -962,6 +963,10 @@ function ForeverQuestFixes:Load()
         [97277] = { -- Grund and Gozwin
             [questKeys.objectives] = {{{269075}},nil,{{277976}}},
             [questKeys.zoneOrSort] = 77,
+        },
+        [97485] = { -- Traditions of the Bluff
+            [questKeys.objectives] = {nil,{{665373}},{{278078}}},
+            [questKeys.requiredSourceItems] = {278079,278080,278081,278083},
         },
         [97894] = { -- Business in Auberdine
             [questKeys.breadcrumbForQuestId] = 982,
