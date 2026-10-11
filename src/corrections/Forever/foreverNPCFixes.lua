@@ -149,6 +149,12 @@ function ForeverNpcFixes:Load()
         [255534] = { -- "Badwind" Bennic
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{50.62,34.27}}},
         },
+        [256388] = { -- Jornah
+            [npcKeys.questEnds_add] = {95819},
+        },
+        [256391] = { -- Elaine Compton
+            [npcKeys.questEnds_add] = {95816},
+        },
         [256935] = { -- Malduko Cloudcrush
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{36.05,33.53}}},
         },
