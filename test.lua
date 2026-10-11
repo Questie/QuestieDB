@@ -953,7 +953,7 @@ suite("table-corrections", "shared", function()
 end)
 
 suite("correction-enums", "shared", function()
-  dofile("tools/validation/faction-race-masks.test.lua")(equal)
+  dofile("tools/validation/emulator-enums.test.lua")(equal)
   local standalone = dofile("src/corrections/enum/constants.lua")
   local namespace = {}
   local env = setmetatable({
