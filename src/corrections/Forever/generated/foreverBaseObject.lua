@@ -70,6 +70,25 @@ function ForeverBaseObject:Load()
             [objectKeys.spawns] = {[45] = {{22.4, 24.2}, {22.5, 24.2}}},
             [objectKeys.zoneID] = zoneIDs.ARATHI_HIGHLANDS,
         },
+        [409311] = { -- Spear of Mannoroth : https://wowhead.com/forever/object=409311/spear-of-mannoroth
+            [objectKeys.name] = "Spear of Mannoroth",
+            [objectKeys.questEnds] = {78092},
+            [objectKeys.spawns] = {[331] = {{89.4, 77.1}, {89.5, 77}}},
+            [objectKeys.zoneID] = zoneIDs.ASHENVALE,
+        },
+        [409315] = { -- Shattered Orb : https://wowhead.com/forever/object=409315/shattered-orb
+            [objectKeys.name] = "Shattered Orb",
+            [objectKeys.questStarts] = {78093},
+            [objectKeys.spawns] = {[331] = {{89.4, 77}, {89.5, 77}}},
+            [objectKeys.zoneID] = zoneIDs.ASHENVALE,
+        },
+        [410369] = { -- Dead Drop : https://wowhead.com/forever/object=410369/dead-drop
+            [objectKeys.name] = "Dead Drop",
+            [objectKeys.questStarts] = {78676},
+            [objectKeys.questEnds] = {78676, 78699},
+            [objectKeys.spawns] = {[130] = {{47.1, 71.1}}},
+            [objectKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
+        },
         [410847] = { -- Rusty Safe : https://wowhead.com/forever/object=410847/rusty-safe
             [objectKeys.name] = "Rusty Safe",
             [objectKeys.spawns] = {[28] = {{59.4, 84.6}, {59.5, 84.5}}},
@@ -177,6 +196,10 @@ function ForeverBaseObject:Load()
             [objectKeys.name] = "Book",
             [objectKeys.spawns] = {[440] = {{72.6, 47.8}}},
             [objectKeys.zoneID] = zoneIDs.TANARIS,
+        },
+        [457387] = { -- Dwarven Heirloom : https://wowhead.com/forever/object=457387/dwarven-heirloom
+            [objectKeys.name] = "Dwarven Heirloom",
+            [objectKeys.spawns] = {[28] = {{54.8, 81.2}}},
         },
         [554626] = { -- Lumber Pile : https://wowhead.com/forever/object=554626/lumber-pile
             [objectKeys.name] = "Lumber Pile",
@@ -394,6 +417,10 @@ function ForeverBaseObject:Load()
             [objectKeys.spawns] = {[16593] = {{43.4, 45.8}, {43.5, 45.8}}},
             [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
+        [612073] = { -- Cookie's Feast : https://wowhead.com/forever/object=612073/cookies-feast
+            [objectKeys.name] = "Cookie's Feast",
+            [objectKeys.spawns] = {[11] = {{48.7, 56.8}}, [12] = {{42.5, 65.9}}, [17] = {{42.6, 90.1}}, [130] = {{68.3, 45.5}}, [267] = {{62, 20.2}}},
+        },
         [612088] = { -- Field Guide : https://wowhead.com/forever/object=612088/field-guide
             [objectKeys.name] = "Field Guide",
             [objectKeys.spawns] = {[10] = {{78.3, 45.3}}, [12] = {{33.5, 51.1}, {42.4, 65.9}}, [17] = {{47, 36.1}}, [33] = {{41, 62.6}}, [40] = {{42.4, 71.2}}, [148] = {{37.5, 43.7}}, [267] = {{50.5, 63.6}}, [331] = {{14.3, 15.2}, {35.4, 49.9}}},
@@ -401,6 +428,11 @@ function ForeverBaseObject:Load()
         [612090] = { -- Fishing Rack : https://wowhead.com/forever/object=612090/fishing-rack
             [objectKeys.name] = "Fishing Rack",
             [objectKeys.spawns] = {[17] = {{52, 30.5}}, [28] = {{41.3, 78.2}}},
+        },
+        [612091] = { -- Toxin Study : https://wowhead.com/forever/object=612091/toxin-study
+            [objectKeys.name] = "Toxin Study",
+            [objectKeys.spawns] = {[267] = {{62.2, 20.4}, {62.5, 20.4}}},
+            [objectKeys.zoneID] = zoneIDs.HILLSBRAD_FOOTHILLS,
         },
         [613238] = { -- Zephyrseed Cone : https://wowhead.com/forever/object=613238/zephyrseed-cone
             [objectKeys.name] = "Zephyrseed Cone",
@@ -482,7 +514,7 @@ function ForeverBaseObject:Load()
             [objectKeys.questStarts] = {94503},
             [objectKeys.spawns] = {[40] = {{45.4, 60.1}, {45.6, 59.9}}},
         },
-        [623295] = { -- Abandonded Belongings : https://wowhead.com/forever/object=623295/abandonded-belongings
+        [623295] = { -- Abandonded Belongings : https://wowhead.com/forever/object=623295/abandoned-belongings
             [objectKeys.name] = "Abandonded Belongings",
             [objectKeys.spawns] = {[16593] = {{56.9, 29.4}, {56.9, 33.6}, {57, 33.4}, {57.6, 31}, {57.6, 32.1}, {57.9, 26.9}, {58.4, 32.7}, {58.8, 31.1}, {59.1, 32.3}, {59.1, 34.7}, {59.2, 33.8}}},
             [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
@@ -501,6 +533,10 @@ function ForeverBaseObject:Load()
             [objectKeys.name] = "Snowdrift",
             [objectKeys.spawns] = {[1] = {{24.3, 44.1}, {24.5, 44.2}, {25, 39.6}, {25.3, 42.7}, {25.4, 40.5}, {25.7, 39.8}, {26.1, 42}, {26.2, 43.1}, {26.2, 43.8}, {26.3, 40.5}, {26.7, 36.2}, {26.8, 42.1}, {27.1, 41.1}, {27.5, 37.4}, {27.5, 37.5}, {27.6, 40.1}, {27.6, 42.8}}},
             [objectKeys.zoneID] = zoneIDs.DUN_MOROGH,
+        },
+        [630696] = { -- Dragonmaw Catapult : https://wowhead.com/forever/object=630696/dragonmaw-catapult
+            [objectKeys.name] = "Dragonmaw Catapult",
+            [objectKeys.questEnds] = {465},
         },
         [630871] = { -- Bottle : https://wowhead.com/forever/object=630871/bottle
             [objectKeys.name] = "Bottle",
@@ -579,11 +615,14 @@ function ForeverBaseObject:Load()
         },
         [645153] = { -- Offering Stone : https://wowhead.com/forever/object=645153/offering-stone
             [objectKeys.name] = "Offering Stone",
+            [objectKeys.questStarts] = {95885},
+            [objectKeys.questEnds] = {95885},
             [objectKeys.spawns] = {[130] = {{58.1, 69.8}}},
             [objectKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
         },
         [649051] = { -- Wanted: Incinerator Gar'im : https://wowhead.com/forever/object=649051/wanted-incinerator-garim
             [objectKeys.name] = "Wanted: Incinerator Gar'im",
+            [objectKeys.questStarts] = {95999},
             [objectKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
         },
         [649125] = { -- Grave Marker : https://wowhead.com/forever/object=649125/grave-marker
@@ -695,6 +734,7 @@ function ForeverBaseObject:Load()
         },
         [654925] = { -- Lost Journal : https://wowhead.com/forever/object=654925/lost-journal
             [objectKeys.name] = "Lost Journal",
+            [objectKeys.questStarts] = {96652},
             [objectKeys.spawns] = {[14] = {{42.8, 69.1}}},
             [objectKeys.zoneID] = zoneIDs.DUROTAR,
         },
@@ -702,6 +742,11 @@ function ForeverBaseObject:Load()
             [objectKeys.name] = "Mailbox",
             [objectKeys.spawns] = {[616] = {{70.8, 49.8}}},
             [objectKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+        },
+        [656157] = { -- Syndicate Footlocker : https://wowhead.com/forever/object=656157/syndicate-footlocker
+            [objectKeys.name] = "Syndicate Footlocker",
+            [objectKeys.questStarts] = {96784},
+            [objectKeys.questEnds] = {96783},
         },
         [656160] = { -- Wilted Peacebloom : https://wowhead.com/forever/object=656160/wilted-peacebloom
             [objectKeys.name] = "Wilted Peacebloom",
@@ -733,7 +778,7 @@ function ForeverBaseObject:Load()
         },
         [656332] = { -- Chunk of Amber : https://wowhead.com/forever/object=656332/chunk-of-amber
             [objectKeys.name] = "Chunk of Amber",
-            [objectKeys.spawns] = {[141] = {{55.5, 28.1}, {55.7, 25.3}, {55.7, 27.2}, {55.9, 26.4}, {55.9, 28.6}, {56.3, 29.7}, {56.4, 30.5}, {56.4, 31.8}, {56.5, 26.4}, {56.5, 30.7}, {56.8, 25.4}, {56.8, 27.8}, {57, 31.8}, {57.2, 29.9}, {57.4, 27.3}, {57.4, 29}, {57.5, 27.4}, {57.5, 29.8}, {57.7, 25.8}, {57.9, 27.8}, {58.2, 28.5}}},
+            [objectKeys.spawns] = {[141] = {{55.5, 28.1}, {55.7, 25.3}, {55.7, 27.3}, {55.9, 26.4}, {55.9, 28.6}, {56.3, 29.6}, {56.4, 30.5}, {56.4, 31.9}, {56.5, 26.4}, {56.5, 30.7}, {56.8, 25.4}, {56.8, 27.8}, {57, 31.8}, {57.2, 29.9}, {57.4, 27.3}, {57.4, 29}, {57.5, 29.8}, {57.7, 25.8}, {57.8, 26.5}, {57.9, 27.8}, {58.2, 28.5}}},
             [objectKeys.zoneID] = zoneIDs.TELDRASSIL,
         },
         [656333] = { -- Large Chunk of Amber : https://wowhead.com/forever/object=656333/large-chunk-of-amber
@@ -775,6 +820,15 @@ function ForeverBaseObject:Load()
         [657386] = { -- Bruiseweed : https://wowhead.com/forever/object=657386/bruiseweed
             [objectKeys.name] = "Bruiseweed",
             [objectKeys.spawns] = {[38] = {{73, 49}}, [40] = {{33.7, 73.9}}, [406] = {{76.6, 95.2}}},
+        },
+        [657387] = { -- Wild Steelbloom : https://wowhead.com/forever/object=657387/wild-steelbloom
+            [objectKeys.name] = "Wild Steelbloom",
+            [objectKeys.spawns] = {[17] = {{42.7, 83.2}}, [400] = {{65.1, 60.6}}, [406] = {{38.5, 67.3}, {73, 91.3}, {75.4, 83.2}}},
+        },
+        [657390] = { -- Liferoot : https://wowhead.com/forever/object=657390/liferoot
+            [objectKeys.name] = "Liferoot",
+            [objectKeys.spawns] = {[45] = {{45.7, 81.3}}},
+            [objectKeys.zoneID] = zoneIDs.ARATHI_HIGHLANDS,
         },
         [657394] = { -- Stranglekelp : https://wowhead.com/forever/object=657394/stranglekelp
             [objectKeys.name] = "Stranglekelp",
@@ -996,6 +1050,7 @@ function ForeverBaseObject:Load()
         },
         [660964] = { -- Misplaced Packages : https://wowhead.com/forever/object=660964/misplaced-packages
             [objectKeys.name] = "Misplaced Packages",
+            [objectKeys.questStarts] = {97263},
             [objectKeys.spawns] = {[1537] = {{71.9, 47.2}, {72.3, 48.4}, {72.4, 48.5}, {72.5, 48.3}, {72.5, 48.5}}},
             [objectKeys.zoneID] = zoneIDs.IRONFORGE,
         },
@@ -1028,6 +1083,10 @@ function ForeverBaseObject:Load()
             [objectKeys.name] = "Smooth Boulder",
             [objectKeys.spawns] = {[1637] = {{38.4, 26.8}, {38.6, 26.7}, {39.2, 28.3}, {39.2, 28.5}, {39.6, 28.6}, {39.7, 28.3}, {40, 32.3}, {40.1, 32.5}, {41.1, 34.9}, {41.4, 32}, {41.5, 32.1}, {43.4, 32.3}, {43.4, 34.5}, {43.5, 34.4}, {43.7, 32.7}, {43.7, 40.2}, {43.8, 35}, {43.8, 40.9}, {44, 32.1}, {44.3, 38.6}, {44.4, 38}, {44.5, 38.3}, {45.3, 32.9}, {46.7, 33.1}, {46.9, 39.9}, {47.1, 40.6}, {47.8, 38.6}, {47.9, 37.9}}},
             [objectKeys.zoneID] = zoneIDs.ORGRIMMAR,
+        },
+        [661516] = { -- Thoroughly Scavenged Supplies : https://wowhead.com/forever/object=661516/thoroughly-scavenged-supplies
+            [objectKeys.name] = "Thoroughly Scavenged Supplies",
+            [objectKeys.questStarts] = {97328},
         },
         [664122] = { -- Gozwin's Mechanic's Log : https://wowhead.com/forever/object=664122/gozwins-mechanics-log
             [objectKeys.name] = "Gozwin's Mechanic's Log",
@@ -1084,6 +1143,10 @@ function ForeverBaseObject:Load()
             [objectKeys.spawns] = {[16591] = {{62.1, 85.6}}},
             [objectKeys.zoneID] = zoneIDs.RIVERGLADES,
         },
+        [669176] = { -- Gleaming Crescent Pendant : https://wowhead.com/forever/object=669176/gleaming-crescent-pendant
+            [objectKeys.name] = "Gleaming Crescent Pendant",
+            [objectKeys.questStarts] = {98027},
+        },
         [670771] = { -- Khaz Modan Timber : https://wowhead.com/forever/object=670771/khaz-modan-timber
             [objectKeys.name] = "Khaz Modan Timber",
             [objectKeys.spawns] = {[11] = {{3.9, 59.8}, {4, 55.2}, {4.7, 50.8}, {5.9, 61.7}, {6, 52.8}, {7.1, 65.6}, {7.9, 50.7}, {8.1, 50.3}, {8.3, 63.4}, {9.1, 64.9}, {10.9, 50.8}, {13.3, 52.3}, {13.6, 60.7}, {14.4, 56.6}, {14.6, 56.5}, {15.4, 53.8}, {15.7, 53.8}}},
@@ -1113,6 +1176,14 @@ function ForeverBaseObject:Load()
             [objectKeys.name] = "On The Windlord",
             [objectKeys.spawns] = {[16593] = {{56, 58.7}, {65.7, 34.2}}},
             [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+        },
+        [671518] = { -- Tattered Spellbook : https://wowhead.com/forever/object=671518/tattered-spellbook
+            [objectKeys.name] = "Tattered Spellbook",
+            [objectKeys.questStarts] = {98223},
+        },
+        [672330] = { -- Dragonmaw Armaments : https://wowhead.com/forever/object=672330/dragonmaw-armaments
+            [objectKeys.name] = "Dragonmaw Armaments",
+            [objectKeys.questStarts] = {98293},
         },
         [672508] = { -- Flintfire's Shipment : https://wowhead.com/forever/object=672508/flintfires-shipment
             [objectKeys.name] = "Flintfire's Shipment",
@@ -1160,8 +1231,8 @@ function ForeverBaseObject:Load()
             [objectKeys.name] = "Water Barrel",
             [objectKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
         },
-        [673385] = { -- Grain Sack : https://wowhead.com/forever/object=673385/grain-sack
-            [objectKeys.name] = "Grain Sack",
+        [673385] = { -- Blackrock Supplies : https://wowhead.com/forever/object=673385/blackrock-supplies
+            [objectKeys.name] = "Blackrock Supplies",
             [objectKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
         },
         [673390] = { -- Weapon Rack : https://wowhead.com/forever/object=673390/weapon-rack
@@ -1211,7 +1282,7 @@ function ForeverBaseObject:Load()
         },
         [674124] = { -- Traveler's Cache : https://wowhead.com/forever/object=674124/travelers-cache
             [objectKeys.name] = "Traveler's Cache",
-            [objectKeys.spawns] = {[33] = {{14.4, 27.2}}},
+            [objectKeys.spawns] = {[33] = {{14.4, 27.2}, {14.5, 27.2}}},
             [objectKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
         },
         [674126] = { -- Hidden Stash : https://wowhead.com/forever/object=674126/hidden-stash
@@ -1418,6 +1489,16 @@ function ForeverBaseObject:Load()
             [objectKeys.name] = "A Small Pack",
             [objectKeys.spawns] = {[46] = {{37.3, 26.6}, {37.4, 26.4}}},
             [objectKeys.zoneID] = zoneIDs.BURNING_STEPPES,
+        },
+        [703257] = { -- Mailbox : https://wowhead.com/forever/object=703257/mailbox
+            [objectKeys.name] = "Mailbox",
+            [objectKeys.spawns] = {[16593] = {{58.1, 76.5}, {58.3, 76.3}}},
+            [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+        },
+        [706178] = { -- Mausoleum Trigger : https://wowhead.com/forever/object=706178/mausoleum-trigger
+            [objectKeys.name] = "Mausoleum Trigger",
+            [objectKeys.spawns] = {[85] = {{59.2, 48.6}}},
+            [objectKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
         },
     }
 end

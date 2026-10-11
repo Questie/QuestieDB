@@ -10,12 +10,18 @@ function ForeverBaseQuest:Load()
     local zoneIDs = ZoneDB.zoneIDs
     local sortKeys = QuestieDB.sortKeys
     return {
+        [272] = { -- Trial of the Sea Lion : https://wowhead.com/forever/quest=272/trial-of-the-sea-lion
+            [questKeys.requiredRaces] = raceIDs.NIGHT_ELF + raceIDs.SKYBORNE_ALLIANCE,
+        },
         [299] = { -- Uncovering the Past : https://wowhead.com/forever/quest=299/uncovering-the-past
             [questKeys.requiredLevel] = 22,
             [questKeys.questLevel] = 27,
         },
         [421] = { -- Prove Your Worth : https://wowhead.com/forever/quest=421/prove-your-worth
             [questKeys.requiredLevel] = 12,
+        },
+        [465] = { -- Nek'rosh's Gambit : https://wowhead.com/forever/quest=465/nekroshs-gambit
+            [questKeys.finishedBy_add] = {nil, {630696}},
         },
         [745] = { -- Sharing the Land : https://wowhead.com/forever/quest=745/sharing-the-land
             [questKeys.questLevel] = 8,
@@ -26,11 +32,18 @@ function ForeverBaseQuest:Load()
         [952] = { -- Grove of the Ancients : https://wowhead.com/forever/quest=952/grove-of-the-ancients
             [questKeys.questLevel] = 17,
         },
+        [1132] = { -- Fiora Longears : https://wowhead.com/forever/quest=1132/fiora-longears
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 30,
+        },
         [1861] = { -- Mirror Lake : https://wowhead.com/forever/quest=1861/mirror-lake
             [questKeys.requiredRaces] = raceIDs.HUMAN + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
         },
         [1884] = { -- Ju-Ju Heaps : https://wowhead.com/forever/quest=1884/ju-ju-heaps
             [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD + raceIDs.TROLL,
+        },
+        [1920] = { -- Investigate the Blue Recluse : https://wowhead.com/forever/quest=1920/investigate-the-blue-recluse
+            [questKeys.requiredRaces] = raceIDs.HUMAN + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
         },
         [1961] = { -- Gathering Materials : https://wowhead.com/forever/quest=1961/gathering-materials
             [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD + raceIDs.TROLL,
@@ -46,6 +59,58 @@ function ForeverBaseQuest:Load()
         },
         [5636] = { -- Desperate Prayer : https://wowhead.com/forever/quest=5636/desperate-prayer
             [questKeys.requiredRaces] = raceIDs.DWARF,
+        },
+        [5691] = { -- <NYI> <TXT> In the Dark it was Created : https://wowhead.com/forever/quest=5691/nyi-txt-in-the-dark-it-was-created
+            [questKeys.name] = "<NYI> <TXT> In the Dark it was Created",
+            [questKeys.requiredLevel] = 15,
+            [questKeys.questLevel] = 15,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
+            [questKeys.zoneOrSort] = sortKeys.PRIEST,
+        },
+        [5692] = { -- <NYI> In the Dark It was Created : https://wowhead.com/forever/quest=5692/nyi-in-the-dark-it-was-created
+            [questKeys.name] = "<NYI> In the Dark It was Created",
+            [questKeys.requiredLevel] = 15,
+            [questKeys.questLevel] = 15,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
+            [questKeys.objectivesText] = {"Speak to Aelthalyste in the Undercity."},
+            [questKeys.zoneOrSort] = sortKeys.PRIEST,
+        },
+        [5693] = { -- <NYI> In the Dark It was Created : https://wowhead.com/forever/quest=5693/nyi-in-the-dark-it-was-created
+            [questKeys.name] = "<NYI> In the Dark It was Created",
+            [questKeys.requiredLevel] = 15,
+            [questKeys.questLevel] = 15,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
+            [questKeys.objectivesText] = {"Speak to Aelthalyste in the Undercity."},
+            [questKeys.zoneOrSort] = sortKeys.PRIEST,
+        },
+        [5704] = { -- <NYI> <TXT> Undead Priest Robe : https://wowhead.com/forever/quest=5704/nyi-txt-undead-priest-robe
+            [questKeys.name] = "<NYI> <TXT> Undead Priest Robe",
+            [questKeys.requiredLevel] = 25,
+            [questKeys.questLevel] = 25,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
+            [questKeys.zoneOrSort] = sortKeys.PRIEST,
+        },
+        [5705] = { -- <NYI> No Longer a Shadow : https://wowhead.com/forever/quest=5705/nyi-no-longer-a-shadow
+            [questKeys.name] = "<NYI> No Longer a Shadow",
+            [questKeys.requiredLevel] = 25,
+            [questKeys.questLevel] = 25,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
+            [questKeys.objectivesText] = {"Speak to Aelthalyste in the Undercity."},
+            [questKeys.zoneOrSort] = sortKeys.PRIEST,
+        },
+        [5706] = { -- <NYI> No Longer a Shadow : https://wowhead.com/forever/quest=5706/nyi-no-longer-a-shadow
+            [questKeys.name] = "<NYI> No Longer a Shadow",
+            [questKeys.requiredLevel] = 25,
+            [questKeys.questLevel] = 25,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
+            [questKeys.requiredClasses] = classIDs.PRIEST,
+            [questKeys.objectivesText] = {"Speak to Aelthalyste in the Undercity."},
+            [questKeys.zoneOrSort] = sortKeys.PRIEST,
         },
         [6121] = { -- Lessons Anew : https://wowhead.com/forever/quest=6121/lessons-anew
             [questKeys.requiredRaces] = raceIDs.NIGHT_ELF + raceIDs.SKYBORNE_ALLIANCE,
@@ -138,7 +203,6 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.TAUREN + raceIDs.TROLL,
-            [questKeys.requiredClasses] = classIDs.WARRIOR + classIDs.SHAMAN + classIDs.DRUID,
             [questKeys.objectivesText] = {"Gather 8 Windfury Cones north of Thunder Bluff, use them with the Mortar and Pestle, then return to Boarton Shadetotem in Thunder Bluff with the result."},
             [questKeys.zoneOrSort] = zoneIDs.MULGORE,
         },
@@ -163,13 +227,70 @@ function ForeverBaseQuest:Load()
             [questKeys.objectivesText] = {"Bring the Althalaxx Orb to Delgren the Purifier at Maestra's Post in Ashenvale."},
             [questKeys.zoneOrSort] = sortKeys.PALADIN,
         },
+        [78089] = { -- Advice From Stormwind : https://wowhead.com/forever/quest=78089/advice-from-stormwind
+            [questKeys.name] = "Advice From Stormwind",
+            [questKeys.startedBy] = {{3663}},
+            [questKeys.finishedBy] = {{5492}},
+            [questKeys.requiredLevel] = 22,
+            [questKeys.questLevel] = 30,
+            [questKeys.requiredRaces] = raceIDs.HUMAN + raceIDs.DWARF,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
+            [questKeys.objectivesText] = {"Bring the Althalaxx Orb to Katherine the Pure in Stormwind."},
+            [questKeys.zoneOrSort] = sortKeys.PALADIN,
+        },
+        [78090] = { -- A Second Opinion : https://wowhead.com/forever/quest=78090/a-second-opinion
+            [questKeys.name] = "A Second Opinion",
+            [questKeys.startedBy] = {{5492}},
+            [questKeys.finishedBy] = {{5495}},
+            [questKeys.requiredLevel] = 22,
+            [questKeys.questLevel] = 30,
+            [questKeys.requiredRaces] = raceIDs.HUMAN + raceIDs.DWARF,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
+            [questKeys.objectivesText] = {"Find the warlock sanctum within Stormwind and seek advice on the orb."},
+            [questKeys.zoneOrSort] = sortKeys.PALADIN,
+        },
+        [78091] = { -- Earning Your Salt : https://wowhead.com/forever/quest=78091/earning-your-salt
+            [questKeys.name] = "Earning Your Salt",
+            [questKeys.startedBy] = {{5495}},
+            [questKeys.finishedBy] = {{5495}},
+            [questKeys.requiredLevel] = 22,
+            [questKeys.questLevel] = 30,
+            [questKeys.requiredRaces] = raceIDs.HUMAN + raceIDs.DWARF,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
+            [questKeys.objectivesText] = {"Collect 14 Summoner's Salt from Blackrock Summoners in Redridge Mountains, then return to Ursula Deline in Stormwind."},
+            [questKeys.objectives] = {nil, nil, {{209778}}},
+            [questKeys.zoneOrSort] = sortKeys.PALADIN,
+        },
+        [78092] = { -- It Must Be Destroyed : https://wowhead.com/forever/quest=78092/it-must-be-destroyed
+            [questKeys.name] = "It Must Be Destroyed",
+            [questKeys.startedBy] = {{5495}},
+            [questKeys.finishedBy] = {nil, {409311}},
+            [questKeys.requiredLevel] = 22,
+            [questKeys.questLevel] = 30,
+            [questKeys.requiredRaces] = raceIDs.HUMAN + raceIDs.DWARF,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
+            [questKeys.objectivesText] = {"Gather 12 Motes of Mannoroth from demons in Ashenvale. Bring them along with the Orb of Althalaxx to the Spear of Mannoroth at Demon Fall Canyon."},
+            [questKeys.objectives] = {nil, nil, {{209779}}},
+            [questKeys.zoneOrSort] = sortKeys.PALADIN,
+        },
+        [78093] = { -- Return to Delgren : https://wowhead.com/forever/quest=78093/return-to-delgren
+            [questKeys.name] = "Return to Delgren",
+            [questKeys.startedBy] = {nil, {409315}},
+            [questKeys.finishedBy] = {{3663}},
+            [questKeys.requiredLevel] = 22,
+            [questKeys.questLevel] = 30,
+            [questKeys.requiredRaces] = raceIDs.HUMAN + raceIDs.DWARF,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
+            [questKeys.objectivesText] = {"Return the Orb Shards to Delgren."},
+            [questKeys.zoneOrSort] = sortKeys.PALADIN,
+        },
         [78132] = { -- Dragonslayer's Helm : https://wowhead.com/forever/quest=78132/dragonslayers-helm
             [questKeys.name] = "Dragonslayer's Helm",
             [questKeys.startedBy] = {{210995}},
             [questKeys.finishedBy] = {{210995}},
             [questKeys.requiredLevel] = 15,
             [questKeys.questLevel] = 25,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/dragonslayer_collection.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/dragonslayer_collection.toml; 0 = all races; Reviewed Dragonslayer collection: Both labels and the same faction-neutral giver support all-race access.
         },
         [78133] = { -- Dragonslayer's Shield : https://wowhead.com/forever/quest=78133/dragonslayers-shield
             [questKeys.name] = "Dragonslayer's Shield",
@@ -177,7 +298,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{210995}},
             [questKeys.requiredLevel] = 15,
             [questKeys.questLevel] = 25,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/dragonslayer_collection.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/dragonslayer_collection.toml; 0 = all races; Reviewed Dragonslayer collection: Both labels and the same faction-neutral giver support all-race access.
         },
         [78134] = { -- Dragonslayer's Lance : https://wowhead.com/forever/quest=78134/dragonslayers-lance
             [questKeys.name] = "Dragonslayer's Lance",
@@ -185,7 +306,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{210995}},
             [questKeys.requiredLevel] = 15,
             [questKeys.questLevel] = 25,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/dragonslayer_collection.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/dragonslayer_collection.toml; 0 = all races; Reviewed Dragonslayer collection: Both labels and the same faction-neutral giver support all-race access.
         },
         [78148] = { -- Runes of the Sorcerer-Kings : https://wowhead.com/forever/quest=78148/runes-of-the-sorcerer-kings
             [questKeys.name] = "Runes of the Sorcerer-Kings",
@@ -193,8 +314,29 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{211022, 211033}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 20,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/library_races.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/library_races.toml; 0 = all races; Reviewed library quests: Both labels and faction-specific turn-ins support all-race access; class restrictions are independent.
             [questKeys.zoneOrSort] = sortKeys.SPECIAL,
+        },
+        [78676] = { -- The Eye of Bhossca : https://wowhead.com/forever/quest=78676/the-eye-of-bhossca
+            [questKeys.name] = "The Eye of Bhossca",
+            [questKeys.startedBy] = {nil, {410369}},
+            [questKeys.finishedBy] = {nil, {410369}},
+            [questKeys.requiredLevel] = 25,
+            [questKeys.questLevel] = 35,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.requiredClasses] = classIDs.ROGUE,
+            [questKeys.objectivesText] = {"Find The Eye of Bhossca inside of the Scarlet Monastery. Then, return it to C's dead drop near Pyrewood Village. You must complete the job alone."},
+            [questKeys.zoneOrSort] = sortKeys.ROGUE,
+        },
+        [78699] = { -- The Eye of Bhossca : https://wowhead.com/forever/quest=78699/the-eye-of-bhossca
+            [questKeys.name] = "The Eye of Bhossca",
+            [questKeys.finishedBy] = {nil, {410369}},
+            [questKeys.requiredLevel] = 25,
+            [questKeys.questLevel] = 35,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.requiredClasses] = classIDs.ROGUE,
+            [questKeys.objectivesText] = {"Log"},
+            [questKeys.zoneOrSort] = sortKeys.ROGUE,
         },
         [79007] = { -- ... and that note you found : https://wowhead.com/forever/quest=79007/and-that-note-you-found
             [questKeys.name] = "... and that note you found",
@@ -221,7 +363,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{211022, 211033}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 20,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/library_races.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/library_races.toml; 0 = all races; Reviewed library quests: Both labels and faction-specific turn-ins support all-race access; class restrictions are independent.
             [questKeys.objectives] = {nil, nil, {{203755}}},
             [questKeys.zoneOrSort] = sortKeys.SPECIAL,
         },
@@ -240,14 +382,52 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {nil, {424005}},
             [questKeys.requiredLevel] = 14,
             [questKeys.questLevel] = 24,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/sleeping_bag.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/sleeping_bag.toml; 0 = all races; Reviewed sleeping-bag chain: Both faction labels and player reports support shared race access.
             [questKeys.objectivesText] = {"You tear the note from the plank and read the scrawled writing."},
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
+        },
+        [79358] = { -- Storm, Earth, and Fire : https://wowhead.com/forever/quest=79358/storm-earth-and-fire
+            [questKeys.name] = "Storm, Earth, and Fire",
+            [questKeys.startedBy] = {{259023}},
+            [questKeys.finishedBy] = {{4722}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 38,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
+            [questKeys.objectivesText] = {"Collect 5 Twisted Fire Totems, 5 Twisted Earth Totems, 5 Twisted Air Totems, and 5 Twisted Water Totems for Veyric Thunderhame in Arathi Highlands."},
+            [questKeys.objectives] = {nil, nil, {{274046}, {274045}, {274044}, {274047}}},
+            [questKeys.sourceItemId] = 274483,
+            [questKeys.zoneOrSort] = sortKeys.SHAMAN,
+        },
+        [79360] = { -- Elemental Aid : https://wowhead.com/forever/quest=79360/elemental-aid
+            [questKeys.name] = "Elemental Aid",
+            [questKeys.startedBy] = {{4722, 5905}},
+            [questKeys.finishedBy] = {{6176}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
+            [questKeys.objectivesText] = {"Defeat Charlga Razorflank in Razorfen Kraul and collect information on the quilboar's plans."},
+            [questKeys.objectives] = {nil, nil, {{274463}}},
+            [questKeys.zoneOrSort] = sortKeys.SHAMAN,
+        },
+        [79361] = { -- Storm, Earth, and Fire : https://wowhead.com/forever/quest=79361/storm-earth-and-fire
+            [questKeys.name] = "Storm, Earth, and Fire",
+            [questKeys.startedBy] = {{6176}},
+            [questKeys.finishedBy] = {{6176}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 38,
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.TAUREN + raceIDs.TROLL,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
+            [questKeys.objectivesText] = {"Collect 5 Twisted Fire Totems, 5 Twisted Earth Totems, 5 Twisted Air Totems, and 5 Twisted Water Totems for Prate Cloudseer in Thousand Needles."},
+            [questKeys.objectives] = {nil, nil, {{274046}, {274045}, {274044}, {274047}}},
+            [questKeys.sourceItemId] = 274483,
+            [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [79362] = { -- Grant's Shield : https://wowhead.com/forever/quest=79362/grants-shield
             [questKeys.name] = "Grant's Shield",
             [questKeys.startedBy] = {{6176}, nil, {281147}},
-            [questKeys.finishedBy] = {{6176}},
+            [questKeys.finishedBy] = {{268, 6176}},
             [questKeys.requiredLevel] = 18,
             [questKeys.questLevel] = 25,
             [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.TAUREN + raceIDs.TROLL,
@@ -270,14 +450,57 @@ function ForeverBaseQuest:Load()
             [questKeys.sourceItemId] = 281145,
             [questKeys.zoneOrSort] = zoneIDs.DUSKWOOD,
         },
+        [79364] = { -- Eyes on the Sky : https://wowhead.com/forever/quest=79364/eyes-on-the-sky
+            [questKeys.name] = "Eyes on the Sky",
+            [questKeys.startedBy] = {{4722, 6176}},
+            [questKeys.finishedBy] = {{5905, 6176}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
+            [questKeys.objectivesText] = {"Speak with Prate Cloudseer in Thousand Needles."},
+            [questKeys.zoneOrSort] = sortKeys.SHAMAN,
+        },
+        [79366] = { -- Heed My Call : https://wowhead.com/forever/quest=79366/heed-my-call
+            [questKeys.name] = "Heed My Call",
+            [questKeys.startedBy] = {{4722}},
+            [questKeys.finishedBy] = {{4722}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
+            [questKeys.objectivesText] = {"Use the Twisted Totems to put an end to the quilboar ritual."},
+            [questKeys.sourceItemId] = 268582,
+            [questKeys.zoneOrSort] = sortKeys.SHAMAN,
+        },
+        [79442] = { -- The Tempest's Weapons : https://wowhead.com/forever/quest=79442/the-tempests-weapons
+            [questKeys.name] = "The Tempest's Weapons",
+            [questKeys.startedBy] = {{4722}},
+            [questKeys.finishedBy] = {{6176}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.TAUREN + raceIDs.TROLL,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
+            [questKeys.objectivesText] = {"Deliver the Eye of the Tempest to Bath'rah the Windwatcher in Alterac Mountains."},
+            [questKeys.zoneOrSort] = sortKeys.SHAMAN,
+        },
         [79536] = { -- Greater Friend of the Library : https://wowhead.com/forever/quest=79536/greater-friend-of-the-library
             [questKeys.name] = "Greater Friend of the Library",
             [questKeys.startedBy] = {{211033}},
             [questKeys.finishedBy] = {{211022, 211033}},
             [questKeys.requiredLevel] = 20,
             [questKeys.questLevel] = 35,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/library_races.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/library_races.toml; 0 = all races; Reviewed library quests: Both labels and faction-specific turn-ins support all-race access; class restrictions are independent.
             [questKeys.zoneOrSort] = sortKeys.SPECIAL,
+        },
+        [79624] = { -- Anyone Can Cook : https://wowhead.com/forever/quest=79624/anyone-can-cook
+            [questKeys.name] = "Anyone Can Cook",
+            [questKeys.finishedBy] = {{217300}},
+            [questKeys.requiredLevel] = 32,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Find an ogre who can read the Illegible Recipe."},
+            [questKeys.zoneOrSort] = zoneIDs.ARATHI_HIGHLANDS,
         },
         [79974] = { -- Wet Job : https://wowhead.com/forever/quest=79974/wet-job
             [questKeys.name] = "Wet Job",
@@ -285,7 +508,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {nil, {424007}},
             [questKeys.requiredLevel] = 14,
             [questKeys.questLevel] = 32,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/sleeping_bag.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/sleeping_bag.toml; 0 = all races; Reviewed sleeping-bag chain: Both faction labels and player reports support shared race access.
             [questKeys.objectivesText] = {"Dusting off a messenger bag emerging from the soil, you find a parchment nestled among the supplies."},
             [questKeys.zoneOrSort] = zoneIDs.STONETALON_MOUNTAINS,
         },
@@ -295,7 +518,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {nil, {406918}},
             [questKeys.requiredLevel] = 14,
             [questKeys.questLevel] = 32,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/sleeping_bag.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/sleeping_bag.toml; 0 = all races; Reviewed sleeping-bag chain: Both faction labels and player reports support shared race access.
             [questKeys.objectivesText] = {"Water spray dampens the air, the view is incredible."},
             [questKeys.zoneOrSort] = zoneIDs.STONEWROUGHT_DAM,
         },
@@ -305,7 +528,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {nil, {424006}},
             [questKeys.requiredLevel] = 14,
             [questKeys.questLevel] = 32,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/sleeping_bag.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/sleeping_bag.toml; 0 = all races; Reviewed sleeping-bag chain: Both faction labels and player reports support shared race access.
             [questKeys.objectivesText] = {"Whoever was here, you just missed them."},
         },
         [79980] = { -- Scramble : https://wowhead.com/forever/quest=79980/scramble
@@ -314,12 +537,22 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {nil, {424012}},
             [questKeys.requiredLevel] = 14,
             [questKeys.questLevel] = 24,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/sleeping_bag.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/sleeping_bag.toml; 0 = all races; Reviewed sleeping-bag chain: Both faction labels and player reports support shared race access.
             [questKeys.objectivesText] = {"Find what awaits you."},
             [questKeys.zoneOrSort] = zoneIDs.STONETALON_MOUNTAINS,
         },
+        [82208] = { -- Greater Friend of the Library : https://wowhead.com/forever/quest=82208/greater-friend-of-the-library
+            [questKeys.name] = "Greater Friend of the Library",
+            [questKeys.startedBy] = {{211033}},
+            [questKeys.finishedBy] = {{211022, 211033}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 45,
+            [questKeys.zoneOrSort] = sortKeys.SPECIAL,
+        },
         [86574] = { -- Stonetalon Supply Run : https://wowhead.com/forever/quest=86574/stonetalon-supply-run
             [questKeys.name] = "Stonetalon Supply Run",
+            [questKeys.startedBy] = {{268925}},
+            [questKeys.finishedBy] = {{16458}},
             [questKeys.requiredLevel] = 20,
             [questKeys.questLevel] = 24,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
@@ -387,13 +620,25 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = zoneIDs.LOCH_MODAN,
             [questKeys.reputationReward] = {{47, 100}},
         },
+        [86757] = { -- Slowing the Orc Advance : https://wowhead.com/forever/quest=86757/slowing-the-orc-advance
+            [questKeys.name] = "Slowing the Orc Advance",
+            [questKeys.startedBy] = {{3955}},
+            [questKeys.finishedBy] = {{3955}},
+            [questKeys.requiredLevel] = 27,
+            [questKeys.questLevel] = 32,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Bring 6 Jagged Orc Swords and 4 Curved Orc Daggers to Shandrina."},
+            [questKeys.objectives] = {nil, nil, {{279505}, {279507}}},
+            [questKeys.zoneOrSort] = zoneIDs.ASHENVALE,
+            [questKeys.reputationReward] = {{69, 100}},
+        },
         [86758] = { -- Twisting the Knife : https://wowhead.com/forever/quest=86758/twisting-the-knife
             [questKeys.name] = "Twisting the Knife",
             [questKeys.startedBy] = {{1154}},
             [questKeys.finishedBy] = {{1154}},
             [questKeys.requiredLevel] = 12,
             [questKeys.questLevel] = 16,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Find and defeat the crocolisk Daggerfang and bring back Marek's knife."},
             [questKeys.objectives] = {nil, nil, {{279591}}},
             [questKeys.zoneOrSort] = zoneIDs.LOCH_MODAN,
@@ -405,7 +650,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{167}},
             [questKeys.requiredLevel] = 15,
             [questKeys.questLevel] = 30,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Bring 10 Bronze Bars to Morhan Coppertongue."},
             [questKeys.objectives] = {nil, nil, {{2841}}},
             [questKeys.zoneOrSort] = zoneIDs.LOCH_MODAN,
@@ -430,11 +675,32 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{3608}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 7,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.NIGHT_ELF + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Bring 6 Soft Nightsaber Pelts to Aldria."},
             [questKeys.objectives] = {nil, nil, {{280087}}},
             [questKeys.zoneOrSort] = zoneIDs.TELDRASSIL,
             [questKeys.reputationReward] = {{69, 100}},
+        },
+        [87318] = { -- Hearts of the Lost : https://wowhead.com/forever/quest=87318/hearts-of-the-lost
+            [questKeys.name] = "Hearts of the Lost",
+            [questKeys.startedBy] = {{5683}},
+            [questKeys.finishedBy] = {{271322}},
+            [questKeys.requiredLevel] = 28,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Search for Corma's partner Essene."},
+            [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
+        },
+        [87491] = { -- Spark of Freedom : https://wowhead.com/forever/quest=87491/spark-of-freedom
+            [questKeys.name] = "Spark of Freedom",
+            [questKeys.startedBy] = {{271481}},
+            [questKeys.finishedBy] = {{1072}},
+            [questKeys.requiredLevel] = 27,
+            [questKeys.questLevel] = 32,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Escort the captive fire elemental out of Dun Modr and to its freedom."},
+            [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
+            [questKeys.reputationReward] = {{47, 100}},
         },
         [87760] = { -- Holy Diver : https://wowhead.com/forever/quest=87760/holy-diver
             [questKeys.name] = "Holy Diver",
@@ -447,6 +713,40 @@ function ForeverBaseQuest:Load()
             [questKeys.objectives] = {nil, nil, {{280686}}},
             [questKeys.zoneOrSort] = zoneIDs.DARKSHORE,
             [questKeys.reputationReward] = {{69, 100}},
+        },
+        [88756] = { -- Bring Back a Bang : https://wowhead.com/forever/quest=88756/bring-back-a-bang
+            [questKeys.name] = "Bring Back a Bang",
+            [questKeys.startedBy] = {{1073}},
+            [questKeys.finishedBy] = {{1073}},
+            [questKeys.requiredLevel] = 27,
+            [questKeys.questLevel] = 32,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Retrieve 3 Stolen Explosives from the Dark Iron Dwarf camps."},
+            [questKeys.objectives] = {nil, nil, {{280806}}},
+            [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
+            [questKeys.reputationReward] = {{47, 100}},
+        },
+        [88757] = { -- Accessories of the Lost : https://wowhead.com/forever/quest=88757/accessories-of-the-lost
+            [questKeys.name] = "Accessories of the Lost",
+            [questKeys.startedBy] = {{271322}},
+            [questKeys.finishedBy] = {{271322}},
+            [questKeys.requiredLevel] = 28,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Bring back Essene's Necklace, Essene's Spellbook, and Essene's Waterskin."},
+            [questKeys.objectives] = {nil, nil, {{284705}, {284150}, {284146}}},
+            [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
+        },
+        [88758] = { -- Sentiments of the Lost : https://wowhead.com/forever/quest=88758/sentiments-of-the-lost
+            [questKeys.name] = "Sentiments of the Lost",
+            [questKeys.startedBy] = {{271322}},
+            [questKeys.finishedBy] = {{5683}},
+            [questKeys.requiredLevel] = 28,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Bring Essene's note back to Corma Villard."},
+            [questKeys.sourceItemId] = 284151,
+            [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
         },
         [90902] = { -- Rediscovering the Light : https://wowhead.com/forever/quest=90902/rediscovering-the-light
             [questKeys.name] = "Rediscovering the Light",
@@ -649,7 +949,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{951}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 2,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Retrieve 8 Stolen Books from kobolds in Northshire Valley and return them to Brother Paxton."},
             [questKeys.objectives] = {nil, nil, {{247839}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
@@ -696,7 +996,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{197}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 3,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Retrieve a Sack of \"Picture\" Books from Shinyfinder Narf. Bring the sack to Marshal McBride just inside Northshire's Abbey."},
             [questKeys.objectives] = {nil, nil, {{247886}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
@@ -708,7 +1008,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{11072}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 7,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Kitta Firewind in the Tower of Azora wants you to collect 3 Luminous Residue. Luminous Residue can be obtained by disenchanting Crude Wax Effigies dropped by Kobold Geomancers."},
             [questKeys.objectives] = {nil, nil, {{247884}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
@@ -731,7 +1031,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{240}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 4,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME,
             [questKeys.objectivesText] = {"Follow the kobold tracks and report to Marshal Dughan in Goldshire with your findings and the Kobold Tracking Kit."},
             [questKeys.sourceItemId] = 247970,
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
@@ -743,7 +1043,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{240}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 6,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME,
             [questKeys.objectivesText] = {"Find 6 Lost Books and \"Fun with Elementals\" and return them to Marshal Dughan."},
             [questKeys.objectives] = {nil, nil, {{248002}, {248001}}},
             [questKeys.sourceItemId] = 279935,
@@ -756,7 +1056,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{951}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 7,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.GNOME,
             [questKeys.objectivesText] = {"Recover \"Geomancy for Curious Young Wizards\" and \"Arcane Explainer: Magical Stuff in Simple Words\" and return them to Brother Paxton inside Northshire's Abbey."},
             [questKeys.objectives] = {nil, nil, {{248003}, {248004}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
@@ -825,7 +1125,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{256386, 256390}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_crates.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_crates.toml; 0 = all races; Reviewed crate deliveries: Both labels and paired faction turn-ins support all-race access.
             [questKeys.objectives] = {nil, nil, {{248765}}},
         },
         [91900] = { -- A Sealed Crate : https://wowhead.com/forever/quest=91900/a-sealed-crate
@@ -834,7 +1134,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{256386, 256390}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_crates.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_crates.toml; 0 = all races; Reviewed crate deliveries: Both labels and paired faction turn-ins support all-race access.
             [questKeys.objectives] = {nil, nil, {{248766}}},
         },
         [91904] = { -- A Sealed Crate : https://wowhead.com/forever/quest=91904/a-sealed-crate
@@ -842,7 +1142,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {{256390}},
             [questKeys.finishedBy] = {{256386, 256390}},
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_crates.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_crates.toml; 0 = all races; Reviewed crate deliveries: Both labels and paired faction turn-ins support all-race access.
             [questKeys.objectives] = {nil, nil, {{248770}}},
         },
         [91905] = { -- A Sealed Crate : https://wowhead.com/forever/quest=91905/a-sealed-crate
@@ -850,7 +1150,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {{256390}},
             [questKeys.finishedBy] = {{256386, 256390}},
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_crates.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_crates.toml; 0 = all races; Reviewed crate deliveries: Both labels and paired faction turn-ins support all-race access.
             [questKeys.objectives] = {nil, nil, {{248771}}},
         },
         [91920] = { -- Wild Eyes : https://wowhead.com/forever/quest=91920/wild-eyes
@@ -884,7 +1184,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredLevel] = 10,
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
-            [questKeys.objectivesText] = {"Gather 5 Empty Vials, 5 Silverleaf, and 5 Peacebloom to the young, aspiring alchemist inside the barn of Moonbrook in Westfall."},
+            [questKeys.objectivesText] = {"Bring 5 Empty Vials, 5 Silverleaf, and 5 Peacebloom to the young, aspiring alchemist inside the barn of Moonbrook in Westfall."},
             [questKeys.objectives] = {nil, nil, {{3371}, {2447}, {765}}},
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
         },
@@ -918,7 +1218,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 22,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Investigate the disappearance of Edward Heartweaver in the Ruins of Lordaeron."},
-            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+            [questKeys.zoneOrSort] = zoneIDs.RUINS_OF_LORDAERON,
             [questKeys.reputationReward] = {{68, 150}},
         },
         [92415] = { -- Remember That I Love You : https://wowhead.com/forever/quest=92415/remember-that-i-love-you
@@ -957,13 +1257,83 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = zoneIDs.RUINS_OF_LORDAERON,
             [questKeys.reputationReward] = {{68, 150}},
         },
+        [92432] = { -- An Alarming Request : https://wowhead.com/forever/quest=92432/an-alarming-request
+            [questKeys.name] = "An Alarming Request",
+            [questKeys.startedBy] = {{247264}},
+            [questKeys.finishedBy] = {{269127}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Report to the Image of Archmage Modera near the City of Dalaran."},
+            [questKeys.zoneOrSort] = zoneIDs.ALTERAC_MOUNTAINS,
+            [questKeys.reputationReward] = {{2740, 10}},
+        },
+        [92434] = { -- Blood in the Streets : https://wowhead.com/forever/quest=92434/blood-in-the-streets
+            [questKeys.name] = "Blood in the Streets",
+            [questKeys.startedBy] = {{2410}},
+            [questKeys.finishedBy] = {{269127}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 34,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Find a way into Dalaran along the Lordamere Lake."},
+            [questKeys.sourceItemId] = 279469,
+            [questKeys.zoneOrSort] = zoneIDs.ALTERAC_MOUNTAINS,
+        },
+        [92456] = { -- A Green Sample : https://wowhead.com/forever/quest=92456/a-green-sample
+            [questKeys.name] = "A Green Sample",
+            [questKeys.startedBy] = {{5502}},
+            [questKeys.finishedBy] = {{5502}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Collect a Fel Infused Blossom from the City of Dalaran for Shylamiir in Stormwind City."},
+            [questKeys.objectives] = {nil, nil, {{251983}}},
+            [questKeys.zoneOrSort] = zoneIDs.CITY_OF_DALARAN,
+        },
+        [92457] = { -- Starving Arcane : https://wowhead.com/forever/quest=92457/starving-arcane
+            [questKeys.name] = "Starving Arcane",
+            [questKeys.startedBy] = {{269127}},
+            [questKeys.finishedBy] = {{269127}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Defeat 8 Seeking Remnants, 8 Saturated Remnants, and 8 Mana Echoes inside the City of Dalaran for Archmage Modera outside of Dalaran."},
+            [questKeys.objectives] = {{{247003}, {247001}, {246600}}},
+            [questKeys.zoneOrSort] = zoneIDs.CITY_OF_DALARAN,
+            [questKeys.reputationReward] = {{2740, 100}},
+        },
+        [92458] = { -- Heart of Disruption : https://wowhead.com/forever/quest=92458/heart-of-disruption
+            [questKeys.name] = "Heart of Disruption",
+            [questKeys.startedBy] = {{269127}},
+            [questKeys.finishedBy] = {{269127}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Collect the Arcane Mote for the Image of Archmage Modera near the City of Dalaran."},
+            [questKeys.objectives] = {nil, nil, {{251961}}},
+            [questKeys.sourceItemId] = 277507,
+            [questKeys.zoneOrSort] = zoneIDs.CITY_OF_DALARAN,
+            [questKeys.reputationReward] = {{2740, 100}},
+        },
+        [92459] = { -- Friend of the Kirin Tor : https://wowhead.com/forever/quest=92459/friend-of-the-kirin-tor
+            [questKeys.name] = "Friend of the Kirin Tor",
+            [questKeys.startedBy] = {{269127}},
+            [questKeys.finishedBy] = {{252085}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Speak to Archmage Celindra in the City of Dalaran."},
+            [questKeys.sourceItemId] = 251961,
+            [questKeys.zoneOrSort] = zoneIDs.ALTERAC_MOUNTAINS,
+            [questKeys.reputationReward] = {{2740, 10}},
+        },
         [92460] = { -- Coming of Age : https://wowhead.com/forever/quest=92460/coming-of-age
             [questKeys.name] = "Coming of Age",
             [questKeys.startedBy] = {{251362}},
             [questKeys.finishedBy] = {{251361}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 1,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with Rorian the Dayseeker in Thendal Grove."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 25}, {2779, 25}},
@@ -974,7 +1344,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251361}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 1,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Slay 8 Vuldren Juveniles in Thendal Grove."},
             [questKeys.objectives] = {{{250873}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -986,7 +1356,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251368}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 2,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Slay 8 Pesky Cirrusflies in Thendal Grove."},
             [questKeys.objectives] = {{{251169}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -998,7 +1368,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251368}},
             [questKeys.requiredLevel] = 2,
             [questKeys.questLevel] = 3,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Destroy the Cirrusfly Queen in Thendal Grove."},
             [questKeys.objectives] = {{{251404}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -1010,7 +1380,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{249363}},
             [questKeys.requiredLevel] = 2,
             [questKeys.questLevel] = 3,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak to the Yala Windwatcher in Thendal Grove."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
@@ -1021,7 +1391,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{249363}},
             [questKeys.requiredLevel] = 2,
             [questKeys.questLevel] = 3,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Slay 6 Roiling Winds and 7 Al'Aketh Converts in Thendal Grove."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
@@ -1068,7 +1438,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251361}},
             [questKeys.requiredLevel] = 3,
             [questKeys.questLevel] = 4,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Bring word of the Al'Aketh to Rorian the Dayseeker in Thendal Grove."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
@@ -1078,7 +1448,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251366}},
             [questKeys.requiredLevel] = 2,
             [questKeys.questLevel] = 5,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Slay 8 Ursera Scavengers and collect the head of the den mother, Urs'anah in Thendal Grove."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
@@ -1089,7 +1459,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251366}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 4,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with Aetheen of the Gales in Thendal Grove."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 10}, {2779, 10}},
@@ -1100,7 +1470,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251523}},
             [questKeys.requiredLevel] = 3,
             [questKeys.questLevel] = 5,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Report to Constable Aonda in Shen'dar Village."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
@@ -1110,7 +1480,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257551}},
             [questKeys.requiredLevel] = 3,
             [questKeys.questLevel] = 4,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Collect 6 Scrawny Ursera Claws from Scrawny Ursera in Thendal Grove."},
             [questKeys.objectives] = {nil, nil, {{251918}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -1159,7 +1529,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251376}},
             [questKeys.requiredLevel] = 2,
             [questKeys.questLevel] = 2,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.requiredClasses] = classIDs.HUNTER,
             [questKeys.objectivesText] = {"Read the Scribbled Note and then speak with Tai'ree Farsight in Thendal Grove."},
             [questKeys.sourceItemId] = 282421,
@@ -1172,7 +1542,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251389}},
             [questKeys.requiredLevel] = 2,
             [questKeys.questLevel] = 2,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.requiredClasses] = classIDs.ROGUE,
             [questKeys.objectivesText] = {"Read the Simple Note then speak with Akeri Duskblade within the watchtower in Thendal Grove."},
             [questKeys.sourceItemId] = 282422,
@@ -1198,12 +1568,23 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251373}},
             [questKeys.requiredLevel] = 2,
             [questKeys.questLevel] = 2,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.objectivesText] = {"Read the Folded Parchment then speak with Xyton Silverwind in Thendal Grove."},
             [questKeys.sourceItemId] = 282420,
             [questKeys.zoneOrSort] = sortKeys.DRUID,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
+        },
+        [92489] = { -- Power Overwhelming : https://wowhead.com/forever/quest=92489/power-overwhelming
+            [questKeys.name] = "Power Overwhelming",
+            [questKeys.startedBy] = {{5694}},
+            [questKeys.finishedBy] = {{5694}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Slay the Mana Elemental in the City of Dalaran for High Sorcerer Andromath in Stormwind City."},
+            [questKeys.objectives] = {{{246016}}},
+            [questKeys.zoneOrSort] = zoneIDs.CITY_OF_DALARAN,
         },
         [92514] = { -- Welcome to Shen'dar Village : https://wowhead.com/forever/quest=92514/welcome-to-shendar-village
             [questKeys.name] = "Welcome to Shen'dar Village",
@@ -1222,19 +1603,19 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251993}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 10 Prideclaw Pelts from the Prideclaws in Shen'dar Highlands."},
             [questKeys.objectives] = {nil, nil, {{252670}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
         },
-        [92516] = { -- Hippogryph Harrassment : https://wowhead.com/forever/quest=92516/hippogryph-harrassment
+        [92516] = { -- Hippogryph Harrassment : https://wowhead.com/forever/quest=92516/hippogryph-harassment
             [questKeys.name] = "Hippogryph Harrassment",
             [questKeys.startedBy] = {{251906}},
             [questKeys.finishedBy] = {{251906}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 7,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Slay 8 Hippogryph Youths, 6 Hippogryph Protectors and a Hippogryph Matriarch in the Shen'dar Highlands."},
             [questKeys.objectives] = {{{251291}, {251284}, {251261}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -1246,11 +1627,20 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251523}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 7,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Kill 10 Highlands Bandits and their leader, \"Badwind\" Bennic in the Shen'dar Highlands."},
             [questKeys.objectives] = {{{251918}, {255534}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
+        },
+        [92519] = { -- Ward Restocking : https://wowhead.com/forever/quest=92519/ward-restocking
+            [questKeys.name] = "Ward Restocking",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 36,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Pick up a case of Packaged Tonics at Jorell's lab in Go'shek Farm and return to Doctor Gregory Victor in Hammerfall."},
+            [questKeys.objectives] = {nil, nil, {{278462}}},
+            [questKeys.zoneOrSort] = zoneIDs.ARATHI_HIGHLANDS,
         },
         [92528] = { -- Among the Faithful : https://wowhead.com/forever/quest=92528/among-the-faithful
             [questKeys.name] = "Among the Faithful",
@@ -1258,7 +1648,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251523}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 8,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Look around Falaath Village to learn about the cult's intentions in the Shen'dar Highlands."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
@@ -1268,7 +1658,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257065}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 8,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Report to Missionary Jasaan near the entrance to Falaath Village. If you lose your Mark of Akir, speak with Sania Silverstream in Shen'dar Village to regain the effect."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
@@ -1278,7 +1668,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251964}},
             [questKeys.requiredLevel] = 2,
             [questKeys.questLevel] = 2,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.requiredClasses] = classIDs.WARRIOR,
             [questKeys.objectivesText] = {"Read the Crumpled Note you've been given, then seek out Blademaster Ren inside the Thendal Village watchtower."},
             [questKeys.sourceItemId] = 282419,
@@ -1291,7 +1681,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252095}},
             [questKeys.requiredLevel] = 2,
             [questKeys.questLevel] = 5,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Slay 6 Al'Aketh Brutes, 4 Al'Aketh Neophytes, and Malduko Cloudcrush in Thendal Grove."},
             [questKeys.objectives] = {{{251145}, {251448}, {256935}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -1303,7 +1693,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251523}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 8,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Travel to the ruins of Falaath Village and slay 6 Al'Aketh Stormcallers, 4 Living Lightning and take the head of Commander Cyclas."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
@@ -1314,7 +1704,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252172}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 8,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Collect 10 packs of Stolen Shen'dar Supplies from Falaath Village in the Shen'dar Highlands."},
             [questKeys.objectives] = {nil, nil, {{252760}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -1326,7 +1716,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251905}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Collect 3 Small Eggs and 8 Strider Meat from creatures found throughout the Shen'dar Highlands."},
             [questKeys.objectives] = {nil, nil, {{6889}, {5469}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -1394,7 +1784,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252383}},
             [questKeys.requiredLevel] = 6,
             [questKeys.questLevel] = 11,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with Valennia Stormfist in Valanaar and follow her instructions."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
@@ -1405,7 +1795,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252378}},
             [questKeys.requiredLevel] = 6,
             [questKeys.questLevel] = 11,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Slay 4 Al'Aketh Healers and 8 Al'Aketh Brawlers in the Gustberry Lowlands."},
             [questKeys.objectives] = {{{254596}, {270201}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -1417,7 +1807,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{253372}},
             [questKeys.requiredLevel] = 6,
             [questKeys.questLevel] = 11,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Find the cultist turncoat at the house just inside the highlands northwest of Valanaar."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
@@ -1428,7 +1818,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252476}},
             [questKeys.requiredLevel] = 6,
             [questKeys.questLevel] = 11,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Deliver the glowing crystal to Talanaanis Shadowsong in Valanaar."},
             [questKeys.sourceItemId] = 273852,
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -1440,7 +1830,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252378}},
             [questKeys.requiredLevel] = 6,
             [questKeys.questLevel] = 11,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Slay Commander Belguilos in the Gustberry Lowlands."},
             [questKeys.objectives] = {{{252666}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -1463,7 +1853,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252800}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 9,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Listen to what Alvarion Windfield has to say and find Aamelia Windfield at the Windfield Orchard."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
@@ -1473,7 +1863,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252800}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 9,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Gather 10 Ripe Stormapples and slay 5 Hungry Bandits at the Windfield Orchard."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
@@ -1483,7 +1873,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252800}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 9,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Gather 5 Flutterfly Dust from the Flutterflies around the Gustberry Lowlands."},
             [questKeys.objectives] = {nil, nil, {{253595}}},
             [questKeys.sourceItemId] = 253666,
@@ -1495,7 +1885,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252800}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 9,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Gather 7 Lowlands Galestrider Tenderloins from the Ornery Galestriders found throughout the Gustberry Lowlands."},
             [questKeys.objectives] = {nil, nil, {{253597}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -1506,7 +1896,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252800}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 9,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Loot 7 Blood-Stained Bandit Masks from Highwayman Bandits in the Gustberry Lowlands."},
             [questKeys.objectives] = {nil, nil, {{253596}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -1517,7 +1907,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252800}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 9,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Speak with Aamelia Windfield when you are ready to confront the bandit leader."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
@@ -1527,7 +1917,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252800}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 9,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Speak with Aamelia Windfield about the Malfunctioning Cyclone Construct."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
@@ -1570,7 +1960,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252448}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 9,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with Alvarion Windfield in Valanaar."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 100}, {2779, 100}},
@@ -1581,11 +1971,21 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{3391}},
             [questKeys.requiredLevel] = 15,
             [questKeys.questLevel] = 20,
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
             [questKeys.objectivesText] = {"Bring Bruuz's Dorsal Fin to Gazlowe in Ratchet."},
             [questKeys.objectives] = {nil, nil, {{253710}}},
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.reputationReward] = {{470, 100}},
+        },
+        [92707] = { -- The Giant in the Den : https://wowhead.com/forever/quest=92707/the-giant-in-the-den
+            [questKeys.name] = "The Giant in the Den",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Bring the Goliath's Wristguards to Drum Fel in Hammerfall."},
+            [questKeys.objectives] = {nil, nil, {{253711}}},
+            [questKeys.zoneOrSort] = zoneIDs.ARATHI_HIGHLANDS,
+            [questKeys.reputationReward] = {{76, 100}},
         },
         [92708] = { -- A Grand Adventure : https://wowhead.com/forever/quest=92708/a-grand-adventure
             [questKeys.name] = "A Grand Adventure",
@@ -1637,12 +2037,23 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{253092}},
             [questKeys.requiredLevel] = 9,
             [questKeys.questLevel] = 12,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Use the Well Water Sample Kit to collect samples from the wells at the Jansen Stead and the Molsen Farm."},
             [questKeys.objectives] = {nil, nil, {{254546}, {254547}}},
             [questKeys.sourceItemId] = 254545,
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
             [questKeys.reputationReward] = {{72, 50}},
+        },
+        [92743] = { -- A Conqueror's Crown : https://wowhead.com/forever/quest=92743/a-conquerors-crown
+            [questKeys.name] = "A Conqueror's Crown",
+            [questKeys.startedBy] = {{5398}},
+            [questKeys.finishedBy] = {{5398}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Magram, and return a Conqueror's Crown from the Badlands to Warug in Magram Village."},
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+            [questKeys.reputationReward] = {{93, 1000}},
         },
         [92744] = { -- Murloc Gills : https://wowhead.com/forever/quest=92744/murloc-gills
             [questKeys.name] = "Murloc Gills",
@@ -1650,7 +2061,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{253092}},
             [questKeys.requiredLevel] = 9,
             [questKeys.questLevel] = 12,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Alba Fairmoon wants you to collect 7 Longshore Murloc Gills along the shoreline of Westfall."},
             [questKeys.objectives] = {nil, nil, {{254548}}},
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
@@ -1662,7 +2073,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{253092}},
             [questKeys.requiredLevel] = 9,
             [questKeys.questLevel] = 14,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Slay 4 Kobold Diggers in the Jangolode Mine and 6 Riverpaw Miners in the Gold Coast Quarry."},
             [questKeys.objectives] = {{{1236}, {1426}}},
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
@@ -1673,8 +2084,8 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {{253092}},
             [questKeys.finishedBy] = {{253092}},
             [questKeys.requiredLevel] = 9,
-            [questKeys.questLevel] = 16,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.questLevel] = 15,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 8 Suspicious Industrial Supplies from Moonbrook."},
             [questKeys.objectives] = {nil, nil, {{254676}}},
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
@@ -1697,9 +2108,9 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{11026}},
             [questKeys.requiredLevel] = 9,
             [questKeys.questLevel] = 16,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Obtain 10 Coarse Dynamite from crafting, trading, or the auction house, then return to Sprite Jumpsprocket in the Dwarven District of Stormwind."},
-            [questKeys.objectives] = {nil, nil, {{4365}}},
+            [questKeys.objectives] = {nil, nil, {{4358}}},
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
             [questKeys.reputationReward] = {{72, 50}},
         },
@@ -1744,11 +2155,77 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{253279}},
             [questKeys.requiredLevel] = 9,
             [questKeys.questLevel] = 18,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Find the forge hidden in the Deadmines, and plant the Extra-Destructive Explosives nearby. Then, meet up with Alba Fairmoon at the Deadmines exit."},
             [questKeys.sourceItemId] = 254553,
-            [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
+            [questKeys.zoneOrSort] = zoneIDs.THE_DEADMINES,
             [questKeys.reputationReward] = {{72, 50}},
+        },
+        [92754] = { -- A New Need for Shadow Protection : https://wowhead.com/forever/quest=92754/a-new-need-for-shadow-protection
+            [questKeys.name] = "A New Need for Shadow Protection",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 35,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Magram, and bring 3 Greater Shadow Protection Potions to Mirda in the Magram Village in Desolace."},
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+            [questKeys.reputationReward] = {{93, 1000}},
+        },
+        [92755] = { -- Mysterious Mysticism : https://wowhead.com/forever/quest=92755/mysterious-mysticism
+            [questKeys.name] = "Mysterious Mysticism",
+            [questKeys.finishedBy] = {{253096}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 35,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Gelkis, and bring 3 Greater Mystic Essences to Halea in the Gelkis Village in Desolace."},
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+            [questKeys.reputationReward] = {{92, 1000}},
+        },
+        [92811] = { -- Economic Warfare : https://wowhead.com/forever/quest=92811/economic-warfare
+            [questKeys.name] = "Economic Warfare",
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.objectives] = {nil, nil, {{254432}}},
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+            [questKeys.reputationReward] = {{93, 750}},
+        },
+        [92812] = { -- Economic Warfare : https://wowhead.com/forever/quest=92812/economic-warfare
+            [questKeys.name] = "Economic Warfare",
+            [questKeys.startedBy] = {{253140}},
+            [questKeys.finishedBy] = {{253140}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectives] = {nil, nil, {{254432}}},
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+            [questKeys.reputationReward] = {{92, 750}},
+        },
+        [92814] = { -- I Need a Tailor : https://wowhead.com/forever/quest=92814/i-need-a-tailor
+            [questKeys.name] = "I Need a Tailor",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 35,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Gelkis, and bring a White Bandit Mask to Molkar in the Gelkis Village in Desolace."},
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+            [questKeys.reputationReward] = {{92, 1000}},
+        },
+        [92817] = { -- Leather Technique : https://wowhead.com/forever/quest=92817/leather-technique
+            [questKeys.name] = "Leather Technique",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 35,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Gelkis, and bring a Barbaric Harness to Talra in the Gelkis Village in Desolace."},
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+            [questKeys.reputationReward] = {{92, 1000}},
+        },
+        [92818] = { -- Big, No, MASSIVE Iron Axes : https://wowhead.com/forever/quest=92818/big-no-massive-iron-axes
+            [questKeys.name] = "Big, No, MASSIVE Iron Axes",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 35,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Magram, and bring 2 Massive Iron Axes to Grolkar in the Magram Village in Desolace."},
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+            [questKeys.reputationReward] = {{93, 1000}},
         },
         [92819] = { -- Destruction in Deadmines : https://wowhead.com/forever/quest=92819/destruction-in-deadmines
             [questKeys.name] = "Destruction in Deadmines",
@@ -1785,6 +2262,47 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2779, 100}},
         },
+        [92841] = { -- Valley of Bones : https://wowhead.com/forever/quest=92841/valley-of-bones
+            [questKeys.name] = "Valley of Bones",
+            [questKeys.startedBy] = {{5398}},
+            [questKeys.finishedBy] = {{253136}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Improve your reputation with the Magram, and locate Orgrul near the Valley of Bones south of Magram Village."},
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{93, 125}},
+        },
+        [92844] = { -- Mountain of Bones : https://wowhead.com/forever/quest=92844/mountain-of-bones
+            [questKeys.name] = "Mountain of Bones",
+            [questKeys.startedBy] = {{253136}},
+            [questKeys.finishedBy] = {{253136}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 42,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Maintain your reputation with the Magram, and bring 426 Gently Cursed Bones to Orgrul south of the Magram Village in Desolace."},
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{93, 500}},
+        },
+        [92846] = { -- Outcast Necromancers : https://wowhead.com/forever/quest=92846/outcast-necromancers
+            [questKeys.name] = "Outcast Necromancers",
+            [questKeys.startedBy] = {{253136}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Maintain your reputation with the Magram, and slay Outcast Necromancers within the Valley of Bones."},
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{93, 500}},
+        },
+        [92847] = { -- Corrupting Tears : https://wowhead.com/forever/quest=92847/corrupting-tears
+            [questKeys.name] = "Corrupting Tears",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 42,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Magram, and bring 3 Petrified Bark and 3 Imbued Tears back to Orgrul."},
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{93, 500}},
+        },
         [92849] = { -- The Missing Scholar : https://wowhead.com/forever/quest=92849/the-missing-scholar
             [questKeys.name] = "The Missing Scholar",
             [questKeys.finishedBy] = {{253284}},
@@ -1818,6 +2336,15 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2779, 50}},
         },
+        [92867] = { -- Ground to Keep : https://wowhead.com/forever/quest=92867/ground-to-keep
+            [questKeys.name] = "Ground to Keep",
+            [questKeys.requiredLevel] = 32,
+            [questKeys.questLevel] = 39,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.objectivesText] = {"Defeat the Boulderfist, Syndicate, and Witherbark intruders in Stromgarde Keep and return to Groundskeeper Lomar."},
+            [questKeys.objectives] = {{{2569}, {2590}, {2588}, {2558}}},
+            [questKeys.zoneOrSort] = zoneIDs.ARATHI_HIGHLANDS,
+        },
         [92871] = { -- In Service of Zephras : https://wowhead.com/forever/quest=92871/in-service-of-zephras
             [questKeys.name] = "In Service of Zephras",
             [questKeys.startedBy] = {{251968}},
@@ -1829,13 +2356,32 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}},
         },
+        [92872] = { -- Dutiful Steps : https://wowhead.com/forever/quest=92872/dutiful-steps
+            [questKeys.name] = "Dutiful Steps",
+            [questKeys.requiredLevel] = 32,
+            [questKeys.questLevel] = 38,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Throw the Pouch of Tomb Dust into The Great Sea and return to Caretaker Alaric in the Stromgarde Keep crypt."},
+            [questKeys.sourceItemId] = 278543,
+            [questKeys.zoneOrSort] = zoneIDs.ARATHI_HIGHLANDS,
+        },
+        [92873] = { -- Proof of Concept : https://wowhead.com/forever/quest=92873/proof-of-concept
+            [questKeys.name] = "Proof of Concept",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 41,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Magram Clan, then bring 426 Well Cursed Bones from a successful ritual back to Orgrul."},
+            [questKeys.sourceItemId] = 254870,
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{93, 500}},
+        },
         [92880] = { -- Return to Valanaar : https://wowhead.com/forever/quest=92880/return-to-valanaar
             [questKeys.name] = "Return to Valanaar",
             [questKeys.startedBy] = {{252378}},
             [questKeys.finishedBy] = {{252383}},
             [questKeys.requiredLevel] = 6,
             [questKeys.questLevel] = 11,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Bring Yorna's Report to Valennia Stormfist in Valanaar."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 25}, {2779, 25}},
@@ -1846,10 +2392,29 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252476}},
             [questKeys.requiredLevel] = 6,
             [questKeys.questLevel] = 11,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with Talaanis Shadowsong in Valanaar."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 10}, {2779, 10}},
+        },
+        [92893] = { -- No Mercy for the Weak : https://wowhead.com/forever/quest=92893/no-mercy-for-the-weak
+            [questKeys.name] = "No Mercy for the Weak",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 42,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Magram Clan, and slay 5 Gelkis Captives scattered around the Valley of Bones. Return to Orgrul after the task is complete."},
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{93, 500}},
+        },
+        [92894] = { -- Bone Raising : https://wowhead.com/forever/quest=92894/bone-raising
+            [questKeys.name] = "Bone Raising",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Magram Clan, and use the Enhanced Necromancy Staff to fully raise undead that are struggling to emerge throughout the Valley of Bones. Return to Orgrul once the Magram army has grown."},
+            [questKeys.sourceItemId] = 255403,
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{93, 500}},
         },
         [92909] = { -- Harvesting the Harvesters : https://wowhead.com/forever/quest=92909/harvesting-the-harvesters
             [questKeys.name] = "Harvesting the Harvesters",
@@ -1857,7 +2422,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{253395}},
             [questKeys.requiredLevel] = 8,
             [questKeys.questLevel] = 15,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Ozwin Ironsprocket at Saldean's Farm wants you to bring him 14 Golem Isosprings and 5 Harvester Gyrostabilizers."},
             [questKeys.objectives] = {nil, nil, {{255007}, {255010}}},
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
@@ -1893,10 +2458,32 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{253576}},
             [questKeys.requiredLevel] = 7,
             [questKeys.questLevel] = 12,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
-            [questKeys.objectivesText] = {"Slay 8 Al'Aketh Guardians, 6 Al'Aketh Spiritcallers, and 6 Al'Aketh Blademasters, then report to Hyusaa Quickbreeze at the Shrine of Akir."},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
+            [questKeys.objectivesText] = {"Slay 7 Al'Aketh Guardians, 7 Al'Aketh Spiritcallers, and 7 Al'Aketh Blademasters, then report to Hyusaa Quickbreeze at the Shrine of Akir."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
+        },
+        [93034] = { -- Valley of Bones : https://wowhead.com/forever/quest=93034/valley-of-bones
+            [questKeys.name] = "Valley of Bones",
+            [questKeys.startedBy] = {{5397}},
+            [questKeys.finishedBy] = {{253177}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 38,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Improve your reputation with the Gelkis, and locate Nerlokh near the Valley of Bones far east of Gelkis Village."},
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{92, 125}},
+        },
+        [93035] = { -- Ravaging Ravagers : https://wowhead.com/forever/quest=93035/ravaging-ravagers
+            [questKeys.name] = "Ravaging Ravagers",
+            [questKeys.startedBy] = {{253177}},
+            [questKeys.finishedBy] = {{253177}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 38,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Gelkis Clan and slay 6 Undead Ravagers, then return to Nerlokh at the southern entrance to Valley of Bones."},
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{92, 500}},
         },
         [93036] = { -- Infiltrating the Cult : https://wowhead.com/forever/quest=93036/infiltrating-the-cult
             [questKeys.name] = "Infiltrating the Cult",
@@ -1904,10 +2491,64 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251904}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 8,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with Sania Silverstream in Shen'dar Village."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
+        },
+        [93037] = { -- Outing Outcasts : https://wowhead.com/forever/quest=93037/outing-outcasts
+            [questKeys.name] = "Outing Outcasts",
+            [questKeys.startedBy] = {{253177}},
+            [questKeys.finishedBy] = {{253177}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Gelkis Clan, and bring 1 Necromantic Garb to Nerlokh at the entrance of the Valley of Bones."},
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{92, 500}},
+        },
+        [93041] = { -- Facing the Truth : https://wowhead.com/forever/quest=93041/facing-the-truth
+            [questKeys.name] = "Facing the Truth",
+            [questKeys.startedBy] = {{253177}},
+            [questKeys.finishedBy] = {{5397}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 38,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Gelkis Clan, and bring an Accursed Skull and Gelkis Necromantic Garb to Uthek the Wise in Gelkis Village."},
+            [questKeys.sourceItemId] = 255941,
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{92, 500}},
+        },
+        [93044] = { -- A Cleansing Cry : https://wowhead.com/forever/quest=93044/a-cleansing-cry
+            [questKeys.name] = "A Cleansing Cry",
+            [questKeys.finishedBy] = {{5397}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 38,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Gelkis, and bring Tears of Theradras back to Uthek the Wise in Gelkis Village."},
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+            [questKeys.reputationReward] = {{92, 500}},
+        },
+        [93058] = { -- Saving Our Own : https://wowhead.com/forever/quest=93058/saving-our-own
+            [questKeys.name] = "Saving Our Own",
+            [questKeys.finishedBy] = {{253177}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 42,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Gelkis clan, and rescue 5 Gelkis Captives within the Valley of Bones. Return to Nerlokh near the entrance when you are done."},
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{92, 500}},
+        },
+        [93062] = { -- Bone Burying : https://wowhead.com/forever/quest=93062/bone-burying
+            [questKeys.name] = "Bone Burying",
+            [questKeys.finishedBy] = {{253177}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 42,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Gelkis Clan, and dispel the curses from 8 failed summons throughout the Valley of Bones."},
+            [questKeys.sourceItemId] = 258661,
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{92, 500}},
         },
         [93065] = { -- Prepare for Battle : https://wowhead.com/forever/quest=93065/prepare-for-battle
             [questKeys.name] = "Prepare for Battle",
@@ -1915,9 +2556,29 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{253844}},
             [questKeys.requiredLevel] = 7,
             [questKeys.questLevel] = 12,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with Valennia Stormfist in the Gustberry Lowlands."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
+        },
+        [93066] = { -- Bristleback Retreat : https://wowhead.com/forever/quest=93066/bristleback-retreat
+            [questKeys.name] = "Bristleback Retreat",
+            [questKeys.finishedBy] = {{253851}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 43,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Magram, and slay quilboar at Bristleback Retreat. Then report to Hagiak at the Magram Front on the other side of Valley of Bones in Desolace."},
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{93, 500}},
+        },
+        [93072] = { -- Long-Term Solutions : https://wowhead.com/forever/quest=93072/long-term-solutions
+            [questKeys.name] = "Long-Term Solutions",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 43,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Magram clan and slay 2 Outcast Scouts, 6 Outcast Marauders, and 8 Outcast Necromancers then return to Hagiak at the Magram Front."},
+            [questKeys.objectives] = {{{254283}, {254284}, {11559}}},
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{93, 500}},
         },
         [93089] = { -- What Comes Next : https://wowhead.com/forever/quest=93089/what-comes-next
             [questKeys.name] = "What Comes Next",
@@ -1941,13 +2602,52 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 25}},
         },
+        [93122] = { -- Checking Things Out : https://wowhead.com/forever/quest=93122/checking-things-out
+            [questKeys.name] = "Checking Things Out",
+            [questKeys.finishedBy] = {{253177}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 43,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Gelkis, and investigate centaur points of interest within Shen'dralas. Then return to Nerlokh at the entrance of Valley of Bones with your findings."},
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{92, 500}},
+        },
+        [93125] = { -- Going Home : https://wowhead.com/forever/quest=93125/going-home
+            [questKeys.name] = "Going Home",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 43,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Gelkis, and escort Rokren out of the Outcast Hideaway. Then inform Nerlokh near the Valley of Bones about what happened."},
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{92, 500}},
+        },
+        [93128] = { -- Khan Jehn : https://wowhead.com/forever/quest=93128/khan-jehn
+            [questKeys.name] = "Khan Jehn",
+            [questKeys.startedBy] = {{253177}},
+            [questKeys.finishedBy] = {{5397}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 42,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Gelkis, and slay Khan Jhen at Magram Village. Once you have succeeded, report to Uthek the Wise in Gelkis Village in Desolace."},
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+            [questKeys.reputationReward] = {{92, 6000}},
+        },
+        [93129] = { -- Threat of Starvation : https://wowhead.com/forever/quest=93129/threat-of-starvation
+            [questKeys.name] = "Threat of Starvation",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 43,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Magram, and bring 6 Stolen Supplies back to Hagiak at the Magram Front."},
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{93, 500}},
+        },
         [93159] = { -- The Strange Hermit : https://wowhead.com/forever/quest=93159/the-strange-hermit
             [questKeys.name] = "The Strange Hermit",
             [questKeys.startedBy] = {{251684}},
             [questKeys.finishedBy] = {{251684}},
             [questKeys.requiredLevel] = 8,
             [questKeys.questLevel] = 13,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with the Strange Hermit in the Shadowgale Forest and learn more about him."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
@@ -1957,7 +2657,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251684}},
             [questKeys.requiredLevel] = 8,
             [questKeys.questLevel] = 13,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Gather 8 Shadowgale Acorns in Shadowgale Forest."},
             [questKeys.objectives] = {nil, nil, {{257128}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -1968,7 +2668,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{254151}},
             [questKeys.requiredLevel] = 8,
             [questKeys.questLevel] = 13,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Collect 10 Al'Aketh Cultist's Ears from the Al'Aketh cultists in Shadowgale Forest, the Shine of Akir, or Gustberry Lowlands."},
             [questKeys.objectives] = {nil, nil, {{258771}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -1980,9 +2680,81 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251684}},
             [questKeys.requiredLevel] = 8,
             [questKeys.questLevel] = 13,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Destroy 10 Wind Hollows in Shadowgale Forest."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
+        },
+        [93176] = { -- My Little Friends : https://wowhead.com/forever/quest=93176/my-little-friends
+            [questKeys.name] = "My Little Friends",
+            [questKeys.startedBy] = {{217412}},
+            [questKeys.finishedBy] = {{217412}},
+            [questKeys.requiredLevel] = 25,
+            [questKeys.questLevel] = 35,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Use the items contained in the Entomology Starter Kit to find and catch an Arbor Tarantula, Hay Weevil Specimen, and a Flesh Picker."},
+            [questKeys.zoneOrSort] = zoneIDs.SWAMP_OF_SORROWS,
+        },
+        [93188] = { -- Return to Orgrul : https://wowhead.com/forever/quest=93188/return-to-orgrul
+            [questKeys.name] = "Return to Orgrul",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 43,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Magram, and report back to Orgrul near the northern entrance to Valley of Bones."},
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
+            [questKeys.reputationReward] = {{93, 500}},
+        },
+        [93196] = { -- Khan Jehn : https://wowhead.com/forever/quest=93196/khan-jehn
+            [questKeys.name] = "Khan Jehn",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 42,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.objectivesText] = {"Maintain your reputation with the Magram and perform a necromancy ritual to resurrect Khan Jehn. The ritual site can be found in a tent at the central lake of Magram Village."},
+            [questKeys.sourceItemId] = 257517,
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+            [questKeys.reputationReward] = {{93, 6000}},
+        },
+        [93224] = { -- Carved Centaur Totems : https://wowhead.com/forever/quest=93224/carved-centaur-totems
+            [questKeys.name] = "Carved Centaur Totems",
+            [questKeys.startedBy] = {{5396}},
+            [questKeys.finishedBy] = {{5396}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Acquire 5 Carved Centaur Totems by slaying centaur of any clan throughout Desolace, then return them to Captain Pentigast at Nijel's Point."},
+            [questKeys.objectives] = {nil, nil, {{254432}}},
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+        },
+        [93225] = { -- Carved Centaur Totems : https://wowhead.com/forever/quest=93225/carved-centaur-totems
+            [questKeys.name] = "Carved Centaur Totems",
+            [questKeys.startedBy] = {{5412}},
+            [questKeys.finishedBy] = {{5412}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Acquire 5 Carved Centaur Totems by slaying centaur of any clan throughout Desolace, then return them to Gurda Wildmane at Ghost Walker Post."},
+            [questKeys.objectives] = {nil, nil, {{254432}}},
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+        },
+        [93226] = { -- Buying Friendship: Magram : https://wowhead.com/forever/quest=93226/buying-friendship-magram
+            [questKeys.name] = "Buying Friendship: Magram",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 45,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- Assumption: assumptions/reviewed_alliance_races.toml; ALL_ALLIANCE; Reviewed Alliance access: faction-specific objectives and matching quest variants, or an identified Alliance starter/chain, support the full Alliance race mask for these IDs.
+            [questKeys.objectivesText] = {"Bring the Totem Tote to the Magram Quartermaster at Magram Village in the Desolace to significantly increase your reputation with that clan. You must be of at least Neutral standing with the Magram Clan Centaur."},
+            [questKeys.sourceItemId] = 257685,
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+            [questKeys.reputationReward] = {{93, 3000}},
+        },
+        [93227] = { -- Buying Friendship: Gelkis : https://wowhead.com/forever/quest=93227/buying-friendship-gelkis
+            [questKeys.name] = "Buying Friendship: Gelkis",
+            [questKeys.startedBy] = {{5396}},
+            [questKeys.finishedBy] = {{253140}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 45,
+            [questKeys.objectivesText] = {"Bring the Totem Tote to the Gelkis Quartermaster at Gelkis Village in the Desolace to significantly increase your reputation with that clan. You must be of at least Neutral standing with the Gelkis Clan Centaur."},
+            [questKeys.sourceItemId] = 257685,
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+            [questKeys.reputationReward] = {{92, 3000}},
         },
         [93317] = { -- Crab Season : https://wowhead.com/forever/quest=93317/crab-season
             [questKeys.name] = "Crab Season",
@@ -1990,7 +2762,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257006}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 9,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Collect 6 pieces of Windsong Crawler Meat."},
             [questKeys.objectives] = {nil, nil, {{257941}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -2000,7 +2772,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252172}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 9,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Kill Vulgara the Insatiable in the Shen'dar Highlands and bring her head to Danarii Bellowveil."},
             [questKeys.objectives] = {nil, nil, {{257942}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -2012,7 +2784,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251906}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 7,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Collect 10 Pilfered Windstones from the Highlands Bandits in the Shen'dar Highlands."},
             [questKeys.objectives] = {nil, nil, {{257945}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -2024,17 +2796,34 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252378}},
             [questKeys.requiredLevel] = 6,
             [questKeys.questLevel] = 11,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Report to Yorana Windyreed at the eastern watchtower in the Gustberry Lowlands."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
+        },
+        [93429] = { -- Blood of My Blood : https://wowhead.com/forever/quest=93429/blood-of-my-blood
+            [questKeys.name] = "Blood of My Blood",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 35,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.objectivesText] = {"Slay 10 Lost Ones in the Fallow Sanctuary."},
+            [questKeys.zoneOrSort] = zoneIDs.SWAMP_OF_SORROWS,
+        },
+        [93430] = { -- Taking the Bait Back : https://wowhead.com/forever/quest=93430/taking-the-bait-back
+            [questKeys.name] = "Taking the Bait Back",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 35,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.objectivesText] = {"Find the Lost One Fisherman who stole Pelluk's lure, and take it back."},
+            [questKeys.objectives] = {nil, nil, {{258530}}},
+            [questKeys.zoneOrSort] = zoneIDs.SWAMP_OF_SORROWS,
         },
         [93459] = { -- More Al'Aketh Ears : https://wowhead.com/forever/quest=93459/more-alaketh-ears
             [questKeys.name] = "More Al'Aketh Ears",
             [questKeys.finishedBy] = {{254151}},
             [questKeys.requiredLevel] = 8,
             [questKeys.questLevel] = 13,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Collect 10 Al'Aketh Cultist's Ears from the Al'Aketh in Shadowgale Forest, the Shine of Akir, or Gustberry Lowlands and return them to Vayn Moonclaw in Shadowgale Forest."},
             [questKeys.objectives] = {nil, nil, {{258771}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -2050,17 +2839,74 @@ function ForeverBaseQuest:Load()
             [questKeys.objectivesText] = {"Speak with Rathiril Sunlance and Coriella Calmbreeze in Shen'dar Village."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
+        [93464] = { -- The Visiting Mage : https://wowhead.com/forever/quest=93464/the-visiting-mage
+            [questKeys.name] = "The Visiting Mage",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 38,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Find the mage in Desolace who knows about the power of draenethyst."},
+            [questKeys.zoneOrSort] = zoneIDs.SWAMP_OF_SORROWS,
+        },
+        [93465] = { -- Notes on Draenethyst : https://wowhead.com/forever/quest=93465/notes-on-draenethyst
+            [questKeys.name] = "Notes on Draenethyst",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Take Gimashi's notes on Draenethyst, and bring them back to Azore Aldamort."},
+            [questKeys.objectives] = {nil, nil, {{258774}}},
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+        },
         [93552] = { -- Harvesting Windstones : https://wowhead.com/forever/quest=93552/harvesting-windstones
             [questKeys.name] = "Harvesting Windstones",
             [questKeys.startedBy] = {{251363}},
             [questKeys.finishedBy] = {{251363}},
             [questKeys.requiredLevel] = 2,
             [questKeys.questLevel] = 4,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Collect 15 Windstone Clusters from Raw Windstones in Thendal Grove."},
             [questKeys.objectives] = {nil, nil, {{258772}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
+        },
+        [93585] = { -- This Light of Mine : https://wowhead.com/forever/quest=93585/this-light-of-mine
+            [questKeys.name] = "This Light of Mine",
+            [questKeys.startedBy] = {{255597}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 34,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Escort Father Tuttle to The Harborage."},
+            [questKeys.zoneOrSort] = zoneIDs.SWAMP_OF_SORROWS,
+        },
+        [93663] = { -- Lost in Transit : https://wowhead.com/forever/quest=93663/lost-in-transit
+            [questKeys.name] = "Lost in Transit",
+            [questKeys.startedBy] = {{5591}},
+            [questKeys.finishedBy] = {{1776}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 35,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Find the missing courier, and ensure Dar's shipment is delivered to the Harborage."},
+            [questKeys.objectives] = {nil, nil, {{260452}}},
+            [questKeys.zoneOrSort] = zoneIDs.SWAMP_OF_SORROWS,
+        },
+        [93678] = { -- Abridged Notes on Draenethyst : https://wowhead.com/forever/quest=93678/abridged-notes-on-draenethyst
+            [questKeys.name] = "Abridged Notes on Draenethyst",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Take Azore's transcribed notes back to Magtoor at the Harborage in Swamp of Sorrows."},
+            [questKeys.sourceItemId] = 260518,
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+        },
+        [93680] = { -- Key to the City : https://wowhead.com/forever/quest=93680/key-to-the-city
+            [questKeys.name] = "Key to the City",
+            [questKeys.startedBy] = {{2410}},
+            [questKeys.finishedBy] = {{2410}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Acquire the Dalaran Sewer Key for Magus Wordeen Voidglare in Tarren Mill."},
+            [questKeys.objectives] = {nil, nil, {{279469}}},
+            [questKeys.zoneOrSort] = zoneIDs.ALTERAC_MOUNTAINS,
         },
         [93735] = { -- The Broken Construct : https://wowhead.com/forever/quest=93735/the-broken-construct
             [questKeys.name] = "The Broken Construct",
@@ -2158,8 +3004,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{256507}},
             [questKeys.requiredLevel] = 10,
             [questKeys.questLevel] = 10,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
-            [questKeys.requiredClasses] = classIDs.MAGE,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Bring a Wind-Infused Bough to Belann Windwood in Valanaar."},
             [questKeys.objectives] = {nil, nil, {{262668}}},
             [questKeys.zoneOrSort] = sortKeys.MAGE,
@@ -2171,7 +3016,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252475}},
             [questKeys.requiredLevel] = 7,
             [questKeys.questLevel] = 12,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Take the portal to the Rohashi Spires overhead and join Elaadrin Evengale and Ayessa Dawnsinger in their confrontation with High Priestess Lorthuna."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 150}, {2779, 150}},
@@ -2191,7 +3036,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Crate Return",
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_return.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/commerce_return.toml; 0 = all races; Reviewed commerce return: the shipping-container objective and both commerce reputation rewards support a shared service.
             [questKeys.objectives] = {nil, nil, {{262917}}},
             [questKeys.reputationReward] = {{2586, 50}, {2587, 50}},
         },
@@ -2201,7 +3046,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252155}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 8,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Find Peacekeeper Vaaniel at the western watchtower."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
@@ -2212,7 +3057,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251523}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 8,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Collect the note you found near the dead peacekeeper and read it to determine your next steps."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
@@ -2233,7 +3078,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252476}},
             [questKeys.requiredLevel] = 6,
             [questKeys.questLevel] = 9,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Deliver the Shadowsong Family Signet to Talaanis Shadowsong in Valanaar."},
             [questKeys.sourceItemId] = 263491,
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -2245,8 +3090,8 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252383}},
             [questKeys.requiredLevel] = 6,
             [questKeys.questLevel] = 8,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
-            [questKeys.objectivesText] = {"Kill Skyhoppers in Valanaar until you've eliminated 8 enchanted Skyhoppers."},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
+            [questKeys.objectivesText] = {"Kill Skyhoppers in Valanaar until you've eliminated 8 Enchanted Skyhoppers."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
         [93951] = { -- A Little Beauty : https://wowhead.com/forever/quest=93951/a-little-beauty
@@ -2255,7 +3100,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251991}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 7,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Collect 8 Hippogryph Down feathers in the Shen'dar Highlands."},
             [questKeys.objectives] = {nil, nil, {{263493}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -2267,7 +3112,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{253590}},
             [questKeys.requiredLevel] = 7,
             [questKeys.questLevel] = 12,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with Valennia Stormfist inside the inner sanctum at the Shrine of Akir."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
@@ -2301,7 +3146,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257281}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264011}, {3391}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2378,7 +3223,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264014}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264014}, {6048}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2414,7 +3259,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{14508}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264017}, {3388}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2423,9 +3268,10 @@ function ForeverBaseQuest:Load()
         [94218] = { -- Craftsman's Writ: Elixir of Defense : https://wowhead.com/forever/quest=94218/craftsmans-writ-elixir-of-defense
             [questKeys.name] = "Craftsman's Writ: Elixir of Defense",
             [questKeys.startedBy] = {nil, nil, {264018}},
+            [questKeys.finishedBy] = {{4720}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264018}, {8951}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2434,9 +3280,10 @@ function ForeverBaseQuest:Load()
         [94219] = { -- Craftsman's Writ: Draught of Water Breathing : https://wowhead.com/forever/quest=94219/craftsmans-writ-draught-of-water-breathing
             [questKeys.name] = "Craftsman's Writ: Draught of Water Breathing",
             [questKeys.startedBy] = {nil, nil, {264019}},
+            [questKeys.finishedBy] = {{8305}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264019}, {5996}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2447,7 +3294,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264020}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264020}, {5540}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2459,7 +3306,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257296}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264021}, {11128}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2468,9 +3315,10 @@ function ForeverBaseQuest:Load()
         [94222] = { -- Craftsman's Writ: Iridescent Hammer : https://wowhead.com/forever/quest=94222/craftsmans-writ-iridescent-hammer
             [questKeys.name] = "Craftsman's Writ: Iridescent Hammer",
             [questKeys.startedBy] = {nil, nil, {264022}},
+            [questKeys.finishedBy] = {{257316}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264022}, {5541}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2481,7 +3329,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264023}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264023}, {15869}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2492,7 +3340,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264024}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264024}, {3491}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2503,7 +3351,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264025}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264025}, {2865}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2514,7 +3362,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264026}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264026}, {3485}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2526,7 +3374,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{6626}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264027}, {3848}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2537,7 +3385,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264028}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264028}, {3484}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2549,7 +3397,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257282}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264029}, {5507}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2558,9 +3406,10 @@ function ForeverBaseQuest:Load()
         [94230] = { -- Craftsman's Writ: Explosive Sheep : https://wowhead.com/forever/quest=94230/craftsmans-writ-explosive-sheep
             [questKeys.name] = "Craftsman's Writ: Explosive Sheep",
             [questKeys.startedBy] = {nil, nil, {264030}},
+            [questKeys.finishedBy] = {{257304}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264030}, {4384}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2569,9 +3418,10 @@ function ForeverBaseQuest:Load()
         [94231] = { -- Craftsman's Writ: Moonsight Rifle : https://wowhead.com/forever/quest=94231/craftsmans-writ-moonsight-rifle
             [questKeys.name] = "Craftsman's Writ: Moonsight Rifle",
             [questKeys.startedBy] = {nil, nil, {264031}},
+            [questKeys.finishedBy] = {{257317}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264031}, {4383}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2582,7 +3432,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264032}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264032}, {4381}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2605,7 +3455,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264034}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264034}, {4373}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2617,7 +3467,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{7853}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264035}, {7506}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2628,7 +3478,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264036}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264036}, {4380}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2639,7 +3489,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264037}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264037}, {8069}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2650,7 +3500,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264038}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264038}, {18662}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2661,7 +3511,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264039}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264039}, {5958}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2672,7 +3522,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264040}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264040}, {7349}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2695,7 +3545,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264042}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264042}, {7358}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2706,7 +3556,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264043}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264043}, {7371}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2717,7 +3567,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264044}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264044}, {4252}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2728,7 +3578,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264045}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264045}, {4254}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2739,7 +3589,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264046}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264046}, {7284}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2748,9 +3598,10 @@ function ForeverBaseQuest:Load()
         [94247] = { -- Craftsman's Writ: Lesser Wizard's Robe : https://wowhead.com/forever/quest=94247/craftsmans-writ-lesser-wizards-robe
             [questKeys.name] = "Craftsman's Writ: Lesser Wizard's Robe",
             [questKeys.startedBy] = {nil, nil, {264047}},
+            [questKeys.finishedBy] = {{257282}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264047}, {5766}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2774,7 +3625,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257316}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264049}, {7048}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2785,7 +3636,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264050}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264050}, {4245}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2796,7 +3647,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264051}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264051}, {4317}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2807,7 +3658,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264052}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264052}, {4313}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2818,7 +3669,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264053}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264053}, {10048}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2829,7 +3680,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264054}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264054}, {6264}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2838,9 +3689,10 @@ function ForeverBaseQuest:Load()
         [94255] = { -- Craftsman's Writ: Spider Silk Slippers : https://wowhead.com/forever/quest=94255/craftsmans-writ-spider-silk-slippers
             [questKeys.name] = "Craftsman's Writ: Spider Silk Slippers",
             [questKeys.startedBy] = {nil, nil, {264055}},
+            [questKeys.finishedBy] = {{8305}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264055}, {4321}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2851,7 +3703,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264056}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264056}, {6050}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2862,7 +3714,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264057}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264057}, {3823}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2873,7 +3725,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264058}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264058}, {4623}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2884,7 +3736,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264059}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264059}, {6052}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2895,7 +3747,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264060}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264060}, {10592}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2906,7 +3758,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264061}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264061}, {5633}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2917,7 +3769,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264062}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264062}, {3827}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2928,7 +3780,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264063}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264063}, {6049}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2939,7 +3791,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264064}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264064}, {3824}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2950,7 +3802,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264065}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264065}, {9061}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2961,7 +3813,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264066}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264066}, {8949}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2972,7 +3824,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264067}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264067}, {9144}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2983,7 +3835,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264068}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264068}, {7922}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -2994,7 +3846,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264069}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264069}, {9060}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3005,7 +3857,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264070}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264070}, {6041}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3016,7 +3868,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264071}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264071}, {7928}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3027,7 +3879,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264072}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264072}, {7942}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3038,7 +3890,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264073}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264073}, {3853}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3049,7 +3901,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264074}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264074}, {3837}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3060,7 +3912,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264075}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264075}, {7964}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3071,7 +3923,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264076}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264076}, {7943}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3082,7 +3934,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264077}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264077}, {11144}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3093,7 +3945,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264078}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264078}, {9366}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3104,7 +3956,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264079}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264079}, {7941}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3115,7 +3967,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264080}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264080}, {4396}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3126,7 +3978,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264081}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264081}, {4392}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3137,7 +3989,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264082}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264082}, {4393}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3148,7 +4000,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264083}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264083}, {4395}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3159,7 +4011,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264084}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264084}, {10501}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3170,7 +4022,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264085}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264085}, {10560}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3181,7 +4033,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264086}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264086}, {4852}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3192,7 +4044,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264087}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264087}, {10500}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3203,7 +4055,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264088}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264088}, {10514}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3214,7 +4066,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264089}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264089}, {10498}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3225,7 +4077,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264090}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264090}, {11590}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3236,7 +4088,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264091}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264091}, {16005}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3247,7 +4099,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264092}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264092}, {8174}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3258,7 +4110,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264093}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264093}, {5965}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3269,7 +4121,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264094}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264094}, {7378}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3280,7 +4132,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264095}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264095}, {8214}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3291,7 +4143,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264096}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264096}, {8210}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3302,7 +4154,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264097}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264097}, {8217}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3313,7 +4165,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264098}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264098}, {7391}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3324,7 +4176,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264099}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264099}, {8192}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3335,7 +4187,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264100}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264100}, {8201}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3346,7 +4198,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264101}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264101}, {8200}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3357,7 +4209,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264102}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264102}, {8189}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3368,7 +4220,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264103}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264103}, {8218}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3379,7 +4231,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264104}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264104}, {10050}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3390,7 +4242,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264105}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264105}, {10023}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3401,7 +4253,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264106}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264106}, {7063}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3412,7 +4264,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264107}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264107}, {10004}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3423,7 +4275,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264108}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264108}, {22246}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3434,7 +4286,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264109}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264109}, {4329}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3445,7 +4297,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264110}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264110}, {9998}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3456,7 +4308,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264111}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264111}, {10009}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3467,7 +4319,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264112}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264112}, {10052}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3478,7 +4330,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264113}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264113}, {10008}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3489,7 +4341,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264114}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264114}, {10042}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3500,7 +4352,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264115}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264115}, {7061}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3511,7 +4363,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264116}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264116}, {9224}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3522,7 +4374,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264117}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264117}, {12190}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3533,7 +4385,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264118}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264118}, {13457}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3544,7 +4396,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264119}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264119}, {9233}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3555,7 +4407,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264120}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264120}, {9088}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3566,7 +4418,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264121}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264121}, {13513}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3577,7 +4429,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264122}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264122}, {3387}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3588,7 +4440,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264123}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264123}, {18253}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3599,7 +4451,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264124}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264124}, {246948}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3610,7 +4462,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264125}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264125}, {12417}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3621,7 +4473,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264126}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264126}, {12416}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3632,7 +4484,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264127}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264127}, {7929}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3643,7 +4495,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264128}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264128}, {7969}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3654,7 +4506,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264129}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264129}, {12422}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3665,7 +4517,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264130}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264130}, {20549}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3676,7 +4528,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264131}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264131}, {12775}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3687,7 +4539,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264132}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264132}, {15872}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3698,7 +4550,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264133}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264133}, {7947}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3709,7 +4561,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264134}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264134}, {16023}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3720,7 +4572,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264135}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264135}, {10504}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3731,7 +4583,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264136}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264136}, {15996}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3742,7 +4594,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264137}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264137}, {18645}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3753,7 +4605,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264138}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264138}, {18587}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3764,7 +4616,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264139}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264139}, {18232}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3775,7 +4627,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264140}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264140}, {18631}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3786,7 +4638,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264141}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264141}, {10548}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3797,7 +4649,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264142}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264142}, {21277}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3808,7 +4660,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264143}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264143}, {15087}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3819,7 +4671,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264144}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264144}, {18258}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3830,7 +4682,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264145}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264145}, {15053}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3841,7 +4693,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264146}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264146}, {15094}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3852,7 +4704,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264147}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264147}, {15084}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3863,7 +4715,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264148}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264148}, {15075}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3874,7 +4726,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264149}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264149}, {15080}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3885,7 +4737,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264150}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264150}, {15092}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3896,7 +4748,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264151}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264151}, {15071}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3907,7 +4759,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264152}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264152}, {14130}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3918,7 +4770,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264153}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264153}, {14046}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3929,7 +4781,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264154}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264154}, {13864}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3940,7 +4792,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264155}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264155}, {10036}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3951,7 +4803,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264156}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264156}, {14108}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3962,7 +4814,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264157}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264157}, {22251}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3973,7 +4825,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264158}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264158}, {10025}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3984,7 +4836,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264159}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264159}, {14141}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -3995,7 +4847,7 @@ function ForeverBaseQuest:Load()
             [questKeys.startedBy] = {nil, nil, {264160}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264160}, {21340}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -4054,7 +4906,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251902}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.requiredRaces] = raceIDs.TAUREN,
             [questKeys.objectivesText] = {"Slay 6 High Order Apprentices in Shen'dar Highlands."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 100}},
@@ -4076,7 +4928,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257554}},
             [questKeys.requiredLevel] = 2,
             [questKeys.questLevel] = 2,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Speak with Halaan Hawk-Eye and borrow his gift to view the anchor pylon in the distance."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 10}, {2779, 10}},
@@ -4159,7 +5011,7 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 12,
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.requiredClasses] = classIDs.PALADIN,
-            [questKeys.objectivesText] = {"Speak with Danitha Morr in the keep at Tyr's Watch."},
+            [questKeys.objectivesText] = {"Speak with Danitha Morr in the keep at Bandarion Keep."},
             [questKeys.zoneOrSort] = sortKeys.PALADIN,
             [questKeys.reputationReward] = {{68, 100}},
         },
@@ -4251,7 +5103,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257944}},
             [questKeys.requiredLevel] = 8,
             [questKeys.questLevel] = 11,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Find and speak with Elegael Thornpaw in the northeastern part of Shadowgale Forest."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2758, 100}},
@@ -4262,7 +5114,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257944}},
             [questKeys.requiredLevel] = 8,
             [questKeys.questLevel] = 12,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Collect 8 Lady's Tear Moss."},
             [questKeys.objectives] = {nil, nil, {{265105}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -4274,7 +5126,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257944}},
             [questKeys.requiredLevel] = 8,
             [questKeys.questLevel] = 11,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Collect 20 feathers from the Shadowgale Shrieklings in Shadowgale Forest."},
             [questKeys.objectives] = {nil, nil, {{265140}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -4286,7 +5138,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257944}},
             [questKeys.requiredLevel] = 8,
             [questKeys.questLevel] = 11,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Collect 10 Bloodied Heirlooms from Al'Aketh Footsoldiers and Al'Aketh Stormchasers in the Shadowgale Forest."},
             [questKeys.objectives] = {nil, nil, {{265141}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -4298,7 +5150,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257944}},
             [questKeys.requiredLevel] = 8,
             [questKeys.questLevel] = 11,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Kill Commander Haalien and bring his head to Elegael Thornpaw in the Shadowgale Forest."},
             [questKeys.objectives] = {nil, nil, {{265475}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -4310,7 +5162,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257944}},
             [questKeys.requiredLevel] = 8,
             [questKeys.questLevel] = 12,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Enter the Nightfang Den and heal 7 druids and find Jorel Windsinger in Shadowgale Forest."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2758, 500}},
@@ -4321,7 +5173,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257944}},
             [questKeys.requiredLevel] = 9,
             [questKeys.questLevel] = 12,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Bring the Ripped Missive to Elegael Thornpaw in the Shadowgale Forest."},
             [questKeys.sourceItemId] = 265476,
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -4333,7 +5185,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252359}},
             [questKeys.requiredLevel] = 8,
             [questKeys.questLevel] = 12,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Give the missive to Lotheluum in Valannar and tell him what has transpired."},
             [questKeys.sourceItemId] = 265782,
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -4464,7 +5316,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{252476}},
             [questKeys.requiredLevel] = 6,
             [questKeys.questLevel] = 11,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with Talaanis Shadowsong and observe the conversation."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2778, 50}, {2779, 50}},
@@ -4485,7 +5337,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{255853}},
             [questKeys.requiredLevel] = 10,
             [questKeys.questLevel] = 10,
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Find and kill Ur'endra in the Shen'dar Highlands."},
             [questKeys.objectives] = {{{258443}}},
             [questKeys.zoneOrSort] = sortKeys.DRUID,
@@ -4556,6 +5408,17 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.objectivesText] = {"Speak to High Priestess Laurena in Stormwind."},
             [questKeys.zoneOrSort] = sortKeys.PRIEST,
+        },
+        [94789] = { -- Call of Air : https://wowhead.com/forever/quest=94789/call-of-air
+            [questKeys.name] = "Call of Air",
+            [questKeys.startedBy] = {{258098}},
+            [questKeys.finishedBy] = {{259023}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 30,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
+            [questKeys.objectivesText] = {"Find Veyric Thundervein in Arathi Highlands."},
+            [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [94792] = { -- Taming the Beast : https://wowhead.com/forever/quest=94792/taming-the-beast
             [questKeys.name] = "Taming the Beast",
@@ -4698,13 +5561,36 @@ function ForeverBaseQuest:Load()
             [questKeys.sourceItemId] = 266254,
             [questKeys.zoneOrSort] = sortKeys.HUNTER,
         },
+        [94872] = { -- Buying Friendship: Magram : https://wowhead.com/forever/quest=94872/buying-friendship-magram
+            [questKeys.name] = "Buying Friendship: Magram",
+            [questKeys.startedBy] = {{5412}},
+            [questKeys.finishedBy] = {{253139}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 45,
+            [questKeys.objectivesText] = {"Bring the Totem Tote to the Magram Quartermaster at Magram Village in the Desolace to significantly increase your reputation with that clan. You must be of at least Neutral standing with the Magram Clan Centaur."},
+            [questKeys.sourceItemId] = 257685,
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+            [questKeys.reputationReward] = {{93, 3000}},
+        },
+        [94873] = { -- Buying Friendship: Gelkis : https://wowhead.com/forever/quest=94873/buying-friendship-gelkis
+            [questKeys.name] = "Buying Friendship: Gelkis",
+            [questKeys.startedBy] = {{5412}},
+            [questKeys.finishedBy] = {{253140}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 45,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Bring the Totem Tote to the Gelkis Quartermaster at Gelkis Village in the Desolace to significantly increase your reputation with that clan. You must be of at least Neutral standing with the Gelkis Clan Centaur."},
+            [questKeys.sourceItemId] = 257685,
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+            [questKeys.reputationReward] = {{92, 3000}},
+        },
         [94896] = { -- Aid For The Refugees : https://wowhead.com/forever/quest=94896/aid-for-the-refugees
             [questKeys.name] = "Aid For The Refugees",
             [questKeys.startedBy] = {{259012}},
             [questKeys.finishedBy] = {{259012}},
             [questKeys.requiredLevel] = 8,
             [questKeys.questLevel] = 11,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 8 Abandoned Belongings from the ruins of Ban'aethal."},
             [questKeys.objectives] = {nil, nil, {{266433}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -4715,7 +5601,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{259012}},
             [questKeys.requiredLevel] = 8,
             [questKeys.questLevel] = 11,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Find Resaan in the Ruins of Ban'aethal."},
             [questKeys.objectives] = {nil, nil, {{266434}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -4770,7 +5656,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{259084}},
             [questKeys.requiredLevel] = 7,
             [questKeys.questLevel] = 13,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Take the skycutter ship from Zephras Isle to Dalaran City and speak with Danaaris Stargale when you arrive."},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
             [questKeys.reputationReward] = {{2740, 100}},
@@ -4825,7 +5711,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{248840}},
             [questKeys.requiredLevel] = 20,
             [questKeys.questLevel] = 25,
-            [questKeys.requiredRaces] = raceIDs.UNDEAD,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD + raceIDs.TAUREN,
             [questKeys.requiredClasses] = classIDs.PALADIN,
             [questKeys.objectivesText] = {"Speak with Trevan Rol in the Sepulcher and bring him the materials he requires."},
             [questKeys.objectives] = {nil, nil, {{267454}, {6994}, {267361}, {272448}}},
@@ -4966,7 +5852,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{1265}},
             [questKeys.requiredLevel] = 7,
             [questKeys.questLevel] = 10,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 6 Pristine Leopard Pelts and deliver them to Amberstill Ranch."},
             [questKeys.objectives] = {nil, nil, {{267414}}},
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
@@ -5033,7 +5919,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{2132}},
             [questKeys.requiredLevel] = 7,
             [questKeys.questLevel] = 10,
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD,
             [questKeys.objectivesText] = {"Collect 8 Bottles of Whispering Elixir from Shadowvale, then return to Carolai Anise in Brill."},
             [questKeys.objectives] = {nil, nil, {{268801}}},
             [questKeys.zoneOrSort] = zoneIDs.TIRISFAL_GLADES,
@@ -5072,6 +5958,16 @@ function ForeverBaseQuest:Load()
             [questKeys.objectivesText] = {"Travel to Orgrimmar and speak with Thrall in the Valley of Wisdom."},
             [questKeys.zoneOrSort] = zoneIDs.ORGRIMMAR,
             [questKeys.reputationReward] = {{2778, 25}},
+        },
+        [95384] = { -- Partial Mystical Notes : https://wowhead.com/forever/quest=95384/partial-mystical-notes
+            [questKeys.name] = "Partial Mystical Notes",
+            [questKeys.requiredLevel] = 32,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Bring the partial scroll to Dudd Fizzlescroll in Booty Bay."},
+            [questKeys.objectives] = {nil, nil, {{213127}}},
+            [questKeys.zoneOrSort] = zoneIDs.STRANGLETHORN_VALE,
+            [questKeys.reputationReward] = {{21, 50}},
         },
         [95494] = { -- Bruised Pride and Lion Hides : https://wowhead.com/forever/quest=95494/bruised-pride-and-lion-hides
             [questKeys.name] = "Bruised Pride and Lion Hides",
@@ -5120,6 +6016,15 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.reputationReward] = {{76, 50}},
         },
+        [95534] = { -- Strahnbrad Mystery : https://wowhead.com/forever/quest=95534/strahnbrad-mystery
+            [questKeys.name] = "Strahnbrad Mystery",
+            [questKeys.finishedBy] = {{2402}},
+            [questKeys.requiredLevel] = 25,
+            [questKeys.questLevel] = 36,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Solve the mystery of Strahnbrad and report your findings in town in Hillsbrad."},
+            [questKeys.zoneOrSort] = zoneIDs.ALTERAC_MOUNTAINS,
+        },
         [95621] = { -- Trouble in the Valley : https://wowhead.com/forever/quest=95621/trouble-in-the-valley
             [questKeys.name] = "Trouble in the Valley",
             [questKeys.startedBy] = {{261366}},
@@ -5132,6 +6037,116 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.reputationReward] = {{76, 50}},
         },
+        [95646] = { -- Horrors in the Highland : https://wowhead.com/forever/quest=95646/horrors-in-the-highland
+            [questKeys.name] = "Horrors in the Highland",
+            [questKeys.startedBy] = {{1244}},
+            [questKeys.finishedBy] = {{1244}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Kill a Highland Horror within Excavation Sites and bring its root core to Rethiel the Greenwarden in the Wetlands."},
+            [questKeys.objectives] = {nil, nil, {{270180}}},
+            [questKeys.zoneOrSort] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [95647] = { -- Lost in the Thicket Things : https://wowhead.com/forever/quest=95647/lost-in-the-thicket-things
+            [questKeys.name] = "Lost in the Thicket Things",
+            [questKeys.startedBy] = {{1480}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Find Ardin Grassman in the Excavation Sites."},
+            [questKeys.zoneOrSort] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [95663] = { -- Dragonmaw Rumors : https://wowhead.com/forever/quest=95663/dragonmaw-rumors
+            [questKeys.name] = "Dragonmaw Rumors",
+            [questKeys.startedBy] = {{2787}},
+            [questKeys.finishedBy] = {{13155}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Travel to the Wetlands and meet the Deathstalker Agent in the hills above the Dragonmaw camp."},
+            [questKeys.zoneOrSort] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [95664] = { -- Elder Knowledge : https://wowhead.com/forever/quest=95664/elder-knowledge
+            [questKeys.name] = "Elder Knowledge",
+            [questKeys.startedBy] = {nil, nil, {270866}},
+            [questKeys.finishedBy] = {{9087}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Take the Titan Relic to the Elder Rise in Thunder Bluff and look for someone who can tell you more about it."},
+            [questKeys.objectives] = {nil, nil, {{270866}}},
+            [questKeys.zoneOrSort] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [95682] = { -- Open the Maw : https://wowhead.com/forever/quest=95682/open-the-maw
+            [questKeys.name] = "Open the Maw",
+            [questKeys.startedBy] = {{13155}},
+            [questKeys.finishedBy] = {{13155}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Slay the Dragonmaw forces within the Excavation Site and return to the Deathstalker Agent outside with anything you recover."},
+            [questKeys.zoneOrSort] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [95697] = { -- Changing Tastes : https://wowhead.com/forever/quest=95697/changing-tastes
+            [questKeys.name] = "Changing Tastes",
+            [questKeys.startedBy] = {{3368}},
+            [questKeys.finishedBy] = {{3368}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Enter the Excavation Sites in the Wetlands and bring back Thicket Raptor Meat."},
+            [questKeys.objectives] = {nil, nil, {{271100}}},
+            [questKeys.zoneOrSort] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [95737] = { -- Seeking Caitlin : https://wowhead.com/forever/quest=95737/seeking-caitlin
+            [questKeys.name] = "Seeking Caitlin",
+            [questKeys.startedBy] = {{3970}},
+            [questKeys.finishedBy] = {{1480}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Speak with Caitlin Grassman in Menethil Harbor."},
+            [questKeys.zoneOrSort] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [95748] = { -- The Gurubashi Legends of Old : https://wowhead.com/forever/quest=95748/the-gurubashi-legends-of-old
+            [questKeys.name] = "The Gurubashi Legends of Old",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Use the hide and charcoal to create a rubbing of the Third Troll Legend tablet."},
+            [questKeys.objectives] = {nil, nil, {{2007}}},
+            [questKeys.zoneOrSort] = zoneIDs.STRANGLETHORN_VALE,
+            [questKeys.reputationReward] = {{76, 75}, {530, 100}},
+        },
+        [95770] = { -- Locating the Lost City : https://wowhead.com/forever/quest=95770/locating-the-lost-city
+            [questKeys.name] = "Locating the Lost City",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Explore the Vile Reef and find the cavern entrance."},
+            [questKeys.zoneOrSort] = zoneIDs.STRANGLETHORN_VALE,
+            [questKeys.reputationReward] = {{76, 75}, {530, 100}},
+        },
+        [95772] = { -- Songblade Search : https://wowhead.com/forever/quest=95772/songblade-search
+            [questKeys.name] = "Songblade Search",
+            [questKeys.startedBy] = {{956}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Look for Dorin Songblade's brother, Daewyn, in Whelgar's Excavation Site."},
+            [questKeys.zoneOrSort] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [95773] = { -- Enemies in the Water : https://wowhead.com/forever/quest=95773/enemies-in-the-water
+            [questKeys.name] = "Enemies in the Water",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 37,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Gather 10 Brinescale Tridents from Brinescale Skirmishers."},
+            [questKeys.objectives] = {nil, nil, {{270305}}},
+            [questKeys.zoneOrSort] = zoneIDs.STRANGLETHORN_VALE,
+            [questKeys.reputationReward] = {{76, 75}, {530, 100}},
+        },
         [95774] = { -- Her Name Is Olgra : https://wowhead.com/forever/quest=95774/her-name-is-olgra
             [questKeys.name] = "Her Name Is Olgra",
             [questKeys.startedBy] = {{3432}},
@@ -5142,6 +6157,32 @@ function ForeverBaseQuest:Load()
             [questKeys.objectivesText] = {"Slay quilboars and collect 4 of Olgra's Adornments for Mankrik's memorial."},
             [questKeys.objectives] = {nil, nil, {{277277}}},
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
+        },
+        [95775] = { -- The Drowned City : https://wowhead.com/forever/quest=95775/the-drowned-city
+            [questKeys.name] = "The Drowned City",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Use the hide and charcoal to create rubbings of the tablets found in the Drowned City."},
+            [questKeys.objectives] = {nil, nil, {{270308}, {270309}, {270310}, {270311}}},
+            [questKeys.reputationReward] = {{76, 100}, {530, 100}},
+        },
+        [95776] = { -- The Only Good Brinescale... : https://wowhead.com/forever/quest=95776/the-only-good-brinescale
+            [questKeys.name] = "The Only Good Brinescale...",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 38,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Slay Var'Taka in the Drowned City."},
+            [questKeys.reputationReward] = {{76, 100}, {530, 100}},
+        },
+        [95795] = { -- Fallen in the Fen : https://wowhead.com/forever/quest=95795/fallen-in-the-fen
+            [questKeys.name] = "Fallen in the Fen",
+            [questKeys.finishedBy] = {{956}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Return to Dorin Songblade."},
+            [questKeys.zoneOrSort] = zoneIDs.EXCAVATION_SITE_WETLANDS,
         },
         [95803] = { -- A Token of Good Faith : https://wowhead.com/forever/quest=95803/a-token-of-good-faith
             [questKeys.name] = "A Token of Good Faith",
@@ -5167,6 +6208,35 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = zoneIDs.MULGORE,
             [questKeys.reputationReward] = {{81, 50}},
         },
+        [95809] = { -- Heartwoven : https://wowhead.com/forever/quest=95809/heartwoven
+            [questKeys.name] = "Heartwoven",
+            [questKeys.finishedBy] = {{1480}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Return to Caitlin Grassman in Menethil Harbor."},
+            [questKeys.sourceItemId] = 270901,
+            [questKeys.zoneOrSort] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [95810] = { -- Lost Relic Carry : https://wowhead.com/forever/quest=95810/lost-relic-carry
+            [questKeys.name] = "Lost Relic Carry",
+            [questKeys.startedBy] = {nil, nil, {270865}},
+            [questKeys.finishedBy] = {{1077}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Bring the Titan Relic to Prospector Whelgar in the Wetlands excavation site."},
+            [questKeys.objectives] = {nil, nil, {{270865}}},
+            [questKeys.zoneOrSort] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [95817] = { -- Rotgath Stonebeard : https://wowhead.com/forever/quest=95817/rotgath-stonebeard
+            [questKeys.name] = "Rotgath Stonebeard",
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- Assumption: assumptions/reviewed_alliance_races.toml; ALL_ALLIANCE; Reviewed Alliance access: faction-specific objectives and matching quest variants, or an identified Alliance starter/chain, support the full Alliance race mask for these IDs.
+            [questKeys.objectivesText] = {"Meet Rotgath Stonebeard near the Great Forge in Ironforge."},
+            [questKeys.zoneOrSort] = zoneIDs.IRONFORGE,
+        },
         [95883] = { -- The Tortured Soul : https://wowhead.com/forever/quest=95883/the-tortured-soul
             [questKeys.name] = "The Tortured Soul",
             [questKeys.requiredLevel] = 20,
@@ -5188,6 +6258,8 @@ function ForeverBaseQuest:Load()
         },
         [95885] = { -- The Offering of Blood : https://wowhead.com/forever/quest=95885/the-offering-of-blood
             [questKeys.name] = "The Offering of Blood",
+            [questKeys.startedBy] = {nil, {645153}},
+            [questKeys.finishedBy] = {nil, {645153}},
             [questKeys.requiredLevel] = 20,
             [questKeys.questLevel] = 23,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
@@ -5213,20 +6285,31 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{263399}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
-            [questKeys.objectivesText] = {"Sit near Sam's Basic Campfire by typing /sit in the chat window and wait until you receive the Boosted Rest buff."},
+            [questKeys.requiredRaces] = raceIDs.NIGHT_ELF + raceIDs.GNOME,
+            [questKeys.objectivesText] = {"Sit near Sam's Basic Campfire and wait until you receive the Boosted Rest buff."},
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
         [95999] = { -- WANTED: Incinerator Gar'im : https://wowhead.com/forever/quest=95999/wanted-incinerator-garim
             [questKeys.name] = "WANTED: Incinerator Gar'im",
+            [questKeys.startedBy] = {nil, {649051}},
             [questKeys.finishedBy] = {{344}},
             [questKeys.requiredLevel] = 16,
             [questKeys.questLevel] = 25,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Deliver the Broken Staff of Incinerator Gar'im to Magistrate Solomon in Lakeshire."},
             [questKeys.objectives] = {nil, nil, {{271872}}},
             [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
             [questKeys.reputationReward] = {{72, 150}},
+        },
+        [96016] = { -- The Tempest's Weapons : https://wowhead.com/forever/quest=96016/the-tempests-weapons
+            [questKeys.name] = "The Tempest's Weapons",
+            [questKeys.finishedBy] = {{6176}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
+            [questKeys.objectivesText] = {"Deliver the Eye of the Tempest to Bath'rah the Windwatcher in Alterac Mountains."},
+            [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [96031] = { -- Camping 101: Leatherworking : https://wowhead.com/forever/quest=96031/camping-101-leatherworking
             [questKeys.name] = "Camping 101: Leatherworking",
@@ -5344,7 +6427,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{263664}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Sit near Raan's Basic Campfire by typing /sit in the chat window and wait until you receive the Boosted Rest buff."},
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
@@ -5362,13 +6445,33 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Chakuyak",
             [questKeys.startedBy] = {{3065}},
             [questKeys.finishedBy] = {{3065}},
-            [questKeys.requiredLevel] = 5,
-            [questKeys.questLevel] = 8,
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.requiredLevel] = 4,
+            [questKeys.questLevel] = 5,
+            [questKeys.requiredRaces] = raceIDs.UNDEAD + raceIDs.TAUREN,
             [questKeys.objectivesText] = {"Defeat Chakuyak and bring back her pelt."},
             [questKeys.objectives] = {nil, nil, {{270302}}},
             [questKeys.zoneOrSort] = zoneIDs.MULGORE,
             [questKeys.reputationReward] = {{81, 50}},
+        },
+        [96135] = { -- Heed My Call : https://wowhead.com/forever/quest=96135/heed-my-call
+            [questKeys.name] = "Heed My Call",
+            [questKeys.startedBy] = {{259023}},
+            [questKeys.finishedBy] = {{259023}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
+            [questKeys.objectivesText] = {"Use the Twisted Totems to put an end to the quilboar ritual."},
+            [questKeys.sourceItemId] = 268582,
+            [questKeys.zoneOrSort] = sortKeys.SHAMAN,
+        },
+        [96136] = { -- Call of Air : https://wowhead.com/forever/quest=96136/call-of-air
+            [questKeys.name] = "Call of Air",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 35,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
+            [questKeys.objectivesText] = {"Find Prate Cloudseer in Thousand Needles."},
+            [questKeys.zoneOrSort] = sortKeys.SHAMAN,
         },
         [96137] = { -- Ira's Dagger : https://wowhead.com/forever/quest=96137/iras-dagger
             [questKeys.name] = "Ira's Dagger",
@@ -5384,6 +6487,7 @@ function ForeverBaseQuest:Load()
         [96138] = { -- Merrick's Bow : https://wowhead.com/forever/quest=96138/merricks-bow
             [questKeys.name] = "Merrick's Bow",
             [questKeys.startedBy] = {nil, nil, {281142}},
+            [questKeys.finishedBy] = {{268}},
             [questKeys.requiredLevel] = 18,
             [questKeys.questLevel] = 28,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
@@ -5398,7 +6502,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{268}},
             [questKeys.requiredLevel] = 18,
             [questKeys.questLevel] = 22,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Search Raven Hill for anything of interest and return to Sirra Von'Indi in Darkshire."},
             [questKeys.objectives] = {nil, nil, {{281046}}},
             [questKeys.zoneOrSort] = zoneIDs.DUSKWOOD,
@@ -5415,6 +6519,29 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = sortKeys.PALADIN,
             [questKeys.reputationReward] = {{68, 50}, {2787, 100}},
         },
+        [96222] = { -- Khan Hratha : https://wowhead.com/forever/quest=96222/khan-hratha
+            [questKeys.name] = "Khan Hratha",
+            [questKeys.startedBy] = {{253066}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 42,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Bring the Maraudine Key Fragment to Umarak in the Desolace."},
+            [questKeys.objectives] = {nil, nil, {{6077}, {6074}}},
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+        },
+        [96241] = { -- Talkin' bout Toxins, Mon : https://wowhead.com/forever/quest=96241/talkin-bout-toxins-mon
+            [questKeys.name] = "Talkin' bout Toxins, Mon",
+            [questKeys.startedBy] = {{264074}},
+            [questKeys.finishedBy] = {{264074}},
+            [questKeys.requiredLevel] = 23,
+            [questKeys.questLevel] = 30,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Use the Toxin Extractor to gather 5 Gloomrise Toxin Samples from the Gnawed Corpses at Gloomrise."},
+            [questKeys.objectives] = {nil, nil, {{273001}}},
+            [questKeys.sourceItemId] = 273015,
+            [questKeys.zoneOrSort] = zoneIDs.MULGORE,
+            [questKeys.reputationReward] = {{530, 100}, {2787, 100}},
+        },
         [96243] = { -- Call of Earth : https://wowhead.com/forever/quest=96243/call-of-earth
             [questKeys.name] = "Call of Earth",
             [questKeys.requiredLevel] = 10,
@@ -5423,6 +6550,81 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.objectivesText] = {"Find Teo Hammerstorm in Dun Morogh."},
             [questKeys.zoneOrSort] = sortKeys.SHAMAN,
+        },
+        [96259] = { -- Defending the Dead : https://wowhead.com/forever/quest=96259/defending-the-dead
+            [questKeys.name] = "Defending the Dead",
+            [questKeys.startedBy] = {{259118}},
+            [questKeys.finishedBy] = {{259118}},
+            [questKeys.requiredLevel] = 23,
+            [questKeys.questLevel] = 30,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Kill 10 Gloomrise Hatchlings and 5 Gloomrise Soldiers."},
+            [questKeys.objectives] = {{{264079}, {264083}}},
+            [questKeys.zoneOrSort] = zoneIDs.MULGORE,
+            [questKeys.reputationReward] = {{81, 100}, {2787, 150}},
+        },
+        [96260] = { -- Stronger than Steel : https://wowhead.com/forever/quest=96260/stronger-than-steel
+            [questKeys.name] = "Stronger than Steel",
+            [questKeys.startedBy] = {{264072}},
+            [questKeys.finishedBy] = {{264072}},
+            [questKeys.requiredLevel] = 23,
+            [questKeys.questLevel] = 30,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Gather 3 strands of Crystalline Silk from Gloomrise Spinners."},
+            [questKeys.objectives] = {nil, nil, {{273181}}},
+            [questKeys.zoneOrSort] = zoneIDs.MULGORE,
+            [questKeys.reputationReward] = {{81, 100}, {2787, 100}},
+        },
+        [96261] = { -- The Broodmother : https://wowhead.com/forever/quest=96261/the-broodmother
+            [questKeys.name] = "The Broodmother",
+            [questKeys.startedBy] = {{259118}},
+            [questKeys.finishedBy] = {{259118}},
+            [questKeys.requiredLevel] = 23,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Kill Broodmother Valraxx at Gloomrise."},
+            [questKeys.objectives] = {{{264082}}},
+            [questKeys.zoneOrSort] = zoneIDs.MULGORE,
+        },
+        [96264] = { -- Elemental Aid : https://wowhead.com/forever/quest=96264/elemental-aid
+            [questKeys.name] = "Elemental Aid",
+            [questKeys.startedBy] = {{259023}},
+            [questKeys.finishedBy] = {{259023}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
+            [questKeys.objectivesText] = {"Defeat Charlga Razorflank in Razorfen Kraul and collect information on the quilboar's plans."},
+            [questKeys.objectives] = {nil, nil, {{274463}}},
+            [questKeys.zoneOrSort] = sortKeys.SHAMAN,
+        },
+        [96294] = { -- A Darker Truth : https://wowhead.com/forever/quest=96294/a-darker-truth
+            [questKeys.name] = "A Darker Truth",
+            [questKeys.startedBy] = {nil, nil, {273658}},
+            [questKeys.finishedBy] = {{259118}},
+            [questKeys.requiredLevel] = 23,
+            [questKeys.questLevel] = 30,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Bring the letter you recovered from Broodmother Valraxx to Muln Earthfury at Skywatcher Plateau."},
+            [questKeys.sourceItemId] = 273659,
+            [questKeys.zoneOrSort] = zoneIDs.MULGORE,
+            [questKeys.reputationReward] = {{76, 100}, {81, 100}, {2787, 100}},
+        },
+        [96339] = { -- Legacy Reward: Replica Ironforge Air Rifle : https://wowhead.com/forever/quest=96339/legacy-reward-replica-ironforge-air-rifle
+            [questKeys.name] = "Legacy Reward: Replica Ironforge Air Rifle",
+            [questKeys.startedBy] = {{6791}},
+            [questKeys.finishedBy] = {{6791}},
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
+        },
+        [96383] = { -- Legacy Reward: Spectral Bear Cub : https://wowhead.com/forever/quest=96383/legacy-reward-spectral-bear-cub
+            [questKeys.name] = "Legacy Reward: Spectral Bear Cub",
+            [questKeys.startedBy] = {{6791}},
+            [questKeys.finishedBy] = {{6791}},
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
         },
         [96390] = { -- Nip 'Em in the Bud : https://wowhead.com/forever/quest=96390/nip-em-in-the-bud
             [questKeys.name] = "Nip 'Em in the Bud",
@@ -5513,7 +6715,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
-            [questKeys.objectivesText] = {"Sit near Brakk's Basic Campfire by typing /sit in the chat window and wait until you receive the Boosted Rest buff."},
+            [questKeys.objectivesText] = {"Sit near Brakk's Basic Campfire and wait until you receive the Boosted Rest buff."},
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
         [96605] = { -- The Great Outdoors : https://wowhead.com/forever/quest=96605/the-great-outdoors
@@ -5623,7 +6825,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{263664}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak to Raan Wildwind near Shen'dar Village."},
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
@@ -5633,12 +6835,13 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251905}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with Zerril Softbreeze in Shen'dar Village to learn to become a cook."},
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
         [96652] = { -- The Adventurer : https://wowhead.com/forever/quest=96652/the-adventurer
             [questKeys.name] = "The Adventurer",
+            [questKeys.startedBy] = {nil, {654925}},
             [questKeys.finishedBy] = {{265809}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
@@ -5697,6 +6900,113 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Speak with Pyall Silentstride in Bloodhoof Village to learn to become a cook."},
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
+        },
+        [96774] = { -- Ancient Gurubashi Idol : https://wowhead.com/forever/quest=96774/ancient-gurubashi-idol
+            [questKeys.name] = "Ancient Gurubashi Idol",
+            [questKeys.startedBy] = {{264074}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 40,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Recover an Ancient Gurubashi Idol from the Drowned City."},
+            [questKeys.objectives] = {nil, nil, {{276894}}},
+            [questKeys.reputationReward] = {{530, 150}, {2787, 300}},
+        },
+        [96779] = { -- Syndicate Sabotage : https://wowhead.com/forever/quest=96779/syndicate-sabotage
+            [questKeys.name] = "Syndicate Sabotage",
+            [questKeys.startedBy] = {{13085}},
+            [questKeys.finishedBy] = {{13085}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 24,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.requiredClasses] = classIDs.ROGUE,
+            [questKeys.objectivesText] = {"Find Lord Tomas inside Durnholde Keep, in Hillsbrad Foothills, and kill him. Then, return to Myrokos Silentform."},
+            [questKeys.objectives] = {{{266216}}},
+            [questKeys.zoneOrSort] = sortKeys.ROGUE,
+            [questKeys.reputationReward] = {{349, 100}},
+        },
+        [96781] = { -- What's the Big Idea? : https://wowhead.com/forever/quest=96781/whats-the-big-idea
+            [questKeys.name] = "What's the Big Idea?",
+            [questKeys.startedBy] = {{13085}},
+            [questKeys.finishedBy] = {{13085}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 36,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.requiredClasses] = classIDs.ROGUE,
+            [questKeys.objectivesText] = {"Steal Barton's Scouting Report by pickpocketing it from him. Then, bring the report to Myrokos Silentform at Ravenholdt Manor."},
+            [questKeys.objectives] = {nil, nil, {{275482}}},
+            [questKeys.zoneOrSort] = sortKeys.ROGUE,
+            [questKeys.reputationReward] = {{349, 100}},
+        },
+        [96782] = { -- Covert Extraction : https://wowhead.com/forever/quest=96782/covert-extraction
+            [questKeys.name] = "Covert Extraction",
+            [questKeys.finishedBy] = {{13085}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 36,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.requiredClasses] = classIDs.ROGUE,
+            [questKeys.objectivesText] = {"Find the Blade of House Perenolde and the Royal Aegis of Perenolde among the ruins of Alterac. Then, bring them to Myrokos Silentform."},
+            [questKeys.objectives] = {nil, nil, {{275635}, {275636}}},
+            [questKeys.zoneOrSort] = sortKeys.ROGUE,
+            [questKeys.reputationReward] = {{349, 100}},
+        },
+        [96783] = { -- A Way In : https://wowhead.com/forever/quest=96783/a-way-in
+            [questKeys.name] = "A Way In",
+            [questKeys.startedBy] = {{13085}},
+            [questKeys.finishedBy] = {nil, {656157}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 34,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.requiredClasses] = classIDs.ROGUE,
+            [questKeys.objectivesText] = {"Steal a Syndicate uniform from Northfold Manor to infiltrate Stromgarde Keep."},
+            [questKeys.zoneOrSort] = sortKeys.ROGUE,
+        },
+        [96784] = { -- Master of Disguise : https://wowhead.com/forever/quest=96784/master-of-disguise
+            [questKeys.name] = "Master of Disguise",
+            [questKeys.startedBy] = {nil, {656157}},
+            [questKeys.finishedBy] = {{266847}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 34,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.requiredClasses] = classIDs.ROGUE,
+            [questKeys.objectivesText] = {"While disguised as a member of the Syndicate, find someone inside Stromgarde Keep who knows about the secret deal."},
+            [questKeys.sourceItemId] = 275706,
+            [questKeys.zoneOrSort] = sortKeys.ROGUE,
+        },
+        [96785] = { -- Ain't No Telling : https://wowhead.com/forever/quest=96785/aint-no-telling
+            [questKeys.name] = "Ain't No Telling",
+            [questKeys.finishedBy] = {{266847}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 34,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.requiredClasses] = classIDs.ROGUE,
+            [questKeys.objectivesText] = {"Find something within Stromgarde Keep to convince Anastasia to give up details of the secret deal."},
+            [questKeys.objectives] = {nil, nil, {{275709}}},
+            [questKeys.sourceItemId] = 275706,
+            [questKeys.zoneOrSort] = sortKeys.ROGUE,
+        },
+        [96786] = { -- The Syndicate Sting : https://wowhead.com/forever/quest=96786/the-syndicate-sting
+            [questKeys.name] = "The Syndicate Sting",
+            [questKeys.finishedBy] = {{13085}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 34,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.requiredClasses] = classIDs.ROGUE,
+            [questKeys.objectivesText] = {"Break up the secret deal, and take the object being traded to the Syndicate. Then, return to Myrokos Silentform at Ravenholdt Manor."},
+            [questKeys.objectives] = {nil, nil, {{275882}, {275706}}},
+            [questKeys.zoneOrSort] = sortKeys.ROGUE,
+            [questKeys.reputationReward] = {{349, 300}},
+        },
+        [96800] = { -- Past Due : https://wowhead.com/forever/quest=96800/past-due
+            [questKeys.name] = "Past Due",
+            [questKeys.startedBy] = {{264265}},
+            [questKeys.finishedBy] = {{264265}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 38,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Retrieve the book The Lost Magic of the Runemasters from the Scarlet Monastery."},
+            [questKeys.objectives] = {nil, nil, {{273169}}},
+            [questKeys.zoneOrSort] = zoneIDs.SCARLET_MONASTERY,
+            [questKeys.reputationReward] = {{2740, 100}},
         },
         [96821] = { -- Legging It : https://wowhead.com/forever/quest=96821/legging-it
             [questKeys.name] = "Legging It",
@@ -5851,6 +7161,49 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = zoneIDs.TIRISFAL_GLADES,
             [questKeys.reputationReward] = {{529, 150}},
         },
+        [96984] = { -- Heart of Disruption : https://wowhead.com/forever/quest=96984/heart-of-disruption
+            [questKeys.name] = "Heart of Disruption",
+            [questKeys.startedBy] = {{269127}},
+            [questKeys.finishedBy] = {{2410}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Collect the Arcane Mote in the City of Dalaran for Magus Wordeen Voidglare in Tarren Mill."},
+            [questKeys.objectives] = {nil, nil, {{251961}}},
+            [questKeys.sourceItemId] = 277507,
+            [questKeys.zoneOrSort] = zoneIDs.CITY_OF_DALARAN,
+        },
+        [96986] = { -- The Grave Knight : https://wowhead.com/forever/quest=96986/the-grave-knight
+            [questKeys.name] = "The Grave Knight",
+            [questKeys.startedBy] = {{2278}},
+            [questKeys.finishedBy] = {{2278}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Defeat Atrexis the Grave Knight in the City of Dalaran for Melisara in Tarren Mill."},
+            [questKeys.objectives] = {{{247126}}},
+            [questKeys.zoneOrSort] = zoneIDs.CITY_OF_DALARAN,
+        },
+        [96987] = { -- Opportunistic Education : https://wowhead.com/forever/quest=96987/opportunistic-education
+            [questKeys.name] = "Opportunistic Education",
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Collect the Founding of Dalaran from the City of Dalaran for Rexxie Copperclutch near the sewer entrance."},
+            [questKeys.objectives] = {nil, nil, {{275996}}},
+            [questKeys.zoneOrSort] = zoneIDs.CITY_OF_DALARAN,
+        },
+        [96988] = { -- Source of Power : https://wowhead.com/forever/quest=96988/source-of-power
+            [questKeys.name] = "Source of Power",
+            [questKeys.startedBy] = {{11044}},
+            [questKeys.finishedBy] = {{11044}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Collect 6 Cracked Sentry Cores in the City of Dalaran for Doctor Martin Felben in Undercity."},
+            [questKeys.objectives] = {nil, nil, {{275997}}},
+            [questKeys.zoneOrSort] = zoneIDs.CITY_OF_DALARAN,
+        },
         [97003] = { -- Chol'aruk the Ravener : https://wowhead.com/forever/quest=97003/cholaruk-the-ravener
             [questKeys.name] = "Chol'aruk the Ravener",
             [questKeys.startedBy] = {{267310}},
@@ -5874,6 +7227,23 @@ function ForeverBaseQuest:Load()
             [questKeys.objectives] = {nil, nil, {{276070}}},
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.reputationReward] = {{72, 150}},
+        },
+        [97047] = { -- The Cook in the Cage : https://wowhead.com/forever/quest=97047/the-cook-in-the-cage
+            [questKeys.name] = "The Cook in the Cage",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 38,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Find a key to Wendel's cage, and a disguise for him to sneak out, within the Kurzen compound."},
+            [questKeys.objectives] = {nil, nil, {{216616}, {216617}}},
+            [questKeys.zoneOrSort] = zoneIDs.STRANGLETHORN_VALE,
+        },
+        [97048] = { -- Returning to Port : https://wowhead.com/forever/quest=97048/returning-to-port
+            [questKeys.name] = "Returning to Port",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 38,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
+            [questKeys.objectivesText] = {"Speak to Captain Aransas in Booty Bay."},
+            [questKeys.zoneOrSort] = zoneIDs.STRANGLETHORN_VALE,
         },
         [97220] = { -- Philmor's Favor : https://wowhead.com/forever/quest=97220/philmors-favor
             [questKeys.name] = "Philmor's Favor",
@@ -5939,7 +7309,7 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 5,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
-            [questKeys.objectivesText] = {"Deliver the the Fang of Githyiss to someone interested in the study of spiders in Aldrassil."},
+            [questKeys.objectivesText] = {"Deliver the Fang of Githyiss to someone interested in the study of spiders in Aldrassil."},
             [questKeys.zoneOrSort] = zoneIDs.TELDRASSIL,
             [questKeys.reputationReward] = {{69, 100}},
         },
@@ -5949,7 +7319,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{268568}},
             [questKeys.requiredLevel] = 13,
             [questKeys.questLevel] = 18,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Find each of the reading materials located somewhere in the library and then return to Roy Lewells in Stormwind's Park."},
             [questKeys.objectives] = {nil, nil, {{277196}, {277194}, {277195}, {277197}}},
             [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
@@ -6058,13 +7428,24 @@ function ForeverBaseQuest:Load()
         },
         [97263] = { -- Your Package Has Arrived : https://wowhead.com/forever/quest=97263/your-package-has-arrived
             [questKeys.name] = "Your Package Has Arrived",
+            [questKeys.startedBy] = {nil, {660964}},
             [questKeys.finishedBy] = {{258098}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 2,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Deliver Eldrun's misplaced package."},
             [questKeys.sourceItemId] = 277505,
             [questKeys.zoneOrSort] = zoneIDs.IRONFORGE,
+        },
+        [97265] = { -- Hate the Hatefury : https://wowhead.com/forever/quest=97265/hate-the-hatefury
+            [questKeys.name] = "Hate the Hatefury",
+            [questKeys.startedBy] = {{268705}},
+            [questKeys.requiredLevel] = 28,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Defeat a variety of Hatefury satyr at Sargeron in Desolace and then return to Aka'rai in Shadowprey Village."},
+            [questKeys.objectives] = {{{4671}, {4675}, {4674}, {4672}, {4670}}},
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
         },
         [97275] = { -- Whuut's the Rush : https://wowhead.com/forever/quest=97275/whuuts-the-rush
             [questKeys.name] = "Whuut's the Rush",
@@ -6122,15 +7503,35 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = zoneIDs.DUROTAR,
             [questKeys.reputationReward] = {{76, 100}, {470, 100}, {530, 100}},
         },
+        [97284] = { -- Vahlarriel's Vengeance : https://wowhead.com/forever/quest=97284/vahlarriels-vengeance
+            [questKeys.name] = "Vahlarriel's Vengeance",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- Assumption: assumptions/reviewed_alliance_races.toml; ALL_ALLIANCE; Reviewed Alliance access: faction-specific objectives and matching quest variants, or an identified Alliance starter/chain, support the full Alliance race mask for these IDs.
+            [questKeys.objectivesText] = {"Slay Burning Blade orcs at Thunder Axe Fortress in the Desolace, then return to Vahlarriel Demonslayer at Nijel's Point."},
+            [questKeys.objectives] = {{{4663}, {4664}, {4665}, {4666}}},
+            [questKeys.zoneOrSort] = zoneIDs.DESOLACE,
+        },
         [97286] = { -- Research Access : https://wowhead.com/forever/quest=97286/research-access
             [questKeys.name] = "Research Access",
             [questKeys.startedBy] = {{211033}},
             [questKeys.finishedBy] = {{211022, 211033}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 20,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/library_races.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/library_races.toml; 0 = all races; Reviewed library quests: Both labels and faction-specific turn-ins support all-race access; class restrictions are independent.
             [questKeys.requiredClasses] = classIDs.MAGE,
             [questKeys.zoneOrSort] = sortKeys.MAGE,
+        },
+        [97287] = { -- Shrewd Negotiations : https://wowhead.com/forever/quest=97287/shrewd-negotiations
+            [questKeys.name] = "Shrewd Negotiations",
+            [questKeys.startedBy] = {{2410}},
+            [questKeys.finishedBy] = {{252085}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Speak with Archmage Celindra in the City of Dalaran."},
+            [questKeys.sourceItemId] = 251961,
+            [questKeys.zoneOrSort] = zoneIDs.ALTERAC_MOUNTAINS,
         },
         [97288] = { -- Unending Torment : https://wowhead.com/forever/quest=97288/unending-torment
             [questKeys.name] = "Unending Torment",
@@ -6198,6 +7599,42 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = zoneIDs.ORGRIMMAR,
             [questKeys.reputationReward] = {{76, 50}},
         },
+        [97328] = { -- Anything of Value : https://wowhead.com/forever/quest=97328/anything-of-value
+            [questKeys.name] = "Anything of Value",
+            [questKeys.startedBy] = {nil, {661516}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 35,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Recover 8 Stolen Shipments from the Ruins of Zul'Kunda in Stranglethorn Vale and return your haul to someone in Booty Bay."},
+            [questKeys.objectives] = {nil, nil, {{277953}}},
+            [questKeys.zoneOrSort] = zoneIDs.STRANGLETHORN_VALE,
+        },
+        [97329] = { -- Where's the Key? : https://wowhead.com/forever/quest=97329/wheres-the-key
+            [questKeys.name] = "Where's the Key?",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 35,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.objectivesText] = {"Bring the Primitive Key obtained from the trolls at the Ruins of Zul'kunda in Stranglethorn Vale to Zimmix Sputterspark."},
+            [questKeys.objectives] = {nil, nil, {{277957}}},
+            [questKeys.zoneOrSort] = zoneIDs.STRANGLETHORN_VALE,
+        },
+        [97331] = { -- Zimmix's Great Escape : https://wowhead.com/forever/quest=97331/zimmixs-great-escape
+            [questKeys.name] = "Zimmix's Great Escape",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 35,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.objectivesText] = {"Escort Zimmix Sputterspark away from the Ruins of Zul'Kunda then tell Wharfmaster Lozgil in Booty Bay of your successful rescue."},
+            [questKeys.zoneOrSort] = zoneIDs.STRANGLETHORN_VALE,
+        },
+        [97420] = { -- Reduce, Reuse, Reconcile : https://wowhead.com/forever/quest=97420/reduce-reuse-reconcile
+            [questKeys.name] = "Reduce, Reuse, Reconcile",
+            [questKeys.requiredLevel] = 31,
+            [questKeys.questLevel] = 36,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Acquire 5 Drums of Crude Oil from the Venture Co. operations at Lake Nazferiti, then return to Knaz Blunderflame in Stranglethorn Vale."},
+            [questKeys.objectives] = {nil, nil, {{277986}}},
+            [questKeys.zoneOrSort] = zoneIDs.STRANGLETHORN_VALE,
+        },
         [97485] = { -- Traditions of the Bluff : https://wowhead.com/forever/quest=97485/traditions-of-the-bluff
             [questKeys.name] = "Traditions of the Bluff",
             [questKeys.startedBy] = {{269068}},
@@ -6205,13 +7642,14 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredLevel] = 3,
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
-            [questKeys.objectivesText] = {"Purchase a Bundle of Herbs from Nida the herbalist, a Bundle of Ceder Twigs from Nata the enchanting supplier, and Sinew Thread from Mahu the leatherworking supplier and Ceremonial Flint and Tinder from Naal the cooking supplier. Combine the items and sprinkle the incense off of Hunter's Rise."},
+            [questKeys.objectivesText] = {"Purchase a Bundle of Herbs from Nida the herbalist, a Bundle of Cedar Twigs from Nata the enchanting supplier, and Sinew Thread from Mahu the leatherworking supplier and Ceremonial Flint and Tinder from Naal the cooking supplier. Combine the items and sprinkle the incense off of Hunter's Rise."},
             [questKeys.zoneOrSort] = zoneIDs.THUNDER_BLUFF,
             [questKeys.reputationReward] = {{81, 100}},
         },
         [97538] = { -- Pigments for Paints : https://wowhead.com/forever/quest=97538/pigments-for-paints
             [questKeys.name] = "Pigments for Paints",
             [questKeys.startedBy] = {{3024}},
+            [questKeys.finishedBy] = {{3024}},
             [questKeys.requiredLevel] = 20,
             [questKeys.questLevel] = 26,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
@@ -6219,6 +7657,17 @@ function ForeverBaseQuest:Load()
             [questKeys.objectives] = {nil, nil, {{278201}}},
             [questKeys.zoneOrSort] = zoneIDs.STONETALON_MOUNTAINS,
             [questKeys.reputationReward] = {{81, 100}},
+        },
+        [97539] = { -- Silky Sutures : https://wowhead.com/forever/quest=97539/silky-sutures
+            [questKeys.name] = "Silky Sutures",
+            [questKeys.startedBy] = {{12920}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 36,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Return 12 Surgical Spidersilk to Doctor Gregory Victor in Hammerfall, Arathi Highlands."},
+            [questKeys.objectives] = {nil, nil, {{278225}}},
+            [questKeys.zoneOrSort] = zoneIDs.ARATHI_HIGHLANDS,
+            [questKeys.reputationReward] = {{76, 100}},
         },
         [97558] = { -- Hides for the Forsaken : https://wowhead.com/forever/quest=97558/hides-for-the-forsaken
             [questKeys.name] = "Hides for the Forsaken",
@@ -6260,7 +7709,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{6301}},
             [questKeys.requiredLevel] = 13,
             [questKeys.questLevel] = 17,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Check on Gorbold Steelhand in Auberdine in Darkshore. Borgus mentioned a boat on the southern-most dock in Stormwind Harbor that can take you there."},
             [questKeys.zoneOrSort] = zoneIDs.DARKSHORE,
         },
@@ -6370,7 +7819,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{1646}},
             [questKeys.requiredLevel] = 13,
             [questKeys.questLevel] = 17,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Bring Thundris' Letter to Baros Alexston in Stormwind. Thundris mentioned a boat in Auberdine that can take you there."},
             [questKeys.sourceItemId] = 279045,
             [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
@@ -6827,7 +8276,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257019}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with Nyassa Swiftdraught in Shen'dar Village to learn to craft a camping item for your profession once you have shown proficiency in your skill."},
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
@@ -6837,7 +8286,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251913}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with Aedi Thriceforged in Shen'dar Village to learn to craft a camping item for your profession once you have shown proficiency in your skill."},
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
@@ -6847,7 +8296,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257018}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Speak with Naleeia Tattermend in Shen'dar Village to learn to craft a camping item for your profession once you have shown proficiency in your skill."},
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
@@ -6857,7 +8306,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251992}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with Fenn Fairweather in Shen'dar Village to learn to craft a camping item for your profession once you have shown proficiency in your skill."},
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
@@ -6867,7 +8316,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{254345}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Speak with Syriel Nightrain in Valanaar to learn to craft a camping item for your profession once you have shown proficiency in your skill."},
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
@@ -6877,7 +8326,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251993}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with Indari Sunseam in Shen'dar Village to learn to craft a camping item for your profession once you have shown proficiency in your skill."},
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
@@ -6887,7 +8336,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257022}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with Messana Crestwind in Shen'dar Village to learn to craft a camping item for your profession once you have shown proficiency in your skill."},
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
@@ -6897,7 +8346,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257024}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with Mendalass Tattermend in Shen'dar Village to learn to craft a camping item for your profession once you have shown proficiency in your skill."},
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
@@ -6944,13 +8393,25 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = sortKeys.NIGHT_ELF,
             [questKeys.reputationReward] = {{69, 50}},
         },
+        [97985] = { -- Thundering Hearts : https://wowhead.com/forever/quest=97985/thundering-hearts
+            [questKeys.name] = "Thundering Hearts",
+            [questKeys.startedBy] = {{270038}},
+            [questKeys.finishedBy] = {{270038}},
+            [questKeys.requiredLevel] = 25,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Slay Stormheart in Thousand Needles and acquire its heart."},
+            [questKeys.objectives] = {nil, nil, {{279186}}},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+            [questKeys.reputationReward] = {{68, 150}},
+        },
         [98013] = { -- Swelling Forces : https://wowhead.com/forever/quest=98013/swelling-forces
             [questKeys.name] = "Swelling Forces",
             [questKeys.startedBy] = {{270269}},
             [questKeys.finishedBy] = {{270269}},
             [questKeys.requiredLevel] = 12,
             [questKeys.questLevel] = 20,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Eliminate 12 Stormscale Myrmidons, 8 Stormscale Sorceresses, and 6 Stormscale Warriors for Arbal at the Grove of the Ancients."},
             [questKeys.objectives] = {{{2181}, {2182}, {2183}}},
             [questKeys.zoneOrSort] = zoneIDs.DARKSHORE,
@@ -6984,11 +8445,23 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{2930}},
             [questKeys.requiredLevel] = 10,
             [questKeys.questLevel] = 13,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Find and slay the owl known as Jai'vhanel and take one of her feathers. The black owl was last seen north of the Ameth'Aran ruins near the mountain base. Report the death of Jai'vhanel to Sentinel Glynda Nal'Shea in Auberdine."},
             [questKeys.objectives] = {nil, nil, {{281038}}},
             [questKeys.zoneOrSort] = zoneIDs.DARKSHORE,
             [questKeys.reputationReward] = {{69, 150}},
+        },
+        [98027] = { -- Gleaming Crescent Necklace : https://wowhead.com/forever/quest=98027/gleaming-crescent-necklace
+            [questKeys.name] = "Gleaming Crescent Necklace",
+            [questKeys.startedBy] = {nil, {669176}},
+            [questKeys.finishedBy] = {{3961}},
+            [questKeys.requiredLevel] = 25,
+            [questKeys.questLevel] = 29,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Deliver the Crescent Necklace to Maliynn in Astranaar."},
+            [questKeys.sourceItemId] = 279274,
+            [questKeys.zoneOrSort] = zoneIDs.ASHENVALE,
+            [questKeys.reputationReward] = {{69, 100}},
         },
         [98028] = { -- Baron Marinous : https://wowhead.com/forever/quest=98028/baron-marinous
             [questKeys.name] = "Baron Marinous",
@@ -7026,6 +8499,17 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = zoneIDs.TELDRASSIL,
             [questKeys.reputationReward] = {{69, 150}},
         },
+        [98059] = { -- Hillsbrad's Hoard : https://wowhead.com/forever/quest=98059/hillsbrads-hoard
+            [questKeys.name] = "Hillsbrad's Hoard",
+            [questKeys.startedBy] = {{251493}},
+            [questKeys.finishedBy] = {{251493}},
+            [questKeys.requiredLevel] = 23,
+            [questKeys.questLevel] = 27,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Place the Sealed Company Request you were given on the bookkeeping table within Hillsbrad's town hall."},
+            [questKeys.sourceItemId] = 279386,
+            [questKeys.zoneOrSort] = zoneIDs.HILLSBRAD_FOOTHILLS,
+        },
         [98065] = { -- Crown of the Earth : https://wowhead.com/forever/quest=98065/crown-of-the-earth
             [questKeys.name] = "Crown of the Earth",
             [questKeys.startedBy] = {{4092}},
@@ -7044,11 +8528,46 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{8396}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 11,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Place Sentinel Owls at the entrance to the Cenarion Hold depths, the Darnassus Bank, the Craftsman's Terrace Inn, and the City Gate for Sentinel Dalia Sunblade in the Temple of the Moon in Darnassus."},
             [questKeys.sourceItemId] = 279378,
             [questKeys.zoneOrSort] = zoneIDs.DARNASSUS,
             [questKeys.reputationReward] = {{69, 75}},
+        },
+        [98069] = { -- Stolen Freewind Supplies : https://wowhead.com/forever/quest=98069/stolen-freewind-supplies
+            [questKeys.name] = "Stolen Freewind Supplies",
+            [questKeys.startedBy] = {{4877}},
+            [questKeys.finishedBy] = {{4877}},
+            [questKeys.requiredLevel] = 27,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Bring 8 Stolen Freewind Supplies to Jandia in Freewind Post."},
+            [questKeys.objectives] = {nil, nil, {{279383}}},
+            [questKeys.zoneOrSort] = zoneIDs.THOUSAND_NEEDLES,
+            [questKeys.reputationReward] = {{81, 100}},
+        },
+        [98070] = { -- Stop the Screeching : https://wowhead.com/forever/quest=98070/stop-the-screeching
+            [questKeys.name] = "Stop the Screeching",
+            [questKeys.startedBy] = {{4877}},
+            [questKeys.finishedBy] = {{4877}},
+            [questKeys.requiredLevel] = 27,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Slay 5 Screeching Harpies, 5 Screeching Roguefeather Harpies and 5 Screeching Windcaller Harpies."},
+            [questKeys.objectives] = {{{4100}, {4101}, {4104}}},
+            [questKeys.zoneOrSort] = zoneIDs.THOUSAND_NEEDLES,
+            [questKeys.reputationReward] = {{81, 100}},
+        },
+        [98071] = { -- Brewer's Trade : https://wowhead.com/forever/quest=98071/brewers-trade
+            [questKeys.name] = "Brewer's Trade",
+            [questKeys.startedBy] = {{2705}},
+            [questKeys.finishedBy] = {{2705}},
+            [questKeys.requiredLevel] = 23,
+            [questKeys.questLevel] = 27,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Deliver the bottles of Fallrook Varietal to Dun Garok in southeast Hillsbrad Foothills, and bring back a sack of their Homebrew Hops."},
+            [questKeys.sourceItemId] = 279390,
+            [questKeys.zoneOrSort] = zoneIDs.HILLSBRAD_FOOTHILLS,
         },
         [98093] = { -- Field to Clear : https://wowhead.com/forever/quest=98093/field-to-clear
             [questKeys.name] = "Field to Clear",
@@ -7062,16 +8581,20 @@ function ForeverBaseQuest:Load()
         },
         [98094] = { -- Scout Support : https://wowhead.com/forever/quest=98094/scout-support
             [questKeys.name] = "Scout Support",
+            [questKeys.startedBy] = {{2215}},
+            [questKeys.finishedBy] = {{270438}},
             [questKeys.requiredLevel] = 19,
             [questKeys.questLevel] = 25,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
-            [questKeys.objectivesText] = {"High Executor Darthalia wants you to deliver updated orders to Deathstalker Masoj, south of Tarren Mill, outside of Dun Garok"},
+            [questKeys.objectivesText] = {"High Executor Darthalia wants you to deliver updated orders to Deathstalker Masoj, south of Tarren Mill, outside of Dun Garok."},
             [questKeys.sourceItemId] = 279394,
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.reputationReward] = {{81, 150}},
         },
         [98095] = { -- Valuable Vantages : https://wowhead.com/forever/quest=98095/valuable-vantages
             [questKeys.name] = "Valuable Vantages",
+            [questKeys.startedBy] = {{270438}},
+            [questKeys.finishedBy] = {{270438}},
             [questKeys.requiredLevel] = 19,
             [questKeys.questLevel] = 25,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
@@ -7079,6 +8602,29 @@ function ForeverBaseQuest:Load()
             [questKeys.sourceItemId] = 279395,
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.reputationReward] = {{81, 150}},
+        },
+        [98155] = { -- Pristine Pesterhide Pelts : https://wowhead.com/forever/quest=98155/pristine-pesterhide-pelts
+            [questKeys.name] = "Pristine Pesterhide Pelts",
+            [questKeys.startedBy] = {{11826}},
+            [questKeys.finishedBy] = {{11826}},
+            [questKeys.requiredLevel] = 27,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Bring 5 Pristine Pesterhide Pelts to Kristy Grant."},
+            [questKeys.objectives] = {nil, nil, {{279472}}},
+            [questKeys.zoneOrSort] = zoneIDs.THOUSAND_NEEDLES,
+            [questKeys.reputationReward] = {{72, 100}},
+        },
+        [98156] = { -- Packaged Pristine Pelts : https://wowhead.com/forever/quest=98156/packaged-pristine-pelts
+            [questKeys.name] = "Packaged Pristine Pelts",
+            [questKeys.finishedBy] = {{11827}},
+            [questKeys.requiredLevel] = 27,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Bring the Package of Pristine Pelts to Kimberly Grant."},
+            [questKeys.sourceItemId] = 279481,
+            [questKeys.zoneOrSort] = zoneIDs.THOUSAND_NEEDLES,
+            [questKeys.reputationReward] = {{72, 100}},
         },
         [98189] = { -- Return the Statuette : https://wowhead.com/forever/quest=98189/return-the-statuette
             [questKeys.name] = "Return the Statuette",
@@ -7091,6 +8637,8 @@ function ForeverBaseQuest:Load()
         },
         [98190] = { -- A Friend of the Family : https://wowhead.com/forever/quest=98190/a-friend-of-the-family
             [questKeys.name] = "A Friend of the Family",
+            [questKeys.startedBy] = {{2104}},
+            [questKeys.finishedBy] = {{1748}},
             [questKeys.requiredLevel] = 20,
             [questKeys.questLevel] = 25,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
@@ -7100,6 +8648,8 @@ function ForeverBaseQuest:Load()
         },
         [98191] = { -- A Friend of the Family : https://wowhead.com/forever/quest=98191/a-friend-of-the-family
             [questKeys.name] = "A Friend of the Family",
+            [questKeys.startedBy] = {{1748}},
+            [questKeys.finishedBy] = {{928}},
             [questKeys.requiredLevel] = 20,
             [questKeys.questLevel] = 25,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
@@ -7113,11 +8663,35 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{2086}},
             [questKeys.requiredLevel] = 18,
             [questKeys.questLevel] = 22,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Recover 6 Khaz Modan Timber and 30 Khaz Modan Iron from Menethil Harbor for Valstag Ironjaw."},
             [questKeys.objectives] = {nil, nil, {{279821}, {279822}}},
             [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
             [questKeys.reputationReward] = {{47, 100}},
+        },
+        [98209] = { -- Bloom of the Heavens : https://wowhead.com/forever/quest=98209/bloom-of-the-heavens
+            [questKeys.name] = "Bloom of the Heavens",
+            [questKeys.startedBy] = {{270844}},
+            [questKeys.finishedBy] = {{3649}},
+            [questKeys.requiredLevel] = 22,
+            [questKeys.questLevel] = 29,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Bring Nord'el to Thundris Windweaver in Auberdine in Darkshore. You recall Sylessa mentioning a boat in Menethil Harbor can take you there."},
+            [questKeys.sourceItemId] = 279924,
+            [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
+            [questKeys.reputationReward] = {{69, 50}},
+        },
+        [98216] = { -- Understanding Our Present : https://wowhead.com/forever/quest=98216/understanding-our-present
+            [questKeys.name] = "Understanding Our Present",
+            [questKeys.startedBy] = {{1077}},
+            [questKeys.finishedBy] = {{1077}},
+            [questKeys.requiredLevel] = 23,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Use the Goaz Stone near the Goaz Warder and bring its Titanic Keystone back to Prospector Whelgar."},
+            [questKeys.objectives] = {nil, nil, {{279993}}},
+            [questKeys.sourceItemId] = 279996,
+            [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
         },
         [98219] = { -- The Shamed Lieutenant : https://wowhead.com/forever/quest=98219/the-shamed-lieutenant
             [questKeys.name] = "The Shamed Lieutenant",
@@ -7126,6 +8700,40 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Speak to Lieutenant Farren Orinelle in Southshore in Hillsbrad Foothills."},
             [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [98221] = { -- From the Ashes : https://wowhead.com/forever/quest=98221/from-the-ashes
+            [questKeys.name] = "From the Ashes",
+            [questKeys.startedBy] = {{2104}},
+            [questKeys.finishedBy] = {{2104}},
+            [questKeys.requiredLevel] = 23,
+            [questKeys.questLevel] = 28,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Captain Stoutfist in Menethil Keep wants you to destroy the 4 sets of Attack Plans in the Angerfang Encampment."},
+            [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
+            [questKeys.reputationReward] = {{47, 100}},
+        },
+        [98223] = { -- Old Habits : https://wowhead.com/forever/quest=98223/old-habits
+            [questKeys.name] = "Old Habits",
+            [questKeys.startedBy] = {nil, {671518}},
+            [questKeys.finishedBy] = {{2104}},
+            [questKeys.requiredLevel] = 23,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Bring the Tattered Spellbook to Captain Stoutfist in Menethil Harbor."},
+            [questKeys.sourceItemId] = 280042,
+            [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
+            [questKeys.reputationReward] = {{47, 75}},
+        },
+        [98230] = { -- This Land Was Their Land : https://wowhead.com/forever/quest=98230/this-land-was-their-land
+            [questKeys.name] = "This Land Was Their Land",
+            [questKeys.startedBy] = {{2104}},
+            [questKeys.finishedBy] = {{270637}},
+            [questKeys.requiredLevel] = 22,
+            [questKeys.questLevel] = 29,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Find Howin Kindfeather east of Menethil Harbor, along the road."},
+            [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
+            [questKeys.reputationReward] = {{471, 10}},
         },
         [98240] = { -- Crimson Crate Delivery : https://wowhead.com/forever/quest=98240/crimson-crate-delivery
             [questKeys.name] = "Crimson Crate Delivery",
@@ -7139,6 +8747,8 @@ function ForeverBaseQuest:Load()
         },
         [98245] = { -- Razormaw Needling : https://wowhead.com/forever/quest=98245/razormaw-needling
             [questKeys.name] = "Razormaw Needling",
+            [questKeys.startedBy] = {{270637}},
+            [questKeys.finishedBy] = {{270637}},
             [questKeys.requiredLevel] = 21,
             [questKeys.questLevel] = 29,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
@@ -7193,6 +8803,8 @@ function ForeverBaseQuest:Load()
         },
         [98252] = { -- A Void Path : https://wowhead.com/forever/quest=98252/a-void-path
             [questKeys.name] = "A Void Path",
+            [questKeys.startedBy] = {{267214}},
+            [questKeys.finishedBy] = {{271181}},
             [questKeys.requiredLevel] = 18,
             [questKeys.questLevel] = 22,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
@@ -7202,11 +8814,24 @@ function ForeverBaseQuest:Load()
         },
         [98282] = { -- Alchemical Hazards : https://wowhead.com/forever/quest=98282/alchemical-hazards
             [questKeys.name] = "Alchemical Hazards",
+            [questKeys.startedBy] = {{1480}},
+            [questKeys.finishedBy] = {{1480}},
             [questKeys.requiredLevel] = 20,
             [questKeys.questLevel] = 22,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Collect an Unruptured Stalker Gland from Thelgen Rock for Caitlin Grassman in Menethil Harbor."},
             [questKeys.objectives] = {nil, nil, {{280319}}},
+            [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
+        },
+        [98283] = { -- Carnage : https://wowhead.com/forever/quest=98283/carnage
+            [questKeys.name] = "Carnage",
+            [questKeys.startedBy] = {{1244}},
+            [questKeys.finishedBy] = {{1244}},
+            [questKeys.requiredLevel] = 22,
+            [questKeys.questLevel] = 30,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Bring Carnage's Head to Rethiel the Greenwarden in The Green Belt."},
+            [questKeys.objectives] = {nil, nil, {{280331}, {280330}}},
             [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
         },
         [98284] = { -- Camping 101: Enchanting : https://wowhead.com/forever/quest=98284/camping-101-enchanting
@@ -7225,7 +8850,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{251684}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 6,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Speak with the Strange Hermit in Shadowgale Forest to learn to craft a camping item for your profession once you have shown proficiency in your skill."},
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
@@ -7247,8 +8872,22 @@ function ForeverBaseQuest:Load()
             [questKeys.objectivesText] = {"Speak with Sprite Jumpsprocket in Stormwind to learn to craft a camping item for your profession once you have shown proficiency in your skill."},
             [questKeys.zoneOrSort] = sortKeys.CAMPING,
         },
+        [98291] = { -- Death to the Dragonmaw : https://wowhead.com/forever/quest=98291/death-to-the-dragonmaw
+            [questKeys.name] = "Death to the Dragonmaw",
+            [questKeys.startedBy] = {{270637}},
+            [questKeys.finishedBy] = {{270637}},
+            [questKeys.requiredLevel] = 22,
+            [questKeys.questLevel] = 30,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Kill 8 Dragonmaw Reclaimers, 5 Dragonmaw Soulbinders, and 3 Dragonmaw Infiltrators in Dragonmaw Retreat for Howin Kindfeather."},
+            [questKeys.objectives] = {{{271351}, {271348}, {271346}}},
+            [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
+            [questKeys.reputationReward] = {{471, 100}},
+        },
         [98293] = { -- Forced Disarmament : https://wowhead.com/forever/quest=98293/forced-disarmament
             [questKeys.name] = "Forced Disarmament",
+            [questKeys.startedBy] = {nil, {672330}},
+            [questKeys.finishedBy] = {{2104}},
             [questKeys.requiredLevel] = 22,
             [questKeys.questLevel] = 30,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
@@ -7256,6 +8895,18 @@ function ForeverBaseQuest:Load()
             [questKeys.objectives] = {nil, nil, {{280369}}},
             [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
             [questKeys.reputationReward] = {{471, 100}},
+        },
+        [98297] = { -- Stopping the Cycle : https://wowhead.com/forever/quest=98297/stopping-the-cycle
+            [questKeys.name] = "Stopping the Cycle",
+            [questKeys.startedBy] = {{270637}},
+            [questKeys.finishedBy] = {{270637}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 34,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Kill the Subdued Dragonspawn at the Dragonmaw Gates for Howin Kindfeather."},
+            [questKeys.objectives] = {{{271373}}},
+            [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
+            [questKeys.reputationReward] = {{471, 150}},
         },
         [98298] = { -- Arugal's Folly : https://wowhead.com/forever/quest=98298/arugals-folly
             [questKeys.name] = "Arugal's Folly",
@@ -7280,6 +8931,41 @@ function ForeverBaseQuest:Load()
             [questKeys.objectives] = {{{2053}, {2054}}},
             [questKeys.zoneOrSort] = zoneIDs.SILVERPINE_FOREST,
             [questKeys.reputationReward] = {{68, 100}},
+        },
+        [98300] = { -- Word to Ironforge : https://wowhead.com/forever/quest=98300/word-to-ironforge
+            [questKeys.name] = "Word to Ironforge",
+            [questKeys.startedBy] = {{270637}},
+            [questKeys.finishedBy] = {{2784}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 34,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Deliver Howin's Missive to King Magni Bronzebeard in Ironforge."},
+            [questKeys.sourceItemId] = 280392,
+            [questKeys.zoneOrSort] = zoneIDs.IRONFORGE,
+            [questKeys.reputationReward] = {{47, 10}},
+        },
+        [98310] = { -- Gleaning Our Future : https://wowhead.com/forever/quest=98310/gleaning-our-future
+            [questKeys.name] = "Gleaning Our Future",
+            [questKeys.startedBy] = {{1077}},
+            [questKeys.finishedBy] = {{1077}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 32,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Use the Goaz Stone near Ados, Modr, Golm, and Neru and bring their hearts back to Prospector Whelgar."},
+            [questKeys.objectives] = {nil, nil, {{280395}, {280396}, {280397}, {280398}}},
+            [questKeys.sourceItemId] = 280394,
+            [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
+        },
+        [98313] = { -- For Further Study : https://wowhead.com/forever/quest=98313/for-further-study
+            [questKeys.name] = "For Further Study",
+            [questKeys.startedBy] = {{1077}},
+            [questKeys.finishedBy] = {{2916}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 32,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Bring the Whelgar Relic Package to Historian Karnik in Ironforge."},
+            [questKeys.sourceItemId] = 280403,
+            [questKeys.zoneOrSort] = zoneIDs.IRONFORGE,
         },
         [98319] = { -- Secure the Mountain : https://wowhead.com/forever/quest=98319/secure-the-mountain
             [questKeys.name] = "Secure the Mountain",
@@ -7339,6 +9025,12 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
             [questKeys.reputationReward] = {{47, 100}, {54, 100}},
         },
+        [98338] = { -- REUSE ME : https://wowhead.com/forever/quest=98338/reuse-me
+            [questKeys.name] = "REUSE ME",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+        },
         [98340] = { -- The Great Cat Spirit : https://wowhead.com/forever/quest=98340/the-great-cat-spirit
             [questKeys.name] = "The Great Cat Spirit",
             [questKeys.startedBy] = {{3033}},
@@ -7357,8 +9049,8 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{272054}},
             [questKeys.requiredLevel] = 20,
             [questKeys.questLevel] = 20,
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
-            [questKeys.objectivesText] = {"Seek out the Avatar of Saeyleenan in southern part Moonglade and learn what it has to share with you about the nature of the windborne cat."},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
+            [questKeys.objectivesText] = {"Seek out the Avatar of Saeyleenan in the southern part Moonglade and learn what it has to share with you about the nature of the windborne cat."},
             [questKeys.zoneOrSort] = sortKeys.DRUID,
             [questKeys.reputationReward] = {{609, 50}},
         },
@@ -7392,7 +9084,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{341}},
             [questKeys.requiredLevel] = 15,
             [questKeys.questLevel] = 21,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Slay 12 Greater Tarantulas and destroy 6 Tarantula Eggs in Alther's Mill for Foreman Oslow in Redridge."},
             [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
             [questKeys.reputationReward] = {{72, 100}},
@@ -7403,9 +9095,9 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{382}},
             [questKeys.requiredLevel] = 18,
             [questKeys.questLevel] = 21,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
-            [questKeys.objectivesText] = {"Bring 10 Battleworn Axes to Marshal Marris in Lakeshire."},
-            [questKeys.objectives] = {nil, nil, {{280839}, {280841}}},
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
+            [questKeys.objectivesText] = {"Bring 8 Stolen Weapons and 10 Blackrock Supplies to Marshal Marris in Lakeshire."},
+            [questKeys.objectives] = {nil, nil, {{280841}, {280839}}},
             [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
             [questKeys.reputationReward] = {{72, 100}},
         },
@@ -7426,7 +9118,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{7316}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 10,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.NIGHT_ELF,
             [questKeys.objectivesText] = {"Speak to Sister Aquinne in Darnassus."},
             [questKeys.zoneOrSort] = zoneIDs.DARNASSUS,
             [questKeys.reputationReward] = {{69, 10}},
@@ -7437,7 +9129,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{3519}},
             [questKeys.requiredLevel] = 6,
             [questKeys.questLevel] = 12,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.NIGHT_ELF + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Collect Hatescreech's Amulet, Windmistress Gaedress' Amulet, and Witchmother Arysa's Amulet for Sentinel Arynia Cloudsbreak in the Oracle Glade."},
             [questKeys.objectives] = {nil, nil, {{280831}, {280832}, {280834}}},
             [questKeys.zoneOrSort] = zoneIDs.TELDRASSIL,
@@ -7505,7 +9197,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{3567}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 12,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.NIGHT_ELF,
             [questKeys.objectivesText] = {"Kill 8 Befouled Webwoods and bring Xethorr the Wicked's Mature Fel Moss to Tallonkai Swiftroot in Dolanaar."},
             [questKeys.zoneOrSort] = zoneIDs.TELDRASSIL,
             [questKeys.reputationReward] = {{69, 150}},
@@ -7540,11 +9232,35 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{1070}},
             [questKeys.requiredLevel] = 11,
             [questKeys.questLevel] = 17,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
-            [questKeys.objectivesText] = {"Collect 5 Spiked Collars from Gnoll Thrashers for Deputy Feldon near Lakeshire."},
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
+            [questKeys.objectivesText] = {"Collect 5 Spiked Collars from Redridge Thrashers for Deputy Feldon near Lakeshire."},
             [questKeys.objectives] = {nil, nil, {{280911}}},
             [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
             [questKeys.reputationReward] = {{72, 100}},
+        },
+        [98417] = { -- Vengeful Trail : https://wowhead.com/forever/quest=98417/vengeful-trail
+            [questKeys.name] = "Vengeful Trail",
+            [questKeys.startedBy] = {{221269}},
+            [questKeys.finishedBy] = {{221269}},
+            [questKeys.requiredLevel] = 23,
+            [questKeys.questLevel] = 30,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Maseara Autumnmoon wants you to search west of Forest Song, amongst the Satyrnaar demons. Report any signs of her husband Kurothel upon your return."},
+            [questKeys.objectives] = {nil, nil, {{281014}}},
+            [questKeys.zoneOrSort] = zoneIDs.ASHENVALE,
+            [questKeys.reputationReward] = {{69, 25}},
+        },
+        [98418] = { -- Shared Fury : https://wowhead.com/forever/quest=98418/shared-fury
+            [questKeys.name] = "Shared Fury",
+            [questKeys.startedBy] = {{221269}},
+            [questKeys.finishedBy] = {{221269}},
+            [questKeys.requiredLevel] = 23,
+            [questKeys.questLevel] = 30,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Kill 5 Xavian Rogues, 5 Felsworn, 5 Betrayers, and 5 Hellcallers. Return to Maseara Autumnmoon in Forest Song afterwards."},
+            [questKeys.objectives] = {{{3754}, {3755}, {3757}, {3752}}},
+            [questKeys.zoneOrSort] = zoneIDs.ASHENVALE,
+            [questKeys.reputationReward] = {{69, 25}},
         },
         [98423] = { -- The Treaty of Understanding : https://wowhead.com/forever/quest=98423/the-treaty-of-understanding
             [questKeys.name] = "The Treaty of Understanding",
@@ -7623,10 +9339,29 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{2096}},
             [questKeys.requiredLevel] = 18,
             [questKeys.questLevel] = 21,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Deliver Hollee's Note to Tarrel Rockweaver near Menethil Harbor in the Wetlands."},
             [questKeys.sourceItemId] = 281243,
             [questKeys.zoneOrSort] = zoneIDs.WETLANDS,
+        },
+        [98463] = { -- Talk of the Town : https://wowhead.com/forever/quest=98463/talk-of-the-town
+            [questKeys.name] = "Talk of the Town",
+            [questKeys.startedBy] = {{2366}},
+            [questKeys.finishedBy] = {{2832}},
+            [questKeys.requiredLevel] = 28,
+            [questKeys.questLevel] = 33,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Visit Nixxrax Fillamug in the Salty Sailor Tavern in Booty Bay in Stranglethorn."},
+            [questKeys.zoneOrSort] = zoneIDs.STRANGLETHORN_VALE,
+        },
+        [98471] = { -- Message from the Supreme Magister : https://wowhead.com/forever/quest=98471/message-from-the-supreme-magister
+            [questKeys.name] = "Message from the Supreme Magister",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 35,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
+            [questKeys.objectivesText] = {"Meet Elaadrin Evengale at the cliffs overlooking The Uplands in Alterac Mountains."},
+            [questKeys.sourceItemId] = 281330,
+            [questKeys.zoneOrSort] = sortKeys.INVASION,
         },
         [98512] = { -- Al'Aketh Assassins : https://wowhead.com/forever/quest=98512/alaketh-assassins
             [questKeys.name] = "Al'Aketh Assassins",
@@ -7634,7 +9369,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{273017}},
             [questKeys.requiredLevel] = 6,
             [questKeys.questLevel] = 11,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/zephras_isle.toml; 0 = all races; Reviewed shared Zephras Isle quests: provisionally assume all races until narrower evidence is available.
             [questKeys.objectivesText] = {"Kill 10 Al'Aketh Assassins in the Shen'dar Highlands."},
             [questKeys.objectives] = {{{254626}}},
             [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
@@ -7743,7 +9478,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{11802}},
             [questKeys.requiredLevel] = 20,
             [questKeys.questLevel] = 20,
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.zoneOrSort] = sortKeys.DRUID,
             [questKeys.reputationReward] = {{609, 50}},
         },
@@ -7759,11 +9494,225 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = sortKeys.DRUID,
             [questKeys.reputationReward] = {{609, 50}},
         },
+        [98815] = { -- Highland Hides : https://wowhead.com/forever/quest=98815/highland-hides
+            [questKeys.name] = "Highland Hides",
+            [questKeys.startedBy] = {{2094}},
+            [questKeys.finishedBy] = {{2094}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 28,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Return 4 Thicket Raptor Hides to James Halloran, the tanner, in Menethil Harbor."},
+            [questKeys.objectives] = {nil, nil, {{284845}}},
+            [questKeys.zoneOrSort] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+            [questKeys.reputationReward] = {{72, 50}},
+        },
+        [98823] = { -- Earthen Echo : https://wowhead.com/forever/quest=98823/earthen-echo
+            [questKeys.name] = "Earthen Echo",
+            [questKeys.startedBy] = {{9087}},
+            [questKeys.finishedBy] = {{259118}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Bring the Titan Relic to Muln Earthfury at the Skywatcher Plateau in northwest Mulgore."},
+            [questKeys.sourceItemId] = 287958,
+            [questKeys.zoneOrSort] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [98824] = { -- Prehistoric Prism : https://wowhead.com/forever/quest=98824/prehistoric-prism
+            [questKeys.name] = "Prehistoric Prism",
+            [questKeys.startedBy] = {{1077}},
+            [questKeys.finishedBy] = {{5387}},
+            [questKeys.requiredLevel] = 24,
+            [questKeys.questLevel] = 31,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Bring the Titan Relic to High Explorer Magellas in Ironforge's Hall of Explorers."},
+            [questKeys.sourceItemId] = 287959,
+            [questKeys.zoneOrSort] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [98887] = { -- Conflict at Darkspear Islands : https://wowhead.com/forever/quest=98887/conflict-at-darkspear-islands
+            [questKeys.name] = "Conflict at Darkspear Islands",
+            [questKeys.startedBy] = {{15350}},
+            [questKeys.finishedBy] = {{15350}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 39,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Bring 3 Darkspear Islands Marks of Honor to a Horde Warbringer outside the battlegrounds."},
+            [questKeys.objectives] = {nil, nil, {{274895}}},
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{2798, 150}},
+        },
+        [98888] = { -- Conflict at Darkspear Islands : https://wowhead.com/forever/quest=98888/conflict-at-darkspear-islands
+            [questKeys.name] = "Conflict at Darkspear Islands",
+            [questKeys.startedBy] = {{15350}},
+            [questKeys.finishedBy] = {{15350}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 39,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectives] = {nil, nil, {{274895}}},
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{2798, 100}},
+        },
+        [98889] = { -- Conflict at Darkspear Islands : https://wowhead.com/forever/quest=98889/conflict-at-darkspear-islands
+            [questKeys.name] = "Conflict at Darkspear Islands",
+            [questKeys.requiredLevel] = 40,
+            [questKeys.questLevel] = 49,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- Assumption: assumptions/reviewed_horde_races.toml; ALL_HORDE; Reviewed Horde access: Horde Warbringer or Nizook objectives, faction-specific dialogue and matching explicitly Horde lower-level variants support the full Horde race mask for these IDs.
+            [questKeys.objectivesText] = {"Bring 3 Darkspear Islands Marks of Honor to a Horde Warbringer outside the battlegrounds."},
+            [questKeys.objectives] = {nil, nil, {{274895}}},
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{2798, 150}},
+        },
+        [98891] = { -- Conflict at Darkspear Islands : https://wowhead.com/forever/quest=98891/conflict-at-darkspear-islands
+            [questKeys.name] = "Conflict at Darkspear Islands",
+            [questKeys.requiredLevel] = 50,
+            [questKeys.questLevel] = 59,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- Assumption: assumptions/reviewed_horde_races.toml; ALL_HORDE; Reviewed Horde access: Horde Warbringer or Nizook objectives, faction-specific dialogue and matching explicitly Horde lower-level variants support the full Horde race mask for these IDs.
+            [questKeys.objectivesText] = {"Bring 3 Darkspear Islands Marks of Honor to a Horde Warbringer outside the battlegrounds."},
+            [questKeys.objectives] = {nil, nil, {{274895}}},
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{2798, 150}},
+        },
+        [98893] = { -- Conflict at Darkspear Islands : https://wowhead.com/forever/quest=98893/conflict-at-darkspear-islands
+            [questKeys.name] = "Conflict at Darkspear Islands",
+            [questKeys.requiredLevel] = 60,
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- Assumption: assumptions/reviewed_horde_races.toml; ALL_HORDE; Reviewed Horde access: Horde Warbringer or Nizook objectives, faction-specific dialogue and matching explicitly Horde lower-level variants support the full Horde race mask for these IDs.
+            [questKeys.objectivesText] = {"Bring 3 Darkspear Islands Marks of Honor to a Horde Warbringer outside the battlegrounds."},
+            [questKeys.objectives] = {nil, nil, {{274895}}},
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{2798, 150}},
+        },
+        [98895] = { -- Darkspear Islands Clash : https://wowhead.com/forever/quest=98895/darkspear-islands-clash
+            [questKeys.name] = "Darkspear Islands Clash",
+            [questKeys.startedBy] = {{15351}},
+            [questKeys.finishedBy] = {{15351}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 39,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Bring 3 Darkspear Islands Marks of Honor to an Alliance Brigadier General outside the battlegrounds."},
+            [questKeys.objectives] = {nil, nil, {{274895}}},
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{2799, 150}},
+        },
+        [98896] = { -- Darkspear Islands Clash : https://wowhead.com/forever/quest=98896/darkspear-islands-clash
+            [questKeys.name] = "Darkspear Islands Clash",
+            [questKeys.startedBy] = {{15351}},
+            [questKeys.finishedBy] = {{15351}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 39,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectives] = {nil, nil, {{274895}}},
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{2799, 100}},
+        },
+        [98897] = { -- Darkspear Islands Clash : https://wowhead.com/forever/quest=98897/darkspear-islands-clash
+            [questKeys.name] = "Darkspear Islands Clash",
+            [questKeys.requiredLevel] = 40,
+            [questKeys.questLevel] = 49,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- Assumption: assumptions/reviewed_alliance_races.toml; ALL_ALLIANCE; Reviewed Alliance access: faction-specific objectives and matching quest variants, or an identified Alliance starter/chain, support the full Alliance race mask for these IDs.
+            [questKeys.objectivesText] = {"Bring 3 Darkspear Islands Marks of Honor to an Alliance Brigadier General outside the battlegrounds."},
+            [questKeys.objectives] = {nil, nil, {{274895}}},
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{2799, 150}},
+        },
+        [98899] = { -- Darkspear Islands Clash : https://wowhead.com/forever/quest=98899/darkspear-islands-clash
+            [questKeys.name] = "Darkspear Islands Clash",
+            [questKeys.requiredLevel] = 50,
+            [questKeys.questLevel] = 59,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- Assumption: assumptions/reviewed_alliance_races.toml; ALL_ALLIANCE; Reviewed Alliance access: faction-specific objectives and matching quest variants, or an identified Alliance starter/chain, support the full Alliance race mask for these IDs.
+            [questKeys.objectivesText] = {"Bring 3 Darkspear Islands Marks of Honor to an Alliance Brigadier General outside the battlegrounds."},
+            [questKeys.objectives] = {nil, nil, {{274895}}},
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{2799, 150}},
+        },
+        [98901] = { -- Darkspear Islands Clash : https://wowhead.com/forever/quest=98901/darkspear-islands-clash
+            [questKeys.name] = "Darkspear Islands Clash",
+            [questKeys.requiredLevel] = 60,
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- Assumption: assumptions/reviewed_alliance_races.toml; ALL_ALLIANCE; Reviewed Alliance access: faction-specific objectives and matching quest variants, or an identified Alliance starter/chain, support the full Alliance race mask for these IDs.
+            [questKeys.objectivesText] = {"Bring 3 Darkspear Islands Marks of Honor to an Alliance Brigadier General outside the battlegrounds."},
+            [questKeys.objectives] = {nil, nil, {{274895}}},
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{2799, 150}},
+        },
+        [98903] = { -- The Battle for Darkspear Islands! : https://wowhead.com/forever/quest=98903/the-battle-for-darkspear-islands
+            [questKeys.name] = "The Battle for Darkspear Islands!",
+            [questKeys.startedBy] = {{275273}},
+            [questKeys.finishedBy] = {{275273}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 39,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectivesText] = {"Win a Darkspear Islands battleground and return back to Brelinda McFarry at Northwatch Hold."},
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{2799, 200}},
+        },
+        [98904] = { -- The Battle for Darkspear Islands! : https://wowhead.com/forever/quest=98904/the-battle-for-darkspear-islands
+            [questKeys.name] = "The Battle for Darkspear Islands!",
+            [questKeys.requiredLevel] = 40,
+            [questKeys.questLevel] = 49,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- Assumption: assumptions/reviewed_alliance_races.toml; ALL_ALLIANCE; Reviewed Alliance access: faction-specific objectives and matching quest variants, or an identified Alliance starter/chain, support the full Alliance race mask for these IDs.
+            [questKeys.objectivesText] = {"Win a Darkspear Islands battleground and return back to Brelinda McFarry at Northwatch Hold."},
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{2799, 200}},
+        },
+        [98905] = { -- The Battle for Darkspear Islands! : https://wowhead.com/forever/quest=98905/the-battle-for-darkspear-islands
+            [questKeys.name] = "The Battle for Darkspear Islands!",
+            [questKeys.requiredLevel] = 50,
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- Assumption: assumptions/reviewed_alliance_races.toml; ALL_ALLIANCE; Reviewed Alliance access: faction-specific objectives and matching quest variants, or an identified Alliance starter/chain, support the full Alliance race mask for these IDs.
+            [questKeys.objectivesText] = {"Win a Darkspear Islands battleground and return back to Brelinda McFarry at Northwatch Hold."},
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{2799, 200}},
+        },
+        [98906] = { -- The Battle for Darkspear Islands! : https://wowhead.com/forever/quest=98906/the-battle-for-darkspear-islands
+            [questKeys.name] = "The Battle for Darkspear Islands!",
+            [questKeys.startedBy] = {{275276}},
+            [questKeys.finishedBy] = {{275276}},
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 39,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Win a Darkspear Islands battleground and return back to Nizook Boof at The Merchant Coast."},
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{2798, 200}},
+        },
+        [98907] = { -- The Battle for Darkspear Islands! : https://wowhead.com/forever/quest=98907/the-battle-for-darkspear-islands
+            [questKeys.name] = "The Battle for Darkspear Islands!",
+            [questKeys.requiredLevel] = 40,
+            [questKeys.questLevel] = 49,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- Assumption: assumptions/reviewed_horde_races.toml; ALL_HORDE; Reviewed Horde access: Horde Warbringer or Nizook objectives, faction-specific dialogue and matching explicitly Horde lower-level variants support the full Horde race mask for these IDs.
+            [questKeys.objectivesText] = {"Win a Darkspear Islands battleground and return back to Nizook Boof at The Merchant Coast."},
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{2798, 200}},
+        },
+        [98908] = { -- The Battle for Darkspear Islands! : https://wowhead.com/forever/quest=98908/the-battle-for-darkspear-islands
+            [questKeys.name] = "The Battle for Darkspear Islands!",
+            [questKeys.requiredLevel] = 50,
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- Assumption: assumptions/reviewed_horde_races.toml; ALL_HORDE; Reviewed Horde access: Horde Warbringer or Nizook objectives, faction-specific dialogue and matching explicitly Horde lower-level variants support the full Horde race mask for these IDs.
+            [questKeys.objectivesText] = {"Win a Darkspear Islands battleground and return back to Nizook Boof at The Merchant Coast."},
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{2798, 200}},
+        },
+        [98910] = { -- Darkspear's Basic Care Package : https://wowhead.com/forever/quest=98910/darkspears-basic-care-package
+            [questKeys.name] = "Darkspear's Basic Care Package",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 39,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{510, 10}},
+        },
+        [98913] = { -- Theramore Basic Care Package : https://wowhead.com/forever/quest=98913/theramore-basic-care-package
+            [questKeys.name] = "Theramore Basic Care Package",
+            [questKeys.requiredLevel] = 30,
+            [questKeys.questLevel] = 39,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/unresolved_race_defaults.toml; 0 = all races; Explicitly defaulted to 0 (all races) at Logon's request because this quest's eligibility remains unresolved or weakly supported; this is not verified shared access or proof that the quest is obtainable.
+            [questKeys.zoneOrSort] = zoneIDs.DARKSPEAR_ISLANDS,
+            [questKeys.reputationReward] = {{509, 10}},
+        },
         [98977] = { -- Mossheart the Elder : https://wowhead.com/forever/quest=98977/mossheart-the-elder
             [questKeys.name] = "Mossheart the Elder",
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/lunar_festival_elders.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/lunar_festival_elders.toml; 0 = all races; Reviewed Lunar Festival Elders: Coin of Ancestry and both faction reputation rewards support shared race access.
             [questKeys.zoneOrSort] = sortKeys.LUNAR_FESTIVAL,
             [questKeys.reputationReward] = {{67, 50}, {469, 50}},
         },
@@ -7771,7 +9720,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Frostleaf the Elder",
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/lunar_festival_elders.toml; 0 = all races
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/lunar_festival_elders.toml; 0 = all races; Reviewed Lunar Festival Elders: Coin of Ancestry and both faction reputation rewards support shared race access.
             [questKeys.zoneOrSort] = sortKeys.LUNAR_FESTIVAL,
             [questKeys.reputationReward] = {{67, 50}, {469, 50}},
         },
@@ -7781,7 +9730,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{275683}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 9,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.NIGHT_ELF + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Search for Sentinel Eralya Leafshadow on the road leading to the Oracle Glade."},
             [questKeys.zoneOrSort] = zoneIDs.TELDRASSIL,
             [questKeys.reputationReward] = {{69, 10}},
@@ -7862,8 +9811,8 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{2081}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 9,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
-            [questKeys.objectivesText] = {"Help Sentinel Lynessa Duskblossom escape Ban'ethil Barrow Den, and report her is safety to Sentinel Kyra Starsong in Dolanaar."},
+            [questKeys.requiredRaces] = raceIDs.NIGHT_ELF + raceIDs.SKYBORNE_ALLIANCE,
+            [questKeys.objectivesText] = {"Help Sentinel Lynessa Duskblossom escape Ban'ethil Barrow Den, and report her safety to Sentinel Kyra Starsong in Dolanaar."},
             [questKeys.zoneOrSort] = zoneIDs.TELDRASSIL,
         },
         [99073] = { -- Easing Suffering : https://wowhead.com/forever/quest=99073/easing-suffering
@@ -7993,7 +9942,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{241}},
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 7,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Collect ingredients for murloc bait."},
             [questKeys.objectives] = {nil, nil, {{286214}, {286215}}},
             [questKeys.zoneOrSort] = zoneIDs.ELWYNN_FOREST,
@@ -8118,7 +10067,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{1253}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 8,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.NIGHT_ELF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Collect 14 pieces of firewood."},
             [questKeys.objectives] = {nil, nil, {{286339}}},
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
@@ -8151,7 +10100,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{1253}},
             [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 8,
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.GNOME + raceIDs.SKYBORNE_ALLIANCE,
             [questKeys.objectivesText] = {"Collect the rifles of fallen mountaineers."},
             [questKeys.objectives] = {nil, nil, {{286360}, {286359}, {286358}}},
             [questKeys.zoneOrSort] = zoneIDs.DUN_MOROGH,
@@ -8165,6 +10114,15 @@ function ForeverBaseQuest:Load()
             [questKeys.zoneOrSort] = zoneIDs.ALTERAC_MOUNTAINS,
             [questKeys.reputationReward] = {{2779, 150}},
         },
+        [99192] = { -- A Donation of Silk : https://wowhead.com/forever/quest=99192/a-donation-of-silk
+            [questKeys.name] = "A Donation of Silk",
+            [questKeys.requiredLevel] = 26,
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectives] = {nil, nil, {{4306}}},
+            [questKeys.zoneOrSort] = zoneIDs.ALTERAC_MOUNTAINS,
+            [questKeys.reputationReward] = {{2779, 150}},
+        },
         [99196] = { -- A Donation of Wool : https://wowhead.com/forever/quest=99196/a-donation-of-wool
             [questKeys.name] = "A Donation of Wool",
             [questKeys.startedBy] = {{276171}},
@@ -8173,6 +10131,15 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectives] = {nil, nil, {{2592}}},
+            [questKeys.zoneOrSort] = zoneIDs.MULGORE,
+            [questKeys.reputationReward] = {{2778, 150}},
+        },
+        [99197] = { -- A Donation of Silk : https://wowhead.com/forever/quest=99197/a-donation-of-silk
+            [questKeys.name] = "A Donation of Silk",
+            [questKeys.requiredLevel] = 26,
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectives] = {nil, nil, {{4306}}},
             [questKeys.zoneOrSort] = zoneIDs.MULGORE,
             [questKeys.reputationReward] = {{2778, 150}},
         },
@@ -8191,6 +10158,17 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{271866}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
+        },
+        [99411] = { -- Kyle's Gone Missing! : https://wowhead.com/forever/quest=99411/kyles-gone-missing
+            [questKeys.name] = "Kyle's Gone Missing!",
+            [questKeys.startedBy] = {{277182}},
+            [questKeys.finishedBy] = {{277182}},
+            [questKeys.requiredLevel] = 5,
+            [questKeys.questLevel] = 7,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectivesText] = {"Ahab Wheathoof at Bloodhoof Village in Mulgore wants you to feed his prized puppy, Kyle the Frenzied.", "", "Feed Kyle Tender Strider Meat and return to Ahab Wheathoof."},
+            [questKeys.zoneOrSort] = zoneIDs.MULGORE,
+            [questKeys.reputationReward] = {{81, 100}},
         },
     }
 end

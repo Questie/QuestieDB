@@ -7,6 +7,9 @@ function ForeverBaseNpc:Load()
     local npcKeys = QuestieDB.npcKeys
     local zoneIDs = ZoneDB.zoneIDs
     return {
+        [43] = { -- Mine Spider : https://wowhead.com/forever/npc=43/mine-spider
+            [npcKeys.minLevel] = 7,
+        },
         [89] = { -- Infernal : https://wowhead.com/forever/npc=89/infernal
             [npcKeys.minLevel] = 51,
         },
@@ -34,7 +37,7 @@ function ForeverBaseNpc:Load()
         },
         [268] = { -- Sirra Von'Indi : https://wowhead.com/forever/npc=268/sirra-vonindi
             [npcKeys.questStarts_add] = {96139},
-            [npcKeys.questEnds_add] = {96139},
+            [npcKeys.questEnds_add] = {79362, 96138, 96139},
         },
         [341] = { -- Foreman Oslow : https://wowhead.com/forever/npc=341/foreman-oslow
             [npcKeys.questStarts_add] = {98386},
@@ -83,6 +86,9 @@ function ForeverBaseNpc:Load()
         [837] = { -- Branstock Khalder : https://wowhead.com/forever/npc=837/branstock-khalder
             [npcKeys.questEnds_add] = {98574},
         },
+        [928] = { -- Lord Grayson Shadowbreaker : https://wowhead.com/forever/npc=928/lord-grayson-shadowbreaker
+            [npcKeys.questEnds_add] = {98191},
+        },
         [951] = { -- Brother Paxton : https://wowhead.com/forever/npc=951/brother-paxton
             [npcKeys.questStarts_add] = {91743, 91745, 92124},
             [npcKeys.questEnds_add] = {91741, 91743, 91777},
@@ -91,9 +97,27 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {91738},
             [npcKeys.questEnds] = {91738},
         },
+        [956] = { -- Dorin Songblade : https://wowhead.com/forever/npc=956/dorin-songblade
+            [npcKeys.questStarts] = {95772},
+            [npcKeys.questEnds] = {95795},
+        },
+        [1039] = { -- Fen Dweller : https://wowhead.com/forever/npc=1039/fen-dweller
+            [npcKeys.maxLevel] = 26,
+        },
         [1070] = { -- Deputy Feldon : https://wowhead.com/forever/npc=1070/deputy-feldon
             [npcKeys.questStarts_add] = {98407},
             [npcKeys.questEnds_add] = {98407},
+        },
+        [1072] = { -- Roggo Harlbarrow : https://wowhead.com/forever/npc=1072/roggo-harlbarrow
+            [npcKeys.questEnds] = {87491},
+        },
+        [1073] = { -- Ashlan Stonesmirk : https://wowhead.com/forever/npc=1073/ashlan-stonesmirk
+            [npcKeys.questStarts_add] = {88756},
+            [npcKeys.questEnds_add] = {88756},
+        },
+        [1077] = { -- Prospector Whelgar : https://wowhead.com/forever/npc=1077/prospector-whelgar
+            [npcKeys.questStarts_add] = {98216, 98310, 98313, 98824},
+            [npcKeys.questEnds_add] = {95810, 98216, 98310},
         },
         [1092] = { -- Captain Rugelfuss : https://wowhead.com/forever/npc=1092/captain-rugelfuss
             [npcKeys.questEnds_add] = {86585},
@@ -117,6 +141,10 @@ function ForeverBaseNpc:Load()
         [1241] = { -- Tognus Flintfire : https://wowhead.com/forever/npc=1241/tognus-flintfire
             [npcKeys.questStarts] = {98321},
             [npcKeys.questEnds] = {96044, 98321},
+        },
+        [1244] = { -- Rethiel the Greenwarden : https://wowhead.com/forever/npc=1244/rethiel-the-greenwarden
+            [npcKeys.questStarts_add] = {95646, 98283},
+            [npcKeys.questEnds_add] = {95646, 98283},
         },
         [1246] = { -- Vosur Brakthel : https://wowhead.com/forever/npc=1246/vosur-brakthel
             [npcKeys.questStarts] = {96045},
@@ -153,6 +181,10 @@ function ForeverBaseNpc:Load()
         },
         [1466] = { -- Gretta Finespindle : https://wowhead.com/forever/npc=1466/gretta-finespindle
             [npcKeys.questEnds] = {96031},
+        },
+        [1480] = { -- Caitlin Grassman : https://wowhead.com/forever/npc=1480/caitlin-grassman
+            [npcKeys.questStarts] = {95647, 98282},
+            [npcKeys.questEnds] = {95737, 95809, 98282},
         },
         [1481] = { -- Bart Tidewater : https://wowhead.com/forever/npc=1481/bart-tidewater
             [npcKeys.questEnds] = {98459},
@@ -211,8 +243,15 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {86784},
         },
         [1748] = { -- Highlord Bolvar Fordragon : https://wowhead.com/forever/npc=1748/highlord-bolvar-fordragon
-            [npcKeys.questStarts_add] = {93963, 98021},
-            [npcKeys.questEnds_add] = {93963, 94947},
+            [npcKeys.questStarts_add] = {93963, 98021, 98191},
+            [npcKeys.questEnds_add] = {93963, 94947, 98190},
+        },
+        [1776] = { -- Magtoor : https://wowhead.com/forever/npc=1776/magtoor
+            [npcKeys.questEnds_add] = {93663},
+        },
+        [1871] = { -- Eliza's Guard : https://wowhead.com/forever/npc=1871/elizas-guard
+            [npcKeys.maxLevel] = 31,
+            [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
         },
         [1937] = { -- Apothecary Renferrel : https://wowhead.com/forever/npc=1937/apothecary-renferrel
             [npcKeys.questStarts_add] = {91921},
@@ -248,8 +287,16 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts_add] = {98197},
             [npcKeys.questEnds_add] = {98197},
         },
+        [2094] = { -- James Halloran : https://wowhead.com/forever/npc=2094/james-halloran
+            [npcKeys.questStarts_add] = {98815},
+            [npcKeys.questEnds_add] = {98815},
+        },
         [2096] = { -- Tarrel Rockweaver : https://wowhead.com/forever/npc=2096/tarrel-rockweaver
             [npcKeys.questEnds_add] = {98461},
+        },
+        [2104] = { -- Captain Stoutfist : https://wowhead.com/forever/npc=2104/captain-stoutfist
+            [npcKeys.questStarts_add] = {98190, 98221, 98230},
+            [npcKeys.questEnds_add] = {98221, 98223, 98293},
         },
         [2114] = { -- Faruza : https://wowhead.com/forever/npc=2114/faruza
             [npcKeys.questEnds] = {97957},
@@ -262,15 +309,51 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {95314},
             [npcKeys.questEnds] = {95314, 97951},
         },
+        [2215] = { -- High Executor Darthalia : https://wowhead.com/forever/npc=2215/high-executor-darthalia
+            [npcKeys.questStarts_add] = {98094},
+        },
+        [2278] = { -- Melisara : https://wowhead.com/forever/npc=2278/melisara
+            [npcKeys.questStarts_add] = {96986},
+            [npcKeys.questEnds_add] = {96986},
+        },
         [2326] = { -- Thamner Pol : https://wowhead.com/forever/npc=2326/thamner-pol
             [npcKeys.questEnds] = {96047},
         },
         [2329] = { -- Michelle Belle : https://wowhead.com/forever/npc=2329/michelle-belle
             [npcKeys.questEnds] = {97919},
         },
+        [2358] = { -- Dalaran Summoner : https://wowhead.com/forever/npc=2358/dalaran-summoner
+            [npcKeys.minLevel] = 32,
+        },
+        [2359] = { -- Elemental Slave : https://wowhead.com/forever/npc=2359/elemental-slave
+            [npcKeys.minLevel] = 32,
+        },
+        [2366] = { -- Barkeep Kelly : https://wowhead.com/forever/npc=2366/barkeep-kelly
+            [npcKeys.questStarts] = {98463},
+        },
+        [2402] = { -- Shara Blazen : https://wowhead.com/forever/npc=2402/shara-blazen
+            [npcKeys.questEnds] = {95534},
+        },
+        [2410] = { -- Magus Wordeen Voidglare : https://wowhead.com/forever/npc=2410/magus-wordeen-voidglare
+            [npcKeys.questStarts_add] = {92434, 93680, 97287},
+            [npcKeys.questEnds_add] = {93680, 96984},
+        },
+        [2413] = { -- Dermot : https://wowhead.com/forever/npc=2413/dermot
+            [npcKeys.minLevel] = 33,
+        },
+        [2414] = { -- Kegan Darkmar : https://wowhead.com/forever/npc=2414/kegan-darkmar
+            [npcKeys.minLevel] = 33,
+        },
+        [2415] = { -- Warden Belamoore : https://wowhead.com/forever/npc=2415/warden-belamoore
+            [npcKeys.minLevel] = 33,
+        },
         [2504] = { -- Donyal Tovald : https://wowhead.com/forever/npc=2504/donyal-tovald
             [npcKeys.questStarts_add] = {97237},
             [npcKeys.questEnds_add] = {97234},
+        },
+        [2531] = { -- Minion of Morganth : https://wowhead.com/forever/npc=2531/minion-of-morganth
+            [npcKeys.minLevel] = 27,
+            [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
         },
         [2540] = { -- Dalaran Serpent : https://wowhead.com/forever/npc=2540/dalaran-serpent
             [npcKeys.maxLevel] = 17,
@@ -279,12 +362,22 @@ function ForeverBaseNpc:Load()
         [2543] = { -- Archmage Ansirem Runeweaver : https://wowhead.com/forever/npc=2543/archmage-ansirem-runeweaver
             [npcKeys.questStarts_add] = {94912},
         },
+        [2705] = { -- Brewmeister Bilger : https://wowhead.com/forever/npc=2705/brewmeister-bilger
+            [npcKeys.questStarts] = {98071},
+            [npcKeys.questEnds_add] = {98071},
+        },
         [2756] = { -- UNUSED Grund Drokda : https://wowhead.com/forever/npc=2756/grund-drokda
             [npcKeys.questStarts] = {97277},
             [npcKeys.questEnds] = {97277},
         },
         [2784] = { -- King Magni Bronzebeard : https://wowhead.com/forever/npc=2784/king-magni-bronzebeard
-            [npcKeys.questEnds_add] = {96393, 98423},
+            [npcKeys.questEnds_add] = {96393, 98300, 98423},
+        },
+        [2787] = { -- Zaruk : https://wowhead.com/forever/npc=2787/zaruk
+            [npcKeys.questStarts_add] = {95663},
+        },
+        [2832] = { -- Nixxrax Fillamug : https://wowhead.com/forever/npc=2832/nixxrax-fillamug
+            [npcKeys.questEnds] = {98463},
         },
         [2855] = { -- Snang : https://wowhead.com/forever/npc=2855/snang
             [npcKeys.questEnds] = {96102},
@@ -292,8 +385,18 @@ function ForeverBaseNpc:Load()
         [2913] = { -- Archaeologist Hollee : https://wowhead.com/forever/npc=2913/archaeologist-hollee
             [npcKeys.questStarts_add] = {98461},
         },
+        [2916] = { -- Historian Karnik : https://wowhead.com/forever/npc=2916/historian-karnik
+            [npcKeys.questEnds_add] = {98313},
+        },
         [2930] = { -- Sentinel Glynda Nal'Shea : https://wowhead.com/forever/npc=2930/sentinel-glynda-nalshea
             [npcKeys.questEnds_add] = {98025},
+        },
+        [2931] = { -- Zaricotl : https://wowhead.com/forever/npc=2931/zaricotl
+            [npcKeys.maxLevel] = 56,
+        },
+        [2946] = { -- Puppet of Helcular : https://wowhead.com/forever/npc=2946/puppet-of-helcular
+            [npcKeys.maxLevel] = 44,
+            [npcKeys.zoneID] = zoneIDs.HILLSBRAD_FOOTHILLS,
         },
         [2948] = { -- Mull Thunderhorn : https://wowhead.com/forever/npc=2948/mull-thunderhorn
             [npcKeys.questStarts_add] = {98435},
@@ -320,6 +423,7 @@ function ForeverBaseNpc:Load()
         },
         [3024] = { -- Tah Winterhoof : https://wowhead.com/forever/npc=3024/tah-winterhoof
             [npcKeys.questStarts] = {97538},
+            [npcKeys.questEnds] = {97538},
         },
         [3033] = { -- Turak Runetotem : https://wowhead.com/forever/npc=3033/turak-runetotem
             [npcKeys.questStarts_add] = {94913, 98340},
@@ -400,8 +504,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {97906},
         },
         [3368] = { -- Borstan : https://wowhead.com/forever/npc=3368/borstan
-            [npcKeys.questStarts] = {97249},
-            [npcKeys.questEnds] = {97246},
+            [npcKeys.questStarts] = {95697, 97249},
+            [npcKeys.questEnds] = {95697, 97246},
         },
         [3391] = { -- Gazlowe : https://wowhead.com/forever/npc=3391/gazlowe
             [npcKeys.questEnds_add] = {92706},
@@ -466,15 +570,30 @@ function ForeverBaseNpc:Load()
         },
         [3649] = { -- Thundris Windweaver : https://wowhead.com/forever/npc=3649/thundris-windweaver
             [npcKeys.questStarts_add] = {97914},
-            [npcKeys.questEnds_add] = {97926, 98042},
+            [npcKeys.questEnds_add] = {97926, 98042, 98209},
         },
         [3663] = { -- Delgren the Purifier : https://wowhead.com/forever/npc=3663/delgren-the-purifier
-            [npcKeys.questEnds_add] = {78088},
+            [npcKeys.questStarts_add] = {78089},
+            [npcKeys.questEnds_add] = {78088, 78093},
         },
         [3682] = { -- Vrang Wildgore : https://wowhead.com/forever/npc=3682/vrang-wildgore
             [npcKeys.minLevel] = 35,
             [npcKeys.questStarts] = {95494, 95495, 95507},
             [npcKeys.questEnds] = {95494, 95507},
+        },
+        [3950] = { -- Minor Water Guardian : https://wowhead.com/forever/npc=3950/minor-water-guardian
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
+        },
+        [3955] = { -- Shandrina : https://wowhead.com/forever/npc=3955/shandrina
+            [npcKeys.questStarts] = {86757},
+            [npcKeys.questEnds] = {86757},
+        },
+        [3961] = { -- Maliynn : https://wowhead.com/forever/npc=3961/maliynn
+            [npcKeys.questEnds] = {98027},
+        },
+        [3970] = { -- Llana : https://wowhead.com/forever/npc=3970/llana
+            [npcKeys.questStarts] = {95737},
         },
         [4092] = { -- Lariia : https://wowhead.com/forever/npc=4092/lariia
             [npcKeys.questStarts] = {98065},
@@ -502,6 +621,21 @@ function ForeverBaseNpc:Load()
         [4607] = { -- Father Lankester : https://wowhead.com/forever/npc=4607/father-lankester
             [npcKeys.questEnds] = {95328},
         },
+        [4720] = { -- Rizzle Brassbolts : https://wowhead.com/forever/npc=4720/rizzle-brassbolts
+            [npcKeys.questEnds] = {94218},
+        },
+        [4722] = { -- Rau Cliffrunner : https://wowhead.com/forever/npc=4722/rau-cliffrunner
+            [npcKeys.questStarts_add] = {79360, 79364, 79366, 79442},
+            [npcKeys.questEnds_add] = {79358, 79366},
+        },
+        [4795] = { -- Force of Nature : https://wowhead.com/forever/npc=4795/force-of-nature
+            [npcKeys.maxLevel] = 27,
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+        },
+        [4877] = { -- Jandia : https://wowhead.com/forever/npc=4877/jandia
+            [npcKeys.questStarts] = {98069, 98070},
+            [npcKeys.questEnds] = {98069, 98070},
+        },
         [4949] = { -- Thrall : https://wowhead.com/forever/npc=4949/thrall
             [npcKeys.questStarts_add] = {93739, 98024},
             [npcKeys.questEnds_add] = {95350},
@@ -509,8 +643,43 @@ function ForeverBaseNpc:Load()
         [5137] = { -- Reyna Stonebranch : https://wowhead.com/forever/npc=5137/reyna-stonebranch
             [npcKeys.questEnds] = {96055},
         },
+        [5288] = { -- Rabid Longtooth : https://wowhead.com/forever/npc=5288/rabid-forest-wolf
+            [npcKeys.minLevel] = 8,
+        },
+        [5387] = { -- High Explorer Magellas : https://wowhead.com/forever/npc=5387/high-explorer-magellas
+            [npcKeys.questEnds_add] = {98824},
+        },
         [5392] = { -- Yarr Hammerstone : https://wowhead.com/forever/npc=5392/yarr-hammerstone
             [npcKeys.questEnds] = {96046},
+        },
+        [5396] = { -- Captain Pentigast : https://wowhead.com/forever/npc=5396/captain-pentigast
+            [npcKeys.questEnds] = {93224},
+            [npcKeys.questStarts_add] = {93224, 93227},
+        },
+        [5397] = { -- Uthek the Wise : https://wowhead.com/forever/npc=5397/uthek-the-wise
+            [npcKeys.questStarts_add] = {93034},
+            [npcKeys.questEnds_add] = {93041, 93044, 93128},
+        },
+        [5398] = { -- Warug : https://wowhead.com/forever/npc=5398/warug
+            [npcKeys.questStarts_add] = {92743, 92841},
+            [npcKeys.questEnds_add] = {92743},
+        },
+        [5412] = { -- Gurda Wildmane : https://wowhead.com/forever/npc=5412/gurda-wildmane
+            [npcKeys.questEnds] = {93225},
+            [npcKeys.questStarts_add] = {93225, 94872, 94873},
+        },
+        [5492] = { -- Katherine the Pure : https://wowhead.com/forever/npc=5492/katherine-the-pure
+            [npcKeys.questStarts] = {78090},
+            [npcKeys.questEnds] = {78089},
+            [npcKeys.subName] = "Church of the Holy Light",
+        },
+        [5495] = { -- Ursula Deline : https://wowhead.com/forever/npc=5495/ursula-deline
+            [npcKeys.questStarts] = {78091, 78092},
+            [npcKeys.questEnds] = {78090, 78091},
+        },
+        [5502] = { -- Shylamiir : https://wowhead.com/forever/npc=5502/shylamiir
+            [npcKeys.questStarts] = {92456},
+            [npcKeys.questEnds] = {92456},
         },
         [5504] = { -- Sheldras Moontree : https://wowhead.com/forever/npc=5504/sheldras-moontree
             [npcKeys.questStarts] = {94914},
@@ -519,8 +688,22 @@ function ForeverBaseNpc:Load()
         [5513] = { -- Gelman Stonehand : https://wowhead.com/forever/npc=5513/gelman-stonehand
             [npcKeys.questEnds] = {97923},
         },
+        [5591] = { -- Dar : https://wowhead.com/forever/npc=5591/dar
+            [npcKeys.questStarts_add] = {93663},
+        },
+        [5601] = { -- Khan Jehn : https://wowhead.com/forever/npc=5601/khan-jehn
+            [npcKeys.maxLevel] = 42,
+        },
+        [5683] = { -- Corma Villard : https://wowhead.com/forever/npc=5683/corma-villard
+            [npcKeys.questStarts] = {87318},
+            [npcKeys.questEnds] = {88758},
+        },
         [5690] = { -- Clyde Kellen : https://wowhead.com/forever/npc=5690/clyde-kellen
             [npcKeys.questEnds] = {97956},
+        },
+        [5694] = { -- High Sorcerer Andromath : https://wowhead.com/forever/npc=5694/high-sorcerer-andromath
+            [npcKeys.questStarts_add] = {92489},
+            [npcKeys.questEnds_add] = {92489},
         },
         [5695] = { -- Vance Undergloom : https://wowhead.com/forever/npc=5695/vance-undergloom
             [npcKeys.questEnds] = {97953},
@@ -528,8 +711,14 @@ function ForeverBaseNpc:Load()
         [5759] = { -- Nurse Neela : https://wowhead.com/forever/npc=5759/nurse-neela
             [npcKeys.questEnds] = {97955},
         },
+        [5766] = { -- Savannah Cub : https://wowhead.com/forever/npc=5766/savannah-cub
+            [npcKeys.maxLevel] = 13,
+        },
         [5769] = { -- Arch Druid Hamuul Runetotem : https://wowhead.com/forever/npc=5769/arch-druid-hamuul-runetotem
             [npcKeys.questEnds_add] = {98435},
+        },
+        [5806] = { -- Treant Ally : https://wowhead.com/forever/npc=5806/treant-ally
+            [npcKeys.maxLevel] = 25,
         },
         [5811] = { -- Kamari : https://wowhead.com/forever/npc=5811/kamari
             [npcKeys.questStarts] = {96875},
@@ -545,6 +734,10 @@ function ForeverBaseNpc:Load()
         [5895] = { -- Minor Manifestation of Water : https://wowhead.com/forever/npc=5895/minor-manifestation-of-water
             [npcKeys.questStarts_add] = {94505},
             [npcKeys.questEnds_add] = {94503},
+        },
+        [5905] = { -- Prate Cloudseer : https://wowhead.com/forever/npc=5905/prate-cloudseer
+            [npcKeys.questStarts] = {79360},
+            [npcKeys.questEnds_add] = {79364},
         },
         [5911] = { -- Grunt Logmar : https://wowhead.com/forever/npc=5911/grunt-logmar
             [npcKeys.questStarts_add] = {97250},
@@ -570,8 +763,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 11,
         },
         [6176] = { -- Bath'rah the Windwatcher : https://wowhead.com/forever/npc=6176/bathrah-the-windwatcher
-            [npcKeys.questStarts_add] = {79362, 79363},
-            [npcKeys.questEnds_add] = {79362, 79363},
+            [npcKeys.questStarts_add] = {79361, 79362, 79363, 79364},
+            [npcKeys.questEnds_add] = {79360, 79361, 79362, 79363, 79364, 79442, 96016},
         },
         [6271] = { -- Mouse : https://wowhead.com/forever/npc=6271/mouse
             [npcKeys.questStarts] = {93928},
@@ -604,8 +797,15 @@ function ForeverBaseNpc:Load()
         [6626] = { -- "Plucky" Johnson : https://wowhead.com/forever/npc=6626/plucky-johnson
             [npcKeys.questEnds] = {94227},
         },
+        [6777] = { -- Zan Shivsproket : https://wowhead.com/forever/npc=6777/zan-shivsproket
+            [npcKeys.subName] = "Specialty Engineer",
+        },
         [6786] = { -- Ukor : https://wowhead.com/forever/npc=6786/ukor
             [npcKeys.questEnds] = {96876},
+        },
+        [6791] = { -- Innkeeper Wiley : https://wowhead.com/forever/npc=6791/innkeeper-wiley
+            [npcKeys.questStarts] = {96339, 96383},
+            [npcKeys.questEnds] = {96339, 96383},
         },
         [7088] = { -- Thuwd : https://wowhead.com/forever/npc=7088/thuwd
             [npcKeys.questEnds] = {97908},
@@ -619,6 +819,9 @@ function ForeverBaseNpc:Load()
         },
         [7316] = { -- Sister Aquinne : https://wowhead.com/forever/npc=7316/sister-aquinne
             [npcKeys.questEnds] = {98391},
+        },
+        [7360] = { -- Dun Garok Soldier : https://wowhead.com/forever/npc=7360/dun-garok-soldier
+            [npcKeys.maxLevel] = 30,
         },
         [7683] = { -- Alessandro Luca : https://wowhead.com/forever/npc=7683/alessandro-luca
             [npcKeys.questStarts_add] = {97891},
@@ -636,6 +839,9 @@ function ForeverBaseNpc:Load()
         [7999] = { -- Tyrande Whisperwind : https://wowhead.com/forever/npc=7999/tyrande-whisperwind
             [npcKeys.questEnds_add] = {98065},
         },
+        [8305] = { -- Kixxle : https://wowhead.com/forever/npc=8305/kixxle
+            [npcKeys.questEnds] = {94219, 94255},
+        },
         [8396] = { -- Sentinel Dalia Sunblade : https://wowhead.com/forever/npc=8396/sentinel-dalia-sunblade
             [npcKeys.questStarts] = {98067},
             [npcKeys.questEnds] = {98067},
@@ -643,6 +849,10 @@ function ForeverBaseNpc:Load()
         [8508] = { -- Gretta Ganter : https://wowhead.com/forever/npc=8508/gretta-ganter
             [npcKeys.questStarts] = {98326},
             [npcKeys.questEnds] = {98326},
+        },
+        [9087] = { -- Bashana Runetotem : https://wowhead.com/forever/npc=9087/bashana-runetotem
+            [npcKeys.questStarts_add] = {98823},
+            [npcKeys.questEnds_add] = {95664},
         },
         [10181] = { -- Lady Sylvanas Windrunner : https://wowhead.com/forever/npc=10181/lady-sylvanas-windrunner
             [npcKeys.questEnds] = {95803},
@@ -677,7 +887,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {97941},
         },
         [11044] = { -- Doctor Martin Felben : https://wowhead.com/forever/npc=11044/doctor-martin-felben
-            [npcKeys.questEnds] = {97891},
+            [npcKeys.questStarts] = {96988},
+            [npcKeys.questEnds] = {96988, 97891},
         },
         [11046] = { -- Whuut : https://wowhead.com/forever/npc=11046/whuut
             [npcKeys.questEnds] = {97275, 97899},
@@ -706,6 +917,13 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts_add] = {98341, 98362, 98394, 98397, 98405},
             [npcKeys.questEnds_add] = {94913, 94914, 98340, 98393, 98731, 98738, 98739},
         },
+        [11826] = { -- Kristy Grant : https://wowhead.com/forever/npc=11826/kristy-grant
+            [npcKeys.questStarts] = {98155},
+            [npcKeys.questEnds] = {98155},
+        },
+        [11827] = { -- Kimberly Grant : https://wowhead.com/forever/npc=11827/kimberly-grant
+            [npcKeys.questEnds] = {98156},
+        },
         [11835] = { -- Theodore Griffs : https://wowhead.com/forever/npc=11835/theodore-griffs
             [npcKeys.questStarts] = {95216},
             [npcKeys.questEnds] = {95216},
@@ -717,6 +935,20 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {98342, 98396, 98731, 98739},
             [npcKeys.questEnds] = {98342, 98394, 98396, 98405},
         },
+        [12736] = { -- Je'neu Sancrea : https://wowhead.com/forever/npc=12736/jeneu-sancrea
+            [npcKeys.subName] = "Earthen Ring",
+        },
+        [12920] = { -- Doctor Gregory Victor : https://wowhead.com/forever/npc=12920/doctor-gregory-victor
+            [npcKeys.questStarts_add] = {97539},
+        },
+        [13085] = { -- Myrokos Silentform : https://wowhead.com/forever/npc=13085/myrokos-silentform
+            [npcKeys.questStarts] = {96779, 96781, 96783},
+            [npcKeys.questEnds] = {96779, 96781, 96782, 96786},
+        },
+        [13155] = { -- Deathstalker Agent : https://wowhead.com/forever/npc=13155/deathstalker-agent
+            [npcKeys.questStarts] = {95682},
+            [npcKeys.questEnds] = {95663, 95682},
+        },
         [14450] = { -- Orphan Matron Nightingale : https://wowhead.com/forever/npc=14450/orphan-matron-nightingale
             [npcKeys.questStarts_add] = {95161},
             [npcKeys.questEnds_add] = {92415},
@@ -724,12 +956,26 @@ function ForeverBaseNpc:Load()
         [14508] = { -- Short John Mithril : https://wowhead.com/forever/npc=14508/short-john-mithril
             [npcKeys.questEnds_add] = {94217},
         },
+        [15350] = { -- Horde Warbringer : https://wowhead.com/forever/npc=15350/horde-warbringer
+            [npcKeys.questStarts_add] = {98887, 98888},
+            [npcKeys.questEnds_add] = {98887, 98888},
+        },
+        [15351] = { -- Alliance Brigadier General : https://wowhead.com/forever/npc=15351/alliance-brigadier-general
+            [npcKeys.questStarts_add] = {98895, 98896},
+            [npcKeys.questEnds_add] = {98895, 98896},
+        },
         [15906] = { -- Ironforge Reveler : https://wowhead.com/forever/npc=15906/ironforge-reveler
             [npcKeys.maxLevel] = 59,
         },
         [15991] = { -- Lady Dena Kennedy : https://wowhead.com/forever/npc=15991/lady-dena-kennedy
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
             [npcKeys.questEnds] = {95189},
+        },
+        [16134] = { -- Rimblat Earthshatter : https://wowhead.com/forever/npc=16134/rimblat-earthshatter
+            [npcKeys.subName] = "Earthen Ring",
+        },
+        [16458] = { -- Innkeeper Faralia : https://wowhead.com/forever/npc=16458/innkeeper-faralia
+            [npcKeys.questEnds] = {86574},
         },
         [20735] = { -- Archmage Lan'dalock : https://wowhead.com/forever/npc=20735/archmage-landalock
             [npcKeys.name] = "Archmage Lan'dalock",
@@ -745,6 +991,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 35,
             [npcKeys.spawns] = {[36] = {{11.2, 66}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Assistant Innkeeper",
         },
         [28687] = { -- Amisi Azuregaze : https://wowhead.com/forever/npc=28687/amisi-azuregaze
             [npcKeys.name] = "Amisi Azuregaze",
@@ -753,6 +1000,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{18.2, 66.4}, {18.2, 66.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 128, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.
         },
         [28694] = { -- Alard Schmied : https://wowhead.com/forever/npc=28694/alard-schmied
             [npcKeys.name] = "Alard Schmied",
@@ -761,6 +1010,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{19.8, 63.4}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Blacksmith",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2018 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [28774] = { -- Andrew Matthews : https://wowhead.com/forever/npc=28774/andrew-matthews
             [npcKeys.name] = "Andrew Matthews",
@@ -769,6 +1020,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{15.8, 69}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Dalaran City Planner",
         },
         [28776] = { -- Elizabeth Ross : https://wowhead.com/forever/npc=28776/elizabeth-ross
             [npcKeys.name] = "Elizabeth Ross",
@@ -777,6 +1029,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{15.8, 69}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Tabard Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 285327; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [28989] = { -- Aemara : https://wowhead.com/forever/npc=28989/aemara
             [npcKeys.name] = "Aemara",
@@ -785,6 +1039,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{17.2, 71.4}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Bowyer",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2504; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [28990] = { -- Anthony Durain : https://wowhead.com/forever/npc=28990/anthony-durain
             [npcKeys.name] = "Anthony Durain",
@@ -793,6 +1049,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{20, 63.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Shields",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2445; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [29049] = { -- Arille Azuregaze : https://wowhead.com/forever/npc=29049/arille-azuregaze
             [npcKeys.name] = "Arille Azuregaze",
@@ -801,6 +1059,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{18.4, 65.8}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Bartender",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [29491] = { -- Karandonna : https://wowhead.com/forever/npc=29491/karandonna
             [npcKeys.name] = "Karandonna",
@@ -809,6 +1069,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{16, 65.4}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Clothier",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 3426; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [29512] = { -- Ainderu Summerleaf : https://wowhead.com/forever/npc=29512/ainderu-summerleaf
             [npcKeys.name] = "Ainderu Summerleaf",
@@ -825,6 +1087,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{21.6, 69}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Reagents & Magical Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 3385; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [29538] = { -- Hexil Garrot : https://wowhead.com/forever/npc=29538/hexil-garrot
             [npcKeys.name] = "Hexil Garrot",
@@ -838,6 +1102,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{14.4, 65.8}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Fruit Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 4536; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [29568] = { -- "Techs" Rickard Rustbolt : https://wowhead.com/forever/npc=29568/techs-rickard-rustbolt
             [npcKeys.name] = "\"Techs\" Rickard Rustbolt",
@@ -845,11 +1111,13 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 55,
             [npcKeys.spawns] = {[36] = {{16.2, 66}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Warsong Gulch Battlemaster",
         },
         [29660] = { -- Sai : https://wowhead.com/forever/npc=29660/sai
             [npcKeys.name] = "Sai",
             [npcKeys.spawns] = {[36] = {{17, 69.4}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Alterac Valley Battlemaster",
         },
         [30104] = { -- Adamman the Trader : https://wowhead.com/forever/npc=30104/adamman-the-trader
             [npcKeys.name] = "Adamman the Trader",
@@ -868,6 +1136,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Archivist Betha",
             [npcKeys.spawns] = {[36] = {{10, 63.4}, {10.4, 63.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Kirin Tor Historian",
         },
         [30885] = { -- Blazik Fireclaw : https://wowhead.com/forever/npc=30885/blazik-fireclaw
             [npcKeys.name] = "Blazik Fireclaw",
@@ -876,6 +1145,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{16, 71.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Armor Quartermaster",
         },
         [31439] = { -- Archmage Timear : https://wowhead.com/forever/npc=31439/archmage-timear
             [npcKeys.name] = "Archmage Timear",
@@ -884,6 +1154,7 @@ function ForeverBaseNpc:Load()
         },
         [32216] = { -- Mei Francis : https://wowhead.com/forever/npc=32216/mei-francis
             [npcKeys.name] = "Mei Francis",
+            [npcKeys.subName] = "Exotic Mounts",
         },
         [32287] = { -- Archmage Alvareaux : https://wowhead.com/forever/npc=32287/archmage-alvareaux
             [npcKeys.name] = "Archmage Alvareaux",
@@ -892,11 +1163,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{14, 63.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Quartermaster",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 276984; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [32330] = { -- Minzi the Minx : https://wowhead.com/forever/npc=32330/minzi-the-minx
             [npcKeys.name] = "Minzi the Minx",
             [npcKeys.spawns] = {[36] = {{17.6, 64.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Arathi Basin Battlemaster",
         },
         [32333] = { -- "Dapper" Danik Blackshaft : https://wowhead.com/forever/npc=32333/dapper-danik-blackshaft
             [npcKeys.name] = "\"Dapper\" Danik Blackshaft",
@@ -905,6 +1179,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{16.2, 70.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Officer Accessories Quartermaster",
         },
         [32334] = { -- Nixi Fireclaw : https://wowhead.com/forever/npc=32334/nixi-fireclaw
             [npcKeys.name] = "Nixi Fireclaw",
@@ -912,6 +1187,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 35,
             [npcKeys.spawns] = {[36] = {{16.2, 71.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Weapons Quartermaster",
         },
         [32337] = { -- Christi Stockton : https://wowhead.com/forever/npc=32337/christi-stockton
             [npcKeys.name] = "Christi Stockton",
@@ -919,6 +1195,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 35,
             [npcKeys.spawns] = {[36] = {{19.8, 67.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Wine Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 4595; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [32403] = { -- Sandra Bartan : https://wowhead.com/forever/npc=32403/sandra-bartan
             [npcKeys.name] = "Sandra Bartan",
@@ -927,11 +1205,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{18, 65.2}, {18, 66}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Barmaid",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 1707; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [32411] = { -- Afsaneh Asrar : https://wowhead.com/forever/npc=32411/afsaneh-asrar
             [npcKeys.name] = "Afsaneh Asrar",
             [npcKeys.spawns] = {[36] = {{18, 66.6}, {18.4, 65.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Assistant Innkeeper",
         },
         [32413] = { -- Isirami Fairwind : https://wowhead.com/forever/npc=32413/isirami-fairwind
             [npcKeys.name] = "Isirami Fairwind",
@@ -940,6 +1221,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{12.2, 66.4}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [32424] = { -- Laire Brewgold : https://wowhead.com/forever/npc=32424/laire-brewgold
             [npcKeys.name] = "Laire Brewgold",
@@ -948,6 +1231,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{10, 66.6}, {10.4, 66.4}, {10.8, 66.4}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Brewmaiden",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2593; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [32425] = { -- Galkara the Assassin : https://wowhead.com/forever/npc=32425/galkara-the-assassin
             [npcKeys.name] = "Galkara the Assassin",
@@ -956,6 +1241,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Coira Longrifle",
             [npcKeys.spawns] = {[36] = {{10.2, 65.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Brewmaiden",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2593; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [32451] = { -- Dalaran Citizen : https://wowhead.com/forever/npc=32451/dalaran-citizen
             [npcKeys.name] = "Dalaran Citizen",
@@ -994,6 +1281,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{15, 57}, {15.2, 54.8}, {15.2, 56.4}, {15.8, 55.4}, {15.8, 56.4}, {15.8, 56.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Butler",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [32668] = { -- Emi : https://wowhead.com/forever/npc=32668/emi
             [npcKeys.name] = "Emi",
@@ -1046,6 +1335,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{15.4, 55.8}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "The Punisher",
         },
         [32738] = { -- Kat Sunflower : https://wowhead.com/forever/npc=32738/kat-sunflower
             [npcKeys.name] = "Kat Sunflower",
@@ -1096,6 +1386,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Bimble Sparkfingers",
             [npcKeys.spawns] = {[36] = {{17.2, 67.6}, {17.6, 67.8}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Darkspear Islands Battlemaster",
         },
         [34365] = { -- Orphan Matron Aria : https://wowhead.com/forever/npc=34365/orphan-matron-aria
             [npcKeys.name] = "Orphan Matron Aria",
@@ -1129,6 +1420,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[616] = {{68.6, 44}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Flight Master",
         },
         [41938] = { -- Tremor Totem : https://wowhead.com/forever/npc=41938/tremor-totem
             [npcKeys.name] = "Tremor Totem",
@@ -1149,6 +1441,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Aili Greenwillow",
             [npcKeys.spawns] = {[616] = {{70.4, 49.8}, {70.6, 49.8}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+            [npcKeys.subName] = "Stable Master",
         },
         [43411] = { -- Lenedil Moonwing : https://wowhead.com/forever/npc=43411/lenedil-moonwing
             [npcKeys.name] = "Lenedil Moonwing",
@@ -1157,6 +1450,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[616] = {{70.8, 50.8}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "General Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [49808] = { -- Grenhild Darktalon : https://wowhead.com/forever/npc=49808/grenhild-darktalon
             [npcKeys.name] = "Grenhild Darktalon",
@@ -1221,6 +1516,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 30,
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Bartender",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [203478] = { -- Stuart : https://wowhead.com/forever/npc=203478/stuart
             [npcKeys.name] = "Stuart",
@@ -1264,6 +1561,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {76156, 76160, 76240},
             [npcKeys.questEnds] = {76156, 76160, 76240},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Rogue Trainer?",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 53 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [208023] = { -- Gru'ark : https://wowhead.com/forever/npc=208023/gruark
             [npcKeys.name] = "Gru'ark",
@@ -1300,6 +1599,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[14] = {{54.4, 41.4}, {54.6, 41.4}, {54.6, 41.6}}},
             [npcKeys.zoneID] = zoneIDs.DUROTAR,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Soul Broker",
         },
         [208518] = { -- Gaeriyan : https://wowhead.com/forever/npc=208518/gaeriyan
             [npcKeys.name] = "Gaeriyan",
@@ -1343,6 +1643,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.minLevel] = 62,
             [npcKeys.maxLevel] = 62,
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
+            [npcKeys.subName] = "Blackrock Clan Outrunner",
         },
         [208919] = { -- Blueheart : https://wowhead.com/forever/npc=208919/blueheart
             [npcKeys.name] = "Blueheart",
@@ -1367,6 +1668,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1657] = {{63.2, 22}, {63.6, 22}}},
             [npcKeys.zoneID] = zoneIDs.DARNASSUS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Monster Hunter",
         },
         [209797] = { -- Bruuz : https://wowhead.com/forever/npc=209797/bruuz
             [npcKeys.name] = "Bruuz",
@@ -1397,6 +1699,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1657] = {{39, 8.4}, {39.2, 9}, {39.4, 9.6}, {39.6, 9.8}, {39.8, 9}}},
             [npcKeys.zoneID] = zoneIDs.DARNASSUS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Caretaker",
         },
         [209949] = { -- Sickly Deer : https://wowhead.com/forever/npc=209949/sickly-deer
             [npcKeys.name] = "Sickly Deer",
@@ -1441,6 +1744,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[406] = {{59.2, 62.4}, {59.2, 62.6}, {60.4, 62.2}, {60.6, 62.2}}},
             [npcKeys.zoneID] = zoneIDs.STONETALON_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Amateur Daredevil",
         },
         [210887] = { -- Unsuspecting Pridewing : https://wowhead.com/forever/npc=210887/unsuspecting-pridewing
             [npcKeys.name] = "Unsuspecting Pridewing",
@@ -1458,6 +1762,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {78132, 78133, 78134},
             [npcKeys.questEnds] = {78132, 78133, 78134},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Knight Errant",
         },
         [211022] = { -- Owen Thadd : https://wowhead.com/forever/npc=211022/owen-thadd
             [npcKeys.name] = "Owen Thadd",
@@ -1466,17 +1771,19 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1497] = {{73.4, 33}, {73.6, 33}, {74, 32.4}}},
             [npcKeys.zoneID] = zoneIDs.UNDERCITY,
             [npcKeys.questStarts] = {79095},
-            [npcKeys.questEnds] = {78148, 79092, 79095, 79536, 97286},
+            [npcKeys.questEnds] = {78148, 79092, 79095, 79536, 82208, 97286},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Librarian",
         },
         [211033] = { -- Garion Wendell : https://wowhead.com/forever/npc=211033/garion-wendell
             [npcKeys.name] = "Garion Wendell",
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
-            [npcKeys.questStarts] = {78148, 79092, 79536, 97286},
-            [npcKeys.questEnds] = {78148, 79092, 79536, 97286},
+            [npcKeys.questStarts] = {78148, 79092, 79536, 82208, 97286},
+            [npcKeys.questEnds] = {78148, 79092, 79536, 82208, 97286},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Librarian",
         },
         [211146] = { -- Lost Adventurer : https://wowhead.com/forever/npc=211146/lost-adventurer
             [npcKeys.name] = "Lost Adventurer",
@@ -1505,6 +1812,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.minLevel] = 9999,
             [npcKeys.maxLevel] = 9999,
             [npcKeys.spawns] = {[331] = {{91.8, 35.2}}, [357] = {{51.6, 8.6}}},
+            [npcKeys.subName] = "Cursed Protector",
         },
         [211965] = { -- Carrodin : https://wowhead.com/forever/npc=211965/carrodin
             [npcKeys.name] = "Carrodin",
@@ -1551,6 +1859,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[331] = {{51.2, 54.4}, {51.2, 56.6}, {51.4, 55}, {51.4, 55.6}, {51.6, 54.4}, {51.6, 54.8}, {51.6, 55.6}, {52.6, 54.2}, {53.2, 54.6}, {53.6, 54.6}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Keeper of the Grove",
         },
         [212727] = { -- Warsong Grunt : https://wowhead.com/forever/npc=212727/warsong-grunt
             [npcKeys.name] = "Warsong Grunt",
@@ -1583,6 +1892,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[331] = {{51.4, 54.4}, {51.4, 54.6}, {51.6, 54.4}, {51.6, 54.6}, {53, 54.4}, {53.4, 54.6}, {54.2, 53.2}, {54.2, 54.4}, {54.2, 54.6}, {54.6, 54.4}, {54.8, 55}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Blademaster",
         },
         [212753] = { -- Tortured Soul : https://wowhead.com/forever/npc=212753/tortured-soul
             [npcKeys.name] = "Tortured Soul",
@@ -1605,6 +1915,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[331] = {{21.2, 36.4}, {21.2, 37.4}, {21.2, 37.6}, {21.2, 38.6}, {21.6, 36.4}, {21.6, 37.4}, {21.6, 37.6}, {21.8, 38.6}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Blademaster",
         },
         [212802] = { -- Moogul the Sly : https://wowhead.com/forever/npc=212802/moogul-the-sly
             [npcKeys.name] = "Moogul the Sly",
@@ -1613,6 +1924,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[331] = {{68.4, 63.4}, {68.4, 63.8}, {69, 63.6}, {69.4, 63}, {69.6, 63.2}, {69.6, 63.6}, {69.8, 62.4}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Blademaster",
         },
         [212803] = { -- Ceredwyn : https://wowhead.com/forever/npc=212803/ceredwyn
             [npcKeys.name] = "Ceredwyn",
@@ -1621,6 +1933,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[331] = {{72.4, 72.2}, {72.4, 72.6}, {72.8, 72.4}, {73.2, 73.4}, {73.2, 73.6}, {73.6, 73.6}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Keeper of the Grove",
         },
         [212969] = { -- Kazragore : https://wowhead.com/forever/npc=212969/kazragore
             [npcKeys.name] = "Kazragore",
@@ -1629,6 +1942,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[331] = {{37.8, 66.4}, {38.4, 66.8}, {38.4, 67.6}, {38.8, 66.4}, {39, 67.4}, {39, 68.6}, {39.2, 67.8}, {39.6, 66.4}, {39.6, 66.6}, {39.6, 67.6}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Far Seer",
         },
         [212970] = { -- Felore Moonray : https://wowhead.com/forever/npc=212970/felore-moonray
             [npcKeys.name] = "Felore Moonray",
@@ -1637,6 +1951,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[331] = {{60, 70.4}, {60, 71.4}, {60, 71.8}, {60, 72.6}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Priestess of the Moon",
         },
         [213077] = { -- Elaine Compton : https://wowhead.com/forever/npc=213077/elaine-compton
             [npcKeys.name] = "Elaine Compton",
@@ -1644,6 +1959,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 30,
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Supply Officer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 205950; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [213795] = { -- Gharrik : https://wowhead.com/forever/npc=213795/gharrik
             [npcKeys.name] = "Gharrik",
@@ -1659,6 +1976,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1637] = {{51.4, 63.8}, {51.4, 64.6}, {51.6, 63.8}, {51.6, 64.6}}},
             [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Supply Officer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 205950; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [214098] = { -- Gishah : https://wowhead.com/forever/npc=214098/gishah
             [npcKeys.name] = "Gishah",
@@ -1667,6 +1986,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1497] = {{64.4, 38.4}, {64.4, 38.6}, {64.6, 38.6}, {64.8, 38.2}, {65.6, 38.4}, {65.6, 38.6}}},
             [npcKeys.zoneID] = zoneIDs.UNDERCITY,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Supply Officer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 205950; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [214101] = { -- Marcy Baker : https://wowhead.com/forever/npc=214101/marcy-baker
             [npcKeys.name] = "Marcy Baker",
@@ -1675,6 +1996,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1657] = {{59.2, 56.6}, {59.4, 56}, {59.8, 56.4}, {59.8, 56.6}}},
             [npcKeys.zoneID] = zoneIDs.DARNASSUS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Supply Officer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 205950; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [214129] = { -- Venture Co. Light Shredder : https://wowhead.com/forever/npc=214129/venture-co-light-shredder
             [npcKeys.name] = "Venture Co. Light Shredder",
@@ -1748,6 +2071,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1537] = {{32.4, 67.4}, {33, 68.6}, {33.4, 65.4}, {33.4, 66.4}, {33.4, 67}, {33.4, 67.6}, {33.6, 66}, {33.6, 66.8}, {33.6, 67.8}}},
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Smokywood Pastures",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 17194; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [217049] = { -- Mirror Image : https://wowhead.com/forever/npc=217049/mirror-image
             [npcKeys.name] = "Mirror Image",
@@ -1756,6 +2081,17 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[331] = {{21.2, 36.4}, {21.4, 36.8}, {21.4, 37.6}, {21.6, 36.4}, {21.6, 37.4}, {21.6, 37.6}, {21.6, 38.6}, {51.4, 54.2}, {51.4, 54.8}, {51.6, 53.2}, {51.6, 54}, {51.6, 54.6}, {53, 54.6}, {53.2, 54.4}, {53.8, 54.6}, {54.2, 54}, {54.4, 53.4}, {54.8, 54.4}, {54.8, 54.8}, {69.2, 63.6}, {69.4, 63}, {69.6, 63}, {69.6, 63.6}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Blademaster",
+        },
+        [217300] = { -- Skonk : https://wowhead.com/forever/npc=217300/skonk
+            [npcKeys.name] = "Skonk",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[45] = {{57.4, 74.4}, {57.6, 74.4}, {57.6, 74.6}}},
+            [npcKeys.zoneID] = zoneIDs.ARATHI_HIGHLANDS,
+            [npcKeys.questEnds] = {79624},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Amateur Chef",
         },
         [217302] = { -- Tam'kar : https://wowhead.com/forever/npc=217302/tamkar
             [npcKeys.name] = "Tam'kar",
@@ -1784,7 +2120,10 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 35,
             [npcKeys.spawns] = {[8] = {{25, 53.4}, {25, 54.2}, {25.2, 54.6}}},
             [npcKeys.zoneID] = zoneIDs.SWAMP_OF_SORROWS,
+            [npcKeys.questStarts] = {93176},
+            [npcKeys.questEnds] = {93176},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 213565; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [217418] = { -- Zai'enki : https://wowhead.com/forever/npc=217418/zaienki
             [npcKeys.name] = "Zai'enki",
@@ -1799,6 +2138,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 38,
             [npcKeys.spawns] = {[405] = {{81.4, 80.2}, {81.4, 82}, {81.8, 80.4}, {81.8, 80.6}}},
             [npcKeys.zoneID] = zoneIDs.DESOLACE,
+            [npcKeys.subName] = "Mistress of Desire",
         },
         [217588] = { -- Arbor Tarantula : https://wowhead.com/forever/npc=217588/arbor-tarantula
             [npcKeys.name] = "Arbor Tarantula",
@@ -1851,6 +2191,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 40,
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Vault Keeper",
         },
         [218029] = { -- Witherbark Champion : https://wowhead.com/forever/npc=218029/witherbark-champion
             [npcKeys.name] = "Witherbark Champion",
@@ -1873,6 +2214,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[33] = {{31.2, 48.4}, {31.2, 48.6}}},
             [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Gurubashi Bloodchanger",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 216491; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [218236] = { -- Red Bag : https://wowhead.com/forever/npc=218236/red-bag
             [npcKeys.name] = "Red Bag",
@@ -1886,6 +2229,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Gurgthock",
             [npcKeys.spawns] = {[12] = {{33.2, 50.2}}, [14] = {{45.4, 13.8}}, [1637] = {{51.8, 69.8}, {52, 69.4}}},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "PTR Enthusiast",
         },
         [218249] = { -- Slitherblade Tide Priestess : https://wowhead.com/forever/npc=218249/slitherblade-tide-priestess
             [npcKeys.name] = "Slitherblade Tide Priestess",
@@ -1910,6 +2254,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[33] = {{31.2, 48.4}, {31.4, 48.6}, {32.2, 49.2}, {32.4, 49.6}, {33, 50.2}, {33.2, 15.2}, {33.2, 15.6}, {33.2, 16.6}, {33.4, 50.6}, {33.4, 51.8}, {33.4, 52.8}, {33.4, 55.6}, {33.6, 51.4}, {33.6, 51.6}, {33.8, 16.4}, {33.8, 52.6}, {34, 14.8}, {34.4, 18.6}, {34.8, 18.4}, {38.2, 56.8}, {38.4, 59}, {38.6, 58.4}, {38.8, 59.2}, {42.4, 36.4}, {42.4, 36.6}, {42.6, 36.4}, {42.6, 36.6}, {43.2, 35.2}, {43.6, 36}, {47.4, 16.8}, {47.6, 16.4}, {47.6, 16.8}, {48.2, 17.8}, {49.2, 18.4}, {49.2, 18.6}, {49.6, 18.6}}},
             [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Chosen of the Blood Loa",
         },
         [218726] = { -- Scarlet Lightbearer : https://wowhead.com/forever/npc=218726/scarlet-lightbearer
             [npcKeys.name] = "Scarlet Lightbearer",
@@ -1937,6 +2282,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1537] = {{68.8, 49}}},
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "King of Gnomes",
         },
         [219822] = { -- Chained Spirit : https://wowhead.com/forever/npc=219822/chained-spirit
             [npcKeys.name] = "Chained Spirit",
@@ -2023,6 +2369,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 9999,
             [npcKeys.spawns] = {[10] = {{37, 82.4}, {37, 83.4}, {37.4, 84.2}, {37.4, 84.6}, {37.6, 84.4}, {37.6, 84.6}}},
             [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+            [npcKeys.subName] = "King of The Woods",
         },
         [221207] = { -- Amokarok : https://wowhead.com/forever/npc=221207/amokarok
             [npcKeys.name] = "Amokarok",
@@ -2030,6 +2377,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 9999,
             [npcKeys.spawns] = {[10] = {{65.4, 75}, {65.6, 75.2}, {66, 76.4}, {66.4, 76.6}}},
             [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+            [npcKeys.subName] = "Lord of the Hunt",
         },
         [221215] = { -- Alara Grovemender : https://wowhead.com/forever/npc=221215/alara-grovemender
             [npcKeys.name] = "Alara Grovemender",
@@ -2038,6 +2386,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[10] = {{49, 77.4}, {49, 77.6}, {65.6, 67.4}}},
             [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Druid of the Claw",
         },
         [221216] = { -- Elenora Marshwalker : https://wowhead.com/forever/npc=221216/elenora-marshwalker
             [npcKeys.name] = "Elenora Marshwalker",
@@ -2046,6 +2395,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[10] = {{32.4, 69.4}, {32.4, 69.6}, {32.6, 69.4}, {32.6, 69.6}}},
             [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Druid of the Claw",
         },
         [221222] = { -- Dreamwarden Thalinar : https://wowhead.com/forever/npc=221222/dreamwarden-thalinar
             [npcKeys.name] = "Dreamwarden Thalinar",
@@ -2153,6 +2503,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 40,
             [npcKeys.spawns] = {[331] = {{81, 50.2}, {89.6, 40.4}, {89.6, 40.6}, {93.4, 38.8}, {93.8, 38.4}, {93.8, 38.6}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.questStarts] = {98417, 98418},
+            [npcKeys.questEnds] = {98417, 98418},
             [npcKeys.friendlyToFaction] = "AH",
         },
         [221270] = { -- Alyssian Windcaller : https://wowhead.com/forever/npc=221270/alyssian-windcaller
@@ -2162,6 +2514,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[331] = {{89.6, 40.4}, {89.6, 40.6}, {92, 54.2}, {93.8, 38.4}, {93.8, 38.6}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Druid of the Claw",
         },
         [221282] = { -- Emberspark Dreamsworn : https://wowhead.com/forever/npc=221282/emberspark-dreamsworn
             [npcKeys.name] = "Emberspark Dreamsworn",
@@ -2339,6 +2692,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 9999,
             [npcKeys.spawns] = {[357] = {{38.4, 13}, {38.8, 14.6}, {39, 13.4}, {39.2, 13.6}, {39.6, 13.8}}},
             [npcKeys.zoneID] = zoneIDs.FERALAS,
+            [npcKeys.subName] = "Harpy Queen",
         },
         [221395] = { -- Mellias Earthtender : https://wowhead.com/forever/npc=221395/mellias-earthtender
             [npcKeys.name] = "Mellias Earthtender",
@@ -2347,6 +2701,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[357] = {{49.6, 15.4}, {49.6, 15.6}, {50, 13.4}, {50, 13.6}, {50.6, 12.8}, {51, 11.4}, {51, 11.6}}},
             [npcKeys.zoneID] = zoneIDs.FERALAS,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Druid of the Claw",
         },
         [221398] = { -- Nerene Brooksinger : https://wowhead.com/forever/npc=221398/nerene-brooksinger
             [npcKeys.name] = "Nerene Brooksinger",
@@ -2355,6 +2710,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[357] = {{45.8, 16.4}, {45.8, 16.6}, {51, 11.6}}},
             [npcKeys.zoneID] = zoneIDs.FERALAS,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Druid of the Claw",
         },
         [221399] = { -- Jamniss Treemender : https://wowhead.com/forever/npc=221399/jamniss-treemender
             [npcKeys.name] = "Jamniss Treemender",
@@ -2363,6 +2719,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[357] = {{40.4, 8}, {40.6, 8}, {49.4, 12.2}, {49.8, 12.2}, {51, 11.6}}},
             [npcKeys.zoneID] = zoneIDs.FERALAS,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Druid of the Claw",
         },
         [221407] = { -- Dreamshadow Imp : https://wowhead.com/forever/npc=221407/dreamshadow-imp
             [npcKeys.name] = "Dreamshadow Imp",
@@ -2401,6 +2758,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1537] = {{26.4, 9.4}, {26.4, 9.6}, {26.4, 10.6}, {26.6, 9.4}, {27, 8.4}, {27.2, 11.6}, {27.4, 10}, {27.4, 10.6}, {27.6, 10.4}, {27.6, 10.6}, {27.6, 11.8}}},
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Quel'danil Lodge Emissary",
         },
         [221935] = { -- Treant Avatar : https://wowhead.com/forever/npc=221935/treant-avatar
             [npcKeys.name] = "Treant Avatar",
@@ -2449,6 +2807,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 41,
             [npcKeys.spawns] = {[331] = {{88.4, 55.4}, {89.2, 57.8}, {90, 58}, {90.8, 57.2}, {90.8, 58.6}, {91, 58}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.subName] = "Dream Profits and Extractions",
         },
         [222546] = { -- Iodax the Obliterator : https://wowhead.com/forever/npc=222546/iodax-the-obliterator
             [npcKeys.name] = "Iodax the Obliterator",
@@ -2487,6 +2846,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[331] = {{89.4, 40.4}, {89.4, 40.6}, {89.6, 40.4}, {89.6, 40.6}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 1645; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [222698] = { -- Fel Scar : https://wowhead.com/forever/npc=222698/fel-scar
             [npcKeys.name] = "Fel Scar",
@@ -2502,6 +2862,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16] = {{34.4, 48.8}, {34.6, 48.8}}},
             [npcKeys.zoneID] = zoneIDs.AZSHARA,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Guardian of Azshara",
         },
         [222705] = { -- Blightbark : https://wowhead.com/forever/npc=222705/blightbark
             [npcKeys.name] = "Blightbark",
@@ -2510,6 +2871,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[357] = {{58.2, 53}, {58.4, 52}, {58.6, 52.2}, {58.8, 51}, {58.8, 53.2}}},
             [npcKeys.zoneID] = zoneIDs.FERALAS,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Guardian of Feralas",
         },
         [222726] = { -- Tyrant of the Hive : https://wowhead.com/forever/npc=222726/tyrant-of-the-hive
             [npcKeys.name] = "Tyrant of the Hive",
@@ -2595,6 +2957,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[28] = {{43.2, 84}, {43.6, 84}}},
             [npcKeys.zoneID] = zoneIDs.WESTERN_PLAGUELANDS,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Soul Broker",
         },
         [226982] = { -- Frijidar : https://wowhead.com/forever/npc=226982/frijidar
             [npcKeys.name] = "Frijidar",
@@ -2633,6 +2996,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[85] = {{53.6, 57.2}}},
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Mad Doctor",
         },
         [228142] = { -- Techbot : https://wowhead.com/forever/npc=228142/techbot
             [npcKeys.name] = "Techbot",
@@ -2641,6 +3005,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[440] = {{51.2, 27}, {51.4, 28}, {51.4, 29}, {52, 29.4}, {52.2, 27.4}, {52.2, 27.8}, {52.4, 29.6}, {52.6, 29.4}, {53, 29.6}, {53.4, 30.6}, {53.6, 30.6}, {54, 31.6}, {54.4, 34}, {54.6, 34.6}, {54.6, 35.8}, {54.8, 36.8}, {54.8, 38.2}, {54.8, 39}, {54.8, 40.4}, {54.8, 42.8}, {55, 40.8}, {55, 41.6}, {55.2, 43.6}, {55.2, 44.8}, {55.4, 46}, {55.4, 47.4}, {55.4, 48.8}, {55.6, 49.4}, {56.2, 50}, {57.8, 52.4}, {58.2, 53}, {58.4, 54}, {58.6, 54.2}, {58.6, 89.8}, {58.8, 85.4}, {58.8, 87.2}, {58.8, 88.4}, {59.2, 55.2}, {59.2, 91.4}, {59.8, 81.4}, {60, 79.2}, {60, 80.2}, {60, 82.8}, {61, 77.2}, {61, 77.6}, {61.4, 76.4}, {61.6, 75.8}, {62.2, 75.2}, {62.6, 73.4}, {62.6, 75}, {62.8, 72.2}, {62.8, 74}, {63, 68}, {63, 69}, {63, 69.8}, {63, 71}, {63.2, 61.4}, {63.2, 66.6}, {63.4, 62}, {63.4, 66.4}, {63.8, 62.4}, {63.8, 62.8}, {63.8, 64}}},
             [npcKeys.zoneID] = zoneIDs.TANARIS,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "D.E.L.T.A",
         },
         [228173] = { -- Sam Otridge : https://wowhead.com/forever/npc=228173/sam-otridge
             [npcKeys.name] = "Sam Otridge",
@@ -2685,6 +3050,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 57,
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Dwarven Spirit",
         },
         [228718] = { -- Firelands Invader : https://wowhead.com/forever/npc=228718/firelands-invader
             [npcKeys.name] = "Firelands Invader",
@@ -2776,6 +3142,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1637] = {{34.4, 37.4}, {34.4, 37.6}, {34.8, 38.6}, {35, 38}, {35.2, 37.4}}},
             [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 226772; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [230319] = { -- Deliana : https://wowhead.com/forever/npc=230319/deliana
             [npcKeys.name] = "Deliana",
@@ -2784,6 +3151,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1537] = {{42.4, 52.2}, {42.4, 52.6}, {43.2, 52.6}, {43.4, 51}, {43.4, 52.2}, {43.6, 50.8}, {43.6, 52}}},
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 226772; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [230565] = { -- Ironforge Guard : https://wowhead.com/forever/npc=230565/ironforge-guard
             [npcKeys.name] = "Ironforge Guard",
@@ -2792,6 +3160,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1537] = {{42.4, 53.8}, {43.2, 52.4}, {43.2, 52.6}, {43.4, 51.2}, {43.6, 51.2}, {43.6, 52.2}}},
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 226772; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [231499] = { -- Ada Darkhardt : https://wowhead.com/forever/npc=231499/ada-darkhardt
             [npcKeys.name] = "Ada Darkhardt",
@@ -2828,6 +3197,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[28] = {{47, 69.8}}},
             [npcKeys.zoneID] = zoneIDs.WESTERN_PLAGUELANDS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "The Lightbringer",
         },
         [232929] = { -- Gregory : https://wowhead.com/forever/npc=232929/gregory
             [npcKeys.name] = "Gregory",
@@ -2836,6 +3206,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[618] = {{53.4, 83.6}}},
             [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Truthbearer",
         },
         [232939] = { -- Felguard Elite : https://wowhead.com/forever/npc=232939/felguard-elite
             [npcKeys.name] = "Felguard Elite",
@@ -2857,6 +3228,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[1] = {{29.4, 72}, {29.6, 72}}, [12] = {{48, 41.4}, {48.2, 41.6}}, [141] = {{58.8, 43.8}}, [1537] = {{53, 13.2}, {53.6, 12.2}, {53.8, 13.2}, {53.8, 13.6}}, [1657] = {{28.4, 39}, {28.6, 39}, {29, 38.4}}},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 203745; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [233428] = { -- Rune Broker : https://wowhead.com/forever/npc=233428/rune-broker
             [npcKeys.name] = "Rune Broker",
@@ -2864,6 +3236,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[14] = {{42.8, 68}}, [85] = {{31.4, 66.4}, {31.4, 66.6}}, [1497] = {{79.2, 19.4}, {79.4, 19.8}, {79.6, 19.4}, {79.6, 20}, {79.8, 20.6}}, [1637] = {{49.2, 46.8}, {49.4, 46.2}, {49.6, 46.2}}, [1638] = {{22.6, 12.8}, {22.8, 13.8}}},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 203745; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [235812] = { -- Horde Rogue : https://wowhead.com/forever/npc=235812/horde-rogue
             [npcKeys.name] = "Horde Rogue",
@@ -3016,6 +3389,7 @@ function ForeverBaseNpc:Load()
         },
         [237962] = { -- Kinara Meadowheart : https://wowhead.com/forever/npc=237962/kinara-meadowheart
             [npcKeys.name] = "Kinara Meadowheart",
+            [npcKeys.subName] = "Assistant Scout Leader",
         },
         [238093] = { -- Unknown Phantasm : https://wowhead.com/forever/npc=238093/unknown-phantasm
             [npcKeys.name] = "Unknown Phantasm",
@@ -3028,12 +3402,15 @@ function ForeverBaseNpc:Load()
         },
         [238226] = { -- Trixx Boomfizz : https://wowhead.com/forever/npc=238226/trixx-boomfizz
             [npcKeys.name] = "Trixx Boomfizz",
+            [npcKeys.subName] = "Apprentice Engineer",
         },
         [238272] = { -- Prankk Boomfizz : https://wowhead.com/forever/npc=238272/prankk-boomfizz
             [npcKeys.name] = "Prankk Boomfizz",
+            [npcKeys.subName] = "Apprentice Engineer",
         },
         [238284] = { -- Ernix Boomfizz : https://wowhead.com/forever/npc=238284/ernix-boomfizz
             [npcKeys.name] = "Ernix Boomfizz",
+            [npcKeys.subName] = "Engineer",
         },
         [238321] = { -- Dream Icon 1 : https://wowhead.com/forever/npc=238321/dream-icon-1
             [npcKeys.name] = "Dream Icon 1",
@@ -3060,6 +3437,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 58,
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Soul Seer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 12844; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [238377] = { -- Dream Icon 3 : https://wowhead.com/forever/npc=238377/dream-icon-3
             [npcKeys.name] = "Dream Icon 3",
@@ -3073,6 +3452,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[8] = {{34.4, 65.4}, {34.4, 65.8}, {34.4, 66.6}, {34.6, 65.4}, {34.6, 65.8}, {34.8, 63.2}}, [16] = {{32.2, 54.4}, {32.2, 54.6}}, [46] = {{65.4, 55.2}, {65.6, 55.2}}, [440] = {{54.4, 28.4}, {54.4, 28.6}, {54.6, 28.2}}},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Argent Dawn",
         },
         [238431] = { -- Enthusiastic Wisp : https://wowhead.com/forever/npc=238431/enthusiastic-wisp
             [npcKeys.name] = "Enthusiastic Wisp",
@@ -3098,6 +3478,7 @@ function ForeverBaseNpc:Load()
         },
         [238825] = { -- Ernix Boomfizz : https://wowhead.com/forever/npc=238825/ernix-boomfizz
             [npcKeys.name] = "Ernix Boomfizz",
+            [npcKeys.subName] = "Engineer",
         },
         [239031] = { -- Scarlet Inquisitor Caldoran : https://wowhead.com/forever/npc=239031/scarlet-inquisitor-caldoran
             [npcKeys.name] = "Scarlet Inquisitor Caldoran",
@@ -3182,6 +3563,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Berdun Cliffbrew",
             [npcKeys.spawns] = {[16] = {{12.4, 77.2}}},
             [npcKeys.zoneID] = zoneIDs.AZSHARA,
+            [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 128, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.
         },
         [240527] = { -- Enraged Tempest : https://wowhead.com/forever/npc=240527/enraged-tempest
             [npcKeys.name] = "Enraged Tempest",
@@ -3192,6 +3575,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Head Chef",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [240607] = { -- Devon Woods : https://wowhead.com/forever/npc=240607/devon-woods
             [npcKeys.name] = "Devon Woods",
@@ -3199,6 +3584,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Security",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 237037; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [240964] = { -- Corrupted Grell : https://wowhead.com/forever/npc=240964/corrupted-grell
             [npcKeys.name] = "Corrupted Grell",
@@ -3240,6 +3627,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.subName] = "Aspiring Wallguard",
         },
         [241877] = { -- Mayor Quimby : https://wowhead.com/forever/npc=241877/mayor-quimby
             [npcKeys.name] = "Mayor Quimby",
@@ -3272,6 +3660,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 25,
             [npcKeys.spawns] = {[1] = {{46.6, 53.8}}, [12] = {{26.4, 83.8}, {32, 49.2}, {32.4, 50.2}, {32.6, 52.2}, {33.2, 50.6}, {34.2, 50.8}, {34.2, 53}, {42.4, 65.4}, {42.4, 66}, {42.6, 65.6}, {44.8, 63.2}, {47, 69.4}, {60.8, 55.8}}, [14] = {{45.4, 12.6}, {45.6, 12.4}, {45.6, 12.8}, {45.8, 13.6}, {52, 32.6}, {52, 47.4}, {52.2, 42.6}, {52.4, 42.4}, {52.6, 43}, {54.4, 10.6}}, [17] = {{43.8, 14.4}, {46, 36.4}, {46, 36.6}, {46.8, 35.8}, {51, 29.2}, {51.8, 30.4}, {52, 30.6}, {53.4, 52.2}, {54.4, 22.8}, {61.2, 45.2}, {62, 39}, {63, 38.2}}, [38] = {{26, 17.2}, {26.2, 18.8}, {27.8, 51}, {28.2, 65.2}, {28.8, 66.6}, {29, 60.6}, {30, 58.8}, {31.2, 70.4}, {31.6, 55.2}, {32.4, 50}, {32.4, 50.6}, {32.8, 51.2}, {32.8, 51.6}, {33, 49.2}, {34, 50}, {34.4, 47.2}, {35.2, 46.8}, {35.6, 46.6}, {36.4, 46.2}, {40.8, 38.8}, {44, 12.8}, {49.6, 12.6}, {59, 15.4}, {63.6, 48.6}, {65.2, 65.2}}, [40] = {{33.2, 56}, {37.4, 77.6}, {37.4, 85.8}, {38.4, 82.8}, {40, 33.8}, {41.4, 72}, {42.4, 71.2}, {42.6, 71}, {43, 70.2}, {44.2, 28.4}, {44.4, 69.6}, {45, 69}, {51.4, 52.2}, {53.4, 52.6}, {53.6, 52.4}, {54.6, 51.6}, {55.4, 30.8}, {55.4, 48.2}, {55.6, 47.4}, {55.6, 47.6}, {56, 31.4}, {56, 52}, {56.2, 66.4}, {56.4, 53.2}, {57, 23.2}, {59.2, 19.6}}, [85] = {{59, 51.4}, {60.4, 52.2}, {60.8, 53}, {61.2, 53.6}, {61.8, 64.6}, {62, 63.8}}, [130] = {{43.6, 41.4}, {44.2, 41.6}, {45, 21}, {45, 67.8}, {45.2, 41.6}, {45.8, 39.4}, {45.8, 68.2}, {46.8, 40.8}, {47, 40.4}, {47.6, 39.6}}, [148] = {{32.4, 43.6}, {36, 47.6}, {36.8, 46.4}, {37.4, 43.6}, {37.6, 43.8}, {38.8, 43.6}, {41, 45.2}, {41, 50}, {42.2, 37.2}}, [16593] = {{41.8, 44.8}, {44.2, 45}, {51.8, 70}, {55.8, 61}, {58.8, 41}, {59.2, 79.8}, {61.8, 39}, {62.4, 73.8}}},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [242551] = { -- Leyara : https://wowhead.com/forever/npc=242551/leyara
             [npcKeys.name] = "Leyara",
@@ -3322,6 +3711,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[616] = {{70.8, 51.4}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [243855] = { -- Toron Rockhoof : https://wowhead.com/forever/npc=243855/toron-rockhoof
             [npcKeys.name] = "Toron Rockhoof",
@@ -3330,6 +3721,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[616] = {{69, 47.2}, {69, 47.6}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Blacksmithing Supplies",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2880; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [243923] = { -- Kel'rah the Shadowhunter : https://wowhead.com/forever/npc=243923/kelrah-the-shadowhunter
             [npcKeys.name] = "Kel'rah the Shadowhunter",
@@ -3365,6 +3758,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Ortak Lomgok",
             [npcKeys.spawns] = {[616] = {{12.8, 52.4}, {13, 52.8}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+            [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [244517] = { -- Sefira Everbright : https://wowhead.com/forever/npc=244517/sefira-everbright
             [npcKeys.name] = "Sefira Everbright",
@@ -3395,6 +3790,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {90902, 91208, 91209, 98389},
             [npcKeys.questEnds] = {90902, 91208, 98389, 98601},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Paladin Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 465 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [244949] = { -- Chicken : https://wowhead.com/forever/npc=244949/chicken
             [npcKeys.name] = "Chicken",
@@ -3414,9 +3811,13 @@ function ForeverBaseNpc:Load()
         },
         [246003] = { -- Fel Ancient : https://wowhead.com/forever/npc=246003/fel-ancient
             [npcKeys.name] = "Fel Ancient",
+            [npcKeys.spawns] = {[36] = {{16.7, 67.7}, {16.8, 67.4}}},
+            [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
         },
         [246008] = { -- Mana Devourer : https://wowhead.com/forever/npc=246008/mana-devourer
             [npcKeys.name] = "Mana Devourer",
+            [npcKeys.spawns] = {[36] = {{15.3, 75.3}, {15.3, 75.5}, {15.6, 74}, {15.6, 74.5}, {15.7, 73}, {16, 72.4}}},
+            [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
         },
         [246016] = { -- Arcanic Enigma : https://wowhead.com/forever/npc=246016/arcanic-enigma
             [npcKeys.name] = "Arcanic Enigma",
@@ -3447,6 +3848,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {91282},
             [npcKeys.questEnds] = {91209, 99144},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Paladin Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 465 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [246249] = { -- Kobold Laborer : https://wowhead.com/forever/npc=246249/kobold-laborer
             [npcKeys.name] = "Kobold Laborer",
@@ -3473,9 +3876,11 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Alodan the Hopeful",
             [npcKeys.minLevel] = 30,
             [npcKeys.maxLevel] = 30,
-            [npcKeys.spawns] = {[1638] = {{25.4, 14.4}, {25.4, 14.6}, {25.6, 14.8}}},
+            [npcKeys.spawns] = {[1638] = {{25.4, 14.4}, {25.4, 14.6}, {25.8, 15.2}}},
             [npcKeys.zoneID] = zoneIDs.THUNDER_BLUFF,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Paladin Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 465 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [246349] = { -- Breton Samuels : https://wowhead.com/forever/npc=246349/breton-samuels
             [npcKeys.name] = "Breton Samuels",
@@ -3506,6 +3911,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {99152},
             [npcKeys.questEnds] = {99152},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Paladin Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 465 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [246393] = { -- Jorin Croge : https://wowhead.com/forever/npc=246393/jorin-croge
             [npcKeys.name] = "Jorin Croge",
@@ -3524,9 +3931,11 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[85] = {{22.2, 49.4}, {22.4, 49.6}, {22.6, 49.4}, {22.6, 49.6}, {23.6, 49.8}, {24.6, 50.6}, {25.4, 50.4}}},
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Lookout",
         },
         [246589] = { -- Skinning Bear : https://wowhead.com/forever/npc=246589/skinning-bear
             [npcKeys.name] = "Skinning Bear",
+            [npcKeys.subName] = "It Makes Sense",
         },
         [246600] = { -- Mana Echo : https://wowhead.com/forever/npc=246600/mana-echo
             [npcKeys.name] = "Mana Echo",
@@ -3536,6 +3945,7 @@ function ForeverBaseNpc:Load()
         },
         [246611] = { -- Sevren Callahan : https://wowhead.com/forever/npc=246611/sevren-callahan
             [npcKeys.name] = "Sevren Callahan",
+            [npcKeys.subName] = "Paladin Trainer",
         },
         [246664] = { -- Fragmented Sentry : https://wowhead.com/forever/npc=246664/fragmented-sentry
             [npcKeys.name] = "Fragmented Sentry",
@@ -3610,12 +4020,15 @@ function ForeverBaseNpc:Load()
         },
         [246743] = { -- Minigob Manabonk : https://wowhead.com/forever/npc=246743/minigob-manabonk
             [npcKeys.name] = "Minigob Manabonk",
+            [npcKeys.subName] = "The Mischievous Mage",
         },
         [246745] = { -- Archmage Celindra : https://wowhead.com/forever/npc=246745/archmage-celindra
             [npcKeys.name] = "Archmage Celindra",
+            [npcKeys.subName] = "Kirin Tor",
         },
         [246747] = { -- Archmage Pentarus : https://wowhead.com/forever/npc=246747/archmage-pentarus
             [npcKeys.name] = "Archmage Pentarus",
+            [npcKeys.subName] = "Kirin Tor",
         },
         [246748] = { -- Archmage Modera : https://wowhead.com/forever/npc=246748/archmage-modera
             [npcKeys.name] = "Archmage Modera",
@@ -3638,6 +4051,7 @@ function ForeverBaseNpc:Load()
         },
         [246756] = { -- Timothy Jones : https://wowhead.com/forever/npc=246756/timothy-jones
             [npcKeys.name] = "Timothy Jones",
+            [npcKeys.subName] = "Apprentice Jeweler",
         },
         [246757] = { -- Alturas : https://wowhead.com/forever/npc=246757/alturas
             [npcKeys.name] = "Alturas",
@@ -3653,9 +4067,11 @@ function ForeverBaseNpc:Load()
         },
         [246792] = { -- Edward Egan : https://wowhead.com/forever/npc=246792/edward-egan
             [npcKeys.name] = "Edward Egan",
+            [npcKeys.subName] = "Herbalist",
         },
         [246793] = { -- Patricia Egan : https://wowhead.com/forever/npc=246793/patricia-egan
             [npcKeys.name] = "Patricia Egan",
+            [npcKeys.subName] = "Alchemist",
         },
         [246794] = { -- Dorothy Egan : https://wowhead.com/forever/npc=246794/dorothy-egan
             [npcKeys.name] = "Dorothy Egan",
@@ -3667,6 +4083,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{18.4, 62.4}, {18.6, 62.4}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Alchemist",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2259 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [246797] = { -- Jessa Weaver : https://wowhead.com/forever/npc=246797/jessa-weaver
             [npcKeys.name] = "Jessa Weaver",
@@ -3675,6 +4093,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{17.6, 69.4}, {17.6, 69.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Mage Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 10 trainingcost=2000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [246799] = { -- Arcane Sentry : https://wowhead.com/forever/npc=246799/arcane-sentry
             [npcKeys.name] = "Arcane Sentry",
@@ -3725,6 +4145,8 @@ function ForeverBaseNpc:Load()
         },
         [247001] = { -- Saturated Remnant : https://wowhead.com/forever/npc=247001/saturated-remnant
             [npcKeys.name] = "Saturated Remnant",
+            [npcKeys.spawns] = {[36] = {{14.2, 68.4}, {15.9, 72.4}, {15.9, 73.4}, {15.9, 73.9}, {16.4, 63.3}, {17.1, 64}, {17.1, 74}, {18.6, 64.4}, {19, 63.3}, {19.1, 65.3}, {19.5, 65.5}, {20.1, 74.4}, {20.3, 75.3}}},
+            [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
         },
         [247003] = { -- Seeking Remnant : https://wowhead.com/forever/npc=247003/seeking-remnant
             [npcKeys.name] = "Seeking Remnant",
@@ -3746,6 +4168,8 @@ function ForeverBaseNpc:Load()
         },
         [247032] = { -- Lyn the Ignored : https://wowhead.com/forever/npc=247032/lyn-the-ignored
             [npcKeys.name] = "Lyn the Ignored",
+            [npcKeys.spawns] = {[36] = {{21.7, 68.2}}},
+            [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
         },
         [247033] = { -- Bloodshrike : https://wowhead.com/forever/npc=247033/bloodshrike
             [npcKeys.name] = "Bloodshrike",
@@ -3758,24 +4182,31 @@ function ForeverBaseNpc:Load()
         },
         [247215] = { -- Alfred the Alchemist : https://wowhead.com/forever/npc=247215/alfred-the-alchemist
             [npcKeys.name] = "Alfred the Alchemist",
+            [npcKeys.subName] = "Junior Alchemy Trainer",
         },
         [247216] = { -- Jason Stonepike : https://wowhead.com/forever/npc=247216/jason-stonepike
             [npcKeys.name] = "Jason Stonepike",
+            [npcKeys.subName] = "Junior Blacksmithing Trainer",
         },
         [247217] = { -- Sarah Fairwater : https://wowhead.com/forever/npc=247217/sarah-fairwater
             [npcKeys.name] = "Sarah Fairwater",
+            [npcKeys.subName] = "Junior Cooking Trainer",
         },
         [247218] = { -- Merideth : https://wowhead.com/forever/npc=247218/merideth
             [npcKeys.name] = "Merideth",
+            [npcKeys.subName] = "Junior Enchanting Trainer",
         },
         [247219] = { -- Mittiny Cogwrench : https://wowhead.com/forever/npc=247219/mittiny-cogwrench
             [npcKeys.name] = "Mittiny Cogwrench",
+            [npcKeys.subName] = "Junior Engineering Trainer",
         },
         [247221] = { -- Harold Justice : https://wowhead.com/forever/npc=247221/harold-justice
             [npcKeys.name] = "Harold Justice",
+            [npcKeys.subName] = "Junior First Aid Trainer",
         },
         [247222] = { -- Ol' Fish Eye : https://wowhead.com/forever/npc=247222/ol-fish-eye
             [npcKeys.name] = "Ol' Fish Eye",
+            [npcKeys.subName] = "Junior Fishing Trainer",
         },
         [247223] = { -- Nancy Songflower : https://wowhead.com/forever/npc=247223/nancy-songflower
             [npcKeys.name] = "Nancy Songflower",
@@ -3784,9 +4215,12 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[12] = {{52.2, 43.4}, {52.4, 43.8}}},
             [npcKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Junior Herbalism Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [247224] = { -- Hannah Peltskinner : https://wowhead.com/forever/npc=247224/hannah-peltskinner
             [npcKeys.name] = "Hannah Peltskinner",
+            [npcKeys.subName] = "Junior Leatherworking Trainer",
         },
         [247226] = { -- Kelsey Fargo : https://wowhead.com/forever/npc=247226/kelsey-fargo
             [npcKeys.name] = "Kelsey Fargo",
@@ -3797,6 +4231,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {91752},
             [npcKeys.questEnds] = {91745},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Junior Mining Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2901; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [247227] = { -- Riley Peltskinner : https://wowhead.com/forever/npc=247227/riley-peltskinner
             [npcKeys.name] = "Riley Peltskinner",
@@ -3805,9 +4241,12 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[12] = {{47, 39.8}}},
             [npcKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Junior Skinning Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8613 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [247228] = { -- Rebecca Thimble : https://wowhead.com/forever/npc=247228/rebecca-thimble
             [npcKeys.name] = "Rebecca Thimble",
+            [npcKeys.subName] = "Junior Tailoring Trainer",
         },
         [247229] = { -- Daniel : https://wowhead.com/forever/npc=247229/daniel
             [npcKeys.name] = "Daniel",
@@ -3817,11 +4256,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
             [npcKeys.questEnds] = {92124},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Librarian's Assistant",
         },
         [247264] = { -- Emissary Jacques : https://wowhead.com/forever/npc=247264/emissary-jacques
             [npcKeys.name] = "Emissary Jacques",
             [npcKeys.spawns] = {[267] = {{48.2, 60}}},
             [npcKeys.zoneID] = zoneIDs.HILLSBRAD_FOOTHILLS,
+            [npcKeys.questStarts] = {92432},
+            [npcKeys.subName] = "Kirin Tor",
         },
         [247442] = { -- Sealing Crystal : https://wowhead.com/forever/npc=247442/sealing-crystal
             [npcKeys.name] = "Sealing Crystal",
@@ -3896,6 +4338,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[17] = {{49.8, 29.4}, {49.8, 29.6}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Alchemist",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 250364; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [248197] = { -- Gor'mak : https://wowhead.com/forever/npc=248197/gormak
             [npcKeys.name] = "Gor'mak",
@@ -3904,6 +4348,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[17] = {{49.8, 29.6}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Blacksmith",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 251355; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [248198] = { -- Aza'bek : https://wowhead.com/forever/npc=248198/azabek
             [npcKeys.name] = "Aza'bek",
@@ -3912,6 +4358,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[17] = {{49.6, 29.2}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Chef",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [248199] = { -- Beneris : https://wowhead.com/forever/npc=248199/beneris
             [npcKeys.name] = "Beneris",
@@ -3920,6 +4368,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[17] = {{49.6, 29.8}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Enchanting",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 249476; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [248200] = { -- Fizzlefuse : https://wowhead.com/forever/npc=248200/fizzlefuse
             [npcKeys.name] = "Fizzlefuse",
@@ -3928,6 +4378,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[17] = {{49.8, 29.6}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Opportunist Engineer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 264201; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [248201] = { -- Pawani : https://wowhead.com/forever/npc=248201/pawani
             [npcKeys.name] = "Pawani",
@@ -3936,6 +4388,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[17] = {{49.6, 29.6}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Leatherworker",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 252765; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [248202] = { -- Jim'bek : https://wowhead.com/forever/npc=248202/jimbek
             [npcKeys.name] = "Jim'bek",
@@ -3944,6 +4398,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[17] = {{49.6, 29.4}, {49.6, 29.6}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Tailor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 253890; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [248242] = { -- Hamish Bergwort : https://wowhead.com/forever/npc=248242/hamish-bergwort
             [npcKeys.name] = "Hamish Bergwort",
@@ -3993,6 +4449,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
             [npcKeys.questEnds] = {91740},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Watch Captain",
         },
         [248278] = { -- Croaky : https://wowhead.com/forever/npc=248278/croaky
             [npcKeys.name] = "Croaky",
@@ -4004,7 +4461,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Elmpaw",
             [npcKeys.minLevel] = 12,
             [npcKeys.maxLevel] = 12,
-            [npcKeys.spawns] = {[12] = {{73, 38.6}, {73.4, 40.2}, {73.6, 36}, {74.4, 41.8}, {74.6, 40}, {76.8, 37.6}, {76.8, 39}, {77.6, 37.8}, {78, 40}, {81.4, 85}, {81.4, 85.6}, {81.6, 85.4}, {81.8, 84.2}, {82, 82.4}, {82, 87.4}, {83.2, 87.4}, {83.8, 85.8}, {84, 81.8}, {86, 81}, {86.2, 80.2}, {87.6, 78.8}, {88, 80}}},
+            [npcKeys.spawns] = {[12] = {{71, 43.6}, {72.4, 40}, {72.8, 39}, {73.2, 37.2}, {73.2, 40.6}, {73.4, 40.2}, {73.6, 36}, {73.8, 39.6}, {74.2, 38.4}, {74.4, 40.8}, {74.4, 41.8}, {75, 38.4}, {75, 39.8}, {75, 40.6}, {75.6, 37.6}, {76.6, 41.8}, {76.8, 37.6}, {76.8, 39}, {77.4, 37.2}, {77.6, 37.8}, {78, 40}, {78.6, 38.2}, {81.4, 85}, {81.4, 85.6}, {81.6, 85.2}, {81.8, 84.2}, {82, 82.4}, {82, 87.4}, {82.6, 86.4}, {82.6, 87.8}, {83.2, 83.2}, {83.2, 87.4}, {83.6, 78.6}, {83.6, 84.4}, {83.8, 85.8}, {84, 81.8}, {84, 87.4}, {84.8, 85}, {85.8, 81.6}, {86, 81}, {86.2, 79.2}, {86.2, 80.2}, {86.2, 83.8}, {86.6, 76}, {86.8, 84.4}, {87, 79.8}, {87.2, 78.8}, {87.6, 78.8}, {88, 80}}},
             [npcKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
         },
         [248301] = { -- Minimus Tentaculus : https://wowhead.com/forever/npc=248301/minimus-tentaculus
@@ -4050,6 +4507,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {91772},
             [npcKeys.questEnds] = {91758, 92479},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Hunter Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 1130 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [248419] = { -- Mirt : https://wowhead.com/forever/npc=248419/mirt
             [npcKeys.name] = "Mirt",
@@ -4069,6 +4528,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 6,
             [npcKeys.spawns] = {[12] = {{40.4, 80.2}, {41, 77.6}, {41, 80.6}, {41.4, 79.2}, {41.4, 80.2}, {41.6, 80}}},
             [npcKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
+            [npcKeys.subName] = "Apprentice Geosculptor",
         },
         [248474] = { -- Geosculptor Yip : https://wowhead.com/forever/npc=248474/geosculptor-yip
             [npcKeys.name] = "Geosculptor Yip",
@@ -4079,9 +4539,11 @@ function ForeverBaseNpc:Load()
         },
         [248641] = { -- Fraxinus : https://wowhead.com/forever/npc=248641/fraxinus
             [npcKeys.name] = "Fraxinus",
+            [npcKeys.subName] = "Ancient",
         },
         [248709] = { -- Sunderbark : https://wowhead.com/forever/npc=248709/sunderbark
             [npcKeys.name] = "Sunderbark",
+            [npcKeys.subName] = "Ancient of Corruption",
         },
         [248753] = { -- Steamwheedle Lost and Found : https://wowhead.com/forever/npc=248753/steamwheedle-lost-and-found
             [npcKeys.name] = "Steamwheedle Lost and Found",
@@ -4111,6 +4573,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Jenna",
             [npcKeys.spawns] = {[33] = {{27.8, 77.2}}},
             [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
+            [npcKeys.subName] = "Mustard Queen",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 248613; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [248813] = { -- Biggs Gearwedge : https://wowhead.com/forever/npc=248813/biggs-gearwedge
             [npcKeys.name] = "Biggs Gearwedge",
@@ -4136,12 +4600,15 @@ function ForeverBaseNpc:Load()
         },
         [248876] = { -- Turn-In Vendor : https://wowhead.com/forever/npc=248876/turn-in-vendor
             [npcKeys.name] = "Turn-In Vendor",
+            [npcKeys.subName] = "PTR - Crates & Writs",
         },
         [248946] = { -- Reagent Vendor : https://wowhead.com/forever/npc=248946/reagent-vendor
             [npcKeys.name] = "Reagent Vendor",
+            [npcKeys.subName] = "Has What You Need (Probably)",
         },
         [248952] = { -- Fizlek : https://wowhead.com/forever/npc=248952/fizlek
             [npcKeys.name] = "Fizlek",
+            [npcKeys.subName] = "Inventory Intake",
         },
         [248953] = { -- Trade Authority Turn-Ins (Alliance) : https://wowhead.com/forever/npc=248953/trade-authority-turn-ins-alliance
             [npcKeys.name] = "Trade Authority Turn-Ins (Alliance)",
@@ -4249,6 +4716,7 @@ function ForeverBaseNpc:Load()
         [249235] = { -- Kaylaena Springwhisper : https://wowhead.com/forever/npc=249235/kaylaena-springwhisper
             [npcKeys.name] = "Kaylaena Springwhisper",
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+            [npcKeys.subName] = "Cenarion Circle",
         },
         [249236] = { -- Doomguard : https://wowhead.com/forever/npc=249236/doomguard
             [npcKeys.name] = "Doomguard",
@@ -4269,6 +4737,7 @@ function ForeverBaseNpc:Load()
         },
         [249241] = { -- Paeonia : https://wowhead.com/forever/npc=249241/paeonia
             [npcKeys.name] = "Paeonia",
+            [npcKeys.subName] = "Conservator of Cute Critters",
         },
         [249247] = { -- Forgotten Soldier : https://wowhead.com/forever/npc=249247/forgotten-soldier
             [npcKeys.name] = "Forgotten Soldier",
@@ -4350,12 +4819,14 @@ function ForeverBaseNpc:Load()
         },
         [249543] = { -- Poacher's Den Testing : https://wowhead.com/forever/npc=249543/poachers-den-testing
             [npcKeys.name] = "Poacher's Den Testing",
+            [npcKeys.subName] = "PLACEHOLDER",
         },
         [249544] = { -- Stalker : https://wowhead.com/forever/npc=249544/stalker
             [npcKeys.name] = "Stalker",
         },
         [249545] = { -- Goldrinn : https://wowhead.com/forever/npc=249545/goldrinn
             [npcKeys.name] = "Goldrinn",
+            [npcKeys.subName] = "PLACEHOLDER",
         },
         [249549] = { -- Fenwick Togglespring : https://wowhead.com/forever/npc=249549/fenwick-togglespring
             [npcKeys.name] = "Fenwick Togglespring",
@@ -4364,9 +4835,11 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[616] = {{25.2, 76}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Aspiring Rocketglider",
         },
         [249550] = { -- Wennzut Togglespring : https://wowhead.com/forever/npc=249550/wennzut-togglespring
             [npcKeys.name] = "Wennzut Togglespring",
+            [npcKeys.subName] = "Rocket Scientist",
         },
         [249551] = { -- Blackthorne Cultist : https://wowhead.com/forever/npc=249551/blackthorne-cultist
             [npcKeys.name] = "Blackthorne Cultist",
@@ -4374,12 +4847,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[616] = {{77.6, 40.2}, {79.8, 35}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+            [npcKeys.subName] = "Blackthorne Pact",
         },
         [249561] = { -- Riding Wolf : https://wowhead.com/forever/npc=249561/riding-wolf
             [npcKeys.name] = "Riding Wolf",
         },
         [249562] = { -- Duz'zt Ghuswerx : https://wowhead.com/forever/npc=249562/duzzt-ghuswerx
             [npcKeys.name] = "Duz'zt Ghuswerx",
+            [npcKeys.subName] = "Thaumaturge",
         },
         [249661] = { -- Rift : https://wowhead.com/forever/npc=249661/rift
             [npcKeys.name] = "Rift",
@@ -4394,6 +4869,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92109, 92110},
             [npcKeys.questEnds] = {92109, 92110},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 4508 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [249719] = { -- Stalker : https://wowhead.com/forever/npc=249719/stalker
             [npcKeys.name] = "Stalker",
@@ -4425,6 +4901,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 58,
             [npcKeys.spawns] = {[616] = {{15.4, 50}, {15.6, 50.2}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2539 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [249974] = { -- Battlescarred Steelbeak : https://wowhead.com/forever/npc=249974/battlescarred-steelbeak
             [npcKeys.name] = "Battlescarred Steelbeak",
@@ -4474,6 +4951,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[85] = {{22, 44.4}, {22, 44.8}}},
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Keeper of Bandarion Keep",
         },
         [250483] = { -- Witherfang : https://wowhead.com/forever/npc=250483/witherfang
             [npcKeys.name] = "Witherfang",
@@ -4568,9 +5046,11 @@ function ForeverBaseNpc:Load()
         },
         [250657] = { -- Rath'mael : https://wowhead.com/forever/npc=250657/rathmael
             [npcKeys.name] = "Rath'mael",
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
         },
         [250660] = { -- The Baron : https://wowhead.com/forever/npc=250660/the-baron
             [npcKeys.name] = "The Baron",
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
         },
         [250686] = { -- Tabitha Heartweaver : https://wowhead.com/forever/npc=250686/tabitha-heartweaver
             [npcKeys.name] = "Tabitha Heartweaver",
@@ -4674,7 +5154,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Highlands Ursera",
             [npcKeys.minLevel] = 7,
             [npcKeys.maxLevel] = 8,
-            [npcKeys.spawns] = {[16593] = {{49.8, 58.6}, {50, 58.3}}},
+            [npcKeys.spawns] = {[16593] = {{43.3, 69.7}, {44, 68.2}, {49.8, 58.6}, {50.1, 58.3}, {51.7, 63}, {56.4, 62.8}, {57.7, 56.5}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
         },
@@ -4711,6 +5191,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 13,
             [npcKeys.spawns] = {[16593] = {{61.2, 37.2}, {61.6, 38.4}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+            [npcKeys.subName] = "The Great Mother",
         },
         [250937] = { -- Ursera Scavenger : https://wowhead.com/forever/npc=250937/ursera-scavenger
             [npcKeys.name] = "Ursera Scavenger",
@@ -4769,8 +5250,9 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Urs'anah",
             [npcKeys.minLevel] = 5,
             [npcKeys.maxLevel] = 5,
-            [npcKeys.spawns] = {[16593] = {{35.3, 24.2}, {35.4, 25.4}, {35.4, 25.6}, {35.6, 25.2}, {35.6, 26}}},
+            [npcKeys.spawns] = {[16593] = {{35.2, 25.4}, {35.3, 24.2}, {35.4, 25.6}, {35.6, 25.2}, {35.6, 26}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+            [npcKeys.subName] = "The Den Mother",
         },
         [251143] = { -- Roiling Winds : https://wowhead.com/forever/npc=251143/roiling-winds
             [npcKeys.name] = "Roiling Winds",
@@ -4860,7 +5342,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
         },
-        [251317] = { -- Slimecontrolled Creature : https://wowhead.com/forever/npc=251317/slimecontrolled-creature
+        [251317] = { -- Slimecontrolled Creature : https://wowhead.com/forever/npc=251317/slime-controlled-creature
             [npcKeys.name] = "Slimecontrolled Creature",
         },
         [251320] = { -- Peasant : https://wowhead.com/forever/npc=251320/peasant
@@ -4903,6 +5385,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questStarts] = {92460},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Rangers of Thendal Grove",
         },
         [251363] = { -- Dalia the Collector : https://wowhead.com/forever/npc=251363/dalia-the-collector
             [npcKeys.name] = "Dalia the Collector",
@@ -4921,6 +5404,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{43.4, 23.4}, {43.4, 23.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Weapon Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 1194; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [251365] = { -- Jolee Brightmeadows : https://wowhead.com/forever/npc=251365/jolee-brightmeadows
             [npcKeys.name] = "Jolee Brightmeadows",
@@ -4929,6 +5414,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{43.4, 23.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Cloth & Leather Armor",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [251366] = { -- Aetheen of the Gales : https://wowhead.com/forever/npc=251366/aetheen-of-the-gales
             [npcKeys.name] = "Aetheen of the Gales",
@@ -4939,6 +5426,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92470, 92472, 96638},
             [npcKeys.questEnds] = {92470, 92471},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Elder of Zephras Isle",
         },
         [251368] = { -- Elatrell Featherlight : https://wowhead.com/forever/npc=251368/elatrell-featherlight
             [npcKeys.name] = "Elatrell Featherlight",
@@ -4949,6 +5437,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92462, 92463},
             [npcKeys.questEnds] = {92462, 92463},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Rangers of Thendal Grove",
         },
         [251371] = { -- Falorne Fallwind : https://wowhead.com/forever/npc=251371/falorne-fallwind
             [npcKeys.name] = "Falorne Fallwind",
@@ -4959,6 +5448,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92597},
             [npcKeys.questEnds] = {92597},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "High Order",
         },
         [251373] = { -- Xyton Silverwind : https://wowhead.com/forever/npc=251373/xyton-silverwind
             [npcKeys.name] = "Xyton Silverwind",
@@ -4968,6 +5458,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questEnds] = {92485},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Druid Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 467 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251374] = { -- Windshaper Boro : https://wowhead.com/forever/npc=251374/windshaper-boro
             [npcKeys.name] = "Windshaper Boro",
@@ -4978,6 +5470,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92466, 92467},
             [npcKeys.questEnds] = {92466, 92468, 92484},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Shaman Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 332 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251376] = { -- Tai'ree Farsight : https://wowhead.com/forever/npc=251376/tairee-farsight
             [npcKeys.name] = "Tai'ree Farsight",
@@ -4987,6 +5481,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questEnds] = {92482},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Hunter Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 1130 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251379] = { -- Dorii Brightwhisper : https://wowhead.com/forever/npc=251379/dorii-brightwhisper
             [npcKeys.name] = "Dorii Brightwhisper",
@@ -4996,6 +5492,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questEnds] = {92481},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Mage Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 116 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251389] = { -- Akeri Duskblade : https://wowhead.com/forever/npc=251389/akeri-duskblade
             [npcKeys.name] = "Akeri Duskblade",
@@ -5005,6 +5503,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questEnds] = {92483},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Rogue Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 53 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251402] = { -- Cirrusfly Soldier : https://wowhead.com/forever/npc=251402/cirrusfly-soldier
             [npcKeys.name] = "Cirrusfly Soldier",
@@ -5065,9 +5565,11 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92598},
             [npcKeys.questEnds] = {92598},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Windshapers",
         },
         [251488] = { -- Ghansurok : https://wowhead.com/forever/npc=251488/ghansurok
             [npcKeys.name] = "Ghansurok",
+            [npcKeys.subName] = "Blight of the Hills",
         },
         [251489] = { -- Placeholder : https://wowhead.com/forever/npc=251489/placeholder
             [npcKeys.name] = "Placeholder",
@@ -5083,6 +5585,8 @@ function ForeverBaseNpc:Load()
         },
         [251493] = { -- Captain McManus : https://wowhead.com/forever/npc=251493/captain-mcmanus
             [npcKeys.name] = "Captain McManus",
+            [npcKeys.questStarts] = {98059},
+            [npcKeys.questEnds] = {98059},
         },
         [251494] = { -- Boulupulo : https://wowhead.com/forever/npc=251494/boulupulo
             [npcKeys.name] = "Boulupulo",
@@ -5132,6 +5636,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {94792, 94793, 94863, 94864},
             [npcKeys.questEnds] = {94792, 94863, 94864},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Hunter Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 136 trainingcost=600; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251523] = { -- Constable Aonda : https://wowhead.com/forever/npc=251523/constable-aonda
             [npcKeys.name] = "Constable Aonda",
@@ -5142,6 +5648,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92514, 92517, 92550, 92579, 92701, 93036, 93461, 93926, 93948},
             [npcKeys.questEnds] = {92472, 92514, 92517, 92528, 92550, 93461, 93927},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Peacekeeper",
         },
         [251537] = { -- Uualia Suncrest : https://wowhead.com/forever/npc=251537/uualia-suncrest
             [npcKeys.name] = "Uualia Suncrest",
@@ -5150,12 +5657,15 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{42.8, 24.4}, {42.8, 24.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "General Goods",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [251553] = { -- Ghansurok : https://wowhead.com/forever/npc=251553/ghansurok
             [npcKeys.name] = "Ghansurok",
         },
         [251554] = { -- Yngwe Windstream : https://wowhead.com/forever/npc=251554/yngwe-windstream
             [npcKeys.name] = "Yngwe Windstream",
+            [npcKeys.subName] = "Veteran Windshredder",
         },
         [251559] = { -- Hoarder : https://wowhead.com/forever/npc=251559/hoarder
             [npcKeys.name] = "Hoarder",
@@ -5213,7 +5723,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Living Lightning",
             [npcKeys.minLevel] = 7,
             [npcKeys.maxLevel] = 8,
-            [npcKeys.spawns] = {[16593] = {{47.2, 56}, {47.4, 54}, {47.4, 55.4}, {47.6, 53.2}, {47.6, 56}, {48, 54.2}, {48, 57}, {48.2, 55}, {48.4, 57.8}, {48.6, 56.8}, {48.6, 57.8}, {49, 53.8}, {49, 58.6}, {49.4, 55.4}, {49.4, 56}, {49.6, 55}, {49.6, 56}, {49.6, 57.6}, {50, 54.2}}},
+            [npcKeys.spawns] = {[16593] = {{47.1, 53.3}, {47.2, 54.4}, {47.4, 55.2}, {47.4, 56.2}, {47.6, 56.1}, {47.7, 53.4}, {47.7, 54.9}, {47.8, 56.8}, {48.1, 57.6}, {48.4, 53.8}, {48.5, 56.9}, {48.6, 54.6}, {48.8, 54.2}, {49, 58.5}, {49.1, 58.1}, {49.2, 53.2}, {49.4, 55.7}, {49.5, 54.8}, {49.6, 56}, {49.6, 56.8}, {49.9, 58.5}, {50.1, 54.2}, {50.1, 58.4}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
         },
@@ -5242,6 +5752,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {93159, 93160, 93172, 98285},
             [npcKeys.questEnds] = {93159, 93160, 93172, 98285},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 3922 trainingcost=115; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251707] = { -- Ornery Galestrider : https://wowhead.com/forever/npc=251707/ornery-galestrider
             [npcKeys.name] = "Ornery Galestrider",
@@ -5319,6 +5830,7 @@ function ForeverBaseNpc:Load()
         },
         [251894] = { -- Sazzbakk : https://wowhead.com/forever/npc=251894/sazzbakk
             [npcKeys.name] = "Sazzbakk",
+            [npcKeys.subName] = "Hnaz's Imp",
         },
         [251902] = { -- Illaya Amberwind : https://wowhead.com/forever/npc=251902/illaya-amberwind
             [npcKeys.name] = "Illaya Amberwind",
@@ -5329,6 +5841,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92595, 94411},
             [npcKeys.questEnds] = {92595, 94411},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Elder Windshaper",
         },
         [251903] = { -- Rathiril Sunlance : https://wowhead.com/forever/npc=251903/rathiril-sunlance
             [npcKeys.name] = "Rathiril Sunlance",
@@ -5339,6 +5852,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92596, 94413},
             [npcKeys.questEnds] = {92596, 94413},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Elder of the High Order",
         },
         [251904] = { -- Sania Silverstream : https://wowhead.com/forever/npc=251904/sania-silverstream
             [npcKeys.name] = "Sania Silverstream",
@@ -5349,6 +5863,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92529},
             [npcKeys.questEnds] = {93036},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Al'Aketh Missionary",
         },
         [251905] = { -- Zerril Softbreeze : https://wowhead.com/forever/npc=251905/zerril-softbreeze
             [npcKeys.name] = "Zerril Softbreeze",
@@ -5359,6 +5874,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92553},
             [npcKeys.questEnds] = {92553, 96646},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Cook",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2539 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251906] = { -- Teeri Wellwind : https://wowhead.com/forever/npc=251906/teeri-wellwind
             [npcKeys.name] = "Teeri Wellwind",
@@ -5381,6 +5898,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questEnds] = {97964},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Blacksmith",
+            [npcKeys.npcFlags] = 16404, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2018 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2880; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [251918] = { -- Highlands Bandit : https://wowhead.com/forever/npc=251918/highlands-bandit
             [npcKeys.name] = "Highlands Bandit",
@@ -5408,11 +5927,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{19.8, 70.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Stable Master",
         },
         [251955] = { -- Lucian Trias : https://wowhead.com/forever/npc=251955/lucian-trias
             [npcKeys.name] = "Lucian Trias",
             [npcKeys.spawns] = {[36] = {{20.2, 67.4}, {20.2, 67.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Bread & Cheese Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 414; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251956] = { -- Lizi Silverstone : https://wowhead.com/forever/npc=251956/lizi-silverstone
             [npcKeys.name] = "Lizi Silverstone",
@@ -5436,6 +5958,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questEnds] = {92532},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Warrior Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 100 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251965] = { -- Fevrath Skyhammer : https://wowhead.com/forever/npc=251965/fevrath-skyhammer
             [npcKeys.name] = "Fevrath Skyhammer",
@@ -5444,6 +5968,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{43.2, 23.4}, {43.4, 23.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Armorer & Shieldcrafter",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2129; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [251966] = { -- Commander Cyclas : https://wowhead.com/forever/npc=251966/commander-cyclas
             [npcKeys.name] = "Commander Cyclas",
@@ -5462,6 +5988,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92708, 92871, 93735, 93740, 93746, 93836, 95349},
             [npcKeys.questEnds] = {92646, 92700, 92708, 93090, 93738, 93740, 93746},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Grand Skyseer of The Windshapers",
         },
         [251969] = { -- Lift : https://wowhead.com/forever/npc=251969/lift
             [npcKeys.name] = "Lift",
@@ -5479,6 +6006,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{17.6, 60.2}, {17.8, 60.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Expert Tailor",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2385 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251973] = { -- Dominique Stefano : https://wowhead.com/forever/npc=251973/dominique-stefano
             [npcKeys.name] = "Dominique Stefano",
@@ -5487,6 +6016,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{17.6, 60.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Tailoring Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251974] = { -- Linna Bruder : https://wowhead.com/forever/npc=251974/linna-bruder
             [npcKeys.name] = "Linna Bruder",
@@ -5500,6 +6031,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{18, 62}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Jewelry Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 7337; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251976] = { -- Tiffany Cartier : https://wowhead.com/forever/npc=251976/tiffany-cartier
             [npcKeys.name] = "Tiffany Cartier",
@@ -5508,6 +6041,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{18, 62}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Jewelry Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 7337; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251977] = { -- Angelique Butler : https://wowhead.com/forever/npc=251977/angelique-butler
             [npcKeys.name] = "Angelique Butler",
@@ -5516,6 +6051,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{17.2, 61}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "First Aid Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 3273 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251978] = { -- Vanessa Sellers : https://wowhead.com/forever/npc=251978/vanessa-sellers
             [npcKeys.name] = "Vanessa Sellers",
@@ -5524,6 +6061,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{16.6, 62.6}, {16.8, 62.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Enchanting Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 7411 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [251979] = { -- Jepetto Joybuzz : https://wowhead.com/forever/npc=251979/jepetto-joybuzz
             [npcKeys.name] = "Jepetto Joybuzz",
@@ -5532,18 +6071,23 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{16.4, 65}, {16.6, 65}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Toymaker",
         },
         [251980] = { -- Rueben Lauren : https://wowhead.com/forever/npc=251980/rueben-lauren
             [npcKeys.name] = "Rueben Lauren",
             [npcKeys.spawns] = {[36] = {{15.8, 65.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Cloth Armor Merchant",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2429; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251981] = { -- Sheddle Glossgleam : https://wowhead.com/forever/npc=251981/sheddle-glossgleam
             [npcKeys.name] = "Sheddle Glossgleam",
             [npcKeys.spawns] = {[36] = {{16.4, 65.4}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Cobbler",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 202; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251991] = { -- Taleen Shimmerthread : https://wowhead.com/forever/npc=251991/taleen-shimmerthread
             [npcKeys.name] = "Taleen Shimmerthread",
@@ -5554,6 +6098,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {93951},
             [npcKeys.questEnds] = {93951, 97972, 97973},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Tailor",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2385 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251992] = { -- Fenn Fairweather : https://wowhead.com/forever/npc=251992/fenn-fairweather
             [npcKeys.name] = "Fenn Fairweather",
@@ -5563,6 +6109,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questEnds] = {97967},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Fisherman",
+            [npcKeys.npcFlags] = 16404, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 7620 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 6256; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [251993] = { -- Indari Sunseam : https://wowhead.com/forever/npc=251993/indari-sunseam
             [npcKeys.name] = "Indari Sunseam",
@@ -5573,25 +6121,34 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92515},
             [npcKeys.questEnds] = {92515, 97969},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Leatherworker",
+            [npcKeys.npcFlags] = 16404, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2108 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [251996] = { -- Tenn Fairweather : https://wowhead.com/forever/npc=251996/tenn-fairweather
             [npcKeys.name] = "Tenn Fairweather",
+            [npcKeys.subName] = "Caravan Driver and Storyteller",
         },
         [251997] = { -- Norvin Alderman : https://wowhead.com/forever/npc=251997/norvin-alderman
             [npcKeys.name] = "Norvin Alderman",
             [npcKeys.spawns] = {[36] = {{16, 65.4}, {16, 65.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Cloaks",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 4662; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [251999] = { -- Debbi Moore : https://wowhead.com/forever/npc=251999/debbi-moore
             [npcKeys.name] = "Debbi Moore",
             [npcKeys.spawns] = {[36] = {{15.4, 68.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Trinkets & Charms",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 7337; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252000] = { -- Brammold Deepmine : https://wowhead.com/forever/npc=252000/brammold-deepmine
             [npcKeys.name] = "Brammold Deepmine",
             [npcKeys.spawns] = {[36] = {{15.8, 68.8}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Antiques",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 25; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252001] = { -- Orton Bennet : https://wowhead.com/forever/npc=252001/orton-bennet
             [npcKeys.name] = "Orton Bennet",
@@ -5599,6 +6156,7 @@ function ForeverBaseNpc:Load()
         },
         [252003] = { -- Fairweather Caravan : https://wowhead.com/forever/npc=252003/fairweather-caravan
             [npcKeys.name] = "Fairweather Caravan",
+            [npcKeys.subName] = "Totally Placeholder Model",
         },
         [252004] = { -- Ninsianna : https://wowhead.com/forever/npc=252004/ninsianna
             [npcKeys.name] = "Ninsianna",
@@ -5611,6 +6169,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{12, 70.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Wands",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 5208; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [252020] = { -- Jack Findle : https://wowhead.com/forever/npc=252020/jack-findle
             [npcKeys.name] = "Jack Findle",
@@ -5619,6 +6179,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{13.2, 71.2}, {13.2, 71.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Trade Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252022] = { -- Susana Averoy : https://wowhead.com/forever/npc=252022/susana-averoy
             [npcKeys.name] = "Susana Averoy",
@@ -5632,6 +6194,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{14, 63.4}, {14.2, 63.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Reagent Merchant",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 5565; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252063] = { -- Deadwood Den Guardian : https://wowhead.com/forever/npc=252063/deadwood-den-guardian
             [npcKeys.name] = "Deadwood Den Guardian",
@@ -5673,6 +6237,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{12.8, 66.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Bartender",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252081] = { -- Sebastian Bower : https://wowhead.com/forever/npc=252081/sebastian-bower
             [npcKeys.name] = "Sebastian Bower",
@@ -5691,6 +6257,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{12.4, 66}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Cooking Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252084] = { -- Katherine Lee : https://wowhead.com/forever/npc=252084/katherine-lee
             [npcKeys.name] = "Katherine Lee",
@@ -5699,6 +6267,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{12.4, 65.8}, {12.6, 65.8}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Cooking Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2539 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [252085] = { -- Archmage Celindra : https://wowhead.com/forever/npc=252085/archmage-celindra
             [npcKeys.name] = "Archmage Celindra",
@@ -5706,7 +6276,9 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 40,
             [npcKeys.spawns] = {[36] = {{14.2, 60}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.questEnds] = {92459, 97287},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Kirin Tor",
         },
         [252086] = { -- Mei Francis : https://wowhead.com/forever/npc=252086/mei-francis
             [npcKeys.name] = "Mei Francis",
@@ -5715,6 +6287,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{18.8, 70}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Exotic Purveyor",
         },
         [252087] = { -- Horse : https://wowhead.com/forever/npc=252087/horse
             [npcKeys.name] = "Horse",
@@ -5758,6 +6331,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92544},
             [npcKeys.questEnds] = {92544},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Rangers of Thendal Grove",
         },
         [252096] = { -- Deadwood Fel-Tender : https://wowhead.com/forever/npc=252096/deadwood-fel-tender
             [npcKeys.name] = "Deadwood Fel-Tender",
@@ -5818,12 +6392,15 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92551},
             [npcKeys.questEnds] = {92551, 93318},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Advisor",
         },
         [252206] = { -- Patrick Ginnis : https://wowhead.com/forever/npc=252206/patrick-ginnis
             [npcKeys.name] = "Patrick Ginnis",
+            [npcKeys.subName] = "Contemplative Soldier",
         },
         [252207] = { -- Sally : https://wowhead.com/forever/npc=252207/sally
             [npcKeys.name] = "Sally",
+            [npcKeys.subName] = "Camping Trainer",
         },
         [252319] = { -- Cirrusfly Hive : https://wowhead.com/forever/npc=252319/cirrusfly-hive
             [npcKeys.name] = "Cirrusfly Hive",
@@ -5853,6 +6430,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {94006, 94484},
             [npcKeys.questEnds] = {94491},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Druid Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 99 trainingcost=300; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [252360] = { -- Alley : https://wowhead.com/forever/npc=252360/alley
             [npcKeys.name] = "Alley",
@@ -5878,12 +6457,16 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questStarts] = {93791},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Mage Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 10 trainingcost=2000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [252374] = { -- Lalaa Lunarbreeze : https://wowhead.com/forever/npc=252374/lalaa-lunarbreeze
             [npcKeys.name] = "Lalaa Lunarbreeze",
+            [npcKeys.subName] = "Druid Trainee",
         },
         [252375] = { -- Neyaa Songspring : https://wowhead.com/forever/npc=252375/neyaa-songspring
             [npcKeys.name] = "Neyaa Songspring",
+            [npcKeys.subName] = "Storyteller",
         },
         [252376] = { -- Emerii Tallgust : https://wowhead.com/forever/npc=252376/emerii-tallgust
             [npcKeys.name] = "Emerii Tallgust",
@@ -5892,6 +6475,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{63.8, 80.4}, {63.8, 80.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Leatherworker",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2108 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252377] = { -- Seena Skybreaker : https://wowhead.com/forever/npc=252377/seena-skybreaker
             [npcKeys.name] = "Seena Skybreaker",
@@ -5902,6 +6487,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {94003},
             [npcKeys.questEnds] = {94003},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Warrior Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 72 trainingcost=1000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [252378] = { -- Yorana Windyreed : https://wowhead.com/forever/npc=252378/yorana-windyreed
             [npcKeys.name] = "Yorana Windyreed",
@@ -5912,6 +6499,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92642, 92645, 92880},
             [npcKeys.questEnds] = {92642, 92645, 93320},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Peacekeeper",
         },
         [252379] = { -- Eltheen Nightbreeze : https://wowhead.com/forever/npc=252379/eltheen-nightbreeze
             [npcKeys.name] = "Eltheen Nightbreeze",
@@ -5920,6 +6508,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{59.8, 72.4}, {59.8, 72.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Rogue Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 53 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [252380] = { -- Othesia Evengale : https://wowhead.com/forever/npc=252380/othesia-evengale
             [npcKeys.name] = "Othesia Evengale",
@@ -5928,9 +6518,12 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{64.4, 81}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Tailor",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2385 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252381] = { -- Orelnaa Evengale : https://wowhead.com/forever/npc=252381/orelnaa-evengale
             [npcKeys.name] = "Orelnaa Evengale",
+            [npcKeys.subName] = "Herbalism Trainer",
         },
         [252382] = { -- Sessaria Skystride : https://wowhead.com/forever/npc=252382/sessaria-skystride
             [npcKeys.name] = "Sessaria Skystride",
@@ -5941,6 +6534,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {97243},
             [npcKeys.questEnds] = {97257},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Shaman Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 131 trainingcost=3000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [252383] = { -- Valennia Stormfist : https://wowhead.com/forever/npc=252383/valennia-stormfist
             [npcKeys.name] = "Valennia Stormfist",
@@ -5951,12 +6546,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92699, 92700, 92881, 93065, 93320, 93949},
             [npcKeys.questEnds] = {92579, 92640, 92701, 92860, 92871, 92880, 93949},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Peacekeeper Captain",
         },
         [252384] = { -- Railei Rumblebreeze : https://wowhead.com/forever/npc=252384/railei-rumblebreeze
             [npcKeys.name] = "Railei Rumblebreeze",
         },
         [252385] = { -- Sazzbakk : https://wowhead.com/forever/npc=252385/sazzbakk
             [npcKeys.name] = "Sazzbakk",
+            [npcKeys.subName] = "Hnaz's Imp",
         },
         [252387] = { -- Whislee Wondergust : https://wowhead.com/forever/npc=252387/whislee-wondergust
             [npcKeys.name] = "Whislee Wondergust",
@@ -5968,6 +6565,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{65.4, 80.4}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Mining Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2901; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252389] = { -- Quel'ana Quickgale : https://wowhead.com/forever/npc=252389/quelana-quickgale
             [npcKeys.name] = "Quel'ana Quickgale",
@@ -5978,6 +6577,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {94013, 94050, 94978, 94979},
             [npcKeys.questEnds] = {94007, 94013, 94978, 94979},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Hunter Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 136 trainingcost=600; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [252390] = { -- Antelariaa Cloudgaze : https://wowhead.com/forever/npc=252390/antelariaa-cloudgaze
             [npcKeys.name] = "Antelariaa Cloudgaze",
@@ -5986,9 +6587,12 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{63, 77.8}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "General Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252391] = { -- Haalee Windstalker : https://wowhead.com/forever/npc=252391/haalee-windstalker
             [npcKeys.name] = "Haalee Windstalker",
+            [npcKeys.subName] = "Captain of the Skycutter",
         },
         [252392] = { -- Orsaan Dalewind : https://wowhead.com/forever/npc=252392/orsaan-dalewind
             [npcKeys.name] = "Orsaan Dalewind",
@@ -5997,12 +6601,15 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{59.2, 75.8}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Crafter's Hall Administrator",
         },
         [252408] = { -- Uugorol : https://wowhead.com/forever/npc=252408/uugorol
             [npcKeys.name] = "Uugorol",
+            [npcKeys.subName] = "Hnaz's Voidwalker",
         },
         [252409] = { -- Myrkiss : https://wowhead.com/forever/npc=252409/myrkiss
             [npcKeys.name] = "Myrkiss",
+            [npcKeys.subName] = "Hnaz's Succubus",
         },
         [252417] = { -- As The Crow Flies : https://wowhead.com/forever/npc=252417/as-the-crow-flies
             [npcKeys.name] = "As The Crow Flies",
@@ -6068,6 +6675,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{58.8, 75.4}, {58.8, 75.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Trade Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [252457] = { -- Mazzogore : https://wowhead.com/forever/npc=252457/mazzogore
             [npcKeys.name] = "Mazzogore",
@@ -6090,9 +6699,11 @@ function ForeverBaseNpc:Load()
         },
         [252472] = { -- Turaal Trueblade : https://wowhead.com/forever/npc=252472/turaal-trueblade
             [npcKeys.name] = "Turaal Trueblade",
+            [npcKeys.subName] = "Skinning Trainer",
         },
         [252473] = { -- Denaris Zephyrgaze : https://wowhead.com/forever/npc=252473/denaris-zephyrgaze
             [npcKeys.name] = "Denaris Zephyrgaze",
+            [npcKeys.subName] = "Chief Peacekeeper",
         },
         [252475] = { -- Elaadrin Evengale : https://wowhead.com/forever/npc=252475/elaadrin-evengale
             [npcKeys.name] = "Elaadrin Evengale",
@@ -6103,6 +6714,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92709, 92834, 92840, 92860, 94369, 94946},
             [npcKeys.questEnds] = {92699, 92709, 92834, 92840, 93089, 93835},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Supreme Magister of The High Order",
         },
         [252476] = { -- Talaanis Shadowsong : https://wowhead.com/forever/npc=252476/talaanis-shadowsong
             [npcKeys.name] = "Talaanis Shadowsong",
@@ -6113,6 +6725,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92640, 92643, 93089, 93090, 94568},
             [npcKeys.questEnds] = {92644, 92881, 93836, 93948, 94369, 94568},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "High Elder of Zephras Isle",
         },
         [252477] = { -- Peacekeeper Elite : https://wowhead.com/forever/npc=252477/peacekeeper-elite
             [npcKeys.name] = "Peacekeeper Elite",
@@ -6129,6 +6742,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{63.2, 77.4}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Imports",
         },
         [252479] = { -- Daeann Steelwind : https://wowhead.com/forever/npc=252479/daeann-steelwind
             [npcKeys.name] = "Daeann Steelwind",
@@ -6137,6 +6751,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{65.4, 80.2}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Blacksmith",
+            [npcKeys.npcFlags] = 16404, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2018 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2880; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [252481] = { -- Wind Sprite : https://wowhead.com/forever/npc=252481/wind-sprite
             [npcKeys.name] = "Wind Sprite",
@@ -6220,6 +6836,7 @@ function ForeverBaseNpc:Load()
         },
         [252594] = { -- Wimdy the Wagon Driver : https://wowhead.com/forever/npc=252594/wimdy-the-wagon-driver
             [npcKeys.name] = "Wimdy the Wagon Driver",
+            [npcKeys.subName] = "Cyclone Construct",
         },
         [252629] = { -- Boulder : https://wowhead.com/forever/npc=252629/boulder
             [npcKeys.name] = "Boulder",
@@ -6229,6 +6846,7 @@ function ForeverBaseNpc:Load()
         },
         [252632] = { -- Tenn Fairweather : https://wowhead.com/forever/npc=252632/tenn-fairweather
             [npcKeys.name] = "Tenn Fairweather",
+            [npcKeys.subName] = "Caravan Driver and Storyteller",
         },
         [252655] = { -- Boulder : https://wowhead.com/forever/npc=252655/boulder
             [npcKeys.name] = "Boulder",
@@ -6256,11 +6874,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{65.6, 65.4}, {65.6, 65.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Breaker",
         },
         [252691] = { -- Adarien : https://wowhead.com/forever/npc=252691/adarien
             [npcKeys.name] = "Adarien",
             [npcKeys.spawns] = {[16651] = {{42.6, 70}}},
             [npcKeys.zoneID] = zoneIDs.SHEN_DRALAS,
+            [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 128, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.
         },
         [252695] = { -- Pylon Protector : https://wowhead.com/forever/npc=252695/pylon-protector
             [npcKeys.name] = "Pylon Protector",
@@ -6360,6 +6981,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 8,
             [npcKeys.spawns] = {[16593] = {{47.6, 78}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+            [npcKeys.subName] = "Bandit Chief",
         },
         [252864] = { -- Rustleaf Fox : https://wowhead.com/forever/npc=252864/rustleaf-fox
             [npcKeys.name] = "Rustleaf Fox",
@@ -6410,11 +7032,15 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92741},
             [npcKeys.questEnds] = {92741},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Alchemist",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2259 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 3371; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [253066] = { -- Umarak : https://wowhead.com/forever/npc=253066/umarak
             [npcKeys.name] = "Umarak",
             [npcKeys.spawns] = {[405] = {{43.4, 78.6}}},
             [npcKeys.zoneID] = zoneIDs.DESOLACE,
+            [npcKeys.questStarts] = {96222},
+            [npcKeys.subName] = "Kolkar Clan",
         },
         [253092] = { -- Alba Fairmoon : https://wowhead.com/forever/npc=253092/alba-fairmoon
             [npcKeys.name] = "Alba Fairmoon",
@@ -6428,6 +7054,7 @@ function ForeverBaseNpc:Load()
         },
         [253096] = { -- Halea : https://wowhead.com/forever/npc=253096/halea
             [npcKeys.name] = "Halea",
+            [npcKeys.questEnds] = {92755},
         },
         [253097] = { -- Mirda : https://wowhead.com/forever/npc=253097/mirda
             [npcKeys.name] = "Mirda",
@@ -6436,15 +7063,23 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Orgrul",
             [npcKeys.spawns] = {[16651] = {{35.6, 12}, {35.8, 13}}},
             [npcKeys.zoneID] = zoneIDs.SHEN_DRALAS,
+            [npcKeys.questStarts] = {92844, 92846},
+            [npcKeys.questEnds] = {92841, 92844},
         },
         [253139] = { -- Gorhak : https://wowhead.com/forever/npc=253139/gorhak
             [npcKeys.name] = "Gorhak",
             [npcKeys.spawns] = {[405] = {{66.2, 79.4}}},
             [npcKeys.zoneID] = zoneIDs.DESOLACE,
+            [npcKeys.questEnds] = {94872},
+            [npcKeys.subName] = "Magram Clan Quartermaster",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 249486; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [253140] = { -- Molkar : https://wowhead.com/forever/npc=253140/molkar
             [npcKeys.name] = "Molkar",
             [npcKeys.zoneID] = zoneIDs.DESOLACE,
+            [npcKeys.questStarts] = {92812},
+            [npcKeys.questEnds] = {92812, 93227, 94873},
+            [npcKeys.subName] = "Gelkis Clan Quartermaster",
         },
         [253153] = { -- (DNT) Invisible Stalker : https://wowhead.com/forever/npc=253153/dnt-invisible-stalker
             [npcKeys.name] = "(DNT) Invisible Stalker",
@@ -6459,6 +7094,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Nerlokh",
             [npcKeys.spawns] = {[16651] = {{21.2, 23.2}}},
             [npcKeys.zoneID] = zoneIDs.SHEN_DRALAS,
+            [npcKeys.questStarts] = {93035, 93037, 93041, 93128},
+            [npcKeys.questEnds] = {93034, 93035, 93037, 93058, 93062, 93122},
         },
         [253195] = { -- Al'Aketh Preacher : https://wowhead.com/forever/npc=253195/alaketh-preacher
             [npcKeys.name] = "Al'Aketh Preacher",
@@ -6514,6 +7151,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 30,
             [npcKeys.spawns] = {[40] = {{38.4, 83.6}, {38.6, 83.6}}},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Shady Dealer",
         },
         [253281] = { -- Fillion Flamebreeze : https://wowhead.com/forever/npc=253281/fillion-flamebreeze
             [npcKeys.name] = "Fillion Flamebreeze",
@@ -6575,9 +7213,11 @@ function ForeverBaseNpc:Load()
         },
         [253318] = { -- Brother Aesiil : https://wowhead.com/forever/npc=253318/brother-aesiil
             [npcKeys.name] = "Brother Aesiil",
+            [npcKeys.subName] = "Stormrunner of Zephras Isle",
         },
         [253335] = { -- Marny Welbrade : https://wowhead.com/forever/npc=253335/marny-welbrade
             [npcKeys.name] = "Marny Welbrade",
+            [npcKeys.subName] = "Sentry Lead",
         },
         [253336] = { -- Gale Hardt : https://wowhead.com/forever/npc=253336/gale-hardt
             [npcKeys.name] = "Gale Hardt",
@@ -6593,6 +7233,7 @@ function ForeverBaseNpc:Load()
         },
         [253357] = { -- Tower Watchman : https://wowhead.com/forever/npc=253357/tower-watchman
             [npcKeys.name] = "Tower Watchman",
+            [npcKeys.subName] = "Peacekeeper",
         },
         [253360] = { -- Nascent Undead Ravager : https://wowhead.com/forever/npc=253360/nascent-undead-ravager
             [npcKeys.name] = "Nascent Undead Ravager",
@@ -6612,6 +7253,8 @@ function ForeverBaseNpc:Load()
         },
         [253394] = { -- Corpsefeeder : https://wowhead.com/forever/npc=253394/corpsefeeder
             [npcKeys.name] = "Corpsefeeder",
+            [npcKeys.spawns] = {[16651] = {{46.2, 32.6}, {47, 33.8}}},
+            [npcKeys.zoneID] = zoneIDs.SHEN_DRALAS,
         },
         [253395] = { -- Ozwin Ironsprocket : https://wowhead.com/forever/npc=253395/ozwin-ironsprocket
             [npcKeys.name] = "Ozwin Ironsprocket",
@@ -6666,6 +7309,7 @@ function ForeverBaseNpc:Load()
         },
         [253527] = { -- Kog'thug the Brave : https://wowhead.com/forever/npc=253527/kogthug-the-brave
             [npcKeys.name] = "Kog'thug the Brave",
+            [npcKeys.subName] = "Nomadic Bristleback Chief",
         },
         [253529] = { -- Bristleback Snortsnout : https://wowhead.com/forever/npc=253529/bristleback-snortsnout
             [npcKeys.name] = "Bristleback Snortsnout",
@@ -6688,6 +7332,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {93958},
             [npcKeys.questEnds] = {92947},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Peacekeeper",
         },
         [253590] = { -- Valennia Stormfist : https://wowhead.com/forever/npc=253590/valennia-stormfist
             [npcKeys.name] = "Valennia Stormfist",
@@ -6698,6 +7343,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92646, 93835},
             [npcKeys.questEnds] = {93958},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Peacekeeper Captain",
         },
         [253622] = { -- Commander Haalien : https://wowhead.com/forever/npc=253622/commander-haalien
             [npcKeys.name] = "Commander Haalien",
@@ -6718,6 +7364,7 @@ function ForeverBaseNpc:Load()
         },
         [253713] = { -- Mulara : https://wowhead.com/forever/npc=253713/mulara
             [npcKeys.name] = "Mulara",
+            [npcKeys.subName] = "Voice of Theradras",
         },
         [253754] = { -- [DNT] Kill Credit: Dispel the Accursed Skull : https://wowhead.com/forever/npc=253754/dnt-kill-credit-dispel-the-accursed-skull
             [npcKeys.name] = "[DNT] Kill Credit: Dispel the Accursed Skull",
@@ -6748,6 +7395,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{61.2, 70.8}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Supreme Magister of The High Order",
         },
         [253813] = { -- Ayessa Dawnsinger : https://wowhead.com/forever/npc=253813/ayessa-dawnsinger
             [npcKeys.name] = "Ayessa Dawnsinger",
@@ -6756,6 +7404,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{61.2, 70.8}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Grand Skyseer of The Windshapers",
         },
         [253844] = { -- Valennia Stormfist : https://wowhead.com/forever/npc=253844/valennia-stormfist
             [npcKeys.name] = "Valennia Stormfist",
@@ -6766,6 +7415,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92947},
             [npcKeys.questEnds] = {93065},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Peacekeeper Captain",
         },
         [253847] = { -- Elaadrin Evengale : https://wowhead.com/forever/npc=253847/elaadrin-evengale
             [npcKeys.name] = "Elaadrin Evengale",
@@ -6774,6 +7424,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{74, 52.4}, {74, 52.6}, {75.2, 53.2}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Supreme Magister of The High Order",
         },
         [253849] = { -- Ayessa Dawnsinger : https://wowhead.com/forever/npc=253849/ayessa-dawnsinger
             [npcKeys.name] = "Ayessa Dawnsinger",
@@ -6782,11 +7433,13 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{74, 52.4}, {74, 52.6}, {75.2, 53.2}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Grand Skyseer of The Windshapers",
         },
         [253851] = { -- Hagiak : https://wowhead.com/forever/npc=253851/hagiak
             [npcKeys.name] = "Hagiak",
             [npcKeys.spawns] = {[16651] = {{58.8, 53.8}}},
             [npcKeys.zoneID] = zoneIDs.SHEN_DRALAS,
+            [npcKeys.questEnds] = {93066},
         },
         [253852] = { -- Bristleback Quilboar : https://wowhead.com/forever/npc=253852/bristleback-quilboar
             [npcKeys.name] = "Bristleback Quilboar",
@@ -6802,9 +7455,11 @@ function ForeverBaseNpc:Load()
         },
         [253957] = { -- Muln Earthfury : https://wowhead.com/forever/npc=253957/muln-earthfury
             [npcKeys.name] = "Muln Earthfury",
+            [npcKeys.subName] = "Earthen Ring",
         },
         [253958] = { -- Archmage Ansirem Runeweaver : https://wowhead.com/forever/npc=253958/archmage-ansirem-runeweaver
             [npcKeys.name] = "Archmage Ansirem Runeweaver",
+            [npcKeys.subName] = "Kirin Tor",
         },
         [253973] = { -- [DNT] Kill Credit: Eastern Large Tent Burned : https://wowhead.com/forever/npc=253973/dnt-kill-credit-eastern-large-tent-burned
             [npcKeys.name] = "[DNT] Kill Credit: Eastern Large Tent Burned",
@@ -6829,6 +7484,7 @@ function ForeverBaseNpc:Load()
         },
         [254056] = { -- Mr. Barber : https://wowhead.com/forever/npc=254056/mr-barber
             [npcKeys.name] = "Mr. Barber",
+            [npcKeys.subName] = "The Barber",
         },
         [254078] = { -- Tom "Half-fish" Wilson : https://wowhead.com/forever/npc=254078/tom-half-fish-wilson
             [npcKeys.name] = "Tom \"Half-fish\" Wilson",
@@ -6846,6 +7502,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{45.2, 44.2}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Druid Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 99 trainingcost=300; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [254082] = { -- Aarnor Galestrike : https://wowhead.com/forever/npc=254082/aarnor-galestrike
             [npcKeys.name] = "Aarnor Galestrike",
@@ -6855,6 +7513,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questStarts] = {97243},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Shaman Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 131 trainingcost=3000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [254083] = { -- Cow : https://wowhead.com/forever/npc=254083/cow
             [npcKeys.name] = "Cow",
@@ -6867,6 +7527,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questStarts] = {94007},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Hunter Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 136 trainingcost=600; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [254085] = { -- Deckard : https://wowhead.com/forever/npc=254085/deckard
             [npcKeys.name] = "Deckard",
@@ -6878,6 +7540,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{45, 45.8}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Mage Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 10 trainingcost=2000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [254087] = { -- Miriaan Mistblade : https://wowhead.com/forever/npc=254087/miriaan-mistblade
             [npcKeys.name] = "Miriaan Mistblade",
@@ -6886,6 +7550,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{43.2, 43.2}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Rogue Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 53 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [254088] = { -- Corsan Earthrazer : https://wowhead.com/forever/npc=254088/corsan-earthrazer
             [npcKeys.name] = "Corsan Earthrazer",
@@ -6894,6 +7560,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{44.8, 45.2}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Warrior Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 72 trainingcost=1000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [254089] = { -- Coriella Calmbreeze : https://wowhead.com/forever/npc=254089/coriella-calmbreeze
             [npcKeys.name] = "Coriella Calmbreeze",
@@ -6902,6 +7570,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{43, 43.2}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [254100] = { -- Zephras Citizen : https://wowhead.com/forever/npc=254100/zephras-citizen
             [npcKeys.name] = "Zephras Citizen",
@@ -6921,11 +7591,13 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{48.8, 53.8}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "A Very Convenient Obstruction",
         },
         [254131] = { -- Skylord Omnuron : https://wowhead.com/forever/npc=254131/skylord-omnuron
             [npcKeys.name] = "Skylord Omnuron",
             [npcKeys.spawns] = {[616] = {{54.2, 63.8}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+            [npcKeys.subName] = "Druid of the Talon",
         },
         [254149] = { -- Sirocca "Swimmers" Starfeather : https://wowhead.com/forever/npc=254149/sirocca-swimmers-starfeather
             [npcKeys.name] = "Sirocca \"Swimmers\" Starfeather",
@@ -6996,6 +7668,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questEnds] = {97968},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Herbalist",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [254349] = { -- Vailee Highwind : https://wowhead.com/forever/npc=254349/vailee-highwind
             [npcKeys.name] = "Vailee Highwind",
@@ -7010,6 +7684,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{44.6, 45.4}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "General Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [254360] = { -- Belandiel Farflight : https://wowhead.com/forever/npc=254360/belandiel-farflight
             [npcKeys.name] = "Belandiel Farflight",
@@ -7018,6 +7694,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{44.8, 45}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Trade Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [254362] = { -- [DNT] Kill Credit: Khan Jehn Resurrected : https://wowhead.com/forever/npc=254362/dnt-kill-credit-khan-jehn-resurrected
             [npcKeys.name] = "[DNT] Kill Credit: Khan Jehn Resurrected",
@@ -7030,6 +7708,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questEnds] = {94050},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Pet Trainer",
         },
         [254444] = { -- Stalker : https://wowhead.com/forever/npc=254444/stalker
             [npcKeys.name] = "Stalker",
@@ -7056,6 +7735,7 @@ function ForeverBaseNpc:Load()
         },
         [254561] = { -- Elimara : https://wowhead.com/forever/npc=254561/elimara
             [npcKeys.name] = "Elimara",
+            [npcKeys.subName] = "Flight Master [NYI]",
         },
         [254563] = { -- Stonetusk Boar : https://wowhead.com/forever/npc=254563/stonetusk-boar
             [npcKeys.name] = "Stonetusk Boar",
@@ -7130,9 +7810,11 @@ function ForeverBaseNpc:Load()
         [254695] = { -- Repair Bot : https://wowhead.com/forever/npc=254695/repair-bot
             [npcKeys.name] = "Repair Bot",
             [npcKeys.spawns] = {[12] = {{33.2, 50.4}}, [14] = {{45.6, 12.8}}},
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [254717] = { -- Vindael : https://wowhead.com/forever/npc=254717/vindael
             [npcKeys.name] = "Vindael",
+            [npcKeys.subName] = "Blacksmith",
         },
         [254762] = { -- Ball and Chain : https://wowhead.com/forever/npc=254762/ball-and-chain
             [npcKeys.name] = "Ball and Chain",
@@ -7165,6 +7847,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[616] = {{69, 49.6}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Druid of the Talon",
         },
         [254930] = { -- [DNT] Kill Credit: Mulara spoken with : https://wowhead.com/forever/npc=254930/dnt-kill-credit-mulara-spoken-with
             [npcKeys.name] = "[DNT] Kill Credit: Mulara spoken with",
@@ -7179,6 +7862,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{42.4, 23.4}, {42.4, 23.6}, {42.6, 23.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Tai'ree Farsight's Companion",
         },
         [255003] = { -- Gimashi : https://wowhead.com/forever/npc=255003/gimashi
             [npcKeys.name] = "Gimashi",
@@ -7191,6 +7875,7 @@ function ForeverBaseNpc:Load()
         },
         [255035] = { -- Archmage Pentarus : https://wowhead.com/forever/npc=255035/archmage-pentarus
             [npcKeys.name] = "Archmage Pentarus",
+            [npcKeys.subName] = "Kirin Tor",
         },
         [255038] = { -- Veteran of the Third War : https://wowhead.com/forever/npc=255038/veteran-of-the-third-war
             [npcKeys.name] = "Veteran of the Third War",
@@ -7232,6 +7917,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[616] = {{70.6, 51.2}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 274025; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [255159] = { -- Stalker : https://wowhead.com/forever/npc=255159/stalker
             [npcKeys.name] = "Stalker",
@@ -7414,12 +8100,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 7,
             [npcKeys.spawns] = {[16593] = {{50.4, 33.4}, {50.4, 33.8}, {50.6, 33.4}, {50.8, 34}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+            [npcKeys.subName] = "Bandit Leader",
         },
         [255536] = { -- Faladiel : https://wowhead.com/forever/npc=255536/faladiel
             [npcKeys.name] = "Faladiel",
         },
         [255538] = { -- Constable Aonda : https://wowhead.com/forever/npc=255538/constable-aonda
             [npcKeys.name] = "Constable Aonda",
+            [npcKeys.subName] = "Peacekeeper",
         },
         [255560] = { -- Magram Guardian : https://wowhead.com/forever/npc=255560/magram-guardian
             [npcKeys.name] = "Magram Guardian",
@@ -7432,8 +8120,12 @@ function ForeverBaseNpc:Load()
         },
         [255597] = { -- Father Tuttle : https://wowhead.com/forever/npc=255597/father-tuttle
             [npcKeys.name] = "Father Tuttle",
-            [npcKeys.spawns] = {[8] = {{22, 50.6}}},
+            [npcKeys.minLevel] = 34,
+            [npcKeys.maxLevel] = 34,
+            [npcKeys.spawns] = {[8] = {{22, 50.6}, {22.2, 50.2}, {23.4, 47.8}, {24, 47.2}, {24.6, 47.2}, {24.8, 46.2}, {25.4, 45.2}, {25.6, 44.2}, {26.8, 40.4}, {27, 35.4}, {27, 39}}},
             [npcKeys.zoneID] = zoneIDs.SWAMP_OF_SORROWS,
+            [npcKeys.questStarts] = {93585},
+            [npcKeys.friendlyToFaction] = "A",
         },
         [255638] = { -- [DNT] Kill Credit: Woodwyrd Extinguished : https://wowhead.com/forever/npc=255638/dnt-kill-credit-woodwyrd-extinguished
             [npcKeys.name] = "[DNT] Kill Credit: Woodwyrd Extinguished",
@@ -7443,6 +8135,7 @@ function ForeverBaseNpc:Load()
         },
         [255678] = { -- Quolga the Wise : https://wowhead.com/forever/npc=255678/quolga-the-wise
             [npcKeys.name] = "Quolga the Wise",
+            [npcKeys.subName] = "Bristleback Thornmatron",
         },
         [255679] = { -- Corswyn Aseril : https://wowhead.com/forever/npc=255679/corswyn-aseril
             [npcKeys.name] = "Corswyn Aseril",
@@ -7451,6 +8144,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1637] = {{38, 38.6}, {38.2, 38.4}}},
             [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Windshaper",
         },
         [255683] = { -- Shalla'kal : https://wowhead.com/forever/npc=255683/shallakal
             [npcKeys.name] = "Shalla'kal",
@@ -7458,9 +8152,11 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[616] = {{31.4, 50}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+            [npcKeys.subName] = "Wild Demigod",
         },
         [255685] = { -- Solstice : https://wowhead.com/forever/npc=255685/solstice
             [npcKeys.name] = "Solstice",
+            [npcKeys.subName] = "Wild Demikitten",
         },
         [255691] = { -- Spectral Frostwyrm : https://wowhead.com/forever/npc=255691/spectral-frostwyrm
             [npcKeys.name] = "Spectral Frostwyrm",
@@ -7469,6 +8165,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Kala'th",
             [npcKeys.spawns] = {[616] = {{28.6, 43.4}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+            [npcKeys.subName] = "Wild Demigod",
         },
         [255697] = { -- Shen'dralar Scholar : https://wowhead.com/forever/npc=255697/shendralar-scholar
             [npcKeys.name] = "Shen'dralar Scholar",
@@ -7480,27 +8177,33 @@ function ForeverBaseNpc:Load()
         },
         [255701] = { -- Maralus : https://wowhead.com/forever/npc=255701/maralus
             [npcKeys.name] = "Maralus",
+            [npcKeys.subName] = "Trade Goods",
         },
         [255703] = { -- Naria : https://wowhead.com/forever/npc=255703/naria
             [npcKeys.name] = "Naria",
+            [npcKeys.subName] = "Food Vendor",
         },
         [255704] = { -- Arondel : https://wowhead.com/forever/npc=255704/arondel
             [npcKeys.name] = "Arondel",
             [npcKeys.spawns] = {[16651] = {{51.4, 73}}},
             [npcKeys.zoneID] = zoneIDs.SHEN_DRALAS,
+            [npcKeys.subName] = "Drink Vendor",
         },
         [255705] = { -- Kerelle : https://wowhead.com/forever/npc=255705/kerelle
             [npcKeys.name] = "Kerelle",
             [npcKeys.spawns] = {[16651] = {{51.8, 74.4}}},
             [npcKeys.zoneID] = zoneIDs.SHEN_DRALAS,
+            [npcKeys.subName] = "Spirit Spirits",
         },
         [255721] = { -- Jarael : https://wowhead.com/forever/npc=255721/jarael
             [npcKeys.name] = "Jarael",
             [npcKeys.spawns] = {[16651] = {{42.6, 77}}},
             [npcKeys.zoneID] = zoneIDs.SHEN_DRALAS,
+            [npcKeys.subName] = "Leatherworking",
         },
         [255724] = { -- Melanori : https://wowhead.com/forever/npc=255724/melanori
             [npcKeys.name] = "Melanori",
+            [npcKeys.subName] = "Tailoring",
         },
         [255759] = { -- Shen'dralas Protector : https://wowhead.com/forever/npc=255759/shendralas-protector
             [npcKeys.name] = "Shen'dralas Protector",
@@ -7519,6 +8222,7 @@ function ForeverBaseNpc:Load()
         },
         [255771] = { -- Whisperfur : https://wowhead.com/forever/npc=255771/whisperfur
             [npcKeys.name] = "Whisperfur",
+            [npcKeys.subName] = "Wild Demikitten",
         },
         [255772] = { -- Redridge Trapper : https://wowhead.com/forever/npc=255772/redridge-trapper
             [npcKeys.name] = "Redridge Trapper",
@@ -7529,6 +8233,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Brie",
             [npcKeys.spawns] = {[616] = {{42, 34.8}, {42, 36.4}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+            [npcKeys.subName] = "Wild Demikitten",
         },
         [255774] = { -- Redridge Scout : https://wowhead.com/forever/npc=255774/redridge-scout
             [npcKeys.name] = "Redridge Scout",
@@ -7566,6 +8271,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{74.8, 53}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Lord of the East Wind",
         },
         [255849] = { -- Bolder'ok Magus : https://wowhead.com/forever/npc=255849/bolderok-magus
             [npcKeys.name] = "Bolder'ok Magus",
@@ -7594,6 +8300,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {94638},
             [npcKeys.questEnds] = {94006, 94638},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Great Windborne Bear Spirit",
         },
         [255864] = { -- Seer Onku : https://wowhead.com/forever/npc=255864/seer-onku
             [npcKeys.name] = "Seer Onku",
@@ -7603,12 +8310,17 @@ function ForeverBaseNpc:Load()
         },
         [255877] = { -- Hunter Moore : https://wowhead.com/forever/npc=255877/hunter-moore
             [npcKeys.name] = "Hunter Moore",
-            [npcKeys.spawns] = {[267] = {{54, 80.4}}},
+            [npcKeys.minLevel] = 31,
+            [npcKeys.maxLevel] = 31,
+            [npcKeys.spawns] = {[267] = {{54, 80.2}}},
             [npcKeys.zoneID] = zoneIDs.HILLSBRAD_FOOTHILLS,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Fisherman",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 7620 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [255887] = { -- Slydris : https://wowhead.com/forever/npc=255887/slydris
             [npcKeys.name] = "Slydris",
-            [npcKeys.spawns] = {[16593] = {{50.2, 51}, {50.2, 51.6}, {51, 51.8}}},
+            [npcKeys.spawns] = {[16593] = {{50.2, 51}, {50.2, 51.6}, {50.4, 50.4}, {50.6, 51.2}, {51, 51.8}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
         [255890] = { -- Powderfuse Bruiser : https://wowhead.com/forever/npc=255890/powderfuse-bruiser
@@ -7626,9 +8338,12 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{77.6, 51.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Miner",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [255892] = { -- Bonegnaw : https://wowhead.com/forever/npc=255892/bonegnaw
             [npcKeys.name] = "Bonegnaw",
+            [npcKeys.subName] = "Terror of the Hills",
         },
         [255894] = { -- Innkeeper Zizplink : https://wowhead.com/forever/npc=255894/innkeeper-zizplink
             [npcKeys.name] = "Innkeeper Zizplink",
@@ -7636,6 +8351,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 40,
             [npcKeys.spawns] = {[16591] = {{78.8, 54}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [255895] = { -- Grizzek : https://wowhead.com/forever/npc=255895/grizzek
             [npcKeys.name] = "Grizzek",
@@ -7644,6 +8361,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{76.6, 53.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "General Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [255897] = { -- Friz Frazzlespark : https://wowhead.com/forever/npc=255897/friz-frazzlespark
             [npcKeys.name] = "Friz Frazzlespark",
@@ -7652,6 +8371,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{77, 52.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Specialty Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [255898] = { -- Murloc Oracle : https://wowhead.com/forever/npc=255898/murloc-oracle
             [npcKeys.name] = "Murloc Oracle",
@@ -7686,12 +8407,15 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{62.2, 72.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [255951] = { -- Gnome Engineer : https://wowhead.com/forever/npc=255951/gnome-engineer
             [npcKeys.name] = "Gnome Engineer",
         },
         [255952] = { -- Therminston Copperblast : https://wowhead.com/forever/npc=255952/therminston-copperblast
             [npcKeys.name] = "Therminston Copperblast",
+            [npcKeys.subName] = "Facility Chief Engineer",
         },
         [255964] = { -- Fallen Necromancer : https://wowhead.com/forever/npc=255964/fallen-necromancer
             [npcKeys.name] = "Fallen Necromancer",
@@ -7711,6 +8435,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{59.6, 45.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Wind Rider Master",
         },
         [255996] = { -- Rog'mar Grunt : https://wowhead.com/forever/npc=255996/rogmar-grunt
             [npcKeys.name] = "Rog'mar Grunt",
@@ -7721,7 +8446,9 @@ function ForeverBaseNpc:Load()
         },
         [256028] = { -- The Lost One : https://wowhead.com/forever/npc=256028/the-lost-one
             [npcKeys.name] = "The Lost One",
-            [npcKeys.spawns] = {[16593] = {{52, 46.4}, {54, 48}}},
+            [npcKeys.minLevel] = 6,
+            [npcKeys.maxLevel] = 6,
+            [npcKeys.spawns] = {[16593] = {{51.6, 47.8}, {52, 46.4}, {54, 48}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
         [256035] = { -- Viktor the Vile : https://wowhead.com/forever/npc=256035/viktor-the-vile
@@ -7747,6 +8474,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {93737, 93738},
             [npcKeys.questEnds] = {93735, 93737},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Windshaper Artisan",
         },
         [256092] = { -- Shadowgale Shriekling : https://wowhead.com/forever/npc=256092/shadowgale-shriekling
             [npcKeys.name] = "Shadowgale Shriekling",
@@ -7787,6 +8515,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{59.8, 57}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "High Order Magister",
         },
         [256249] = { -- High Priestess Lorthuna : https://wowhead.com/forever/npc=256249/high-priestess-lorthuna
             [npcKeys.name] = "High Priestess Lorthuna",
@@ -7897,6 +8626,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{14.2, 66.6}, {14.4, 66.4}, {14.6, 66.4}, {14.6, 66.8}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 285104; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256383] = { -- Meadowsbrook Farmhand : https://wowhead.com/forever/npc=256383/meadowsbrook-farmhand
             [npcKeys.name] = "Meadowsbrook Farmhand",
@@ -7910,6 +8640,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[17] = {{49.4, 29.4}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Supply Officer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 262764; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256386] = { -- Dokimi : https://wowhead.com/forever/npc=256386/dokimi
             [npcKeys.name] = "Dokimi",
@@ -7919,6 +8651,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.questEnds] = {91899, 91900, 91904, 91905, 98248},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Inventory Intake",
         },
         [256388] = { -- Jornah : https://wowhead.com/forever/npc=256388/jornah
             [npcKeys.name] = "Jornah",
@@ -7927,6 +8660,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[17] = {{49.8, 29.4}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Contract Coordinator",
         },
         [256389] = { -- Tamelyn Aldridge : https://wowhead.com/forever/npc=256389/tamelyn-aldridge
             [npcKeys.name] = "Tamelyn Aldridge",
@@ -7934,6 +8668,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 30,
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Supply Officer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 262765; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256390] = { -- Marcy Baker : https://wowhead.com/forever/npc=256390/marcy-baker
             [npcKeys.name] = "Marcy Baker",
@@ -7943,6 +8679,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {91899, 91900, 91904, 91905},
             [npcKeys.questEnds] = {91899, 91900, 91904, 91905, 98247},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Inventory Intake",
         },
         [256391] = { -- Elaine Compton : https://wowhead.com/forever/npc=256391/elaine-compton
             [npcKeys.name] = "Elaine Compton",
@@ -7950,6 +8687,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 30,
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Contract Coordinator",
         },
         [256392] = { -- Pack Kodo : https://wowhead.com/forever/npc=256392/pack-kodo
             [npcKeys.name] = "Pack Kodo",
@@ -7988,9 +8726,12 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[17] = {{49.6, 28.8}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Kodo Handler",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 262766; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256410] = { -- Reginald Holmsby : https://wowhead.com/forever/npc=256410/reginald-holmsby
             [npcKeys.name] = "Reginald Holmsby",
+            [npcKeys.subName] = "Stablemaster",
         },
         [256418] = { -- Krom'rosh : https://wowhead.com/forever/npc=256418/kromrosh
             [npcKeys.name] = "Krom'rosh",
@@ -8011,6 +8752,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Halligan Turner",
             [npcKeys.spawns] = {[16591] = {{41, 62.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Foreman",
         },
         [256442] = { -- Human Male : https://wowhead.com/forever/npc=256442/human-male
             [npcKeys.name] = "Human Male",
@@ -8091,6 +8833,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {93791, 93797},
             [npcKeys.questEnds] = {93791, 93797},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Staff Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 854; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [256514] = { -- Contemplative Bandit : https://wowhead.com/forever/npc=256514/contemplative-bandit
             [npcKeys.name] = "Contemplative Bandit",
@@ -8107,9 +8851,11 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{59.6, 72.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Quel'ana Quickgale's Companion",
         },
         [256529] = { -- Grythden Thurdril <PH> : https://wowhead.com/forever/npc=256529/grythden-thurdril-ph
             [npcKeys.name] = "Grythden Thurdril <PH>",
+            [npcKeys.subName] = "Gryphon Master",
         },
         [256570] = { -- Crate of Alchemy Goods : https://wowhead.com/forever/npc=256570/crate-of-alchemy-goods
             [npcKeys.name] = "Crate of Alchemy Goods",
@@ -8154,6 +8900,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{75.2, 53.2}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Earthen Ring",
         },
         [256621] = { -- Archmage Ansirem Runeweaver : https://wowhead.com/forever/npc=256621/archmage-ansirem-runeweaver
             [npcKeys.name] = "Archmage Ansirem Runeweaver",
@@ -8162,18 +8909,22 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{75.2, 53.2}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Kirin Tor",
         },
         [256626] = { -- Fennar Mossmane : https://wowhead.com/forever/npc=256626/fennar-mossmane
             [npcKeys.name] = "Fennar Mossmane",
         },
         [256627] = { -- Elder Mistpaw : https://wowhead.com/forever/npc=256627/elder-mistpaw
             [npcKeys.name] = "Elder Mistpaw",
+            [npcKeys.subName] = "The Wise",
         },
         [256628] = { -- Thalruk Thickfur : https://wowhead.com/forever/npc=256628/thalruk-thickfur
             [npcKeys.name] = "Thalruk Thickfur",
+            [npcKeys.subName] = "Hoard Guard",
         },
         [256629] = { -- Dala Fairmaw : https://wowhead.com/forever/npc=256629/dala-fairmaw
             [npcKeys.name] = "Dala Fairmaw",
+            [npcKeys.subName] = "Quartermaster",
         },
         [256634] = { -- DNT : https://wowhead.com/forever/npc=256634/dnt
             [npcKeys.name] = "DNT",
@@ -8199,6 +8950,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{58.6, 44.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Cook",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2539 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [256657] = { -- Kreza Darkthorn : https://wowhead.com/forever/npc=256657/kreza-darkthorn
             [npcKeys.name] = "Kreza Darkthorn",
@@ -8207,11 +8960,15 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{59.8, 46}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Weaponsmith & Armorcrafter",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2417; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [256658] = { -- Gur'dok : https://wowhead.com/forever/npc=256658/gurdok
             [npcKeys.name] = "Gur'dok",
             [npcKeys.spawns] = {[16591] = {{60, 46.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Journeyman Blacksmith",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2018 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [256660] = { -- Thobon Sapclaw : https://wowhead.com/forever/npc=256660/thobon-sapclaw
             [npcKeys.name] = "Thobon Sapclaw",
@@ -8223,16 +8980,21 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[17] = {{49.8, 30}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Uncertified Scribe",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 262896; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256673] = { -- Grik : https://wowhead.com/forever/npc=256673/grik
             [npcKeys.name] = "Grik",
             [npcKeys.spawns] = {[16591] = {{58.2, 45}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Stable Master",
         },
         [256675] = { -- Innkeeper Toka : https://wowhead.com/forever/npc=256675/innkeeper-toka
             [npcKeys.name] = "Innkeeper Toka",
             [npcKeys.spawns] = {[16591] = {{58, 45}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256678] = { -- Tainted Vilethorn : https://wowhead.com/forever/npc=256678/tainted-vilethorn
             [npcKeys.name] = "Tainted Vilethorn",
@@ -8256,6 +9018,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Alchemist",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 250364; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256730] = { -- Stondry Darkhammer : https://wowhead.com/forever/npc=256730/stondry-darkhammer
             [npcKeys.name] = "Stondry Darkhammer",
@@ -8263,6 +9027,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Blacksmith",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 251355; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [256731] = { -- Kalsey Sanden : https://wowhead.com/forever/npc=256731/kalsey-sanden
             [npcKeys.name] = "Kalsey Sanden",
@@ -8270,6 +9036,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Chef",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256732] = { -- Alynsia : https://wowhead.com/forever/npc=256732/alynsia
             [npcKeys.name] = "Alynsia",
@@ -8277,6 +9045,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Enchanter",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 249476; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256733] = { -- Fritz Fizzle : https://wowhead.com/forever/npc=256733/fritz-fizzle
             [npcKeys.name] = "Fritz Fizzle",
@@ -8284,6 +9054,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Engineer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 264201; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256734] = { -- Daniel Stitchsong : https://wowhead.com/forever/npc=256734/daniel-stitchsong
             [npcKeys.name] = "Daniel Stitchsong",
@@ -8291,6 +9063,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Leatherworker",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 252765; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256735] = { -- Mivin Shadowweave : https://wowhead.com/forever/npc=256735/mivin-shadowweave
             [npcKeys.name] = "Mivin Shadowweave",
@@ -8298,6 +9072,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Tailor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 253890; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256736] = { -- Huey Sunnydale : https://wowhead.com/forever/npc=256736/huey-sunnydale
             [npcKeys.name] = "Huey Sunnydale",
@@ -8305,6 +9081,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 30,
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Mule Handler",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 262766; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [256738] = { -- Basket of Alchemy Goods : https://wowhead.com/forever/npc=256738/basket-of-alchemy-goods
             [npcKeys.name] = "Basket of Alchemy Goods",
@@ -8324,6 +9102,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 30,
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Uncertified Scribe",
         },
         [256749] = { -- Rog'mar Trainee : https://wowhead.com/forever/npc=256749/rogmar-trainee
             [npcKeys.name] = "Rog'mar Trainee",
@@ -8385,6 +9164,7 @@ function ForeverBaseNpc:Load()
         },
         [256892] = { -- Kargra the Blind : https://wowhead.com/forever/npc=256892/kargra-the-blind
             [npcKeys.name] = "Kargra the Blind",
+            [npcKeys.subName] = "Mistress of the Old Ones",
         },
         [256899] = { -- Chogg'Zac : https://wowhead.com/forever/npc=256899/choggzac
             [npcKeys.name] = "Chogg'Zac",
@@ -8445,6 +9225,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{59.4, 76}, {59.6, 76}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Skinner",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8613 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257004] = { -- Eaysaa Brightgust : https://wowhead.com/forever/npc=257004/eaysaa-brightgust
             [npcKeys.name] = "Eaysaa Brightgust",
@@ -8453,6 +9235,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{59.2, 76.2}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Enchanter",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 7411 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 4470; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257005] = { -- Valiena Swiftgale : https://wowhead.com/forever/npc=257005/valiena-swiftgale
             [npcKeys.name] = "Valiena Swiftgale",
@@ -8461,6 +9245,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{59.2, 76.2}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Alchemist",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2259 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 3371; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257006] = { -- Nyalah Brightfire : https://wowhead.com/forever/npc=257006/nyalah-brightfire
             [npcKeys.name] = "Nyalah Brightfire",
@@ -8471,6 +9257,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {93317},
             [npcKeys.questEnds] = {93317},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Cook",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2539 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257007] = { -- Melasa Fairmend : https://wowhead.com/forever/npc=257007/melasa-fairmend
             [npcKeys.name] = "Melasa Fairmend",
@@ -8479,6 +9267,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{63, 72.4}, {63, 72.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Medic",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 3273 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [257008] = { -- Baelann Swiftcurrent : https://wowhead.com/forever/npc=257008/baelann-swiftcurrent
             [npcKeys.name] = "Baelann Swiftcurrent",
@@ -8487,6 +9277,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{63.2, 75.8}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Fisher",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 7620 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 6256; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257017] = { -- Twilight Worg : https://wowhead.com/forever/npc=257017/twilight-worg
             [npcKeys.name] = "Twilight Worg",
@@ -8499,6 +9291,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questEnds] = {97965},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Medic",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 3273 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [257019] = { -- Nyassa Swiftdraught : https://wowhead.com/forever/npc=257019/nyassa-swiftdraught
             [npcKeys.name] = "Nyassa Swiftdraught",
@@ -8508,6 +9302,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questEnds] = {97963},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Alchemist",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2259 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 3371; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257020] = { -- Nasalanna Windsinger : https://wowhead.com/forever/npc=257020/nasalanna-windsinger
             [npcKeys.name] = "Nasalanna Windsinger",
@@ -8517,6 +9313,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questEnds] = {98284, 98286},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Enchanter",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 7411 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 4470; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257021] = { -- Halassa Fernbreeze : https://wowhead.com/forever/npc=257021/halassa-fernbreeze
             [npcKeys.name] = "Halassa Fernbreeze",
@@ -8525,6 +9323,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{43, 43.4}, {43, 43.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Herbalist",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [257022] = { -- Messana Crestwind : https://wowhead.com/forever/npc=257022/messana-crestwind
             [npcKeys.name] = "Messana Crestwind",
@@ -8534,6 +9334,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questEnds] = {97970},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Miner",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2880; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257024] = { -- Mendalass Tattermend : https://wowhead.com/forever/npc=257024/mendalass-tattermend
             [npcKeys.name] = "Mendalass Tattermend",
@@ -8543,6 +9345,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questEnds] = {97971},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Skinner",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8613 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257034] = { -- Mad Marrius : https://wowhead.com/forever/npc=257034/mad-marrius
             [npcKeys.name] = "Mad Marrius",
@@ -8554,6 +9358,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{57.6, 77}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [257037] = { -- Zelena Favorbreeze : https://wowhead.com/forever/npc=257037/zelena-favorbreeze
             [npcKeys.name] = "Zelena Favorbreeze",
@@ -8562,6 +9368,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{57.8, 77}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Auctioneer",
         },
         [257055] = { -- Clobrok : https://wowhead.com/forever/npc=257055/clobrok
             [npcKeys.name] = "Clobrok",
@@ -8575,6 +9382,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Glop",
             [npcKeys.spawns] = {[16591] = {{67.2, 19.4}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257058] = { -- Gobam : https://wowhead.com/forever/npc=257058/gobam
             [npcKeys.name] = "Gobam",
@@ -8585,11 +9393,13 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Chub'chob",
             [npcKeys.spawns] = {[16591] = {{65.4, 21.4}, {65.6, 21.4}, {65.6, 21.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Bloodmaster of Bolder'ok",
         },
         [257062] = { -- Jezap Jinglesprocket : https://wowhead.com/forever/npc=257062/jezap-jinglesprocket
             [npcKeys.name] = "Jezap Jinglesprocket",
             [npcKeys.spawns] = {[16591] = {{65.4, 21.4}, {65.6, 21.4}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Fight Promoter",
         },
         [257065] = { -- Missionary Jasaan : https://wowhead.com/forever/npc=257065/missionary-jasaan
             [npcKeys.name] = "Missionary Jasaan",
@@ -8635,6 +9445,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{60.6, 81.4}, {60.6, 81.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Gryphon Master",
         },
         [257099] = { -- Cirrusfly Hive : https://wowhead.com/forever/npc=257099/cirrusfly-hive
             [npcKeys.name] = "Cirrusfly Hive",
@@ -8667,12 +9478,13 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{38.4, 61.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.questEnds] = {94004},
+            [npcKeys.subName] = "Crushridge Runt",
         },
         [257282] = { -- Alan Sneeks : https://wowhead.com/forever/npc=257282/alan-sneeks
             [npcKeys.name] = "Alan Sneeks",
             [npcKeys.spawns] = {[36] = {{30.4, 61.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
-            [npcKeys.questEnds] = {94229},
+            [npcKeys.questEnds] = {94229, 94247},
         },
         [257292] = { -- Brakkit : https://wowhead.com/forever/npc=257292/brakkit
             [npcKeys.name] = "Brakkit",
@@ -8680,6 +9492,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 50,
             [npcKeys.spawns] = {[16591] = {{76.6, 54.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [257294] = { -- Lizi Pinchwhistle : https://wowhead.com/forever/npc=257294/lizi-pinchwhistle
             [npcKeys.name] = "Lizi Pinchwhistle",
@@ -8687,6 +9501,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 50,
             [npcKeys.spawns] = {[16591] = {{76.8, 54.4}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [257296] = { -- Muggol Breezebeard : https://wowhead.com/forever/npc=257296/muggol-breezebeard
             [npcKeys.name] = "Muggol Breezebeard",
@@ -8695,15 +9511,17 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[45] = {{48.8, 55.8}}},
             [npcKeys.zoneID] = zoneIDs.ARATHI_HIGHLANDS,
             [npcKeys.questEnds] = {94212, 94221},
+            [npcKeys.subName] = "Wildhammer Clan",
         },
         [257300] = { -- Julia Mallard : https://wowhead.com/forever/npc=257300/julia-mallard
             [npcKeys.name] = "Julia Mallard",
+            [npcKeys.subName] = "Gryphon Master NYI",
         },
         [257304] = { -- Alyce : https://wowhead.com/forever/npc=257304/alyce
             [npcKeys.name] = "Alyce",
             [npcKeys.spawns] = {[45] = {{34, 23.2}}},
             [npcKeys.zoneID] = zoneIDs.ARATHI_HIGHLANDS,
-            [npcKeys.questEnds] = {94248},
+            [npcKeys.questEnds] = {94230, 94248},
         },
         [257315] = { -- Ash'alari : https://wowhead.com/forever/npc=257315/ashalari
             [npcKeys.name] = "Ash'alari",
@@ -8715,10 +9533,12 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Cowardly Peon",
             [npcKeys.spawns] = {[331] = {{78.4, 68.8}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
-            [npcKeys.questEnds] = {94249},
+            [npcKeys.questEnds] = {94222, 94249},
+            [npcKeys.subName] = "Self-Proclaimed Brave Peon",
         },
         [257317] = { -- Grembly : https://wowhead.com/forever/npc=257317/grembly
             [npcKeys.name] = "Grembly",
+            [npcKeys.questEnds] = {94231},
         },
         [257322] = { -- Murache : https://wowhead.com/forever/npc=257322/murache
             [npcKeys.name] = "Murache",
@@ -8727,9 +9547,11 @@ function ForeverBaseNpc:Load()
         },
         [257327] = { -- Brother Aandril : https://wowhead.com/forever/npc=257327/brother-aandril
             [npcKeys.name] = "Brother Aandril",
+            [npcKeys.subName] = "Stormrunner of Zephras Isle",
         },
         [257328] = { -- Brother Anaan : https://wowhead.com/forever/npc=257328/brother-anaan
             [npcKeys.name] = "Brother Anaan",
+            [npcKeys.subName] = "Stormrunner of Zephras Isle",
         },
         [257421] = { -- Tephri Thriceforged : https://wowhead.com/forever/npc=257421/tephri-thriceforged
             [npcKeys.name] = "Tephri Thriceforged",
@@ -8738,6 +9560,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{44.8, 44.2}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Weapon Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 1194; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [257422] = { -- Railee Thriceforged : https://wowhead.com/forever/npc=257422/railee-thriceforged
             [npcKeys.name] = "Railee Thriceforged",
@@ -8746,6 +9570,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{58.8, 75.4}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Weapon Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2488; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [257425] = { -- Ziv'al : https://wowhead.com/forever/npc=257425/zival
             [npcKeys.name] = "Ziv'al",
@@ -8767,6 +9593,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {94373, 94374, 94472},
             [npcKeys.questEnds] = {94373, 94375, 94472, 98581},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Shaman Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 332 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [257450] = { -- Rog'mar Scout : https://wowhead.com/forever/npc=257450/rogmar-scout
             [npcKeys.name] = "Rog'mar Scout",
@@ -8808,6 +9636,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {92473},
             [npcKeys.questEnds] = {92473},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Rangers of Thendal Grove",
         },
         [257554] = { -- Halaan Hawk-Eye : https://wowhead.com/forever/npc=257554/halaan-hawk-eye
             [npcKeys.name] = "Halaan Hawk-Eye",
@@ -8818,6 +9647,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {94414},
             [npcKeys.questEnds] = {94414},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Rangers of Thendal Grove",
         },
         [257558] = { -- Demar Brant : https://wowhead.com/forever/npc=257558/demar-brant
             [npcKeys.name] = "Demar Brant",
@@ -8826,6 +9656,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{66.4, 80.8}, {66.6, 81}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Knight Commander",
         },
         [257591] = { -- Ashe Amberhall : https://wowhead.com/forever/npc=257591/ashe-amberhall
             [npcKeys.name] = "Ashe Amberhall",
@@ -8841,6 +9672,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 38,
             [npcKeys.spawns] = {[16591] = {{64.6, 84.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [257597] = { -- Bruegs Kindleborn : https://wowhead.com/forever/npc=257597/bruegs-kindleborn
             [npcKeys.name] = "Bruegs Kindleborn",
@@ -8857,9 +9690,11 @@ function ForeverBaseNpc:Load()
         },
         [257640] = { -- Eknip : https://wowhead.com/forever/npc=257640/eknip
             [npcKeys.name] = "Eknip",
+            [npcKeys.subName] = "Stray Imp",
         },
         [257641] = { -- Hemet Nesingwary Jr. : https://wowhead.com/forever/npc=257641/hemet-nesingwary-jr
             [npcKeys.name] = "Hemet Nesingwary Jr.",
+            [npcKeys.subName] = "Big Game Hunter",
         },
         [257642] = { -- Thor'mok : https://wowhead.com/forever/npc=257642/thormok
             [npcKeys.name] = "Thor'mok",
@@ -8898,6 +9733,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Ugkragg",
             [npcKeys.spawns] = {[46] = {{38.2, 35.6}}},
             [npcKeys.zoneID] = zoneIDs.BURNING_STEPPES,
+            [npcKeys.subName] = "Humiliated Blackrock Soldier",
         },
         [257699] = { -- Steed : https://wowhead.com/forever/npc=257699/steed
             [npcKeys.name] = "Steed",
@@ -8908,11 +9744,13 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Hastings",
             [npcKeys.spawns] = {[41] = {{47.2, 75}}},
             [npcKeys.zoneID] = zoneIDs.DEADWIND_PASS,
+            [npcKeys.subName] = "The Caretaker",
         },
         [257750] = { -- Calliard : https://wowhead.com/forever/npc=257750/calliard
             [npcKeys.name] = "Calliard",
             [npcKeys.spawns] = {[41] = {{48.2, 68}}},
             [npcKeys.zoneID] = zoneIDs.DEADWIND_PASS,
+            [npcKeys.subName] = "The Nightman",
         },
         [257753] = { -- Curious Crow : https://wowhead.com/forever/npc=257753/curious-crow
             [npcKeys.name] = "Curious Crow",
@@ -8938,6 +9776,7 @@ function ForeverBaseNpc:Load()
         },
         [257841] = { -- Cap'n Placeholder : https://wowhead.com/forever/npc=257841/capn-placeholder
             [npcKeys.name] = "Cap'n Placeholder",
+            [npcKeys.subName] = "Teleportation Pirate",
         },
         [257861] = { -- Admiral Lamora : https://wowhead.com/forever/npc=257861/admiral-lamora
             [npcKeys.name] = "Admiral Lamora",
@@ -8989,12 +9828,15 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {94485, 94486, 94487, 94488, 94489, 94491, 94493},
             [npcKeys.questEnds] = {94484, 94485, 94486, 94487, 94488, 94489, 94490, 94493},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [257964] = { -- Injured Druid : https://wowhead.com/forever/npc=257964/injured-druid
             [npcKeys.name] = "Injured Druid",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [257965] = { -- Bealor'eth Skyfurry : https://wowhead.com/forever/npc=257965/bealoreth-skyfurry
             [npcKeys.name] = "Bealor'eth Skyfurry",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258023] = { -- Sergeant Riftan : https://wowhead.com/forever/npc=258023/sergeant-riftan
             [npcKeys.name] = "Sergeant Riftan",
@@ -9026,6 +9868,7 @@ function ForeverBaseNpc:Load()
         },
         [258088] = { -- Irna Kindlevein : https://wowhead.com/forever/npc=258088/irna-kindlevein
             [npcKeys.name] = "Irna Kindlevein",
+            [npcKeys.subName] = "Shaman Trainer",
         },
         [258098] = { -- Eldrun Stormbreaker : https://wowhead.com/forever/npc=258098/eldrun-stormbreaker
             [npcKeys.name] = "Eldrun Stormbreaker",
@@ -9033,9 +9876,11 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 5,
             [npcKeys.spawns] = {[1537] = {{46.2, 13}, {46.4, 12.4}, {47, 13.4}, {47.2, 12.2}, {47.4, 13.6}, {47.6, 13.4}, {47.6, 13.6}, {47.6, 14.8}, {47.8, 12.4}}},
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
-            [npcKeys.questStarts] = {94449, 94494},
+            [npcKeys.questStarts] = {94449, 94494, 94789},
             [npcKeys.questEnds] = {97263},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Shaman Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 131 trainingcost=3000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [258113] = { -- Ingrid Dunwald : https://wowhead.com/forever/npc=258113/ingrid-dunwald
             [npcKeys.name] = "Ingrid Dunwald",
@@ -9045,6 +9890,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
             [npcKeys.questStarts] = {94449},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Shaman Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 131 trainingcost=3000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [258130] = { -- Jorel Windsinger : https://wowhead.com/forever/npc=258130/jorel-windsinger
             [npcKeys.name] = "Jorel Windsinger",
@@ -9053,6 +9900,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{64.4, 34.4}, {64.4, 34.6}, {64.6, 34.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258133] = { -- Naanel Shadowfoot : https://wowhead.com/forever/npc=258133/naanel-shadowfoot
             [npcKeys.name] = "Naanel Shadowfoot",
@@ -9061,6 +9909,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{64.6, 35}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258134] = { -- Naaleos Leafwhisper : https://wowhead.com/forever/npc=258134/naaleos-leafwhisper
             [npcKeys.name] = "Naaleos Leafwhisper",
@@ -9069,6 +9918,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{64.8, 34.8}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258135] = { -- Falleeah Gustrunner : https://wowhead.com/forever/npc=258135/falleeah-gustrunner
             [npcKeys.name] = "Falleeah Gustrunner",
@@ -9077,6 +9927,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{63.8, 34.8}, {64.2, 34.2}, {64.6, 34.4}, {65.2, 34.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258136] = { -- Hyneena Fiercefang : https://wowhead.com/forever/npc=258136/hyneena-fiercefang
             [npcKeys.name] = "Hyneena Fiercefang",
@@ -9085,14 +9936,16 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{63.6, 36.2}, {63.8, 36.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
-        [258137] = { -- Telenos <br />Leafwhisper : https://wowhead.com/forever/npc=258137/telenos-leafwhisper
-            [npcKeys.name] = "Telenos <br />Leafwhisper",
+        [258137] = { -- Telenos Leafwhisper : https://wowhead.com/forever/npc=258137/telenos-leafwhisper
+            [npcKeys.name] = "Telenos Leafwhisper",
             [npcKeys.minLevel] = 10,
             [npcKeys.maxLevel] = 10,
             [npcKeys.spawns] = {[16593] = {{64.6, 35}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258138] = { -- Nayeela Snarlfang : https://wowhead.com/forever/npc=258138/nayeela-snarlfang
             [npcKeys.name] = "Nayeela Snarlfang",
@@ -9101,6 +9954,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{64.4, 34.8}, {64.6, 34.8}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258139] = { -- Frothrik Saegrund : https://wowhead.com/forever/npc=258139/frothrik-saegrund
             [npcKeys.name] = "Frothrik Saegrund",
@@ -9117,13 +9971,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {94495, 94497, 94499, 94500},
             [npcKeys.friendlyToFaction] = "A",
         },
-        [258239] = { -- Maelgwyn <br />Shadowtale : https://wowhead.com/forever/npc=258239/maelgwyn-shadowtale
-            [npcKeys.name] = "Maelgwyn <br />Shadowtale",
+        [258239] = { -- Maelgwyn Shadowtale : https://wowhead.com/forever/npc=258239/maelgwyn-shadowtale
+            [npcKeys.name] = "Maelgwyn Shadowtale",
             [npcKeys.minLevel] = 10,
             [npcKeys.maxLevel] = 10,
             [npcKeys.spawns] = {[16593] = {{63.6, 36}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258253] = { -- Kaena Swiftpaw : https://wowhead.com/forever/npc=258253/kaena-swiftpaw
             [npcKeys.name] = "Kaena Swiftpaw",
@@ -9132,6 +9987,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{64.4, 30.6}, {64.4, 34}, {64.4, 34.6}, {64.6, 31.4}, {64.6, 34.4}, {64.6, 34.6}, {64.8, 30.2}, {64.8, 32}, {65, 32.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258260] = { -- Thylonell Bitterwind : https://wowhead.com/forever/npc=258260/thylonell-bitterwind
             [npcKeys.name] = "Thylonell Bitterwind",
@@ -9140,9 +9996,11 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{65, 31.6}, {65.2, 31.4}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258267] = { -- Mithraless Sterngale : https://wowhead.com/forever/npc=258267/mithraless-sterngale
             [npcKeys.name] = "Mithraless Sterngale",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258272] = { -- Maeleneth <br />Barrowbrother : https://wowhead.com/forever/npc=258272/maeleneth-barrowbrother
             [npcKeys.name] = "Maeleneth <br />Barrowbrother",
@@ -9151,6 +10009,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{64, 32}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258275] = { -- Neyasteel Mossmender : https://wowhead.com/forever/npc=258275/neyasteel-mossmender
             [npcKeys.name] = "Neyasteel Mossmender",
@@ -9159,6 +10018,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{64, 32}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258277] = { -- Bryaes Galechaser : https://wowhead.com/forever/npc=258277/bryaes-galechaser
             [npcKeys.name] = "Bryaes Galechaser",
@@ -9167,6 +10027,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{64.4, 31.8}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258279] = { -- Beyaa Gustbellow : https://wowhead.com/forever/npc=258279/beyaa-gustbellow
             [npcKeys.name] = "Beyaa Gustbellow",
@@ -9175,6 +10036,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{63.6, 33}, {64, 32}, {64, 34}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258282] = { -- Maeyeen Brightfeather : https://wowhead.com/forever/npc=258282/maeyeen-brightfeather
             [npcKeys.name] = "Maeyeen Brightfeather",
@@ -9183,6 +10045,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{63.4, 36.4}, {63.6, 36.2}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258284] = { -- Holaan Glenprancer : https://wowhead.com/forever/npc=258284/holaan-glenprancer
             [npcKeys.name] = "Holaan Glenprancer",
@@ -9191,6 +10054,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{65.2, 31.4}, {65.2, 31.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258288] = { -- Mithraless Sterngale : https://wowhead.com/forever/npc=258288/mithraless-sterngale
             [npcKeys.name] = "Mithraless Sterngale",
@@ -9199,6 +10063,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{65.8, 32.8}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258289] = { -- Baeo Sharpstrike : https://wowhead.com/forever/npc=258289/baeo-sharpstrike
             [npcKeys.name] = "Baeo Sharpstrike",
@@ -9207,6 +10072,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{65.8, 33.4}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258294] = { -- Eelitha Fernstep : https://wowhead.com/forever/npc=258294/eelitha-fernstep
             [npcKeys.name] = "Eelitha Fernstep",
@@ -9215,6 +10081,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{65.2, 31.4}, {65.2, 31.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258295] = { -- Arnorea Shadowfoot : https://wowhead.com/forever/npc=258295/arnorea-shadowfoot
             [npcKeys.name] = "Arnorea Shadowfoot",
@@ -9223,12 +10090,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{65.2, 31.4}, {65.2, 31.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Nightclaw Druid",
         },
         [258302] = { -- Sita Tivashal : https://wowhead.com/forever/npc=258302/sita-tivashal
             [npcKeys.name] = "Sita Tivashal",
         },
         [258303] = { -- Kyridel Truline : https://wowhead.com/forever/npc=258303/kyridel-truline
             [npcKeys.name] = "Kyridel Truline",
+            [npcKeys.subName] = "Hunter Trainer",
         },
         [258306] = { -- Granny Finespindle : https://wowhead.com/forever/npc=258306/granny-finespindle
             [npcKeys.name] = "Granny Finespindle",
@@ -9237,6 +10106,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1537] = {{39, 32.4}, {39.2, 33.4}, {39.2, 33.6}, {39.6, 33.4}, {39.8, 32.4}, {39.8, 34}}},
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Leatherworking Recipes",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 252761; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [258316] = { -- Farholde Scout : https://wowhead.com/forever/npc=258316/farholde-scout
             [npcKeys.name] = "Farholde Scout",
@@ -9259,27 +10130,35 @@ function ForeverBaseNpc:Load()
         },
         [258335] = { -- Arondis : https://wowhead.com/forever/npc=258335/arondis
             [npcKeys.name] = "Arondis",
+            [npcKeys.subName] = "Leatherworking Recipe Vendor",
         },
         [258339] = { -- Kelly Tanner : https://wowhead.com/forever/npc=258339/kelly-tanner
             [npcKeys.name] = "Kelly Tanner",
+            [npcKeys.subName] = "Leatherworking Recipes",
         },
         [258349] = { -- Kora : https://wowhead.com/forever/npc=258349/kora
             [npcKeys.name] = "Kora",
+            [npcKeys.subName] = "Leatherworking Recipes",
         },
         [258352] = { -- Ola : https://wowhead.com/forever/npc=258352/ola
             [npcKeys.name] = "Ola",
+            [npcKeys.subName] = "Leatherworking Recipes",
         },
         [258371] = { -- Thena Moore : https://wowhead.com/forever/npc=258371/thena-moore
             [npcKeys.name] = "Thena Moore",
+            [npcKeys.subName] = "Recipe Vendor",
         },
         [258380] = { -- Caitir Flinthew : https://wowhead.com/forever/npc=258380/caitir-flinthew
             [npcKeys.name] = "Caitir Flinthew",
             [npcKeys.spawns] = {[616] = {{15.6, 50.4}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [258403] = { -- Jasmine Van Brunt : https://wowhead.com/forever/npc=258403/jasmine-van-brunt
             [npcKeys.name] = "Jasmine Van Brunt",
+            [npcKeys.subName] = "Blacksmithing Recipes",
         },
         [258415] = { -- Angela Ward : https://wowhead.com/forever/npc=258415/angela-ward
             [npcKeys.name] = "Angela Ward",
@@ -9288,6 +10167,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1497] = {{70.4, 29.4}, {70.4, 29.8}, {70.6, 29.4}, {70.6, 29.6}}},
             [npcKeys.zoneID] = zoneIDs.UNDERCITY,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Tailoring Recipes",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 253665; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [258443] = { -- Ur'endra : https://wowhead.com/forever/npc=258443/urendra
             [npcKeys.name] = "Ur'endra",
@@ -9295,30 +10176,39 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 10,
             [npcKeys.spawns] = {[16593] = {{53.4, 64.8}, {54, 65.4}, {54.2, 65.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+            [npcKeys.subName] = "Mate of Urs'endris",
         },
         [258445] = { -- Sadie Bizniz : https://wowhead.com/forever/npc=258445/sadie-bizniz
             [npcKeys.name] = "Sadie Bizniz",
+            [npcKeys.subName] = "SAF-T Brand Rep",
         },
         [258451] = { -- Derek Spark : https://wowhead.com/forever/npc=258451/derek-spark
             [npcKeys.name] = "Derek Spark",
+            [npcKeys.subName] = "EZ-Thro Brand Rep",
         },
         [258452] = { -- Aldo Bizniz : https://wowhead.com/forever/npc=258452/aldo-bizniz
             [npcKeys.name] = "Aldo Bizniz",
+            [npcKeys.subName] = "SAF-T Brand Rep",
         },
         [258453] = { -- Sofia Bizniz : https://wowhead.com/forever/npc=258453/sofia-bizniz
             [npcKeys.name] = "Sofia Bizniz",
+            [npcKeys.subName] = "SAF-T Brand Rep",
         },
         [258454] = { -- Danny Bizniz : https://wowhead.com/forever/npc=258454/danny-bizniz
             [npcKeys.name] = "Danny Bizniz",
+            [npcKeys.subName] = "SAF-T Brand Rep",
         },
         [258455] = { -- Jazz Bizniz : https://wowhead.com/forever/npc=258455/jazz-bizniz
             [npcKeys.name] = "Jazz Bizniz",
+            [npcKeys.subName] = "SAF-T Brand Rep",
         },
         [258456] = { -- Donna Bizniz : https://wowhead.com/forever/npc=258456/donna-bizniz
             [npcKeys.name] = "Donna Bizniz",
+            [npcKeys.subName] = "SAF-T Brand Rep",
         },
         [258457] = { -- Darryl Spark : https://wowhead.com/forever/npc=258457/darryl-spark
             [npcKeys.name] = "Darryl Spark",
+            [npcKeys.subName] = "EZ-Thro Brand Rep",
         },
         [258458] = { -- Slain Fledgling : https://wowhead.com/forever/npc=258458/slain-fledgling
             [npcKeys.name] = "Slain Fledgling",
@@ -9326,18 +10216,23 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 10,
             [npcKeys.spawns] = {[16593] = {{54.2, 65.8}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+            [npcKeys.subName] = "Child of Ur'endra",
         },
         [258459] = { -- Trey Spark : https://wowhead.com/forever/npc=258459/trey-spark
             [npcKeys.name] = "Trey Spark",
+            [npcKeys.subName] = "EZ-Thro Brand Rep",
         },
         [258460] = { -- Tina Spark : https://wowhead.com/forever/npc=258460/tina-spark
             [npcKeys.name] = "Tina Spark",
+            [npcKeys.subName] = "EZ-Thro Brand Rep",
         },
         [258461] = { -- Dora Spark : https://wowhead.com/forever/npc=258461/dora-spark
             [npcKeys.name] = "Dora Spark",
+            [npcKeys.subName] = "EZ-Thro Brand Rep",
         },
         [258462] = { -- Zixi Spark : https://wowhead.com/forever/npc=258462/zixi-spark
             [npcKeys.name] = "Zixi Spark",
+            [npcKeys.subName] = "EZ-Thro Brand Rep",
         },
         [258463] = { -- Darah : https://wowhead.com/forever/npc=258463/darah
             [npcKeys.name] = "Darah",
@@ -9346,12 +10241,16 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1637] = {{63.4, 50.4}, {63.4, 50.6}, {63.6, 50.4}, {63.6, 50.6}}},
             [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Recipe Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 253665; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [258464] = { -- Bettana : https://wowhead.com/forever/npc=258464/bettana
             [npcKeys.name] = "Bettana",
+            [npcKeys.subName] = "Recipe Vendor",
         },
         [258465] = { -- Hana Stonehoof : https://wowhead.com/forever/npc=258465/hana-stonehoof
             [npcKeys.name] = "Hana Stonehoof",
+            [npcKeys.subName] = "Weapons Merchant",
         },
         [258466] = { -- Boramu : https://wowhead.com/forever/npc=258466/boramu
             [npcKeys.name] = "Boramu",
@@ -9360,15 +10259,19 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1638] = {{44, 44.8}}},
             [npcKeys.zoneID] = zoneIDs.THUNDER_BLUFF,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Tailoring Recipes",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 253665; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [258491] = { -- Kronk : https://wowhead.com/forever/npc=258491/kronk
             [npcKeys.name] = "Kronk",
+            [npcKeys.subName] = "Pummelization Specialist",
         },
         [258522] = { -- Sootfur : https://wowhead.com/forever/npc=258522/sootfur
             [npcKeys.name] = "Sootfur",
         },
         [258546] = { -- Heidi Deepforge : https://wowhead.com/forever/npc=258546/heidi-deepforge
             [npcKeys.name] = "Heidi Deepforge",
+            [npcKeys.subName] = "Blacksmithing Recipes",
         },
         [258548] = { -- Ellie Stonebrow : https://wowhead.com/forever/npc=258548/ellie-stonebrow
             [npcKeys.name] = "Ellie Stonebrow",
@@ -9377,6 +10280,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1537] = {{43.4, 27.4}, {43.4, 27.8}, {43.6, 27.8}}},
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Tailoring Recipes",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 253665; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [258553] = { -- Peacebloom : https://wowhead.com/forever/npc=258553/peacebloom
             [npcKeys.name] = "Peacebloom",
@@ -9387,12 +10292,15 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 31,
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Tailoring Recipes",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 253665; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [258570] = { -- Da'grosh : https://wowhead.com/forever/npc=258570/dagrosh
             [npcKeys.name] = "Da'grosh",
         },
         [258571] = { -- Therbor Deepforge : https://wowhead.com/forever/npc=258571/therbor-deepforge
             [npcKeys.name] = "Therbor Deepforge",
+            [npcKeys.subName] = "Blacksmithing Recipes",
         },
         [258572] = { -- Dani'ill : https://wowhead.com/forever/npc=258572/daniill
             [npcKeys.name] = "Dani'ill",
@@ -9401,6 +10309,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1657] = {{64, 21.2}}},
             [npcKeys.zoneID] = zoneIDs.DARNASSUS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Tailoring Recipes",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 253665; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [258573] = { -- Mudfin Oracle : https://wowhead.com/forever/npc=258573/mudfin-oracle
             [npcKeys.name] = "Mudfin Oracle",
@@ -9411,6 +10321,7 @@ function ForeverBaseNpc:Load()
         },
         [258576] = { -- Dolgan Steelhand : https://wowhead.com/forever/npc=258576/dolgan-steelhand
             [npcKeys.name] = "Dolgan Steelhand",
+            [npcKeys.subName] = "Blacksmithing Recipes",
         },
         [258588] = { -- Jumbo Crawfish : https://wowhead.com/forever/npc=258588/jumbo-crawfish
             [npcKeys.name] = "Jumbo Crawfish",
@@ -9434,6 +10345,7 @@ function ForeverBaseNpc:Load()
         },
         [258657] = { -- "Lucky" Lazzo Shortshot : https://wowhead.com/forever/npc=258657/lucky-lazzo-shortshot
             [npcKeys.name] = "\"Lucky\" Lazzo Shortshot",
+            [npcKeys.subName] = "Collector of Classy Things",
         },
         [258661] = { -- Minor Manifestation of Water : https://wowhead.com/forever/npc=258661/minor-manifestation-of-water
             [npcKeys.name] = "Minor Manifestation of Water",
@@ -9459,9 +10371,12 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {94817},
             [npcKeys.questEnds] = {94817, 94819, 94822, 94824},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Priest Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 17 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [258873] = { -- Vendor : https://wowhead.com/forever/npc=258873/vendor
             [npcKeys.name] = "Vendor",
+            [npcKeys.subName] = "PTR Vendor",
         },
         [258878] = { -- Auctioneer Quickcoin : https://wowhead.com/forever/npc=258878/auctioneer-quickcoin
             [npcKeys.name] = "Auctioneer Quickcoin",
@@ -9491,6 +10406,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Noruu",
             [npcKeys.spawns] = {[616] = {{68.6, 50.4}, {69, 51}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+            [npcKeys.subName] = "Cenarion Druid",
         },
         [258912] = { -- Elaren Stargrove : https://wowhead.com/forever/npc=258912/elaren-stargrove
             [npcKeys.name] = "Elaren Stargrove",
@@ -9511,6 +10427,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
             [npcKeys.questEnds] = {94793},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Pet Trainer",
         },
         [258934] = { -- Reason : https://wowhead.com/forever/npc=258934/reason
             [npcKeys.name] = "Reason",
@@ -9519,6 +10436,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[12] = {{41.8, 66.4}, {42, 66.6}}},
             [npcKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Isaac Chan's Companion",
         },
         [258935] = { -- Curly : https://wowhead.com/forever/npc=258935/curly
             [npcKeys.name] = "Curly",
@@ -9574,6 +10492,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {94896, 94897},
             [npcKeys.questEnds] = {94896, 94897},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Ban'aethal Refugee",
         },
         [259013] = { -- Resaan Nimbuswalker : https://wowhead.com/forever/npc=259013/resaan-nimbuswalker
             [npcKeys.name] = "Resaan Nimbuswalker",
@@ -9582,6 +10501,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{57, 29.4}, {57, 29.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Ban'aethal Citzen",
         },
         [259021] = { -- Zavirax : https://wowhead.com/forever/npc=259021/zavirax
             [npcKeys.name] = "Zavirax",
@@ -9589,6 +10509,8 @@ function ForeverBaseNpc:Load()
         [259023] = { -- Veyric Thunderhame : https://wowhead.com/forever/npc=259023/veyric-thunderhame
             [npcKeys.name] = "Veyric Thunderhame",
             [npcKeys.zoneID] = zoneIDs.ARATHI_HIGHLANDS,
+            [npcKeys.questStarts] = {79358, 96135, 96264},
+            [npcKeys.questEnds] = {94789, 96135, 96264},
         },
         [259034] = { -- [DNT] Kill Credit: Bough cleansed : https://wowhead.com/forever/npc=259034/dnt-kill-credit-bough-cleansed
             [npcKeys.name] = "[DNT] Kill Credit: Bough cleansed",
@@ -9662,9 +10584,11 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {94947},
             [npcKeys.questEnds] = {94946},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "High Order",
         },
         [259093] = { -- Hallin : https://wowhead.com/forever/npc=259093/hallin
             [npcKeys.name] = "Hallin",
+            [npcKeys.subName] = "Gryphon Master",
         },
         [259094] = { -- Riding Gryphon : https://wowhead.com/forever/npc=259094/riding-gryphon
             [npcKeys.name] = "Riding Gryphon",
@@ -9676,14 +10600,17 @@ function ForeverBaseNpc:Load()
         },
         [259102] = { -- Gurgthock : https://wowhead.com/forever/npc=259102/gurgthock
             [npcKeys.name] = "Gurgthock",
+            [npcKeys.subName] = "Skyborne Mount Enthusiast",
         },
         [259118] = { -- Muln Earthfury : https://wowhead.com/forever/npc=259118/muln-earthfury
             [npcKeys.name] = "Muln Earthfury",
             [npcKeys.minLevel] = 9999,
             [npcKeys.maxLevel] = 9999,
             [npcKeys.zoneID] = zoneIDs.MULGORE,
-            [npcKeys.questStarts] = {94911},
+            [npcKeys.questStarts] = {94911, 96259, 96261},
+            [npcKeys.questEnds] = {96259, 96261, 96294, 98823},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Earthen Ring",
         },
         [259119] = { -- Alaana Stormwalker : https://wowhead.com/forever/npc=259119/alaana-stormwalker
             [npcKeys.name] = "Alaana Stormwalker",
@@ -9693,6 +10620,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {95350},
             [npcKeys.questEnds] = {95349},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Windshapers",
         },
         [259158] = { -- Fuzzle : https://wowhead.com/forever/npc=259158/fuzzle
             [npcKeys.name] = "Fuzzle",
@@ -9726,6 +10654,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {99153},
             [npcKeys.questEnds] = {99153},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Stable Master",
         },
         [259198] = { -- Silverleaf : https://wowhead.com/forever/npc=259198/silverleaf
             [npcKeys.name] = "Silverleaf",
@@ -9790,6 +10719,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{64.4, 82}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Journeyman Blacksmith",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2018 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [259251] = { -- Emerald Dreamer : https://wowhead.com/forever/npc=259251/emerald-dreamer
             [npcKeys.name] = "Emerald Dreamer",
@@ -9825,6 +10756,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 41,
             [npcKeys.spawns] = {[16591] = {{66.2, 83.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Expert Enchanter",
         },
         [259288] = { -- Hyjal Dryad : https://wowhead.com/forever/npc=259288/hyjal-dryad
             [npcKeys.name] = "Hyjal Dryad",
@@ -9838,6 +10770,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Cedric Dalton",
             [npcKeys.spawns] = {[16591] = {{39.4, 74.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Watch Captain",
         },
         [259358] = { -- Treant : https://wowhead.com/forever/npc=259358/treant
             [npcKeys.name] = "Treant",
@@ -9866,7 +10799,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Mystmane",
             [npcKeys.minLevel] = 13,
             [npcKeys.maxLevel] = 13,
-            [npcKeys.spawns] = {[16593] = {{57.6, 37}, {58, 38}, {59.2, 37.6}, {60.2, 34.6}, {60.2, 36.8}, {60.2, 37.8}, {60.4, 36.2}, {60.8, 35.4}}},
+            [npcKeys.spawns] = {[16593] = {{59.5, 37.1}, {59.9, 34.3}, {60.6, 34.7}, {60.7, 36.1}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
         [259390] = { -- Farholde Laborer : https://wowhead.com/forever/npc=259390/farholde-laborer
@@ -9894,6 +10827,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[85] = {{11.4, 64.2}, {11.6, 64.2}}},
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Tarnished Paladin",
         },
         [259433] = { -- Tarnished Zealot : https://wowhead.com/forever/npc=259433/tarnished-zealot
             [npcKeys.name] = "Tarnished Zealot",
@@ -9918,6 +10852,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Master Mycologist Shurome",
             [npcKeys.spawns] = {[361] = {{51.4, 82}}},
             [npcKeys.zoneID] = zoneIDs.FELWOOD,
+            [npcKeys.subName] = "Emerald Circle",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2259 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [259595] = { -- Hacktooth : https://wowhead.com/forever/npc=259595/hacktooth
             [npcKeys.name] = "Hacktooth",
@@ -9942,7 +10878,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Lumina Windsinger",
             [npcKeys.minLevel] = 20,
             [npcKeys.maxLevel] = 20,
-            [npcKeys.spawns] = {[130] = {{43.2, 40.8}}},
+            [npcKeys.spawns] = {[130] = {{43.2, 41}}},
             [npcKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
             [npcKeys.questStarts] = {95034, 95036, 95140},
             [npcKeys.questEnds] = {95034, 95140, 96204},
@@ -9962,6 +10898,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Renalard",
             [npcKeys.spawns] = {[616] = {{59.8, 49}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+            [npcKeys.subName] = "Wild God",
         },
         [259758] = { -- Gul'gash : https://wowhead.com/forever/npc=259758/gulgash
             [npcKeys.name] = "Gul'gash",
@@ -9973,6 +10910,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{77.8, 52}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Blacksmithing Supplies",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2880; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [259776] = { -- Emerald Dreamer : https://wowhead.com/forever/npc=259776/emerald-dreamer
             [npcKeys.name] = "Emerald Dreamer",
@@ -10000,6 +10939,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 1,
             [npcKeys.spawns] = {[16593] = {{51.4, 72.2}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [259852] = { -- Nightmare Fiend : https://wowhead.com/forever/npc=259852/nightmare-fiend
             [npcKeys.name] = "Nightmare Fiend",
@@ -10013,6 +10953,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 38,
             [npcKeys.spawns] = {[16591] = {{63.6, 85}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Stable Master",
         },
         [259860] = { -- Martha Wellsworth : https://wowhead.com/forever/npc=259860/martha-wellsworth
             [npcKeys.name] = "Martha Wellsworth",
@@ -10021,6 +10962,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{64.2, 84}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "General Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [259861] = { -- Paige Armstrong : https://wowhead.com/forever/npc=259861/paige-armstrong
             [npcKeys.name] = "Paige Armstrong",
@@ -10029,6 +10972,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{64.2, 82}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Weaponsmith & Armorcrafter",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2417; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [259863] = { -- Cassandra Wheeler : https://wowhead.com/forever/npc=259863/cassandra-wheeler
             [npcKeys.name] = "Cassandra Wheeler",
@@ -10037,6 +10982,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{64.6, 82.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Food & Drink",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [259868] = { -- Shurome's Specimen : https://wowhead.com/forever/npc=259868/shuromes-specimen
             [npcKeys.name] = "Shurome's Specimen",
@@ -10070,18 +11017,22 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Igthar Forgefury",
             [npcKeys.spawns] = {[46] = {{26.6, 23.4}}},
             [npcKeys.zoneID] = zoneIDs.BURNING_STEPPES,
+            [npcKeys.subName] = "Shadowforge Blacksmith",
         },
         [259908] = { -- Naia Moonsong : https://wowhead.com/forever/npc=259908/naia-moonsong
             [npcKeys.name] = "Naia Moonsong",
+            [npcKeys.subName] = "Moonlight Enchantress",
         },
         [259909] = { -- Or'kug : https://wowhead.com/forever/npc=259909/orkug
             [npcKeys.name] = "Or'kug",
+            [npcKeys.subName] = "Former Blackrock Quartermaster",
         },
         [259944] = { -- Jereman : https://wowhead.com/forever/npc=259944/jereman
             [npcKeys.name] = "Jereman",
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 60,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Wild God",
         },
         [259957] = { -- Dummy : https://wowhead.com/forever/npc=259957/dummy
             [npcKeys.name] = "Dummy",
@@ -10099,6 +11050,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 40,
             [npcKeys.spawns] = {[16591] = {{79, 54}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [259966] = { -- Ott : https://wowhead.com/forever/npc=259966/ott
             [npcKeys.name] = "Ott",
@@ -10242,6 +11194,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{63.4, 80.4}, {63.4, 80.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Foreman",
         },
         [260075] = { -- Sentry Nolan : https://wowhead.com/forever/npc=260075/sentry-nolan
             [npcKeys.name] = "Sentry Nolan",
@@ -10262,6 +11215,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{66, 79.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Weapons Trainer",
         },
         [260091] = { -- Explosive Charge : https://wowhead.com/forever/npc=260091/explosive-charge
             [npcKeys.name] = "Explosive Charge",
@@ -10273,6 +11227,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1497] = {{47.2, 14.4}, {47.4, 15}, {47.4, 15.8}, {47.6, 14.8}, {47.6, 15.6}, {48.2, 14.4}}},
             [npcKeys.zoneID] = zoneIDs.UNDERCITY,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Paladin Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 465 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [260101] = { -- Paladin Trainee : https://wowhead.com/forever/npc=260101/paladin-trainee
             [npcKeys.name] = "Paladin Trainee",
@@ -10368,7 +11324,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Elder Snow Leopard",
             [npcKeys.minLevel] = 9,
             [npcKeys.maxLevel] = 10,
-            [npcKeys.spawns] = {[1] = {{70.4, 53.4}, {71, 52.4}, {71, 53.6}, {71.4, 53}, {71.4, 54.8}, {71.4, 61.4}, {71.4, 62}, {71.6, 52.8}, {71.6, 61.8}, {71.8, 53.6}, {71.8, 61.4}, {72.2, 59.4}, {72.2, 59.8}, {72.4, 55}, {72.4, 55.8}, {72.4, 56.6}, {72.4, 58.2}, {72.6, 55.6}, {72.6, 56.6}, {72.6, 59.2}, {72.6, 60.4}, {72.8, 54.4}, {72.8, 55.2}, {73, 61.8}, {73.2, 61}, {73.4, 50.4}, {73.4, 52.4}, {73.4, 52.6}, {73.6, 54.2}, {73.6, 61}, {73.8, 54.6}, {73.8, 55.6}, {74, 50.4}, {74, 52.2}, {74, 52.8}, {74.4, 51.2}, {74.6, 51.2}, {74.6, 52.4}, {74.6, 53}, {75.2, 61.8}, {75.4, 55.4}, {75.4, 56.4}, {75.4, 56.6}, {75.4, 60.8}, {75.6, 56.4}, {75.6, 56.6}, {75.8, 55.2}, {75.8, 61.8}, {76, 62.6}, {76.4, 58}, {76.4, 58.6}, {76.4, 61.4}, {76.6, 61.4}, {76.6, 61.8}, {77, 58.8}, {77, 59.6}, {77.2, 57.2}, {77.2, 57.6}, {77.6, 60.6}, {77.8, 61.6}, {78, 59.4}, {78, 60}, {78.2, 55.2}, {78.4, 56.4}, {78.4, 57.4}, {78.4, 57.8}, {78.6, 57}, {78.6, 57.8}, {78.6, 59.2}, {78.6, 59.6}, {78.8, 55.4}, {79, 55.6}, {80.2, 56.4}, {80.4, 55.4}, {81, 55}, {81, 55.6}, {81, 57.6}, {81.4, 54.4}, {81.4, 57.2}, {81.6, 55.6}, {81.8, 55}}},
+            [npcKeys.spawns] = {[1] = {{70.4, 53.4}, {71, 52.4}, {71, 53.6}, {71.2, 62.6}, {71.4, 53}, {71.4, 54.8}, {71.4, 60.2}, {71.4, 61.4}, {71.4, 62}, {71.6, 53}, {71.6, 61.6}, {71.8, 53.6}, {71.8, 61.4}, {72.2, 59.2}, {72.2, 60}, {72.4, 55}, {72.4, 55.8}, {72.4, 56.6}, {72.4, 58.2}, {72.6, 55.6}, {72.6, 56.6}, {72.6, 59.2}, {72.6, 60.4}, {72.8, 54.4}, {72.8, 55.2}, {73, 61}, {73, 61.8}, {73.4, 50.4}, {73.4, 51.4}, {73.4, 52.4}, {73.4, 52.6}, {73.6, 54.2}, {73.6, 55}, {73.6, 61}, {73.8, 55.6}, {74, 50.4}, {74, 52.4}, {74, 52.8}, {74.4, 51.2}, {74.6, 51.2}, {74.6, 52.4}, {74.6, 53}, {74.6, 62.6}, {74.8, 53.6}, {75.4, 55.4}, {75.4, 56.2}, {75.4, 56.6}, {75.4, 60.8}, {75.4, 62.4}, {75.6, 56.6}, {75.8, 55.2}, {75.8, 56.4}, {75.8, 61.8}, {76, 62.6}, {76.4, 58}, {76.4, 58.6}, {76.4, 59.6}, {76.4, 61.4}, {76.6, 55.4}, {76.6, 61.4}, {76.8, 58}, {76.8, 58.8}, {77, 57.2}, {77.4, 56.2}, {77.4, 59.6}, {77.4, 61.6}, {77.8, 61}, {77.8, 61.6}, {78, 59.4}, {78, 60}, {78.2, 55.2}, {78.4, 56.4}, {78.4, 56.8}, {78.4, 57.8}, {78.6, 57}, {78.6, 57.6}, {78.6, 59.2}, {78.6, 59.6}, {78.6, 60.6}, {78.8, 55.4}, {79, 55.6}, {79.6, 55.8}, {80.4, 55.4}, {80.4, 57}, {80.4, 58.2}, {80.8, 55.6}, {80.8, 57.4}, {81, 55}, {81, 57.6}, {81.4, 54.4}, {81.6, 55.6}, {81.8, 54.2}, {81.8, 55}}},
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
         },
         [260211] = { -- Scoutmaster Vargas : https://wowhead.com/forever/npc=260211/scoutmaster-vargas
@@ -10387,6 +11343,7 @@ function ForeverBaseNpc:Load()
         },
         [260225] = { -- Bloodsnout : https://wowhead.com/forever/npc=260225/bloodsnout
             [npcKeys.name] = "Bloodsnout",
+            [npcKeys.subName] = "Scoutmaster Vargas's Companion",
         },
         [260231] = { -- Argo Brinewhistle : https://wowhead.com/forever/npc=260231/argo-brinewhistle
             [npcKeys.name] = "Argo Brinewhistle",
@@ -10397,6 +11354,9 @@ function ForeverBaseNpc:Load()
         },
         [260235] = { -- Trapclaw : https://wowhead.com/forever/npc=260235/trapclaw
             [npcKeys.name] = "Trapclaw",
+            [npcKeys.minLevel] = 42,
+            [npcKeys.maxLevel] = 42,
+            [npcKeys.spawns] = {[16591] = {{79.3, 53.3}, {79.4, 53.6}, {79.5, 53.3}, {80, 54}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
         },
         [260244] = { -- Monstrous Threshadon : https://wowhead.com/forever/npc=260244/monstrous-threshadon
@@ -10420,6 +11380,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 38,
             [npcKeys.spawns] = {[16591] = {{58.2, 45.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "General Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [260359] = { -- Sadi : https://wowhead.com/forever/npc=260359/sadi
             [npcKeys.name] = "Sadi",
@@ -10437,9 +11399,11 @@ function ForeverBaseNpc:Load()
         },
         [260383] = { -- Sergeant Ulka : https://wowhead.com/forever/npc=260383/sergeant-ulka
             [npcKeys.name] = "Sergeant Ulka",
+            [npcKeys.subName] = "Kor'kron Elite",
         },
         [260386] = { -- Commander Folkar : https://wowhead.com/forever/npc=260386/commander-folkar
             [npcKeys.name] = "Commander Folkar",
+            [npcKeys.subName] = "Kor'kron Elite",
         },
         [260390] = { -- Captain Bentcoin : https://wowhead.com/forever/npc=260390/captain-bentcoin
             [npcKeys.name] = "Captain Bentcoin",
@@ -10450,8 +11414,8 @@ function ForeverBaseNpc:Load()
         [260396] = { -- Whispering Horror : https://wowhead.com/forever/npc=260396/whispering-horror
             [npcKeys.name] = "Whispering Horror",
             [npcKeys.minLevel] = 11,
-            [npcKeys.maxLevel] = 11,
-            [npcKeys.spawns] = {[85] = {{8.4, 59.4}, {8.6, 59.4}, {8.6, 59.8}, {9, 60.8}, {9, 62.4}, {9.6, 59.2}, {9.6, 59.8}}},
+            [npcKeys.maxLevel] = 13,
+            [npcKeys.spawns] = {[85] = {{8.4, 59.4}, {8.4, 60}, {8.6, 59.4}, {8.6, 60.2}, {9, 60.8}, {9, 62.4}, {9.6, 59.2}, {9.6, 59.6}}},
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
         },
         [260405] = { -- Wharfmaster Steamfizzle : https://wowhead.com/forever/npc=260405/wharfmaster-steamfizzle
@@ -10468,6 +11432,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Slugjaw",
             [npcKeys.spawns] = {[440] = {{67.4, 23.8}}},
             [npcKeys.zoneID] = zoneIDs.TANARIS,
+            [npcKeys.subName] = "Tazzik's Bodyguard",
         },
         [260422] = { -- Ashen Acolyte : https://wowhead.com/forever/npc=260422/ashen-acolyte
             [npcKeys.name] = "Ashen Acolyte",
@@ -10512,18 +11477,22 @@ function ForeverBaseNpc:Load()
         },
         [260438] = { -- Grot Pondskipper : https://wowhead.com/forever/npc=260438/grot-pondskipper
             [npcKeys.name] = "Grot Pondskipper",
+            [npcKeys.subName] = "Wind Rider Master NYI",
         },
         [260439] = { -- Subjugated Assistant : https://wowhead.com/forever/npc=260439/subjugated-assistant
             [npcKeys.name] = "Subjugated Assistant",
         },
         [260440] = { -- Brashann Grimdark : https://wowhead.com/forever/npc=260440/brashann-grimdark
             [npcKeys.name] = "Brashann Grimdark",
+            [npcKeys.subName] = "Master of Vessels",
         },
         [260443] = { -- Dazka Shadowsleep : https://wowhead.com/forever/npc=260443/dazka-shadowsleep
             [npcKeys.name] = "Dazka Shadowsleep",
+            [npcKeys.subName] = "Leader of Alchemical Creations",
         },
         [260444] = { -- Tyaeha Darkoath : https://wowhead.com/forever/npc=260444/tyaeha-darkoath
             [npcKeys.name] = "Tyaeha Darkoath",
+            [npcKeys.subName] = "Master of Diseases",
         },
         [260445] = { -- Wriggling Slime : https://wowhead.com/forever/npc=260445/wriggling-slime
             [npcKeys.name] = "Wriggling Slime",
@@ -10533,6 +11502,8 @@ function ForeverBaseNpc:Load()
         },
         [260466] = { -- Grubbub : https://wowhead.com/forever/npc=260466/grubbub
             [npcKeys.name] = "Grubbub",
+            [npcKeys.spawns] = {[46] = {{55.6, 54}}},
+            [npcKeys.zoneID] = zoneIDs.BURNING_STEPPES,
         },
         [260471] = { -- Thrash : https://wowhead.com/forever/npc=260471/thrash
             [npcKeys.name] = "Thrash",
@@ -10541,6 +11512,7 @@ function ForeverBaseNpc:Load()
         },
         [260481] = { -- Om'kug : https://wowhead.com/forever/npc=260481/omkug
             [npcKeys.name] = "Om'kug",
+            [npcKeys.subName] = "Blackrock Leatherworker",
         },
         [260487] = { -- Gritta Chumwater : https://wowhead.com/forever/npc=260487/gritta-chumwater
             [npcKeys.name] = "Gritta Chumwater",
@@ -10549,6 +11521,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{78.4, 55}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Fisherman",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 4603; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [260494] = { -- Farholde Sentry : https://wowhead.com/forever/npc=260494/farholde-sentry
             [npcKeys.name] = "Farholde Sentry",
@@ -10559,6 +11533,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Tallow Sparksocket",
             [npcKeys.spawns] = {[16591] = {{78.4, 54}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Stable Master",
         },
         [260540] = { -- Jasper Geartoggle : https://wowhead.com/forever/npc=260540/jasper-geartoggle
             [npcKeys.name] = "Jasper Geartoggle",
@@ -10569,6 +11544,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Mizzy",
             [npcKeys.spawns] = {[16591] = {{76.6, 54.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [260558] = { -- Krix : https://wowhead.com/forever/npc=260558/krix
             [npcKeys.name] = "Krix",
@@ -10577,6 +11554,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{79.2, 54.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Superior Fisherman",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 7620 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [260559] = { -- Gilliwigs : https://wowhead.com/forever/npc=260559/gilliwigs
             [npcKeys.name] = "Gilliwigs",
@@ -10585,6 +11564,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{79.2, 54.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Trade Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [260560] = { -- Krikshank : https://wowhead.com/forever/npc=260560/krikshank
             [npcKeys.name] = "Krikshank",
@@ -10593,6 +11574,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{76.8, 51}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Poison Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2928; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [260561] = { -- Dina Mite : https://wowhead.com/forever/npc=260561/dina-mite
             [npcKeys.name] = "Dina Mite",
@@ -10609,6 +11592,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{77.6, 50.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Master Goblin Engineer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8895 trainingcost=2200; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [260563] = { -- Mia Tanglewrench : https://wowhead.com/forever/npc=260563/mia-tanglewrench
             [npcKeys.name] = "Mia Tanglewrench",
@@ -10629,6 +11614,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{77.6, 50.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Engineering Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2880; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [260566] = { -- Fizzix Boomshot : https://wowhead.com/forever/npc=260566/fizzix-boomshot
             [npcKeys.name] = "Fizzix Boomshot",
@@ -10637,9 +11624,13 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{78.4, 53.6}, {78.6, 53.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Gunsmith",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2516; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [260567] = { -- Tuppins Coppercheck : https://wowhead.com/forever/npc=260567/tuppins-coppercheck
             [npcKeys.name] = "Tuppins Coppercheck",
+            [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [260568] = { -- Jazzle Cheapshot : https://wowhead.com/forever/npc=260568/jazzle-cheapshot
             [npcKeys.name] = "Jazzle Cheapshot",
@@ -10664,9 +11655,12 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{77.2, 51.4}, {77.2, 51.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Tailoring Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [260580] = { -- Mini Uber Diablo : https://wowhead.com/forever/npc=260580/mini-uber-diablo
             [npcKeys.name] = "Mini Uber Diablo",
+            [npcKeys.subName] = "Lord of Terror",
         },
         [260626] = { -- Bluebell : https://wowhead.com/forever/npc=260626/bluebell
             [npcKeys.name] = "Bluebell",
@@ -10675,6 +11669,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[616] = {{55, 82.8}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Flight Mistress",
         },
         [260628] = { -- Valennia Stormfist : https://wowhead.com/forever/npc=260628/valennia-stormfist
             [npcKeys.name] = "Valennia Stormfist",
@@ -10683,12 +11678,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{66, 76.4}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Peacekeeper Captain",
         },
         [260661] = { -- Suma Mossmane : https://wowhead.com/forever/npc=260661/suma-mossmane
             [npcKeys.name] = "Suma Mossmane",
         },
         [260674] = { -- Ve'ho Manyhorns : https://wowhead.com/forever/npc=260674/veho-manyhorns
             [npcKeys.name] = "Ve'ho Manyhorns",
+            [npcKeys.subName] = "Lieutenant of the Wild King",
         },
         [260731] = { -- Diseased Experiment : https://wowhead.com/forever/npc=260731/diseased-experiment
             [npcKeys.name] = "Diseased Experiment",
@@ -10730,6 +11727,9 @@ function ForeverBaseNpc:Load()
         },
         [260808] = { -- Highland Horror : https://wowhead.com/forever/npc=260808/highland-horror
             [npcKeys.name] = "Highland Horror",
+            [npcKeys.minLevel] = 28,
+            [npcKeys.maxLevel] = 28,
+            [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
         },
         [260809] = { -- Highland Tortoise : https://wowhead.com/forever/npc=260809/highland-tortoise
             [npcKeys.name] = "Highland Tortoise",
@@ -10741,6 +11741,7 @@ function ForeverBaseNpc:Load()
         },
         [260818] = { -- Frezzlie Popwhiz : https://wowhead.com/forever/npc=260818/frezzlie-popwhiz
             [npcKeys.name] = "Frezzlie Popwhiz",
+            [npcKeys.subName] = "Newly Promoted Overseer of Slime Experiments",
         },
         [260822] = { -- Tainted Grovewalker : https://wowhead.com/forever/npc=260822/tainted-grovewalker
             [npcKeys.name] = "Tainted Grovewalker",
@@ -10751,6 +11752,7 @@ function ForeverBaseNpc:Load()
         },
         [260823] = { -- Overseer Myoleth : https://wowhead.com/forever/npc=260823/overseer-myoleth
             [npcKeys.name] = "Overseer Myoleth",
+            [npcKeys.subName] = "Cult of the Ashen Reign",
         },
         [260825] = { -- Phoebe Highfeather : https://wowhead.com/forever/npc=260825/phoebe-highfeather
             [npcKeys.name] = "Phoebe Highfeather",
@@ -10824,39 +11826,49 @@ function ForeverBaseNpc:Load()
         },
         [261023] = { -- Bonzo "The Brain" Greasepit : https://wowhead.com/forever/npc=261023/bonzo-the-brain-greasepit
             [npcKeys.name] = "Bonzo \"The Brain\" Greasepit",
+            [npcKeys.subName] = "The Undermarket",
         },
         [261026] = { -- Ka'ya Speartusk : https://wowhead.com/forever/npc=261026/kaya-speartusk
             [npcKeys.name] = "Ka'ya Speartusk",
+            [npcKeys.subName] = "Undermarket Bounty Hunter",
         },
         [261027] = { -- Liu the Lookout : https://wowhead.com/forever/npc=261027/liu-the-lookout
             [npcKeys.name] = "Liu the Lookout",
+            [npcKeys.subName] = "The Undermarket",
         },
         [261028] = { -- Cadrya Balen : https://wowhead.com/forever/npc=261028/cadrya-balen
             [npcKeys.name] = "Cadrya Balen",
+            [npcKeys.subName] = "The Undermarket",
         },
         [261029] = { -- Mercer Chapman : https://wowhead.com/forever/npc=261029/mercer-chapman
             [npcKeys.name] = "Mercer Chapman",
+            [npcKeys.subName] = "Supplies and Exotic Wares",
         },
         [261030] = { -- Gothuc Blackhowl : https://wowhead.com/forever/npc=261030/gothuc-blackhowl
             [npcKeys.name] = "Gothuc Blackhowl",
+            [npcKeys.subName] = "Mercenary",
         },
         [261031] = { -- Scrapper Frazzi : https://wowhead.com/forever/npc=261031/scrapper-frazzi
             [npcKeys.name] = "Scrapper Frazzi",
+            [npcKeys.subName] = "The Undermarket",
         },
         [261160] = { -- Zavirax : https://wowhead.com/forever/npc=261160/zavirax
             [npcKeys.name] = "Zavirax",
         },
         [261207] = { -- Blipzy : https://wowhead.com/forever/npc=261207/blipzy
             [npcKeys.name] = "Blipzy",
+            [npcKeys.subName] = "Crystal Researcher",
         },
         [261208] = { -- Twilight Brute : https://wowhead.com/forever/npc=261208/twilight-brute
             [npcKeys.name] = "Twilight Brute",
         },
         [261221] = { -- Placeholder Skyborne Mount Trainer : https://wowhead.com/forever/npc=261221/placeholder-skyborne-mount-trainer
             [npcKeys.name] = "Placeholder Skyborne Mount Trainer",
+            [npcKeys.subName] = "Skyborne Riding Instructor",
         },
         [261222] = { -- Placeholder Skyborne Mount Vendor : https://wowhead.com/forever/npc=261222/placeholder-skyborne-mount-vendor
             [npcKeys.name] = "Placeholder Skyborne Mount Vendor",
+            [npcKeys.subName] = "Galestrider Handler",
         },
         [261280] = { -- Red Crystal : https://wowhead.com/forever/npc=261280/red-crystal
             [npcKeys.name] = "Red Crystal",
@@ -10877,6 +11889,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Naluk",
             [npcKeys.spawns] = {[16591] = {{58, 45.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Butcher",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [261316] = { -- Magmatus : https://wowhead.com/forever/npc=261316/magmatus
             [npcKeys.name] = "Magmatus",
@@ -10892,9 +11906,11 @@ function ForeverBaseNpc:Load()
         },
         [261363] = { -- Ranthor the Severer : https://wowhead.com/forever/npc=261363/ranthor-the-severer
             [npcKeys.name] = "Ranthor the Severer",
+            [npcKeys.subName] = "Undermarket Risk Mitigator",
         },
         [261365] = { -- Brimstone Bellman : https://wowhead.com/forever/npc=261365/brimstone-bellman
             [npcKeys.name] = "Brimstone Bellman",
+            [npcKeys.subName] = "The Undermarket",
         },
         [261366] = { -- Walton : https://wowhead.com/forever/npc=261366/walton
             [npcKeys.name] = "Walton",
@@ -10905,6 +11921,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {95508, 95621},
             [npcKeys.questEnds] = {95495, 95508, 95621},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Tanner",
         },
         [261367] = { -- Terry Longdrink : https://wowhead.com/forever/npc=261367/terry-longdrink
             [npcKeys.name] = "Terry Longdrink",
@@ -10912,6 +11929,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 19,
             [npcKeys.spawns] = {[17] = {{41.8, 11.4}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
+            [npcKeys.subName] = "Bounty Hunter",
         },
         [261368] = { -- Kul Tiras Marine : https://wowhead.com/forever/npc=261368/kul-tiras-marine
             [npcKeys.name] = "Kul Tiras Marine",
@@ -10927,6 +11945,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[17] = {{42, 11.4}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Weaponsmith & Armorcrafter",
         },
         [261385] = { -- Dwarf Miner : https://wowhead.com/forever/npc=261385/dwarf-miner
             [npcKeys.name] = "Dwarf Miner",
@@ -10939,9 +11958,11 @@ function ForeverBaseNpc:Load()
         },
         [261455] = { -- Lelanai : https://wowhead.com/forever/npc=261455/lelanai
             [npcKeys.name] = "Lelanai",
+            [npcKeys.subName] = "Saber Handler",
         },
         [261471] = { -- Shadowsilk Backrunner : https://wowhead.com/forever/npc=261471/shadowsilk-backrunner
             [npcKeys.name] = "Shadowsilk Backrunner",
+            [npcKeys.subName] = "The Undermarket",
         },
         [261485] = { -- Theramore Guard : https://wowhead.com/forever/npc=261485/theramore-guard
             [npcKeys.name] = "Theramore Guard",
@@ -10964,9 +11985,11 @@ function ForeverBaseNpc:Load()
         },
         [261531] = { -- Gaznik Gearsnaps : https://wowhead.com/forever/npc=261531/gaznik-gearsnaps
             [npcKeys.name] = "Gaznik Gearsnaps",
+            [npcKeys.subName] = "Zeppelin Operator",
         },
         [261566] = { -- Noruu : https://wowhead.com/forever/npc=261566/noruu
             [npcKeys.name] = "Noruu",
+            [npcKeys.subName] = "Cenarion Druid",
         },
         [261578] = { -- Riding Striped Nightsaber : https://wowhead.com/forever/npc=261578/riding-striped-nightsaber
             [npcKeys.name] = "Riding Striped Nightsaber",
@@ -10979,6 +12002,7 @@ function ForeverBaseNpc:Load()
         },
         [261593] = { -- Noruu : https://wowhead.com/forever/npc=261593/noruu
             [npcKeys.name] = "Noruu",
+            [npcKeys.subName] = "Cenarion Druid",
         },
         [261603] = { -- Dwarf Excavator : https://wowhead.com/forever/npc=261603/dwarf-excavator
             [npcKeys.name] = "Dwarf Excavator",
@@ -11021,15 +12045,18 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[267] = {{80, 48.4}}},
             [npcKeys.zoneID] = zoneIDs.HILLSBRAD_FOOTHILLS,
             [npcKeys.questEnds] = {94233},
+            [npcKeys.subName] = "Escaped Durnholde Prisoner",
         },
         [261961] = { -- Hekshi : https://wowhead.com/forever/npc=261961/hekshi
             [npcKeys.name] = "Hekshi",
             [npcKeys.spawns] = {[33] = {{50.4, 19.2}}},
             [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
+            [npcKeys.subName] = "Zandalar Infiltrator",
         },
         [261992] = { -- Injured Soldier : https://wowhead.com/forever/npc=261992/injured-soldier
             [npcKeys.name] = "Injured Soldier",
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.subName] = "The Argent Dawn",
         },
         [261998] = { -- Cenarion Hold Berserker : https://wowhead.com/forever/npc=261998/cenarion-hold-berserker
             [npcKeys.name] = "Cenarion Hold Berserker",
@@ -11043,6 +12070,7 @@ function ForeverBaseNpc:Load()
         },
         [262024] = { -- Kirala Fairgrass : https://wowhead.com/forever/npc=262024/kirala-fairgrass
             [npcKeys.name] = "Kirala Fairgrass",
+            [npcKeys.subName] = "The Argent Dawn",
         },
         [262031] = { -- Sister Rowland : https://wowhead.com/forever/npc=262031/sister-rowland
             [npcKeys.name] = "Sister Rowland",
@@ -11106,18 +12134,21 @@ function ForeverBaseNpc:Load()
         },
         [262294] = { -- Durganon : https://wowhead.com/forever/npc=262294/durganon
             [npcKeys.name] = "Durganon",
+            [npcKeys.subName] = "Dark Iron Lavasmith",
         },
         [262306] = { -- Mukomonji : https://wowhead.com/forever/npc=262306/mukomonji
             [npcKeys.name] = "Mukomonji",
         },
         [262379] = { -- Bullets Bigblast : https://wowhead.com/forever/npc=262379/bullets-bigblast
             [npcKeys.name] = "Bullets Bigblast",
+            [npcKeys.subName] = "Steamwheedle Construction Co.",
         },
         [262383] = { -- Darkspear Shark : https://wowhead.com/forever/npc=262383/darkspear-shark
             [npcKeys.name] = "Darkspear Shark",
         },
         [262388] = { -- Juo : https://wowhead.com/forever/npc=262388/juo
             [npcKeys.name] = "Juo",
+            [npcKeys.subName] = "Witherbark Exile",
         },
         [262397] = { -- Brinescale Skirmisher : https://wowhead.com/forever/npc=262397/brinescale-skirmisher
             [npcKeys.name] = "Brinescale Skirmisher",
@@ -11137,6 +12168,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.minLevel] = 20,
             [npcKeys.maxLevel] = 20,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Magnificent Mystic",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 3371; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [262471] = { -- Xaphod Bizznox : https://wowhead.com/forever/npc=262471/xaphod-bizznox
             [npcKeys.name] = "Xaphod Bizznox",
@@ -11145,6 +12178,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[406] = {{71.4, 99.4}}},
             [npcKeys.zoneID] = zoneIDs.STONETALON_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2901; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [262472] = { -- Cinderscale Flamecaller : https://wowhead.com/forever/npc=262472/cinderscale-flamecaller
             [npcKeys.name] = "Cinderscale Flamecaller",
@@ -11161,6 +12195,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Earthen Ring",
         },
         [262502] = { -- Brix Xizzix : https://wowhead.com/forever/npc=262502/brix-xizzix
             [npcKeys.name] = "Brix Xizzix",
@@ -11168,6 +12203,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 20,
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Entrepreneur",
         },
         [262504] = { -- Earthen Ring Shaman : https://wowhead.com/forever/npc=262504/earthen-ring-shaman
             [npcKeys.name] = "Earthen Ring Shaman",
@@ -11195,6 +12231,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 55,
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Shaman Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 131 trainingcost=3000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [262560] = { -- Hana Lighthoof : https://wowhead.com/forever/npc=262560/hana-lighthoof
             [npcKeys.name] = "Hana Lighthoof",
@@ -11202,6 +12240,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 55,
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Druid Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 99 trainingcost=300; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [262585] = { -- Enraged Ghost : https://wowhead.com/forever/npc=262585/enraged-ghost
             [npcKeys.name] = "Enraged Ghost",
@@ -11211,9 +12251,11 @@ function ForeverBaseNpc:Load()
         },
         [262692] = { -- Gharan Mountainstride : https://wowhead.com/forever/npc=262692/gharan-mountainstride
             [npcKeys.name] = "Gharan Mountainstride",
+            [npcKeys.subName] = "Cenarion Emissary",
         },
         [262694] = { -- Melrissen Moonlight : https://wowhead.com/forever/npc=262694/melrissen-moonlight
             [npcKeys.name] = "Melrissen Moonlight",
+            [npcKeys.subName] = "Cenarion Emissary",
         },
         [262713] = { -- Orcish Tradeskill Signpost : https://wowhead.com/forever/npc=262713/orcish-tradeskill-signpost
             [npcKeys.name] = "Orcish Tradeskill Signpost",
@@ -11292,6 +12334,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.questStarts] = {92474},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Rangers of Thendal Grove",
         },
         [263120] = { -- Gray Dawnbright : https://wowhead.com/forever/npc=263120/gray-dawnbright
             [npcKeys.name] = "Gray Dawnbright",
@@ -11315,6 +12358,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Dorb",
             [npcKeys.spawns] = {[16591] = {{63.8, 17.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Rare Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 271646; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [263277] = { -- [DNT] Kill Credit: Drained Crystal : https://wowhead.com/forever/npc=263277/dnt-kill-credit-drained-crystal
             [npcKeys.name] = "[DNT] Kill Credit: Drained Crystal",
@@ -11337,6 +12382,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{78.2, 51.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Agent of the Black Market",
         },
         [263343] = { -- Low Plains Buzzard : https://wowhead.com/forever/npc=263343/low-plains-buzzard
             [npcKeys.name] = "Low Plains Buzzard",
@@ -11358,6 +12404,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 61,
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Darkspear Islands Battlemaster",
         },
         [263367] = { -- Sleebo Fizzlespout : https://wowhead.com/forever/npc=263367/sleebo-fizzlespout
             [npcKeys.name] = "Sleebo Fizzlespout",
@@ -11383,6 +12430,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{78.2, 51.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Agent of the Black Market",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 271871; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [263389] = { -- Enraged Apparition : https://wowhead.com/forever/npc=263389/enraged-apparition
             [npcKeys.name] = "Enraged Apparition",
@@ -11411,6 +12460,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {95998, 96626, 97915, 97916, 97917, 97918, 97919, 97920, 97921, 97922, 97923, 97924, 97925},
             [npcKeys.questEnds] = {95998, 96627},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Adventurer",
         },
         [263406] = { -- Elaena Moonwhisper : https://wowhead.com/forever/npc=263406/elaena-moonwhisper
             [npcKeys.name] = "Elaena Moonwhisper",
@@ -11446,6 +12496,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Earthen Ring",
         },
         [263455] = { -- Bal'mog : https://wowhead.com/forever/npc=263455/balmog
             [npcKeys.name] = "Bal'mog",
@@ -11481,14 +12532,20 @@ function ForeverBaseNpc:Load()
         },
         [263558] = { -- By'zaali : https://wowhead.com/forever/npc=263558/byzaali
             [npcKeys.name] = "By'zaali",
+            [npcKeys.subName] = "The Loa of Tides",
         },
         [263559] = { -- Child of By'zaali : https://wowhead.com/forever/npc=263559/child-of-byzaali
             [npcKeys.name] = "Child of By'zaali",
         },
         [263569] = { -- Bryanna Embreeze : https://wowhead.com/forever/npc=263569/bryanna-embreeze
             [npcKeys.name] = "Bryanna Embreeze",
-            [npcKeys.spawns] = {[17] = {{63.4, 58.8}}},
+            [npcKeys.minLevel] = 55,
+            [npcKeys.maxLevel] = 55,
+            [npcKeys.spawns] = {[17] = {{63.4, 58.6}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Theramore Expeditionary Force Quartermaster",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 17348; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [263570] = { -- Creeg Bothunk : https://wowhead.com/forever/npc=263570/creeg-bothunk
             [npcKeys.name] = "Creeg Bothunk",
@@ -11497,6 +12554,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[17] = {{65, 34.6}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Darkspear Raiders Quartermaster",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 17348; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [263611] = { -- Diseased Soldier : https://wowhead.com/forever/npc=263611/diseased-soldier
             [npcKeys.name] = "Diseased Soldier",
@@ -11520,6 +12579,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Sean Guardoff",
             [npcKeys.spawns] = {[1537] = {{70.2, 89.2}}},
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
+            [npcKeys.subName] = "Darkspear Islands Battlemaster",
         },
         [263644] = { -- Pherry Leftee : https://wowhead.com/forever/npc=263644/pherry-leftee
             [npcKeys.name] = "Pherry Leftee",
@@ -11528,6 +12588,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1657] = {{58.4, 34.4}, {58.4, 34.6}}},
             [npcKeys.zoneID] = zoneIDs.DARNASSUS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Darkspear Islands Battlemaster",
         },
         [263645] = { -- Gruga Bloodblade : https://wowhead.com/forever/npc=263645/gruga-bloodblade
             [npcKeys.name] = "Gruga Bloodblade",
@@ -11536,6 +12597,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1637] = {{79.6, 30.6}}},
             [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Darkspear Islands Battlemaster",
         },
         [263646] = { -- Rugbul Boomfirst : https://wowhead.com/forever/npc=263646/rugbul-boomfirst
             [npcKeys.name] = "Rugbul Boomfirst",
@@ -11544,6 +12606,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1497] = {{60, 86.8}}},
             [npcKeys.zoneID] = zoneIDs.UNDERCITY,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Darkspear Islands Battlemaster",
         },
         [263647] = { -- Borook Gallfist : https://wowhead.com/forever/npc=263647/borook-gallfist
             [npcKeys.name] = "Borook Gallfist",
@@ -11552,6 +12615,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1638] = {{57, 76.8}}},
             [npcKeys.zoneID] = zoneIDs.THUNDER_BLUFF,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Darkspear Islands Battlemaster",
         },
         [263664] = { -- Raan Wildwind : https://wowhead.com/forever/npc=263664/raan-wildwind
             [npcKeys.name] = "Raan Wildwind",
@@ -11562,6 +12626,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {96101, 96646, 97963, 97964, 97965, 97967, 97968, 97969, 97970, 97971, 97972, 97973, 98284, 98286},
             [npcKeys.questEnds] = {96101, 96638},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Adventurer",
         },
         [263681] = { -- Bear : https://wowhead.com/forever/npc=263681/bear
             [npcKeys.name] = "Bear",
@@ -11593,6 +12658,7 @@ function ForeverBaseNpc:Load()
         },
         [263833] = { -- Caalaan Corswaain : https://wowhead.com/forever/npc=263833/caalaan-corswaain
             [npcKeys.name] = "Caalaan Corswaain",
+            [npcKeys.subName] = "Captain of the Wings of Liberty",
         },
         [263852] = { -- High Order Mage : https://wowhead.com/forever/npc=263852/high-order-mage
             [npcKeys.name] = "High Order Mage",
@@ -11612,7 +12678,7 @@ function ForeverBaseNpc:Load()
         [263919] = { -- Searshrike Wormwing : https://wowhead.com/forever/npc=263919/searshrike-wormwing
             [npcKeys.name] = "Searshrike Wormwing",
         },
-        [263922] = { -- [DNT] Kill Credit: Bones thrown into the Sime Pit : https://wowhead.com/forever/npc=263922/dnt-kill-credit-bones-thrown-into-the-sime-pit
+        [263922] = { -- [DNT] Kill Credit: Bones thrown into the Sime Pit : https://wowhead.com/forever/npc=263922/dnt-kill-credit-bones-thrown-into-the-slime-pit
             [npcKeys.name] = "[DNT] Kill Credit: Bones thrown into the Sime Pit",
         },
         [263930] = { -- Peacekeeper : https://wowhead.com/forever/npc=263930/peacekeeper
@@ -11640,14 +12706,20 @@ function ForeverBaseNpc:Load()
             [npcKeys.minLevel] = 30,
             [npcKeys.maxLevel] = 30,
             [npcKeys.zoneID] = zoneIDs.MULGORE,
+            [npcKeys.questStarts] = {96260},
+            [npcKeys.questEnds] = {96260},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Earthen Ring",
         },
         [264074] = { -- Mazu'kon : https://wowhead.com/forever/npc=264074/mazukon
             [npcKeys.name] = "Mazu'kon",
             [npcKeys.minLevel] = 35,
             [npcKeys.maxLevel] = 35,
             [npcKeys.zoneID] = zoneIDs.MULGORE,
+            [npcKeys.questStarts] = {96241, 96774},
+            [npcKeys.questEnds] = {96241},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Earthen Ring",
         },
         [264078] = { -- Sutara Plainstalker : https://wowhead.com/forever/npc=264078/sutara-plainstalker
             [npcKeys.name] = "Sutara Plainstalker",
@@ -11655,12 +12727,20 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 30,
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Quartermaster",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 276976; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [264079] = { -- Gloomrise Hatchling : https://wowhead.com/forever/npc=264079/gloomrise-hatchling
             [npcKeys.name] = "Gloomrise Hatchling",
+            [npcKeys.minLevel] = 27,
+            [npcKeys.maxLevel] = 28,
+            [npcKeys.zoneID] = zoneIDs.MULGORE,
         },
         [264081] = { -- Gloomrise Spinner : https://wowhead.com/forever/npc=264081/gloomrise-spinner
             [npcKeys.name] = "Gloomrise Spinner",
+            [npcKeys.minLevel] = 28,
+            [npcKeys.maxLevel] = 28,
+            [npcKeys.zoneID] = zoneIDs.MULGORE,
         },
         [264082] = { -- Broodmother Valraxx : https://wowhead.com/forever/npc=264082/broodmother-valraxx
             [npcKeys.name] = "Broodmother Valraxx",
@@ -11669,6 +12749,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Gloomrise Soldier",
             [npcKeys.minLevel] = 28,
             [npcKeys.maxLevel] = 29,
+            [npcKeys.zoneID] = zoneIDs.MULGORE,
         },
         [264089] = { -- Eluneth : https://wowhead.com/forever/npc=264089/eluneth
             [npcKeys.name] = "Eluneth",
@@ -11696,20 +12777,26 @@ function ForeverBaseNpc:Load()
         },
         [264235] = { -- Alliance Rank PvP Vendor : https://wowhead.com/forever/npc=264235/alliance-rank-pvp-vendor
             [npcKeys.name] = "Alliance Rank PvP Vendor",
+            [npcKeys.subName] = "Weapons",
         },
         [264236] = { -- Horde Rank PvP Vendor : https://wowhead.com/forever/npc=264236/horde-rank-pvp-vendor
             [npcKeys.name] = "Horde Rank PvP Vendor",
+            [npcKeys.subName] = "Weapons",
         },
         [264238] = { -- Alliance Rank PvP Vendor : https://wowhead.com/forever/npc=264238/alliance-rank-pvp-vendor
             [npcKeys.name] = "Alliance Rank PvP Vendor",
+            [npcKeys.subName] = "Armor",
         },
         [264239] = { -- Horde Rank PvP Vendor : https://wowhead.com/forever/npc=264239/horde-rank-pvp-vendor
             [npcKeys.name] = "Horde Rank PvP Vendor",
+            [npcKeys.subName] = "Armor",
         },
         [264265] = { -- Magus Olvek : https://wowhead.com/forever/npc=264265/magus-olvek
             [npcKeys.name] = "Magus Olvek",
             [npcKeys.spawns] = {[36] = {{9.6, 62.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.questStarts] = {96800},
+            [npcKeys.questEnds] = {96800},
         },
         [264266] = { -- Olvek : https://wowhead.com/forever/npc=264266/olvek
             [npcKeys.name] = "Olvek",
@@ -11756,6 +12843,7 @@ function ForeverBaseNpc:Load()
         },
         [264508] = { -- Blackthorne Courier : https://wowhead.com/forever/npc=264508/blackthorne-courier
             [npcKeys.name] = "Blackthorne Courier",
+            [npcKeys.subName] = "Messenger of the Wild King",
         },
         [264521] = { -- Daythor Brellan : https://wowhead.com/forever/npc=264521/daythor-brellan
             [npcKeys.name] = "Daythor Brellan",
@@ -11772,6 +12860,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Blackthorne Adept",
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 60,
+            [npcKeys.subName] = "Blackthorne Pact",
         },
         [264632] = { -- Sister : https://wowhead.com/forever/npc=264632/sister
             [npcKeys.name] = "Sister",
@@ -11792,6 +12881,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Dead Orc",
             [npcKeys.spawns] = {[15] = {{72.6, 18.8}}},
             [npcKeys.zoneID] = zoneIDs.DUSTWALLOW_MARSH,
+            [npcKeys.subName] = "Kor'kron Elite",
         },
         [264707] = { -- [DNT] Kill Credit: : https://wowhead.com/forever/npc=264707/dnt-kill-credit
             [npcKeys.name] = "[DNT] Kill Credit:",
@@ -11818,6 +12908,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[616] = {{68.4, 46.6}, {68.6, 46.6}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Cenarion Circle",
         },
         [264797] = { -- Aisarra Nightmeadow : https://wowhead.com/forever/npc=264797/aisarra-nightmeadow
             [npcKeys.name] = "Aisarra Nightmeadow",
@@ -11826,6 +12917,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[616] = {{71, 51.2}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Keeper of Knowledge",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 273952; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [264839] = { -- [DNT] Kill Credit: Armor slot selected for study : https://wowhead.com/forever/npc=264839/dnt-kill-credit-armor-slot-selected-for-study
             [npcKeys.name] = "[DNT] Kill Credit: Armor slot selected for study",
@@ -11838,6 +12931,7 @@ function ForeverBaseNpc:Load()
         },
         [264867] = { -- Ghansurok : https://wowhead.com/forever/npc=264867/ghansurok
             [npcKeys.name] = "Ghansurok",
+            [npcKeys.subName] = "Blight of the Hills",
         },
         [264881] = { -- [DNT] Kill Credit : https://wowhead.com/forever/npc=264881/dnt-kill-credit
             [npcKeys.name] = "[DNT] Kill Credit",
@@ -11867,6 +12961,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {96394},
             [npcKeys.questEnds] = {96394},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Lorekeeper of Ironforge",
         },
         [265002] = { -- Ghostly Attendant : https://wowhead.com/forever/npc=265002/ghostly-attendant
             [npcKeys.name] = "Ghostly Attendant",
@@ -11875,7 +12970,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Thom Filch",
             [npcKeys.minLevel] = 13,
             [npcKeys.maxLevel] = 13,
-            [npcKeys.spawns] = {[1537] = {{31.4, 45.4}, {31.4, 45.8}, {31.6, 45.6}, {32.4, 44.4}, {32.4, 44.8}, {32.6, 44.4}, {32.6, 44.6}, {32.8, 42.8}}},
+            [npcKeys.spawns] = {[1537] = {{31.4, 45.4}, {31.4, 45.8}, {31.6, 45.6}, {32.4, 44.4}, {32.4, 44.8}, {32.6, 44.4}, {32.6, 44.6}}},
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
             [npcKeys.questStarts] = {96403},
             [npcKeys.questEnds] = {96403},
@@ -11915,16 +13010,23 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Aurian Highgrove",
             [npcKeys.spawns] = {[11] = {{52.6, 80.2}}},
             [npcKeys.zoneID] = zoneIDs.WETLANDS,
+            [npcKeys.subName] = "Bartender",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [265347] = { -- Bhalir Firebrew : https://wowhead.com/forever/npc=265347/bhalir-firebrew
             [npcKeys.name] = "Bhalir Firebrew",
             [npcKeys.spawns] = {[11] = {{52.8, 80}}},
             [npcKeys.zoneID] = zoneIDs.WETLANDS,
+            [npcKeys.subName] = "Chef",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [265348] = { -- Agriel Firebrew : https://wowhead.com/forever/npc=265348/agriel-firebrew
             [npcKeys.name] = "Agriel Firebrew",
-            [npcKeys.spawns] = {[11] = {{52.8, 80}}},
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[11] = {{53, 80.2}}},
             [npcKeys.zoneID] = zoneIDs.WETLANDS,
+            [npcKeys.friendlyToFaction] = "A",
         },
         [265375] = { -- Veteran of the Third War : https://wowhead.com/forever/npc=265375/veteran-of-the-third-war
             [npcKeys.name] = "Veteran of the Third War",
@@ -11944,6 +13046,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[17] = {{62.4, 37.6}, {62.6, 37.4}, {62.6, 37.6}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Ratchet Quartermaster",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 274021; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [265575] = { -- Gezzy Gunkgear : https://wowhead.com/forever/npc=265575/gezzy-gunkgear
             [npcKeys.name] = "Gezzy Gunkgear",
@@ -11952,6 +13056,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[33] = {{28.2, 74.8}}},
             [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Booty Bay Quartermaster",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 274022; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [265576] = { -- Rettrick : https://wowhead.com/forever/npc=265576/rettrick
             [npcKeys.name] = "Rettrick",
@@ -11960,6 +13066,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[440] = {{51.6, 28.6}}},
             [npcKeys.zoneID] = zoneIDs.TANARIS,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Gadgetzan Quartermaster",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 274023; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [265577] = { -- Zippie Fizzbolt : https://wowhead.com/forever/npc=265577/zippie-fizzbolt
             [npcKeys.name] = "Zippie Fizzbolt",
@@ -11967,6 +13075,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 58,
             [npcKeys.spawns] = {[618] = {{61.4, 38.6}}},
             [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+            [npcKeys.subName] = "Everlook Quartermaster",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 274024; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [265586] = { -- Thylaen : https://wowhead.com/forever/npc=265586/thylaen
             [npcKeys.name] = "Thylaen",
@@ -11985,6 +13095,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{61, 76.4}, {61, 76.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Guild Master",
         },
         [265675] = { -- High Order Mage : https://wowhead.com/forever/npc=265675/high-order-mage
             [npcKeys.name] = "High Order Mage",
@@ -12020,9 +13131,12 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{14.4, 64.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Bartender",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [265747] = { -- Parachute-Priest : https://wowhead.com/forever/npc=265747/parachute-priest
             [npcKeys.name] = "Parachute-Priest",
+            [npcKeys.subName] = "Steamwheedle Emergency Services",
         },
         [265756] = { -- Genn Fairweather : https://wowhead.com/forever/npc=265756/genn-fairweather
             [npcKeys.name] = "Genn Fairweather",
@@ -12031,6 +13145,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{53.8, 81.2}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Stablemaster and Riding Trainer",
+            [npcKeys.npcFlags] = 16404, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 33388 trainingcost=1000000; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 269671; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [265757] = { -- Stormy Galestrider : https://wowhead.com/forever/npc=265757/stormy-galestrider
             [npcKeys.name] = "Stormy Galestrider",
@@ -12077,6 +13193,7 @@ function ForeverBaseNpc:Load()
         },
         [265804] = { -- Elaadrin Evengale : https://wowhead.com/forever/npc=265804/elaadrin-evengale
             [npcKeys.name] = "Elaadrin Evengale",
+            [npcKeys.subName] = "Supreme Magister of The High Order",
         },
         [265809] = { -- Brakk : https://wowhead.com/forever/npc=265809/brakk
             [npcKeys.name] = "Brakk",
@@ -12087,6 +13204,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {96102, 96604, 96655, 97899, 97900, 97901, 97902, 97903, 97904, 97905, 97906, 97907, 97908},
             [npcKeys.questEnds] = {96604, 96652},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Adventurer",
         },
         [265810] = { -- Kaga Wildhoof : https://wowhead.com/forever/npc=265810/kaga-wildhoof
             [npcKeys.name] = "Kaga Wildhoof",
@@ -12096,6 +13214,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {96605, 96661, 97927, 97928, 97929, 97931, 97932, 97933, 97934, 97935, 97936, 97937},
             [npcKeys.questEnds] = {96605, 96659},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Adventurer",
         },
         [265811] = { -- Lyreena Duskblade : https://wowhead.com/forever/npc=265811/lyreena-duskblade
             [npcKeys.name] = "Lyreena Duskblade",
@@ -12106,6 +13225,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {96606, 96634, 97938, 97939, 97940, 97941, 97942, 97943, 97944, 97946, 97948, 97949, 97950},
             [npcKeys.questEnds] = {96606, 96630},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Adventurer",
         },
         [265812] = { -- Eleanor Shackleton : https://wowhead.com/forever/npc=265812/eleanor-shackleton
             [npcKeys.name] = "Eleanor Shackleton",
@@ -12116,6 +13236,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {96607, 96658, 97951, 97952, 97953, 97954, 97955, 97956, 97957, 97958, 97959, 97960, 97961},
             [npcKeys.questEnds] = {86784, 96607, 96656},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Adventurer",
         },
         [265813] = { -- Eric Brighthammer : https://wowhead.com/forever/npc=265813/eric-brighthammer
             [npcKeys.name] = "Eric Brighthammer",
@@ -12126,6 +13247,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {96031, 96044, 96046, 96047, 96050, 96055, 96056, 96057, 96058, 96608, 96629},
             [npcKeys.questEnds] = {96608, 96628},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Adventurer",
         },
         [265841] = { -- An'zalam the Keeper : https://wowhead.com/forever/npc=265841/anzalam-the-keeper
             [npcKeys.name] = "An'zalam the Keeper",
@@ -12140,11 +13262,15 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[616] = {{15.6, 50.6}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Repairs",
+            [npcKeys.npcFlags] = 16384, -- Assumption: assumptions/npc_services.toml; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [265883] = { -- Chagrak Hammerstrike : https://wowhead.com/forever/npc=265883/chagrak-hammerstrike
             [npcKeys.name] = "Chagrak Hammerstrike",
             [npcKeys.spawns] = {[616] = {{13.4, 52.4}, {13.6, 52.4}, {13.6, 52.6}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+            [npcKeys.subName] = "Repairs",
+            [npcKeys.npcFlags] = 16384, -- Assumption: assumptions/npc_services.toml; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [265892] = { -- Shok'tara : https://wowhead.com/forever/npc=265892/shoktara
             [npcKeys.name] = "Shok'tara",
@@ -12178,6 +13304,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
             [npcKeys.questEnds] = {96658},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Cooking Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2539 trainingcost=50; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [265962] = { -- Escaped Sheep : https://wowhead.com/forever/npc=265962/escaped-sheep
             [npcKeys.name] = "Escaped Sheep",
@@ -12266,6 +13394,7 @@ function ForeverBaseNpc:Load()
         },
         [266847] = { -- Anastasia Miller : https://wowhead.com/forever/npc=266847/anastasia-miller
             [npcKeys.name] = "Anastasia Miller",
+            [npcKeys.questEnds] = {96784, 96785},
         },
         [266849] = { -- Ridgeshade Lurker : https://wowhead.com/forever/npc=266849/ridgeshade-lurker
             [npcKeys.name] = "Ridgeshade Lurker",
@@ -12292,7 +13421,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Halikor",
             [npcKeys.minLevel] = 12,
             [npcKeys.maxLevel] = 12,
-            [npcKeys.spawns] = {[14] = {{39, 26.4}, {39.8, 27.8}, {40.4, 29}, {40.4, 29.8}, {40.8, 30}, {41, 30.6}, {42.4, 23.6}, {42.6, 23.4}, {42.8, 24.8}, {43.2, 23.8}, {43.6, 24}}},
+            [npcKeys.spawns] = {[14] = {{40.3, 29.1}, {40.8, 30.1}, {42.2, 23.7}, {42.8, 21.7}, {42.9, 23.2}, {43.4, 23.6}, {43.6, 24}}},
             [npcKeys.zoneID] = zoneIDs.DUROTAR,
         },
         [266860] = { -- Galestrider Chick : https://wowhead.com/forever/npc=266860/galestrider-chick
@@ -12305,6 +13434,7 @@ function ForeverBaseNpc:Load()
         },
         [266861] = { -- Nelanna Keeneye : https://wowhead.com/forever/npc=266861/nelanna-keeneye
             [npcKeys.name] = "Nelanna Keeneye",
+            [npcKeys.subName] = "Quartermaster",
         },
         [266862] = { -- Juvenile Paletusk : https://wowhead.com/forever/npc=266862/juvenile-paletusk
             [npcKeys.name] = "Juvenile Paletusk",
@@ -12324,6 +13454,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {96873},
             [npcKeys.questEnds] = {96873},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Journeyman Enchanter",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 7411 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [266883] = { -- [DNT] Kill Credit Young Paletusk : https://wowhead.com/forever/npc=266883/dnt-kill-credit-young-paletusk
             [npcKeys.name] = "[DNT] Kill Credit Young Paletusk",
@@ -12347,6 +13479,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Pexmit",
             [npcKeys.spawns] = {[616] = {{58.8, 41.8}, {59.6, 49.2}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+            [npcKeys.subName] = "Someone's Minion",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 251468; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [266940] = { -- Turroc : https://wowhead.com/forever/npc=266940/turroc
             [npcKeys.name] = "Turroc",
@@ -12373,6 +13507,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{20.8, 74.6}, {21, 74.4}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Chef",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267001] = { -- Cody : https://wowhead.com/forever/npc=267001/cody
             [npcKeys.name] = "Cody",
@@ -12381,6 +13517,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{21.6, 74}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Baker",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 4540; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267002] = { -- Luna : https://wowhead.com/forever/npc=267002/luna
             [npcKeys.name] = "Luna",
@@ -12396,6 +13534,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 12,
             [npcKeys.spawns] = {[85] = {{66.2, 63.4}, {66.2, 63.6}, {66.6, 65.4}, {66.6, 65.6}, {67, 63.4}, {67.2, 64.4}, {67.4, 67}, {67.6, 65.4}, {67.6, 66.8}, {67.8, 66.2}, {68.2, 64.2}, {68.6, 62.8}, {69, 63.6}, {69, 65.6}, {69.4, 64.8}, {69.8, 64.4}, {69.8, 64.6}, {70.4, 65.8}}},
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
+            [npcKeys.subName] = "Cult of the Damned",
         },
         [267007] = { -- Stormwind Harbor Guard : https://wowhead.com/forever/npc=267007/stormwind-harbor-guard
             [npcKeys.name] = "Stormwind Harbor Guard",
@@ -12413,6 +13552,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {96896, 98545},
             [npcKeys.questEnds] = {96896, 96899},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "The Argent Dawn",
         },
         [267009] = { -- Hadric Harlson : https://wowhead.com/forever/npc=267009/hadric-harlson
             [npcKeys.name] = "Hadric Harlson",
@@ -12423,6 +13563,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {96897, 96898, 96899},
             [npcKeys.questEnds] = {96895, 96897, 96898},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "The Argent Dawn",
         },
         [267064] = { -- Stormwind Cannoneer : https://wowhead.com/forever/npc=267064/stormwind-cannoneer
             [npcKeys.name] = "Stormwind Cannoneer",
@@ -12452,6 +13593,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[616] = {{32.6, 54.2}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Cenarion Circle",
         },
         [267113] = { -- Marrosis : https://wowhead.com/forever/npc=267113/marrosis
             [npcKeys.name] = "Marrosis",
@@ -12459,6 +13601,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[616] = {{27, 50.2}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+            [npcKeys.subName] = "Wild God",
         },
         [267118] = { -- Gilbert Gray : https://wowhead.com/forever/npc=267118/gilbert-gray
             [npcKeys.name] = "Gilbert Gray",
@@ -12486,6 +13629,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[616] = {{41.4, 45}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Wild God",
         },
         [267182] = { -- Ve'ho Manyhorns : https://wowhead.com/forever/npc=267182/veho-manyhorns
             [npcKeys.name] = "Ve'ho Manyhorns",
@@ -12493,6 +13637,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[616] = {{75.8, 32.6}, {75.8, 35}, {76.2, 34}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+            [npcKeys.subName] = "Lieutenant of the Wild King",
         },
         [267183] = { -- Outfoxed Demon : https://wowhead.com/forever/npc=267183/outfoxed-demon
             [npcKeys.name] = "Outfoxed Demon",
@@ -12506,6 +13651,7 @@ function ForeverBaseNpc:Load()
         [267214] = { -- Va'xug Firefure : https://wowhead.com/forever/npc=267214/vaxug-firefure
             [npcKeys.name] = "Va'xug Firefure",
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.questStarts] = {98252},
         },
         [267216] = { -- White Riding Kodo : https://wowhead.com/forever/npc=267216/white-riding-kodo
             [npcKeys.name] = "White Riding Kodo",
@@ -12529,6 +13675,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1] = {{29.4, 70}}},
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Mountaineer's Assistant",
         },
         [267287] = { -- Sylassa Moonglow : https://wowhead.com/forever/npc=267287/sylassa-moonglow
             [npcKeys.name] = "Sylassa Moonglow",
@@ -12601,6 +13748,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 20,
             [npcKeys.spawns] = {[17] = {{57.4, 27.2}, {57.6, 27.4}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
+            [npcKeys.subName] = "The Ravener",
         },
         [267308] = { -- Razormane Flesheater : https://wowhead.com/forever/npc=267308/razormane-flesheater
             [npcKeys.name] = "Razormane Flesheater",
@@ -12666,6 +13814,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[85] = {{32.6, 65.6}}},
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Junior Skinning Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8613 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267325] = { -- Walter Mason : https://wowhead.com/forever/npc=267325/walter-mason
             [npcKeys.name] = "Walter Mason",
@@ -12674,6 +13824,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[85] = {{32.2, 65.6}}},
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Junior Mining Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2901; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267326] = { -- Florence Nightshade : https://wowhead.com/forever/npc=267326/florence-nightshade
             [npcKeys.name] = "Florence Nightshade",
@@ -12682,6 +13834,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[85] = {{32.4, 65.2}}},
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Junior Herbalism Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [267327] = { -- Kagil : https://wowhead.com/forever/npc=267327/kagil
             [npcKeys.name] = "Kagil",
@@ -12690,6 +13844,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[14] = {{40.8, 67.8}}},
             [npcKeys.zoneID] = zoneIDs.DUROTAR,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Junior Skinning Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8613 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267328] = { -- Norzsh : https://wowhead.com/forever/npc=267328/norzsh
             [npcKeys.name] = "Norzsh",
@@ -12698,6 +13854,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[14] = {{40.4, 68}, {40.6, 68}}},
             [npcKeys.zoneID] = zoneIDs.DUROTAR,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Junior Mining Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2901; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267329] = { -- Zor'la : https://wowhead.com/forever/npc=267329/zorla
             [npcKeys.name] = "Zor'la",
@@ -12706,6 +13864,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[14] = {{42.6, 67.4}}},
             [npcKeys.zoneID] = zoneIDs.DUROTAR,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Junior Herbalism Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [267330] = { -- Nawka Wildsong : https://wowhead.com/forever/npc=267330/nawka-wildsong
             [npcKeys.name] = "Nawka Wildsong",
@@ -12713,6 +13873,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 8,
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Junior Skinning Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8613 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267331] = { -- Vartha Rockmane : https://wowhead.com/forever/npc=267331/vartha-rockmane
             [npcKeys.name] = "Vartha Rockmane",
@@ -12720,6 +13882,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 10,
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Junior Mining Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2901; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267332] = { -- Garan Sunstrider : https://wowhead.com/forever/npc=267332/garan-sunstrider
             [npcKeys.name] = "Garan Sunstrider",
@@ -12727,6 +13891,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 8,
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Junior Herbalism Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [267333] = { -- Terunne Bearshaper : https://wowhead.com/forever/npc=267333/terunne-bearshaper
             [npcKeys.name] = "Terunne Bearshaper",
@@ -12735,6 +13901,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[141] = {{59.4, 38.6}}},
             [npcKeys.zoneID] = zoneIDs.TELDRASSIL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Junior Skinning Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8613 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267334] = { -- Fanorran Stilloak : https://wowhead.com/forever/npc=267334/fanorran-stilloak
             [npcKeys.name] = "Fanorran Stilloak",
@@ -12743,6 +13911,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[141] = {{58.2, 41.4}, {58.2, 41.6}}},
             [npcKeys.zoneID] = zoneIDs.TELDRASSIL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Junior Mining Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2901; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267335] = { -- Eleyna Duskbreeze : https://wowhead.com/forever/npc=267335/eleyna-duskbreeze
             [npcKeys.name] = "Eleyna Duskbreeze",
@@ -12751,6 +13921,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[141] = {{59.8, 41.4}}},
             [npcKeys.zoneID] = zoneIDs.TELDRASSIL,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Junior Herbalism Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [267336] = { -- Brighid Stormflayer : https://wowhead.com/forever/npc=267336/brighid-stormflayer
             [npcKeys.name] = "Brighid Stormflayer",
@@ -12759,6 +13931,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1] = {{29, 67.4}, {29.2, 67.6}}},
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Junior Skinning Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 8613 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267337] = { -- Sally Swiftwrench : https://wowhead.com/forever/npc=267337/sally-swiftwrench
             [npcKeys.name] = "Sally Swiftwrench",
@@ -12767,6 +13941,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1] = {{28.8, 67.8}}},
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Junior Mining Trainer",
+            [npcKeys.npcFlags] = 20, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2575 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 2901; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [267338] = { -- Emrys Flintbeard : https://wowhead.com/forever/npc=267338/emrys-flintbeard
             [npcKeys.name] = "Emrys Flintbeard",
@@ -12775,6 +13951,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1] = {{28.8, 66.4}, {28.8, 66.6}}},
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Junior Herbalism Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [267354] = { -- Black Skeletal Horse : https://wowhead.com/forever/npc=267354/black-skeletal-horse
             [npcKeys.name] = "Black Skeletal Horse",
@@ -12878,6 +14056,7 @@ function ForeverBaseNpc:Load()
         },
         [267745] = { -- PTR Fishing Tournament Vendor : https://wowhead.com/forever/npc=267745/ptr-fishing-tournament-vendor
             [npcKeys.name] = "PTR Fishing Tournament Vendor",
+            [npcKeys.subName] = "Stranglethorn Fishing Extravaganza",
         },
         [267806] = { -- "Flipfin" : https://wowhead.com/forever/npc=267806/flipfin
             [npcKeys.name] = "\"Flipfin\"",
@@ -12905,6 +14084,7 @@ function ForeverBaseNpc:Load()
         },
         [267963] = { -- Quadcopter : https://wowhead.com/forever/npc=267963/quadcopter
             [npcKeys.name] = "Quadcopter",
+            [npcKeys.subName] = "D.E.L.T.A",
         },
         [268044] = { -- Loren Ravenlock : https://wowhead.com/forever/npc=268044/loren-ravenlock
             [npcKeys.name] = "Loren Ravenlock",
@@ -12953,6 +14133,7 @@ function ForeverBaseNpc:Load()
         },
         [268231] = { -- Ta'shkal : https://wowhead.com/forever/npc=268231/tashkal
             [npcKeys.name] = "Ta'shkal",
+            [npcKeys.subName] = "Escaped Experiment",
         },
         [268238] = { -- Nordun Steadysight : https://wowhead.com/forever/npc=268238/nordun-steadysight
             [npcKeys.name] = "Nordun Steadysight",
@@ -12961,6 +14142,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[12] = {{42, 66.4}, {42, 66.6}}},
             [npcKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Traveling Ranged Weapon Salesman",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2504; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [268257] = { -- Dummy Mechanical : https://wowhead.com/forever/npc=268257/dummy-mechanical
             [npcKeys.name] = "Dummy Mechanical",
@@ -12994,6 +14177,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{17.8, 66}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Highborne",
         },
         [268433] = { -- Nub : https://wowhead.com/forever/npc=268433/nub
             [npcKeys.name] = "Nub",
@@ -13028,6 +14212,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 55,
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Sun Priest of An'she",
         },
         [268558] = { -- Chakuyak : https://wowhead.com/forever/npc=268558/chakuyak
             [npcKeys.name] = "Chakuyak",
@@ -13059,6 +14244,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {97244, 97245, 97257},
             [npcKeys.questEnds] = {97243, 97244, 97245},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Windshapers",
         },
         [268602] = { -- Skypriest Faladiel : https://wowhead.com/forever/npc=268602/skypriest-faladiel
             [npcKeys.name] = "Skypriest Faladiel",
@@ -13074,6 +14260,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 10,
             [npcKeys.spawns] = {[16593] = {{42.4, 69}, {42.6, 69.2}, {42.8, 69.6}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+            [npcKeys.subName] = "Spirit of Mischief",
         },
         [268606] = { -- Thera Duskwhisper : https://wowhead.com/forever/npc=268606/thera-duskwhisper
             [npcKeys.name] = "Thera Duskwhisper",
@@ -13110,6 +14297,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{62, 81.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Fruit Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 4536; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [268677] = { -- Skeleton : https://wowhead.com/forever/npc=268677/skeleton
             [npcKeys.name] = "Skeleton",
@@ -13181,6 +14370,7 @@ function ForeverBaseNpc:Load()
         },
         [268705] = { -- Aka'rai : https://wowhead.com/forever/npc=268705/akarai
             [npcKeys.name] = "Aka'rai",
+            [npcKeys.questStarts] = {97265},
         },
         [268707] = { -- Prairie Wolf Pup : https://wowhead.com/forever/npc=268707/prairie-wolf-pup
             [npcKeys.name] = "Prairie Wolf Pup",
@@ -13201,6 +14391,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1637] = {{36.6, 29}, {39, 29.2}, {40, 30}, {40.4, 29.2}, {40.6, 28.6}, {41, 29.6}, {41.6, 30}, {41.6, 30.8}, {42.4, 32}, {42.4, 33}, {42.6, 33}, {42.8, 33.6}, {43.2, 35.2}, {44, 35.4}, {44.2, 35.8}, {44.4, 36.6}, {44.6, 36.2}, {45.8, 36.2}, {47.2, 35.2}, {47.4, 36}, {48, 35.4}, {49.4, 34.8}, {51, 34.8}, {54.4, 36}, {54.6, 35}, {54.8, 35.8}, {56.4, 36.4}, {56.4, 37.2}, {56.6, 37}, {57, 37.6}, {57.4, 38.6}, {58, 38.2}, {58.2, 38.8}, {59, 39.4}, {59.2, 40.2}, {59.6, 39.6}, {60, 40.8}, {60.6, 41.2}, {60.6, 41.8}, {60.8, 40.4}, {62, 39.6}, {62.4, 39.4}, {63, 38.6}, {63.4, 38.4}, {63.6, 38.2}, {64.2, 37.4}, {64.6, 37.4}, {64.8, 38.2}, {65.4, 39.4}, {65.4, 39.6}, {65.8, 40}, {66, 40.6}, {66.4, 22.8}, {66.8, 39.8}, {67.4, 39}, {68, 13.8}, {68, 36.8}, {68, 38.6}, {68.4, 38}, {69, 16.2}, {69, 28.4}, {69.2, 37.2}, {69.2, 37.6}, {69.4, 18}, {69.4, 36.4}, {69.6, 18.2}, {69.8, 34.6}, {69.8, 36.6}, {70.2, 36}, {70.4, 19.2}, {70.6, 18.6}, {70.6, 35.6}, {71, 35.2}, {71.2, 33.4}, {71.2, 34.4}, {71.4, 26.2}, {71.4, 31}, {71.6, 26.8}, {71.6, 33.6}, {71.8, 31.8}, {71.8, 32.6}, {72, 28}, {72, 31.2}, {72.2, 19.4}, {72.2, 24.8}, {72.4, 29.8}, {72.6, 31.2}, {73, 20.8}, {73, 21.8}, {73, 23}}},
             [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Girl with Puppies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 277508; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [268761] = { -- Randal : https://wowhead.com/forever/npc=268761/randal
             [npcKeys.name] = "Randal",
@@ -13239,6 +14431,7 @@ function ForeverBaseNpc:Load()
         },
         [268900] = { -- Dron : https://wowhead.com/forever/npc=268900/dron
             [npcKeys.name] = "Dron",
+            [npcKeys.subName] = "The Iron Foot",
         },
         [268907] = { -- Bock : https://wowhead.com/forever/npc=268907/bock
             [npcKeys.name] = "Bock",
@@ -13252,6 +14445,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 15,
             [npcKeys.spawns] = {[406] = {{48.6, 39.8}}},
             [npcKeys.zoneID] = zoneIDs.STONETALON_MOUNTAINS,
+            [npcKeys.questStarts] = {86574},
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [268992] = { -- Zimmix Sputterspark : https://wowhead.com/forever/npc=268992/zimmix-sputterspark
             [npcKeys.name] = "Zimmix Sputterspark",
@@ -13277,6 +14472,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {97485},
             [npcKeys.questEnds] = {97485},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Sun Priest of An'she",
         },
         [269075] = { -- Snow Leopard Prowler : https://wowhead.com/forever/npc=269075/snow-leopard-prowler
             [npcKeys.name] = "Snow Leopard Prowler",
@@ -13294,6 +14490,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[130] = {{68.4, 45.4}, {68.6, 45.2}}},
             [npcKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
+            [npcKeys.questStarts] = {92457, 92458, 92459, 96984},
+            [npcKeys.questEnds] = {92432, 92434, 92457, 92458},
             [npcKeys.friendlyToFaction] = "AH",
         },
         [269133] = { -- Skeleton : https://wowhead.com/forever/npc=269133/skeleton
@@ -13327,6 +14525,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[406] = {{46, 60}}},
             [npcKeys.zoneID] = zoneIDs.STONETALON_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Kodo Mounts",
         },
         [269153] = { -- Mountaineer Ylva : https://wowhead.com/forever/npc=269153/mountaineer-ylva
             [npcKeys.name] = "Mountaineer Ylva",
@@ -13362,12 +14561,16 @@ function ForeverBaseNpc:Load()
         },
         [269230] = { -- Kur'gok : https://wowhead.com/forever/npc=269230/kurgok
             [npcKeys.name] = "Kur'gok",
+            [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 128, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.
         },
         [269232] = { -- Spread Incense : https://wowhead.com/forever/npc=269232/spread-incense
             [npcKeys.name] = "Spread Incense",
         },
         [269234] = { -- Ettina Humblerange : https://wowhead.com/forever/npc=269234/ettina-humblerange
             [npcKeys.name] = "Ettina Humblerange",
+            [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 128, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.
         },
         [269254] = { -- Famished Blackworg : https://wowhead.com/forever/npc=269254/famished-blackworg
             [npcKeys.name] = "Famished Blackworg",
@@ -13440,6 +14643,7 @@ function ForeverBaseNpc:Load()
         },
         [269577] = { -- Dorgaron : https://wowhead.com/forever/npc=269577/dorgaron
             [npcKeys.name] = "Dorgaron",
+            [npcKeys.subName] = "Explorers' League",
         },
         [269647] = { -- Mus'hale : https://wowhead.com/forever/npc=269647/mushale
             [npcKeys.name] = "Mus'hale",
@@ -13511,6 +14715,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Cady Lloydriel",
             [npcKeys.spawns] = {[16591] = {{66.4, 82.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Ranger Captain",
         },
         [269697] = { -- Luna : https://wowhead.com/forever/npc=269697/luna
             [npcKeys.name] = "Luna",
@@ -13525,6 +14730,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Thaddeus Brillyard",
             [npcKeys.spawns] = {[16591] = {{64.8, 83.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Master-at-Arms",
         },
         [269729] = { -- Risen Warhorse : https://wowhead.com/forever/npc=269729/risen-warhorse
             [npcKeys.name] = "Risen Warhorse",
@@ -13564,12 +14770,16 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 50,
             [npcKeys.spawns] = {[1497] = {{49, 68.6}, {49, 71.4}, {49.2, 69.8}, {50, 70.4}}},
             [npcKeys.zoneID] = zoneIDs.UNDERCITY,
+            [npcKeys.questStarts] = {97985},
+            [npcKeys.questEnds] = {97985},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Understudy of the Royal Apothecary Society",
         },
         [270054] = { -- Tove Redstone : https://wowhead.com/forever/npc=270054/tove-redstone
             [npcKeys.name] = "Tove Redstone",
             [npcKeys.spawns] = {[47] = {{12, 47}}},
             [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+            [npcKeys.subName] = "Ambassador",
         },
         [270094] = { -- Stormheart : https://wowhead.com/forever/npc=270094/stormheart
             [npcKeys.name] = "Stormheart",
@@ -13583,6 +14793,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 58,
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Magister",
         },
         [270191] = { -- Fallen Skyborne : https://wowhead.com/forever/npc=270191/fallen-skyborne
             [npcKeys.name] = "Fallen Skyborne",
@@ -13615,6 +14826,7 @@ function ForeverBaseNpc:Load()
         },
         [270263] = { -- Farseer Maret Firetend : https://wowhead.com/forever/npc=270263/farseer-maret-firetend
             [npcKeys.name] = "Farseer Maret Firetend",
+            [npcKeys.subName] = "Shaman Trainer",
         },
         [270269] = { -- Arbal : https://wowhead.com/forever/npc=270269/arbal
             [npcKeys.name] = "Arbal",
@@ -13625,18 +14837,21 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {98013},
             [npcKeys.questEnds] = {98013},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Ancient of War",
         },
         [270278] = { -- Bordolf Axegrim : https://wowhead.com/forever/npc=270278/bordolf-axegrim
             [npcKeys.name] = "Bordolf Axegrim",
+            [npcKeys.subName] = "Warrior Trainer",
         },
         [270280] = { -- Torin Treehame : https://wowhead.com/forever/npc=270280/torin-treehame
             [npcKeys.name] = "Torin Treehame",
+            [npcKeys.subName] = "Hunter Trainer",
         },
         [270294] = { -- Baron Marinous : https://wowhead.com/forever/npc=270294/baron-marinous
             [npcKeys.name] = "Baron Marinous",
             [npcKeys.minLevel] = 21,
             [npcKeys.maxLevel] = 21,
-            [npcKeys.spawns] = {[148] = {{59.2, 22.8}}},
+            [npcKeys.spawns] = {[148] = {{59.2, 22.6}}},
             [npcKeys.zoneID] = zoneIDs.DARKSHORE,
         },
         [270298] = { -- Child of Jai'vhanel : https://wowhead.com/forever/npc=270298/child-of-jaivhanel
@@ -13701,6 +14916,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Deathstalker Masoj",
             [npcKeys.spawns] = {[267] = {{64.2, 54}}},
             [npcKeys.zoneID] = zoneIDs.HILLSBRAD_FOOTHILLS,
+            [npcKeys.questStarts] = {98095},
+            [npcKeys.questEnds] = {98094, 98095},
         },
         [270451] = { -- Executor Asharell : https://wowhead.com/forever/npc=270451/executor-asharell
             [npcKeys.name] = "Executor Asharell",
@@ -13713,6 +14930,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.questStarts] = {6121},
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Druid Trainer",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 99 trainingcost=300; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [270513] = { -- Spellweaver Thaldris : https://wowhead.com/forever/npc=270513/spellweaver-thaldris
             [npcKeys.name] = "Spellweaver Thaldris",
@@ -13721,6 +14940,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{17.8, 60.4}, {17.8, 60.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Transmogrifier",
         },
         [270542] = { -- Brown Horse : https://wowhead.com/forever/npc=270542/brown-horse
             [npcKeys.name] = "Brown Horse",
@@ -13739,16 +14959,19 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{65.4, 89.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 4603; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [270570] = { -- Justine Kai : https://wowhead.com/forever/npc=270570/justine-kai
             [npcKeys.name] = "Justine Kai",
             [npcKeys.spawns] = {[16591] = {{64, 80.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Quartermaster",
         },
         [270571] = { -- Donald Armstrong : https://wowhead.com/forever/npc=270571/donald-armstrong
             [npcKeys.name] = "Donald Armstrong",
             [npcKeys.spawns] = {[16591] = {{62.2, 85.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Knight-Paladin",
         },
         [270572] = { -- Emily : https://wowhead.com/forever/npc=270572/emily
             [npcKeys.name] = "Emily",
@@ -13770,6 +14993,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 55,
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Transmogrifier",
         },
         [270582] = { -- Mon'ye : https://wowhead.com/forever/npc=270582/monye
             [npcKeys.name] = "Mon'ye",
@@ -13778,12 +15002,13 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1637] = {{46, 53.4}, {46.2, 53.6}}},
             [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Transmogrifier",
         },
         [270589] = { -- Nightveiled Rotheap : https://wowhead.com/forever/npc=270589/nightveiled-rotheap
             [npcKeys.name] = "Nightveiled Rotheap",
             [npcKeys.minLevel] = 31,
             [npcKeys.maxLevel] = 32,
-            [npcKeys.spawns] = {[11] = {{11.6, 52.6}, {12.6, 49.6}, {13, 48.8}, {16, 44.4}, {16.2, 44.6}, {16.2, 48.4}, {17.4, 43.6}, {17.6, 33.6}, {18, 25}, {18, 42.4}, {18.4, 47.6}, {19.6, 43.4}, {19.8, 43.6}, {20, 45.8}, {20.2, 27.4}, {20.2, 28}, {20.2, 49.4}, {20.4, 26.2}, {20.4, 44.6}, {20.8, 43.4}, {21, 44.2}, {21.6, 45.2}, {21.8, 28.2}, {21.8, 43.4}, {22.6, 27.8}, {22.8, 27.2}, {24.6, 34}, {25.2, 42.6}, {25.8, 42.2}, {26.2, 21.2}, {26.2, 23.8}, {26.6, 41.8}, {27, 20.4}, {27.4, 18.2}, {27.4, 21.6}, {27.4, 23}, {27.6, 26.6}, {27.8, 39.6}, {28, 18.4}, {28, 41.2}, {28.4, 29.4}, {28.8, 25.2}, {28.8, 31.6}, {28.8, 41}, {29.4, 30.6}, {29.4, 33.8}, {29.6, 30.4}, {29.8, 23.2}, {30, 31.2}, {31, 23.8}, {31.2, 39.6}, {32.6, 21.2}, {32.8, 38.6}, {33, 35.4}, {33.2, 22.6}, {34.2, 24.8}, {34.8, 25}, {35.6, 24.6}, {37.8, 32.2}, {37.8, 32.8}, {39.4, 37.4}, {41, 36}, {41.2, 37.6}, {42.6, 28.8}, {43.2, 30.4}, {43.6, 38}, {43.8, 31.8}, {44, 29}, {44.8, 38.6}, {46, 32.6}, {47.4, 38.8}, {47.6, 34}, {48.4, 39.4}, {49, 36.2}, {49.2, 39.4}, {49.6, 35.8}, {49.8, 35.2}, {49.8, 38.4}, {50.2, 40.6}, {52, 36.2}, {53.4, 45.2}, {57.6, 55.6}}},
+            [npcKeys.spawns] = {[11] = {{21.2, 43.2}, {21.9, 43.3}, {23, 43.6}, {42, 28.7}, {42.8, 27.8}, {54.1, 40.6}}},
             [npcKeys.zoneID] = zoneIDs.WETLANDS,
         },
         [270637] = { -- Howin Kindfeather : https://wowhead.com/forever/npc=270637/howin-kindfeather
@@ -13792,6 +15017,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 32,
             [npcKeys.spawns] = {[11] = {{49.4, 42}}},
             [npcKeys.zoneID] = zoneIDs.WETLANDS,
+            [npcKeys.questStarts] = {98245, 98291, 98297, 98300},
+            [npcKeys.questEnds] = {98230, 98245, 98291, 98297},
             [npcKeys.friendlyToFaction] = "A",
         },
         [270664] = { -- Venomweb Spitter : https://wowhead.com/forever/npc=270664/venomweb-spitter
@@ -13817,6 +15044,7 @@ function ForeverBaseNpc:Load()
         },
         [270728] = { -- Miss Melly : https://wowhead.com/forever/npc=270728/miss-melly
             [npcKeys.name] = "Miss Melly",
+            [npcKeys.subName] = "Drazzit's Pack Kodo",
         },
         [270772] = { -- Witch Doctor Ti'ik : https://wowhead.com/forever/npc=270772/witch-doctor-tiik
             [npcKeys.name] = "Witch Doctor Ti'ik",
@@ -13825,6 +15053,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Qujo",
             [npcKeys.spawns] = {[47] = {{77.8, 78}}},
             [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [270807] = { -- Hexed Larva : https://wowhead.com/forever/npc=270807/hexed-larva
             [npcKeys.name] = "Hexed Larva",
@@ -13833,6 +15062,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Sylessa Duskwhisper",
             [npcKeys.spawns] = {[11] = {{8, 55.8}}},
             [npcKeys.zoneID] = zoneIDs.WETLANDS,
+            [npcKeys.questStarts] = {98209},
         },
         [270846] = { -- Twilight Shadowmancer : https://wowhead.com/forever/npc=270846/twilight-shadowmancer
             [npcKeys.name] = "Twilight Shadowmancer",
@@ -13844,24 +15074,31 @@ function ForeverBaseNpc:Load()
         },
         [270882] = { -- Zul'Alai : https://wowhead.com/forever/npc=270882/zulalai
             [npcKeys.name] = "Zul'Alai",
+            [npcKeys.subName] = "Staging Area 1",
         },
         [270883] = { -- Var'Taka : https://wowhead.com/forever/npc=270883/vartaka
             [npcKeys.name] = "Var'Taka",
+            [npcKeys.subName] = "Staging Area 2",
         },
         [270884] = { -- Captain Dreadrise : https://wowhead.com/forever/npc=270884/captain-dreadrise
             [npcKeys.name] = "Captain Dreadrise",
+            [npcKeys.subName] = "Staging Area 3",
         },
         [270885] = { -- Deathless Marrow : https://wowhead.com/forever/npc=270885/deathless-marrow
             [npcKeys.name] = "Deathless Marrow",
+            [npcKeys.subName] = "Staging Area 4",
         },
         [270886] = { -- Min'loth the Serpent : https://wowhead.com/forever/npc=270886/minloth-the-serpent
             [npcKeys.name] = "Min'loth the Serpent",
+            [npcKeys.subName] = "Staging Area 6",
         },
         [270887] = { -- Primeval Elemental : https://wowhead.com/forever/npc=270887/primeval-elemental
             [npcKeys.name] = "Primeval Elemental",
+            [npcKeys.subName] = "Staging Area 4",
         },
         [270888] = { -- Gill : https://wowhead.com/forever/npc=270888/gill
             [npcKeys.name] = "Gill",
+            [npcKeys.subName] = "Staging Area 5",
         },
         [270892] = { -- Goaz Warder : https://wowhead.com/forever/npc=270892/goaz-warder
             [npcKeys.name] = "Goaz Warder",
@@ -13898,6 +15135,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{64.6, 84.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Bartender",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [271006] = { -- Christina Von Stavern : https://wowhead.com/forever/npc=271006/christina-von-stavern
             [npcKeys.name] = "Christina Von Stavern",
@@ -13906,6 +15145,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{64.6, 84.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Waitress",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [271007] = { -- Interrogator Ravenwing : https://wowhead.com/forever/npc=271007/interrogator-ravenwing
             [npcKeys.name] = "Interrogator Ravenwing",
@@ -13950,6 +15191,7 @@ function ForeverBaseNpc:Load()
         },
         [271181] = { -- Eye of Kilrogg : https://wowhead.com/forever/npc=271181/eye-of-kilrogg
             [npcKeys.name] = "Eye of Kilrogg",
+            [npcKeys.questEnds] = {98252},
         },
         [271182] = { -- Credit : https://wowhead.com/forever/npc=271182/credit
             [npcKeys.name] = "Credit",
@@ -13959,7 +15201,13 @@ function ForeverBaseNpc:Load()
         },
         [271322] = { -- Essene Villard : https://wowhead.com/forever/npc=271322/essene-villard
             [npcKeys.name] = "Essene Villard",
+            [npcKeys.minLevel] = 22,
+            [npcKeys.maxLevel] = 22,
+            [npcKeys.spawns] = {[11] = {{51.4, 9}, {51.6, 9}}},
             [npcKeys.zoneID] = zoneIDs.WETLANDS,
+            [npcKeys.questStarts] = {88757, 88758},
+            [npcKeys.questEnds] = {87318, 88757},
+            [npcKeys.friendlyToFaction] = "A",
         },
         [271332] = { -- Aerie Gryphon : https://wowhead.com/forever/npc=271332/aerie-gryphon
             [npcKeys.name] = "Aerie Gryphon",
@@ -14041,6 +15289,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{59.4, 75.8}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Artisan Weapon Crafter",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 277104; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [271478] = { -- Elaria Anvilwind : https://wowhead.com/forever/npc=271478/elaria-anvilwind
             [npcKeys.name] = "Elaria Anvilwind",
@@ -14049,6 +15299,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{59.4, 76}, {59.6, 76}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Artisan Armorsmith",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 277080; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [271480] = { -- Taliaa Brightsky : https://wowhead.com/forever/npc=271480/taliaa-brightsky
             [npcKeys.name] = "Taliaa Brightsky",
@@ -14057,11 +15309,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{59.2, 76.2}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Artisan Clothier",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 273812; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [271481] = { -- Captive Fire Elemental : https://wowhead.com/forever/npc=271481/captive-fire-elemental
             [npcKeys.name] = "Captive Fire Elemental",
             [npcKeys.spawns] = {[11] = {{45.6, 16.6}}},
             [npcKeys.zoneID] = zoneIDs.WETLANDS,
+            [npcKeys.questStarts] = {87491},
         },
         [271483] = { -- Ergaan Eastwind : https://wowhead.com/forever/npc=271483/ergaan-eastwind
             [npcKeys.name] = "Ergaan Eastwind",
@@ -14070,6 +15325,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{59.6, 75.8}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Artisan Leather Goods",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 277086; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [271486] = { -- Wendigo Shaman : https://wowhead.com/forever/npc=271486/wendigo-shaman
             [npcKeys.name] = "Wendigo Shaman",
@@ -14163,6 +15420,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 23,
             [npcKeys.spawns] = {[493] = {{70.6, 61.2}, {72, 62}, {72, 62.6}, {72.4, 66.4}, {73, 64.2}, {73.2, 66.4}, {73.6, 68}, {73.8, 67.4}, {74.4, 66}, {74.8, 64.8}, {75, 66.6}}},
             [npcKeys.zoneID] = zoneIDs.MOONGLADE,
+            [npcKeys.subName] = "Druid of the Claw",
         },
         [271707] = { -- Juvenile Cloudrunner : https://wowhead.com/forever/npc=271707/juvenile-cloudrunner
             [npcKeys.name] = "Juvenile Cloudrunner",
@@ -14182,7 +15440,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Cloudrunner",
             [npcKeys.minLevel] = 6,
             [npcKeys.maxLevel] = 6,
-            [npcKeys.spawns] = {[16593] = {{36.4, 58}, {36.4, 58.6}, {36.6, 58.4}, {37, 58.6}, {38.8, 53.4}, {39, 53.8}, {39.6, 53.4}, {39.6, 58}, {41, 52.4}, {41.2, 52.6}, {41.2, 62.8}, {41.6, 52}, {42, 61.2}, {42.6, 60.6}, {43.6, 58.8}, {43.6, 60}, {43.8, 69.2}, {44.2, 68}, {44.6, 57.8}, {44.6, 66.8}, {46, 59.8}, {46, 68}, {46.4, 57.8}, {46.4, 67.4}, {47.2, 57.8}, {47.8, 63}, {48.6, 63.6}, {49, 62.4}, {49.2, 66}, {50.6, 51.4}, {50.6, 52.2}, {50.6, 57.4}, {52.2, 41.2}, {52.4, 42.2}, {52.4, 57.4}, {52.6, 42.4}, {52.6, 57.2}, {52.6, 62.4}, {52.8, 58}, {53.2, 43.6}, {53.8, 44.2}, {54.2, 44.8}, {54.6, 61.2}, {54.8, 45}, {54.8, 50.4}, {54.8, 60.2}, {55, 50.6}, {55.4, 57.2}, {57.2, 56.4}, {57.4, 56.6}, {58, 57}, {58.4, 58.2}}},
+            [npcKeys.spawns] = {[16593] = {{39, 53.8}, {41, 52.4}, {41.2, 52.6}, {42, 61.2}, {43.4, 69.6}, {54.8, 50.4}, {57.6, 56.5}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
         [271732] = { -- Thicket Stalker : https://wowhead.com/forever/npc=271732/thicket-stalker
@@ -14259,9 +15517,14 @@ function ForeverBaseNpc:Load()
         },
         [271866] = { -- Night Watch Guard : https://wowhead.com/forever/npc=271866/night-watch-guard
             [npcKeys.name] = "Night Watch Guard",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[10] = {{17, 54.8}, {17.2, 54.4}, {23.4, 33.4}, {23.6, 33.2}, {45.4, 79}, {45.4, 79.6}, {45.6, 79}, {47.4, 59.8}, {47.6, 59.4}, {47.6, 59.6}, {66.2, 33.8}, {68.8, 69.2}, {68.8, 69.6}}},
             [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
             [npcKeys.questStarts] = {99267},
             [npcKeys.questEnds] = {99267},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Night Watch",
         },
         [271867] = { -- Pachimari : https://wowhead.com/forever/npc=271867/pachimari
             [npcKeys.name] = "Pachimari",
@@ -14411,6 +15674,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16593] = {{57.8, 52}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 277056; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [272046] = { -- Witchmother Arysa : https://wowhead.com/forever/npc=272046/witchmother-arysa
             [npcKeys.name] = "Witchmother Arysa",
@@ -14423,6 +15687,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Saeyleenan",
             [npcKeys.spawns] = {[16593] = {{48.4, 32}, {48.8, 32.8}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+            [npcKeys.subName] = "Great Windborne Cat Spirit",
         },
         [272051] = { -- Aana : https://wowhead.com/forever/npc=272051/aana
             [npcKeys.name] = "Aana",
@@ -14436,6 +15701,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {98404, 98738},
             [npcKeys.questEnds] = {98341, 98404},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Great Windborne Cat Spirit",
         },
         [272096] = { -- Befouled Webwood : https://wowhead.com/forever/npc=272096/befouled-webwood
             [npcKeys.name] = "Befouled Webwood",
@@ -14475,6 +15741,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.questStarts] = {98430},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Longwalker",
         },
         [272210] = { -- Orc Mage : https://wowhead.com/forever/npc=272210/orc-mage
             [npcKeys.name] = "Orc Mage",
@@ -14547,11 +15814,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Lost Stalker",
             [npcKeys.minLevel] = 24,
             [npcKeys.maxLevel] = 24,
-            [npcKeys.spawns] = {[10] = {{33.2, 43.2}, {41, 21.4}, {51, 63.2}, {56.4, 60.8}}},
+            [npcKeys.spawns] = {[10] = {{67.6, 30.4}, {67.9, 31.1}}},
             [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
         },
         [272273] = { -- Lost Watcher : https://wowhead.com/forever/npc=272273/lost-watcher
             [npcKeys.name] = "Lost Watcher",
+            [npcKeys.minLevel] = 24,
+            [npcKeys.maxLevel] = 24,
+            [npcKeys.spawns] = {[10] = {{15.4, 61}, {16, 62.4}, {16, 62.8}, {16.4, 60.8}, {19, 62.6}, {19.2, 62}, {19.6, 62.2}, {19.8, 62.6}, {29, 64.6}, {30.2, 60.6}, {30.6, 60}, {30.6, 60.6}, {38.6, 73.4}, {38.6, 74}, {42.2, 65.8}, {42.2, 66.8}, {42.4, 71.2}, {42.6, 66.5}, {43, 66.2}, {43, 70}, {43, 70.6}, {43.6, 67.2}, {62.6, 65.8}, {62.8, 65.4}, {75.2, 22.8}, {75.8, 23.2}, {76, 21.8}}},
             [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
         },
         [272279] = { -- Swiftwind : https://wowhead.com/forever/npc=272279/swiftwind
@@ -14568,7 +15838,9 @@ function ForeverBaseNpc:Load()
         },
         [272291] = { -- Lost Knight : https://wowhead.com/forever/npc=272291/lost-knight
             [npcKeys.name] = "Lost Knight",
-            [npcKeys.spawns] = {[10] = {{24.2, 41}, {24.6, 32.2}, {80.6, 57.8}, {81, 67.8}}},
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[10] = {{15.8, 35.3}, {24.6, 32.4}, {77.4, 71}, {77.6, 71.2}, {78.3, 71.5}, {80.3, 57.8}}},
             [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
         },
         [272309] = { -- Tux : https://wowhead.com/forever/npc=272309/tux
@@ -14589,6 +15861,7 @@ function ForeverBaseNpc:Load()
         },
         [272328] = { -- Mini Diablo : https://wowhead.com/forever/npc=272328/mini-diablo
             [npcKeys.name] = "Mini Diablo",
+            [npcKeys.subName] = "Lord of Terror",
         },
         [272329] = { -- Zergling : https://wowhead.com/forever/npc=272329/zergling
             [npcKeys.name] = "Zergling",
@@ -14628,6 +15901,8 @@ function ForeverBaseNpc:Load()
         },
         [272391] = { -- Moonstrider : https://wowhead.com/forever/npc=272391/moonstrider
             [npcKeys.name] = "Moonstrider",
+            [npcKeys.spawns] = {[493] = {{47.6, 70.6}}},
+            [npcKeys.zoneID] = zoneIDs.MOONGLADE,
         },
         [272392] = { -- Giant Moonstrider : https://wowhead.com/forever/npc=272392/giant-moonstrider
             [npcKeys.name] = "Giant Moonstrider",
@@ -14650,6 +15925,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Goren Grayfellow",
             [npcKeys.spawns] = {[16591] = {{37.8, 76}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.subName] = "Armorer",
         },
         [272437] = { -- Marla Bell : https://wowhead.com/forever/npc=272437/marla-bell
             [npcKeys.name] = "Marla Bell",
@@ -14658,13 +15934,16 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{62.2, 86}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Reagent Vendor",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 5565; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [272450] = { -- Ol' Sandy : https://wowhead.com/forever/npc=272450/ol-sandy
             [npcKeys.name] = "Ol' Sandy",
             [npcKeys.minLevel] = 22,
             [npcKeys.maxLevel] = 22,
-            [npcKeys.spawns] = {[10] = {{17.2, 53.8}, {17.8, 53.4}, {17.8, 53.6}}},
+            [npcKeys.spawns] = {[10] = {{17.4, 54}, {17.6, 53.6}}},
             [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [272470] = { -- [DNT] Loot Scarab : https://wowhead.com/forever/npc=272470/dnt-loot-scarab
             [npcKeys.name] = "[DNT] Loot Scarab",
@@ -14707,6 +15986,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.UNDERCITY,
             [npcKeys.questEnds] = {98545},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Visionary, Entrepeneur, Barber",
         },
         [272527] = { -- Ironforge Guard : https://wowhead.com/forever/npc=272527/ironforge-guard
             [npcKeys.name] = "Ironforge Guard",
@@ -14743,6 +16023,7 @@ function ForeverBaseNpc:Load()
         },
         [272612] = { -- Performer : https://wowhead.com/forever/npc=272612/performer
             [npcKeys.name] = "Performer",
+            [npcKeys.subName] = "The Daring Dancers",
         },
         [272614] = { -- Cappy : https://wowhead.com/forever/npc=272614/cappy
             [npcKeys.name] = "Cappy",
@@ -14753,6 +16034,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Elder Farseer",
         },
         [272641] = { -- Samantha Wheeler : https://wowhead.com/forever/npc=272641/samantha-wheeler
             [npcKeys.name] = "Samantha Wheeler",
@@ -14766,6 +16048,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{63.4, 82.4}, {63.6, 82.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Cooking Supplier",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
         [272690] = { -- Tavern Regular : https://wowhead.com/forever/npc=272690/tavern-regular
             [npcKeys.name] = "Tavern Regular",
@@ -14839,6 +16123,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {98512},
             [npcKeys.questEnds] = {98512},
             [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Peacekeeper",
         },
         [273057] = { -- Fyrenz Vishonar : https://wowhead.com/forever/npc=273057/fyrenz-vishonar
             [npcKeys.name] = "Fyrenz Vishonar",
@@ -15025,10 +16310,11 @@ function ForeverBaseNpc:Load()
         },
         [274298] = { -- Rhahk'Zor : https://wowhead.com/forever/npc=274298/rhahkzor
             [npcKeys.name] = "Rhahk'Zor",
+            [npcKeys.subName] = "The Foreman",
         },
         [274300] = { -- Coldrasp : https://wowhead.com/forever/npc=274300/coldrasp
             [npcKeys.name] = "Coldrasp",
-            [npcKeys.spawns] = {[85] = {{19.4, 64.4}, {19.8, 65}}},
+            [npcKeys.spawns] = {[85] = {{19.2, 64.8}, {19.4, 64.4}, {19.8, 65}}},
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
         },
         [274334] = { -- Tallstrider Hatchling : https://wowhead.com/forever/npc=274334/tallstrider-hatchling
@@ -15161,6 +16447,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1637] = {{40.6, 72.6}, {41.2, 71.8}}},
             [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "An'drak's Pet",
         },
         [274838] = { -- Maximus Warwick : https://wowhead.com/forever/npc=274838/maximus-warwick
             [npcKeys.name] = "Maximus Warwick",
@@ -15250,6 +16537,7 @@ function ForeverBaseNpc:Load()
         },
         [274883] = { -- Deluxe Banker : https://wowhead.com/forever/npc=274883/deluxe-banker
             [npcKeys.name] = "Deluxe Banker",
+            [npcKeys.subName] = "For Your Every Day Banking Needs",
         },
         [274902] = { -- Stormwind City Defender : https://wowhead.com/forever/npc=274902/stormwind-city-defender
             [npcKeys.name] = "Stormwind City Defender",
@@ -15278,6 +16566,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 12,
             [npcKeys.spawns] = {[16593] = {{59.6, 73}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+            [npcKeys.friendlyToFaction] = "H",
         },
         [274909] = { -- Eviatar Achitov : https://wowhead.com/forever/npc=274909/eviatar-achitov
             [npcKeys.name] = "Eviatar Achitov",
@@ -15304,7 +16593,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Max",
             [npcKeys.minLevel] = 1,
             [npcKeys.maxLevel] = 1,
-            [npcKeys.spawns] = {[85] = {{20.8, 47.2}, {21.2, 47.8}, {21.2, 54.2}, {21.4, 53.2}, {21.8, 49.4}, {21.8, 51.4}}},
+            [npcKeys.spawns] = {[85] = {{20.4, 47.6}, {21, 47.4}, {21.2, 47.8}, {21.2, 54.2}, {21.2, 54.6}, {21.4, 53.2}, {21.6, 48.2}, {21.6, 52.4}, {21.8, 49}, {21.8, 51.4}, {22.2, 49.6}}},
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
             [npcKeys.friendlyToFaction] = "H",
         },
@@ -15366,6 +16655,7 @@ function ForeverBaseNpc:Load()
         },
         [274938] = { -- Waylaid Supply Guy : https://wowhead.com/forever/npc=274938/waylaid-supply-guy
             [npcKeys.name] = "Waylaid Supply Guy",
+            [npcKeys.subName] = "PTR - Crate Turn-In Reagents",
         },
         [274940] = { -- Annabella Junelight : https://wowhead.com/forever/npc=274940/annabella-junelight
             [npcKeys.name] = "Annabella Junelight",
@@ -15425,6 +16715,7 @@ function ForeverBaseNpc:Load()
         },
         [274985] = { -- Trula Verpon : https://wowhead.com/forever/npc=274985/trula-verpon
             [npcKeys.name] = "Trula Verpon",
+            [npcKeys.subName] = "Quartermaster",
         },
         [274990] = { -- Ysa'bel Brightwind : https://wowhead.com/forever/npc=274990/ysabel-brightwind
             [npcKeys.name] = "Ysa'bel Brightwind",
@@ -15442,6 +16733,7 @@ function ForeverBaseNpc:Load()
         },
         [274999] = { -- Argent Champion : https://wowhead.com/forever/npc=274999/argent-champion
             [npcKeys.name] = "Argent Champion",
+            [npcKeys.subName] = "The Argent Dawn",
         },
         [275013] = { -- Archivist Helm Anvilhand : https://wowhead.com/forever/npc=275013/archivist-helm-anvilhand
             [npcKeys.name] = "Archivist Helm Anvilhand",
@@ -15462,7 +16754,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{16.6, 67.2}, {16.8, 67.8}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
         },
-        [275022] = { -- Furious Astraanar Sentinel : https://wowhead.com/forever/npc=275022/furious-astraanar-sentinel
+        [275022] = { -- Furious Astraanar Sentinel : https://wowhead.com/forever/npc=275022/furious-astranaar-sentinel
             [npcKeys.name] = "Furious Astraanar Sentinel",
         },
         [275023] = { -- Furious Auberdine Sentinel : https://wowhead.com/forever/npc=275023/furious-auberdine-sentinel
@@ -15618,11 +16910,13 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Blackthorne Outrunner",
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 60,
+            [npcKeys.subName] = "Blackthorne Pact",
         },
         [275174] = { -- Blackthorne Priest : https://wowhead.com/forever/npc=275174/blackthorne-priest
             [npcKeys.name] = "Blackthorne Priest",
             [npcKeys.spawns] = {[616] = {{73.2, 41.4}, {73.4, 42}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+            [npcKeys.subName] = "Blackthorne Pact",
         },
         [275186] = { -- Galestrider : https://wowhead.com/forever/npc=275186/galestrider
             [npcKeys.name] = "Galestrider",
@@ -15642,6 +16936,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{22.8, 64.4}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275212] = { -- Teller Hanners : https://wowhead.com/forever/npc=275212/teller-hanners
             [npcKeys.name] = "Teller Hanners",
@@ -15650,19 +16946,27 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{23, 65}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275214] = { -- Teller Althiellis : https://wowhead.com/forever/npc=275214/teller-althiellis
             [npcKeys.name] = "Teller Althiellis",
             [npcKeys.spawns] = {[36] = {{22.2, 65.4}, {22.4, 65.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275216] = { -- Paymaster Alstein : https://wowhead.com/forever/npc=275216/paymaster-alstein
             [npcKeys.name] = "Paymaster Alstein",
+            [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275240] = { -- Teller Almeida : https://wowhead.com/forever/npc=275240/teller-almeida
             [npcKeys.name] = "Teller Almeida",
             [npcKeys.spawns] = {[36] = {{11, 68.8}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275243] = { -- Teller Gee : https://wowhead.com/forever/npc=275243/teller-gee
             [npcKeys.name] = "Teller Gee",
@@ -15671,20 +16975,28 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{10.4, 68.4}, {10.4, 68.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275251] = { -- Paymaster Chang : https://wowhead.com/forever/npc=275251/paymaster-chang
             [npcKeys.name] = "Paymaster Chang",
             [npcKeys.spawns] = {[36] = {{10.8, 68}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275252] = { -- Paymaster Amadi : https://wowhead.com/forever/npc=275252/paymaster-amadi
             [npcKeys.name] = "Paymaster Amadi",
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275253] = { -- Teller Plushner : https://wowhead.com/forever/npc=275253/teller-plushner
             [npcKeys.name] = "Teller Plushner",
             [npcKeys.spawns] = {[36] = {{10.4, 69}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Banker",
+            [npcKeys.npcFlags] = 256, -- Assumption: assumptions/npc_services.toml; banker_title -> BANKER: own tag='Banker'; The NPC's exact Banker title identifies its stated role, so we assume BANKER service without a separate banking-capability field.
         },
         [275258] = { -- KC Creature : https://wowhead.com/forever/npc=275258/kc-creature
             [npcKeys.name] = "KC Creature",
@@ -15710,6 +17022,8 @@ function ForeverBaseNpc:Load()
         },
         [275273] = { -- Brelinda McFarry : https://wowhead.com/forever/npc=275273/brelinda-mcfarry
             [npcKeys.name] = "Brelinda McFarry",
+            [npcKeys.questStarts] = {98903},
+            [npcKeys.questEnds] = {98903},
         },
         [275276] = { -- Nizook Boof : https://wowhead.com/forever/npc=275276/nizook-boof
             [npcKeys.name] = "Nizook Boof",
@@ -15717,6 +17031,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 55,
             [npcKeys.spawns] = {[17] = {{65, 35}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
+            [npcKeys.questStarts] = {98906},
+            [npcKeys.questEnds] = {98906},
         },
         [275283] = { -- Breanni : https://wowhead.com/forever/npc=275283/breanni
             [npcKeys.name] = "Breanni",
@@ -15733,6 +17049,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{18.4, 63.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Herbalist",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2366 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [275322] = { -- Patricia Egan : https://wowhead.com/forever/npc=275322/patricia-egan
             [npcKeys.name] = "Patricia Egan",
@@ -15741,6 +17059,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{18.4, 62.4}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Alchemist",
+            [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2259 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
         },
         [275350] = { -- Timothy Jones : https://wowhead.com/forever/npc=275350/timothy-jones
             [npcKeys.name] = "Timothy Jones",
@@ -15749,6 +17069,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{18, 62}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Apprentice Jeweler",
         },
         [275351] = { -- Adorean Lew : https://wowhead.com/forever/npc=275351/adorean-lew
             [npcKeys.name] = "Adorean Lew",
@@ -15817,6 +17138,10 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 12,
             [npcKeys.spawns] = {[85] = {{66.2, 63.4}, {66.4, 63.6}, {66.6, 65.4}, {67, 63.4}, {67.2, 64.4}, {67.4, 65.6}, {67.4, 67}, {67.6, 66.8}, {67.8, 66.2}, {68.2, 64.2}, {68.2, 64.8}, {68.6, 63}, {69, 63.8}, {69, 65.6}, {69.4, 64.8}, {69.6, 64.6}, {69.8, 64.4}, {70.2, 65.6}}},
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
+            [npcKeys.subName] = "Cult of the Damned",
+        },
+        [275487] = { -- Azurky : https://wowhead.com/forever/npc=275487/azurky
+            [npcKeys.name] = "Azurky",
         },
         [275491] = { -- Randal Emerson : https://wowhead.com/forever/npc=275491/randal-emerson
             [npcKeys.name] = "Randal Emerson",
@@ -15824,22 +17149,29 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 40,
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Royal Advisor",
         },
         [275596] = { -- Rafael Langrom : https://wowhead.com/forever/npc=275596/rafael-langrom
             [npcKeys.name] = "Rafael Langrom",
             [npcKeys.spawns] = {[36] = {{12.6, 71}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Leather Armor Merchant",
+            [npcKeys.npcFlags] = 16384, -- Assumption: assumptions/npc_services.toml; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [275598] = { -- Valerie Langrom : https://wowhead.com/forever/npc=275598/valerie-langrom
             [npcKeys.name] = "Valerie Langrom",
             [npcKeys.spawns] = {[36] = {{12.6, 71}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Leather Armor Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 236; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [275603] = { -- Bragund Brightlink : https://wowhead.com/forever/npc=275603/bragund-brightlink
             [npcKeys.name] = "Bragund Brightlink",
             [npcKeys.spawns] = {[36] = {{12.4, 71}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Mail Armor Merchant",
+            [npcKeys.npcFlags] = 16384, -- Assumption: assumptions/npc_services.toml; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [275609] = { -- Elder Mossheart : https://wowhead.com/forever/npc=275609/elder-mossheart
             [npcKeys.name] = "Elder Mossheart",
@@ -15851,21 +17183,29 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Kerta the Bold",
             [npcKeys.spawns] = {[36] = {{14.6, 70.8}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Axe & Polearm Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 853; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [275623] = { -- Valaden Silverblade : https://wowhead.com/forever/npc=275623/valaden-silverblade
             [npcKeys.name] = "Valaden Silverblade",
             [npcKeys.spawns] = {[36] = {{14.6, 71.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Sword Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 851; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [275625] = { -- Bartram Haller : https://wowhead.com/forever/npc=275625/bartram-haller
             [npcKeys.name] = "Bartram Haller",
             [npcKeys.spawns] = {[36] = {{14.6, 71.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Dagger & Fist Weapon Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2207; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [275626] = { -- Walther Whiteford : https://wowhead.com/forever/npc=275626/walther-whiteford
             [npcKeys.name] = "Walther Whiteford",
             [npcKeys.spawns] = {[36] = {{14.4, 71.4}, {14.4, 71.6}, {14.6, 71.2}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.subName] = "Mace Merchant",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 852; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [275657] = { -- Heglan Shadeeye : https://wowhead.com/forever/npc=275657/heglan-shadeeye
             [npcKeys.name] = "Heglan Shadeeye",
@@ -15959,6 +17299,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.DUROTAR,
             [npcKeys.questStarts] = {99123},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Shadow Hunter Trainee",
         },
         [275847] = { -- Loren Ravenlock : https://wowhead.com/forever/npc=275847/loren-ravenlock
             [npcKeys.name] = "Loren Ravenlock",
@@ -15993,6 +17334,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 8,
             [npcKeys.spawns] = {[1] = {{57.2, 43.6}, {57.4, 42.2}, {57.4, 42.8}, {58, 42.8}, {58.2, 42}}},
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
+            [npcKeys.subName] = "The Lost Rime",
         },
         [276020] = { -- Riptear : https://wowhead.com/forever/npc=276020/riptear
             [npcKeys.name] = "Riptear",
@@ -16015,6 +17357,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[85] = {{21.2, 45.8}}},
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Blacksmith",
+            [npcKeys.npcFlags] = 16404, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-recipe spell 2018 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.; sells -> VENDOR: own sells item 851; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [276078] = { -- Twilight Laborer : https://wowhead.com/forever/npc=276078/twilight-laborer
             [npcKeys.name] = "Twilight Laborer",
@@ -16060,8 +17404,11 @@ function ForeverBaseNpc:Load()
         },
         [276101] = { -- Nightscreech : https://wowhead.com/forever/npc=276101/nightscreech
             [npcKeys.name] = "Nightscreech",
-            [npcKeys.spawns] = {[141] = {{38.2, 28.2}, {40, 55.6}, {40.2, 54.8}, {46.4, 33.6}, {46.8, 32}}},
+            [npcKeys.minLevel] = 10,
+            [npcKeys.maxLevel] = 10,
+            [npcKeys.spawns] = {[141] = {{37.4, 27.4}, {37.6, 28.2}, {39.4, 55.8}, {39.9, 55}, {40.3, 56.2}, {45.4, 31.8}, {46, 31.8}, {46.4, 33}, {46.4, 33.6}, {46.6, 31}, {46.8, 32}}},
             [npcKeys.zoneID] = zoneIDs.TELDRASSIL,
+            [npcKeys.friendlyToFaction] = "A",
         },
         [276105] = { -- Stormherald Ukta : https://wowhead.com/forever/npc=276105/stormherald-ukta
             [npcKeys.name] = "Stormherald Ukta",
@@ -16109,6 +17456,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[36] = {{11.6, 57.4}, {11.6, 57.8}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "High Order Cloth Quartermaster",
         },
         [276171] = { -- Oura Stormspinner : https://wowhead.com/forever/npc=276171/oura-stormspinner
             [npcKeys.name] = "Oura Stormspinner",
@@ -16118,6 +17466,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {99196},
             [npcKeys.questEnds] = {99196},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Windshapers Cloth Quartermaster",
         },
         [276178] = { -- Blizzcon Guide : https://wowhead.com/forever/npc=276178/blizzcon-guide
             [npcKeys.name] = "Blizzcon Guide",
@@ -16147,7 +17496,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Shal'ma",
             [npcKeys.minLevel] = 9,
             [npcKeys.maxLevel] = 9,
-            [npcKeys.spawns] = {[14] = {{59.8, 89.2}, {59.8, 91}, {60.4, 89.6}, {60.4, 91.8}, {60.8, 89.8}, {61, 88.2}, {61.4, 90.6}, {61.8, 89.8}, {62.8, 96.8}, {63, 96.2}, {63.6, 95.6}, {68.4, 71.2}, {69, 71.6}, {69.2, 71.4}, {69.6, 71.8}, {69.8, 71.4}}},
+            [npcKeys.spawns] = {[14] = {{59.8, 89.2}, {59.8, 91}, {60.4, 89.6}, {60.4, 91.6}, {60.6, 89.4}, {60.8, 90.4}, {61, 88.2}, {61.4, 90.8}, {61.8, 89.8}, {61.8, 90.8}, {62.6, 93.8}, {62.8, 96.8}, {63, 93.4}, {63, 96.4}, {63.2, 95.4}, {63.6, 94.6}, {63.6, 95.6}, {64, 96.6}, {64.6, 94.4}, {67.4, 71.4}, {68.4, 71.2}, {68.4, 71.8}, {68.6, 71.4}, {68.8, 72.6}, {69.4, 71.6}, {69.4, 74}, {69.6, 71.4}, {69.6, 71.6}, {69.8, 73.6}}},
             [npcKeys.zoneID] = zoneIDs.DUROTAR,
         },
         [276215] = { -- Kirin Tor Enforcer : https://wowhead.com/forever/npc=276215/kirin-tor-enforcer
@@ -16170,7 +17519,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Mistmantle Prowler",
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 60,
-            [npcKeys.spawns] = {[10] = {{43.8, 86}, {74.8, 45.4}, {75.6, 44}, {77, 46.2}, {77.5, 44.2}, {79.8, 43.8}, {81.8, 71.8}, {89.4, 16.4}}, [12] = {{76.2, 84.6}}},
+            [npcKeys.spawns] = {[10] = {{15.6, 46.4}, {43.8, 86}, {60, 29.8}, {61.2, 43}, {67, 22.6}, {72.8, 46.8}, {73.4, 47.6}, {74, 45}, {74.1, 46.6}, {74.4, 46.2}, {74.4, 49.2}, {74.8, 45.4}, {74.8, 46.8}, {75.6, 44}, {76.8, 46}, {77.4, 70.4}, {77.5, 44.2}, {79.8, 43.8}, {80.4, 69.8}, {81.8, 71.8}, {82.6, 24.2}, {82.6, 25.6}, {89.4, 16.4}, {91.4, 14}, {91.8, 12.8}}, [12] = {{76.2, 84.6}}},
         },
         [276247] = { -- Lightning : https://wowhead.com/forever/npc=276247/lightning
             [npcKeys.name] = "Lightning",
@@ -16184,6 +17533,7 @@ function ForeverBaseNpc:Load()
         [276316] = { -- Raul Sweete : https://wowhead.com/forever/npc=276316/raul-sweete
             [npcKeys.name] = "Raul Sweete",
             [npcKeys.zoneID] = zoneIDs.HILLSBRAD_FOOTHILLS,
+            [npcKeys.subName] = "Dockmaster",
         },
         [276318] = { -- Idrieth Mossgrove : https://wowhead.com/forever/npc=276318/idrieth-mossgrove
             [npcKeys.name] = "Idrieth Mossgrove",
@@ -16341,6 +17691,271 @@ function ForeverBaseNpc:Load()
         },
         [276810] = { -- Hungry Patron : https://wowhead.com/forever/npc=276810/hungry-patron
             [npcKeys.name] = "Hungry Patron",
+        },
+        [276832] = { -- Swift Timber Wolf : https://wowhead.com/forever/npc=276832/swift-timber-wolf
+            [npcKeys.name] = "Swift Timber Wolf",
+        },
+        [276833] = { -- Swift Brown Wolf : https://wowhead.com/forever/npc=276833/swift-brown-wolf
+            [npcKeys.name] = "Swift Brown Wolf",
+        },
+        [276876] = { -- Great Brown Kodo : https://wowhead.com/forever/npc=276876/great-brown-kodo
+            [npcKeys.name] = "Great Brown Kodo",
+        },
+        [276877] = { -- Great Gray Kodo : https://wowhead.com/forever/npc=276877/great-gray-kodo
+            [npcKeys.name] = "Great Gray Kodo",
+            [npcKeys.zoneID] = zoneIDs.MULGORE,
+        },
+        [276879] = { -- Great White Kodo : https://wowhead.com/forever/npc=276879/great-white-kodo
+            [npcKeys.name] = "Great White Kodo",
+            [npcKeys.zoneID] = zoneIDs.MULGORE,
+        },
+        [276888] = { -- Swift Brown Steed : https://wowhead.com/forever/npc=276888/swift-brown-steed
+            [npcKeys.name] = "Swift Brown Steed",
+            [npcKeys.spawns] = {[15] = {{65.2, 51.8}}},
+            [npcKeys.zoneID] = zoneIDs.DUSTWALLOW_MARSH,
+        },
+        [276889] = { -- Swift White Steed : https://wowhead.com/forever/npc=276889/swift-white-steed
+            [npcKeys.name] = "Swift White Steed",
+            [npcKeys.spawns] = {[15] = {{65.2, 51.8}}},
+            [npcKeys.zoneID] = zoneIDs.DUSTWALLOW_MARSH,
+        },
+        [276890] = { -- Swift Palomino : https://wowhead.com/forever/npc=276890/swift-palomino
+            [npcKeys.name] = "Swift Palomino",
+            [npcKeys.spawns] = {[15] = {{65.2, 51.8}}},
+            [npcKeys.zoneID] = zoneIDs.DUSTWALLOW_MARSH,
+        },
+        [276891] = { -- Swift Brown Steed : https://wowhead.com/forever/npc=276891/swift-brown-steed
+            [npcKeys.name] = "Swift Brown Steed",
+            [npcKeys.spawns] = {[267] = {{52.4, 55.4}}},
+            [npcKeys.zoneID] = zoneIDs.HILLSBRAD_FOOTHILLS,
+        },
+        [276892] = { -- Swift White Steed : https://wowhead.com/forever/npc=276892/swift-white-steed
+            [npcKeys.name] = "Swift White Steed",
+        },
+        [276893] = { -- Swift Palomino : https://wowhead.com/forever/npc=276893/swift-palomino
+            [npcKeys.name] = "Swift Palomino",
+            [npcKeys.spawns] = {[267] = {{52.2, 55.2}}},
+            [npcKeys.zoneID] = zoneIDs.HILLSBRAD_FOOTHILLS,
+        },
+        [277024] = { -- Jelinek Sharpshear : https://wowhead.com/forever/npc=277024/jelinek-sharpshear
+            [npcKeys.name] = "Jelinek Sharpshear",
+            [npcKeys.minLevel] = 35,
+            [npcKeys.maxLevel] = 35,
+            [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Barber",
+        },
+        [277037] = { -- Donovan Steelbeard : https://wowhead.com/forever/npc=277037/pella-brassbrush
+            [npcKeys.name] = "Donovan Steelbeard",
+            [npcKeys.minLevel] = 35,
+            [npcKeys.maxLevel] = 35,
+            [npcKeys.spawns] = {[1537] = {{26.2, 48.4}, {26.4, 49.8}, {26.4, 50.6}, {26.6, 50.4}, {26.6, 50.6}}},
+            [npcKeys.zoneID] = zoneIDs.IRONFORGE,
+            [npcKeys.subName] = "Barber",
+        },
+        [277042] = { -- Teuren Vineshade : https://wowhead.com/forever/npc=277042/bezza-shearshave
+            [npcKeys.name] = "Teuren Vineshade",
+            [npcKeys.minLevel] = 35,
+            [npcKeys.maxLevel] = 35,
+            [npcKeys.spawns] = {[1657] = {{58.6, 50.4}}},
+            [npcKeys.zoneID] = zoneIDs.DARNASSUS,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Barber",
+        },
+        [277055] = { -- Edine Sharphorn : https://wowhead.com/forever/npc=277055/axle-smoothslice
+            [npcKeys.name] = "Edine Sharphorn",
+            [npcKeys.minLevel] = 35,
+            [npcKeys.maxLevel] = 35,
+            [npcKeys.spawns] = {[1638] = {{35.4, 53.8}, {35.6, 53.8}, {36.2, 53.2}, {36.2, 54.8}}},
+            [npcKeys.zoneID] = zoneIDs.THUNDER_BLUFF,
+            [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Barber",
+        },
+        [277059] = { -- Je'lu : https://wowhead.com/forever/npc=277059/jelu
+            [npcKeys.name] = "Je'lu",
+        },
+        [277062] = { -- Ancelina : https://wowhead.com/forever/npc=277062/ancelina
+            [npcKeys.name] = "Ancelina",
+        },
+        [277067] = { -- Vela El'wyth : https://wowhead.com/forever/npc=277067/vela-elwyth
+            [npcKeys.name] = "Vela El'wyth",
+        },
+        [277132] = { -- Dummy : https://wowhead.com/forever/npc=277132/dummy
+            [npcKeys.name] = "Dummy",
+        },
+        [277151] = { -- Kyle the Friendly : https://wowhead.com/forever/npc=277151/kyle-the-friendly
+            [npcKeys.name] = "Kyle the Friendly",
+        },
+        [277154] = { -- Kyle the Frenzied : https://wowhead.com/forever/npc=277154/kyle-the-frenzied
+            [npcKeys.name] = "Kyle the Frenzied",
+            [npcKeys.minLevel] = 12,
+            [npcKeys.maxLevel] = 12,
+            [npcKeys.zoneID] = zoneIDs.MULGORE,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [277182] = { -- Ahab Wheathoof : https://wowhead.com/forever/npc=277182/ahab-wheathoof
+            [npcKeys.name] = "Ahab Wheathoof",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.MULGORE,
+            [npcKeys.questStarts] = {99411},
+            [npcKeys.questEnds] = {99411},
+            [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "The Old Rancher",
+        },
+        [277185] = { -- Deathstalker Agent : https://wowhead.com/forever/npc=277185/deathstalker-agent
+            [npcKeys.name] = "Deathstalker Agent",
+        },
+        [277186] = { -- Deathstalker Agent : https://wowhead.com/forever/npc=277186/deathstalker-agent
+            [npcKeys.name] = "Deathstalker Agent",
+        },
+        [277187] = { -- SI:7 Agent : https://wowhead.com/forever/npc=277187/si-7-agent
+            [npcKeys.name] = "SI:7 Agent",
+        },
+        [277188] = { -- SI:7 Agent : https://wowhead.com/forever/npc=277188/si-7-agent
+            [npcKeys.name] = "SI:7 Agent",
+        },
+        [277205] = { -- Dummy Healing : https://wowhead.com/forever/npc=277205/dummy-healing
+            [npcKeys.name] = "Dummy Healing",
+        },
+        [277285] = { -- Jamis Nulink : https://wowhead.com/forever/npc=277285/jamis-nulink
+            [npcKeys.name] = "Jamis Nulink",
+        },
+        [277287] = { -- Dwyer : https://wowhead.com/forever/npc=277287/dwyer
+            [npcKeys.name] = "Dwyer",
+        },
+        [277295] = { -- Farmer Bessey : https://wowhead.com/forever/npc=277295/farmer-bessey
+            [npcKeys.name] = "Farmer Bessey",
+        },
+        [277311] = { -- Haggard-Looking Man : https://wowhead.com/forever/npc=277311/haggard-looking-man
+            [npcKeys.name] = "Haggard-Looking Man",
+            [npcKeys.spawns] = {[15] = {{68, 48.6}}},
+            [npcKeys.zoneID] = zoneIDs.DUSTWALLOW_MARSH,
+        },
+        [277358] = { -- [DNT] Invisible Stalker : https://wowhead.com/forever/npc=277358/dnt-invisible-stalker
+            [npcKeys.name] = "[DNT] Invisible Stalker",
+        },
+        [277368] = { -- Gevreka : https://wowhead.com/forever/npc=277368/gevreka
+            [npcKeys.name] = "Gevreka",
+        },
+        [277369] = { -- Brenth Arder : https://wowhead.com/forever/npc=277369/brenth-arder
+            [npcKeys.name] = "Brenth Arder",
+        },
+        [277396] = { -- Griss Rizzlefizz : https://wowhead.com/forever/npc=277396/griss-rizzlefizz
+            [npcKeys.name] = "Griss Rizzlefizz",
+        },
+        [277402] = { -- Xephos Lehparsi : https://wowhead.com/forever/npc=277402/xephos-lehparsi
+            [npcKeys.name] = "Xephos Lehparsi",
+        },
+        [277410] = { -- Cereza Galeforce : https://wowhead.com/forever/npc=277410/cereza-galeforce
+            [npcKeys.name] = "Cereza Galeforce",
+        },
+        [277474] = { -- Blackmaw Devotee : https://wowhead.com/forever/npc=277474/blackmaw-devotee
+            [npcKeys.name] = "Blackmaw Devotee",
+        },
+        [277490] = { -- [DNT] Shivan : https://wowhead.com/forever/npc=277490/dnt-shivan
+            [npcKeys.name] = "[DNT] Shivan",
+        },
+        [277510] = { -- Oliver : https://wowhead.com/forever/npc=277510/oliver
+            [npcKeys.name] = "Oliver",
+        },
+        [277601] = { -- Armor Debuffed Dummy Boss : https://wowhead.com/forever/npc=277601/armor-debuffed-dummy-boss
+            [npcKeys.name] = "Armor Debuffed Dummy Boss",
+        },
+        [277611] = { -- Twilight Peon : https://wowhead.com/forever/npc=277611/twilight-peon
+            [npcKeys.name] = "Twilight Peon",
+        },
+        [277630] = { -- Morok'ra : https://wowhead.com/forever/npc=277630/morokra
+            [npcKeys.name] = "Morok'ra",
+        },
+        [277639] = { -- Alyz : https://wowhead.com/forever/npc=277639/alyz
+            [npcKeys.name] = "Alyz",
+        },
+        [277640] = { -- Daleco Leafbinder : https://wowhead.com/forever/npc=277640/daleco-leafbinder
+            [npcKeys.name] = "Daleco Leafbinder",
+        },
+        [277645] = { -- Gray Fox : https://wowhead.com/forever/npc=277645/gray-fox
+            [npcKeys.name] = "Gray Fox",
+            [npcKeys.spawns] = {[10] = {{18, 50.3}, {18.3, 50.6}}},
+            [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+        },
+        [277685] = { -- Interruptable Spellcaster Dummy : https://wowhead.com/forever/npc=277685/interruptable-spellcaster-dummy
+            [npcKeys.name] = "Interruptable Spellcaster Dummy",
+        },
+        [277689] = { -- Drake Ekans : https://wowhead.com/forever/npc=277689/drake-ekans
+            [npcKeys.name] = "Drake Ekans",
+        },
+        [277690] = { -- Ze'flaera : https://wowhead.com/forever/npc=277690/zeflaera
+            [npcKeys.name] = "Ze'flaera",
+        },
+        [277691] = { -- Oghma : https://wowhead.com/forever/npc=277691/oghma
+            [npcKeys.name] = "Oghma",
+        },
+        [277694] = { -- Sky Earthtotem : https://wowhead.com/forever/npc=277694/sky-earthtotem
+            [npcKeys.name] = "Sky Earthtotem",
+        },
+        [277721] = { -- Krazore : https://wowhead.com/forever/npc=277721/krazore
+            [npcKeys.name] = "Krazore",
+        },
+        [277723] = { -- Jaekal Galeshot : https://wowhead.com/forever/npc=277723/jaekal-galeshot
+            [npcKeys.name] = "Jaekal Galeshot",
+        },
+        [277724] = { -- Mattwyn "Q" Pons : https://wowhead.com/forever/npc=277724/mattwyn-q-pons
+            [npcKeys.name] = "Mattwyn \"Q\" Pons",
+        },
+        [277726] = { -- Amethryn : https://wowhead.com/forever/npc=277726/amethryn
+            [npcKeys.name] = "Amethryn",
+        },
+        [277727] = { -- Deyrek Duke : https://wowhead.com/forever/npc=277727/deyrek-duke
+            [npcKeys.name] = "Deyrek Duke",
+        },
+        [277728] = { -- Gelia Shardsong : https://wowhead.com/forever/npc=277728/gelia-shardsong
+            [npcKeys.name] = "Gelia Shardsong",
+        },
+        [277729] = { -- Arcane Elemental : https://wowhead.com/forever/npc=277729/arcane-elemental
+            [npcKeys.name] = "Arcane Elemental",
+        },
+        [277730] = { -- Rabid Forest Wolf : https://wowhead.com/forever/npc=277730/rabid-forest-wolf
+            [npcKeys.name] = "Rabid Forest Wolf",
+            [npcKeys.spawns] = {[85] = {{17.6, 61.8}, {18.2, 73}, {19.2, 65}}},
+            [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
+        },
+        [277765] = { -- Botika Montes : https://wowhead.com/forever/npc=277765/botika-montes
+            [npcKeys.name] = "Botika Montes",
+        },
+        [277766] = { -- Angie Cilas : https://wowhead.com/forever/npc=277766/angie-cilas
+            [npcKeys.name] = "Angie Cilas",
+        },
+        [277769] = { -- Rown Leaftender : https://wowhead.com/forever/npc=277769/rown-leaftender
+            [npcKeys.name] = "Rown Leaftender",
+        },
+        [277818] = { -- Wormhole : https://wowhead.com/forever/npc=277818/wormhole
+            [npcKeys.name] = "Wormhole",
+        },
+        [277849] = { -- Portable Repair Bot : https://wowhead.com/forever/npc=277849/portable-repair-bot
+            [npcKeys.name] = "Portable Repair Bot",
+        },
+        [277860] = { -- Ancient Crocolisk : https://wowhead.com/forever/npc=277860/ancient-crocolisk
+            [npcKeys.name] = "Ancient Crocolisk",
+        },
+        [277864] = { -- "Reliable" Mike : https://wowhead.com/forever/npc=277864/reliable-mike
+            [npcKeys.name] = "\"Reliable\" Mike",
+        },
+        [277865] = { -- Wind : https://wowhead.com/forever/npc=277865/wind
+            [npcKeys.name] = "Wind",
+        },
+        [277868] = { -- Plague Spreader : https://wowhead.com/forever/npc=277868/plague-spreader
+            [npcKeys.name] = "Plague Spreader",
+        },
+        [277881] = { -- Bloodwing Bat : https://wowhead.com/forever/npc=277881/bloodwing-bat
+            [npcKeys.name] = "Bloodwing Bat",
+        },
+        [277882] = { -- Foothills Duskbat : https://wowhead.com/forever/npc=277882/foothills-duskbat
+            [npcKeys.name] = "Foothills Duskbat",
+            [npcKeys.minLevel] = 12,
+            [npcKeys.maxLevel] = 13,
+            [npcKeys.spawns] = {[130] = {{33.2, 15.6}, {33.4, 15.4}, {33.6, 16.2}, {34, 14.8}, {38.2, 17.2}, {38.8, 22.2}, {38.8, 22.6}, {41.8, 21.6}, {54.4, 16.8}, {54.6, 14.8}, {56.6, 8.6}, {56.6, 16.2}, {60, 11.4}, {64.6, 8.6}, {64.8, 11.4}, {70.6, 6.2}}},
+            [npcKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
         },
     }
 end
