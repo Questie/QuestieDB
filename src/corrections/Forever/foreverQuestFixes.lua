@@ -48,6 +48,15 @@ function ForeverQuestFixes:Load()
             [questKeys.questFlags] = 8,
             [questKeys.reputationReward] = {{factionIDs.DARNASSUS, 100}},
         },
+        [808] = { -- Minshina's Skull
+            [questKeys.disabledByQuest] = 805,
+        },
+        [823] = { -- Report to Orgnil
+            [questKeys.disabledByQuest] = 805,
+        },
+        [826] = { -- Zalazane
+            [questKeys.disabledByQuest] = 805,
+        },
         [932] = { -- Twisted Hatred
             [questKeys.nextQuestInChain] = 98403,
         },
@@ -1021,6 +1030,9 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{3067,nil,Questie.ICON_TYPE_TALK}}},
             [questKeys.exclusiveTo] = {96626,96629,96634,96646,96655,96658},
         },
+        [96873] = { -- A Pain in the Neck
+            [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
+        },
         [97243] = { -- Call of Fire
             [questKeys.startedBy_add] = {{254082}},
             [questKeys.requiredClasses] = classIDs.SHAMAN,
@@ -1606,6 +1618,12 @@ function ForeverQuestFixes:Load()
         [98574] = { -- Hallowed Memorandum
             [questKeys.preQuestSingle] = {179},
         },
+        [98575] = { -- Tainted Tablet
+            [questKeys.preQuestSingle] = {788},
+        },
+        [98576] = { -- Glyphic Parchment
+            [questKeys.preQuestSingle] = {788},
+        },
         [98581] = { -- Archaic Rune
             [questKeys.preQuestSingle] = {179},
         },
@@ -1617,7 +1635,7 @@ function ForeverQuestFixes:Load()
             [questKeys.breadcrumbs] = {99046},
             [questKeys.nextQuestInChain] = 99050,
         },
-        [99050] = { -- Not Dead Yet
+        [99050] = { -- The Great Tree Provides
             [questKeys.preQuestSingle] = {99047},
             [questKeys.objectives] = {nil,nil,{{286017},{3371},{159}}},
             [questKeys.nextQuestInChain] = 99073,
@@ -1627,6 +1645,9 @@ function ForeverQuestFixes:Load()
         },
         [99073] = { -- Easing Suffering
             [questKeys.preQuestSingle] = {99050},
+        },
+        [99123] = { -- Lost in the Shadows
+            [questKeys.triggerEnd] = {"Escort Pal'juh out of Kolkar Crag.", {[zoneIDs.DUROTAR] = {{51.41,79.29}}}},
         },
         [99127] = { -- A Net Disaster
             [questKeys.nextQuestInChain] = 99128,

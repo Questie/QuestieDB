@@ -274,6 +274,9 @@ function ForeverNpcFixes:Load()
         [275683] = { -- Sentinel Eralya Leafshadow
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{37.54,36.81}}},
         },
+        [275811] = { -- Pal'juh
+            [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{46.3,78.64}}},
+        },
         [276009] = { -- Avala
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{58.34,42.06}}},
         },

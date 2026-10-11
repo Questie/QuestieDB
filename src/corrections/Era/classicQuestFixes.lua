@@ -667,11 +667,18 @@ function QuestieQuestFixes:Load()
         [806] = { -- Dark Storms
             [questKeys.nextQuestInChain] = 828,
         },
+        [808] = { -- Minshina's Skull
+            [questKeys.disabledByQuest] = 805,
+        },
         [809] = { -- Ak'Zeloth
             [questKeys.triggerEnd] = {"Destroy the Demon Seed", {[zoneIDs.THE_BARRENS] = {{62.34, 20.07}}}}, -- #2347
         },
         [823] = { -- Report to Orgnil
             [questKeys.nextQuestInChain] = 806,
+            [questKeys.disabledByQuest] = 805,
+        },
+        [826] = { -- Zalazane
+            [questKeys.disabledByQuest] = 805,
         },
         [827] = { -- Skull Rock
             [questKeys.nextQuestInChain] = 829,
@@ -1355,7 +1362,7 @@ function QuestieQuestFixes:Load()
             [questKeys.availableUntilCompleted] = 1526,
         },
         [1470] = { -- Piercing the Veil
-            [questKeys.exclusiveTo] = {1485}, -- #999
+            [questKeys.exclusiveTo] = {1485},
         },
         [1471] = { -- The Binding
             [questKeys.requiredSourceItems] = {},
@@ -1400,7 +1407,7 @@ function QuestieQuestFixes:Load()
             [questKeys.nextQuestInChain] = 1488,
         },
         [1485] = { -- Vile Familiars
-            [questKeys.exclusiveTo] = {1470}, -- #999
+            [questKeys.exclusiveTo] = {1470},
         },
         [1498] = { -- Path of Defense
             [questKeys.preQuestSingle] = {},
