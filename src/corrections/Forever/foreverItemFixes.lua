@@ -45,6 +45,12 @@ function ForeverItemFixes:Load()
         [257945] = { -- Pilfered Windstone
             [itemKeys.npcDrops] = {251918,255534},
         },
+        [270887] = { -- Advertising License Application
+            [itemKeys.startQuest] = 95819,
+        },
+        [270888] = { -- Advertising License Application
+            [itemKeys.startQuest] = 95816,
+        },
         [274286] = { -- Durgen Dirgehammer's Head
             [itemKeys.npcDrops] = {261319},
         },
