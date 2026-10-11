@@ -1,13 +1,19 @@
 name: CI
 
-# Every commit produces a verified, downloadable database. The terminal `gates` job makes
-# every matrix and unit result mandatory for branch protection.
+# Every commit produces a downloadable database, packaged only after every check passes.
+# The terminal `gates` job makes every check mandatory for branch protection.
 
 on:
   push:
     branches: [main, master]
   pull_request:
   workflow_dispatch:
+
+# A newer push to a pull request supersedes its running checks and frees their runners.
+# Other runs group by commit, so they are never cancelled.
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
   # Byte-reproducible artifacts: generation stamps X-BUILD-TIME from this rather than the wall
@@ -55,8 +61,7 @@ jobs:
 
       - name: Fail on Source TOC drift
         working-directory: QuestieDB
-        # Check the committed base TOC in this checkout. Flavor Generation in separate jobs
-        # also refreshes it and would otherwise hide an uncommitted file-list change.
+        # Flavor jobs generate with --no-base-toc; this is where the committed base TOC is checked.
         run: |
           lua5.1 generate.lua toc
           git diff --exit-code QuestieDB.toc
@@ -66,76 +71,43 @@ jobs:
         run: lua5.1 test.lua --shared
 
   database:
-    name: ${{ matrix.flavor }}
+    name: Database
+    uses: ./.github/workflows/database-checks.yml
+
+  package:
+    name: Package
+    # Like Release, nothing is uploaded until every flavor and shared check has passed.
+    needs: [test, database, legacy]
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        flavor: [Vanilla, TBC, Wrath, Cata, Mists, Forever]
     steps:
       - uses: actions/checkout@v7
         with: { path: QuestieDB }
 
-      - name: Install Lua 5.1
-        run: sudo apt-get update && sudo apt-get install -y lua5.1
-
-      - name: Generate
-        working-directory: QuestieDB
-        run: lua5.1 generate.lua ${{ matrix.flavor }}
-
-      - name: Determinism
-        working-directory: QuestieDB
-        # Run this before any reader. Every later gate therefore approves the exact
-        # second-generation bytes whose hash matched the first Generation.
-        run: ./questiedb.sh determinism ${{ matrix.flavor }}
-
-      - name: Flavor unit tests
-        working-directory: QuestieDB
-        run: lua5.1 test.lua --flavor=${{ matrix.flavor }}
-
-      - name: Round-trip verification
-        working-directory: QuestieDB
-        run: lua5.1 verify.lua ${{ matrix.flavor }}
-
-      - name: Round-trip verification under freezing
-        working-directory: QuestieDB
-        # Opt-in because the pure-Lua freeze substitute costs about 2x wall clock. The smallest
-        # and largest flavors keep the ownership guard present in CI without paying 2x on every
-        # matrix leg.
-        if: matrix.flavor == 'Vanilla' || matrix.flavor == 'Mists'
-        run: lua5.1 verify.lua ${{ matrix.flavor }} --freeze
-
-      - name: Source/baked equivalence
-        working-directory: QuestieDB
-        # The load-bearing test in the system. Two permanent read modes mean it never retires.
-        run: lua5.1 equivalence.lua ${{ matrix.flavor }}
-
-      - name: Reconstruction
-        working-directory: QuestieDB
-        run: lua5.1 reconstruct.lua ${{ matrix.flavor }}
-
-      - name: Data validators
-        working-directory: QuestieDB
-        run: lua5.1 validators/run.lua ${{ matrix.flavor }}
-
-      - name: Upload validator diagnostics
-        if: always()
-        uses: actions/upload-artifact@v7
+      - uses: actions/download-artifact@v8
         with:
-          name: validator-diagnostics-${{ matrix.flavor }}
-          path: QuestieDB/.out/validators/
-          if-no-files-found: ignore
+          pattern: database-toc-*
+          merge-multiple: true
+          path: QuestieDB
 
+      - name: Check every flavor handoff
+        working-directory: QuestieDB
+        run: |
+          for flavor in Vanilla TBC Wrath Cata Mists Forever; do
+            sha256sum --strict -c "QuestieDB_${flavor}.sha256"
+          done
+
+      # The packager prefers the bundled Lua, so this job installs nothing.
       - name: Package
         working-directory: QuestieDB
-        run: ./questiedb.sh package ${{ matrix.flavor }}
+        run: ./questiedb.sh package all
 
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: QuestieDB-${{ matrix.flavor }}
+          name: QuestieDB
           path: QuestieDB/.out/dist/*
           retention-days: 14
+          if-no-files-found: error
 
   gates:
     name: All gates
@@ -143,13 +115,14 @@ jobs:
     # Terminal aggregate: branch protection requires exactly this one status. `always()` keeps
     # it running when a dependency fails or is cancelled; the explicit checks then fail it, so
     # a skipped or cancelled gate can never read as green.
-    needs: [test, database, legacy]
+    needs: [test, database, package, legacy]
     if: always()
     steps:
       - name: Fail unless every gate succeeded
         run: |
           ok=1
           [ "${{ needs.test.result }}" = "success" ] || { echo "::error::Shared checks: ${{ needs.test.result }}"; ok=0; }
-          [ "${{ needs.database.result }}" = "success" ] || { echo "::error::Database matrix: ${{ needs.database.result }}"; ok=0; }
+          [ "${{ needs.database.result }}" = "success" ] || { echo "::error::Database checks: ${{ needs.database.result }}"; ok=0; }
+          [ "${{ needs.package.result }}" = "success" ] || { echo "::error::Packaging: ${{ needs.package.result }}"; ok=0; }
           [ "${{ needs.legacy.result }}" = "success" ] || { echo "::error::Legacy corrections: ${{ needs.legacy.result }}"; ok=0; }
           [ "$ok" = "1" ]

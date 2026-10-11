@@ -357,8 +357,8 @@ suite("workflow-contracts", "shared", function()
   local gates = assert(ci:match("\n  gates:\n(.*)"), "CI has an aggregate gate")
   check(gates:find("if: always()", 1, true) ~= nil,
     "All gates still runs when a prerequisite fails or is cancelled")
-  check(gates:find("needs: [test, database, legacy]", 1, true) ~= nil,
-    "All gates waits for legacy corrections as well as tests and artifacts")
+  check(gates:find("needs: [test, database, package, legacy]", 1, true) ~= nil,
+    "All gates waits for legacy corrections and packaging as well as tests and artifacts")
   check(gates:find('[ "${{ needs.legacy.result }}" = "success" ] ||', 1, true) ~= nil,
     "All gates rejects failed, skipped, or cancelled legacy checks")
 end)
