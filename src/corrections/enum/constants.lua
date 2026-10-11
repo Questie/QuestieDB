@@ -6,7 +6,7 @@
 --
 -- raceMaskById encoding is expansion-invariant; IDs need not be playable in every flavor.
 -- Named race/class sets and NPC flags live under constants.byExpansion. The runtime API
--- additionally publishes factionRaceMasks for the active flavor; standalone enum loading does not.
+-- additionally publishes factionRaceMasks and classKeys for the active flavor; standalone enum loading does not.
 
 local _, LibQuestieDB = ...
 
