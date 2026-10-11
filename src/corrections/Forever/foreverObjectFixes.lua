@@ -108,6 +108,9 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
             [objectKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
         },
+        [654846] = { -- Lost Journal
+            [objectKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{59.07,39.55}}},
+        },
         [660739] = { -- Ritual Fire
             [objectKeys.questEnds_add] = {95805},
         },
