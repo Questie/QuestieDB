@@ -10,11 +10,19 @@ function ForeverItemFixes:Load()
     local itemClasses = QuestieDB.itemClasses
 
     return {
+        [159] = { -- Refreshing Spring Water
+            [itemKeys.npcDrops] = {},
+            [itemKeys.objectDrops] = {}, -- only show vendors
+        },
         [750] = { -- Tough Wolf Meat
             [itemKeys.npcDrops_remove] = {238425,238426,238427,247809},
         },
         [780] = { -- Torn Murloc Fin
             [itemKeys.npcDrops_remove] = {202060},
+        },
+        [3371] = { -- Empty Vial
+            [itemKeys.npcDrops] = {},
+            [itemKeys.objectDrops] = {}, -- only show vendors
         },
         [5220] = { -- Gnarlpine Fang
             [itemKeys.npcDrops] = {2006,2007,2008,2009,2010,2011,2012,2013,2014,2152,7235,14428,14429},

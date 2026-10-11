@@ -47,8 +47,18 @@ function ForeverQuestFixes:Load()
             [questKeys.questFlags] = 8,
             [questKeys.reputationReward] = {{factionIDs.DARNASSUS, 100}},
         },
+        [932] = { -- Twisted Hatred
+            [questKeys.nextQuestInChain] = 98403,
+        },
+        [935] = { -- Crown of the Earth
+            [questKeys.nextQuestInChain] = 98046,
+        },
+        [937] = { -- The Enchanted Glade
+            [questKeys.nextQuestInChain] = 98392,
+        },
         [940] = { -- Teldrassil
-            [questKeys.startedBy_add] = {nil,{673378}},
+            [questKeys.startedBy] = {nil,{673378}},
+            [questKeys.preQuestSingle] = {98398},
         },
         [982] = { -- Deep Ocean, Vast Sea
             [questKeys.breadcrumbs_add] = {97894},
@@ -60,6 +70,9 @@ function ForeverQuestFixes:Load()
         [1519] = { -- Call of Earth
             [questKeys.preQuestSingle] = {1516,1519,92466},
             [questKeys.exclusiveTo] = {1516,92466},
+        },
+        [2519] = { -- The Temple of the Moon
+            [questKeys.breadcrumbs] = {98391},
         },
         [6126] = { -- Lessons Anew
             [questKeys.startedBy_add] = {{262560}},
@@ -113,6 +126,15 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
             [questKeys.requiredClasses] = classIDs.MAGE,
+        },
+        [87288] = { -- Soft Saber Pelts
+            [questKeys.reputationReward] = {{factionIDs.DARNASSUS, 100},{factionIDs.GNOMEREGAN_EXILES, 25},{factionIDs.ALLIANCE, 25},{factionIDs.IRONFORGE, 25},{factionIDs.STORMWIND, 25}},
+        },
+        [91723] = { -- Delicate Instruments
+            [questKeys.nextQuestInChain] = 91724,
+        },
+        [91724] = { -- Delicate Instruments
+            [questKeys.preQuestSingle] = {91723},
         },
         [91736] = { -- Applejack Still
             [questKeys.startedBy] = {nil,{562131}},
@@ -1409,6 +1431,16 @@ function ForeverQuestFixes:Load()
         [98024] = { -- Journey to the Crossroads
             [questKeys.preQuestSingle] = {95350},
         },
+        [98046] = { -- Crown of the Earth
+            [questKeys.preQuestSingle] = {935},
+            [questKeys.nextQuestInChain] = 98065,
+        },
+        [98065] = { -- Crown of the Earth
+            [questKeys.preQuestSingle] = {98046},
+        },
+        [98067] = { -- Eyes of the Sentinels
+            [questKeys.objectives] = {{{270418,nil,Questie.ICON_TYPE_EVENT},{270419,nil,Questie.ICON_TYPE_EVENT},{270420,nil,Questie.ICON_TYPE_EVENT},{270421,nil,Questie.ICON_TYPE_EVENT}}},
+        },
         [98284] = { -- Camping 101: Enchanting
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
@@ -1452,6 +1484,21 @@ function ForeverQuestFixes:Load()
         [98372] = { -- An Unfortunate End
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
+        [98391] = { -- The Sisterhood of Elune
+            [questKeys.breadcrumbForQuestId] = 2519,
+            [questKeys.nextQuestInChain] = 2519,
+        },
+        [98392] = { -- Darkness in the Glade
+            [questKeys.preQuestSingle] = {937},
+            [questKeys.nextQuestInChain] = 98398,
+        },
+        [98398] = { -- The Oracle Tree
+            [questKeys.preQuestSingle] = {98392},
+            [questKeys.nextQuestInChain] = 940,
+        },
+        [98403] = { -- Twisted Hatred
+            [questKeys.preQuestSingle] = {932},
+        },
         [98430] = { -- The Longwalkers
             [questKeys.triggerEnd] = {"Escort Perith Stormhoof out of Palemane Rock", {[zoneIDs.MULGORE] = {{37.19,64.62}}}},
         },
@@ -1460,6 +1507,25 @@ function ForeverQuestFixes:Load()
         },
         [98581] = { -- Archaic Rune
             [questKeys.preQuestSingle] = {179},
+        },
+        [99046] = { -- The Lost Runner
+            [questKeys.breadcrumbForQuestId] = 99047,
+            [questKeys.nextQuestInChain] = 99047,
+        },
+        [99047] = { -- Not Dead Yet
+            [questKeys.breadcrumbs] = {99046},
+            [questKeys.nextQuestInChain] = 99050,
+        },
+        [99050] = { -- Not Dead Yet
+            [questKeys.preQuestSingle] = {99047},
+            [questKeys.objectives] = {nil,nil,{{286017},{3371},{159}}},
+            [questKeys.nextQuestInChain] = 99073,
+        },
+        [99053] = { -- Escaping Ban'ethil
+            [questKeys.triggerEnd] = {"Escort Lynessa Duskblossom out of Ban'ethil", {[zoneIDs.TELDRASSIL] = {{43.08,51.65}}}},
+        },
+        [99073] = { -- Easing Suffering
+            [questKeys.preQuestSingle] = {99050},
         },
         [99127] = { -- A Net Disaster
             [questKeys.nextQuestInChain] = 99128,

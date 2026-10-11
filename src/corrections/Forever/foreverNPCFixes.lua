@@ -17,6 +17,9 @@ function ForeverNpcFixes:Load()
     local phases = Phasing.phases
 
     return {
+        [2150] = { -- Zenn Foulhoof
+            [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{60.35,56.16}}},
+        },
         [2155] = { -- Sentinel Shayla Nightbreeze
             [npcKeys.questEnds_add] = {490},
             [npcKeys.questStarts_add] = {490},
@@ -25,6 +28,9 @@ function ForeverNpcFixes:Load()
             [npcKeys.name] = "Grund Drokda",
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{28.67,67.52}}},
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
+        },
+        [3519] = { -- Sentinel Arynia Cloudsbreak
+            [npcKeys.questStarts_remove] = {940},
         },
         [4949] = { -- Thrall
             [npcKeys.questEnds_add] = {93739},
@@ -195,6 +201,9 @@ function ForeverNpcFixes:Load()
         [264936] = { -- Earthseer Farsen
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{64.87,58.47}}},
         },
+        [265811] = { -- Lyreena Duskblade
+            [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{57.58,56.64}}},
+        },
         [268602] = { -- Skypriest Faladiel
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.43,63.71}}},
         },
@@ -210,11 +219,51 @@ function ForeverNpcFixes:Load()
         [269075] = { -- Snow Leopard Prowler
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{27.37,62.86}}},
         },
+        [270418] = { -- Credit
+            [npcKeys.name] = "Credit",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[zoneIDs.DARNASSUS] = {{33.39,16.77}}},
+            [npcKeys.zoneID] = zoneIDs.DARNASSUS,
+        },
+        [270419] = { -- Credit
+            [npcKeys.name] = "Credit",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[zoneIDs.DARNASSUS] = {{41.04,43.55}}},
+            [npcKeys.zoneID] = zoneIDs.DARNASSUS,
+        },
+        [270420] = { -- Credit
+            [npcKeys.name] = "Credit",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[zoneIDs.DARNASSUS] = {{66.46,15.35}}},
+            [npcKeys.zoneID] = zoneIDs.DARNASSUS,
+        },
+        [270421] = { -- Credit
+            [npcKeys.name] = "Credit",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[zoneIDs.DARNASSUS] = {{89.14,34.76}}},
+            [npcKeys.zoneID] = zoneIDs.DARNASSUS,
+        },
         [271546] = { -- Mountaineer Gretchen
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{44.1,57.07}}},
         },
         [271587] = { -- Frosthowl
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{39.33,48.79}}},
+        },
+        [272034] = { -- Hatescreech
+            [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{35.05,39.29}}},
+        },
+        [272044] = { -- Windmistress Gaedress
+            [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{33.18,36.13}}},
+        },
+        [272046] = { -- Witchmother Arysa
+            [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{34.22,27.94}}},
+        },
+        [275683] = { -- Sentinel Eralya Leafshadow
+            [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{37.54,36.81}}},
         },
         [276009] = { -- Avala
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{58.34,42.06}}},
