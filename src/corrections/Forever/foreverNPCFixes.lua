@@ -216,6 +216,9 @@ function ForeverNpcFixes:Load()
         [268762] = { -- Brazier of Offering
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{51.2,85.9}}},
         },
+        [269068] = { -- Eylah Sunhorn
+            [npcKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{38,55.9}}},
+        },
         [269075] = { -- Snow Leopard Prowler
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{27.37,62.86}}},
         },
