@@ -240,8 +240,15 @@ Generation and the Lua validation commands use only this repository's owned inpu
 
 ### Independent test scopes
 
-CI and Release run shared checks alongside six independent flavor pipelines. A flavor pipeline
-never requires another flavor's generated output. Shared sources and configuration remain inputs.
+CI and Release run shared checks alongside
+[`database-checks.yml`](.github/workflows/database-checks.yml). Each flavor runs one job per
+heavy check (Verification, Source/Baked Equivalence, and Reconstruction), and each job generates
+its own TOC, so a flavor finishes in one Generation plus its slowest check. Flavor unit tests
+and data validators run with Verification. Determinism then requires every Generation of a
+flavor to be byte-identical, one of them made by the bundled interpreter, which also proves each
+check approved the bytes that were packaged. CI and Release both package all six flavors'
+checked TOCs together, only after every check passes. A flavor never requires another
+flavor's generated output. Shared sources and configuration remain inputs.
 
 The Lua harness exposes the same test scopes locally:
 

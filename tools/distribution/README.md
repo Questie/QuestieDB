@@ -213,12 +213,13 @@ GitHub Actions environment. Both commands check that the GitHub CLI (`gh`) is av
 collision check; publication repeats it under the workflow's lock. Source-version parsing remains in `generator/version.lua`.
 Use the workflow to publish, rather than invoking the publisher outside its gates and lock.
 
-After choosing the tag, shared checks and the six
-[flavor pipelines](../../README.md#independent-test-scopes) run independently. Each flavor runs
+After choosing the tag, shared checks and the
+[database checks](../../README.md#independent-test-scopes) run independently. Each flavor runs
 Generation, Determinism, scoped tests, Reconstruction, Verification, Equivalence, and validators.
 Both CI and Release reconstruct all six flavors.
 
-Release checks each TOC's checksum before uploading it and again after collecting all six.
+Release records each TOC's checksum at Generation, matches it against the flavor's other
+Generations, and checks it again after collecting all six.
 Forever's handoff includes its byte-identical Camelot alias; both filenames are checksummed.
 Packaging waits for the shared and flavor checks, creates per-flavor and combined ZIPs from
 those exact verified TOCs, and never regenerates them. Publication requires successful shared
