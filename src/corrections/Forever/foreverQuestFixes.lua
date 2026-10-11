@@ -1036,6 +1036,13 @@ function ForeverQuestFixes:Load()
         [96873] = { -- A Pain in the Neck
             [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
         },
+        [96874] = { -- This Is Spinal Axe
+            [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 1},
+        },
+        [96875] = { -- Beasts of Thunder Ridge
+            [questKeys.requiredSkill] = {profKeys.LEATHERWORKING, 1},
+            [questKeys.objectives] = {nil,nil,{{275720},{4231}}},
+        },
         [97243] = { -- Call of Fire
             [questKeys.startedBy_add] = {{254082}},
             [questKeys.requiredClasses] = classIDs.SHAMAN,
