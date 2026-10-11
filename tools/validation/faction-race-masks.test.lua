@@ -5,15 +5,15 @@ return function(equal)
   local emulator = dofile("emulator/metadata.lua")
   local encode = dofile("generator/encode.lua")
   local cases = {
-    { flavor = "Vanilla", Alliance = 77, Horde = 178, allClasses = 1503 },
-    { flavor = "TBC", Alliance = 1101, Horde = 690, allClasses = 1503 },
-    { flavor = "Wrath", Alliance = 1101, Horde = 690, allClasses = 1535 },
-    { flavor = "Cata", Alliance = 2098253, Horde = 946, allClasses = 1535 },
-    { flavor = "Mists", Alliance = 18875469, Horde = 33555378, allClasses = 2047 },
-    -- Forever has no classKeys of its own and uses its Classic rules flavor's table.
-    { flavor = "Forever", Alliance = 4294967373, Horde = 8589934770, allClasses = 1503 },
-    { flavor = "Vanilla", season = "SoD", Alliance = 77, Horde = 178, allClasses = 1503 },
-    { flavor = "Wrath", season = "TitanReforged", Alliance = 1101, Horde = 690, allClasses = 1535 },
+    { flavor = "Vanilla", Alliance = 77, Horde = 178, allClasses = 1503, vendor = 4, repair = 16384 },
+    { flavor = "TBC", Alliance = 1101, Horde = 690, allClasses = 1503, vendor = 128, repair = 4096 },
+    { flavor = "Wrath", Alliance = 1101, Horde = 690, allClasses = 1535, vendor = 128, repair = 4096, barber = 33554432 },
+    { flavor = "Cata", Alliance = 2098253, Horde = 946, allClasses = 1535, vendor = 128, repair = 4096, barber = 33554432, transmog = 268435456 },
+    { flavor = "Mists", Alliance = 18875469, Horde = 33555378, allClasses = 2047, vendor = 128, repair = 4096, barber = 33554432, transmog = 268435456 },
+    -- Forever has no classKeys or npcFlags of its own and uses its Classic rules flavor's tables.
+    { flavor = "Forever", Alliance = 4294967373, Horde = 8589934770, allClasses = 1503, vendor = 4, repair = 16384 },
+    { flavor = "Vanilla", season = "SoD", Alliance = 77, Horde = 178, allClasses = 1503, vendor = 4, repair = 16384 },
+    { flavor = "Wrath", season = "TitanReforged", Alliance = 1101, Horde = 690, allClasses = 1535, vendor = 128, repair = 4096, barber = 33554432 },
   }
 
   for _, case in ipairs(cases) do
@@ -30,6 +30,10 @@ return function(equal)
     equal(source.Enum.factionRaceMasks, expected, label .. " Source publishes active faction masks")
     equal(source.Enum.classKeys.ALL_CLASSES, case.allClasses, label .. " Source publishes active class keys")
     equal(source.Enum.classKeys.MAGE, 128, label .. " Source class keys carry named classes")
+    equal(source.Enum.npcFlags.VENDOR, case.vendor, label .. " Source publishes active NPC flags")
+    equal(source.Enum.npcFlags.REPAIR, case.repair, label .. " Source NPC flags carry the flavor's REPAIR")
+    equal(source.Enum.npcFlags.BARBER, case.barber, label .. " Source NPC flags omit flags the flavor lacks")
+    equal(source.Enum.npcFlags.TRANSMOGRIFIER, case.transmog, label .. " Source NPC flags omit later flags")
 
     client.reset()
     client.install({ expansion = "Classic", season = case.season })
@@ -46,6 +50,8 @@ return function(equal)
     equal(baked.readMode, "baked", label .. " exercises Baked mode")
     equal(baked.Enum.factionRaceMasks, expected, label .. " Baked publishes active faction masks")
     equal(baked.Enum.classKeys.ALL_CLASSES, case.allClasses, label .. " Baked publishes active class keys")
+    equal(baked.Enum.npcFlags.VENDOR, case.vendor, label .. " Baked publishes active NPC flags")
+    equal(baked.Enum.npcFlags.BARBER, case.barber, label .. " Baked NPC flags omit flags the flavor lacks")
   end
   client.reset()
 end
