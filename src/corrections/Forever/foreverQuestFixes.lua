@@ -93,10 +93,28 @@ function ForeverQuestFixes:Load()
         [78145] = { -- Arcanic Systems Manual
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
+        [78146] = { -- Goaz Scrolls
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [78147] = { -- Crimes Against Anatomy
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
         [78149] = { -- Fury of the Land
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
+        [78150] = { -- Friend of the Library
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
         [78261] = { -- The Horn of Xelthos
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [78270] = { -- Goblin Lockpicks
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [78307] = { -- The Horn of Xelthos
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [78823] = { -- Terror of the Desert Skies
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [79091] = { -- Archmage Antonidas: The Unabridged Autobiography
@@ -111,7 +129,40 @@ function ForeverQuestFixes:Load()
         [79097] = { -- Baxtan: On Destructive Magics
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
+        [79229] = { -- Highway Robbery
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [79535] = { -- Basilisks: Should Petrification be Feared?
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [79947] = { -- Geomancy: The Stone-Cold Truth
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
         [79948] = { -- Defensive Magics 101
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [79949] = { -- A Web of Lies: Debunking Myths and Legends
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [79950] = { -- Demons and You
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [79951] = { -- Mummies: A Guide to the Unsavory Undead
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [79952] = { -- RwlRwlRwlRwl!
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [80001] = { -- Rekindle
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [81947] = { -- Sanguine Sorcery
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [81949] = { -- Legends of the Tidesages
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [81952] = { -- Everyday Etiquette
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [81953] = { -- Stonewrought Design
@@ -121,6 +172,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [81955] = { -- A Mind of Metal
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [81956] = { -- Conjurer's Codex
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [84396] = { -- Magma or Lava?
@@ -1007,6 +1061,17 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{11046,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96045,97915,97927,97938,97951,97963},
         },
+        [97065] = { -- Tip the Scales - Keefer's Angelfish
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [97066] = { -- Tip the Scales - Brownell's Blue Striped Racer
+            [questKeys.name] = "Tip the Scales - Brownell's Blue Striped Racer",
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [97067] = { -- Tip the Scales - Dezian Queenfish
+            [questKeys.name] = "Tip the Scales - Dezian Queenfish",
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
         [97900] = { -- Camping 101: Blacksmithing
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 1},
@@ -1473,6 +1538,9 @@ function ForeverQuestFixes:Load()
         },
         [98067] = { -- Eyes of the Sentinels
             [questKeys.objectives] = {{{270418,nil,Questie.ICON_TYPE_EVENT},{270419,nil,Questie.ICON_TYPE_EVENT},{270420,nil,Questie.ICON_TYPE_EVENT},{270421,nil,Questie.ICON_TYPE_EVENT}}},
+        },
+        [98208] = { -- Bloom of the Heavens
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98284] = { -- Camping 101: Enchanting
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
