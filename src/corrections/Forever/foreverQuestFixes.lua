@@ -194,8 +194,15 @@ function ForeverQuestFixes:Load()
             [questKeys.questLevel] = 60,
             [questKeys.requiredClasses] = classIDs.MAGE,
         },
+        [86758] = { -- Twisting the Knife
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [86776] = { -- Ingredients for the Forge
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
         [87288] = { -- Soft Saber Pelts
             [questKeys.reputationReward] = {{factionIDs.DARNASSUS, 100},{factionIDs.GNOMEREGAN_EXILES, 25},{factionIDs.ALLIANCE, 25},{factionIDs.IRONFORGE, 25},{factionIDs.STORMWIND, 25}},
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [91723] = { -- Delicate Instruments
             [questKeys.nextQuestInChain] = 91724,
@@ -216,6 +223,7 @@ function ForeverQuestFixes:Load()
         [91743] = { -- Rascally Rodents
             [questKeys.preQuestSingle] = {92124},
             [questKeys.nextQuestInChain] = 91745,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [91745] = { -- Mining Consultant
             [questKeys.preQuestSingle] = {91743},
@@ -227,9 +235,11 @@ function ForeverQuestFixes:Load()
         [91752] = { -- The Big Picture
             [questKeys.preQuestSingle] = {91745},
             [questKeys.nextQuestInChain] = 91758,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [91753] = { -- An Enchanting Lesson
             [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [91758] = { -- Follow That Kobold!
             [questKeys.preQuestSingle] = {91752},
@@ -239,13 +249,16 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {91758},
             [questKeys.objectives] = {nil,{{563442}}},
             [questKeys.nextQuestInChain] = 91775,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [91775] = { -- Book Return
             [questKeys.preQuestSingle] = {91772},
             [questKeys.nextQuestInChain] = 91777,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [91777] = { -- Rare Books
             [questKeys.preQuestSingle] = {91775},
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [92124] = { -- Book Inventory
             [questKeys.preQuestSingle] = {91741},
@@ -320,6 +333,7 @@ function ForeverQuestFixes:Load()
         },
         [92515] = { -- The Problem With Prideclaws
             [questKeys.preQuestSingle] = {92514,93461},
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92516] = { -- Hippogryph Harrassment
             [questKeys.preQuestSingle] = {92514,93461},
@@ -327,6 +341,7 @@ function ForeverQuestFixes:Load()
         [92517] = { -- The Criminal Element
             [questKeys.preQuestSingle] = {92514,93461},
             [questKeys.nextQuestInChain] = 93036,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92528] = { -- Among the Faithful
             [questKeys.preQuestSingle] = {92529},
@@ -408,6 +423,7 @@ function ForeverQuestFixes:Load()
         [92683] = { -- Flutterfly Dust
             [questKeys.preQuestSingle] = {92679},
             [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_INTERACT,l10n("Use the Flutterfly Swatter"),0,{{"monster",251622}}}},
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92684] = { -- Ornery Ornery Galestriders
             [questKeys.preQuestSingle] = {92679},
@@ -420,9 +436,11 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {92685},
             [questKeys.nextQuestInChain] = 92703,
             [questKeys.objectives] = {{{252800,nil,Questie.ICON_TYPE_TALK},{252863,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92698] = { -- What Is My Purpose?
             [questKeys.preQuestSingle] = {92679},
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92699] = { -- The Supreme Magister
             [questKeys.preQuestSingle] = {92701},
@@ -436,6 +454,9 @@ function ForeverQuestFixes:Load()
         },
         [92703] = { -- Deliver the News
             [questKeys.preQuestSingle] = {92693},
+        },
+        [92706] = { -- WANTED: Bruuz
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [92708] = { -- A Grand Adventure
             [questKeys.preQuestSingle] = {92700},
@@ -451,6 +472,24 @@ function ForeverQuestFixes:Load()
         },
         [92741] = { -- Unwelcome Visitors
             [questKeys.preQuestSingle] = {92699},
+        },
+        [92742] = { -- Testing the Wells
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [92744] = { -- Murloc Gills
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [92745] = { -- The State of the Mines
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [92747] = { -- Moonbrook Espionage
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [92749] = { -- A Dynamite Plan
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [92753] = { -- Destruction in Deadmines
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [92834] = { -- Avenged Tenfold
             [questKeys.preQuestSingle] = {92840},
@@ -480,15 +519,20 @@ function ForeverQuestFixes:Load()
         [92880] = { -- Return to Valanaar
             [questKeys.preQuestGroup] = {92642,92645},
             [questKeys.nextQuestInChain] = 92881,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92881] = { -- The High Elder's Request
             [questKeys.preQuestSingle] = {92880},
             [questKeys.nextQuestInChain] = 92643,
         },
+        [92909] = { -- Harvesting the Harvesters
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
         [92947] = { -- Making Our Move
             [questKeys.preQuestSingle] = {93065},
             [questKeys.nextQuestInChain] = 93958,
             [questKeys.objectives] = {{{252762},{252763},{252765},{253576,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [93036] = { -- Infiltrating the Cult
             [questKeys.preQuestSingle] = {92517},
@@ -574,6 +618,7 @@ function ForeverQuestFixes:Load()
         },
         [93797] = { -- Boughs in the Wind
             [questKeys.preQuestSingle] = {93791},
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [93835] = { -- Confront Lorthuna
             [questKeys.preQuestSingle] = {93958},
@@ -584,6 +629,7 @@ function ForeverQuestFixes:Load()
                 {nil, Questie.ICON_TYPE_OBJECT, l10n("Take the portal"), 0, {{"object", 586726}}},
                 {nil, Questie.ICON_TYPE_TALK, l10n("Start the fight"), 0, {{"monster", 253847}}},
             },
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [93836] = { -- The Fate of Zephras
             [questKeys.preQuestSingle] = {92646},
@@ -598,6 +644,7 @@ function ForeverQuestFixes:Load()
         [93927] = { -- A Last Request
             [questKeys.preQuestSingle] = {93926},
             [questKeys.objectives] = {{{256966}},nil,{{254871},{263415},{263418}}}, -- double whammy
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [93948] = { -- Deliver the Signet
             [questKeys.preQuestGroup] = {92550,93927}, -- 92551 not needed
@@ -606,6 +653,7 @@ function ForeverQuestFixes:Load()
         [93949] = { -- Bugged
             [questKeys.preQuestSingle] = {93948},
             [questKeys.objectives] = {{{251727}}},
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [93951] = { -- A Little Beauty
             [questKeys.preQuestSingle] = {92514,93461},
@@ -639,6 +687,27 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredClasses] = classIDs.HUNTER,
             [questKeys.preQuestSingle] = {94013},
         },
+        [94218] = { -- Craftsman's Writ: Elixir of Defense
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [94219] = { -- Craftsman's Writ: Draught of Water Breathing
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [94222] = { -- Craftsman's Writ: Iridescent Hammer
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [94230] = { -- Craftsman's Writ: Explosive Sheep
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [94231] = { -- Craftsman's Writ: Moonsight Rifle
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [94247] = { -- Craftsman's Writ: Lesser Wizard's Robe
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [94255] = { -- Craftsman's Writ: Spider Silk Slippers
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
         [94369] = { -- The Fate of Zephras
             [questKeys.preQuestSingle] = {93835},
             [questKeys.nextQuestInChain] = 93089,
@@ -658,6 +727,7 @@ function ForeverQuestFixes:Load()
         [94411] = { -- Meddlesome Mages
             [questKeys.preQuestSingle] = {92595},
             [questKeys.objectives] = {{{257521}}},
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [94413] = { -- A Magical Affront
             [questKeys.preQuestSingle] = {92596},
@@ -665,6 +735,7 @@ function ForeverQuestFixes:Load()
         },
         [94414] = { -- The Anchors of Zephras
             [questKeys.objectives] = {{{257554,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [94465] = { -- Call of Fire
             [questKeys.nextQuestInChain] = 94466,
@@ -728,6 +799,7 @@ function ForeverQuestFixes:Load()
         [94638] = { -- Strength and Mercy
             [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.preQuestSingle] = {94006},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [94792] = { -- Taming the Beast
             [questKeys.objectives] = {{{524,nil,Questie.ICON_TYPE_INTERACT}}},
@@ -746,6 +818,9 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{822,nil,Questie.ICON_TYPE_INTERACT}}},
             [questKeys.nextQuestInChain] = 94793,
         },
+        [94896] = { -- Aid For The Refugees
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
         [94911] = { -- Child of Nature
             [questKeys.requiredClasses] = classIDs.DRUID,
         },
@@ -760,6 +835,7 @@ function ForeverQuestFixes:Load()
         },
         [94946] = { -- The Magical City of Dalaran
             [questKeys.preQuestSingle] = {93089},
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [94947] = { -- Welcome to Azeroth
             [questKeys.nextQuestInChain] = 93963,
@@ -776,6 +852,12 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 94013,
             [questKeys.objectives] = {{{251707,nil,Questie.ICON_TYPE_INTERACT}}},
         },
+        [95036] = { -- A Moon-Kissed Blade
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
+        },
+        [95212] = { -- Never Saddle on Quality
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
         [95213] = { -- Stolen Blasting Powder
             [questKeys.nextQuestInChain] = 95214,
         },
@@ -784,6 +866,9 @@ function ForeverQuestFixes:Load()
         },
         [95217] = { -- The Quarry's Smith
             [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 1},
+        },
+        [95314] = { -- That Shadowvale Green Elixir
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [95349] = { -- The Earthen Ring
             [questKeys.preQuestSingle] = {93090},
@@ -823,6 +908,10 @@ function ForeverQuestFixes:Load()
             [questKeys.breadcrumbs] = {96627},
             [questKeys.objectives] = {nil,{{460003},{460003}}},
             [questKeys.exclusiveTo] = {96101,96604,96605,96606,96607,96608},
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [95999] = { -- WANTED: Incinerator Gar'im
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [96031] = { -- Camping 101: Leatherworking
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
@@ -912,6 +1001,12 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSpell] = -1229504, -- Faction Banner
             [questKeys.objectives] = {{{2855,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96057,97925,97937,97950,97961,97972,97973},
+        },
+        [96130] = { -- Chakuyak
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+        },
+        [96139] = { -- The Valor Family
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [96390] = { -- Nip 'Em in the Bud
             [questKeys.preQuestSingle] = {96392},
@@ -1043,6 +1138,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSkill] = {profKeys.LEATHERWORKING, 1},
             [questKeys.objectives] = {nil,nil,{{275720},{4231}}},
         },
+        [97237] = { -- Shelf Picked
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
         [97243] = { -- Call of Fire
             [questKeys.startedBy_add] = {{254082}},
             [questKeys.requiredClasses] = classIDs.SHAMAN,
@@ -1064,6 +1162,9 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {97245},
             [questKeys.objectives] = {{{268762,nil,Questie.ICON_TYPE_EVENT},{268679,nil,Questie.ICON_TYPE_EVENT}}},
         },
+        [97263] = { -- Your Package Has Arrived
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
         [97277] = { -- Grund and Gozwin
             [questKeys.objectives] = {{{269075}},nil,{{277976}}},
             [questKeys.zoneOrSort] = 77,
@@ -1075,6 +1176,7 @@ function ForeverQuestFixes:Load()
         [97894] = { -- Business in Auberdine
             [questKeys.breadcrumbForQuestId] = 982,
             [questKeys.nextQuestInChain] = 982,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [97899] = { -- Camping 101: Alchemy
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
@@ -1156,6 +1258,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSpell] = -1229517, -- Camp Chair
             [questKeys.objectives] = {{{7088,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96056,97924,97936,97949,97960,97971},
+        },
+        [97914] = { -- Expanding Horizons
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [97915] = { -- Camping 101: Alchemy
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
@@ -1488,6 +1593,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSpell] = -1230117, -- First Aid Kit
             [questKeys.objectives] = {{{257018,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96047,97903,97919,97931,97942,97955},
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [97967] = { -- Camping 101: Fishing
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
@@ -1502,6 +1608,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSpell] = -1229705, -- Incense Candle
             [questKeys.objectives] = {{{254345,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96055,97905,97921,97933,97944,97957},
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [97969] = { -- Camping 101: Leatherworking
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
@@ -1545,11 +1652,17 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {456},
             [questKeys.objectives] = {nil,nil,nil,nil,nil,{{1259799},{20580}}},
         },
+        [98013] = { -- Swelling Forces
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
         [98021] = { -- Journey to Sentinel Hill
             [questKeys.preQuestSingle] = {94947},
         },
         [98024] = { -- Journey to the Crossroads
             [questKeys.preQuestSingle] = {95350},
+        },
+        [98025] = { -- WANTED: Jai'vhanel
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98046] = { -- Crown of the Earth
             [questKeys.preQuestSingle] = {935},
@@ -1560,8 +1673,15 @@ function ForeverQuestFixes:Load()
         },
         [98067] = { -- Eyes of the Sentinels
             [questKeys.objectives] = {{{270418,nil,Questie.ICON_TYPE_EVENT},{270419,nil,Questie.ICON_TYPE_EVENT},{270420,nil,Questie.ICON_TYPE_EVENT},{270421,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [98197] = { -- Spoils of War
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98208] = { -- Bloom of the Heavens
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [98282] = { -- Alchemical Hazards
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98284] = { -- Camping 101: Enchanting
@@ -1604,16 +1724,27 @@ function ForeverQuestFixes:Load()
         [98323] = { -- Secure the Mountain
             [questKeys.preQuestSingle] = {98319},
         },
+        [98341] = { -- The Great Windborne Cat Spirit
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+        },
         [98372] = { -- An Unfortunate End
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [98386] = { -- Alther's Mill
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [98387] = { -- Blackrock Blockade
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98391] = { -- The Sisterhood of Elune
             [questKeys.breadcrumbForQuestId] = 2519,
             [questKeys.nextQuestInChain] = 2519,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98392] = { -- Darkness in the Glade
             [questKeys.preQuestSingle] = {937},
             [questKeys.nextQuestInChain] = 98398,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98398] = { -- The Oracle Tree
             [questKeys.preQuestSingle] = {98392},
@@ -1621,9 +1752,16 @@ function ForeverQuestFixes:Load()
         },
         [98403] = { -- Twisted Hatred
             [questKeys.preQuestSingle] = {932},
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [98407] = { -- Show of Force
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98430] = { -- The Longwalkers
             [questKeys.triggerEnd] = {"Escort Perith Stormhoof out of Palemane Rock", {[zoneIDs.MULGORE] = {{37.19,64.62}}}},
+        },
+        [98461] = { -- Unrequited Love
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98574] = { -- Hallowed Memorandum
             [questKeys.preQuestSingle] = {179},
@@ -1637,9 +1775,13 @@ function ForeverQuestFixes:Load()
         [98581] = { -- Archaic Rune
             [questKeys.preQuestSingle] = {179},
         },
+        [98738] = { -- Blessings of the Great Windborne Cat Spirit
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+        },
         [99046] = { -- The Lost Runner
             [questKeys.breadcrumbForQuestId] = 99047,
             [questKeys.nextQuestInChain] = 99047,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [99047] = { -- Not Dead Yet
             [questKeys.breadcrumbs] = {99046},
@@ -1666,6 +1808,7 @@ function ForeverQuestFixes:Load()
         },
         [99053] = { -- Escaping Ban'ethil
             [questKeys.triggerEnd] = {"Escort Lynessa Duskblossom out of Ban'ethil", {[zoneIDs.TELDRASSIL] = {{43.08,51.65}}}},
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [99073] = { -- Easing Suffering
             [questKeys.preQuestSingle] = {99050},
@@ -1687,6 +1830,7 @@ function ForeverQuestFixes:Load()
         [99130] = { -- An Enticing Offer
             [questKeys.preQuestSingle] = {99129},
             [questKeys.nextQuestInChain] = 99131,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [99131] = { -- Baited for Success
             [questKeys.preQuestSingle] = {99130},
@@ -1697,6 +1841,7 @@ function ForeverQuestFixes:Load()
         },
         [99159] = { -- Finding Warmth
             [questKeys.breadcrumbs] = {99158},
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [99160] = { -- Rime's Wrath
             [questKeys.preQuestSingle] = {99159},
@@ -1708,6 +1853,7 @@ function ForeverQuestFixes:Load()
         [99162] = { -- Treacherous Cold
             [questKeys.preQuestSingle] = {99159},
             [questKeys.objectives] = {nil,nil,{{286360},{286359},{286358}}},
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [99260] = { -- Fillion's Mission
             [questKeys.preQuestSingle] = {92850},
