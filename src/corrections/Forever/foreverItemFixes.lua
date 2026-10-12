@@ -68,6 +68,18 @@ function ForeverItemFixes:Load()
             [itemKeys.name] = "Fish Chunks",
             [itemKeys.class] = itemClasses.QUEST,
         },
+        [207972] = { -- The Lessons of Ta'zo
+            [itemKeys.name] = "The Lessons of Ta'zo",
+            [itemKeys.objectDrops] = {450001},
+        },
+        [215817] = { -- Demons and You
+            [itemKeys.name] = "Demons and You",
+            [itemKeys.objectDrops] = {423898},
+        },
+        [220346] = { -- Legends of the Tidesages
+            [itemKeys.name] = "Legends of the Tidesages",
+            [itemKeys.objectDrops] = {441248},
+        },
         [252760] = { -- Stolen Shen'dar Supplies
             [itemKeys.npcDrops] = {252068,254596,259385,259398},
         },
