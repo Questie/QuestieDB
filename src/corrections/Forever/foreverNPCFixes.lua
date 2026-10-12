@@ -23,6 +23,8 @@ function ForeverNpcFixes:Load()
         [2155] = { -- Sentinel Shayla Nightbreeze
             [npcKeys.questEnds_add] = {490},
             [npcKeys.questStarts_add] = {490},
+            [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{40.46,50.73}}},
+            [npcKeys.waypoints] = {},
         },
         [2756] = { -- Grund Drokda
             [npcKeys.name] = "Grund Drokda",
