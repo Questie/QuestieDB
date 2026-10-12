@@ -1169,6 +1169,12 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{269075}},nil,{{277976}}},
             [questKeys.zoneOrSort] = 77,
         },
+        [97281] = { -- A Simmering Storm
+            [questKeys.nextQuestInChain] = 97282,
+        },
+        [97282] = { -- Stormy Potential
+            [questKeys.preQuestSingle] = {97281},
+        },
         [97485] = { -- Traditions of the Bluff
             [questKeys.objectives] = {nil,{{665373}},{{278078}}},
             [questKeys.requiredSourceItems] = {278079,278080,278081,278083},
