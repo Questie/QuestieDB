@@ -55,6 +55,17 @@ function ForeverNpcFixes:Load()
         [205729] = { -- Boarton Shadetotem
             [npcKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{39.44,65.82}}},
         },
+        [211022] = { -- Owen Thadd
+            [npcKeys.questStarts_remove] = {79095},
+            [npcKeys.spawns] = {[zoneIDs.UNDERCITY] = {{73.4,33}}},
+            [npcKeys.questStarts_add] = {78150,79536,82208},
+            [npcKeys.questEnds_add] = {81954},
+        },
+        [211033] = { -- Garion Wendell
+            [npcKeys.questStarts_remove] = {78148,79092},
+            [npcKeys.questStarts_add] = {78150},
+            [npcKeys.questEnds_add] = {79095,81949},
+        },
         [261319] = { -- Durgen Dirgehammer
             [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,

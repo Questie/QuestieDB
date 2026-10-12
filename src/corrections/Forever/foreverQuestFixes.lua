@@ -116,30 +116,70 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSourceItems] = {6291},
         },
         [78124] = { -- Nar'thalas Almanac
+            [questKeys.startedBy] = {nil,{409496}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{209843}}},
         },
         [78127] = { -- The Dalaran Digest
+            [questKeys.startedBy] = {nil,{409501}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{209844}}},
         },
         [78142] = { -- Bewitchments and Glamours
+            [questKeys.startedBy] = {nil,{409562}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{209845}}},
         },
         [78143] = { -- Secrets of the Dreamers
+            [questKeys.startedBy] = {nil,{409692}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{209846}}},
         },
         [78145] = { -- Arcanic Systems Manual
+            [questKeys.startedBy] = {nil,{409700}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{209847}}},
         },
         [78146] = { -- Goaz Scrolls
+            [questKeys.startedBy] = {nil,{409717}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{209848}}},
         },
         [78147] = { -- Crimes Against Anatomy
+            [questKeys.startedBy] = {nil,{409735}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{209849}}},
+        },
+        [78148] = { -- Runes of the Sorcerer-Kings
+            [questKeys.startedBy] = {nil,{409731}},
+            [questKeys.questLevel] = -1,
+            [questKeys.objectives] = {nil,nil,{{209850}}},
         },
         [78149] = { -- Fury of the Land
+            [questKeys.startedBy] = {nil,{409711}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{209851}}},
         },
         [78150] = { -- Friend of the Library
+            [questKeys.startedBy] = {{211022,211033}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = 20,
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [78261] = { -- The Horn of Xelthos
@@ -155,67 +195,163 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [79091] = { -- Archmage Antonidas: The Unabridged Autobiography
+            [questKeys.startedBy] = {nil,{386691}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{203754}}},
+        },
+        [79092] = { -- Archmage Theocritus' Research Journal
+            [questKeys.startedBy] = {nil,{386759}},
+            [questKeys.questLevel] = -1,
+            [questKeys.objectives] = {nil,nil,{{203755}}},
         },
         [79093] = { -- Rumi of Gnomeregan: The Collected Works
+            [questKeys.startedBy] = {nil,{408014}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{208860}}},
         },
         [79094] = { -- The Lessons of Ta'zo
+            [questKeys.startedBy] = {nil,{450001}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{207972}}},
+        },
+        [79095] = { -- The Apothecary's Metaphysical Primer
+            [questKeys.startedBy] = {nil,{405879}},
+            [questKeys.finishedBy] = {{211022,211033}},
+            [questKeys.questLevel] = -1,
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{208185}}},
         },
         [79096] = { -- Ataeric: On Arcane Curiosities
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [79097] = { -- Baxtan: On Destructive Magics
+            [questKeys.startedBy] = {nil,{407566}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{208800}}},
         },
         [79229] = { -- Highway Robbery
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [79535] = { -- Basilisks: Should Petrification be Feared?
+            [questKeys.startedBy] = {nil,{421526}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{213165}}},
+        },
+        [79536] = { -- Greater Friend of the Library
+            [questKeys.startedBy] = {{211022,211033}},
+            [questKeys.preQuestSingle] = {78150},
         },
         [79947] = { -- Geomancy: The Stone-Cold Truth
+            [questKeys.startedBy] = {nil,{423895}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{215683}}},
         },
         [79948] = { -- Defensive Magics 101
+            [questKeys.startedBy] = {nil,{423896}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{215815}}},
         },
         [79949] = { -- A Web of Lies: Debunking Myths and Legends
+            [questKeys.startedBy] = {nil,{423897}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{215816}}},
         },
         [79950] = { -- Demons and You
+            [questKeys.startedBy] = {nil,{423898}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{215817}}},
         },
         [79951] = { -- Mummies: A Guide to the Unsavory Undead
+            [questKeys.startedBy] = {nil,{423899}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{215820}}},
         },
         [79952] = { -- RwlRwlRwlRwl!
+            [questKeys.startedBy] = {nil,{423900}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{215822}}},
         },
         [80001] = { -- Rekindle
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [81947] = { -- Sanguine Sorcery
+            [questKeys.startedBy] = {nil,{441247}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{220345}}},
         },
         [81949] = { -- Legends of the Tidesages
+            [questKeys.startedBy] = {nil,{441248}},
+            [questKeys.finishedBy] = {{211022,211033}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{220346}}},
         },
         [81952] = { -- Everyday Etiquette
+            [questKeys.startedBy] = {nil,{441250}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{220348}}},
         },
         [81953] = { -- Stonewrought Design
+            [questKeys.startedBy] = {nil,{441251}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{220349}}},
         },
         [81954] = { -- Venomous Journeys
+            [questKeys.startedBy] = {nil,{441252}},
+            [questKeys.finishedBy] = {{211022,211033}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{220350}}},
         },
         [81955] = { -- A Mind of Metal
+            [questKeys.startedBy] = {nil,{441253}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{220352}}},
         },
         [81956] = { -- Conjurer's Codex
+            [questKeys.startedBy] = {nil,{441254}},
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {nil,nil,{{220353}}},
+        },
+        [82208] = { -- Greater Friend of the Library
+            [questKeys.startedBy] = {{211022,211033}},
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectivesText] = {"You will need to hand in 25 books to complete this quest, however you can hand 1 in at any time."},
+            [questKeys.preQuestSingle] = {79536},
         },
         [84396] = { -- Magma or Lava?
             [questKeys.requiredLevel] = 1,
@@ -1963,7 +2099,339 @@ function ForeverQuestFixes:LoadDynamic()
     local rankKeys = QuestieProfessions.rankNames
     local playerClass = UnitClassBase("player")
 
-    return {
-        -- [questId] = { [questKeys.name] = "Character-specific name" },
+    local questFixesHorde = {
+        [78124] = { -- Nar'thalas Almanac
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Nar'thalas Almanac, Vol. 74' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [78127] = { -- The Dalaran Digest
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'The Dalaran Digest, Vol. 23' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [78142] = { -- Bewitchments and Glamours
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Bewitchments and Glamours' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [78143] = { -- Secrets of the Dreamers
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Secrets of the Dreamers' located just outside the Wailing Cavern dungeon and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [78145] = { -- Arcanic Systems Manual
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Arcanic Systems Manual' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [78146] = { -- Goaz Scrolls
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Goaz Scrolls' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [78147] = { -- Crimes Against Anatomy
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Crimes Against Anatomy' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [78148] = { -- Runes of the Sorcerer-Kings
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Runes of the Sorcerer-Kings' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [78149] = { -- Fury of the Land
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Fury of the Land' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [78150] = { -- Friend of the Library
+            [questKeys.startedBy] = {{211022}},
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"You will need to hand in 10 books to complete this quest, however you can hand 1 in at any time."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [79091] = { -- Archmage Antonidas: The Unabridged Autobiography
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Archmage Antonidas: The Unabridged Autobiography' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [79092] = { -- Archmage Theocritus' Research Journal
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Archmage Theocritus' Research Journal' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [79093] = { -- Rumi of Gnomeregan: The Collected Works
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Rumi of Gnomeregan: The Collected Works' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [79094] = { -- The Lessons of Ta'zo
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'The Lessons of Ta'zo' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [79095] = { -- The Apothecary's Metaphysical Primer
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'The Apothecary's Metaphysical Primer' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [79097] = { -- Baxtan: On Destructive Magics
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Baxtan: On Destructive Magics' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [79535] = { -- Basilisks: Should Petrification be Feared?
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Basilisks: Should Petrification be Feared?' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [79536] = { -- Greater Friend of the Library
+            [questKeys.startedBy] = {{211022}},
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"You will need to hand in 20 books to complete this quest, however you can hand 1 in at any time."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [79947] = { -- Geomancy: The Stone-Cold Truth
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Geomancy: The Stone-Cold Truth' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [79948] = { -- Defensive Magics 101
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Defensive Magics 101' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [79949] = { -- A Web of Lies: Debunking Myths and Legends
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'A Web of Lies: Debunking Myths and Legends' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [79950] = { -- Demons and You
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Demons and You' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [79951] = { -- Mummies: A Guide to the Unsavory Undead
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Mummies: A Guide to the Unsavory Undead' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [79952] = { -- RwlRwlRwlRwl!
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'RwlRwlRwlRwl!' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [81947] = { -- Sanguine Sorcery
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Sanguine Sorcery' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [81949] = { -- Legends of the Tidesages
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Legends of the Tidesages' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [81952] = { -- Everyday Etiquette
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Everyday Etiquette' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [81953] = { -- Stonewrought Design
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Stonewrought Design' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [81954] = { -- Venomous Journeys
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Venomous Journeys' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [81955] = { -- A Mind of Metal
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'A Mind of Metal' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [81956] = { -- Conjurer's Codex
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.objectivesText] = {"Collect 'Conjurer's Codex' and bring it to Owen Thadd in Undercity."},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
+        [82208] = { -- Greater Friend of the Library
+            [questKeys.startedBy] = {{211022}},
+            [questKeys.finishedBy] = {{211022}},
+            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
+        },
     }
+
+    local questFixesAlliance = {
+        [78124] = { -- Nar'thalas Almanac
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Nar'thalas Almanac, Vol. 74' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [78127] = { -- The Dalaran Digest
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'The Dalaran Digest, Vol. 23' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [78142] = { -- Bewitchments and Glamours
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Bewitchments and Glamours' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [78143] = { -- Secrets of the Dreamers
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Secrets of the Dreamers' located just outside the Wailing Cavern dungeon and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [78145] = { -- Arcanic Systems Manual
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Arcanic Systems Manual' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [78146] = { -- Goaz Scrolls
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Goaz Scrolls' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [78147] = { -- Crimes Against Anatomy
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Crimes Against Anatomy' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [78148] = { -- Runes of the Sorcerer-Kings
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Runes of the Sorcerer-Kings' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [78149] = { -- Fury of the Land
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Fury of the Land' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [78150] = { -- Friend of the Library
+            [questKeys.startedBy] = {{211033}},
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"You will need to hand in 10 books to complete this quest, however you can hand 1 in at any time."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [79091] = { -- Archmage Antonidas: The Unabridged Autobiography
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Archmage Antonidas: The Unabridged Autobiography' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [79092] = { -- Archmage Theocritus' Research Journal
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Archmage Theocritus' Research Journal' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [79093] = { -- Rumi of Gnomeregan: The Collected Works
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Rumi of Gnomeregan: The Collected Works' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [79094] = { -- The Lessons of Ta'zo
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'The Lessons of Ta'zo' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [79095] = { -- The Apothecary's Metaphysical Primer
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'The Apothecary's Metaphysical Primer' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [79097] = { -- Baxtan: On Destructive Magics
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Baxtan: On Destructive Magics' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [79535] = { -- Basilisks: Should Petrification be Feared?
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Basilisks: Should Petrification be Feared?' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [79536] = { -- Greater Friend of the Library
+            [questKeys.startedBy] = {{211033}},
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"You will need to hand in 20 books to complete this quest, however you can hand 1 in at any time."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [79947] = { -- Geomancy: The Stone-Cold Truth
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Geomancy: The Stone-Cold Truth' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [79948] = { -- Defensive Magics 101
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Defensive Magics 101' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [79949] = { -- A Web of Lies: Debunking Myths and Legends
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'A Web of Lies: Debunking Myths and Legends' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [79950] = { -- Demons and You
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Demons and You' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [79951] = { -- Mummies: A Guide to the Unsavory Undead
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Mummies: A Guide to the Unsavory Undead' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [79952] = { -- RwlRwlRwlRwl!
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'RwlRwlRwlRwl!' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [81947] = { -- Sanguine Sorcery
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Sanguine Sorcery' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [81949] = { -- Legends of the Tidesages
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Legends of the Tidesages' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [81952] = { -- Everyday Etiquette
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Everyday Etiquette' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [81953] = { -- Stonewrought Design
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Stonewrought Design' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [81954] = { -- Venomous Journeys
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Venomous Journeys' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [81955] = { -- A Mind of Metal
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'A Mind of Metal' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [81956] = { -- Conjurer's Codex
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.objectivesText] = {"Collect 'Conjurer's Codex' and bring it to Garion Wendell in Stormwind."},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [82208] = { -- Greater Friend of the Library
+            [questKeys.startedBy] = {{211033}},
+            [questKeys.finishedBy] = {{211033}},
+            [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+    }
+
+    if UnitFactionGroup("Player") == "Horde" then
+        return questFixesHorde
+    else
+        return questFixesAlliance
+    end
 end
