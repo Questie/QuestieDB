@@ -164,8 +164,10 @@ input identity, complete command results, zero-preservation checks and historica
 Passing those gates does not establish complete gameplay behavior or client parser support.
 
 The maintained `forever-delta-base` tests separate selected gameplay examples from correction
-behavior. Exact examples cover restrictions, rewards, relationships and imported identities;
-update them when those specific facts intentionally change. Provider order, scalar fallback,
+behavior. Exact examples cover rewards, relationships and imported identities;
+update them when those specific facts intentionally change. Paused extraction fields
+(restrictions, categories, primary zones and NPC friendliness) are not pinned to their
+former values or getter defaults; other layers may still supply them. Provider order, scalar fallback,
 objective initialization/addition/replacement and Dynamic restoration use controlled rows
 through the registered providers. Do not pin live levels, missing objectives, trace coordinates
 or exact provider row counts to test those behaviors. Adding data should not require changing
