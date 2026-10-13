@@ -1862,11 +1862,14 @@ function ForeverQuestFixes:Load()
         },
         [99080] = { -- Drive Them Out
             [questKeys.preQuestSingle] = {99101},
-            [questKeys.nextQuestInChain] = 99101,
+            [questKeys.nextQuestInChain] = 99082,
         },
         [99081] = { -- Grim Tidings
             [questKeys.preQuestSingle] = {99079},
             [questKeys.nextQuestInChain] = 99101,
+        },
+        [99082] = { -- The High Chieftain
+            [questKeys.preQuestSingle] = {99080},
         },
         [99101] = { -- Our Ancient Enemy
             [questKeys.preQuestSingle] = {99081},
