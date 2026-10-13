@@ -45,7 +45,6 @@ function ForeverNpcFixes:Load()
         },
         [10993] = { -- Twizwick Sprocketgrind
             [npcKeys.questEnds_add] = {97930},
-            [npcKeys.questStarts_add] = {97930},
         },
         [11051] = { -- Vhan
             [npcKeys.questEnds_add] = {97937},
