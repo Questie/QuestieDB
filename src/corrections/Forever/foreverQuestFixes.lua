@@ -163,6 +163,9 @@ function ForeverQuestFixes:Load()
         [79094] = { -- The Lessons of Ta'zo
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
+        [79096] = { -- Ataeric: On Arcane Curiosities
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
         [79097] = { -- Baxtan: On Destructive Magics
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
