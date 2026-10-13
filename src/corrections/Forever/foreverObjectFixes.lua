@@ -108,6 +108,11 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{12.04,56.21}}},
             [objectKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
         },
+        [649094] = { -- Rock Pile
+            [objectKeys.name] = "Rock Pile",
+            [objectKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{65.2,25},{66.4,25.5},{67.1,29},{68.4,29.2},{68.5,29.1},{74.8,39.6}}},
+            [objectKeys.zoneID] = zoneIDs.RIVERGLADES,
+        },
         [652227] = { -- Dwarven Heirloom
             [objectKeys.name] = "Dwarven Heirloom",
             [objectKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
