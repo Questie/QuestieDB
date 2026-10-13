@@ -159,7 +159,7 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{36.05,33.53}}},
         },
         [257196] = { -- Zaal Stormshield
-            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{36.05,33.53}}},
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{56.63,50.37}}},
         },
         [257446] = { -- Teo Hammerstorm
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{28.79,66.18}}},
