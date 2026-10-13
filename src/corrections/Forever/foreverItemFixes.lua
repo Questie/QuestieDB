@@ -39,6 +39,47 @@ function ForeverItemFixes:Load()
         [14396] = { -- Incantations from the Nether
             [itemKeys.npcDrops_remove] = {238461},
         },
+        [206157] = { -- Seaforium Mining Charge
+            [itemKeys.name] = "Seaforium Mining Charge",
+            [itemKeys.objectDrops] = {403041},
+            [itemKeys.class] = itemClasses.QUEST,
+        },
+        [206159] = { -- Venture Co Disguise
+            [itemKeys.name] = "Venture Co Disguise",
+            [itemKeys.class] = itemClasses.QUEST,
+        },
+        [206170] = { -- Windfury Cone
+            [itemKeys.name] = "Windfury Cone",
+            [itemKeys.objectDrops] = {403105},
+        },
+        [206175] = { -- Pine Salve
+            [itemKeys.name] = "Pine Salve",
+            [itemKeys.class] = itemClasses.QUEST,
+        },
+        [206176] = { -- Mortar and Pestle
+            [itemKeys.name] = "Mortar and Pestle",
+            [itemKeys.class] = itemClasses.QUEST,
+        },
+        [206344] = { -- Knife Set
+            [itemKeys.name] = "Knife Set",
+            [itemKeys.class] = itemClasses.QUEST,
+        },
+        [206345] = { -- Fish Chunks
+            [itemKeys.name] = "Fish Chunks",
+            [itemKeys.class] = itemClasses.QUEST,
+        },
+        [207972] = { -- The Lessons of Ta'zo
+            [itemKeys.name] = "The Lessons of Ta'zo",
+            [itemKeys.objectDrops] = {450001},
+        },
+        [215817] = { -- Demons and You
+            [itemKeys.name] = "Demons and You",
+            [itemKeys.objectDrops] = {423898},
+        },
+        [220346] = { -- Legends of the Tidesages
+            [itemKeys.name] = "Legends of the Tidesages",
+            [itemKeys.objectDrops] = {441248},
+        },
         [252760] = { -- Stolen Shen'dar Supplies
             [itemKeys.npcDrops] = {252068,254596,259385,259398},
         },

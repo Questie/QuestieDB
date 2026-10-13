@@ -48,6 +48,9 @@ function ForeverQuestFixes:Load()
             [questKeys.questFlags] = 8,
             [questKeys.reputationReward] = {{factionIDs.DARNASSUS, 100}},
         },
+        [760] = { -- Wildmane Cleansing
+            [questKeys.nextQuestInChain] = 98435,
+        },
         [808] = { -- Minshina's Skull
             [questKeys.disabledByQuest] = 805,
         },
@@ -89,6 +92,28 @@ function ForeverQuestFixes:Load()
         },
         [6126] = { -- Lessons Anew
             [questKeys.startedBy_add] = {{262560}},
+        },
+        [76156] = { -- Stalk With The Earthmother
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.requiredClasses] = classIDs.NONE,
+            [questKeys.nextQuestInChain] = 76160,
+            [questKeys.objectives] = {nil,nil,{{206157}}},
+            [questKeys.sourceItemId] = 206159,
+        },
+        [76160] = { -- Stalk With The Earthmother
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.preQuestSingle] = {76156},
+            [questKeys.nextQuestInChain] = 76240,
+            [questKeys.sourceItemId] = 206176,
+            [questKeys.objectives] = {nil,nil,{{206175}}},
+            [questKeys.requiredSourceItems] = {206170},
+        },
+        [76240] = { -- Stalk With The Earthmother
+            [questKeys.requiredClasses] = classIDs.NONE,
+            [questKeys.preQuestSingle] = {76160},
+            [questKeys.sourceItemId] = 206344,
+            [questKeys.objectives] = {nil,nil,{{206345}}},
+            [questKeys.requiredSourceItems] = {6291},
         },
         [78124] = { -- Nar'thalas Almanac
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -876,6 +901,9 @@ function ForeverQuestFixes:Load()
         [95350] = { -- Welcome to Azeroth
             [questKeys.nextQuestInChain] = 93739,
         },
+        [95805] = { -- Grace of An'she and Mu'sha
+            [questKeys.preQuestSingle] = {755},
+        },
         [95816] = { -- Sign Me Up!
             [questKeys.name] = "Sign Me Up!",
             [questKeys.startedBy] = {nil,nil,{270888}},
@@ -1118,7 +1146,7 @@ function ForeverQuestFixes:Load()
             [questKeys.exclusiveTo] = {96626,96629,96634,96646,96655,96661},
         },
         [96659] = { -- The Adventurer
-            -- [questKeys.preQuestSingle] = {92470}, -- TBD
+            [questKeys.preQuestSingle] = {757},
             [questKeys.breadcrumbForQuestId] = 96605,
             [questKeys.nextQuestInChain] = 96605,
             [questKeys.exclusiveTo] = {96627,96628,96630,96638,96652,96656},
@@ -1367,7 +1395,7 @@ function ForeverQuestFixes:Load()
             [questKeys.exclusiveTo] = {96059,97901,97917,97940,97953,98284,98286},
         },
         [97930] = { -- Camping 101: Engineering
-            [questKeys.startedBy] = {{10993}}, -- ??
+            [questKeys.startedBy] = {{265810}},
             [questKeys.finishedBy] = {{10993}},
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.ENGINEERING, 1},
@@ -1763,8 +1791,18 @@ function ForeverQuestFixes:Load()
         [98407] = { -- Show of Force
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
+        [98424] = { -- Fizsprocket's Notes
+            [questKeys.nextQuestInChain] = 98427,
+            [questKeys.sourceItemId] = 281031,
+        },
+        [98427] = { -- Ceasing Operations
+            [questKeys.preQuestSingle] = {98424},
+        },
         [98430] = { -- The Longwalkers
             [questKeys.triggerEnd] = {"Escort Perith Stormhoof out of Palemane Rock", {[zoneIDs.MULGORE] = {{37.19,64.62}}}},
+        },
+        [98435] = { -- Thunderhorn's Report
+            [questKeys.preQuestSingle] = {760},
         },
         [98461] = { -- Unrequited Love
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
@@ -1819,6 +1857,24 @@ function ForeverQuestFixes:Load()
         [99073] = { -- Easing Suffering
             [questKeys.preQuestSingle] = {99050},
         },
+        [99079] = { -- Longwalker Malah
+            [questKeys.nextQuestInChain] = 99081,
+        },
+        [99080] = { -- Drive Them Out
+            [questKeys.preQuestSingle] = {99101},
+            [questKeys.nextQuestInChain] = 99101,
+        },
+        [99081] = { -- Grim Tidings
+            [questKeys.preQuestSingle] = {99079},
+            [questKeys.nextQuestInChain] = 99101,
+        },
+        [99101] = { -- Our Ancient Enemy
+            [questKeys.preQuestSingle] = {99081},
+            [questKeys.nextQuestInChain] = 99080,
+        },
+        [99108] = { -- Sparring Match
+            [questKeys.objectives] = {{{10721}}},
+        },
         [99123] = { -- Lost in the Shadows
             [questKeys.triggerEnd] = {"Escort Pal'juh out of Kolkar Crag.", {[zoneIDs.DUROTAR] = {{51.41,79.29}}}},
         },
@@ -1872,7 +1928,7 @@ function ForeverQuestFixes:Load()
             [questKeys.name] = "Kyle's Gone Missing!",
             [questKeys.startedBy] = {{277182}},
             [questKeys.finishedBy] = {{277182}},
-            [questKeys.requiredLevel] = 7,
+            [questKeys.requiredLevel] = 5,
             [questKeys.questLevel] = 7,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.requiredClasses] = raceIDs.NONE,

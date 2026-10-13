@@ -15,6 +15,19 @@ function ForeverObjectFixes:Load()
         [61934] = { -- Brazier of the Dormant Flame
             [objectKeys.spawns_add] = {[zoneIDs.LOCH_MODAN] = {{31.79,64.52}}},
         },
+        [403041] = { -- Blasting Supplies
+            [objectKeys.name] = "Blasting Supplies",
+            [objectKeys.spawns] = {[zoneIDs.MULGORE] = {{57.4,48.8},{57.5,48.8},{58.4,47.8},{59.2,46.9},{59.5,49.0},{59.9,46.1},{60.2,50.0}}},
+            [objectKeys.zoneID] = zoneIDs.MULGORE,
+        },
+        [403105] = { -- Windfury Cone
+            [objectKeys.name] = "Windfury Cone",
+            [objectKeys.spawns] = {[zoneIDs.MULGORE] = {{30.9,30.8},{31.3,32.8},{31.5,32.6},{31.8,35.2},{32.8,32.2},{37.2,23.7},{37.3,22.5},{38.1,21.6},{38.1,23.3},{38.2,23.5},{38.4,21.4},{38.8,21.7},{39.4,20.3},{50.7,17.8},{51.2,20.7},{51.5,21.1},{52.0,21.6},{52.7,26.7},{53.1,22.7}}},
+            [objectKeys.zoneID] = zoneIDs.MULGORE,
+        },
+        [405879] = { -- Apothecary Society Primer
+            [objectKeys.questStarts] = {79095},
+        },
         [562131] = { -- Applejack Still
             [objectKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{24.55,58.04}}},
             [objectKeys.questStarts] = {91736},
@@ -122,6 +135,7 @@ function ForeverObjectFixes:Load()
         },
         [660739] = { -- Ritual Fire
             [objectKeys.questEnds_add] = {95805},
+            [objectKeys.spawns] = {[zoneIDs.MULGORE] = {{56.61,88.7}}},
         },
         [660848] = { -- Kuramaa's Stump
             [objectKeys.name] = "Kuramaa's Stump",
@@ -143,6 +157,18 @@ function ForeverObjectFixes:Load()
             [objectKeys.name] = "Treaty of Understanding",
             [objectKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
             [objectKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
+        },
+        [673494] = { -- Shredder Operation Instructions
+            [objectKeys.spawns] = {[zoneIDs.MULGORE] = {{58.63,47.31}}},
+            [objectKeys.zoneID] = zoneIDs.MULGORE,
+        },
+        [673496] = { -- Barrens Operations Best Practices
+            [objectKeys.spawns] = {[zoneIDs.MULGORE] = {{61.67,47.31}}},
+            [objectKeys.zoneID] = zoneIDs.MULGORE,
+        },
+        [673497] = { -- One "Gerenzo", of Stonetalon
+            [objectKeys.spawns] = {[zoneIDs.MULGORE] = {{59.02,46.41}}},
+            [objectKeys.zoneID] = zoneIDs.MULGORE,
         },
         [693669] = { -- Weapon Piece
             [objectKeys.spawns] = {[zoneIDs.DUROTAR] = {{60.11,44.8}}},

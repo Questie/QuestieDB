@@ -53,6 +53,9 @@ function ForeverNpcFixes:Load()
         [14242] = { -- Sulhasa
             [npcKeys.name] = "Sulhasa",
         },
+        [205729] = { -- Boarton Shadetotem
+            [npcKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{39.44,65.82}}},
+        },
         [261319] = { -- Durgen Dirgehammer
             [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
@@ -217,6 +220,9 @@ function ForeverNpcFixes:Load()
         [264936] = { -- Earthseer Farsen
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{64.87,58.47}}},
         },
+        [265810] = { -- Kaga Wildhoof
+            [npcKeys.questStarts_add] = {97930},
+        },
         [265811] = { -- Lyreena Duskblade
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{57.58,56.64}}},
         },
@@ -225,6 +231,9 @@ function ForeverNpcFixes:Load()
         },
         [268530] = { -- Bloodtalon Matriarch
             [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{68.81,71.78}}},
+        },
+        [268558] = { -- Chakuyak
+            [npcKeys.spawns] = {[zoneIDs.MULGORE] = {{39.46,66.18}}},
         },
         [268602] = { -- Skypriest Faladiel
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.43,63.71}}},
@@ -287,6 +296,9 @@ function ForeverNpcFixes:Load()
         [272046] = { -- Witchmother Arysa
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{34.22,27.94}}},
         },
+        [272173] = { -- Venture Co. Clearclutter
+            [npcKeys.spawns] = {[zoneIDs.MULGORE] = {{56.76,42.75}}},
+        },
         [275657] = { -- Heglan Shadeeye
             [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{58.6,45.6}}},
         },
@@ -295,6 +307,9 @@ function ForeverNpcFixes:Load()
         },
         [275683] = { -- Sentinel Eralya Leafshadow
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{37.54,36.81}}},
+        },
+        [275789] = { -- Malah Longwind
+            [npcKeys.spawns] = {[zoneIDs.MULGORE] = {{57.62,63.18}}},
         },
         [275811] = { -- Pal'juh
             [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{46.3,78.64}}},
@@ -309,8 +324,8 @@ function ForeverNpcFixes:Load()
             [npcKeys.minLevel] = 12,
             [npcKeys.maxLevel] = 12,
             [npcKeys.rank] = 0,
-            [npcKeys.spawns] = {[zoneIDs.MULGORE] = {{46.82,63.84}}}, -- TBD
-            [npcKeys.waypoints] = nil, -- TBD
+            [npcKeys.spawns] = {[zoneIDs.MULGORE] = {{46.28,62.34}}},
+            [npcKeys.waypoints] = {[zoneIDs.MULGORE] = {{{46.28,62.34},{46.27,62.50},{46.20,62.60},{46.12,62.74},{46.07,62.85},{46.07,63.05},{46.13,63.18},{46.23,63.30},{46.34,63.41},{46.45,63.52},{46.56,63.62},{46.69,63.67},{46.81,63.74},{46.91,63.87},{47.01,64.01},{47.09,64.16},{47.17,64.32},{47.25,64.48},{47.33,64.64},{47.38,64.83},{47.39,64.97},{47.40,65.18},{47.43,65.38},{47.45,65.49},{47.48,65.69},{47.53,65.88},{47.60,66.05},{47.68,66.22},{47.76,66.35},{47.86,66.45},{47.97,66.51},{48.05,66.48},{48.12,66.39},{48.10,66.30},{48.04,66.12},{47.97,65.94},{47.90,65.76},{47.83,65.59},{47.75,65.41},{47.68,65.24},{47.63,65.05},{47.66,64.92},{47.74,64.75},{47.82,64.58},{47.91,64.42},{47.99,64.25},{48.07,64.08},{48.13,63.89},{48.18,63.69},{48.23,63.49},{48.24,63.29},{48.24,63.15},{48.23,62.94},{48.22,62.73},{48.21,62.52},{48.19,62.36},{48.16,62.18},{48.08,61.99},{48.00,61.82},{47.92,61.65},{47.85,61.59},{47.74,61.53},{47.60,61.47},{47.46,61.44},{47.35,61.45},{47.21,61.49},{47.06,61.52},{46.96,61.54},{46.81,61.54},{46.75,61.55},{46.74,61.55},{46.63,61.54},{46.52,61.54},{46.40,61.55},{46.34,61.69},{46.30,61.85},{46.29,62.02},{46.28,62.20},{46.28,62.34}}}},
             [npcKeys.zoneID] = zoneIDs.MULGORE,
             [npcKeys.questStarts] = nil,
             [npcKeys.questEnds] = nil,
