@@ -46,7 +46,7 @@ fixture.write(path, {
     },
     [97286] = {
       [quest.name] = "Research Access",
-      [quest.requiredRaces] = 4294967373,
+      [quest.requiredRaces] = 0,
       [quest.requiredClasses] = 128,
     },
   },
