@@ -468,7 +468,8 @@ The nine stored locales are `deDE, esES, esMX, frFR, koKR, ptBR, ruRU, zhCN, zhT
 is already enUS. Field coverage is quest `name` + `objectivesText`, npc `name` + `subName`, item
 `name`, and object `name`. Localization has three inputs: Base translations, Static Translation
 Corrections folded into generated blocks, and Dynamic Translation Corrections selected at query
-time. Source mode omits ordinary Base translations but can apply Dynamic Translation Corrections.
+time. Source mode loads the raw `l10n/` lookups for the client locale only, layered as in
+Generation, and can apply Dynamic Translation Corrections for any locale.
 
 ## Variants: SoD, Classic+
 
