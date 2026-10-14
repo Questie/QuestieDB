@@ -120,9 +120,6 @@ function ForeverObjectFixes:Load()
         [421526] = { -- Research Notes
             [objectKeys.questStarts] = {79535},
         },
-        [423901] = { -- Book
-            [objectKeys.spawns] = {[zoneIDs.SWAMP_OF_SORROWS] = {{61.5,22.5}}},
-        },
         [423895] = { -- Scrolls
             [objectKeys.name] = "Scrolls",
             [objectKeys.spawns] = {[zoneIDs.THOUSAND_NEEDLES] = {{34.4,40.1},{34.5,40.1}}},
@@ -158,6 +155,10 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.DUSTWALLOW_MARSH] = {{57.2,20.8}}},
             [objectKeys.zoneID] = zoneIDs.DUSTWALLOW_MARSH,
             [objectKeys.questStarts] = {79952},
+        },
+        [423901] = { -- Book
+            [objectKeys.spawns] = {[zoneIDs.SWAMP_OF_SORROWS] = {{61.5,22.5}}},
+            [objectKeys.questStarts] = {79953},
         },
         [441247] = { -- Book
             [objectKeys.name] = "Book",
