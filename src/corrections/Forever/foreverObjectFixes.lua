@@ -36,6 +36,12 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.MULGORE] = {{30.9,30.8},{31.3,32.8},{31.5,32.6},{31.8,35.2},{32.8,32.2},{37.2,23.7},{37.3,22.5},{38.1,21.6},{38.1,23.3},{38.2,23.5},{38.4,21.4},{38.8,21.7},{39.4,20.3},{50.7,17.8},{51.2,20.7},{51.5,21.1},{52.0,21.6},{52.7,26.7},{53.1,22.7}}},
             [objectKeys.zoneID] = zoneIDs.MULGORE,
         },
+        [405149] = { -- Mural of Ta'zo
+            [objectKeys.name] = "Mural of Ta'zo",
+            [objectKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{38.7,78.4}}},
+            [objectKeys.zoneID] = zoneIDs.ORGRIMMAR,
+            [objectKeys.questStarts] = {79094},
+        },
         [405879] = { -- Apothecary Society Primer
             [objectKeys.questStarts] = {79095},
         },
@@ -105,8 +111,17 @@ function ForeverObjectFixes:Load()
             [objectKeys.zoneID] = zoneIDs.DUSKWOOD,
             [objectKeys.questStarts] = {78147},
         },
+        [410299] = { -- Arcane Secrets
+            [objectKeys.name] = "Arcane Secrets",
+            [objectKeys.spawns] = {[zoneIDs.SILVERPINE_FOREST] = {{43.4,41.2}}},
+            [objectKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
+            [objectKeys.questStarts] = {79096},
+        },
         [421526] = { -- Research Notes
             [objectKeys.questStarts] = {79535},
+        },
+        [423901] = { -- Book
+            [objectKeys.spawns] = {[zoneIDs.SWAMP_OF_SORROWS] = {{61.5,22.5}}},
         },
         [423895] = { -- Scrolls
             [objectKeys.name] = "Scrolls",
@@ -153,6 +168,12 @@ function ForeverObjectFixes:Load()
         [441248] = { -- Book
             [objectKeys.questStarts] = {81949},
         },
+        [441249] = { -- Book
+            [objectKeys.name] = "Book",
+            [objectKeys.spawns] = {[zoneIDs.FERALAS] = {{50.6,15.7}}},
+            [objectKeys.zoneID] = zoneIDs.FERALAS,
+            [objectKeys.questStarts] = {81951},
+        },
         [441250] = { -- Book
             [objectKeys.name] = "Book",
             [objectKeys.spawns] = {[zoneIDs.AZSHARA] = {{20.7,62}}},
@@ -183,11 +204,61 @@ function ForeverObjectFixes:Load()
             [objectKeys.zoneID] = zoneIDs.BLASTED_LANDS,
             [objectKeys.questStarts] = {81956},
         },
-        [450001] = { -- The Lessons of Ta'zo
-            [objectKeys.name] = "The Lessons of Ta'zo",
-            [objectKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{38.7,78.4}}},
-            [objectKeys.zoneID] = zoneIDs.ORGRIMMAR,
-            [objectKeys.questStarts] = {79094},
+        [463206] = { -- Book
+            [objectKeys.name] = "Book",
+            [objectKeys.spawns] = {[zoneIDs.BURNING_STEPPES] = {{26.4,24.45}}},
+            [objectKeys.zoneID] = zoneIDs.BURNING_STEPPES,
+            [objectKeys.questStarts] = {84396},
+        },
+        [463207] = { -- Book
+            [objectKeys.name] = "Book",
+            [objectKeys.spawns] = {[zoneIDs.EASTERN_PLAGUELANDS] = {{81.7,57.8}}},
+            [objectKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [objectKeys.questStarts] = {84398},
+        },
+        [463208] = { -- Book
+            [objectKeys.name] = "Book",
+            [objectKeys.zoneID] = 139,
+            [objectKeys.spawns] = {
+                [139] = {{54.4,51.1},{54.5,51.1}},
+            },
+            [objectKeys.questStarts] = {84400},
+        },
+        [463209] = { -- Book
+            [objectKeys.name] = "Book",
+            [objectKeys.zoneID] = 361,
+            [objectKeys.spawns] = {
+                [361] = {{65.2,3.3}},
+            },
+            [objectKeys.questStarts] = {84397},
+        },
+        [463211] = { -- Book
+            [objectKeys.name] = "Book",
+            [objectKeys.spawns] = {[zoneIDs.WESTERN_PLAGUELANDS] = {{69.41,72.84}}},
+            [objectKeys.zoneID] = zoneIDs.WESTERN_PLAGUELANDS,
+            [objectKeys.questStarts] = {84402},
+        },
+        [463212] = { -- Book
+            [objectKeys.name] = "Book",
+            [objectKeys.zoneID] = 139,
+            [objectKeys.spawns] = {
+                [139] = {{31.2,21}},
+            },
+            [objectKeys.questStarts] = {84401},
+        },
+        [463213] = { -- Book
+            [objectKeys.name] = "Book",
+            [objectKeys.spawns] = {[zoneIDs.WESTERN_PLAGUELANDS] = {{38.2,54.6}}},
+            [objectKeys.zoneID] = zoneIDs.WESTERN_PLAGUELANDS,
+            [objectKeys.questStarts] = {84395},
+        },
+        [463214] = { -- Book
+            [objectKeys.name] = "Book",
+            [objectKeys.zoneID] = 618,
+            [objectKeys.spawns] = {
+                [618] = {{60.7,37.7}},
+            },
+            [objectKeys.questStarts] = {84399},
         },
         [562131] = { -- Applejack Still
             [objectKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{24.55,58.04}}},
