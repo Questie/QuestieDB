@@ -226,6 +226,7 @@ function ForeverQuestFixes:Load()
         },
         [79095] = { -- The Apothecary's Metaphysical Primer
             [questKeys.startedBy] = {{211022,211033},{405879}},
+            [questKeys.finishedBy] = {{211022,211033}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 20,
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -233,6 +234,7 @@ function ForeverQuestFixes:Load()
         },
         [79096] = { -- Ataeric: On Arcane Curiosities
             [questKeys.startedBy] = {{211022,211033},{410299}},
+            [questKeys.finishedBy] = {{211022,211033}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 20,
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -250,6 +252,7 @@ function ForeverQuestFixes:Load()
         },
         [79535] = { -- Basilisks: Should Petrification be Feared?
             [questKeys.startedBy] = {{211022,211033},{421526}},
+            [questKeys.finishedBy] = {{211022,211033}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 35,
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -282,6 +285,7 @@ function ForeverQuestFixes:Load()
         },
         [79950] = { -- Demons and You
             [questKeys.startedBy] = {{211022,211033},{423898}},
+            [questKeys.finishedBy] = {{211022,211033}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 35,
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -322,6 +326,7 @@ function ForeverQuestFixes:Load()
         },
         [81949] = { -- Legends of the Tidesages
             [questKeys.startedBy] = {{211022,211033},{441248}},
+            [questKeys.finishedBy] = {{211022,211033}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 45,
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -351,6 +356,7 @@ function ForeverQuestFixes:Load()
         },
         [81954] = { -- Venomous Journeys
             [questKeys.startedBy] = {{211022,211033},{441252}},
+            [questKeys.finishedBy] = {{211022,211033}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 45,
             [questKeys.requiredRaces] = raceIDs.NONE,
