@@ -80,6 +80,18 @@ function ForeverItemFixes:Load()
             [itemKeys.name] = "Legends of the Tidesages",
             [itemKeys.objectDrops] = {441248},
         },
+        [220347] = { -- The Liminal and the Arcane
+            [itemKeys.name] = "The Liminal and the Arcane",
+            [itemKeys.objectDrops] = {441249},
+        },
+        [228138] = { -- The Knight and the Lady
+            [itemKeys.name] = "The Knight and the Lady",
+            [itemKeys.objectDrops] = {463208},
+        },
+        [228140] = { -- Scourge: Undead Menace or Misunderstood?
+            [itemKeys.name] = "Scourge: Undead Menace or Misunderstood?",
+            [itemKeys.objectDrops] = {463212},
+        },
         [252760] = { -- Stolen Shen'dar Supplies
             [itemKeys.npcDrops] = {252068,254596,259385,259398},
         },
