@@ -21,6 +21,12 @@ TBC, Wrath, Cata, and Mists. It does not apply on Vanilla or Forever. Its rows r
 lookup rows: a name-only quest override clears any old translated objectives. The input adapter in
 `generator/l10n-inputs.lua` preserves that behavior with explicit field clearing.
 
+`Forever/traces/` holds trace-generated lookups in the same layout as the base directories
+(`lookupQuests/<locale>.lua`, and so on). Generation applies them on top of the `Forever` base
+files, merging per field. Trace entries win over base entries, and base entries missing from the
+traces stay. Every trace file is optional. Replace the whole `traces/` directory when new trace
+data is generated.
+
 The files retain their executable Questie format, including locale guards and loader calls.
 The adapter executes them in a private environment; they are not runtime-loaded through a TOC.
 The original Titan function in `lookupOverrides.lua` is not invoked by Generation. Titan Dynamic Translation Corrections already live
