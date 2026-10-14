@@ -37,11 +37,19 @@ function ForeverNpcFixes:Load()
         [4949] = { -- Thrall
             [npcKeys.questEnds_add] = {93739},
         },
+        [5497] = { -- Jennea Cannon
+            [npcKeys.questStarts_add] = {84395,84396,84397,84398,84399,84400,84401,84402},
+            [npcKeys.questEnds_add] = {84395,84396,84397,84398,84399,84400,84401,84402},
+        },
         [5891] = { -- Minor Manifestation of Earth
             [npcKeys.spawns_add] = {[zoneIDs.DUN_MOROGH] = {{24.84,61.86}}},
         },
         [5893] = { -- Minor Manifestation of Earth
             [npcKeys.spawns_add] = {[zoneIDs.LOCH_MODAN] = {{31.96,64.42}}},
+        },
+        [7825] = { -- Oran Snakewrithe
+            [npcKeys.questStarts_add] = {84395,84396,84397,84398,84399,84400,84401,84402},
+            [npcKeys.questEnds_add] = {84395,84396,84397,84398,84399,84400,84401,84402},
         },
         [10993] = { -- Twizwick Sprocketgrind
             [npcKeys.questEnds_add] = {97930},
@@ -56,15 +64,14 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{39.44,65.82}}},
         },
         [211022] = { -- Owen Thadd
-            [npcKeys.questStarts_remove] = {79095},
-            [npcKeys.spawns] = {[zoneIDs.UNDERCITY] = {{73.4,33}}},
-            [npcKeys.questStarts_add] = {78150,79536,82208},
-            [npcKeys.questEnds_add] = {81954},
+            [npcKeys.spawns] = {[zoneIDs.UNDERCITY] = {{73.4,33}}}, -- TBD
+            [npcKeys.questStarts_add] = {78150,79536,82208,78124,78127,78142,78143,78145,78146,78147,78148,78149,79091,79092,79093,79094,79095,79096,79097,79535,79947,79948,79949,79950,79951,79952,79953,81947,81949,81951,81952,81953,81954,81955,81956},
+            [npcKeys.questEnds_add] = {78124,78127,78142,78143,78145,78146,78147,78148,78149,79091,79092,79093,79094,79095,79096,79097,79535,79947,79948,79949,79950,79951,79952,79953,81947,81949,81951,81952,81953,81954,81955,81956},
         },
         [211033] = { -- Garion Wendell
-            [npcKeys.questStarts_remove] = {78148,79092},
-            [npcKeys.questStarts_add] = {78150},
-            [npcKeys.questEnds_add] = {79095,81949},
+            [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{48.94,86.54}}}, -- TBD
+            [npcKeys.questStarts_add] = {78150,79536,82208,78124,78127,78142,78143,78145,78146,78147,78148,78149,79091,79092,79093,79094,79095,79096,79097,79535,79947,79948,79949,79950,79951,79952,79953,81947,81949,81951,81952,81953,81954,81955,81956},
+            [npcKeys.questEnds_add] = {78124,78127,78142,78143,78145,78146,78147,78148,78149,79091,79092,79093,79094,79095,79096,79097,79535,79947,79948,79949,79950,79951,79952,79953,81947,81949,81951,81952,81953,81954,81955,81956},
         },
         [261319] = { -- Durgen Dirgehammer
             [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
