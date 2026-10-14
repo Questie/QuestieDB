@@ -212,24 +212,20 @@ function ForeverObjectFixes:Load()
         },
         [463207] = { -- Book
             [objectKeys.name] = "Book",
-            [objectKeys.spawns] = {[zoneIDs.EASTERN_PLAGUELANDS] = {{81.7,57.8}}},
+            [objectKeys.spawns] = {[zoneIDs.EASTERN_PLAGUELANDS] = {{71.86,48.27}}},
             [objectKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [objectKeys.questStarts] = {84398},
         },
         [463208] = { -- Book
             [objectKeys.name] = "Book",
-            [objectKeys.zoneID] = 139,
-            [objectKeys.spawns] = {
-                [139] = {{54.4,51.1},{54.5,51.1}},
-            },
+            [objectKeys.spawns] = {[zoneIDs.EASTERN_PLAGUELANDS] = {{47.30,42.23}}},
+            [objectKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [objectKeys.questStarts] = {84400},
         },
         [463209] = { -- Book
             [objectKeys.name] = "Book",
-            [objectKeys.zoneID] = 361,
-            [objectKeys.spawns] = {
-                [361] = {{65.2,3.3}},
-            },
+            [objectKeys.spawns] = {[zoneIDs.FELWOOD] = {{65.2,3.3}}},
+            [objectKeys.zoneID] = zoneIDs.FELWOOD,
             [objectKeys.questStarts] = {84397},
         },
         [463211] = { -- Book
@@ -240,10 +236,8 @@ function ForeverObjectFixes:Load()
         },
         [463212] = { -- Book
             [objectKeys.name] = "Book",
-            [objectKeys.zoneID] = 139,
-            [objectKeys.spawns] = {
-                [139] = {{31.2,21}},
-            },
+            [objectKeys.spawns] = {[zoneIDs.EASTERN_PLAGUELANDS] = {{26.43,15.13}}},
+            [objectKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [objectKeys.questStarts] = {84401},
         },
         [463213] = { -- Book
@@ -254,10 +248,8 @@ function ForeverObjectFixes:Load()
         },
         [463214] = { -- Book
             [objectKeys.name] = "Book",
-            [objectKeys.zoneID] = 618,
-            [objectKeys.spawns] = {
-                [618] = {{60.7,37.7}},
-            },
+            [objectKeys.spawns] = {[zoneIDs.WINTERSPRING] = {{60.7,37.7}}},
+            [objectKeys.zoneID] = zoneIDs.WINTERSPRING,
             [objectKeys.questStarts] = {84399},
         },
         [562131] = { -- Applejack Still
