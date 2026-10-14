@@ -224,8 +224,9 @@ return function(check, equal)
 
     local ok, err = pcall(function()
         -- All 16 synthetic objects reach both outputs, including the last ID, 9000016.
+        -- Count only synthetic findings; real Forever data may have its own.
         local spawns = runFailureFixture("spawns")
-        local _, count = spawns.console:gsub("NEW: Forever Object", "")
+        local _, count = spawns.console:gsub("NEW: Forever Object %d+ 'Diagnostic fixture object ", "")
         equal(count, 16, "The console explains all 16 new findings, not only the first 15")
         check(spawns.console:find("Object 9000016", 1, true) and
             spawns.console:find("areaIdToUiMapId[16919] is nil", 1, true),
