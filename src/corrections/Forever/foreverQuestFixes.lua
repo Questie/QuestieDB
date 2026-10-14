@@ -378,7 +378,7 @@ function ForeverQuestFixes:Load()
         },
         [84395] = { -- Undead Potatoes
             [questKeys.name] = "Undead Potatoes",
-            [questKeys.startedBy] = {{211022,211033},{463213}},
+            [questKeys.startedBy] = {{5497,7825},{463213}},
             [questKeys.finishedBy] = {{5497,7825}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
@@ -387,7 +387,7 @@ function ForeverQuestFixes:Load()
         },
         [84396] = { -- Magma or Lava?
             [questKeys.name] = "Magma or Lava?",
-            [questKeys.startedBy] = {{211022,211033},{463206}},
+            [questKeys.startedBy] = {{5497,7825},{463206}},
             [questKeys.finishedBy] = {{5497,7825}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
@@ -396,7 +396,7 @@ function ForeverQuestFixes:Load()
         },
         [84397] = { -- Northern Kalimdor - A Comprehensive Guide
             [questKeys.name] = "Northern Kalimdor - A Comprehensive Guide",
-            [questKeys.startedBy] = {{211022,211033},{463209}},
+            [questKeys.startedBy] = {{5497,7825},{463209}},
             [questKeys.finishedBy] = {{5497,7825}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
@@ -405,7 +405,7 @@ function ForeverQuestFixes:Load()
         },
         [84398] = { -- A Study of the Light
             [questKeys.name] = "A Study of the Light",
-            [questKeys.startedBy] = {{211022,211033},{463207}},
+            [questKeys.startedBy] = {{5497,7825},{463207}},
             [questKeys.finishedBy] = {{5497,7825}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
@@ -414,7 +414,7 @@ function ForeverQuestFixes:Load()
         },
         [84399] = { -- Ka-Boom!
             [questKeys.name] = "Ka-Boom!",
-            [questKeys.startedBy] = {{211022,211033},{463214}},
+            [questKeys.startedBy] = {{5497,7825},{463214}},
             [questKeys.finishedBy] = {{5497,7825}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
@@ -423,7 +423,7 @@ function ForeverQuestFixes:Load()
         },
         [84400] = { -- The Knight and the Lady
             [questKeys.name] = "The Knight and the Lady",
-            [questKeys.startedBy] = {{211022,211033},{463208}},
+            [questKeys.startedBy] = {{5497,7825},{463208}},
             [questKeys.finishedBy] = {{5497,7825}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
@@ -432,7 +432,7 @@ function ForeverQuestFixes:Load()
         },
         [84401] = { -- Scourge: Undead Menace or Misunderstood?
             [questKeys.name] = "Scourge: Undead Menace or Misunderstood?",
-            [questKeys.startedBy] = {{211022,211033},{463212}},
+            [questKeys.startedBy] = {{5497,7825},{463212}},
             [questKeys.finishedBy] = {{5497,7825}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
@@ -441,7 +441,7 @@ function ForeverQuestFixes:Load()
         },
         [84402] = { -- Necromancy 101
             [questKeys.name] = "Necromancy 101",
-            [questKeys.startedBy] = {{211022,211033},{463211}},
+            [questKeys.startedBy] = {{5497,7825},{463211}},
             [questKeys.finishedBy] = {{5497,7825}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
