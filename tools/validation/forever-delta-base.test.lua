@@ -51,10 +51,10 @@ local function witness(db)
   local tribalRep = db.Quest.reputationReward(6562)
   assert(tribalRep and #tribalRep == 2 and tribalRep[1][1] == 530 and tribalRep[1][2] == 25
     and tribalRep[2][1] == 2787 and tribalRep[2][2] == 100, "new faction keeps the inherited reward")
-  -- Accepted deferred issue: current inference narrows the authored zero after NPC enrichment.
-  -- The separate Static assertions below still require the original zero and Mage mask.
-  assert(db.Quest.requiredRaces(97286) == 4294967373 and db.Quest.requiredClasses(97286) == 128,
-    "Research Access reflects existing Alliance inference without removing Mage eligibility")
+  -- Starters from both factions leave requiredRaces inference nothing to narrow, so the
+  -- reviewed zero survives alongside the Mage mask.
+  assert(db.Quest.requiredRaces(97286) == 0 and db.Quest.requiredClasses(97286) == 128,
+    "Research Access stays open to every race and keeps its Mage restriction")
   for _, id in ipairs({ 92534, 94901, 3911 }) do
     assert(not db.Quest.Exists(id) and not db.Quest.GetAllIds(true)[id], "held quest leaked: " .. id)
   end
