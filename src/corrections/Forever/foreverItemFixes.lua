@@ -70,7 +70,7 @@ function ForeverItemFixes:Load()
         },
         [207972] = { -- The Lessons of Ta'zo
             [itemKeys.name] = "The Lessons of Ta'zo",
-            [itemKeys.objectDrops] = {450001},
+            [itemKeys.objectDrops] = {405149},
         },
         [215817] = { -- Demons and You
             [itemKeys.name] = "Demons and You",
