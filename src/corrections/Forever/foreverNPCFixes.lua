@@ -73,9 +73,8 @@ function ForeverNpcFixes:Load()
             [npcKeys.questStarts_add] = {78150,79536,82208,78124,78127,78142,78143,78145,78146,78147,78148,78149,79091,79092,79093,79094,79095,79096,79097,79535,79947,79948,79949,79950,79951,79952,79953,81947,81949,81951,81952,81953,81954,81955,81956,97286},
             [npcKeys.questEnds_add] = {78124,78127,78142,78143,78145,78146,78147,78148,78149,79091,79092,79093,79094,79095,79096,79097,79535,79947,79948,79949,79950,79951,79952,79953,81947,81949,81951,81952,81953,81954,81955,81956,97286},
         },
-        [261319] = { -- Durgen Dirgehammer
-            [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
-            [npcKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
+        [246143] = { -- Frightened Paladin
+            [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{27.69,63.82}}},
         },
         [247226] = { -- Kelsey Fargo
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{47.18,32.16}}},
@@ -109,6 +108,9 @@ function ForeverNpcFixes:Load()
         },
         [248474] = { -- Geosculptor Yip
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{61.38,48.93}}},
+        },
+        [251001] = { -- Deathguard Kristof
+            [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{65.25,60.2}}},
         },
         [251115] = { -- Urs'anah
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{35.65,26.07}}},
@@ -222,6 +224,10 @@ function ForeverNpcFixes:Load()
         },
         [259013] = { -- Resaan Nimbuswalker
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{57.05,29.35}}},
+        },
+        [261319] = { -- Durgen Dirgehammer
+            [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
         },
         [263389] = { -- Enraged Apparition
             [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},

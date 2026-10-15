@@ -48,6 +48,9 @@ function ForeverQuestFixes:Load()
             [questKeys.questFlags] = 8,
             [questKeys.reputationReward] = {{factionIDs.DARNASSUS, 100}},
         },
+        [590] = { -- A Rogue's Deal
+            [questKeys.objectives] = {{{6784}}},
+        },
         [760] = { -- Wildmane Cleansing
             [questKeys.nextQuestInChain] = 98435,
         },
@@ -463,6 +466,18 @@ function ForeverQuestFixes:Load()
         [87288] = { -- Soft Saber Pelts
             [questKeys.reputationReward] = {{factionIDs.DARNASSUS, 100},{factionIDs.GNOMEREGAN_EXILES, 25},{factionIDs.ALLIANCE, 25},{factionIDs.IRONFORGE, 25},{factionIDs.STORMWIND, 25}},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [90902] = { -- Rediscovering the Light
+            [questKeys.preQuestSingle] = {364},
+            [questKeys.objectives] = {{{259377,nil,Questie.ICON_TYPE_INTERACT}}},
+        },
+        [91208] = { -- Coming to Terms
+            [questKeys.preQuestSingle] = {90902},
+            [questKeys.objectives] = {{{246143}}},
+        },
+        [91209] = { -- Continue Your Training
+            [questKeys.preQuestSingle] = {},
+            [questKeys.objectives] = {{{246152,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [91723] = { -- Delicate Instruments
             [questKeys.nextQuestInChain] = 91724,
@@ -1370,7 +1385,7 @@ function ForeverQuestFixes:Load()
             [questKeys.exclusiveTo] = {96626,96629,96634,96646,96658,96661},
         },
         [96656] = { -- The Adventurer
-            -- [questKeys.preQuestSingle] = {92470}, -- TBD
+            [questKeys.preQuestSingle] = {382},
             [questKeys.breadcrumbForQuestId] = 96607,
             [questKeys.nextQuestInChain] = 96607,
             [questKeys.exclusiveTo] = {96627,96628,96630,96638,96652,96659},
@@ -2009,6 +2024,9 @@ function ForeverQuestFixes:Load()
         [98387] = { -- Blackrock Blockade
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
+        [98389] = { -- A Light in the Darkness
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{271961,271968},271968,nil,Questie.ICON_TYPE_EVENT}}},
+        },
         [98391] = { -- The Sisterhood of Elune
             [questKeys.breadcrumbForQuestId] = 2519,
             [questKeys.nextQuestInChain] = 2519,
@@ -2057,6 +2075,9 @@ function ForeverQuestFixes:Load()
         },
         [98581] = { -- Archaic Rune
             [questKeys.preQuestSingle] = {179},
+        },
+        [98601] = { -- A Difficult Path
+            [questKeys.preQuestSingle] = {364},
         },
         [98738] = { -- Blessings of the Great Windborne Cat Spirit
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
@@ -2138,6 +2159,15 @@ function ForeverQuestFixes:Load()
         },
         [99131] = { -- Baited for Success
             [questKeys.preQuestSingle] = {99130},
+        },
+        [99134] = { -- Discipline
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{1495,1496,1519,1652,1735,1736,1737,1738,1739,1740,1741,1742,1743,1744,1745,1746,2209,2210,5725,251001,257655,272101,275103},1495,nil,Questie.ICON_TYPE_INTERACT}}},
+        },
+        [99141] = { -- Patience
+            [questKeys.objectives] = {nil,nil,{{286200,nil,Questie.ICON_TYPE_TALK},{286201,nil,Questie.ICON_TYPE_TALK},{286202,nil,Questie.ICON_TYPE_TALK}}},
+        },
+        [99144] = { -- Seeking Refuge
+            [questKeys.triggerEnd] = {"Escort Bareth Dawnstone out of Crusader's Outpost", {[zoneIDs.TIRISFAL_GLADES] = {{39,48.75}}}},
         },
         [99158] = { -- Dawn in the Mountains
             [questKeys.breadcrumbForQuestId] = 99159,
