@@ -453,7 +453,7 @@ function QuestieQuestFixes:Load()
             [questKeys.preQuestSingle] = {597},
         },
         [590] = { -- A Rogue's Deal
-            [questKeys.triggerEnd] = {"Defeat Calvin Montague", {[zoneIDs.TIRISFAL_GLADES] = {{38.19, 56.74}}}},
+            [questKeys.objectives] = {{{6784}}},
         },
         [591] = { -- The Mind's Eye
             [questKeys.nextQuestInChain] = 592,

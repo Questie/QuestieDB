@@ -124,6 +124,15 @@ function ForeverItemFixes:Load()
             [itemKeys.name] = "Advisor Nazgrel's Instructions",
             [itemKeys.npcDrops] = {3230},
         },
+        [286200] = { -- Dillinger's Report
+            [itemKeys.npcDrops] = {1496},
+        },
+        [286201] = { -- Kristof's Report
+            [itemKeys.npcDrops] = {251001},
+        },
+        [286202] = { -- Gordo's Report
+            [itemKeys.npcDrops] = {10666},
+        },
         [287505] = { -- Tender Strider Meat
             [itemKeys.name] = "Tender Strider Meat",
             [itemKeys.npcDrops] = {2956,2957,3068},
