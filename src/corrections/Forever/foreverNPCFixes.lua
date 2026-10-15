@@ -17,6 +17,19 @@ function ForeverNpcFixes:Load()
     local phases = Phasing.phases
 
     return {
+        [1654] = { -- Gregor Agamand
+            [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{45.79,29.39}}},
+        },
+        [1656] = { -- Thurman Agamand
+            [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{42.84,32.54}}},
+        },
+        [1657] = { -- Devlin Agamand
+            [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{47.23,40.02}}},
+        },
+        [1738] = { -- Deathguard Terrence
+            [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{61.5,53.5}}},
+            [npcKeys.waypoints] = {},
+        },
         [2150] = { -- Zenn Foulhoof
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{60.35,56.16}}},
         },
@@ -75,6 +88,19 @@ function ForeverNpcFixes:Load()
         },
         [246143] = { -- Frightened Paladin
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{27.69,63.82}}},
+        },
+        [246378] = { -- Danitha Morr
+            [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{22.09,44.66}}},
+        },
+        [246389] = { -- Hilda the Breaker
+            [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{21.96,47.25}}},
+        },
+        [246393] = { -- Jorin Croge
+            [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{22.69,44.7}}},
+        },
+        [246394] = { -- Ander Solliden
+            [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{25.41,50.41}}},
+            [npcKeys.waypoints] = {[zoneIDs.TIRISFAL_GLADES] = {{{25.41,50.41},{25.39,50.43},{25.31,50.49},{25.27,50.50},{25.16,50.51},{25.13,50.51},{25.08,50.52},{24.96,50.55},{24.86,50.61},{24.75,50.67},{24.67,50.64},{24.58,50.53},{24.47,50.40},{24.35,50.26},{24.25,50.13},{24.14,49.96},{24.07,49.93},{23.98,49.92},{23.93,49.91},{23.86,49.90},{23.78,49.89},{23.72,49.87},{23.64,49.85},{23.57,49.82},{23.52,49.80},{23.42,49.79},{23.41,49.78},{23.27,49.77},{23.27,49.77},{23.24,49.77},{23.15,49.76},{23.10,49.76},{23.08,49.76},{22.99,49.74},{22.98,49.74},{22.92,49.74},{22.86,49.74},{22.79,49.73},{22.75,49.73},{22.70,49.72},{22.63,49.70},{22.54,49.67},{22.47,49.65},{22.42,49.64},{22.33,49.62},{22.30,49.60},{22.28,49.59},{22.24,49.52},{22.21,49.47},{22.20,49.45},{22.19,49.42},{22.18,49.40}}}},
         },
         [247226] = { -- Kelsey Fargo
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{47.18,32.16}}},
@@ -224,6 +250,9 @@ function ForeverNpcFixes:Load()
         },
         [259013] = { -- Resaan Nimbuswalker
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{57.05,29.35}}},
+        },
+        [259431] = { -- Rudolph Gelhardt
+            [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{11.51,64.18}}},
         },
         [261319] = { -- Durgen Dirgehammer
             [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},

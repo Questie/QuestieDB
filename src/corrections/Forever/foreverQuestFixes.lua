@@ -12,6 +12,7 @@ local QuestieCorrections = QuestieLoader:ImportModule("QuestieCorrections")
 ---@type l10n
 local l10n = QuestieLoader:ImportModule("l10n")
 
+QuestieCorrections.itemObjectiveFirst[91317] = true
 QuestieCorrections.itemObjectiveFirst[92682] = true
 QuestieCorrections.killCreditObjectiveFirst[94489] = true
 QuestieCorrections.itemObjectiveFirst[97277] = true
@@ -33,6 +34,9 @@ function ForeverQuestFixes:Load()
     return {
         [76] = { -- The Jasperlode Mine
             [questKeys.triggerEnd] = {"Scout through the Jasperlode Mine", {[zoneIDs.ELWYNN_FOREST] = {{61.93,53.16}}}},
+        },
+        [356] = { -- Rear Guard Patrol
+            [questKeys.nextQuestInChain] = 99156,
         },
         [490] = { -- Bounty: Gnarlpine Furbolg
             [questKeys.name] = "Bounty: Gnarlpine Furbolg",
@@ -92,6 +96,9 @@ function ForeverQuestFixes:Load()
         },
         [2519] = { -- The Temple of the Moon
             [questKeys.breadcrumbs] = {98391},
+        },
+        [5482] = { -- Doom Weed
+            [questKeys.nextQuestInChain] = 99142,
         },
         [6126] = { -- Lessons Anew
             [questKeys.startedBy_add] = {{262560}},
@@ -478,6 +485,16 @@ function ForeverQuestFixes:Load()
         [91209] = { -- Continue Your Training
             [questKeys.preQuestSingle] = {},
             [questKeys.objectives] = {{{246152,nil,Questie.ICON_TYPE_INTERACT}}},
+        },
+        [91294] = { -- Touring the Grounds
+            [questKeys.preQuestSingle] = {91285},
+            [questKeys.objectives] = {{{246389,nil,Questie.ICON_TYPE_TALK},{246393,nil,Questie.ICON_TYPE_TALK},{246394,nil,Questie.ICON_TYPE_TALK},{246378,nil,Questie.ICON_TYPE_TALK}}},
+        },
+        [91316] = { -- Making Repairs
+            [questKeys.preQuestSingle] = {91294},
+        },
+        [91317] = { -- The Tarnished
+            [questKeys.preQuestSingle] = {91294},
         },
         [91723] = { -- Delicate Instruments
             [questKeys.nextQuestInChain] = 91724,
@@ -1151,6 +1168,9 @@ function ForeverQuestFixes:Load()
         [95350] = { -- Welcome to Azeroth
             [questKeys.nextQuestInChain] = 93739,
         },
+        [95803] = { -- A Token of Good Faith
+            [questKeys.preQuestSingle] = {91317}, -- 91316 is not needed
+        },
         [95805] = { -- Grace of An'she and Mu'sha
             [questKeys.preQuestSingle] = {755},
         },
@@ -1460,6 +1480,9 @@ function ForeverQuestFixes:Load()
         [97485] = { -- Traditions of the Bluff
             [questKeys.objectives] = {nil,{{665373}},{{278078}}},
             [questKeys.requiredSourceItems] = {278079,278080,278081,278083},
+        },
+        [97583] = { -- WRIGGLE.
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [97894] = { -- Business in Auberdine
             [questKeys.breadcrumbForQuestId] = 982,
@@ -2166,8 +2189,14 @@ function ForeverQuestFixes:Load()
         [99141] = { -- Patience
             [questKeys.objectives] = {nil,nil,{{286200,nil,Questie.ICON_TYPE_TALK},{286201,nil,Questie.ICON_TYPE_TALK},{286202,nil,Questie.ICON_TYPE_TALK}}},
         },
+        [99142] = { -- Tomb Weed
+            [questKeys.preQuestSingle] = {5482},
+        },
         [99144] = { -- Seeking Refuge
             [questKeys.triggerEnd] = {"Escort Bareth Dawnstone out of Crusader's Outpost", {[zoneIDs.TIRISFAL_GLADES] = {{39,48.75}}}},
+        },
+        [99156] = { -- Rear Guard Patrol
+            [questKeys.preQuestSingle] = {356},
         },
         [99158] = { -- Dawn in the Mountains
             [questKeys.breadcrumbForQuestId] = 99159,
