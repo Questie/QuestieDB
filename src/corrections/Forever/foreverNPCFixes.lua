@@ -144,6 +144,9 @@ function ForeverNpcFixes:Load()
         [251166] = { -- Minor Manifestation of Earth
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{49.67,23.8}}},
         },
+        [251361] = { -- Rorian the Dayseeker
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.05,23.49}}},
+        },
         [251966] = { -- Commander Cyclas
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{50.39,56.96}}},
         },
@@ -289,6 +292,9 @@ function ForeverNpcFixes:Load()
         },
         [267009] = { -- Hadric Harlson
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{65.93,61.13}}},
+        },
+        [267806] = { -- "Flipfin"
+            [npcKeys.questEnds_add] = {97065,97066,97067},
         },
         [268530] = { -- Bloodtalon Matriarch
             [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{68.81,71.78}}},
