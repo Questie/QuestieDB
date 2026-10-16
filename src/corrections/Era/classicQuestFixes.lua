@@ -225,6 +225,7 @@ function QuestieQuestFixes:Load()
         },
         [287] = { -- Frostmane Hold
             [questKeys.preQuestSingle] = {},
+            [questKeys.disabledByQuest] = 420,
         },
         [297] = { -- Gathering Idols
             [questKeys.breadcrumbs] = {436}, -- #2492
