@@ -409,6 +409,9 @@ function ForeverObjectFixes:Load()
         [693674] = { -- Abandoned Dagger
             [objectKeys.spawns] = {[zoneIDs.DUROTAR] = {{58.85,44.35}}},
         },
+        [694895] = { -- Glowing Crystal Fragment
+            [objectKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{9.74,69.43}}},
+        },
         [695222] = { -- Coalbeard's Rifle
             [objectKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{52.1,44.04}}},
         },

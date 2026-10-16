@@ -1467,6 +1467,10 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSkill] = {profKeys.LEATHERWORKING, 1},
             [questKeys.objectives] = {nil,nil,{{275720},{4231}}},
         },
+        [96896] = { -- A Righteous Cause
+            [questKeys.preQuestSingle] = {96899},
+            [questKeys.nextQuestInChain] = 98545,
+        },
         [96897] = { -- The Cult of the Damned
             [questKeys.preQuestSingle] = {96895},
         },
@@ -1475,6 +1479,7 @@ function ForeverQuestFixes:Load()
         },
         [96899] = { -- Bandarion Keep
             [questKeys.preQuestGroup] = {96897,96898},
+            [questKeys.nextQuestInChain] = 96896,
         },
         [97237] = { -- Shelf Picked
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
@@ -2127,6 +2132,9 @@ function ForeverQuestFixes:Load()
         [98461] = { -- Unrequited Love
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
+        [98545] = { -- Leonid's Letter
+            [questKeys.preQuestSingle] = {96896},
+        },
         [98574] = { -- Hallowed Memorandum
             [questKeys.preQuestSingle] = {179},
         },
@@ -2234,6 +2242,12 @@ function ForeverQuestFixes:Load()
         },
         [99144] = { -- Seeking Refuge
             [questKeys.triggerEnd] = {"Escort Bareth Dawnstone out of Crusader's Outpost", {[zoneIDs.TIRISFAL_GLADES] = {{39,48.75}}}},
+        },
+        [99152] = { -- As Above, So Below
+            [questKeys.preQuestSingle] = {96896},
+        },
+        [99153] = { -- The One That Got Away
+            [questKeys.preQuestSingle] = {96896},
         },
         [99156] = { -- Rear Guard Patrol
             [questKeys.preQuestSingle] = {356},
