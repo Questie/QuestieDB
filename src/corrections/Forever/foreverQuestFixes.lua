@@ -201,6 +201,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [78270] = { -- Goblin Lockpicks
+            [questKeys.questLevel] = 23,
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [78307] = { -- The Horn of Xelthos
@@ -1481,6 +1482,29 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestGroup] = {96897,96898},
             [questKeys.nextQuestInChain] = 96896,
         },
+        [97065] = { -- Tip the Scales - Keefer's Angelfish
+            [questKeys.finishedBy_add] = {{267806}},
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.zoneOrSort] = sortKeys.FISHING,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+        },
+        [97066] = { -- Tip the Scales - Brownell's Blue Striped Racer
+            [questKeys.name] = "Tip the Scales - Brownell's Blue Striped Racer",
+            [questKeys.finishedBy_add] = {{267806}},
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.zoneOrSort] = sortKeys.FISHING,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+        },
+        [97067] = { -- Tip the Scales - Dezian Queenfish
+            [questKeys.name] = "Tip the Scales - Dezian Queenfish",
+            [questKeys.finishedBy_add] = {{267806}},
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.zoneOrSort] = sortKeys.FISHING,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+        },
         [97237] = { -- Shelf Picked
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
@@ -1540,17 +1564,6 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSpell] = -1230564, -- Mana Well
             [questKeys.objectives] = {{{11046,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96045,97915,97927,97938,97951,97963},
-        },
-        [97065] = { -- Tip the Scales - Keefer's Angelfish
-            [questKeys.requiredRaces] = raceIDs.NONE,
-        },
-        [97066] = { -- Tip the Scales - Brownell's Blue Striped Racer
-            [questKeys.name] = "Tip the Scales - Brownell's Blue Striped Racer",
-            [questKeys.requiredRaces] = raceIDs.NONE,
-        },
-        [97067] = { -- Tip the Scales - Dezian Queenfish
-            [questKeys.name] = "Tip the Scales - Dezian Queenfish",
-            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [97900] = { -- Camping 101: Blacksmithing
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
