@@ -17,6 +17,9 @@ function ForeverNpcFixes:Load()
     local phases = Phasing.phases
 
     return {
+        [1440] = { -- Milton Sheaf
+            [npcKeys.npcFlags] = npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
+        },
         [2150] = { -- Zenn Foulhoof
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{60.35,56.16}}},
         },
@@ -33,6 +36,15 @@ function ForeverNpcFixes:Load()
         },
         [3519] = { -- Sentinel Arynia Cloudsbreak
             [npcKeys.questStarts_remove] = {940},
+        },
+        [3605] = { -- Nadyia Maneweaver
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.TRAINER + npcFlags.VENDOR, -- Era flags, sells Forever items
+        },
+        [4047] = { -- Zor Lonetree
+            [npcKeys.npcFlags] = npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
+        },
+        [4612] = { -- Boyle
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- Era flags, sells Forever items
         },
         [4949] = { -- Thrall
             [npcKeys.questEnds_add] = {93739},
@@ -51,6 +63,9 @@ function ForeverNpcFixes:Load()
             [npcKeys.questStarts_add] = {84395,84396,84397,84398,84399,84400,84401,84402},
             [npcKeys.questEnds_add] = {84395,84396,84397,84398,84399,84400,84401,84402},
         },
+        [10667] = { -- Chromie
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
+        },
         [10993] = { -- Twizwick Sprocketgrind
             [npcKeys.questEnds_add] = {97930},
         },
@@ -59,6 +74,12 @@ function ForeverNpcFixes:Load()
         },
         [14242] = { -- Sulhasa
             [npcKeys.name] = "Sulhasa",
+        },
+        [15734] = { -- Ironforge Commendation Officer
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
+        },
+        [15736] = { -- Orgrimmar Commendation Officer
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
         [205729] = { -- Boarton Shadetotem
             [npcKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{39.44,65.82}}},
@@ -72,6 +93,12 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{48.94,86.54}}}, -- TBD
             [npcKeys.questStarts_add] = {78150,79536,82208,78124,78127,78142,78143,78145,78146,78147,78148,78149,79091,79092,79093,79094,79095,79096,79097,79535,79947,79948,79949,79950,79951,79952,79953,81947,81949,81951,81952,81953,81954,81955,81956,97286},
             [npcKeys.questEnds_add] = {78124,78127,78142,78143,78145,78146,78147,78148,78149,79091,79092,79093,79094,79095,79096,79097,79535,79947,79948,79949,79950,79951,79952,79953,81947,81949,81951,81952,81953,81954,81955,81956,97286},
+        },
+        [214954] = { -- Rix Xizzix
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- traces record no flags
+        },
+        [227853] = { -- Pix Xizzix
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- traces record no flags
         },
         [261319] = { -- Durgen Dirgehammer
             [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
