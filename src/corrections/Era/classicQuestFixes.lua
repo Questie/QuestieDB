@@ -302,9 +302,6 @@ function QuestieQuestFixes:Load()
         [415] = { -- Rejold's New Brew
             [questKeys.breadcrumbForQuestId] = 413, -- #567
         },
-        [420] = { -- Senir's Observations
-            [questKeys.exclusiveTo] = {287},
-        },
         [427] = { -- At War With The Scarlet Crusade
             [questKeys.preQuestSingle] = {},
         },

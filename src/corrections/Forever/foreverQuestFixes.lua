@@ -38,9 +38,6 @@ function ForeverQuestFixes:Load()
         [356] = { -- Rear Guard Patrol
             [questKeys.nextQuestInChain] = 99156,
         },
-        [420] = { -- Senir's Observations
-            [questKeys.exclusiveTo] = {287},
-        },
         [490] = { -- Bounty: Gnarlpine Furbolg
             [questKeys.name] = "Bounty: Gnarlpine Furbolg",
             [questKeys.startedBy] = {{2155}},
@@ -1395,7 +1392,7 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {282},
             [questKeys.breadcrumbForQuestId] = 96608,
             [questKeys.nextQuestInChain] = 96608,
-            [questKeys.exclusiveTo] = {287,96627,96630,96638,96652,96656,96659}, -- Not available if you do 287 before
+            [questKeys.exclusiveTo] = {96627,96630,96638,96652,96656,96659},
         },
         [96629] = { -- Camping 101: Cooking
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
