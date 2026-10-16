@@ -38,6 +38,9 @@ function ForeverQuestFixes:Load()
         [356] = { -- Rear Guard Patrol
             [questKeys.nextQuestInChain] = 99156,
         },
+        [420] = { -- Senir's Observations
+            [questKeys.exclusiveTo] = {287},
+        },
         [490] = { -- Bounty: Gnarlpine Furbolg
             [questKeys.name] = "Bounty: Gnarlpine Furbolg",
             [questKeys.startedBy] = {{2155}},
@@ -1029,6 +1032,34 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{257554,nil,Questie.ICON_TYPE_TALK}}},
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
+        [94427] = { -- A Lesson in Divinity
+            [questKeys.nextQuestInChain] = 94434,
+        },
+        [94434] = { -- A Lesson in Divinity
+            [questKeys.preQuestSingle] = {94427},
+            [questKeys.nextQuestInChain] = 94435,
+        },
+        [94435] = { -- A Lesson in Divinity
+            [questKeys.preQuestSingle] = {94434},
+            [questKeys.nextQuestInChain] = 94436,
+        },
+        [94436] = { -- A Lesson in Divinity
+            [questKeys.preQuestSingle] = {94435},
+            [questKeys.nextQuestInChain] = 94438,
+        },
+        [94438] = { -- A Lesson in Divinity
+            [questKeys.preQuestSingle] = {94436},
+            [questKeys.requiredSourceItems] = {6866},
+            [questKeys.nextQuestInChain] = 94440,
+        },
+        [94440] = { -- A Lesson in Divinity
+            [questKeys.preQuestSingle] = {94438},
+            [questKeys.objectivesText] = {"Retrieve the Scarlet Crusade Attack Plans from the Scarlet Crusaders at Venomweb Vale, and return to Deathguard Billmuth at Bandarion Keep."},
+            [questKeys.nextQuestInChain] = 94441,
+        },
+        [94441] = { -- A Lesson in Divinity
+            [questKeys.preQuestSingle] = {94440},
+        },
         [94465] = { -- Call of Fire
             [questKeys.nextQuestInChain] = 94466,
         },
@@ -1364,7 +1395,7 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {282},
             [questKeys.breadcrumbForQuestId] = 96608,
             [questKeys.nextQuestInChain] = 96608,
-            [questKeys.exclusiveTo] = {96627,96630,96638,96652,96656,96659},
+            [questKeys.exclusiveTo] = {287,96627,96630,96638,96652,96656,96659}, -- Not available if you do 287 before
         },
         [96629] = { -- Camping 101: Cooking
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},

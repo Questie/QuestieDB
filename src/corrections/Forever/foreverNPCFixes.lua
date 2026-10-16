@@ -57,7 +57,7 @@ function ForeverNpcFixes:Load()
         [5891] = { -- Minor Manifestation of Earth
             [npcKeys.spawns_add] = {[zoneIDs.DUN_MOROGH] = {{24.84,61.86}}},
         },
-        [5893] = { -- Minor Manifestation of Earth
+        [5893] = { -- Minor Manifestation of Fire
             [npcKeys.spawns_add] = {[zoneIDs.LOCH_MODAN] = {{31.96,64.42}}},
         },
         [7825] = { -- Oran Snakewrithe
@@ -218,6 +218,12 @@ function ForeverNpcFixes:Load()
         [257597] = { -- Bruegs Kindleborn
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{87.94,44.8}}},
         },
+        [257648] = { -- Tanis Alderwood
+            [npcKeys.spawns] = {[zoneIDs.UNDERCITY] = {{65.48,37.49}}},
+        },
+        [257655] = { -- Deathguard Billmuth
+            [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{21.916,44.4979}}},
+        },
         [257808] = { -- Braldir Ashmantle
             [npcKeys.spawns] = {[zoneIDs.LOCH_MODAN] = {{32.17,65.97}}},
         },
@@ -227,7 +233,7 @@ function ForeverNpcFixes:Load()
         [258130] = { -- Jorel Windsinger
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.48,34.74}}},
         },
-        [258134] = { -- Jorel Windsinger
+        [258134] = { -- Naaleos Leafwhisper
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.96,34.95}}},
         },
         [258137] = { -- Telenos Leafwhisper
@@ -280,6 +286,9 @@ function ForeverNpcFixes:Load()
         },
         [266940] = { -- Turroc
             [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{53.95,42.59}}},
+        },
+        [267009] = { -- Hadric Harlson
+            [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{65.93,61.13}}},
         },
         [268530] = { -- Bloodtalon Matriarch
             [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{68.81,71.78}}},
