@@ -3080,6 +3080,7 @@ function QuestieWotlkNpcFixes:Load()
             [npcKeys.maxLevel] = 80,
             [npcKeys.spawns] = {[zoneIDs.DALARAN] = {{38,55.8}}},
             [npcKeys.zoneID] = zoneIDs.DALARAN,
+            [npcKeys.npcFlags] = npcFlags.VENDOR,
         },
         [211340] = { -- Kolara Dreamsmasher
             [npcKeys.name] = "Kolara Dreamsmasher",
@@ -3087,6 +3088,7 @@ function QuestieWotlkNpcFixes:Load()
             [npcKeys.maxLevel] = 80,
             [npcKeys.spawns] = {[zoneIDs.DALARAN] = {{65.5,24.8}}},
             [npcKeys.zoneID] = zoneIDs.DALARAN,
+            [npcKeys.npcFlags] = npcFlags.VENDOR,
         },
 
         -- Below are fake IDs to show specific quest starts/ends only at one specific location even though the
