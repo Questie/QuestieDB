@@ -35,6 +35,9 @@ function ForeverQuestFixes:Load()
         [76] = { -- The Jasperlode Mine
             [questKeys.triggerEnd] = {"Scout through the Jasperlode Mine", {[zoneIDs.ELWYNN_FOREST] = {{61.93,53.16}}}},
         },
+        [287] = { -- Frostmane Hold
+            [questKeys.disabledByQuest] = 420,
+        },
         [356] = { -- Rear Guard Patrol
             [questKeys.nextQuestInChain] = 99156,
         },
