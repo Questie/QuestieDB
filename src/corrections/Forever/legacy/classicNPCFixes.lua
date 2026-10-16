@@ -62,7 +62,7 @@ function QuestieNPCFixes:Load()
             [npcKeys.waypoints] = {},
         },
         [384] = { -- Katie Hunter <Horse Breeder>
-            [npcKeys.npcFlags] = npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
         [412] = { -- Stitches <Gift from the Embalmer>
             [npcKeys.spawns] = {[zoneIDs.DUSKWOOD] = {{28.96,31.60}}},
@@ -180,7 +180,7 @@ function QuestieNPCFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.WETLANDS] = {{18.07,39.84},{15.21,41.45}}},
         },
         [1261] = { -- Veron Amberstill <Ram Breeder>
-            [npcKeys.npcFlags] = npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
         [1340] = { -- Mountaineer Kadrell
             [npcKeys.waypoints] = {[zoneIDs.LOCH_MODAN] = {{{32.63,49.74},{33.13,49.31},{33.68,48.60},{34.22,47.76},{34.66,47.21},{35.28,46.85},{35.68,46.67},{36.8,46.36},{36.58,46.22},{36.93,46.09},{37.27,45.75},{37.35,45.12},{37.36,44.49},{37.32,43.89},{37.27,43.32},{37.0,42.58},{36.75,42.02}}}},
@@ -580,7 +580,7 @@ function QuestieNPCFixes:Load()
             [npcKeys.questStarts] = {8151},
         },
         [3362] = { -- Ogunaro Wolfrunner <Kennel Master>
-            [npcKeys.npcFlags] = npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
         [3363] = { -- Magar
             [npcKeys.questStarts] = {65610},
@@ -689,7 +689,7 @@ function QuestieNPCFixes:Load()
             [npcKeys.questStarts] = {965,1684},
         },
         [3685] = { -- Harb Clawhoof <Kodo Mounts>
-            [npcKeys.npcFlags] = npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
         [3694] = { -- Sentinel Selarin
             [npcKeys.spawns] = {[zoneIDs.DARKSHORE] = {{39.28,43.46}}},
@@ -940,10 +940,10 @@ function QuestieNPCFixes:Load()
             [npcKeys.waypoints] = {[zoneIDs.DESOLACE] = {{{30.1,8.8},{29.9,6.2},{27.9,6.4},{27.5,9.5},{27.9,12.3},{28.9,15.8},{29.9,18.5},{31.4,20},{31.1,22.4},{32,23.7},{33,24.3},{33.6,26.4},{33.8,29},{34.7,31.1},{36.7,32.8},{38,33.2},{40.3,33.4},{41.3,35.6},{42.2,37.5},{42.9,38.3},{43.9,40.2},{45,40.2},{46.5,38.3},{47.5,36.1},{48.6,33.8},{49.4,31.3},{50.1,28.6},{50.9,25.3},{52.1,22.2},{53.6,20},{55.8,19.5},{57.6,19.6},{59.2,20.8},{61.5,22.2},{63.6,22.9},{64.5,24.3},{65.4,25.5},{66.1,27.4},{66.1,29.9},{66.1,33},{65.3,36.3},{65.3,38.3},{65.8,42},{66.5,44.1},{67.1,46.6},{67.1,50.5},{66.6,54},{66.3,56.3},{65.9,59.5},{66.5,61.2},{66.7,62.9}},{{57.9,84.5},{59.3,82.6},{60.5,80.6},{59.9,76.9},{59.3,73.4},{60,70.9},{60.8,68.2},{61.7,65.9},{62.1,63.1},{61.7,59.1},{61.7,56.1},{60.9,53.4},{59.1,50.9},{56,48.6},{53.5,47.2},{51.2,46.2},{49.1,44.5},{48.1,41.8},{47.5,38.7},{47,34},{47.5,31.9},{47.5,29.2},{45.3,28.2},{43.4,28.4},{42,26.6},{41.2,24.1},{39.3,23.1},{37.8,24.5},{36.5,27.2},{36.1,29.4},{35.6,34},{34.7,36.1},{31.9,35.8},{30.4,35.8},{28.5,36.3},{27.1,39.1},{25.4,41.6},{24.5,44.1},{23.8,47},{23.1,49.5},{22.9,51.7},{22.5,54.2},{22.4,56.1}},{{43.3,57.5},{43.7,59.3},{43.9,61},{44,63.8},{43.1,65.7},{42.4,67.8},{42.1,69.8},{42.1,71.5},{43.5,74.6},{44,76.8},{44.4,78.7},{44.7,81.4},{43.9,83.2},{41.8,83.6},{39.6,81.8},{38.7,79.7},{37.3,77},{35.5,76.8},{34.6,78.7},{33.3,80.3},{32,81.4},{30.2,82},{28.1,82.4},{26,82.4},{24.2,83.2},{23.3,85.3},{21.9,88.2},{21.4,90.5}}}},
         },
         [4730] = { -- Lelanai <Saber Handler>
-            [npcKeys.npcFlags] = npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
         [4731] = { -- Zachariah Post <Undead Horse Merchant>
-            [npcKeys.npcFlags] = npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
         [4802] = { -- Blackfathom Tide Priestess
             [npcKeys.spawns] = {[zoneIDs.ASHENVALE] = {{13.55,12.06}}},
@@ -1411,10 +1411,10 @@ function QuestieNPCFixes:Load()
             [npcKeys.questEnds] = {2922,2923,3630,3632,3634,3640,3641,3647},
         },
         [7952] = { -- Zjolnir <Raptor Handler>
-            [npcKeys.npcFlags] = npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
         [7955] = { -- Milli Featherwhistle <Mechanostrider Merchant>
-            [npcKeys.npcFlags] = npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
         [8075] = { -- Edana Hatetalon
             [npcKeys.spawns] = {[zoneIDs.FERALAS] = {{40.55,8.6}}},
@@ -1563,7 +1563,7 @@ function QuestieNPCFixes:Load()
             [npcKeys.waypoints] = {},
         },
         [9087] = { -- Bashana Runetotem
-            [npcKeys.npcFlags] = npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
         [9136] = { -- Sha'ni Proudtusk
             [npcKeys.spawns] = {[zoneIDs.BURNING_STEPPES] = {{79.95,45.4}}},
@@ -2794,7 +2794,7 @@ function QuestieNPCFixes:Load()
             [npcKeys.zoneID] = zoneIDs.FERALAS,
         },
         [14624] = { -- Master Smith Burninate <The Thorium Brotherhood>
-            [npcKeys.npcFlags] = npcFlags.REPAIR + npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.REPAIR + npcFlags.VENDOR, -- base data adds a wrong auctioneer bit
         },
         [14638] = { -- Zapped Wave Strider
             [npcKeys.spawns] = {[zoneIDs.FERALAS] = {{45.1,61.95},{37.71,34.47},{44.34,46.61},{46.78,57.88}}},
