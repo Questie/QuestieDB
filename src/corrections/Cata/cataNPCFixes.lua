@@ -124,7 +124,7 @@ function CataNpcFixes.Load()
             [npcKeys.spawns] = {[zoneIDs.DUSKWOOD] = {{17.61,29.49}}},
         },
         [543] = { -- Nalesette Wildbringer
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [658] = { -- Sten Stoutarm
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{36.55,70.41}}},
@@ -1520,31 +1520,31 @@ function CataNpcFixes.Load()
             [npcKeys.questStarts] = {4463,4481,4482,4483,4484},
         },
         [9976] = { -- Tharlidun
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [9981] = { -- Sikwa
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [9982] = { -- Penny
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [9989] = { -- Lina Hearthstove
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [10047] = { -- Michael
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [10051] = { -- Seriadne
             [npcKeys.questEnds] = {},
         },
         [10057] = { -- Theodore Mont Claire
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [10058] = { -- Greth
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [10063] = { -- Reggifuz
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [10181] = { -- Lady Sylvanas Windrunner
             [npcKeys.questEnds] = {9177,9180,9621,9812,10592,14349,24613,24987},
@@ -1676,7 +1676,7 @@ function CataNpcFixes.Load()
             [npcKeys.spawns] = {[zoneIDs.STRATHOLME] = {{55.41,67.79},{-1,-1}}},
         },
         [11119] = { -- Azzleby
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [11120] = { -- Risen Hammersmith
             [npcKeys.spawns] = {[zoneIDs.STRATHOLME] = {{12.95,51.11},{-1,-1}}},
@@ -2199,7 +2199,7 @@ function CataNpcFixes.Load()
             [npcKeys.questEnds] = {8193},
         },
         [15131] = { -- Qeeju
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [15170] = { -- Rutgar Glyphshaper
             [npcKeys.questStarts] = {8309,8314,8381},
@@ -2793,7 +2793,7 @@ function CataNpcFixes.Load()
             [npcKeys.questStarts] = {9590,9608},
         },
         [17666] = { -- Astur
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [17671] = { -- Shattered Hand Champion
             [npcKeys.spawns] = {[zoneIDs.THE_SHATTERED_HALLS] = {{67.73,47.09},{66.82,47.09},{60.02,33.58},{60.02,34.83},{53.45,23.8},{54.25,23.8},{51.17,13.2},{51.17,14.49},{-1,-1}}},
@@ -2859,7 +2859,7 @@ function CataNpcFixes.Load()
             [npcKeys.spawns] = {[zoneIDs.THE_UNDERBOG] = {{41.39,22.52},{-1,-1}}},
         },
         [17896] = { -- Kameel Longstride
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [17941] = { -- Mennu the Betrayer
             [npcKeys.spawns] = {[zoneIDs.THE_SLAVE_PENS] = {{48.79,25.51},{-1,-1}}},
@@ -2910,13 +2910,13 @@ function CataNpcFixes.Load()
             [npcKeys.spawns] = {[zoneIDs.THE_UNDERBOG] = {{78.36,28.44},{-1,-1}}},
         },
         [18244] = { -- Khalan
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [18248] = { -- Nekthar
             [npcKeys.questEnds] = {9795},
         },
         [18250] = { -- Joraal
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [18311] = { -- Ethereal Crypt Raider
             [npcKeys.spawns] = {[zoneIDs.MANA_TOMBS] = {{38.89,83.59},{38.74,84.97},{56.95,28.92},{54.43,27.73},{44.35,31.27},{44.36,23.46},{44.9,35.45},{40.71,32.33},{40.99,29.67},{40.99,27.92},{38.61,29.41},{38.63,27.84},{37.32,28.4},{33.19,26.27},{-1,-1}}},
@@ -3028,7 +3028,7 @@ function CataNpcFixes.Load()
             [npcKeys.questStarts] = {11497,11498},
         },
         [18984] = { -- Trag
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [19018] = { -- Wilda Bearmane
             [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
@@ -3220,7 +3220,7 @@ function CataNpcFixes.Load()
             [npcKeys.spawns] = {[zoneIDs.THE_STEAMVAULT] = {{30.31,79.67},{31.48,78.9},{31.01,78.19},{31.05,76.64},{32.11,77.47},{33.1,77.77},{32.66,79.15},{31.69,80.37},{35.29,76.39},{36.33,76.41},{35.84,77.2},{36.25,77.93},{35.77,78.87},{35.35,77.93},{34.77,77.14},{34.71,78.29},{-1,-1}}},
         },
         [21517] = { -- Ilthuril
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [21694] = { -- Bog Overlord
             [npcKeys.spawns] = {[zoneIDs.THE_STEAMVAULT] = {{29.62,17.23},{35.4,15.22},{40.88,17.61},{35.01,37.76},{30.59,34.45},{-1,-1}}},
@@ -3280,7 +3280,7 @@ function CataNpcFixes.Load()
             [npcKeys.questStarts] = {11029,11056,11074,11885},
         },
         [23392] = { -- Skyguard Stable Master
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [23558] = { -- Neill Ramstein
             [npcKeys.questStarts] = {11122,11318,29394},
@@ -3314,7 +3314,7 @@ function CataNpcFixes.Load()
             [npcKeys.questStarts] = {11266,11267},
         },
         [24067] = { -- Mahana Frosthoof
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [24111] = { -- Defender Mordun
             [npcKeys.spawns] = {[zoneIDs.UTGARDE_KEEP] = {{67.56,70.9},{-1,-1}}},
@@ -3408,10 +3408,10 @@ function CataNpcFixes.Load()
             [npcKeys.questStarts] = {11492,29685},
         },
         [24905] = { -- Leassian
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [24974] = { -- Liza Cutlerflix
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [25034] = { -- Tradesman Portanuus
             [npcKeys.questStarts] = {11517,11534},
@@ -3628,7 +3628,7 @@ function CataNpcFixes.Load()
             [npcKeys.questEnds] = {},
         },
         [28057] = { -- Garmin Herzog
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [28070] = { -- Brann Bronzebeard
             [npcKeys.questStarts] = {13207,13417},
@@ -4044,7 +4044,7 @@ function CataNpcFixes.Load()
             [npcKeys.spawns] = {[zoneIDs.DARNASSUS] = {{43.79,78.57}}},
         },
         [35290] = { -- Steen Horngrass
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [35463] = { -- Bloodfang Lurker
             [npcKeys.questStarts] = {},
@@ -5330,7 +5330,7 @@ function CataNpcFixes.Load()
             [npcKeys.questEnds] = {8329,27091},
         },
         [43019] = { -- Teldorae
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [43082] = { -- First Mate Moody
             [npcKeys.spawns] = {[zoneIDs.DEEPHOLM] = {{64.01,45.93}}},
@@ -5411,10 +5411,10 @@ function CataNpcFixes.Load()
             [npcKeys.waypoints] = {[zoneIDs.THE_CAPE_OF_STRANGLETHORN] = {{{55.62,51.89},{55.80,52.00},{55.97,52.11},{56.00,51.97},{55.92,51.71},{55.87,51.44},{55.87,51.16},{55.92,50.88},{55.98,50.61},{56.05,50.34},{56.19,50.15},{56.34,49.98},{56.51,49.86},{56.69,49.75},{56.87,49.66},{57.06,49.65},{57.25,49.66},{57.44,49.68},{57.62,49.63},{57.81,49.56},{57.97,49.44},{57.96,49.16},{57.93,48.88},{57.91,48.60},{57.84,48.39},{57.66,48.49},{57.48,48.59},{57.30,48.69},{57.13,48.81},{56.96,48.94},{56.79,49.06},{56.62,49.18},{56.45,49.32},{56.29,49.47},{56.16,49.68},{56.09,49.79},{56.02,49.92},{55.88,50.13},{55.77,50.35},{55.70,50.61},{55.63,50.88},{55.53,51.13},{55.43,51.36},{55.32,51.59},{55.14,51.69},{54.95,51.73},{54.79,51.68},{54.76,51.40},{54.66,51.17},{54.61,51.10},{54.49,50.92},{54.42,50.75},{54.32,50.57},{54.23,50.56},{54.41,50.66},{54.44,50.84},{54.45,51.08},{54.46,51.37},{54.48,51.65},{54.58,51.89},{54.63,51.93},{54.82,51.95},{54.94,51.89},{55.12,51.81},{55.30,51.80},{55.49,51.86},{55.59,51.87}}}},
         },
         [43379] = { -- Limiah Whitebranch
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [43408] = { -- Aili Greenwillow
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [43443] = { -- Keeshan's Riverboat
             [npcKeys.spawns] = {[zoneIDs.REDRIDGE_MOUNTAINS] = {{34.43,45.91}}},
@@ -5446,13 +5446,13 @@ function CataNpcFixes.Load()
             [npcKeys.spawns] = {[zoneIDs.REDRIDGE_MOUNTAINS] = {{77.68,65.51}}},
         },
         [43617] = { -- Lursa
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [43623] = { -- Sinking From Within: Grog Credit
             [npcKeys.spawns] = {[zoneIDs.THE_CAPE_OF_STRANGLETHORN] = {{50.56,91.52}}},
         },
         [43630] = { -- Drek
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [43631] = { -- Sinking From Within: Gunpowder Credit
             [npcKeys.spawns] = {[zoneIDs.THE_CAPE_OF_STRANGLETHORN] = {{46.81,93.73}}},
@@ -5472,13 +5472,13 @@ function CataNpcFixes.Load()
             },
         },
         [43766] = { -- Roslyn Paxton
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [43769] = { -- Bralla Cloudwing
             [npcKeys.questEnds] = {},
         },
         [43773] = { -- Stella Boomboom
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [43778] = { -- Foe Reaper 5000
             [npcKeys.spawns] = {[zoneIDs.THE_DEADMINES_IRONCLAD_COVE] = {{10.2,82.6}},[zoneIDs.THE_DEADMINES] = {{-1,-1}}},
@@ -5522,7 +5522,7 @@ function CataNpcFixes.Load()
             [npcKeys.spawns] = {[zoneIDs.THE_VORTEX_PINNACLE] = {{29.9,37.89},{-1,-1}}},
         },
         [43877] = { -- Fina Stillgrove
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [43878] = { -- Grand Vizier Ertan
             [npcKeys.spawns] = {[zoneIDs.THE_VORTEX_PINNACLE] = {{54.63,45.19},{-1,-1}}},
@@ -5562,19 +5562,19 @@ function CataNpcFixes.Load()
             [npcKeys.spawns] = {[zoneIDs.DUSKWOOD] = {{18.57,57.26}}},
         },
         [43979] = { -- Gravin Steelbeard
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [43982] = { -- Vernon Soursprye
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [43988] = { -- Carthok
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [43994] = { -- Salustred
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [44007] = { -- Shep Goldtend
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [44009] = { -- Craig Amai
             [npcKeys.questEnds] = {26767},
@@ -5626,7 +5626,7 @@ function CataNpcFixes.Load()
             [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
         },
         [44354] = { -- Grantor
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [44365] = { -- Lady Sylvanas Windrunner
             [npcKeys.spawns] = {
@@ -5647,13 +5647,13 @@ function CataNpcFixes.Load()
             [npcKeys.spawns] = {[zoneIDs.BLACKFATHOM_DEEPS] = {{48.2,13.09},{-1,-1}}},
         },
         [44378] = { -- Ajaye
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [44382] = { -- Veir
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [44384] = { -- Sora
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [44387] = { -- Flaming Eradicator
             [npcKeys.spawns] = {[zoneIDs.BLACKFATHOM_DEEPS_MOONSHRINE_SANCTUM] = {{31.83,67.03}},[zoneIDs.BLACKFATHOM_DEEPS] = {{-1,-1}}},
@@ -5939,10 +5939,10 @@ function CataNpcFixes.Load()
             [npcKeys.spawns] ={[zoneIDs.THOUSAND_NEEDLES] = {{42.2,48.3}}},
         },
         [45297] = { -- Beast-Handler Rustclamp
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [45298] = { -- Mule Driver Ironshod
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [45301] = { -- Korok the Colossus
             [npcKeys.spawns] ={[zoneIDs.RUINS_OF_GILNEAS] = {{50.65,18.03}}},
@@ -6849,7 +6849,7 @@ function CataNpcFixes.Load()
             [npcKeys.spawns] = {[zoneIDs.TWILIGHT_HIGHLANDS] = {{45.15,91.73}}},
         },
         [47934] = { -- Karn Cragcare
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [47940] = { -- Commander Schnottz
             [npcKeys.spawns] = {[zoneIDs.ULDUM] = {{24.41,64.09}}},
@@ -6891,7 +6891,7 @@ function CataNpcFixes.Load()
             [npcKeys.zoneID] = zoneIDs.THE_MAELSTROM,
         },
         [48055] = { -- Deedee Dropbolt
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [48061] = { -- 2nd Lieutenant Wansworth
             [npcKeys.spawns] = {[zoneIDs.TOL_BARAD] = {{53.11,46.41}}},
@@ -6915,7 +6915,7 @@ function CataNpcFixes.Load()
             [npcKeys.spawns] = {[zoneIDs.TOL_BARAD] = {{53.53,47.01}}},
         },
         [48095] = { -- Katrina Lyons
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [48108] = { -- Iso'rath Nightmare Credit
             [npcKeys.spawns] = {[zoneIDs.TWILIGHT_HIGHLANDS] = {{48.27,14.49}}},
@@ -6938,7 +6938,7 @@ function CataNpcFixes.Load()
             [npcKeys.zoneID] = zoneIDs.FELWOOD,
         },
         [48216] = { -- Hurah
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [48218] = { -- Kingslayer Orkus
             [npcKeys.spawns] = {[zoneIDs.HILLSBRAD_FOOTHILLS] = {{49.57,74.4}}},
@@ -7042,7 +7042,7 @@ function CataNpcFixes.Load()
             [npcKeys.questStarts] = {},
         },
         [48887] = { -- Darwishi
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [49000] = { -- Patch
             [npcKeys.questStarts] = {28593,28594,28595},
@@ -7121,13 +7121,13 @@ function CataNpcFixes.Load()
             [npcKeys.spawns] = {[zoneIDs.TWILIGHT_HIGHLANDS] = {{77.17,75.31}}},
         },
         [49395] = { -- Shannon Lamb
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [49408] = { -- Farah Tamina
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [49431] = { -- Ansel Tunsleworth
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [49444] = { -- Pip Quickwit
             [npcKeys.name] = "Pip Quickwit",
@@ -7148,16 +7148,16 @@ function CataNpcFixes.Load()
             [npcKeys.questStarts] = {28638,28745,28782},
         },
         [49577] = { -- Baird Darkfeather
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [49593] = { -- Tarm Deepgale
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [49600] = { -- Matthew Churchill
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [49689] = { -- Bonnie Hennigan
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [49749] = { -- Priestess Cocoa Anderson
             [npcKeys.questStarts] = {5628},
@@ -7166,13 +7166,13 @@ function CataNpcFixes.Load()
             [npcKeys.questEnds] = {82949,82985,82989,88798,88800,88801},
         },
         [49755] = { -- Zay'hana
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [49767] = { -- Rukh Zumtarg
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [49803] = { -- Kennen
-            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR,
         },
         [49893] = { -- Lisa McKeever
             [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{51.62,72.38}}},
