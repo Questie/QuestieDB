@@ -18,7 +18,7 @@ function ForeverNpcFixes:Load()
 
     return {
         [1440] = { -- Milton Sheaf
-            [npcKeys.npcFlags] = npcFlags.QUEST_GIVER + npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
         [1654] = { -- Gregor Agamand
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{45.79,29.39}}},
@@ -51,13 +51,13 @@ function ForeverNpcFixes:Load()
             [npcKeys.questStarts_remove] = {940},
         },
         [3605] = { -- Nadyia Maneweaver
-            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.TRAINER + npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.TRAINER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
         [4047] = { -- Zor Lonetree
-            [npcKeys.npcFlags] = npcFlags.QUEST_GIVER + npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
         [4612] = { -- Boyle
-            [npcKeys.npcFlags] = npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- Era flags, sells Forever items
         },
         [4949] = { -- Thrall
             [npcKeys.questEnds_add] = {93739},
@@ -77,7 +77,7 @@ function ForeverNpcFixes:Load()
             [npcKeys.questEnds_add] = {84395,84396,84397,84398,84399,84400,84401,84402},
         },
         [10667] = { -- Chromie
-            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
         [10993] = { -- Twizwick Sprocketgrind
             [npcKeys.questEnds_add] = {97930},
@@ -89,10 +89,10 @@ function ForeverNpcFixes:Load()
             [npcKeys.name] = "Sulhasa",
         },
         [15734] = { -- Ironforge Commendation Officer
-            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
         [15736] = { -- Orgrimmar Commendation Officer
-            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
         [205729] = { -- Boarton Shadetotem
             [npcKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{39.44,65.82}}},
@@ -108,10 +108,10 @@ function ForeverNpcFixes:Load()
             [npcKeys.questEnds_add] = {78124,78127,78142,78143,78145,78146,78147,78148,78149,79091,79092,79093,79094,79095,79096,79097,79535,79947,79948,79949,79950,79951,79952,79953,81947,81949,81951,81952,81953,81954,81955,81956,97286},
         },
         [214954] = { -- Rix Xizzix
-            [npcKeys.npcFlags] = npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- traces record no flags
         },
         [227853] = { -- Pix Xizzix
-            [npcKeys.npcFlags] = npcFlags.VENDOR,
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- traces record no flags
         },
         [246143] = { -- Frightened Paladin
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{27.69,63.82}}},
