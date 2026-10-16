@@ -320,6 +320,24 @@ function ForeverNpcFixes:Load()
         [269075] = { -- Snow Leopard Prowler
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{27.37,62.86}}},
         },
+        [270263] = { -- Farseer Maret Firetend
+            [npcKeys.spawns] = {[zoneIDs.THE_HINTERLANDS] = {{14.4,42.6}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.npcFlags] = npcFlags.TRAINER,
+        },
+        [270278] = { -- Bordolf Axegrim
+            [npcKeys.spawns] = {[zoneIDs.THE_HINTERLANDS] = {{14.4,43.0}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.npcFlags] = npcFlags.TRAINER,
+        },
+        [270280] = { -- Torin Treehame
+            [npcKeys.spawns] = {[zoneIDs.THE_HINTERLANDS] = {{14.6,43.0}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.npcFlags] = npcFlags.TRAINER,
+        },
         [270418] = { -- Credit
             [npcKeys.name] = "Credit",
             [npcKeys.minLevel] = 60,
