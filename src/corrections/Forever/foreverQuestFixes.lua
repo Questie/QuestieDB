@@ -1467,6 +1467,15 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSkill] = {profKeys.LEATHERWORKING, 1},
             [questKeys.objectives] = {nil,nil,{{275720},{4231}}},
         },
+        [96897] = { -- The Cult of the Damned
+            [questKeys.preQuestSingle] = {96895},
+        },
+        [96898] = { -- Remnants of War
+            [questKeys.preQuestSingle] = {96895},
+        },
+        [96899] = { -- Bandarion Keep
+            [questKeys.preQuestGroup] = {96897,96898},
+        },
         [97237] = { -- Shelf Picked
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
