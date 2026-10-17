@@ -102,10 +102,19 @@ end
 
 config.locales = { "deDE", "esES", "esMX", "frFR", "koKR", "ptBR", "ruRU", "zhCN", "zhTW" }
 
----Bumped when the localization block layout changes in a way a reader can observe. Left at 1
----here deliberately: raising it is a release decision for the addon maintainers, and issue #70
----is submitted as a PR rather than a release. See docs/adr/0017.
-config.l10nVersion = 1
+---Bumped when the localization block layout changes in a way a reader can observe.
+---
+---Version 2 adds `X-l10nIds-<Type>`: the locale columns index that list rather than the baked
+---entity ID list, so a column position no longer means the same thing. The two layouts are
+---incompatible in both directions and neither degrades safely on its own:
+---
+---* an older reader given a version-2 artifact passes the header check and then indexes the new
+---  columns with baked entity IDs, silently returning the wrong translation for a known entity;
+---* this reader given a version-1 artifact has no ID list to index with and cannot start.
+---
+---Declaring a distinct version is what turns both pairings into a clean rejection instead of
+---silent corruption. Entity storage is unaffected and keeps contract version 2.
+config.l10nVersion = 2
 config.l10nHeaderKey = "X-l10n-Version"
 config.l10nMetaPrefix = "l10n-"
 

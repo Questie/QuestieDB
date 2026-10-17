@@ -3476,8 +3476,94 @@ suite("l10n-unbaked-ids", "Vanilla", function()
 end)
 
 --------------------------------------------------------------------------------------------
--- Translation corrections
+-- Mixed localization versions (ADR 0017 decision 4)
 --------------------------------------------------------------------------------------------
+
+suite("l10n-mixed-version", "Vanilla", function()
+  local tocPath = config.tocPath(config.flavorByName.Vanilla)
+  if not lib.fileExists(tocPath) then
+    io.write("  SKIP l10n-mixed-version: ", tocPath, " not generated\n")
+    return
+  end
+
+  client.reset()
+  client.install({ expansion = "Classic", locale = "enUS" })
+  local sourceMap = emulator.parse(tocPath)
+  if sourceMap[config.l10nHeaderKey] == nil then
+    io.write("  SKIP l10n-mixed-version: artifact generated with --no-l10n\n")
+    client.reset()
+    return
+  end
+  -- A generated artifact whose declared version disagrees with the reader is a stale TOC, not a
+  -- reason to skip: that is precisely the mixed-version state this suite exists to reject.
+  equal(sourceMap[config.l10nHeaderKey], tostring(config.l10nVersion),
+    "the generated artifact declares the version this reader expects")
+
+  -- The layout is only safe because the two layouts declare different versions. A column
+  -- position means "index into X-<Type>-IDS" in version 1 and "index into X-l10nIds-<Type>" in
+  -- version 2, so a reader that accepted both would return a wrong translation for a known
+  -- entity rather than a missing one.
+  check(config.l10nVersion >= 2,
+    "the localization ID list layout declares version 2 or later, not the version-1 column meaning")
+
+  -- Rebuild the artifact as a version-1 one: every localization ID key removed and the header
+  -- downgraded. This is what a clone's stale, gitignored TOC looks like.
+  lib.mkdirp(".out")
+  local v1Path = ".out/test-mixed-v1.toc"
+  local out = assert(io.open(v1Path, "wb"))
+  for line in io.lines(tocPath) do
+    local key = line:match("^## ([^:]+):")
+    if key == config.l10nHeaderKey then
+      out:write("## " .. config.l10nHeaderKey .. ": 1\n")
+    elseif key and key:match("^X%-l10nIds%-") then
+      -- dropped: version 1 had no localization ID list
+    else
+      out:write(line, "\n")
+    end
+  end
+  out:close()
+
+  -- A version-1 artifact must be declined, not abort startup and not be read as version 2.
+  client.reset()
+  client.install({ expansion = "Classic", locale = "deDE" })
+  local v1Map = emulator.parse(v1Path)
+  emulator.install(config.addonName, v1Map)
+  local loaded, dbOrError = pcall(emulator.loadAddon, v1Path, config.addonName)
+  check(loaded, "a version-1 artifact loads without aborting: " .. tostring(dbOrError))
+  if loaded then
+    local db = dbOrError
+    equal(db.l10n.IsAvailable(), false,
+      "a version-1 artifact is declined as unsupported localization")
+    -- Base English is the correct degraded result, never a mis-indexed translation.
+    equal(db.Npc.name(30), db.Npc.GetRaw(30, "name"),
+      "a declined version-1 artifact reads the base value, not a wrong translation")
+    equal(db.Item.name(159), db.Item.GetRaw(159, "name"),
+      "a declined version-1 artifact reads the base item value")
+  end
+
+  -- The correct pairing still resolves translations, which is what the mismatch is protecting.
+  client.reset()
+  client.install({ expansion = "Classic", locale = "deDE" })
+  emulator.install(config.addonName, sourceMap)
+  local okPair, paired = pcall(emulator.loadAddon, tocPath, config.addonName)
+  check(okPair, "the matching version loads: " .. tostring(paired))
+  if okPair then
+    equal(paired.l10n.IsAvailable(), true, "the matching version declares localization")
+    check(paired.Npc.name(30) ~= nil and paired.Npc.name(30) ~= paired.Npc.GetRaw(30, "name"),
+      "the matching version returns a real translation for Npc 30")
+  end
+
+  -- A version-1 reader accepts only its own version, so it declines this artifact instead of
+  -- indexing the new columns with baked entity IDs.
+  local declared = tonumber(sourceMap[config.l10nHeaderKey])
+  check(declared ~= 1,
+    "a version-1 reader's header comparison cannot accept this artifact")
+  equal(declared, config.l10nVersion,
+    "the artifact declares exactly the version its own reader expects")
+
+  os.remove(v1Path)
+  client.reset()
+end)
 
 suite("translation-corrections", "shared", function()
   dofile("tools/validation/translation-corrections.test.lua")(check, equal)

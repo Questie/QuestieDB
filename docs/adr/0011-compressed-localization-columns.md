@@ -32,8 +32,9 @@ block per locale and type, the type-last key spelling, and the format header —
 
 `X-l10n-Version: 1` declares the store. This decision removed the old per-entity keys, the locale
 separator and the list literals; it also introduced no localization ID list, because columns
-aligned with the entity ID list instead. ADR 0017 adds `X-l10nIds-<Type>` and keeps the declared
-version at 1, leaving any bump to the maintainers.
+aligned with the entity ID list instead. ADR 0017 adds `X-l10nIds-<Type>`, which changes what a
+column position means, so it declares version 2. A version-1 artifact is not readable as
+version 2 and vice versa; see that record for the mixed-version behavior.
 
 ### 2. Only the active locale enters Lua memory
 

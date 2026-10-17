@@ -155,7 +155,7 @@ Baked mode decodes all four headers at addon load through `DecodeBase64`,
 
 ## Localization blocks
 
-`X-l10n-Version: 1` declares the localization store. Each entity type owns one ascending
+`X-l10n-Version: 2` declares the localization store. Each entity type owns one ascending
 localization ID list, and each non-enUS locale has one compressed CBOR block per entity type:
 
 ```toc
@@ -177,6 +177,21 @@ written once and decoded once.
 The key is spelled `l10nIds`, not `l10n-IDS`, precisely so it cannot match the locale-block
 pattern `^X%-l10n%-%a+%-%a+$`. Every existing scan for "is this a localization block?" therefore
 stays correct with no change.
+
+**The version is load-bearing.** Version 2 changed what a column position *means*, so the two
+layouts are incompatible in both directions:
+
+| Artifact | Reader | Result |
+| --- | --- | --- |
+| 1 | 2 | Reader declares localization unsupported and reads base English. No crash. |
+| 2 | 1 | Reader rejects the blocks by the version check. |
+| 2 | 2 | Translations resolve. |
+
+Neither mismatch degrades silently, and that depends on the versions differing. A reader that
+accepted both would index version-2 columns with baked entity IDs and return the wrong
+translation for a known entity — a wrong NPC or item name, not a missing one. Version 1 must
+therefore never be reused for this layout. Entity storage is independent and keeps contract
+version 2.
 
 A block is an array of compact localization field columns:
 
