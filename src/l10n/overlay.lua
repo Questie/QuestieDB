@@ -2,10 +2,11 @@
 --
 -- The optional localization layer for selected composed entity fields in the active locale.
 --
--- Baked artifacts store one compressed CBOR column block per locale and entity type. Columns
--- align with the backend's ascending base ID list. A non-enUS client eagerly decodes its
--- available type blocks during addon load and keeps those translations in memory; enUS
--- decodes none.
+-- Baked artifacts store one compressed CBOR column block per locale and entity type, plus one
+-- ascending localization ID list per entity type. Columns index the localization ID list, not
+-- the backend's base ID list, so a translation survives for an entity the baked database does
+-- not contain (issue #70). A non-enUS client eagerly decodes its available type blocks during
+-- addon load and keeps those translations in memory; enUS decodes none.
 --
 -- Locale changes replace the active blocks and invalidate entity caches. Translations outrank entity
 -- Corrections for translatable fields; translated tables pass through shared.lua's copy
@@ -199,6 +200,12 @@ end
 local activeBlocks = {}
 local availableTypes = {}
 
+--- Localization ID lists, decoded once per entity type and shared by that type's nine locale
+--- columns. Decoded while a stored locale loads, so every available type pays for one decode
+--- and the result is reused across locale switches. Only a locale with no stored blocks —
+--- enUS, or a custom locale — skips the decode entirely.
+local localizationIds = {}
+
 ---@param key string
 ---@return string? value
 local function readStored(key)
@@ -212,6 +219,28 @@ end
 local function decodeBlock(encoded)
   return Encoding.DeserializeCBOR(
     Encoding.DecompressString(Encoding.DecodeBase64(encoded), 1))
+end
+
+---Decode one entity type's ascending localization ID list, once.
+---The list is shared by every locale of that type. It is decoded while a stored locale loads,
+---so a missing or corrupt list fails the locale switch atomically rather than surfacing on the
+---first translated read; enUS loads no blocks and therefore decodes none.
+---A missing list is corruption for an artifact that declares localization.
+---@param typeName string
+---@return number[] ids
+local function getLocalizationIds(typeName)
+  local ids = localizationIds[typeName]
+  if ids then return ids end
+
+  local key = config.l10nIdsKey(typeName)
+  local encoded = readStored(key)
+  if not encoded then error("QuestieDB: missing localization ID list " .. key, 0) end
+  ids = decodeBlock(encoded)
+  if type(ids) ~= "table" then
+    error("QuestieDB: localization ID list " .. key .. " did not decode to a table", 0)
+  end
+  localizationIds[typeName] = ids
+  return ids
 end
 
 ---Decode every selected entity type for one configured locale.
@@ -235,6 +264,10 @@ local function loadLocaleBlocks(locale)
         error("QuestieDB: localization block " .. key .. " did not decode to a table", 0)
       end
       blocks[typeName] = block
+      -- Validate the columns' index here too, so a missing or corrupt ID list fails a locale
+      -- switch atomically instead of on the first translated read. Memoized per type, so this
+      -- is one decode per session and enUS still pays nothing.
+      getLocalizationIds(typeName)
     end
   end
   return blocks
@@ -265,27 +298,30 @@ function overlay.CreateProvider(meta, entity)
     end
   end
 
-  -- Source startup must stay lazy; base IDs are needed only for an active stored block.
-  local baseIds
+  -- The localization ID list is already decoded by the time a stored locale is active, so this
+  -- call is a memoized table lookup on the read path. Source mode has no stored blocks and
+  -- never reaches it.
   local lastId, lastPosition
 
-  ---Resolve a base entity ID to the column position Generation used.
-  ---Name/subname pairs reuse the same ID, and initialization sweeps advance in ID order;
-  ---random reads fall back to binary search. Composed-only IDs deliberately have no position.
+  ---Resolve a translated entity ID to the column position Generation used.
+  ---Positions index the type's localization ID list, not the backend's base ID list, so an ID
+  ---absent from baked entities still has a position when any locale translates it. Name/subname
+  ---pairs reuse the same ID, and initialization sweeps advance in ID order; random reads fall
+  ---back to binary search.
   ---@param id number
   ---@return integer? position
   local function findPosition(id)
     if id == lastId then return lastPosition end
 
-    if not baseIds then baseIds = entity.backend.getAllIds() end
+    local ids = getLocalizationIds(typeName)
     local position
-    if lastPosition and baseIds[lastPosition + 1] == id then
+    if lastPosition and ids[lastPosition + 1] == id then
       position = lastPosition + 1
     else
-      local low, high = 1, #baseIds
+      local low, high = 1, #ids
       while low <= high do
         local middle = math.floor((low + high) / 2)
-        local found = baseIds[middle]
+        local found = ids[middle]
         if found == id then
           position = middle
           break
@@ -308,16 +344,26 @@ function overlay.CreateProvider(meta, entity)
   ---@return string? owner
   local function provider(id, entityFieldIndex)
     if overlay.currentLocale == "enUS" or not columnByEntityField[entityFieldIndex] then return nil end
+
     local byLocale = translations[overlay.currentLocale]
     local byType = byLocale and byLocale[typeName]
     local row = byType and byType[id]
+    local block = activeBlocks[typeName]
+    -- Neither layer can answer, so return before the existence probe below. This is what keeps
+    -- Source mode's lazy entity initialization intact: it has no stored blocks and usually no
+    -- Dynamic rows, so a translated read never forces the composed id union to be built.
+    if not row and not block then return nil end
+
+    -- Storage membership never implies entity existence. Positions come from the localization
+    -- ID list, which deliberately retains IDs the baked database lacks, so this is the single
+    -- place that keeps a retained translation from creating an entity or exposing a
+    -- seasonal-only one. A withdrawn Dynamic entity loses its stored translation here too,
+    -- without the translation slot or the stored column having to change.
+    if not entity.Exists(id) then return nil end
+
     if row and row[entityFieldIndex] ~= nil then
-      -- Translation-only IDs never extend the entity union. Withdrawn Dynamic entities lose
-      -- their translation too, without requiring the translation slot itself to be removed.
-      if not entity.Exists(id) then return nil end
       return row[entityFieldIndex], translationOwners[overlay.currentLocale][typeName][id][entityFieldIndex]
     end
-    local block = activeBlocks[typeName]
     if not block then return nil end
     local column = block[columnByEntityField[entityFieldIndex]]
     if not column then return nil end
@@ -386,6 +432,11 @@ function overlay.SetLocale(locale)
   activeBlocks = nextBlocks
   overlay.currentLocale = locale
   overlay.currentIndex = overlay.localeIndex[locale]
+
+  -- enUS and a locale with no stored blocks resolve no position, so their ID lists must not
+  -- stay resident: ADR 0011's promise is that such a client retains no localization at all.
+  -- They are re-decoded on the next switch into a stored locale, exactly like the blocks.
+  if next(nextBlocks) == nil then localizationIds = {} end
 
   for _, entityType in ipairs(config.entityTypes) do
     local entity = LibQuestieDB[entityType.name]

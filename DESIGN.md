@@ -84,7 +84,7 @@ Generation and validation require no external Questie checkout.
 | --- | --- | --- |
 | `Database/<Exp>/<x>{Quest,Npc,Item,Object}DB.lua` | `QuestieDB.questData = [[return {...}]]` | mock `QuestieLoader`, execute, `loadstring` the inner string |
 | `l10n/<Exp>/lookup*/<locale>.lua` | owned copies of locale-guarded Questie lookup files | stub `GetLocale()` once per locale in a private environment |
-| `l10n/lookupOverrides.lua` | locale-gated whole-row entity translation replacements | fold applicable Quest/Item rows into Base translations; Titan Dynamic translations already live in `src/l10n/Titan/zhCN.lua` |
+| `l10n/lookupOverrides.lua` | locale-gated whole-row entity translation replacements | fold applicable Quest/Item rows into Base translations; Titan Dynamic translations live in `src/l10n/Titan/zhCN.lua`, not here |
 | `Database/Zones/data/`, `QuestXP/DB/`, `DropTables/data/`, `FactionTemplates/` | `QuestieLoader:ImportModule(...)` then table assignment | same mock |
 
 Every input is already Lua, so this is a **mocked-environment loader, not a parser**. Questie's
@@ -447,9 +447,11 @@ the UI locale changes.
 
 Replace with the l10n overlay and `SetLocale()` at runtime. **This deletes the
 recompile-on-locale-change entirely.** ADR 0011 stores one compressed CBOR column block per
-locale and entity type. The columns align with the entity backend's ascending ID list, so they
-repeat no IDs. enUS decodes no localization. A non-enUS client decodes four blocks during addon
-load and keeps that locale's translations in memory.
+locale and entity type, and ADR 0017 gives each type its own ascending localization ID list for
+those columns to index. The columns therefore repeat no IDs, and a translation is retained for
+an ID the baked entity database does not contain — the normal case for an entity a Dynamic
+Correction adds. enUS decodes no localization. A non-enUS client decodes four blocks during
+addon load and keeps that locale's translations in memory.
 
 Two contracts remain load-bearing. **The active non-English translation is authoritative for a
 translatable field:** Dynamic Translation Corrections win first, then the Base translation with
@@ -469,6 +471,10 @@ is already enUS. Field coverage is quest `name` + `objectivesText`, npc `name` +
 `name`, and object `name`. Localization has three inputs: Base translations, Static Translation
 Corrections folded into generated blocks, and Dynamic Translation Corrections selected at query
 time. Source mode omits ordinary Base translations but can apply Dynamic Translation Corrections.
+
+Localization membership is independent of entity membership (ADR 0017): a stored translation is
+retained whether or not the baked database contains its ID, and it resolves only while that
+entity exists in the composed runtime database. A translation can never create an entity.
 
 ## Variants: SoD, Classic+
 

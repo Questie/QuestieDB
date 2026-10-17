@@ -358,18 +358,18 @@ function generate.flavor(flavor, opts)
     for _, entityType in ipairs(config.entityTypes) do
       local entry = loaded[entityType.name]
       if entry then
-        local ids = lib.sortedIds(entry.entities)
-        local knownIds = {}
-        for _, id in ipairs(ids) do knownIds[id] = true end
+        -- Retention is by translation membership, not entity membership: a lookup row for an
+        -- ID the baked database lacks is kept so a Dynamic Correction's entity can still
+        -- resolve it (issue #70).
         local values, extractStats = l10nGen.extract(
-          config.paths.l10n, flavor, entityType.name, knownIds)
-        local blockStats = l10nGen.writeMetadata(out, entityType.name, values, ids)
+          config.paths.l10n, flavor, entityType.name)
+        local blockStats = l10nGen.writeMetadata(out, entityType.name, values)
         totals.lines = totals.lines + blockStats.lines
         totals.l10nBytes = (totals.l10nBytes or 0) + blockStats.bytes
         say(string.format(
-          "  l10n %-7s %6d entities  %2d blocks  %7.1f KB  (%d locales, %d filtered)",
-          entityType.name, extractStats.entries, blockStats.blocks,
-          blockStats.bytes / 1024, extractStats.locales, extractStats.filtered))
+          "  l10n %-7s %6d entities  %6d ids  %2d blocks  %7.1f KB  (%d locales)",
+          entityType.name, extractStats.entries, blockStats.ids, blockStats.blocks,
+          blockStats.bytes / 1024, extractStats.locales))
         values = nil
         collectgarbage()
       end
