@@ -102,6 +102,9 @@ end
 
 config.locales = { "deDE", "esES", "esMX", "frFR", "koKR", "ptBR", "ruRU", "zhCN", "zhTW" }
 
+---Bumped when the localization block layout changes in a way a reader can observe. Left at 1
+---here deliberately: raising it is a release decision for the addon maintainers, and issue #70
+---is submitted as a PR rather than a release. See docs/adr/0017.
 config.l10nVersion = 1
 config.l10nHeaderKey = "X-l10n-Version"
 config.l10nMetaPrefix = "l10n-"
@@ -114,6 +117,20 @@ function config.l10nBlockKey(typeName, locale)
   -- A key ending in `-deDE` is interpreted as a localized TOC directive and disappears on an
   -- enUS client. Keep the entity type last so every locale's block remains directly addressable.
   return "X-" .. config.l10nMetaPrefix .. locale .. "-" .. typeName
+end
+
+---Storage key for one entity type's ascending localization ID list.
+---
+---Localization has its own ID list per type rather than reusing the entity backend's. Columns
+---index this list, so a translation is retained independently of baked entity membership
+---(issue #70). The key names no locale: all nine locale columns of a type share one list.
+---
+---Spelled `l10nIds`, not `l10n-IDS`, so it cannot match the locale-block pattern
+---`^X%-l10n%-%a+%-%a+$`. Every existing "is this a block key?" scan stays correct unchanged.
+---@param typeName string
+---@return string key
+function config.l10nIdsKey(typeName)
+  return "X-l10nIds-" .. typeName
 end
 
 --------------------------------------------------------------------------------------------
