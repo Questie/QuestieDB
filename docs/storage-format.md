@@ -205,9 +205,11 @@ cannot expose a seasonal-only entity on an inactive season.
 
 **enUS has no blocks.** A client using enUS decodes no localization data. A non-enUS client
 decodes its four available type blocks during addon load and retains those columns for the
-session; the localization ID list of a type is decoded lazily on the first read that needs a
-position, so enUS and an unused type never pay for one. Lookups use the localization ID list,
-with a sequential-position fast path and binary-search fallback. Locale changes replace all four
+session. The localization ID list of a type is decoded at the same point — while a stored locale
+loads — and retained alongside its blocks, so a locale switch reuses it and a missing list fails
+the switch instead of surfacing on a later read. Only a locale with no stored blocks (enUS, or a
+custom locale) skips that decode. Lookups use the localization ID list, with a
+sequential-position fast path and binary-search fallback. Locale changes replace all four
 active blocks before invalidating entity caches. Corrections still outrank translations, and
 translated tables still return fresh mutable copies. See ADR 0011 and ADR 0017.
 

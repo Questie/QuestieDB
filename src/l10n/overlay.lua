@@ -201,7 +201,9 @@ local activeBlocks = {}
 local availableTypes = {}
 
 --- Localization ID lists, decoded once per entity type and shared by that type's nine locale
---- columns. Lazily built: enUS and an unused type never pay for a decode.
+--- columns. Decoded while a stored locale loads, so every available type pays for one decode
+--- and the result is reused across locale switches. Only a locale with no stored blocks —
+--- enUS, or a custom locale — skips the decode entirely.
 local localizationIds = {}
 
 ---@param key string
@@ -296,8 +298,9 @@ function overlay.CreateProvider(meta, entity)
     end
   end
 
-  -- Source startup must stay lazy; the localization ID list is needed only for an active
-  -- stored block, and is decoded on first use rather than at load.
+  -- The localization ID list is already decoded by the time a stored locale is active, so this
+  -- call is a memoized table lookup on the read path. Source mode has no stored blocks and
+  -- never reaches it.
   local lastId, lastPosition
 
   ---Resolve a translated entity ID to the column position Generation used.
