@@ -8,10 +8,10 @@ return function(check, equal, modeScope)
   _G.LibStub = savedLibStub
   assert(ok, client)
   local expected = { [6805] = "大雷暴和巨磐石", [93975] = "拉格纳罗斯必须死！" }
-  -- Quest IDs whose Titan zhCN row is byte-identical to the owned WotLK lookup. They are
-  -- absent from the baked entity database, so Base localization only serves them from the
-  -- artifact's retained unbaked translations (issue #70). Used to prove Baked no longer needs
-  -- the duplicated runtime rows, while Source still does.
+  -- Quest IDs the owned WotLK zhCN lookup translates but the baked entity database lacks.
+  -- Base localization can only serve them from the artifact's retained unbaked translations
+  -- (issue #70), which is what lets Baked mode stop depending on a runtime row for them.
+  -- This is a property of the lookup inputs, not of which rows zhCN.lua happens to register.
   local duplicatedLookupIds = {
     93950, 93975, 94376, 94576, 94577, 94579, 95037, 95072, 95074, 95075, 95076, 95077,
     95078, 95079, 95080, 95081, 95082, 95083, 95084, 95085, 95088, 95089, 95090, 95092,
@@ -112,6 +112,30 @@ return function(check, equal, modeScope)
         equal(#unresolved, 0, label .. "no duplicated lookup row depends on the runtime rows")
         equal(db.GetProvenance("Quest", 93975, "name"), "QuestieDB",
           label .. "the stored Base block owns the duplicated row's value")
+
+        -- The same holds for the other three entity types: every ordinary lookup row for a
+        -- Titan-added entity must survive withdrawing that type's runtime slot, because the
+        -- stored blocks retain its translation too.
+        for _, case in ipairs({
+          { datatype = "Npc", ids = { 80007, 256887, 256889, 257012, 257403, 262258 } },
+          { datatype = "Item", ids = { 264272, 272955, 279578 } },
+          { datatype = "Object", ids = { 420002 } },
+        }) do
+          local entity = db[case.datatype]
+          local before = {}
+          for _, id in ipairs(case.ids) do before[id] = entity.name(id) end
+          db.l10n.SetCorrection("QuestieDB", "zhCN", case.datatype, "Titan:zhCN", nil)
+          local kept = 0
+          for _, id in ipairs(case.ids) do
+            local value = entity.name(id)
+            if value ~= nil and value == before[id] then kept = kept + 1 end
+          end
+          equal(kept, #case.ids,
+            label .. case.datatype .. ": duplicated lookup rows still resolve from Base blocks")
+          equal(db.GetProvenance(case.datatype, case.ids[1], "name"), "QuestieDB",
+            label .. case.datatype .. ": the stored Base block owns the duplicated row")
+        end
+
         -- The genuine seasonal overrides are not in the Base blocks, so they must fall back.
         db.l10n.SetLocale("enUS")
         local overrideEnglish = db.Quest.name(6805)
