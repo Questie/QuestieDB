@@ -106,14 +106,18 @@ config.locales = { "deDE", "esES", "esMX", "frFR", "koKR", "ptBR", "ruRU", "zhCN
 ---
 ---Version 2 adds `X-l10nIds-<Type>`: the locale columns index that list rather than the baked
 ---entity ID list, so a column position no longer means the same thing. The two layouts are
----incompatible in both directions and neither degrades safely on its own:
+---incompatible in both directions, so they must not share a version number.
 ---
----* an older reader given a version-2 artifact passes the header check and then indexes the new
----  columns with baked entity IDs, silently returning the wrong translation for a known entity;
----* this reader given a version-1 artifact has no ID list to index with and cannot start.
+---If both declared the same version, neither mismatch would be caught:
 ---
----Declaring a distinct version is what turns both pairings into a clean rejection instead of
----silent corruption. Entity storage is unaffected and keeps contract version 2.
+---* an older reader would accept a version-2 artifact and index the new columns with baked
+---  entity IDs, silently returning the wrong translation for a known entity;
+---* this reader would accept a version-1 artifact, then fail to find the ID list it needs to
+---  index with and abort a non-English startup.
+---
+---Distinct versions make each pairing fail closed instead: a version-1 reader rejects a
+---version-2 artifact at its header comparison, and this reader declines a version-1 artifact
+---before it needs an ID list. Entity storage is unaffected and keeps contract version 2.
 config.l10nVersion = 2
 config.l10nHeaderKey = "X-l10n-Version"
 config.l10nMetaPrefix = "l10n-"

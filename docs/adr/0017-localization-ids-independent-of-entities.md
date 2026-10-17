@@ -55,19 +55,22 @@ there. Positions no longer come from the entity ID list, so nothing else implies
 ### 4. The format version moves to 2
 
 `X-l10n-Version: 2` declares the new layout, because a column position changed meaning. The two
-layouts are incompatible in both directions, and neither degrades safely on its own:
+layouts are incompatible in both directions, so they must not share a version number.
+
+Both failure modes below are what happens **if both layouts declare the same version**, which is
+the state this decision prevents. Each was reproduced with version 1 on both sides:
 
 - an older reader given a version-2 artifact passes the header check and then indexes the new
   columns with baked entity IDs. With this branch's Vanilla artifact, Npc `name` for 30 in deDE
-  returns `Rohling der Defias` instead of `Waldspinne`, and item 159 returns `Garricks Kopf`
+  returned `Rohling der Defias` instead of `Waldspinne`, and item 159 returned `Garricks Kopf`
   instead of `Erfrischendes Quellwasser` — a wrong translation, silently.
-- this reader given a version-1 artifact has no ID list to index with, and a non-English
-  startup aborts with `missing localization ID list X-l10nIds-Quest`.
+- this reader given a version-1 artifact had no ID list to index with, and a non-English
+  startup aborted with `missing localization ID list X-l10nIds-Quest`.
 
-Declaring a distinct version turns both pairings into a clean rejection: the newer reader treats
-a version-1 artifact as having no supported localization and reads base English, and a
-version-1 reader declines the version-2 blocks by its existing header comparison. A mixed-version
-test asserts both directions.
+With the versions distinct, neither pairing reaches those paths: a version-1 reader rejects a
+version-2 artifact at its existing header comparison, and this reader declines a version-1
+artifact before it needs an ID list, reading base English instead. A mixed-version test asserts
+both directions.
 
 Entity storage is untouched and keeps contract version 2; only the localization block layout
 changed.
