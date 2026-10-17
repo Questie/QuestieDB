@@ -40,6 +40,25 @@ function inputs.lookupPath(root, flavor, typeCfg, locale)
     :format(root, flavor.expansion, typeCfg.dir, locale)
 end
 
+---Trace-generated lookups layered over the base files; merged per field, optional per file.
+---@param root string
+---@param flavor table
+---@param typeCfg table
+---@param locale string
+---@return string? path Existing trace file, or nil when absent or not applicable.
+function inputs.tracePath(root, flavor, typeCfg, locale)
+  if flavor.expansion ~= "Forever" then
+    return nil
+  end
+  local path = ("%s/Forever/traces/%s/%s.lua"):format(root, typeCfg.dir, locale)
+  local file = io.open(path, "r")
+  if file then
+    file:close()
+    return path
+  end
+  return nil
+end
+
 ---Select imported Static Translation Correction sources for one flavor and entity type.
 ---@param flavor table
 ---@param typeName string
@@ -129,6 +148,14 @@ function inputs.load(root, flavor, typeName, locale)
   if type(payload) == "function" then payload = payload() end
   local base = translationRows(payload or {}, typeCfg, false)
   local corrections = {}
+  local tracePath = inputs.tracePath(root, flavor, typeCfg, locale)
+  if tracePath then
+    module[typeCfg.field] = {}
+    execute(tracePath, env)
+    local traceRows = module[typeCfg.field][locale]
+    if type(traceRows) == "function" then traceRows = traceRows() end
+    corrections[#corrections + 1] = translationRows(traceRows or {}, typeCfg, false)
+  end
   for _, source in ipairs(inputs.correctionSources(flavor, typeName)) do
     local field = source.fields[typeName]
     module[field] = nil

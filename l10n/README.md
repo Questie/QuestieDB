@@ -1,8 +1,8 @@
 # Entity localization sources
 
 QuestieDB owns these Generation inputs. Generation and Reconstruction read this directory
-without checking out Questie. Release packages contain the generated Localization blocks,
-not these raw files. Source mode still omits Base translations.
+without checking out Questie. Baked release packages contain the generated Localization blocks,
+not these raw files. Source mode loads them directly for the client locale.
 
 ## Layout
 
@@ -21,8 +21,17 @@ TBC, Wrath, Cata, and Mists. It does not apply on Vanilla or Forever. Its rows r
 lookup rows: a name-only quest override clears any old translated objectives. The input adapter in
 `generator/l10n-inputs.lua` preserves that behavior with explicit field clearing.
 
+`Forever/traces/` holds trace-generated lookups in the same layout as the base directories
+(`lookupQuests/<locale>.lua`, and so on). Generation applies them on top of the `Forever` base
+files, merging per field. Trace entries win over base entries, and base entries missing from the
+traces stay. Every trace file is optional. Replace the whole `traces/` directory when new trace
+data is generated.
+
 The files retain their executable Questie format, including locale guards and loader calls.
-The adapter executes them in a private environment; they are not runtime-loaded through a TOC.
+Generation executes them in a private environment. Source mode lists them in `QuestieDB.toc`
+between `src/l10n/source/_begin.lua` and `_end.lua`, which apply the same layering at runtime;
+their locale guards keep only the client locale. Run `lua5.1 generate.lua toc` after adding or
+removing a trace file.
 The original Titan function in `lookupOverrides.lua` is not invoked by Generation. Titan Dynamic Translation Corrections already live
 in `src/l10n/Titan/zhCN.lua` and remain selected by the runtime flavor/season gate.
 
@@ -48,4 +57,4 @@ lua5.1 test.lua localization-overrides translation-corrections titan-translation
 
 Shared behavior fixtures cover locale precedence, replacement, and withdrawal. Generate the
 affected flavor and run its [artifact tests](../README.md#independent-test-scopes) to exercise
-Baked reads. Source mode does not load ordinary Base translations.
+Baked reads. `lua5.1 test.lua source-lookups` covers Source-mode lookups.

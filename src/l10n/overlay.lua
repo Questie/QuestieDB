@@ -199,6 +199,22 @@ end
 local activeBlocks = {}
 local availableTypes = {}
 
+-- Source mode: raw lookups captured for the client locale only, built per type on first use.
+local sourceRows = {}
+
+---@param typeName string
+---@return table? rows id -> entity field index -> translated value
+local function sourceRowsFor(typeName)
+  local lookups = LibQuestieDB.l10nSource
+  if not lookups or overlay.currentLocale ~= lookups.locale then return nil end
+  local rows = sourceRows[typeName]
+  if not rows then
+    rows = lookups.load(typeName, LibQuestieDB.Meta[typeName].keys)
+    sourceRows[typeName] = rows
+  end
+  return rows
+end
+
 ---@param key string
 ---@return string? value
 local function readStored(key)
@@ -318,7 +334,13 @@ function overlay.CreateProvider(meta, entity)
       return row[entityFieldIndex], translationOwners[overlay.currentLocale][typeName][id][entityFieldIndex]
     end
     local block = activeBlocks[typeName]
-    if not block then return nil end
+    if not block then
+      local rows = sourceRowsFor(typeName)
+      local row = rows and rows[id]
+      local value = row and row[entityFieldIndex]
+      if value ~= nil and entity.Exists(id) then return value, "QuestieDB" end
+      return nil
+    end
     local column = block[columnByEntityField[entityFieldIndex]]
     if not column then return nil end
     local position = findPosition(id)
@@ -330,7 +352,8 @@ function overlay.CreateProvider(meta, entity)
   return provider, scalarFields, function()
     if overlay.currentLocale == "enUS" then return false end
     local byLocale = translations[overlay.currentLocale]
-    return activeBlocks[typeName] ~= nil or (byLocale ~= nil and byLocale[typeName] ~= nil)
+    return activeBlocks[typeName] ~= nil or sourceRowsFor(typeName) ~= nil or
+      (byLocale ~= nil and byLocale[typeName] ~= nil)
   end
 end
 
@@ -396,10 +419,11 @@ function overlay.SetLocale(locale)
   return locale
 end
 
----Report whether the artifact declares the supported localization-block format.
+---Report whether base translations are available: artifact blocks or Source-mode lookups.
 ---@return boolean available
 function overlay.IsAvailable()
-  return overlay.available
+  local lookups = LibQuestieDB.l10nSource
+  return overlay.available or (lookups ~= nil and overlay.localeIndex[lookups.locale] ~= nil)
 end
 
 LibQuestieDB.l10n = overlay
