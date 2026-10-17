@@ -8,6 +8,16 @@ return function(check, equal, modeScope)
   _G.LibStub = savedLibStub
   assert(ok, client)
   local expected = { [6805] = "大雷暴和巨磐石", [93975] = "拉格纳罗斯必须死！" }
+  -- Quest IDs whose Titan zhCN row is byte-identical to the owned WotLK lookup. They are
+  -- absent from the baked entity database, so Base localization only serves them from the
+  -- artifact's retained unbaked translations (issue #70). Used to prove Baked no longer needs
+  -- the duplicated runtime rows, while Source still does.
+  local duplicatedLookupIds = {
+    93950, 93975, 94376, 94576, 94577, 94579, 95037, 95072, 95074, 95075, 95076, 95077,
+    95078, 95079, 95080, 95081, 95082, 95083, 95084, 95085, 95088, 95089, 95090, 95092,
+    95093, 95094, 95095, 95096, 95097, 95098, 95099, 95100, 95101, 95102, 95103, 95104,
+    95105, 95106, 95205, 95705, 95706, 95844, 95845, 96211, 96312, 96315, 96318, 98183,
+  }
   local modes = modeScope == "Baked" and {} or { { name = "Source", toc = "QuestieDB.toc" } }
   if modeScope ~= "Source" then
     if lib.fileExists("QuestieDB_Wrath.toc") then
@@ -79,6 +89,39 @@ return function(check, equal, modeScope)
       db.l10n.SetLocale("enUS")
       db.l10n.SetLocale("zhCN")
       check(db.Quest.name(6805) ~= expected[6805], label .. "locale callbacks do not resurrect withdrawn translation")
+
+      -- Issue #70: Base localization now retains translations for IDs the baked entity
+      -- database lacks. In Baked mode that makes the duplicated ordinary lookup rows
+      -- redundant — the general path serves them without the runtime correction. This is the
+      -- evidence the dedup decision depends on, and it is why Baked and Source differ below.
+      if mode.name == "Baked" then
+        local beforeWithdrawal = {}
+        for _, id in ipairs(duplicatedLookupIds) do beforeWithdrawal[id] = db.Quest.name(id) end
+        db.l10n.SetCorrection("QuestieDB", "zhCN", "Quest", "Titan:zhCN", nil)
+        local resolved, unresolved = 0, {}
+        for _, id in ipairs(duplicatedLookupIds) do
+          local value = db.Quest.name(id)
+          if value ~= nil and value == beforeWithdrawal[id] then
+            resolved = resolved + 1
+          else
+            unresolved[#unresolved + 1] = tostring(id)
+          end
+        end
+        equal(resolved, #duplicatedLookupIds,
+          label .. "every duplicated lookup row still resolves from the stored Base blocks")
+        equal(#unresolved, 0, label .. "no duplicated lookup row depends on the runtime rows")
+        equal(db.GetProvenance("Quest", 93975, "name"), "QuestieDB",
+          label .. "the stored Base block owns the duplicated row's value")
+        -- The genuine seasonal overrides are not in the Base blocks, so they must fall back.
+        db.l10n.SetLocale("enUS")
+        local overrideEnglish = db.Quest.name(6805)
+        db.l10n.SetLocale("zhCN")
+        check(db.Quest.name(6805) ~= expected[6805],
+          label .. "a seasonal override is not served by the Base blocks")
+        db.l10n.SetLocale("enUS")
+        equal(db.Quest.name(6805), overrideEnglish, label .. "enUS keeps the English Titan value")
+        db.l10n.SetLocale("zhCN")
+      end
     end
   end
 

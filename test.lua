@@ -590,7 +590,8 @@ end)
 
 suite("l10n-blocks", "shared", function()
   local l10nGen = dofile("generator/l10n.lua")
-  local ids = { 10, 20, 30, 40 }
+  -- Localization IDs are derived from the translations themselves, not from the entity
+  -- database: `localizationIds` sorts every translated ID, including one no entity carries.
   local values = {
     [10] = {
       [1] = { [1] = "Zehn", [2] = "Ten" },
@@ -598,26 +599,32 @@ suite("l10n-blocks", "shared", function()
     },
     [20] = { [1] = { [2] = "Twenty" } },
     [30] = { [2] = { [1] = { "Ziel A", "Ziel B" } } },
+    [40] = { [1] = { [2] = "Forty" } },
     [999] = { [1] = { [1] = "Unknown" } },
   }
+  local ids = l10nGen.localizationIds(values)
+  equal(ids, { 10, 20, 30, 40, 999 },
+    "the localization ID list is ascending and retains an ID with no baked entity")
 
   local german, germanEntities, germanValues =
     l10nGen.buildBlock("Quest", values, ids, 1)
   equal(german, {
-    [1] = { [1] = "Zehn" },
+    [1] = { [1] = "Zehn", [5] = "Unknown" },
     [2] = { [1] = { "Erstes Ziel" }, [3] = { "Ziel A", "Ziel B" } },
-  }, "localization columns align with base entity positions and preserve nil holes")
-  equal(germanEntities, 2, "entities with any German translation are counted")
-  equal(germanValues, 3, "individual German translated fields are counted")
-  equal(german[1][4], nil, "an untranslated known entity leaves a fallback hole")
-  equal(german[1][999], nil, "an unknown translated id is excluded from the block")
+  }, "localization columns align with localization positions and preserve nil holes")
+  equal(germanEntities, 3, "entities with any German translation are counted")
+  equal(germanValues, 4, "individual German translated fields are counted")
+  equal(german[1][4], nil, "an ID with no German translation leaves a fallback hole")
+  equal(german[1][1], "Zehn", "the first position belongs to the lowest localization ID")
+  equal(german[1][5], "Unknown",
+    "a translation for an ID with no baked entity occupies a real column position")
 
   local english, englishEntities, englishValues =
     l10nGen.buildBlock("Quest", values, ids, 2)
-  equal(english, { [1] = { [1] = "Ten", [2] = "Twenty" }, [2] = {} },
+  equal(english, { [1] = { [1] = "Ten", [2] = "Twenty", [4] = "Forty" }, [2] = {} },
     "each locale builds an independent set of columns")
-  equal(englishEntities, 2, "second-locale entity count")
-  equal(englishValues, 2, "second-locale field count")
+  equal(englishEntities, 3, "second-locale entity count")
+  equal(englishValues, 3, "second-locale field count")
 
   local encoded = encode.compressedCbor(german)
   local decoded = cbor.decode(LibDeflate:DecompressZlib(base64.decode(encoded)))
@@ -626,6 +633,14 @@ suite("l10n-blocks", "shared", function()
     "localization block bytes are deterministic")
   equal(config.l10nBlockKey("Quest", "deDE"), "X-l10n-deDE-Quest",
     "localization block key names its locale and entity type")
+  equal(config.l10nIdsKey("Quest"), "X-l10nIds-Quest",
+    "localization ID key names its entity type and no locale")
+  -- The ID key must not match the locale-block pattern, or every existing "is this a block
+  -- key?" scan would misread it. The spelling guarantees that without a second predicate.
+  check(not config.l10nIdsKey("Quest"):match("^X%-l10n%-%a+%-%a+$"),
+    "the localization ID key is not a locale block key")
+  check(config.l10nBlockKey("Quest", "deDE"):match("^X%-l10n%-%a+%-%a+$") ~= nil,
+    "a locale block still matches the block pattern")
   for _, locale in ipairs(config.locales) do
     check(config.l10nBlockKey("Quest", locale):sub(-#locale - 1) ~= "-" .. locale,
       "localization block key does not trigger the client's localized-directive suffix: " .. locale)
@@ -3113,9 +3128,12 @@ suite("l10n", "Vanilla", function()
   local metadataHandle = emulator.install(config.addonName, metadataMap)
   local localizationPartReads = 0
   local localizationBaseReads = {}
+  local localizationIdReads = {}
   local function countedMetadata(addonName, key)
-    if key:find("^X%-l10n%-") and key:find("%-%d+$") then
+    if (key:find("^X%-l10n%-") or key:find("^X%-l10nIds%-")) and key:find("%-%d+$") then
       localizationPartReads = localizationPartReads + 1
+    elseif key:match("^X%-l10nIds%-%a+$") then
+      localizationIdReads[key] = (localizationIdReads[key] or 0) + 1
     elseif key == config.l10nHeaderKey or key:match("^X%-l10n%-%a+%-%a+$") then
       localizationBaseReads[key] = (localizationBaseReads[key] or 0) + 1
     end
@@ -3142,26 +3160,38 @@ suite("l10n", "Vanilla", function()
   equal(localizationPartReads, 0, "enUS does not reassemble any localization block")
   equal(localizationBaseReads, { [config.l10nHeaderKey] = 1 },
     "enUS reads only the localization format header")
+  equal(next(localizationIdReads), nil,
+    "enUS decodes no localization ID list — it never resolves a position")
 
   -- Selecting a non-English locale eagerly decodes exactly one block per entity type.
   local base = Lib.Quest.name(2)
   equal(base, "Sharptalon's Claw", "enUS reads the base value")
 
+  -- Chunk parts read once each: every locale block's parts plus every localization ID list's,
+  -- since a list is chunked like any other compressed value and is read exactly once.
   local expectedGermanParts = 0
   for _, entityType in ipairs(config.entityTypes) do
-    local marker = metadataMap[config.l10nBlockKey(entityType.name, "deDE")]
-    expectedGermanParts = expectedGermanParts + tonumber(marker:match("^~(%d+)~$"))
+    for _, key in ipairs({ config.l10nBlockKey(entityType.name, "deDE"),
+                           config.l10nIdsKey(entityType.name) }) do
+      local marker = metadataMap[key]
+      expectedGermanParts = expectedGermanParts + tonumber(marker:match("^~(%d+)~$"))
+    end
   end
   localizationPartReads = 0
   localizationBaseReads = {}
   local beforeLocaleDecode = deserializeCalls
   l10n.SetLocale("deDE")
-  equal(deserializeCalls - beforeLocaleDecode, 4, "deDE eagerly decodes four localization blocks")
+  -- Four locale blocks plus the four localization ID lists that index them. The lists are
+  -- memoized per entity type, so a later locale switch decodes only its four blocks.
+  equal(deserializeCalls - beforeLocaleDecode, 8,
+    "deDE eagerly decodes four localization blocks and their four ID lists")
   equal(localizationPartReads, expectedGermanParts,
     "deDE reads each localization chunk part exactly once")
   for _, entityType in ipairs(config.entityTypes) do
     local key = config.l10nBlockKey(entityType.name, "deDE")
     equal(localizationBaseReads[key], 1, "deDE reads its " .. entityType.name .. " block header once")
+    equal(localizationIdReads[config.l10nIdsKey(entityType.name)], 1,
+      "deDE reads its " .. entityType.name .. " localization ID list once")
   end
   equal(Lib.Quest.name(2), "Klaue von Scharfkralle", "deDE quest name")
   local expectedObjectives = {
@@ -3235,7 +3265,8 @@ suite("l10n", "Vanilla", function()
 
   beforeLocaleDecode = deserializeCalls
   l10n.SetLocale("ruRU")
-  equal(deserializeCalls - beforeLocaleDecode, 4, "switching locale decodes four replacement blocks")
+  equal(deserializeCalls - beforeLocaleDecode, 4,
+    "switching locale decodes four replacement blocks, reusing the cached ID lists")
   equal(Lib.Quest.name(2), "Коготь гиппогрифа Острокогтя", "ruRU quest name, after a switch")
   beforeLocaleDecode = deserializeCalls
   l10n.SetLocale("zhCN")
@@ -3244,6 +3275,15 @@ suite("l10n", "Vanilla", function()
 
   l10n.SetLocale("enUS")
   equal(Lib.Quest.name(2), base, "switching back to enUS restores the base value")
+
+  -- enUS resolves no position, so it must not retain the ID lists a stored locale decoded.
+  -- Returning to a stored locale re-decodes both the blocks and the lists.
+  beforeLocaleDecode = deserializeCalls
+  l10n.SetLocale("deDE")
+  equal(deserializeCalls - beforeLocaleDecode, 8,
+    "returning from enUS re-decodes four blocks and four ID lists")
+  equal(Lib.Quest.name(2), "Klaue von Scharfkralle", "the re-decoded lists resolve positions")
+  l10n.SetLocale("enUS")
 
   -- A field with no translation falls back to the raw English value without reloading blocks.
   local ids = Lib.Quest.GetAllIds()
@@ -3290,6 +3330,148 @@ suite("l10n", "Vanilla", function()
   check(not loaded and tostring(loadError):find(missingGermanKey, 1, true) ~= nil,
     "an initial non-enUS load rejects a missing selected-type block")
 
+  -- A missing localization ID list is corruption too, and must fail the same way rather than
+  -- silently resolving every position against an empty list.
+  client.reset()
+  client.install({ expansion = "Classic", locale = "deDE" })
+  local noIdsMap = emulator.parse(tocPath)
+  local missingIdsKey = config.l10nIdsKey("Quest")
+  noIdsMap[missingIdsKey] = nil
+  emulator.install(config.addonName, noIdsMap)
+  local idsLoaded, idsError = pcall(emulator.loadAddon, tocPath, config.addonName)
+  check(not idsLoaded and tostring(idsError):find(missingIdsKey, 1, true) ~= nil,
+    "an initial non-enUS load rejects a missing localization ID list")
+
+  client.reset()
+end)
+
+--------------------------------------------------------------------------------------------
+-- Localization IDs independent of baked entities (issue #70)
+--------------------------------------------------------------------------------------------
+
+suite("l10n-unbaked-ids", "Vanilla", function()
+  local tocPath = config.tocPath(config.flavorByName.Vanilla)
+  if not lib.fileExists(tocPath) then
+    io.write("  SKIP l10n-unbaked-ids: ", tocPath, " not generated\n")
+    return
+  end
+
+  -- C_EncodingUtil is installed by the client emulator, and the artifact's blocks are decoded
+  -- directly here, so this suite must not depend on another suite having run first.
+  client.reset()
+  client.install({ expansion = "Classic", locale = "enUS" })
+
+  local map = emulator.parse(tocPath)
+  if map[config.l10nHeaderKey] ~= tostring(config.l10nVersion) then
+    io.write("  SKIP l10n-unbaked-ids: artifact generated with --no-l10n\n")
+    client.reset()
+    return
+  end
+
+  -- The localization ID list is "every ID any locale translates", which is neither a subset nor
+  -- a superset of the baked entity IDs: it carries IDs the baked database lacks, and omits baked
+  -- IDs no locale translates at all. What must hold is that it is ascending, that every type
+  -- retains unbaked IDs, and that every stored column position resolves to one of them.
+  local function decodedList(key)
+    local encoded = emulator.getValue(map, key)
+    if not encoded then return nil end
+    return C_EncodingUtil.DeserializeCBOR(
+      C_EncodingUtil.DecompressString(C_EncodingUtil.DecodeBase64(encoded), 1))
+  end
+
+  local totalUnbaked = 0
+  for _, entityType in ipairs(config.entityTypes) do
+    local typeName = entityType.name
+    local localizationIds = decodedList(config.l10nIdsKey(typeName))
+    check(type(localizationIds) == "table" and #localizationIds > 0,
+      typeName .. " stores an ascending localization ID list")
+    local baked = {}
+    for _, id in ipairs(decodedList("X-" .. entityType.metaPrefix .. "IDS")) do baked[id] = true end
+
+    local ascending, unbaked = true, 0
+    for index, id in ipairs(localizationIds) do
+      if index > 1 and id <= localizationIds[index - 1] then ascending = false end
+      if not baked[id] then unbaked = unbaked + 1 end
+    end
+    check(ascending, typeName .. " localization IDs are strictly ascending")
+    check(unbaked > 0,
+      typeName .. " retains translations for IDs the baked database lacks (" .. unbaked .. ")")
+    totalUnbaked = totalUnbaked + unbaked
+  end
+  check(totalUnbaked > 0,
+    "at least one entity type retains translations for IDs the baked database lacks")
+
+  -- Read the shipped runtime against the real artifact: a stored translation for an ID absent
+  -- from baked entities is addressable, but resolves only while a Dynamic Correction makes
+  -- that entity exist. This is the end-to-end form of the issue's "a translation alone cannot
+  -- create an entity" requirement.
+  client.reset()
+  client.install({ expansion = "Classic", locale = "zhCN" })
+  emulator.install(config.addonName, map)
+  local Lib = emulator.loadAddon(tocPath, config.addonName)
+  local l10n = Lib.l10n
+  equal(l10n.IsAvailable(), true, "the artifact declares the localization format")
+  l10n.SetLocale("zhCN")
+
+  -- Find an ID the artifact translates but the baked database does not contain, and whose
+  -- zhCN name is present. Object is the type with the largest such gap.
+  local objectKeys = Lib.Meta.Object.keys
+  local localizationIds = decodedList(config.l10nIdsKey("Object"))
+  local block = C_EncodingUtil.DeserializeCBOR(C_EncodingUtil.DecompressString(
+    C_EncodingUtil.DecodeBase64(emulator.getValue(map, config.l10nBlockKey("Object", "zhCN"))), 1))
+  local targetId, targetName
+  for position, id in ipairs(localizationIds) do
+    if not Lib.Object.Exists(id) and block[1][position] ~= nil then
+      targetId, targetName = id, block[1][position]
+      break
+    end
+  end
+  check(targetId ~= nil, "found an unbaked Object ID with a stored zhCN translation")
+
+  if targetId then
+    equal(Lib.Object.Exists(targetId), false, "the unbaked ID is not a baked entity")
+    equal(Lib.Object.name(targetId), nil,
+      "a stored translation for an unbaked ID cannot create an entity")
+    equal(Lib.l10n.GetProvenance("Object", targetId, "name"), nil,
+      "the localization layer claims no owner for an entity it cannot resolve")
+
+    -- Dynamic addition makes the entity exist; the stored translation now resolves.
+    Lib.Corrections.Set("UnbakedTest", "Object", "add", {
+      [targetId] = { [objectKeys.name] = "English name" },
+    })
+    equal(Lib.Object.Exists(targetId), true, "a Dynamic Correction creates the entity")
+    equal(Lib.Object.name(targetId), targetName,
+      "the retained stored translation resolves once the entity exists")
+    equal(Lib.GetProvenance("Object", targetId, "name"), "QuestieDB",
+      "the stored translation owns the resolved value")
+
+    -- Withdrawal hides the translation again without touching the stored column.
+    Lib.Corrections.Set("UnbakedTest", "Object", "add", nil)
+    equal(Lib.Object.Exists(targetId), false, "withdrawing the entity removes it again")
+    equal(Lib.Object.name(targetId), nil,
+      "withdrawing the entity hides its stored translation")
+    equal(Lib.l10n.GetProvenance("Object", targetId, "name"), nil,
+      "withdrawal removes the stored translation's claim too")
+
+    -- Locale switching must not resurrect it, and must not need the ID list re-decoded.
+    l10n.SetLocale("enUS")
+    equal(Lib.Object.name(targetId), nil, "enUS never exposes an unbaked stored translation")
+    l10n.SetLocale("zhCN")
+    equal(Lib.Object.name(targetId), nil,
+      "returning to the locale does not resurrect an absent entity")
+  end
+
+  -- A locale with no translation for a known entity still falls back to the base value.
+  local knownId = localizationIds[1]
+  if knownId and Lib.Object.Exists(knownId) then
+    local translated = block[1][1]
+    if translated == nil then
+      equal(Lib.Object.name(knownId), Lib.Object.GetRaw(knownId, "name"),
+        "a missing translation falls back to the base entity value")
+    end
+  end
+
+  l10n.SetLocale("enUS")
   client.reset()
 end)
 
@@ -3995,6 +4177,8 @@ if selectedFlavor then
     assert(map[config.l10nHeaderKey] == tostring(config.l10nVersion), path .. " needs full localization")
     for _, entity in ipairs(config.entityTypes) do
       assert(map["X-" .. entity.metaPrefix .. "IDS"], path .. " lacks " .. entity.name .. " IDs")
+      assert(emulator.getValue(map, config.l10nIdsKey(entity.name)),
+        path .. " lacks " .. config.l10nIdsKey(entity.name))
       for _, locale in ipairs(config.locales) do
         local key = config.l10nBlockKey(entity.name, locale)
         assert(emulator.getValue(map, key), path .. " lacks " .. key)
