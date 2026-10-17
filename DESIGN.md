@@ -447,9 +447,11 @@ the UI locale changes.
 
 Replace with the l10n overlay and `SetLocale()` at runtime. **This deletes the
 recompile-on-locale-change entirely.** ADR 0011 stores one compressed CBOR column block per
-locale and entity type. The columns align with the entity backend's ascending ID list, so they
-repeat no IDs. enUS decodes no localization. A non-enUS client decodes four blocks during addon
-load and keeps that locale's translations in memory.
+locale and entity type, and ADR 0017 gives each type its own ascending localization ID list for
+those columns to index. The columns therefore repeat no IDs, and a translation is retained for
+an ID the baked entity database does not contain — the normal case for an entity a Dynamic
+Correction adds. enUS decodes no localization. A non-enUS client decodes four blocks during
+addon load and keeps that locale's translations in memory.
 
 Two contracts remain load-bearing. **The active non-English translation is authoritative for a
 translatable field:** Dynamic Translation Corrections win first, then the Base translation with
@@ -469,6 +471,10 @@ is already enUS. Field coverage is quest `name` + `objectivesText`, npc `name` +
 `name`, and object `name`. Localization has three inputs: Base translations, Static Translation
 Corrections folded into generated blocks, and Dynamic Translation Corrections selected at query
 time. Source mode omits ordinary Base translations but can apply Dynamic Translation Corrections.
+
+Localization membership is independent of entity membership (ADR 0017): a stored translation is
+retained whether or not the baked database contains its ID, and it resolves only while that
+entity exists in the composed runtime database. A translation can never create an entity.
 
 ## Variants: SoD, Classic+
 

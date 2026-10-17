@@ -656,6 +656,11 @@ including every field in a custom locale with no registered slot, fall through t
 corrected entity value. Changing locale replaces the active Base blocks atomically and invalidates
 cached entity values and Name indexes. Selecting the active locale is a no-op.
 
+Base translations are retained for IDs the baked entity database does not contain, so a Dynamic
+Correction's entity still resolves its lookup translation. A stored translation never creates an
+entity: it resolves only while that entity exists in the composed database, exactly as for a
+Dynamic Translation Correction.
+
 `l10n.IsAvailable()` reports only whether the artifact contains generated Base translation
 blocks. It is false in Source mode, where ordinary Base translations remain unavailable.
 Dynamic Translation Corrections work in either mode and do not change that result.
@@ -668,8 +673,8 @@ and Object `name`. Fields such as `requiredRaces` are not localized.
 
 ### Dynamic Translation Corrections
 
-Use a Dynamic Translation Correction for non-English entity text that cannot be folded into a
-Baked Localization block, or that depends on runtime facts owned by the publisher:
+Use a Dynamic Translation Correction for non-English entity text that depends on runtime facts
+owned by the publisher, or for a locale with no generated Base block:
 
 ```lua
 local questKeys = LibQuestieDB.Meta.QuestMeta.questKeys
@@ -706,6 +711,12 @@ IDs are absent from the base backend) and base entities Titan re-authors in plac
 from `l10n/wotlk/lookup*/zhCN.lua`. It registers only when the addon loads for Wrath season 109.
 Other flavors and seasons do not register it; changing locale selects or hides it without changing
 the English Titan entity Corrections.
+
+Baked Localization blocks retain translations for IDs the baked entity database does not contain,
+so a Titan-added entity no longer needs a duplicated runtime row to have Chinese text. What the
+runtime slot still supplies is what no stored translation can: base entities Titan re-authors in
+place, whose text differs from the WotLK lookup. Source mode loads no ordinary Base translations
+at all, so those rows remain its only Chinese source.
 
 `extraObjectives` descriptions are different. Correction files author row slot `[3]` as an enUS
 localization key, and QuestieDB preserves that English string. The entity localization overlay

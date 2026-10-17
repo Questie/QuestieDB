@@ -962,6 +962,13 @@ ADR 0011 replaces the per-entity locale-joined store with one compressed CBOR bl
 and entity type. The blocks hold field columns aligned with the base entity ID list. The client
 decodes four blocks for a non-enUS locale and none for enUS.
 
+**Superseded 2026-10-17 by [ADR 0017](adr/0017-localization-ids-independent-of-entities.md):**
+columns now index a per-type localization ID list (`X-l10nIds-<Type>`) rather than the base
+entity ID list, so a translation is retained for an ID the baked database lacks. The numbers
+below remain the measurements that justified the column layout over ID-keyed rows; the retained
+heap grows by the decoded ID lists, about 1.4 MiB on Vanilla and 2.8 MiB on Wrath, recorded in
+ADR 0017.
+
 Two retained layouts were measured in Classic Era 1.15.9 build 69547:
 
 | Layout | Vanilla active locale | Mists active locale |
