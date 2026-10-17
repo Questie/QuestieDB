@@ -2,11 +2,17 @@
 -- Titan changes English entity text, but translation selection belongs entirely to l10n.
 -- Keep this declaration separate from byte-identical entity correction copies.
 --
--- Titan Reforged adds entities the Baked Localization blocks cannot address: their IDs are
--- absent from the base backend, so Generation never assigns them a column position. Those rows
--- are registered here as Dynamic Translation Corrections, sourced from l10n/wotlk/lookup*/zhCN.lua.
--- Base entities Titan re-authors in place keep authored rows, because l10n still carries the
--- original WotLK text for them.
+-- Two kinds of row live here, and only one is still load-bearing in Baked mode:
+--
+-- 1. Seasonal overrides. Base entities Titan re-authors in place, whose text differs from the
+--    WotLK lookup, plus the two items Titan remaps. No stored translation can supply these, so
+--    they are required in both modes.
+-- 2. Ordinary lookup rows for Titan-added entities, sourced from l10n/wotlk/lookup*/zhCN.lua.
+--    Since ADR 0017 the Baked Localization blocks retain translations for IDs absent from the
+--    baked entity database, so Baked mode no longer needs these rows — titan-translations
+--    proves they still resolve after this slot is withdrawn. Source mode loads no ordinary
+--    Base translations at all, so these rows remain its only zhCN source and stay registered.
+--    Removing them needs a Source-mode answer first; see ADR 0017.
 local _, LibQuestieDB = ...
 local flavor = LibQuestieDB.flavor
 local seasons = rawget(_G, "C_Seasons")
