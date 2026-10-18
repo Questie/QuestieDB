@@ -72,7 +72,7 @@ version-2 artifact at its existing header comparison, and this reader declines a
 artifact before it needs an ID list, reading base English instead. A mixed-version test asserts
 both directions.
 
-Entity storage is untouched and keeps contract version 2; only the localization block layout
+Entity storage is untouched and keeps its contract version; only the localization block layout
 changed.
 
 ## Consequences

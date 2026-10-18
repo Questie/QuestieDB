@@ -190,8 +190,8 @@ layouts are incompatible in both directions:
 Neither mismatch degrades silently, and that depends on the versions differing. A reader that
 accepted both would index version-2 columns with baked entity IDs and return the wrong
 translation for a known entity — a wrong NPC or item name, not a missing one. Version 1 must
-therefore never be reused for this layout. Entity storage is independent and keeps contract
-version 2.
+therefore never be reused for this layout. Entity storage is independent and keeps its own
+contract version.
 
 A block is an array of compact localization field columns:
 
