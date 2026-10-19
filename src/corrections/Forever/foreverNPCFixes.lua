@@ -17,14 +17,25 @@ function ForeverNpcFixes:Load()
     local phases = Phasing.phases
 
     return {
+        [352] = { -- Dungar Longdrink
+            [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{71.29,72.23}}},
+        },
         [384] = { -- Katie Hunter <Horse Breeder>
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
+        },
+        [464] = { -- Guard Parker
+            [npcKeys.spawns] = {[zoneIDs.REDRIDGE_MOUNTAINS] = {{10.37,71.26}}},
+            [npcKeys.waypoints] = {},
         },
         [1261] = { -- Veron Amberstill <Ram Breeder>
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
         [1440] = { -- Milton Sheaf
             [npcKeys.npcFlags] = npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
+        },
+        [1481] = { -- Bart Tidewater
+            [npcKeys.spawns] = {[zoneIDs.WETLANDS] = {{8.66,58.12}}},
+            [npcKeys.waypoints] = {},
         },
         [1654] = { -- Gregor Agamand
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{45.79,29.39}}},
@@ -46,7 +57,6 @@ function ForeverNpcFixes:Load()
             [npcKeys.questEnds_add] = {490},
             [npcKeys.questStarts_add] = {490},
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{40.46,50.73}}},
-            [npcKeys.waypoints] = {},
         },
         [2756] = { -- Grund Drokda
             [npcKeys.name] = "Grund Drokda",
@@ -192,6 +202,9 @@ function ForeverNpcFixes:Load()
         [248474] = { -- Geosculptor Yip
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{61.38,48.93}}},
         },
+        [249713] = { -- Odd Child
+            [npcKeys.spawns] = {[zoneIDs.WESTFALL] = {{42.83,72.76}}},
+        },
         [251001] = { -- Deathguard Kristof
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{65.25,60.2}}},
         },
@@ -213,6 +226,9 @@ function ForeverNpcFixes:Load()
         [251404] = { -- Cirrusfly Queen
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{48.41,28.53}}},
         },
+        [251507] = { -- Josephine Carson
+            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{41.15,66.23}}},
+        },
         [251684] = { -- Strange Hermit
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{53.96,38.9}}},
         },
@@ -230,6 +246,10 @@ function ForeverNpcFixes:Load()
         },
         [253204] = { -- Dondallion Whisperwind
             [npcKeys.questEnds_remove] = {92850},
+        },
+        [253370] = { -- [DNT] Kill Credit: Place Explosives
+            [npcKeys.spawns] = {[zoneIDs.THE_DEADMINES] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.THE_DEADMINES,
         },
         [253622] = { -- Commander Haalien
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.53,36.32}}},
@@ -314,6 +334,9 @@ function ForeverNpcFixes:Load()
         [258289] = { -- Baeo Sharpstrike
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.92,33.55}}},
         },
+        [258930] = { -- Isaac Chan
+            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{41.79,66.37}}},
+        },
         [259013] = { -- Resaan Nimbuswalker
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{57.05,29.35}}},
         },
@@ -352,6 +375,9 @@ function ForeverNpcFixes:Load()
         },
         [267806] = { -- "Flipfin"
             [npcKeys.questEnds_add] = {97065,97066,97067},
+        },
+        [268511] = { -- Manifest Clerk Philmor
+            [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{30.49,28.75}}},
         },
         [268530] = { -- Bloodtalon Matriarch
             [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{68.81,71.78}}},
@@ -490,6 +516,14 @@ function ForeverNpcFixes:Load()
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "The Old Rancher",
             [npcKeys.npcFlags] = 3,
+        },
+        [278166] = { -- Mountaineer Cornelius
+            [npcKeys.name] = "Mountaineer Cornelius",
+            [npcKeys.minLevel] = 6,
+            [npcKeys.maxLevel] = 6,
+            [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{43.03,49.62}}},
+            [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
+            [npcKeys.friendlyToFaction] = "A",
         },
     }
 end
