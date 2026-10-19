@@ -260,6 +260,12 @@ function ForeverNpcFixes:Load()
         [253849] = { -- Ayessa Dawnsinger
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{74.05,52.63}}},
         },
+        [254056] = { -- Mr. Barber
+            [npcKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{47.15,53.89}}},
+            [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BARBER,
+            [npcKeys.friendlyToFaction] = "H", -- blizzard totally forgot to readd this barber after the exchange
+        },
         [254082] = { -- Aarnor Galestrike
             [npcKeys.questStarts] = {97243},
         },
@@ -449,6 +455,14 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.DARNASSUS] = {{89.14,34.76}}},
             [npcKeys.zoneID] = zoneIDs.DARNASSUS,
         },
+        [270581] = { -- Fyrenz Vishonar
+            [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{47.96,84.6}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.TRANSMOGRIFIER,
+        },
+        [270582] = { -- Mon'ye
+            [npcKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{46.14,53.97}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.TRANSMOGRIFIER,
+        },
         [271546] = { -- Mountaineer Gretchen
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{44.1,57.07}}},
         },
@@ -467,6 +481,10 @@ function ForeverNpcFixes:Load()
         [272173] = { -- Venture Co. Clearclutter
             [npcKeys.spawns] = {[zoneIDs.MULGORE] = {{56.76,42.75}}},
         },
+        [272526] = { -- Glix Xizzix
+            [npcKeys.spawns] = {[zoneIDs.UNDERCITY] = {{70.03,47.31}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BARBER,
+        },
         [275657] = { -- Heglan Shadeeye
             [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{58.6,45.6}}},
         },
@@ -484,6 +502,25 @@ function ForeverNpcFixes:Load()
         },
         [276009] = { -- Avala
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{58.34,42.06}}},
+        },
+        [277024] = { -- Jelinek Sharpshear
+            [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{61.44,64.94}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BARBER,
+        },
+        [277037] = { -- Donovan Steelbeard
+            [npcKeys.spawns] = {[zoneIDs.IRONFORGE] = {{26.71,50.27}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BARBER,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [277042] = { -- Teuren Vineshade
+            [npcKeys.name] = "Teuren Vineshade",
+            [npcKeys.spawns] = {[zoneIDs.DARNASSUS] = {{58.85,50.23}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BARBER,
+        },
+        [277055] = { -- Edine Sharphorn
+            [npcKeys.name] = "Edine Sharphorn",
+            [npcKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{35.51,54.15}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BARBER,
         },
         [277154] = { -- Kyle the Frenzied
             [npcKeys.name] = "Kyle the Frenzied",
