@@ -117,6 +117,9 @@ function ForeverObjectFixes:Load()
             [objectKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
             [objectKeys.questStarts] = {79096},
         },
+        [415107] = { -- Burned-Out Remains
+            [objectKeys.spawns] = {[zoneIDs.WESTFALL] = {{37.41,50.7}}},
+        },
         [421526] = { -- Research Notes
             [objectKeys.questStarts] = {79535},
         },
@@ -363,6 +366,18 @@ function ForeverObjectFixes:Load()
         [656182] = { -- Raider's Shield
             [objectKeys.spawns] = {[zoneIDs.DUROTAR] = {{56.54,53}}},
         },
+        [660729] = { -- The Forsaken Ally
+            [objectKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{76.48,30.4}}},
+        },
+        [660730] = { -- Trollbane Conquests
+            [objectKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{75.62,30.49}}},
+        },
+        [660731] = { -- Field Accounts of Horde Razings
+            [objectKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{76.02,31.01}}},
+        },
+        [660732] = { -- Cycles of Morality
+            [objectKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{76.25,29.19}}},
+        },
         [660739] = { -- Ritual Fire
             [objectKeys.questEnds_add] = {95805},
             [objectKeys.spawns] = {[zoneIDs.MULGORE] = {{56.61,88.7}}},
@@ -439,10 +454,20 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{46.68,53.84}},[zoneIDs.TIRISFAL_GLADES] = {{57.17,55.55}},[zoneIDs.TELDRASSIL] = {{57.66,56.74}},[zoneIDs.MULGORE] = {{46.21,67.31}},[zoneIDs.DUROTAR] = {{52.09,47.39}},[zoneIDs.ELWYNN_FOREST] = {{44.94,63.2}},[zoneIDs.ZEPHRAS_ISLE] = {{41.73,44.78}}},
             [objectKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
         },
-        [460004] = { -- Mountaineer Cornelius
-            [objectKeys.name] = "Mountaineer Cornelius",
-            [objectKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{43.03,49.62}}},
-            [objectKeys.zoneID] = zoneIDs.DUN_MOROGH,
+        [460004] = { -- Gatehouse Door
+            [objectKeys.name] = "Gatehouse Door",
+            [objectKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{66.48,74.8}}},
+            [objectKeys.zoneID] = zoneIDs.STORMWIND_CITY,
+        },
+        [460005] = { -- Jansen Stead Water Well
+            [objectKeys.name] = "Jansen Stead Water Well",
+            [objectKeys.spawns] = {[zoneIDs.WESTFALL] = {{56.62,18.69}}},
+            [objectKeys.zoneID] = zoneIDs.WESTFALL,
+        },
+        [460006] = { -- Molsen Farm Water Well
+            [objectKeys.name] = "Molsen Farm Water Well",
+            [objectKeys.spawns] = {[zoneIDs.WESTFALL] = {{46.08,38.14}}},
+            [objectKeys.zoneID] = zoneIDs.WESTFALL,
         },
     }
 end

@@ -247,6 +247,9 @@ function QuestieQuestFixes:Load()
         [315] = { -- The Perfect Stout
             [questKeys.nextQuestInChain] = 413,
         },
+        [334] = { -- Package for Thurman
+            [questKeys.disabledByQuest] = 333,
+        },
         [336] = { -- A Noble Brew
             [questKeys.nextQuestInChain] = 397,
         },
@@ -5094,6 +5097,7 @@ function QuestieQuestFixes:Load()
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [8356] = { -- Flexing for Nougat
+            [questKeys.objectivesText] = {"Do a flex emote at Innkeeper Allison, and in exchange you'll receive Stormwind Nougat!"},
             [questKeys.objectives] = {{{6740, nil, Questie.ICON_TYPE_EVENT}}},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
