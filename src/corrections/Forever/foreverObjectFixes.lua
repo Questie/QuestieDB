@@ -370,7 +370,7 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.DUROTAR] = {{56.54,53}}},
         },
         [658924] = { -- Mailbox
-            [objectKeys.questStarts_remove] = {5752},
+            [objectKeys.questStarts_remove] = {5725},
         },
         [659159] = { -- Mailbox
             [objectKeys.questStarts_remove] = {1486},
