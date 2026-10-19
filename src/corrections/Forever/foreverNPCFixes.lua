@@ -17,6 +17,12 @@ function ForeverNpcFixes:Load()
     local phases = Phasing.phases
 
     return {
+        [384] = { -- Katie Hunter <Horse Breeder>
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
+        },
+        [1261] = { -- Veron Amberstill <Ram Breeder>
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
+        },
         [1440] = { -- Milton Sheaf
             [npcKeys.npcFlags] = npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
@@ -47,17 +53,29 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{28.67,67.52}}},
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
         },
+        [3362] = { -- Ogunaro Wolfrunner <Kennel Master>
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
+        },
         [3519] = { -- Sentinel Arynia Cloudsbreak
             [npcKeys.questStarts_remove] = {940},
         },
         [3605] = { -- Nadyia Maneweaver
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.TRAINER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
+        [3685] = { -- Harb Clawhoof <Kodo Mounts>
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
+        },
         [4047] = { -- Zor Lonetree
             [npcKeys.npcFlags] = npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
         [4612] = { -- Boyle
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- Era flags, sells Forever items
+        },
+        [4730] = { -- Lelanai <Saber Handler>
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
+        },
+        [4731] = { -- Zachariah Post <Undead Horse Merchant>
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
         [4949] = { -- Thrall
             [npcKeys.questEnds_add] = {93739},
@@ -76,6 +94,15 @@ function ForeverNpcFixes:Load()
             [npcKeys.questStarts_add] = {84395,84396,84397,84398,84399,84400,84401,84402},
             [npcKeys.questEnds_add] = {84395,84396,84397,84398,84399,84400,84401,84402},
         },
+        [7952] = { -- Zjolnir <Raptor Handler>
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
+        },
+        [7955] = { -- Milli Featherwhistle <Mechanostrider Merchant>
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
+        },
+        [9087] = { -- Bashana Runetotem
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
+        },
         [10667] = { -- Chromie
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
@@ -87,6 +114,9 @@ function ForeverNpcFixes:Load()
         },
         [14242] = { -- Sulhasa
             [npcKeys.name] = "Sulhasa",
+        },
+        [14624] = { -- Master Smith Burninate <The Thorium Brotherhood>
+            [npcKeys.npcFlags] = npcFlags.REPAIR + npcFlags.VENDOR, -- base data adds a wrong auctioneer bit
         },
         [15734] = { -- Ironforge Commendation Officer
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
