@@ -593,6 +593,7 @@ function ForeverQuestFixes:Load()
             [questKeys.questLevel] = 60,
             [questKeys.startedBy] = {{256386,256390}},
             [questKeys.finishedBy] = {{256386,256390}},
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [91904] = { -- A Sealed Crate
@@ -872,6 +873,7 @@ function ForeverQuestFixes:Load()
         },
         [92819] = { -- Destruction in Deadmines
             [questKeys.preQuestSingle] = {92753},
+            [questKeys.objectives] = {nil,{{581792}}},
         },
         [92834] = { -- Avenged Tenfold
             [questKeys.preQuestSingle] = {92840},

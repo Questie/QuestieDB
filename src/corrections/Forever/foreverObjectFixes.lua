@@ -281,6 +281,9 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{46.9,76.9},{47.8,76.4},{47.8,76.5},{48.0,79.5},{48.2,78.4},{48.2,78.5},{48.4,73.7},{48.7,75.5},{48.7,79.1},{48.8,75.4},{48.9,82.0},{49.3,74.1},{49.6,77.3},{50.0,75.2},{50.0,81.1},{50.3,72.5},{50.3,73.5},{50.3,79.7},{50.4,77.6},{50.4,82.4},{50.4,82.5},{50.5,77.5},{50.5,79.6},{50.5,82.6},{50.8,80.9},{51.1,83.5},{51.2,81.8},{51.4,76.0},{51.4,77.0},{51.5,75.9},{51.5,77.1},{51.8,83.4},{51.8,83.5},{51.9,82.1},{52.7,79.4},{52.8,79.7},{53.6,81.8},{54.5,80.0}}}, -- WIP
             [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
+        [581792] = { -- Detonator
+            [objectKeys.spawns] = {[zoneIDs.WESTFALL] = {{38.72,83.6}}},
+        },
         [581820] = { -- Dusty Bedroll
             [objectKeys.name] = "Dusty Bedroll",
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{52.08,69.4}}},
@@ -366,6 +369,12 @@ function ForeverObjectFixes:Load()
         [656182] = { -- Raider's Shield
             [objectKeys.spawns] = {[zoneIDs.DUROTAR] = {{56.54,53}}},
         },
+        [658924] = { -- Mailbox
+            [objectKeys.questStarts_remove] = {5752},
+        },
+        [659159] = { -- Mailbox
+            [objectKeys.questStarts_remove] = {1486},
+        },
         [660729] = { -- The Forsaken Ally
             [objectKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{76.48,30.4}}},
         },
@@ -432,6 +441,9 @@ function ForeverObjectFixes:Load()
         },
         [695277] = { -- Stoneanvil's Rifle
             [objectKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{53.16,58.78}}},
+        },
+        [696264] = { -- Mailbox
+            [objectKeys.questStarts_remove] = {151},
         },
         [697118] = { -- Windstone Formation
             [objectKeys.name] = "Windstone Formation",
