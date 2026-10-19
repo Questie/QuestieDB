@@ -285,8 +285,15 @@ function ForeverNpcFixes:Load()
         [255534] = { -- "Badwind" Bennic
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{50.62,34.27}}},
         },
+        [256386] = { -- Dokimi
+            [npcKeys.questStarts_add] = {91905},
+        },
         [256388] = { -- Jornah
             [npcKeys.questEnds_add] = {95819},
+        },
+        [256390] = { -- Marcy Baker
+            [npcKeys.questStarts_add] = {91901},
+            [npcKeys.questEnds_add] = {91901},
         },
         [256391] = { -- Elaine Compton
             [npcKeys.questEnds_add] = {95816},
