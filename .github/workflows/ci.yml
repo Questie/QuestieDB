@@ -126,3 +126,17 @@ jobs:
           [ "${{ needs.package.result }}" = "success" ] || { echo "::error::Packaging: ${{ needs.package.result }}"; ok=0; }
           [ "${{ needs.legacy.result }}" = "success" ] || { echo "::error::Legacy corrections: ${{ needs.legacy.result }}"; ok=0; }
           [ "$ok" = "1" ]
+
+  notify:
+    name: Notify Discord
+    runs-on: ubuntu-latest
+    needs: [test, database, package, legacy]
+    if: failure()
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Send CI failure to Discord
+        uses: nebularg/actions-discord-webhook@v1.0.0
+        with:
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+          status: failure
