@@ -347,7 +347,7 @@ constants.byExpansion = {
       STABLEMASTER = 8192,
       REPAIR = 16384,
       BARBER = 33554432,
-      TRANSMOGRIFIER = 536870912,
+      TRANSMOGRIFIER = 536870912, -- using this bit since era/forever DB has some NPCs with 268435456
     },
     raceKeys = {
       NONE = 0,
