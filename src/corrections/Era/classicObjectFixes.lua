@@ -377,6 +377,10 @@ function QuestieObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.STRANGLETHORN_VALE] = {{24.77,22.88}}},
             [objectKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
         },
+        [179437] = { -- Wanted: ORCS!
+            [objectKeys.spawns] = {[zoneIDs.ALTERAC_VALLEY] = {{43.27,16.52}}},
+            [objectKeys.zoneID] = zoneIDs.ALTERAC_VALLEY,
+        },
         [179485] = { -- Broken Trap
             [objectKeys.spawns] = {[zoneIDs.DIRE_MAUL_GORDOK_COMMONS] = {{-1,-1}}},
         },

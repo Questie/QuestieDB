@@ -17,6 +17,7 @@ QuestieCorrections.itemObjectiveFirst[92682] = true
 QuestieCorrections.killCreditObjectiveFirst[94489] = true
 QuestieCorrections.itemObjectiveFirst[97277] = true
 QuestieCorrections.itemObjectiveFirst[97485] = true
+QuestieCorrections.killCreditObjectiveFirst[98386] = true
 
 -- Static Corrections: shared by all characters and folded in during Generation.
 function ForeverQuestFixes:Load()
@@ -35,8 +36,20 @@ function ForeverQuestFixes:Load()
         [76] = { -- The Jasperlode Mine
             [questKeys.triggerEnd] = {"Scout through the Jasperlode Mine", {[zoneIDs.ELWYNN_FOREST] = {{61.93,53.16}}}},
         },
+        [89] = { -- The Everstill Bridge
+            [questKeys.nextQuestInChain] = 98386,
+        },
         [151] = { -- Poor Old Blanchy
             [questKeys.startedBy_remove] = {nil,{696264}},
+        },
+        [169] = { -- WANTED: Gath'Ilzogg
+            [questKeys.name] = "WANTED: Gath'Ilzogg",
+        },
+        [176] = { -- WANTED: "Hogger"
+            [questKeys.name] = "WANTED: \"Hogger\"",
+        },
+        [180] = { -- WANTED: Lieutenant Fangore
+            [questKeys.name] = "WANTED: Lieutenant Fangore",
         },
         [287] = { -- Frostmane Hold
             [questKeys.disabledByQuest] = 420,
@@ -51,6 +64,9 @@ function ForeverQuestFixes:Load()
         },
         [356] = { -- Rear Guard Patrol
             [questKeys.nextQuestInChain] = 99156,
+        },
+        [398] = { -- WANTED: Maggot Eye
+            [questKeys.name] = "WANTED: Maggot Eye",
         },
         [490] = { -- Bounty: Gnarlpine Furbolg
             [questKeys.name] = "Bounty: Gnarlpine Furbolg",
@@ -68,6 +84,12 @@ function ForeverQuestFixes:Load()
         },
         [590] = { -- A Rogue's Deal
             [questKeys.objectives] = {{{6784}}},
+        },
+        [684] = { -- WANTED: Marez Cowl
+            [questKeys.name] = "WANTED: Marez Cowl",
+        },
+        [685] = { -- WANTED: Otto and Falconcrest
+            [questKeys.name] = "WANTED: Otto and Falconcrest",
         },
         [760] = { -- Wildmane Cleansing
             [questKeys.nextQuestInChain] = 98435,
@@ -113,6 +135,9 @@ function ForeverQuestFixes:Load()
         },
         [2519] = { -- The Temple of the Moon
             [questKeys.breadcrumbs] = {98391},
+        },
+        [5147] = { -- WANTED: Arnak Grimtotem
+            [questKeys.name] = "WANTED: Arnak Grimtotem",
         },
         [5482] = { -- Doom Weed
             [questKeys.nextQuestInChain] = 99142,
@@ -2221,6 +2246,8 @@ function ForeverQuestFixes:Load()
         },
         [98386] = { -- Alther's Mill
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.preQuestSingle] = {89},
+            [questKeys.objectives] = {nil,{{673101}},nil,nil,{{{505,271898,271988},505}}},
         },
         [98387] = { -- Blackrock Blockade
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
