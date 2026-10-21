@@ -222,3 +222,19 @@ jobs:
           GH_REPO: ${{ github.repository }}
           TAG: ${{ needs.quality.outputs.tag }}
         run: python3 tools/distribution/release.py publish
+
+  notify:
+    name: Notify Discord
+    runs-on: ubuntu-latest
+    needs: [preflight, legacy, shared, database, quality, dry_run, publish]
+    if: failure()
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Send release failure to Discord
+        uses: nebularg/actions-discord-webhook@v1.0.0
+        with:
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+          status: failure
