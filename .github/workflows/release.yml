@@ -233,6 +233,12 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      - name: Use the run URL when the event has no compare URL
+        run: |
+          jq --arg url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
+            '.compare //= $url' "$GITHUB_EVENT_PATH" > event.json
+          mv event.json "$GITHUB_EVENT_PATH"
+
       - name: Send release failure to Discord
         uses: nebularg/actions-discord-webhook@v1.0.0
         with:
