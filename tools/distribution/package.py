@@ -202,6 +202,8 @@ def build_zip(
     for path in types:
         shutil.copy(path, addon / "Types" / path.name)
     (addon / "CHANGELOG.md").write_text(changelog, encoding="utf-8")
+    for path in ("LICENSE.md", "gpl-3.0.md"):
+        shutil.copy(root / path, addon / path)
 
     subprocess.run([lua, "tools/distribution/strip-static.lua", str(addon)], cwd=root, check=True)
 
