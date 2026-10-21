@@ -208,6 +208,9 @@ function ForeverNpcFixes:Load()
         [249713] = { -- Odd Child
             [npcKeys.spawns] = {[zoneIDs.WESTFALL] = {{42.83,72.76}}},
         },
+        [250929] = { -- Malfunctioning Cyclone Construct
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{48.87,78.25}}},
+        },
         [251001] = { -- Deathguard Kristof
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{65.25,60.2}}},
         },
@@ -219,6 +222,21 @@ function ForeverNpcFixes:Load()
         },
         [251361] = { -- Rorian the Dayseeker
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.05,23.49}}},
+        },
+        [251364] = { -- Destin Thriceforged
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.43,23.5}}},
+        },
+        [251365] = { -- Jolee Brightmeadows
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.52,23.6}}},
+        },
+        [251537] = { -- Uualia Suncrest
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.75,24.49}}},
+        },
+        [251905] = { -- Zerril Softbreeze
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.85,43.84}}},
+        },
+        [251965] = { -- Fevrath Skyhammer
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.37,23.44}}},
         },
         [251966] = { -- Commander Cyclas
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{50.39,56.96}}},
@@ -235,17 +253,53 @@ function ForeverNpcFixes:Load()
         [251684] = { -- Strange Hermit
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{53.96,38.9}}},
         },
+        [251968] = { -- Ayessa Dawnsinger
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.15,79.78}}},
+        },
+        [251993] = { -- Indari Sunseam
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{44.68,44.52}}},
+        },
         [252172] = { -- Danarii Bellowveil
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{45.24,45.18}}},
         },
+        [252373] = { -- Anathamaas Aetherwind
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.91,80.57}}},
+        },
+        [252376] = { -- Emerii Tallgust
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{63.73,80.68}}},
+        },
+        [252379] = { -- Eltheen Nightbreeze
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.9,72.48}}},
+        },
+        [252380] = { -- Othesia Evengale
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.41,81.17}}},
+        },
+        [252388] = { -- Halavuul Cragwind
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.44,80.47}}},
+        },
+        [252390] = { -- Antelariaa Cloudgaze
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{63.02,77.81}}},
+        },
+        [252449] = { -- Iallion Featherfall
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{58.96,75.55}}},
+        },
+        [252475] = { -- Elaadrin Evengale
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{66.63,79.94}}},
+        },
         [252476] = { -- Talaanis Shadowsong
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{66.17,76.51}}},
+        },
+        [252479] = { -- Daeann Steelwind
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.47,80.28}}},
         },
         [252666] = { -- Commander Belguilos
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.58,65.62}}},
         },
         [252800] = { -- Aamelia Windfield
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{46.7,81.95}}},
+        },
+        [253004] = { -- Iaadaria Bitterwind
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{66.34,79.5}}},
         },
         [253204] = { -- Dondallion Whisperwind
             [npcKeys.questEnds_remove] = {92850},
@@ -269,14 +323,36 @@ function ForeverNpcFixes:Load()
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BARBER,
             [npcKeys.friendlyToFaction] = "H", -- blizzard totally forgot to readd this barber after the exchange
         },
+        [254081] = { -- Naeluna Swiftmend
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{45.16,44.22}}},
+        },
         [254082] = { -- Aarnor Galestrike
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.45,44.87}}},
             [npcKeys.questStarts] = {97243},
         },
         [254084] = { -- Elayaa Easewind
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{45.26,44.24}}},
         },
+        [254086] = { -- Shenaan Spellwind
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{45.1,45.87}}},
+        },
+        [254087] = { -- Miriaan Mistblade
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.15,43.26}}},
+        },
+        [254088] = { -- Corsan Earthrazer
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{44.95,45.1}}},
+        },
+        [254089] = { -- Coriella Calmbreeze
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.01,43.23}}},
+        },
         [254128] = { -- Wardrobe
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{48.84,53.93}}},
+        },
+        [254358] = { -- Veena Vericloud
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{44.71,45.48}}},
+        },
+        [254360] = { -- Belandiel Farflight
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{44.77,45.05}}},
         },
         [254589] = { -- Vulgara the Insatiable
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.66,52.8}}},
@@ -287,6 +363,9 @@ function ForeverNpcFixes:Load()
         },
         [255534] = { -- "Badwind" Bennic
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{50.62,34.27}}},
+        },
+        [255940] = { -- Donaal Downbreeze
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{62.19,72.61}}},
         },
         [256386] = { -- Dokimi
             [npcKeys.questStarts_add] = {91905},
@@ -301,11 +380,48 @@ function ForeverNpcFixes:Load()
         [256391] = { -- Elaine Compton
             [npcKeys.questEnds_add] = {95816},
         },
+        [256507] = { -- Belann Windwood
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{62.89,77.44}}},
+        },
         [256935] = { -- Malduko Cloudcrush
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{36.05,33.53}}},
         },
+        [257003] = { -- Ishlee Breezewhisper
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.63,76.06}}},
+        },
+        [257004] = { -- Eaysaa Brightgust
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.19,76.4}}},
+        },
+        [257005] = { -- Valiena Swiftgale
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.25,76.32}}},
+        },
+        [257006] = { -- Nyalah Brightfire
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{60.64,72.66}}},
+        },
+        [257007] = { -- Melasa Fairmend
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{63.17,72.56}}},
+        },
+        [257008] = { -- Baelann Swiftcurrent
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{63.27,75.72}}},
+        },
+        [257021] = { -- Halassa Fernbreeze
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.96,43.54}}},
+        },
+        [257036] = { -- Baelann Favorbreeze
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{57.63,77.17}}},
+        },
+        [257037] = { -- Zelena Favorbreeze
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{57.91,77.12}}},
+            [npcKeys.npcFlags] = npcFlags.AUCTIONEER,
+        },
         [257196] = { -- Zaal Stormshield
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{56.63,50.37}}},
+        },
+        [257421] = { -- Tephri Thriceforged
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{44.79,44.17}}},
+        },
+        [257422] = { -- Railee Thriceforged
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{58.98,75.46}}},
         },
         [257446] = { -- Teo Hammerstorm
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{28.79,66.18}}},
@@ -376,6 +492,12 @@ function ForeverNpcFixes:Load()
         },
         [264936] = { -- Earthseer Farsen
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{64.87,58.47}}},
+        },
+        [265654] = { -- Faladriaal Featherfall
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{61.14,76.74}}},
+        },
+        [265756] = { -- Genn Fairweather
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{53.83,81.33}}},
         },
         [265810] = { -- Kaga Wildhoof
             [npcKeys.questStarts_add] = {97930},
@@ -473,6 +595,18 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{46.14,53.97}}},
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.TRANSMOGRIFIER,
         },
+        [271465] = { -- Falfaan Halfwind
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.4,75.73}}},
+        },
+        [271478] = { -- Elaria Anvilwind
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.54,76.14}}},
+        },
+        [271480] = { -- Taliaa Brightsky
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.33,76.24}}},
+        },
+        [271483] = { -- Ergaan Eastwind
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.72,75.95}}},
+        },
         [271546] = { -- Mountaineer Gretchen
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{44.1,57.07}}},
         },
@@ -494,6 +628,12 @@ function ForeverNpcFixes:Load()
         [272526] = { -- Glix Xizzix
             [npcKeys.spawns] = {[zoneIDs.UNDERCITY] = {{70.03,47.31}}},
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BARBER,
+        },
+        [273264] = { -- Talisara Valewind
+            [npcKeys.minLevel] = 12,
+            [npcKeys.maxLevel] = 12,
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.49,45.37}}},
+            [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
         [275657] = { -- Heglan Shadeeye
             [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{58.6,45.6}}},
@@ -563,6 +703,12 @@ function ForeverNpcFixes:Load()
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "The Old Rancher",
             [npcKeys.npcFlags] = 3,
+        },
+        [277410] = { -- Ahab Wheathoof
+            [npcKeys.minLevel] = 10,
+            [npcKeys.maxLevel] = 10,
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.03,43.13}}},
+            [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
         [278166] = { -- Mountaineer Cornelius
             [npcKeys.name] = "Mountaineer Cornelius",
