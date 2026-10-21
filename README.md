@@ -465,7 +465,8 @@ Release notes recommend `QuestieDB-all.zip`, list the smaller per-flavor downloa
 installation. Commit provenance, API contracts, and checksum instructions live in a collapsed
 build-details section.
 
-Every release ZIP includes `QuestieDB/CHANGELOG.md`. The separate `release.json` asset lists
+Every release ZIP includes `QuestieDB/CHANGELOG.md` and the license files `LICENSE.md` and
+`gpl-3.0.md`. The separate `release.json` asset lists
 addon-manager downloads under `releases` and keeps build metadata, ZIP checksums, and structured
 changelog entries under `questiedb`. See the [manifest format](tools/distribution/README.md#release-manifest).
 

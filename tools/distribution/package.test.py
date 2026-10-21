@@ -505,6 +505,8 @@ class PackageTest(unittest.TestCase):
             ROOT / "icons/QuestieTDB_64x64.png", self.root / "icons/QuestieTDB_64x64.png"
         )
         self.write("icons/QuestieTDB.pdn", "unshipped artwork\n")
+        self.write("LICENSE.md", "# Licensing\n")
+        self.write("gpl-3.0.md", "# GNU GENERAL PUBLIC LICENSE\n")
         self.write("src/corrections/Era/fixes.lua", "return 'unstripped'\n")
         self.write("data/raw.lua", "-- source-only data\n")
         self.write("l10n/translation.lua", "-- source-only localization\n")
@@ -603,6 +605,8 @@ class PackageTest(unittest.TestCase):
                     "QuestieDB/Types/General.t.lua",
                     "QuestieDB/icons/QuestieTDB_64x64.png",
                     "QuestieDB/CHANGELOG.md",
+                    "QuestieDB/LICENSE.md",
+                    "QuestieDB/gpl-3.0.md",
                 }
                 expected.update("QuestieDB/QuestieDB_%s.toc" % f for f in flavors)
                 if "Forever" in flavors:

@@ -25,6 +25,8 @@ class ForeverDistributionTest(LuaFixture):
         self.copy_inputs("Forever")
         (self.root / "icons").mkdir()
         shutil.copyfile(ROOT / "icons/QuestieTDB_64x64.png", self.root / "icons/QuestieTDB_64x64.png")
+        for filename in ("LICENSE.md", "gpl-3.0.md"):
+            shutil.copyfile(ROOT / filename, self.root / filename)
         for expansion in ("Classic", "TBC", "Wotlk", "Cata", "MoP"):
             shutil.copytree(ROOT / "data" / expansion, self.root / "data" / expansion)
         shutil.copytree(ROOT / "emulator", self.root / "emulator")
