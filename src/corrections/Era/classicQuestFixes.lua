@@ -4460,8 +4460,22 @@ function QuestieQuestFixes:Load()
         [7633] = { -- An Introduction
             [questKeys.preQuestSingle] = {7632},
         },
+        [7637] = { -- Emphasis on Sacrifice
+            [questKeys.preQuestSingle] = {}, -- #7817
+            [questKeys.breadcrumbs] = {7638},
+        },
+        [7638] = { -- Lord Grayson Shadowbreaker
+            [questKeys.breadcrumbForQuestId] = 7637, -- #7817
+        },
         [7640] = { -- Exorcising Terrordale
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Exorcise the spirits"), 0, {{"object", 179747}}}},
+        },
+        [7641] = { -- The Work of Grimand Elmore
+            [questKeys.preQuestSingle] = {}, -- #7817
+        },
+        [7643] = { -- Ancient Equine Spirit
+            [questKeys.preQuestGroup] = {7640, 7648}, -- #7817
+            [questKeys.preQuestSingle] = {},
         },
         [7651] = { -- Enchanted Thorium Platemail: Volume III
             [questKeys.specialFlags] = specialFlags.NONE,
