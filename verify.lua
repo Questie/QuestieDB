@@ -276,7 +276,8 @@ local function verifyFlavor(flavor, opts)
     end
   end
 
-  -- Localization blocks are typed columns aligned with the base entity ID list. Validate the
+  -- Localization blocks are typed columns indexed by the type's own ascending localization ID
+  -- list, which is retained independently of baked entity membership (issue #70). Validate the
   -- raw shape before exercising the public locale overlay below.
   local l10nBlocks, l10nResolved = 0, 0
   local storedL10nVersion = map[config.l10nHeaderKey]
@@ -303,7 +304,40 @@ local function verifyFlavor(flavor, opts)
       if not opts.types or opts.types[entityType.name] then
         local typeName = entityType.name
         local typeConfig = l10nGen.types[typeName]
-        local sourceIds = lib.sortedIds(loadedFlavor[typeName].entities)
+        -- Columns index the localization ID list, not the entity ID list: the two differ
+        -- wherever a lookup translates an ID the baked database lacks.
+        local encodedIds, idsError = emulator.getValue(map, config.l10nIdsKey(typeName))
+        local localizationIds
+        if encodedIds then
+          local idsOk, ids = pcall(function()
+            return C_EncodingUtil.DeserializeCBOR(C_EncodingUtil.DecompressString(
+              C_EncodingUtil.DecodeBase64(encodedIds), 1))
+          end)
+          if idsOk and type(ids) == "table" then
+            localizationIds = ids
+          else
+            io.write(("  L10N %s: ID list decode failed: %s\n")
+              :format(config.l10nIdsKey(typeName), tostring(ids)))
+            report.errors = report.errors + 1
+          end
+        else
+          io.write(("  L10N %s: missing or incomplete localization ID list: %s\n")
+            :format(config.l10nIdsKey(typeName), tostring(idsError)))
+          report.errors = report.errors + 1
+        end
+
+        if localizationIds then
+          local ascending = true
+          for index = 2, #localizationIds do
+            if localizationIds[index] <= localizationIds[index - 1] then ascending = false break end
+          end
+          if not ascending then
+            io.write(("  L10N %s: localization IDs are not strictly ascending\n")
+              :format(config.l10nIdsKey(typeName)))
+            report.errors = report.errors + 1
+          end
+        end
+
         for _, locale in ipairs(config.locales) do
           local key = config.l10nBlockKey(typeName, locale)
           local encoded, storedError = emulator.getValue(map, key)
@@ -321,6 +355,7 @@ local function verifyFlavor(flavor, opts)
               report.errors = report.errors + 1
             else
               l10nBlocks = l10nBlocks + 1
+              local limit = localizationIds and #localizationIds or 0
               for fieldIndex, fieldConfig in ipairs(typeConfig.fields) do
                 local column = block[fieldIndex]
                 if type(column) ~= "table" then
@@ -331,8 +366,8 @@ local function verifyFlavor(flavor, opts)
                   local expectedType = fieldConfig.list and "table" or "string"
                   for position, value in pairs(column) do
                     if type(position) ~= "number" or position % 1 ~= 0 or
-                       position < 1 or position > #sourceIds then
-                      io.write(("  L10N %s: invalid entity position %s in column %d\n")
+                       position < 1 or position > limit then
+                      io.write(("  L10N %s: invalid localization position %s in column %d\n")
                         :format(key, tostring(position), fieldIndex))
                       report.errors = report.errors + 1
                       break
@@ -363,32 +398,42 @@ local function verifyFlavor(flavor, opts)
           local typeName = entityType.name
           local entity = LibQuestieDB[typeName]
           if entity and entity.HasL10nProvider and entity.HasL10nProvider() then
-            local sourceIds = lib.sortedIds(loadedFlavor[typeName].entities)
+            -- A missing ID list was already reported by the shape pass above. Skip the
+            -- comparison rather than crashing: verification reports, it does not abort.
+            local encodedIds = emulator.getValue(map, config.l10nIdsKey(typeName))
+            local localizationIds = encodedIds and C_EncodingUtil.DeserializeCBOR(
+              C_EncodingUtil.DecompressString(C_EncodingUtil.DecodeBase64(encodedIds), 1))
             local encoded = emulator.getValue(map, config.l10nBlockKey(typeName, locale))
-            local block = C_EncodingUtil.DeserializeCBOR(C_EncodingUtil.DecompressString(
+            local block = encoded and C_EncodingUtil.DeserializeCBOR(C_EncodingUtil.DecompressString(
               C_EncodingUtil.DecodeBase64(encoded), 1))
-            for columnIndex, fieldConfig in ipairs(l10nGen.types[typeName].fields) do
-              local fieldIndex = entity.meta.keys[fieldConfig.name]
-              local mismatchReported = false
-              local compared = 0
-              for position, expected in pairs(block[columnIndex]) do
-                if not opts.sample or compared < opts.sample then
-                  local id = sourceIds[position]
-                  local layer = entity.overlay[id]
-                  if not layer or layer[fieldIndex] == nil then
-                    local actual = entity.Get(id, fieldIndex)
-                    if not lib.deepEqual(actual, expected) and not mismatchReported then
-                      io.write(("  L10N %s/%s column %d position %d: expected %s, got %s\n")
-                        :format(typeName, locale, columnIndex, position,
-                          lib.show(expected):sub(1, 100), lib.show(actual):sub(1, 100)))
-                      report.errors = report.errors + 1
-                      mismatchReported = true
+            if type(localizationIds) == "table" and type(block) == "table" then
+              for columnIndex, fieldConfig in ipairs(l10nGen.types[typeName].fields) do
+                local fieldIndex = entity.meta.keys[fieldConfig.name]
+                local mismatchReported = false
+                local compared = 0
+                for position, expected in pairs(block[columnIndex]) do
+                  if not opts.sample or compared < opts.sample then
+                    local id = localizationIds[position]
+                    -- A stored translation resolves only while its entity exists. An ID absent
+                    -- from the composed database is expected to read nil, not the translation.
+                    if id ~= nil and entity.Exists(id) then
+                      local layer = entity.overlay[id]
+                      if not layer or layer[fieldIndex] == nil then
+                        local actual = entity.Get(id, fieldIndex)
+                        if not lib.deepEqual(actual, expected) and not mismatchReported then
+                          io.write(("  L10N %s/%s column %d position %d: expected %s, got %s\n")
+                            :format(typeName, locale, columnIndex, position,
+                              lib.show(expected):sub(1, 100), lib.show(actual):sub(1, 100)))
+                          report.errors = report.errors + 1
+                          mismatchReported = true
+                        end
+                      end
                     end
+                    compared = compared + 1
+                    l10nResolved = l10nResolved + 1
                   end
-                  compared = compared + 1
-                  l10nResolved = l10nResolved + 1
+                  if opts.sample and compared >= opts.sample then break end
                 end
-                if opts.sample and compared >= opts.sample then break end
               end
             end
           end

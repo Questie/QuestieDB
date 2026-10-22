@@ -102,7 +102,23 @@ end
 
 config.locales = { "deDE", "esES", "esMX", "frFR", "koKR", "ptBR", "ruRU", "zhCN", "zhTW" }
 
-config.l10nVersion = 1
+---Bumped when the localization block layout changes in a way a reader can observe.
+---
+---Version 2 adds `X-l10nIds-<Type>`: the locale columns index that list rather than the baked
+---entity ID list, so a column position no longer means the same thing. The two layouts are
+---incompatible in both directions, so they must not share a version number.
+---
+---If both declared the same version, neither mismatch would be caught:
+---
+---* an older reader would accept a version-2 artifact and index the new columns with baked
+---  entity IDs, silently returning the wrong translation for a known entity;
+---* this reader would accept a version-1 artifact, then fail to find the ID list it needs to
+---  index with and abort a non-English startup.
+---
+---Distinct versions make each pairing fail closed instead: a version-1 reader rejects a
+---version-2 artifact at its header comparison, and this reader declines a version-1 artifact
+---before it needs an ID list. Entity storage is unaffected and keeps contract version 2.
+config.l10nVersion = 2
 config.l10nHeaderKey = "X-l10n-Version"
 config.l10nMetaPrefix = "l10n-"
 
@@ -114,6 +130,20 @@ function config.l10nBlockKey(typeName, locale)
   -- A key ending in `-deDE` is interpreted as a localized TOC directive and disappears on an
   -- enUS client. Keep the entity type last so every locale's block remains directly addressable.
   return "X-" .. config.l10nMetaPrefix .. locale .. "-" .. typeName
+end
+
+---Storage key for one entity type's ascending localization ID list.
+---
+---Localization has its own ID list per type rather than reusing the entity backend's. Columns
+---index this list, so a translation is retained independently of baked entity membership
+---(issue #70). The key names no locale: all nine locale columns of a type share one list.
+---
+---Spelled `l10nIds`, not `l10n-IDS`, so it cannot match the locale-block pattern
+---`^X%-l10n%-%a+%-%a+$`. Every existing "is this a block key?" scan stays correct unchanged.
+---@param typeName string
+---@return string key
+function config.l10nIdsKey(typeName)
+  return "X-l10nIds-" .. typeName
 end
 
 --------------------------------------------------------------------------------------------

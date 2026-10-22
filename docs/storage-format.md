@@ -155,23 +155,50 @@ Baked mode decodes all four headers at addon load through `DecodeBase64`,
 
 ## Localization blocks
 
-`X-l10n-Version: 1` declares the localization store. Each non-enUS locale has one compressed
-CBOR block per entity type:
+`X-l10n-Version: 2` declares the localization store. Each entity type owns one ascending
+localization ID list, and each non-enUS locale has one compressed CBOR block per entity type:
 
 ```toc
+## X-l10nIds-Quest: <base64 zlib CBOR id array>
 ## X-l10n-deDE-Quest: <base64 zlib CBOR field columns>
 ## X-l10n-deDE-Npc: <base64 zlib CBOR field columns>
 ## X-l10n-deDE-Item: <base64 zlib CBOR field columns>
 ## X-l10n-deDE-Object: <base64 zlib CBOR field columns>
 ```
 
-A block is an array of compact localization field columns. Each column uses positions from the
-entity type's ascending `X-<Type>-IDS` array:
+**Localization IDs are not entity IDs.** `X-l10nIds-<Type>` lists every ID that any locale
+translates, ascending, encoded exactly like an entity `IDS` header. Columns use positions in
+that list, not positions in `X-<Type>-IDS`. The two lists differ wherever a lookup translates an
+ID the baked entity database does not contain, which is the normal case for an entity a Dynamic
+Correction adds: its lookup translation exists in `l10n/`, and it is retained here rather than
+discarded for lacking a baked row. One list serves all nine locale columns of its type, so it is
+written once and decoded once.
+
+The key is spelled `l10nIds`, not `l10n-IDS`, precisely so it cannot match the locale-block
+pattern `^X%-l10n%-%a+%-%a+$`. Every existing scan for "is this a localization block?" therefore
+stays correct with no change.
+
+**The version is load-bearing.** Version 2 changed what a column position *means*, so the two
+layouts are incompatible in both directions:
+
+| Artifact | Reader | Result |
+| --- | --- | --- |
+| 1 | 2 | Reader declares localization unsupported and reads base English. No crash. |
+| 2 | 1 | Reader rejects the blocks by the version check. |
+| 2 | 2 | Translations resolve. |
+
+Neither mismatch degrades silently, and that depends on the versions differing. A reader that
+accepted both would index version-2 columns with baked entity IDs and return the wrong
+translation for a known entity — a wrong NPC or item name, not a missing one. Version 1 must
+therefore never be reused for this layout. Entity storage is independent and keeps its own
+contract version.
+
+A block is an array of compact localization field columns:
 
 ```lua
 {
-  [1] = { [entityPosition] = translatedName },
-  [2] = { [entityPosition] = translatedObjectivesOrSubName },
+  [1] = { [localizationPosition] = translatedName },
+  [2] = { [localizationPosition] = translatedObjectivesOrSubName },
 }
 ```
 
@@ -182,15 +209,24 @@ field. List-valued quest objectives are CBOR tables and retain the locale's own 
 The locale precedes the entity type because the client reserves a final `-deDE`-style suffix
 for localized TOC directives; such a key disappears when another locale is active. Generation
 trims scalar translation edges and removes control characters before encoding, matching the
-display-text cleanup applied by the earlier store. It emits deterministic CBOR,
-zlib level 9, then base64. The full base ID list is not repeated in localization.
+display-text cleanup applied by the earlier store. It emits deterministic CBOR, zlib level 9,
+then base64.
+
+**A stored translation never creates an entity.** Generation retains translations by
+translation membership, and the read overlay resolves one only while the composed runtime
+database contains that entity. An ID in the localization list but in neither the baked entity
+list nor the composed view reads `nil` for every field, exactly like any other unknown ID, and
+cannot expose a seasonal-only entity on an inactive season.
 
 **enUS has no blocks.** A client using enUS decodes no localization data. A non-enUS client
 decodes its four available type blocks during addon load and retains those columns for the
-session. Lookups use the backend ID list, with a sequential-position fast path and binary-search
-fallback. Locale changes replace all four active blocks before invalidating entity caches.
-Corrections still outrank translations, and translated tables still return fresh mutable copies.
-See ADR 0011.
+session. The localization ID list of a type is decoded at the same point — while a stored locale
+loads — and retained alongside its blocks, so a locale switch reuses it and a missing list fails
+the switch instead of surfacing on a later read. Only a locale with no stored blocks (enUS, or a
+custom locale) skips that decode. Lookups use the localization ID list, with a
+sequential-position fast path and binary-search fallback. Locale changes replace all four
+active blocks before invalidating entity caches. Corrections still outrank translations, and
+translated tables still return fresh mutable copies. See ADR 0011 and ADR 0017.
 
 ## Build metadata
 

@@ -1,11 +1,26 @@
 -- generator/l10n.lua
 --
 -- Entity localization: reads the owned per-locale lookup tables and emits one compressed
--- CBOR column block per locale and entity type.
+-- CBOR column block per locale and entity type, plus one ascending localization ID list per
+-- entity type that those columns are indexed by.
 --
 -- This removes Questie's recompile-on-locale-change. A non-enUS client decodes its available
 -- entity-type blocks and keeps those translations in memory; enUS uses base data and decodes
 -- no localization blocks.
+--
+-- ## Localization IDs are not entity IDs
+--
+-- Columns used to align with the baked entity ID list, so a lookup row for an ID the baked
+-- database lacked was discarded here and could never be read back — Dynamic Corrections add
+-- exactly such entities, and their translations exist in this repository already (issue #70).
+--
+-- Each type now carries its own ascending ID list: every ID any locale translates. Columns
+-- index that list instead, so retention depends on translation membership rather than entity
+-- membership. Storage never creates an entity; the read overlay only resolves a translation
+-- while its entity exists in the composed runtime database.
+--
+-- One list per type is shared by that type's nine locale columns, so it is written once and
+-- decoded once rather than repeated per locale.
 --
 -- ## Reading every locale in one run
 --
@@ -100,16 +115,20 @@ function l10n.applyStaticCorrections(base, corrections)
 end
 
 ---Load one entity type's base translations and Static Translation Corrections.
+---
+---Every translated ID is retained, including IDs the baked entity database does not contain:
+---localization membership is deliberately independent of entity membership. A stored
+---translation still cannot create an entity — the read overlay resolves it only while the
+---composed runtime database contains that entity.
 ---@param localizationRoot string Local localization directory.
 ---@param flavor table
 ---@param typeName string
----@param knownIds table id -> true; entries with no main-DB row are dropped
 ---@return table values id -> compact field index -> locale slots
 ---@return table stats
-function l10n.extract(localizationRoot, flavor, typeName, knownIds)
+function l10n.extract(localizationRoot, flavor, typeName)
   local typeCfg = l10n.types[typeName]
   local values = {}
-  local stats = { locales = 0, entries = 0, filtered = 0, missingFiles = {} }
+  local stats = { locales = 0, entries = 0, missingFiles = {} }
 
   for localeIndex, locale in ipairs(config.locales) do
     local path = l10n.lookupPath(localizationRoot, flavor, typeCfg, locale)
@@ -120,19 +139,15 @@ function l10n.extract(localizationRoot, flavor, typeName, knownIds)
       for _, rows in ipairs(corrections) do l10n.applyStaticCorrections(base, rows) end
       stats.locales = stats.locales + 1
       for id, row in pairs(base) do
-        if knownIds[id] then
-          local byField = values[id] or {}
-          for fieldIndex, field in ipairs(typeCfg.fields) do
-            local value = row[field.name]
-            if value ~= nil then
-              byField[fieldIndex] = byField[fieldIndex] or {}
-              byField[fieldIndex][localeIndex] = value
-            end
+        local byField = values[id] or {}
+        for fieldIndex, field in ipairs(typeCfg.fields) do
+          local value = row[field.name]
+          if value ~= nil then
+            byField[fieldIndex] = byField[fieldIndex] or {}
+            byField[fieldIndex][localeIndex] = value
           end
-          if next(byField) then values[id] = byField end
-        else
-          stats.filtered = stats.filtered + 1
         end
+        if next(byField) then values[id] = byField end
       end
     end
   end
@@ -141,17 +156,28 @@ function l10n.extract(localizationRoot, flavor, typeName, knownIds)
   return values, stats
 end
 
+---The localization ID list for one entity type: every ID any locale translates, ascending.
+---This is the list the locale columns are indexed by, and it is written once per type.
+---@param values table<number, table> Output from l10n.extract.
+---@return number[] ids
+function l10n.localizationIds(values)
+  local ids = {}
+  for id in pairs(values) do ids[#ids + 1] = id end
+  table.sort(ids)
+  return ids
+end
+
 --------------------------------------------------------------------------------------------
 -- Column blocks
 --------------------------------------------------------------------------------------------
 
----Build one locale's field columns aligned with the entity backend's ascending ID list.
+---Build one locale's field columns aligned with the type's ascending localization ID list.
 ---A missing translation leaves a nil hole, so the runtime falls back to the base field.
 ---@param typeName string
 ---@param values table<number, table> Output from l10n.extract.
----@param ids number[] Exact ascending base entity IDs stored in the artifact.
+---@param ids number[] Exact ascending localization IDs stored in the artifact.
 ---@param localeIndex number Index in config.locales.
----@return table block Compact field index -> values by base ID position.
+---@return table block Compact field index -> values by localization ID position.
 ---@return integer translatedEntities
 ---@return integer translatedValues
 function l10n.buildBlock(typeName, values, ids, localeIndex)
@@ -188,14 +214,21 @@ function l10n.writeHeader(out)
     config.maxValueLength)
 end
 
----Write all locale blocks for one entity type.
+---Write all locale blocks for one entity type, preceded by its localization ID list.
 ---@param out file*
 ---@param typeName string
 ---@param values table<number, table> Output from l10n.extract.
----@param ids number[] Exact ascending base entity IDs stored in the artifact.
 ---@return table stats Block count, translated counts, encoded bytes, and emitted lines.
-function l10n.writeMetadata(out, typeName, values, ids)
-  local stats = { blocks = 0, translatedEntities = 0, translatedValues = 0, bytes = 0, lines = 0 }
+function l10n.writeMetadata(out, typeName, values)
+  local ids = l10n.localizationIds(values)
+  local encodedIds = encode.idList(ids)
+  local stats = {
+    blocks = 0, translatedEntities = 0, translatedValues = 0, bytes = 0, lines = 0,
+    ids = #ids, idBytes = #encodedIds,
+  }
+  stats.lines = stats.lines + lib.writeMetadata(out,
+    config.l10nIdsKey(typeName), encodedIds, config.maxValueLength)
+  stats.bytes = stats.bytes + #encodedIds
 
   for localeIndex, locale in ipairs(config.locales) do
     local block, entityCount, valueCount = l10n.buildBlock(typeName, values, ids, localeIndex)
