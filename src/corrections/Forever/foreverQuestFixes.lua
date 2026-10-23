@@ -33,11 +33,20 @@ function ForeverQuestFixes:Load()
     local rankKeys = QuestieProfessions.rankNames
 
     return {
+        [19] = { -- Tharil'zun
+            [questKeys.preQuestSingle] = {},
+            [questKeys.preQuestGroup] = {20,98387},
+            [questKeys.nextQuestInChain] = 0,
+        },
         [76] = { -- The Jasperlode Mine
             [questKeys.triggerEnd] = {"Scout through the Jasperlode Mine", {[zoneIDs.ELWYNN_FOREST] = {{61.93,53.16}}}},
         },
         [89] = { -- The Everstill Bridge
             [questKeys.nextQuestInChain] = 98386,
+        },
+        [115] = { -- Shadow Magic
+            [questKeys.preQuestSingle] = {},
+            [questKeys.preQuestGroup] = {20,98387},
         },
         [151] = { -- Poor Old Blanchy
             [questKeys.startedBy_remove] = {nil,{696264}},
@@ -634,6 +643,7 @@ function ForeverQuestFixes:Load()
         [92109] = { -- My First Alchemy Set
             [questKeys.requiredSkill] = {profKeys.ALCHEMY, 1},
             [questKeys.nextQuestInChain] = 92110,
+            [questKeys.objectives] = {nil,nil,{{3371},{2447},{765}}},
         },
         [92110] = { -- My First Real Potion
             [questKeys.preQuestSingle] = {92109},
@@ -2242,7 +2252,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [98372] = { -- An Unfortunate End
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [98386] = { -- Alther's Mill
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,

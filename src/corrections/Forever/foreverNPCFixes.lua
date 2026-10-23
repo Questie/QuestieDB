@@ -565,6 +565,9 @@ function ForeverNpcFixes:Load()
         [267806] = { -- "Flipfin"
             [npcKeys.questEnds_add] = {97065,97066,97067},
         },
+        [268238] = { -- Nordun Steadysight
+            [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{42.01,66.39}}},
+        },
         [268511] = { -- Manifest Clerk Philmor
             [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{30.49,28.75}}},
         },
@@ -685,6 +688,9 @@ function ForeverNpcFixes:Load()
             [npcKeys.maxLevel] = 12,
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.49,45.37}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+        },
+        [275491] = { -- Randal Emerson
+            [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{78.98,45}}},
         },
         [275657] = { -- Heglan Shadeeye
             [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{58.6,45.6}}},
