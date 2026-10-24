@@ -21,7 +21,7 @@ fixture.write(path, {
       [quest.objectives] = {{{269185}}},
       [quest.startedBy] = {{269153}},
       [quest.finishedBy] = {{1092}},
-      [quest.reputationReward] = {{47, 100}},
+      [quest.reputationReward] = {{47, 100}, {54, 25}, {69, 25}, {72, 25}, {469, 25}},
     },
     [8368] = {
       [quest.reputationReward] = {{889, 100}},

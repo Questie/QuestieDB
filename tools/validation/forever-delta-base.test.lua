@@ -40,7 +40,8 @@ local function witness(db)
   assert(db.Item.startQuest(264011) == 94004, "writ item links back to its quest")
   -- Rewards cover initialization, amount replacement and preservation of other factions.
   local bannerRep = db.Quest.reputationReward(86585)
-  assert(bannerRep and #bannerRep == 1 and bannerRep[1][1] == 47 and bannerRep[1][2] == 100,
+  assert(bannerRep and #bannerRep == 5 and bannerRep[1][1] == 47 and bannerRep[1][2] == 100
+    and bannerRep[2][1] == 54 and bannerRep[5][1] == 469 and bannerRep[5][2] == 25,
     "new quest supplies its explicit reputation reward")
   local writRep = db.Quest.reputationReward(94004)
   assert(writRep and #writRep == 2 and writRep[1][1] == 2586 and writRep[1][2] == 75
