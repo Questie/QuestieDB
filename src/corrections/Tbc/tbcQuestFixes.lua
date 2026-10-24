@@ -910,6 +910,9 @@ function QuestieTBCQuestFixes:Load()
         [5168] = { -- Heroes of Darrowshire
             [questKeys.preQuestSingle] = {5210},
         },
+        [5206] = { -- Marauders of Darrowshire
+            [questKeys.preQuestGroup] = {5168,5181},
+        },
         [5216] = { -- Target: Felstone Field
             [questKeys.reputationReward] = {{factionIDs.STORMWIND,250},{factionIDs.ARGENT_DAWN,250}},
         },
@@ -5517,12 +5520,18 @@ function QuestieTBCQuestFixes:Load()
         [11129] = { -- Kyle's Gone Missing!
             [questKeys.objectives] = {{{23616,nil,Questie.ICON_TYPE_INTERACT}}},
         },
+        [11130] = { -- Oooh, Shinies!
+            [questKeys.breadcrumbForQuestId] = 11132,
+        },
         [11131] = { -- Stop the Fires!
             [questKeys.triggerEnd] = {"Put Out the Fires", {[zoneIDs.DUN_MOROGH] = {{44.8,52.1},{47.5,51.6}},[zoneIDs.ELWYNN_FOREST] = {{41.3,65.2},{43.6,65.8}},[zoneIDs.AZUREMYST_ISLE] = {{49.8,52.3},{48.8,50}}}},
             [questKeys.requiredSourceItems] = {32971},
             [questKeys.exclusiveTo] = {12133},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [11132] = { -- Oooh, Shinies!
+            [questKeys.breadcrumbs] = {11130},
         },
         [11133] = { -- Discrediting the Deserters
             [questKeys.objectives] = {{{4979,nil,Questie.ICON_TYPE_TALK}}},
@@ -5620,6 +5629,10 @@ function QuestieTBCQuestFixes:Load()
         [11198] = { -- Take Down Tethyr!
             [questKeys.objectives] = {{{23899}}},
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Use the cannon"), 0, {{"object",186432}}}},
+        },
+        [11200] = { -- More than Coincidence
+            [questKeys.preQuestSingle] = {},
+            [questKeys.preQuestGroup] = {1268,11204},
         },
         [11203] = { -- Seek Out Tabetha
             [questKeys.preQuestSingle] = {},

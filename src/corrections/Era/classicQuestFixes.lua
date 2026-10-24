@@ -1043,7 +1043,6 @@ function QuestieQuestFixes:Load()
         },
         [1119] = { -- Zanzil's Mixture and a Fool's Stout
             [questKeys.inGroupWith] = {}, -- #886
-            [questKeys.childQuests] = {1127}, -- #1084
         },
         [1120] = { -- Get the Gnomes Drunk
             [questKeys.nextQuestInChain] = 1122,
@@ -1051,18 +1050,11 @@ function QuestieQuestFixes:Load()
         [1121] = { -- Get the Goblins Drunk
             [questKeys.nextQuestInChain] = 1122,
         },
-        [1122] = { -- Report Back to Fizzlebub
-            [questKeys.nextQuestInChain] = 1127,
-        },
         [1123] = { -- Rabine Saturna
             [questKeys.preQuestSingle] = {1000, 1004, 1018},
         },
         [1126] = { -- Hive in the Tower
             [questKeys.requiredSourceItems] = {17345},
-        },
-        [1127] = { -- Fool's Stout
-            [questKeys.specialFlags] = specialFlags.REPEATABLE, -- #884
-            [questKeys.parentQuest] = 1119, -- #1084
         },
         [1130] = { -- Melor Sends Word
             [questKeys.breadcrumbForQuestId] = 1131,
@@ -1176,7 +1168,7 @@ function QuestieQuestFixes:Load()
             [questKeys.startedBy] = {{4968}},
         },
         [1268] = { -- Suspicious Hoofprints
-            [questKeys.startedBy] = {nil, {21015, 21016}}, -- #1574
+            [questKeys.startedBy] = {nil, {21015, 21016}}, -- #1574 -- this quest is started by the LEFT hoofprint
         },
         [1269] = { -- Lieutenant Paval Reethe
             [questKeys.nextQuestInChain] = 1273,
@@ -1189,14 +1181,15 @@ function QuestieQuestFixes:Load()
             [questKeys.preQuestGroup] = {},
         },
         [1273] = { -- Questioning Reethe
-            [questKeys.triggerEnd] = {"Question Reethe with Ogron", {[zoneIDs.DUSTWALLOW_MARSH] = {{42.47, 38.07}}}},
+            [questKeys.objectives] = {{{4980,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [1275] = { -- Researching the Corruption
             [questKeys.preQuestSingle] = {}, -- #973
             [questKeys.breadcrumbs] = {3765}, -- #745
         },
         [1276] = { -- The Black Shield
-            [questKeys.preQuestSingle] = {1273}, -- #1574
+            [questKeys.preQuestSingle] = {},
+            [questKeys.preQuestGroup] = {1273,1323},
         },
         [1282] = { -- They Call Him Smiling Jim
             [questKeys.availableUntilCompleted] = 1302,
