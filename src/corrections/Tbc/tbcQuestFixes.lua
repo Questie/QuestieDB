@@ -76,6 +76,9 @@ function QuestieTBCQuestFixes:Load()
         [211] = { -- Alas, Andorhal
             [questKeys.reputationReward] = {{factionIDs.ALLIANCE,350},{factionIDs.ARGENT_DAWN,700}},
         },
+        [95] = { -- Sven's Revenge
+            [questKeys.requiredLevel] = 20,
+        },
         [233] = { -- Coldridge Valley Mail Delivery
             [questKeys.preQuestSingle] = {179},
         },
@@ -88,6 +91,9 @@ function QuestieTBCQuestFixes:Load()
         [254] = { -- Digging Through the Dirt
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
+        [270] = { -- The Doomed Fleet
+            [questKeys.requiredLevel] = 20,
+        },
         [275] = { -- Blisters on The Land
             [questKeys.objectivesText] = {"Kill 8 Fen Creepers, then return to Rethiel the Greenwarden in the Wetlands."}, -- override classic correction
         },
@@ -99,6 +105,12 @@ function QuestieTBCQuestFixes:Load()
         },
         [310] = { -- Bitter Rivals
             [questKeys.childQuests] = {308},
+        },
+        [323] = { -- Proving Your Worth
+            [questKeys.requiredLevel] = 20,
+        },
+        [324] = { -- The Lost Ingots
+            [questKeys.requiredLevel] = 20,
         },
         [349] = { -- Stranglethorn Fever
             [questKeys.objectivesText] = {"Speak with Witch Doctor Unbagwa.",},

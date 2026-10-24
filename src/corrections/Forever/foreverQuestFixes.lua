@@ -68,6 +68,9 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {},
             [questKeys.preQuestGroup] = {287,98323},
         },
+        [324] = { -- The Lost Ingots
+            [questKeys.exclusiveTo] = {526},
+        },
         [334] = { -- Package for Thurman
             [questKeys.disabledByQuest] = 333,
         },
@@ -90,6 +93,11 @@ function ForeverQuestFixes:Load()
             [questKeys.zoneOrSort] = zoneIDs.TELDRASSIL,
             [questKeys.questFlags] = 8,
             [questKeys.reputationReward] = {{factionIDs.DARNASSUS, 100}},
+        },
+        [526] = { -- Lightforge Ingots
+            [questKeys.preQuestSingle] = {321},
+            [questKeys.exclusiveTo] = {324},
+            [questKeys.nextQuestInChain] = 322,
         },
         [590] = { -- A Rogue's Deal
             [questKeys.objectives] = {{{6784}}},
@@ -127,6 +135,19 @@ function ForeverQuestFixes:Load()
         },
         [982] = { -- Deep Ocean, Vast Sea
             [questKeys.breadcrumbs_add] = {97894},
+        },
+        [1122] = { -- Report Back to Fizzlebub
+            [questKeys.nextQuestInChain] = 0,
+        },
+        [1127] = { -- Fool's Stout
+            [questKeys.parentQuest] = 0,
+        },
+        [1273] = { -- Questioning Reethe
+            [questKeys.objectives] = {{{4980,nil,Questie.ICON_TYPE_EVENT}}},
+        },
+        [1276] = { -- The Black Shield
+            [questKeys.preQuestSingle] = {},
+            [questKeys.preQuestGroup] = {1273,1323},
         },
         [1486] = { -- Deviate Hides
             [questKeys.startedBy_remove] = {nil,{659159}},

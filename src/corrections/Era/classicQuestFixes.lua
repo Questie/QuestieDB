@@ -247,6 +247,9 @@ function QuestieQuestFixes:Load()
         [315] = { -- The Perfect Stout
             [questKeys.nextQuestInChain] = 413,
         },
+        [324] = { -- The Lost Ingots
+            [questKeys.exclusiveTo] = {526},
+        },
         [334] = { -- Package for Thurman
             [questKeys.disabledByQuest] = 333,
         },
@@ -410,7 +413,9 @@ function QuestieQuestFixes:Load()
             [questKeys.breadcrumbs] = {495},
         },
         [526] = { -- Lightforge Ingots
-            [questKeys.exclusiveTo] = {322, 324}, -- not 100% sure on this one but it seems lightforge ingots is optional, block it after completing subsequent steps (#587)
+            [questKeys.preQuestSingle] = {321},
+            [questKeys.exclusiveTo] = {324},
+            [questKeys.nextQuestInChain] = 322,
         },
         [532] = { -- Battle of Hillsbrad
             [questKeys.objectivesText] = {"Kill Magistrate Burnside and 5 Hillsbrad Councilmen. Destroy the Hillsbrad Proclamation. Steal the Hillsbrad Town Registry. Report back to Darthalia in Tarren Mill afterwards."},
