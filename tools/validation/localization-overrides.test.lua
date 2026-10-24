@@ -52,6 +52,32 @@ end
       "native static correction merges fields rather than replacing a whole row")
     generator.applyStaticCorrections(base, { [1] = { objectivesText = false } })
     equal(base, { [1] = { name = "Authored name" } }, "native false explicitly clears a field")
+
+    local forever = config.flavorByName.Forever
+    for _, locale in ipairs(config.locales) do
+      local basePath = inputs.lookupPath(root, forever, inputs.types.Quest, locale)
+      lib.mkdirp(basePath:match("^(.*)/[^/]+$"))
+      lib.writeAll(basePath, ('local m = QuestieLoader:ImportModule("l10n")\n' ..
+        'm.questLookup[%q] = function() return {\n' ..
+        '[1] = {"Era", {"Era objectives"}}, [2] = {"Era only", {"Keep"}} } end\n'):format(locale))
+    end
+    local traceDir = root .. "/Forever/traces/lookupQuests"
+    lib.mkdirp(traceDir)
+    lib.writeAll(traceDir .. "/deDE.lua", [[
+if GetLocale() ~= "deDE" then
+  return
+end
+QuestieLoader:ImportModule("l10n").questLookup["deDE"] = loadstring([=[return {
+[1] = {"Trace"}, [3] = {"New", {"New objectives"}} }]=])
+]])
+    local fv = generator.extract(root, forever, "Quest", { [1] = true, [2] = true, [3] = true })
+    equal(fv[1][1][de], "Trace", "should replace the Forever base name with the trace name")
+    equal(fv[1][2][de], { "Era objectives" }, "should keep base fields the trace row omits")
+    equal(fv[2][1][de], "Era only", "should keep base entities missing from the trace")
+    equal(fv[3][1][de], "New", "should add trace entities missing from the base")
+    equal(fv[1][1][fr], "Era", "should leave locales without a trace file on the base")
+    local wrath = generator.extract(root, flavor, "Quest", { [1] = true })
+    equal(wrath[1][1][de], "Override", "should not apply Forever traces to other flavors")
   end)
   files.removeTree(root)
   if not ok then error(err, 0) end

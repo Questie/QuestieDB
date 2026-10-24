@@ -3301,6 +3301,35 @@ suite("translation-corrections", "shared", function()
   dofile("tools/validation/translation-corrections.test.lua")(check, equal)
 end)
 
+suite("source-lookups", "shared", function()
+  local function load(expansion, locale)
+    client.reset()
+    client.install({ expansion = expansion, locale = locale })
+    return emulator.loadAddon(config.addonName .. ".toc", config.addonName)
+  end
+
+  local forever = load("Forever", "deDE")
+  check(forever.l10n.IsAvailable(), "should report Source-mode lookups as available")
+  equal(forever.Npc.Get(3, "name"), "Fleischfresser", "should translate from the Forever base lookups")
+  equal(forever.Npc.Get(203139, "name"), "Sohn von Arugal", "should translate from the Forever trace lookups")
+
+  local english = load("Forever", "enUS")
+  equal(english.Npc.Get(3, "name"), "Flesh Eater", "should keep English on an enUS client")
+  check(not english.l10n.IsAvailable(), "should report no Base translations on an enUS client")
+
+  local frFR = load("Forever", "frFR")
+  check(frFR.Npc.Get(3, "name") ~= "Fleischfresser", "should load only the client locale's lookups")
+  frFR.l10n.SetLocale("deDE")
+  equal(frFR.Npc.Get(3, "name"), "Flesh Eater", "should have no base translations for another locale")
+
+  local wrath = load("Wotlk", "deDE")
+  equal(wrath.Quest.Get(78752, "name"), "Todesbeweise: Titanenrune mit Protokoll Gamma",
+    "should apply lookup overrides on Wrath")
+  equal(wrath.Item.Get(185956, "name"), "Schimmerndes Gefäß", "should apply item lookup overrides")
+  check(rawget(_G, "Questie") == nil, "should restore the Questie global after loading lookups")
+  client.reset()
+end)
+
 suite("titan-translations", "shared", function()
   dofile("tools/validation/titan-translations.test.lua")(check, equal, "Source")
 end)

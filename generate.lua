@@ -178,6 +178,12 @@ local function sourceTocHeadings()
     ["src/derived/RamerDouglasPeucker.lua"] = { subcategory = "Shared algorithms",
       note = "Run over corrected data, using shared constants from the enum tables." },
     ["src/derived/_end.lua"] = { subcategory = "Loader teardown" },
+    ["src/l10n/source/_begin.lua"] = { category = "Source-mode localization", subcategory = "Lookup loader setup",
+      note = "Raw lookups keep their GetLocale() guards, so only the client locale is captured." },
+    ["src/l10n/source/_traces.lua"] = { subcategory = "Forever trace lookups",
+      note = "Merged per field over the Forever base lookups, as in Generation." },
+    ["l10n/lookupOverrides.lua"] = { subcategory = "Static Translation Corrections" },
+    ["src/l10n/source/_end.lua"] = { subcategory = "Lookup loader teardown" },
     ["src/l10n/overlay.lua"] = { category = "Localization and public API", subcategory = "Localization overlay and Titan translations",
       note = "Do not filter by client locale: SetLocale() can select another locale." },
     ["src/ui/modeIndicator.lua"] = { subcategory = "Source-mode indicator" },
@@ -185,6 +191,8 @@ local function sourceTocHeadings()
   }
   for _, flavor in ipairs(config.flavors) do
     headings[config.dataPath(flavor, config.entityTypes[1])] = { subcategory = flavor.name }
+    headings[("l10n/%s/%s/%s.lua"):format(flavor.expansion, config.l10nLookupDirs[1], config.locales[1])] =
+      { subcategory = flavor.name .. " lookups" }
   end
   return headings
 end

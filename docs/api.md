@@ -643,7 +643,7 @@ LibQuestieDB.l10n.SetLocale("enUS")
 QuestDB.name(2)                       --> "Sharptalon's Claw"
 
 LibQuestieDB.l10n.currentLocale
-LibQuestieDB.l10n.IsAvailable()       --> whether this artifact contains Base translations
+LibQuestieDB.l10n.IsAvailable()       --> whether Base translations are present
 LibQuestieDB.l10n.onLocaleChanged[#… + 1] = function(locale) … end
 ```
 
@@ -656,9 +656,10 @@ including every field in a custom locale with no registered slot, fall through t
 corrected entity value. Changing locale replaces the active Base blocks atomically and invalidates
 cached entity values and Name indexes. Selecting the active locale is a no-op.
 
-`l10n.IsAvailable()` reports only whether the artifact contains generated Base translation
-blocks. It is false in Source mode, where ordinary Base translations remain unavailable.
-Dynamic Translation Corrections work in either mode and do not change that result.
+`l10n.IsAvailable()` reports whether Base translations are present: generated blocks in Baked
+mode, or raw `l10n/` lookups in Source mode. Source mode captures only the client locale, so
+selecting another locale there has no Base translations. Dynamic Translation Corrections work in
+either mode and do not change that result.
 
 A translated `objectivesText` remains a table; element counts follow the upstream lookup and
 may differ where a locale combines objectives. Every read returns a fresh mutable copy.
