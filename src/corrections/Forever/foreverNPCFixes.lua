@@ -253,6 +253,12 @@ function ForeverNpcFixes:Load()
         [251404] = { -- Cirrusfly Queen
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{48.41,28.53}}},
         },
+        [251448] = { -- Al'Aketh Neophyte
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
+        },
+        [251451] = { -- Al'Aketh Ambusher
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
+        },
         [251507] = { -- Josephine Carson
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{41.15,66.23}}},
         },
