@@ -134,6 +134,9 @@ function ForeverNpcFixes:Load()
         [15736] = { -- Orgrimmar Commendation Officer
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
+        [185317]= { -- Incubus
+            [npcKeys.name] = "Incubus",
+        },
         [205729] = { -- Boarton Shadetotem
             [npcKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{39.44,65.82}}},
         },
