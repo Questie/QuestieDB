@@ -26,7 +26,8 @@ return function(check, equal, modeScope)
       local db = emulator.loadAddon(mode.toc, "QuestieDB")
       local label = mode.name .. " initially " .. initialLocale .. ": "
       if mode.name == "Source" then
-        check(db.read.source.entities.Quest == nil and db.read.source.entities.Npc == nil,
+        check(db.read.source.entities.Quest == nil and db.read.source.entities.Npc == nil and
+          db.read.source.entities.Item == nil and db.read.source.entities.Object == nil,
           label .. "translation registration preserves lazy Source entity initialization")
       end
       equal(db.l10n.currentLocale, initialLocale, label .. "client locale selected")
@@ -41,6 +42,21 @@ return function(check, equal, modeScope)
       equal(db.Quest.objectivesText(6805),
         { "消灭15个大型灰尘风暴和15个大型沙漠奔行者，然后回到艾萨拉的海达克西斯公爵那儿。" }, label .. "6805 objectives")
       equal(db.Quest.objectivesText(93975), { "团队消灭拉格纳罗斯。" }, label .. "93975 objectives")
+      equal(db.Quest.name(8184), "愤怒预言", label .. "8184 authored Titan name")
+      -- Every translatable entity type registers from the same seasonal zhCN set.
+      local npcExpected = { [80007] = "？", [256887] = "大型灰尘风暴", [257012] = "观察者奥尔加隆" }
+      for id, name in pairs(npcExpected) do
+        equal(db.Npc.name(id), name, label .. "Titan NPC " .. id)
+        equal(db.GetProvenance("Npc", id, "name"), "QuestieDB", label .. "Titan NPC provenance " .. id)
+      end
+      -- Titan remaps items 268145/274994, so their names follow the Titan English text.
+      local itemExpected = { [264272] = "天界信函", [268145] = "打孔的巫毒人偶", [274994] = "原始哈卡莱神像" }
+      for id, name in pairs(itemExpected) do
+        equal(db.Item.name(id), name, label .. "Titan Item " .. id)
+        equal(db.GetProvenance("Item", id, "name"), "QuestieDB", label .. "Titan Item provenance " .. id)
+      end
+      equal(db.Object.name(420002), "血之祭坛", label .. "Titan Object name")
+      equal(db.GetProvenance("Object", 420002, "name"), "QuestieDB", label .. "Titan Object provenance")
       -- An ordinary non-English locale must not inherit the previous seasonal translation.
       -- This Titan-added entity has no base block row, so its corrected English text wins.
       db.l10n.SetLocale("enUS")
@@ -74,15 +90,28 @@ return function(check, equal, modeScope)
     { expansion = "Wotlk", season = 99 }, { expansion = "Cata", season = 109 },
     { expansion = "MoP", season = 109 },
   }
-  for _, persona in ipairs(personas) do
+  -- The declaration's only dependencies are the public translation interface, the schema keys,
+  -- and character facts. Stub those so registration can be counted without loading datasets.
+  local stubKeys = { name = 1, objectivesText = 2, subName = 3 }
+  local stubMeta = { Quest = { keys = stubKeys }, Npc = { keys = stubKeys },
+    Item = { keys = stubKeys }, Object = { keys = stubKeys } }
+  local function registrations(persona)
     client.reset()
     client.install(persona)
     C_Seasons.GetActiveSeason = function() return persona.season end
-    local calls = 0
-    local db = { flavor = { expansion = persona.expansion },
-      l10n = { SetCorrection = function() calls = calls + 1 end } }
+    local seen = {}
+    local db = { flavor = { expansion = persona.expansion }, Meta = stubMeta,
+      l10n = { SetCorrection = function(_, _, datatype) seen[#seen + 1] = datatype end } }
     assert(loadfile("src/l10n/Titan/zhCN.lua"))("QuestieDB", db)
-    equal(calls, 0, persona.expansion .. " season " .. persona.season .. " rejects Titan translations")
+    return seen
   end
+  for _, persona in ipairs(personas) do
+    equal(#registrations(persona), 0,
+      persona.expansion .. " season " .. persona.season .. " rejects Titan translations")
+  end
+  local active = registrations({ expansion = "Wotlk", season = 109 })
+  equal(#active, 4, "Titan season 109 registers one slot per entity type")
+  equal(table.concat(active, ","), "Quest,Npc,Item,Object",
+    "Titan season 109 registers all four entity types")
   client.reset()
 end
