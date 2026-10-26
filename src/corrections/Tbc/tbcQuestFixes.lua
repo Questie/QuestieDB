@@ -5639,6 +5639,9 @@ function QuestieTBCQuestFixes:Load()
         [11186] = { -- Signs of Treachery?
             [questKeys.startedBy] = {{23881}},
         },
+        [11195] = { -- Playin' With Dolls
+            [questKeys.preQuestSingle] = {11165},
+        },
         [11198] = { -- Take Down Tethyr!
             [questKeys.objectives] = {{{23899}}},
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Use the cannon"), 0, {{"object",186432}}}},
@@ -5760,6 +5763,7 @@ function QuestieTBCQuestFixes:Load()
         },
         [11361] = { -- Fire Training
             [questKeys.questLevel] = -1,
+            [questKeys.requiredLevel] = 1,
             [questKeys.exclusiveTo] = {11449,11450},
             [questKeys.requiredSourceItems] = {32971},
             [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
