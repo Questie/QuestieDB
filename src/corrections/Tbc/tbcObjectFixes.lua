@@ -306,10 +306,10 @@ function QuestieTBCObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.BLADES_EDGE_MOUNTAINS] = {{62.75,7.33}}},
         },
         [186267] = { -- Pumpkin Shrine
-            [objectKeys.questStarts] = {11392,11401,11405}, -- no 11404?
+            [objectKeys.questStarts] = {11392,11401,11404,11405},
         },
         [186314] = { -- Loosely Turned Soil
-            [objectKeys.questEnds] = {11392,11401,11405}, -- no 11404?
+            [objectKeys.questEnds] = {11392,11401,11404,11405},
         },
         [186420] = { -- Syndicate Documents
             [objectKeys.questStarts] = {510,511},
