@@ -27,6 +27,9 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.REDRIDGE_MOUNTAINS] = {{10.37,71.26}}},
             [npcKeys.waypoints] = {},
         },
+        [663] = { -- Calor
+            [npcKeys.waypoints] = {},
+        },
         [1261] = { -- Veron Amberstill <Ram Breeder>
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
@@ -226,8 +229,17 @@ function ForeverNpcFixes:Load()
         [251115] = { -- Urs'anah
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{35.65,26.07}}},
         },
+        [251145] = { -- Al'Aketh Brute
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
+        },
+        [251160] = { -- Al'Aketh Convert
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
+        },
         [251166] = { -- Minor Manifestation of Earth
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{49.67,23.8}}},
+        },
+        [251261] = { -- Hippogryph Matriarch
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{33.04,54.63},{35.23,54.08}}},
         },
         [251361] = { -- Rorian the Dayseeker
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.05,23.49}}},
@@ -237,21 +249,6 @@ function ForeverNpcFixes:Load()
         },
         [251365] = { -- Jolee Brightmeadows
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.52,23.6}}},
-        },
-        [251537] = { -- Uualia Suncrest
-            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.75,24.49}}},
-        },
-        [251905] = { -- Zerril Softbreeze
-            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.85,43.84}}},
-        },
-        [251965] = { -- Fevrath Skyhammer
-            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.37,23.44}}},
-        },
-        [251966] = { -- Commander Cyclas
-            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{50.39,56.96}}},
-        },
-        [251261] = { -- Hippogryph Matriarch
-            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{33.04,54.63},{35.23,54.08}}},
         },
         [251404] = { -- Cirrusfly Queen
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{48.41,28.53}}},
@@ -265,14 +262,29 @@ function ForeverNpcFixes:Load()
         [251507] = { -- Josephine Carson
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{41.15,66.23}}},
         },
+        [251537] = { -- Uualia Suncrest
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.75,24.49}}},
+        },
         [251684] = { -- Strange Hermit
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{53.96,38.9}}},
+        },
+        [251905] = { -- Zerril Softbreeze
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.85,43.84}}},
+        },
+        [251965] = { -- Fevrath Skyhammer
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.37,23.44}}},
+        },
+        [251966] = { -- Commander Cyclas
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{50.39,56.96}}},
         },
         [251968] = { -- Ayessa Dawnsinger
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.15,79.78}}},
         },
         [251993] = { -- Indari Sunseam
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{44.68,44.52}}},
+        },
+        [252068] = { -- Al'Aketh Stormcaller
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
         },
         [252172] = { -- Danarii Bellowveil
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{45.24,45.18}}},
@@ -307,14 +319,38 @@ function ForeverNpcFixes:Load()
         [252479] = { -- Daeann Steelwind
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.47,80.28}}},
         },
+        [252664] = { -- Al'Aketh Stormchaser
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
+        },
+        [252665] = { -- Al'Aketh Footsoldier
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
+        },
         [252666] = { -- Commander Belguilos
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.58,65.62}}},
+        },
+        [252762] = { -- Al'Aketh Guardian
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
+        },
+        [252763] = { -- Al'Aketh Spiritcaller
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
+        },
+        [252764] = { -- Al'Aketh Skypriest
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
+        },
+        [252765] = { -- Al'Aketh Blademaster
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
+        },
+        [252767] = { -- Al'Aketh Honor Guard
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
         },
         [252800] = { -- Aamelia Windfield
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{46.7,81.95}}},
         },
         [253004] = { -- Iaadaria Bitterwind
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{66.34,79.5}}},
+        },
+        [253195] = { -- Al'Aketh Preacher
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
         },
         [253204] = { -- Dondallion Whisperwind
             [npcKeys.questEnds_remove] = {92850},
@@ -323,8 +359,14 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.THE_DEADMINES] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.THE_DEADMINES,
         },
+        [253511] = { -- Al'Aketh Pillager
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
+        },
         [253622] = { -- Commander Haalien
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.53,36.32}}},
+        },
+        [253782] = { -- Al'Aketh Attacker
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
         },
         [253847] = { -- Elaadrin Evengale
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{74.17,52.57}}},
@@ -372,6 +414,12 @@ function ForeverNpcFixes:Load()
         [254589] = { -- Vulgara the Insatiable
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.66,52.8}}},
         },
+        [254596] = { -- Al'Aketh Healer
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
+        },
+        [254626] = { -- Al'Aketh Assassin
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
+        },
         [255013] = { -- DNT KILL CREDIT
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{56.16,60.59}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
@@ -400,6 +448,9 @@ function ForeverNpcFixes:Load()
         },
         [256935] = { -- Malduko Cloudcrush
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{36.05,33.53}}},
+        },
+        [256996] = { -- Al'Aketh Warrior
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
         },
         [257003] = { -- Ishlee Breezewhisper
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.63,76.06}}},
@@ -603,6 +654,9 @@ function ForeverNpcFixes:Load()
         },
         [269075] = { -- Snow Leopard Prowler
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{27.37,62.86}}},
+        },
+        [270201] = { -- Al'Aketh Brawler
+            [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
         },
         [270263] = { -- Farseer Maret Firetend
             [npcKeys.spawns] = {[zoneIDs.THE_HINTERLANDS] = {{14.4,42.6}}},

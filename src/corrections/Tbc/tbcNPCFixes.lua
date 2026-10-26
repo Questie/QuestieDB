@@ -1085,7 +1085,7 @@ function QuestieTBCNpcFixes:Load()
             [npcKeys.questEnds] = {95158,95251,95252},
         },
         [18927] = { -- Human Commoner
-            [npcKeys.questStarts] = {11441,11970},
+            [npcKeys.questStarts] = {11356,11441,11970},
         },
         [18976] = { -- Urga'zz
             [npcKeys.waypoints] = {},
@@ -1111,13 +1111,13 @@ function QuestieTBCNpcFixes:Load()
             [npcKeys.questStarts] = {11356,11441,11970},
         },
         [19173] = { -- Night Elf Commoner
-            [npcKeys.questStarts] = {11441,11970},
+            [npcKeys.questStarts] = {11356,11441,11970},
         },
         [19175] = { -- Orc Commoner
             [npcKeys.questStarts] = {11357,11446,11971},
         },
         [19176] = { -- Tauren Commoner
-            [npcKeys.questStarts] = {11446,11971},
+            [npcKeys.questStarts] = {11357,11446,11971},
         },
         [19177] = { -- Troll Commoner
             [npcKeys.questStarts] = {11357,11446,11971},
