@@ -5552,7 +5552,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.nextQuestInChain] = 11136,
         },
         [11135] = { -- The Headless Horseman
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- most likely breadcrumb
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.availableStartingWith] = 11131, -- is being offered once HH is killed during 11131
         },
         [11136] = { -- A Disturbing Development
             [questKeys.breadcrumbForQuestId] = 11137,
@@ -5679,7 +5680,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [11220] = { -- The Headless Horseman
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- most likely breadcrumb
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.availableStartingWith] = 11219, -- is being offered once HH is killed during 11219
         },
         [11222] = { -- Warn Bolvar!
             [questKeys.nextQuestInChain] = 11223,
@@ -5693,7 +5695,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.finishedBy] = {{24519}},
             [questKeys.requiredLevel] = 65,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
-            [questKeys.preQuestSingle] = {11135},
+            [questKeys.preQuestSingle] = {11392},
         },
         [11293] = { -- Bark for the Barleybrews!
             [questKeys.objectives] = {{{24202,nil,Questie.ICON_TYPE_EVENT},{24203,nil,Questie.ICON_TYPE_EVENT},{24204,nil,Questie.ICON_TYPE_EVENT},{24205,nil,Questie.ICON_TYPE_EVENT}}},
@@ -5773,21 +5775,33 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {nil,nil,nil,nil,{{{17839,21140},17839}}},
         },
         [11392] = { -- Call the Headless Horseman
-            [questKeys.startedBy] = {nil,{186267}}, -- alliance/horde? what about 11404/11405, probably phase specific?
-            [questKeys.finishedBy] = {nil,{186314}},
-            [questKeys.questLevel] = -1,
-        },
-        [11401] = { -- Call the Headless Horseman
-            [questKeys.startedBy] = {nil,{186267}}, -- alliance/horde? should this one be not repeatable? what about 11404/11405, probably phase specific?
+            [questKeys.startedBy] = {nil,{186267}},
             [questKeys.finishedBy] = {nil,{186314}},
             [questKeys.preQuestSingle] = {11135,11220},
+        },
+        [11401] = { -- Call the Headless Horseman
+            [questKeys.startedBy] = {nil,{186267}},
+            [questKeys.finishedBy] = {nil,{186314}},
+            [questKeys.preQuestSingle] = {11392},
         },
         [11403] = { -- Free at Last!
             [questKeys.startedBy] = {{23904}},
             [questKeys.finishedBy] = {{23973}},
             [questKeys.requiredLevel] = 65,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
-            [questKeys.preQuestSingle] = {11220},
+            [questKeys.preQuestSingle] = {11392},
+        },
+        [11404] = { -- Call the Headless Horseman
+            [questKeys.startedBy] = {nil,{186267}},
+            [questKeys.finishedBy] = {nil,{186314}},
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.exclusiveTo] = {11135,11220},
+        },
+        [11405] = { -- Call the Headless Horseman
+            [questKeys.startedBy] = {nil,{186267}},
+            [questKeys.finishedBy] = {nil,{186314}},
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.exclusiveTo] = {11135,11220},
         },
         [11407] = { -- Bark for Drohn's Distillery!
             [questKeys.questLevel] = -1,
@@ -8754,6 +8768,9 @@ function QuestieTBCQuestFixes:LoadFactionFixes()
         [10858] = { -- Karynaku
             [questKeys.nextQuestInChain] = 10866,
         },
+        [11392] = { -- Call the Headless Horseman
+            [questKeys.nextQuestInChain] = 11403,
+        },
     }
 
     local questFixesAlliance = {
@@ -8996,6 +9013,9 @@ function QuestieTBCQuestFixes:LoadFactionFixes()
         },
         [10858] = { -- Karynaku
             [questKeys.nextQuestInChain] = playerRace == "Human" and 10872 or 10866,
+        },
+        [11392] = { -- Call the Headless Horseman
+            [questKeys.nextQuestInChain] = 11242,
         },
     }
 
