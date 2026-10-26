@@ -5738,14 +5738,16 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [11356] = { -- Costumed Orphan Matron
-            [questKeys.exclusiveTo] = {11360,11439,11440},
+            [questKeys.startedBy] = {{18927,19148,19171,19172,19173}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.availableUntilCompleted] = 11360, -- also add 11439,11440
         },
         [11357] = { -- Masked Orphan Matron
-            [questKeys.exclusiveTo] = {11361,11449,11450},
+            [questKeys.startedBy] = {{19169,19175,19176,19177,19178}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.availableUntilCompleted] = 11361, -- also add 11449,11450
         },
         [11360] = { -- Fire Brigade Practice
             [questKeys.exclusiveTo] = {11439,11440},
