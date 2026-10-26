@@ -75,6 +75,8 @@ return {
   { name = "single reputation reward (Classic quest 2)", field = "reputationReward", input = {{81,250}}, expected = {{81,250}} },
   { name = "multiple reputation rewards (Classic quest 32)", field = "reputationReward",
     input = {{76,350},{81,350},{369,350},{530,350}}, expected = {{76,350},{81,350},{369,350},{530,350}} },
+  { name = "fractional spillover reputation reward", field = "reputationReward",
+    input = {{72,250},{1134,37.5}}, expected = {{72,250},{1134,37.5}} },
   { name = "empty text elements (Classic quest 25, shortened)", field = "objectivesText",
     input = {"Explore","","Return"}, expected = {"Explore","","Return"} },
   { name = "skill with zero value (Classic quest 715)", field = "requiredSkill", input = {171,0}, expected = {171,0} },

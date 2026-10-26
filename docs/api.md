@@ -479,7 +479,8 @@ Operands have the field's canonical shape, including its grouping:
 | `idarray` | `{7786, -7787}` | Complete integer; signed values are allowed |
 | `stringarray` | `{"First objective", "Second objective"}` | Complete string |
 | `pair` | `{164, 75}` | Whole atomic record |
-| `pairs` | `{{72, 100}, {73, 200}}` | Complete pair, not faction/skill ID alone |
+| `pairs` | `{{164, 75}, {165, 150}}` | Complete integer pair, not skill ID alone |
+| `reputationpairs` | `{{72, 100}, {73, 37.5}}` | Complete pair, not faction ID alone; the value may be fractional |
 | `questgivers` | `{[2] = {424005}}` | IDs within supplied groups: `[1]` NPC, `[2]` object, `[3]` item |
 | `objectives` | `{[1] = {{123}}, [4] = {72, 3000}}` | Complete rows within groups 1, 2, 3, 5, 6; group 4 is an atomic reputation pair |
 | `spawnlist` | `{[12] = {{45, 60, 2}}}` | Complete coordinate tuple within a supplied zone |

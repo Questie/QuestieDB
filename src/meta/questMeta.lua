@@ -103,7 +103,7 @@ local meta = {
 
   --- fieldIndex -> structural shape, for validators. nil for scalars.
   structures = {
-[2]='questgivers', [3]='questgivers', [8]='stringarray', [9]='trigger', [10]='objectives', [12]='idarray', [13]='idarray', [14]='idarray', [15]='idarray', [16]='idarray', [18]='pair', [19]='pair', [20]='pair', [21]='idarray', [26]='pairs', [28]='idarray', [29]='extraobjectives', [35]='pairs'
+[2]='questgivers', [3]='questgivers', [8]='stringarray', [9]='trigger', [10]='objectives', [12]='idarray', [13]='idarray', [14]='idarray', [15]='idarray', [16]='idarray', [18]='pair', [19]='pair', [20]='pair', [21]='idarray', [26]='reputationpairs', [28]='idarray', [29]='extraobjectives', [35]='pairs'
   },
 
   --- fieldIndex -> Questie compiler type. Materialized provenance.
