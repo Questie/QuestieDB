@@ -1,0 +1,61 @@
+name: Upload release to CurseForge
+run-name: "Upload to CurseForge (${{ inputs.tag }})"
+
+# Uploads the assets of an existing GitHub release unchanged; it never builds anything.
+# release.yml calls it after each stable release. Rerun it manually to upload flavors
+# that are not yet reserved; see tools/distribution/curseforge.py.
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        type: string
+        required: true
+    secrets:
+      CF_API_TOKEN:
+        required: true
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing stable release tag (vX.Y.Z)
+        type: string
+        required: true
+      dry_run:
+        description: Show the uploads without reserving or sending them
+        type: boolean
+        default: false
+
+# Pushes curse/<tag>/<flavor> reservation tags.
+permissions:
+  contents: write
+
+jobs:
+  upload:
+    name: Upload
+    runs-on: ubuntu-latest
+    concurrency:
+      group: questiedb-curseforge
+      cancel-in-progress: false
+      # Retain every pending release; a newer run must not evict an older upload.
+      queue: max
+    steps:
+      - uses: actions/checkout@v7
+        with: { path: QuestieDB }
+
+      - name: Download the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          gh release download "$TAG" --dir QuestieDB/.out/dist \
+            --pattern release.json --pattern RELEASE_NOTES.md --pattern 'QuestieDB-*.zip'
+
+      - name: Upload
+        working-directory: QuestieDB
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_PROJECT_ID: ${{ vars.CF_PROJECT_ID }}
+          TAG: ${{ inputs.tag }}
+          DRY_RUN: ${{ inputs.dry_run && '--dry-run' || '' }}
+        run: python3 tools/distribution/curseforge.py "$TAG" .out/dist $DRY_RUN
