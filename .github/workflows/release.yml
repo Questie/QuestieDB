@@ -8,7 +8,8 @@ name: Release
 # unchanged legacy corrections.
 # The write-enabled jobs run no build or test code: publication uploads only the
 # artifacts handed through those gates, unmodified.
-# GitHub publication uses the automatic GITHUB_TOKEN; no external publishing is configured.
+# GitHub publication uses the automatic GITHUB_TOKEN. Published stable releases are then
+# uploaded to CurseForge with the CF_API_TOKEN secret (publish-curseforge.yml).
 
 on:
   push:
@@ -98,6 +99,7 @@ jobs:
           python3 tools/distribution/release_artifacts.test.py
           python3 tools/distribution/release.test.py
           python3 tools/distribution/forever.test.py
+          python3 tools/distribution/curseforge.test.py
 
       - name: Fail on Source TOC drift
         working-directory: QuestieDB
@@ -223,10 +225,22 @@ jobs:
           TAG: ${{ needs.quality.outputs.tag }}
         run: python3 tools/distribution/release.py publish
 
+  curseforge:
+    name: CurseForge
+    if: inputs.release && inputs.publish
+    needs: [quality, publish]
+    permissions:
+      contents: write
+    uses: ./.github/workflows/publish-curseforge.yml
+    with:
+      tag: ${{ needs.quality.outputs.tag }}
+    secrets:
+      CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+
   notify:
     name: Notify Discord
     runs-on: ubuntu-latest
-    needs: [preflight, legacy, shared, database, quality, dry_run, publish]
+    needs: [preflight, legacy, shared, database, quality, dry_run, publish, curseforge]
     if: failure()
     permissions:
       contents: read
