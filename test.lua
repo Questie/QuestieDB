@@ -2920,6 +2920,61 @@ suite("contract-config", "shared", function()
     "inverted range explains the invariant")
 end)
 
+---Report every public name a supported contract promises that the loaded addon lacks.
+---@param entries table[] Entries from tools/validation/contract-surface.lua.
+---@param contract integer Provider contractVersion.
+---@param minimum integer Provider minSupportedContract.
+---@param root table Table the entry paths resolve from.
+---@return string[] problems
+local function contractSurfaceProblems(entries, contract, minimum, root)
+  local problems = {}
+  for _, entry in ipairs(entries) do
+    if entry.since > contract then
+      problems[#problems + 1] = entry.path .. " is promised by future contract " .. entry.since
+    elseif entry.removedIn == nil or minimum < entry.removedIn then
+      local value = root
+      for part in entry.path:gmatch("[^.]+") do
+        if type(value) == "table" then
+          value = value[part]
+        else
+          value = nil
+        end
+      end
+      if type(value) ~= entry.kind then
+        problems[#problems + 1] = ("%s must be a %s for contract %d, got %s")
+          :format(entry.path, entry.kind, entry.since, type(value))
+      end
+    end
+  end
+  return problems
+end
+
+suite("contract-surface", "shared", function()
+  local entries = dofile("tools/validation/contract-surface.lua")
+  for expansion in pairs(client.projectIds) do
+    client.reset()
+    client.install({ expansion = expansion })
+    local loaded = emulator.loadAddon(config.addonName .. ".toc", config.addonName)
+    equal(contractSurfaceProblems(entries, loaded.contractVersion, loaded.minSupportedContract, _G), {},
+      expansion .. " provides every name its supported contracts promise")
+  end
+
+  -- Negative controls: the check must notice removals, kind changes, and premature drops.
+  local root = { Lib = { Get = function() end, Enum = { npcFlags = {} } } }
+  local fixture = {
+    { path = "Lib.Get", kind = "function", since = 1 },
+    { path = "Lib.Enum.npcFlags", kind = "table", since = 4 },
+    { path = "Lib.Old", kind = "function", since = 1, removedIn = 3 },
+  }
+  equal(contractSurfaceProblems(fixture, 4, 3, root), {}, "a dropped name is fine once the floor passes it")
+  equal(#contractSurfaceProblems(fixture, 4, 2, root), 1, "a dropped name still fails while its contract is supported")
+  root.Lib.Enum.npcFlags = nil
+  equal(#contractSurfaceProblems(fixture, 4, 3, root), 1, "a missing promised name fails")
+  root.Lib.Enum.npcFlags = 1
+  equal(#contractSurfaceProblems(fixture, 4, 3, root), 1, "a changed kind fails")
+  equal(#contractSurfaceProblems(fixture, 3, 3, root), 1, "an entry for a future contract fails")
+end)
+
 suite("api", "Vanilla", function()
   local tocPath = config.tocPath(config.flavorByName.Vanilla)
   if not lib.fileExists(tocPath) then
