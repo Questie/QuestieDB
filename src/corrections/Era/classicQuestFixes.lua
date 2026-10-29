@@ -212,7 +212,7 @@ function QuestieQuestFixes:Load()
             [questKeys.objectives] = {nil, nil, {{15885, nil, Questie.ICON_TYPE_EVENT}}}, -- we need event icon here
         },
         [273] = { -- Resupplying the Excavation
-            [questKeys.triggerEnd] = {"Find Huldar, Miran, and Saean", {[zoneIDs.LOCH_MODAN] = {{51.16, 68.96}}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{1379,2057},15885,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [275] = { -- Blisters on The Land
             [questKeys.objectivesText] = {"Kill 12 Fen Creepers, then return to Rethiel the Greenwarden in the Wetlands."},

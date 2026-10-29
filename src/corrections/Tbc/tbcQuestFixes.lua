@@ -1535,6 +1535,7 @@ function QuestieTBCQuestFixes:Load()
         [8373] = { -- The Power of Pine
             [questKeys.reputationReward] = {{factionIDs.ALLIANCE,250}},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredLevel] = 25,
         },
         [8381] = { -- Armaments of War
             [questKeys.requiredClasses] = classIDs.MAGE + classIDs.WARLOCK,
@@ -5538,9 +5539,10 @@ function QuestieTBCQuestFixes:Load()
         [11131] = { -- Stop the Fires!
             [questKeys.triggerEnd] = {"Put Out the Fires", {[zoneIDs.DUN_MOROGH] = {{44.8,52.1},{47.5,51.6}},[zoneIDs.ELWYNN_FOREST] = {{41.3,65.2},{43.6,65.8}},[zoneIDs.AZUREMYST_ISLE] = {{49.8,52.3},{48.8,50}}}},
             [questKeys.requiredSourceItems] = {32971},
-            [questKeys.exclusiveTo] = {12133},
+            [questKeys.exclusiveTo] = {12135},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.disabledByQuest] = 11356,
         },
         [11132] = { -- Oooh, Shinies!
             [questKeys.breadcrumbs] = {11130},
@@ -5678,9 +5680,10 @@ function QuestieTBCQuestFixes:Load()
         [11219] = { -- Stop the Fires!
             [questKeys.triggerEnd] = {"Put Out the Fires", {[zoneIDs.DUROTAR] = {{52.12,43.59},{53.21,42.56},{51.58,42.08}},[zoneIDs.TIRISFAL_GLADES] = {{60.32,53.29},{61.11,51.25},{61.64,51.97}},[zoneIDs.EVERSONG_WOODS] = {{47.76,47.3},{48.21,46.16}}}},
             [questKeys.requiredSourceItems] = {32971},
-            [questKeys.exclusiveTo] = {12155},
+            [questKeys.exclusiveTo] = {12139},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.disabledByQuest] = 11357,
         },
         [11220] = { -- The Headless Horseman
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
@@ -5760,6 +5763,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.disabledByQuest] = 11356,
+            [questKeys.nextQuestInChain] = 12135,
         },
         [11361] = { -- Fire Training
             [questKeys.questLevel] = -1,
@@ -5768,6 +5773,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredSourceItems] = {32971},
             [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.disabledByQuest] = 11357,
+            [questKeys.nextQuestInChain] = 12139,
         },
         [11379] = { -- Super Hot Stew
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Cook Demon Broiled Surprise in the remains of a Abyssal Flamebringer in Blade's Edge Mountains"), 0, {{"monster", 19973}}}},
@@ -5829,6 +5836,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.disabledByQuest] = 11356,
+            [questKeys.nextQuestInChain] = 12135,
         },
         [11440] = { -- Fire Brigade Practice
             [questKeys.startedBy] = {},
@@ -5837,6 +5846,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.disabledByQuest] = 11356,
+            [questKeys.nextQuestInChain] = 12135,
         },
         [11441] = { -- Brewfest!
             [questKeys.startedBy] = {{18927,19148,19171,19172,19173,20102}},
@@ -5865,6 +5876,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.disabledByQuest] = 11357,
+            [questKeys.nextQuestInChain] = 12139,
         },
         [11450] = { -- Fire Training
             [questKeys.startedBy] = {},
@@ -5873,6 +5886,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.disabledByQuest] = 11357,
+            [questKeys.nextQuestInChain] = 12139,
         },
         [11481] = { -- Crisis at the Sunwell
             [questKeys.requiredMinRep] = {932,0},
@@ -7107,7 +7122,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
             [questKeys.requiredSourceItems] = {32971},
             [questKeys.questFlags] = 4224,
-            [questKeys.exclusiveTo] = {12133},
+            [questKeys.exclusiveTo] = {11131},
         },
         [12139] = { -- "Let the Fires Come!"
             [questKeys.name] = "\"Let the Fires Come!\"",
@@ -7123,7 +7138,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
             [questKeys.requiredSourceItems] = {32971},
             [questKeys.questFlags] = 4224,
-            [questKeys.exclusiveTo] = {12155},
+            [questKeys.exclusiveTo] = {11219},
         },
         [12155] = { -- Smash the Pumpkin
             [questKeys.name] = "Smash the Pumpkin",

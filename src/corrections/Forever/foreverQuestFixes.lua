@@ -60,6 +60,9 @@ function ForeverQuestFixes:Load()
         [180] = { -- WANTED: Lieutenant Fangore
             [questKeys.name] = "WANTED: Lieutenant Fangore",
         },
+        [273] = { -- Resupplying the Excavation
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{1379,2057},15885,nil,Questie.ICON_TYPE_EVENT}}},
+        },
         [287] = { -- Frostmane Hold
             [questKeys.disabledByQuest] = 420,
             [questKeys.nextQuestInChain] = 0,
