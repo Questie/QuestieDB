@@ -657,6 +657,11 @@ including every field in a custom locale with no registered slot, fall through t
 corrected entity value. Changing locale replaces the active Base blocks atomically and invalidates
 cached entity values and Name indexes. Selecting the active locale is a no-op.
 
+Base translations are retained for IDs the baked entity database does not contain, so a Dynamic
+Correction's entity still resolves its lookup translation. A stored translation never creates an
+entity: it resolves only while that entity exists in the composed database, exactly as for a
+Dynamic Translation Correction.
+
 `l10n.IsAvailable()` reports whether Base translations are present: generated blocks in Baked
 mode, or raw `l10n/` lookups in Source mode. Source mode captures only the client locale, so
 selecting another locale there has no Base translations. Dynamic Translation Corrections work in
@@ -670,8 +675,8 @@ and Object `name`. Fields such as `requiredRaces` are not localized.
 
 ### Dynamic Translation Corrections
 
-Use a Dynamic Translation Correction for non-English entity text that cannot be folded into a
-Baked Localization block, or that depends on runtime facts owned by the publisher:
+Use a Dynamic Translation Correction for non-English entity text that depends on runtime facts
+owned by the publisher, or for a locale with no generated Base block:
 
 ```lua
 local questKeys = LibQuestieDB.Meta.QuestMeta.questKeys
@@ -702,9 +707,18 @@ invalidates only that entity type. Writes for inactive locales leave current cac
 Translation rows cannot create entities. They apply only while the entity exists in the
 composed entity database, including an entity added by a normal Dynamic Correction.
 
-QuestieDB uses this interface for Titan Reforged's 14 zhCN Quest rows. That set registers only
-when the addon loads for Wrath season 109. Other flavors and seasons do not register it; changing
-locale selects or hides it without changing the English Titan entity Corrections.
+QuestieDB uses this interface for Titan Reforged's zhCN rows across all four entity types — Quest,
+Npc, Item, and Object. The set covers entities the Baked Localization blocks cannot address (their
+IDs are absent from the base backend) and base entities Titan re-authors in place; its rows come
+from `l10n/wotlk/lookup*/zhCN.lua`. It registers only when the addon loads for Wrath season 109.
+Other flavors and seasons do not register it; changing locale selects or hides it without changing
+the English Titan entity Corrections.
+
+Baked Localization blocks retain translations for IDs the baked entity database does not contain,
+and Source mode loads the same owned lookups for its client locale, so a Titan-added entity no
+longer needs a duplicated runtime row to have Chinese text in either mode. What the runtime slot
+still supplies is what no stored translation can: base entities Titan re-authors in place, whose
+text differs from the WotLK lookup.
 
 `extraObjectives` descriptions are different. Correction files author row slot `[3]` as an enUS
 localization key, and QuestieDB preserves that English string. The entity localization overlay

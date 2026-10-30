@@ -31,9 +31,10 @@ The files retain their executable Questie format, including locale guards and lo
 Generation executes them in a private environment. Source mode lists them in `QuestieDB.toc`
 between `src/l10n/source/_begin.lua` and `_end.lua`, which apply the same layering at runtime;
 their locale guards keep only the client locale. Run `lua5.1 generate.lua toc` after adding or
-removing a trace file.
-The original Titan function in `lookupOverrides.lua` is not invoked by Generation. Titan Dynamic Translation Corrections already live
-in `src/l10n/Titan/zhCN.lua` and remain selected by the runtime flavor/season gate.
+removing a trace file. Titan is not a Generation input: the former
+`Questie.LoadTitanQuestLookupOverrides` declaration has been removed, and those Titan Dynamic
+Translation Corrections are owned by `src/l10n/Titan/zhCN.lua`, still selected by the runtime
+flavor/season gate.
 
 ## Ownership
 

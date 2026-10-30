@@ -32,7 +32,7 @@ end
 ]])
     local beforeQuestie, beforeLoader, beforeLocale = rawget(_G, "Questie"),
       rawget(_G, "QuestieLoader"), rawget(_G, "GetLocale")
-    local values = generator.extract(root, flavor, "Quest", { [1] = true, [2] = true, [3] = true })
+    local values = generator.extract(root, flavor, "Quest")
     local de, fr = localeIndices.deDE, localeIndices.frFR
     equal(values[1][1][de], "Override", "whole-row override replaces the translated name")
     equal(values[1][2][de], nil, "name-only override clears the base row's objectives")
@@ -42,7 +42,14 @@ end
     equal(values[2][2][de], { "Keep me" }, "override leaves other entities' objectives unchanged")
     equal(values[3][1][de], "Clean", "extraction cleans scalar whitespace and control bytes")
     equal(values[3][2][de], { "One objective" }, "bare objective becomes a list")
-    equal(values[9], nil, "translation override cannot create an absent entity")
+
+    -- Retention is by translation membership, not entity membership (ADR 0017, issue #70).
+    -- Generation keeps a translated ID the entity database lacks; whether it is ever readable
+    -- is a read-time question, decided by the composed database rather than by this filter.
+    equal(values[9][1][de], "Absent", "extraction retains a translation for an unbaked ID")
+    equal(values[9][2][de], { "Not an entity" }, "retained unbaked translation keeps its list shape")
+    equal(generator.localizationIds(values), { 1, 2, 3, 9 },
+      "the localization ID list is ascending and includes the unbaked ID")
     check(rawget(_G, "Questie") == beforeQuestie and rawget(_G, "QuestieLoader") == beforeLoader and
       rawget(_G, "GetLocale") == beforeLocale, "extraction restores caller globals")
 

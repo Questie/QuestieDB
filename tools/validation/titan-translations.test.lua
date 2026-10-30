@@ -8,6 +8,16 @@ return function(check, equal, modeScope)
   _G.LibStub = savedLibStub
   assert(ok, client)
   local expected = { [6805] = "大雷暴和巨磐石", [93975] = "拉格纳罗斯必须死！" }
+  -- Quest IDs the owned WotLK zhCN lookup translates but the baked entity database lacks.
+  -- Base localization can only serve them from the artifact's retained unbaked translations
+  -- (issue #70), which is what lets Baked mode stop depending on a runtime row for them.
+  -- This is a property of the lookup inputs, not of which rows zhCN.lua happens to register.
+  local duplicatedLookupIds = {
+    93950, 93975, 94376, 94576, 94577, 94579, 95037, 95072, 95074, 95075, 95076, 95077,
+    95078, 95079, 95080, 95081, 95082, 95083, 95084, 95085, 95088, 95089, 95090, 95092,
+    95093, 95094, 95095, 95096, 95097, 95098, 95099, 95100, 95101, 95102, 95103, 95104,
+    95105, 95106, 95205, 95705, 95706, 95844, 95845, 96211, 96312, 96315, 96318, 98183,
+  }
   local modes = modeScope == "Baked" and {} or { { name = "Source", toc = "QuestieDB.toc" } }
   if modeScope ~= "Source" then
     if lib.fileExists("QuestieDB_Wrath.toc") then
@@ -26,7 +36,8 @@ return function(check, equal, modeScope)
       local db = emulator.loadAddon(mode.toc, "QuestieDB")
       local label = mode.name .. " initially " .. initialLocale .. ": "
       if mode.name == "Source" then
-        check(db.read.source.entities.Quest == nil and db.read.source.entities.Npc == nil,
+        check(db.read.source.entities.Quest == nil and db.read.source.entities.Npc == nil and
+          db.read.source.entities.Item == nil and db.read.source.entities.Object == nil,
           label .. "translation registration preserves lazy Source entity initialization")
       end
       equal(db.l10n.currentLocale, initialLocale, label .. "client locale selected")
@@ -41,6 +52,21 @@ return function(check, equal, modeScope)
       equal(db.Quest.objectivesText(6805),
         { "消灭15个大型灰尘风暴和15个大型沙漠奔行者，然后回到艾萨拉的海达克西斯公爵那儿。" }, label .. "6805 objectives")
       equal(db.Quest.objectivesText(93975), { "团队消灭拉格纳罗斯。" }, label .. "93975 objectives")
+      equal(db.Quest.name(8184), "愤怒预言", label .. "8184 authored Titan name")
+      -- Every translatable entity type registers from the same seasonal zhCN set.
+      local npcExpected = { [80007] = "？", [256887] = "大型灰尘风暴", [257012] = "观察者奥尔加隆" }
+      for id, name in pairs(npcExpected) do
+        equal(db.Npc.name(id), name, label .. "Titan NPC " .. id)
+        equal(db.GetProvenance("Npc", id, "name"), "QuestieDB", label .. "Titan NPC provenance " .. id)
+      end
+      -- Titan remaps items 268145/274994, so their names follow the Titan English text.
+      local itemExpected = { [264272] = "天界信函", [268145] = "打孔的巫毒人偶", [274994] = "原始哈卡莱神像" }
+      for id, name in pairs(itemExpected) do
+        equal(db.Item.name(id), name, label .. "Titan Item " .. id)
+        equal(db.GetProvenance("Item", id, "name"), "QuestieDB", label .. "Titan Item provenance " .. id)
+      end
+      equal(db.Object.name(420002), "血之祭坛", label .. "Titan Object name")
+      equal(db.GetProvenance("Object", 420002, "name"), "QuestieDB", label .. "Titan Object provenance")
       -- An ordinary non-English locale must not inherit the previous seasonal translation.
       -- This Titan-added entity has no base block row, so its corrected English text wins.
       db.l10n.SetLocale("enUS")
@@ -63,6 +89,65 @@ return function(check, equal, modeScope)
       db.l10n.SetLocale("enUS")
       db.l10n.SetLocale("zhCN")
       check(db.Quest.name(6805) ~= expected[6805], label .. "locale callbacks do not resurrect withdrawn translation")
+
+      -- Issue #70: Base localization now retains translations for IDs the baked entity
+      -- database lacks. That makes the duplicated ordinary lookup rows redundant in Baked mode,
+      -- and Source mode reaches the same lookups directly, so the general path serves them in
+      -- both modes. Source mode only has them for its own client locale, so it is checked there.
+      local baseServes = mode.name == "Baked" or
+        (db.l10nSource ~= nil and db.l10nSource.locale == "zhCN")
+      if baseServes then
+        local beforeWithdrawal = {}
+        for _, id in ipairs(duplicatedLookupIds) do beforeWithdrawal[id] = db.Quest.name(id) end
+        db.l10n.SetCorrection("QuestieDB", "zhCN", "Quest", "Titan:zhCN", nil)
+        local resolved, unresolved = 0, {}
+        for _, id in ipairs(duplicatedLookupIds) do
+          local value = db.Quest.name(id)
+          if value ~= nil and value == beforeWithdrawal[id] then
+            resolved = resolved + 1
+          else
+            unresolved[#unresolved + 1] = tostring(id)
+          end
+        end
+        equal(resolved, #duplicatedLookupIds,
+          label .. "every duplicated lookup row still resolves from the stored Base blocks")
+        equal(#unresolved, 0, label .. "no duplicated lookup row depends on the runtime rows")
+        equal(db.GetProvenance("Quest", 93975, "name"), "QuestieDB",
+          label .. "the stored Base block owns the duplicated row's value")
+
+        -- The same holds for the other three entity types: every ordinary lookup row for a
+        -- Titan-added entity must survive withdrawing that type's runtime slot, because the
+        -- stored blocks retain its translation too.
+        for _, case in ipairs({
+          { datatype = "Npc", ids = { 80007, 256887, 256889, 257012, 257403, 262258 } },
+          { datatype = "Item", ids = { 264272, 272955, 279578 } },
+          { datatype = "Object", ids = { 420002 } },
+        }) do
+          local entity = db[case.datatype]
+          local before = {}
+          for _, id in ipairs(case.ids) do before[id] = entity.name(id) end
+          db.l10n.SetCorrection("QuestieDB", "zhCN", case.datatype, "Titan:zhCN", nil)
+          local kept = 0
+          for _, id in ipairs(case.ids) do
+            local value = entity.name(id)
+            if value ~= nil and value == before[id] then kept = kept + 1 end
+          end
+          equal(kept, #case.ids,
+            label .. case.datatype .. ": duplicated lookup rows still resolve from Base blocks")
+          equal(db.GetProvenance(case.datatype, case.ids[1], "name"), "QuestieDB",
+            label .. case.datatype .. ": the stored Base block owns the duplicated row")
+        end
+
+        -- The genuine seasonal overrides are not in the Base blocks, so they must fall back.
+        db.l10n.SetLocale("enUS")
+        local overrideEnglish = db.Quest.name(6805)
+        db.l10n.SetLocale("zhCN")
+        check(db.Quest.name(6805) ~= expected[6805],
+          label .. "a seasonal override is not served by the Base blocks")
+        db.l10n.SetLocale("enUS")
+        equal(db.Quest.name(6805), overrideEnglish, label .. "enUS keeps the English Titan value")
+        db.l10n.SetLocale("zhCN")
+      end
     end
   end
 
@@ -74,15 +159,28 @@ return function(check, equal, modeScope)
     { expansion = "Wotlk", season = 99 }, { expansion = "Cata", season = 109 },
     { expansion = "MoP", season = 109 },
   }
-  for _, persona in ipairs(personas) do
+  -- The declaration's only dependencies are the public translation interface, the schema keys,
+  -- and character facts. Stub those so registration can be counted without loading datasets.
+  local stubKeys = { name = 1, objectivesText = 2, subName = 3 }
+  local stubMeta = { Quest = { keys = stubKeys }, Npc = { keys = stubKeys },
+    Item = { keys = stubKeys }, Object = { keys = stubKeys } }
+  local function registrations(persona)
     client.reset()
     client.install(persona)
     C_Seasons.GetActiveSeason = function() return persona.season end
-    local calls = 0
-    local db = { flavor = { expansion = persona.expansion },
-      l10n = { SetCorrection = function() calls = calls + 1 end } }
+    local seen = {}
+    local db = { flavor = { expansion = persona.expansion }, Meta = stubMeta,
+      l10n = { SetCorrection = function(_, _, datatype) seen[#seen + 1] = datatype end } }
     assert(loadfile("src/l10n/Titan/zhCN.lua"))("QuestieDB", db)
-    equal(calls, 0, persona.expansion .. " season " .. persona.season .. " rejects Titan translations")
+    return seen
   end
+  for _, persona in ipairs(personas) do
+    equal(#registrations(persona), 0,
+      persona.expansion .. " season " .. persona.season .. " rejects Titan translations")
+  end
+  local active = registrations({ expansion = "Wotlk", season = 109 })
+  equal(#active, 4, "Titan season 109 registers one slot per entity type")
+  equal(table.concat(active, ","), "Quest,Npc,Item,Object",
+    "Titan season 109 registers all four entity types")
   client.reset()
 end
