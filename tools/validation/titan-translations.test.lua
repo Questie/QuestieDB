@@ -91,10 +91,12 @@ return function(check, equal, modeScope)
       check(db.Quest.name(6805) ~= expected[6805], label .. "locale callbacks do not resurrect withdrawn translation")
 
       -- Issue #70: Base localization now retains translations for IDs the baked entity
-      -- database lacks. In Baked mode that makes the duplicated ordinary lookup rows
-      -- redundant — the general path serves them without the runtime correction. This is the
-      -- evidence the dedup decision depends on, and it is why Baked and Source differ below.
-      if mode.name == "Baked" then
+      -- database lacks. That makes the duplicated ordinary lookup rows redundant in Baked mode,
+      -- and Source mode reaches the same lookups directly, so the general path serves them in
+      -- both modes. Source mode only has them for its own client locale, so it is checked there.
+      local baseServes = mode.name == "Baked" or
+        (db.l10nSource ~= nil and db.l10nSource.locale == "zhCN")
+      if baseServes then
         local beforeWithdrawal = {}
         for _, id in ipairs(duplicatedLookupIds) do beforeWithdrawal[id] = db.Quest.name(id) end
         db.l10n.SetCorrection("QuestieDB", "zhCN", "Quest", "Titan:zhCN", nil)

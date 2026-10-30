@@ -106,8 +106,7 @@ The localization ID list is neither a subset nor a superset of the entity ID lis
 IDs the baked database lacks, and omits baked IDs no locale translates.
 
 The 58 Titan Reforged rows that are byte-identical to the owned zhCN lookup are now redundant in
-Baked mode — the test suite proves all 48 Quest rows still resolve after the runtime slot is
-withdrawn — but they remain the only zhCN source in Source mode, which loads no ordinary
-localization metadata. They are kept; removing them is a separate decision that requires a
-Source-mode answer first. The genuine seasonal overrides — the 18 quests and 2 remapped items
-whose text differs from the lookup — stay regardless.
+both modes — the test suite proves all 48 Quest rows still resolve after the runtime slot is
+withdrawn, from the stored Baked blocks and from Source mode's own lookups. They are kept;
+removing them is a separate decision. The genuine seasonal overrides — the 18 quests and 2
+remapped items whose text differs from the lookup — stay regardless.

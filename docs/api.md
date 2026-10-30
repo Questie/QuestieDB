@@ -715,10 +715,10 @@ Other flavors and seasons do not register it; changing locale selects or hides i
 the English Titan entity Corrections.
 
 Baked Localization blocks retain translations for IDs the baked entity database does not contain,
-so a Titan-added entity no longer needs a duplicated runtime row to have Chinese text. What the
-runtime slot still supplies is what no stored translation can: base entities Titan re-authors in
-place, whose text differs from the WotLK lookup. Source mode loads no ordinary Base translations
-at all, so those rows remain its only Chinese source.
+and Source mode loads the same owned lookups for its client locale, so a Titan-added entity no
+longer needs a duplicated runtime row to have Chinese text in either mode. What the runtime slot
+still supplies is what no stored translation can: base entities Titan re-authors in place, whose
+text differs from the WotLK lookup.
 
 `extraObjectives` descriptions are different. Correction files author row slot `[3]` as an enUS
 localization key, and QuestieDB preserves that English string. The entity localization overlay
