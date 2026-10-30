@@ -212,7 +212,7 @@ function QuestieQuestFixes:Load()
             [questKeys.objectives] = {nil, nil, {{15885, nil, Questie.ICON_TYPE_EVENT}}}, -- we need event icon here
         },
         [273] = { -- Resupplying the Excavation
-            [questKeys.triggerEnd] = {"Find Huldar, Miran, and Saean", {[zoneIDs.LOCH_MODAN] = {{51.16, 68.96}}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{1379,2057},15885,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [275] = { -- Blisters on The Land
             [questKeys.objectivesText] = {"Kill 12 Fen Creepers, then return to Rethiel the Greenwarden in the Wetlands."},
@@ -246,6 +246,12 @@ function QuestieQuestFixes:Load()
         },
         [315] = { -- The Perfect Stout
             [questKeys.nextQuestInChain] = 413,
+        },
+        [324] = { -- The Lost Ingots
+            [questKeys.exclusiveTo] = {526},
+        },
+        [334] = { -- Package for Thurman
+            [questKeys.disabledByQuest] = 333,
         },
         [336] = { -- A Noble Brew
             [questKeys.nextQuestInChain] = 397,
@@ -407,7 +413,9 @@ function QuestieQuestFixes:Load()
             [questKeys.breadcrumbs] = {495},
         },
         [526] = { -- Lightforge Ingots
-            [questKeys.exclusiveTo] = {322, 324}, -- not 100% sure on this one but it seems lightforge ingots is optional, block it after completing subsequent steps (#587)
+            [questKeys.preQuestSingle] = {321},
+            [questKeys.exclusiveTo] = {324},
+            [questKeys.nextQuestInChain] = 322,
         },
         [532] = { -- Battle of Hillsbrad
             [questKeys.objectivesText] = {"Kill Magistrate Burnside and 5 Hillsbrad Councilmen. Destroy the Hillsbrad Proclamation. Steal the Hillsbrad Town Registry. Report back to Darthalia in Tarren Mill afterwards."},
@@ -1040,7 +1048,6 @@ function QuestieQuestFixes:Load()
         },
         [1119] = { -- Zanzil's Mixture and a Fool's Stout
             [questKeys.inGroupWith] = {}, -- #886
-            [questKeys.childQuests] = {1127}, -- #1084
         },
         [1120] = { -- Get the Gnomes Drunk
             [questKeys.nextQuestInChain] = 1122,
@@ -1048,18 +1055,11 @@ function QuestieQuestFixes:Load()
         [1121] = { -- Get the Goblins Drunk
             [questKeys.nextQuestInChain] = 1122,
         },
-        [1122] = { -- Report Back to Fizzlebub
-            [questKeys.nextQuestInChain] = 1127,
-        },
         [1123] = { -- Rabine Saturna
             [questKeys.preQuestSingle] = {1000, 1004, 1018},
         },
         [1126] = { -- Hive in the Tower
             [questKeys.requiredSourceItems] = {17345},
-        },
-        [1127] = { -- Fool's Stout
-            [questKeys.specialFlags] = specialFlags.REPEATABLE, -- #884
-            [questKeys.parentQuest] = 1119, -- #1084
         },
         [1130] = { -- Melor Sends Word
             [questKeys.breadcrumbForQuestId] = 1131,
@@ -1173,7 +1173,7 @@ function QuestieQuestFixes:Load()
             [questKeys.startedBy] = {{4968}},
         },
         [1268] = { -- Suspicious Hoofprints
-            [questKeys.startedBy] = {nil, {21015, 21016}}, -- #1574
+            [questKeys.startedBy] = {nil, {21015, 21016}}, -- #1574 -- this quest is started by the LEFT hoofprint
         },
         [1269] = { -- Lieutenant Paval Reethe
             [questKeys.nextQuestInChain] = 1273,
@@ -1186,14 +1186,15 @@ function QuestieQuestFixes:Load()
             [questKeys.preQuestGroup] = {},
         },
         [1273] = { -- Questioning Reethe
-            [questKeys.triggerEnd] = {"Question Reethe with Ogron", {[zoneIDs.DUSTWALLOW_MARSH] = {{42.47, 38.07}}}},
+            [questKeys.objectives] = {{{4980,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [1275] = { -- Researching the Corruption
             [questKeys.preQuestSingle] = {}, -- #973
             [questKeys.breadcrumbs] = {3765}, -- #745
         },
         [1276] = { -- The Black Shield
-            [questKeys.preQuestSingle] = {1273}, -- #1574
+            [questKeys.preQuestSingle] = {},
+            [questKeys.preQuestGroup] = {1273,1323},
         },
         [1282] = { -- They Call Him Smiling Jim
             [questKeys.availableUntilCompleted] = 1302,
@@ -5094,6 +5095,7 @@ function QuestieQuestFixes:Load()
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [8356] = { -- Flexing for Nougat
+            [questKeys.objectivesText] = {"Do a flex emote at Innkeeper Allison, and in exchange you'll receive Stormwind Nougat!"},
             [questKeys.objectives] = {{{6740, nil, Questie.ICON_TYPE_EVENT}}},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },

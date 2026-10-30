@@ -20,6 +20,9 @@ function ForeverItemFixes:Load()
         [780] = { -- Torn Murloc Fin
             [itemKeys.npcDrops_remove] = {202060},
         },
+        [915] = { -- Red Silk Bandana
+            [itemKeys.npcDrops_remove] = {234979},
+        },
         [3371] = { -- Empty Vial
             [itemKeys.npcDrops] = {},
             [itemKeys.objectDrops] = {}, -- only show vendors
@@ -29,6 +32,12 @@ function ForeverItemFixes:Load()
         },
         [5220] = { -- Gnarlpine Fang
             [itemKeys.npcDrops] = {2006,2007,2008,2009,2010,2011,2012,2013,2014,2152,7235,14428,14429},
+        },
+        [6529] = { -- Shiny Bauble
+            [itemKeys.npcDrops] = {}, -- only show vendors
+        },
+        [6530] = { -- Nightcrawlers
+            [itemKeys.npcDrops] = {}, -- only show vendors
         },
         [6889] = { -- Small Egg
             [itemKeys.npcDrops_add] = {251261,251284,251291},
@@ -95,6 +104,12 @@ function ForeverItemFixes:Load()
         [252760] = { -- Stolen Shen'dar Supplies
             [itemKeys.npcDrops] = {252068,254596,259385,259398},
         },
+        [254546] = { -- Jansen Stead Water Sample
+            [itemKeys.objectDrops] = {460005},
+        },
+        [254547] = { -- Molsen Farm Water Sample
+            [itemKeys.objectDrops] = {460006},
+        },
         [254871] = { -- Bloody Note
             [itemKeys.objectDrops] = {617704},
         },
@@ -112,6 +127,18 @@ function ForeverItemFixes:Load()
         },
         [274289] = { -- Dwarven Heirloom
             [itemKeys.objectDrops_remove] = {457387},
+        },
+        [277194] = { -- Trollbane Conquests
+            [itemKeys.objectDrops] = {660730},
+        },
+        [277195] = { -- The Forsaken Ally
+            [itemKeys.objectDrops] = {660729},
+        },
+        [277196] = { -- Field Accounts of Horde Razings
+            [itemKeys.objectDrops] = {660731},
+        },
+        [277197] = { -- Cycles of Morality
+            [itemKeys.objectDrops] = {660732},
         },
         [281030] = { -- Treaty of Understanding
             [itemKeys.objectDrops] = {673474},

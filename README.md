@@ -21,7 +21,7 @@ existing.**
 | TOC | `QuestieDB.toc` (committed) | `QuestieDB_Vanilla.toc` etc. (generated, gitignored) |
 | Reads resolve from | raw entity data | CBOR rows and tables in the TOC metadata store |
 | Static Corrections | applied live | already folded in |
-| Base translations | unavailable | generated Localization blocks |
+| Base translations | raw `l10n/` lookups, client locale only | generated Localization blocks |
 | Dynamic Translation Corrections | any active non-English locale | any active non-English locale |
 | Requires | a clone and native per-file game-type selection | one bootstrap command, or local Generation |
 
@@ -465,7 +465,8 @@ Release notes recommend `QuestieDB-all.zip`, list the smaller per-flavor downloa
 installation. Commit provenance, API contracts, and checksum instructions live in a collapsed
 build-details section.
 
-Every release ZIP includes `QuestieDB/CHANGELOG.md`. The separate `release.json` asset lists
+Every release ZIP includes `QuestieDB/CHANGELOG.md` and the license files `LICENSE.md` and
+`gpl-3.0.md`. The separate `release.json` asset lists
 addon-manager downloads under `releases` and keeps build metadata, ZIP checksums, and structured
 changelog entries under `questiedb`. See the [manifest format](tools/distribution/README.md#release-manifest).
 

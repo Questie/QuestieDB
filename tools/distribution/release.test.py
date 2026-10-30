@@ -250,6 +250,16 @@ class ReleaseTest(unittest.TestCase):
         self.assertEqual(0, self.run_action("preflight"), self.stderr)
         self.assertEqual([], self.writes)
 
+    def test_should_reject_overriding_a_release_already_uploaded_to_curseforge(self):
+        self.env["RELEASE_OVERRIDE"] = "true"
+        self.state = {"release": {"databaseId": 42}, "ref": {"name": "v1.2.3"}, "curseforge": {"totalCount": 1}}
+        for action in ("preflight", "publish"):
+            with self.subTest(action=action):
+                self.assertEqual(1, self.run_action(action))
+                self.assertIn("already on CurseForge", self.stderr)
+        self.assertIn("curseforge=refs/tags/curse/v1.2.3/", self.reads[0])
+        self.assertEqual([], self.writes)
+
     def test_new_stable_release_uploads_all_verified_assets_before_publication(self):
         self.assertEqual(0, self.run_action("publish"), self.stderr)
         self.assertEqual(

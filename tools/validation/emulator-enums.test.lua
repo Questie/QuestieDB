@@ -11,7 +11,7 @@ return function(equal)
     { flavor = "Cata", Alliance = 2098253, Horde = 946, allClasses = 1535, vendor = 128, repair = 4096, barber = 33554432, transmog = 268435456 },
     { flavor = "Mists", Alliance = 18875469, Horde = 33555378, allClasses = 2047, vendor = 128, repair = 4096, barber = 33554432, transmog = 268435456 },
     -- Forever has no classKeys or npcFlags of its own and uses its Classic rules flavor's tables.
-    { flavor = "Forever", Alliance = 4294967373, Horde = 8589934770, allClasses = 1503, vendor = 4, repair = 16384 },
+    { flavor = "Forever", Alliance = 4294967373, Horde = 8589934770, allClasses = 1503, vendor = 4, repair = 16384, barber = 33554432, transmog = 536870912},
     { flavor = "Vanilla", season = "SoD", Alliance = 77, Horde = 178, allClasses = 1503, vendor = 4, repair = 16384 },
     { flavor = "Wrath", season = "TitanReforged", Alliance = 1101, Horde = 690, allClasses = 1535, vendor = 128, repair = 4096, barber = 33554432 },
   }

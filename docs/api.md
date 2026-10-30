@@ -479,7 +479,8 @@ Operands have the field's canonical shape, including its grouping:
 | `idarray` | `{7786, -7787}` | Complete integer; signed values are allowed |
 | `stringarray` | `{"First objective", "Second objective"}` | Complete string |
 | `pair` | `{164, 75}` | Whole atomic record |
-| `pairs` | `{{72, 100}, {73, 200}}` | Complete pair, not faction/skill ID alone |
+| `pairs` | `{{164, 75}, {165, 150}}` | Complete integer pair, not skill ID alone |
+| `reputationpairs` | `{{72, 100}, {73, 37.5}}` | Complete pair, not faction ID alone; the value may be fractional |
 | `questgivers` | `{[2] = {424005}}` | IDs within supplied groups: `[1]` NPC, `[2]` object, `[3]` item |
 | `objectives` | `{[1] = {{123}}, [4] = {72, 3000}}` | Complete rows within groups 1, 2, 3, 5, 6; group 4 is an atomic reputation pair |
 | `spawnlist` | `{[12] = {{45, 60, 2}}}` | Complete coordinate tuple within a supplied zone |
@@ -643,7 +644,7 @@ LibQuestieDB.l10n.SetLocale("enUS")
 QuestDB.name(2)                       --> "Sharptalon's Claw"
 
 LibQuestieDB.l10n.currentLocale
-LibQuestieDB.l10n.IsAvailable()       --> whether this artifact contains Base translations
+LibQuestieDB.l10n.IsAvailable()       --> whether Base translations are present
 LibQuestieDB.l10n.onLocaleChanged[#… + 1] = function(locale) … end
 ```
 
@@ -661,9 +662,10 @@ Correction's entity still resolves its lookup translation. A stored translation 
 entity: it resolves only while that entity exists in the composed database, exactly as for a
 Dynamic Translation Correction.
 
-`l10n.IsAvailable()` reports only whether the artifact contains generated Base translation
-blocks. It is false in Source mode, where ordinary Base translations remain unavailable.
-Dynamic Translation Corrections work in either mode and do not change that result.
+`l10n.IsAvailable()` reports whether Base translations are present: generated blocks in Baked
+mode, or raw `l10n/` lookups in Source mode. Source mode captures only the client locale, so
+selecting another locale there has no Base translations. Dynamic Translation Corrections work in
+either mode and do not change that result.
 
 A translated `objectivesText` remains a table; element counts follow the upstream lookup and
 may differ where a locale combines objectives. Every read returns a fresh mutable copy.

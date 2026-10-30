@@ -101,6 +101,8 @@ end
 -- only translations. Keep this order stable so generated blocks remain byte-identical.
 
 config.locales = { "deDE", "esES", "esMX", "frFR", "koKR", "ptBR", "ruRU", "zhCN", "zhTW" }
+-- Raw lookup directories under l10n/<expansion>/, loaded directly only in Source mode.
+config.l10nLookupDirs = { "lookupQuests", "lookupNpcs", "lookupItems", "lookupObjects" }
 
 ---Bumped when the localization block layout changes in a way a reader can observe.
 ---
@@ -437,6 +439,31 @@ function config.sourceFileEntries()
     add("src/corrections/Sod/sodRequiredRaces.lua", config.flavorByName.Vanilla)
   end
   for _, path in ipairs(config.derivedFiles) do add(path) end
+  -- Source mode loads the raw lookups; their locale guards keep only the client locale.
+  add("src/l10n/source/_begin.lua")
+  for _, flavor in ipairs(config.flavors) do
+    for _, dir in ipairs(config.l10nLookupDirs) do
+      for _, locale in ipairs(config.locales) do
+        add(("l10n/%s/%s/%s.lua"):format(flavor.expansion, dir, locale), flavor)
+      end
+    end
+  end
+  add("src/l10n/source/_traces.lua")
+  -- Trace files are optional per type and locale; list those present when the TOC is generated.
+  for _, dir in ipairs(config.l10nLookupDirs) do
+    for _, locale in ipairs(config.locales) do
+      local path = ("l10n/Forever/traces/%s/%s.lua"):format(dir, locale)
+      local file = io and io.open(path, "r")
+      if file then
+        file:close()
+        add(path, config.flavorByName.Forever)
+      end
+    end
+  end
+  for _, name in ipairs({ "TBC", "Wrath", "Cata", "Mists" }) do
+    add("l10n/lookupOverrides.lua", config.flavorByName[name])
+  end
+  add("src/l10n/source/_end.lua")
   for _, path in ipairs(config.runtimeFiles.tail) do add(path) end
   return entries
 end

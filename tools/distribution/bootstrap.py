@@ -85,7 +85,7 @@ def stage_archive(archive_path: Path, stage: Path) -> None:
             if (
                 parts[1] not in ("src", "support", "Types", "icons")
                 and str(relative) not in TOCS
-                and str(relative) != "CHANGELOG.md"
+                and str(relative) not in ("CHANGELOG.md", "LICENSE.md", "gpl-3.0.md")
             ):
                 raise ValueError("archive contains non-generated payload: %s" % name)
             if str(relative) in TOCS and (entry.is_dir() or mode == stat.S_IFDIR):

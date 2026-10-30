@@ -15,6 +15,10 @@ function ForeverObjectFixes:Load()
         [61934] = { -- Brazier of the Dormant Flame
             [objectKeys.spawns_add] = {[zoneIDs.LOCH_MODAN] = {{31.79,64.52}}},
         },
+        [179437] = { -- Wanted: ORCS!
+            [objectKeys.spawns] = {[zoneIDs.ALTERAC_VALLEY] = {{43.27,16.52}}},
+            [objectKeys.zoneID] = zoneIDs.ALTERAC_VALLEY,
+        },
         [386691] = { -- Library Book
             [objectKeys.spawns] = {[zoneIDs.IRONFORGE] = {{76,10.4}}},
             [objectKeys.zoneID] = zoneIDs.IRONFORGE,
@@ -116,6 +120,9 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.SILVERPINE_FOREST] = {{43.4,41.2}}},
             [objectKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
             [objectKeys.questStarts] = {79096},
+        },
+        [415107] = { -- Burned-Out Remains
+            [objectKeys.spawns] = {[zoneIDs.WESTFALL] = {{37.41,50.7}}},
         },
         [421526] = { -- Research Notes
             [objectKeys.questStarts] = {79535},
@@ -278,6 +285,9 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{46.9,76.9},{47.8,76.4},{47.8,76.5},{48.0,79.5},{48.2,78.4},{48.2,78.5},{48.4,73.7},{48.7,75.5},{48.7,79.1},{48.8,75.4},{48.9,82.0},{49.3,74.1},{49.6,77.3},{50.0,75.2},{50.0,81.1},{50.3,72.5},{50.3,73.5},{50.3,79.7},{50.4,77.6},{50.4,82.4},{50.4,82.5},{50.5,77.5},{50.5,79.6},{50.5,82.6},{50.8,80.9},{51.1,83.5},{51.2,81.8},{51.4,76.0},{51.4,77.0},{51.5,75.9},{51.5,77.1},{51.8,83.4},{51.8,83.5},{51.9,82.1},{52.7,79.4},{52.8,79.7},{53.6,81.8},{54.5,80.0}}}, -- WIP
             [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
+        [581792] = { -- Detonator
+            [objectKeys.spawns] = {[zoneIDs.WESTFALL] = {{38.72,83.6}}},
+        },
         [581820] = { -- Dusty Bedroll
             [objectKeys.name] = "Dusty Bedroll",
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{52.08,69.4}}},
@@ -336,6 +346,9 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{12.04,56.21}}},
             [objectKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
         },
+        [649051] = { -- Wanted: Incinerator Gar'im
+            [objectKeys.spawns] = {[zoneIDs.REDRIDGE_MOUNTAINS] = {{24.29,46.18}}},
+        },
         [649094] = { -- Rock Pile
             [objectKeys.name] = "Rock Pile",
             [objectKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{65.2,25},{66.4,25.5},{67.1,29},{68.4,29.2},{68.5,29.1},{74.8,39.6}}},
@@ -363,6 +376,24 @@ function ForeverObjectFixes:Load()
         [656182] = { -- Raider's Shield
             [objectKeys.spawns] = {[zoneIDs.DUROTAR] = {{56.54,53}}},
         },
+        [658924] = { -- Mailbox
+            [objectKeys.questStarts_remove] = {5725},
+        },
+        [659159] = { -- Mailbox
+            [objectKeys.questStarts_remove] = {1486},
+        },
+        [660729] = { -- The Forsaken Ally
+            [objectKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{76.48,30.4}}},
+        },
+        [660730] = { -- Trollbane Conquests
+            [objectKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{75.62,30.49}}},
+        },
+        [660731] = { -- Field Accounts of Horde Razings
+            [objectKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{76.02,31.01}}},
+        },
+        [660732] = { -- Cycles of Morality
+            [objectKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{76.25,29.19}}},
+        },
         [660739] = { -- Ritual Fire
             [objectKeys.questEnds_add] = {95805},
             [objectKeys.spawns] = {[zoneIDs.MULGORE] = {{56.61,88.7}}},
@@ -380,8 +411,21 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{53.02,87.84}}},
             [objectKeys.zoneID] = zoneIDs.THUNDER_BLUFF,
         },
+        [673101] = { -- Tarantula Egg
+            [objectKeys.spawns] = {[zoneIDs.REDRIDGE_MOUNTAINS] = {{46.0,42.1},{46.1,37.3},{46.3,40.4},{46.3,40.8},{46.4,37.8},{46.4,44.3},{46.5,37.7},{46.5,40.6},{46.6,37.2},{46.6,39.7},{46.6,42.0},{46.8,45.2},{47.1,43.5},{47.2,43.3},{47.4,38.7},{47.6,44.5},{48.3,37.7},{48.3,46.1},{48.4,38.5},{48.4,44.4},{48.5,38.2},{49.3,44.6},{49.4,38.5},{49.5,37.8},{49.6,39.0},{49.7,44.9},{50.5,38.8},{50.7,40.4},{50.7,40.5},{50.7,44.6},{52.0,45.9},{52.2,42.2},{52.2,42.5},{52.2,43.7},{52.5,42.3}}},
+            [objectKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
+        },
         [673378] = { -- Oracle Tree Bark
             [objectKeys.questStarts_add] = {940},
+        },
+        [673385] = { -- Blackrock Supplies
+            [objectKeys.spawns] = {[zoneIDs.REDRIDGE_MOUNTAINS] = {{63.8,78.4},{63.8,78.5},{67.4,78.9},{67.7,78.8},{68.8,79.4},{68.9,78.1},{69.0,80.3},{69.2,80.5},{69.3,83.7},{69.7,77.9},{69.7,80.4},{69.7,80.9},{69.8,77.4},{70.1,82.8},{70.4,85.0},{70.5,85.0},{70.7,78.7},{70.8,80.9},{71.0,80.4},{72.0,83.3},{72.2,69.5},{72.4,69.4},{72.5,69.3},{72.6,69.5},{72.7,66.4},{72.7,86.6},{72.8,73.2},{72.8,73.5},{72.9,67.0},{73.0,85.9}}},
+        },
+        [673390] = { -- Weapon Rack
+            [objectKeys.spawns] = {[zoneIDs.REDRIDGE_MOUNTAINS] = {{68.2,79.0},{68.4,79.8},{68.6,79.7},{69.4,82.3},{69.6,82.1},{69.9,82.5},{70.4,73.6},{70.6,73.9},{70.7,73.4},{70.7,81.4},{70.7,81.5},{70.9,84.4},{70.9,84.5},{72.1,67.1},{72.4,86.1},{72.5,86.2},{73.4,68.6},{73.6,68.4},{73.6,69.0},{73.8,71.2},{73.8,71.5}}},
+        },
+        [673399] = { -- Stolen Weapon
+            [objectKeys.spawns] = {[zoneIDs.REDRIDGE_MOUNTAINS] = {{63.4,78.5},{63.7,78.4},{63.8,78.6},{65.2,76.0},{67.2,80.2},{67.2,80.5},{67.5,80.2},{68.8,78.3},{69.0,79.8},{69.1,79.1},{71.4,73.4},{71.4,73.6},{71.5,73.4},{71.5,73.5},{72.5,86.4},{72.6,86.5},{72.7,69.3},{72.8,69.7}}},
         },
         [673474] = { -- Treaty of Understanding
             [objectKeys.name] = "Treaty of Understanding",
@@ -418,6 +462,9 @@ function ForeverObjectFixes:Load()
         [695277] = { -- Stoneanvil's Rifle
             [objectKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{53.16,58.78}}},
         },
+        [696264] = { -- Mailbox
+            [objectKeys.questStarts_remove] = {151},
+        },
         [697118] = { -- Windstone Formation
             [objectKeys.name] = "Windstone Formation",
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{47.0,69.0},{47.3,69.7},{47.4,68.3},{47.5,68.6},{47.7,70.0},{47.8,67.5},{48.6,68.5}}},
@@ -439,10 +486,20 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{46.68,53.84}},[zoneIDs.TIRISFAL_GLADES] = {{57.17,55.55}},[zoneIDs.TELDRASSIL] = {{57.66,56.74}},[zoneIDs.MULGORE] = {{46.21,67.31}},[zoneIDs.DUROTAR] = {{52.09,47.39}},[zoneIDs.ELWYNN_FOREST] = {{44.94,63.2}},[zoneIDs.ZEPHRAS_ISLE] = {{41.73,44.78}}},
             [objectKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
         },
-        [460004] = { -- Mountaineer Cornelius
-            [objectKeys.name] = "Mountaineer Cornelius",
-            [objectKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{43.03,49.62}}},
-            [objectKeys.zoneID] = zoneIDs.DUN_MOROGH,
+        [460004] = { -- Gatehouse Door
+            [objectKeys.name] = "Gatehouse Door",
+            [objectKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{66.48,74.8}}},
+            [objectKeys.zoneID] = zoneIDs.STORMWIND_CITY,
+        },
+        [460005] = { -- Jansen Stead Water Well
+            [objectKeys.name] = "Jansen Stead Water Well",
+            [objectKeys.spawns] = {[zoneIDs.WESTFALL] = {{56.62,18.69}}},
+            [objectKeys.zoneID] = zoneIDs.WESTFALL,
+        },
+        [460006] = { -- Molsen Farm Water Well
+            [objectKeys.name] = "Molsen Farm Water Well",
+            [objectKeys.spawns] = {[zoneIDs.WESTFALL] = {{46.08,38.14}}},
+            [objectKeys.zoneID] = zoneIDs.WESTFALL,
         },
     }
 end

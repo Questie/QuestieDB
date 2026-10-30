@@ -206,6 +206,22 @@ local availableTypes = {}
 --- enUS, or a custom locale — skips the decode entirely.
 local localizationIds = {}
 
+-- Source mode: raw lookups captured for the client locale only, built per type on first use.
+local sourceRows = {}
+
+---@param typeName string
+---@return table? rows id -> entity field index -> translated value
+local function sourceRowsFor(typeName)
+  local lookups = LibQuestieDB.l10nSource
+  if not lookups or overlay.currentLocale ~= lookups.locale then return nil end
+  local rows = sourceRows[typeName]
+  if not rows then
+    rows = lookups.load(typeName, LibQuestieDB.Meta[typeName].keys)
+    sourceRows[typeName] = rows
+  end
+  return rows
+end
+
 ---@param key string
 ---@return string? value
 local function readStored(key)
@@ -349,10 +365,16 @@ function overlay.CreateProvider(meta, entity)
     local byType = byLocale and byLocale[typeName]
     local row = byType and byType[id]
     local block = activeBlocks[typeName]
-    -- Neither layer can answer, so return before the existence probe below. This is what keeps
-    -- Source mode's lazy entity initialization intact: it has no stored blocks and usually no
-    -- Dynamic rows, so a translated read never forces the composed id union to be built.
-    if not row and not block then return nil end
+    -- Source mode has no stored block, so its raw lookups are the only base layer there. Read
+    -- the field before the existence probe: Source mode initializes entities lazily, and a
+    -- missing field must not force the composed id union to be built.
+    local sourceValue
+    if not block then
+      local sourceTypeRows = sourceRowsFor(typeName)
+      local sourceRow = sourceTypeRows and sourceTypeRows[id]
+      sourceValue = sourceRow and sourceRow[entityFieldIndex]
+      if not row and sourceValue == nil then return nil end
+    end
 
     -- Storage membership never implies entity existence. Positions come from the localization
     -- ID list, which deliberately retains IDs the baked database lacks, so this is the single
@@ -364,7 +386,10 @@ function overlay.CreateProvider(meta, entity)
     if row and row[entityFieldIndex] ~= nil then
       return row[entityFieldIndex], translationOwners[overlay.currentLocale][typeName][id][entityFieldIndex]
     end
-    if not block then return nil end
+    if not block then
+      if sourceValue ~= nil then return sourceValue, "QuestieDB" end
+      return nil
+    end
     local column = block[columnByEntityField[entityFieldIndex]]
     if not column then return nil end
     local position = findPosition(id)
@@ -376,7 +401,8 @@ function overlay.CreateProvider(meta, entity)
   return provider, scalarFields, function()
     if overlay.currentLocale == "enUS" then return false end
     local byLocale = translations[overlay.currentLocale]
-    return activeBlocks[typeName] ~= nil or (byLocale ~= nil and byLocale[typeName] ~= nil)
+    return activeBlocks[typeName] ~= nil or sourceRowsFor(typeName) ~= nil or
+      (byLocale ~= nil and byLocale[typeName] ~= nil)
   end
 end
 
@@ -447,10 +473,11 @@ function overlay.SetLocale(locale)
   return locale
 end
 
----Report whether the artifact declares the supported localization-block format.
+---Report whether base translations are available: artifact blocks or Source-mode lookups.
 ---@return boolean available
 function overlay.IsAvailable()
-  return overlay.available
+  local lookups = LibQuestieDB.l10nSource
+  return overlay.available or (lookups ~= nil and overlay.localeIndex[lookups.locale] ~= nil)
 end
 
 LibQuestieDB.l10n = overlay

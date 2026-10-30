@@ -56,6 +56,13 @@ lua5.1 test.lua lua-types
 lua-language-server --check=src/types --checklevel=Warning --check_format=pretty
 ```
 
+## Contract surface
+
+`tools/validation/contract-surface.lua` lists the public names each consumer contract promises;
+the `contract-surface` suite fails when a supported contract's name is missing. When bumping
+`contractVersion`, append the new names with `since` set to the new contract. Never delete or
+edit a promised entry: to drop one, set `removedIn` and raise `minSupportedContract` past it.
+
 ## Agent skills
 
 ### Issue tracker

@@ -13,6 +13,7 @@ Run commands from the repository root. For setup and platform requirements, see
 | [`preview.py`](preview.py) | Render verified archive contents and the packaged release description |
 | [`strip-static.lua`](strip-static.lua) | Strip Static Correction bodies from staged copies and verify behavior parity |
 | [`bootstrap.py`](bootstrap.py) | Download, verify, and install the combined release archive |
+| [`curseforge.py`](curseforge.py) | Upload a published stable release's per-flavor ZIPs to CurseForge, like Questie's `upload-cf.sh` |
 
 ## Release manifest
 

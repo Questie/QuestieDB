@@ -327,8 +327,28 @@ constants.byExpansion = {
     },
   },
 
-  -- Forever [race masks]
+  -- Forever
   Forever = {
+    npcFlags = {
+      NONE = 0,
+      GOSSIP = 1,
+      QUEST_GIVER = 2,
+      VENDOR = 4,
+      FLIGHT_MASTER = 8,
+      TRAINER = 16,
+      SPIRIT_HEALER = 32,
+      SPIRIT_GUIDE = 64,
+      INNKEEPER = 128,
+      BANKER = 256,
+      PETITIONER = 512,
+      TABARD_DESIGNER = 1024,
+      BATTLEMASTER = 2048,
+      AUCTIONEER = 4096,
+      STABLEMASTER = 8192,
+      REPAIR = 16384,
+      BARBER = 33554432,
+      TRANSMOGRIFIER = 536870912, -- using this bit since era/forever DB has some NPCs with 268435456
+    },
     raceKeys = {
       NONE = 0,
       HUMAN = raceMaskById[1],

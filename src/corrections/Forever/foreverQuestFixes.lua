@@ -17,6 +17,7 @@ QuestieCorrections.itemObjectiveFirst[92682] = true
 QuestieCorrections.killCreditObjectiveFirst[94489] = true
 QuestieCorrections.itemObjectiveFirst[97277] = true
 QuestieCorrections.itemObjectiveFirst[97485] = true
+QuestieCorrections.killCreditObjectiveFirst[98386] = true
 
 -- Static Corrections: shared by all characters and folded in during Generation.
 function ForeverQuestFixes:Load()
@@ -32,14 +33,55 @@ function ForeverQuestFixes:Load()
     local rankKeys = QuestieProfessions.rankNames
 
     return {
+        [19] = { -- Tharil'zun
+            [questKeys.preQuestSingle] = {},
+            [questKeys.preQuestGroup] = {20,98387},
+            [questKeys.nextQuestInChain] = 0,
+        },
         [76] = { -- The Jasperlode Mine
             [questKeys.triggerEnd] = {"Scout through the Jasperlode Mine", {[zoneIDs.ELWYNN_FOREST] = {{61.93,53.16}}}},
         },
+        [89] = { -- The Everstill Bridge
+            [questKeys.nextQuestInChain] = 98386,
+        },
+        [115] = { -- Shadow Magic
+            [questKeys.preQuestSingle] = {},
+            [questKeys.preQuestGroup] = {20,98387},
+        },
+        [151] = { -- Poor Old Blanchy
+            [questKeys.startedBy_remove] = {nil,{696264}},
+        },
+        [169] = { -- WANTED: Gath'Ilzogg
+            [questKeys.name] = "WANTED: Gath'Ilzogg",
+        },
+        [176] = { -- WANTED: "Hogger"
+            [questKeys.name] = "WANTED: \"Hogger\"",
+        },
+        [180] = { -- WANTED: Lieutenant Fangore
+            [questKeys.name] = "WANTED: Lieutenant Fangore",
+        },
+        [273] = { -- Resupplying the Excavation
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{1379,2057},15885,nil,Questie.ICON_TYPE_EVENT}}},
+        },
         [287] = { -- Frostmane Hold
             [questKeys.disabledByQuest] = 420,
+            [questKeys.nextQuestInChain] = 0,
+        },
+        [291] = { -- The Reports
+            [questKeys.preQuestSingle] = {},
+            [questKeys.preQuestGroup] = {287,98323},
+        },
+        [324] = { -- The Lost Ingots
+            [questKeys.exclusiveTo] = {526},
+        },
+        [334] = { -- Package for Thurman
+            [questKeys.disabledByQuest] = 333,
         },
         [356] = { -- Rear Guard Patrol
             [questKeys.nextQuestInChain] = 99156,
+        },
+        [398] = { -- WANTED: Maggot Eye
+            [questKeys.name] = "WANTED: Maggot Eye",
         },
         [490] = { -- Bounty: Gnarlpine Furbolg
             [questKeys.name] = "Bounty: Gnarlpine Furbolg",
@@ -55,8 +97,19 @@ function ForeverQuestFixes:Load()
             [questKeys.questFlags] = 8,
             [questKeys.reputationReward] = {{factionIDs.DARNASSUS, 100}},
         },
+        [526] = { -- Lightforge Ingots
+            [questKeys.preQuestSingle] = {321},
+            [questKeys.exclusiveTo] = {324},
+            [questKeys.nextQuestInChain] = 322,
+        },
         [590] = { -- A Rogue's Deal
             [questKeys.objectives] = {{{6784}}},
+        },
+        [684] = { -- WANTED: Marez Cowl
+            [questKeys.name] = "WANTED: Marez Cowl",
+        },
+        [685] = { -- WANTED: Otto and Falconcrest
+            [questKeys.name] = "WANTED: Otto and Falconcrest",
         },
         [760] = { -- Wildmane Cleansing
             [questKeys.nextQuestInChain] = 98435,
@@ -86,6 +139,22 @@ function ForeverQuestFixes:Load()
         [982] = { -- Deep Ocean, Vast Sea
             [questKeys.breadcrumbs_add] = {97894},
         },
+        [1122] = { -- Report Back to Fizzlebub
+            [questKeys.nextQuestInChain] = 0,
+        },
+        [1127] = { -- Fool's Stout
+            [questKeys.parentQuest] = 0,
+        },
+        [1273] = { -- Questioning Reethe
+            [questKeys.objectives] = {{{4980,nil,Questie.ICON_TYPE_EVENT}}},
+        },
+        [1276] = { -- The Black Shield
+            [questKeys.preQuestSingle] = {},
+            [questKeys.preQuestGroup] = {1273,1323},
+        },
+        [1486] = { -- Deviate Hides
+            [questKeys.startedBy_remove] = {nil,{659159}},
+        },
         [1516] = { -- Call of Earth
             [questKeys.preQuestSingle] = {1516,1519,92466},
             [questKeys.exclusiveTo] = {1519,92466},
@@ -100,11 +169,20 @@ function ForeverQuestFixes:Load()
         [2519] = { -- The Temple of the Moon
             [questKeys.breadcrumbs] = {98391},
         },
+        [5147] = { -- WANTED: Arnak Grimtotem
+            [questKeys.name] = "WANTED: Arnak Grimtotem",
+        },
         [5482] = { -- Doom Weed
             [questKeys.nextQuestInChain] = 99142,
         },
+        [5725] = { -- The Power to Destroy...
+            [questKeys.startedBy_remove] = {nil,{658924}},
+        },
         [6126] = { -- Lessons Anew
             [questKeys.startedBy_add] = {{262560}},
+        },
+        [8356] = { -- Flexing for Nougat
+            [questKeys.objectivesText] = {"Do a flex emote at Innkeeper Allison, and in exchange you'll receive Stormwind Nougat!"},
         },
         [76156] = { -- Stalk With The Earthmother
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
@@ -478,6 +556,9 @@ function ForeverQuestFixes:Load()
             [questKeys.reputationReward] = {{factionIDs.DARNASSUS, 100},{factionIDs.GNOMEREGAN_EXILES, 25},{factionIDs.ALLIANCE, 25},{factionIDs.IRONFORGE, 25},{factionIDs.STORMWIND, 25}},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
+        [87760] = { -- Holy Diver
+            [questKeys.preQuestGroup] = {4722,4723,4725,4727,4728,4730,4731,4732,4733},
+        },
         [90902] = { -- Rediscovering the Light
             [questKeys.preQuestSingle] = {364},
             [questKeys.objectives] = {{{259377,nil,Questie.ICON_TYPE_INTERACT}}},
@@ -556,9 +637,48 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {91775},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
+        [91899] = { -- A Sealed Crate
+            [questKeys.startedBy] = {{256386,256390}},
+            [questKeys.finishedBy] = {{256386,256390}},
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+        },
+        [91900] = { -- A Sealed Crate
+            [questKeys.startedBy] = {{256386,256390}},
+            [questKeys.finishedBy] = {{256386,256390}},
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+        },
+        [91901] = { -- A Sealed Crate
+            [questKeys.questLevel] = 60,
+            [questKeys.startedBy] = {{256386,256390}},
+            [questKeys.finishedBy] = {{256386,256390}},
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+        },
+        [91904] = { -- A Sealed Crate
+            [questKeys.startedBy] = {{256386,256390}},
+            [questKeys.finishedBy] = {{256386,256390}},
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+        },
+        [91905] = { -- A Sealed Crate
+            [questKeys.startedBy] = {{256386,256390}},
+            [questKeys.finishedBy] = {{256386,256390}},
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+        },
+        [92109] = { -- My First Alchemy Set
+            [questKeys.requiredSkill] = {profKeys.ALCHEMY, 1},
+            [questKeys.nextQuestInChain] = 92110,
+            [questKeys.objectives] = {nil,nil,{{3371},{2447},{765}}},
+        },
+        [92110] = { -- My First Real Potion
+            [questKeys.preQuestSingle] = {92109},
+            [questKeys.requiredSkill] = {profKeys.ALCHEMY, 1},
+        },
         [92124] = { -- Book Inventory
             [questKeys.preQuestSingle] = {91741},
             [questKeys.nextQuestInChain] = 91743,
+        },
+        [92415] = { -- Remember That I Love You
+            [questKeys.nextQuestInChain] = 95161,
         },
         [92461] = { -- Harmony in Balance
             [questKeys.preQuestSingle] = {92460},
@@ -777,15 +897,42 @@ function ForeverQuestFixes:Load()
         },
         [92745] = { -- The State of the Mines
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.preQuestGroup] = {92742,92744},
+            [questKeys.nextQuestInChain] = 92747,
         },
         [92747] = { -- Moonbrook Espionage
+            [questKeys.preQuestSingle] = {92745},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.nextQuestInChain] = 92748,
+        },
+        [92748] = { -- Moonbrook Espionage
+            [questKeys.preQuestSingle] = {92747},
         },
         [92749] = { -- A Dynamite Plan
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.preQuestSingle] = {92748},
+        },
+        [92750] = { -- Detonation at a Distance
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.preQuestSingle] = {92748},
+            [questKeys.nextQuestInChain] = 92751,
+        },
+        [92751] = { -- Detonation at a Distance
+            [questKeys.preQuestSingle] = {92750},
+        },
+        [92752] = { -- Explosive Consultation
+            [questKeys.preQuestGroup] = {92749,92751},
+            [questKeys.nextQuestInChain] = 92753,
         },
         [92753] = { -- Destruction in Deadmines
+            [questKeys.preQuestSingle] = {92752},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.objectives] = {{{253370,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.nextQuestInChain] = 92819,
+        },
+        [92819] = { -- Destruction in Deadmines
+            [questKeys.preQuestSingle] = {92753},
+            [questKeys.objectives] = {nil,{{581792}}},
         },
         [92834] = { -- Avenged Tenfold
             [questKeys.preQuestSingle] = {92840},
@@ -823,6 +970,17 @@ function ForeverQuestFixes:Load()
         },
         [92909] = { -- Harvesting the Harvesters
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [92910] = { -- Harvesting the Harvesters
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.nextQuestInChain] = 92911,
+            [questKeys.requiredSkill] = {profKeys.ENGINEERING, 1},
+        },
+        [92911] = { -- Harvesting the Harvesters
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.preQuestSingle] = {92910},
+            [questKeys.requiredSkill] = {profKeys.ENGINEERING, 1},
+            [questKeys.objectives] = {nil,nil,{{255007},{4363},{4405}}},
         },
         [92947] = { -- Making Our Move
             [questKeys.preQuestSingle] = {93065},
@@ -1179,6 +1337,12 @@ function ForeverQuestFixes:Load()
         [95036] = { -- A Moon-Kissed Blade
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
         },
+        [95065] = { -- Fishin' Time
+            [questKeys.objectives] = {nil,nil,{{6529},{6530}}},
+        },
+        [95161] = { -- Remember That I Love You
+            [questKeys.preQuestSingle] = {92415},
+        },
         [95212] = { -- Never Saddle on Quality
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
@@ -1505,8 +1669,19 @@ function ForeverQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.FISHING,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
+        [97220] = { -- Philmor's Favor
+            [questKeys.nextQuestInChain] = 97222,
+        },
+        [97222] = { -- Gatehouse Goods
+            [questKeys.preQuestSingle] = {97220},
+            [questKeys.objectives] = {nil,{{460004}}},
+        },
+        [97234] = { -- Reading Room
+            [questKeys.nextQuestInChain] = 97237,
+        },
         [97237] = { -- Shelf Picked
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.preQuestSingle] = {97234},
         },
         [97243] = { -- Call of Fire
             [questKeys.startedBy_add] = {{254082}},
@@ -1630,6 +1805,7 @@ function ForeverQuestFixes:Load()
         },
         [97914] = { -- Expanding Horizons
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.nextQuestInChain] = 97926,
         },
         [97915] = { -- Camping 101: Alchemy
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
@@ -1707,6 +1883,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSpell] = -1229504, -- Faction Banner
             [questKeys.objectives] = {{{1103,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96057,96102,97937,97950,97961,97972,97973},
+        },
+        [97926] = { -- Making Do
+            [questKeys.preQuestSingle] = {97914},
         },
         [97927] = { -- Camping 101: Alchemy
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
@@ -2084,7 +2263,7 @@ function ForeverQuestFixes:Load()
         [98319] = { -- Secure the Mountain
             [questKeys.preQuestSingle] = {98322},
             [questKeys.nextQuestInChain] = 98323,
-            [questKeys.objectives] = {nil,{{460004}}},
+            [questKeys.objectives] = {{{278166,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.triggerEnd] = {},
         },
         [98322] = { -- Secure the Mountain
@@ -2097,10 +2276,14 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [98372] = { -- An Unfortunate End
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [98386] = { -- Alther's Mill
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.preQuestSingle] = {89},
+            [questKeys.objectives] = {nil,{{673101}},nil,nil,{{{505,271898,271988},505}}},
         },
         [98387] = { -- Blackrock Blockade
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,

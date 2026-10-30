@@ -32,7 +32,8 @@ correction output. Arbitrary different IDs, text, and coordinates are not separa
 | `trigger` | Text alone and text with coordinates |
 | `idarray` | Single/multiple IDs, missing/empty field, large chunked table |
 | `pair` | Zero-pair absence, zero second component, signed reputation value |
-| `pairs` | Single and multiple reputation rewards |
+| `pairs` | Single and multiple rank requirements |
+| `reputationpairs` | Single and multiple reputation rewards |
 | `stringarray` | Multiple elements including genuine empty strings |
 | `spawnlist` | Phased spawn, instance sentinel, zero phase, zero/sub-grid coordinates |
 | `waypointlist` | Multiple paths and removal of non-coordinate tuple slots |

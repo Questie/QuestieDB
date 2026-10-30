@@ -5,7 +5,7 @@
 --------------------------------------------------------------------------------
 
 ---@alias QuestieDBMetadataStorageType "number"|"string"|"table"
----@alias QuestieDBMetadataStructure "questgivers"|"stringarray"|"trigger"|"objectives"|"idarray"|"pair"|"pairs"|"extraobjectives"|"spawnlist"|"waypointlist"
+---@alias QuestieDBMetadataStructure "questgivers"|"stringarray"|"trigger"|"objectives"|"idarray"|"pair"|"pairs"|"reputationpairs"|"extraobjectives"|"spawnlist"|"waypointlist"
 ---@alias QuestieDBMetadataCompilerType "u8string"|"questgivers"|"u8"|"s16"|"u32"|"u16"|"u8u16stringarray"|"trigger"|"objectives"|"u24"|"u8s24array"|"u8u24array"|"u12pair"|"s24pair"|"u8s24pairs"|"extraobjectives"|"s24"|"spawnlist"|"waypointlist"|"faction"|"u16u24array"
 ---@alias QuestieDBMetadataNormalizer "faction"
 

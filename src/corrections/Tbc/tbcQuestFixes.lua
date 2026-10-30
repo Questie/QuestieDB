@@ -76,6 +76,9 @@ function QuestieTBCQuestFixes:Load()
         [211] = { -- Alas, Andorhal
             [questKeys.reputationReward] = {{factionIDs.ALLIANCE,350},{factionIDs.ARGENT_DAWN,700}},
         },
+        [95] = { -- Sven's Revenge
+            [questKeys.requiredLevel] = 20,
+        },
         [233] = { -- Coldridge Valley Mail Delivery
             [questKeys.preQuestSingle] = {179},
         },
@@ -88,6 +91,9 @@ function QuestieTBCQuestFixes:Load()
         [254] = { -- Digging Through the Dirt
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
+        [270] = { -- The Doomed Fleet
+            [questKeys.requiredLevel] = 20,
+        },
         [275] = { -- Blisters on The Land
             [questKeys.objectivesText] = {"Kill 8 Fen Creepers, then return to Rethiel the Greenwarden in the Wetlands."}, -- override classic correction
         },
@@ -99,6 +105,12 @@ function QuestieTBCQuestFixes:Load()
         },
         [310] = { -- Bitter Rivals
             [questKeys.childQuests] = {308},
+        },
+        [323] = { -- Proving Your Worth
+            [questKeys.requiredLevel] = 20,
+        },
+        [324] = { -- The Lost Ingots
+            [questKeys.requiredLevel] = 20,
         },
         [349] = { -- Stranglethorn Fever
             [questKeys.objectivesText] = {"Speak with Witch Doctor Unbagwa.",},
@@ -910,6 +922,9 @@ function QuestieTBCQuestFixes:Load()
         [5168] = { -- Heroes of Darrowshire
             [questKeys.preQuestSingle] = {5210},
         },
+        [5206] = { -- Marauders of Darrowshire
+            [questKeys.preQuestGroup] = {5168,5181},
+        },
         [5216] = { -- Target: Felstone Field
             [questKeys.reputationReward] = {{factionIDs.STORMWIND,250},{factionIDs.ARGENT_DAWN,250}},
         },
@@ -1520,6 +1535,7 @@ function QuestieTBCQuestFixes:Load()
         [8373] = { -- The Power of Pine
             [questKeys.reputationReward] = {{factionIDs.ALLIANCE,250}},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredLevel] = 25,
         },
         [8381] = { -- Armaments of War
             [questKeys.requiredClasses] = classIDs.MAGE + classIDs.WARLOCK,
@@ -5517,12 +5533,19 @@ function QuestieTBCQuestFixes:Load()
         [11129] = { -- Kyle's Gone Missing!
             [questKeys.objectives] = {{{23616,nil,Questie.ICON_TYPE_INTERACT}}},
         },
+        [11130] = { -- Oooh, Shinies!
+            [questKeys.breadcrumbForQuestId] = 11132,
+        },
         [11131] = { -- Stop the Fires!
             [questKeys.triggerEnd] = {"Put Out the Fires", {[zoneIDs.DUN_MOROGH] = {{44.8,52.1},{47.5,51.6}},[zoneIDs.ELWYNN_FOREST] = {{41.3,65.2},{43.6,65.8}},[zoneIDs.AZUREMYST_ISLE] = {{49.8,52.3},{48.8,50}}}},
             [questKeys.requiredSourceItems] = {32971},
-            [questKeys.exclusiveTo] = {12133},
+            [questKeys.exclusiveTo] = {12135},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.disabledByQuest] = 11356,
+        },
+        [11132] = { -- Oooh, Shinies!
+            [questKeys.breadcrumbs] = {11130},
         },
         [11133] = { -- Discrediting the Deserters
             [questKeys.objectives] = {{{4979,nil,Questie.ICON_TYPE_TALK}}},
@@ -5531,7 +5554,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.nextQuestInChain] = 11136,
         },
         [11135] = { -- The Headless Horseman
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- most likely breadcrumb
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.availableStartingWith] = 11131, -- is being offered once HH is killed during 11131
         },
         [11136] = { -- A Disturbing Development
             [questKeys.breadcrumbForQuestId] = 11137,
@@ -5617,9 +5641,16 @@ function QuestieTBCQuestFixes:Load()
         [11186] = { -- Signs of Treachery?
             [questKeys.startedBy] = {{23881}},
         },
+        [11195] = { -- Playin' With Dolls
+            [questKeys.preQuestSingle] = {11165},
+        },
         [11198] = { -- Take Down Tethyr!
             [questKeys.objectives] = {{{23899}}},
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Use the cannon"), 0, {{"object",186432}}}},
+        },
+        [11200] = { -- More than Coincidence
+            [questKeys.preQuestSingle] = {},
+            [questKeys.preQuestGroup] = {1268,11204},
         },
         [11203] = { -- Seek Out Tabetha
             [questKeys.preQuestSingle] = {},
@@ -5649,12 +5680,14 @@ function QuestieTBCQuestFixes:Load()
         [11219] = { -- Stop the Fires!
             [questKeys.triggerEnd] = {"Put Out the Fires", {[zoneIDs.DUROTAR] = {{52.12,43.59},{53.21,42.56},{51.58,42.08}},[zoneIDs.TIRISFAL_GLADES] = {{60.32,53.29},{61.11,51.25},{61.64,51.97}},[zoneIDs.EVERSONG_WOODS] = {{47.76,47.3},{48.21,46.16}}}},
             [questKeys.requiredSourceItems] = {32971},
-            [questKeys.exclusiveTo] = {12155},
+            [questKeys.exclusiveTo] = {12139},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.disabledByQuest] = 11357,
         },
         [11220] = { -- The Headless Horseman
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- most likely breadcrumb
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.availableStartingWith] = 11219, -- is being offered once HH is killed during 11219
         },
         [11222] = { -- Warn Bolvar!
             [questKeys.nextQuestInChain] = 11223,
@@ -5668,7 +5701,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.finishedBy] = {{24519}},
             [questKeys.requiredLevel] = 65,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
-            [questKeys.preQuestSingle] = {11135},
+            [questKeys.preQuestSingle] = {11392},
         },
         [11293] = { -- Bark for the Barleybrews!
             [questKeys.objectives] = {{{24202,nil,Questie.ICON_TYPE_EVENT},{24203,nil,Questie.ICON_TYPE_EVENT},{24204,nil,Questie.ICON_TYPE_EVENT},{24205,nil,Questie.ICON_TYPE_EVENT}}},
@@ -5713,14 +5746,16 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [11356] = { -- Costumed Orphan Matron
-            [questKeys.exclusiveTo] = {11360,11439,11440},
+            [questKeys.startedBy] = {{18927,19148,19171,19172,19173}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.availableUntilCompleted] = 11360, -- also add 11439,11440
         },
         [11357] = { -- Masked Orphan Matron
-            [questKeys.exclusiveTo] = {11361,11449,11450},
+            [questKeys.startedBy] = {{19169,19175,19176,19177,19178}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.availableUntilCompleted] = 11361, -- also add 11449,11450
         },
         [11360] = { -- Fire Brigade Practice
             [questKeys.exclusiveTo] = {11439,11440},
@@ -5728,13 +5763,18 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.disabledByQuest] = 11356,
+            [questKeys.nextQuestInChain] = 12135,
         },
         [11361] = { -- Fire Training
             [questKeys.questLevel] = -1,
+            [questKeys.requiredLevel] = 1,
             [questKeys.exclusiveTo] = {11449,11450},
             [questKeys.requiredSourceItems] = {32971},
             [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.disabledByQuest] = 11357,
+            [questKeys.nextQuestInChain] = 12139,
         },
         [11379] = { -- Super Hot Stew
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Cook Demon Broiled Surprise in the remains of a Abyssal Flamebringer in Blade's Edge Mountains"), 0, {{"monster", 19973}}}},
@@ -5746,21 +5786,33 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {nil,nil,nil,nil,{{{17839,21140},17839}}},
         },
         [11392] = { -- Call the Headless Horseman
-            [questKeys.startedBy] = {nil,{186267}}, -- alliance/horde? what about 11404/11405, probably phase specific?
-            [questKeys.finishedBy] = {nil,{186314}},
-            [questKeys.questLevel] = -1,
-        },
-        [11401] = { -- Call the Headless Horseman
-            [questKeys.startedBy] = {nil,{186267}}, -- alliance/horde? should this one be not repeatable? what about 11404/11405, probably phase specific?
+            [questKeys.startedBy] = {nil,{186267}},
             [questKeys.finishedBy] = {nil,{186314}},
             [questKeys.preQuestSingle] = {11135,11220},
+        },
+        [11401] = { -- Call the Headless Horseman
+            [questKeys.startedBy] = {nil,{186267}},
+            [questKeys.finishedBy] = {nil,{186314}},
+            [questKeys.preQuestSingle] = {11392},
         },
         [11403] = { -- Free at Last!
             [questKeys.startedBy] = {{23904}},
             [questKeys.finishedBy] = {{23973}},
             [questKeys.requiredLevel] = 65,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
-            [questKeys.preQuestSingle] = {11220},
+            [questKeys.preQuestSingle] = {11392},
+        },
+        [11404] = { -- Call the Headless Horseman
+            [questKeys.startedBy] = {nil,{186267}},
+            [questKeys.finishedBy] = {nil,{186314}},
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.exclusiveTo] = {11135,11220},
+        },
+        [11405] = { -- Call the Headless Horseman
+            [questKeys.startedBy] = {nil,{186267}},
+            [questKeys.finishedBy] = {nil,{186314}},
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.exclusiveTo] = {11135,11220},
         },
         [11407] = { -- Bark for Drohn's Distillery!
             [questKeys.questLevel] = -1,
@@ -5784,6 +5836,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.disabledByQuest] = 11356,
+            [questKeys.nextQuestInChain] = 12135,
         },
         [11440] = { -- Fire Brigade Practice
             [questKeys.startedBy] = {},
@@ -5792,6 +5846,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.disabledByQuest] = 11356,
+            [questKeys.nextQuestInChain] = 12135,
         },
         [11441] = { -- Brewfest!
             [questKeys.startedBy] = {{18927,19148,19171,19172,19173,20102}},
@@ -5820,6 +5876,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.disabledByQuest] = 11357,
+            [questKeys.nextQuestInChain] = 12139,
         },
         [11450] = { -- Fire Training
             [questKeys.startedBy] = {},
@@ -5828,6 +5886,8 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.objectives] = {{{23537,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.disabledByQuest] = 11357,
+            [questKeys.nextQuestInChain] = 12139,
         },
         [11481] = { -- Crisis at the Sunwell
             [questKeys.requiredMinRep] = {932,0},
@@ -7062,7 +7122,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
             [questKeys.requiredSourceItems] = {32971},
             [questKeys.questFlags] = 4224,
-            [questKeys.exclusiveTo] = {12133},
+            [questKeys.exclusiveTo] = {11131},
         },
         [12139] = { -- "Let the Fires Come!"
             [questKeys.name] = "\"Let the Fires Come!\"",
@@ -7078,7 +7138,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
             [questKeys.requiredSourceItems] = {32971},
             [questKeys.questFlags] = 4224,
-            [questKeys.exclusiveTo] = {12155},
+            [questKeys.exclusiveTo] = {11219},
         },
         [12155] = { -- Smash the Pumpkin
             [questKeys.name] = "Smash the Pumpkin",
@@ -8727,6 +8787,9 @@ function QuestieTBCQuestFixes:LoadFactionFixes()
         [10858] = { -- Karynaku
             [questKeys.nextQuestInChain] = 10866,
         },
+        [11392] = { -- Call the Headless Horseman
+            [questKeys.nextQuestInChain] = 11403,
+        },
     }
 
     local questFixesAlliance = {
@@ -8969,6 +9032,9 @@ function QuestieTBCQuestFixes:LoadFactionFixes()
         },
         [10858] = { -- Karynaku
             [questKeys.nextQuestInChain] = playerRace == "Human" and 10872 or 10866,
+        },
+        [11392] = { -- Call the Headless Horseman
+            [questKeys.nextQuestInChain] = 11242,
         },
     }
 

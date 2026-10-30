@@ -58,6 +58,9 @@ validate = function(shape, value)
   if shape == "string" then return type(value) == "string" end
   if shape == "referenceKind" then return value == "monster" or value == "object" or value == "item" end
   if shape == "pair" then return tuple(value, { "integer", "integer" }) end
+  if shape == "reputationpair" then
+    return tuple(value, { "integer", "number" }) and value[1] ~= nil and value[2] ~= nil
+  end
   if shape == "coordinate" then
     return tuple(value, { "number", "number", "integer" }) and value[1] ~= nil and value[2] ~= nil
   end
@@ -76,7 +79,7 @@ validate = function(shape, value)
     return true
   end
   local elements = {
-    idarray = "integer", stringarray = "string", pairs = "pair", extraobjectives = "extra",
+    idarray = "integer", stringarray = "string", pairs = "pair", reputationpairs = "reputationpair", extraobjectives = "extra",
     objectiveList = "objective", killList = "kill", references = "reference", path = "coordinate",
   }
   return elements[shape] ~= nil and list(value, elements[shape])

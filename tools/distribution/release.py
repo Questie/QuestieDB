@@ -21,10 +21,11 @@ from release_artifacts import verify
 
 
 RELEASE_QUERY = """
-query($owner:String!, $repo:String!, $tag:String!, $ref:String!) {
+query($owner:String!, $repo:String!, $tag:String!, $ref:String!, $curseforge:String!) {
   repository(owner:$owner, name:$repo) {
     release(tagName:$tag) { databaseId }
     ref(qualifiedName:$ref) { name }
+    curseforge: refs(refPrefix:$curseforge, first:1) { totalCount }
   }
 }
 """
@@ -65,6 +66,8 @@ def release_state(repository: str, tag: str, full_release: bool, override: bool)
             "-f",
             f"ref=refs/tags/{tag}",
             "-f",
+            f"curseforge=refs/tags/curse/{tag}/",
+            "-f",
             f"query={RELEASE_QUERY}",
             "--jq",
             ".data.repository",
@@ -79,6 +82,9 @@ def release_state(repository: str, tag: str, full_release: bool, override: bool)
         and (state.get("release") is not None or state.get("ref") is not None)
     ):
         raise ValueError(f"{tag} already exists. Bump ## Version or explicitly enable override.")
+    # CurseForge keeps uploaded files, so an override would leave it with the old release.
+    if override and (state.get("curseforge") or {}).get("totalCount"):
+        raise ValueError(f"{tag} is already on CurseForge and cannot be overridden. Bump ## Version.")
     return state
 
 

@@ -88,6 +88,9 @@ function MopNpcFixes.Load()
             [npcKeys.spawns] = {[zoneIDs.SHADOWGLEN] = {{46.6,56.62}}},
             [npcKeys.zoneID] = zoneIDs.SHADOWGLEN,
         },
+        [3956] = { -- Harklan Moongrove
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
         [3977] = { -- High Inquisitor Whitemane
             [npcKeys.spawns] = {
                 [zoneIDs.SCARLET_MONASTERY_MOP_CRUSADERS_CHAPEL] = {{49.06,89.61}},
@@ -207,6 +210,9 @@ function MopNpcFixes.Load()
                 [zoneIDs.ISLE_OF_THUNDER] = {{58.19,59.26},{48.94,68.75},{40.26,58.02},{31.39,33.84},{45.09,46.33},{63.37,71.13}}, -- TODO add 3 spirit healers
             },
         },
+        [6737] = { -- Innkeeper Shaussiy
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.INNKEEPER + npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
         [10181] = { -- Lady Sylvanas Windrunner
             [npcKeys.questStarts] = {9626,9813,31037},
         },
@@ -278,6 +284,9 @@ function MopNpcFixes.Load()
         [20142] = { -- Steward of Time
             [npcKeys.spawns] = {[zoneIDs.CAVERNS_OF_TIME_TIMELESS_TUNNEL] = {{55.26,27.93}}},
             [npcKeys.zoneID] = zoneIDs.CAVERNS_OF_TIME_TIMELESS_TUNNEL,
+        },
+        [22469] = { -- Fiskal Shadowsong
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER + npcFlags.VENDOR, -- base data lacks the stable master bit
         },
         [26401] = { -- Summer Scorchling
             [npcKeys.spawns] = {[1] = {{53.8,45.14}},[3] = {{18.97,56.32}},[4] = {{55.55,14.76}},[8] = {{70.13,15.73}},[10] = {{73.77,54.5}},[11] = {{13.5,46.97}},[12] = {{43.48,62.5}},[15] = {{61.87,40.5}},[28] = {{43.43,82.24}},[38] = {{32.59,41.1}},[40] = {{44.8,62.18}},[44] = {{25.64,53.48}},[45] = {{44.22,46}},[46] = {{68.32,60.78}},[47] = {{14.93,50.5}},[65] = {{75.24,43.78}},[66] = {{40.38,61.39}},[67] = {{41.42,86.74}},[141] = {{54.83,52.77}},[148] = {{48.69,22.7}},[331] = {{86.89,41.85}},[357] = {{46.78,43.67}},[394] = {{33.94,60.51}},[405] = {{66.19,17.1}},[406] = {{49.35,51.34}},[440] = {{52.67,30.22}},[490] = {{59.78,63.26}},[495] = {{57.84,16.17}},[618] = {{61.36,47.31}},[1377] = {{60.38,33.5}},[2817] = {{78.07,74.91}},[3483] = {{62.45,57.99}},[3518] = {{49.57,69.4}},[3519] = {{54.01,55.57}},[3520] = {{39.63,54.56}},[3521] = {{68.73,51.95}},[3522] = {{41.52,65.87}},[3523] = {{31.16,62.65}},[3524] = {{44.41,52.47}},[3525] = {{55.82,67.75}},[3537] = {{55.15,19.91}},[3711] = {{48.37,65.53}},[4709] = {{48.34,72.29}},[4922] = {{47.32,28.94}},[5034] = {{53.6,31.92}},[5287] = {{52.03,67.71}},[33] = {{51.44,40.96}},[zoneIDs.VALE_OF_ETERNAL_BLOSSOMS] = {{79.67,37.44}}},
@@ -1432,6 +1441,9 @@ function MopNpcFixes.Load()
                     {53.56,52.57,phases.JOGU_THE_DRUNK_MARKET},
                 },
             },
+        },
+        [58718] = { -- Merchant Greenfield
+            [npcKeys.npcFlags] = npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- base data lacks the vendor bit
         },
         [58719] = { -- Unbudging Rock
             [npcKeys.spawns] = {[zoneIDs.VALLEY_OF_THE_FOUR_WINDS] = {{52.21,47.66},{52.17,48.21},{52.83,49.88},{52.37,49.23},{51.92,49.18},{51.57,49.29},{51.70,48.71}}},
@@ -4602,6 +4614,9 @@ function MopNpcFixes.Load()
             [npcKeys.zoneID] = zoneIDs.KRASARANG_WILDS,
             [npcKeys.questStarts] = {32172},
         },
+        [67558] = { -- Huntsman Blake
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
         [67560] = { -- King Varian Wrynn
             [npcKeys.name] = "King Varian Wrynn",
             [npcKeys.minLevel] = 0,
@@ -4851,6 +4866,7 @@ function MopNpcFixes.Load()
             [npcKeys.zoneID] = zoneIDs.KRASARANG_WILDS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.questStarts] = {32164,32165,32166},
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- added here, sells items
         },
         [67901] = { -- Alliance Footman
             [npcKeys.name] = "Alliance Footman",
@@ -5851,6 +5867,9 @@ function MopNpcFixes.Load()
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.npcFlags] = npcFlags.REPAIR,
         },
+        [69060] = { -- Tuskripper Grukna
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
         [69075] = { -- Zandalari Sacrifice
             [npcKeys.name] = "Zandalari Sacrifice",
             [npcKeys.minLevel] = 0,
@@ -6221,7 +6240,7 @@ function MopNpcFixes.Load()
         [70030] = { -- Agrant Sharpshot
             [npcKeys.spawns] = {[zoneIDs.ISLE_OF_GIANTS] = {{35.43,53.32}}},
             [npcKeys.zoneID] = zoneIDs.ISLE_OF_GIANTS,
-            [npcKeys.npcFlags] = npcFlags.REPAIR,
+            [npcKeys.npcFlags] = npcFlags.REPAIR + npcFlags.VENDOR, -- base data has no flags
         },
         [70031] = { -- Nellie Sattler
             [npcKeys.spawns] = {[zoneIDs.ISLE_OF_GIANTS] = {{36.29,52.71}}},
@@ -6238,7 +6257,7 @@ function MopNpcFixes.Load()
         [70034] = { -- Arnold Raygun
             [npcKeys.zoneID] = zoneIDs.ISLE_OF_GIANTS,
             [npcKeys.spawns] = {[zoneIDs.ISLE_OF_GIANTS] = {{60.66,44.24}}},
-            [npcKeys.npcFlags] = npcFlags.REPAIR,
+            [npcKeys.npcFlags] = npcFlags.REPAIR + npcFlags.VENDOR, -- base data has no flags
         },
         [70035] = { -- Atten Hamlock
             [npcKeys.zoneID] = zoneIDs.ISLE_OF_GIANTS,
@@ -6353,7 +6372,7 @@ function MopNpcFixes.Load()
         [70346] = { -- Ao Pye
             [npcKeys.subName] = "Shado-Pan Assault Quartermaster",
             [npcKeys.spawns] = {[zoneIDs.TOWNLONG_STEPPES] = {{38.01,64.56}}},
-            [npcKeys.npcFlags] = npcFlags.REPAIR,
+            [npcKeys.npcFlags] = npcFlags.REPAIR + npcFlags.VENDOR, -- base data has no flags
         },
         [70360] = { -- Vereesa Windrunner
             [npcKeys.spawns] = {[zoneIDs.TOWNLONG_STEPPES] = {{49.93,69.04}}},
@@ -6377,6 +6396,9 @@ function MopNpcFixes.Load()
         [70434] = { -- Talak
             [npcKeys.zoneID] = zoneIDs.ISLE_OF_GIANTS,
             [npcKeys.spawns] = {[zoneIDs.ISLE_OF_GIANTS] = {{29.17,68.1}}},
+        },
+        [70436] = { -- Blacktalon Quartermaster
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
         },
         [70438] = { -- Wrathion
             [npcKeys.name] = "Wrathion",
@@ -6903,6 +6925,33 @@ function MopNpcFixes.Load()
             [npcKeys.zoneID] = zoneIDs.TIMELESS_ISLE,
             [npcKeys.spawns] = {[zoneIDs.TIMELESS_ISLE] = {{30.2,71},{30.2,71.6},{30.2,72.8},{30.6,72.8},{31.2,70.2},{31.2,70.6},{31.4,74.4},{31.4,74.6},{31.6,74.2},{31.6,74.6},{31.8,70.6},{31.8,76},{32.2,77.4},{32.4,78},{32.6,70.8},{32.6,77.4},{33,70.4},{33.4,79.4},{33.6,70.8},{33.6,79.4},{34.4,70.2},{34.4,79.8},{35.2,70},{35.2,80},{35.4,69.4},{35.8,69.4},{36.2,69.6},{36.4,80.6},{36.8,69.4},{36.8,81},{37.2,70},{37.2,82.2},{37.8,69.4},{38,69.8},{38,82.2},{38.6,82.2},{39.4,69.8},{39.8,69.8},{40.2,82.8},{40.4,79.2},{40.4,79.8},{40.4,81.4},{40.4,81.6},{40.6,79.4},{40.6,79.6},{40.6,80.6},{40.6,81.6},{40.8,69.2},{40.8,70},{41.2,77.6},{41.4,71},{41.4,71.8},{41.4,72.6},{41.4,77.4},{41.6,71.4},{41.6,72.2},{41.6,78},{41.8,76.6},{42,73},{42.2,74},{42.2,76},{42.4,75},{42.6,75}}},
         },
+        [72993] = { -- Lao-Chin the Iron Belly
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [72997] = { -- Fei Li
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73003] = { -- Brewmaster Bo
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73004] = { -- Brewmaster Blanche
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73005] = { -- Brewmaster Boof
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73006] = { -- Brewmaster Chani
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73007] = { -- Uncle Gao
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73009] = { -- Brother Yakshoe
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73010] = { -- Brother Rabbitsfoot
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
         [73018] = { -- Spectral Brewmaster
             [npcKeys.zoneID] = zoneIDs.TIMELESS_ISLE,
             [npcKeys.spawns] = {[zoneIDs.TIMELESS_ISLE] = {{34,85},{35.2,76.8},{35.2,79.2},{35.6,77.2},{35.6,79.2},{36,75.4},{36,75.8},{36.8,71.4},{36.8,71.8},{37.4,73.4},{37.4,74},{37.4,74.6},{37.4,80},{37.4,80.6},{37.6,73.4},{37.6,74},{37.6,74.6},{37.6,80.2},{37.6,80.8},{38.2,72.4},{38.4,76.4},{38.4,77},{38.4,79},{38.6,72.6},{38.6,76.8},{38.8,71.6},{38.8,76.2},{39.4,74.4},{39.4,74.6},{39.4,77.6},{39.6,74.6},{39.6,76.4},{39.6,77.4},{39.8,77.8},{40.4,74.2},{40.6,74.2},{40.8,74.8},{41.2,73.4}}},
@@ -6918,9 +6967,22 @@ function MopNpcFixes.Load()
         [73082] = { -- Master Li
             [npcKeys.spawns] = {[zoneIDs.TIMELESS_ISLE] = {{34.68,57.67}}},
             [npcKeys.zoneID] = zoneIDs.TIMELESS_ISLE,
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
         },
         [73138] = { -- Wrathion
             [npcKeys.spawns] = {[zoneIDs.THE_VEILED_STAIR] = {{54.8,72.4}}},
+        },
+        [73142] = { -- Armsmaster Holinka
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73143] = { -- Hayden Christophen
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73144] = { -- Lucan Malory
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73147] = { -- Ethan Natice
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
         },
         [73167] = { -- Huolon
             [npcKeys.zoneID] = zoneIDs.TIMELESS_ISLE,
@@ -6941,14 +7003,17 @@ function MopNpcFixes.Load()
         [73305] = { -- Mistweaver Ai
             [npcKeys.spawns] = {[zoneIDs.TIMELESS_ISLE] = {{42.71,55.73}}},
             [npcKeys.zoneID] = zoneIDs.TIMELESS_ISLE,
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
         },
         [73306] = { -- Mistweaver Ku
             [npcKeys.spawns] = {[zoneIDs.TIMELESS_ISLE] = {{42.71,54.69}}},
             [npcKeys.zoneID] = zoneIDs.TIMELESS_ISLE,
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
         },
         [73307] = { -- Speaker Gulan
             [npcKeys.zoneID] = zoneIDs.TIMELESS_ISLE,
             [npcKeys.spawns] = {[zoneIDs.TIMELESS_ISLE] = {{75,44.8}}},
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
         },
         [73348] = { -- Watcher Lara
             [npcKeys.spawns] = {[zoneIDs.TIMELESS_ISLE] = {{23.13,71.64}}},
@@ -6977,6 +7042,9 @@ function MopNpcFixes.Load()
         },
         [73422] = { -- Miss Jadepaw
             [npcKeys.spawns] = {[zoneIDs.VALE_OF_ETERNAL_BLOSSOMS] = {{26.2,30.6},{26.4,32.2},{27,32},{27,33},{27,36.4},{27.4,33.6},{27.6,31.8},{27.6,32.6},{27.8,33.8}},[6141] = {{27,32.2},{27.4,32.6},{27.8,32.6}}},
+        },
+        [73435] = { -- Grimthorn Redbeard
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
         },
         [73531] = { -- Highwind Albatross
             [npcKeys.zoneID] = zoneIDs.TIMELESS_ISLE,
@@ -7030,9 +7098,12 @@ function MopNpcFixes.Load()
             [npcKeys.zoneID] = zoneIDs.TIMELESS_ISLE,
             [npcKeys.spawns] = {[zoneIDs.TIMELESS_ISLE] = {{65,50.6},{65.2,49.4},{65.4,50.4},{65.6,49.4},{65.6,49.6}}},
         },
+        [73618] = { -- Brewmaster Tzu
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
         [73622] = { -- Graceful Swan
             [npcKeys.spawns] = {[zoneIDs.TIMELESS_ISLE] = {{36.58,46.84}}},
-            [npcKeys.npcFlags] = npcFlags.INNKEEPER,
+            [npcKeys.npcFlags] = npcFlags.INNKEEPER + npcFlags.VENDOR, -- base data has no flags
         },
         [73626] = { -- Little Tommy Newcomer
             [npcKeys.spawns] = {[zoneIDs.TIMELESS_ISLE] = {{34.6,60.39}}},
@@ -7043,12 +7114,22 @@ function MopNpcFixes.Load()
             [npcKeys.zoneID] = zoneIDs.TIMELESS_ISLE,
             [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
         },
+        [73647] = { -- Sapmaster Vu
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73649] = { -- Mama Stormstout
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73651] = { -- Big Dan Stormstout
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
         [73656] = { -- Crafter Kwon
             [npcKeys.spawns] = {[zoneIDs.TIMELESS_ISLE] = {{38.56,46.54}}},
             [npcKeys.npcFlags] = npcFlags.VENDOR + npcFlags.REPAIR,
         },
         [73657] = { -- Great Chef Woo
             [npcKeys.spawns] = {[zoneIDs.TIMELESS_ISLE] = {{41.78,63.72}}},
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
         },
         [73674] = { -- Blizzix Sparkshiv
             [npcKeys.spawns] = {[5840] = {{41.4,77.8},{42,74.6},{42.4,74.4},{42.8,75.6},{43,74.2},{43.4,74.8},{43.6,74.6}},[6141] = {{42.4,74.4},{42.4,74.6},{43.2,73.4},{43.2,74.4},{43.2,74.6},{43.2,76.8},{43.4,75.6},{43.6,74},{43.6,74.8},{43.6,75.6}}},
@@ -7056,6 +7137,27 @@ function MopNpcFixes.Load()
         [73718] = { -- Southsea Lookout
             [npcKeys.zoneID] = zoneIDs.TIMELESS_ISLE,
             [npcKeys.spawns] = {[zoneIDs.TIMELESS_ISLE] = {{66,74.6},{66.2,74},{66.6,74.4},{71.2,81.4},{71.2,82.8},{71.4,81.6}}},
+        },
+        [73812] = { -- Brother Noodle
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73813] = { -- Galu Wellspring
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73814] = { -- Noodle-Maker Monmon
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73815] = { -- Hearthminder Digao
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73816] = { -- Master Miantiao
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73817] = { -- Smiling Jade
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
+        },
+        [73819] = { -- Ku-Mo
+            [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data lacks the vendor bit
         },
         [73828] = { -- Flamering Moth
             [npcKeys.zoneID] = zoneIDs.TIMELESS_ISLE,
