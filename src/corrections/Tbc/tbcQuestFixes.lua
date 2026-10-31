@@ -437,6 +437,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredLevel] = 1,
         },
         [1657] = { -- Stinking Up Southshore
+            [questKeys.requiredLevel] = 25,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [1658] = { -- Crashing the Wickerman Festival
