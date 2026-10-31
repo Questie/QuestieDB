@@ -1585,6 +1585,9 @@ function QuestieQuestFixes:Load()
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
             [questKeys.parentQuest] = 1654,
         },
+        [1657] = { -- Stinking Up Southshore
+            [questKeys.objectives] = {{{15415,nil,Questie.ICON_TYPE_EVENT}}},
+        },
         [1658] = { -- Crashing the Wickerman Festival
             [questKeys.name] = "Crashing the Wickerman Festival",
         },
@@ -5255,6 +5258,9 @@ function QuestieQuestFixes:Load()
         [8408] = { -- Fight for Warsong Gulch
             [questKeys.preQuestSingle] = {8372, 8399, 8400, 8401, 8402, 8403},
             [questKeys.objectivesText] = {},
+        },
+        [8409] = { -- Ruined Kegs
+            [questKeys.requiredLevel] = 30,
         },
         [8410] = { -- Elemental Mastery
             [questKeys.exclusiveTo] = {8411},

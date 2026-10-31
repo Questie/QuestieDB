@@ -163,6 +163,9 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {1516,1519,92466},
             [questKeys.exclusiveTo] = {1516,92466},
         },
+        [1657] = { -- Stinking Up Southshore
+            [questKeys.objectives] = {{{15415,nil,Questie.ICON_TYPE_EVENT}}},
+        },
         [1883] = { -- Speak with Un'thuwa
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
@@ -183,6 +186,9 @@ function ForeverQuestFixes:Load()
         },
         [8356] = { -- Flexing for Nougat
             [questKeys.objectivesText] = {"Do a flex emote at Innkeeper Allison, and in exchange you'll receive Stormwind Nougat!"},
+        },
+        [8409] = { -- Ruined Kegs
+            [questKeys.requiredLevel] = 30,
         },
         [76156] = { -- Stalk With The Earthmother
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,

@@ -264,7 +264,7 @@ function QuestieNPCFixes:Load()
             [npcKeys.zoneID] = zoneIDs.LOCH_MODAN,
         },
         [1983] = { -- Nightlash
-            [npcKeys.spawns] = {[zoneIDs.SILVERPINE_FOREST] = {{44,21},{45,20},{45,21}}},
+            [npcKeys.spawns] = {[zoneIDs.SILVERPINE_FOREST] = {{45.34,21.18}}},
         },
         [2039] = { -- Ursal the Mauler
             [npcKeys.waypoints] = {},
