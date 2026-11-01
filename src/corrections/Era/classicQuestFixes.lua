@@ -859,6 +859,9 @@ function QuestieQuestFixes:Load()
         [970] = { -- The Tower of Althalaxx
             [questKeys.nextQuestInChain] = 973,
         },
+        [971] = { -- Knowledge in the Deeps
+            [questKeys.disabledByQuest] = 968,
+        },
         [972] = { -- Water Sapta
             [questKeys.exclusiveTo] = {},
             [questKeys.parentQuest] = 0,
@@ -3052,7 +3055,8 @@ function QuestieQuestFixes:Load()
             [questKeys.requiredSourceItems] = {12300, 12323},
             [questKeys.startedBy] = {{10299}},
             [questKeys.finishedBy] = {{10299}},
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_INTERACT, l10n("Beat Emberstrife till his will is broken, then place the Unforged Seal of Ascension before him and use the Orb of Draconic Energy."), 0, {{"monster", 10321}}},
+            [questKeys.extraObjectives] = {
+                {nil, Questie.ICON_TYPE_INTERACT, l10n("Beat Emberstrife till his will is broken, then place the Unforged Seal of Ascension before him and use the Orb of Draconic Energy."), 0, {{"monster", 10321}}},
                 {nil, Questie.ICON_TYPE_OBJECT, l10n("Use the Flames of the Black Flight over it to create the Seal."), 0, {{"object", 175321}}},
             },
         },
@@ -3061,7 +3065,10 @@ function QuestieQuestFixes:Load()
         },
         [4763] = { -- The Blackwood Corrupted
             [questKeys.requiredSourceItems] = {12341, 12342, 12343, 12347}, -- #798
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Summon Xabraxxis once you have the required items from the Blackwood Stores."), 0, {{"object", 175338}}}},
+            [questKeys.extraObjectives] = {
+                {nil, Questie.ICON_TYPE_OBJECT, l10n("Summon Xabraxxis once you have the required items from the Blackwood Stores."), 0, {{"object", 176705}}},
+                {nil, Questie.ICON_TYPE_SLAY, l10n("Kill Xabraxxis"), 0, {{"monster", 10373}}},
+            },
         },
         [4764] = { -- Doomrigger's Clasp
             [questKeys.preQuestSingle] = {},
@@ -3674,7 +3681,8 @@ function QuestieQuestFixes:Load()
             [questKeys.startedBy] = {{6018}},
             [questKeys.objectivesText] = {},
         },
-        [5713] = { -- One Shot. One Kill.
+        [5713] = { -- One Shot.  One Kill.
+            [questKeys.name] = "One Shot.  One Kill.",
             [questKeys.triggerEnd] = {"Protect Aynasha", {[zoneIDs.DARKSHORE] = {{45.87, 90.42}}}},
         },
         [5721] = { -- The Battle of Darrowshire
