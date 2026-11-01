@@ -136,6 +136,9 @@ function ForeverQuestFixes:Load()
             [questKeys.startedBy] = {nil,{673378}},
             [questKeys.preQuestSingle] = {98398},
         },
+        [971] = { -- Knowledge in the Deeps
+            [questKeys.disabledByQuest] = 968,
+        },
         [982] = { -- Deep Ocean, Vast Sea
             [questKeys.breadcrumbs_add] = {97894},
         },
@@ -172,11 +175,20 @@ function ForeverQuestFixes:Load()
         [2519] = { -- The Temple of the Moon
             [questKeys.breadcrumbs] = {98391},
         },
+        [4763] = { -- The Blackwood Corrupted
+            [questKeys.extraObjectives] = {
+                {nil, Questie.ICON_TYPE_OBJECT, l10n("Summon Xabraxxis once you have the required items from the Blackwood Stores."), 0, {{"object", 176705}}},
+                {nil, Questie.ICON_TYPE_SLAY, l10n("Kill Xabraxxis"), 0, {{"monster", 10373}}},
+            },
+        },
         [5147] = { -- WANTED: Arnak Grimtotem
             [questKeys.name] = "WANTED: Arnak Grimtotem",
         },
         [5482] = { -- Doom Weed
             [questKeys.nextQuestInChain] = 99142,
+        },
+        [5713] = { -- One Shot.  One Kill.
+            [questKeys.name] = "One Shot.  One Kill.",
         },
         [5725] = { -- The Power to Destroy...
             [questKeys.startedBy_remove] = {nil,{658924}},
