@@ -170,7 +170,7 @@ def install(addons: Path, tag: str = "latest", repo: str = "Questie/QuestieDB") 
         archive_name = combined[0].get("file")
         if (
             not isinstance(archive_name, str)
-            or not re.fullmatch(r"QuestieDB-[0-9A-Za-z.\-]+-all\.zip", archive_name)
+            or not re.fullmatch(r"QuestieDB-(?:[0-9A-Za-z.\-]+-)?all\.zip", archive_name)
         ):
             raise ValueError("manifest contains an invalid combined archive name")
 
