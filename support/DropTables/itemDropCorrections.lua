@@ -553,6 +553,9 @@ QuestieItemDropCorrections.Tbc = { -- Corrections for Old World data should only
     [6487] = { -- Vile Familiar Head
         [3101] = 100, -- TO DO double check this. strange that it's TBC only
     },
+    [6082] = { -- Green Whelp Blood
+        [741] = 25,
+    },
     [12334] = { -- Frostmaul Shards
         [7428] = 20,
         [7429] = 20,

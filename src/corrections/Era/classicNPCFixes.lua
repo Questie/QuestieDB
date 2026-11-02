@@ -714,7 +714,6 @@ function QuestieNPCFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.SHADOWFANG_KEEP] = {{-1,-1}}},
         },
         [3879] = { -- Dark Strand Assassin
-            [npcKeys.spawns] = {[zoneIDs.ASHENVALE] = {{25.76,30.17}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
         },
         [3893] = { -- Forsaken Scout
