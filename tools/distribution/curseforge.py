@@ -109,7 +109,7 @@ def upload(tag: str, dist: Path, dry_run: bool) -> None:
             raise ValueError(f"{ref.removeprefix('refs/tags/')} {OTHER_COMMIT}")
 
     for flavor, game_version in GAME_VERSIONS.items():
-        filename = f"QuestieDB-{flavor}.zip"
+        filename = f"QuestieDB-{release.version}-{flavor}.zip"
         marker = f"curse/{tag}/{flavor}"
         metadata = {
             "displayName": f"{tag} ({flavor})",

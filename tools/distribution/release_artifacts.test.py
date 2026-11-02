@@ -18,6 +18,9 @@ import preview
 import release_artifacts
 
 
+VERSION = "1.0.1"
+
+
 class ReleaseFixture(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix="questiedb release handoff ")
@@ -31,7 +34,7 @@ class ReleaseFixture(unittest.TestCase):
 
         artifacts = []
         for flavor in ("Vanilla", "TBC", "Wrath", "Cata", "Mists", "Forever", "all"):
-            filename = f"QuestieDB-{flavor}.zip"
+            filename = f"QuestieDB-{VERSION}-{flavor}.zip"
             path = self.dist / filename
             with zipfile.ZipFile(path, "w") as archive:
                 archive.writestr("QuestieDB/", "")
@@ -100,7 +103,7 @@ class VerificationTest(ReleaseFixture):
         self.assert_rejected_by_both(commit="b" * 40)
 
         # Damage the final archive so an incremental CLI would already have emitted paths.
-        with (self.dist / "QuestieDB-all.zip").open("ab") as archive:
+        with (self.dist / f"QuestieDB-{VERSION}-all.zip").open("ab") as archive:
             archive.write(b"corruption")
         self.assert_rejected_by_both()
         self.assertEqual("previous report", output.read_text(encoding="utf-8"))
@@ -153,7 +156,7 @@ class VerificationTest(ReleaseFixture):
         self.assert_rejected_by_both()
 
     def test_invalid_zip_is_rejected_even_when_its_checksum_matches(self):
-        path = self.dist / "QuestieDB-all.zip"
+        path = self.dist / f"QuestieDB-{VERSION}-all.zip"
         path.write_bytes(b"not a ZIP")
         self.manifest["artifacts"][-1]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
         self.write_manifest()

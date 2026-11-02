@@ -49,7 +49,7 @@ class ForeverDistributionTest(LuaFixture):
         self.assert_success(result)
         stage = self.temp / "staged addon"
         stage.mkdir()
-        archive = self.root / ".out/dist/QuestieDB-Forever.zip"
+        archive = next((self.root / ".out/dist").glob("QuestieDB-*-Forever.zip"))
         bootstrap.stage_archive(archive, stage)
         self.assertEqual((stage / primary.name).read_bytes(), (stage / alias.name).read_bytes())
         with zipfile.ZipFile(archive) as packaged:

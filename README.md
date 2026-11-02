@@ -309,7 +309,7 @@ Generation creates Baked TOCs; packaging creates installable ZIPs:
 ```
 
 Packages go into `.out/dist/`: one ZIP per requested flavor, `release.json`, and release
-notes. Selecting all six also creates `QuestieDB-all.zip`, for seven ZIPs in total. Both the
+notes. Selecting all six also creates `QuestieDB-<version>-all.zip`, for seven ZIPs in total. Both the
 Forever ZIP and combined ZIP contain `QuestieDB_Forever.toc` and `QuestieDB_Camelot.toc`.
 Packaging copies the alias from the completed staged primary, not an existing workspace alias.
 ZIPs contain a `QuestieDB/` folder ready to extract into `Interface/AddOns/`, including
@@ -440,7 +440,7 @@ To refresh a local install instead of regenerating:
 ./questiedb.sh bootstrap "/path/to/Interface/AddOns" preview   # rolling development build
 ```
 
-Bootstrap uses the same Python implementation from either launcher. It installs `QuestieDB-all.zip`
+Bootstrap uses the same Python implementation from either launcher. It installs `QuestieDB-<version>-all.zip`
 only, so a release from before the combined archive existed cannot be bootstrapped. Five-flavor
 combined releases using the nested `questiedb` manifest remain accepted; if either Forever TOC
 is present, both must be present and byte-identical. Bootstrap verifies the checksum and validates archive paths
@@ -461,7 +461,7 @@ Direct normal users to the [latest stable release](https://github.com/Questie/Qu
 Preview notes warn at the top and directly above the download assets that the build is for testing
 only. CI still provides per-run artifacts.
 
-Release notes recommend `QuestieDB-all.zip`, list the smaller per-flavor downloads, and explain
+Release notes recommend `QuestieDB-<version>-all.zip`, list the smaller per-flavor downloads, and explain
 installation. Commit provenance, API contracts, and checksum instructions live in a collapsed
 build-details section.
 
