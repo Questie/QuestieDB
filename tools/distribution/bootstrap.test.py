@@ -37,6 +37,8 @@ def archive_bytes(flavors, extra=None):
             archive.writestr(name, value)
     return output.getvalue()
 
+ARCHIVE = "QuestieDB-1.0.0-all.zip"
+
 
 class BootstrapTest(unittest.TestCase):
     def setUp(self):
@@ -53,7 +55,7 @@ class BootstrapTest(unittest.TestCase):
         (self.target / "QuestieDB.toc").write_text("source mode")
         (self.target / "custom.lua").write_text("unrelated file")
 
-        self.assets = {"QuestieDB-all.zip": archive_bytes(bootstrap.FLAVORS)}
+        self.assets = {ARCHIVE: archive_bytes(bootstrap.FLAVORS)}
         self.refresh_manifest()
         self.requests = []
         self.original = self.snapshot()
@@ -73,7 +75,7 @@ class BootstrapTest(unittest.TestCase):
             "producerCommit": "a" * 40,
             "contractVersion": 2,
             "artifacts": [
-                {"file": name, "sha256": hashlib.sha256(data).hexdigest()}
+                {"flavor": "All", "file": name, "sha256": hashlib.sha256(data).hexdigest()}
                 for name, data in self.assets.items()
                 if name.endswith(".zip")
             ],
@@ -96,7 +98,7 @@ class BootstrapTest(unittest.TestCase):
         self.assertEqual(
             [
                 "https://github.com/Questie/QuestieDB/releases/latest/download/release.json",
-                "https://github.com/Questie/QuestieDB/releases/latest/download/QuestieDB-all.zip",
+                "https://github.com/Questie/QuestieDB/releases/latest/download/" + ARCHIVE,
             ],
             self.requests,
         )
@@ -112,7 +114,7 @@ class BootstrapTest(unittest.TestCase):
     def test_older_release_removes_stale_forever_pair(self):
         for name in bootstrap.FOREVER_TOCS:
             (self.target / name).write_text("stale artifact")
-        self.assets[bootstrap.ARCHIVE] = archive_bytes(bootstrap.FLAVORS[:-1])
+        self.assets[ARCHIVE] = archive_bytes(bootstrap.FLAVORS[:-1])
         self.refresh_manifest()
         self.install()
         self.assertTrue(all(not (self.target / name).exists() for name in bootstrap.FOREVER_TOCS))
@@ -133,7 +135,7 @@ class BootstrapTest(unittest.TestCase):
         ]
         for extra in cases:
             with self.subTest(extra=extra):
-                self.assets[bootstrap.ARCHIVE] = archive_bytes(bootstrap.FLAVORS[:-1], extra)
+                self.assets[ARCHIVE] = archive_bytes(bootstrap.FLAVORS[:-1], extra)
                 self.refresh_manifest()
                 with self.assertRaises(ValueError):
                     self.install()
@@ -146,14 +148,14 @@ class BootstrapTest(unittest.TestCase):
             directory.create_system = 3
             directory.external_attr = (stat.S_IFDIR | 0o755) << 16
             archive.writestr(directory, "")
-        self.assets[bootstrap.ARCHIVE] = data.getvalue()
+        self.assets[ARCHIVE] = data.getvalue()
         self.refresh_manifest()
         with self.assertRaisesRegex(ValueError, "TOC must be a file"):
             self.install()
         self.assertEqual(self.original, self.snapshot())
 
     def test_older_release_rejects_directory_or_wrong_case_optional_destination(self):
-        self.assets[bootstrap.ARCHIVE] = archive_bytes(bootstrap.FLAVORS[:-1])
+        self.assets[ARCHIVE] = archive_bytes(bootstrap.FLAVORS[:-1])
         self.refresh_manifest()
         for name in (*bootstrap.FOREVER_TOCS, "questiedb_Forever.toc", "QuestieDB_CAMELOT.toc"):
             with self.subTest(name=name):
@@ -167,26 +169,26 @@ class BootstrapTest(unittest.TestCase):
                     path.rmdir()
 
     def test_hash_mismatch_leaves_install_unchanged(self):
-        self.assets["QuestieDB-all.zip"] += b"corruption"
+        self.assets[ARCHIVE] += b"corruption"
         with self.assertRaisesRegex(ValueError, "checksum mismatch"):
             self.install()
         self.assertEqual(self.original, self.snapshot())
 
     def test_missing_download_leaves_install_unchanged(self):
-        del self.assets["QuestieDB-all.zip"]
+        del self.assets[ARCHIVE]
         with self.assertRaisesRegex(OSError, "missing download"):
             self.install()
         self.assertEqual(self.original, self.snapshot())
 
     def test_verified_but_invalid_zip_leaves_install_unchanged(self):
-        self.assets["QuestieDB-all.zip"] = b"not a ZIP"
+        self.assets[ARCHIVE] = b"not a ZIP"
         self.refresh_manifest()
         with self.assertRaises(zipfile.BadZipFile):
             self.install()
         self.assertEqual(self.original, self.snapshot())
 
     def test_incomplete_combined_archive_leaves_install_unchanged(self):
-        self.assets["QuestieDB-all.zip"] = archive_bytes(["Vanilla"])
+        self.assets[ARCHIVE] = archive_bytes(["Vanilla"])
         self.refresh_manifest()
         with self.assertRaisesRegex(ValueError, "all five generated"):
             self.install()
@@ -204,11 +206,11 @@ class BootstrapTest(unittest.TestCase):
                     {},
                     {"artifacts": []},
                     {"artifacts": [None]},
-                    {"artifacts": [{"file": "../payload.zip", "sha256": "a" * 64}]},
-                    {"artifacts": [{"file": "https://elsewhere/payload.zip", "sha256": "a" * 64}]},
-                    {"artifacts": [{"file": "QuestieDB-all.zip", "sha256": "bad"}]},
-                    {"artifacts": [{"file": "QuestieDB-Vanilla.zip", "sha256": "a" * 64}]},
-                    {"artifacts": [{"file": "QuestieDB-all.zip", "sha256": "a" * 64}] * 2},
+                    {"artifacts": [{"flavor": "All", "file": "../payload.zip", "sha256": "a" * 64}]},
+                    {"artifacts": [{"flavor": "All", "file": "https://elsewhere/payload.zip", "sha256": "a" * 64}]},
+                    {"artifacts": [{"flavor": "All", "file": ARCHIVE, "sha256": "bad"}]},
+                    {"artifacts": [{"flavor": "Vanilla", "file": "QuestieDB-1.0.0-Vanilla.zip", "sha256": "a" * 64}]},
+                    {"artifacts": [{"flavor": "All", "file": ARCHIVE, "sha256": "a" * 64}] * 2},
                 )
             ),
         ]
@@ -238,7 +240,7 @@ class BootstrapTest(unittest.TestCase):
             "QuestieDB/CHANGELOG.md.bak",
         ):
             with self.subTest(name=name):
-                self.assets["QuestieDB-all.zip"] = archive_bytes(
+                self.assets[ARCHIVE] = archive_bytes(
                     bootstrap.FLAVORS, {name: "unsafe"}
                 )
                 self.refresh_manifest()
@@ -255,19 +257,19 @@ class BootstrapTest(unittest.TestCase):
             link.external_attr = (stat.S_IFLNK | 0o777) << 16
             archive.writestr(link, "../../outside")
 
-        self.assets["QuestieDB-all.zip"] = data.getvalue()
+        self.assets[ARCHIVE] = data.getvalue()
         self.refresh_manifest()
         with self.assertRaisesRegex(ValueError, "link or special file"):
             self.install()
         self.assertEqual(self.original, self.snapshot())
 
     def test_duplicate_archive_entries_are_rejected_before_installation(self):
-        data = io.BytesIO(self.assets["QuestieDB-all.zip"])
+        data = io.BytesIO(self.assets[ARCHIVE])
         with warnings.catch_warnings():
             warnings.filterwarnings("ignore", message="Duplicate name:", category=UserWarning)
             with zipfile.ZipFile(data, "a") as archive:
                 archive.writestr("QuestieDB/src/runtime.lua", "return 'different'\n")
-        self.assets["QuestieDB-all.zip"] = data.getvalue()
+        self.assets[ARCHIVE] = data.getvalue()
         self.refresh_manifest()
         with self.assertRaisesRegex(ValueError, "duplicate archive entry"):
             self.install()
@@ -290,7 +292,7 @@ class BootstrapTest(unittest.TestCase):
         self.assertEqual(self.original, self.snapshot())
 
     def test_older_release_rejects_stale_optional_symlink_before_cleanup(self):
-        self.assets[bootstrap.ARCHIVE] = archive_bytes(bootstrap.FLAVORS[:-1])
+        self.assets[ARCHIVE] = archive_bytes(bootstrap.FLAVORS[:-1])
         self.refresh_manifest()
         outside = Path(self.temp.name) / "outside.toc"
         outside.write_text("do not modify")

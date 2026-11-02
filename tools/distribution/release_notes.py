@@ -220,9 +220,10 @@ def render(
 
     # Offer only the archives this packaging run actually produced.
     downloads = ["## Download"]
-    if "QuestieDB-all.zip" in files:
+    combined = f"QuestieDB-{version}-all.zip"
+    if combined in files:
         downloads.append(
-            f"**Recommended: [QuestieDB-all.zip]({download_url}/QuestieDB-all.zip)**\n\n"
+            f"**Recommended: [{combined}]({download_url}/{combined})**\n\n"
             "Includes all game flavors. Your client automatically loads the matching database."
         )
         downloads.append("For a smaller download, choose just your game flavor:")
@@ -231,7 +232,7 @@ def render(
 
     rows = ["| Game flavor | Download |", "| --- | --- |"]
     for flavor, label in FLAVOR_LABELS.items():
-        filename = f"QuestieDB-{flavor}.zip"
+        filename = f"QuestieDB-{version}-{flavor}.zip"
         if filename in files:
             rows.append(f"| {label} | [{filename}]({download_url}/{filename}) |")
 

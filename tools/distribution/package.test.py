@@ -687,12 +687,12 @@ class PackageTest(unittest.TestCase):
         self.assertLess(
             notes.index("Looking for the Questie quest helper?"), notes.index("## What's new")
         )
-        self.assertIn("**Recommended: [QuestieDB-all.zip]", notes)
+        self.assertIn("**Recommended: [QuestieDB-1.2.3-dev.abcdef0-all.zip]", notes)
         self.assertIn(
             "Includes all game flavors. Your client automatically loads the matching database.",
             notes,
         )
-        self.assertIn("/releases/download/preview/QuestieDB-all.zip", notes)
+        self.assertIn("/releases/download/preview/QuestieDB-1.2.3-dev.abcdef0-all.zip", notes)
         self.assertIn("Interface/AddOns/QuestieDB/QuestieDB_<Flavor>.toc", notes)
         self.assertIn("GitHub's **Source code** archives are not the packaged addon", notes)
         self.assertIn("<summary>Build details and checksums</summary>", notes)
@@ -849,13 +849,13 @@ class PackageTest(unittest.TestCase):
         result = self.run_package("Vanilla")
         self.assertEqual(0, result.returncode, result.stderr)
         self.assertEqual(
-            ["QuestieDB-Vanilla.zip"], [p.name for p in (self.root / ".out/dist").glob("*.zip")]
+            ["QuestieDB-1.2.3-dev.abcdef0-Vanilla.zip"], [p.name for p in (self.root / ".out/dist").glob("*.zip")]
         )
         document = json.loads((self.root / ".out/dist/release.json").read_text())
         self.assertEqual(
             [
                 {
-                    "filename": "QuestieDB-Vanilla.zip",
+                    "filename": "QuestieDB-1.2.3-dev.abcdef0-Vanilla.zip",
                     "nolib": False,
                     "metadata": [
                         {"flavor": "classic", "interface": 11599},
@@ -866,18 +866,18 @@ class PackageTest(unittest.TestCase):
             document["releases"],
         )
         notes = (self.root / ".out/dist/RELEASE_NOTES.md").read_text()
-        self.assertIn("[QuestieDB-Vanilla.zip]", notes)
-        self.assertNotIn("QuestieDB-all.zip", notes)
-        self.assertNotIn("QuestieDB-Mists.zip", notes)
+        self.assertIn("[QuestieDB-1.2.3-dev.abcdef0-Vanilla.zip]", notes)
+        self.assertNotIn("QuestieDB-1.2.3-dev.abcdef0-all.zip", notes)
+        self.assertNotIn("QuestieDB-1.2.3-dev.abcdef0-Mists.zip", notes)
 
     def test_forever_packages_without_workspace_alias(self):
         (self.root / "QuestieDB_Camelot.toc").unlink()
         result = self.run_package("Forever")
         self.assertEqual(0, result.returncode, result.stderr)
         self.assertEqual(
-            ["QuestieDB-Forever.zip"], [p.name for p in (self.root / ".out/dist").glob("*.zip")]
+            ["QuestieDB-1.2.3-dev.abcdef0-Forever.zip"], [p.name for p in (self.root / ".out/dist").glob("*.zip")]
         )
-        with zipfile.ZipFile(self.root / ".out/dist/QuestieDB-Forever.zip") as archive:
+        with zipfile.ZipFile(self.root / ".out/dist/QuestieDB-1.2.3-dev.abcdef0-Forever.zip") as archive:
             self.assertEqual(
                 archive.read("QuestieDB/QuestieDB_Forever.toc"),
                 archive.read("QuestieDB/QuestieDB_Camelot.toc"),
@@ -886,7 +886,7 @@ class PackageTest(unittest.TestCase):
         self.assertEqual(
             [
                 {
-                    "filename": "QuestieDB-Forever.zip",
+                    "filename": "QuestieDB-1.2.3-dev.abcdef0-Forever.zip",
                     "nolib": False,
                     "metadata": [{"flavor": "forever", "interface": 16001}],
                 },
@@ -894,7 +894,7 @@ class PackageTest(unittest.TestCase):
             document["releases"],
         )
         notes = (self.root / ".out/dist/RELEASE_NOTES.md").read_text()
-        self.assertIn("[QuestieDB-Forever.zip]", notes)
+        self.assertIn("[QuestieDB-1.2.3-dev.abcdef0-Forever.zip]", notes)
         self.assertNotIn("Camelot", notes)
 
     def test_camelot_is_not_a_flavor(self):
@@ -963,7 +963,7 @@ class PackageTest(unittest.TestCase):
         self.assertEqual("0" * 40, manifest["producerCommit"])
         notes = (self.root / ".out/dist/RELEASE_NOTES.md").read_text()
         self.assertTrue(notes.startswith("# QuestieDB 1.2.3\n"))
-        self.assertIn("/releases/download/v1.2.3/QuestieDB-Vanilla.zip", notes)
+        self.assertIn("/releases/download/v1.2.3/QuestieDB-1.2.3-Vanilla.zip", notes)
         self.assertNotIn("[!WARNING]", notes)
         self.assertNotIn("Unstable", notes)
         self.assertNotIn("9.9.9", notes)

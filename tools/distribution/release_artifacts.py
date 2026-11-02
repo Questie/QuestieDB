@@ -69,7 +69,7 @@ def verify(dist: Path, expected_commit: str | None = None) -> VerifiedRelease:
         raise ValueError("release manifest must contain an artifact list")
 
     filenames = [artifact.get("file") for artifact in artifacts]
-    expected_files = {f"QuestieDB-{flavor}.zip" for flavor in (*FLAVORS, "all")}
+    expected_files = {f"QuestieDB-{version}-{flavor}.zip" for flavor in (*FLAVORS, "all")}
     if (
         any(not isinstance(filename, str) for filename in filenames)
         or len(filenames) != len(expected_files)

@@ -19,6 +19,7 @@ import zipfile
 import curseforge
 from package import FLAVORS
 
+VERSION = "1.0.9"
 GIT = shutil.which("git")
 
 
@@ -40,7 +41,7 @@ class UploadTest(unittest.TestCase):
         self.dist.mkdir()
         artifacts = []
         for flavor in (*FLAVORS, "all"):
-            path = self.dist / f"QuestieDB-{flavor}.zip"
+            path = self.dist / f"QuestieDB-{VERSION}-{flavor}.zip"
             with zipfile.ZipFile(path, "w") as archive:
                 archive.writestr("QuestieDB/x.lua", flavor)
             digest = hashlib.sha256(path.read_bytes()).hexdigest()
@@ -81,11 +82,11 @@ class UploadTest(unittest.TestCase):
         self.assertEqual(
             [(name, meta["gameVersions"]) for _, name, meta in self.uploads],
             [
-                ("QuestieDB-Vanilla.zip", [16630]),
-                ("QuestieDB-Forever.zip", [17053]),
-                ("QuestieDB-TBC.zip", [16533]),
-                ("QuestieDB-Wrath.zip", [16785]),
-                ("QuestieDB-Mists.zip", [16168]),
+                ("QuestieDB-1.0.9-Vanilla.zip", [16630]),
+                ("QuestieDB-1.0.9-Forever.zip", [17053]),
+                ("QuestieDB-1.0.9-TBC.zip", [16533]),
+                ("QuestieDB-1.0.9-Wrath.zip", [16785]),
+                ("QuestieDB-1.0.9-Mists.zip", [16168]),
             ],
         )
         project, _, metadata = self.uploads[0]
@@ -100,7 +101,7 @@ class UploadTest(unittest.TestCase):
     def test_should_skip_flavors_that_are_already_reserved(self):
         self.git("push", "-q", "origin", f"{self.commit}:refs/tags/curse/v1.0.9/TBC")
         self.assertEqual(self.run_upload()[0], 0)
-        self.assertNotIn("QuestieDB-TBC.zip", [name for _, name, _ in self.uploads])
+        self.assertNotIn("QuestieDB-1.0.9-TBC.zip", [name for _, name, _ in self.uploads])
         self.assertEqual(len(self.uploads), 4)
 
     def test_should_refuse_before_any_upload_when_a_later_flavor_belongs_to_another_commit(self):

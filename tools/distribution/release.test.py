@@ -21,6 +21,7 @@ import release
 from package import find_lua
 
 
+VERSION = "1.2.3"
 ROOT = Path(__file__).resolve().parents[2]
 try:
     LUA = find_lua()
@@ -101,7 +102,7 @@ class ReleaseTest(unittest.TestCase):
         self.archives = []
         artifacts = []
         for flavor in ("Vanilla", "TBC", "Wrath", "Cata", "Mists", "Forever", "all"):
-            path = self.dist / f"QuestieDB-{flavor}.zip"
+            path = self.dist / f"QuestieDB-{VERSION}-{flavor}.zip"
             with zipfile.ZipFile(path, "w") as archive:
                 archive.writestr("QuestieDB/CHANGELOG.md", "# Changes\n")
             self.archives.append(str(path))

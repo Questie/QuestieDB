@@ -108,7 +108,7 @@ alias again from the staged canonical TOC after Static Correction stripping; it 
 trust an old workspace alias. Legacy underscore filenames are unchanged. Baked file lists
 remain resolved plain paths, without native file conditions or conditional entity metadata.
 
-All six flavors produce six flavor ZIPs plus `QuestieDB-all.zip`. Bootstrap still accepts
+All six flavors produce six flavor ZIPs plus `QuestieDB-<version>-all.zip`. Bootstrap still accepts
 five-flavor combined releases using the nested `questiedb` manifest; the old flat manifest
 format is not accepted. A combined release containing either Forever TOC must contain both,
 byte-identically. Camelot is not a selectable database flavor or a separate ZIP.

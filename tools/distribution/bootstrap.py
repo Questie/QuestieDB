@@ -23,7 +23,6 @@ import zipfile
 
 
 FLAVORS = ("Vanilla", "TBC", "Wrath", "Cata", "Mists", "Forever")
-ARCHIVE = "QuestieDB-all.zip"
 LEGACY_TOCS = {"QuestieDB_%s.toc" % flavor for flavor in FLAVORS if flavor != "Forever"}
 FOREVER_TOCS = {"QuestieDB_Forever.toc", "QuestieDB_Camelot.toc"}
 TOCS = LEGACY_TOCS | FOREVER_TOCS
@@ -163,14 +162,21 @@ def install(addons: Path, tag: str = "latest", repo: str = "Questie/QuestieDB") 
         combined = [
             entry
             for entry in manifest["artifacts"]
-            if isinstance(entry, dict) and entry.get("file") == ARCHIVE
+            if isinstance(entry, dict) and entry.get("flavor") == "All"
         ]
         if len(combined) != 1:
-            raise ValueError("manifest must list exactly one " + ARCHIVE)
+            raise ValueError("manifest must list exactly one combined archive")
+
+        archive_name = combined[0].get("file")
+        if (
+            not isinstance(archive_name, str)
+            or not re.fullmatch(r"QuestieDB-[0-9A-Za-z.\-]+-all\.zip", archive_name)
+        ):
+            raise ValueError("manifest contains an invalid combined archive name")
 
         expected = combined[0].get("sha256")
         if not isinstance(expected, str) or not re.fullmatch(r"[0-9a-f]{64}", expected):
-            raise ValueError("manifest contains an invalid SHA-256 for " + ARCHIVE)
+            raise ValueError("manifest contains an invalid SHA-256 for " + archive_name)
 
         # Downloads and extraction remain private until every safety check passes.
         print(
@@ -181,11 +187,11 @@ def install(addons: Path, tag: str = "latest", repo: str = "Questie/QuestieDB") 
             ),
             flush=True,
         )
-        print("bootstrap: downloading %s" % ARCHIVE, flush=True)
-        archive = work / ARCHIVE
-        download(base + "/" + ARCHIVE, archive)
+        print("bootstrap: downloading %s" % archive_name, flush=True)
+        archive = work / archive_name
+        download(base + "/" + archive_name, archive)
         if sha256(archive) != expected:
-            raise ValueError("checksum mismatch for %s; refusing to install" % ARCHIVE)
+            raise ValueError("checksum mismatch for %s; refusing to install" % archive_name)
 
         stage = work / "extracted"
         stage.mkdir()

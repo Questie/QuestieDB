@@ -181,6 +181,7 @@ def build_zip(
     lua: str,
     flavor: str,
     changelog: str,
+    version: str,
 ) -> Artifact:
     """Stage the selected TOCs' union, strip only staged copies, and check the ZIP."""
     stage = root / ".out/stage"
@@ -214,7 +215,7 @@ def build_zip(
         shutil.copyfile(addon / "QuestieDB_Forever.toc", alias)
         tocs.append(alias)
 
-    filename = "QuestieDB-%s.zip" % flavor
+    filename = "QuestieDB-%s-%s.zip" % (version, flavor)
     archive_path = root / ".out/dist" / filename
 
     # Sorted paths stabilize entry ordering. ZIP timestamps are not a cross-build byte contract;
@@ -351,10 +352,11 @@ def package(root: Path, flavors: list[str]) -> None:
     dist.mkdir(parents=True)
 
     artifacts = [
-        build_zip(root, [source], types, lua, source.flavor, changelog) for source in sources
+        build_zip(root, [source], types, lua, source.flavor, changelog, version)
+        for source in sources
     ]
     if len(sources) == len(FLAVORS):
-        artifacts.append(build_zip(root, sources, types, lua, "all", changelog))
+        artifacts.append(build_zip(root, sources, types, lua, "all", changelog, version))
 
     shutil.rmtree(root / ".out/stage")
 
