@@ -134,6 +134,8 @@ class VerificationTest(ReleaseFixture):
             [],
             {},
             dict(valid, version=None),
+            dict(valid, version="../1.0.1"),
+            dict(valid, version="1.0"),
             dict(valid, producerCommit="bad"),
             dict(valid, artifacts=None),
             dict(valid, artifacts=[None]),
