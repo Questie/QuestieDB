@@ -347,14 +347,14 @@ class ReleaseTest(unittest.TestCase):
         self.assertEqual(
             ("release", "upload", "v1.2.3", ".out/dist/release.json", "--clobber"), self.writes[2]
         )
+        self.assertEqual(("release", "edit", "v1.2.3"), self.writes[3][:3])
         self.assertEqual(
             [
                 ("release", "delete-asset", "v1.2.3", "QuestieDB-Vanilla.zip", "--yes"),
                 ("release", "delete-asset", "v1.2.3", "QuestieDB-all.zip", "--yes"),
             ],
-            self.writes[3:5],
+            self.writes[4:6],
         )
-        self.assertEqual(("release", "edit", "v1.2.3"), self.writes[5][:3])
         self.assertEqual(6, len(self.writes))
 
     def test_publication_rechecks_collision_after_successful_preflight(self):
