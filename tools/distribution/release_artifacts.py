@@ -54,8 +54,11 @@ def verify(dist: Path, expected_commit: str | None = None) -> VerifiedRelease:
 
     version = manifest.get("version")
     commit = manifest.get("producerCommit")
-    if not isinstance(version, str) or not version:
-        raise ValueError("release manifest must contain an addon version")
+    # Same canonical form the packager accepts; the version becomes part of archive paths.
+    if not isinstance(version, str) or not re.fullmatch(
+        r"(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)(?:-dev\.[0-9a-f]{7})?", version
+    ):
+        raise ValueError("release manifest must contain a canonical addon version")
     if not isinstance(commit, str) or not re.fullmatch(r"[0-9a-f]{40}", commit):
         raise ValueError("release manifest must contain a valid producing commit")
     if expected_commit is not None and commit != expected_commit:
