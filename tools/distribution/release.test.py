@@ -140,6 +140,7 @@ class ReleaseTest(unittest.TestCase):
         self.current = "b" * 40
         self.comparison = "ahead"
         self.read_failure = None
+        self.assets = []
         self.fail_write = None
         self.reads = []
         self.writes = []
@@ -152,6 +153,8 @@ class ReleaseTest(unittest.TestCase):
             return self.read_failure
         if args[:2] == ("api", "graphql"):
             return json.dumps(self.state)
+        if args[:2] == ("release", "view"):
+            return "\n".join(self.assets)
         endpoint = args[1]
         if endpoint == "repos/Owner/Database/releases/42":
             return self.immutable
@@ -314,6 +317,8 @@ class ReleaseTest(unittest.TestCase):
     def test_override_moves_tag_after_zips_and_before_manifest(self):
         self.env["RELEASE_OVERRIDE"] = "true"
         self.state = {"release": {"databaseId": 42}, "ref": {"name": "v1.2.3"}}
+        self.assets = ["QuestieDB-Vanilla.zip", "QuestieDB-all.zip", "release.json", "notes.txt"]
+        self.assets += [Path(path).name for path in self.archives]
         self.assertEqual(0, self.run_action("publish"), self.stderr)
         self.assertEqual(
             (
@@ -342,8 +347,15 @@ class ReleaseTest(unittest.TestCase):
         self.assertEqual(
             ("release", "upload", "v1.2.3", ".out/dist/release.json", "--clobber"), self.writes[2]
         )
-        self.assertEqual(("release", "edit", "v1.2.3"), self.writes[3][:3])
-        self.assertEqual(4, len(self.writes))
+        self.assertEqual(
+            [
+                ("release", "delete-asset", "v1.2.3", "QuestieDB-Vanilla.zip", "--yes"),
+                ("release", "delete-asset", "v1.2.3", "QuestieDB-all.zip", "--yes"),
+            ],
+            self.writes[3:5],
+        )
+        self.assertEqual(("release", "edit", "v1.2.3"), self.writes[5][:3])
+        self.assertEqual(6, len(self.writes))
 
     def test_publication_rechecks_collision_after_successful_preflight(self):
         self.assertEqual(0, self.run_action("preflight"), self.stderr)
