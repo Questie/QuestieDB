@@ -209,16 +209,6 @@ def publish() -> None:
             "force=true",
         )
     gh("release", "upload", tag, str(dist / "release.json"), "--clobber")
-
-    # --clobber only replaces same-named assets. Drop ZIPs from an earlier naming scheme or
-    # version only after the new manifest is live, so the old manifest never points at nothing.
-    if release_id is not None:
-        current = {archive.path.name for archive in release.archives}
-        names = gh_output("release", "view", tag, "--json", "assets", "--jq", ".assets[].name")
-        for name in names.splitlines():
-            if name.startswith("QuestieDB-") and name.endswith(".zip") and name not in current:
-                gh("release", "delete-asset", tag, name, "--yes")
-
     gh(
         "release",
         "edit",
@@ -233,6 +223,15 @@ def publish() -> None:
         f"--prerelease={prerelease}",
         f"--latest={latest}",
     )
+
+    # --clobber only replaces same-named assets. Drop ZIPs from an earlier naming scheme or
+    # version only after the new manifest is live, so the old manifest never points at nothing.
+    if release_id is not None:
+        current = {archive.path.name for archive in release.archives}
+        names = gh_output("release", "view", tag, "--json", "assets", "--jq", ".assets[].name")
+        for name in names.splitlines():
+            if name.startswith("QuestieDB-") and name.endswith(".zip") and name not in current:
+                gh("release", "delete-asset", tag, name, "--yes")
 
 
 def main(argv: list[str] | None = None) -> int:
