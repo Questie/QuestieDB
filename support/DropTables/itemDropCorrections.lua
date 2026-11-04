@@ -302,6 +302,9 @@ QuestieItemDropCorrections.Era = {
     [5669] = { -- Dust Devil Debris
         [832] = 50.0, -- not 100%, not 5%. Could be more than 50%
     },
+    [5734] = { -- Super Reaper 6000 Blueprints
+        [3988] = DropKeys.WOWHEAD,
+    },
     [5801] = { -- Kraul Guano
         [4538] = 100,
         [4539] = 100,
