@@ -994,17 +994,19 @@ function QuestieQuestFixes:Load()
             [questKeys.preQuestSingle] = {},
             [questKeys.preQuestGroup] = {1077, 1074},
             [questKeys.requiredSourceItems] = {5692, 5693, 5694, 5695, 5737},
+            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Place the NG-5 Explosives (Blue)"), 0, {{"object", 19591}}}},
         },
         [1080] = { -- Covert Ops - Beta
             [questKeys.preQuestSingle] = {},
             [questKeys.preQuestGroup] = {1077, 1074},
             [questKeys.requiredSourceItems] = {5692, 5693, 5694, 5695, 5737},
+            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Place the NG-5 Explosives (Red)"), 0, {{"object", 19600}}}},
         },
         [1085] = { -- On Guard in Stonetalon
             [questKeys.breadcrumbs] = {1070},
         },
         [1086] = { -- The Flying Machine Airport
-            [questKeys.triggerEnd] = {"Place the Toxic Fogger", {[zoneIDs.STONETALON_MOUNTAINS] = {{66.44, 45.46}}}},
+            [questKeys.objectives] = {nil,{{19594}}},
         },
         [1090] = { -- Gerenzo's Orders
             [questKeys.objectives] = {{{4276, nil, Questie.ICON_TYPE_EVENT}}},

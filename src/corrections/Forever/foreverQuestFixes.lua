@@ -142,6 +142,15 @@ function ForeverQuestFixes:Load()
         [982] = { -- Deep Ocean, Vast Sea
             [questKeys.breadcrumbs_add] = {97894},
         },
+        [1079] = { -- Covert Ops - Alpha
+            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Place the NG-5 Explosives (Blue)"), 0, {{"object", 19591}}}},
+        },
+        [1080] = { -- Covert Ops - Beta
+            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Place the NG-5 Explosives (Red)"), 0, {{"object", 19600}}}},
+        },
+        [1086] = { -- The Flying Machine Airport
+            [questKeys.objectives] = {nil,{{19594}}},
+        },
         [1122] = { -- Report Back to Fizzlebub
             [questKeys.nextQuestInChain] = 0,
         },

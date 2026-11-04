@@ -84,6 +84,9 @@ function ForeverNpcFixes:Load()
         [4047] = { -- Zor Lonetree
             [npcKeys.npcFlags] = npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
+        [4048] = { -- Falfindel Waywarder
+            [npcKeys.waypoints] = {},
+        },
         [4612] = { -- Boyle
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- Era flags, sells Forever items
         },
