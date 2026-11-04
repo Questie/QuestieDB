@@ -35,15 +35,24 @@ return function(check, equal)
     entities.Item[9001] = { [meta.Item.keys.name] = "English fallback" }
     -- Translate by entity ID through the real column builder. Neither ID equals its stored
     -- position, so confusing those two addresses cannot accidentally return the right value.
+    -- 9100 is translated but is deliberately absent from the entity tables: the fixture must
+    -- store its column row and its localization ID, because retention is by translation
+    -- membership rather than entity membership (ADR 0017). It must still read nil until a
+    -- Dynamic Correction creates the entity.
     local deDE
     for index, locale in ipairs(dbConfig.locales) do if locale == "deDE" then deDE = index end end
     local metadata = fixture.write(root .. "/fixture.toc", entities, {
       Item = { [9000] = { [1] = { [deDE] = "Übersetzung" } } },
-      Quest = { [9005] = { [1] = { [deDE] = "Übersetzte Quest" }, [2] = { [deDE] = {"Ziel", ""} } } },
+      Quest = {
+        [9005] = { [1] = { [deDE] = "Übersetzte Quest" }, [2] = { [deDE] = {"Ziel", ""} } },
+        [9100] = { [1] = { [deDE] = "Nicht existierende Quest" } },
+      },
     })
     check(metadata["X-Quest-9004-S"]:match("^~%d+~$") ~= nil, "long scalar row actually uses chunks")
     check(metadata["X-Quest-9004-" .. keys.inGroupWith]:match("^~%d+~$") ~= nil, "long table actually uses chunks")
     equal(metadata["X-Quest-9001-S"], nil, "all-default entity has no stored row")
+    equal(metadata[dbConfig.l10nIdsKey("Quest")] ~= nil, true,
+      "the fixture writes the localization ID list the columns are indexed by")
 
     for _, mode in ipairs({ "source", "baked" }) do
       local db = fixture.load(mode, entities, metadata)
@@ -113,6 +122,17 @@ return function(check, equal)
         equal(quest.objectivesText(9005), nil, "source: ordinary translated list is absent")
       end
       equal(db.Item.name(9001), "English fallback", label .. "missing translation falls back")
+
+      -- A stored translation for an ID absent from the entity tables is retained and
+      -- addressable, but storage never creates the entity (ADR 0017). 9100 was withdrawn
+      -- above, so it is absent in both modes here.
+      if mode == "baked" then
+        equal(quest.Exists(9100), false, label .. "stored translation does not create an entity")
+        equal(quest.name(9100), nil, label .. "stored translation for an absent ID reads nil")
+        equal(db.l10n.GetProvenance("Quest", 9100, "name"), nil,
+          label .. "the localization layer claims no owner for an absent entity")
+      end
+
       db.l10n.SetLocale("enUS")
       equal(db.Item.name(9000), "English item", label .. "locale switch drops translated scalar cache")
       equal(quest.objectivesText(9005), nil, label .. "locale switch drops translated list cache")

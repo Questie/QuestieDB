@@ -57,8 +57,11 @@ return function(check, equal)
       if mode == "baked" then
         factory.getStored = function(key)
           if key == config.l10nHeaderKey then return tostring(config.l10nVersion) end
+          -- The localization ID list is the columns' index, and it carries an ID the entity
+          -- database does not contain (issue #70). Position 3 is that ID.
+          if key == config.l10nIdsKey("Quest") then return { 1, 2, 3 } end
           if key == config.l10nBlockKey("Quest", "deDE") then
-            return { { "Basisübersetzung" }, { { "Basisziel" } } }
+            return { { [1] = "Basisübersetzung", [3] = "Neue Quest" }, { [1] = { "Basisziel" } } }
           end
           if key == config.l10nBlockKey("Quest", "frFR") then return { {}, {} } end
           error("unexpected localization key " .. tostring(key))
@@ -185,6 +188,28 @@ return function(check, equal)
       equal(quest.objectivesText(1), nil, label .. "missing French objectives preserve explicit entity deletion")
       l10n.SetLocale("deDE")
       equal(quest.name(1), "Updated provider", label .. "available translation still outranks English deletion")
+
+      -- A stored Base translation for an ID the baked entity database lacks is retained by
+      -- Generation and addressable by position, but storage never creates the entity. It
+      -- resolves only while a Dynamic Correction makes that entity exist (issue #70).
+      if mode == "baked" then
+        -- Withdraw the Dynamic slot for id 3 first, so this exercises the stored Base column
+        -- rather than the Dynamic layer that outranks it.
+        l10n.SetCorrection("Provider", "deDE", "Quest", "added", nil)
+        equal(quest.Exists(3), false, label .. "baked database has no entity 3")
+        equal(quest.name(3), nil, label .. "a stored translation cannot create an entity")
+        equal(l10n.GetProvenance("Quest", 3, "name"), nil,
+          label .. "an unbaked stored translation has no provenance")
+        db.Corrections.Set("EntityOwner", "Quest", "unbaked", { [3] = { [keys.name] = "Added English" } })
+        equal(quest.name(3), "Neue Quest",
+          label .. "a dynamically added entity resolves its stored base translation")
+        equal(l10n.GetProvenance("Quest", 3, "name"), "QuestieDB",
+          label .. "the stored base translation owns the resolved value")
+        db.Corrections.Set("EntityOwner", "Quest", "unbaked", nil)
+        equal(quest.name(3), nil, label .. "withdrawing the entity hides its stored translation again")
+        equal(quest.Exists(3), false, label .. "the stored translation never retained existence")
+      end
+
       quest.SetL10nProvider(nil)
       equal(quest.name(1), nil, label .. "detaching optional l10n restores ordinary corrected read")
       equal(quest.name(2), "Untranslated English", label .. "detaching l10n preserves base read")

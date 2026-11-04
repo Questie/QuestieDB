@@ -25,8 +25,16 @@ directive and hides it when another locale is active. A block is an array
 of compact localization field columns indexed by position in `X-<Type>-IDS`. A nil hole means
 that field falls back to base English. The blocks repeat no entity IDs.
 
-`X-l10n-Version: 1` declares the store. The old per-entity keys, locale separator, list literals
-and localization ID lists are removed.
+**The column index is superseded by [ADR 0017](./0017-localization-ids-independent-of-entities.md).**
+Columns now index the type's own `X-l10nIds-<Type>` localization ID list, so a translation is
+retained for an ID the baked entity database lacks. The rest of this decision — one compressed
+block per locale and type, the type-last key spelling, and the format header — is unchanged.
+
+`X-l10n-Version: 1` declares the store. This decision removed the old per-entity keys, the locale
+separator and the list literals; it also introduced no localization ID list, because columns
+aligned with the entity ID list instead. ADR 0017 adds `X-l10nIds-<Type>`, which changes what a
+column position means, so it declares version 2. A version-1 artifact is not readable as
+version 2 and vice versa; see that record for the mixed-version behavior.
 
 ### 2. Only the active locale enters Lua memory
 
@@ -34,10 +42,17 @@ enUS decodes no localization blocks. A non-enUS client decodes its four availabl
 during addon load and retains them for the session. Locale changes decode replacement blocks
 first, swap them atomically, then invalidate entity caches.
 
+**Extended by [ADR 0017](./0017-localization-ids-independent-of-entities.md):** each available
+type also decodes its localization ID list at the same point, once, and keeps it across locale
+switches. Only a locale with no stored blocks skips that decode.
+
 Base translation providers find positions with a same-ID and sequential-position fast path,
-followed by binary search for random access. They use the backend's base ID list rather than
-composed IDs, so a Correction-added entity has no accidental Base translation. ADR 0013 allows
-an explicit Dynamic Translation Correction to target that entity while it exists.
+followed by binary search for random access. **Superseded by
+[ADR 0017](./0017-localization-ids-independent-of-entities.md):** they now search the type's
+localization ID list, not the backend's base ID list, so an entity a Correction adds can resolve
+its retained stored translation. ADR 0013 still allows an explicit Dynamic Translation
+Correction to target that entity while it exists, and a stored translation still cannot create
+one.
 
 ### 3. Existing read contracts stay unchanged
 

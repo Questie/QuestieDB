@@ -140,11 +140,11 @@ local function expectedLines(flavor, includeLocalization)
     for _, entityType in ipairs(config.entityTypes) do
       local entry = loaded[entityType.name]
       if entry then
-        local ids = lib.sortedIds(entry.entities)
-        local knownIds = {}
-        for _, id in ipairs(ids) do knownIds[id] = true end
-        local values = l10nGen.extract(config.paths.l10n, flavor, entityType.name, knownIds)
-        l10nGen.writeMetadata(sink, entityType.name, values, ids)
+        -- Retention is by translation membership, not entity membership, and the columns are
+        -- indexed by the type's own localization ID list (ADR 0017). Passing the baked entity
+        -- IDs here would silently rebuild a version-1 layout.
+        local values = l10nGen.extract(config.paths.l10n, flavor, entityType.name)
+        l10nGen.writeMetadata(sink, entityType.name, values)
         values = nil
         collectgarbage()
       end

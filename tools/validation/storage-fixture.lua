@@ -51,7 +51,9 @@ function fixture.write(path, entities, translations)
     end
     l10n.writeHeader(out)
     for _, entity in ipairs(config.entityTypes) do
-      l10n.writeMetadata(out, entity.name, translations[entity.name] or {}, lib.sortedIds(entities[entity.name]))
+      -- writeMetadata derives the localization ID list from the translations themselves
+      -- (ADR 0017); the entity IDs are no longer its column index.
+      l10n.writeMetadata(out, entity.name, translations[entity.name] or {})
     end
   end)
   out:close()
