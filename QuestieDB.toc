@@ -541,6 +541,7 @@ l10n\Forever\traces\lookupQuests\frFR.lua [ExcludeLoadGameType vanilla, tbc, wra
 l10n\Forever\traces\lookupQuests\koKR.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupQuests\ptBR.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupQuests\ruRU.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+l10n\Forever\traces\lookupQuests\zhCN.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupQuests\zhTW.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupNpcs\deDE.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupNpcs\esES.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
@@ -549,6 +550,7 @@ l10n\Forever\traces\lookupNpcs\frFR.lua [ExcludeLoadGameType vanilla, tbc, wrath
 l10n\Forever\traces\lookupNpcs\koKR.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupNpcs\ptBR.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupNpcs\ruRU.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+l10n\Forever\traces\lookupNpcs\zhCN.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupNpcs\zhTW.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupItems\deDE.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupItems\esES.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
@@ -557,6 +559,7 @@ l10n\Forever\traces\lookupItems\frFR.lua [ExcludeLoadGameType vanilla, tbc, wrat
 l10n\Forever\traces\lookupItems\koKR.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupItems\ptBR.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupItems\ruRU.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+l10n\Forever\traces\lookupItems\zhCN.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupItems\zhTW.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupObjects\deDE.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupObjects\esES.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
@@ -565,6 +568,7 @@ l10n\Forever\traces\lookupObjects\frFR.lua [ExcludeLoadGameType vanilla, tbc, wr
 l10n\Forever\traces\lookupObjects\koKR.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupObjects\ptBR.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupObjects\ruRU.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+l10n\Forever\traces\lookupObjects\zhCN.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 l10n\Forever\traces\lookupObjects\zhTW.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
 # --- Static Translation Corrections ---
