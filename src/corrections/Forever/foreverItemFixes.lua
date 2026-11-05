@@ -23,6 +23,10 @@ function ForeverItemFixes:Load()
         [915] = { -- Red Silk Bandana
             [itemKeys.npcDrops_remove] = {234979},
         },
+        [2320] = { -- Coarse Thread
+            [itemKeys.npcDrops] = {},
+            [itemKeys.objectDrops] = {}, -- only show vendors
+        },
         [3371] = { -- Empty Vial
             [itemKeys.npcDrops] = {},
             [itemKeys.objectDrops] = {}, -- only show vendors
