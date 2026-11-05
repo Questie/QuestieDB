@@ -211,7 +211,8 @@ function ForeverQuestFixes:Load()
         [8409] = { -- Ruined Kegs
             [questKeys.requiredLevel] = 30,
         },
-        [60860] = {
+        [60860] = { -- Your Reward has Arrived!
+            [questKeys.name] = "Your Reward has Arrived!",
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [76156] = { -- Stalk With The Earthmother

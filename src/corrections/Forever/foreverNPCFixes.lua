@@ -171,6 +171,9 @@ function ForeverNpcFixes:Load()
         [227853] = { -- Pix Xizzix
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- traces record no flags
         },
+        [242498] = { -- Reagent Bot
+            [npcKeys.spawns] = {},
+        },
         [246143] = { -- Frightened Paladin
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{27.69,63.82}}},
         },
