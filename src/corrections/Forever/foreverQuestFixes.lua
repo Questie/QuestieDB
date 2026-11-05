@@ -211,6 +211,9 @@ function ForeverQuestFixes:Load()
         [8409] = { -- Ruined Kegs
             [questKeys.requiredLevel] = 30,
         },
+        [60860] = {
+            [questKeys.requiredRaces] = raceIDs.NONE,
+        },
         [76156] = { -- Stalk With The Earthmother
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.requiredClasses] = classIDs.NONE,
