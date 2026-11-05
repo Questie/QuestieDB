@@ -2447,6 +2447,7 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 99130,
         },
         [99130] = { -- An Enticing Offer
+            [questKeys.objectives] = {nil,nil,{{286215},{286214}}},
             [questKeys.preQuestSingle] = {99129},
             [questKeys.nextQuestInChain] = 99131,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
