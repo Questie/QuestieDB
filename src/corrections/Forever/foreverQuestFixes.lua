@@ -1310,12 +1310,54 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {94006},
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
+        [94773] = { -- Divine Grace
+            [questKeys.exclusiveTo] = {94774, 94775, 94776, 94777, 94778, 94779},
+        },
+        [94774] = { -- Divine Grace
+            [questKeys.exclusiveTo] = {94773, 94775, 94776, 94777, 94778, 94779},
+        },
+        [94775] = { -- Divine Grace
+            [questKeys.exclusiveTo] = {94773, 94774, 94776, 94777, 94778, 94779},
+        },
+        [94776] = { -- Divine Grace
+            [questKeys.exclusiveTo] = {94773, 94774, 94775, 94777, 94778, 94779},
+        },
+        [94777] = { -- Divine Grace
+            [questKeys.exclusiveTo] = {94773, 94774, 94775, 94776, 94778, 94779},
+        },
+        [94778] = { -- Divine Grace
+            [questKeys.exclusiveTo] = {94773, 94774, 94775, 94776, 94777, 94779},
+        },
+        [94779] = { -- Divine Grace
+            [questKeys.exclusiveTo] = {94773, 94774, 94775, 94776, 94777, 94778},
+        },
         [94792] = { -- Taming the Beast
             [questKeys.objectives] = {{{524,nil,Questie.ICON_TYPE_INTERACT}}},
             [questKeys.nextQuestInChain] = 94863,
         },
         [94793] = { -- Training the Beast
             [questKeys.preQuestSingle] = {94864},
+        },
+        [94817] = { -- Confounding Flash
+            [questKeys.exclusiveTo] = {94821, 94822, 94823, 94824, 94825, 94826},
+        },
+        [94821] = { -- Confounding Flash
+            [questKeys.exclusiveTo] = {94817, 94822, 94823, 94824, 94825, 94826},
+        },
+        [94822] = { -- Confounding Flash
+            [questKeys.exclusiveTo] = {94817, 94821, 94823, 94824, 94825, 94826},
+        },
+        [94823] = { -- Confounding Flash
+            [questKeys.exclusiveTo] = {94817, 94821, 94822, 94824, 94825, 94826},
+        },
+        [94824] = { -- Confounding Flash
+            [questKeys.exclusiveTo] = {94817, 94821, 94822, 94823, 94825, 94826},
+        },
+        [94825] = { -- Confounding Flash
+            [questKeys.exclusiveTo] = {94817, 94821, 94822, 94823, 94824, 94826},
+        },
+        [94826] = { -- Confounding Flash
+            [questKeys.exclusiveTo] = {94817, 94821, 94822, 94823, 94824, 94825},
         },
         [94863] = { -- Taming the Beast
             [questKeys.preQuestSingle] = {94792},
