@@ -2316,6 +2316,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98389] = { -- A Light in the Darkness
+            [questKeys.preQuestSingle] = {376},
             [questKeys.objectives] = {nil,nil,nil,nil,{{{271961,271968},271968,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [98391] = { -- The Sisterhood of Elune
