@@ -1539,7 +1539,7 @@ function ForeverQuestFixes:Load()
         [96057] = { -- Camping 101: Tailoring
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
-            [questKeys.requiredSpell] = -1229504, -- Faction Banner
+            [questKeys.requiredSpell] = -1263425, -- Faction Banner
             [questKeys.objectives] = {{{1703,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96102,97925,97937,97950,97961,97972,97973},
         },
@@ -1953,7 +1953,7 @@ function ForeverQuestFixes:Load()
         [97925] = { -- Camping 101: Tailoring
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
-            [questKeys.requiredSpell] = -1229504, -- Faction Banner
+            [questKeys.requiredSpell] = -1263425, -- Faction Banner
             [questKeys.objectives] = {{{1103,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96057,96102,97937,97950,97961,97972,97973},
         },
@@ -2113,7 +2113,7 @@ function ForeverQuestFixes:Load()
         [97950] = { -- Camping 101: Tailoring
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
-            [questKeys.requiredSpell] = -1229504, -- Faction Banner
+            [questKeys.requiredSpell] = -1263425, -- Faction Banner
             [questKeys.objectives] = {{{11050,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96057,96102,97925,97937,97961,97972,97973},
         },
