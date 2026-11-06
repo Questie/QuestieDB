@@ -709,8 +709,14 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {91741},
             [questKeys.nextQuestInChain] = 91743,
         },
+        [92401] = { -- A Frightened Request
+            [questKeys.triggerEnd] = {"Investigate the disappearance of Edward Heartweaver in the Ruins of Lordaeron.",{[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}}},
+        },
         [92415] = { -- Remember That I Love You
             [questKeys.nextQuestInChain] = 95161,
+        },
+        [92422] = { -- The Wrath of Rath'mael
+            [questKeys.preQuestSingle] = {99156},
         },
         [92461] = { -- Harmony in Balance
             [questKeys.preQuestSingle] = {92460},
@@ -1426,6 +1432,9 @@ function ForeverQuestFixes:Load()
         [95214] = { -- Stolen Blasting Powder
             [questKeys.preQuestSingle] = {95213},
         },
+        [95216] = { -- The New Plague
+            [questKeys.preQuestSingle] = {451},
+        },
         [95217] = { -- The Quarry's Smith
             [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 1},
         },
@@ -1794,6 +1803,24 @@ function ForeverQuestFixes:Load()
         [97286] = { -- Research Access
             [questKeys.startedBy] = {{211022,211033}},
             [questKeys.preQuestSingle] = {78124,78127,78142,78143,78145,78146,78147,78148,78149,79091,79092,79093,79094,79095,79096,79097,79535,79947,79948,79949,79950,79951,79952,79953,81947,81949,81951,81952,81953,81954,81955,81956,84395,84396,84397,84398,84399,84400,84401,84402},
+        },
+        [97288] = { -- Unending Torment
+            [questKeys.nextQuestInChain] = 97289, -- might have prequest according to wowhead comments
+        },
+        [97289] = { -- Unending Torment
+            [questKeys.preQuestSingle] = {97288},
+            [questKeys.nextQuestInChain] = 97290,
+        },
+        [97290] = { -- Unending Torment
+            [questKeys.preQuestSingle] = {97289},
+            [questKeys.nextQuestInChain] = 97291,
+        },
+        [97291] = { -- Unending Torment
+            [questKeys.preQuestSingle] = {97290},
+            [questKeys.nextQuestInChain] = 97292,
+        },
+        [97292] = { -- Unending Torment
+            [questKeys.preQuestSingle] = {97291},
         },
         [97485] = { -- Traditions of the Bluff
             [questKeys.objectives] = {nil,{{665373}},{{278078}}},

@@ -120,6 +120,9 @@ function ForeverItemFixes:Load()
         [257945] = { -- Pilfered Windstone
             [itemKeys.npcDrops] = {251918,255534},
         },
+        [268535] = { -- Bloodied Insignia
+            [itemKeys.npcDrops_add] = {250618,250622,250623,250624,250626,250627,250630,250656,250689,255109,255964},
+        },
         [270887] = { -- Advertising License Application
             [itemKeys.startQuest] = 95819,
         },
