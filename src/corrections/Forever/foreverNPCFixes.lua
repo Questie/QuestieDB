@@ -268,6 +268,10 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
         },
+        [250657] = { -- Rath'mael
+            [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
+        },
         [250660] = { -- The Baron
             [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
