@@ -79,6 +79,10 @@ function QuestieItemFixes:Load()
             [itemKeys.npcDrops] = {},
             [itemKeys.objectDrops] = {},
         },
+        [2320] = { -- Coarse Thread
+            [itemKeys.npcDrops] = {},
+            [itemKeys.objectDrops] = {}, -- only show vendors
+        },
         [2447] = { -- Peacebloom
             [itemKeys.npcDrops] = {},
             [itemKeys.objectDrops] = {1618, 3724},
