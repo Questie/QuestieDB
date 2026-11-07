@@ -64,6 +64,7 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {nil,nil,nil,nil,{{{1379,2057},15885,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [287] = { -- Frostmane Hold
+            [questKeys.triggerEnd] = {"Fully explore Frostmane Hold",{[zoneIDs.DUN_MOROGH]={{21.2,54}}}},
             [questKeys.disabledByQuest] = 420,
             [questKeys.nextQuestInChain] = 0,
         },
