@@ -1220,6 +1220,7 @@ function ForeverQuestFixes:Load()
         },
         [94373] = { -- Call of Earth
             [questKeys.nextQuestInChain] = 94374,
+            [questKeys.breadcrumbs] = {96243},
         },
         [94374] = { -- Call of Earth
             [questKeys.preQuestSingle] = {94373},
@@ -1614,6 +1615,12 @@ function ForeverQuestFixes:Load()
         [96139] = { -- The Valor Family
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
+        [96243] = { -- Call of Earth
+            [questKeys.requiredLevel] = 4,
+            [questKeys.questLevel] = 4,
+            [questKeys.breadcrumbForQuestId] = 94373,
+            [questKeys.nextQuestInChain] = 94373,
+        },
         [96390] = { -- Nip 'Em in the Bud
             [questKeys.preQuestSingle] = {96392},
         },
@@ -1653,6 +1660,7 @@ function ForeverQuestFixes:Load()
             [questKeys.exclusiveTo] = {95998,96101,96604,96605,96606,96608},
         },
         [96608] = { -- The Great Outdoors
+            [questKeys.startedBy] = {{265813}},
             [questKeys.breadcrumbs] = {96628},
             [questKeys.objectives] = {nil,{{460003},{460003}}},
             [questKeys.exclusiveTo] = {95998,96101,96604,96605,96606,96607},
