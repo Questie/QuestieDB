@@ -15,6 +15,7 @@ local l10n = QuestieLoader:ImportModule("l10n")
 QuestieCorrections.itemObjectiveFirst[91317] = true
 QuestieCorrections.itemObjectiveFirst[92682] = true
 QuestieCorrections.killCreditObjectiveFirst[94489] = true
+QuestieCorrections.objectObjectiveFirst[95885] = true
 QuestieCorrections.itemObjectiveFirst[97277] = true
 QuestieCorrections.itemObjectiveFirst[97485] = true
 QuestieCorrections.killCreditObjectiveFirst[98386] = true
@@ -211,6 +212,21 @@ function ForeverQuestFixes:Load()
         },
         [5482] = { -- Doom Weed
             [questKeys.nextQuestInChain] = 99142,
+        },
+        [5635] = { -- Desperate Prayer
+            [questKeys.requiredRaces] = raceIDs.DWARF,
+        },
+        [5637] = { -- Desperate Prayer
+            [questKeys.requiredRaces] = raceIDs.DWARF,
+        },
+        [5638] = { -- Desperate Prayer
+            [questKeys.requiredRaces] = raceIDs.DWARF,
+        },
+        [5639] = { -- Desperate Prayer
+            [questKeys.requiredRaces] = raceIDs.DWARF,
+        },
+        [5640] = { -- Desperate Prayer
+            [questKeys.requiredRaces] = raceIDs.DWARF,
         },
         [5644] = { -- Dark Sacrifice
             [questKeys.name] = "Dark Sacrifice",
@@ -1545,7 +1561,7 @@ function ForeverQuestFixes:Load()
         },
         [95885] = { -- The Offering of Blood
             [questKeys.preQuestSingle] = {95883},
-            [questKeys.objectives] = {nil,{{645153}},nil,nil,{{{212753},212753}}},
+            [questKeys.objectives] = {{{212753}},{{645153}}},
         },
         [95981] = { -- Watching the Roads
             [questKeys.preQuestSingle] = {482},
