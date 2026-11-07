@@ -193,7 +193,8 @@ To publish a stable release:
 2. Enter the new `version` as `X.X.X`: three numeric components without leading zeros and no
    `v` prefix. After approval in the `version-bump` environment,
    [`versionbump.yml`](../../.github/workflows/versionbump.yml) commits it to `QuestieDB.toc` on
-   the default branch with the version-bump GitHub App, and every later job builds that commit.
+   the current default-branch tip with the version-bump GitHub App, and every later job builds
+   that commit. Commits pushed after you started the run are therefore included.
    Leave `version` empty when `## Version` in `QuestieDB.toc` is already the version to release.
    TOC regeneration preserves this maintained value.
 3. Check `publish_curseforge` to upload the release to CurseForge after GitHub publication.
