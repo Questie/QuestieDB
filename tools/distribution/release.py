@@ -118,9 +118,10 @@ def publish() -> None:
     if os.environ["DRY_RUN"] == "true":
         raise ValueError("Dry runs cannot publish tags or releases.")
 
-    commit = os.environ["GITHUB_SHA"]
+    # A version bump makes the built commit differ from the one that triggered the run.
+    commit = os.environ.get("COMMIT_SHA") or os.environ["GITHUB_SHA"]
     if subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip() != commit:
-        raise ValueError("The checkout does not match GITHUB_SHA.")
+        raise ValueError("The checkout does not match the commit to publish.")
     require_default_branch()
 
     repository = os.environ["GITHUB_REPOSITORY"]
