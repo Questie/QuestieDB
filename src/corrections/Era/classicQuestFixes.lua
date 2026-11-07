@@ -301,7 +301,6 @@ function QuestieQuestFixes:Load()
         },
         [410] = { -- The Dormant Shade
             [questKeys.preQuestSingle] = {366}, -- #638
-            [questKeys.exclusiveTo] = {411}, -- #752
         },
         [413] = { -- Shimmer Stout
             [questKeys.breadcrumbs] = {415}, -- #567
@@ -325,7 +324,6 @@ function QuestieQuestFixes:Load()
         },
         [431] = { -- Candles Of Beckoning
             [questKeys.preQuestSingle] = {366}, -- #638
-            [questKeys.exclusiveTo] = {411}, -- #752
         },
         [434] = { -- The Attack!
             [questKeys.triggerEnd] = {"Overhear Lescovar and Marzon's Conversation", {[zoneIDs.STORMWIND_CITY] = {{68.66, 14.44}}}},

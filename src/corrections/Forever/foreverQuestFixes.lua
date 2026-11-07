@@ -84,6 +84,18 @@ function ForeverQuestFixes:Load()
         [398] = { -- WANTED: Maggot Eye
             [questKeys.name] = "WANTED: Maggot Eye",
         },
+        [410] = { -- The Dormant Shade
+            [questKeys.exclusiveTo] = {},
+        },
+        [425] = { -- Ivar the Foul
+            [questKeys.preQuestSingle] = {91921},
+        },
+        [430] = { -- Return to Quinn
+            [questKeys.nextQuestInChain] = 91920,
+        },
+        [431] = { -- Candles of Beckoning
+            [questKeys.exclusiveTo] = {},
+        },
         [490] = { -- Bounty: Gnarlpine Furbolg
             [questKeys.name] = "Bounty: Gnarlpine Furbolg",
             [questKeys.startedBy] = {{2155}},
@@ -317,14 +329,20 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [78261] = { -- The Horn of Xelthos
+            [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.requiredClasses] = classIDs.ROGUE,
+            [questKeys.nextQuestInChain] = 78307,
         },
         [78270] = { -- Goblin Lockpicks
             [questKeys.questLevel] = 23,
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [78307] = { -- The Horn of Xelthos
+            [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.requiredClasses] = classIDs.ROGUE,
+            [questKeys.preQuestSingle] = {78261},
         },
         [78823] = { -- Terror of the Desert Skies
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -704,6 +722,14 @@ function ForeverQuestFixes:Load()
             [questKeys.startedBy] = {{256386,256390}},
             [questKeys.finishedBy] = {{256386,256390}},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
+        },
+        [91920] = { -- Wild Eyes
+            [questKeys.preQuestSingle] = {430},
+            [questKeys.nextQuestInChain] = 91921,
+        },
+        [91921] = { -- Return to Quinn (Again)
+            [questKeys.preQuestSingle] = {91920},
+            [questKeys.nextQuestInChain] = 425,
         },
         [92109] = { -- My First Alchemy Set
             [questKeys.requiredSkill] = {profKeys.ALCHEMY, 1},
@@ -1506,6 +1532,16 @@ function ForeverQuestFixes:Load()
             [questKeys.sourceItemId] = 270896,
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.requiredMinRep] = {factionIDs.DUROTAR_SUPPLY_AND_LOGISTICS, 9000},
+        },
+        [95883] = { -- The Tortured Soul
+            [questKeys.preQuestSingle] = {95884},
+            [questKeys.nextQuestInChain] = 95885,
+        },
+        [95884] = { -- The Offering Stone
+            [questKeys.nextQuestInChain] = 95883,
+        },
+        [95885] = { -- The Offering of Blood
+            [questKeys.preQuestSingle] = {95883},
         },
         [95981] = { -- Watching the Roads
             [questKeys.preQuestSingle] = {482},
