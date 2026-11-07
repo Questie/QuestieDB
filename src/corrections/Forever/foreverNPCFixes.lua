@@ -67,6 +67,9 @@ function ForeverNpcFixes:Load()
             [npcKeys.questStarts_add] = {490},
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{40.46,50.73}}},
         },
+        [2332] = { -- Valdred Moray
+            [npcKeys.spawns] = {[zoneIDs.SILVERPINE_FOREST] = {{45.05,84.86}}},
+        },
         [2756] = { -- Grund Drokda
             [npcKeys.name] = "Grund Drokda",
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{28.67,67.52}}},
