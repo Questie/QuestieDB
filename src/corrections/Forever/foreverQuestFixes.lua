@@ -44,6 +44,9 @@ function ForeverQuestFixes:Load()
         [89] = { -- The Everstill Bridge
             [questKeys.nextQuestInChain] = 98386,
         },
+        [99] = { -- Arugal's Folly
+            [questKeys.nextQuestInChain] = 98298,
+        },
         [115] = { -- Shadow Magic
             [questKeys.preQuestSingle] = {},
             [questKeys.preQuestGroup] = {20,98387},
@@ -1542,6 +1545,7 @@ function ForeverQuestFixes:Load()
         },
         [95885] = { -- The Offering of Blood
             [questKeys.preQuestSingle] = {95883},
+            [questKeys.objectives] = {nil,{{645153}},nil,nil,{{{212753},212753}}},
         },
         [95981] = { -- Watching the Roads
             [questKeys.preQuestSingle] = {482},
@@ -2439,6 +2443,12 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSpell] = -1230656, -- Reagent Bot
             [questKeys.objectives] = {{{11026,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96058,97902,97918,97930,97941,97954,98285},
+        },
+        [98298] = { -- Arugal's Folly
+            [questKeys.preQuestSingle] = {99},
+        },
+        [98299] = { -- Stop the Spread
+            [questKeys.preQuestSingle] = {99},
         },
         [98319] = { -- Secure the Mountain
             [questKeys.preQuestSingle] = {98322},
