@@ -303,6 +303,11 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{35.8,30.77},{39.31,27.71},{38.28,29.99},{38.55,34.39},{40.38,30.47},{42.87,28.75},{45.33,29.14},{44.27,27.28},{41.51,26.94},{43.82,25.43},{44.23,24.95},{43.48,23.85},{42.82,22.27},{41.92,23.71},{44.17,22.29},{44.98,19.78},{46.59,17.83},{48.28,19.05},{46.94,20.9},{47.19,23.55},{46.61,24.6},{49.92,24.2},{48.29,25.67},{47.4,26.43},{46.76,27.94},{48.13,29.3},{46.62,31.21}}},
             [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
+        [614679] = { -- Crest of Lordaeron
+            [objectKeys.name] = "Crest of Lordaeron",
+            [objectKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
+            [objectKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
+        },
         [616466] = { -- Construct Parts
             [objectKeys.name] = "Construct Parts",
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{49.4,46.0},{49.6,45.9},{50.0,44.8},{50.7,44.3},{50.7,44.5},{51.6,46.6},{52.4,45.8},{52.5,45.8},{52.8,49.7},{52.9,51.7},{53.1,47.7},{53.1,51.4},{53.5,50.4},{53.6,50.5}}}, -- WIP
@@ -500,6 +505,11 @@ function ForeverObjectFixes:Load()
             [objectKeys.name] = "Molsen Farm Water Well",
             [objectKeys.spawns] = {[zoneIDs.WESTFALL] = {{46.08,38.14}}},
             [objectKeys.zoneID] = zoneIDs.WESTFALL,
+        },
+        [460007] = { -- Othmar's Head
+            [objectKeys.name] = "Othmar's Head",
+            [objectKeys.spawns] = {[zoneIDs.UNDERCITY] = {{45.98,61.92}}},
+            [objectKeys.zoneID] = zoneIDs.UNDERCITY,
         },
     }
 end

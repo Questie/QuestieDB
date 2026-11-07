@@ -64,6 +64,7 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {nil,nil,nil,nil,{{{1379,2057},15885,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [287] = { -- Frostmane Hold
+            [questKeys.triggerEnd] = {"Fully explore Frostmane Hold",{[zoneIDs.DUN_MOROGH]={{21.2,54}}}},
             [questKeys.disabledByQuest] = 420,
             [questKeys.nextQuestInChain] = 0,
         },
@@ -211,6 +212,15 @@ function ForeverQuestFixes:Load()
         [5640] = { -- Desperate Prayer
             [questKeys.requiredRaces] = raceIDs.DWARF,
         },
+        [5644] = { -- Dark Sacrifice
+            [questKeys.name] = "Dark Sacrifice",
+        },
+        [5646] = { -- Dark Sacrifice
+            [questKeys.name] = "Dark Sacrifice",
+        },
+        [5679] = { -- Dark Sacrifice
+            [questKeys.name] = "Dark Sacrifice",
+        },
         [5713] = { -- One Shot.  One Kill.
             [questKeys.name] = "One Shot.  One Kill.",
         },
@@ -225,6 +235,10 @@ function ForeverQuestFixes:Load()
         },
         [8409] = { -- Ruined Kegs
             [questKeys.requiredLevel] = 30,
+        },
+        [60860] = { -- Your Reward has Arrived!
+            [questKeys.name] = "Your Reward has Arrived!",
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [76156] = { -- Stalk With The Earthmother
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
@@ -719,14 +733,24 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {91741},
             [questKeys.nextQuestInChain] = 91743,
         },
+        [92401] = { -- A Frightened Request
+            [questKeys.triggerEnd] = {"Investigate the disappearance of Edward Heartweaver in the Ruins of Lordaeron.",{[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}}},
+        },
         [92415] = { -- Remember That I Love You
             [questKeys.nextQuestInChain] = 95161,
+        },
+        [92422] = { -- The Wrath of Rath'mael
+            [questKeys.preQuestSingle] = {99156},
+        },
+        [92460] = { -- Coming of Age
+            [questKeys.nextQuestInChain] = 92461,
         },
         [92461] = { -- Harmony in Balance
             [questKeys.preQuestSingle] = {92460},
         },
         [92462] = { -- Infestation Investigation
             [questKeys.preQuestSingle] = {92460},
+            [questKeys.nextQuestInChain] = 92463,
         },
         [92463] = { -- The Cirrusfly Queen
             [questKeys.preQuestSingle] = {92462},
@@ -1325,12 +1349,54 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {94006},
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
+        [94773] = { -- Divine Grace
+            [questKeys.exclusiveTo] = {94774,94775,94776,94777,94778,94779},
+        },
+        [94774] = { -- Divine Grace
+            [questKeys.exclusiveTo] = {94773,94775,94776,94777,94778,94779},
+        },
+        [94775] = { -- Divine Grace
+            [questKeys.exclusiveTo] = {94773,94774,94776,94777,94778,94779},
+        },
+        [94776] = { -- Divine Grace
+            [questKeys.exclusiveTo] = {94773,94774,94775,94777,94778,94779},
+        },
+        [94777] = { -- Divine Grace
+            [questKeys.exclusiveTo] = {94773,94774,94775,94776,94778,94779},
+        },
+        [94778] = { -- Divine Grace
+            [questKeys.exclusiveTo] = {94773,94774,94775,94776,94777,94779},
+        },
+        [94779] = { -- Divine Grace
+            [questKeys.exclusiveTo] = {94773,94774,94775,94776,94777,94778},
+        },
         [94792] = { -- Taming the Beast
             [questKeys.objectives] = {{{524,nil,Questie.ICON_TYPE_INTERACT}}},
             [questKeys.nextQuestInChain] = 94863,
         },
         [94793] = { -- Training the Beast
             [questKeys.preQuestSingle] = {94864},
+        },
+        [94817] = { -- Confounding Flash
+            [questKeys.exclusiveTo] = {94821,94822,94823,94824,94825,94826},
+        },
+        [94821] = { -- Confounding Flash
+            [questKeys.exclusiveTo] = {94817,94822,94823,94824,94825,94826},
+        },
+        [94822] = { -- Confounding Flash
+            [questKeys.exclusiveTo] = {94817,94821,94823,94824,94825,94826},
+        },
+        [94823] = { -- Confounding Flash
+            [questKeys.exclusiveTo] = {94817,94821,94822,94824,94825,94826},
+        },
+        [94824] = { -- Confounding Flash
+            [questKeys.exclusiveTo] = {94817,94821,94822,94823,94825,94826},
+        },
+        [94825] = { -- Confounding Flash
+            [questKeys.exclusiveTo] = {94817,94821,94822,94823,94824,94826},
+        },
+        [94826] = { -- Confounding Flash
+            [questKeys.exclusiveTo] = {94817,94821,94822,94823,94824,94825},
         },
         [94863] = { -- Taming the Beast
             [questKeys.preQuestSingle] = {94792},
@@ -1385,6 +1451,15 @@ function ForeverQuestFixes:Load()
         [95161] = { -- Remember That I Love You
             [questKeys.preQuestSingle] = {92415},
         },
+        [95189] = { -- Crest of Lordaeron
+            [questKeys.requiredLevel] = 15,
+        },
+        [95195] = { -- Bloodied Insignia
+            [questKeys.requiredLevel] = 15,
+        },
+        [95204] = { -- Crest of Lordaeron
+            [questKeys.requiredLevel] = 15,
+        },
         [95212] = { -- Never Saddle on Quality
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
@@ -1394,8 +1469,15 @@ function ForeverQuestFixes:Load()
         [95214] = { -- Stolen Blasting Powder
             [questKeys.preQuestSingle] = {95213},
         },
+        [95216] = { -- The New Plague
+            [questKeys.requiredLevel] = 15,
+            [questKeys.preQuestSingle] = {451},
+        },
         [95217] = { -- The Quarry's Smith
             [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 1},
+        },
+        [95250] = { -- Abominable Creatures
+            [questKeys.requiredLevel] = 15,
         },
         [95314] = { -- That Shadowvale Green Elixir
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
@@ -1439,6 +1521,9 @@ function ForeverQuestFixes:Load()
             [questKeys.sourceItemId] = 270896,
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.requiredMinRep] = {factionIDs.DUROTAR_SUPPLY_AND_LOGISTICS, 9000},
+        },
+        [95981] = { -- Watching the Roads
+            [questKeys.preQuestSingle] = {482},
         },
         [95998] = { -- The Great Outdoors
             [questKeys.breadcrumbs] = {96627},
@@ -1508,7 +1593,7 @@ function ForeverQuestFixes:Load()
         [96057] = { -- Camping 101: Tailoring
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
-            [questKeys.requiredSpell] = -1229504, -- Faction Banner
+            [questKeys.requiredSpell] = -1263425, -- Faction Banner
             [questKeys.objectives] = {{{1703,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96102,97925,97937,97950,97961,97972,97973},
         },
@@ -1763,6 +1848,30 @@ function ForeverQuestFixes:Load()
             [questKeys.startedBy] = {{211022,211033}},
             [questKeys.preQuestSingle] = {78124,78127,78142,78143,78145,78146,78147,78148,78149,79091,79092,79093,79094,79095,79096,79097,79535,79947,79948,79949,79950,79951,79952,79953,81947,81949,81951,81952,81953,81954,81955,81956,84395,84396,84397,84398,84399,84400,84401,84402},
         },
+        [97288] = { -- Unending Torment
+            [questKeys.requiredLevel] = 15,
+            [questKeys.nextQuestInChain] = 97289,
+        },
+        [97289] = { -- Unending Torment
+            [questKeys.requiredLevel] = 15,
+            [questKeys.preQuestSingle] = {97288},
+            [questKeys.nextQuestInChain] = 97290,
+        },
+        [97290] = { -- Unending Torment
+            [questKeys.requiredLevel] = 15,
+            [questKeys.preQuestSingle] = {97289},
+            [questKeys.nextQuestInChain] = 97291,
+        },
+        [97291] = { -- Unending Torment
+            [questKeys.requiredLevel] = 15,
+            [questKeys.preQuestSingle] = {97290},
+            [questKeys.nextQuestInChain] = 97292,
+        },
+        [97292] = { -- Unending Torment
+            [questKeys.requiredLevel] = 15,
+            [questKeys.preQuestSingle] = {97291},
+            [questKeys.objectives] = {nil,{{460007,nil,Questie.ICON_TYPE_EVENT}}},
+        },
         [97485] = { -- Traditions of the Bluff
             [questKeys.objectives] = {nil,{{665373}},{{278078}}},
             [questKeys.requiredSourceItems] = {278079,278080,278081,278083},
@@ -1922,7 +2031,7 @@ function ForeverQuestFixes:Load()
         [97925] = { -- Camping 101: Tailoring
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
-            [questKeys.requiredSpell] = -1229504, -- Faction Banner
+            [questKeys.requiredSpell] = -1263425, -- Faction Banner
             [questKeys.objectives] = {{{1103,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96057,96102,97937,97950,97961,97972,97973},
         },
@@ -2082,7 +2191,7 @@ function ForeverQuestFixes:Load()
         [97950] = { -- Camping 101: Tailoring
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             [questKeys.requiredSkill] = {profKeys.TAILORING, 1},
-            [questKeys.requiredSpell] = -1229504, -- Faction Banner
+            [questKeys.requiredSpell] = -1263425, -- Faction Banner
             [questKeys.objectives] = {{{11050,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96057,96102,97925,97937,97961,97972,97973},
         },
@@ -2331,6 +2440,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98389] = { -- A Light in the Darkness
+            [questKeys.preQuestSingle] = {376},
             [questKeys.objectives] = {nil,nil,nil,nil,{{{271961,271968},271968,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [98391] = { -- The Sisterhood of Elune
@@ -2462,6 +2572,7 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 99130,
         },
         [99130] = { -- An Enticing Offer
+            [questKeys.objectives] = {nil,nil,{{286215},{286214}}},
             [questKeys.preQuestSingle] = {99129},
             [questKeys.nextQuestInChain] = 99131,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
@@ -2489,6 +2600,7 @@ function ForeverQuestFixes:Load()
         },
         [99156] = { -- Rear Guard Patrol
             [questKeys.preQuestSingle] = {356},
+            [questKeys.nextQuestInChain] = 92422,
         },
         [99158] = { -- Dawn in the Mountains
             [questKeys.breadcrumbForQuestId] = 99159,

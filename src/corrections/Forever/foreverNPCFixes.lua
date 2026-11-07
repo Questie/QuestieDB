@@ -171,6 +171,9 @@ function ForeverNpcFixes:Load()
         [227853] = { -- Pix Xizzix
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- traces record no flags
         },
+        [242498] = { -- Reagent Bot
+            [npcKeys.spawns] = {},
+        },
         [246143] = { -- Frightened Paladin
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{27.69,63.82}}},
         },
@@ -228,6 +231,54 @@ function ForeverNpcFixes:Load()
         },
         [249713] = { -- Odd Child
             [npcKeys.spawns] = {[zoneIDs.WESTFALL] = {{42.83,72.76}}},
+        },
+        [250483] = { -- Witherfang
+            [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
+        },
+        [250618] = { -- Skeleton
+            [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
+        },
+        [250622] = { -- Ragged Ghoul
+            [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
+        },
+        [250623] = { -- Mangled Cadaver
+            [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
+        },
+        [250624] = { -- Skeletal Mage
+            [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
+        },
+        [250626] = { -- Skeletal Soldier
+            [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
+        },
+        [250627] = { -- Ghoul
+            [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
+        },
+        [250630] = { -- Plague Ghoul
+            [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
+        },
+        [250656] = { -- Fallen Berserker
+            [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
+        },
+        [250657] = { -- Rath'mael
+            [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
+        },
+        [250660] = { -- The Baron
+            [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
+        },
+        [250689] = { -- Living Monstrosity
+            [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
         },
         [250929] = { -- Malfunctioning Cyclone Construct
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{48.87,78.25}}},
@@ -433,11 +484,19 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{56.16,60.59}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
+        [255109] = { -- Flesh Golem
+            [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
+        },
         [255534] = { -- "Badwind" Bennic
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{50.62,34.27}}},
         },
         [255940] = { -- Donaal Downbreeze
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{62.19,72.61}}},
+        },
+        [255964] = { -- Fallen Necromancer
+            [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
         },
         [256386] = { -- Dokimi
             [npcKeys.questStarts_add] = {91905},
@@ -738,6 +797,10 @@ function ForeverNpcFixes:Load()
         },
         [271587] = { -- Frosthowl
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{39.33,48.79}}},
+        },
+        [271613] = { -- Unfinished Abomination
+            [npcKeys.spawns] = {[zoneIDs.UNDERCITY] = {{45.88,61.7}}},
+            [npcKeys.zoneID] = zoneIDs.UNDERCITY,
         },
         [272034] = { -- Hatescreech
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{35.05,39.29}}},

@@ -3,6 +3,11 @@ name: Legacy corrections
 # Called by CI and Release so their aggregate gates own the result.
 on:
   workflow_call:
+    inputs:
+      ref:
+        description: Commit to check. Defaults to the triggering commit.
+        default: ""
+        type: string
 
 permissions:
   contents: read
@@ -17,6 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
+          ref: ${{ inputs.ref }}
           sparse-checkout: src/corrections/Forever/legacy
 
       - name: Fetch the baseline tree

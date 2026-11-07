@@ -346,9 +346,9 @@ end)
 suite("workflow-contracts", "shared", function()
   local release = lib.readAll(".github/workflows/release.yml")
   local publish = assert(release:match("\n  publish:\n(.*)"), "release has a publication job")
-  check(publish:find("needs: quality", 1, true) ~= nil,
+  check(publish:find("needs: [bump, quality]", 1, true) ~= nil,
     "release publication depends on the artifact quality job")
-  check(release:find("needs: [preflight, shared, database, legacy]", 1, true) ~= nil,
+  check(release:find("needs: [bump, preflight, shared, database, legacy]", 1, true) ~= nil,
     "release quality waits for preflight, shared tests, every flavor, and legacy corrections")
   check(release:find("cancel-in-progress: false", 1, true) ~= nil,
     "publication cannot be cancelled midway through replacement")

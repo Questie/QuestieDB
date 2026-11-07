@@ -11,6 +11,10 @@ on:
         description: Generate a stable version instead of a development version.
         default: false
         type: boolean
+      ref:
+        description: Commit to check. Defaults to the triggering commit.
+        default: ""
+        type: string
 
 permissions:
   contents: read
@@ -35,7 +39,9 @@ jobs:
       CHECK: ${{ matrix.check }}
     steps:
       - uses: actions/checkout@v7
-        with: { path: QuestieDB }
+        with:
+          path: QuestieDB
+          ref: ${{ inputs.ref }}
 
       - name: Install Lua 5.1
         run: sudo apt-get update && sudo apt-get install -y lua5.1
