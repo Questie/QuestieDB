@@ -33,10 +33,6 @@ on:
 permissions:
   contents: read
 
-concurrency:
-  group: versionbump-${{ github.ref }}
-  cancel-in-progress: false
-
 defaults:
   run:
     shell: bash
@@ -47,6 +43,11 @@ jobs:
     if: ${{ inputs.version != '' }}
     runs-on: ubuntu-latest
     environment: version-bump
+    # Only real bumps take the lock, so version-less push runs cannot evict a queued release.
+    concurrency:
+      group: versionbump-${{ github.ref }}
+      cancel-in-progress: false
+      queue: max
     env:
       VERSION: ${{ inputs.version }}
       TARGET_BRANCH: ${{ github.ref_name }}
@@ -56,8 +57,8 @@ jobs:
     steps:
       - name: Validate branch and version number
         run: |
-          if [[ "$TARGET_BRANCH" != "$DEFAULT_BRANCH" ]]; then
-            echo "ERROR: Versions can only be bumped on $DEFAULT_BRANCH, not $TARGET_BRANCH." >&2
+          if [[ "$GITHUB_REF" != "refs/heads/$DEFAULT_BRANCH" ]]; then
+            echo "ERROR: Versions can only be bumped on $DEFAULT_BRANCH, not $GITHUB_REF." >&2
             exit 1
           fi
           if [[ ! "$VERSION" =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]; then
@@ -78,9 +79,12 @@ jobs:
           repositories: ${{ github.event.repository.name }}
           permission-contents: write
 
-      - name: Checkout selected commit
+      # Check out the branch tip, not the dispatch commit: a full rerun then finds its earlier
+      # bump and reuses it, and the push stays a fast-forward if the branch moved meanwhile.
+      - name: Checkout branch tip
         uses: actions/checkout@v7
         with:
+          ref: ${{ github.ref }}
           token: ${{ steps.app-token.outputs.token || github.token }}
 
       - name: Install Lua 5.1
