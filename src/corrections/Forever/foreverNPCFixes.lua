@@ -30,6 +30,9 @@ function ForeverNpcFixes:Load()
         [663] = { -- Calor
             [npcKeys.waypoints] = {},
         },
+        [1252] = { -- Senir Whitebeard
+            [npcKeys.questStarts_remove] = {96608},
+        },
         [1261] = { -- Veron Amberstill <Ram Breeder>
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
