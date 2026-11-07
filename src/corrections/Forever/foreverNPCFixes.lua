@@ -78,6 +78,9 @@ function ForeverNpcFixes:Load()
         [3519] = { -- Sentinel Arynia Cloudsbreak
             [npcKeys.questStarts_remove] = {940},
         },
+        [3534] = { -- Wallace the Blind
+            [npcKeys.spawns] = {[zoneIDs.SILVERPINE_FOREST] = {{43.88,84.59}}},
+        },
         [3605] = { -- Nadyia Maneweaver
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.TRAINER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
@@ -164,6 +167,9 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{48.94,86.54}}}, -- TBD
             [npcKeys.questStarts_add] = {78150,79536,82208,78124,78127,78142,78143,78145,78146,78147,78148,78149,79091,79092,79093,79094,79095,79096,79097,79535,79947,79948,79949,79950,79951,79952,79953,81947,81949,81951,81952,81953,81954,81955,81956,97286},
             [npcKeys.questEnds_add] = {78124,78127,78142,78143,78145,78146,78147,78148,78149,79091,79092,79093,79094,79095,79096,79097,79535,79947,79948,79949,79950,79951,79952,79953,81947,81949,81951,81952,81953,81954,81955,81956,97286},
+        },
+        [212753] = { -- Tortured Soul
+            [npcKeys.spawns] = {[zoneIDs.SILVERPINE_FOREST] = {{58.19,69.83}}},
         },
         [214519] = { -- Incinerator Gar'im
             [npcKeys.spawns] = {[zoneIDs.REDRIDGE_MOUNTAINS] = {{72.82,86.33}}},
