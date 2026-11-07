@@ -1220,7 +1220,6 @@ function ForeverQuestFixes:Load()
         },
         [94373] = { -- Call of Earth
             [questKeys.nextQuestInChain] = 94374,
-            [questKeys.breadcrumbs] = {96243},
         },
         [94374] = { -- Call of Earth
             [questKeys.preQuestSingle] = {94373},
@@ -1618,8 +1617,7 @@ function ForeverQuestFixes:Load()
         [96243] = { -- Call of Earth
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 4,
-            [questKeys.breadcrumbForQuestId] = 94373,
-            [questKeys.nextQuestInChain] = 94373,
+            [questKeys.availableUntilCompleted] = 94373,
         },
         [96390] = { -- Nip 'Em in the Bud
             [questKeys.preQuestSingle] = {96392},
@@ -1832,9 +1830,11 @@ function ForeverQuestFixes:Load()
             [questKeys.zoneOrSort] = 77,
         },
         [97281] = { -- A Simmering Storm
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.nextQuestInChain] = 97282,
         },
         [97282] = { -- Stormy Potential
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {97281},
         },
         [97286] = { -- Research Access
