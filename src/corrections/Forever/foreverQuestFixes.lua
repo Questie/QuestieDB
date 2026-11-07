@@ -197,6 +197,21 @@ function ForeverQuestFixes:Load()
         [5482] = { -- Doom Weed
             [questKeys.nextQuestInChain] = 99142,
         },
+        [5635] = { -- Desperate Prayer
+            [questKeys.requiredRaces] = raceIDs.DWARF,
+        },
+        [5637] = { -- Desperate Prayer
+            [questKeys.requiredRaces] = raceIDs.DWARF,
+        },
+        [5638] = { -- Desperate Prayer
+            [questKeys.requiredRaces] = raceIDs.DWARF,
+        },
+        [5639] = { -- Desperate Prayer
+            [questKeys.requiredRaces] = raceIDs.DWARF,
+        },
+        [5640] = { -- Desperate Prayer
+            [questKeys.requiredRaces] = raceIDs.DWARF,
+        },
         [5644] = { -- Dark Sacrifice
             [questKeys.name] = "Dark Sacrifice",
         },
