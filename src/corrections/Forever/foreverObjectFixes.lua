@@ -506,6 +506,11 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.WESTFALL] = {{46.08,38.14}}},
             [objectKeys.zoneID] = zoneIDs.WESTFALL,
         },
+        [460007] = { -- Othmar's Head
+            [objectKeys.name] = "Othmar's Head",
+            [objectKeys.spawns] = {[zoneIDs.UNDERCITY] = {{45.98,61.92}}},
+            [objectKeys.zoneID] = zoneIDs.UNDERCITY,
+        },
     }
 end
 

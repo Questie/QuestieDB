@@ -196,6 +196,15 @@ function ForeverQuestFixes:Load()
         [5482] = { -- Doom Weed
             [questKeys.nextQuestInChain] = 99142,
         },
+        [5644] = { -- Dark Sacrifice
+            [questKeys.name] = "Dark Sacrifice",
+        },
+        [5646] = { -- Dark Sacrifice
+            [questKeys.name] = "Dark Sacrifice",
+        },
+        [5679] = { -- Dark Sacrifice
+            [questKeys.name] = "Dark Sacrifice",
+        },
         [5713] = { -- One Shot.  One Kill.
             [questKeys.name] = "One Shot.  One Kill.",
         },
@@ -717,11 +726,15 @@ function ForeverQuestFixes:Load()
         [92422] = { -- The Wrath of Rath'mael
             [questKeys.preQuestSingle] = {99156},
         },
+        [92460] = { -- Coming of Age
+            [questKeys.nextQuestInChain] = 92461,
+        },
         [92461] = { -- Harmony in Balance
             [questKeys.preQuestSingle] = {92460},
         },
         [92462] = { -- Infestation Investigation
             [questKeys.preQuestSingle] = {92460},
+            [questKeys.nextQuestInChain] = 92463,
         },
         [92463] = { -- The Cirrusfly Queen
             [questKeys.preQuestSingle] = {92462},
@@ -1422,6 +1435,15 @@ function ForeverQuestFixes:Load()
         [95161] = { -- Remember That I Love You
             [questKeys.preQuestSingle] = {92415},
         },
+        [95189] = { -- Crest of Lordaeron
+            [questKeys.requiredLevel] = 15,
+        },
+        [95195] = { -- Bloodied Insignia
+            [questKeys.requiredLevel] = 15,
+        },
+        [95204] = { -- Crest of Lordaeron
+            [questKeys.requiredLevel] = 15,
+        },
         [95212] = { -- Never Saddle on Quality
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
@@ -1432,10 +1454,14 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {95213},
         },
         [95216] = { -- The New Plague
+            [questKeys.requiredLevel] = 15,
             [questKeys.preQuestSingle] = {451},
         },
         [95217] = { -- The Quarry's Smith
             [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 1},
+        },
+        [95250] = { -- Abominable Creatures
+            [questKeys.requiredLevel] = 15,
         },
         [95314] = { -- That Shadowvale Green Elixir
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
@@ -1479,6 +1505,9 @@ function ForeverQuestFixes:Load()
             [questKeys.sourceItemId] = 270896,
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
             [questKeys.requiredMinRep] = {factionIDs.DUROTAR_SUPPLY_AND_LOGISTICS, 9000},
+        },
+        [95981] = { -- Watching the Roads
+            [questKeys.preQuestSingle] = {482},
         },
         [95998] = { -- The Great Outdoors
             [questKeys.breadcrumbs] = {96627},
@@ -1804,22 +1833,28 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {78124,78127,78142,78143,78145,78146,78147,78148,78149,79091,79092,79093,79094,79095,79096,79097,79535,79947,79948,79949,79950,79951,79952,79953,81947,81949,81951,81952,81953,81954,81955,81956,84395,84396,84397,84398,84399,84400,84401,84402},
         },
         [97288] = { -- Unending Torment
-            [questKeys.nextQuestInChain] = 97289, -- might have prequest according to wowhead comments
+            [questKeys.requiredLevel] = 15,
+            [questKeys.nextQuestInChain] = 97289,
         },
         [97289] = { -- Unending Torment
+            [questKeys.requiredLevel] = 15,
             [questKeys.preQuestSingle] = {97288},
             [questKeys.nextQuestInChain] = 97290,
         },
         [97290] = { -- Unending Torment
+            [questKeys.requiredLevel] = 15,
             [questKeys.preQuestSingle] = {97289},
             [questKeys.nextQuestInChain] = 97291,
         },
         [97291] = { -- Unending Torment
+            [questKeys.requiredLevel] = 15,
             [questKeys.preQuestSingle] = {97290},
             [questKeys.nextQuestInChain] = 97292,
         },
         [97292] = { -- Unending Torment
+            [questKeys.requiredLevel] = 15,
             [questKeys.preQuestSingle] = {97291},
+            [questKeys.objectives] = {nil,{{460007,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [97485] = { -- Traditions of the Bluff
             [questKeys.objectives] = {nil,{{665373}},{{278078}}},
@@ -2549,6 +2584,7 @@ function ForeverQuestFixes:Load()
         },
         [99156] = { -- Rear Guard Patrol
             [questKeys.preQuestSingle] = {356},
+            [questKeys.nextQuestInChain] = 92422,
         },
         [99158] = { -- Dawn in the Mountains
             [questKeys.breadcrumbForQuestId] = 99159,
