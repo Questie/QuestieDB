@@ -236,7 +236,7 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
         },
-        [250618] = { -- Bagh Nakh
+        [250618] = { -- Skeleton
             [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
         },
@@ -797,6 +797,10 @@ function ForeverNpcFixes:Load()
         },
         [271587] = { -- Frosthowl
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{39.33,48.79}}},
+        },
+        [271613] = { -- Unfinished Abomination
+            [npcKeys.spawns] = {[zoneIDs.UNDERCITY] = {{45.88,61.7}}},
+            [npcKeys.zoneID] = zoneIDs.UNDERCITY,
         },
         [272034] = { -- Hatescreech
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{35.05,39.29}}},
