@@ -46,18 +46,20 @@ env:
   DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
 
 jobs:
-  bump:
+  bump_push:
     name: Bump version
+    if: ${{ inputs.version != '' }}
     runs-on: ubuntu-latest
+    # Approval is required before this job receives the app's private key.
+    environment: version-bump
     permissions:
-      contents: write
+      contents: read
     outputs:
       commit_sha: ${{ steps.commit.outputs.commit_sha }}
     env:
       VERSION: ${{ inputs.version }}
     steps:
       - name: Validate the request
-        if: ${{ inputs.version != '' }}
         run: |
           if [[ "$DRY_RUN" == "true" ]]; then
             echo "ERROR: A version bump pushes a commit, so it requires --publish." >&2
@@ -72,10 +74,27 @@ jobs:
             exit 1
           fi
 
+      # Limit the short-lived token to this repository and Contents write access.
+      - name: Create app token
+        id: app-token
+        uses: actions/create-github-app-token@v3.3.0
+        with:
+          client-id: ${{ secrets.VERSION_BUMP_APP_CLIENT_ID }}
+          private-key: ${{ secrets.VERSION_BUMP_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: ${{ github.event.repository.name }}
+          permission-contents: write
+
       - uses: actions/checkout@v7
+        with:
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Update the Source TOC, commit and push
-        if: ${{ inputs.version != '' }}
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          APP_SLUG: ${{ steps.app-token.outputs.app-slug }}
+          AUTHOR_LOGIN: ${{ github.actor }}
+          AUTHOR_ID: ${{ github.actor_id }}
         run: |
           sed -i -E "s/^(## Version:[[:space:]]*).*$/\1$VERSION/" QuestieDB.toc
           # Fail early unless the TOC still has exactly one canonical version.
@@ -84,16 +103,35 @@ jobs:
           # A rerun after a failed release finds the bump already committed.
           if git diff --quiet QuestieDB.toc; then
             echo "QuestieDB.toc is already at $VERSION."
-            exit 0
+          else
+            bot_id=$(gh api "/users/${APP_SLUG}[bot]" --jq '.id')
+            git config user.name "${APP_SLUG}[bot]"
+            git config user.email "${bot_id}+${APP_SLUG}[bot]@users.noreply.github.com"
+            # Credit the initiator; the app remains the committer. [skip ci] stops the
+            # push from also starting a preview run beside this one.
+            git commit --author "$AUTHOR_LOGIN <$AUTHOR_ID+$AUTHOR_LOGIN@users.noreply.github.com>" \
+              -m "chore(release): bump version to $VERSION [skip ci]" QuestieDB.toc
+            git push origin "HEAD:refs/heads/$DEFAULT_BRANCH"
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore(release): bump version to $VERSION" QuestieDB.toc
-          git push origin "HEAD:refs/heads/$DEFAULT_BRANCH"
 
       - name: Save the commit to build
         id: commit
         run: echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+  bump:
+    name: Select commit to build
+    needs: bump_push
+    # Run when the bump was skipped, but never after it failed.
+    if: ${{ !cancelled() && (needs.bump_push.result == 'success' || needs.bump_push.result == 'skipped') }}
+    runs-on: ubuntu-latest
+    outputs:
+      commit_sha: ${{ steps.commit.outputs.commit_sha }}
+    env:
+      BUMPED_SHA: ${{ needs.bump_push.outputs.commit_sha }}
+    steps:
+      - name: Save the commit to build
+        id: commit
+        run: echo "commit_sha=${BUMPED_SHA:-$GITHUB_SHA}" >> "$GITHUB_OUTPUT"
 
   legacy:
     name: Legacy corrections
@@ -311,7 +349,7 @@ jobs:
   notify:
     name: Notify Discord
     runs-on: ubuntu-latest
-    needs: [bump, preflight, legacy, shared, database, quality, dry_run, publish, curseforge]
+    needs: [bump_push, bump, preflight, legacy, shared, database, quality, dry_run, publish, curseforge]
     if: failure()
     permissions:
       contents: read
