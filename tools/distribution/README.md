@@ -141,28 +141,29 @@ contain signer emails. Parsed record boundaries and commit SHAs are validated be
 
 ## Dry runs
 
-Manual **Actions → Release → Run workflow** runs default to all checkboxes unchecked. Select
-the default branch and use `--release-build` to choose stable rather than development versioning.
-Leave `--publish` unchecked to inspect the build without modifying tags or GitHub releases.
-Automatic default-branch pushes still publish the development preview.
+The workflow inputs match Questie's **Build and publish bundle** workflow. Manual
+**Actions → Release → Run workflow** runs publish unless `--dry_run` is checked, like automatic
+default-branch pushes. Select the default branch and use `--release` to choose stable rather
+than development versioning. Check `--dry_run` to inspect the build without modifying tags or
+GitHub releases.
 
-| `--release-build` | `--publish` | Result |
+| `--release` | `--dry_run` | Result |
 | --- | --- | --- |
-| Unchecked | Unchecked | Build and preview a development build |
-| Checked | Unchecked | Build and preview a stable release |
-| Unchecked | Checked | Publish the development preview |
-| Checked | Checked | Publish a stable release |
+| Unchecked | Checked | Build and preview a development build |
+| Checked | Checked | Build and preview a stable release |
+| Unchecked | Unchecked | Publish the development preview |
+| Checked | Unchecked | Publish a stable release |
 
-`--replace` additionally permits overwriting an existing stable version when publishing.
-The checkbox labels are `--release-build`, `--publish`, and `--replace`; their workflow input IDs
-are `release`, `publish`, and `override`, respectively. These labels are not CLI options.
-The former `dry_run` input is removed.
+`--override` additionally permits overwriting an existing stable version when publishing.
+`version` optionally bumps the Source TOC first (see [Publishing](#publishing)), and
+`publish_curseforge` uploads a published stable release to CurseForge. The checkbox labels match
+the workflow input IDs `release`, `dry_run`, and `override`. These labels are not CLI options.
 
 A dry run executes the same generation, validation, and packaging
 pipeline. It then verifies the downloaded release handoff and displays ZIP paths, file sizes,
 checksums, and the packaged release description in the **Preview dry-run release** job summary.
 No tags or GitHub releases are created or changed. Existing version tags/releases are allowed,
-so inspecting an already-published version does not require `--replace` or a version bump.
+so inspecting an already-published version does not require `--override` or a version bump.
 
 Download these Actions artifacts from the run page (retained for seven days):
 
@@ -180,7 +181,7 @@ uv run tools/distribution/preview.py .out/dist
 ```
 
 Dry runs do not test GitHub publication permissions, tag rules, or release replacement. To
-publish, start a new manual run with `--publish` checked. This rebuilds from the current
+publish, start a new manual run with `--dry_run` unchecked. This rebuilds from the current
 default-branch commit; it does not promote the previous run's artifacts. Rerunning a dry run
 retains its original inputs and will not publish.
 
@@ -188,14 +189,24 @@ retains its original inputs and will not publish.
 
 To publish a stable release:
 
-1. Set `## Version: X.X.X` in `QuestieDB.toc` and commit it to the default branch. Use three
-   numeric components without leading zeros. TOC regeneration preserves this maintained value.
-2. Open **Actions → Release → Run workflow**, select the default branch, and check `--release-build`.
-3. Check `--publish` to enable publication. Leave it unchecked if you only want to inspect the build.
-4. Leave `--replace` unchecked. For publication, an existing `vX.X.X` tag or release fails before
+1. Open **Actions → Release → Run workflow**, select the default branch, and check `--release`.
+2. Enter the new `version` as `X.X.X`: three numeric components without leading zeros and no
+   `v` prefix. After approval in the `version-bump` environment,
+   [`versionbump.yml`](../../.github/workflows/versionbump.yml) commits it to `QuestieDB.toc` on
+   the default branch with the version-bump GitHub App, and every later job builds that commit.
+   Leave `version` empty when `## Version` in `QuestieDB.toc` is already the version to release.
+   TOC regeneration preserves this maintained value.
+3. Check `publish_curseforge` to upload the release to CurseForge after GitHub publication.
+4. Leave `--override` unchecked. For publication, an existing `vX.X.X` tag or release fails before
    building, and publication checks again after all quality gates pass.
 
-`--replace` explicitly replaces that version's assets and moves its tag to the selected commit.
+The bump is pushed before the quality gates, because the version is baked into every generated
+TOC. If a later job fails, the bump stays on the default branch; dispatching again with the same
+`version` reuses it. A dry run with a `version` still waits for environment approval, then logs
+the TOC diff without pushing it. It builds the current commit, so its preview shows the unbumped
+version.
+
+`--override` explicitly replaces that version's assets and moves its tag to the selected commit.
 Use it only to repair a release; normally bump the version instead. GitHub-immutable releases
 cannot be overridden. Repository-wide release immutability is incompatible with rolling preview.
 
@@ -255,8 +266,8 @@ is uploaded. Build/check failures never touch an existing release.
 ### Failure recovery and permissions
 
 After a preview publication failure, rerun the failed workflow at the same commit. Do not rerun
-an older preview to repair a newer one. For a stable release, dispatch again with `--release-build`,
-`--publish`, and `--replace` checked: GitHub reruns retain the original inputs, so they
+an older preview to repair a newer one. For a stable release, dispatch again with `--release` and
+`--override` checked and `--dry_run` unchecked: GitHub reruns retain the original inputs, so they
 cannot enable override or turn a dry run into publication.
 Review the current default-branch commit and TOC version first; a new dispatch builds that
 commit, not necessarily the failed run's commit. Resolve tag-rule or permission errors before
