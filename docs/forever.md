@@ -95,6 +95,10 @@ Conversion only targets the inherited baseline and raw data, never `forever*Fixe
 player traces; never hand-edit them. Hand-authored work belongs in the `forever*Fixes.lua`
 files above. Each exposes only `Load()` (Static; no Dynamic entry point).
 
+Quest XP is support data, not a correction. The extractor's `xpDB-traces.lua` lives in
+`support/Forever/QuestXP/` and loads after `xpDB-classic.lua`, adding `QuestXP.db[questId]`
+rows for quests above the Classic maximum. Never hand-edit it.
+
 A trace-derived value overrides the generated delta-base value for the same field;
 an authored fix overrides both. Fields the trace layer does not touch retain the value
 from the generated delta-base or inherited baseline. Registry priorities enforce this
