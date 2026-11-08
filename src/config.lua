@@ -293,7 +293,8 @@ config.supportData.perFlavor.Forever = {
   "support/Forever/Zones/instanceIdToAreaId.lua",
   "support/Forever/DropTables/itemDropCorrections.lua",
   "support/Forever/Zones/areaIdToUiMapId.lua", "support/Forever/Zones/uiMapIdToAreaId.lua",
-  "support/Forever/QuestXP/xpDB-classic.lua", "support/Forever/FactionTemplates/factionTemplateClassic.lua",
+  "support/Forever/QuestXP/xpDB-classic.lua", "support/Forever/QuestXP/xpDB-traces.lua",
+  "support/Forever/FactionTemplates/factionTemplateClassic.lua",
   "support/Forever/DropTables/classicItemDrops.lua",
 }
 

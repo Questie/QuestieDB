@@ -3464,6 +3464,15 @@ suite("support", "shared", function()
   check(type(vanilla.ZoneDB.private.areaIdToUiMapId) == "string",
     "support publication preserves authored Lua source strings")
 
+  local foreverFiles = config.supportFiles(config.flavorByName.Forever)
+  local foreverPositions = {}
+  for index, file in ipairs(foreverFiles) do foreverPositions[file] = index end
+  check(foreverPositions["support/Forever/QuestXP/xpDB-classic.lua"] <
+    foreverPositions["support/Forever/QuestXP/xpDB-traces.lua"], "Forever trace quest XP loads after the base table")
+  local forever = loadSupportBlock(config.flavorByName.Forever, "Alliance")
+  check(forever.QuestXP.db[2] ~= nil and forever.QuestXP.db[9665] ~= nil,
+    "Forever trace quest XP is added to the base table, not replacing it")
+
   env.QuestieLoader = nil
   support.Install(config.flavorByName.Vanilla)
   support.Remove()

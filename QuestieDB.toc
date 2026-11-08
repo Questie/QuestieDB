@@ -165,6 +165,7 @@ support\Forever\DropTables\itemDropCorrections.lua [ExcludeLoadGameType vanilla,
 support\Forever\Zones\areaIdToUiMapId.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\Zones\uiMapIdToAreaId.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\QuestXP\xpDB-classic.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+support\Forever\QuestXP\xpDB-traces.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\FactionTemplates\factionTemplateClassic.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\DropTables\classicItemDrops.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
