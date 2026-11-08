@@ -211,6 +211,7 @@ function ForeverQuestFixes:Load()
             [questKeys.name] = "WANTED: Arnak Grimtotem",
         },
         [5321] = { -- The Sleeper Has Awakened
+            [questKeys.objectives] = {},
             [questKeys.triggerEnd] = {"Escort Kerlonian Evershade on the road south to his bag",{[zoneIDs.DARKSHORE] = {{42,90.5}}}},
         },
         [5482] = { -- Doom Weed
