@@ -612,6 +612,10 @@ function ForeverNpcFixes:Load()
         [258289] = { -- Baeo Sharpstrike
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.92,33.55}}},
         },
+        [258880] = { -- Uninspected Shipment
+            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{49.95,29.45}}},
+            [npcKeys.npcFlags] = npcFlags.BANKER,
+        },
         [258930] = { -- Isaac Chan
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{41.79,66.37}}},
         },

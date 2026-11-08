@@ -12,7 +12,6 @@ local QuestieCorrections = QuestieLoader:ImportModule("QuestieCorrections")
 ---@type l10n
 local l10n = QuestieLoader:ImportModule("l10n")
 
-QuestieCorrections.itemObjectiveFirst[91317] = true
 QuestieCorrections.itemObjectiveFirst[92682] = true
 QuestieCorrections.killCreditObjectiveFirst[94489] = true
 QuestieCorrections.objectObjectiveFirst[95885] = true
@@ -370,6 +369,18 @@ function ForeverQuestFixes:Load()
         [78823] = { -- Terror of the Desert Skies
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
+        [79007] = { -- ... and that note you found
+            [questKeys.startedBy] = {nil,{415106}},
+            [questKeys.finishedBy] = {nil,{415107}},
+            [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
+            [questKeys.nextQuestInChain] = 79192,
+        },
+        [79008] = { -- ... and that note you found
+            [questKeys.startedBy] = {nil,{415107}},
+            [questKeys.finishedBy] = {nil,{415106}},
+            [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
+            [questKeys.nextQuestInChain] = 79192,
+        },
         [79091] = { -- Archmage Antonidas: The Unabridged Autobiography
             [questKeys.startedBy] = {{211022,211033},{386691}},
             [questKeys.requiredLevel] = 1,
@@ -420,6 +431,11 @@ function ForeverQuestFixes:Load()
             [questKeys.questLevel] = 20,
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.objectives] = {nil,nil,{{208800}}},
+        },
+        [79192] = { -- Stepping Stones
+            [questKeys.startedBy] = {nil,{417072,424010}},
+            [questKeys.preQuestSingle] = {79007,79008},
+            [questKeys.nextQuestInChain] = 79980,
         },
         [79229] = { -- Highway Robbery
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -487,6 +503,22 @@ function ForeverQuestFixes:Load()
             [questKeys.questLevel] = 35,
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.objectives] = {nil,nil,{{215824}}},
+        },
+        [79974] = { -- Wet Job
+            [questKeys.preQuestSingle] = {79980},
+            [questKeys.nextQuestInChain] = 79975,
+        },
+        [79975] = { -- Eagle's Fist
+            [questKeys.preQuestSingle] = {79974},
+            [questKeys.nextQuestInChain] = 79976,
+        },
+        [79976] = { -- This Must Be The Place
+            [questKeys.preQuestSingle] = {79975},
+            [questKeys.zoneOrSort] = 1857,
+        },
+        [79980] = { -- Scramble
+            [questKeys.preQuestSingle] = {79192},
+            [questKeys.nextQuestInChain] = 79974,
         },
         [80001] = { -- Rekindle
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -662,6 +694,7 @@ function ForeverQuestFixes:Load()
         },
         [91317] = { -- The Tarnished
             [questKeys.preQuestSingle] = {91294},
+            [questKeys.objectives] = {nil,nil,{{270435}},nil,{{{259434},259434},{{259433},259433}}},
         },
         [91723] = { -- Delicate Instruments
             [questKeys.nextQuestInChain] = 91724,
@@ -699,6 +732,7 @@ function ForeverQuestFixes:Load()
         [91753] = { -- An Enchanting Lesson
             [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredSourceItems] = {247883},
         },
         [91758] = { -- Follow That Kobold!
             [questKeys.preQuestSingle] = {91752},
@@ -2506,6 +2540,7 @@ function ForeverQuestFixes:Load()
             [questKeys.breadcrumbForQuestId] = 2519,
             [questKeys.nextQuestInChain] = 2519,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.disabledByQuest] = 2518,
         },
         [98392] = { -- Darkness in the Glade
             [questKeys.preQuestSingle] = {937},
