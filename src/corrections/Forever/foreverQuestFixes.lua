@@ -1888,6 +1888,9 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {97220},
             [questKeys.objectives] = {nil,{{460004}}},
         },
+        [97225] = { -- Forgotten Loa Idols
+            [questKeys.preQuestSingle] = {805},
+        },
         [97234] = { -- Reading Room
             [questKeys.nextQuestInChain] = 97237,
         },
