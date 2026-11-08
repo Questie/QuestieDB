@@ -1912,6 +1912,12 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 97257,
             [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Knock on Kuramaa's Stump"),0,{{"object",660848}}}},
         },
+        [97246] = { -- Meal Appeal
+            [questKeys.nextQuestInChain] = 97249,
+        },
+        [97249] = { -- Favorite Food
+            [questKeys.preQuestSingle] = {97246},
+        },
         [97257] = { -- Call of Fire
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.preQuestSingle] = {97245},
