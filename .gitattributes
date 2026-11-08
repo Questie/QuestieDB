@@ -1,3 +1,5 @@
 # Keep launchers usable when checked out with Windows Git's autocrlf setting.
 *.sh text eol=lf
 *.cmd text eol=crlf
+# test.lua parses these files with LF-only patterns, so a Windows autocrlf checkout fails workflow-contracts.
+.github/workflows/*.yml text eol=lf
