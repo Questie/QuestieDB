@@ -154,6 +154,7 @@ function ForeverQuestFixes:Load()
         },
         [971] = { -- Knowledge in the Deeps
             [questKeys.disabledByQuest] = 968,
+            [questKeys.requiredLevel] = 18,
         },
         [982] = { -- Deep Ocean, Vast Sea
             [questKeys.breadcrumbs_add] = {97894},
