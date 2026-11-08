@@ -49,6 +49,9 @@ function ForeverObjectFixes:Load()
         [405879] = { -- Apothecary Society Primer
             [objectKeys.questStarts] = {79095},
         },
+        [406918] = { -- Messenger Bag
+            [objectKeys.spawns] = {[zoneIDs.ARATHI_HIGHLANDS] = {{22.48,24.14}}},
+        },
         [407566] = { -- Goblin Tome
             [objectKeys.name] = "Goblin Tome",
             [objectKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{62.7,36.3}}},
@@ -121,8 +124,14 @@ function ForeverObjectFixes:Load()
             [objectKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
             [objectKeys.questStarts] = {79096},
         },
+        [415106] = { -- Burned-Out Remains
+            [objectKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{46.36,73.9}}},
+        },
         [415107] = { -- Burned-Out Remains
             [objectKeys.spawns] = {[zoneIDs.WESTFALL] = {{37.41,50.7}}},
+        },
+        [417072] = { -- Nailed Plank
+            [objectKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{46.39,73.82}}},
         },
         [421526] = { -- Research Notes
             [objectKeys.questStarts] = {79535},
@@ -166,6 +175,18 @@ function ForeverObjectFixes:Load()
         [423901] = { -- Book
             [objectKeys.spawns] = {[zoneIDs.SWAMP_OF_SORROWS] = {{61.5,22.5}}},
             [objectKeys.questStarts] = {79953},
+        },
+        [424005] = { -- Pocket Litter
+            [objectKeys.spawns] = {[zoneIDs.STONETALON_MOUNTAINS] = {{40.75,52.57}}},
+        },
+        [424006] = { -- Hastily Rolled-Up Satchel
+            [objectKeys.spawns] = {[zoneIDs.ARATHI_HIGHLANDS] = {{22.48,24.15}}},
+        },
+        [424010] = { -- Nailed Plank
+            [objectKeys.spawns] = {[zoneIDs.WESTFALL] = {{37.36,50.77}}},
+        },
+        [424012] = { -- Mound of Dirt
+            [objectKeys.spawns] = {[zoneIDs.STONETALON_MOUNTAINS] = {{39.62,49.82}}},
         },
         [441247] = { -- Book
             [objectKeys.name] = "Book",
