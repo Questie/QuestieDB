@@ -2,4 +2,5 @@
 *.sh text eol=lf
 *.cmd text eol=crlf
 # test.lua parses these files with LF-only patterns, so a Windows autocrlf checkout fails workflow-contracts.
+# Existing Windows clones: delete .github/workflows/*.yml, then run git checkout -- .github/workflows
 .github/workflows/*.yml text eol=lf
