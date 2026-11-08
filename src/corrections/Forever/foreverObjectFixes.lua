@@ -126,12 +126,21 @@ function ForeverObjectFixes:Load()
         },
         [415106] = { -- Burned-Out Remains
             [objectKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{46.36,73.9}}},
+            [objectKeys.questStarts] = {79007},
+            [objectKeys.questEnds] = {79008},
         },
         [415107] = { -- Burned-Out Remains
             [objectKeys.spawns] = {[zoneIDs.WESTFALL] = {{37.41,50.7}}},
+            [objectKeys.questStarts] = {79008},
+            [objectKeys.questEnds] = {79007},
         },
         [417072] = { -- Nailed Plank
             [objectKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{46.39,73.82}}},
+            [objectKeys.questStarts] = {79192},
+            [objectKeys.questEnds] = {},
+        },
+        [417353] = { -- Extinguished Campfire
+            [objectKeys.name] = "Extinguished Campfire",
         },
         [421526] = { -- Research Notes
             [objectKeys.questStarts] = {79535},
@@ -184,6 +193,8 @@ function ForeverObjectFixes:Load()
         },
         [424010] = { -- Nailed Plank
             [objectKeys.spawns] = {[zoneIDs.WESTFALL] = {{37.36,50.77}}},
+            [objectKeys.questStarts] = {79192},
+            [objectKeys.questEnds] = {},
         },
         [424012] = { -- Mound of Dirt
             [objectKeys.spawns] = {[zoneIDs.STONETALON_MOUNTAINS] = {{39.62,49.82}}},
