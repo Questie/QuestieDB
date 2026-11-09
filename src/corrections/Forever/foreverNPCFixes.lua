@@ -17,6 +17,14 @@ function ForeverNpcFixes:Load()
     local phases = Phasing.phases
 
     return {
+        [219] = { -- Groundskeeper Lomar
+            [npcKeys.name] = "Groundskeeper Lomar",
+            [npcKeys.minLevel] = 45,
+            [npcKeys.maxLevel] = 45,
+            [npcKeys.rank] = 1,
+            [npcKeys.spawns] = {[zoneIDs.ARATHI_HIGHLANDS] = {{27,57.2}}},
+            [npcKeys.zoneID] = zoneIDs.ARATHI_HIGHLANDS,
+        },
         [352] = { -- Dungar Longdrink
             [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{71.29,72.23}}},
         },
