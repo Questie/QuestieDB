@@ -224,8 +224,53 @@ function ForeverNpcFixes:Load()
         [214954] = { -- Rix Xizzix
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- traces record no flags
         },
+        [217582] = { -- Caverndeep Ambusher
+            [npcKeys.name] = "Caverndeep Ambusher",
+            [npcKeys.spawns] = {[zoneIDs.GNOMEREGAN] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218969] = { -- STX-96/FR
+            [npcKeys.name] = "STX-96/FR",
+            [npcKeys.spawns] = {[zoneIDs.GNOMEREGAN] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218970] = { -- STX-97/IC
+            [npcKeys.name] = "STX-97/IC",
+            [npcKeys.spawns] = {[zoneIDs.GNOMEREGAN] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218971] = { -- STX-97/IC
+            [npcKeys.name] = "STX-97/IC",
+            [npcKeys.spawns] = {[zoneIDs.GNOMEREGAN] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218972] = { -- STX-98/PO
+            [npcKeys.name] = "STX-98/PO",
+            [npcKeys.spawns] = {[zoneIDs.GNOMEREGAN] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218973] = { -- STX-98/PO
+            [npcKeys.name] = "STX-98/PO",
+            [npcKeys.spawns] = {[zoneIDs.GNOMEREGAN] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218974] = { -- STX-99/XD
+            [npcKeys.name] = "STX-99/XD",
+            [npcKeys.spawns] = {[zoneIDs.GNOMEREGAN] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218975] = { -- STX-99/XD
+            [npcKeys.name] = "STX-99/XD",
+            [npcKeys.spawns] = {[zoneIDs.GNOMEREGAN] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
         [227853] = { -- Pix Xizzix
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- traces record no flags
+        },
+        [235325] = { -- Fathom Dweller
+            [npcKeys.name] = "Fathom Dweller",
+            [npcKeys.spawns] = {[zoneIDs.BLACKFATHOM_DEEPS] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
         },
         [242498] = { -- Reagent Bot
             [npcKeys.spawns] = {},
