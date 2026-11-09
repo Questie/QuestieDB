@@ -185,11 +185,9 @@ function ForeverQuestFixes:Load()
             [questKeys.startedBy_remove] = {nil,{659159}},
         },
         [1516] = { -- Call of Earth
-            [questKeys.preQuestSingle] = {1516,1519,92466},
             [questKeys.exclusiveTo] = {1519,92466},
         },
         [1519] = { -- Call of Earth
-            [questKeys.preQuestSingle] = {1516,1519,92466},
             [questKeys.exclusiveTo] = {1516,92466},
         },
         [1657] = { -- Stinking Up Southshore
@@ -1706,6 +1704,7 @@ function ForeverQuestFixes:Load()
         },
         [96130] = { -- Chakuyak
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.preQuestSingle] = {757},
         },
         [96139] = { -- The Valor Family
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
