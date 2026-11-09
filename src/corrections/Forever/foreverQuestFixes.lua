@@ -1357,6 +1357,9 @@ function ForeverQuestFixes:Load()
         [94441] = { -- A Lesson in Divinity
             [questKeys.preQuestSingle] = {94440},
         },
+        [94449] = { -- Call of Fire
+            [questKeys.nextQuestInChain] = 94465,
+        },
         [94465] = { -- Call of Fire
             [questKeys.nextQuestInChain] = 94466,
         },
@@ -1411,10 +1414,49 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.exclusiveTo] = {94484},
         },
+        [94494] = { -- Call of Water
+            [questKeys.nextQuestInChain] = 94495,
+        },
+        [94495] = { -- Call of Water
+            [questKeys.preQuestSingle] = {94494},
+            [questKeys.nextQuestInChain] = 94497,
+        },
+        [94497] = { -- Call of Water
+            [questKeys.preQuestSingle] = {94495},
+            [questKeys.nextQuestInChain] = 94499,
+        },
+        [94499] = { -- Call of Water
+            [questKeys.preQuestSingle] = {94497},
+            [questKeys.nextQuestInChain] = 94500,
+        },
+        [94500] = { -- Call of Water
+            [questKeys.preQuestSingle] = {94499},
+            [questKeys.nextQuestInChain] = 94501,
+        },
+        [94501] = { -- Call of Water
+            [questKeys.preQuestSingle] = {94500},
+            [questKeys.nextQuestInChain] = 94502,
+        },
+        [94502] = { -- Call of Water
+            [questKeys.preQuestSingle] = {94501},
+            [questKeys.nextQuestInChain] = 94503,
+        },
+        [94503] = { -- Call of Water
+            [questKeys.preQuestSingle] = {94502},
+            [questKeys.nextQuestInChain] = 94505,
+        },
+        [94505] = { -- Call of Water
+            [questKeys.preQuestSingle] = {94503},
+        },
         [94568] = { -- The Cult's True Plans
             [questKeys.preQuestSingle] = {92644},
             [questKeys.nextQuestInChain] = 92640,
             [questKeys.objectives] = {{{252476,nil,Questie.ICON_TYPE_TALK}}},
+        },
+        [94616] = { -- Water Sapta
+            [questKeys.preQuestSingle] = {94501},
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.availableUntilCompleted] = 94502,
         },
         [94638] = { -- Strength and Mercy
             [questKeys.requiredClasses] = classIDs.DRUID,
