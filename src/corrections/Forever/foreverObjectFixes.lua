@@ -15,6 +15,16 @@ function ForeverObjectFixes:Load()
         [61934] = { -- Brazier of the Dormant Flame
             [objectKeys.spawns_add] = {[zoneIDs.LOCH_MODAN] = {{31.79,64.52}}},
         },
+        [640104] = { -- Sprung Trap (Vrang's Game)
+            -- Align with Wowhead Forever mapper coords (21 pins in Dry Hills / NW Barrens).
+            [objectKeys.spawns] = {[zoneIDs.THE_BARRENS] = {
+                {42.1,13.9},{42.9,15},{42.9,20.9},{43,16.5},{43.2,16.4},{43.3,14.3},
+                {43.9,14.4},{43.9,14.5},{44.2,13},{44.7,13.5},{44.7,16.4},{44.7,16.5},
+                {45.4,13.2},{45.4,15.3},{45.5,15.3},{46.4,13.1},{46.9,12.4},{47,13.1},
+                {47.6,12.6},{47.9,11.1},{50.2,12.7},
+            }},
+            [objectKeys.zoneID] = zoneIDs.THE_BARRENS,
+        },
         [179437] = { -- Wanted: ORCS!
             [objectKeys.spawns] = {[zoneIDs.ALTERAC_VALLEY] = {{43.27,16.52}}},
             [objectKeys.zoneID] = zoneIDs.ALTERAC_VALLEY,

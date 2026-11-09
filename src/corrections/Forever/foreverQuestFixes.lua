@@ -1558,6 +1558,16 @@ function ForeverQuestFixes:Load()
         [95350] = { -- Welcome to Azeroth
             [questKeys.nextQuestInChain] = 93739,
         },
+        [95494] = { -- Bruised Pride and Lion Hides
+            [questKeys.nextQuestInChain] = 95495,
+        },
+        [95495] = { -- The Hermit Tanner
+            -- Wowhead series: available from Vrang only after Bruised Pride (Bundle of Hides).
+            [questKeys.preQuestSingle] = {95494},
+        },
+        [95621] = { -- Trouble in the Valley
+            [questKeys.preQuestSingle] = {95495},
+        },
         [95803] = { -- A Token of Good Faith
             [questKeys.preQuestSingle] = {91317}, -- 91316 is not needed
         },

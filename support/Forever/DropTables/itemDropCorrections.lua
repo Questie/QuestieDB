@@ -541,6 +541,10 @@ QuestieItemDropCorrections.Era = {
         [3782] = 5, -- super bad drop rate, wowhead shows 3%. it's somewhere between 5-10%
         [3784] = 5, -- super bad drop rate, wowhead shows 3%. it's somewhere between 5-10%
     },
+    [269715] = { -- Savannah Lion Hide; Wowhead Forever XML 31.42% / 4.08%
+        [3241] = 31.42, -- Savannah Patriarch (3256/10362)
+        [3416] = 4.08, -- Savannah Matriarch (290/7103)
+    },
 }
 
 QuestieItemDropCorrections.Tbc = { -- Corrections for Old World data should only be put here if they change going from Era->TBC! Otherwise, put them in the Era section!
