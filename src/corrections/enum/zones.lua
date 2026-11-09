@@ -453,6 +453,7 @@ constants.zoneIDs = {
   THE_BURNING_OF_ANDORHAL = 15828,
   STARFALL_BARROW_DEN = 15938, -- AreaTable name: Starfall Village; instance MapID 2817.
   KARAZHAN_CRYPTS = 16074,
+  ASHENVALE_INSTANCE = 16169, -- AreaTable name: Ashenvale; instance MapID 2832 (Nightmare Grove), not area 331.
   SCARLET_ENCLAVE = 16236,
   SCARLET_ENCLAVE_PRISON = 16369,
   SCARLET_ENCLAVE_TYRS_HAND = 16370,
