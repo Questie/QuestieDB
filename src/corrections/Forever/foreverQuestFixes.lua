@@ -261,14 +261,14 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [76156] = { -- Stalk With The Earthmother
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.TAUREN + raceIDs.TROLL,
             [questKeys.requiredClasses] = classIDs.NONE,
             [questKeys.nextQuestInChain] = 76160,
             [questKeys.objectives] = {nil,nil,{{206157}}},
             [questKeys.sourceItemId] = 206159,
         },
         [76160] = { -- Stalk With The Earthmother
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.TAUREN + raceIDs.TROLL,
             [questKeys.preQuestSingle] = {76156},
             [questKeys.nextQuestInChain] = 76240,
             [questKeys.sourceItemId] = 206176,
@@ -276,7 +276,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSourceItems] = {206170},
         },
         [76240] = { -- Stalk With The Earthmother
-            [questKeys.requiredClasses] = classIDs.NONE,
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.TAUREN + raceIDs.TROLL,
             [questKeys.preQuestSingle] = {76160},
             [questKeys.sourceItemId] = 206344,
             [questKeys.objectives] = {nil,nil,{{206345}}},
