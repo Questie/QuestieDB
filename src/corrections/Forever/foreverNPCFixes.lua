@@ -118,6 +118,9 @@ function ForeverNpcFixes:Load()
         [5893] = { -- Minor Manifestation of Fire
             [npcKeys.spawns_add] = {[zoneIDs.LOCH_MODAN] = {{31.96,64.42}}},
         },
+        [7427] = { -- Taim Ragetotem
+            [npcKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{58.93,76.81}}},
+        },
         [7825] = { -- Oran Snakewrithe
             [npcKeys.questStarts_add] = {84395,84396,84397,84398,84399,84400,84401,84402},
             [npcKeys.questEnds_add] = {84395,84396,84397,84398,84399,84400,84401,84402},
@@ -130,6 +133,9 @@ function ForeverNpcFixes:Load()
         },
         [9087] = { -- Bashana Runetotem
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
+        },
+        [10360] = { -- Kergul Bloodaxe
+            [npcKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{56.67,76.49}}},
         },
         [10667] = { -- Chromie
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
@@ -148,6 +154,10 @@ function ForeverNpcFixes:Load()
         },
         [14624] = { -- Master Smith Burninate <The Thorium Brotherhood>
             [npcKeys.npcFlags] = npcFlags.REPAIR + npcFlags.VENDOR, -- base data adds a wrong auctioneer bit
+        },
+        [15351] = { -- Alliance Brigadier General
+            [npcKeys.spawns_remove] = {[zoneIDs.STORMWIND_CITY] = {{81.23,38.49}}},
+            [npcKeys.spawns_add] = {[zoneIDs.STORMWIND_CITY] = {{81.24,38.25}}},
         },
         [15734] = { -- Ironforge Commendation Officer
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
@@ -629,6 +639,10 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
         },
+        [263349] = { -- James Battlewing
+            [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{81.19,38.74}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BATTLEMASTER,
+        },
         [263389] = { -- Enraged Apparition
             [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
@@ -639,6 +653,26 @@ function ForeverNpcFixes:Load()
         },
         [263399] = { -- Sam Sarsaparilla
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{44.9,63.36}}},
+        },
+        [263643] = { -- Sean Guardoff
+            [npcKeys.spawns] = {[zoneIDs.IRONFORGE] = {{70.32,88.79}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BATTLEMASTER,
+        },
+        [263644] = { -- Pherry Leftee
+            [npcKeys.spawns] = {[zoneIDs.DARNASSUS] = {{58.54,34.31}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BATTLEMASTER,
+        },
+        [263645] = { -- Gruga Bloodblade
+            [npcKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{79.89,30.7}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BATTLEMASTER,
+        },
+        [263646] = { -- Rugbul Boomfirst
+            [npcKeys.spawns] = {[zoneIDs.UNDERCITY] = {{60.34,86.6}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BATTLEMASTER,
+        },
+        [263647] = { -- Borook Gallfist
+            [npcKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{57.02,76.46}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BATTLEMASTER,
         },
         [264936] = { -- Earthseer Farsen
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{64.87,58.47}}},
