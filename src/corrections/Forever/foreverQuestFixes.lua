@@ -66,6 +66,9 @@ function ForeverQuestFixes:Load()
         [273] = { -- Resupplying the Excavation
             [questKeys.objectives] = {nil,nil,nil,nil,{{{1379,2057},15885,nil,Questie.ICON_TYPE_EVENT}}},
         },
+        [286] = { -- Return the Statuette
+            [questKeys.nextQuestInChain] = 98189, -- unverified: only the Wowhead series places 98189 after this quest
+        },
         [287] = { -- Frostmane Hold
             [questKeys.triggerEnd] = {"Fully explore Frostmane Hold",{[zoneIDs.DUN_MOROGH]={{21.2,54}}}},
             [questKeys.disabledByQuest] = 420,
@@ -2476,6 +2479,17 @@ function ForeverQuestFixes:Load()
         [98067] = { -- Eyes of the Sentinels
             [questKeys.objectives] = {{{270418,nil,Questie.ICON_TYPE_EVENT},{270419,nil,Questie.ICON_TYPE_EVENT},{270420,nil,Questie.ICON_TYPE_EVENT},{270421,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [98189] = { -- Return the Statuette
+            [questKeys.preQuestSingle] = {286}, -- unverified, see 286
+            [questKeys.nextQuestInChain] = 98190,
+        },
+        [98190] = { -- A Friend of the Family
+            [questKeys.preQuestSingle] = {98189},
+            [questKeys.nextQuestInChain] = 98191,
+        },
+        [98191] = { -- A Friend of the Family
+            [questKeys.preQuestSingle] = {98190},
         },
         [98197] = { -- Spoils of War
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
