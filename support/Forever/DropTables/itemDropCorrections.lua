@@ -541,6 +541,59 @@ QuestieItemDropCorrections.Era = {
         [3782] = 5, -- super bad drop rate, wowhead shows 3%. it's somewhere between 5-10%
         [3784] = 5, -- super bad drop rate, wowhead shows 3%. it's somewhere between 5-10%
     },
+    -- Forever quest items missing from classicItemDrops.wowheadData.
+    -- Rates from Wowhead Forever item XML (&xml); curated named unique targets only.
+    [252661] = { -- Commander Cyclas's Head; Wowhead Forever XML 94.27%
+        [251966] = 94.27, -- Commander Cyclas
+    },
+    [252665] = { -- Head of Urs'anah; Wowhead Forever XML 85.95%
+        [251115] = 85.95, -- Urs'anah
+    },
+    [253710] = { -- Bruuz's Dorsal Fin; Wowhead Forever XML 96.79%
+        [209797] = 96.79, -- Bruuz
+    },
+    [257107] = { -- Shriekling Matriarch's Head; Wowhead Forever XML 68.85%
+        [253283] = 68.85, -- Shriekling Matriarch
+    },
+    [257942] = { -- Vulgara's Head; Wowhead Forever XML 86.15%
+        [254589] = 86.15, -- Vulgara the Insatiable
+    },
+    [268812] = { -- Whispering Horror Residue; Wowhead Forever XML 100%
+        [260396] = 100, -- Whispering Horror
+    },
+    [270302] = { -- Chakuyak's Pelt; Wowhead Forever XML 87.53%
+        [268558] = 87.53, -- Chakuyak
+    },
+    [270435] = { -- Rudolph Gelhardt's Head; Wowhead Forever XML 100%
+        [259431] = 100, -- Rudolph Gelhardt
+    },
+    [276070] = { -- Chol'aruk's Head; Wowhead Forever XML 94.09%
+        [267307] = 94.09, -- Chol'aruk
+    },
+    [277267] = { -- Faladiel's Heart; Wowhead Forever XML 100%
+        [268602] = 100, -- Skypriest Faladiel
+    },
+    [277269] = { -- Kuramaa's Mask; Wowhead Forever XML 100%
+        [268605] = 100, -- Kuramaa
+    },
+    [277277] = { -- Olgra's Adornments; Wowhead Forever XML 34.28% (2166/6319)
+        [268624] = 34.28, -- Razormane Raider
+    },
+    [279186] = { -- Stormheart's Still-beating Heart; Wowhead Forever XML 100%
+        [270094] = 100, -- Stormheart
+    },
+    [280330] = { -- Carnage's Head; Wowhead Forever XML 92.22%
+        [271336] = 92.22, -- Carnage
+    },
+    [286075] = { -- Herak's Head; Wowhead Forever XML 92.36%
+        [275767] = 92.36, -- Herak the Pillager
+    },
+    [286325] = { -- Avala's Core; Wowhead Forever XML 96.59%
+        [276009] = 96.59, -- Avala
+    },
+    [286326] = { -- Riptear's Heart; Wowhead Forever XML 91.24%
+        [276020] = 91.24, -- Riptear
+    },
 }
 
 QuestieItemDropCorrections.Tbc = { -- Corrections for Old World data should only be put here if they change going from Era->TBC! Otherwise, put them in the Era section!
