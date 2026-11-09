@@ -1917,11 +1917,16 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 97257,
             [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Knock on Kuramaa's Stump"),0,{{"object",660848}}}},
         },
-        [97246] = { -- Meal Appeal
+        [97242] = { -- Yelmak's Medley
+            [questKeys.preQuestSingle] = {97246}, -- unverified: Wowhead series and one comment place it after Meal Appeal
             [questKeys.nextQuestInChain] = 97249,
         },
+        [97246] = { -- Meal Appeal
+            [questKeys.nextQuestInChain] = 97242,
+        },
         [97249] = { -- Favorite Food
-            [questKeys.preQuestSingle] = {97246},
+            [questKeys.preQuestSingle] = {97242}, -- unverified: a Wowhead comment lists Yelmak's Medley before Favorite Food
+            [questKeys.nextQuestInChain] = 97326,
         },
         [97257] = { -- Call of Fire
             [questKeys.requiredClasses] = classIDs.SHAMAN,
@@ -1970,6 +1975,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredLevel] = 15,
             [questKeys.preQuestSingle] = {97291},
             [questKeys.objectives] = {nil,{{460007,nil,Questie.ICON_TYPE_EVENT}}},
+        },
+        [97326] = { -- Rocks to Rests
+            [questKeys.preQuestSingle] = {97249},
         },
         [97485] = { -- Traditions of the Bluff
             [questKeys.objectives] = {nil,{{665373}},{{278078}}},
