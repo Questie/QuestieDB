@@ -1177,6 +1177,9 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {93159},
             [questKeys.objectives] = {{{251676}}},
         },
+        [93176] = { -- My Little Friends
+            [questKeys.objectives] = {nil,nil,{{213566,nil,Questie.ICON_TYPE_INTERACT},{213568,nil,Questie.ICON_TYPE_INTERACT},{213567,nil,Questie.ICON_TYPE_INTERACT}}},
+        },
         [93317] = { -- Crab Season
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
