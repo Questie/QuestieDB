@@ -165,6 +165,40 @@ function ForeverNpcFixes:Load()
         [15736] = { -- Orgrimmar Commendation Officer
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
+        [28687] = { -- Amisi Azuregaze
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{18.22,66.63}}},
+            [npcKeys.npcFlags] = npcFlags.INNKEEPER,
+        },
+        [28989] = { -- Aemara
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{17.17,71.52}}},
+        },
+        [29534] = { -- "Baroness" Llana
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{17.29,70.1}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BATTLEMASTER,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [29568] = { -- "Techs" Rickard Rustbolt
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{16.19,66.2}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BATTLEMASTER,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [32330] = { -- Minzi the Minx
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{17.72,63.85}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BATTLEMASTER,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [32411] = { -- Afsaneh Asrar
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{17.79,66.35}}},
+            [npcKeys.npcFlags] = npcFlags.INNKEEPER,
+        },
+        [32413] = { -- Isirami Fairwind
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{12.06,66.36}}},
+        },
+        [32748] = { -- Bimble Sparkfingers
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{17.61,67.92}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BATTLEMASTER,
+            [npcKeys.friendlyToFaction] = "A",
+        },
         [185317]= { -- Incubus
             [npcKeys.name] = "Incubus",
         },
@@ -353,6 +387,10 @@ function ForeverNpcFixes:Load()
         [251905] = { -- Zerril Softbreeze
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.85,43.84}}},
         },
+        [251953] = { -- Talia Softglen
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{19.83,70.2}}},
+            [npcKeys.npcFlags] = npcFlags.STABLEMASTER,
+        },
         [251965] = { -- Fevrath Skyhammer
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.37,23.44}}},
         },
@@ -367,6 +405,9 @@ function ForeverNpcFixes:Load()
         },
         [252068] = { -- Al'Aketh Stormcaller
             [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
+        },
+        [252084] = { -- Katherine Lee
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{12.62,65.8}}},
         },
         [252172] = { -- Danarii Bellowveil
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{45.24,45.18}}},
@@ -692,6 +733,9 @@ function ForeverNpcFixes:Load()
         [266940] = { -- Turroc
             [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{53.95,42.59}}},
         },
+        [267000] = { -- Paige
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{20.82,74.69}}},
+        },
         [267009] = { -- Hadric Harlson
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{65.93,61.13}}},
         },
@@ -822,6 +866,10 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.DARNASSUS] = {{89.14,34.76}}},
             [npcKeys.zoneID] = zoneIDs.DARNASSUS,
         },
+        [270513] = { -- Spellweaver Thaldris
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{17.75,60.61}}},
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.TRANSMOGRIFIER,
+        },
         [270581] = { -- Fyrenz Vishonar
             [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{47.96,84.6}}},
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.TRANSMOGRIFIER,
@@ -874,6 +922,33 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.49,45.37}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
+        [275210] = { -- Teller Rames
+            [npcKeys.npcFlags] = npcFlags.GOSSIP,
+        },
+        [275212] = { -- Teller Hanners
+            [npcKeys.npcFlags] = npcFlags.GOSSIP,
+        },
+        [275214] = { -- Teller Althiellis
+            [npcKeys.npcFlags] = npcFlags.NONE,
+        },
+        [275216] = { -- Paymaster Alstein
+            [npcKeys.npcFlags] = npcFlags.NONE,
+        },
+        [275240] = { -- Teller Almeida
+            [npcKeys.npcFlags] = npcFlags.NONE,
+        },
+        [275243] = { -- Teller Gee
+            [npcKeys.npcFlags] = npcFlags.GOSSIP,
+        },
+        [275251] = { -- Paymaster Chang
+            [npcKeys.npcFlags] = npcFlags.NONE,
+        },
+        [275252] = { -- Paymaster Amadi
+            [npcKeys.npcFlags] = npcFlags.NONE,
+        },
+        [275253] = { -- Teller Plushner
+            [npcKeys.npcFlags] = npcFlags.NONE,
+        },
         [275491] = { -- Randal Emerson
             [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{78.98,45}}},
         },
@@ -894,6 +969,14 @@ function ForeverNpcFixes:Load()
         },
         [276009] = { -- Avala
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{58.34,42.06}}},
+        },
+        [276170] = { -- Belanaa Windveil
+            [npcKeys.questStarts_add] = {99191,99192,99193,99194,99195},
+            [npcKeys.questEnds_add] = {99191,99192,99193,99194,99195},
+        },
+        [276171] = { -- Oura Stormspinner
+            [npcKeys.questStarts_add] = {99196,99197,99198,99199,99200},
+            [npcKeys.questEnds_add] = {99196,99197,99198,99199,99200},
         },
         [277024] = { -- Jelinek Sharpshear
             [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{61.44,64.94}}},
@@ -958,6 +1041,14 @@ function ForeverNpcFixes:Load()
             [npcKeys.maxLevel] = 6,
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{43.03,49.62}}},
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        -- fake NPC IDs
+        [400001] = { -- Barber
+            [npcKeys.name] = "Barber", -- totally made up NPC to show barber in Dalaran
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{19.82,66.36}}},
+            [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.npcFlags] = npcFlags.BARBER,
             [npcKeys.friendlyToFaction] = "A",
         },
     }
