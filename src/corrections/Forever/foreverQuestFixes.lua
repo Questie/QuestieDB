@@ -363,6 +363,7 @@ function ForeverQuestFixes:Load()
         },
         [78307] = { -- The Horn of Xelthos
             [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = 23,
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.requiredClasses] = classIDs.ROGUE,
             [questKeys.preQuestSingle] = {78261},
