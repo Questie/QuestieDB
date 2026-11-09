@@ -542,12 +542,48 @@ QuestieItemDropCorrections.Era = {
         [3784] = 5, -- super bad drop rate, wowhead shows 3%. it's somewhere between 5-10%
     },
     -- Forever quest items missing from classicItemDrops.wowheadData.
-    -- Rates from Wowhead Forever item XML (&xml); curated named unique targets only.
+    -- Rates from Wowhead Forever item XML (&xml).
+    [190179] = { -- Avelina's Heart; Wowhead Forever XML 54.69%
+        [185333] = 54.69, -- Avelina Lilly
+    },
+    [190180] = { -- Isaac's Heart; Wowhead Forever XML 55.26%
+        [185334] = 55.26, -- Isaac Pearson
+    },
+    [212792] = { -- Eye of the Tempest; Wowhead Forever XML 100%
+        [216474] = 100, -- Ravaging Tempest
+    },
+    [213127] = { -- Partial Mystical Notes; Wowhead Forever XML 0.01%
+        [780] = 0.01, -- Skullsplitter Mystic
+    },
+    [247886] = { -- Sack of; Wowhead Forever XML 69.85%
+        [248362] = 69.85, -- Shinyfinder Narf
+    },
+    [248002] = { -- Picture Book: Fun with Elementals; Wowhead Forever XML 63.64%
+        [248464] = 63.64, -- Nimsy
+    },
+    [248003] = { -- Geomancy for Curious Young Wizards; Wowhead Forever XML 55.17%
+        [248474] = 55.17, -- Geosculptor Yip
+    },
+    [248004] = { -- Arcane Explainer: Magical Stuff in Simple Words; Wowhead Forever XML 39.28%
+        [471] = 39.28, -- Mother Fang
+    },
+    [251918] = { -- Scrawny Ursera Claw; Wowhead Forever XML 44.65%
+        [250926] = 44.65, -- Scrawny Ursera
+    },
     [252661] = { -- Commander Cyclas's Head; Wowhead Forever XML 94.27%
         [251966] = 94.27, -- Commander Cyclas
     },
     [252665] = { -- Head of Urs'anah; Wowhead Forever XML 85.95%
         [251115] = 85.95, -- Urs'anah
+    },
+    [252670] = { -- Prideclaw Pelt; Wowhead Forever XML 47.82%
+        [251245] = 47.82, -- Prideclaw
+    },
+    [253596] = { -- Blood-Stained Bandit Mask; Wowhead Forever XML 35.79%
+        [252820] = 35.79, -- Bandit Highwayman
+    },
+    [253597] = { -- Lowlands Galestrider Tenderloin; Wowhead Forever XML 28.29%
+        [251707] = 28.29, -- Ornery Galestrider
     },
     [253710] = { -- Bruuz's Dorsal Fin; Wowhead Forever XML 96.79%
         [209797] = 96.79, -- Bruuz
@@ -555,20 +591,83 @@ QuestieItemDropCorrections.Era = {
     [257107] = { -- Shriekling Matriarch's Head; Wowhead Forever XML 68.85%
         [253283] = 68.85, -- Shriekling Matriarch
     },
+    [257941] = { -- Windsong Crawler Meat; Wowhead Forever XML 46.94%
+        [254588] = 46.94, -- Windsong Crawler
+    },
     [257942] = { -- Vulgara's Head; Wowhead Forever XML 86.15%
         [254589] = 86.15, -- Vulgara the Insatiable
+    },
+    [258530] = { -- Lucky Lure; Wowhead Forever XML 1.03%
+        [757] = 1.03, -- Lost One Fisherman
+    },
+    [262357] = { -- Wind Hollow Essence; Wowhead Forever XML 27.95%
+        [251676] = 27.95, -- Wind Hollow
+    },
+    [263993] = { -- Skybreaker Bulwark; Wowhead Forever XML 70.82%
+        [257196] = 70.82, -- Zaal Stormshield
+    },
+    [265140] = { -- Pristine Shriekling Feather; Wowhead Forever XML 27.92%
+        [256092] = 27.92, -- Shadowgale Shriekling
+    },
+    [265475] = { -- Commander Haalien's Severed Head; Wowhead Forever XML 50.67%
+        [253622] = 50.67, -- Commander Haalien
+    },
+    [267414] = { -- Pristine Leopard Pelt; Wowhead Forever XML 41.33%
+        [260157] = 41.33, -- Elder Snow Leopard
+    },
+    [267416] = { -- Toughened Boar Hide; Wowhead Forever XML 4.04%
+        [1689] = 4.04, -- Scarred Crag Boar
+    },
+    [268518] = { -- Head of the Baron; Wowhead Forever XML 18.16%
+        [250660] = 18.16, -- ?
     },
     [268812] = { -- Whispering Horror Residue; Wowhead Forever XML 100%
         [260396] = 100, -- Whispering Horror
     },
+    [270151] = { -- Benedict's Orders; Wowhead Forever XML 81.3%
+        [262119] = 81.3, -- Corporal Adamore
+    },
+    [270180] = { -- Horrible Rootcore; Wowhead Forever XML 65.33%
+        [260808] = 65.33, -- ?
+    },
     [270302] = { -- Chakuyak's Pelt; Wowhead Forever XML 87.53%
         [268558] = 87.53, -- Chakuyak
+    },
+    [270305] = { -- Brinescale Trident; Wowhead Forever XML 35%
+        [262397] = 35, -- Brinescale Skirmisher
     },
     [270435] = { -- Rudolph Gelhardt's Head; Wowhead Forever XML 100%
         [259431] = 100, -- Rudolph Gelhardt
     },
+    [270865] = { -- Titan Relic; Wowhead Forever XML 27.02%
+        [260326] = 27.02, -- ?
+    },
+    [270866] = { -- Titan Relic; Wowhead Forever XML 27.09%
+        [260326] = 27.09, -- ?
+    },
+    [271872] = { -- Broken Staff of Incinerator Gar'im; Wowhead Forever XML 84.91%
+        [214519] = 84.91, -- Incinerator Gar'im
+    },
+    [273001] = { -- Gloomrise Toxin Sample; Wowhead Forever XML 78.66%
+        [264096] = 78.66, -- Gnawed Corpse
+    },
+    [273181] = { -- Crystalline Silk; Wowhead Forever XML 45.02%
+        [264081] = 45.02, -- Gloomrise Spinner
+    },
+    [274286] = { -- Durgen Dirgehammer's Head; Wowhead Forever XML 55.08%
+        [261319] = 55.08, -- ?
+    },
+    [274463] = { -- Tattered Note; Wowhead Forever XML 0.76%
+        [4421] = 0.76, -- ?
+    },
+    [275443] = { -- Highly Toxic Strain; Wowhead Forever XML 30.55%
+        [250483] = 30.55, -- ?
+    },
     [276070] = { -- Chol'aruk's Head; Wowhead Forever XML 94.09%
         [267307] = 94.09, -- Chol'aruk
+    },
+    [277128] = { -- Bloodtalon Matriarch Eggs; Wowhead Forever XML 87.55%
+        [268530] = 87.55, -- Bloodtalon Matriarch
     },
     [277267] = { -- Faladiel's Heart; Wowhead Forever XML 100%
         [268602] = 100, -- Skypriest Faladiel
@@ -579,11 +678,80 @@ QuestieItemDropCorrections.Era = {
     [277277] = { -- Olgra's Adornments; Wowhead Forever XML 34.28% (2166/6319)
         [268624] = 34.28, -- Razormane Raider
     },
+    [277986] = { -- Drum of Crude Oil; Wowhead Forever XML 0.01%
+        [1097] = 0.01, -- Venture Co. Mechanic
+    },
     [279186] = { -- Stormheart's Still-beating Heart; Wowhead Forever XML 100%
         [270094] = 100, -- Stormheart
     },
+    [279472] = { -- Pristine Pesterhide Pelt; Wowhead Forever XML 0.25%
+        [4249] = 0.25, -- Pesterhide Snarler
+    },
+    [279505] = { -- Jagged Orcish Sword; Wowhead Forever XML 16.87%
+        [11682] = 16.87, -- Horde Grunt
+    },
+    [279507] = { -- Curved Orcish Dagger; Wowhead Forever XML 2.15%
+        [11680] = 2.15, -- Horde Scout
+    },
+    [279591] = { -- Marek's Croc-Hunting Knife; Wowhead Forever XML 50%
+        [270693] = 50, -- Daggerfang
+    },
+    [279993] = { -- Titanic Keystone; Wowhead Forever XML 88.44%
+        [270892] = 88.44, -- Goaz Warder
+    },
+    [280087] = { -- Soft Nightsaber Pelt; Wowhead Forever XML 9.66%
+        [2042] = 9.66, -- Nightsaber
+    },
     [280330] = { -- Carnage's Head; Wowhead Forever XML 92.22%
         [271336] = 92.22, -- Carnage
+    },
+    [280331] = { -- Malignant Rotclaw Flesh; Wowhead Forever XML 27.64%
+        [271334] = 27.64, -- Maddened Rotclaw
+    },
+    [280375] = { -- Worgen Bits; Wowhead Forever XML 20.31%
+        [1924] = 20.31, -- Moonrage Bloodhowler
+    },
+    [280395] = { -- Heart of Ados; Wowhead Forever XML 82.28%
+        [271338] = 82.28, -- Ados
+    },
+    [280396] = { -- Heart of Modr; Wowhead Forever XML 84.69%
+        [271460] = 84.69, -- Modr
+    },
+    [280397] = { -- Heart of Golm; Wowhead Forever XML 88.16%
+        [271462] = 88.16, -- Golm
+    },
+    [280398] = { -- Heart of Neru; Wowhead Forever XML 82%
+        [271458] = 82, -- Neru
+    },
+    [280426] = { -- Sack of Fish; Wowhead Forever XML 73.89%
+        [271587] = 73.89, -- Frosthowl
+    },
+    [280686] = { -- Rod of Deep Dominion; Wowhead Forever XML 69.87%
+        [271903] = 69.87, -- Stormscale Beastmistress
+    },
+    [280831] = { -- Hatescreech's Amulet; Wowhead Forever XML 81.64%
+        [272034] = 81.64, -- Hatescreech
+    },
+    [280832] = { -- Windmistress Gaedress' Amulet; Wowhead Forever XML 84.87%
+        [272044] = 84.87, -- Windmistress Gaedress
+    },
+    [280834] = { -- Witchmother Arysa's Amulet; Wowhead Forever XML 73.32%
+        [272046] = 73.32, -- Witchmother Arysa
+    },
+    [280911] = { -- Spiked Collar; Wowhead Forever XML 10.85%
+        [712] = 10.85, -- Redridge Thrasher
+    },
+    [281023] = { -- Mature Fel Moss; Wowhead Forever XML 92.42%
+        [272116] = 92.42, -- Xethorr the Wicked
+    },
+    [281038] = { -- Feather of Jai'vhanel; Wowhead Forever XML 94.54%
+        [270196] = 94.54, -- Jai'vhanel
+    },
+    [281048] = { -- Clearcutter Key; Wowhead Forever XML 88.44%
+        [272173] = 88.44, -- Venture Co. Clearclutter
+    },
+    [286009] = { -- Aggor's Belt; Wowhead Forever XML 94.87%
+        [275666] = 94.87, -- Aggor the Young
     },
     [286075] = { -- Herak's Head; Wowhead Forever XML 92.36%
         [275767] = 92.36, -- Herak the Pillager
@@ -594,6 +762,7 @@ QuestieItemDropCorrections.Era = {
     [286326] = { -- Riptear's Heart; Wowhead Forever XML 91.24%
         [276020] = 91.24, -- Riptear
     },
+
 }
 
 QuestieItemDropCorrections.Tbc = { -- Corrections for Old World data should only be put here if they change going from Era->TBC! Otherwise, put them in the Era section!
