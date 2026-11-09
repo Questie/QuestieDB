@@ -175,17 +175,17 @@ function ForeverNpcFixes:Load()
         [29534] = { -- "Baroness" Llana
             [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{17.29,70.1}}},
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BATTLEMASTER,
-            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.friendlyToFaction] = "A",
         },
         [29568] = { -- "Techs" Rickard Rustbolt
             [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{16.19,66.2}}},
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BATTLEMASTER,
-            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.friendlyToFaction] = "A",
         },
         [32330] = { -- Minzi the Minx
             [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{17.72,63.85}}},
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BATTLEMASTER,
-            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.friendlyToFaction] = "A",
         },
         [32411] = { -- Afsaneh Asrar
             [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{17.79,66.35}}},
@@ -698,6 +698,7 @@ function ForeverNpcFixes:Load()
         [263643] = { -- Sean Guardoff
             [npcKeys.spawns] = {[zoneIDs.IRONFORGE] = {{70.32,88.79}}},
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BATTLEMASTER,
+            [npcKeys.friendlyToFaction] = "A",
         },
         [263644] = { -- Pherry Leftee
             [npcKeys.spawns] = {[zoneIDs.DARNASSUS] = {{58.54,34.31}}},
