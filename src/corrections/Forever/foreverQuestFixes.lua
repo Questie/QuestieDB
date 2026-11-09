@@ -267,8 +267,9 @@ function ForeverQuestFixes:Load()
             [questKeys.name] = "Your Reward has Arrived!",
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
-        [60870] = {
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
+        [60870] = { -- A Special Gift
+            [questKeys.name] = "A Special Gift", -- google translate
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [76156] = { -- Stalk With The Earthmother
             [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.TAUREN + raceIDs.TROLL,
