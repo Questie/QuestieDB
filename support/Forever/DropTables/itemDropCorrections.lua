@@ -269,11 +269,14 @@ QuestieItemDropCorrections.Era = {
         [3454] = 100,
         [3455] = 100,
     },
-    [5085] = { -- Bristleback Quilboar Tusk
-        [3258] = 100,
-        [3260] = 100,
-        [3261] = 100,
-        [3263] = 100,
+    [5085] = { -- Bristleback Quilboar Tusk; full Forever Dropped-by inventory
+        [3258] = 100, -- Bristleback Hunter
+        [3259] = 100, -- Bristleback Defender
+        [3260] = 100, -- Bristleback Water Seeker
+        [3261] = 100, -- Bristleback Thornweaver
+        [3262] = 100, -- Bristleback Mystic
+        [3263] = 100, -- Bristleback Geomancer
+        [268624] = 8.0711, -- Razormane Raider; Wowhead Forever 767/9503
     },
     [5086] = { -- Zhevra Hooves
         [3242] = DropKeys.WOWHEAD,
