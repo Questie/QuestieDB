@@ -665,6 +665,7 @@ function ForeverQuestFixes:Load()
         },
         [86776] = { -- Ingredients for the Forge
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredSkill] = {profKeys.MINING, 1},
         },
         [87288] = { -- Soft Saber Pelts
             [questKeys.reputationReward] = {{factionIDs.DARNASSUS, 100},{factionIDs.GNOMEREGAN_EXILES, 25},{factionIDs.ALLIANCE, 25},{factionIDs.IRONFORGE, 25},{factionIDs.STORMWIND, 25}},
@@ -1888,6 +1889,10 @@ function ForeverQuestFixes:Load()
         [97222] = { -- Gatehouse Goods
             [questKeys.preQuestSingle] = {97220},
             [questKeys.objectives] = {nil,{{460004}}},
+        },
+        [97225] = { -- Forgotten Loa Idols
+            [questKeys.startedBy] = {{3304}},
+            [questKeys.disabledByQuest] = 805,
         },
         [97234] = { -- Reading Room
             [questKeys.nextQuestInChain] = 97237,
