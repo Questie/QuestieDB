@@ -21,6 +21,10 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts_add] = {91758, 92479, 96627},
             [npcKeys.questEnds_add] = {91752},
         },
+        [198] = { -- Khelden Bremen : https://wowhead.com/forever/npc=198/khelden-bremen
+            [npcKeys.questStarts] = {77620},
+            [npcKeys.questEnds_add] = {77620},
+        },
         [228] = { -- Avette Fellwood : https://wowhead.com/forever/npc=228/avette-fellwood
             [npcKeys.questEnds] = {95161},
         },
@@ -39,6 +43,9 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts_add] = {96139},
             [npcKeys.questEnds_add] = {79362, 79363, 96137, 96138, 96139},
         },
+        [332] = { -- Master Mathias Shaw : https://wowhead.com/forever/npc=332/master-mathias-shaw
+            [npcKeys.questEnds_add] = {84377, 85882},
+        },
         [341] = { -- Foreman Oslow : https://wowhead.com/forever/npc=341/foreman-oslow
             [npcKeys.questStarts_add] = {98386},
             [npcKeys.questEnds_add] = {98386},
@@ -46,9 +53,13 @@ function ForeverBaseNpc:Load()
         [344] = { -- Magistrate Solomon : https://wowhead.com/forever/npc=344/magistrate-solomon
             [npcKeys.questEnds_add] = {95999},
         },
+        [375] = { -- Priestess Anetta : https://wowhead.com/forever/npc=375/priestess-anetta
+            [npcKeys.questStarts_add] = {77619},
+            [npcKeys.questEnds_add] = {77619},
+        },
         [376] = { -- High Priestess Laurena : https://wowhead.com/forever/npc=376/high-priestess-laurena
-            [npcKeys.questStarts_add] = {94773},
-            [npcKeys.questEnds_add] = {94773, 94774},
+            [npcKeys.questStarts_add] = {84320, 84321, 84324, 84326, 84327, 84329, 84413, 94773},
+            [npcKeys.questEnds_add] = {78193, 84320, 84323, 84324, 84325, 84326, 84412, 84413, 94773, 94774},
         },
         [377] = { -- Priestess Josetta : https://wowhead.com/forever/npc=377/priestess-josetta
             [npcKeys.questStarts_add] = {94774},
@@ -61,8 +72,16 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {99127, 99128, 99129},
             [npcKeys.questEnds] = {99127, 99128, 99131},
         },
+        [459] = { -- Drusilla La Salle : https://wowhead.com/forever/npc=459/drusilla-la-salle
+            [npcKeys.questStarts_add] = {77621},
+            [npcKeys.questEnds_add] = {77621},
+        },
+        [460] = { -- Alamar Grimm : https://wowhead.com/forever/npc=460/alamar-grimm
+            [npcKeys.questStarts_add] = {77666},
+            [npcKeys.questEnds_add] = {77666},
+        },
         [466] = { -- General Marcus Jonathan : https://wowhead.com/forever/npc=466/general-marcus-jonathan
-            [npcKeys.questEnds_add] = {95195},
+            [npcKeys.questEnds_add] = {84377, 95195},
         },
         [471] = { -- Mother Fang : https://wowhead.com/forever/npc=471/mother-fang
             [npcKeys.minLevel] = 7,
@@ -78,7 +97,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts_add] = {98574, 98581},
         },
         [715] = { -- Hemet Nesingwary : https://wowhead.com/forever/npc=715/hemet-nesingwary
-            [npcKeys.questEnds_add] = {93928},
+            [npcKeys.questStarts_add] = {78830},
+            [npcKeys.questEnds_add] = {78823, 78830, 79731, 93928},
         },
         [773] = { -- Krazek : https://wowhead.com/forever/npc=773/krazek
             [npcKeys.questStarts_add] = {95789, 95791},
@@ -88,11 +108,44 @@ function ForeverBaseNpc:Load()
             [npcKeys.minLevel] = 1,
         },
         [837] = { -- Branstock Khalder : https://wowhead.com/forever/npc=837/branstock-khalder
-            [npcKeys.questEnds_add] = {98574},
+            [npcKeys.questStarts_add] = {77661},
+            [npcKeys.questEnds_add] = {77661, 98574},
+        },
+        [895] = { -- Thorgas Grimson : https://wowhead.com/forever/npc=895/thorgas-grimson
+            [npcKeys.questStarts] = {77660},
+            [npcKeys.questEnds_add] = {77660},
+        },
+        [911] = { -- Llane Beshere : https://wowhead.com/forever/npc=911/llane-beshere
+            [npcKeys.questStarts] = {77616},
+            [npcKeys.questEnds_add] = {77616},
+        },
+        [912] = { -- Thran Khorman : https://wowhead.com/forever/npc=912/thran-khorman
+            [npcKeys.questStarts] = {77655, 77656},
+            [npcKeys.questEnds_add] = {77655, 77656},
+        },
+        [915] = { -- Jorik Kerridan : https://wowhead.com/forever/npc=915/jorik-kerridan
+            [npcKeys.questStarts] = {77618},
+            [npcKeys.questEnds_add] = {77618},
+        },
+        [916] = { -- Solm Hargrin : https://wowhead.com/forever/npc=916/solm-hargrin
+            [npcKeys.questStarts] = {77658, 77659},
+            [npcKeys.questEnds_add] = {77658, 77659},
+        },
+        [925] = { -- Brother Sammuel : https://wowhead.com/forever/npc=925/brother-sammuel
+            [npcKeys.questStarts] = {77617},
+            [npcKeys.questEnds_add] = {77617},
+        },
+        [926] = { -- Bromos Grummner : https://wowhead.com/forever/npc=926/bromos-grummner
+            [npcKeys.questStarts] = {77657},
+            [npcKeys.questEnds_add] = {77657},
         },
         [928] = { -- Lord Grayson Shadowbreaker : https://wowhead.com/forever/npc=928/lord-grayson-shadowbreaker
             [npcKeys.questStarts_add] = {98219},
             [npcKeys.questEnds_add] = {98191},
+        },
+        [944] = { -- Marryk Nurribit : https://wowhead.com/forever/npc=944/marryk-nurribit
+            [npcKeys.questStarts] = {77667},
+            [npcKeys.questEnds_add] = {77667},
         },
         [951] = { -- Brother Paxton : https://wowhead.com/forever/npc=951/brother-paxton
             [npcKeys.questStarts_add] = {91743, 91745, 92124},
@@ -137,6 +190,10 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts_add] = {86758},
             [npcKeys.questEnds_add] = {86758},
         },
+        [1212] = { -- Bishop Farthing : https://wowhead.com/forever/npc=1212/bishop-farthing
+            [npcKeys.questStarts_add] = {79077},
+            [npcKeys.questEnds_add] = {79077},
+        },
         [1215] = { -- Alchemist Mallory : https://wowhead.com/forever/npc=1215/alchemist-mallory
             [npcKeys.questEnds] = {97915},
         },
@@ -174,6 +231,10 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts_add] = {95212},
             [npcKeys.questEnds_add] = {95212},
         },
+        [1268] = { -- Ozzie Togglevolt : https://wowhead.com/forever/npc=1268/ozzie-togglevolt
+            [npcKeys.questStarts_add] = {80139, 80182},
+            [npcKeys.questEnds_add] = {80139, 80182},
+        },
         [1325] = { -- Jasper Fel : https://wowhead.com/forever/npc=1325/jasper-fel
             [npcKeys.questStarts] = {92751},
             [npcKeys.questEnds] = {92750},
@@ -186,6 +247,10 @@ function ForeverBaseNpc:Load()
         },
         [1430] = { -- Tomas : https://wowhead.com/forever/npc=1430/tomas
             [npcKeys.questEnds] = {96626},
+        },
+        [1443] = { -- Fel'zerul : https://wowhead.com/forever/npc=1443/felzerul
+            [npcKeys.questStarts_add] = {82100},
+            [npcKeys.questEnds_add] = {82100},
         },
         [1466] = { -- Gretta Finespindle : https://wowhead.com/forever/npc=1466/gretta-finespindle
             [npcKeys.questEnds] = {96031},
@@ -200,6 +265,10 @@ function ForeverBaseNpc:Load()
         [1495] = { -- Deathguard Linnea : https://wowhead.com/forever/npc=1495/deathguard-linnea
             [npcKeys.questStarts_add] = {99156},
             [npcKeys.questEnds_add] = {99156},
+        },
+        [1498] = { -- Bethor Iceshard : https://wowhead.com/forever/npc=1498/bethor-iceshard
+            [npcKeys.questStarts_add] = {78277},
+            [npcKeys.questEnds_add] = {78277},
         },
         [1515] = { -- Executor Zygand : https://wowhead.com/forever/npc=1515/executor-zygand
             [npcKeys.questStarts_add] = {99134, 99141},
@@ -251,11 +320,15 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {86784},
         },
         [1748] = { -- Highlord Bolvar Fordragon : https://wowhead.com/forever/npc=1748/highlord-bolvar-fordragon
-            [npcKeys.questStarts_add] = {93963, 98021, 98191},
+            [npcKeys.questStarts_add] = {84560, 85643, 85659, 88969, 93963, 98021, 98191},
             [npcKeys.questEnds_add] = {93963, 94947, 98190},
         },
         [1776] = { -- Magtoor : https://wowhead.com/forever/npc=1776/magtoor
             [npcKeys.questEnds_add] = {93663},
+        },
+        [1854] = { -- High Priest Thel'danis : https://wowhead.com/forever/npc=1854/high-priest-theldanis
+            [npcKeys.questStarts_add] = {85034},
+            [npcKeys.questEnds_add] = {85034, 85455},
         },
         [1871] = { -- Eliza's Guard : https://wowhead.com/forever/npc=1871/elizas-guard
             [npcKeys.maxLevel] = 31,
@@ -263,7 +336,7 @@ function ForeverBaseNpc:Load()
         },
         [1937] = { -- Apothecary Renferrel : https://wowhead.com/forever/npc=1937/apothecary-renferrel
             [npcKeys.questStarts_add] = {91921},
-            [npcKeys.questEnds_add] = {91920},
+            [npcKeys.questEnds_add] = {90566, 91920},
         },
         [1938] = { -- Dalar Dawnweaver : https://wowhead.com/forever/npc=1938/dalar-dawnweaver
             [npcKeys.questStarts_add] = {98298, 98299},
@@ -281,8 +354,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds_add] = {97977},
         },
         [2055] = { -- Master Apothecary Faranell : https://wowhead.com/forever/npc=2055/master-apothecary-faranell
-            [npcKeys.questStarts_add] = {97289, 97291, 97292},
-            [npcKeys.questEnds_add] = {97288, 97290, 97291, 97292},
+            [npcKeys.questStarts_add] = {90566, 97289, 97291, 97292},
+            [npcKeys.questEnds_add] = {90560, 97288, 97290, 97291, 97292},
         },
         [2081] = { -- Sentinel Kyra Starsong : https://wowhead.com/forever/npc=2081/sentinel-kyra-starsong
             [npcKeys.questEnds] = {99053},
@@ -296,7 +369,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds_add] = {98197},
         },
         [2094] = { -- James Halloran : https://wowhead.com/forever/npc=2094/james-halloran
-            [npcKeys.questStarts_add] = {98815},
+            [npcKeys.questStarts_add] = {98240, 98815},
             [npcKeys.questEnds_add] = {98815},
         },
         [2096] = { -- Tarrel Rockweaver : https://wowhead.com/forever/npc=2096/tarrel-rockweaver
@@ -309,9 +382,29 @@ function ForeverBaseNpc:Load()
         [2114] = { -- Faruza : https://wowhead.com/forever/npc=2114/faruza
             [npcKeys.questEnds] = {97957},
         },
+        [2119] = { -- Dannal Stern : https://wowhead.com/forever/npc=2119/dannal-stern
+            [npcKeys.questStarts] = {77668},
+            [npcKeys.questEnds_add] = {77668},
+        },
         [2121] = { -- Shadow Priest Allister : https://wowhead.com/forever/npc=2121/shadow-priest-allister
             [npcKeys.questStarts_add] = {95981},
             [npcKeys.questEnds_add] = {95981},
+        },
+        [2122] = { -- David Trias : https://wowhead.com/forever/npc=2122/david-trias
+            [npcKeys.questStarts] = {77669},
+            [npcKeys.questEnds_add] = {77669},
+        },
+        [2123] = { -- Dark Cleric Duesten : https://wowhead.com/forever/npc=2123/dark-cleric-duesten
+            [npcKeys.questStarts_add] = {77670},
+            [npcKeys.questEnds_add] = {77670},
+        },
+        [2124] = { -- Isabella : https://wowhead.com/forever/npc=2124/isabella
+            [npcKeys.questStarts] = {77671},
+            [npcKeys.questEnds_add] = {77671},
+        },
+        [2126] = { -- Maximillion : https://wowhead.com/forever/npc=2126/maximillion
+            [npcKeys.questStarts] = {77672},
+            [npcKeys.questEnds_add] = {77672},
         },
         [2132] = { -- Carolai Anise : https://wowhead.com/forever/npc=2132/carolai-anise
             [npcKeys.questStarts] = {95314},
@@ -348,6 +441,9 @@ function ForeverBaseNpc:Load()
         [2402] = { -- Shara Blazen : https://wowhead.com/forever/npc=2402/shara-blazen
             [npcKeys.questEnds] = {95534},
         },
+        [2408] = { -- Snapjaw : https://wowhead.com/forever/npc=2408/snapjaw
+            [npcKeys.minLevel] = 29,
+        },
         [2410] = { -- Magus Wordeen Voidglare : https://wowhead.com/forever/npc=2410/magus-wordeen-voidglare
             [npcKeys.questStarts_add] = {92434, 93680, 97287},
             [npcKeys.questEnds_add] = {93680, 96984},
@@ -365,13 +461,17 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts_add] = {95141, 95773, 95776, 97386},
             [npcKeys.questEnds_add] = {95773, 95776},
         },
+        [2496] = { -- Baron Revilgaz : https://wowhead.com/forever/npc=2496/baron-revilgaz
+            [npcKeys.questStarts_add] = {85979, 85980, 85981, 85982},
+            [npcKeys.questEnds_add] = {85979, 85980, 85981, 85982},
+        },
         [2504] = { -- Donyal Tovald : https://wowhead.com/forever/npc=2504/donyal-tovald
             [npcKeys.questStarts_add] = {97237},
             [npcKeys.questEnds_add] = {97234},
         },
         [2519] = { -- Kin'weelay : https://wowhead.com/forever/npc=2519/kinweelay
-            [npcKeys.questStarts_add] = {95770, 95775},
-            [npcKeys.questEnds_add] = {95770, 95775},
+            [npcKeys.questStarts_add] = {95748, 95770, 95775},
+            [npcKeys.questEnds_add] = {95748, 95770, 95775},
         },
         [2531] = { -- Minion of Morganth : https://wowhead.com/forever/npc=2531/minion-of-morganth
             [npcKeys.minLevel] = 27,
@@ -398,8 +498,16 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {97277},
             [npcKeys.questEnds] = {97277},
         },
+        [2782] = { -- Caretaker Alaric : https://wowhead.com/forever/npc=2782/caretaker-alaric
+            [npcKeys.questStarts] = {92872},
+            [npcKeys.questEnds] = {92872},
+        },
         [2784] = { -- King Magni Bronzebeard : https://wowhead.com/forever/npc=2784/king-magni-bronzebeard
             [npcKeys.questEnds_add] = {96393, 98300, 98423},
+        },
+        [2786] = { -- Gerrig Bonegrip : https://wowhead.com/forever/npc=2786/gerrig-bonegrip
+            [npcKeys.questStarts_add] = {78923},
+            [npcKeys.questEnds_add] = {78923},
         },
         [2787] = { -- Zaruk : https://wowhead.com/forever/npc=2787/zaruk
             [npcKeys.questStarts_add] = {95663},
@@ -407,8 +515,16 @@ function ForeverBaseNpc:Load()
         [2832] = { -- Nixxrax Fillamug : https://wowhead.com/forever/npc=2832/nixxrax-fillamug
             [npcKeys.questEnds] = {98463},
         },
+        [2836] = { -- Brikk Keencraft : https://wowhead.com/forever/npc=2836/brikk-keencraft
+            [npcKeys.questStarts] = {85556},
+            [npcKeys.questEnds] = {85555},
+        },
         [2855] = { -- Snang : https://wowhead.com/forever/npc=2855/snang
             [npcKeys.questEnds] = {96102},
+        },
+        [2888] = { -- Garek : https://wowhead.com/forever/npc=2888/garek
+            [npcKeys.questStarts_add] = {85447},
+            [npcKeys.questEnds_add] = {85445},
         },
         [2913] = { -- Archaeologist Hollee : https://wowhead.com/forever/npc=2913/archaeologist-hollee
             [npcKeys.questStarts_add] = {98461},
@@ -460,6 +576,22 @@ function ForeverBaseNpc:Load()
         [3057] = { -- Cairne Bloodhoof : https://wowhead.com/forever/npc=3057/cairne-bloodhoof
             [npcKeys.questEnds_add] = {98430, 99082},
         },
+        [3059] = { -- Harutt Thunderhorn : https://wowhead.com/forever/npc=3059/harutt-thunderhorn
+            [npcKeys.questStarts] = {77651},
+            [npcKeys.questEnds_add] = {77651},
+        },
+        [3060] = { -- Gart Mistrunner : https://wowhead.com/forever/npc=3060/gart-mistrunner
+            [npcKeys.questStarts] = {77648},
+            [npcKeys.questEnds_add] = {77648},
+        },
+        [3061] = { -- Lanka Farshot : https://wowhead.com/forever/npc=3061/lanka-farshot
+            [npcKeys.questStarts] = {77649},
+            [npcKeys.questEnds_add] = {77649},
+        },
+        [3062] = { -- Meela Dawnstrider : https://wowhead.com/forever/npc=3062/meela-dawnstrider
+            [npcKeys.questStarts] = {77652},
+            [npcKeys.questEnds_add] = {77652},
+        },
         [3063] = { -- Krang Stonehoof : https://wowhead.com/forever/npc=3063/krang-stonehoof
             [npcKeys.questEnds] = {99108},
             [npcKeys.questStarts_add] = {99108},
@@ -487,8 +619,25 @@ function ForeverBaseNpc:Load()
         [3143] = { -- Gornek : https://wowhead.com/forever/npc=3143/gornek
             [npcKeys.questStarts_add] = {97279, 98575, 98576},
         },
+        [3153] = { -- Frang : https://wowhead.com/forever/npc=3153/frang
+            [npcKeys.questStarts] = {77582, 77588},
+            [npcKeys.questEnds_add] = {77582, 77588},
+        },
+        [3154] = { -- Jen'shan : https://wowhead.com/forever/npc=3154/jenshan
+            [npcKeys.questStarts] = {77584, 77590},
+            [npcKeys.questEnds_add] = {77584, 77590},
+        },
+        [3155] = { -- Rwag : https://wowhead.com/forever/npc=3155/rwag
+            [npcKeys.questStarts] = {77583, 77592},
+            [npcKeys.questEnds_add] = {77583, 77592},
+        },
         [3156] = { -- Nartok : https://wowhead.com/forever/npc=3156/nartok
-            [npcKeys.questEnds_add] = {98575},
+            [npcKeys.questStarts] = {77586},
+            [npcKeys.questEnds_add] = {77586, 98575},
+        },
+        [3157] = { -- Shikrik : https://wowhead.com/forever/npc=3157/shikrik
+            [npcKeys.questStarts] = {77585, 77587},
+            [npcKeys.questEnds_add] = {77585, 77587},
         },
         [3159] = { -- Kzan Thornslash : https://wowhead.com/forever/npc=3159/kzan-thornslash
             [npcKeys.questEnds] = {97279},
@@ -541,6 +690,14 @@ function ForeverBaseNpc:Load()
         [3404] = { -- Jandi : https://wowhead.com/forever/npc=3404/jandi
             [npcKeys.questEnds] = {97905},
         },
+        [3408] = { -- Zel'mak : https://wowhead.com/forever/npc=3408/zelmak
+            [npcKeys.questStarts] = {78304},
+            [npcKeys.questEnds] = {78288},
+        },
+        [3412] = { -- Nogg : https://wowhead.com/forever/npc=3412/nogg
+            [npcKeys.questStarts_add] = {80132, 80141},
+            [npcKeys.questEnds_add] = {80132, 80140, 80141, 80325},
+        },
         [3429] = { -- Thork : https://wowhead.com/forever/npc=3429/thork
             [npcKeys.questEnds_add] = {98024},
         },
@@ -561,6 +718,9 @@ function ForeverBaseNpc:Load()
         [3523] = { -- Bowen Brisboise : https://wowhead.com/forever/npc=3523/bowen-brisboise
             [npcKeys.questEnds] = {97961},
         },
+        [3536] = { -- Kris Legace : https://wowhead.com/forever/npc=3536/kris-legace
+            [npcKeys.questEnds] = {94242},
+        },
         [3539] = { -- Ott : https://wowhead.com/forever/npc=3539/ott
             [npcKeys.questStarts] = {95125, 95126},
             [npcKeys.questEnds] = {95111, 95125},
@@ -573,9 +733,25 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts_add] = {98403},
             [npcKeys.questEnds_add] = {98403},
         },
+        [3593] = { -- Alyissia : https://wowhead.com/forever/npc=3593/alyissia
+            [npcKeys.questStarts] = {77575},
+            [npcKeys.questEnds_add] = {77575},
+        },
+        [3594] = { -- Frahun Shadewhisper : https://wowhead.com/forever/npc=3594/frahun-shadewhisper
+            [npcKeys.questStarts] = {77573},
+            [npcKeys.questEnds_add] = {77573},
+        },
         [3595] = { -- Shanda : https://wowhead.com/forever/npc=3595/shanda
-            [npcKeys.questStarts_add] = {97979},
-            [npcKeys.questEnds_add] = {97979},
+            [npcKeys.questStarts_add] = {77574, 97979},
+            [npcKeys.questEnds_add] = {77574, 97979},
+        },
+        [3596] = { -- Ayanna Everstride : https://wowhead.com/forever/npc=3596/ayanna-everstride
+            [npcKeys.questStarts_add] = {77568},
+            [npcKeys.questEnds_add] = {77568},
+        },
+        [3597] = { -- Mardant Strongoak : https://wowhead.com/forever/npc=3597/mardant-strongoak
+            [npcKeys.questStarts] = {77571},
+            [npcKeys.questEnds_add] = {77571},
         },
         [3600] = { -- Laurna Morninglight : https://wowhead.com/forever/npc=3600/laurna-morninglight
             [npcKeys.questStarts_add] = {98391},
@@ -612,6 +788,10 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {95494, 95495, 95507},
             [npcKeys.questEnds] = {95494, 95507},
         },
+        [3707] = { -- Ken'jai : https://wowhead.com/forever/npc=3707/kenjai
+            [npcKeys.questStarts_add] = {77642},
+            [npcKeys.questEnds_add] = {77642},
+        },
         [3945] = { -- Caravaneer Ruzzgot : https://wowhead.com/forever/npc=3945/caravaneer-ruzzgot
             [npcKeys.questEnds_add] = {95295},
         },
@@ -629,15 +809,21 @@ function ForeverBaseNpc:Load()
         [3970] = { -- Llana : https://wowhead.com/forever/npc=3970/llana
             [npcKeys.questStarts] = {95737},
         },
+        [4086] = { -- Veenix : https://wowhead.com/forever/npc=4086/veenix
+            [npcKeys.questEnds] = {78270},
+        },
         [4092] = { -- Lariia : https://wowhead.com/forever/npc=4092/lariia
-            [npcKeys.questStarts] = {98065},
-            [npcKeys.questEnds] = {98046},
+            [npcKeys.questStarts] = {79078, 98065},
+            [npcKeys.questEnds] = {79078, 98046},
         },
         [4156] = { -- Astaia : https://wowhead.com/forever/npc=4156/astaia
             [npcKeys.questEnds] = {97943},
         },
+        [4160] = { -- Ainethil : https://wowhead.com/forever/npc=4160/ainethil
+            [npcKeys.questEnds] = {90567},
+        },
         [4201] = { -- Ziz Fizziks : https://wowhead.com/forever/npc=4201/ziz-fizziks
-            [npcKeys.questEnds_add] = {94216},
+            [npcKeys.questEnds_add] = {94216, 94225},
         },
         [4217] = { -- Mathrengyl Bearwalker : https://wowhead.com/forever/npc=4217/mathrengyl-bearwalker
             [npcKeys.questStarts_add] = {98393},
@@ -653,17 +839,36 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {97952},
         },
         [4607] = { -- Father Lankester : https://wowhead.com/forever/npc=4607/father-lankester
-            [npcKeys.questEnds] = {95328},
+            [npcKeys.questStarts] = {79080},
+            [npcKeys.questEnds] = {79080, 95328},
         },
         [4631] = { -- Wharfmaster Lozgil : https://wowhead.com/forever/npc=4631/wharfmaster-lozgil
             [npcKeys.questStarts_add] = {97332},
+            [npcKeys.questEnds_add] = {97328},
+        },
+        [4706] = { -- Razzeric : https://wowhead.com/forever/npc=4706/razzeric
+            [npcKeys.questEnds_add] = {94236},
         },
         [4720] = { -- Rizzle Brassbolts : https://wowhead.com/forever/npc=4720/rizzle-brassbolts
             [npcKeys.questEnds] = {94218},
         },
         [4722] = { -- Rau Cliffrunner : https://wowhead.com/forever/npc=4722/rau-cliffrunner
             [npcKeys.questStarts_add] = {79360, 79364, 79366, 79442},
-            [npcKeys.questEnds_add] = {79358, 79366},
+            [npcKeys.questEnds_add] = {79358, 79365, 79366},
+        },
+        [4783] = { -- Dawnwatcher Selgorm : https://wowhead.com/forever/npc=4783/dawnwatcher-selgorm
+            [npcKeys.questEnds_add] = {78916, 78921},
+        },
+        [4784] = { -- Argent Guard Manados : https://wowhead.com/forever/npc=4784/argent-guard-manados
+            [npcKeys.questStarts_add] = {78925},
+            [npcKeys.questEnds_add] = {78925},
+        },
+        [4787] = { -- Argent Guard Thaelrid : https://wowhead.com/forever/npc=4787/argent-guard-thaelrid
+            [npcKeys.questStarts_add] = {78921, 78922},
+        },
+        [4792] = { -- "Swamp Eye" Jarl : https://wowhead.com/forever/npc=4792/swamp-eye-jarl
+            [npcKeys.questStarts_add] = {81570},
+            [npcKeys.questEnds_add] = {81570},
         },
         [4795] = { -- Force of Nature : https://wowhead.com/forever/npc=4795/force-of-nature
             [npcKeys.maxLevel] = 27,
@@ -677,14 +882,26 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {98192},
         },
         [4949] = { -- Thrall : https://wowhead.com/forever/npc=4949/thrall
-            [npcKeys.questStarts_add] = {93739, 98024},
-            [npcKeys.questEnds_add] = {93739, 95350},
+            [npcKeys.questStarts_add] = {84561, 85644, 85658, 88968, 93739, 98024},
+            [npcKeys.questEnds_add] = {85883, 93739, 95350},
         },
         [5137] = { -- Reyna Stonebranch : https://wowhead.com/forever/npc=5137/reyna-stonebranch
             [npcKeys.questEnds] = {96055},
         },
+        [5164] = { -- Grumnus Steelshaper : https://wowhead.com/forever/npc=5164/grumnus-steelshaper
+            [npcKeys.questStarts_add] = {85713},
+            [npcKeys.questEnds_add] = {85713},
+        },
         [5288] = { -- Rabid Longtooth : https://wowhead.com/forever/npc=5288/rabid-longtooth
             [npcKeys.minLevel] = 8,
+        },
+        [5353] = { -- Itharius : https://wowhead.com/forever/npc=5353/itharius
+            [npcKeys.questStarts_add] = {82019, 82020},
+            [npcKeys.questEnds_add] = {82018, 82019},
+        },
+        [5384] = { -- Brohann Caskbelly : https://wowhead.com/forever/npc=5384/brohann-caskbelly
+            [npcKeys.questStarts_add] = {82098},
+            [npcKeys.questEnds_add] = {82098},
         },
         [5387] = { -- High Explorer Magellas : https://wowhead.com/forever/npc=5387/high-explorer-magellas
             [npcKeys.questEnds_add] = {98824},
@@ -697,7 +914,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts_add] = {93224, 93227},
         },
         [5397] = { -- Uthek the Wise : https://wowhead.com/forever/npc=5397/uthek-the-wise
-            [npcKeys.questStarts_add] = {93034},
+            [npcKeys.questStarts_add] = {93034, 93044},
             [npcKeys.questEnds_add] = {93041, 93044, 93128},
         },
         [5398] = { -- Warug : https://wowhead.com/forever/npc=5398/warug
@@ -708,14 +925,21 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {93225},
             [npcKeys.questStarts_add] = {93225, 94872, 94873},
         },
+        [5476] = { -- Watcher Biggs : https://wowhead.com/forever/npc=5476/watcher-biggs
+            [npcKeys.questStarts_add] = {94929},
+        },
         [5492] = { -- Katherine the Pure : https://wowhead.com/forever/npc=5492/katherine-the-pure
-            [npcKeys.questStarts] = {78090},
-            [npcKeys.questEnds] = {78089},
+            [npcKeys.questStarts] = {78090, 79940, 79946, 81764, 84418, 85507, 85509, 85510},
+            [npcKeys.questEnds] = {78089, 79939, 79940, 79945, 81762, 81766, 82135, 84418, 85508, 85509},
             [npcKeys.subName] = "Church of the Holy Light",
         },
         [5495] = { -- Ursula Deline : https://wowhead.com/forever/npc=5495/ursula-deline
             [npcKeys.questStarts] = {78091, 78092},
             [npcKeys.questEnds] = {78090, 78091},
+        },
+        [5497] = { -- Jennea Cannon : https://wowhead.com/forever/npc=5497/jennea-cannon
+            [npcKeys.questStarts_add] = {84394, 84395, 84396, 84397, 84398, 84399, 84400, 84401, 84402, 85385},
+            [npcKeys.questEnds_add] = {84394, 84395, 84396, 84397, 84398, 84399, 84400, 84401, 84402, 85304},
         },
         [5502] = { -- Shylamiir : https://wowhead.com/forever/npc=5502/shylamiir
             [npcKeys.questStarts] = {92456},
@@ -730,6 +954,10 @@ function ForeverBaseNpc:Load()
         },
         [5591] = { -- Dar : https://wowhead.com/forever/npc=5591/dar
             [npcKeys.questStarts_add] = {93663},
+        },
+        [5598] = { -- Atal'ai Exile : https://wowhead.com/forever/npc=5598/atalai-exile
+            [npcKeys.questStarts_add] = {82104},
+            [npcKeys.questEnds_add] = {82104},
         },
         [5601] = { -- Khan Jehn : https://wowhead.com/forever/npc=5601/khan-jehn
             [npcKeys.maxLevel] = 42,
@@ -768,7 +996,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {97884},
         },
         [5884] = { -- Mai'ah : https://wowhead.com/forever/npc=5884/maiah
-            [npcKeys.questEnds_add] = {98576},
+            [npcKeys.questStarts] = {77643},
+            [npcKeys.questEnds_add] = {77643, 98576},
         },
         [5891] = { -- Minor Manifestation of Earth : https://wowhead.com/forever/npc=5891/minor-manifestation-of-earth
             [npcKeys.questStarts_add] = {94375},
@@ -798,6 +1027,10 @@ function ForeverBaseNpc:Load()
         [5943] = { -- Rawrk : https://wowhead.com/forever/npc=5943/rawrk
             [npcKeys.questEnds] = {97903},
         },
+        [6018] = { -- Ur'kyo : https://wowhead.com/forever/npc=6018/urkyo
+            [npcKeys.questStarts_add] = {79079},
+            [npcKeys.questEnds_add] = {79079},
+        },
         [6094] = { -- Byancie : https://wowhead.com/forever/npc=6094/byancie
             [npcKeys.questStarts] = {99050, 99073},
             [npcKeys.questEnds] = {97942, 99047, 99050},
@@ -805,12 +1038,26 @@ function ForeverBaseNpc:Load()
         [6123] = { -- Dark Iron Spy : https://wowhead.com/forever/npc=6123/dark-iron-spy
             [npcKeys.maxLevel] = 11,
         },
+        [6142] = { -- Mathiel : https://wowhead.com/forever/npc=6142/mathiel
+            [npcKeys.questStarts_add] = {80135},
+        },
+        [6169] = { -- Klockmort Spannerspan : https://wowhead.com/forever/npc=6169/klockmort-spannerspan
+            [npcKeys.questStarts_add] = {80136},
+            [npcKeys.questEnds_add] = {80135, 80136},
+        },
         [6176] = { -- Bath'rah the Windwatcher : https://wowhead.com/forever/npc=6176/bathrah-the-windwatcher
-            [npcKeys.questStarts_add] = {79361, 79362, 79363, 79364, 96137},
-            [npcKeys.questEnds_add] = {79360, 79361, 79362, 79363, 79364, 79442, 94251, 96016},
+            [npcKeys.questStarts_add] = {79361, 79362, 79363, 79364, 79365, 82113, 96137},
+            [npcKeys.questEnds_add] = {79360, 79361, 79362, 79363, 79364, 79442, 82113, 94251, 96016},
+        },
+        [6247] = { -- Doan Karhan : https://wowhead.com/forever/npc=6247/doan-karhan
+            [npcKeys.questStarts_add] = {78680, 78681, 78702, 85112, 85468},
+            [npcKeys.questEnds_add] = {78680, 78684, 78702, 85112},
         },
         [6271] = { -- Mouse : https://wowhead.com/forever/npc=6271/mouse
             [npcKeys.questStarts] = {93928},
+        },
+        [6272] = { -- Innkeeper Janene : https://wowhead.com/forever/npc=6272/innkeeper-janene
+            [npcKeys.questEnds] = {81765},
         },
         [6286] = { -- Zarrin : https://wowhead.com/forever/npc=6286/zarrin
             [npcKeys.questEnds_add] = {96634},
@@ -837,10 +1084,26 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {91751},
             [npcKeys.questEnds] = {91746, 91751, 97924},
         },
+        [6491] = { -- Spirit Healer : https://wowhead.com/forever/npc=6491/spirit-healer
+            [npcKeys.questEnds] = {78197},
+        },
+        [6579] = { -- Shoni the Shilent : https://wowhead.com/forever/npc=6579/shoni-the-shilent
+            [npcKeys.questStarts_add] = {80181},
+            [npcKeys.questEnds_add] = {80181},
+        },
         [6626] = { -- "Plucky" Johnson : https://wowhead.com/forever/npc=6626/plucky-johnson
             [npcKeys.questEnds] = {94227},
         },
+        [6707] = { -- Fahrad : https://wowhead.com/forever/npc=6707/fahrad
+            [npcKeys.questStarts_add] = {80411, 80453, 80526, 84881},
+            [npcKeys.questEnds_add] = {80411, 80455, 80526, 84880, 84881},
+        },
+        [6768] = { -- Lord Jorach Ravenholdt : https://wowhead.com/forever/npc=6768/lord-jorach-ravenholdt
+            [npcKeys.questEnds_add] = {82110},
+        },
         [6777] = { -- Zan Shivsproket : https://wowhead.com/forever/npc=6777/zan-shivsproket
+            [npcKeys.questStarts] = {80454},
+            [npcKeys.questEnds] = {80453},
             [npcKeys.subName] = "Specialty Engineer",
         },
         [6786] = { -- Ukor : https://wowhead.com/forever/npc=6786/ukor
@@ -849,6 +1112,10 @@ function ForeverBaseNpc:Load()
         [6791] = { -- Innkeeper Wiley : https://wowhead.com/forever/npc=6791/innkeeper-wiley
             [npcKeys.questStarts] = {96339, 96383},
             [npcKeys.questEnds] = {96339, 96383},
+        },
+        [6826] = { -- Talvash del Kissel : https://wowhead.com/forever/npc=6826/talvash-del-kissel
+            [npcKeys.questStarts_add] = {80131},
+            [npcKeys.questEnds_add] = {79987, 80131},
         },
         [7088] = { -- Thuwd : https://wowhead.com/forever/npc=7088/thuwd
             [npcKeys.questEnds] = {97908},
@@ -866,8 +1133,17 @@ function ForeverBaseNpc:Load()
         [7360] = { -- Dun Garok Soldier : https://wowhead.com/forever/npc=7360/dun-garok-soldier
             [npcKeys.maxLevel] = 30,
         },
+        [7408] = { -- Spigot Operator Luglunket : https://wowhead.com/forever/npc=7408/spigot-operator-luglunket
+            [npcKeys.questStarts_add] = {82209},
+            [npcKeys.questEnds_add] = {82209},
+        },
         [7506] = { -- Bloodmage Lynnore : https://wowhead.com/forever/npc=7506/bloodmage-lynnore
-            [npcKeys.questEnds_add] = {81900},
+            [npcKeys.questStarts_add] = {81917, 81919},
+            [npcKeys.questEnds_add] = {81900, 81917, 81919},
+        },
+        [7572] = { -- Fallen Hero of the Horde : https://wowhead.com/forever/npc=7572/fallen-hero-of-the-horde
+            [npcKeys.questStarts_add] = {82107},
+            [npcKeys.questEnds_add] = {82107},
         },
         [7683] = { -- Alessandro Luca : https://wowhead.com/forever/npc=7683/alessandro-luca
             [npcKeys.questStarts_add] = {97891},
@@ -875,11 +1151,81 @@ function ForeverBaseNpc:Load()
         [7733] = { -- Innkeeper Fizzgrimble : https://wowhead.com/forever/npc=7733/innkeeper-fizzgrimble
             [npcKeys.questStarts] = {95144},
         },
+        [7771] = { -- Marvon Rivetseeker : https://wowhead.com/forever/npc=7771/marvon-rivetseeker
+            [npcKeys.questStarts_add] = {82096, 82097},
+        },
+        [7775] = { -- Gregan Brewspewer : https://wowhead.com/forever/npc=7775/gregan-brewspewer
+            [npcKeys.questStarts_add] = {82099},
+        },
+        [7798] = { -- Hank the Hammer : https://wowhead.com/forever/npc=7798/hank-the-hammer
+            [npcKeys.questStarts_add] = {80241},
+            [npcKeys.questEnds_add] = {80241},
+        },
         [7825] = { -- Oran Snakewrithe : https://wowhead.com/forever/npc=7825/oran-snakewrithe
-            [npcKeys.questEnds_add] = {95204},
+            [npcKeys.questStarts_add] = {85385},
+            [npcKeys.questEnds_add] = {84394, 84395, 84396, 84397, 84398, 84399, 84400, 84401, 84402, 85304, 95204},
+        },
+        [7850] = { -- Kernobee : https://wowhead.com/forever/npc=7850/kernobee
+            [npcKeys.questStarts_add] = {79985},
+        },
+        [7852] = { -- Pratt McGrubben : https://wowhead.com/forever/npc=7852/pratt-mcgrubben
+            [npcKeys.questStarts_add] = {82657},
+            [npcKeys.questEnds_add] = {82657},
         },
         [7853] = { -- Scooty : https://wowhead.com/forever/npc=7853/scooty
-            [npcKeys.questEnds_add] = {94235},
+            [npcKeys.questStarts_add] = {79984, 80134},
+            [npcKeys.questEnds_add] = {79984, 79985, 80133, 80134, 94235},
+        },
+        [7854] = { -- Jangdor Swiftstrider : https://wowhead.com/forever/npc=7854/jangdor-swiftstrider
+            [npcKeys.questStarts_add] = {82656},
+            [npcKeys.questEnds_add] = {82656},
+        },
+        [7866] = { -- Peter Galen : https://wowhead.com/forever/npc=7866/peter-galen
+            [npcKeys.questStarts_add] = {85701},
+            [npcKeys.questEnds_add] = {85701},
+        },
+        [7867] = { -- Thorkaf Dragoneye : https://wowhead.com/forever/npc=7867/thorkaf-dragoneye
+            [npcKeys.questStarts_add] = {85702},
+            [npcKeys.questEnds_add] = {85702},
+        },
+        [7868] = { -- Sarah Tanner : https://wowhead.com/forever/npc=7868/sarah-tanner
+            [npcKeys.questStarts_add] = {85703},
+            [npcKeys.questEnds_add] = {85703},
+        },
+        [7869] = { -- Brumn Winterhoof : https://wowhead.com/forever/npc=7869/brumn-winterhoof
+            [npcKeys.questStarts_add] = {85704},
+            [npcKeys.questEnds_add] = {85704},
+        },
+        [7870] = { -- Caryssia Moonhunter : https://wowhead.com/forever/npc=7870/caryssia-moonhunter
+            [npcKeys.questStarts_add] = {85705},
+            [npcKeys.questEnds_add] = {85705},
+        },
+        [7871] = { -- Se'Jib : https://wowhead.com/forever/npc=7871/sejib
+            [npcKeys.questStarts_add] = {85706},
+            [npcKeys.questEnds_add] = {85706},
+        },
+        [7882] = { -- Security Chief Bilgewhizzle : https://wowhead.com/forever/npc=7882/security-chief-bilgewhizzle
+            [npcKeys.questStarts_add] = {97530},
+            [npcKeys.questEnds_add] = {97530},
+        },
+        [7884] = { -- Fraggar Thundermantle : https://wowhead.com/forever/npc=7884/fraggar-thundermantle
+            [npcKeys.questStarts_add] = {82210},
+            [npcKeys.questEnds_add] = {82210},
+        },
+        [7917] = { -- Brother Sarno : https://wowhead.com/forever/npc=7917/brother-sarno
+            [npcKeys.questStarts_add] = {80138},
+        },
+        [7937] = { -- High Tinker Mekkatorque : https://wowhead.com/forever/npc=7937/high-tinker-mekkatorque
+            [npcKeys.questStarts_add] = {80180},
+            [npcKeys.questEnds_add] = {80180, 80324},
+        },
+        [7944] = { -- Tinkmaster Overspark : https://wowhead.com/forever/npc=7944/tinkmaster-overspark
+            [npcKeys.questStarts_add] = {80137},
+            [npcKeys.questEnds_add] = {80137, 80138},
+        },
+        [7950] = { -- Master Mechanic Castpipe : https://wowhead.com/forever/npc=7950/master-mechanic-castpipe
+            [npcKeys.questStarts_add] = {80143},
+            [npcKeys.questEnds_add] = {80143},
         },
         [7953] = { -- Xar'Ti : https://wowhead.com/forever/npc=7953/xarti
             [npcKeys.questStarts] = {97223},
@@ -897,17 +1243,50 @@ function ForeverBaseNpc:Load()
         [8305] = { -- Kixxle : https://wowhead.com/forever/npc=8305/kixxle
             [npcKeys.questEnds] = {94219, 94228, 94255},
         },
+        [8379] = { -- Archmage Xylem : https://wowhead.com/forever/npc=8379/archmage-xylem
+            [npcKeys.questStarts_add] = {82110, 82114},
+            [npcKeys.questEnds_add] = {82114},
+        },
+        [8383] = { -- Master Wood : https://wowhead.com/forever/npc=8383/master-wood
+            [npcKeys.questStarts] = {78297},
+            [npcKeys.questEnds] = {78287},
+        },
         [8396] = { -- Sentinel Dalia Sunblade : https://wowhead.com/forever/npc=8396/sentinel-dalia-sunblade
             [npcKeys.questStarts] = {98067},
             [npcKeys.questEnds] = {98067},
+        },
+        [8405] = { -- Ogtinc : https://wowhead.com/forever/npc=8405/ogtinc
+            [npcKeys.questStarts_add] = {82108, 82111},
+            [npcKeys.questEnds_add] = {82108},
+        },
+        [8496] = { -- Liv Rizzlefix : https://wowhead.com/forever/npc=8496/liv-rizzlefix
+            [npcKeys.questStarts_add] = {82101},
         },
         [8508] = { -- Gretta Ganter : https://wowhead.com/forever/npc=8508/gretta-ganter
             [npcKeys.questStarts] = {98326},
             [npcKeys.questEnds] = {98326},
         },
+        [8579] = { -- Yeh'kinya : https://wowhead.com/forever/npc=8579/yehkinya
+            [npcKeys.questStarts_add] = {82095},
+            [npcKeys.questEnds_add] = {82095},
+        },
+        [8997] = { -- Gershala Nightwhisper : https://wowhead.com/forever/npc=8997/gershala-nightwhisper
+            [npcKeys.questStarts_add] = {78926},
+            [npcKeys.questEnds_add] = {78926},
+        },
         [9087] = { -- Bashana Runetotem : https://wowhead.com/forever/npc=9087/bashana-runetotem
             [npcKeys.questStarts_add] = {98823},
-            [npcKeys.questEnds_add] = {95664},
+            [npcKeys.questEnds_add] = {78917, 78922, 95664},
+        },
+        [9118] = { -- Larion : https://wowhead.com/forever/npc=9118/larion
+            [npcKeys.questEnds_add] = {82101},
+        },
+        [9119] = { -- Muigin : https://wowhead.com/forever/npc=9119/muigin
+            [npcKeys.questEnds_add] = {82099},
+        },
+        [9619] = { -- Torwa Pathfinder : https://wowhead.com/forever/npc=9619/torwa-pathfinder
+            [npcKeys.questStarts_add] = {82112, 87492},
+            [npcKeys.questEnds_add] = {82112, 87492},
         },
         [10181] = { -- Lady Sylvanas Windrunner : https://wowhead.com/forever/npc=10181/lady-sylvanas-windrunner
             [npcKeys.questEnds] = {95803},
@@ -923,9 +1302,27 @@ function ForeverBaseNpc:Load()
         [10278] = { -- Thrag Stonehoof : https://wowhead.com/forever/npc=10278/thrag-stonehoof
             [npcKeys.questEnds] = {97928},
         },
+        [10637] = { -- Malyfous Darkhammer : https://wowhead.com/forever/npc=10637/malyfous-darkhammer
+            [npcKeys.questStarts_add] = {84495},
+            [npcKeys.questEnds_add] = {84495},
+        },
         [10665] = { -- Junior Apothecary Holland : https://wowhead.com/forever/npc=10665/junior-apothecary-holland
             [npcKeys.questStarts_add] = {99142},
             [npcKeys.questEnds_add] = {99142},
+        },
+        [10667] = { -- Chromie : https://wowhead.com/forever/npc=10667/chromie
+            [npcKeys.questStarts_add] = {85066, 85068},
+            [npcKeys.questEnds_add] = {85065},
+        },
+        [10838] = { -- Commander Ashlam Valorfist : https://wowhead.com/forever/npc=10838/commander-ashlam-valorfist
+            [npcKeys.questStarts_add] = {82106},
+            [npcKeys.questEnds_add] = {82106},
+        },
+        [10922] = { -- Greta Mosshoof : https://wowhead.com/forever/npc=10922/greta-mosshoof
+            [npcKeys.questEnds_add] = {82111},
+        },
+        [10929] = { -- Haleh : https://wowhead.com/forever/npc=10929/haleh
+            [npcKeys.questEnds_add] = {85388},
         },
         [11025] = { -- Mukdrak : https://wowhead.com/forever/npc=11025/mukdrak
             [npcKeys.questEnds] = {97902},
@@ -938,8 +1335,20 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {95041},
             [npcKeys.questEnds] = {95041},
         },
+        [11034] = { -- Lord Maxwell Tyrosus : https://wowhead.com/forever/npc=11034/lord-maxwell-tyrosus
+            [npcKeys.questStarts_add] = {87509, 89443, 89563},
+            [npcKeys.questEnds_add] = {87508, 89442, 89444, 89475, 89563},
+        },
+        [11036] = { -- Leonid Barthalomew the Revered : https://wowhead.com/forever/npc=11036/leonid-barthalomew-the-revered
+            [npcKeys.questStarts_add] = {87459, 87493, 87498, 89562, 89567},
+            [npcKeys.questEnds_add] = {87459, 87497, 89229, 89562},
+        },
         [11037] = { -- Jenna Lemkenilli : https://wowhead.com/forever/npc=11037/jenna-lemkenilli
             [npcKeys.questEnds] = {97941},
+        },
+        [11039] = { -- Duke Nicholas Zverenhoff : https://wowhead.com/forever/npc=11039/duke-nicholas-zverenhoff
+            [npcKeys.questStarts_add] = {85963, 85964, 85965, 85966},
+            [npcKeys.questEnds_add] = {85963, 85964, 85965, 85966},
         },
         [11044] = { -- Doctor Martin Felben : https://wowhead.com/forever/npc=11044/doctor-martin-felben
             [npcKeys.questStarts] = {96988},
@@ -968,12 +1377,52 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {91753},
             [npcKeys.questEnds] = {91753},
         },
+        [11146] = { -- Ironus Coldsteel : https://wowhead.com/forever/npc=11146/ironus-coldsteel
+            [npcKeys.questStarts_add] = {82662},
+            [npcKeys.questEnds_add] = {82662},
+        },
+        [11177] = { -- Okothos Ironrager : https://wowhead.com/forever/npc=11177/okothos-ironrager
+            [npcKeys.questStarts_add] = {85712},
+            [npcKeys.questEnds_add] = {85712},
+        },
+        [11178] = { -- Borgosh Corebender : https://wowhead.com/forever/npc=11178/borgosh-corebender
+            [npcKeys.questStarts_add] = {82665},
+            [npcKeys.questEnds_add] = {82665},
+        },
+        [11191] = { -- Lilith the Lithe : https://wowhead.com/forever/npc=11191/lilith-the-lithe
+            [npcKeys.questStarts_add] = {84496},
+            [npcKeys.questEnds_add] = {84496},
+        },
+        [11192] = { -- Kilram : https://wowhead.com/forever/npc=11192/kilram
+            [npcKeys.questStarts_add] = {85699},
+            [npcKeys.questEnds_add] = {85699},
+        },
+        [11193] = { -- Seril Scourgebane : https://wowhead.com/forever/npc=11193/seril-scourgebane
+            [npcKeys.questStarts_add] = {85700},
+            [npcKeys.questEnds_add] = {85700},
+        },
         [11368] = { -- Bloodseeker Bat : https://wowhead.com/forever/npc=11368/bloodseeker-bat
             [npcKeys.minLevel] = 59,
+        },
+        [11397] = { -- Nara Meideros : https://wowhead.com/forever/npc=11397/nara-meideros
+            [npcKeys.questEnds] = {78194},
+            [npcKeys.questStarts_add] = {78194, 78195},
+        },
+        [11438] = { -- Bibbly F'utzbuckle : https://wowhead.com/forever/npc=11438/bibbly-futzbuckle
+            [npcKeys.questStarts_add] = {79235},
+            [npcKeys.questEnds_add] = {79229},
+        },
+        [11536] = { -- Quartermaster Miranda Breechlock : https://wowhead.com/forever/npc=11536/quartermaster-miranda-breechlock
+            [npcKeys.questStarts_add] = {88721, 88722, 88723, 88724, 88725, 88726, 88727, 88728},
+            [npcKeys.questEnds_add] = {88721, 88722, 88723, 88724, 88727, 88728},
         },
         [11802] = { -- Dendrite Starblaze : https://wowhead.com/forever/npc=11802/dendrite-starblaze
             [npcKeys.questStarts_add] = {98341, 98362, 98394, 98397, 98405},
             [npcKeys.questEnds_add] = {94913, 94914, 98340, 98393, 98731, 98738, 98739},
+        },
+        [11811] = { -- Narain Soothfancy : https://wowhead.com/forever/npc=11811/narain-soothfancy
+            [npcKeys.questStarts_add] = {86444, 86445},
+            [npcKeys.questEnds_add] = {86444},
         },
         [11826] = { -- Kristy Grant : https://wowhead.com/forever/npc=11826/kristy-grant
             [npcKeys.questStarts] = {98155, 98156},
@@ -981,6 +1430,10 @@ function ForeverBaseNpc:Load()
         },
         [11827] = { -- Kimberly Grant : https://wowhead.com/forever/npc=11827/kimberly-grant
             [npcKeys.questEnds] = {98156},
+        },
+        [11832] = { -- Keeper Remulos : https://wowhead.com/forever/npc=11832/keeper-remulos
+            [npcKeys.questStarts_add] = {86443, 86680},
+            [npcKeys.questEnds_add] = {86443, 86679, 86680},
         },
         [11835] = { -- Theodore Griffs : https://wowhead.com/forever/npc=11835/theodore-griffs
             [npcKeys.questStarts] = {95216},
@@ -991,17 +1444,30 @@ function ForeverBaseNpc:Load()
         },
         [11863] = { -- Azore Aldamort : https://wowhead.com/forever/npc=11863/azore-aldamort
             [npcKeys.questStarts_add] = {93465},
+            [npcKeys.questEnds_add] = {93465},
         },
         [11957] = { -- Great Cat Spirit : https://wowhead.com/forever/npc=11957/great-cat-spirit
             [npcKeys.questStarts] = {98342, 98396, 98731, 98739},
             [npcKeys.questEnds] = {98342, 98394, 98396, 98405},
         },
+        [12042] = { -- Loganaar : https://wowhead.com/forever/npc=12042/loganaar
+            [npcKeys.questEnds] = {78229, 82017, 82020},
+            [npcKeys.questStarts_add] = {78229, 82018},
+        },
         [12736] = { -- Je'neu Sancrea : https://wowhead.com/forever/npc=12736/jeneu-sancrea
             [npcKeys.subName] = "Earthen Ring",
+            [npcKeys.questStarts_add] = {78506, 78537, 78561, 78575, 78927},
+            [npcKeys.questEnds_add] = {78506, 78537, 78561, 78575, 78920, 78927, 85772},
         },
         [12920] = { -- Doctor Gregory Victor : https://wowhead.com/forever/npc=12920/doctor-gregory-victor
             [npcKeys.questStarts_add] = {92519, 97539},
-            [npcKeys.questEnds_add] = {92519},
+            [npcKeys.questEnds_add] = {92519, 97539},
+        },
+        [12944] = { -- Lokhtos Darkbargainer : https://wowhead.com/forever/npc=12944/lokhtos-darkbargainer
+            [npcKeys.questEnds_add] = {84338},
+        },
+        [13020] = { -- Vaelastrasz the Corrupt : https://wowhead.com/forever/npc=13020/vaelastrasz-the-corrupt
+            [npcKeys.questStarts_add] = {86442},
         },
         [13085] = { -- Myrokos Silentform : https://wowhead.com/forever/npc=13085/myrokos-silentform
             [npcKeys.questStarts] = {96779, 96781, 96783},
@@ -1011,12 +1477,157 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts] = {95682},
             [npcKeys.questEnds] = {95663, 95682},
         },
+        [13278] = { -- Duke Hydraxis : https://wowhead.com/forever/npc=13278/duke-hydraxis
+            [npcKeys.questStarts_add] = {84545, 85971, 85972, 85973, 85974},
+            [npcKeys.questEnds_add] = {85971, 85972, 85973, 85974},
+        },
+        [13444] = { -- Greatfather Winter : https://wowhead.com/forever/npc=13444/greatfather-winter
+            [npcKeys.questEnds_add] = {79486},
+        },
+        [13445] = { -- Great-father Winter : https://wowhead.com/forever/npc=13445/great-father-winter
+            [npcKeys.questEnds_add] = {79487},
+        },
+        [14353] = { -- Mizzle the Crafty : https://wowhead.com/forever/npc=14353/mizzle-the-crafty
+            [npcKeys.questEnds] = {90627},
+        },
+        [14368] = { -- Lorekeeper Lydros : https://wowhead.com/forever/npc=14368/lorekeeper-lydros
+            [npcKeys.questStarts_add] = {84557},
+            [npcKeys.questEnds_add] = {84555, 84556, 84557},
+        },
+        [14382] = { -- Lorekeeper Mykos : https://wowhead.com/forever/npc=14382/lorekeeper-mykos
+            [npcKeys.questEnds_add] = {84551},
+        },
+        [14383] = { -- Lorekeeper Kildrath : https://wowhead.com/forever/npc=14383/lorekeeper-kildrath
+            [npcKeys.questEnds_add] = {84548, 84549, 84550},
+        },
+        [14392] = { -- Overlord Runthak : https://wowhead.com/forever/npc=14392/overlord-runthak
+            [npcKeys.questEnds_add] = {84561, 85658},
+        },
+        [14394] = { -- Major Mattingly : https://wowhead.com/forever/npc=14394/major-mattingly
+            [npcKeys.questEnds_add] = {84560, 85659},
+        },
+        [14401] = { -- Master Elemental Shaper Krixix : https://wowhead.com/forever/npc=14401/master-elemental-shaper-krixix
+            [npcKeys.questStarts] = {85557, 85558},
+            [npcKeys.questEnds] = {85556, 85557, 85558},
+        },
         [14450] = { -- Orphan Matron Nightingale : https://wowhead.com/forever/npc=14450/orphan-matron-nightingale
             [npcKeys.questStarts_add] = {95161},
             [npcKeys.questEnds_add] = {92415},
         },
+        [14470] = { -- Impsy : https://wowhead.com/forever/npc=14470/impsy
+            [npcKeys.questStarts_add] = {82115},
+            [npcKeys.questEnds_add] = {82115},
+        },
+        [14494] = { -- Eris Havenfire : https://wowhead.com/forever/npc=14494/eris-havenfire
+            [npcKeys.questStarts_add] = {84590},
+            [npcKeys.questEnds_add] = {84590},
+        },
         [14508] = { -- Short John Mithril : https://wowhead.com/forever/npc=14508/short-john-mithril
             [npcKeys.questEnds_add] = {94217},
+        },
+        [14524] = { -- Vartrus the Ancient : https://wowhead.com/forever/npc=14524/vartrus-the-ancient
+            [npcKeys.questStarts_add] = {84546},
+            [npcKeys.questEnds_add] = {84546},
+        },
+        [14624] = { -- Master Smith Burninate : https://wowhead.com/forever/npc=14624/master-smith-burninate
+            [npcKeys.questStarts_add] = {84356},
+            [npcKeys.questEnds_add] = {84356},
+        },
+        [14625] = { -- Overseer Oilfist : https://wowhead.com/forever/npc=14625/overseer-oilfist
+            [npcKeys.questStarts] = {84360, 85975, 85976, 85978},
+            [npcKeys.questEnds_add] = {84360, 85975, 85976, 85978},
+        },
+        [14626] = { -- Taskmaster Scrange : https://wowhead.com/forever/npc=14626/taskmaster-scrange
+            [npcKeys.questStarts] = {84351, 84355},
+            [npcKeys.questEnds_add] = {84351, 84355},
+        },
+        [14627] = { -- Hansel Heavyhands : https://wowhead.com/forever/npc=14627/hansel-heavyhands
+            [npcKeys.questStarts_add] = {84348, 84372},
+            [npcKeys.questEnds_add] = {84348, 84372},
+        },
+        [14628] = { -- Evonice Sootsmoker : https://wowhead.com/forever/npc=14628/evonice-sootsmoker
+            [npcKeys.questStarts] = {84350, 84359},
+            [npcKeys.questEnds_add] = {84350, 84359},
+        },
+        [14634] = { -- Lookout Captain Lolo Longstriker : https://wowhead.com/forever/npc=14634/lookout-captain-lolo-longstriker
+            [npcKeys.questStarts] = {84349},
+            [npcKeys.questEnds_add] = {84349},
+        },
+        [14720] = { -- High Overlord Saurfang : https://wowhead.com/forever/npc=14720/high-overlord-saurfang
+            [npcKeys.questEnds_add] = {85644, 88968},
+        },
+        [14721] = { -- Field Marshal Stonebridge : https://wowhead.com/forever/npc=14721/field-marshal-stonebridge
+            [npcKeys.questEnds_add] = {85643, 88969},
+        },
+        [14829] = { -- Yebb Neblegear : https://wowhead.com/forever/npc=14829/yebb-neblegear
+            [npcKeys.questStarts_add] = {79588, 79589, 80417, 82271, 82272, 82273, 82274, 82323},
+            [npcKeys.questEnds_add] = {79588, 79589, 80417, 82271, 82272, 82273, 82274, 82323},
+        },
+        [14832] = { -- Kerri Hicks : https://wowhead.com/forever/npc=14832/kerri-hicks
+            [npcKeys.questStarts_add] = {79590, 79593, 80421, 82275, 82276, 82277},
+            [npcKeys.questEnds_add] = {79590, 79593, 80421, 82275, 82276, 82277},
+        },
+        [14833] = { -- Chronos : https://wowhead.com/forever/npc=14833/chronos
+            [npcKeys.questStarts_add] = {79592, 79595, 80423, 82281, 82282, 82283},
+            [npcKeys.questEnds_add] = {79592, 79595, 80423, 82281, 82282, 82283},
+        },
+        [14841] = { -- Rinling : https://wowhead.com/forever/npc=14841/rinling
+            [npcKeys.questStarts_add] = {79591, 79594, 80422, 82278, 82279, 82280},
+            [npcKeys.questEnds_add] = {79591, 79594, 80422, 82278, 82279, 82280},
+        },
+        [14847] = { -- Professor Thaddeus Paleo : https://wowhead.com/forever/npc=14847/professor-thaddeus-paleo
+            [npcKeys.questEnds_add] = {82055, 82056, 82057, 82058, 86760, 86761, 86762, 86763},
+        },
+        [14875] = { -- Molthor : https://wowhead.com/forever/npc=14875/molthor
+            [npcKeys.questEnds_add] = {82081, 82083, 85660},
+        },
+        [14902] = { -- Jin'rokh the Breaker : https://wowhead.com/forever/npc=14902/jinrokh-the-breaker
+            [npcKeys.questStarts_add] = {85612, 85613, 85614, 85615, 85617, 85618, 85619, 85620},
+            [npcKeys.questEnds_add] = {85612, 85613, 85614, 85615, 85617, 85618, 85619, 85620},
+        },
+        [14903] = { -- Al'tabim the All-Seeing : https://wowhead.com/forever/npc=14903/altabim-the-all-seeing
+            [npcKeys.questStarts_add] = {85616, 85622, 85623, 85624, 85625, 85626, 85627, 85628, 85629, 85630, 85631, 85632},
+            [npcKeys.questEnds_add] = {85616, 85622, 85623, 85624, 85625, 85626, 85627, 85628, 85629, 85630, 85631, 85632},
+        },
+        [14904] = { -- Maywiki of Zuldazar : https://wowhead.com/forever/npc=14904/maywiki-of-zuldazar
+            [npcKeys.questStarts_add] = {85604, 85605, 85606, 85607, 85608, 85609, 85610, 85611},
+            [npcKeys.questEnds_add] = {85604, 85605, 85606, 85607, 85608, 85609, 85610, 85611},
+        },
+        [14905] = { -- Falthir the Sightless : https://wowhead.com/forever/npc=14905/falthir-the-sightless
+            [npcKeys.questStarts_add] = {85633, 85634, 85635, 85636, 85637, 85638, 85639, 85640},
+            [npcKeys.questEnds_add] = {85633, 85634, 85635, 85636, 85637, 85638, 85639, 85640},
+        },
+        [14910] = { -- Exzhal : https://wowhead.com/forever/npc=14910/exzhal
+            [npcKeys.questStarts_add] = {85983, 85984, 85985, 85986},
+            [npcKeys.questEnds_add] = {85983, 85984, 85985, 85986},
+        },
+        [14984] = { -- Sergeant Maclear : https://wowhead.com/forever/npc=14984/sergeant-maclear
+            [npcKeys.questStarts] = {79990},
+            [npcKeys.questEnds] = {79990},
+        },
+        [15022] = { -- Deathstalker Mortis : https://wowhead.com/forever/npc=15022/deathstalker-mortis
+            [npcKeys.questStarts] = {79991},
+            [npcKeys.questEnds] = {79991},
+        },
+        [15042] = { -- Zanza the Restless : https://wowhead.com/forever/npc=15042/zanza-the-restless
+            [npcKeys.questStarts_add] = {85595, 85596, 85597, 85598, 85599, 85600, 85601, 85602, 85603},
+            [npcKeys.questEnds_add] = {85595, 85596, 85597, 85598, 85599, 85600, 85601, 85602, 85603},
+        },
+        [15176] = { -- Vargus : https://wowhead.com/forever/npc=15176/vargus
+            [npcKeys.questStarts_add] = {86675, 86676, 86677, 86678},
+            [npcKeys.questEnds_add] = {86675, 86676, 86677, 86678},
+        },
+        [15181] = { -- Commander Mar'alith : https://wowhead.com/forever/npc=15181/commander-maralith
+            [npcKeys.questStarts_add] = {85150, 85248, 85250},
+            [npcKeys.questEnds_add] = {85061, 85150, 85248, 86673},
+        },
+        [15192] = { -- Anachronos : https://wowhead.com/forever/npc=15192/anachronos
+            [npcKeys.questStarts_add] = {87441, 87443, 87444},
+            [npcKeys.questEnds_add] = {86442, 86445, 86670, 87441, 87442, 87443, 87444},
+        },
+        [15282] = { -- Aurel Goldleaf : https://wowhead.com/forever/npc=15282/aurel-goldleaf
+            [npcKeys.questStarts_add] = {85967, 85968, 85969, 85970},
+            [npcKeys.questEnds_add] = {85967, 85968, 85969, 85970},
         },
         [15350] = { -- Horde Warbringer : https://wowhead.com/forever/npc=15350/horde-warbringer
             [npcKeys.questStarts_add] = {98887, 98888},
@@ -1026,24 +1637,104 @@ function ForeverBaseNpc:Load()
             [npcKeys.questStarts_add] = {98895, 98896},
             [npcKeys.questEnds_add] = {98895, 98896},
         },
+        [15378] = { -- Merithra of the Dream : https://wowhead.com/forever/npc=15378/merithra-of-the-dream
+            [npcKeys.questStarts_add] = {86671},
+            [npcKeys.questEnds_add] = {86671},
+        },
+        [15379] = { -- Caelestrasz : https://wowhead.com/forever/npc=15379/caelestrasz
+            [npcKeys.questStarts_add] = {86670},
+        },
+        [15380] = { -- Arygos : https://wowhead.com/forever/npc=15380/arygos
+            [npcKeys.questStarts_add] = {86672},
+            [npcKeys.questEnds_add] = {86672},
+        },
+        [15395] = { -- Nafien : https://wowhead.com/forever/npc=15395/nafien
+            [npcKeys.questStarts_add] = {84777, 85987, 85988, 86160, 86161},
+            [npcKeys.questEnds_add] = {84777, 85987, 85988, 86160, 86161},
+        },
+        [15443] = { -- Janela Stouthammer : https://wowhead.com/forever/npc=15443/janela-stouthammer
+            [npcKeys.questEnds_add] = {85798},
+        },
+        [15693] = { -- Jonathan the Revelator : https://wowhead.com/forever/npc=15693/jonathan-the-revelator
+            [npcKeys.questStarts_add] = {86449},
+            [npcKeys.questEnds_add] = {86449},
+        },
         [15906] = { -- Ironforge Reveler : https://wowhead.com/forever/npc=15906/ironforge-reveler
             [npcKeys.maxLevel] = 59,
+        },
+        [15909] = { -- Fariel Starsong : https://wowhead.com/forever/npc=15909/fariel-starsong
+            [npcKeys.questStarts_add] = {80164, 80165, 80166, 80167, 80168, 80169, 80170},
+            [npcKeys.questEnds_add] = {80164, 80165, 80166, 80167, 80168, 80169, 80170},
         },
         [15991] = { -- Lady Dena Kennedy : https://wowhead.com/forever/npc=15991/lady-dena-kennedy
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
             [npcKeys.questEnds] = {95189},
         },
+        [16016] = { -- Anthion Harmon : https://wowhead.com/forever/npc=16016/anthion-harmon
+            [npcKeys.questStarts_add] = {84179, 84180, 84181, 84182, 84183, 84184, 84185, 84186, 84187, 84188, 84189, 84190, 84191, 84192, 84193, 84194},
+        },
+        [16091] = { -- Dirk Thunderwood : https://wowhead.com/forever/npc=16091/dirk-thunderwood
+            [npcKeys.questStarts_add] = {86674},
+            [npcKeys.questEnds_add] = {86674},
+        },
+        [16112] = { -- Korfax, Champion of the Light : https://wowhead.com/forever/npc=16112/korfax-champion-of-the-light
+            [npcKeys.questStarts_add] = {88729},
+            [npcKeys.questEnds_add] = {88729},
+        },
+        [16113] = { -- Father Inigo Montoy : https://wowhead.com/forever/npc=16113/father-inigo-montoy
+            [npcKeys.questEnds_add] = {87360},
+        },
         [16134] = { -- Rimblat Earthshatter : https://wowhead.com/forever/npc=16134/rimblat-earthshatter
             [npcKeys.subName] = "Earthen Ring",
         },
+        [16361] = { -- Commander Thomas Helleran : https://wowhead.com/forever/npc=16361/commander-thomas-helleran
+            [npcKeys.questStarts_add] = {88744, 88745},
+            [npcKeys.questEnds_add] = {88744, 88745},
+        },
+        [16365] = { -- Master Craftsman Omarion : https://wowhead.com/forever/npc=16365/master-craftsman-omarion
+            [npcKeys.questStarts] = {89447, 89448, 89449},
+            [npcKeys.questEnds] = {89446, 89447, 89448},
+        },
+        [16376] = { -- Craftsman Wilhelm : https://wowhead.com/forever/npc=16376/craftsman-wilhelm
+            [npcKeys.questStarts_add] = {88730, 89446},
+            [npcKeys.questEnds_add] = {88730, 89445},
+        },
+        [16381] = { -- Archmage Tarsis Kir-Moldir : https://wowhead.com/forever/npc=16381/archmage-tarsis-kir-moldir
+            [npcKeys.questEnds] = {87283},
+        },
         [16458] = { -- Innkeeper Faralia : https://wowhead.com/forever/npc=16458/innkeeper-faralia
             [npcKeys.questEnds] = {86574},
+        },
+        [16478] = { -- Lieutenant Orrin : https://wowhead.com/forever/npc=16478/lieutenant-orrin
+            [npcKeys.questEnds_add] = {88748},
+        },
+        [16494] = { -- Lieutenant Rukag : https://wowhead.com/forever/npc=16494/lieutenant-rukag
+            [npcKeys.questEnds_add] = {88749},
+        },
+        [16531] = { -- Faint Necrotic Crystal : https://wowhead.com/forever/npc=16531/faint-necrotic-crystal
+            [npcKeys.questStarts_add] = {88748, 88749},
+        },
+        [16786] = { -- Argent Quartermaster : https://wowhead.com/forever/npc=16786/argent-quartermaster
+            [npcKeys.questStarts_add] = {87434, 87436, 87438, 87440, 88746, 88883},
+            [npcKeys.questEnds_add] = {87434, 87436, 87438, 87440, 88746, 88883},
+        },
+        [16787] = { -- Argent Outfitter : https://wowhead.com/forever/npc=16787/argent-outfitter
+            [npcKeys.questStarts_add] = {87433, 87435, 87437, 87439, 88747, 88882},
+            [npcKeys.questEnds_add] = {87433, 87435, 87437, 87439, 88747, 88882},
+        },
+        [17068] = { -- Chief Expeditionary Requisitioner Enkles : https://wowhead.com/forever/npc=17068/chief-expeditionary-requisitioner-enkles
+            [npcKeys.questStarts] = {86725},
+            [npcKeys.questEnds] = {86725},
+        },
+        [17070] = { -- Apothecary Quinard : https://wowhead.com/forever/npc=17070/apothecary-quinard
+            [npcKeys.questStarts] = {86724},
+            [npcKeys.questEnds] = {86724},
         },
         [20735] = { -- Archmage Lan'dalock : https://wowhead.com/forever/npc=20735/archmage-landalock
             [npcKeys.name] = "Archmage Lan'dalock",
             [npcKeys.spawns] = {[36] = {{15.4, 74}, {15.6, 73.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
-            [npcKeys.questStarts] = {96773},
+            [npcKeys.questStarts] = {96772, 96773},
         },
         [23909] = { -- Sinister Squashling : https://wowhead.com/forever/npc=23909/sinister-squashling
             [npcKeys.name] = "Sinister Squashling",
@@ -1584,11 +2275,37 @@ function ForeverBaseNpc:Load()
         [71488] = { -- Blossoming Ancient : https://wowhead.com/forever/npc=71488/blossoming-ancient
             [npcKeys.name] = "Blossoming Ancient",
         },
+        [162539] = { -- World Talent Master : https://wowhead.com/forever/npc=162539/world-talent-master
+            [npcKeys.name] = "World Talent Master",
+            [npcKeys.subName] = "Talent Master",
+        },
         [165189] = { -- Generic Hunter Pet : https://wowhead.com/forever/npc=165189/generic-hunter-pet
             [npcKeys.name] = "Generic Hunter Pet",
         },
         [167875] = { -- RTC Player Dummy : https://wowhead.com/forever/npc=167875/rtc-player-dummy
             [npcKeys.name] = "RTC Player Dummy",
+        },
+        [169106] = { -- Shea Dorrisist : https://wowhead.com/forever/npc=169106/shea-dorrisist
+            [npcKeys.name] = "Shea Dorrisist",
+            [npcKeys.subName] = "Shadow Resist Vendor",
+        },
+        [176552] = { -- Orgrimmar : https://wowhead.com/forever/npc=176552/orgrimmar
+            [npcKeys.name] = "Orgrimmar",
+        },
+        [176553] = { -- Stormwind : https://wowhead.com/forever/npc=176553/stormwind
+            [npcKeys.name] = "Stormwind",
+        },
+        [176721] = { -- Dummy : https://wowhead.com/forever/npc=176721/dummy
+            [npcKeys.name] = "Dummy",
+        },
+        [177063] = { -- Spellcaster Dummy : https://wowhead.com/forever/npc=177063/spellcaster-dummy
+            [npcKeys.name] = "Spellcaster Dummy",
+        },
+        [183709] = { -- Season 01 Controller - Era : https://wowhead.com/forever/npc=183709/season-01-controller-era
+            [npcKeys.name] = "Season 01 Controller - Era",
+        },
+        [183713] = { -- Season 02 Controller - Fresh Start : https://wowhead.com/forever/npc=183713/season-02-controller-fresh-start
+            [npcKeys.name] = "Season 02 Controller - Fresh Start",
         },
         [184157] = { -- Apprentice Watcher : https://wowhead.com/forever/npc=184157/apprentice-watcher
             [npcKeys.name] = "Apprentice Watcher",
@@ -1596,6 +2313,188 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[1537] = {{75.4, 9.4}, {75.4, 9.6}, {75.6, 9.6}, {75.8, 8.6}, {76, 8.4}, {76.6, 9.6}}, [1657] = {{37.4, 81.6}, {38, 80.4}, {38, 80.6}, {38.2, 79.4}, {38.4, 81.8}, {38.6, 80.4}, {38.6, 80.6}, {38.6, 81.6}}},
             [npcKeys.friendlyToFaction] = "A",
+        },
+        [184314] = { -- Beta Vendor and Raid Teleporter : https://wowhead.com/forever/npc=184314/beta-vendor-and-raid-teleporter
+            [npcKeys.name] = "Beta Vendor and Raid Teleporter",
+        },
+        [184383] = { -- Sulfuron Harbinger : https://wowhead.com/forever/npc=184383/sulfuron-harbinger
+            [npcKeys.name] = "Sulfuron Harbinger",
+        },
+        [185320] = { -- Unstable Chromatic Drake : https://wowhead.com/forever/npc=185320/unstable-chromatic-drake
+            [npcKeys.name] = "Unstable Chromatic Drake",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.BLACKWING_LAIR,
+        },
+        [185331] = { -- Avelina Lilly Projection : https://wowhead.com/forever/npc=185331/avelina-lilly-projection
+            [npcKeys.name] = "Avelina Lilly Projection",
+        },
+        [185332] = { -- Isaac Pearson Projection : https://wowhead.com/forever/npc=185332/isaac-pearson-projection
+            [npcKeys.name] = "Isaac Pearson Projection",
+        },
+        [185336] = { -- Jezelle's Incubus : https://wowhead.com/forever/npc=185336/jezelles-incubus
+            [npcKeys.name] = "Jezelle's Incubus",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[1497] = {{77.4, 13.8}, {77.8, 14.6}, {78.4, 14.2}, {78.6, 14.2}}},
+            [npcKeys.zoneID] = zoneIDs.UNDERCITY,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [185585] = { -- Flame Patch : https://wowhead.com/forever/npc=185585/flame-patch
+            [npcKeys.name] = "Flame Patch",
+        },
+        [185590] = { -- Dream Fog : https://wowhead.com/forever/npc=185590/dream-fog
+            [npcKeys.name] = "Dream Fog",
+        },
+        [185605] = { -- Chromatic Drakonid Spawner : https://wowhead.com/forever/npc=185605/chromatic-drakonid-spawner
+            [npcKeys.name] = "Chromatic Drakonid Spawner",
+        },
+        [185631] = { -- Corrupted Weapon : https://wowhead.com/forever/npc=185631/corrupted-weapon
+            [npcKeys.name] = "Corrupted Weapon",
+        },
+        [185658] = { -- Corrupted Weapon : https://wowhead.com/forever/npc=185658/corrupted-weapon
+            [npcKeys.name] = "Corrupted Weapon",
+        },
+        [185746] = { -- Bouncing Bolt : https://wowhead.com/forever/npc=185746/bouncing-bolt
+            [npcKeys.name] = "Bouncing Bolt",
+        },
+        [185760] = { -- Nightmare Brambles : https://wowhead.com/forever/npc=185760/nightmare-brambles
+            [npcKeys.name] = "Nightmare Brambles",
+        },
+        [186130] = { -- [DNT] Ebonroc and Flamegor Controller : https://wowhead.com/forever/npc=186130/dnt-ebonroc-and-flamegor-controller
+            [npcKeys.name] = "[DNT] Ebonroc and Flamegor Controller",
+        },
+        [186348] = { -- The Prophet Skeram : https://wowhead.com/forever/npc=186348/the-prophet-skeram
+            [npcKeys.name] = "The Prophet Skeram",
+        },
+        [186506] = { -- [DNT] Frost Tomb : https://wowhead.com/forever/npc=186506/dnt-frost-tomb
+            [npcKeys.name] = "[DNT] Frost Tomb",
+        },
+        [187162] = { -- Eye of C'Thun : https://wowhead.com/forever/npc=187162/eye-of-cthun
+            [npcKeys.name] = "Eye of C'Thun",
+        },
+        [187237] = { -- Stalker : https://wowhead.com/forever/npc=187237/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [187274] = { -- Stalker : https://wowhead.com/forever/npc=187274/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [187309] = { -- Eye of C'Thun : https://wowhead.com/forever/npc=187309/eye-of-cthun
+            [npcKeys.name] = "Eye of C'Thun",
+        },
+        [187327] = { -- Claw Tentacle : https://wowhead.com/forever/npc=187327/claw-tentacle
+            [npcKeys.name] = "Claw Tentacle",
+        },
+        [187345] = { -- Eye Tentacle : https://wowhead.com/forever/npc=187345/eye-tentacle
+            [npcKeys.name] = "Eye Tentacle",
+        },
+        [187346] = { -- Giant Claw Tentacle : https://wowhead.com/forever/npc=187346/giant-claw-tentacle
+            [npcKeys.name] = "Giant Claw Tentacle",
+        },
+        [187564] = { -- AQ40 Bonus Difficulty Indicator : https://wowhead.com/forever/npc=187564/aq40-bonus-difficulty-indicator
+            [npcKeys.name] = "AQ40 Bonus Difficulty Indicator",
+        },
+        [187664] = { -- Fungal Spore Cluster : https://wowhead.com/forever/npc=187664/fungal-spore-cluster
+            [npcKeys.name] = "Fungal Spore Cluster",
+        },
+        [187724] = { -- Mad Scientist : https://wowhead.com/forever/npc=187724/mad-scientist
+            [npcKeys.name] = "Mad Scientist",
+        },
+        [187725] = { -- Deathknight Captain : https://wowhead.com/forever/npc=187725/deathknight-captain
+            [npcKeys.name] = "Deathknight Captain",
+        },
+        [187728] = { -- Necropolis Acolyte : https://wowhead.com/forever/npc=187728/necropolis-acolyte
+            [npcKeys.name] = "Necropolis Acolyte",
+        },
+        [187729] = { -- Patchwork Golem : https://wowhead.com/forever/npc=187729/patchwork-golem
+            [npcKeys.name] = "Patchwork Golem",
+        },
+        [187798] = { -- Corrupted Weapon : https://wowhead.com/forever/npc=187798/corrupted-weapon
+            [npcKeys.name] = "Corrupted Weapon",
+        },
+        [187801] = { -- Corrupted Weapon : https://wowhead.com/forever/npc=187801/corrupted-weapon
+            [npcKeys.name] = "Corrupted Weapon",
+        },
+        [187832] = { -- Skeletal Hitching Post : https://wowhead.com/forever/npc=187832/skeletal-hitching-post
+            [npcKeys.name] = "Skeletal Hitching Post",
+        },
+        [187978] = { -- Thaddius Mechanic Stalker : https://wowhead.com/forever/npc=187978/thaddius-mechanic-stalker
+            [npcKeys.name] = "Thaddius Mechanic Stalker",
+        },
+        [187993] = { -- Plagued Ghoul : https://wowhead.com/forever/npc=187993/plagued-ghoul
+            [npcKeys.name] = "Plagued Ghoul",
+        },
+        [188018] = { -- Dread Stalker : https://wowhead.com/forever/npc=188018/dread-stalker
+            [npcKeys.name] = "Dread Stalker",
+        },
+        [188109] = { -- Tentacle Portal : https://wowhead.com/forever/npc=188109/tentacle-portal
+            [npcKeys.name] = "Tentacle Portal",
+        },
+        [188110] = { -- Tentacle Portal : https://wowhead.com/forever/npc=188110/tentacle-portal
+            [npcKeys.name] = "Tentacle Portal",
+        },
+        [188111] = { -- Tentacle Portal : https://wowhead.com/forever/npc=188111/tentacle-portal
+            [npcKeys.name] = "Tentacle Portal",
+        },
+        [188119] = { -- Claw Tentacle : https://wowhead.com/forever/npc=188119/claw-tentacle
+            [npcKeys.name] = "Claw Tentacle",
+        },
+        [188131] = { -- Giant Claw Tentacle : https://wowhead.com/forever/npc=188131/giant-claw-tentacle
+            [npcKeys.name] = "Giant Claw Tentacle",
+        },
+        [188134] = { -- Eye Tentacle : https://wowhead.com/forever/npc=188134/eye-tentacle
+            [npcKeys.name] = "Eye Tentacle",
+        },
+        [188147] = { -- Tentacle Portal : https://wowhead.com/forever/npc=188147/tentacle-portal
+            [npcKeys.name] = "Tentacle Portal",
+        },
+        [188148] = { -- Tentacle Portal : https://wowhead.com/forever/npc=188148/tentacle-portal
+            [npcKeys.name] = "Tentacle Portal",
+        },
+        [188170] = { -- Giant Tentacle Portal : https://wowhead.com/forever/npc=188170/giant-tentacle-portal
+            [npcKeys.name] = "Giant Tentacle Portal",
+        },
+        [188178] = { -- Tentacle Portal : https://wowhead.com/forever/npc=188178/tentacle-portal
+            [npcKeys.name] = "Tentacle Portal",
+        },
+        [188182] = { -- Tentacle Portal : https://wowhead.com/forever/npc=188182/tentacle-portal
+            [npcKeys.name] = "Tentacle Portal",
+        },
+        [188183] = { -- Giant Tentacle Portal : https://wowhead.com/forever/npc=188183/giant-tentacle-portal
+            [npcKeys.name] = "Giant Tentacle Portal",
+        },
+        [189047] = { -- [DNT] Quick Sand : https://wowhead.com/forever/npc=189047/dnt-quick-sand
+            [npcKeys.name] = "[DNT] Quick Sand",
+        },
+        [200571] = { -- Artificer Terothordius : https://wowhead.com/forever/npc=200571/artificer-terothordius
+            [npcKeys.name] = "Artificer Terothordius",
+            [npcKeys.subName] = "Engraving Trainer",
+        },
+        [201722] = { -- Ghamoo-ra : https://wowhead.com/forever/npc=201722/ghamoo-ra
+            [npcKeys.name] = "Ghamoo-ra",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [201854] = { -- Cutty : https://wowhead.com/forever/npc=201854/cutty
+            [npcKeys.name] = "Cutty",
+            [npcKeys.minLevel] = 8,
+            [npcKeys.maxLevel] = 8,
+            [npcKeys.spawns] = {[12] = {{49.8, 52}}},
+            [npcKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [201933] = { -- Spellfrost Orb : https://wowhead.com/forever/npc=201933/spellfrost-orb
+            [npcKeys.name] = "Spellfrost Orb",
+        },
+        [202060] = { -- Frozen Murloc : https://wowhead.com/forever/npc=202060/frozen-murloc
+            [npcKeys.name] = "Frozen Murloc",
+            [npcKeys.minLevel] = 9,
+            [npcKeys.maxLevel] = 9,
+            [npcKeys.spawns] = {[12] = {{76.8, 51.4}, {77, 51.8}}, [85] = {{66.2, 40.2}}},
+        },
+        [202079] = { -- Shadowfiend : https://wowhead.com/forever/npc=202079/shadowfiend
+            [npcKeys.name] = "Shadowfiend",
         },
         [202093] = { -- Polymorphed Apprentice : https://wowhead.com/forever/npc=202093/polymorphed-apprentice
             [npcKeys.name] = "Polymorphed Apprentice",
@@ -1612,6 +2511,44 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1537] = {{44, 11}, {47.4, 12.6}, {49.2, 12.6}, {50.4, 11.6}, {51.2, 12.6}, {51.4, 10.6}, {51.4, 11.8}, {51.8, 12.4}, {51.8, 12.6}, {51.8, 13.6}, {52, 10.6}, {52.6, 9.6}, {52.8, 9}}},
             [npcKeys.friendlyToFaction] = "A",
         },
+        [202387] = { -- Eye of the Void : https://wowhead.com/forever/npc=202387/eye-of-the-void
+            [npcKeys.name] = "Eye of the Void",
+        },
+        [202390] = { -- Homunculus : https://wowhead.com/forever/npc=202390/homunculus
+            [npcKeys.name] = "Homunculus",
+        },
+        [202391] = { -- Homunculus : https://wowhead.com/forever/npc=202391/homunculus
+            [npcKeys.name] = "Homunculus",
+            [npcKeys.spawns] = {[440] = {{34.2, 57.8}, {35, 58}, {49.8, 33.8}, {49.8, 35.4}}},
+            [npcKeys.zoneID] = zoneIDs.TANARIS,
+        },
+        [202392] = { -- Homunculus : https://wowhead.com/forever/npc=202392/homunculus
+            [npcKeys.name] = "Homunculus",
+        },
+        [202699] = { -- Baron Aquanis : https://wowhead.com/forever/npc=202699/baron-aquanis
+            [npcKeys.name] = "Baron Aquanis",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [202838] = { -- Fathom Elemental : https://wowhead.com/forever/npc=202838/fathom-elemental
+            [npcKeys.name] = "Fathom Elemental",
+            [npcKeys.minLevel] = 26,
+            [npcKeys.maxLevel] = 26,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [202839] = { -- Riptide Elemental : https://wowhead.com/forever/npc=202839/riptide-elemental
+            [npcKeys.name] = "Riptide Elemental",
+            [npcKeys.minLevel] = 26,
+            [npcKeys.maxLevel] = 26,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [202840] = { -- Torrent Elemental : https://wowhead.com/forever/npc=202840/torrent-elemental
+            [npcKeys.name] = "Torrent Elemental",
+            [npcKeys.minLevel] = 26,
+            [npcKeys.maxLevel] = 26,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
         [203079] = { -- Wandering Swordsman : https://wowhead.com/forever/npc=203079/wandering-swordsman
             [npcKeys.name] = "Wandering Swordsman",
             [npcKeys.minLevel] = 7,
@@ -1619,12 +2556,36 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1] = {{53.4, 47.4}, {53.4, 47.8}, {53.6, 47.4}, {53.6, 47.6}}, [12] = {{22.2, 73.4}, {22.4, 73.6}, {22.6, 73.2}, {25.2, 70}, {25.6, 69.8}, {30, 73}, {36, 80.4}, {36, 80.6}, {38.4, 75.4}, {38.4, 75.6}, {38.6, 75.4}, {38.6, 75.6}, {40.8, 74.6}, {41, 74.4}}, [14] = {{36, 47.4}, {36, 48}, {41, 49.4}, {41, 49.6}, {55.8, 38.4}, {55.8, 38.6}, {56.4, 21.4}, {56.4, 27}, {56.6, 21.4}, {56.6, 21.6}}, [85] = {{78.2, 63.4}, {78.4, 65}, {79.4, 64.4}, {79.4, 64.8}, {79.6, 64.4}, {79.6, 65.2}}, [141] = {{39.6, 37.6}, {39.8, 37.4}, {39.8, 69.4}, {39.8, 69.6}, {43.8, 77}, {54.8, 66}, {62.4, 71.8}, {62.6, 71.8}}},
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [203138] = { -- Anvilrage Overseer : https://wowhead.com/forever/npc=203138/anvilrage-overseer
+            [npcKeys.name] = "Anvilrage Overseer",
+            [npcKeys.minLevel] = 48,
+            [npcKeys.maxLevel] = 49,
+            [npcKeys.spawns] = {[46] = {{26, 23}, {26.2, 22}}},
+        },
         [203139] = { -- Son of Arugal : https://wowhead.com/forever/npc=203139/son-of-arugal
             [npcKeys.name] = "Son of Arugal",
             [npcKeys.minLevel] = 24,
             [npcKeys.maxLevel] = 25,
             [npcKeys.spawns] = {[130] = {{37.3, 15.4}, {37.6, 15.3}, {38, 15.9}, {38.7, 15.4}, {39.4, 16.3}, {39.9, 17.4}, {40.2, 17.6}, {40.8, 18.2}, {41.1, 18.7}, {43.3, 29.4}, {43.4, 29.5}, {44.8, 27.5}, {44.9, 27.2}, {46.1, 77.2}, {46.6, 75.9}, {47.1, 32.4}, {47.2, 72.3}, {47.5, 33.5}, {47.8, 33.2}, {48.1, 72}, {48.3, 71.2}, {48.5, 72}, {48.8, 32.9}, {48.8, 71.4}, {48.9, 24}, {50.3, 71.8}, {50.6, 71.9}, {50.6, 72.8}, {82.1, 59.5}}},
             [npcKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
+        },
+        [203147] = { -- Whirlpool : https://wowhead.com/forever/npc=203147/whirlpool
+            [npcKeys.name] = "Whirlpool",
+        },
+        [203218] = { -- Giant Whirlpool : https://wowhead.com/forever/npc=203218/giant-whirlpool
+            [npcKeys.name] = "Giant Whirlpool",
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [203226] = { -- Viktoria Woods : https://wowhead.com/forever/npc=203226/viktoria-woods
+            [npcKeys.name] = "Viktoria Woods",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Monster Hunter",
+        },
+        [203279] = { -- Riptide Essence : https://wowhead.com/forever/npc=203279/riptide-essence
+            [npcKeys.name] = "Riptide Essence",
         },
         [203475] = { -- Liv Bradford : https://wowhead.com/forever/npc=203475/liv-bradford
             [npcKeys.name] = "Liv Bradford",
@@ -1642,11 +2603,64 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
             [npcKeys.friendlyToFaction] = "A",
         },
+        [203694] = { -- Riding Lobster (Dead) : https://wowhead.com/forever/npc=203694/riding-lobster-dead
+            [npcKeys.name] = "Riding Lobster (Dead)",
+        },
+        [204068] = { -- Lady Sarevess : https://wowhead.com/forever/npc=204068/lady-sarevess
+            [npcKeys.name] = "Lady Sarevess",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
         [204070] = { -- Soboz : https://wowhead.com/forever/npc=204070/soboz
             [npcKeys.name] = "Soboz",
             [npcKeys.minLevel] = 8,
             [npcKeys.maxLevel] = 8,
             [npcKeys.spawns] = {[1] = {{42.2, 35.4}, {42.2, 35.6}}, [14] = {{67.4, 87.8}, {67.6, 87.8}}, [1497] = {{22.2, 41.8}, {22.6, 43.2}, {23.2, 39.6}, {23.2, 42.2}, {23.4, 41.4}, {23.6, 40.4}, {23.8, 39.4}, {24, 41.4}, {24, 41.6}}},
+        },
+        [204091] = { -- Blackfathom Elite : https://wowhead.com/forever/npc=204091/blackfathom-elite
+            [npcKeys.name] = "Blackfathom Elite",
+            [npcKeys.minLevel] = 26,
+            [npcKeys.maxLevel] = 26,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [204253] = { -- Blackfathom Elite Spawner : https://wowhead.com/forever/npc=204253/blackfathom-elite-spawner
+            [npcKeys.name] = "Blackfathom Elite Spawner",
+        },
+        [204256] = { -- Damien Kane : https://wowhead.com/forever/npc=204256/damien-kane
+            [npcKeys.name] = "Damien Kane",
+            [npcKeys.minLevel] = 10,
+            [npcKeys.maxLevel] = 10,
+            [npcKeys.spawns] = {[12] = {{44, 66.2}}},
+            [npcKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Soul Broker",
+        },
+        [204346] = { -- Treant : https://wowhead.com/forever/npc=204346/treant
+            [npcKeys.name] = "Treant",
+        },
+        [204503] = { -- Dead Acolyte : https://wowhead.com/forever/npc=204503/dead-acolyte
+            [npcKeys.name] = "Dead Acolyte",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[12] = {{56.4, 57.4}, {56.4, 57.8}, {56.6, 57.4}, {56.6, 57.6}}},
+            [npcKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [204545] = { -- Tim's Stalker 01 : https://wowhead.com/forever/npc=204545/tims-stalker-01
+            [npcKeys.name] = "Tim's Stalker 01",
+        },
+        [204645] = { -- Blackfathom Elite : https://wowhead.com/forever/npc=204645/blackfathom-elite
+            [npcKeys.name] = "Blackfathom Elite",
+            [npcKeys.minLevel] = 26,
+            [npcKeys.maxLevel] = 26,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [204675] = { -- Rune Scrying Stalker : https://wowhead.com/forever/npc=204675/rune-scrying-stalker
+            [npcKeys.name] = "Rune Scrying Stalker",
+        },
+        [204758] = { -- Exploded Corpse : https://wowhead.com/forever/npc=204758/exploded-corpse
+            [npcKeys.name] = "Exploded Corpse",
         },
         [204827] = { -- Adventurer's Remains : https://wowhead.com/forever/npc=204827/adventurers-remains
             [npcKeys.name] = "Adventurer's Remains",
@@ -1655,6 +2669,12 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1] = {{43, 49.4}, {43, 49.6}}, [12] = {{52.2, 84.4}, {52.2, 84.6}}, [14] = {{48, 79.4}, {48, 79.6}}, [141] = {{33.4, 35.6}, {33.6, 35.4}, {33.6, 35.6}}},
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [204921] = { -- Gelihast : https://wowhead.com/forever/npc=204921/gelihast
+            [npcKeys.name] = "Gelihast",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
         [204937] = { -- Adventurer's Spirit : https://wowhead.com/forever/npc=204937/adventurers-spirit
             [npcKeys.name] = "Adventurer's Spirit",
             [npcKeys.minLevel] = 1,
@@ -1662,23 +2682,234 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1] = {{43, 49.4}, {43, 49.6}}, [12] = {{52.2, 84.4}, {52.2, 84.6}}, [14] = {{48, 79.4}, {48, 79.6}}, [141] = {{33.4, 35.6}, {33.6, 35.4}, {33.6, 35.6}}},
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [204940] = { -- Puddle : https://wowhead.com/forever/npc=204940/puddle
+            [npcKeys.name] = "Puddle",
+            [npcKeys.subName] = "The Wet",
+        },
+        [204960] = { -- Chomp : https://wowhead.com/forever/npc=204960/chomp
+            [npcKeys.name] = "Chomp",
+            [npcKeys.subName] = "The Jaws",
+        },
+        [204961] = { -- Snarly : https://wowhead.com/forever/npc=204961/snarly
+            [npcKeys.name] = "Snarly",
+            [npcKeys.subName] = "The Swift",
+        },
+        [204962] = { -- Tidelurker Mrrglrlr : https://wowhead.com/forever/npc=204962/tidelurker-mrrglrlr
+            [npcKeys.name] = "Tidelurker Mrrglrlr",
+        },
+        [204989] = { -- Wounded Adventurer : https://wowhead.com/forever/npc=204989/wounded-adventurer
+            [npcKeys.name] = "Wounded Adventurer",
+            [npcKeys.minLevel] = 5,
+            [npcKeys.maxLevel] = 5,
+            [npcKeys.spawns] = {[12] = {{61.8, 47}, {61.8, 47.6}}},
+            [npcKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [205153] = { -- Ada Gelhardt : https://wowhead.com/forever/npc=205153/ada-gelhardt
+            [npcKeys.name] = "Ada Gelhardt",
+            [npcKeys.minLevel] = 10,
+            [npcKeys.maxLevel] = 10,
+            [npcKeys.spawns] = {[10] = {{4.2, 28.6}, {4.4, 28.2}, {4.6, 28.2}, {4.6, 28.6}}},
+            [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [205278] = { -- Brother Romulus : https://wowhead.com/forever/npc=205278/brother-romulus
+            [npcKeys.name] = "Brother Romulus",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [205382] = { -- Mokwa : https://wowhead.com/forever/npc=205382/mokwa
+            [npcKeys.name] = "Mokwa",
+            [npcKeys.minLevel] = 7,
+            [npcKeys.maxLevel] = 7,
+            [npcKeys.zoneID] = zoneIDs.MULGORE,
+        },
+        [205383] = { -- Hunter's Vision : https://wowhead.com/forever/npc=205383/hunters-vision
+            [npcKeys.name] = "Hunter's Vision",
+        },
+        [205422] = { -- Hunter's Vision : https://wowhead.com/forever/npc=205422/hunters-vision
+            [npcKeys.name] = "Hunter's Vision",
+        },
+        [205423] = { -- Hunter's Vision : https://wowhead.com/forever/npc=205423/hunters-vision
+            [npcKeys.name] = "Hunter's Vision",
+        },
+        [205635] = { -- Takoda Sunmane : https://wowhead.com/forever/npc=205635/takoda-sunmane
+            [npcKeys.name] = "Takoda Sunmane",
+            [npcKeys.minLevel] = 8,
+            [npcKeys.maxLevel] = 8,
+            [npcKeys.zoneID] = zoneIDs.MULGORE,
+            [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Naturalist",
+        },
+        [205692] = { -- Rustling Bush : https://wowhead.com/forever/npc=205692/rustling-bush
+            [npcKeys.name] = "Rustling Bush",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.zoneID] = zoneIDs.MULGORE,
+        },
         [205700] = { -- Venture Co. Poacher : https://wowhead.com/forever/npc=205700/venture-co-poacher
             [npcKeys.name] = "Venture Co. Poacher",
             [npcKeys.minLevel] = 6,
             [npcKeys.maxLevel] = 7,
             [npcKeys.zoneID] = zoneIDs.MULGORE,
         },
+        [205724] = { -- Blackfathom Tendril : https://wowhead.com/forever/npc=205724/blackfathom-tendril
+            [npcKeys.name] = "Blackfathom Tendril",
+            [npcKeys.minLevel] = 27,
+            [npcKeys.maxLevel] = 27,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
         [205729] = { -- Boarton Shadetotem : https://wowhead.com/forever/npc=205729/boarton-shadetotem
             [npcKeys.name] = "Boarton Shadetotem",
             [npcKeys.minLevel] = 4,
             [npcKeys.maxLevel] = 30,
-            [npcKeys.spawns] = {[1638] = {{39.4, 64.4}, {39.4, 65.4}, {39.4, 65.6}, {39.6, 64.4}, {39.6, 65.4}, {39.6, 65.6}}},
+            [npcKeys.spawns] = {[1638] = {{39.4, 64.4}, {39.4, 65.2}, {39.4, 65.6}, {39.6, 64.4}, {39.6, 65.4}, {39.6, 65.6}}},
             [npcKeys.zoneID] = zoneIDs.THUNDER_BLUFF,
             [npcKeys.questStarts] = {76156, 76160, 76240},
             [npcKeys.questEnds] = {76156, 76160, 76240},
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Rogue Trainer?",
             [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 53 trainingcost=100; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
+        },
+        [205733] = { -- Blackfathom Pearl : https://wowhead.com/forever/npc=205733/blackfathom-pearl
+            [npcKeys.name] = "Blackfathom Pearl",
+        },
+        [205765] = { -- Murloc Egg : https://wowhead.com/forever/npc=205765/murloc-egg
+            [npcKeys.name] = "Murloc Egg",
+        },
+        [205767] = { -- Void Murloc : https://wowhead.com/forever/npc=205767/void-murloc
+            [npcKeys.name] = "Void Murloc",
+        },
+        [205805] = { -- Water Elemental : https://wowhead.com/forever/npc=205805/water-elemental
+            [npcKeys.name] = "Water Elemental",
+        },
+        [206152] = { -- SoD Test Dummy 25 : https://wowhead.com/forever/npc=206152/sod-test-dummy-25
+            [npcKeys.name] = "SoD Test Dummy 25",
+        },
+        [206153] = { -- SoD Test Dummy 26 : https://wowhead.com/forever/npc=206153/sod-test-dummy-26
+            [npcKeys.name] = "SoD Test Dummy 26",
+        },
+        [206154] = { -- SoD Test Dummy 27 : https://wowhead.com/forever/npc=206154/sod-test-dummy-27
+            [npcKeys.name] = "SoD Test Dummy 27",
+        },
+        [206155] = { -- SoD Test Dummy 28 : https://wowhead.com/forever/npc=206155/sod-test-dummy-28
+            [npcKeys.name] = "SoD Test Dummy 28",
+        },
+        [206217] = { -- Bubble Beam Stalker : https://wowhead.com/forever/npc=206217/bubble-beam-stalker
+            [npcKeys.name] = "Bubble Beam Stalker",
+        },
+        [206245] = { -- Unleashed Nature Spirit : https://wowhead.com/forever/npc=206245/unleashed-nature-spirit
+            [npcKeys.name] = "Unleashed Nature Spirit",
+            [npcKeys.minLevel] = 7,
+            [npcKeys.maxLevel] = 7,
+            [npcKeys.spawns] = {[141] = {{67, 58}, {67, 58.6}}},
+        },
+        [206248] = { -- Wooden Effigy : https://wowhead.com/forever/npc=206248/wooden-effigy
+            [npcKeys.name] = "Wooden Effigy",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[141] = {{67, 58.2}}},
+        },
+        [207010] = { -- Telemachus : https://wowhead.com/forever/npc=207010/telemachus
+            [npcKeys.name] = "Telemachus",
+            [npcKeys.subName] = "Dungeon Friend",
+        },
+        [207356] = { -- Lorgus Jett : https://wowhead.com/forever/npc=207356/lorgus-jett
+            [npcKeys.name] = "Lorgus Jett",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [207358] = { -- Blackfathom Tide Priestess : https://wowhead.com/forever/npc=207358/blackfathom-tide-priestess
+            [npcKeys.name] = "Blackfathom Tide Priestess",
+            [npcKeys.minLevel] = 27,
+            [npcKeys.maxLevel] = 27,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [207359] = { -- Blackfathom Tide Priestess : https://wowhead.com/forever/npc=207359/blackfathom-tide-priestess
+            [npcKeys.name] = "Blackfathom Tide Priestess",
+            [npcKeys.minLevel] = 27,
+            [npcKeys.maxLevel] = 27,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [207367] = { -- Blackfathom Tide Priestess : https://wowhead.com/forever/npc=207367/blackfathom-tide-priestess
+            [npcKeys.name] = "Blackfathom Tide Priestess",
+            [npcKeys.minLevel] = 27,
+            [npcKeys.maxLevel] = 27,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [207397] = { -- Corrupted Windfury Totem : https://wowhead.com/forever/npc=207397/corrupted-windfury-totem
+            [npcKeys.name] = "Corrupted Windfury Totem",
+            [npcKeys.minLevel] = 27,
+            [npcKeys.maxLevel] = 27,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [207457] = { -- Corrupted Lightning Shield Totem : https://wowhead.com/forever/npc=207457/corrupted-lightning-shield-totem
+            [npcKeys.name] = "Corrupted Lightning Shield Totem",
+            [npcKeys.minLevel] = 27,
+            [npcKeys.maxLevel] = 27,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [207515] = { -- Lurkmane : https://wowhead.com/forever/npc=207515/lurkmane
+            [npcKeys.name] = "Lurkmane",
+            [npcKeys.minLevel] = 6,
+            [npcKeys.maxLevel] = 7,
+            [npcKeys.zoneID] = zoneIDs.MULGORE,
+        },
+        [207527] = { -- Corrupted Molten Fury : https://wowhead.com/forever/npc=207527/corrupted-molten-fury
+            [npcKeys.name] = "Corrupted Molten Fury",
+        },
+        [207576] = { -- Corrupted Molten Fury Totem : https://wowhead.com/forever/npc=207576/corrupted-molten-fury-totem
+            [npcKeys.name] = "Corrupted Molten Fury Totem",
+            [npcKeys.minLevel] = 27,
+            [npcKeys.maxLevel] = 27,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [207577] = { -- Lunar Stone : https://wowhead.com/forever/npc=207577/lunar-stone
+            [npcKeys.name] = "Lunar Stone",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.zoneID] = zoneIDs.MULGORE,
+        },
+        [207588] = { -- Mulgore Lunar Stone Invisible Stalker : https://wowhead.com/forever/npc=207588/mulgore-lunar-stone-invisible-stalker
+            [npcKeys.name] = "Mulgore Lunar Stone Invisible Stalker",
+        },
+        [207637] = { -- Vateya Timberhoof : https://wowhead.com/forever/npc=207637/vateya-timberhoof
+            [npcKeys.name] = "Vateya Timberhoof",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.zoneID] = zoneIDs.MULGORE,
+            [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Monster Hunter",
+        },
+        [207743] = { -- Netali Proudwind : https://wowhead.com/forever/npc=207743/netali-proudwind
+            [npcKeys.name] = "Netali Proudwind",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.spawns] = {[1638] = {{28.4, 18.2}, {28.4, 19.2}, {28.6, 18.2}, {28.6, 18.6}}},
+            [npcKeys.zoneID] = zoneIDs.THUNDER_BLUFF,
+            [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "General Goods",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [207754] = { -- Mooart : https://wowhead.com/forever/npc=207754/mooart
+            [npcKeys.name] = "Mooart",
+            [npcKeys.minLevel] = 10,
+            [npcKeys.maxLevel] = 10,
+            [npcKeys.spawns] = {[1638] = {{25.4, 18}, {26.4, 18.4}, {26.4, 18.8}, {26.4, 19.8}, {26.6, 19}, {26.6, 19.8}, {27, 18.4}, {27.2, 14.4}, {27.6, 19}, {28, 21.4}, {28.2, 19.8}, {28.4, 22.4}, {28.6, 23.2}, {29.4, 21.6}, {31.6, 27.4}}},
+            [npcKeys.zoneID] = zoneIDs.THUNDER_BLUFF,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [207957] = { -- Vahi Bonesplitter : https://wowhead.com/forever/npc=207957/vahi-bonesplitter
+            [npcKeys.name] = "Vahi Bonesplitter",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.spawns] = {[14] = {{53, 43.4}, {53, 43.6}}},
+            [npcKeys.zoneID] = zoneIDs.DUROTAR,
+            [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Monster Hunter",
         },
         [208023] = { -- Gru'ark : https://wowhead.com/forever/npc=208023/gruark
             [npcKeys.name] = "Gru'ark",
@@ -1688,6 +2919,19 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
             [npcKeys.friendlyToFaction] = "H",
         },
+        [208036] = { -- Ba'so : https://wowhead.com/forever/npc=208036/baso
+            [npcKeys.name] = "Ba'so",
+            [npcKeys.minLevel] = 8,
+            [npcKeys.maxLevel] = 8,
+            [npcKeys.spawns] = {[14] = {{51.8, 58.6}, {52, 58.4}}},
+            [npcKeys.zoneID] = zoneIDs.DUROTAR,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [208071] = { -- Back-alley Mugger : https://wowhead.com/forever/npc=208071/back-alley-mugger
+            [npcKeys.name] = "Back-alley Mugger",
+            [npcKeys.spawns] = {[1637] = {{55.8, 44.6}, {56, 44}, {56.2, 42.8}, {56.6, 44.2}, {57.4, 45.2}, {58.8, 50.8}}},
+            [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
+        },
         [208124] = { -- Raluk : https://wowhead.com/forever/npc=208124/raluk
             [npcKeys.name] = "Raluk",
             [npcKeys.minLevel] = 7,
@@ -1695,11 +2939,36 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[14] = {{68.4, 71.4}, {68.4, 71.6}, {68.6, 71.4}, {68.6, 71.6}}},
             [npcKeys.zoneID] = zoneIDs.DUROTAR,
         },
+        [208127] = { -- Hunter's Vision : https://wowhead.com/forever/npc=208127/hunters-vision
+            [npcKeys.name] = "Hunter's Vision",
+        },
+        [208128] = { -- Hunter's Vision : https://wowhead.com/forever/npc=208128/hunters-vision
+            [npcKeys.name] = "Hunter's Vision",
+        },
+        [208158] = { -- Hunter's Vision : https://wowhead.com/forever/npc=208158/hunters-vision
+            [npcKeys.name] = "Hunter's Vision",
+        },
+        [208179] = { -- Rustling Bush : https://wowhead.com/forever/npc=208179/rustling-bush
+            [npcKeys.name] = "Rustling Bush",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[14] = {{40.4, 52}, {40.6, 52}}},
+            [npcKeys.zoneID] = zoneIDs.DUROTAR,
+        },
         [208180] = { -- Razormane Poacher : https://wowhead.com/forever/npc=208180/razormane-poacher
             [npcKeys.name] = "Razormane Poacher",
             [npcKeys.minLevel] = 7,
             [npcKeys.maxLevel] = 8,
             [npcKeys.spawns] = {[1] = {{28.8, 49.8}, {29, 49.4}}, [14] = {{40.4, 51.4}, {40.4, 52}, {40.6, 52}}},
+        },
+        [208184] = { -- Razzil : https://wowhead.com/forever/npc=208184/razzil
+            [npcKeys.name] = "Razzil",
+            [npcKeys.minLevel] = 8,
+            [npcKeys.maxLevel] = 8,
+            [npcKeys.spawns] = {[14] = {{52.2, 44}}},
+            [npcKeys.zoneID] = zoneIDs.DUROTAR,
+            [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Snake Charmer",
         },
         [208196] = { -- Gillgar : https://wowhead.com/forever/npc=208196/gillgar
             [npcKeys.name] = "Gillgar",
@@ -1717,6 +2986,27 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Soul Broker",
         },
+        [208275] = { -- Frozen Makrura : https://wowhead.com/forever/npc=208275/frozen-makrura
+            [npcKeys.name] = "Frozen Makrura",
+            [npcKeys.minLevel] = 9,
+            [npcKeys.maxLevel] = 9,
+            [npcKeys.spawns] = {[14] = {{58.6, 45.4}, {58.6, 45.6}}},
+            [npcKeys.zoneID] = zoneIDs.DUROTAR,
+        },
+        [208307] = { -- Serpent Loa : https://wowhead.com/forever/npc=208307/serpent-loa
+            [npcKeys.name] = "Serpent Loa",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[14] = {{55.4, 72.4}, {55.4, 72.6}}, [17] = {{51.4, 29.4}}},
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [208309] = { -- Loa Altar : https://wowhead.com/forever/npc=208309/loa-altar
+            [npcKeys.name] = "Loa Altar",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[14] = {{55.2, 72.6}, {55.4, 72.4}}, [17] = {{51.4, 29.4}, {51.6, 29.4}}},
+            [npcKeys.friendlyToFaction] = "H",
+        },
         [208518] = { -- Gaeriyan : https://wowhead.com/forever/npc=208518/gaeriyan
             [npcKeys.name] = "Gaeriyan",
             [npcKeys.minLevel] = 60,
@@ -1725,11 +3015,57 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.TANARIS,
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [208546] = { -- Brazier of Embersight : https://wowhead.com/forever/npc=208546/brazier-of-embersight
+            [npcKeys.name] = "Brazier of Embersight",
+        },
         [208565] = { -- Altar of the Light : https://wowhead.com/forever/npc=208565/altar-of-the-light
             [npcKeys.name] = "Altar of the Light",
             [npcKeys.minLevel] = 1,
             [npcKeys.maxLevel] = 1,
             [npcKeys.spawns] = {[1] = {{28.8, 66.4}, {28.8, 66.6}}, [38] = {{37.4, 46.2}, {37.6, 46.2}}, [40] = {{52.6, 52.4}, {52.8, 52.8}}, [1537] = {{31.2, 21.4}, {31.4, 20.4}, {31.4, 21.6}, {31.8, 22}, {32, 20.4}, {32, 20.6}, {32.2, 19.4}, {32.6, 19.8}, {32.6, 21.4}, {32.6, 21.6}, {32.8, 19}}},
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [208619] = { -- Dorac Graves : https://wowhead.com/forever/npc=208619/dorac-graves
+            [npcKeys.name] = "Dorac Graves",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[1497] = {{47.2, 70.4}, {47.2, 71.2}, {48, 70}, {48, 70.6}, {48.2, 71.6}, {48.4, 69.4}, {48.6, 69.2}, {48.6, 69.8}, {48.6, 70.8}, {48.6, 71.6}}},
+            [npcKeys.zoneID] = zoneIDs.UNDERCITY,
+            [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Tactical Surgeon",
+        },
+        [208638] = { -- Fyodi : https://wowhead.com/forever/npc=208638/fyodi
+            [npcKeys.name] = "Fyodi",
+            [npcKeys.minLevel] = 7,
+            [npcKeys.maxLevel] = 7,
+            [npcKeys.spawns] = {[1] = {{27.8, 38.2}, {28.4, 38.6}, {28.4, 42.8}, {28.4, 43.6}, {28.4, 44.8}, {28.6, 43.8}, {28.8, 39.6}, {28.8, 44.8}, {29.2, 38.4}, {29.2, 38.8}, {29.2, 43.4}, {29.4, 42.2}, {29.6, 38.4}, {29.6, 42.2}, {29.6, 42.8}, {29.6, 45.6}, {29.8, 39}, {30.2, 43.6}, {30.4, 36.6}, {30.4, 40.2}, {30.4, 41.2}, {30.6, 37.4}, {30.6, 42.4}, {31, 39.2}, {31, 39.6}, {31.4, 38.4}, {31.6, 39}, {31.6, 40}, {32.2, 36}, {32.2, 38}, {32.4, 37.2}, {32.6, 36.8}, {33, 36.4}, {33.4, 33.4}, {33.4, 34}, {33.4, 35.2}, {33.4, 37.6}, {33.6, 34.4}, {33.6, 35.4}, {33.6, 36}, {33.6, 37.8}, {33.8, 36.6}, {35, 33}, {35.2, 34.2}, {35.2, 36.4}, {35.2, 36.6}, {35.4, 34.6}, {35.4, 38}, {35.6, 33.2}, {35.8, 33.8}, {35.8, 37}, {36, 36.4}, {36.6, 36}, {36.6, 36.6}, {37.6, 35.2}}},
+            [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [208652] = { -- Junni Steelpass : https://wowhead.com/forever/npc=208652/junni-steelpass
+            [npcKeys.name] = "Junni Steelpass",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.spawns] = {[1] = {{46.4, 53.2}, {46.6, 53.4}, {46.6, 53.6}}},
+            [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Monster Hunter",
+        },
+        [208682] = { -- Denton Bleakway : https://wowhead.com/forever/npc=208682/denton-bleakway
+            [npcKeys.name] = "Denton Bleakway",
+            [npcKeys.minLevel] = 10,
+            [npcKeys.maxLevel] = 10,
+            [npcKeys.spawns] = {[1497] = {{83.2, 26.6}, {83.2, 27.6}, {83.4, 25.4}, {83.4, 26}, {83.6, 24.8}, {83.6, 25.8}, {83.6, 27.4}, {83.6, 27.6}}},
+            [npcKeys.zoneID] = zoneIDs.UNDERCITY,
+            [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Soul Broker",
+        },
+        [208711] = { -- Toby : https://wowhead.com/forever/npc=208711/toby
+            [npcKeys.name] = "Toby",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[1] = {{63.4, 50.2}, {63.6, 50.2}}},
+            [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
             [npcKeys.friendlyToFaction] = "A",
         },
         [208712] = { -- Odd Melon : https://wowhead.com/forever/npc=208712/odd-melon
@@ -1747,6 +3083,27 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1] = {{69.2, 58.2}, {69.4, 58.6}}},
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
         },
+        [208758] = { -- Junior Apothecary : https://wowhead.com/forever/npc=208758/junior-apothecary
+            [npcKeys.name] = "Junior Apothecary",
+            [npcKeys.subName] = "Royal Apothecary Society",
+        },
+        [208802] = { -- Wounded Adventurer : https://wowhead.com/forever/npc=208802/wounded-adventurer
+            [npcKeys.name] = "Wounded Adventurer",
+            [npcKeys.minLevel] = 5,
+            [npcKeys.maxLevel] = 5,
+            [npcKeys.spawns] = {[1] = {{25.4, 43.4}, {25.4, 43.6}, {25.6, 43.4}, {25.6, 43.6}}},
+            [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [208809] = { -- Hunter's Vision : https://wowhead.com/forever/npc=208809/hunters-vision
+            [npcKeys.name] = "Hunter's Vision",
+        },
+        [208810] = { -- Hunter's Vision : https://wowhead.com/forever/npc=208810/hunters-vision
+            [npcKeys.name] = "Hunter's Vision",
+        },
+        [208811] = { -- Hunter's Vision : https://wowhead.com/forever/npc=208811/hunters-vision
+            [npcKeys.name] = "Hunter's Vision",
+        },
         [208812] = { -- Jorul : https://wowhead.com/forever/npc=208812/jorul
             [npcKeys.name] = "Jorul",
             [npcKeys.minLevel] = 8,
@@ -1754,12 +3111,76 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1] = {{35.4, 43.6}, {37.2, 42.4}, {37.4, 42.6}, {37.8, 42.4}, {38.4, 43.4}, {38.4, 43.6}, {38.6, 43.4}}},
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
         },
+        [208841] = { -- Revered Champion : https://wowhead.com/forever/npc=208841/revered-champion
+            [npcKeys.name] = "Revered Champion",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[46] = {{38, 33.2}, {39.2, 27.4}, {39.4, 28}, {39.4, 28.6}, {39.6, 28.2}, {39.6, 28.6}, {40.2, 30.6}, {40.6, 29.8}, {41, 31.4}, {42.4, 32.4}}},
+            [npcKeys.zoneID] = zoneIDs.BURNING_STEPPES,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [208842] = { -- The Gardener : https://wowhead.com/forever/npc=208842/the-gardener
+            [npcKeys.name] = "The Gardener",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Gardener",
+        },
+        [208843] = { -- Abominable Snowman : https://wowhead.com/forever/npc=208843/abominable-snowman
+            [npcKeys.name] = "Abominable Snowman",
+        },
+        [208844] = { -- Scarlet Revenant : https://wowhead.com/forever/npc=208844/scarlet-revenant
+            [npcKeys.name] = "Scarlet Revenant",
+            [npcKeys.minLevel] = 34,
+            [npcKeys.maxLevel] = 34,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
         [208845] = { -- Par'kourc : https://wowhead.com/forever/npc=208845/parkourc
             [npcKeys.name] = "Par'kourc",
             [npcKeys.minLevel] = 62,
             [npcKeys.maxLevel] = 62,
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
             [npcKeys.subName] = "Blackrock Clan Outrunner",
+        },
+        [208846] = { -- Sun Admirer : https://wowhead.com/forever/npc=208846/sun-admirer
+            [npcKeys.name] = "Sun Admirer",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.spawns] = {[440] = {{30.4, 73.8}, {30.6, 73.8}, {40.2, 28.4}, {47, 66.2}, {52.4, 45}, {52.6, 45}}},
+            [npcKeys.zoneID] = zoneIDs.TANARIS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [208847] = { -- The Snatcher : https://wowhead.com/forever/npc=208847/the-snatcher
+            [npcKeys.name] = "The Snatcher",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[40] = {{34.8, 78.4}, {39.6, 72}, {40, 69.6}, {40.4, 70.8}, {40.8, 67.4}, {41, 71.2}, {41, 71.8}, {41.2, 68.8}, {41.2, 70.4}, {41.6, 68.6}, {41.8, 70}, {42, 71.8}, {42.4, 71.2}, {42.4, 73}, {42.6, 71}, {42.8, 67.2}, {42.8, 69.2}, {43, 68.2}, {43.2, 70.2}, {43.6, 69.6}, {43.6, 71}, {43.8, 71.8}, {44, 65.2}, {44, 69}, {45.2, 66.6}, {45.2, 71}, {45.4, 68}, {45.4, 68.8}, {45.6, 67.6}, {45.6, 68.6}}},
+            [npcKeys.zoneID] = zoneIDs.WESTFALL,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Rascal",
+        },
+        [208875] = { -- Back-alley Mugger : https://wowhead.com/forever/npc=208875/back-alley-mugger
+            [npcKeys.name] = "Back-alley Mugger",
+            [npcKeys.minLevel] = 10,
+            [npcKeys.maxLevel] = 10,
+            [npcKeys.spawns] = {[1637] = {{55.8, 44.6}, {56, 43.8}, {56.2, 42.8}, {57, 44.2}, {57, 45.6}, {57.4, 45.2}, {58.4, 49.6}}},
+            [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [208876] = { -- Cut-throat Mugger : https://wowhead.com/forever/npc=208876/cut-throat-mugger
+            [npcKeys.name] = "Cut-throat Mugger",
+            [npcKeys.minLevel] = 10,
+            [npcKeys.maxLevel] = 10,
+            [npcKeys.spawns] = {[1537] = {{50.2, 11.6}, {50.6, 10.2}, {51, 12.2}, {51.4, 11}, {51.8, 11.4}, {51.8, 12.4}, {52, 12.6}, {52.6, 11.2}, {52.8, 9.2}, {52.8, 10.4}, {57, 12}}},
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [208886] = { -- Blackrat : https://wowhead.com/forever/npc=208886/blackrat
+            [npcKeys.name] = "Blackrat",
+            [npcKeys.minLevel] = 8,
+            [npcKeys.maxLevel] = 8,
+            [npcKeys.spawns] = {[1] = {{57.2, 45.2}}},
+            [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
+            [npcKeys.friendlyToFaction] = "A",
         },
         [208919] = { -- Blueheart : https://wowhead.com/forever/npc=208919/blueheart
             [npcKeys.name] = "Blueheart",
@@ -1769,6 +3190,43 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
             [npcKeys.friendlyToFaction] = "H",
         },
+        [208920] = { -- Penny Hawkins : https://wowhead.com/forever/npc=208920/penny-hawkins
+            [npcKeys.name] = "Penny Hawkins",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.spawns] = {[85] = {{61.8, 52}}},
+            [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
+            [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Bartender",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [208927] = { -- Dead Acolyte : https://wowhead.com/forever/npc=208927/dead-acolyte
+            [npcKeys.name] = "Dead Acolyte",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[85] = {{76.4, 44.8}, {76.6, 44.8}}},
+            [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [208974] = { -- Dark Iron Poacher : https://wowhead.com/forever/npc=208974/dark-iron-poacher
+            [npcKeys.name] = "Dark Iron Poacher",
+        },
+        [208975] = { -- Rustling Bush : https://wowhead.com/forever/npc=208975/rustling-bush
+            [npcKeys.name] = "Rustling Bush",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[1] = {{28.8, 49.6}}},
+            [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
+        },
+        [209002] = { -- Gaklik Voidtwist : https://wowhead.com/forever/npc=209002/gaklik-voidtwist
+            [npcKeys.name] = "Gaklik Voidtwist",
+            [npcKeys.minLevel] = 10,
+            [npcKeys.maxLevel] = 10,
+            [npcKeys.spawns] = {[1] = {{47.2, 53.4}, {47.2, 53.6}}},
+            [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Soul Broker",
+        },
         [209004] = { -- Bruart : https://wowhead.com/forever/npc=209004/bruart
             [npcKeys.name] = "Bruart",
             [npcKeys.minLevel] = 10,
@@ -1776,6 +3234,50 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1537] = {{71.2, 73.2}, {71.2, 74.8}, {72, 73.4}, {72, 75.2}, {72.2, 74}, {72.6, 74}}},
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
             [npcKeys.friendlyToFaction] = "A",
+        },
+        [209209] = { -- Blackfathom Elite : https://wowhead.com/forever/npc=209209/blackfathom-elite
+            [npcKeys.name] = "Blackfathom Elite",
+            [npcKeys.minLevel] = 26,
+            [npcKeys.maxLevel] = 26,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [209213] = { -- Murloc Spawner : https://wowhead.com/forever/npc=209213/murloc-spawner
+            [npcKeys.name] = "Murloc Spawner",
+        },
+        [209214] = { -- Blackfathom Murloc : https://wowhead.com/forever/npc=209214/blackfathom-murloc
+            [npcKeys.name] = "Blackfathom Murloc",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [209511] = { -- Oasis Snapjaw Hatchling : https://wowhead.com/forever/npc=209511/oasis-snapjaw-hatchling
+            [npcKeys.name] = "Oasis Snapjaw Hatchling",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[17] = {{48.2, 40.2}, {55.8, 42.2}}},
+            [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [209524] = { -- Patrolling Cheetah : https://wowhead.com/forever/npc=209524/patrolling-cheetah
+            [npcKeys.name] = "Patrolling Cheetah",
+            [npcKeys.minLevel] = 18,
+            [npcKeys.maxLevel] = 18,
+            [npcKeys.spawns] = {[17] = {{43.2, 56.6}, {43.4, 56.4}, {43.6, 56.6}, {44.2, 55.8}, {44.4, 55.4}, {44.6, 55.2}, {44.6, 55.6}, {44.6, 56.8}, {50.2, 44.6}}},
+            [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
+        },
+        [209548] = { -- Secret Agent : https://wowhead.com/forever/npc=209548/secret-agent
+            [npcKeys.name] = "Secret Agent",
+            [npcKeys.minLevel] = 77,
+            [npcKeys.maxLevel] = 77,
+            [npcKeys.spawns] = {[8] = {{95, 84.2}}, [17] = {{50.4, 79.6}}, [40] = {{53.4, 39.8}, {53.4, 40.6}, {53.6, 40.2}}, [45] = {{25, 20}}, [46] = {{36, 22.2}}, [85] = {{53.4, 57.4}, {53.6, 57}, {53.6, 58}}, [267] = {{88.2, 47.8}}},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [209607] = { -- Lieutenant Stonebrew : https://wowhead.com/forever/npc=209607/lieutenant-stonebrew
+            [npcKeys.name] = "Lieutenant Stonebrew",
+            [npcKeys.minLevel] = 17,
+            [npcKeys.maxLevel] = 17,
+            [npcKeys.spawns] = {[17] = {{62.4, 56.2}, {62.6, 56.2}}},
+            [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
         },
         [209608] = { -- Delwynna : https://wowhead.com/forever/npc=209608/delwynna
             [npcKeys.name] = "Delwynna",
@@ -1786,12 +3288,74 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Monster Hunter",
         },
+        [209678] = { -- Twilight Lord Kelris : https://wowhead.com/forever/npc=209678/twilight-lord-kelris
+            [npcKeys.name] = "Twilight Lord Kelris",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [209742] = { -- Desert Mirage : https://wowhead.com/forever/npc=209742/desert-mirage
+            [npcKeys.name] = "Desert Mirage",
+            [npcKeys.minLevel] = 15,
+            [npcKeys.maxLevel] = 15,
+            [npcKeys.spawns] = {[17] = {{54.8, 35.8}, {55.8, 34}, {57.4, 35.8}, {57.4, 38.4}, {57.4, 38.6}, {57.6, 35.8}, {57.6, 38.4}, {57.6, 38.6}, {58.8, 37.4}, {58.8, 37.6}}},
+            [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
+        },
+        [209758] = { -- Invading Nightmare : https://wowhead.com/forever/npc=209758/invading-nightmare
+            [npcKeys.name] = "Invading Nightmare",
+            [npcKeys.minLevel] = 26,
+            [npcKeys.maxLevel] = 26,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [209773] = { -- Dream Copy : https://wowhead.com/forever/npc=209773/dream-copy
+            [npcKeys.name] = "Dream Copy",
+        },
         [209797] = { -- Bruuz : https://wowhead.com/forever/npc=209797/bruuz
             [npcKeys.name] = "Bruuz",
             [npcKeys.minLevel] = 20,
             [npcKeys.maxLevel] = 20,
             [npcKeys.spawns] = {[17] = {{63.4, 38.8}, {64.2, 38.4}, {64.4, 39}, {64.4, 39.6}, {64.8, 39.8}, {65.2, 39.4}, {65.6, 39.2}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
+        },
+        [209806] = { -- Waterfall Test : https://wowhead.com/forever/npc=209806/waterfall-test
+            [npcKeys.name] = "Waterfall Test",
+        },
+        [209811] = { -- Rustling Bush : https://wowhead.com/forever/npc=209811/rustling-bush
+            [npcKeys.name] = "Rustling Bush",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[141] = {{46.4, 46.2}, {46.6, 46.2}}},
+            [npcKeys.zoneID] = zoneIDs.TELDRASSIL,
+        },
+        [209812] = { -- Fallenroot Poacher : https://wowhead.com/forever/npc=209812/fallenroot-poacher
+            [npcKeys.name] = "Fallenroot Poacher",
+            [npcKeys.minLevel] = 9,
+            [npcKeys.maxLevel] = 9,
+            [npcKeys.spawns] = {[141] = {{43.2, 42.6}, {45.2, 46.4}, {45.2, 47.2}, {45.4, 47.6}, {45.4, 49.4}, {45.4, 49.6}, {46, 47.8}, {46, 49.6}, {46.2, 45.4}, {46.2, 46.6}, {46.4, 44.2}, {46.4, 46.2}, {46.4, 48.8}, {46.6, 45.4}, {46.6, 46.2}, {46.6, 46.6}, {46.8, 43.6}, {47, 49.6}, {47.4, 49.4}, {47.6, 44.4}, {47.6, 50.2}, {48, 50.6}}},
+            [npcKeys.zoneID] = zoneIDs.TELDRASSIL,
+        },
+        [209815] = { -- Phantasmal Priestess : https://wowhead.com/forever/npc=209815/phantasmal-priestess
+            [npcKeys.name] = "Phantasmal Priestess",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [209830] = { -- Phantasmal Statue : https://wowhead.com/forever/npc=209830/phantasmal-statue
+            [npcKeys.name] = "Phantasmal Statue",
+        },
+        [209872] = { -- Syllart : https://wowhead.com/forever/npc=209872/syllart
+            [npcKeys.name] = "Syllart",
+            [npcKeys.minLevel] = 10,
+            [npcKeys.maxLevel] = 10,
+            [npcKeys.spawns] = {[141] = {{56.2, 59.4}, {56.2, 59.6}}},
+            [npcKeys.zoneID] = zoneIDs.TELDRASSIL,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [209889] = { -- Barebones : https://wowhead.com/forever/npc=209889/barebones
+            [npcKeys.name] = "Barebones",
+            [npcKeys.subName] = "PvP Essentials Vendor",
+            [npcKeys.npcFlags] = 16384, -- Assumption: assumptions/npc_services.toml; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
         [209908] = { -- Heretic Idol : https://wowhead.com/forever/npc=209908/heretic-idol
             [npcKeys.name] = "Heretic Idol",
@@ -1807,6 +3371,15 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 8,
             [npcKeys.spawns] = {[141] = {{46.4, 32.6}, {47.2, 32.6}, {47.4, 32.4}, {47.6, 32.6}, {48, 31.6}, {48.2, 31.4}, {48.6, 31.4}}},
             [npcKeys.zoneID] = zoneIDs.TELDRASSIL,
+        },
+        [209939] = { -- Hunter's Vision : https://wowhead.com/forever/npc=209939/hunters-vision
+            [npcKeys.name] = "Hunter's Vision",
+        },
+        [209940] = { -- Hunter's Vision : https://wowhead.com/forever/npc=209940/hunters-vision
+            [npcKeys.name] = "Hunter's Vision",
+        },
+        [209941] = { -- Hunter's Vision : https://wowhead.com/forever/npc=209941/hunters-vision
+            [npcKeys.name] = "Hunter's Vision",
         },
         [209948] = { -- Relaeron : https://wowhead.com/forever/npc=209948/relaeron
             [npcKeys.name] = "Relaeron",
@@ -1825,12 +3398,22 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.DARNASSUS,
             [npcKeys.friendlyToFaction] = "A",
         },
+        [209954] = { -- Demonic Remains : https://wowhead.com/forever/npc=209954/demonic-remains
+            [npcKeys.name] = "Demonic Remains",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[38] = {{72.4, 68.4}, {72.4, 68.6}, {72.6, 68.4}, {72.6, 68.8}}},
+            [npcKeys.zoneID] = zoneIDs.LOCH_MODAN,
+        },
         [209958] = { -- Graix : https://wowhead.com/forever/npc=209958/graix
             [npcKeys.name] = "Graix",
             [npcKeys.minLevel] = 18,
             [npcKeys.maxLevel] = 18,
             [npcKeys.spawns] = {[38] = {{72.4, 68.8}, {72.6, 68.6}}},
             [npcKeys.zoneID] = zoneIDs.LOCH_MODAN,
+        },
+        [210006] = { -- Battle Totem : https://wowhead.com/forever/npc=210006/battle-totem
+            [npcKeys.name] = "Battle Totem",
         },
         [210107] = { -- Kackle : https://wowhead.com/forever/npc=210107/kackle
             [npcKeys.name] = "Kackle",
@@ -1846,12 +3429,51 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[148] = {{55.2, 35.2}, {55.4, 36.2}, {55.4, 36.8}, {55.6, 35.2}, {55.6, 36.4}, {55.6, 36.6}}},
             [npcKeys.zoneID] = zoneIDs.DARKSHORE,
         },
+        [210482] = { -- Paxnozz : https://wowhead.com/forever/npc=210482/paxnozz
+            [npcKeys.name] = "Paxnozz",
+            [npcKeys.minLevel] = 20,
+            [npcKeys.maxLevel] = 20,
+            [npcKeys.spawns] = {[148] = {{46.4, 14.4}, {46.4, 14.6}, {46.4, 17}, {46.6, 17}, {47, 15.4}, {47, 15.6}, {47.4, 14}, {47.8, 11.8}, {48, 13.4}, {48, 14}, {48, 15.2}, {48, 18}, {48.2, 17.2}, {48.4, 15.8}, {48.6, 13.8}, {48.6, 16.6}, {48.8, 14.8}, {48.8, 15.6}, {49, 11.8}, {49, 13.2}, {49.6, 14.2}, {50, 14.6}, {50.2, 12.6}, {50.4, 11.4}, {50.4, 12}, {50.8, 12.4}, {51, 13.6}, {51.2, 13.4}, {51.8, 13.2}, {52.2, 16.2}, {52.4, 17.4}}},
+            [npcKeys.zoneID] = zoneIDs.DARKSHORE,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [210483] = { -- Aggressive Squashling : https://wowhead.com/forever/npc=210483/aggressive-squashling
+            [npcKeys.name] = "Aggressive Squashling",
+            [npcKeys.minLevel] = 16,
+            [npcKeys.maxLevel] = 16,
+            [npcKeys.spawns] = {[40] = {{36.6, 48.8}, {36.6, 52.8}, {38, 48.2}, {38.2, 52.2}, {39.2, 55.2}, {42.2, 35.8}, {43.2, 34.2}, {43.2, 35.2}, {43.6, 33.8}, {43.8, 33.4}, {43.8, 38}, {44.2, 32.4}, {44.8, 31.8}, {48.2, 22}, {48.8, 22}, {49, 22.6}, {50.2, 24}, {50.4, 19.8}, {50.4, 22.4}, {50.6, 18.8}, {50.6, 22}, {50.8, 21.4}, {51, 18.4}, {51, 19.6}, {51.4, 24.8}, {51.4, 26}, {52.4, 30.4}, {54.8, 35.6}, {57.8, 16.6}, {62.8, 63}}},
+            [npcKeys.zoneID] = zoneIDs.WESTFALL,
+        },
         [210487] = { -- Horror of the Deep : https://wowhead.com/forever/npc=210487/horror-of-the-deep
             [npcKeys.name] = "Horror of the Deep",
             [npcKeys.minLevel] = 20,
             [npcKeys.maxLevel] = 20,
             [npcKeys.spawns] = {[40] = {{26, 69.4}, {26, 69.6}, {26.4, 66}, {26.8, 69}, {26.8, 69.8}}},
             [npcKeys.zoneID] = zoneIDs.WESTFALL,
+        },
+        [210501] = { -- Harvest Reaper Prototype : https://wowhead.com/forever/npc=210501/harvest-reaper-prototype
+            [npcKeys.name] = "Harvest Reaper Prototype",
+            [npcKeys.minLevel] = 18,
+            [npcKeys.maxLevel] = 18,
+            [npcKeys.spawns] = {[40] = {{34.4, 52.6}, {35.2, 51.4}, {35.4, 51.6}, {35.6, 51.4}, {35.6, 52.2}, {44.4, 39.2}, {45.2, 39.4}, {45.2, 39.6}, {45.4, 40.8}, {45.6, 39}, {48.2, 29.8}, {49.6, 36.6}, {50, 18.8}, {50.2, 17.4}, {50.2, 18.4}, {50.6, 17.2}, {50.6, 18.4}, {50.6, 19}, {50.8, 20.4}, {51.4, 33.4}, {51.4, 33.6}, {51.8, 34}, {52, 33}, {52.2, 32.4}, {52.8, 33}, {52.8, 33.8}, {58.8, 54}, {60.2, 56.8}, {61.2, 57.4}, {61.2, 58.2}, {61.4, 58.8}, {61.6, 58.4}, {61.6, 58.8}}},
+            [npcKeys.zoneID] = zoneIDs.WESTFALL,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [210528] = { -- Terrified Soul : https://wowhead.com/forever/npc=210528/terrified-soul
+            [npcKeys.name] = "Terrified Soul",
+        },
+        [210533] = { -- Silverspur : https://wowhead.com/forever/npc=210533/silverspur
+            [npcKeys.name] = "Silverspur",
+            [npcKeys.minLevel] = 14,
+            [npcKeys.maxLevel] = 14,
+            [npcKeys.spawns] = {[40] = {{33.6, 40.8}, {34.4, 37.2}, {34.8, 38.6}, {35, 38.4}, {35, 39.6}, {35.6, 38.4}, {36, 38.8}}},
+            [npcKeys.zoneID] = zoneIDs.WESTFALL,
+        },
+        [210537] = { -- Undying Laborer : https://wowhead.com/forever/npc=210537/undying-laborer
+            [npcKeys.name] = "Undying Laborer",
+            [npcKeys.minLevel] = 14,
+            [npcKeys.maxLevel] = 15,
+            [npcKeys.spawns] = {[12] = {{18, 70.2}, {20.4, 77}, {20.4, 80}, {20.6, 79.8}, {21.4, 79}, {21.8, 78.8}, {22.4, 78.2}, {22.6, 77.4}, {23, 78.4}, {23.4, 78.6}, {23.6, 77.6}, {24, 75.6}, {24.2, 74.6}, {24.2, 76.6}, {24.4, 78.8}, {25.2, 75.6}, {25.4, 78.2}, {25.8, 76}, {26.4, 77.8}, {26.6, 75}, {26.6, 77.4}, {27, 75.8}, {27.2, 77.8}, {27.6, 77}, {28, 76}, {28.2, 77.8}, {28.4, 75.2}, {28.6, 77.8}, {29.2, 62.6}, {29.6, 59.2}, {29.6, 77.2}, {29.6, 77.8}, {29.8, 63.4}, {30.6, 76.6}, {31, 53.8}, {31, 76}, {31.4, 75.2}, {31.4, 78.4}, {31.6, 68.8}, {31.6, 78.4}, {31.8, 52.4}, {31.8, 74.6}, {32, 74}, {32.2, 50.8}, {32.2, 53.6}, {32.2, 73.4}, {32.2, 78.6}, {32.4, 50.2}, {32.4, 54.6}, {32.8, 51}, {32.8, 72.4}, {32.8, 72.8}, {33, 65.8}, {33, 78.2}, {33.2, 52.2}, {33.2, 54}, {33.2, 59}, {33.4, 52.6}, {33.4, 56}, {33.4, 57.2}, {33.4, 58}, {33.4, 64}, {33.4, 65}, {33.4, 71.4}, {33.6, 58}, {33.6, 60.8}, {33.6, 63.4}, {33.8, 53.4}, {33.8, 59}, {33.8, 66.8}, {33.8, 69}, {33.8, 77.6}, {34, 59.6}, {34, 65.6}, {34, 69.6}, {34, 70.6}, {34.2, 61.8}, {34.2, 64.8}, {34.2, 68.2}, {34.2, 71.6}, {34.4, 63.6}, {34.4, 72.6}, {34.6, 61.8}, {34.6, 76.8}, {34.8, 53.4}, {34.8, 70.2}, {35, 63.6}, {35, 68.8}, {35, 73.8}, {35.2, 68.2}, {35.4, 55.2}, {35.4, 76.2}, {35.6, 65.2}, {35.8, 53.4}, {35.8, 65.6}, {36, 67}, {36.2, 55.4}, {36.2, 57.6}, {36.6, 62.2}, {36.8, 53.4}, {36.8, 59.8}, {37.2, 58}, {37.6, 54.2}, {40.2, 64.4}, {41, 69.2}, {42, 69.2}, {48, 42.8}}, [40] = {{27.4, 35.6}, {28.2, 37.8}, {29, 50.6}, {29.2, 41.4}, {29.2, 49.4}, {29.2, 50.2}, {29.4, 46.4}, {29.4, 46.6}, {29.6, 50.6}, {29.8, 46}, {29.8, 46.6}, {29.8, 49.8}, {30.2, 47.8}, {30.4, 42.6}, {30.4, 45.4}, {30.4, 49}, {30.6, 45.8}, {30.6, 48.2}, {30.6, 48.8}, {31, 43.2}, {31.2, 42.4}, {31.2, 44.8}, {31.4, 43.6}, {31.6, 44.6}, {31.8, 43.4}, {31.8, 43.6}, {32.2, 42.4}, {32.6, 43.2}, {33.8, 43}, {34.4, 43.8}, {34.8, 43.2}, {35, 43.8}, {35.2, 40.8}, {35.4, 42}, {35.8, 37.6}, {36.2, 44}, {36.4, 34.4}, {36.4, 40.6}, {36.6, 40.6}, {36.8, 39.2}, {36.8, 43.2}, {37, 31.4}, {37, 43.6}, {37.4, 28}, {37.4, 42.4}, {37.6, 37}, {37.8, 40}, {37.8, 45.4}, {38.2, 39.4}, {38.6, 24.8}, {38.6, 40.4}, {38.8, 35.6}, {39.2, 37.6}, {39.4, 35.2}, {39.4, 37.2}, {39.6, 22.6}, {40, 36.2}, {40.8, 33}, {40.8, 33.8}, {40.8, 37.4}, {41, 20.2}, {41, 34.8}, {41.4, 19}, {41.4, 31.2}, {41.4, 31.8}, {41.8, 30.6}, {41.8, 34.2}, {42, 17.8}, {42, 23.4}, {42, 30.4}, {42.2, 32.4}, {42.6, 29.8}, {42.8, 44.4}, {43, 16.6}, {43.2, 29.2}, {43.2, 31.4}, {43.2, 32.8}, {43.2, 34.6}, {43.4, 26.8}, {43.8, 25.2}, {43.8, 31.6}, {44, 23.4}, {44, 29.6}, {44.4, 21.2}, {44.4, 24}, {44.4, 25.6}, {44.4, 27}, {44.4, 29.4}, {44.6, 19.4}, {44.6, 19.6}, {44.6, 23.8}, {44.6, 24.8}, {44.6, 28}, {44.6, 64.4}, {44.8, 26.2}, {44.8, 26.6}, {44.8, 29}, {45, 23}, {45.2, 15.8}, {45.2, 31.2}, {45.4, 18.2}, {45.4, 21.2}, {45.4, 21.6}, {45.4, 32.2}, {45.6, 20.4}, {45.6, 21.4}, {45.6, 21.6}, {45.6, 30.8}, {45.8, 27.4}, {45.8, 36.4}, {46, 18.4}, {46.2, 18.6}, {46.2, 26}, {46.2, 28.2}, {46.6, 19.2}, {46.6, 27.4}, {46.8, 28.8}, {46.8, 29.6}, {47, 30.6}, {47.2, 15}, {47.2, 51.8}, {47.4, 26.2}, {47.4, 27.6}, {47.4, 45}, {47.6, 28}, {47.6, 33.6}, {47.6, 40.2}, {47.8, 25}, {47.8, 26.4}, {48, 22}, {48, 30.4}, {48.2, 23.4}, {48.2, 28.6}, {48.4, 26.6}, {48.6, 24.6}, {48.8, 29}, {49, 17.8}, {49, 21.4}, {49.2, 26.8}, {49.4, 15}, {49.4, 28.4}, {49.6, 21.8}, {49.6, 29.2}, {49.8, 26.4}, {50.2, 19.6}, {50.2, 30.2}, {50.4, 27.4}, {50.4, 28.2}, {50.6, 28}, {50.6, 29.2}, {51, 27.4}, {51.4, 15.8}, {51.4, 21.2}, {51.6, 28.6}, {52.2, 24.2}, {52.2, 25.2}, {52.2, 27.2}, {52.4, 18.2}, {52.4, 26.4}, {52.8, 14}, {52.8, 53.4}, {53.4, 17}, {53.4, 26}, {53.4, 27}, {53.4, 27.6}, {53.8, 26.6}, {54, 24}, {54.4, 28}, {54.4, 29.6}, {54.4, 47.4}, {54.6, 17}, {54.6, 25.6}, {54.8, 50.4}, {55, 27.4}, {55, 52.4}, {55.2, 31.4}, {55.4, 16.2}, {55.4, 25.4}, {55.4, 47.4}, {55.6, 16.6}, {55.8, 18.8}, {55.8, 25.2}, {55.8, 25.8}, {55.8, 47.6}, {56, 31.2}, {56, 50}, {56, 50.6}, {56, 52}, {56.2, 47.4}, {56.4, 23.2}, {56.4, 44.2}, {56.4, 53.4}, {56.6, 52.4}, {56.6, 54}, {56.8, 24.2}, {56.8, 47}, {57.2, 25}, {57.4, 21.8}, {57.6, 16}, {57.6, 23.2}, {57.6, 24}, {58, 21.4}, {58, 21.6}, {58, 26.6}, {58, 31.6}, {58.4, 37.6}, {59.2, 21.8}, {59.4, 13.4}, {59.4, 20}, {59.6, 16.4}, {59.6, 16.6}, {59.6, 20.8}, {59.8, 19.6}, {60.4, 8.6}, {60.4, 19.2}, {60.6, 8.8}, {60.6, 10.6}, {60.6, 11.6}, {60.6, 14.2}, {60.6, 18.8}, {60.8, 16}, {60.8, 20.6}, {61.2, 16.8}, {61.2, 18.4}, {61.6, 18}, {61.8, 19.4}, {62.2, 17.2}, {62.8, 21}, {65, 46}}},
         },
         [210549] = { -- Defias Scout : https://wowhead.com/forever/npc=210549/defias-scout
             [npcKeys.name] = "Defias Scout",
@@ -1860,12 +3482,32 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[40] = {{50.2, 48.2}, {50.2, 48.6}, {50.4, 47.4}, {50.6, 47.6}, {51, 47.2}, {51, 54.8}, {51.4, 55.6}, {51.6, 55.4}, {51.6, 55.6}}},
             [npcKeys.zoneID] = zoneIDs.WESTFALL,
         },
+        [210697] = { -- Captain Namier : https://wowhead.com/forever/npc=210697/captain-namier
+            [npcKeys.name] = "Captain Namier",
+            [npcKeys.minLevel] = 20,
+            [npcKeys.maxLevel] = 20,
+            [npcKeys.spawns] = {[130] = {{36.6, 26.6}, {37.4, 28.4}, {37.4, 28.6}, {37.8, 28.4}, {37.8, 29}, {38, 29.6}, {38.4, 30.6}, {38.8, 29.2}}},
+            [npcKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
+        },
+        [210750] = { -- M'grrgl : https://wowhead.com/forever/npc=210750/mgrrgl
+            [npcKeys.name] = "M'grrgl",
+        },
+        [210802] = { -- Webbed Victim : https://wowhead.com/forever/npc=210802/webbed-victim
+            [npcKeys.name] = "Webbed Victim",
+            [npcKeys.minLevel] = 16,
+            [npcKeys.maxLevel] = 16,
+            [npcKeys.spawns] = {[130] = {{35, 7.6}}},
+            [npcKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
+            [npcKeys.friendlyToFaction] = "H",
+        },
         [210845] = { -- Jixo Madrocket : https://wowhead.com/forever/npc=210845/jixo-madrocket
             [npcKeys.name] = "Jixo Madrocket",
             [npcKeys.minLevel] = 20,
             [npcKeys.maxLevel] = 20,
             [npcKeys.spawns] = {[406] = {{59.2, 62.4}, {59.2, 62.6}, {60.4, 62.2}, {60.6, 62.2}}},
             [npcKeys.zoneID] = zoneIDs.STONETALON_MOUNTAINS,
+            [npcKeys.questStarts] = {78114, 78121},
+            [npcKeys.questEnds] = {78114, 78121},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Amateur Daredevil",
         },
@@ -1876,14 +3518,17 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[406] = {{60.4, 62.2}, {60.6, 62.2}}},
             [npcKeys.zoneID] = zoneIDs.STONETALON_MOUNTAINS,
         },
+        [210901] = { -- Stonetalon Wyvern stalker : https://wowhead.com/forever/npc=210901/stonetalon-wyvern-stalker
+            [npcKeys.name] = "Stonetalon Wyvern stalker",
+        },
         [210995] = { -- Alonso : https://wowhead.com/forever/npc=210995/alonso
             [npcKeys.name] = "Alonso",
             [npcKeys.minLevel] = 20,
             [npcKeys.maxLevel] = 20,
             [npcKeys.spawns] = {[331] = {{42, 69.2}, {42.4, 70}, {43.4, 70.4}, {43.4, 70.6}, {43.6, 70.4}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
-            [npcKeys.questStarts] = {78132, 78133, 78134},
-            [npcKeys.questEnds] = {78132, 78133, 78134},
+            [npcKeys.questStarts] = {78132, 78133, 78134, 78144},
+            [npcKeys.questEnds] = {78132, 78133, 78134, 78144},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Knight Errant",
         },
@@ -1893,8 +3538,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 40,
             [npcKeys.spawns] = {[1497] = {{73.2, 33.6}, {73.4, 33}, {73.6, 33}, {73.8, 32.2}}},
             [npcKeys.zoneID] = zoneIDs.UNDERCITY,
-            [npcKeys.questStarts] = {79096},
-            [npcKeys.questEnds] = {78148, 79092, 79096, 79536, 82208, 97286},
+            [npcKeys.questStarts] = {79094, 79096},
+            [npcKeys.questEnds] = {78124, 78127, 78142, 78143, 78145, 78146, 78147, 78148, 78149, 78150, 79092, 79093, 79094, 79095, 79096, 79097, 79535, 79536, 79947, 79948, 79949, 79950, 79951, 79952, 79953, 81947, 81949, 81951, 81952, 81953, 81954, 81955, 81956, 82084, 82208, 97286},
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Librarian",
         },
@@ -1903,10 +3548,21 @@ function ForeverBaseNpc:Load()
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
-            [npcKeys.questStarts] = {78148, 79092, 79536, 82208, 97286},
-            [npcKeys.questEnds] = {78148, 79092, 79536, 82208, 97286},
+            [npcKeys.questStarts] = {78124, 78127, 78142, 78143, 78145, 78146, 78147, 78148, 78149, 78150, 79091, 79092, 79093, 79095, 79097, 79535, 79536, 79905, 79947, 79948, 79949, 79950, 79951, 79952, 79953, 81947, 81949, 81951, 81952, 81953, 81954, 81955, 81956, 82208, 97286},
+            [npcKeys.questEnds] = {78124, 78127, 78142, 78143, 78145, 78146, 78147, 78148, 78149, 78150, 79091, 79092, 79093, 79095, 79097, 79535, 79536, 79905, 79947, 79948, 79949, 79950, 79951, 79952, 79953, 81947, 81949, 81951, 81952, 81953, 81954, 81955, 81956, 82084, 82208, 97286},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Librarian",
+        },
+        [211042] = { -- Green Dragon Whelp : https://wowhead.com/forever/npc=211042/green-dragon-whelp
+            [npcKeys.name] = "Green Dragon Whelp",
+            [npcKeys.minLevel] = 20,
+            [npcKeys.maxLevel] = 20,
+            [npcKeys.spawns] = {[331] = {{42, 69.2}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+        },
+        [211043] = { -- Alonso : https://wowhead.com/forever/npc=211043/alonso
+            [npcKeys.name] = "Alonso",
+            [npcKeys.subName] = "Knight Errant",
         },
         [211146] = { -- Lost Adventurer : https://wowhead.com/forever/npc=211146/lost-adventurer
             [npcKeys.name] = "Lost Adventurer",
@@ -1915,13 +3571,127 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[130] = {{35, 7.6}}},
             [npcKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
         },
+        [211183] = { -- Secret Agent : https://wowhead.com/forever/npc=211183/secret-agent
+            [npcKeys.name] = "Secret Agent",
+            [npcKeys.minLevel] = 77,
+            [npcKeys.maxLevel] = 77,
+            [npcKeys.spawns] = {[8] = {{95.2, 84.2}}, [17] = {{50.4, 79.6}}, [40] = {{53.4, 39.8}, {53.6, 40.2}}, [45] = {{25, 20}}, [46] = {{35.8, 19.8}}, [85] = {{53.6, 57}, {53.8, 57.8}}, [267] = {{88.4, 47.8}}, [357] = {{26.8, 94.8}}, [361] = {{53.6, 29.8}}},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [211188] = { -- Maethra Slagheart : https://wowhead.com/forever/npc=211188/maethra-slagheart
+            [npcKeys.name] = "Maethra Slagheart",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[1657] = {{37, 88.8}, {38, 88}, {38, 89}, {38, 89.6}, {38.6, 89}, {38.6, 89.6}}},
+            [npcKeys.zoneID] = zoneIDs.DARNASSUS,
+            [npcKeys.questStarts] = {78192, 78193},
+            [npcKeys.questEnds] = {78192},
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [211200] = { -- Agon : https://wowhead.com/forever/npc=211200/agon
+            [npcKeys.name] = "Agon",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[10] = {{60.2, 31.8}, {60.2, 33}, {60.4, 29.8}, {60.4, 30.8}, {60.6, 25.8}, {60.6, 32.6}, {60.8, 29.2}, {60.8, 32.4}, {61, 30.6}, {61.2, 27.8}, {61.4, 30.4}, {61.6, 28.2}, {61.6, 29}, {61.6, 30.4}, {61.6, 31.8}, {61.8, 31.2}, {62.2, 25.4}, {62.6, 25.8}, {62.6, 31.8}, {62.8, 35.8}, {63, 31.2}, {63, 34.6}, {63.2, 30.4}, {63.2, 34.4}, {63.4, 25}, {63.4, 29}, {63.6, 31.4}, {63.8, 28.4}, {64, 32.4}, {64, 34}, {64.2, 33}, {64.2, 35}, {64.2, 35.6}, {64.2, 37.8}, {64.4, 23.8}, {64.4, 24.6}, {64.4, 26.4}, {64.4, 36.8}, {64.6, 36.4}, {64.6, 36.6}, {64.8, 24.8}, {64.8, 33}, {64.8, 34.4}, {65, 23.8}, {65, 32.4}, {65.2, 21.4}, {65.2, 21.6}, {65.2, 23.2}, {65.2, 27.8}, {65.2, 34.8}, {65.4, 26}, {65.4, 26.8}, {65.4, 30}, {65.6, 23.4}, {65.6, 24}, {65.6, 24.6}, {65.6, 26.4}, {65.6, 32.2}, {65.6, 34.8}, {66, 27}, {66, 32.6}, {66, 36.2}, {66.2, 33.6}, {66.4, 27.8}, {66.4, 29.2}, {66.4, 29.8}, {66.6, 33}, {66.8, 23.4}, {66.8, 28.4}, {66.8, 29.8}, {67, 30.6}, {67.2, 29.4}, {67.4, 27.2}, {67.4, 31.8}, {67.6, 30.2}, {67.6, 32}, {67.6, 33.6}, {67.8, 31}, {68, 33.4}, {68.6, 28}, {68.8, 32.4}, {69.4, 32.6}, {69.6, 29.4}, {69.6, 30.2}, {70.2, 33.4}, {70.8, 31.6}}},
+            [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+        },
+        [211225] = { -- Baj'ura : https://wowhead.com/forever/npc=211225/bajura
+            [npcKeys.name] = "Baj'ura",
+            [npcKeys.minLevel] = 20,
+            [npcKeys.maxLevel] = 20,
+            [npcKeys.spawns] = {[1497] = {{46.4, 19.4}, {46.4, 20.2}, {46.4, 20.6}, {47, 19.6}, {47.2, 19.4}, {48, 19.2}, {48, 19.6}}},
+            [npcKeys.zoneID] = zoneIDs.UNDERCITY,
+            [npcKeys.questStarts] = {78198, 78199},
+            [npcKeys.questEnds] = {78198},
+            [npcKeys.friendlyToFaction] = "H",
+        },
         [211229] = { -- Dietrich Praice : https://wowhead.com/forever/npc=211229/dietrich-praice
             [npcKeys.name] = "Dietrich Praice",
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[1637] = {{35.4, 88}, {35.6, 88}}},
             [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
+            [npcKeys.questStarts] = {78196, 78197, 84328, 84329, 84405, 84406, 84408, 84411, 84412},
+            [npcKeys.questEnds] = {78196, 84327, 84328, 84405, 84407, 84408, 84410, 84411},
             [npcKeys.friendlyToFaction] = "H",
+        },
+        [211269] = { -- Summoned Wisp : https://wowhead.com/forever/npc=211269/summoned-wisp
+            [npcKeys.name] = "Summoned Wisp",
+            [npcKeys.minLevel] = 20,
+            [npcKeys.maxLevel] = 20,
+            [npcKeys.spawns] = {[331] = {{86.8, 43.4}, {86.8, 43.6}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [211274] = { -- Ashenvale Wisp Target : https://wowhead.com/forever/npc=211274/ashenvale-wisp-target
+            [npcKeys.name] = "Ashenvale Wisp Target",
+        },
+        [211279] = { -- Corrupt Spirit Beast : https://wowhead.com/forever/npc=211279/corrupt-spirit-beast
+            [npcKeys.name] = "Corrupt Spirit Beast",
+            [npcKeys.minLevel] = 23,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[331] = {{86.6, 43.6}, {86.8, 43.4}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+        },
+        [211298] = { -- Syrnoya : https://wowhead.com/forever/npc=211298/syrnoya
+            [npcKeys.name] = "Syrnoya",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[148] = {{37.6, 43.8}}},
+            [npcKeys.zoneID] = zoneIDs.DARKSHORE,
+            [npcKeys.questEnds] = {78195},
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [211330] = { -- Suspicious Target : https://wowhead.com/forever/npc=211330/suspicious-target
+            [npcKeys.name] = "Suspicious Target",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[130] = {{65.8, 11.8}}},
+            [npcKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
+        },
+        [211338] = { -- Vile Fin Hunter : https://wowhead.com/forever/npc=211338/vile-fin-hunter
+            [npcKeys.name] = "Vile Fin Hunter",
+            [npcKeys.spawns] = {[130] = {{65.8, 11.2}, {65.8, 11.6}}},
+            [npcKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
+        },
+        [211653] = { -- Grizzby : https://wowhead.com/forever/npc=211653/grizzby
+            [npcKeys.name] = "Grizzby",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.spawns] = {[17] = {{61.8, 39.4}}},
+            [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
+            [npcKeys.questStarts] = {78265, 78266, 78267, 78287, 78288, 82850, 82851, 82853},
+            [npcKeys.questEnds] = {78265, 78266, 78267, 78297, 78304, 82850, 82851, 82853},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 210653; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [211736] = { -- Grizzled Protector : https://wowhead.com/forever/npc=211736/grizzled-protector
+            [npcKeys.name] = "Grizzled Protector",
+            [npcKeys.minLevel] = 16,
+            [npcKeys.maxLevel] = 16,
+            [npcKeys.spawns] = {[130] = {{36.6, 16}, {36.6, 17.2}, {37.8, 15.6}, {39.4, 15.2}, {40.4, 16.8}, {40.6, 18}, {41.6, 19.6}, {42, 24}, {42.2, 21.8}, {42.4, 18.4}, {42.4, 18.6}, {42.8, 18}, {44, 49.2}, {44, 51.6}, {44.2, 16.6}, {44.6, 17}, {44.6, 48.8}, {45, 24.6}, {46, 33}, {47, 18}, {47.2, 17}, {47.2, 19}, {47.2, 20.6}, {47.4, 32.8}, {48, 22.6}, {48.2, 20.8}, {48.6, 21.4}, {48.6, 33.4}, {48.8, 37.8}, {49, 14.2}, {49, 17.6}, {49.2, 15}, {49.4, 18.8}, {49.4, 21.6}, {49.6, 32.2}, {49.8, 19}, {49.8, 22.4}, {50, 16.6}, {50.2, 20}, {50.4, 16.2}, {50.4, 18.2}, {50.4, 23.4}, {50.4, 26}, {50.4, 38.2}, {50.4, 42.2}, {50.4, 44.8}, {50.6, 36.6}, {50.6, 67}, {50.8, 35.4}, {51, 15.8}, {51, 24.4}, {51, 38.2}, {51, 38.6}, {51.2, 19.2}, {51.2, 41.2}, {51.2, 45.2}, {51.4, 20}, {51.6, 17.2}, {51.6, 18.2}, {51.6, 20.8}, {51.6, 37.8}, {51.6, 38.8}, {51.6, 51.8}, {51.8, 19.6}, {52, 51.2}, {52, 57.8}, {52.4, 18.6}, {52.4, 59.4}, {52.6, 47.4}, {52.6, 48.4}, {52.8, 58.2}, {53, 20.8}, {53.2, 20.2}, {53.4, 44.4}, {53.4, 59}, {53.8, 38.2}, {53.8, 45.8}, {54, 39.8}, {54, 44.2}, {54.6, 38.6}, {54.6, 40.4}, {55, 41.2}, {55, 44.6}, {55.8, 43}}},
+            [npcKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
+        },
+        [211764] = { -- Gefell : https://wowhead.com/forever/npc=211764/gefell
+            [npcKeys.name] = "Gefell",
+            [npcKeys.minLevel] = 21,
+            [npcKeys.maxLevel] = 22,
+            [npcKeys.zoneID] = zoneIDs.SHADOWFANG_KEEP,
+        },
+        [211765] = { -- Gemela : https://wowhead.com/forever/npc=211765/gemela
+            [npcKeys.name] = "Gemela",
+            [npcKeys.minLevel] = 21,
+            [npcKeys.maxLevel] = 22,
+            [npcKeys.zoneID] = zoneIDs.SHADOWFANG_KEEP,
+        },
+        [211875] = { -- Decayed Elemental : https://wowhead.com/forever/npc=211875/decayed-elemental
+            [npcKeys.name] = "Decayed Elemental",
+            [npcKeys.minLevel] = 15,
+            [npcKeys.maxLevel] = 15,
+            [npcKeys.spawns] = {[130] = {{43.2, 20.4}, {43.2, 20.6}, {44.4, 21.4}, {44.4, 21.8}, {44.4, 42}, {45, 21.6}, {45, 22.6}, {45.2, 21}, {45.4, 20}, {45.8, 20}, {45.8, 21.2}, {45.8, 22.6}, {46, 22.2}, {46.2, 19.4}, {47, 19.2}, {47.2, 20.4}, {47.6, 20}, {55.4, 15.6}, {65.6, 33.4}, {67.2, 24.6}}, [1637] = {{37, 76.2}}},
+        },
+        [211941] = { -- Dream Stalker : https://wowhead.com/forever/npc=211941/dream-stalker
+            [npcKeys.name] = "Dream Stalker",
         },
         [211951] = { -- Koartul : https://wowhead.com/forever/npc=211951/koartul
             [npcKeys.name] = "Koartul",
@@ -1929,6 +3699,30 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 25,
             [npcKeys.spawns] = {[267] = {{60.2, 33.8}, {61, 33.2}, {61, 33.6}, {61.6, 33.8}, {61.8, 33.4}}},
             [npcKeys.zoneID] = zoneIDs.HILLSBRAD_FOOTHILLS,
+        },
+        [211952] = { -- Omni Diffusion Armor : https://wowhead.com/forever/npc=211952/omni-diffusion-armor
+            [npcKeys.name] = "Omni Diffusion Armor",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[12] = {{32.2, 53.8}}, [40] = {{50.4, 42.6}, {52, 49.2}, {53.2, 39.2}, {54, 38.8}, {56.4, 53.2}}, [85] = {{53.2, 58.6}, {53.4, 57}, {54.4, 57}, {58.4, 62}}},
+        },
+        [211953] = { -- Bulky Protective Ironweave : https://wowhead.com/forever/npc=211953/bulky-protective-ironweave
+            [npcKeys.name] = "Bulky Protective Ironweave",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[40] = {{50.4, 42.4}, {53, 40}, {53.2, 41.4}, {53.4, 39.4}, {53.6, 38.4}, {53.8, 40.4}, {54, 41.4}, {54.8, 54.2}, {56, 47.6}, {57.4, 42.8}}, [85] = {{53.2, 57.2}, {53.6, 56.6}, {53.8, 55.8}, {54, 58.6}, {54.8, 57.4}, {57, 55.2}, {57.4, 56.8}}},
+        },
+        [211954] = { -- Electrostatic Discharge Shielding : https://wowhead.com/forever/npc=211954/electrostatic-discharge-shielding
+            [npcKeys.name] = "Electrostatic Discharge Shielding",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[40] = {{50.4, 42.6}, {52.8, 39.4}, {53, 40.2}, {54.6, 43.2}, {54.8, 54.2}, {55.6, 47.8}, {57.4, 43.2}, {57.8, 26.8}}, [85] = {{53.2, 56.2}, {53.8, 59.2}, {54.4, 56.8}, {54.4, 58}}},
+        },
+        [211955] = { -- Auxiliary Anti-Tamper Mechanism : https://wowhead.com/forever/npc=211955/auxiliary-anti-tamper-mechanism
+            [npcKeys.name] = "Auxiliary Anti-Tamper Mechanism",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[40] = {{45.6, 59.8}, {52, 48.4}, {52.4, 39.4}, {52.4, 48.6}, {52.6, 48.4}, {53, 40.2}, {53.2, 40.8}, {53.2, 41.8}, {53.4, 38.8}, {53.6, 42.6}, {53.6, 48.4}, {53.8, 42.4}, {54.8, 54.2}, {55.6, 43.8}, {56.2, 56.2}, {57.8, 42.6}}, [85] = {{53, 57}, {54, 56.8}, {54.2, 58}}},
         },
         [211956] = { -- Scarimous the Wandering : https://wowhead.com/forever/npc=211956/scarimous-the-wandering
             [npcKeys.name] = "Scarimous the Wandering",
@@ -1943,6 +3737,113 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 25,
             [npcKeys.spawns] = {[11] = {{46.4, 64.4}, {46.4, 65}, {46.8, 63.4}, {47.2, 64.4}, {47.2, 64.8}, {47.2, 65.6}, {47.6, 64}, {47.6, 64.8}}},
             [npcKeys.zoneID] = zoneIDs.WETLANDS,
+        },
+        [211967] = { -- Leech Stalker Corpse : https://wowhead.com/forever/npc=211967/leech-stalker-corpse
+            [npcKeys.name] = "Leech Stalker Corpse",
+        },
+        [212159] = { -- Old Serra'kis : https://wowhead.com/forever/npc=212159/old-serrakis
+            [npcKeys.name] = "Old Serra'kis",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Devoured",
+        },
+        [212186] = { -- Grugimdern : https://wowhead.com/forever/npc=212186/grugimdern
+            [npcKeys.name] = "Grugimdern",
+            [npcKeys.minLevel] = 20,
+            [npcKeys.maxLevel] = 20,
+            [npcKeys.spawns] = {[11] = {{36.8, 15.2}}},
+            [npcKeys.zoneID] = zoneIDs.WETLANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [212209] = { -- Vodyanoi : https://wowhead.com/forever/npc=212209/vodyanoi
+            [npcKeys.name] = "Vodyanoi",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[11] = {{31.2, 18.2}}},
+            [npcKeys.zoneID] = zoneIDs.WETLANDS,
+        },
+        [212252] = { -- Harvest Golem V000-A : https://wowhead.com/forever/npc=212252/harvest-golem-v000-a
+            [npcKeys.name] = "Harvest Golem V000-A",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.spawns] = {[40] = {{33.2, 22.4}, {38.2, 43.8}, {43.2, 48.8}, {43.4, 48}, {45.4, 43}, {45.6, 59.8}, {45.8, 58}, {45.8, 58.6}, {48.8, 50.2}, {49.6, 16.6}, {49.6, 48.6}, {50, 36}, {50.2, 43.2}, {51, 16.4}, {51.4, 49.2}, {51.4, 50}, {51.6, 37.6}, {51.8, 49.2}, {52, 37}, {52, 48.4}, {52, 50.6}, {52.2, 36}, {52.2, 39.2}, {52.2, 40}, {52.2, 42.2}, {52.2, 49.8}, {52.2, 57}, {52.2, 57.8}, {52.4, 41}, {52.4, 42.8}, {52.4, 45}, {52.6, 33.6}, {52.6, 43.8}, {52.8, 39.8}, {52.8, 47.8}, {53, 39.4}, {53, 41.6}, {53.2, 38.4}, {53.2, 40.6}, {53.2, 42.6}, {53.2, 46.6}, {53.2, 49.2}, {53.4, 37.4}, {53.4, 45.2}, {53.6, 40.4}, {53.6, 40.6}, {53.6, 42}, {53.8, 35.2}, {53.8, 38.4}, {53.8, 39.4}, {53.8, 42.8}, {53.8, 49.2}, {54, 47.2}, {54.4, 37}, {54.4, 44.2}, {54.4, 45}, {54.4, 45.8}, {54.4, 47.6}, {54.6, 37.8}, {54.6, 38.8}, {54.6, 40.2}, {54.6, 40.6}, {54.6, 43.2}, {54.6, 51.6}, {54.6, 54.4}, {54.8, 46.8}, {55, 35.8}, {55, 42.2}, {55, 47.8}, {55.2, 37.4}, {55.2, 50}, {55.4, 46.2}, {55.4, 48.6}, {55.4, 50.8}, {55.4, 52.6}, {55.6, 34.6}, {55.6, 43.6}, {55.6, 48.4}, {55.6, 52.8}, {55.8, 41}, {56, 45.6}, {56, 50.8}, {56, 52}, {56.2, 42}, {56.2, 43}, {56.2, 53.8}, {56.2, 56.2}, {56.4, 47.4}, {56.6, 41.2}, {56.6, 48.2}, {56.6, 48.6}, {56.6, 51.6}, {56.6, 52.6}, {56.8, 39.6}, {56.8, 53.6}, {57.2, 60.4}, {57.4, 43}, {57.6, 44}, {57.6, 45.4}, {57.6, 50}, {57.8, 26.8}, {58, 40.6}, {58, 46.8}, {58.2, 48}, {58.4, 41.8}, {58.6, 39.6}, {59, 63}, {60.2, 42.6}, {61.2, 42}, {61.6, 27.8}}, [85] = {{51.4, 64.6}, {51.6, 63.8}, {52.2, 56.8}, {52.4, 56.4}, {53.2, 56.4}, {53.2, 56.6}, {53.2, 57.8}, {53.2, 58.8}, {53.2, 60.2}, {53.2, 63}, {53.4, 64}, {53.6, 56.8}, {53.8, 55.8}, {53.8, 57.8}, {54, 58.6}, {54, 67.2}, {54.6, 57.2}, {54.6, 57.6}, {54.6, 59.2}, {54.8, 55.2}, {55, 56.2}, {55.6, 57.8}, {55.8, 59.2}, {56.2, 54.6}, {56.2, 57.4}, {56.6, 56.2}, {56.6, 60.2}, {56.8, 56.6}, {57, 53.2}, {57.2, 55.4}, {57.6, 55}, {57.8, 57}, {57.8, 57.8}, {58, 56.4}, {58.2, 62.6}, {58.8, 56.6}, {59, 51.2}, {59.4, 51.8}, {59.6, 59.4}, {60.2, 55}, {60.4, 52}, {60.4, 60}, {60.8, 58.6}, {61.6, 61}, {61.8, 54.6}, {61.8, 62.6}, {61.8, 64.8}, {82.6, 71}}},
+        },
+        [212261] = { -- Awakened Lich : https://wowhead.com/forever/npc=212261/awakened-lich
+            [npcKeys.name] = "Awakened Lich",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[10] = {{17.2, 37.6}, {18, 38}, {18, 38.6}}},
+            [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+        },
+        [212330] = { -- Explrgl : https://wowhead.com/forever/npc=212330/explrgl
+            [npcKeys.name] = "Explrgl",
+        },
+        [212333] = { -- Blackfathom Tendril : https://wowhead.com/forever/npc=212333/blackfathom-tendril
+            [npcKeys.name] = "Blackfathom Tendril",
+        },
+        [212334] = { -- Dead Twilight Cultist : https://wowhead.com/forever/npc=212334/dead-twilight-cultist
+            [npcKeys.name] = "Dead Twilight Cultist",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[331] = {{17.2, 26.4}, {17.2, 26.6}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [212443] = { -- Nightmare Stalker : https://wowhead.com/forever/npc=212443/nightmare-stalker
+            [npcKeys.name] = "Nightmare Stalker",
+        },
+        [212458] = { -- Phantasmal Crustacean : https://wowhead.com/forever/npc=212458/phantasmal-crustacean
+            [npcKeys.name] = "Phantasmal Crustacean",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 26,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [212461] = { -- Phantasmal Servant : https://wowhead.com/forever/npc=212461/phantasmal-servant
+            [npcKeys.name] = "Phantasmal Servant",
+            [npcKeys.minLevel] = 26,
+            [npcKeys.maxLevel] = 26,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [212462] = { -- Phantasmal Softshell : https://wowhead.com/forever/npc=212462/phantasmal-softshell
+            [npcKeys.name] = "Phantasmal Softshell",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [212463] = { -- Phantasmal Snapjaw : https://wowhead.com/forever/npc=212463/phantasmal-snapjaw
+            [npcKeys.name] = "Phantasmal Snapjaw",
+            [npcKeys.minLevel] = 26,
+            [npcKeys.maxLevel] = 27,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [212468] = { -- Invading Nightmare : https://wowhead.com/forever/npc=212468/invading-nightmare
+            [npcKeys.name] = "Invading Nightmare",
+        },
+        [212598] = { -- Recke Grinnes : https://wowhead.com/forever/npc=212598/recke-grinnes
+            [npcKeys.name] = "Recke Grinnes",
+            [npcKeys.minLevel] = 16,
+            [npcKeys.maxLevel] = 16,
+            [npcKeys.spawns] = {[130] = {{66.2, 31.2}}},
+            [npcKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [212667] = { -- Fettered Elemental : https://wowhead.com/forever/npc=212667/fettered-elemental
+            [npcKeys.name] = "Fettered Elemental",
+        },
+        [212674] = { -- Death's Head Shaman : https://wowhead.com/forever/npc=212674/deaths-head-shaman
+            [npcKeys.name] = "Death's Head Shaman",
+        },
+        [212678] = { -- Earth Elemental : https://wowhead.com/forever/npc=212678/earth-elemental
+            [npcKeys.name] = "Earth Elemental",
+        },
+        [212692] = { -- Bound Elemental : https://wowhead.com/forever/npc=212692/bound-elemental
+            [npcKeys.name] = "Bound Elemental",
+            [npcKeys.minLevel] = 21,
+            [npcKeys.maxLevel] = 21,
+            [npcKeys.spawns] = {[17] = {{41.4, 79.8}, {42.2, 80.8}, {42.4, 79.4}, {43, 78.6}, {43, 82.2}, {43.2, 78.4}, {43.2, 81.4}, {43.6, 78.8}, {43.6, 79.6}, {43.8, 78.4}, {43.8, 82.2}, {44, 80.6}, {44, 91.2}, {44.4, 88.8}, {44.6, 59}, {44.8, 76.8}, {44.8, 78.6}, {44.8, 85.8}, {45, 76.2}, {45, 79.6}, {45.2, 63.8}, {45.2, 74.2}, {45.2, 75.2}, {45.2, 77.8}, {45.6, 78.2}, {45.8, 80.4}, {45.8, 80.6}, {45.8, 82.8}, {46, 69}, {46, 69.8}, {46, 74}, {46, 75.2}, {46, 76.4}, {46, 76.6}, {46.4, 66}, {47.6, 81.6}, {47.8, 83.8}}},
+            [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
         },
         [212694] = { -- Hirzek : https://wowhead.com/forever/npc=212694/hirzek
             [npcKeys.name] = "Hirzek",
@@ -2058,12 +3959,44 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Keeper of the Grove",
         },
+        [212804] = { -- Centrius : https://wowhead.com/forever/npc=212804/centrius
+            [npcKeys.name] = "Centrius",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.spawns] = {[331] = {{27.4, 27.8}, {28, 26.4}, {28.2, 27.4}, {28.4, 28.4}, {28.4, 28.6}, {28.4, 29.6}, {28.6, 28}, {28.6, 28.8}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Keeper of the Grove",
+        },
+        [212809] = { -- Wailing Spirit : https://wowhead.com/forever/npc=212809/wailing-spirit
+            [npcKeys.name] = "Wailing Spirit",
+            [npcKeys.minLevel] = 20,
+            [npcKeys.maxLevel] = 20,
+            [npcKeys.spawns] = {[130] = {{57.2, 70.4}, {57.4, 71}, {57.6, 71.2}, {58.4, 72}, {58.6, 71.6}, {59.4, 70.4}, {59.4, 70.6}, {59.8, 71.2}, {60.4, 72.2}, {60.4, 72.8}, {60.4, 74}, {60.4, 74.8}, {60.6, 72.4}, {60.6, 73.2}}},
+            [npcKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
+        },
+        [212837] = { -- Primordial Anomaly : https://wowhead.com/forever/npc=212837/primordial-anomaly
+            [npcKeys.name] = "Primordial Anomaly",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[406] = {{27, 64}, {27.2, 64.8}, {27.4, 65.6}, {27.4, 67.2}, {27.6, 63}, {28, 68.2}, {28.2, 71.8}, {28.4, 64.4}, {28.4, 65.4}, {28.4, 65.6}, {28.4, 70.8}, {28.6, 62}, {28.6, 63}, {28.6, 64.4}, {28.6, 65}, {28.6, 66}, {29, 71.4}, {29, 73.8}, {29.2, 71.8}, {29.4, 72.8}, {29.6, 63.6}, {29.6, 65.6}, {29.6, 70.4}, {29.6, 71.4}, {29.6, 72}, {30.6, 71.6}, {31.2, 66.8}, {31.6, 74.6}, {31.8, 67.4}, {32.4, 67.8}, {32.8, 68.4}, {32.8, 72.4}, {33, 69.4}, {33.2, 66.6}, {33.2, 69.6}, {33.2, 71.2}, {33.6, 68.8}, {33.6, 69.6}, {33.8, 68.4}, {33.8, 70.8}, {35, 72.2}, {36.4, 71.4}, {36.4, 71.6}, {36.4, 72.6}, {36.8, 71.4}, {36.8, 72}, {36.8, 72.6}, {36.8, 74.8}, {37.6, 71.4}, {37.6, 72}, {37.6, 72.6}, {37.8, 67.8}}},
+            [npcKeys.zoneID] = zoneIDs.STONETALON_MOUNTAINS,
+        },
+        [212934] = { -- Kazragore : https://wowhead.com/forever/npc=212934/kazragore
+            [npcKeys.name] = "Kazragore",
+            [npcKeys.subName] = "Far Seer",
+        },
+        [212953] = { -- Felore Moonray : https://wowhead.com/forever/npc=212953/felore-moonray
+            [npcKeys.name] = "Felore Moonray",
+            [npcKeys.subName] = "Priestess of the Moon",
+        },
         [212969] = { -- Kazragore : https://wowhead.com/forever/npc=212969/kazragore
             [npcKeys.name] = "Kazragore",
             [npcKeys.minLevel] = 9999,
             [npcKeys.maxLevel] = 9999,
             [npcKeys.spawns] = {[331] = {{37.8, 66.4}, {38.4, 66.8}, {38.4, 67.6}, {38.8, 66.4}, {39, 67.4}, {39, 68.6}, {39.2, 67.8}, {39.6, 66.4}, {39.6, 66.6}, {39.6, 67.6}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.questEnds] = {79098},
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Far Seer",
         },
@@ -2073,6 +4006,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 9999,
             [npcKeys.spawns] = {[331] = {{60, 70.4}, {60, 71.4}, {60, 71.8}, {60, 72.6}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.questEnds] = {79090},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Priestess of the Moon",
         },
@@ -2081,9 +4015,93 @@ function ForeverBaseNpc:Load()
             [npcKeys.minLevel] = 30,
             [npcKeys.maxLevel] = 30,
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
+            [npcKeys.questEnds] = {78611, 78612, 78872, 79100, 79101, 79102, 79103, 80307, 80308, 80309, 82307, 82308, 82309, 88654},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Supply Officer",
             [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 205950; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [213334] = { -- Aku'mai : https://wowhead.com/forever/npc=213334/akumai
+            [npcKeys.name] = "Aku'mai",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [213444] = { -- Mysterious Traveler : https://wowhead.com/forever/npc=213444/mysterious-traveler
+            [npcKeys.name] = "Mysterious Traveler",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.spawns] = {[331] = {{79, 80.2}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.questStarts] = {78684},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [213445] = { -- Raszel Ander : https://wowhead.com/forever/npc=213445/raszel-ander
+            [npcKeys.name] = "Raszel Ander",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.spawns] = {[17] = {{49.2, 57.2}}},
+            [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
+            [npcKeys.questStarts] = {78914, 78994},
+            [npcKeys.questEnds] = {78994},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [213450] = { -- Felguard : https://wowhead.com/forever/npc=213450/felguard
+            [npcKeys.name] = "Felguard",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[440] = {{33.4, 55.8}, {33.4, 57.2}, {33.8, 55.6}, {33.8, 57}, {34, 54.8}, {51, 29.2}, {51, 29.6}, {51, 31}, {51.4, 26.8}, {52, 28}}, [1377] = {{64.8, 72.2}}},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [213451] = { -- Cleansing Elemental : https://wowhead.com/forever/npc=213451/cleansing-elemental
+            [npcKeys.name] = "Cleansing Elemental",
+            [npcKeys.minLevel] = 27,
+            [npcKeys.maxLevel] = 27,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [213452] = { -- Corrosion Elemental : https://wowhead.com/forever/npc=213452/corrosion-elemental
+            [npcKeys.name] = "Corrosion Elemental",
+        },
+        [213540] = { -- Mysterious Traveler : https://wowhead.com/forever/npc=213540/mysterious-traveler
+            [npcKeys.name] = "Mysterious Traveler",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.spawns] = {[17] = {{49.2, 57.2}}},
+            [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [213595] = { -- Void Elemental : https://wowhead.com/forever/npc=213595/void-elemental
+            [npcKeys.name] = "Void Elemental",
+        },
+        [213659] = { -- Dark Ritual Portal : https://wowhead.com/forever/npc=213659/dark-ritual-portal
+            [npcKeys.name] = "Dark Ritual Portal",
+        },
+        [213708] = { -- Legion Hound : https://wowhead.com/forever/npc=213708/legion-hound
+            [npcKeys.name] = "Legion Hound",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[331] = {{79, 80.4}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+        },
+        [213709] = { -- Mannoroc Lasher : https://wowhead.com/forever/npc=213709/mannoroc-lasher
+            [npcKeys.name] = "Mannoroc Lasher",
+            [npcKeys.minLevel] = 24,
+            [npcKeys.maxLevel] = 24,
+            [npcKeys.spawns] = {[331] = {{79, 80.4}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+        },
+        [213710] = { -- Felguard : https://wowhead.com/forever/npc=213710/felguard
+            [npcKeys.name] = "Felguard",
+            [npcKeys.minLevel] = 24,
+            [npcKeys.maxLevel] = 24,
+            [npcKeys.spawns] = {[331] = {{79, 80.4}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+        },
+        [213711] = { -- Searing Infernal : https://wowhead.com/forever/npc=213711/searing-infernal
+            [npcKeys.name] = "Searing Infernal",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[331] = {{79, 80.4}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
         },
         [213795] = { -- Gharrik : https://wowhead.com/forever/npc=213795/gharrik
             [npcKeys.name] = "Gharrik",
@@ -2092,12 +4110,36 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[3] = {{22.4, 67.4}, {22.4, 67.6}, {22.6, 67.4}, {22.6, 67.6}, {23.4, 66.2}, {23.6, 66.4}}},
             [npcKeys.zoneID] = zoneIDs.BADLANDS,
         },
+        [213994] = { -- Corrosive Droplet : https://wowhead.com/forever/npc=213994/corrosive-droplet
+            [npcKeys.name] = "Corrosive Droplet",
+            [npcKeys.minLevel] = 26,
+            [npcKeys.maxLevel] = 26,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [214000] = { -- Corrosive Pool Stalker : https://wowhead.com/forever/npc=214000/corrosive-pool-stalker
+            [npcKeys.name] = "Corrosive Pool Stalker",
+        },
+        [214063] = { -- Temporal Anomaly : https://wowhead.com/forever/npc=214063/temporal-anomaly
+            [npcKeys.name] = "Temporal Anomaly",
+        },
         [214070] = { -- Jornah : https://wowhead.com/forever/npc=214070/jornah
             [npcKeys.name] = "Jornah",
             [npcKeys.minLevel] = 30,
             [npcKeys.maxLevel] = 30,
             [npcKeys.spawns] = {[1637] = {{51.4, 63.8}, {51.4, 64.6}, {51.6, 63.8}, {51.6, 64.6}}},
             [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
+            [npcKeys.questEnds] = {78611, 78612, 78872, 79100, 79101, 79102, 79103, 80307, 80308, 80309, 82307, 82308, 82309, 88654},
+            [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Supply Officer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 205950; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [214096] = { -- Dokimi : https://wowhead.com/forever/npc=214096/dokimi
+            [npcKeys.name] = "Dokimi",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.spawns] = {[1638] = {{39.4, 53.4}, {39.4, 53.6}, {39.6, 53.4}, {39.6, 53.6}}},
+            [npcKeys.zoneID] = zoneIDs.THUNDER_BLUFF,
+            [npcKeys.questEnds] = {78611, 78612, 78872, 79100, 79101, 79102, 79103, 80307, 80308, 80309, 82307, 82308, 82309},
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Supply Officer",
             [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 205950; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
@@ -2108,7 +4150,20 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 30,
             [npcKeys.spawns] = {[1497] = {{64.4, 38.4}, {64.4, 38.6}, {64.6, 38.6}, {64.8, 38.2}, {65.6, 38.4}, {65.6, 38.6}}},
             [npcKeys.zoneID] = zoneIDs.UNDERCITY,
+            [npcKeys.questEnds] = {78611, 78612, 78872, 79100, 79101, 79102, 79103, 80307, 80308, 80309, 82307, 82308},
             [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Supply Officer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 205950; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [214099] = { -- Tamelyn Aldridge : https://wowhead.com/forever/npc=214099/tamelyn-aldridge
+            [npcKeys.name] = "Tamelyn Aldridge",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.spawns] = {[1537] = {{24.4, 67.4}, {24.4, 67.6}, {24.6, 67.4}, {24.6, 67.6}}},
+            [npcKeys.zoneID] = zoneIDs.IRONFORGE,
+            [npcKeys.questStarts] = {88654},
+            [npcKeys.questEnds] = {78611, 78612, 78872, 79100, 79101, 79102, 79103, 80307, 80308, 80309, 82307, 82308, 82309, 88654},
+            [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Supply Officer",
             [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 205950; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
@@ -2118,6 +4173,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 30,
             [npcKeys.spawns] = {[1657] = {{59.2, 56.6}, {59.4, 56}, {59.8, 56.4}, {59.8, 56.6}}},
             [npcKeys.zoneID] = zoneIDs.DARNASSUS,
+            [npcKeys.questStarts] = {78611, 78612, 78872, 79100, 79101, 79102, 79103, 80307, 80308, 80309, 82307, 82308, 82309},
+            [npcKeys.questEnds] = {78611, 78612, 78872, 79100, 79101, 79102, 79103, 80307, 80308, 80309, 82307, 82308, 82309},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Supply Officer",
             [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 205950; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
@@ -2129,11 +4186,83 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[406] = {{59.8, 51}, {59.8, 51.6}, {60, 54.4}, {60, 55}, {62, 53}, {62, 53.6}, {62.2, 52.4}, {62.6, 52.8}, {66.4, 47.4}, {66.4, 47.6}, {66.6, 47.4}, {66.6, 47.6}, {67.4, 57.4}, {67.4, 57.6}, {67.6, 57.4}, {67.6, 57.6}, {68.4, 47.8}, {68.6, 47.8}, {70, 55.6}, {70.2, 55.2}, {70.6, 55.4}, {70.8, 42}, {70.8, 49.2}, {72.4, 53.2}, {72.6, 52.4}, {72.6, 53}}},
             [npcKeys.zoneID] = zoneIDs.STONETALON_MOUNTAINS,
         },
+        [214133] = { -- Breath Stalker : https://wowhead.com/forever/npc=214133/breath-stalker
+            [npcKeys.name] = "Breath Stalker",
+        },
+        [214190] = { -- Blackfathom Pearl : https://wowhead.com/forever/npc=214190/blackfathom-pearl
+            [npcKeys.name] = "Blackfathom Pearl",
+        },
+        [214208] = { -- N'ora Anyheart : https://wowhead.com/forever/npc=214208/nora-anyheart
+            [npcKeys.name] = "N'ora Anyheart",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[17] = {{62, 39.4}}},
+            [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
+            [npcKeys.questStarts] = {78909},
+            [npcKeys.questEnds] = {78909},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Scholar of Exotic Fauna",
+        },
+        [214212] = { -- Shadowy Figure : https://wowhead.com/forever/npc=214212/shadowy-figure
+            [npcKeys.name] = "Shadowy Figure",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.spawns] = {[36] = {{88.4, 73.4}, {88.6, 73.4}, {88.6, 73.6}}},
+            [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [214254] = { -- Pool of Shadow Stalker : https://wowhead.com/forever/npc=214254/pool-of-shadow-stalker
+            [npcKeys.name] = "Pool of Shadow Stalker",
+        },
+        [214440] = { -- Demolition Explosives : https://wowhead.com/forever/npc=214440/demolition-explosives
+            [npcKeys.name] = "Demolition Explosives",
+        },
+        [214456] = { -- Dro'zem the Blasphemous : https://wowhead.com/forever/npc=214456/drozem-the-blasphemous
+            [npcKeys.name] = "Dro'zem the Blasphemous",
+            [npcKeys.minLevel] = 23,
+            [npcKeys.maxLevel] = 23,
+            [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
+        },
+        [214458] = { -- Baron Aquanis : https://wowhead.com/forever/npc=214458/baron-aquanis
+            [npcKeys.name] = "Baron Aquanis",
+            [npcKeys.subName] = "Staging Area 1",
+        },
+        [214468] = { -- Ghamoo-ra : https://wowhead.com/forever/npc=214468/ghamoo-ra
+            [npcKeys.name] = "Ghamoo-ra",
+            [npcKeys.subName] = "Staging Area 2",
+        },
+        [214469] = { -- Lady Sarevess : https://wowhead.com/forever/npc=214469/lady-sarevess
+            [npcKeys.name] = "Lady Sarevess",
+            [npcKeys.subName] = "Staging Area 3",
+        },
         [214519] = { -- Incinerator Gar'im : https://wowhead.com/forever/npc=214519/incinerator-garim
             [npcKeys.name] = "Incinerator Gar'im",
             [npcKeys.minLevel] = 23,
             [npcKeys.maxLevel] = 23,
             [npcKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
+        },
+        [214523] = { -- Blackfathom Elite : https://wowhead.com/forever/npc=214523/blackfathom-elite
+            [npcKeys.name] = "Blackfathom Elite",
+            [npcKeys.subName] = "Staging Area 3",
+        },
+        [214524] = { -- Gelihast : https://wowhead.com/forever/npc=214524/gelihast
+            [npcKeys.name] = "Gelihast",
+            [npcKeys.subName] = "Staging Area 4",
+        },
+        [214525] = { -- Lorgus Jett : https://wowhead.com/forever/npc=214525/lorgus-jett
+            [npcKeys.name] = "Lorgus Jett",
+            [npcKeys.subName] = "Staging Area 5",
+        },
+        [214526] = { -- Twilight Lord Kelris : https://wowhead.com/forever/npc=214526/twilight-lord-kelris
+            [npcKeys.name] = "Twilight Lord Kelris",
+            [npcKeys.subName] = "Staging Area 6",
+        },
+        [214527] = { -- Aku'mai : https://wowhead.com/forever/npc=214527/akumai
+            [npcKeys.name] = "Aku'mai",
+            [npcKeys.subName] = "Staging Area 7",
+        },
+        [214528] = { -- Boss Dummy : https://wowhead.com/forever/npc=214528/boss-dummy
+            [npcKeys.name] = "Boss Dummy",
         },
         [214529] = { -- Brave Stonetorch : https://wowhead.com/forever/npc=214529/brave-stonetorch
             [npcKeys.name] = "Brave Stonetorch",
@@ -2141,7 +4270,76 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 50,
             [npcKeys.spawns] = {[267] = {{65.8, 19.6}, {66, 19.2}, {67.2, 14.4}, {67.4, 14.8}, {67.6, 14.4}, {67.6, 14.6}}},
             [npcKeys.zoneID] = zoneIDs.HILLSBRAD_FOOTHILLS,
+            [npcKeys.questEnds] = {81944},
             [npcKeys.friendlyToFaction] = "H",
+        },
+        [214530] = { -- Ardelle Dralta : https://wowhead.com/forever/npc=214530/ardelle-dralta
+            [npcKeys.name] = "Ardelle Dralta",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[267] = {{51, 58.8}}},
+            [npcKeys.zoneID] = zoneIDs.HILLSBRAD_FOOTHILLS,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [214589] = { -- Cozy Sleeping Bag : https://wowhead.com/forever/npc=214589/cozy-sleeping-bag
+            [npcKeys.name] = "Cozy Sleeping Bag",
+        },
+        [214603] = { -- Blackfathom Tide Priestess : https://wowhead.com/forever/npc=214603/blackfathom-tide-priestess
+            [npcKeys.name] = "Blackfathom Tide Priestess",
+            [npcKeys.minLevel] = 26,
+            [npcKeys.maxLevel] = 26,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [214612] = { -- Aku'mai Fisher : https://wowhead.com/forever/npc=214612/akumai-fisher
+            [npcKeys.name] = "Aku'mai Fisher",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [214658] = { -- Ashenvale Arcane Shard Stalker : https://wowhead.com/forever/npc=214658/ashenvale-arcane-shard-stalker
+            [npcKeys.name] = "Ashenvale Arcane Shard Stalker",
+        },
+        [214695] = { -- Peon : https://wowhead.com/forever/npc=214695/peon
+            [npcKeys.name] = "Peon",
+        },
+        [214830] = { -- Wisp : https://wowhead.com/forever/npc=214830/wisp
+            [npcKeys.name] = "Wisp",
+        },
+        [214837] = { -- Cheddar : https://wowhead.com/forever/npc=214837/cheddar
+            [npcKeys.name] = "Cheddar",
+        },
+        [214876] = { -- Davius Voidstar : https://wowhead.com/forever/npc=214876/davius-voidstar
+            [npcKeys.name] = "Davius Voidstar",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[148] = {{36.8, 43.4}, {36.8, 43.6}}},
+            [npcKeys.zoneID] = zoneIDs.DARKSHORE,
+            [npcKeys.questStarts] = {79099},
+            [npcKeys.questEnds] = {79099},
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [214914] = { -- Blackfathom Pearl : https://wowhead.com/forever/npc=214914/blackfathom-pearl
+            [npcKeys.name] = "Blackfathom Pearl",
+        },
+        [214954] = { -- Rix Xizzix : https://wowhead.com/forever/npc=214954/rix-xizzix
+            [npcKeys.name] = "Rix Xizzix",
+            [npcKeys.minLevel] = 45,
+            [npcKeys.maxLevel] = 45,
+            [npcKeys.spawns] = {[33] = {{28.4, 75.8}}},
+            [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Lost and Found",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2820; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
+        },
+        [215062] = { -- Supplicant : https://wowhead.com/forever/npc=215062/supplicant
+            [npcKeys.name] = "Supplicant",
+            [npcKeys.minLevel] = 5,
+            [npcKeys.maxLevel] = 5,
+            [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [215068] = { -- [DNT] Kill Credit - Priest - Meditation Sharing Tutorial : https://wowhead.com/forever/npc=215068/dnt-kill-credit-priest-meditation-sharing-tutorial
+            [npcKeys.name] = "[DNT] Kill Credit - Priest - Meditation Sharing Tutorial",
         },
         [215072] = { -- Loa Altar : https://wowhead.com/forever/npc=215072/loa-altar
             [npcKeys.name] = "Loa Altar",
@@ -2149,6 +4347,124 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 1,
             [npcKeys.spawns] = {[36] = {{79.8, 67}}, [331] = {{11.8, 35.2}}},
             [npcKeys.friendlyToFaction] = "AH",
+        },
+        [215081] = { -- Bat Loa : https://wowhead.com/forever/npc=215081/bat-loa
+            [npcKeys.name] = "Bat Loa",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[36] = {{79.8, 67.2}}, [331] = {{11.8, 35.4}}},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [215095] = { -- Supplicant : https://wowhead.com/forever/npc=215095/supplicant
+            [npcKeys.name] = "Supplicant",
+            [npcKeys.minLevel] = 5,
+            [npcKeys.maxLevel] = 5,
+            [npcKeys.spawns] = {[1657] = {{39.4, 87.4}, {39.4, 87.8}, {39.8, 86.2}, {40, 86.8}, {40, 88.6}, {40.4, 87.8}, {40.6, 88.2}, {40.8, 86.2}}},
+            [npcKeys.zoneID] = zoneIDs.DARNASSUS,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [215096] = { -- Supplicant : https://wowhead.com/forever/npc=215096/supplicant
+            [npcKeys.name] = "Supplicant",
+            [npcKeys.minLevel] = 5,
+            [npcKeys.maxLevel] = 5,
+            [npcKeys.spawns] = {[1637] = {{35.6, 87.6}, {35.8, 86.2}, {35.8, 87}}},
+            [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [215097] = { -- Supplicant : https://wowhead.com/forever/npc=215097/supplicant
+            [npcKeys.name] = "Supplicant",
+        },
+        [215098] = { -- Supplicant : https://wowhead.com/forever/npc=215098/supplicant
+            [npcKeys.name] = "Supplicant",
+            [npcKeys.minLevel] = 5,
+            [npcKeys.maxLevel] = 5,
+            [npcKeys.spawns] = {[1497] = {{48.2, 14.6}, {48.4, 14}, {49.4, 14.4}, {49.4, 15}, {49.4, 16}, {49.6, 16}, {50.2, 14.4}, {50.2, 14.6}}},
+            [npcKeys.zoneID] = zoneIDs.UNDERCITY,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [215108] = { -- Aku'mai Snapjaw : https://wowhead.com/forever/npc=215108/akumai-snapjaw
+            [npcKeys.name] = "Aku'mai Snapjaw",
+            [npcKeys.minLevel] = 27,
+            [npcKeys.maxLevel] = 27,
+            [npcKeys.zoneID] = zoneIDs.BLACKFATHOM_DEEPS,
+        },
+        [215367] = { -- Dawnwatcher Selgorm : https://wowhead.com/forever/npc=215367/dawnwatcher-selgorm
+            [npcKeys.name] = "Dawnwatcher Selgorm",
+            [npcKeys.spawns] = {[1657] = {{55.6, 24}, {55.6, 26}, {56.6, 24.4}}},
+            [npcKeys.zoneID] = zoneIDs.DARNASSUS,
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [215369] = { -- Bashana Runetotem : https://wowhead.com/forever/npc=215369/bashana-runetotem
+            [npcKeys.name] = "Bashana Runetotem",
+            [npcKeys.minLevel] = 35,
+            [npcKeys.maxLevel] = 35,
+            [npcKeys.spawns] = {[1638] = {{70, 33.4}, {70, 33.6}, {70.8, 32.4}, {70.8, 32.6}, {70.8, 33.8}}},
+            [npcKeys.zoneID] = zoneIDs.THUNDER_BLUFF,
+        },
+        [215643] = { -- Tokal : https://wowhead.com/forever/npc=215643/tokal
+            [npcKeys.name] = "Tokal",
+            [npcKeys.minLevel] = 35,
+            [npcKeys.maxLevel] = 35,
+            [npcKeys.spawns] = {[33] = {{27, 77.2}}},
+            [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
+            [npcKeys.questStarts] = {79236, 79242},
+            [npcKeys.questEnds] = {79235, 79236},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [215655] = { -- Illari Duskfeather : https://wowhead.com/forever/npc=215655/illari-duskfeather
+            [npcKeys.name] = "Illari Duskfeather",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[45] = {{93.8, 71.4}, {93.8, 71.6}}},
+            [npcKeys.zoneID] = zoneIDs.ARATHI_HIGHLANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [215709] = { -- Void Zone : https://wowhead.com/forever/npc=215709/void-zone
+            [npcKeys.name] = "Void Zone",
+        },
+        [215728] = { -- Crowd Pummeler 9-60 : https://wowhead.com/forever/npc=215728/crowd-pummeler-9-60
+            [npcKeys.name] = "Crowd Pummeler 9-60",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [215849] = { -- Doan Karhan : https://wowhead.com/forever/npc=215849/doan-karhan
+            [npcKeys.name] = "Doan Karhan",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[405] = {{51.2, 82.4}, {51.2, 82.6}}},
+            [npcKeys.zoneID] = zoneIDs.DESOLACE,
+            [npcKeys.questEnds] = {79298},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [215850] = { -- Raszel Ander : https://wowhead.com/forever/npc=215850/raszel-ander
+            [npcKeys.name] = "Raszel Ander",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[405] = {{51.2, 82.4}, {51.2, 82.6}}},
+            [npcKeys.zoneID] = zoneIDs.DESOLACE,
+            [npcKeys.questStarts] = {79298},
+            [npcKeys.questEnds] = {78914},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [215854] = { -- Shadowbinder Acolyte : https://wowhead.com/forever/npc=215854/shadowbinder-acolyte
+            [npcKeys.name] = "Shadowbinder Acolyte",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[405] = {{51.2, 82.4}, {51.2, 82.6}}},
+            [npcKeys.zoneID] = zoneIDs.DESOLACE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [215855] = { -- Shadowbinder Acolyte : https://wowhead.com/forever/npc=215855/shadowbinder-acolyte
+            [npcKeys.name] = "Shadowbinder Acolyte",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[405] = {{51.2, 82.4}, {51.2, 82.6}}},
+            [npcKeys.zoneID] = zoneIDs.DESOLACE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [215890] = { -- Gear Toss Stalker : https://wowhead.com/forever/npc=215890/gear-toss-stalker
+            [npcKeys.name] = "Gear Toss Stalker",
         },
         [215974] = { -- Des'Altek : https://wowhead.com/forever/npc=215974/desaltek
             [npcKeys.name] = "Des'Altek",
@@ -2158,11 +4474,88 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.DESOLACE,
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [216098] = { -- Stalker : https://wowhead.com/forever/npc=216098/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [216145] = { -- Gnomeregan Smash Stalker : https://wowhead.com/forever/npc=216145/gnomeregan-smash-stalker
+            [npcKeys.name] = "Gnomeregan Smash Stalker",
+        },
+        [216289] = { -- Orokai : https://wowhead.com/forever/npc=216289/orokai
+            [npcKeys.name] = "Orokai",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.spawns] = {[493] = {{41, 43.4}, {41, 43.6}, {41.6, 43.4}, {41.6, 43.6}}},
+            [npcKeys.zoneID] = zoneIDs.MOONGLADE,
+            [npcKeys.questStarts] = {79377, 85401},
+            [npcKeys.questEnds] = {79348, 79377, 85401, 85501},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [216310] = { -- Rotting Ancient : https://wowhead.com/forever/npc=216310/rotting-ancient
+            [npcKeys.name] = "Rotting Ancient",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[15] = {{40, 42.8}, {40.4, 44}, {41.2, 37.6}, {41.2, 44.6}, {41.4, 41}, {41.4, 42.4}, {41.4, 42.8}, {41.4, 43.6}, {41.6, 34.2}, {41.6, 37.8}, {41.6, 44.6}, {41.8, 42.6}, {42, 30.8}, {42.4, 40.8}, {42.4, 42}, {42.4, 43.8}, {42.6, 43.4}, {42.6, 43.6}, {42.6, 44.8}, {43, 42.2}, {43.2, 41.4}, {43.6, 41}, {43.6, 43}, {44, 42}, {44.2, 43.6}}},
+            [npcKeys.zoneID] = zoneIDs.DUSTWALLOW_MARSH,
+        },
+        [216437] = { -- Ancient Sapling : https://wowhead.com/forever/npc=216437/ancient-sapling
+            [npcKeys.name] = "Ancient Sapling",
+            [npcKeys.minLevel] = 10,
+            [npcKeys.maxLevel] = 10,
+            [npcKeys.spawns] = {[36] = {{58, 43.8}, {58.2, 43.4}, {58.6, 43.4}, {58.6, 43.8}}},
+            [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [216445] = { -- Ancient Sapling : https://wowhead.com/forever/npc=216445/ancient-sapling
+            [npcKeys.name] = "Ancient Sapling",
+            [npcKeys.minLevel] = 10,
+            [npcKeys.maxLevel] = 10,
+            [npcKeys.spawns] = {[8] = {{11.2, 38.6}, {11.4, 38.4}}},
+            [npcKeys.zoneID] = zoneIDs.SWAMP_OF_SORROWS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [216448] = { -- Ancient Sapling : https://wowhead.com/forever/npc=216448/ancient-sapling
+            [npcKeys.name] = "Ancient Sapling",
+            [npcKeys.minLevel] = 10,
+            [npcKeys.maxLevel] = 10,
+            [npcKeys.spawns] = {[33] = {{32.6, 65}}},
+            [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [216451] = { -- Ancient Sapling : https://wowhead.com/forever/npc=216451/ancient-sapling
+            [npcKeys.name] = "Ancient Sapling",
+            [npcKeys.minLevel] = 10,
+            [npcKeys.maxLevel] = 10,
+            [npcKeys.spawns] = {[45] = {{46.8, 71.4}, {46.8, 72}}},
+            [npcKeys.zoneID] = zoneIDs.ARATHI_HIGHLANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [216463] = { -- Ailgrha Splittusk : https://wowhead.com/forever/npc=216463/ailgrha-splittusk
+            [npcKeys.name] = "Ailgrha Splittusk",
+            [npcKeys.minLevel] = 38,
+            [npcKeys.maxLevel] = 38,
+            [npcKeys.spawns] = {[400] = {{55, 42}}},
+            [npcKeys.zoneID] = zoneIDs.THOUSAND_NEEDLES,
+            [npcKeys.subName] = "Mother of Storms",
+        },
+        [216474] = { -- Ravaging Tempest : https://wowhead.com/forever/npc=216474/ravaging-tempest
+            [npcKeys.name] = "Ravaging Tempest",
+            [npcKeys.minLevel] = 38,
+            [npcKeys.maxLevel] = 38,
+            [npcKeys.spawns] = {[400] = {{53.4, 40.8}, {53.8, 40.4}, {54, 41.2}, {54.4, 41.8}, {54.6, 41.4}, {54.6, 41.8}, {55.8, 43.2}}},
+            [npcKeys.zoneID] = zoneIDs.THOUSAND_NEEDLES,
+        },
         [216659] = { -- Fallenroot Satyr : https://wowhead.com/forever/npc=216659/fallenroot-satyr
             [npcKeys.name] = "Fallenroot Satyr",
             [npcKeys.minLevel] = 25,
             [npcKeys.maxLevel] = 25,
             [npcKeys.spawns] = {[331] = {{13.4, 12.2}, {13.4, 13.2}, {13.6, 11.8}, {13.6, 13.4}, {13.8, 10}, {13.8, 11.2}, {14.4, 9.4}, {14.8, 10.4}, {15, 10.6}, {15.8, 11.4}, {16.2, 11.6}, {16.6, 11}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+        },
+        [216660] = { -- Fallenroot Rogue : https://wowhead.com/forever/npc=216660/fallenroot-rogue
+            [npcKeys.name] = "Fallenroot Rogue",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[331] = {{13.8, 9.2}, {14.4, 9.6}, {14.8, 10.4}, {15.2, 10.8}, {15.8, 11.4}, {16.4, 11.6}, {16.6, 11}, {16.6, 11.8}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
         },
         [216661] = { -- Blackfathom Tide Priestess : https://wowhead.com/forever/npc=216661/blackfathom-tide-priestess
@@ -2179,6 +4572,13 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[331] = {{13.4, 9.4}, {13.6, 9.6}, {14.4, 9.4}, {14.6, 10}, {15.2, 10.8}, {15.6, 11.2}, {16.4, 11.6}, {16.6, 11}, {16.6, 11.6}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
         },
+        [216664] = { -- Sprok : https://wowhead.com/forever/npc=216664/sprok
+            [npcKeys.name] = "Sprok",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Away Team",
+        },
         [216665] = { -- Gnomeregan Evacuee : https://wowhead.com/forever/npc=216665/gnomeregan-evacuee
             [npcKeys.name] = "Gnomeregan Evacuee",
             [npcKeys.minLevel] = 40,
@@ -2187,15 +4587,103 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
             [npcKeys.friendlyToFaction] = "A",
         },
+        [216666] = { -- Techbot : https://wowhead.com/forever/npc=216666/techbot
+            [npcKeys.name] = "Techbot",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+        },
+        [216667] = { -- Addled Leper : https://wowhead.com/forever/npc=216667/addled-leper
+            [npcKeys.name] = "Addled Leper",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[1] = {{24.4, 39}, {24.4, 39.8}, {24.4, 40.8}, {24.6, 39.4}, {24.6, 39.8}, {25.8, 39.8}, {27.8, 40.8}}},
+            [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
+        },
+        [216668] = { -- Irradiated Invader : https://wowhead.com/forever/npc=216668/irradiated-invader
+            [npcKeys.name] = "Irradiated Invader",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+        },
+        [216669] = { -- Caverndeep Pillager : https://wowhead.com/forever/npc=216669/caverndeep-pillager
+            [npcKeys.name] = "Caverndeep Pillager",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+        },
+        [216670] = { -- Caverndeep Looter : https://wowhead.com/forever/npc=216670/caverndeep-looter
+            [npcKeys.name] = "Caverndeep Looter",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+        },
+        [216671] = { -- Caverndeep Invader : https://wowhead.com/forever/npc=216671/caverndeep-invader
+            [npcKeys.name] = "Caverndeep Invader",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+        },
+        [216672] = { -- Namdo Bizzfizzle : https://wowhead.com/forever/npc=216672/namdo-bizzfizzle
+            [npcKeys.name] = "Namdo Bizzfizzle",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Engineering Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2880; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [216810] = { -- Desiccated Fallout : https://wowhead.com/forever/npc=216810/desiccated-fallout
+            [npcKeys.name] = "Desiccated Fallout",
+            [npcKeys.minLevel] = 41,
+            [npcKeys.maxLevel] = 41,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [216854] = { -- Freewind Post Wyvern : https://wowhead.com/forever/npc=216854/freewind-post-wyvern
+            [npcKeys.name] = "Freewind Post Wyvern",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[400] = {{53.2, 41}}},
+            [npcKeys.zoneID] = zoneIDs.THOUSAND_NEEDLES,
+            [npcKeys.friendlyToFaction] = "H",
+        },
         [216902] = { -- Wulmort Jinglepocket : https://wowhead.com/forever/npc=216902/wulmort-jinglepocket
             [npcKeys.name] = "Wulmort Jinglepocket",
             [npcKeys.minLevel] = 30,
             [npcKeys.maxLevel] = 30,
             [npcKeys.spawns] = {[1537] = {{32.4, 67.4}, {33, 68.6}, {33.4, 65.4}, {33.4, 66.4}, {33.4, 67}, {33.4, 67.6}, {33.6, 66}, {33.6, 66.8}, {33.6, 67.8}}},
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
+            [npcKeys.questStarts] = {79482, 79486, 79492, 79501},
+            [npcKeys.questEnds] = {79484, 79492},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Smokywood Pastures",
             [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 17194; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [216915] = { -- Strange Snowman : https://wowhead.com/forever/npc=216915/strange-snowman
+            [npcKeys.name] = "Strange Snowman",
+            [npcKeys.minLevel] = 35,
+            [npcKeys.maxLevel] = 35,
+            [npcKeys.spawns] = {[36] = {{35.4, 72.4}, {35.4, 72.6}, {35.6, 72}, {35.6, 72.6}}},
+            [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+            [npcKeys.questStarts] = {79484, 79485},
+            [npcKeys.questEnds] = {79482, 79483},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [216924] = { -- Kaymard Copperpinch : https://wowhead.com/forever/npc=216924/kaymard-copperpinch
+            [npcKeys.name] = "Kaymard Copperpinch",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.spawns] = {[1637] = {{53.2, 66.4}, {53.2, 66.6}}},
+            [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
+            [npcKeys.questStarts] = {79483, 79487, 79495, 79502},
+            [npcKeys.questEnds] = {79485, 79495},
+            [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Smokywood Pastures",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 17402; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [216931] = { -- The Abominable Greench : https://wowhead.com/forever/npc=216931/the-abominable-greench
+            [npcKeys.name] = "The Abominable Greench",
+            [npcKeys.minLevel] = 36,
+            [npcKeys.maxLevel] = 36,
+            [npcKeys.spawns] = {[36] = {{28.4, 62.6}, {28.6, 51.6}, {28.8, 56.2}, {28.8, 60.2}, {28.8, 61.4}, {29, 55.4}, {29.2, 57}, {29.2, 63.6}, {29.4, 62.6}, {29.6, 59.8}, {29.8, 58.8}, {29.8, 61}, {29.8, 63.4}, {30, 51.4}, {30, 55.6}, {30, 62}, {30, 65.6}, {30.4, 46.6}, {30.4, 54.6}, {30.4, 64.4}, {30.4, 65}, {30.4, 70.8}, {30.6, 47.4}, {30.6, 52.8}, {30.6, 54.2}, {30.6, 55}, {30.6, 60.8}, {30.6, 63.6}, {30.8, 63}, {30.8, 66.8}, {31, 65.4}, {31, 65.6}, {31, 70.6}, {31.2, 55.6}, {31.4, 48.8}, {31.6, 47.4}, {31.6, 51.4}, {31.6, 66.2}, {31.6, 71.8}, {31.8, 51.6}, {31.8, 54.8}, {31.8, 61.4}, {31.8, 70.6}, {32, 47.8}, {32, 66.8}, {32, 70}, {32.2, 48.6}, {32.2, 52.8}, {32.4, 50}, {32.4, 67.8}, {32.6, 47.8}, {32.6, 49}, {32.6, 50.6}, {32.6, 51.6}, {32.6, 52.8}, {32.8, 50}, {32.8, 71}, {32.8, 71.8}, {33, 70.4}, {33.6, 72.2}, {34, 70.2}, {34.2, 69.2}, {34.2, 70.8}, {34.4, 67.8}, {34.6, 46.6}, {34.6, 68.4}, {34.6, 71}, {35.2, 74.8}, {35.4, 70.4}, {36.8, 70.4}, {37, 72.4}, {37.6, 69.4}, {37.6, 70.4}, {37.8, 72.2}, {38.2, 66.4}, {38.2, 74}, {38.4, 72.8}, {38.6, 72.4}, {38.8, 72.6}, {39, 70.2}, {39.2, 66}, {39.2, 70.6}, {39.4, 68.6}, {39.6, 64.4}, {39.6, 65.4}, {39.8, 61.4}, {39.8, 62.4}, {39.8, 68.8}, {39.8, 73.4}, {39.8, 81.8}, {40.2, 73.8}, {40.2, 74.6}, {40.4, 68.2}, {40.4, 71.8}, {40.6, 62.6}, {40.6, 69.8}, {40.6, 74.8}, {40.6, 80}, {40.8, 64.8}, {40.8, 74.2}, {41, 72}, {41, 77.6}, {41, 79.2}, {41.2, 65.8}, {41.4, 69.4}, {41.4, 76.6}, {41.6, 76.4}, {41.6, 78}, {41.6, 79.6}, {42, 66.6}, {42, 77}, {42.4, 68.6}, {43, 61.8}, {43, 67.4}, {43.8, 62.8}, {43.8, 66}, {44, 65.2}, {44.4, 64}, {44.6, 62.4}, {44.6, 64}}},
+            [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+        },
+        [216937] = { -- Blood Moon Listener Stalker : https://wowhead.com/forever/npc=216937/blood-moon-listener-stalker
+            [npcKeys.name] = "Blood Moon Listener Stalker",
         },
         [217049] = { -- Mirror Image : https://wowhead.com/forever/npc=217049/mirror-image
             [npcKeys.name] = "Mirror Image",
@@ -2206,13 +4694,37 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Blademaster",
         },
+        [217215] = { -- Irradiated Cloud : https://wowhead.com/forever/npc=217215/irradiated-cloud
+            [npcKeys.name] = "Irradiated Cloud",
+        },
+        [217216] = { -- Grubbis Controller : https://wowhead.com/forever/npc=217216/grubbis-controller
+            [npcKeys.name] = "Grubbis Controller",
+        },
+        [217221] = { -- Stalker : https://wowhead.com/forever/npc=217221/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [217280] = { -- Grubbis : https://wowhead.com/forever/npc=217280/grubbis
+            [npcKeys.name] = "Grubbis",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [217290] = { -- Ogre Lightning Rod : https://wowhead.com/forever/npc=217290/ogre-lightning-rod
+            [npcKeys.name] = "Ogre Lightning Rod",
+            [npcKeys.minLevel] = 37,
+            [npcKeys.maxLevel] = 37,
+            [npcKeys.spawns] = {[45] = {{33.4, 44.4}, {33.4, 44.6}, {33.6, 44.4}, {33.6, 44.6}}},
+            [npcKeys.zoneID] = zoneIDs.ARATHI_HIGHLANDS,
+            [npcKeys.friendlyToFaction] = "H",
+        },
         [217300] = { -- Skonk : https://wowhead.com/forever/npc=217300/skonk
             [npcKeys.name] = "Skonk",
             [npcKeys.minLevel] = 40,
             [npcKeys.maxLevel] = 40,
             [npcKeys.spawns] = {[45] = {{57.4, 74.4}, {57.6, 74.4}, {57.6, 74.6}}},
             [npcKeys.zoneID] = zoneIDs.ARATHI_HIGHLANDS,
-            [npcKeys.questEnds] = {79624},
+            [npcKeys.questStarts] = {79677, 79678},
+            [npcKeys.questEnds] = {79624, 79677, 79678},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Amateur Chef",
         },
@@ -2229,6 +4741,20 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 35,
             [npcKeys.spawns] = {[36] = {{60, 45.4}, {60, 45.5}, {60, 46.6}}},
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+        },
+        [217308] = { -- Irradiated Goo : https://wowhead.com/forever/npc=217308/irradiated-goo
+            [npcKeys.name] = "Irradiated Goo",
+            [npcKeys.minLevel] = 41,
+            [npcKeys.maxLevel] = 41,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [217387] = { -- Brother Atticus : https://wowhead.com/forever/npc=217387/brother-atticus
+            [npcKeys.name] = "Brother Atticus",
+            [npcKeys.minLevel] = 35,
+            [npcKeys.maxLevel] = 35,
+            [npcKeys.spawns] = {[45] = {{27, 57}}},
+            [npcKeys.zoneID] = zoneIDs.ARATHI_HIGHLANDS,
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [217392] = { -- Flameseer Dubelen : https://wowhead.com/forever/npc=217392/flameseer-dubelen
             [npcKeys.name] = "Flameseer Dubelen",
@@ -2263,6 +4789,12 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.DESOLACE,
             [npcKeys.subName] = "Mistress of Desire",
         },
+        [217582] = { -- Caverndeep Ambusher : https://wowhead.com/forever/npc=217582/caverndeep-ambusher
+            [npcKeys.name] = "Caverndeep Ambusher",
+            [npcKeys.minLevel] = 41,
+            [npcKeys.maxLevel] = 41,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
         [217588] = { -- Arbor Tarantula : https://wowhead.com/forever/npc=217588/arbor-tarantula
             [npcKeys.name] = "Arbor Tarantula",
             [npcKeys.minLevel] = 1,
@@ -2287,6 +4819,13 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.DESOLACE,
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [217605] = { -- Void Seeker : https://wowhead.com/forever/npc=217605/void-seeker
+            [npcKeys.name] = "Void Seeker",
+            [npcKeys.minLevel] = 36,
+            [npcKeys.maxLevel] = 36,
+            [npcKeys.spawns] = {[45] = {{29.2, 62.4}, {29.2, 63}}},
+            [npcKeys.zoneID] = zoneIDs.ARATHI_HIGHLANDS,
+        },
         [217620] = { -- Reckless Warlock : https://wowhead.com/forever/npc=217620/reckless-warlock
             [npcKeys.name] = "Reckless Warlock",
             [npcKeys.minLevel] = 35,
@@ -2301,12 +4840,114 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[400] = {{26.2, 46.8}, {26.4, 46.4}, {26.6, 47.6}, {26.8, 47.2}, {27, 46.4}}},
             [npcKeys.zoneID] = zoneIDs.THOUSAND_NEEDLES,
         },
+        [217683] = { -- Altar of the Wind Spirit : https://wowhead.com/forever/npc=217683/altar-of-the-wind-spirit
+            [npcKeys.name] = "Altar of the Wind Spirit",
+        },
+        [217689] = { -- Ziri "The Wrench" Littlesprocket : https://wowhead.com/forever/npc=217689/ziri-the-wrench-littlesprocket
+            [npcKeys.name] = "Ziri \"The Wrench\" Littlesprocket",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+            [npcKeys.questStarts] = {79705, 81975},
+            [npcKeys.questEnds] = {79705, 81974, 81975},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Gearhead",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 215129; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
+        },
+        [217703] = { -- Singed Highperch Consort : https://wowhead.com/forever/npc=217703/singed-highperch-consort
+            [npcKeys.name] = "Singed Highperch Consort",
+            [npcKeys.minLevel] = 28,
+            [npcKeys.maxLevel] = 29,
+            [npcKeys.spawns] = {[400] = {{10.4, 39.4}, {10.4, 40.2}, {10.4, 40.6}, {10.6, 40.6}, {10.8, 39.2}, {11.2, 39.6}}},
+            [npcKeys.zoneID] = zoneIDs.THOUSAND_NEEDLES,
+        },
+        [217706] = { -- Kazragore : https://wowhead.com/forever/npc=217706/kazragore
+            [npcKeys.name] = "Kazragore",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.spawns] = {[331] = {{74, 60.4}, {74, 60.6}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.questEnds] = {79098},
+            [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.subName] = "Far Seer",
+        },
+        [217707] = { -- Felore Moonray : https://wowhead.com/forever/npc=217707/felore-moonray
+            [npcKeys.name] = "Felore Moonray",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.spawns] = {[331] = {{36.8, 49.6}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.questEnds] = {79090},
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Priestess of the Moon",
+        },
         [217711] = { -- Seared Needles Cougar : https://wowhead.com/forever/npc=217711/seared-needles-cougar
             [npcKeys.name] = "Seared Needles Cougar",
             [npcKeys.minLevel] = 27,
             [npcKeys.maxLevel] = 28,
             [npcKeys.spawns] = {[400] = {{23.4, 23.2}, {23.4, 23.6}, {23.4, 25}, {23.6, 23.4}, {23.6, 24.4}, {23.6, 24.8}}},
             [npcKeys.zoneID] = zoneIDs.THOUSAND_NEEDLES,
+        },
+        [217733] = { -- Caverndeep Pillager : https://wowhead.com/forever/npc=217733/caverndeep-pillager
+            [npcKeys.name] = "Caverndeep Pillager",
+            [npcKeys.minLevel] = 41,
+            [npcKeys.maxLevel] = 41,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [217783] = { -- Bloodscalp Guerrilla : https://wowhead.com/forever/npc=217783/bloodscalp-guerrilla
+            [npcKeys.name] = "Bloodscalp Guerrilla",
+            [npcKeys.minLevel] = 34,
+            [npcKeys.maxLevel] = 34,
+            [npcKeys.spawns] = {[33] = {{30.4, 14}, {30.4, 15.4}, {30.4, 15.8}, {30.6, 14.2}, {31, 14.6}, {31, 16.6}, {31.2, 16.2}, {31.6, 14.2}, {31.8, 15.8}, {32.4, 15}, {32.6, 13}, {32.6, 14.8}, {32.8, 16.2}}},
+            [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
+        },
+        [217836] = { -- Needletooth : https://wowhead.com/forever/npc=217836/needletooth
+            [npcKeys.name] = "Needletooth",
+            [npcKeys.minLevel] = 35,
+            [npcKeys.maxLevel] = 35,
+            [npcKeys.spawns] = {[45] = {{66.4, 66.8}, {67, 66.8}, {67.4, 64.2}, {67.4, 64.6}, {67.4, 65.6}, {67.4, 67.6}, {67.4, 68.6}, {67.6, 65.6}, {67.6, 66.8}, {67.6, 68.4}, {67.6, 68.6}, {67.8, 64.8}, {67.8, 69.6}, {68, 63.4}, {68.4, 64.2}, {68.6, 64.6}, {68.6, 66.6}, {68.6, 68.2}, {69, 64.2}, {69.4, 63.2}, {69.6, 63}, {69.8, 64.6}, {70, 64.4}, {70.6, 63.6}}},
+            [npcKeys.zoneID] = zoneIDs.ARATHI_HIGHLANDS,
+        },
+        [217862] = { -- Reconstructed Staff of Des'Altek : https://wowhead.com/forever/npc=217862/reconstructed-staff-of-desaltek
+            [npcKeys.name] = "Reconstructed Staff of Des'Altek",
+        },
+        [217907] = { -- Chicken TEST : https://wowhead.com/forever/npc=217907/chicken-test
+            [npcKeys.name] = "Chicken TEST",
+        },
+        [217908] = { -- Willing Sacrifice : https://wowhead.com/forever/npc=217908/willing-sacrifice
+            [npcKeys.name] = "Willing Sacrifice",
+            [npcKeys.minLevel] = 38,
+            [npcKeys.maxLevel] = 39,
+            [npcKeys.spawns] = {[405] = {{82, 80.4}, {82, 80.6}}},
+            [npcKeys.zoneID] = zoneIDs.DESOLACE,
+        },
+        [217942] = { -- Trogg Monster Random : https://wowhead.com/forever/npc=217942/trogg-monster-random
+            [npcKeys.name] = "Trogg Monster Random",
+        },
+        [217943] = { -- Scarlet Crusade Assassin : https://wowhead.com/forever/npc=217943/scarlet-crusade-assassin
+            [npcKeys.name] = "Scarlet Crusade Assassin",
+        },
+        [217945] = { -- Domesticated Attack Chicken : https://wowhead.com/forever/npc=217945/domesticated-attack-chicken
+            [npcKeys.name] = "Domesticated Attack Chicken",
+        },
+        [217956] = { -- Chomper : https://wowhead.com/forever/npc=217956/chomper
+            [npcKeys.name] = "Chomper",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [217957] = { -- Slain Scarlet Crusader : https://wowhead.com/forever/npc=217957/slain-scarlet-crusader
+            [npcKeys.name] = "Slain Scarlet Crusader",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [217969] = { -- Blastmaster Emi Shortfuse : https://wowhead.com/forever/npc=217969/blastmaster-emi-shortfuse
+            [npcKeys.name] = "Blastmaster Emi Shortfuse",
+            [npcKeys.minLevel] = 42,
+            [npcKeys.maxLevel] = 42,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [217980] = { -- Julien Faranister : https://wowhead.com/forever/npc=217980/julien-faranister
             [npcKeys.name] = "Julien Faranister",
@@ -2315,6 +4956,43 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Vault Keeper",
+        },
+        [217987] = { -- Giga Dummy : https://wowhead.com/forever/npc=217987/giga-dummy
+            [npcKeys.name] = "Giga Dummy",
+        },
+        [217996] = { -- Aeonas : https://wowhead.com/forever/npc=217996/aeonas
+            [npcKeys.name] = "Aeonas",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_MONASTERY,
+            [npcKeys.questStarts] = {79963, 79970},
+            [npcKeys.questEnds] = {79946, 79963},
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Former Paladin of the Silver Hand",
+        },
+        [218007] = { -- Josh's Kill Credit Creature 1 : https://wowhead.com/forever/npc=218007/joshs-kill-credit-creature-1
+            [npcKeys.name] = "Josh's Kill Credit Creature 1",
+        },
+        [218019] = { -- Combat Dummy : https://wowhead.com/forever/npc=218019/combat-dummy
+            [npcKeys.name] = "Combat Dummy",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[400] = {{68, 89.4}, {68, 89.6}}},
+            [npcKeys.zoneID] = zoneIDs.THOUSAND_NEEDLES,
+        },
+        [218020] = { -- Combat Dummy : https://wowhead.com/forever/npc=218020/combat-dummy
+            [npcKeys.name] = "Combat Dummy",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[400] = {{67.8, 89.4}, {68, 89.6}}},
+            [npcKeys.zoneID] = zoneIDs.THOUSAND_NEEDLES,
+        },
+        [218021] = { -- Combat Dummy : https://wowhead.com/forever/npc=218021/combat-dummy
+            [npcKeys.name] = "Combat Dummy",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[400] = {{67.8, 89.2}}},
+            [npcKeys.zoneID] = zoneIDs.THOUSAND_NEEDLES,
         },
         [218029] = { -- Witherbark Champion : https://wowhead.com/forever/npc=218029/witherbark-champion
             [npcKeys.name] = "Witherbark Champion",
@@ -2330,6 +5008,21 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[45] = {{67.8, 79.4}, {68.4, 80.4}, {68.4, 80.6}, {69.2, 81.4}, {69.2, 82.6}, {69.4, 81.6}, {69.6, 81.4}, {69.6, 81.6}}},
             [npcKeys.zoneID] = zoneIDs.ARATHI_HIGHLANDS,
         },
+        [218057] = { -- Crowd Pummeler Bleacher Stalker : https://wowhead.com/forever/npc=218057/crowd-pummeler-bleacher-stalker
+            [npcKeys.name] = "Crowd Pummeler Bleacher Stalker",
+        },
+        [218089] = { -- Scarlet Squire Corpse : https://wowhead.com/forever/npc=218089/scarlet-squire-corpse
+            [npcKeys.name] = "Scarlet Squire Corpse",
+        },
+        [218090] = { -- Scarlet Crusader Corpse : https://wowhead.com/forever/npc=218090/scarlet-crusader-corpse
+            [npcKeys.name] = "Scarlet Crusader Corpse",
+        },
+        [218093] = { -- Burning Blade Acolyte Corpse : https://wowhead.com/forever/npc=218093/burning-blade-acolyte-corpse
+            [npcKeys.name] = "Burning Blade Acolyte Corpse",
+        },
+        [218095] = { -- Burning Blade Acolyte Corpse : https://wowhead.com/forever/npc=218095/burning-blade-acolyte-corpse
+            [npcKeys.name] = "Burning Blade Acolyte Corpse",
+        },
         [218115] = { -- Mai'zin : https://wowhead.com/forever/npc=218115/maizin
             [npcKeys.name] = "Mai'zin",
             [npcKeys.minLevel] = 40,
@@ -2339,6 +5032,24 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Gurubashi Bloodchanger",
             [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 216491; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [218160] = { -- Aeonas the Vindicated : https://wowhead.com/forever/npc=218160/aeonas-the-vindicated
+            [npcKeys.name] = "Aeonas the Vindicated",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
+            [npcKeys.questStarts] = {81762},
+            [npcKeys.questEnds] = {79970},
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Former Paladin of the Silver Hand",
+        },
+        [218229] = { -- Captain Aransas : https://wowhead.com/forever/npc=218229/captain-aransas
+            [npcKeys.name] = "Captain Aransas",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[33] = {{27.4, 76.6}, {27.6, 76.4}, {27.6, 76.6}}},
+            [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [218230] = { -- Wendel Mathers : https://wowhead.com/forever/npc=218230/wendel-mathers
             [npcKeys.name] = "Wendel Mathers",
@@ -2350,13 +5061,86 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {97047},
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [218231] = { -- Highlands Knight : https://wowhead.com/forever/npc=218231/highlands-knight
+            [npcKeys.name] = "Highlands Knight",
+        },
+        [218232] = { -- Kha'damu : https://wowhead.com/forever/npc=218232/khadamu
+            [npcKeys.name] = "Kha'damu",
+        },
+        [218233] = { -- Forest Troll Shadow Priest : https://wowhead.com/forever/npc=218233/forest-troll-shadow-priest
+            [npcKeys.name] = "Forest Troll Shadow Priest",
+            [npcKeys.subName] = "Mercenary",
+        },
+        [218234] = { -- Ogre Magi : https://wowhead.com/forever/npc=218234/ogre-magi
+            [npcKeys.name] = "Ogre Magi",
+            [npcKeys.subName] = "Mercenary",
+        },
+        [218235] = { -- Gnoll Overseer : https://wowhead.com/forever/npc=218235/gnoll-overseer
+            [npcKeys.name] = "Gnoll Overseer",
+            [npcKeys.subName] = "Mercenary",
+        },
         [218236] = { -- Red Bag : https://wowhead.com/forever/npc=218236/red-bag
             [npcKeys.name] = "Red Bag",
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[46] = {{53, 24.4}}},
             [npcKeys.zoneID] = zoneIDs.BURNING_STEPPES,
+            [npcKeys.questStarts] = {84211},
+            [npcKeys.questEnds] = {84146},
             [npcKeys.friendlyToFaction] = "AH",
+        },
+        [218237] = { -- Wirdal Wondergear : https://wowhead.com/forever/npc=218237/wirdal-wondergear
+            [npcKeys.name] = "Wirdal Wondergear",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[357] = {{84.2, 43.8}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+            [npcKeys.questStarts] = {79982},
+            [npcKeys.questEnds] = {79981, 79982},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Gnomeregan Refugee",
+        },
+        [218238] = { -- Josh's Kill Credit Creature 2 : https://wowhead.com/forever/npc=218238/joshs-kill-credit-creature-2
+            [npcKeys.name] = "Josh's Kill Credit Creature 2",
+        },
+        [218240] = { -- Tower Defense Automaton : https://wowhead.com/forever/npc=218240/tower-defense-automaton
+            [npcKeys.name] = "Tower Defense Automaton",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 57,
+            [npcKeys.spawns] = {[357] = {{84.2, 44}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [218241] = { -- Shadowy Figure : https://wowhead.com/forever/npc=218241/shadowy-figure
+            [npcKeys.name] = "Shadowy Figure",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.spawns] = {[3] = {{7, 90.6}, {17, 41.2}, {19.2, 42.6}, {42.8, 78.2}, {48.4, 37.8}, {48.4, 41.4}, {50, 14.2}, {51.2, 54.4}, {54.4, 24.6}, {55.8, 56.4}, {72.2, 65.8}, {74.6, 65.2}, {83.2, 30.6}}, [15] = {{33.6, 20.4}, {33.8, 46}, {35.6, 35.4}, {37.2, 22.8}, {38, 26.8}, {38.4, 34.4}, {41.8, 70.4}, {43.2, 66.4}, {46.2, 22.6}, {46.2, 83.8}, {48, 80.4}, {49.4, 37}, {49.6, 69.4}, {51.4, 71.2}, {53.4, 20.6}, {54, 15.8}, {56.6, 20.8}, {57, 11.4}, {61.4, 20.8}, {61.8, 17.6}, {63, 29.2}, {63.2, 36.6}, {64.6, 28.2}}, [33] = {{21.2, 10.4}, {23.4, 10}, {24, 10.6}, {24.2, 50.4}, {24.2, 61.4}, {24.6, 62.2}, {25, 63.6}, {25.2, 12.6}, {26.2, 13.4}, {26.8, 61.8}, {26.8, 67.4}, {28, 70}, {28.8, 71}, {30, 19.2}, {30, 23.4}, {30.8, 71.8}, {31.2, 68.4}, {31.4, 14.4}, {32, 67}, {32.6, 13}, {32.8, 37}, {32.8, 78.6}, {33, 74}, {33.2, 36}, {33.2, 60.4}, {33.2, 65}, {33.8, 20.2}, {33.8, 21.2}, {34.2, 60.6}, {34.2, 65}, {35.6, 42.6}, {36, 30}, {36, 41}, {37.4, 31.4}, {38.4, 42.6}, {38.8, 26}, {39.6, 38.2}, {39.8, 30.6}, {40.2, 27.2}, {40.6, 38.6}, {41.4, 43}, {42.4, 33.6}, {42.6, 18.4}, {43.8, 33.8}, {44.2, 10.2}, {44.4, 40.6}, {44.8, 40.2}, {45.8, 8}, {46, 41.4}, {46.2, 7}, {46.4, 13.2}, {47.8, 6.8}}, [36] = {{17.4, 84.8}, {18, 83.2}, {18.6, 81.6}, {33.4, 83.8}, {38, 15}, {39.4, 15}, {39.6, 68.6}, {40.2, 57.6}, {40.4, 74}, {41.8, 21}, {42, 62.2}, {47.2, 47.6}, {47.6, 84.4}, {48.8, 18.8}, {56.8, 46.8}, {57.6, 67.4}, {59.4, 67.8}, {62.4, 46.8}}, [357] = {{23.2, 64.2}, {23.6, 64.6}, {24, 52.6}, {24.2, 64.2}, {24.4, 63.2}, {24.6, 67}, {25, 55.8}, {25, 62.4}, {25.2, 52.2}, {25.2, 54}, {25.2, 55.2}, {25.2, 66}, {25.4, 49}, {25.4, 50.4}, {25.4, 51.2}, {25.4, 53.4}, {25.4, 63}, {25.4, 64.4}, {25.4, 65.2}, {25.6, 50.2}, {25.6, 51.4}, {25.6, 56}, {25.6, 64.6}, {25.8, 49}, {25.8, 62.2}, {25.8, 63.6}, {25.8, 66}, {26, 47.6}, {26, 52.8}, {26, 54}, {26, 71.4}, {26.2, 55}, {26.2, 63}, {26.2, 67.4}, {26.4, 45.4}, {26.4, 46.8}, {26.4, 52}, {26.4, 56.8}, {26.4, 68}, {26.4, 68.6}, {26.6, 46.4}, {26.6, 50.2}, {26.6, 52}, {26.6, 55.8}, {26.8, 46.6}, {26.8, 54.6}, {26.8, 56.8}, {26.8, 68.2}, {26.8, 69.4}, {27, 53.4}, {27, 64}, {27, 69.6}, {27.2, 45.4}, {27.2, 53.6}, {27.2, 62.2}, {27.2, 62.8}, {27.4, 47.8}, {27.6, 48.2}, {27.6, 48.8}, {27.6, 51.8}, {27.6, 54}, {27.6, 55.2}, {27.6, 62.2}, {27.6, 62.8}, {27.6, 68.2}, {27.6, 70.2}, {27.6, 70.8}, {27.8, 44.4}, {27.8, 47}, {28, 56.8}, {28, 69}, {28.2, 56.4}, {28.2, 58}, {28.4, 45.4}, {28.4, 45.6}, {28.4, 50.2}, {28.4, 51}, {28.4, 52.8}, {28.6, 52}, {28.6, 52.6}, {28.8, 44.8}, {28.8, 50.8}, {28.8, 53.8}, {29, 46.8}, {29, 50.2}, {29.2, 54.6}, {29.2, 56.6}, {29.4, 47.6}, {29.4, 49}, {29.4, 56}, {29.6, 49.8}, {29.6, 53}, {29.6, 55.2}, {29.8, 48.2}, {29.8, 52.2}, {29.8, 57.2}, {30, 49}, {30.2, 50.6}, {30.2, 54.2}, {30.2, 56}, {30.6, 48.2}, {30.6, 50.4}, {30.6, 53.8}, {30.8, 51.4}, {30.8, 52.6}, {30.8, 57.6}, {31, 52}, {31.2, 49.4}, {31.2, 55.8}, {31.2, 56.8}, {31.4, 55.4}, {31.6, 50.2}, {31.8, 51}, {31.8, 55.8}, {31.8, 57.6}, {32.4, 55.4}, {32.6, 56.8}, {32.8, 56.2}, {33.2, 49.8}, {33.2, 52.4}, {33.2, 53.2}, {33.2, 53.8}, {33.2, 55.2}, {33.4, 49}, {33.4, 51}, {33.8, 49.8}, {34, 49.4}, {37.6, 32.8}, {38.6, 13.8}, {40.8, 35.8}, {42.6, 8.8}, {44.8, 12.2}, {45, 45.8}, {45.2, 21}, {46.8, 53.6}, {48, 44.8}, {50.2, 25}, {51.8, 32}, {52.2, 58}, {53.4, 56}, {54.8, 56.2}, {55, 73.2}, {55.4, 53}, {55.4, 57}, {55.6, 53}, {55.8, 56.6}, {56.4, 56}, {56.6, 54.8}, {56.8, 44.4}, {57.4, 47.4}, {57.6, 45.2}, {57.6, 54}, {58.8, 48.6}, {59.4, 45.2}, {59.6, 66.2}, {60.4, 54.6}, {60.4, 56.2}, {61.2, 44.4}, {61.2, 64}, {61.6, 55.2}, {67.4, 55.6}, {68.2, 46.2}, {68.8, 47}, {69, 39.4}, {69, 50.8}, {69.4, 54.2}, {69.6, 39.6}, {70.8, 56.4}, {71, 53.2}, {72, 45.8}, {72, 55}, {72.2, 35.6}, {72.6, 56.4}, {73, 35.6}, {73.4, 64}, {73.8, 54.4}, {74, 37.8}, {74.4, 40.2}, {74.8, 27.2}, {75.2, 34.6}, {75.4, 53.8}, {75.6, 57.2}, {75.8, 33.6}, {77.6, 41}, {78, 38.2}, {78.2, 45}, {78.4, 33.8}, {79.6, 41.2}, {85.6, 44.2}, {85.6, 46}, {86, 41.8}, {86, 45.2}, {86.6, 41.2}, {88.8, 39.4}}, [400] = {{67.4, 86}, {69.6, 82.4}, {69.8, 88.8}, {70.8, 77.4}, {71, 86.2}, {71.6, 86.2}, {77.2, 89.6}, {78.4, 90.2}, {79.8, 87}, {80.6, 60.2}}, [405] = {{27.4, 8.6}, {27.8, 8.6}, {29, 77.8}, {30.2, 58.8}, {31, 79.4}, {42.2, 70}, {43.2, 73.2}, {45, 74.4}, {48, 75.6}, {48.8, 77.4}, {49, 78.4}, {49.2, 81.4}, {49.4, 78.6}, {49.6, 78}, {49.8, 73}, {50, 81.4}, {50.2, 74}, {50.4, 70}, {50.4, 71.6}, {50.4, 76.4}, {50.4, 76.8}, {50.6, 77.6}, {50.6, 82.6}, {50.8, 71}, {51, 75.2}, {51, 76.6}, {51.2, 68.8}, {51.2, 70.2}, {51.2, 72}, {51.2, 73.4}, {51.2, 75.8}, {51.2, 81.8}, {51.2, 83.6}, {51.4, 68}, {51.8, 74}, {51.8, 82.4}, {51.8, 84.6}, {52, 75.2}, {52, 83.6}, {52.2, 83.4}, {52.4, 67.2}, {52.4, 85.8}, {52.6, 70.8}, {52.6, 83.8}, {52.8, 71.8}, {52.8, 79.2}, {53, 72.6}, {53.2, 70}, {53.2, 77.6}, {53.2, 85.2}, {53.4, 76}, {53.4, 79.6}, {53.4, 81.2}, {53.4, 81.8}, {53.6, 70.2}, {53.6, 78}, {53.6, 82.2}, {53.8, 77.4}, {53.8, 79.8}, {53.8, 83.6}, {54, 76.2}, {54.2, 74}, {54.4, 71}, {54.6, 73.6}, {55, 77.2}, {55.4, 78.2}, {55.8, 40.8}, {55.8, 77.8}, {56, 75.8}, {56.2, 71.8}, {56.2, 77.2}, {56.4, 71.4}, {56.4, 73}, {56.6, 72.8}, {56.6, 77.8}, {57, 74.4}, {57.2, 76.2}, {57.8, 75.4}, {58.2, 77.4}, {59.2, 89.8}, {60.4, 90.4}, {61, 90.6}, {63, 52}, {64, 87.4}, {64.4, 90.6}, {65, 22.8}, {65.8, 25.4}, {69.6, 20.6}, {69.8, 31}, {70, 81}, {72, 19.4}, {72.6, 17}, {72.8, 73}, {74, 22.6}, {74.6, 13.2}, {77, 18.2}}},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [218242] = { -- STX-04/BD : https://wowhead.com/forever/npc=218242/stx-04-bd
+            [npcKeys.name] = "STX-04/BD",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218243] = { -- STX-13/LL : https://wowhead.com/forever/npc=218243/stx-13-ll
+            [npcKeys.name] = "STX-13/LL",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218244] = { -- STX-25/NB : https://wowhead.com/forever/npc=218244/stx-25-nb
+            [npcKeys.name] = "STX-25/NB",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218245] = { -- STX-37/CN : https://wowhead.com/forever/npc=218245/stx-37-cn
+            [npcKeys.name] = "STX-37/CN",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
         },
         [218246] = { -- Gurgthock : https://wowhead.com/forever/npc=218246/gurgthock
             [npcKeys.name] = "Gurgthock",
@@ -2371,14 +5155,98 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[405] = {{29.4, 6}, {29.6, 6}, {33, 11.2}, {34.4, 20.2}, {34.4, 26.4}, {34.4, 26.8}, {34.4, 30}, {34.6, 20}, {34.6, 26.4}, {34.6, 26.8}, {34.6, 30}, {36.4, 27}, {36.6, 26.4}, {36.6, 26.8}, {38.4, 23.8}, {38.6, 24}}},
             [npcKeys.zoneID] = zoneIDs.DESOLACE,
         },
+        [218262] = { -- Leprous Assistant : https://wowhead.com/forever/npc=218262/leprous-assistant
+            [npcKeys.name] = "Leprous Assistant",
+        },
+        [218263] = { -- Leprous Machinesmith : https://wowhead.com/forever/npc=218263/leprous-machinesmith
+            [npcKeys.name] = "Leprous Machinesmith",
+        },
+        [218273] = { -- Wandering Swordsman : https://wowhead.com/forever/npc=218273/wandering-swordsman
+            [npcKeys.name] = "Wandering Swordsman",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[3] = {{14.4, 44.8}, {15.6, 45.8}, {20, 54.6}, {20, 57}, {21, 49.8}, {22, 58.6}, {22.6, 58.4}, {22.8, 56.4}, {23, 60}, {23.4, 59.2}, {23.8, 56.6}, {24, 58.6}, {24, 60.2}, {24.4, 58.4}, {24.4, 61.6}, {24.8, 56.4}, {24.8, 58.4}, {24.8, 58.6}, {25.2, 57.4}, {25.2, 60.2}, {25.4, 61.2}, {25.8, 59.4}, {26.2, 68.6}, {26.4, 57}, {26.4, 71}, {26.8, 71.8}, {27, 72.8}, {27.2, 66}, {27.2, 69.6}, {27.4, 47.6}, {27.4, 67.4}, {27.4, 68.4}, {27.4, 68.6}, {27.6, 66.6}, {27.8, 66}, {27.8, 68.2}, {27.8, 68.6}, {27.8, 72.4}, {28, 69.8}, {28.8, 64.8}, {28.8, 68}, {31, 51.4}, {32.2, 65.4}, {32.4, 69}, {32.4, 69.6}, {32.6, 70.6}, {32.6, 71.6}, {33, 66.2}, {33.2, 66.8}, {33.4, 68.4}, {33.4, 68.6}, {33.4, 69.6}, {33.6, 68.4}, {33.6, 69.2}, {33.8, 57.2}, {33.8, 69.8}, {34.6, 69.6}, {34.8, 57.2}, {34.8, 61}, {35, 56.4}, {35.2, 58.4}, {35.4, 59.4}, {35.4, 59.8}, {35.6, 56.8}, {35.6, 59.4}, {35.6, 59.6}, {35.8, 58.4}, {36.6, 56.8}, {37.2, 59.2}, {38, 59.2}}},
+            [npcKeys.zoneID] = zoneIDs.BADLANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [218343] = { -- Leprous Defender : https://wowhead.com/forever/npc=218343/leprous-defender
+            [npcKeys.name] = "Leprous Defender",
+        },
+        [218344] = { -- Explosive Egg : https://wowhead.com/forever/npc=218344/explosive-egg
+            [npcKeys.name] = "Explosive Egg",
+            [npcKeys.minLevel] = 42,
+            [npcKeys.maxLevel] = 42,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218345] = { -- Gnomeregan Items : https://wowhead.com/forever/npc=218345/gnomeregan-items
+            [npcKeys.name] = "Gnomeregan Items",
+        },
+        [218349] = { -- Walking Bomb : https://wowhead.com/forever/npc=218349/walking-bomb
+            [npcKeys.name] = "Walking Bomb",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218386] = { -- Breath Stalker : https://wowhead.com/forever/npc=218386/breath-stalker
+            [npcKeys.name] = "Breath Stalker",
+        },
+        [218434] = { -- [DNT] Invisible Stalker : https://wowhead.com/forever/npc=218434/dnt-invisible-stalker
+            [npcKeys.name] = "[DNT] Invisible Stalker",
+        },
+        [218460] = { -- [DNT] Invisible Stalker : https://wowhead.com/forever/npc=218460/dnt-invisible-stalker
+            [npcKeys.name] = "[DNT] Invisible Stalker",
+        },
+        [218461] = { -- [DNT] Invisible Stalker : https://wowhead.com/forever/npc=218461/dnt-invisible-stalker
+            [npcKeys.name] = "[DNT] Invisible Stalker",
+        },
+        [218462] = { -- [DNT] Invisible Stalker : https://wowhead.com/forever/npc=218462/dnt-invisible-stalker
+            [npcKeys.name] = "[DNT] Invisible Stalker",
+        },
+        [218537] = { -- Mekgineer Thermaplugg : https://wowhead.com/forever/npc=218537/mekgineer-thermaplugg
+            [npcKeys.name] = "Mekgineer Thermaplugg",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218538] = { -- STX-96/FR : https://wowhead.com/forever/npc=218538/stx-96-fr
+            [npcKeys.name] = "STX-96/FR",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218571] = { -- Shade of Eranikus : https://wowhead.com/forever/npc=218571/shade-of-eranikus
+            [npcKeys.name] = "Shade of Eranikus",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [218606] = { -- Lumbering Dreamwalker : https://wowhead.com/forever/npc=218606/lumbering-dreamwalker
+            [npcKeys.name] = "Lumbering Dreamwalker",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
         [218616] = { -- Balnazzar : https://wowhead.com/forever/npc=218616/balnazzar
             [npcKeys.name] = "Balnazzar",
+        },
+        [218624] = { -- Atal'alarion : https://wowhead.com/forever/npc=218624/atalalarion
+            [npcKeys.name] = "Atal'alarion",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+            [npcKeys.subName] = "Guardian of the Idol",
+        },
+        [218627] = { -- Pillar Stalker : https://wowhead.com/forever/npc=218627/pillar-stalker
+            [npcKeys.name] = "Pillar Stalker",
         },
         [218631] = { -- Screeching Terror : https://wowhead.com/forever/npc=218631/screeching-terror
             [npcKeys.name] = "Screeching Terror",
         },
         [218673] = { -- Shade of Balnazzar : https://wowhead.com/forever/npc=218673/shade-of-balnazzar
             [npcKeys.name] = "Shade of Balnazzar",
+        },
+        [218683] = { -- Wendel Mathers : https://wowhead.com/forever/npc=218683/wendel-mathers
+            [npcKeys.name] = "Wendel Mathers",
         },
         [218690] = { -- Kha'damu : https://wowhead.com/forever/npc=218690/khadamu
             [npcKeys.name] = "Kha'damu",
@@ -2389,11 +5257,50 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Chosen of the Blood Loa",
         },
+        [218718] = { -- Ogom the Wretched : https://wowhead.com/forever/npc=218718/ogom-the-wretched
+            [npcKeys.name] = "Ogom the Wretched",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [218721] = { -- Jammal'an the Prophet : https://wowhead.com/forever/npc=218721/jammalan-the-prophet
+            [npcKeys.name] = "Jammal'an the Prophet",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
         [218726] = { -- Scarlet Lightbearer : https://wowhead.com/forever/npc=218726/scarlet-lightbearer
             [npcKeys.name] = "Scarlet Lightbearer",
         },
         [218748] = { -- Infernal : https://wowhead.com/forever/npc=218748/infernal
             [npcKeys.name] = "Infernal",
+        },
+        [218813] = { -- Swamp of Sorrows Dart Stalker : https://wowhead.com/forever/npc=218813/swamp-of-sorrows-dart-stalker
+            [npcKeys.name] = "Swamp of Sorrows Dart Stalker",
+        },
+        [218819] = { -- Festering Rotslime : https://wowhead.com/forever/npc=218819/festering-rotslime
+            [npcKeys.name] = "Festering Rotslime",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [218868] = { -- Mijan : https://wowhead.com/forever/npc=218868/mijan
+            [npcKeys.name] = "Mijan",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [218869] = { -- Death's Head Geomancer : https://wowhead.com/forever/npc=218869/deaths-head-geomancer
+            [npcKeys.name] = "Death's Head Geomancer",
+            [npcKeys.spawns] = {[400] = {{55.8, 41.6}}},
+            [npcKeys.zoneID] = zoneIDs.THOUSAND_NEEDLES,
+        },
+        [218870] = { -- Death's Head Necromancer : https://wowhead.com/forever/npc=218870/deaths-head-necromancer
+            [npcKeys.name] = "Death's Head Necromancer",
+            [npcKeys.minLevel] = 37,
+            [npcKeys.maxLevel] = 37,
+            [npcKeys.spawns] = {[400] = {{53.4, 41}, {54, 41.2}}},
+            [npcKeys.zoneID] = zoneIDs.THOUSAND_NEEDLES,
         },
         [218871] = { -- Death's Head Cultist : https://wowhead.com/forever/npc=218871/deaths-head-cultist
             [npcKeys.name] = "Death's Head Cultist",
@@ -2402,11 +5309,116 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[400] = {{54.8, 40.8}}},
             [npcKeys.zoneID] = zoneIDs.THOUSAND_NEEDLES,
         },
+        [218873] = { -- Death's Head Warrior : https://wowhead.com/forever/npc=218873/deaths-head-warrior
+            [npcKeys.name] = "Death's Head Warrior",
+            [npcKeys.spawns] = {[400] = {{53.4, 40.8}, {54.2, 40.8}, {54.8, 40.8}, {55, 40.4}, {55, 41.6}, {55.6, 41.6}, {55.8, 41.4}, {56.8, 43}}},
+            [npcKeys.zoneID] = zoneIDs.THOUSAND_NEEDLES,
+        },
+        [218891] = { -- Skeletal Servant : https://wowhead.com/forever/npc=218891/skeletal-servant
+            [npcKeys.name] = "Skeletal Servant",
+            [npcKeys.minLevel] = 34,
+            [npcKeys.maxLevel] = 34,
+            [npcKeys.spawns] = {[400] = {{53.2, 41.2}, {53.8, 40.4}, {54.2, 41.2}, {54.4, 41.8}, {55, 40.8}, {55.2, 41.6}, {55.6, 42.6}}},
+            [npcKeys.zoneID] = zoneIDs.THOUSAND_NEEDLES,
+        },
+        [218908] = { -- Scarlet Crusade Assassin : https://wowhead.com/forever/npc=218908/scarlet-crusade-assassin
+            [npcKeys.name] = "Scarlet Crusade Assassin",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+        },
+        [218920] = { -- Agent Keanna : https://wowhead.com/forever/npc=218920/agent-keanna
+            [npcKeys.name] = "Agent Keanna",
+            [npcKeys.minLevel] = 45,
+            [npcKeys.maxLevel] = 45,
+            [npcKeys.spawns] = {[41] = {{52, 34.2}, {52, 34.6}}},
+            [npcKeys.zoneID] = zoneIDs.DEADWIND_PASS,
+            [npcKeys.questStarts] = {80098, 80120, 80147, 80148, 80149, 80150, 80151, 80152, 86966, 86969, 86970},
+            [npcKeys.questEnds] = {80098, 80120, 80147, 80148, 80149, 80150, 80151, 80152, 86965, 86968, 86969, 86970},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Violet Eye",
+        },
+        [218922] = { -- Hukku : https://wowhead.com/forever/npc=218922/hukku
+            [npcKeys.name] = "Hukku",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [218930] = { -- Deadwind Steed : https://wowhead.com/forever/npc=218930/deadwind-steed
+            [npcKeys.name] = "Deadwind Steed",
+        },
         [218931] = { -- Dark Rider : https://wowhead.com/forever/npc=218931/dark-rider
             [npcKeys.name] = "Dark Rider",
             [npcKeys.minLevel] = 41,
             [npcKeys.maxLevel] = 41,
             [npcKeys.spawns] = {[3] = {{56.4, 53.4}, {56.4, 53.8}, {56.4, 54.6}, {57, 55.6}, {57, 56.6}, {57.2, 52.4}, {57.4, 53.2}, {57.4, 53.6}, {57.4, 54.6}, {57.6, 53.4}, {57.6, 54.6}, {57.6, 55.6}, {57.6, 56.6}, {57.8, 54.2}, {58, 52.4}, {58.6, 54}, {58.6, 55}}, [8] = {{67, 29.6}, {67.2, 29.4}, {68.2, 27.4}, {68.4, 28}, {68.4, 28.6}, {68.6, 27.4}, {68.8, 27.8}, {68.8, 29.6}, {69, 28.8}, {69.2, 31}, {69.6, 25}, {69.6, 26.8}, {69.6, 28.6}, {70.4, 27.8}, {70.6, 28.4}, {70.6, 29.2}, {70.6, 29.6}}, [10] = {{19.6, 44}, {20, 50.6}, {20.8, 50.8}, {21.4, 46.4}, {22, 46.4}, {22, 47.6}, {22.2, 46.8}, {22.2, 51.4}, {22.6, 49.4}, {22.8, 46.8}, {22.8, 47.6}, {22.8, 49.6}, {23.2, 46.2}, {23.4, 45.2}, {23.6, 47.2}, {23.8, 48.4}, {24, 44.8}, {24, 48.8}, {24, 49.6}, {24.4, 46}, {25, 46.2}}, [17] = {{52, 36.6}, {52, 37.8}, {52.2, 36.4}, {52.6, 37}, {53.2, 37.8}}, [41] = {{42.4, 27.4}, {42.4, 27.8}, {42.6, 27.4}, {42.6, 27.6}, {42.8, 28.6}, {43.2, 26.2}, {44.4, 29.2}, {44.4, 30.6}, {44.6, 29.6}, {44.8, 29.4}}, [45] = {{60.2, 41.8}, {60.4, 39.4}, {60.4, 40.2}, {60.4, 40.6}, {60.6, 39.4}, {60.6, 39.8}, {60.8, 40.6}, {61.6, 39.4}, {61.6, 40.6}, {62.2, 40}}, [405] = {{64.4, 24.4}, {64.4, 24.8}, {65, 23.4}, {65.2, 25}, {65.2, 25.6}, {65.2, 27}, {65.4, 24.4}, {65.6, 24.4}, {65.6, 24.8}, {66, 22.6}, {66.2, 22.4}, {67, 22.6}}},
+        },
+        [218935] = { -- Walking Bomb : https://wowhead.com/forever/npc=218935/walking-bomb
+            [npcKeys.name] = "Walking Bomb",
+        },
+        [218969] = { -- STX-96/FR : https://wowhead.com/forever/npc=218969/stx-96-fr
+            [npcKeys.name] = "STX-96/FR",
+        },
+        [218970] = { -- STX-97/IC : https://wowhead.com/forever/npc=218970/stx-97-ic
+            [npcKeys.name] = "STX-97/IC",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218971] = { -- STX-97/IC : https://wowhead.com/forever/npc=218971/stx-97-ic
+            [npcKeys.name] = "STX-97/IC",
+        },
+        [218972] = { -- STX-98/PO : https://wowhead.com/forever/npc=218972/stx-98-po
+            [npcKeys.name] = "STX-98/PO",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218973] = { -- STX-98/PO : https://wowhead.com/forever/npc=218973/stx-98-po
+            [npcKeys.name] = "STX-98/PO",
+        },
+        [218974] = { -- STX-99/XD : https://wowhead.com/forever/npc=218974/stx-99-xd
+            [npcKeys.name] = "STX-99/XD",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218975] = { -- STX-99/XD : https://wowhead.com/forever/npc=218975/stx-99-xd
+            [npcKeys.name] = "STX-99/XD",
+        },
+        [219110] = { -- Incendiary Bomb : https://wowhead.com/forever/npc=219110/incendiary-bomb
+            [npcKeys.name] = "Incendiary Bomb",
+            [npcKeys.minLevel] = 41,
+            [npcKeys.maxLevel] = 41,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [219111] = { -- Frost Bomb : https://wowhead.com/forever/npc=219111/frost-bomb
+            [npcKeys.name] = "Frost Bomb",
+            [npcKeys.minLevel] = 41,
+            [npcKeys.maxLevel] = 41,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [219112] = { -- Radioactive Bomb : https://wowhead.com/forever/npc=219112/radioactive-bomb
+            [npcKeys.name] = "Radioactive Bomb",
+            [npcKeys.minLevel] = 41,
+            [npcKeys.maxLevel] = 41,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [219113] = { -- Radiation Leak : https://wowhead.com/forever/npc=219113/radiation-leak
+            [npcKeys.name] = "Radiation Leak",
+        },
+        [219177] = { -- Omen : https://wowhead.com/forever/npc=219177/omen
+            [npcKeys.name] = "Omen",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.spawns] = {[493] = {{44.4, 34.2}, {44.8, 35}, {44.8, 36.4}, {45, 39.4}, {47.4, 39.4}, {47.6, 43}, {47.8, 69.4}, {48.4, 41.8}, {50.8, 34}, {51.2, 37.2}, {51.6, 36}, {51.8, 35.2}, {55.8, 65.6}, {59.2, 58.6}, {59.8, 67}, {61.2, 66}, {61.8, 65.8}, {63.2, 62.2}, {63.6, 62.6}, {63.8, 60.6}, {64.4, 60.4}, {64.4, 62.4}, {64.6, 60.6}, {65, 61.8}}},
+            [npcKeys.zoneID] = zoneIDs.MOONGLADE,
+        },
+        [219199] = { -- Minion of Omen : https://wowhead.com/forever/npc=219199/minion-of-omen
+            [npcKeys.name] = "Minion of Omen",
+            [npcKeys.minLevel] = 42,
+            [npcKeys.maxLevel] = 42,
+            [npcKeys.spawns] = {[493] = {{57.4, 66.2}, {57.8, 66.2}, {59.2, 66.2}, {61, 66}, {61, 67.4}, {61.4, 44.8}, {61.8, 66}, {62.4, 64.8}, {62.6, 65.2}, {62.8, 45.2}, {63.2, 63.4}, {63.4, 50.2}, {63.4, 63.8}, {63.6, 65.2}, {63.8, 62.8}, {64.2, 63.6}, {64.4, 60.6}, {64.4, 62.2}, {64.4, 65.8}, {64.6, 60.6}, {64.6, 62.2}, {64.8, 56.2}, {65, 46.6}, {65, 59.6}, {65, 63}, {65.2, 46.2}, {65.4, 51.6}, {65.4, 57.4}, {65.4, 59.2}, {65.4, 64.6}, {66, 51.2}, {66, 56.8}, {66, 58}, {66, 62.8}, {66.2, 52}, {66.2, 53}, {66.4, 55.6}, {66.8, 56.6}, {67.2, 56.4}, {67.8, 55}}},
+            [npcKeys.zoneID] = zoneIDs.MOONGLADE,
         },
         [219659] = { -- High Tinker Mekkatorque : https://wowhead.com/forever/npc=219659/high-tinker-mekkatorque
             [npcKeys.name] = "High Tinker Mekkatorque",
@@ -2417,6 +5429,24 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "King of Gnomes",
         },
+        [219663] = { -- Nogg : https://wowhead.com/forever/npc=219663/nogg
+            [npcKeys.name] = "Nogg",
+            [npcKeys.minLevel] = 35,
+            [npcKeys.maxLevel] = 35,
+            [npcKeys.spawns] = {[1637] = {{75.4, 24.8}, {75.8, 25.2}}},
+            [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
+            [npcKeys.subName] = "Expert Engineer",
+        },
+        [219704] = { -- Gurgthock : https://wowhead.com/forever/npc=219704/gurgthock
+            [npcKeys.name] = "Gurgthock",
+            [npcKeys.subName] = "PTR Blood Moon Enthusiast",
+        },
+        [219762] = { -- SoD Test Dummy 40 DNT : https://wowhead.com/forever/npc=219762/sod-test-dummy-40-dnt
+            [npcKeys.name] = "SoD Test Dummy 40 DNT",
+        },
+        [219791] = { -- Tim's Stalker 01 : https://wowhead.com/forever/npc=219791/tims-stalker-01
+            [npcKeys.name] = "Tim's Stalker 01",
+        },
         [219822] = { -- Chained Spirit : https://wowhead.com/forever/npc=219822/chained-spirit
             [npcKeys.name] = "Chained Spirit",
             [npcKeys.minLevel] = 60,
@@ -2425,6 +5455,74 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [219986] = { -- Spirit Wolf : https://wowhead.com/forever/npc=219986/spirit-wolf
+            [npcKeys.name] = "Spirit Wolf",
+            [npcKeys.spawns] = {[440] = {{52, 27.6}}},
+            [npcKeys.zoneID] = zoneIDs.TANARIS,
+        },
+        [220007] = { -- Viscous Fallout : https://wowhead.com/forever/npc=220007/viscous-fallout
+            [npcKeys.name] = "Viscous Fallout",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [220064] = { -- Frozen Orb : https://wowhead.com/forever/npc=220064/frozen-orb
+            [npcKeys.name] = "Frozen Orb",
+        },
+        [220072] = { -- Electrocutioner 6000 : https://wowhead.com/forever/npc=220072/electrocutioner-6000
+            [npcKeys.name] = "Electrocutioner 6000",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [220075] = { -- [DNT] Teleporter Stalker : https://wowhead.com/forever/npc=220075/dnt-teleporter-stalker
+            [npcKeys.name] = "[DNT] Teleporter Stalker",
+        },
+        [220076] = { -- Witch Doctor Zum'rah : https://wowhead.com/forever/npc=220076/witch-doctor-zumrah
+            [npcKeys.name] = "Witch Doctor Zum'rah",
+            [npcKeys.minLevel] = 46,
+            [npcKeys.maxLevel] = 46,
+            [npcKeys.zoneID] = zoneIDs.ZUL_FARRAK,
+        },
+        [220077] = { -- [DNT] Teleporter Stalker : https://wowhead.com/forever/npc=220077/dnt-teleporter-stalker
+            [npcKeys.name] = "[DNT] Teleporter Stalker",
+        },
+        [220142] = { -- Titanzilla : https://wowhead.com/forever/npc=220142/titanzilla
+            [npcKeys.name] = "Titanzilla",
+        },
+        [220170] = { -- King Knuckles : https://wowhead.com/forever/npc=220170/king-knuckles
+            [npcKeys.name] = "King Knuckles",
+        },
+        [220174] = { -- Gamma-Ra : https://wowhead.com/forever/npc=220174/gamma-ra
+            [npcKeys.name] = "Gamma-Ra",
+        },
+        [220178] = { -- Pterodan : https://wowhead.com/forever/npc=220178/pterodan
+            [npcKeys.name] = "Pterodan",
+        },
+        [220179] = { -- Mekatron : https://wowhead.com/forever/npc=220179/mekatron
+            [npcKeys.name] = "Mekatron",
+        },
+        [220396] = { -- Zul'Farrak Concoction Stalker : https://wowhead.com/forever/npc=220396/zulfarrak-concoction-stalker
+            [npcKeys.name] = "Zul'Farrak Concoction Stalker",
+        },
+        [220833] = { -- Dreamscythe : https://wowhead.com/forever/npc=220833/dreamscythe
+            [npcKeys.name] = "Dreamscythe",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [220864] = { -- Weaver : https://wowhead.com/forever/npc=220864/weaver
+            [npcKeys.name] = "Weaver",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [220908] = { -- Stalker : https://wowhead.com/forever/npc=220908/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [220929] = { -- Josh's Kill Credit Creature 2 - Frix Xizzix : https://wowhead.com/forever/npc=220929/joshs-kill-credit-creature-2-frix-xizzix
+            [npcKeys.name] = "Josh's Kill Credit Creature 2 - Frix Xizzix",
+        },
         [220930] = { -- Frix Xizzix : https://wowhead.com/forever/npc=220930/frix-xizzix
             [npcKeys.name] = "Frix Xizzix",
             [npcKeys.minLevel] = 50,
@@ -2432,6 +5530,43 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[357] = {{81.4, 42.4}, {81.4, 42.6}, {81.6, 42.4}}},
             [npcKeys.zoneID] = zoneIDs.FERALAS,
             [npcKeys.friendlyToFaction] = "A",
+        },
+        [220931] = { -- Nightmare Thorns 01 : https://wowhead.com/forever/npc=220931/nightmare-thorns-01
+            [npcKeys.name] = "Nightmare Thorns 01",
+        },
+        [220932] = { -- Nightmare Thorns 02 : https://wowhead.com/forever/npc=220932/nightmare-thorns-02
+            [npcKeys.name] = "Nightmare Thorns 02",
+        },
+        [220933] = { -- Nightmare Thorns 03 : https://wowhead.com/forever/npc=220933/nightmare-thorns-03
+            [npcKeys.name] = "Nightmare Thorns 03",
+        },
+        [220934] = { -- Nightmare Thorns 04 : https://wowhead.com/forever/npc=220934/nightmare-thorns-04
+            [npcKeys.name] = "Nightmare Thorns 04",
+        },
+        [220935] = { -- Nightmare Thorns 05 : https://wowhead.com/forever/npc=220935/nightmare-thorns-05
+            [npcKeys.name] = "Nightmare Thorns 05",
+        },
+        [220936] = { -- Nightmare Thorns 06 : https://wowhead.com/forever/npc=220936/nightmare-thorns-06
+            [npcKeys.name] = "Nightmare Thorns 06",
+        },
+        [220937] = { -- Nightmare Thorns 07 : https://wowhead.com/forever/npc=220937/nightmare-thorns-07
+            [npcKeys.name] = "Nightmare Thorns 07",
+        },
+        [220942] = { -- Nightmare : https://wowhead.com/forever/npc=220942/nightmare
+            [npcKeys.name] = "Nightmare",
+        },
+        [220984] = { -- Fizbuz Mithril : https://wowhead.com/forever/npc=220984/fizbuz-mithril
+            [npcKeys.name] = "Fizbuz Mithril",
+            [npcKeys.minLevel] = 35,
+            [npcKeys.maxLevel] = 35,
+            [npcKeys.spawns] = {[440] = {{51.6, 27.4}, {51.6, 27.6}}},
+            [npcKeys.zoneID] = zoneIDs.TANARIS,
+            [npcKeys.questStarts] = {81682, 81877},
+            [npcKeys.questEnds] = {81801, 81877},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221165] = { -- Rope Climber : https://wowhead.com/forever/npc=221165/rope-climber
+            [npcKeys.name] = "Rope Climber",
         },
         [221168] = { -- Dire Wolf Alpha : https://wowhead.com/forever/npc=221168/dire-wolf-alpha
             [npcKeys.name] = "Dire Wolf Alpha",
@@ -2468,6 +5603,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[10] = {{61, 75.4}, {61, 75.6}, {62.6, 65.4}, {62.8, 71.4}, {62.8, 71.6}, {63.8, 67.4}, {63.8, 73}, {64, 67.6}, {64, 75.4}, {64, 75.6}, {64.2, 71.2}, {64.4, 65.8}, {64.6, 74}, {65, 70.6}, {65, 72.4}, {65, 73}, {65.2, 68.8}, {65.4, 67.4}, {65.4, 67.6}, {65.4, 69.6}, {65.6, 67.4}, {65.6, 67.6}, {65.6, 69.4}, {65.8, 75.4}, {66, 70.2}, {66, 70.8}, {66, 75.8}}},
             [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
         },
+        [221173] = { -- Stitched Patroller : https://wowhead.com/forever/npc=221173/stitched-patroller
+            [npcKeys.name] = "Stitched Patroller",
+            [npcKeys.minLevel] = 27,
+            [npcKeys.maxLevel] = 27,
+            [npcKeys.spawns] = {[10] = {{34.8, 73.4}, {34.8, 75}, {35.4, 72.4}, {36.2, 72.4}, {36.6, 72.2}, {38.2, 70.4}, {38.4, 70.6}, {39, 70.6}, {39.2, 70}, {39.6, 70.2}, {40.4, 70.6}, {41, 69.8}, {41.2, 68.8}, {41.4, 64}, {41.8, 68.6}, {41.8, 69.8}, {42.2, 64}, {42.2, 66}, {42.4, 65.2}, {42.8, 64.2}, {42.8, 64.6}, {42.8, 67}, {42.8, 68.4}, {43.2, 66.2}, {44, 65.4}, {44, 67}, {44.2, 70.2}, {44.2, 72}, {44.4, 65.6}, {44.6, 65.8}, {45, 52.2}, {45, 65.4}, {45.2, 58.4}, {45.4, 59.6}, {45.4, 66.6}, {45.6, 57.8}, {45.6, 59.2}, {45.6, 64.4}, {45.6, 65.4}, {46.2, 57.2}, {46.2, 62.6}, {46.2, 66.2}, {46.8, 62.2}, {46.8, 66.8}, {47, 60}, {47, 64.4}, {47.2, 65.4}, {47.4, 66.2}, {47.6, 65.4}, {47.8, 63.8}, {47.8, 66}, {47.8, 67.6}, {49, 65}, {49.2, 64.2}, {49.4, 66}, {49.4, 66.8}, {49.6, 66.6}, {50, 66.2}, {50, 67.6}, {50.6, 66.4}, {50.6, 66.6}, {50.8, 69.8}, {51.4, 67.6}, {51.8, 67.2}, {52.2, 67.6}, {52.4, 68.6}, {52.8, 68.2}, {53.2, 68.8}, {53.4, 70.6}, {53.6, 69.6}, {53.8, 69}, {54.4, 64.2}, {54.4, 68.2}, {54.8, 69}, {55, 67}, {55.4, 68.4}, {56, 70.4}, {56.2, 67.2}, {56.4, 67.6}, {56.6, 66.8}, {57.2, 66.4}, {57.8, 65.2}, {58, 66.2}, {58.2, 67}, {58.2, 68.2}, {58.6, 69}, {58.8, 65.4}, {59.2, 63.4}, {59.2, 64}, {59.6, 63.6}, {60.2, 62.6}, {60.6, 62.4}, {60.6, 62.6}, {62.8, 61}, {63.2, 57}, {63.2, 66.8}, {64, 67.6}, {65.2, 60.2}, {66.2, 61}, {66.4, 60.2}, {66.6, 61}, {67, 60}, {68.6, 60.8}, {69.4, 60.4}, {69.8, 59.4}, {70.2, 60.2}, {70.6, 60.2}}},
+            [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+            [npcKeys.subName] = "Another Gift from the Embalmer",
+        },
         [221174] = { -- Deranged Ogre : https://wowhead.com/forever/npc=221174/deranged-ogre
             [npcKeys.name] = "Deranged Ogre",
             [npcKeys.minLevel] = 26,
@@ -2496,6 +5639,16 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[10] = {{47.4, 72.4}, {47.6, 72.6}, {47.8, 70.4}, {47.8, 72.4}, {48, 70.6}, {49.2, 76.4}, {49.2, 76.6}, {49.4, 75.4}, {49.6, 75.4}, {50.2, 70.2}, {50.4, 73.4}, {50.4, 73.8}, {50.4, 76.4}, {50.4, 76.6}, {50.4, 78.2}, {50.6, 73.4}, {50.6, 76.8}, {50.6, 78}, {54.4, 73}, {54.8, 72.8}, {55.4, 72.4}}},
             [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
         },
+        [221201] = { -- Rope Climber : https://wowhead.com/forever/npc=221201/rope-climber
+            [npcKeys.name] = "Rope Climber",
+        },
+        [221204] = { -- Ylanthrius : https://wowhead.com/forever/npc=221204/ylanthrius
+            [npcKeys.name] = "Ylanthrius",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.spawns] = {[10] = {{44.2, 68.2}, {44.2, 71.2}, {44.2, 75.6}, {44.4, 71.6}, {44.8, 73.4}, {45, 69.2}, {45, 70.4}, {45.2, 64.6}, {45.2, 66}, {46, 70.2}, {46, 73.8}, {46.2, 73.2}, {46.2, 75}, {46.4, 71.2}, {46.4, 72.2}, {46.6, 72.2}, {47, 76.4}, {47.2, 69.4}, {47.2, 69.8}, {47.2, 70.6}, {47.2, 74}, {47.2, 74.6}, {47.4, 73.2}, {47.4, 76.6}, {47.6, 75.8}, {47.6, 77.6}, {47.8, 69.6}, {47.8, 70.6}, {47.8, 76.6}, {48.2, 64.2}, {48.2, 73.4}, {48.2, 78.6}, {48.4, 72.4}, {48.4, 74}, {48.4, 74.8}, {48.8, 70.2}, {48.8, 71.2}, {48.8, 72}, {48.8, 73.4}, {48.8, 74.6}, {48.8, 75.6}, {48.8, 76.6}, {49, 74.4}, {49.6, 71.4}, {49.6, 75.2}, {49.6, 75.6}, {49.8, 73}, {49.8, 74.4}, {50, 69.4}, {50, 77.6}, {50.4, 70.4}, {50.4, 72}, {50.4, 76.6}, {50.6, 73.4}, {50.6, 73.6}, {50.6, 76.8}, {50.8, 76.4}, {51, 70.8}, {51.2, 75.4}, {51.6, 74.8}, {51.8, 74}, {52.4, 72.6}, {52.4, 76.4}, {52.8, 76.2}, {53, 72.8}, {53.4, 74.2}, {53.4, 74.6}, {53.6, 72}, {56.8, 73.6}, {57.2, 71.6}, {58, 71}, {61.4, 73}}},
+            [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+        },
         [221206] = { -- Vvarc' Zul : https://wowhead.com/forever/npc=221206/vvarc-zul
             [npcKeys.name] = "Vvarc' Zul",
             [npcKeys.minLevel] = 9999,
@@ -2511,6 +5664,15 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[10] = {{65.4, 75}, {65.6, 75.2}, {66, 76.4}, {66.4, 76.6}}},
             [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
             [npcKeys.subName] = "Lord of the Hunt",
+        },
+        [221210] = { -- Kroll Mountainshade : https://wowhead.com/forever/npc=221210/kroll-mountainshade
+            [npcKeys.name] = "Kroll Mountainshade",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[10] = {{65.6, 67.4}, {66, 69.2}}},
+            [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Druid of the Claw",
         },
         [221215] = { -- Alara Grovemender : https://wowhead.com/forever/npc=221215/alara-grovemender
             [npcKeys.name] = "Alara Grovemender",
@@ -2530,6 +5692,22 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Druid of the Claw",
         },
+        [221220] = { -- Dreamwarden Amalia : https://wowhead.com/forever/npc=221220/dreamwarden-amalia
+            [npcKeys.name] = "Dreamwarden Amalia",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[10] = {{50.6, 77}}},
+            [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221221] = { -- Dreamwarden Dorilar : https://wowhead.com/forever/npc=221221/dreamwarden-dorilar
+            [npcKeys.name] = "Dreamwarden Dorilar",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[10] = {{66.2, 76}}},
+            [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
         [221222] = { -- Dreamwarden Thalinar : https://wowhead.com/forever/npc=221222/dreamwarden-thalinar
             [npcKeys.name] = "Dreamwarden Thalinar",
             [npcKeys.minLevel] = 25,
@@ -2543,6 +5721,13 @@ function ForeverBaseNpc:Load()
             [npcKeys.minLevel] = 26,
             [npcKeys.maxLevel] = 26,
             [npcKeys.spawns] = {[10] = {{44.6, 40.8}, {45.4, 43.2}, {45.6, 51.2}, {46.4, 36.4}, {46.4, 36.6}, {46.4, 38.2}, {46.4, 38.6}, {46.4, 40.4}, {46.4, 40.6}, {46.4, 41.8}, {46.4, 42.6}, {46.6, 36.4}, {46.6, 36.6}, {46.6, 38}, {46.6, 39}, {46.6, 39.8}, {46.6, 41.2}, {46.6, 42.2}, {46.6, 42.8}, {46.8, 43.8}, {47.4, 46.8}, {47.8, 37.4}, {48.6, 40.6}}},
+            [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+        },
+        [221226] = { -- Firestarter Imp : https://wowhead.com/forever/npc=221226/firestarter-imp
+            [npcKeys.name] = "Firestarter Imp",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[10] = {{42.8, 38.8}, {43, 37.6}, {43.2, 43.6}, {43.4, 35.2}, {43.4, 36.2}, {43.4, 36.6}, {43.6, 34.2}, {43.6, 35.4}, {43.6, 36.6}, {43.6, 41.6}, {43.8, 35.8}, {43.8, 43}, {44, 39.2}, {44.2, 38.2}, {44.4, 40}, {44.4, 40.6}, {44.6, 34.6}, {44.8, 40.4}, {44.8, 40.8}, {44.8, 45.6}, {45, 42}, {45, 42.6}, {45.2, 39.2}, {45.2, 52}, {45.4, 36.2}, {45.4, 37}, {45.4, 37.8}, {45.4, 43.6}, {45.4, 50.6}, {45.6, 35.4}, {45.6, 36.4}, {45.6, 36.8}, {45.6, 40.6}, {45.6, 50.6}, {45.8, 39.4}, {45.8, 40}, {45.8, 46.4}, {45.8, 50.4}, {46.2, 43.8}, {46.2, 44.6}, {46.4, 37.8}, {46.4, 41.6}, {46.4, 42.6}, {46.4, 47}, {46.4, 48.6}, {46.6, 39.4}, {46.6, 42.4}, {46.6, 50}, {46.8, 40}, {46.8, 42.8}, {46.8, 43.8}, {46.8, 44.6}, {46.8, 56.4}, {47, 40.6}, {47.2, 45.6}, {47.2, 47.6}, {47.2, 49.2}, {47.4, 36.4}, {47.4, 37.4}, {47.4, 37.6}, {47.4, 46.8}, {47.6, 37.6}, {47.6, 39.2}, {47.6, 40}, {47.6, 45}, {47.6, 45.6}, {47.6, 48.4}, {47.8, 44.2}, {48, 37.2}, {48.2, 35.4}, {48.2, 42.4}, {48.4, 36}, {48.4, 41.4}, {48.6, 35.2}, {48.8, 35.8}, {48.8, 36.6}, {48.8, 37.8}, {48.8, 44}, {49, 31.2}, {49, 32.8}, {49, 41.2}, {49, 41.6}, {49.2, 32}, {49.2, 40.2}, {49.2, 43.2}, {49.4, 33.8}, {49.4, 39.2}, {49.6, 32.2}, {49.6, 34}, {49.6, 36}, {49.6, 40.4}, {49.6, 41.4}, {49.6, 41.6}, {49.6, 44}, {49.8, 31}, {49.8, 32.6}, {49.8, 38.4}, {49.8, 42.6}, {50, 38.8}, {50.6, 42.2}, {50.6, 43.2}, {50.8, 40.4}, {51.4, 43.8}}},
             [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
         },
         [221227] = { -- Nightmare Hound : https://wowhead.com/forever/npc=221227/nightmare-hound
@@ -2623,12 +5808,29 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[331] = {{84.4, 45.4}, {85.4, 45.4}, {85.4, 45.6}, {86, 46}, {86.2, 44.4}, {86.2, 44.8}, {86.6, 44.2}, {86.6, 44.6}, {89.4, 40.4}, {89.4, 40.6}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
         },
+        [221266] = { -- Zalius : https://wowhead.com/forever/npc=221266/zalius
+            [npcKeys.name] = "Zalius",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.spawns] = {[331] = {{80.8, 49.4}, {80.8, 49.6}, {81, 50.6}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.subName] = "Dreamfire Elder",
+        },
         [221267] = { -- Shredder 9000 : https://wowhead.com/forever/npc=221267/shredder-9000
             [npcKeys.name] = "Shredder 9000",
             [npcKeys.minLevel] = 9999,
             [npcKeys.maxLevel] = 9999,
             [npcKeys.spawns] = {[331] = {{86.4, 60.4}, {86.4, 61.2}, {86.4, 61.6}, {86.4, 62.8}, {86.6, 60.4}, {86.6, 61.2}, {86.8, 62.4}, {86.8, 62.6}, {87.6, 62.2}, {87.6, 62.6}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+        },
+        [221268] = { -- Doran Dreambough : https://wowhead.com/forever/npc=221268/doran-dreambough
+            [npcKeys.name] = "Doran Dreambough",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[331] = {{87.2, 43.4}, {87.2, 43.6}, {89.4, 40.6}, {89.6, 40.4}, {93.8, 38.4}, {93.8, 38.6}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Druid of the Claw",
         },
         [221269] = { -- Maseara Autumnmoon : https://wowhead.com/forever/npc=221269/maseara-autumnmoon
             [npcKeys.name] = "Maseara Autumnmoon",
@@ -2648,6 +5850,30 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Druid of the Claw",
+        },
+        [221271] = { -- Dreamwarden Ellodar : https://wowhead.com/forever/npc=221271/dreamwarden-ellodar
+            [npcKeys.name] = "Dreamwarden Ellodar",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[331] = {{83.6, 45.4}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221272] = { -- Dreamwarden Mandoran : https://wowhead.com/forever/npc=221272/dreamwarden-mandoran
+            [npcKeys.name] = "Dreamwarden Mandoran",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[331] = {{81.4, 48.4}, {81.4, 48.6}, {81.6, 48.4}, {81.6, 48.6}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221273] = { -- Dreamwarden Lanaria : https://wowhead.com/forever/npc=221273/dreamwarden-lanaria
+            [npcKeys.name] = "Dreamwarden Lanaria",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[331] = {{91.2, 58}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [221282] = { -- Emberspark Dreamsworn : https://wowhead.com/forever/npc=221282/emberspark-dreamsworn
             [npcKeys.name] = "Emberspark Dreamsworn",
@@ -2669,6 +5895,13 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 40,
             [npcKeys.spawns] = {[331] = {{89.4, 40.4}, {89.4, 40.6}, {89.6, 40.6}, {90.4, 39.4}, {90.4, 39.8}, {90.6, 39.6}, {91.4, 38.8}, {91.6, 38.8}, {92.2, 37.8}, {92.4, 37.4}, {92.4, 39.8}, {92.6, 38.4}, {92.6, 39.6}, {93.4, 37}, {93.4, 38.8}, {93.6, 38.8}, {93.8, 37.6}, {93.8, 40.2}, {94, 36.4}, {94, 37.4}, {94.2, 35.2}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+        },
+        [221312] = { -- Dreadfeather Hippogryph : https://wowhead.com/forever/npc=221312/dreadfeather-hippogryph
+            [npcKeys.name] = "Dreadfeather Hippogryph",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.spawns] = {[47] = {{43.6, 52.8}, {45, 47.6}, {47, 48}, {48.2, 41}, {50.4, 49.8}, {52, 33.6}, {53.6, 34.2}, {53.8, 34.6}, {54, 32.8}, {54.2, 35.6}, {54.6, 52.2}, {54.8, 36.2}, {55.4, 34.4}, {55.4, 35}, {55.6, 36.4}, {55.8, 34.8}, {55.8, 43.8}, {56, 42.2}, {56.2, 42.6}, {56.2, 51.4}, {56.4, 47.8}, {56.6, 42.2}, {56.6, 43.2}, {56.6, 43.6}, {57, 31.4}, {57.2, 33.8}, {57.2, 35.6}, {57.2, 40.6}, {57.4, 35.2}, {57.4, 38.4}, {57.4, 38.6}, {57.4, 40.2}, {57.6, 33.4}, {57.6, 38.4}, {57.6, 40}, {57.6, 43.4}, {58, 35.6}, {58, 42.2}, {58.2, 33.6}, {58.2, 35.4}, {58.2, 41}, {58.4, 29.8}, {58.4, 38.6}, {58.6, 35}, {58.6, 39}, {58.6, 40.8}, {58.8, 29}, {59, 30.4}, {59, 32.8}, {59, 34}, {59, 35.8}, {59, 37.4}, {59, 39.6}, {59, 41.6}, {59.2, 32}, {59.2, 37.8}, {59.4, 28}, {59.4, 31.2}, {59.6, 35.6}, {59.6, 37.4}, {59.8, 25.6}, {59.8, 31.4}, {59.8, 39.8}, {60, 30}, {60, 38.2}, {60.2, 28.4}, {60.2, 32.6}, {60.2, 34.4}, {60.2, 34.6}, {60.2, 38.6}, {60.4, 25.2}, {60.4, 28.6}, {60.4, 32.4}, {60.4, 40.6}, {60.6, 28.4}, {60.6, 31.4}, {60.6, 41.6}, {60.8, 27}, {60.8, 39.6}, {61, 36.8}, {61, 38.6}, {61, 43.2}, {61.2, 30}, {61.2, 35.6}, {61.2, 41.4}, {61.4, 25.2}, {61.4, 25.8}, {61.4, 29.2}, {61.4, 32.4}, {61.4, 33}, {61.4, 34.2}, {61.4, 34.6}, {61.4, 38.4}, {61.6, 32.4}, {61.6, 34.6}, {61.6, 35.8}, {61.6, 38.4}, {61.6, 41}, {61.8, 25.2}, {61.8, 25.6}, {61.8, 26.8}, {61.8, 33.2}, {61.8, 33.6}, {61.8, 41.8}, {62, 28.4}, {62, 31}, {62, 38.8}, {62.2, 23.2}, {62.2, 36.8}, {62.2, 43.8}, {62.4, 23.6}, {62.4, 29.4}, {62.4, 29.6}, {62.4, 39.6}, {62.4, 43}, {62.6, 25.4}, {62.6, 30.2}, {62.6, 30.8}, {62.6, 32.4}, {62.6, 36.4}, {62.6, 39.4}, {62.6, 40.8}, {62.8, 39.6}, {62.8, 43.2}, {63, 23.2}, {63, 26}, {63, 28.8}, {63, 34}, {63, 42}, {63.2, 24.4}, {63.2, 27.4}, {63.2, 27.6}, {63.2, 36.8}, {63.4, 32.6}, {63.4, 44.2}, {63.6, 24.4}, {63.6, 27.6}, {63.6, 31.6}, {63.6, 32.8}, {63.6, 40.2}, {63.8, 27.2}, {63.8, 30.2}, {64, 28.6}, {64.2, 30.8}, {64.2, 34.6}, {64.2, 35.8}, {64.2, 41.4}, {64.2, 42.2}, {64.2, 44.8}, {64.4, 25.4}, {64.4, 26.4}, {64.4, 33.8}, {64.4, 43}, {64.4, 44.4}, {64.6, 25.6}, {64.6, 26.8}, {64.6, 42}, {64.8, 29}, {64.8, 31.4}, {64.8, 32.2}, {64.8, 34}, {64.8, 40.4}, {65, 24.8}, {65, 33}, {65, 38.6}, {65, 40.8}, {65.2, 35.2}, {65.2, 44.4}, {65.2, 46.8}, {65.4, 27.6}, {65.4, 35.6}, {65.4, 43.4}, {65.4, 44.6}, {65.4, 45.6}, {65.6, 25.6}, {65.6, 27.4}, {65.6, 33}, {65.6, 35.2}, {65.6, 37.8}, {65.6, 40.8}, {65.6, 42}, {65.8, 40.4}, {65.8, 46}, {66, 36.6}, {66, 46.8}, {66.2, 31.6}, {66.2, 34.4}, {66.2, 36.4}, {66.2, 43.4}, {66.2, 44.4}, {66.2, 44.6}, {66.4, 28}, {66.6, 32.2}, {66.6, 33}, {66.6, 40.8}, {66.6, 43.4}, {66.6, 43.6}, {66.8, 26.8}, {66.8, 28.2}, {66.8, 34.2}, {67, 22.4}, {67, 25.6}, {67, 36.2}, {67, 41.8}, {67, 45.4}, {67.2, 25}, {67.2, 37.8}, {67.2, 39}, {67.2, 40.4}, {67.2, 45.6}, {67.4, 30}, {67.4, 47.2}, {67.4, 48}, {67.4, 49.8}, {67.6, 26.4}, {67.6, 39.2}, {67.6, 43.8}, {67.6, 45.6}, {67.8, 40.6}, {67.8, 42.2}, {67.8, 43.4}, {67.8, 47.8}, {68, 47}, {68.2, 24.4}, {68.2, 37.6}, {68.2, 49}, {68.4, 24.6}, {68.4, 26.8}, {68.4, 45}, {68.6, 48.8}, {68.8, 28.6}, {69, 28.2}, {69, 39}, {69, 39.6}, {69, 43.4}, {69, 44}, {69, 45.2}, {69, 45.6}, {69, 47.4}, {69.2, 25.6}, {69.2, 37.2}, {69.4, 47.8}, {69.6, 38.8}, {69.6, 39.6}, {69.6, 45.4}, {69.6, 52.6}, {69.8, 38.4}, {69.8, 43}, {69.8, 44}, {70.2, 40.6}, {70.2, 46.4}, {70.4, 42}, {70.4, 46.6}, {70.4, 47.6}, {70.4, 48.8}, {70.4, 49.8}, {70.4, 51}, {70.6, 43.6}, {70.6, 45.4}, {70.6, 46.4}, {70.6, 47.6}, {70.6, 48.6}, {70.8, 53.2}, {71, 47}, {71, 49.6}, {71, 51.6}, {71.4, 54.2}, {71.6, 46.4}, {71.6, 47.4}, {71.6, 47.6}, {71.6, 52.2}, {71.6, 57.2}, {71.8, 53}, {72.2, 50.8}, {72.2, 53.8}, {72.4, 49}, {72.4, 50.2}, {72.6, 48.8}, {72.8, 51}, {72.8, 52.8}, {73, 50}, {73, 51.6}, {73.4, 53.6}, {73.6, 50.6}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
         },
         [221315] = { -- Unstable Wisp : https://wowhead.com/forever/npc=221315/unstable-wisp
             [npcKeys.name] = "Unstable Wisp",
@@ -2741,6 +5974,57 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[47] = {{63, 26}, {63.2, 27.6}, {63.4, 27.4}, {71.2, 53.6}, {71.4, 53.4}, {71.8, 52.4}, {72, 53.4}, {72.4, 53.6}, {72.6, 53.6}, {72.8, 53.4}, {73, 51.4}, {73, 52}}},
             [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
         },
+        [221335] = { -- Elianar Shadowdrinker : https://wowhead.com/forever/npc=221335/elianar-shadowdrinker
+            [npcKeys.name] = "Elianar Shadowdrinker",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[47] = {{53.4, 39}, {53.6, 39}, {63.2, 27.4}, {63.2, 27.6}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Druid of the Claw",
+        },
+        [221336] = { -- Serlina Starbright : https://wowhead.com/forever/npc=221336/serlina-starbright
+            [npcKeys.name] = "Serlina Starbright",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[47] = {{63.2, 27.4}, {63.2, 27.6}, {71, 48}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Druid of the Claw",
+        },
+        [221337] = { -- Veanna Cloudsleeper : https://wowhead.com/forever/npc=221337/veanna-cloudsleeper
+            [npcKeys.name] = "Veanna Cloudsleeper",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[47] = {{57.4, 42.8}, {63.2, 27.4}, {63.2, 27.6}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Druid of the Claw",
+        },
+        [221351] = { -- Dreamwarden Valori : https://wowhead.com/forever/npc=221351/dreamwarden-valori
+            [npcKeys.name] = "Dreamwarden Valori",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[47] = {{56.4, 43.2}, {56.6, 43.2}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221352] = { -- Dreamwarden Sanathel : https://wowhead.com/forever/npc=221352/dreamwarden-sanathel
+            [npcKeys.name] = "Dreamwarden Sanathel",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[47] = {{73.2, 54}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221353] = { -- Dreamwarden Laninar : https://wowhead.com/forever/npc=221353/dreamwarden-laninar
+            [npcKeys.name] = "Dreamwarden Laninar",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[47] = {{46.8, 41.2}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
         [221356] = { -- Doomspark Starsworn : https://wowhead.com/forever/npc=221356/doomspark-starsworn
             [npcKeys.name] = "Doomspark Starsworn",
             [npcKeys.minLevel] = 50,
@@ -2769,6 +6053,13 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[357] = {{37.2, 12.4}, {37.2, 12.6}, {41.2, 9}, {43, 13}, {44.4, 11.8}, {44.8, 13.8}, {45.2, 19.4}, {45.2, 19.6}, {45.4, 21.4}, {45.4, 21.6}, {45.6, 21.4}, {45.6, 21.6}, {46.2, 14.2}, {46.2, 19.6}, {46.4, 18.4}, {46.4, 18.6}, {47.6, 13.4}, {47.6, 13.6}, {50.2, 12.4}, {50.4, 12.6}, {50.8, 10.6}}},
             [npcKeys.zoneID] = zoneIDs.FERALAS,
             [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221364] = { -- Rampaging Chimaera : https://wowhead.com/forever/npc=221364/rampaging-chimaera
+            [npcKeys.name] = "Rampaging Chimaera",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.spawns] = {[357] = {{36.4, 14.8}, {37.4, 17.8}, {37.8, 14.8}, {37.8, 22.4}, {38.2, 24.2}, {38.4, 16}, {38.4, 21}, {38.4, 23}, {38.6, 15.8}, {38.6, 22.4}, {38.6, 23}, {38.8, 20.2}, {38.8, 24.4}, {39, 7.4}, {39.2, 13.4}, {39.2, 24.6}, {39.4, 8}, {39.4, 14}, {39.4, 15}, {39.4, 19}, {39.4, 20.8}, {39.8, 15.6}, {40, 19.2}, {40.2, 11.8}, {40.2, 14.4}, {40.4, 13.4}, {40.4, 14.6}, {40.4, 20.6}, {40.6, 13.4}, {40.6, 14.4}, {40.6, 14.8}, {40.8, 10.8}, {40.8, 19.2}, {41.2, 12}, {41.2, 20.4}, {41.2, 20.8}, {41.4, 8}, {41.4, 8.6}, {41.4, 15.8}, {41.4, 16.6}, {41.6, 8.2}, {41.6, 19.4}, {41.6, 20.4}, {41.6, 20.8}, {41.8, 22.4}, {41.8, 24}, {42, 8.8}, {42, 16.6}, {42.2, 14.8}, {42.2, 16}, {42.2, 23.4}, {42.4, 14.2}, {42.6, 7.4}, {42.6, 14.2}, {42.6, 15.2}, {42.6, 23.6}, {42.8, 9.2}, {42.8, 21.2}, {42.8, 23}, {43, 20.2}, {43, 22}, {43, 26.2}, {43.2, 13.2}, {43.4, 25}, {43.8, 25.6}, {44, 21.4}, {44, 23}, {44, 25.4}, {44.4, 21.8}, {44.4, 23.8}, {44.6, 21.4}, {44.6, 21.8}, {44.6, 22.6}, {44.6, 24.2}, {45, 19.8}, {45, 25}, {45.2, 9.2}, {45.4, 8}, {45.4, 17.6}, {45.6, 19.6}, {45.6, 20.8}, {45.6, 22.4}, {45.8, 12.2}, {45.8, 16.6}, {45.8, 17.6}, {45.8, 23.4}, {46, 7.4}, {46, 8}, {46, 16}, {46, 24.6}, {46.6, 7.6}, {46.6, 21.2}, {47, 17.6}, {47.2, 16.8}, {47.4, 16.4}, {47.4, 22}, {47.6, 16.4}, {47.6, 16.8}, {47.8, 5}, {47.8, 6}, {48.6, 15.4}, {49.4, 16.2}, {49.4, 16.6}, {49.6, 15}, {49.6, 16.2}, {49.6, 16.6}, {50, 4.8}, {50, 6.4}, {50, 7.6}, {50.4, 6.6}, {50.6, 6.2}, {50.6, 6.6}, {50.6, 7.8}, {50.6, 20}, {50.8, 5}, {51.8, 5.2}, {51.8, 7.8}, {52.2, 11.6}, {52.4, 10.6}, {52.8, 9.2}, {52.8, 10.8}, {52.8, 16.4}, {53, 9.6}, {53.2, 8.4}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
         },
         [221365] = { -- Deathpetal Lasher : https://wowhead.com/forever/npc=221365/deathpetal-lasher
             [npcKeys.name] = "Deathpetal Lasher",
@@ -2805,6 +6096,13 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[357] = {{36.8, 13.8}, {37.2, 12.6}, {37.4, 12.4}, {37.6, 15.4}, {37.6, 15.6}, {37.8, 11.8}, {37.8, 12.6}, {38, 11.4}, {38, 14.4}, {38.6, 14}, {39, 10}, {39, 13.4}, {39.2, 16.4}, {39.4, 9.2}, {39.4, 10.8}, {39.6, 10.8}, {39.6, 12.8}, {39.8, 9.6}, {40, 9.2}, {40.2, 8}, {40.2, 12.4}, {40.2, 13.6}, {40.6, 9.6}, {40.8, 8.2}, {41, 10.8}, {41.2, 13}, {41.4, 9.4}, {42, 9}, {42.2, 11.2}, {42.8, 9.4}, {42.8, 9.6}, {43.2, 11}, {43.6, 11}, {43.8, 10}, {45, 9.4}, {45, 10.6}}},
             [npcKeys.zoneID] = zoneIDs.FERALAS,
         },
+        [221373] = { -- Enraged Mountain Giant : https://wowhead.com/forever/npc=221373/enraged-mountain-giant
+            [npcKeys.name] = "Enraged Mountain Giant",
+            [npcKeys.minLevel] = 49,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[357] = {{38, 14.2}, {38.2, 15.8}, {38.4, 13}, {38.6, 16}, {39, 10.2}, {39, 13.4}, {39.2, 13.8}, {39.2, 18.6}, {39.4, 11.8}, {39.4, 15}, {39.8, 18.6}, {40, 12.4}, {40, 12.6}, {40, 16.4}, {40, 17}, {40.2, 9.4}, {40.2, 13.6}, {40.4, 10.4}, {40.4, 10.6}, {40.4, 15}, {40.6, 10.6}, {40.6, 14.4}, {40.8, 11.6}, {40.8, 15.4}, {40.8, 17}, {41, 9.2}, {41, 13.2}, {41, 16.2}, {41.2, 8.4}, {41.2, 9.6}, {41.2, 17.8}, {41.6, 15.2}, {41.6, 15.8}, {41.8, 14}, {42, 18.6}, {42.2, 9.2}, {42.2, 12.6}, {42.2, 17}, {42.2, 17.8}, {42.4, 7}, {42.4, 12.2}, {42.4, 19.8}, {42.4, 20.6}, {42.6, 19.8}, {42.8, 9.8}, {42.8, 12.4}, {42.8, 13.6}, {43, 20.6}, {43.2, 11}, {43.2, 13.4}, {43.2, 21.6}, {43.4, 7.2}, {43.4, 8.8}, {43.6, 12.2}, {43.6, 13.2}, {43.8, 8.6}, {44, 21.4}, {44.2, 8.4}, {44.2, 11.4}, {44.2, 20.4}, {44.4, 22}, {44.6, 12.6}, {44.8, 11.8}, {44.8, 22.2}, {45, 8}, {45, 8.6}, {45, 14.2}, {45, 20}, {45.2, 22.6}, {45.4, 9.6}, {45.4, 17.4}, {45.4, 17.6}, {45.4, 19}, {45.4, 21}, {45.6, 8.4}, {45.6, 18.2}, {45.6, 18.6}, {45.6, 20.6}, {45.6, 21.8}, {45.8, 15.2}, {45.8, 16.4}, {45.8, 16.6}, {45.8, 19.8}, {46, 22.6}, {46.2, 10}, {46.2, 14.4}, {46.2, 24.4}, {46.4, 9.2}, {46.6, 8.2}, {46.6, 9.4}, {46.6, 14}, {46.6, 15.8}, {47, 14.6}, {47.2, 16.8}, {47.4, 17.6}, {48, 16.8}, {48.2, 16.4}, {48.2, 24.6}, {48.4, 8.2}, {48.4, 23.6}, {48.6, 16.6}, {49, 15.4}, {49, 15.8}, {49.2, 8}, {49.2, 25}, {49.6, 15.4}, {49.8, 16.4}, {50, 7.2}, {50, 24.2}, {50, 25.4}, {50, 25.6}, {50.2, 7.8}, {50.4, 8.6}, {50.4, 17}, {50.4, 17.8}, {50.4, 21}, {50.4, 22.2}, {50.4, 22.8}, {50.6, 16.4}, {50.6, 17.2}, {50.6, 19.8}, {50.6, 22.8}, {50.8, 18}, {50.8, 20.8}, {50.8, 21.6}, {50.8, 23.6}, {50.8, 25.4}, {51, 7}, {51, 19}, {51.2, 7.8}, {51.2, 8.6}, {51.6, 7.8}, {51.6, 18.4}, {51.8, 18.6}, {51.8, 20.4}, {52, 7.4}, {52.2, 16}, {52.4, 15.2}, {52.6, 16}, {52.6, 16.6}, {53.4, 13.2}, {53.4, 14.4}, {53.4, 14.6}, {53.6, 12.4}, {53.6, 13.2}, {53.6, 14}, {53.6, 15.4}, {54.2, 10}, {54.2, 11}, {54.4, 8.4}, {54.4, 9.4}, {54.6, 8.6}, {55.6, 12}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+        },
         [221375] = { -- Lost Daughter : https://wowhead.com/forever/npc=221375/lost-daughter
             [npcKeys.name] = "Lost Daughter",
             [npcKeys.minLevel] = 51,
@@ -2819,6 +6117,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[357] = {{41.4, 15.4}, {41.4, 15.6}, {41.6, 15.4}, {41.6, 15.8}, {41.8, 17.2}, {42.4, 19.8}, {42.6, 20}, {43, 13.2}, {43.4, 25}, {43.6, 25}, {44.4, 12.4}, {44.4, 12.6}, {44.4, 22.2}, {44.6, 12.4}, {44.6, 12.8}, {45, 19.8}, {45.2, 25.2}, {45.4, 19.2}, {45.4, 20.6}, {45.4, 22.2}, {45.4, 22.6}, {45.6, 18.8}, {45.6, 19.8}, {45.6, 20.8}, {45.8, 23.2}, {45.8, 23.6}, {46, 16.2}, {46, 16.6}, {46, 22}, {46, 25.4}, {46, 25.6}, {46.2, 15.4}, {46.2, 17.6}, {46.4, 14.4}, {46.6, 14.4}, {46.6, 14.6}, {46.6, 21.6}, {46.6, 24.8}, {47, 17.6}}},
             [npcKeys.zoneID] = zoneIDs.FERALAS,
         },
+        [221389] = { -- Alondrius : https://wowhead.com/forever/npc=221389/alondrius
+            [npcKeys.name] = "Alondrius",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.spawns] = {[357] = {{42.6, 13.2}, {43.8, 12.2}, {43.8, 13.2}, {45, 12}, {45, 12.6}, {45.4, 14.2}, {45.4, 14.8}, {45.4, 17.4}, {45.4, 17.6}, {45.4, 19.4}, {45.4, 19.8}, {45.6, 10.6}, {45.8, 11.6}, {45.8, 21.8}, {46, 13.2}, {46.2, 14.2}, {46.2, 15.4}, {46.2, 16.4}, {46.2, 16.6}, {46.2, 18.2}, {46.2, 20.2}, {46.4, 19.2}, {46.4, 20.6}, {46.6, 13.4}, {46.6, 15.4}, {46.6, 16}, {46.6, 16.6}, {46.6, 18}, {46.6, 18.8}, {46.6, 21.4}, {46.8, 11.8}, {46.8, 14.4}, {46.8, 19.6}, {46.8, 24.6}, {47, 21.8}, {47.6, 15.6}, {47.6, 16.6}, {48, 14.8}, {48, 22.8}, {48.2, 12.4}, {48.2, 12.8}, {48.2, 24}, {48.4, 14.4}, {48.6, 14}, {49.2, 11.2}, {49.2, 11.8}, {49.2, 12.6}, {49.6, 10.8}, {50, 13.4}, {50.4, 12.2}, {50.4, 14}, {50.8, 13.6}, {51, 11.4}, {51, 11.6}, {51.2, 12.6}, {51.8, 14}, {52.6, 13.8}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+            [npcKeys.subName] = "Keeper of the Nightmare",
+        },
         [221391] = { -- Slirena : https://wowhead.com/forever/npc=221391/slirena
             [npcKeys.name] = "Slirena",
             [npcKeys.minLevel] = 9999,
@@ -2826,6 +6132,19 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[357] = {{38.4, 13}, {38.8, 14.6}, {39, 13.4}, {39.2, 13.6}, {39.6, 13.8}}},
             [npcKeys.zoneID] = zoneIDs.FERALAS,
             [npcKeys.subName] = "Harpy Queen",
+        },
+        [221393] = { -- Tyrannikus : https://wowhead.com/forever/npc=221393/tyrannikus
+            [npcKeys.name] = "Tyrannikus",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.spawns] = {[357] = {{51, 11.4}, {51, 11.6}, {52.4, 14.4}, {52.4, 14.8}, {52.4, 16.2}, {52.6, 15}, {53, 16.4}, {53.2, 16.6}, {53.6, 17}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+        },
+        [221394] = { -- Avatar of Hakkar : https://wowhead.com/forever/npc=221394/avatar-of-hakkar
+            [npcKeys.name] = "Avatar of Hakkar",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
         },
         [221395] = { -- Mellias Earthtender : https://wowhead.com/forever/npc=221395/mellias-earthtender
             [npcKeys.name] = "Mellias Earthtender",
@@ -2835,6 +6154,12 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.FERALAS,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Druid of the Claw",
+        },
+        [221396] = { -- Hakkari Bloodkeeper : https://wowhead.com/forever/npc=221396/hakkari-bloodkeeper
+            [npcKeys.name] = "Hakkari Bloodkeeper",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
         },
         [221398] = { -- Nerene Brooksinger : https://wowhead.com/forever/npc=221398/nerene-brooksinger
             [npcKeys.name] = "Nerene Brooksinger",
@@ -2854,6 +6179,47 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Druid of the Claw",
         },
+        [221400] = { -- Kajind : https://wowhead.com/forever/npc=221400/kajind
+            [npcKeys.name] = "Kajind",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[16] = {{25.4, 66.2}}},
+            [npcKeys.zoneID] = zoneIDs.AZSHARA,
+            [npcKeys.questStarts] = {81697, 81801},
+            [npcKeys.questEnds] = {81682, 81697},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221401] = { -- Dreamwarden Sheldryn : https://wowhead.com/forever/npc=221401/dreamwarden-sheldryn
+            [npcKeys.name] = "Dreamwarden Sheldryn",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[357] = {{50.6, 19.8}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221402] = { -- Dreamwarden Gorlas : https://wowhead.com/forever/npc=221402/dreamwarden-gorlas
+            [npcKeys.name] = "Dreamwarden Gorlas",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[357] = {{47, 21.6}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221404] = { -- Dreamwarden Anadelle : https://wowhead.com/forever/npc=221404/dreamwarden-anadelle
+            [npcKeys.name] = "Dreamwarden Anadelle",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[357] = {{37.6, 12}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221406] = { -- Moonwalker Betrayer : https://wowhead.com/forever/npc=221406/moonwalker-betrayer
+            [npcKeys.name] = "Moonwalker Betrayer",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[357] = {{48.2, 13.2}, {48.4, 12.4}, {48.6, 12.4}, {48.6, 12.6}, {48.8, 11.4}, {50, 12}, {50.4, 11.2}, {50.4, 12.8}, {50.6, 11.8}, {50.6, 12.8}, {50.8, 10.4}, {51.2, 10.8}, {51.6, 11.2}, {52.6, 11.2}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+        },
         [221407] = { -- Dreamshadow Imp : https://wowhead.com/forever/npc=221407/dreamshadow-imp
             [npcKeys.name] = "Dreamshadow Imp",
             [npcKeys.minLevel] = 50,
@@ -2861,13 +6227,93 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[357] = {{48.6, 12.2}, {50.2, 10.4}, {50.2, 10.8}, {50.2, 12.4}, {50.2, 12.6}, {50.4, 7.4}, {50.4, 9.2}, {50.6, 7.4}, {50.6, 7.6}, {50.8, 10.4}, {50.8, 10.6}, {50.8, 11.6}, {51, 12.6}, {51.6, 8}, {51.6, 11.2}, {51.6, 11.8}, {52.6, 8.6}, {53.2, 10.2}}},
             [npcKeys.zoneID] = zoneIDs.FERALAS,
         },
+        [221408] = { -- Night Hunter : https://wowhead.com/forever/npc=221408/night-hunter
+            [npcKeys.name] = "Night Hunter",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[357] = {{49.8, 12.2}, {50, 11.2}, {50.2, 12.6}, {50.4, 9.8}, {50.6, 10}, {50.8, 11.6}, {51, 12.8}, {51.2, 10.8}, {51.6, 12.4}, {51.6, 12.6}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+        },
+        [221426] = { -- Atal'ai Ritualist : https://wowhead.com/forever/npc=221426/atalai-ritualist
+            [npcKeys.name] = "Atal'ai Ritualist",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
         [221471] = { -- Field Captain Palandar : https://wowhead.com/forever/npc=221471/field-captain-palandar
             [npcKeys.name] = "Field Captain Palandar",
             [npcKeys.minLevel] = 25,
             [npcKeys.maxLevel] = 25,
             [npcKeys.spawns] = {[10] = {{45.4, 51.2}, {45.6, 51.2}, {46.4, 47.6}, {46.6, 47.6}}},
             [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+            [npcKeys.questStarts] = {81716, 81730, 81731, 81732, 81733, 81734, 81735, 81736, 81737, 81738, 81739, 81740, 81741, 81742, 81743, 81744, 81745, 81746, 81747},
+            [npcKeys.questEnds] = {81716, 81730, 81731, 81732, 81733, 81734, 81735, 81736, 81737, 81738, 81739, 81740, 81741, 81742, 81743, 81744, 81745, 81746, 81747},
             [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221472] = { -- Scout Charla : https://wowhead.com/forever/npc=221472/scout-charla
+            [npcKeys.name] = "Scout Charla",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[10] = {{47, 36}}},
+            [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221477] = { -- Field Captain Hannalah : https://wowhead.com/forever/npc=221477/field-captain-hannalah
+            [npcKeys.name] = "Field Captain Hannalah",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[331] = {{89.4, 40.6}, {89.6, 40.6}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.questStarts] = {81727, 81768, 81769, 81770, 81771, 81772, 81773, 81774, 81775, 81776, 81777, 81778, 81779, 81780, 81781, 81782, 81783, 81784, 81785, 82017},
+            [npcKeys.questEnds] = {81727, 81768, 81769, 81770, 81771, 81772, 81773, 81774, 81775, 81776, 81777, 81778, 81779, 81780, 81781, 81782, 81783, 81784, 81785},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221479] = { -- Field Captain Korlian : https://wowhead.com/forever/npc=221479/field-captain-korlian
+            [npcKeys.name] = "Field Captain Korlian",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[47] = {{61.4, 34.4}, {61.4, 34.6}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+            [npcKeys.questStarts] = {81728, 81786, 81787, 81788, 81789, 81817, 81820, 81826, 81830, 81832, 81833, 81834, 81835, 81837, 81838, 81839, 81850, 81851, 81852, 82068, 84011, 84012, 84013},
+            [npcKeys.questEnds] = {81728, 81786, 81787, 81788, 81789, 81817, 81820, 81826, 81830, 81832, 81833, 81834, 81835, 81837, 81838, 81839, 81850, 81851, 81852, 82068, 84011, 84012, 84013},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221480] = { -- Field Captain Arunnel : https://wowhead.com/forever/npc=221480/field-captain-arunnel
+            [npcKeys.name] = "Field Captain Arunnel",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[357] = {{48.4, 12.4}, {48.6, 12.4}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+            [npcKeys.questStarts] = {81729, 81855, 81856, 81857, 81858, 81859, 81860, 81861, 81863, 81864, 81865, 81866, 81867, 81868, 81870, 81871, 81872, 81873, 81874, 82068, 84014, 84015, 84016},
+            [npcKeys.questEnds] = {81729, 81855, 81856, 81857, 81858, 81859, 81860, 81861, 81863, 81864, 81865, 81866, 81867, 81868, 81870, 81871, 81872, 81873, 81874, 82068, 84014, 84015, 84016},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221482] = { -- Scout Gemeron : https://wowhead.com/forever/npc=221482/scout-gemeron
+            [npcKeys.name] = "Scout Gemeron",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[331] = {{93.8, 35.2}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221483] = { -- Scout Fallia : https://wowhead.com/forever/npc=221483/scout-fallia
+            [npcKeys.name] = "Scout Fallia",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[47] = {{61.8, 24}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221484] = { -- Scout Thandros : https://wowhead.com/forever/npc=221484/scout-thandros
+            [npcKeys.name] = "Scout Thandros",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[357] = {{51, 10.4}, {51, 10.6}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221493] = { -- [DNT] Stalker : https://wowhead.com/forever/npc=221493/dnt-stalker
+            [npcKeys.name] = "[DNT] Stalker",
         },
         [221575] = { -- Elrick : https://wowhead.com/forever/npc=221575/elrick
             [npcKeys.name] = "Elrick",
@@ -2875,7 +6321,79 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 45,
             [npcKeys.spawns] = {[15] = {{66.4, 45.4}, {66.6, 45.2}}},
             [npcKeys.zoneID] = zoneIDs.DUSTWALLOW_MARSH,
+            [npcKeys.questStarts] = {81765},
+            [npcKeys.questEnds] = {81764},
             [npcKeys.friendlyToFaction] = "A",
+        },
+        [221587] = { -- Aeonas the Vindicated : https://wowhead.com/forever/npc=221587/aeonas-the-vindicated
+            [npcKeys.name] = "Aeonas the Vindicated",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[361] = {{45, 52}}},
+            [npcKeys.zoneID] = zoneIDs.FELWOOD,
+            [npcKeys.questStarts] = {81885, 82135},
+            [npcKeys.questEnds] = {81885},
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Former Paladin of the Silver Hand",
+        },
+        [221631] = { -- [DNT] Stalker : https://wowhead.com/forever/npc=221631/dnt-stalker
+            [npcKeys.name] = "[DNT] Stalker",
+        },
+        [221636] = { -- Gregory : https://wowhead.com/forever/npc=221636/gregory
+            [npcKeys.name] = "Gregory",
+            [npcKeys.minLevel] = 45,
+            [npcKeys.maxLevel] = 45,
+            [npcKeys.spawns] = {[361] = {{44.6, 52}}},
+            [npcKeys.zoneID] = zoneIDs.FELWOOD,
+            [npcKeys.questStarts] = {81790},
+            [npcKeys.questEnds] = {81790},
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Truthbearer",
+        },
+        [221637] = { -- Gasher : https://wowhead.com/forever/npc=221637/gasher
+            [npcKeys.name] = "Gasher",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [221638] = { -- Loro : https://wowhead.com/forever/npc=221638/loro
+            [npcKeys.name] = "Loro",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [221639] = { -- Zolo : https://wowhead.com/forever/npc=221639/zolo
+            [npcKeys.name] = "Zolo",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [221640] = { -- Zul'Lor : https://wowhead.com/forever/npc=221640/zullor
+            [npcKeys.name] = "Zul'Lor",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [221651] = { -- Ceruleos : https://wowhead.com/forever/npc=221651/ceruleos
+            [npcKeys.name] = "Ceruleos",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[16] = {{36, 68.8}, {36.2, 70}, {36.4, 71.8}, {36.4, 73}, {37, 71}, {37, 71.6}, {37, 72.6}, {37.4, 70}, {37.6, 71.2}, {38.2, 72.4}, {38.4, 73}, {38.4, 73.6}, {38.8, 73}, {39, 72.4}, {39.6, 71.2}, {39.6, 75.2}, {40, 71.8}, {41.4, 71.4}, {41.4, 72.4}, {41.4, 73.2}, {41.8, 71.2}, {41.8, 72}, {41.8, 72.6}, {42.6, 71.6}, {44, 67.2}, {45.4, 67.8}}},
+            [npcKeys.zoneID] = zoneIDs.AZSHARA,
+        },
+        [221656] = { -- Stern-faced Bar Patron : https://wowhead.com/forever/npc=221656/stern-faced-bar-patron
+            [npcKeys.name] = "Stern-faced Bar Patron",
+            [npcKeys.minLevel] = 45,
+            [npcKeys.maxLevel] = 45,
+            [npcKeys.spawns] = {[15] = {{66.4, 45.4}, {66.6, 45.2}}},
+            [npcKeys.zoneID] = zoneIDs.DUSTWALLOW_MARSH,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [221658] = { -- [DNT] Stalker : https://wowhead.com/forever/npc=221658/dnt-stalker
+            [npcKeys.name] = "[DNT] Stalker",
+        },
+        [221732] = { -- Atal'ai Defenders Controller : https://wowhead.com/forever/npc=221732/atalai-defenders-controller
+            [npcKeys.name] = "Atal'ai Defenders Controller",
         },
         [221740] = { -- Calefactus the Unleashed : https://wowhead.com/forever/npc=221740/calefactus-the-unleashed
             [npcKeys.name] = "Calefactus the Unleashed",
@@ -2883,6 +6401,18 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 50,
             [npcKeys.spawns] = {[4] = {{44, 35.4}, {44, 38.2}, {44, 38.8}, {44.2, 30}, {44.2, 31.4}, {44.4, 36.2}, {44.4, 37.2}, {44.4, 43.8}, {44.6, 39}, {44.6, 46.8}, {44.8, 44.8}, {45, 37.2}, {45, 39.6}, {45, 41}, {45, 41.6}, {45, 49.2}, {45.2, 29.8}, {45.2, 31.8}, {45.2, 33.2}, {45.2, 43.4}, {45.2, 50.6}, {45.4, 28.2}, {45.4, 34.4}, {45.4, 35.4}, {45.4, 35.8}, {45.4, 38.4}, {45.4, 44.2}, {45.4, 48.2}, {45.4, 52}, {45.4, 52.8}, {45.4, 54.2}, {45.6, 37.6}, {45.6, 40.2}, {45.6, 42.2}, {45.6, 51.4}, {45.8, 32.2}, {45.8, 34}, {45.8, 48.2}, {46.2, 33.4}, {46.2, 37.2}, {46.2, 53}, {46.2, 54}, {46.4, 34.6}, {46.4, 35.6}, {46.4, 38.6}, {46.4, 47.2}, {46.4, 49.4}, {46.4, 52.4}, {46.6, 35.6}, {46.6, 36.8}, {46.6, 39}, {46.6, 52}, {46.6, 55}, {46.8, 34.2}, {46.8, 34.6}, {46.8, 38.2}, {47, 47.4}, {47, 52.6}, {47.2, 48.2}, {47.2, 50}, {47.4, 48.6}, {47.4, 51}, {47.4, 54}, {47.6, 47.4}, {47.6, 49.8}, {47.6, 51}, {47.8, 33.8}, {47.8, 48.6}, {47.8, 53.6}, {48, 33.4}, {48, 51.6}, {48.2, 34.6}, {48.2, 39}, {48.2, 48}, {48.2, 53.2}, {48.4, 36.8}, {48.4, 38.4}, {48.6, 49.2}, {48.6, 51.2}, {48.8, 35.2}, {48.8, 48.2}, {49, 37.2}, {49, 50.2}, {49.2, 38.4}, {49.2, 52.4}, {49.4, 38.8}, {49.8, 38.2}, {49.8, 52.2}, {49.8, 52.8}, {50, 36.6}, {50, 39}, {50.2, 36.4}, {50.4, 40.2}, {50.6, 36.8}, {50.6, 38.4}, {50.6, 38.8}, {50.6, 50.2}, {51.4, 36.4}, {51.8, 33.2}, {52.2, 36.6}, {53.2, 30.4}, {53.4, 28.2}, {53.6, 48.8}}},
             [npcKeys.zoneID] = zoneIDs.BLASTED_LANDS,
+        },
+        [221759] = { -- Gasher : https://wowhead.com/forever/npc=221759/gasher
+            [npcKeys.name] = "Gasher",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [221761] = { -- Hakkar : https://wowhead.com/forever/npc=221761/hakkar
+            [npcKeys.name] = "Hakkar",
+        },
+        [221762] = { -- Hakkar : https://wowhead.com/forever/npc=221762/hakkar
+            [npcKeys.name] = "Hakkar",
         },
         [221827] = { -- Magister Falath : https://wowhead.com/forever/npc=221827/magister-falath
             [npcKeys.name] = "Magister Falath",
@@ -2893,12 +6423,122 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Quel'danil Lodge Emissary",
         },
+        [221828] = { -- Vengeful Spirit : https://wowhead.com/forever/npc=221828/vengeful-spirit
+            [npcKeys.name] = "Vengeful Spirit",
+            [npcKeys.minLevel] = 45,
+            [npcKeys.maxLevel] = 45,
+            [npcKeys.spawns] = {[47] = {{28.8, 47.4}, {29.2, 47.8}, {29.4, 49.4}, {29.4, 49.6}, {29.8, 49.4}, {29.8, 50.2}, {30.8, 49.6}, {30.8, 50.8}, {31.4, 43.8}, {31.8, 44}, {32, 50.4}, {32, 50.8}, {32.2, 48.4}, {32.4, 45.4}, {32.4, 45.8}, {32.4, 47.4}, {32.4, 49.2}, {32.6, 45.2}, {32.6, 46}, {32.6, 47}, {32.6, 47.8}, {32.8, 44}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+        },
+        [221829] = { -- Kajind : https://wowhead.com/forever/npc=221829/kajind
+            [npcKeys.name] = "Kajind",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[440] = {{51.6, 27.4}, {51.6, 27.6}}},
+            [npcKeys.zoneID] = zoneIDs.TANARIS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Arena Champion",
+        },
+        [221830] = { -- Wandering Swordsman : https://wowhead.com/forever/npc=221830/wandering-swordsman
+            [npcKeys.name] = "Wandering Swordsman",
+            [npcKeys.minLevel] = 48,
+            [npcKeys.maxLevel] = 48,
+            [npcKeys.spawns] = {[440] = {{51.6, 27.4}, {51.6, 27.6}}},
+            [npcKeys.zoneID] = zoneIDs.TANARIS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221831] = { -- Gos Greasebasher : https://wowhead.com/forever/npc=221831/gos-greasebasher
+            [npcKeys.name] = "Gos Greasebasher",
+            [npcKeys.minLevel] = 46,
+            [npcKeys.maxLevel] = 46,
+            [npcKeys.spawns] = {[440] = {{51.6, 27.4}, {51.6, 27.6}}},
+            [npcKeys.zoneID] = zoneIDs.TANARIS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [221832] = { -- Silver Hand Charger : https://wowhead.com/forever/npc=221832/silver-hand-charger
+            [npcKeys.name] = "Silver Hand Charger",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[361] = {{51, 81.8}}},
+            [npcKeys.zoneID] = zoneIDs.FELWOOD,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [221833] = { -- Hukku : https://wowhead.com/forever/npc=221833/hukku
+            [npcKeys.name] = "Hukku",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [221834] = { -- Loro : https://wowhead.com/forever/npc=221834/loro
+            [npcKeys.name] = "Loro",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [221835] = { -- Mijan : https://wowhead.com/forever/npc=221835/mijan
+            [npcKeys.name] = "Mijan",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [221836] = { -- Zolo : https://wowhead.com/forever/npc=221836/zolo
+            [npcKeys.name] = "Zolo",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [221837] = { -- Zul'Lor : https://wowhead.com/forever/npc=221837/zullor
+            [npcKeys.name] = "Zul'Lor",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [221838] = { -- Josh's Kill Credit Creature P3 : https://wowhead.com/forever/npc=221838/joshs-kill-credit-creature-p3
+            [npcKeys.name] = "Josh's Kill Credit Creature P3",
+        },
+        [221916] = { -- Stalker : https://wowhead.com/forever/npc=221916/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [221924] = { -- Kazkaz the Unholy : https://wowhead.com/forever/npc=221924/kazkaz-the-unholy
+            [npcKeys.name] = "Kazkaz the Unholy",
+            [npcKeys.minLevel] = 48,
+            [npcKeys.maxLevel] = 48,
+        },
+        [221928] = { -- Hippogryph Avatar : https://wowhead.com/forever/npc=221928/hippogryph-avatar
+            [npcKeys.name] = "Hippogryph Avatar",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[16] = {{34.4, 48.8}, {34.6, 49}}},
+            [npcKeys.zoneID] = zoneIDs.AZSHARA,
+        },
+        [221933] = { -- Moonkin Avatar : https://wowhead.com/forever/npc=221933/moonkin-avatar
+            [npcKeys.name] = "Moonkin Avatar",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[47] = {{66.2, 53}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+        },
         [221935] = { -- Treant Avatar : https://wowhead.com/forever/npc=221935/treant-avatar
             [npcKeys.name] = "Treant Avatar",
             [npcKeys.minLevel] = 50,
             [npcKeys.maxLevel] = 50,
             [npcKeys.spawns] = {[357] = {{58, 52.8}, {58.4, 52}, {58.6, 52.2}, {59, 52.8}}},
             [npcKeys.zoneID] = zoneIDs.FERALAS,
+        },
+        [221942] = { -- Morphaz : https://wowhead.com/forever/npc=221942/morphaz
+            [npcKeys.name] = "Morphaz",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [221943] = { -- Hazzas : https://wowhead.com/forever/npc=221943/hazzas
+            [npcKeys.name] = "Hazzas",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [221981] = { -- [DNT] Sleeping Copy : https://wowhead.com/forever/npc=221981/dnt-sleeping-copy
+            [npcKeys.name] = "[DNT] Sleeping Copy",
         },
         [221985] = { -- Tyrisius : https://wowhead.com/forever/npc=221985/tyrisius
             [npcKeys.name] = "Tyrisius",
@@ -2910,12 +6550,92 @@ function ForeverBaseNpc:Load()
             [npcKeys.questEnds] = {81924},
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [222004] = { -- Corrupt Moderate Manifestation of Water : https://wowhead.com/forever/npc=222004/corrupt-moderate-manifestation-of-water
+            [npcKeys.name] = "Corrupt Moderate Manifestation of Water",
+            [npcKeys.minLevel] = 44,
+            [npcKeys.maxLevel] = 45,
+            [npcKeys.spawns] = {[16] = {{15, 49.8}}},
+            [npcKeys.zoneID] = zoneIDs.AZSHARA,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [222005] = { -- Moderate Manifestation of Water : https://wowhead.com/forever/npc=222005/moderate-manifestation-of-water
+            [npcKeys.name] = "Moderate Manifestation of Water",
+            [npcKeys.minLevel] = 44,
+            [npcKeys.maxLevel] = 45,
+            [npcKeys.spawns] = {[16] = {{14.8, 49.4}, {14.8, 49.6}}, [357] = {{35.8, 32.4}, {36, 32.6}}},
+            [npcKeys.questStarts] = {82076},
+            [npcKeys.questEnds] = {82073, 82076},
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [222008] = { -- Rope Climber : https://wowhead.com/forever/npc=222008/rope-climber
+            [npcKeys.name] = "Rope Climber",
+        },
+        [222044] = { -- Twilight Dark Shaman : https://wowhead.com/forever/npc=222044/twilight-dark-shaman
+            [npcKeys.name] = "Twilight Dark Shaman",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[357] = {{35.8, 32.4}, {35.8, 32.6}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+        },
+        [222052] = { -- Explorer Imp : https://wowhead.com/forever/npc=222052/explorer-imp
+            [npcKeys.name] = "Explorer Imp",
+            [npcKeys.questStarts] = {81967, 82301, 82302, 82303, 83188, 83189, 83190, 83191, 83192, 84525},
+            [npcKeys.questEnds] = {81967, 82301, 82302, 82303, 83188, 83189, 83190, 83191, 83192, 84525},
+        },
+        [222058] = { -- Bonfire : https://wowhead.com/forever/npc=222058/bonfire
+            [npcKeys.name] = "Bonfire",
+        },
+        [222088] = { -- Nightmare Whelpling : https://wowhead.com/forever/npc=222088/nightmare-whelpling
+            [npcKeys.name] = "Nightmare Whelpling",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [222089] = { -- Nightmare Scalebane : https://wowhead.com/forever/npc=222089/nightmare-scalebane
+            [npcKeys.name] = "Nightmare Scalebane",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [222174] = { -- Dual Spec Peon : https://wowhead.com/forever/npc=222174/dual-spec-peon
+            [npcKeys.name] = "Dual Spec Peon",
+        },
+        [222188] = { -- Shadowy Figure : https://wowhead.com/forever/npc=222188/shadowy-figure
+            [npcKeys.name] = "Shadowy Figure",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.spawns] = {[493] = {{52, 40.4}, {52, 40.6}}},
+            [npcKeys.zoneID] = zoneIDs.MOONGLADE,
+            [npcKeys.questStarts] = {81986, 82021, 82022},
+            [npcKeys.questEnds] = {81986, 82021, 82022},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [222192] = { -- Nightmare Vine : https://wowhead.com/forever/npc=222192/nightmare-vine
+            [npcKeys.name] = "Nightmare Vine",
+            [npcKeys.minLevel] = 52,
+            [npcKeys.maxLevel] = 52,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
         [222198] = { -- Nightmare Amalgamation : https://wowhead.com/forever/npc=222198/nightmare-amalgamation
             [npcKeys.name] = "Nightmare Amalgamation",
             [npcKeys.minLevel] = 9999,
             [npcKeys.maxLevel] = 9999,
             [npcKeys.spawns] = {[331] = {{87.8, 68.4}, {88.2, 67.4}, {88.2, 68.6}, {88.4, 65}, {88.6, 66.2}, {88.6, 67}, {88.6, 68.2}, {88.6, 68.6}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+        },
+        [222210] = { -- Josh's Kill Credit Creature P3 : https://wowhead.com/forever/npc=222210/joshs-kill-credit-creature-p3
+            [npcKeys.name] = "Josh's Kill Credit Creature P3",
+        },
+        [222225] = { -- Josh's Kill Credit Creature P3 : https://wowhead.com/forever/npc=222225/joshs-kill-credit-creature-p3
+            [npcKeys.name] = "Josh's Kill Credit Creature P3",
+        },
+        [222228] = { -- Fel Sliver : https://wowhead.com/forever/npc=222228/fel-sliver
+            [npcKeys.name] = "Fel Sliver",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[17] = {{37.4, 16.6}, {37.6, 16.6}, {38.6, 15.4}, {39.4, 13.8}, {39.6, 13.8}, {40, 18.2}, {40.8, 14.4}, {41.6, 48.4}, {42, 14.2}, {42.4, 45}, {42.6, 44.8}, {42.6, 50.4}, {42.6, 50.6}, {43.4, 44.2}, {44.4, 50}, {44.4, 54.8}, {45, 45.8}, {45.8, 51.4}, {46.4, 52.6}, {47.6, 49.4}, {51.6, 53.4}, {53, 50.8}, {54.2, 52.6}, {54.4, 48.4}, {54.4, 48.6}, {55.6, 25.6}, {55.8, 51}, {56, 24.8}, {57.6, 23.4}, {57.6, 23.6}, {58.2, 49.8}, {58.8, 25.6}, {59, 29.2}, {59, 32}, {59.2, 36.4}, {59.2, 36.6}, {59.8, 27.4}, {59.8, 27.6}, {60.2, 36}, {60.8, 29}, {61.8, 31.8}}, [40] = {{28.4, 43.8}, {28.8, 44}, {28.8, 47.2}, {28.8, 47.6}, {29, 58.2}, {29, 58.8}, {29.4, 68.8}, {29.6, 69.4}, {29.8, 34.4}, {31.4, 39.2}, {31.4, 39.6}, {31.4, 65}, {31.4, 65.6}, {31.6, 39.2}, {31.6, 65.4}, {31.6, 65.6}, {32, 80.2}, {32.2, 29.4}, {32.2, 29.6}, {32.2, 76}, {34, 82.2}, {34.4, 82.6}, {34.8, 61}, {35.8, 32.4}, {36, 32.8}, {37.4, 85}, {37.4, 85.6}, {37.6, 85}, {37.6, 85.6}, {41.4, 15.4}, {41.4, 15.8}, {41.6, 15.2}, {44.4, 46.4}, {44.4, 46.6}, {44.6, 46.4}, {44.6, 46.8}, {46.4, 12}, {46.4, 12.6}, {46.8, 12.2}, {46.8, 12.6}, {46.8, 39.2}, {46.8, 39.6}, {47.2, 67.6}, {47.4, 21.8}, {47.4, 67.4}, {47.4, 79.2}, {47.4, 79.6}, {47.6, 22}, {47.6, 67.2}, {47.6, 67.6}, {47.6, 79.2}, {47.6, 79.6}, {47.8, 13.8}, {51, 32.2}, {51, 32.6}, {51.6, 71.4}, {51.6, 71.6}, {53, 80.2}, {57, 10.4}, {57, 10.6}, {62.4, 26.6}, {62.6, 26.6}, {62.8, 26.4}}, [130] = {{38.8, 14.8}, {38.8, 23.4}, {39, 18}, {44.2, 25.2}, {44.6, 25.2}, {44.6, 25.8}, {45.4, 31.8}, {45.6, 31.6}, {49.8, 13.4}, {50.2, 56.8}, {50.2, 65.2}, {54.2, 35.4}, {54.4, 35.6}, {54.6, 35.8}, {55.4, 24.6}, {55.4, 57}, {55.6, 24.6}, {55.6, 57}, {55.6, 57.6}, {56.6, 16}, {61, 6.8}, {66.6, 57.4}}, [148] = {{36, 82.8}, {36.2, 71.6}, {37.4, 63.8}, {37.6, 63.8}, {40.4, 89.6}, {40.6, 89.8}, {40.8, 73.8}, {43.2, 27}, {44.2, 82}, {45, 26.2}, {45.2, 58.2}, {46.2, 46.8}, {47.4, 28.4}, {47.4, 28.6}, {47.8, 29.8}, {49.8, 36.8}, {56.4, 24.8}, {59.8, 21.8}}},
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [222232] = { -- Corrupt Moderate Manifestation of Air : https://wowhead.com/forever/npc=222232/corrupt-moderate-manifestation-of-air
             [npcKeys.name] = "Corrupt Moderate Manifestation of Air",
@@ -2925,6 +6645,62 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
             [npcKeys.friendlyToFaction] = "H",
         },
+        [222233] = { -- Ohk'zi : https://wowhead.com/forever/npc=222233/ohkzi
+            [npcKeys.name] = "Ohk'zi",
+            [npcKeys.minLevel] = 43,
+            [npcKeys.maxLevel] = 43,
+            [npcKeys.spawns] = {[357] = {{75, 25}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+        },
+        [222243] = { -- Zopilote : https://wowhead.com/forever/npc=222243/zopilote
+            [npcKeys.name] = "Zopilote",
+            [npcKeys.minLevel] = 43,
+            [npcKeys.maxLevel] = 43,
+            [npcKeys.spawns] = {[440] = {{38.4, 31.8}, {39.4, 31.6}, {40, 31.8}, {40.2, 32.6}, {41.2, 31.2}, {41.2, 32.4}, {41.2, 33}, {41.2, 33.6}, {41.2, 34.6}, {41.8, 32.2}, {42, 34.4}, {42.2, 33.4}, {42.4, 35.2}, {42.6, 33.8}, {42.8, 28.2}, {42.8, 32.2}, {42.8, 35.6}, {43, 31}, {43, 32.6}, {43, 35.2}, {43.8, 32}, {43.8, 32.8}, {43.8, 33.6}, {44.2, 35.6}, {44.2, 36.8}, {44.4, 31.4}, {44.6, 35.6}, {44.6, 36.6}, {44.8, 30.4}, {44.8, 31.8}, {45, 30.8}, {45, 34.6}, {45.6, 32.2}, {45.8, 28.4}, {45.8, 30.6}, {45.8, 33.4}, {46, 29.2}, {46, 30.4}, {46, 36}, {46.6, 24.6}, {46.6, 35.2}, {46.8, 30.4}, {46.8, 31}, {47, 33.2}, {47, 35.6}, {47.4, 31.6}, {47.6, 32}, {47.6, 35.4}, {48, 29.8}, {48, 31.4}, {48, 35.8}, {48.4, 32.8}, {48.4, 33.8}, {48.6, 30}, {48.6, 35.6}, {48.8, 32.4}, {48.8, 33}, {48.8, 37.4}, {49.4, 25.6}, {49.4, 33.6}, {49.6, 32.2}, {49.6, 34}, {49.6, 34.6}, {49.8, 36}, {50, 32.8}, {50.2, 36.6}, {50.6, 36.6}, {50.8, 28.6}, {51, 33.4}, {51, 34.4}, {51, 35.2}, {51.2, 29.8}, {51.4, 21.4}, {51.4, 27.6}, {51.4, 36.2}, {51.6, 35.4}, {52, 36.4}, {52.2, 27.4}, {52.2, 37.2}, {52.4, 33.4}, {52.4, 37.6}, {52.6, 37}, {52.8, 36.4}, {53.4, 38}, {53.8, 36.2}, {54, 37.6}, {54.4, 37}, {54.4, 38.8}, {54.6, 33.8}, {54.8, 37.8}, {55, 36}, {55, 39.4}, {55.4, 39.8}, {55.6, 39.4}, {55.6, 40}, {55.8, 40.6}, {57, 33}, {58.2, 36.8}}},
+            [npcKeys.zoneID] = zoneIDs.TANARIS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [222244] = { -- [DNT] Spinning Flower : https://wowhead.com/forever/npc=222244/dnt-spinning-flower
+            [npcKeys.name] = "[DNT] Spinning Flower",
+        },
+        [222249] = { -- [DNT] Bell Flower : https://wowhead.com/forever/npc=222249/dnt-bell-flower
+            [npcKeys.name] = "[DNT] Bell Flower",
+        },
+        [222250] = { -- [DNT] Dripping Flower : https://wowhead.com/forever/npc=222250/dnt-dripping-flower
+            [npcKeys.name] = "[DNT] Dripping Flower",
+        },
+        [222251] = { -- [DNT] Drooping Flower : https://wowhead.com/forever/npc=222251/dnt-drooping-flower
+            [npcKeys.name] = "[DNT] Drooping Flower",
+        },
+        [222252] = { -- [DNT] Orange Flower : https://wowhead.com/forever/npc=222252/dnt-orange-flower
+            [npcKeys.name] = "[DNT] Orange Flower",
+        },
+        [222253] = { -- [DNT] Purple Flower : https://wowhead.com/forever/npc=222253/dnt-purple-flower
+            [npcKeys.name] = "[DNT] Purple Flower",
+        },
+        [222254] = { -- [DNT] Bell Flower 2 : https://wowhead.com/forever/npc=222254/dnt-bell-flower-2
+            [npcKeys.name] = "[DNT] Bell Flower 2",
+        },
+        [222256] = { -- [DNT] Bell Flower 3 : https://wowhead.com/forever/npc=222256/dnt-bell-flower-3
+            [npcKeys.name] = "[DNT] Bell Flower 3",
+        },
+        [222257] = { -- [DNT] Purple Flower 2 : https://wowhead.com/forever/npc=222257/dnt-purple-flower-2
+            [npcKeys.name] = "[DNT] Purple Flower 2",
+        },
+        [222261] = { -- Maximillian "The Greaser" : https://wowhead.com/forever/npc=222261/maximillian-the-greaser
+            [npcKeys.name] = "Maximillian \"The Greaser\"",
+            [npcKeys.minLevel] = 36,
+            [npcKeys.maxLevel] = 36,
+            [npcKeys.spawns] = {[400] = {{79.8, 77.2}}},
+            [npcKeys.zoneID] = zoneIDs.THOUSAND_NEEDLES,
+            [npcKeys.questStarts] = {81987, 82001, 82002, 82003, 82013},
+            [npcKeys.questEnds] = {81987, 82001, 82002, 82011, 82013},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 221336; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [222269] = { -- [DNT] Drooping Flower 2 : https://wowhead.com/forever/npc=222269/dnt-drooping-flower-2
+            [npcKeys.name] = "[DNT] Drooping Flower 2",
+        },
         [222286] = { -- Namida Grimtotem : https://wowhead.com/forever/npc=222286/namida-grimtotem
             [npcKeys.name] = "Namida Grimtotem",
             [npcKeys.minLevel] = 43,
@@ -2932,9 +6708,73 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[357] = {{66.4, 38.4}, {66.4, 38.8}, {66.6, 38.2}, {66.8, 38.6}}},
             [npcKeys.zoneID] = zoneIDs.FERALAS,
         },
+        [222288] = { -- Fel Rift : https://wowhead.com/forever/npc=222288/fel-rift
+            [npcKeys.name] = "Fel Rift",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[46] = {{20.4, 43.4}, {20.4, 43.6}, {21, 43.4}, {21, 43.6}, {22.4, 52.2}, {22.4, 52.6}, {22.6, 52.4}, {22.8, 52.6}, {24, 64.4}, {24.4, 65}, {24.6, 64.8}, {29.2, 43.4}, {29.4, 44}, {29.8, 43.4}, {36.2, 60.8}, {36.4, 61.6}, {37.4, 42}, {37.6, 42.2}, {57.4, 45}, {57.4, 45.6}, {57.6, 45.4}, {57.6, 45.8}, {60, 65}, {69, 26.6}, {69.2, 26.2}, {69.6, 26.4}, {72.2, 31.2}, {72.2, 31.8}, {85.4, 43.4}, {85.4, 44}, {85.6, 43.6}, {93.2, 59}, {93.6, 58.8}}, [618] = {{52, 89.4}, {52, 89.6}, {57.2, 89.2}, {58.2, 83.2}, {58.2, 86.2}, {59.2, 83.6}, {59.4, 83.2}, {62.2, 85.2}, {63.2, 80}, {63.8, 80.6}, {64.2, 78.4}, {64.2, 78.6}}},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [222289] = { -- Moderate Manifestation of Air : https://wowhead.com/forever/npc=222289/moderate-manifestation-of-air
+            [npcKeys.name] = "Moderate Manifestation of Air",
+            [npcKeys.minLevel] = 46,
+            [npcKeys.maxLevel] = 47,
+            [npcKeys.spawns] = {[47] = {{51, 46.4}, {51, 46.8}}, [357] = {{35.8, 32.4}, {35.8, 32.6}}},
+            [npcKeys.questStarts] = {81968},
+            [npcKeys.questEnds] = {81960, 81968},
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [222290] = { -- Unfortunate Adventurer : https://wowhead.com/forever/npc=222290/unfortunate-adventurer
+            [npcKeys.name] = "Unfortunate Adventurer",
+        },
+        [222293] = { -- Dream Portal : https://wowhead.com/forever/npc=222293/dream-portal
+            [npcKeys.name] = "Dream Portal",
+        },
+        [222316] = { -- Fizzbizz Coppercoil : https://wowhead.com/forever/npc=222316/fizzbizz-coppercoil
+            [npcKeys.name] = "Fizzbizz Coppercoil",
+            [npcKeys.minLevel] = 36,
+            [npcKeys.maxLevel] = 36,
+            [npcKeys.spawns] = {[400] = {{77, 77.2}}},
+            [npcKeys.zoneID] = zoneIDs.THOUSAND_NEEDLES,
+            [npcKeys.questStarts] = {82004, 82008, 82009, 82010, 82011},
+            [npcKeys.questEnds] = {82003, 82004, 82008, 82009, 82010},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [222367] = { -- Groddoc Infant : https://wowhead.com/forever/npc=222367/groddoc-infant
+            [npcKeys.name] = "Groddoc Infant",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[357] = {{52.6, 60.4}, {52.6, 60.6}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
         [222376] = { -- Groddoc Infant : https://wowhead.com/forever/npc=222376/groddoc-infant
             [npcKeys.name] = "Groddoc Infant",
             [npcKeys.spawns] = {[357] = {{59, 58.4}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [222402] = { -- ST Items : https://wowhead.com/forever/npc=222402/st-items
+            [npcKeys.name] = "ST Items",
+        },
+        [222403] = { -- ST Professions : https://wowhead.com/forever/npc=222403/st-professions
+            [npcKeys.name] = "ST Professions",
+        },
+        [222404] = { -- PvP items : https://wowhead.com/forever/npc=222404/pvp-items
+            [npcKeys.name] = "PvP items",
+        },
+        [222405] = { -- Leyline Conflux : https://wowhead.com/forever/npc=222405/leyline-conflux
+            [npcKeys.name] = "Leyline Conflux",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[16] = {{18.2, 79.4}, {18.2, 79.6}}, [47] = {{47.8, 59}}, [51] = {{54.8, 66.2}, {55, 66.6}}, [357] = {{57.2, 61.6}}},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [222406] = { -- Groddoc Matriarch : https://wowhead.com/forever/npc=222406/groddoc-matriarch
+            [npcKeys.name] = "Groddoc Matriarch",
+            [npcKeys.minLevel] = 43,
+            [npcKeys.maxLevel] = 43,
+            [npcKeys.spawns] = {[357] = {{59, 58.6}, {59.2, 58.4}}},
             [npcKeys.zoneID] = zoneIDs.FERALAS,
             [npcKeys.friendlyToFaction] = "AH",
         },
@@ -2944,6 +6784,17 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 47,
             [npcKeys.spawns] = {[16] = {{18.2, 79.4}, {18.2, 79.6}, {18.6, 79.4}}, [47] = {{47.4, 59.2}, {47.4, 60}, {47.8, 59}, {48.6, 58.4}}, [51] = {{54.2, 65.2}, {54.4, 66.2}, {54.4, 66.6}, {54.8, 66}, {55, 66.6}, {55.4, 65.4}, {55.6, 65.8}}, [357] = {{57.2, 61.4}, {57.2, 61.6}}},
         },
+        [222408] = { -- Shadowtooth Emissary : https://wowhead.com/forever/npc=222408/shadowtooth-emissary
+            [npcKeys.name] = "Shadowtooth Emissary",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[361] = {{51.4, 82}, {51.6, 82}}},
+            [npcKeys.zoneID] = zoneIDs.FELWOOD,
+            [npcKeys.questStarts] = {82043, 84384},
+            [npcKeys.questEnds] = {82044, 84384},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 221491; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
         [222409] = { -- Boss "Gobb" Goldnick : https://wowhead.com/forever/npc=222409/boss-gobb-goldnick
             [npcKeys.name] = "Boss \"Gobb\" Goldnick",
             [npcKeys.minLevel] = 41,
@@ -2951,6 +6802,138 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[331] = {{88.4, 55.4}, {89.2, 57.8}, {90, 58}, {90.8, 57.2}, {90.8, 58.6}, {91, 58}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
             [npcKeys.subName] = "Dream Profits and Extractions",
+        },
+        [222410] = { -- Shadowy Figure : https://wowhead.com/forever/npc=222410/shadowy-figure
+            [npcKeys.name] = "Shadowy Figure",
+        },
+        [222411] = { -- Josh's Kill Credit Creature P3 : https://wowhead.com/forever/npc=222411/joshs-kill-credit-creature-p3
+            [npcKeys.name] = "Josh's Kill Credit Creature P3",
+        },
+        [222412] = { -- Random Worm : https://wowhead.com/forever/npc=222412/random-worm
+            [npcKeys.name] = "Random Worm",
+        },
+        [222413] = { -- Zalgo the Explorer : https://wowhead.com/forever/npc=222413/zalgo-the-explorer
+            [npcKeys.name] = "Zalgo the Explorer",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[33] = {{15.2, 15.6}}},
+            [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
+            [npcKeys.questStarts] = {82016, 82093, 82094},
+            [npcKeys.questEnds] = {82016, 82093, 82094},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Purveyor of Lost Goods",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 216491; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
+        },
+        [222415] = { -- Dire Troll Roulette : https://wowhead.com/forever/npc=222415/dire-troll-roulette
+            [npcKeys.name] = "Dire Troll Roulette",
+        },
+        [222416] = { -- Skeletal Wind Serpent : https://wowhead.com/forever/npc=222416/skeletal-wind-serpent
+            [npcKeys.name] = "Skeletal Wind Serpent",
+        },
+        [222418] = { -- Riding Bat : https://wowhead.com/forever/npc=222418/riding-bat
+            [npcKeys.name] = "Riding Bat",
+        },
+        [222444] = { -- Injured Gnome : https://wowhead.com/forever/npc=222444/injured-gnome
+            [npcKeys.name] = "Injured Gnome",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[33] = {{26.8, 77.2}}},
+            [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
+            [npcKeys.questStarts] = {82023},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Knight of Some Renown",
+        },
+        [222451] = { -- Itty Bitty Murloc : https://wowhead.com/forever/npc=222451/itty-bitty-murloc
+            [npcKeys.name] = "Itty Bitty Murloc",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[33] = {{40.8, 85.6}}},
+            [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
+            [npcKeys.questEnds] = {82023},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [222478] = { -- Sentinel Keldara Sunblade : https://wowhead.com/forever/npc=222478/sentinel-keldara-sunblade
+            [npcKeys.name] = "Sentinel Keldara Sunblade",
+            [npcKeys.minLevel] = 44,
+            [npcKeys.maxLevel] = 44,
+            [npcKeys.spawns] = {[16] = {{20.4, 62}, {20.6, 61.8}}},
+            [npcKeys.zoneID] = zoneIDs.AZSHARA,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [222495] = { -- Serpent's Ascension Visual : https://wowhead.com/forever/npc=222495/serpents-ascension-visual
+            [npcKeys.name] = "Serpent's Ascension Visual",
+        },
+        [222513] = { -- Wild Growth : https://wowhead.com/forever/npc=222513/wild-growth
+            [npcKeys.name] = "Wild Growth",
+        },
+        [222514] = { -- Nightmare Mushroom : https://wowhead.com/forever/npc=222514/nightmare-mushroom
+            [npcKeys.name] = "Nightmare Mushroom",
+        },
+        [222516] = { -- Dream Fog : https://wowhead.com/forever/npc=222516/dream-fog
+            [npcKeys.name] = "Dream Fog",
+        },
+        [222519] = { -- Unbalanced Druid : https://wowhead.com/forever/npc=222519/unbalanced-druid
+            [npcKeys.name] = "Unbalanced Druid",
+        },
+        [222521] = { -- Dreamstone : https://wowhead.com/forever/npc=222521/dreamstone
+            [npcKeys.name] = "Dreamstone",
+        },
+        [222522] = { -- Spirit of Agamaggan : https://wowhead.com/forever/npc=222522/spirit-of-agamaggan
+            [npcKeys.name] = "Spirit of Agamaggan",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.RAZORFEN_DOWNS,
+            [npcKeys.questStarts] = {82044},
+            [npcKeys.questEnds] = {82043},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [222523] = { -- [DNT] Stalker : https://wowhead.com/forever/npc=222523/dnt-stalker
+            [npcKeys.name] = "[DNT] Stalker",
+        },
+        [222525] = { -- Anvilrage Patrol : https://wowhead.com/forever/npc=222525/anvilrage-patrol
+            [npcKeys.name] = "Anvilrage Patrol",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.zoneID] = zoneIDs.BLACKROCK_DEPTHS,
+        },
+        [222530] = { -- Rugged Traveler : https://wowhead.com/forever/npc=222530/rugged-traveler
+            [npcKeys.name] = "Rugged Traveler",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.spawns] = {[46] = {{35.8, 19.8}, {36, 19.2}}},
+            [npcKeys.questEnds] = {82062},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [222531] = { -- Ragged Traveler : https://wowhead.com/forever/npc=222531/ragged-traveler
+            [npcKeys.name] = "Ragged Traveler",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.spawns] = {[46] = {{36, 22.2}}},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [222542] = { -- Atal'ai Drum : https://wowhead.com/forever/npc=222542/atalai-drum
+            [npcKeys.name] = "Atal'ai Drum",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [222543] = { -- Atal'ai Slab : https://wowhead.com/forever/npc=222543/atalai-slab
+            [npcKeys.name] = "Atal'ai Slab",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [222544] = { -- Atal'ai Mask : https://wowhead.com/forever/npc=222544/atalai-mask
+            [npcKeys.name] = "Atal'ai Mask",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [222545] = { -- Atal'ai Candle : https://wowhead.com/forever/npc=222545/atalai-candle
+            [npcKeys.name] = "Atal'ai Candle",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
         },
         [222546] = { -- Iodax the Obliterator : https://wowhead.com/forever/npc=222546/iodax-the-obliterator
             [npcKeys.name] = "Iodax the Obliterator",
@@ -2966,12 +6949,54 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1537] = {{43.2, 10.8}, {44, 10}, {44.2, 10.6}, {44.4, 9.4}, {44.6, 11}, {45, 10.2}}, [1637] = {{49, 57.8}, {49.2, 57.4}, {49.2, 58.6}, {49.6, 58.2}}},
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [222553] = { -- Atal'ai Mummy : https://wowhead.com/forever/npc=222553/atalai-mummy
+            [npcKeys.name] = "Atal'ai Mummy",
+        },
+        [222566] = { -- Animated Flame : https://wowhead.com/forever/npc=222566/animated-flame
+            [npcKeys.name] = "Animated Flame",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [222573] = { -- Delirious Ancient : https://wowhead.com/forever/npc=222573/delirious-ancient
+            [npcKeys.name] = "Delirious Ancient",
+            [npcKeys.minLevel] = 52,
+            [npcKeys.maxLevel] = 52,
+            [npcKeys.zoneID] = zoneIDs.ZUL_FARRAK,
+        },
+        [222580] = { -- Child of Apa'ro : https://wowhead.com/forever/npc=222580/child-of-aparo
+            [npcKeys.name] = "Child of Apa'ro",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[16] = {{42, 38}, {42.2, 36.2}, {42.4, 33.6}, {42.4, 34.6}, {42.8, 34.2}, {42.8, 34.6}, {43, 32.4}, {43, 33}, {43.2, 27.4}, {43.2, 31.4}, {43.4, 28.4}, {43.4, 29}, {43.4, 29.8}, {43.6, 28.8}, {43.6, 31}, {43.6, 32}, {43.8, 30}, {44.4, 28.2}}},
+            [npcKeys.zoneID] = zoneIDs.AZSHARA,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [222617] = { -- Moderate Manifestation of Fire : https://wowhead.com/forever/npc=222617/moderate-manifestation-of-fire
+            [npcKeys.name] = "Moderate Manifestation of Fire",
+            [npcKeys.minLevel] = 47,
+            [npcKeys.maxLevel] = 48,
+            [npcKeys.spawns] = {[51] = {{23.8, 73}}, [357] = {{35.6, 32.4}, {35.6, 32.6}}},
+            [npcKeys.questStarts] = {82074},
+            [npcKeys.questEnds] = {82071, 82074},
+            [npcKeys.friendlyToFaction] = "H",
+        },
         [222620] = { -- Corrupt Moderate Manifestation of Fire : https://wowhead.com/forever/npc=222620/corrupt-moderate-manifestation-of-fire
             [npcKeys.name] = "Corrupt Moderate Manifestation of Fire",
             [npcKeys.minLevel] = 47,
             [npcKeys.maxLevel] = 48,
             [npcKeys.spawns] = {[51] = {{23.2, 73.6}, {23.4, 72.8}, {23.6, 72.6}, {24, 72.4}}},
             [npcKeys.zoneID] = zoneIDs.SEARING_GORGE,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [222623] = { -- Moderate Manifestation of Earth : https://wowhead.com/forever/npc=222623/moderate-manifestation-of-earth
+            [npcKeys.name] = "Moderate Manifestation of Earth",
+            [npcKeys.minLevel] = 45,
+            [npcKeys.maxLevel] = 46,
+            [npcKeys.spawns] = {[357] = {{36, 32.4}, {36, 32.6}}, [440] = {{62, 62.2}}},
+            [npcKeys.questStarts] = {82075},
+            [npcKeys.questEnds] = {82072, 82075},
             [npcKeys.friendlyToFaction] = "H",
         },
         [222625] = { -- Corrupt Moderate Manifestation of Earth : https://wowhead.com/forever/npc=222625/corrupt-moderate-manifestation-of-earth
@@ -2982,6 +7007,40 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.TANARIS,
             [npcKeys.friendlyToFaction] = "H",
         },
+        [222636] = { -- Ancient Shrine : https://wowhead.com/forever/npc=222636/ancient-shrine
+            [npcKeys.name] = "Ancient Shrine",
+        },
+        [222647] = { -- Ancient Spirit : https://wowhead.com/forever/npc=222647/ancient-spirit
+            [npcKeys.name] = "Ancient Spirit",
+        },
+        [222648] = { -- Wild Shrine : https://wowhead.com/forever/npc=222648/wild-shrine
+            [npcKeys.name] = "Wild Shrine",
+        },
+        [222649] = { -- Wild Spirit : https://wowhead.com/forever/npc=222649/wild-spirit
+            [npcKeys.name] = "Wild Spirit",
+        },
+        [222650] = { -- Windswept Shrine : https://wowhead.com/forever/npc=222650/windswept-shrine
+            [npcKeys.name] = "Windswept Shrine",
+        },
+        [222651] = { -- Windswept Spirit : https://wowhead.com/forever/npc=222651/windswept-spirit
+            [npcKeys.name] = "Windswept Spirit",
+        },
+        [222656] = { -- Defias Night Blade : https://wowhead.com/forever/npc=222656/defias-night-blade
+            [npcKeys.name] = "Defias Night Blade",
+            [npcKeys.minLevel] = 26,
+            [npcKeys.maxLevel] = 26,
+            [npcKeys.spawns] = {[10] = {{45, 66.8}, {45, 71.8}, {46.2, 73.8}, {46.2, 75.2}, {46.4, 76.2}, {46.6, 74.8}, {46.8, 71.8}, {46.8, 73.2}, {47, 74.4}, {47.2, 76.6}, {47.4, 69.6}, {47.4, 71.4}, {47.4, 76.4}, {47.4, 78}, {47.6, 70.4}, {47.8, 71.2}, {47.8, 75.6}, {48.2, 68.4}, {48.2, 76.6}, {48.4, 72.4}, {48.4, 73.2}, {48.4, 73.8}, {48.4, 75.2}, {48.6, 72.4}, {48.6, 74}, {48.6, 75.6}, {48.8, 73}, {48.8, 74.8}, {49.2, 70.6}, {49.6, 70.6}, {49.6, 72.6}, {49.6, 75.4}, {50, 74.4}, {50, 76}, {50, 76.8}, {50.2, 70.4}, {50.2, 72.4}, {50.6, 71.4}, {50.6, 73.2}, {50.8, 71.6}, {50.8, 75.8}, {51, 75}, {51.4, 74}, {51.6, 73.6}, {51.6, 75}, {52, 73.4}}},
+            [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+        },
+        [222684] = { -- Quartermaster Falinar : https://wowhead.com/forever/npc=222684/quartermaster-falinar
+            [npcKeys.name] = "Quartermaster Falinar",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 25,
+            [npcKeys.spawns] = {[10] = {{45.6, 51.2}, {46.8, 47.6}}},
+            [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 1645; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
+        },
         [222685] = { -- Quartermaster Kyleen : https://wowhead.com/forever/npc=222685/quartermaster-kyleen
             [npcKeys.name] = "Quartermaster Kyleen",
             [npcKeys.minLevel] = 40,
@@ -2991,12 +7050,74 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 1645; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
+        [222686] = { -- Quartermaster Alandra : https://wowhead.com/forever/npc=222686/quartermaster-alandra
+            [npcKeys.name] = "Quartermaster Alandra",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[47] = {{61.4, 34.4}, {61.4, 34.6}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 1645; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
+        },
+        [222687] = { -- Quartermaster Valdane : https://wowhead.com/forever/npc=222687/quartermaster-valdane
+            [npcKeys.name] = "Quartermaster Valdane",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[357] = {{48.4, 12.4}, {48.4, 12.6}, {48.6, 12.4}, {48.6, 12.6}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 1645; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
+        },
+        [222689] = { -- Blood-crazed Spirit : https://wowhead.com/forever/npc=222689/blood-crazed-spirit
+            [npcKeys.name] = "Blood-crazed Spirit",
+        },
+        [222694] = { -- Furniture : https://wowhead.com/forever/npc=222694/furniture
+            [npcKeys.name] = "Furniture",
+        },
+        [222695] = { -- Vilebranch Mask : https://wowhead.com/forever/npc=222695/vilebranch-mask
+            [npcKeys.name] = "Vilebranch Mask",
+            [npcKeys.minLevel] = 45,
+            [npcKeys.maxLevel] = 45,
+            [npcKeys.spawns] = {[47] = {{72.4, 52.8}, {72.6, 52.8}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+        },
+        [222696] = { -- Fel Crack : https://wowhead.com/forever/npc=222696/fel-crack
+            [npcKeys.name] = "Fel Crack",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[17] = {{42.8, 81.8}, {43, 78.2}, {43.2, 80.2}, {43.6, 83.8}, {43.8, 73.4}, {43.8, 73.6}, {46, 85.4}, {46.2, 85.6}, {47.8, 83.6}, {48.4, 81.2}, {48.4, 83}, {48.6, 83}, {50.2, 80.6}}, [331] = {{23.2, 56.2}, {24.2, 63.4}, {27.6, 62.4}, {27.8, 62.6}, {30.2, 30.2}, {33.4, 28.4}, {33.4, 28.6}, {33.6, 28.4}, {44.4, 64.2}, {44.6, 64.2}, {51, 47}, {52.4, 62.4}, {52.4, 62.8}, {52.6, 62.8}, {55.4, 40.2}, {55.6, 40.2}, {67, 46}, {67.2, 51}, {77.2, 73.2}, {80.4, 70.8}, {80.6, 71}, {84.4, 69.4}, {84.4, 69.6}, {84.6, 69.4}, {84.8, 70.2}}},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [222697] = { -- Fel Tear : https://wowhead.com/forever/npc=222697/fel-tear
+            [npcKeys.name] = "Fel Tear",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[8] = {{10.4, 59.4}, {10.4, 60.2}, {10.4, 60.6}, {10.6, 60.2}, {10.6, 60.6}, {12, 29.4}, {12.4, 29.8}, {12.6, 29.4}, {12.6, 29.8}, {16.4, 63}, {16.4, 63.6}, {16.6, 63.6}, {16.8, 62.6}, {22.4, 64.2}, {22.8, 64}, {22.8, 64.6}, {26.8, 50}, {27, 48.8}, {34, 28.6}, {34.4, 28.2}, {34.6, 28}, {36.2, 50}, {36.2, 50.6}, {36.6, 50}, {49.2, 38.2}, {49.4, 38.6}, {49.8, 38.4}, {49.8, 38.6}, {56.4, 65}, {56.4, 65.8}, {56.6, 65}, {56.8, 65.6}, {60.2, 27.6}, {60.6, 27.8}, {60.8, 27.4}, {61.2, 43.2}, {61.2, 43.8}, {69.2, 78}, {69.6, 78.8}, {69.8, 78}, {72.2, 11}, {72.4, 10.4}, {72.8, 10.4}, {72.8, 11}, {77, 89.2}, {77.4, 89.6}, {77.6, 89.2}, {77.6, 89.8}, {81.2, 34}, {81.2, 35}, {83.2, 66.6}, {83.4, 66.2}, {83.6, 65.4}, {83.6, 66.6}, {83.8, 66.4}, {86.8, 26.6}, {87.2, 26.2}, {87.6, 26}, {90.8, 65.2}, {91, 65.6}, {91.2, 56.4}, {91.4, 57}, {91.6, 56.4}}, [405] = {{47.4, 22.2}, {48.8, 82.2}, {49.4, 74.4}, {49.4, 75}, {49.6, 74.4}, {49.6, 74.8}, {52, 85.4}, {52, 85.6}, {52.2, 72.4}, {52.2, 72.6}, {52.8, 81}, {54.4, 19.2}, {54.6, 28.8}, {56, 74.8}, {56.2, 74.4}, {71.4, 18.4}, {71.4, 18.8}, {71.6, 18.4}, {71.6, 18.8}, {72.4, 22}, {72.6, 21.8}, {73.4, 24.4}, {73.4, 24.6}, {73.6, 24.4}, {73.6, 24.8}, {74.4, 10.2}, {74.4, 10.6}, {74.6, 10.4}, {74.6, 10.6}, {76.4, 19.2}, {76.6, 19.2}, {80.4, 17}, {80.6, 17.2}}},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
         [222698] = { -- Fel Scar : https://wowhead.com/forever/npc=222698/fel-scar
             [npcKeys.name] = "Fel Scar",
             [npcKeys.minLevel] = 1,
             [npcKeys.maxLevel] = 1,
             [npcKeys.spawns] = {[4] = {{35, 55.2}, {41.2, 33.4}, {41.2, 33.6}, {43.4, 25.6}, {43.6, 25.2}, {43.6, 25.6}, {46.4, 39.2}, {46.6, 39.2}, {48.4, 48}, {49, 48.2}, {56.2, 36.8}, {56.4, 36.4}, {60.2, 46}, {60.2, 46.6}, {62, 39.2}}, [16] = {{16.4, 51}, {16.6, 51}, {17.8, 58.6}, {21.2, 54}, {24.8, 47.8}, {25, 81.4}, {25, 81.6}, {30.2, 79.8}, {33, 81.4}, {33, 81.6}}, [357] = {{68.2, 58.8}, {70.6, 62.6}, {72.6, 63.8}, {73.2, 54.4}, {74.2, 50.8}, {74.2, 56.8}, {74.2, 60}, {76.2, 56.4}, {76.2, 56.6}, {76.6, 63.6}}},
             [npcKeys.friendlyToFaction] = "AH",
+        },
+        [222699] = { -- Enraged Stormcrow : https://wowhead.com/forever/npc=222699/enraged-stormcrow
+            [npcKeys.name] = "Enraged Stormcrow",
+            [npcKeys.minLevel] = 45,
+            [npcKeys.maxLevel] = 45,
+            [npcKeys.spawns] = {[51] = {{35.4, 22.8}, {37.8, 29.6}, {38, 28}, {47.4, 55}, {49, 55.6}, {51.2, 55.4}, {52, 57}, {52.2, 59.4}, {52.4, 57.8}, {52.8, 56.2}, {53.2, 58.6}, {53.4, 57.4}, {53.4, 57.6}, {53.6, 57.6}, {53.6, 58.6}, {53.6, 62.6}, {53.8, 57.4}, {54, 59.6}, {54.2, 50.8}, {54.6, 56.4}, {54.6, 56.8}, {54.8, 59.6}, {55, 51.6}, {55, 52.8}, {55, 54}, {55.2, 51.4}, {55.2, 57.6}, {55.2, 61.2}, {55.4, 54.8}, {55.4, 58.8}, {55.6, 55.8}, {55.6, 57.2}, {55.8, 59.4}, {56, 50.8}, {56, 58.4}, {56.2, 59.8}, {56.8, 58}, {57.2, 60}, {57.4, 59.2}, {57.8, 59.2}, {58.2, 56.8}, {58.2, 57.8}, {59, 59.8}, {59.4, 59}, {59.6, 56}, {60, 58.4}, {65.4, 54.4}, {70.8, 55}}},
+            [npcKeys.zoneID] = zoneIDs.SEARING_GORGE,
+        },
+        [222701] = { -- Pile of Bones : https://wowhead.com/forever/npc=222701/pile-of-bones
+            [npcKeys.name] = "Pile of Bones",
+        },
+        [222702] = { -- Murderous Lost One : https://wowhead.com/forever/npc=222702/murderous-lost-one
+            [npcKeys.name] = "Murderous Lost One",
+            [npcKeys.minLevel] = 46,
+            [npcKeys.maxLevel] = 46,
+            [npcKeys.spawns] = {[4] = {{45.2, 16.4}}},
+            [npcKeys.zoneID] = zoneIDs.BLASTED_LANDS,
         },
         [222703] = { -- Whisperwing : https://wowhead.com/forever/npc=222703/whisperwing
             [npcKeys.name] = "Whisperwing",
@@ -3007,6 +7128,15 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Guardian of Azshara",
         },
+        [222704] = { -- Sagefeather : https://wowhead.com/forever/npc=222704/sagefeather
+            [npcKeys.name] = "Sagefeather",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[47] = {{66, 53}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Guardian of the Hinterlands",
+        },
         [222705] = { -- Blightbark : https://wowhead.com/forever/npc=222705/blightbark
             [npcKeys.name] = "Blightbark",
             [npcKeys.minLevel] = 50,
@@ -3016,6 +7146,21 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Guardian of Feralas",
         },
+        [222706] = { -- STV PvP P3 : https://wowhead.com/forever/npc=222706/stv-pvp-p3
+            [npcKeys.name] = "STV PvP P3",
+        },
+        [222707] = { -- Nightmare Items : https://wowhead.com/forever/npc=222707/nightmare-items
+            [npcKeys.name] = "Nightmare Items",
+        },
+        [222708] = { -- Darkmoon Items : https://wowhead.com/forever/npc=222708/darkmoon-items
+            [npcKeys.name] = "Darkmoon Items",
+        },
+        [222709] = { -- Rift : https://wowhead.com/forever/npc=222709/rift
+            [npcKeys.name] = "Rift",
+        },
+        [222710] = { -- Door : https://wowhead.com/forever/npc=222710/door
+            [npcKeys.name] = "Door",
+        },
         [222726] = { -- Tyrant of the Hive : https://wowhead.com/forever/npc=222726/tyrant-of-the-hive
             [npcKeys.name] = "Tyrant of the Hive",
             [npcKeys.minLevel] = 46,
@@ -3023,12 +7168,61 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[357] = {{77.4, 62}, {77.8, 62.2}, {78, 62.6}}},
             [npcKeys.zoneID] = zoneIDs.FERALAS,
         },
+        [222734] = { -- [DNT] Dream Fog Stalker : https://wowhead.com/forever/npc=222734/dnt-dream-fog-stalker
+            [npcKeys.name] = "[DNT] Dream Fog Stalker",
+        },
+        [222763] = { -- Mixmaster Blix : https://wowhead.com/forever/npc=222763/mixmaster-blix
+            [npcKeys.name] = "Mixmaster Blix",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[440] = {{67, 22.4}}},
+            [npcKeys.zoneID] = zoneIDs.TANARIS,
+            [npcKeys.questStarts] = {82090},
+            [npcKeys.questEnds] = {82090},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Master Mixologist",
+        },
+        [222765] = { -- Desirous : https://wowhead.com/forever/npc=222765/desirous
+            [npcKeys.name] = "Desirous",
+            [npcKeys.subName] = "Master Darkweaver",
+        },
+        [222768] = { -- Lisabeth Ral : https://wowhead.com/forever/npc=222768/lisabeth-ral
+            [npcKeys.name] = "Lisabeth Ral",
+            [npcKeys.subName] = "Master Phaseweave Trainer",
+        },
+        [222772] = { -- Crimeon Lablade : https://wowhead.com/forever/npc=222772/crimeon-lablade
+            [npcKeys.name] = "Crimeon Lablade",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[440] = {{67, 22.4}}},
+            [npcKeys.zoneID] = zoneIDs.TANARIS,
+            [npcKeys.questStarts] = {82089},
+            [npcKeys.questEnds] = {82089},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Transmutation Master",
+        },
+        [222789] = { -- The Giant : https://wowhead.com/forever/npc=222789/the-giant
+            [npcKeys.name] = "The Giant",
+            [npcKeys.minLevel] = 52,
+            [npcKeys.maxLevel] = 52,
+            [npcKeys.spawns] = {[357] = {{45.4, 17}, {45.6, 22.2}, {45.8, 14.6}, {46.2, 14.4}, {46.2, 16.8}, {46.4, 18.2}, {46.4, 18.8}, {46.4, 19.6}, {46.4, 21}, {46.6, 12}, {46.6, 18.4}, {46.6, 19}, {46.6, 19.6}, {46.8, 12.6}, {46.8, 16}, {46.8, 21.4}, {47, 11.4}, {47, 21.6}, {47.2, 14.2}, {47.8, 22.8}, {48.2, 12.6}, {48.2, 24.4}, {48.4, 12.2}, {48.8, 12.4}, {49, 25}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
         [222799] = { -- Simmering Elemental : https://wowhead.com/forever/npc=222799/simmering-elemental
             [npcKeys.name] = "Simmering Elemental",
             [npcKeys.minLevel] = 41,
             [npcKeys.maxLevel] = 42,
             [npcKeys.spawns] = {[357] = {{79, 49.6}, {79.2, 49.4}}},
             [npcKeys.zoneID] = zoneIDs.FERALAS,
+        },
+        [222856] = { -- Odd Totem : https://wowhead.com/forever/npc=222856/odd-totem
+            [npcKeys.name] = "Odd Totem",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[440] = {{43, 41.2}}},
+            [npcKeys.zoneID] = zoneIDs.TANARIS,
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [222857] = { -- Odd Totem : https://wowhead.com/forever/npc=222857/odd-totem
             [npcKeys.name] = "Odd Totem",
@@ -3038,12 +7232,35 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.TANARIS,
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [222897] = { -- Enraged Voidwalker : https://wowhead.com/forever/npc=222897/enraged-voidwalker
+            [npcKeys.name] = "Enraged Voidwalker",
+            [npcKeys.minLevel] = 43,
+            [npcKeys.maxLevel] = 43,
+            [npcKeys.spawns] = {[440] = {{58.4, 36.4}, {58.4, 36.6}, {58.6, 36.4}, {58.8, 36.6}}},
+            [npcKeys.zoneID] = zoneIDs.TANARIS,
+        },
+        [222919] = { -- Whirling Tempest : https://wowhead.com/forever/npc=222919/whirling-tempest
+            [npcKeys.name] = "Whirling Tempest",
+            [npcKeys.minLevel] = 44,
+            [npcKeys.maxLevel] = 45,
+            [npcKeys.spawns] = {[357] = {{60, 67}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+        },
         [222968] = { -- Lethlas : https://wowhead.com/forever/npc=222968/lethlas
             [npcKeys.name] = "Lethlas",
             [npcKeys.minLevel] = 52,
             [npcKeys.maxLevel] = 52,
             [npcKeys.spawns] = {[357] = {{50.8, 18.2}, {51, 11.2}, {52.2, 15.2}, {52.4, 16.2}, {53, 16.4}, {53.2, 16.6}, {53.6, 17}}},
             [npcKeys.zoneID] = zoneIDs.FERALAS,
+        },
+        [222970] = { -- Rift : https://wowhead.com/forever/npc=222970/rift
+            [npcKeys.name] = "Rift",
+        },
+        [222971] = { -- Rift : https://wowhead.com/forever/npc=222971/rift
+            [npcKeys.name] = "Rift",
+        },
+        [222972] = { -- Rift : https://wowhead.com/forever/npc=222972/rift
+            [npcKeys.name] = "Rift",
         },
         [222977] = { -- Phantim : https://wowhead.com/forever/npc=222977/phantim
             [npcKeys.name] = "Phantim",
@@ -3059,6 +7276,64 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[47] = {{45.4, 40.4}, {45.8, 39.4}, {46, 39.6}, {46.2, 40.6}, {46.4, 37.2}, {46.4, 38.2}, {46.6, 40.2}, {46.6, 40.6}}},
             [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
         },
+        [223061] = { -- Charged Totem : https://wowhead.com/forever/npc=223061/charged-totem
+            [npcKeys.name] = "Charged Totem",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[357] = {{60, 66.8}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [223068] = { -- Thunderhead Hippogryph : https://wowhead.com/forever/npc=223068/thunderhead-hippogryph
+            [npcKeys.name] = "Thunderhead Hippogryph",
+            [npcKeys.minLevel] = 46,
+            [npcKeys.maxLevel] = 48,
+            [npcKeys.spawns] = {[16] = {{15, 49.8}, {15.2, 54.6}, {15.4, 51.8}, {15.4, 53.8}, {15.6, 68.2}, {16, 52.8}, {16.2, 53.8}, {16.4, 51.4}, {16.4, 52.2}, {16.4, 54.6}, {16.4, 65.4}, {16.6, 51}, {16.6, 51.8}, {16.6, 65.4}, {16.6, 65.8}, {16.8, 55.2}, {17, 53.2}, {17.2, 59.8}, {17.4, 53.6}, {17.4, 56.2}, {17.4, 57.2}, {17.4, 57.8}, {17.4, 59.4}, {17.4, 62.4}, {17.4, 62.6}, {17.4, 63.6}, {17.6, 50.4}, {17.6, 53.2}, {17.6, 53.6}, {17.6, 55.4}, {17.6, 58.8}, {17.6, 60.2}, {17.8, 60.8}, {17.8, 62.4}, {17.8, 63.6}, {18, 57}, {18, 62.8}, {18, 65.6}, {18.2, 51.2}, {18.2, 55.8}, {18.2, 57.6}, {18.2, 65.2}, {18.4, 52}, {18.4, 67}, {18.6, 54.4}, {18.6, 56}, {18.6, 57}, {18.6, 57.8}, {18.6, 61.6}, {18.6, 62.8}, {18.6, 64}, {18.6, 65.8}, {18.8, 51.4}, {18.8, 60.4}, {18.8, 64.6}, {19, 52.6}, {19.2, 50.2}, {19.2, 52}, {19.2, 54.6}, {19.2, 58.8}, {19.2, 67.2}, {19.4, 68.2}, {19.6, 52}, {19.6, 53}, {19.6, 54.2}, {19.6, 62.8}, {19.8, 51.4}, {19.8, 58.8}, {20.2, 54.6}, {20.2, 57.6}, {20.2, 64}, {20.2, 65.4}, {20.2, 65.8}, {20.2, 67}, {20.4, 50}, {20.4, 56.4}, {20.4, 56.6}, {20.4, 67.6}, {20.6, 51.8}, {20.6, 56.4}, {20.6, 57.2}, {20.6, 57.6}, {20.6, 63.8}, {20.6, 65}, {20.6, 66.6}, {20.8, 65.6}, {20.8, 68.4}, {21.2, 54}, {21.2, 58.6}, {21.6, 51}, {21.6, 57}, {21.6, 61.6}, {22.2, 55}, {22.6, 57.8}}},
+            [npcKeys.zoneID] = zoneIDs.AZSHARA,
+        },
+        [223123] = { -- Diseased Forest Walker : https://wowhead.com/forever/npc=223123/diseased-forest-walker
+            [npcKeys.name] = "Diseased Forest Walker",
+            [npcKeys.minLevel] = 43,
+            [npcKeys.maxLevel] = 44,
+            [npcKeys.spawns] = {[357] = {{72.4, 50.4}, {72.4, 50.8}, {72.6, 50.4}, {72.6, 50.6}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+        },
+        [223127] = { -- Dead Diseased Grimtotem Shaman : https://wowhead.com/forever/npc=223127/dead-diseased-grimtotem-shaman
+            [npcKeys.name] = "Dead Diseased Grimtotem Shaman",
+            [npcKeys.minLevel] = 43,
+            [npcKeys.maxLevel] = 44,
+            [npcKeys.spawns] = {[357] = {{69.4, 43.2}, {69.6, 43.2}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+        },
+        [223128] = { -- Dead Diseased Woodpaw Mystic : https://wowhead.com/forever/npc=223128/dead-diseased-woodpaw-mystic
+            [npcKeys.name] = "Dead Diseased Woodpaw Mystic",
+            [npcKeys.minLevel] = 42,
+            [npcKeys.maxLevel] = 43,
+            [npcKeys.spawns] = {[357] = {{66.4, 50.8}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+        },
+        [223130] = { -- Uprooted Gloomwood : https://wowhead.com/forever/npc=223130/uprooted-gloomwood
+            [npcKeys.name] = "Uprooted Gloomwood",
+            [npcKeys.minLevel] = 46,
+            [npcKeys.maxLevel] = 46,
+            [npcKeys.spawns] = {[357] = {{41, 9.4}, {42.2, 10.8}, {43.4, 13.2}, {43.8, 13}, {44.8, 12.6}, {45, 10.8}, {45, 21.6}, {45.4, 12}, {45.4, 14.2}, {45.4, 14.8}, {45.4, 17.4}, {45.4, 17.6}, {45.4, 19.4}, {45.4, 19.8}, {45.4, 20.8}, {45.8, 21.8}, {46, 11.4}, {46, 13.2}, {46.2, 12.4}, {46.2, 14.4}, {46.2, 15.4}, {46.2, 16.4}, {46.2, 16.6}, {46.2, 17.6}, {46.2, 20.8}, {46.4, 19.2}, {46.4, 19.8}, {46.4, 24.6}, {46.6, 14.8}, {46.6, 15.8}, {46.6, 19.4}, {46.6, 21.4}, {46.8, 14}, {46.8, 21.6}, {46.8, 23.8}, {46.8, 25.2}, {47, 9.4}, {47, 16.8}, {47.2, 13.2}, {47.4, 22.6}, {47.6, 15.4}, {47.8, 14}, {48.2, 12.4}, {48.2, 24}, {48.4, 12.8}, {48.4, 16.4}, {48.6, 11.8}, {48.8, 12.6}, {49.4, 11}, {49.6, 12.8}, {50.4, 13.6}, {50.8, 11.6}, {51, 11}}},
+            [npcKeys.zoneID] = zoneIDs.FERALAS,
+        },
+        [223212] = { -- [DNT] Tanaris - Arena Stalker : https://wowhead.com/forever/npc=223212/dnt-tanaris-arena-stalker
+            [npcKeys.name] = "[DNT] Tanaris - Arena Stalker",
+        },
+        [223264] = { -- Delirious Ancient : https://wowhead.com/forever/npc=223264/delirious-ancient
+            [npcKeys.name] = "Delirious Ancient",
+            [npcKeys.minLevel] = 52,
+            [npcKeys.maxLevel] = 52,
+            [npcKeys.zoneID] = zoneIDs.MARAUDON,
+        },
+        [223265] = { -- Delirious Ancient : https://wowhead.com/forever/npc=223265/delirious-ancient
+            [npcKeys.name] = "Delirious Ancient",
+            [npcKeys.minLevel] = 52,
+            [npcKeys.maxLevel] = 52,
+            [npcKeys.zoneID] = zoneIDs.BLACKROCK_DEPTHS,
+        },
         [223287] = { -- Fire Elemental : https://wowhead.com/forever/npc=223287/fire-elemental
             [npcKeys.name] = "Fire Elemental",
             [npcKeys.minLevel] = 27,
@@ -3066,11 +7341,65 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[10] = {{36.2, 81.2}, {37, 82.4}, {37, 83.4}, {37.4, 84.2}, {37.4, 84.6}, {37.6, 84.4}, {37.6, 84.6}}},
             [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
         },
+        [223340] = { -- Fel Interloper : https://wowhead.com/forever/npc=223340/fel-interloper
+            [npcKeys.name] = "Fel Interloper",
+            [npcKeys.minLevel] = 15,
+            [npcKeys.maxLevel] = 18,
+            [npcKeys.spawns] = {[17] = {{37.4, 16.6}, {40.2, 18.4}, {40.8, 14.4}, {41.6, 48.2}, {41.8, 14.2}, {43.4, 44.2}, {44.2, 50}, {44.4, 54.8}, {45.8, 51.2}, {46.4, 52.6}, {47.6, 49.4}, {51.6, 53.4}, {53, 50.8}, {54, 52.6}, {54.4, 48.6}, {55.6, 25.6}, {55.8, 51.2}, {56, 24.8}, {57.6, 23.4}, {57.6, 23.6}, {58.2, 49.8}, {58.8, 25.6}, {59, 29}, {59, 32}, {59.2, 36.4}, {59.2, 36.6}, {59.8, 27.4}, {59.8, 27.6}, {60.2, 36}, {60.8, 29}, {61.8, 32}}, [40] = {{28.6, 43.8}, {28.8, 58.6}, {29, 43.2}, {29, 58.2}, {29.6, 34}, {29.6, 69.4}, {30, 69.6}, {31.4, 39.2}, {31.4, 65}, {31.4, 66}, {31.6, 39.2}, {31.6, 39.6}, {32.2, 29}, {32.2, 76.2}, {32.2, 80.2}, {34, 82.4}, {34.8, 61}, {35.8, 32.4}, {35.8, 32.6}, {37.6, 85.4}, {41.2, 15.6}, {41.4, 15.4}, {44.4, 46.6}, {44.6, 46.8}, {46.6, 12.4}, {46.8, 39.4}, {47.4, 21.8}, {47.4, 67.4}, {47.4, 79.4}, {47.4, 79.6}, {47.6, 21.8}, {47.6, 67.4}, {47.6, 67.6}, {47.6, 79.4}, {47.8, 14}, {50.8, 32.2}, {51.6, 71.4}, {53, 80.2}, {62.6, 26.4}, {62.6, 26.8}}, [130] = {{38.8, 23.4}, {44.2, 25.2}, {45.6, 31.6}, {49.8, 13.2}, {50.2, 57}, {54.4, 36}, {55.4, 57.2}, {55.6, 56.8}, {56.8, 16}, {61, 6.6}}},
+        },
+        [223345] = { -- Lledra's Vehicle : https://wowhead.com/forever/npc=223345/lledras-vehicle
+            [npcKeys.name] = "Lledra's Vehicle",
+        },
+        [223359] = { -- Lledra's Vehicle Visual : https://wowhead.com/forever/npc=223359/lledras-vehicle-visual
+            [npcKeys.name] = "Lledra's Vehicle Visual",
+        },
+        [223413] = { -- [DNT] Stalker : https://wowhead.com/forever/npc=223413/dnt-stalker
+            [npcKeys.name] = "[DNT] Stalker",
+        },
+        [223482] = { -- Wild Gods Items : https://wowhead.com/forever/npc=223482/wild-gods-items
+            [npcKeys.name] = "Wild Gods Items",
+        },
+        [223483] = { -- Merchant Faction Items : https://wowhead.com/forever/npc=223483/merchant-faction-items
+            [npcKeys.name] = "Merchant Faction Items",
+        },
+        [223485] = { -- Fel Portal Items : https://wowhead.com/forever/npc=223485/fel-portal-items
+            [npcKeys.name] = "Fel Portal Items",
+        },
+        [223496] = { -- Void Zone : https://wowhead.com/forever/npc=223496/void-zone
+            [npcKeys.name] = "Void Zone",
+        },
+        [223542] = { -- Fel Interloper : https://wowhead.com/forever/npc=223542/fel-interloper
+            [npcKeys.name] = "Fel Interloper",
+            [npcKeys.minLevel] = 25,
+            [npcKeys.maxLevel] = 28,
+            [npcKeys.spawns] = {[17] = {{42.8, 81.8}, {43.8, 84}, {46, 85.6}, {47.6, 83.4}, {48.4, 81.2}, {50.2, 80.6}}, [331] = {{24.2, 63.4}, {27.6, 62.6}, {30.2, 30}, {33.6, 28.4}, {44.6, 64.2}, {50.8, 47}, {52.4, 62.8}, {55.6, 40.2}, {67, 46}, {67.2, 51.2}, {77.2, 73.2}, {80.4, 71}, {84.4, 69.4}, {84.8, 70.2}}},
+        },
+        [223543] = { -- Fel Interloper : https://wowhead.com/forever/npc=223543/fel-interloper
+            [npcKeys.name] = "Fel Interloper",
+            [npcKeys.minLevel] = 35,
+            [npcKeys.maxLevel] = 38,
+            [npcKeys.spawns] = {[8] = {{10.4, 60}, {10.4, 60.6}, {10.6, 60}, {12.4, 29.8}, {12.6, 29.8}, {16, 63.2}, {16.8, 62.2}, {17, 63}, {22.6, 64.6}, {22.8, 64.4}, {27, 49.8}, {34.2, 28.4}, {34.2, 28.6}, {36.2, 50}, {49.2, 38.8}, {49.4, 38.4}, {49.8, 38.6}, {56.6, 65.4}, {56.8, 65.6}, {60.4, 27.8}, {60.6, 27}, {60.6, 27.8}, {60.8, 43.2}, {61.2, 43.6}, {69.4, 78.4}, {69.4, 79.2}, {69.6, 78.4}, {69.6, 78.8}, {72.2, 10.4}, {72.2, 10.8}, {72.6, 10.4}, {72.8, 10.8}, {77.2, 89.6}, {77.4, 89.4}, {77.6, 89.4}, {77.6, 90}, {81.2, 34}, {81.2, 34.8}, {83.6, 66.2}, {87, 26.2}, {90.6, 65.8}, {91, 65.4}, {91.2, 56.6}, {91.4, 56}}, [405] = {{47.4, 22}, {48.8, 81.4}, {48.8, 82}, {49.4, 74.8}, {49.6, 75}, {52, 85.4}, {52.2, 72.2}, {52.2, 72.6}, {52.2, 85.6}, {52.8, 81}, {54.2, 19.2}, {56, 74.8}, {71.4, 18.8}, {71.6, 18.8}, {72.2, 22.2}, {72.6, 21.8}, {73.4, 24.6}, {73.6, 24.4}, {73.6, 24.6}, {74.6, 10.4}, {76.2, 19.2}, {80.4, 17.2}, {80.4, 17.6}}},
+        },
         [223544] = { -- Fel Interloper : https://wowhead.com/forever/npc=223544/fel-interloper
             [npcKeys.name] = "Fel Interloper",
             [npcKeys.minLevel] = 45,
             [npcKeys.maxLevel] = 48,
             [npcKeys.spawns] = {[4] = {{34.8, 56.2}, {35, 55}, {41.2, 33.4}, {41.2, 33.6}, {43.6, 25.2}, {46.2, 39.4}, {46.6, 39.2}, {48.8, 48.2}, {49.2, 48.6}, {56.2, 36.4}, {56.2, 36.6}, {56.6, 36.6}, {58.8, 41.2}, {59.2, 40.2}, {59.8, 42.4}, {60.2, 46.6}, {60.4, 46.4}, {60.6, 39}, {60.6, 44.8}, {61.8, 38.4}, {62.2, 39}}, [16] = {{16.4, 51}, {17.6, 58.8}, {21.2, 54}, {24.8, 47.4}, {24.8, 47.6}, {25, 81.4}, {25, 81.6}, {30.2, 79.8}, {33, 81.4}}, [357] = {{68.2, 58.8}, {70.6, 62.6}, {72.4, 63.6}, {72.6, 63.8}, {73.2, 54.2}, {74.2, 50.6}, {74.2, 56.8}, {74.2, 60}, {76.2, 56.4}, {76.2, 56.6}, {76.6, 63.8}}},
+        },
+        [223568] = { -- Josh's Kill Credit Creature P3 : https://wowhead.com/forever/npc=223568/joshs-kill-credit-creature-p3
+            [npcKeys.name] = "Josh's Kill Credit Creature P3",
+        },
+        [223581] = { -- Rune Scrying Stalker : https://wowhead.com/forever/npc=223581/rune-scrying-stalker
+            [npcKeys.name] = "Rune Scrying Stalker",
+        },
+        [223586] = { -- Hukku : https://wowhead.com/forever/npc=223586/hukku
+            [npcKeys.name] = "Hukku",
+        },
+        [223587] = { -- Mijan : https://wowhead.com/forever/npc=223587/mijan
+            [npcKeys.name] = "Mijan",
+        },
+        [223588] = { -- Gasher : https://wowhead.com/forever/npc=223588/gasher
+            [npcKeys.name] = "Gasher",
         },
         [223590] = { -- Shrine of the Watcher : https://wowhead.com/forever/npc=223590/shrine-of-the-watcher
             [npcKeys.name] = "Shrine of the Watcher",
@@ -3078,6 +7407,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 1,
             [npcKeys.spawns] = {[16] = {{89.8, 33.4}, {89.8, 33.6}}},
             [npcKeys.zoneID] = zoneIDs.AZSHARA,
+            [npcKeys.questStarts] = {82316},
+            [npcKeys.questEnds] = {82316},
             [npcKeys.friendlyToFaction] = "AH",
         },
         [223591] = { -- Echo of a Lost Soul : https://wowhead.com/forever/npc=223591/echo-of-a-lost-soul
@@ -3086,12 +7417,146 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 1,
             [npcKeys.spawns] = {[8] = {{50.2, 62}}, [33] = {{40.8, 58.4}, {41, 58.6}}, [47] = {{72.4, 68.8}, {72.6, 68.4}, {72.6, 68.6}}, [440] = {{53.8, 29}}},
         },
+        [223720] = { -- [DNT] Invisible Stalker : https://wowhead.com/forever/npc=223720/dnt-invisible-stalker
+            [npcKeys.name] = "[DNT] Invisible Stalker",
+        },
+        [223737] = { -- [DNT] Stalker : https://wowhead.com/forever/npc=223737/dnt-stalker
+            [npcKeys.name] = "[DNT] Stalker",
+        },
+        [224242] = { -- Saturated Ooze : https://wowhead.com/forever/npc=224242/saturated-ooze
+            [npcKeys.name] = "Saturated Ooze",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [224243] = { -- Deep Lurker : https://wowhead.com/forever/npc=224243/deep-lurker
+            [npcKeys.name] = "Deep Lurker",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [224244] = { -- Slime Maggot : https://wowhead.com/forever/npc=224244/slime-maggot
+            [npcKeys.name] = "Slime Maggot",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [224245] = { -- Oozeling : https://wowhead.com/forever/npc=224245/oozeling
+            [npcKeys.name] = "Oozeling",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [224250] = { -- Atal'ai Warrior : https://wowhead.com/forever/npc=224250/atalai-warrior
+            [npcKeys.name] = "Atal'ai Warrior",
+            [npcKeys.minLevel] = 52,
+            [npcKeys.maxLevel] = 52,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [224253] = { -- Nightmare Wanderer : https://wowhead.com/forever/npc=224253/nightmare-wanderer
+            [npcKeys.name] = "Nightmare Wanderer",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [224254] = { -- Nightmare Wyrmkin : https://wowhead.com/forever/npc=224254/nightmare-wyrmkin
+            [npcKeys.name] = "Nightmare Wyrmkin",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [224255] = { -- Nightmare Scalebane : https://wowhead.com/forever/npc=224255/nightmare-scalebane
+            [npcKeys.name] = "Nightmare Scalebane",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [224256] = { -- Nightmare Whelp : https://wowhead.com/forever/npc=224256/nightmare-whelp
+            [npcKeys.name] = "Nightmare Whelp",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [224257] = { -- Atal'ai Slave : https://wowhead.com/forever/npc=224257/atalai-slave
+            [npcKeys.name] = "Atal'ai Slave",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [224258] = { -- Atal'ai High Priest : https://wowhead.com/forever/npc=224258/atalai-high-priest
+            [npcKeys.name] = "Atal'ai High Priest",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [224259] = { -- Atal'ai Deathwalker : https://wowhead.com/forever/npc=224259/atalai-deathwalker
+            [npcKeys.name] = "Atal'ai Deathwalker",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [224260] = { -- Atal'ai Corpse Eater : https://wowhead.com/forever/npc=224260/atalai-corpse-eater
+            [npcKeys.name] = "Atal'ai Corpse Eater",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+        },
+        [224262] = { -- Unliving Atal'ai : https://wowhead.com/forever/npc=224262/unliving-atalai
+            [npcKeys.name] = "Unliving Atal'ai",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [224263] = { -- Atal'ai Witch Doctor : https://wowhead.com/forever/npc=224263/atalai-witch-doctor
+            [npcKeys.name] = "Atal'ai Witch Doctor",
+            [npcKeys.minLevel] = 51,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [224328] = { -- Zalgo the Explorer : https://wowhead.com/forever/npc=224328/zalgo-the-explorer
+            [npcKeys.name] = "Zalgo the Explorer",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Purveyor of Lost Goods",
+            [npcKeys.npcFlags] = 16384, -- Assumption: assumptions/npc_services.toml; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
+        },
+        [224386] = { -- Fireguard Destroyer : https://wowhead.com/forever/npc=224386/fireguard-destroyer
+            [npcKeys.name] = "Fireguard Destroyer",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.zoneID] = zoneIDs.BLACKROCK_DEPTHS,
+        },
         [224743] = { -- Emerald Warden : https://wowhead.com/forever/npc=224743/emerald-warden
             [npcKeys.name] = "Emerald Warden",
             [npcKeys.minLevel] = 63,
             [npcKeys.maxLevel] = 63,
             [npcKeys.spawns] = {[10] = {{45, 51.8}, {45.2, 51.2}, {45.4, 53}, {45.6, 51.2}, {45.6, 53.4}, {45.8, 53.6}, {46, 50.4}, {46.4, 47.4}, {46.4, 47.6}, {47, 47.8}}, [47] = {{60, 35}, {61.4, 34.4}, {61.4, 34.6}, {61.6, 34.6}, {61.8, 33.2}, {61.8, 33.6}}, [331] = {{89.2, 41.6}, {89.4, 40.4}, {89.4, 40.6}, {89.6, 40.4}, {89.6, 40.6}, {90.6, 39.6}}, [357] = {{48.4, 12.4}, {48.4, 12.6}, {48.6, 12.4}, {48.6, 12.6}}},
             [npcKeys.friendlyToFaction] = "AH",
+        },
+        [224965] = { -- Khonsu : https://wowhead.com/forever/npc=224965/khonsu
+            [npcKeys.name] = "Khonsu",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[1377] = {{11.8, 95}}},
+            [npcKeys.zoneID] = zoneIDs.SILITHUS,
+            [npcKeys.questEnds] = {84317},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Night Traveler",
+        },
+        [226797] = { -- Prazik Pilfershard : https://wowhead.com/forever/npc=226797/prazik-pilfershard
+            [npcKeys.name] = "Prazik Pilfershard",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[85] = {{83, 72.4}, {83, 72.6}}},
+            [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Soul Broker",
         },
         [226799] = { -- Pixi Pilfershard : https://wowhead.com/forever/npc=226799/pixi-pilfershard
             [npcKeys.name] = "Pixi Pilfershard",
@@ -3102,12 +7567,101 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Soul Broker",
         },
+        [226921] = { -- The Destructor's Wraith : https://wowhead.com/forever/npc=226921/the-destructors-wraith
+            [npcKeys.name] = "The Destructor's Wraith",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [226922] = { -- Zilbagob : https://wowhead.com/forever/npc=226922/zilbagob
+            [npcKeys.name] = "Zilbagob",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [226923] = { -- Grimroot : https://wowhead.com/forever/npc=226923/grimroot
+            [npcKeys.name] = "Grimroot",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+            [npcKeys.subName] = "The Mourning Guardian",
+        },
         [226982] = { -- Frijidar : https://wowhead.com/forever/npc=226982/frijidar
             [npcKeys.name] = "Frijidar",
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[618] = {{69.8, 38}}},
             [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [227019] = { -- Diathorus the Seeker : https://wowhead.com/forever/npc=227019/diathorus-the-seeker
+            [npcKeys.name] = "Diathorus the Seeker",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [227028] = { -- Hellscream's Phantom : https://wowhead.com/forever/npc=227028/hellscreams-phantom
+            [npcKeys.name] = "Hellscream's Phantom",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [227140] = { -- Pyranis : https://wowhead.com/forever/npc=227140/pyranis
+            [npcKeys.name] = "Pyranis",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [227206] = { -- Astral Projection : https://wowhead.com/forever/npc=227206/astral-projection
+            [npcKeys.name] = "Astral Projection",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [227324] = { -- Novice Frost Mage : https://wowhead.com/forever/npc=227324/novice-frost-mage
+            [npcKeys.name] = "Novice Frost Mage",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 52,
+            [npcKeys.spawns] = {[28] = {{36.8, 54.8}}},
+            [npcKeys.zoneID] = zoneIDs.WESTERN_PLAGUELANDS,
+        },
+        [227385] = { -- Novice Frost Mage : https://wowhead.com/forever/npc=227385/novice-frost-mage
+            [npcKeys.name] = "Novice Frost Mage",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 52,
+            [npcKeys.spawns] = {[28] = {{45, 52}}},
+            [npcKeys.zoneID] = zoneIDs.WESTERN_PLAGUELANDS,
+        },
+        [227386] = { -- Novice Frost Mage : https://wowhead.com/forever/npc=227386/novice-frost-mage
+            [npcKeys.name] = "Novice Frost Mage",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 52,
+            [npcKeys.spawns] = {[28] = {{53.2, 64.2}, {53.4, 64.6}, {53.6, 64.4}}},
+            [npcKeys.zoneID] = zoneIDs.WESTERN_PLAGUELANDS,
+        },
+        [227387] = { -- Novice Frost Mage : https://wowhead.com/forever/npc=227387/novice-frost-mage
+            [npcKeys.name] = "Novice Frost Mage",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 52,
+            [npcKeys.spawns] = {[28] = {{64.2, 57.8}, {64.4, 57.4}}},
+            [npcKeys.zoneID] = zoneIDs.WESTERN_PLAGUELANDS,
+        },
+        [227464] = { -- Squire Cuthbert : https://wowhead.com/forever/npc=227464/squire-cuthbert
+            [npcKeys.name] = "Squire Cuthbert",
+            [npcKeys.questEnds] = {84008},
+        },
+        [227493] = { -- Sandworm : https://wowhead.com/forever/npc=227493/sandworm
+            [npcKeys.name] = "Sandworm",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[1377] = {{32.6, 66}, {32.8, 65.2}, {33.6, 66.4}, {36.4, 60.2}, {36.4, 71.4}, {36.4, 71.8}, {36.4, 72.6}, {37, 71.4}, {37, 71.8}, {37.4, 60.8}, {37.8, 60.8}, {38, 60.2}, {41, 66.4}, {41.4, 66.6}, {41.6, 66.4}, {41.6, 67.2}, {41.6, 68}}},
+            [npcKeys.zoneID] = zoneIDs.SILITHUS,
+        },
+        [227511] = { -- Pedestal : https://wowhead.com/forever/npc=227511/pedestal
+            [npcKeys.name] = "Pedestal",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.STRATHOLME,
             [npcKeys.friendlyToFaction] = "AH",
         },
         [227519] = { -- Fallen Knight : https://wowhead.com/forever/npc=227519/fallen-knight
@@ -3125,12 +7679,105 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1377] = {{11.8, 95}}},
             [npcKeys.zoneID] = zoneIDs.SILITHUS,
         },
+        [227672] = { -- Squire Cuthbert : https://wowhead.com/forever/npc=227672/squire-cuthbert
+            [npcKeys.name] = "Squire Cuthbert",
+            [npcKeys.minLevel] = 52,
+            [npcKeys.maxLevel] = 52,
+            [npcKeys.spawns] = {[28] = {{44.4, 46.6}, {44.6, 46.6}, {47.8, 50.4}, {47.8, 50.6}}},
+            [npcKeys.zoneID] = zoneIDs.WESTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {83808, 83822, 83935, 83936},
+            [npcKeys.questEnds] = {83808, 83822, 83935, 83936},
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [227673] = { -- Squire Cuthbert : https://wowhead.com/forever/npc=227673/squire-cuthbert
+            [npcKeys.name] = "Squire Cuthbert",
+            [npcKeys.questEnds] = {83823},
+        },
+        [227674] = { -- Squire Cuthbert : https://wowhead.com/forever/npc=227674/squire-cuthbert
+            [npcKeys.name] = "Squire Cuthbert",
+            [npcKeys.questStarts] = {84017, 84125, 84126},
+            [npcKeys.questEnds] = {84017, 84125, 84126},
+        },
+        [227681] = { -- Dirt Mound : https://wowhead.com/forever/npc=227681/dirt-mound
+            [npcKeys.name] = "Dirt Mound",
+        },
+        [227705] = { -- Kill Credit Creature : https://wowhead.com/forever/npc=227705/kill-credit-creature
+            [npcKeys.name] = "Kill Credit Creature",
+        },
+        [227746] = { -- Escaped Core Hound : https://wowhead.com/forever/npc=227746/escaped-core-hound
+            [npcKeys.name] = "Escaped Core Hound",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[46] = {{24.2, 57.8}, {24.4, 50.2}, {24.8, 55.6}, {24.8, 60}, {25, 49.8}, {25, 58.6}, {25.2, 49}, {25.4, 54}, {25.6, 54}, {25.8, 55.2}, {26, 56.2}, {26.8, 53.2}, {27.6, 52}, {31.8, 53}, {33.4, 51.8}, {36.8, 50.6}, {38.4, 62.6}, {38.4, 63.6}, {39, 60.2}, {39.4, 61}, {39.4, 62.4}, {39.4, 62.6}, {39.6, 61}, {39.8, 59.4}, {40, 59.6}, {40, 62.2}, {40, 62.8}, {40.6, 61.6}, {40.8, 54}, {40.8, 59.6}, {40.8, 61.4}, {41, 59.2}, {41.8, 61}, {42.6, 60.8}, {43.4, 62}, {46.4, 60.6}, {47.4, 61.4}, {49.6, 61.4}, {59.2, 53.4}, {59.8, 53.4}, {60.2, 51.6}, {60.2, 54.8}, {60.4, 54.2}, {60.8, 53.4}, {60.8, 54}, {61.4, 51}, {61.4, 54.8}, {61.6, 54.4}, {62, 50.4}, {63.4, 51.4}, {63.6, 46}, {63.8, 49.8}, {64.2, 49}, {65.4, 49.6}, {72, 31.2}, {72.2, 34.6}, {72.4, 32}, {72.4, 32.6}, {72.4, 34}, {72.4, 37}, {72.6, 32.6}, {72.8, 31.4}, {73, 30.4}, {73.2, 32.2}, {74, 30.8}, {74.2, 29.8}, {74.6, 32.8}, {74.8, 58.6}, {76, 30.6}, {83.6, 54.4}, {83.8, 60}, {84.8, 68}, {86.6, 53.2}, {87, 58.2}, {87.4, 50.8}, {87.6, 51.8}, {88.2, 55}, {88.4, 53.2}, {88.4, 53.6}, {88.6, 53.8}, {88.6, 54.8}, {88.8, 51}, {89, 53}, {89.2, 57}, {91, 52.8}}},
+            [npcKeys.zoneID] = zoneIDs.BURNING_STEPPES,
+        },
+        [227755] = { -- Estelenn : https://wowhead.com/forever/npc=227755/estelenn
+            [npcKeys.name] = "Estelenn",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[46] = {{17, 46.2}}},
+            [npcKeys.zoneID] = zoneIDs.BURNING_STEPPES,
+            [npcKeys.questStarts] = {84136, 85061},
+            [npcKeys.questEnds] = {85521},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [227819] = { -- Duke Hydraxis : https://wowhead.com/forever/npc=227819/duke-hydraxis
+            [npcKeys.name] = "Duke Hydraxis",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [227853] = { -- Pix Xizzix : https://wowhead.com/forever/npc=227853/pix-xizzix
+            [npcKeys.name] = "Pix Xizzix",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[33] = {{28.4, 75.8}}},
+            [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
+            [npcKeys.questStarts] = {83934},
+            [npcKeys.questEnds] = {83934},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Undermine Trader",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 13518; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
+        },
+        [227856] = { -- Kill Credit Creature : https://wowhead.com/forever/npc=227856/kill-credit-creature
+            [npcKeys.name] = "Kill Credit Creature",
+        },
+        [227857] = { -- Kill Credit Creature : https://wowhead.com/forever/npc=227857/kill-credit-creature
+            [npcKeys.name] = "Kill Credit Creature",
+        },
+        [227858] = { -- Squire Cuthbert : https://wowhead.com/forever/npc=227858/squire-cuthbert
+            [npcKeys.name] = "Squire Cuthbert",
+        },
+        [227866] = { -- Testwerk : https://wowhead.com/forever/npc=227866/testwerk
+            [npcKeys.name] = "Testwerk",
+        },
+        [227938] = { -- Zotl : https://wowhead.com/forever/npc=227938/zotl
+            [npcKeys.name] = "Zotl",
+        },
+        [227939] = { -- The Molten Core : https://wowhead.com/forever/npc=227939/the-molten-core
+            [npcKeys.name] = "The Molten Core",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [227951] = { -- Edwi Copperbolt : https://wowhead.com/forever/npc=227951/edwi-copperbolt
+            [npcKeys.name] = "Edwi Copperbolt",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[1377] = {{41.2, 88.8}}},
+            [npcKeys.zoneID] = zoneIDs.SILITHUS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
         [227985] = { -- Arkonos the Cursed : https://wowhead.com/forever/npc=227985/arkonos-the-cursed
             [npcKeys.name] = "Arkonos the Cursed",
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.friendlyToFaction] = "AH",
+        },
+        [227995] = { -- Enterprising Imp : https://wowhead.com/forever/npc=227995/enterprising-imp
+            [npcKeys.name] = "Enterprising Imp",
         },
         [227996] = { -- Sebastian Jurgens : https://wowhead.com/forever/npc=227996/sebastian-jurgens
             [npcKeys.name] = "Sebastian Jurgens",
@@ -3141,6 +7788,18 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Mad Doctor",
         },
+        [228022] = { -- The Destructor's Wraith : https://wowhead.com/forever/npc=228022/the-destructors-wraith
+            [npcKeys.name] = "The Destructor's Wraith",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [228062] = { -- Rumbling Sand : https://wowhead.com/forever/npc=228062/rumbling-sand
+            [npcKeys.name] = "Rumbling Sand",
+        },
+        [228079] = { -- Disembodied Voice of Kel'Thuzad : https://wowhead.com/forever/npc=228079/disembodied-voice-of-kelthuzad
+            [npcKeys.name] = "Disembodied Voice of Kel'Thuzad",
+        },
         [228142] = { -- Techbot : https://wowhead.com/forever/npc=228142/techbot
             [npcKeys.name] = "Techbot",
             [npcKeys.minLevel] = 62,
@@ -3149,6 +7808,12 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.TANARIS,
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "D.E.L.T.A",
+        },
+        [228143] = { -- [DNT] Challenge : https://wowhead.com/forever/npc=228143/dnt-challenge
+            [npcKeys.name] = "[DNT] Challenge",
+        },
+        [228145] = { -- Furniture : https://wowhead.com/forever/npc=228145/furniture
+            [npcKeys.name] = "Furniture",
         },
         [228173] = { -- Sam Otridge : https://wowhead.com/forever/npc=228173/sam-otridge
             [npcKeys.name] = "Sam Otridge",
@@ -3162,7 +7827,21 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[493] = {{56.2, 32.4}}},
             [npcKeys.zoneID] = zoneIDs.MOONGLADE,
+            [npcKeys.questStarts] = {84235, 84636, 84853},
+            [npcKeys.questEnds] = {84136, 84235, 84636},
             [npcKeys.friendlyToFaction] = "AH",
+        },
+        [228203] = { -- T0 : https://wowhead.com/forever/npc=228203/t0
+            [npcKeys.name] = "T0",
+        },
+        [228204] = { -- T0.5 : https://wowhead.com/forever/npc=228204/t0-5
+            [npcKeys.name] = "T0.5",
+        },
+        [228206] = { -- T1 : https://wowhead.com/forever/npc=228206/t1
+            [npcKeys.name] = "T1",
+        },
+        [228209] = { -- PvP T1 : https://wowhead.com/forever/npc=228209/pvp-t1
+            [npcKeys.name] = "PvP T1",
         },
         [228216] = { -- Nami : https://wowhead.com/forever/npc=228216/nami
             [npcKeys.name] = "Nami",
@@ -3170,7 +7849,53 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[618] = {{61.2, 37}}},
             [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+            [npcKeys.questStarts] = {84146, 84212},
+            [npcKeys.questEnds] = {84138, 84211},
             [npcKeys.friendlyToFaction] = "AH",
+        },
+        [228230] = { -- Harrigen : https://wowhead.com/forever/npc=228230/harrigen
+            [npcKeys.name] = "Harrigen",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[46] = {{46.4, 35.4}, {46.6, 35}, {46.6, 36.8}, {46.8, 34}, {47.4, 35.6}, {48.2, 36.6}, {48.4, 34.8}, {49.4, 38.2}, {49.8, 33.4}, {49.8, 39}, {50, 35.2}, {50.4, 27.4}, {50.6, 28.2}, {50.8, 27.4}, {50.8, 30.2}, {50.8, 39.4}, {51, 26.4}, {51, 36.2}, {51.2, 25.2}, {51.8, 25.8}, {52, 26.6}, {52.6, 26.8}, {52.8, 25.2}, {52.8, 25.6}, {53.4, 24}, {54, 23.4}}},
+            [npcKeys.zoneID] = zoneIDs.BURNING_STEPPES,
+            [npcKeys.subName] = "The Undermarket",
+        },
+        [228231] = { -- Montrose : https://wowhead.com/forever/npc=228231/montrose
+            [npcKeys.name] = "Montrose",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[46] = {{45, 34.8}, {46.2, 38.6}, {46.6, 35.2}, {46.6, 37.4}, {46.8, 34.4}, {47.4, 36}, {47.6, 36}, {48.2, 36.6}, {48.8, 35.2}, {48.8, 36.6}, {49.4, 38}, {49.8, 33.4}, {49.8, 36.6}, {49.8, 39.2}, {50, 35.2}, {50.2, 27.8}, {50.4, 27.4}, {50.4, 38.2}, {50.4, 41.6}, {50.6, 25}, {50.6, 28.2}, {50.8, 26.6}, {50.8, 30.2}, {50.8, 39.6}, {51.2, 26}, {51.2, 37}, {51.4, 39.2}, {51.6, 26}, {52, 26.8}, {52.8, 25.4}, {52.8, 25.6}, {53.2, 24.2}, {53.8, 23.8}}},
+            [npcKeys.zoneID] = zoneIDs.BURNING_STEPPES,
+            [npcKeys.subName] = "The Undermarket",
+        },
+        [228232] = { -- Plio : https://wowhead.com/forever/npc=228232/plio
+            [npcKeys.name] = "Plio",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[46] = {{45.2, 35}, {45.8, 36.4}, {46, 38.2}, {46.2, 38.8}, {46.6, 36.8}, {47.4, 35.4}, {47.4, 36.2}, {47.6, 35.4}, {48.2, 34.4}, {48.2, 36.8}, {48.4, 36}, {49, 37}, {49.2, 35}, {49.4, 38.2}, {49.8, 33.4}, {49.8, 39}, {50, 27.8}, {50, 35.2}, {50.2, 26.4}, {50.4, 26.6}, {50.4, 38.2}, {50.4, 41.4}, {50.6, 25}, {50.6, 27.6}, {50.8, 27.4}, {50.8, 28.8}, {50.8, 30.2}, {50.8, 39.4}, {51.2, 26.2}, {51.2, 37}, {51.6, 29.4}, {52.2, 26.6}, {52.4, 25.4}, {52.4, 25.8}, {52.6, 26.2}, {52.6, 26.6}, {53, 24.8}, {53.2, 23.4}, {53.2, 24.4}, {53.6, 24}, {54, 23.4}}},
+            [npcKeys.zoneID] = zoneIDs.BURNING_STEPPES,
+            [npcKeys.subName] = "The Undermarket",
+        },
+        [228233] = { -- Abel : https://wowhead.com/forever/npc=228233/abel
+            [npcKeys.name] = "Abel",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[46] = {{45, 38}, {45.4, 35.2}, {45.8, 38.4}, {46, 37.4}, {46.2, 36.2}, {46.2, 38.8}, {46.4, 35}, {46.6, 37.2}, {46.8, 34}, {46.8, 34.8}, {47.4, 36.2}, {48.4, 34.8}, {48.4, 36.4}, {48.4, 36.6}, {48.8, 35.6}, {49, 37}, {49.2, 27.2}, {49.2, 34.6}, {49.2, 37.8}, {49.8, 32.4}, {49.8, 33.4}, {49.8, 33.6}, {49.8, 39.2}, {50, 27}, {50, 35.2}, {50.4, 27.8}, {50.4, 38.2}, {50.6, 25}, {50.6, 27.2}, {50.6, 28.2}, {50.6, 35.8}, {50.8, 28.8}, {50.8, 30.2}, {50.8, 39.4}, {50.8, 41}, {51.2, 26}, {51.2, 37}, {51.6, 25.8}, {51.8, 25.4}, {52, 26.6}, {52, 38}, {52.6, 25.6}, {52.6, 26.8}, {52.8, 25.4}, {53, 24.4}, {53.2, 23.4}, {53.6, 23.2}}},
+            [npcKeys.zoneID] = zoneIDs.BURNING_STEPPES,
+            [npcKeys.subName] = "The Undermarket",
+        },
+        [228287] = { -- Sebastian Jurgens : https://wowhead.com/forever/npc=228287/sebastian-jurgens
+            [npcKeys.name] = "Sebastian Jurgens",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.spawns] = {[40] = {{53.4, 40}, {53.6, 40}}},
+            [npcKeys.zoneID] = zoneIDs.WESTFALL,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Mad Doctor",
+        },
+        [228353] = { -- Lucifriend : https://wowhead.com/forever/npc=228353/lucifriend
+            [npcKeys.name] = "Lucifriend",
         },
         [228414] = { -- Heliath : https://wowhead.com/forever/npc=228414/heliath
             [npcKeys.name] = "Heliath",
@@ -3178,6 +7903,102 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 56,
             [npcKeys.spawns] = {[4] = {{68, 28.8}}},
             [npcKeys.zoneID] = zoneIDs.BLASTED_LANDS,
+        },
+        [228429] = { -- Lucifron : https://wowhead.com/forever/npc=228429/lucifron
+            [npcKeys.name] = "Lucifron",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [228430] = { -- Magmadar : https://wowhead.com/forever/npc=228430/magmadar
+            [npcKeys.name] = "Magmadar",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [228431] = { -- Gehennas : https://wowhead.com/forever/npc=228431/gehennas
+            [npcKeys.name] = "Gehennas",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [228432] = { -- Garr : https://wowhead.com/forever/npc=228432/garr
+            [npcKeys.name] = "Garr",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [228433] = { -- Baron Geddon : https://wowhead.com/forever/npc=228433/baron-geddon
+            [npcKeys.name] = "Baron Geddon",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [228434] = { -- Shazzrah : https://wowhead.com/forever/npc=228434/shazzrah
+            [npcKeys.name] = "Shazzrah",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [228435] = { -- Golemagg the Incinerator : https://wowhead.com/forever/npc=228435/golemagg-the-incinerator
+            [npcKeys.name] = "Golemagg the Incinerator",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [228436] = { -- Sulfuron Harbinger : https://wowhead.com/forever/npc=228436/sulfuron-harbinger
+            [npcKeys.name] = "Sulfuron Harbinger",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [228437] = { -- Majordomo Executus : https://wowhead.com/forever/npc=228437/majordomo-executus
+            [npcKeys.name] = "Majordomo Executus",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [228438] = { -- Ragnaros : https://wowhead.com/forever/npc=228438/ragnaros
+            [npcKeys.name] = "Ragnaros",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [228441] = { -- Flamewaker Protector : https://wowhead.com/forever/npc=228441/flamewaker-protector
+            [npcKeys.name] = "Flamewaker Protector",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [228442] = { -- Core Hound : https://wowhead.com/forever/npc=228442/core-hound
+            [npcKeys.name] = "Core Hound",
+            [npcKeys.subName] = "Spawn of Magmadar",
+        },
+        [228443] = { -- [DNT] Challenge : https://wowhead.com/forever/npc=228443/dnt-challenge
+            [npcKeys.name] = "[DNT] Challenge",
+        },
+        [228461] = { -- Oil Rig : https://wowhead.com/forever/npc=228461/oil-rig
+            [npcKeys.name] = "Oil Rig",
+        },
+        [228532] = { -- Shadowsworn Sacrifice : https://wowhead.com/forever/npc=228532/shadowsworn-sacrifice
+            [npcKeys.name] = "Shadowsworn Sacrifice",
+            [npcKeys.minLevel] = 55,
+            [npcKeys.maxLevel] = 56,
+            [npcKeys.spawns] = {[4] = {{68, 28.8}}},
+            [npcKeys.zoneID] = zoneIDs.BLASTED_LANDS,
+        },
+        [228533] = { -- Voidwalker Minion : https://wowhead.com/forever/npc=228533/voidwalker-minion
+            [npcKeys.name] = "Voidwalker Minion",
+            [npcKeys.minLevel] = 56,
+            [npcKeys.maxLevel] = 56,
+            [npcKeys.spawns] = {[4] = {{68, 28.8}}},
+            [npcKeys.zoneID] = zoneIDs.BLASTED_LANDS,
+        },
+        [228535] = { -- [DNT] Creature : https://wowhead.com/forever/npc=228535/dnt-creature
+            [npcKeys.name] = "[DNT] Creature",
+        },
+        [228551] = { -- Spiritstorm : https://wowhead.com/forever/npc=228551/spiritstorm
+            [npcKeys.name] = "Spiritstorm",
         },
         [228595] = { -- Vengeful Wisp : https://wowhead.com/forever/npc=228595/vengeful-wisp
             [npcKeys.name] = "Vengeful Wisp",
@@ -3187,6 +8008,78 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.FELWOOD,
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [228596] = { -- Vengeful Wisp : https://wowhead.com/forever/npc=228596/vengeful-wisp
+            [npcKeys.name] = "Vengeful Wisp",
+        },
+        [228609] = { -- Sulfuron Smuggler : https://wowhead.com/forever/npc=228609/sulfuron-smuggler
+            [npcKeys.name] = "Sulfuron Smuggler",
+            [npcKeys.minLevel] = 56,
+            [npcKeys.maxLevel] = 59,
+            [npcKeys.spawns] = {[46] = {{42.2, 26.2}, {42.8, 25.6}, {43.4, 25}, {43.8, 22.4}, {43.8, 25.4}, {44, 23}, {44.2, 30.4}, {44.4, 25.8}, {44.4, 29.2}, {44.6, 30.2}, {44.8, 25.2}, {45, 26.4}, {45, 28.6}, {45, 31.8}, {45.2, 22.2}, {45.2, 27}, {45.2, 28.4}, {45.2, 31.2}, {45.2, 35.2}, {45.4, 21.4}, {45.4, 23.4}, {45.6, 22.6}, {45.6, 27.2}, {45.6, 35.2}, {45.8, 37.2}, {46, 36.2}, {46.2, 38.2}, {46.2, 38.6}, {46.4, 21.4}, {46.4, 21.6}, {46.4, 24.6}, {46.4, 27.6}, {46.6, 21.4}, {46.6, 27.4}, {46.6, 37.2}, {46.8, 22}, {46.8, 24.4}, {46.8, 28.4}, {47, 22.6}, {47, 34.8}, {47.2, 25.2}, {47.2, 28.8}, {47.2, 35.8}, {47.4, 26.4}, {47.6, 25}, {47.8, 29.2}, {47.8, 36.2}, {48, 26.8}, {48.2, 26.4}, {48.2, 36.6}, {48.4, 28}, {48.4, 29.8}, {48.4, 35.4}, {48.6, 27.8}, {48.6, 29.4}, {48.6, 29.6}, {48.6, 37.2}, {48.8, 26.4}, {49.2, 27.2}, {49.2, 35}, {49.4, 38}, {49.4, 39}, {49.8, 26.4}, {49.8, 33.2}, {49.8, 39}, {49.8, 39.6}, {50, 27}, {50, 33.8}, {50, 35.2}, {50.2, 28.6}, {50.2, 35.8}, {50.4, 24.4}, {50.4, 25.4}, {50.4, 27.8}, {50.4, 30.8}, {50.4, 31.8}, {50.4, 38.2}, {50.6, 27.4}, {50.6, 27.6}, {50.6, 30.4}, {50.8, 28.8}, {50.8, 31.2}, {50.8, 39.8}, {50.8, 40.8}, {51, 33.8}, {51.2, 25.2}, {51.2, 25.8}, {51.2, 33}, {51.2, 37}, {51.4, 32.4}, {51.8, 32.8}, {51.8, 36.8}, {52, 26.6}, {52, 33.8}, {52.2, 25.6}, {52.4, 25}, {52.6, 35}, {52.8, 26.6}, {53, 24.8}, {53, 26.2}, {53, 32.6}, {53.2, 24.2}, {53.4, 23.4}, {53.4, 32.4}, {53.6, 23.8}, {53.6, 26.2}, {53.6, 33.6}, {54, 23.4}, {54, 27.8}, {54.2, 32}, {54.2, 32.6}, {54.8, 23.4}, {54.8, 23.6}, {54.8, 31.4}, {55.2, 32}, {55.4, 32.8}, {55.4, 34.4}, {55.4, 34.6}, {55.6, 24.4}, {55.6, 29.8}, {55.6, 33.6}, {56, 33.2}, {56.2, 24.8}, {56.4, 32.4}, {56.8, 25.4}, {57.2, 23.8}, {57.2, 25.6}, {57.2, 27.4}, {57.4, 31.4}, {57.6, 24.4}, {57.8, 26}, {58, 25.2}, {58.2, 27}, {58.4, 27.6}, {58.8, 28.2}, {59.2, 29}, {59.4, 30.2}, {59.6, 29.8}, {60.2, 29.2}, {60.8, 29.8}, {61.4, 29}, {61.6, 28.8}, {62, 27.8}, {62.6, 27.2}, {62.6, 27.8}, {62.8, 29.6}}, [51] = {{64.2, 73.8}, {65, 77.4}, {65.2, 76.4}, {65.4, 77.8}, {65.4, 79}, {65.4, 79.8}, {65.4, 80.6}, {65.4, 82}, {65.6, 77.4}, {65.6, 78.4}, {65.6, 78.8}, {65.6, 80}, {66, 81.2}, {66.2, 81.8}, {67.2, 79.6}}},
+            [npcKeys.subName] = "The Undermarket",
+        },
+        [228610] = { -- Blackrock Bootlegger : https://wowhead.com/forever/npc=228610/blackrock-bootlegger
+            [npcKeys.name] = "Blackrock Bootlegger",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 59,
+            [npcKeys.spawns] = {[46] = {{41.4, 26.4}, {42.4, 26.2}, {42.6, 25.8}, {43, 25}, {43.8, 22.4}, {44, 25.6}, {44.4, 25.4}, {44.4, 29.4}, {44.4, 29.6}, {44.4, 31.2}, {44.6, 30.2}, {44.8, 25}, {44.8, 26}, {44.8, 29}, {45, 26.6}, {45, 28.2}, {45.2, 30.8}, {45.2, 32}, {45.2, 38.4}, {45.4, 22}, {45.4, 23.4}, {45.4, 35.2}, {45.6, 32.2}, {45.8, 37.4}, {46, 38.2}, {46.2, 21.6}, {46.2, 27.4}, {46.2, 27.6}, {46.2, 38.8}, {46.4, 21.4}, {46.4, 23.2}, {46.4, 35.8}, {46.6, 21.4}, {46.6, 36.6}, {46.8, 22.2}, {46.8, 27.6}, {47, 24}, {47, 35}, {47.2, 23}, {47.2, 25}, {47.2, 25.6}, {47.2, 28.8}, {47.2, 35.8}, {47.4, 26.6}, {47.6, 26.6}, {47.6, 31.2}, {47.8, 26.4}, {47.8, 29.2}, {47.8, 36}, {48.2, 30}, {48.2, 35.4}, {48.4, 27.6}, {48.4, 36.6}, {48.6, 27.4}, {48.6, 28.2}, {48.6, 29.2}, {48.6, 29.6}, {49, 26.4}, {49, 36.6}, {49.2, 39}, {49.4, 35.4}, {49.4, 37.8}, {49.6, 26.2}, {49.8, 25.4}, {49.8, 32.4}, {50, 26.6}, {50.2, 32.6}, {50.2, 34.8}, {50.2, 35.8}, {50.2, 38.2}, {50.4, 27.8}, {50.4, 28.6}, {50.4, 30.8}, {50.4, 34.2}, {50.6, 27.8}, {50.6, 31.4}, {50.8, 26.6}, {50.8, 29.4}, {50.8, 30.4}, {50.8, 41.2}, {51.2, 26}, {51.2, 33}, {51.2, 37.2}, {51.4, 25.4}, {51.4, 33.8}, {51.4, 35.2}, {51.6, 29.8}, {51.6, 35.6}, {52, 26.6}, {52.2, 25.8}, {52.2, 35.4}, {52.4, 14.6}, {52.4, 24.2}, {52.4, 25.2}, {52.4, 33.2}, {52.4, 34}, {52.6, 32.6}, {52.8, 26}, {53, 24.6}, {53, 26.6}, {53, 34}, {53.2, 24.2}, {53.4, 23.4}, {53.6, 33.4}, {53.6, 33.8}, {53.8, 23.6}, {53.8, 26}, {53.8, 32.2}, {54.2, 23.4}, {54.8, 23.4}, {54.8, 23.6}, {54.8, 31.8}, {55.2, 31}, {55.2, 33.4}, {55.4, 34.8}, {55.6, 24.2}, {56, 34}, {56.2, 24.8}, {56.2, 33.2}, {56.2, 34.6}, {56.8, 26.6}, {56.8, 32.8}, {57, 24.4}, {57, 26}, {57.4, 24.8}, {57.6, 25.4}, {57.6, 26}, {57.8, 23}, {58, 29.8}, {58.2, 23.8}, {58.2, 27.2}, {58.4, 27.6}, {58.6, 28}, {58.8, 28.6}, {58.8, 31.6}, {59.4, 29.8}, {59.6, 29.4}, {60.4, 29.8}, {60.4, 30.6}, {61, 29.8}, {61.2, 29.2}, {61.6, 28.8}, {61.6, 30}, {62.2, 28.2}, {62.6, 29.8}}, [51] = {{61, 71.4}, {62.8, 74.4}, {63.6, 74.4}, {64.2, 82}, {64.6, 74}, {64.8, 75.2}, {65, 82.2}, {65.4, 76.8}, {65.4, 78.4}, {65.4, 79}, {65.4, 80.4}, {65.4, 80.6}, {65.6, 79.2}, {65.8, 77.6}, {65.8, 80}, {66.2, 81.4}, {66.2, 81.8}, {67.2, 79.6}, {67.6, 79.2}}},
+            [npcKeys.subName] = "The Undermarket",
+        },
+        [228611] = { -- Wandering Swordsman : https://wowhead.com/forever/npc=228611/wandering-swordsman
+            [npcKeys.name] = "Wandering Swordsman",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[1377] = {{18.6, 25}, {18.8, 22.4}, {18.8, 23.2}, {18.8, 23.8}, {18.8, 25.8}, {19.2, 19.4}, {19.2, 19.6}, {19.2, 27}, {19.6, 18.8}, {19.6, 19.6}, {19.6, 27.8}, {19.8, 78.4}, {20, 28.8}, {20, 81.4}, {20.2, 18.2}, {20.4, 22.8}, {20.6, 23.6}, {20.6, 29.4}, {20.6, 31.6}, {20.6, 78}, {20.8, 30.2}, {20.8, 82.8}, {20.8, 89.6}, {21, 17.8}, {21.2, 17}, {21.2, 89.4}, {21.4, 82}, {21.4, 85.4}, {21.6, 16.6}, {21.6, 33.6}, {21.6, 36.8}, {21.6, 81.4}, {21.6, 86.8}, {21.8, 16.2}, {21.8, 37.6}, {21.8, 85.2}, {22, 39}, {22, 80.4}, {22.2, 88}, {22.4, 13.8}, {22.4, 15.4}, {22.6, 14.2}, {22.6, 85}, {22.8, 80.2}, {23, 86.8}, {23.2, 12.8}, {23.6, 80.8}, {23.6, 85.8}, {23.8, 12.8}, {23.8, 76.6}, {23.8, 86.8}, {24.2, 41}, {24.2, 82.2}, {24.2, 83}, {24.4, 11.8}, {24.8, 11.6}, {24.8, 77.2}, {24.8, 82}, {25, 42.2}, {25, 83.4}, {25.2, 85.6}, {25.4, 11.4}, {25.6, 11.2}, {26, 11.6}, {26.2, 86.8}, {26.4, 43.8}, {26.4, 77.2}, {26.6, 11.4}, {26.6, 84.4}, {27, 44.2}, {27, 79.6}, {27.4, 11.6}, {27.4, 77.6}, {27.6, 76}, {27.8, 12}, {28, 45.4}, {28.2, 46}, {28.2, 72.6}, {28.4, 12.8}, {28.4, 84.4}, {28.8, 14.4}, {28.8, 47.2}, {28.8, 90.4}, {29, 91.8}, {29.2, 47.8}, {29.2, 91.4}, {29.4, 15}, {29.4, 85}, {29.6, 14.6}, {29.6, 85.2}, {29.8, 47.8}, {29.8, 75.4}, {29.8, 91.6}, {30, 49.2}, {30, 91.4}, {30.2, 15.8}, {30.2, 90.2}, {30.4, 16.6}, {30.4, 88.8}, {30.6, 90.2}, {30.8, 47.8}, {30.8, 50.2}, {31, 17.4}, {31, 73.4}, {31, 87.8}, {31.2, 18.2}, {31.2, 18.6}, {31.4, 19.8}, {31.4, 85}, {31.6, 19.4}, {31.6, 19.6}, {31.8, 72.2}, {32, 20.6}, {32.2, 52.8}, {32.2, 86.6}, {32.4, 17.8}, {32.4, 49}, {32.8, 48.6}, {32.8, 63.4}, {32.8, 64.2}, {32.8, 71.2}, {33, 18}, {33, 68.8}, {33.2, 22.2}, {33.2, 23.6}, {33.2, 55.4}, {33.4, 23.2}, {33.6, 56.8}, {33.6, 57.8}, {33.6, 70.8}, {33.6, 84.8}, {33.8, 18.2}, {33.8, 24.2}, {33.8, 56.4}, {33.8, 61}, {34, 55}, {34, 69.8}, {34.2, 69}, {34.4, 25.2}, {34.4, 25.8}, {34.4, 30.8}, {34.4, 50.4}, {34.4, 62.6}, {34.4, 65.8}, {34.4, 84}, {34.6, 25.2}, {34.6, 25.8}, {34.6, 27}, {34.6, 65.2}, {34.8, 29}, {34.8, 30.2}, {34.8, 31}, {34.8, 32.6}, {34.8, 33.6}, {34.8, 34.6}, {34.8, 68.4}, {35, 28.2}, {35, 31.6}, {35, 37}, {35, 83.8}, {35.2, 19.8}, {35.4, 68.8}, {35.6, 63}, {36, 20.4}, {36, 40.4}, {36, 68.4}, {36, 68.6}, {36, 87}, {36.2, 41}, {36.4, 42.8}, {36.4, 85.4}, {36.6, 20.8}, {36.8, 67.8}, {37, 45.4}, {37, 67}, {37, 75.6}, {37.2, 46}, {37.2, 60.8}, {37.2, 79}, {37.4, 66.4}, {37.6, 66.6}, {37.6, 72.4}, {37.6, 74.4}, {37.6, 78.4}, {37.6, 79.2}, {37.8, 48.2}, {37.8, 66.4}, {38, 22.4}, {38, 59.6}, {38, 86.8}, {38.2, 59.2}, {38.2, 74.8}, {38.4, 23.8}, {38.4, 75.6}, {38.4, 80.4}, {38.4, 81.6}, {38.6, 49.4}, {38.6, 57.8}, {38.6, 73.8}, {38.6, 81.4}, {38.6, 81.6}, {38.8, 65.4}, {38.8, 65.8}, {38.8, 78.6}, {39, 24.8}, {39, 57.4}, {39, 78.2}, {39, 83.4}, {39.2, 69.8}, {39.2, 77.4}, {39.4, 72.2}, {39.6, 65.2}, {39.6, 79.8}, {39.6, 81.8}, {39.8, 65.6}, {39.8, 76.8}, {39.8, 79.2}, {40, 81.2}, {40.2, 77.8}, {40.4, 53.6}, {40.4, 75.2}, {40.4, 75.8}, {40.6, 65.2}, {40.6, 75.6}, {40.6, 76.6}, {40.8, 75.2}, {41, 28.6}, {41.2, 69.2}, {41.4, 29.6}, {41.4, 66}, {41.4, 67.8}, {41.4, 74}, {41.4, 77.8}, {41.4, 79.6}, {41.4, 81}, {41.6, 30.4}, {41.6, 80.4}, {41.6, 81.4}, {41.8, 51.6}, {41.8, 55.2}, {41.8, 81.6}, {42, 74.8}, {42.2, 68.2}, {42.2, 73.8}, {42.2, 77.6}, {42.2, 82.6}, {42.2, 83.6}, {42.4, 66.4}, {42.4, 77.2}, {42.4, 79.4}, {42.4, 87}, {42.6, 66.4}, {42.6, 77}, {42.6, 77.8}, {42.6, 79.6}, {42.6, 82.8}, {42.6, 87}, {42.8, 56}, {43, 32.2}, {43, 50.2}, {43, 50.6}, {43, 69}, {43, 83.6}, {43.2, 48.8}, {43.2, 73.4}, {43.2, 73.6}, {43.4, 66.6}, {43.4, 69.8}, {43.4, 79}, {43.6, 66}, {43.6, 66.8}, {43.6, 68.6}, {43.6, 71.8}, {43.6, 77}, {43.8, 83.8}, {44, 65.2}, {44, 70}, {44, 71.4}, {44, 73.4}, {44.2, 56.6}, {44.2, 73.8}, {44.2, 78.6}, {44.2, 83.4}, {44.4, 56.4}, {44.4, 64.2}, {44.4, 78}, {44.6, 57.2}, {44.6, 63.6}, {44.6, 70.8}, {44.6, 87.6}, {44.8, 48}, {44.8, 87.2}, {45, 46.4}, {45, 64.6}, {45, 74}, {45, 76.2}, {45, 77.6}, {45.2, 62.8}, {45.2, 68.6}, {45.2, 70}, {45.2, 75.4}, {45.2, 83.8}, {45.4, 43.4}, {45.4, 83}, {45.8, 42.6}, {45.8, 58}, {45.8, 63}, {45.8, 83.8}, {46, 69.4}, {46, 82.6}, {46.2, 31.6}, {46.2, 42}, {46.2, 82.4}, {46.4, 59.4}, {46.4, 62.4}, {46.4, 75.2}, {46.6, 41.2}, {46.6, 86.4}, {46.8, 59.6}, {46.8, 72.4}, {46.8, 76}, {46.8, 81.4}, {47, 53}, {47, 53.6}, {47, 58.2}, {47.2, 40.4}, {47.2, 52.4}, {47.2, 77.6}, {47.2, 81.8}, {47.4, 76.6}, {47.4, 79.6}, {47.6, 31.4}, {47.6, 67.6}, {47.6, 77.2}, {47.6, 79.8}, {47.6, 80.8}, {47.6, 85}, {47.8, 36.6}, {47.8, 39.8}, {47.8, 78}, {47.8, 78.8}, {48, 52.2}, {48.2, 52.6}, {48.2, 74}, {48.4, 33.6}, {48.4, 60.8}, {48.4, 61.8}, {48.4, 74.6}, {48.6, 33}, {48.6, 52.6}, {48.6, 75}, {48.6, 82.6}, {49, 30.6}, {49, 60.8}, {49, 75.8}, {49, 77.4}, {49, 78.2}, {49, 82.4}, {49.2, 80.8}, {49.4, 64.4}, {49.4, 80.2}, {50.4, 52.8}, {50.6, 59.4}, {50.8, 53.4}, {51, 53.6}, {51.2, 28}, {51.2, 59.6}, {51.6, 54.2}, {52, 54.6}, {52.2, 58.8}, {52.8, 55}, {53, 58.4}, {53.2, 55.6}, {53.4, 29.2}, {53.6, 57}, {53.8, 24.4}, {54, 55.2}, {54, 55.6}, {54.8, 29.4}, {54.8, 54.6}, {55, 29.6}, {55.2, 53.6}, {55.4, 52.2}, {55.4, 53.2}, {55.6, 49.8}, {55.6, 52}, {55.8, 48.8}, {56.2, 52.6}, {56.6, 37}, {56.8, 30.8}, {57, 32.4}, {57, 37.8}, {57, 47.4}, {57.2, 22.6}, {57.2, 47.6}, {57.2, 51.4}, {57.6, 22}, {57.6, 47.4}, {57.8, 50.8}, {58, 46.2}, {58.2, 21.4}, {58.4, 45.2}, {58.4, 49.6}, {59, 49}, {59.2, 39}, {59.2, 43.8}, {59.2, 44.6}, {59.8, 21.6}, {60, 38}, {60, 46.6}, {60.2, 43.2}, {60.6, 21.6}, {60.6, 43.2}, {60.8, 38}, {61, 41.6}, {61.2, 39.6}, {61.2, 41.2}, {61.4, 46.4}, {62.6, 45.2}, {65, 45.4}, {65.4, 28}, {65.6, 29.2}, {65.8, 30.6}, {66.4, 45.4}, {67.6, 42.6}, {68.4, 33.6}, {68.6, 40.6}, {68.8, 40.2}, {69.6, 38.4}}},
+            [npcKeys.zoneID] = zoneIDs.SILITHUS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [228612] = { -- Festering Ghoul : https://wowhead.com/forever/npc=228612/festering-ghoul
+            [npcKeys.name] = "Festering Ghoul",
+            [npcKeys.minLevel] = 54,
+            [npcKeys.maxLevel] = 55,
+            [npcKeys.spawns] = {[28] = {{42.2, 53.4}, {43.2, 58}, {43.4, 53.4}, {45.2, 54}, {45.4, 52.4}, {45.4, 53.4}, {45.4, 54.6}, {45.6, 51.8}, {45.6, 53.8}, {45.8, 48.6}, {45.8, 53.4}, {45.8, 54.6}, {46.6, 54}, {47, 57.2}, {47.2, 51.4}, {47.2, 52.8}, {47.4, 51.8}, {47.8, 50.6}}},
+            [npcKeys.zoneID] = zoneIDs.WESTERN_PLAGUELANDS,
+        },
+        [228614] = { -- Archmage Bones : https://wowhead.com/forever/npc=228614/archmage-bones
+            [npcKeys.name] = "Archmage Bones",
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Enchants",
+            [npcKeys.npcFlags] = 16384, -- Assumption: assumptions/npc_services.toml; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
+        },
+        [228615] = { -- Harrison Bones : https://wowhead.com/forever/npc=228615/harrison-bones
+            [npcKeys.name] = "Harrison Bones",
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Raid Loot",
+            [npcKeys.npcFlags] = 16384, -- Assumption: assumptions/npc_services.toml; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
+        },
+        [228616] = { -- Doctor Bones : https://wowhead.com/forever/npc=228616/doctor-bones
+            [npcKeys.name] = "Doctor Bones",
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Consumables and Skillbooks",
+            [npcKeys.npcFlags] = 16384, -- Assumption: assumptions/npc_services.toml; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
+        },
+        [228618] = { -- Kill Credit Creature : https://wowhead.com/forever/npc=228618/kill-credit-creature
+            [npcKeys.name] = "Kill Credit Creature",
+        },
+        [228619] = { -- Orthas : https://wowhead.com/forever/npc=228619/orthas
+            [npcKeys.name] = "Orthas",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.questStarts] = {84318, 84330},
+            [npcKeys.questEnds] = {84318},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Dwarven Spirit",
+        },
+        [228620] = { -- Slack-Jawed Ghoul : https://wowhead.com/forever/npc=228620/slack-jawed-ghoul
+            [npcKeys.name] = "Slack-Jawed Ghoul",
+            [npcKeys.minLevel] = 56,
+            [npcKeys.maxLevel] = 57,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.subName] = "Dwarf-Sized Ghoul",
+        },
+        [228621] = { -- [DNT] Challenge : https://wowhead.com/forever/npc=228621/dnt-challenge
+            [npcKeys.name] = "[DNT] Challenge",
+        },
         [228622] = { -- Orthas : https://wowhead.com/forever/npc=228622/orthas
             [npcKeys.name] = "Orthas",
             [npcKeys.minLevel] = 56,
@@ -3194,6 +8087,24 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Dwarven Spirit",
+        },
+        [228673] = { -- Wandering Swordsman : https://wowhead.com/forever/npc=228673/wandering-swordsman
+            [npcKeys.name] = "Wandering Swordsman",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [228676] = { -- Kill Credit Creature : https://wowhead.com/forever/npc=228676/kill-credit-creature
+            [npcKeys.name] = "Kill Credit Creature",
+        },
+        [228677] = { -- Rift : https://wowhead.com/forever/npc=228677/rift
+            [npcKeys.name] = "Rift",
+        },
+        [228703] = { -- Dread Fungus : https://wowhead.com/forever/npc=228703/dread-fungus
+            [npcKeys.name] = "Dread Fungus",
+        },
+        [228714] = { -- Chaos Chopper : https://wowhead.com/forever/npc=228714/chaos-chopper
+            [npcKeys.name] = "Chaos Chopper",
         },
         [228718] = { -- Firelands Invader : https://wowhead.com/forever/npc=228718/firelands-invader
             [npcKeys.name] = "Firelands Invader",
@@ -3216,6 +8127,20 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[51] = {{42.4, 29.4}, {42.4, 29.6}, {43, 29.4}, {43, 29.6}, {43.4, 28.4}, {43.6, 28.2}, {43.6, 28.6}, {43.8, 27.4}}},
             [npcKeys.zoneID] = zoneIDs.SEARING_GORGE,
         },
+        [228721] = { -- Lieutenant Skarresh : https://wowhead.com/forever/npc=228721/lieutenant-skarresh
+            [npcKeys.name] = "Lieutenant Skarresh",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[51] = {{39, 32.6}, {39.4, 34.6}, {39.6, 31.2}, {40, 32.6}, {40.8, 29.8}, {41, 35.4}, {41.2, 35.6}, {41.4, 28.2}, {41.6, 35.4}, {42, 26.8}, {42.2, 26.4}, {42.2, 35.6}, {42.4, 28.2}, {42.4, 29.2}, {42.4, 30}, {42.4, 30.6}, {42.4, 31.6}, {42.4, 32.6}, {42.6, 26.8}, {42.6, 29.6}, {42.6, 31.2}, {42.8, 25.8}, {42.8, 28.6}, {42.8, 32.2}, {43, 33.2}, {43.2, 34}, {43.2, 34.6}, {43.4, 24.4}, {43.4, 25.2}, {43.4, 27.8}, {43.4, 35.6}, {43.4, 36.6}, {43.6, 24.4}, {43.6, 27.2}, {43.6, 28.2}, {43.6, 32.2}, {43.6, 32.8}, {43.6, 34.4}, {43.6, 35.2}, {43.8, 31.4}, {44, 25.2}, {44, 26.2}, {44, 36.4}, {44.2, 36.8}, {44.4, 37.6}, {44.6, 36.2}, {44.6, 37.4}, {45, 38}, {45.4, 38.6}, {45.6, 38.4}, {46, 28}, {46.2, 39.4}, {46.2, 39.6}, {46.6, 40.4}, {47.2, 41.4}, {47.2, 41.6}, {47.4, 42.6}, {47.6, 42.2}, {47.8, 47.2}, {48, 42.6}, {48.4, 43.6}, {48.6, 43.8}, {48.8, 47.4}, {49, 43}, {49, 44.8}, {49.6, 46.4}, {50, 38.4}}},
+            [npcKeys.zoneID] = zoneIDs.SEARING_GORGE,
+        },
+        [228722] = { -- Infernus Siege Giant : https://wowhead.com/forever/npc=228722/infernus-siege-giant
+            [npcKeys.name] = "Infernus Siege Giant",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[51] = {{25.2, 48.4}, {25.2, 53.4}, {25.6, 51}, {25.8, 52.2}, {26.2, 50.2}, {26.2, 55.2}, {26.8, 45.8}, {26.8, 52.2}, {27, 44.2}, {27, 46.8}, {27, 49.4}, {27.2, 52.6}, {27.4, 51}, {27.4, 53.6}, {27.6, 45.2}, {27.6, 47.8}, {27.6, 50.8}, {27.6, 81.4}, {27.8, 55}, {28, 42.4}, {28, 64.8}, {28, 78}, {28.2, 46}, {28.2, 46.6}, {28.2, 53.8}, {28.4, 66.6}, {28.4, 73.2}, {28.4, 76.6}, {28.6, 42.6}, {28.6, 44.6}, {28.6, 48.4}, {28.6, 75.8}, {28.8, 46.8}, {28.8, 48.8}, {28.8, 54}, {28.8, 55.6}, {28.8, 65.8}, {29, 57}, {29, 58}, {29, 63.4}, {29, 67.8}, {29, 70.2}, {29, 77}, {29, 78.4}, {29.2, 45.6}, {29.2, 62}, {29.2, 74.4}, {29.4, 60.2}, {29.4, 71.4}, {29.4, 71.6}, {29.4, 72.8}, {29.6, 43}, {29.6, 53.6}, {29.6, 56}, {29.6, 67.4}, {29.6, 68}, {29.8, 43.6}, {29.8, 55}, {29.8, 57.8}, {29.8, 61.8}, {29.8, 72.4}, {29.8, 75}, {30, 44.6}, {30, 70}, {30, 73}, {30.2, 51.4}, {30.2, 53}, {30.2, 58.6}, {30.2, 61}, {30.2, 68.8}, {30.4, 52.2}, {30.4, 57.4}, {30.4, 60}, {30.4, 71.4}, {30.6, 58}, {30.6, 72.4}, {30.8, 41.6}, {30.8, 43}, {30.8, 61}, {30.8, 66.6}, {30.8, 69.4}, {31, 55.2}, {31, 59.2}, {31, 63.4}, {31, 67.6}, {31, 70}, {31, 70.6}, {31, 73.2}, {31, 73.8}, {31.2, 48.6}, {31.2, 50.2}, {31.2, 50.8}, {31.2, 56.6}, {31.2, 60}, {31.2, 62.2}, {31.2, 65.6}, {31.4, 45.4}, {31.4, 45.8}, {31.4, 54}, {31.4, 56}, {31.4, 64}, {31.6, 34.2}, {31.6, 46.4}, {31.6, 49.2}, {31.6, 51.2}, {31.6, 59.2}, {31.6, 64}, {31.6, 73.6}, {31.8, 46.8}, {31.8, 55}, {31.8, 65.4}, {31.8, 71.6}, {32, 41.8}, {32, 48.4}, {32, 52.6}, {32, 56.4}, {32, 60.4}, {32, 67.4}, {32, 71.4}, {32, 72.6}, {32.2, 32.8}, {32.2, 43}, {32.2, 44.4}, {32.2, 45.2}, {32.2, 57}, {32.2, 62.2}, {32.2, 68.2}, {32.2, 69.6}, {32.2, 75}, {32.4, 40.6}, {32.4, 49.6}, {32.4, 52.2}, {32.4, 54.2}, {32.4, 58.2}, {32.4, 61}, {32.4, 62.6}, {32.4, 66.4}, {32.4, 68.8}, {32.6, 45.2}, {32.6, 47}, {32.6, 49.2}, {32.6, 57}, {32.6, 57.6}, {32.6, 59}, {32.6, 64.2}, {32.6, 65.8}, {32.6, 67}, {32.6, 76.8}, {32.8, 44.4}, {32.8, 50.4}, {32.8, 60.2}, {32.8, 65}, {33, 53.4}, {33, 53.8}, {33, 61.4}, {33, 75.4}, {33, 75.8}, {33.2, 46.2}, {33.2, 62.4}, {33.2, 68.2}, {33.2, 69.2}, {33.2, 72.2}, {33.2, 73}, {33.4, 62.8}, {33.4, 70.2}, {33.4, 70.8}, {33.4, 74.4}, {33.4, 78.2}, {33.6, 65.6}, {33.6, 68.6}, {33.6, 70.8}, {33.6, 72.8}, {33.6, 76.2}, {33.8, 44}, {33.8, 63.2}, {33.8, 63.8}, {33.8, 65}, {33.8, 67}, {33.8, 70.4}, {33.8, 72.4}, {33.8, 74}, {33.8, 78}, {34, 49.6}, {34, 62.2}, {34, 68.2}, {34, 76.8}, {34.2, 49.4}, {34.4, 45.2}, {34.4, 60.8}, {34.6, 42.4}, {34.6, 48.8}, {34.6, 63.2}, {34.6, 64.4}, {34.6, 69}, {34.6, 83.8}, {34.8, 50.6}, {34.8, 61.2}, {34.8, 62.2}, {34.8, 68.2}, {34.8, 69.8}, {35, 44.6}, {35, 47}, {35, 72.4}, {35.2, 66}, {35.2, 73}, {35.4, 41.4}, {35.4, 65}, {35.4, 71}, {35.6, 46}, {35.6, 65.2}, {35.8, 44.2}, {35.8, 47}, {35.8, 47.6}, {35.8, 71}, {36, 61}, {36, 69.6}, {36, 73.2}, {36.2, 68.2}, {36.4, 64.4}, {36.4, 69.2}, {36.6, 42.8}, {36.6, 70.6}, {36.8, 72.4}, {37.4, 73}, {38.4, 50.4}, {38.8, 73.6}, {39, 73.2}, {40.2, 71.2}, {42.6, 72.8}, {43.6, 66.8}, {44.6, 66.6}, {45, 62.8}, {45.2, 61.2}, {45.2, 70.2}, {45.8, 62.6}, {45.8, 67.8}, {46.4, 63.8}, {46.6, 69.2}, {47, 62.2}, {47, 63}, {47, 66}, {47, 66.6}, {47.2, 63.6}, {47.2, 67.6}, {47.4, 61}, {47.6, 61.8}, {48, 63.6}, {48.2, 61.2}, {48.2, 63.4}, {48.2, 65.6}, {48.4, 67.2}, {48.4, 68.8}, {48.6, 64.6}, {48.6, 66.2}, {48.6, 69.4}, {48.6, 69.8}, {48.6, 70.8}, {48.8, 60.8}, {48.8, 63.8}, {49, 62.4}, {49.2, 59.6}, {49.2, 67.4}, {49.4, 68.4}, {49.6, 70.2}, {49.8, 59}, {49.8, 62.2}, {50, 62.8}, {50.2, 59.6}, {50.2, 65.4}, {50.2, 69.2}, {50.4, 67.2}, {50.4, 68}, {50.6, 59.2}, {50.6, 60.4}, {50.6, 64.8}, {50.6, 67.2}, {50.8, 70.6}, {51, 61.4}, {51, 69.2}, {51.6, 67.8}, {51.6, 70.8}, {51.6, 71.6}, {51.8, 59.8}, {51.8, 64.4}, {51.8, 69}, {51.8, 69.6}, {52.6, 69.8}, {52.8, 58.6}, {53.2, 64}, {53.4, 59.8}, {53.6, 65.8}, {53.8, 58.4}, {53.8, 70}, {54, 67}, {54, 68}, {54.2, 64.6}, {54.4, 68.6}, {55, 57.8}, {55.2, 53.2}, {55.2, 57.4}, {55.4, 67.6}, {55.8, 52.8}, {55.8, 57.6}, {55.8, 62.2}, {55.8, 66.2}, {56, 59.6}, {56.8, 57}, {57.2, 57.8}, {57.4, 59}, {57.8, 53.8}, {58, 55.4}, {58, 57.4}, {59, 70.6}, {59.4, 55.8}, {59.4, 72.8}, {59.6, 61}, {59.8, 51.6}, {60, 53.6}, {60.2, 62.4}, {60.2, 67.4}, {60.4, 70.4}, {60.6, 58.2}, {60.6, 65.2}, {61, 59}, {61.6, 58.6}, {62.6, 64.6}}},
+            [npcKeys.zoneID] = zoneIDs.SEARING_GORGE,
+        },
         [228723] = { -- Obsidian Reaver : https://wowhead.com/forever/npc=228723/obsidian-reaver
             [npcKeys.name] = "Obsidian Reaver",
             [npcKeys.minLevel] = 56,
@@ -3229,6 +8154,14 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 57,
             [npcKeys.spawns] = {[51] = {{29.2, 73}, {29.2, 73.6}, {29.4, 72.4}, {29.6, 72.8}, {29.6, 73.6}, {30.4, 72.4}, {30.8, 71.2}, {30.8, 72.4}, {31, 72.6}, {31.6, 72.4}, {32.4, 76}, {32.4, 76.8}, {33, 76.4}, {33, 76.8}, {33.4, 77.6}, {33.4, 79.4}, {33.4, 79.6}, {33.4, 80.6}, {33.6, 77.4}, {33.6, 78.4}, {33.6, 79.4}, {33.6, 79.6}, {33.6, 81.2}, {34, 73}, {34, 82.4}, {34.2, 82.8}, {34.4, 83.8}, {34.6, 83.4}, {34.6, 83.8}, {36.4, 69.2}, {36.4, 69.6}, {36.4, 71.2}, {36.4, 71.6}, {36.6, 69}, {36.6, 69.6}, {36.8, 71.4}, {36.8, 71.6}, {41.4, 66.8}, {41.6, 66.8}, {42.4, 74.6}, {42.6, 74.8}, {43.4, 66.8}, {43.6, 66.8}, {43.8, 66.4}, {45.4, 67.4}, {45.4, 67.6}, {45.6, 67.4}, {45.6, 67.6}, {45.8, 72}, {48.4, 66.2}, {48.8, 65.8}, {49.8, 70.6}, {50.4, 64.8}, {50.6, 64.8}, {53.2, 65.6}}},
             [npcKeys.zoneID] = zoneIDs.SEARING_GORGE,
+        },
+        [228725] = { -- Firesworn : https://wowhead.com/forever/npc=228725/firesworn
+            [npcKeys.name] = "Firesworn",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.spawns] = {[46] = {{14.4, 33}, {14.8, 30.2}, {15.2, 31}, {15.2, 32}, {15.2, 32.6}, {15.4, 33.6}, {15.4, 38.6}, {15.6, 30.4}, {15.6, 30.6}, {15.6, 33}, {15.6, 50.4}, {16.4, 51.8}, {16.4, 52.6}, {16.4, 53.6}, {16.6, 52.4}, {16.6, 53.8}, {17, 51.4}, {17, 52.8}, {17.4, 54.6}, {17.6, 51.4}, {17.6, 52.8}, {17.6, 54.4}, {17.8, 52}, {17.8, 55.2}, {18.8, 51.2}, {19.2, 51.8}, {26.8, 42.4}, {26.8, 42.8}, {31.4, 66.8}, {31.4, 68.8}, {32, 66}, {32.4, 65.4}, {32.4, 67.2}, {32.4, 68}, {32.4, 68.8}, {32.6, 64.8}, {32.6, 66.4}, {32.6, 67.6}, {32.8, 66.6}, {33.6, 67.4}, {33.8, 67.8}, {40.2, 45.2}, {41.2, 34.8}, {42.6, 40.4}, {43.4, 39.4}, {43.8, 40}, {44.4, 39.4}, {45, 39}, {45.4, 36}, {45.8, 38.8}, {46, 41.2}, {46.2, 35}, {46.2, 36.2}, {46.4, 36.8}, {46.4, 38.4}, {46.6, 35.4}, {46.6, 36.8}, {46.8, 36}, {47.4, 33.6}, {47.6, 35.8}, {48, 34.8}, {48.2, 33.4}, {48.6, 36.2}, {48.8, 36.6}, {49, 34.8}, {52, 33.6}, {52.2, 36}, {55.8, 31.2}, {56.6, 57}, {57.6, 58.2}, {58.2, 58.6}, {58.6, 57.2}, {58.8, 58.8}, {59, 58.4}, {59, 62}, {59.4, 55}, {59.8, 31.4}, {60.2, 53.6}, {60.2, 54.6}, {60.2, 59}, {60.2, 59.8}, {60.2, 61}, {60.4, 56.6}, {60.4, 58}, {60.6, 29}, {60.6, 59.4}, {60.6, 60}, {61, 54.4}, {61, 56.2}, {61, 56.6}, {61, 58.2}, {61, 61}, {61.2, 30.8}, {61.2, 32.2}, {61.2, 55.2}, {61.4, 32.8}, {61.4, 34.4}, {61.6, 56.8}, {61.8, 34}, {61.8, 59.2}, {61.8, 59.6}, {62, 34.8}, {62, 61}, {62.2, 29.8}, {62.2, 58.2}, {62.4, 31.4}, {62.4, 32}, {62.4, 33}, {62.6, 32.6}, {62.8, 60.2}, {63, 30}, {63, 31.4}, {63, 59.4}, {63.2, 31.8}, {63.2, 34.6}, {63.4, 29.2}, {63.6, 31.8}, {63.8, 30.4}, {63.8, 30.6}, {64.2, 28.8}, {64.2, 32.6}, {64.2, 34.8}, {64.4, 28.4}, {64.6, 31.8}, {64.6, 32.6}, {64.8, 27.2}, {65.2, 23.4}, {65.2, 25}, {65.2, 25.6}, {65.4, 24.4}, {65.6, 28.6}, {68, 34.8}, {83, 56.2}, {83.4, 60}, {84, 59.4}, {84.2, 66}, {84.6, 53}, {84.6, 54.2}, {84.6, 56.2}, {84.6, 56.8}, {85, 55.4}, {85.6, 51.4}, {85.8, 54.8}, {86.2, 52}, {86.2, 52.6}, {86.4, 53.6}, {86.6, 52.6}, {87.2, 49}, {87.2, 50.8}, {87.2, 52.2}, {87.4, 53.6}, {87.6, 49.4}, {87.8, 53.2}, {88, 50}, {88, 52.2}, {88, 55}, {88.4, 54.4}, {88.6, 52.2}, {89, 50.8}, {89.4, 50.2}}},
+            [npcKeys.zoneID] = zoneIDs.BURNING_STEPPES,
+            [npcKeys.subName] = "Servant of Garr",
         },
         [228726] = { -- Flamebringer Elementalist : https://wowhead.com/forever/npc=228726/flamebringer-elementalist
             [npcKeys.name] = "Flamebringer Elementalist",
@@ -3244,6 +8177,42 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[51] = {{13.4, 40.2}, {13.6, 38.4}, {13.6, 38.6}, {13.8, 37.4}, {14.2, 43.2}, {14.4, 43.6}, {14.6, 43.6}, {15, 43.2}, {15.2, 35}, {15.8, 34.6}, {16.2, 36}, {16.2, 41.8}, {16.4, 34}, {16.4, 36.6}, {16.6, 36.8}, {17.2, 34.6}, {17.4, 34.4}, {17.6, 34.4}, {17.8, 38}, {18, 35}, {18.4, 36}, {18.4, 37}, {18.6, 35.4}, {18.6, 36.6}, {18.8, 41.6}, {19, 35.6}, {19.4, 38.2}, {19.4, 40.4}, {19.4, 40.8}, {19.6, 35.6}, {19.6, 38.4}, {19.6, 38.8}, {19.6, 40.4}, {19.6, 40.6}, {21.4, 29.2}, {21.4, 29.6}, {21.4, 31.4}, {21.4, 31.6}, {21.6, 31}, {21.6, 31.6}, {21.8, 30.4}, {22.4, 25.4}, {22.4, 25.6}, {22.4, 27.4}, {22.4, 28.4}, {22.4, 28.6}, {22.4, 37}, {22.4, 38}, {22.6, 28.6}, {22.8, 25.4}, {22.8, 27.4}, {22.8, 27.6}, {22.8, 37.6}, {22.8, 38.6}, {23, 25.8}, {23, 36.2}, {23, 37.4}, {23.6, 25.8}, {23.6, 27.4}, {23.6, 27.6}, {23.6, 37}, {23.6, 37.6}, {23.6, 39.4}, {24, 40.2}, {24, 40.8}, {24, 42}, {24.4, 32.4}, {24.4, 32.8}, {24.4, 33.6}, {24.4, 35.6}, {24.6, 33.8}, {24.6, 40.8}, {24.8, 28.6}, {24.8, 32.4}, {24.8, 32.8}, {25.2, 27.6}, {25.2, 30.8}, {25.4, 25.8}, {25.4, 27.2}, {25.6, 27}, {25.6, 33}, {26, 26.2}, {26, 36.6}, {26.2, 30}, {26.2, 34.4}, {26.2, 35.6}, {26.4, 25.4}, {26.4, 34.6}, {26.6, 25.6}, {26.8, 34.6}, {27, 24.8}, {27.2, 24.4}, {27.4, 34.2}, {27.6, 34.4}, {27.6, 34.6}}},
             [npcKeys.zoneID] = zoneIDs.SEARING_GORGE,
         },
+        [228728] = { -- Flamebringer Kelris : https://wowhead.com/forever/npc=228728/flamebringer-kelris
+            [npcKeys.name] = "Flamebringer Kelris",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[51] = {{13.2, 41}, {13.4, 40}, {13.4, 42.2}, {13.4, 42.6}, {13.6, 37.4}, {13.6, 39.4}, {13.6, 41.4}, {13.6, 42.4}, {13.8, 38}, {14, 35.6}, {14.2, 35}, {14.2, 43.2}, {14.4, 40.2}, {14.4, 43.6}, {14.6, 36.4}, {14.6, 37.2}, {14.6, 37.8}, {14.6, 39}, {14.6, 39.6}, {15, 34.8}, {15, 43.2}, {15, 43.8}, {15.2, 44.6}, {15.4, 42.2}, {15.8, 43.4}, {15.8, 43.6}, {16, 42.2}, {16, 44.6}, {16.2, 33.8}, {16.6, 44.6}, {16.8, 41.6}, {17.2, 41.4}, {17.2, 42.6}, {17.6, 41.4}, {19, 41.2}, {19.6, 35.8}, {21.6, 38.4}, {28, 34.6}}},
+            [npcKeys.zoneID] = zoneIDs.SEARING_GORGE,
+            [npcKeys.subName] = "Twilight Lord",
+        },
+        [228729] = { -- Duke Tectonis : https://wowhead.com/forever/npc=228729/duke-tectonis
+            [npcKeys.name] = "Duke Tectonis",
+            [npcKeys.minLevel] = 59,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[51] = {{27.4, 80.4}, {27.4, 81}, {27.4, 81.6}, {27.6, 80.8}, {27.6, 81.6}, {27.8, 80.2}, {28, 78.2}, {28, 79.4}, {28.2, 76.8}, {28.4, 76.4}}},
+            [npcKeys.zoneID] = zoneIDs.SEARING_GORGE,
+        },
+        [228730] = { -- Dread Seed : https://wowhead.com/forever/npc=228730/dread-seed
+            [npcKeys.name] = "Dread Seed",
+        },
+        [228731] = { -- Dread Lasher : https://wowhead.com/forever/npc=228731/dread-lasher
+            [npcKeys.name] = "Dread Lasher",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [228738] = { -- Calyx Greenglow : https://wowhead.com/forever/npc=228738/calyx-greenglow
+            [npcKeys.name] = "Calyx Greenglow",
+            [npcKeys.minLevel] = 53,
+            [npcKeys.maxLevel] = 53,
+            [npcKeys.spawns] = {[361] = {{61.4, 13}, {61.6, 13}}},
+            [npcKeys.zoneID] = zoneIDs.FELWOOD,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [228743] = { -- [DNT] Pyranis Fog Stalker : https://wowhead.com/forever/npc=228743/dnt-pyranis-fog-stalker
+            [npcKeys.name] = "[DNT] Pyranis Fog Stalker",
+        },
         [228747] = { -- Flamebringer Stalker : https://wowhead.com/forever/npc=228747/flamebringer-stalker
             [npcKeys.name] = "Flamebringer Stalker",
             [npcKeys.minLevel] = 55,
@@ -3251,12 +8220,225 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[51] = {{33.4, 28.4}, {33.4, 28.8}, {33.4, 29.6}, {33.6, 28.4}, {33.6, 28.6}, {33.6, 30}, {33.8, 27.4}, {33.8, 31.2}, {33.8, 32}, {35.4, 26.4}, {35.4, 27}, {35.4, 28.2}, {35.4, 28.6}, {35.6, 27}, {36.2, 25.4}, {36.4, 26}, {36.4, 28}, {36.6, 26.4}, {36.8, 26.8}, {37.2, 28.6}, {37.4, 27.6}, {37.6, 27.4}, {37.8, 28.2}, {37.8, 28.6}, {37.8, 29.6}, {38.4, 25.2}, {38.4, 25.6}, {38.6, 28}, {39, 25}, {39, 25.8}, {39.4, 27.4}, {39.6, 26.4}, {39.6, 26.8}}},
             [npcKeys.zoneID] = zoneIDs.SEARING_GORGE,
         },
+        [228748] = { -- Poisoned Sapling : https://wowhead.com/forever/npc=228748/poisoned-sapling
+            [npcKeys.name] = "Poisoned Sapling",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [228770] = { -- Carrion Swarm : https://wowhead.com/forever/npc=228770/carrion-swarm
+            [npcKeys.name] = "Carrion Swarm",
+        },
+        [228771] = { -- Electromantic Resonance Transducer : https://wowhead.com/forever/npc=228771/electromantic-resonance-transducer
+            [npcKeys.name] = "Electromantic Resonance Transducer",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[40] = {{53.4, 40}, {53.6, 40.2}}},
+            [npcKeys.zoneID] = zoneIDs.WESTFALL,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [228786] = { -- Stalker : https://wowhead.com/forever/npc=228786/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [228793] = { -- Rift : https://wowhead.com/forever/npc=228793/rift
+            [npcKeys.name] = "Rift",
+        },
+        [228814] = { -- Arcterris : https://wowhead.com/forever/npc=228814/arcterris
+            [npcKeys.name] = "Arcterris",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 58,
+            [npcKeys.spawns] = {[618] = {{62, 18}, {63.2, 17.4}, {63.2, 17.6}, {63.4, 16}, {63.6, 17.8}, {63.8, 16.4}, {63.8, 16.6}, {64.6, 18.2}, {65, 18.8}, {65.2, 20.4}}},
+            [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+        },
+        [228816] = { -- Primal Flame Elemental : https://wowhead.com/forever/npc=228816/primal-flame-elemental
+            [npcKeys.name] = "Primal Flame Elemental",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [228818] = { -- Shrine of Cooperation : https://wowhead.com/forever/npc=228818/shrine-of-cooperation
+            [npcKeys.name] = "Shrine of Cooperation",
+            [npcKeys.questStarts] = {84325, 84410},
+        },
+        [228820] = { -- Hydraxian Firefighter : https://wowhead.com/forever/npc=228820/hydraxian-firefighter
+            [npcKeys.name] = "Hydraxian Firefighter",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [228822] = { -- Calyx Greenglow : https://wowhead.com/forever/npc=228822/calyx-greenglow
+            [npcKeys.name] = "Calyx Greenglow",
+            [npcKeys.minLevel] = 53,
+            [npcKeys.maxLevel] = 53,
+            [npcKeys.spawns] = {[361] = {{61.4, 13}, {61.6, 13}}},
+            [npcKeys.zoneID] = zoneIDs.FELWOOD,
+            [npcKeys.questStarts] = {84369},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [228833] = { -- Flamewaker : https://wowhead.com/forever/npc=228833/flamewaker
+            [npcKeys.name] = "Flamewaker",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [228834] = { -- Firesworn : https://wowhead.com/forever/npc=228834/firesworn
+            [npcKeys.name] = "Firesworn",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [228835] = { -- Core Rager : https://wowhead.com/forever/npc=228835/core-rager
+            [npcKeys.name] = "Core Rager",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [228836] = { -- Flamewaker Elite : https://wowhead.com/forever/npc=228836/flamewaker-elite
+            [npcKeys.name] = "Flamewaker Elite",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [228837] = { -- Flamewaker Healer : https://wowhead.com/forever/npc=228837/flamewaker-healer
+            [npcKeys.name] = "Flamewaker Healer",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [228838] = { -- Flamewaker Priest : https://wowhead.com/forever/npc=228838/flamewaker-priest
+            [npcKeys.name] = "Flamewaker Priest",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
         [228891] = { -- Enraged Shade : https://wowhead.com/forever/npc=228891/enraged-shade
             [npcKeys.name] = "Enraged Shade",
             [npcKeys.minLevel] = 53,
             [npcKeys.maxLevel] = 53,
             [npcKeys.spawns] = {[618] = {{29.8, 35.8}}},
             [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+        },
+        [228902] = { -- Calyx Greenglow : https://wowhead.com/forever/npc=228902/calyx-greenglow
+            [npcKeys.name] = "Calyx Greenglow",
+            [npcKeys.minLevel] = 53,
+            [npcKeys.maxLevel] = 53,
+            [npcKeys.spawns] = {[618] = {{29.8, 35.6}}},
+            [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+            [npcKeys.questEnds] = {84369},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [228906] = { -- Mannoroc Lasher : https://wowhead.com/forever/npc=228906/mannoroc-lasher
+            [npcKeys.name] = "Mannoroc Lasher",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [228907] = { -- Core Hound : https://wowhead.com/forever/npc=228907/core-hound
+            [npcKeys.name] = "Core Hound",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+            [npcKeys.subName] = "Spawn of Magmadar",
+        },
+        [228908] = { -- Mannoroc Felguard : https://wowhead.com/forever/npc=228908/mannoroc-felguard
+            [npcKeys.name] = "Mannoroc Felguard",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [228909] = { -- Legion Hound : https://wowhead.com/forever/npc=228909/legion-hound
+            [npcKeys.name] = "Legion Hound",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [228910] = { -- Hulking Infernal : https://wowhead.com/forever/npc=228910/hulking-infernal
+            [npcKeys.name] = "Hulking Infernal",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [228911] = { -- Searing Infernal : https://wowhead.com/forever/npc=228911/searing-infernal
+            [npcKeys.name] = "Searing Infernal",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [228912] = { -- Severed Dreamer : https://wowhead.com/forever/npc=228912/severed-dreamer
+            [npcKeys.name] = "Severed Dreamer",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [228913] = { -- Severed Druid : https://wowhead.com/forever/npc=228913/severed-druid
+            [npcKeys.name] = "Severed Druid",
+            [npcKeys.minLevel] = 59,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [228914] = { -- Severed Keeper : https://wowhead.com/forever/npc=228914/severed-keeper
+            [npcKeys.name] = "Severed Keeper",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [228915] = { -- Severed Sleeper : https://wowhead.com/forever/npc=228915/severed-sleeper
+            [npcKeys.name] = "Severed Sleeper",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [228916] = { -- Mannoroc Satyr : https://wowhead.com/forever/npc=228916/mannoroc-satyr
+            [npcKeys.name] = "Mannoroc Satyr",
+            [npcKeys.minLevel] = 59,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [228917] = { -- Water Elemental : https://wowhead.com/forever/npc=228917/water-elemental
+            [npcKeys.name] = "Water Elemental",
+        },
+        [228918] = { -- Mannoroc Shadowstalker : https://wowhead.com/forever/npc=228918/mannoroc-shadowstalker
+            [npcKeys.name] = "Mannoroc Shadowstalker",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [228919] = { -- Mannoroc Hellcaller : https://wowhead.com/forever/npc=228919/mannoroc-hellcaller
+            [npcKeys.name] = "Mannoroc Hellcaller",
+            [npcKeys.minLevel] = 59,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [228920] = { -- Bleakheart Trickster : https://wowhead.com/forever/npc=228920/bleakheart-trickster
+            [npcKeys.name] = "Bleakheart Trickster",
+        },
+        [228928] = { -- Maethra Slagheart : https://wowhead.com/forever/npc=228928/maethra-slagheart
+            [npcKeys.name] = "Maethra Slagheart",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.spawns] = {[41] = {{40.8, 78.4}, {40.8, 78.6}}},
+            [npcKeys.zoneID] = zoneIDs.DEADWIND_PASS,
+            [npcKeys.questStarts] = {84331},
+            [npcKeys.questEnds] = {84329, 84331},
+        },
+        [228929] = { -- Baj'ura : https://wowhead.com/forever/npc=228929/bajura
+            [npcKeys.name] = "Baj'ura",
+            [npcKeys.spawns] = {[41] = {{40.6, 78.4}, {40.6, 78.6}}},
+            [npcKeys.zoneID] = zoneIDs.DEADWIND_PASS,
+        },
+        [228930] = { -- Syrnoya : https://wowhead.com/forever/npc=228930/syrnoya
+            [npcKeys.name] = "Syrnoya",
+            [npcKeys.spawns] = {[41] = {{40.8, 78.4}, {40.8, 78.6}}},
+            [npcKeys.zoneID] = zoneIDs.DEADWIND_PASS,
+        },
+        [228931] = { -- Father Lazarus : https://wowhead.com/forever/npc=228931/father-lazarus
+            [npcKeys.name] = "Father Lazarus",
+            [npcKeys.spawns] = {[41] = {{40.8, 78.4}, {40.8, 78.6}}},
+            [npcKeys.zoneID] = zoneIDs.DEADWIND_PASS,
+        },
+        [228932] = { -- Divine Apprehension : https://wowhead.com/forever/npc=228932/divine-apprehension
+            [npcKeys.name] = "Divine Apprehension",
         },
         [228934] = { -- Thane Korth'azz : https://wowhead.com/forever/npc=228934/thane-korthazz
             [npcKeys.name] = "Thane Korth'azz",
@@ -3271,6 +8453,116 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.friendlyToFaction] = "A",
         },
+        [228936] = { -- Lingering Blessing : https://wowhead.com/forever/npc=228936/lingering-blessing
+            [npcKeys.name] = "Lingering Blessing",
+            [npcKeys.spawns] = {[41] = {{40.8, 78.4}, {40.8, 78.6}}},
+            [npcKeys.zoneID] = zoneIDs.DEADWIND_PASS,
+        },
+        [228944] = { -- Electromantic Resonance Transducer : https://wowhead.com/forever/npc=228944/electromantic-resonance-transducer
+            [npcKeys.name] = "Electromantic Resonance Transducer",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[85] = {{53.4, 57.2}, {53.6, 57.2}}},
+            [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [228945] = { -- [DNT] Challenge : https://wowhead.com/forever/npc=228945/dnt-challenge
+            [npcKeys.name] = "[DNT] Challenge",
+        },
+        [228956] = { -- Sebastian Jurgens : https://wowhead.com/forever/npc=228956/sebastian-jurgens
+            [npcKeys.name] = "Sebastian Jurgens",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.questStarts] = {84138, 84213},
+            [npcKeys.questEnds] = {84137, 84212},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Mad Doctor",
+        },
+        [228969] = { -- Lord Gazzran : https://wowhead.com/forever/npc=228969/lord-gazzran
+            [npcKeys.name] = "Lord Gazzran",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.spawns] = {[51] = {{29, 71}, {30.8, 58}, {31.2, 58.6}, {31.2, 67.6}, {31.6, 65.4}, {32, 68.4}, {32.2, 67}, {32.4, 58.2}, {32.4, 63.4}, {32.4, 64}, {32.4, 69}, {32.4, 72}, {32.8, 73.2}, {33, 67.8}, {33, 68.8}, {33.2, 60.6}, {33.2, 62.2}, {33.4, 65.2}, {33.4, 70.8}, {33.6, 60}, {33.6, 66}, {33.6, 68.2}, {33.6, 68.8}, {33.6, 71}, {34, 62.2}, {34.2, 63.8}, {34.6, 61.4}, {34.6, 65}, {34.8, 62.6}, {34.8, 69.2}, {34.8, 69.8}, {35.2, 67.6}, {35.4, 66}, {35.4, 66.6}, {35.6, 70.2}, {35.8, 66}, {36, 63.4}, {36, 65.2}, {36, 69}, {36.4, 66.8}, {36.4, 68}, {36.4, 72.8}, {36.6, 70}, {36.8, 71.2}, {37.2, 60}, {37.2, 63.8}, {37.2, 65.4}, {37.2, 67.8}, {37.4, 65.8}, {37.4, 67.2}, {37.4, 72}, {37.6, 65.4}, {37.6, 67.2}, {37.6, 73}, {37.8, 72}, {38.2, 68.6}, {38.4, 68.4}, {38.6, 67.4}, {38.6, 68}, {38.8, 68.6}, {39.6, 68}, {39.6, 69}, {39.8, 72.6}, {40.6, 68.6}, {40.8, 67.8}, {41, 70.8}, {41, 72.6}, {41.6, 70.6}, {42, 66.8}, {42, 68.2}, {42, 72.6}, {42.2, 68.8}, {42.4, 65}, {43, 67.6}, {43.4, 66.8}, {43.6, 75}, {44, 66}, {44.6, 69.6}, {44.6, 70.6}, {45.2, 68.2}, {45.4, 68.8}}},
+            [npcKeys.zoneID] = zoneIDs.SEARING_GORGE,
+        },
+        [228970] = { -- Galenges : https://wowhead.com/forever/npc=228970/galenges
+            [npcKeys.name] = "Galenges",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.spawns] = {[51] = {{19.4, 74.6}, {19.8, 73.2}, {19.8, 76}, {20.4, 77}, {20.4, 78}, {21, 79.2}, {21, 79.6}, {21.2, 77.4}, {21.4, 76}, {21.4, 78}, {21.6, 78.4}, {21.6, 78.6}, {21.8, 76.4}, {22.4, 77}, {22.6, 77.6}, {23.2, 72.6}, {23.2, 77}, {23.4, 76.2}, {23.8, 78.4}, {24.2, 76.4}, {24.2, 76.6}, {24.8, 76.2}, {25, 71.4}, {25.6, 76.4}, {25.6, 77.2}, {25.8, 71.8}, {26, 70}, {26, 70.6}, {26, 72.8}, {26.6, 76.4}, {27.2, 70.2}, {28.2, 66.6}, {28.2, 76.8}, {30, 65.6}}},
+            [npcKeys.zoneID] = zoneIDs.SEARING_GORGE,
+        },
+        [228973] = { -- [DNT] : https://wowhead.com/forever/npc=228973/dnt
+            [npcKeys.name] = "[DNT]",
+        },
+        [228976] = { -- Altruist Ward : https://wowhead.com/forever/npc=228976/altruist-ward
+            [npcKeys.name] = "Altruist Ward",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[3] = {{2.4, 45}}, [41] = {{41, 79.2}}, [45] = {{26.4, 60}}, [1377] = {{39, 69}}, [1637] = {{35.4, 87.6}, {35.8, 87.8}, {50.6, 71}, {51.8, 68.8}}},
+        },
+        [229001] = { -- Core Hound : https://wowhead.com/forever/npc=229001/core-hound
+            [npcKeys.name] = "Core Hound",
+        },
+        [229009] = { -- Spirit of Magmadar : https://wowhead.com/forever/npc=229009/spirit-of-magmadar
+            [npcKeys.name] = "Spirit of Magmadar",
+        },
+        [229016] = { -- Orthas : https://wowhead.com/forever/npc=229016/orthas
+            [npcKeys.name] = "Orthas",
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+        },
+        [229018] = { -- Rotting Dwarf Corpse : https://wowhead.com/forever/npc=229018/rotting-dwarf-corpse
+            [npcKeys.name] = "Rotting Dwarf Corpse",
+            [npcKeys.minLevel] = 56,
+            [npcKeys.maxLevel] = 57,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {84414},
+            [npcKeys.questEnds] = {84330},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [229035] = { -- Korth'azz's Chest : https://wowhead.com/forever/npc=229035/korthazzs-chest
+            [npcKeys.name] = "Korth'azz's Chest",
+        },
+        [229037] = { -- [DNT] : https://wowhead.com/forever/npc=229037/dnt
+            [npcKeys.name] = "[DNT]",
+        },
+        [229047] = { -- Goblin Friend : https://wowhead.com/forever/npc=229047/goblin-friend
+            [npcKeys.name] = "Goblin Friend",
+        },
+        [229051] = { -- Rift : https://wowhead.com/forever/npc=229051/rift
+            [npcKeys.name] = "Rift",
+        },
+        [229052] = { -- Rift : https://wowhead.com/forever/npc=229052/rift
+            [npcKeys.name] = "Rift",
+        },
+        [229057] = { -- Core Rager : https://wowhead.com/forever/npc=229057/core-rager
+            [npcKeys.name] = "Core Rager",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+        },
+        [229061] = { -- Thorium Brotherhood Lookout : https://wowhead.com/forever/npc=229061/thorium-brotherhood-lookout
+            [npcKeys.name] = "Thorium Brotherhood Lookout",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 58,
+            [npcKeys.spawns] = {[51] = {{14.6, 43.2}, {15.2, 35.2}, {15.4, 33.8}, {15.4, 44.4}, {15.8, 36.6}, {16.2, 33.2}, {16.4, 34}, {16.8, 34.4}, {16.8, 34.8}, {17.6, 34.8}, {17.6, 42.6}, {18.6, 38.4}, {18.8, 41.4}, {19.4, 36.2}, {20.4, 35.8}, {21, 35.8}, {21.2, 29.4}, {21.2, 32.4}, {21.8, 29.6}, {22.2, 36.4}, {22.2, 40.4}, {22.4, 31.4}, {22.4, 37.2}, {22.6, 39.4}, {22.8, 28.2}, {22.8, 28.8}, {22.8, 37}, {22.8, 40.6}, {23, 27.4}, {23, 41.8}, {23.2, 25}, {23.2, 35.2}, {23.2, 35.6}, {23.2, 38.2}, {23.6, 37.2}, {23.6, 39.2}, {23.8, 43.6}, {24, 39.8}, {24.2, 32.8}, {24.2, 36}, {24.4, 28.2}, {24.4, 34.8}, {24.4, 38.4}, {24.4, 40.8}, {24.4, 46.2}, {24.6, 28.4}, {24.6, 32}, {24.6, 35}, {24.8, 27}, {24.8, 35.6}, {24.8, 41}, {24.8, 47}, {25, 32.8}, {25, 36.6}, {25, 48.2}, {25.2, 25.6}, {25.2, 29.6}, {25.2, 30.8}, {25.2, 33.8}, {25.2, 49.6}, {25.6, 36.6}, {25.8, 36.4}, {25.8, 50.8}, {26, 25.6}, {26, 34.4}, {26, 34.6}, {26.2, 42.4}, {26.4, 31.6}, {26.4, 33.2}, {26.8, 34.4}, {26.8, 40.8}, {26.8, 47}, {26.8, 49.8}, {27, 35.8}, {27.2, 34.6}, {27.2, 51.2}, {27.4, 52.2}, {27.4, 74}, {27.6, 80.4}, {27.8, 45.4}, {27.8, 48.2}, {28, 35.2}, {28, 80.6}, {28.2, 34.4}, {28.2, 36.2}, {28.6, 46.8}, {28.6, 56.2}, {28.6, 76}, {28.8, 33.4}, {28.8, 33.6}, {28.8, 38.2}, {29, 34.6}, {29, 80}, {29, 81.4}, {29.2, 53}, {29.2, 72.2}, {29.4, 40.8}, {29.4, 49}, {29.4, 58}, {29.4, 61.8}, {29.4, 73.6}, {29.6, 33.2}, {29.6, 46}, {29.8, 79}, {30.2, 33.6}, {30.2, 53.8}, {30.4, 34.8}, {30.6, 33.4}, {30.6, 55.4}, {30.6, 73.2}, {30.8, 33.8}, {30.8, 34.6}, {30.8, 36}, {30.8, 39.8}, {30.8, 46.6}, {31, 49.8}, {31, 58.2}, {31, 62}, {31.2, 54.4}, {31.4, 41.8}, {31.4, 57.4}, {31.4, 60.8}, {31.6, 33.8}, {31.6, 38.6}, {31.6, 48.8}, {31.8, 35}, {31.8, 41}, {31.8, 60.8}, {32, 33.2}, {32.2, 39.8}, {32.2, 42.4}, {32.2, 44.8}, {32.2, 59.4}, {32.2, 63}, {32.2, 70.6}, {32.4, 32.4}, {32.4, 38.2}, {32.4, 52}, {32.4, 54.6}, {32.6, 31.6}, {32.6, 33.4}, {32.6, 33.8}, {32.6, 44.6}, {32.6, 63}, {32.6, 75.6}, {32.8, 26.6}, {32.8, 31}, {32.8, 45.8}, {32.8, 57.8}, {33, 43}, {33, 52.2}, {33, 64}, {33, 65.2}, {33.2, 26}, {33.2, 37}, {33.2, 39.4}, {33.2, 72.2}, {33.4, 28.4}, {33.4, 29.2}, {33.4, 30}, {33.4, 35}, {33.6, 28.2}, {33.6, 28.6}, {33.6, 30.2}, {33.6, 30.6}, {33.6, 34.8}, {33.6, 61.8}, {33.6, 68.4}, {33.6, 73.8}, {33.6, 76.6}, {33.6, 78.2}, {33.8, 32.2}, {33.8, 43}, {33.8, 51}, {33.8, 63}, {34, 26.6}, {34, 38.4}, {34, 42.4}, {34, 44}, {34, 64}, {34, 71.4}, {34, 80.6}, {34, 83}, {34.2, 24.2}, {34.2, 37.4}, {34.2, 41}, {34.2, 60.8}, {34.4, 22.8}, {34.4, 25.4}, {34.4, 26.2}, {34.4, 32.6}, {34.6, 26.2}, {34.6, 32.8}, {34.6, 40}, {34.6, 59}, {34.8, 28}, {34.8, 28.8}, {34.8, 29.6}, {34.8, 30.8}, {34.8, 32.2}, {34.8, 35}, {34.8, 35.6}, {34.8, 38.8}, {34.8, 42.2}, {34.8, 46}, {35, 25.4}, {35, 27.4}, {35, 37.2}, {35.2, 24}, {35.2, 71.8}, {35.4, 23.4}, {35.4, 34.2}, {35.4, 37.8}, {35.4, 44}, {35.4, 49.6}, {35.6, 26}, {35.6, 27.4}, {35.6, 27.6}, {35.6, 28.6}, {35.6, 68}, {35.8, 21}, {35.8, 23.6}, {35.8, 25.4}, {35.8, 32.6}, {35.8, 36.6}, {35.8, 49.2}, {35.8, 65}, {36, 44.8}, {36.2, 22}, {36.2, 23.4}, {36.2, 34.6}, {36.2, 38.8}, {36.4, 36.2}, {36.4, 45.8}, {36.4, 51.6}, {36.6, 26.2}, {36.8, 22.8}, {36.8, 26.8}, {36.8, 31.8}, {36.8, 33.4}, {37, 36.4}, {37.2, 31}, {37.4, 27.6}, {37.4, 29}, {37.4, 33.6}, {37.4, 36.6}, {37.4, 43}, {37.6, 64.2}, {37.8, 26.8}, {37.8, 30.4}, {37.8, 31}, {37.8, 34.4}, {37.8, 36.2}, {37.8, 62.2}, {38, 25.6}, {38, 29}, {38, 43}, {38, 45}, {38.4, 27.8}, {38.6, 25.4}, {38.6, 28}, {38.6, 29.4}, {38.6, 30.2}, {38.6, 31.2}, {38.6, 38}, {38.8, 38.6}, {39.2, 25.8}, {39.2, 26.6}, {39.2, 36.4}, {39.2, 41.4}, {39.6, 26.4}, {39.6, 27.4}, {39.6, 50.6}, {39.8, 60.8}, {40, 31}, {40.2, 34.4}, {40.4, 32}, {40.6, 37}, {40.6, 42.2}, {40.8, 34.4}, {40.8, 34.6}, {41, 59.6}, {41.2, 38.4}, {41.2, 54.8}, {41.6, 39}, {41.6, 73}, {41.8, 35.6}, {41.8, 40.2}, {42.2, 53.8}, {42.4, 50.8}, {42.6, 46}, {43.2, 35}, {43.2, 42}, {43.6, 52.8}, {43.6, 56.8}, {43.8, 76.8}, {44, 42}, {44.2, 39.4}, {44.2, 40.6}, {44.2, 45.2}, {44.2, 46}, {44.8, 54.6}, {45, 36.6}, {45.4, 53.4}, {45.8, 42}, {46, 37.8}, {46.2, 39.8}, {46.4, 44.2}, {46.8, 44.4}, {46.8, 54.2}, {47, 40}, {47.6, 37.4}, {47.8, 42.4}, {48.2, 37.6}, {48.2, 51.8}, {48.4, 49.4}, {48.8, 35.8}, {48.8, 60.4}, {49, 37}, {49.2, 43.2}, {49.4, 49.8}, {50.4, 38}, {52.2, 36.4}, {52.2, 40.2}, {52.4, 64.6}, {52.4, 65.6}, {52.6, 46.2}, {53.4, 36}, {54, 36.4}, {54.2, 35.2}, {55.4, 38.4}, {55.6, 60.6}, {56.2, 37.2}, {56.8, 36}, {58.8, 72.6}, {59.2, 34.2}, {62.4, 45.6}, {62.8, 33.4}, {66.6, 53.6}, {69.8, 39.8}, {70.4, 35.2}, {76.6, 20}}},
+            [npcKeys.zoneID] = zoneIDs.SEARING_GORGE,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Thorium Brotherhood",
+        },
+        [229091] = { -- Stalker : https://wowhead.com/forever/npc=229091/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [229140] = { -- Furniture : https://wowhead.com/forever/npc=229140/furniture
+            [npcKeys.name] = "Furniture",
+        },
+        [229156] = { -- Air Elemental Fragment : https://wowhead.com/forever/npc=229156/air-elemental-fragment
+            [npcKeys.name] = "Air Elemental Fragment",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[493] = {{39.8, 68}}},
+            [npcKeys.zoneID] = zoneIDs.MOONGLADE,
+        },
         [229200] = { -- Astral Wraith : https://wowhead.com/forever/npc=229200/astral-wraith
             [npcKeys.name] = "Astral Wraith",
             [npcKeys.minLevel] = 56,
@@ -3278,12 +8570,133 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[1377] = {{11.8, 94.6}}},
             [npcKeys.zoneID] = zoneIDs.SILITHUS,
         },
+        [229202] = { -- Altruist Ward : https://wowhead.com/forever/npc=229202/altruist-ward
+            [npcKeys.name] = "Altruist Ward",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[10] = {{46.8, 36.4}}, [15] = {{51.2, 75.4}}, [28] = {{70.2, 74}}, [36] = {{34, 53.8}}, [41] = {{40.8, 78.6}}, [46] = {{63.2, 36.8}}, [51] = {{40, 32.4}}, [357] = {{30.8, 43.2}}},
+        },
+        [229311] = { -- MC : https://wowhead.com/forever/npc=229311/mc
+            [npcKeys.name] = "MC",
+        },
+        [229312] = { -- World Boss : https://wowhead.com/forever/npc=229312/world-boss
+            [npcKeys.name] = "World Boss",
+        },
+        [229346] = { -- [DNT] Invisible Stalker : https://wowhead.com/forever/npc=229346/dnt-invisible-stalker
+            [npcKeys.name] = "[DNT] Invisible Stalker",
+        },
+        [229390] = { -- Riding Druid : https://wowhead.com/forever/npc=229390/riding-druid
+            [npcKeys.name] = "Riding Druid",
+        },
+        [229425] = { -- Zotl : https://wowhead.com/forever/npc=229425/zotl
+            [npcKeys.name] = "Zotl",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[493] = {{55.4, 32.2}, {55.4, 32.6}, {55.6, 32.6}, {55.8, 32.4}}},
+            [npcKeys.zoneID] = zoneIDs.MOONGLADE,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [229452] = { -- Crimson Cannon : https://wowhead.com/forever/npc=229452/crimson-cannon
+            [npcKeys.name] = "Crimson Cannon",
+        },
+        [229454] = { -- Divine Apprehension : https://wowhead.com/forever/npc=229454/divine-apprehension
+            [npcKeys.name] = "Divine Apprehension",
+        },
+        [229485] = { -- Stalker : https://wowhead.com/forever/npc=229485/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [229515] = { -- Rift : https://wowhead.com/forever/npc=229515/rift
+            [npcKeys.name] = "Rift",
+        },
+        [229549] = { -- [DNT] : https://wowhead.com/forever/npc=229549/dnt
+            [npcKeys.name] = "[DNT]",
+        },
+        [229564] = { -- Meteor : https://wowhead.com/forever/npc=229564/meteor
+            [npcKeys.name] = "Meteor",
+        },
+        [229631] = { -- Southsea Cutthroat : https://wowhead.com/forever/npc=229631/southsea-cutthroat
+            [npcKeys.name] = "Southsea Cutthroat",
+            [npcKeys.minLevel] = 59,
+            [npcKeys.maxLevel] = 60,
+        },
+        [229632] = { -- Southsea Buccaneer : https://wowhead.com/forever/npc=229632/southsea-buccaneer
+            [npcKeys.name] = "Southsea Buccaneer",
+            [npcKeys.minLevel] = 59,
+            [npcKeys.maxLevel] = 60,
+        },
+        [229731] = { -- Dungeons : https://wowhead.com/forever/npc=229731/dungeons
+            [npcKeys.name] = "Dungeons",
+        },
+        [229732] = { -- Zilbagob : https://wowhead.com/forever/npc=229732/zilbagob
+            [npcKeys.name] = "Zilbagob",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [229733] = { -- Zilbagob : https://wowhead.com/forever/npc=229733/zilbagob
+            [npcKeys.name] = "Zilbagob",
+        },
+        [229737] = { -- Stalker : https://wowhead.com/forever/npc=229737/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [229802] = { -- Poisoned Sapling : https://wowhead.com/forever/npc=229802/poisoned-sapling
+            [npcKeys.name] = "Poisoned Sapling",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+        },
+        [229803] = { -- Furniture : https://wowhead.com/forever/npc=229803/furniture
+            [npcKeys.name] = "Furniture",
+        },
+        [229805] = { -- Stalker : https://wowhead.com/forever/npc=229805/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [229840] = { -- Hydraxian Firefighter : https://wowhead.com/forever/npc=229840/hydraxian-firefighter
+            [npcKeys.name] = "Hydraxian Firefighter",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [229897] = { -- Wild Windtwister : https://wowhead.com/forever/npc=229897/wild-windtwister
+            [npcKeys.name] = "Wild Windtwister",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[493] = {{36.8, 65.2}, {38.2, 64.8}, {38.4, 65.8}, {38.4, 68.8}, {38.6, 66.4}, {38.8, 64.4}, {39.2, 66.8}, {39.8, 66}, {39.8, 67.4}, {39.8, 67.8}, {40, 65.4}, {40, 70.2}, {40.8, 66.8}, {41.2, 71.6}}},
+            [npcKeys.zoneID] = zoneIDs.MOONGLADE,
+        },
+        [229984] = { -- Siopi : https://wowhead.com/forever/npc=229984/siopi
+            [npcKeys.name] = "Siopi",
+        },
+        [230039] = { -- Crafted : https://wowhead.com/forever/npc=230039/crafted
+            [npcKeys.name] = "Crafted",
+        },
+        [230069] = { -- Eskhandar : https://wowhead.com/forever/npc=230069/eskhandar
+            [npcKeys.name] = "Eskhandar",
+        },
+        [230088] = { -- Onyxia Items : https://wowhead.com/forever/npc=230088/onyxia-items
+            [npcKeys.name] = "Onyxia Items",
+        },
+        [230146] = { -- Fel Interloper : https://wowhead.com/forever/npc=230146/fel-interloper
+            [npcKeys.name] = "Fel Interloper",
+            [npcKeys.minLevel] = 55,
+            [npcKeys.maxLevel] = 58,
+            [npcKeys.spawns] = {[46] = {{20.6, 43.2}, {22.4, 52.4}, {22.4, 52.6}, {24.2, 64.2}, {24.2, 64.6}, {29.4, 43.6}, {36, 60}, {36, 61.6}, {36.6, 61.8}, {37.4, 41.8}, {37.6, 42}, {57.6, 45.2}, {57.6, 45.6}, {60, 65}, {60.8, 64.6}, {69, 26.6}, {69.2, 26.2}, {71.6, 31.2}, {72, 30.2}, {72, 32}, {85.4, 43.6}, {93.4, 59}, {93.6, 59.2}}},
+        },
+        [230302] = { -- Lord Kazzak : https://wowhead.com/forever/npc=230302/lord-kazzak
+            [npcKeys.name] = "Lord Kazzak",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_TAINTED_SCAR,
+        },
         [230317] = { -- Mokvar : https://wowhead.com/forever/npc=230317/mokvar
             [npcKeys.name] = "Mokvar",
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[1637] = {{34.4, 37.4}, {34.4, 37.6}, {34.8, 38.6}, {35, 38}, {35.2, 37.4}}},
             [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
+            [npcKeys.questStarts] = {84155, 84156, 84157, 84158, 84159, 84160, 84161, 84162, 84171, 84172, 84173, 84174, 84175, 84176, 84177, 84178, 84203, 84204, 84205, 84206, 84207, 84208, 84209, 84210},
+            [npcKeys.questEnds] = {84155, 84156, 84157, 84158, 84159, 84160, 84161, 84162, 84171, 84172, 84173, 84174, 84175, 84176, 84177, 84178, 84187, 84188, 84189, 84190, 84191, 84192, 84193, 84194, 84203, 84204, 84205, 84206, 84207, 84208, 84209, 84210},
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 226772; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
@@ -3293,8 +8706,32 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[1537] = {{42.4, 52.2}, {42.4, 52.6}, {43.2, 52.6}, {43.4, 51}, {43.4, 52.2}, {43.6, 50.8}, {43.6, 52}}},
             [npcKeys.zoneID] = zoneIDs.IRONFORGE,
+            [npcKeys.questStarts] = {84147, 84148, 84149, 84150, 84151, 84152, 84153, 84154, 84163, 84164, 84165, 84166, 84167, 84168, 84169, 84170, 84195, 84196, 84197, 84198, 84199, 84200, 84201, 84202},
+            [npcKeys.questEnds] = {84147, 84148, 84149, 84150, 84151, 84152, 84153, 84154, 84163, 84164, 84165, 84166, 84167, 84168, 84169, 84170, 84179, 84180, 84181, 84182, 84183, 84184, 84185, 84186, 84195, 84196, 84197, 84198, 84199, 84200, 84201, 84202},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 226772; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [230481] = { -- Earth Elemental Fragment : https://wowhead.com/forever/npc=230481/earth-elemental-fragment
+            [npcKeys.name] = "Earth Elemental Fragment",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[493] = {{76, 64}}},
+            [npcKeys.zoneID] = zoneIDs.MOONGLADE,
+        },
+        [230513] = { -- Siopi : https://wowhead.com/forever/npc=230513/siopi
+            [npcKeys.name] = "Siopi",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[493] = {{55.4, 30.8}, {55.6, 30.4}, {55.6, 30.8}}},
+            [npcKeys.zoneID] = zoneIDs.MOONGLADE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [230558] = { -- Territorial Terran : https://wowhead.com/forever/npc=230558/territorial-terran
+            [npcKeys.name] = "Territorial Terran",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[493] = {{73.2, 66.2}, {74, 65}, {74.2, 66.2}, {74.8, 65.6}, {75, 65.2}, {75.2, 64.4}, {75.8, 63.8}}},
+            [npcKeys.zoneID] = zoneIDs.MOONGLADE,
         },
         [230565] = { -- Ironforge Guard : https://wowhead.com/forever/npc=230565/ironforge-guard
             [npcKeys.name] = "Ironforge Guard",
@@ -3305,18 +8742,327 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 226772; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
+        [230566] = { -- Kor'kron Elite : https://wowhead.com/forever/npc=230566/korkron-elite
+            [npcKeys.name] = "Kor'kron Elite",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[1637] = {{34.8, 38.4}, {34.8, 38.6}}},
+            [npcKeys.zoneID] = zoneIDs.ORGRIMMAR,
+            [npcKeys.friendlyToFaction] = "H",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 226772; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [230775] = { -- Rage Talon Quartermaster : https://wowhead.com/forever/npc=230775/rage-talon-quartermaster
+            [npcKeys.name] = "Rage Talon Quartermaster",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.BLACKROCK_SPIRE,
+            [npcKeys.subName] = "Razorgore's Appointee",
+        },
         [230834] = { -- Gill'el : https://wowhead.com/forever/npc=230834/gillel
             [npcKeys.name] = "Gill'el",
         },
         [230859] = { -- Snowfang : https://wowhead.com/forever/npc=230859/snowfang
             [npcKeys.name] = "Snowfang",
         },
+        [231050] = { -- Syndicate Infiltrator : https://wowhead.com/forever/npc=231050/syndicate-infiltrator
+            [npcKeys.name] = "Syndicate Infiltrator",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.BLACKROCK_SPIRE,
+            [npcKeys.questStarts] = {84880},
+            [npcKeys.questEnds] = {84870},
+        },
+        [231178] = { -- Duke Hydraxis : https://wowhead.com/forever/npc=231178/duke-hydraxis
+            [npcKeys.name] = "Duke Hydraxis",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [231384] = { -- Cenarion Emissary Blackhoof : https://wowhead.com/forever/npc=231384/cenarion-emissary-blackhoof
+            [npcKeys.name] = "Cenarion Emissary Blackhoof",
+        },
+        [231430] = { -- Caius Blackwood : https://wowhead.com/forever/npc=231430/caius-blackwood
+            [npcKeys.name] = "Caius Blackwood",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+        },
+        [231485] = { -- Procrastimond : https://wowhead.com/forever/npc=231485/procrastimond
+            [npcKeys.name] = "Procrastimond",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.questStarts] = {85480},
+            [npcKeys.questEnds] = {85480},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [231494] = { -- Prince Thunderaan : https://wowhead.com/forever/npc=231494/prince-thunderaan
+            [npcKeys.name] = "Prince Thunderaan",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_CRYSTAL_VALE,
+            [npcKeys.subName] = "The Wind Seeker",
+        },
+        [231498] = { -- Aeonas : https://wowhead.com/forever/npc=231498/aeonas
+            [npcKeys.name] = "Aeonas",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[28] = {{52, 83.4}}},
+            [npcKeys.zoneID] = zoneIDs.WESTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {85457, 85508},
+            [npcKeys.questEnds] = {85507},
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Former Paladin of the Silver Hand",
+        },
         [231499] = { -- Ada Darkhardt : https://wowhead.com/forever/npc=231499/ada-darkhardt
             [npcKeys.name] = "Ada Darkhardt",
             [npcKeys.minLevel] = 55,
             [npcKeys.maxLevel] = 55,
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
+            [npcKeys.questStarts] = {85511},
+            [npcKeys.questEnds] = {85510},
             [npcKeys.friendlyToFaction] = "A",
+        },
+        [231500] = { -- Gregory : https://wowhead.com/forever/npc=231500/gregory
+            [npcKeys.name] = "Gregory",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[28] = {{69.4, 79.6}, {69.6, 79.6}}},
+            [npcKeys.zoneID] = zoneIDs.WESTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {85458},
+            [npcKeys.questEnds] = {85457, 85511},
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Truthbearer",
+        },
+        [231652] = { -- (DNT) Dorian : https://wowhead.com/forever/npc=231652/dnt-dorian
+            [npcKeys.name] = "(DNT) Dorian",
+        },
+        [231661] = { -- Rahuz : https://wowhead.com/forever/npc=231661/rahuz
+            [npcKeys.name] = "Rahuz",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Scorned Student",
+        },
+        [231678] = { -- (DNT) Invisible Stalker : https://wowhead.com/forever/npc=231678/dnt-invisible-stalker
+            [npcKeys.name] = "(DNT) Invisible Stalker",
+        },
+        [231691] = { -- Beam Stalker I : https://wowhead.com/forever/npc=231691/beam-stalker-i
+            [npcKeys.name] = "Beam Stalker I",
+        },
+        [231711] = { -- Victor Nefriendius : https://wowhead.com/forever/npc=231711/victor-nefriendius
+            [npcKeys.name] = "Victor Nefriendius",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.zoneID] = zoneIDs.BLACKWING_LAIR,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [231779] = { -- Pedestal : https://wowhead.com/forever/npc=231779/pedestal
+            [npcKeys.name] = "Pedestal",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [231800] = { -- (DNT) Invisible Stalker : https://wowhead.com/forever/npc=231800/dnt-invisible-stalker
+            [npcKeys.name] = "(DNT) Invisible Stalker",
+        },
+        [231810] = { -- Uther : https://wowhead.com/forever/npc=231810/uther
+            [npcKeys.name] = "Uther",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "The Lightbringer",
+        },
+        [231852] = { -- [DNT] : https://wowhead.com/forever/npc=231852/dnt
+            [npcKeys.name] = "[DNT]",
+        },
+        [231853] = { -- (DNT) Invisible Stalker : https://wowhead.com/forever/npc=231853/dnt-invisible-stalker
+            [npcKeys.name] = "(DNT) Invisible Stalker",
+        },
+        [231858] = { -- Storm Mender : https://wowhead.com/forever/npc=231858/storm-mender
+            [npcKeys.name] = "Storm Mender",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.THE_CRYSTAL_VALE,
+        },
+        [231868] = { -- Cyclone Imperator : https://wowhead.com/forever/npc=231868/cyclone-imperator
+            [npcKeys.name] = "Cyclone Imperator",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.THE_CRYSTAL_VALE,
+        },
+        [231871] = { -- Living Storm : https://wowhead.com/forever/npc=231871/living-storm
+            [npcKeys.name] = "Living Storm",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.THE_CRYSTAL_VALE,
+        },
+        [231872] = { -- Thundering Rager : https://wowhead.com/forever/npc=231872/thundering-rager
+            [npcKeys.name] = "Thundering Rager",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.THE_CRYSTAL_VALE,
+        },
+        [231887] = { -- Vale Tempest : https://wowhead.com/forever/npc=231887/vale-tempest
+            [npcKeys.name] = "Vale Tempest",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.THE_CRYSTAL_VALE,
+        },
+        [231979] = { -- [DNT] : https://wowhead.com/forever/npc=231979/dnt
+            [npcKeys.name] = "[DNT]",
+        },
+        [231980] = { -- Shadra : https://wowhead.com/forever/npc=231980/shadra
+            [npcKeys.name] = "Shadra",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.ZUL_GURUB,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Loa of Spiders",
+        },
+        [231982] = { -- Hethiss : https://wowhead.com/forever/npc=231982/hethiss
+            [npcKeys.name] = "Hethiss",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.ZUL_GURUB,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Loa of Snakes",
+        },
+        [231984] = { -- Silithid Darter : https://wowhead.com/forever/npc=231984/silithid-darter
+            [npcKeys.name] = "Silithid Darter",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[1377] = {{38.4, 27.4}, {38.6, 24.6}, {38.8, 26.6}, {39, 28.4}, {39.4, 29.8}, {39.4, 32.6}, {39.8, 26.4}, {39.8, 27}, {39.8, 32}, {40, 24.4}, {40, 33.4}, {40.4, 27.8}, {40.4, 28.6}, {40.4, 30.2}, {40.4, 30.6}, {40.6, 27.2}, {40.6, 29.2}, {40.8, 29.6}, {40.8, 31.4}, {41, 28.4}, {41.2, 25.2}, {41.2, 32}, {41.2, 35.6}, {41.4, 33}, {41.6, 26.4}, {41.6, 27.4}, {41.6, 28.4}, {41.6, 29.6}, {41.8, 28.6}, {41.8, 35.4}, {42, 31.4}, {42, 32.4}, {42.2, 33.8}, {42.4, 33.2}, {42.4, 36.2}, {42.6, 32.4}, {42.8, 33}, {42.8, 33.6}, {43, 35}, {43, 38.2}, {43.4, 35.6}, {43.4, 37.4}, {43.6, 34.2}, {43.6, 34.6}, {43.6, 36}, {43.8, 32.8}, {44.4, 28.4}, {44.4, 37.4}, {44.4, 38.2}, {44.6, 37.8}, {44.8, 33.2}, {45, 36}, {45.2, 34}, {45.2, 37.2}, {45.4, 31.6}, {45.6, 33.8}, {47.6, 27}, {47.6, 32.6}, {48.2, 27.6}, {48.2, 28.8}, {48.2, 31.8}, {48.2, 34.4}, {48.4, 30.8}, {48.6, 33.6}, {48.8, 29.4}, {48.8, 31.6}, {49, 28}, {49, 32.8}, {49.2, 27.4}, {49.2, 29.8}, {49.2, 30.8}, {49.4, 26}, {49.8, 30.6}, {50, 25.6}, {50, 28.4}, {50, 29.2}, {50, 30.4}, {50, 31.8}, {50.2, 26.8}, {50.4, 24.6}, {50.6, 26.8}, {50.6, 29.2}, {50.8, 28.2}, {50.8, 30.2}, {51.2, 20}, {51.2, 23.4}, {51.2, 25.4}, {51.2, 31.4}, {51.4, 23.6}, {51.4, 25.8}, {51.6, 21.8}, {51.6, 23.4}, {51.6, 28.8}, {51.8, 30.6}, {52, 25.8}, {52, 28}, {52, 32.2}, {52.2, 21.4}, {52.2, 24.6}, {52.2, 27.2}, {52.2, 29.6}, {52.4, 23.8}, {52.6, 22.4}, {52.6, 23.4}, {52.6, 24}, {52.8, 24.6}, {52.8, 25.6}, {53, 21}, {53, 29.6}, {53.2, 29.4}, {53.4, 31.4}, {53.8, 23.8}, {53.8, 25.4}, {53.8, 28.8}, {53.8, 32.2}, {54, 28.4}, {54, 29.8}, {54, 30.6}, {54.2, 26.8}, {54.4, 25.6}, {54.6, 30}, {54.8, 27.2}, {54.8, 27.6}, {54.8, 29.4}, {56.2, 26.2}, {56.2, 27}, {56.6, 30.2}, {56.8, 27.8}}},
+            [npcKeys.zoneID] = zoneIDs.SILITHUS,
+        },
+        [231990] = { -- Bethekk : https://wowhead.com/forever/npc=231990/bethekk
+            [npcKeys.name] = "Bethekk",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.ZUL_GURUB,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Loa of Panthers",
+        },
+        [231991] = { -- Shirvallah : https://wowhead.com/forever/npc=231991/shirvallah
+            [npcKeys.name] = "Shirvallah",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.ZUL_GURUB,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Loa of Tigers",
+        },
+        [231992] = { -- Hir'eek : https://wowhead.com/forever/npc=231992/hireek
+            [npcKeys.name] = "Hir'eek",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.ZUL_GURUB,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Loa of Bats",
+        },
+        [231996] = { -- Gonk : https://wowhead.com/forever/npc=231996/gonk
+            [npcKeys.name] = "Gonk",
+            [npcKeys.subName] = "Loa of the Hunt",
+        },
+        [232000] = { -- [DNT] : https://wowhead.com/forever/npc=232000/dnt
+            [npcKeys.name] = "[DNT]",
+        },
+        [232074] = { -- Renegade Felguard : https://wowhead.com/forever/npc=232074/renegade-felguard
+            [npcKeys.name] = "Renegade Felguard",
+            [npcKeys.subName] = "Servant of Az'olgothal",
+        },
+        [232075] = { -- Incubus Enthraller : https://wowhead.com/forever/npc=232075/incubus-enthraller
+            [npcKeys.name] = "Incubus Enthraller",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[618] = {{53.2, 83.8}}},
+            [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+        },
+        [232103] = { -- Black Whelp : https://wowhead.com/forever/npc=232103/black-whelp
+            [npcKeys.name] = "Black Whelp",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.zoneID] = zoneIDs.BLACKWING_LAIR,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [232104] = { -- Bronze Whelp : https://wowhead.com/forever/npc=232104/bronze-whelp
+            [npcKeys.name] = "Bronze Whelp",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.zoneID] = zoneIDs.BLACKWING_LAIR,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [232105] = { -- Red Whelp : https://wowhead.com/forever/npc=232105/red-whelp
+            [npcKeys.name] = "Red Whelp",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.zoneID] = zoneIDs.BLACKWING_LAIR,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [232107] = { -- Blue Whelp : https://wowhead.com/forever/npc=232107/blue-whelp
+            [npcKeys.name] = "Blue Whelp",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.zoneID] = zoneIDs.BLACKWING_LAIR,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [232109] = { -- Green Whelp : https://wowhead.com/forever/npc=232109/green-whelp
+            [npcKeys.name] = "Green Whelp",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.zoneID] = zoneIDs.BLACKWING_LAIR,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [232190] = { -- Spawn of Shadra : https://wowhead.com/forever/npc=232190/spawn-of-shadra
+            [npcKeys.name] = "Spawn of Shadra",
+            [npcKeys.zoneID] = zoneIDs.ZUL_GURUB,
+        },
+        [232215] = { -- Rahuz : https://wowhead.com/forever/npc=232215/rahuz
+            [npcKeys.name] = "Rahuz",
+        },
+        [232216] = { -- Rahuz : https://wowhead.com/forever/npc=232216/rahuz
+            [npcKeys.name] = "Rahuz",
+        },
+        [232223] = { -- Frost Tomb : https://wowhead.com/forever/npc=232223/frost-tomb
+            [npcKeys.name] = "Frost Tomb",
+        },
+        [232270] = { -- Tempest : https://wowhead.com/forever/npc=232270/tempest
+            [npcKeys.name] = "Tempest",
+        },
+        [232286] = { -- BWL : https://wowhead.com/forever/npc=232286/bwl
+            [npcKeys.name] = "BWL",
+        },
+        [232309] = { -- Highlord Demitrian : https://wowhead.com/forever/npc=232309/highlord-demitrian
+            [npcKeys.name] = "Highlord Demitrian",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.THE_CRYSTAL_VALE,
+            [npcKeys.questStarts] = {85441},
+            [npcKeys.questEnds] = {85441, 85442, 85443},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [232335] = { -- Enslaved Spawn of Mar'li : https://wowhead.com/forever/npc=232335/enslaved-spawn-of-marli
+            [npcKeys.name] = "Enslaved Spawn of Mar'li",
+        },
+        [232380] = { -- Weaver : https://wowhead.com/forever/npc=232380/weaver
+            [npcKeys.name] = "Weaver",
+        },
+        [232381] = { -- Valxx Cracklequil : https://wowhead.com/forever/npc=232381/valxx-cracklequil
+            [npcKeys.name] = "Valxx Cracklequil",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[618] = {{60.6, 38}}},
+            [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+            [npcKeys.questStarts] = {85386},
+            [npcKeys.questEnds] = {85385, 85386},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Apprentice Librarian",
+        },
+        [232398] = { -- Primordial Flame : https://wowhead.com/forever/npc=232398/primordial-flame
+            [npcKeys.name] = "Primordial Flame",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[46] = {{15, 55.4}, {15, 56.8}, {15.2, 56.4}, {15.4, 54.4}, {15.4, 57.6}, {15.6, 56.6}, {15.6, 58}, {15.6, 58.8}, {15.8, 53.8}, {16.6, 57.4}, {16.6, 58.2}, {17.4, 55.4}}},
+            [npcKeys.zoneID] = zoneIDs.BURNING_STEPPES,
         },
         [232399] = { -- Outcast Cryomancer : https://wowhead.com/forever/npc=232399/outcast-cryomancer
             [npcKeys.name] = "Outcast Cryomancer",
@@ -3325,11 +9071,448 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[618] = {{63.2, 68.2}, {63.2, 68.6}}},
             [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
         },
+        [232422] = { -- Earth Elemental : https://wowhead.com/forever/npc=232422/earth-elemental
+            [npcKeys.name] = "Earth Elemental",
+        },
+        [232424] = { -- Earth Surger : https://wowhead.com/forever/npc=232424/earth-surger
+            [npcKeys.name] = "Earth Surger",
+        },
+        [232426] = { -- Respawn Stalker : https://wowhead.com/forever/npc=232426/respawn-stalker
+            [npcKeys.name] = "Respawn Stalker",
+        },
+        [232429] = { -- Magical Stone : https://wowhead.com/forever/npc=232429/magical-stone
+            [npcKeys.name] = "Magical Stone",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[46] = {{15, 57}}},
+            [npcKeys.zoneID] = zoneIDs.BURNING_STEPPES,
+        },
+        [232462] = { -- Rowan's Cooler Test Guy : https://wowhead.com/forever/npc=232462/rowans-cooler-test-guy
+            [npcKeys.name] = "Rowan's Cooler Test Guy",
+        },
+        [232466] = { -- Magical Stone : https://wowhead.com/forever/npc=232466/magical-stone
+            [npcKeys.name] = "Magical Stone",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[618] = {{63.2, 68.4}, {63.4, 68.6}}},
+            [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+        },
+        [232467] = { -- Spawn of Mar'li : https://wowhead.com/forever/npc=232467/spawn-of-marli
+            [npcKeys.name] = "Spawn of Mar'li",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.ZUL_GURUB,
+        },
+        [232479] = { -- Kha'damu : https://wowhead.com/forever/npc=232479/khadamu
+            [npcKeys.name] = "Kha'damu",
+            [npcKeys.subName] = "Chosen of the Blood Loa",
+        },
+        [232493] = { -- T2 : https://wowhead.com/forever/npc=232493/t2
+            [npcKeys.name] = "T2",
+            [npcKeys.minLevel] = 27,
+            [npcKeys.maxLevel] = 27,
+        },
+        [232529] = { -- Nandieb : https://wowhead.com/forever/npc=232529/nandieb
+            [npcKeys.name] = "Nandieb",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.STARFALL_BARROW_DEN,
+            [npcKeys.subName] = "Fallen Keeper",
+        },
+        [232532] = { -- Fel Interloper : https://wowhead.com/forever/npc=232532/fel-interloper
+            [npcKeys.name] = "Fel Interloper",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[618] = {{52.2, 55}, {52.8, 56.2}, {53.2, 56.8}, {53.4, 53.6}, {53.6, 54}, {53.6, 56}, {54.2, 50}, {54.4, 55.2}, {54.6, 55.2}, {55.4, 49.2}, {55.6, 49.2}, {55.6, 50}, {56.4, 50.8}, {56.6, 50.2}, {56.6, 50.6}}},
+            [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+        },
+        [232534] = { -- Manathirst Imp : https://wowhead.com/forever/npc=232534/manathirst-imp
+            [npcKeys.name] = "Manathirst Imp",
+            [npcKeys.minLevel] = 56,
+            [npcKeys.maxLevel] = 57,
+            [npcKeys.spawns] = {[618] = {{52.4, 55.4}, {52.4, 55.6}, {52.6, 54.2}, {53, 53.4}, {53.2, 56.8}, {53.4, 54.8}, {53.4, 56.2}, {53.6, 54}, {53.6, 56}, {54.4, 49.8}, {54.4, 55}, {54.6, 49.8}, {54.6, 54.8}, {54.8, 52.4}, {54.8, 54.4}, {55.4, 49.2}, {55.6, 49.4}, {56.4, 50.4}, {56.4, 50.6}, {56.6, 50.4}, {56.6, 50.6}, {57.4, 49.4}, {57.6, 50}}},
+            [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+        },
+        [232538] = { -- Growing Fel Rift : https://wowhead.com/forever/npc=232538/growing-fel-rift
+            [npcKeys.name] = "Growing Fel Rift",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[618] = {{52.4, 54.8}, {52.8, 56.2}, {53.2, 56.8}, {53.4, 53.6}, {53.6, 53.8}, {53.6, 56}, {54.2, 50}, {54.4, 55.2}, {54.6, 55}, {55.4, 49.2}, {55.6, 49.2}, {56.4, 50.6}, {56.6, 50.6}}},
+            [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [232556] = { -- Drake : https://wowhead.com/forever/npc=232556/drake
+            [npcKeys.name] = "Drake",
+        },
+        [232557] = { -- Drake : https://wowhead.com/forever/npc=232557/drake
+            [npcKeys.name] = "Drake",
+        },
+        [232558] = { -- Rampaging Dead : https://wowhead.com/forever/npc=232558/rampaging-dead
+            [npcKeys.name] = "Rampaging Dead",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+        },
+        [232559] = { -- Shambling Dead : https://wowhead.com/forever/npc=232559/shambling-dead
+            [npcKeys.name] = "Shambling Dead",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+        },
+        [232560] = { -- Scourge Footsoldier : https://wowhead.com/forever/npc=232560/scourge-footsoldier
+            [npcKeys.name] = "Scourge Footsoldier",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 59,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+        },
+        [232561] = { -- Dread Spellweaver : https://wowhead.com/forever/npc=232561/dread-spellweaver
+            [npcKeys.name] = "Dread Spellweaver",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 59,
+        },
+        [232562] = { -- Scourge Reaver : https://wowhead.com/forever/npc=232562/scourge-reaver
+            [npcKeys.name] = "Scourge Reaver",
+            [npcKeys.minLevel] = 56,
+            [npcKeys.maxLevel] = 58,
+        },
+        [232564] = { -- Scourge Horror : https://wowhead.com/forever/npc=232564/scourge-horror
+            [npcKeys.name] = "Scourge Horror",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 59,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+        },
+        [232565] = { -- Cult Necromancer : https://wowhead.com/forever/npc=232565/cult-necromancer
+            [npcKeys.name] = "Cult Necromancer",
+            [npcKeys.subName] = "Cult of the Damned",
+        },
+        [232566] = { -- Cult Acolyte : https://wowhead.com/forever/npc=232566/cult-acolyte
+            [npcKeys.name] = "Cult Acolyte",
+            [npcKeys.subName] = "Cult of the Damned",
+        },
+        [232567] = { -- Cult Warrior : https://wowhead.com/forever/npc=232567/cult-warrior
+            [npcKeys.name] = "Cult Warrior",
+            [npcKeys.subName] = "Cult of the Damned",
+        },
+        [232568] = { -- Daughter of Nandieb : https://wowhead.com/forever/npc=232568/daughter-of-nandieb
+            [npcKeys.name] = "Daughter of Nandieb",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.STARFALL_BARROW_DEN,
+        },
+        [232587] = { -- Nefarian : https://wowhead.com/forever/npc=232587/nefarian
+            [npcKeys.name] = "Nefarian",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.BLACKWING_LAIR,
+        },
+        [232596] = { -- Riosus : https://wowhead.com/forever/npc=232596/riosus
+            [npcKeys.name] = "Riosus",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.spawns] = {[11] = {{74.2, 70}}},
+            [npcKeys.zoneID] = zoneIDs.WETLANDS,
+            [npcKeys.questStarts] = {85446, 85453},
+            [npcKeys.questEnds] = {85446, 85447},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [232597] = { -- Mysterious Hooded Figure : https://wowhead.com/forever/npc=232597/mysterious-hooded-figure
+            [npcKeys.name] = "Mysterious Hooded Figure",
+        },
+        [232619] = { -- ZG : https://wowhead.com/forever/npc=232619/zg
+            [npcKeys.name] = "ZG",
+        },
+        [232624] = { -- Krasus : https://wowhead.com/forever/npc=232624/krasus
+            [npcKeys.name] = "Krasus",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.spawns] = {[11] = {{74.4, 70}}},
+            [npcKeys.zoneID] = zoneIDs.WETLANDS,
+            [npcKeys.questStarts] = {85454},
+            [npcKeys.questEnds] = {85453, 85454},
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Consort to the Dragon Queen",
+        },
+        [232625] = { -- Riosustrasz : https://wowhead.com/forever/npc=232625/riosustrasz
+            [npcKeys.name] = "Riosustrasz",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.spawns] = {[11] = {{70.8, 68.4}, {73.6, 65.6}, {73.6, 71.2}, {73.8, 66.8}, {73.8, 68.2}, {73.8, 68.6}, {74.2, 70}}},
+            [npcKeys.zoneID] = zoneIDs.WETLANDS,
+        },
+        [232626] = { -- DNT : https://wowhead.com/forever/npc=232626/dnt
+            [npcKeys.name] = "DNT",
+        },
+        [232627] = { -- Arthas Menethil : https://wowhead.com/forever/npc=232627/arthas-menethil
+            [npcKeys.name] = "Arthas Menethil",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [232628] = { -- Faerie Lamp : https://wowhead.com/forever/npc=232628/faerie-lamp
+            [npcKeys.name] = "Faerie Lamp",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.zoneID] = zoneIDs.STARFALL_BARROW_DEN,
+        },
+        [232629] = { -- [DNT] : https://wowhead.com/forever/npc=232629/dnt
+            [npcKeys.name] = "[DNT]",
+        },
+        [232630] = { -- Son of Nandieb : https://wowhead.com/forever/npc=232630/son-of-nandieb
+            [npcKeys.name] = "Son of Nandieb",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.STARFALL_BARROW_DEN,
+        },
+        [232632] = { -- Azgaloth : https://wowhead.com/forever/npc=232632/azgaloth
+            [npcKeys.name] = "Azgaloth",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+            [npcKeys.subName] = "Lord of the Pit",
+        },
+        [232633] = { -- [DNT] : https://wowhead.com/forever/npc=232633/dnt
+            [npcKeys.name] = "[DNT]",
+        },
+        [232634] = { -- Parasitic Serpent : https://wowhead.com/forever/npc=232634/parasitic-serpent
+            [npcKeys.name] = "Parasitic Serpent",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.zoneID] = zoneIDs.ZUL_GURUB,
+        },
+        [232638] = { -- Zulian Panther : https://wowhead.com/forever/npc=232638/zulian-panther
+            [npcKeys.name] = "Zulian Panther",
+        },
+        [232651] = { -- Blood of the Lightbringer : https://wowhead.com/forever/npc=232651/blood-of-the-lightbringer
+            [npcKeys.name] = "Blood of the Lightbringer",
+        },
+        [232670] = { -- Majordomo Executus : https://wowhead.com/forever/npc=232670/majordomo-executus
+            [npcKeys.name] = "Majordomo Executus",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.MOLTEN_CORE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [232693] = { -- PvP T2 : https://wowhead.com/forever/npc=232693/pvp-t2
+            [npcKeys.name] = "PvP T2",
+        },
+        [232694] = { -- Storm Mender : https://wowhead.com/forever/npc=232694/storm-mender
+            [npcKeys.name] = "Storm Mender",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.THE_CRYSTAL_VALE,
+        },
+        [232708] = { -- Andorhal Farmer : https://wowhead.com/forever/npc=232708/andorhal-farmer
+            [npcKeys.name] = "Andorhal Farmer",
+        },
+        [232709] = { -- Andorhal Farmer : https://wowhead.com/forever/npc=232709/andorhal-farmer
+            [npcKeys.name] = "Andorhal Farmer",
+        },
+        [232710] = { -- Andorhal Resident : https://wowhead.com/forever/npc=232710/andorhal-resident
+            [npcKeys.name] = "Andorhal Resident",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+            [npcKeys.subName] = "Militia",
+        },
+        [232711] = { -- Andorhal Resident : https://wowhead.com/forever/npc=232711/andorhal-resident
+            [npcKeys.name] = "Andorhal Resident",
+        },
+        [232713] = { -- Andorhal Rifleman : https://wowhead.com/forever/npc=232713/andorhal-rifleman
+            [npcKeys.name] = "Andorhal Rifleman",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+        },
+        [232714] = { -- Andorhal Rifleman : https://wowhead.com/forever/npc=232714/andorhal-rifleman
+            [npcKeys.name] = "Andorhal Rifleman",
+        },
+        [232725] = { -- Gavinrad the Dire : https://wowhead.com/forever/npc=232725/gavinrad-the-dire
+            [npcKeys.name] = "Gavinrad the Dire",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Champions of Peace",
+        },
+        [232729] = { -- Sage Truthbearer : https://wowhead.com/forever/npc=232729/sage-truthbearer
+            [npcKeys.name] = "Sage Truthbearer",
+            [npcKeys.subName] = "Champions of Truth",
+        },
+        [232731] = { -- Xirath : https://wowhead.com/forever/npc=232731/xirath
+            [npcKeys.name] = "Xirath",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 58,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Manathirst Imp",
+        },
+        [232741] = { -- Silithid Darter : https://wowhead.com/forever/npc=232741/silithid-darter
+            [npcKeys.name] = "Silithid Darter",
+        },
+        [232744] = { -- Ballador the Bright : https://wowhead.com/forever/npc=232744/ballador-the-bright
+            [npcKeys.name] = "Ballador the Bright",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Champions of Light",
+        },
+        [232746] = { -- Paladin : https://wowhead.com/forever/npc=232746/paladin
+            [npcKeys.name] = "Paladin",
+            [npcKeys.subName] = "Knights of the Silver Hand",
+        },
+        [232747] = { -- Paladin : https://wowhead.com/forever/npc=232747/paladin
+            [npcKeys.name] = "Paladin",
+            [npcKeys.subName] = "Knights of the Silver Hand",
+        },
+        [232752] = { -- Deathly Steed : https://wowhead.com/forever/npc=232752/deathly-steed
+            [npcKeys.name] = "Deathly Steed",
+        },
+        [232754] = { -- Rotting Ghoul : https://wowhead.com/forever/npc=232754/rotting-ghoul
+            [npcKeys.name] = "Rotting Ghoul",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+        },
+        [232755] = { -- Van Amburgh : https://wowhead.com/forever/npc=232755/van-amburgh
+            [npcKeys.name] = "Van Amburgh",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[490] = {{22.4, 33.2}, {22.6, 33.4}, {23.6, 33}}},
+            [npcKeys.zoneID] = zoneIDs.UN_GORO_CRATER,
+        },
+        [232756] = { -- Hungry Dead : https://wowhead.com/forever/npc=232756/hungry-dead
+            [npcKeys.name] = "Hungry Dead",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+        },
+        [232775] = { -- Paladin : https://wowhead.com/forever/npc=232775/paladin
+            [npcKeys.name] = "Paladin",
+            [npcKeys.subName] = "Knights of the Silver Hand",
+        },
+        [232778] = { -- Rotting Ghoul : https://wowhead.com/forever/npc=232778/rotting-ghoul
+            [npcKeys.name] = "Rotting Ghoul",
+        },
+        [232781] = { -- Towering Abomination : https://wowhead.com/forever/npc=232781/towering-abomination
+            [npcKeys.name] = "Towering Abomination",
+        },
+        [232799] = { -- Silithid Darter : https://wowhead.com/forever/npc=232799/silithid-darter
+            [npcKeys.name] = "Silithid Darter",
+        },
+        [232802] = { -- Doan Karhan : https://wowhead.com/forever/npc=232802/doan-karhan
+            [npcKeys.name] = "Doan Karhan",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {85485, 85486, 85505, 85506},
+            [npcKeys.questEnds] = {85468, 85485, 85486, 85505},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [232816] = { -- Bearthold : https://wowhead.com/forever/npc=232816/bearthold
+            [npcKeys.name] = "Bearthold",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[490] = {{22.4, 33.2}, {23.4, 32.2}, {23.4, 33.2}, {23.8, 33}}},
+            [npcKeys.zoneID] = zoneIDs.UN_GORO_CRATER,
+        },
+        [232817] = { -- Roary : https://wowhead.com/forever/npc=232817/roary
+            [npcKeys.name] = "Roary",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[490] = {{23, 33.2}, {23, 33.6}, {24, 32.4}, {24, 32.8}}},
+            [npcKeys.zoneID] = zoneIDs.UN_GORO_CRATER,
+        },
+        [232818] = { -- Anne Tenna : https://wowhead.com/forever/npc=232818/anne-tenna
+            [npcKeys.name] = "Anne Tenna",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[490] = {{22.2, 33}, {22.4, 33.6}, {22.6, 33.2}, {23, 31.6}, {23.2, 33.6}, {23.6, 30.6}}},
+            [npcKeys.zoneID] = zoneIDs.UN_GORO_CRATER,
+        },
+        [232826] = { -- Causality Glitch : https://wowhead.com/forever/npc=232826/causality-glitch
+            [npcKeys.name] = "Causality Glitch",
+        },
+        [232848] = { -- Manathirst Imp : https://wowhead.com/forever/npc=232848/manathirst-imp
+            [npcKeys.name] = "Manathirst Imp",
+            [npcKeys.minLevel] = 56,
+            [npcKeys.maxLevel] = 57,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+        },
+        [232853] = { -- Xirath : https://wowhead.com/forever/npc=232853/xirath
+            [npcKeys.name] = "Xirath",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 58,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.subName] = "Manathirst Imp",
+        },
+        [232854] = { -- Captured Silithid Darter : https://wowhead.com/forever/npc=232854/captured-silithid-darter
+            [npcKeys.name] = "Captured Silithid Darter",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[1377] = {{49.8, 36.8}}},
+            [npcKeys.zoneID] = zoneIDs.SILITHUS,
+        },
+        [232855] = { -- Prismatic Elemental : https://wowhead.com/forever/npc=232855/prismatic-elemental
+            [npcKeys.name] = "Prismatic Elemental",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.spawns] = {[46] = {{37.4, 30.8}, {38, 29.4}, {38, 31}, {38.2, 32.6}, {38.4, 30.4}, {38.4, 31.6}, {38.6, 31.6}, {38.8, 30.2}, {38.8, 30.6}, {39.6, 30}, {39.8, 30.8}, {40, 29.4}}},
+            [npcKeys.zoneID] = zoneIDs.BURNING_STEPPES,
+        },
+        [232867] = { -- Epic Class Items : https://wowhead.com/forever/npc=232867/epic-class-items
+            [npcKeys.name] = "Epic Class Items",
+        },
+        [232869] = { -- Thunderaan Items : https://wowhead.com/forever/npc=232869/thunderaan-items
+            [npcKeys.name] = "Thunderaan Items",
+        },
+        [232875] = { -- Abandoned Voidwalker : https://wowhead.com/forever/npc=232875/abandoned-voidwalker
+            [npcKeys.name] = "Abandoned Voidwalker",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 58,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+        },
+        [232884] = { -- Cult of the Damned Sacrifice : https://wowhead.com/forever/npc=232884/cult-of-the-damned-sacrifice
+            [npcKeys.name] = "Cult of the Damned Sacrifice",
+            [npcKeys.minLevel] = 59,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+        },
+        [232886] = { -- Des'Altek : https://wowhead.com/forever/npc=232886/desaltek
+            [npcKeys.name] = "Des'Altek",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [232892] = { -- [DNT] : https://wowhead.com/forever/npc=232892/dnt
+            [npcKeys.name] = "[DNT]",
+        },
+        [232896] = { -- Ravenous Felhound : https://wowhead.com/forever/npc=232896/ravenous-felhound
+            [npcKeys.name] = "Ravenous Felhound",
+            [npcKeys.minLevel] = 59,
+            [npcKeys.maxLevel] = 59,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+        },
+        [232899] = { -- Large Fel Rift : https://wowhead.com/forever/npc=232899/large-fel-rift
+            [npcKeys.name] = "Large Fel Rift",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
         [232900] = { -- Cursed Mage : https://wowhead.com/forever/npc=232900/cursed-mage
             [npcKeys.name] = "Cursed Mage",
             [npcKeys.minLevel] = 55,
             [npcKeys.maxLevel] = 56,
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+        },
+        [232903] = { -- Shadowmage : https://wowhead.com/forever/npc=232903/shadowmage
+            [npcKeys.name] = "Shadowmage",
+            [npcKeys.minLevel] = 59,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.subName] = "Cult of the Damned",
         },
         [232912] = { -- Ada Darkhardt : https://wowhead.com/forever/npc=232912/ada-darkhardt
             [npcKeys.name] = "Ada Darkhardt",
@@ -3348,14 +9531,92 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "The Lightbringer",
         },
+        [232921] = { -- Spawn of Shadra : https://wowhead.com/forever/npc=232921/spawn-of-shadra
+            [npcKeys.name] = "Spawn of Shadra",
+        },
+        [232922] = { -- Aeonas : https://wowhead.com/forever/npc=232922/aeonas
+            [npcKeys.name] = "Aeonas",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[28] = {{46.8, 69.8}, {47, 69.4}, {48, 71.2}, {48.2, 71.6}}},
+            [npcKeys.zoneID] = zoneIDs.WESTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Former Paladin of the Silver Hand",
+        },
+        [232923] = { -- [DNT] : https://wowhead.com/forever/npc=232923/dnt
+            [npcKeys.name] = "[DNT]",
+        },
+        [232924] = { -- Doan Karhan : https://wowhead.com/forever/npc=232924/doan-karhan
+            [npcKeys.name] = "Doan Karhan",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[331] = {{84.8, 70.4}, {84.8, 70.6}}},
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE,
+            [npcKeys.questStarts] = {85506},
+            [npcKeys.questEnds] = {85506},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [232926] = { -- Frigid Wisp : https://wowhead.com/forever/npc=232926/frigid-wisp
+            [npcKeys.name] = "Frigid Wisp",
+        },
+        [232928] = { -- Fallen Leaf Shambler : https://wowhead.com/forever/npc=232928/fallen-leaf-shambler
+            [npcKeys.name] = "Fallen Leaf Shambler",
+        },
         [232929] = { -- Gregory : https://wowhead.com/forever/npc=232929/gregory
             [npcKeys.name] = "Gregory",
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[618] = {{53.4, 83.6}}},
             [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+            [npcKeys.questStarts] = {85063, 85064},
+            [npcKeys.questEnds] = {85063, 85458},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Truthbearer",
+        },
+        [232930] = { -- Force of Nature : https://wowhead.com/forever/npc=232930/force-of-nature
+            [npcKeys.name] = "Force of Nature",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 50,
+            [npcKeys.zoneID] = zoneIDs.STARFALL_BARROW_DEN,
+        },
+        [232931] = { -- Poisoned Sprig : https://wowhead.com/forever/npc=232931/poisoned-sprig
+            [npcKeys.name] = "Poisoned Sprig",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.STARFALL_BARROW_DEN,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [232932] = { -- Gregory : https://wowhead.com/forever/npc=232932/gregory
+            [npcKeys.name] = "Gregory",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[28] = {{39.4, 67.2}, {39.6, 67.2}}},
+            [npcKeys.zoneID] = zoneIDs.WESTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {85065, 85067, 85091},
+            [npcKeys.questEnds] = {85064, 85066, 85067, 85090},
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Truthbearer",
+        },
+        [232936] = { -- Sprig of Growth : https://wowhead.com/forever/npc=232936/sprig-of-growth
+            [npcKeys.name] = "Sprig of Growth",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.STARFALL_BARROW_DEN,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [232937] = { -- Sprig of Restoration : https://wowhead.com/forever/npc=232937/sprig-of-restoration
+            [npcKeys.name] = "Sprig of Restoration",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.STARFALL_BARROW_DEN,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [232938] = { -- Sprig of Healing : https://wowhead.com/forever/npc=232938/sprig-of-healing
+            [npcKeys.name] = "Sprig of Healing",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.STARFALL_BARROW_DEN,
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [232939] = { -- Felguard Elite : https://wowhead.com/forever/npc=232939/felguard-elite
             [npcKeys.name] = "Felguard Elite",
@@ -3371,6 +9632,212 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[618] = {{53.2, 83.8}}},
             [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
         },
+        [232942] = { -- Hulking Doomguard : https://wowhead.com/forever/npc=232942/hulking-doomguard
+            [npcKeys.name] = "Hulking Doomguard",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[618] = {{53.2, 83.8}}},
+            [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+        },
+        [232943] = { -- Diathorus the Seeker : https://wowhead.com/forever/npc=232943/diathorus-the-seeker
+            [npcKeys.name] = "Diathorus the Seeker",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.spawns] = {[618] = {{53.2, 83.8}}},
+            [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+        },
+        [232945] = { -- Azgaloth : https://wowhead.com/forever/npc=232945/azgaloth
+            [npcKeys.name] = "Azgaloth",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.spawns] = {[618] = {{53.2, 83.6}}},
+            [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+            [npcKeys.subName] = "Lord of the Pit",
+        },
+        [232946] = { -- [DNT] : https://wowhead.com/forever/npc=232946/dnt
+            [npcKeys.name] = "[DNT]",
+        },
+        [232947] = { -- Aeonas : https://wowhead.com/forever/npc=232947/aeonas
+            [npcKeys.name] = "Aeonas",
+            [npcKeys.spawns] = {[28] = {{39.4, 67.4}}},
+            [npcKeys.zoneID] = zoneIDs.WESTERN_PLAGUELANDS,
+            [npcKeys.subName] = "Former Paladin of the Silver Hand",
+        },
+        [232959] = { -- Servant of Caius : https://wowhead.com/forever/npc=232959/servant-of-caius
+            [npcKeys.name] = "Servant of Caius",
+        },
+        [232960] = { -- Aeonas : https://wowhead.com/forever/npc=232960/aeonas
+            [npcKeys.name] = "Aeonas",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+            [npcKeys.questStarts] = {85074},
+            [npcKeys.questEnds] = {85068},
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [232961] = { -- [DNT] : https://wowhead.com/forever/npc=232961/dnt
+            [npcKeys.name] = "[DNT]",
+        },
+        [232993] = { -- [DNT] : https://wowhead.com/forever/npc=232993/dnt
+            [npcKeys.name] = "[DNT]",
+        },
+        [232994] = { -- Burning Blade Stalker : https://wowhead.com/forever/npc=232994/burning-blade-stalker
+            [npcKeys.name] = "Burning Blade Stalker",
+        },
+        [232995] = { -- Ada Darkhardt : https://wowhead.com/forever/npc=232995/ada-darkhardt
+            [npcKeys.name] = "Ada Darkhardt",
+            [npcKeys.minLevel] = 55,
+            [npcKeys.maxLevel] = 55,
+            [npcKeys.spawns] = {[618] = {{53.2, 83.6}}},
+            [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [232996] = { -- Chromie : https://wowhead.com/forever/npc=232996/chromie
+            [npcKeys.name] = "Chromie",
+        },
+        [232997] = { -- Aeonas : https://wowhead.com/forever/npc=232997/aeonas
+            [npcKeys.name] = "Aeonas",
+            [npcKeys.subName] = "Former Paladin of the Silver Hand",
+        },
+        [232998] = { -- Aeonas : https://wowhead.com/forever/npc=232998/aeonas
+            [npcKeys.name] = "Aeonas",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+            [npcKeys.questStarts] = {85087},
+            [npcKeys.questEnds] = {85074},
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Former Paladin of the Silver Hand",
+        },
+        [233017] = { -- Bearthold : https://wowhead.com/forever/npc=233017/bearthold
+            [npcKeys.name] = "Bearthold",
+        },
+        [233027] = { -- Bearthold : https://wowhead.com/forever/npc=233027/bearthold
+            [npcKeys.name] = "Bearthold",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[490] = {{22.4, 33}, {23.4, 32.6}}},
+            [npcKeys.zoneID] = zoneIDs.UN_GORO_CRATER,
+        },
+        [233029] = { -- Roary : https://wowhead.com/forever/npc=233029/roary
+            [npcKeys.name] = "Roary",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[490] = {{22.4, 32.8}}},
+            [npcKeys.zoneID] = zoneIDs.UN_GORO_CRATER,
+        },
+        [233031] = { -- Anne Tenna : https://wowhead.com/forever/npc=233031/anne-tenna
+            [npcKeys.name] = "Anne Tenna",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[490] = {{22.4, 33.2}, {22.8, 33.6}, {23.4, 32.2}, {23.4, 33.2}}},
+            [npcKeys.zoneID] = zoneIDs.UN_GORO_CRATER,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [233033] = { -- Rotgut : https://wowhead.com/forever/npc=233033/rotgut
+            [npcKeys.name] = "Rotgut",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+        },
+        [233047] = { -- Andorhal Resident : https://wowhead.com/forever/npc=233047/andorhal-resident
+            [npcKeys.name] = "Andorhal Resident",
+            [npcKeys.subName] = "Militia",
+        },
+        [233048] = { -- Shambling Dead : https://wowhead.com/forever/npc=233048/shambling-dead
+            [npcKeys.name] = "Shambling Dead",
+        },
+        [233049] = { -- Searing Ghoul : https://wowhead.com/forever/npc=233049/searing-ghoul
+            [npcKeys.name] = "Searing Ghoul",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 59,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+        },
+        [233084] = { -- Estelenn : https://wowhead.com/forever/npc=233084/estelenn
+            [npcKeys.name] = "Estelenn",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[490] = {{23.4, 33.2}, {23.6, 33.2}}},
+            [npcKeys.zoneID] = zoneIDs.UN_GORO_CRATER,
+            [npcKeys.questStarts] = {85251, 85559},
+            [npcKeys.questEnds] = {85250, 85251},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [233087] = { -- T2 Alt : https://wowhead.com/forever/npc=233087/t2-alt
+            [npcKeys.name] = "T2 Alt",
+            [npcKeys.minLevel] = 27,
+            [npcKeys.maxLevel] = 27,
+        },
+        [233093] = { -- Magma Elemental : https://wowhead.com/forever/npc=233093/magma-elemental
+            [npcKeys.name] = "Magma Elemental",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.spawns] = {[46] = {{37.4, 30.8}, {38, 29.4}, {38, 29.6}, {38, 32.4}, {38.2, 32.6}, {38.2, 34.4}, {38.4, 31.4}, {38.6, 30.6}, {38.6, 32.2}, {38.8, 27.4}, {39, 28}, {39, 30}, {39.6, 28.8}, {40, 30.8}, {40.2, 30.4}, {43.8, 32.4}, {45.6, 34.8}}},
+            [npcKeys.zoneID] = zoneIDs.BURNING_STEPPES,
+        },
+        [233138] = { -- Aeonas : https://wowhead.com/forever/npc=233138/aeonas
+            [npcKeys.name] = "Aeonas",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+            [npcKeys.questStarts] = {85090},
+            [npcKeys.questEnds] = {85087},
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Former Paladin of the Silver Hand",
+        },
+        [233158] = { -- Azgaloth : https://wowhead.com/forever/npc=233158/azgaloth
+            [npcKeys.name] = "Azgaloth",
+            [npcKeys.subName] = "Lord of the Pit",
+        },
+        [233159] = { -- Gregory : https://wowhead.com/forever/npc=233159/gregory
+            [npcKeys.name] = "Gregory",
+            [npcKeys.subName] = "Truthbearer",
+        },
+        [233165] = { -- Gregory : https://wowhead.com/forever/npc=233165/gregory
+            [npcKeys.name] = "Gregory",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Truthbearer",
+        },
+        [233178] = { -- Duke Hydraxis : https://wowhead.com/forever/npc=233178/duke-hydraxis
+            [npcKeys.name] = "Duke Hydraxis",
+        },
+        [233206] = { -- Aeonas : https://wowhead.com/forever/npc=233206/aeonas
+            [npcKeys.name] = "Aeonas",
+            [npcKeys.subName] = "Former Paladin of the Silver Hand",
+        },
+        [233234] = { -- Chained Spirit : https://wowhead.com/forever/npc=233234/chained-spirit
+            [npcKeys.name] = "Chained Spirit",
+            [npcKeys.spawns] = {[11] = {{74.8, 72.2}}},
+            [npcKeys.zoneID] = zoneIDs.WETLANDS,
+        },
+        [233246] = { -- Breath Stalker : https://wowhead.com/forever/npc=233246/breath-stalker
+            [npcKeys.name] = "Breath Stalker",
+        },
+        [233249] = { -- Estelenn : https://wowhead.com/forever/npc=233249/estelenn
+            [npcKeys.name] = "Estelenn",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[490] = {{21.4, 36.8}, {22.2, 35.4}, {22.2, 35.6}, {23.4, 33.4}, {23.4, 33.6}, {23.6, 33.2}}},
+            [npcKeys.zoneID] = zoneIDs.UN_GORO_CRATER,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [233264] = { -- Red Whelp : https://wowhead.com/forever/npc=233264/red-whelp
+            [npcKeys.name] = "Red Whelp",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[11] = {{73.6, 68.2}, {73.8, 68.6}}},
+            [npcKeys.zoneID] = zoneIDs.WETLANDS,
+        },
+        [233308] = { -- Undermine Coin : https://wowhead.com/forever/npc=233308/undermine-coin
+            [npcKeys.name] = "Undermine Coin",
+        },
+        [233315] = { -- Beldruk Doombrow : https://wowhead.com/forever/npc=233315/beldruk-doombrow
+            [npcKeys.name] = "Beldruk Doombrow",
+            [npcKeys.zoneID] = zoneIDs.SCARLET_MONASTERY,
+        },
         [233335] = { -- Rune Broker : https://wowhead.com/forever/npc=233335/rune-broker
             [npcKeys.name] = "Rune Broker",
             [npcKeys.minLevel] = 60,
@@ -3379,6 +9846,17 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 203745; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
+        [233382] = { -- Korialstrasz : https://wowhead.com/forever/npc=233382/korialstrasz
+            [npcKeys.name] = "Korialstrasz",
+            [npcKeys.spawns] = {[11] = {{74.2, 70}}},
+            [npcKeys.zoneID] = zoneIDs.WETLANDS,
+        },
+        [233383] = { -- DNT : https://wowhead.com/forever/npc=233383/dnt
+            [npcKeys.name] = "DNT",
+        },
+        [233414] = { -- The Cleaner : https://wowhead.com/forever/npc=233414/the-cleaner
+            [npcKeys.name] = "The Cleaner",
+        },
         [233428] = { -- Rune Broker : https://wowhead.com/forever/npc=233428/rune-broker
             [npcKeys.name] = "Rune Broker",
             [npcKeys.minLevel] = 60,
@@ -3386,6 +9864,361 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[14] = {{42.8, 68}}, [85] = {{31.4, 66.4}, {31.4, 66.6}}, [1497] = {{79.2, 19.4}, {79.4, 19.8}, {79.6, 19.4}, {79.6, 20}, {79.8, 20.6}}, [1637] = {{49.2, 46.8}, {49.4, 46.2}, {49.6, 46.2}}, [1638] = {{22.6, 12.8}, {22.8, 13.8}}},
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 203745; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [233574] = { -- Bronze Whelp : https://wowhead.com/forever/npc=233574/bronze-whelp
+            [npcKeys.name] = "Bronze Whelp",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [233575] = { -- Aeonas : https://wowhead.com/forever/npc=233575/aeonas
+            [npcKeys.name] = "Aeonas",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.THE_BURNING_OF_ANDORHAL,
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Former Paladin of the Silver Hand",
+        },
+        [233776] = { -- Gregory : https://wowhead.com/forever/npc=233776/gregory
+            [npcKeys.name] = "Gregory",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.DEMON_FALL_CANYON,
+            [npcKeys.questStarts] = {85092},
+            [npcKeys.questEnds] = {85091, 85092},
+            [npcKeys.friendlyToFaction] = "A",
+            [npcKeys.subName] = "Truthbearer",
+        },
+        [233988] = { -- Moonkin : https://wowhead.com/forever/npc=233988/moonkin
+            [npcKeys.name] = "Moonkin",
+        },
+        [234193] = { -- Gilded Scarab : https://wowhead.com/forever/npc=234193/gilded-scarab
+            [npcKeys.name] = "Gilded Scarab",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.zoneID] = zoneIDs.AHN_QIRAJ,
+        },
+        [234472] = { -- Argent Squire : https://wowhead.com/forever/npc=234472/argent-squire
+            [npcKeys.name] = "Argent Squire",
+        },
+        [234539] = { -- Selestrasza : https://wowhead.com/forever/npc=234539/selestrasza
+            [npcKeys.name] = "Selestrasza",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.AHN_QIRAJ,
+            [npcKeys.questStarts] = {86326},
+            [npcKeys.questEnds] = {86326},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Brood of Alexstrasza",
+        },
+        [234542] = { -- Twilight Qiraji Battle Tank : https://wowhead.com/forever/npc=234542/twilight-qiraji-battle-tank
+            [npcKeys.name] = "Twilight Qiraji Battle Tank",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 2,
+            [npcKeys.zoneID] = zoneIDs.AHN_QIRAJ,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [234543] = { -- Orange Qiraji Battle Tank : https://wowhead.com/forever/npc=234543/orange-qiraji-battle-tank
+            [npcKeys.name] = "Orange Qiraji Battle Tank",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 2,
+            [npcKeys.zoneID] = zoneIDs.AHN_QIRAJ,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [234544] = { -- Light Green Qiraji Battle Tank : https://wowhead.com/forever/npc=234544/light-green-qiraji-battle-tank
+            [npcKeys.name] = "Light Green Qiraji Battle Tank",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 2,
+            [npcKeys.zoneID] = zoneIDs.AHN_QIRAJ,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [234545] = { -- Light Blue Qiraji Battle Tank : https://wowhead.com/forever/npc=234545/light-blue-qiraji-battle-tank
+            [npcKeys.name] = "Light Blue Qiraji Battle Tank",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 2,
+            [npcKeys.zoneID] = zoneIDs.AHN_QIRAJ,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [234546] = { -- Dark Blue Qiraji Battle Tank : https://wowhead.com/forever/npc=234546/dark-blue-qiraji-battle-tank
+            [npcKeys.name] = "Dark Blue Qiraji Battle Tank",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 2,
+            [npcKeys.zoneID] = zoneIDs.AHN_QIRAJ,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [234577] = { -- Ancient of War : https://wowhead.com/forever/npc=234577/ancient-of-war
+            [npcKeys.name] = "Ancient of War",
+        },
+        [234651] = { -- Tamed Silithid Tank : https://wowhead.com/forever/npc=234651/tamed-silithid-tank
+            [npcKeys.name] = "Tamed Silithid Tank",
+        },
+        [234752] = { -- Visions of the Qiraji Prophets : https://wowhead.com/forever/npc=234752/visions-of-the-qiraji-prophets
+            [npcKeys.name] = "Visions of the Qiraji Prophets",
+        },
+        [234755] = { -- Qiraji Mindslayer : https://wowhead.com/forever/npc=234755/qiraji-mindslayer
+            [npcKeys.name] = "Qiraji Mindslayer",
+        },
+        [234762] = { -- Qiraji Mindslayer : https://wowhead.com/forever/npc=234762/qiraji-mindslayer
+            [npcKeys.name] = "Qiraji Mindslayer",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.AHN_QIRAJ,
+        },
+        [234794] = { -- STV PvP P6 : https://wowhead.com/forever/npc=234794/stv-pvp-p6
+            [npcKeys.name] = "STV PvP P6",
+        },
+        [234798] = { -- Qiraji Champion : https://wowhead.com/forever/npc=234798/qiraji-champion
+            [npcKeys.name] = "Qiraji Champion",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.zoneID] = zoneIDs.AHN_QIRAJ,
+        },
+        [234800] = { -- Qiraji Slayer : https://wowhead.com/forever/npc=234800/qiraji-slayer
+            [npcKeys.name] = "Qiraji Slayer",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.AHN_QIRAJ,
+        },
+        [234814] = { -- Qiraji Warlord : https://wowhead.com/forever/npc=234814/qiraji-warlord
+            [npcKeys.name] = "Qiraji Warlord",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.zoneID] = zoneIDs.AHN_QIRAJ,
+        },
+        [234830] = { -- Anubisath Defender : https://wowhead.com/forever/npc=234830/anubisath-defender
+            [npcKeys.name] = "Anubisath Defender",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.AHN_QIRAJ,
+        },
+        [234880] = { -- Emeriss : https://wowhead.com/forever/npc=234880/emeriss
+            [npcKeys.name] = "Emeriss",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+        },
+        [234917] = { -- Guise of the False Prophet : https://wowhead.com/forever/npc=234917/guise-of-the-false-prophet
+            [npcKeys.name] = "Guise of the False Prophet",
+        },
+        [234954] = { -- Alliance Druid : https://wowhead.com/forever/npc=234954/alliance-druid
+            [npcKeys.name] = "Alliance Druid",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [234961] = { -- Alliance Hunter : https://wowhead.com/forever/npc=234961/alliance-hunter
+            [npcKeys.name] = "Alliance Hunter",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [234963] = { -- Alliance Mage : https://wowhead.com/forever/npc=234963/alliance-mage
+            [npcKeys.name] = "Alliance Mage",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [234969] = { -- Alliance Paladin : https://wowhead.com/forever/npc=234969/alliance-paladin
+            [npcKeys.name] = "Alliance Paladin",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [234973] = { -- Alliance Priest : https://wowhead.com/forever/npc=234973/alliance-priest
+            [npcKeys.name] = "Alliance Priest",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [234987] = { -- Alliance Rogue : https://wowhead.com/forever/npc=234987/alliance-rogue
+            [npcKeys.name] = "Alliance Rogue",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [234990] = { -- Alliance Warlock : https://wowhead.com/forever/npc=234990/alliance-warlock
+            [npcKeys.name] = "Alliance Warlock",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [234996] = { -- Alliance Warrior : https://wowhead.com/forever/npc=234996/alliance-warrior
+            [npcKeys.name] = "Alliance Warrior",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "H",
+        },
+        [235008] = { -- Horde Shaman : https://wowhead.com/forever/npc=235008/horde-shaman
+            [npcKeys.name] = "Horde Shaman",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [235042] = { -- Horde Warrior : https://wowhead.com/forever/npc=235042/horde-warrior
+            [npcKeys.name] = "Horde Warrior",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [235043] = { -- Horde Warlock : https://wowhead.com/forever/npc=235043/horde-warlock
+            [npcKeys.name] = "Horde Warlock",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [235044] = { -- Horde Rogue : https://wowhead.com/forever/npc=235044/horde-rogue
+            [npcKeys.name] = "Horde Rogue",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [235047] = { -- Horde Priest : https://wowhead.com/forever/npc=235047/horde-priest
+            [npcKeys.name] = "Horde Priest",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [235048] = { -- Horde Mage : https://wowhead.com/forever/npc=235048/horde-mage
+            [npcKeys.name] = "Horde Mage",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [235049] = { -- Horde Hunter : https://wowhead.com/forever/npc=235049/horde-hunter
+            [npcKeys.name] = "Horde Hunter",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [235050] = { -- Horde Druid : https://wowhead.com/forever/npc=235050/horde-druid
+            [npcKeys.name] = "Horde Druid",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [235164] = { -- G00 DV-1B3 Generator : https://wowhead.com/forever/npc=235164/g00-dv-1b3-generator
+            [npcKeys.name] = "G00 DV-1B3 Generator",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2880; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
+        },
+        [235180] = { -- Lethon : https://wowhead.com/forever/npc=235180/lethon
+            [npcKeys.name] = "Lethon",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+        },
+        [235197] = { -- Taerar : https://wowhead.com/forever/npc=235197/taerar
+            [npcKeys.name] = "Taerar",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE_INSTANCE,
+        },
+        [235207] = { -- Unyielding Shade of Taerar : https://wowhead.com/forever/npc=235207/unyielding-shade-of-taerar
+            [npcKeys.name] = "Unyielding Shade of Taerar",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE_INSTANCE,
+        },
+        [235208] = { -- Wandering Shade of Taerar : https://wowhead.com/forever/npc=235208/wandering-shade-of-taerar
+            [npcKeys.name] = "Wandering Shade of Taerar",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE_INSTANCE,
+        },
+        [235209] = { -- Corrosive Shade of Taerar : https://wowhead.com/forever/npc=235209/corrosive-shade-of-taerar
+            [npcKeys.name] = "Corrosive Shade of Taerar",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.ASHENVALE_INSTANCE,
+        },
+        [235232] = { -- Ysondre : https://wowhead.com/forever/npc=235232/ysondre
+            [npcKeys.name] = "Ysondre",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+        },
+        [235251] = { -- Bubbles : https://wowhead.com/forever/npc=235251/bubbles
+            [npcKeys.name] = "Bubbles",
+            [npcKeys.minLevel] = 38,
+            [npcKeys.maxLevel] = 38,
+            [npcKeys.spawns] = {[33] = {{28.4, 75.4}}},
+            [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Toy Vendor",
+            [npcKeys.npcFlags] = 16384, -- Assumption: assumptions/npc_services.toml; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
+        },
+        [235277] = { -- T2.5 : https://wowhead.com/forever/npc=235277/t2-5
+            [npcKeys.name] = "T2.5",
+        },
+        [235282] = { -- AQ Small Set : https://wowhead.com/forever/npc=235282/aq-small-set
+            [npcKeys.name] = "AQ Small Set",
+        },
+        [235284] = { -- AQ Crafted : https://wowhead.com/forever/npc=235284/aq-crafted
+            [npcKeys.name] = "AQ Crafted",
+        },
+        [235285] = { -- AQ Big : https://wowhead.com/forever/npc=235285/aq-big
+            [npcKeys.name] = "AQ Big",
+        },
+        [235286] = { -- AQ Small : https://wowhead.com/forever/npc=235286/aq-small
+            [npcKeys.name] = "AQ Small",
+        },
+        [235287] = { -- DMF P6 : https://wowhead.com/forever/npc=235287/dmf-p6
+            [npcKeys.name] = "DMF P6",
+        },
+        [235288] = { -- Brood Rings : https://wowhead.com/forever/npc=235288/brood-rings
+            [npcKeys.name] = "Brood Rings",
+        },
+        [235289] = { -- Dragons of Nightmare : https://wowhead.com/forever/npc=235289/dragons-of-nightmare
+            [npcKeys.name] = "Dragons of Nightmare",
+        },
+        [235291] = { -- Vanquished Tentacle : https://wowhead.com/forever/npc=235291/vanquished-tentacle
+            [npcKeys.name] = "Vanquished Tentacle",
+        },
+        [235325] = { -- Fathom Dweller : https://wowhead.com/forever/npc=235325/fathom-dweller
+            [npcKeys.name] = "Fathom Dweller",
+        },
+        [235326] = { -- Swift Spectral Tiger : https://wowhead.com/forever/npc=235326/swift-spectral-tiger
+            [npcKeys.name] = "Swift Spectral Tiger",
+        },
+        [235327] = { -- Drakonid : https://wowhead.com/forever/npc=235327/drakonid
+            [npcKeys.name] = "Drakonid",
+        },
+        [235328] = { -- Furbolg Form : https://wowhead.com/forever/npc=235328/furbolg-form
+            [npcKeys.name] = "Furbolg Form",
+        },
+        [235396] = { -- Fleuric : https://wowhead.com/forever/npc=235396/fleuric
+            [npcKeys.name] = "Fleuric",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[41] = {{48.8, 67.4}, {48.8, 67.6}}},
+            [npcKeys.zoneID] = zoneIDs.DEADWIND_PASS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Master Demonologist",
+        },
+        [235406] = { -- Xalus Nihilus : https://wowhead.com/forever/npc=235406/xalus-nihilus
+            [npcKeys.name] = "Xalus Nihilus",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.DEADWIND_PASS_SOD,
+            [npcKeys.subName] = "The Demon Within",
+        },
+        [235528] = { -- Eye Tentacle : https://wowhead.com/forever/npc=235528/eye-tentacle
+            [npcKeys.name] = "Eye Tentacle",
+        },
+        [235668] = { -- Eye Tentacle : https://wowhead.com/forever/npc=235668/eye-tentacle
+            [npcKeys.name] = "Eye Tentacle",
+        },
+        [235729] = { -- Treasure Table Test [DNT] : https://wowhead.com/forever/npc=235729/treasure-table-test-dnt
+            [npcKeys.name] = "Treasure Table Test [DNT]",
+        },
+        [235761] = { -- Rank 14 : https://wowhead.com/forever/npc=235761/rank-14
+            [npcKeys.name] = "Rank 14",
+        },
+        [235762] = { -- P6 Undermine Coin : https://wowhead.com/forever/npc=235762/p6-undermine-coin
+            [npcKeys.name] = "P6 Undermine Coin",
+        },
+        [235786] = { -- P6 Quest Items : https://wowhead.com/forever/npc=235786/p6-quest-items
+            [npcKeys.name] = "P6 Quest Items",
         },
         [235812] = { -- Horde Rogue : https://wowhead.com/forever/npc=235812/horde-rogue
             [npcKeys.name] = "Horde Rogue",
@@ -3441,6 +10274,12 @@ function ForeverBaseNpc:Load()
         [235844] = { -- Grand Crusader Dathrohan : https://wowhead.com/forever/npc=235844/grand-crusader-dathrohan
             [npcKeys.name] = "Grand Crusader Dathrohan",
         },
+        [235880] = { -- Blood-Caked Raptor : https://wowhead.com/forever/npc=235880/blood-caked-raptor
+            [npcKeys.name] = "Blood-Caked Raptor",
+        },
+        [235881] = { -- Blood-Caked Tiger : https://wowhead.com/forever/npc=235881/blood-caked-tiger
+            [npcKeys.name] = "Blood-Caked Tiger",
+        },
         [235892] = { -- Prince Halanox : https://wowhead.com/forever/npc=235892/prince-halanox
             [npcKeys.name] = "Prince Halanox",
         },
@@ -3453,11 +10292,42 @@ function ForeverBaseNpc:Load()
         [235909] = { -- Furze : https://wowhead.com/forever/npc=235909/furze
             [npcKeys.name] = "Furze",
         },
+        [235910] = { -- AQ Recipes : https://wowhead.com/forever/npc=235910/aq-recipes
+            [npcKeys.name] = "AQ Recipes",
+        },
         [235912] = { -- Ancient Irontree Walker : https://wowhead.com/forever/npc=235912/ancient-irontree-walker
             [npcKeys.name] = "Ancient Irontree Walker",
         },
+        [236007] = { -- Spirit Shade : https://wowhead.com/forever/npc=236007/spirit-shade
+            [npcKeys.name] = "Spirit Shade",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+        },
+        [236008] = { -- Spirit Shade : https://wowhead.com/forever/npc=236008/spirit-shade
+            [npcKeys.name] = "Spirit Shade",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+        },
         [236028] = { -- Honey Wasp : https://wowhead.com/forever/npc=236028/honey-wasp
             [npcKeys.name] = "Honey Wasp",
+        },
+        [236030] = { -- Runes - Warrior [DNT] : https://wowhead.com/forever/npc=236030/runes-warrior-dnt
+            [npcKeys.name] = "Runes - Warrior [DNT]",
+        },
+        [236034] = { -- Shadowy Figure : https://wowhead.com/forever/npc=236034/shadowy-figure
+            [npcKeys.name] = "Shadowy Figure",
+        },
+        [236075] = { -- [DNT] Purveyor of Madness : https://wowhead.com/forever/npc=236075/dnt-purveyor-of-madness
+            [npcKeys.name] = "[DNT] Purveyor of Madness",
+        },
+        [236077] = { -- Eye Tentacle : https://wowhead.com/forever/npc=236077/eye-tentacle
+            [npcKeys.name] = "Eye Tentacle",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.AHN_QIRAJ,
+        },
+        [236173] = { -- Curse of Madness : https://wowhead.com/forever/npc=236173/curse-of-madness
+            [npcKeys.name] = "Curse of Madness",
         },
         [236400] = { -- Demonic Essence : https://wowhead.com/forever/npc=236400/demonic-essence
             [npcKeys.name] = "Demonic Essence",
@@ -3468,8 +10338,19 @@ function ForeverBaseNpc:Load()
         [236573] = { -- Gatekeeper Rageroar : https://wowhead.com/forever/npc=236573/gatekeeper-rageroar
             [npcKeys.name] = "Gatekeeper Rageroar",
         },
+        [236619] = { -- Void-Touched : https://wowhead.com/forever/npc=236619/void-touched
+            [npcKeys.name] = "Void-Touched",
+        },
+        [236633] = { -- Shadowy Figure : https://wowhead.com/forever/npc=236633/shadowy-figure
+            [npcKeys.name] = "Shadowy Figure",
+        },
         [236770] = { -- Korsa : https://wowhead.com/forever/npc=236770/korsa
             [npcKeys.name] = "Korsa",
+        },
+        [236811] = { -- Demented Druid Spirit : https://wowhead.com/forever/npc=236811/demented-druid-spirit
+            [npcKeys.name] = "Demented Druid Spirit",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
         },
         [236818] = { -- Murloc : https://wowhead.com/forever/npc=236818/murloc
             [npcKeys.name] = "Murloc",
@@ -3477,11 +10358,20 @@ function ForeverBaseNpc:Load()
         [236867] = { -- Legashi Soulstealer : https://wowhead.com/forever/npc=236867/legashi-soulstealer
             [npcKeys.name] = "Legashi Soulstealer",
         },
+        [236869] = { -- Makrinni Razorclaw : https://wowhead.com/forever/npc=236869/makrinni-razorclaw
+            [npcKeys.name] = "Makrinni Razorclaw",
+        },
         [236874] = { -- Legashi Hellraiser : https://wowhead.com/forever/npc=236874/legashi-hellraiser
             [npcKeys.name] = "Legashi Hellraiser",
         },
         [236876] = { -- Legashi Blackguard : https://wowhead.com/forever/npc=236876/legashi-blackguard
             [npcKeys.name] = "Legashi Blackguard",
+        },
+        [236971] = { -- Skeletal Torch : https://wowhead.com/forever/npc=236971/skeletal-torch
+            [npcKeys.name] = "Skeletal Torch",
+        },
+        [236979] = { -- Floating Firebrand : https://wowhead.com/forever/npc=236979/floating-firebrand
+            [npcKeys.name] = "Floating Firebrand",
         },
         [236987] = { -- Satyrweed Quest Dummy : https://wowhead.com/forever/npc=236987/satyrweed-quest-dummy
             [npcKeys.name] = "Satyrweed Quest Dummy",
@@ -3492,8 +10382,46 @@ function ForeverBaseNpc:Load()
         [237007] = { -- Graal : https://wowhead.com/forever/npc=237007/graal
             [npcKeys.name] = "Graal",
         },
+        [237196] = { -- Runes - Druid [DNT] : https://wowhead.com/forever/npc=237196/runes-druid-dnt
+            [npcKeys.name] = "Runes - Druid [DNT]",
+        },
+        [237246] = { -- (DNT) Mimic Stalker : https://wowhead.com/forever/npc=237246/dnt-mimic-stalker
+            [npcKeys.name] = "(DNT) Mimic Stalker",
+        },
         [237318] = { -- Firewater Cauldron : https://wowhead.com/forever/npc=237318/firewater-cauldron
             [npcKeys.name] = "Firewater Cauldron",
+        },
+        [237328] = { -- Dialogues of the Dead : https://wowhead.com/forever/npc=237328/dialogues-of-the-dead
+            [npcKeys.name] = "Dialogues of the Dead",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [237365] = { -- (DNT) Book Stalker : https://wowhead.com/forever/npc=237365/dnt-book-stalker
+            [npcKeys.name] = "(DNT) Book Stalker",
+        },
+        [237374] = { -- Kharon : https://wowhead.com/forever/npc=237374/kharon
+            [npcKeys.name] = "Kharon",
+        },
+        [237410] = { -- (DNT) Light Stalker : https://wowhead.com/forever/npc=237410/dnt-light-stalker
+            [npcKeys.name] = "(DNT) Light Stalker",
+        },
+        [237434] = { -- (DNT) Kharon Stalker : https://wowhead.com/forever/npc=237434/dnt-kharon-stalker
+            [npcKeys.name] = "(DNT) Kharon Stalker",
+        },
+        [237439] = { -- Kharon : https://wowhead.com/forever/npc=237439/kharon
+            [npcKeys.name] = "Kharon",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [237460] = { -- Furious Firebrand : https://wowhead.com/forever/npc=237460/furious-firebrand
+            [npcKeys.name] = "Furious Firebrand",
+        },
+        [237604] = { -- (DNT) Torch Manager Stalker : https://wowhead.com/forever/npc=237604/dnt-torch-manager-stalker
+            [npcKeys.name] = "(DNT) Torch Manager Stalker",
         },
         [237612] = { -- Legashi Cauldron : https://wowhead.com/forever/npc=237612/legashi-cauldron
             [npcKeys.name] = "Legashi Cauldron",
@@ -3503,6 +10431,13 @@ function ForeverBaseNpc:Load()
         },
         [237615] = { -- Stalker : https://wowhead.com/forever/npc=237615/stalker
             [npcKeys.name] = "Stalker",
+        },
+        [237657] = { -- Glacial Fetters : https://wowhead.com/forever/npc=237657/glacial-fetters
+            [npcKeys.name] = "Glacial Fetters",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [237732] = { -- Blackmaw Warrior : https://wowhead.com/forever/npc=237732/blackmaw-warrior
             [npcKeys.name] = "Blackmaw Warrior",
@@ -3522,8 +10457,27 @@ function ForeverBaseNpc:Load()
         [237738] = { -- Blackmaw Ursa : https://wowhead.com/forever/npc=237738/blackmaw-ursa
             [npcKeys.name] = "Blackmaw Ursa",
         },
+        [237752] = { -- (DNT) Affix Manager Stalker : https://wowhead.com/forever/npc=237752/dnt-affix-manager-stalker
+            [npcKeys.name] = "(DNT) Affix Manager Stalker",
+        },
+        [237754] = { -- Egg Sac : https://wowhead.com/forever/npc=237754/egg-sac
+            [npcKeys.name] = "Egg Sac",
+        },
+        [237757] = { -- Skittering Harvester : https://wowhead.com/forever/npc=237757/skittering-harvester
+            [npcKeys.name] = "Skittering Harvester",
+        },
+        [237768] = { -- (DNT) Buff Manager Stalker : https://wowhead.com/forever/npc=237768/dnt-buff-manager-stalker
+            [npcKeys.name] = "(DNT) Buff Manager Stalker",
+        },
         [237769] = { -- Gol'gere Deathmoon : https://wowhead.com/forever/npc=237769/golgere-deathmoon
             [npcKeys.name] = "Gol'gere Deathmoon",
+        },
+        [237773] = { -- Scarlet Inquisitor Caldoran : https://wowhead.com/forever/npc=237773/scarlet-inquisitor-caldoran
+            [npcKeys.name] = "Scarlet Inquisitor Caldoran",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [237810] = { -- Unknown Phantasm : https://wowhead.com/forever/npc=237810/unknown-phantasm
             [npcKeys.name] = "Unknown Phantasm",
@@ -3534,14 +10488,85 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 55,
             [npcKeys.spawns] = {[41] = {{52.2, 34.2}, {52.2, 34.6}}},
             [npcKeys.zoneID] = zoneIDs.DEADWIND_PASS,
+            [npcKeys.questStarts] = {86968, 86971},
+            [npcKeys.questEnds] = {86967, 86971, 86972},
             [npcKeys.friendlyToFaction] = "AH",
+        },
+        [237819] = { -- Injured Adventurer : https://wowhead.com/forever/npc=237819/injured-adventurer
+            [npcKeys.name] = "Injured Adventurer",
+            [npcKeys.minLevel] = 55,
+            [npcKeys.maxLevel] = 55,
+            [npcKeys.spawns] = {[41] = {{65.2, 78.4}, {65.2, 78.6}}},
+            [npcKeys.zoneID] = zoneIDs.DEADWIND_PASS,
+            [npcKeys.questStarts] = {86967},
+            [npcKeys.questEnds] = {86966},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [237820] = { -- Deceased Adventurer : https://wowhead.com/forever/npc=237820/deceased-adventurer
+            [npcKeys.name] = "Deceased Adventurer",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[41] = {{40, 74.2}, {40, 74.6}}},
+            [npcKeys.zoneID] = zoneIDs.DEADWIND_PASS,
+            [npcKeys.questStarts] = {86965},
+            [npcKeys.questEnds] = {86964},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [237821] = { -- Cave KC Creature : https://wowhead.com/forever/npc=237821/cave-kc-creature
+            [npcKeys.name] = "Cave KC Creature",
+        },
+        [237823] = { -- Camp KC Creature : https://wowhead.com/forever/npc=237823/camp-kc-creature
+            [npcKeys.name] = "Camp KC Creature",
+        },
+        [237824] = { -- Crypt KC Creature : https://wowhead.com/forever/npc=237824/crypt-kc-creature
+            [npcKeys.name] = "Crypt KC Creature",
+        },
+        [237957] = { -- Archmage Kir-Moldir : https://wowhead.com/forever/npc=237957/archmage-kir-moldir
+            [npcKeys.name] = "Archmage Kir-Moldir",
         },
         [237962] = { -- Kinara Meadowheart : https://wowhead.com/forever/npc=237962/kinara-meadowheart
             [npcKeys.name] = "Kinara Meadowheart",
             [npcKeys.subName] = "Assistant Scout Leader",
         },
+        [237964] = { -- Harbinger of Sin : https://wowhead.com/forever/npc=237964/harbinger-of-sin
+            [npcKeys.name] = "Harbinger of Sin",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [237969] = { -- Subjugated Spinners : https://wowhead.com/forever/npc=237969/subjugated-spinners
+            [npcKeys.name] = "Subjugated Spinners",
+        },
+        [237994] = { -- Pulverized Corpse : https://wowhead.com/forever/npc=237994/pulverized-corpse
+            [npcKeys.name] = "Pulverized Corpse",
+        },
+        [238018] = { -- Bolstering Mushroom : https://wowhead.com/forever/npc=238018/bolstering-mushroom
+            [npcKeys.name] = "Bolstering Mushroom",
+        },
+        [238024] = { -- Creeping Malison : https://wowhead.com/forever/npc=238024/creeping-malison
+            [npcKeys.name] = "Creeping Malison",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238055] = { -- Dark Rider : https://wowhead.com/forever/npc=238055/dark-rider
+            [npcKeys.name] = "Dark Rider",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238080] = { -- (DNT) Ice Floor Stalker : https://wowhead.com/forever/npc=238080/dnt-ice-floor-stalker
+            [npcKeys.name] = "(DNT) Ice Floor Stalker",
+        },
         [238093] = { -- Unknown Phantasm : https://wowhead.com/forever/npc=238093/unknown-phantasm
             [npcKeys.name] = "Unknown Phantasm",
+        },
+        [238100] = { -- Blizzard : https://wowhead.com/forever/npc=238100/blizzard
+            [npcKeys.name] = "Blizzard",
+        },
+        [238111] = { -- Floating Firebrand : https://wowhead.com/forever/npc=238111/floating-firebrand
+            [npcKeys.name] = "Floating Firebrand",
         },
         [238126] = { -- Ridolus : https://wowhead.com/forever/npc=238126/ridolus
             [npcKeys.name] = "Ridolus",
@@ -3549,9 +10574,119 @@ function ForeverBaseNpc:Load()
         [238134] = { -- Timbermaw Ally : https://wowhead.com/forever/npc=238134/timbermaw-ally
             [npcKeys.name] = "Timbermaw Ally",
         },
+        [238160] = { -- T3 : https://wowhead.com/forever/npc=238160/t3
+            [npcKeys.name] = "T3",
+        },
+        [238161] = { -- T3 Tokens : https://wowhead.com/forever/npc=238161/t3-tokens
+            [npcKeys.name] = "T3 Tokens",
+        },
+        [238191] = { -- Risen Warrior : https://wowhead.com/forever/npc=238191/risen-warrior
+            [npcKeys.name] = "Risen Warrior",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238192] = { -- Risen Warder : https://wowhead.com/forever/npc=238192/risen-warder
+            [npcKeys.name] = "Risen Warder",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238193] = { -- Risen Protector : https://wowhead.com/forever/npc=238193/risen-protector
+            [npcKeys.name] = "Risen Protector",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238200] = { -- Crypt Ghoul : https://wowhead.com/forever/npc=238200/crypt-ghoul
+            [npcKeys.name] = "Crypt Ghoul",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238206] = { -- Diseased Ghoul : https://wowhead.com/forever/npc=238206/diseased-ghoul
+            [npcKeys.name] = "Diseased Ghoul",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238208] = { -- Ragged Ghoul : https://wowhead.com/forever/npc=238208/ragged-ghoul
+            [npcKeys.name] = "Ragged Ghoul",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238211] = { -- Risen Guard : https://wowhead.com/forever/npc=238211/risen-guard
+            [npcKeys.name] = "Risen Guard",
+        },
+        [238213] = { -- Sairuh Maryla : https://wowhead.com/forever/npc=238213/sairuh-maryla
+            [npcKeys.name] = "Sairuh Maryla",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Failed Apprentice",
+        },
         [238226] = { -- Trixx Boomfizz : https://wowhead.com/forever/npc=238226/trixx-boomfizz
             [npcKeys.name] = "Trixx Boomfizz",
             [npcKeys.subName] = "Apprentice Engineer",
+        },
+        [238233] = { -- Kaigy Maryla : https://wowhead.com/forever/npc=238233/kaigy-maryla
+            [npcKeys.name] = "Kaigy Maryla",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Failed Apprentice",
+        },
+        [238234] = { -- Barian Maryla : https://wowhead.com/forever/npc=238234/barian-maryla
+            [npcKeys.name] = "Barian Maryla",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Failed Apprentice",
+        },
+        [238244] = { -- Cellar Spider : https://wowhead.com/forever/npc=238244/cellar-spider
+            [npcKeys.name] = "Cellar Spider",
+        },
+        [238245] = { -- Crypt Stalker : https://wowhead.com/forever/npc=238245/crypt-stalker
+            [npcKeys.name] = "Crypt Stalker",
+        },
+        [238251] = { -- Risen Bones : https://wowhead.com/forever/npc=238251/risen-bones
+            [npcKeys.name] = "Risen Bones",
+        },
+        [238252] = { -- Trapped Soul : https://wowhead.com/forever/npc=238252/trapped-soul
+            [npcKeys.name] = "Trapped Soul",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238253] = { -- Sinful Captive : https://wowhead.com/forever/npc=238253/sinful-captive
+            [npcKeys.name] = "Sinful Captive",
+        },
+        [238261] = { -- Argent Guard : https://wowhead.com/forever/npc=238261/argent-guard
+            [npcKeys.name] = "Argent Guard",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 58,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238262] = { -- Cook : https://wowhead.com/forever/npc=238262/cook
+            [npcKeys.name] = "Cook",
+        },
+        [238263] = { -- Shoulder Enchant : https://wowhead.com/forever/npc=238263/shoulder-enchant
+            [npcKeys.name] = "Shoulder Enchant",
+        },
+        [238264] = { -- Seal of the Dawn : https://wowhead.com/forever/npc=238264/seal-of-the-dawn
+            [npcKeys.name] = "Seal of the Dawn",
+        },
+        [238270] = { -- Encrypted Text : https://wowhead.com/forever/npc=238270/encrypted-text
+            [npcKeys.name] = "Encrypted Text",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [238272] = { -- Prankk Boomfizz : https://wowhead.com/forever/npc=238272/prankk-boomfizz
             [npcKeys.name] = "Prankk Boomfizz",
@@ -3561,6 +10696,79 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Ernix Boomfizz",
             [npcKeys.subName] = "Engineer",
         },
+        [238286] = { -- Scarlet Crusader : https://wowhead.com/forever/npc=238286/scarlet-crusader
+            [npcKeys.name] = "Scarlet Crusader",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 58,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238292] = { -- Formula: Enchant Off-hand - Superior Intellect : https://wowhead.com/forever/npc=238292/formula-enchant-off-hand-superior-intellect
+            [npcKeys.name] = "Formula: Enchant Off-hand - Superior Intellect",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238303] = { -- Formula: Enchant Off-hand - Excellent Spirit : https://wowhead.com/forever/npc=238303/formula-enchant-off-hand-excellent-spirit
+            [npcKeys.name] = "Formula: Enchant Off-hand - Excellent Spirit",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238304] = { -- Formula: Enchant Off-hand - Wisdom : https://wowhead.com/forever/npc=238304/formula-enchant-off-hand-wisdom
+            [npcKeys.name] = "Formula: Enchant Off-hand - Wisdom",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238305] = { -- Formula: Enchant 2H Weapon - Spellblasting : https://wowhead.com/forever/npc=238305/formula-enchant-2h-weapon-spellblasting
+            [npcKeys.name] = "Formula: Enchant 2H Weapon - Spellblasting",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238306] = { -- Formula: Enchant Shield - Excellent Stamina : https://wowhead.com/forever/npc=238306/formula-enchant-shield-excellent-stamina
+            [npcKeys.name] = "Formula: Enchant Shield - Excellent Stamina",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238307] = { -- Formula: Enchant Shield - Critical Strike : https://wowhead.com/forever/npc=238307/formula-enchant-shield-critical-strike
+            [npcKeys.name] = "Formula: Enchant Shield - Critical Strike",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238308] = { -- Formula: Enchant Bracer - Greater Spellpower : https://wowhead.com/forever/npc=238308/formula-enchant-bracer-greater-spellpower
+            [npcKeys.name] = "Formula: Enchant Bracer - Greater Spellpower",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238309] = { -- Formula: Enchant Gloves - Superior Strength : https://wowhead.com/forever/npc=238309/formula-enchant-gloves-superior-strength
+            [npcKeys.name] = "Formula: Enchant Gloves - Superior Strength",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238310] = { -- Formula: Enchant Cloak - Agility : https://wowhead.com/forever/npc=238310/formula-enchant-cloak-agility
+            [npcKeys.name] = "Formula: Enchant Cloak - Agility",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238311] = { -- The Lich King : https://wowhead.com/forever/npc=238311/the-lich-king
+            [npcKeys.name] = "The Lich King",
+        },
         [238321] = { -- Dream Icon 1 : https://wowhead.com/forever/npc=238321/dream-icon-1
             [npcKeys.name] = "Dream Icon 1",
         },
@@ -3569,6 +10777,36 @@ function ForeverBaseNpc:Load()
         },
         [238323] = { -- Reuse Me : https://wowhead.com/forever/npc=238323/reuse-me
             [npcKeys.name] = "Reuse Me",
+        },
+        [238324] = { -- Ghoul : https://wowhead.com/forever/npc=238324/ghoul
+            [npcKeys.name] = "Ghoul",
+        },
+        [238325] = { -- Skeleton : https://wowhead.com/forever/npc=238325/skeleton
+            [npcKeys.name] = "Skeleton",
+        },
+        [238326] = { -- Human : https://wowhead.com/forever/npc=238326/human
+            [npcKeys.name] = "Human",
+        },
+        [238327] = { -- Troll : https://wowhead.com/forever/npc=238327/troll
+            [npcKeys.name] = "Troll",
+        },
+        [238328] = { -- Bone Golem : https://wowhead.com/forever/npc=238328/bone-golem
+            [npcKeys.name] = "Bone Golem",
+        },
+        [238329] = { -- War : https://wowhead.com/forever/npc=238329/war
+            [npcKeys.name] = "War",
+        },
+        [238330] = { -- Conquest : https://wowhead.com/forever/npc=238330/conquest
+            [npcKeys.name] = "Conquest",
+        },
+        [238331] = { -- Death : https://wowhead.com/forever/npc=238331/death
+            [npcKeys.name] = "Death",
+        },
+        [238332] = { -- Famine : https://wowhead.com/forever/npc=238332/famine
+            [npcKeys.name] = "Famine",
+        },
+        [238365] = { -- Dark Rider : https://wowhead.com/forever/npc=238365/dark-rider
+            [npcKeys.name] = "Dark Rider",
         },
         [238371] = { -- Reuse Me : https://wowhead.com/forever/npc=238371/reuse-me
             [npcKeys.name] = "Reuse Me",
@@ -3585,6 +10823,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.minLevel] = 58,
             [npcKeys.maxLevel] = 58,
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {87377, 88713, 88714, 88715, 88716, 88717, 88718},
+            [npcKeys.questEnds] = {87361, 87377, 88713, 88714, 88715, 88716, 88717, 88718},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Soul Seer",
             [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 12844; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
@@ -3592,16 +10832,124 @@ function ForeverBaseNpc:Load()
         [238377] = { -- Dream Icon 3 : https://wowhead.com/forever/npc=238377/dream-icon-3
             [npcKeys.name] = "Dream Icon 3",
         },
+        [238382] = { -- Kug Softjaw : https://wowhead.com/forever/npc=238382/kug-softjaw
+            [npcKeys.name] = "Kug Softjaw",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 58,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.questStarts] = {87362, 87364, 87365, 87366, 87367, 87368, 87369},
+            [npcKeys.questEnds] = {87362, 87364, 87365, 87366, 87367, 87368, 87369},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
         [238383] = { -- Xavian Interloper : https://wowhead.com/forever/npc=238383/xavian-interloper
             [npcKeys.name] = "Xavian Interloper",
+        },
+        [238407] = { -- Sairuh Maryla : https://wowhead.com/forever/npc=238407/sairuh-maryla
+            [npcKeys.name] = "Sairuh Maryla",
         },
         [238415] = { -- Grok'lo Mok'lo : https://wowhead.com/forever/npc=238415/groklo-moklo
             [npcKeys.name] = "Grok'lo Mok'lo",
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 60,
             [npcKeys.spawns] = {[8] = {{34.4, 65.4}, {34.4, 65.8}, {34.4, 66.6}, {34.6, 65.4}, {34.6, 65.8}, {34.8, 63.2}}, [16] = {{32.2, 54.4}, {32.2, 54.6}}, [46] = {{65.4, 55.2}, {65.6, 55.2}}, [440] = {{54.4, 28.4}, {54.4, 28.6}, {54.6, 28.2}}},
+            [npcKeys.questStarts] = {90626, 90627},
+            [npcKeys.questEnds] = {90625, 90626},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "The Argent Dawn",
+        },
+        [238416] = { -- Geenkle : https://wowhead.com/forever/npc=238416/geenkle
+            [npcKeys.name] = "Geenkle",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238417] = { -- Beengis : https://wowhead.com/forever/npc=238417/beengis
+            [npcKeys.name] = "Beengis",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238418] = { -- Jank : https://wowhead.com/forever/npc=238418/jank
+            [npcKeys.name] = "Jank",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238419] = { -- Gold Rustboot : https://wowhead.com/forever/npc=238419/gold-rustboot
+            [npcKeys.name] = "Gold Rustboot",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238420] = { -- Weeshald Rustboot : https://wowhead.com/forever/npc=238420/weeshald-rustboot
+            [npcKeys.name] = "Weeshald Rustboot",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238421] = { -- Fimick Buzzkettle : https://wowhead.com/forever/npc=238421/fimick-buzzkettle
+            [npcKeys.name] = "Fimick Buzzkettle",
+            [npcKeys.minLevel] = 20,
+            [npcKeys.maxLevel] = 20,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238422] = { -- Hans : https://wowhead.com/forever/npc=238422/hans
+            [npcKeys.name] = "Hans",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238423] = { -- Greta : https://wowhead.com/forever/npc=238423/greta
+            [npcKeys.name] = "Greta",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238424] = { -- Grandma Finette : https://wowhead.com/forever/npc=238424/grandma-finette
+            [npcKeys.name] = "Grandma Finette",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [238425] = { -- Annie : https://wowhead.com/forever/npc=238425/annie
+            [npcKeys.name] = "Annie",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238426] = { -- Steele : https://wowhead.com/forever/npc=238426/steele
+            [npcKeys.name] = "Steele",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238427] = { -- Flora : https://wowhead.com/forever/npc=238427/flora
+            [npcKeys.name] = "Flora",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238428] = { -- Trizivast : https://wowhead.com/forever/npc=238428/trizivast
+            [npcKeys.name] = "Trizivast",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238429] = { -- Annabel : https://wowhead.com/forever/npc=238429/annabel
+            [npcKeys.name] = "Annabel",
+        },
+        [238430] = { -- Floating Firebrand : https://wowhead.com/forever/npc=238430/floating-firebrand
+            [npcKeys.name] = "Floating Firebrand",
+            [npcKeys.spawns] = {[41] = {{40.2, 74.2}}},
+            [npcKeys.zoneID] = zoneIDs.DEADWIND_PASS,
         },
         [238431] = { -- Enthusiastic Wisp : https://wowhead.com/forever/npc=238431/enthusiastic-wisp
             [npcKeys.name] = "Enthusiastic Wisp",
@@ -3611,12 +10959,478 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [238432] = { -- Scarlet Clothier : https://wowhead.com/forever/npc=238432/scarlet-clothier
+            [npcKeys.name] = "Scarlet Clothier",
+            [npcKeys.minLevel] = 20,
+            [npcKeys.maxLevel] = 20,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238433] = { -- Commander Beatrix : https://wowhead.com/forever/npc=238433/commander-beatrix
+            [npcKeys.name] = "Commander Beatrix",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238434] = { -- Scarlet Strategist : https://wowhead.com/forever/npc=238434/scarlet-strategist
+            [npcKeys.name] = "Scarlet Strategist",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 57,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238435] = { -- Scarlet Tactician : https://wowhead.com/forever/npc=238435/scarlet-tactician
+            [npcKeys.name] = "Scarlet Tactician",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 57,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238436] = { -- Argent Guard : https://wowhead.com/forever/npc=238436/argent-guard
+            [npcKeys.name] = "Argent Guard",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 57,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238437] = { -- Argent Medic : https://wowhead.com/forever/npc=238437/argent-medic
+            [npcKeys.name] = "Argent Medic",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 58,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238438] = { -- Argent Medic : https://wowhead.com/forever/npc=238438/argent-medic
+            [npcKeys.name] = "Argent Medic",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 57,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238439] = { -- (DNT) Invisible Stalker : https://wowhead.com/forever/npc=238439/dnt-invisible-stalker
+            [npcKeys.name] = "(DNT) Invisible Stalker",
+        },
+        [238440] = { -- Injured Soldier : https://wowhead.com/forever/npc=238440/injured-soldier
+            [npcKeys.name] = "Injured Soldier",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 57,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238441] = { -- Injured Soldier : https://wowhead.com/forever/npc=238441/injured-soldier
+            [npcKeys.name] = "Injured Soldier",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 57,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238442] = { -- Scarlet Medic : https://wowhead.com/forever/npc=238442/scarlet-medic
+            [npcKeys.name] = "Scarlet Medic",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 57,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238443] = { -- Torment's Illusion : https://wowhead.com/forever/npc=238443/torments-illusion
+            [npcKeys.name] = "Torment's Illusion",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238445] = { -- S03 - Naxxramas Raid - Difficulty - Kel'Thuzad - Area Trigger Spawner : https://wowhead.com/forever/npc=238445/s03-naxxramas-raid-difficulty-kelthuzad-area-trigger-spawner
+            [npcKeys.name] = "S03 - Naxxramas Raid - Difficulty - Kel'Thuzad - Area Trigger Spawner",
+        },
+        [238447] = { -- Rotting Ghoul : https://wowhead.com/forever/npc=238447/rotting-ghoul
+            [npcKeys.name] = "Rotting Ghoul",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238448] = { -- Skeletal Warrior : https://wowhead.com/forever/npc=238448/skeletal-warrior
+            [npcKeys.name] = "Skeletal Warrior",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238449] = { -- Abomination : https://wowhead.com/forever/npc=238449/abomination
+            [npcKeys.name] = "Abomination",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238450] = { -- Crypt Fiend : https://wowhead.com/forever/npc=238450/crypt-fiend
+            [npcKeys.name] = "Crypt Fiend",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238451] = { -- Stalker : https://wowhead.com/forever/npc=238451/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [238452] = { -- Argent Guard : https://wowhead.com/forever/npc=238452/argent-guard
+            [npcKeys.name] = "Argent Guard",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 57,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238453] = { -- Scarlet Crusader : https://wowhead.com/forever/npc=238453/scarlet-crusader
+            [npcKeys.name] = "Scarlet Crusader",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 57,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238454] = { -- Argent Guard : https://wowhead.com/forever/npc=238454/argent-guard
+            [npcKeys.name] = "Argent Guard",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 58,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238455] = { -- Argent Guard : https://wowhead.com/forever/npc=238455/argent-guard
+            [npcKeys.name] = "Argent Guard",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 58,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238456] = { -- Injured Soldier : https://wowhead.com/forever/npc=238456/injured-soldier
+            [npcKeys.name] = "Injured Soldier",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 57,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238457] = { -- Scarlet Crusader : https://wowhead.com/forever/npc=238457/scarlet-crusader
+            [npcKeys.name] = "Scarlet Crusader",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 57,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238458] = { -- Scarlet Crusader : https://wowhead.com/forever/npc=238458/scarlet-crusader
+            [npcKeys.name] = "Scarlet Crusader",
+            [npcKeys.minLevel] = 57,
+            [npcKeys.maxLevel] = 57,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238459] = { -- "Tableknife" Finkelbat : https://wowhead.com/forever/npc=238459/tableknife-finkelbat
+            [npcKeys.name] = "\"Tableknife\" Finkelbat",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Cursed Engineer",
+        },
+        [238460] = { -- Alfwhit Grigdert : https://wowhead.com/forever/npc=238460/alfwhit-grigdert
+            [npcKeys.name] = "Alfwhit Grigdert",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Neophyte",
+        },
+        [238461] = { -- Wis : https://wowhead.com/forever/npc=238461/wis
+            [npcKeys.name] = "Wis",
+            [npcKeys.minLevel] = 63,
+            [npcKeys.maxLevel] = 63,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238477] = { -- Edgar : https://wowhead.com/forever/npc=238477/edgar
+            [npcKeys.name] = "Edgar",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Stage Manager",
+        },
+        [238493] = { -- (DNT) Spooky Eyes : https://wowhead.com/forever/npc=238493/dnt-spooky-eyes
+            [npcKeys.name] = "(DNT) Spooky Eyes",
+        },
+        [238499] = { -- Dark Rider : https://wowhead.com/forever/npc=238499/dark-rider
+            [npcKeys.name] = "Dark Rider",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238503] = { -- Chandelier : https://wowhead.com/forever/npc=238503/chandelier
+            [npcKeys.name] = "Chandelier",
+        },
+        [238508] = { -- Abandoned Acolyte : https://wowhead.com/forever/npc=238508/abandoned-acolyte
+            [npcKeys.name] = "Abandoned Acolyte",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238509] = { -- Lost Neophyte : https://wowhead.com/forever/npc=238509/lost-neophyte
+            [npcKeys.name] = "Lost Neophyte",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238511] = { -- The Gravekeeper : https://wowhead.com/forever/npc=238511/the-gravekeeper
+            [npcKeys.name] = "The Gravekeeper",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238512] = { -- Torch : https://wowhead.com/forever/npc=238512/torch
+            [npcKeys.name] = "Torch",
+        },
+        [238526] = { -- Ravaged Cadaver : https://wowhead.com/forever/npc=238526/ravaged-cadaver
+            [npcKeys.name] = "Ravaged Cadaver",
+        },
+        [238527] = { -- Mangled Cadaver : https://wowhead.com/forever/npc=238527/mangled-cadaver
+            [npcKeys.name] = "Mangled Cadaver",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238528] = { -- Ragged Ghoul : https://wowhead.com/forever/npc=238528/ragged-ghoul
+            [npcKeys.name] = "Ragged Ghoul",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238543] = { -- (DNT) Test : https://wowhead.com/forever/npc=238543/dnt-test
+            [npcKeys.name] = "(DNT) Test",
+        },
+        [238556] = { -- Cursed Spiderling : https://wowhead.com/forever/npc=238556/cursed-spiderling
+            [npcKeys.name] = "Cursed Spiderling",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238558] = { -- Spider Spawner : https://wowhead.com/forever/npc=238558/spider-spawner
+            [npcKeys.name] = "Spider Spawner",
+        },
+        [238559] = { -- Crypt Dweller : https://wowhead.com/forever/npc=238559/crypt-dweller
+            [npcKeys.name] = "Crypt Dweller",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238560] = { -- The Warden : https://wowhead.com/forever/npc=238560/the-warden
+            [npcKeys.name] = "The Warden",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238561] = { -- Crypt Terror : https://wowhead.com/forever/npc=238561/crypt-terror
+            [npcKeys.name] = "Crypt Terror",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238562] = { -- Bone Witch : https://wowhead.com/forever/npc=238562/bone-witch
+            [npcKeys.name] = "Bone Witch",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238563] = { -- Crypt Soldier : https://wowhead.com/forever/npc=238563/crypt-soldier
+            [npcKeys.name] = "Crypt Soldier",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238589] = { -- Spider Nest : https://wowhead.com/forever/npc=238589/spider-nest
+            [npcKeys.name] = "Spider Nest",
+        },
+        [238593] = { -- Atiesh Vendor : https://wowhead.com/forever/npc=238593/atiesh-vendor
+            [npcKeys.name] = "Atiesh Vendor",
+        },
+        [238594] = { -- Naxxramas Mounts : https://wowhead.com/forever/npc=238594/naxxramas-mounts
+            [npcKeys.name] = "Naxxramas Mounts",
+        },
+        [238595] = { -- [DNT] Death Stalker : https://wowhead.com/forever/npc=238595/dnt-death-stalker
+            [npcKeys.name] = "[DNT] Death Stalker",
+        },
+        [238597] = { -- (DNT) Medivh : https://wowhead.com/forever/npc=238597/dnt-medivh
+            [npcKeys.name] = "(DNT) Medivh",
+        },
+        [238598] = { -- Ghostly Spectator : https://wowhead.com/forever/npc=238598/ghostly-spectator
+            [npcKeys.name] = "Ghostly Spectator",
+        },
+        [238599] = { -- (DNT) Murder Hole Guy : https://wowhead.com/forever/npc=238599/dnt-murder-hole-guy
+            [npcKeys.name] = "(DNT) Murder Hole Guy",
+        },
+        [238619] = { -- Enchanted Flare [DNT] : https://wowhead.com/forever/npc=238619/enchanted-flare-dnt
+            [npcKeys.name] = "Enchanted Flare [DNT]",
+        },
+        [238620] = { -- Roach : https://wowhead.com/forever/npc=238620/roach
+            [npcKeys.name] = "Roach",
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238627] = { -- Stalker : https://wowhead.com/forever/npc=238627/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [238628] = { -- Broodwidow : https://wowhead.com/forever/npc=238628/broodwidow
+            [npcKeys.name] = "Broodwidow",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238629] = { -- Deep Stalker : https://wowhead.com/forever/npc=238629/deep-stalker
+            [npcKeys.name] = "Deep Stalker",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238630] = { -- Skeleton : https://wowhead.com/forever/npc=238630/skeleton
+            [npcKeys.name] = "Skeleton",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
         [238633] = { -- Sylena Duskveil : https://wowhead.com/forever/npc=238633/sylena-duskveil
             [npcKeys.name] = "Sylena Duskveil",
             [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
         },
         [238637] = { -- Makeshift Trap : https://wowhead.com/forever/npc=238637/makeshift-trap
             [npcKeys.name] = "Makeshift Trap",
+        },
+        [238638] = { -- Echo of the Baroness : https://wowhead.com/forever/npc=238638/echo-of-the-baroness
+            [npcKeys.name] = "Echo of the Baroness",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238639] = { -- Wailing Banshee : https://wowhead.com/forever/npc=238639/wailing-banshee
+            [npcKeys.name] = "Wailing Banshee",
+            [npcKeys.minLevel] = 59,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238640] = { -- Shrieking Banshee : https://wowhead.com/forever/npc=238640/shrieking-banshee
+            [npcKeys.name] = "Shrieking Banshee",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238641] = { -- Karazhan Shadowcaster : https://wowhead.com/forever/npc=238641/karazhan-shadowcaster
+            [npcKeys.name] = "Karazhan Shadowcaster",
+            [npcKeys.minLevel] = 59,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238642] = { -- Lost Necromancer : https://wowhead.com/forever/npc=238642/lost-necromancer
+            [npcKeys.name] = "Lost Necromancer",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238643] = { -- Forgotten Denizen : https://wowhead.com/forever/npc=238643/forgotten-denizen
+            [npcKeys.name] = "Forgotten Denizen",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238644] = { -- Unrepentant Criminal : https://wowhead.com/forever/npc=238644/unrepentant-criminal
+            [npcKeys.name] = "Unrepentant Criminal",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238645] = { -- Unrepentant Sorcerer : https://wowhead.com/forever/npc=238645/unrepentant-sorcerer
+            [npcKeys.name] = "Unrepentant Sorcerer",
+            [npcKeys.minLevel] = 59,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238646] = { -- Unrepentant Conjuror : https://wowhead.com/forever/npc=238646/unrepentant-conjuror
+            [npcKeys.name] = "Unrepentant Conjuror",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238647] = { -- Failed Novice : https://wowhead.com/forever/npc=238647/failed-novice
+            [npcKeys.name] = "Failed Novice",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238648] = { -- Shrieking Banshee : https://wowhead.com/forever/npc=238648/shrieking-banshee
+            [npcKeys.name] = "Shrieking Banshee",
+        },
+        [238649] = { -- [DNT] Magical Broom : https://wowhead.com/forever/npc=238649/dnt-magical-broom
+            [npcKeys.name] = "[DNT] Magical Broom",
+        },
+        [238650] = { -- Forgotten Student : https://wowhead.com/forever/npc=238650/forgotten-student
+            [npcKeys.name] = "Forgotten Student",
+            [npcKeys.minLevel] = 58,
+            [npcKeys.maxLevel] = 59,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238654] = { -- Military Orb : https://wowhead.com/forever/npc=238654/military-orb
+            [npcKeys.name] = "Military Orb",
+        },
+        [238656] = { -- Crypt Dweller : https://wowhead.com/forever/npc=238656/crypt-dweller
+            [npcKeys.name] = "Crypt Dweller",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238657] = { -- Crypt Dweller : https://wowhead.com/forever/npc=238657/crypt-dweller
+            [npcKeys.name] = "Crypt Dweller",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238658] = { -- [DNT] No Name : https://wowhead.com/forever/npc=238658/dnt-no-name
+            [npcKeys.name] = "[DNT] No Name",
+        },
+        [238659] = { -- [DNT] No Name : https://wowhead.com/forever/npc=238659/dnt-no-name
+            [npcKeys.name] = "[DNT] No Name",
+        },
+        [238660] = { -- [DNT] No Name : https://wowhead.com/forever/npc=238660/dnt-no-name
+            [npcKeys.name] = "[DNT] No Name",
+        },
+        [238666] = { -- (DNT) Invisible Stalker : https://wowhead.com/forever/npc=238666/dnt-invisible-stalker
+            [npcKeys.name] = "(DNT) Invisible Stalker",
+        },
+        [238678] = { -- Unk'omon : https://wowhead.com/forever/npc=238678/unkomon
+            [npcKeys.name] = "Unk'omon",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.subName] = "The Winged Sorrow",
+        },
+        [238679] = { -- Fallen Praetorian : https://wowhead.com/forever/npc=238679/fallen-praetorian
+            [npcKeys.name] = "Fallen Praetorian",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238680] = { -- Mysterious Eidolon : https://wowhead.com/forever/npc=238680/mysterious-eidolon
+            [npcKeys.name] = "Mysterious Eidolon",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238681] = { -- Mysterious Eidolon : https://wowhead.com/forever/npc=238681/mysterious-eidolon
+            [npcKeys.name] = "Mysterious Eidolon",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238682] = { -- Mysterious Eidolon : https://wowhead.com/forever/npc=238682/mysterious-eidolon
+            [npcKeys.name] = "Mysterious Eidolon",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [238715] = { -- New Avalon Refugee : https://wowhead.com/forever/npc=238715/new-avalon-refugee
             [npcKeys.name] = "New Avalon Refugee",
@@ -3625,15 +11439,95 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [238716] = { -- New Avalon Refugee : https://wowhead.com/forever/npc=238716/new-avalon-refugee
+            [npcKeys.name] = "New Avalon Refugee",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+        },
+        [238725] = { -- Ghostly Spectator : https://wowhead.com/forever/npc=238725/ghostly-spectator
+            [npcKeys.name] = "Ghostly Spectator",
+        },
+        [238734] = { -- Treasure Chest : https://wowhead.com/forever/npc=238734/treasure-chest
+            [npcKeys.name] = "Treasure Chest",
+        },
+        [238737] = { -- Burning Web : https://wowhead.com/forever/npc=238737/burning-web
+            [npcKeys.name] = "Burning Web",
+        },
+        [238745] = { -- Scarlet Infiltrator : https://wowhead.com/forever/npc=238745/scarlet-infiltrator
+            [npcKeys.name] = "Scarlet Infiltrator",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[85] = {{81.8, 58}}},
+            [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
+        },
+        [238761] = { -- Pile of Meat : https://wowhead.com/forever/npc=238761/pile-of-meat
+            [npcKeys.name] = "Pile of Meat",
+        },
+        [238766] = { -- Withering Iris : https://wowhead.com/forever/npc=238766/withering-iris
+            [npcKeys.name] = "Withering Iris",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238767] = { -- Immense Rock : https://wowhead.com/forever/npc=238767/immense-rock
+            [npcKeys.name] = "Immense Rock",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Indestructible",
+        },
         [238825] = { -- Ernix Boomfizz : https://wowhead.com/forever/npc=238825/ernix-boomfizz
             [npcKeys.name] = "Ernix Boomfizz",
             [npcKeys.subName] = "Engineer",
+        },
+        [238892] = { -- [DNT] Ethereal Charge Stalker : https://wowhead.com/forever/npc=238892/dnt-ethereal-charge-stalker
+            [npcKeys.name] = "[DNT] Ethereal Charge Stalker",
+        },
+        [238941] = { -- Spider : https://wowhead.com/forever/npc=238941/spider
+            [npcKeys.name] = "Spider",
+        },
+        [238942] = { -- Black Rat : https://wowhead.com/forever/npc=238942/black-rat
+            [npcKeys.name] = "Black Rat",
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [238943] = { -- Roach : https://wowhead.com/forever/npc=238943/roach
+            [npcKeys.name] = "Roach",
+        },
+        [238954] = { -- Solistrasza : https://wowhead.com/forever/npc=238954/solistrasza
+            [npcKeys.name] = "Solistrasza",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [238985] = { -- Hans : https://wowhead.com/forever/npc=238985/hans
+            [npcKeys.name] = "Hans",
+        },
+        [238986] = { -- Greta : https://wowhead.com/forever/npc=238986/greta
+            [npcKeys.name] = "Greta",
+        },
+        [238992] = { -- Grandma Finette : https://wowhead.com/forever/npc=238992/grandma-finette
+            [npcKeys.name] = "Grandma Finette",
         },
         [239031] = { -- Scarlet Inquisitor Caldoran : https://wowhead.com/forever/npc=239031/scarlet-inquisitor-caldoran
             [npcKeys.name] = "Scarlet Inquisitor Caldoran",
             [npcKeys.minLevel] = 9999,
             [npcKeys.maxLevel] = 9999,
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {87502, 87506},
+            [npcKeys.questEnds] = {87502},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [239032] = { -- Commander Beatrix : https://wowhead.com/forever/npc=239032/commander-beatrix
+            [npcKeys.name] = "Commander Beatrix",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {87497, 87516},
+            [npcKeys.questEnds] = {87493, 87498, 87506, 87509},
             [npcKeys.friendlyToFaction] = "AH",
         },
         [239036] = { -- Scarlet Crusader : https://wowhead.com/forever/npc=239036/scarlet-crusader
@@ -3643,14 +11537,144 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [239042] = { -- DNT : https://wowhead.com/forever/npc=239042/dnt
+            [npcKeys.name] = "DNT",
+        },
+        [239046] = { -- Ghostly Spectator : https://wowhead.com/forever/npc=239046/ghostly-spectator
+            [npcKeys.name] = "Ghostly Spectator",
+        },
         [239047] = { -- Scarlet Siege Commander : https://wowhead.com/forever/npc=239047/scarlet-siege-commander
             [npcKeys.name] = "Scarlet Siege Commander",
             [npcKeys.minLevel] = 59,
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
         },
+        [239048] = { -- DNT : https://wowhead.com/forever/npc=239048/dnt
+            [npcKeys.name] = "DNT",
+        },
+        [239050] = { -- (DNT) Plague Goo Stalker : https://wowhead.com/forever/npc=239050/dnt-plague-goo-stalker
+            [npcKeys.name] = "(DNT) Plague Goo Stalker",
+        },
+        [239054] = { -- Argent Emissary : https://wowhead.com/forever/npc=239054/argent-emissary
+            [npcKeys.name] = "Argent Emissary",
+            [npcKeys.minLevel] = 55,
+            [npcKeys.maxLevel] = 55,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {87508},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [239127] = { -- (DNT) Scarlet Caravan : https://wowhead.com/forever/npc=239127/dnt-scarlet-caravan
+            [npcKeys.name] = "(DNT) Scarlet Caravan",
+        },
+        [239130] = { -- (DNT) Scarlet Caravan : https://wowhead.com/forever/npc=239130/dnt-scarlet-caravan
+            [npcKeys.name] = "(DNT) Scarlet Caravan",
+        },
+        [239146] = { -- Incendiary Orb : https://wowhead.com/forever/npc=239146/incendiary-orb
+            [npcKeys.name] = "Incendiary Orb",
+        },
+        [239151] = { -- Monument : https://wowhead.com/forever/npc=239151/monument
+            [npcKeys.name] = "Monument",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[1377] = {{17.6, 89.4}, {17.6, 89.6}}},
+            [npcKeys.zoneID] = zoneIDs.SILITHUS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [239152] = { -- DNT : https://wowhead.com/forever/npc=239152/dnt
+            [npcKeys.name] = "DNT",
+        },
+        [239153] = { -- DNT : https://wowhead.com/forever/npc=239153/dnt
+            [npcKeys.name] = "DNT",
+        },
+        [239154] = { -- DNT : https://wowhead.com/forever/npc=239154/dnt
+            [npcKeys.name] = "DNT",
+        },
+        [239187] = { -- Gregory : https://wowhead.com/forever/npc=239187/gregory
+            [npcKeys.name] = "Gregory",
+            [npcKeys.subName] = "Truthbearer",
+        },
+        [239189] = { -- Teo Hammerstorm : https://wowhead.com/forever/npc=239189/teo-hammerstorm
+            [npcKeys.name] = "Teo Hammerstorm",
+        },
+        [239328] = { -- Burning Ghoul : https://wowhead.com/forever/npc=239328/burning-ghoul
+            [npcKeys.name] = "Burning Ghoul",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [239329] = { -- Tortured Student : https://wowhead.com/forever/npc=239329/tortured-student
+            [npcKeys.name] = "Tortured Student",
+            [npcKeys.minLevel] = 59,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [239334] = { -- Deadwind Steed : https://wowhead.com/forever/npc=239334/deadwind-steed
+            [npcKeys.name] = "Deadwind Steed",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+        },
+        [239335] = { -- [DNT] Fire Summon : https://wowhead.com/forever/npc=239335/dnt-fire-summon
+            [npcKeys.name] = "[DNT] Fire Summon",
+        },
+        [239336] = { -- Molten Boulder : https://wowhead.com/forever/npc=239336/molten-boulder
+            [npcKeys.name] = "Molten Boulder",
+        },
+        [239337] = { -- Lord Maxwell Tyrosus : https://wowhead.com/forever/npc=239337/lord-maxwell-tyrosus
+            [npcKeys.name] = "Lord Maxwell Tyrosus",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.questStarts] = {87517, 87518},
+            [npcKeys.questEnds] = {87516, 87517, 87518},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [239363] = { -- Shadowy Firebrand : https://wowhead.com/forever/npc=239363/shadowy-firebrand
+            [npcKeys.name] = "Shadowy Firebrand",
+        },
+        [239365] = { -- Blighted Apparition : https://wowhead.com/forever/npc=239365/blighted-apparition
+            [npcKeys.name] = "Blighted Apparition",
+            [npcKeys.minLevel] = 5,
+            [npcKeys.maxLevel] = 5,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [239382] = { -- Diseased Corpse : https://wowhead.com/forever/npc=239382/diseased-corpse
+            [npcKeys.name] = "Diseased Corpse",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.KARAZHAN_CRYPTS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [239386] = { -- Loot Vendor : https://wowhead.com/forever/npc=239386/loot-vendor
+            [npcKeys.name] = "Loot Vendor",
+            [npcKeys.subName] = "Karazhan Crypts Loot",
+        },
+        [239573] = { -- Greta : https://wowhead.com/forever/npc=239573/greta
+            [npcKeys.name] = "Greta",
+        },
         [239599] = { -- Captive Druid : https://wowhead.com/forever/npc=239599/captive-druid
             [npcKeys.name] = "Captive Druid",
+        },
+        [239640] = { -- Naxxramas Gear : https://wowhead.com/forever/npc=239640/naxxramas-gear
+            [npcKeys.name] = "Naxxramas Gear",
+        },
+        [239713] = { -- Naxxramas Quest Items : https://wowhead.com/forever/npc=239713/naxxramas-quest-items
+            [npcKeys.name] = "Naxxramas Quest Items",
+        },
+        [239714] = { -- Naxxramas Crafted Items : https://wowhead.com/forever/npc=239714/naxxramas-crafted-items
+            [npcKeys.name] = "Naxxramas Crafted Items",
+        },
+        [239715] = { -- Scourge Invasion Items : https://wowhead.com/forever/npc=239715/scourge-invasion-items
+            [npcKeys.name] = "Scourge Invasion Items",
+        },
+        [239719] = { -- [DNT] Torch Toss Stalker : https://wowhead.com/forever/npc=239719/dnt-torch-toss-stalker
+            [npcKeys.name] = "[DNT] Torch Toss Stalker",
+        },
+        [239725] = { -- [DNT] Disease Summon : https://wowhead.com/forever/npc=239725/dnt-disease-summon
+            [npcKeys.name] = "[DNT] Disease Summon",
         },
         [239817] = { -- Dummy Quest Kill Credit : https://wowhead.com/forever/npc=239817/dummy-quest-kill-credit
             [npcKeys.name] = "Dummy Quest Kill Credit",
@@ -3694,11 +11718,40 @@ function ForeverBaseNpc:Load()
         [239971] = { -- Razorgill : https://wowhead.com/forever/npc=239971/razorgill
             [npcKeys.name] = "Razorgill",
         },
+        [239982] = { -- [DNT] Grasping Spirits : https://wowhead.com/forever/npc=239982/dnt-grasping-spirits
+            [npcKeys.name] = "[DNT] Grasping Spirits",
+        },
+        [240122] = { -- S03 - Karazhan Crypts - Creeping Malison - Spider Nest (Glow) : https://wowhead.com/forever/npc=240122/s03-karazhan-crypts-creeping-malison-spider-nest-glow
+            [npcKeys.name] = "S03 - Karazhan Crypts - Creeping Malison - Spider Nest (Glow)",
+        },
+        [240246] = { -- New Avalon Defender : https://wowhead.com/forever/npc=240246/new-avalon-defender
+            [npcKeys.name] = "New Avalon Defender",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+        },
         [240247] = { -- Scarlet Bloodhound : https://wowhead.com/forever/npc=240247/scarlet-bloodhound
             [npcKeys.name] = "Scarlet Bloodhound",
             [npcKeys.minLevel] = 61,
             [npcKeys.maxLevel] = 62,
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+        },
+        [240248] = { -- Bryon Steelblade : https://wowhead.com/forever/npc=240248/bryon-steelblade
+            [npcKeys.name] = "Bryon Steelblade",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {89255, 89256, 89257, 89258, 89259, 89260, 89261, 89262},
+            [npcKeys.questEnds] = {89255, 89256, 89257, 89258, 89259, 89260, 89261, 89262},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Scarlet Quartermaster",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 239512; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
+        },
+        [240298] = { -- [DNT] Wiggling Spider Egg : https://wowhead.com/forever/npc=240298/dnt-wiggling-spider-egg
+            [npcKeys.name] = "[DNT] Wiggling Spider Egg",
+        },
+        [240310] = { -- Dark Rider : https://wowhead.com/forever/npc=240310/dark-rider
+            [npcKeys.name] = "Dark Rider",
         },
         [240352] = { -- Mana Elemental : https://wowhead.com/forever/npc=240352/mana-elemental
             [npcKeys.name] = "Mana Elemental",
@@ -3718,11 +11771,22 @@ function ForeverBaseNpc:Load()
         [240527] = { -- Enraged Tempest : https://wowhead.com/forever/npc=240527/enraged-tempest
             [npcKeys.name] = "Enraged Tempest",
         },
+        [240568] = { -- Haunted Anvil : https://wowhead.com/forever/npc=240568/haunted-anvil
+            [npcKeys.name] = "Haunted Anvil",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.spawns] = {[41] = {{48.4, 78}, {48.6, 78}}},
+            [npcKeys.zoneID] = zoneIDs.DEADWIND_PASS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 5956; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
+        },
         [240604] = { -- Carrie Hearthfire : https://wowhead.com/forever/npc=240604/carrie-hearthfire
             [npcKeys.name] = "Carrie Hearthfire",
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {89224, 89236, 89245, 89253, 89341, 90518, 90519, 90520},
+            [npcKeys.questEnds] = {89224, 89236, 89245, 89253, 89340, 89341, 90518, 90519, 90520},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Head Chef",
             [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
@@ -3732,12 +11796,331 @@ function ForeverBaseNpc:Load()
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 60,
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {89342},
+            [npcKeys.questEnds] = {89342},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Security",
             [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 237037; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
+        [240609] = { -- New Avalon Citizen : https://wowhead.com/forever/npc=240609/new-avalon-citizen
+            [npcKeys.name] = "New Avalon Citizen",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [240631] = { -- Taylor Stitchings : https://wowhead.com/forever/npc=240631/taylor-stitchings
+            [npcKeys.name] = "Taylor Stitchings",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {90116, 90120},
+            [npcKeys.questEnds] = {90116, 90120},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Tailoring Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [240632] = { -- Tanya Hyde : https://wowhead.com/forever/npc=240632/tanya-hyde
+            [npcKeys.name] = "Tanya Hyde",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Leatherworking Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2320; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [240633] = { -- Smith : https://wowhead.com/forever/npc=240633/smith
+            [npcKeys.name] = "Smith",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Blacksmithing Supplies",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2880; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [240636] = { -- Suspicious Soldier : https://wowhead.com/forever/npc=240636/suspicious-soldier
+            [npcKeys.name] = "Suspicious Soldier",
+            [npcKeys.subName] = "PTR Scarlet Disguise Vendor",
+        },
+        [240639] = { -- Peculiar Peddler : https://wowhead.com/forever/npc=240639/peculiar-peddler
+            [npcKeys.name] = "Peculiar Peddler",
+            [npcKeys.subName] = "PTR Profession Recipes",
+        },
+        [240654] = { -- Fizzlefuse : https://wowhead.com/forever/npc=240654/fizzlefuse
+            [npcKeys.name] = "Fizzlefuse",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.questStarts] = {89463, 89471, 89485, 89486, 89487, 89489, 89491},
+            [npcKeys.questEnds] = {89463, 89471, 89485, 89486, 89487, 89489, 89491},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Opportunist Engineer",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2880; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [240779] = { -- Scarlet Warder : https://wowhead.com/forever/npc=240779/scarlet-warder
+            [npcKeys.name] = "Scarlet Warder",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240780] = { -- Scarlet Bloodhound : https://wowhead.com/forever/npc=240780/scarlet-bloodhound
+            [npcKeys.name] = "Scarlet Bloodhound",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240781] = { -- Scarlet Praetorian : https://wowhead.com/forever/npc=240781/scarlet-praetorian
+            [npcKeys.name] = "Scarlet Praetorian",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240782] = { -- Scarlet Cleric : https://wowhead.com/forever/npc=240782/scarlet-cleric
+            [npcKeys.name] = "Scarlet Cleric",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240783] = { -- Scarlet Curate : https://wowhead.com/forever/npc=240783/scarlet-curate
+            [npcKeys.name] = "Scarlet Curate",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240784] = { -- Scarlet Archmage : https://wowhead.com/forever/npc=240784/scarlet-archmage
+            [npcKeys.name] = "Scarlet Archmage",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240785] = { -- Scarlet Alchemist : https://wowhead.com/forever/npc=240785/scarlet-alchemist
+            [npcKeys.name] = "Scarlet Alchemist",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240786] = { -- Scarlet Medic : https://wowhead.com/forever/npc=240786/scarlet-medic
+            [npcKeys.name] = "Scarlet Medic",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240787] = { -- Scarlet Priest : https://wowhead.com/forever/npc=240787/scarlet-priest
+            [npcKeys.name] = "Scarlet Priest",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240788] = { -- Scarlet Spellbinder : https://wowhead.com/forever/npc=240788/scarlet-spellbinder
+            [npcKeys.name] = "Scarlet Spellbinder",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240789] = { -- Scarlet Spellbreaker : https://wowhead.com/forever/npc=240789/scarlet-spellbreaker
+            [npcKeys.name] = "Scarlet Spellbreaker",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240790] = { -- Scarlet Lumberjack : https://wowhead.com/forever/npc=240790/scarlet-lumberjack
+            [npcKeys.name] = "Scarlet Lumberjack",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240791] = { -- Scarlet Worker : https://wowhead.com/forever/npc=240791/scarlet-worker
+            [npcKeys.name] = "Scarlet Worker",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240792] = { -- Scarlet Smith : https://wowhead.com/forever/npc=240792/scarlet-smith
+            [npcKeys.name] = "Scarlet Smith",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240793] = { -- Scarlet Soldier : https://wowhead.com/forever/npc=240793/scarlet-soldier
+            [npcKeys.name] = "Scarlet Soldier",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240794] = { -- Alexei the Beastlord : https://wowhead.com/forever/npc=240794/alexei-the-beastlord
+            [npcKeys.name] = "Alexei the Beastlord",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240795] = { -- Herod : https://wowhead.com/forever/npc=240795/herod
+            [npcKeys.name] = "Herod",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.subName] = "The Scarlet Champion",
+        },
+        [240796] = { -- Scarlet Cavalier : https://wowhead.com/forever/npc=240796/scarlet-cavalier
+            [npcKeys.name] = "Scarlet Cavalier",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240797] = { -- Scarlet Executioner : https://wowhead.com/forever/npc=240797/scarlet-executioner
+            [npcKeys.name] = "Scarlet Executioner",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240798] = { -- Scarlet Knight : https://wowhead.com/forever/npc=240798/scarlet-knight
+            [npcKeys.name] = "Scarlet Knight",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240799] = { -- Scarlet Ranger : https://wowhead.com/forever/npc=240799/scarlet-ranger
+            [npcKeys.name] = "Scarlet Ranger",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240800] = { -- Scarlet Invoker : https://wowhead.com/forever/npc=240800/scarlet-invoker
+            [npcKeys.name] = "Scarlet Invoker",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240801] = { -- Scarlet Mage : https://wowhead.com/forever/npc=240801/scarlet-mage
+            [npcKeys.name] = "Scarlet Mage",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240802] = { -- Scarlet Paladin : https://wowhead.com/forever/npc=240802/scarlet-paladin
+            [npcKeys.name] = "Scarlet Paladin",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240803] = { -- Commander Granis Darkhammer : https://wowhead.com/forever/npc=240803/commander-granis-darkhammer
+            [npcKeys.name] = "Commander Granis Darkhammer",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240804] = { -- Inquisitor Tenn Flamecaster : https://wowhead.com/forever/npc=240804/inquisitor-tenn-flamecaster
+            [npcKeys.name] = "Inquisitor Tenn Flamecaster",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240805] = { -- Captain Manadar : https://wowhead.com/forever/npc=240805/captain-manadar
+            [npcKeys.name] = "Captain Manadar",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240806] = { -- Captain Buzan : https://wowhead.com/forever/npc=240806/captain-buzan
+            [npcKeys.name] = "Captain Buzan",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240807] = { -- Captain Jorn : https://wowhead.com/forever/npc=240807/captain-jorn
+            [npcKeys.name] = "Captain Jorn",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240808] = { -- Captain Karnwield : https://wowhead.com/forever/npc=240808/captain-karnwield
+            [npcKeys.name] = "Captain Karnwield",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240809] = { -- Vishas : https://wowhead.com/forever/npc=240809/vishas
+            [npcKeys.name] = "Vishas",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240810] = { -- Doan : https://wowhead.com/forever/npc=240810/doan
+            [npcKeys.name] = "Doan",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240811] = { -- Balnazzar : https://wowhead.com/forever/npc=240811/balnazzar
+            [npcKeys.name] = "Balnazzar",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240812] = { -- High Commander Beatrix : https://wowhead.com/forever/npc=240812/high-commander-beatrix
+            [npcKeys.name] = "High Commander Beatrix",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [240825] = { -- Elysabeth Monalissier : https://wowhead.com/forever/npc=240825/elysabeth-monalissier
+            [npcKeys.name] = "Elysabeth Monalissier",
+            [npcKeys.subName] = "Insignia Disbursements",
+        },
         [240964] = { -- Corrupted Grell : https://wowhead.com/forever/npc=240964/corrupted-grell
             [npcKeys.name] = "Corrupted Grell",
+        },
+        [240978] = { -- Apple : https://wowhead.com/forever/npc=240978/apple
+            [npcKeys.name] = "Apple",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [240998] = { -- New Avalon Orchardist : https://wowhead.com/forever/npc=240998/new-avalon-orchardist
+            [npcKeys.name] = "New Avalon Orchardist",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+        },
+        [241006] = { -- Grand Crusader Caldoran : https://wowhead.com/forever/npc=241006/grand-crusader-caldoran
+            [npcKeys.name] = "Grand Crusader Caldoran",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [241019] = { -- Johnny : https://wowhead.com/forever/npc=241019/johnny
+            [npcKeys.name] = "Johnny",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Fresh Apples",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 4536; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [241021] = { -- Mason the Echo : https://wowhead.com/forever/npc=241021/mason-the-echo
+            [npcKeys.name] = "Mason the Echo",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.subName] = "Grand Admiral",
+        },
+        [241032] = { -- Fish Barrel : https://wowhead.com/forever/npc=241032/fish-barrel
+            [npcKeys.name] = "Fish Barrel",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [241048] = { -- Scarlet Hunter : https://wowhead.com/forever/npc=241048/scarlet-hunter
+            [npcKeys.name] = "Scarlet Hunter",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [241119] = { -- New Avalon Watchman : https://wowhead.com/forever/npc=241119/new-avalon-watchman
+            [npcKeys.name] = "New Avalon Watchman",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
         },
         [241120] = { -- Scarlet Footman : https://wowhead.com/forever/npc=241120/scarlet-footman
             [npcKeys.name] = "Scarlet Footman",
@@ -3762,14 +12145,103 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 62,
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
         },
+        [241149] = { -- Sword in the Stone : https://wowhead.com/forever/npc=241149/sword-in-the-stone
+            [npcKeys.name] = "Sword in the Stone",
+        },
+        [241154] = { -- Kill Credit [DNT] : https://wowhead.com/forever/npc=241154/kill-credit-dnt
+            [npcKeys.name] = "Kill Credit [DNT]",
+        },
+        [241164] = { -- [DNT] Internal Only - Kill Credit Example - DO NOT EDIT : https://wowhead.com/forever/npc=241164/dnt-internal-only-kill-credit-example-do-not-edit
+            [npcKeys.name] = "[DNT] Internal Only - Kill Credit Example - DO NOT EDIT",
+        },
         [241320] = { -- Fel-Warped Shade : https://wowhead.com/forever/npc=241320/fel-warped-shade
             [npcKeys.name] = "Fel-Warped Shade",
+        },
+        [241329] = { -- Lighthouse : https://wowhead.com/forever/npc=241329/lighthouse
+            [npcKeys.name] = "Lighthouse",
+        },
+        [241334] = { -- The Will of the Ashbringer : https://wowhead.com/forever/npc=241334/the-will-of-the-ashbringer
+            [npcKeys.name] = "The Will of the Ashbringer",
+            [npcKeys.questStarts] = {89232, 89301, 89303, 89442, 89451, 89473, 89474},
+            [npcKeys.questEnds] = {89232, 89300, 89301, 89303, 89443, 90559},
+        },
+        [241335] = { -- [DNT] Kill Credit : https://wowhead.com/forever/npc=241335/dnt-kill-credit
+            [npcKeys.name] = "[DNT] Kill Credit",
+        },
+        [241406] = { -- Scarlet Battle Mage : https://wowhead.com/forever/npc=241406/scarlet-battle-mage
+            [npcKeys.name] = "Scarlet Battle Mage",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [241407] = { -- Scarlet Defender : https://wowhead.com/forever/npc=241407/scarlet-defender
+            [npcKeys.name] = "Scarlet Defender",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [241408] = { -- Scarlet Courier : https://wowhead.com/forever/npc=241408/scarlet-courier
+            [npcKeys.name] = "Scarlet Courier",
+        },
+        [241409] = { -- Scarlet Armorer : https://wowhead.com/forever/npc=241409/scarlet-armorer
+            [npcKeys.name] = "Scarlet Armorer",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [241411] = { -- Scarlet Rifleman : https://wowhead.com/forever/npc=241411/scarlet-rifleman
+            [npcKeys.name] = "Scarlet Rifleman",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [241434] = { -- Scarlet Sentry : https://wowhead.com/forever/npc=241434/scarlet-sentry
+            [npcKeys.name] = "Scarlet Sentry",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [241437] = { -- Scarlet Courier : https://wowhead.com/forever/npc=241437/scarlet-courier
+            [npcKeys.name] = "Scarlet Courier",
+            [npcKeys.minLevel] = 56,
+            [npcKeys.maxLevel] = 56,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+        },
+        [241461] = { -- Kill Credit [DNT] : https://wowhead.com/forever/npc=241461/kill-credit-dnt
+            [npcKeys.name] = "Kill Credit [DNT]",
+        },
+        [241462] = { -- Kill Credit [DNT] : https://wowhead.com/forever/npc=241462/kill-credit-dnt
+            [npcKeys.name] = "Kill Credit [DNT]",
+        },
+        [241492] = { -- Balnazzar : https://wowhead.com/forever/npc=241492/balnazzar
+            [npcKeys.name] = "Balnazzar",
+        },
+        [241493] = { -- Grand Crusader Dathrohan : https://wowhead.com/forever/npc=241493/grand-crusader-dathrohan
+            [npcKeys.name] = "Grand Crusader Dathrohan",
+        },
+        [241501] = { -- Grand Crusader Dathrohan : https://wowhead.com/forever/npc=241501/grand-crusader-dathrohan
+            [npcKeys.name] = "Grand Crusader Dathrohan",
+        },
+        [241518] = { -- Grand Crusader Caldoran : https://wowhead.com/forever/npc=241518/grand-crusader-caldoran
+            [npcKeys.name] = "Grand Crusader Caldoran",
+        },
+        [241519] = { -- High Commander Beatrix : https://wowhead.com/forever/npc=241519/high-commander-beatrix
+            [npcKeys.name] = "High Commander Beatrix",
         },
         [241571] = { -- Bone Kodo : https://wowhead.com/forever/npc=241571/bone-kodo
             [npcKeys.name] = "Bone Kodo",
         },
         [241584] = { -- Skull : https://wowhead.com/forever/npc=241584/skull
             [npcKeys.name] = "Skull",
+        },
+        [241613] = { -- Kyndra Swiftarrow : https://wowhead.com/forever/npc=241613/kyndra-swiftarrow
+            [npcKeys.name] = "Kyndra Swiftarrow",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {89381, 89421},
+            [npcKeys.questEnds] = {89381, 89421},
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [241616] = { -- Scarlet Trainee : https://wowhead.com/forever/npc=241616/scarlet-trainee
             [npcKeys.name] = "Scarlet Trainee",
@@ -3778,6 +12250,124 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.subName] = "Aspiring Wallguard",
         },
+        [241659] = { -- Markus Hearthfire : https://wowhead.com/forever/npc=241659/markus-hearthfire
+            [npcKeys.name] = "Markus Hearthfire",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Innkeeper",
+            [npcKeys.npcFlags] = 128, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.
+        },
+        [241663] = { -- Gerald : https://wowhead.com/forever/npc=241663/gerald
+            [npcKeys.name] = "Gerald",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Bartender",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2593; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [241664] = { -- Malorie : https://wowhead.com/forever/npc=241664/malorie
+            [npcKeys.name] = "Malorie",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Food & Drink",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 117; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [241665] = { -- Archmagus Nilas Arcanister : https://wowhead.com/forever/npc=241665/archmagus-nilas-arcanister
+            [npcKeys.name] = "Archmagus Nilas Arcanister",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [241701] = { -- (DNT) Invisible Stalker : https://wowhead.com/forever/npc=241701/dnt-invisible-stalker
+            [npcKeys.name] = "(DNT) Invisible Stalker",
+        },
+        [241707] = { -- (DNT) Invisible Teleport Stalker : https://wowhead.com/forever/npc=241707/dnt-invisible-teleport-stalker
+            [npcKeys.name] = "(DNT) Invisible Teleport Stalker",
+        },
+        [241768] = { -- Herod : https://wowhead.com/forever/npc=241768/herod
+            [npcKeys.name] = "Herod",
+            [npcKeys.subName] = "The Scarlet Champion",
+        },
+        [241769] = { -- Arcanist Doan : https://wowhead.com/forever/npc=241769/arcanist-doan
+            [npcKeys.name] = "Arcanist Doan",
+        },
+        [241770] = { -- Interrogator Vishas : https://wowhead.com/forever/npc=241770/interrogator-vishas
+            [npcKeys.name] = "Interrogator Vishas",
+        },
+        [241772] = { -- Grand Crusader Caldoran : https://wowhead.com/forever/npc=241772/grand-crusader-caldoran
+            [npcKeys.name] = "Grand Crusader Caldoran",
+        },
+        [241778] = { -- Scarlet Thaumaturgist : https://wowhead.com/forever/npc=241778/scarlet-thaumaturgist
+            [npcKeys.name] = "Scarlet Thaumaturgist",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [241785] = { -- Ritual : https://wowhead.com/forever/npc=241785/ritual
+            [npcKeys.name] = "Ritual",
+        },
+        [241786] = { -- Ritual : https://wowhead.com/forever/npc=241786/ritual
+            [npcKeys.name] = "Ritual",
+        },
+        [241787] = { -- Ritual : https://wowhead.com/forever/npc=241787/ritual
+            [npcKeys.name] = "Ritual",
+        },
+        [241825] = { -- Ritual : https://wowhead.com/forever/npc=241825/ritual
+            [npcKeys.name] = "Ritual",
+        },
+        [241826] = { -- Ritual 2 : https://wowhead.com/forever/npc=241826/ritual-2
+            [npcKeys.name] = "Ritual 2",
+        },
+        [241827] = { -- Ritual Orb : https://wowhead.com/forever/npc=241827/ritual-orb
+            [npcKeys.name] = "Ritual Orb",
+        },
+        [241828] = { -- Scarlet Trainee : https://wowhead.com/forever/npc=241828/scarlet-trainee
+            [npcKeys.name] = "Scarlet Trainee",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [241829] = { -- [DNT] Kill Credit : https://wowhead.com/forever/npc=241829/dnt-kill-credit
+            [npcKeys.name] = "[DNT] Kill Credit",
+        },
+        [241830] = { -- Forsaken Captive : https://wowhead.com/forever/npc=241830/forsaken-captive
+            [npcKeys.name] = "Forsaken Captive",
+        },
+        [241834] = { -- Istaria : https://wowhead.com/forever/npc=241834/istaria
+            [npcKeys.name] = "Istaria",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[493] = {{52.2, 43}}},
+            [npcKeys.zoneID] = zoneIDs.MOONGLADE,
+            [npcKeys.questStarts] = {89462},
+            [npcKeys.questEnds] = {89451},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [241838] = { -- Curious Troll : https://wowhead.com/forever/npc=241838/curious-troll
+            [npcKeys.name] = "Curious Troll",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[85] = {{79, 40.8}}},
+            [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
+        },
+        [241840] = { -- (DNT) Invisible Cremation Targeting Stalker : https://wowhead.com/forever/npc=241840/dnt-invisible-cremation-targeting-stalker
+            [npcKeys.name] = "(DNT) Invisible Cremation Targeting Stalker",
+        },
+        [241859] = { -- (DNT) Invisible Cremation Area Trigger Stalker : https://wowhead.com/forever/npc=241859/dnt-invisible-cremation-area-trigger-stalker
+            [npcKeys.name] = "(DNT) Invisible Cremation Area Trigger Stalker",
+        },
+        [241862] = { -- Scarlet Stash : https://wowhead.com/forever/npc=241862/scarlet-stash
+            [npcKeys.name] = "Scarlet Stash",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
         [241877] = { -- Mayor Quimby : https://wowhead.com/forever/npc=241877/mayor-quimby
             [npcKeys.name] = "Mayor Quimby",
             [npcKeys.minLevel] = 60,
@@ -3785,23 +12375,448 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [241895] = { -- Manath Magesinger : https://wowhead.com/forever/npc=241895/manath-magesinger
+            [npcKeys.name] = "Manath Magesinger",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.subName] = "Archmagus",
+        },
+        [241904] = { -- Scarlet Artillery : https://wowhead.com/forever/npc=241904/scarlet-artillery
+            [npcKeys.name] = "Scarlet Artillery",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [241906] = { -- Sir Dornel : https://wowhead.com/forever/npc=241906/sir-dornel
+            [npcKeys.name] = "Sir Dornel",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [241921] = { -- Morlune the Mighty : https://wowhead.com/forever/npc=241921/morlune-the-mighty
+            [npcKeys.name] = "Morlune the Mighty",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.subName] = "Commander of the Scarlet Crusade",
+        },
+        [241940] = { -- Spirit of Mograine : https://wowhead.com/forever/npc=241940/spirit-of-mograine
+            [npcKeys.name] = "Spirit of Mograine",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.NAXXRAMAS_SOD,
+            [npcKeys.subName] = "The Ashbringer",
+        },
+        [241962] = { -- [DNT] Kill Credit: : https://wowhead.com/forever/npc=241962/dnt-kill-credit
+            [npcKeys.name] = "[DNT] Kill Credit:",
+        },
+        [241963] = { -- [DNT] Kill Credit: : https://wowhead.com/forever/npc=241963/dnt-kill-credit
+            [npcKeys.name] = "[DNT] Kill Credit:",
+        },
+        [241964] = { -- [DNT] Kill Credit: : https://wowhead.com/forever/npc=241964/dnt-kill-credit
+            [npcKeys.name] = "[DNT] Kill Credit:",
+        },
+        [241965] = { -- [DNT] Kill Credit: : https://wowhead.com/forever/npc=241965/dnt-kill-credit
+            [npcKeys.name] = "[DNT] Kill Credit:",
+        },
+        [241985] = { -- Mortar Combat Stalker : https://wowhead.com/forever/npc=241985/mortar-combat-stalker
+            [npcKeys.name] = "Mortar Combat Stalker",
+        },
+        [242007] = { -- Blade Dance : https://wowhead.com/forever/npc=242007/blade-dance
+            [npcKeys.name] = "Blade Dance",
+        },
+        [242008] = { -- Oil Spill : https://wowhead.com/forever/npc=242008/oil-spill
+            [npcKeys.name] = "Oil Spill",
+        },
+        [242009] = { -- Scarlet Cannon : https://wowhead.com/forever/npc=242009/scarlet-cannon
+            [npcKeys.name] = "Scarlet Cannon",
+        },
+        [242010] = { -- Pupper : https://wowhead.com/forever/npc=242010/pupper
+            [npcKeys.name] = "Pupper",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Goodest Boy, Yes He Is",
+        },
+        [242019] = { -- Leonid Barthalomew the Revered : https://wowhead.com/forever/npc=242019/leonid-barthalomew-the-revered
+            [npcKeys.name] = "Leonid Barthalomew the Revered",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {89234, 89568, 89574},
+            [npcKeys.questEnds] = {89567, 89568, 89574},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
         [242059] = { -- Dark Strand Intercessor : https://wowhead.com/forever/npc=242059/dark-strand-intercessor
             [npcKeys.name] = "Dark Strand Intercessor",
+        },
+        [242062] = { -- Scarlet Martyr : https://wowhead.com/forever/npc=242062/scarlet-martyr
+            [npcKeys.name] = "Scarlet Martyr",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [242092] = { -- Scarlet Ravager : https://wowhead.com/forever/npc=242092/scarlet-ravager
+            [npcKeys.name] = "Scarlet Ravager",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [242093] = { -- Parrot : https://wowhead.com/forever/npc=242093/parrot
+            [npcKeys.name] = "Parrot",
+        },
+        [242098] = { -- Scarlet Magus : https://wowhead.com/forever/npc=242098/scarlet-magus
+            [npcKeys.name] = "Scarlet Magus",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [242106] = { -- Eastsea Cannoneer : https://wowhead.com/forever/npc=242106/eastsea-cannoneer
+            [npcKeys.name] = "Eastsea Cannoneer",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242107] = { -- Eastsea Dockworker : https://wowhead.com/forever/npc=242107/eastsea-dockworker
+            [npcKeys.name] = "Eastsea Dockworker",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242108] = { -- Swift Scarlet Warhorse : https://wowhead.com/forever/npc=242108/swift-scarlet-warhorse
+            [npcKeys.name] = "Swift Scarlet Warhorse",
+        },
+        [242109] = { -- Eastsea Swashbuckler : https://wowhead.com/forever/npc=242109/eastsea-swashbuckler
+            [npcKeys.name] = "Eastsea Swashbuckler",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242110] = { -- Eastsea Cannon : https://wowhead.com/forever/npc=242110/eastsea-cannon
+            [npcKeys.name] = "Eastsea Cannon",
+        },
+        [242111] = { -- Eastsea Buccaneer : https://wowhead.com/forever/npc=242111/eastsea-buccaneer
+            [npcKeys.name] = "Eastsea Buccaneer",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242112] = { -- Eastsea Privateer : https://wowhead.com/forever/npc=242112/eastsea-privateer
+            [npcKeys.name] = "Eastsea Privateer",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242113] = { -- First Mate Kip : https://wowhead.com/forever/npc=242113/first-mate-kip
+            [npcKeys.name] = "First Mate Kip",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242114] = { -- Scarlet Infantry : https://wowhead.com/forever/npc=242114/scarlet-infantry
+            [npcKeys.name] = "Scarlet Infantry",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
         },
         [242115] = { -- Gol'gere Deathmoon : https://wowhead.com/forever/npc=242115/golgere-deathmoon
             [npcKeys.name] = "Gol'gere Deathmoon",
         },
+        [242125] = { -- Master Craftsman Omarion : https://wowhead.com/forever/npc=242125/master-craftsman-omarion
+            [npcKeys.name] = "Master Craftsman Omarion",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.questStarts] = {89237, 89304, 90107},
+            [npcKeys.questEnds] = {89237, 89304, 89449, 90107},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [242135] = { -- Eastsea Handler : https://wowhead.com/forever/npc=242135/eastsea-handler
+            [npcKeys.name] = "Eastsea Handler",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242137] = { -- Un'Goro Gorilla : https://wowhead.com/forever/npc=242137/ungoro-gorilla
+            [npcKeys.name] = "Un'Goro Gorilla",
+            [npcKeys.minLevel] = 50,
+            [npcKeys.maxLevel] = 51,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [242141] = { -- Glubb : https://wowhead.com/forever/npc=242141/glubb
+            [npcKeys.name] = "Glubb",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [242142] = { -- Young Stranglethorn Tiger : https://wowhead.com/forever/npc=242142/young-stranglethorn-tiger
+            [npcKeys.name] = "Young Stranglethorn Tiger",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
         [242145] = { -- Unknown Phantasm : https://wowhead.com/forever/npc=242145/unknown-phantasm
             [npcKeys.name] = "Unknown Phantasm",
         },
+        [242148] = { -- Scarlet Cavalry : https://wowhead.com/forever/npc=242148/scarlet-cavalry
+            [npcKeys.name] = "Scarlet Cavalry",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242156] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=242156/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [242158] = { -- Climhazzard : https://wowhead.com/forever/npc=242158/climhazzard
+            [npcKeys.name] = "Climhazzard",
+        },
+        [242159] = { -- Scarlet Steed : https://wowhead.com/forever/npc=242159/scarlet-steed
+            [npcKeys.name] = "Scarlet Steed",
+        },
+        [242160] = { -- Great Shark : https://wowhead.com/forever/npc=242160/great-shark
+            [npcKeys.name] = "Great Shark",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242161] = { -- Scarlet Miner : https://wowhead.com/forever/npc=242161/scarlet-miner
+            [npcKeys.name] = "Scarlet Miner",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242169] = { -- S03 - Scarlet Enclave - Boss - Caldoran - Divine Conflagration - Stalker : https://wowhead.com/forever/npc=242169/s03-scarlet-enclave-boss-caldoran-divine-conflagration-stalker
+            [npcKeys.name] = "S03 - Scarlet Enclave - Boss - Caldoran - Divine Conflagration - Stalker",
+        },
+        [242170] = { -- [DNT] Kill Credit : https://wowhead.com/forever/npc=242170/dnt-kill-credit
+            [npcKeys.name] = "[DNT] Kill Credit",
+        },
+        [242174] = { -- Thisalee Crow : https://wowhead.com/forever/npc=242174/thisalee-crow
+            [npcKeys.name] = "Thisalee Crow",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.spawns] = {[618] = {{60.4, 38}, {60.8, 38}}},
+            [npcKeys.zoneID] = zoneIDs.WINTERSPRING,
+            [npcKeys.questStarts] = {90506, 90507, 90508},
+            [npcKeys.questEnds] = {89462, 90506, 90507},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Druid of the Talon",
+        },
+        [242182] = { -- T4 Tokens : https://wowhead.com/forever/npc=242182/t4-tokens
+            [npcKeys.name] = "T4 Tokens",
+        },
+        [242183] = { -- Abatha Rainwater : https://wowhead.com/forever/npc=242183/abatha-rainwater
+            [npcKeys.name] = "Abatha Rainwater",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Florist",
+            [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 3419; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
+        },
+        [242188] = { -- Robin D. Banks : https://wowhead.com/forever/npc=242188/robin-d-banks
+            [npcKeys.name] = "Robin D. Banks",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Professional \"Scribe\"",
+        },
+        [242204] = { -- T4 : https://wowhead.com/forever/npc=242204/t4
+            [npcKeys.name] = "T4",
+        },
+        [242214] = { -- Scarlet Priest : https://wowhead.com/forever/npc=242214/scarlet-priest
+            [npcKeys.name] = "Scarlet Priest",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242216] = { -- Scarlet Archer : https://wowhead.com/forever/npc=242216/scarlet-archer
+            [npcKeys.name] = "Scarlet Archer",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242218] = { -- Scarlet Mage : https://wowhead.com/forever/npc=242218/scarlet-mage
+            [npcKeys.name] = "Scarlet Mage",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242224] = { -- Cardinal Stiltz : https://wowhead.com/forever/npc=242224/cardinal-stiltz
+            [npcKeys.name] = "Cardinal Stiltz",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242240] = { -- S03 - Scarlet Enclave - Boss - Caldoran - Reinforcement - Stalker - Type A : https://wowhead.com/forever/npc=242240/s03-scarlet-enclave-boss-caldoran-reinforcement-stalker-type-a
+            [npcKeys.name] = "S03 - Scarlet Enclave - Boss - Caldoran - Reinforcement - Stalker - Type A",
+        },
+        [242243] = { -- S03 - Scarlet Enclave - Boss - Caldoran - Reinforcement - Stalker - Type B : https://wowhead.com/forever/npc=242243/s03-scarlet-enclave-boss-caldoran-reinforcement-stalker-type-b
+            [npcKeys.name] = "S03 - Scarlet Enclave - Boss - Caldoran - Reinforcement - Stalker - Type B",
+        },
+        [242245] = { -- S03 - Scarlet Enclave - Boss - Caldoran - Reinforcement - Stalker - Type C : https://wowhead.com/forever/npc=242245/s03-scarlet-enclave-boss-caldoran-reinforcement-stalker-type-c
+            [npcKeys.name] = "S03 - Scarlet Enclave - Boss - Caldoran - Reinforcement - Stalker - Type C",
+        },
+        [242246] = { -- S03 - Scarlet Enclave - Boss - Caldoran - Reinforcement - Stalker - Type D : https://wowhead.com/forever/npc=242246/s03-scarlet-enclave-boss-caldoran-reinforcement-stalker-type-d
+            [npcKeys.name] = "S03 - Scarlet Enclave - Boss - Caldoran - Reinforcement - Stalker - Type D",
+        },
+        [242250] = { -- Pile of Ash : https://wowhead.com/forever/npc=242250/pile-of-ash
+            [npcKeys.name] = "Pile of Ash",
+        },
+        [242271] = { -- Scarlet Priest : https://wowhead.com/forever/npc=242271/scarlet-priest
+            [npcKeys.name] = "Scarlet Priest",
+        },
+        [242272] = { -- Scarlet Archer : https://wowhead.com/forever/npc=242272/scarlet-archer
+            [npcKeys.name] = "Scarlet Archer",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242275] = { -- Scarlet Artillery : https://wowhead.com/forever/npc=242275/scarlet-artillery
+            [npcKeys.name] = "Scarlet Artillery",
+        },
+        [242279] = { -- Scarlet Cavalry : https://wowhead.com/forever/npc=242279/scarlet-cavalry
+            [npcKeys.name] = "Scarlet Cavalry",
+        },
+        [242282] = { -- Scarlet Infantry : https://wowhead.com/forever/npc=242282/scarlet-infantry
+            [npcKeys.name] = "Scarlet Infantry",
+        },
+        [242283] = { -- Scarlet Mage : https://wowhead.com/forever/npc=242283/scarlet-mage
+            [npcKeys.name] = "Scarlet Mage",
+        },
         [242290] = { -- Twilight Bodyguard : https://wowhead.com/forever/npc=242290/twilight-bodyguard
             [npcKeys.name] = "Twilight Bodyguard",
+        },
+        [242296] = { -- Bowmaster Puck : https://wowhead.com/forever/npc=242296/bowmaster-puck
+            [npcKeys.name] = "Bowmaster Puck",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242298] = { -- The Ashbringer : https://wowhead.com/forever/npc=242298/the-ashbringer
+            [npcKeys.name] = "The Ashbringer",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [242300] = { -- Watchman Briggs : https://wowhead.com/forever/npc=242300/watchman-briggs
+            [npcKeys.name] = "Watchman Briggs",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+        },
+        [242301] = { -- Cannon Mistress Lind : https://wowhead.com/forever/npc=242301/cannon-mistress-lind
+            [npcKeys.name] = "Cannon Mistress Lind",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242304] = { -- Knight-Captain Fratley : https://wowhead.com/forever/npc=242304/knight-captain-fratley
+            [npcKeys.name] = "Knight-Captain Fratley",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242308] = { -- Shield Warden Stein : https://wowhead.com/forever/npc=242308/shield-warden-stein
+            [npcKeys.name] = "Shield Warden Stein",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242310] = { -- Arcanist Hilda : https://wowhead.com/forever/npc=242310/arcanist-hilda
+            [npcKeys.name] = "Arcanist Hilda",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242329] = { -- S03 - Scarlet Enclave - Boss - Caldoran - Wrath of the Crusade - Stalker : https://wowhead.com/forever/npc=242329/s03-scarlet-enclave-boss-caldoran-wrath-of-the-crusade-stalker
+            [npcKeys.name] = "S03 - Scarlet Enclave - Boss - Caldoran - Wrath of the Crusade - Stalker",
+        },
+        [242344] = { -- Skeleton : https://wowhead.com/forever/npc=242344/skeleton
+            [npcKeys.name] = "Skeleton",
+        },
+        [242345] = { -- Dahlos : https://wowhead.com/forever/npc=242345/dahlos
+            [npcKeys.name] = "Dahlos",
+            [npcKeys.subName] = "Lighthouse Keeper",
+        },
+        [242354] = { -- Scarlet Commander : https://wowhead.com/forever/npc=242354/scarlet-commander
+            [npcKeys.name] = "Scarlet Commander",
         },
         [242367] = { -- New Avalon Citizen : https://wowhead.com/forever/npc=242367/new-avalon-citizen
             [npcKeys.name] = "New Avalon Citizen",
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 61,
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+        },
+        [242371] = { -- Entangling Shot : https://wowhead.com/forever/npc=242371/entangling-shot
+            [npcKeys.name] = "Entangling Shot",
+        },
+        [242373] = { -- S03 - Scarlet Enclave - Boss - Caldoran - Fire Stalker - Damage : https://wowhead.com/forever/npc=242373/s03-scarlet-enclave-boss-caldoran-fire-stalker-damage
+            [npcKeys.name] = "S03 - Scarlet Enclave - Boss - Caldoran - Fire Stalker - Damage",
+        },
+        [242378] = { -- S03 - Scarlet Enclave - Boss - Caldoran - Fire Stalker - Cosmetic 1 : https://wowhead.com/forever/npc=242378/s03-scarlet-enclave-boss-caldoran-fire-stalker-cosmetic-1
+            [npcKeys.name] = "S03 - Scarlet Enclave - Boss - Caldoran - Fire Stalker - Cosmetic 1",
+        },
+        [242380] = { -- S03 - Scarlet Enclave - Boss - Caldoran - Fire Stalker - Cosmetic 2 : https://wowhead.com/forever/npc=242380/s03-scarlet-enclave-boss-caldoran-fire-stalker-cosmetic-2
+            [npcKeys.name] = "S03 - Scarlet Enclave - Boss - Caldoran - Fire Stalker - Cosmetic 2",
+        },
+        [242386] = { -- Scarlet Firefighter : https://wowhead.com/forever/npc=242386/scarlet-firefighter
+            [npcKeys.name] = "Scarlet Firefighter",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242389] = { -- Angela Dosantos : https://wowhead.com/forever/npc=242389/angela-dosantos
+            [npcKeys.name] = "Angela Dosantos",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [242424] = { -- S03 - Scarlet Enclave - Boss - Caldoran - Collapse Stalker Manager : https://wowhead.com/forever/npc=242424/s03-scarlet-enclave-boss-caldoran-collapse-stalker-manager
+            [npcKeys.name] = "S03 - Scarlet Enclave - Boss - Caldoran - Collapse Stalker Manager",
+        },
+        [242427] = { -- Scarlet Foreman : https://wowhead.com/forever/npc=242427/scarlet-foreman
+            [npcKeys.name] = "Scarlet Foreman",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242439] = { -- Thisalee Crow : https://wowhead.com/forever/npc=242439/thisalee-crow
+            [npcKeys.name] = "Thisalee Crow",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.questEnds] = {90508},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Druid of the Talon",
+        },
+        [242450] = { -- Kill Credit : https://wowhead.com/forever/npc=242450/kill-credit
+            [npcKeys.name] = "Kill Credit",
+        },
+        [242466] = { -- Scarlet Deaconess : https://wowhead.com/forever/npc=242466/scarlet-deaconess
+            [npcKeys.name] = "Scarlet Deaconess",
+        },
+        [242477] = { -- Animated Detritus : https://wowhead.com/forever/npc=242477/animated-detritus
+            [npcKeys.name] = "Animated Detritus",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 61,
+        },
+        [242479] = { -- Immolation Trap : https://wowhead.com/forever/npc=242479/immolation-trap
+            [npcKeys.name] = "Immolation Trap",
+        },
+        [242496] = { -- [DNT] Kill Credit : https://wowhead.com/forever/npc=242496/dnt-kill-credit
+            [npcKeys.name] = "[DNT] Kill Credit",
+        },
+        [242497] = { -- [DNT] Kill Credit : https://wowhead.com/forever/npc=242497/dnt-kill-credit
+            [npcKeys.name] = "[DNT] Kill Credit",
         },
         [242498] = { -- Reagent Bot : https://wowhead.com/forever/npc=242498/reagent-bot
             [npcKeys.name] = "Reagent Bot",
@@ -3811,8 +12826,363 @@ function ForeverBaseNpc:Load()
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.npcFlags] = 4, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
+        [242499] = { -- Highlord Mograine : https://wowhead.com/forever/npc=242499/highlord-mograine
+            [npcKeys.name] = "Highlord Mograine",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_MONASTERY,
+            [npcKeys.questStarts] = {89475},
+            [npcKeys.questEnds] = {89474},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Ashbringer",
+        },
+        [242501] = { -- The Will of the Ashbringer : https://wowhead.com/forever/npc=242501/the-will-of-the-ashbringer
+            [npcKeys.name] = "The Will of the Ashbringer",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.questStarts] = {89488},
+            [npcKeys.questEnds] = {89488},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [242510] = { -- Scarlet Hollow : https://wowhead.com/forever/npc=242510/scarlet-hollow
+            [npcKeys.name] = "Scarlet Hollow",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [242516] = { -- S03 - Scarlet Enclave - Boss - Caldoran - Bloodflame - Stalker : https://wowhead.com/forever/npc=242516/s03-scarlet-enclave-boss-caldoran-bloodflame-stalker
+            [npcKeys.name] = "S03 - Scarlet Enclave - Boss - Caldoran - Bloodflame - Stalker",
+        },
+        [242547] = { -- Scarlet Praetorian : https://wowhead.com/forever/npc=242547/scarlet-praetorian
+            [npcKeys.name] = "Scarlet Praetorian",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
         [242551] = { -- Leyara : https://wowhead.com/forever/npc=242551/leyara
             [npcKeys.name] = "Leyara",
+        },
+        [242554] = { -- Jorn : https://wowhead.com/forever/npc=242554/jorn
+            [npcKeys.name] = "Jorn",
+        },
+        [242555] = { -- Buzan : https://wowhead.com/forever/npc=242555/buzan
+            [npcKeys.name] = "Buzan",
+        },
+        [242556] = { -- Karnwield : https://wowhead.com/forever/npc=242556/karnwield
+            [npcKeys.name] = "Karnwield",
+        },
+        [242557] = { -- Manadar : https://wowhead.com/forever/npc=242557/manadar
+            [npcKeys.name] = "Manadar",
+        },
+        [242558] = { -- Nilas Arcanister : https://wowhead.com/forever/npc=242558/nilas-arcanister
+            [npcKeys.name] = "Nilas Arcanister",
+        },
+        [242559] = { -- Granis Darkhammer : https://wowhead.com/forever/npc=242559/granis-darkhammer
+            [npcKeys.name] = "Granis Darkhammer",
+        },
+        [242560] = { -- Tenn Flamecaster : https://wowhead.com/forever/npc=242560/tenn-flamecaster
+            [npcKeys.name] = "Tenn Flamecaster",
+        },
+        [242561] = { -- Alexei : https://wowhead.com/forever/npc=242561/alexei
+            [npcKeys.name] = "Alexei",
+        },
+        [242562] = { -- Vishas : https://wowhead.com/forever/npc=242562/vishas
+            [npcKeys.name] = "Vishas",
+        },
+        [242563] = { -- Beatrix : https://wowhead.com/forever/npc=242563/beatrix
+            [npcKeys.name] = "Beatrix",
+        },
+        [242564] = { -- Herod : https://wowhead.com/forever/npc=242564/herod
+            [npcKeys.name] = "Herod",
+        },
+        [242565] = { -- Doan : https://wowhead.com/forever/npc=242565/doan
+            [npcKeys.name] = "Doan",
+        },
+        [242572] = { -- Scarlet Mage Tier 2 : https://wowhead.com/forever/npc=242572/scarlet-mage-tier-2
+            [npcKeys.name] = "Scarlet Mage Tier 2",
+        },
+        [242573] = { -- Scarlet Infantry Tier 2 : https://wowhead.com/forever/npc=242573/scarlet-infantry-tier-2
+            [npcKeys.name] = "Scarlet Infantry Tier 2",
+        },
+        [242574] = { -- Scarlet Cavalry Tier 2 : https://wowhead.com/forever/npc=242574/scarlet-cavalry-tier-2
+            [npcKeys.name] = "Scarlet Cavalry Tier 2",
+        },
+        [242575] = { -- Scarlet Artillery Tier 2 : https://wowhead.com/forever/npc=242575/scarlet-artillery-tier-2
+            [npcKeys.name] = "Scarlet Artillery Tier 2",
+        },
+        [242576] = { -- Scarlet Archer Tier 2 : https://wowhead.com/forever/npc=242576/scarlet-archer-tier-2
+            [npcKeys.name] = "Scarlet Archer Tier 2",
+        },
+        [242577] = { -- Devouring Hunger : https://wowhead.com/forever/npc=242577/devouring-hunger
+            [npcKeys.name] = "Devouring Hunger",
+        },
+        [242580] = { -- Wisp : https://wowhead.com/forever/npc=242580/wisp
+            [npcKeys.name] = "Wisp",
+        },
+        [242599] = { -- [DNT] Kill Credit : https://wowhead.com/forever/npc=242599/dnt-kill-credit
+            [npcKeys.name] = "[DNT] Kill Credit",
+        },
+        [242600] = { -- [DNT] Kill Credit : https://wowhead.com/forever/npc=242600/dnt-kill-credit
+            [npcKeys.name] = "[DNT] Kill Credit",
+        },
+        [242601] = { -- [DNT] Kill Credit : https://wowhead.com/forever/npc=242601/dnt-kill-credit
+            [npcKeys.name] = "[DNT] Kill Credit",
+        },
+        [242605] = { -- The Creature : https://wowhead.com/forever/npc=242605/the-creature
+            [npcKeys.name] = "The Creature",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+        },
+        [242624] = { -- Fire Door : https://wowhead.com/forever/npc=242624/fire-door
+            [npcKeys.name] = "Fire Door",
+        },
+        [242629] = { -- Scarlet Courier : https://wowhead.com/forever/npc=242629/scarlet-courier
+            [npcKeys.name] = "Scarlet Courier",
+        },
+        [242641] = { -- Reborn Shuffler : https://wowhead.com/forever/npc=242641/reborn-shuffler
+            [npcKeys.name] = "Reborn Shuffler",
+        },
+        [242660] = { -- Molten Basin : https://wowhead.com/forever/npc=242660/molten-basin
+            [npcKeys.name] = "Molten Basin",
+        },
+        [242690] = { -- Stalker : https://wowhead.com/forever/npc=242690/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [242741] = { -- Charge Stalker 01 : https://wowhead.com/forever/npc=242741/charge-stalker-01
+            [npcKeys.name] = "Charge Stalker 01",
+        },
+        [242751] = { -- Viznit the Scoundrel : https://wowhead.com/forever/npc=242751/viznit-the-scoundrel
+            [npcKeys.name] = "Viznit the Scoundrel",
+            [npcKeys.minLevel] = 55,
+            [npcKeys.maxLevel] = 55,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [242757] = { -- New Avalon Councilman : https://wowhead.com/forever/npc=242757/new-avalon-councilman
+            [npcKeys.name] = "New Avalon Councilman",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+        },
+        [242782] = { -- The Ashbringer : https://wowhead.com/forever/npc=242782/the-ashbringer
+            [npcKeys.name] = "The Ashbringer",
+        },
+        [242788] = { -- Bowmaster Puck : https://wowhead.com/forever/npc=242788/bowmaster-puck
+            [npcKeys.name] = "Bowmaster Puck",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242789] = { -- Cannon Mistress Lind : https://wowhead.com/forever/npc=242789/cannon-mistress-lind
+            [npcKeys.name] = "Cannon Mistress Lind",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242790] = { -- Knight-Captain Fratley : https://wowhead.com/forever/npc=242790/knight-captain-fratley
+            [npcKeys.name] = "Knight-Captain Fratley",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242791] = { -- Shield Warden Stein : https://wowhead.com/forever/npc=242791/shield-warden-stein
+            [npcKeys.name] = "Shield Warden Stein",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242792] = { -- Arcanist Hilda : https://wowhead.com/forever/npc=242792/arcanist-hilda
+            [npcKeys.name] = "Arcanist Hilda",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242793] = { -- Cardinal Stiltz : https://wowhead.com/forever/npc=242793/cardinal-stiltz
+            [npcKeys.name] = "Cardinal Stiltz",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242796] = { -- Beatrix Controller : https://wowhead.com/forever/npc=242796/beatrix-controller
+            [npcKeys.name] = "Beatrix Controller",
+        },
+        [242816] = { -- Nether Barrier : https://wowhead.com/forever/npc=242816/nether-barrier
+            [npcKeys.name] = "Nether Barrier",
+        },
+        [242827] = { -- Captain Bloodcoin : https://wowhead.com/forever/npc=242827/captain-bloodcoin
+            [npcKeys.name] = "Captain Bloodcoin",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Seafaring Auctioneer",
+        },
+        [242828] = { -- Herod : https://wowhead.com/forever/npc=242828/herod
+            [npcKeys.name] = "Herod",
+        },
+        [242853] = { -- Eastsea Scallywag : https://wowhead.com/forever/npc=242853/eastsea-scallywag
+            [npcKeys.name] = "Eastsea Scallywag",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [242862] = { -- Ancient Flame : https://wowhead.com/forever/npc=242862/ancient-flame
+            [npcKeys.name] = "Ancient Flame",
+        },
+        [242863] = { -- Hyjal Bonfire : https://wowhead.com/forever/npc=242863/hyjal-bonfire
+            [npcKeys.name] = "Hyjal Bonfire",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.questStarts] = {90559},
+            [npcKeys.questEnds] = {89473},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [242867] = { -- The Will of the Ashbringer : https://wowhead.com/forever/npc=242867/the-will-of-the-ashbringer
+            [npcKeys.name] = "The Will of the Ashbringer",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_MONASTERY,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [242870] = { -- S03 - Item - Experiment-800M - Transform - Cannon : https://wowhead.com/forever/npc=242870/s03-item-experiment-800m-transform-cannon
+            [npcKeys.name] = "S03 - Item - Experiment-800M - Transform - Cannon",
+        },
+        [242872] = { -- Lady Blaumeux : https://wowhead.com/forever/npc=242872/lady-blaumeux
+            [npcKeys.name] = "Lady Blaumeux",
+        },
+        [242874] = { -- Thane Korth'azz : https://wowhead.com/forever/npc=242874/thane-korthazz
+            [npcKeys.name] = "Thane Korth'azz",
+        },
+        [242877] = { -- Sir Zeliek : https://wowhead.com/forever/npc=242877/sir-zeliek
+            [npcKeys.name] = "Sir Zeliek",
+        },
+        [242878] = { -- Highlord Mograine : https://wowhead.com/forever/npc=242878/highlord-mograine
+            [npcKeys.name] = "Highlord Mograine",
+        },
+        [242886] = { -- Eastsea Long Barrel : https://wowhead.com/forever/npc=242886/eastsea-long-barrel
+            [npcKeys.name] = "Eastsea Long Barrel",
+            [npcKeys.minLevel] = 5,
+            [npcKeys.maxLevel] = 5,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [242892] = { -- Mirage : https://wowhead.com/forever/npc=242892/mirage
+            [npcKeys.name] = "Mirage",
+        },
+        [242908] = { -- Scarlet Archer : https://wowhead.com/forever/npc=242908/scarlet-archer
+            [npcKeys.name] = "Scarlet Archer",
+        },
+        [242922] = { -- Scarlet Artillery : https://wowhead.com/forever/npc=242922/scarlet-artillery
+            [npcKeys.name] = "Scarlet Artillery",
+        },
+        [242923] = { -- Breath Stalker : https://wowhead.com/forever/npc=242923/breath-stalker
+            [npcKeys.name] = "Breath Stalker",
+        },
+        [242924] = { -- Scarlet Enclave Weapons : https://wowhead.com/forever/npc=242924/scarlet-enclave-weapons
+            [npcKeys.name] = "Scarlet Enclave Weapons",
+        },
+        [242925] = { -- Scarlet Enclave Armor : https://wowhead.com/forever/npc=242925/scarlet-enclave-armor
+            [npcKeys.name] = "Scarlet Enclave Armor",
+        },
+        [242926] = { -- Scarlet Cavalry : https://wowhead.com/forever/npc=242926/scarlet-cavalry
+            [npcKeys.name] = "Scarlet Cavalry",
+        },
+        [242927] = { -- Scarlet Cavalry : https://wowhead.com/forever/npc=242927/scarlet-cavalry
+            [npcKeys.name] = "Scarlet Cavalry",
+        },
+        [242954] = { -- Anvil : https://wowhead.com/forever/npc=242954/anvil
+            [npcKeys.name] = "Anvil",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.npcFlags] = 16384, -- Assumption: assumptions/npc_services.toml; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
+        },
+        [242957] = { -- Scarlet Infantry : https://wowhead.com/forever/npc=242957/scarlet-infantry
+            [npcKeys.name] = "Scarlet Infantry",
+        },
+        [242958] = { -- Scarlet Infantry : https://wowhead.com/forever/npc=242958/scarlet-infantry
+            [npcKeys.name] = "Scarlet Infantry",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [243001] = { -- Scarlet Priest : https://wowhead.com/forever/npc=243001/scarlet-priest
+            [npcKeys.name] = "Scarlet Priest",
+        },
+        [243005] = { -- Putress : https://wowhead.com/forever/npc=243005/putress
+            [npcKeys.name] = "Putress",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [243007] = { -- Screeching Terror : https://wowhead.com/forever/npc=243007/screeching-terror
+            [npcKeys.name] = "Screeching Terror",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [243011] = { -- Infernal : https://wowhead.com/forever/npc=243011/infernal
+            [npcKeys.name] = "Infernal",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [243012] = { -- Strong Bear : https://wowhead.com/forever/npc=243012/strong-bear
+            [npcKeys.name] = "Strong Bear",
+        },
+        [243013] = { -- Observant Owl : https://wowhead.com/forever/npc=243013/observant-owl
+            [npcKeys.name] = "Observant Owl",
+        },
+        [243014] = { -- Quick Cat : https://wowhead.com/forever/npc=243014/quick-cat
+            [npcKeys.name] = "Quick Cat",
+        },
+        [243015] = { -- Agile Raptor : https://wowhead.com/forever/npc=243015/agile-raptor
+            [npcKeys.name] = "Agile Raptor",
+        },
+        [243016] = { -- Powerful Gorilla : https://wowhead.com/forever/npc=243016/powerful-gorilla
+            [npcKeys.name] = "Powerful Gorilla",
+        },
+        [243017] = { -- Ferocious Crocolisk : https://wowhead.com/forever/npc=243017/ferocious-crocolisk
+            [npcKeys.name] = "Ferocious Crocolisk",
+        },
+        [243018] = { -- Brilliant Mr. Bigglesworth : https://wowhead.com/forever/npc=243018/brilliant-mr-bigglesworth
+            [npcKeys.name] = "Brilliant Mr. Bigglesworth",
+        },
+        [243019] = { -- Last Standard : https://wowhead.com/forever/npc=243019/last-standard
+            [npcKeys.name] = "Last Standard",
+        },
+        [243021] = { -- Lilian Voss : https://wowhead.com/forever/npc=243021/lilian-voss
+            [npcKeys.name] = "Lilian Voss",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [243022] = { -- New Avalon Citizen : https://wowhead.com/forever/npc=243022/new-avalon-citizen
+            [npcKeys.name] = "New Avalon Citizen",
+        },
+        [243023] = { -- Inquisitor Jociphine : https://wowhead.com/forever/npc=243023/inquisitor-jociphine
+            [npcKeys.name] = "Inquisitor Jociphine",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {90510},
+            [npcKeys.questEnds] = {90510},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [243024] = { -- DNT : https://wowhead.com/forever/npc=243024/dnt
+            [npcKeys.name] = "DNT",
+        },
+        [243025] = { -- Meteor : https://wowhead.com/forever/npc=243025/meteor
+            [npcKeys.name] = "Meteor",
+        },
+        [243026] = { -- Meteor : https://wowhead.com/forever/npc=243026/meteor
+            [npcKeys.name] = "Meteor",
+        },
+        [243027] = { -- Scarlet Mage : https://wowhead.com/forever/npc=243027/scarlet-mage
+            [npcKeys.name] = "Scarlet Mage",
         },
         [243046] = { -- Scarlet Captain : https://wowhead.com/forever/npc=243046/scarlet-captain
             [npcKeys.name] = "Scarlet Captain",
@@ -3821,6 +13191,61 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [243047] = { -- Scarlet Infantry : https://wowhead.com/forever/npc=243047/scarlet-infantry
+            [npcKeys.name] = "Scarlet Infantry",
+        },
+        [243050] = { -- Scarlet Sergeant : https://wowhead.com/forever/npc=243050/scarlet-sergeant
+            [npcKeys.name] = "Scarlet Sergeant",
+        },
+        [243051] = { -- Mote of Possibility : https://wowhead.com/forever/npc=243051/mote-of-possibility
+            [npcKeys.name] = "Mote of Possibility",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [243056] = { -- Knight Farris : https://wowhead.com/forever/npc=243056/knight-farris
+            [npcKeys.name] = "Knight Farris",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.STRATHOLME,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [243057] = { -- Knight Stearn : https://wowhead.com/forever/npc=243057/knight-stearn
+            [npcKeys.name] = "Knight Stearn",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.STRATHOLME,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [243060] = { -- Distracted Scarlet Wizard : https://wowhead.com/forever/npc=243060/distracted-scarlet-wizard
+            [npcKeys.name] = "Distracted Scarlet Wizard",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+        },
+        [243061] = { -- (DNT) Invisible Target Stalker : https://wowhead.com/forever/npc=243061/dnt-invisible-target-stalker
+            [npcKeys.name] = "(DNT) Invisible Target Stalker",
+        },
+        [243062] = { -- (DNT) Invisible Beam Stalker : https://wowhead.com/forever/npc=243062/dnt-invisible-beam-stalker
+            [npcKeys.name] = "(DNT) Invisible Beam Stalker",
+        },
+        [243076] = { -- Scarlet Lightbearer : https://wowhead.com/forever/npc=243076/scarlet-lightbearer
+            [npcKeys.name] = "Scarlet Lightbearer",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [243086] = { -- Eastsea Dockworker : https://wowhead.com/forever/npc=243086/eastsea-dockworker
+            [npcKeys.name] = "Eastsea Dockworker",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [243087] = { -- Eastsea Mercenary : https://wowhead.com/forever/npc=243087/eastsea-mercenary
+            [npcKeys.name] = "Eastsea Mercenary",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+        },
         [243089] = { -- Alpine Chipmunk : https://wowhead.com/forever/npc=243089/alpine-chipmunk
             [npcKeys.name] = "Alpine Chipmunk",
         },
@@ -3828,6 +13253,134 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Elfin Rabbit",
             [npcKeys.spawns] = {[616] = {{59.2, 46.2}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+        },
+        [243094] = { -- Scarlet Wizard : https://wowhead.com/forever/npc=243094/scarlet-wizard
+            [npcKeys.name] = "Scarlet Wizard",
+        },
+        [243096] = { -- Magic Ward : https://wowhead.com/forever/npc=243096/magic-ward
+            [npcKeys.name] = "Magic Ward",
+        },
+        [243099] = { -- Scarlet Enclave Weapon Enchants : https://wowhead.com/forever/npc=243099/scarlet-enclave-weapon-enchants
+            [npcKeys.name] = "Scarlet Enclave Weapon Enchants",
+        },
+        [243100] = { -- Shade of Balnazzar : https://wowhead.com/forever/npc=243100/shade-of-balnazzar
+            [npcKeys.name] = "Shade of Balnazzar",
+        },
+        [243107] = { -- [DNT] TEST NPC : https://wowhead.com/forever/npc=243107/dnt-test-npc
+            [npcKeys.name] = "[DNT] TEST NPC",
+        },
+        [243139] = { -- Lightgorged Whelp : https://wowhead.com/forever/npc=243139/lightgorged-whelp
+            [npcKeys.name] = "Lightgorged Whelp",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [243158] = { -- Cardinal Martell : https://wowhead.com/forever/npc=243158/cardinal-martell
+            [npcKeys.name] = "Cardinal Martell",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [243159] = { -- Scarlet Priest : https://wowhead.com/forever/npc=243159/scarlet-priest
+            [npcKeys.name] = "Scarlet Priest",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [243184] = { -- Transformation : https://wowhead.com/forever/npc=243184/transformation
+            [npcKeys.name] = "Transformation",
+        },
+        [243186] = { -- Fydriel : https://wowhead.com/forever/npc=243186/fydriel
+            [npcKeys.name] = "Fydriel",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [243187] = { -- Gustave : https://wowhead.com/forever/npc=243187/gustave
+            [npcKeys.name] = "Gustave",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [243189] = { -- Slipstrip Silverspanner : https://wowhead.com/forever/npc=243189/slipstrip-silverspanner
+            [npcKeys.name] = "Slipstrip Silverspanner",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [243190] = { -- Argent Guard : https://wowhead.com/forever/npc=243190/argent-guard
+            [npcKeys.name] = "Argent Guard",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [243191] = { -- Argent Rider : https://wowhead.com/forever/npc=243191/argent-rider
+            [npcKeys.name] = "Argent Rider",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [243192] = { -- Griffin Rowan : https://wowhead.com/forever/npc=243192/griffin-rowan
+            [npcKeys.name] = "Griffin Rowan",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "Gryphon Rider",
+        },
+        [243193] = { -- Angela Dosantos : https://wowhead.com/forever/npc=243193/angela-dosantos
+            [npcKeys.name] = "Angela Dosantos",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [243194] = { -- Spymaster Ricky Bismuth : https://wowhead.com/forever/npc=243194/spymaster-ricky-bismuth
+            [npcKeys.name] = "Spymaster Ricky Bismuth",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [243195] = { -- Argent Scout : https://wowhead.com/forever/npc=243195/argent-scout
+            [npcKeys.name] = "Argent Scout",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [243200] = { -- [DNT] Kill Credit : https://wowhead.com/forever/npc=243200/dnt-kill-credit
+            [npcKeys.name] = "[DNT] Kill Credit",
+        },
+        [243201] = { -- [DNT] Kill Credit : https://wowhead.com/forever/npc=243201/dnt-kill-credit
+            [npcKeys.name] = "[DNT] Kill Credit",
+        },
+        [243202] = { -- [DNT] Kill Credit : https://wowhead.com/forever/npc=243202/dnt-kill-credit
+            [npcKeys.name] = "[DNT] Kill Credit",
+        },
+        [243203] = { -- [DNT] Kill Credit : https://wowhead.com/forever/npc=243203/dnt-kill-credit
+            [npcKeys.name] = "[DNT] Kill Credit",
+        },
+        [243204] = { -- [DNT] Kill Credit : https://wowhead.com/forever/npc=243204/dnt-kill-credit
+            [npcKeys.name] = "[DNT] Kill Credit",
+        },
+        [243250] = { -- Knight-Captain Caldoran : https://wowhead.com/forever/npc=243250/knight-captain-caldoran
+            [npcKeys.name] = "Knight-Captain Caldoran",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.STRATHOLME,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [243251] = { -- Crusader Caldoran : https://wowhead.com/forever/npc=243251/crusader-caldoran
+            [npcKeys.name] = "Crusader Caldoran",
+            [npcKeys.minLevel] = 9999,
+            [npcKeys.maxLevel] = 9999,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [243252] = { -- Leonid Barthalomew : https://wowhead.com/forever/npc=243252/leonid-barthalomew
+            [npcKeys.name] = "Leonid Barthalomew",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.STRATHOLME,
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [243254] = { -- Leonid Barthalomew : https://wowhead.com/forever/npc=243254/leonid-barthalomew
             [npcKeys.name] = "Leonid Barthalomew",
@@ -3843,6 +13396,57 @@ function ForeverBaseNpc:Load()
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.friendlyToFaction] = "AH",
         },
+        [243269] = { -- Solistrasza : https://wowhead.com/forever/npc=243269/solistrasza
+            [npcKeys.name] = "Solistrasza",
+        },
+        [243271] = { -- Molten Boulder : https://wowhead.com/forever/npc=243271/molten-boulder
+            [npcKeys.name] = "Molten Boulder",
+        },
+        [243331] = { -- Liliana Barthalomew : https://wowhead.com/forever/npc=243331/liliana-barthalomew
+            [npcKeys.name] = "Liliana Barthalomew",
+            [npcKeys.minLevel] = 30,
+            [npcKeys.maxLevel] = 30,
+            [npcKeys.zoneID] = zoneIDs.STRATHOLME,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [243332] = { -- Percival Barthalomew : https://wowhead.com/forever/npc=243332/percival-barthalomew
+            [npcKeys.name] = "Percival Barthalomew",
+            [npcKeys.minLevel] = 1,
+            [npcKeys.maxLevel] = 1,
+            [npcKeys.zoneID] = zoneIDs.STRATHOLME,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [243337] = { -- Frozen Core : https://wowhead.com/forever/npc=243337/frozen-core
+            [npcKeys.name] = "Frozen Core",
+        },
+        [243385] = { -- DNT : https://wowhead.com/forever/npc=243385/dnt
+            [npcKeys.name] = "DNT",
+        },
+        [243386] = { -- Leonid Barthalomew the Revered : https://wowhead.com/forever/npc=243386/leonid-barthalomew-the-revered
+            [npcKeys.name] = "Leonid Barthalomew the Revered",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.questStarts] = {89229, 89328, 89329},
+            [npcKeys.questEnds] = {89310, 89328, 89329},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [243387] = { -- DNT : https://wowhead.com/forever/npc=243387/dnt
+            [npcKeys.name] = "DNT",
+        },
+        [243392] = { -- DNT : https://wowhead.com/forever/npc=243392/dnt
+            [npcKeys.name] = "DNT",
+        },
+        [243393] = { -- Leonid Barthalomew the Revered : https://wowhead.com/forever/npc=243393/leonid-barthalomew-the-revered
+            [npcKeys.name] = "Leonid Barthalomew the Revered",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.questStarts] = {89235, 89310},
+            [npcKeys.questEnds] = {89234, 89235},
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
         [243394] = { -- Percival Barthalomew : https://wowhead.com/forever/npc=243394/percival-barthalomew
             [npcKeys.name] = "Percival Barthalomew",
             [npcKeys.minLevel] = 5,
@@ -3852,6 +13456,87 @@ function ForeverBaseNpc:Load()
         },
         [243509] = { -- Noxious Slime : https://wowhead.com/forever/npc=243509/noxious-slime
             [npcKeys.name] = "Noxious Slime",
+        },
+        [243627] = { -- Argent Scout : https://wowhead.com/forever/npc=243627/argent-scout
+            [npcKeys.name] = "Argent Scout",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [243628] = { -- Argent Scout : https://wowhead.com/forever/npc=243628/argent-scout
+            [npcKeys.name] = "Argent Scout",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [243629] = { -- DNT : https://wowhead.com/forever/npc=243629/dnt
+            [npcKeys.name] = "DNT",
+        },
+        [243630] = { -- DNT : https://wowhead.com/forever/npc=243630/dnt
+            [npcKeys.name] = "DNT",
+        },
+        [243632] = { -- Argent Scout : https://wowhead.com/forever/npc=243632/argent-scout
+            [npcKeys.name] = "Argent Scout",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [243637] = { -- Monument : https://wowhead.com/forever/npc=243637/monument
+            [npcKeys.name] = "Monument",
+        },
+        [243645] = { -- Stalker : https://wowhead.com/forever/npc=243645/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [243647] = { -- Ancient of War : https://wowhead.com/forever/npc=243647/ancient-of-war
+            [npcKeys.name] = "Ancient of War",
+            [npcKeys.minLevel] = 62,
+            [npcKeys.maxLevel] = 62,
+        },
+        [243648] = { -- Stalker : https://wowhead.com/forever/npc=243648/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [243657] = { -- Scarlet Crusader Corpse : https://wowhead.com/forever/npc=243657/scarlet-crusader-corpse
+            [npcKeys.name] = "Scarlet Crusader Corpse",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [243702] = { -- Scarlet Paladin : https://wowhead.com/forever/npc=243702/scarlet-paladin
+            [npcKeys.name] = "Scarlet Paladin",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [243737] = { -- Scarlet Myrmidon : https://wowhead.com/forever/npc=243737/scarlet-myrmidon
+            [npcKeys.name] = "Scarlet Myrmidon",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [243755] = { -- Argent Dawn Infantry : https://wowhead.com/forever/npc=243755/argent-dawn-infantry
+            [npcKeys.name] = "Argent Dawn Infantry",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [243756] = { -- Scarlet Crusader : https://wowhead.com/forever/npc=243756/scarlet-crusader
+            [npcKeys.name] = "Scarlet Crusader",
+        },
+        [243757] = { -- Angela Dosantos : https://wowhead.com/forever/npc=243757/angela-dosantos
+            [npcKeys.name] = "Angela Dosantos",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [243783] = { -- Scarlet Infantry : https://wowhead.com/forever/npc=243783/scarlet-infantry
+            [npcKeys.name] = "Scarlet Infantry",
+        },
+        [243787] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=243787/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [243788] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=243788/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [243790] = { -- Scarlet Cavalry : https://wowhead.com/forever/npc=243790/scarlet-cavalry
+            [npcKeys.name] = "Scarlet Cavalry",
         },
         [243815] = { -- Sebelia : https://wowhead.com/forever/npc=243815/sebelia
             [npcKeys.name] = "Sebelia",
@@ -3863,6 +13548,20 @@ function ForeverBaseNpc:Load()
             [npcKeys.subName] = "Innkeeper",
             [npcKeys.npcFlags] = 132, -- Assumption: assumptions/npc_services.toml; innkeeper_title -> INNKEEPER: own tag='Innkeeper'; The NPC's exact Innkeeper title identifies its stated role, so we assume INNKEEPER service without a separate bind-service field.; sells -> VENDOR: own sells item 159; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.
         },
+        [243834] = { -- Johnny Heart Man : https://wowhead.com/forever/npc=243834/johnny-heart-man
+            [npcKeys.name] = "Johnny Heart Man",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.subName] = "Builder Extraordinaire",
+        },
+        [243838] = { -- Dwiba : https://wowhead.com/forever/npc=243838/dwiba
+            [npcKeys.name] = "Dwiba",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.subName] = "He's Here Too",
+        },
         [243855] = { -- Toron Rockhoof : https://wowhead.com/forever/npc=243855/toron-rockhoof
             [npcKeys.name] = "Toron Rockhoof",
             [npcKeys.minLevel] = 60,
@@ -3873,11 +13572,220 @@ function ForeverBaseNpc:Load()
             [npcKeys.subName] = "Blacksmithing Supplies",
             [npcKeys.npcFlags] = 16388, -- Assumption: assumptions/npc_services.toml; sells -> VENDOR: own sells item 2880; An item in this NPC's own sells tab indicates sales, so we assume VENDOR service; it does not establish repair or innkeeper service.; can_repair -> REPAIR: own infobox [li]Can repair[/li]; The NPC's own infobox explicitly says Can repair, so we assume REPAIR service; this does not establish vendor service.
         },
+        [243893] = { -- High General Abbendis : https://wowhead.com/forever/npc=243893/high-general-abbendis
+            [npcKeys.name] = "High General Abbendis",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+        },
+        [243904] = { -- Scarlet Paladin : https://wowhead.com/forever/npc=243904/scarlet-paladin
+            [npcKeys.name] = "Scarlet Paladin",
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+        },
+        [243911] = { -- Dread Cannon : https://wowhead.com/forever/npc=243911/dread-cannon
+            [npcKeys.name] = "Dread Cannon",
+        },
+        [243914] = { -- Scarlet Cannonball : https://wowhead.com/forever/npc=243914/scarlet-cannonball
+            [npcKeys.name] = "Scarlet Cannonball",
+        },
+        [243917] = { -- Stalker : https://wowhead.com/forever/npc=243917/stalker
+            [npcKeys.name] = "Stalker",
+        },
         [243923] = { -- Kel'rah the Shadowhunter : https://wowhead.com/forever/npc=243923/kelrah-the-shadowhunter
             [npcKeys.name] = "Kel'rah the Shadowhunter",
         },
+        [243943] = { -- Toxic Pool : https://wowhead.com/forever/npc=243943/toxic-pool
+            [npcKeys.name] = "Toxic Pool",
+        },
+        [243946] = { -- Argent Dawn Infantry : https://wowhead.com/forever/npc=243946/argent-dawn-infantry
+            [npcKeys.name] = "Argent Dawn Infantry",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [243947] = { -- Cannon Fire Stalker [DNT] : https://wowhead.com/forever/npc=243947/cannon-fire-stalker-dnt
+            [npcKeys.name] = "Cannon Fire Stalker [DNT]",
+        },
         [243952] = { -- Thurandris Nightrage : https://wowhead.com/forever/npc=243952/thurandris-nightrage
             [npcKeys.name] = "Thurandris Nightrage",
+        },
+        [243954] = { -- Stalker : https://wowhead.com/forever/npc=243954/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [244005] = { -- Scarlet Priest : https://wowhead.com/forever/npc=244005/scarlet-priest
+            [npcKeys.name] = "Scarlet Priest",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244006] = { -- Scarlet Mage : https://wowhead.com/forever/npc=244006/scarlet-mage
+            [npcKeys.name] = "Scarlet Mage",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244007] = { -- Scarlet Infantry : https://wowhead.com/forever/npc=244007/scarlet-infantry
+            [npcKeys.name] = "Scarlet Infantry",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244008] = { -- Scarlet Cavalry : https://wowhead.com/forever/npc=244008/scarlet-cavalry
+            [npcKeys.name] = "Scarlet Cavalry",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244009] = { -- Scarlet Artillery : https://wowhead.com/forever/npc=244009/scarlet-artillery
+            [npcKeys.name] = "Scarlet Artillery",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244010] = { -- Scarlet Archer : https://wowhead.com/forever/npc=244010/scarlet-archer
+            [npcKeys.name] = "Scarlet Archer",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244013] = { -- Scarlet Mage : https://wowhead.com/forever/npc=244013/scarlet-mage
+            [npcKeys.name] = "Scarlet Mage",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244014] = { -- Scarlet Priest : https://wowhead.com/forever/npc=244014/scarlet-priest
+            [npcKeys.name] = "Scarlet Priest",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244015] = { -- Scarlet Infantry : https://wowhead.com/forever/npc=244015/scarlet-infantry
+            [npcKeys.name] = "Scarlet Infantry",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244016] = { -- Scarlet Cavalry : https://wowhead.com/forever/npc=244016/scarlet-cavalry
+            [npcKeys.name] = "Scarlet Cavalry",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244017] = { -- Scarlet Artillery : https://wowhead.com/forever/npc=244017/scarlet-artillery
+            [npcKeys.name] = "Scarlet Artillery",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244018] = { -- Scarlet Archer : https://wowhead.com/forever/npc=244018/scarlet-archer
+            [npcKeys.name] = "Scarlet Archer",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244019] = { -- Scarlet Priest : https://wowhead.com/forever/npc=244019/scarlet-priest
+            [npcKeys.name] = "Scarlet Priest",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244020] = { -- Scarlet Mage : https://wowhead.com/forever/npc=244020/scarlet-mage
+            [npcKeys.name] = "Scarlet Mage",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244021] = { -- Scarlet Infantry : https://wowhead.com/forever/npc=244021/scarlet-infantry
+            [npcKeys.name] = "Scarlet Infantry",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244022] = { -- Scarlet Cavalry : https://wowhead.com/forever/npc=244022/scarlet-cavalry
+            [npcKeys.name] = "Scarlet Cavalry",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244023] = { -- Scarlet Artillery : https://wowhead.com/forever/npc=244023/scarlet-artillery
+            [npcKeys.name] = "Scarlet Artillery",
+        },
+        [244024] = { -- Scarlet Archer : https://wowhead.com/forever/npc=244024/scarlet-archer
+            [npcKeys.name] = "Scarlet Archer",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244064] = { -- Scarlet Archer : https://wowhead.com/forever/npc=244064/scarlet-archer
+            [npcKeys.name] = "Scarlet Archer",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244065] = { -- Scarlet Artillery : https://wowhead.com/forever/npc=244065/scarlet-artillery
+            [npcKeys.name] = "Scarlet Artillery",
+        },
+        [244066] = { -- Scarlet Cavalry : https://wowhead.com/forever/npc=244066/scarlet-cavalry
+            [npcKeys.name] = "Scarlet Cavalry",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244067] = { -- Scarlet Infantry : https://wowhead.com/forever/npc=244067/scarlet-infantry
+            [npcKeys.name] = "Scarlet Infantry",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244068] = { -- Scarlet Mage : https://wowhead.com/forever/npc=244068/scarlet-mage
+            [npcKeys.name] = "Scarlet Mage",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244069] = { -- Scarlet Priest : https://wowhead.com/forever/npc=244069/scarlet-priest
+            [npcKeys.name] = "Scarlet Priest",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244102] = { -- Scarlet Priest : https://wowhead.com/forever/npc=244102/scarlet-priest
+            [npcKeys.name] = "Scarlet Priest",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244103] = { -- Scarlet Mage : https://wowhead.com/forever/npc=244103/scarlet-mage
+            [npcKeys.name] = "Scarlet Mage",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244104] = { -- Scarlet Infantry : https://wowhead.com/forever/npc=244104/scarlet-infantry
+            [npcKeys.name] = "Scarlet Infantry",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244105] = { -- Scarlet Cavalry : https://wowhead.com/forever/npc=244105/scarlet-cavalry
+            [npcKeys.name] = "Scarlet Cavalry",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244106] = { -- Scarlet Artillery : https://wowhead.com/forever/npc=244106/scarlet-artillery
+            [npcKeys.name] = "Scarlet Artillery",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244107] = { -- Scarlet Archer : https://wowhead.com/forever/npc=244107/scarlet-archer
+            [npcKeys.name] = "Scarlet Archer",
+        },
+        [244122] = { -- Eastsea Cannoneer : https://wowhead.com/forever/npc=244122/eastsea-cannoneer
+            [npcKeys.name] = "Eastsea Cannoneer",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 62,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
         },
         [244129] = { -- Legashi Rogue : https://wowhead.com/forever/npc=244129/legashi-rogue
             [npcKeys.name] = "Legashi Rogue",
@@ -3885,8 +13793,163 @@ function ForeverBaseNpc:Load()
         [244130] = { -- Legashi Satyr : https://wowhead.com/forever/npc=244130/legashi-satyr
             [npcKeys.name] = "Legashi Satyr",
         },
+        [244131] = { -- Scarlet Priest : https://wowhead.com/forever/npc=244131/scarlet-priest
+            [npcKeys.name] = "Scarlet Priest",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244132] = { -- Scarlet Mage : https://wowhead.com/forever/npc=244132/scarlet-mage
+            [npcKeys.name] = "Scarlet Mage",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244133] = { -- Scarlet Infantry : https://wowhead.com/forever/npc=244133/scarlet-infantry
+            [npcKeys.name] = "Scarlet Infantry",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244134] = { -- Scarlet Cavalry : https://wowhead.com/forever/npc=244134/scarlet-cavalry
+            [npcKeys.name] = "Scarlet Cavalry",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244135] = { -- Scarlet Artillery : https://wowhead.com/forever/npc=244135/scarlet-artillery
+            [npcKeys.name] = "Scarlet Artillery",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244136] = { -- Scarlet Archer : https://wowhead.com/forever/npc=244136/scarlet-archer
+            [npcKeys.name] = "Scarlet Archer",
+            [npcKeys.minLevel] = 61,
+            [npcKeys.maxLevel] = 61,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+        },
+        [244147] = { -- Scarlet Rifleman : https://wowhead.com/forever/npc=244147/scarlet-rifleman
+            [npcKeys.name] = "Scarlet Rifleman",
+        },
+        [244151] = { -- Argent Dawn Cleric : https://wowhead.com/forever/npc=244151/argent-dawn-cleric
+            [npcKeys.name] = "Argent Dawn Cleric",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [244155] = { -- New Avalon Refugee : https://wowhead.com/forever/npc=244155/new-avalon-refugee
+            [npcKeys.name] = "New Avalon Refugee",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
+            [npcKeys.friendlyToFaction] = "A",
+        },
+        [244172] = { -- Argent Dawn Infantry : https://wowhead.com/forever/npc=244172/argent-dawn-infantry
+            [npcKeys.name] = "Argent Dawn Infantry",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
         [244188] = { -- Scalebeard : https://wowhead.com/forever/npc=244188/scalebeard
             [npcKeys.name] = "Scalebeard",
+        },
+        [244265] = { -- Stalker : https://wowhead.com/forever/npc=244265/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [244306] = { -- Stalker : https://wowhead.com/forever/npc=244306/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [244307] = { -- Stalker : https://wowhead.com/forever/npc=244307/stalker
+            [npcKeys.name] = "Stalker",
+        },
+        [244310] = { -- Furniture : https://wowhead.com/forever/npc=244310/furniture
+            [npcKeys.name] = "Furniture",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.friendlyToFaction] = "AH",
+        },
+        [244321] = { -- Leonid Barthalomew the Revered : https://wowhead.com/forever/npc=244321/leonid-barthalomew-the-revered
+            [npcKeys.name] = "Leonid Barthalomew the Revered",
+            [npcKeys.minLevel] = 60,
+            [npcKeys.maxLevel] = 60,
+            [npcKeys.zoneID] = zoneIDs.SCARLET_ENCLAVE,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.subName] = "The Argent Dawn",
+        },
+        [244322] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244322/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244324] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244324/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244329] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244329/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244330] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244330/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244342] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244342/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244343] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244343/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244345] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244345/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244346] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244346/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244347] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244347/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244348] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244348/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244350] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244350/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244351] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244351/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244352] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244352/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244353] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244353/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244357] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244357/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244358] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244358/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244361] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244361/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244362] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244362/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244364] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244364/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244365] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244365/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244366] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244366/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244367] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244367/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244368] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244368/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244369] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244369/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244373] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244373/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
+        },
+        [244374] = { -- (DNT) Hallway Corpses : https://wowhead.com/forever/npc=244374/dnt-hallway-corpses
+            [npcKeys.name] = "(DNT) Hallway Corpses",
         },
         [244420] = { -- Remorseless Tormentor : https://wowhead.com/forever/npc=244420/remorseless-tormentor
             [npcKeys.name] = "Remorseless Tormentor",
@@ -3895,6 +13958,24 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Barkskin Matriarch",
             [npcKeys.spawns] = {[616] = {{31.6, 58.8}}},
             [npcKeys.zoneID] = zoneIDs.MOUNT_HYJAL,
+        },
+        [244460] = { -- Male Dark Assassin : https://wowhead.com/forever/npc=244460/male-dark-assassin
+            [npcKeys.name] = "Male Dark Assassin",
+        },
+        [244462] = { -- Female Dark Assassin : https://wowhead.com/forever/npc=244462/female-dark-assassin
+            [npcKeys.name] = "Female Dark Assassin",
+        },
+        [244477] = { -- Riding Gryphon : https://wowhead.com/forever/npc=244477/riding-gryphon
+            [npcKeys.name] = "Riding Gryphon",
+        },
+        [244480] = { -- Riding Gryphon : https://wowhead.com/forever/npc=244480/riding-gryphon
+            [npcKeys.name] = "Riding Gryphon",
+        },
+        [244481] = { -- Riding Gryphon : https://wowhead.com/forever/npc=244481/riding-gryphon
+            [npcKeys.name] = "Riding Gryphon",
+        },
+        [244482] = { -- Riding Gryphon : https://wowhead.com/forever/npc=244482/riding-gryphon
+            [npcKeys.name] = "Riding Gryphon",
         },
         [244511] = { -- Zet'gan : https://wowhead.com/forever/npc=244511/zetgan
             [npcKeys.name] = "Zet'gan",
@@ -3970,6 +14051,8 @@ function ForeverBaseNpc:Load()
         },
         [246016] = { -- Arcanic Enigma : https://wowhead.com/forever/npc=246016/arcanic-enigma
             [npcKeys.name] = "Arcanic Enigma",
+            [npcKeys.spawns] = {[36] = {{20.3, 64.2}, {20.5, 64.3}, {21, 63.2}, {21.1, 63.3}, {21.2, 63.5}, {21.4, 62.1}, {21.5, 63.5}, {21.6, 62.5}, {21.7, 62.3}, {21.8, 62.2}}},
+            [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
         },
         [246017] = { -- Unstable Sentinel : https://wowhead.com/forever/npc=246017/unstable-sentinel
             [npcKeys.name] = "Unstable Sentinel",
@@ -4087,7 +14170,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Alodan the Hopeful",
             [npcKeys.minLevel] = 30,
             [npcKeys.maxLevel] = 30,
-            [npcKeys.spawns] = {[1638] = {{25.4, 14.4}, {25.4, 14.6}, {25.8, 15.2}}},
+            [npcKeys.spawns] = {[1638] = {{25.2, 14.4}, {25.2, 15.6}, {25.4, 14.6}, {25.8, 15.2}}},
             [npcKeys.zoneID] = zoneIDs.THUNDER_BLUFF,
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Paladin Trainer",
@@ -4811,7 +14894,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Nimsy",
             [npcKeys.minLevel] = 6,
             [npcKeys.maxLevel] = 6,
-            [npcKeys.spawns] = {[12] = {{40.4, 80.2}, {41, 77.6}, {41, 80.6}, {41.4, 79.2}, {41.4, 80.2}, {41.6, 80}}},
+            [npcKeys.spawns] = {[12] = {{38.9, 82.2}, {39, 80.8}, {39.2, 80.2}, {39.2, 82.8}, {39.8, 78.7}, {40, 78.4}, {40.3, 79.9}, {40.8, 78.3}, {40.9, 80.5}, {41.4, 80}, {41.6, 79.8}, {41.8, 78.3}}},
             [npcKeys.zoneID] = zoneIDs.ELWYNN_FOREST,
             [npcKeys.subName] = "Apprentice Geosculptor",
         },
@@ -5357,6 +15440,7 @@ function ForeverBaseNpc:Load()
         },
         [250619] = { -- Broodwidow : https://wowhead.com/forever/npc=250619/broodwidow
             [npcKeys.name] = "Broodwidow",
+            [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
         },
         [250620] = { -- Shrieking Banshee : https://wowhead.com/forever/npc=250620/shrieking-banshee
             [npcKeys.name] = "Shrieking Banshee",
@@ -5468,7 +15552,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Vuldren",
             [npcKeys.minLevel] = 6,
             [npcKeys.maxLevel] = 6,
-            [npcKeys.spawns] = {[16593] = {{36.4, 46.4}, {36.4, 46.8}, {37, 47}, {38.2, 43.8}, {38.4, 43}, {38.8, 44}, {40.2, 50.4}, {40.6, 56}, {40.8, 56.6}, {42, 35.8}, {42, 61.4}, {42, 61.6}, {42.4, 36.8}, {42.4, 41}, {42.4, 52.4}, {42.4, 52.6}, {42.6, 36.4}, {42.6, 52.6}, {42.8, 40.8}, {42.8, 51.8}, {43, 51.4}, {43.2, 47}, {43.4, 37.4}, {43.4, 39}, {43.8, 39.2}, {44, 39.6}, {44.4, 37.6}, {45, 37.6}, {45.4, 59.4}, {45.4, 59.6}, {45.6, 55.8}, {45.8, 54}, {46.2, 37}, {46.8, 36.6}, {46.8, 68.4}, {47, 39.4}, {47, 39.6}, {47.2, 40.6}, {47.2, 58.2}, {47.4, 52.6}, {47.6, 53}, {47.6, 58.2}, {52.4, 65.8}, {52.8, 65.8}, {56, 61.8}}},
+            [npcKeys.spawns] = {[16593] = {{40.8, 56}, {41.9, 35.9}, {42.1, 41.6}, {42.6, 43.3}, {42.7, 40.9}, {42.7, 52.5}, {42.8, 44}, {42.8, 47.3}, {43, 51.4}, {43, 51.6}, {43.4, 42.4}, {43.5, 46.9}, {43.8, 37.3}, {43.8, 45.6}, {44, 45}, {44.6, 36.7}, {44.8, 59.7}, {44.9, 59.2}, {45.8, 54.2}, {45.8, 56.4}, {46.3, 36.5}, {46.6, 36.3}, {46.8, 39.9}, {46.8, 40.9}, {46.9, 36.6}, {47, 39.4}, {47, 54.2}, {47.4, 53.2}, {47.5, 58.5}, {47.6, 53.5}, {47.6, 58.2}, {47.9, 52.4}, {47.9, 52.8}, {48, 62.4}, {48.7, 58.9}, {56, 62}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
         [250873] = { -- Juvenile Vuldren : https://wowhead.com/forever/npc=250873/juvenile-vuldren
@@ -7236,7 +17320,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Al'Aketh Stormchaser",
             [npcKeys.minLevel] = 10,
             [npcKeys.maxLevel] = 11,
-            [npcKeys.spawns] = {[16593] = {{62, 35.8}, {62.2, 37.6}, {62.4, 37.2}, {62.6, 36.2}, {62.6, 37.2}, {63, 38.6}, {63.4, 37.8}, {63.6, 36.2}, {63.6, 38}, {63.8, 36.8}, {63.8, 39}, {64.6, 38.4}, {64.6, 38.6}, {65, 36.4}, {65.4, 37}}},
+            [npcKeys.spawns] = {[16593] = {{62, 35.7}, {62.4, 37.1}, {62.6, 36.1}, {62.8, 36.6}, {63, 38.6}, {63.1, 38.4}, {63.6, 38.2}, {63.8, 39}, {63.9, 36.8}, {64.5, 38.6}, {64.9, 38.4}, {65.1, 36.4}, {65.4, 36.9}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
             [npcKeys.friendlyToFaction] = "AH",
         },
@@ -7421,6 +17505,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[405] = {{43.4, 78.6}}},
             [npcKeys.zoneID] = zoneIDs.DESOLACE,
             [npcKeys.questStarts] = {96222},
+            [npcKeys.questEnds] = {96222},
             [npcKeys.subName] = "Kolkar Clan",
         },
         [253092] = { -- Alba Fairmoon : https://wowhead.com/forever/npc=253092/alba-fairmoon
@@ -7475,7 +17560,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Nerlokh",
             [npcKeys.spawns] = {[16651] = {{21.2, 23.2}}},
             [npcKeys.zoneID] = zoneIDs.SHEN_DRALAS,
-            [npcKeys.questStarts] = {93035, 93037, 93041, 93128},
+            [npcKeys.questStarts] = {93035, 93037, 93041, 93122, 93128},
             [npcKeys.questEnds] = {93034, 93035, 93037, 93045, 93058, 93062, 93122},
         },
         [253195] = { -- Al'Aketh Preacher : https://wowhead.com/forever/npc=253195/alaketh-preacher
@@ -7877,6 +17962,8 @@ function ForeverBaseNpc:Load()
         },
         [254040] = { -- Rokren : https://wowhead.com/forever/npc=254040/rokren
             [npcKeys.name] = "Rokren",
+            [npcKeys.minLevel] = 43,
+            [npcKeys.maxLevel] = 43,
         },
         [254056] = { -- Mr. Barber : https://wowhead.com/forever/npc=254056/mr-barber
             [npcKeys.name] = "Mr. Barber",
@@ -8704,6 +18791,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Clugfist",
             [npcKeys.spawns] = {[16591] = {{64.4, 14.8}, {64.6, 14.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.questStarts] = {95428},
         },
         [255830] = { -- Malevolent Storm : https://wowhead.com/forever/npc=255830/malevolent-storm
             [npcKeys.name] = "Malevolent Storm",
@@ -8774,7 +18862,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Slydris",
             [npcKeys.minLevel] = 6,
             [npcKeys.maxLevel] = 6,
-            [npcKeys.spawns] = {[16593] = {{49.6, 53.4}, {50.2, 51}, {50.2, 51.6}, {50.4, 50.4}, {51, 51.4}, {51, 51.8}}},
+            [npcKeys.spawns] = {[16593] = {{49.6, 53.4}, {50.2, 51.6}, {50.4, 50.4}, {50.4, 50.6}, {50.6, 51.2}, {50.8, 50.4}, {51, 51.8}, {51.6, 52}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
         [255890] = { -- Powderfuse Bruiser : https://wowhead.com/forever/npc=255890/powderfuse-bruiser
@@ -8824,7 +18912,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 41,
             [npcKeys.spawns] = {[16591] = {{77, 52.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
-            [npcKeys.questStarts] = {95059, 95062, 95219},
+            [npcKeys.questStarts] = {95059, 95062, 95219, 95293},
             [npcKeys.questEnds] = {94895},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Specialty Goods",
@@ -9210,8 +19298,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Krom'rosh",
             [npcKeys.spawns] = {[16591] = {{59.4, 45.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
-            [npcKeys.questStarts] = {93786, 93787},
-            [npcKeys.questEnds] = {93787, 95141},
+            [npcKeys.questStarts] = {93786, 93787, 94483, 94968},
+            [npcKeys.questEnds] = {93787, 94483, 94968, 95141, 95428},
         },
         [256433] = { -- Woodworker : https://wowhead.com/forever/npc=256433/woodworker
             [npcKeys.name] = "Woodworker",
@@ -9482,6 +19570,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Tran'gul",
             [npcKeys.spawns] = {[16591] = {{59.4, 44.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.questStarts] = {94972},
+            [npcKeys.questEnds] = {94972},
         },
         [256714] = { -- Burrow Beetle : https://wowhead.com/forever/npc=256714/burrow-beetle
             [npcKeys.name] = "Burrow Beetle",
@@ -9702,6 +19792,10 @@ function ForeverBaseNpc:Load()
         },
         [257001] = { -- Old Rot-Chum : https://wowhead.com/forever/npc=257001/old-rot-chum
             [npcKeys.name] = "Old Rot-Chum",
+            [npcKeys.minLevel] = 42,
+            [npcKeys.maxLevel] = 42,
+            [npcKeys.spawns] = {[16591] = {{75.6, 72.8}, {76.2, 73.8}, {76.4, 71.2}, {76.8, 73.8}, {77, 75.2}, {77.2, 78}, {77.4, 70.8}, {77.4, 72.2}, {77.4, 72.6}, {77.6, 70.2}, {77.6, 72.4}, {77.6, 72.8}, {77.8, 71.2}}},
+            [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
         },
         [257003] = { -- Ishlee Breezewhisper : https://wowhead.com/forever/npc=257003/ishlee-breezewhisper
             [npcKeys.name] = "Ishlee Breezewhisper",
@@ -9838,6 +19932,10 @@ function ForeverBaseNpc:Load()
         },
         [257034] = { -- Mad Marrius : https://wowhead.com/forever/npc=257034/mad-marrius
             [npcKeys.name] = "Mad Marrius",
+            [npcKeys.minLevel] = 41,
+            [npcKeys.maxLevel] = 41,
+            [npcKeys.spawns] = {[16591] = {{45.4, 56}, {45.6, 55.8}}},
+            [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
         },
         [257036] = { -- Baelann Favorbreeze : https://wowhead.com/forever/npc=257036/baelann-favorbreeze
             [npcKeys.name] = "Baelann Favorbreeze",
@@ -10143,7 +20241,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 55,
             [npcKeys.spawns] = {[16591] = {{66.4, 80.8}, {66.6, 81}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
-            [npcKeys.questEnds] = {95059},
+            [npcKeys.questEnds] = {94929, 95059},
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.subName] = "Knight Commander",
         },
@@ -10154,6 +20252,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[16591] = {{66.6, 81}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
             [npcKeys.questStarts] = {94879, 94881},
+            [npcKeys.questEnds] = {94884},
             [npcKeys.friendlyToFaction] = "A",
         },
         [257595] = { -- Barracks Master Harlan : https://wowhead.com/forever/npc=257595/barracks-master-harlan
@@ -10270,6 +20369,10 @@ function ForeverBaseNpc:Load()
         },
         [257861] = { -- Admiral Lamora : https://wowhead.com/forever/npc=257861/admiral-lamora
             [npcKeys.name] = "Admiral Lamora",
+            [npcKeys.minLevel] = 45,
+            [npcKeys.maxLevel] = 45,
+            [npcKeys.spawns] = {[16591] = {{90.2, 28.8}, {90.4, 29.6}, {90.6, 29.2}, {90.6, 30}}},
+            [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
         },
         [257862] = { -- Earthen Ring Shaman : https://wowhead.com/forever/npc=257862/earthen-ring-shaman
             [npcKeys.name] = "Earthen Ring Shaman",
@@ -10373,6 +20476,11 @@ function ForeverBaseNpc:Load()
         },
         [258048] = { -- Jom-jom : https://wowhead.com/forever/npc=258048/jom-jom
             [npcKeys.name] = "Jom-jom",
+            [npcKeys.minLevel] = 41,
+            [npcKeys.maxLevel] = 41,
+            [npcKeys.spawns] = {[16591] = {{64.4, 15.4}, {64.6, 15.2}, {64.6, 15.8}, {64.8, 16.6}, {65.8, 17.8}, {66, 23}, {66, 24.2}, {66.2, 18.6}, {66.2, 22.2}, {66.4, 21}, {67.4, 27}, {67.6, 27.6}, {67.8, 28.6}, {68, 30.6}, {69, 31.4}, {69.8, 31.8}, {70.8, 32}, {71.8, 32.4}, {72.6, 32.6}, {73, 32.4}, {73.4, 24.6}, {73.6, 32.4}, {73.8, 25}, {74.2, 25.6}, {74.6, 26.1}, {74.8, 27.5}, {75, 27.4}, {75.4, 30.8}, {75.6, 30.6}, {76, 30.4}, {76.4, 26.4}, {76.4, 26.6}, {76.6, 27}, {76.9, 27.9}, {77.2, 29.4}, {77.2, 29.8}}},
+            [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.friendlyToFaction] = "H",
         },
         [258049] = { -- Al'Aketh Turncoat : https://wowhead.com/forever/npc=258049/alaketh-turncoat
             [npcKeys.name] = "Al'Aketh Turncoat",
@@ -10847,6 +20955,8 @@ function ForeverBaseNpc:Load()
         },
         [258570] = { -- Da'grosh : https://wowhead.com/forever/npc=258570/dagrosh
             [npcKeys.name] = "Da'grosh",
+            [npcKeys.questStarts] = {94975},
+            [npcKeys.questEnds] = {94975},
         },
         [258571] = { -- Therbor Deepforge : https://wowhead.com/forever/npc=258571/therbor-deepforge
             [npcKeys.name] = "Therbor Deepforge",
@@ -11052,10 +21162,12 @@ function ForeverBaseNpc:Load()
         [258935] = { -- Curly : https://wowhead.com/forever/npc=258935/curly
             [npcKeys.name] = "Curly",
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.questStarts] = {94857},
         },
         [258963] = { -- Hurley : https://wowhead.com/forever/npc=258963/hurley
             [npcKeys.name] = "Hurley",
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.questEnds] = {94857},
         },
         [258964] = { -- Nar'gurk : https://wowhead.com/forever/npc=258964/nargurk
             [npcKeys.name] = "Nar'gurk",
@@ -11184,6 +21296,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Dunston Willis",
             [npcKeys.spawns] = {[16591] = {{68.6, 12.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.questEnds] = {96125},
         },
         [259058] = { -- Windshaper Shaman : https://wowhead.com/forever/npc=259058/windshaper-shaman
             [npcKeys.name] = "Windshaper Shaman",
@@ -11254,6 +21367,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 38,
             [npcKeys.spawns] = {[16591] = {{45.6, 47.8}, {47, 50}, {47.2, 51.2}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.questStarts] = {94963},
         },
         [259175] = { -- Docile Galestrider : https://wowhead.com/forever/npc=259175/docile-galestrider
             [npcKeys.name] = "Docile Galestrider",
@@ -11416,6 +21530,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Watcher Cornelius",
             [npcKeys.spawns] = {[16591] = {{59.4, 63.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.questStarts] = {96125},
         },
         [259353] = { -- Cedric Dalton : https://wowhead.com/forever/npc=259353/cedric-dalton
             [npcKeys.name] = "Cedric Dalton",
@@ -11574,6 +21689,10 @@ function ForeverBaseNpc:Load()
         },
         [259801] = { -- Mosh'gra : https://wowhead.com/forever/npc=259801/moshgra
             [npcKeys.name] = "Mosh'gra",
+            [npcKeys.minLevel] = 41,
+            [npcKeys.maxLevel] = 41,
+            [npcKeys.spawns] = {[16591] = {{62.2, 35.8}, {62.4, 35.4}, {62.4, 36.8}, {62.8, 36}}},
+            [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
         },
         [259818] = { -- Ivory Galestrider : https://wowhead.com/forever/npc=259818/ivory-galestrider
             [npcKeys.name] = "Ivory Galestrider",
@@ -11606,6 +21725,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 38,
             [npcKeys.spawns] = {[16591] = {{63.6, 85}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.questEnds] = {95991},
             [npcKeys.subName] = "Stable Master",
         },
         [259860] = { -- Martha Wellsworth : https://wowhead.com/forever/npc=259860/martha-wellsworth
@@ -11660,7 +21780,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Old Fire-Eye",
             [npcKeys.minLevel] = 25,
             [npcKeys.maxLevel] = 25,
-            [npcKeys.spawns] = {[130] = {{49, 88.4}, {49.4, 87.2}, {49.6, 87.2}, {50.4, 87.6}}},
+            [npcKeys.spawns] = {[130] = {{45.3, 83}, {46.2, 83.4}, {46.4, 83.5}, {46.6, 84.3}, {47.6, 84.8}, {48, 86.6}, {48.4, 86.4}, {48.4, 87.8}, {48.6, 88.6}, {48.8, 88.2}, {49.2, 84.5}, {49.2, 85.8}, {49.4, 84.2}, {49.4, 86.8}, {49.6, 86.2}, {49.6, 87.4}, {49.6, 88.2}, {50.4, 81.2}, {50.4, 84.8}, {50.4, 88.6}, {50.6, 79.4}, {50.6, 81.4}, {50.6, 87.4}, {50.6, 87.8}, {50.6, 88.6}}},
             [npcKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
         },
         [259900] = { -- Hadurk Mendelsen : https://wowhead.com/forever/npc=259900/hadurk-mendelsen
@@ -11696,8 +21816,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 45,
             [npcKeys.spawns] = {[16591] = {{79.4, 52.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
-            [npcKeys.questStarts] = {95118, 95119},
-            [npcKeys.questEnds] = {95119},
+            [npcKeys.questStarts] = {95118, 95119, 95165},
+            [npcKeys.questEnds] = {95119, 95165},
         },
         [259962] = { -- Fimbo Greasemitz : https://wowhead.com/forever/npc=259962/fimbo-greasemitz
             [npcKeys.name] = "Fimbo Greasemitz",
@@ -11897,6 +22017,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 20,
             [npcKeys.spawns] = {[1497] = {{47.2, 14.4}, {47.4, 15}, {47.4, 15.8}, {47.6, 14.8}, {47.6, 15.6}, {48.2, 14.4}}},
             [npcKeys.zoneID] = zoneIDs.UNDERCITY,
+            [npcKeys.questStarts] = {97022},
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Paladin Trainer",
             [npcKeys.npcFlags] = 16, -- Assumption: assumptions/npc_services.toml; paid_training -> TRAINER: teaches-ability spell 465 trainingcost=10; A positive trainingcost on this NPC's own teaching row indicates paid instruction, so we assume TRAINER service.
@@ -12040,6 +22161,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.maxLevel] = 40,
             [npcKeys.spawns] = {[16591] = {{79.8, 52.4}, {79.8, 52.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.questStarts] = {95267},
+            [npcKeys.questEnds] = {95267},
         },
         [260235] = { -- Trapclaw : https://wowhead.com/forever/npc=260235/trapclaw
             [npcKeys.name] = "Trapclaw",
@@ -12164,7 +22287,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Venture Co. Agent",
             [npcKeys.minLevel] = 39,
             [npcKeys.maxLevel] = 39,
-            [npcKeys.spawns] = {[33] = {{43.3, 20.5}, {43.4, 20.3}, {43.4, 21.6}}},
+            [npcKeys.spawns] = {[33] = {{42.2, 19}, {43.3, 20.5}, {43.4, 20.2}, {43.4, 21.6}, {43.6, 20.2}, {44, 21}, {45.2, 22}}},
             [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
         },
         [260430] = { -- Shadowvale Mystic : https://wowhead.com/forever/npc=260430/shadowvale-mystic
@@ -12424,6 +22547,7 @@ function ForeverBaseNpc:Load()
         },
         [260800] = { -- Thicket Lurker : https://wowhead.com/forever/npc=260800/thicket-lurker
             [npcKeys.name] = "Thicket Lurker",
+            [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
         },
         [260801] = { -- Thicket Hunter : https://wowhead.com/forever/npc=260801/thicket-hunter
             [npcKeys.name] = "Thicket Hunter",
@@ -12514,7 +22638,11 @@ function ForeverBaseNpc:Load()
         },
         [260873] = { -- Dudd Fizzlescroll : https://wowhead.com/forever/npc=260873/dudd-fizzlescroll
             [npcKeys.name] = "Dudd Fizzlescroll",
+            [npcKeys.minLevel] = 40,
+            [npcKeys.maxLevel] = 40,
+            [npcKeys.spawns] = {[33] = {{28.2, 76.2}}},
             [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [260901] = { -- Credit : https://wowhead.com/forever/npc=260901/credit
             [npcKeys.name] = "Credit",
@@ -12907,7 +23035,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Sister Rowland",
             [npcKeys.spawns] = {[16591] = {{61.8, 83}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
-            [npcKeys.questStarts] = {95603},
+            [npcKeys.questStarts] = {95603, 95613},
             [npcKeys.questEnds] = {95603, 95613},
         },
         [262032] = { -- Stone Guardian : https://wowhead.com/forever/npc=262032/stone-guardian
@@ -13288,14 +23416,17 @@ function ForeverBaseNpc:Load()
         },
         [263141] = { -- Scaldaron : https://wowhead.com/forever/npc=263141/scaldaron
             [npcKeys.name] = "Scaldaron",
-            [npcKeys.spawns] = {[16591] = {{31.4, 72.8}}},
+            [npcKeys.minLevel] = 43,
+            [npcKeys.maxLevel] = 43,
+            [npcKeys.spawns] = {[16591] = {{30.6, 72.4}, {31, 72.8}, {31.4, 73.6}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
         },
         [263190] = { -- Tan'jani : https://wowhead.com/forever/npc=263190/tanjani
             [npcKeys.name] = "Tan'jani",
             [npcKeys.spawns] = {[16591] = {{58, 45}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
-            [npcKeys.questStarts] = {95951},
+            [npcKeys.questStarts] = {95951, 95955},
+            [npcKeys.questEnds] = {95955},
         },
         [263196] = { -- Profane Necromancer : https://wowhead.com/forever/npc=263196/profane-necromancer
             [npcKeys.name] = "Profane Necromancer",
@@ -13376,6 +23507,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Ghostmaw",
             [npcKeys.minLevel] = 42,
             [npcKeys.maxLevel] = 42,
+            [npcKeys.spawns] = {[16591] = {{40.8, 66.2}, {41.8, 67.8}, {42.2, 62.8}, {42.2, 65}, {42.4, 60.4}, {42.4, 67.2}, {42.8, 61.4}, {42.8, 63.4}, {43, 60.2}, {43, 62.2}, {43, 69}, {43.6, 62.8}, {44, 59.2}, {44.2, 60.8}, {44.4, 60}, {46, 59}, {46.2, 56.4}, {46.6, 54.2}, {46.6, 55}, {47, 67.4}, {47.2, 56.8}, {47.4, 53.4}, {47.4, 56.2}, {48.4, 68.4}, {49, 75}, {49.2, 54}, {49.6, 67}, {50.2, 52.8}, {50.4, 66.4}, {50.4, 68}, {50.8, 52.2}, {51, 67}, {51.4, 53.2}, {51.8, 67.2}, {52, 53.4}, {52.4, 73.8}, {53, 50.6}, {53, 66}, {53.4, 72.4}, {53.8, 50.6}, {53.8, 67}, {54.2, 48.6}, {54.2, 68.8}, {54.2, 70.8}, {54.8, 52.6}, {54.8, 61}, {55, 47}, {56.2, 43.8}, {56.2, 45}, {56.4, 43}, {58.4, 39.4}, {59, 43}, {59, 43.6}, {59.9, 46.5}, {60.2, 41.6}, {60.4, 41.4}, {60.6, 41.2}, {61.4, 41.6}, {61.6, 40}, {61.8, 39.2}, {62.6, 40}, {62.8, 37.2}, {63, 38.2}, {63.2, 36.4}}},
+            [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
         },
         [263384] = { -- Mister Graphed : https://wowhead.com/forever/npc=263384/mister-graphed
             [npcKeys.name] = "Mister Graphed",
@@ -13520,6 +23653,8 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Brother Lowley",
             [npcKeys.spawns] = {[16591] = {{65.4, 78.8}}},
             [npcKeys.zoneID] = zoneIDs.RIVERGLADES,
+            [npcKeys.questStarts] = {96081},
+            [npcKeys.questEnds] = {96081},
         },
         [263614] = { -- Wounded Soldier : https://wowhead.com/forever/npc=263614/wounded-soldier
             [npcKeys.name] = "Wounded Soldier",
@@ -14332,7 +24467,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Jeremy Heartweaver",
             [npcKeys.minLevel] = 2,
             [npcKeys.maxLevel] = 2,
-            [npcKeys.spawns] = {[10] = {{73, 45.2}}},
+            [npcKeys.spawns] = {[10] = {{73.2, 45.2}}},
             [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
             [npcKeys.friendlyToFaction] = "A",
         },
@@ -14640,8 +24775,13 @@ function ForeverBaseNpc:Load()
         },
         [267214] = { -- Va'xug Firefure : https://wowhead.com/forever/npc=267214/vaxug-firefure
             [npcKeys.name] = "Va'xug Firefure",
+            [npcKeys.minLevel] = 28,
+            [npcKeys.maxLevel] = 28,
+            [npcKeys.spawns] = {[331] = {{40.4, 61.4}, {40.4, 61.6}}},
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
-            [npcKeys.questStarts] = {98252},
+            [npcKeys.questStarts] = {98251, 98252},
+            [npcKeys.questEnds] = {98251},
+            [npcKeys.friendlyToFaction] = "H",
         },
         [267216] = { -- White Riding Kodo : https://wowhead.com/forever/npc=267216/white-riding-kodo
             [npcKeys.name] = "White Riding Kodo",
@@ -15258,6 +25398,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.minLevel] = 55,
             [npcKeys.maxLevel] = 55,
             [npcKeys.zoneID] = zoneIDs.MULGORE,
+            [npcKeys.questStarts] = {96776},
             [npcKeys.friendlyToFaction] = "H",
             [npcKeys.subName] = "Sun Priest of An'she",
         },
@@ -15518,8 +25659,13 @@ function ForeverBaseNpc:Load()
         },
         [268992] = { -- Zimmix Sputterspark : https://wowhead.com/forever/npc=268992/zimmix-sputterspark
             [npcKeys.name] = "Zimmix Sputterspark",
+            [npcKeys.minLevel] = 35,
+            [npcKeys.maxLevel] = 35,
+            [npcKeys.spawns] = {[33] = {{23.2, 12.4}, {23.4, 12.6}, {23.6, 12.3}, {23.6, 12.6}, {25, 13}, {25.2, 11.8}, {25.4, 11.2}, {25.6, 11.2}, {26.6, 11.2}, {26.8, 11.7}}},
+            [npcKeys.zoneID] = zoneIDs.STRANGLETHORN_VALE,
             [npcKeys.questStarts] = {97329},
             [npcKeys.questEnds] = {97329},
+            [npcKeys.friendlyToFaction] = "AH",
         },
         [269003] = { -- Spell Eater : https://wowhead.com/forever/npc=269003/spell-eater
             [npcKeys.name] = "Spell Eater",
@@ -15711,7 +25857,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Darkspear Elite",
             [npcKeys.minLevel] = 55,
             [npcKeys.maxLevel] = 55,
-            [npcKeys.spawns] = {[17] = {{64.8, 35}}},
+            [npcKeys.spawns] = {[17] = {{64.1, 35.8}, {64.8, 35}}},
             [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
             [npcKeys.friendlyToFaction] = "H",
         },
@@ -16115,7 +26261,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.spawns] = {[11] = {{49.4, 42}, {49.6, 42}}},
             [npcKeys.zoneID] = zoneIDs.WETLANDS,
             [npcKeys.questStarts] = {98245, 98246, 98291, 98297, 98300},
-            [npcKeys.questEnds] = {98230, 98245, 98246, 98291, 98297},
+            [npcKeys.questEnds] = {98230, 98240, 98245, 98246, 98291, 98297},
             [npcKeys.friendlyToFaction] = "A",
         },
         [270664] = { -- Venomweb Spitter : https://wowhead.com/forever/npc=270664/venomweb-spitter
@@ -16466,7 +26612,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Frosthowl",
             [npcKeys.minLevel] = 9,
             [npcKeys.maxLevel] = 9,
-            [npcKeys.spawns] = {[1] = {{39.2, 49.6}, {39.4, 48.4}, {39.4, 48.8}, {39.6, 47.4}, {39.8, 48.6}, {40, 48.4}}},
+            [npcKeys.spawns] = {[1] = {{39.3, 49.8}, {39.4, 48.8}, {39.5, 49.6}, {39.8, 48.7}, {40, 48.1}}},
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
         },
         [271613] = { -- Unfinished Abomination : https://wowhead.com/forever/npc=271613/unfinished-abomination
@@ -16954,6 +27100,10 @@ function ForeverBaseNpc:Load()
         },
         [272284] = { -- Lost Defender : https://wowhead.com/forever/npc=272284/lost-defender
             [npcKeys.name] = "Lost Defender",
+            [npcKeys.minLevel] = 24,
+            [npcKeys.maxLevel] = 24,
+            [npcKeys.spawns] = {[10] = {{49.5, 76}, {49.8, 73.3}, {49.9, 74.6}, {50.2, 74.2}, {51.3, 74.7}, {64.7, 70.9}, {72.6, 52.5}, {73, 51.7}, {74, 51.8}, {74.2, 53.4}, {74.4, 49.1}, {78.5, 56}}},
+            [npcKeys.zoneID] = zoneIDs.DUSKWOOD,
         },
         [272291] = { -- Lost Knight : https://wowhead.com/forever/npc=272291/lost-knight
             [npcKeys.name] = "Lost Knight",
@@ -17134,11 +27284,11 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Glix Xizzix",
             [npcKeys.minLevel] = 55,
             [npcKeys.maxLevel] = 55,
-            [npcKeys.spawns] = {[1497] = {{69.8, 46}, {69.8, 47}}},
+            [npcKeys.spawns] = {[1497] = {{69, 47.6}, {69.4, 47.2}, {69.8, 45.8}, {69.8, 47}}},
             [npcKeys.zoneID] = zoneIDs.UNDERCITY,
             [npcKeys.questEnds] = {98545},
             [npcKeys.friendlyToFaction] = "H",
-            [npcKeys.subName] = "Visionary, Entrepeneur, Barber",
+            [npcKeys.subName] = "Visionary, Entrepreneur, Barber",
         },
         [272527] = { -- Ironforge Guard : https://wowhead.com/forever/npc=272527/ironforge-guard
             [npcKeys.name] = "Ironforge Guard",
@@ -17315,6 +27465,10 @@ function ForeverBaseNpc:Load()
         },
         [273193] = { -- Rakkamar : https://wowhead.com/forever/npc=273193/rakkamar
             [npcKeys.name] = "Rakkamar",
+            [npcKeys.minLevel] = 35,
+            [npcKeys.maxLevel] = 35,
+            [npcKeys.spawns] = {[1497] = {{83, 24}, {83.2, 23.2}, {83.2, 24.6}, {83.6, 23.8}, {83.6, 25.4}}},
+            [npcKeys.zoneID] = zoneIDs.UNDERCITY,
         },
         [273214] = { -- Blizzard Customer Service : https://wowhead.com/forever/npc=273214/blizzard-customer-service
             [npcKeys.name] = "Blizzard Customer Service",
@@ -17508,7 +27662,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Coldrasp",
             [npcKeys.minLevel] = 12,
             [npcKeys.maxLevel] = 12,
-            [npcKeys.spawns] = {[85] = {{16, 66.8}, {17.4, 68.8}, {17.8, 68.5}, {19.6, 65.2}, {19.8, 64.4}, {19.8, 71}}},
+            [npcKeys.spawns] = {[85] = {{16, 66.8}, {17.4, 68.8}, {17.8, 68.5}, {19.4, 65}, {19.6, 65.2}, {19.8, 64.4}, {19.8, 71}}},
             [npcKeys.zoneID] = zoneIDs.TIRISFAL_GLADES,
         },
         [274334] = { -- Tallstrider Hatchling : https://wowhead.com/forever/npc=274334/tallstrider-hatchling
@@ -18610,7 +28764,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Wrathvine",
             [npcKeys.minLevel] = 8,
             [npcKeys.maxLevel] = 8,
-            [npcKeys.spawns] = {[141] = {{53.2, 70.6}, {53.4, 70.4}, {56, 67.6}, {56.2, 66.6}, {59.8, 71.8}}},
+            [npcKeys.spawns] = {[141] = {{53.2, 70.6}, {53.4, 70.4}, {53.7, 69.9}, {56, 67.6}, {59.6, 72}}},
             [npcKeys.zoneID] = zoneIDs.TELDRASSIL,
             [npcKeys.friendlyToFaction] = "A",
         },
@@ -18618,7 +28772,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Nightscreech",
             [npcKeys.minLevel] = 10,
             [npcKeys.maxLevel] = 10,
-            [npcKeys.spawns] = {[141] = {{37, 29.6}, {37.4, 27.4}, {38, 28.8}, {38.2, 28.2}, {38.6, 25.6}, {38.6, 28.6}, {38.8, 26.6}, {38.8, 28.2}, {39, 56.2}, {39.9, 55}, {40, 54.2}, {40.3, 56.2}, {40.6, 56.2}, {40.8, 58}, {41.2, 53}, {45.4, 31.8}, {46, 31.8}, {46.2, 31.2}, {46.4, 33}, {46.4, 33.6}, {46.6, 31}, {46.6, 32.8}, {46.8, 32}, {48.2, 31.2}}},
+            [npcKeys.spawns] = {[141] = {{37, 29.6}, {37.4, 27.4}, {38, 28.8}, {38.2, 28}, {38.6, 25.6}, {38.6, 28.8}, {38.8, 26.6}, {38.8, 28.2}, {39, 56.2}, {39.4, 53.6}, {39.9, 55}, {40, 54.2}, {40.3, 56.2}, {40.6, 56.2}, {40.8, 58}, {41.2, 53}, {45.4, 31.8}, {46, 31.8}, {46.2, 31.2}, {46.4, 33}, {46.4, 33.6}, {46.6, 31}, {46.6, 33.4}, {46.8, 32}, {46.8, 33.6}, {48.2, 31.2}}},
             [npcKeys.zoneID] = zoneIDs.TELDRASSIL,
             [npcKeys.friendlyToFaction] = "A",
         },
@@ -18652,7 +28806,7 @@ function ForeverBaseNpc:Load()
             [npcKeys.name] = "Ghostfang",
             [npcKeys.minLevel] = 10,
             [npcKeys.maxLevel] = 10,
-            [npcKeys.spawns] = {[1] = {{74.2, 63.2}, {74.6, 63}, {75.2, 61.6}, {79.2, 42.8}, {79.8, 43}, {80.4, 45.8}, {80.4, 47}, {80.6, 47}, {81.2, 45.4}, {81.4, 46}, {81.6, 55.4}, {81.8, 55.6}}},
+            [npcKeys.spawns] = {[1] = {{74.2, 63.2}, {74.6, 63}, {75.2, 61.6}, {79.4, 42.8}, {79.8, 43}, {80.4, 45.8}, {80.4, 47}, {80.6, 47}, {81.2, 45.4}, {81.4, 46}, {81.8, 55.4}, {82, 55.6}}},
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
         },
         [276138] = { -- Subjugated Assistant : https://wowhead.com/forever/npc=276138/subjugated-assistant
@@ -19437,6 +29591,9 @@ function ForeverBaseNpc:Load()
         },
         [279414] = { -- Hyjal Sentinel : https://wowhead.com/forever/npc=279414/hyjal-sentinel
             [npcKeys.name] = "Hyjal Sentinel",
+        },
+        [279811] = { -- Young Diemetradon : https://wowhead.com/forever/npc=279811/young-diemetradon
+            [npcKeys.name] = "Young Diemetradon",
         },
     }
 end
