@@ -75,6 +75,9 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{28.67,67.52}}},
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
         },
+        [3188] = { -- Master Gadrin
+            [npcKeys.questStarts_remove] = {97225},
+        },
         [3362] = { -- Ogunaro Wolfrunner <Kennel Master>
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
@@ -155,6 +158,9 @@ function ForeverNpcFixes:Load()
         [14624] = { -- Master Smith Burninate <The Thorium Brotherhood>
             [npcKeys.npcFlags] = npcFlags.REPAIR + npcFlags.VENDOR, -- base data adds a wrong auctioneer bit
         },
+        [15350] = { -- Horde Warbringer
+            [npcKeys.spawns_add] = {[zoneIDs.THE_BARRENS] = {{64.77,35.1}}},
+        },
         [15351] = { -- Alliance Brigadier General
             [npcKeys.spawns_remove] = {[zoneIDs.STORMWIND_CITY] = {{81.23,38.49}}},
             [npcKeys.spawns_add] = {[zoneIDs.STORMWIND_CITY] = {{81.24,38.25}}},
@@ -190,6 +196,7 @@ function ForeverNpcFixes:Load()
         [32411] = { -- Afsaneh Asrar
             [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{17.79,66.35}}},
             [npcKeys.npcFlags] = npcFlags.INNKEEPER,
+            [npcKeys.friendlyToFaction] = "A",
         },
         [32413] = { -- Isirami Fairwind
             [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{12.06,66.36}}},
@@ -739,6 +746,9 @@ function ForeverNpcFixes:Load()
         },
         [263399] = { -- Sam Sarsaparilla
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{44.9,63.36}}},
+        },
+        [263570] = { -- Creeg Bothunk
+            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{65.05,34.62}}},
         },
         [263643] = { -- Sean Guardoff
             [npcKeys.spawns] = {[zoneIDs.IRONFORGE] = {{70.32,88.79}}},
