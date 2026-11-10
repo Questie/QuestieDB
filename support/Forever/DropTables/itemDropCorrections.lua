@@ -284,6 +284,11 @@ QuestieItemDropCorrections.Era = {
         [3466] = DropKeys.WOWHEAD,
         [5831] = DropKeys.WOWHEAD,
     },
+    [5143] = { -- Thunder Lizard Blood; Wowhead Forever listview (override cmangos 80%)
+        [3240] = 15.8577, -- Stormsnout; 7573/47756
+        [3239] = 15.2531, -- Thunderhead; 9321/61109
+        [3238] = 0.8149, -- Stormhide; 386/47367
+    },
     [5170] = { -- Mossy Tumor
         [2027] = DropKeys.WOWHEAD,
         [2029] = DropKeys.WOWHEAD,
