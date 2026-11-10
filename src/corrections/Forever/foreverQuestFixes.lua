@@ -2532,9 +2532,10 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [98372] = { -- An Unfortunate End
+            [questKeys.startedBy_add] = {{271866}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.requiredRaces] = raceIDs.NONE, -- confirmed horde
         },
         [98386] = { -- Alther's Mill
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
