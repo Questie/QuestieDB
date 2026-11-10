@@ -956,6 +956,11 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.UNDERCITY] = {{45.88,61.7}}},
             [npcKeys.zoneID] = zoneIDs.UNDERCITY,
         },
+        [271866] = { -- Night Watch Guard
+            [npcKeys.spawns] = {[zoneIDs.DUSKWOOD] = {{45.58,79.16},{17,54.75}}}, -- todo add the other 5 spawns
+            [npcKeys.questStarts_add] = {98372},
+            [npcKeys.friendlyToFaction] = "AH",
+        },
         [272034] = { -- Hatescreech
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{35.05,39.29}}},
         },
