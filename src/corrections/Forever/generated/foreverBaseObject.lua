@@ -17,20 +17,6 @@ function ForeverBaseObject:Load()
             [objectKeys.questStarts_add] = {94468},
             [objectKeys.questEnds_add] = {94467},
         },
-        [142487] = { -- The Sparklematic 5200 : https://wowhead.com/forever/object=142487/the-sparklematic-5200
-            [objectKeys.questStarts_add] = {79987, 80140, 80155, 80157, 80158},
-            [objectKeys.questEnds_add] = {79986, 80155, 80157, 80158},
-        },
-        [148512] = { -- Essence Font : https://wowhead.com/forever/object=148512/essence-font
-            [objectKeys.questEnds_add] = {82102},
-        },
-        [148836] = { -- Altar of Hakkar : https://wowhead.com/forever/object=148836/altar-of-hakkar
-            [objectKeys.questEnds_add] = {82096},
-        },
-        [175084] = { -- The Sparklematic 5200 : https://wowhead.com/forever/object=175084/the-sparklematic-5200
-            [objectKeys.questStarts_add] = {80153, 80160, 80161},
-            [objectKeys.questEnds_add] = {80153, 80160, 80161},
-        },
         [175320] = { -- WANTED: Murkdeep! : https://wowhead.com/forever/object=175320/wanted-murkdeep
             [objectKeys.questStarts_add] = {98025},
         },
@@ -57,12 +43,6 @@ function ForeverBaseObject:Load()
         [175755] = { -- The Alliance Splinters : https://wowhead.com/forever/object=175755/the-alliance-splinters
             [objectKeys.name] = "The Alliance Splinters",
             [objectKeys.zoneID] = zoneIDs.BLACKROCK_DEPTHS,
-        },
-        [179551] = { -- Hydraxis' Coffer : https://wowhead.com/forever/object=179551/hydraxis-coffer
-            [objectKeys.questEnds_add] = {84545},
-        },
-        [180715] = { -- Holly Preserver : https://wowhead.com/forever/object=180715/holly-preserver
-            [objectKeys.questEnds_add] = {79501, 79502},
         },
         [375548] = { -- Unlit Torch : https://wowhead.com/forever/object=375548/unlit-torch
             [objectKeys.name] = "Unlit Torch",
@@ -349,13 +329,11 @@ function ForeverBaseObject:Load()
         },
         [410158] = { -- Altar of Reverence : https://wowhead.com/forever/object=410158/altar-of-reverence
             [objectKeys.name] = "Altar of Reverence",
-            [objectKeys.questEnds] = {84124},
             [objectKeys.spawns] = {[46] = {{39.4, 27.9}, {39.6, 28}}},
             [objectKeys.zoneID] = zoneIDs.BURNING_STEPPES,
         },
         [410168] = { -- Voodoo Pile : https://wowhead.com/forever/object=410168/voodoo-pile
             [objectKeys.name] = "Voodoo Pile",
-            [objectKeys.questEnds] = {78199},
             [objectKeys.spawns] = {[14] = {{68.7, 71.2}}},
             [objectKeys.zoneID] = zoneIDs.DUROTAR,
         },
@@ -371,8 +349,8 @@ function ForeverBaseObject:Load()
         },
         [410369] = { -- Dead Drop : https://wowhead.com/forever/object=410369/dead-drop
             [objectKeys.name] = "Dead Drop",
-            [objectKeys.questStarts] = {78261, 78676, 80455},
-            [objectKeys.questEnds] = {78261, 78307, 78676, 78699, 80454},
+            [objectKeys.questStarts] = {78261, 78676},
+            [objectKeys.questEnds] = {78261, 78307, 78676, 78699},
             [objectKeys.spawns] = {[130] = {{47.1, 71.1}}},
             [objectKeys.zoneID] = zoneIDs.SILVERPINE_FOREST,
         },
@@ -420,7 +398,6 @@ function ForeverBaseObject:Load()
         },
         [412224] = { -- Dark Ritual Stone : https://wowhead.com/forever/object=412224/dark-ritual-stone
             [objectKeys.name] = "Dark Ritual Stone",
-            [objectKeys.questEnds] = {78681},
             [objectKeys.spawns] = {[331] = {{79, 80.3}}},
             [objectKeys.zoneID] = zoneIDs.ASHENVALE,
         },
@@ -510,8 +487,6 @@ function ForeverBaseObject:Load()
         },
         [422483] = { -- The Salvagematic 9000 : https://wowhead.com/forever/object=422483/the-salvagematic-9000
             [objectKeys.name] = "The Salvagematic 9000",
-            [objectKeys.questStarts] = {79626},
-            [objectKeys.questEnds] = {79626, 79704},
             [objectKeys.zoneID] = zoneIDs.GNOMEREGAN,
         },
         [422896] = { -- Tear of Theradras : https://wowhead.com/forever/object=422896/tear-of-theradras
@@ -1011,7 +986,6 @@ function ForeverBaseObject:Load()
         },
         [448042] = { -- Idol of Hakkar : https://wowhead.com/forever/object=448042/idol-of-hakkar
             [objectKeys.name] = "Idol of Hakkar",
-            [objectKeys.questEnds] = {82097},
             [objectKeys.zoneID] = zoneIDs.THE_TEMPLE_OF_ATAL_HAKKAR,
         },
         [454487] = { -- Monument to Grom Hellscream : https://wowhead.com/forever/object=454487/monument-to-grom-hellscream
@@ -1034,14 +1008,11 @@ function ForeverBaseObject:Load()
         },
         [456682] = { -- Half-Buried Mech : https://wowhead.com/forever/object=456682/half-buried-mech
             [objectKeys.name] = "Half-Buried Mech",
-            [objectKeys.questStarts] = {84135},
             [objectKeys.spawns] = {[440] = {{59.2, 91.5}, {59.3, 91.4}}},
             [objectKeys.zoneID] = zoneIDs.TANARIS,
         },
         [456685] = { -- Access Hatch : https://wowhead.com/forever/object=456685/access-hatch
             [objectKeys.name] = "Access Hatch",
-            [objectKeys.questStarts] = {84137},
-            [objectKeys.questEnds] = {84135},
             [objectKeys.spawns] = {[440] = {{59.3, 91.4}, {59.3, 91.5}}},
             [objectKeys.zoneID] = zoneIDs.TANARIS,
         },
@@ -1147,20 +1118,15 @@ function ForeverBaseObject:Load()
         },
         [457443] = { -- Scarlet Ledger : https://wowhead.com/forever/object=457443/scarlet-ledger
             [objectKeys.name] = "Scarlet Ledger",
-            [objectKeys.questStarts] = {84322},
-            [objectKeys.questEnds] = {84321, 84406},
             [objectKeys.spawns] = {[28] = {{42.2, 18.1}}},
             [objectKeys.zoneID] = zoneIDs.WESTERN_PLAGUELANDS,
         },
         [459259] = { -- Mech Arm : https://wowhead.com/forever/object=459259/mech-arm
             [objectKeys.name] = "Mech Arm",
-            [objectKeys.questEnds] = {84213},
             [objectKeys.spawns] = {[40] = {{52.3, 40.8}, {52.3, 48.9}, {52.5, 38.4}, {53.1, 40.2}, {53.2, 41.3}, {53.3, 37.1}, {53.3, 41.8}, {53.5, 38.7}, {53.5, 40.7}, {54.1, 41.6}, {54.4, 39.8}, {54.8, 40}}, [85] = {{52.4, 57.7}, {53, 55.8}, {53.2, 57}, {53.3, 57.5}, {53.7, 56.6}, {54.2, 57.5}, {54.2, 58.7}, {54.5, 56.7}, {54.5, 58.2}, {54.8, 56.4}, {57.9, 56.9}}},
         },
         [459388] = { -- Artifact Cache : https://wowhead.com/forever/object=459388/artifact-cache
             [objectKeys.name] = "Artifact Cache",
-            [objectKeys.questStarts] = {84323, 84407},
-            [objectKeys.questEnds] = {84322},
             [objectKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
         },
         [461632] = { -- Marked Crate : https://wowhead.com/forever/object=461632/marked-crate
@@ -1184,8 +1150,6 @@ function ForeverBaseObject:Load()
         },
         [462236] = { -- Mysterious Chest : https://wowhead.com/forever/object=462236/mysterious-chest
             [objectKeys.name] = "Mysterious Chest",
-            [objectKeys.questStarts] = {84332},
-            [objectKeys.questEnds] = {84332, 84414},
             [objectKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
         },
         [463206] = { -- Book : https://wowhead.com/forever/object=463206/book
@@ -1235,21 +1199,16 @@ function ForeverBaseObject:Load()
         },
         [467315] = { -- Old Campsite : https://wowhead.com/forever/object=467315/old-campsite
             [objectKeys.name] = "Old Campsite",
-            [objectKeys.questStarts] = {84950},
-            [objectKeys.questEnds] = {84853},
             [objectKeys.spawns] = {[618] = {{57.9, 20.9}}},
             [objectKeys.zoneID] = zoneIDs.WINTERSPRING,
         },
         [469796] = { -- Campsite : https://wowhead.com/forever/object=469796/campsite
             [objectKeys.name] = "Campsite",
-            [objectKeys.questStarts] = {85525},
-            [objectKeys.questEnds] = {84950, 85525},
             [objectKeys.spawns] = {[618] = {{58, 21}}},
             [objectKeys.zoneID] = zoneIDs.WINTERSPRING,
         },
         [489943] = { -- Shallow Grave : https://wowhead.com/forever/object=489943/shallow-grave
             [objectKeys.name] = "Shallow Grave",
-            [objectKeys.questEnds] = {85559},
             [objectKeys.spawns] = {[490] = {{21.4, 36.8}}},
             [objectKeys.zoneID] = zoneIDs.UN_GORO_CRATER,
         },
