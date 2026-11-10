@@ -40,8 +40,8 @@ fixture.write(path, {
       [quest.startedBy] = {nil, nil, {264011}},
       [quest.reputationReward] = {{2586, 75}, {2587, 75}},
     },
-    [94006] = {
-      [quest.name] = "The Great Ursera Spirit",
+    [94007] = {
+      [quest.name] = "Taming the Beast",
       [quest.requiredRaces] = 12884901888,
     },
     [97286] = {

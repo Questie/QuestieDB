@@ -31,7 +31,7 @@ local function witness(db)
   -- Literal restrictions distinguish explicit masks, faction inference and reviewed zeroes.
   assert(db.Quest.requiredRaces(90902) == 16 and db.Quest.requiredClasses(90902) == 2,
     "explicit Undead Paladin restriction")
-  assert(db.Quest.requiredRaces(94006) == 12884901888, "both Skyborne races, not all races")
+  assert(db.Quest.requiredRaces(94007) == 12884901888, "both Skyborne races, not all races")
   assert(db.Quest.requiredRaces(86585) == 4294967373, "Alliance fallback includes Alliance Skyborne")
   assert(db.Quest.requiredRaces(94004) == 0, "reviewed all-race writ assumption")
   local writStarters = db.Quest.startedBy(94004)
