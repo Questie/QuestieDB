@@ -75,6 +75,23 @@ The five canonical triage roles, using the default label strings. See `docs/agen
 
 Single-context — `CONTEXT.md` and `docs/adr/` at the repo root. See `docs/agents/domain.md`.
 
-### Commit Messaage Standard
+### Commit Message Standard
 
 Use logical commits and conventional commits standard for messages.
+
+### User-facing change log commits
+
+Commits that change actual data entries (quests, NPCs, objects, items, corrections, trace data, translations) feed the user-facing change log and must use this format instead of
+conventional commits:
+
+```
+[<category>][<Version>] <message>
+```
+
+- `<category>`: `db` (data updates/corrections), `quest` (quest-specific fixes), `locale` (translations).
+- `<Version>`: the affected game version, e.g. `Forever`, `Era`.
+- `<message>`: short, user-readable; quote quest/NPC names, e.g. `[quest][Forever] show objective locations for "My Little Friends"`.
+
+Examples: `[db][Forever] Update quests, NPCs, objects and items data`, `[locale][Forever] Update all translations`.
+
+All other commits (tooling, docs, tests, refactors) keep the conventional commits standard.
