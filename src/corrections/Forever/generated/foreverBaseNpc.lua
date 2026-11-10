@@ -25039,7 +25039,6 @@ function ForeverBaseNpc:Load()
         [269647] = { -- Mus'hale : https://wowhead.com/forever/npc=269647/mushale
             [npcKeys.name] = "Mus'hale",
             [npcKeys.zoneID] = zoneIDs.BADLANDS,
-            [npcKeys.questStarts] = {97663},
         },
         [269668] = { -- Credit : https://wowhead.com/forever/npc=269668/credit
             [npcKeys.name] = "Credit",
