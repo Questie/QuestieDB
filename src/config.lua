@@ -292,6 +292,8 @@ config.supportData.perFlavor.Forever = {
   "support/Forever/Zones/dungeons.lua", "support/Forever/Zones/subZoneToParentZone.lua",
   "support/Forever/Zones/instanceIdToAreaId.lua",
   "support/Forever/DropTables/itemDropCorrections.lua",
+  -- Generated Forever overrides merge into corrections; must load after the manual file.
+  "support/Forever/DropTables/itemDropGenerated.lua",
   "support/Forever/Zones/areaIdToUiMapId.lua", "support/Forever/Zones/uiMapIdToAreaId.lua",
   "support/Forever/QuestXP/xpDB-classic.lua", "support/Forever/QuestXP/xpDB-traces.lua",
   "support/Forever/FactionTemplates/factionTemplateClassic.lua",

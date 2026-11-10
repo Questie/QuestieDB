@@ -162,6 +162,7 @@ support\Forever\Zones\dungeons.lua [ExcludeLoadGameType vanilla, tbc, wrath, cat
 support\Forever\Zones\subZoneToParentZone.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\Zones\instanceIdToAreaId.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\DropTables\itemDropCorrections.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+support\Forever\DropTables\itemDropGenerated.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\Zones\areaIdToUiMapId.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\Zones\uiMapIdToAreaId.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\QuestXP\xpDB-classic.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
