@@ -2583,6 +2583,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.preQuestSingle] = {97234},
         },
+        [97242] = { -- Yelmak's Medley
+            [questKeys.nextQuestInChain] = 97275,
+        },
         [97243] = { -- Call of Fire
             [questKeys.startedBy_add] = {{254082}},
             [questKeys.requiredClasses] = classIDs.SHAMAN,
@@ -2614,6 +2617,9 @@ function ForeverQuestFixes:Load()
         },
         [97263] = { -- Your Package Has Arrived
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [97275] = { -- Whuut's the Rush
+            [questKeys.preQuestSingle] = {97242},
         },
         [97277] = { -- Grund and Gozwin
             [questKeys.objectives] = {{{269075}},nil,{{277976}}},
