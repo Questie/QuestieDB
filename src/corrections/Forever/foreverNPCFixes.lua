@@ -310,6 +310,9 @@ function ForeverNpcFixes:Load()
         [247229] = { -- Daniel
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{49.48,40.67}}},
         },
+        [247449] = { -- Sin'dorei Tome of Summoning
+            [npcKeys.questEnds_remove] = {3505},
+        },
         [248242] = { -- Hamish Bergwort
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{65.1,69.84}}},
         },
@@ -785,6 +788,9 @@ function ForeverNpcFixes:Load()
         },
         [265811] = { -- Lyreena Duskblade
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{57.58,56.64}}},
+        },
+        [265813] = { -- Eric Brighthammer
+            [npcKeys.questEnds_remove] = {420},
         },
         [266940] = { -- Turroc
             [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{53.95,42.59}}},
