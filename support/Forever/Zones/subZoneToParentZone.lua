@@ -125,6 +125,7 @@ ZoneDB.private.subZoneToParentZoneOverride = [[return {
     [10116] = 3457, -- Karazhan - Medivh's Chambers (Dungeon/Raid)
     [10117] = 3457, -- Karazhan - The Power Station (Dungeon/Raid)
     [10118] = 3457, -- Karazhan - Netherspace (Dungeon/Raid)
+    [16169] = 331, -- Ashenvale (SoD map ID) - Ashenvale
 }]]
 
 --! Generated table, add something manually here and i'll kill you //Logon
