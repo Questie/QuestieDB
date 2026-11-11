@@ -3408,6 +3408,9 @@ function ForeverQuestFixes:Load()
             [questKeys.name] = "Shroud of the Winter Wilds",
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [98517] = { -- Call of Fire
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
+        },
         [98545] = { -- Leonid's Letter
             [questKeys.preQuestSingle] = {96896},
         },
