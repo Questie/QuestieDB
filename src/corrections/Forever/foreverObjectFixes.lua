@@ -507,6 +507,9 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{47.0,69.0},{47.3,69.7},{47.4,68.3},{47.5,68.6},{47.7,70.0},{47.8,67.5},{48.6,68.5}}},
             [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
         },
+        [708078] = { -- Fragmented Sentry
+            [objectKeys.name] = "Fragmented Sentry",
+        },
         -- For Forever fixes 460001-469999
         [460001] = { -- Elemental Convergence
             [objectKeys.name] = "Elemental Convergence",

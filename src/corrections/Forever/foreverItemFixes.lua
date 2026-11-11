@@ -85,6 +85,21 @@ function ForeverItemFixes:Load()
             [itemKeys.name] = "The Lessons of Ta'zo",
             [itemKeys.objectDrops] = {405149},
         },
+        [213566] = { -- Arbor Tarantula Specimen
+            [itemKeys.name] = "Arbor Tarantula Specimen",
+            [itemKeys.npcDrops] = {217588},
+            [itemKeys.class] = itemClasses.QUEST,
+        },
+        [213567] = { -- Flesh Picker Specimen
+            [itemKeys.name] = "Flesh Picker Specimen",
+            [itemKeys.npcDrops] = {217590},
+            [itemKeys.class] = itemClasses.QUEST,
+        },
+        [213568] = { -- Hay Weevil Specimen
+            [itemKeys.name] = "Hay Weevil Specimen",
+            [itemKeys.npcDrops] = {217589},
+            [itemKeys.class] = itemClasses.QUEST,
+        },
         [215817] = { -- Demons and You
             [itemKeys.name] = "Demons and You",
             [itemKeys.objectDrops] = {423898},
