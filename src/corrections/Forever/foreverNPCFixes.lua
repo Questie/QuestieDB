@@ -583,6 +583,9 @@ function ForeverNpcFixes:Load()
         [254128] = { -- Wardrobe
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{48.84,53.93}}},
         },
+        [254344] = { -- Endaria Mistgaze
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{58.13,78.3}}},
+        },
         [254358] = { -- Veena Vericloud
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{44.71,45.48}}},
         },
@@ -718,12 +721,19 @@ function ForeverNpcFixes:Load()
         [258289] = { -- Baeo Sharpstrike
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.92,33.55}}},
         },
+        [258878] = { -- Auctioneer Quickcoin
+            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{49.95,29.45}}},
+            [npcKeys.npcFlags] = npcFlags.AUCTIONEER,
+        },
         [258880] = { -- Uninspected Shipment
             [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{49.95,29.45}}},
             [npcKeys.npcFlags] = npcFlags.BANKER,
         },
         [258930] = { -- Isaac Chan
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{41.79,66.37}}},
+        },
+        [259012] = { -- Ealaane Nimbuswalker
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.96,74.31}}},
         },
         [259013] = { -- Resaan Nimbuswalker
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{57.05,29.35}}},
@@ -869,6 +879,12 @@ function ForeverNpcFixes:Load()
         },
         [268679] = { -- Brazier of Eternal Flame
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{58.35,78.84}}},
+        },
+        [268682] = { -- Migi
+            [npcKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{36.54,29.09}}},
+        },
+        [268684] = { -- Thra
+            [npcKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{36.54,28.49}}},
         },
         [268762] = { -- Brazier of Offering
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{51.2,85.9}}},
