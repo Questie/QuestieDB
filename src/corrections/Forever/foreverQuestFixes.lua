@@ -960,6 +960,7 @@ function ForeverQuestFixes:Load()
         },
         [92514] = { -- Welcome to Shen'dar Village
             [questKeys.objectives] = {{{251902,nil,Questie.ICON_TYPE_TALK},{254089,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
         },
         [92515] = { -- The Problem With Prideclaws
             [questKeys.preQuestSingle] = {92514,93461},
@@ -997,6 +998,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [92579] = { -- To Valanaar
+            [questKeys.finishedBy] = {{252383}},
             [questKeys.preQuestGroup] = {92550,93927}, -- 92551 not needed
             [questKeys.nextQuestInChain] = 92700,
         },
@@ -1409,6 +1411,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [93948] = { -- Deliver the Signet
+            [questKeys.finishedBy] = {{252476}},
             [questKeys.preQuestGroup] = {92550,93927}, -- 92551 not needed
             [questKeys.nextQuestInChain] = 93949,
         },
@@ -2331,6 +2334,7 @@ function ForeverQuestFixes:Load()
             [questKeys.breadcrumbs] = {96638},
             [questKeys.objectives] = {nil,{{460003},{460003}}},
             [questKeys.exclusiveTo] = {95998,96604,96605,96606,96607,96608},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [96102] = { -- Camping 101: Tailoring
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
@@ -2579,10 +2583,6 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.preQuestSingle] = {97234},
         },
-        [97242] = { -- Yelmak's Medley
-            [questKeys.preQuestSingle] = {97246}, -- unverified: Wowhead series and one comment place it after Meal Appeal
-            [questKeys.nextQuestInChain] = 97249,
-        },
         [97243] = { -- Call of Fire
             [questKeys.startedBy_add] = {{254082}},
             [questKeys.requiredClasses] = classIDs.SHAMAN,
@@ -2600,10 +2600,11 @@ function ForeverQuestFixes:Load()
             [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Knock on Kuramaa's Stump"),0,{{"object",660848}}}},
         },
         [97246] = { -- Meal Appeal
-            [questKeys.nextQuestInChain] = 97242,
+            [questKeys.finishedBy] = {{3368}},
+            [questKeys.nextQuestInChain] = 97249,
         },
         [97249] = { -- Favorite Food
-            [questKeys.preQuestSingle] = {97242}, -- unverified: a Wowhead comment lists Yelmak's Medley before Favorite Food
+            [questKeys.preQuestSingle] = {97246},
             [questKeys.nextQuestInChain] = 97326,
         },
         [97257] = { -- Call of Fire
