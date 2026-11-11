@@ -501,6 +501,7 @@ function ForeverNpcFixes:Load()
         },
         [252476] = { -- Talaanis Shadowsong
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{66.17,76.51}}},
+            [npcKeys.questEnds_remove] = {92579},
         },
         [252479] = { -- Daeann Steelwind
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.47,80.28}}},
