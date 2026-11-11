@@ -2654,6 +2654,7 @@ function ForeverQuestFixes:Load()
             [questKeys.startedBy_add] = {{254082}},
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.nextQuestInChain] = 97244,
+            [questKeys.breadcrumbs] = {98517}, -- to be tested
         },
         [97244] = { -- Call of Fire
             [questKeys.requiredClasses] = classIDs.SHAMAN,
@@ -3410,6 +3411,8 @@ function ForeverQuestFixes:Load()
         },
         [98517] = { -- Call of Fire
             [questKeys.requiredClasses] = classIDs.SHAMAN,
+            [questKeys.breadcrumbForQuestId] = 97243, -- to be tested
+            [questKeys.nextQuestInChain] = 97243,
         },
         [98545] = { -- Leonid's Letter
             [questKeys.preQuestSingle] = {96896},
