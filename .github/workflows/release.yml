@@ -82,7 +82,11 @@ jobs:
           path: QuestieDB
           ref: ${{ needs.bump.outputs.commit_sha }}
       - name: Install Lua 5.1
-        run: sudo apt-get update && sudo apt-get install -y lua5.1
+        uses: leafo/gh-actions-lua@32909a2dea0a48c433aec79e7fcd31b4cd55800f # v13.1.0
+        with:
+          luaVersion: "5.1"
+      - name: Provide lua5.1 alias
+        run: ln -s "$(command -v lua)" "$(dirname "$(command -v lua)")/lua5.1"
       - name: Choose release and reject existing versions
         id: release
         working-directory: QuestieDB
@@ -101,7 +105,11 @@ jobs:
           ref: ${{ needs.bump.outputs.commit_sha }}
 
       - name: Install Lua 5.1
-        run: sudo apt-get update && sudo apt-get install -y lua5.1
+        uses: leafo/gh-actions-lua@32909a2dea0a48c433aec79e7fcd31b4cd55800f # v13.1.0
+        with:
+          luaVersion: "5.1"
+      - name: Provide lua5.1 alias
+        run: ln -s "$(command -v lua)" "$(dirname "$(command -v lua)")/lua5.1"
 
       - name: Generator tooling tests (offline)
         working-directory: QuestieDB
@@ -159,7 +167,11 @@ jobs:
           fetch-depth: 0
 
       - name: Install Lua 5.1
-        run: sudo apt-get update && sudo apt-get install -y lua5.1
+        uses: leafo/gh-actions-lua@32909a2dea0a48c433aec79e7fcd31b4cd55800f # v13.1.0
+        with:
+          luaVersion: "5.1"
+      - name: Provide lua5.1 alias
+        run: ln -s "$(command -v lua)" "$(dirname "$(command -v lua)")/lua5.1"
 
       # These artifacts come only from this run's successful database checks, whose
       # Determinism job matched them against every other Generation of their flavor.
