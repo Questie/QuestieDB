@@ -89,6 +89,9 @@ function ForeverNpcFixes:Load()
         [3362] = { -- Ogunaro Wolfrunner <Kennel Master>
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
+        [3399] = { -- Zamja
+            [npcKeys.questEnds_remove] = {97246},
+        },
         [3519] = { -- Sentinel Arynia Cloudsbreak
             [npcKeys.questStarts_remove] = {940},
         },
@@ -486,6 +489,9 @@ function ForeverNpcFixes:Load()
         },
         [252380] = { -- Othesia Evengale
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.41,81.17}}},
+        },
+        [252383] = { -- Valennia Stormfist
+            [npcKeys.questEnds_remove] = {93948},
         },
         [252388] = { -- Halavuul Cragwind
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.44,80.47}}},

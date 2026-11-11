@@ -1647,16 +1647,16 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{252476,nil,Questie.ICON_TYPE_TALK}}},
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
-        [94616] = { -- Water Sapta
-            [questKeys.preQuestSingle] = {94501},
-            [questKeys.specialFlags] = specialFlags.REPEATABLE,
-            [questKeys.availableUntilCompleted] = 94502,
-        },
         [94614] = { -- Freshwater Fiends
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
         },
         [94615] = { -- Foal Play
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
+        },
+        [94616] = { -- Water Sapta
+            [questKeys.preQuestSingle] = {94501},
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.availableUntilCompleted] = 94502,
         },
         [94617] = { -- Coyote Huntin'
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
