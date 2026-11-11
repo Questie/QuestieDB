@@ -822,16 +822,20 @@ function ForeverQuestFixes:Load()
         },
         [92460] = { -- Coming of Age
             [questKeys.nextQuestInChain] = 92461,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [92461] = { -- Harmony in Balance
             [questKeys.preQuestSingle] = {92460},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [92462] = { -- Infestation Investigation
             [questKeys.preQuestSingle] = {92460},
             [questKeys.nextQuestInChain] = 92463,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [92463] = { -- The Cirrusfly Queen
             [questKeys.preQuestSingle] = {92462},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [92464] = { -- Elemental Unrest
             [questKeys.availableUntilCompleted] = 92465,
@@ -862,12 +866,14 @@ function ForeverQuestFixes:Load()
         },
         [92472] = { -- The Next Step
             [questKeys.preQuestSingle] = {92470},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [92473] = { -- Aggressive Encroachment
             [questKeys.preQuestSingle] = {92471},
         },
         [92474] = { -- Falling With Style
             [questKeys.objectives] = {nil,nil,nil,nil,nil,{{1259416}}},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [92479] = { -- A Scribbled Letter
             [questKeys.requiredClasses] = classIDs.HUNTER,
@@ -897,6 +903,7 @@ function ForeverQuestFixes:Load()
         },
         [92516] = { -- Hippogryph Harrassment
             [questKeys.preQuestSingle] = {92514,93461},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [92517] = { -- The Criminal Element
             [questKeys.preQuestSingle] = {92514,93461},
@@ -916,12 +923,14 @@ function ForeverQuestFixes:Load()
         },
         [92550] = { -- Havoc in the Highlands
             [questKeys.preQuestSingle] = {92528},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [92551] = { -- Stolen Supplies
             [questKeys.preQuestSingle] = {92528},
         },
         [92553] = { -- Restocking the Larders
             [questKeys.preQuestSingle] = {92514,93461},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [92579] = { -- To Valanaar
             [questKeys.preQuestGroup] = {92550,93927}, -- 92551 not needed
@@ -931,6 +940,7 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 94411,
             [questKeys.availableStartingWith] = 92514, -- available even after abandoning 92514, but this is next best thing
             [questKeys.objectives] = {{{251902,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [92596] = { -- The High Order
             [questKeys.nextQuestInChain] = 94413,
@@ -979,6 +989,7 @@ function ForeverQuestFixes:Load()
         },
         [92682] = { -- Make Yourself Useful
             [questKeys.preQuestSingle] = {92679},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [92683] = { -- Flutterfly Dust
             [questKeys.preQuestSingle] = {92679},
@@ -991,6 +1002,7 @@ function ForeverQuestFixes:Load()
         [92685] = { -- The Hills Have Eyes
             [questKeys.preQuestGroup] = {92682,92683,92684},
             [questKeys.nextQuestInChain] = 92693,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [92693] = { -- Standing Our Ground
             [questKeys.preQuestSingle] = {92685},
@@ -1154,14 +1166,19 @@ function ForeverQuestFixes:Load()
         },
         [93160] = { -- The Forest's Bounty
             [questKeys.preQuestSingle] = {93159},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [93165] = { -- Mercy Falls on Deaf Ears
             [questKeys.preQuestSingle] = {94484,94493},
             [questKeys.nextQuestInChain] = 93459,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [93172] = { -- Free the Hollows
             [questKeys.preQuestSingle] = {93159},
             [questKeys.objectives] = {{{251676}}},
+        },
+        [93317] = { -- Crab Season
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [93318] = { -- WANTED: Vulgara the Insatiable
             [questKeys.preQuestSingle] = {92514,93461},
@@ -1171,6 +1188,7 @@ function ForeverQuestFixes:Load()
         },
         [93320] = { -- Tower Defense
             [questKeys.preQuestSingle] = {92860,92871},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [93459] = { -- More Al'Aketh Ears
             [questKeys.preQuestSingle] = {93165},
@@ -1238,6 +1256,7 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {92528},
             [questKeys.nextQuestInChain] = 93927,
             [questKeys.objectives] = {{{252155,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [93927] = { -- A Last Request
             [questKeys.preQuestSingle] = {93926},
@@ -1255,6 +1274,7 @@ function ForeverQuestFixes:Load()
         },
         [93951] = { -- A Little Beauty
             [questKeys.preQuestSingle] = {92514,93461},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [93958] = { -- The Inner Sanctum
             [questKeys.preQuestSingle] = {92947},
@@ -1267,10 +1287,12 @@ function ForeverQuestFixes:Load()
         },
         [94003] = { -- The Skybreaker Bulwark
             [questKeys.requiredClasses] = classIDs.WARRIOR,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [94006] = { -- The Great Ursera Spirit
             [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.nextQuestInChain] = 94638,
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [94007] = { -- Taming the Beast
             [questKeys.requiredClasses] = classIDs.HUNTER,
@@ -1395,6 +1417,7 @@ function ForeverQuestFixes:Load()
         },
         [94486] = { -- Feathers for Binding
             [questKeys.preQuestSingle] = {94484,94493},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [94487] = { -- Unwanted and Unworthy
             [questKeys.preQuestSingle] = {94484,94493},
@@ -1405,6 +1428,7 @@ function ForeverQuestFixes:Load()
         [94489] = { -- The Wounds of Betrayal
             [questKeys.preQuestGroup] = {94485,94486,94487},
             [questKeys.objectives] = {{{258130,nil,Questie.ICON_TYPE_TALK}},nil,nil,nil,{{{258134,258137,258138,258275,258277,258288,258289},258134,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [94490] = { -- Ripped Missive
             [questKeys.preQuestGroup] = {94485,94486,94487},
@@ -1455,6 +1479,7 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {92644},
             [questKeys.nextQuestInChain] = 92640,
             [questKeys.objectives] = {{{252476,nil,Questie.ICON_TYPE_TALK}}},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [94616] = { -- Water Sapta
             [questKeys.preQuestSingle] = {94501},
@@ -1527,6 +1552,9 @@ function ForeverQuestFixes:Load()
         },
         [94896] = { -- Aid For The Refugees
             [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [94897] = { -- The Fate of a Loved One
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [94911] = { -- Child of Nature
             [questKeys.requiredClasses] = classIDs.DRUID,
@@ -2645,6 +2673,9 @@ function ForeverQuestFixes:Load()
         [98403] = { -- Twisted Hatred
             [questKeys.preQuestSingle] = {932},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [98404] = { -- The Great Windborne Cat Spirit
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [98407] = { -- Show of Force
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
