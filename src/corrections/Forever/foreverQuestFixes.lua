@@ -396,7 +396,7 @@ function ForeverQuestFixes:Load()
         },
         [79008] = { -- ... and that note you found
             [questKeys.startedBy] = {nil,{415107}},
-            [questKeys.finishedBy] = {nil,{415106}},
+            [questKeys.finishedBy] = {nil,{415106,417072}}, -- alliance turns in at both
             [questKeys.zoneOrSort] = zoneIDs.WESTFALL,
             [questKeys.nextQuestInChain] = 79192,
         },
@@ -1041,9 +1041,11 @@ function ForeverQuestFixes:Load()
         [92597] = { -- Reading the Ley Lines
             [questKeys.preQuestSingle] = {92461},
             [questKeys.objectives] = {nil,{{460002}}},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE,
         },
         [92598] = { -- The Gift of Skysight
             [questKeys.objectives] = {nil,{{460001}}},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
         },
         [92640] = { -- Desperate Times
             [questKeys.preQuestSingle] = {94568},

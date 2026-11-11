@@ -137,7 +137,7 @@ function ForeverObjectFixes:Load()
         [417072] = { -- Nailed Plank
             [objectKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{46.39,73.82}}},
             [objectKeys.questStarts] = {79192},
-            [objectKeys.questEnds] = {},
+            [objectKeys.questEnds] = {79008},
         },
         [417353] = { -- Extinguished Campfire
             [objectKeys.name] = "Extinguished Campfire",
