@@ -542,6 +542,9 @@ function ForeverNpcFixes:Load()
         [253004] = { -- Iaadaria Bitterwind
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{66.34,79.5}}},
         },
+        [253092] = { -- Alba Fairmoon
+            [npcKeys.spawns] = {[zoneIDs.WESTFALL] = {{52.48,52.97}}},
+        },
         [253195] = { -- Al'Aketh Preacher
             [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
         },
@@ -827,6 +830,9 @@ function ForeverNpcFixes:Load()
         },
         [265813] = { -- Eric Brighthammer
             [npcKeys.questEnds_remove] = {420},
+        },
+        [266852] = { -- Halikor
+            [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{43.36,23.83},{40.68,30.13}}},
         },
         [266940] = { -- Turroc
             [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{53.95,42.59}}},
