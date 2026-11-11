@@ -812,6 +812,25 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {91775},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
+        [91858] = { -- Diplomatic Incident
+            [questKeys.nextQuestInChain] = 91859,
+        },
+        [91859] = { -- A Curious Pair
+            [questKeys.preQuestSingle] = {91858},
+            [questKeys.nextQuestInChain] = 91860,
+        },
+        [91860] = { -- A Grim Fate
+            [questKeys.preQuestSingle] = {91859},
+            [questKeys.nextQuestInChain] = 91861,
+        },
+        [91861] = { -- Into Fenris Keep
+            [questKeys.preQuestSingle] = {91860},
+            [questKeys.nextQuestInChain] = 91862,
+        },
+        [91862] = { -- Lumina Windsinger
+            [questKeys.preQuestSingle] = {91861},
+            [questKeys.nextQuestInChain] = 96204,
+        },
         [91882] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
@@ -1891,8 +1910,14 @@ function ForeverQuestFixes:Load()
         [95033] = { -- On the Other Side
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
         },
+        [95034] = { -- The Debt
+            [questKeys.preQuestSingle] = {96204},
+            [questKeys.nextQuestInChain] = 95036,
+        },
         [95036] = { -- A Moon-Kissed Blade
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
+            [questKeys.preQuestSingle] = {95034},
+            [questKeys.nextQuestInChain] = 95111,
         },
         [95059] = { -- Frazzlespark's Crate
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
@@ -1905,6 +1930,10 @@ function ForeverQuestFixes:Load()
         },
         [95065] = { -- Fishin' Time
             [questKeys.objectives] = {nil,nil,{{6529},{6530}}},
+        },
+        [95111] = { -- An Underrated Talent
+            [questKeys.preQuestSingle] = {95036},
+            [questKeys.nextQuestInChain] = 95125,
         },
         [95118] = { -- Saltwater Savages
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
@@ -1926,6 +1955,13 @@ function ForeverQuestFixes:Load()
         },
         [95124] = { -- Admiral Lamora
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+        },
+        [95125] = { -- Ott's Masterwork
+            [questKeys.preQuestSingle] = {95111},
+            [questKeys.nextQuestInChain] = 95126,
+        },
+        [95126] = { -- The Moonsilver Blade
+            [questKeys.preQuestSingle] = {95125},
         },
         [95144] = { -- Overseas Delivery
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
@@ -2373,6 +2409,10 @@ function ForeverQuestFixes:Load()
         },
         [96139] = { -- The Valor Family
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [96204] = { -- The Windshaper's Wrath
+            [questKeys.preQuestSingle] = {91862},
+            [questKeys.nextQuestInChain] = 95034,
         },
         [96243] = { -- Call of Earth
             [questKeys.requiredLevel] = 4,
