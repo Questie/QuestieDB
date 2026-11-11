@@ -2376,6 +2376,9 @@ function ForeverQuestFixes:Load()
             [questKeys.questLevel] = 4,
             [questKeys.availableUntilCompleted] = 94373,
         },
+        [96261] = { -- The Broodmother
+            [questKeys.preQuestSingle] = {96259},
+        },
         [96335] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
