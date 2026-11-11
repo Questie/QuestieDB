@@ -93,6 +93,9 @@ function ForeverQuestFixes:Load()
         [410] = { -- The Dormant Shade
             [questKeys.exclusiveTo] = {},
         },
+        [420] = { -- Senir's Observations
+            [questKeys.finishedBy_remove] = {{265813}},
+        },
         [425] = { -- Ivar the Foul
             [questKeys.preQuestSingle] = {91921},
         },
@@ -201,6 +204,9 @@ function ForeverQuestFixes:Load()
         },
         [2519] = { -- The Temple of the Moon
             [questKeys.breadcrumbs] = {98391},
+        },
+        [3505] = { -- Betrayed
+            [questKeys.finishedBy_remove] = {{247449}},
         },
         [4763] = { -- The Blackwood Corrupted
             [questKeys.extraObjectives] = {
@@ -1357,9 +1363,6 @@ function ForeverQuestFixes:Load()
         [94441] = { -- A Lesson in Divinity
             [questKeys.preQuestSingle] = {94440},
         },
-        [94449] = { -- Call of Fire
-            [questKeys.nextQuestInChain] = 94465,
-        },
         [94465] = { -- Call of Fire
             [questKeys.nextQuestInChain] = 94466,
         },
@@ -1956,6 +1959,10 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.preQuestSingle] = {97234},
         },
+        [97242] = { -- Yelmak's Medley
+            [questKeys.preQuestSingle] = {97246}, -- unverified: Wowhead series and one comment place it after Meal Appeal
+            [questKeys.nextQuestInChain] = 97249,
+        },
         [97243] = { -- Call of Fire
             [questKeys.startedBy_add] = {{254082}},
             [questKeys.requiredClasses] = classIDs.SHAMAN,
@@ -1971,10 +1978,6 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {97244},
             [questKeys.nextQuestInChain] = 97257,
             [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Knock on Kuramaa's Stump"),0,{{"object",660848}}}},
-        },
-        [97242] = { -- Yelmak's Medley
-            [questKeys.preQuestSingle] = {97246}, -- unverified: Wowhead series and one comment place it after Meal Appeal
-            [questKeys.nextQuestInChain] = 97249,
         },
         [97246] = { -- Meal Appeal
             [questKeys.nextQuestInChain] = 97242,
@@ -2609,7 +2612,8 @@ function ForeverQuestFixes:Load()
             [questKeys.startedBy_add] = {{271866}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
-            [questKeys.requiredRaces] = raceIDs.NONE, -- confirmed horde
+            [questKeys.requiredRaces] = raceIDs.NONE, -- confirmed both alliance and horde get this one
+            [questKeys.zoneOrSort] = zoneIDs.DUSKWOOD,
         },
         [98386] = { -- Alther's Mill
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
@@ -2892,6 +2896,7 @@ function ForeverQuestFixes:Load()
         },
         [99267] = { -- An Unfortunate End
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.zoneOrSort] = zoneIDs.DUSKWOOD,
         },
         [99411] = { -- Kyle's Gone Missing!
             [questKeys.name] = "Kyle's Gone Missing!",
