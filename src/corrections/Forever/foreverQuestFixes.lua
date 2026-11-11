@@ -1962,6 +1962,10 @@ function ForeverQuestFixes:Load()
         },
         [95126] = { -- The Moonsilver Blade
             [questKeys.preQuestSingle] = {95125},
+            [questKeys.nextQuestInChain] = 95140,
+        },
+        [95140] = { -- Old Fire-Eye
+            [questKeys.preQuestSingle] = {95126},
         },
         [95144] = { -- Overseas Delivery
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
