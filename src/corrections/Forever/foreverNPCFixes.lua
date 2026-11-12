@@ -750,11 +750,15 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.92,33.55}}},
         },
         [258878] = { -- Auctioneer Quickcoin
-            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{49.95,29.45}}},
+            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{49.95,29.45}},[zoneIDs.REDRIDGE_MOUNTAINS] = {{9.54,71.96}}},
             [npcKeys.npcFlags] = npcFlags.AUCTIONEER,
         },
+        [258879] = { -- Steamwheedle Courier
+            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{49.95,29.45}},[zoneIDs.REDRIDGE_MOUNTAINS] = {{9.54,71.96}}},
+            -- [npcKeys.npcFlags] = npcFlags.MAILBOX, -- todo add logic
+        },
         [258880] = { -- Uninspected Shipment
-            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{49.95,29.45}}},
+            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{49.95,29.45}},[zoneIDs.REDRIDGE_MOUNTAINS] = {{9.54,71.96}}},
             [npcKeys.npcFlags] = npcFlags.BANKER,
         },
         [258930] = { -- Isaac Chan
