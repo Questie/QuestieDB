@@ -838,13 +838,17 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [91899] = { -- A Sealed Crate
+            [questKeys.questLevel] = 60,
             [questKeys.startedBy] = {{256386,256390}},
             [questKeys.finishedBy] = {{256386,256390}},
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [91900] = { -- A Sealed Crate
+            [questKeys.questLevel] = 60,
             [questKeys.startedBy] = {{256386,256390}},
             [questKeys.finishedBy] = {{256386,256390}},
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [91901] = { -- A Sealed Crate
@@ -854,18 +858,41 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
-        [91904] = { -- A Sealed Crate
+        [91902] = { -- A Sealed Crate
+            [questKeys.questLevel] = 60,
             [questKeys.startedBy] = {{256386,256390}},
             [questKeys.finishedBy] = {{256386,256390}},
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+        },
+        [91904] = { -- A Sealed Crate
+            [questKeys.questLevel] = 60,
+            [questKeys.startedBy] = {{256386,256390}},
+            [questKeys.finishedBy] = {{256386,256390}},
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [91905] = { -- A Sealed Crate
+            [questKeys.questLevel] = 60,
             [questKeys.startedBy] = {{256386,256390}},
             [questKeys.finishedBy] = {{256386,256390}},
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [91906] = { -- A Sealed Crate
-            [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+            [questKeys.questLevel] = 60,
+            [questKeys.startedBy] = {{256386,256390}},
+            [questKeys.finishedBy] = {{256386,256390}},
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+        },
+        [91907] = { -- A Sealed Crate
+            [questKeys.name] = "A Sealed Crate",
+            [questKeys.questLevel] = 60,
+            [questKeys.startedBy] = {{256386,256390}},
+            [questKeys.finishedBy] = {{256386,256390}},
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [91920] = { -- Wild Eyes
             [questKeys.preQuestSingle] = {430},
