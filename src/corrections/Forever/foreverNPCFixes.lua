@@ -756,6 +756,10 @@ function ForeverNpcFixes:Load()
         [259431] = { -- Rudolph Gelhardt
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{11.51,64.18}}},
         },
+        [261306] = { -- Faldrim Anvilmar
+            [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
+        },
         [261319] = { -- Durgen Dirgehammer
             [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
@@ -801,6 +805,13 @@ function ForeverNpcFixes:Load()
         },
         [264936] = { -- Earthseer Farsen
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{64.87,58.47}}},
+        },
+        [265002] = { -- Ghostly Attendant
+            [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
+            [npcKeys.friendlyToFaction] = "AH",
+            [npcKeys.questStarts] = {96395},
+            [npcKeys.questEnds] = {96395},
         },
         [265654] = { -- Faladriaal Featherfall
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{61.14,76.74}}},
