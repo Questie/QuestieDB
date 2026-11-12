@@ -89,7 +89,7 @@ for _, token in ipairs(baked and { "camelot" } or { "camelot", "forever" }) do
     end
   end
   assert(generated == (baked and 0 or 4), "only Source registers all four delta-base providers")
-  assert(traces == (baked and 0 or 4), "only Source registers all four trace providers")
+  assert(traces == (baked and 0 or 5), "only Source registers all five trace providers")
   if baked then
     for _, path in ipairs(files) do
       assert(not path:find("Forever/generated/", 1, true) and not path:find("Forever/traces/", 1, true),
@@ -130,7 +130,7 @@ if not baked then
       authoredEntries[#authoredEntries + 1] = entry
     end
   end
-  assert(#legacyEntries == 6 and #deltaEntries == 4 and #traceEntries == 4 and #authoredEntries == 4,
+  assert(#legacyEntries == 6 and #deltaEntries == 4 and #traceEntries == 5 and #authoredEntries == 4,
     "precedence fixture must cover every applicable Static provider")
   for _, delta in ipairs(deltaEntries) do
     for _, legacy in ipairs(legacyEntries) do
@@ -145,6 +145,12 @@ if not baked then
       assert(trace.loadOrder < authored.loadOrder, trace.name .. " must precede " .. authored.name)
     end
   end
+  -- A shared slot would only fall back to registration order, with a load-time collision warning.
+  local loadOrderByName = {}
+  for _, trace in ipairs(traceEntries) do loadOrderByName[trace.name] = trace.loadOrder end
+  assert(loadOrderByName["Forever/traces/foreverQuestTraces.lua:Load"] <
+    loadOrderByName["Forever/traces/foreverQuestRelationTraces.lua:Load"],
+    "quest relation traces need their own slot after quest traces, not a shared one")
 
   local quests, npcs = {}, {}
   registry.ApplyStaticToEntities("Quest", quests, flavor, "QuestieDB")
@@ -242,6 +248,17 @@ if not baked then
   assert(row[questKeys.requiredLevel] == 30, "authored level overrides the trace level")
   assert(#row[questKeys.objectives][1] == 1 and row[questKeys.objectives][1][1][1] == 104,
     "authored objectives replace the composed base and trace objectives")
+
+  -- Quest relation traces compose as Quest rows between quest traces and authored fixes.
+  local relationRow = {}
+  providers.ForeverQuestRelationTraces.Load = function() return { [id] = relationRow } end
+  traceRow[questKeys.nextQuestInChain] = 201
+  relationRow[questKeys.nextQuestInChain] = 202
+  row = composeQuest()
+  assert(row[questKeys.nextQuestInChain] == 202, "relation trace overrides the quest trace")
+  manualRow[questKeys.nextQuestInChain] = 203
+  row = composeQuest()
+  assert(row[questKeys.nextQuestInChain] == 203, "authored fix overrides the relation trace")
 end
 client.reset()
 print("PASS Forever delta-base " .. (baked and "Baked" or "Source, isolation and precedence"))
