@@ -647,14 +647,15 @@ function ForeverNpcFixes:Load()
             [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
         },
         [256386] = { -- Dokimi
-            [npcKeys.questStarts_add] = {91905},
+            [npcKeys.questStarts_add] = {91899,91900,91901,91902,91904,91905,91906,91907},
+            [npcKeys.questEnds_add] = {91899,91900,91901,91902,91904,91905,91906,91907},
         },
         [256388] = { -- Jornah
             [npcKeys.questEnds_add] = {95819},
         },
         [256390] = { -- Marcy Baker
-            [npcKeys.questStarts_add] = {91901},
-            [npcKeys.questEnds_add] = {91901},
+            [npcKeys.questStarts_add] = {91899,91900,91901,91902,91904,91905,91906,91907},
+            [npcKeys.questEnds_add] = {91899,91900,91901,91902,91904,91905,91906,91907},
         },
         [256391] = { -- Elaine Compton
             [npcKeys.questEnds_add] = {95816},
