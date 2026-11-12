@@ -185,6 +185,10 @@ function ForeverNpcFixes:Load()
         [15736] = { -- Orgrimmar Commendation Officer
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
+        [15991] = { -- Lady Dena Kennedy
+            [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{68,28.9}}},
+            [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
+        },
         [18232] = { -- Field Repair Bot 74A
             [npcKeys.spawns] = {},
         },
