@@ -182,6 +182,9 @@ function ForeverNpcFixes:Load()
         [15736] = { -- Orgrimmar Commendation Officer
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
+        [18232] = { -- Field Repair Bot 74A
+            [npcKeys.spawns] = {},
+        },
         [28687] = { -- Amisi Azuregaze
             [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{18.22,66.63}}},
             [npcKeys.npcFlags] = npcFlags.INNKEEPER,
@@ -618,6 +621,9 @@ function ForeverNpcFixes:Load()
         },
         [254626] = { -- Al'Aketh Assassin
             [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
+        },
+        [254695] = { -- Repair Bot
+            [npcKeys.spawns] = {},
         },
         [255013] = { -- DNT KILL CREDIT
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{56.16,60.59}}},
@@ -1149,6 +1155,9 @@ function ForeverNpcFixes:Load()
             [npcKeys.maxLevel] = 10,
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.03,43.13}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+        },
+        [277849] = { -- Portable Repair Bot
+            [npcKeys.spawns] = {},
         },
         [278166] = { -- Mountaineer Cornelius
             [npcKeys.name] = "Mountaineer Cornelius",
