@@ -162,6 +162,9 @@ function ForeverQuestFixes:Load()
             [questKeys.disabledByQuest] = 968,
             [questKeys.requiredLevel] = 18,
         },
+        [976] = { -- Supplies to Auberdine
+            [questKeys.triggerEnd] = {"Protect Feero Ironhand", {[zoneIDs.ASHENVALE] = {{29.5,16.8}}}},
+        },
         [982] = { -- Deep Ocean, Vast Sea
             [questKeys.breadcrumbs_add] = {97894},
         },
