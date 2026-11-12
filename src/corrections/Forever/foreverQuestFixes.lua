@@ -1913,6 +1913,7 @@ function ForeverQuestFixes:Load()
         [95034] = { -- The Debt
             [questKeys.preQuestSingle] = {96204},
             [questKeys.nextQuestInChain] = 95036,
+            [questKeys.objectives] = {{{259620,nil,Questie.ICON_TYPE_TALK}}}, -- Lumina Windsinger in the Sepulcher
         },
         [95036] = { -- A Moon-Kissed Blade
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
