@@ -140,7 +140,12 @@ config.runtimeFiles = {
   sourceReader = "src/read/source.lua",
   tail = {
     "src/l10n/overlay.lua",
+  },
+  -- Titan Reforged is a Wrath season, so only Wrath loads these.
+  wrathTail = {
     "src/l10n/Titan/zhCN.lua",
+  },
+  finalTail = {
     "src/ui/modeIndicator.lua",
     "src/api.lua",
     "src/support/eraToForever.lua",
@@ -347,6 +352,8 @@ function config.bakedFileList(flavor)
     append(files, { "src/corrections/Sod/sodRequiredRaces.lua" }, seen)
   end
   append(files, config.runtimeFiles.tail, seen)
+  if flavor.name == "Wrath" then append(files, config.runtimeFiles.wrathTail, seen) end
+  append(files, config.runtimeFiles.finalTail, seen)
   return files
 end
 
@@ -436,6 +443,8 @@ function config.sourceFileEntries()
   end
   add("src/l10n/source/_end.lua")
   for _, path in ipairs(config.runtimeFiles.tail) do add(path) end
+  for _, path in ipairs(config.runtimeFiles.wrathTail) do add(path, config.flavorByName.Wrath) end
+  for _, path in ipairs(config.runtimeFiles.finalTail) do add(path) end
   return entries
 end
 

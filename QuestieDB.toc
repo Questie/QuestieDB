@@ -585,7 +585,7 @@ src\l10n\source\_end.lua
 # --- Localization overlay and Titan translations ---
 # Do not filter by client locale: SetLocale() can select another locale.
 src\l10n\overlay.lua
-src\l10n\Titan\zhCN.lua
+src\l10n\Titan\zhCN.lua [AllowLoadGameType wrath]
 
 # --- Source-mode indicator ---
 src\ui\modeIndicator.lua
