@@ -822,10 +822,13 @@ function ForeverQuestFixes:Load()
         [91860] = { -- A Grim Fate
             [questKeys.preQuestSingle] = {91859},
             [questKeys.nextQuestInChain] = 91861,
+            [questKeys.finishedBy] = {nil,{566037}}, -- Charred Remains on Fenris Isle
+            [questKeys.objectives] = {nil,{{566037}}},
         },
         [91861] = { -- Into Fenris Keep
             [questKeys.preQuestSingle] = {91860},
             [questKeys.nextQuestInChain] = 91862,
+            [questKeys.startedBy] = {nil,{566037}}, -- Charred Remains
         },
         [91862] = { -- Lumina Windsinger
             [questKeys.preQuestSingle] = {91861},
@@ -1919,6 +1922,8 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.preQuestSingle] = {95034},
             [questKeys.nextQuestInChain] = 95111,
+            -- Speak with Trevan for notes, then gather materials
+            [questKeys.objectives] = {{{248840,nil,Questie.ICON_TYPE_TALK}},nil,{{267454},{6994},{267361},{272448}}},
         },
         [95059] = { -- Frazzlespark's Crate
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
@@ -1960,6 +1965,7 @@ function ForeverQuestFixes:Load()
         [95125] = { -- Ott's Masterwork
             [questKeys.preQuestSingle] = {95111},
             [questKeys.nextQuestInChain] = 95126,
+            [questKeys.objectives] = {{{3539,nil,Questie.ICON_TYPE_EVENT}}}, -- Watch Ott forge the blade
         },
         [95126] = { -- The Moonsilver Blade
             [questKeys.preQuestSingle] = {95125},
@@ -1967,6 +1973,7 @@ function ForeverQuestFixes:Load()
         },
         [95140] = { -- Old Fire-Eye
             [questKeys.preQuestSingle] = {95126},
+            [questKeys.objectives] = {{{259897}},nil,{{268484}}}, -- Old Fire-Eye + Moonsilver Blade
         },
         [95144] = { -- Overseas Delivery
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
@@ -2418,6 +2425,8 @@ function ForeverQuestFixes:Load()
         [96204] = { -- The Windshaper's Wrath
             [questKeys.preQuestSingle] = {91862},
             [questKeys.nextQuestInChain] = 95034,
+            [questKeys.objectives] = {{{248755,nil,Questie.ICON_TYPE_EVENT}}}, -- Escort Lumina out of Fenris Keep
+            [questKeys.triggerEnd] = {"Escort Lumina Windsinger to safety", {[zoneIDs.SILVERPINE_FOREST] = {{65.7,29.7}}}},
         },
         [96243] = { -- Call of Earth
             [questKeys.requiredLevel] = 4,
