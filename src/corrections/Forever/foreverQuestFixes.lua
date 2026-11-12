@@ -124,6 +124,13 @@ function ForeverQuestFixes:Load()
             [questKeys.exclusiveTo] = {324},
             [questKeys.nextQuestInChain] = 322,
         },
+        [544] = { -- Prison Break In
+            [questKeys.nextQuestInChain] = 0,
+        },
+        [545] = { -- Dalaran Patrols
+            [questKeys.preQuestSingle] = {},
+            [questKeys.preQuestGroup] = {544,93680},
+        },
         [590] = { -- A Rogue's Deal
             [questKeys.objectives] = {{{6784}}},
         },
@@ -198,6 +205,12 @@ function ForeverQuestFixes:Load()
         },
         [1519] = { -- Call of Earth
             [questKeys.exclusiveTo] = {1516,92466},
+        },
+        [1531] = { -- Call of Air
+            [questKeys.exclusiveTo] = {1532,96136},
+        },
+        [1532] = { -- Call of Air
+            [questKeys.exclusiveTo] = {1531,96136},
         },
         [1657] = { -- Stinking Up Southshore
             [questKeys.objectives] = {{{15415,nil,Questie.ICON_TYPE_EVENT}}},
@@ -2375,8 +2388,7 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 95495,
         },
         [95495] = { -- The Hermit Tanner
-            -- Wowhead series: available from Vrang only after Bruised Pride (Bundle of Hides).
-            [questKeys.preQuestSingle] = {95494},
+            [questKeys.preQuestGroup] = {95494,95507},
         },
         [95561] = { -- Apple of My Eye
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
