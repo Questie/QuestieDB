@@ -3197,6 +3197,7 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{254345,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96055,97905,97921,97933,97944,97957},
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.finishedBy] = {{257021}},
         },
         [97969] = { -- Camping 101: Leatherworking
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
