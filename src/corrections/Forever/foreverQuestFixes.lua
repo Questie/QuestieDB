@@ -2400,7 +2400,11 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {96391}, -- check if it also needs 96390. check if 96391 drops without preq
         },
         [96395] = { -- An Ancient Grudge
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- not sure if horde can get this quest
+            [questKeys.startedBy] = {{265002}},
+            [questKeys.finishedBy] = {{265002}},
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.objectives] = {{{261306}}},
+            [questKeys.zoneOrSort] = zoneIDs.THE_HALL_OF_THANES,
         },
         [96408] = { -- A Visitor to Dun Morogh
             [questKeys.breadcrumbForQuestId] = 96392,
