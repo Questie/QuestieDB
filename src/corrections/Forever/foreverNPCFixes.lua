@@ -607,6 +607,9 @@ function ForeverNpcFixes:Load()
         [254344] = { -- Endaria Mistgaze
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{58.13,78.3}}},
         },
+        [254345] = { -- Syriel Nightrain
+            [npcKeys.questEnds_remove] = {97968},
+        },
         [254358] = { -- Veena Vericloud
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{44.71,45.48}}},
         },
@@ -685,6 +688,7 @@ function ForeverNpcFixes:Load()
         },
         [257021] = { -- Halassa Fernbreeze
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.96,43.54}}},
+            [npcKeys.questEnds_add] = {97968},
         },
         [257036] = { -- Baelann Favorbreeze
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{57.63,77.17}}},
