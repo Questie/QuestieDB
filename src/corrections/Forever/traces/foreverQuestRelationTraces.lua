@@ -10,7 +10,7 @@ local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
 -- Each Assumption names the strongest trace observation (independent characters), how many signals agree and the combined score
 -- Commented-out fields are accepted relations this module does not apply; each says why
 -- Sessions aggregated: 911552
--- Generated at: 2026-11-12T19:58:05.654Z
+-- Generated at: 2026-11-12T20:44:54.610Z
 function ForeverQuestRelationTraces:Load()
     local questKeys = QuestieDB.questKeys
 
@@ -772,8 +772,9 @@ function ForeverQuestRelationTraces:Load()
             -- [questKeys.nextQuestInChain] = 205, -- already in QuestieDB; Assumption: turning it in led straight to 205 (749 characters), score 0.950
         -- },
         -- [208] = { -- Big Game Hunter https://wowhead.com/forever/quest=208
+            -- 193 "Panther Mastery" https://wowhead.com/forever/quest=193
             -- 197 "Raptor Mastery" https://wowhead.com/forever/quest=197
-            -- [questKeys.preQuestSingle] = {197}, -- already in QuestieDB; Assumption: everyone who took it had done 197 (838 characters), 4 signals agree, score 0.997
+            -- [questKeys.preQuestGroup] = {193,197}, -- already in QuestieDB; Assumption: everyone who took it had done 193 (838 characters), 4 signals agree, score 0.819, kept below the min score to complete its accepted AND list; everyone who took it had done 197 (838 characters), 4 signals agree, score 0.997
         -- },
         -- [209] = { -- Skullsplitter Tusks https://wowhead.com/forever/quest=209
             -- 189 "Bloodscalp Ears" https://wowhead.com/forever/quest=189
@@ -797,7 +798,8 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [217] = { -- In Defense of the King's Lands https://wowhead.com/forever/quest=217
             -- 263 "In Defense of the King's Lands" https://wowhead.com/forever/quest=263
-            -- [questKeys.preQuestSingle] = {263}, -- already in QuestieDB; Assumption: everyone who took it had done 263 (4985 characters), 3 signals agree, score 0.948
+            -- 267 "The Trogg Threat" https://wowhead.com/forever/quest=267
+            -- [questKeys.preQuestGroup] = {263,267}, -- already in QuestieDB; Assumption: everyone who took it had done 263 (4985 characters), 3 signals agree, score 0.948; offered right after 267 was turned in (27 characters), 3 signals agree, score 0.891, kept below the min score to complete its accepted AND list
         -- },
         -- [218] = { -- The Stolen Journal https://wowhead.com/forever/quest=218
             -- 182 "The Troll Cave" https://wowhead.com/forever/quest=182
@@ -6321,11 +6323,13 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [2858] = { -- Wild Leather Boots https://wowhead.com/forever/quest=2858
             -- 2856 "Wild Leather Vest" https://wowhead.com/forever/quest=2856
-            -- [questKeys.preQuestSingle] = {2856}, -- already in QuestieDB; Assumption: offered right after 2856 was turned in (10 characters), 4 signals agree, score 0.994
+            -- 2857 "Wild Leather Helmet" https://wowhead.com/forever/quest=2857
+            -- [questKeys.preQuestGroup] = {2856,2857}, -- already in QuestieDB; Assumption: offered right after 2856 was turned in (10 characters), 4 signals agree, score 0.994; offered right after 2857 was turned in (2 characters), 4 signals agree, score 0.815, kept below the min score to complete its accepted AND list
         -- },
         -- [2859] = { -- Wild Leather Leggings https://wowhead.com/forever/quest=2859
             -- 2856 "Wild Leather Vest" https://wowhead.com/forever/quest=2856
-            -- [questKeys.preQuestSingle] = {2856}, -- already in QuestieDB; Assumption: offered right after 2856 was turned in (10 characters), 4 signals agree, score 0.994
+            -- 2857 "Wild Leather Helmet" https://wowhead.com/forever/quest=2857
+            -- [questKeys.preQuestGroup] = {2856,2857}, -- already in QuestieDB; Assumption: offered right after 2856 was turned in (10 characters), 4 signals agree, score 0.994; offered right after 2857 was turned in (2 characters), 4 signals agree, score 0.808, kept below the min score to complete its accepted AND list
         -- },
         -- [2860] = { -- Master of the Wild Leather https://wowhead.com/forever/quest=2860
             -- 2858 "Wild Leather Boots" https://wowhead.com/forever/quest=2858
@@ -6890,7 +6894,8 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [3129] = { -- Weapons of Spirit https://wowhead.com/forever/quest=3129
             -- 3127 "Mountain Giant Muisek" https://wowhead.com/forever/quest=3127
-            -- [questKeys.preQuestSingle] = {3127}, -- already in QuestieDB; Assumption: offered right after 3127 was turned in (16 characters), 4 signals agree, score 0.995
+            -- 3128 "Natural Materials" https://wowhead.com/forever/quest=3128
+            -- [questKeys.preQuestGroup] = {3127,3128}, -- already in QuestieDB; Assumption: offered right after 3127 was turned in (16 characters), 4 signals agree, score 0.995; offered right after 3128 was turned in (4 characters), 3 signals agree, score 0.818, kept below the min score to complete its accepted AND list
         -- },
         -- [3130] = { -- Against the Hatecrest https://wowhead.com/forever/quest=3130
             -- 2867 "Return to Feathermoon Stronghold" https://wowhead.com/forever/quest=2867
@@ -8352,8 +8357,9 @@ function ForeverQuestRelationTraces:Load()
             -- [questKeys.nextQuestInChain] = 5385, -- already in QuestieDB; Assumption: turning it in led straight to 5385 (16 characters), score 0.920
         -- },
         -- [5206] = { -- Marauders of Darrowshire https://wowhead.com/forever/quest=5206
+            -- 5168 "Heroes of Darrowshire" https://wowhead.com/forever/quest=5168
             -- 5181 "Villains of Darrowshire" https://wowhead.com/forever/quest=5181
-            -- [questKeys.preQuestSingle] = {5181}, -- already in QuestieDB; Assumption: offered right after 5181 was turned in (2 characters), 3 signals agree, score 0.973
+            -- [questKeys.preQuestGroup] = {5168,5181}, -- already in QuestieDB; Assumption: offered right after 5168 was turned in (1 character), 4 signals agree, score 0.892, kept below the min score to complete its accepted AND list; offered right after 5181 was turned in (2 characters), 3 signals agree, score 0.973
         -- },
         -- [5210] = { -- Brother Carlin https://wowhead.com/forever/quest=5210
             -- 5154 "The Annals of Darrowshire" https://wowhead.com/forever/quest=5154
@@ -9690,13 +9696,15 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [7800] = { -- A Donation of Runecloth https://wowhead.com/forever/quest=7800
             -- 7792 "A Donation of Wool" https://wowhead.com/forever/quest=7792
+            -- 7798 "A Donation of Silk" https://wowhead.com/forever/quest=7798
             -- 7799 "A Donation of Mageweave" https://wowhead.com/forever/quest=7799
-            -- [questKeys.preQuestGroup] = {7792,7799}, -- already in QuestieDB; Assumption: offered right after 7792 was turned in (3 characters), 4 signals agree, score 0.981; offered right after 7799 was turned in (5 characters), 4 signals agree, score 0.964
+            -- [questKeys.preQuestGroup] = {7792,7798,7799}, -- already in QuestieDB; Assumption: offered right after 7792 was turned in (3 characters), 4 signals agree, score 0.981; 7798 was done whenever it was offered (8 characters), 3 signals agree, score 0.886, kept below the min score to complete its accepted AND list; offered right after 7799 was turned in (5 characters), 4 signals agree, score 0.964
         -- },
         -- [7805] = { -- A Donation of Runecloth https://wowhead.com/forever/quest=7805
             -- 7802 "A Donation of Wool" https://wowhead.com/forever/quest=7802
+            -- 7803 "A Donation of Silk" https://wowhead.com/forever/quest=7803
             -- 7804 "A Donation of Mageweave" https://wowhead.com/forever/quest=7804
-            -- [questKeys.preQuestGroup] = {7802,7804}, -- already in QuestieDB; Assumption: offered right after 7802 was turned in (2 characters), 3 signals agree, score 0.995; offered right after 7804 was turned in (7 characters), 4 signals agree, score 0.988
+            -- [questKeys.preQuestGroup] = {7802,7803,7804}, -- already in QuestieDB; Assumption: offered right after 7802 was turned in (2 characters), 3 signals agree, score 0.995; 7803 was done whenever it was offered (11 characters), 2 signals agree, score 0.889, kept below the min score to complete its accepted AND list; offered right after 7804 was turned in (7 characters), 4 signals agree, score 0.988
         -- },
         -- [7806] = { -- Additional Runecloth https://wowhead.com/forever/quest=7806
             -- 7805 "A Donation of Runecloth" https://wowhead.com/forever/quest=7805
@@ -12573,9 +12581,10 @@ function ForeverQuestRelationTraces:Load()
         },
         [95248] = { -- To the Summit of Eternity https://wowhead.com/forever/quest=95248
             -- 92592 "Final Death" https://wowhead.com/forever/quest=92592
+            -- 92609 "Feathers in Flight" https://wowhead.com/forever/quest=92609
             -- 94782 "The Western Post" https://wowhead.com/forever/quest=94782
             -- 95026 "Blight No More" https://wowhead.com/forever/quest=95026
-            [questKeys.preQuestGroup] = {92592,94782,95026}, -- Assumption: 92592 was done whenever it was offered (4 characters), 3 signals agree, score 0.994; 94782 was done whenever it was offered (4 characters), score 0.915; 95026 was done whenever it was offered (4 characters), 4 signals agree, score 0.998
+            [questKeys.preQuestGroup] = {92592,92609,94782,95026}, -- Assumption: 92592 was done whenever it was offered (4 characters), 3 signals agree, score 0.994; 92609 was done whenever it was offered (4 characters), 2 signals agree, score 0.730, kept below the min score to complete its accepted AND list; 94782 was done whenever it was offered (4 characters), score 0.915; 95026 was done whenever it was offered (4 characters), 4 signals agree, score 0.998
         },
         [95260] = { -- Terrors From the Deep https://wowhead.com/forever/quest=95260
             -- 95261 "It Takes Guts" https://wowhead.com/forever/quest=95261
