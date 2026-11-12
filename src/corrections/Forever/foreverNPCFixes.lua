@@ -78,6 +78,9 @@ function ForeverNpcFixes:Load()
         [2332] = { -- Valdred Moray
             [npcKeys.spawns] = {[zoneIDs.SILVERPINE_FOREST] = {{45.05,84.86}}},
         },
+        [2614] = { -- Argent Medic
+            [npcKeys.name] = "Argent Medic",
+        },
         [2756] = { -- Grund Drokda
             [npcKeys.name] = "Grund Drokda",
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{28.67,67.52}}},

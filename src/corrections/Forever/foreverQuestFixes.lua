@@ -260,6 +260,12 @@ function ForeverQuestFixes:Load()
         [6126] = { -- Lessons Anew
             [questKeys.startedBy_add] = {{262560}},
         },
+        [7790] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [8152] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [8356] = { -- Flexing for Nougat
             [questKeys.objectivesText] = {"Do a flex emote at Innkeeper Allison, and in exchange you'll receive Stormwind Nougat!"},
         },
@@ -726,6 +732,21 @@ function ForeverQuestFixes:Load()
         [87760] = { -- Holy Diver
             [questKeys.preQuestGroup] = {4722,4723,4725,4727,4728,4730,4731,4732,4733},
         },
+        [90487] = { -- Ancient Allies
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [90647] = { -- The Staff of the Mountain
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [90750] = { -- More Work?
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [90854] = { -- Leather for Inclement Weather
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [90865] = { -- Eyes of the Watchers
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [90902] = { -- Rediscovering the Light
             [questKeys.preQuestSingle] = {364},
             [questKeys.objectives] = {{{259377,nil,Questie.ICON_TYPE_INTERACT}}},
@@ -748,6 +769,15 @@ function ForeverQuestFixes:Load()
         [91317] = { -- The Tarnished
             [questKeys.preQuestSingle] = {91294},
             [questKeys.objectives] = {nil,nil,{{270435}},nil,{{{259434},259434},{{259433},259433}}},
+        },
+        [91696] = { -- Open Season
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [91697] = { -- Meet the Elders
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [91698] = { -- Barkskin Breakout
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [91723] = { -- Delicate Instruments
             [questKeys.nextQuestInChain] = 91724,
@@ -797,6 +827,9 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {91752},
             [questKeys.nextQuestInChain] = 91772,
         },
+        [91770] = { -- Bark Bite
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [91772] = { -- Shhh! We're Hunting Kobolds
             [questKeys.preQuestSingle] = {91758},
             [questKeys.objectives] = {nil,{{563442}}},
@@ -834,7 +867,13 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {91861},
             [questKeys.nextQuestInChain] = 96204,
         },
+        [91877] = { -- Demon Hunter's Hunter
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [91882] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [91883] = { -- Spear of the Skylord
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [91899] = { -- A Sealed Crate
@@ -908,10 +947,40 @@ function ForeverQuestFixes:Load()
         [91952] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [92008] = { -- Premiere Parts
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [92009] = { -- Crate Expectations
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [92011] = { -- Rubble Rummage
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [92016] = { -- Rootwork
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [92017] = { -- Cleansing Winds
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [92020] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [92065] = { -- Blackmaw Reclamation
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [92066] = { -- The Twin Bears
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [92067] = { -- Feeding Time!
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [92069] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [92100] = { -- Anywhere But Here
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [92102] = { -- Praise
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [92109] = { -- My First Alchemy Set
@@ -923,9 +992,33 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {92109},
             [questKeys.requiredSkill] = {profKeys.ALCHEMY, 1},
         },
+        [92111] = { -- Of Friend and Fur
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [92124] = { -- Book Inventory
             [questKeys.preQuestSingle] = {91741},
             [questKeys.nextQuestInChain] = 91743,
+        },
+        [92147] = { -- Highfeather Helper
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [92169] = { -- Paying Back the Pact
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [92171] = { -- Taking to New Heights
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [92317] = { -- Stolen Life
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [92328] = { -- Siegecraft
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [92329] = { -- Drum Up Trouble
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [92335] = { -- Ashes of the Legion Ascent
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [92401] = { -- A Frightened Request
             [questKeys.triggerEnd] = {"Investigate the disappearance of Edward Heartweaver in the Ruins of Lordaeron.",{[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}}},
@@ -935,6 +1028,9 @@ function ForeverQuestFixes:Load()
         },
         [92422] = { -- The Wrath of Rath'mael
             [questKeys.preQuestSingle] = {99156},
+        },
+        [92433] = { -- Now We're Cooking
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [92460] = { -- Coming of Age
             [questKeys.nextQuestInChain] = 92461,
@@ -1010,6 +1106,9 @@ function ForeverQuestFixes:Load()
         [92485] = { -- A Student of Nature
             [questKeys.preQuestSingle] = {92461},
         },
+        [92500] = { -- A Bit of the Sky
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [92514] = { -- Welcome to Shen'dar Village
             [questKeys.objectives] = {{{251902,nil,Questie.ICON_TYPE_TALK},{254089,nil,Questie.ICON_TYPE_TALK}}},
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
@@ -1038,6 +1137,9 @@ function ForeverQuestFixes:Load()
         [92532] = { -- The Warrior's Path
             [questKeys.preQuestSingle] = {92461},
         },
+        [92533] = { -- Twisted Tools
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [92550] = { -- Havoc in the Highlands
             [questKeys.preQuestSingle] = {92528},
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
@@ -1053,6 +1155,9 @@ function ForeverQuestFixes:Load()
             [questKeys.finishedBy] = {{252383}},
             [questKeys.preQuestGroup] = {92550,93927}, -- 92551 not needed
             [questKeys.nextQuestInChain] = 92700,
+        },
+        [92594] = { -- Kindling, Kinda
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [92595] = { -- The Windshapers
             [questKeys.nextQuestInChain] = 94411,
@@ -1073,6 +1178,9 @@ function ForeverQuestFixes:Load()
         [92598] = { -- The Gift of Skysight
             [questKeys.objectives] = {nil,{{460001}}},
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
+        },
+        [92612] = { -- Aid from Moonglade
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [92640] = { -- Desperate Times
             [questKeys.preQuestSingle] = {94568},
@@ -1210,6 +1318,9 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {92753},
             [questKeys.objectives] = {nil,{{581792}}},
         },
+        [92833] = { -- Ve'han's Fall
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [92834] = { -- Avenged Tenfold
             [questKeys.preQuestSingle] = {92840},
         },
@@ -1276,6 +1387,12 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{252762},{252763},{252765},{253576,nil,Questie.ICON_TYPE_INTERACT}}},
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
+        [92959] = { -- The Dying Ancients
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [92960] = { -- Siphoned Ephemeral Essence
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [93016] = { -- A Brief History Lesson
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
         },
@@ -1298,6 +1415,9 @@ function ForeverQuestFixes:Load()
         [93090] = { -- What Comes Next
             [questKeys.preQuestSingle] = {93836},
             [questKeys.nextQuestInChain] = 95349,
+        },
+        [93127] = { -- Summit Sentries
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [93159] = { -- The Strange Hermit
             [questKeys.objectives] = {{{251684,nil,Questie.ICON_TYPE_TALK}}},
@@ -1324,6 +1444,12 @@ function ForeverQuestFixes:Load()
         [93176] = { -- My Little Friends
             [questKeys.objectives] = {nil,nil,{{213566,nil,Questie.ICON_TYPE_INTERACT},{213568,nil,Questie.ICON_TYPE_INTERACT},{213567,nil,Questie.ICON_TYPE_INTERACT}}},
         },
+        [93197] = { -- Mending Communications
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93269] = { -- Top of the Post
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [93317] = { -- Crab Season
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
@@ -1349,8 +1475,20 @@ function ForeverQuestFixes:Load()
         [93404] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [93406] = { -- Unfrozen Deliveries
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93407] = { -- A Thorn in the Paw
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93422] = { -- Blackthorne Blackout
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [93443] = { -- Lost Shipping Crate
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
+        },
+        [93444] = { -- Bait the Beast
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [93450] = { -- Phantasmal Problems
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
@@ -1363,17 +1501,32 @@ function ForeverQuestFixes:Load()
         [93461] = { -- Welcome to Shen'dar Village
             [questKeys.objectives] = {{{251903,nil,Questie.ICON_TYPE_TALK},{254089,nil,Questie.ICON_TYPE_TALK}}},
         },
+        [93521] = { -- Challenger of the Gods
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [93546] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93547] = { -- A Thorny Solution
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93551] = { -- Praise
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [93552] = { -- Harvesting Windstones
             [questKeys.preQuestSingle] = {92461},
+        },
+        [93567] = { -- Ends Meet
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [93568] = { -- Partially Digested Collar
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
         },
         [93574] = { -- Corpsefeeder's Carapace
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+        },
+        [93584] = { -- Cult Closure
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [93594] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -1382,6 +1535,18 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [93604] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93606] = { -- Not on Squealing Terms
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93609] = { -- Forlorn Necklace
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93615] = { -- Kits and Cats
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93617] = { -- Prey and Predator
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [93644] = { -- Tattered Journal
@@ -1424,6 +1589,15 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {93738},
             [questKeys.objectives] = {{{256247,nil,Questie.ICON_TYPE_TALK}}},
         },
+        [93747] = { -- Violence Into Verdure
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93759] = { -- The Bounty of Nature
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93773] = { -- The Pact
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [93786] = { -- A Message in Blood
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
         },
@@ -1436,6 +1610,18 @@ function ForeverQuestFixes:Load()
         [93797] = { -- Boughs in the Wind
             [questKeys.preQuestSingle] = {93791},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [93825] = { -- Barkbound Blessings
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93826] = { -- Deal Dread to Deadwood
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93827] = { -- Windswept Wards
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93831] = { -- Sweetpaw Jam
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [93835] = { -- Confront Lorthuna
             [questKeys.preQuestSingle] = {93958},
@@ -1452,6 +1638,12 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {92646},
             [questKeys.nextQuestInChain] = 93090,
             [questKeys.objectives] = {{{252476,nil,Questie.ICON_TYPE_TALK}}},
+        },
+        [93848] = { -- Work Well Done
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93925] = { -- Beads for Brerufa
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [93926] = { -- The Western Watch
             [questKeys.preQuestSingle] = {92528},
@@ -1477,6 +1669,9 @@ function ForeverQuestFixes:Load()
         [93951] = { -- A Little Beauty
             [questKeys.preQuestSingle] = {92514,93461},
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+        },
+        [93952] = { -- Balance Through Strength
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [93958] = { -- The Inner Sanctum
             [questKeys.preQuestSingle] = {92947},
@@ -1682,6 +1877,9 @@ function ForeverQuestFixes:Load()
         [94503] = { -- Call of Water
             [questKeys.preQuestSingle] = {94502},
             [questKeys.nextQuestInChain] = 94505,
+        },
+        [94504] = { -- Barkskin Beginnings
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [94505] = { -- Call of Water
             [questKeys.preQuestSingle] = {94503},
@@ -1939,6 +2137,9 @@ function ForeverQuestFixes:Load()
         [94999] = { -- Eyes for the Watchman
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
         },
+        [95006] = { -- Stolen Power
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [95033] = { -- On the Other Side
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
         },
@@ -2092,6 +2293,21 @@ function ForeverQuestFixes:Load()
         [95314] = { -- That Shadowvale Green Elixir
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
+        [95316] = { -- The Experimental Method
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [95317] = { -- Notation, Notation, Notation
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [95318] = { -- Taste of Ash
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [95319] = { -- Crystalline Collection
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [95320] = { -- A Curious Question
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [95321] = { -- Tazzik's Dues
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
         },
@@ -2112,6 +2328,15 @@ function ForeverQuestFixes:Load()
         },
         [95350] = { -- Welcome to Azeroth
             [questKeys.nextQuestInChain] = 93739,
+        },
+        [95378] = { -- The Hydra's Head
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [95379] = { -- A Revenge So Sweet
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [95380] = { -- A Prolific Source
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [95383] = { -- Shipping and Handling
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
@@ -2159,6 +2384,15 @@ function ForeverQuestFixes:Load()
         [95562] = { -- Cut Off the Heads
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
         },
+        [95568] = { -- Seeds for a New Season
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [95569] = { -- Hope for Hatchlings
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [95599] = { -- The Old Key
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [95601] = { -- The Purple Ones
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
         },
@@ -2167,6 +2401,9 @@ function ForeverQuestFixes:Load()
         },
         [95603] = { -- Bats in the Belfry
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
+        },
+        [95611] = { -- Rites of Respect
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [95613] = { -- Keeping the Light On
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
@@ -2186,6 +2423,12 @@ function ForeverQuestFixes:Load()
         [95753] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [95766] = { -- Fine Feathered Friend
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [95769] = { -- Threading a Solution
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [95789] = { -- Shady Saltseers
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
         },
@@ -2194,6 +2437,9 @@ function ForeverQuestFixes:Load()
         },
         [95792] = { -- Clear 'em Out
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+        },
+        [95793] = { -- Stemming the Demon Tide
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [95803] = { -- A Token of Good Faith
             [questKeys.preQuestSingle] = {91317}, -- 91316 is not needed
@@ -2297,6 +2543,9 @@ function ForeverQuestFixes:Load()
         [95999] = { -- WANTED: Incinerator Gar'im
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
+        [96003] = { -- Drawing Down the Malevolent
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [96010] = { -- Fragments of the Pylons
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
         },
@@ -2305,6 +2554,9 @@ function ForeverQuestFixes:Load()
         },
         [96018] = { -- Powering the Pylons
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+        },
+        [96025] = { -- As the Crow Flies
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [96026] = { -- Step Two: More Rock
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
@@ -2395,6 +2647,9 @@ function ForeverQuestFixes:Load()
         [96067] = { -- Rock 'em and Sock 'em
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
         },
+        [96076] = { -- In Demand - Ancient Elven Curiosities
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [96081] = { -- Wound Dressings
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
         },
@@ -2448,8 +2703,14 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.preQuestSingle] = {757},
         },
+        [96131] = { -- An Oldstone But An Old Friend
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [96139] = { -- The Valor Family
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [96145] = { -- Past Wing and Claw
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [96204] = { -- The Windshaper's Wrath
             [questKeys.preQuestSingle] = {91862},
@@ -2457,18 +2718,54 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{248755,nil,Questie.ICON_TYPE_EVENT}}}, -- Escort Lumina out of Fenris Keep
             [questKeys.triggerEnd] = {"Escort Lumina Windsinger to safety", {[zoneIDs.SILVERPINE_FOREST] = {{65.7,29.7}}}},
         },
+        [96209] = { -- The Ancient, Orokai
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [96243] = { -- Call of Earth
             [questKeys.requiredLevel] = 4,
             [questKeys.questLevel] = 4,
             [questKeys.availableUntilCompleted] = 94373,
         },
+        [96246] = { -- Blackmaw Pouches
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96252] = { -- Tarnished Treasures
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96255] = { -- Amalgamated Marrow
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [96261] = { -- The Broodmother
             [questKeys.preQuestSingle] = {96259},
+        },
+        [96262] = { -- Prickly Pinecones
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96296] = { -- Fetid Corruption
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96301] = { -- Power Wash
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96302] = { -- Arch Absolution
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96303] = { -- Memory Mist
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96321] = { -- The Dying God
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96322] = { -- A Revenge Now Bitter
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [96335] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [96337] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96379] = { -- State Secrets
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [96390] = { -- Nip 'Em in the Bud
@@ -2492,6 +2789,18 @@ function ForeverQuestFixes:Load()
         [96408] = { -- A Visitor to Dun Morogh
             [questKeys.breadcrumbForQuestId] = 96392,
             [questKeys.nextQuestInChain] = 96392,
+        },
+        [96435] = { -- A Fitting End
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96550] = { -- Battle Recall
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96558] = { -- Soldier's Solace
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96561] = { -- Last Wishes
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [96604] = { -- The Great Outdoors
             [questKeys.breadcrumbs] = {96652},
@@ -2605,6 +2914,9 @@ function ForeverQuestFixes:Load()
         [96773] = { -- The Coldbringer's Eye
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
         },
+        [96796] = { -- Woods Workshop
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [96873] = { -- A Pain in the Neck
             [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
         },
@@ -2628,6 +2940,48 @@ function ForeverQuestFixes:Load()
         [96899] = { -- Bandarion Keep
             [questKeys.preQuestGroup] = {96897,96898},
             [questKeys.nextQuestInChain] = 96896,
+        },
+        [96912] = { -- Field of Honor: Week 1
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96930] = { -- The Capricious Corvid
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96931] = { -- Heading Up the Mountain
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96939] = { -- The Balance of Life and Death
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96957] = { -- Bone Sweet Bone
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96959] = { -- Blademaster's Bonfires
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96964] = { -- A Clever Creature
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96971] = { -- To Outfox a Demon
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96978] = { -- Violent Venison
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96979] = { -- Sacred Refreshment
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96983] = { -- Yashiro's Windwalk
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [96991] = { -- Trail Assist
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [97009] = { -- Maerion's Misery
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [97010] = { -- Blind Vengeance
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [97029] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -3268,6 +3622,9 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {456},
             [questKeys.objectives] = {nil,nil,nil,nil,nil,{{1259799},{20580}}},
         },
+        [97986] = { -- Argent Arbiter
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [98013] = { -- Swelling Forces
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
@@ -3669,6 +4026,9 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {nil,nil,{{14047}}},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
+        [99204] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [99257] = { -- A Heart of Crystal
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
         },
@@ -3697,6 +4057,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSourceItems] = {287505},
             [questKeys.questFlags] = 8,
             [questKeys.reputationReward] = {{factionIDs.THUNDER_BLUFF, 100}},
+        },
+        [99670] = { -- Return to Jereman
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
     }
 end
