@@ -421,6 +421,7 @@ function ForeverQuestFixes:Load()
         },
         [79091] = { -- Archmage Antonidas: The Unabridged Autobiography
             [questKeys.startedBy] = {{211022,211033},{386691}},
+            [questKeys.finishedBy] = {{211022,211033}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 20,
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -442,6 +443,7 @@ function ForeverQuestFixes:Load()
         },
         [79094] = { -- The Lessons of Ta'zo
             [questKeys.startedBy] = {{211022,211033},{405149}},
+            [questKeys.finishedBy] = {{211022,211033}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 20,
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -638,11 +640,20 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.objectives] = {nil,nil,{{220353}}},
         },
+        [82062] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [82208] = { -- Greater Friend of the Library
             [questKeys.startedBy] = {{211022,211033}},
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.objectivesText] = {"You will need to hand in 25 books to complete this quest, however you can hand 1 in at any time."},
             [questKeys.preQuestSingle] = {79536},
+        },
+        [84151] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [84319] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [84395] = { -- Undead Potatoes
             [questKeys.name] = "Undead Potatoes",
@@ -728,12 +739,24 @@ function ForeverQuestFixes:Load()
         [86747] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [86752] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [86758] = { -- Twisting the Knife
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [86776] = { -- Ingredients for the Forge
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredSkill] = {profKeys.MINING, 1},
+        },
+        [86799] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [86804] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [86925] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [87288] = { -- Soft Saber Pelts
             [questKeys.reputationReward] = {{factionIDs.DARNASSUS, 100},{factionIDs.GNOMEREGAN_EXILES, 25},{factionIDs.ALLIANCE, 25},{factionIDs.IRONFORGE, 25},{factionIDs.STORMWIND, 25}},
@@ -782,6 +805,9 @@ function ForeverQuestFixes:Load()
         [91317] = { -- The Tarnished
             [questKeys.preQuestSingle] = {91294},
             [questKeys.objectives] = {nil,nil,{{270435}},nil,{{{259434},259434},{{259433},259433}}},
+        },
+        [91564] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [91696] = { -- Open Season
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -988,6 +1014,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [92069] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [92070] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [92100] = { -- Anywhere But Here
@@ -1539,6 +1568,9 @@ function ForeverQuestFixes:Load()
         [93568] = { -- Partially Digested Collar
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
         },
+        [93572] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [93574] = { -- Corpsefeeder's Carapace
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
         },
@@ -1576,6 +1608,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [93685] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93686] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [93735] = { -- The Broken Construct
@@ -1637,7 +1672,19 @@ function ForeverQuestFixes:Load()
         [93827] = { -- Windswept Wards
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [93828] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93830] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [93831] = { -- Sweetpaw Jam
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93833] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [93834] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [93835] = { -- Confront Lorthuna
@@ -2924,6 +2971,9 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{3067,nil,Questie.ICON_TYPE_TALK}}},
             [questKeys.exclusiveTo] = {96626,96629,96634,96646,96655,96658},
         },
+        [96666] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [96770] = { -- The Witch Doctor's Head
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
         },
@@ -3035,6 +3085,12 @@ function ForeverQuestFixes:Load()
         [97130] = { -- Ancient Gurubashi Secrets
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
         },
+        [97176] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [97178] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [97220] = { -- Philmor's Favor
             [questKeys.nextQuestInChain] = 97222,
         },
@@ -3088,6 +3144,9 @@ function ForeverQuestFixes:Load()
         },
         [97263] = { -- Your Package Has Arrived
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [97271] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [97275] = { -- Whuut's the Rush
             [questKeys.preQuestSingle] = {97242},
@@ -3170,6 +3229,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
         },
         [97821] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [97883] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [97894] = { -- Business in Auberdine
@@ -3854,6 +3916,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredLevel] = 40,
             [questKeys.questLevel] = 49,
         },
+        [98898] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [99046] = { -- The Lost Runner
             [questKeys.breadcrumbForQuestId] = 99047,
             [questKeys.nextQuestInChain] = 99047,
@@ -4061,6 +4126,9 @@ function ForeverQuestFixes:Load()
         [99204] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [99233] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [99257] = { -- A Heart of Crystal
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
         },
@@ -4089,6 +4157,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSourceItems] = {287505},
             [questKeys.questFlags] = 8,
             [questKeys.reputationReward] = {{factionIDs.THUNDER_BLUFF, 100}},
+        },
+        [99435] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [99670] = { -- Return to Jereman
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
