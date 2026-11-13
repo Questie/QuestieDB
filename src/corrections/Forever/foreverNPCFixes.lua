@@ -509,6 +509,9 @@ function ForeverNpcFixes:Load()
         [252390] = { -- Antelariaa Cloudgaze
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{63.02,77.81}}},
         },
+        [252448] = { -- Alvarion Windfield
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{62.1,73.34}}},
+        },
         [252449] = { -- Iallion Featherfall
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{58.96,75.55}}},
         },
@@ -567,6 +570,9 @@ function ForeverNpcFixes:Load()
         },
         [253511] = { -- Al'Aketh Pillager
             [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
+        },
+        [253576] = { -- Hyusaa Quickbreeze
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{63.79,50.54}}},
         },
         [253622] = { -- Commander Haalien
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.53,36.32}}},
@@ -652,6 +658,9 @@ function ForeverNpcFixes:Load()
         [255964] = { -- Fallen Necromancer
             [npcKeys.spawns] = {[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.RUINS_OF_LORDAERON,
+        },
+        [256247] = { -- Belathaan Brightwish
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.94,56.93}}},
         },
         [256386] = { -- Dokimi
             [npcKeys.questStarts_add] = {91899,91900,91901,91902,91904,91905,91906,91907},
