@@ -481,6 +481,9 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.MULGORE] = {{59.02,46.41}}},
             [objectKeys.zoneID] = zoneIDs.MULGORE,
         },
+        [676059] = { -- Ancient Hilt
+            [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{58.16,24.01}}},
+        },
         [693669] = { -- Weapon Piece
             [objectKeys.spawns] = {[zoneIDs.DUROTAR] = {{60.11,44.8}}},
         },
