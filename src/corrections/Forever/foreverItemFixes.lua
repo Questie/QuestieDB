@@ -34,6 +34,12 @@ function ForeverItemFixes:Load()
         [4871] = { -- Searing Collar
             [itemKeys.npcDrops_remove] = {232994},
         },
+        [5078] = { -- Theramore Medal
+            [itemKeys.npcDrops_remove] = {261485},
+        },
+        [5085] = { -- Bristleback Quilboar Tusk
+            [itemKeys.npcDrops_remove] = {268624},
+        },
         [5220] = { -- Gnarlpine Fang
             [itemKeys.npcDrops] = {2006,2007,2008,2009,2010,2011,2012,2013,2014,2152,7235,14428,14429},
         },

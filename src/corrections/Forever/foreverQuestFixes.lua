@@ -1440,7 +1440,11 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [93161] = { -- The Ancient Hilt
-            [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
+            [questKeys.nextQuestInChain] = 97029,
         },
         [93162] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -2995,8 +2999,12 @@ function ForeverQuestFixes:Load()
         [97010] = { -- Blind Vengeance
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
-        [97029] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        [97029] = { -- Eluvi'ana
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = -1,
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.preQuestSingle] = {93161},
+            [questKeys.zoneOrSort] = zoneIDs.ZEPHRAS_ISLE,
         },
         [97065] = { -- Tip the Scales - Keefer's Angelfish
             [questKeys.finishedBy_add] = {{267806}},
@@ -3833,6 +3841,10 @@ function ForeverQuestFixes:Load()
         },
         [98738] = { -- Blessings of the Great Windborne Cat Spirit
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+        },
+        [98890] = { -- Conflict at Darkspear Islands
+            [questKeys.requiredLevel] = 40,
+            [questKeys.questLevel] = 49,
         },
         [99046] = { -- The Lost Runner
             [questKeys.breadcrumbForQuestId] = 99047,
