@@ -1047,20 +1047,20 @@ function ForeverQuestFixes:Load()
         },
         [92460] = { -- Coming of Age
             [questKeys.nextQuestInChain] = 92461,
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92461] = { -- Harmony in Balance
             [questKeys.preQuestSingle] = {92460},
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92462] = { -- Infestation Investigation
             [questKeys.preQuestSingle] = {92460},
             [questKeys.nextQuestInChain] = 92463,
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92463] = { -- The Cirrusfly Queen
             [questKeys.preQuestSingle] = {92462},
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92464] = { -- Elemental Unrest
             [questKeys.availableUntilCompleted] = 92465,
@@ -1091,7 +1091,7 @@ function ForeverQuestFixes:Load()
         },
         [92472] = { -- The Next Step
             [questKeys.preQuestSingle] = {92470},
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92473] = { -- Aggressive Encroachment
             [questKeys.preQuestSingle] = {92471},
@@ -1124,7 +1124,7 @@ function ForeverQuestFixes:Load()
         },
         [92514] = { -- Welcome to Shen'dar Village
             [questKeys.objectives] = {{{251902,nil,Questie.ICON_TYPE_TALK},{254089,nil,Questie.ICON_TYPE_TALK}}},
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [92515] = { -- The Problem With Prideclaws
             [questKeys.preQuestSingle] = {92514,93461},
@@ -1132,7 +1132,7 @@ function ForeverQuestFixes:Load()
         },
         [92516] = { -- Hippogryph Harrassment
             [questKeys.preQuestSingle] = {92514,93461},
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92517] = { -- The Criminal Element
             [questKeys.preQuestSingle] = {92514,93461},
@@ -1155,14 +1155,14 @@ function ForeverQuestFixes:Load()
         },
         [92550] = { -- Havoc in the Highlands
             [questKeys.preQuestSingle] = {92528},
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92551] = { -- Stolen Supplies
             [questKeys.preQuestSingle] = {92528},
         },
         [92553] = { -- Restocking the Larders
             [questKeys.preQuestSingle] = {92514,93461},
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92579] = { -- To Valanaar
             [questKeys.finishedBy] = {{252383}},
@@ -1666,7 +1666,7 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {92528},
             [questKeys.nextQuestInChain] = 93927,
             [questKeys.objectives] = {{{252155,nil,Questie.ICON_TYPE_INTERACT}}},
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [93927] = { -- A Last Request
             [questKeys.preQuestSingle] = {93926},
@@ -1685,7 +1685,7 @@ function ForeverQuestFixes:Load()
         },
         [93951] = { -- A Little Beauty
             [questKeys.preQuestSingle] = {92514,93461},
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [93952] = { -- Balance Through Strength
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -2082,7 +2082,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [94897] = { -- The Fate of a Loved One
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [94911] = { -- Child of Nature
             [questKeys.requiredClasses] = classIDs.DRUID,
@@ -2583,6 +2583,8 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSpell] = -1229432, -- Camp Tent
             [questKeys.objectives] = {{{1466,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {97906,97922,97934,97946,97958,97969},
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredClasses] = classIDs.NONE,
         },
         [96044] = { -- Camping 101: Blacksmithing
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
@@ -2646,6 +2648,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSpell] = -1230656, -- Reagent Bot
             [questKeys.objectives] = {{{1702,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {97902,97918,97930,97941,97954,98285,98287},
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [96059] = { -- Camping 101: Enchanting
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
@@ -2685,7 +2688,7 @@ function ForeverQuestFixes:Load()
             [questKeys.breadcrumbs] = {96638},
             [questKeys.objectives] = {nil,{{460003},{460003}}},
             [questKeys.exclusiveTo] = {95998,96604,96605,96606,96607,96608},
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [96102] = { -- Camping 101: Tailoring
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
@@ -3261,6 +3264,8 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSpell] = -1230171, -- Sharpening Wheel
             [questKeys.objectives] = {{{514,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96044,97900,97928,97939,97952,97964},
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredClasses] = classIDs.NONE,
         },
         [97917] = { -- Camping 101: Enchanting
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
@@ -3324,6 +3329,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSpell] = -1263425, -- Faction Banner
             [questKeys.objectives] = {{{1103,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96057,96102,97937,97950,97961,97972,97973},
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [97926] = { -- Making Do
             [questKeys.preQuestSingle] = {97914},
@@ -3709,6 +3715,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSpell] = -1230643, -- Enchanted Lute
             [questKeys.objectives] = {{{257020,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96059,97901,97917,97929,97940,97953,98286},
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [98285] = { -- Camping 101: Engineering
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
@@ -3716,6 +3723,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredSpell] = -1230656, -- Reagent Bot
             [questKeys.objectives] = {{{251684,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.exclusiveTo] = {96058,97902,97918,97930,97941,97954,98287},
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [98286] = { -- Camping 101: Enchanting
             [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
