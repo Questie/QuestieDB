@@ -1437,7 +1437,7 @@ function ForeverQuestFixes:Load()
         },
         [93160] = { -- The Forest's Bounty
             [questKeys.preQuestSingle] = {93159},
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [93161] = { -- The Ancient Hilt
             [questKeys.requiredLevel] = 1,
@@ -1840,7 +1840,7 @@ function ForeverQuestFixes:Load()
         },
         [94486] = { -- Feathers for Binding
             [questKeys.preQuestSingle] = {94484,94493},
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [94487] = { -- Unwanted and Unworthy
             [questKeys.preQuestSingle] = {94484,94493},
@@ -1851,7 +1851,7 @@ function ForeverQuestFixes:Load()
         [94489] = { -- The Wounds of Betrayal
             [questKeys.preQuestGroup] = {94485,94486,94487},
             [questKeys.objectives] = {{{258130,nil,Questie.ICON_TYPE_TALK}},nil,nil,nil,{{{258134,258137,258138,258275,258277,258288,258289},258134,nil,Questie.ICON_TYPE_INTERACT}}},
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [94490] = { -- Ripped Missive
             [questKeys.preQuestGroup] = {94485,94486,94487},
@@ -1914,7 +1914,7 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {92644},
             [questKeys.nextQuestInChain] = 92640,
             [questKeys.objectives] = {{{252476,nil,Questie.ICON_TYPE_TALK}}},
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [94614] = { -- Freshwater Fiends
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
