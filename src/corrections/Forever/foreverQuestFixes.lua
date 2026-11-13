@@ -1230,7 +1230,7 @@ function ForeverQuestFixes:Load()
         },
         [92682] = { -- Make Yourself Useful
             [questKeys.preQuestSingle] = {92679},
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92683] = { -- Flutterfly Dust
             [questKeys.preQuestSingle] = {92679},
@@ -1243,7 +1243,7 @@ function ForeverQuestFixes:Load()
         [92685] = { -- The Hills Have Eyes
             [questKeys.preQuestGroup] = {92682,92683,92684},
             [questKeys.nextQuestInChain] = 92693,
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92693] = { -- Standing Our Ground
             [questKeys.preQuestSingle] = {92685},
@@ -1468,7 +1468,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [93317] = { -- Crab Season
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [93318] = { -- WANTED: Vulgara the Insatiable
             [questKeys.preQuestSingle] = {92514,93461},
@@ -1478,7 +1478,7 @@ function ForeverQuestFixes:Load()
         },
         [93320] = { -- Tower Defense
             [questKeys.preQuestSingle] = {92860,92871},
-            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [93341] = { -- Forlorn Gardens
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
