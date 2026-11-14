@@ -168,6 +168,8 @@ function ForeverNpcFixes:Load()
         },
         [14242] = { -- Sulhasa
             [npcKeys.name] = "Sulhasa",
+            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{47.93,77.62}}},
+            [npcKeys.zoneID] = zoneIDs.THE_BARRENS,
         },
         [14624] = { -- Master Smith Burninate <The Thorium Brotherhood>
             [npcKeys.npcFlags] = npcFlags.REPAIR + npcFlags.VENDOR, -- base data adds a wrong auctioneer bit
@@ -232,6 +234,9 @@ function ForeverNpcFixes:Load()
         },
         [205729] = { -- Boarton Shadetotem
             [npcKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{39.44,65.82}}},
+        },
+        [209797] = { -- Bruuz
+            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{65.89,40.03}}},
         },
         [211022] = { -- Owen Thadd
             [npcKeys.spawns] = {[zoneIDs.UNDERCITY] = {{73.4,33}}}, -- TBD
@@ -837,6 +842,9 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{57.02,76.46}}},
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BATTLEMASTER,
         },
+        [264082] = { -- Broodmother Valraxx
+            [npcKeys.spawns] = {[zoneIDs.MULGORE] = {{33.74,6.77}}},
+        },
         [264936] = { -- Earthseer Farsen
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{64.87,58.47}}},
         },
@@ -873,6 +881,9 @@ function ForeverNpcFixes:Load()
         },
         [267009] = { -- Hadric Harlson
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{65.93,61.13}}},
+        },
+        [267307] = { -- Chol'aruk
+            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{57.53,27.06}}},
         },
         [267324] = { -- Margaret Weaver
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{32.6,65.81}}},
@@ -939,6 +950,12 @@ function ForeverNpcFixes:Load()
         },
         [268605] = { -- Kuramaa
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.44,68.75}}},
+        },
+        [268622] = { -- Encroaching Soldier
+            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{49.15,76.99},{49.08,76.96}}},
+        },
+        [268623] = { -- Outraged Pillager
+            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{49.11,76.97}}},
         },
         [268679] = { -- Brazier of Eternal Flame
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{58.35,78.84}}},
@@ -1042,7 +1059,7 @@ function ForeverNpcFixes:Load()
             [npcKeys.zoneID] = zoneIDs.UNDERCITY,
         },
         [271866] = { -- Night Watch Guard
-            [npcKeys.spawns] = {[zoneIDs.DUSKWOOD] = {{45.58,79.16},{17,54.75}}}, -- todo add the other 5 spawns
+            [npcKeys.spawns] = {[zoneIDs.DUSKWOOD] = {{20.9,34.4},{23.7,33.4},{21.8,72.6},{30.0,67.4},{47.8,59.4},{66.1,34.0},{68.8,69.7},{45.58,79.16},{17,54.75}}}, -- todo polish the 1 digit spawns
             [npcKeys.questStarts_add] = {98372},
             [npcKeys.friendlyToFaction] = "AH",
         },

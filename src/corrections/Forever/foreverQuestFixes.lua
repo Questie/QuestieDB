@@ -2801,6 +2801,9 @@ function ForeverQuestFixes:Load()
         [96255] = { -- Amalgamated Marrow
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [96259] = { -- Defending the Dead
+            [questKeys.nextQuestInChain] = 96261,
+        },
         [96261] = { -- The Broodmother
             [questKeys.preQuestSingle] = {96259},
         },
