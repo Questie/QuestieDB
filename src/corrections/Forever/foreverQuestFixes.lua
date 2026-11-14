@@ -667,6 +667,12 @@ function ForeverQuestFixes:Load()
         [84319] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [84332] = { -- A Thane's Gratitude
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [84377] = { -- End of the Dark Horde
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [84395] = { -- Undead Potatoes
             [questKeys.name] = "Undead Potatoes",
             [questKeys.startedBy] = {{5497,7825},{463213}},
@@ -739,6 +745,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.objectives] = {nil,nil,{{228141}}},
         },
+        [84414] = { -- Send Me On Me Way
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [86577] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
@@ -784,12 +793,6 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [90647] = { -- The Staff of the Mountain
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
-        },
-        [90750] = { -- More Work?
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
-        },
-        [90854] = { -- Leather for Inclement Weather
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [90865] = { -- Eyes of the Watchers
@@ -1037,6 +1040,9 @@ function ForeverQuestFixes:Load()
         [92070] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [92094] = { -- Rocket Gnomes
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [92100] = { -- Anywhere But Here
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
@@ -1088,9 +1094,6 @@ function ForeverQuestFixes:Load()
         },
         [92422] = { -- The Wrath of Rath'mael
             [questKeys.preQuestSingle] = {99156},
-        },
-        [92433] = { -- Now We're Cooking
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [92460] = { -- Coming of Age
             [questKeys.nextQuestInChain] = 92461,
@@ -1699,6 +1702,9 @@ function ForeverQuestFixes:Load()
         [93831] = { -- Sweetpaw Jam
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [93832] = { -- Shatter the Stonewatchers
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [93833] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
@@ -2249,6 +2255,12 @@ function ForeverQuestFixes:Load()
         [95065] = { -- Fishin' Time
             [questKeys.objectives] = {nil,nil,{{6529},{6530}}},
         },
+        [95107] = { -- Deeproar Down
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [95108] = { -- Mystic Mix
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [95111] = { -- An Underrated Talent
             [questKeys.preQuestSingle] = {95036},
             [questKeys.nextQuestInChain] = 95125,
@@ -2353,6 +2365,9 @@ function ForeverQuestFixes:Load()
         },
         [95267] = { -- The Monster Surfaces
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+        },
+        [95273] = { -- Water of Hyjal
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [95288] = { -- Smuggler's Paradise
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
