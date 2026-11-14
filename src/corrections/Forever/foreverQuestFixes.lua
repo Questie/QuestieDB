@@ -2436,10 +2436,13 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
         },
         [95494] = { -- Bruised Pride and Lion Hides
-            [questKeys.nextQuestInChain] = 95495,
+            [questKeys.nextQuestInChain] = 0,
         },
         [95495] = { -- The Hermit Tanner
             [questKeys.preQuestGroup] = {95494,95507},
+        },
+        [95507] = { -- Vrang's Game
+            [questKeys.nextQuestInChain] = 0,
         },
         [95561] = { -- Apple of My Eye
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
