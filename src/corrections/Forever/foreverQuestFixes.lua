@@ -212,6 +212,12 @@ function ForeverQuestFixes:Load()
         [1532] = { -- Call of Air
             [questKeys.exclusiveTo] = {1531,96136},
         },
+        [1578] = { -- Supplying the Front
+            [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 25},
+        },
+        [1618] = { -- Gearing Redridge
+            [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 35},
+        },
         [1657] = { -- Stinking Up Southshore
             [questKeys.objectives] = {{{15415,nil,Questie.ICON_TYPE_EVENT}}},
         },
@@ -2440,9 +2446,14 @@ function ForeverQuestFixes:Load()
         },
         [95495] = { -- The Hermit Tanner
             [questKeys.preQuestGroup] = {95494,95507},
+            [questKeys.nextQuestInChain] = 95621,
         },
         [95507] = { -- Vrang's Game
             [questKeys.nextQuestInChain] = 0,
+        },
+        [95508] = { -- Unwelcome Guests
+            [questKeys.preQuestSingle] = {95621},
+            [questKeys.objectives] = {{{261367}}},
         },
         [95561] = { -- Apple of My Eye
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
@@ -2479,6 +2490,7 @@ function ForeverQuestFixes:Load()
         },
         [95621] = { -- Trouble in the Valley
             [questKeys.preQuestSingle] = {95495},
+            [questKeys.nextQuestInChain] = 95508,
         },
         [95642] = { -- Abominable Magics
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead

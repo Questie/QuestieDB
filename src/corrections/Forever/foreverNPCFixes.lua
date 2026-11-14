@@ -95,6 +95,10 @@ function ForeverNpcFixes:Load()
         [3399] = { -- Zamja
             [npcKeys.questEnds_remove] = {97246},
         },
+        [3476] = { -- Isha Awak
+            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{63.55,53.94},{65.49,47.18},{64.14,50.87}}},
+            [npcKeys.waypoints] = {},
+        },
         [3519] = { -- Sentinel Arynia Cloudsbreak
             [npcKeys.questStarts_remove] = {940},
         },
@@ -177,6 +181,9 @@ function ForeverNpcFixes:Load()
         [14624] = { -- Master Smith Burninate <The Thorium Brotherhood>
             [npcKeys.npcFlags] = npcFlags.REPAIR + npcFlags.VENDOR, -- base data adds a wrong auctioneer bit
         },
+        [14842] = { -- Melnan Darkstone <Darkmoon Faire Barker>
+            [npcKeys.waypoints] = {[zoneIDs.IRONFORGE] = {{{31.64,78.36},{29.65,75.25},{27.58,71.68},{24.97,66.97},{23.38,62.81},{22.38,58.13},{21.78,54.25},{21.56,50.41},{21.48,47.63},{21.56,43.81},{21.73,40.75},{22.3,36.8},{22.9,34.03},{24.24,34.15},{24.76,35.01},{24.34,37.9},{24.49,39.16},{24.54,40.85},{24.19,44.54},{23.81,47.81},{24.47,52.25},{25.04,56.1},{25.33,58.08},{26.3,60.84},{28.78,65.23},{30.82,68.81},{32.21,71.26},{33.39,73.34},{34.68,75.28},{36.0,76.98},{37.81,78.22},{40.32,79.37},{41.78,79.98},{42.85,80.12},{44.2,80.44},{46.47,80.61},{47.45,80.77},{49.36,81.07},{50.27,81.22},{50.53,83.71},{49.19,84.47},{46.53,84.65},{43.28,84.31},{41.55,83.87},{38.55,82.34},{36.72,81.3},{34.22,79.88},{31.64,78.36}}}},
+        },
         [15350] = { -- Horde Warbringer
             [npcKeys.spawns_add] = {[zoneIDs.THE_BARRENS] = {{64.77,35.1}}},
         },
@@ -239,7 +246,7 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{39.44,65.82}}},
         },
         [209797] = { -- Bruuz
-            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{65.89,40.03}}},
+            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{65.32,39.24}}},
         },
         [211022] = { -- Owen Thadd
             [npcKeys.spawns] = {[zoneIDs.UNDERCITY] = {{73.4,33}}}, -- TBD
@@ -805,6 +812,15 @@ function ForeverNpcFixes:Load()
         [261319] = { -- Durgen Dirgehammer
             [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
+        },
+        [261366] = { -- Walton
+            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{42.02,11.45}}},
+        },
+        [261367] = { -- Terry Longdrink
+            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{41.89,11.4}}},
+        },
+        [262119] = { -- Corporal Adamore
+            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{41.8,15.76}}},
         },
         [263349] = { -- James Battlewing
             [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{81.19,38.74}}},
