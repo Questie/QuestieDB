@@ -29,6 +29,18 @@ fixture.write(path, {
     [6562] = {
       [quest.reputationReward] = {{530, 25}, {2787, 100}},
     },
+    [93226] = {
+      [quest.requiredMinRep] = {93, 0},
+    },
+    [93227] = {
+      [quest.requiredMinRep] = {92, 0},
+    },
+    [94872] = {
+      [quest.requiredMinRep] = {93, 0},
+    },
+    [94873] = {
+      [quest.requiredMinRep] = {92, 0},
+    },
     [90902] = {
       [quest.name] = "Rediscovering the Light",
       [quest.requiredRaces] = 16,

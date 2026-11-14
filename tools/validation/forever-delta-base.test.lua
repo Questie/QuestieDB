@@ -56,6 +56,13 @@ local function witness(db)
   -- reviewed zero survives alongside the Mage mask.
   assert(db.Quest.requiredRaces(97286) == 0 and db.Quest.requiredClasses(97286) == 128,
     "Research Access stays open to every race and keeps its Mage restriction")
+  -- Buying Friendship text requires Neutral (value 0) standing with the matching clan.
+  local gelkisRep, magramRep = db.Quest.requiredMinRep(93227), db.Quest.requiredMinRep(93226)
+  assert(gelkisRep and gelkisRep[1] == 92 and gelkisRep[2] == 0, "Gelkis turn-in needs Neutral Gelkis")
+  assert(magramRep and magramRep[1] == 93 and magramRep[2] == 0, "Magram turn-in needs Neutral Magram")
+  local hordeMagramRep, hordeGelkisRep = db.Quest.requiredMinRep(94872), db.Quest.requiredMinRep(94873)
+  assert(hordeMagramRep and hordeMagramRep[1] == 93 and hordeMagramRep[2] == 0, "Horde Magram turn-in needs Neutral Magram")
+  assert(hordeGelkisRep and hordeGelkisRep[1] == 92 and hordeGelkisRep[2] == 0, "Horde Gelkis turn-in needs Neutral Gelkis")
   for _, id in ipairs({ 92534, 94901, 3911 }) do
     assert(not db.Quest.Exists(id) and not db.Quest.GetAllIds(true)[id], "held quest leaked: " .. id)
   end
