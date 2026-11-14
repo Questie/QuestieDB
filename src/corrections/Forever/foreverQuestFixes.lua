@@ -1532,6 +1532,12 @@ function ForeverQuestFixes:Load()
         [93197] = { -- Mending Communications
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [93226] = { -- Buying Friendship: Magram
+            [questKeys.requiredMinRep] = {factionIDs.MAGRAM_CLAN_CENTAUR, 0},
+        },
+        [93227] = { -- Buying Friendship: Gelkis
+            [questKeys.requiredMinRep] = {factionIDs.GELKIS_CLAN_CENTAUR, 0},
+        },
         [93269] = { -- Top of the Post
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
@@ -2142,6 +2148,12 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {94863},
             [questKeys.objectives] = {{{822,nil,Questie.ICON_TYPE_INTERACT}}},
             [questKeys.nextQuestInChain] = 94793,
+        },
+        [94872] = { -- Buying Friendship: Magram
+            [questKeys.requiredMinRep] = {factionIDs.MAGRAM_CLAN_CENTAUR, 0},
+        },
+        [94873] = { -- Buying Friendship: Gelkis
+            [questKeys.requiredMinRep] = {factionIDs.GELKIS_CLAN_CENTAUR, 0},
         },
         [94884] = { -- An Unsettling Discovery
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
