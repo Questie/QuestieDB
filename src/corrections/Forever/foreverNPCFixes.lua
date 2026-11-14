@@ -104,6 +104,9 @@ function ForeverNpcFixes:Load()
         [3605] = { -- Nadyia Maneweaver
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.TRAINER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
+        [3682] = { -- Vrang Wildgore
+            [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{43.77,12.17}}},
+        },
         [3685] = { -- Harb Clawhoof <Kodo Mounts>
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
