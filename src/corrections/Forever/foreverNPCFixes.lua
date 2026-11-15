@@ -248,6 +248,9 @@ function ForeverNpcFixes:Load()
         [209797] = { -- Bruuz
             [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{65.32,39.24}}},
         },
+        [210845] = { -- Jixo Madrocket
+            [npcKeys.spawns] = {[zoneIDs.STONETALON_MOUNTAINS] = {{59.19,62.41}}},
+        },
         [211022] = { -- Owen Thadd
             [npcKeys.spawns] = {[zoneIDs.UNDERCITY] = {{73.4,33}}}, -- TBD
             [npcKeys.questStarts_add] = {78150,79536,82208,78124,78127,78142,78143,78145,78146,78147,78148,78149,79091,79092,79093,79094,79095,79096,79097,79535,79947,79948,79949,79950,79951,79952,79953,81947,81949,81951,81952,81953,81954,81955,81956,97286},
@@ -805,6 +808,25 @@ function ForeverNpcFixes:Load()
         [259431] = { -- Rudolph Gelhardt
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{11.51,64.18}}},
         },
+        [260325] = { -- Shadetooth
+            [npcKeys.spawns] = {[zoneIDs.EXCAVATION_SITE_WETLANDS] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [260396] = { -- Whispering Horror
+            [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{8.69,60.07}}},
+        },
+        [260800] = { -- Thicket Lurker
+            [npcKeys.spawns] = {[zoneIDs.EXCAVATION_SITE_WETLANDS] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [260801] = { -- Thicket Hunter
+            [npcKeys.spawns] = {[zoneIDs.EXCAVATION_SITE_WETLANDS] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [271732] = { -- Thicket Stalker
+            [npcKeys.spawns] = {[zoneIDs.EXCAVATION_SITE_WETLANDS] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
         [261306] = { -- Faldrim Anvilmar
             [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
@@ -1151,6 +1173,9 @@ function ForeverNpcFixes:Load()
         },
         [276009] = { -- Avala
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{58.34,42.06}}},
+        },
+        [276067] = { -- Angus Hammerhand
+            [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{21.16,45.72}}},
         },
         [276170] = { -- Belanaa Windveil
             [npcKeys.questStarts_add] = {99191,99192,99193,99194,99195},
