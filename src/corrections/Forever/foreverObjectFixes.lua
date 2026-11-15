@@ -15,6 +15,10 @@ function ForeverObjectFixes:Load()
         [61934] = { -- Brazier of the Dormant Flame
             [objectKeys.spawns_add] = {[zoneIDs.LOCH_MODAN] = {{31.79,64.52}}},
         },
+        [164690] = { -- Krom'zar's Banner
+            [objectKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{44.53,28.15}}},
+            [objectKeys.zoneID] = zoneIDs.THE_BARRENS,
+        },
         [179437] = { -- Wanted: ORCS!
             [objectKeys.spawns] = {[zoneIDs.ALTERAC_VALLEY] = {{43.27,16.52}}},
             [objectKeys.zoneID] = zoneIDs.ALTERAC_VALLEY,

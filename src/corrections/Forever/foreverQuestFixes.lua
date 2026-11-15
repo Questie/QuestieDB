@@ -937,6 +937,7 @@ function ForeverQuestFixes:Load()
         },
         [91901] = { -- A Sealed Crate
             [questKeys.questLevel] = 60,
+            [questKeys.requiredLevel] = 1,
             [questKeys.startedBy] = {{256386,256390}},
             [questKeys.finishedBy] = {{256386,256390}},
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -944,6 +945,7 @@ function ForeverQuestFixes:Load()
         },
         [91902] = { -- A Sealed Crate
             [questKeys.questLevel] = 60,
+            [questKeys.requiredLevel] = 1,
             [questKeys.startedBy] = {{256386,256390}},
             [questKeys.finishedBy] = {{256386,256390}},
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -951,6 +953,7 @@ function ForeverQuestFixes:Load()
         },
         [91904] = { -- A Sealed Crate
             [questKeys.questLevel] = 60,
+            [questKeys.requiredLevel] = 1,
             [questKeys.startedBy] = {{256386,256390}},
             [questKeys.finishedBy] = {{256386,256390}},
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -958,6 +961,7 @@ function ForeverQuestFixes:Load()
         },
         [91905] = { -- A Sealed Crate
             [questKeys.questLevel] = 60,
+            [questKeys.requiredLevel] = 1,
             [questKeys.startedBy] = {{256386,256390}},
             [questKeys.finishedBy] = {{256386,256390}},
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -965,6 +969,7 @@ function ForeverQuestFixes:Load()
         },
         [91906] = { -- A Sealed Crate
             [questKeys.questLevel] = 60,
+            [questKeys.requiredLevel] = 1,
             [questKeys.startedBy] = {{256386,256390}},
             [questKeys.finishedBy] = {{256386,256390}},
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -973,6 +978,7 @@ function ForeverQuestFixes:Load()
         [91907] = { -- A Sealed Crate
             [questKeys.name] = "A Sealed Crate",
             [questKeys.questLevel] = 60,
+            [questKeys.requiredLevel] = 1,
             [questKeys.startedBy] = {{256386,256390}},
             [questKeys.finishedBy] = {{256386,256390}},
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -2866,6 +2872,7 @@ function ForeverQuestFixes:Load()
         [96395] = { -- An Ancient Grudge
             [questKeys.startedBy] = {{265002}},
             [questKeys.finishedBy] = {{265002}},
+            [questKeys.requiredLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.objectives] = {{{261306}}},
             [questKeys.zoneOrSort] = zoneIDs.THE_HALL_OF_THANES,
@@ -3786,6 +3793,9 @@ function ForeverQuestFixes:Load()
         [98233] = { -- Sword in the Slime
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
         },
+        [98248] = { -- Shipping Label
+            [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
+        },
         [98282] = { -- Alchemical Hazards
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
@@ -4458,6 +4468,30 @@ function ForeverQuestFixes:LoadDynamic()
             [questKeys.objectivesText] = {"Collect 'Necromancy 101' and bring it to Oran Snakewrithe in Undercity."},
             [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
         },
+        [91899] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
+        },
+        [91900] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
+        },
+        [91901] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
+        },
+        [91902] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
+        },
+        [91904] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
+        },
+        [91905] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
+        },
+        [91906] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
+        },
+        [91907] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
+        },
         [97286] = { -- Research Access
             [questKeys.startedBy] = {{211022}},
             [questKeys.finishedBy] = {{211022}},
@@ -4721,6 +4755,30 @@ function ForeverQuestFixes:LoadDynamic()
             [questKeys.finishedBy] = {{5497}},
             [questKeys.objectivesText] = {"Collect 'Necromancy 101' and bring it to Jennea Cannon in Stormwind."},
             [questKeys.zoneOrSort] = zoneIDs.STORMWIND_CITY,
+        },
+        [91899] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
+        },
+        [91900] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
+        },
+        [91901] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
+        },
+        [91902] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
+        },
+        [91904] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
+        },
+        [91905] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
+        },
+        [91906] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
+        },
+        [91907] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
         },
         [97286] = { -- Research Access
             [questKeys.startedBy] = {{211033}},
