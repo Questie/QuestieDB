@@ -88,7 +88,7 @@ function ForeverObjectFixes:Load()
         },
         [409692] = { -- Scrolls
             [objectKeys.name] = "Scrolls",
-            [objectKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{49.3,32.88}}},
+            [objectKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{49.30,33.04}}},
             [objectKeys.zoneID] = zoneIDs.THE_BARRENS,
             [objectKeys.questStarts] = {78143},
         },
