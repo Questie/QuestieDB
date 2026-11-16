@@ -114,11 +114,23 @@ function ForeverNpcFixes:Load()
         [3685] = { -- Harb Clawhoof <Kodo Mounts>
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
+        [3898] = { -- Aligar the Tormentor
+            [npcKeys.spawns] = {},
+        },
+        [3899] = { -- Balizar the Umbrage
+            [npcKeys.spawns] = {},
+        },
+        [3900] = { -- Caedakar the Vicious
+            [npcKeys.spawns] = {},
+        },
         [4047] = { -- Zor Lonetree
             [npcKeys.npcFlags] = npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
         },
         [4048] = { -- Falfindel Waywarder
             [npcKeys.waypoints] = {},
+        },
+        [4202] = { -- Gerenzo Wrenchwhistle
+            [npcKeys.spawns_add] = {[zoneIDs.STONETALON_MOUNTAINS] = {{62.68,40.18},{63.37,39.7}}},
         },
         [4612] = { -- Boyle
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- Era flags, sells Forever items

@@ -366,6 +366,11 @@ function QuestieObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.ASHENVALE] = {{56.5,63.5}}},
             [objectKeys.zoneID] = zoneIDs.ASHENVALE,
         },
+        [178247] = { -- Naga Brazier
+            [objectKeys.name] = "Naga Brazier",
+            [objectKeys.spawns] = {[zoneIDs.ASHENVALE] = {{9.64,27.61}}},
+            [objectKeys.zoneID] = zoneIDs.ASHENVALE,
+        },
         [178907] = { -- Maraudon Orange Crystal Pool
             [objectKeys.name] = "Maraudon Orange Crystal Pool",
         },
