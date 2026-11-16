@@ -1,185 +1,75 @@
--- generator/loader.lua
---
--- Mocked-environment loader for Questie-shaped Lua sources.
---
--- Every generation input is already Lua, so this is a loader, not a parser: it stands up just
--- enough of the WoW addon environment for the file to execute, then reads the tables the file
--- assigned. Derived from Questie's cli/apiMocks.lua and cli/loadTOC.lua, which load the
--- database the same way for `validate-era.lua` today.
---
--- Raw entity data files are self-contained — each one defines both its `*Keys` enum and its
--- `*Data` payload — so schema and data arrive together and the only mock they need is
--- `QuestieLoader:ImportModule`.
+-- Loads QuestieDB-owned raw entity providers and their deferred Lua payloads.
+-- Both execute privately; neither needs the addon/client mocks used by other inputs.
 
 local loader = {}
 
---------------------------------------------------------------------------------------------
--- Environment
---------------------------------------------------------------------------------------------
-
-local function emptyFunction() end
-local function emptyTable() return {} end
-
---- Install the minimal global environment a Questie source file expects.
---- Returns the QuestieDB module table that loaded files will write into.
----@param opts table? { locale = "enUS", isClassic = boolean, expansion = number }
-function loader.installEnvironment(opts)
-  opts = opts or {}
-
-  local modules = {}
-
-  QuestieLoader = {
+---Each file owns its module and globals, including chunks compiled by its payload.
+---These are trusted owned inputs, not hostile Lua requiring a security sandbox.
+---@return table env
+---@return table module
+local function environment()
+  local module = {}
+  local env = {}
+  env._G = env
+  env.QuestieLoader = {
+    ---@param _ table
+    ---@param name string
+    ---@return table
     ImportModule = function(_, name)
-      local module = modules[name]
-      if not module then
-        module = {}
-        modules[name] = module
-      end
+      assert(name == "QuestieDB", "unexpected raw entity import: " .. tostring(name))
       return module
     end,
-    CreateModule = function(_, name)
-      local module = modules[name]
-      if not module then
-        module = {}
-        modules[name] = module
-      end
-      return module
-    end,
-    _modules = modules,
   }
-
-  Questie = Questie or {}
-  Questie.IsClassic = opts.isClassic
-  Questie.IsTBC = opts.isTBC
-  Questie.IsWotlk = opts.isWotlk
-  Questie.IsCata = opts.isCata
-  Questie.IsMoP = opts.isMoP
-  Questie.IsSoD = opts.isSoD or false
-  Questie.db = Questie.db or { profile = {}, global = {}, char = {} }
-
-  -- Locale is stubbed rather than detected. Localization lookup files open with a
-  -- `if GetLocale() ~= "deDE" then return end` guard, so one generation run reads every
-  -- locale by re-stubbing this between files. See generator/l10n.lua.
-  local locale = opts.locale or "enUS"
-  GetLocale = function() return locale end
-  loader.setLocale = function(newLocale) locale = newLocale end
-
-  -- Small surface used incidentally by schema and correction files.
-  tinsert = table.insert
-  tremove = table.remove
-  wipe = function(t)
-    for k in pairs(t) do t[k] = nil end
-    return t
+  -- No ambient globals: raw data must not depend on a preceding client or correction load.
+  ---@param text string
+  ---@param name string?
+  ---@return function? chunk
+  ---@return string? err
+  env.loadstring = function(text, name)
+    local chunk, err = loadstring(text, name)
+    if chunk then setfenv(chunk, env) end
+    return chunk, err
   end
-  strsplit = function(delimiter, text)
-    local result = {}
-    for piece in string.gmatch(text, "([^" .. delimiter .. "]+)") do
-      result[#result + 1] = piece
-    end
-    return unpack(result)
-  end
-  hooksecurefunc = emptyFunction
-  CreateFrame = function()
-    return {
-      Show = emptyFunction, Hide = emptyFunction, SetScript = emptyFunction,
-      RegisterEvent = emptyFunction, UnregisterEvent = emptyFunction, SetOwner = emptyFunction,
-    }
-  end
-  C_Timer = { After = function(_, fn) if fn then fn() end end, NewTicker = emptyFunction }
-  C_Seasons = { HasActiveSeason = function() return false end, GetActiveSeason = function() return 0 end }
-  C_AddOns = C_AddOns or {}
-  Enum = Enum or { SeasonID = { SeasonOfMastery = 1, SeasonOfDiscovery = 2, Hardcore = 3 } }
-  LibStub = setmetatable(
-    { NewLibrary = emptyFunction, GetLibrary = emptyTable },
-    { __call = function() return { NewAddon = emptyTable, New = emptyTable } end }
-  )
-
-  return QuestieLoader:ImportModule("QuestieDB")
+  return env, module
 end
 
---------------------------------------------------------------------------------------------
--- Loading
---------------------------------------------------------------------------------------------
-
---- Make every unknown global resolve to a permissive stub instead of nil.
----
---- Only for one-shot extraction tooling, where the goal is to reach a constant table inside a
---- file that also does a lot of runtime work. It is deliberately *not* used by Generation:
---- there, a nil global is a real error and swallowing it would hide a broken input.
-function loader.installPermissiveGlobals()
-  local stubs = {}
-  local function makeStub(name)
-    local stub
-    stub = setmetatable({}, {
-      __index = function(_, key)
-        if type(key) ~= "string" then return nil end
-        stub[key] = makeStub(name .. "." .. key)
-        return stub[key]
-      end,
-      __call = function() return makeStub(name .. "()") end,
-      __tostring = function() return "<stub " .. name .. ">" end,
-      __concat = function() return "" end,
-    })
-    return stub
-  end
-
-  setmetatable(_G, {
-    __index = function(_, key)
-      if type(key) ~= "string" then return nil end
-      stubs[key] = stubs[key] or makeStub(key)
-      return stubs[key]
-    end,
-  })
-  return function() setmetatable(_G, nil) end
-end
-
---- Execute a Lua source file inside the mocked environment, passing WoW's addon varargs.
----@param path string
----@param addonName string?
----@param addonTable table?
-function loader.executeFile(path, addonName, addonTable)
-  local chunk, err = loadfile(path)
-  if not chunk then
-    error("Cannot load " .. path .. ": " .. tostring(err), 0)
-  end
-  local ok, execErr = pcall(chunk, addonName or "QuestieDB", addonTable or {})
-  if not ok then
-    error("Error executing " .. path .. ": " .. tostring(execErr), 0)
-  end
-end
-
---- Load one raw entity data file.
----
---- Returns the decoded entity table (id -> field array) and the file's own copy of the
---- Database Key Enum. The keys travelling with the data is the mechanical reason Questie is
---- the schema source of truth.
+---Load rows and the file's own key header, checked against src/meta/ by the flavor loader.
 ---@param path string Path to e.g. data/Classic/classicQuestDB.lua
 ---@param entityType table An entry from config.entityTypes
 ---@return table entities id -> { [fieldIndex] = value }
 ---@return table keys fieldName -> fieldIndex
 function loader.loadEntityData(path, entityType)
-  local QuestieDB = loader.installEnvironment()
-  loader.executeFile(path)
-
-  local keys = QuestieDB[entityType.keysField]
-  if type(keys) ~= "table" then
-    error(path .. " did not define QuestieDB." .. entityType.keysField, 0)
+  local env, module = environment()
+  local provider, loadErr = loadfile(path)
+  if not provider then
+    error("Cannot load " .. path .. ": " .. tostring(loadErr), 0)
+  end
+  setfenv(provider, env)
+  local ok, execErr = pcall(provider, "QuestieDB", {})
+  if not ok then
+    error("Error executing " .. path .. ": " .. tostring(execErr), 0)
   end
 
-  local payload = QuestieDB[entityType.dataField]
+  local keys = module[entityType.keysField]
+  if type(keys) ~= "table" then
+    error(path .. " did not define QuestieDB." .. entityType.keysField .. " as a table", 0)
+  end
+  local payload = module[entityType.dataField]
   if type(payload) ~= "string" then
     error(path .. " did not define QuestieDB." .. entityType.dataField .. " as a string", 0)
   end
 
-  local chunk, err = loadstring(payload, path .. ":" .. entityType.dataField)
+  local chunk, parseErr = env.loadstring(payload, "@" .. path .. ":" .. entityType.dataField)
   if not chunk then
-    error("Cannot parse " .. entityType.dataField .. " in " .. path .. ": " .. tostring(err), 0)
+    error("Cannot parse " .. entityType.dataField .. " in " .. path .. ": " .. tostring(parseErr), 0)
   end
-  local entities = chunk()
+  local decoded, entities = pcall(chunk)
+  if not decoded then
+    error("Error executing " .. entityType.dataField .. " in " .. path .. ": " .. tostring(entities), 0)
+  end
   if type(entities) ~= "table" then
     error(entityType.dataField .. " in " .. path .. " did not return a table", 0)
   end
-
   return entities, keys
 end
 
