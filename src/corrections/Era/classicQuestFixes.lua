@@ -4136,7 +4136,8 @@ function QuestieQuestFixes:Load()
             [questKeys.triggerEnd] = {"Answer Parqual Fintallas' question correctly", {[zoneIDs.UNDERCITY] = {{57.72, 65.22}}}},
         },
         [6641] = { -- Vorsha the Lasher
-            [questKeys.triggerEnd] = {"Defeat Vorsha the Lasher", {[zoneIDs.ASHENVALE] = {{9.59, 27.58}}}},
+            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Put the fire out"), 0, {{"object", 178247}}}},
+            [questKeys.objectives] = {{{12940}}},
         },
         [6661] = { -- Deeprun Rat Roundup
             [questKeys.objectives] = {{{13016, nil, Questie.ICON_TYPE_INTERACT}}},

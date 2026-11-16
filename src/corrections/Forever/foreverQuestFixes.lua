@@ -285,6 +285,11 @@ function ForeverQuestFixes:Load()
         [6126] = { -- Lessons Anew
             [questKeys.startedBy_add] = {{262560}},
         },
+        [6641] = { -- Vorsha the Lasher
+            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Put the fire out"), 0, {{"object", 178247}}}},
+            [questKeys.objectives] = {{{12940}}},
+            [questKeys.triggerEnd] = {},
+        },
         [7790] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
@@ -2877,6 +2882,8 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [96379] = { -- State Secrets
+            [questKeys.requiredLevel] = 48,
+            [questKeys.questLevel] = 53,
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [96390] = { -- Nip 'Em in the Bud

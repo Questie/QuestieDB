@@ -722,15 +722,15 @@ function QuestieNPCFixes:Load()
             [npcKeys.zoneID] = zoneIDs.ASHENVALE,
         },
         [3898] = { -- Aligar the Tormentor
-            [npcKeys.spawns] = {[zoneIDs.DARKSHORE] = {{43.57,94.44}}},
+            [npcKeys.spawns] = {},
             [npcKeys.zoneID] = zoneIDs.DARKSHORE,
         },
         [3899] = { -- Balizar the Umbrage
-            [npcKeys.spawns] = {[zoneIDs.DARKSHORE] = {{43.54,94.32}}},
+            [npcKeys.spawns] = {},
             [npcKeys.zoneID] = zoneIDs.DARKSHORE,
         },
         [3900] = { -- Caedakar the Vicious
-            [npcKeys.spawns] = {[zoneIDs.DARKSHORE] = {{43.52,94.39}}},
+            [npcKeys.spawns] = {},
             [npcKeys.zoneID] = zoneIDs.DARKSHORE,
         },
         [3939] = { -- Razormane Wolf
@@ -787,6 +787,9 @@ function QuestieNPCFixes:Load()
         },
         [4163] = { -- Syurna
             [npcKeys.questStarts] = {2242,8233},
+        },
+        [4202] = { -- Gerenzo Wrenchwhistle
+            [npcKeys.spawns_add] = {[zoneIDs.STONETALON_MOUNTAINS] = {{62.68,40.18},{63.37,39.7}}},
         },
         [4205] = { -- Dorion
             [npcKeys.questStarts] = {8151},

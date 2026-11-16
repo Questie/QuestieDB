@@ -19,6 +19,11 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{44.53,28.15}}},
             [objectKeys.zoneID] = zoneIDs.THE_BARRENS,
         },
+        [178247] = { -- Naga Brazier
+            [objectKeys.name] = "Naga Brazier",
+            [objectKeys.spawns] = {[zoneIDs.ASHENVALE] = {{9.64,27.61}}},
+            [objectKeys.zoneID] = zoneIDs.ASHENVALE,
+        },
         [179437] = { -- Wanted: ORCS!
             [objectKeys.spawns] = {[zoneIDs.ALTERAC_VALLEY] = {{43.27,16.52}}},
             [objectKeys.zoneID] = zoneIDs.ALTERAC_VALLEY,
