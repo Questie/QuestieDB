@@ -1878,6 +1878,9 @@ function QuestieQuestFixes:Load()
             [questKeys.preQuestSingle] = {},
             [questKeys.breadcrumbs] = {1885},
         },
+        [1918] = { -- The Befouled Element
+            [questKeys.availableStartingWith] = 25,
+        },
         [1919] = { -- Report to Jennea
             [questKeys.startedBy] = {{328, 1228, 7312}},
             [questKeys.breadcrumbForQuestId] = 1920, -- #1328

@@ -165,6 +165,9 @@ function ForeverQuestFixes:Load()
             [questKeys.startedBy] = {nil,{673378}},
             [questKeys.preQuestSingle] = {98398},
         },
+        [952] = { -- Grove of the Ancients
+            [questKeys.zoneOrSort] = zoneIDs.DARKSHORE,
+        },
         [971] = { -- Knowledge in the Deeps
             [questKeys.disabledByQuest] = 968,
             [questKeys.requiredLevel] = 18,
@@ -223,6 +226,9 @@ function ForeverQuestFixes:Load()
         },
         [1883] = { -- Speak with Un'thuwa
             [questKeys.requiredRaces] = raceIDs.NONE,
+        },
+        [1918] = { -- The Befouled Element
+            [questKeys.availableStartingWith] = 25,
         },
         [2519] = { -- The Temple of the Moon
             [questKeys.breadcrumbs] = {98391},
@@ -3795,6 +3801,9 @@ function ForeverQuestFixes:Load()
         },
         [98248] = { -- Shipping Label
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
+        },
+        [98252] = { -- A Void Path
+            [questKeys.triggerEnd] = {"Eye of Kilrogg guided to the road", {[zoneIDs.ASHENVALE] = {{44.37,56.48}}}},
         },
         [98282] = { -- Alchemical Hazards
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,

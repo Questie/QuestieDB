@@ -823,6 +823,9 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.EXCAVATION_SITE_WETLANDS] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
         },
+        [271181] = { -- Eye of Kilrogg
+            [npcKeys.spawns] = {[zoneIDs.ASHENVALE] = {{44.37,56.48}}},
+        },
         [271732] = { -- Thicket Stalker
             [npcKeys.spawns] = {[zoneIDs.EXCAVATION_SITE_WETLANDS] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
