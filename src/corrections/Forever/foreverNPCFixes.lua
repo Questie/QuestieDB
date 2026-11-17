@@ -141,6 +141,9 @@ function ForeverNpcFixes:Load()
         [4731] = { -- Zachariah Post <Undead Horse Merchant>
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
         },
+        [4787] = { -- Argent Guard Thaelrid
+            [npcKeys.npcFlags] = npcFlags.REPAIR + npcFlags.QUEST_GIVER,
+        },
         [4949] = { -- Thrall
             [npcKeys.questEnds_add] = {93739},
         },

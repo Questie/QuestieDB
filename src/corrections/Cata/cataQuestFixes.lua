@@ -637,9 +637,6 @@ function CataQuestFixes.Load()
         [6608] = { -- You Too Good.
             [questKeys.nextQuestInChain] = 6607,
         },
-        [6621] = { -- King of the Foulweald
-            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Kill Chief Murgut"), 0, {{"monster", 12918}}}},
-        },
         [6622] = { -- Triage
             [questKeys.preQuestSingle] = {},
         },

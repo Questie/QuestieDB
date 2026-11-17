@@ -1225,6 +1225,9 @@ function QuestieItemFixes:Load()
             [itemKeys.npcDrops] = {},
             [itemKeys.objectDrops] = {},
         },
+        [16976] = { -- Murgut's Totem
+            [itemKeys.npcDrops] = {},
+        },
         [17124] = { -- Syndicate Emblem
             [itemKeys.relatedQuests] = {},
             [itemKeys.npcDrops] = {2246, 2590, 2240, 2586, 2589, 2587, 2588, 2242, 2241, 2319, 2261, 2244, 2260},

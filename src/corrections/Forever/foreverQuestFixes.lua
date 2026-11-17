@@ -285,10 +285,20 @@ function ForeverQuestFixes:Load()
         [6126] = { -- Lessons Anew
             [questKeys.startedBy_add] = {{262560}},
         },
+        [6564] = { -- Allegiance to the Old Gods
+            [questKeys.preQuestSingle] = {},
+            [questKeys.availableStartingWith] = 6563,
+        },
+        [6621] = { -- King of the Foulweald
+            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Kill Chief Murgut"), 0, {{"monster", 12918}}}},
+        },
         [6641] = { -- Vorsha the Lasher
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Put the fire out"), 0, {{"object", 178247}}}},
             [questKeys.objectives] = {{{12940}}},
             [questKeys.triggerEnd] = {},
+        },
+        [6922] = { -- Baron Aquanis
+            [questKeys.availableStartingWith] = 6921,
         },
         [7790] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -3904,7 +3914,7 @@ function ForeverQuestFixes:Load()
             [questKeys.breadcrumbForQuestId] = 2519,
             [questKeys.nextQuestInChain] = 2519,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
-            [questKeys.disabledByQuest] = 2518,
+            [questKeys.exclusiveTo] = {2518},
         },
         [98392] = { -- Darkness in the Glade
             [questKeys.preQuestSingle] = {937},

@@ -183,9 +183,6 @@ function CataItemFixes.Load()
         [16790] = { -- Damp Note
             [itemKeys.startQuest] = 0,
         },
-        [16976] = { -- Murgut's Totem
-            [itemKeys.npcDrops] = {},
-        },
         [17662] = { -- Stolen Treats
             [itemKeys.npcDrops] = {},
         },
