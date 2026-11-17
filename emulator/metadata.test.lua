@@ -65,9 +65,9 @@ error("rejected file executed")
     forever .. " [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]",
     last,
   }, "\r\n"))
-  for _, gameType in ipairs({ "vanilla", "tbc", "wrath", "cata", "mists", "camelot", "forever" }) do
+  for _, gameType in ipairs({ "vanilla", "tbc", "wrath", "cata", "mists", "forever" }) do
     local ns, files = emulator.loadAddon(toc, "FixtureAddon", baseDir, gameType)
-    local middle = (gameType == "camelot" or gameType == "forever") and "forever" or "legacy"
+    local middle = gameType == "forever" and "forever" or "legacy"
     assert(table.concat(ns.order, ",") == "first," .. middle .. ",last")
     assert(table.concat(files, ",") == first .. "," .. stem .. "-" .. middle .. ".lua," .. last)
   end
@@ -78,7 +78,7 @@ error("rejected file executed")
   local ns = emulator.loadAddon(toc, "FixtureAddon", baseDir, "vanilla")
   assert(table.concat(ns.order, ",") == "first,last")
   assert(_G.NativeTocRejectedSideEffect == nil)
-  rejects(function() emulator.loadAddon(toc, "FixtureAddon", baseDir, "camelot") end,
+  rejects(function() emulator.loadAddon(toc, "FixtureAddon", baseDir, "forever") end,
     "rejected file executed")
   assert(_G.NativeTocRejectedSideEffect == true)
   _G.NativeTocRejectedSideEffect = nil
@@ -95,7 +95,7 @@ error("rejected file executed")
     "[AllowLoadGameType]", "[AllowLoadGameType ]", "[AllowLoadGameType vanilla,]",
     "[AllowLoadGameType ,vanilla]", "[AllowLoadGameType vanilla,,wrath]",
     "[AllowLoadGameType vanilla wrath]", "[AllowLoadGameType vanilla, unknown]",
-    "[AllowLoadGameType camelot, unknown]", "[AllowLoadGameType Vanilla]",
+    "[AllowLoadGameType forever, unknown]", "[AllowLoadGameType Vanilla]",
     "[ExcludeLoadGameType]", "[ExcludeLoadGameType ]", "[ExcludeLoadGameType vanilla,]",
     "[ExcludeLoadGameType ,vanilla]", "[ExcludeLoadGameType vanilla,,wrath]",
     "[ExcludeLoadGameType vanilla wrath]", "[ExcludeLoadGameType vanilla, unknown]",

@@ -94,7 +94,7 @@ Classic rules.
 
 ## Inventory of other coordinate paths
 
-The Questie audit followed the Camelot TOC and XML include graph, then searched numeric and
+The Questie audit followed the Forever TOC and XML include graph, then searched numeric and
 symbolic map IDs, geographic literals, coordinate assignments, correction writers and render
 calls. The resolved graph contained 278 Lua files and 22 XML files with no missing sources.
 QuestieDB inputs were traced through the configured Forever entity, support and provider lists.

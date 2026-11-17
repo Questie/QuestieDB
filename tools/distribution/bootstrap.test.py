@@ -29,8 +29,6 @@ def archive_bytes(flavors, extra=None):
     with zipfile.ZipFile(output, "w", zipfile.ZIP_DEFLATED) as archive:
         for flavor in flavors:
             archive.writestr("QuestieDB/QuestieDB_%s.toc" % flavor, "## X-Mode: baked\n")
-            if flavor == "Forever":
-                archive.writestr("QuestieDB/QuestieDB_Camelot.toc", "## X-Mode: baked\n")
         archive.writestr("QuestieDB/src/runtime.lua", "return 'shared'\n")
         archive.writestr("QuestieDB/Types/Quest.t.lua", "---@meta _\n")
         for name, value in (extra or {}).items():
@@ -111,7 +109,7 @@ class BootstrapTest(unittest.TestCase):
         self.assertEqual("source mode", (self.target / "QuestieDB.toc").read_text())
         self.assertEqual("return 'shared'\n", (self.target / "src/runtime.lua").read_text())
 
-    def test_older_release_removes_stale_forever_pair(self):
+    def test_older_release_removes_stale_forever_toc(self):
         for name in bootstrap.FOREVER_TOCS:
             (self.target / name).write_text("stale artifact")
         self.assets[ARCHIVE] = archive_bytes(bootstrap.FLAVORS[:-1])
@@ -120,18 +118,10 @@ class BootstrapTest(unittest.TestCase):
         self.assertTrue(all(not (self.target / name).exists() for name in bootstrap.FOREVER_TOCS))
         self.assertTrue(all((self.target / name).is_file() for name in bootstrap.LEGACY_TOCS))
 
-    def test_forever_pair_must_be_complete_identical_and_regular_files(self):
+    def test_forever_toc_must_be_regular_file_with_canonical_case(self):
         cases = [
-            {"QuestieDB/QuestieDB_Forever.toc": "primary"},
-            {"QuestieDB/QuestieDB_Camelot.toc": "alias"},
-            {
-                "QuestieDB/QuestieDB_Forever.toc": "primary",
-                "QuestieDB/QuestieDB_Camelot.toc": "stale",
-            },
             {"QuestieDB/QuestieDB_Forever.toc/": ""},
-            {"QuestieDB/QuestieDB_Camelot.toc/": ""},
             {"QuestieDB/questiedb_Forever.toc": "wrong case"},
-            {"QuestieDB/QuestieDB_CAMELOT.toc": "wrong case"},
         ]
         for extra in cases:
             with self.subTest(extra=extra):
@@ -157,7 +147,7 @@ class BootstrapTest(unittest.TestCase):
     def test_older_release_rejects_directory_or_wrong_case_optional_destination(self):
         self.assets[ARCHIVE] = archive_bytes(bootstrap.FLAVORS[:-1])
         self.refresh_manifest()
-        for name in (*bootstrap.FOREVER_TOCS, "questiedb_Forever.toc", "QuestieDB_CAMELOT.toc"):
+        for name in (*bootstrap.FOREVER_TOCS, "questiedb_Forever.toc"):
             with self.subTest(name=name):
                 path = self.target / name
                 path.mkdir()
@@ -296,7 +286,7 @@ class BootstrapTest(unittest.TestCase):
         self.refresh_manifest()
         outside = Path(self.temp.name) / "outside.toc"
         outside.write_text("do not modify")
-        link = self.target / "QuestieDB_Camelot.toc"
+        link = self.target / "QuestieDB_Forever.toc"
         try:
             link.symlink_to(outside)
         except OSError as error:

@@ -27,7 +27,7 @@ existing.**
 
 On clients with native per-file game-type selection, a fresh clone needs no download or
 Lua toolchain. Historical Interface metadata alone does not establish that support; older-client
-Source acceptance and exact Camelot TOC recognition remain pending. See
+Source acceptance remains pending. See
 [Forever and client acceptance](docs/forever.md#client-support-and-acceptance) for the limited
 mixed-token live-probe result and outstanding checks. Generation reads the owned localization
 sources in `l10n/` and needs no Questie checkout or network access. It fails before writing output if required lookup files are missing.
@@ -160,11 +160,9 @@ flavor you are testing. Every script prints its options with `--help`. Nothing h
 Python, Git, Bash, or network access; Git only adds the commit hash to the artifact's version
 when it is present.
 
-Generation writes `QuestieDB_<Flavor>.toc` for all six flavors. Forever additionally produces
-its byte-identical `QuestieDB_Camelot.toc` compatibility alias. These files are gitignored;
+Generation writes `QuestieDB_<Flavor>.toc` for all six flavors. These files are gitignored;
 a client that recognizes its suffixed TOC selects Baked mode. Remove the matching generated
-TOCs, including both Forever names, to return to Source mode. Forever filename recognition
-still needs the live acceptance checks linked above.
+TOCs to return to Source mode.
 
 ### Understanding validation failures
 
@@ -310,8 +308,7 @@ Generation creates Baked TOCs; packaging creates installable ZIPs:
 
 Packages go into `.out/dist/`: one ZIP per requested flavor, `release.json`, and release
 notes. Selecting all six also creates `QuestieDB-<version>-all.zip`, for seven ZIPs in total. Both the
-Forever ZIP and combined ZIP contain `QuestieDB_Forever.toc` and `QuestieDB_Camelot.toc`.
-Packaging copies the alias from the completed staged primary, not an existing workspace alias.
+Forever ZIP and combined ZIP contain `QuestieDB_Forever.toc`.
 ZIPs contain a `QuestieDB/` folder ready to extract into `Interface/AddOns/`, including
 `QuestieDB/CHANGELOG.md` for that release. Packaging never installs or publishes.
 It checks prerequisites and requested inputs before replacing `.out/dist/` and `.out/stage/`;
@@ -442,11 +439,9 @@ To refresh a local install instead of regenerating:
 
 Bootstrap uses the same Python implementation from either launcher. It installs `QuestieDB-<version>-all.zip`
 only, so a release from before the combined archive existed cannot be bootstrapped. Five-flavor
-combined releases using the nested `questiedb` manifest remain accepted; if either Forever TOC
-is present, both must be present and byte-identical. Bootstrap verifies the checksum and validates archive paths
+combined releases using the nested `questiedb` manifest remain accepted; Bootstrap verifies the checksum and validates archive paths
 and extraction before changing the install. Installing an older five-flavor release removes
-stale Forever/Camelot TOCs. [Issue #23](https://github.com/Questie/QuestieDB/issues/23) tracks
-retiring the Camelot name without breaking older-release handling.
+a stale Forever TOC.
 The final file merge is not transactional. Matching runtime files are replaced, while unrelated
 files are retained. Back up local edits before bootstrapping over a source clone; returning to Source
 mode then requires restoring its full runtime sources as well as removing the generated TOCs.
@@ -506,7 +501,6 @@ such as quest availability blacklists and content-phase selection, stays in Ques
 ```text
 QuestieDB.toc            base TOC — source mode (committed)
 QuestieDB_<Flavor>.toc   generated Baked TOCs for all six flavors (gitignored)
-QuestieDB_Camelot.toc    exact temporary Forever alias (gitignored)
 
 src/
   config.lua              flavors, entity types, file lists, l10n block contract

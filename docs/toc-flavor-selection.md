@@ -33,29 +33,23 @@ These are source identities, not verified identities of the user's running clien
 - Titan's [Classic UI panels TOC][titan-panels] uses the same Classic conditions. Its
   [Wrath constants][titan-constants] assign `WOW_PROJECT_ID = WOW_PROJECT_WRATH_CLASSIC` (`11`);
   Titan is not a separate expansion identity in that code.
-- Forever's [Token UI TOC][forever-token] selects `Camelot/` files with `AllowLoadGameType camelot`
-  and excludes Camelot from the alternate files. Its [FrameXML base TOC][forever-base] selects
-  `[Game]\\Constants.lua` specifically for `camelot`. The current internal game name is therefore
-  **Camelot in these source declarations**, despite the branch/product name Forever.
+- Forever's [Token UI TOC][forever-token] and [FrameXML base TOC][forever-base] select
+  Forever-only files with a game-type allow list and exclude them from the alternate files.
 - Forever also contains a [conditional metadata directive][forever-metadata]. That does not
   establish availability on older Classic clients. The user's quoted version notes distinguish
   file support from later metadata support; do not adopt conditional entity metadata implicitly.
 
 These implementation examples are not a live test of third-party addon loading. Unknown tokens,
-duplicate-path handling and future renaming remain native-parser questions. Do not assume
-`camelot, forever` is safe before testing the current client's handling of unknown `forever`.
+duplicate-path handling and future renaming remain native-parser questions.
 
 ## Proposed QuestieDB shape
 
 ```toc
 data\Classic\classicQuestDB.lua [AllowLoadGameType vanilla]
-data\Forever\foreverQuestDB.lua [AllowLoadGameType camelot]
+data\Forever\foreverQuestDB.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 ```
 
-Generate conditions from explicit flavor applicability, not folder names. Keep the owned folder
-`Forever`; update the TOC's game-type mapping when Blizzard actually renames the internal token.
-[Issue #23](https://github.com/Questie/QuestieDB/issues/23) should cover that mapping as well as
-removal of the temporary Camelot Baked TOC filename.
+Generate conditions from explicit flavor applicability, not folder names.
 
 - Filter raw entity and support payloads before Lua execution. This should avoid parsing and
   allocating other flavors' large Lua payloads; the amount saved requires measurement.
@@ -64,10 +58,10 @@ removal of the temporary Camelot Baked TOC filename.
 - Replace redundant cross-flavor discard logic once selection is proven, rather than adding a
   second permanent flavor policy. Keep normalization, lazy materialization and the loader shim.
 - Preserve **cumulative legacy Corrections**: Era providers apply to Vanilla, TBC, Wrath, Cata
-  and Mists, while Forever's owned providers apply only to Camelot/Forever. An `Era` folder does
+  and Mists, while Forever's owned providers apply only to Forever. An `Era` folder does
   not mean `[AllowLoadGameType vanilla]`. SoD/Titan season and faction gates still belong in Lua.
 - Prefer explicit conditions over `[Game]` paths: owned directories use `Classic`, `Wotlk`,
-  `MoP` and `Forever`, while native names include `Vanilla`, `Wrath`, `Mists` and `Camelot`.
+  `MoP` and `Forever`, while native names include `Vanilla`, `Wrath` and `Mists`.
   `[Family]` is also not a substitute for QuestieDB's data-flavor mapping.
 - Keep Baked metadata and filenames unchanged. Already-specialized Baked file lists need no
   extra condition just because Source mode benefits from it.
@@ -85,7 +79,7 @@ same supported semantics if conditions reach packaged TOCs, or keep Baked output
 plain paths. Do not silently strip a condition while including an inapplicable file.
 
 Before replacing existing gates, use a disposable addon on the relevant clients to check
-positive/negative selection, ordering and Camelot identity. Probe mixed known/unknown tokens
+positive/negative selection, ordering and Forever identity. Probe mixed known/unknown tokens
 before rename-forward compatibility. Compare loaded files with the emulator. No live probe ran here.
 
 ## Interface values are a separate maintenance question

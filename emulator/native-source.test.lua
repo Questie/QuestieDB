@@ -126,19 +126,17 @@ for _, flavor in ipairs(config.flavors) do
   collectgarbage("collect")
 end
 
--- Neither Forever persona is excluded; both select the same complete owned input set.
+-- Forever selects its complete owned input set.
 do
   local expected = config.sourceFileList(config.flavorByName.Forever)
-  for _, gameType in ipairs({ "camelot", "forever" }) do
-    client.install({ expansion = "Forever", gameType = gameType, season = "SoD" })
-    emulator.install(config.addonName, emulator.parse("QuestieDB.toc"))
-    local db, files = emulator.loadAddon("QuestieDB.toc", config.addonName)
-    assert(db.flavor.name == "Forever" and db.read.source.expansion == "Forever")
-    assert(#files == #expected, gameType .. " selected a different input set")
-    for index, path in ipairs(expected) do assert(files[index] == path, gameType .. ": " .. path) end
-    assert(db.ObjectiveFirst.eventObjectiveFirst[85304] == nil, "SoD hint leaked through alias")
-    client.reset()
-  end
+  client.install({ expansion = "Forever", gameType = "forever", season = "SoD" })
+  emulator.install(config.addonName, emulator.parse("QuestieDB.toc"))
+  local db, files = emulator.loadAddon("QuestieDB.toc", config.addonName)
+  assert(db.flavor.name == "Forever" and db.read.source.expansion == "Forever")
+  assert(#files == #expected, "Forever selected a different input set")
+  for index, path in ipairs(expected) do assert(files[index] == path, "Forever: " .. path) end
+  assert(db.ObjectiveFirst.eventObjectiveFirst[85304] == nil, "SoD hint leaked")
+  client.reset()
 end
 
 for _, changed in ipairs({ "Vanilla", "Forever" }) do

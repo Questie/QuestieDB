@@ -119,10 +119,10 @@ end
 -- Native file selection (only the subset emitted by QuestieDB)
 --------------------------------------------------------------------------------------------
 
----@alias EmulatorGameType "vanilla"|"tbc"|"wrath"|"cata"|"mists"|"camelot"|"forever"
+---@alias EmulatorGameType "vanilla"|"tbc"|"wrath"|"cata"|"mists"|"forever"
 
 ---@type table<string, boolean>
-local gameTypes = { vanilla = true, tbc = true, wrath = true, cata = true, mists = true, camelot = true, forever = true }
+local gameTypes = { vanilla = true, tbc = true, wrath = true, cata = true, mists = true, forever = true }
 
 ---Parse and evaluate a file line; return its normalized path only when selected.
 ---Blank lines and comments (including metadata) return nil. XML remains ignored by this

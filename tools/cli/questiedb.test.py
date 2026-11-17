@@ -41,7 +41,6 @@ class ParsingTest(unittest.TestCase):
                  (["generate", "Vanilla", "--flavors=TBC"], "cannot be combined"),
                  (["generate", "--flavors=Vanilla,"], "empty values"),
                  (["generate", "--flavors=Vanilla", "--flavors=TBC"], "only once"),
-                 (["generate", "Camelot"], "unknown"),
                  (["unknown"], "unknown")]
         for args, message in cases:
             with self.subTest(args=args), self.assertRaisesRegex(ValueError, message):
@@ -261,7 +260,6 @@ class CommandFlowTest(unittest.TestCase):
         self.env = dict(os.environ, LUA=self.lua, QUESTIEDB_TEST_EXIT="0")
         self.env.pop("FAIL_GENERATE", None)
         self.env.pop("CHANGE_ARTIFACT", None)
-        self.env.pop("CHANGE_ALIAS", None)
         self.env.pop("FAIL_READ", None)
         shutil.copyfile(FIXTURES / "generate.lua", self.root / "generate.lua")
         for script in ("verify.lua", "equivalence.lua", "reconstruct.lua", "validators/run.lua", "test.lua"):
@@ -313,16 +311,13 @@ class CommandFlowTest(unittest.TestCase):
         self.assertEqual(24, sum(event.startswith("read:") for event in events))
         self.assertIn("all 24 checks jobs passed", result.stdout)
 
-    def test_forever_determinism_checks_both_tocs_and_pair_equality(self):
+    def test_forever_determinism_checks_toc(self):
         result = self.run_cli("generate", "determinism", "Forever")
         self.assertEqual(0, result.returncode, result.stdout + result.stderr)
-        self.env["CHANGE_ALIAS"] = "1"
+        self.env["CHANGE_ARTIFACT"] = "1"
         changed = self.run_cli("determinism", "Forever")
         self.assertNotEqual(0, changed.returncode)
         self.assertIn("checksum differs", (self.root / ".out/checks/determinism_Forever.log").read_text())
-        mismatched = self.run_cli("determinism", "Forever")
-        self.assertNotEqual(0, mismatched.returncode)
-        self.assertIn("TOCs differ before regeneration", mismatched.stderr)
 
     def test_generation_failure_blocks_later_phases(self):
         self.env["FAIL_GENERATE"] = "Vanilla"

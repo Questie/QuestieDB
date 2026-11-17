@@ -24,7 +24,7 @@ import zipfile
 
 FLAVORS = ("Vanilla", "TBC", "Wrath", "Cata", "Mists", "Forever")
 LEGACY_TOCS = {"QuestieDB_%s.toc" % flavor for flavor in FLAVORS if flavor != "Forever"}
-FOREVER_TOCS = {"QuestieDB_Forever.toc", "QuestieDB_Camelot.toc"}
+FOREVER_TOCS = {"QuestieDB_Forever.toc"}
 TOCS = LEGACY_TOCS | FOREVER_TOCS
 
 
@@ -109,15 +109,6 @@ def stage_archive(archive_path: Path, stage: Path) -> None:
             target.parent.mkdir(parents=True, exist_ok=True)
             with archive.open(entry) as source, target.open("wb") as output:
                 shutil.copyfileobj(source, output)
-
-    # Older combined releases omit both names. Transitional releases must ship an exact pair.
-    present = {name for name in FOREVER_TOCS if (stage / name).exists()}
-    if present and present != FOREVER_TOCS:
-        raise ValueError("release must contain both Forever and Camelot TOCs")
-    if present and sha256(stage / "QuestieDB_Forever.toc") != sha256(
-        stage / "QuestieDB_Camelot.toc"
-    ):
-        raise ValueError("Forever and Camelot TOCs must be identical")
 
 
 def install(addons: Path, tag: str = "latest", repo: str = "Questie/QuestieDB") -> Path:

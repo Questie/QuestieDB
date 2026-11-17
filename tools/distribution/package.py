@@ -208,12 +208,7 @@ def build_zip(
 
     subprocess.run([lua, "tools/distribution/strip-static.lua", str(addon)], cwd=root, check=True)
 
-    # Never ship a workspace alias: it may predate Generation or staged transformations.
     tocs = [addon / source.toc for source in sources]
-    if any(source.flavor == "Forever" for source in sources):
-        alias = addon / "QuestieDB_Camelot.toc"
-        shutil.copyfile(addon / "QuestieDB_Forever.toc", alias)
-        tocs.append(alias)
 
     filename = "QuestieDB-%s-%s.zip" % (version, flavor)
     archive_path = root / ".out/dist" / filename

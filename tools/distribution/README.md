@@ -33,8 +33,7 @@ composition rules. The details below describe QuestieDB's packaging.
 
 Addon-manager flavor identifiers follow Questie's release conventions: `Vanilla` → `classic`,
 `TBC` → `bcc`, `Wrath` → `wrath`, `Cata` → `cata`, `Mists` → `mists`, and `Forever` → `forever`.
-Forever currently declares interface `16001`; Camelot is only its temporary TOC compatibility
-name, not another addon-manager flavor or download. Internal labels in `questiedb.artifacts`
+Forever currently declares interface `16001`. Internal labels in `questiedb.artifacts`
 stay unchanged. Each artifact still includes its `file`, `flavor`,
 `sha256`, `bytes`, and `rawBytes`; the manager-facing entries do not replace that information.
 
@@ -233,7 +232,6 @@ Both CI and Release reconstruct all six flavors.
 
 Release records each TOC's checksum at Generation, matches it against the flavor's other
 Generations, and checks it again after collecting all six.
-Forever's handoff includes its byte-identical Camelot alias; both filenames are checksummed.
 Packaging waits for the shared and flavor checks, creates per-flavor and combined ZIPs from
 those exact verified TOCs, and never regenerates them. Publication requires successful shared
 and flavor checks followed by successful packaging. Only GitHub publication is configured.
