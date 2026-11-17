@@ -29,13 +29,13 @@ The committed `QuestieDB.toc` uses native per-file game-type conditions. Legacy 
 ```
 
 An `AllowLoadGameType` list passes when the client recognizes none of its tokens. On Anniversary
-2.5.6 (69795), the former `camelot, forever` list loaded the Forever initializer and overwrote
+2.5.6 (69795), a former Forever allow list loaded the Forever initializer and overwrote
 TBC entity and support payloads. Excluding known legacy types avoids that failure without
 requiring older clients to recognize Forever. `mainline` is deliberately not excluded; this does
 not add Mainline as a supported database flavor.
 
-The emulator tests both `camelot` and `forever` personas against the same owned files;
-`camelot` remains its default Forever persona. Owned folder names need not match native names.
+The emulator tests the `forever` persona against the owned files. Owned folder names need not
+match native names.
 
 Native selection replaces cross-flavor Lua discard selectors and their marker files.
 The loader shim still captures deferred entity strings, materializes them lazily and
@@ -115,18 +115,13 @@ same field, and authored fixes override both.
 
 ## Baked artifacts
 
-`generate.lua Forever` writes `QuestieDB_Forever.toc` and a byte-identical temporary
-`QuestieDB_Camelot.toc` alias after Localization blocks are complete. Packaging creates the
-alias again from the staged canonical TOC after Static Correction stripping; it does not
-trust an old workspace alias. Legacy underscore filenames are unchanged. Baked file lists
+`generate.lua Forever` writes `QuestieDB_Forever.toc` after Localization blocks are complete.
+Legacy underscore filenames are unchanged. Baked file lists
 remain resolved plain paths, without native file conditions or conditional entity metadata.
 
 All six flavors produce six flavor ZIPs plus `QuestieDB-<version>-all.zip`. Bootstrap still accepts
 five-flavor combined releases using the nested `questiedb` manifest; the old flat manifest
-format is not accepted. A combined release containing either Forever TOC must contain both,
-byte-identically. Camelot is not a selectable database flavor or a separate ZIP.
-[Issue #23](https://github.com/Questie/QuestieDB/issues/23) tracks removal of the temporary token
-and filename handling, including workflow handoffs and older-release bootstrap compatibility.
+format is not accepted.
 
 All nine generated locales remain in Baked artifacts so `LibQuestieDB.l10n.SetLocale()` can
 switch locales. There is no client-locale filtering. Source Base translations are still
@@ -168,7 +163,7 @@ handoff, so review new exports rather than copying them wholesale.
 Source mode requires native per-file allow and exclude conditions. Historical Interface metadata
 alone does not prove support. There is no Lua fallback. The exclusion-based selection passed a
 live Anniversary 2.5.6 (69795), Interface 20506 startup check. Forever and other supported-client
-Source acceptance, plus exact Camelot suffixed-TOC recognition, remain pending. Offline emulator
+Source acceptance remains pending. Offline emulator
 and distribution tests cannot establish native parser behavior.
 
 [TOC selection research](toc-flavor-selection.md) records earlier source evidence and parser
@@ -194,10 +189,9 @@ these checks in a disposable client/addon setup:
 - Compare the loaded file set and order with the emulator: one initializer, only applicable
   raw/support/provider files, cumulative legacy ordering, seasonal gates and loader restoration.
 - Check suffixed-TOC recognition and Baked precedence over the base TOC on each supported
-  client build. Confirm both Forever filenames carry identical complete metadata and plain
-  file lists. Before removing Camelot, verify `QuestieDB_Forever.toc` works without that alias.
+  client build. Confirm the Forever TOC carries complete metadata and plain file lists.
 - Verify that Forever-only files are excluded on legacy clients and included on Forever, without
-  depending on recognition of `camelot` or `forever`. Record the exact builds and conditions tested.
+  depending on recognition of `forever`. Record the exact builds and conditions tested.
 - Check several separated static landmarks on Mulgore, Eastern Plaguelands, Redridge Mountains
   and Stormwind City. Record map identity and measured placement, not just one NPC. Review
   retained synthetic-area points and deferred Cata/MoP entrance frames separately.

@@ -82,8 +82,8 @@ local function witness(db)
   assert(db.Item.npcDrops(286647)[1] == 252711, "additive item drop source")
 end
 
-for _, token in ipairs(baked and { "camelot" } or { "camelot", "forever" }) do
-  local db, files = load("Forever", token)
+do
+  local db, files = load("Forever", "forever")
   witness(db)
   local generated, traces = 0, 0
   for _, entry in ipairs(db.Corrections.Select()) do

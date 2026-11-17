@@ -253,8 +253,6 @@ def run_jobs(jobs: list[Job], phase: str, root: Path, env: dict[str, str],
                     break
                 job = pending.pop(index)
                 before = tuple(file_hash(root / path) for path in job.artifacts)
-                if len(before) == 2 and before[0] != before[1]:
-                    raise ValueError("Forever/Camelot TOCs differ before regeneration")
                 log = (logdir / (job.label.replace(":", "_") + ".log")).open("wb")
                 print("  start %-22s (%4d MB, %d in flight)" %
                       (job.label, job.weight, len(running) + 1), flush=True)
@@ -338,8 +336,7 @@ def execute(options: Options, root: Path) -> int:
 
     if "determinism" in options.tasks:
         jobs = [Job("determinism:" + flavor, [lua, "generate.lua", flavor, "--no-base-toc", "--quiet"],
-                    WEIGHTS[flavor], artifacts=(Path("QuestieDB_Forever.toc"), Path("QuestieDB_Camelot.toc"))
-                    if flavor == "Forever" else (Path("QuestieDB_%s.toc" % flavor),))
+                    WEIGHTS[flavor], artifacts=(Path("QuestieDB_%s.toc" % flavor),))
                 for flavor in options.flavors]
         if not run_jobs(jobs, "determinism", root, env, budget, options.sequential):
             return 1

@@ -6,8 +6,7 @@ local fixture = dofile("tools/validation/storage-fixture.lua")
 local db = fixture.namespace()
 local quest, npc, object, item = db.Meta.Quest.keys, db.Meta.Npc.keys, db.Meta.Object.keys, db.Meta.Item.keys
 local path = output .. "/QuestieDB_Forever.toc"
-local alias = output .. "/QuestieDB_Camelot.toc"
-assert(not lib.fileExists(path) and not lib.fileExists(alias), "refusing to overwrite an artifact")
+assert(not lib.fileExists(path), "refusing to overwrite an artifact")
 
 -- These literals satisfy forever-delta-base.test.lua's public Baked witnesses.
 -- No raw entity payloads, correction providers, or production Generation are needed.
@@ -126,8 +125,6 @@ for _, file in ipairs({
   "src/api.lua",
 }) do files[#files + 1] = file end
 content = table.concat(files, "\n") .. "\n" .. content
-for _, destination in ipairs({path, alias}) do
-  local out = assert(io.open(destination, "wb"))
-  assert(out:write(content))
-  assert(out:close())
-end
+local out = assert(io.open(path, "wb"))
+assert(out:write(content))
+assert(out:close())

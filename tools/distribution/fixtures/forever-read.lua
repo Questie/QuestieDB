@@ -1,10 +1,10 @@
--- Read the real staged runtime through either Forever TOC filename.
+-- Read the real staged runtime through the Forever TOC.
 local stage, filename = assert(arg[1]), assert(arg[2])
 local client = dofile("emulator/client.lua")
 local metadata = dofile("emulator/metadata.lua")
 client.install({})
 metadata.load(stage .. "/" .. filename, "QuestieDB")
-local db, files = metadata.loadAddon(stage .. "/" .. filename, "QuestieDB", stage, "camelot")
+local db, files = metadata.loadAddon(stage .. "/" .. filename, "QuestieDB", stage, "forever")
 assert(db.flavor.name == "Forever")
 assert(QuestDB.name(2) == "Sharptalon's Claw")
 local ownedProviders = 0

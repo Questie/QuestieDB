@@ -5,7 +5,7 @@
 This records the initial pre-rebase validation checkpoint on `forever-toc`, based on
 `0529e8d82075316242b0796e2128afb40d300130`. The changes were uncommitted at that time.
 The counts and results below apply to that snapshot, not to the current branch or a shipped
-release. Its artifacts used the earlier hyphenated Forever/Camelot filenames.
+release. Its artifacts used the earlier hyphenated Forever filename.
 
 The golden, compiler, import-fidelity, and pinned-checkout checks recorded below have since
 been retired by [ADR 0014](adr/0014-owned-data-after-migration.md). They are historical evidence,
@@ -32,7 +32,7 @@ not entity data or generation behavior.
 
 | Check | Result |
 | --- | --- |
-| `lua5.1 generate.lua all` | All six flavors generated; Forever/Camelot bytes identical. |
+| `lua5.1 generate.lua all` | All six flavors generated. |
 | Verification, Source/Baked equivalence, reconstruction | All six flavors passed, including equivalence self-proofs. A timed-out orchestration run was completed with a separate Wrath run; the Cata reconstruction log also completed successfully. |
 | Additional Forever Horde equivalence | 35,944 entities, 590,128 fields, zero differences. |
 | Validators with self-check | Forever and Vanilla: zero findings. Existing TBC/Wrath/Cata/Mists findings remained baselined. |
@@ -40,7 +40,7 @@ not entity data or generation behavior.
 | New Forever Golden with self-check | 35,944 entities; recorded from the Git-backed dirty worktree. |
 | Full Lua suite, explicit project-owned Questie pin | **3,340 checks, zero failures.** |
 | Real `questiedb.sh check Forever --sequential --budget-mb=2200` | All five applicable gates passed; no compiler oracle scheduled. |
-| Full localized `questiedb.sh package all` | Seven ZIPs; manifest checksums and byte counts verified. Exact Forever/Camelot pair in Forever and combined ZIPs. |
+| Full localized `questiedb.sh package all` | Seven ZIPs; manifest checksums and byte counts verified. |
 | Real pinned schema materialization, Correction re-port and Source TOC regeneration | No byte drift, including owned Forever providers. |
 | Vanilla compiler differential | No new regressions; all 20,220 known divergences baselined. |
 
@@ -95,7 +95,7 @@ probe and subsequent commits do not change what happened in this earlier validat
 The narrow probe result and still-outstanding live checks are recorded in [Forever](forever.md#client-support-and-acceptance).
 
 - Native client acceptance was **pending**: Source condition support on supported clients,
-  Camelot suffix recognition, Baked precedence and map-landmark placement. Emulator results
+  Forever suffix recognition, Baked precedence and map-landmark placement. Emulator results
   and Blizzard source examples are not client proof. See the implementation guide's checklist.
 - Six synthetic coordinates, unconverted dungeon entrances, consumer-supplied coordinates,
   partial map coverage and new Forever content/race policy remain explicit data gaps.

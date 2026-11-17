@@ -394,11 +394,6 @@ function generate.flavor(flavor, opts)
     out:close()
   end
 
-  -- Compatibility names are byte copies of the finished artifact, including Localization.
-  for _, suffix in ipairs(flavor.aliases or {}) do
-    lib.writeAll(config.addonName .. suffix .. ".toc", lib.readAll(tocPath))
-  end
-
   local size = lib.fileSize(tocPath)
   say(string.format("Generated %s — %d entities, %d rows, %.1f MB entity data, %.1f MB total, %.1fs",
     tocPath, totals.entities, totals.rows, totals.entityBytes / 1048576,

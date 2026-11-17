@@ -76,7 +76,6 @@ The extra import checks live only in disposable `.out/import-check.lua`, not run
 | `01-audit` | `lua5.1 test.lua correction-audit` | 0 | 44.25 | 44148 |
 | `02-source` | `lua5.1 test.lua corrections forever-delta-base native-toc` | 0 | 4.99 | 127852 |
 | `03-generate` | `lua5.1 generate.lua Forever --no-base-toc` | 0 | 34.38 | 260236 |
-| `04-alias` | `cmp QuestieDB_Forever.toc QuestieDB_Camelot.toc` | 0 | 0.01 | 1792 |
 | `05-verify` | `lua5.1 verify.lua Forever` | 0 | 38.18 | 442288 |
 | `06-equivalence` | `lua5.1 equivalence.lua Forever` | 0 | 34.77 | 290460 |
 | `07-reconstruct` | `lua5.1 reconstruct.lua Forever` | 0 | 36.99 | 381708 |
@@ -346,7 +345,7 @@ and Self-proofs enabled. No gameplay baseline was updated.
 - Correction audit: 24 checks, 81 providers, 8,932 calls; zero failures.
 - Correction/delta-base/native-TOC suites: 2,464 checks passed. Maintained literal
   Source/Baked witnesses cover quests 86585, 94004, 8368 and 6562.
-- Generation: 46,115 entities and rows, all nine locales; Forever/Camelot TOCs match.
+- Generation: 46,115 entities and rows, all nine locales.
 - Verification: 763,890 fields, 937 chunked values, 326,837 localized reads; zero errors.
 - Equivalence: 763,890 fields, 579,672 localized reads, 39,307 name buckets;
   zero divergences and Self-proof passed.
@@ -477,7 +476,6 @@ command, output, exit, wall time and peak RSS; `.out/results.tsv` is the executi
 | `01-audit` | `lua5.1 test.lua correction-audit` | 0 | 43.19 | 44132 |
 | `02-source` | `lua5.1 test.lua corrections forever-delta-base native-toc` | 0 | 5.25 | 123020 |
 | `03-generate` | `lua5.1 generate.lua Forever --no-base-toc` | 0 | 34.04 | 256936 |
-| `04-alias` | `cmp QuestieDB_Forever.toc QuestieDB_Camelot.toc` | 0 | 0.01 | 1536 |
 | `05-verify` | `lua5.1 verify.lua Forever` | 0 | 37.30 | 446672 |
 | `06-equivalence` | `lua5.1 equivalence.lua Forever` | 0 | 35.98 | 294716 |
 | `07-reconstruct` | `lua5.1 reconstruct.lua Forever` | 0 | 37.10 | 370156 |
@@ -490,7 +488,6 @@ command, output, exit, wall time and peak RSS; `.out/results.tsv` is the executi
   8,932 calls and 5,088,182 rows; zero failures.
 - Correction/import/native-TOC suites: **2,464 checks**, zero failures.
 - Generation: **46,115 entities and rows**, all nine locales and 36 Localization blocks.
-  Forever and Camelot artifacts are byte-identical.
 - Verification: **763,890 fields**, 937 chunked values, 326,837 localized reads; zero errors.
 - Equivalence: **763,890 fields**, 579,672 localized reads (1,486 locale-shaped),
   39,307 name buckets; zero divergences and Self-proof passed.
@@ -615,7 +612,6 @@ are in `.out/<name>.command`, `.log`, `.time` and `.out/results.tsv`.
 | `01-audit` | `lua5.1 test.lua correction-audit` | 0 | 44.79 | 48332 |
 | `02-source` | `lua5.1 test.lua corrections forever-delta-base native-toc` | 0 | 5.48 | 126756 |
 | `03-generate` | `lua5.1 generate.lua Forever --no-base-toc` | 0 | 34.23 | 252988 |
-| `04-alias` | `cmp QuestieDB_Forever.toc QuestieDB_Camelot.toc` | 0 | 0.01 | 1536 |
 | `05-verify` | `lua5.1 verify.lua Forever` | 0 | 38.59 | 446516 |
 | `06-equivalence` | `lua5.1 equivalence.lua Forever` | 0 | 36.41 | 299148 |
 | `07-reconstruct` | `lua5.1 reconstruct.lua Forever` | 0 | 36.64 | 369780 |
@@ -628,7 +624,6 @@ are in `.out/<name>.command`, `.log`, `.time` and `.out/results.tsv`.
   8,932 calls and 5,088,182 rows; zero failures.
 - Correction/import/native-TOC suites: 2,464 checks; zero failures.
 - Generation: 46,115 entities/rows, all nine locales and 36 Localization blocks.
-  Forever and Camelot artifacts are byte-identical.
 - Verification: 763,890 fields, 937 chunked values, 326,837 localized reads; zero errors.
 - Equivalence: 763,890 fields, 579,672 localized reads (1,486 locale-shaped),
   39,307 name buckets; zero divergences, Self-proof passed.

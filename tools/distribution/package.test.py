@@ -534,7 +534,6 @@ class PackageTest(unittest.TestCase):
                 + "## X-Quest-1-S: fixture\n",
             )
 
-        self.write("QuestieDB_Camelot.toc", "stale workspace alias")
         self.env = dict(
             os.environ,
             PATH=str(self.bin),
@@ -610,9 +609,7 @@ class PackageTest(unittest.TestCase):
                 }
                 expected.update("QuestieDB/QuestieDB_%s.toc" % f for f in flavors)
                 if "Forever" in flavors:
-                    expected.add("QuestieDB/QuestieDB_Camelot.toc")
                     primary = archive.read("QuestieDB/QuestieDB_Forever.toc")
-                    self.assertEqual(primary, archive.read("QuestieDB/QuestieDB_Camelot.toc"))
                     self.assertTrue(primary.endswith(b"# staged transformation\n"))
                 self.assertEqual(
                     sum(
@@ -870,18 +867,14 @@ class PackageTest(unittest.TestCase):
         self.assertNotIn("QuestieDB-1.2.3-dev.abcdef0-all.zip", notes)
         self.assertNotIn("QuestieDB-1.2.3-dev.abcdef0-Mists.zip", notes)
 
-    def test_forever_packages_without_workspace_alias(self):
-        (self.root / "QuestieDB_Camelot.toc").unlink()
+    def test_forever_packages_forever_toc(self):
         result = self.run_package("Forever")
         self.assertEqual(0, result.returncode, result.stderr)
         self.assertEqual(
             ["QuestieDB-1.2.3-dev.abcdef0-Forever.zip"], [p.name for p in (self.root / ".out/dist").glob("*.zip")]
         )
         with zipfile.ZipFile(self.root / ".out/dist/QuestieDB-1.2.3-dev.abcdef0-Forever.zip") as archive:
-            self.assertEqual(
-                archive.read("QuestieDB/QuestieDB_Forever.toc"),
-                archive.read("QuestieDB/QuestieDB_Camelot.toc"),
-            )
+            self.assertIn("QuestieDB/QuestieDB_Forever.toc", archive.namelist())
         document = json.loads((self.root / ".out/dist/release.json").read_text())
         self.assertEqual(
             [
@@ -895,13 +888,6 @@ class PackageTest(unittest.TestCase):
         )
         notes = (self.root / ".out/dist/RELEASE_NOTES.md").read_text()
         self.assertIn("[QuestieDB-1.2.3-dev.abcdef0-Forever.zip]", notes)
-        self.assertNotIn("Camelot", notes)
-
-    def test_camelot_is_not_a_flavor(self):
-        self.preserve_previous_output()
-        result = self.run_package("Camelot")
-        self.assertNotEqual(0, result.returncode)
-        self.assert_previous_output()
 
     def test_missing_forever_preserves_previous_output(self):
         self.preserve_previous_output()
