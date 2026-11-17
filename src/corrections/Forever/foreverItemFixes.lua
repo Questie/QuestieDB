@@ -58,6 +58,9 @@ function ForeverItemFixes:Load()
         [14396] = { -- Incantations from the Nether
             [itemKeys.npcDrops_remove] = {238461},
         },
+        [16976] = { -- Murgut's Totem
+            [itemKeys.npcDrops] = {},
+        },
         [206157] = { -- Seaforium Mining Charge
             [itemKeys.name] = "Seaforium Mining Charge",
             [itemKeys.objectDrops] = {403041},

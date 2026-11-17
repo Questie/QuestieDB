@@ -4079,7 +4079,7 @@ function QuestieQuestFixes:Load()
             [questKeys.breadcrumbs] = {6562},
         },
         [6564] = { -- Allegiance to the Old Gods
-            [questKeys.preQuestSingle] = {6562},
+            [questKeys.availableStartingWith] = 6563,
         },
         [6566] = { -- What the Wind Carries
             [questKeys.triggerEnd] = {"Thrall's Tale", {[zoneIDs.ORGRIMMAR] = {{31.78, 37.81}}}},
@@ -4114,6 +4114,9 @@ function QuestieQuestFixes:Load()
         [6612] = { -- I Know A Guy...
             [questKeys.breadcrumbForQuestId] = 6610, -- #2070
             [questKeys.nextQuestInChain] = 6610,
+        },
+        [6621] = { -- King of the Foulweald
+            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Kill Chief Murgut"), 0, {{"monster", 12918}}}},
         },
         [6622] = { -- Triage
             [questKeys.triggerEnd] = {"15 Patients Saved!", {[zoneIDs.DUSTWALLOW_MARSH] = {{67.79, 49.06}}}},
@@ -4178,6 +4181,7 @@ function QuestieQuestFixes:Load()
         },
         [6922] = { -- Baron Aquanis
             [questKeys.zoneOrSort] = 719,
+            [questKeys.availableStartingWith] = 6921,
         },
         [6961] = { -- Great-father Winter is Here!
             [questKeys.exclusiveTo] = {7021, 7024},
