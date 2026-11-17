@@ -151,6 +151,9 @@ function ForeverNpcFixes:Load()
             [npcKeys.questStarts_add] = {84395,84396,84397,84398,84399,84400,84401,84402},
             [npcKeys.questEnds_add] = {84395,84396,84397,84398,84399,84400,84401,84402},
         },
+        [5640] = { -- Keldran
+            [npcKeys.waypoints] = {},
+        },
         [5891] = { -- Minor Manifestation of Earth
             [npcKeys.spawns_add] = {[zoneIDs.DUN_MOROGH] = {{24.84,61.86}}},
         },

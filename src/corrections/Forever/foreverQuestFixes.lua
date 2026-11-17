@@ -285,6 +285,9 @@ function ForeverQuestFixes:Load()
         [6126] = { -- Lessons Anew
             [questKeys.startedBy_add] = {{262560}},
         },
+        [6481] = { -- Earthen Arise
+            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Summon Goggeroc"), 0, {{"object", 178145}}}},
+        },
         [6564] = { -- Allegiance to the Old Gods
             [questKeys.preQuestSingle] = {},
             [questKeys.availableStartingWith] = 6563,
