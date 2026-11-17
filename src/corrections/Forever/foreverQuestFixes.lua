@@ -650,6 +650,18 @@ function ForeverQuestFixes:Load()
         [80001] = { -- Rekindle
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
+        [80453] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [80454] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [80455] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [81885] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [81947] = { -- Sanguine Sorcery
             [questKeys.startedBy] = {{211022,211033},{441247}},
             [questKeys.requiredLevel] = 1,
@@ -712,13 +724,46 @@ function ForeverQuestFixes:Load()
         [82062] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [82135] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [82208] = { -- Greater Friend of the Library
             [questKeys.startedBy] = {{211022,211033}},
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.objectivesText] = {"You will need to hand in 25 books to complete this quest, however you can hand 1 in at any time."},
             [questKeys.preQuestSingle] = {79536},
         },
+        [84135] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [84137] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [84138] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [84146] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [84151] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [84153] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [84163] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [84166] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [84171] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [84211] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [84212] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [84319] = {
@@ -728,6 +773,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [84377] = { -- End of the Dark Horde
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [84394] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [84395] = { -- Undead Potatoes
@@ -827,18 +875,54 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredSkill] = {profKeys.MINING, 1},
         },
+        [86777] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [86791] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [86792] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [86796] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [86797] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [86798] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [86799] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [86804] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [86812] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [86813] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [86814] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [86925] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [86926] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [86927] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [87288] = { -- Soft Saber Pelts
             [questKeys.reputationReward] = {{factionIDs.DARNASSUS, 100},{factionIDs.GNOMEREGAN_EXILES, 25},{factionIDs.ALLIANCE, 25},{factionIDs.IRONFORGE, 25},{factionIDs.STORMWIND, 25}},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [87346] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [87494] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -850,6 +934,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [90647] = { -- The Staff of the Mountain
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [90789] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [90865] = { -- Eyes of the Watchers
@@ -2603,6 +2690,9 @@ function ForeverQuestFixes:Load()
         [95769] = { -- Threading a Solution
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [95771] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [95789] = { -- Shady Saltseers
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
         },
@@ -2823,6 +2913,9 @@ function ForeverQuestFixes:Load()
         },
         [96067] = { -- Rock 'em and Sock 'em
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+        },
+        [96075] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [96076] = { -- In Demand - Ancient Elven Curiosities
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -3130,6 +3223,9 @@ function ForeverQuestFixes:Load()
         [96912] = { -- Field of Honor: Week 1
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [96913] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [96930] = { -- The Capricious Corvid
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
@@ -3208,6 +3304,24 @@ function ForeverQuestFixes:Load()
         [97178] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [97180] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [97182] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [97183] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [97184] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [97185] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [97186] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [97220] = { -- Philmor's Favor
             [questKeys.nextQuestInChain] = 97222,
         },
@@ -3261,6 +3375,9 @@ function ForeverQuestFixes:Load()
         },
         [97263] = { -- Your Package Has Arrived
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+        },
+        [97270] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [97271] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -3316,6 +3433,9 @@ function ForeverQuestFixes:Load()
         },
         [97332] = { -- Twice Misplaced Trust
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+        },
+        [97412] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [97453] = { -- Weed Whacked
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
@@ -4014,6 +4134,9 @@ function ForeverQuestFixes:Load()
             [questKeys.breadcrumbForQuestId] = 97243, -- to be tested
             [questKeys.nextQuestInChain] = 97243,
         },
+        [98529] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [98545] = { -- Leonid's Letter
             [questKeys.preQuestSingle] = {96896},
         },
@@ -4384,6 +4507,15 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredMaxLevel] = 39,
             [questKeys.requiredMinRep] = {factionIDs.THERAMORE_EXPEDITIONARY_FORCE, 3000}, -- big assumption here. update when confirmed/disproved
         },
+        [98894] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [98898] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [98902] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [98914] = { -- Darkspear's Standard Care Package
             [questKeys.name] = "Darkspear's Standard Care Package",
             [questKeys.requiredLevel] = 40,
@@ -4611,7 +4743,31 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {nil,nil,{{14047}}},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
+        [99201] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [99202] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [99203] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [99204] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [99206] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [99213] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [99214] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [99215] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [99216] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [99233] = {
