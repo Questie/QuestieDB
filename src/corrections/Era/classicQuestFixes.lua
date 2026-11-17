@@ -4045,6 +4045,9 @@ function QuestieQuestFixes:Load()
         [6421] = { -- Boulderslide Ravine
             [questKeys.nextQuestInChain] = 6481,
         },
+        [6481] = { -- Earthen Arise
+            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Summon Goggeroc"), 0, {{"object", 178145}}}},
+        },
         [6482] = { -- Freedom to Ruul
             [questKeys.triggerEnd] = {"Escort Ruul from the Thistlefurs.", {[zoneIDs.ASHENVALE] = {{38.53, 37.32}}}},
         },

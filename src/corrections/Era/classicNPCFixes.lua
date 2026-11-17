@@ -1100,6 +1100,9 @@ function QuestieNPCFixes:Load()
         [5600] = { -- Khan Dez'hepah
             [npcKeys.spawns] = {[zoneIDs.DESOLACE] = {{73.2,41.8},{73.4,43},{74,43.6},{74.4,44.8},{73.6,46.6},{73,47.8},{74.6,48.8}}},
         },
+        [5640] = { -- Keldran
+            [npcKeys.waypoints] = {},
+        },
         [5675] = { -- Carendin Halgar
             [npcKeys.questStarts] = {1471,1472,1473,1474,3001,65597},
             [npcKeys.questEnds] = {1471,1473,1474,1476,1478,65593,65597},
