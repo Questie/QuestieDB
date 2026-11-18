@@ -1041,6 +1041,9 @@ function ForeverNpcFixes:Load()
         [269075] = { -- Snow Leopard Prowler
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{27.37,62.86}}},
         },
+        [269127] = { -- Image of Archmage Modera
+            [npcKeys.spawns] = {[zoneIDs.SILVERPINE_FOREST] = {{68.6,45.1}}},
+        },
         [270201] = { -- Al'Aketh Brawler
             [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
         },
