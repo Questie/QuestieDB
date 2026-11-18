@@ -56,6 +56,9 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops_add] = {268622, 268623},
             [itemKeys.vendors_add] = {32413, 32631, 251955, 252080, 265347, 265730},
         },
+        [647] = { -- Destiny : https://wowhead.com/forever/item=647/destiny
+            [itemKeys.npcDrops] = {10558, 250023, 250027},
+        },
         [725] = { -- Gnoll Paw : https://wowhead.com/forever/item=725/gnoll-paw
             [itemKeys.npcDrops_add] = {566, 567, 1067},
         },
@@ -107,7 +110,7 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops_add] = {202060, 248278, 276180},
         },
         [783] = { -- Light Hide : https://wowhead.com/forever/item=783/light-hide
-            [itemKeys.npcDrops] = {923, 1189, 1388, 1770, 2187, 2974, 3231, 3241, 3247, 3416, 3424, 3463, 3823, 4129, 270693},
+            [itemKeys.npcDrops] = {1017, 1892, 3236, 3241, 3257, 3653, 4013, 4824, 5912, 12431, 263470, 266852, 270693},
         },
         [785] = { -- Mageroyal : https://wowhead.com/forever/item=785/mageroyal
             [itemKeys.npcDrops_add] = {275703},
@@ -144,6 +147,9 @@ function ForeverBaseItem:Load()
         [854] = { -- Quarter Staff : https://wowhead.com/forever/item=854/quarter-staff
             [itemKeys.vendors_add] = {256507, 276067},
         },
+        [867] = { -- Gloves of Holy Might : https://wowhead.com/forever/item=867/gloves-of-holy-might
+            [itemKeys.npcDrops] = {4303, 7011, 257910, 263380},
+        },
         [870] = { -- Fiery War Axe : https://wowhead.com/forever/item=870/fiery-war-axe
             [itemKeys.npcDrops] = {256807},
         },
@@ -157,6 +163,9 @@ function ForeverBaseItem:Load()
         [915] = { -- Red Silk Bandana : https://wowhead.com/forever/item=915/red-silk-bandana
             [itemKeys.npcDrops_add] = {234979},
         },
+        [925] = { -- Flail : https://wowhead.com/forever/item=925/flail
+            [itemKeys.vendors_add] = {270570, 275626},
+        },
         [926] = { -- Battle Axe : https://wowhead.com/forever/item=926/battle-axe
             [itemKeys.vendors_add] = {275622},
         },
@@ -168,6 +177,9 @@ function ForeverBaseItem:Load()
         },
         [929] = { -- Healing Potion : https://wowhead.com/forever/item=929/healing-potion
             [itemKeys.questRewards_add] = {97275},
+        },
+        [940] = { -- Robes of Insight : https://wowhead.com/forever/item=940/robes-of-insight
+            [itemKeys.npcDrops] = {2656, 5481, 5648, 5846, 255276, 255373, 257916},
         },
         [951] = { -- Tome of Whirlwind (TEST) : https://wowhead.com/forever/item=951/tome-of-whirlwind-test
             [itemKeys.name] = "Tome of Whirlwind (TEST)",
@@ -364,6 +376,9 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 27,
             [itemKeys.requiredLevel] = 22,
         },
+        [1482] = { -- Shadowfang : https://wowhead.com/forever/item=1482/shadowfang
+            [itemKeys.npcDrops_add] = {3868},
+        },
         [1486] = { -- Tree Bark Jacket : https://wowhead.com/forever/item=1486/tree-bark-jacket
             [itemKeys.itemLevel] = 26,
             [itemKeys.requiredLevel] = 21,
@@ -447,7 +462,8 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 41,
         },
         [1685] = { -- Troll-hide Bag : https://wowhead.com/forever/item=1685/troll-hide-bag
-            [itemKeys.npcDrops_add] = {669, 710, 750, 751, 1488, 1491, 1562, 1563, 1564, 1783, 1791, 1907, 2537, 2642, 2644, 2645, 2646, 2649, 2655, 2681, 2691, 2693, 2694, 2926, 2928, 2929, 3976, 4323, 4404, 4465, 4466, 4853, 4855, 4860, 5229, 5232, 5234, 5255, 5259, 5270, 5271, 5283, 5291, 5292, 5299, 5333, 5334, 5335, 5336, 5337, 5471, 5472, 5474, 5616, 5617, 5623, 5648, 5649, 5650, 5839, 5843, 5854, 5855, 5858, 5860, 5861, 6117, 6127, 6196, 7105, 7109, 7113, 7154, 7155, 7246, 7276, 7286, 7396, 7397, 7604, 7726, 7847, 7855, 7856, 7857, 7858, 7996, 8319, 8566, 8889, 8890, 8891, 8912, 8958, 11790, 11791, 11792, 12206, 12216, 12217, 12221, 12222, 12223, 12224, 12242, 13141, 13142, 13599, 221259, 221260, 224386},
+            [itemKeys.npcDrops_add] = {1488, 1489, 1907, 2648, 2656, 2658, 5234, 5251, 5254, 5617, 5650, 5854, 6514, 7856, 12221, 13596, 257916, 258042, 258687, 261497},
+            [itemKeys.objectDrops_add] = {153468},
         },
         [1705] = { -- Lesser Moonstone : https://wowhead.com/forever/item=1705/lesser-moonstone
             [itemKeys.subClass] = 11,
@@ -556,6 +572,9 @@ function ForeverBaseItem:Load()
         [2058] = { -- Kazon's Maul : https://wowhead.com/forever/item=2058/kazons-maul
             [itemKeys.itemLevel] = 29,
             [itemKeys.requiredLevel] = 24,
+        },
+        [2059] = { -- Sentry Cloak : https://wowhead.com/forever/item=2059/sentry-cloak
+            [itemKeys.npcDrops] = {434, 1008, 1009, 1015, 1034, 1040, 1111, 1112, 1258, 2268, 2372, 3377, 3459, 3758, 3763, 3772, 3781, 4021, 4053, 4054, 4437, 4807, 4818, 5756, 5832, 5931, 6210, 247016, 277645},
         },
         [2069] = { -- Black Bear Hide Vest : https://wowhead.com/forever/item=2069/black-bear-hide-vest
             [itemKeys.itemLevel] = 14,
@@ -683,9 +702,15 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 23,
             [itemKeys.requiredLevel] = 18,
         },
+        [2251] = { -- Gooey Spider Leg : https://wowhead.com/forever/item=2251/gooey-spider-leg
+            [itemKeys.npcDrops_add] = {260803, 260804},
+        },
         [2271] = { -- Staff of the Blessed Seer : https://wowhead.com/forever/item=2271/staff-of-the-blessed-seer
             [itemKeys.itemLevel] = 25,
             [itemKeys.requiredLevel] = 20,
+        },
+        [2277] = { -- Necromancer Leggings : https://wowhead.com/forever/item=2277/necromancer-leggings
+            [itemKeys.npcDrops] = {587, 588, 595, 671, 699, 858, 871, 940, 941, 1085, 1096, 2240, 2252, 2556, 2557, 2588, 3984, 4130, 4341, 4411, 4640, 4674, 5935, 7078, 7175, 7335, 7349, 250187, 256798, 258799, 258804, 258897},
         },
         [2280] = { -- Kam's Walking Stick : https://wowhead.com/forever/item=2280/kams-walking-stick
             [itemKeys.itemLevel] = 29,
@@ -713,7 +738,7 @@ function ForeverBaseItem:Load()
             [itemKeys.vendors_add] = {3605, 242498, 247227, 251973, 251991, 251993, 252020, 252376, 252380, 252449, 254360, 254695, 257003, 257024, 260559, 260570, 267324, 267327, 267330, 267333, 267336},
         },
         [2321] = { -- Fine Thread : https://wowhead.com/forever/item=2321/fine-thread
-            [itemKeys.vendors_add] = {242498, 251973, 251991, 251993, 252020, 252380, 252449, 254360, 254695, 260559, 260570},
+            [itemKeys.vendors_add] = {242498, 251973, 251991, 251993, 252020, 252380, 252449, 254360, 254695, 255701, 256629, 260559, 260570},
         },
         [2324] = { -- Bleach : https://wowhead.com/forever/item=2324/bleach
             [itemKeys.vendors_add] = {242498, 251973, 251991, 252380, 252449, 254360, 254695, 260570},
@@ -948,8 +973,9 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 20,
         },
         [2589] = { -- Linen Cloth : https://wowhead.com/forever/item=2589/linen-cloth
+            [itemKeys.itemDrops] = {19425},
             [itemKeys.relatedQuests] = {94434},
-            [itemKeys.objectDrops_add] = {626752},
+            [itemKeys.objectDrops_add] = {3714, 403041, 626752},
         },
         [2592] = { -- Wool Cloth : https://wowhead.com/forever/item=2592/wool-cloth
             [itemKeys.relatedQuests] = {99191, 99196},
@@ -971,6 +997,9 @@ function ForeverBaseItem:Load()
         },
         [2605] = { -- Green Dye : https://wowhead.com/forever/item=2605/green-dye
             [itemKeys.vendors_add] = {242498, 251973, 251991, 251993, 252380, 252449, 254360, 254695, 260570},
+        },
+        [2608] = { -- Threshadon Ambergris : https://wowhead.com/forever/item=2608/threshadon-ambergris
+            [itemKeys.npcDrops_add] = {256028},
         },
         [2611] = { -- Crude Flint : https://wowhead.com/forever/item=2611/crude-flint
             [itemKeys.npcDrops_add] = {218235},
@@ -1068,11 +1097,14 @@ function ForeverBaseItem:Load()
         [2794] = { -- An Old History Book : https://wowhead.com/forever/item=2794/an-old-history-book
             [itemKeys.npcDrops_add] = {255066, 269134},
         },
+        [2800] = { -- Black Velvet Robes : https://wowhead.com/forever/item=2800/black-velvet-robes
+            [itemKeys.npcDrops] = {570, 1021, 1040, 1418, 2356, 2360, 2403, 2404, 2448, 3378, 3476, 3746, 3759, 3789, 3810, 4015, 4037, 4038, 4053, 4805, 5832, 7603, 246888, 247016, 260797, 260800, 260810, 271334, 271732},
+        },
+        [2824] = { -- Hurricane : https://wowhead.com/forever/item=2824/hurricane
+            [itemKeys.npcDrops] = {250023},
+        },
         [2835] = { -- Rough Stone : https://wowhead.com/forever/item=2835/rough-stone
             [itemKeys.npcDrops_add] = {248464, 248474},
-        },
-        [2839] = { -- A Letter to Yvette : https://wowhead.com/forever/item=2839/a-letter-to-yvette
-            [itemKeys.npcDrops_add] = {260432},
         },
         [2840] = { -- Copper Bar : https://wowhead.com/forever/item=2840/copper-bar
             [itemKeys.relatedQuests] = {95217},
@@ -1153,7 +1185,7 @@ function ForeverBaseItem:Load()
             [itemKeys.vendors] = {43411, 244512, 251537, 252390, 254358, 258380},
         },
         [2957] = { -- Journeyman's Vest : https://wowhead.com/forever/item=2957/journeymans-vest
-            [itemKeys.npcDrops] = {260157, 260428, 260430},
+            [itemKeys.npcDrops] = {1118, 1236, 1380, 1549, 10356, 248278, 250283, 259433, 259434, 260157, 260428, 260430, 260431, 260432, 267006, 275437},
         },
         [2958] = { -- Journeyman's Pants : https://wowhead.com/forever/item=2958/journeymans-pants
             [itemKeys.npcDrops] = {250283, 259434, 260157, 260428, 260430, 275437, 276111},
@@ -1162,7 +1194,8 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {260157, 260428, 260430, 260431, 271080, 271587},
         },
         [2960] = { -- Journeyman's Gloves : https://wowhead.com/forever/item=2960/journeymans-gloves
-            [itemKeys.npcDrops] = {259434, 260157, 260428},
+            [itemKeys.npcDrops] = {99, 1380, 10356, 250282, 250283, 259433, 259434, 260157, 260428, 260430, 271080, 271587, 275437, 276189, 277730},
+            [itemKeys.objectDrops_add] = {626752},
         },
         [2961] = { -- Burnt Leather Vest : https://wowhead.com/forever/item=2961/burnt-leather-vest
             [itemKeys.npcDrops] = {250282, 259433, 260428, 260430, 267006},
@@ -1286,6 +1319,9 @@ function ForeverBaseItem:Load()
         [3170] = { -- Large Bear Tooth : https://wowhead.com/forever/item=3170/large-bear-tooth
             [itemKeys.npcDrops_add] = {248299, 276189},
         },
+        [3172] = { -- Boar Intestines : https://wowhead.com/forever/item=3172/boar-intestines
+            [itemKeys.npcDrops_add] = {1127},
+        },
         [3173] = { -- Bear Meat : https://wowhead.com/forever/item=3173/bear-meat
             [itemKeys.npcDrops_add] = {248299},
         },
@@ -1300,7 +1336,8 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 12,
         },
         [3189] = { -- Wood Chopper : https://wowhead.com/forever/item=3189/wood-chopper
-            [itemKeys.npcDrops] = {471, 2162, 251284, 251622, 251662, 251707, 251918, 252068, 252802, 252820, 253195, 253282, 253511, 254588, 254589, 254596, 259433, 260428, 260430, 260431, 270201, 271486, 271530},
+            [itemKeys.npcDrops] = {471, 248474, 250282, 250283, 250928, 251261, 251284, 251622, 251662, 251707, 251918, 251966, 252068, 252802, 252820, 253195, 253282, 253511, 254588, 254596, 254626, 256966, 260157, 266851, 268530, 270201, 271486, 271530, 275703, 275708, 276061, 276198, 276415, 276416},
+            [itemKeys.objectDrops_add] = {626752},
         },
         [3190] = { -- Beatstick : https://wowhead.com/forever/item=3190/beatstick
             [itemKeys.npcDrops] = {471, 583, 2968, 5288, 248474, 250282, 250283, 250928, 251261, 251284, 251622, 251662, 251707, 251918, 251966, 252068, 252802, 252820, 253195, 253282, 253283, 253511, 254588, 254589, 254596, 254626, 255534, 256966, 256996, 259433, 259434, 260157, 260428, 260431, 268530, 270201, 271486, 271530, 275703, 275708, 276415, 276416},
@@ -1309,7 +1346,8 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops_add] = {3914},
         },
         [3200] = { -- Burnt Leather Bracers : https://wowhead.com/forever/item=3200/burnt-leather-bracers
-            [itemKeys.npcDrops] = {260157, 260428},
+            [itemKeys.npcDrops] = {1533, 250282, 250283, 260157, 271587},
+            [itemKeys.objectDrops_add] = {626752},
         },
         [3205] = { -- Inscribed Leather Bracers : https://wowhead.com/forever/item=3205/inscribed-leather-bracers
             [itemKeys.npcDrops] = {2053},
@@ -1371,7 +1409,7 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {2967, 5808, 14430, 250927, 251622, 251676, 251707, 252664, 252665, 252666, 252762, 252763, 252764, 252765, 252767, 252802, 252820, 253195, 253282, 253283, 253511, 253622, 254588, 254596, 254626, 256092, 257196, 258443, 268530, 270201, 272034, 272096, 276416},
         },
         [3281] = { -- Battle Chain Gloves : https://wowhead.com/forever/item=3281/battle-chain-gloves
-            [itemKeys.npcDrops] = {251676, 252664, 252665, 252762, 252763, 252764, 252767, 252820, 253195, 254626, 256092},
+            [itemKeys.npcDrops] = {2957, 2968, 2971, 5787, 5824, 6911, 251676, 251707, 252664, 252665, 252762, 252763, 252764, 252765, 252767, 252802, 252820, 253511, 254588, 254596, 254626, 256092, 259398, 266852, 270201, 270298, 272034, 272044, 272096, 275666},
         },
         [3282] = { -- Battle Chain Pants : https://wowhead.com/forever/item=3282/battle-chain-pants
             [itemKeys.npcDrops] = {3058, 251622, 252664, 252665, 252765, 252820, 256092, 270201},
@@ -1380,7 +1418,7 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {1132, 251676, 252664, 252763, 252765, 256092, 259388, 270201},
         },
         [3284] = { -- Tribal Boots : https://wowhead.com/forever/item=3284/tribal-boots
-            [itemKeys.npcDrops] = {251676, 251707, 252664, 252763, 252764, 252802, 253282, 254596, 256092, 270201},
+            [itemKeys.npcDrops] = {2957, 2967, 2968, 2974, 3058, 3196, 6133, 250927, 250936, 251622, 251676, 251707, 252664, 252665, 252762, 252763, 252764, 252765, 252767, 252802, 252820, 253195, 253282, 253511, 253622, 254588, 254596, 254626, 256092, 258443, 266852, 268530, 270196, 270201, 272034, 272044, 272096, 272116, 272173, 275666, 275708, 276194},
         },
         [3285] = { -- Tribal Bracers : https://wowhead.com/forever/item=3285/tribal-bracers
             [itemKeys.npcDrops] = {250927, 251676, 251707, 252664, 252665, 252762, 252763, 252764, 252765, 254588, 254626, 256092, 270201},
@@ -1431,7 +1469,7 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {2232, 3231, 3470},
         },
         [3312] = { -- Ceremonial Leather Bracers : https://wowhead.com/forever/item=3312/ceremonial-leather-bracers
-            [itemKeys.npcDrops] = {251676, 252664, 252665, 252763, 252765, 254596, 256092},
+            [itemKeys.npcDrops] = {2175, 2968, 2974, 3051, 250936, 251676, 252664, 252665, 252762, 252763, 252764, 252765, 254596, 254626, 256092, 270201, 272034, 272096, 275708, 276416},
         },
         [3313] = { -- Ceremonial Leather Harness : https://wowhead.com/forever/item=3313/ceremonial-leather-harness
             [itemKeys.npcDrops] = {2182, 3438},
@@ -1590,6 +1628,9 @@ function ForeverBaseItem:Load()
         [3600] = { -- Thin Cloth Bracers : https://wowhead.com/forever/item=3600/thin-cloth-bracers
             [itemKeys.vendors_add] = {251365},
         },
+        [3609] = { -- Plans: Copper Chain Vest : https://wowhead.com/forever/item=3609/plans-copper-chain-vest
+            [itemKeys.objectDrops_add] = {626752},
+        },
         [3641] = { -- Journeyman's Bracers : https://wowhead.com/forever/item=3641/journeymans-bracers
             [itemKeys.npcDrops] = {259433, 259434, 260428, 260430, 260431},
         },
@@ -1606,7 +1647,7 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {1972},
         },
         [3649] = { -- Tribal Buckler : https://wowhead.com/forever/item=3649/tribal-buckler
-            [itemKeys.npcDrops] = {2968, 3227, 252664, 252762, 252763, 252764, 252765, 253195, 254588, 254626, 256092, 270201},
+            [itemKeys.npcDrops] = {2000, 2203, 2968, 2973, 2990, 3051, 250927, 251622, 251676, 251707, 252664, 252665, 252666, 252762, 252763, 252764, 252765, 252767, 252802, 252820, 253195, 253511, 254588, 254596, 254626, 256092, 270196, 270201, 272034, 272044, 272096, 275666, 275708, 276415, 276416},
         },
         [3650] = { -- Battle Shield : https://wowhead.com/forever/item=3650/battle-shield
             [itemKeys.npcDrops] = {251622, 252664, 252665, 252666, 252763, 252765, 252820, 254588, 254626, 256092, 258443, 270201},
@@ -1622,6 +1663,9 @@ function ForeverBaseItem:Load()
         },
         [3654] = { -- Brackwater Shield : https://wowhead.com/forever/item=3654/brackwater-shield
             [itemKeys.npcDrops] = {252664},
+        },
+        [3659] = { -- Worn Leather Book : https://wowhead.com/forever/item=3659/worn-leather-book
+            [itemKeys.objectDrops_add] = {556653},
         },
         [3663] = { -- Murloc Fin Soup : https://wowhead.com/forever/item=3663/murloc-fin-soup
             [itemKeys.itemLevel] = 10,
@@ -1652,6 +1696,9 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 25,
             [itemKeys.requiredLevel] = 15,
         },
+        [3730] = { -- Big Bear Meat : https://wowhead.com/forever/item=3730/big-bear-meat
+            [itemKeys.npcDrops_add] = {7443, 7444, 7445, 10806, 271334},
+        },
         [3770] = { -- Mutton Chop : https://wowhead.com/forever/item=3770/mutton-chop
             [itemKeys.vendors_add] = {254089, 255894, 255940, 257057, 259863, 261313, 265347, 271006},
         },
@@ -1678,6 +1725,10 @@ function ForeverBaseItem:Load()
         [3864] = { -- Citrine : https://wowhead.com/forever/item=3864/citrine
             [itemKeys.subClass] = 11,
         },
+        [3871] = { -- Plans: Golden Scale Shoulders : https://wowhead.com/forever/item=3871/plans-golden-scale-shoulders
+            [itemKeys.npcDrops_add] = {4147, 4811, 246683, 260802},
+            [itemKeys.objectDrops_add] = {74448},
+        },
         [3889] = { -- Russet Hat : https://wowhead.com/forever/item=3889/russet-hat
             [itemKeys.vendors_add] = {251980, 256657, 259861},
         },
@@ -1703,9 +1754,6 @@ function ForeverBaseItem:Load()
         },
         [3931] = { -- Poisoned Spider Fang : https://wowhead.com/forever/item=3931/poisoned-spider-fang
             [itemKeys.npcDrops_add] = {271898},
-        },
-        [4029] = { -- Akiris Reed : https://wowhead.com/forever/item=4029/akiris-reed
-            [itemKeys.npcDrops_add] = {262397},
         },
         [4062] = { -- Imperial Leather Pants : https://wowhead.com/forever/item=4062/imperial-leather-pants
             [itemKeys.npcDrops] = {7291},
@@ -1780,7 +1828,6 @@ function ForeverBaseItem:Load()
         },
         [4363] = { -- Copper Modulator : https://wowhead.com/forever/item=4363/copper-modulator
             [itemKeys.relatedQuests] = {92911},
-            [itemKeys.npcDrops_add] = {7800, 272173, 276061},
             [itemKeys.vendors_add] = {260565},
         },
         [4364] = { -- Coarse Blasting Powder : https://wowhead.com/forever/item=4364/coarse-blasting-powder
@@ -1804,6 +1851,7 @@ function ForeverBaseItem:Load()
             [itemKeys.subClass] = 0,
         },
         [4371] = { -- Bronze Tube : https://wowhead.com/forever/item=4371/bronze-tube
+            [itemKeys.npcDrops] = {6229},
             [itemKeys.vendors_add] = {260565},
         },
         [4374] = { -- Small Bronze Bomb : https://wowhead.com/forever/item=4374/small-bronze-bomb
@@ -1946,7 +1994,7 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 29,
         },
         [4470] = { -- Simple Wood : https://wowhead.com/forever/item=4470/simple-wood
-            [itemKeys.vendors_add] = {2381, 2397, 2664, 3027, 3085, 3400, 4223, 4265, 4553, 5160, 5483, 8307, 12033, 14738, 43411, 242498, 244512, 248198, 251905, 252083, 252390, 254358, 254695, 255895, 255897, 256731, 257004, 257020, 258380, 259860, 259962, 260343, 267000, 270780, 272646},
+            [itemKeys.vendors_add] = {2381, 2397, 2664, 3027, 3085, 3400, 4223, 4265, 4553, 5160, 5483, 5695, 8307, 12033, 14738, 43411, 242498, 244512, 248198, 251905, 252083, 252390, 254358, 254695, 255895, 255897, 256731, 257004, 257006, 257020, 258380, 259860, 259962, 260343, 267000, 270780, 272646},
         },
         [4471] = { -- Flint and Tinder : https://wowhead.com/forever/item=4471/flint-and-tinder
             [itemKeys.vendors_add] = {2381, 2397, 2664, 3027, 3085, 3400, 4223, 4265, 4553, 5160, 5483, 8307, 12033, 14738, 43411, 242498, 244512, 248198, 251905, 252083, 252390, 254358, 254695, 255895, 255897, 256731, 258380, 259860, 259962, 260343, 267000, 270780, 272646},
@@ -2042,7 +2090,8 @@ function ForeverBaseItem:Load()
             [itemKeys.itemDrops] = {6353},
         },
         [4565] = { -- Simple Dagger : https://wowhead.com/forever/item=4565/simple-dagger
-            [itemKeys.npcDrops] = {43, 251284, 251662, 251918, 252068, 256996, 271530},
+            [itemKeys.npcDrops] = {43, 471, 248474, 251261, 251284, 251662, 251918, 252068, 255534, 256996, 271530, 275703},
+            [itemKeys.objectDrops_add] = {626752},
         },
         [4589] = { -- Long Elegant Feather : https://wowhead.com/forever/item=4589/long-elegant-feather
             [itemKeys.subClass] = 11,
@@ -2167,7 +2216,7 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {260157, 275437},
         },
         [4692] = { -- Ceremonial Cloak : https://wowhead.com/forever/item=4692/ceremonial-cloak
-            [itemKeys.npcDrops] = {3051, 251676, 251707, 252664, 252762, 252765, 252820, 253282, 253511, 254588, 254626, 256092},
+            [itemKeys.npcDrops] = {2968, 2974, 3227, 5865, 14430, 250927, 251622, 251676, 251707, 252664, 252665, 252762, 252763, 252764, 252765, 252767, 252802, 252820, 253195, 253282, 253511, 254588, 254596, 254626, 256092, 270196, 270201, 272044, 272046, 272096, 275666, 275767, 276109, 276416},
         },
         [4693] = { -- Ceremonial Leather Belt : https://wowhead.com/forever/item=4693/ceremonial-leather-belt
             [itemKeys.npcDrops] = {2034, 252664, 252764, 256092, 259385},
@@ -2277,6 +2326,9 @@ function ForeverBaseItem:Load()
         },
         [4980] = { -- Prospector Gloves : https://wowhead.com/forever/item=4980/prospector-gloves
             [itemKeys.itemLevel] = 40,
+        },
+        [4999] = { -- Azora's Will : https://wowhead.com/forever/item=4999/azoras-will
+            [itemKeys.itemDrops_add] = {8366, 19425},
         },
         [5007] = { -- Band of Thorns : https://wowhead.com/forever/item=5007/band-of-thorns
             [itemKeys.npcDrops] = {6229},
@@ -2532,6 +2584,9 @@ function ForeverBaseItem:Load()
         [5363] = { -- Folded Handkerchief : https://wowhead.com/forever/item=5363/folded-handkerchief
             [itemKeys.npcDrops] = {251451, 252802, 257532},
         },
+        [5373] = { -- Lucky Charm : https://wowhead.com/forever/item=5373/lucky-charm
+            [itemKeys.npcDrops_add] = {646, 1035, 4832, 11858, 267307, 271346, 271348, 271351, 275046},
+        },
         [5374] = { -- Small Pocket Watch : https://wowhead.com/forever/item=5374/small-pocket-watch
             [itemKeys.npcDrops_add] = {1711, 12902},
         },
@@ -2652,6 +2707,9 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 24,
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 1,
+        },
+        [5739] = { -- Barbaric Harness : https://wowhead.com/forever/item=5739/barbaric-harness
+            [itemKeys.relatedQuests] = {92817},
         },
         [5740] = { -- Red Fireworks Rocket : https://wowhead.com/forever/item=5740/red-fireworks-rocket
             [itemKeys.subClass] = 8,
@@ -2958,9 +3016,6 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 28,
             [itemKeys.requiredLevel] = 23,
         },
-        [6325] = { -- Recipe: Brilliant Smallfish : https://wowhead.com/forever/item=6325/recipe-brilliant-smallfish
-            [itemKeys.vendors_add] = {257006},
-        },
         [6326] = { -- Recipe: Slitherskin Mackerel : https://wowhead.com/forever/item=6326/recipe-slitherskin-mackerel
             [itemKeys.vendors_add] = {257006},
         },
@@ -3127,15 +3182,17 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {259434},
         },
         [6527] = { -- Ancestral Robe : https://wowhead.com/forever/item=6527/ancestral-robe
-            [itemKeys.npcDrops] = {12320, 252664, 256092},
+            [itemKeys.npcDrops] = {3384, 5822, 250927, 251676, 252664, 252762, 252763, 252764, 252765, 252767, 253622, 254626, 256092, 266852, 270201, 272096},
         },
         [6528] = { -- Spellbinder Robe : https://wowhead.com/forever/item=6528/spellbinder-robe
             [itemKeys.npcDrops] = {6033},
         },
         [6529] = { -- Shiny Bauble : https://wowhead.com/forever/item=6529/shiny-bauble
+            [itemKeys.objectDrops] = {612092},
             [itemKeys.vendors_add] = {242498, 252449, 254360, 254695, 257008, 260487, 270545},
         },
         [6530] = { -- Nightcrawlers : https://wowhead.com/forever/item=6530/nightcrawlers
+            [itemKeys.objectDrops] = {612092},
             [itemKeys.vendors_add] = {242498, 252020, 252449, 254360, 254695, 257008, 260487, 260559, 270545},
         },
         [6531] = { -- Barbaric Cloth Robe : https://wowhead.com/forever/item=6531/barbaric-cloth-robe
@@ -3166,7 +3223,7 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {259388},
         },
         [6556] = { -- Bard's Bracers : https://wowhead.com/forever/item=6556/bards-bracers
-            [itemKeys.npcDrops_add] = {3528},
+            [itemKeys.npcDrops_add] = {472, 1118, 1202, 1957, 2060, 2062, 2067, 3270, 3470, 3528, 3532, 250484, 250618, 250619, 250620, 250622, 250623, 250624, 250625, 250626, 250627, 250629, 250630, 250650, 250651, 250652, 250654, 250656, 250735, 255109, 255964, 256040, 259388, 260430, 260431, 263389, 263390, 263396, 263397, 263438, 263466, 263470, 267006, 270693, 275437},
         },
         [6557] = { -- Bard's Boots : https://wowhead.com/forever/item=6557/bards-boots
             [itemKeys.npcDrops_add] = {846},
@@ -3248,6 +3305,7 @@ function ForeverBaseItem:Load()
         [6642] = { -- Phantom Armor : https://wowhead.com/forever/item=6642/phantom-armor
             [itemKeys.itemLevel] = 27,
             [itemKeys.requiredLevel] = 22,
+            [itemKeys.npcDrops_add] = {255699},
         },
         [6643] = { -- Bloated Brilliant Smallfish : https://wowhead.com/forever/item=6643/bloated-brilliant-smallfish
             [itemKeys.class] = 15,
@@ -3475,6 +3533,10 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 22,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 1,
+        },
+        [7082] = { -- Essence of Air : https://wowhead.com/forever/item=7082/essence-of-air
+            [itemKeys.npcDrops_add] = {269756},
+            [itemKeys.itemDrops_add] = {271994, 272151},
         },
         [7087] = { -- Pattern: Crimson Silk Cloak : https://wowhead.com/forever/item=7087/pattern-crimson-silk-cloak
             [itemKeys.vendors_add] = {251997},
@@ -3751,13 +3813,16 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {3977},
         },
         [8165] = { -- Worn Dragonscale : https://wowhead.com/forever/item=8165/worn-dragonscale
-            [itemKeys.npcDrops_add] = {744, 1046, 1047, 1050, 1756, 2725, 4324, 4331, 5278, 5283, 6131, 7047, 8319, 8497, 10363, 10661, 10678, 10683, 12476, 12479, 221367, 224253, 224254, 224255, 224256},
+            [itemKeys.npcDrops_add] = {743, 744, 746, 1756, 4324, 4331, 5278, 5283, 7047, 8319, 8497, 10264, 10678, 262473, 262477},
         },
         [8177] = { -- Practice Sword : https://wowhead.com/forever/item=8177/practice-sword
             [itemKeys.npcDrops] = {2967, 248474, 251261, 251284, 251707, 251918, 252068, 252820, 253282, 254588, 255534, 256966, 256996, 270201, 271530, 275703},
         },
         [8179] = { -- Cadet's Bow : https://wowhead.com/forever/item=8179/cadets-bow
             [itemKeys.npcDrops] = {43, 471, 250928, 251662, 251918, 252068},
+        },
+        [8181] = { -- Hunting Rifle : https://wowhead.com/forever/item=8181/hunting-rifle
+            [itemKeys.objectDrops_add] = {626752},
         },
         [8182] = { -- Pellet Rifle : https://wowhead.com/forever/item=8182/pellet-rifle
             [itemKeys.npcDrops] = {471, 250928, 251622, 251662, 251707, 251918, 252068, 252802, 252820, 253195, 253511, 255534, 271530, 275703},
@@ -3778,6 +3843,9 @@ function ForeverBaseItem:Load()
         },
         [8343] = { -- Heavy Silken Thread : https://wowhead.com/forever/item=8343/heavy-silken-thread
             [itemKeys.vendors_add] = {242498, 251973, 251991, 251993, 252020, 252380, 254695, 260559, 260570},
+        },
+        [8364] = { -- Mithril Head Trout : https://wowhead.com/forever/item=8364/mithril-head-trout
+            [itemKeys.objectDrops_add] = {3709},
         },
         [8366] = { -- Bloated Mithril Head Trout : https://wowhead.com/forever/item=8366/bloated-mithril-head-trout
             [itemKeys.class] = 15,
@@ -3866,6 +3934,9 @@ function ForeverBaseItem:Load()
         [9249] = { -- Captain's Key : https://wowhead.com/forever/item=9249/captains-key
             [itemKeys.class] = 15,
         },
+        [9276] = { -- Pirate's Footlocker : https://wowhead.com/forever/item=9276/pirates-footlocker
+            [itemKeys.npcDrops_add] = {8203},
+        },
         [9290] = { -- Field Plate Helmet : https://wowhead.com/forever/item=9290/field-plate-helmet
             [itemKeys.npcDrops] = {92, 667, 669, 670, 674, 675, 676, 687, 690, 696, 709, 710, 731, 742, 743, 747, 750, 751, 763, 766, 782, 783, 1087, 1088, 1488, 1489, 1551, 1557, 1558, 1562, 1563, 1564, 1713, 1907, 2287, 2320, 2535, 2585, 2650, 2651, 2716, 2717, 2718, 2720, 2725, 2729, 2734, 2736, 2782, 2791, 2893, 2923, 2927, 3975, 3976, 4302, 4303, 4542, 4847, 4863, 5856, 6206, 6207, 6211, 6212, 6219, 6223, 6232, 6233, 6234, 6329, 7011, 7012, 7405, 7603, 8337, 14234, 15751, 215728, 217280, 220007, 220072},
         },
@@ -3905,6 +3976,10 @@ function ForeverBaseItem:Load()
         },
         [9327] = { -- Security DELTA Data Access Card : https://wowhead.com/forever/item=9327/security-delta-data-access-card
             [itemKeys.class] = 12,
+        },
+        [9375] = { -- Expert Goldminer's Helmet : https://wowhead.com/forever/item=9375/expert-goldminers-helmet
+            [itemKeys.itemLevel] = 40,
+            [itemKeys.requiredLevel] = 35,
         },
         [9378] = { -- Shovelphlange's Mining Axe : https://wowhead.com/forever/item=9378/shovelphlanges-mining-axe
             [itemKeys.itemLevel] = 40,
@@ -4040,9 +4115,6 @@ function ForeverBaseItem:Load()
         [9588] = { -- Nogg's Gold Ring : https://wowhead.com/forever/item=9588/noggs-gold-ring
             [itemKeys.itemLevel] = 37,
         },
-        [9590] = { -- Splintered Log : https://wowhead.com/forever/item=9590/splintered-log
-            [itemKeys.npcDrops_add] = {261689},
-        },
         [9592] = { -- Metallic Fragments : https://wowhead.com/forever/item=9592/metallic-fragments
             [itemKeys.npcDrops_add] = {222789, 261689},
         },
@@ -4083,7 +4155,7 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {250283},
         },
         [9745] = { -- Simple Cape : https://wowhead.com/forever/item=9745/simple-cape
-            [itemKeys.npcDrops] = {256492, 267006},
+            [itemKeys.npcDrops] = {99, 1132, 1137, 1193, 250282, 250283, 256492, 259394, 259398, 259433, 259434, 260157, 260428, 260430, 260431, 260432, 267006, 271587, 275437, 276089, 276180, 276189},
         },
         [9746] = { -- Simple Gloves : https://wowhead.com/forever/item=9746/simple-gloves
             [itemKeys.npcDrops] = {6123, 260428, 267006, 271080, 275437},
@@ -4110,7 +4182,7 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {1533, 250282, 260157, 267006},
         },
         [9755] = { -- Nomad Gloves : https://wowhead.com/forever/item=9755/nomad-gloves
-            [itemKeys.npcDrops] = {99, 1869, 260428, 260430, 267006},
+            [itemKeys.npcDrops] = {550, 1065, 1545, 1665, 1869, 2065, 6123, 250282, 250283, 250625, 250654, 259385, 259388, 259433, 259434, 260157, 260428, 260430, 260431, 260432, 263389, 263390, 263396, 263397, 263438, 263466, 263470, 267006, 275437, 276089},
         },
         [9756] = { -- Nomad Trousers : https://wowhead.com/forever/item=9756/nomad-trousers
             [itemKeys.npcDrops_add] = {6123},
@@ -4264,6 +4336,9 @@ function ForeverBaseItem:Load()
         },
         [10444] = { -- Standard Issue Flare Gun : https://wowhead.com/forever/item=10444/standard-issue-flare-gun
             [itemKeys.requiredLevel] = 45,
+        },
+        [10450] = { -- Undamaged Hippogryph Feather : https://wowhead.com/forever/item=10450/undamaged-hippogryph-feather
+            [itemKeys.npcDrops_add] = {249491, 249974, 263935},
         },
         [10507] = { -- Solid Dynamite : https://wowhead.com/forever/item=10507/solid-dynamite
             [itemKeys.class] = 0,
@@ -4478,6 +4553,9 @@ function ForeverBaseItem:Load()
         [11266] = { -- Fractured Elemental Shard : https://wowhead.com/forever/item=11266/fractured-elemental-shard
             [itemKeys.npcDrops_add] = {228973, 229549},
         },
+        [11269] = { -- Intact Elemental Core : https://wowhead.com/forever/item=11269/intact-elemental-core
+            [itemKeys.npcDrops_add] = {278644},
+        },
         [11284] = { -- Accurate Slugs : https://wowhead.com/forever/item=11284/accurate-slugs
             [itemKeys.vendors_add] = {43411, 255895, 255897, 259860, 260343, 260566},
         },
@@ -4579,8 +4657,14 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
         },
+        [12184] = { -- Raptor Flesh : https://wowhead.com/forever/item=12184/raptor-flesh
+            [itemKeys.npcDrops_add] = {253214, 261786, 261898, 261934},
+        },
         [12185] = { -- Bloodsail Admiral's Hat : https://wowhead.com/forever/item=12185/bloodsail-admirals-hat
             [itemKeys.subClass] = 5,
+        },
+        [12206] = { -- Tender Crab Meat : https://wowhead.com/forever/item=12206/tender-crab-meat
+            [itemKeys.npcDrops_add] = {255901, 256807, 260235},
         },
         [12207] = { -- Giant Egg : https://wowhead.com/forever/item=12207/giant-egg
             [itemKeys.npcDrops_add] = {272389},
@@ -4667,6 +4751,9 @@ function ForeverBaseItem:Load()
         [12650] = { -- Attuned Dampener : https://wowhead.com/forever/item=12650/attuned-dampener
             [itemKeys.subClass] = 8,
         },
+        [12662] = { -- Demonic Rune : https://wowhead.com/forever/item=12662/demonic-rune
+            [itemKeys.npcDrops_add] = {236496, 236867, 236874, 236876, 249229, 249230, 249236, 249238, 252457, 263394},
+        },
         [12691] = { -- Pattern: Wildthorn Mail : https://wowhead.com/forever/item=12691/pattern-wildthorn-mail
             [itemKeys.subClass] = 1,
         },
@@ -4733,6 +4820,9 @@ function ForeverBaseItem:Load()
         [12989] = { -- Gargoyle's Bite : https://wowhead.com/forever/item=12989/gargoyles-bite
             [itemKeys.npcDrops] = {5762},
         },
+        [12990] = { -- Razor's Edge : https://wowhead.com/forever/item=12990/razors-edge
+            [itemKeys.npcDrops] = {217, 435, 521, 568, 639, 645, 909, 949, 1012, 1069, 3253, 3457, 3712, 3746, 3814, 3824, 3928, 3999, 4012, 4025, 4044, 4128, 4798, 5761, 5763, 6329, 12856},
+        },
         [12992] = { -- Searing Blade : https://wowhead.com/forever/item=12992/searing-blade
             [itemKeys.npcDrops] = {3671},
         },
@@ -4742,14 +4832,36 @@ function ForeverBaseItem:Load()
         [13002] = { -- Lady Alizabeth's Pendant : https://wowhead.com/forever/item=13002/lady-alizabeths-pendant
             [itemKeys.npcDrops] = {1047, 1804, 4493, 4494, 7429, 7432, 7433, 7446, 7449, 7454, 7462, 8529, 8532, 8542, 8550, 8556, 8561, 8601, 8602, 9216, 9241, 9263, 9583, 9693, 9701, 9817, 9818, 9819, 10083, 10220, 10316, 10317, 10318, 10319, 10366, 10372, 10381, 10390, 10391, 10394, 10398, 10399, 10400, 10405, 10406, 10407, 10408, 10409, 10412, 10413, 10416, 10417, 10418, 10419, 10421, 10422, 10423, 10424, 10426, 10435, 10437, 10442, 10447, 10464, 10469, 10472, 10477, 10478, 10488, 10489, 10495, 10498, 10506, 10678, 10742, 11257, 11261, 11339, 11350, 11351, 11353, 11356, 11357, 11361, 11365, 11371, 11372, 11456, 11458, 11551, 11582, 11598, 11663, 11665, 11666, 11667, 11668, 11698, 11722, 11723, 11726, 11727, 11728, 11729, 11730, 11731, 11732, 11733, 11734, 11744, 11745, 11830, 11831, 11880, 11881, 12076, 12101, 12459, 12465, 12468, 13036, 13138, 13160, 13285, 13996, 14532, 14821, 14825, 14882, 15043, 15111, 15233, 15236, 15250, 15262, 15323, 15324, 15325, 15338, 15343, 15461, 15462, 15743, 15753, 15754, 15757, 15758, 15818, 238508, 238561, 238630, 238640, 238678, 241120, 244133},
         },
+        [13018] = { -- Executioner's Cleaver : https://wowhead.com/forever/item=13018/executioners-cleaver
+            [itemKeys.npcDrops] = {5358, 8566, 9162, 11793, 12220, 12222, 255262, 255276, 255309, 255377},
+        },
+        [13020] = { -- Skystriker Bow : https://wowhead.com/forever/item=13020/skystriker-bow
+            [itemKeys.npcDrops] = {671, 759, 2258, 2453, 2598, 4458, 7337, 11561, 11777, 254560, 255772, 256952, 257926, 258687, 258797, 258799, 258897, 259046, 259267, 260353, 260968, 262397, 263196, 268321},
+            [itemKeys.objectDrops_add] = {75297},
+        },
+        [13035] = { -- Serpent Slicer : https://wowhead.com/forever/item=13035/serpent-slicer
+            [itemKeys.npcDrops] = {818},
+        },
+        [13054] = { -- Grim Reaper : https://wowhead.com/forever/item=13054/grim-reaper
+            [itemKeys.npcDrops] = {813, 2574, 2597, 2717, 5251, 7011, 11786, 12216, 254560, 255769, 256801, 256952, 257901, 257926, 258040, 258042, 258104, 258588, 258687, 258792, 258797, 258804, 259979, 261497, 262169, 263196},
+        },
+        [13057] = { -- Bloodpike : https://wowhead.com/forever/item=13057/bloodpike
+            [itemKeys.npcDrops] = {1012, 1018, 1019, 1034, 1036, 1038, 1353, 2449, 3752, 3825, 4093, 4096, 4142, 4154, 4273, 5930, 6207, 6213, 10756, 246664, 247003, 247016, 255065, 255066, 255070, 260797, 260800, 260801, 260802, 260804, 269134},
+        },
         [13063] = { -- Starfaller : https://wowhead.com/forever/item=13063/starfaller
             [itemKeys.npcDrops] = {587, 595, 597, 686, 689, 694, 697, 701, 736, 741, 938, 940, 1085, 1096, 1152, 2241, 2242, 2249, 2251, 2252, 2253, 2319, 2359, 2407, 2555, 2556, 2572, 2618, 2619, 2727, 4139, 4140, 4143, 4150, 4151, 4158, 4640, 4641, 4644, 4645, 4647, 4666, 4672, 4675, 4692, 4713, 4718, 4846, 7078, 7332, 7873, 7874, 11562, 15807},
+        },
+        [13084] = { -- Kaleidoscope Chain : https://wowhead.com/forever/item=13084/kaleidoscope-chain
+            [itemKeys.npcDrops] = {697, 940, 4396, 4649, 4728, 7333, 7344, 7873, 250187, 258573, 258792, 258799, 258897, 263196},
         },
         [13099] = { -- Moccasins of the White Hare : https://wowhead.com/forever/item=13099/moccasins-of-the-white-hare
             [itemKeys.npcDrops] = {604, 6233, 246664, 255066, 260804, 271351},
         },
         [13131] = { -- Sparkleshell Mantle : https://wowhead.com/forever/item=13131/sparkleshell-mantle
             [itemKeys.npcDrops] = {260800, 274715},
+        },
+        [13137] = { -- Ironweaver : https://wowhead.com/forever/item=13137/ironweaver
+            [itemKeys.npcDrops] = {920, 942, 2248, 2407, 2587, 4714},
         },
         [13149] = { -- Eldarathian Tome of Summoning Vol. 1 : https://wowhead.com/forever/item=13149/eldarathian-tome-of-summoning-vol-1
             [itemKeys.name] = "Eldarathian Tome of Summoning Vol. 1",
@@ -4825,6 +4937,10 @@ function ForeverBaseItem:Load()
         [13367] = { -- Wrapped Gift : https://wowhead.com/forever/item=13367/wrapped-gift
             [itemKeys.subClass] = 8,
         },
+        [13394] = { -- Skul's Cold Embrace : https://wowhead.com/forever/item=13394/skuls-cold-embrace
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.requiredLevel] = 55,
+        },
         [13395] = { -- Skul's Fingerbone Claws : https://wowhead.com/forever/item=13395/skuls-fingerbone-claws
             [itemKeys.itemLevel] = 60,
             [itemKeys.requiredLevel] = 55,
@@ -4832,6 +4948,10 @@ function ForeverBaseItem:Load()
         [13396] = { -- Skul's Ghastly Touch : https://wowhead.com/forever/item=13396/skuls-ghastly-touch
             [itemKeys.itemLevel] = 60,
             [itemKeys.requiredLevel] = 55,
+        },
+        [13397] = { -- Stoneskin Gargoyle Cape : https://wowhead.com/forever/item=13397/stoneskin-gargoyle-cape
+            [itemKeys.itemLevel] = 62,
+            [itemKeys.requiredLevel] = 57,
         },
         [13399] = { -- Gargoyle Shredder Talons : https://wowhead.com/forever/item=13399/gargoyle-shredder-talons
             [itemKeys.itemLevel] = 62,
@@ -4918,7 +5038,7 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 57,
         },
         [14025] = { -- Mystic's Belt : https://wowhead.com/forever/item=14025/mystics-belt
-            [itemKeys.npcDrops] = {3384},
+            [itemKeys.npcDrops] = {2158, 3270, 3470, 4009, 5838, 261368, 267314, 268624},
         },
         [14046] = { -- Runecloth Bag : https://wowhead.com/forever/item=14046/runecloth-bag
             [itemKeys.relatedQuests] = {94353},
@@ -4957,13 +5077,13 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {251676, 252764, 256092},
         },
         [14098] = { -- Native Cloak : https://wowhead.com/forever/item=14098/native-cloak
-            [itemKeys.npcDrops] = {2973, 251622, 251676, 251707, 252664, 252665, 252763, 252765, 253622, 254588, 254596, 254626, 256092, 270201, 272096},
+            [itemKeys.npcDrops] = {2967, 250927, 251622, 251676, 251707, 252664, 252665, 252666, 252762, 252763, 252764, 252765, 252767, 252802, 252820, 253195, 253282, 253511, 253622, 254588, 254596, 254626, 256092, 256492, 257196, 258443, 259398, 268530, 270201, 272096, 275708, 276415, 276416},
         },
         [14099] = { -- Native Sash : https://wowhead.com/forever/item=14099/native-sash
             [itemKeys.npcDrops] = {2968, 251676, 252664, 252666, 252762, 252764, 256092},
         },
         [14102] = { -- Native Handwraps : https://wowhead.com/forever/item=14102/native-handwraps
-            [itemKeys.npcDrops] = {251676, 252664, 252762, 252765, 252767, 256092},
+            [itemKeys.npcDrops] = {1993, 2174, 5787, 5824, 12138, 250936, 251676, 252664, 252665, 252762, 252763, 252764, 252767, 253622, 254626, 256092, 270201, 272034, 272044, 272046, 272096, 275708},
         },
         [14110] = { -- Native Sandals : https://wowhead.com/forever/item=14110/native-sandals
             [itemKeys.npcDrops] = {251676, 252664, 252665, 252763, 254596, 256092},
@@ -4972,7 +5092,7 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {251676},
         },
         [14116] = { -- Aboriginal Cape : https://wowhead.com/forever/item=14116/aboriginal-cape
-            [itemKeys.npcDrops] = {251676, 252764},
+            [itemKeys.npcDrops] = {2001, 2030, 3243, 12321, 251676, 252664, 252665, 252762, 252764, 252767, 256092, 272046, 272096, 272116, 275767},
         },
         [14117] = { -- Aboriginal Gloves : https://wowhead.com/forever/item=14117/aboriginal-gloves
             [itemKeys.npcDrops] = {261368},
@@ -5008,7 +5128,7 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {5682},
         },
         [14263] = { -- Bloodwoven Mask : https://wowhead.com/forever/item=14263/bloodwoven-mask
-            [itemKeys.npcDrops] = {7267},
+            [itemKeys.npcDrops] = {6117, 7247, 7268, 12258, 13282, 255262, 255267, 255271, 255309, 255377, 255995, 271784},
         },
         [14270] = { -- Gaea's Cloak : https://wowhead.com/forever/item=14270/gaeas-cloak
             [itemKeys.npcDrops] = {7273},
@@ -5131,7 +5251,7 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {6911, 251622, 251707, 252802, 252820, 253195, 253282, 253283, 253511, 254588, 254596, 254626, 259394, 268530, 270201, 275708, 276198, 276415, 276416},
         },
         [15008] = { -- Primal Mitts : https://wowhead.com/forever/item=15008/primal-mitts
-            [itemKeys.npcDrops] = {251676, 252664, 252665, 252762, 252763, 252764, 252765, 253195, 253282, 254588, 254596, 256092, 257196, 270201, 272034, 272096},
+            [itemKeys.npcDrops] = {6911, 251622, 251676, 251707, 252664, 252665, 252762, 252763, 252764, 252765, 252767, 252802, 252820, 253282, 253622, 254588, 254596, 254626, 256092, 270201, 272044, 272096, 276109, 276415, 276416},
         },
         [15009] = { -- Primal Leggings : https://wowhead.com/forever/item=15009/primal-leggings
             [itemKeys.npcDrops] = {2974, 250927, 251676, 252664, 252763, 252764, 252765, 253282, 254626, 256092, 270201, 272096, 276198},
@@ -5197,7 +5317,10 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {3673},
         },
         [15309] = { -- Feral Cloak : https://wowhead.com/forever/item=15309/feral-cloak
-            [itemKeys.npcDrops] = {3051, 272116},
+            [itemKeys.npcDrops] = {2174, 4008, 10157},
+        },
+        [15310] = { -- Feral Gloves : https://wowhead.com/forever/item=15310/feral-gloves
+            [itemKeys.npcDrops] = {2182, 2187, 2322, 3383, 4008, 5835, 5837, 5841, 261368, 267308, 267314, 268624},
         },
         [15312] = { -- Feral Leggings : https://wowhead.com/forever/item=15312/feral-leggings
             [itemKeys.npcDrops] = {5831},
@@ -5245,7 +5368,7 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {1997, 2967, 5823, 6133, 14430, 251676, 251707, 252664, 252665, 252762, 252763, 252764, 252765, 252767, 252802, 252820, 253282, 253283, 253622, 254588, 254596, 254626, 256092, 270201, 272096, 275666, 276416},
         },
         [15478] = { -- Charger's Shield : https://wowhead.com/forever/item=15478/chargers-shield
-            [itemKeys.npcDrops] = {251676, 251707, 252762, 253195, 253511, 253622, 254588, 254596, 254626, 270201},
+            [itemKeys.npcDrops] = {2967, 2968, 5809, 7318, 251622, 251676, 251707, 252664, 252665, 252666, 252762, 252763, 252765, 252767, 252820, 253282, 253622, 254588, 254596, 254626, 256092, 259394, 270201, 272044, 275708, 276415},
         },
         [15479] = { -- Charger's Armor : https://wowhead.com/forever/item=15479/chargers-armor
             [itemKeys.npcDrops] = {2968, 2974, 2990, 3228, 12138, 251676, 251707, 252664, 252665, 252762, 252763, 252764, 252765, 252767, 252802, 252820, 253195, 253282, 253511, 254588, 254596, 254626, 256092, 258443, 266852, 268530, 270201, 272046, 272096, 272116, 275666, 276416},
@@ -5274,6 +5397,9 @@ function ForeverBaseItem:Load()
         [15490] = { -- Bloodspattered Cloak : https://wowhead.com/forever/item=15490/bloodspattered-cloak
             [itemKeys.npcDrops] = {3131},
         },
+        [15493] = { -- Bloodspattered Loincloth : https://wowhead.com/forever/item=15493/bloodspattered-loincloth
+            [itemKeys.npcDrops] = {2071, 3241, 3383, 3396, 3730, 5829, 5836, 5838, 5841, 11714, 261368, 267308, 267314, 268624},
+        },
         [15494] = { -- Bloodspattered Shield : https://wowhead.com/forever/item=15494/bloodspattered-shield
             [itemKeys.npcDrops] = {3438, 267314},
         },
@@ -5282,6 +5408,9 @@ function ForeverBaseItem:Load()
         },
         [15503] = { -- Outrunner's Legguards : https://wowhead.com/forever/item=15503/outrunners-legguards
             [itemKeys.npcDrops] = {3393, 3654},
+        },
+        [15509] = { -- Grunt's Handwraps : https://wowhead.com/forever/item=15509/grunts-handwraps
+            [itemKeys.npcDrops] = {2183, 3396, 3739, 3774, 3812, 3823, 4009, 4129, 5932, 267307, 267314},
         },
         [15510] = { -- Grunt's Belt : https://wowhead.com/forever/item=15510/grunts-belt
             [itemKeys.npcDrops] = {267307},
@@ -5365,6 +5494,9 @@ function ForeverBaseItem:Load()
         },
         [15944] = { -- Ancestral Orb : https://wowhead.com/forever/item=15944/ancestral-orb
             [itemKeys.npcDrops] = {2015, 2968, 3068, 5822, 6909, 251676, 251707, 252664, 252665, 252762, 252763, 252764, 252765, 252767, 252802, 252820, 253195, 253283, 253511, 253622, 254588, 254596, 254626, 256092, 268530, 270201, 272034, 272096, 276415, 276416},
+        },
+        [15945] = { -- Runic Stave : https://wowhead.com/forever/item=15945/runic-stave
+            [itemKeys.npcDrops_add] = {2158, 2187, 3266, 3471, 3662, 4008, 261368, 262119, 267308, 267314, 268624},
         },
         [15964] = { -- Silksand Star : https://wowhead.com/forever/item=15964/silksand-star
             [itemKeys.npcDrops] = {7272},
@@ -5459,6 +5591,9 @@ function ForeverBaseItem:Load()
         [16896] = { -- Major Soulstone : https://wowhead.com/forever/item=16896/major-soulstone
             [itemKeys.subClass] = 8,
         },
+        [17007] = { -- Stonerender Gauntlets : https://wowhead.com/forever/item=17007/stonerender-gauntlets
+            [itemKeys.npcDrops] = {7126, 8580},
+        },
         [17020] = { -- Arcane Powder : https://wowhead.com/forever/item=17020/arcane-powder
             [itemKeys.vendors_add] = {29537, 242498, 252040, 254695, 272437},
         },
@@ -5520,6 +5655,7 @@ function ForeverBaseItem:Load()
         },
         [17057] = { -- Shiny Fish Scales : https://wowhead.com/forever/item=17057/shiny-fish-scales
             [itemKeys.subClass] = 1,
+            [itemKeys.npcDrops_add] = {12369, 255901, 256807, 260235, 271903},
         },
         [17058] = { -- Fish Oil : https://wowhead.com/forever/item=17058/fish-oil
             [itemKeys.subClass] = 1,
@@ -5664,6 +5800,7 @@ function ForeverBaseItem:Load()
         [18082] = { -- Zum'rah's Vexing Cane : https://wowhead.com/forever/item=18082/zumrahs-vexing-cane
             [itemKeys.itemLevel] = 48,
             [itemKeys.requiredLevel] = 43,
+            [itemKeys.npcDrops_add] = {220076},
         },
         [18083] = { -- Jumanza Grips : https://wowhead.com/forever/item=18083/jumanza-grips
             [itemKeys.itemLevel] = 48,
@@ -5719,6 +5856,9 @@ function ForeverBaseItem:Load()
         },
         [18335] = { -- Pristine Black Diamond : https://wowhead.com/forever/item=18335/pristine-black-diamond
             [itemKeys.npcDrops_add] = {10438, 10584},
+        },
+        [18348] = { -- Quel'Serrar : https://wowhead.com/forever/item=18348/quelserrar
+            [itemKeys.itemLevel] = 65,
         },
         [18364] = { -- The Emerald Dream : https://wowhead.com/forever/item=18364/the-emerald-dream
             [itemKeys.npcDrops] = {14325},
@@ -5811,6 +5951,18 @@ function ForeverBaseItem:Load()
         [18672] = { -- Elemental Ember : https://wowhead.com/forever/item=18672/elemental-ember
             [itemKeys.itemLevel] = 60,
             [itemKeys.requiredLevel] = 55,
+        },
+        [18673] = { -- Avalanchion's Stony Hide : https://wowhead.com/forever/item=18673/avalanchions-stony-hide
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.requiredLevel] = 55,
+        },
+        [18676] = { -- Sash of the Windreaver : https://wowhead.com/forever/item=18676/sash-of-the-windreaver
+            [itemKeys.itemLevel] = 62,
+            [itemKeys.requiredLevel] = 57,
+        },
+        [18677] = { -- Zephyr Cloak : https://wowhead.com/forever/item=18677/zephyr-cloak
+            [itemKeys.itemLevel] = 62,
+            [itemKeys.requiredLevel] = 57,
         },
         [18947] = { -- Rage Scar Yeti Hide : https://wowhead.com/forever/item=18947/rage-scar-yeti-hide
             [itemKeys.npcDrops_add] = {7848},
@@ -9570,7 +9722,7 @@ function ForeverBaseItem:Load()
         },
         [210188] = { -- Shredded Work Order : https://wowhead.com/forever/item=210188/shredded-work-order
             [itemKeys.name] = "Shredded Work Order",
-            [itemKeys.npcDrops] = {3988, 3992},
+            [itemKeys.npcDrops] = {3988, 3989, 3993, 4202, 5932},
             [itemKeys.itemLevel] = 25,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 15,
@@ -10008,11 +10160,13 @@ function ForeverBaseItem:Load()
         },
         [211269] = { -- Primitive Drawing : https://wowhead.com/forever/item=211269/primitive-drawing
             [itemKeys.name] = "Primitive Drawing",
-            [itemKeys.npcDrops] = {2701, 2715, 2716, 2717, 2718, 2720, 2892, 2893, 2894, 2906, 2907},
+            [itemKeys.npcDrops] = {2701, 2715, 2716, 2717, 2718, 2719, 2720, 2892, 2893, 2894, 2906, 2907, 6733},
+            [itemKeys.startQuest] = 78823,
             [itemKeys.itemLevel] = 1,
-            [itemKeys.requiredLevel] = 1,
+            [itemKeys.requiredLevel] = 26,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {78823},
         },
         [211272] = { -- Empty Bait Cage : https://wowhead.com/forever/item=211272/empty-bait-cage
             [itemKeys.name] = "Empty Bait Cage",
@@ -10450,8 +10604,7 @@ function ForeverBaseItem:Load()
         },
         [211780] = { -- Scroll: KWYJIBO : https://wowhead.com/forever/item=211780/scroll-kwyjibo
             [itemKeys.name] = "Scroll: KWYJIBO",
-            [itemKeys.objectDrops] = {106318, 106319, 404352},
-            [itemKeys.itemDrops] = {220446},
+            [itemKeys.objectDrops] = {106318, 106319, 626752},
             [itemKeys.itemLevel] = 10,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 0,
@@ -11541,7 +11694,6 @@ function ForeverBaseItem:Load()
         },
         [213543] = { -- Scroll: UPDOG : https://wowhead.com/forever/item=213543/scroll-updog
             [itemKeys.name] = "Scroll: UPDOG",
-            [itemKeys.objectDrops] = {2852, 2855, 2857, 4096, 4149, 105578, 105579, 105581, 153451},
             [itemKeys.itemLevel] = 30,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 0,
@@ -11557,7 +11709,6 @@ function ForeverBaseItem:Load()
         },
         [213545] = { -- Scroll: PEATCHY ATTAX : https://wowhead.com/forever/item=213545/scroll-peatchy-attax
             [itemKeys.name] = "Scroll: PEATCHY ATTAX",
-            [itemKeys.objectDrops] = {2852, 2855, 2857, 4096, 4149, 105578, 105579, 105581, 153451},
             [itemKeys.itemLevel] = 30,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 0,
@@ -11581,6 +11732,7 @@ function ForeverBaseItem:Load()
         },
         [213548] = { -- Scroll of Liminal Passage : https://wowhead.com/forever/item=213548/scroll-of-liminal-passage
             [itemKeys.name] = "Scroll of Liminal Passage",
+            [itemKeys.itemDrops] = {277651},
             [itemKeys.itemLevel] = 40,
             [itemKeys.class] = 0,
             [itemKeys.subClass] = 4,
@@ -11672,8 +11824,9 @@ function ForeverBaseItem:Load()
             [itemKeys.name] = "Arbor Tarantula Specimen",
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
-            [itemKeys.class] = 15,
+            [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {93176},
         },
         [213567] = { -- Flesh Picker Specimen : https://wowhead.com/forever/item=213567/flesh-picker-specimen
             [itemKeys.name] = "Flesh Picker Specimen",
@@ -11900,7 +12053,7 @@ function ForeverBaseItem:Load()
         },
         [215373] = { -- Silver Hand Training Hammer : https://wowhead.com/forever/item=215373/silver-hand-training-hammer
             [itemKeys.name] = "Silver Hand Training Hammer",
-            [itemKeys.npcDrops] = {4283, 4286, 4287, 4288, 4290, 4292, 4296, 4298, 4299, 4306, 4540},
+            [itemKeys.npcDrops] = {4281, 4282, 4283, 4284, 4285, 4286, 4287, 4288, 4289, 4290, 4291, 4292, 4293, 4294, 4295, 4296, 4297, 4298, 4299, 4300, 4301, 4302, 4303, 4306, 4540},
             [itemKeys.itemLevel] = 31,
             [itemKeys.requiredLevel] = 26,
             [itemKeys.class] = 2,
@@ -11908,7 +12061,7 @@ function ForeverBaseItem:Load()
         },
         [215374] = { -- Ancestral Sword : https://wowhead.com/forever/item=215374/ancestral-sword
             [itemKeys.name] = "Ancestral Sword",
-            [itemKeys.npcDrops] = {4283, 4284, 4286, 4287, 4288, 4289, 4290, 4291, 4292, 4293, 4294, 4295, 4296, 4297, 4298, 4299, 4300, 4301, 4302, 4303, 4306, 4540},
+            [itemKeys.npcDrops] = {4282, 4283, 4285, 4286, 4287, 4288, 4289, 4290, 4291, 4292, 4293, 4294, 4295, 4296, 4297, 4298, 4299, 4300, 4301, 4302, 4303, 4306, 4540},
             [itemKeys.itemLevel] = 31,
             [itemKeys.requiredLevel] = 26,
             [itemKeys.class] = 2,
@@ -11916,7 +12069,7 @@ function ForeverBaseItem:Load()
         },
         [215375] = { -- Tactician's Staff : https://wowhead.com/forever/item=215375/tacticians-staff
             [itemKeys.name] = "Tactician's Staff",
-            [itemKeys.npcDrops] = {4283, 4285, 4287, 4288, 4293, 4298, 4299, 4306},
+            [itemKeys.npcDrops] = {4280, 4281, 4282, 4283, 4284, 4285, 4286, 4287, 4288, 4289, 4290, 4291, 4292, 4293, 4294, 4295, 4296, 4297, 4298, 4299, 4300, 4301, 4302, 4303, 4306, 4540},
             [itemKeys.itemLevel] = 31,
             [itemKeys.requiredLevel] = 26,
             [itemKeys.class] = 2,
@@ -11924,7 +12077,7 @@ function ForeverBaseItem:Load()
         },
         [215376] = { -- Crusader's Mace : https://wowhead.com/forever/item=215376/crusaders-mace
             [itemKeys.name] = "Crusader's Mace",
-            [itemKeys.npcDrops] = {4281, 4282, 4283, 4284, 4285, 4286, 4287, 4288, 4289, 4290, 4291, 4292, 4293, 4294, 4295, 4296, 4297, 4298, 4299, 4300, 4301, 4302, 4303, 4306, 4540},
+            [itemKeys.npcDrops] = {4280, 4281, 4282, 4283, 4285, 4286, 4287, 4288, 4289, 4290, 4291, 4292, 4293, 4294, 4295, 4296, 4297, 4298, 4299, 4300, 4301, 4302, 4303, 4306, 4540},
             [itemKeys.itemLevel] = 31,
             [itemKeys.requiredLevel] = 26,
             [itemKeys.class] = 2,
@@ -12478,7 +12631,6 @@ function ForeverBaseItem:Load()
         },
         [216523] = { -- Rusted Cage Key : https://wowhead.com/forever/item=216523/rusted-cage-key
             [itemKeys.name] = "Rusted Cage Key",
-            [itemKeys.npcDrops] = {759, 762},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 0,
@@ -12496,6 +12648,7 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {79945},
         },
         [216616] = { -- Compound Cage Key : https://wowhead.com/forever/item=216616/compound-cage-key
             [itemKeys.name] = "Compound Cage Key",
@@ -12520,9 +12673,9 @@ function ForeverBaseItem:Load()
         },
         [216619] = { -- Student Fodder : https://wowhead.com/forever/item=216619/student-fodder
             [itemKeys.name] = "Student Fodder",
-            [itemKeys.questRewards] = {79976, 79980},
+            [itemKeys.questRewards] = {79976, 79980, 82062},
             [itemKeys.itemLevel] = 33,
-            [itemKeys.requiredLevel] = 14,
+            [itemKeys.requiredLevel] = 48,
             [itemKeys.class] = 0,
             [itemKeys.subClass] = 8,
         },
@@ -12651,6 +12804,7 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {79939},
         },
         [217014] = { -- Supply Bag : https://wowhead.com/forever/item=217014/supply-bag
             [itemKeys.name] = "Supply Bag",
@@ -12949,6 +13103,14 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 0,
             [itemKeys.subClass] = 8,
         },
+        [217716] = { -- Vile Concoction : https://wowhead.com/forever/item=217716/vile-concoction
+            [itemKeys.name] = "Vile Concoction",
+            [itemKeys.objectDrops] = {433067},
+            [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 0,
+            [itemKeys.subClass] = 8,
+        },
         [217717] = { -- Hollow Emblem : https://wowhead.com/forever/item=217717/hollow-emblem
             [itemKeys.name] = "Hollow Emblem",
             [itemKeys.objectDrops] = {433066},
@@ -12982,6 +13144,12 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 0,
         },
+        [217727] = { -- Ward of the Dead : https://wowhead.com/forever/item=217727/ward-of-the-dead
+            [itemKeys.name] = "Ward of the Dead",
+            [itemKeys.objectDrops] = {433593},
+            [itemKeys.itemLevel] = 1,
+            [itemKeys.class] = 4,
+        },
         [217736] = { -- Rune of the Coterie : https://wowhead.com/forever/item=217736/rune-of-the-coterie
             [itemKeys.name] = "Rune of the Coterie",
             [itemKeys.itemLevel] = 50,
@@ -13003,8 +13171,16 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 0,
             [itemKeys.vendors] = {214954, 233335},
         },
+        [219343] = { -- Filcher's Cowl : https://wowhead.com/forever/item=219343/filchers-cowl
+            [itemKeys.name] = "Filcher's Cowl",
+            [itemKeys.questRewards] = {80455},
+            [itemKeys.itemLevel] = 50,
+            [itemKeys.requiredLevel] = 50,
+            [itemKeys.class] = 4,
+        },
         [219345] = { -- Infernal Lasso : https://wowhead.com/forever/item=219345/infernal-lasso
             [itemKeys.name] = "Infernal Lasso",
+            [itemKeys.questRewards] = {81919},
             [itemKeys.itemLevel] = 50,
             [itemKeys.requiredLevel] = 50,
             [itemKeys.class] = 4,
@@ -14428,17 +14604,18 @@ function ForeverBaseItem:Load()
         },
         [220166] = { -- Fiery Infernal Core : https://wowhead.com/forever/item=220166/fiery-infernal-core
             [itemKeys.name] = "Fiery Infernal Core",
-            [itemKeys.npcDrops] = {7135, 7136, 9878, 9879},
+            [itemKeys.npcDrops] = {7135, 7136},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {81790},
         },
         [220167] = { -- Shimmering Grave Dust : https://wowhead.com/forever/item=220167/shimmering-grave-dust
             [itemKeys.name] = "Shimmering Grave Dust",
-            [itemKeys.objectDrops] = {441222},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {81790},
         },
         [220168] = { -- Triple-Brewed Molten Lager : https://wowhead.com/forever/item=220168/triple-brewed-molten-lager
             [itemKeys.name] = "Triple-Brewed Molten Lager",
@@ -14592,7 +14769,6 @@ function ForeverBaseItem:Load()
         },
         [220606] = { -- Idol of the Dream : https://wowhead.com/forever/item=220606/idol-of-the-dream
             [itemKeys.name] = "Idol of the Dream",
-            [itemKeys.npcDrops] = {221943},
             [itemKeys.itemLevel] = 60,
             [itemKeys.requiredLevel] = 55,
             [itemKeys.class] = 4,
@@ -16279,7 +16455,9 @@ function ForeverBaseItem:Load()
         },
         [221316] = { -- Premo's Poise-Demanding Uniform : https://wowhead.com/forever/item=221316/premos-poise-demanding-uniform
             [itemKeys.name] = "Premo's Poise-Demanding Uniform",
+            [itemKeys.questRewards] = {82062},
             [itemKeys.itemLevel] = 55,
+            [itemKeys.requiredLevel] = 48,
             [itemKeys.class] = 4,
             [itemKeys.vendors] = {214954},
         },
@@ -17494,6 +17672,14 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 0,
             [itemKeys.vendors] = {233335, 233428},
         },
+        [226697] = { -- Red Bag : https://wowhead.com/forever/item=226697/red-bag
+            [itemKeys.name] = "Red Bag",
+            [itemKeys.questRewards] = {84146},
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.requiredLevel] = 55,
+            [itemKeys.class] = 1,
+            [itemKeys.subClass] = 0,
+        },
         [226698] = { -- Vertically Composited Patch Hampler : https://wowhead.com/forever/item=226698/vertically-composited-patch-hampler
             [itemKeys.name] = "Vertically Composited Patch Hampler",
             [itemKeys.npcDrops] = {228230, 228231, 228232, 228233, 228609, 228610, 261023, 261027, 261028, 261365, 261531},
@@ -17757,6 +17943,54 @@ function ForeverBaseItem:Load()
             [itemKeys.subClass] = 2,
             [itemKeys.vendors] = {230317, 230319, 230565, 230566},
         },
+        [226815] = { -- Feralheart Wrists : https://wowhead.com/forever/item=226815/feralheart-wrists
+            [itemKeys.name] = "Feralheart Wrists",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [226816] = { -- Feralheart Waist : https://wowhead.com/forever/item=226816/feralheart-waist
+            [itemKeys.name] = "Feralheart Waist",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [226817] = { -- Feralheart Shoulders : https://wowhead.com/forever/item=226817/feralheart-shoulders
+            [itemKeys.name] = "Feralheart Shoulders",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [226818] = { -- Feralheart Legs : https://wowhead.com/forever/item=226818/feralheart-legs
+            [itemKeys.name] = "Feralheart Legs",
+            [itemKeys.itemLevel] = 66,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [226819] = { -- Feralheart Helm : https://wowhead.com/forever/item=226819/feralheart-helm
+            [itemKeys.name] = "Feralheart Helm",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [226820] = { -- Feralheart Gloves : https://wowhead.com/forever/item=226820/feralheart-gloves
+            [itemKeys.name] = "Feralheart Gloves",
+            [itemKeys.itemLevel] = 55,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [226821] = { -- Feralheart Boots : https://wowhead.com/forever/item=226821/feralheart-boots
+            [itemKeys.name] = "Feralheart Boots",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [226822] = { -- Feralheart Chest : https://wowhead.com/forever/item=226822/feralheart-chest
+            [itemKeys.name] = "Feralheart Chest",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
         [226825] = { -- Darkmantle Tunic : https://wowhead.com/forever/item=226825/darkmantle-tunic
             [itemKeys.name] = "Darkmantle Tunic",
             [itemKeys.itemDrops] = {227395},
@@ -17820,8 +18054,57 @@ function ForeverBaseItem:Load()
             [itemKeys.subClass] = 2,
             [itemKeys.vendors] = {230317, 230319, 230565, 230566},
         },
+        [226845] = { -- Darkmantle Wrists : https://wowhead.com/forever/item=226845/darkmantle-wrists
+            [itemKeys.name] = "Darkmantle Wrists",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [226846] = { -- Darkmantle Waist : https://wowhead.com/forever/item=226846/darkmantle-waist
+            [itemKeys.name] = "Darkmantle Waist",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [226847] = { -- Darkmantle Shoulders : https://wowhead.com/forever/item=226847/darkmantle-shoulders
+            [itemKeys.name] = "Darkmantle Shoulders",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [226848] = { -- Darkmantle Legs : https://wowhead.com/forever/item=226848/darkmantle-legs
+            [itemKeys.name] = "Darkmantle Legs",
+            [itemKeys.itemLevel] = 66,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [226849] = { -- Darkmantle Helm : https://wowhead.com/forever/item=226849/darkmantle-helm
+            [itemKeys.name] = "Darkmantle Helm",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [226850] = { -- Darkmantle Gloves : https://wowhead.com/forever/item=226850/darkmantle-gloves
+            [itemKeys.name] = "Darkmantle Gloves",
+            [itemKeys.itemLevel] = 55,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [226851] = { -- Darkmantle Boots : https://wowhead.com/forever/item=226851/darkmantle-boots
+            [itemKeys.name] = "Darkmantle Boots",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [226852] = { -- Darkmantle Chest : https://wowhead.com/forever/item=226852/darkmantle-chest
+            [itemKeys.name] = "Darkmantle Chest",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
         [226856] = { -- Guided Buoyancy Accelerant : https://wowhead.com/forever/item=226856/guided-buoyancy-accelerant
             [itemKeys.name] = "Guided Buoyancy Accelerant",
+            [itemKeys.questRewards] = {84135},
             [itemKeys.itemLevel] = 53,
             [itemKeys.requiredLevel] = 53,
             [itemKeys.class] = 12,
@@ -17954,6 +18237,54 @@ function ForeverBaseItem:Load()
             [itemKeys.subClass] = 4,
             [itemKeys.vendors] = {230317, 230319, 230565, 230566},
         },
+        [226873] = { -- Wrists of Heroism : https://wowhead.com/forever/item=226873/wrists-of-heroism
+            [itemKeys.name] = "Wrists of Heroism",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
+        [226874] = { -- Waist of Heroism : https://wowhead.com/forever/item=226874/waist-of-heroism
+            [itemKeys.name] = "Waist of Heroism",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
+        [226875] = { -- Shoulders of Heroism : https://wowhead.com/forever/item=226875/shoulders-of-heroism
+            [itemKeys.name] = "Shoulders of Heroism",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
+        [226876] = { -- Legs of Heroism : https://wowhead.com/forever/item=226876/legs-of-heroism
+            [itemKeys.name] = "Legs of Heroism",
+            [itemKeys.itemLevel] = 66,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
+        [226877] = { -- Helm of Heroism : https://wowhead.com/forever/item=226877/helm-of-heroism
+            [itemKeys.name] = "Helm of Heroism",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
+        [226878] = { -- Gloves of Heroism : https://wowhead.com/forever/item=226878/gloves-of-heroism
+            [itemKeys.name] = "Gloves of Heroism",
+            [itemKeys.itemLevel] = 55,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
+        [226879] = { -- Boots of Heroism : https://wowhead.com/forever/item=226879/boots-of-heroism
+            [itemKeys.name] = "Boots of Heroism",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
+        [226880] = { -- Chest of Heroism : https://wowhead.com/forever/item=226880/chest-of-heroism
+            [itemKeys.name] = "Chest of Heroism",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
         [226881] = { -- Beastmaster's Treads : https://wowhead.com/forever/item=226881/beastmasters-treads
             [itemKeys.name] = "Beastmaster's Treads",
             [itemKeys.itemDrops] = {227366},
@@ -18016,6 +18347,54 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 3,
             [itemKeys.vendors] = {230317, 230319, 230565, 230566},
+        },
+        [226897] = { -- Beastmaster's Wrists : https://wowhead.com/forever/item=226897/beastmasters-wrists
+            [itemKeys.name] = "Beastmaster's Wrists",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [226898] = { -- Beastmaster's Waist : https://wowhead.com/forever/item=226898/beastmasters-waist
+            [itemKeys.name] = "Beastmaster's Waist",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [226899] = { -- Beastmaster's Shoulders : https://wowhead.com/forever/item=226899/beastmasters-shoulders
+            [itemKeys.name] = "Beastmaster's Shoulders",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [226900] = { -- Beastmaster's Legs : https://wowhead.com/forever/item=226900/beastmasters-legs
+            [itemKeys.name] = "Beastmaster's Legs",
+            [itemKeys.itemLevel] = 66,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [226901] = { -- Beastmaster's Helm : https://wowhead.com/forever/item=226901/beastmasters-helm
+            [itemKeys.name] = "Beastmaster's Helm",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [226902] = { -- Beastmaster's Gloves : https://wowhead.com/forever/item=226902/beastmasters-gloves
+            [itemKeys.name] = "Beastmaster's Gloves",
+            [itemKeys.itemLevel] = 55,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [226903] = { -- Beastmaster's Boots : https://wowhead.com/forever/item=226903/beastmasters-boots
+            [itemKeys.name] = "Beastmaster's Boots",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [226904] = { -- Beastmaster's Chest : https://wowhead.com/forever/item=226904/beastmasters-chest
+            [itemKeys.name] = "Beastmaster's Chest",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
         },
         [226905] = { -- Deathmist Belt : https://wowhead.com/forever/item=226905/deathmist-belt
             [itemKeys.name] = "Deathmist Belt",
@@ -18080,6 +18459,54 @@ function ForeverBaseItem:Load()
             [itemKeys.subClass] = 1,
             [itemKeys.vendors] = {230317, 230319, 230565, 230566},
         },
+        [226921] = { -- Deathmist Wrists : https://wowhead.com/forever/item=226921/deathmist-wrists
+            [itemKeys.name] = "Deathmist Wrists",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226922] = { -- Deathmist Waist : https://wowhead.com/forever/item=226922/deathmist-waist
+            [itemKeys.name] = "Deathmist Waist",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226923] = { -- Deathmist Shoulders : https://wowhead.com/forever/item=226923/deathmist-shoulders
+            [itemKeys.name] = "Deathmist Shoulders",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226924] = { -- Deathmist Legs : https://wowhead.com/forever/item=226924/deathmist-legs
+            [itemKeys.name] = "Deathmist Legs",
+            [itemKeys.itemLevel] = 66,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226925] = { -- Deathmist Helm : https://wowhead.com/forever/item=226925/deathmist-helm
+            [itemKeys.name] = "Deathmist Helm",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226926] = { -- Deathmist Gloves : https://wowhead.com/forever/item=226926/deathmist-gloves
+            [itemKeys.name] = "Deathmist Gloves",
+            [itemKeys.itemLevel] = 55,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226927] = { -- Deathmist Boots : https://wowhead.com/forever/item=226927/deathmist-boots
+            [itemKeys.name] = "Deathmist Boots",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226928] = { -- Deathmist Chest : https://wowhead.com/forever/item=226928/deathmist-chest
+            [itemKeys.name] = "Deathmist Chest",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
         [226929] = { -- Sorcerer's Bindings : https://wowhead.com/forever/item=226929/sorcerers-bindings
             [itemKeys.name] = "Sorcerer's Bindings",
             [itemKeys.itemLevel] = 65,
@@ -18135,6 +18562,54 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 1,
             [itemKeys.vendors] = {230317, 230319, 230565, 230566},
+        },
+        [226937] = { -- Sorcerer's Wrists : https://wowhead.com/forever/item=226937/sorcerers-wrists
+            [itemKeys.name] = "Sorcerer's Wrists",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226938] = { -- Sorcerer's Waist : https://wowhead.com/forever/item=226938/sorcerers-waist
+            [itemKeys.name] = "Sorcerer's Waist",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226939] = { -- Sorcerer's Shoulders : https://wowhead.com/forever/item=226939/sorcerers-shoulders
+            [itemKeys.name] = "Sorcerer's Shoulders",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226940] = { -- Sorcerer's Legs : https://wowhead.com/forever/item=226940/sorcerers-legs
+            [itemKeys.name] = "Sorcerer's Legs",
+            [itemKeys.itemLevel] = 66,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226941] = { -- Sorcerer's Helm : https://wowhead.com/forever/item=226941/sorcerers-helm
+            [itemKeys.name] = "Sorcerer's Helm",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226942] = { -- Sorcerer's Gloves : https://wowhead.com/forever/item=226942/sorcerers-gloves
+            [itemKeys.name] = "Sorcerer's Gloves",
+            [itemKeys.itemLevel] = 55,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226943] = { -- Sorcerer's Boots : https://wowhead.com/forever/item=226943/sorcerers-boots
+            [itemKeys.name] = "Sorcerer's Boots",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226944] = { -- Sorcerer's Chest : https://wowhead.com/forever/item=226944/sorcerers-chest
+            [itemKeys.name] = "Sorcerer's Chest",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
         },
         [226945] = { -- Virtuous Robe : https://wowhead.com/forever/item=226945/virtuous-robe
             [itemKeys.name] = "Virtuous Robe",
@@ -18261,6 +18736,54 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 1,
             [itemKeys.vendors] = {230317, 230319, 230565, 230566},
+        },
+        [226961] = { -- Virtuous Wrists : https://wowhead.com/forever/item=226961/virtuous-wrists
+            [itemKeys.name] = "Virtuous Wrists",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226962] = { -- Virtuous Waist : https://wowhead.com/forever/item=226962/virtuous-waist
+            [itemKeys.name] = "Virtuous Waist",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226963] = { -- Virtuous Shoulders : https://wowhead.com/forever/item=226963/virtuous-shoulders
+            [itemKeys.name] = "Virtuous Shoulders",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226964] = { -- Virtuous Legs : https://wowhead.com/forever/item=226964/virtuous-legs
+            [itemKeys.name] = "Virtuous Legs",
+            [itemKeys.itemLevel] = 66,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226965] = { -- Virtuous Helm : https://wowhead.com/forever/item=226965/virtuous-helm
+            [itemKeys.name] = "Virtuous Helm",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226966] = { -- Virtuous Gloves : https://wowhead.com/forever/item=226966/virtuous-gloves
+            [itemKeys.name] = "Virtuous Gloves",
+            [itemKeys.itemLevel] = 55,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226967] = { -- Virtuous Boots : https://wowhead.com/forever/item=226967/virtuous-boots
+            [itemKeys.name] = "Virtuous Boots",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [226968] = { -- Virtuous Chest : https://wowhead.com/forever/item=226968/virtuous-chest
+            [itemKeys.name] = "Virtuous Chest",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
         },
         [226969] = { -- Soulforge Spaulders : https://wowhead.com/forever/item=226969/soulforge-spaulders
             [itemKeys.name] = "Soulforge Spaulders",
@@ -18451,6 +18974,54 @@ function ForeverBaseItem:Load()
             [itemKeys.subClass] = 4,
             [itemKeys.vendors] = {230317, 230319, 230565, 230566},
         },
+        [226993] = { -- Soulforge Wrists : https://wowhead.com/forever/item=226993/soulforge-wrists
+            [itemKeys.name] = "Soulforge Wrists",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
+        [226994] = { -- Soulforge Waist : https://wowhead.com/forever/item=226994/soulforge-waist
+            [itemKeys.name] = "Soulforge Waist",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
+        [226995] = { -- Soulforge Shoulders : https://wowhead.com/forever/item=226995/soulforge-shoulders
+            [itemKeys.name] = "Soulforge Shoulders",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
+        [226996] = { -- Soulforge Legs : https://wowhead.com/forever/item=226996/soulforge-legs
+            [itemKeys.name] = "Soulforge Legs",
+            [itemKeys.itemLevel] = 66,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
+        [226997] = { -- Soulforge Helm : https://wowhead.com/forever/item=226997/soulforge-helm
+            [itemKeys.name] = "Soulforge Helm",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
+        [226998] = { -- Soulforge Gloves : https://wowhead.com/forever/item=226998/soulforge-gloves
+            [itemKeys.name] = "Soulforge Gloves",
+            [itemKeys.itemLevel] = 55,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
+        [226999] = { -- Soulforge Boots : https://wowhead.com/forever/item=226999/soulforge-boots
+            [itemKeys.name] = "Soulforge Boots",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
+        [227000] = { -- Soulforge Chest : https://wowhead.com/forever/item=227000/soulforge-chest
+            [itemKeys.name] = "Soulforge Chest",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
         [227001] = { -- Bindings of The Five Thunders : https://wowhead.com/forever/item=227001/bindings-of-the-five-thunders
             [itemKeys.name] = "Bindings of The Five Thunders",
             [itemKeys.itemLevel] = 65,
@@ -18639,6 +19210,54 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 3,
             [itemKeys.vendors] = {230317, 230319, 230565, 230566},
+        },
+        [227033] = { -- Wrists of The Five Thunders : https://wowhead.com/forever/item=227033/wrists-of-the-five-thunders
+            [itemKeys.name] = "Wrists of The Five Thunders",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [227034] = { -- Waist of The Five Thunders : https://wowhead.com/forever/item=227034/waist-of-the-five-thunders
+            [itemKeys.name] = "Waist of The Five Thunders",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [227035] = { -- Shoulders of The Five Thunders : https://wowhead.com/forever/item=227035/shoulders-of-the-five-thunders
+            [itemKeys.name] = "Shoulders of The Five Thunders",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [227036] = { -- Legs of The Five Thunders : https://wowhead.com/forever/item=227036/legs-of-the-five-thunders
+            [itemKeys.name] = "Legs of The Five Thunders",
+            [itemKeys.itemLevel] = 66,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [227037] = { -- Helm of The Five Thunders : https://wowhead.com/forever/item=227037/helm-of-the-five-thunders
+            [itemKeys.name] = "Helm of The Five Thunders",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [227038] = { -- Gloves of The Five Thunders : https://wowhead.com/forever/item=227038/gloves-of-the-five-thunders
+            [itemKeys.name] = "Gloves of The Five Thunders",
+            [itemKeys.itemLevel] = 55,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [227039] = { -- Boots of The Five Thunders : https://wowhead.com/forever/item=227039/boots-of-the-five-thunders
+            [itemKeys.name] = "Boots of The Five Thunders",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [227040] = { -- Chest of The Five Thunders : https://wowhead.com/forever/item=227040/chest-of-the-five-thunders
+            [itemKeys.name] = "Chest of The Five Thunders",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
         },
         [227041] = { -- Scourge Shadow Scalpel : https://wowhead.com/forever/item=227041/scourge-shadow-scalpel
             [itemKeys.name] = "Scourge Shadow Scalpel",
@@ -23830,6 +24449,7 @@ function ForeverBaseItem:Load()
         },
         [235471] = { -- Fel Mote : https://wowhead.com/forever/item=235471/fel-mote
             [itemKeys.name] = "Fel Mote",
+            [itemKeys.objectDrops] = {507731},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
@@ -24631,10 +25251,12 @@ function ForeverBaseItem:Load()
         },
         [238347] = { -- Staff of Archmage Selwyn : https://wowhead.com/forever/item=238347/staff-of-archmage-selwyn
             [itemKeys.name] = "Staff of Archmage Selwyn",
+            [itemKeys.objectDrops] = {524759},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {88917},
         },
         [238385] = { -- Memory Crystal : https://wowhead.com/forever/item=238385/memory-crystal
             [itemKeys.name] = "Memory Crystal",
@@ -24687,6 +25309,7 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {89013, 91608},
         },
         [238507] = { -- Mammoth Shark Steak : https://wowhead.com/forever/item=238507/mammoth-shark-steak
             [itemKeys.name] = "Mammoth Shark Steak",
@@ -24698,6 +25321,7 @@ function ForeverBaseItem:Load()
         },
         [238517] = { -- Mark of the Queen : https://wowhead.com/forever/item=238517/mark-of-the-queen
             [itemKeys.name] = "Mark of the Queen",
+            [itemKeys.objectDrops] = {525677},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
@@ -27628,7 +28252,6 @@ function ForeverBaseItem:Load()
         },
         [248705] = { -- Waylaid Crate: Journeyman Fabrics : https://wowhead.com/forever/item=248705/waylaid-crate-journeyman-fabrics
             [itemKeys.name] = "Waylaid Crate: Journeyman Fabrics",
-            [itemKeys.npcDrops] = {121, 122, 157, 202, 205, 210, 431, 434, 435, 504, 579, 589, 615, 711, 930, 1010, 1012, 1018, 1020, 1022, 1034, 1036, 1110, 1167, 1175, 1202, 1417, 1418, 1663, 1797, 1924, 1939, 2062, 2164, 2244, 2261, 2266, 2268, 2269, 2271, 2321, 2322, 2349, 2354, 2356, 2360, 2370, 2375, 2384, 2451, 3238, 3239, 3242, 3273, 3276, 3277, 3278, 3283, 3376, 3377, 3456, 3743, 3759, 3763, 3767, 3809, 3820, 3917, 3921, 3922, 3924, 3925, 3988, 4028, 4029, 4037, 4040, 4093, 4101, 4112, 4124, 4127, 4316, 4627, 6219, 6222, 7603, 10758, 10761, 261368, 264081, 264083, 267308, 267314},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 10,
             [itemKeys.class] = 0,
@@ -27829,9 +28452,11 @@ function ForeverBaseItem:Load()
         },
         [248822] = { -- Death Lotus : https://wowhead.com/forever/item=248822/death-lotus
             [itemKeys.name] = "Death Lotus",
+            [itemKeys.itemDrops] = {271994},
             [itemKeys.itemLevel] = 60,
             [itemKeys.class] = 7,
             [itemKeys.subClass] = 9,
+            [itemKeys.vendors] = {263384},
         },
         [248823] = { -- Marefoil : https://wowhead.com/forever/item=248823/marefoil
             [itemKeys.name] = "Marefoil",
@@ -27841,6 +28466,7 @@ function ForeverBaseItem:Load()
         },
         [248824] = { -- Fel Hide : https://wowhead.com/forever/item=248824/fel-hide
             [itemKeys.name] = "Fel Hide",
+            [itemKeys.npcDrops] = {249490},
             [itemKeys.itemLevel] = 60,
             [itemKeys.class] = 7,
             [itemKeys.subClass] = 6,
@@ -27967,7 +28593,7 @@ function ForeverBaseItem:Load()
         },
         [249399] = { -- Frilled Lichen : https://wowhead.com/forever/item=249399/frilled-lichen
             [itemKeys.name] = "Frilled Lichen",
-            [itemKeys.objectDrops] = {657383, 657385, 657386, 657387, 657388, 657394, 657458, 657459, 657460, 657461},
+            [itemKeys.objectDrops] = {657383, 657385, 657386, 657387, 657388, 657389, 657394, 657458, 657459, 657460, 657461},
             [itemKeys.itemLevel] = 25,
             [itemKeys.class] = 7,
             [itemKeys.subClass] = 9,
@@ -28005,7 +28631,7 @@ function ForeverBaseItem:Load()
         },
         [249427] = { -- Pristine Leather : https://wowhead.com/forever/item=249427/pristine-leather
             [itemKeys.name] = "Pristine Leather",
-            [itemKeys.npcDrops] = {157, 213, 441, 454, 547, 565, 819, 833, 923, 1020, 1186, 1191, 1192, 1400, 1417, 1693, 1766, 1769, 1770, 1778, 1779, 1797, 1893, 1923, 1924, 2069, 2163, 2164, 2165, 2185, 2237, 2321, 2322, 2323, 2351, 2354, 2384, 2529, 3234, 3238, 3239, 3240, 3242, 3244, 3245, 3246, 3248, 3249, 3255, 3256, 3415, 3416, 3424, 3425, 3426, 3461, 3473, 3630, 3631, 3632, 3633, 3634, 3636, 3637, 3641, 3809, 3816, 3823, 3851, 3853, 3855, 3857, 3859, 3861, 3862, 3864, 3865, 3866, 3868, 4008, 4012, 4013, 4018, 4042, 4067, 4127, 4128, 4129, 4316, 4511, 4887, 5048, 5053, 5056, 5755, 5756, 5762, 8886, 203139, 263470, 270693},
+            [itemKeys.npcDrops] = {157, 213, 441, 454, 547, 565, 923, 1020, 1021, 1022, 1043, 1069, 1186, 1400, 1766, 1769, 1779, 1782, 1923, 2069, 2164, 2185, 2323, 2354, 2356, 2529, 3238, 3240, 3241, 3242, 3244, 3245, 3246, 3249, 3255, 3256, 3415, 3425, 3461, 3630, 3632, 3633, 3634, 3636, 3637, 3809, 3851, 3853, 3854, 3855, 3857, 3859, 3861, 3862, 3864, 3865, 3868, 4013, 4014, 4018, 4067, 4127, 4128, 4511, 4514, 4824, 4827, 4887, 5048, 5053, 5056, 5755, 5756, 5762, 5829, 8886, 263470},
             [itemKeys.itemLevel] = 25,
             [itemKeys.class] = 7,
             [itemKeys.subClass] = 6,
@@ -28310,12 +28936,14 @@ function ForeverBaseItem:Load()
         },
         [249511] = { -- Formula: Enchant 2H Weapon - Lesser Agility : https://wowhead.com/forever/item=249511/formula-enchant-2h-weapon-lesser-agility
             [itemKeys.name] = "Formula: Enchant 2H Weapon - Lesser Agility",
+            [itemKeys.npcDrops] = {4329},
             [itemKeys.itemLevel] = 42,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 8,
         },
         [249512] = { -- Formula: Dreambough Wand : https://wowhead.com/forever/item=249512/formula-dreambough-wand
             [itemKeys.name] = "Formula: Dreambough Wand",
+            [itemKeys.npcDrops] = {2720},
             [itemKeys.itemLevel] = 43,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 8,
@@ -28340,6 +28968,7 @@ function ForeverBaseItem:Load()
         },
         [249516] = { -- Formula: Enchant Gloves - Advanced Skinning : https://wowhead.com/forever/item=249516/formula-enchant-gloves-advanced-skinning
             [itemKeys.name] = "Formula: Enchant Gloves - Advanced Skinning",
+            [itemKeys.npcDrops] = {6196},
             [itemKeys.itemLevel] = 50,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 8,
@@ -28465,18 +29094,23 @@ function ForeverBaseItem:Load()
         },
         [249693] = { -- Totem of Ursol : https://wowhead.com/forever/item=249693/totem-of-ursol
             [itemKeys.name] = "Totem of Ursol",
+            [itemKeys.objectDrops] = {570888},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {92066},
         },
         [249694] = { -- Totem of Ursoc : https://wowhead.com/forever/item=249694/totem-of-ursoc
             [itemKeys.name] = "Totem of Ursoc",
+            [itemKeys.objectDrops] = {570890},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {92066},
         },
         [249695] = { -- Fel-Tainted Flesh : https://wowhead.com/forever/item=249695/fel-tainted-flesh
             [itemKeys.name] = "Fel-Tainted Flesh",
+            [itemKeys.npcDrops] = {247235, 247237, 247248, 247249, 250023, 250027, 250187, 255247, 255347, 255394, 258152, 258264, 258329, 258508, 258516, 258668, 268462, 268834, 268864, 272307, 277474},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
@@ -28495,10 +29129,13 @@ function ForeverBaseItem:Load()
         },
         [249698] = { -- Feathered Charm Necklace : https://wowhead.com/forever/item=249698/feathered-charm-necklace
             [itemKeys.name] = "Feathered Charm Necklace",
+            [itemKeys.npcDrops] = {247206, 247235, 247248, 247249, 255247, 255347, 258668, 268864, 272307},
+            [itemKeys.startQuest] = 92070,
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 47,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {92070},
         },
         [249726] = { -- Azerothium Bar : https://wowhead.com/forever/item=249726/azerothium-bar
             [itemKeys.name] = "Azerothium Bar",
@@ -28655,6 +29292,7 @@ function ForeverBaseItem:Load()
         },
         [249880] = { -- Recipe: Royal Tea : https://wowhead.com/forever/item=249880/recipe-royal-tea
             [itemKeys.name] = "Recipe: Royal Tea",
+            [itemKeys.npcDrops] = {4003},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 9,
@@ -28670,6 +29308,7 @@ function ForeverBaseItem:Load()
         },
         [249882] = { -- Recipe: Triage Tea : https://wowhead.com/forever/item=249882/recipe-triage-tea
             [itemKeys.name] = "Recipe: Triage Tea",
+            [itemKeys.npcDrops] = {5254},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 9,
@@ -28677,6 +29316,7 @@ function ForeverBaseItem:Load()
         },
         [249883] = { -- Recipe: Sunny Tea : https://wowhead.com/forever/item=249883/recipe-sunny-tea
             [itemKeys.name] = "Recipe: Sunny Tea",
+            [itemKeys.npcDrops] = {752},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 9,
@@ -28684,6 +29324,7 @@ function ForeverBaseItem:Load()
         },
         [249884] = { -- Recipe: Sage's Tea : https://wowhead.com/forever/item=249884/recipe-sages-tea
             [itemKeys.name] = "Recipe: Sage's Tea",
+            [itemKeys.npcDrops] = {7379},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 9,
@@ -28757,13 +29398,15 @@ function ForeverBaseItem:Load()
         },
         [249898] = { -- Wilted Lashling Bud : https://wowhead.com/forever/item=249898/wilted-lashling-bud
             [itemKeys.name] = "Wilted Lashling Bud",
+            [itemKeys.itemDrops] = {249900},
             [itemKeys.itemLevel] = 50,
             [itemKeys.class] = 15,
-            [itemKeys.subClass] = 0,
+            [itemKeys.subClass] = 2,
         },
         [249900] = { -- Regurgitated Seed Pod : https://wowhead.com/forever/item=249900/regurgitated-seed-pod
             [itemKeys.name] = "Regurgitated Seed Pod",
             [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 45,
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 0,
         },
@@ -28938,6 +29581,7 @@ function ForeverBaseItem:Load()
         },
         [250178] = { -- Recipe: Bear Bruscitti : https://wowhead.com/forever/item=250178/recipe-bear-bruscitti
             [itemKeys.name] = "Recipe: Bear Bruscitti",
+            [itemKeys.npcDrops] = {7446},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 9,
@@ -29316,7 +29960,7 @@ function ForeverBaseItem:Load()
         },
         [250375] = { -- Recipe: Minor Mageblood Elixir : https://wowhead.com/forever/item=250375/recipe-minor-mageblood-elixir
             [itemKeys.name] = "Recipe: Minor Mageblood Elixir",
-            [itemKeys.npcDrops] = {1134},
+            [itemKeys.npcDrops] = {1134, 2975},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 9,
@@ -30868,12 +31512,14 @@ function ForeverBaseItem:Load()
         },
         [251336] = { -- Plans: Sterling Silver Leggings : https://wowhead.com/forever/item=251336/plans-sterling-silver-leggings
             [itemKeys.name] = "Plans: Sterling Silver Leggings",
+            [itemKeys.npcDrops] = {48},
             [itemKeys.itemLevel] = 26,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 4,
         },
         [251337] = { -- Plans: Sterling Silver Gauntlet : https://wowhead.com/forever/item=251337/plans-sterling-silver-gauntlet
             [itemKeys.name] = "Plans: Sterling Silver Gauntlet",
+            [itemKeys.npcDrops] = {3711},
             [itemKeys.itemLevel] = 26,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 4,
@@ -30894,7 +31540,7 @@ function ForeverBaseItem:Load()
         },
         [251340] = { -- Plans: Veteran's Chain Shirt : https://wowhead.com/forever/item=251340/plans-veterans-chain-shirt
             [itemKeys.name] = "Plans: Veteran's Chain Shirt",
-            [itemKeys.npcDrops] = {643, 645, 646, 647, 1763, 3864, 3865, 11517, 11518, 11519, 11520},
+            [itemKeys.npcDrops] = {643, 644, 645, 646, 647, 1763, 3586, 3653, 3669, 3671, 3864, 3865, 3914, 5912, 11517, 11518, 11519, 11520, 255699},
             [itemKeys.itemLevel] = 20,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 4,
@@ -30935,7 +31581,7 @@ function ForeverBaseItem:Load()
         },
         [251346] = { -- Plans: Guard's Chain Leggings : https://wowhead.com/forever/item=251346/plans-guards-chain-leggings
             [itemKeys.name] = "Plans: Guard's Chain Leggings",
-            [itemKeys.npcDrops] = {639, 1696, 3865, 4831, 4887},
+            [itemKeys.npcDrops] = {639, 1696, 3654, 3670, 3673, 3674, 3865, 3872, 3886, 3887, 3927, 4274, 4275, 4278, 4279, 4831, 4887, 5775},
             [itemKeys.itemLevel] = 25,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 4,
@@ -31214,6 +31860,7 @@ function ForeverBaseItem:Load()
         },
         [251386] = { -- Plans: Hard Gold Boots : https://wowhead.com/forever/item=251386/plans-hard-gold-boots
             [itemKeys.name] = "Plans: Hard Gold Boots",
+            [itemKeys.npcDrops] = {2586, 267065},
             [itemKeys.itemLevel] = 35,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 4,
@@ -31269,6 +31916,7 @@ function ForeverBaseItem:Load()
         },
         [251395] = { -- Plans: Shining Mithril Helm : https://wowhead.com/forever/item=251395/plans-shining-mithril-helm
             [itemKeys.name] = "Plans: Shining Mithril Helm",
+            [itemKeys.npcDrops] = {1907},
             [itemKeys.itemLevel] = 48,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 4,
@@ -31329,6 +31977,7 @@ function ForeverBaseItem:Load()
         },
         [251405] = { -- Plans: Warder's Gloves : https://wowhead.com/forever/item=251405/plans-warders-gloves
             [itemKeys.name] = "Plans: Warder's Gloves",
+            [itemKeys.npcDrops] = {2748, 5709, 5710, 5715, 5719, 5721, 7267, 7272, 7273, 7275, 7797, 8580, 9018, 9024, 9025, 9319, 9499, 9502, 9543, 12201, 12203, 12225, 12258, 13282, 13596, 13601},
             [itemKeys.itemLevel] = 55,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 4,
@@ -31633,6 +32282,7 @@ function ForeverBaseItem:Load()
         },
         [251451] = { -- Plans: Stalwart Helm : https://wowhead.com/forever/item=251451/plans-stalwart-helm
             [itemKeys.name] = "Plans: Stalwart Helm",
+            [itemKeys.npcDrops] = {9583},
             [itemKeys.itemLevel] = 60,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 4,
@@ -31670,6 +32320,7 @@ function ForeverBaseItem:Load()
         },
         [251457] = { -- Plans: Steel Spear : https://wowhead.com/forever/item=251457/plans-steel-spear
             [itemKeys.name] = "Plans: Steel Spear",
+            [itemKeys.npcDrops] = {4151},
             [itemKeys.itemLevel] = 37,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 4,
@@ -31702,6 +32353,7 @@ function ForeverBaseItem:Load()
         },
         [251462] = { -- Plans: Mithril Claymore : https://wowhead.com/forever/item=251462/plans-mithril-claymore
             [itemKeys.name] = "Plans: Mithril Claymore",
+            [itemKeys.npcDrops] = {5249},
             [itemKeys.itemLevel] = 45,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 4,
@@ -31817,7 +32469,7 @@ function ForeverBaseItem:Load()
         },
         [251526] = { -- Recipe: Savory Whimsyfin Delight : https://wowhead.com/forever/item=251526/recipe-savory-whimsyfin-delight
             [itemKeys.name] = "Recipe: Savory Whimsyfin Delight",
-            [itemKeys.npcDrops] = {334, 422, 426, 428, 440, 441, 442, 446, 505, 547, 548, 580, 712, 1083, 4463},
+            [itemKeys.npcDrops] = {422, 423, 424, 426, 428, 430, 434, 435, 436, 440, 441, 442, 446, 485, 486, 505, 547, 548, 578, 712, 1083, 4065, 214519, 271898},
             [itemKeys.itemLevel] = 18,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 5,
@@ -32143,10 +32795,11 @@ function ForeverBaseItem:Load()
         },
         [251961] = { -- Arcane Mote : https://wowhead.com/forever/item=251961/arcane-mote
             [itemKeys.name] = "Arcane Mote",
-            [itemKeys.npcDrops] = {246020, 250657},
+            [itemKeys.npcDrops] = {246020},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {92458, 92459, 96984, 97287},
         },
         [251962] = { -- Violet Sash : https://wowhead.com/forever/item=251962/violet-sash
             [itemKeys.name] = "Violet Sash",
@@ -32174,10 +32827,12 @@ function ForeverBaseItem:Load()
         },
         [251983] = { -- Fel Infused Blossom : https://wowhead.com/forever/item=251983/fel-infused-blossom
             [itemKeys.name] = "Fel Infused Blossom",
+            [itemKeys.objectDrops] = {553757},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {92456},
         },
         [252022] = { -- Galestrider Jerky : https://wowhead.com/forever/item=252022/galestrider-jerky
             [itemKeys.name] = "Galestrider Jerky",
@@ -32852,7 +33507,6 @@ function ForeverBaseItem:Load()
         },
         [252512] = { -- Brawler's Leather Helm : https://wowhead.com/forever/item=252512/brawlers-leather-helm
             [itemKeys.name] = "Brawler's Leather Helm",
-            [itemKeys.npcDrops] = {1663, 1666, 1716, 1717, 3974, 4421, 4422, 4424, 4425, 4428, 4829, 4832, 6168, 6243, 6488, 6489, 6490, 12902},
             [itemKeys.itemLevel] = 30,
             [itemKeys.requiredLevel] = 25,
             [itemKeys.class] = 4,
@@ -33747,7 +34401,7 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 15,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 1,
-            [itemKeys.vendors] = {3005, 3366, 4225, 4589, 5128, 5565, 7854},
+            [itemKeys.vendors] = {3005, 3366, 4225, 4589, 5128, 5565, 7854, 8160},
         },
         [252786] = { -- Pattern: Brawler's Leather Boots : https://wowhead.com/forever/item=252786/pattern-brawlers-leather-boots
             [itemKeys.name] = "Pattern: Brawler's Leather Boots",
@@ -33941,7 +34595,7 @@ function ForeverBaseItem:Load()
         },
         [252814] = { -- Pattern: Brawler's Leather Helm : https://wowhead.com/forever/item=252814/pattern-brawlers-leather-helm
             [itemKeys.name] = "Pattern: Brawler's Leather Helm",
-            [itemKeys.npcDrops] = {1663, 1666, 1716, 1717, 3983, 4421, 4424, 4829, 4830, 4832, 6243, 12902},
+            [itemKeys.npcDrops] = {1663, 1666, 1716, 1717, 1720, 3974, 3983, 4420, 4421, 4422, 4424, 4425, 4428, 4543, 4829, 4830, 4832, 4842, 6168, 6228, 6229, 6235, 6243, 6488, 6489, 6490, 7079, 7361, 7800, 12876, 12902},
             [itemKeys.itemLevel] = 30,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 1,
@@ -34440,6 +35094,7 @@ function ForeverBaseItem:Load()
         },
         [252890] = { -- Pattern: Blue Suede Hat : https://wowhead.com/forever/item=252890/pattern-blue-suede-hat
             [itemKeys.name] = "Pattern: Blue Suede Hat",
+            [itemKeys.npcDrops] = {7440},
             [itemKeys.itemLevel] = 60,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 1,
@@ -34745,6 +35400,7 @@ function ForeverBaseItem:Load()
         },
         [252938] = { -- Pattern: Blue Dragonscale Helm : https://wowhead.com/forever/item=252938/pattern-blue-dragonscale-helm
             [itemKeys.name] = "Pattern: Blue Dragonscale Helm",
+            [itemKeys.npcDrops] = {261770, 262164},
             [itemKeys.itemLevel] = 60,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 1,
@@ -34936,10 +35592,12 @@ function ForeverBaseItem:Load()
         [253711] = { -- Goliath's Wristguards : https://wowhead.com/forever/item=253711/goliaths-wristguards
             [itemKeys.name] = "Goliath's Wristguards",
             [itemKeys.npcDrops] = {218032},
+            [itemKeys.startQuest] = 92707,
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 30,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {92707},
         },
         [253884] = { -- Template Item : https://wowhead.com/forever/item=253884/template-item
             [itemKeys.name] = "Template Item",
@@ -36104,6 +36762,7 @@ function ForeverBaseItem:Load()
         },
         [254044] = { -- Pattern: Black Cord : https://wowhead.com/forever/item=254044/pattern-black-cord
             [itemKeys.name] = "Pattern: Black Cord",
+            [itemKeys.npcDrops] = {3975, 3976, 3977, 4542, 4854, 6487, 6906, 6907, 6910, 7023, 7206, 7228, 7272, 7291, 7354, 7355, 7356, 7357, 7358, 7604, 7796, 8567},
             [itemKeys.itemLevel] = 45,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 9,
@@ -36118,6 +36777,7 @@ function ForeverBaseItem:Load()
         },
         [254046] = { -- Pattern: Golden Cord : https://wowhead.com/forever/item=254046/pattern-golden-cord
             [itemKeys.name] = "Pattern: Golden Cord",
+            [itemKeys.npcDrops] = {3975, 3976, 3977, 4542, 4854, 6487, 6906, 6907, 7023, 7206, 7228, 7291, 7355, 7356, 7357, 7358, 7604, 7796, 8567, 10080, 10081, 10082},
             [itemKeys.itemLevel] = 45,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 9,
@@ -36688,7 +37348,8 @@ function ForeverBaseItem:Load()
         },
         [254124] = { -- Pattern: Runecloth Cuffs : https://wowhead.com/forever/item=254124/pattern-runecloth-cuffs
             [itemKeys.name] = "Pattern: Runecloth Cuffs",
-            [itemKeys.itemLevel] = 59,
+            [itemKeys.questRewards] = {95769},
+            [itemKeys.itemLevel] = 57,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 2,
@@ -37114,17 +37775,21 @@ function ForeverBaseItem:Load()
         },
         [255656] = { -- Pylon Fragment : https://wowhead.com/forever/item=255656/pylon-fragment
             [itemKeys.name] = "Pylon Fragment",
+            [itemKeys.objectDrops] = {607122},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {96010},
         },
         [255657] = { -- Pylon Shard : https://wowhead.com/forever/item=255657/pylon-shard
             [itemKeys.name] = "Pylon Shard",
+            [itemKeys.objectDrops] = {607123},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {96010},
         },
         [255658] = { -- Al'Aketh Windstone Charm : https://wowhead.com/forever/item=255658/alaketh-windstone-charm
             [itemKeys.name] = "Al'Aketh Windstone Charm",
@@ -37136,10 +37801,12 @@ function ForeverBaseItem:Load()
         },
         [255662] = { -- Mana Sieve : https://wowhead.com/forever/item=255662/mana-sieve
             [itemKeys.name] = "Mana Sieve",
+            [itemKeys.objectDrops] = {584729},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {96018},
         },
         [255663] = { -- Windstone : https://wowhead.com/forever/item=255663/windstone
             [itemKeys.name] = "Windstone",
@@ -37156,6 +37823,7 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {96018},
         },
         [255715] = { -- Potent Anti-Venom : https://wowhead.com/forever/item=255715/potent-anti-venom
             [itemKeys.name] = "Potent Anti-Venom",
@@ -37246,6 +37914,7 @@ function ForeverBaseItem:Load()
         },
         [255729] = { -- Manual: Major Healing Potion : https://wowhead.com/forever/item=255729/manual-major-healing-potion
             [itemKeys.name] = "Manual: Major Healing Potion",
+            [itemKeys.questRewards] = {96622},
             [itemKeys.itemLevel] = 55,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 7,
@@ -37806,6 +38475,7 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {93450},
         },
         [258735] = { -- Phantasmal Blade : https://wowhead.com/forever/item=258735/phantasmal-blade
             [itemKeys.name] = "Phantasmal Blade",
@@ -37813,10 +38483,11 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {93450},
         },
         [258771] = { -- Al'Aketh Cultist's Ear : https://wowhead.com/forever/item=258771/alaketh-cultists-ear
             [itemKeys.name] = "Al'Aketh Cultist's Ear",
-            [itemKeys.npcDrops] = {252664, 252665, 252762, 252763, 252764, 252765, 252767, 253195, 253511, 253622, 256966, 257196, 270201},
+            [itemKeys.npcDrops] = {252664, 252665, 252762, 252763, 252764, 252765, 252767, 253195, 253511, 256966, 257196, 270201},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
@@ -37853,10 +38524,12 @@ function ForeverBaseItem:Load()
         },
         [259226] = { -- Spectral Iron Ore : https://wowhead.com/forever/item=259226/spectral-iron-ore
             [itemKeys.name] = "Spectral Iron Ore",
+            [itemKeys.objectDrops] = {613761, 613764},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {93546},
         },
         [259229] = { -- Vindael's Spectral Pickaxe : https://wowhead.com/forever/item=259229/vindaels-spectral-pickaxe
             [itemKeys.name] = "Vindael's Spectral Pickaxe",
@@ -37874,6 +38547,7 @@ function ForeverBaseItem:Load()
         },
         [259357] = { -- Burning Keystone : https://wowhead.com/forever/item=259357/burning-keystone
             [itemKeys.name] = "Burning Keystone",
+            [itemKeys.objectDrops] = {613836},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 15,
@@ -37938,7 +38612,9 @@ function ForeverBaseItem:Load()
         },
         [260167] = { -- Adventurer's Lost Boots : https://wowhead.com/forever/item=260167/adventurers-lost-boots
             [itemKeys.name] = "Adventurer's Lost Boots",
+            [itemKeys.questRewards] = {86777},
             [itemKeys.itemLevel] = 52,
+            [itemKeys.requiredLevel] = 47,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 2,
         },
@@ -38044,7 +38720,9 @@ function ForeverBaseItem:Load()
         },
         [260205] = { -- Highborne Research Tablet : https://wowhead.com/forever/item=260205/highborne-research-tablet
             [itemKeys.name] = "Highborne Research Tablet",
+            [itemKeys.questRewards] = {89053},
             [itemKeys.itemLevel] = 55,
+            [itemKeys.requiredLevel] = 47,
             [itemKeys.class] = 4,
         },
         [260207] = { -- Staff of Archmage Selwyn : https://wowhead.com/forever/item=260207/staff-of-archmage-selwyn
@@ -38114,6 +38792,7 @@ function ForeverBaseItem:Load()
         },
         [260218] = { -- Malefactor's End : https://wowhead.com/forever/item=260218/malefactors-end
             [itemKeys.name] = "Malefactor's End",
+            [itemKeys.questRewards] = {92065},
             [itemKeys.itemLevel] = 62,
             [itemKeys.requiredLevel] = 47,
             [itemKeys.class] = 4,
@@ -38138,6 +38817,7 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {93604, 93606},
         },
         [260244] = { -- Benevolent Bouquet : https://wowhead.com/forever/item=260244/benevolent-bouquet
             [itemKeys.name] = "Benevolent Bouquet",
@@ -38183,7 +38863,8 @@ function ForeverBaseItem:Load()
         },
         [260348] = { -- Barely Legible Journal Entry, Page I : https://wowhead.com/forever/item=260348/barely-legible-journal-entry-page-i
             [itemKeys.name] = "Barely Legible Journal Entry, Page I",
-            [itemKeys.npcDrops] = {252711, 255174, 263681},
+            [itemKeys.npcDrops] = {252711, 254566, 254567, 255174, 255207, 255238, 263681, 276401},
+            [itemKeys.objectDrops] = {616031},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 15,
@@ -38726,6 +39407,8 @@ function ForeverBaseItem:Load()
         },
         [262888] = { -- Sealed Journeyman's Writ : https://wowhead.com/forever/item=262888/sealed-journeymans-writ
             [itemKeys.name] = "Sealed Journeyman's Writ",
+            [itemKeys.npcDrops] = {1417, 1706, 1707, 1708, 1715, 2384, 3899, 4281, 4308, 4805, 6071, 6392, 7053, 7603, 11576, 259897},
+            [itemKeys.objectDrops] = {2704},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 10,
             [itemKeys.class] = 0,
@@ -38783,6 +39466,7 @@ function ForeverBaseItem:Load()
         },
         [263006] = { -- Scout Ranger's Tunic : https://wowhead.com/forever/item=263006/scout-rangers-tunic
             [itemKeys.name] = "Scout Ranger's Tunic",
+            [itemKeys.npcDrops] = {256028},
             [itemKeys.itemLevel] = 8,
             [itemKeys.requiredLevel] = 3,
             [itemKeys.class] = 4,
@@ -39348,6 +40032,7 @@ function ForeverBaseItem:Load()
         },
         [263992] = { -- Overseer's Keyring : https://wowhead.com/forever/item=263992/overseers-keyring
             [itemKeys.name] = "Overseer's Keyring",
+            [itemKeys.npcDrops] = {255391},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 0,
@@ -40949,6 +41634,7 @@ function ForeverBaseItem:Load()
         },
         [264233] = { -- Schematic: Dimensional Transporter: Mt. Hyjal : https://wowhead.com/forever/item=264233/schematic-dimensional-transporter-mt-hyjal
             [itemKeys.name] = "Schematic: Dimensional Transporter: Mt. Hyjal",
+            [itemKeys.questRewards] = {91564},
             [itemKeys.itemLevel] = 60,
             [itemKeys.requiredLevel] = 10,
             [itemKeys.class] = 9,
@@ -41036,6 +41722,7 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 8,
             [itemKeys.class] = 2,
             [itemKeys.subClass] = 7,
+            [itemKeys.relatedQuests] = {97029},
         },
         [264671] = { -- (DNT) Sylvestris' Bow : https://wowhead.com/forever/item=264671/dnt-sylvestris-bow
             [itemKeys.name] = "(DNT) Sylvestris' Bow",
@@ -41102,6 +41789,7 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {94533, 94679},
         },
         [265358] = { -- Stolen Ore : https://wowhead.com/forever/item=265358/stolen-ore
             [itemKeys.name] = "Stolen Ore",
@@ -41255,6 +41943,7 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {94768, 94890, 94891, 94894},
         },
         [265838] = { -- Green Skeletal Horse : https://wowhead.com/forever/item=265838/green-skeletal-horse
             [itemKeys.name] = "Green Skeletal Horse",
@@ -41290,6 +41979,7 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {94829},
         },
         [266154] = { -- Lumber Tree Seed : https://wowhead.com/forever/item=266154/lumber-tree-seed
             [itemKeys.name] = "Lumber Tree Seed",
@@ -41325,6 +42015,7 @@ function ForeverBaseItem:Load()
         },
         [266251] = { -- Discarded Doll : https://wowhead.com/forever/item=266251/discarded-doll
             [itemKeys.name] = "Discarded Doll",
+            [itemKeys.objectDrops] = {622001},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
@@ -41372,7 +42063,7 @@ function ForeverBaseItem:Load()
         },
         [266427] = { -- Field Marshal's Log : https://wowhead.com/forever/item=266427/field-marshals-log
             [itemKeys.name] = "Field Marshal's Log",
-            [itemKeys.npcDrops] = {254560, 256798, 256952},
+            [itemKeys.npcDrops] = {254560, 256798, 256952, 260969, 260996},
             [itemKeys.startQuest] = 94885,
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 36,
@@ -41406,10 +42097,12 @@ function ForeverBaseItem:Load()
         },
         [266884] = { -- Robbie's Hat : https://wowhead.com/forever/item=266884/robbies-hat
             [itemKeys.name] = "Robbie's Hat",
+            [itemKeys.objectDrops] = {624202},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {94923},
         },
         [266888] = { -- Prized Lion Hide : https://wowhead.com/forever/item=266888/prized-lion-hide
             [itemKeys.name] = "Prized Lion Hide",
@@ -41420,10 +42113,13 @@ function ForeverBaseItem:Load()
         },
         [266889] = { -- Komuk's Warmaul : https://wowhead.com/forever/item=266889/komuks-warmaul
             [itemKeys.name] = "Komuk's Warmaul",
+            [itemKeys.npcDrops] = {259056},
+            [itemKeys.startQuest] = 94926,
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 38,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {94926},
         },
         [266891] = { -- Shipment to Farholde Keep : https://wowhead.com/forever/item=266891/shipment-to-farholde-keep
             [itemKeys.name] = "Shipment to Farholde Keep",
@@ -41439,6 +42135,7 @@ function ForeverBaseItem:Load()
         },
         [266897] = { -- Saw Blade : https://wowhead.com/forever/item=266897/saw-blade
             [itemKeys.name] = "Saw Blade",
+            [itemKeys.objectDrops] = {624265},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
@@ -41516,6 +42213,8 @@ function ForeverBaseItem:Load()
         },
         [267137] = { -- Krol'dok Moulding : https://wowhead.com/forever/item=267137/kroldok-moulding
             [itemKeys.name] = "Krol'dok Moulding",
+            [itemKeys.npcDrops] = {259256},
+            [itemKeys.startQuest] = 94973,
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
@@ -41586,10 +42285,11 @@ function ForeverBaseItem:Load()
         },
         [267266] = { -- Mudfin Murloc Head : https://wowhead.com/forever/item=267266/mudfin-murloc-head
             [itemKeys.name] = "Mudfin Murloc Head",
-            [itemKeys.npcDrops] = {258573, 258574},
+            [itemKeys.npcDrops] = {255899, 258573, 258574},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {94842},
         },
         [267272] = { -- Taming Rod : https://wowhead.com/forever/item=267272/taming-rod
             [itemKeys.name] = "Taming Rod",
@@ -41797,6 +42497,7 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {95121},
         },
         [268345] = { -- Sand Crawler Meat : https://wowhead.com/forever/item=268345/sand-crawler-meat
             [itemKeys.name] = "Sand Crawler Meat",
@@ -41827,7 +42528,7 @@ function ForeverBaseItem:Load()
         },
         [268416] = { -- Uncommon Herb Seeds : https://wowhead.com/forever/item=268416/uncommon-herb-seeds
             [itemKeys.name] = "Uncommon Herb Seeds",
-            [itemKeys.objectDrops] = {657385},
+            [itemKeys.objectDrops] = {657385, 657386, 657387, 657388, 657389},
             [itemKeys.itemLevel] = 20,
             [itemKeys.class] = 7,
             [itemKeys.subClass] = 9,
@@ -41840,6 +42541,7 @@ function ForeverBaseItem:Load()
         },
         [268418] = { -- Scarce Herb Seeds : https://wowhead.com/forever/item=268418/scarce-herb-seeds
             [itemKeys.name] = "Scarce Herb Seeds",
+            [itemKeys.objectDrops] = {657395, 657397, 657399, 657400, 657408},
             [itemKeys.itemLevel] = 46,
             [itemKeys.class] = 7,
             [itemKeys.subClass] = 9,
@@ -42038,10 +42740,11 @@ function ForeverBaseItem:Load()
         },
         [268632] = { -- Beast Entrails : https://wowhead.com/forever/item=268632/beast-entrails
             [itemKeys.name] = "Beast Entrails",
-            [itemKeys.npcDrops] = {255851, 255901, 256807, 257017, 258331, 258522, 258588, 258617, 259046, 259054, 259055, 259267, 259269, 260235, 262037, 263307, 263343, 263348, 263380, 266862, 266883, 268831},
+            [itemKeys.npcDrops] = {255851, 255901, 256807, 257017, 258331, 258522, 258617, 259046, 259054, 259055, 259267, 259269, 260235, 262037, 263307, 263343, 263348, 263380, 266862, 268831},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {95261},
         },
         [268633] = { -- Sea Monster's Head : https://wowhead.com/forever/item=268633/sea-monsters-head
             [itemKeys.name] = "Sea Monster's Head",
@@ -42065,9 +42768,11 @@ function ForeverBaseItem:Load()
         },
         [268664] = { -- Rotflesh Mushroom : https://wowhead.com/forever/item=268664/rotflesh-mushroom
             [itemKeys.name] = "Rotflesh Mushroom",
+            [itemKeys.objectDrops] = {630588},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {95261},
         },
         [268675] = { -- Refined Concoction of Cleansing : https://wowhead.com/forever/item=268675/refined-concoction-of-cleansing
             [itemKeys.name] = "Refined Concoction of Cleansing",
@@ -42184,6 +42889,7 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 62,
             [itemKeys.requiredLevel] = 55,
             [itemKeys.class] = 4,
+            [itemKeys.vendors] = {256629},
         },
         [268879] = { -- Uber Diablo Stone : https://wowhead.com/forever/item=268879/uber-diablo-stone
             [itemKeys.name] = "Uber Diablo Stone",
@@ -42263,6 +42969,7 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {95198},
         },
         [269008] = { -- Corrupted Grovewalker Sap : https://wowhead.com/forever/item=269008/corrupted-grovewalker-sap
             [itemKeys.name] = "Corrupted Grovewalker Sap",
@@ -42321,6 +43028,7 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {95425},
         },
         [269326] = { -- NOT USED : https://wowhead.com/forever/item=269326/not-used
             [itemKeys.name] = "NOT USED",
@@ -42427,7 +43135,7 @@ function ForeverBaseItem:Load()
         [269716] = { -- Keen Skinning Knife : https://wowhead.com/forever/item=269716/keen-skinning-knife
             [itemKeys.name] = "Keen Skinning Knife",
             [itemKeys.questRewards] = {95508},
-            [itemKeys.itemLevel] = 19,
+            [itemKeys.itemLevel] = 18,
             [itemKeys.requiredLevel] = 14,
             [itemKeys.class] = 2,
             [itemKeys.subClass] = 15,
@@ -42558,10 +43266,11 @@ function ForeverBaseItem:Load()
         },
         [269903] = { -- Schematic: Hoof-Shaped Foot Pedal : https://wowhead.com/forever/item=269903/schematic-hoof-shaped-foot-pedal
             [itemKeys.name] = "Schematic: Hoof-Shaped Foot Pedal",
+            [itemKeys.questRewards] = {1371},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 3,
-            [itemKeys.vendors] = {253139},
+            [itemKeys.vendors] = {253139, 253140},
         },
         [269920] = { -- Hyjal Owl Egg : https://wowhead.com/forever/item=269920/hyjal-owl-egg
             [itemKeys.name] = "Hyjal Owl Egg",
@@ -43342,6 +44051,7 @@ function ForeverBaseItem:Load()
         },
         [270117] = { -- Shapeshifter's Helm : https://wowhead.com/forever/item=270117/shapeshifters-helm
             [itemKeys.name] = "Shapeshifter's Helm",
+            [itemKeys.questRewards] = {3528},
             [itemKeys.itemLevel] = 54,
             [itemKeys.requiredLevel] = 40,
             [itemKeys.class] = 4,
@@ -43361,6 +44071,7 @@ function ForeverBaseItem:Load()
         },
         [270120] = { -- Boots of Requite : https://wowhead.com/forever/item=270120/boots-of-requite
             [itemKeys.name] = "Boots of Requite",
+            [itemKeys.questRewards] = {4201},
             [itemKeys.itemLevel] = 55,
             [itemKeys.requiredLevel] = 50,
             [itemKeys.class] = 4,
@@ -43368,6 +44079,7 @@ function ForeverBaseItem:Load()
         },
         [270121] = { -- Private Rocknot's Spare Bracers : https://wowhead.com/forever/item=270121/private-rocknots-spare-bracers
             [itemKeys.name] = "Private Rocknot's Spare Bracers",
+            [itemKeys.questRewards] = {4201},
             [itemKeys.itemLevel] = 55,
             [itemKeys.requiredLevel] = 50,
             [itemKeys.class] = 4,
@@ -43388,6 +44100,7 @@ function ForeverBaseItem:Load()
         },
         [270124] = { -- Warpwood Bracers : https://wowhead.com/forever/item=270124/warpwood-bracers
             [itemKeys.name] = "Warpwood Bracers",
+            [itemKeys.questRewards] = {7488, 7489},
             [itemKeys.itemLevel] = 57,
             [itemKeys.requiredLevel] = 54,
             [itemKeys.class] = 4,
@@ -43395,10 +44108,16 @@ function ForeverBaseItem:Load()
         },
         [270125] = { -- Satyrhide Armbands : https://wowhead.com/forever/item=270125/satyrhide-armbands
             [itemKeys.name] = "Satyrhide Armbands",
+            [itemKeys.questRewards] = {7488, 7489},
             [itemKeys.itemLevel] = 57,
             [itemKeys.requiredLevel] = 54,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 3,
+        },
+        [270126] = { -- Conqueror's Pendant : https://wowhead.com/forever/item=270126/conquerors-pendant
+            [itemKeys.name] = "Conqueror's Pendant",
+            [itemKeys.itemLevel] = 58,
+            [itemKeys.class] = 4,
         },
         [270127] = { -- Incanter's Pantaloons : https://wowhead.com/forever/item=270127/incanters-pantaloons
             [itemKeys.name] = "Incanter's Pantaloons",
@@ -43435,7 +44154,9 @@ function ForeverBaseItem:Load()
         },
         [270226] = { -- Golden Banana : https://wowhead.com/forever/item=270226/golden-banana
             [itemKeys.name] = "Golden Banana",
+            [itemKeys.questRewards] = {630},
             [itemKeys.itemLevel] = 50,
+            [itemKeys.requiredLevel] = 45,
             [itemKeys.class] = 4,
         },
         [270227] = { -- Ephemeral Choker : https://wowhead.com/forever/item=270227/ephemeral-choker
@@ -43496,6 +44217,7 @@ function ForeverBaseItem:Load()
         },
         [270261] = { -- Robes of the Disgraced Thane : https://wowhead.com/forever/item=270261/robes-of-the-disgraced-thane
             [itemKeys.name] = "Robes of the Disgraced Thane",
+            [itemKeys.npcDrops] = {261319},
             [itemKeys.itemLevel] = 18,
             [itemKeys.requiredLevel] = 13,
             [itemKeys.class] = 4,
@@ -43509,7 +44231,9 @@ function ForeverBaseItem:Load()
         },
         [270275] = { -- Cleansed Vilebranch Medallion : https://wowhead.com/forever/item=270275/cleansed-vilebranch-medallion
             [itemKeys.name] = "Cleansed Vilebranch Medallion",
+            [itemKeys.questRewards] = {2994},
             [itemKeys.itemLevel] = 51,
+            [itemKeys.requiredLevel] = 40,
             [itemKeys.class] = 4,
         },
         [270276] = { -- Cleansed Vilebranch Icon : https://wowhead.com/forever/item=270276/cleansed-vilebranch-icon
@@ -43559,12 +44283,15 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {95773},
         },
         [270308] = { -- The First Tablet of I'lalai : https://wowhead.com/forever/item=270308/the-first-tablet-of-ilalai
             [itemKeys.name] = "The First Tablet of I'lalai",
+            [itemKeys.objectDrops] = {642943},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {95775, 95787},
         },
         [270309] = { -- The Second Tablet of I'lalai : https://wowhead.com/forever/item=270309/the-second-tablet-of-ilalai
             [itemKeys.name] = "The Second Tablet of I'lalai",
@@ -43588,15 +44315,21 @@ function ForeverBaseItem:Load()
         },
         [270312] = { -- Translated Tale of I'lalai : https://wowhead.com/forever/item=270312/translated-tale-of-ilalai
             [itemKeys.name] = "Translated Tale of I'lalai",
+            [itemKeys.questRewards] = {96078},
             [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 30,
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 0,
+            [itemKeys.vendors] = {2519},
         },
         [270313] = { -- Tale of I'lalai in Zandali : https://wowhead.com/forever/item=270313/tale-of-ilalai-in-zandali
             [itemKeys.name] = "Tale of I'lalai in Zandali",
+            [itemKeys.questRewards] = {96078},
             [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 30,
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 0,
+            [itemKeys.vendors] = {2519},
         },
         [270332] = { -- Fredd's Head : https://wowhead.com/forever/item=270332/fredds-head
             [itemKeys.name] = "Fredd's Head",
@@ -43911,6 +44644,7 @@ function ForeverBaseItem:Load()
         },
         [271212] = { -- Bloodied Chestwraps : https://wowhead.com/forever/item=271212/bloodied-chestwraps
             [itemKeys.name] = "Bloodied Chestwraps",
+            [itemKeys.npcDrops] = {256035},
             [itemKeys.itemLevel] = 22,
             [itemKeys.requiredLevel] = 17,
             [itemKeys.class] = 4,
@@ -43926,6 +44660,7 @@ function ForeverBaseItem:Load()
         },
         [271214] = { -- Rotmender's Treads : https://wowhead.com/forever/item=271214/rotmenders-treads
             [itemKeys.name] = "Rotmender's Treads",
+            [itemKeys.npcDrops] = {250657},
             [itemKeys.itemLevel] = 24,
             [itemKeys.requiredLevel] = 19,
             [itemKeys.class] = 4,
@@ -44088,15 +44823,17 @@ function ForeverBaseItem:Load()
         },
         [271629] = { -- Wood Bundle : https://wowhead.com/forever/item=271629/wood-bundle
             [itemKeys.name] = "Wood Bundle",
+            [itemKeys.objectDrops] = {645516},
             [itemKeys.itemLevel] = 1,
-            [itemKeys.class] = 12,
-            [itemKeys.subClass] = 0,
+            [itemKeys.class] = 15,
+            [itemKeys.subClass] = 4,
         },
         [271630] = { -- Makeshift Stickin' Spear : https://wowhead.com/forever/item=271630/makeshift-stickin-spear
             [itemKeys.name] = "Makeshift Stickin' Spear",
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {95951},
         },
         [271639] = { -- Makeshift Stickin' Spear : https://wowhead.com/forever/item=271639/makeshift-stickin-spear
             [itemKeys.name] = "Makeshift Stickin' Spear",
@@ -44138,6 +44875,7 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
             [itemKeys.vendors] = {260565},
+            [itemKeys.relatedQuests] = {95988},
         },
         [271654] = { -- Expired Poison : https://wowhead.com/forever/item=271654/expired-poison
             [itemKeys.name] = "Expired Poison",
@@ -44157,6 +44895,7 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
             [itemKeys.vendors] = {260487},
+            [itemKeys.relatedQuests] = {95988},
         },
         [271658] = { -- Thendal Apprentice's Pants : https://wowhead.com/forever/item=271658/thendal-apprentices-pants
             [itemKeys.name] = "Thendal Apprentice's Pants",
@@ -44264,12 +45003,14 @@ function ForeverBaseItem:Load()
         },
         [271716] = { -- Explorer's League Dustcover : https://wowhead.com/forever/item=271716/explorers-league-dustcover
             [itemKeys.name] = "Explorer's League Dustcover",
+            [itemKeys.questRewards] = {98824},
             [itemKeys.itemLevel] = 33,
+            [itemKeys.requiredLevel] = 24,
             [itemKeys.class] = 4,
         },
         [271718] = { -- Linken's Boots of Iron : https://wowhead.com/forever/item=271718/linkens-boots-of-iron
             [itemKeys.name] = "Linken's Boots of Iron",
-            [itemKeys.npcDrops] = {258905, 260042, 260243, 263886},
+            [itemKeys.npcDrops] = {258905, 258924, 260042, 260202, 260243, 260468, 263886, 264172, 264177},
             [itemKeys.itemLevel] = 38,
             [itemKeys.requiredLevel] = 33,
             [itemKeys.class] = 4,
@@ -44277,7 +45018,9 @@ function ForeverBaseItem:Load()
         },
         [271719] = { -- Furs of the Earthen Ring : https://wowhead.com/forever/item=271719/furs-of-the-earthen-ring
             [itemKeys.name] = "Furs of the Earthen Ring",
+            [itemKeys.questRewards] = {98823},
             [itemKeys.itemLevel] = 33,
+            [itemKeys.requiredLevel] = 24,
             [itemKeys.class] = 4,
         },
         [271720] = { -- Crocolisk Skin Gaiter : https://wowhead.com/forever/item=271720/crocolisk-skin-gaiter
@@ -44288,6 +45031,7 @@ function ForeverBaseItem:Load()
         },
         [271721] = { -- Krol'dok Ogre Key : https://wowhead.com/forever/item=271721/kroldok-ogre-key
             [itemKeys.name] = "Krol'dok Ogre Key",
+            [itemKeys.npcDrops] = {258968},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 13,
             [itemKeys.subClass] = 0,
@@ -44804,9 +45548,11 @@ function ForeverBaseItem:Load()
         },
         [271823] = { -- Wildflower : https://wowhead.com/forever/item=271823/wildflower
             [itemKeys.name] = "Wildflower",
+            [itemKeys.objectDrops] = {648994},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {95975},
         },
         [271828] = { -- Ghostmaw's Fang : https://wowhead.com/forever/item=271828/ghostmaws-fang
             [itemKeys.name] = "Ghostmaw's Fang",
@@ -44814,6 +45560,7 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {95991, 95992},
         },
         [271870] = { -- Lump of Coal : https://wowhead.com/forever/item=271870/lump-of-coal
             [itemKeys.name] = "Lump of Coal",
@@ -44840,6 +45587,7 @@ function ForeverBaseItem:Load()
         },
         [271877] = { -- Wood Bundle : https://wowhead.com/forever/item=271877/wood-bundle
             [itemKeys.name] = "Wood Bundle",
+            [itemKeys.objectDrops] = {645516},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
@@ -44872,6 +45620,7 @@ function ForeverBaseItem:Load()
         },
         [271893] = { -- Bad Rock : https://wowhead.com/forever/item=271893/bad-rock
             [itemKeys.name] = "Bad Rock",
+            [itemKeys.objectDrops] = {649094},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 0,
@@ -45255,7 +46004,9 @@ function ForeverBaseItem:Load()
         },
         [271994] = { -- Undermine Satchel : https://wowhead.com/forever/item=271994/undermine-satchel
             [itemKeys.name] = "Undermine Satchel",
+            [itemKeys.questRewards] = {96076},
             [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 60,
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 0,
         },
@@ -45267,6 +46018,7 @@ function ForeverBaseItem:Load()
         },
         [272001] = { -- Gold Ring : https://wowhead.com/forever/item=272001/gold-ring
             [itemKeys.name] = "Gold Ring",
+            [itemKeys.itemDrops] = {271994},
             [itemKeys.itemLevel] = 60,
             [itemKeys.class] = 4,
         },
@@ -45808,9 +46560,12 @@ function ForeverBaseItem:Load()
         },
         [272124] = { -- Translated Tale of I'lalai : https://wowhead.com/forever/item=272124/translated-tale-of-ilalai
             [itemKeys.name] = "Translated Tale of I'lalai",
+            [itemKeys.questRewards] = {95799},
             [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 30,
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 0,
+            [itemKeys.vendors] = {2277},
         },
         [272126] = { -- Makeshift Bandages : https://wowhead.com/forever/item=272126/makeshift-bandages
             [itemKeys.name] = "Makeshift Bandages",
@@ -45960,6 +46715,7 @@ function ForeverBaseItem:Load()
         },
         [272180] = { -- Spectral Magister's Commission : https://wowhead.com/forever/item=272180/spectral-magisters-commission
             [itemKeys.name] = "Spectral Magister's Commission",
+            [itemKeys.questRewards] = {96060},
             [itemKeys.itemLevel] = 43,
             [itemKeys.requiredLevel] = 35,
             [itemKeys.class] = 2,
@@ -45992,8 +46748,9 @@ function ForeverBaseItem:Load()
         },
         [272187] = { -- Thornplated Cord : https://wowhead.com/forever/item=272187/thornplated-cord
             [itemKeys.name] = "Thornplated Cord",
+            [itemKeys.questRewards] = {93404},
             [itemKeys.itemLevel] = 43,
-            [itemKeys.requiredLevel] = 1,
+            [itemKeys.requiredLevel] = 35,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 4,
         },
@@ -48650,7 +49407,7 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 60,
             [itemKeys.class] = 7,
             [itemKeys.subClass] = 11,
-            [itemKeys.vendors] = {1650, 2381, 2397, 2664, 3027, 3085, 3400, 4223, 4265, 4553, 5160, 5483, 8307, 12033, 14738, 242498, 248198, 251905, 252083, 254695, 256731, 259962, 267000, 270780, 272646},
+            [itemKeys.vendors] = {1650, 2381, 2397, 2664, 3027, 3085, 3400, 4223, 4265, 4553, 5160, 5483, 8307, 12033, 14738, 242498, 248198, 251905, 252083, 254695, 256731, 257006, 259962, 267000, 270780, 272646},
         },
         [272957] = { -- Theramore Shoulderguards : https://wowhead.com/forever/item=272957/theramore-shoulderguards
             [itemKeys.name] = "Theramore Shoulderguards",
@@ -48982,9 +49739,11 @@ function ForeverBaseItem:Load()
         },
         [273050] = { -- Blackmaw Pouch : https://wowhead.com/forever/item=273050/blackmaw-pouch
             [itemKeys.name] = "Blackmaw Pouch",
+            [itemKeys.npcDrops] = {247195, 247198, 247206, 247209, 247231, 247235, 247237, 247248, 247249, 250023, 255247, 255347, 258264, 258329, 269104, 277474},
             [itemKeys.itemLevel] = 1,
-            [itemKeys.class] = 15,
+            [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {96246, 97327},
         },
         [273051] = { -- Violet Sorcerer's Mantle : https://wowhead.com/forever/item=273051/violet-sorcerers-mantle
             [itemKeys.name] = "Violet Sorcerer's Mantle",
@@ -49101,6 +49860,7 @@ function ForeverBaseItem:Load()
         },
         [273101] = { -- Blueprint: Expert Campfire : https://wowhead.com/forever/item=273101/blueprint-expert-campfire
             [itemKeys.name] = "Blueprint: Expert Campfire",
+            [itemKeys.npcDrops] = {258966},
             [itemKeys.itemLevel] = 40,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 5,
@@ -49120,6 +49880,7 @@ function ForeverBaseItem:Load()
         },
         [273105] = { -- Blueprint: Toxin Study : https://wowhead.com/forever/item=273105/blueprint-toxin-study
             [itemKeys.name] = "Blueprint: Toxin Study",
+            [itemKeys.npcDrops] = {4278},
             [itemKeys.itemLevel] = 25,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 7,
@@ -49183,12 +49944,14 @@ function ForeverBaseItem:Load()
         },
         [273120] = { -- Blueprint: Seed Hybridizer : https://wowhead.com/forever/item=273120/blueprint-seed-hybridizer
             [itemKeys.name] = "Blueprint: Seed Hybridizer",
+            [itemKeys.npcDrops] = {11489},
             [itemKeys.itemLevel] = 60,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 0,
         },
         [273121] = { -- Blueprint: Sewing Machine : https://wowhead.com/forever/item=273121/blueprint-sewing-machine
             [itemKeys.name] = "Blueprint: Sewing Machine",
+            [itemKeys.npcDrops] = {10432},
             [itemKeys.itemLevel] = 60,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 1,
@@ -49361,6 +50124,7 @@ function ForeverBaseItem:Load()
         },
         [273298] = { -- Lookie's Spyglass : https://wowhead.com/forever/item=273298/lookies-spyglass
             [itemKeys.name] = "Lookie's Spyglass",
+            [itemKeys.npcDrops] = {645},
             [itemKeys.itemLevel] = 23,
             [itemKeys.requiredLevel] = 18,
             [itemKeys.class] = 4,
@@ -49423,6 +50187,7 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {90865},
         },
         [273323] = { -- Slimy Pinecone : https://wowhead.com/forever/item=273323/slimy-pinecone
             [itemKeys.name] = "Slimy Pinecone",
@@ -51507,7 +52272,7 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 35,
             [itemKeys.class] = 7,
             [itemKeys.subClass] = 11,
-            [itemKeys.vendors] = {1678, 1684, 2383, 2626, 3029, 3178, 3333, 3497, 3550, 3572, 4222, 4574, 5162, 5494, 5940, 5942, 7945, 8508, 10118, 12031, 12962, 14740, 242498, 257008, 260487, 270545},
+            [itemKeys.vendors] = {1678, 1684, 2383, 2626, 3029, 3178, 3333, 3497, 3550, 3572, 4222, 4574, 5162, 5494, 5940, 5942, 7945, 8508, 10118, 12031, 12962, 14740, 242498, 254695, 257008, 260487, 270545},
         },
         [273637] = { -- Blade of Silverlaine : https://wowhead.com/forever/item=273637/blade-of-silverlaine
             [itemKeys.name] = "Blade of Silverlaine",
@@ -51568,10 +52333,11 @@ function ForeverBaseItem:Load()
         },
         [273659] = { -- Bloody Parchment : https://wowhead.com/forever/item=273659/bloody-parchment
             [itemKeys.name] = "Bloody Parchment",
-            [itemKeys.itemLevel] = 30,
-            [itemKeys.requiredLevel] = 30,
+            [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {96294},
         },
         [273771] = { -- Sentinel's Sight : https://wowhead.com/forever/item=273771/sentinels-sight
             [itemKeys.name] = "Sentinel's Sight",
@@ -51685,7 +52451,7 @@ function ForeverBaseItem:Load()
         },
         [273815] = { -- Airy Windseeker's Shirt : https://wowhead.com/forever/item=273815/airy-windseekers-shirt
             [itemKeys.name] = "Airy Windseeker's Shirt",
-            [itemKeys.npcDrops] = {252664, 252665, 252762, 252763, 252764, 252765, 252767, 256966, 270201},
+            [itemKeys.npcDrops] = {252664, 252665, 252762, 252763, 252764, 252765, 252767, 253195, 253511, 253622, 256966, 270201},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 4,
         },
@@ -51712,6 +52478,7 @@ function ForeverBaseItem:Load()
         },
         [273820] = { -- Nightskulker Ring : https://wowhead.com/forever/item=273820/nightskulker-ring
             [itemKeys.name] = "Nightskulker Ring",
+            [itemKeys.npcDrops] = {1663},
             [itemKeys.itemLevel] = 28,
             [itemKeys.requiredLevel] = 23,
             [itemKeys.class] = 4,
@@ -51738,6 +52505,7 @@ function ForeverBaseItem:Load()
         },
         [273827] = { -- Debt Collector : https://wowhead.com/forever/item=273827/debt-collector
             [itemKeys.name] = "Debt Collector",
+            [itemKeys.npcDrops] = {1716},
             [itemKeys.itemLevel] = 31,
             [itemKeys.requiredLevel] = 26,
             [itemKeys.class] = 2,
@@ -51750,6 +52518,7 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 57,
             [itemKeys.class] = 2,
             [itemKeys.subClass] = 10,
+            [itemKeys.relatedQuests] = {92533},
         },
         [273829] = { -- Concealed Hand Crossbow : https://wowhead.com/forever/item=273829/concealed-hand-crossbow
             [itemKeys.name] = "Concealed Hand Crossbow",
@@ -51774,6 +52543,7 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 57,
             [itemKeys.class] = 2,
             [itemKeys.subClass] = 15,
+            [itemKeys.relatedQuests] = {92533},
         },
         [273839] = { -- Spiked Shell Band : https://wowhead.com/forever/item=273839/spiked-shell-band
             [itemKeys.name] = "Spiked Shell Band",
@@ -52988,7 +53758,9 @@ function ForeverBaseItem:Load()
         },
         [274041] = { -- Document Box : https://wowhead.com/forever/item=274041/document-box
             [itemKeys.name] = "Document Box",
+            [itemKeys.questRewards] = {96337},
             [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 48,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
             [itemKeys.relatedQuests] = {96376, 96377},
@@ -53726,6 +54498,7 @@ function ForeverBaseItem:Load()
         },
         [274265] = { -- Brush Cutter : https://wowhead.com/forever/item=274265/brush-cutter
             [itemKeys.name] = "Brush Cutter",
+            [itemKeys.questRewards] = {91923},
             [itemKeys.itemLevel] = 57,
             [itemKeys.class] = 2,
             [itemKeys.subClass] = 0,
@@ -53742,12 +54515,14 @@ function ForeverBaseItem:Load()
         },
         [274270] = { -- Weed Whacker : https://wowhead.com/forever/item=274270/weed-whacker
             [itemKeys.name] = "Weed Whacker",
+            [itemKeys.questRewards] = {91923},
             [itemKeys.itemLevel] = 57,
             [itemKeys.class] = 2,
             [itemKeys.subClass] = 1,
         },
         [274271] = { -- Deadhead Blade : https://wowhead.com/forever/item=274271/deadhead-blade
             [itemKeys.name] = "Deadhead Blade",
+            [itemKeys.questRewards] = {91923},
             [itemKeys.itemLevel] = 57,
             [itemKeys.class] = 2,
             [itemKeys.subClass] = 15,
@@ -53840,6 +54615,7 @@ function ForeverBaseItem:Load()
         },
         [274290] = { -- Painwalker Buckler : https://wowhead.com/forever/item=274290/painwalker-buckler
             [itemKeys.name] = "Painwalker Buckler",
+            [itemKeys.npcDrops] = {3983},
             [itemKeys.itemLevel] = 34,
             [itemKeys.requiredLevel] = 29,
             [itemKeys.class] = 4,
@@ -54212,6 +54988,7 @@ function ForeverBaseItem:Load()
         },
         [274484] = { -- Axe of Inevitable Ruin : https://wowhead.com/forever/item=274484/axe-of-inevitable-ruin
             [itemKeys.name] = "Axe of Inevitable Ruin",
+            [itemKeys.npcDrops] = {7228},
             [itemKeys.itemLevel] = 42,
             [itemKeys.requiredLevel] = 37,
             [itemKeys.class] = 2,
@@ -54236,7 +55013,7 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 44,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 1,
-            [itemKeys.vendors] = {253139},
+            [itemKeys.vendors] = {253139, 253140},
         },
         [274501] = { -- Monster - Sword, Golden Long : https://wowhead.com/forever/item=274501/monster-sword-golden-long
             [itemKeys.name] = "Monster - Sword, Golden Long",
@@ -54472,6 +55249,7 @@ function ForeverBaseItem:Load()
         },
         [274614] = { -- Knucklebone Ring : https://wowhead.com/forever/item=274614/knucklebone-ring
             [itemKeys.name] = "Knucklebone Ring",
+            [itemKeys.npcDrops] = {260202},
             [itemKeys.itemLevel] = 41,
             [itemKeys.requiredLevel] = 36,
             [itemKeys.class] = 4,
@@ -54550,6 +55328,7 @@ function ForeverBaseItem:Load()
         },
         [274647] = { -- Farraki Kris : https://wowhead.com/forever/item=274647/farraki-kris
             [itemKeys.name] = "Farraki Kris",
+            [itemKeys.npcDrops] = {7604},
             [itemKeys.itemLevel] = 47,
             [itemKeys.requiredLevel] = 42,
             [itemKeys.class] = 2,
@@ -54557,6 +55336,7 @@ function ForeverBaseItem:Load()
         },
         [274648] = { -- The Desert Rose : https://wowhead.com/forever/item=274648/the-desert-rose
             [itemKeys.name] = "The Desert Rose",
+            [itemKeys.npcDrops] = {7604},
             [itemKeys.itemLevel] = 47,
             [itemKeys.requiredLevel] = 42,
             [itemKeys.class] = 4,
@@ -55047,12 +55827,15 @@ function ForeverBaseItem:Load()
         },
         [274922] = { -- Riverglades Marsh Gas : https://wowhead.com/forever/item=274922/riverglades-marsh-gas
             [itemKeys.name] = "Riverglades Marsh Gas",
-            [itemKeys.itemLevel] = 40,
+            [itemKeys.questRewards] = {96063},
+            [itemKeys.itemLevel] = 38,
+            [itemKeys.requiredLevel] = 36,
             [itemKeys.class] = 0,
             [itemKeys.subClass] = 8,
         },
         [274926] = { -- Matriarch Quiver : https://wowhead.com/forever/item=274926/matriarch-quiver
             [itemKeys.name] = "Matriarch Quiver",
+            [itemKeys.questRewards] = {96109},
             [itemKeys.itemLevel] = 40,
             [itemKeys.requiredLevel] = 35,
             [itemKeys.class] = 11,
@@ -55205,6 +55988,7 @@ function ForeverBaseItem:Load()
         },
         [274958] = { -- Especially Delicious Berries : https://wowhead.com/forever/item=274958/especially-delicious-berries
             [itemKeys.name] = "Especially Delicious Berries",
+            [itemKeys.objectDrops] = {654509},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
@@ -55233,7 +56017,9 @@ function ForeverBaseItem:Load()
         },
         [274963] = { -- Rot-Covered Harpoon : https://wowhead.com/forever/item=274963/rot-covered-harpoon
             [itemKeys.name] = "Rot-Covered Harpoon",
-            [itemKeys.itemLevel] = 44,
+            [itemKeys.questRewards] = {95120},
+            [itemKeys.itemLevel] = 42,
+            [itemKeys.requiredLevel] = 36,
             [itemKeys.class] = 2,
             [itemKeys.subClass] = 6,
         },
@@ -55245,10 +56031,11 @@ function ForeverBaseItem:Load()
         },
         [274966] = { -- Silvermoon Shimmerwine : https://wowhead.com/forever/item=274966/silvermoon-shimmerwine
             [itemKeys.name] = "Silvermoon Shimmerwine",
-            [itemKeys.npcDrops] = {6198, 6199, 8581, 246920, 246991, 247006, 247013, 250448, 252865, 259620},
+            [itemKeys.npcDrops] = {6198, 6199, 8581, 246920, 246991, 247006, 247013, 252865},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {96609},
         },
         [274968] = { -- Premier Senior Sergeant's Insignia : https://wowhead.com/forever/item=274968/premier-senior-sergeants-insignia
             [itemKeys.name] = "Premier Senior Sergeant's Insignia",
@@ -55271,9 +56058,11 @@ function ForeverBaseItem:Load()
         },
         [274972] = { -- Recipe: Briny Seafood Stew : https://wowhead.com/forever/item=274972/recipe-briny-seafood-stew
             [itemKeys.name] = "Recipe: Briny Seafood Stew",
+            [itemKeys.questRewards] = {95121},
             [itemKeys.itemLevel] = 50,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 5,
+            [itemKeys.vendors] = {259962},
         },
         [274974] = { -- Message in a Bottle : https://wowhead.com/forever/item=274974/message-in-a-bottle
             [itemKeys.name] = "Message in a Bottle",
@@ -55386,6 +56175,7 @@ function ForeverBaseItem:Load()
         },
         [275004] = { -- Chain of the Corruptor : https://wowhead.com/forever/item=275004/chain-of-the-corruptor
             [itemKeys.name] = "Chain of the Corruptor",
+            [itemKeys.npcDrops] = {258964},
             [itemKeys.itemLevel] = 46,
             [itemKeys.requiredLevel] = 41,
             [itemKeys.class] = 4,
@@ -55399,6 +56189,7 @@ function ForeverBaseItem:Load()
         },
         [275006] = { -- Krol'dok Warplate Helmet : https://wowhead.com/forever/item=275006/kroldok-warplate-helmet
             [itemKeys.name] = "Krol'dok Warplate Helmet",
+            [itemKeys.npcDrops] = {258964},
             [itemKeys.itemLevel] = 46,
             [itemKeys.requiredLevel] = 41,
             [itemKeys.class] = 4,
@@ -55420,6 +56211,7 @@ function ForeverBaseItem:Load()
         },
         [275009] = { -- Emblem of Slamming : https://wowhead.com/forever/item=275009/emblem-of-slamming
             [itemKeys.name] = "Emblem of Slamming",
+            [itemKeys.npcDrops] = {258968},
             [itemKeys.itemLevel] = 47,
             [itemKeys.requiredLevel] = 42,
             [itemKeys.class] = 4,
@@ -55509,12 +56301,16 @@ function ForeverBaseItem:Load()
         },
         [275042] = { -- Farholde Keep Tabard : https://wowhead.com/forever/item=275042/farholde-keep-tabard
             [itemKeys.name] = "Farholde Keep Tabard",
+            [itemKeys.questRewards] = {94891},
             [itemKeys.itemLevel] = 20,
+            [itemKeys.requiredLevel] = 38,
             [itemKeys.class] = 4,
         },
         [275043] = { -- Bloodmaster's Ring : https://wowhead.com/forever/item=275043/bloodmasters-ring
             [itemKeys.name] = "Bloodmaster's Ring",
+            [itemKeys.questRewards] = {95063},
             [itemKeys.itemLevel] = 45,
+            [itemKeys.requiredLevel] = 36,
             [itemKeys.class] = 4,
         },
         [275044] = { -- Bloodsport Band : https://wowhead.com/forever/item=275044/bloodsport-band
@@ -55545,7 +56341,9 @@ function ForeverBaseItem:Load()
         },
         [275051] = { -- Twilight Barrier : https://wowhead.com/forever/item=275051/twilight-barrier
             [itemKeys.name] = "Twilight Barrier",
+            [itemKeys.questRewards] = {94768},
             [itemKeys.itemLevel] = 46,
+            [itemKeys.requiredLevel] = 38,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 6,
         },
@@ -56199,6 +56997,7 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {96786},
         },
         [275708] = { -- Ghansurok Hide Tunic : https://wowhead.com/forever/item=275708/ghansurok-hide-tunic
             [itemKeys.name] = "Ghansurok Hide Tunic",
@@ -56307,7 +57106,9 @@ function ForeverBaseItem:Load()
         },
         [275729] = { -- Rusty Propeller Blade : https://wowhead.com/forever/item=275729/rusty-propeller-blade
             [itemKeys.name] = "Rusty Propeller Blade",
-            [itemKeys.itemLevel] = 58,
+            [itemKeys.questRewards] = {93383},
+            [itemKeys.itemLevel] = 57,
+            [itemKeys.requiredLevel] = 54,
             [itemKeys.class] = 2,
             [itemKeys.subClass] = 8,
         },
@@ -56656,10 +57457,12 @@ function ForeverBaseItem:Load()
         },
         [275996] = { -- The Founding of Dalaran : https://wowhead.com/forever/item=275996/the-founding-of-dalaran
             [itemKeys.name] = "The Founding of Dalaran",
+            [itemKeys.objectDrops] = {656681},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {96987},
         },
         [275997] = { -- Cracked Sentry Core : https://wowhead.com/forever/item=275997/cracked-sentry-core
             [itemKeys.name] = "Cracked Sentry Core",
@@ -56716,6 +57519,13 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
         },
+        [276069] = { -- Gravetoll Gavel : https://wowhead.com/forever/item=276069/gravetoll-gavel
+            [itemKeys.name] = "Gravetoll Gavel",
+            [itemKeys.itemLevel] = 59,
+            [itemKeys.requiredLevel] = 54,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 5,
+        },
         [276070] = { -- Chol'aruk's Head : https://wowhead.com/forever/item=276070/cholaruks-head
             [itemKeys.name] = "Chol'aruk's Head",
             [itemKeys.npcDrops] = {267307},
@@ -56723,6 +57533,25 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
             [itemKeys.relatedQuests] = {97003, 97005},
+        },
+        [276071] = { -- The Black Helm : https://wowhead.com/forever/item=276071/the-black-helm
+            [itemKeys.name] = "The Black Helm",
+            [itemKeys.itemLevel] = 59,
+            [itemKeys.requiredLevel] = 54,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
+        [276072] = { -- Soulwoven Drape : https://wowhead.com/forever/item=276072/soulwoven-drape
+            [itemKeys.name] = "Soulwoven Drape",
+            [itemKeys.itemLevel] = 61,
+            [itemKeys.requiredLevel] = 56,
+            [itemKeys.class] = 4,
+        },
+        [276073] = { -- Band of the Damned : https://wowhead.com/forever/item=276073/band-of-the-damned
+            [itemKeys.name] = "Band of the Damned",
+            [itemKeys.itemLevel] = 61,
+            [itemKeys.requiredLevel] = 56,
+            [itemKeys.class] = 4,
         },
         [276087] = { -- Nail : https://wowhead.com/forever/item=276087/nail
             [itemKeys.name] = "Nail",
@@ -56787,6 +57616,7 @@ function ForeverBaseItem:Load()
         },
         [276188] = { -- Eluvi'ana : https://wowhead.com/forever/item=276188/eluviana
             [itemKeys.name] = "Eluvi'ana",
+            [itemKeys.questRewards] = {97029},
             [itemKeys.itemLevel] = 15,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 2,
@@ -57060,6 +57890,14 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 2,
         },
+        [276456] = { -- Plague Defiled Buckler : https://wowhead.com/forever/item=276456/plague-defiled-buckler
+            [itemKeys.name] = "Plague Defiled Buckler",
+            [itemKeys.npcDrops] = {11121},
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.requiredLevel] = 55,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 6,
+        },
         [276467] = { -- Jorin's List : https://wowhead.com/forever/item=276467/jorins-list
             [itemKeys.name] = "Jorin's List",
             [itemKeys.itemLevel] = 1,
@@ -57194,6 +58032,13 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 2,
             [itemKeys.subClass] = 7,
         },
+        [276632] = { -- Wit's Edge : https://wowhead.com/forever/item=276632/wits-edge
+            [itemKeys.name] = "Wit's Edge",
+            [itemKeys.itemLevel] = 65,
+            [itemKeys.requiredLevel] = 57,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 7,
+        },
         [276637] = { -- Currency Wallet : https://wowhead.com/forever/item=276637/currency-wallet
             [itemKeys.name] = "Currency Wallet",
             [itemKeys.itemLevel] = 1,
@@ -57290,6 +58135,7 @@ function ForeverBaseItem:Load()
         },
         [276732] = { -- Alcaz Willcrusher : https://wowhead.com/forever/item=276732/alcaz-willcrusher
             [itemKeys.name] = "Alcaz Willcrusher",
+            [itemKeys.npcDrops] = {255391},
             [itemKeys.itemLevel] = 52,
             [itemKeys.requiredLevel] = 47,
             [itemKeys.class] = 2,
@@ -57330,6 +58176,7 @@ function ForeverBaseItem:Load()
         },
         [276738] = { -- Katerina's Shanker : https://wowhead.com/forever/item=276738/katerinas-shanker
             [itemKeys.name] = "Katerina's Shanker",
+            [itemKeys.npcDrops] = {257016},
             [itemKeys.itemLevel] = 54,
             [itemKeys.requiredLevel] = 49,
             [itemKeys.class] = 2,
@@ -57370,6 +58217,7 @@ function ForeverBaseItem:Load()
         },
         [276744] = { -- Zarla's Snack Pouch : https://wowhead.com/forever/item=276744/zarlas-snack-pouch
             [itemKeys.name] = "Zarla's Snack Pouch",
+            [itemKeys.npcDrops] = {255702},
             [itemKeys.itemLevel] = 55,
             [itemKeys.requiredLevel] = 50,
             [itemKeys.class] = 4,
@@ -57496,7 +58344,9 @@ function ForeverBaseItem:Load()
         },
         [276892] = { -- Spidersilk Sack : https://wowhead.com/forever/item=276892/spidersilk-sack
             [itemKeys.name] = "Spidersilk Sack",
-            [itemKeys.itemLevel] = 30,
+            [itemKeys.questRewards] = {96260},
+            [itemKeys.itemLevel] = 29,
+            [itemKeys.requiredLevel] = 23,
             [itemKeys.class] = 1,
             [itemKeys.subClass] = 11,
         },
@@ -57517,7 +58367,7 @@ function ForeverBaseItem:Load()
         [276895] = { -- Transformative Cocoon : https://wowhead.com/forever/item=276895/transformative-cocoon
             [itemKeys.name] = "Transformative Cocoon",
             [itemKeys.questRewards] = {96261},
-            [itemKeys.itemLevel] = 31,
+            [itemKeys.itemLevel] = 30,
             [itemKeys.requiredLevel] = 23,
             [itemKeys.class] = 4,
         },
@@ -57536,14 +58386,16 @@ function ForeverBaseItem:Load()
         },
         [276898] = { -- Salve and Salvation : https://wowhead.com/forever/item=276898/salve-and-salvation
             [itemKeys.name] = "Salve and Salvation",
+            [itemKeys.questRewards] = {96800},
             [itemKeys.itemLevel] = 38,
-            [itemKeys.requiredLevel] = 1,
+            [itemKeys.requiredLevel] = 30,
             [itemKeys.class] = 4,
         },
         [276899] = { -- Knucklebound Thimble : https://wowhead.com/forever/item=276899/knucklebound-thimble
             [itemKeys.name] = "Knucklebound Thimble",
+            [itemKeys.questRewards] = {96800},
             [itemKeys.itemLevel] = 38,
-            [itemKeys.requiredLevel] = 1,
+            [itemKeys.requiredLevel] = 30,
             [itemKeys.class] = 4,
         },
         [276900] = { -- Denric's Dog Tags : https://wowhead.com/forever/item=276900/denrics-dog-tags
@@ -58439,197 +59291,198 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 1,
         },
-        [277056] = { -- Al'aketh Chainmail : https://wowhead.com/forever/item=277056/alaketh-chainmail
-            [itemKeys.name] = "Al'aketh Chainmail",
+        [277056] = { -- Al'Aketh Chainmail : https://wowhead.com/forever/item=277056/alaketh-chainmail
+            [itemKeys.name] = "Al'Aketh Chainmail",
+            [itemKeys.npcDrops] = {253195, 253511, 253622},
             [itemKeys.itemLevel] = 11,
             [itemKeys.requiredLevel] = 6,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 3,
-            [itemKeys.vendors] = {272045},
         },
-        [277057] = { -- Al'aketh Wristguards : https://wowhead.com/forever/item=277057/alaketh-wristguards
-            [itemKeys.name] = "Al'aketh Wristguards",
+        [277057] = { -- Al'Aketh Wristguards : https://wowhead.com/forever/item=277057/alaketh-wristguards
+            [itemKeys.name] = "Al'Aketh Wristguards",
+            [itemKeys.npcDrops] = {252762, 253195},
             [itemKeys.itemLevel] = 9,
             [itemKeys.requiredLevel] = 4,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 3,
-            [itemKeys.vendors] = {272045},
         },
-        [277058] = { -- Al'aketh Gauntlets : https://wowhead.com/forever/item=277058/alaketh-gauntlets
-            [itemKeys.name] = "Al'aketh Gauntlets",
+        [277058] = { -- Al'Aketh Gauntlets : https://wowhead.com/forever/item=277058/alaketh-gauntlets
+            [itemKeys.name] = "Al'Aketh Gauntlets",
+            [itemKeys.npcDrops] = {253195, 253511},
             [itemKeys.itemLevel] = 10,
             [itemKeys.requiredLevel] = 5,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 3,
-            [itemKeys.vendors] = {272045},
         },
-        [277059] = { -- Al'aketh Chain : https://wowhead.com/forever/item=277059/alaketh-chain
-            [itemKeys.name] = "Al'aketh Chain",
+        [277059] = { -- Al'Aketh Chain : https://wowhead.com/forever/item=277059/alaketh-chain
+            [itemKeys.name] = "Al'Aketh Chain",
+            [itemKeys.npcDrops] = {253195, 253511, 253622},
             [itemKeys.itemLevel] = 9,
             [itemKeys.requiredLevel] = 4,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 3,
-            [itemKeys.vendors] = {272045},
         },
-        [277060] = { -- Al'aketh Legguards : https://wowhead.com/forever/item=277060/alaketh-legguards
-            [itemKeys.name] = "Al'aketh Legguards",
+        [277060] = { -- Al'Aketh Legguards : https://wowhead.com/forever/item=277060/alaketh-legguards
+            [itemKeys.name] = "Al'Aketh Legguards",
+            [itemKeys.npcDrops] = {253195, 253511},
             [itemKeys.itemLevel] = 11,
             [itemKeys.requiredLevel] = 6,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 3,
-            [itemKeys.vendors] = {272045},
         },
-        [277061] = { -- Al'aketh Greaves : https://wowhead.com/forever/item=277061/alaketh-greaves
-            [itemKeys.name] = "Al'aketh Greaves",
+        [277061] = { -- Al'Aketh Greaves : https://wowhead.com/forever/item=277061/alaketh-greaves
+            [itemKeys.name] = "Al'Aketh Greaves",
+            [itemKeys.npcDrops] = {253195, 253622},
             [itemKeys.itemLevel] = 10,
             [itemKeys.requiredLevel] = 5,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 3,
-            [itemKeys.vendors] = {272045},
         },
-        [277062] = { -- Al'aketh Harness : https://wowhead.com/forever/item=277062/alaketh-harness
-            [itemKeys.name] = "Al'aketh Harness",
+        [277062] = { -- Al'Aketh Harness : https://wowhead.com/forever/item=277062/alaketh-harness
+            [itemKeys.name] = "Al'Aketh Harness",
+            [itemKeys.npcDrops] = {253195, 253511},
             [itemKeys.itemLevel] = 11,
             [itemKeys.requiredLevel] = 6,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 2,
-            [itemKeys.vendors] = {272045},
         },
-        [277063] = { -- Al'aketh Bracers : https://wowhead.com/forever/item=277063/alaketh-bracers
-            [itemKeys.name] = "Al'aketh Bracers",
+        [277063] = { -- Al'Aketh Bracers : https://wowhead.com/forever/item=277063/alaketh-bracers
+            [itemKeys.name] = "Al'Aketh Bracers",
+            [itemKeys.npcDrops] = {252664, 253511},
             [itemKeys.itemLevel] = 9,
             [itemKeys.requiredLevel] = 4,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 2,
             [itemKeys.vendors] = {272045},
         },
-        [277064] = { -- Al'aketh Gloves : https://wowhead.com/forever/item=277064/alaketh-gloves
-            [itemKeys.name] = "Al'aketh Gloves",
+        [277064] = { -- Al'Aketh Gloves : https://wowhead.com/forever/item=277064/alaketh-gloves
+            [itemKeys.name] = "Al'Aketh Gloves",
+            [itemKeys.npcDrops] = {253195, 253511},
             [itemKeys.itemLevel] = 10,
             [itemKeys.requiredLevel] = 5,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 2,
-            [itemKeys.vendors] = {272045},
         },
-        [277065] = { -- Al'aketh Belt : https://wowhead.com/forever/item=277065/alaketh-belt
-            [itemKeys.name] = "Al'aketh Belt",
+        [277065] = { -- Al'Aketh Belt : https://wowhead.com/forever/item=277065/alaketh-belt
+            [itemKeys.name] = "Al'Aketh Belt",
+            [itemKeys.npcDrops] = {253511, 253622},
             [itemKeys.itemLevel] = 9,
             [itemKeys.requiredLevel] = 4,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 2,
-            [itemKeys.vendors] = {272045},
         },
-        [277066] = { -- Al'aketh Trousers : https://wowhead.com/forever/item=277066/alaketh-trousers
-            [itemKeys.name] = "Al'aketh Trousers",
+        [277066] = { -- Al'Aketh Trousers : https://wowhead.com/forever/item=277066/alaketh-trousers
+            [itemKeys.name] = "Al'Aketh Trousers",
+            [itemKeys.npcDrops] = {253195, 253511},
             [itemKeys.itemLevel] = 11,
             [itemKeys.requiredLevel] = 6,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 2,
-            [itemKeys.vendors] = {272045},
         },
-        [277067] = { -- Al'aketh Boots : https://wowhead.com/forever/item=277067/alaketh-boots
-            [itemKeys.name] = "Al'aketh Boots",
+        [277067] = { -- Al'Aketh Boots : https://wowhead.com/forever/item=277067/alaketh-boots
+            [itemKeys.name] = "Al'Aketh Boots",
             [itemKeys.itemLevel] = 10,
             [itemKeys.requiredLevel] = 5,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 2,
-            [itemKeys.vendors] = {272045},
         },
-        [277068] = { -- Al'aketh Jerkin : https://wowhead.com/forever/item=277068/alaketh-jerkin
-            [itemKeys.name] = "Al'aketh Jerkin",
+        [277068] = { -- Al'Aketh Jerkin : https://wowhead.com/forever/item=277068/alaketh-jerkin
+            [itemKeys.name] = "Al'Aketh Jerkin",
+            [itemKeys.npcDrops] = {252765, 253195},
             [itemKeys.itemLevel] = 11,
             [itemKeys.requiredLevel] = 6,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 2,
-            [itemKeys.vendors] = {272045},
         },
-        [277069] = { -- Al'aketh Armguards : https://wowhead.com/forever/item=277069/alaketh-armguards
-            [itemKeys.name] = "Al'aketh Armguards",
+        [277069] = { -- Al'Aketh Armguards : https://wowhead.com/forever/item=277069/alaketh-armguards
+            [itemKeys.name] = "Al'Aketh Armguards",
+            [itemKeys.npcDrops] = {253195, 253511, 253622},
             [itemKeys.itemLevel] = 9,
             [itemKeys.requiredLevel] = 4,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 2,
-            [itemKeys.vendors] = {272045},
         },
-        [277070] = { -- Al'aketh Mitts : https://wowhead.com/forever/item=277070/alaketh-mitts
-            [itemKeys.name] = "Al'aketh Mitts",
+        [277070] = { -- Al'Aketh Mitts : https://wowhead.com/forever/item=277070/alaketh-mitts
+            [itemKeys.name] = "Al'Aketh Mitts",
+            [itemKeys.npcDrops] = {253195, 253511},
             [itemKeys.itemLevel] = 10,
             [itemKeys.requiredLevel] = 5,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 2,
             [itemKeys.vendors] = {272045},
         },
-        [277071] = { -- Al'aketh Strap : https://wowhead.com/forever/item=277071/alaketh-strap
-            [itemKeys.name] = "Al'aketh Strap",
+        [277071] = { -- Al'Aketh Strap : https://wowhead.com/forever/item=277071/alaketh-strap
+            [itemKeys.name] = "Al'Aketh Strap",
+            [itemKeys.npcDrops] = {253195, 253511, 253622},
             [itemKeys.itemLevel] = 9,
             [itemKeys.requiredLevel] = 4,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 2,
-            [itemKeys.vendors] = {272045},
         },
-        [277072] = { -- Al'aketh Pants : https://wowhead.com/forever/item=277072/alaketh-pants
-            [itemKeys.name] = "Al'aketh Pants",
+        [277072] = { -- Al'Aketh Pants : https://wowhead.com/forever/item=277072/alaketh-pants
+            [itemKeys.name] = "Al'Aketh Pants",
+            [itemKeys.npcDrops] = {252762, 253195, 253511},
             [itemKeys.itemLevel] = 11,
             [itemKeys.requiredLevel] = 6,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 2,
-            [itemKeys.vendors] = {272045},
         },
-        [277073] = { -- Al'aketh Footwraps : https://wowhead.com/forever/item=277073/alaketh-footwraps
-            [itemKeys.name] = "Al'aketh Footwraps",
+        [277073] = { -- Al'Aketh Footwraps : https://wowhead.com/forever/item=277073/alaketh-footwraps
+            [itemKeys.name] = "Al'Aketh Footwraps",
+            [itemKeys.npcDrops] = {253195, 253511},
             [itemKeys.itemLevel] = 10,
             [itemKeys.requiredLevel] = 5,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 2,
-            [itemKeys.vendors] = {272045},
         },
-        [277074] = { -- Al'aketh Vestments : https://wowhead.com/forever/item=277074/alaketh-vestments
-            [itemKeys.name] = "Al'aketh Vestments",
+        [277074] = { -- Al'Aketh Vestments : https://wowhead.com/forever/item=277074/alaketh-vestments
+            [itemKeys.name] = "Al'Aketh Vestments",
+            [itemKeys.npcDrops] = {252664, 253195, 253511},
             [itemKeys.itemLevel] = 11,
             [itemKeys.requiredLevel] = 6,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 1,
-            [itemKeys.vendors] = {272045},
         },
-        [277075] = { -- Al'aketh Cuffs : https://wowhead.com/forever/item=277075/alaketh-cuffs
-            [itemKeys.name] = "Al'aketh Cuffs",
+        [277075] = { -- Al'Aketh Cuffs : https://wowhead.com/forever/item=277075/alaketh-cuffs
+            [itemKeys.name] = "Al'Aketh Cuffs",
+            [itemKeys.npcDrops] = {253195, 253511},
             [itemKeys.itemLevel] = 9,
             [itemKeys.requiredLevel] = 4,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 1,
-            [itemKeys.vendors] = {272045},
         },
-        [277076] = { -- Al'aketh Handwraps : https://wowhead.com/forever/item=277076/alaketh-handwraps
-            [itemKeys.name] = "Al'aketh Handwraps",
+        [277076] = { -- Al'Aketh Handwraps : https://wowhead.com/forever/item=277076/alaketh-handwraps
+            [itemKeys.name] = "Al'Aketh Handwraps",
+            [itemKeys.npcDrops] = {253195, 253511},
             [itemKeys.itemLevel] = 10,
             [itemKeys.requiredLevel] = 5,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 1,
-            [itemKeys.vendors] = {272045},
         },
-        [277077] = { -- Al'aketh Cord : https://wowhead.com/forever/item=277077/alaketh-cord
-            [itemKeys.name] = "Al'aketh Cord",
+        [277077] = { -- Al'Aketh Cord : https://wowhead.com/forever/item=277077/alaketh-cord
+            [itemKeys.name] = "Al'Aketh Cord",
+            [itemKeys.npcDrops] = {253195, 253511, 253622},
             [itemKeys.itemLevel] = 9,
             [itemKeys.requiredLevel] = 4,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 1,
-            [itemKeys.vendors] = {272045},
         },
-        [277078] = { -- Al'aketh Leggings : https://wowhead.com/forever/item=277078/alaketh-leggings
-            [itemKeys.name] = "Al'aketh Leggings",
+        [277078] = { -- Al'Aketh Leggings : https://wowhead.com/forever/item=277078/alaketh-leggings
+            [itemKeys.name] = "Al'Aketh Leggings",
+            [itemKeys.npcDrops] = {253195, 253511, 253622},
             [itemKeys.itemLevel] = 11,
             [itemKeys.requiredLevel] = 6,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 1,
-            [itemKeys.vendors] = {272045},
         },
-        [277079] = { -- Al'aketh Shoes : https://wowhead.com/forever/item=277079/alaketh-shoes
-            [itemKeys.name] = "Al'aketh Shoes",
+        [277079] = { -- Al'Aketh Shoes : https://wowhead.com/forever/item=277079/alaketh-shoes
+            [itemKeys.name] = "Al'Aketh Shoes",
+            [itemKeys.npcDrops] = {253511, 253622},
             [itemKeys.itemLevel] = 10,
             [itemKeys.requiredLevel] = 5,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 1,
-            [itemKeys.vendors] = {272045},
         },
         [277080] = { -- Zephrali Chainmail : https://wowhead.com/forever/item=277080/zephrali-chainmail
             [itemKeys.name] = "Zephrali Chainmail",
@@ -58967,9 +59820,11 @@ function ForeverBaseItem:Load()
         },
         [277140] = { -- An'she's Radiance : https://wowhead.com/forever/item=277140/anshes-radiance
             [itemKeys.name] = "An'she's Radiance",
+            [itemKeys.objectDrops] = {660652},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {96776},
         },
         [277153] = { -- Intricate Filigree : https://wowhead.com/forever/item=277153/intricate-filigree
             [itemKeys.name] = "Intricate Filigree",
@@ -59149,6 +60004,7 @@ function ForeverBaseItem:Load()
         },
         [277213] = { -- Dro'zem's Tunic : https://wowhead.com/forever/item=277213/drozems-tunic
             [itemKeys.name] = "Dro'zem's Tunic",
+            [itemKeys.npcDrops] = {214456},
             [itemKeys.itemLevel] = 25,
             [itemKeys.requiredLevel] = 20,
             [itemKeys.class] = 4,
@@ -59275,7 +60131,9 @@ function ForeverBaseItem:Load()
         },
         [277232] = { -- Jailer's Discarded Chain : https://wowhead.com/forever/item=277232/jailers-discarded-chain
             [itemKeys.name] = "Jailer's Discarded Chain",
+            [itemKeys.questRewards] = {97048},
             [itemKeys.itemLevel] = 35,
+            [itemKeys.requiredLevel] = 30,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 3,
         },
@@ -59758,8 +60616,9 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 0,
             [itemKeys.subClass] = 8,
         },
-        [277533] = { -- Fel Tained Journal : https://wowhead.com/forever/item=277533/fel-tainted-journal
-            [itemKeys.name] = "Fel Tained Journal",
+        [277533] = { -- Fel Tainted Journal : https://wowhead.com/forever/item=277533/fel-tainted-journal
+            [itemKeys.name] = "Fel Tainted Journal",
+            [itemKeys.objectDrops] = {660984},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 15,
@@ -59885,7 +60744,7 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 1,
-            [itemKeys.vendors] = {4225},
+            [itemKeys.vendors] = {3168, 4225},
         },
         [277717] = { -- Spectral Bear Tabard : https://wowhead.com/forever/item=277717/spectral-bear-tabard
             [itemKeys.name] = "Spectral Bear Tabard",
@@ -59901,6 +60760,7 @@ function ForeverBaseItem:Load()
         },
         [277844] = { -- Mirage Mirror : https://wowhead.com/forever/item=277844/mirage-mirror
             [itemKeys.name] = "Mirage Mirror",
+            [itemKeys.questRewards] = {97821},
             [itemKeys.itemLevel] = 40,
             [itemKeys.requiredLevel] = 35,
             [itemKeys.class] = 4,
@@ -60093,6 +60953,7 @@ function ForeverBaseItem:Load()
         },
         [278030] = { -- Scarlet Banner : https://wowhead.com/forever/item=278030/scarlet-banner
             [itemKeys.name] = "Scarlet Banner",
+            [itemKeys.objectDrops] = {424373},
             [itemKeys.itemLevel] = 35,
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 4,
@@ -60354,9 +61215,11 @@ function ForeverBaseItem:Load()
         },
         [278404] = { -- Pristine Mattock : https://wowhead.com/forever/item=278404/pristine-mattock
             [itemKeys.name] = "Pristine Mattock",
+            [itemKeys.objectDrops] = {667676},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {97617},
         },
         [278423] = { -- Monster - Mining Pick : https://wowhead.com/forever/item=278423/monster-mining-pick
             [itemKeys.name] = "Monster - Mining Pick",
@@ -60448,10 +61311,12 @@ function ForeverBaseItem:Load()
         },
         [278868] = { -- Tremayne Family Blacksmithing Techniques : https://wowhead.com/forever/item=278868/tremayne-family-blacksmithing-techniques
             [itemKeys.name] = "Tremayne Family Blacksmithing Techniques",
+            [itemKeys.objectDrops] = {668295},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 36,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {97884},
         },
         [279020] = { -- Unstable Potion : https://wowhead.com/forever/item=279020/unstable-potion
             [itemKeys.name] = "Unstable Potion",
@@ -60624,9 +61489,11 @@ function ForeverBaseItem:Load()
         },
         [279171] = { -- Diplomatic Satchel : https://wowhead.com/forever/item=279171/diplomatic-satchel
             [itemKeys.name] = "Diplomatic Satchel",
+            [itemKeys.objectDrops] = {668515},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {86615},
         },
         [279173] = { -- Veteran Adventurer's Chestpiece : https://wowhead.com/forever/item=279173/veteran-adventurers-chestpiece
             [itemKeys.name] = "Veteran Adventurer's Chestpiece",
@@ -61256,6 +62123,7 @@ function ForeverBaseItem:Load()
         },
         [279450] = { -- Fractured Insignia : https://wowhead.com/forever/item=279450/fractured-insignia
             [itemKeys.name] = "Fractured Insignia",
+            [itemKeys.questRewards] = {96376, 96377},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 40,
             [itemKeys.class] = 15,
@@ -61833,12 +62701,14 @@ function ForeverBaseItem:Load()
         },
         [279891] = { -- Guidance of Ursoc : https://wowhead.com/forever/item=279891/guidance-of-ursoc
             [itemKeys.name] = "Guidance of Ursoc",
+            [itemKeys.questRewards] = {92066},
             [itemKeys.itemLevel] = 57,
             [itemKeys.requiredLevel] = 47,
             [itemKeys.class] = 4,
         },
         [279892] = { -- Wisdom of Ursol : https://wowhead.com/forever/item=279892/wisdom-of-ursol
             [itemKeys.name] = "Wisdom of Ursol",
+            [itemKeys.questRewards] = {92066},
             [itemKeys.itemLevel] = 57,
             [itemKeys.requiredLevel] = 47,
             [itemKeys.class] = 4,
@@ -62384,6 +63254,7 @@ function ForeverBaseItem:Load()
         },
         [280020] = { -- Deep Jungle Rifle : https://wowhead.com/forever/item=280020/deep-jungle-rifle
             [itemKeys.name] = "Deep Jungle Rifle",
+            [itemKeys.npcDrops] = {261812},
             [itemKeys.itemLevel] = 63,
             [itemKeys.requiredLevel] = 58,
             [itemKeys.class] = 2,
@@ -62444,6 +63315,14 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 58,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 4,
+        },
+        [280029] = { -- Cinderedge Crescent : https://wowhead.com/forever/item=280029/cinderedge-crescent
+            [itemKeys.name] = "Cinderedge Crescent",
+            [itemKeys.npcDrops] = {261974},
+            [itemKeys.itemLevel] = 63,
+            [itemKeys.requiredLevel] = 58,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 0,
         },
         [280031] = { -- Sparklance Wand : https://wowhead.com/forever/item=280031/sparklance-wand
             [itemKeys.name] = "Sparklance Wand",
@@ -62644,6 +63523,27 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 2,
             [itemKeys.subClass] = 8,
         },
+        [280081] = { -- Sad-Sack Sandals : https://wowhead.com/forever/item=280081/sad-sack-sandals
+            [itemKeys.name] = "Sad-Sack Sandals",
+            [itemKeys.itemLevel] = 57,
+            [itemKeys.requiredLevel] = 52,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [280082] = { -- Staff of Sorrow : https://wowhead.com/forever/item=280082/staff-of-sorrow
+            [itemKeys.name] = "Staff of Sorrow",
+            [itemKeys.itemLevel] = 57,
+            [itemKeys.requiredLevel] = 52,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 10,
+        },
+        [280083] = { -- Truesight Rifle : https://wowhead.com/forever/item=280083/truesight-rifle
+            [itemKeys.name] = "Truesight Rifle",
+            [itemKeys.itemLevel] = 57,
+            [itemKeys.requiredLevel] = 52,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 3,
+        },
         [280084] = { -- Furbolg Rib Protector : https://wowhead.com/forever/item=280084/furbolg-rib-protector
             [itemKeys.name] = "Furbolg Rib Protector",
             [itemKeys.itemLevel] = 57,
@@ -62684,9 +63584,11 @@ function ForeverBaseItem:Load()
         },
         [280092] = { -- Wyrmtail : https://wowhead.com/forever/item=280092/wyrmtail
             [itemKeys.name] = "Wyrmtail",
+            [itemKeys.objectDrops] = {671644},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {98231},
         },
         [280095] = { -- Cryptwalker Bracers : https://wowhead.com/forever/item=280095/cryptwalker-bracers
             [itemKeys.name] = "Cryptwalker Bracers",
@@ -62911,6 +63813,7 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {98283},
         },
         [280347] = { -- Shadowgale Squirrel : https://wowhead.com/forever/item=280347/shadowgale-squirrel
             [itemKeys.name] = "Shadowgale Squirrel",
@@ -63124,7 +64027,9 @@ function ForeverBaseItem:Load()
         },
         [280456] = { -- Weevil K. Neevil : https://wowhead.com/forever/item=280456/weevil-k-neevil
             [itemKeys.name] = "Weevil K. Neevil",
+            [itemKeys.questRewards] = {93176},
             [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 25,
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 2,
         },
@@ -63167,7 +64072,7 @@ function ForeverBaseItem:Load()
             [itemKeys.name] = "Small Sack of Gems",
             [itemKeys.questRewards] = {95189, 95204},
             [itemKeys.itemLevel] = 1,
-            [itemKeys.requiredLevel] = 16,
+            [itemKeys.requiredLevel] = 15,
             [itemKeys.class] = 0,
             [itemKeys.subClass] = 8,
         },
@@ -64039,6 +64944,7 @@ function ForeverBaseItem:Load()
         },
         [281018] = { -- Scroll: RARE SERVICHI RADAR : https://wowhead.com/forever/item=281018/scroll-rare-servichi-radar
             [itemKeys.name] = "Scroll: RARE SERVICHI RADAR",
+            [itemKeys.npcDrops] = {1783, 1785, 1789, 1791, 1816, 1817, 1821, 1822, 1833, 1849, 2648, 4494, 5271, 5277, 5709, 5715, 5721, 5988, 5993, 6004, 6195, 6198, 6199, 6200, 6202, 6347, 6510, 6512, 6513, 6516, 6518, 6519, 6520, 6521, 6527, 6553, 6557, 7025, 7026, 7027, 7029, 7034, 7039, 7047, 7100, 7101, 7106, 7110, 7112, 7115, 7132, 7157, 7158, 7431, 7434, 7439, 7442, 7443, 7447, 7448, 7450, 7451, 7453, 7458, 7460, 7670, 8408, 8524, 8557, 8578, 8596, 8597, 8600, 8601, 8603, 8761, 8766, 8893, 8896, 8897, 8900, 8904, 8906, 8907, 8908, 8910, 8911, 8913, 8915, 8920, 8927, 8957, 8961, 9017, 9042, 9045, 9097, 9098, 9156, 9163, 9164, 9166, 9167, 9239, 9241, 9267, 9477, 9537, 9554, 9680, 9692, 9693, 9716, 9879, 10366, 10375, 10381, 10390, 10394, 10464, 10470, 10489, 10717, 10816, 11441, 11476, 11477, 11480, 11516, 11582, 11611, 11736, 11741, 11881, 12179, 13021, 13022, 13036, 13136, 13197, 236876, 243509, 244525, 248041, 248395, 249053, 249222, 249223, 249229, 249230, 249247, 249493, 255247, 255394, 256809, 258329, 261934},
             [itemKeys.itemLevel] = 50,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 0,
@@ -64185,6 +65091,7 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {95986, 96105},
         },
         [281059] = { -- Loose Clearcutter Blade : https://wowhead.com/forever/item=281059/loose-clearcutter-blade
             [itemKeys.name] = "Loose Clearcutter Blade",
@@ -64209,8 +65116,10 @@ function ForeverBaseItem:Load()
         },
         [281142] = { -- Merrick's Bow : https://wowhead.com/forever/item=281142/merricks-bow
             [itemKeys.name] = "Merrick's Bow",
+            [itemKeys.npcDrops] = {272273},
             [itemKeys.startQuest] = 96138,
             [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 18,
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 4,
             [itemKeys.relatedQuests] = {96138},
@@ -64220,14 +65129,17 @@ function ForeverBaseItem:Load()
             [itemKeys.npcDrops] = {272260},
             [itemKeys.startQuest] = 96137,
             [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 18,
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 4,
             [itemKeys.relatedQuests] = {96137},
         },
         [281145] = { -- Silvia's Sword : https://wowhead.com/forever/item=281145/silvias-sword
             [itemKeys.name] = "Silvia's Sword",
+            [itemKeys.npcDrops] = {272284},
             [itemKeys.startQuest] = 79363,
             [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 18,
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 4,
             [itemKeys.relatedQuests] = {79363},
@@ -64243,8 +65155,10 @@ function ForeverBaseItem:Load()
         },
         [281147] = { -- Grant's Shield : https://wowhead.com/forever/item=281147/grants-shield
             [itemKeys.name] = "Grant's Shield",
+            [itemKeys.npcDrops] = {272291},
             [itemKeys.startQuest] = 79362,
             [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 18,
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 4,
             [itemKeys.relatedQuests] = {79362},
@@ -64289,8 +65203,9 @@ function ForeverBaseItem:Load()
         },
         [281234] = { -- Potion of Winterspring Shrouding : https://wowhead.com/forever/item=281234/potion-of-winterspring-shrouding
             [itemKeys.name] = "Potion of Winterspring Shrouding",
+            [itemKeys.questRewards] = {98462},
             [itemKeys.itemLevel] = 1,
-            [itemKeys.requiredLevel] = 1,
+            [itemKeys.requiredLevel] = 55,
             [itemKeys.class] = 0,
             [itemKeys.subClass] = 1,
         },
@@ -64752,7 +65667,9 @@ function ForeverBaseItem:Load()
         },
         [281314] = { -- Subdued Dragon's Fang : https://wowhead.com/forever/item=281314/subdued-dragons-fang
             [itemKeys.name] = "Subdued Dragon's Fang",
+            [itemKeys.questRewards] = {98297},
             [itemKeys.itemLevel] = 32,
+            [itemKeys.requiredLevel] = 24,
             [itemKeys.class] = 2,
             [itemKeys.subClass] = 15,
         },
@@ -64947,6 +65864,12 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 52,
             [itemKeys.class] = 4,
         },
+        [281599] = { -- Ragged Colors : https://wowhead.com/forever/item=281599/ragged-colors
+            [itemKeys.name] = "Ragged Colors",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.requiredLevel] = 55,
+            [itemKeys.class] = 4,
+        },
         [281600] = { -- Wail of Death : https://wowhead.com/forever/item=281600/wail-of-death
             [itemKeys.name] = "Wail of Death",
             [itemKeys.itemLevel] = 61,
@@ -65012,6 +65935,7 @@ function ForeverBaseItem:Load()
         },
         [281650] = { -- Dragonscale Buckler : https://wowhead.com/forever/item=281650/dragonscale-buckler
             [itemKeys.name] = "Dragonscale Buckler",
+            [itemKeys.npcDrops] = {263141},
             [itemKeys.itemLevel] = 43,
             [itemKeys.requiredLevel] = 38,
             [itemKeys.class] = 4,
@@ -65019,6 +65943,7 @@ function ForeverBaseItem:Load()
         },
         [281657] = { -- Corrupted Riverglades Pendant : https://wowhead.com/forever/item=281657/corrupted-riverglades-pendant
             [itemKeys.name] = "Corrupted Riverglades Pendant",
+            [itemKeys.npcDrops] = {257034},
             [itemKeys.itemLevel] = 41,
             [itemKeys.requiredLevel] = 36,
             [itemKeys.class] = 4,
@@ -65038,6 +65963,7 @@ function ForeverBaseItem:Load()
         },
         [281665] = { -- Twilight Forgehammer : https://wowhead.com/forever/item=281665/twilight-forgehammer
             [itemKeys.name] = "Twilight Forgehammer",
+            [itemKeys.npcDrops] = {258032},
             [itemKeys.itemLevel] = 46,
             [itemKeys.requiredLevel] = 41,
             [itemKeys.class] = 2,
@@ -65501,6 +66427,7 @@ function ForeverBaseItem:Load()
         },
         [282008] = { -- Wyrmak's Cuirass : https://wowhead.com/forever/item=282008/wyrmaks-cuirass
             [itemKeys.name] = "Wyrmak's Cuirass",
+            [itemKeys.npcDrops] = {14445},
             [itemKeys.itemLevel] = 47,
             [itemKeys.requiredLevel] = 42,
             [itemKeys.class] = 4,
@@ -65606,6 +66533,13 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 53,
             [itemKeys.class] = 4,
         },
+        [282027] = { -- Scales of the Devourer : https://wowhead.com/forever/item=282027/scales-of-the-devourer
+            [itemKeys.name] = "Scales of the Devourer",
+            [itemKeys.itemLevel] = 62,
+            [itemKeys.requiredLevel] = 57,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
         [282028] = { -- Broken Frond of Celastrus : https://wowhead.com/forever/item=282028/broken-frond-of-celastrus
             [itemKeys.name] = "Broken Frond of Celastrus",
             [itemKeys.npcDrops] = {249051},
@@ -65622,6 +66556,7 @@ function ForeverBaseItem:Load()
         },
         [282046] = { -- Gnome Skull : https://wowhead.com/forever/item=282046/gnome-skull
             [itemKeys.name] = "Gnome Skull",
+            [itemKeys.npcDrops] = {3581},
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 0,
@@ -65688,6 +66623,13 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 57,
             [itemKeys.requiredLevel] = 52,
             [itemKeys.class] = 4,
+        },
+        [282085] = { -- Dragonblood Greatsword : https://wowhead.com/forever/item=282085/dragonblood-greatsword
+            [itemKeys.name] = "Dragonblood Greatsword",
+            [itemKeys.itemLevel] = 62,
+            [itemKeys.requiredLevel] = 57,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 8,
         },
         [282088] = { -- Heart of Smoldar : https://wowhead.com/forever/item=282088/heart-of-smoldar
             [itemKeys.name] = "Heart of Smoldar",
@@ -66027,6 +66969,13 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 4,
         },
+        [282700] = { -- Shadow Scalper : https://wowhead.com/forever/item=282700/shadow-scalper
+            [itemKeys.name] = "Shadow Scalper",
+            [itemKeys.itemLevel] = 42,
+            [itemKeys.requiredLevel] = 37,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 0,
+        },
         [282702] = { -- Molok's Masher : https://wowhead.com/forever/item=282702/moloks-masher
             [itemKeys.name] = "Molok's Masher",
             [itemKeys.itemLevel] = 41,
@@ -66059,6 +67008,13 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 44,
             [itemKeys.requiredLevel] = 39,
             [itemKeys.class] = 4,
+        },
+        [282707] = { -- Arcanum of Binding : https://wowhead.com/forever/item=282707/arcanum-of-binding
+            [itemKeys.name] = "Arcanum of Binding",
+            [itemKeys.itemLevel] = 50,
+            [itemKeys.requiredLevel] = 54,
+            [itemKeys.class] = 0,
+            [itemKeys.subClass] = 6,
         },
         [282710] = { -- Dun Garok Rifle : https://wowhead.com/forever/item=282710/dun-garok-rifle
             [itemKeys.name] = "Dun Garok Rifle",
@@ -66113,6 +67069,7 @@ function ForeverBaseItem:Load()
         },
         [282720] = { -- Spider Swarm : https://wowhead.com/forever/item=282720/spider-swarm
             [itemKeys.name] = "Spider Swarm",
+            [itemKeys.npcDrops] = {14279},
             [itemKeys.itemLevel] = 26,
             [itemKeys.requiredLevel] = 21,
             [itemKeys.class] = 0,
@@ -66163,6 +67120,13 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 11,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 2,
+        },
+        [283387] = { -- Scrawled Note : https://wowhead.com/forever/item=283387/scrawled-note
+            [itemKeys.name] = "Scrawled Note",
+            [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 15,
+            [itemKeys.subClass] = 4,
         },
         [283389] = { -- Skonk's List : https://wowhead.com/forever/item=283389/skonks-list
             [itemKeys.name] = "Skonk's List",
@@ -66314,6 +67278,7 @@ function ForeverBaseItem:Load()
         },
         [284086] = { -- Scarlet Executioner's Guise : https://wowhead.com/forever/item=284086/scarlet-executioners-guise
             [itemKeys.name] = "Scarlet Executioner's Guise",
+            [itemKeys.npcDrops] = {1841},
             [itemKeys.itemLevel] = 62,
             [itemKeys.requiredLevel] = 57,
             [itemKeys.class] = 4,
@@ -66429,6 +67394,18 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 56,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 1,
+        },
+        [284163] = { -- Scarlet Hearthstone : https://wowhead.com/forever/item=284163/scarlet-hearthstone
+            [itemKeys.name] = "Scarlet Hearthstone",
+            [itemKeys.itemLevel] = 1,
+            [itemKeys.class] = 15,
+            [itemKeys.subClass] = 0,
+        },
+        [284164] = { -- Scarlet Hearthstone : https://wowhead.com/forever/item=284164/scarlet-hearthstone
+            [itemKeys.name] = "Scarlet Hearthstone",
+            [itemKeys.itemLevel] = 35,
+            [itemKeys.class] = 15,
+            [itemKeys.subClass] = 4,
         },
         [284165] = { -- Duskstalker's Hide : https://wowhead.com/forever/item=284165/duskstalkers-hide
             [itemKeys.name] = "Duskstalker's Hide",
@@ -66553,6 +67530,12 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 2,
             [itemKeys.subClass] = 13,
         },
+        [284231] = { -- Sayaad Charm : https://wowhead.com/forever/item=284231/sayaad-charm
+            [itemKeys.name] = "Sayaad Charm",
+            [itemKeys.itemLevel] = 63,
+            [itemKeys.requiredLevel] = 58,
+            [itemKeys.class] = 4,
+        },
         [284253] = { -- Eternally Frozen Band : https://wowhead.com/forever/item=284253/eternally-frozen-band
             [itemKeys.name] = "Eternally Frozen Band",
             [itemKeys.itemLevel] = 62,
@@ -66592,6 +67575,13 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 56,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 2,
+        },
+        [284270] = { -- Ancient Giant's Gaze : https://wowhead.com/forever/item=284270/ancient-giants-gaze
+            [itemKeys.name] = "Ancient Giant's Gaze",
+            [itemKeys.itemLevel] = 56,
+            [itemKeys.requiredLevel] = 51,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
         },
         [284271] = { -- Emergency Cache : https://wowhead.com/forever/item=284271/emergency-cache
             [itemKeys.name] = "Emergency Cache",
@@ -66757,7 +67747,7 @@ function ForeverBaseItem:Load()
         },
         [284584] = { -- Coin Pouch : https://wowhead.com/forever/item=284584/coin-pouch
             [itemKeys.name] = "Coin Pouch",
-            [itemKeys.questRewards] = {94004, 94212, 94213, 94214, 94216, 94217, 94231, 94233, 94234, 94235, 94236, 94237, 94238, 94241, 94245, 94247, 94248, 94249, 94250, 94255},
+            [itemKeys.questRewards] = {94004, 94212, 94213, 94214, 94215, 94216, 94217, 94218, 94219, 94220, 94221, 94222, 94223, 94224, 94225, 94226, 94227, 94228, 94229, 94230, 94231, 94232, 94233, 94234, 94235, 94236, 94237, 94238, 94239, 94240, 94241, 94242, 94243, 94244, 94245, 94246, 94247, 94248, 94249, 94250, 94251, 94252, 94253, 94254, 94255},
             [itemKeys.itemLevel] = 1,
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 15,
@@ -66894,6 +67884,7 @@ function ForeverBaseItem:Load()
         },
         [284715] = { -- First Mate Band : https://wowhead.com/forever/item=284715/first-mate-band
             [itemKeys.name] = "First Mate Band",
+            [itemKeys.npcDrops] = {646},
             [itemKeys.itemLevel] = 22,
             [itemKeys.requiredLevel] = 17,
             [itemKeys.class] = 4,
@@ -66931,6 +67922,7 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 1,
             [itemKeys.class] = 12,
             [itemKeys.subClass] = 0,
+            [itemKeys.relatedQuests] = {98815},
         },
         [284847] = { -- Hippogryph Down Leggings : https://wowhead.com/forever/item=284847/hippogryph-down-leggings
             [itemKeys.name] = "Hippogryph Down Leggings",
@@ -66987,6 +67979,7 @@ function ForeverBaseItem:Load()
         },
         [284871] = { -- Recipe: Transmute Legionite : https://wowhead.com/forever/item=284871/recipe-transmute-legionite
             [itemKeys.name] = "Recipe: Transmute Legionite",
+            [itemKeys.npcDrops] = {249229, 252457},
             [itemKeys.itemLevel] = 55,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 6,
@@ -67011,6 +68004,13 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 42,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 4,
+        },
+        [285066] = { -- Ooze Rummagers : https://wowhead.com/forever/item=285066/ooze-rummagers
+            [itemKeys.name] = "Ooze Rummagers",
+            [itemKeys.itemLevel] = 59,
+            [itemKeys.requiredLevel] = 54,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
         },
         [285088] = { -- Ooze Dripping Robes : https://wowhead.com/forever/item=285088/ooze-dripping-robes
             [itemKeys.name] = "Ooze Dripping Robes",
@@ -67362,6 +68362,7 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 9,
             [itemKeys.subClass] = 4,
+            [itemKeys.vendors] = {248197, 256730},
         },
         [285290] = { -- Plans: Mithril Blacksmith Hammer : https://wowhead.com/forever/item=285290/plans-mithril-blacksmith-hammer
             [itemKeys.name] = "Plans: Mithril Blacksmith Hammer",
@@ -68298,6 +69299,7 @@ function ForeverBaseItem:Load()
         },
         [286429] = { -- Big-Belly Belt : https://wowhead.com/forever/item=286429/big-belly-belt
             [itemKeys.name] = "Big-Belly Belt",
+            [itemKeys.npcDrops] = {264773},
             [itemKeys.itemLevel] = 45,
             [itemKeys.requiredLevel] = 40,
             [itemKeys.class] = 4,
@@ -68305,6 +69307,7 @@ function ForeverBaseItem:Load()
         },
         [286430] = { -- Toofbreaker : https://wowhead.com/forever/item=286430/toofbreaker
             [itemKeys.name] = "Toofbreaker",
+            [itemKeys.npcDrops] = {264773},
             [itemKeys.itemLevel] = 45,
             [itemKeys.requiredLevel] = 40,
             [itemKeys.class] = 2,
@@ -68341,6 +69344,7 @@ function ForeverBaseItem:Load()
         },
         [286537] = { -- Thunderstomp's Horn : https://wowhead.com/forever/item=286537/thunderstomps-horn
             [itemKeys.name] = "Thunderstomp's Horn",
+            [itemKeys.npcDrops] = {5832},
             [itemKeys.itemLevel] = 26,
             [itemKeys.requiredLevel] = 21,
             [itemKeys.class] = 2,
@@ -68348,6 +69352,7 @@ function ForeverBaseItem:Load()
         },
         [286540] = { -- The Skyblade : https://wowhead.com/forever/item=286540/the-skyblade
             [itemKeys.name] = "The Skyblade",
+            [itemKeys.npcDrops] = {5834},
             [itemKeys.itemLevel] = 27,
             [itemKeys.requiredLevel] = 22,
             [itemKeys.class] = 2,
@@ -68410,6 +69415,20 @@ function ForeverBaseItem:Load()
             [itemKeys.itemLevel] = 51,
             [itemKeys.requiredLevel] = 46,
             [itemKeys.class] = 4,
+        },
+        [286573] = { -- Unleashed Swarm : https://wowhead.com/forever/item=286573/unleashed-swarm
+            [itemKeys.name] = "Unleashed Swarm",
+            [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 15,
+            [itemKeys.subClass] = 4,
+        },
+        [286590] = { -- Silithid Queen's Husk : https://wowhead.com/forever/item=286590/silithid-queens-husk
+            [itemKeys.name] = "Silithid Queen's Husk",
+            [itemKeys.itemLevel] = 61,
+            [itemKeys.requiredLevel] = 56,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
         },
         [286597] = { -- Calm Air Band : https://wowhead.com/forever/item=286597/calm-air-band
             [itemKeys.name] = "Calm Air Band",
@@ -68485,6 +69504,27 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 54,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 1,
+        },
+        [286641] = { -- Cannibal's Cleaver : https://wowhead.com/forever/item=286641/cannibals-cleaver
+            [itemKeys.name] = "Cannibal's Cleaver",
+            [itemKeys.itemLevel] = 50,
+            [itemKeys.requiredLevel] = 45,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 1,
+        },
+        [286644] = { -- Shattered Atal'ai Spear : https://wowhead.com/forever/item=286644/shattered-atalai-spear
+            [itemKeys.name] = "Shattered Atal'ai Spear",
+            [itemKeys.itemLevel] = 50,
+            [itemKeys.requiredLevel] = 45,
+            [itemKeys.class] = 7,
+            [itemKeys.subClass] = 11,
+        },
+        [286645] = { -- Reforged Atal'ai Spear : https://wowhead.com/forever/item=286645/reforged-atalai-spear
+            [itemKeys.name] = "Reforged Atal'ai Spear",
+            [itemKeys.itemLevel] = 50,
+            [itemKeys.requiredLevel] = 45,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 6,
         },
         [286646] = { -- Gill's Gills : https://wowhead.com/forever/item=286646/gills-gills
             [itemKeys.name] = "Gill's Gills",
@@ -68609,7 +69649,7 @@ function ForeverBaseItem:Load()
         [286734] = { -- Ban'ethil Quiver : https://wowhead.com/forever/item=286734/banethil-quiver
             [itemKeys.name] = "Ban'ethil Quiver",
             [itemKeys.questRewards] = {99053},
-            [itemKeys.itemLevel] = 9,
+            [itemKeys.itemLevel] = 10,
             [itemKeys.requiredLevel] = 4,
             [itemKeys.class] = 11,
             [itemKeys.subClass] = 2,
@@ -68758,7 +69798,7 @@ function ForeverBaseItem:Load()
         },
         [286978] = { -- Rotmender's Garb : https://wowhead.com/forever/item=286978/rotmenders-garb
             [itemKeys.name] = "Rotmender's Garb",
-            [itemKeys.npcDrops] = {250484, 250618, 250619, 250620, 250622, 250623, 250624, 250625, 250626, 250627, 250629, 250630, 250650, 250651, 250654, 250656, 250689, 250735, 255109, 255964, 256040},
+            [itemKeys.npcDrops] = {250484, 250618, 250619, 250620, 250622, 250623, 250624, 250625, 250626, 250627, 250629, 250630, 250650, 250651, 250652, 250654, 250656, 250689, 250735, 255109, 255964, 256040},
             [itemKeys.itemLevel] = 23,
             [itemKeys.requiredLevel] = 18,
             [itemKeys.class] = 4,
@@ -68774,7 +69814,7 @@ function ForeverBaseItem:Load()
         },
         [286980] = { -- Rotmender's Sash : https://wowhead.com/forever/item=286980/rotmenders-sash
             [itemKeys.name] = "Rotmender's Sash",
-            [itemKeys.npcDrops] = {250484, 250618, 250619, 250620, 250622, 250623, 250624, 250625, 250626, 250627, 250629, 250630, 250650, 250651, 250654, 250656, 250689, 250735, 255109, 255964, 256040},
+            [itemKeys.npcDrops] = {250484, 250618, 250619, 250620, 250622, 250623, 250624, 250625, 250626, 250627, 250629, 250630, 250650, 250651, 250652, 250654, 250656, 250689, 250735, 255109, 255964, 256040},
             [itemKeys.itemLevel] = 22,
             [itemKeys.requiredLevel] = 17,
             [itemKeys.class] = 4,
@@ -68790,6 +69830,7 @@ function ForeverBaseItem:Load()
         },
         [286982] = { -- Unearthed Barrier : https://wowhead.com/forever/item=286982/unearthed-barrier
             [itemKeys.name] = "Unearthed Barrier",
+            [itemKeys.npcDrops] = {260796, 260797, 260798, 260800, 260801, 260802, 260803, 260804, 260809, 274715},
             [itemKeys.itemLevel] = 32,
             [itemKeys.requiredLevel] = 27,
             [itemKeys.class] = 4,
@@ -68913,6 +69954,7 @@ function ForeverBaseItem:Load()
         },
         [286999] = { -- Deathcrawler's Chest : https://wowhead.com/forever/item=286999/deathcrawlers-chest
             [itemKeys.name] = "Deathcrawler's Chest",
+            [itemKeys.npcDrops] = {258792, 258797, 258799, 258804, 258897, 259981, 259987, 263196, 263899},
             [itemKeys.itemLevel] = 40,
             [itemKeys.requiredLevel] = 35,
             [itemKeys.class] = 4,
@@ -68949,6 +69991,7 @@ function ForeverBaseItem:Load()
         },
         [287004] = { -- Touch of the Depths : https://wowhead.com/forever/item=287004/touch-of-the-depths
             [itemKeys.name] = "Touch of the Depths",
+            [itemKeys.npcDrops] = {250187, 258792, 258797, 258799, 258804, 258818, 259979, 259987, 260353, 268321},
             [itemKeys.itemLevel] = 40,
             [itemKeys.requiredLevel] = 35,
             [itemKeys.class] = 2,
@@ -68970,6 +70013,7 @@ function ForeverBaseItem:Load()
         },
         [287007] = { -- Stretched Footpads : https://wowhead.com/forever/item=287007/stretched-footpads
             [itemKeys.name] = "Stretched Footpads",
+            [itemKeys.npcDrops] = {257885, 257900, 258038, 258042, 258100, 258104, 258687, 262067},
             [itemKeys.itemLevel] = 44,
             [itemKeys.requiredLevel] = 39,
             [itemKeys.class] = 4,
@@ -69013,6 +70057,7 @@ function ForeverBaseItem:Load()
         },
         [287013] = { -- Krol'dok Warplate Legplates : https://wowhead.com/forever/item=287013/kroldok-warplate-legplates
             [itemKeys.name] = "Krol'dok Warplate Legplates",
+            [itemKeys.npcDrops] = {257885, 257888, 257900, 258038, 258040, 258042, 258100, 258102, 258104, 258687, 262065, 262067, 262716, 268423},
             [itemKeys.itemLevel] = 46,
             [itemKeys.requiredLevel] = 41,
             [itemKeys.class] = 4,
@@ -69027,6 +70072,7 @@ function ForeverBaseItem:Load()
         },
         [287015] = { -- Supreme Smasher : https://wowhead.com/forever/item=287015/supreme-smasher
             [itemKeys.name] = "Supreme Smasher",
+            [itemKeys.npcDrops] = {258042, 258100, 258104, 258687},
             [itemKeys.itemLevel] = 47,
             [itemKeys.requiredLevel] = 42,
             [itemKeys.class] = 2,
@@ -69055,6 +70101,7 @@ function ForeverBaseItem:Load()
         },
         [287019] = { -- Defias Enforcer's Mask : https://wowhead.com/forever/item=287019/defias-enforcers-mask
             [itemKeys.name] = "Defias Enforcer's Mask",
+            [itemKeys.npcDrops] = {255262, 255267, 255271, 255276, 255309, 255364, 255373, 255377, 255995, 271780, 271784},
             [itemKeys.itemLevel] = 53,
             [itemKeys.requiredLevel] = 48,
             [itemKeys.class] = 4,
@@ -69103,6 +70150,7 @@ function ForeverBaseItem:Load()
         },
         [287026] = { -- Escape Plan : https://wowhead.com/forever/item=287026/escape-plan
             [itemKeys.name] = "Escape Plan",
+            [itemKeys.npcDrops] = {255267, 255276, 255377, 255995},
             [itemKeys.itemLevel] = 54,
             [itemKeys.requiredLevel] = 49,
             [itemKeys.class] = 2,
@@ -69126,6 +70174,13 @@ function ForeverBaseItem:Load()
             [itemKeys.name] = "Blackmaw Bindings",
             [itemKeys.itemLevel] = 59,
             [itemKeys.requiredLevel] = 54,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [287031] = { -- Spearfisher's Waders : https://wowhead.com/forever/item=287031/spearfishers-waders
+            [itemKeys.name] = "Spearfisher's Waders",
+            [itemKeys.itemLevel] = 58,
+            [itemKeys.requiredLevel] = 53,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 3,
         },
@@ -69158,6 +70213,7 @@ function ForeverBaseItem:Load()
         },
         [287036] = { -- Satyr's Touch : https://wowhead.com/forever/item=287036/satyrs-touch
             [itemKeys.name] = "Satyr's Touch",
+            [itemKeys.npcDrops] = {247235, 247248, 255247, 255347, 258668, 268864},
             [itemKeys.itemLevel] = 59,
             [itemKeys.requiredLevel] = 54,
             [itemKeys.class] = 2,
@@ -69169,6 +70225,68 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 55,
             [itemKeys.class] = 4,
             [itemKeys.subClass] = 1,
+        },
+        [287038] = { -- Naturopathy Footpads : https://wowhead.com/forever/item=287038/naturopathy-footpads
+            [itemKeys.name] = "Naturopathy Footpads",
+            [itemKeys.itemLevel] = 59,
+            [itemKeys.requiredLevel] = 54,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [287039] = { -- Tattered Explorer's Cuffs : https://wowhead.com/forever/item=287039/tattered-explorers-cuffs
+            [itemKeys.name] = "Tattered Explorer's Cuffs",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.requiredLevel] = 55,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [287040] = { -- Dinosaur Hide Belt : https://wowhead.com/forever/item=287040/dinosaur-hide-belt
+            [itemKeys.name] = "Dinosaur Hide Belt",
+            [itemKeys.itemLevel] = 61,
+            [itemKeys.requiredLevel] = 56,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [287041] = { -- Time-Forgotten Bindings : https://wowhead.com/forever/item=287041/time-forgotten-bindings
+            [itemKeys.name] = "Time-Forgotten Bindings",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.requiredLevel] = 55,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [287042] = { -- Pauldrons of the Stone Guardian : https://wowhead.com/forever/item=287042/pauldrons-of-the-stone-guardian
+            [itemKeys.name] = "Pauldrons of the Stone Guardian",
+            [itemKeys.itemLevel] = 61,
+            [itemKeys.requiredLevel] = 56,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 4,
+        },
+        [287043] = { -- Predaceous Band : https://wowhead.com/forever/item=287043/predaceous-band
+            [itemKeys.name] = "Predaceous Band",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.requiredLevel] = 55,
+            [itemKeys.class] = 4,
+        },
+        [287044] = { -- Predator's Shroud : https://wowhead.com/forever/item=287044/predators-shroud
+            [itemKeys.name] = "Predator's Shroud",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.requiredLevel] = 55,
+            [itemKeys.class] = 4,
+        },
+        [287045] = { -- Ancient Mattock : https://wowhead.com/forever/item=287045/ancient-mattock
+            [itemKeys.name] = "Ancient Mattock",
+            [itemKeys.npcDrops] = {262689},
+            [itemKeys.itemLevel] = 61,
+            [itemKeys.requiredLevel] = 56,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 0,
+        },
+        [287046] = { -- Pylon Poker : https://wowhead.com/forever/item=287046/pylon-poker
+            [itemKeys.name] = "Pylon Poker",
+            [itemKeys.itemLevel] = 61,
+            [itemKeys.requiredLevel] = 56,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 10,
         },
         [287059] = { -- Footman's Pocketknife : https://wowhead.com/forever/item=287059/footmans-pocketknife
             [itemKeys.name] = "Footman's Pocketknife",
@@ -69246,6 +70364,7 @@ function ForeverBaseItem:Load()
         },
         [287070] = { -- Skypierce Javelin : https://wowhead.com/forever/item=287070/skypierce-javelin
             [itemKeys.name] = "Skypierce Javelin",
+            [itemKeys.npcDrops] = {1907, 2791, 7247, 8095},
             [itemKeys.itemLevel] = 45,
             [itemKeys.requiredLevel] = 40,
             [itemKeys.class] = 2,
@@ -69419,6 +70538,27 @@ function ForeverBaseItem:Load()
             [itemKeys.subClass] = 0,
             [itemKeys.relatedQuests] = {98824},
         },
+        [287960] = { -- Portable Wormhole Generator : https://wowhead.com/forever/item=287960/portable-wormhole-generator
+            [itemKeys.name] = "Portable Wormhole Generator",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 0,
+            [itemKeys.subClass] = 14,
+        },
+        [287961] = { -- Portable Repair Bot : https://wowhead.com/forever/item=287961/portable-repair-bot
+            [itemKeys.name] = "Portable Repair Bot",
+            [itemKeys.itemLevel] = 60,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 0,
+            [itemKeys.subClass] = 14,
+        },
+        [287962] = { -- Enchanted Silk Bag : https://wowhead.com/forever/item=287962/enchanted-silk-bag
+            [itemKeys.name] = "Enchanted Silk Bag",
+            [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 1,
+            [itemKeys.subClass] = 0,
+        },
         [287963] = { -- Roasted Quail : https://wowhead.com/forever/item=287963/roasted-quail
             [itemKeys.name] = "Roasted Quail",
             [itemKeys.itemLevel] = 55,
@@ -69432,6 +70572,13 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 0,
             [itemKeys.subClass] = 5,
+        },
+        [287965] = { -- Adventurer's Supply Bundle : https://wowhead.com/forever/item=287965/adventurers-supply-bundle
+            [itemKeys.name] = "Adventurer's Supply Bundle",
+            [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 15,
+            [itemKeys.subClass] = 0,
         },
         [287966] = { -- Minor Healing Potion : https://wowhead.com/forever/item=287966/minor-healing-potion
             [itemKeys.name] = "Minor Healing Potion",
@@ -69460,6 +70607,13 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 0,
             [itemKeys.subClass] = 1,
+        },
+        [287970] = { -- Adventurer's Field Kit : https://wowhead.com/forever/item=287970/adventurers-field-kit
+            [itemKeys.name] = "Adventurer's Field Kit",
+            [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 15,
+            [itemKeys.subClass] = 0,
         },
         [287971] = { -- Woolen Bag : https://wowhead.com/forever/item=287971/woolen-bag
             [itemKeys.name] = "Woolen Bag",
@@ -69542,6 +70696,13 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 15,
             [itemKeys.subClass] = 4,
         },
+        [288206] = { -- Recipe: Draught of Water Walking : https://wowhead.com/forever/item=288206/recipe-draught-of-water-walking
+            [itemKeys.name] = "Recipe: Draught of Water Walking",
+            [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 9,
+            [itemKeys.subClass] = 6,
+        },
         [288336] = { -- Blue Firework : https://wowhead.com/forever/item=288336/blue-firework
             [itemKeys.name] = "Blue Firework",
             [itemKeys.itemLevel] = 20,
@@ -69572,6 +70733,510 @@ function ForeverBaseItem:Load()
             [itemKeys.class] = 0,
             [itemKeys.subClass] = 8,
         },
+        [288823] = { -- Arcanist Crown : https://wowhead.com/forever/item=288823/arcanist-crown
+            [itemKeys.name] = "Arcanist Crown",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288824] = { -- Arcanist Leggings : https://wowhead.com/forever/item=288824/arcanist-leggings
+            [itemKeys.name] = "Arcanist Leggings",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288825] = { -- Arcanist Mantle : https://wowhead.com/forever/item=288825/arcanist-mantle
+            [itemKeys.name] = "Arcanist Mantle",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288826] = { -- Arcanist Robes : https://wowhead.com/forever/item=288826/arcanist-robes
+            [itemKeys.name] = "Arcanist Robes",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288827] = { -- Arcanist Bindings : https://wowhead.com/forever/item=288827/arcanist-bindings
+            [itemKeys.name] = "Arcanist Bindings",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288828] = { -- Arcanist Boots : https://wowhead.com/forever/item=288828/arcanist-boots
+            [itemKeys.name] = "Arcanist Boots",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288829] = { -- Arcanist Gloves : https://wowhead.com/forever/item=288829/arcanist-gloves
+            [itemKeys.name] = "Arcanist Gloves",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288830] = { -- Arcanist Belt : https://wowhead.com/forever/item=288830/arcanist-belt
+            [itemKeys.name] = "Arcanist Belt",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288831] = { -- Felheart Slippers : https://wowhead.com/forever/item=288831/felheart-slippers
+            [itemKeys.name] = "Felheart Slippers",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288832] = { -- Felheart Bracers : https://wowhead.com/forever/item=288832/felheart-bracers
+            [itemKeys.name] = "Felheart Bracers",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288833] = { -- Felheart Gloves : https://wowhead.com/forever/item=288833/felheart-gloves
+            [itemKeys.name] = "Felheart Gloves",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288834] = { -- Felheart Belt : https://wowhead.com/forever/item=288834/felheart-belt
+            [itemKeys.name] = "Felheart Belt",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288835] = { -- Felheart Shoulder Pads : https://wowhead.com/forever/item=288835/felheart-shoulder-pads
+            [itemKeys.name] = "Felheart Shoulder Pads",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288836] = { -- Felheart Horns : https://wowhead.com/forever/item=288836/felheart-horns
+            [itemKeys.name] = "Felheart Horns",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288837] = { -- Felheart Robes : https://wowhead.com/forever/item=288837/felheart-robes
+            [itemKeys.name] = "Felheart Robes",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288838] = { -- Felheart Pants : https://wowhead.com/forever/item=288838/felheart-pants
+            [itemKeys.name] = "Felheart Pants",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288839] = { -- Boots of Prophecy : https://wowhead.com/forever/item=288839/boots-of-prophecy
+            [itemKeys.name] = "Boots of Prophecy",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288840] = { -- Gloves of Prophecy : https://wowhead.com/forever/item=288840/gloves-of-prophecy
+            [itemKeys.name] = "Gloves of Prophecy",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288841] = { -- Circlet of Prophecy : https://wowhead.com/forever/item=288841/circlet-of-prophecy
+            [itemKeys.name] = "Circlet of Prophecy",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288842] = { -- Pants of Prophecy : https://wowhead.com/forever/item=288842/pants-of-prophecy
+            [itemKeys.name] = "Pants of Prophecy",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288843] = { -- Robes of Prophecy : https://wowhead.com/forever/item=288843/robes-of-prophecy
+            [itemKeys.name] = "Robes of Prophecy",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288844] = { -- Mantle of Prophecy : https://wowhead.com/forever/item=288844/mantle-of-prophecy
+            [itemKeys.name] = "Mantle of Prophecy",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288845] = { -- Girdle of Prophecy : https://wowhead.com/forever/item=288845/girdle-of-prophecy
+            [itemKeys.name] = "Girdle of Prophecy",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288846] = { -- Vambraces of Prophecy : https://wowhead.com/forever/item=288846/vambraces-of-prophecy
+            [itemKeys.name] = "Vambraces of Prophecy",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 1,
+        },
+        [288847] = { -- Nightslayer Chestpiece : https://wowhead.com/forever/item=288847/nightslayer-chestpiece
+            [itemKeys.name] = "Nightslayer Chestpiece",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288848] = { -- Nightslayer Cover : https://wowhead.com/forever/item=288848/nightslayer-cover
+            [itemKeys.name] = "Nightslayer Cover",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288849] = { -- Nightslayer Pants : https://wowhead.com/forever/item=288849/nightslayer-pants
+            [itemKeys.name] = "Nightslayer Pants",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288850] = { -- Nightslayer Shoulder Pads : https://wowhead.com/forever/item=288850/nightslayer-shoulder-pads
+            [itemKeys.name] = "Nightslayer Shoulder Pads",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288851] = { -- Nightslayer Boots : https://wowhead.com/forever/item=288851/nightslayer-boots
+            [itemKeys.name] = "Nightslayer Boots",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288852] = { -- Nightslayer Bracelets : https://wowhead.com/forever/item=288852/nightslayer-bracelets
+            [itemKeys.name] = "Nightslayer Bracelets",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288853] = { -- Nightslayer Gloves : https://wowhead.com/forever/item=288853/nightslayer-gloves
+            [itemKeys.name] = "Nightslayer Gloves",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288854] = { -- Nightslayer Belt : https://wowhead.com/forever/item=288854/nightslayer-belt
+            [itemKeys.name] = "Nightslayer Belt",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288855] = { -- Cenarion Belt : https://wowhead.com/forever/item=288855/cenarion-belt
+            [itemKeys.name] = "Cenarion Belt",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288856] = { -- Cenarion Boots : https://wowhead.com/forever/item=288856/cenarion-boots
+            [itemKeys.name] = "Cenarion Boots",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288857] = { -- Cenarion Bracers : https://wowhead.com/forever/item=288857/cenarion-bracers
+            [itemKeys.name] = "Cenarion Bracers",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288858] = { -- Cenarion Gloves : https://wowhead.com/forever/item=288858/cenarion-gloves
+            [itemKeys.name] = "Cenarion Gloves",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288859] = { -- Cenarion Vestments : https://wowhead.com/forever/item=288859/cenarion-vestments
+            [itemKeys.name] = "Cenarion Vestments",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288860] = { -- Cenarion Helm : https://wowhead.com/forever/item=288860/cenarion-helm
+            [itemKeys.name] = "Cenarion Helm",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288861] = { -- Cenarion Leggings : https://wowhead.com/forever/item=288861/cenarion-leggings
+            [itemKeys.name] = "Cenarion Leggings",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288862] = { -- Cenarion Spaulders : https://wowhead.com/forever/item=288862/cenarion-spaulders
+            [itemKeys.name] = "Cenarion Spaulders",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288863] = { -- Earthfury Boots : https://wowhead.com/forever/item=288863/earthfury-boots
+            [itemKeys.name] = "Earthfury Boots",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288864] = { -- Earthfury Belt : https://wowhead.com/forever/item=288864/earthfury-belt
+            [itemKeys.name] = "Earthfury Belt",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288865] = { -- Earthfury Gauntlets : https://wowhead.com/forever/item=288865/earthfury-gauntlets
+            [itemKeys.name] = "Earthfury Gauntlets",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288866] = { -- Earthfury Bracers : https://wowhead.com/forever/item=288866/earthfury-bracers
+            [itemKeys.name] = "Earthfury Bracers",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288867] = { -- Earthfury Vestments : https://wowhead.com/forever/item=288867/earthfury-vestments
+            [itemKeys.name] = "Earthfury Vestments",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288868] = { -- Earthfury Helmet : https://wowhead.com/forever/item=288868/earthfury-helmet
+            [itemKeys.name] = "Earthfury Helmet",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288869] = { -- Earthfury Legguards : https://wowhead.com/forever/item=288869/earthfury-legguards
+            [itemKeys.name] = "Earthfury Legguards",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288870] = { -- Earthfury Epaulets : https://wowhead.com/forever/item=288870/earthfury-epaulets
+            [itemKeys.name] = "Earthfury Epaulets",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288871] = { -- Giantstalker's Breastplate : https://wowhead.com/forever/item=288871/giantstalkers-breastplate
+            [itemKeys.name] = "Giantstalker's Breastplate",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288872] = { -- Giantstalker's Helmet : https://wowhead.com/forever/item=288872/giantstalkers-helmet
+            [itemKeys.name] = "Giantstalker's Helmet",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288873] = { -- Giantstalker's Leggings : https://wowhead.com/forever/item=288873/giantstalkers-leggings
+            [itemKeys.name] = "Giantstalker's Leggings",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288874] = { -- Giantstalker's Epaulets : https://wowhead.com/forever/item=288874/giantstalkers-epaulets
+            [itemKeys.name] = "Giantstalker's Epaulets",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288875] = { -- Giantstalker's Boots : https://wowhead.com/forever/item=288875/giantstalkers-boots
+            [itemKeys.name] = "Giantstalker's Boots",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288876] = { -- Giantstalker's Bracers : https://wowhead.com/forever/item=288876/giantstalkers-bracers
+            [itemKeys.name] = "Giantstalker's Bracers",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288877] = { -- Giantstalker's Belt : https://wowhead.com/forever/item=288877/giantstalkers-belt
+            [itemKeys.name] = "Giantstalker's Belt",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288878] = { -- Giantstalker's Gloves : https://wowhead.com/forever/item=288878/giantstalkers-gloves
+            [itemKeys.name] = "Giantstalker's Gloves",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 2,
+        },
+        [288879] = { -- Lawbringer Chestguard : https://wowhead.com/forever/item=288879/lawbringer-chestguard
+            [itemKeys.name] = "Lawbringer Chestguard",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [288880] = { -- Lawbringer Helm : https://wowhead.com/forever/item=288880/lawbringer-helm
+            [itemKeys.name] = "Lawbringer Helm",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [288881] = { -- Lawbringer Legplates : https://wowhead.com/forever/item=288881/lawbringer-legplates
+            [itemKeys.name] = "Lawbringer Legplates",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [288882] = { -- Lawbringer Spaulders : https://wowhead.com/forever/item=288882/lawbringer-spaulders
+            [itemKeys.name] = "Lawbringer Spaulders",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [288883] = { -- Lawbringer Bracers : https://wowhead.com/forever/item=288883/lawbringer-bracers
+            [itemKeys.name] = "Lawbringer Bracers",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [288884] = { -- Lawbringer Belt : https://wowhead.com/forever/item=288884/lawbringer-belt
+            [itemKeys.name] = "Lawbringer Belt",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [288885] = { -- Lawbringer Boots : https://wowhead.com/forever/item=288885/lawbringer-boots
+            [itemKeys.name] = "Lawbringer Boots",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [288886] = { -- Lawbringer Gauntlets : https://wowhead.com/forever/item=288886/lawbringer-gauntlets
+            [itemKeys.name] = "Lawbringer Gauntlets",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [288887] = { -- Bracers of Might : https://wowhead.com/forever/item=288887/bracers-of-might
+            [itemKeys.name] = "Bracers of Might",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [288888] = { -- Sabatons of Might : https://wowhead.com/forever/item=288888/sabatons-of-might
+            [itemKeys.name] = "Sabatons of Might",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [288889] = { -- Gauntlets of Might : https://wowhead.com/forever/item=288889/gauntlets-of-might
+            [itemKeys.name] = "Gauntlets of Might",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [288890] = { -- Belt of Might : https://wowhead.com/forever/item=288890/belt-of-might
+            [itemKeys.name] = "Belt of Might",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [288891] = { -- Breastplate of Might : https://wowhead.com/forever/item=288891/breastplate-of-might
+            [itemKeys.name] = "Breastplate of Might",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [288892] = { -- Helm of Might : https://wowhead.com/forever/item=288892/helm-of-might
+            [itemKeys.name] = "Helm of Might",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [288893] = { -- Legplates of Might : https://wowhead.com/forever/item=288893/legplates-of-might
+            [itemKeys.name] = "Legplates of Might",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
+        [288894] = { -- Pauldrons of Might : https://wowhead.com/forever/item=288894/pauldrons-of-might
+            [itemKeys.name] = "Pauldrons of Might",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 3,
+        },
         [288896] = { -- Superior Healing Potion : https://wowhead.com/forever/item=288896/superior-healing-potion
             [itemKeys.name] = "Superior Healing Potion",
             [itemKeys.itemLevel] = 30,
@@ -69599,6 +71264,166 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 1,
             [itemKeys.class] = 2,
             [itemKeys.subClass] = 5,
+        },
+        [288901] = { -- Spinal Reaper : https://wowhead.com/forever/item=288901/spinal-reaper
+            [itemKeys.name] = "Spinal Reaper",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 1,
+        },
+        [288902] = { -- Hyperthermically Insulated Lava Dredger : https://wowhead.com/forever/item=288902/hyperthermically-insulated-lava-dredger
+            [itemKeys.name] = "Hyperthermically Insulated Lava Dredger",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 5,
+        },
+        [288903] = { -- Shadowstrike : https://wowhead.com/forever/item=288903/shadowstrike
+            [itemKeys.name] = "Shadowstrike",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 6,
+        },
+        [288904] = { -- Bonereaver's Edge : https://wowhead.com/forever/item=288904/bonereavers-edge
+            [itemKeys.name] = "Bonereaver's Edge",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 8,
+        },
+        [288905] = { -- Obsidian Edged Blade : https://wowhead.com/forever/item=288905/obsidian-edged-blade
+            [itemKeys.name] = "Obsidian Edged Blade",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 8,
+        },
+        [288906] = { -- Staff of Dominance : https://wowhead.com/forever/item=288906/staff-of-dominance
+            [itemKeys.name] = "Staff of Dominance",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 10,
+        },
+        [288907] = { -- Gutgore Ripper : https://wowhead.com/forever/item=288907/gutgore-ripper
+            [itemKeys.name] = "Gutgore Ripper",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 15,
+        },
+        [288908] = { -- Aurastone Hammer : https://wowhead.com/forever/item=288908/aurastone-hammer
+            [itemKeys.name] = "Aurastone Hammer",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 4,
+        },
+        [288909] = { -- Perdition's Blade : https://wowhead.com/forever/item=288909/perditions-blade
+            [itemKeys.name] = "Perdition's Blade",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 15,
+        },
+        [288910] = { -- Sorcerous Dagger : https://wowhead.com/forever/item=288910/sorcerous-dagger
+            [itemKeys.name] = "Sorcerous Dagger",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 15,
+        },
+        [288911] = { -- Striker's Mark : https://wowhead.com/forever/item=288911/strikers-mark
+            [itemKeys.name] = "Striker's Mark",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 2,
+        },
+        [288913] = { -- Blastershot Launcher : https://wowhead.com/forever/item=288913/blastershot-launcher
+            [itemKeys.name] = "Blastershot Launcher",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 3,
+        },
+        [288914] = { -- Crimson Shocker : https://wowhead.com/forever/item=288914/crimson-shocker
+            [itemKeys.name] = "Crimson Shocker",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 19,
+        },
+        [288915] = { -- Azuresong Mageblade : https://wowhead.com/forever/item=288915/azuresong-mageblade
+            [itemKeys.name] = "Azuresong Mageblade",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 2,
+            [itemKeys.subClass] = 7,
+        },
+        [288916] = { -- Drillborer Disk : https://wowhead.com/forever/item=288916/drillborer-disk
+            [itemKeys.name] = "Drillborer Disk",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 6,
+        },
+        [288917] = { -- Fire Runed Grimoire : https://wowhead.com/forever/item=288917/fire-runed-grimoire
+            [itemKeys.name] = "Fire Runed Grimoire",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+        },
+        [288918] = { -- Malistar's Defender : https://wowhead.com/forever/item=288918/malistars-defender
+            [itemKeys.name] = "Malistar's Defender",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+            [itemKeys.subClass] = 6,
+        },
+        [288919] = { -- Band of Accuria : https://wowhead.com/forever/item=288919/band-of-accuria
+            [itemKeys.name] = "Band of Accuria",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+        },
+        [288920] = { -- Medallion of Steadfast Might : https://wowhead.com/forever/item=288920/medallion-of-steadfast-might
+            [itemKeys.name] = "Medallion of Steadfast Might",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+        },
+        [288921] = { -- Cloak of the Shrouded Mists : https://wowhead.com/forever/item=288921/cloak-of-the-shrouded-mists
+            [itemKeys.name] = "Cloak of the Shrouded Mists",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+        },
+        [288922] = { -- Dragon's Blood Cape : https://wowhead.com/forever/item=288922/dragons-blood-cape
+            [itemKeys.name] = "Dragon's Blood Cape",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+        },
+        [288923] = { -- Choker of Enlightenment : https://wowhead.com/forever/item=288923/choker-of-enlightenment
+            [itemKeys.name] = "Choker of Enlightenment",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+        },
+        [288924] = { -- Seal of the Archmagus : https://wowhead.com/forever/item=288924/seal-of-the-archmagus
+            [itemKeys.name] = "Seal of the Archmagus",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
+        },
+        [288925] = { -- Fireproof Cloak : https://wowhead.com/forever/item=288925/fireproof-cloak
+            [itemKeys.name] = "Fireproof Cloak",
+            [itemKeys.itemLevel] = 30,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.class] = 4,
         },
         [288926] = { -- Choker of the Fire Lord : https://wowhead.com/forever/item=288926/choker-of-the-fire-lord
             [itemKeys.name] = "Choker of the Fire Lord",
@@ -69783,6 +71608,12 @@ function ForeverBaseItem:Load()
             [itemKeys.requiredLevel] = 45,
             [itemKeys.class] = 2,
             [itemKeys.subClass] = 3,
+        },
+        [291005] = { -- Camper's Lure : https://wowhead.com/forever/item=291005/campers-lure
+            [itemKeys.name] = "Camper's Lure",
+            [itemKeys.objectDrops] = {612090, 612092},
+            [itemKeys.itemLevel] = 20,
+            [itemKeys.class] = 0,
         },
     }
 end

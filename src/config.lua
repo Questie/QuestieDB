@@ -156,6 +156,7 @@ config.enumFiles = {
   "src/corrections/enum/constants.lua",
   "src/corrections/enum/items.lua",
   "src/corrections/enum/quests.lua",
+  "src/corrections/enum/npcs.lua",
   "src/corrections/enum/professions.lua",
   "src/corrections/enum/factions.lua",
   "src/corrections/enum/zones.lua",

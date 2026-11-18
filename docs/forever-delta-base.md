@@ -9,11 +9,16 @@ and `foreverBaseItem.lua` / `ForeverBaseItem`.
 Only the module boundary is adapted: `QuestieLoader:CreateModule`, module imports
 and colon `:Load()` replace the standalone entry points. Upstream Quest uses
 `Load(QuestieDB, ZoneDB)`: the first context supplies `questKeys`, Forever `raceKeys`,
-Forever `classKeys` and `sortKeys`; the second supplies `zoneIDs`. NPC and Object use
-`Load(keys, ZoneDB)` when emitting `zoneID`; Item retains `Load(keys)`. Imported Quest,
-NPC and Object providers import the real `QuestieDB` and `ZoneDB` modules. NPC/Object
-`:Load()` binds its matching keys from QuestieDB before the unchanged upstream body.
-Do not attach zone constants to the shared QuestieDB module or change compatibility/runtime code.
+Forever `classKeys` and `sortKeys`; the second supplies `zoneIDs`. NPC likewise uses
+`Load(QuestieDB, ZoneDB)` when emitting `zoneID`, otherwise `Load(QuestieDB)`; its body
+binds `npcKeys` and, when ranks are present, the shared `npcRanks` correction enum.
+Object uses `Load(keys, ZoneDB)` when emitting `zoneID`; Item retains `Load(keys)`.
+Imported Quest, NPC and Object providers import the real `QuestieDB` and `ZoneDB`
+modules. Object/Item `:Load()` binds its matching keys from QuestieDB before the
+unchanged upstream body.
+An import refresh must not attach zone constants to the shared QuestieDB module or change
+compatibility/runtime code. A new shared enum the providers need, such as `npcRanks`, is a
+separate consumer change made before the import.
 
 A standalone call uses the owning contexts:
 
@@ -34,8 +39,8 @@ Preserve the complete upstream function body, including `questKeys` and used `ra
 Quest race/class masks use exact named aggregates or sums of named individual bits. Zero
 remains literal `0`, never a `NONE` alias. Nonzero quest categories use exact named
 `zoneIDs.NAME` or `sortKeys.NAME` constants, with no numeric fallback or extra minus sign.
-NPC/Object `zoneID` also uses exact `zoneIDs.NAME` constants. Other fields and spawn map keys
-remain numeric. Preserve every row value, inline entity name, Forever Wowhead URL and assumption comment. Starter/finisher
+NPC/Object `zoneID` also uses exact `zoneIDs.NAME` constants, and nonzero NPC `rank` uses
+`npcRanks.NAME`. Other fields and spawn map keys remain numeric. Preserve every row value, inline entity name, Forever Wowhead URL and assumption comment. Starter/finisher
 groups retain positional nil holes, including operation operands such as `{nil, {424005}}`;
 spawn maps retain zone keys. Fields follow ascending numeric authoring-key indices:
 `_remove`, ordinary sets, then `_add`, with canonical schema order inside each group
@@ -182,7 +187,7 @@ the current composed data.
 3. In that copy only, replace changed providers and adapt their wrappers. Leave unchanged
    providers byte-identical. Preserve row bodies, nil holes and comments. Never copy candidates into `legacy/`, authored providers or raw data.
    Compare every decoded upstream table with imported `:Load()` using the real Forever runtime
-   context: Quest takes `Load(QuestieDB, ZoneDB)`; NPC/Object with zones take
+   context: Quest and NPC take `Load(QuestieDB, ZoneDB)`; Object with zones takes
    `Load(keys, ZoneDB)`; Item takes `Load(keys)`.
 4. Update provenance and literal import witnesses. Inspect generated/Static numeric presence
    separately from public getters, which normalize absent numbers to zero. Record all reviewed

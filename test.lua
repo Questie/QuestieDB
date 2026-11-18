@@ -1266,6 +1266,13 @@ suite("corrections", "shared", function()
   equal(enum.byExpansion.Wotlk.npcFlags.BARBER, 33554432, "BARBER exists from Wotlk")
   equal(classic.npcFlags.BARBER, nil, "BARBER is absent on Classic")
 
+  -- NPC ranks are shared: the cmangos creature_template ranks that npcKeys.rank stores.
+  equal(enum.npcRanks.NORMAL, 0, "NORMAL is cmangos rank 0")
+  equal(enum.npcRanks.ELITE, 1, "ELITE is cmangos rank 1")
+  equal(enum.npcRanks.RARE_ELITE, 2, "RARE_ELITE is cmangos rank 2")
+  equal(enum.npcRanks.BOSS, 3, "BOSS is cmangos rank 3")
+  equal(enum.npcRanks.RARE, 4, "RARE is cmangos rank 4")
+
   -- Upstream's Classic branch now returns faction-neutral 1503. The generator mechanically
   -- extracts that branch unchanged; there is no local faction normalization.
   local classicClassKeys = classic.classKeys
