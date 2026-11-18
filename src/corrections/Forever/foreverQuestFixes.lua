@@ -38,6 +38,9 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestGroup] = {20,98387},
             [questKeys.nextQuestInChain] = 0,
         },
+        [20] = { -- Blackrock Menace
+            [questKeys.nextQuestInChain] = 0,
+        },
         [76] = { -- The Jasperlode Mine
             [questKeys.triggerEnd] = {"Scout through the Jasperlode Mine", {[zoneIDs.ELWYNN_FOREST] = {{61.93,53.16}}}},
         },
@@ -62,6 +65,9 @@ function ForeverQuestFixes:Load()
         },
         [180] = { -- WANTED: Lieutenant Fangore
             [questKeys.name] = "WANTED: Lieutenant Fangore",
+        },
+        [263] = { -- In Defense of the King's Lands
+            [questKeys.nextQuestInChain] = 0,
         },
         [273] = { -- Resupplying the Excavation
             [questKeys.objectives] = {nil,nil,nil,nil,{{{1379,2057},15885,nil,Questie.ICON_TYPE_EVENT}}},
@@ -104,6 +110,12 @@ function ForeverQuestFixes:Load()
         },
         [431] = { -- Candles of Beckoning
             [questKeys.exclusiveTo] = {},
+        },
+        [465] = { -- Nek'rosh's Gambit
+            [questKeys.nextQuestInChain] = 0,
+        },
+        [479] = { -- Ambermill Investigations
+            [questKeys.nextQuestInChain] = 0,
         },
         [490] = { -- Bounty: Gnarlpine Furbolg
             [questKeys.name] = "Bounty: Gnarlpine Furbolg",
@@ -230,6 +242,9 @@ function ForeverQuestFixes:Load()
         [1657] = { -- Stinking Up Southshore
             [questKeys.objectives] = {{{15415,nil,Questie.ICON_TYPE_EVENT}}},
         },
+        [1799] = { -- Fragments of the Orb of Orahil
+            [questKeys.nextQuestInChain] = 0,
+        },
         [1883] = { -- Speak with Un'thuwa
             [questKeys.requiredRaces] = raceIDs.NONE,
         },
@@ -251,12 +266,24 @@ function ForeverQuestFixes:Load()
         [5147] = { -- WANTED: Arnak Grimtotem
             [questKeys.name] = "WANTED: Arnak Grimtotem",
         },
+        [5244] = { -- The Ruins of Kel'Theril
+            [questKeys.preQuestGroup] = {},
+        },
         [5321] = { -- The Sleeper Has Awakened
             [questKeys.objectives] = {},
             [questKeys.triggerEnd] = {"Escort Kerlonian Evershade on the road south to his bag",{[zoneIDs.DARKSHORE] = {{42,90.5}}}},
         },
         [5482] = { -- Doom Weed
             [questKeys.nextQuestInChain] = 99142,
+        },
+        [5542] = { -- Demon Dogs
+            [questKeys.nextQuestInChain] = 0,
+        },
+        [5543] = { -- Blood Tinged Skies
+            [questKeys.nextQuestInChain] = 0,
+        },
+        [5544] = { -- Carrion Grubbage
+            [questKeys.nextQuestInChain] = 0,
         },
         [5635] = { -- Desperate Prayer
             [questKeys.requiredRaces] = raceIDs.DWARF,
@@ -308,6 +335,12 @@ function ForeverQuestFixes:Load()
         },
         [6922] = { -- Baron Aquanis
             [questKeys.availableStartingWith] = 6921,
+        },
+        [7581] = { -- The Prison's Bindings
+            [questKeys.nextQuestInChain] = 0,
+        },
+        [7582] = { -- The Prison's Casing
+            [questKeys.nextQuestInChain] = 0,
         },
         [7790] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified

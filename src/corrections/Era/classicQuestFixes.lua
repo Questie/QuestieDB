@@ -206,7 +206,7 @@ function QuestieQuestFixes:Load()
             [questKeys.breadcrumbs] = {6141}, -- #1744
         },
         [263] = { -- In Defense of the King's Lands
-            [questKeys.nextQuestInChain] = 217,
+            [questKeys.nextQuestInChain] = 0,
         },
         [272] = { -- Trial of the Sea Lion
             [questKeys.objectives] = {nil, nil, {{15885, nil, Questie.ICON_TYPE_EVENT}}}, -- we need event icon here
@@ -1763,6 +1763,7 @@ function QuestieQuestFixes:Load()
         [1799] = { -- Fragments of the Orb of Orahil
             [questKeys.preQuestSingle] = {},
             [questKeys.breadcrumbs] = {4965, 4967, 4968, 4969},
+            [questKeys.nextQuestInChain] = 0,
         },
         [1800] = { -- Lordaeron Throne Room
             [questKeys.triggerEnd] = {"Go to the old Lordaeron Throne Room that lies just before descending into the Undercity.", {[zoneIDs.UNDERCITY] = {{65.97, 36.12}}}},
@@ -3488,12 +3489,15 @@ function QuestieQuestFixes:Load()
         },
         [5542] = { -- Demon Dogs
             [questKeys.startedBy] = {{1855, 12126}},
+            [questKeys.nextQuestInChain] = 0,
         },
         [5543] = { -- Blood Tinged Skies
             [questKeys.startedBy] = {{1855, 12126}},
+            [questKeys.nextQuestInChain] = 0,
         },
         [5544] = { -- Carrion Grubbage
             [questKeys.startedBy] = {{1855, 12126}},
+            [questKeys.nextQuestInChain] = 0,
         },
         [5561] = { -- Kodo Roundup
             [questKeys.objectives] = {nil, nil, nil, nil, {{{4700, 4701, 4702}, 4700, nil, Questie.ICON_TYPE_INTERACT}}},
@@ -4453,6 +4457,12 @@ function QuestieQuestFixes:Load()
         [7563] = { -- Rage of Blood
             [questKeys.preQuestSingle] = {},
             [questKeys.breadcrumbs] = {7562},
+        },
+        [7581] = { -- The Prison's Bindings
+            [questKeys.nextQuestInChain] = 0,
+        },
+        [7582] = { -- The Prison's Casing
+            [questKeys.nextQuestInChain] = 0,
         },
         [7583] = { -- Suppression
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_INTERACT, l10n("Imprison the Doomguard Commander"), 0, {{"monster", 12396}}}},
