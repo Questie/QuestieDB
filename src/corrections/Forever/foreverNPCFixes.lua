@@ -204,10 +204,14 @@ function ForeverNpcFixes:Load()
         },
         [15350] = { -- Horde Warbringer
             [npcKeys.spawns_add] = {[zoneIDs.THE_BARRENS] = {{64.77,35.1}}},
+            [npcKeys.questStarts_add] = {98887,98888,98889,98890,98891,98892,98893,98894},
+            [npcKeys.questEnds_add] = {98887,98888,98889,98890,98891,98892,98893,98894},
         },
         [15351] = { -- Alliance Brigadier General
             [npcKeys.spawns_remove] = {[zoneIDs.STORMWIND_CITY] = {{81.23,38.49}}},
             [npcKeys.spawns_add] = {[zoneIDs.STORMWIND_CITY] = {{81.24,38.25}}},
+            [npcKeys.questStarts_add] = {98895,98896,98897,98898,98899,98900,98901,98902},
+            [npcKeys.questEnds_add] = {98895,98896,98897,98898,98899,98900,98901,98902},
         },
         [15734] = { -- Ironforge Commendation Officer
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.VENDOR, -- Era flags, sells Forever items
@@ -1173,6 +1177,14 @@ function ForeverNpcFixes:Load()
         },
         [275253] = { -- Teller Plushner
             [npcKeys.npcFlags] = npcFlags.NONE,
+        },
+        [275273] = { -- Brelinda McFarry
+            [npcKeys.questStarts_add] = {98903,98904,98905},
+            [npcKeys.questEnds_add] = {98903,98904,98905},
+        },
+        [275276] = { -- Nizook Boof
+            [npcKeys.questStarts_add] = {98906,98907,98908},
+            [npcKeys.questEnds_add] = {98906,98907,98908},
         },
         [275491] = { -- Randal Emerson
             [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{78.98,45}}},
