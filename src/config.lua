@@ -102,6 +102,18 @@ end
 config.locales = { "deDE", "esES", "esMX", "frFR", "koKR", "ptBR", "ruRU", "zhCN", "zhTW" }
 -- Raw lookup directories under l10n/<expansion>/, loaded directly only in Source mode.
 config.l10nLookupDirs = { "lookupQuests", "lookupNpcs", "lookupItems", "lookupObjects" }
+-- Extra objective texts keyed by their English text, shared by every flavor. Later files win
+-- for duplicate keys (the generator warns about them). generate.lua heads the TOC
+-- section at the first entry.
+config.l10nExtraObjectiveFiles = {
+  "l10n/ExtraObjectives/CataObjectives.lua",
+  "l10n/ExtraObjectives/ClassicObjectives.lua",
+  "l10n/ExtraObjectives/SeasonObjectives.lua",
+  "l10n/ExtraObjectives/TbcObjectives.lua",
+  "l10n/ExtraObjectives/WotlkObjectives.lua",
+  "l10n/ExtraObjectives/MopObjectives.lua",
+  "l10n/ExtraObjectives/ForeverObjectives.lua",
+}
 
 config.l10nVersion = 1
 config.l10nHeaderKey = "X-l10n-Version"
@@ -442,6 +454,7 @@ function config.sourceFileEntries()
     add("l10n/lookupOverrides.lua", config.flavorByName[name])
   end
   add("l10n/Forever/lookupOverrides.lua", config.flavorByName.Forever)
+  for _, path in ipairs(config.l10nExtraObjectiveFiles) do add(path) end
   add("src/l10n/source/_end.lua")
   for _, path in ipairs(config.runtimeFiles.tail) do add(path) end
   for _, path in ipairs(config.runtimeFiles.wrathTail) do add(path, config.flavorByName.Wrath) end

@@ -184,6 +184,8 @@ local function sourceTocHeadings()
       note = "Merged per field over the Forever base lookups, as in Generation." },
     ["l10n/lookupOverrides.lua"] = { subcategory = "Static Translation Corrections" },
     ["l10n/Forever/lookupOverrides.lua"] = { subcategory = "Forever Static Translation Corrections" },
+    [config.l10nExtraObjectiveFiles[1]] = { subcategory = "Extra objective texts",
+      note = "Keyed by English text and applied to every flavor's extraObjectives." },
     ["src/l10n/source/_end.lua"] = { subcategory = "Lookup loader teardown" },
     ["src/l10n/overlay.lua"] = { category = "Localization and public API", subcategory = "Localization overlay and Titan translations",
       note = "Do not filter by client locale: SetLocale() can select another locale." },
@@ -332,6 +334,10 @@ function generate.flavor(flavor, opts)
         :format(entry.meta.entity, entry.meta.fieldCount), 0)
     end
   end
+
+  -- Like missing input files, a missing extra objective translation must fail before the
+  -- artifact is opened, so the previous artifact stays loadable.
+  if not opts.noL10n then l10nGen.assertTexts(loaded) end
 
   local tocPath = config.tocPath(flavor)
   local out = assert(io.open(tocPath, "wb"), "Cannot write " .. tocPath)
