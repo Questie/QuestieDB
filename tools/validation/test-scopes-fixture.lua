@@ -61,6 +61,11 @@ fixture.write(path, {
       [quest.requiredRaces] = 0,
       [quest.requiredClasses] = 128,
     },
+    [95753] = {
+      [quest.name] = "Challenge of the Desert Wolf",
+      [quest.requiredRaces] = 0,
+      [quest.requiredClasses] = 64,
+    },
   },
   Npc = {
     [211033] = {

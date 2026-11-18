@@ -2555,8 +2555,9 @@ function ForeverQuestFixes:Load()
         [95643] = { -- Indiscriminate Purge
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
         },
-        [95753] = {
+        [95753] = { -- Challenge of the Desert Wolf
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
         },
         [95766] = { -- Fine Feathered Friend
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
