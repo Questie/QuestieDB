@@ -9,7 +9,11 @@ local inputs = {}
 inputs.types = {
   Quest = {
     dir = "lookupQuests", field = "questLookup",
-    fields = { { name = "name", from = 1 }, { name = "objectivesText", from = 2, list = true } },
+    fields = {
+      { name = "name", from = 1 }, { name = "objectivesText", from = 2, list = true },
+      -- Translated from l10n/ExtraObjectives by English text, not from the lookup rows.
+      { name = "extraObjectives", textIndex = 3 },
+    },
   },
   Npc = {
     dir = "lookupNpcs", field = "npcNameLookup",
@@ -78,7 +82,7 @@ end
 ---@return table environment
 ---@return table module
 local function environment(locale)
-  local module = { questLookup = {}, npcNameLookup = {}, itemLookup = {}, objectLookup = {} }
+  local module = { questLookup = {}, npcNameLookup = {}, itemLookup = {}, objectLookup = {}, translations = {} }
   local modules = { l10n = module, QuestieDB = {} }
   local env = setmetatable({ Questie = {} }, { __index = _G })
   env._G = env
@@ -112,9 +116,13 @@ end
 ---@return table rows
 local function translationRows(payload, typeCfg, replaceRows)
   local rows = {}
+  local lookupFields = {}
+  for _, field in ipairs(typeCfg.fields) do
+    if not field.textIndex then lookupFields[#lookupFields + 1] = field end
+  end
   for id, row in pairs(payload) do
     local fields = {}
-    for _, field in ipairs(typeCfg.fields) do
+    for _, field in ipairs(lookupFields) do
       local value
       if typeCfg.scalar then value = row else value = row[field.from] end
       if field.list then
@@ -165,6 +173,16 @@ function inputs.load(root, flavor, typeName, locale)
     corrections[#corrections + 1] = translationRows(rows or {}, typeCfg, true)
   end
   return base, corrections
+end
+
+---Load the extra objective translations, keyed by English text.
+---@param root string Repository root containing the configured files.
+---@param files string[] Paths relative to root, in load order.
+---@return table<string, table<string, string|boolean>> translations
+function inputs.loadExtraObjectiveTexts(root, files)
+  local env, module = environment("enUS")
+  for _, path in ipairs(files) do execute(root .. "/" .. path, env) end
+  return module.translations
 end
 
 return inputs

@@ -157,6 +157,8 @@ return function(check, equal)
         { locale = "deDE", rows = { [1] = { [keys.requiredRaces] = 77 } } },
         { locale = "deDE", rows = { [1] = { [keys.name] = {} } } },
         { locale = "deDE", rows = { [1] = { [keys.objectivesText] = { [2] = "hole" } } } },
+        { locale = "deDE", rows = { [1] = { [keys.extraObjectives] = { ["English"] = "" } } } },
+        { locale = "deDE", rows = { [1] = { [keys.extraObjectives] = { [1] = "index key" } } } },
         { locale = "deDE", rows = { [1.5] = { [keys.name] = "bad id" } } },
       }
       for index, case in ipairs(invalid) do

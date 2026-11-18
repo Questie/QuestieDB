@@ -41,6 +41,7 @@ class LuaFixture(unittest.TestCase):
         for directory in ("generator", "src", "support"):
             shutil.copytree(ROOT / directory, self.root / directory, ignore=shutil.ignore_patterns("__pycache__"))
         shutil.copytree(ROOT / "data" / expansion, self.root / "data" / expansion)
+        shutil.copytree(ROOT / "l10n" / "ExtraObjectives", self.root / "l10n" / "ExtraObjectives")
         for filename in ("generate.lua", "reconstruct.lua"):
             shutil.copyfile(ROOT / filename, self.root / filename)
 

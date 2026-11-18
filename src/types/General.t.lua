@@ -69,19 +69,20 @@
 -- Localization
 --------------------------------------------------------------------------------
 
----@alias QuestieDBLocalizedValue string|string[]
----@alias QuestieDBL10nProvider fun(id: number, entityFieldIndex: integer): QuestieDBLocalizedValue?, string?
+---@alias QuestieDBLocalizedValue string|string[]|table<string, string> English -> translated text maps translate texts inside list elements.
+---@alias QuestieDBL10nProvider fun(id: number, entityFieldIndex: integer, english: any?): QuestieDBLocalizedValue?, string?
 ---@alias QuestieDBL10nScalarFields table<integer, true>
 ---@alias QuestieDBL10nIsActive fun(): boolean
 ---@alias QuestieDBLocaleChangedCallback fun(locale: string)
 ---@alias QuestieDBTranslationLocale string Non-empty locale other than enUS; custom locales need no Baked blocks.
 ---@alias QuestieDBTranslationRows table<integer, table<integer, QuestieDBLocalizedValue>>
----@alias QuestieDBL10nFieldName "name"|"objectivesText"|"subName"
+---@alias QuestieDBL10nFieldName "name"|"objectivesText"|"subName"|"extraObjectives"
 ---@alias QuestieDBEntity QuestDB|NpcDB|ItemDB|ObjectDB
 
 ---@class QuestieDBL10nField
 ---@field name QuestieDBL10nFieldName Canonical entity field carrying translations.
 ---@field list? true The Localization block column contains string lists instead of scalar strings.
+---@field textIndex? integer The column contains English -> translated text maps merged into each element at this index.
 
 ---Localization state and dot-called controls. Missing translations fall back to corrected entity data.
 ---@class QuestieDBL10n

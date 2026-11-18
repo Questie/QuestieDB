@@ -27,6 +27,13 @@ files, merging per field. Trace entries win over base entries, and base entries 
 traces stay. Every trace file is optional. Replace the whole `traces/` directory when new trace
 data is generated.
 
+`ExtraObjectives/` translates the text of each quest's `extraObjectives` entry. Unlike the
+lookups, its entries are keyed by the English text and apply to every flavor; later files in
+`config.l10nExtraObjectiveFiles` win for duplicate keys. Generation fails when an extra
+objective text has no entry. An entry whose locale is `false` or missing keeps the English text.
+Only the text is translated: the runtime replaces each matching English text in the corrected
+extra objectives, so spawns, icons, and references still come from the entity.
+
 The files retain their executable Questie format, including locale guards and loader calls.
 Generation executes them in a private environment. Source mode lists them in `QuestieDB.toc`
 between `src/l10n/source/_begin.lua` and `_end.lua`, which apply the same layering at runtime;
@@ -52,7 +59,7 @@ files, not aliases: future Classic translation changes do not automatically upda
 ```sh
 # Local Generation/Reconstruction and missing-input protection.
 uv run --no-project python tools/validation/localization-inputs.test.py
-lua5.1 test.lua localization-overrides translation-corrections titan-translations
+lua5.1 test.lua localization-overrides translation-corrections titan-translations extra-objective-translations
 ```
 
 Shared behavior fixtures cover locale precedence, replacement, and withdrawal. Generate the

@@ -48,10 +48,14 @@ l10n.lookupPath = inputs.lookupPath
 ---@return nil
 function l10n.assertInputs(localizationRoot, flavors, typeFilter)
   local missing, seen = {}, {}
+  local needsTexts = false
 
   for _, flavor in ipairs(flavors) do
     for typeName, typeCfg in pairs(l10n.types) do
       if not typeFilter or typeFilter[typeName] then
+        for _, field in ipairs(typeCfg.fields) do
+          if field.textIndex then needsTexts = true end
+        end
         for _, locale in ipairs(config.locales) do
           local path = l10n.lookupPath(localizationRoot, flavor, typeCfg, locale)
           if not lib.fileExists(path) then missing[#missing + 1] = path end
@@ -62,6 +66,11 @@ function l10n.assertInputs(localizationRoot, flavors, typeFilter)
           seen[path] = true
         end
       end
+    end
+  end
+  if needsTexts then
+    for _, path in ipairs(config.l10nExtraObjectiveFiles) do
+      if not lib.fileExists(path) then missing[#missing + 1] = path end
     end
   end
 
@@ -97,6 +106,67 @@ function l10n.applyStaticCorrections(base, corrections)
       if value == false then row[field] = nil else row[field] = value end
     end
   end
+end
+
+-- Extra objective translations, loaded once per process.
+local extraObjectiveTexts
+
+---@return table<string, table<string, string|boolean>> translations English text -> locale -> text
+local function loadExtraObjectiveTexts()
+  if extraObjectiveTexts then return extraObjectiveTexts end
+  local translations = inputs.loadExtraObjectiveTexts(".", config.l10nExtraObjectiveFiles)
+  for text, byLocale in pairs(translations) do
+    if type(byLocale) ~= "table" then
+      error(("l10n: extra objective translation %q must be a locale table, got %s")
+        :format(tostring(text), type(byLocale)), 0)
+    end
+  end
+  extraObjectiveTexts = translations
+  return extraObjectiveTexts
+end
+
+---Fail when a loaded text-merged field holds a text without any translation entry, so a typo
+---in a correction or a translation key cannot silently ship English. Entries without a locale
+---fall back to English. Call before opening an artifact: a failure must leave it untouched.
+---@param loaded table entityTypeName -> { meta, entities }
+---@return nil
+function l10n.assertTexts(loaded)
+  local missing = {}
+  for typeName, entry in pairs(loaded) do
+    for _, field in ipairs(l10n.types[typeName] and l10n.types[typeName].fields or {}) do
+      if field.textIndex then
+        local translations = loadExtraObjectiveTexts()
+        local entityField = entry.meta.keys[field.name]
+        for id, row in pairs(entry.entities) do
+          local elements = row[entityField]
+          for _, element in pairs(type(elements) == "table" and elements or {}) do
+            local text = type(element) == "table" and element[field.textIndex]
+            if type(text) == "string" and translations[text] == nil then
+              missing[#missing + 1] = ("  %s %d: %q"):format(entry.meta.entity, id, text)
+            end
+          end
+        end
+      end
+    end
+  end
+
+  if #missing == 0 then return end
+  table.sort(missing)
+  error(("l10n: %d extra objective texts have no translation entry in l10n/ExtraObjectives:\n%s")
+    :format(#missing, table.concat(missing, "\n")), 0)
+end
+
+---One locale's English text -> translated text dictionary. Every entry ships, not only the
+---texts of Static Corrections, so Dynamic Corrections such as SoD's quests translate too.
+---@param locale string
+---@return table<string, string> texts
+function l10n.textDictionary(locale)
+  local texts = {}
+  for text, byLocale in pairs(loadExtraObjectiveTexts()) do
+    local translated = byLocale[locale]
+    if type(translated) == "string" and translated ~= "" then texts[text] = translated end
+  end
+  return texts
 end
 
 ---Load one entity type's base translations and Static Translation Corrections.
@@ -147,6 +217,7 @@ end
 
 ---Build one locale's field columns aligned with the entity backend's ascending ID list.
 ---A missing translation leaves a nil hole, so the runtime falls back to the base field.
+---Text-merged fields are not aligned: their column is the locale's text dictionary.
 ---@param typeName string
 ---@param values table<number, table> Output from l10n.extract.
 ---@param ids number[] Exact ascending base entity IDs stored in the artifact.
@@ -155,9 +226,16 @@ end
 ---@return integer translatedEntities
 ---@return integer translatedValues
 function l10n.buildBlock(typeName, values, ids, localeIndex)
-  local fieldCount = #l10n.types[typeName].fields
+  local fields = l10n.types[typeName].fields
+  local fieldCount = #fields
   local block = {}
-  for fieldIndex = 1, fieldCount do block[fieldIndex] = {} end
+  for fieldIndex = 1, fieldCount do
+    if fields[fieldIndex].textIndex then
+      block[fieldIndex] = l10n.textDictionary(config.locales[localeIndex])
+    else
+      block[fieldIndex] = {}
+    end
+  end
 
   local translatedEntities, translatedValues = 0, 0
   for position, id in ipairs(ids) do
