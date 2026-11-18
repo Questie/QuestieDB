@@ -603,10 +603,12 @@ suite("l10n-blocks", "shared", function()
 
   local german, germanEntities, germanValues =
     l10nGen.buildBlock("Quest", values, ids, 1)
-  equal(german, {
-    [1] = { [1] = "Zehn" },
-    [2] = { [1] = { "Erstes Ziel" }, [3] = { "Ziel A", "Ziel B" } },
+  equal({ german[1], german[2] }, {
+    { [1] = "Zehn" },
+    { [1] = { "Erstes Ziel" }, [3] = { "Ziel A", "Ziel B" } },
   }, "localization columns align with base entity positions and preserve nil holes")
+  equal(german[3]["Fish for Gaffer Jacks"], "Klemm-Muffen angeln",
+    "the extra objective column is the locale's text dictionary")
   equal(germanEntities, 2, "entities with any German translation are counted")
   equal(germanValues, 3, "individual German translated fields are counted")
   equal(german[1][4], nil, "an untranslated known entity leaves a fallback hole")
@@ -614,7 +616,7 @@ suite("l10n-blocks", "shared", function()
 
   local english, englishEntities, englishValues =
     l10nGen.buildBlock("Quest", values, ids, 2)
-  equal(english, { [1] = { [1] = "Ten", [2] = "Twenty" }, [2] = {} },
+  equal({ english[1], english[2] }, { { [1] = "Ten", [2] = "Twenty" }, {} },
     "each locale builds an independent set of columns")
   equal(englishEntities, 2, "second-locale entity count")
   equal(englishValues, 2, "second-locale field count")
@@ -3327,7 +3329,7 @@ suite("l10n", "Vanilla", function()
     table.sort(names)
     covered[typeName] = table.concat(names, ",")
   end
-  equal(covered.Quest, "name,objectivesText", "quest translates name and objectivesText")
+  equal(covered.Quest, "extraObjectives,name,objectivesText", "quest translates name, objectivesText and extraObjectives")
   equal(covered.Npc, "name,subName", "npc translates name and subName")
   equal(covered.Item, "name", "item translates name only")
   equal(covered.Object, "name", "object translates name only")
@@ -3394,6 +3396,14 @@ end)
 
 suite("titan-translations", "shared", function()
   dofile("tools/validation/titan-translations.test.lua")(check, equal, "Source")
+end)
+
+suite("extra-objective-translations", "shared", function()
+  dofile("tools/validation/extra-objective-translations.test.lua")(check, equal, "Source")
+end)
+
+suite("extra-objective-translations-baked", "Vanilla", function()
+  dofile("tools/validation/extra-objective-translations.test.lua")(check, equal, "Baked")
 end)
 
 suite("sod-required-races-baked", "Vanilla", function()
@@ -4073,6 +4083,7 @@ elseif requested then
     ["lua-types"] = "artifact-types", personas = "personas-titan",
     ["sod-required-races"] = "sod-required-races-baked",
     ["titan-translations"] = "titan-translations-baked",
+    ["extra-objective-translations"] = "extra-objective-translations-baked",
   }
   for name, companion in pairs(companions) do
     if requested[name] then requested[companion] = true end

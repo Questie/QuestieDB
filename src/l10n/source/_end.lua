@@ -2,7 +2,8 @@
 --
 -- Closes the Source-mode lookup block and publishes a lazy per-type row builder for the
 -- overlay. Layering matches Generation (generator/l10n-inputs.lua): base lookups, then
--- Forever trace lookups merged per field, then whole-row lookup overrides.
+-- Forever trace lookups merged per field, then whole-row lookup overrides. Extra objective
+-- texts are translated by their English text when a quest's objectives are read.
 
 local _, LibQuestieDB = ...
 
@@ -55,8 +56,21 @@ local function apply(rows, payload, cfg, keys, replaceRows)
   end
 end
 
+-- Keep only the captured locale's extra objective texts.
+local extraObjectiveTexts = {}
+for text, byLocale in pairs(module.translations) do
+  local translated = byLocale[locale]
+  if type(translated) == "string" and translated ~= "" then extraObjectiveTexts[text] = translated end
+end
+
 LibQuestieDB.l10nSource = {
   locale = locale,
+  ---Translate one English extra objective text for the captured locale.
+  ---@param text string
+  ---@return string? translated
+  extraObjectiveText = function(text)
+    return extraObjectiveTexts[text]
+  end,
   ---Build one entity type's translations for the captured locale.
   ---@param typeName string
   ---@param keys table Entity metadata keys.

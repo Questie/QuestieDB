@@ -580,6 +580,16 @@ l10n\lookupOverrides.lua [AllowLoadGameType tbc, wrath, cata, mists]
 # --- Forever Static Translation Corrections ---
 l10n\Forever\lookupOverrides.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
+# --- Extra objective texts ---
+# Keyed by English text and applied to every flavor's extraObjectives.
+l10n\ExtraObjectives\CataObjectives.lua
+l10n\ExtraObjectives\ClassicObjectives.lua
+l10n\ExtraObjectives\SeasonObjectives.lua
+l10n\ExtraObjectives\TbcObjectives.lua
+l10n\ExtraObjectives\WotlkObjectives.lua
+l10n\ExtraObjectives\MopObjectives.lua
+l10n\ExtraObjectives\ForeverObjectives.lua
+
 # --- Lookup loader teardown ---
 src\l10n\source\_end.lua
 

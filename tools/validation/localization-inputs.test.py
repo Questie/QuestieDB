@@ -1,5 +1,6 @@
 """Local Generation/Reconstruction without Questie. Run: uv run tools/validation/localization-inputs.test.py."""
 import json
+import shutil
 import unittest
 
 from fixture import LuaFixture
@@ -47,6 +48,7 @@ class LocalizationInputsTest(LuaFixture):
         self.assertNotEqual(0, self.run_lua(*reconstruct).returncode)
         missing.write_bytes(translation)
 
+        overrides = override.read_bytes()
         override.unlink()
         result = self.run_lua(*generate)
         self.assertNotEqual(0, result.returncode)
@@ -54,6 +56,29 @@ class LocalizationInputsTest(LuaFixture):
         self.assertEqual(source_bytes, source.read_bytes())
         self.assertEqual(baked_bytes, baked.read_bytes())
         self.assertNotEqual(0, self.run_lua(*reconstruct).returncode)
+        override.write_bytes(overrides)
+
+        # A missing extra objective translation fails before the artifact is opened.
+        override.write_text('QuestieLoader:ImportModule("l10n").questLookupOverrides = function()\n'
+                            'return { [2] = { "Owned override" } } end\n', encoding="utf-8")
+        texts = self.root / "l10n" / "ExtraObjectives"
+        for path in texts.iterdir():
+            path.write_text("", encoding="utf-8")
+        result = self.run_lua(*generate)
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn("no translation entry", result.stderr)
+        self.assertEqual(baked_bytes, baked.read_bytes())
+
+        # Extra objective texts are required only by types that translate them.
+        shutil.rmtree(self.root / "l10n" / "ExtraObjectives")
+        for locale in locales.stdout.split():
+            self.write("l10n/TBC/lookupNpcs/" + locale + ".lua",
+                       'QuestieLoader:ImportModule("l10n").npcNameLookup["%s"] = function()\n' % locale +
+                       'return {} end\n')
+        self.assert_success(self.run_lua("generate.lua", "TBC", "--types=Npc", "--quiet"))
+        result = self.run_lua("generate.lua", "TBC", "--types=Quest", "--quiet")
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn("ExtraObjectives", result.stderr)
 
 
 if __name__ == "__main__":
