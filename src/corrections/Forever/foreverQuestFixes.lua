@@ -142,6 +142,7 @@ function ForeverQuestFixes:Load()
         [545] = { -- Dalaran Patrols
             [questKeys.preQuestSingle] = {},
             [questKeys.preQuestGroup] = {544,93680},
+            [questKeys.zoneOrSort] = zoneIDs.ALTERAC_MOUNTAINS,
         },
         [590] = { -- A Rogue's Deal
             [questKeys.objectives] = {{{6784}}},

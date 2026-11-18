@@ -367,6 +367,12 @@ function QuestieNPCFixes:Load()
         [2403] = { -- Farmer Getz
             [npcKeys.spawns] = {[zoneIDs.HILLSBRAD_FOOTHILLS] = {{35,38.6},{35.2,38},{35.2,40.4},{36.4,39.4},{36.4,39.6},{36.6,39.4}}},
         },
+        [2427] = { -- Jailor Eston
+            [npcKeys.spawns_add] = {[zoneIDs.HILLSBRAD_FOOTHILLS] = {{75.29,41.73}}},
+        },
+        [2428] = { -- Jailor Marlgen
+            [npcKeys.spawns_add] = {[zoneIDs.HILLSBRAD_FOOTHILLS] = {{78,40.16}}},
+        },
         [2431] = { -- Jailor Borhuin
             [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{60.4,43.8},{60.8,43.6},{61,43.4},{61.8,40.6},{62.4,40.2},{62.6,40.2},{63,43.4},{63.2,43.8}}},
         },

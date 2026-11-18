@@ -457,6 +457,11 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{53.02,87.84}}},
             [objectKeys.zoneID] = zoneIDs.THUNDER_BLUFF,
         },
+        [670427] = { -- Warden's Footlocker
+            [objectKeys.name] = "Warden's Footlocker",
+            [objectKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{16.3,89.31}}},
+            [objectKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+        },
         [673101] = { -- Tarantula Egg
             [objectKeys.spawns] = {[zoneIDs.REDRIDGE_MOUNTAINS] = {{46.0,42.1},{46.1,37.3},{46.3,40.4},{46.3,40.8},{46.4,37.8},{46.4,44.3},{46.5,37.7},{46.5,40.6},{46.6,37.2},{46.6,39.7},{46.6,42.0},{46.8,45.2},{47.1,43.5},{47.2,43.3},{47.4,38.7},{47.6,44.5},{48.3,37.7},{48.3,46.1},{48.4,38.5},{48.4,44.4},{48.5,38.2},{49.3,44.6},{49.4,38.5},{49.5,37.8},{49.6,39.0},{49.7,44.9},{50.5,38.8},{50.7,40.4},{50.7,40.5},{50.7,44.6},{52.0,45.9},{52.2,42.2},{52.2,42.5},{52.2,43.7},{52.5,42.3}}},
             [objectKeys.zoneID] = zoneIDs.REDRIDGE_MOUNTAINS,
