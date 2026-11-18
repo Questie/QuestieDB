@@ -75,11 +75,44 @@ function ForeverNpcFixes:Load()
             [npcKeys.questStarts_add] = {490},
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{40.46,50.73}}},
         },
+        [2271] = { -- Dalaran Shield Guard
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{14.2,88.4},{15.9,90.4},{16.0,88.8},{16.4,91.1},{16.8,87.9},{16.9,90.9},{17.4,90.0},{17.6,89.5},{17.6,91.2},{17.7,88.2},{17.8,84.0},{17.9,89.1},{18.0,83.0},{18.6,83.0},{18.6,84.4},{18.8,84.6},{19.2,88.4},{19.3,90.2},{19.4,88.7},{19.4,90.6},{19.8,88.4},{19.9,89.3},{20.1,92.6},{20.2,89.6},{20.3,91.6},{20.4,83.0},{20.4,84.8},{20.4,90.8},{20.4,93.9},{20.5,90.5},{20.6,84.6},{20.6,85.8},{20.6,87.4},{20.7,94.4},{20.8,83.4},{20.8,84.2},{20.8,87.6},{21.1,89.3},{21.1,89.8},{21.3,91.5},{21.6,84.0},{21.6,89.9}}},
+        },
+        [2272] = { -- Dalaran Theurgist
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{18.2,90.75},{18.62,88.32}},[zoneIDs.HILLSBRAD_FOOTHILLS] = {{24.7,61.7},{26.98,31.5},{27.71,29.87}}},
+        },
         [2332] = { -- Valdred Moray
             [npcKeys.spawns] = {[zoneIDs.SILVERPINE_FOREST] = {{45.05,84.86}}},
         },
+        [2358] = { -- Dalaran Summoner
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{22.8,57.2},{23.2,58.4},{23.2,58.5},{23.8,57.2},{23.8,59.6},{23.9,59.2},{24.0,53.9},{24.0,54.6},{24.4,56.0},{24.5,56.0},{24.7,61.3},{24.8,61.6},{24.9,54.8},{25.1,57.5},{25.2,57.4},{25.7,54.8},{26.0,59.2},{26.0,59.6},{26.2,61.0},{26.8,61.0}}},
+        },
+        [2359] = { -- Elemental Slave
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{22.35,56.06},{22.28,58.52},{24.62,54.86},{23.31,54.14},{20.16,52.33},{21.07,55.6},{21.09,54.26},{25.4,53.09},{24.62,51.75},{23.6,50.15},{25.98,58.03},{24.67,58.69},{25.17,62.64},{26.1,60.22}}},
+        },
+        [2411] = { -- Ricter
+            [npcKeys.spawns_add] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{19.31,90.22}}},
+        },
+        [2412] = { -- Alina
+            [npcKeys.spawns_add] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{19.31,91.76}}},
+        },
+        [2413] = { -- Dermot
+            [npcKeys.spawns_add] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{18.76,91.41}}},
+        },
+        [2414] = { -- Kegan Darkmar
+            [npcKeys.spawns_add] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{16.58,89.03}}},
+        },
+        [2427] = { -- Jailor Eston
+            [npcKeys.spawns_add] = {[zoneIDs.HILLSBRAD_FOOTHILLS] = {{75.29,41.73}}},
+        },
+        [2428] = { -- Jailor Marlgen
+            [npcKeys.spawns_add] = {[zoneIDs.HILLSBRAD_FOOTHILLS] = {{78,40.16}}},
+        },
         [2614] = { -- Argent Medic
             [npcKeys.name] = "Argent Medic",
+        },
+        [2628] = { -- Dalaran Worker
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{21.59,57.87}}},
         },
         [2756] = { -- Grund Drokda
             [npcKeys.name] = "Grund Drokda",
