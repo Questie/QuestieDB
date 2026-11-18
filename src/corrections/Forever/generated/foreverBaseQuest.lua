@@ -39,10 +39,10 @@ function ForeverBaseQuest:Load()
             [questKeys.questLevel] = 33,
         },
         [631] = { -- The Thandol Span : https://wowhead.com/forever/quest=631/the-thandol-span
-            [questKeys.requiredLevel] = 26, -- Traces: 493 players accepted it at level 26 or lower; Wowhead says 28
+            [questKeys.requiredLevel] = 26, -- Traces: 100+ players accepted it at level 26; Wowhead says 28
         },
         [632] = { -- The Thandol Span : https://wowhead.com/forever/quest=632/the-thandol-span
-            [questKeys.requiredLevel] = 26, -- Traces: 124 players accepted it at level 26 or lower; Wowhead says 28
+            [questKeys.requiredLevel] = 26, -- Traces: 100+ players accepted it at level 26; Wowhead says 28
         },
         [633] = { -- The Thandol Span : https://wowhead.com/forever/quest=633/the-thandol-span
             [questKeys.requiredLevel] = 26,
@@ -3467,7 +3467,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Spark of Freedom",
             [questKeys.startedBy] = {{271481}},
             [questKeys.finishedBy] = {{1072}},
-            [questKeys.requiredLevel] = 25, -- Traces: 103 players accepted it at level 25 or lower; Wowhead says 27
+            [questKeys.requiredLevel] = 25, -- Traces: 100+ players accepted it at level 25; Wowhead says 27
             [questKeys.questLevel] = 32,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Escort the captive fire elemental out of Dun Modr and to its freedom."},
@@ -3501,7 +3501,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Bring Back a Bang",
             [questKeys.startedBy] = {{1073}},
             [questKeys.finishedBy] = {{1073}},
-            [questKeys.requiredLevel] = 25, -- Traces: 345 players accepted it at level 25 or lower; Wowhead says 27
+            [questKeys.requiredLevel] = 25, -- Traces: 100+ players accepted it at level 25; Wowhead says 27
             [questKeys.questLevel] = 32,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Retrieve 3 Stolen Explosives from the Dark Iron Dwarf camps."},
@@ -4054,7 +4054,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Delicate Instruments",
             [questKeys.startedBy] = {{248242}},
             [questKeys.finishedBy] = {{248242}},
-            [questKeys.requiredLevel] = 6, -- Traces: 43 players accepted it at level 6 or lower; Wowhead says 7
+            [questKeys.requiredLevel] = 6, -- Traces: 10+ players accepted it at level 6; Wowhead says 7
             [questKeys.questLevel] = 10,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.objectivesText] = {"Kill 8 Kobold Geomancers in Jasperlode Mine, then return to Hamish Bergwort in the Tower of Azora."},
@@ -15118,7 +15118,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Unending Torment",
             [questKeys.startedBy] = {{271613}},
             [questKeys.finishedBy] = {{2055}},
-            [questKeys.requiredLevel] = 15, -- Traces: 7 players accepted it at level 15 or lower; Wowhead says 16
+            [questKeys.requiredLevel] = 15, -- Traces: <10 players accepted it at level 15; Wowhead says 16
             [questKeys.questLevel] = 21,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Report your findings to Master Apothecary Faranell in Undercity."},
@@ -15139,7 +15139,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Unending Torment",
             [questKeys.startedBy] = {{2055}},
             [questKeys.finishedBy] = {{2055}},
-            [questKeys.requiredLevel] = 15, -- Traces: 4 players accepted it at level 15 or lower; Wowhead says 16
+            [questKeys.requiredLevel] = 15, -- Traces: <10 players accepted it at level 15; Wowhead says 16
             [questKeys.questLevel] = 21,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Inject the Hissing Serum into the system above Othmar's body for Master Apothecary Faranell."},
@@ -16357,7 +16357,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Stolen Freewind Supplies",
             [questKeys.startedBy] = {{4877}},
             [questKeys.finishedBy] = {{4877}},
-            [questKeys.requiredLevel] = 25, -- Traces: 116 players accepted it at level 25 or lower; Wowhead says 27
+            [questKeys.requiredLevel] = 25, -- Traces: 100+ players accepted it at level 25; Wowhead says 27
             [questKeys.questLevel] = 31,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Bring 8 Stolen Freewind Supplies to Jandia in Freewind Post."},
@@ -17715,7 +17715,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "A Missing Hand",
             [questKeys.startedBy] = {{3142}},
             [questKeys.finishedBy] = {{275657}},
-            [questKeys.requiredLevel] = 8, -- Traces: 3295 players accepted it at level 8 or lower; Wowhead says 9
+            [questKeys.requiredLevel] = 8, -- Traces: 100+ players accepted it at level 8; Wowhead says 9
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Find Heglan Shadeeye north of Tiragarde Keep."},
@@ -17726,7 +17726,7 @@ function ForeverBaseQuest:Load()
             [questKeys.name] = "Threat from Below",
             [questKeys.startedBy] = {{275657}},
             [questKeys.finishedBy] = {{3142}},
-            [questKeys.requiredLevel] = 8, -- Traces: 2235 players accepted it at level 8 or lower; Wowhead says 9
+            [questKeys.requiredLevel] = 8, -- Traces: 100+ players accepted it at level 8; Wowhead says 9
             [questKeys.questLevel] = 11,
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.objectivesText] = {"Find signs of what attacked Heglan Shadeeye."},
