@@ -178,6 +178,12 @@ function ForeverQuestFixes:Load()
         [982] = { -- Deep Ocean, Vast Sea
             [questKeys.breadcrumbs_add] = {97894},
         },
+        [1045] = { -- Raene's Cleansing
+            [questKeys.objectives] = {{{3932}},nil,{{5388}}},
+        },
+        [1046] = { -- Raene's Cleansing
+            [questKeys.objectives] = {nil,nil,{{5462}}},
+        },
         [1079] = { -- Covert Ops - Alpha
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Place the NG-5 Explosives (Blue)"), 0, {{"object", 19591}}}},
         },
