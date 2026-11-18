@@ -96,13 +96,6 @@ function ForeverBaseQuest:Load()
         [5301] = { -- The Art of the Armorsmith : https://wowhead.com/forever/quest=5301/the-art-of-the-armorsmith
             [questKeys.requiredClasses] = classIDs.WARRIOR + classIDs.PALADIN,
         },
-        [5383] = { -- Krastinov's Bag of Horrors : https://wowhead.com/forever/quest=5383/krastinovs-bag-of-horrors
-            [questKeys.name] = "Krastinov's Bag of Horrors",
-            [questKeys.requiredLevel] = 55,
-            [questKeys.questLevel] = 60,
-            [questKeys.objectivesText] = {"Take the Bag of Horrors to Eva Sarkhoff on Caer Darrow."},
-            [questKeys.zoneOrSort] = zoneIDs.SCHOLOMANCE,
-        },
         [5625] = { -- Garments of the Light : https://wowhead.com/forever/quest=5625/garments-of-the-light
             [questKeys.requiredRaces] = raceIDs.DWARF + raceIDs.GNOME,
         },
@@ -237,12 +230,6 @@ function ForeverBaseQuest:Load()
             [questKeys.requiredClasses] = classIDs.PRIEST,
             [questKeys.objectivesText] = {"Speak to Aelthalyste in the Undercity."},
             [questKeys.zoneOrSort] = sortKeys.PRIEST,
-        },
-        [6003] = { -- <nyi> <txt> Green With Envy : https://wowhead.com/forever/quest=6003/nyi-txt-green-with-envy
-            [questKeys.name] = "<nyi> <txt> Green With Envy",
-            [questKeys.requiredLevel] = 30,
-            [questKeys.questLevel] = 39,
-            [questKeys.zoneOrSort] = zoneIDs.UNDERCITY,
         },
         [6081] = { -- Training the Beast : https://wowhead.com/forever/quest=6081/training-the-beast
             [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD + raceIDs.TROLL,
@@ -2183,6 +2170,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{221479, 221480}},
             [questKeys.requiredLevel] = 47,
             [questKeys.questLevel] = 52,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
             [questKeys.objectivesText] = {"Complete a Nightmare Incursion mission in Feralas or Hinterlands and then report to Field Captain Korlian or Field Captain Arunnel."},
             [questKeys.zoneOrSort] = sortKeys.NIGHTMARE_INCURSIONS,
         },
@@ -3088,6 +3076,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{14368}},
             [questKeys.requiredLevel] = 60,
             [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
             [questKeys.objectivesText] = {"Return Nostro's Compendium of Dragon Slaying to the Athenaeum."},
             [questKeys.zoneOrSort] = zoneIDs.DIRE_MAUL,
             [questKeys.reputationReward] = {{809, 200}},
@@ -7253,6 +7242,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{257296}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264012}, {3383}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -7502,6 +7492,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{261932}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/craftsmans_writs.toml; 0 = all races; Reviewed transferable writ system: assume all races when no stronger race evidence exists.
             [questKeys.objectivesText] = {"Acquire the items requested by the customer and deliver them to the location marked on your map. This writ must be in your possession to complete the transaction."},
             [questKeys.objectives] = {nil, nil, {{264033}, {6712}}},
             [questKeys.zoneOrSort] = zoneIDs.CRAFTING,
@@ -14199,6 +14190,7 @@ function ForeverBaseQuest:Load()
             [questKeys.finishedBy] = {{267525}},
             [questKeys.requiredLevel] = 60,
             [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = 0, -- Assumption: assumptions/reviewed_shared_races.toml; 0 = all races; Reviewed shared quest systems: explicit Both labels, player reports, connected shared chains or neutral acquisition support assuming all-race access for these IDs; class and other access requirements remain independent.
             [questKeys.objectivesText] = {"Kill 25 players of the enemy faction in Warsong Gulch."},
             [questKeys.zoneOrSort] = zoneIDs.WARSONG_GULCH,
         },
