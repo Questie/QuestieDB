@@ -3974,6 +3974,9 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{270418,nil,Questie.ICON_TYPE_EVENT},{270419,nil,Questie.ICON_TYPE_EVENT},{270420,nil,Questie.ICON_TYPE_EVENT},{270421,nil,Questie.ICON_TYPE_EVENT}}},
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
+        [98095] = { -- Valuable Vantages
+            [questKeys.objectives] = {{{270573,nil,Questie.ICON_TYPE_EVENT},{270574,nil,Questie.ICON_TYPE_EVENT},{270575,nil,Questie.ICON_TYPE_EVENT}}},
+        },
         [98109] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
@@ -4507,15 +4510,6 @@ function ForeverQuestFixes:Load()
             [questKeys.exclusiveTo] = {98914,98915}, -- mirroring the behavior for the other Care Package quests
             [questKeys.requiredMaxLevel] = 39,
             [questKeys.requiredMinRep] = {factionIDs.THERAMORE_EXPEDITIONARY_FORCE, 3000}, -- big assumption here. update when confirmed/disproved
-        },
-        [98894] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
-        },
-        [98898] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
-        },
-        [98902] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [98914] = { -- Darkspear's Standard Care Package
             [questKeys.name] = "Darkspear's Standard Care Package",
