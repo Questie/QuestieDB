@@ -3370,21 +3370,40 @@ suite("source-lookups", "shared", function()
     return emulator.loadAddon(config.addonName .. ".toc", config.addonName)
   end
 
-  local forever = load("Forever", "deDE")
+  ---Count the selected raw lookup files per owning directory and locale, from their paths alone.
+  ---@param files string[] Selected file paths.
+  ---@return table<string, number> counts Keyed "<directory under l10n/>:<locale>".
+  local function lookupLocales(files)
+    local counts = {}
+    for _, path in ipairs(files) do
+      local dir, locale = path:match("^l10n/(.+)/lookup%a+/(%a%a%u%u)%.lua$")
+      if dir then counts[dir .. ":" .. locale] = (counts[dir .. ":" .. locale] or 0) + 1 end
+    end
+    return counts
+  end
+
+  -- Forever has four base and four trace lookups per locale; Wrath has no traces.
+  local forever, foreverFiles = load("Forever", "deDE")
+  equal(lookupLocales(foreverFiles), { ["Forever:deDE"] = 4, ["Forever/traces:deDE"] = 4 },
+    "should select only the client locale's Forever lookups")
   check(forever.l10n.IsAvailable(), "should report Source-mode lookups as available")
   equal(forever.Npc.Get(3, "name"), "Fleischfresser", "should translate from the Forever base lookups")
   equal(forever.Npc.Get(203139, "name"), "Sohn von Arugal", "should translate from the Forever trace lookups")
 
-  local english = load("Forever", "enUS")
+  local english, englishFiles = load("Forever", "enUS")
+  equal(lookupLocales(englishFiles), {}, "should select no lookups on an enUS client")
   equal(english.Npc.Get(3, "name"), "Flesh Eater", "should keep English on an enUS client")
   check(not english.l10n.IsAvailable(), "should report no Base translations on an enUS client")
 
-  local frFR = load("Forever", "frFR")
+  local frFR, frFRFiles = load("Forever", "frFR")
+  equal(lookupLocales(frFRFiles), { ["Forever:frFR"] = 4, ["Forever/traces:frFR"] = 4 },
+    "should select only the frFR lookups")
   check(frFR.Npc.Get(3, "name") ~= "Fleischfresser", "should load only the client locale's lookups")
   frFR.l10n.SetLocale("deDE")
   equal(frFR.Npc.Get(3, "name"), "Flesh Eater", "should have no base translations for another locale")
 
-  local wrath = load("Wotlk", "deDE")
+  local wrath, wrathFiles = load("Wotlk", "deDE")
+  equal(lookupLocales(wrathFiles), { ["Wotlk:deDE"] = 4 }, "should select only the deDE Wrath lookups")
   equal(wrath.Quest.Get(78752, "name"), "Todesbeweise: Titanenrune mit Protokoll Gamma",
     "should apply lookup overrides on Wrath")
   equal(wrath.Item.Get(185956, "name"), "Schimmerndes Gefäß", "should apply item lookup overrides")
@@ -3426,7 +3445,7 @@ end)
 
 suite("support", "shared", function()
   -- Loading the largest flavor before the smallest exposes leaked modules and map variants.
-  local sourceFiles = config.sourceFileList(config.flavorByName.Mists)
+  local sourceFiles = config.sourceFileList(config.flavorByName.Mists, "enUS")
   local positions = {}
   for index, file in ipairs(sourceFiles) do positions[file] = index end
   check(positions["support/DropTables/mopItemDrops.lua"] < positions["support/DropTables/cataItemDrops.lua"],

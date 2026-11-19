@@ -10,15 +10,41 @@ local emulator = dofile("emulator/metadata.lua")
 local runtime = dofile("generator/runtime.lua")
 local id = 900000001
 
+-- Raw lookups are the only files whose content is used by a single client locale: each one's
+-- GetLocale() guard discards it elsewhere. Derive that from the path, independently of config.
+---@param path string
+---@return string? locale The one client text locale that can use the file.
+local function lookupLocale(path)
+  return path:match("^l10n/.+/lookup%a+/(%a%a%u%u)%.lua$")
+end
+
 -- The emulator knows Forever's tokens, but older clients may know neither and accept an
 -- all-unknown allow list. Require known legacy exclusions for every Forever-only file.
 local sourceLines = config.sourceFileList()
 for index, entry in ipairs(config.sourceFileEntries()) do
+  local locale = lookupLocale(entry.path)
+  local localeCondition = locale and (" [AllowLoadTextLocale " .. locale .. "]") or ""
   if entry.path == "src/flavors/Forever.lua" or entry.path:find("/Forever/", 1, true) then
-    assert(sourceLines[index] == entry.path .. " [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]",
+    assert(sourceLines[index] == entry.path .. " [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]" .. localeCondition,
       "Forever file must exclude legacy clients without excluding mainline: " .. entry.path)
   end
 end
+
+-- Exactly the raw lookups carry their own locale. Files serving every locale must carry no
+-- text-locale condition, or SetLocale() and the other locales' overrides would lose their data.
+local localeFiltered, everyLocale = 0, {}
+for _, line in ipairs(sourceLines) do
+  local path = line:match("^(%S+)")
+  local locale = lookupLocale(path)
+  local condition = line:match("%[AllowLoadTextLocale ([^%]]*)%]")
+  assert(condition == locale, "text-locale condition must match the raw lookup's own locale: " .. line)
+  if locale then localeFiltered = localeFiltered + 1 end
+  if path == "l10n/lookupOverrides.lua" or path == "src/l10n/Titan/zhCN.lua" then everyLocale[path] = true end
+end
+-- Six flavors x four entity types x nine locales of base lookups, before optional traces.
+assert(localeFiltered >= 216, "raw lookups are missing")
+assert(everyLocale["l10n/lookupOverrides.lua"] and everyLocale["src/l10n/Titan/zhCN.lua"],
+  "every-locale translation files must remain listed")
 
 -- Independent expectations: a shared applicability bug must not validate itself through
 -- sourceFileList/correctionApplies. Columns are Era, TBC, Wrath, Cata, Mists and owned Forever.
@@ -86,7 +112,7 @@ for _, flavor in ipairs(config.flavors) do
   for index, path in ipairs(representativePaths) do
     assert((selected[path] == true) == expectedProviders[flavor.name][index], flavor.name .. ": " .. path)
   end
-  local expected = config.sourceFileList(flavor)
+  local expected = config.sourceFileList(flavor, GetLocale())
   assert(#files == #expected)
   for index, path in ipairs(expected) do assert(files[index] == path) end
   for _, spec in ipairs(config.correctionManifest) do
@@ -128,8 +154,8 @@ end
 
 -- Forever selects its complete owned input set.
 do
-  local expected = config.sourceFileList(config.flavorByName.Forever)
   client.install({ expansion = "Forever", gameType = "forever", season = "SoD" })
+  local expected = config.sourceFileList(config.flavorByName.Forever, GetLocale())
   emulator.install(config.addonName, emulator.parse("QuestieDB.toc"))
   local db, files = emulator.loadAddon("QuestieDB.toc", config.addonName)
   assert(db.flavor.name == "Forever" and db.read.source.expansion == "Forever")

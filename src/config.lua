@@ -362,18 +362,21 @@ end
 
 ---Source entries keep paths separate from applicability and merge each path once.
 ---The phase order matters: all payloads must finish before their shim is removed.
----@return table[] entries Each entry has path and gameTypes (an ordered token list).
+---@return table[] entries Each entry has path, gameTypes (an ordered token list) and, for a
+---file only one client text locale can use, textLocale.
 function config.sourceFileEntries()
   local entries, byPath = {}, {}
   ---@param path string
   ---@param flavor table? Nil means unconditional.
+  ---@param textLocale string? The only client text locale that uses this file.
   ---@return nil
-  local function add(path, flavor)
+  local function add(path, flavor, textLocale)
     local entry = byPath[path]
     if not entry then
-      entry = { path = path, gameTypes = {} }
+      entry = { path = path, gameTypes = {}, textLocale = textLocale }
       entries[#entries + 1], byPath[path] = entry, entry
     end
+    assert(entry.textLocale == textLocale, "conflicting text locales for " .. path)
     if flavor then
       for _, token in ipairs(entry.gameTypes) do if token == flavor.gameType then return end end
       entry.gameTypes[#entry.gameTypes + 1] = flavor.gameType
@@ -417,12 +420,14 @@ function config.sourceFileEntries()
     add("src/corrections/Sod/sodRequiredRaces.lua", config.flavorByName.Vanilla)
   end
   for _, path in ipairs(config.derivedFiles) do add(path) end
-  -- Source mode loads the raw lookups; their locale guards keep only the client locale.
+  -- Source mode loads the raw lookups. Each file's GetLocale() guard already discards it on
+  -- every other client locale, so a text-locale condition only spares the client parsing it.
+  -- Files serving every locale (lookup overrides, Titan translations) carry no text-locale condition.
   add("src/l10n/source/_begin.lua")
   for _, flavor in ipairs(config.flavors) do
     for _, dir in ipairs(config.l10nLookupDirs) do
       for _, locale in ipairs(config.locales) do
-        add(("l10n/%s/%s/%s.lua"):format(flavor.expansion, dir, locale), flavor)
+        add(("l10n/%s/%s/%s.lua"):format(flavor.expansion, dir, locale), flavor, locale)
       end
     end
   end
@@ -434,7 +439,7 @@ function config.sourceFileEntries()
       local file = io and io.open(path, "r")
       if file then
         file:close()
-        add(path, config.flavorByName.Forever)
+        add(path, config.flavorByName.Forever, locale)
       end
     end
   end
@@ -448,16 +453,20 @@ function config.sourceFileEntries()
   return entries
 end
 
----Rendered native file lines, or resolved paths for an explicit offline flavor.
+---Rendered native file lines, or resolved paths for an explicit offline client persona.
+---Conditions on one line combine with AND, as on the client.
 ---@param flavor table? Nil emits conditions.
+---@param textLocale string? The persona's client text locale; required exactly when flavor is.
 ---@return string[]
-function config.sourceFileList(flavor)
+function config.sourceFileList(flavor, textLocale)
+  assert((flavor == nil) == (textLocale == nil), "sourceFileList: a flavor persona needs a text locale")
   local files = {}
   for _, entry in ipairs(config.sourceFileEntries()) do
     local include = #entry.gameTypes == 0
     for _, token in ipairs(entry.gameTypes) do
       if flavor and token == flavor.gameType then include = true end
     end
+    if entry.textLocale and entry.textLocale ~= textLocale then include = false end
     if not flavor then
       local condition = ""
       if #entry.gameTypes > 0 then
@@ -471,6 +480,7 @@ function config.sourceFileList(flavor)
         end
         condition = " [" .. directive .. " " .. table.concat(tokens, ", ") .. "]"
       end
+      if entry.textLocale then condition = condition .. " [AllowLoadTextLocale " .. entry.textLocale .. "]" end
       files[#files + 1] = entry.path .. condition
     elseif include then files[#files + 1] = entry.path end
   end

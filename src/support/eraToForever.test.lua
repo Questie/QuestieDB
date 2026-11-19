@@ -57,7 +57,7 @@ local function includesHelper(files)
   assert(count == 1, "Addon file list must load the coordinate helper exactly once")
 end
 for _, flavor in ipairs(config.flavors) do
-  includesHelper(config.sourceFileList(flavor))
+  includesHelper(config.sourceFileList(flavor, "enUS"))
   includesHelper(config.bakedFileList(flavor))
 end
 print("Era-to-Forever coordinate helpers passed")

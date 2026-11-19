@@ -37,6 +37,10 @@ not add Mainline as a supported database flavor.
 The emulator tests the `forever` persona against the owned files. Owned folder names need not
 match native names.
 
+Raw lookup files also carry `[AllowLoadTextLocale <locale>]`, so a client parses only its own
+locale's lookups. Their `GetLocale()` guards already discarded the others. See
+[text-locale conditions](toc-flavor-selection.md#text-locale-conditions).
+
 Native selection replaces cross-flavor Lua discard selectors and their marker files.
 The loader shim still captures deferred entity strings, materializes them lazily and
 restores the previous loader after each input phase. Support and Correction setup/teardown
@@ -160,7 +164,7 @@ handoff, so review new exports rather than copying them wholesale.
 
 ## Client support and acceptance
 
-Source mode requires native per-file allow and exclude conditions. Historical Interface metadata
+Source mode requires native per-file game-type and text-locale conditions. Historical Interface metadata
 alone does not prove support. There is no Lua fallback. The exclusion-based selection passed a
 live Anniversary 2.5.6 (69795), Interface 20506 startup check. Forever and other supported-client
 Source acceptance remains pending. Offline emulator
@@ -185,7 +189,8 @@ Before release or installation into a daily-driver client, obtain authorization 
 these checks in a disposable client/addon setup:
 
 - Record the actual client build, Interface value and native game type. Check positive and
-  negative per-file selection on Forever and each supported older client.
+  negative per-file selection on Forever and each supported older client, including that only
+  the client locale's raw lookups load and Source Base translations still appear.
 - Compare the loaded file set and order with the emulator: one initializer, only applicable
   raw/support/provider files, cumulative legacy ordering, seasonal gates and loader restoration.
 - Check suffixed-TOC recognition and Baked precedence over the base TOC on each supported
