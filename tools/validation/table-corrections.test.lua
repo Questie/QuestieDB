@@ -38,6 +38,9 @@ return function(check, equal)
         remove = {{ {[12] = {{1,2}}}, 3, "go", 0, {{"monster", 11}} }},
         add = {{ nil, 3, "new", nil, {{"item", 22}} }}, expected = {{ nil, 3, "new", 0, {{"item", 22}} }} },
       { entity = "Item", field = "relatedQuests", add = {7786}, expected = {7786} },
+      -- Only added members are deduplicated: repeats already in the base survive, and a
+      -- removal drops every occurrence.
+      { field = "preQuestGroup", base = {7, 7, 8, 8}, add = {7, 9, 9}, remove = {8}, expected = {7, 7, 9} },
     }
     -- Append the contract matrix so the specialized normalization cases keep their IDs.
     local matrix = dofile("tools/validation/table-correction-cases.lua")
@@ -354,6 +357,25 @@ return function(check, equal)
     local unchanged = {}
     db.Corrections.MergeInto(unchanged, {[1] = {}}, nil, context)
     equal(unchanged, {[1] = {}}, "ordinary empty replacement rows preserve creation behavior")
+
+    -- Trace data adds about a thousand drop sources to one item, so list operations must stay
+    -- linear in list length. Rescanning the list per member costs several CPU seconds at this
+    -- size and one pass costs milliseconds, so the budget sits far from both.
+    local manyCount = 5000
+    local lowIds, highIds = {}, {}
+    for index = 1, manyCount do
+      lowIds[index], highIds[index] = index, manyCount + index
+    end
+    local started = os.clock()
+    local appended = db.TablePatch.Resolve({[key + 1000] = lowIds}, db.Meta.Item, context, 1,
+      {[key] = {manyCount, 1}})[key]
+    local swapped = db.TablePatch.Resolve({[key + 1000] = lowIds, [key - 1000] = highIds},
+      db.Meta.Item, context, 1, {[key] = highIds})[key]
+    local cpuSeconds = os.clock() - started
+    equal({#appended, appended[1], appended[2], appended[3], appended[manyCount]},
+      {manyCount, manyCount, 1, 2, manyCount - 1}, "large add keeps existing order and skips known members")
+    equal(swapped, lowIds, "large add and remove replace every member")
+    check(cpuSeconds < 1, ("large list operations stay linear: %.2f CPU seconds"):format(cpuSeconds))
 
     for _, datatype in ipairs({ "Quest", "Npc", "Item", "Object" }) do
       local meta = db.Meta[datatype]
