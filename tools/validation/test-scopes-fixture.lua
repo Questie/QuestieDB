@@ -60,6 +60,16 @@ fixture.write(path, {
       [quest.requiredRaces] = 0,
       [quest.requiredClasses] = 128,
     },
+    [78699] = {
+      [quest.name] = "The Eye of Bhossca",
+      [quest.startedBy] = {nil, {410369}},
+      [quest.preQuestSingle] = {78676},
+    },
+    [78307] = {
+      [quest.name] = "The Horn of Xelthos",
+      [quest.startedBy] = {nil, {410369}},
+      [quest.preQuestSingle] = {78261},
+    },
   },
   Npc = {
     [211033] = {
@@ -90,6 +100,10 @@ fixture.write(path, {
     },
     [375548] = {
       [object.zoneID] = 331,
+    },
+    [410369] = {
+      [object.name] = "Dead Drop",
+      [object.questStarts] = {78307, 78699},
     },
     [175725] = {
       [object.name] = "The Old Gods and the Ordering of Azeroth",

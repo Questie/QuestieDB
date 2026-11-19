@@ -468,7 +468,12 @@ function ForeverQuestFixes:Load()
             [questKeys.questLevel] = 23,
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.requiredClasses] = classIDs.ROGUE,
+            [questKeys.startedBy] = {nil,{410369}},
             [questKeys.preQuestSingle] = {78261},
+        },
+        [78699] = { -- The Eye of Bhossca
+            [questKeys.startedBy] = {nil,{410369}},
+            [questKeys.preQuestSingle] = {78676},
         },
         [78823] = { -- Terror of the Desert Skies
             [questKeys.requiredRaces] = raceIDs.NONE,

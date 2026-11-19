@@ -56,6 +56,17 @@ local function witness(db)
   -- reviewed zero survives alongside the Mage mask.
   assert(db.Quest.requiredRaces(97286) == 0 and db.Quest.requiredClasses(97286) == 128,
     "Research Access stays open to every race and keeps its Mage restriction")
+  -- The Dead Drop rune chain: part 2 of each Rogue rune quest starts at the object after part 1.
+  local eyeStarter, hornStarter = db.Quest.startedBy(78699), db.Quest.startedBy(78307)
+  assert(eyeStarter and eyeStarter[2] and eyeStarter[2][1] == 410369, "Eye of Bhossca part 2 starts at the Dead Drop")
+  assert(hornStarter and hornStarter[2] and hornStarter[2][1] == 410369, "Horn of Xelthos part 2 starts at the Dead Drop")
+  local eyePre, hornPre = db.Quest.preQuestSingle(78699), db.Quest.preQuestSingle(78307)
+  assert(eyePre and eyePre[1] == 78676, "Eye of Bhossca part 2 follows part 1")
+  assert(hornPre and hornPre[1] == 78261, "Horn of Xelthos part 2 follows part 1")
+  local deadDrop = db.Object.questStarts(410369)
+  local seen = {}
+  for _, id in ipairs(deadDrop) do seen[id] = true end
+  assert(seen[78699] and seen[78307], "Dead Drop lists both part 2 quests as starts")
   -- Buying Friendship text requires Neutral (value 0) standing with the matching clan.
   local gelkisRep, magramRep = db.Quest.requiredMinRep(93227), db.Quest.requiredMinRep(93226)
   assert(gelkisRep and gelkisRep[1] == 92 and gelkisRep[2] == 0, "Gelkis turn-in needs Neutral Gelkis")
