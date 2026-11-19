@@ -1126,9 +1126,24 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.DARNASSUS] = {{89.14,34.76}}},
             [npcKeys.zoneID] = zoneIDs.DARNASSUS,
         },
+        [270438] = { -- Deathstalker Masoj
+            [npcKeys.spawns] = {[zoneIDs.HILLSBRAD_FOOTHILLS] = {{64,53.82}}},
+        },
         [270513] = { -- Spellweaver Thaldris
             [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{17.75,60.61}}},
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.TRANSMOGRIFIER,
+        },
+        [270573] = { -- Credit
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{38.58,95.09}}},
+            [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+        },
+        [270574] = { -- Credit
+            [npcKeys.spawns] = {[zoneIDs.HILLSBRAD_FOOTHILLS] = {{71.52,30.38}}},
+            [npcKeys.zoneID] = zoneIDs.HILLSBRAD_FOOTHILLS,
+        },
+        [270575] = { -- Credit
+            [npcKeys.spawns] = {[zoneIDs.HILLSBRAD_FOOTHILLS] = {{74.24,73.36}}},
+            [npcKeys.zoneID] = zoneIDs.HILLSBRAD_FOOTHILLS,
         },
         [270581] = { -- Fyrenz Vishonar
             [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{47.96,84.6}}},
