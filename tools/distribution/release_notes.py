@@ -238,7 +238,10 @@ def render(
 
     downloads.append("\n".join(rows))
     downloads.append(
-        "Use one addon ZIP. GitHub's **Source code** archives are not the packaged addon."
+        "Use one addon ZIP. GitHub's **Source code** archives are not the packaged addon. "
+        + ("The all-flavors ZIP works on every client. " if combined in files else "")
+        + "A single-flavor ZIP must match your game client; one for another flavor contains "
+        "no TOC your client recognizes, so QuestieDB will not appear in the AddOns list."
     )
     sections.append("\n\n".join(downloads))
 
