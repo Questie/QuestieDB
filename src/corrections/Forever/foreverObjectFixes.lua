@@ -12,6 +12,9 @@ function ForeverObjectFixes:Load()
     local zoneIDs = ZoneDB.zoneIDs
 
     return {
+        [19861] = { -- Henrig Lonebrow's Journal
+            [objectKeys.spawns] = {[zoneIDs.THOUSAND_NEEDLES] = {{31.3,28.1}}},
+        },
         [61934] = { -- Brazier of the Dormant Flame
             [objectKeys.spawns_add] = {[zoneIDs.LOCH_MODAN] = {{31.79,64.52}}},
         },
