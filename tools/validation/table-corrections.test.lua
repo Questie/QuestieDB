@@ -359,9 +359,10 @@ return function(check, equal)
     equal(unchanged, {[1] = {}}, "ordinary empty replacement rows preserve creation behavior")
 
     -- Trace data adds about a thousand drop sources to one item, so list operations must stay
-    -- linear in list length. Rescanning the list per member costs several CPU seconds at this
-    -- size and one pass costs milliseconds, so the budget sits far from both.
-    local manyCount = 5000
+    -- linear in list length. One pass costs milliseconds at this size; rescanning the list per
+    -- member costs seconds in any single loop, so the budget separates the two with room on
+    -- both sides.
+    local manyCount = 10000
     local lowIds, highIds = {}, {}
     for index = 1, manyCount do
       lowIds[index], highIds[index] = index, manyCount + index
@@ -375,7 +376,7 @@ return function(check, equal)
     equal({#appended, appended[1], appended[2], appended[3], appended[manyCount]},
       {manyCount, manyCount, 1, 2, manyCount - 1}, "large add keeps existing order and skips known members")
     equal(swapped, lowIds, "large add and remove replace every member")
-    check(cpuSeconds < 1, ("large list operations stay linear: %.2f CPU seconds"):format(cpuSeconds))
+    check(cpuSeconds < 0.5, ("large list operations stay linear: %.2f CPU seconds"):format(cpuSeconds))
 
     for _, datatype in ipairs({ "Quest", "Npc", "Item", "Object" }) do
       local meta = db.Meta[datatype]

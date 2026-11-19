@@ -23,7 +23,7 @@ local function contains(list, value)
   return false
 end
 
--- Membership without a scan per member. Trace data puts about a thousand IDs in one list,
+-- Scalar membership without a scan per member. Trace data puts about a thousand IDs in one list,
 -- where `contains` per member is quadratic. Scalars compare by `==`, which a set answers
 -- identically; tuples compare by deep equality and still scan.
 
