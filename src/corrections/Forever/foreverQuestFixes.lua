@@ -459,11 +459,13 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.requiredClasses] = classIDs.ROGUE,
+            [questKeys.childQuests] = {78270},
             [questKeys.nextQuestInChain] = 78307,
         },
         [78270] = { -- Goblin Lockpicks
             [questKeys.questLevel] = 23,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.parentQuest] = 78261,
         },
         [78307] = { -- The Horn of Xelthos
             [questKeys.requiredLevel] = 1,
