@@ -1077,6 +1077,8 @@ function ForeverNpcFixes:Load()
         [268743] = { -- Rexxie Copperclutch
             [npcKeys.spawns] = {[zoneIDs.CITY_OF_DALARAN] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.CITY_OF_DALARAN,
+            [npcKeys.questStarts] = {96987},
+            [npcKeys.questEnds] = {96987},
         },
         [268762] = { -- Brazier of Offering
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{51.2,85.9}}},
