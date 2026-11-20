@@ -40,7 +40,8 @@ end
 function fixture.loadProvider(files, flavorName, seasonId, mode, root)
   local selected = {}
   for _, line in ipairs(files) do
-    local path = emulator.selectFile(line, assert(config.flavorByName[flavorName]).gameType)
+    -- Corrections never depend on the text locale; any persona selects the same block.
+    local path = emulator.selectFile(line, assert(config.flavorByName[flavorName]).gameType, "enUS")
     if path then selected[#selected + 1] = path end
   end
   files = selected

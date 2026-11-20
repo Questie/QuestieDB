@@ -120,18 +120,42 @@ end
 --------------------------------------------------------------------------------------------
 
 ---@alias EmulatorGameType "vanilla"|"tbc"|"wrath"|"cata"|"mists"|"forever"
+---@alias EmulatorTextLocale "enUS"|"deDE"|"esES"|"esMX"|"frFR"|"itIT"|"koKR"|"ptBR"|"ruRU"|"zhCN"|"zhTW"
 
 ---@type table<string, boolean>
 local gameTypes = { vanilla = true, tbc = true, wrath = true, cata = true, mists = true, forever = true }
 
+-- The values GetLocale() can return; AllowLoadTextLocale takes the same tokens.
+---@type table<string, boolean>
+local textLocales = {
+  enUS = true, deDE = true, esES = true, esMX = true, frFR = true, itIT = true,
+  koKR = true, ptBR = true, ruRU = true, zhCN = true, zhTW = true,
+}
+
+---@class EmulatorFileCondition
+---@field persona "game-type"|"text-locale" The client fact it tests; one condition per fact.
+---@field tokens table<string, boolean> Accepted tokens.
+---@field exclude boolean? Select when the persona is NOT listed.
+
+---@type table<string, EmulatorFileCondition>
+local conditions = {
+  AllowLoadGameType = { persona = "game-type", tokens = gameTypes },
+  ExcludeLoadGameType = { persona = "game-type", tokens = gameTypes, exclude = true },
+  AllowLoadTextLocale = { persona = "text-locale", tokens = textLocales },
+}
+
 ---Parse and evaluate a file line; return its normalized path only when selected.
 ---Blank lines and comments (including metadata) return nil. XML remains ignored by this
----Lua-only loader. Only one trailing AllowLoadGameType or ExcludeLoadGameType list is supported.
----Unknown tokens are rejected, not modeled as a particular client's recognition set.
+---Lua-only loader. A path may be followed by at most one game-type condition
+---(AllowLoadGameType or ExcludeLoadGameType) and one AllowLoadTextLocale condition, in either
+---order; every condition must hold. Unknown tokens are rejected, not modeled as a particular
+---client's recognition set.
 ---@param line string
----@param gameType EmulatorGameType? Required for conditional files; never inferred from paths.
+---@param gameType EmulatorGameType? Required for game-type conditions; never inferred from paths.
+---@param textLocale EmulatorTextLocale? Required, and validated, only for text-locale conditions.
+---Condition-free lines never depend on it.
 ---@return string? path Selected Lua file path.
-function emulator.selectFile(line, gameType)
+function emulator.selectFile(line, gameType, textLocale)
   if gameType ~= nil and not gameTypes[gameType] then
     error("Unknown TOC game-type persona: " .. tostring(gameType), 0)
   end
@@ -140,25 +164,42 @@ function emulator.selectFile(line, gameType)
 
   local path = line
   if line:find("[%[%]]") then
-    local directive, tokens
-    path, directive, tokens = line:match("^([^%[%]]-)%s+%[(%a+)%s+([^%[%]]+)%]$")
-    if not path or path == "" or
-       (directive ~= "AllowLoadGameType" and directive ~= "ExcludeLoadGameType") then
-      error("Unsupported or malformed TOC file condition: " .. line, 0)
-    end
-    local selected = false
-    -- Validate the entire list, even after a match, so unknown later tokens cannot hide.
-    for token in (tokens .. ","):gmatch("(.-),") do
-      token = token:match("^%s*(.-)%s*$")
-      if not gameTypes[token] then
-        error("Unknown or malformed " .. directive .. " token: " .. token, 0)
+    local rest
+    path, rest = line:match("^([^%[%]]-)%s+(%[.*)$")
+    if not path or path == "" then error("Unsupported or malformed TOC file condition: " .. line, 0) end
+
+    -- Evaluate every condition before deciding, so a malformed later one cannot hide.
+    -- Blizzard's own Classic TOCs separate conditions with and without a space
+    -- (Blizzard_Fonts_Shared.toc: `[AllowLoad Glue][AllowLoadGameType classic]`).
+    local selected, seen, position = true, {}, 1
+    repeat
+      local directive, tokens, nextPosition = rest:match("^%[(%a+)%s+([^%[%]]+)%]%s*()", position)
+      local condition = conditions[directive]
+      if not condition or seen[condition.persona] then
+        error("Unsupported or malformed TOC file condition: " .. line, 0)
       end
-      if token == gameType then selected = true end
-    end
-    if gameType == nil then
-      error("Conditional TOC file requires an explicit game-type persona", 0)
-    end
-    if directive == "ExcludeLoadGameType" then selected = not selected end
+      seen[condition.persona] = true
+      local persona = textLocale
+      if condition.persona == "game-type" then
+        persona = gameType
+      elseif textLocale ~= nil and not textLocales[textLocale] then
+        error("Unknown TOC text-locale persona: " .. tostring(textLocale), 0)
+      end
+      local listed = false
+      for token in (tokens .. ","):gmatch("(.-),") do
+        token = token:match("^%s*(.-)%s*$")
+        if not condition.tokens[token] then
+          error("Unknown or malformed " .. directive .. " token: " .. token, 0)
+        end
+        if token == persona then listed = true end
+      end
+      if persona == nil then
+        error("Conditional TOC file requires an explicit " .. condition.persona .. " persona", 0)
+      end
+      if condition.exclude then listed = not listed end
+      if not listed then selected = false end
+      position = nextPosition
+    until position > #rest
     if not selected then return nil end
   end
 
@@ -178,14 +219,19 @@ end
 --- `baseDir` resolves the listed files against another root — pointing it at an unpacked
 --- release zip loads the runtime a user actually installs (with its static correction bodies
 --- stripped by tools/distribution/strip-static.lua) instead of the working tree's copies.
+---
+--- The text-locale persona is whatever the installed `GetLocale` stand-in returns, so native
+--- file selection can never disagree with the GetLocale() guards inside the loaded files.
 ---@param tocPath string
 ---@param addonName string?
 ---@param baseDir string? Root the TOC's file list resolves against; default the working dir
----@param gameType EmulatorGameType? Explicit native persona; required for conditional files.
+---@param gameType EmulatorGameType? Explicit native persona; required for game-type conditions.
 ---@return table addonTable The addon namespace, i.e. LibQuestieDB
 ---@return table files Selected file paths, in execution order.
 function emulator.loadAddon(tocPath, addonName, baseDir, gameType)
   gameType = gameType or rawget(_G, "QUESTIEDB_EMULATOR_GAME_TYPE")
+  local getLocale = rawget(_G, "GetLocale")
+  local textLocale = type(getLocale) == "function" and getLocale() or nil
   addonName = addonName or "QuestieDB"
   local addonTable = {}
 
@@ -195,7 +241,7 @@ function emulator.loadAddon(tocPath, addonName, baseDir, gameType)
   -- Resolve the whole list before executing anything, and close the TOC on syntax errors.
   for line in file:lines() do
     lineNumber = lineNumber + 1
-    local ok, path = pcall(emulator.selectFile, line, gameType)
+    local ok, path = pcall(emulator.selectFile, line, gameType, textLocale)
     if not ok then
       file:close()
       error(("%s:%d: %s"):format(tocPath, lineNumber, path), 0)

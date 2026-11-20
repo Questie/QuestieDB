@@ -65,9 +65,14 @@ Generate conditions from explicit flavor applicability, not folder names.
   `[Family]` is also not a substitute for QuestieDB's data-flavor mapping.
 - Keep Baked metadata and filenames unchanged. Already-specialized Baked file lists need no
   extra condition just because Source mode benefits from it.
-- Do not locale-filter stored translations or Dynamic Translation Correction files.
+- Do not locale-filter stored translations, `l10n/lookupOverrides.lua` (one file for every
+  locale) or Dynamic Translation Correction files such as `src/l10n/Titan/zhCN.lua`.
   `LibQuestieDB.l10n.SetLocale()` may select a locale different from the client's text locale;
   loading only `[TextLocale]` would change that public contract.
+- Source mode's raw lookup files are the exception. Each one's `GetLocale()` guard already
+  discards it on any other locale, and Source mode never serves another locale's Base
+  translations. Their lines therefore add `[AllowLoadTextLocale <locale>]`, which only spares
+  the client from parsing them. See [Text-locale conditions](#text-locale-conditions).
 
 ## Tooling and acceptance
 
@@ -81,6 +86,41 @@ plain paths. Do not silently strip a condition while including an inapplicable f
 Before replacing existing gates, use a disposable addon on the relevant clients to check
 positive/negative selection, ordering and Forever identity. Probe mixed known/unknown tokens
 before rename-forward compatibility. Compare loaded files with the emulator. No live probe ran here.
+
+## Text-locale conditions
+
+Research date: 2026-11-19. Blizzard source and wiki evidence only; no live client was available.
+
+Source-mode raw lookups combine both conditions, for example:
+
+```toc
+l10n\Forever\lookupQuests\deDE.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists] [AllowLoadTextLocale deDE]
+```
+
+- **Several conditions per line, combined with AND.** The [TOC format][toc-format] page says
+  multiple inline directives can be used per line. Blizzard's Era 1.15.9 TOCs combine them
+  ([fonts][era-fonts-multi], [Edit Mode][era-editmode-multi]); Anniversary, Mists and Titan
+  carry the same lines. Forever's [Blizzard_Game][forever-startup] loads one of two
+  `Startup.lua` files with `[AllowLoadGameType classic, mainline] [ExcludeLoadGameType vanilla, camelot]`,
+  which is coherent only as AND.
+- **`AllowLoadTextLocale` on Classic.** Its values are those `GetLocale()` returns. The wiki adds
+  it in Mainline 11.2.0 and records that Era 1.15.8, Anniversary 2.5.5, Titan 3.80.0, Mists 5.5.1
+  and Forever 1.60.1 include that change. The wiki records `ExcludeLoadGameType`, which the Source
+  TOC already needs on legacy clients, as later (12.0.0). Forever's
+  [declension frame][forever-declension] uses `[AllowLoadTextLocale ruRU]` with game-type conditions.
+  No suffix-form use exists in the Era, Anniversary, Mists or Titan sources.
+- **Unknown directives are undocumented.** A client that does not recognize the directive could
+  ignore it or treat the file as missing. Ignoring it loads every locale's lookups, which their
+  guards then discard. Treating it as missing loses Source Base translations on that client.
+  The wiki's last Cata Classic entry, 4.4.1, includes Modern changes only up to 11.0.0, before
+  inline file conditions (11.1.5), and it lists no Wrath 3.4 (Interface 30405) entry. Source
+  selection on those clients already depends on unverified behavior.
+- **The guards and the condition read different things.** A guard calls the global `GetLocale()`;
+  the condition uses the client's text locale. An addon that replaces `GetLocale` before
+  QuestieDB loads no longer selects another locale's Source lookups.
+
+Live acceptance should confirm, per supported client, that only the client locale's lookups load
+and that Source Base translations still appear on a non-English client.
 
 ## Interface values are a separate maintenance question
 
@@ -99,3 +139,8 @@ token. No historical Wrath client was inspected; this does not justify adding Ma
 [forever-base]: https://github.com/Gethe/wow-ui-source/blob/70ef1b2fd78061a73f886c4a1e79dc5b5cff6d5e/Interface/AddOns/Blizzard_FrameXMLBase/Blizzard_FrameXMLBase.toc#L15-L26
 [forever-metadata]: https://github.com/Gethe/wow-ui-source/blob/70ef1b2fd78061a73f886c4a1e79dc5b5cff6d5e/Interface/AddOns/Blizzard_MainMenuBarBagButtons/Blizzard_MainMenuBarBagButtons.toc#L1-L6
 [build-api]: https://github.com/Gethe/wow-ui-source/blob/70ef1b2fd78061a73f886c4a1e79dc5b5cff6d5e/Interface/AddOns/Blizzard_APIDocumentationGenerated/BuildDocumentation.lua#L10-L20
+[toc-format]: https://warcraft.wiki.gg/wiki/TOC_format
+[era-fonts-multi]: https://github.com/Gethe/wow-ui-source/blob/4192ac60067fc55566182291bc67c85dd9b6794d/Interface/AddOns/Blizzard_Fonts_Shared/Blizzard_Fonts_Shared.toc#L6-L7
+[era-editmode-multi]: https://github.com/Gethe/wow-ui-source/blob/4192ac60067fc55566182291bc67c85dd9b6794d/Interface/AddOns/Blizzard_EditMode/Blizzard_EditMode.toc#L5-L9
+[forever-startup]: https://github.com/Gethe/wow-ui-source/blob/3d8abb1da73acd38e412e24fb3f99454a6392346/Interface/AddOns/Blizzard_Game/Blizzard_Game.toc#L45-L46
+[forever-declension]: https://github.com/Gethe/wow-ui-source/blob/3d8abb1da73acd38e412e24fb3f99454a6392346/Interface/AddOns/Blizzard_DeclensionFrame/Blizzard_DeclensionFrame.toc#L4-L9
