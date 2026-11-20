@@ -56,6 +56,10 @@ local function witness(db)
   -- reviewed zero survives alongside the Mage mask.
   assert(db.Quest.requiredRaces(97286) == 0 and db.Quest.requiredClasses(97286) == 128,
     "Research Access stays open to every race and keeps its Mage restriction")
+  -- Desert Wolf's Odd Totems are friendly to both factions, so the reviewed zero stays and only
+  -- the Shaman class mask narrows the quest.
+  assert(db.Quest.requiredRaces(95753) == 0 and db.Quest.requiredClasses(95753) == 64,
+    "Challenge of the Desert Wolf is Shaman-only")
   -- Buying Friendship text requires Neutral (value 0) standing with the matching clan.
   local gelkisRep, magramRep = db.Quest.requiredMinRep(93227), db.Quest.requiredMinRep(93226)
   assert(gelkisRep and gelkisRep[1] == 92 and gelkisRep[2] == 0, "Gelkis turn-in needs Neutral Gelkis")
