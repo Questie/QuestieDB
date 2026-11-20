@@ -327,6 +327,16 @@ local function verifyFlavor(flavor, opts)
                   io.write(("  L10N %s: field column %d is %s\n")
                     :format(key, fieldIndex, type(column)))
                   report.errors = report.errors + 1
+                elseif fieldConfig.textIndex then
+                  -- Text-merged fields store one English -> translated text dictionary.
+                  for text, value in pairs(column) do
+                    if type(text) ~= "string" or type(value) ~= "string" or value == "" then
+                      io.write(("  L10N %s: column %d entry %s is not a non-empty text translation\n")
+                        :format(key, fieldIndex, lib.show(text):sub(1, 100)))
+                      report.errors = report.errors + 1
+                      break
+                    end
+                  end
                 else
                   local expectedType = fieldConfig.list and "table" or "string"
                   for position, value in pairs(column) do
@@ -371,24 +381,60 @@ local function verifyFlavor(flavor, opts)
               local fieldIndex = entity.meta.keys[fieldConfig.name]
               local mismatchReported = false
               local compared = 0
-              for position, expected in pairs(block[columnIndex]) do
-                if not opts.sample or compared < opts.sample then
-                  local id = sourceIds[position]
-                  local layer = entity.overlay[id]
-                  if not layer or layer[fieldIndex] == nil then
-                    local actual = entity.Get(id, fieldIndex)
-                    if not lib.deepEqual(actual, expected) and not mismatchReported then
-                      io.write(("  L10N %s/%s column %d position %d: expected %s, got %s\n")
-                        :format(typeName, locale, columnIndex, position,
-                          lib.show(expected):sub(1, 100), lib.show(actual):sub(1, 100)))
-                      report.errors = report.errors + 1
-                      mismatchReported = true
+              if fieldConfig.textIndex then
+                -- Each raw objective must read its dictionary translation, or its English text
+                -- when none is stored, at its own index. A limited sample checks quests with a
+                -- stored translation first and spends any remaining budget on English fallbacks.
+                local textIndex, dictionary = fieldConfig.textIndex, block[columnIndex]
+                for pass = 1, 2 do
+                  for _, id in ipairs(type(dictionary) == "table" and sourceIds or {}) do
+                    if opts.sample and compared >= opts.sample then break end
+                    local layer = entity.overlay[id]
+                    local english = entity.GetRaw(id, fieldIndex)
+                    if type(english) == "table" and (not layer or layer[fieldIndex] == nil) then
+                      local hasTranslation = false
+                      for _, element in pairs(english) do
+                        local translated = type(element) == "table" and dictionary[element[textIndex]]
+                        if translated then
+                          element[textIndex] = translated
+                          hasTranslation = true
+                        end
+                      end
+                      if hasTranslation == (pass == 1) then
+                        local actual = entity.Get(id, fieldIndex)
+                        if not lib.deepEqual(actual, english) and not mismatchReported then
+                          io.write(("  L10N %s/%s column %d id %d: expected %s, got %s\n")
+                            :format(typeName, locale, columnIndex, id,
+                              lib.show(english):sub(1, 100), lib.show(actual):sub(1, 100)))
+                          report.errors = report.errors + 1
+                          mismatchReported = true
+                        end
+                        compared = compared + 1
+                        l10nResolved = l10nResolved + 1
+                      end
                     end
                   end
-                  compared = compared + 1
-                  l10nResolved = l10nResolved + 1
                 end
-                if opts.sample and compared >= opts.sample then break end
+              else
+                for position, expected in pairs(block[columnIndex]) do
+                  if not opts.sample or compared < opts.sample then
+                    local id = sourceIds[position]
+                    local layer = entity.overlay[id]
+                    if not layer or layer[fieldIndex] == nil then
+                      local actual = entity.Get(id, fieldIndex)
+                      if not lib.deepEqual(actual, expected) and not mismatchReported then
+                        io.write(("  L10N %s/%s column %d position %d: expected %s, got %s\n")
+                          :format(typeName, locale, columnIndex, position,
+                            lib.show(expected):sub(1, 100), lib.show(actual):sub(1, 100)))
+                        report.errors = report.errors + 1
+                        mismatchReported = true
+                      end
+                    end
+                    compared = compared + 1
+                    l10nResolved = l10nResolved + 1
+                  end
+                  if opts.sample and compared >= opts.sample then break end
+                end
               end
             end
           end

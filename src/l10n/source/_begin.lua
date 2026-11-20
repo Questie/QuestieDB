@@ -10,7 +10,7 @@ local capture = {
   locale = GetLocale(),
   previousLoader = rawget(_G, "QuestieLoader"),
   previousQuestie = rawget(_G, "Questie"),
-  module = { questLookup = {}, npcNameLookup = {}, itemLookup = {}, objectLookup = {} },
+  module = { questLookup = {}, npcNameLookup = {}, itemLookup = {}, objectLookup = {}, translations = {} },
 }
 LibQuestieDB.__l10nSourceCapture = capture
 

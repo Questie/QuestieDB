@@ -218,15 +218,18 @@ function shared.CreateEntity(meta, backend)
   local l10nProvider
   local l10nScalarFields
   local l10nIsActive
+  local l10nMergeFields
 
   ---Attach the localization provider and the scalar fields to resolve when a row is installed.
   ---@param provider function?
   ---@param scalarFields table<number, boolean>?
   ---@param isActive function?
-  function entity.SetL10nProvider(provider, scalarFields, isActive)
+  ---@param mergeFields table<number, number>? Field index -> element text index merged over English.
+  function entity.SetL10nProvider(provider, scalarFields, isActive, mergeFields)
     l10nProvider = provider
     l10nScalarFields = scalarFields
     l10nIsActive = isActive
+    l10nMergeFields = mergeFields
     entity.InvalidateCache(nil)
   end
 
@@ -317,8 +320,11 @@ function shared.CreateEntity(meta, backend)
       end
     end
 
-    local translated
-    if l10nProvider and (not l10nIsActive or l10nIsActive()) then
+    -- Merge fields translate texts inside the English value, so they resolve it first.
+    local l10nActive = l10nProvider and (not l10nIsActive or l10nIsActive())
+    local textIndex = l10nActive and l10nMergeFields and l10nMergeFields[fieldIndex]
+    local translated, fresh
+    if l10nActive and not textIndex then
       translated = l10nProvider(id, fieldIndex)
     end
     if translated ~= nil then
@@ -329,7 +335,9 @@ function shared.CreateEntity(meta, backend)
           -- The Producer closes over CBOR bytes. Its Presence-mask check uses the Scalar row
           -- already in hand, so an absent table needs no metadata call.
           local producer = backend.tableProducer(id, fieldIndex, byId)
-          if producer then
+          if producer and textIndex then
+            value, fresh = producer(), true
+          elseif producer then
             cacheField(byId, fieldIndex, producer)
             return producer()
           end
@@ -339,6 +347,17 @@ function shared.CreateEntity(meta, backend)
           value = byId[fieldIndex]
         else
           value = backend.readField(id, fieldIndex)
+        end
+      end
+    end
+
+    if textIndex and type(value) == "table" then
+      local texts = l10nProvider(id, fieldIndex, value)
+      if texts then
+        if not fresh then value = deepCopy(value) end
+        for _, element in pairs(value) do
+          local text = type(element) == "table" and texts[element[textIndex]]
+          if text then element[textIndex] = text end
         end
       end
     end

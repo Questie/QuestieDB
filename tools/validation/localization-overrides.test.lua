@@ -78,6 +78,16 @@ QuestieLoader:ImportModule("l10n").questLookup["deDE"] = loadstring([=[return {
     equal(fv[1][1][fr], "Era", "should leave locales without a trace file on the base")
     local wrath = generator.extract(root, flavor, "Quest", { [1] = true })
     equal(wrath[1][1][de], "Override", "should not apply Forever traces to other flavors")
+
+    local questMeta = { entity = "Quest", keys = { extraObjectives = 29 } }
+    local entities = { [7] = { [29] = { { nil, "icon", "Fish for Gaffer Jacks" } } } }
+    generator.assertTexts({ Quest = { meta = questMeta, entities = entities } })
+    equal(generator.textDictionary("deDE")["Fish for Gaffer Jacks"], "Klemm-Muffen angeln",
+      "should map English extra objective texts to translations")
+    entities[8] = { [29] = { { nil, "icon", "Unknown text" } } }
+    local missingOk, missingErr = pcall(generator.assertTexts, { Quest = { meta = questMeta, entities = entities } })
+    check(not missingOk and tostring(missingErr):find('Quest 8: "Unknown text"', 1, true) ~= nil,
+      "should fail when an extra objective text has no translation entry")
   end)
   files.removeTree(root)
   if not ok then error(err, 0) end

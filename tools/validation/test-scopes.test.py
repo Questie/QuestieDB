@@ -44,6 +44,7 @@ class TestScopes(unittest.TestCase):
         self.assertNotIn("personas", flavors["Wrath"])
         self.assertIn("sod-required-races-baked", flavors["Vanilla"])
         self.assertIn("titan-translations-baked", flavors["Wrath"])
+        self.assertIn("extra-objective-translations-baked", flavors["Vanilla"])
 
     def test_invalid_arguments_fail_instead_of_passing_zero_checks(self):
         for args in (("typo",), ("--flavor=Unknown",), ("--flavor=",),
@@ -61,7 +62,7 @@ class TestScopes(unittest.TestCase):
 
     def copy_harness(self, root):
         """Copy artifact-scope dependencies, without shared-only validators or entity data."""
-        for path in ("generator", "src", "emulator"):
+        for path in ("generator", "src", "emulator", "l10n/ExtraObjectives"):
             shutil.copytree(ROOT / path, root / path)
         for path in ("test.lua", "tools/validation/test-files.lua",
                      "tools/validation/storage-fixture.lua",

@@ -32,9 +32,12 @@ overlay.onLocaleChanged = {}
 overlay.available = false
 
 -- Compact field indices match generator/l10n.lua. They are intentionally separate from entity
--- field indices, which differ by schema.
+-- field indices, which differ by schema. A `textIndex` field translates only the text at that
+-- position of each list element: its translation is an English text -> translated text map that
+-- is merged over the English value, so spawns, icons, and references stay with the entity.
+-- Baked blocks store that map once per locale instead of a column aligned with base IDs.
 overlay.fields = {
-  Quest = { { name = "name" }, { name = "objectivesText", list = true } },
+  Quest = { { name = "name" }, { name = "objectivesText", list = true }, { name = "extraObjectives", textIndex = 3 } },
   Npc = { { name = "name" }, { name = "subName" } },
   Item = { { name = "name" } },
   Object = { { name = "name" } },
@@ -88,7 +91,7 @@ function overlay.SetCorrection(owner, locale, datatype, name, rows)
     local meta = LibQuestieDB.Meta[canonical]
     local allowed = {}
     for _, field in ipairs(overlay.fields[canonical]) do
-      allowed[meta.keys[field.name]] = field.list and "list" or "string"
+      allowed[meta.keys[field.name]] = (field.list and "list") or (field.textIndex and "texts") or "string"
     end
     for id, fields in pairs(rows) do
       if type(id) ~= "number" or id <= 0 or id == math.huge or id % 1 ~= 0 then
@@ -106,6 +109,18 @@ function overlay.SetCorrection(owner, locale, datatype, name, rows)
             error("l10n.SetCorrection: translated scalar must be a non-empty string", 2)
           end
           copied[key] = value
+        elseif shape == "texts" then
+          if type(value) ~= "table" or getmetatable(value) ~= nil or next(value) == nil then
+            error("l10n.SetCorrection: translated texts must be a non-empty English -> text map", 2)
+          end
+          local texts = {}
+          for english, text in pairs(value) do
+            if type(english) ~= "string" or english == "" or type(text) ~= "string" or text == "" then
+              error("l10n.SetCorrection: translated texts must map English texts to non-empty strings", 2)
+            end
+            texts[english] = text
+          end
+          copied[key] = texts
         else
           if type(value) ~= "table" or getmetatable(value) ~= nil or next(value) == nil then
             error("l10n.SetCorrection: translated list must be a non-empty string array", 2)
@@ -186,7 +201,33 @@ function overlay.GetProvenance(datatype, id, key)
   local entity = canonical and LibQuestieDB[canonical]
   if entity and not entity.HasL10nProvider() then return nil end
   if not field or not provider or overlay.currentLocale == "enUS" then return nil end
-  local _, owner = provider(id, field)
+  local english, textIndex
+  for _, fieldConfig in ipairs(overlay.fields[canonical]) do
+    if fieldConfig.textIndex and meta.keys[fieldConfig.name] == field then
+      textIndex = fieldConfig.textIndex
+      -- Merge fields translate the corrected English value, which Source mode needs to resolve.
+      local layer = entity.overlay[id]
+      english = layer and layer[field]
+      if english == LibQuestieDB.Corrections.NIL then return nil end
+      if english == nil then english = entity.GetRaw(id, field) end
+    end
+  end
+  local texts, owner, corrected, base = provider(id, field, english)
+  if textIndex then
+    -- A text map owns the field only when it translates one of the current objectives. A
+    -- correction merged over the base owns it only through its own texts.
+    if type(texts) ~= "table" or type(english) ~= "table" then return nil end
+    if corrected then texts = corrected end
+    for _, element in pairs(english) do
+      if type(element) == "table" and texts[element[textIndex]] then return owner end
+    end
+    if base then
+      for _, element in pairs(english) do
+        if type(element) == "table" and base[element[textIndex]] then return "QuestieDB" end
+      end
+    end
+    return nil
+  end
   return owner
 end
 
@@ -266,6 +307,7 @@ end
 ---@return function? provider `(id, fieldIndex) -> translated | nil`.
 ---@return table<number, boolean>? scalarFields Translatable scalar field indices.
 ---@return function? isActive Whether base or Dynamic translations are active.
+---@return table<number, number>? mergeFields Entity field index -> element text index.
 function overlay.CreateProvider(meta, entity)
   local typeName = meta.entity
   local typeFields = overlay.fields[typeName]
@@ -273,11 +315,16 @@ function overlay.CreateProvider(meta, entity)
 
   local columnByEntityField = {}
   local scalarFields = {}
+  local mergeFields = {}
   for columnIndex, fieldConfig in ipairs(typeFields) do
     local entityFieldIndex = meta.keys[fieldConfig.name]
     if entityFieldIndex then
       columnByEntityField[entityFieldIndex] = columnIndex
-      if not fieldConfig.list then scalarFields[entityFieldIndex] = true end
+      if fieldConfig.textIndex then
+        mergeFields[entityFieldIndex] = fieldConfig.textIndex
+      elseif not fieldConfig.list then
+        scalarFields[entityFieldIndex] = true
+      end
     end
   end
 
@@ -317,16 +364,51 @@ function overlay.CreateProvider(meta, entity)
     return position
   end
 
+  ---Source mode translates extra objective texts by their English text.
+  ---@param english table? The English value of a merge field.
+  ---@param textIndex integer
+  ---@return table? texts English text -> translated text.
+  local function sourceTexts(english, textIndex)
+    local lookups = LibQuestieDB.l10nSource
+    if type(english) ~= "table" or not lookups or overlay.currentLocale ~= lookups.locale then return nil end
+    local texts
+    for _, element in pairs(english) do
+      local text = type(element) == "table" and element[textIndex]
+      local translated = type(text) == "string" and lookups.extraObjectiveText(text)
+      if translated then
+        texts = texts or {}
+        texts[text] = translated
+      end
+    end
+    return texts
+  end
+
   ---Resolve only translations. Entity fallback belongs to shared.lua, not this module.
   ---@param id number
   ---@param entityFieldIndex integer
+  ---@param english any? The English value, passed for merge fields only.
   ---@return any value
   ---@return string? owner
-  local function provider(id, entityFieldIndex)
+  local function provider(id, entityFieldIndex, english)
     if overlay.currentLocale == "enUS" or not columnByEntityField[entityFieldIndex] then return nil end
     local byLocale = translations[overlay.currentLocale]
     local byType = byLocale and byLocale[typeName]
     local row = byType and byType[id]
+    local textIndex = mergeFields[entityFieldIndex]
+    if row and row[entityFieldIndex] ~= nil and textIndex then
+      if not entity.Exists(id) then return nil end
+      -- Texts the correction leaves out keep their base translation.
+      local corrected = row[entityFieldIndex]
+      local block = activeBlocks[typeName]
+      local base = block and block[columnByEntityField[entityFieldIndex]] or
+        (not block and sourceTexts(english, textIndex))
+      local texts = corrected
+      if base then
+        texts = setmetatable({}, { __index = function(_, text) return corrected[text] or base[text] end })
+      end
+      -- The parts are returned too, so provenance can tell which one supplied a text.
+      return texts, translationOwners[overlay.currentLocale][typeName][id][entityFieldIndex], corrected, base
+    end
     if row and row[entityFieldIndex] ~= nil then
       -- Translation-only IDs never extend the entity union. Withdrawn Dynamic entities lose
       -- their translation too, without requiring the translation slot itself to be removed.
@@ -334,6 +416,11 @@ function overlay.CreateProvider(meta, entity)
       return row[entityFieldIndex], translationOwners[overlay.currentLocale][typeName][id][entityFieldIndex]
     end
     local block = activeBlocks[typeName]
+    if not block and mergeFields[entityFieldIndex] then
+      local texts = sourceTexts(english, mergeFields[entityFieldIndex])
+      if texts then return texts, "QuestieDB" end
+      return nil
+    end
     if not block then
       local rows = sourceRowsFor(typeName)
       local row = rows and rows[id]
@@ -343,6 +430,9 @@ function overlay.CreateProvider(meta, entity)
     end
     local column = block[columnByEntityField[entityFieldIndex]]
     if not column then return nil end
+    -- A merge field's column is the locale's text dictionary, shared by every quest including
+    -- those added by Dynamic Corrections.
+    if mergeFields[entityFieldIndex] then return column, "QuestieDB" end
     local position = findPosition(id)
     local value = position and column[position] or nil
     if value ~= nil then return value, "QuestieDB" end
@@ -354,7 +444,7 @@ function overlay.CreateProvider(meta, entity)
     local byLocale = translations[overlay.currentLocale]
     return activeBlocks[typeName] ~= nil or sourceRowsFor(typeName) ~= nil or
       (byLocale ~= nil and byLocale[typeName] ~= nil)
-  end
+  end, next(mergeFields) and mergeFields or nil
 end
 
 --------------------------------------------------------------------------------------------
@@ -382,8 +472,8 @@ function overlay.Initialize()
     local entity = LibQuestieDB[entityType.name]
     local meta = LibQuestieDB.Meta[entityType.name]
     if entity and meta and entity.SetL10nProvider then
-      local provider, scalarFields, isActive = overlay.CreateProvider(meta, entity)
-      entity.SetL10nProvider(provider, scalarFields, isActive)
+      local provider, scalarFields, isActive, mergeFields = overlay.CreateProvider(meta, entity)
+      entity.SetL10nProvider(provider, scalarFields, isActive, mergeFields)
     end
   end
 
