@@ -430,6 +430,11 @@ function ForeverObjectFixes:Load()
         [656182] = { -- Raider's Shield
             [objectKeys.spawns] = {[zoneIDs.DUROTAR] = {{56.54,53}}},
         },
+        [656681] = { -- Dalaran Tome
+            [objectKeys.name] = "Dalaran Tome",
+            [objectKeys.spawns] = {[zoneIDs.CITY_OF_DALARAN] = {{-1,-1}}},
+            [objectKeys.zoneID] = zoneIDs.CITY_OF_DALARAN,
+        },
         [658924] = { -- Mailbox
             [objectKeys.questStarts_remove] = {5725},
         },

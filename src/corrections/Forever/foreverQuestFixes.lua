@@ -143,6 +143,7 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {},
             [questKeys.preQuestGroup] = {544,93680},
             [questKeys.zoneOrSort] = zoneIDs.ALTERAC_MOUNTAINS,
+            [questKeys.nextQuestInChain] = 92434,
         },
         [590] = { -- A Rogue's Deal
             [questKeys.objectives] = {{{6784}}},
@@ -1239,6 +1240,20 @@ function ForeverQuestFixes:Load()
         },
         [92422] = { -- The Wrath of Rath'mael
             [questKeys.preQuestSingle] = {99156},
+        },
+        [92434] = { -- Blood in the Streets
+            [questKeys.preQuestSingle] = {545},
+            [questKeys.nextQuestInChain] = 96984,
+            [questKeys.triggerEnd] = {},
+            [questKeys.objectives] = {{{269127,nil,Questie.ICON_TYPE_EVENT}}},
+        },
+        [92458] = { -- Heart of Disruption
+            [questKeys.preQuestSingle] = {92432},
+            [questKeys.exclusiveTo] = {96984},
+            [questKeys.nextQuestInChain] = 92459,
+        },
+        [92459] = { -- Friend of the Kirin Tor
+            [questKeys.preQuestSingle] = {92458,96984},
         },
         [92460] = { -- Coming of Age
             [questKeys.nextQuestInChain] = 92461,
@@ -3257,6 +3272,10 @@ function ForeverQuestFixes:Load()
         [96983] = { -- Yashiro's Windwalk
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [96987] = { -- Opportunistic Education
+            [questKeys.startedBy] = {{268743}},
+            [questKeys.finishedBy] = {{268743}},
+        },
         [96991] = { -- Trail Assist
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
@@ -5106,6 +5125,9 @@ function ForeverQuestFixes:LoadDynamic()
         [97286] = { -- Research Access
             [questKeys.startedBy] = {{211022}},
             [questKeys.finishedBy] = {{211022}},
+        },
+        [97287] = { -- Shrewd Negotiations
+            [questKeys.finishedBy] = {{269127}},
         },
     }
 
