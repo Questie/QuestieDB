@@ -40,6 +40,39 @@ function QuestieTBCObjectFixes:Load()
         [177281] = { -- Moonwell
             [objectKeys.spawns] = {[zoneIDs.ZANGARMARSH] = {{80.32,65.06}}},
         },
+        [177272] = { -- Moonwell
+            [objectKeys.spawns] = {
+                [zoneIDs.STORMWIND_CITY] = {{20.4,52.93},{20.45,53.68},{20.06,53.59},{20.65,53.16}},
+                [zoneIDs.TELDRASSIL] = {{56.02,61.99}},
+                [zoneIDs.FERALAS] = {{58.01,44.92},{57.83,44.89},{57.68,44.62},{58.25,44.61},{58.23,44.31},{57.7,44.31},{57.86,44.1},{58.07,44.08},{32.56,43.91}},
+                [zoneIDs.ASHENVALE] = {{62.07,51.04},{62.07,51.03}},
+            },
+        },
+        [177274] = { -- Moonwell
+            [objectKeys.spawns] = {},
+        },
+        [177276] = { -- Moonwell
+            [objectKeys.spawns] = {},
+        },
+        [177278] = { -- Moonwell
+            [objectKeys.spawns] = {
+                [zoneIDs.TELDRASSIL] = {{56.03,61.95}},
+                [zoneIDs.DESOLACE] = {{67.67,9.84}},
+                [zoneIDs.HYJAL_SUMMIT] = {{-1,-1}},
+                [zoneIDs.ASHENVALE] = {{53.74,46.01},{59.31,59.96}},
+                [zoneIDs.MOONGLADE] = {{48.64,32.97}},
+                [zoneIDs.DARNASSUS] = {{39.45,86.07}},
+            },
+        },
+        [177280] = { -- Moonwell
+            [objectKeys.spawns] = {
+                [zoneIDs.DUSKWOOD] = {{49.2,33.29}},
+                [zoneIDs.STONETALON_MOUNTAINS] = {{36.82,7.9}},
+                [zoneIDs.BLADES_EDGE_MOUNTAINS] = {{37.25,63.99}},
+                [zoneIDs.MOONGLADE] = {{52.5,41.46},{46.15,45.53}},
+                [zoneIDs.TELDRASSIL] = {{47.24,63.49}},
+            },
+        },
         [180570] = { -- Keg
             [objectKeys.spawns] = {[zoneIDs.HILLSBRAD_FOOTHILLS] = {{51.37,58.98}}},
         },
