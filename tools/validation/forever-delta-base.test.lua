@@ -56,6 +56,10 @@ local function witness(db)
   -- reviewed zero survives alongside the Mage mask.
   assert(db.Quest.requiredRaces(97286) == 0 and db.Quest.requiredClasses(97286) == 128,
     "Research Access stays open to every race and keeps its Mage restriction")
+  -- The Horde Kor Gem hand-in is a repeatable child of its Moonsilver chain quest, like Alliance 1442.
+  assert(db.Quest.specialFlags(95042) == 1, "Seeking the Kor Gem is repeatable")
+  assert(db.Quest.parentQuest(95042) == 95036, "Seeking the Kor Gem only shows while its parent is active")
+  assert(db.Quest.childQuests(95036)[1] == 95042, "A Moon-Kissed Blade lists the Kor Gem child")
   -- Buying Friendship text requires Neutral (value 0) standing with the matching clan.
   local gelkisRep, magramRep = db.Quest.requiredMinRep(93227), db.Quest.requiredMinRep(93226)
   assert(gelkisRep and gelkisRep[1] == 92 and gelkisRep[2] == 0, "Gelkis turn-in needs Neutral Gelkis")
@@ -108,7 +112,7 @@ end
 if not baked then
   for _, flavor in ipairs({ "Classic", "TBC" }) do
     local db = load(flavor)
-    assert(not db.Quest.Exists(86585) and not db.Npc.Exists(269153) and not db.Item.Exists(286647),
+    assert(not db.Quest.Exists(86585) and not db.Quest.Exists(95042) and not db.Npc.Exists(269153) and not db.Item.Exists(286647),
       "Forever content leaked into " .. flavor)
     for _, entry in ipairs(db.Corrections.Select()) do
       assert(not entry.name:find("^Forever/generated/") and not entry.name:find("^Forever/traces/"),
