@@ -376,6 +376,14 @@ function ForeverNpcFixes:Load()
         [242498] = { -- Reagent Bot
             [npcKeys.spawns] = {},
         },
+        [246017] = { -- Unstable Sentinel
+            [npcKeys.spawns] = {[zoneIDs.CITY_OF_DALARAN] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.CITY_OF_DALARAN,
+        },
+        [246020] = { -- Shade of the Archmage
+            [npcKeys.spawns] = {[zoneIDs.CITY_OF_DALARAN] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.CITY_OF_DALARAN,
+        },
         [246143] = { -- Frightened Paladin
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{27.69,63.82}}},
         },
@@ -391,6 +399,10 @@ function ForeverNpcFixes:Load()
         [246394] = { -- Ander Solliden
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{25.41,50.41}}},
             [npcKeys.waypoints] = {[zoneIDs.TIRISFAL_GLADES] = {{{25.41,50.41},{25.39,50.43},{25.31,50.49},{25.27,50.50},{25.16,50.51},{25.13,50.51},{25.08,50.52},{24.96,50.55},{24.86,50.61},{24.75,50.67},{24.67,50.64},{24.58,50.53},{24.47,50.40},{24.35,50.26},{24.25,50.13},{24.14,49.96},{24.07,49.93},{23.98,49.92},{23.93,49.91},{23.86,49.90},{23.78,49.89},{23.72,49.87},{23.64,49.85},{23.57,49.82},{23.52,49.80},{23.42,49.79},{23.41,49.78},{23.27,49.77},{23.27,49.77},{23.24,49.77},{23.15,49.76},{23.10,49.76},{23.08,49.76},{22.99,49.74},{22.98,49.74},{22.92,49.74},{22.86,49.74},{22.79,49.73},{22.75,49.73},{22.70,49.72},{22.63,49.70},{22.54,49.67},{22.47,49.65},{22.42,49.64},{22.33,49.62},{22.30,49.60},{22.28,49.59},{22.24,49.52},{22.21,49.47},{22.20,49.45},{22.19,49.42},{22.18,49.40}}}},
+        },
+        [247126] = { -- Atrexis the Grave Knight
+            [npcKeys.spawns] = {[zoneIDs.CITY_OF_DALARAN] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.CITY_OF_DALARAN,
         },
         [247223] = { -- Nancy Songflower
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{52.41,43.87}}},
@@ -867,6 +879,10 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.EXCAVATION_SITE_WETLANDS] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
         },
+        [260326] = { -- Relic Guardian
+            [npcKeys.spawns] = {[zoneIDs.EXCAVATION_SITE_WETLANDS] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
         [260396] = { -- Whispering Horror
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{8.69,60.07}}},
         },
@@ -875,13 +891,6 @@ function ForeverNpcFixes:Load()
             [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
         },
         [260801] = { -- Thicket Hunter
-            [npcKeys.spawns] = {[zoneIDs.EXCAVATION_SITE_WETLANDS] = {{-1,-1}}},
-            [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
-        },
-        [271181] = { -- Eye of Kilrogg
-            [npcKeys.spawns] = {[zoneIDs.ASHENVALE] = {{44.37,56.48}}},
-        },
-        [271732] = { -- Thicket Stalker
             [npcKeys.spawns] = {[zoneIDs.EXCAVATION_SITE_WETLANDS] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
         },
@@ -1065,6 +1074,10 @@ function ForeverNpcFixes:Load()
         [268684] = { -- Thra
             [npcKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{36.54,28.49}}},
         },
+        [268743] = { -- Rexxie Copperclutch
+            [npcKeys.spawns] = {[zoneIDs.CITY_OF_DALARAN] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.CITY_OF_DALARAN,
+        },
         [268762] = { -- Brazier of Offering
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{51.2,85.9}}},
         },
@@ -1075,7 +1088,7 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{27.37,62.86}}},
         },
         [269127] = { -- Image of Archmage Modera
-            [npcKeys.spawns] = {[zoneIDs.SILVERPINE_FOREST] = {{68.6,45.1}}},
+            [npcKeys.spawns] = {[zoneIDs.SILVERPINE_FOREST] = {{68.62,45.13}}},
         },
         [270201] = { -- Al'Aketh Brawler
             [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
@@ -1153,6 +1166,9 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.ORGRIMMAR] = {{46.14,53.97}}},
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.TRANSMOGRIFIER,
         },
+        [271181] = { -- Eye of Kilrogg
+            [npcKeys.spawns] = {[zoneIDs.ASHENVALE] = {{44.37,56.48}}},
+        },
         [271465] = { -- Falfaan Halfwind
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.4,75.73}}},
         },
@@ -1174,6 +1190,10 @@ function ForeverNpcFixes:Load()
         [271613] = { -- Unfinished Abomination
             [npcKeys.spawns] = {[zoneIDs.UNDERCITY] = {{45.88,61.7}}},
             [npcKeys.zoneID] = zoneIDs.UNDERCITY,
+        },
+        [271732] = { -- Thicket Stalker
+            [npcKeys.spawns] = {[zoneIDs.EXCAVATION_SITE_WETLANDS] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
         },
         [271866] = { -- Night Watch Guard
             [npcKeys.spawns] = {[zoneIDs.DUSKWOOD] = {{20.9,34.4},{23.7,33.4},{21.8,72.6},{30.0,67.4},{47.8,59.4},{66.1,34.0},{68.8,69.7},{45.58,79.16},{17,54.75}}}, -- todo polish the 1 digit spawns
