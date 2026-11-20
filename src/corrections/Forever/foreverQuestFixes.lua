@@ -1947,6 +1947,8 @@ function ForeverQuestFixes:Load()
         },
         [94007] = { -- Taming the Beast
             [questKeys.requiredClasses] = classIDs.HUNTER,
+            [questKeys.breadcrumbForQuestId] = 94978,
+            [questKeys.nextQuestInChain] = 94978,
         },
         [94013] = { -- Taming the Beast
             [questKeys.requiredClasses] = classIDs.HUNTER,
@@ -2373,6 +2375,7 @@ function ForeverQuestFixes:Load()
         },
         [94978] = { -- Taming the Beast
             [questKeys.requiredClasses] = classIDs.HUNTER,
+            [questKeys.breadcrumbs] = {94007},
             [questKeys.nextQuestInChain] = 94979,
             [questKeys.objectives] = {{{254588,nil,Questie.ICON_TYPE_INTERACT}}},
         },
