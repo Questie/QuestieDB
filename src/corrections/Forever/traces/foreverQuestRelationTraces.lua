@@ -10,7 +10,7 @@ local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
 -- Each Assumption says what the traces saw, which signals agree, how certain the relation is (very high: score 0.99+, high: 0.95+, medium: 0.9+, low) and how many characters back it (<10, 10+, 100+); relations-review.md has the exact evidence
 -- Commented-out fields are accepted relations this module does not apply; the comment above each says why
 -- Sessions aggregated: 998061
--- Generated at: 2026-11-13T12:40:19.048Z
+-- Generated at: 2026-11-18T11:23:20.159Z
 function ForeverQuestRelationTraces:Load()
     local questKeys = QuestieDB.questKeys
 
@@ -941,14 +941,14 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 197 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 197,
         -- },
-        [197] = { -- Raptor Mastery https://wowhead.com/forever/quest=197
+        -- [197] = { -- Raptor Mastery https://wowhead.com/forever/quest=197
             -- 196 "Raptor Mastery" https://wowhead.com/forever/quest=196
             -- already in QuestieDB; Assumption: offered right after 196 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {196},
             -- 208 "Big Game Hunter" https://wowhead.com/forever/quest=208
-            -- Assumption: turning it in led straight to 208 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 208,
-        },
+            -- not applied: 208 needs this quest together with 188, 193 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 208 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 208,
+        -- },
         -- [199] = { -- A Dark Threat Looms https://wowhead.com/forever/quest=199
             -- 250 "A Dark Threat Looms" https://wowhead.com/forever/quest=250
             -- already in QuestieDB; Assumption: offered right after 250 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
@@ -970,16 +970,16 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 574 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {574},
         -- },
-        [203] = { -- The Second Rebellion https://wowhead.com/forever/quest=203
+        -- [203] = { -- The Second Rebellion https://wowhead.com/forever/quest=203
             -- 574 "Special Forces" https://wowhead.com/forever/quest=574
-            -- Assumption: turning it in led straight to 574 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 574,
-        },
-        [204] = { -- Bad Medicine https://wowhead.com/forever/quest=204
+            -- not applied: 574 needs this quest together with 204 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 574 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 574,
+        -- },
+        -- [204] = { -- Bad Medicine https://wowhead.com/forever/quest=204
             -- 574 "Special Forces" https://wowhead.com/forever/quest=574
-            -- Assumption: turning it in led straight to 574 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 574,
-        },
+            -- not applied: 574 needs this quest together with 203 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 574 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 574,
+        -- },
         [205] = { -- Troll Witchery https://wowhead.com/forever/quest=205
             -- 207 "Kurzen's Mystery" https://wowhead.com/forever/quest=207
             -- already in QuestieDB; Assumption: offered right after 207 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
@@ -1270,11 +1270,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 453 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 453,
         -- },
-        [267] = { -- The Trogg Threat https://wowhead.com/forever/quest=267
+        -- [267] = { -- The Trogg Threat https://wowhead.com/forever/quest=267
             -- 217 "In Defense of the King's Lands" https://wowhead.com/forever/quest=217
-            -- Assumption: turning it in led straight to 217 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 217,
-        },
+            -- not applied: 217 needs this quest together with 263 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 217 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 217,
+        -- },
         -- [268] = { -- Return to Sven https://wowhead.com/forever/quest=268
             -- 453 "Finding the Shadowy Figure" https://wowhead.com/forever/quest=453
             -- already in QuestieDB; Assumption: offered right after 453 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -1720,11 +1720,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: 1097 is an optional lead-in to it (breadcrumbs, absence; very high; 100+ characters)
             -- [questKeys.breadcrumbs] = {1097},
         -- },
-        [354] = { -- Deaths in the Family https://wowhead.com/forever/quest=354
+        -- [354] = { -- Deaths in the Family https://wowhead.com/forever/quest=354
             -- 355 "Speak with Sevren" https://wowhead.com/forever/quest=355
-            -- Assumption: turning it in led straight to 355 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 355,
-        },
+            -- not applied: 355 needs this quest together with 362 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 355 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 355,
+        -- },
         -- [355] = { -- Speak with Sevren https://wowhead.com/forever/quest=355
             -- 354 "Deaths in the Family" https://wowhead.com/forever/quest=354
             -- 362 "The Haunted Mills" https://wowhead.com/forever/quest=362
@@ -1760,11 +1760,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 359 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {359},
         -- },
-        [362] = { -- The Haunted Mills https://wowhead.com/forever/quest=362
+        -- [362] = { -- The Haunted Mills https://wowhead.com/forever/quest=362
             -- 355 "Speak with Sevren" https://wowhead.com/forever/quest=355
-            -- Assumption: turning it in led straight to 355 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 355,
-        },
+            -- not applied: 355 needs this quest together with 354 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 355 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 355,
+        -- },
         -- [363] = { -- Rude Awakening https://wowhead.com/forever/quest=363
             -- 364 "The Mindless Ones" https://wowhead.com/forever/quest=364
             -- already in QuestieDB; Assumption: implied by its breadcrumb to 364 (high)
@@ -2294,14 +2294,14 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 455 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {455},
         -- },
-        [474] = { -- Defeat Nek'rosh https://wowhead.com/forever/quest=474
+        -- [474] = { -- Defeat Nek'rosh https://wowhead.com/forever/quest=474
             -- 465 "Nek'rosh's Gambit" https://wowhead.com/forever/quest=465
             -- already in QuestieDB; Assumption: offered right after 465 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {465},
             -- 98230 "This Land Was Their Land" https://wowhead.com/forever/quest=98230
-            -- Assumption: turning it in led straight to 98230 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 98230,
-        },
+            -- not applied: 98230 needs this quest together with 98223 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 98230 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98230,
+        -- },
         -- [475] = { -- A Troubling Breeze https://wowhead.com/forever/quest=475
             -- 476 "Gnarlpine Corruption" https://wowhead.com/forever/quest=476
             -- already in QuestieDB; Assumption: turning it in led straight to 476 (handoff; high; 100+ characters)
@@ -2861,14 +2861,14 @@ function ForeverQuestRelationTraces:Load()
             -- not applied: handoff saw it contradicted more often than supported; Assumption: turning it in led straight to 588 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 588,
         -- },
-        [586] = { -- Speaking with Gan'zulah https://wowhead.com/forever/quest=586
+        -- [586] = { -- Speaking with Gan'zulah https://wowhead.com/forever/quest=586
             -- 584 "Bloodscalp Clan Heads" https://wowhead.com/forever/quest=584
             -- already in QuestieDB; Assumption: offered right after 584 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {584},
             -- 588 "The Fate of Yenniku" https://wowhead.com/forever/quest=588
-            -- Assumption: turning it in led straight to 588 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 588,
-        },
+            -- not applied: 588 needs this quest together with 585 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 588 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 588,
+        -- },
         -- [588] = { -- The Fate of Yenniku https://wowhead.com/forever/quest=588
             -- 585 "Speaking with Nezzliok" https://wowhead.com/forever/quest=585
             -- 586 "Speaking with Gan'zulah" https://wowhead.com/forever/quest=586
@@ -5088,24 +5088,24 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1076 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1076},
         -- },
-        [1079] = { -- Covert Ops - Alpha https://wowhead.com/forever/quest=1079
+        -- [1079] = { -- Covert Ops - Alpha https://wowhead.com/forever/quest=1079
             -- 1074 "Ineptitude + Chemicals = Fun" https://wowhead.com/forever/quest=1074
             -- 1077 "Special Delivery for Gaxim" https://wowhead.com/forever/quest=1077
             -- already in QuestieDB; Assumption: offered right after 1074, 1077 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {1074,1077},
             -- 1091 "Kaela's Update" https://wowhead.com/forever/quest=1091
-            -- Assumption: turning it in led straight to 1091 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 1091,
-        },
-        [1080] = { -- Covert Ops - Beta https://wowhead.com/forever/quest=1080
+            -- not applied: 1091 needs this quest together with 1080 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 1091 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 1091,
+        -- },
+        -- [1080] = { -- Covert Ops - Beta https://wowhead.com/forever/quest=1080
             -- 1074 "Ineptitude + Chemicals = Fun" https://wowhead.com/forever/quest=1074
             -- 1077 "Special Delivery for Gaxim" https://wowhead.com/forever/quest=1077
             -- already in QuestieDB; Assumption: offered right after 1074, 1077 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestGroup] = {1074,1077},
             -- 1091 "Kaela's Update" https://wowhead.com/forever/quest=1091
-            -- Assumption: turning it in led straight to 1091 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 1091,
-        },
+            -- not applied: 1091 needs this quest together with 1079 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 1091 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 1091,
+        -- },
         -- [1081] = { -- Reception from Tyrande https://wowhead.com/forever/quest=1081
             -- 1082 "Update for Sentinel Thenysil" https://wowhead.com/forever/quest=1082
             -- already in QuestieDB; Assumption: offered right after 1082 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
@@ -5120,22 +5120,22 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 1081 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 1081,
         -- },
-        [1083] = { -- Enraged Spirits https://wowhead.com/forever/quest=1083
+        -- [1083] = { -- Enraged Spirits https://wowhead.com/forever/quest=1083
             -- 1091 "Kaela's Update" https://wowhead.com/forever/quest=1091
             -- already in QuestieDB; Assumption: offered right after 1091 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1091},
             -- 1082 "Update for Sentinel Thenysil" https://wowhead.com/forever/quest=1082
-            -- Assumption: turning it in led straight to 1082 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 1082,
-        },
-        [1084] = { -- Wounded Ancients https://wowhead.com/forever/quest=1084
+            -- not applied: 1082 needs this quest together with 1084 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 1082 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 1082,
+        -- },
+        -- [1084] = { -- Wounded Ancients https://wowhead.com/forever/quest=1084
             -- 1091 "Kaela's Update" https://wowhead.com/forever/quest=1091
             -- already in QuestieDB; Assumption: 1091 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1091},
             -- 1082 "Update for Sentinel Thenysil" https://wowhead.com/forever/quest=1082
-            -- Assumption: turning it in led straight to 1082 (handoff; high; 10+ characters)
-            [questKeys.nextQuestInChain] = 1082,
-        },
+            -- not applied: 1082 needs this quest together with 1083 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 1082 (handoff; high; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 1082,
+        -- },
         [1085] = { -- On Guard in Stonetalon https://wowhead.com/forever/quest=1085
             -- 1070 "On Guard in Stonetalon" https://wowhead.com/forever/quest=1070
             -- Assumption: offered right after 1070 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
@@ -5227,11 +5227,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1100 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1100},
         -- },
-        [1104] = { -- Salt Flat Venom https://wowhead.com/forever/quest=1104
+        -- [1104] = { -- Salt Flat Venom https://wowhead.com/forever/quest=1104
             -- 1106 "Martek the Exiled" https://wowhead.com/forever/quest=1106
-            -- Assumption: turning it in led straight to 1106 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 1106,
-        },
+            -- not applied: 1106 needs this quest together with 1105 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 1106 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 1106,
+        -- },
         -- [1106] = { -- Martek the Exiled https://wowhead.com/forever/quest=1106
             -- 1104 "Salt Flat Venom" https://wowhead.com/forever/quest=1104
             -- 1105 "Hardened Shells" https://wowhead.com/forever/quest=1105
@@ -6131,14 +6131,14 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 1435 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1435,
         -- },
-        [1434] = { -- Befouled by Satyr https://wowhead.com/forever/quest=1434
+        -- [1434] = { -- Befouled by Satyr https://wowhead.com/forever/quest=1434
             -- 1432 "Alliance Relations" https://wowhead.com/forever/quest=1432
             -- already in QuestieDB; Assumption: 1432 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1432},
             -- 1436 "Alliance Relations" https://wowhead.com/forever/quest=1436
-            -- Assumption: turning it in led straight to 1436 (handoff; high; 10+ characters)
-            [questKeys.nextQuestInChain] = 1436,
-        },
+            -- not applied: 1436 needs this quest together with 1435 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 1436 (handoff; high; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 1436,
+        -- },
         -- [1435] = { -- The Burning of Spirits https://wowhead.com/forever/quest=1435
             -- 1433 "Alliance Relations" https://wowhead.com/forever/quest=1433
             -- already in QuestieDB; Assumption: offered right after 1433 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -13769,8 +13769,8 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: offered right after 88807 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             [questKeys.preQuestSingle] = {88807},
             -- 88813 "The Head of the Serpent" https://wowhead.com/forever/quest=88813
-            -- Assumption: turning it in led straight to 88813 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 88813,
+            -- not applied: 88813 needs this quest together with 88809 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 88813 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 88813,
         },
         [88813] = { -- The Head of the Serpent https://wowhead.com/forever/quest=88813
             -- 88809 "Preserving Eldarath" https://wowhead.com/forever/quest=88809
@@ -14030,11 +14030,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 91758 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 91758,
         -- },
-        [91755] = { -- Leaves to Ligatures https://wowhead.com/forever/quest=91755
+        -- [91755] = { -- Leaves to Ligatures https://wowhead.com/forever/quest=91755
             -- 91770 "Bark Bite" https://wowhead.com/forever/quest=91770
-            -- Assumption: turning it in led straight to 91770 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 91770,
-        },
+            -- not applied: 91770 needs this quest together with 91754 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 91770 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 91770,
+        -- },
         -- [91758] = { -- Follow That Kobold! https://wowhead.com/forever/quest=91758
             -- 91752 "The Big Picture" https://wowhead.com/forever/quest=91752
             -- already in QuestieDB; Assumption: offered right after 91752 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -14449,14 +14449,14 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 92461 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92461},
         -- },
-        [92550] = { -- Havoc in the Highlands https://wowhead.com/forever/quest=92550
+        -- [92550] = { -- Havoc in the Highlands https://wowhead.com/forever/quest=92550
             -- 92528 "Among the Faithful" https://wowhead.com/forever/quest=92528
             -- already in QuestieDB; Assumption: offered right after 92528 was turned in (handoff, offer-set, absence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92528},
             -- 92579 "To Valanaar" https://wowhead.com/forever/quest=92579
-            -- Assumption: turning it in led straight to 92579 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 92579,
-        },
+            -- not applied: 92579 needs this quest together with 93927 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 92579 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 92579,
+        -- },
         -- [92579] = { -- To Valanaar https://wowhead.com/forever/quest=92579
             -- 92550 "Havoc in the Highlands" https://wowhead.com/forever/quest=92550
             -- 93927 "A Last Request" https://wowhead.com/forever/quest=93927
@@ -14526,27 +14526,27 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: turning it in led straight to 92682 (handoff; high; 100+ characters)
             [questKeys.nextQuestInChain] = 92682,
         },
-        [92682] = { -- Make Yourself Useful https://wowhead.com/forever/quest=92682
+        -- [92682] = { -- Make Yourself Useful https://wowhead.com/forever/quest=92682
             -- 92679 "Blood Tithe" https://wowhead.com/forever/quest=92679
             -- already in QuestieDB; Assumption: offered right after 92679 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92679},
             -- 92685 "The Hills Have Eyes" https://wowhead.com/forever/quest=92685
-            -- Assumption: turning it in led straight to 92685 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 92685,
-        },
+            -- not applied: 92685 needs this quest together with 92683, 92684 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 92685 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 92685,
+        -- },
         -- [92683] = { -- Flutterfly Dust https://wowhead.com/forever/quest=92683
             -- 92679 "Blood Tithe" https://wowhead.com/forever/quest=92679
             -- already in QuestieDB; Assumption: offered right after 92679 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92679},
         -- },
-        [92684] = { -- Ornery Ornery Galestriders https://wowhead.com/forever/quest=92684
+        -- [92684] = { -- Ornery Ornery Galestriders https://wowhead.com/forever/quest=92684
             -- 92679 "Blood Tithe" https://wowhead.com/forever/quest=92679
             -- already in QuestieDB; Assumption: offered right after 92679 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92679},
             -- 92685 "The Hills Have Eyes" https://wowhead.com/forever/quest=92685
-            -- Assumption: turning it in led straight to 92685 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 92685,
-        },
+            -- not applied: 92685 needs this quest together with 92682, 92683 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 92685 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 92685,
+        -- },
         -- [92685] = { -- The Hills Have Eyes https://wowhead.com/forever/quest=92685
             -- 92682 "Make Yourself Useful" https://wowhead.com/forever/quest=92682
             -- 92683 "Flutterfly Dust" https://wowhead.com/forever/quest=92683
@@ -14740,16 +14740,16 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: offered right after 92841 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
             [questKeys.preQuestSingle] = {92841},
             -- 92847 "Corrupting Tears" https://wowhead.com/forever/quest=92847
-            -- Assumption: turning it in led straight to 92847 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 92847,
+            -- not applied: 92847 needs this quest together with 92846 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 92847 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 92847,
         },
         [92846] = { -- Outcast Necromancers https://wowhead.com/forever/quest=92846
             -- 92841 "Valley of Bones" https://wowhead.com/forever/quest=92841
             -- Assumption: 92841 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters)
             [questKeys.preQuestSingle] = {92841},
             -- 92847 "Corrupting Tears" https://wowhead.com/forever/quest=92847
-            -- Assumption: turning it in led straight to 92847 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 92847,
+            -- not applied: 92847 needs this quest together with 92844 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 92847 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 92847,
         },
         [92847] = { -- Corrupting Tears https://wowhead.com/forever/quest=92847
             -- 92844 "Mountain of Bones" https://wowhead.com/forever/quest=92844
@@ -14869,8 +14869,8 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: offered right after 93034 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             [questKeys.preQuestSingle] = {93034},
             -- 93041 "Facing the Truth" https://wowhead.com/forever/quest=93041
-            -- Assumption: turning it in led straight to 93041 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 93041,
+            -- not applied: 93041 needs this quest together with 93037 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 93041 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 93041,
         },
         -- [93036] = { -- Infiltrating the Cult https://wowhead.com/forever/quest=93036
             -- 92517 "The Criminal Element" https://wowhead.com/forever/quest=92517
@@ -14885,8 +14885,8 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: 93034 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
             [questKeys.preQuestSingle] = {93034},
             -- 93041 "Facing the Truth" https://wowhead.com/forever/quest=93041
-            -- Assumption: turning it in led straight to 93041 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 93041,
+            -- not applied: 93041 needs this quest together with 93035 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 93041 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 93041,
         },
         [93041] = { -- Facing the Truth https://wowhead.com/forever/quest=93041
             -- 93035 "Ravaging Ravagers" https://wowhead.com/forever/quest=93035
@@ -15208,11 +15208,11 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: turning it in led straight to 93684 (handoff; medium; 10+ characters)
             [questKeys.nextQuestInChain] = 93684,
         },
-        [93680] = { -- Key to the City https://wowhead.com/forever/quest=93680
+        -- [93680] = { -- Key to the City https://wowhead.com/forever/quest=93680
             -- 545 "Dalaran Patrols" https://wowhead.com/forever/quest=545
-            -- Assumption: turning it in led straight to 545 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 545,
-        },
+            -- not applied: 545 needs this quest together with 544 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 545 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 545,
+        -- },
         [93684] = { -- The Found One https://wowhead.com/forever/quest=93684
             -- 93679 "Visions of Another" https://wowhead.com/forever/quest=93679
             -- Assumption: offered right after 93679 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
@@ -15723,8 +15723,8 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: 94483 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
             [questKeys.preQuestSingle] = {94483},
             -- 94727 "Digging for Answers" https://wowhead.com/forever/quest=94727
-            -- Assumption: turning it in led straight to 94727 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94727,
+            -- not applied: 94727 needs this quest together with 94672 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 94727 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94727,
         },
         [94727] = { -- Digging for Answers https://wowhead.com/forever/quest=94727
             -- 94672 "Encroaching Twilight" https://wowhead.com/forever/quest=94672
@@ -15774,16 +15774,16 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: 94744 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
             [questKeys.preQuestSingle] = {94744},
             -- 94768 "Bring Me His Head" https://wowhead.com/forever/quest=94768
-            -- Assumption: turning it in led straight to 94768 (handoff; high; 10+ characters)
-            [questKeys.nextQuestInChain] = 94768,
+            -- not applied: 94768 needs this quest together with 94748 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 94768 (handoff; high; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 94768,
         },
         [94748] = { -- Break Their Chains https://wowhead.com/forever/quest=94748
             -- 94744 "The Wayward Warrior" https://wowhead.com/forever/quest=94744
             -- Assumption: 94744 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
             [questKeys.preQuestSingle] = {94744},
             -- 94768 "Bring Me His Head" https://wowhead.com/forever/quest=94768
-            -- Assumption: turning it in led straight to 94768 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94768,
+            -- not applied: 94768 needs this quest together with 94745 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 94768 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94768,
         },
         [94768] = { -- Bring Me His Head https://wowhead.com/forever/quest=94768
             -- 94745 "Carving a Path" https://wowhead.com/forever/quest=94745
@@ -16069,8 +16069,8 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: 94886 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
             [questKeys.preQuestSingle] = {94886},
             -- 94890 "Bring Me His Head" https://wowhead.com/forever/quest=94890
-            -- Assumption: turning it in led straight to 94890 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 94890,
+            -- not applied: 94890 needs this quest together with 94889 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 94890 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 94890,
         },
         [94889] = { -- Carving a Path https://wowhead.com/forever/quest=94889
             -- 94886 "The Western Front" https://wowhead.com/forever/quest=94886
@@ -16303,8 +16303,8 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: offered right after 94924 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             [questKeys.preQuestSingle] = {94924},
             -- 95066 "The Rog'mar Situation" https://wowhead.com/forever/quest=95066
-            -- Assumption: turning it in led straight to 95066 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 95066,
+            -- not applied: 95066 needs this quest together with 95426 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 95066 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 95066,
         },
         [95066] = { -- The Rog'mar Situation https://wowhead.com/forever/quest=95066
             -- 95064 "Preventative Measures" https://wowhead.com/forever/quest=95064
@@ -16678,8 +16678,8 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: offered right after 94924 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             [questKeys.preQuestSingle] = {94924},
             -- 95066 "The Rog'mar Situation" https://wowhead.com/forever/quest=95066
-            -- Assumption: turning it in led straight to 95066 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 95066,
+            -- not applied: 95066 needs this quest together with 95064 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 95066 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95066,
         },
         [95427] = { -- Twilight No More! https://wowhead.com/forever/quest=95427
             -- 95601 "The Purple Ones" https://wowhead.com/forever/quest=95601
@@ -16749,11 +16749,11 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: turning it in led straight to 95621 (handoff; high; 100+ characters)
             [questKeys.nextQuestInChain] = 95621,
         },
-        [95507] = { -- Vrang's Game https://wowhead.com/forever/quest=95507
+        -- [95507] = { -- Vrang's Game https://wowhead.com/forever/quest=95507
             -- 95495 "The Hermit Tanner" https://wowhead.com/forever/quest=95495
-            -- Assumption: turning it in led straight to 95495 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95495,
-        },
+            -- not applied: 95495 needs this quest together with 95494 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 95495 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95495,
+        -- },
         [95508] = { -- Unwelcome Guests https://wowhead.com/forever/quest=95508
             -- 95621 "Trouble in the Valley" https://wowhead.com/forever/quest=95621
             -- Assumption: offered right after 95621 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -16800,16 +16800,16 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: offered right after 95417 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             [questKeys.preQuestSingle] = {95417},
             -- 95427 "Twilight No More!" https://wowhead.com/forever/quest=95427
-            -- Assumption: turning it in led straight to 95427 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95427,
+            -- not applied: 95427 needs this quest together with 95602 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 95427 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95427,
         },
         [95602] = { -- Sickening Lights https://wowhead.com/forever/quest=95602
             -- 94727 "Digging for Answers" https://wowhead.com/forever/quest=94727
             -- Assumption: offered right after 94727 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             [questKeys.preQuestSingle] = {94727},
             -- 95427 "Twilight No More!" https://wowhead.com/forever/quest=95427
-            -- Assumption: turning it in led straight to 95427 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 95427,
+            -- not applied: 95427 needs this quest together with 95601 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 95427 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95427,
         },
         [95603] = { -- Bats in the Belfry https://wowhead.com/forever/quest=95603
             -- 95613 "Keeping the Light On" https://wowhead.com/forever/quest=95613
@@ -16839,16 +16839,16 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 95495 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {95495},
         -- },
-        [95642] = { -- Abominable Magics https://wowhead.com/forever/quest=95642
+        -- [95642] = { -- Abominable Magics https://wowhead.com/forever/quest=95642
             -- 95562 "Cut Off the Heads" https://wowhead.com/forever/quest=95562
-            -- Assumption: turning it in led straight to 95562 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95562,
-        },
-        [95643] = { -- Indiscriminate Purge https://wowhead.com/forever/quest=95643
+            -- not applied: 95562 needs this quest together with 95643 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 95562 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95562,
+        -- },
+        -- [95643] = { -- Indiscriminate Purge https://wowhead.com/forever/quest=95643
             -- 95562 "Cut Off the Heads" https://wowhead.com/forever/quest=95562
-            -- Assumption: turning it in led straight to 95562 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95562,
-        },
+            -- not applied: 95562 needs this quest together with 95642 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 95562 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95562,
+        -- },
         [95646] = { -- Horrors in the Highland https://wowhead.com/forever/quest=95646
             -- 275 "Blisters on The Land" https://wowhead.com/forever/quest=275
             -- Assumption: offered right after 275 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -17009,14 +17009,14 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: offered right after 95957 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             [questKeys.preQuestSingle] = {95957},
         },
-        [95981] = { -- Watching the Roads https://wowhead.com/forever/quest=95981
+        -- [95981] = { -- Watching the Roads https://wowhead.com/forever/quest=95981
             -- 482 "Dalaran's Intentions" https://wowhead.com/forever/quest=482
             -- already in QuestieDB; Assumption: offered right after 482 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {482},
             -- 480 "The Weaver" https://wowhead.com/forever/quest=480
-            -- Assumption: turning it in led straight to 480 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 480,
-        },
+            -- not applied: 480 needs this quest together with 479 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 480 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 480,
+        -- },
         [95983] = { -- A Feast for Buzzards https://wowhead.com/forever/quest=95983
             -- 95984 "Song of the Strider" https://wowhead.com/forever/quest=95984
             -- Assumption: turning it in led straight to 95984 (handoff; high; 100+ characters)
@@ -18451,11 +18451,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 97249 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {97249},
         -- },
-        [97328] = { -- Anything of Value https://wowhead.com/forever/quest=97328
+        -- [97328] = { -- Anything of Value https://wowhead.com/forever/quest=97328
             -- 97332 "Twice Misplaced Trust" https://wowhead.com/forever/quest=97332
-            -- Assumption: turning it in led straight to 97332 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 97332,
-        },
+            -- not applied: 97332 needs this quest together with 97331 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 97332 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 97332,
+        -- },
         [97329] = { -- Where's the Key? https://wowhead.com/forever/quest=97329
             -- 97331 "Zimmix's Great Escape" https://wowhead.com/forever/quest=97331
             -- Assumption: turning it in led straight to 97331 (handoff; high; 100+ characters)
@@ -18466,8 +18466,8 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: offered right after 97329 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             [questKeys.preQuestSingle] = {97329},
             -- 97332 "Twice Misplaced Trust" https://wowhead.com/forever/quest=97332
-            -- Assumption: turning it in led straight to 97332 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 97332,
+            -- not applied: 97332 needs this quest together with 97328 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 97332 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 97332,
         },
         [97332] = { -- Twice Misplaced Trust https://wowhead.com/forever/quest=97332
             -- 97328 "Anything of Value" https://wowhead.com/forever/quest=97328
@@ -19903,16 +19903,16 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: offered right after 98191 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             [questKeys.preQuestSingle] = {98191},
         },
-        [98221] = { -- From the Ashes https://wowhead.com/forever/quest=98221
+        -- [98221] = { -- From the Ashes https://wowhead.com/forever/quest=98221
             -- 465 "Nek'rosh's Gambit" https://wowhead.com/forever/quest=465
-            -- Assumption: turning it in led straight to 465 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 465,
-        },
-        [98223] = { -- Old Habits https://wowhead.com/forever/quest=98223
+            -- not applied: 465 needs this quest together with 464 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 465 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 465,
+        -- },
+        -- [98223] = { -- Old Habits https://wowhead.com/forever/quest=98223
             -- 98230 "This Land Was Their Land" https://wowhead.com/forever/quest=98230
-            -- Assumption: turning it in led straight to 98230 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98230,
-        },
+            -- not applied: 98230 needs this quest together with 474 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 98230 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98230,
+        -- },
         [98230] = { -- This Land Was Their Land https://wowhead.com/forever/quest=98230
             -- 474 "Defeat Nek'rosh" https://wowhead.com/forever/quest=474
             -- 98223 "Old Habits" https://wowhead.com/forever/quest=98223
@@ -19927,11 +19927,11 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: turning it in led straight to 98245 (handoff, absence; medium; 100+ characters)
             [questKeys.nextQuestInChain] = 98245,
         },
-        [98246] = { -- Trying Times https://wowhead.com/forever/quest=98246
+        -- [98246] = { -- Trying Times https://wowhead.com/forever/quest=98246
             -- 98291 "Death to the Dragonmaw" https://wowhead.com/forever/quest=98291
-            -- Assumption: turning it in led straight to 98291 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98291,
-        },
+            -- not applied: 98291 needs this quest together with 98245 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 98291 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98291,
+        -- },
         [98247] = { -- Shipping Label https://wowhead.com/forever/quest=98247
             -- 98248 "Shipping Label" https://wowhead.com/forever/quest=98248
             -- Assumption: the server completes it and 98248 together (cooccurrence; very high; 100+ characters)
@@ -20160,11 +20160,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 89 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {89},
         -- },
-        [98387] = { -- Blackrock Blockade https://wowhead.com/forever/quest=98387
+        -- [98387] = { -- Blackrock Blockade https://wowhead.com/forever/quest=98387
             -- 19 "Tharil'zun" https://wowhead.com/forever/quest=19
-            -- Assumption: turning it in led straight to 19 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 19,
-        },
+            -- not applied: 19 needs this quest together with 20 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 19 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 19,
+        -- },
         -- [98389] = { -- A Light in the Darkness https://wowhead.com/forever/quest=98389
             -- 376 "The Damned" https://wowhead.com/forever/quest=376
             -- already in QuestieDB; Assumption: 376 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
