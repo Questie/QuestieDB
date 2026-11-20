@@ -2697,6 +2697,13 @@ function ForeverQuestFixes:Load()
         [95643] = { -- Indiscriminate Purge
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
         },
+        [95647] = { -- Lost in the Thicket Things
+            [questKeys.breadcrumbs] = {95737},
+        },
+        [95737] = { -- Seeking Caitlin
+            [questKeys.breadcrumbForQuestId] = 95647,
+            [questKeys.nextQuestInChain] = 95647,
+        },
         [95753] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
