@@ -55,6 +55,13 @@ fixture.write(path, {
       [quest.name] = "Taming the Beast",
       [quest.requiredRaces] = 12884901888,
     },
+    [95036] = {
+      [quest.childQuests] = {95042},
+    },
+    [95042] = {
+      [quest.specialFlags] = 1,
+      [quest.parentQuest] = 95036,
+    },
     [97286] = {
       [quest.name] = "Research Access",
       [quest.requiredRaces] = 0,

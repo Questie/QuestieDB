@@ -2414,6 +2414,11 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 95111,
             -- Speak with Trevan for notes, then gather materials
             [questKeys.objectives] = {{{248840,nil,Questie.ICON_TYPE_TALK}},nil,{{267454},{6994},{267361},{272448}}},
+            [questKeys.childQuests] = {95042},
+        },
+        [95042] = { -- Seeking the Kor Gem
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.parentQuest] = 95036,
         },
         [95059] = { -- Frazzlespark's Crate
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
