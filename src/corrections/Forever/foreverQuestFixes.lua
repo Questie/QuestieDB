@@ -84,6 +84,9 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {},
             [questKeys.preQuestGroup] = {287,98323},
         },
+        [304] = { -- A Grim Task
+            [questKeys.breadcrumbs] = {472},
+        },
         [324] = { -- The Lost Ingots
             [questKeys.exclusiveTo] = {526},
         },
@@ -113,6 +116,10 @@ function ForeverQuestFixes:Load()
         },
         [465] = { -- Nek'rosh's Gambit
             [questKeys.nextQuestInChain] = 0,
+        },
+        [472] = { -- Fall of Dun Modr
+            [questKeys.breadcrumbForQuestId] = 304,
+            [questKeys.nextQuestInChain] = 304,
         },
         [479] = { -- Ambermill Investigations
             [questKeys.nextQuestInChain] = 0,
