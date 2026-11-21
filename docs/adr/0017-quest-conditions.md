@@ -137,3 +137,9 @@ when to evaluate.
 
 Contract 5 adds `LibQuestieDB.Conditions` and the Quest `conditions` field. Consumers that
 evaluate conditions must require contract 5.
+
+The vocabulary is part of the contract. Adding a condition function is additive: bump
+`contractVersion` and keep `minSupportedContract`. Removing or renaming one is breaking, because
+a consumer's functions table that names it raises an error and a consumer reading `Explain`
+trees may match on it. It needs `removedIn` in the contract surface and a raised
+`minSupportedContract`.

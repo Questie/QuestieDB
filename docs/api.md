@@ -966,7 +966,9 @@ provider fails the version check before the lookup.
 
 Contract 5 adds the Quest `conditions` field and `LibQuestieDB.Conditions`. Contracts 1 to
 4 remain supported. A consumer that evaluates conditions must request contract 5 so an older
-provider fails the version check before the lookup.
+provider fails the version check before the lookup. The condition vocabulary is part of the
+contract: a new function is an additive bump, and removing or renaming one is breaking
+(ADR 0017).
 
 The check is a **range**: `RequireContract(v)` passes for any
 `minSupportedContract <= v <= contractVersion`, so a consumer built against an older
