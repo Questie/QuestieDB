@@ -2697,6 +2697,9 @@ function ForeverQuestFixes:Load()
         [95643] = { -- Indiscriminate Purge
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
         },
+        [95737] = { -- Seeking Caitlin
+            [questKeys.breadcrumbForQuestId] = 95647, -- wowhead
+        },
         [95753] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
