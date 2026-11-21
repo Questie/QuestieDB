@@ -284,8 +284,11 @@ local function call(functions, name, ...)
   else
     result = base[name](...)
   end
-  if result == nil then return nil end
-  return result and true or false
+  -- Coercing by truthiness would read Questie-style 0 (incomplete) or -1 (failed) as true.
+  if result ~= nil and type(result) ~= "boolean" then
+    error(("%s returned a %s; condition functions return true, false, or nil"):format(name, type(result)), 0)
+  end
+  return result
 end
 
 ---Reject a caller's functions table that names anything outside the vocabulary.
