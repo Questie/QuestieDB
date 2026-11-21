@@ -64,6 +64,9 @@ function ForeverItemFixes:Load()
         [6889] = { -- Small Egg
             [itemKeys.npcDrops_add] = {251261,251284,251291},
         },
+        [9299] = { -- Thermaplugg's Safe Combination
+            [itemKeys.npcDrops] = {7800},
+        },
         [14395] = { -- Spells of Shadow
             [itemKeys.npcDrops_remove] = {238461},
         },

@@ -4146,10 +4146,10 @@ function QuestieQuestFixes:Load()
             [questKeys.breadcrumbForQuestId] = 6624, -- #1723
         },
         [6627] = { -- Test of Lore
-            [questKeys.triggerEnd] = {"Answer Braug Dimspirit's question correctly", {[zoneIDs.STONETALON_MOUNTAINS] = {{78.75, 45.63}}}},
+            [questKeys.objectives] = {{{4489,nil,Questie.ICON_TYPE_TALK}}},
         },
         [6628] = { -- Test of Lore
-            [questKeys.triggerEnd] = {"Answer Parqual Fintallas' question correctly", {[zoneIDs.UNDERCITY] = {{57.72, 65.22}}}},
+            [questKeys.objectives] = {{{4488,nil,Questie.ICON_TYPE_TALK}}},
         },
         [6641] = { -- Vorsha the Lasher
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Put the fire out"), 0, {{"object", 178247}}}},
@@ -6924,6 +6924,9 @@ function QuestieQuestFixes:LoadFactionFixes()
         [2861] = { -- Tabetha's Task
             [questKeys.startedBy] = {{4568, 5885}},
         },
+        [2945] = { -- Grime-Encrusted Ring
+            [questKeys.nextQuestInChain] = 2949,
+        },
         [2954] = { -- The Stone Watcher
             [questKeys.nextQuestInChain] = 2967,
         },
@@ -7213,6 +7216,9 @@ function QuestieQuestFixes:LoadFactionFixes()
         },
         [2861] = { -- Tabetha's Task
             [questKeys.startedBy] = {{5144, 5497}},
+        },
+        [2945] = { -- Grime-Encrusted Ring
+            [questKeys.nextQuestInChain] = 2947,
         },
         [2954] = { -- The Stone Watcher
             [questKeys.nextQuestInChain] = 2977,

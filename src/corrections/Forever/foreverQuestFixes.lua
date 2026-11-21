@@ -256,6 +256,9 @@ function ForeverQuestFixes:Load()
         [1046] = { -- Raene's Cleansing
             [questKeys.objectives] = {nil,nil,{{5462}}},
         },
+        [1049] = { -- Compendium of the Fallen
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE - raceIDs.UNDEAD,
+        },
         [1079] = { -- Covert Ops - Alpha
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Place the NG-5 Explosives (Blue)"), 0, {{"object", 19591}}}},
         },
@@ -274,6 +277,9 @@ function ForeverQuestFixes:Load()
         },
         [1127] = { -- Fool's Stout
             [questKeys.parentQuest] = 0,
+        },
+        [1149] = { -- Test of Faith
+            [questKeys.triggerEnd] = {},
         },
         [1205] = { -- Deadmire
             [questKeys.nextQuestInChain] = 97378,
@@ -460,6 +466,14 @@ function ForeverQuestFixes:Load()
         },
         [6621] = { -- King of the Foulweald
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_SLAY, l10n("Kill Chief Murgut"), 0, {{"monster", 12918}}}},
+        },
+        [6627] = { -- Test of Lore
+            [questKeys.triggerEnd] = {},
+            [questKeys.objectives] = {{{4489,nil,Questie.ICON_TYPE_TALK}}},
+        },
+        [6628] = { -- Test of Lore
+            [questKeys.triggerEnd] = {},
+            [questKeys.objectives] = {{{4488,nil,Questie.ICON_TYPE_TALK}}},
         },
         [6641] = { -- Vorsha the Lasher
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Put the fire out"), 0, {{"object", 178247}}}},
@@ -684,10 +698,12 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.requiredClasses] = classIDs.ROGUE,
             [questKeys.nextQuestInChain] = 78307,
+            [questKeys.childQuests] = {78270},
         },
         [78270] = { -- Goblin Lockpicks
             [questKeys.questLevel] = 23,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.parentQuest] = 78261,
         },
         [78307] = { -- The Horn of Xelthos
             [questKeys.requiredLevel] = 1,
@@ -6362,6 +6378,9 @@ function ForeverQuestFixes:LoadDynamic()
     local playerClass = UnitClassBase("player")
 
     local questFixesHorde = {
+        [2945] = { -- Grime-Encrusted Ring
+            [questKeys.nextQuestInChain] = 2949,
+        },
         [78124] = { -- Nar'thalas Almanac
             [questKeys.startedBy] = {{211022},{409496}},
             [questKeys.finishedBy] = {{211022}},
@@ -6653,6 +6672,9 @@ function ForeverQuestFixes:LoadDynamic()
     }
 
     local questFixesAlliance = {
+        [2945] = { -- Grime-Encrusted Ring
+            [questKeys.nextQuestInChain] = 2947,
+        },
         [78124] = { -- Nar'thalas Almanac
             [questKeys.startedBy] = {{211033},{409496}},
             [questKeys.finishedBy] = {{211033}},
