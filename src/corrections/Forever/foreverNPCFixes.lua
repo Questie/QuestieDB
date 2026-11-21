@@ -1100,6 +1100,10 @@ function ForeverNpcFixes:Load()
         [269127] = { -- Image of Archmage Modera
             [npcKeys.spawns] = {[zoneIDs.SILVERPINE_FOREST] = {{68.62,45.13}}},
         },
+        -- [270094] = { -- Stormheart -- TODO spawns + patrol
+            -- [npcKeys.spawns] = {[400] = {{50.4, 46.3}, {51.4, 48.3}, {51.5, 48.4}, {51.5, 48.5}, {54.5, 45.6}, {56.9, 56.2}, {57.9, 56.3}, {59.1, 56.6}, {64.2, 53.4}}},
+            -- [npcKeys.waypoints] = zoneIDs.THOUSAND_NEEDLES,
+        -- },
         [270201] = { -- Al'Aketh Brawler
             [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
         },
