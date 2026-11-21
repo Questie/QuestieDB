@@ -5635,8 +5635,10 @@ function ForeverQuestFixes:Load()
             [questKeys.breadcrumbForQuestId] = 97243, -- to be tested
             [questKeys.nextQuestInChain] = 97243,
         },
-        [98529] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        [98529] = { -- Junkboxes Needed
+            [questKeys.requiredLevel] = 50,
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [98545] = { -- Leonid's Letter
             [questKeys.preQuestSingle] = {96896},
