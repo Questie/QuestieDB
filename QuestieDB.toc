@@ -577,6 +577,9 @@ l10n\Forever\traces\lookupObjects\zhTW.lua [ExcludeLoadGameType vanilla, tbc, wr
 # --- Static Translation Corrections ---
 l10n\lookupOverrides.lua [AllowLoadGameType tbc, wrath, cata, mists]
 
+# --- Forever Static Translation Corrections ---
+l10n\Forever\lookupOverrides.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+
 # --- Lookup loader teardown ---
 src\l10n\source\_end.lua
 
