@@ -17,7 +17,8 @@ Each entity directory has nine locale files: `deDE`, `esES`, `esMX`, `frFR`, `ko
 `ruRU`, `zhCN`, and `zhTW`. English comes from the base entity data.
 
 `lookupOverrides.lua` supplies Static Translation Corrections for Quest and Item lookups on
-TBC, Wrath, Cata, and Mists. It does not apply on Vanilla or Forever. Its rows replace whole
+TBC, Wrath, Cata, and Mists. It does not apply on Vanilla or Forever. `Forever/lookupOverrides.lua`
+is the Forever counterpart; it currently corrects Item names only. Its rows replace whole
 lookup rows: a name-only quest override clears any old translated objectives. The input adapter in
 `generator/l10n-inputs.lua` preserves that behavior with explicit field clearing.
 
