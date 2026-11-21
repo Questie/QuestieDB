@@ -797,6 +797,9 @@ name. Write races and classes with `raceKeys` and `classKeys`, never as numbers.
 `C.HasRep(factionIDs.THE_ORACLES, C.standing.HONORED)`. These are condition ranks, one below the
 client's standing IDs.
 
+`ConditionBuilder` serves QuestieDB's own Correction files. It is reachable as
+`LibQuestieDB.ConditionBuilder` but is not part of any contract, like `Enum.byExpansion`.
+
 ### Supplying your own condition functions
 
 `Evaluate`, `EvaluateQuest`, `Explain`, and `ExplainQuest` take an optional second argument: a

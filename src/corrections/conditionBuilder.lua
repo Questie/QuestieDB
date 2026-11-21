@@ -10,6 +10,8 @@
 -- Each call returns the canonical expression string that src/conditions.lua evaluates, here
 -- `IsTeam("Alliance") and not QuestRewarded(1518)`. Unknown functions, wrong argument types,
 -- and strings not produced by the builder raise an error instead of evaluating permissively.
+--
+-- Internal: consumers can reach `LibQuestieDB.ConditionBuilder`, but no contract promises it.
 
 local _, LibQuestieDB = ...
 
