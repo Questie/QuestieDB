@@ -759,7 +759,7 @@ expressions that raise an error are true and are reported once through `geterror
 
 Server events, holidays, and world states are not part of the vocabulary yet; ADR 0017 lists
 them as a future improvement. A stub is true, so a negated stub
-is false: `not QuestAvailable(1)` hides its quest without Questie. The data is written for Questie, which publishes real `QuestAvailable` and
+is false: `not QuestAvailable(1)` hides its quest without Questie. The data is written for Questie, which supplies real `QuestAvailable` and
 `HasSkill`. The shipped data never forms a `QuestAvailable` cycle.
 
 ### Explaining a condition
@@ -797,24 +797,24 @@ name. Write races and classes with `raceKeys` and `classKeys`, never as numbers.
 `C.HasRep(factionIDs.THE_ORACLES, C.standing.HONORED)`. These are condition ranks, one below the
 client's standing IDs.
 
-### Publishing condition functions
+### Supplying your own condition functions
 
-A trusted owner can replace base functions for every consumer. Names outside the vocabulary
-raise an error:
+`Evaluate`, `EvaluateQuest`, `Explain`, and `ExplainQuest` take an optional second argument: a
+table of functions that replace base functions of the same name for that call only. Composite
+functions (`QuestNone`, `IsRaceClass`) follow the replacements. Names outside the vocabulary
+raise an error when an expression is evaluated:
 
 ```lua
--- Questie only. Another addon passing "Questie" replaces Questie's whole set for everyone.
-LibQuestieDB.Conditions.SetFunctions("Questie", {
-  QuestRewarded = function(questId) return Questie.db.char.complete[questId] == true end,
-})
-LibQuestieDB.Conditions.SetFunctions("Questie", nil) -- withdraw
+local functions = {
+  QuestRewarded = function(questId) return MyAddon.completed[questId] == true end,
+}
+LibQuestieDB.Conditions.EvaluateQuest(1318, functions)
+LibQuestieDB.Conditions.ExplainQuest(1318, functions)
 ```
 
-A write copies the table and replaces the previous set. Functions return true, false, or nil
-for unknown.
-Only Questie is trusted; other owners raise an error. Other consumers must not publish under
-Questie's name: the owner is a convention, not authentication. Re-entering an expression that is
-already being evaluated returns true, so a published `QuestAvailable` may evaluate conditions.
+Functions return true, false, or nil for unknown. One caller's functions never change another
+caller's results. Re-entering an expression that is already being evaluated returns true, so a
+supplied `QuestAvailable` may evaluate conditions itself.
 
 ---
 

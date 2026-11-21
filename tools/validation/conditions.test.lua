@@ -204,46 +204,40 @@ return function(check, equal)
   rawset(_G, "geterrorhandler", function() return function() error("handler failed") end end)
   equal(Evaluate("IsLevel(1, 2) and IsLevel()"), true, "a failing error handler does not escape Evaluate")
 
-  -- Publishing: the trusted owner only; overrides reach composite base functions; nil withdraws.
+  -- Caller functions replace base functions for that call only; composite functions follow
+  -- them; names outside the vocabulary raise.
   rawset(_G, "IsQuestFlaggedCompleted", function() return false end)
   rawset(_G, "GetQuestLogIndexByID", function() return 0 end)
-  check(not pcall(Conditions.SetFunctions, "SomeAddon", {}), "untrusted owners cannot publish")
-  check(not pcall(Conditions.SetFunctions, "Questie", { QuestRewarded = true }),
-    "published values must be functions")
-  check(not pcall(Conditions.SetFunctions, "Questie", { QuestRewared = function() return true end }),
-    "published names must be condition functions")
+  check(not pcall(Evaluate, "QuestNone(5)", "Questie"), "caller functions must be a table")
+  check(not pcall(Evaluate, "QuestNone(5)", { QuestRewarded = true }), "caller functions must be functions")
+  check(not pcall(Evaluate, "QuestNone(5)", { QuestRewared = function() return true end }),
+    "caller function names must be condition functions")
   equal(Evaluate("QuestNone(5)"), true, "base QuestNone reads the client")
-  local functions = { QuestRewarded = function(questId) return questId == 5 end }
-  Conditions.SetFunctions("Questie", functions)
-  functions.QuestRewarded = function() return false end
-  equal(Evaluate("QuestNone(5)"), false, "composite functions follow published overrides, copied at publication")
-  Conditions.SetFunctions("Questie", { QuestInLog = function() return nil end })
-  equal(Evaluate("QuestNone(5)"), nil, "a composite function passes an unknown part through")
-  equal(Explain("QuestNone(5)").result, nil, "Explain agrees on the unknown composite")
+  local rewardedFive = { QuestRewarded = function(questId) return questId == 5 end }
+  equal(Evaluate("QuestNone(5)", rewardedFive), false, "composite functions follow the caller's functions")
+  equal(Evaluate("QuestNone(5)"), true, "a call without functions is unaffected by another caller's")
+  local unknownLog = { QuestInLog = function() return nil end }
+  equal(Evaluate("QuestNone(5)", unknownLog), nil, "a composite function passes an unknown part through")
+  equal(Explain("QuestNone(5)", unknownLog).result, nil, "Explain agrees on the unknown composite")
   rawset(_G, "IsQuestFlaggedCompleted", function() return true end)
-  equal(Evaluate("QuestNone(5)"), false, "a decided part outweighs an unknown one in a composite")
+  equal(Evaluate("QuestNone(5)", unknownLog), false, "a decided part outweighs an unknown one in a composite")
   rawset(_G, "IsQuestFlaggedCompleted", function() return false end)
-  Conditions.SetFunctions("Questie", nil)
-  equal(Evaluate("QuestNone(5)"), true, "withdrawal restores the base function")
 
-  -- Nested evaluation: a published QuestAvailable may evaluate conditions itself.
+  -- Nested evaluation: a caller's QuestAvailable may evaluate conditions itself.
   local depth = 0
-  Conditions.SetFunctions("Questie", {
-    QuestAvailable = function()
-      depth = depth + 1
-      return Evaluate("QuestAvailable(9) and HasRep(1105, 4)")
-    end,
-  })
-  equal(Evaluate("QuestAvailable(9) and HasRep(1105, 4)"), true,
+  local reentering = {}
+  reentering.QuestAvailable = function()
+    depth = depth + 1
+    return Evaluate("QuestAvailable(9) and HasRep(1105, 4)", reentering)
+  end
+  equal(Evaluate("QuestAvailable(9) and HasRep(1105, 4)", reentering), true,
     "re-entering an expression returns true instead of recursing")
   equal(depth, 1, "the re-entered expression ran once")
   rawset(_G, "C_Secrets", { ShouldAurasBeSecret = function() return true end })
-  Conditions.SetFunctions("Questie", { QuestAvailable = function() return Evaluate("HasAura(1)") end })
-  equal(Evaluate("QuestAvailable(9)"), nil, "a nested unknown propagates through its caller")
-  Conditions.SetFunctions("Questie", { QuestAvailable = function() return Evaluate("HasRep(1105, 4)") end })
-  equal(Evaluate("HasAura(1) or QuestAvailable(9)"), true,
-    "a nested evaluation that decides the result outweighs the caller's earlier unknown")
-  Conditions.SetFunctions("Questie", nil)
+  equal(Evaluate("QuestAvailable(9)", { QuestAvailable = function() return Evaluate("HasAura(1)") end }), nil,
+    "a nested unknown propagates through its caller")
+  equal(Evaluate("HasAura(1) or QuestAvailable(9)", { QuestAvailable = function() return Evaluate("HasRep(1105, 4)") end }),
+    true, "a nested evaluation that decides the result outweighs the caller's earlier unknown")
 
   -- Explain: the builder's grammar parses back into a tree with every leaf evaluated.
   rawset(_G, "UnitFactionGroup", function() return "Alliance", "Alliance" end)
@@ -264,9 +258,8 @@ return function(check, equal)
   equal(Explain(C.All(C.HasAura(1), C.IsTeam("Horde"))).result, false, "a false operand decides and")
   equal(Explain(C.Not(C.HasAura(1))).result, nil, "not of unknown is unknown")
   rawset(_G, "C_Secrets", nil)
-  Conditions.SetFunctions("Questie", { QuestRewarded = function() return false end })
-  equal(Explain(C.QuestRewarded(1518)).result, false, "Explain uses published functions")
-  Conditions.SetFunctions("Questie", nil)
+  equal(Explain(C.QuestRewarded(1518), { QuestRewarded = function() return false end }).result, false,
+    "Explain uses the caller's functions")
   for _, expression in ipairs({ "QuestRewarded(", "NotAFunction(1)", "QuestRewarded(1) ; x", "QuestRewarded(1.5)",
     'IsTeam("Alli\\"ance")', "(QuestRewarded(1)", "QuestRewarded(1,)", "QuestRewarded(,1)",
     "HasItem(1 2)", "" }) do
@@ -281,6 +274,9 @@ return function(check, equal)
   -- Era's literal faction masks 77 and 178 are rejected: they miss Skyborne. Written with
   -- `raceIDs.ALL_ALLIANCE`, the mask resolves per flavor and includes Skyborne.
   local vocabulary = C.vocabulary
+  -- Every function answers true, so Explain only fails for expressions outside the grammar.
+  local answerAll = {}
+  for name in pairs(vocabulary) do answerAll[name] = function() return true end end
   local enum = dofile("src/corrections/enum/constants.lua")
   local raceBits = {}
   for _, bit in pairs(enum.raceMaskById) do raceBits[#raceBits + 1] = bit end
@@ -303,7 +299,7 @@ return function(check, equal)
   local function gateProblems(expressions, flavorName, raceKeys)
     local problems, availableEdges = {}, {}
     for questId, expression in pairs(expressions) do
-      if type(expression) ~= "string" or not Explain(expression) then
+      if type(expression) ~= "string" or not Explain(expression, answerAll) then
         problems[#problems + 1] = tostring(questId)
       else
         for mask in expression:gmatch("IsRace%a*%(%s*(%d+)") do
@@ -336,11 +332,6 @@ return function(check, equal)
     return problems
   end
 
-  -- Every function answers true, so Explain only fails for expressions outside the grammar.
-  local answerAll = {}
-  for name in pairs(vocabulary) do answerAll[name] = function() return true end end
-  Conditions.SetFunctions("Questie", answerAll)
-
   -- The gate itself: each kind of problem is found, and a valid chain passes.
   local classicRaces, foreverRaces = enum.byExpansion.Classic.raceKeys, enum.byExpansion.Forever.raceKeys
   equal(gateProblems({ [1] = "QuestAvailable(2)", [2] = "QuestAvailable(3)", [3] = "QuestAvailable(1)", [4] = "QuestAvailable(1)" },
@@ -372,8 +363,6 @@ return function(check, equal)
     equal(gateProblems(expressions, flavor.name, enum.byExpansion[flavor.expansion].raceKeys), {},
       flavor.name .. " conditions (" .. count .. ") parse, use valid race masks, and form no QuestAvailable cycle")
   end
-
-  Conditions.SetFunctions("Questie", nil)
 
   -- Conditions are ordinary correction values: Forever's authored fixes carry them, Era's do not.
   equal(loaded.Forever.Conditions.Get(1318), "HasAura(22799)", "Forever reads Unfinished Gordok Business's condition")

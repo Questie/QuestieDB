@@ -122,7 +122,7 @@ add(5, "table", { "LibQuestieDB.Conditions" })
 add(5, "function", {
   "LibQuestieDB.Quest.conditions", "LibQuestieDB.Conditions.Get", "LibQuestieDB.Conditions.Evaluate",
   "LibQuestieDB.Conditions.EvaluateQuest", "LibQuestieDB.Conditions.Explain",
-  "LibQuestieDB.Conditions.ExplainQuest", "LibQuestieDB.Conditions.SetFunctions",
+  "LibQuestieDB.Conditions.ExplainQuest",
 })
 
 return entries

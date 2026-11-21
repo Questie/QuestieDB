@@ -255,8 +255,8 @@ Display suppression, consumer phase/settings state, projections and caches, and 
 repair of consumer data therefore remain consumer-owned. A quest that is duplicate or
 unobtainable still exists, and another consumer may legitimately want it.
 
-QuestieDB evaluates Quest Conditions from client APIs alone. Questie publishes Condition
-functions that need its own state, such as quest availability, as a trusted owner (ADR 0017).
+QuestieDB evaluates Quest Conditions from client APIs alone. Questie passes its own Condition
+functions, such as quest availability, to each evaluation (ADR 0017).
 
 Questie is a consumer. Storage vocabulary stops here — Questie has no terms for Metadata
 fields, Chunked metadata values, or Generation.

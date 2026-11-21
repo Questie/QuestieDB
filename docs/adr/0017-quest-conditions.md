@@ -37,7 +37,7 @@ requiring the King of the Gordok aura.
 evaluate conditions without Questie. Functions that need state the client cannot provide
 (`QuestAvailable`, `HasSkill`) are permissive stubs that return true.
 
-The data is written for Questie, which publishes real `QuestAvailable` and `HasSkill`, so
+The data is written for Questie, which supplies real `QuestAvailable` and `HasSkill`, so
 corrections may negate any function. A consumer without Questie gets the stubs, where a negated
 stub is false; supplying better answers is that consumer's concern.
 
@@ -47,20 +47,23 @@ display. Both combine operands with the same function, so they agree unless a co
 function raises an error, which Explain reports as nil.
 `EvaluateQuest(questId)` reads the field and evaluates it.
 
-### 3. One trusted owner publishes shared functions
+### 3. Callers supply their own functions per evaluation
 
 Questie has better answers for some functions: its own quest-state caches, its availability
-rules, and its profession mapping. `SetFunctions(owner, functions)` publishes replacements for
-base functions into the single environment every consumer evaluates against. Names outside the
-vocabulary are rejected: the grammar only accepts vocabulary names, so no expression could call
-them, and a misspelled override would otherwise be ignored silently. A write copies the table
-and replaces the previous set; `nil` withdraws it.
+rules, and its profession mapping. `Evaluate`, `EvaluateQuest`, `Explain`, and `ExplainQuest`
+take an optional table of functions that replace base functions of the same name for that call.
+Composite functions (`QuestNone`, `IsRaceClass`) follow the replacements. Names outside the
+vocabulary raise an error: the grammar only accepts vocabulary names, so no expression could
+call them, and a misspelled replacement would otherwise be ignored silently.
 
-Only Questie may publish. Other consumers benefit from Questie's versions, but their variants
-must not change what Questie shows, and two consumers overriding the same name would make
-results depend on load order. The owner name is a convention between cooperating addons, not
-authentication: any addon can pass `"Questie"`. A consumer that needs private variants can be
-given a derived environment when one exists; none does yet.
+There is no shared environment. One consumer's functions never change another consumer's
+results, so no owner needs to be trusted and results never depend on load order. A consumer
+without its own functions gets the base functions, not Questie's.
+
+An earlier version published replacements into one environment every consumer shared, through
+`SetFunctions(owner, functions)` with `"Questie"` as the only trusted owner. The owner name was a
+convention, not authentication: any addon passing `"Questie"` replaced Questie's functions for
+every consumer. Passing functions per call removed the shared state and the trust question.
 
 ### 4. Unreadable state is unknown, not false
 
@@ -86,7 +89,7 @@ to true and is reported once. A condition function that raises an error makes th
 true; each distinct error message is reported once through the client's error handler, so one
 broken function used by many expressions produces one report. `Explain` returns nil for both. Re-entering an expression that is already being evaluated
 returns true, and `Explain` returns nil. The same string always makes the same calls, so re-entry could never finish;
-it happens when a published `QuestAvailable` evaluates the quest that asked about it. With a
+it happens when a caller's `QuestAvailable` evaluates the quest that asked about it. With a
 cycle between quests, the answer would depend on which quest was evaluated first, so the data
 validation rejects `QuestAvailable` cycles.
 

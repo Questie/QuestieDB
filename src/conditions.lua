@@ -12,8 +12,8 @@
 -- QuestieDB supplies a base implementation of every function, built only on client APIs, so
 -- any addon can evaluate conditions. Functions that need state the client cannot provide are
 -- permissive stubs that return true; negating one (`not QuestAvailable(1)`) is therefore false.
--- TRUSTED_OWNER can publish better versions of these functions through `SetFunctions`;
--- everyone then evaluates against them.
+-- A caller with better answers passes its own functions to each evaluation; they replace base
+-- functions of the same name for that call only, so one consumer never changes another's results.
 --
 -- A condition function returns true or false, or nil when it cannot read its state right now
 -- (for example, auras hidden behind secret values in combat). `and`, `or`, and `not` combine
@@ -25,10 +25,6 @@
 local _, LibQuestieDB = ...
 
 local Conditions = {}
-
--- The only owner that may publish functions into the environment every consumer shares.
--- Other consumers' variants must not change what Questie, the original consumer, shows.
-local TRUSTED_OWNER = "Questie"
 
 --------------------------------------------------------------------------------------------
 -- Client reads
@@ -150,8 +146,6 @@ end
 -- Base condition functions
 --------------------------------------------------------------------------------------------
 
-local call -- Forward-declared: composite functions call through the published functions.
-
 local base = {
   -- Quest state
   QuestRewarded = function(questId)
@@ -162,15 +156,6 @@ local base = {
   end,
   QuestComplete = function(questId)
     return questLogIndex(questId) > 0 and isQuestLogComplete(questId) == true
-  end,
-  -- Composite: follows whichever QuestInLog and QuestRewarded are active.
-  QuestNone = function(questId)
-    local inLog = call("QuestInLog", questId)
-    if inLog then return false end
-    local rewarded = call("QuestRewarded", questId)
-    if rewarded then return false end
-    if inLog == nil or rewarded == nil then return nil end
-    return true
   end,
   -- Needs the consumer's own availability rules; permissive without them.
   QuestAvailable = function()
@@ -222,14 +207,6 @@ local base = {
   IsClass = function(classMask)
     return classMask == 0 or hasFlag(classMask, 2 ^ (select(3, UnitClass("player")) - 1))
   end,
-  IsRaceClass = function(raceMask, classMask)
-    local race = call("IsRace", raceMask or 0)
-    if race == false then return false end
-    local class = call("IsClass", classMask or 0)
-    if class == false then return false end
-    if race == nil or class == nil then return nil end
-    return true
-  end,
   IsLevel = function(level)
     return UnitLevel("player") >= level
   end,
@@ -253,27 +230,78 @@ local base = {
   -- WorldState = function() return true end,
 }
 
+-- Composite functions answer from other condition functions. `call` resolves those through the
+-- caller's functions, so a composite follows whichever QuestInLog or IsRace the caller supplied.
+local composites = {
+  QuestNone = function(call, questId)
+    local inLog = call("QuestInLog", questId)
+    if inLog then return false end
+    local rewarded = call("QuestRewarded", questId)
+    if rewarded then return false end
+    if inLog == nil or rewarded == nil then return nil end
+    return true
+  end,
+  IsRaceClass = function(call, raceMask, classMask)
+    local race = call("IsRace", raceMask or 0)
+    if race == false then return false end
+    local class = call("IsClass", classMask or 0)
+    if class == false then return false end
+    if race == nil or class == nil then return nil end
+    return true
+  end,
+}
+
 -- The builder validates authored expressions against the same vocabulary.
-for name in pairs(LibQuestieDB.ConditionBuilder.vocabulary) do
-  if not base[name] then error("QuestieDB: condition function " .. name .. " has no implementation", 0) end
-end
-for name in pairs(base) do
-  if not LibQuestieDB.ConditionBuilder.vocabulary[name] then
-    error("QuestieDB: condition function " .. name .. " is missing from the builder", 0)
+local vocabulary = LibQuestieDB.ConditionBuilder.vocabulary
+for name in pairs(vocabulary) do
+  if not base[name] and not composites[name] then
+    error("QuestieDB: condition function " .. name .. " has no implementation", 0)
   end
 end
+for _, implementations in ipairs({ base, composites }) do
+  for name in pairs(implementations) do
+    if not vocabulary[name] then
+      error("QuestieDB: condition function " .. name .. " is missing from the builder", 0)
+    end
+  end
+end
+
 --------------------------------------------------------------------------------------------
 -- Calls and reports
 --------------------------------------------------------------------------------------------
 
-local published = {} -- name -> function, replaced as a whole by SetFunctions.
-
----Call a condition function by name, published version first.
+---Call a condition function by name, the caller's version first.
+---@param functions table<string, function>? The caller's functions, already checked.
 ---@return boolean? result Nil when the function could not read its state.
-call = function(name, ...)
-  local result = (published[name] or base[name])(...)
+local function call(functions, name, ...)
+  local result
+  local own = functions and functions[name]
+  if own then
+    result = own(...)
+  elseif composites[name] then
+    result = composites[name](function(part, ...) return call(functions, part, ...) end, ...)
+  else
+    result = base[name](...)
+  end
   if result == nil then return nil end
   return result and true or false
+end
+
+---Reject a caller's functions table that names anything outside the vocabulary.
+---No expression could call such a name, so a misspelled function would be ignored silently.
+local function checkFunctions(functions)
+  if functions == nil then return end
+  if type(functions) ~= "table" then
+    error("QuestieDB: condition functions must be a table, got " .. type(functions), 0)
+  end
+  for name, fn in pairs(functions) do
+    if type(name) ~= "string" or type(fn) ~= "function" then
+      error("QuestieDB: condition functions must map names to functions", 0)
+    end
+    if not vocabulary[name] then
+      error("QuestieDB: '" .. name .. "' is not a condition function", 0)
+    end
+  end
 end
 
 local reported = {} -- report key -> true once it has been reported.
@@ -347,7 +375,7 @@ local function parse(tokens)
       return node
     end
     local name = tokens[index]
-    if not name or name.kind ~= "word" or not base[name.value] then error("expected a condition", 0) end
+    if not name or name.kind ~= "word" or not vocabulary[name.value] then error("expected a condition", 0) end
     index = index + 1
     expect("(")
     local args = {}
@@ -429,19 +457,21 @@ local function combine(op, count, resultOf)
   return not decisive
 end
 
-local function evaluateNode(node)
-  if node.call then return call(node.call, unpack(node.args)) end
-  return combine(node.op, #node.children, function(index) return evaluateNode(node.children[index]) end)
+local function evaluateNode(node, functions)
+  if node.call then return call(functions, node.call, unpack(node.args)) end
+  return combine(node.op, #node.children, function(index)
+    return evaluateNode(node.children[index], functions)
+  end)
 end
 
-local function explainNode(node)
+local function explainNode(node, functions)
   if node.call then
     local args = {}
     for index, value in ipairs(node.args) do args[index] = value end
-    return { call = node.call, args = args, result = call(node.call, unpack(args)) }
+    return { call = node.call, args = args, result = call(functions, node.call, unpack(args)) }
   end
   local children = {}
-  for index, child in ipairs(node.children) do children[index] = explainNode(child) end
+  for index, child in ipairs(node.children) do children[index] = explainNode(child, functions) end
   local result = combine(node.op, #children, function(index) return children[index].result end)
   return { op = node.op, children = children, result = result }
 end
@@ -451,16 +481,17 @@ local active = {} -- expression -> true while it is being evaluated or explained
 ---Run a walker over an expression's tree with the shared re-entry guard and error handling.
 ---@return boolean ok False when the expression did not parse, re-entered, or raised.
 ---@return any result
-local function run(expression, walk)
+local function run(expression, functions, walk)
+  checkFunctions(functions)
   local tree = parsedTree(expression)
   if not tree then return false end
   -- The same expression always makes the same calls, so re-entering it would never finish.
-  -- This happens when a published QuestAvailable evaluates the quest that asked about it.
+  -- This happens when a caller's QuestAvailable evaluates the quest that asked about it.
   -- The answer then depends on which quest was evaluated first, so the shipped data must not
   -- contain QuestAvailable cycles; tools/validation/conditions.test.lua rejects them.
   if active[expression] then return false end
   active[expression] = true
-  local ok, result = pcall(walk, tree)
+  local ok, result = pcall(walk, tree, functions)
   active[expression] = nil
   if not ok then report(expression, result) end
   return ok, result
@@ -469,6 +500,10 @@ end
 --------------------------------------------------------------------------------------------
 -- Public API
 --------------------------------------------------------------------------------------------
+--
+-- Each evaluation takes an optional `functions` table: condition function name -> function,
+-- replacing the base function of that name for this call. Composite functions follow the
+-- replacements. A name outside the vocabulary raises an error when an expression is evaluated.
 
 ---Return a quest's condition expression.
 ---@param questId QuestId
@@ -482,63 +517,44 @@ end
 ---an error, are permissive (true) and are reported once through the client's error handler.
 ---Re-entering an expression that is already being evaluated is also true.
 ---@param expression string?
+---@param functions table<string, fun(...): boolean?>? Replacements for base functions.
 ---@return boolean? result Nil when unknown: a condition function could not read its state and
 ---no other operand decides the result.
-function Conditions.Evaluate(expression)
+function Conditions.Evaluate(expression, functions)
   if expression == nil or expression == "" then return true end
-  local ok, result = run(expression, evaluateNode)
+  local ok, result = run(expression, functions, evaluateNode)
   if not ok then return true end
   return result
 end
 
 ---Evaluate a quest's condition expression.
 ---@param questId QuestId
+---@param functions table<string, fun(...): boolean?>? Replacements for base functions.
 ---@return boolean? result True when the quest has no condition; nil when unknown.
-function Conditions.EvaluateQuest(questId)
-  return Conditions.Evaluate(Conditions.Get(questId))
+function Conditions.EvaluateQuest(questId, functions)
+  return Conditions.Evaluate(Conditions.Get(questId), functions)
 end
 
 ---Explain an expression as a tree with every leaf evaluated, for display.
 ---Nodes are `{ call, args, result }` or `{ op = "and"|"or"|"not", children, result }`, where
 ---result is true, false, or nil when unknown. When Explain returns a tree, its root result equals
----Evaluate's: both combine operands with the same three-valued logic.
+---Evaluate's with the same functions: both combine operands with the same three-valued logic.
 ---@param expression string?
+---@param functions table<string, fun(...): boolean?>? Replacements for base functions.
 ---@return table? tree Nil without an expression, for one outside the builder's grammar, or
 ---when a condition function raised an error (Evaluate is then permissive).
-function Conditions.Explain(expression)
+function Conditions.Explain(expression, functions)
   if expression == nil or expression == "" then return nil end
-  local ok, tree = run(expression, explainNode)
+  local ok, tree = run(expression, functions, explainNode)
   return ok and tree or nil
 end
 
 ---Explain a quest's condition expression.
 ---@param questId QuestId
+---@param functions table<string, fun(...): boolean?>? Replacements for base functions.
 ---@return table? tree
-function Conditions.ExplainQuest(questId)
-  return Conditions.Explain(Conditions.Get(questId))
-end
-
----Publish condition functions for every consumer, replacing this owner's previous set.
----Functions replace base functions of the same name; other names are rejected, since no
----expression could call them. Passing nil withdraws the set.
----@param owner string Must be the trusted owner.
----@param functions table<string, fun(...): boolean?>?
-function Conditions.SetFunctions(owner, functions)
-  if owner ~= TRUSTED_OWNER then
-    error("QuestieDB: '" .. tostring(owner) .. "' may not publish condition functions", 2)
-  end
-  -- Copy, so later changes to the caller's table cannot bypass validation.
-  local copy = {}
-  for name, fn in pairs(functions or {}) do
-    if type(name) ~= "string" or type(fn) ~= "function" then
-      error("QuestieDB: condition functions must map names to functions", 2)
-    end
-    if not base[name] then
-      error("QuestieDB: '" .. name .. "' is not a condition function", 2)
-    end
-    copy[name] = fn
-  end
-  published = copy
+function Conditions.ExplainQuest(questId, functions)
+  return Conditions.Explain(Conditions.Get(questId), functions)
 end
 
 LibQuestieDB.Conditions = Conditions
