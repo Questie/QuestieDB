@@ -10,7 +10,7 @@
 # Addon metadata
 # =============================================================================
 
-## Title: QuestieDB
+## Title: QuestieDB|cFF00FF00 v1.1.4|r
 ## Author: Code: Logonz Data: Muehe/TheCrux(BreakBB)/Drejjmit/Dyaxler/Cheeq/TechnoHunter/Yttrium/Everyone else
 ## Notes: |cFFFFD100(source mode)|r The database Questie consumes. No generated artifact present.
 ## Version: 1.1.4
