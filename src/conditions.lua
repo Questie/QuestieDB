@@ -121,8 +121,14 @@ local function knowsSpell(spellId)
   return IsSpellKnown(spellId)
 end
 
----@return number? rank 0 (Hated) through 7 (Exalted), or nil when the faction is unknown.
----@return boolean? unreadable True when the client hides the standing.
+-- The condition rank of a faction the player has not met. The client gives no standing for it,
+-- and Questie has always counted such a faction as Neutral (0 reputation, see
+-- QuestieReputation:HasFactionAndReputationLevel), so the base functions match that. Questie
+-- also starts a short list of factions at Hated; that list stays in Questie, which passes its
+-- own HasRep and RepBelow when it needs it.
+local UNMET_FACTION_RANK = 3 -- Neutral
+
+---@return number? rank 0 (Hated) through 7 (Exalted); nil when the client hides the standing.
 local function reputationRank(factionId)
   local reaction
   if C_Reputation and C_Reputation.GetFactionDataByID then
@@ -131,8 +137,8 @@ local function reputationRank(factionId)
   else
     reaction = select(3, GetFactionInfoByID(factionId))
   end
-  if isSecret(reaction) then return nil, true end
-  if reaction == nil then return nil end
+  if isSecret(reaction) then return nil end
+  if reaction == nil then return UNMET_FACTION_RANK end
   -- Client reactions run 1 (Hated) to 8 (Exalted); condition ranks start at 0.
   return reaction - 1
 end
@@ -185,14 +191,14 @@ local base = {
     return knowsSpell(spellId) == true
   end,
   HasRep = function(factionId, minRank)
-    local rank, unreadable = reputationRank(factionId)
-    if unreadable then return nil end
-    return rank ~= nil and rank >= minRank
+    local rank = reputationRank(factionId)
+    if rank == nil then return nil end
+    return rank >= minRank
   end,
   RepBelow = function(factionId, maxRank)
-    local rank, unreadable = reputationRank(factionId)
-    if unreadable then return nil end
-    return rank ~= nil and rank <= maxRank
+    local rank = reputationRank(factionId)
+    if rank == nil then return nil end
+    return rank <= maxRank
   end,
 
   -- Character

@@ -71,7 +71,15 @@ return function(check, equal)
   rawset(_G, "issecretvalue", function(value) return value == reaction end)
   equal(Evaluate("HasRep(1105, 5)"), nil, "a secret reaction is unknown")
   rawset(_G, "issecretvalue", nil)
+  rawset(_G, "C_Reputation", { GetFactionDataByID = function() return nil end })
+  -- An unmet faction counts as Neutral, as Questie has always treated it, so both ways of
+  -- writing "below Friendly" agree.
+  equal(Evaluate("HasRep(1105, 3) and not HasRep(1105, 4)"), true, "an unmet faction is at least Neutral, not Friendly")
+  equal(Evaluate("RepBelow(1105, 3) and not RepBelow(1105, 2)"), true, "an unmet faction is at most Neutral, not Unfriendly")
   rawset(_G, "C_Reputation", nil)
+  rawset(_G, "GetFactionInfoByID", function() return nil end)
+  equal(Evaluate("HasRep(1105, 3) and RepBelow(1105, 3)"), true, "legacy clients treat an unmet faction as Neutral too")
+  rawset(_G, "GetFactionInfoByID", function() return "Faction", "", 5 end)
 
   rawset(_G, "UnitFactionGroup", function() return "Horde", "Horde" end)
   equal(Evaluate('IsTeam("Horde") and not IsTeam("Alliance")'), true, "IsTeam compares the faction tag")

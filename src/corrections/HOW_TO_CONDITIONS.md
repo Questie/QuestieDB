@@ -109,6 +109,8 @@ Quest IDs, item IDs, and spell IDs in these examples are placeholders, except Go
 Always write ranks with `C.standing`: `HATED`, `HOSTILE`, `UNFRIENDLY`, `NEUTRAL`, `FRIENDLY`,
 `HONORED`, `REVERED`, `EXALTED`. Plain numbers are easy to get wrong by one.
 
+A faction the player hasn't met yet counts as Neutral, the same as Questie has always done.
+
 ### Character
 
 | Function | True when | Example |

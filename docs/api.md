@@ -749,7 +749,7 @@ expressions that raise an error are true and are reported once through `geterror
 | `HasItemEquipped(itemId)` | Item equipped | Client |
 | `HasSkill(skillId[, level])` | Profession at level, default 1 | Stub: true |
 | `KnowsSpell(spellId)` | Spell known | Client |
-| `HasRep(factionId, rank)` | Reputation rank at least `rank` | Client; ranks 0 (Hated) to 7 (Exalted), `C.standing.HONORED` etc. |
+| `HasRep(factionId, rank)` | Reputation rank at least `rank` | Client; ranks 0 (Hated) to 7 (Exalted), `C.standing.HONORED` etc. An unmet faction counts as Neutral, as in Questie |
 | `RepBelow(factionId, rank)` | Reputation rank at most `rank` | Client; same ranks |
 | `IsTeam(factionTag)` | `"Alliance"`, `"Horde"`, or `"Neutral"` | `UnitFactionGroup("player")` |
 | `IsRace(raceMask)` / `IsClass(classMask)` | Bitmask membership; 0 matches all | Client with `Enum.raceMaskById` |
