@@ -183,6 +183,7 @@ local function sourceTocHeadings()
     ["src/l10n/source/_traces.lua"] = { subcategory = "Forever trace lookups",
       note = "Merged per field over the Forever base lookups, as in Generation." },
     ["l10n/lookupOverrides.lua"] = { subcategory = "Static Translation Corrections" },
+    ["l10n/Forever/lookupOverrides.lua"] = { subcategory = "Forever Static Translation Corrections" },
     ["src/l10n/source/_end.lua"] = { subcategory = "Lookup loader teardown" },
     ["src/l10n/overlay.lua"] = { category = "Localization and public API", subcategory = "Localization overlay and Titan translations",
       note = "Do not filter by client locale: SetLocale() can select another locale." },
