@@ -84,7 +84,7 @@ return function(check, equal)
   rawset(_G, "C_Secrets", { ShouldAurasBeSecret = function() return true end })
   equal(Evaluate("HasAura(1)"), nil, "secret auras are unknown")
   equal(Evaluate("not HasAura(1)"), nil, "negating an unknown stays unknown")
-  equal(Evaluate("HasRep(1105, 4) or HasAura(1)"), true, "short-circuited unknowns are never read")
+  equal(Evaluate("HasRep(1105, 4) or HasAura(1)"), true, "a true operand decides or before an unknown")
   equal(Evaluate("HasRep(1105, 5) or HasAura(1)"), nil, "an unknown that decides the result is unknown")
   equal(Evaluate("HasAura(1) and HasRep(1105, 5)"), false, "a false operand decides and, even after an unknown")
   equal(Evaluate("HasAura(1) or HasRep(1105, 4)"), true, "a true operand decides or, even after an unknown")
@@ -124,9 +124,12 @@ return function(check, equal)
   rawset(_G, "C_UnitAuras", { GetAuraDataByIndex = function(unit, index, filter)
     scanned[#scanned + 1] = unit .. ":" .. filter .. ":" .. index
     if filter == "HARMFUL" and index == 1 then return { spellId = 7 } end
+    -- The client keeps auras in consecutive slots, so nothing after an empty slot is real.
+    if filter == "HELPFUL" and index == 2 then return { spellId = 8 } end
   end })
   equal(Evaluate("HasAura(7)"), true, "the indexed scan finds a harmful aura")
-  equal(scanned, { "player:HELPFUL:1", "player:HARMFUL:1" }, "the indexed scan reads the player's helpful, then harmful auras")
+  table.sort(scanned)
+  equal(scanned, { "player:HARMFUL:1", "player:HELPFUL:1" }, "the indexed scan reads the player's helpful and harmful auras")
   equal(Evaluate("HasAura(8)"), false, "the indexed scan ends at the first empty slot")
   local secretId = {}
   rawset(_G, "issecretvalue", function(value) return value == secretId end)
@@ -187,6 +190,11 @@ return function(check, equal)
   equal(Evaluate("IsRaceClass(4294967296, 2) and not IsRaceClass(4294967296, 1) and not IsRaceClass(1, 2)"), true,
     "IsRaceClass needs both race and class")
 
+  -- Precedence matches Lua and the builder: not takes one operand, and binds tighter than or.
+  equal(Evaluate("not IsLevel(61) and IsLevel(61)"), false, "not applies to its own operand only")
+  equal(Evaluate("IsLevel(1) or IsLevel(61) and IsLevel(61)"), true, "and binds tighter than or")
+  equal(Evaluate(C.Not(C.Any(C.IsLevel(61), C.IsLevel(1)))), false, "parentheses group what not negates")
+
   -- Defined permissive results for expressions outside the grammar and runtime errors.
   local reports = {}
   rawset(_G, "geterrorhandler", function() return function(message) reports[#reports + 1] = message end end)
@@ -202,7 +210,11 @@ return function(check, equal)
   equal(#reports, 4, "a runtime failure is reported")
   equal(Evaluate("HasAura(2) or IsLevel(1)", broken), true, "another expression hitting the same failure is permissive")
   equal(#reports, 4, "the same failure is reported once across expressions")
-  equal(Evaluate("IsLevel(1) or HasAura(3)", broken), true, "a raising function after the deciding operand is never called")
+  local reads = 0
+  local counted = { HasAura = function() reads = reads + 1 return false end }
+  equal(Evaluate("IsLevel(1) or HasAura(3)", counted), true, "or is decided by its first true operand")
+  equal(Evaluate("IsLevel(61) and HasAura(3)", counted), false, "and is decided by its first false operand")
+  equal(reads, 0, "Evaluate never calls a function after the deciding operand")
   equal(Explain("HasAura(1)", broken), nil, "Explain has no tree for an expression that raises")
   equal(Evaluate("not QuestComplete(3)", { QuestComplete = function() return 0 end }), true,
     "a non-boolean result is an error, not a truthy answer")
@@ -242,6 +254,10 @@ return function(check, equal)
   equal(Evaluate("QuestAvailable(9) and HasRep(1105, 4)", reentering), true,
     "re-entering an expression returns true instead of recursing")
   equal(depth, 1, "the re-entered expression ran once")
+  equal(Evaluate("QuestAvailable(8)", { QuestAvailable = function() error("raised once") end }), true,
+    "an expression whose function raised is permissive")
+  equal(Evaluate("QuestAvailable(8)", { QuestAvailable = function() return false end }), false,
+    "the same expression evaluates normally after a raise")
   rawset(_G, "C_Secrets", { ShouldAurasBeSecret = function() return true end })
   equal(Evaluate("QuestAvailable(9)", { QuestAvailable = function() return Evaluate("HasAura(1)") end }), nil,
     "a nested unknown propagates through its caller")
