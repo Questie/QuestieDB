@@ -194,15 +194,18 @@ return function(check, equal)
   equal(Evaluate("QuestRewarded("), true, "an expression that does not parse is permissive")
   equal(Evaluate("QuestRewarded("), true, "evaluating it again stays permissive")
   equal(#reports, 2, "each broken expression is reported once")
+  equal(Evaluate("IsTeam(469)"), true, "a call the builder rejects is outside the grammar")
+  equal(#reports, 3, "a rejected call is reported")
   rawset(_G, "UnitLevel", function() return 60 end)
-  equal(Evaluate("IsLevel()"), true, "a raising function is permissive")
-  equal(#reports, 3, "a runtime failure is reported")
-  equal(Evaluate("IsLevel() or IsLevel(1)"), true, "another expression hitting the same failure is permissive")
-  equal(#reports, 3, "the same failure is reported once across expressions")
-  equal(Evaluate("IsLevel(1) or IsLevel()"), true, "a raising function after the deciding operand is never called")
-  equal(Explain("IsLevel()"), nil, "Explain has no tree for an expression that raises")
+  local broken = { HasAura = function() error("broken HasAura") end }
+  equal(Evaluate("HasAura(1)", broken), true, "a raising function is permissive")
+  equal(#reports, 4, "a runtime failure is reported")
+  equal(Evaluate("HasAura(2) or IsLevel(1)", broken), true, "another expression hitting the same failure is permissive")
+  equal(#reports, 4, "the same failure is reported once across expressions")
+  equal(Evaluate("IsLevel(1) or HasAura(3)", broken), true, "a raising function after the deciding operand is never called")
+  equal(Explain("HasAura(1)", broken), nil, "Explain has no tree for an expression that raises")
   rawset(_G, "geterrorhandler", function() return function() error("handler failed") end end)
-  equal(Evaluate("IsLevel(1, 2) and IsLevel()"), true, "a failing error handler does not escape Evaluate")
+  equal(Evaluate("IsLevel(1, 2) and IsLevel(3)"), true, "a failing error handler does not escape Evaluate")
 
   -- Caller functions replace base functions for that call only; composite functions follow
   -- them; names outside the vocabulary raise.
@@ -262,7 +265,7 @@ return function(check, equal)
     "Explain uses the caller's functions")
   for _, expression in ipairs({ "QuestRewarded(", "NotAFunction(1)", "QuestRewarded(1) ; x", "QuestRewarded(1.5)",
     'IsTeam("Alli\\"ance")', "(QuestRewarded(1)", "QuestRewarded(1,)", "QuestRewarded(,1)",
-    "HasItem(1 2)", "" }) do
+    "HasItem(1 2)", "IsTeam(469)", "HasRep(1105)", "QuestRewarded(1, 2)", "QuestRewarded(-1)", "" }) do
     equal(Explain(expression), nil, "Explain rejects input outside the grammar: " .. expression)
   end
 
@@ -293,25 +296,38 @@ return function(check, equal)
   end
   local eraFactionMasks = { [77] = true, [178] = true }
 
+  ---Leaf calls of an explained tree, in order.
+  local function leaves(node, found)
+    found = found or {}
+    if node.call then
+      found[#found + 1] = node
+    else
+      for _, child in ipairs(node.children) do leaves(child, found) end
+    end
+    return found
+  end
+
   ---Problems in one flavor's expressions, keyed by quest ID: expressions outside the grammar,
   ---race bits the flavor lacks, Era faction masks on Forever, and QuestAvailable cycles.
   ---@return string[] problems Sorted.
   local function gateProblems(expressions, flavorName, raceKeys)
     local problems, availableEdges = {}, {}
     for questId, expression in pairs(expressions) do
-      if type(expression) ~= "string" or not Explain(expression, answerAll) then
+      local tree = type(expression) == "string" and Explain(expression, answerAll)
+      if not tree then
         problems[#problems + 1] = tostring(questId)
       else
-        for mask in expression:gmatch("IsRace%a*%(%s*(%d+)") do
-          mask = tonumber(mask)
-          local eraMaskOnForever = flavorName == "Forever" and eraFactionMasks[mask]
-          if eraMaskOnForever or unknownBits(mask, raceKeys.ALL_ALLIANCE + raceKeys.ALL_HORDE) then
-            problems[#problems + 1] = questId .. ":IsRace(" .. mask .. ")"
+        for _, leaf in ipairs(leaves(tree)) do
+          if leaf.call == "IsRace" or leaf.call == "IsRaceClass" then
+            local mask = leaf.args[1]
+            local eraMaskOnForever = flavorName == "Forever" and eraFactionMasks[mask]
+            if eraMaskOnForever or unknownBits(mask, raceKeys.ALL_ALLIANCE + raceKeys.ALL_HORDE) then
+              problems[#problems + 1] = questId .. ":IsRace(" .. ("%.0f"):format(mask) .. ")"
+            end
+          elseif leaf.call == "QuestAvailable" then
+            availableEdges[questId] = availableEdges[questId] or {}
+            table.insert(availableEdges[questId], leaf.args[1])
           end
-        end
-        for target in expression:gmatch("QuestAvailable%((%d+)%)") do
-          availableEdges[questId] = availableEdges[questId] or {}
-          table.insert(availableEdges[questId], tonumber(target))
         end
       end
     end
@@ -342,6 +358,12 @@ return function(check, equal)
     { "1:IsRace(" .. ("%.0f"):format(foreverRaces.ALL_ALLIANCE) .. ")" }, "the gate rejects race bits the flavor lacks")
   equal(gateProblems({ [1] = "IsRace(77)", [2] = C.IsRace(foreverRaces.ALL_ALLIANCE) }, "Forever", foreverRaces),
     { "1:IsRace(77)" }, "the gate rejects Era's literal faction masks on Forever")
+  equal(gateProblems({ [1] = "QuestAvailable( 2 )", [2] = "QuestAvailable(1)" }, "Vanilla", classicRaces),
+    { "1:cycle", "2:cycle" }, "the gate reads cycles from the parsed tree, whatever the spacing")
+  equal(gateProblems({ [1] = "IsRaceClass(77, 2)" }, "Forever", foreverRaces), { "1:IsRace(77)" },
+    "the gate checks IsRaceClass race masks")
+  equal(gateProblems({ [1] = "IsTeam(469)", [2] = "HasRep(1105)" }, "Vanilla", classicRaces), { "1", "2" },
+    "the gate rejects calls with arguments the builder refuses")
   equal(gateProblems({ [1] = "QuestRewarded(1,)", [2] = 5 }, "Vanilla", classicRaces), { "1", "2" },
     "the gate rejects expressions outside the grammar")
 

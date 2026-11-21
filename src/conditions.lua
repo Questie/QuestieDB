@@ -4,8 +4,8 @@
 -- evaluator that answers them. See docs/adr/0017-quest-conditions.md.
 --
 -- An expression is a boolean expression over a fixed vocabulary of condition functions, in the
--- grammar `ConditionBuilder` emits: calls with number or string arguments, `and`, `or`, `not`,
--- and parentheses.
+-- grammar `ConditionBuilder` emits: calls with the arguments the builder accepts for that
+-- function, `and`, `or`, `not`, and parentheses.
 --
 --   "QuestRewarded(1517) and not QuestRewarded(1518)"
 --
@@ -252,7 +252,8 @@ local composites = {
 }
 
 -- The builder validates authored expressions against the same vocabulary.
-local vocabulary = LibQuestieDB.ConditionBuilder.vocabulary
+local builder = LibQuestieDB.ConditionBuilder
+local vocabulary = builder.vocabulary
 for name in pairs(vocabulary) do
   if not base[name] and not composites[name] then
     error("QuestieDB: condition function " .. name .. " has no implementation", 0)
@@ -394,6 +395,10 @@ local function parse(tokens)
       end
     end
     expect(")")
+    -- The builder checks argument count and kinds, so a hand-written IsTeam(469) or HasRep(1105)
+    -- is outside the grammar, like a misspelled name, instead of evaluating wrongly.
+    local valid, problem = pcall(builder[name.value], unpack(args))
+    if not valid then error(problem, 0) end
     return { call = name.value, args = args }
   end
   local function binary(operator, operand)
