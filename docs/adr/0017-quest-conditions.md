@@ -20,7 +20,8 @@ the data itself.
 
 `conditions` (field 37) holds a boolean expression over a fixed vocabulary, such as
 `"QuestRewarded(1517) and not QuestRewarded(1518)"`. The grammar is what the builder emits:
-calls with number or string arguments, `and`, `or`, `not`, and parentheses. Only Quest has the field; no other entity
+calls with the arguments the builder accepts for that function, `and`, `or`, `not`, and
+parentheses. Only Quest has the field; no other entity
 has condition data. A trailing field can be added to another entity later without migrating
 existing rows.
 
@@ -53,8 +54,10 @@ Questie has better answers for some functions: its own quest-state caches, its a
 rules, and its profession mapping. `Evaluate`, `EvaluateQuest`, `Explain`, and `ExplainQuest`
 take an optional table of functions that replace base functions of the same name for that call.
 Composite functions (`QuestNone`, `IsRaceClass`) follow the replacements. Names outside the
-vocabulary raise an error: the grammar only accepts vocabulary names, so no expression could
-call them, and a misspelled replacement would otherwise be ignored silently.
+vocabulary raise an error the first time a table is used, even for a quest without a condition:
+the grammar only accepts vocabulary names, so no expression could call them, and a misspelled
+replacement would otherwise be ignored silently. A caller function that evaluates conditions
+itself passes the same table along; a nested call without it gets the base functions.
 
 There is no shared environment. One consumer's functions never change another consumer's
 results, so no owner needs to be trusted and results never depend on load order. A consumer
@@ -87,9 +90,12 @@ removed both problems.
 An expression outside the grammar, including one that names an unknown function, evaluates
 to true and is reported once. A condition function that raises an error makes the expression
 true; each distinct error message is reported once through the client's error handler, so one
-broken function used by many expressions produces one report. `Explain` returns nil for both. Re-entering an expression that is already being evaluated
-returns true, and `Explain` returns nil. The same string always makes the same calls, so re-entry could never finish;
-it happens when a caller's `QuestAvailable` evaluates the quest that asked about it. With a
+broken function used by many expressions produces one report. An error raised as a table is
+reported once per expression. `Explain` returns nil for both. Re-entering an expression that is
+already being evaluated returns true, and `Explain` returns nil. With the same functions, the
+same string always makes the same calls, so re-entry could never finish. The guard is keyed by
+the string alone, so a nested call of the same string with other functions counts as re-entry
+too. Re-entry happens when a caller's `QuestAvailable` evaluates the quest that asked about it. With a
 cycle between quests, the answer would depend on which quest was evaluated first, so the data
 validation rejects `QuestAvailable` cycles.
 

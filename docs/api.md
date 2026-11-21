@@ -805,19 +805,21 @@ client's standing IDs.
 `Evaluate`, `EvaluateQuest`, `Explain`, and `ExplainQuest` take an optional second argument: a
 table of functions that replace base functions of the same name for that call only. Composite
 functions (`QuestNone`, `IsRaceClass`) follow the replacements. Names outside the vocabulary
-raise an error when an expression is evaluated:
+raise an error the first time a table is used, even for a quest without a condition. Pass the
+same table for every call; it is checked once.
 
 ```lua
 local functions = {
   QuestRewarded = function(questId) return MyAddon.completed[questId] == true end,
 }
-LibQuestieDB.Conditions.EvaluateQuest(1318, functions)
-LibQuestieDB.Conditions.ExplainQuest(1318, functions)
+LibQuestieDB.Conditions.Evaluate("QuestRewarded(1517) and not QuestRewarded(1518)", functions)
+LibQuestieDB.Conditions.EvaluateQuest(1318, functions) -- HasAura(22799): the base HasAura answers
 ```
 
 Functions return true, false, or nil for unknown. One caller's functions never change another
 caller's results. Re-entering an expression that is already being evaluated returns true, so a
-supplied `QuestAvailable` may evaluate conditions itself.
+supplied `QuestAvailable` may evaluate conditions itself; pass the same table to that nested
+call, or it gets the base functions.
 
 ---
 

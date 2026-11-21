@@ -499,8 +499,10 @@ local active = {} -- expression -> true while it is being evaluated or explained
 local function run(expression, functions, walk)
   local tree = parsedTree(expression)
   if not tree then return false end
-  -- The same expression always makes the same calls, so re-entering it would never finish.
-  -- This happens when a caller's QuestAvailable evaluates the quest that asked about it.
+  -- With the same functions, the same expression always makes the same calls, so re-entering
+  -- it would never finish. This happens when a caller's QuestAvailable evaluates the quest that
+  -- asked about it. The guard is keyed by expression alone, so a nested call of the same string
+  -- with other functions is treated as re-entry too; callers pass their functions along.
   -- The answer then depends on which quest was evaluated first, so the shipped data must not
   -- contain QuestAvailable cycles; tools/validation/conditions.test.lua rejects them.
   if active[expression] then return false end
@@ -533,7 +535,7 @@ end
 ---an error, are permissive (true) and are reported once through the client's error handler.
 ---Re-entering an expression that is already being evaluated is also true.
 ---@param expression string?
----@param functions table<string, fun(...): boolean?>? Replacements for base functions.
+---@param functions QuestieDBConditionFunctions? Replacements for base functions.
 ---@return boolean? result Nil when unknown: a condition function could not read its state and
 ---no other operand decides the result.
 function Conditions.Evaluate(expression, functions)
@@ -546,7 +548,7 @@ end
 
 ---Evaluate a quest's condition expression.
 ---@param questId QuestId
----@param functions table<string, fun(...): boolean?>? Replacements for base functions.
+---@param functions QuestieDBConditionFunctions? Replacements for base functions.
 ---@return boolean? result True when the quest has no condition; nil when unknown.
 function Conditions.EvaluateQuest(questId, functions)
   return Conditions.Evaluate(Conditions.Get(questId), functions)
@@ -557,7 +559,7 @@ end
 ---result is true, false, or nil when unknown. When Explain returns a tree, its root result equals
 ---Evaluate's with the same functions: both combine operands with the same three-valued logic.
 ---@param expression string?
----@param functions table<string, fun(...): boolean?>? Replacements for base functions.
+---@param functions QuestieDBConditionFunctions? Replacements for base functions.
 ---@return table? tree Nil without an expression, for one outside the builder's grammar, or
 ---when a condition function raised an error (Evaluate is then permissive).
 function Conditions.Explain(expression, functions)
@@ -569,7 +571,7 @@ end
 
 ---Explain a quest's condition expression.
 ---@param questId QuestId
----@param functions table<string, fun(...): boolean?>? Replacements for base functions.
+---@param functions QuestieDBConditionFunctions? Replacements for base functions.
 ---@return table? tree
 function Conditions.ExplainQuest(questId, functions)
   return Conditions.Explain(Conditions.Get(questId), functions)
