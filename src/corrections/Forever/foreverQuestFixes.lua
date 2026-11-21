@@ -4038,6 +4038,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
             [questKeys.preQuestSingle] = {96084},
         },
+        [96088] = { -- In Demand - Titan Relics
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [96101] = { -- The Great Outdoors
             [questKeys.breadcrumbs] = {96638},
             [questKeys.objectives] = {nil,{{460003},{460003}}},
@@ -6279,6 +6282,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [99233] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+        [99234] = { -- Brawl at the Maul
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [99257] = { -- A Heart of Crystal
