@@ -1321,6 +1321,9 @@ function QuestieQuestFixes:Load()
         [1428] = { -- Continued Threat
             [questKeys.preQuestSingle] = {1427},
         },
+        [1432] = { -- Alliance Relations
+            [questKeys.nextQuestInChain] = 0,
+        },
         [1434] = { -- Befouled by Satyr
             [questKeys.preQuestSingle] = {1432}, -- #1536
         },
