@@ -291,21 +291,27 @@ local function call(functions, name, ...)
   return result
 end
 
+-- Functions tables already checked. Consumers pass the same table for every quest, so each is
+-- checked once, on first use; later changes to a checked table are not seen.
+local checkedFunctions = setmetatable({}, { __mode = "k" })
+
 ---Reject a caller's functions table that names anything outside the vocabulary.
 ---No expression could call such a name, so a misspelled function would be ignored silently.
 local function checkFunctions(functions)
-  if functions == nil then return end
+  if functions == nil or checkedFunctions[functions] then return end
   if type(functions) ~= "table" then
     error("QuestieDB: condition functions must be a table, got " .. type(functions), 0)
   end
   for name, fn in pairs(functions) do
     if type(name) ~= "string" or type(fn) ~= "function" then
-      error("QuestieDB: condition functions must map names to functions", 0)
+      error(("QuestieDB: condition functions must map names to functions, got %s = %s")
+        :format(tostring(name), type(fn)), 0)
     end
     if not vocabulary[name] then
       error("QuestieDB: '" .. name .. "' is not a condition function", 0)
     end
   end
+  checkedFunctions[functions] = true
 end
 
 local reported = {} -- report key -> true once it has been reported.
@@ -491,7 +497,6 @@ local active = {} -- expression -> true while it is being evaluated or explained
 ---@return boolean ok False when the expression did not parse, re-entered, or raised.
 ---@return any result
 local function run(expression, functions, walk)
-  checkFunctions(functions)
   local tree = parsedTree(expression)
   if not tree then return false end
   -- The same expression always makes the same calls, so re-entering it would never finish.
@@ -512,7 +517,9 @@ end
 --
 -- Each evaluation takes an optional `functions` table: condition function name -> function,
 -- replacing the base function of that name for this call. Composite functions follow the
--- replacements. A name outside the vocabulary raises an error when an expression is evaluated.
+-- replacements. A name outside the vocabulary raises an error the first time a table is used.
+-- A caller function that evaluates conditions itself passes the same table along; a nested call
+-- without it gets the base functions.
 
 ---Return a quest's condition expression.
 ---@param questId QuestId
@@ -530,6 +537,7 @@ end
 ---@return boolean? result Nil when unknown: a condition function could not read its state and
 ---no other operand decides the result.
 function Conditions.Evaluate(expression, functions)
+  checkFunctions(functions)
   if expression == nil or expression == "" then return true end
   local ok, result = run(expression, functions, evaluateNode)
   if not ok then return true end
@@ -553,6 +561,7 @@ end
 ---@return table? tree Nil without an expression, for one outside the builder's grammar, or
 ---when a condition function raised an error (Evaluate is then permissive).
 function Conditions.Explain(expression, functions)
+  checkFunctions(functions)
   if expression == nil or expression == "" then return nil end
   local ok, tree = run(expression, functions, explainNode)
   return ok and tree or nil

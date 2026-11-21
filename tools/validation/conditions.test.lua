@@ -233,10 +233,18 @@ return function(check, equal)
   -- them; names outside the vocabulary raise.
   rawset(_G, "IsQuestFlaggedCompleted", function() return false end)
   rawset(_G, "GetQuestLogIndexByID", function() return 0 end)
-  check(not pcall(Evaluate, "QuestNone(5)", "Questie"), "caller functions must be a table")
-  check(not pcall(Evaluate, "QuestNone(5)", { QuestRewarded = true }), "caller functions must be functions")
-  check(not pcall(Evaluate, "QuestNone(5)", { QuestRewared = function() return true end }),
-    "caller function names must be condition functions")
+  local function raises(text, fn, ...)
+    local ok, message = pcall(fn, ...)
+    return not ok and tostring(message):find(text, 1, true) ~= nil
+  end
+  check(raises("must be a table", Evaluate, "QuestNone(5)", "Questie"), "caller functions must be a table")
+  check(raises("QuestRewarded = boolean", Evaluate, "QuestNone(5)", { QuestRewarded = true }),
+    "caller functions must be functions, and the error names the entry")
+  check(raises("'QuestRewared' is not a condition function", Evaluate, "QuestNone(5)",
+    { QuestRewared = function() return true end }), "caller function names must be condition functions")
+  -- Most quests have no condition, so a misspelled table must raise for them too.
+  check(raises("'QuestAvaliable' is not a condition function", Conditions.EvaluateQuest, 1,
+    { QuestAvaliable = function() return true end }), "a misspelled function raises for a quest without a condition")
   equal(Evaluate("QuestNone(5)"), true, "base QuestNone reads the client")
   local rewardedFive = { QuestRewarded = function(questId) return questId == 5 end }
   equal(Evaluate("QuestNone(5)", rewardedFive), false, "composite functions follow the caller's functions")
