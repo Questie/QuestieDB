@@ -4772,6 +4772,7 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 97331,
         },
         [97331] = { -- Zimmix's Great Escape
+            [questKeys.triggerEnd] = {"Escort Zimmix Sputterspark to safety", {[zoneIDs.STRANGLETHORN_VALE] = {{26.9,11.4}}}},
             [questKeys.preQuestSingle] = {97329},
         },
         [97332] = { -- Twice Misplaced Trust
