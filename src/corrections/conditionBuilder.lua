@@ -65,27 +65,42 @@ local function format(value)
   return ("%.0f"):format(value)
 end
 
-for name, arguments in pairs(builder.vocabulary) do
+---Check one call's arguments against the vocabulary and return its canonical expression.
+---@param level integer Error level: 3 blames the correction file calling a builder function.
+local function formatCall(name, level, ...)
+  local arguments = builder.vocabulary[name]
+  local count = select("#", ...)
+  local parts = {}
+  for index, kind in ipairs(arguments) do
+    local value = select(index, ...)
+    local optional = kind:sub(-1) == "?"
+    kind = optional and kind:sub(1, -2) or kind
+    if value == nil and optional then break end
+    if not ARGUMENTS[kind](value) then
+      error(("%s argument %d must be a valid %s, got %s"):format(name, index, kind, tostring(value)), level)
+    end
+    parts[index] = format(value)
+  end
+  if count > #arguments then
+    error(("%s takes at most %d arguments, got %d"):format(name, #arguments, count), level)
+  end
+  return name .. "(" .. table.concat(parts, ", ") .. ")"
+end
+
+for name in pairs(builder.vocabulary) do
   builder[name] = function(...)
-    local count = select("#", ...)
-    local parts = {}
-    for index, kind in ipairs(arguments) do
-      local value = select(index, ...)
-      local optional = kind:sub(-1) == "?"
-      kind = optional and kind:sub(1, -2) or kind
-      if value == nil and optional then break end
-      if not ARGUMENTS[kind](value) then
-        error(("%s argument %d must be a valid %s, got %s"):format(name, index, kind, tostring(value)), 2)
-      end
-      parts[index] = format(value)
-    end
-    if count > #arguments then
-      error(("%s takes at most %d arguments, got %d"):format(name, #arguments, count), 2)
-    end
-    local expression = name .. "(" .. table.concat(parts, ", ") .. ")"
+    local expression = formatCall(name, 3, ...)
     compound[expression] = false
     return expression
   end
+end
+
+---Raise when a parsed call's arguments are not ones the builder accepts for `name`.
+---Unlike the builder functions, it does not record the call as builder output, so evaluating a
+---string never makes it acceptable to All, Any, or Not.
+---@param name string A vocabulary name.
+function builder.checkCall(name, ...)
+  formatCall(name, 0, ...)
 end
 
 local function operand(name, value, index)

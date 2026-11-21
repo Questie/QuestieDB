@@ -51,6 +51,10 @@ return function(check, equal)
   }) do
     check(not pcall(case[2]), "the builder rejects an invalid " .. case[1] .. " condition")
   end
+  -- The parser checks calls with the builder without recording them as builder output.
+  Explain("QuestRewarded(424242)", { QuestRewarded = function() return true end })
+  check(not pcall(C.All, "QuestRewarded(424242)", C.QuestInLog(2)),
+    "an evaluated string is still not a condition from this builder")
 
   equal(Evaluate(nil), true, "a missing expression is available")
   equal(Evaluate(""), true, "an empty expression is available")

@@ -401,7 +401,7 @@ local function parse(tokens)
     expect(")")
     -- The builder checks argument count and kinds, so a hand-written IsTeam(469) or HasRep(1105)
     -- is outside the grammar, like a misspelled name, instead of evaluating wrongly.
-    local valid, problem = pcall(builder[name.value], unpack(args))
+    local valid, problem = pcall(builder.checkCall, name.value, unpack(args))
     if not valid then error(problem, 0) end
     return { call = name.value, args = args }
   end
