@@ -223,9 +223,12 @@ return function(check, equal)
   equal(Evaluate("not QuestComplete(3)", { QuestComplete = function() return 0 end }), true,
     "a non-boolean result is an error, not a truthy answer")
   equal(#reports, 5, "a non-boolean result is reported")
+  equal(Evaluate("not QuestNone(5)", { QuestInLog = function() return 0 end }), true,
+    "a composite's parts must return booleans too")
+  equal(#reports, 6, "a non-boolean part of a composite is reported")
   local raisesTable = { HasAura = function() error({ reason = "broken" }) end }
   for _ = 1, 3 do Evaluate("HasAura(1) and IsLevel(1)", raisesTable) end
-  equal(#reports, 6, "an error raised as a table is reported once per expression")
+  equal(#reports, 7, "an error raised as a table is reported once per expression")
   rawset(_G, "geterrorhandler", function() return function() error("handler failed") end end)
   equal(Evaluate("IsLevel(1, 2) and IsLevel(3)"), true, "a failing error handler does not escape Evaluate")
 
@@ -248,6 +251,8 @@ return function(check, equal)
   equal(Evaluate("QuestNone(5)"), true, "base QuestNone reads the client")
   local rewardedFive = { QuestRewarded = function(questId) return questId == 5 end }
   equal(Evaluate("QuestNone(5)", rewardedFive), false, "composite functions follow the caller's functions")
+  equal(Evaluate("IsRaceClass(0, 0)", { IsRace = function() return false end }), false,
+    "IsRaceClass follows the caller's IsRace")
   equal(Evaluate("QuestNone(5)"), true, "a call without functions is unaffected by another caller's")
   local unknownLog = { QuestInLog = function() return nil end }
   equal(Evaluate("QuestNone(5)", unknownLog), nil, "a composite function passes an unknown part through")
@@ -304,6 +309,17 @@ return function(check, equal)
   end
 
   for _, name in ipairs(stubbed) do rawset(_G, name, saved[name]) end
+
+  -- The vocabulary is part of contract 5 (ADR 0017). A new name bumps the contract; removing or
+  -- renaming one is breaking and needs removedIn plus a raised minSupportedContract.
+  local names = {}
+  for name in pairs(C.vocabulary) do names[#names + 1] = name end
+  table.sort(names)
+  equal(names, {
+    "HasAchievement", "HasAura", "HasItem", "HasItemEquipped", "HasItemOrBank", "HasRep", "HasSkill",
+    "IsClass", "IsLevel", "IsLevelBelow", "IsLevelExact", "IsRace", "IsRaceClass", "IsTeam", "KnowsSpell",
+    "QuestAvailable", "QuestComplete", "QuestInLog", "QuestNone", "QuestRewarded", "RepBelow",
+  }, "the condition vocabulary matches contract 5")
 
   -- Gates on the shipped expressions, read from each flavor's composed Source data so every
   -- correction file that writes `conditions` is covered. QuestAvailable cycles have no stable
