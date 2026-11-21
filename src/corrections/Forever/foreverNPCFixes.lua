@@ -960,6 +960,10 @@ function ForeverNpcFixes:Load()
         [264936] = { -- Earthseer Farsen
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{64.87,58.47}}},
         },
+        [264943] = { -- Afadra Dunwall
+            [npcKeys.spawns] = {[zoneIDs.IRONFORGE] = {{33.01,48.23}}},
+            [npcKeys.zoneID] = zoneIDs.IRONFORGE,
+        },
         [265002] = { -- Ghostly Attendant
             [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
