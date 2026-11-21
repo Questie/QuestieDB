@@ -31,6 +31,12 @@ function ForeverItemFixes:Load()
             [itemKeys.npcDrops] = {},
             [itemKeys.objectDrops] = {}, -- only show vendors
         },
+        [3825] = { -- Elixir of Lesser Fortitude
+            [itemKeys.name] = "Elixir of Lesser Fortitude",
+        },
+        [3830] = { -- Recipe: Elixir of Lesser Fortitude
+            [itemKeys.name] = "Recipe: Elixir of Lesser Fortitude",
+        },
         [4871] = { -- Searing Collar
             [itemKeys.npcDrops_remove] = {232994},
         },

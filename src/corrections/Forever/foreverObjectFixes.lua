@@ -441,6 +441,11 @@ function ForeverObjectFixes:Load()
         [659159] = { -- Mailbox
             [objectKeys.questStarts_remove] = {1486},
         },
+        [660624] = { -- The Coldbringer's Eye
+            [objectKeys.name] = "The Coldbringer's Eye",
+            [objectKeys.spawns] = {[zoneIDs.RAZORFEN_DOWNS] = {{-1,-1}}},
+            [objectKeys.zoneID] = zoneIDs.RAZORFEN_DOWNS,
+        },
         [660729] = { -- The Forsaken Ally
             [objectKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{76.48,30.4}}},
         },
