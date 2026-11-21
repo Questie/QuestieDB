@@ -97,6 +97,7 @@ jobs:
       - name: Update versions
         run: |
           sed -i -E "s/^(## Version:[[:space:]]*).*$/\1$VERSION/" QuestieDB.toc
+          sed -i -E "s/^(## Title:[[:space:]]*QuestieDB).*$/\1|cFF00FF00 v$VERSION|r/" QuestieDB.toc
           # Fail early unless the TOC still has exactly one canonical version.
           [[ "$(lua5.1 -e 'print(dofile("generator/version.lua").read("QuestieDB.toc"))')" == "$VERSION" ]]
 
