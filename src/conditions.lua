@@ -311,10 +311,11 @@ end
 local reported = {} -- report key -> true once it has been reported.
 
 -- Runtime errors are keyed by message, so one broken function used by many expressions is
--- reported once. Parse failures are keyed by expression, since their messages repeat.
+-- reported once. Parse failures are keyed by expression, since their messages repeat. A
+-- non-string error is a new value each time, so it is keyed by expression too.
 local function report(expression, message, key)
+  key = key or (type(message) == "string" and message or expression)
   message = tostring(message)
-  key = key or message
   if reported[key] then return end
   reported[key] = true
   local handler = geterrorhandler and geterrorhandler()

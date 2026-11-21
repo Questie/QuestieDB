@@ -207,6 +207,9 @@ return function(check, equal)
   equal(Evaluate("not QuestComplete(3)", { QuestComplete = function() return 0 end }), true,
     "a non-boolean result is an error, not a truthy answer")
   equal(#reports, 5, "a non-boolean result is reported")
+  local raisesTable = { HasAura = function() error({ reason = "broken" }) end }
+  for _ = 1, 3 do Evaluate("HasAura(1) and IsLevel(1)", raisesTable) end
+  equal(#reports, 6, "an error raised as a table is reported once per expression")
   rawset(_G, "geterrorhandler", function() return function() error("handler failed") end end)
   equal(Evaluate("IsLevel(1, 2) and IsLevel(3)"), true, "a failing error handler does not escape Evaluate")
 
