@@ -52,6 +52,9 @@ function ForeverItemFixes:Load()
         [5803] = { -- Speck of Dream Dust
             [itemKeys.npcDrops_remove] = {743},
         },
+        [5805] = { -- Heart of Zeal
+            [itemKeys.npcDrops_remove] = {245507},
+        },
         [6529] = { -- Shiny Bauble
             [itemKeys.npcDrops] = {}, -- only show vendors
         },
