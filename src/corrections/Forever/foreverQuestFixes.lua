@@ -31,6 +31,7 @@ function ForeverQuestFixes:Load()
     local specKeys = QuestieProfessions.specializationKeys
     local factionIDs = QuestieDB.factionIDs
     local rankKeys = QuestieProfessions.rankNames
+    local questFlags = QuestieDB.questFlags
 
     return {
         [19] = { -- Tharil'zun
@@ -706,6 +707,7 @@ function ForeverQuestFixes:Load()
             [questKeys.parentQuest] = 78261,
         },
         [78307] = { -- The Horn of Xelthos
+            [questKeys.startedBy] = {nil,{410369}},
             [questKeys.requiredLevel] = 1,
             [questKeys.questLevel] = 23,
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -2626,6 +2628,11 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredClasses] = classIDs.WARRIOR,
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
+        [94004] = { -- Craftsman's Writ: Elixir of Ogre's Strength
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
         [94006] = { -- The Great Ursera Spirit
             [questKeys.requiredClasses] = classIDs.DRUID,
             [questKeys.nextQuestInChain] = 94638,
@@ -2645,26 +2652,750 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredClasses] = classIDs.HUNTER,
             [questKeys.preQuestSingle] = {94013},
         },
+        [94212] = { -- Craftsman's Writ: Elixir of Wisdom
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94213] = { -- Craftsman's Writ: Lesser Mana Potion
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94214] = { -- Craftsman's Writ: Shadow Protection Potion
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94215] = { -- Craftsman's Writ: Free Action Potion
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94216] = { -- Craftsman's Writ: Elixir of Lesser Agility
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94217] = { -- Craftsman's Writ: Lesser Troll's Blood Elixir
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
         [94218] = { -- Craftsman's Writ: Elixir of Defense
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
         },
         [94219] = { -- Craftsman's Writ: Draught of Water Breathing
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94220] = { -- Craftsman's Writ: Pearl-Handled Dagger
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94221] = { -- Craftsman's Writ: Golden Rod
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
         },
         [94222] = { -- Craftsman's Writ: Iridescent Hammer
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94223] = { -- Craftsman's Writ: Silver Skeleton Key
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94224] = { -- Craftsman's Writ: Heavy Bronze Mace
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94225] = { -- Craftsman's Writ: Rough Bronze Leggings
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94226] = { -- Craftsman's Writ: Green Iron Gauntlets
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94227] = { -- Craftsman's Writ: Big Bronze Knife
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94228] = { -- Craftsman's Writ: Green Iron Boots
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94229] = { -- Craftsman's Writ: Ornate Spyglass
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
         },
         [94230] = { -- Craftsman's Writ: Explosive Sheep
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
         },
         [94231] = { -- Craftsman's Writ: Moonsight Rifle
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94232] = { -- Craftsman's Writ: Minor Recombobulator
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94233] = { -- Craftsman's Writ: Practice Lock
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94234] = { -- Craftsman's Writ: Shadow Goggles
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94235] = { -- Craftsman's Writ: Gnomish Universal Remote
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94236] = { -- Craftsman's Writ: Big Bronze Bomb
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94237] = { -- Craftsman's Writ: Crafted Solid Shot
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94238] = { -- Craftsman's Writ: Heavy Leather Ball
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94239] = { -- Craftsman's Writ: Fine Leather Pants
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94240] = { -- Craftsman's Writ: Herbalist's Gloves
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94241] = { -- Craftsman's Writ: Dark Leather Tunic
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94242] = { -- Craftsman's Writ: Pilferer's Gloves
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94243] = { -- Craftsman's Writ: Heavy Quiver
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94244] = { -- Craftsman's Writ: Dark Leather Shoulders
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94245] = { -- Craftsman's Writ: Barbaric Gloves
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94246] = { -- Craftsman's Writ: Red Whelp Gloves
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
         },
         [94247] = { -- Craftsman's Writ: Lesser Wizard's Robe
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94248] = { -- Craftsman's Writ: Blue Overalls
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94249] = { -- Craftsman's Writ: Azure Silk Hood
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94250] = { -- Craftsman's Writ: Small Silk Pack
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94251] = { -- Craftsman's Writ: Phoenix Pants
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94252] = { -- Craftsman's Writ: Red Woolen Boots
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94253] = { -- Craftsman's Writ: Colorful Kilt
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94254] = { -- Craftsman's Writ: Greater Adept's Robe
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
         },
         [94255] = { -- Craftsman's Writ: Spider Silk Slippers
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94256] = { -- Craftsman's Writ: Frost Protection Potion
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94257] = { -- Craftsman's Writ: Lesser Invisibility Potion
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94258] = { -- Craftsman's Writ: Lesser Stoneshield Potion
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94259] = { -- Craftsman's Writ: Nature Protection Potion
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94260] = { -- Craftsman's Writ: Catseye Draught
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94261] = { -- Craftsman's Writ: Great Rage Potion
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94262] = { -- Craftsman's Writ: Mana Potion
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94263] = { -- Craftsman's Writ: Fire Protection Potion
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94264] = { -- Craftsman's Writ: Shadow Oil
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94265] = { -- Craftsman's Writ: Goblin Rocket Fuel
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94266] = { -- Craftsman's Writ: Elixir of Agility
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94267] = { -- Craftsman's Writ: Wildvine Potion
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94268] = { -- Craftsman's Writ: Steel Plate Helm
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94269] = { -- Craftsman's Writ: Inlaid Mithril Cylinder
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94270] = { -- Craftsman's Writ: Steel Weapon Chain
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94271] = { -- Craftsman's Writ: Ornate Mithril Shoulders
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94272] = { -- Craftsman's Writ: Blue Glittering Axe
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94273] = { -- Craftsman's Writ: Moonsteel Broadsword
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94274] = { -- Craftsman's Writ: Golden Scale Coif
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94275] = { -- Craftsman's Writ: Solid Sharpening Stone
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94276] = { -- Craftsman's Writ: Wicked Mithril Blade
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94277] = { -- Craftsman's Writ: Truesilver Rod
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94278] = { -- Craftsman's Writ: Golden Scale Gauntlets
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94279] = { -- Craftsman's Writ: Heavy Mithril Axe
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94280] = { -- Craftsman's Writ: Mechanical Dragonling
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94281] = { -- Craftsman's Writ: Advanced Target Dummy
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94282] = { -- Craftsman's Writ: Craftsman's Monocle
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94283] = { -- Craftsman's Writ: Goblin Land Mine
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94284] = { -- Craftsman's Writ: Catseye Ultra Goggles
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94285] = { -- Craftsman's Writ: Unstable Trigger
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94286] = { -- Craftsman's Writ: Flash Bomb
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94287] = { -- Craftsman's Writ: Fire Goggles
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94288] = { -- Craftsman's Writ: Mithril Frag Bomb
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94289] = { -- Craftsman's Writ: Gyromatic Micro-Adjuster
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94290] = { -- Craftsman's Writ: Mechanical Repair Kit
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94291] = { -- Craftsman's Writ: Dark Iron Bomb
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94292] = { -- Craftsman's Writ: Comfortable Leather Hat
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94293] = { -- Craftsman's Writ: Guardian Cloak
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94294] = { -- Craftsman's Writ: Dusky Bracers
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94295] = { -- Craftsman's Writ: Wild Leather Helmet
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94296] = { -- Craftsman's Writ: Wild Leather Shoulders
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94297] = { -- Craftsman's Writ: Quickdraw Quiver
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94298] = { -- Craftsman's Writ: Swift Boots
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94299] = { -- Craftsman's Writ: Nightscape Shoulders
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94300] = { -- Craftsman's Writ: Big Voodoo Mask
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94301] = { -- Craftsman's Writ: Big Voodoo Robe
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94302] = { -- Craftsman's Writ: Turtle Scale Breastplate
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94303] = { -- Craftsman's Writ: Thick Leather Ammo Pouch
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94304] = { -- Craftsman's Writ: Mageweave Bag
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94305] = { -- Craftsman's Writ: Shadoweave Gloves
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94306] = { -- Craftsman's Writ: Crimson Silk Robe
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94307] = { -- Craftsman's Writ: Shadoweave Robe
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94308] = { -- Craftsman's Writ: Enchanted Mageweave Pouch
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94309] = { -- Craftsman's Writ: Star Belt
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94310] = { -- Craftsman's Writ: Black Mageweave Vest
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94311] = { -- Craftsman's Writ: Red Mageweave Pants
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94312] = { -- Craftsman's Writ: Orange Martial Shirt
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94313] = { -- Craftsman's Writ: White Bandit Mask
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94314] = { -- Craftsman's Writ: Cindercloth Robe
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94315] = { -- Craftsman's Writ: Earthen Silk Belt
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94316] = { -- Craftsman's Writ: Potion of Demonslaying
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94317] = { -- Craftsman's Writ: Dreamless Sleep Potion
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94318] = { -- Craftsman's Writ: Greater Fire Protection Potion
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94319] = { -- Craftsman's Writ: Draught of Detect Demon
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94320] = { -- Craftsman's Writ: Gift of Arthas
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94321] = { -- Craftsman's Writ: Flask of Chromatic Resistance
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94322] = { -- Craftsman's Writ: Limited Invulnerability Potion
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94323] = { -- Craftsman's Writ: Major Rejuvenation Potion
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94324] = { -- Craftsman's Writ: Distilled Firewater
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94325] = { -- Craftsman's Writ: Radiant Circlet
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94326] = { -- Craftsman's Writ: Radiant Belt
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94327] = { -- Craftsman's Writ: Orcish War Leggings
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94328] = { -- Craftsman's Writ: Mithril Spurs
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94329] = { -- Craftsman's Writ: Imperial Plate Chest
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94330] = { -- Craftsman's Writ: Darkrune Gauntlets
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94331] = { -- Craftsman's Writ: Huge Thorium Battleaxe
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94332] = { -- Craftsman's Writ: Arcanite Skeleton Key
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94333] = { -- Craftsman's Writ: Ebon Shiv
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94334] = { -- Craftsman's Writ: Masterwork Target Dummy
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94335] = { -- Craftsman's Writ: Green Lens
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94336] = { -- Craftsman's Writ: Lifelike Mechanical Toad
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94337] = { -- Craftsman's Writ: Gnomish Alarm-O-Bot
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94338] = { -- Craftsman's Writ: Goblin Jumper Cables XL
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94339] = { -- Craftsman's Writ: Field Repair Bot 74A
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94340] = { -- Craftsman's Writ: Truesilver Transformer
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94341] = { -- Craftsman's Writ: Sniper Scope
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94342] = { -- Craftsman's Writ: Tranquil Mechanical Yeti
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94343] = { -- Craftsman's Writ: Gordok Ogre Suit
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94344] = { -- Craftsman's Writ: Wicked Leather Pants
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94345] = { -- Craftsman's Writ: Volcanic Breastplate
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94346] = { -- Craftsman's Writ: Runic Leather Headband
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94347] = { -- Craftsman's Writ: Wicked Leather Bracers
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94348] = { -- Craftsman's Writ: Chimeric Vest
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94349] = { -- Craftsman's Writ: Heavy Scorpid Helm
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94350] = { -- Craftsman's Writ: Runic Leather Bracers
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94351] = { -- Craftsman's Writ: Frostsaber Boots
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94352] = { -- Craftsman's Writ: Wizardweave Turban
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94353] = { -- Craftsman's Writ: Runecloth Bag
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94354] = { -- Craftsman's Writ: Runecloth Boots
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94355] = { -- Craftsman's Writ: Tuxedo Jacket
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94356] = { -- Craftsman's Writ: Felcloth Boots
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94357] = { -- Craftsman's Writ: Cenarion Herb Bag
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94358] = { -- Craftsman's Writ: Shadoweave Mask
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94359] = { -- Craftsman's Writ: Ghostweave Vest
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
+        },
+        [94360] = { -- Craftsman's Writ: Soul Pouch
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.questFlags] = questFlags.DAILY,
         },
         [94369] = { -- The Fate of Zephras
             [questKeys.preQuestSingle] = {93835},
