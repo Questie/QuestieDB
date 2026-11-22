@@ -137,7 +137,7 @@ function ForeverObjectFixes:Load()
             [objectKeys.questStarts] = {79096},
         },
         [410369] = { -- Dead Drop
-            [objectKeys.questStarts_add] = {78307},
+            [objectKeys.questStarts_add] = {78307,78699},
         },
         [415106] = { -- Burned-Out Remains
             [objectKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{46.36,73.9}}},
