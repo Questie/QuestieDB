@@ -1898,6 +1898,18 @@ local tbcObjectiveLocales = {
         ["zhCN"] = "拿一桶啤酒",
         ["zhTW"] = false,
     },
+    ["Speak with Sar'this for his help hunting a Flawless Arcane Elemental"] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["frFR"] = false,
+        ["koKR"] = false,
+        ["ptBR"] = false,
+        ["ruRU"] = false,
+        ["zhCN"] = "与萨提斯交谈，让他帮忙猎杀无瑕的奥术元素",
+        ["zhTW"] = false,
+    },
 }
 
 for k, v in pairs(tbcObjectiveLocales) do

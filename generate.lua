@@ -185,7 +185,7 @@ local function sourceTocHeadings()
     ["l10n/lookupOverrides.lua"] = { subcategory = "Static Translation Corrections" },
     ["l10n/Forever/lookupOverrides.lua"] = { subcategory = "Forever Static Translation Corrections" },
     [config.l10nExtraObjectiveFiles[1]] = { subcategory = "Extra objective texts",
-      note = "Keyed by English text and applied to every flavor's extraObjectives." },
+      note = "Keyed by English text; each file loads for the flavors whose expansion reaches it." },
     ["src/l10n/source/_end.lua"] = { subcategory = "Lookup loader teardown" },
     ["src/l10n/overlay.lua"] = { category = "Localization and public API", subcategory = "Localization overlay and Titan translations",
       note = "Do not filter by client locale: SetLocale() can select another locale." },
