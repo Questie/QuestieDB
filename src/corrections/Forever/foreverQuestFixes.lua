@@ -4377,6 +4377,10 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {97074},
             [questKeys.exclusiveTo] = {96982,96989,96994,96996,96997,97017,97045,97046,97171,97446,98166,99326},
         },
+        [95534] = { -- Strahnbrad Mystery
+            [questKeys.objectives] = {{{217305}}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.ALTERAC_MOUNTAINS] = {{60.1,45.58}}}, Questie.ICON_TYPE_EVENT, l10n("Ignite the bellows using fire abilities")}},
+        },
         [95561] = { -- Apple of My Eye
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
             [questKeys.preQuestSingle] = {94877},

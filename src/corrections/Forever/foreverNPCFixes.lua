@@ -329,6 +329,10 @@ function ForeverNpcFixes:Load()
         [214954] = { -- Rix Xizzix
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- traces record no flags
         },
+        [217305] = { -- Ancient Fire Elemental
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{60.1,45.58}}},
+            [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
+        },
         [217582] = { -- Caverndeep Ambusher
             [npcKeys.name] = "Caverndeep Ambusher",
             [npcKeys.spawns] = {[zoneIDs.GNOMEREGAN] = {{-1,-1}}},
