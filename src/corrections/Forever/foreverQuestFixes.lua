@@ -2040,9 +2040,11 @@ function ForeverQuestFixes:Load()
         },
         [92811] = { -- Economic Warfare
             [questKeys.preQuestSingle] = {93226,94872},
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [92812] = { -- Economic Warfare
             [questKeys.preQuestSingle] = {93227,94873},
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [92814] = { -- I Need a Tailor
             [questKeys.preQuestSingle] = {1370},
