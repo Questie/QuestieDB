@@ -169,6 +169,9 @@ function ForeverQuestFixes:Load()
             [questKeys.exclusiveTo] = {324},
             [questKeys.nextQuestInChain] = 322,
         },
+        [536] = { -- Down the Coast
+            [questKeys.breadcrumbs] = {98219},
+        },
         [544] = { -- Prison Break In
             [questKeys.nextQuestInChain] = 0,
         },
@@ -5409,6 +5412,8 @@ function ForeverQuestFixes:Load()
         },
         [98219] = { -- The Shamed Lieutenant
             [questKeys.preQuestSingle] = {98191},
+            [questKeys.breadcrumbForQuestId] = 536,
+            [questKeys.nextQuestInChain] = 536,
         },
         [98230] = { -- This Land Was Their Land
             [questKeys.preQuestGroup] = {474,98223},
