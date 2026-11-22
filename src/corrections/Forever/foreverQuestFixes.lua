@@ -1989,6 +1989,7 @@ function ForeverQuestFixes:Load()
         },
         [92742] = { -- Testing the Wells
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.nextQuestInChain] = 92744,
         },
         [92743] = { -- A Conqueror's Crown
             [questKeys.preQuestSingle] = {1369},
@@ -1996,6 +1997,7 @@ function ForeverQuestFixes:Load()
         },
         [92744] = { -- Murloc Gills
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.nextQuestInChain] = 92745,
         },
         [92745] = { -- The State of the Mines
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,

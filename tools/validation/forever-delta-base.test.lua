@@ -63,6 +63,13 @@ local function witness(db)
   local hordeMagramRep, hordeGelkisRep = db.Quest.requiredMinRep(94872), db.Quest.requiredMinRep(94873)
   assert(hordeMagramRep and hordeMagramRep[1] == 93 and hordeMagramRep[2] == 0, "Horde Magram turn-in needs Neutral Magram")
   assert(hordeGelkisRep and hordeGelkisRep[1] == 92 and hordeGelkisRep[2] == 0, "Horde Gelkis turn-in needs Neutral Gelkis")
+  assert(db.Quest.nextQuestInChain(92742) == 92744, "Testing the Wells leads to Murloc Gills")
+  assert(db.Quest.nextQuestInChain(92744) == 92745, "Murloc Gills leads to The State of the Mines")
+  local minePrerequisites = db.Quest.preQuestGroup(92745)
+  assert(minePrerequisites and #minePrerequisites == 2
+    and minePrerequisites[1] == 92742 and minePrerequisites[2] == 92744,
+    "The State of the Mines keeps both existing prerequisites")
+  assert(db.Quest.nextQuestInChain(92745) == 92747, "The State of the Mines still leads to Moonbrook Espionage")
   for _, id in ipairs({ 92534, 94901, 3911 }) do
     assert(not db.Quest.Exists(id) and not db.Quest.GetAllIds(true)[id], "held quest leaked: " .. id)
   end
