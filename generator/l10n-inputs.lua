@@ -193,10 +193,8 @@ function inputs.loadExtraObjectiveTexts(root, files)
     execute(root .. "/" .. path, env)
     for text, value in pairs(module.translations) do
       if before[text] ~= value then
-        if owners[text] then
-          io.stderr:write(string.format("warning: extra objective text %q in %s overrides %s\n",
-            text, path, owners[text]))
-        end
+        assert(owners[text] == nil, string.format("Extra objective text %q is defined in both %s and %s",
+          text, owners[text] or "?", path))
         owners[text] = path
       end
     end

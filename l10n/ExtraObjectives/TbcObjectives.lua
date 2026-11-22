@@ -1751,7 +1751,7 @@ local tbcObjectiveLocales = {
         ["koKR"] = false,
         ["ptBR"] = false,
         ["ruRU"] = false,
-        ["zhCN"] = "乘车",
+        ["zhCN"] = "搭车",
         ["zhTW"] = false,
     },
     ["Get a disguise"] = {

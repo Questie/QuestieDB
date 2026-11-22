@@ -3412,7 +3412,7 @@ local cataObjectiveLocales = {
     },
     ["Fill the vial"] = {
         ["enUS"] = true,
-        ["deDE"] = "Fülle die Viale",
+        ["deDE"] = "Fülle die Phiole",
         ["esES"] = false,
         ["esMX"] = false,
         ["frFR"] = false,
@@ -3696,18 +3696,6 @@ local cataObjectiveLocales = {
         ["ptBR"] = false,
         ["ruRU"] = false,
         ["zhCN"] = "利用箱子躲避敌人",
-        ["zhTW"] = false,
-    },
-    ["Take a ride"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Mach einen Ausflug",
-        ["esES"] = false,
-        ["esMX"] = false,
-        ["frFR"] = false,
-        ["koKR"] = false,
-        ["ptBR"] = false,
-        ["ruRU"] = false,
-        ["zhCN"] = "骑乘",
         ["zhTW"] = false,
     },
 }
