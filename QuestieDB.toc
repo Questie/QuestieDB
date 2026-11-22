@@ -581,14 +581,14 @@ l10n\lookupOverrides.lua [AllowLoadGameType tbc, wrath, cata, mists]
 l10n\Forever\lookupOverrides.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
 # --- Extra objective texts ---
-# Keyed by English text and applied to every flavor's extraObjectives.
-l10n\ExtraObjectives\CataObjectives.lua
+# Keyed by English text; each file loads for the flavors whose expansion reaches it.
+l10n\ExtraObjectives\CataObjectives.lua [AllowLoadGameType cata, mists]
 l10n\ExtraObjectives\ClassicObjectives.lua
-l10n\ExtraObjectives\SeasonObjectives.lua
-l10n\ExtraObjectives\TbcObjectives.lua
-l10n\ExtraObjectives\WotlkObjectives.lua
-l10n\ExtraObjectives\MopObjectives.lua
-l10n\ExtraObjectives\ForeverObjectives.lua
+l10n\ExtraObjectives\SeasonObjectives.lua [AllowLoadGameType vanilla]
+l10n\ExtraObjectives\TbcObjectives.lua [AllowLoadGameType tbc, wrath, cata, mists]
+l10n\ExtraObjectives\WotlkObjectives.lua [AllowLoadGameType wrath, cata, mists]
+l10n\ExtraObjectives\MopObjectives.lua [AllowLoadGameType mists]
+l10n\ExtraObjectives\ForeverObjectives.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
 # --- Lookup loader teardown ---
 src\l10n\source\_end.lua

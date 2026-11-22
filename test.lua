@@ -3402,6 +3402,10 @@ suite("extra-objective-translations", "shared", function()
   dofile("tools/validation/extra-objective-translations.test.lua")(check, equal, "Source")
 end)
 
+suite("extra-objective-flavors", "shared", function()
+  dofile("tools/validation/extra-objective-flavors.test.lua")(check, equal)
+end)
+
 suite("extra-objective-translations-baked", "Vanilla", function()
   dofile("tools/validation/extra-objective-translations.test.lua")(check, equal, "Baked")
 end)
