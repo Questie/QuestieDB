@@ -31,6 +31,12 @@ function ForeverItemFixes:Load()
             [itemKeys.npcDrops] = {},
             [itemKeys.objectDrops] = {}, -- only show vendors
         },
+        [3825] = { -- Elixir of Lesser Fortitude
+            [itemKeys.name] = "Elixir of Lesser Fortitude",
+        },
+        [3830] = { -- Recipe: Elixir of Lesser Fortitude
+            [itemKeys.name] = "Recipe: Elixir of Lesser Fortitude",
+        },
         [4871] = { -- Searing Collar
             [itemKeys.npcDrops_remove] = {232994},
         },
@@ -42,6 +48,12 @@ function ForeverItemFixes:Load()
         },
         [5220] = { -- Gnarlpine Fang
             [itemKeys.npcDrops] = {2006,2007,2008,2009,2010,2011,2012,2013,2014,2152,7235,14428,14429},
+        },
+        [5803] = { -- Speck of Dream Dust
+            [itemKeys.npcDrops_remove] = {743},
+        },
+        [5805] = { -- Heart of Zeal
+            [itemKeys.npcDrops_remove] = {245507},
         },
         [6529] = { -- Shiny Bauble
             [itemKeys.npcDrops] = {}, -- only show vendors

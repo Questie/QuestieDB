@@ -323,6 +323,35 @@ function CataObjectFixes.Load()
                 [zoneIDs.ZANGARMARSH] = {{80.33,65.06}},
             },
         },
+        [177274] = { -- Moonwell
+            [objectKeys.spawns] = {},
+        },
+        [177276] = { -- Moonwell
+            [objectKeys.spawns] = {[zoneIDs.FELWOOD] = {{33.26,65.68}}},
+        },
+        [177278] = { -- Moonwell
+            [objectKeys.spawns] = {
+                [zoneIDs.DRAGONBLIGHT] = {{29.39,55.66}},
+                [zoneIDs.TELDRASSIL] = {{55.72,54.1}},
+                [zoneIDs.DARKSHORE] = {{50.64,19.97}},
+                [zoneIDs.ASHENVALE] = {{59.31,59.96},{53.74,46.01}},
+                [zoneIDs.FERALAS] = {{45.65,41.75},{46.05,46.41}},
+                [zoneIDs.FELWOOD] = {{44.04,28.4}},
+                [zoneIDs.DESOLACE] = {{67.67,9.84}},
+                [zoneIDs.STONETALON_MOUNTAINS] = {{58.39,55.75}},
+                [zoneIDs.MOONGLADE] = {{48.64,32.97}},
+            },
+        },
+        [177280] = { -- Moonwell
+            [objectKeys.spawns] = {
+                [zoneIDs.DUSKWOOD] = {{49.2,33.29}},
+                [zoneIDs.DRAGONBLIGHT] = {{29.39,55.69}},
+                [zoneIDs.TELDRASSIL] = {{48.1,55.44}},
+                [zoneIDs.STONETALON_MOUNTAINS] = {{41.6,18.93},{39.01,31.41},{38.67,46.51},{31.95,60.5}},
+                [zoneIDs.MOONGLADE] = {{52.5,41.46},{46.15,45.53}},
+                [zoneIDs.BLADES_EDGE_MOUNTAINS] = {{37.25,63.99}},
+            },
+        },
         [177287] = { -- Unfinished Painting
             [objectKeys.spawns] = {[zoneIDs.STRATHOLME] = {{27.38,76.13},{-1,-1}}},
         },

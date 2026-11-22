@@ -464,6 +464,9 @@ function QuestieItemFixes:Load()
         [5797] = { -- Indurium Flake
             [itemKeys.npcDrops] = {6733, 2894, 2893, 2892},
         },
+        [5803] = { -- Speck of Dream Dust
+            [itemKeys.npcDrops_remove] = {743},
+        },
         [5804] = { -- Goblin Rumors
             [itemKeys.relatedQuests] = {1117},
             [itemKeys.npcDrops] = {},

@@ -10,10 +10,10 @@
 # Addon metadata
 # =============================================================================
 
-## Title: QuestieDB
+## Title: QuestieDB|cFF00FF00 v1.1.4|r
 ## Author: Code: Logonz Data: Muehe/TheCrux(BreakBB)/Drejjmit/Dyaxler/Cheeq/TechnoHunter/Yttrium/Everyone else
 ## Notes: |cFFFFD100(source mode)|r The database Questie consumes. No generated artifact present.
-## Version: 1.1.3
+## Version: 1.1.4
 ## Category: Quests
 ## Category-deDE: Quests
 ## Category-esES: Misiones
@@ -576,6 +576,9 @@ l10n\Forever\traces\lookupObjects\zhTW.lua [ExcludeLoadGameType vanilla, tbc, wr
 
 # --- Static Translation Corrections ---
 l10n\lookupOverrides.lua [AllowLoadGameType tbc, wrath, cata, mists]
+
+# --- Forever Static Translation Corrections ---
+l10n\Forever\lookupOverrides.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
 # --- Lookup loader teardown ---
 src\l10n\source\_end.lua

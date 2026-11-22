@@ -224,6 +224,10 @@ function ForeverNpcFixes:Load()
         [11051] = { -- Vhan
             [npcKeys.questEnds_add] = {97937},
         },
+        [13155] = { -- Deathstalker Agent
+            [npcKeys.spawns] = {[zoneIDs.WETLANDS] = {{51.48,59.3}}},
+            [npcKeys.zoneID] = zoneIDs.WETLANDS,
+        },
         [14242] = { -- Sulhasa
             [npcKeys.name] = "Sulhasa",
             [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{47.93,77.62}}},
@@ -956,6 +960,10 @@ function ForeverNpcFixes:Load()
         [264936] = { -- Earthseer Farsen
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{64.87,58.47}}},
         },
+        [264943] = { -- Afadra Dunwall
+            [npcKeys.spawns] = {[zoneIDs.IRONFORGE] = {{33.01,48.23}}},
+            [npcKeys.zoneID] = zoneIDs.IRONFORGE,
+        },
         [265002] = { -- Ghostly Attendant
             [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.THE_HALL_OF_THANES,
@@ -1223,6 +1231,18 @@ function ForeverNpcFixes:Load()
             [npcKeys.maxLevel] = 12,
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.49,45.37}}},
             [npcKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+        },
+        [275044] = { -- Dragonmaw Warder
+            [npcKeys.spawns] = {[zoneIDs.EXCAVATION_SITE_WETLANDS] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [275045] = { -- Dragonmaw Saboteur
+            [npcKeys.spawns] = {[zoneIDs.EXCAVATION_SITE_WETLANDS] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [275046] = { -- Dragonmaw Thaumaturgist
+            [npcKeys.spawns] = {[zoneIDs.EXCAVATION_SITE_WETLANDS] = {{-1,-1}}},
+            [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
         },
         [275210] = { -- Teller Rames
             [npcKeys.npcFlags] = npcFlags.GOSSIP,

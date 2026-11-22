@@ -28,6 +28,11 @@ inputs.staticSources = {
     expansions = { TBC = true, Wotlk = true, Cata = true, MoP = true },
     fields = { Quest = "questLookupOverrides", Item = "itemLookupOverrides" },
   },
+  {
+    path = "Forever/lookupOverrides.lua",
+    expansions = { Forever = true },
+    fields = { Item = "itemLookupOverrides" },
+  },
 }
 
 ---@param root string

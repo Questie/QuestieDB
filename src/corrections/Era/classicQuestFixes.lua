@@ -430,6 +430,9 @@ function QuestieQuestFixes:Load()
         [549] = { -- WANTED: Syndicate Personnel
             [questKeys.nextQuestInChain] = 566, -- #1134
         },
+        [555] = { -- Soothing Turtle Bisque
+            [questKeys.exclusiveTo] = {7321},
+        },
         [556] = { -- Stone Tokens
             [questKeys.nextQuestInChain] = 557,
         },
@@ -1319,7 +1322,7 @@ function QuestieQuestFixes:Load()
             [questKeys.preQuestSingle] = {1427},
         },
         [1432] = { -- Alliance Relations
-            [questKeys.nextQuestInChain] = 1433,
+            [questKeys.nextQuestInChain] = 0,
         },
         [1434] = { -- Befouled by Satyr
             [questKeys.preQuestSingle] = {1432}, -- #1536
@@ -1595,7 +1598,7 @@ function QuestieQuestFixes:Load()
             [questKeys.name] = "Crashing the Wickerman Festival",
         },
         [1661] = { -- The Tome of Nobility
-            [questKeys.exclusiveTo] = {4485, 4486},
+            [questKeys.breadcrumbs] = {4485,4486},
         },
         [1665] = { -- Bartleby's Mug
             [questKeys.nextQuestInChain] = 1666,
@@ -2724,6 +2727,7 @@ function QuestieQuestFixes:Load()
         },
         [3982] = { -- What Is Going On?
             [questKeys.objectives] = {{{9020, nil, Questie.ICON_TYPE_EVENT}}},
+            [questKeys.specialFlags] = specialFlags.NONE,
         },
         [4001] = { -- What Is Going On?
             [questKeys.objectives] = {{{9021, nil, Questie.ICON_TYPE_TALK}}},
@@ -2940,10 +2944,12 @@ function QuestieQuestFixes:Load()
         },
         [4485] = { -- The Tome of Nobility
             [questKeys.startedBy] = {{6179}},
-            [questKeys.exclusiveTo] = {1661, 4486},
+            [questKeys.nextQuestInChain] = 1661,
+            [questKeys.breadcrumbForQuestId] = 1661,
         },
         [4486] = { -- The Tome of Nobility
-            [questKeys.exclusiveTo] = {1661, 4485},
+            [questKeys.nextQuestInChain] = 1661,
+            [questKeys.breadcrumbForQuestId] = 1661,
         },
         [4490] = { -- Summon Felsteed
             [questKeys.preQuestSingle] = {3631, 4487, 4488, 4489},

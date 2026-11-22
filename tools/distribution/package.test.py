@@ -692,6 +692,12 @@ class PackageTest(unittest.TestCase):
         self.assertIn("/releases/download/preview/QuestieDB-1.2.3-dev.abcdef0-all.zip", notes)
         self.assertIn("Interface/AddOns/QuestieDB/QuestieDB_<Flavor>.toc", notes)
         self.assertIn("GitHub's **Source code** archives are not the packaged addon", notes)
+        self.assertIn(
+            "The all-flavors ZIP works on every client. A single-flavor ZIP must match your game "
+            "client; one for another flavor contains no TOC your client recognizes, so QuestieDB "
+            "will not appear in the AddOns list.",
+            notes,
+        )
         self.assertIn("<summary>Build details and checksums</summary>", notes)
         self.assertIn("Producing commit: Unavailable", notes)
         self.assertIn("Supported API contracts: `1` to `4`", notes)
@@ -866,6 +872,8 @@ class PackageTest(unittest.TestCase):
         self.assertIn("[QuestieDB-1.2.3-dev.abcdef0-Vanilla.zip]", notes)
         self.assertNotIn("QuestieDB-1.2.3-dev.abcdef0-all.zip", notes)
         self.assertNotIn("QuestieDB-1.2.3-dev.abcdef0-Mists.zip", notes)
+        self.assertNotIn("The all-flavors ZIP works", notes)
+        self.assertIn("A single-flavor ZIP must match your game client", notes)
 
     def test_forever_packages_forever_toc(self):
         result = self.run_package("Forever")
