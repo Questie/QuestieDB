@@ -104,7 +104,7 @@ config.locales = { "deDE", "esES", "esMX", "frFR", "koKR", "ptBR", "ruRU", "zhCN
 config.l10nLookupDirs = { "lookupQuests", "lookupNpcs", "lookupItems", "lookupObjects" }
 -- Extra objective texts keyed by their English text. Like corrections, each file loads only for
 -- the flavors whose expansion reaches it, so a text belongs in the earliest file every flavor
--- needing it loads. Later files win for duplicate keys (the generator warns about them).
+-- needing it loads. A text must live in exactly one file (the generator rejects duplicates).
 -- generate.lua heads the TOC section at the first entry.
 config.l10nExtraObjectiveFiles = {
   "l10n/ExtraObjectives/CataObjectives.lua",

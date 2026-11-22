@@ -31,9 +31,8 @@ data is generated.
 `ExtraObjectives/` translates the text of each quest's `extraObjectives` entry. Unlike the
 lookups, its entries are keyed by the English text, and each file loads only for the flavors whose
 expansion reaches it (`config.l10nExtraObjectiveFlavors`), so a text belongs in the earliest file every
-flavor needing it loads. Later files in
-`config.l10nExtraObjectiveFiles` win for duplicate keys, and the generator warns about them. Generation
-fails when an extra objective text has no entry. An entry whose locale is `false` or missing keeps the English text.
+flavor needing it loads. A text may be defined in only one file; generation fails on duplicates or when an extra
+objective text has no entry. An entry whose locale is `false` or missing keeps the English text.
 Only the text is translated: the runtime replaces each matching English text in the corrected
 extra objectives, so spawns, icons, and references still come from the entity.
 
