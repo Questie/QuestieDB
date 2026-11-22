@@ -1547,6 +1547,14 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
+        [91903] = { -- A Sealed Crate
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredLevel] = 1,
+            [questKeys.startedBy] = {{256386,256390}},
+            [questKeys.finishedBy] = {{256386,256390}},
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.specialFlags] = specialFlags.REPEATABLE,
+        },
         [91904] = { -- A Sealed Crate
             [questKeys.questLevel] = 60,
             [questKeys.requiredLevel] = 1,
@@ -5553,6 +5561,9 @@ function ForeverQuestFixes:Load()
         [97412] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [97413] = { -- Anthion's Parting Words
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [97446] = { -- Your First Riding Kodo
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97171,98166,99326},
         },
@@ -6822,6 +6833,9 @@ function ForeverQuestFixes:Load()
             [questKeys.exclusiveTo] = {98913,98914}, -- mirroring the behavior for the other Care Package quests
             [questKeys.requiredMinRep] = {factionIDs.THERAMORE_EXPEDITIONARY_FORCE, 3000}, -- big assumption here. update when confirmed/disproved
         },
+        [98919] = { -- Conquering the Island
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [99046] = { -- The Lost Runner
             [questKeys.breadcrumbForQuestId] = 99047,
             [questKeys.nextQuestInChain] = 99047,
@@ -7393,6 +7407,9 @@ function ForeverQuestFixes:LoadDynamic()
         [91902] = { -- A Sealed Crate
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
         },
+        [91903] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
+        },
         [91904] = { -- A Sealed Crate
             [questKeys.zoneOrSort] = zoneIDs.THE_BARRENS,
         },
@@ -7685,6 +7702,9 @@ function ForeverQuestFixes:LoadDynamic()
             [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
         },
         [91902] = { -- A Sealed Crate
+            [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
+        },
+        [91903] = { -- A Sealed Crate
             [questKeys.zoneOrSort] = zoneIDs.REDRIDGE_MOUNTAINS,
         },
         [91904] = { -- A Sealed Crate
