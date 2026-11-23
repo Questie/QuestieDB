@@ -4011,8 +4011,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.preQuestSingle] = {95034},
             [questKeys.nextQuestInChain] = 95111,
-            -- Speak with Trevan for notes, then gather materials
-            [questKeys.objectives] = {{{248840,nil,Questie.ICON_TYPE_TALK}},nil,{{267454},{6994},{267361},{272448}}},
+            [questKeys.objectives] = {nil,nil,{{267454,nil,Questie.ICON_TYPE_TALK},{6994},{267361},{272448}}},
             [questKeys.childQuests] = {95042},
         },
         [95042] = { -- Seeking the Kor Gem
