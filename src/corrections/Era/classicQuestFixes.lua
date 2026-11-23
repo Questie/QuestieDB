@@ -6898,6 +6898,9 @@ function QuestieQuestFixes:LoadFactionFixes()
         [113] = { -- Insect Part Analysis
             [questKeys.nextQuestInChain] = 32,
         },
+        [652] = { -- Breaking the Keystone
+            [questKeys.nextQuestInChain] = 688,
+        },
         [687] = { -- Theldurin the Lost
             [questKeys.startedBy] = {{2787}},
         },
@@ -7190,6 +7193,9 @@ function QuestieQuestFixes:LoadFactionFixes()
     local questFixesAlliance = {
         [113] = { -- Insect Part Analysis
             [questKeys.nextQuestInChain] = 162,
+        },
+        [652] = { -- Breaking the Keystone
+            [questKeys.nextQuestInChain] = 653,
         },
         [687] = { -- Theldurin the Lost
             [questKeys.startedBy] = {{2786}},
