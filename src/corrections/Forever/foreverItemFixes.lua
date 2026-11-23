@@ -159,6 +159,9 @@ function ForeverItemFixes:Load()
         [257945] = { -- Pilfered Windstone
             [itemKeys.npcDrops] = {251918,255534},
         },
+        [260347] = { -- Tattered Journal
+            [itemKeys.startQuest] = 93644,
+        },
         [260883] = { -- Enchanted Gyrozephyr
             [itemKeys.objectDrops_remove] = {618329},
         },
