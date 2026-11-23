@@ -1084,6 +1084,9 @@ function ForeverQuestFixes:Load()
         [84171] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [84198] = {
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [84211] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
