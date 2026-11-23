@@ -281,6 +281,11 @@ QuestieItemDropCorrections.Era = {
         [3466] = DropKeys.WOWHEAD,
         [5831] = DropKeys.WOWHEAD,
     },
+    [5143] = { -- Thunder Lizard Blood
+        [3238] = DropKeys.WOWHEAD,
+        [3239] = DropKeys.WOWHEAD,
+        [3240] = DropKeys.WOWHEAD,
+    },
     [5170] = { -- Mossy Tumor
         [2027] = DropKeys.WOWHEAD,
         [2029] = DropKeys.WOWHEAD,
@@ -301,6 +306,9 @@ QuestieItemDropCorrections.Era = {
     },
     [5669] = { -- Dust Devil Debris
         [832] = 50.0, -- not 100%, not 5%. Could be more than 50%
+    },
+    [5734] = { -- Super Reaper 6000 Blueprints
+        [3988] = DropKeys.WOWHEAD,
     },
     [5801] = { -- Kraul Guano
         [4538] = 100,
