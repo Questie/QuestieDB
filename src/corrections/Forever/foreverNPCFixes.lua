@@ -108,6 +108,9 @@ function ForeverNpcFixes:Load()
         [2428] = { -- Jailor Marlgen
             [npcKeys.spawns_add] = {[zoneIDs.HILLSBRAD_FOOTHILLS] = {{78,40.16}}},
         },
+        [2556] = { -- Witherbark Headhunter
+            [npcKeys.spawns_remove] = {[zoneIDs.ARATHI_HIGHLANDS] = {{74.16,45.89}}},
+        },
         [2614] = { -- Argent Medic
             [npcKeys.name] = "Argent Medic",
         },
@@ -1001,6 +1004,9 @@ function ForeverNpcFixes:Load()
         },
         [267009] = { -- Hadric Harlson
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{65.93,61.13}}},
+        },
+        [267065] = { -- Syndicate Smuggler
+            [npcKeys.spawns] = {[zoneIDs.ARATHI_HIGHLANDS] = {{15.44,42.81},{15.56,42.96}}},
         },
         [267307] = { -- Chol'aruk
             [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{57.53,27.06}}},

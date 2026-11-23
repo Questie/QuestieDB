@@ -1099,7 +1099,8 @@ function QuestieQuestFixes:Load()
             [questKeys.triggerEnd] = {"Help Willix the Importer escape from Razorfen Kraul", {[zoneIDs.RAZORFEN_KRAUL] = {{-1, -1}}}},
         },
         [1148] = { -- Parts of the Swarm
-            [questKeys.preQuestSingle] = {1146},
+            [questKeys.preQuestSingle] = {},
+            [questKeys.availableStartingWith] = 1147,
         },
         [1169] = { -- Identifying the Brood
             [questKeys.nextQuestInChain] = 1170,
