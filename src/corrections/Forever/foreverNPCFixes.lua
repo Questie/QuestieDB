@@ -273,6 +273,9 @@ function ForeverNpcFixes:Load()
         [28989] = { -- Aemara
             [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{17.17,71.52}}},
         },
+        [29049] = { -- Arille Azuregaze
+            [npcKeys.friendlyToFaction] = "A",
+        },
         [29534] = { -- "Baroness" Llana
             [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{17.29,70.1}}},
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BATTLEMASTER,
@@ -295,6 +298,9 @@ function ForeverNpcFixes:Load()
         },
         [32413] = { -- Isirami Fairwind
             [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{12.06,66.36}}},
+        },
+        [32631] = { -- Alfred Copperworth
+            [npcKeys.friendlyToFaction] = "A",
         },
         [32748] = { -- Bimble Sparkfingers
             [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{17.61,67.92}}},
@@ -571,6 +577,9 @@ function ForeverNpcFixes:Load()
         },
         [251968] = { -- Ayessa Dawnsinger
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.15,79.78}}},
+        },
+        [251977] = { -- Angelique Butler
+            [npcKeys.friendlyToFaction] = "A",
         },
         [251993] = { -- Indari Sunseam
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{44.68,44.52}}},
@@ -1001,6 +1010,7 @@ function ForeverNpcFixes:Load()
         },
         [267000] = { -- Paige
             [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{20.82,74.69}}},
+            [npcKeys.friendlyToFaction] = "A",
         },
         [267009] = { -- Hadric Harlson
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{65.93,61.13}}},
